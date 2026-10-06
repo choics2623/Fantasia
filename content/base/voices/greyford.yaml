@@ -19,6 +19,7 @@ voices:
       - {id: osric, once: true, when: ["with npc_osric"], text: "저 사제의 마룻바닥 밑에 무엇이 있는지, 나는 아는 것 같소. 기억이 안 날 뿐."}
       - {id: elsa, once: true, when: ["with npc_elsa"], text: "늪의 여자요. 저 눈은 같은 날을 두 번 본 눈이오."}
       - {id: return, once: true, when: ["loop >= 2", "after_first"], text: "또 저녁이오. 이번 회차는 지도를 그리는 회차요."}
+      - {id: true_name, once: true, when: ["var true_name_fire == true"], text: "불의 이름이오. 나는 그런 것을 백 개 모았소. 첫 번째가 가장 뜨거웠소."}
       - {id: save_one, once: true, when: ["loop >= 2", "story boat_choice"], text: "그 아이 하나 때문에 이 회차를 잃을 셈이오? 계산하시오. 다음 저녁에 구하면 되오."}
   # 지난 회차의 나 (15 §10.1) — 회차 기록에서 만든다. {killer}는 그 회차에 나를 죽인 사람
   loop_self:
@@ -36,3 +37,4 @@ voices:
       - {id: kit, once: true, when: ["with npc_kit", "var kit_on_list == true"], text: "키트 명단에 있어. 나 그거 몰랐어. 이번엔 알아."}
       - {id: hagen, once: true, when: ["with npc_hagen"], text: "하겐 형 착해. 빵도 줬어. …근데."}
       - {id: death_place, once: true, when: ["death_place"], text: "여기였어."}
+      - {id: dark, once: false, when: ["dark"], text: "그러지 마. 그거 우리 아니잖아."}

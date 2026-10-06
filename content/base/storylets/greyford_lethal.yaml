@@ -42,7 +42,7 @@ storylets:
 
           "키트는 빠진다." 그녀가 돌아선다. 지붕 위에서 기왓장 하나가 미끄러지는 소리. 너는 올려다보지 않는다. 페인이 거기 있었다는 것을, 너는 나중에 안다.
         echo: {when: "var egil_hidden == false", text: "〰 너는 마르타에게 수탉 지하를 말했다. 마르타가 즈닉에게 그것을 넘겼고, 오늘 새벽 지하실 벽이 부서졌다."}
-        effects: ["var kit_on_list = false", "var toby_on_list = true", "var martha_deal = true", "agenda learn npc_znik fact_gf_egil_family_in_cellar", "rel npc_martha trust 30", "rel npc_fayne trust -40", "memory npc_fayne 위험함 셋째가 수탉 지하를 마르타에게 팔았다", "deed inform", "note 마르타에게 수탉 지하를 팔았다 — 키트가 명단에서 빠졌다. 토비가 대신 간다"]
+        effects: ["var kit_on_list = false", "var toby_on_list = true", "var martha_deal = true", "agenda learn npc_znik fact_gf_egil_family_in_cellar", "rel npc_martha trust 30", "rel npc_fayne trust -40", "memory npc_fayne 위험함 셋째가 수탉 지하를 마르타에게 팔았다", "deed inform npc_bram", "note 마르타에게 수탉 지하를 팔았다 — 키트가 명단에서 빠졌다. 토비가 대신 간다"]
       - id: dont_know
         label: '"모릅니다."'
         text: |
@@ -90,7 +90,7 @@ storylets:
           마르타가 고개를 기울인다. "토마스." 그 이름을 혀끝에서 굴린다. "보리는 남작님 것이지. 좋아. 키트는 빠진다."
 
           목격자는 없다. 사실만 남는다. 열흘 뒤 방앗간 바닥이 뜯기고, 언덕의 누군가는 이번 겨울을 넘기지 못할 것이다.
-        effects: ["var kit_on_list = false", "var toby_on_list = true", "var grain_search_early = true", "rel npc_martha trust 20", "deed inform", "note 마르타에게 방앗간의 보리를 팔았다 — 키트가 빠졌다"]
+        effects: ["var kit_on_list = false", "var toby_on_list = true", "var grain_search_early = true", "rel npc_martha trust 20", "deed inform npc_thomas", "note 마르타에게 방앗간의 보리를 팔았다 — 키트가 빠졌다"]
       - id: mem_liz
         label: '리즈 이야기를 꺼낸다'
         needs_memory: fact:fact_gf_martha_swapped_list
@@ -352,7 +352,7 @@ storylets:
         label: 늑대굴로 안내한다
         text: |
           가시덤불 앞. 개들이 조용해진다. 덤불이 갈라진다. 창끝. 동상으로 반쪽이 검은 얼굴. "누구 소유냐. 누구를 데려왔냐."
-        effects: ["die_if 0.55 spear 늑대굴 입구에서 시그리드의 창에", "var fugitives_caught += 19", "deed betray", "note 사냥대를 늑대굴로 안내했다"]
+        effects: ["die_if 0.55 spear 늑대굴 입구에서 시그리드의 창에", "var fugitives_caught += 19", "deed betray npc_sigrid", "note 사냥대를 늑대굴로 안내했다"]
       - id: misdirect
         label: 엉뚱한 골짜기로 이끈다
         check: {skill: 기만, D: 50}

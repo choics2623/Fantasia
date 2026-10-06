@@ -215,7 +215,7 @@ function asleep(w, t) {
 }
 function bodiesHere(g) { return g.L.bodies.filter((b) => b.at === g.at && !b.removed); }
 function worn(g, n) { return [...g.L.items.values()].filter((i) => i.owner === n && i.worn); }
-const hasTag = (g, t) => mine(g).some((i) => i.tags?.includes(t));
+const hasTag = (g, t) => mine(g).some((i) => i.tags?.includes(t)) || (t === "광원" && g.P.fireAt != null && g.t - g.P.fireAt <= 60);
 // 몸의 자리 (02 §2): 손·허리는 보이고, 부츠·소매는 한 칸씩 숨기고, 품은 옷 안
 const SLOTS = { 손: { seen: true }, 허리: { seen: true }, 품: { seen: false }, 부츠: { seen: false, one: true, hide: true }, 소매: { seen: false, one: true, hide: true } };
 // NPC 인벤토리의 자리 이름(허리띠·목·손가락…)도 받아 다섯 자리로 접는다
@@ -367,6 +367,11 @@ function rawOptions(g) {
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
+  // 숨긴 곳: 키트를 늑대굴로 (밤에, 같이 있을 때) · 숨긴 곳에 먹을 것을 두고 간다
+  if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && !g.hide && knowsFact(g, "fact_gf_wolf_den")) o.push({ id: "hide_kit", kind: "scene", label: "키트를 데리고 늑대굴로 간다 — 숨긴다", risk: "통금 뒤의 길", minutes: 390 });
+  if (g.hide && !g.hide.lost && g.at === g.hide.at) for (const it of mine(g)) if (it.eat) o.push({ id: `stock:${it.id}`, kind: "scene", label: `${it.name}을(를) 숨은 곳에 두고 간다` });
+  // 진명 — 불 (소리 내지 않고): 한 시간 동안 빛이 된다. 몸이 값을 치른다. 본 사람이 있으면 '마녀'
+  if ((g.S.vars.true_name_fire || soul(g).trueNames?.includes("불")) && isNight(g.t) && g.P.fireAt !== Math.floor(g.t / 60)) o.push({ id: "true_fire", kind: "scene", more: true, label: "불의 이름을 속으로 부른다", risk: "본 사람이 있으면 재의 법" });
   // 이름 붙이기 / 밤의 의식
   for (const w of present(g)) if (cardOf(g, w.npc).nameable && !g.P.names?.[w.npc]) o.push({ id: `name:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 이름을 붙여 준다`, input: "npc_name", npc: w.npc });
   if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && g.P.lastRitual !== Math.floor((g.t - 6 * 60) / 1440)) {
@@ -652,6 +657,7 @@ function voiceWhen(g, c, e, opt) {
   if (k === "talk_new") return e?.id?.startsWith("talk:") && !(g.P.talkedBefore ??= new Set()).has(e.id) && (g.P.talkedBefore.add(e.id), true);
   if (k === "story") return g.story?.id === a;
   if (k === "with_killer") { const tr = g.run.carry.deaths[g.run.carry.deaths.length - 1]?.trace; return !!tr?.npc && present(g).some((w) => w.npc === tr.npc); }
+  if (k === "dark") { const d = g.deeds[g.deeds.length - 1]; return !!d && d.t === g.t && (DARK.has(d.kind) || (d.kind === "assault" && (cardOf(g, d.victim).age ?? 30) < 14)); }
   if (k === "death_place") { const d = g.run.carry.deaths[g.run.carry.deaths.length - 1]; return !!d?.at && g.at === d.at; }
   return storyWhen(g, [c]);
 }
@@ -801,6 +807,39 @@ const ACHIEVEMENTS = [
 // ── 애착 (20 §4): 플레이어가 들인 것으로 잰다 — 나눈 빵, 대신 맞은 채찍, 붙여 준 이름, 밤의 의식 ──
 function bond(g, n, d) { (g.P.bond ??= {})[n] = clamp((g.P.bond[n] || 0) + d, 0, 100); }
 const knots = (v) => (v >= 40 ? 4 : v >= 25 ? 3 : v >= 12 ? 2 : v >= 5 ? 1 : 0);
+// ── 연애의 가장 작은 판 (12 §2): 0 아는 사이 · 1 정다운 · 2 가까운 (호감40·신뢰30·함께한 일 셋) · 3 연인 · 4 끈혼례 ──
+export function romanceStage(g, n) {
+  if (g.S.vars[`${n.replace("npc_", "")}_bound`]) return 4;
+  if (g.S.vars[`${n.replace("npc_", "")}_lover`]) return 3;
+  const r = relOf(g, n), shared = (g.P.talks?.[n] || 0) + (g.P.bond?.[n] ? Math.floor(g.P.bond[n] / 5) : 0);
+  if (r.like >= 40 && r.trust >= 30 && shared >= 3) return 2;
+  return r.like >= 20 ? 1 : 0;
+}
+// ── 숨긴 곳 (09 단계 0~1): 사람을 숨기면 — 머릿수·먹을 것·드러남. 드러남이 1에 닿으면 찾아온다 ──
+function hideTick(g, day) {
+  const H = g.hide; if (!H || H.lost) return;
+  H.food = Math.max(0, H.food - 0.5 * H.people.length);
+  H.exposure = Math.max(0, H.exposure + 0.04 + 0.05 * H.people.length + (H.food <= 0 ? 0.1 : 0) - (H.food > 2 ? 0.02 : 0));
+  if (H.exposure >= 1) {
+    H.lost = true;
+    for (const n of H.people) g.W.override({ npc: n, from: day * 1440, to: null, kind: "captive", at: ROLLCALL, doing: "숨은 곳에서 끌려 나왔다" });
+    if (H.people.includes("npc_kit")) { g.S.vars.kit_on_list = true; g.S.vars.kit_found = true; }
+    g.feed.push({ kind: "echo", text: `〰 ${placeName(g, H.at)}이(가) 드러났다. 숨겨 둔 ${H.people.map((n) => displayName(g, n)).join(", ")}이(가) 끌려 나왔다.` });
+  }
+}
+// ── 작전 카드 (11 §3.2): 정보 · 접근 · 수단 — 갖춘 만큼 실행 판정이 쉬워진다 ──
+function opsOf(g) {
+  if (!knowsFact(g, "fact_gf_henrik_skims_baron")) return [];
+  const ready = [
+    { label: "정보 — 장부가 다락 마루 밑에 있다", ok: true },
+    { label: "접근 — 징세소에 들어가 본 적이 있다", ok: g.P.been.has("gf_tollhouse") },
+    { label: "수단 — 불 (양초)", ok: hasTag(g, "광원") },
+    { label: "수단 — 쇠갈고리 (마루를 뜯을 것)", ok: hasTag(g, "갈고리") },
+  ];
+  return [{ id: "op_ledger", target: "헨릭의 진짜 장부 — 징세소 다락", when: "밤, 헨릭이 없을 때 (화·금 21시엔 수탉 뒷문에 있다)", ready, done: g.storyDone.has("op_ledger") }];
+}
+// 얼룩 (13 §3.2): 어두운 행적은 영혼에 남는다 — 그 사람을 다시 보면 손이 무겁다
+const DARK = new Set(["inform", "betray", "kill_serf"]);
 // ── 연출가 (18 §3.3·§3.10): 긴장도가 낮은 날, 그 자리에 있으면 고요한 날의 소품 하나 (하루 두 번까지) ──
 function tension(g) {
   let T = 0;
@@ -856,6 +895,10 @@ function memoryInk(g) {
     const line = x.died ? "┊ 이 사람은 죽었었다. 지금은 숨을 쉰다." : told ? `┊ 이 사람이 너에게 털어놓았었다 — ${told}` : sc >= 40 ? "┊ 이 사람은 너를 깊이 믿었었다." : sc >= 20 ? "┊ 이 사람은 너에게 마음을 열었었다." : sc <= -20 ? "┊ 이 사람은 너를 미워했었다." : null;
     if (line) ink(`person:${n}`, line);
   }
+  // 얼룩: 지난 회차에 판 사람 (13 §3.2) — 재회의 무게
+  for (const st of soul(g).stains || []) if (st.victim && here.includes(st.victim)) { if (!said.has(`stain:${st.victim}`)) g.P.status.stress = clamp(g.P.status.stress + 5, 0, 100); ink(`stain:${st.victim}`, `┊ 너는 이 사람을 ${st.kind === "inform" ? "팔았었다" : st.kind === "betray" ? "사냥대에 넘겼었다" : "죽였었다"}. 이 사람은 모른다.`); }
+  // 재회 (12 §2.2): 지난 회차의 연인
+  for (const [n, stg] of Object.entries(soul(g).romance || {})) if (stg >= 3 && here.includes(n)) ink(`love:${n}`, stg >= 4 ? "┊ 이 손목에 끈이 감겨 있었다. 지금은 너를 모른다." : "┊ 이 손이 네 손을 잡았었다. 지금은 너를 모른다.");
   // 지난 회차에 이름을 붙여 준 것 (이번엔 그 이름을 모른다)
   for (const n of here) if (soul(g).names?.[n] && !g.P.names?.[n]) ink(`named:${n}`, `┊ 너는 이 개를 '${soul(g).names[n]}'(이)라 불렀다. 지금은 아무도 그렇게 부르지 않는다.`);
   // 지난 회차에 너를 쫓던 사람 (17 §3.7 휴면 숙적): 그는 모른다. 너는 안다
@@ -944,6 +987,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
   g.t = Math.min(g.story ? t : to, g.ended?.t ?? to);
   for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
     nemesisDay(g, d);
+    hideTick(g, d);
     // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
     for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
   }
@@ -1088,6 +1132,9 @@ function storyWhen(g, conds, t = g.t) {
     else if (k === "loop") r = { ">=": g.run.loop >= Number(b), "==": g.run.loop === Number(b) }[a];
     else if (k === "rel_trust") r = { ">=": relOf(g, a).trust >= Number(d), "<": relOf(g, a).trust < Number(d) }[b];
     else if (k === "trace") r = (soul(g).traces || []).some((x) => x.id === a);
+    else if (k === "with") r = present(g, t).some((w) => w.npc === a && w.kind !== "captive");
+    else if (k === "has") r = hasTag(g, a);
+    else if (k === "romance") r = { ">=": romanceStage(g, a) >= Number(d) }[b];
     else r = g.A.cond(c.replace(/^not /, ""), t);
     if (neg ? r : !r) return false;
   }
@@ -1410,6 +1457,28 @@ const DO = {
     } else res.notes.push("해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
     g.at = "gf_rooster";
   },
+  hide_kit(g, _, res) {
+    g.P.status.fatigue = clamp(g.P.status.fatigue + 25, 0, 100);
+    const day0 = g.t;
+    g.at = "hungry_hill__wolf_den"; pass(g, 390);
+    g.W.override({ npc: "npc_kit", from: day0, to: null, kind: "at", at: "hungry_hill__wolf_den", doing: "늑대굴 안쪽, 시그리드의 무리 사이에 웅크려 있다" });
+    g.hide = { at: "hungry_hill__wolf_den", people: ["npc_kit"], food: 2, exposure: 0.1, since: day0 };
+    g.S.vars.kit_on_list = false; g.S.vars.kit_hidden = true;
+    res.notes.push("키트를 늑대굴에 맡겼다. 시그리드가 한 번 쳐다보고, 고개를 끄덕인다");
+    bond(g, "npc_kit", 6);
+  },
+  stock(g, id, res) { g.L.items.delete(id); g.hide.food += 1; g.hide.exposure = Math.max(0, g.hide.exposure - 0.03); pass(g, 5); res.notes.push("숨은 곳에 먹을 것을 두었다"); },
+  true_fire(g, _, res) {
+    g.P.fireAt = g.t; g.P.status.pain = clamp(g.P.status.pain + 8, 0, 100); g.P.status.fatigue = clamp(g.P.status.fatigue + 10, 0, 100);
+    const seen = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
+    res.notes.push("손바닥 위로 불이 선다. 소리는 내지 않았다. 몸이 식는다");
+    if (seen.length) {
+      const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 3; w.since ??= g.t; w.reasons.push("마녀 — 불을 불렀다");
+      g.S.vars.witch_seen = true; for (const n of seen) addMemory(g, n, { kind: "emotion", tag: "위험함", text: "셋째의 손바닥에서 불이 섰다", salience: 5, source: "engine" });
+      const x = ((g.nem ??= {}).npc_isol ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2);
+      res.notes.push(`${seen.map((n) => displayName(g, n)).join(", ")}이(가) 보았다`);
+    }
+  },
   // 이름 붙이기 (20 §5.1): 이름 없는 것에 이름을 — 그 이름은 너만 기억한다
   name(g, n, res, opt, e) {
     const nm = String(e.text || "").trim().slice(0, 10) || "…";
@@ -1510,6 +1579,8 @@ const DO = {
     const n = g.convo?.npc;
     const knew = n && g.L.beliefs(n).some((b) => b.kind === "saw_item" && b.item === id);
     res.notes.push(knew ? `${nameOf(g, n)}의 눈빛이 달라진다` : `${g.L.items.get(id).name}을(를) 꺼내 보였다`);
+    // 작전의 열매: 헨릭에게 그의 진짜 장부를 — 스물여섯째 줄이 지워진다
+    if (n === "npc_henrik" && g.L.items.get(id)?.gid === "henrik_ledger") { mind(g, n).fear += 3; g.S.vars.kit_on_list = false; g.S.vars.henrik_blackmailed = true; res.notes.push("헨릭의 얼굴에서 핏기가 빠진다. 그가 명부를 펴고, 스물여섯째 줄을 긋는다"); g.S.threats.push({ by: n, target: "player", kind: "hunt", about: "henrik_ledger", t: g.t }); }
     if (n) endIfSpent(g, res, 1);
   },
   sell(g, id, res) {
@@ -1677,14 +1748,23 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
 }
 
 // ── 회귀 (03): 세계는 처음으로, 영혼(기억·이름·재능·아는 사람)은 남는다 ──
+// 시대의 끝 (03 §4.5·§4.6): 회귀를 놓으면, 다음 죽음이 진짜 죽음이다. 세계는 나 없이 흘러간다
+export function epilogue(g) {
+  const v = g.S.vars, out = [];
+  out.push(v.kit_sold ? "서리월 9일, 키트는 사슬 속에서 남쪽으로 갔다. 그 뒤의 일은 아무도 적지 않았다." : v.kit_hidden ? "키트는 늑대굴에서 겨울을 났다. 봄에, 시그리드의 무리와 함께 북쪽으로 갔다." : "키트는 명단에서 빠졌다. 열두 살에 글자 하나를 배웠다. 누구에게서인지 말하지 않았다.");
+  out.push(v.sara_sold ? "사라는 굶주림월 3일의 사슬에 있었다. 세렌의 어느 집에서, 그녀는 누군가의 이름을 소리 없이 불렀다." : v.sara_bound ? "사라는 손목의 끈을 풀지 않았다. 아무도 그것이 무엇인지 묻지 않았다." : "사라는 성채에서 늙었다. 우물가에서 가끔 누군가를 기다리는 얼굴을 했다.");
+  out.push((v.fugitives_caught || 0) >= 19 ? "늑대굴은 비었다. 굶주린 언덕에 연기가 오르지 않는다." : "회색여울은 그 뒤로도 저녁마다 빵 냄새가 났다. 배급 줄은 줄지 않았다.");
+  return out;
+}
 export function regressRun(g) {
   const carry = g.run.carry;
+  if (carry.final && g.ended?.kind === "dead") return null;   // 진짜 죽음 — 돌아오지 않는다
   const notebook = [...carry.notebook, ...g.P.notebook.map((n) => (n.startsWith("◇") ? n : `◇ ${g.run.loop}회차 — ${n}`))];
   const future = [...new Set([...carry.future, ...g.P.knows])];
   const record = loopRecord(g);
   const deaths = [...carry.deaths, ...(g.ended ? [{ loop: g.run.loop, ...g.ended, t: g.t, at: g.at }] : [])];
   // 이름과 재능은 영혼의 것 — 회귀해도 남는다 (WORLD_BIBLE §1.3.1, 06)
-  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null, soul: settleSoul(g, record) } });
+  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null, soul: settleSoul(g, record), final: !!g.run.release } });
 }
 // 이번 회차를 영혼에 정산한다 — 관계는 수치가 아니라 '그 회차에 어떤 사이였나'로 (03 §4.1, 08 §5)
 function settleSoul(g, record) {
@@ -1729,6 +1809,9 @@ function settleSoul(g, record) {
   S.names = { ...(S.names || {}), ...(g.P.names || {}) };
   S.days = { ...(S.days || {}), [loop]: (g.P.days || []).slice(-120) };
   for (const k of Object.keys(S.days)) if (Number(k) < loop - 3) delete S.days[k];
+  S.stains = [...(S.stains || []), ...g.deeds.filter((d) => DARK.has(d.kind)).map((d) => ({ kind: d.kind, victim: d.victim, loop }))].slice(-40);
+  S.romance = { ...(S.romance || {}) }; for (const n of ["npc_sara"]) S.romance[n] = Math.max(S.romance[n] || 0, romanceStage(g, n));
+  if (g.S.vars.true_name_fire) S.trueNames = [...new Set([...(S.trueNames || []), "불"])];
   S.memUsed ||= {};
   for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);
@@ -1751,6 +1834,7 @@ export function loopRecord(g) {
     learned: learned.length, keyFacts: learned.slice(-2).map((f) => g.content.facts[f]?.text).filter(Boolean),
     leftBehind: moved, coin: g.S.purse.player, deeds: g.deeds.map((d) => d.kind).slice(-3),
     goals: goals(g).map((x) => `${x.who}: ${x.what}`),
+    stains: g.deeds.filter((d) => DARK.has(d.kind)).length,
   };
 }
 // 원인 사슬 (14 §6.6, 16 메아리 형식 — 평가어 없이): 마지막에 한 일부터 거꾸로 셋
@@ -1798,6 +1882,7 @@ export function recordCard(r, { short = false } = {}) {
   if (r.chain) lines.push(`"${r.chain}"`);
   lines.push(`── 가져온 것 ──\n기억 ${r.learned}${r.keyFacts?.length ? ` (${r.keyFacts.map((x) => cut(x, 24)).join(" · ")})` : ""}${r.trace ? `\n죽음 — ${r.trace}` : ""}`);
   const left = (r.leftBehind || []).map((x) => `${x.name} — ${x.how === "가까워졌다" ? "너와 가까워졌다. 기억하지 못한다." : "너를 멀리했다. 그것도 잊었다."}`);
+  if (r.stains) lines.push(`── 손에 남은 것 ──\n${r.stains}번. 아무도 기억하지 못한다. 너만.`);
   lines.push(`── 두고 온 것 ──\n${[...left, `너 — 동화 ${r.coin}못${r.deeds?.length ? ", 손에 남았던 것들" : ""}. 그 밤은 이제 없다.`].join("\n")}`);
   return lines;
 }
@@ -1964,7 +2049,7 @@ export function view(g) {
     skills: Object.keys(g.P.skills).map((sk) => { const v = skill(g, sk); return { name: sk, word: skillWord(v), body: !!BODY_STAT[sk], lagging: !!BODY_STAT[sk] && rawSkill(g, sk) + talentBonus(g, sk) > bodyCap(g, sk) }; }),
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen })), bloody: !!g.P.bloody, wanted: g.S.wanted?.player?.heat || 0 },
     notebook: [...g.run.carry.notebook, ...g.P.notebook],
-    ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,
+    ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, final: !!g.run.carry.final && g.ended.kind === "dead", canRelease: g.run.loop >= 3 && !g.run.carry.final, epilogue: g.run.carry.final && g.ended.kind === "dead" ? epilogue(g) : null, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,
     story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),
     people_known: [...new Set([...g.P.met, ...Object.keys(soul(g).people)])].map((n) => ({
       id: n, name: nameOf(g, n), who: whoIs(g, n), thisLoop: g.P.met.has(n),
@@ -1979,6 +2064,9 @@ export function view(g) {
     lastHook: g.P.lastHook || null,
     lexicon: lexicon(g),
     twoDays: twoDays(g),
+    hide: g.hide ? { at: placeName(g, g.hide.at), people: g.hide.people.map((n) => displayName(g, n)), food: Math.round(g.hide.food * 10) / 10, exposure: g.hide.exposure < 0.3 ? "아직 아무도 모른다" : g.hide.exposure < 0.6 ? "냄새가 새기 시작했다" : g.hide.exposure < 1 ? "누군가 그쪽을 본다" : "드러났다", lost: !!g.hide.lost } : null,
+    ops: opsOf(g), final: !!g.run.carry.final,
+    romance: { npc_sara: romanceStage(g, "npc_sara") },
     traits: traits(g), mode: g.run.mode || "grim", echoNamed: !!g.S.vars.echo_named || (soul(g).echoNamed || false),
     talents: talentsOf(g), achievements: soul(g).achievements || [],
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),

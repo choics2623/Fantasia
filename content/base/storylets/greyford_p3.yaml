@@ -1,0 +1,82 @@
+# 큰 시스템의 가장 작은 판 (P3) — 작전 하나, 연애 하나, 진명 하나.
+storylets:
+  # ── 작전 카드 (11 §3.2): 헨릭의 진짜 장부 — 징세소 다락 마루 밑. 준비가 판정을 깎는다 ──
+  - id: op_ledger
+    trigger: {window: {from: "312-09-01 00:00", to: "313-12-30 00:00"}, at: gf_tollhouse, night: true, when: ["pknows fact_gf_henrik_skims_baron", "not with npc_henrik"]}
+    text: |
+      징세소. 아래층 장부대 위에 먼지 냄새. 다락으로 오르는 사다리가 삐걱거린다. 마루판 하나가 다른 판보다 못 자국이 많다.
+    choices:
+      - id: pry
+        label: 마루판을 뜯는다
+        check: {skill: 손재주, D: 62, warn: ["has 광원", "has 갈고리", "been gf_tollhouse"]}
+        success:
+          text: |
+            판이 소리 없이 들린다. 기름종이에 싼 장부. 첫 장의 숫자 — 사백. 남작에게 보고한 숫자는 삼백쉰둘이었다. 너는 장부를 품에 넣고, 판을 그대로 덮는다.
+          effects: ["item henrik_ledger", "learn fact_gf_godric_henrik_headcount", "note 헨릭의 진짜 장부 — 사백 명. 남작에게는 삼백쉰둘"]
+        failure:
+          text: |
+            못 하나가 비명을 지른다. 아래층에서 의자가 끌리는 소리. 너는 사다리를 버리고 창으로 뛰어내린다.
+          effects: ["pain 15", "wanted 3 징세소 다락에서 들켰다", "die_if 0.2 rope 징세소 다락에서 붙잡혀 채찍 기둥에 매달렸다"]
+      - id: leave
+        label: 손대지 않고 나간다
+        text: ""
+        effects: []
+
+  # ── 연애·가족의 가장 작은 판 (12 §2): 사라 — 가까워지면, 고백, 그리고 끈혼례 ──
+  - id: sara_confession
+    trigger: {window: {from: "312-09-05 06:00", to: "313-12-30 00:00"}, with: npc_sara, when: ["romance npc_sara >= 2", "var sara_lover != true"]}
+    text: |
+      사라가 우물 두레박줄을 감다 말고 멈춘다. 손등에 물이 흐른다. 그녀가 너를 보지 않고 말한다.
+
+      "너는 왜 자꾸 내 쪽으로 오니." 묻는 말이 아니다.
+    choices:
+      - id: hold
+        label: 젖은 손을 잡는다
+        text: |
+          그녀의 손이 차다. 빼지 않는다. 한참 뒤에 그녀가 말한다. "바보." 그리고 처음으로, 그녀가 웃는다.
+        effects: ["var sara_lover = true", "rel npc_sara like 15", "rel npc_sara trust 10", "bond npc_sara 10", "note 사라 — 우물가에서, 젖은 손"]
+      - id: not_yet
+        label: '"…물이 차가워서."'
+        text: |
+          사라가 두레박줄을 마저 감는다. "그래. 물이 차가워서." 그녀는 물동이를 들고 간다. 한 번도 돌아보지 않는다. 그래도 걸음이 느리다.
+        effects: ["rel npc_sara like 3"]
+  - id: sara_ribbon
+    trigger: {window: {from: "312-09-12 18:00", to: "313-12-30 00:00"}, at: gf_chapel, with: npc_sara, night: true, when: ["var sara_lover == true", "var sara_bound != true"]}
+    text: |
+      예배당 뒤, 납골실로 내려가는 계단 옆. 사라가 앞치마 끈 하나를 풀어 손에 든다. "노예는 혼인을 못 해. 그러니까 이건 혼인이 아니야."
+
+      그녀가 끈의 한쪽 끝을 내민다.
+    choices:
+      - id: tie
+        label: 끈을 손목에 감는다
+        text: |
+          끈이 두 손목을 한 번 돈다. 매듭은 사라가 묶는다. 서리말 매듭이다 — 그녀는 그것을 어디서 배웠을까. 오스릭 사제가 계단 위에서 그것을 보고, 못 본 척 등불을 끈다.
+
+          끈혼례. 증인은 꺼진 등불 하나.
+        effects: ["var sara_bound = true", "bond npc_sara 15", "rel npc_sara trust 15", "temper 충성 5", "note 끈혼례 — 사라와. 증인은 꺼진 등불 하나"]
+      - id: refuse
+        label: '"둘째 명단이 지나면."'
+        text: |
+          사라가 끈을 다시 앞치마에 묶는다. "그래. 둘째 명단이 지나면." 그 말을 그녀는 믿지 않는다. 너도.
+        effects: ["rel npc_sara trust -5"]
+
+  # ── 진명의 가장 작은 판 (GAME_DESIGN §5, 01 §3.5): 엘사가 가르치는 낱말 하나 ──
+  - id: elsa_word
+    trigger: {window: {from: "312-09-02 06:00", to: "313-12-30 00:00"}, at: gf_elsa_hut, with: npc_elsa, when: ["rel_trust npc_elsa >= 40"]}
+    text: |
+      엘사가 솥을 들어 올린다. 솥 밑 흙 속에서 뼈판 하나. 긁힌 금이 셋.
+
+      "이건 글자가 아니다. 이름이다. 불의 이름. 불은 자기 이름을 부르는 자를 태우지 않는다 — 대신 다른 것을 태우지. 네 체온이라든가."
+    choices:
+      - id: learn
+        label: 그 이름을 따라 한다
+        text: |
+          혀끝이 뜨겁다. 엘사가 네 입을 손으로 막는다. "소리 내지 마라. 속으로. 이 이름을 아는 인간은 재의 법으로 탄다."
+
+          그 금 셋이 눈 안쪽에 남는다. 회귀해도 지워지지 않을 것 같다.
+        effects: ["var true_name_fire = true", "note 진명 — 불. 엘사의 뼈판. 소리 내지 말 것", "rel npc_elsa trust 5"]
+      - id: refuse
+        label: 고개를 젓는다
+        text: |
+          "현명하구나." 엘사가 뼈판을 다시 묻는다. "아니면 겁쟁이거나. 둘은 자주 같은 얼굴이지."
+        effects: []

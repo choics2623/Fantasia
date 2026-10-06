@@ -9,3 +9,8 @@
   truth: true
   danger: 1
   names: []
+- id: fact_op_kit_line
+  text: "키트가 1차 매각 명단(서리월 9일 호송) 스물여섯째 줄에 있다 — 사라의 귓속말. 헨릭이 키트의 정수리를 짚으며 쇳소리 같은 말을 했다: '하르벡'"
+  truth: true
+  danger: 2
+  names: []

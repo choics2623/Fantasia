@@ -177,7 +177,13 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     },
     memo(npc, text) { g.run.memos = { ...(g.run.memos || {}), [npc]: String(text || "").slice(0, 200) }; save(); return { ok: true }; },
     act: (input, o) => turn(input, o),
-    async regress(o) { g = G.boot(content, G.regressRun(g)); transcript = []; save(); return turn(null, o); },
+    async regress(o) {
+      const next = G.regressRun(g);
+      if (!next) return { epilogue: G.epilogue(g), view: G.view(g), choices: [], beats: [] };   // 진짜 죽음 — 시대가 끝난다
+      g = G.boot(content, next); transcript = []; save(); return turn(null, o);
+    },
+    // 회귀를 놓는다 (03 §4.6): 다음 회차가 마지막 — 그 회차의 죽음은 돌아오지 않는다
+    release() { g.run.release = true; save(); return { ok: true }; },
     async newGame(seed, o, mode = "grim") { g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode }); transcript = []; save(); return turn(null, o); },
     // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
     async rewind(o) {

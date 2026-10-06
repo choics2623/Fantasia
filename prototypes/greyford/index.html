@@ -145,6 +145,8 @@ button.ui:hover { border-color: var(--gold); }
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
   <h2 data-sec="secNotes" id="notesH">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
   <h2 id="oathH" hidden>맹세</h2><ul id="oaths" hidden></ul>
+  <h2 id="hideH" hidden>숨긴 곳</h2><div id="hide" hidden class="book"></div>
+  <h2 id="opsH" hidden>작전</h2><div id="ops" hidden class="book"></div>
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
   <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
   <h2 id="twoH" hidden>두 겹의 날</h2><div id="two" hidden class="book"></div>
@@ -254,6 +256,10 @@ function render(d, loading = false) {
       + (Object.keys(R.views || {}).length ? `<li>${Object.entries(R.views).map(([k, x]) => `${esc(k)} ${x > 0 ? "+" : ""}${x}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
     $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
     $("skills").dataset.traits = (v.traits || []).join(", ");
+    const HD = v.hide; $("hide").hidden = $("hideH").hidden = !HD;
+    if (HD) $("hide").innerHTML = `${esc(HD.at)} — ${esc(HD.people.join(", "))}<br>먹을 것: ${HD.food}일치 · ${esc(HD.exposure)}`;
+    const OP = v.ops || []; $("ops").hidden = $("opsH").hidden = !OP.length;
+    $("ops").innerHTML = OP.map((o) => `<div><b>${esc(o.target)}</b>${o.done ? " — 끝났다" : ""}<br><span style="color:var(--ink-faint)">${esc(o.when)}</span>${o.ready.map((r) => `<br>${r.ok ? "✓" : "✗"} ${esc(r.label)}`).join("")}</div>`).join("");
     const T2 = v.twoDays; $("two").hidden = $("twoH").hidden = !T2?.then;
     if (T2?.then) $("two").innerHTML = `<div style="color:var(--ink-faint)">┊ 지난 회차의 이 날 (${esc(T2.then.date)}) — ${esc(T2.then.at)}${T2.then.notes.map((n) => `<br>┊ ${esc(n)}`).join("")}</div>${T2.now ? `<div style="margin-top:6px">이번 — ${esc(T2.now.at)}${T2.now.notes.map((n) => `<br>· ${esc(n)}`).join("")}</div>` : `<div style="margin-top:6px">이번 — 아직 하루가 끝나지 않았다</div>`}`;
     $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
@@ -329,16 +335,36 @@ async function deathSequence(E) {
   const veil = $("veil");
   buzz(HAPTIC["H1" + (E.trace?.id || "")] || HAPTIC.H1);
   document.body.classList.add("ashing");
-  const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
   await nap(2500);
   veil.innerHTML = ""; veil.hidden = false;
   const rec = document.createElement("div"); rec.className = "rec";
   const lines = E.loop === 1 ? E.record.short : E.record.full;
   rec.innerHTML = lines.map((x) => `<p>${esc(x)}</p>`).join(""); veil.appendChild(rec);
-  if (E.loop === 1) await tapOr(veil, 4500); else { await nap(2000); const h = document.createElement("div"); h.className = "hint"; h.textContent = "닫는다"; veil.appendChild(h); await tapOr(veil); h.remove(); }
+  if (E.loop === 1) await tapOr(veil, 4500);
+  else {
+    await nap(2000);
+    // 회귀를 놓는다 (03 §4.6): 두 번 눌러야 한다 — 다음 회차의 죽음은 돌아오지 않는다
+    if (E.canRelease) {
+      const b = document.createElement("button"); b.className = "ui"; b.style.marginTop = "18px"; b.textContent = "회귀를 놓는다";
+      b.onclick = async (ev) => { ev.stopPropagation(); if (b.dataset.armed) { await fetch("/api/release", { method: "POST" }); b.textContent = "놓았다. 다음 저녁이 마지막이다."; b.disabled = true; } else { b.dataset.armed = "1"; b.textContent = "정말로? 다음 죽음은 돌아오지 않는다 — 한 번 더 누르면"; } };
+      rec.appendChild(b);
+    }
+    const h = document.createElement("div"); h.className = "hint"; h.textContent = "닫는다"; veil.appendChild(h); await tapOr(veil); h.remove();
+  }
+  const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
   rec.classList.add("ash"); await nap(650); rec.remove();
   const fold = document.createElement("div"); fold.className = "fold"; veil.appendChild(fold);
   let gap = E.loop === 1 ? 220 : 120;
+  // 진짜 죽음: 접힘이 시작했다가 멈춘다. 날짜가 두세 줄 오르다 재가 된다. 빵 냄새는 오지 않는다
+  if (E.final) {
+    for (const dt of E.record.rewind.slice(0, 3)) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); buzz(HAPTIC.H2); await nap(260); }
+    await nap(700); fold.classList.add("ash"); await nap(900); fold.remove(); await nap(1500);
+    const d = await next;
+    const ep = document.createElement("div"); ep.className = "rec"; ep.innerHTML = (d.epilogue || E.epilogue || []).map((x) => `<p>${esc(x)}</p>`).join("") + `<p style="margin-top:22px;color:#5e574c">시대가 끝났다.</p>`;
+    const nb = document.createElement("button"); nb.className = "ui"; nb.textContent = "새 시대 — 새 판"; nb.onclick = async () => { veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", {})); };
+    veil.appendChild(ep); veil.appendChild(nb); veil.onclick = null;
+    return;
+  }
   for (const dt of E.record.rewind) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); while (fold.children.length > 9) fold.firstChild.remove(); buzz(HAPTIC.H2); await nap(gap); gap = Math.max(40, gap * 0.86); }
   await nap(500); fold.classList.add("ash"); await nap(400); fold.remove();
   await nap(1500);

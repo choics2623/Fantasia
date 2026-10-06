@@ -62,7 +62,7 @@ storylets:
       처마에서 손 하나가 내려온다. 손바닥이 위로. 손목에 해진 부적 끈. 페인이다, 마을의 지붕을 타고 다니는 고아. "뭘 알고 싶은데? 대신 뭘 줄 건데?"
 
       솥 옆 배식대 모서리에 칼자국이 있다. 금이 아니다. 글자다. 레이번. 셋째 해. 너는 글을 모른다. 그런데 읽었다. 눈가로 잿빛 고리가 스치고 사라진다.
-    effects: ["learn fact_gb_kit_on_first_list", "var goal_kit_known = true", "note 사라의 귓속말 — 키트가 첫 매각 명단 스물여섯째 줄에 있다"]
+    effects: ["learn fact_op_kit_line", "var goal_kit_known = true", "note 사라의 귓속말 — 키트가 첫 매각 명단 스물여섯째 줄에 있다"]
     choices:
       - id: ask_sara
         label: 사라를 쫓아가 명단을 더 묻는다

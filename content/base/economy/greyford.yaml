@@ -14,6 +14,7 @@ goods:
   candle:       {name: 수지 양초, price: 2, tags: [광원]}
   knife:        {name: 녹슨 접이칼, price: 72, tags: [무기, 날붙이, 숨길수있음], illegal: true, visibility: 숨김}
   light_letter: {name: 빛의 서신 조각, price: 0, tags: [문서, 금서, 숨길수있음], illegal: true, visibility: 숨김}
+  henrik_ledger: {name: 헨릭의 진짜 장부, price: 0, tags: [문서, 숨길수있음], illegal: true}
   forged_pass:  {name: 위조 통행증, price: 120, tags: [문서, 통행증, 위조], illegal: true, visibility: 숨김}
 shops:
   npc_bram:  {sells: [porridge, bread, beer], note: "죽은 배급이지만 한 그릇 더는 값을 받는다 — 지하실 손님들 몫이 모자라서"}
