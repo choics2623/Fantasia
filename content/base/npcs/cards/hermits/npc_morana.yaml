@@ -89,7 +89,7 @@ relations:
   - {to: npc_beatrix, type: 피 한 모금을 청한 장사치, like: -30, trust: -20, visibility: 일방, memo: null, words: "허물 속에서 죽어 가는 왕관 뱀. 피 한 모금이면 일곱째 탈피를 할 수 있다고 믿는다"}
   - {to: npc_lupo, type: 물의 이름을 아는 라미아, like: 30, trust: 30, visibility: 비밀, memo: 시험관, words: "인간 입에서 물의 이름이 나올 수 없다는 걸 아는 하인. 그가 판정한다"}
   - {to: npc_sara, type: 시험대에 오를 아이, like: 10, trust: 0, visibility: 일방, memo: null, words: "아닌 아이. 아닌 걸 알게 되기 전에 피를 흘린다"}
-  - {to: npc_mordecai, type: 도둑, like: -100, trust: -100, visibility: 공개, memo: 3,200년의 원한, words: "피를 훔친 자. 그가 너를 먼저 찾으면 도둑질이 끝난다 — 완성으로"}
+  - {to: npc_mordecai, type: 도둑, like: -100, trust: -100, visibility: 공개, memo: "3,200년의 원한", words: "피를 훔친 자. 그가 너를 먼저 찾으면 도둑질이 끝난다 — 완성으로"}
   - {to: npc_severo, type: 값을 골라 오는 손, like: -20, trust: -10, visibility: 일방, memo: null, words: "누구에게 무엇을 파는지 모르고 파는 장사치"}
 toward_player: "값을 먼저 말한다. 냄새를 맡는다 — 녹테른이면 물러나고, 젖은 재면 다가온다"
 persuade:

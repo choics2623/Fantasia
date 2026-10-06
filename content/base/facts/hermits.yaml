@@ -1,0 +1,62 @@
+# 은자·신설 결사의 사실 (docs/world/SECRETS_AND_HERMITS.md, factions fac_seril_silence 등)
+# id 규칙: fact_hm_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+- id: fact_hm_seril_breath_crystal
+  text: "새벽가지 금고에 시조 세릴이 신살 때 기록한 에오르의 마지막 숨, '숨 수정'이 있다. 그 숨은 인간 쪽으로 나갔다"
+  truth: true
+  danger: 4
+  names: [세릴, 아에릭, 아에린]
+- id: fact_hm_ash_witnesses_oath
+  text: "대붕괴를 본 포위군 생존자 여섯(순혈 용인 셋, 왕관 와이번 둘, 진룡 그로마크)은 '용황의 불이 살아 있는 동안' 침묵하기로 서약했고, 그날의 조각을 나눠 가졌다"
+  truth: true
+  danger: 5
+  names: [아르벨, 엘렌드 흰목, 이르마스 긴그림자, 그로마크]
+- id: fact_hm_emyn_witnessed_godkill
+  text: "드라우르 에뮌 마지막빛은 SK 0 사슬에 묶인 채 신살을 끝까지 보았다 — 열한 종족의 몫, 목소리가 이름들로 깨지는 것, 마지막 숨이 인간 쪽으로 간 것, 그리고 페이의 웃음"
+  truth: true
+  danger: 4
+  names: [에뮌]
+- id: fact_hm_gromak_envoy_bargain
+  text: "대붕괴 전날 밤 그로마크는 아스테리아의 인간 사절과 서고를 태우지 않고 자기에게 넘기는 대가로 남문을 하루 늦게 치기로 거래했다. 사절은 돌아오지 않았다"
+  truth: true
+  danger: 2
+  names: [그로마크]
+- id: fact_hm_frozen_giant_eye_turns
+  text: "서리 어머니 빙하 사당에 얼어 있는 거인(에오르를 붙잡았던 흐림 대주먹)의 눈이 AS 311부터 남쪽 카즈둠 쪽으로 조금씩 돌아간다"
+  truth: true
+  danger: 2
+  names: [헤르야, 흐림 대주먹]
+- id: fact_hm_iserda_return_name
+  text: "이세르다 열한째밤은 굶주린 지 90일째 밤 피 속의 목소리에 잊었던 이름 하나로 답해 이성을 되찾았다. 그 이름은 그녀만 안다"
+  truth: true
+  danger: 3
+  names: [이세르다]
+- id: fact_hm_korak_double_night
+  text: "코라크의 하늘 기록에는 같은 밤을 두 번 적은 듯한 자리가 있고, 그 자리는 역행하는 별이 물러난 칸과 맞는다"
+  truth: true
+  danger: 3
+  names: [코라크]
+- id: fact_hm_morana_saw_egg
+  text: "모라나 일곱허물은 AS 140 도둑맞은 알이 시렌나 상가 창고에서 깊은 바다 사원 지하로 옮겨지던 날을 보았다"
+  truth: true
+  danger: 3
+  names: [모라나, 시렌나]
+- id: fact_hm_trace_keepers_five_ends
+  text: "흔적지기는 앞선 잔향자 다섯의 끝난 자리(정원의 재 구덩이, 방패줄 들판, 멈춘 광장, 붉은 길, 첫 침묵의 바위)와 흔적을 지키고, 그 길을 「다섯 끝의 노래」로 외운다"
+  truth: true
+  danger: 3
+  names: [오르소, 헤르야]
+- id: fact_hm_beat_ledger_pattern
+  text: "두르강 고동 장부에 따르면 고동은 아스테리온의 아홉 해와 다라의 석 달에 빨라졌다가 그들이 끊긴 날 느려졌고, AS 311에 다시 빨라졌다"
+  truth: true
+  danger: 4
+  names: [오스발]
+- id: fact_hm_owellis_first_chapter
+  text: "『빛의 말씀』 첫 장 「무혈자를 다루는 법」은 빛실 가지의 오웰리스가 썼고, 그 초안 한 장이 갈대 수도원 터 제단 돌 밑에 있다"
+  truth: true
+  danger: 4
+  names: [오웰리스]
+- id: fact_hm_utgal_council_agendas
+  text: "우트갈은 13·113·213 맹약회의에 요툰의 기억돌로 앉았고, 313에 각 종족이 들고 올 안건(대숙청, 계약민 시민권, 흰 알 섭정안, 엘다르의 침묵, 요툰의 곡물)을 안다"
+  truth: true
+  danger: 3
+  names: [우트갈]

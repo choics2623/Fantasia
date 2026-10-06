@@ -85,7 +85,7 @@ hides:
     reveal_when: "신뢰 40 이상, 플레이어가 엘라스트리엘을 먼저 꺼낼 때"
     cover: "'그녀는 그날 아버지 곁에 서 있었다'까지만 말한다"
 relations:
-  - {to: npc_elastriel, type: 3,400년 전 의회의 맞은편, like: -30, trust: -50, visibility: 공개, memo: null, words: "같은 것을 보고 다른 것을 기억한 여왕. 나보다 백 해 먼저 태어났다"}
+  - {to: npc_elastriel, type: "3,400년 전 의회의 맞은편", like: -30, trust: -50, visibility: 공개, memo: null, words: "같은 것을 보고 다른 것을 기억한 여왕. 나보다 백 해 먼저 태어났다"}
   - {to: npc_seln, type: 같은 정원의 딸, like: 60, trust: 70, visibility: 공개, memo: null, words: "문 옆에서 박자를 세는 딸. 그 박자가 그날의 목소리와 같다고 한다"}
   - {to: npc_aeric, type: 침묵의 결사, like: 50, trust: 50, visibility: 비밀, memo: 실반이 잇는다, words: "별빛 가운데 처음으로 변한 자. 그도 숨 수정을 보았다"}
   - {to: npc_owellis, type: 빛실을 걸어 나온 자, like: 10, trust: 0, visibility: 일방, memo: 갈대 수도원 — 입구 하나와 가깝다, words: "첫 장을 쓴 손. 그 손이 무엇을 쓸지 아직 모른다"}
