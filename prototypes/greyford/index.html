@@ -26,16 +26,24 @@ body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bot
 .chip { border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .chip.hot { border-color: var(--rust); color: #e7b6a4; }
 .wrap { max-width: 760px; margin: 0 auto; padding: 14px 16px 40px; }
-.story p { margin: 0 0 12px; }
-.story .player { color: var(--gold); font-style: italic; }
-.story .player::before { content: "▸ "; font-style: normal; }
-.story .eng { color: var(--ink-soft); font-size: 0.94rem; }
-.story .tier { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--ink-faint); margin: -6px 0 10px; }
+/* 읽기: 한 줄 35자 안팎, 문단 사이 숨, 턴은 덩어리로 — 지난 턴은 흐리게, 지금 턴만 또렷하게 */
+.story { max-width: 640px; margin: 0 auto; font-size: 1.06rem; line-height: 1.9; word-break: keep-all; overflow-wrap: anywhere; }
+.turn { padding: 18px 0 6px; border-top: 1px solid var(--line); transition: opacity .3s; }
+.turn:first-child { border-top: 0; }
+.turn.past { opacity: .55; }
+.turn.past:hover { opacity: .9; }
+.story p { margin: 0 0 1.05em; }
+.story .player { font-family: var(--ui); font-size: .86rem; color: var(--gold); margin: 0 0 .9em; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.story .player::before { content: "▸"; }
+.story .player .tier { color: var(--ink-faint); font-size: .74rem; letter-spacing: .04em; }
+.story .eng { color: var(--ink-soft); font-size: .94rem; font-style: italic; }
 .story .live { white-space: pre-wrap; }
+@media (min-width: 700px) { .story { font-size: 1.1rem; } }
 .story hr { border: 0; border-top: 1px dashed var(--line); margin: 16px 0; }
-.people { display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.78rem; margin: 6px 0 14px; }
+.people { max-width: 640px; margin-left: auto; margin-right: auto; display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.78rem; margin: 6px 0 14px; }
 .people span { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; color: var(--ink-soft); }
 .people b { color: var(--ink); font-weight: 500; }
+#panel { max-width: 640px; margin: 0 auto; }
 .group h3 { font-family: var(--ui); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px; }
 .choices { display: grid; gap: 8px; }
 .choice { text-align: left; font-family: var(--body); font-size: 1rem; line-height: 1.5; padding: 10px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); cursor: pointer; display: grid; gap: 3px; }
@@ -94,7 +102,9 @@ let busy = false, last = null;
 
 async function call(path, body) {
   busy = true; render(last, true);
-  const live = document.createElement("p"); live.className = "live"; $("story").appendChild(live);
+  const turn = currentTurn || newTurn();
+  const live = document.createElement("p"); live.className = "live"; turn.appendChild(live);
+  let scrolled = false;
   try {
     const r = await fetch(path, { method: "POST", headers: { "content-type": "application/json", accept: "text/event-stream" }, body: JSON.stringify(body || {}) });
     if (!r.ok) throw new Error(await r.text());
@@ -105,7 +115,7 @@ async function call(path, body) {
       let i; while ((i = buf.indexOf("\n\n")) >= 0) {
         const chunk = buf.slice(0, i); buf = buf.slice(i + 2);
         const ev = /event: (\w+)/.exec(chunk)?.[1], data = JSON.parse(/data: ([\s\S]*)/.exec(chunk)?.[1] || "null");
-        if (ev === "text") { live.textContent = data; window.scrollTo(0, document.body.scrollHeight); }
+        if (ev === "text") { live.textContent = data; if (!scrolled) { scrolled = true; turn.scrollIntoView({ behavior: "smooth", block: "start" }); } }
         if (ev === "done") out = data;
       }
     }
@@ -115,13 +125,22 @@ async function call(path, body) {
   finally { busy = false; }
 }
 
-function addBeats(d) {
-  const s = $("story");
-  if (d.result && d.result.skill) { const t = document.createElement("div"); t.className = "tier"; t.innerHTML = `${esc(d.result.skill)} — <b>${esc(d.result.tier)}</b>`; s.appendChild(t); }
-  for (const b of d.beats || []) { const p = document.createElement("p"); if (d.engineOnly) p.className = "eng"; p.textContent = b; s.appendChild(p); }
-  while (s.children.length > 120) s.removeChild(s.firstChild);
+// 한 턴 = 한 덩어리: 내가 고른 것(+판정) → 서술 문단들. 새 턴이 오면 지난 턴은 흐려진다
+let currentTurn = null;
+function newTurn() {
+  for (const t of $("story").querySelectorAll(".turn:not(.past)")) t.classList.add("past");
+  const t = document.createElement("section"); t.className = "turn"; $("story").appendChild(t);
+  while ($("story").children.length > 40) $("story").removeChild($("story").firstChild);
+  return (currentTurn = t);
 }
-function say(text) { const p = document.createElement("p"); p.className = "player"; p.textContent = text; $("story").appendChild(p); }
+function addBeats(d) {
+  const t = currentTurn || newTurn();
+  const pl = t.querySelector(".player");
+  if (pl && d.result && d.result.skill) { const tg = document.createElement("span"); tg.className = "tier"; tg.textContent = `${d.result.skill} — ${d.result.tier}`; pl.appendChild(tg); }
+  for (const b of d.beats || []) { const p = document.createElement("p"); if (d.engineOnly) p.className = "eng"; p.textContent = b; t.appendChild(p); }
+  currentTurn = null;
+}
+function say(text) { const t = newTurn(); const p = document.createElement("p"); p.className = "player"; const sp = document.createElement("span"); sp.textContent = text; p.appendChild(sp); t.appendChild(p); }
 
 function render(d, loading = false) {
   $("busy").textContent = loading ? "잿빛 실이 이어지는 중" : "";
@@ -151,7 +170,7 @@ function render(d, loading = false) {
   }
   if (v?.ended) {
     panel.innerHTML = `<div class="ended"><p>${esc(v.ended.why)}</p><div class="sub">세계는 처음으로 돌아간다. 당신이 알게 된 것과 수첩만 남는다.</div><button class="ui" id="reg">눈을 감는다 — 낙엽월 1일 저녁으로</button></div>`;
-    $("reg").onclick = async () => { $("story").innerHTML = "<hr>"; show(await call("/api/regress")); };
+    $("reg").onclick = async () => { $("story").innerHTML = ""; currentTurn = null; currentTurn = null; show(await call("/api/regress")); };
     return;
   }
   const ch = d.choices || [];
@@ -165,7 +184,11 @@ function render(d, loading = false) {
   panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector("span").textContent })));
   const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
 }
-function show(d) { last = d; if (!d.broken) addBeats(d); render(d); window.scrollTo(0, document.body.scrollHeight); }
+function show(d) {
+  last = d;
+  if (!d.broken) addBeats(d); else currentTurn = null;
+  render(d);
+}
 async function act(input, retry = false) {
   if (busy) return;
   if (!retry) say(input.free || input.text || input.id);
@@ -173,11 +196,11 @@ async function act(input, retry = false) {
 }
 async function start() { show(await call("/api/state")); }
 
-$("menuBtn").onclick = async () => { $("drawer").hidden = false; const r = await fetch("/api/saves", { method: "POST" }).then((x) => x.json()); $("slots").innerHTML = r.saves.map((s) => `<button class="ui" data-s="${esc(s)}">불러오기: ${esc(s)}</button>`).join(""); $("slots").querySelectorAll("button").forEach((b) => (b.onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = "<hr>"; show(await call("/api/load", { name: b.dataset.s })); })); };
+$("menuBtn").onclick = async () => { $("drawer").hidden = false; const r = await fetch("/api/saves", { method: "POST" }).then((x) => x.json()); $("slots").innerHTML = r.saves.map((s) => `<button class="ui" data-s="${esc(s)}">불러오기: ${esc(s)}</button>`).join(""); $("slots").querySelectorAll("button").forEach((b) => (b.onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; currentTurn = null; show(await call("/api/load", { name: b.dataset.s })); })); };
 $("closeDrawer").onclick = () => ($("drawer").hidden = true);
 $("drawer").onclick = (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; };
 $("saveBtn").onclick = async () => { await fetch("/api/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: $("slotName").value }) }); $("menuBtn").onclick(); };
-$("newBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; show(await call("/api/new", {})); };
+$("newBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", {})); };
 start();
 </script>
 </body>

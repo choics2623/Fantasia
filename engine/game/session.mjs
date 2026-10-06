@@ -9,7 +9,8 @@ import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInte
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 
-export function createSession(content, provider, { run = null, onSave = null, recorder = provider, mockRecords = null } = {}) {
+// provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
+export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());
   let transcript = g.run.transcript || [];
   const save = () => { g.run.transcript = transcript.slice(-40); onSave?.(g.run); };
@@ -70,8 +71,12 @@ export function createSession(content, provider, { run = null, onSave = null, re
     return b;
   }
 
+  let lastScene = null;
   async function narrate(res, opts, { onText, free, memories }) {
-    const prompt = turnPrompt(g, res, opts, { transcript, memories });
+    const sceneKey = `${g.at}|${g.convo?.npc || ""}`;
+    const sceneNew = !res || lastScene !== sceneKey && !(res.convoEnded && lastScene?.startsWith(g.at)) || res.kind === "move";
+    const prompt = turnPrompt(g, res, opts, { transcript, memories, sceneNew: sceneNew && !g.convo });
+    lastScene = sceneKey;
     let lastProblems = [];
     for (let attempt = 1; attempt <= 2; attempt++) {
       let streamed = "";
@@ -102,7 +107,7 @@ export function createSession(content, provider, { run = null, onSave = null, re
         let id = input.id, tags = [], text = input.text || null;
         const before = G.options(g);
         if (input.free) {
-          const out = await provider.complete(SYSTEM, interpretPrompt(g, input.free, before), { mock: () => JSON.stringify({ id: before.find((o) => o.id === "small_talk")?.id || before[0].id, tags: [] }) });
+          const out = await fast.complete(SYSTEM, interpretPrompt(g, input.free, before), { mock: () => JSON.stringify({ id: before.find((o) => o.id === "small_talk")?.id || before[0].id, tags: [] }) });
           const it = parseInterpret(g, out, before);
           if (!it) throw new Error("자유 입력을 해석하지 못했다");
           id = it.id; tags = it.tags; text = input.free; debug.push({ kind: "interpret", ...it });

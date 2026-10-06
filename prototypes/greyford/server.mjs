@@ -28,10 +28,12 @@ mkdirSync(SAVES, { recursive: true });
 // 콘텐츠 묶음이 없거나 낡았으면 만든다
 if (!existsSync(join(ROOT, "content/build/game.json"))) execFileSync("python3", [join(ROOT, "tools/build_content.py")], { stdio: "inherit" });
 const content = loadContent();
-const provider = createProvider();
+// 서술은 좋은 모델(기본 sonnet — 인물의 말투 카드를 따라 쓰는 힘이 다르다), 해석·기록관은 빠른 모델(기본 haiku)
+const provider = createProvider({ model: process.env.LLM_MODEL || (process.env.LLM_PROVIDER === "api" ? "claude-sonnet-5-5" : "sonnet") });
+const fast = createProvider({ model: process.env.LLM_FAST_MODEL || (process.env.LLM_PROVIDER === "api" ? "claude-haiku-4-5" : "haiku") });
 const slot = (name) => join(SAVES, `${String(name || "auto").replace(/[^\w가-힣-]/g, "")}.json`);
-const autosave = (run) => writeFileSync(slot("auto"), JSON.stringify(run));
-const session = createSession(content, provider, { run: existsSync(slot("auto")) ? JSON.parse(readFileSync(slot("auto"), "utf8")) : null, onSave: autosave });
+const autosave = (run) => { mkdirSync(SAVES, { recursive: true }); writeFileSync(slot("auto"), JSON.stringify(run)); };   // 저장 폴더가 지워져도 다시 만든다
+const session = createSession(content, provider, { fast, run: existsSync(slot("auto")) ? JSON.parse(readFileSync(slot("auto"), "utf8")) : null, onSave: autosave });
 
 function allowed(req, url) {
   const ip = req.socket.remoteAddress || "";
@@ -84,5 +86,5 @@ server.listen(PORT, HOST, () => {
   console.log(`회색여울 → 이 PC: http://localhost:${PORT}`);
   if (HOST === "0.0.0.0") for (const ip of Object.values(networkInterfaces()).flat().filter((i) => i && i.family === "IPv4" && !i.internal).map((i) => i.address))
     console.log(`         → 폰(같은 와이파이): http://${ip}:${PORT}/?key=${ACCESS_KEY}`);
-  console.log(`LLM: ${provider.kind}${provider.kind === "mock" ? " — 테스트 전용 가짜" : ` (모델 ${provider.model})`} · 저장: ${SAVES}`);
+  console.log(`LLM: ${provider.kind}${provider.kind === "mock" ? " — 테스트 전용 가짜" : ` (서술 ${provider.model} · 해석·기록관 ${fast.model})`} · 저장: ${SAVES}`);
 });

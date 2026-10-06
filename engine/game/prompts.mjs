@@ -5,15 +5,31 @@
 import { view, knownNames, moodWords, IMPRESSION_TAGS } from "./game.mjs";
 import { josa } from "../sim/text.mjs";
 
-export const SYSTEM = `너는 한국어 그림다크 판타지 텍스트 게임의 문장 담당이다. 규칙 엔진이 이미 모든 결과를 정했다. 너는 그것을 문장으로만 쓴다.
-세계: 신을 죽인 고대 종족들이 인간을 노예로 부리는 대륙. 붕괴력 312년. 주인공이 매인 곳은 회색여울 — 용인 남작 영지의 인간 농노 마을. 지금 있는 곳은 장면 자료에 있다.
-주인공: '셋째'라 불리는 열일곱 살 인간 농노. 등에 채찍 자국. 늘 배가 고프다. 한 번 죽었다가 이 가을 첫날 저녁으로 돌아왔다(회귀) — 아무도 모른다.
-문체: 2인칭. 서술에서 주인공은 언제나 "당신". 짧은 문장. 한 박자 150자 안팎, 박자 1~3개. 감정 형용사보다 몸과 사물. 설교하지 않는다. 현대어·외래어 금지.
+export const SYSTEM = `너는 한국어 그림다크 판타지 소설을 쓰는 작가다. 이 소설은 독자가 고르는 대로 흘러가고, 무엇이 일어나는지는 규칙 엔진이 이미 정했다. 너는 그 일을 **읽히는 글**로 쓴다.
+
+세계: 신을 죽인 고대 종족들이 인간을 노예로 부리는 대륙. 붕괴력 312년. 주인공이 매인 곳은 회색여울 — 용인 남작 영지의 인간 농노 마을.
+주인공: 셋째라 불리는 열일곱 살 농노. 등에 채찍 자국, 늘 배가 고프다. 한 번 죽었다가 이 가을 첫날 저녁으로 돌아왔다 — 아무도 모른다. 서술에서는 언제나 "당신".
+고유명사: '절름발이 수탉'은 배급 막사의 이름이다(닭이 아니다). '수탉'이라고만 하면 그 막사.
+
+어떻게 쓰나:
+- **이어 쓴다.** 바로 앞의 서술에서 그대로 이어진다. 이미 쓴 배경(비, 불, 냄새, 다른 사람의 소리)은 되풀이하지 않는다. 배경은 장면이 바뀔 때만 한 번 깐다.
+- **문단으로 쓴다.** 2~3문단, 문단마다 2~5문장. 몸짓과 대사는 한 문단 안에 함께 둔다 — 대사만 한 줄로 따로 떼지 않는다. 문장 길이에 리듬을 둔다: 짧은 문장 사이에 긴 문장 하나.
+- **사람을 쓴다.** 대화 중이면 상대의 반응이 중심이다: 무엇을 말하고, 무엇을 말하지 않고, 손이 무엇을 하는가. 상대의 말투 카드와 견본 대사의 결을 따른다.
+- **감정은 이름 붙이지 않는다.** 두려움 대신 멈춘 손, 슬픔 대신 세는 손가락. 비유는 이 세계의 사물로만, 드물게.
+- 설교하지 않는다. 현대어·외래어를 쓰지 않는다.
+
+이 결로 쓴다 (견본 — 그대로 베끼지 말 것):
+<견본>
+당신 앞의 노인이 그릇을 내밀자 브람은 국자를 솥 바닥까지 넣었다가, 반 국자를 슬쩍 덜어 노인 그릇에 더 붓는다. 노인은 고개를 숙인다. 줄에 선 누구도 그것을 보지 못한 척한다.
+
+당신 차례에서 국자가 멈춘다. "죽은 한 그릇이다." 브람은 당신 얼굴을 오래 보지 않는다. 대신 그릇을 쥔 당신 손등의 갈라진 자리를 본다. 국자가 다시 솥으로 들어간다. 이번에는 바닥까지.
+</견본>
+
 절대 규칙:
 - 엔진의 결과를 바꾸지 않는다. 실패면 상대는 넘어오지 않는다. 지시에 없는 비밀을 밝히지 않는다. 숨긴 것은 '얼버무림' 지시대로만.
-- 확률·성공 가능성을 암시하지 않는다. 숫자(호감·신뢰)를 말하지 않는다.
+- 확률·성공 가능성, 숫자(호감·신뢰)를 말하지 않는다.
 - 장면에 없는 인물, 주어진 자료에 없는 고유명사를 만들지 않는다.
-- 형식을 지킨다: <서술>서술 박자들(박자 사이는 빈 줄)</서술> 그다음 <선택지>JSON 하나</선택지>. 그 밖의 말은 쓰지 않는다.`;
+- 형식: <서술>문단들(문단 사이는 빈 줄)</서술> 그다음 <선택지>JSON 하나</선택지>. 그 밖의 말은 쓰지 않는다.`;
 
 const PHRASED = (o) => o.kind === "talk" || o.id.startsWith("talk:") || o.id.startsWith("attack:");
 
@@ -67,22 +83,23 @@ function outcomeLines(g, res) {
   return L.map(josa);
 }
 
-export function turnPrompt(g, res, opts, { transcript = [], memories = false } = {}) {
+export function turnPrompt(g, res, opts, { transcript = [], memories = false, sceneNew = false } = {}) {
   const v = view(g);
   const scene = [
     `[지금] ${v.time}, ${v.place.name}. ${v.night ? "밤." : ""} ${v.rain ? "비." : ""} 배고픔 ${v.player.hunger}/4, 아픔 ${v.player.pain}/100.`,
-    `[이 자리에 있는 사람]\n${v.people.map((p) => `- ${p.name}: ${p.doing}${p.asleep ? " (잠듦)" : ""}${p.wears.length ? ` · 지닌 것: ${p.wears.join(", ")}` : ""} · ${p.mood}`).join("\n") || "- 아무도 없다"}`,
+    `[이 자리에 있는 사람]\n${v.people.map((p) => `- ${p.name}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${p.wears.length ? ` · 지닌 것: ${p.wears.join(", ")}` : ""} · ${p.mood}`).join("\n") || "- 아무도 없다"}`,
     v.bodies.length ? `[시체] ${v.bodies.join(", ")}` : "",
   ].filter(Boolean).join("\n");
   const convoNpc = g.convo?.npc || res?.convoEnded?.npc;
   const card = convoNpc ? `[대화 상대 카드]\n${convoCard(g, convoNpc, res)}` : "";
-  const phrased = opts.filter(PHRASED).map((o) => ({ id: o.id, 행동: o.label, ...(o.risk ? { 위험: o.risk } : {}) }));
+  const phrased = opts.filter(PHRASED).map((o) => ({ id: o.id, 행동: o.label, ...(o.topic ? { 주제: o.topic } : {}), ...(o.risk ? { 위험: o.risk } : {}) }));
   const mem = memories && convoNpc ? `,\n "memories": [{"kind": "impression|emotion|promise|claim|suspicion", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "${g.content.cards[convoNpc]?.name}의 입장에서 쓴 기억 한 줄", "evidence": "대화 기록에서 그대로 옮긴 구절", "salience": "1~5"}]  ← 대화가 끝났다. 상대가 셋째에 대해 기억하게 될 미묘한 것 0~3개` : "";
   return [
     scene, card,
-    transcript.length ? `[최근 대화]\n${transcript.slice(-8).map((t) => `${t.who === "player" ? "셋째" : "서술"}: ${t.text}`).join("\n")}` : "",
+    `[장면] ${sceneNew ? "새 장면이다 — 첫 문단에 이곳과 사람들을 한 번 깔아라." : "같은 장면이 이어진다 — 배경을 다시 쓰지 말고, 바로 앞 서술에서 이어서 반응만 쓴다."}`,
+    transcript.length ? `[지금까지 (바로 앞에서 이어 쓴다)]\n${transcript.slice(-10).map((t) => `${t.who === "player" ? "▸ 셋째가 고른 것" : "서술"}: ${t.text}`).join("\n")}` : "",
     `[이번 박자 — 엔진이 정한 결과]\n${outcomeLines(g, res).join("\n")}`,
-    phrased.length ? `[다음 선택지로 쓸 행동]\n각 행동을 **지금 이 장면의 몸짓이나 주인공의 말**로 다시 써라 (50자 이내). 주어진 문장을 베끼지 말 것. 행동의 뜻은 바꾸지 말 것.\n예) "브람에게 이런저런 말을 붙인다" → "그릇을 받으며 '비가 사흘째네요' 하고 말을 흘린다" / "하겐에 대해 묻는다" → "구석에서 웃는 사내 쪽으로 턱을 든다 — '저 사람은 누구예요?'"\n${JSON.stringify(phrased)}` : "[다음 선택지] 없음",
+    phrased.length ? `[다음 선택지로 쓸 행동]\n각 행동을 **주인공이 실제로 할 말 한마디나 몸짓 하나**로 다시 써라 (40자 이내). 주어진 문장을 베끼지 말 것. 행동의 뜻을 넘지 말 것 — '주제'가 있으면 그 주제만 묻는다. 새 화제를 만들지 않고, 숨긴 것을 짐작하는 말을 넣지 않는다.\n예) "브람에게 이런저런 말을 붙인다" → "그릇을 받으며 '비가 사흘째네요' 하고 말을 흘린다" / "하겐에 대해 묻는다" → "구석에서 웃는 사내 쪽으로 턱을 든다 — '저 사람은 누구예요?'"\n${JSON.stringify(phrased)}` : "[다음 선택지] 없음",
     `출력:\n<서술>\n박자들\n</서술>\n<선택지>\n{"choices": [{"id": "주어진 id 그대로", "text": "선택지 문장"}]${mem}}\n</선택지>`,
   ].filter(Boolean).join("\n\n");
 }

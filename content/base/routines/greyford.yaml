@@ -96,7 +96,7 @@ npc_fayne:
     - {days: all, from: "23:00", to: "05:00", at: gf_mill_loft, doing: 방앗간 다락에서 잔다, alt: {p: 0.3, at: gf_rooster, doing: 수탉 부엌 구석에서 잔다}}
     - {days: workday, from: "05:00", to: "06:00", at: gf_rooster, doing: 배급 줄}
     - {days: workday, from: "06:00", to: "18:00", at: gf_hagen_shed, doing: 하겐 심부름, alt: {p: 0.5, at: gf_well_square, doing: 마을 곳곳 심부름}}
-    - {days: workday, from: "18:00", to: "21:00", at: gf_rooster, doing: 수탉}
+    - {days: workday, from: "18:00", to: "21:00", at: gf_rooster, doing: 배급 줄 끝 기둥 뒤에서 남은 죽을 노린다}
     - {days: sabbath, from: "08:00", to: "18:00", at: gf_well_square, doing: 우물 광장}
 npc_sigrid:
   home: hungry_hill__wolf_den
