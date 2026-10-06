@@ -4,7 +4,7 @@
 > 형식은 CHARACTERS.md와 같다 (§0.3 관계 튜플). 지역 열 번호는 REGIONS 기준 — #15 하르칸 초원(칸의 오르두·바람 우물·말뼈 여울·서 있는 돌·소금 호수·꺾인 깃발 진영·버려진 자들의 마을).
 > 이미 있는 사람: 칸 테무르 아르슬란(`npc_temur`), 소란(`npc_soran`), 느린발 바타르(`npc_batar`), 두아(`npc_dua`), 옥타이(`npc_oktai`), 웃는 히악(`npc_hiak`). 여기서는 그들 곁의 사람 19명을 더한다.
 > 배치도: `content/base/settlements/khan_ordu.yaml` (이동 천막 도시 — 같은 모양으로 아흐레마다 다시 선다. 겨울 진영 바람 우물·말뼈 여울·말뼈 샘·소금 호수·꺾인 깃발 진영·버려진 자들의 마을은 같은 파일의 outer). 키트: `content/base/kits/harkan_ordu.yaml`. 일과: `content/base/routines/harkan.yaml`. 사건: `content/base/events/harkan_312.yaml`. 사실: `content/base/facts/phase2_harkan.yaml` (`fact_p2hk_*`).
-> **이름 주의**: 검은바람의 벡 '오르두'(`npc_hk_orduk`)는 이동 도시 '칸의 오르두'와 다른 말이다. REGIONS의 바람 우물 우물지기 '노장 바투'는 후계 바투(`npc_hk_batu`)와 이름이 겹친다 — 이 문서는 후계 바투만 카드로 만들고, 우물지기는 카드 없이 '우물 노장'으로 부른다.
+> **이름 주의**: 검은바람의 벡 '오르두'(`npc_hk_orduk`)는 이동 도시 '칸의 오르두'와 다른 말이다. REGIONS의 바람 우물 우물지기 '노장 바트'는 후계 바투(`npc_hk_batu`)와 이름이 겹친다 — 이 문서는 후계 바투만 카드로 만들고, 우물지기는 카드 없이 '우물 노장'으로 부른다.
 
 ## 0. 이 장소의 사람들
 
