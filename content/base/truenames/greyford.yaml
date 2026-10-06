@@ -1,0 +1,7 @@
+# 진명 (GAME_DESIGN §5, 01 §3.5): 한 근원, 한 작용. 몸이 값을 치른다. 본 사람이 있으면 재의 법 — 마녀.
+# learn: 누구에게서, 어떤 조건에서 (story id) · use: 언제 부를 수 있나 · effect: 엔진이 하는 일
+words:
+  불:   {source: 불의 근원, teacher: 엘사의 뼈판, var: true_name_fire, cost: {pain: 8, fatigue: 10}, use: ["night"], effect: light, text: "손바닥 위로 불이 선다. 소리는 내지 않았다. 몸이 식는다"}
+  보다: {source: 빛의 근원, teacher: 엘사 — 두 번째 금, var: true_name_see, cost: {pain: 4, fatigue: 20}, use: [], effect: see, text: "눈꺼풀 안쪽이 하얘진다. 벽 너머의 숨소리가 보인다"}
+  물:   {source: 물의 근원, teacher: 시그리드의 룬 벽, var: true_name_water, cost: {pain: 2, fatigue: 15}, use: [], effect: water, text: "손에 묻은 것이 물이 되어 흘러내린다. 피도, 흙도"}
+  닫다: {source: 돌의 근원, teacher: 오스릭의 납골실 필사본 귀퉁이, var: true_name_close, cost: {pain: 10, fatigue: 10}, use: [], effect: close, text: "등 뒤의 문이 저절로 닫히고, 빗장이 걸리는 소리가 난다"}

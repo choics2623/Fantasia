@@ -30,6 +30,7 @@ node engine/game/test_p3.mjs             # 숨긴 곳·작전 카드·연애·�
 node engine/game/test_director.mjs       # 연출가: 긴장도·목표 곡선·화자 넷·연출 장면 (18)
 node engine/game/test_domain.mjs         # 영역: 세우기·열흘 보고·시설·수색대·관리자 (09)
 node engine/game/test_ops.mjs            # 작전 여섯 단계: 준비·실행·탈출·은폐·누명 (11)
+node engine/game/test_family.mjs         # 가족: 가문·입양·출산·인질, 진명 넷 (12, GAME_DESIGN §5)
 node engine/gen/test_gen.mjs             # 정착지·즉석 인물 생성 (25)
 python3 tools/validate_npc_cards.py && node tools/validate_agendas.mjs && python3 tools/link_world.py
 ```

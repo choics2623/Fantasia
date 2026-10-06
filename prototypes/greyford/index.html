@@ -145,6 +145,8 @@ button.ui:hover { border-color: var(--gold); }
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
   <h2 data-sec="secNotes" id="notesH">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
   <h2 id="oathH" hidden>맹세</h2><ul id="oaths" hidden></ul>
+  <h2 id="famH" hidden>가족</h2><div id="fam" hidden class="book"></div>
+  <h2 id="tnH" hidden>진명</h2><div id="tn2" hidden class="book"></div>
   <h2 id="domH" hidden>영역</h2><div id="dom" hidden class="book"></div>
   <h2 id="hideH" hidden>숨긴 곳</h2><div id="hide" hidden class="book"></div>
   <h2 id="opsH" hidden>작전</h2><div id="ops" hidden class="book"></div>
@@ -260,6 +262,10 @@ function render(d, loading = false) {
       + (Object.keys(R.views || {}).length ? `<li>${Object.entries(R.views).map(([k, x]) => `${esc(k)} ${x > 0 ? "+" : ""}${x}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
     $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
     $("skills").dataset.traits = (v.traits || []).join(", ");
+    const FM = v.family; $("fam").hidden = $("famH").hidden = !FM;
+    if (FM) $("fam").innerHTML = `${FM.name ? `<b>'${esc(FM.name)}'</b> — "${esc(FM.motto)}"<br>` : ""}${FM.members.length ? `식구: ${esc(FM.members.join(", "))}` : ""}${FM.children.length ? `<br>아이: ${esc(FM.children.join(", "))} <span style="color:var(--ink-faint)">— 이 회차에만 있다</span>` : ""}${FM.pregnant ? "<br>사라가 아이를 가졌다" : ""}`;
+    const TN = v.trueNames || []; $("tn2").hidden = $("tnH").hidden = !TN.length;
+    $("tn2").innerHTML = TN.map((w) => `'${esc(w.word)}' — ${esc(w.source)}`).join("<br>");
     const DM = v.domain; $("dom").hidden = $("domH").hidden = !DM;
     if (DM) $("dom").innerHTML = `<b>${esc(DM.at)}</b> — ${esc(DM.stage)}${DM.lost ? " (잃었다)" : ""}<br>머릿수 ${DM.pop} · 먹을 것 ${DM.foodDays}일치 · 방어 ${DM.defense} · 은폐 ${DM.conceal} · 사기 ${DM.morale}<br>드러남 <span style="color:${DM.exposure >= DM.threshold - 10 ? "var(--bad)" : "inherit"}">${DM.exposure}/${DM.threshold}</span> · 관리자 ${esc(DM.steward)} (충성 ${DM.loyalty}, ${DM.delegation === "full" ? "전권" : "직접 지시"}) · 방침 ${DM.policy === "open" ? "받는다" : "닫는다"}${DM.built.length ? `<br>시설: ${esc(DM.built.join(", "))}` : ""}`;
     const HD = v.hide; $("hide").hidden = $("hideH").hidden = !HD;
@@ -297,9 +303,9 @@ function render(d, loading = false) {
     return;
   }
   // 이름 붙이기: 선택지를 누르면 입력칸이 열린다
-  const nameNpc = ch.filter((c) => c.input === "npc_name");
-  const more = ch.filter((c) => c.more && c.input !== "npc_name");
-  const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time" && c.input !== "npc_name");
+  const nameNpc = ch.filter((c) => c.input === "npc_name" || c.input === "child_name" || c.input === "house");
+  const more = ch.filter((c) => c.more && !["npc_name", "child_name", "house"].includes(c.input));
+  const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time" && !["npc_name", "child_name", "house"].includes(c.input));
   const moves = ch.filter((c) => !c.more && c.kind === "move"), time = ch.filter((c) => !c.more && c.kind === "time");
   const cls = { "▲": "up", "▼": "down", "?": "unk" };
   const btn = (c) => {
@@ -309,13 +315,13 @@ function render(d, loading = false) {
   };
   panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
     ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
-    ${nameNpc.map((c) => `<form class="free nameNpc" data-id="${esc(c.id)}"><input placeholder="${esc(c.text)}" maxlength="10" autocomplete="off"><button class="ui">이름</button></form>`).join("")}
+    ${nameNpc.map((c) => c.input === "house" ? `<form class="free nameNpc house" data-id="${esc(c.id)}"><input placeholder="가문 이름" maxlength="10" autocomplete="off"><input placeholder="가훈 한 문장" maxlength="40" autocomplete="off"><button class="ui">세운다</button></form>` : `<form class="free nameNpc" data-id="${esc(c.id)}"><input placeholder="${esc(c.text)}" maxlength="10" autocomplete="off"><button class="ui">이름</button></form>`).join("")}
     ${more.length ? `<details class="moves"><summary>다른 행동 (${more.length})</summary><div class="choices">${more.map(btn).join("")}</div></details>` : ""}
     ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
     ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;
   panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector(".ct").textContent.replace(/^◈/, "") })));
   panel.querySelectorAll(".q").forEach((q) => (q.onclick = () => { const w = q.parentElement.nextElementSibling; w.hidden = !w.hidden; q.setAttribute("aria-expanded", !w.hidden); }));
-  panel.querySelectorAll(".nameNpc").forEach((fm) => (fm.onsubmit = (e) => { e.preventDefault(); const v = fm.querySelector("input").value.trim(); if (v) act({ id: fm.dataset.id, text: v }, false, `"${v}." — 이름을 붙여 준다`); }));
+  panel.querySelectorAll(".nameNpc").forEach((fm) => (fm.onsubmit = (e) => { e.preventDefault(); const ins = fm.querySelectorAll("input"); const v = ins[0].value.trim(); if (!v) return; const text = fm.classList.contains("house") ? `${v}|${ins[1].value.trim()}` : v; act({ id: fm.dataset.id, text }, false, `"${v}."`); }));
   const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
 }
 function show(d, isFresh = false) {

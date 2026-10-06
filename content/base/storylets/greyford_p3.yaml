@@ -31,7 +31,7 @@ storylets:
           끈이 두 손목을 한 번 돈다. 매듭은 사라가 묶는다. 서리말 매듭이다 — 그녀는 그것을 어디서 배웠을까. 오스릭 사제가 계단 위에서 그것을 보고, 못 본 척 등불을 끈다.
 
           끈혼례. 증인은 꺼진 등불 하나.
-        effects: ["var sara_bound = true", "bond npc_sara 15", "rel npc_sara trust 15", "temper 충성 5", "note 끈혼례 — 사라와. 증인은 꺼진 등불 하나"]
+        effects: ["family bound npc_sara", "var sara_bound = true", "bond npc_sara 15", "rel npc_sara trust 15", "temper 충성 5", "note 끈혼례 — 사라와. 증인은 꺼진 등불 하나"]
       - id: refuse
         label: '"둘째 명단이 지나면."'
         text: |
@@ -52,9 +52,72 @@ storylets:
           혀끝이 뜨겁다. 엘사가 네 입을 손으로 막는다. "소리 내지 마라. 속으로. 이 이름을 아는 인간은 재의 법으로 탄다."
 
           그 금 셋이 눈 안쪽에 남는다. 회귀해도 지워지지 않을 것 같다.
-        effects: ["var true_name_fire = true", "note 진명 — 불. 엘사의 뼈판. 소리 내지 말 것", "rel npc_elsa trust 5"]
+        effects: ["var true_name_fire = true", "note 진명 — 불. 불의 근원. 엘사의 뼈판. 소리 내지 말 것", "rel npc_elsa trust 5"]
       - id: refuse
         label: 고개를 젓는다
         text: |
           "현명하구나." 엘사가 뼈판을 다시 묻는다. "아니면 겁쟁이거나. 둘은 자주 같은 얼굴이지."
         effects: []
+
+  # ── 진명 — 더 많은 낱말 (각기 다른 근원) ──
+  - id: elsa_word_see
+    trigger: {window: {from: "312-09-03 06:00", to: "313-12-30 00:00"}, at: gf_elsa_hut, with: npc_elsa, when: ["var true_name_fire == true", "rel_trust npc_elsa >= 60", "var echo_named == true"]}
+    text: |
+      엘사가 뼈판을 다시 꺼낸다. 이번엔 두 번째 금. "불을 아는 자는 빛도 알아야 한다. 안 그러면 불만 보고 산다."
+    choices:
+      - id: learn
+        label: 두 번째 이름을 받는다
+        text: "눈 안쪽이 시리다. 그 금이 눈꺼풀 뒤에 붙는다."
+        effects: ["var true_name_see = true", "note 진명 — 보다. 빛의 근원. 엘사의 두 번째 금"]
+  - id: sigrid_word_water
+    trigger: {window: {from: "312-09-03 06:00", to: "313-12-30 00:00"}, at: hungry_hill__wolf_den, with: npc_sigrid, when: ["domain_has memory_wall"]}
+    text: |
+      기억의 벽 앞. 시그리드가 죽은 이들의 룬 사이에서 하나를 가리킨다. 이름이 아니다. "서리 길에서 우리를 살린 말이다. 물이 얼지 않게 하는 말."
+    choices:
+      - id: learn
+        label: 그 룬을 손가락으로 따라 긋는다
+        text: "손가락 끝이 젖는다. 바위가 마른데도."
+        effects: ["var true_name_water = true", "note 진명 — 물. 물의 근원. 시그리드의 룬 벽"]
+  - id: ossuary_word_close
+    trigger: {window: {from: "312-09-02 06:00", to: "313-12-30 00:00"}, at: gf_chapel_ossuary, when: ["pknows fact_gf_osric_letter_copies"]}
+    text: |
+      납골실 벽감. 빛의 서신 필사본의 귀퉁이에, 오스릭의 글씨가 아닌 금 셋이 있다. 오래된 것이다. 서신보다 오래된.
+    choices:
+      - id: learn
+        label: 그 금을 외운다
+        text: "외우는 순간 등 뒤의 철문이 덜컹 흔들린다. 바람은 없다."
+        effects: ["var true_name_close = true", "note 진명 — 닫다. 돌의 근원. 납골실 필사본의 귀퉁이"]
+
+  # ── 가족 (12 §6~8) — 출산, 인질 ──
+  - id: family_birth
+    dynamic: true
+    severity: 4
+    input: child_name
+    text: |
+      강변 움막 12호. 새벽. 사라의 손톱이 네 손등에 박힌다. {birth_helper}
+
+      울음소리. 작고, 화가 나 있다. 살아 있다.
+    after_input: |
+      "{child}." 사라가 그 이름을 소리 없이 따라 한다.
+
+      이 아이는 이 회차에만 있다. 너는 그것을 안다. 사라는 모른다.
+    effects: []
+  - id: family_hostage
+    dynamic: true
+    severity: 4
+    text: |
+      감독관 초소 앞에 사람들이 모여 있다. 채찍 기둥에 묶인 것은 {hostage}이다. 즈닉이 군중을 향해 말한다 — 너를 보지 않고, 너에게. "셋째. 해가 지기 전에 와라. 아니면 이 아이가 네 대신 선다."
+    choices:
+      - id: surrender
+        label: 걸어 나간다
+        text: "군중이 갈라진다. 즈닉이 웃는다. 밧줄이 손목에서 {hostage}의 손목으로가 아니라, 네 손목으로 옮겨 간다."
+        effects: ["captured 가족 대신 걸어 나갔다 — 채찍 기둥"]
+      - id: ransom
+        label: 두 발톱을 들고 초소 뒷문으로 간다
+        needs: "coin >= 24"
+        text: "즈닉은 동전을 세지 않는다. 받기만 한다. 해 질 녘, {hostage}이(가) 풀려난다. 즈닉의 장부에 네 이름 옆 숫자가 하나 는다."
+        effects: ["coin -24", "family ransom"]
+      - id: turn_away
+        label: 외면한다
+        text: "해가 진다. 너는 초소 쪽을 보지 않는다. 채찍 소리는 강변 움막까지 들린다."
+        effects: ["family abandon", "stress 20", "temper 충성 -8"]

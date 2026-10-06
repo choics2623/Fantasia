@@ -50,10 +50,10 @@ const fresh = (extra = {}) => G.boot(C, { ...G.newRun({ seed: 7, opening: false 
 // 진명 — 불
 {
   const g = fresh(); g.S.vars.true_name_fire = true;
-  for (let i = 0; i < 6 && !ids(g).includes("true_fire"); i++) G.act(g, { id: "wait:60" });
-  check("불의 이름을 아는 밤 — 부를 수 있다", ids(g).includes("true_fire"));
+  for (let i = 0; i < 6 && !ids(g).includes("true_name:불"); i++) G.act(g, { id: "wait:60" });
+  check("불의 이름을 아는 밤 — 부를 수 있다", ids(g).includes("true_name:불"));
   const p0 = g.P.status.pain;
-  const r = G.act(g, { id: "true_fire" });
+  const r = G.act(g, { id: "true_name:불" });
   check("몸이 값을 치른다 · 한 시간 빛이 된다", g.P.status.pain > p0 && G.view(g).player && r.notes.length >= 1);
   const seen = r.notes.some((n) => n.includes("보았다"));
   check("본 사람이 있으면 마녀 — 수배", seen === !!g.S.vars.witch_seen);

@@ -378,7 +378,14 @@ function rawOptions(g) {
   if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && !g.hide && knowsFact(g, "fact_gf_wolf_den")) o.push({ id: "hide_kit", kind: "scene", label: "키트를 데리고 늑대굴로 간다 — 숨긴다", risk: "통금 뒤의 길", minutes: 390 });
   if ((g.hide && !g.hide.lost && g.at === g.hide.at) || (g.domain && !g.domain.lost && atPlace(g, g.domain.at))) for (const it of mine(g)) if (it.eat) o.push({ id: `stock:${it.id}`, kind: "scene", label: `${it.name}을(를) 숨은 곳에 두고 간다` });
   // 진명 — 불 (소리 내지 않고): 한 시간 동안 빛이 된다. 몸이 값을 치른다. 본 사람이 있으면 '마녀'
-  if ((g.S.vars.true_name_fire || soul(g).trueNames?.includes("불")) && isNight(g.t) && g.P.fireAt !== Math.floor(g.t / 60)) o.push({ id: "true_fire", kind: "scene", more: true, label: "불의 이름을 속으로 부른다", risk: "본 사람이 있으면 재의 법" });
+  for (const [w, T] of Object.entries(g.content.game.truenames || {})) {
+    if (!knowsWord(g, w) || (T.use || []).includes("night") && !isNight(g.t) || g.P.wordAt?.[w] === Math.floor(g.t / 60)) continue;
+    if (T.effect === "water" && !g.P.bloody) continue;
+    o.push({ id: `true_name:${w}`, kind: "scene", more: true, label: `${T.source}의 이름 — '${w}'을(를) 속으로 부른다`, risk: "본 사람이 있으면 재의 법" });
+  }
+  // 가족 (12): 입양 · 가문 세우기
+  if (present(g).some((w) => w.npc === "npc_fayne") && relOf(g, "npc_fayne").trust >= 30 && (g.P.bond?.npc_fayne || 0) >= 10 && !g.family?.members.includes("npc_fayne")) o.push({ id: "adopt:npc_fayne", kind: "scene", label: "페인에게 — 움막 12호에 와서 같이 살자고 한다" });
+  if (g.at === HOME && !g.family?.name && Object.values(g.P.bond || {}).some((v) => v >= 15)) o.push({ id: "found_house", kind: "scene", more: !soul(g).house, label: soul(g).house ? `가문을 다시 세운다 — '${soul(g).house.name}'` : "가문을 세운다 — 이름 없는 자들의 이름", input: soul(g).house ? null : "house" });
   // 이름 붙이기 / 밤의 의식
   for (const w of present(g)) if (cardOf(g, w.npc).nameable && !g.P.names?.[w.npc]) o.push({ id: `name:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 이름을 붙여 준다`, input: "npc_name", npc: w.npc });
   if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && g.P.lastRitual !== Math.floor((g.t - 6 * 60) / 1440)) {
@@ -468,6 +475,7 @@ export function odds(g, opt) {
   }
   if (opt.skill === "통찰") {
     D += 18; why("?", "무엇이 있을지 모른다");
+    if (g.P.seeAt != null && g.t - g.P.seeAt <= 60) { S += 15; why("▲", "'보다'의 이름이 아직 눈에 남아 있다"); }
     const dark = g.content.game.access?.[g.at]?.dark || isNight(g.t);
     if (dark) { if (hasTag(g, "광원")) { S += 6; why("▲", "양초가 있다"); } else { S -= 10; why("▼", "어둡다 — 손으로 더듬어야 한다"); } }
   }
@@ -475,6 +483,7 @@ export function odds(g, opt) {
     const watchers = g.W.whoIsAt(opt.to, g.t + (opt.minutes || 0), g.W.npcs()).filter((w) => w.kind === "at").length;
     D += 10 + watchers * 6 + (isNight(g.t) ? -6 : 4);
     if (opt.via) { S += 10; why("▲", "갈고리와 밧줄이 있다"); }
+    if (g.P.closeAt != null && g.t - g.P.closeAt <= 30) { S += 12; why("▲", "등 뒤의 문은 닫혀 있다"); }
     if (g.content.game.access?.[opt.to]?.dark && !hasTag(g, "광원")) { S -= 10; why("▼", "그 아래는 캄캄하다 — 불이 없다"); }
     if (g.P.bloody) { S -= 4; why("▼", "옷에 피가 묻어 있다"); }
     why(isNight(g.t) ? "▲" : "▼", isNight(g.t) ? "어둡다" : "아직 밝다");
@@ -901,7 +910,8 @@ function domainTick(g, day) {
 function domainStoryTick(g) {
   if (!g.domainDue?.length || g.story || g.convo || g.fight || g.ended) return false;
   const ev = g.domainDue.shift();
-  const st = SL(g, ev === "raid" ? "domain_raid" : "domain_report"); if (!st) return false;
+  if (ev === "hostage") { const F = g.family; F.hostage = F.members.find((n) => n === "npc_kit") || F.members[0]; g.storyCtx = { ...(g.storyCtx || {}), hostage: F.hostage }; }
+  const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage" }[ev]); if (!st) return false;
   g.storyDone.delete(st.id); openStory(g, st);
   return true;
 }
@@ -936,6 +946,30 @@ function domainEffect(g, [op, a], res) {
     if (g.hide && g.hide.at === D.at && !g.hide.lost) g.hide.exposure = 1;
     res && res.notes?.push(`${lost}명이 끌려갔다`);
   }
+}
+// ── 진명 (GAME_DESIGN §5) ──
+const knowsWord = (g, w) => { const T = g.content.game.truenames?.[w]; return !!T && (!!g.S.vars[T.var] || (soul(g).trueNames || []).includes(w)); };
+function witchCheck(g, res) {
+  const seen = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t) && !g.family?.members.includes(w.npc)).map((w) => w.npc);
+  if (!seen.length) return;
+  const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 3; w.since ??= g.t; w.reasons.push("마녀 — 진명을 불렀다");
+  g.S.vars.witch_seen = true; for (const n of seen) addMemory(g, n, { kind: "emotion", tag: "위험함", text: "셋째가 알 수 없는 것을 불렀다", salience: 5, source: "engine" });
+  const x = ((g.nem ??= {}).npc_isol ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2);
+  res.notes.push(`${seen.map((n) => displayName(g, n)).join(", ")}이(가) 보았다`);
+}
+// ── 가족 (12 §6~8): 임신·출산 (긴 회차에서만), 인질 ──
+function familyDay(g, day) {
+  const F = g.family; if (!F) return;
+  if (F.bound && !F.pregnant && (g.t - F.bound) >= 20 * 1440 && hash(g.seed, "preg", day) < 0.02 && !g.S.dead.has("npc_sara")) { F.pregnant = { since: g.t, due: g.t + 270 * 1440 }; g.P.notebook.push("사라가 네 손을 배 위에 올려놓는다. 아무 말도 하지 않는다."); }
+  if (F.pregnant && g.t >= F.pregnant.due) { F.pregnant = null; (g.domainDue ??= []).push("birth"); }
+  const heat = g.S.wanted?.player?.heat || 0;
+  if (heat >= 4 && !F.hostageSeen && (F.members.length || F.children.length)) { F.hostageSeen = true; (g.domainDue ??= []).push("hostage"); }
+}
+function familyEffect(g, [op, a]) {
+  const F = (g.family ??= { members: [], children: [] });
+  if (op === "bound") { F.bound = g.t; F.members.includes(a) || F.members.push(a); }
+  else if (op === "ransom") { const w = g.S.wanted.player; if (w) w.heat = Math.max(0, w.heat - 2); }
+  else if (op === "abandon") { const h = F.hostage; if (h === "npc_kit") { g.S.vars.kit_on_list = true; } DIR.loss(g, 10); F.members = F.members.filter((x) => x !== h); }
 }
 // ── 연출가 (18): director.mjs — 여기서는 도우미만 넘긴다 ──
 const DH = () => ({ START, soul, goals, threads, atPlace, storyWhen, parseClock, isNight, hash });
@@ -977,6 +1011,8 @@ function memoryInk(g) {
   for (const st of soul(g).stains || []) if (st.victim && here.includes(st.victim)) { if (!said.has(`stain:${st.victim}`)) g.P.status.stress = clamp(g.P.status.stress + 5, 0, 100); ink(`stain:${st.victim}`, `┊ 너는 이 사람을 ${st.kind === "inform" ? "팔았었다" : st.kind === "betray" ? "사냥대에 넘겼었다" : "죽였었다"}. 이 사람은 모른다.`); }
   // 재회 (12 §2.2): 지난 회차의 연인
   for (const [n, stg] of Object.entries(soul(g).romance || {})) if (stg >= 3 && here.includes(n)) ink(`love:${n}`, stg >= 4 ? "┊ 이 손목에 끈이 감겨 있었다. 지금은 너를 모른다." : "┊ 이 손이 네 손을 잡았었다. 지금은 너를 모른다.");
+  // 그 회차에만 있던 아이 (20 §6.1 소멸)
+  for (const c of soul(g).lostChildren || []) if (g.at === c.place) ink(`child:${c.name}:${c.loop}`, `┊ 여기서 ${c.name}이(가) 태어났었다. 이번엔 태어나지 않는다.`);
   // 지난 회차에 이름을 붙여 준 것 (이번엔 그 이름을 모른다)
   for (const n of here) if (soul(g).names?.[n] && !g.P.names?.[n]) ink(`named:${n}`, `┊ 너는 이 개를 '${soul(g).names[n]}'(이)라 불렀다. 지금은 아무도 그렇게 부르지 않는다.`);
   // 지난 회차에 너를 쫓던 사람 (17 §3.7 휴면 숙적): 그는 모른다. 너는 안다
@@ -1069,6 +1105,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     hideTick(g, d);
     DIR.directorDay(g, d);
     domainTick(g, d);
+    familyDay(g, d);
     // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
     for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
   }
@@ -1172,7 +1209,7 @@ function startStory(g) { const st = (g.content.game.storylets || []).find((x) =>
 function openStory(g, st) {
   if (st.severity) DIR.crisis(g, st.severity);
   if (st.once !== false && g.storyDone.has(st.id)) return;
-  const needName = st.input === "true_name" && !trueName(g);
+  const needName = (st.input === "true_name" && !trueName(g)) || st.input === "child_name";
   g.story = { id: st.id, phase: needName ? "input" : "choice" };
   g.feed.push({ kind: "story", text: storyText(g, st, needName) });
   if (!needName) for (const e of st.effects || []) storyEffect(g, e);
@@ -1249,13 +1286,15 @@ const trueName = (g) => g.P.trueName || g.run.carry.trueName || null;
 const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
 const fill = (g, text) => josa(domainFill(g, String(text || ""))).trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
   .replace(/\{(who|about|nem)\}/g, (_, k) => g.storyCtx?.[k + "Name"] || g.storyCtx?.[k] || "…")
+  .replace(/\{hostage\}/g, () => displayName(g, g.storyCtx?.hostage || g.family?.hostage || "npc_kit"))
+  .replace(/\{birth_helper\}/g, () => (relOf(g, "npc_elsa").trust >= 40 ? "엘사가 와 있다. 늙은 손이 빠르다." : "아무도 오지 않았다. 너와 게르다뿐이다."))
   .replace(/\{gaze\}/g, () => String(Math.min(6, 3 + 0.5 * (g.run.loop - 1))).replace(".5", "과 반"))
   .replace(/\{volk_last\}/g, () => (g.S.vars.volk_lied ? '"도망치는 고기가 더 맛있다."' : '"너는 거짓말은 안 했다. 그러니 나도 안 하겠다. 아프다."'))
   .replace(/\{again_card\}/g, () => againCard(g))
   .replace(/\{record_full\}/g, () => { const r = soul(g).records.filter((x) => x.loop === g.run.loop - 1).pop(); return r ? recordCard(r).join("\n\n") : "…셀 것이 없다."; });
 function storyOptions(g) {
   const st = SL(g, g.story.id);
-  if (g.story.phase === "input") return [{ id: "story_name", kind: "story", label: "어머니가 부르는 이름", input: "true_name" }];
+  if (g.story.phase === "input") return st.input === "child_name" ? [{ id: "story_childname", kind: "story", label: "아이의 이름", input: "child_name" }] : [{ id: "story_name", kind: "story", label: "어머니가 부르는 이름", input: "true_name" }];
   const out = [];
   for (const c of st.choices || []) {
     // 두 번째 회차부터 어머니의 세 카드 중 고른 것만 진하다 — 다시 고를 수 없다 (14 §6.2)
@@ -1314,6 +1353,7 @@ function storyEffect(g, e, res) {
   else if (k === "agenda") g.A.doEffect(rest, g.t);
   else if (k === "bond") bond(g, parts[1], Number(parts[2]));
   else if (k === "domain") domainEffect(g, parts.slice(1), res);
+  else if (k === "family") familyEffect(g, parts.slice(1));
   else if (k === "awaken") { (g.P.awakened ??= []).push(parts[1]); g.P.tpSpent = (g.P.tpSpent || 0) + 3; }
   else if (k === "temper") temper(g, parts[1], Number(parts[2]));
   else if (k === "stress") g.P.status.stress = clamp(g.P.status.stress + Number(parts[1]), 0, 100);
@@ -1591,17 +1631,46 @@ const DO = {
     if (g.domain && atPlace(g, g.domain.at)) { g.domain.food += 15; g.domain.morale = clamp(g.domain.morale + 1, 0, 100); bumpRel(g, g.domain.steward, 1, 2); }
     pass(g, 5); res.notes.push("숨은 곳에 먹을 것을 두었다");
   },
-  true_fire(g, _, res) {
-    g.P.fireAt = g.t; g.P.status.pain = clamp(g.P.status.pain + 8, 0, 100); g.P.status.fatigue = clamp(g.P.status.fatigue + 10, 0, 100);
-    const seen = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
-    res.notes.push("손바닥 위로 불이 선다. 소리는 내지 않았다. 몸이 식는다");
-    if (seen.length) {
-      const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 3; w.since ??= g.t; w.reasons.push("마녀 — 불을 불렀다");
-      g.S.vars.witch_seen = true; for (const n of seen) addMemory(g, n, { kind: "emotion", tag: "위험함", text: "셋째의 손바닥에서 불이 섰다", salience: 5, source: "engine" });
-      const x = ((g.nem ??= {}).npc_isol ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2);
-      res.notes.push(`${seen.map((n) => displayName(g, n)).join(", ")}이(가) 보았다`);
-    }
+  // 진명 (한 근원, 한 작용): 몸이 값을 치르고, 본 사람이 있으면 마녀
+  true_name(g, w, res) {
+    const T = g.content.game.truenames[w];
+    (g.P.wordAt ??= {})[w] = Math.floor(g.t / 60);
+    g.P.status.pain = clamp(g.P.status.pain + (T.cost?.pain || 0), 0, 100); g.P.status.fatigue = clamp(g.P.status.fatigue + (T.cost?.fatigue || 0), 0, 100);
+    if (T.effect === "light") g.P.fireAt = g.t;
+    if (T.effect === "see") { g.P.seeAt = g.t; for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && it.owner !== "player") g.P.found.add(it.id); }
+    if (T.effect === "water") g.P.bloody = false;
+    if (T.effect === "close") g.P.closeAt = g.t;
+    res.notes.push(T.text);
+    witchCheck(g, res);
   },
+  adopt(g, n, res) {
+    (g.family ??= { members: [], children: [] }).members.includes(n) || g.family.members.push(n);
+    for (let d = 0; d < 90; d++) { const day0 = (Math.floor(g.t / 1440) + d) * 1440; g.W.override({ npc: n, from: day0 + 22 * 60, to: day0 + 29 * 60, kind: "at", at: HOME, doing: "움막 12호 구석에 웅크려 잔다 — 이제 식구다" }); }
+    bond(g, n, 10); bumpRel(g, n, 10, 10); pass(g, 5);
+    res.notes.push(`${displayName(g, n)}이(가) 대답 대신 처마에서 내려온다. 그날 밤부터 움막 12호의 숨소리가 하나 는다`);
+  },
+  found_house(g, _, res, opt, e) {
+    const remembered = soul(g).house;
+    const [name, motto] = remembered ? [remembered.name, remembered.motto] : String(e.text || "").split("|");
+    const fam = (g.family ??= { members: [], children: [] });
+    fam.name = (name || "").trim().slice(0, 10) || "이름 없는 집"; fam.motto = (motto || "").trim().slice(0, 40) || "우리는 서로의 이름을 안다"; fam.since = g.t;
+    for (const [n, v] of Object.entries(g.P.bond || {})) if (v >= 10 && !fam.members.includes(n) && !cardOf(g, n).nameable) fam.members.push(n);
+    pass(g, 20);
+    res.notes.push(remembered ? `'${fam.name}'. 처음 듣는 사람들이 그 가훈을 처음처럼 따라 말한다 — "${fam.motto}"` : `'${fam.name}' — 옷 안쪽에 실 한 땀. 가훈: "${fam.motto}"`);
+    g.P.notebook.push(`가문 — ${fam.name}. "${fam.motto}" (${fam.members.map((n) => displayName(g, n)).join(", ")})`);
+  },
+  story_childname(g, _, res, opt, e) {
+    const nm = String(e.text || "").trim().slice(0, 10) || "아이";
+    const fam = g.family, sex = hash(g.seed, "child", g.run.loop, fam.children.length) < 0.5 ? "딸" : "아들";
+    fam.children.push({ name: nm, sex, born: g.t, place: HOME });   // 강변 움막 12호
+    g.story.phase = "choice"; const st = SL(g, g.story.id);
+    res.storyText = fill(g, st.after_input).replace(/\{child\}/g, nm);
+    g.storyDone.add(st.id); g.story = null; bond(g, "npc_sara", 10);
+    g.P.notebook.push(`${nm} — ${sex}. ${fmt(g.t).replace(/^AS \d+ /, "")}, 강변 움막 12호에서. 이 회차에만 있다`);
+    // 그림다크: 출산은 위험하다 (12 §6) — 치료사 없는 노예 출산
+    if (hash(g.seed, "birthrisk", g.run.loop, fam.children.length) < (relOf(g, "npc_elsa").trust >= 40 ? 0.03 : 0.15)) { g.A.doEffect("kill npc_sara", g.t); res.storyText += "\n\n사라의 손이 식는다. 아이의 울음은 그치지 않는다."; DIR.loss(g, 15); DIR.crisis(g, 5); }
+  },
+
   // 이름 붙이기 (20 §5.1): 이름 없는 것에 이름을 — 그 이름은 너만 기억한다
   name(g, n, res, opt, e) {
     const nm = String(e.text || "").trim().slice(0, 10) || "…";
@@ -1936,12 +2005,14 @@ function settleSoul(g, record) {
   for (const k of Object.keys(S.days)) if (Number(k) < loop - 3) delete S.days[k];
   S.stains = [...(S.stains || []), ...g.deeds.filter((d) => DARK.has(d.kind)).map((d) => ({ kind: d.kind, victim: d.victim, loop }))].slice(-40);
   S.romance = { ...(S.romance || {}) }; for (const n of ["npc_sara"]) S.romance[n] = Math.max(S.romance[n] || 0, romanceStage(g, n));
-  if (g.S.vars.true_name_fire) S.trueNames = [...new Set([...(S.trueNames || []), "불"])];
+  S.trueNames = [...new Set([...(S.trueNames || []), ...Object.entries(g.content.game.truenames || {}).filter(([, T]) => g.S.vars[T.var]).map(([w]) => w)])];
   // 영역의 기억 (09 §6.5~6.6): 관리자는 너를 잊는다. 누구에게 무엇을 맡겨야 하는지는 네가 안다
   if (g.domain) {
     S.domainMemory = [...new Set([...(S.domainMemory || []), "site:" + g.domain.at, ...(g.domain.policy === "open" && (g.S.vars.fugitives_caught || 0) > 0 ? ["traitor"] : [])])];
     const ob = (S.stewardSeen ||= {}); const st = g.domain.steward; ob[st] = (ob[st] || 0) + 1;
   }
+  if (g.family?.name) S.house = { name: g.family.name, motto: g.family.motto };
+  S.lostChildren = [...(S.lostChildren || []), ...((g.family?.children || []).map((c) => ({ ...c, loop })))].slice(-20);
   S.memUsed ||= {};
   for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);
@@ -1965,6 +2036,8 @@ export function loopRecord(g) {
     leftBehind: moved, coin: g.S.purse.player, deeds: g.deeds.map((d) => d.kind).slice(-3),
     goals: goals(g).map((x) => `${x.who}: ${x.what}`),
     stains: g.deeds.filter((d) => DARK.has(d.kind)).length,
+    children: (g.family?.children || []).map((c) => c.name), house: g.family?.name || null,
+    built: g.domain && !g.domain.lost ? `${placeName(g, g.domain.at)} — 머릿수 ${DOM.popOf(g, g.domain)}` : null,
   };
 }
 // 원인 사슬 (14 §6.6, 16 메아리 형식 — 평가어 없이): 마지막에 한 일부터 거꾸로 셋
@@ -2012,6 +2085,8 @@ export function recordCard(r, { short = false } = {}) {
   if (r.chain) lines.push(`"${r.chain}"`);
   lines.push(`── 가져온 것 ──\n기억 ${r.learned}${r.keyFacts?.length ? ` (${r.keyFacts.map((x) => cut(x, 24)).join(" · ")})` : ""}${r.trace ? `\n죽음 — ${r.trace}` : ""}`);
   const left = (r.leftBehind || []).map((x) => `${x.name} — ${x.how === "가까워졌다" ? "너와 가까워졌다. 기억하지 못한다." : "너를 멀리했다. 그것도 잊었다."}`);
+  // 그 회차에 세운 것 (14 §6.6) — 아이는 잊는 것이 아니라 없어지는 것
+  if (r.children?.length || r.house || r.built) lines.push(`── 그 회차에 세운 것 ──\n${[...(r.children || []).map((n) => `${n} — 그 회차에 태어났다. 다시 태어나지 않는다.`), ...(r.house ? [`'${r.house}' — 가문원들은 서로를 모르는 사람들로 돌아갔다.`] : []), ...(r.built ? [`${r.built}. 아직 아무도 거기 없다.`] : [])].join("\n")}`);
   if (r.stains) lines.push(`── 손에 남은 것 ──\n${r.stains}번. 아무도 기억하지 못한다. 너만.`);
   lines.push(`── 두고 온 것 ──\n${[...left, `너 — 동화 ${r.coin}못${r.deeds?.length ? ", 손에 남았던 것들" : ""}. 그 밤은 이제 없다.`].join("\n")}`);
   return lines;
@@ -2196,6 +2271,8 @@ export function view(g) {
     twoDays: twoDays(g),
     domain: (() => { _domData = g.content.game.domains; return DOM.domainView(g, DMH()); })(),
     hide: g.hide ? { at: placeName(g, g.hide.at), people: g.hide.people.map((n) => displayName(g, n)), food: Math.round(g.hide.food * 10) / 10, exposure: g.hide.exposure < 0.3 ? "아직 아무도 모른다" : g.hide.exposure < 0.6 ? "냄새가 새기 시작했다" : g.hide.exposure < 1 ? "누군가 그쪽을 본다" : "드러났다", lost: !!g.hide.lost } : null,
+    family: g.family ? { name: g.family.name || null, motto: g.family.motto || null, members: g.family.members.map((n) => displayName(g, n)), children: g.family.children.map((c) => `${c.name} (${c.sex}, ${Math.floor((g.t - c.born) / 1440)}일)`), pregnant: !!g.family.pregnant } : null,
+    trueNames: Object.keys(g.content.game.truenames || {}).filter((w) => knowsWord(g, w)).map((w) => ({ word: w, source: g.content.game.truenames[w].source })),
     ops: opsOf(g), final: !!g.run.carry.final,
     romance: { npc_sara: romanceStage(g, "npc_sara") },
     narrator: { id: g.narrator || g.run.narrator || "silent_god", name: DIR.narratorOf(g).name }, director: g.dir ? { phase: g.dir.phase, T: g.dir.T, target: DIR.targetT(g) } : null,
