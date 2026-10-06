@@ -47,7 +47,7 @@ offices:
     perks: ["헌금 쪽지로 보상"]
   - id: off_collar_emberhills
     title: 잿불 언덕 목줄장
-    holder: "unnamed:'쇠눈' 크롬 (인간, 51) — 가장 많은 동족을 넘긴 자"
+    holder: npc_krom_ironeye
     reports_to: off_chief_collar
     powers: ["광산 노예 감시", "다라손 감시", "은비늘 요람 '자원자' 모집"]
     chosen_by: "멜리산드 영지 감독관의 임명"

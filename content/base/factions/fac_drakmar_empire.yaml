@@ -234,7 +234,7 @@ offices:
     perks: ["양 한 마리면 한 바퀴"]
   - id: off_road_post
     title: 용주 역참장
-    holder: "unnamed:세라프 타르굴 — 용인, 타르굴 가 방계"   # TODO-NPC (REGIONS §2.10)
+    holder: npc_seraph_targul
     reports_to: off_chancellor
     powers: ["용의 대로 세 번째 용주 역참 — 말 교대, 검문, 전령 우편함", "통행증 검사"]
     chosen_by: "타르굴 가 방계 후견"
@@ -248,6 +248,30 @@ offices:
     chosen_by: "다섯 불의 의자 합의 — 서약 전에 정해야 하는데 진영 다툼으로 미정"
     perks: ["100년에 한 번의 자리"]
 
+  - id: off_crowgate_clerk
+    title: "rank_overseer"
+    holder: npc_cg_shrik
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_crowgate_jailer
+    title: "rank_collar"
+    holder: npc_cg_bern
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_road_post_checkpoint
+    title: "rank_scale_officer"
+    holder: npc_dp_orbek
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_emperor, title: "용황", duties: "모든 것의 소유자", privileges: "역린 이외 모든 것", open_to_player: false}
   - {id: rank_true_dragon, title: "진룡 (화주)", duties: "영지를 보고로 삼아 지킨다", privileges: "영지 안의 모든 생명과 재물, 공중 결투", open_to_player: false}

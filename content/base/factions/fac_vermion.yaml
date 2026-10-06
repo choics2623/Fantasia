@@ -22,28 +22,28 @@ size:
 offices:
   - id: off_count
     title: 백작
-    holder: "unnamed:카시안 베르미온 — 백작, 190세"   # TODO-NPC
+    holder: npc_cassian_vermion
     reports_to: null
     powers: ["가문의 법", "갱도 41곳의 채굴량·사고 보고 — 숫자로 죽음을 보고한다", "멜리산드에게 비늘 서약 (SK 2,830 토르반 사망 이후)"]
     chosen_by: "장자 상속 (시조 베르미온 쇠냄새 — SK 1,600 첫 광산 감독)"
     perks: ["검은 바탕 붉은 갱도 입구(아치) 위 은빛 비늘 하나의 문장"]
   - id: off_countess_cradle
     title: 백작부인 — 은비늘 요람 행정관
-    holder: "unnamed:오렐리아 베르미온 — 166세"   # TODO-NPC. REGIONS의 '오렐리아 베스페린'과 별개
+    holder: npc_aurelia_vermion
     reports_to: off_count
     powers: ["은비늘 요람(41번 갱도 아래)의 행정 — 이식 순번 대기 감방, 사망자의 '낙반 사고' 기록", "피험자 조달: 갱조 인원이 매년 약 200명 '낙반'으로 줄어든다"]
     chosen_by: "혼인 (멜리산드를 숭배한다)"
     perks: ["멜리산드의 이식 실험실 열쇠 일부"]
   - id: off_chief_miner
     title: 갱도 총감독 (장남)
-    holder: "unnamed:드루스 베르미온 — 112세"   # TODO-NPC
+    holder: npc_druss_vermion
     reports_to: off_count
     powers: ["갱도 41곳의 일상 관리·갱조 편성", "독가스 장치 — 다라의 반란이 다시 오리라 믿고 갱도마다 숨겼다"]
     chosen_by: "장자 지명"
     perks: ["갱도 설계도 전체"]
   - id: off_granddaughter
     title: 손녀 (실바라의 '친구')
-    holder: "unnamed:아멜리 베르미온 — 43세"   # TODO-NPC
+    holder: npc_amelie_vermion
     reports_to: off_count
     powers: ["공식 권한 없음 — 실바라 은재와의 친분을 통해 은비늘 요람 지하에 출입한다"]
     chosen_by: "—"
@@ -64,21 +64,21 @@ offices:
     perks: []
   - id: off_gang_foreman
     title: 갱조 반장 (인간)
-    holder: "unnamed:갱조 반장 600 — 인간 (예: 하로, 54세, 매듭끈 계승자)"   # SCENARIOS 잿불 광산 출신의 갱 반장 하로를 예시로
+    holder: npc_haro
     reports_to: off_shaft_inspectors
     powers: ["30명 갱조의 점호·배급 분배", "탈주 시 첫 연좌 책임자"]
     chosen_by: "갱도 감독 지명"
     perks: ["갱조 안에서 가장 늦게 먹는다"]
   - id: off_collar_liaison
     title: 잿불 언덕 목줄장 연락
-    holder: "unnamed:'쇠눈' 크롬 — 인간, 51세 (fac_collar의 잿불 언덕 목줄장)"
+    holder: npc_krom_ironeye
     reports_to: off_chief_miner
     powers: ["광산 노예 감시, 다라손(광부 혈통) 감시, 은비늘 요람 '자원자' 모집"]
     chosen_by: "멜리산드 영지 감독관의 임명 (fac_collar 소속)"
     perks: []
   - id: off_casualty_clerk
     title: 사고 기록 서기
-    holder: "unnamed:낙반 기록 서기 — 용인"
+    holder: npc_sorel_ink
     reports_to: off_countess_cradle
     powers: ["요람 사망자를 '낙반 사고'로 기록 — 기록상 AS 296~312 피험자 3,214명(HOUSES 수치)"]
     chosen_by: "백작부인 지명"

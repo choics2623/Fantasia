@@ -59,7 +59,7 @@ offices:
     perks: []
   - id: off_lamp_emberhills
     title: 잿불 언덕 등잔
-    holder: "unnamed:칼렙 (인간, 58) — 다라손, 9번 갱 갱조장. 봉기를 원하지만 '기다리라'는 명령에 묶여 있다"
+    holder: npc_caleb_dara
     reports_to: off_grey_woman
     powers: ["광산 세포", "다라손 40명의 연락"]
     chosen_by: "회색 여인의 지명"

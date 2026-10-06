@@ -1,0 +1,1692 @@
+{
+ "affiliations": {
+  "npc_kyrie": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_queen",
+    "title": "바람의 여왕"
+   },
+   {
+    "faction": "fac_aeri",
+    "office": "off_high_nest_house",
+    "title": "높은둥지 가문 (여왕의 둥지)"
+   }
+  ],
+  "npc_eiros": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_prince",
+    "title": "왕자 (후계 후보)"
+   }
+  ],
+  "npc_corvina": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_crow_recorder",
+    "title": "까마귀 아에리 점술·기록 학자"
+   },
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_sky_observer",
+    "title": "잔상 관측 담당 (하늘 기록)"
+   }
+  ],
+  "npc_tyla": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_wingless_warrior",
+    "title": "날개 잘린 전사 (판결의 결과)"
+   }
+  ],
+  "npc_orn": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_pet_human",
+    "title": "흰 깃 첨탑 '애완 인간' (인간)"
+   }
+  ],
+  "npc_mara": [
+   {
+    "faction": "fac_arena_guild",
+    "office": "off_scar_mara",
+    "title": "흉터 — 87승 (백승가 다음 세대가 노리는 이름)"
+   },
+   {
+    "faction": "fac_grom",
+    "office": "off_fighter_head",
+    "title": "투사 대표 (인간 — 87승)"
+   }
+  ],
+  "npc_tal": [
+   {
+    "faction": "fac_arena_guild",
+    "office": "off_legend",
+    "title": "백승의 탈 (전설 — 빈 무덤의 주인)"
+   },
+   {
+    "faction": "fac_grom",
+    "office": "off_chained_legend",
+    "title": "백승의 탈 (사슬에 묶인 전설)"
+   },
+   {
+    "faction": "fac_hundred_wins",
+    "office": "off_ancestor_tal",
+    "title": "시조 — 백승의 탈 (사슬에 묶인 전설)"
+   }
+  ],
+  "npc_arvel": [
+   {
+    "faction": "fac_ash_witnesses",
+    "office": "off_herald",
+    "title": "첫 조각 — 불의 전령"
+   }
+  ],
+  "npc_gromak": [
+   {
+    "faction": "fac_ash_witnesses",
+    "office": "off_living_original",
+    "title": "살아 있는 원본 (증인이 아닌 증인)"
+   }
+  ],
+  "npc_irene_bold": [
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_tower_master",
+    "title": "탑주 (잔향학파 수장 겸임)"
+   },
+   {
+    "faction": "fac_bold",
+    "office": "off_head",
+    "title": "가주 겸 잿빛 탑 탑주"
+   },
+   {
+    "faction": "fac_bold",
+    "office": "off_codex_keeper",
+    "title": "볼드 사본 보관"
+   }
+  ],
+  "npc_isol": [
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_grey_eye_collector",
+    "title": "잿빛 눈 징후 수집관 (회색여울 — 순례자로 위장)"
+   }
+  ],
+  "npc_ottilie": [
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_oath_scholar",
+    "title": "기록학파 정학자 (맹세의 틈으로 가르치는 학자)"
+   }
+  ],
+  "npc_halla": [
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_reference_body",
+    "title": "기준체 (피험자 — 자리가 곧 감옥)"
+   },
+   {
+    "faction": "fac_trace_keepers",
+    "office": "off_tower_gatherer",
+    "title": "줍는 자 — 탑 안 (기준체)"
+   }
+  ],
+  "npc_milo": [
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_scribe",
+    "title": "서기 노예 (먼지 서고)"
+   },
+   {
+    "faction": "fac_trace_keepers",
+    "office": "off_ledger_gatherer",
+    "title": "줍는 자 — 탑 안 (서기)"
+   }
+  ],
+  "npc_volk": [
+   {
+    "faction": "fac_barg",
+    "office": "off_hunt_chief",
+    "title": "사냥대장 (조합장)"
+   },
+   {
+    "faction": "fac_beastkin",
+    "office": "off_volk_hunt_captain",
+    "title": "사냥대장 (회색송곳니 무리 우두머리·바르그 조합장)"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_hound_licensee",
+    "title": "공인 노예사냥 조합장"
+   }
+  ],
+  "npc_irga": [
+   {
+    "faction": "fac_barg",
+    "office": "off_deputy",
+    "title": "부조합장 (사냥개 무리 지휘)"
+   },
+   {
+    "faction": "fac_beastkin",
+    "office": "off_irga",
+    "title": "사냥꾼 (회색송곳니 — 볼크의 딸)"
+   }
+  ],
+  "npc_grod": [
+   {
+    "faction": "fac_barg",
+    "office": "off_fang_greyford",
+    "title": "송곳니 — 회색여울 담당 (송곳니 초소)"
+   },
+   {
+    "faction": "fac_beastkin",
+    "office": "off_grod",
+    "title": "회색여울 담당 송곳니"
+   }
+  ],
+  "npc_sahar": [
+   {
+    "faction": "fac_beastkin",
+    "office": "off_tyran_council_guard",
+    "title": "타이란 의회 경호대장 (세렌 파견)"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_guard_captain",
+    "title": "의회 경호대장 (물비늘대 파견)"
+   }
+  ],
+  "npc_matusz": [
+   {
+    "faction": "fac_beastkin",
+    "office": "off_frostroad_lodge",
+    "title": "서리 길 마지막 산장지기 (우르사 — 겨울 안전 지킴이)"
+   },
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_ice_thread_lodge",
+    "title": "얼음 실 — 서리 길 마지막 산장 (협력자)"
+   }
+  ],
+  "npc_hiak": [
+   {
+    "faction": "fac_beastkin",
+    "office": "off_gnar_field_cleaner",
+    "title": "말뼈 샘 시체 청소부 (그나르)"
+   },
+   {
+    "faction": "fac_harkan",
+    "office": "off_death_ledger",
+    "title": "말뼈 샘 시체 청소부 (그나르 — 비공식 기록자)"
+   }
+  ],
+  "npc_reni": [
+   {
+    "faction": "fac_beastkin",
+    "office": "off_vulpi_informer",
+    "title": "바울피 정보상 (굽은 닻 선술집)"
+   }
+  ],
+  "npc_osval": [
+   {
+    "faction": "fac_beat_ledger",
+    "office": "off_ledger_keeper",
+    "title": "장부지기 (첫 박자지기)"
+   }
+  ],
+  "npc_grimbald": [
+   {
+    "faction": "fac_beat_ledger",
+    "office": "off_rune_judge",
+    "title": "박자지기 — 룬판관"
+   },
+   {
+    "faction": "fac_durgan",
+    "office": "off_rune_judge",
+    "title": "룬판관"
+   }
+  ],
+  "npc_seln": [
+   {
+    "faction": "fac_beat_ledger",
+    "office": "off_outside_ear",
+    "title": "바깥 귀 (드라우르)"
+   }
+  ],
+  "npc_alberic": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_letter",
+    "title": "서신 (정신적 지도자 — 투옥 중)"
+   },
+   {
+    "faction": "fac_lampkeepers",
+    "office": "off_reciter",
+    "title": "두 번째 설교 낭송자"
+   }
+  ],
+  "npc_agnes": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_seventh_ring_lumen",
+    "title": "일곱째 고리 — 루멘 사슬"
+   },
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_knot_lumen_well",
+    "title": "루멘 매듭 (순례자 숙소 '물 없는 우물')"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_pilgrim_house",
+    "title": "순례자 숙소 관리 수녀"
+   }
+  ],
+  "npc_osric": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_chain_greyford",
+    "title": "회색여울 고리의 걸쇠"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_parish_greyford",
+    "title": "회색여울 교구 사슬사제"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_chaplain",
+    "title": "영내 사제 (징후 확인·증언)"
+   }
+  ],
+  "npc_martha": [
+   {
+    "faction": "fac_collar",
+    "office": "off_collar_greyford",
+    "title": "회색여울 목줄장 (성채 노예 집사)"
+   },
+   {
+    "faction": "fac_collar_house",
+    "office": "off_heir_martha",
+    "title": "후계 — 회색여울 목줄장 (에베르트의 조카딸)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_keep_steward",
+    "title": "성채 노예 집사 (목줄단 목줄장)"
+   }
+  ],
+  "npc_krom_ironeye": [
+   {
+    "faction": "fac_collar",
+    "office": "off_collar_emberhills",
+    "title": "잿불 언덕 목줄장"
+   },
+   {
+    "faction": "fac_vermion",
+    "office": "off_collar_liaison",
+    "title": "잿불 언덕 목줄장 연락"
+   }
+  ],
+  "npc_rolf": [
+   {
+    "faction": "fac_collar",
+    "office": "off_collar_market",
+    "title": "바알카르 노예시장 목줄장 (경매 보조)"
+   }
+  ],
+  "npc_quint": [
+   {
+    "faction": "fac_collar",
+    "office": "off_collar_rose_farm",
+    "title": "그림자장미 혈목장 감독 (녹테른 쪽 목줄장)"
+   },
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_knot_quint",
+    "title": "장미 담장 매수 매듭 (혈목장 감독)"
+   },
+   {
+    "faction": "fac_nocturne",
+    "office": "off_pen_overseer_rose",
+    "title": "장미 우리 감독 (목줄장)"
+   }
+  ],
+  "npc_liz": [
+   {
+    "faction": "fac_collar_house",
+    "office": "off_next_generation",
+    "title": "마르타의 딸 (3대 후계 후보)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_kitchen_hand",
+    "title": "부엌 심부름"
+   }
+  ],
+  "npc_caleb_dara": [
+   {
+    "faction": "fac_darason",
+    "office": "off_pit_head",
+    "title": "9번 갱 갱조장 (손 벽의 지킴이)"
+   },
+   {
+    "faction": "fac_nameless",
+    "office": "off_lamp_emberhills",
+    "title": "잿불 언덕 등잔"
+   }
+  ],
+  "npc_dorte": [
+   {
+    "faction": "fac_darason",
+    "office": "off_cook_aunt",
+    "title": "갱도 취사 노예 (소식의 통로)"
+   }
+  ],
+  "npc_yana": [
+   {
+    "faction": "fac_darason",
+    "office": "off_marked_child",
+    "title": "이식 대기자 (희생자의 자리)"
+   }
+  ],
+  "npc_rok": [
+   {
+    "faction": "fac_darason",
+    "office": "off_seventh_leader",
+    "title": "제7갱반장 (봉기의 손자)"
+   }
+  ],
+  "npc_mate_singer": [
+   {
+    "faction": "fac_darason",
+    "office": "off_song_keeper",
+    "title": "노래 「붉은 길」 낭송자"
+   }
+  ],
+  "npc_varskar": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_emperor",
+    "title": "용황"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_brood_head",
+    "title": "혈족의 수장 (용황이자 아비)"
+   }
+  ],
+  "npc_isolde": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_consort",
+    "title": "용황의 짝 (알의 어미)"
+   },
+   {
+    "faction": "fac_great_dragon_lines",
+    "office": "off_skadia_envoy",
+    "title": "서리비늘의 궁정 사절 (딸)"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_brood_consort",
+    "title": "현재의 짝"
+   }
+  ],
+  "npc_kaidor": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_imperial_seal",
+    "title": "용황의 인장 (칙령 인장관)"
+   },
+   {
+    "faction": "fac_scale_council",
+    "office": "off_council_scribe",
+    "title": "원로회 서기장 (수석 행정관)"
+   },
+   {
+    "faction": "fac_scale_council",
+    "office": "off_regent_draft",
+    "title": "섭정 칙령 초안 (인장 대기)"
+   }
+  ],
+  "npc_nora": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_throne_attendant",
+    "title": "용황 병상 시중장"
+   },
+   {
+    "faction": "fac_nameless",
+    "office": "off_lamp_baalkar",
+    "title": "바알카르 등잔"
+   }
+  ],
+  "npc_fizik": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_palace_servants",
+    "title": "궁정 하인장"
+   },
+   {
+    "faction": "fac_krik",
+    "office": "off_palace_ear",
+    "title": "궁의 귀 (정보상 — 감독관 크릭)"
+   }
+  ],
+  "npc_aurax": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_western_army",
+    "title": "서부군 총사령"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_firstborn",
+    "title": "장자 (전통파 '불의 손')"
+   }
+  ],
+  "npc_melisande": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_lord_emberhills",
+    "title": "잿불 언덕 화주 (영주 진룡)"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_second_daughter",
+    "title": "차녀 (개량파 '은의 서약')"
+   }
+  ],
+  "npc_kaspar": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_northern_army",
+    "title": "북방 국경군 사령관 (까마귀 문)"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_bastard",
+    "title": "서자 (비인정)"
+   }
+  ],
+  "npc_lea": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_northern_deputy",
+    "title": "까마귀 문 부관"
+   }
+  ],
+  "npc_sigmund": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_crowgate_captain",
+    "title": "까마귀 문 수비대장"
+   }
+  ],
+  "npc_gorm": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_road_patrol",
+    "title": "용의 대로 회색여울 구간 순찰"
+   }
+  ],
+  "npc_seraph_targul": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_road_post",
+    "title": "용주 역참장"
+   }
+  ],
+  "npc_cg_shrik": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_crowgate_clerk",
+    "title": "rank_overseer"
+   }
+  ],
+  "npc_cg_bern": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_crowgate_jailer",
+    "title": "rank_collar"
+   }
+  ],
+  "npc_dp_orbek": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_road_post_checkpoint",
+    "title": "rank_scale_officer"
+   }
+  ],
+  "npc_bror": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_king",
+    "title": "왕"
+   }
+  ],
+  "npc_hilda": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_gate_survey",
+    "title": "깊은 문 조사 책임자"
+   }
+  ],
+  "npc_deep_nidar": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_deep_priest",
+    "title": "심층 두르강 사제 (창백한 예배당)"
+   }
+  ],
+  "npc_urd": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_nameless_exile",
+    "title": "이름 없는 자 (맹세 파기 추방자, 돌화 진행)"
+   }
+  ],
+  "npc_petar": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_contract_foreman",
+    "title": "계약 광부 대표 (인간 — 바깥 갱)"
+   }
+  ],
+  "npc_elastriel": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_queen",
+    "title": "영원 여왕"
+   }
+  ],
+  "npc_liandel": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_last_child",
+    "title": "마지막 아이 (왕손)"
+   }
+  ],
+  "npc_aerin": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_dawn_head",
+    "title": "새벽가지 수장 (존속파)"
+   }
+  ],
+  "npc_silvanus": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_old_head",
+    "title": "고목 가지 수장 (순혈파)"
+   }
+  ],
+  "npc_serenielle": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_lumen_supervisor",
+    "title": "루멘 수석 감독관"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_lumen_supervisor",
+    "title": "루멘 수석 감독관 (외부 — 실질 인사권)"
+   }
+  ],
+  "npc_fern": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_white_fence_warden",
+    "title": "흰 울타리 감시인 (실반)"
+   }
+  ],
+  "npc_thorn_queen": [
+   {
+    "faction": "fac_fae",
+    "office": "off_queen",
+    "title": "가시 왕관의 여왕"
+   }
+  ],
+  "npc_nibble": [
+   {
+    "faction": "fac_fae",
+    "office": "off_pixie_teacher",
+    "title": "거짓의 스승 (픽시)"
+   }
+  ],
+  "npc_grik": [
+   {
+    "faction": "fac_fae",
+    "office": "off_red_cap",
+    "title": "붉은모자 (남쪽 경계 사냥)"
+   }
+  ],
+  "npc_odo": [
+   {
+    "faction": "fac_fae",
+    "office": "off_toy_garden",
+    "title": "장난감 정원 — 목각 기사 (인간, 계약 용병)"
+   }
+  ],
+  "npc_elin": [
+   {
+    "faction": "fac_fae",
+    "office": "off_time_keeper",
+    "title": "바꿔치기 당한 인간 — 바깥 시간을 알리는 자"
+   },
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_ear_human",
+    "title": "인간 귀 (바꿔치기된 인간)"
+   }
+  ],
+  "npc_sigrid": [
+   {
+    "faction": "fac_frosthand",
+    "office": "off_head_sigrid",
+    "title": "가장 (이빨 칼을 쥔 자)"
+   },
+   {
+    "faction": "fac_frosthand",
+    "office": "off_wolf_den_group",
+    "title": "늑대굴 무리의 장 (가장 겸임)"
+   }
+  ],
+  "npc_asta": [
+   {
+    "faction": "fac_frosthand",
+    "office": "off_elder_asta",
+    "title": "노예 장로 (돌무릎 골짜기 — 얼음손)"
+   },
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_ice_thread_elder",
+    "title": "얼음 실 — 돌무릎 골짜기 송출 (노예 장로)"
+   },
+   {
+    "faction": "fac_jotun",
+    "office": "off_slave_elder",
+    "title": "노예 장로 (인간, 계급 밖)"
+   }
+  ],
+  "npc_einar": [
+   {
+    "faction": "fac_frosthand",
+    "office": "off_brother_einar",
+    "title": "남은 동생 (후계 후보 — 숨겨진 자)"
+   }
+  ],
+  "npc_cecile": [
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_spool_rose",
+    "title": "장미 실타래 (녹테른 경계)"
+   },
+   {
+    "faction": "fac_nocturne",
+    "office": "off_house_shadowrose",
+    "title": "그림자장미 가주 (장미 우리 영주)"
+   }
+  ],
+  "npc_bram": [
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_knot_greyford",
+    "title": "회색여울 매듭지기 ('절름발이 수탉' 지하)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_ration_keeper",
+    "title": "배급 막사 '절름발이 수탉' 관리인"
+   }
+  ],
+  "npc_bern": [
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_knot_morva",
+    "title": "늪 수령 매듭 (진흙등불)"
+   }
+  ],
+  "npc_tessa": [
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_runner_rose",
+    "title": "장미 실 실잡이 (붉은 갈대 선 호송)"
+   }
+  ],
+  "npc_urgash": [
+   {
+    "faction": "fac_grom",
+    "office": "off_great_warlord",
+    "title": "대전쟁군주"
+   },
+   {
+    "faction": "fac_grom",
+    "office": "off_skullfang_clan",
+    "title": "해골이빨 씨족장 (원형장 중심 씨족)"
+   }
+  ],
+  "npc_gorba": [
+   {
+    "faction": "fac_grom",
+    "office": "off_expedition_chief",
+    "title": "원정파 수장 (투사 조련·매매상)"
+   }
+  ],
+  "npc_ulb": [
+   {
+    "faction": "fac_grom",
+    "office": "off_gate_jailer",
+    "title": "뼈의 전당 감방 경비 (오그림)"
+   }
+  ],
+  "npc_murk": [
+   {
+    "faction": "fac_grom",
+    "office": "off_floor_cleaner",
+    "title": "원형장 바닥 청소부 (강등된 광전사)"
+   }
+  ],
+  "npc_oda": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_mugwort",
+    "title": "쑥 계보의 노파 — 첫째 (생명 · 빌린 피: 우르사 피)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_first",
+    "title": "첫째 노파 — 쑥 계보 (생명)"
+   }
+  ],
+  "npc_elsa": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_mugwort_exile",
+    "title": "쑥 계보의 떠난 딸 (회색여울의 약초 노파)"
+   },
+   {
+    "faction": "fac_nameless",
+    "office": "off_wick_greyford",
+    "title": "회색여울 심지 (세포 셋을 묶는 연락책)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_eighth_seat",
+    "title": "여덟째 자리 — 늪을 떠난 쑥 계보의 딸 (빈 오두막)"
+   }
+  ],
+  "npc_hag_brita": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_bonenedle",
+    "title": "뼈바늘 계보의 노파 — 둘째 (대지·쇠 · 빌린 피: 거인 골수)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_second",
+    "title": "둘째 노파 — 뼈바늘 계보 (대지·쇠)"
+   }
+  ],
+  "npc_hag_hana": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_willow",
+    "title": "버들 계보의 노파 — 셋째 (물·꿈 · 빌린 피: 나가 허물 피)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_third",
+    "title": "셋째 노파 — 버들 계보 (물·꿈)"
+   }
+  ],
+  "npc_hag_jorda": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_leech",
+    "title": "거머리 계보의 노파 — 넷째 (불 · 빌린 피: 용인의 피)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_fourth",
+    "title": "넷째 노파 — 거머리 계보 (불)"
+   }
+  ],
+  "npc_hag_mag": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_ash",
+    "title": "재 계보의 노파 — 다섯째 (그림자 · 빌린 피: 녹테른 피)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_fifth",
+    "title": "다섯째 노파 — 재 계보 (그림자, 이름만 '재')"
+   }
+  ],
+  "npc_hag_elsbet": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_mist",
+    "title": "안개 계보의 노파 — 여섯째 (정신 · 빌린 피: 페이 이슬)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_sixth",
+    "title": "여섯째 노파 — 안개 계보 (정신)"
+   }
+  ],
+  "npc_hag_rune": [
+   {
+    "faction": "fac_hag_lineages",
+    "office": "off_line_reed",
+    "title": "갈대 계보의 노파 — 일곱째, 견습 (바람 · 빌린 피: 하르칸 피)"
+   },
+   {
+    "faction": "fac_swamp_hags",
+    "office": "off_hag_seventh",
+    "title": "일곱째 노파 — 갈대 계보 (바람, 견습)"
+   }
+  ],
+  "npc_temur": [
+   {
+    "faction": "fac_harkan",
+    "office": "off_khan",
+    "title": "칸"
+   }
+  ],
+  "npc_soran": [
+   {
+    "faction": "fac_harkan",
+    "office": "off_khan_heir_soran",
+    "title": "칸의 딸 (카드 후계 후보)"
+   }
+  ],
+  "npc_oktai": [
+   {
+    "faction": "fac_harkan",
+    "office": "off_heavy_hoof_head",
+    "title": "무거운발굽 짐 야영지 우두머리"
+   }
+  ],
+  "npc_batar": [
+   {
+    "faction": "fac_harkan",
+    "office": "off_retired_master",
+    "title": "강등된 스승 (바람발굽 → 무거운발굽 야영지 거주)"
+   }
+  ],
+  "npc_dua": [
+   {
+    "faction": "fac_harkan",
+    "office": "off_load_elder",
+    "title": "짐 맏이 (인간, 계급 밖)"
+   }
+  ],
+  "npc_gunnar": [
+   {
+    "faction": "fac_hundred_wins",
+    "office": "off_sword_disciple_elder",
+    "title": "칼 제자 (칼로 이어진 아궁이의 어른)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_stable",
+    "title": "마구간지기"
+   }
+  ],
+  "npc_severo": [
+   {
+    "faction": "fac_inkscale",
+    "office": "off_seal_broker_greyford",
+    "title": "인장 중개인 — 회색여울 건 (몬달리 채권 대리인)"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_broker",
+    "title": "노예 중개인 (하위 가문)"
+   }
+  ],
+  "npc_hrimnir": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_frost_king",
+    "title": "서리왕"
+   },
+   {
+    "faction": "fac_jotun",
+    "office": "off_clan_hrim",
+    "title": "흐림 씨족장 (왕가)"
+   }
+  ],
+  "npc_skadir": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_prince_skadir",
+    "title": "왕자 (남침파 전사단장)"
+   }
+  ],
+  "npc_baug": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_clan_stoneknee",
+    "title": "돌무릎 씨족장 (언덕 요툰)"
+   }
+  ],
+  "npc_yorun": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_mother_voice",
+    "title": "서리 어머니의 목소리 (무녀)"
+   }
+  ],
+  "npc_harva": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_wyvern_trader",
+    "title": "서리 와이번 교역 부족장 (외부)"
+   }
+  ],
+  "npc_znik": [
+   {
+    "faction": "fac_krik",
+    "office": "off_overseer_znik",
+    "title": "회색여울 농노 감독관 (감독관 크릭)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_overseer",
+    "title": "농노 감독관"
+   }
+  ],
+  "npc_grax": [
+   {
+    "faction": "fac_krik",
+    "office": "off_overseer_grax",
+    "title": "붉은 계단 총감독관"
+   },
+   {
+    "faction": "fac_vermion",
+    "office": "off_red_stair",
+    "title": "붉은 계단 총감독관 (크릭 감독 총괄)"
+   }
+  ],
+  "npc_soom": [
+   {
+    "faction": "fac_krik",
+    "office": "off_egg_nurse",
+    "title": "알 보관실 시녀 (크릭, 멜리산드의 첩자)"
+   }
+  ],
+  "npc_chik": [
+   {
+    "faction": "fac_krik",
+    "office": "off_runaway",
+    "title": "굴뚝에서 도망친 크릭 (동료 후보)"
+   }
+  ],
+  "npc_tuk": [
+   {
+    "faction": "fac_krik",
+    "office": "off_lantern_fence",
+    "title": "마지막 등불 고물상 (굴 크릭)"
+   },
+   {
+    "faction": "fac_last_lantern",
+    "office": "off_trader",
+    "title": "고물상 '등잔 밑'"
+   }
+  ],
+  "npc_vera": [
+   {
+    "faction": "fac_lampkeepers",
+    "office": "off_tap_student",
+    "title": "벽 두드림 제자 (듣고 쓰는 자)"
+   }
+  ],
+  "npc_gregor7": [
+   {
+    "faction": "fac_lampkeepers",
+    "office": "off_silent_protector",
+    "title": "알면서 죽이지 못하는 자 (외부 — 대사제)"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_high_priest",
+    "title": "빛의 대사제"
+   }
+  ],
+  "npc_goz": [
+   {
+    "faction": "fac_last_lantern",
+    "office": "off_guard_captain",
+    "title": "경비대장"
+   }
+  ],
+  "npc_kyle_sandeye": [
+   {
+    "faction": "fac_last_lantern",
+    "office": "off_hunter_sandeye",
+    "title": "허가 사냥꾼 — '모래눈' 패 (6)"
+   }
+  ],
+  "npc_ashdust": [
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_fallen_mouth",
+    "title": "떨어진 입 — 결사가 진실을 말하게 하는 자"
+   }
+  ],
+  "npc_mateus": [
+   {
+    "faction": "fac_light",
+    "office": "off_council_scribe",
+    "title": "일곱 등불 회의 서기 (정화청장 겸임 관례)"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_lamp_lumen",
+    "title": "루멘 등불관 (대교구장)"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_purifier",
+    "title": "정화청장 (대심문관)"
+   }
+  ],
+  "npc_felix": [
+   {
+    "faction": "fac_light",
+    "office": "off_confessor",
+    "title": "대성당 고해 사제"
+   }
+  ],
+  "npc_otto": [
+   {
+    "faction": "fac_light",
+    "office": "off_warden",
+    "title": "침묵의 우물 간수장"
+   }
+  ],
+  "npc_heinz": [
+   {
+    "faction": "fac_light",
+    "office": "off_bellringer_greyford",
+    "title": "회색여울 예배당 종지기 (성표 신도 장로)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_village_elder",
+    "title": "마을 농노 장로 (예배당 종지기)"
+   }
+  ],
+  "npc_johan": [
+   {
+    "faction": "fac_light",
+    "office": "off_hymn_pilgrim",
+    "title": "찬송 순례자 (집합 자리, 약 600)"
+   }
+  ],
+  "npc_grey_woman": [
+   {
+    "faction": "fac_nameless",
+    "office": "off_grey_woman",
+    "title": "회색 여인 (최고 지도자)"
+   }
+  ],
+  "npc_mordecai": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_first_thirst",
+    "title": "첫 갈증의 군주"
+   }
+  ],
+  "npc_alaric": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_house_blackchalice",
+    "title": "검은성배 혈목장 남작"
+   }
+  ],
+  "npc_vesper": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_messenger",
+    "title": "전령·공중 감시 (박쥐날개 아에리)"
+   }
+  ],
+  "npc_godric_raven": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_baron",
+    "title": "남작"
+   }
+  ],
+  "npc_owen_raven": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_heir",
+    "title": "후계자 (남작의 아들)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_crowgate_liaison",
+    "title": "까마귀 문 보급 연락"
+   }
+  ],
+  "npc_henrik": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_tax_collector",
+    "title": "징세관"
+   }
+  ],
+  "npc_sara": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_chambermaid",
+    "title": "성채 하녀"
+   }
+  ],
+  "npc_bran": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_smith",
+    "title": "대장간 노예 (숙련)"
+   },
+   {
+    "faction": "fac_underhammer",
+    "office": "off_master_bran",
+    "title": "가장 — 성채 대장간 숙련 장인"
+   }
+  ],
+  "npc_thomas": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_miller",
+    "title": "방앗간지기 (물레방아간)"
+   }
+  ],
+  "npc_irma": [
+   {
+    "faction": "fac_raven_house",
+    "office": "off_shepherd",
+    "title": "양치기 (양 140두)"
+   }
+  ],
+  "npc_mira": [
+   {
+    "faction": "fac_rootfamily",
+    "office": "off_subject",
+    "title": "피험 정원지기 (몰리가 돌보는 한 사람)"
+   }
+  ],
+  "npc_morana": [
+   {
+    "faction": "fac_salt_tongue",
+    "office": "off_ascender",
+    "title": "오르내리는 자 — 올라가 본 유일한 심해 나가"
+   }
+  ],
+  "npc_deep_naga": [
+   {
+    "faction": "fac_salt_tongue",
+    "office": "off_envoy",
+    "title": "심해의 사절 (고인 피의 문)"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_deep_envoy",
+    "title": "심해의 사절"
+   }
+  ],
+  "npc_lupo": [
+   {
+    "faction": "fac_salt_tongue",
+    "office": "off_tester",
+    "title": "시험관 (물의 이름)"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_house_counsel",
+    "title": "라미아 변호인 (면허 없음)"
+   }
+  ],
+  "npc_beatrix": [
+   {
+    "faction": "fac_seren",
+    "office": "off_chair",
+    "title": "의장"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_seat_01_mondali",
+    "title": "제1의석 — 몬달리 (대부·채권)"
+   }
+  ],
+  "npc_ophelia": [
+   {
+    "faction": "fac_seren",
+    "office": "off_heir",
+    "title": "몬달리 상속녀 (시민권 초안 발의자)"
+   }
+  ],
+  "npc_aeric": [
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_silent_head",
+    "title": "침묵 (머리)"
+   }
+  ],
+  "npc_dane": [
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_halfblood_contact",
+    "title": "접촉자 (반엘다르)"
+   }
+  ],
+  "npc_emyn": [
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_outside_witness",
+    "title": "바깥 증인 (드라우르)"
+   }
+  ],
+  "npc_orso": [
+   {
+    "faction": "fac_trace_keepers",
+    "office": "off_road_head",
+    "title": "길머리 — 붉은 길의 끝지기 (다라)"
+   }
+  ],
+  "npc_herja": [
+   {
+    "faction": "fac_trace_keepers",
+    "office": "off_end_gunde",
+    "title": "끝지기 — 방패줄의 끝 (군데)"
+   }
+  ],
+  "npc_greta": [
+   {
+    "faction": "fac_underhammer",
+    "office": "off_wife_loaned",
+    "title": "가장의 아내 (바알카르에 '빌려진' 세탁장 노예)"
+   }
+  ],
+  "npc_white_egg": [
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_white_egg",
+    "title": "흰 알 (다음 대)"
+   }
+  ],
+  "npc_serak": [
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_doubting_granddaughter",
+    "title": "의심하는 손녀"
+   }
+  ],
+  "npc_cassian_vermion": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_count",
+    "title": "백작"
+   }
+  ],
+  "npc_aurelia_vermion": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_countess_cradle",
+    "title": "백작부인 — 은비늘 요람 행정관"
+   }
+  ],
+  "npc_druss_vermion": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_chief_miner",
+    "title": "갱도 총감독 (장남)"
+   }
+  ],
+  "npc_amelie_vermion": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_granddaughter",
+    "title": "손녀 (실바라의 '친구')"
+   }
+  ],
+  "npc_haro": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_gang_foreman",
+    "title": "갱조 반장 (인간)"
+   }
+  ],
+  "npc_sorel_ink": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_casualty_clerk",
+    "title": "사고 기록 서기"
+   }
+  ]
+ },
+ "truths": {
+  "npc_varskar": {
+   "T01": "whole",
+   "T02": "whole",
+   "T03": "whole",
+   "T04": "fragment",
+   "T05": "fragment",
+   "T06": "whole",
+   "T07": "whole",
+   "T08": "fragment",
+   "T11": "fragment",
+   "T12": "fragment"
+  },
+  "npc_aurax": {
+   "T01": "fragment",
+   "T02": "whole",
+   "T03": "whole",
+   "T04": "fragment",
+   "T05": "fragment",
+   "T06": "whole",
+   "T07": "whole",
+   "T08": "whole",
+   "T12": "fragment",
+   "T13": "fragment"
+  },
+  "npc_melisande": {
+   "T01": "fragment",
+   "T02": "fragment",
+   "T03": "fragment",
+   "T04": "rumor",
+   "T07": "fragment",
+   "T11": "rumor"
+  },
+  "npc_isolde": {
+   "T01": "fragment",
+   "T02": "rumor",
+   "T03": "rumor",
+   "T07": "fragment"
+  },
+  "npc_irene_bold": {
+   "T01": "fragment",
+   "T02": "fragment",
+   "T03": "fragment",
+   "T04": "fragment",
+   "T05": "fragment",
+   "T06": "whole",
+   "T11": "fragment",
+   "T12": "fragment",
+   "T13": "fragment"
+  },
+  "npc_serak": {
+   "T01": "rumor",
+   "T06": "rumor",
+   "T08": "rumor"
+  },
+  "npc_kaspar": {
+   "T03": "rumor"
+  },
+  "npc_nora": {
+   "T06": "whole",
+   "T07": "fragment",
+   "T08": "rumor",
+   "T03": "fragment"
+  },
+  "npc_kaidor": {
+   "T07": "rumor",
+   "T13": "fragment"
+  },
+  "npc_elastriel": {
+   "T01": "whole",
+   "T02": "whole",
+   "T03": "whole",
+   "T04": "fragment",
+   "T05": "whole",
+   "T06": "fragment",
+   "T10": "whole",
+   "T11": "fragment",
+   "T12": "whole",
+   "T13": "fragment"
+  },
+  "npc_aerin": {
+   "T05": "fragment",
+   "T12": "fragment"
+  },
+  "npc_silvanus": {
+   "T06": "fragment"
+  },
+  "npc_serenielle": {
+   "T10": "whole"
+  },
+  "npc_mordecai": {
+   "T01": "fragment",
+   "T03": "fragment",
+   "T09": "fragment",
+   "T13": "rumor"
+  },
+  "npc_cecile": {
+   "T03": "fragment",
+   "T11": "fragment"
+  },
+  "npc_bror": {
+   "T01": "whole",
+   "T09": "fragment"
+  },
+  "npc_hilda": {
+   "T09": "fragment"
+  },
+  "npc_deep_nidar": {
+   "T09": "fragment"
+  },
+  "npc_urd": {
+   "T09": "rumor"
+  },
+  "npc_beatrix": {
+   "T01": "fragment",
+   "T03": "rumor",
+   "T13": "fragment"
+  },
+  "npc_lupo": {
+   "T03": "fragment"
+  },
+  "npc_deep_naga": {
+   "T09": "fragment",
+   "T22": "fragment",
+   "T01": "fragment"
+  },
+  "npc_hrimnir": {
+   "T01": "fragment",
+   "T13": "fragment"
+  },
+  "npc_yorun": {
+   "T09": "rumor"
+  },
+  "npc_temur": {
+   "T01": "fragment",
+   "T13": "rumor"
+  },
+  "npc_urgash": {
+   "T01": "fragment",
+   "T13": "rumor"
+  },
+  "npc_kyrie": {
+   "T06": "fragment",
+   "T03": "rumor",
+   "T13": "fragment"
+  },
+  "npc_thorn_queen": {
+   "T01": "whole",
+   "T02": "whole",
+   "T03": "whole",
+   "T06": "fragment",
+   "T09": "fragment"
+  },
+  "npc_volk": {
+   "T03": "rumor",
+   "T04": "fragment"
+  },
+  "npc_rok": {
+   "T12": "rumor"
+  },
+  "npc_alberic": {
+   "T10": "fragment",
+   "T03": "rumor",
+   "T11": "rumor"
+  },
+  "npc_gregor7": {
+   "T10": "fragment",
+   "T03": "fragment",
+   "T13": "fragment"
+  },
+  "npc_mateus": {
+   "T10": "fragment",
+   "T13": "fragment",
+   "T12": "rumor"
+  },
+  "npc_osric": {
+   "T10": "rumor"
+  },
+  "npc_agnes": {
+   "T10": "rumor"
+  },
+  "npc_grey_woman": {
+   "T03": "whole",
+   "T09": "fragment",
+   "T12": "fragment"
+  },
+  "npc_elsa": {
+   "T09": "fragment",
+   "T04": "fragment",
+   "T03": "fragment",
+   "T11": "fragment"
+  },
+  "npc_ian_ash": {
+   "T03": "fragment"
+  },
+  "npc_corvina": {
+   "T04": "fragment"
+  },
+  "npc_halla": {
+   "T12": "fragment",
+   "T03": "fragment"
+  },
+  "npc_ottilie": {
+   "T11": "fragment"
+  },
+  "npc_martha": {
+   "T03": "rumor",
+   "T04": "rumor"
+  },
+  "npc_grod": {
+   "T04": "rumor"
+  },
+  "npc_oda": {
+   "T11": "fragment",
+   "T03": "rumor",
+   "T12": "fragment"
+  },
+  "npc_hag_mag": {
+   "T11": "fragment"
+  },
+  "npc_kyle_sandeye": {
+   "T05": "rumor"
+  },
+  "npc_goz": {
+   "T06": "rumor"
+  },
+  "npc_grimbald": {
+   "T21": "fragment",
+   "T09": "fragment"
+  },
+  "npc_seln": {
+   "T21": "fragment",
+   "T09": "fragment"
+  },
+  "npc_gromak": {
+   "T06": "fragment",
+   "T03": "fragment",
+   "T01": "fragment"
+  },
+  "npc_aeric": {
+   "T20": "whole",
+   "T02": "whole",
+   "T05": "fragment",
+   "T03": "fragment",
+   "T09": "rumor"
+  },
+  "npc_emyn": {
+   "T01": "whole",
+   "T02": "whole",
+   "T11": "whole",
+   "T20": "fragment",
+   "T23": "rumor"
+  },
+  "npc_osval": {
+   "T21": "whole",
+   "T09": "whole",
+   "T01": "fragment",
+   "T11": "rumor"
+  },
+  "npc_morana": {
+   "T22": "whole",
+   "T01": "fragment",
+   "T09": "fragment",
+   "T03": "fragment"
+  },
+  "npc_ashdust": {
+   "T23": "whole",
+   "T01": "fragment",
+   "T03": "fragment",
+   "T02": "rumor",
+   "T12": "rumor"
+  },
+  "npc_arvel": {
+   "T06": "whole",
+   "T08": "fragment",
+   "T07": "fragment",
+   "T03": "fragment"
+  },
+  "npc_orso": {
+   "T12": "whole",
+   "T03": "fragment",
+   "T05": "fragment"
+  },
+  "npc_herja": {
+   "T12": "fragment",
+   "T01": "fragment",
+   "T09": "rumor"
+  },
+  "npc_korak": {
+   "T04": "fragment",
+   "T13": "fragment",
+   "T06": "rumor"
+  },
+  "npc_utgal": {
+   "T13": "whole",
+   "T01": "whole",
+   "T21": "fragment",
+   "T09": "fragment"
+  },
+  "npc_iserda": {
+   "T22": "fragment",
+   "T09": "fragment",
+   "T03": "rumor"
+  },
+  "npc_owellis": {
+   "T10": "whole",
+   "T02": "fragment",
+   "T05": "rumor"
+  }
+ },
+ "stats": {
+  "factions": 54,
+  "offices": 635,
+  "filled": 216,
+  "npcs": 214,
+  "npcs_with_office": 145,
+  "truth_holders": 62
+ }
+}

@@ -28,21 +28,21 @@ succession: >
 offices:
   - id: off_pit_head
     title: 9번 갱 갱조장 (손 벽의 지킴이)
-    holder: "unnamed:칼렙 (58) — 이름 없는 자들 잿불 언덕 '등잔'. 봉기를 원하지만 '기다리라'는 명령에 묶여 있다"
+    holder: npc_caleb_dara
     reports_to: null
     powers: ["갱조 회합 소집", "막장 벽의 손자국 보호", "비축 곡괭이 중 일부 관리"]
     chosen_by: "가장 많은 이름을 외운 자 + 갱조의 신뢰"
     perks: ["갱조장의 쉬는 시간"]
   - id: off_cook_aunt
     title: 갱도 취사 노예 (소식의 통로)
-    holder: "unnamed:도르테 (55, 칼렙의 누이)"
+    holder: npc_dorte
     reports_to: off_pit_head
     powers: ["갱 사이 소식을 음식 그릇으로 나른다", "아기 손바닥 찍기 입회"]
     chosen_by: "집안의 누이 — 취사장은 모든 갱이 오가는 곳"
     perks: []
   - id: off_marked_child
     title: 이식 대기자 (희생자의 자리)
-    holder: "unnamed:야나 (19, 칼렙의 딸) — '은비늘 요람' 대기 감방, 이식 순번 37번. 약 두 달"
+    holder: npc_yana
     reports_to: off_pit_head
     powers: ["없음 — 구출의 대상. 가문의 마지막 아이"]
     chosen_by: "멜리산드의 이식 명부"
@@ -56,7 +56,7 @@ offices:
     perks: ["다라의 말(전해 내려오는)"]
   - id: off_song_keeper
     title: 노래 「붉은 길」 낭송자
-    holder: "unnamed:7절을 외우는 늙은 갱조원 — 처형자 1,300명의 이름"
+    holder: npc_mate_singer
     reports_to: off_pit_head
     powers: ["노래 전승", "이름을 한 명씩 불러 주는 장례 의례"]
     chosen_by: "가장 많은 절을 외운 자"
