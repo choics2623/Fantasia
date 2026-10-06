@@ -1,0 +1,52 @@
+# 가시 궁정 — 페이의 도읍 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §6.9, fac_fae, fac_laugh_shards, docs/world/people/thornmist.md.
+# grid: 궁정 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 가시나무가 엮여 만든 궁전이 한가운데, 북쪽에 가시 미로, 서쪽에 이름 무덤, 남동쪽 안개 속에 안개 장터.
+# 숲의 길은 지식이 아니라 '초대'로 이뤄지고 방은 매일 바뀐다 — 그래서 이 배치도의 방 id 는 '그날의 이름'이다. 엔진은 고정 좌표를 쓰되 서술에서는 매번 다른 방으로 부른다.
+# lost_child_stone(아이 잃은 돌)은 settlements/eternal_garden.yaml 의 outer 에 정의되어 있어 그 id 를 그대로 쓴다 (지역 지도 노드이기도 하다).
+id: thorn_court
+name: 가시 궁정
+node: thorn_court
+kind: fae_court
+grid: {w: 1000, h: 900}
+curfew: {from: "00:00", to: "00:00", note: "숲에는 통금이 없다 — 대신 초대가 있다. 초대 없이 궁정에 들어온 사람은 가시 기사가 장난감으로 만든다. 철을 지니면 길이 닫힌다"}
+bells:
+  - {at: "05:00", name: 새벽 사냥 (사냥개가 처음 짖는다)}
+  - {at: "12:00", name: 한낮의 접견 (왕좌의 방이 열린다)}
+  - {at: "18:00", name: 무도회 준비 (안개 장터가 가장 붐빈다)}
+  - {at: "00:00", name: 방이 바뀌는 시각 (궁정 전체의 문이 한 번 닫힌다)}
+patrols: ["06:00", "14:00", "20:00", "02:00"]
+locations:
+  # ── 궁정 중심 ──
+  - {id: tc_throne_room, name: 왕좌의 방, xy: [500, 440], kind: throne, access: owner, hours: "12:00-14:00 접견 (그 밖에는 문이 보이지 않는다)", rooms: [tc_laugh_box_hollow], note: "가시나무로 엮인 왕좌. 방은 매일 모양이 바뀐다. 여왕의 이름을 입에 올리면 즉시 그녀의 주의가 닿는다"}
+  - {id: tc_laugh_box_hollow, name: 왕좌 뒤 가시 속, parent: tc_throne_room, access: secret, hidden: "신살 때의 웃음이 봉인된 '웃음의 상자'. 열면 진실 한 조각을 얻고 대가로 연 사람의 웃음을 영원히 잃는다 — 여왕은 이 상자를 열지도 부수지도 않는다"}
+  - {id: tc_court_hall, name: 궁정 홀, xy: [480, 530], kind: hall, access: staff, hours: "24시", note: "접시를 든 인간 하인과 이름 있는 페이가 오가는 큰 홀. 안개가 바닥에서 발목까지 찬다"}
+  - {id: tc_ballroom, name: 무도회장, xy: [620, 470], kind: ballroom, access: staff, hours: "18:00-04:00 (긴밤월 가시 무도회)", note: "초대받은 인간이 춤추는 곳. 가시 한 가닥이 초대장이다"}
+  - {id: tc_mirror_chamber, name: 거울 방, xy: [430, 410], kind: chamber, access: owner, hours: "24시", note: "거울 시녀 셋('어제', '아니', '혹시')이 선 방. 거울을 보면 안 된다는 금기의 근원", hidden: "'혹시'가 서 있는 거울만 여왕의 말을 거꾸로 비춘다 — 그래서 그 거울 속 말은 진실일 수 있다"}
+  - {id: tc_judge_hall, name: 웃음 재판 홀, xy: [380, 500], kind: hall, access: staff, hours: "14:00-18:00 재판", note: "휘파람 판사가 약속의 위반을 웃음으로 판결한다. 웃음이 터지면 선고가 끝난다"}
+  - {id: tc_riddle_doors, name: 수수께끼 문, xy: [520, 380], kind: gate, access: staff, hours: "24시", note: "맞히면 열리고 틀리면 이름 하나가 닫힌다. 궁정 안쪽의 방은 이 문으로만 간다"}
+  # ── 미로와 이름 무덤 ──
+  - {id: tc_maze, name: 가시 미로, xy: [480, 160], kind: maze, access: public, hours: "24시", rooms: [tc_maze_well], note: "길을 잃은 인간의 뼈 대신 꽃이 핀다. 같은 길을 두 번 걸어도 같은 곳에 닿지 않는다"}
+  - {id: tc_maze_well, name: 미로 중심 우물, parent: tc_maze, access: secret, hidden: "이름 수집가의 보관소로 내려가는 우물. 내려가면 이름 무덤 아래의 '말 없는 병' 층이 있다 — 아직 이름이 붙지 않은 이름들"}
+  - {id: tc_name_grave, name: 이름 무덤, xy: [130, 520], kind: graveyard, access: staff, hours: "24시", rooms: [tc_name_collector_lodge], note: "빼앗긴 이름이 유리병에 담겨 묻힌 곳. 병 수천 개가 흙 속에서 희미하게 빛난다", hidden: "병 하나에 '아스테리온'이라는 이름이 있다는 전설 — 게임은 확정하지 않는다"}
+  - {id: tc_name_collector_lodge, name: 이름 수집가의 움막, parent: tc_name_grave, access: owner, hidden: "시동이 문을 지킨다. 안쪽 선반에 이름이 붙지 않은 빈 병 아홉 개 — 다음에 올 이름들"}
+  # ── 안개 장터 ──
+  - {id: tc_fog_market, name: 안개 장터, xy: [800, 690], kind: market, access: public, hours: "06:00-24:00 (안개가 짙은 날은 새벽까지)", rooms: [tc_market_scale, tc_market_true_stall], note: "기억·이름·목소리·계절을 파는 노점들. 값은 아픔의 무게로 잰다. 시세는 REGIONS §6.6"}
+  - {id: tc_market_scale, name: 아픔의 저울, parent: tc_fog_market, access: public, note: "무게 대신 아픔을 재는 저울. 올려놓는 것은 기억이나 이름이다"}
+  - {id: tc_market_true_stall, name: 진명 노점, parent: tc_fog_market, access: secret, hidden: "진명 한 조각을 파는 노점. 값은 '네가 가장 사랑하는 사람의 얼굴'. 거절하면 다른 대가를 요구받는다"}
+  # ── 인간의 자리 ──
+  - {id: tc_toy_garden, name: 장난감 정원, xy: [620, 580], kind: garden, access: staff, hours: "24시", rooms: [tc_toy_dance_spot], note: "여왕의 놀이 상대로 불리는 인간 70명의 정원. 불리면 춤추고 노래하고 수수께끼를 맞히고 짐승이 된다"}
+  - {id: tc_toy_dance_spot, name: 춤추는 자리, parent: tc_toy_garden, access: staff, note: "정원 한가운데 둥근 잔디. 오도가 71년째 매일 같은 춤을 추는 자리"}
+  - {id: tc_servants_room, name: 인간 시녀·하인 방, xy: [430, 620], kind: quarters, access: serf, hours: "24시", note: "궁정 아래층. 엘린이 겨울 반나절만 장난감 정원으로 가는 자리. 문은 철 못을 박지 않아 잠들면 계절이 바뀐다"}
+  - {id: tc_kitchen, name: 페이 주방, xy: [540, 600], kind: kitchen, access: staff, hours: "24시", note: "페이의 음식. 세 번 먹으면 숲 밖 음식이 재 맛이 난다. 인간 하인은 먹지 않고 나르기만 한다"}
+  - {id: tc_stone_hollow, name: 조약돌 구덩이, xy: [700, 640], kind: hollow, access: secret, hours: "20:00-22:00", note: "돌 세는 자들이 저녁에 모이는 얕은 구덩이", hidden: "구덩이 가운데 큰 돌 하나 — 니나가 처음 주운 날의 돌. 주머니 속 돌 23인분의 총합이 그 아래 묻혀 있다"}
+  # ── 궁정의 귀족·직분 ──
+  - {id: tc_summer_court, name: 여름 궁정, xy: [680, 380], kind: court, access: staff, hours: "24시", note: "인간 아이를 모으는 궁정. 은방울 부인이 아이들을 세지 않고 이름으로 부른다", hidden: "아이 열여섯 명이 이름 없이 머무는 방. 그중 둘은 회색여울 강변 움막 7호의 '사라진 아이 둘'"}
+  - {id: tc_winter_court, name: 겨울 궁정, xy: [320, 380], kind: court, access: staff, hours: "24시", note: "인간의 기억을 모으는 궁정. 엉겅퀴 공이 대붕괴 당시 아스테리아 인간의 기억 한 해를 지닌다", hidden: "기억의 병 하나에 '불타는 하얀 도시'의 한 장면 — 이졸이 아이들에게 묻는 꿈과 닮았다"}
+  - {id: tc_nursery_workshop, name: 바꿔치기 작업실, xy: [700, 740], kind: workshop, access: staff, hours: "08:00-18:00", note: "나뭇가지와 그림자로 대체품을 만드는 방. 실뜨기와 유리 손가락 부인이 공동으로 쓴다", hidden: "작업대 위 아직 이름을 받지 못한 대체품 열두 개 — 하나는 회색여울 쪽으로 보낼 예정"}
+  - {id: tc_knights_yard, name: 가시 기사 마당, xy: [500, 700], kind: yard, access: staff, hours: "05:00-09:00", note: "가시 기사 13이 말씀을 겨루는 마당. 칼은 걸어 둔다"}
+  - {id: tc_hunt_kennel, name: 사냥개 집, xy: [760, 280], kind: kennel, access: staff, hours: "24시", note: "그림자 사냥개를 길들이는 곳. 새벽 사냥꾼이 숲에 든 자를 놀이로 쫓는다"}
+  - {id: tc_hedge, name: 경계 가시울타리, xy: [100, 250], kind: border, access: public, hours: "24시", note: "가시 궁정 바깥 둘레. 가시 기사가 초대 여부를 묻는 곳. 철 못이 박힌 말뚝이 드문드문 있다"}
+  - {id: tc_mushroom_ring, name: 돌아오지 않는 오솔길 (버섯 고리 곁), xy: [260, 330], kind: path, access: public, hours: "24시", note: "쓰러진 나무 곁에 버섯 고리. 니블이 사는 곳. 원 안으로 발을 들이면 장난감이 된다", hidden: "쓰러진 나무 속 구멍에 엘린이 어릴 때 남긴 손톱 자국 — 페이어 낱말 아홉 개"}
+outer:
+  - {id: lost_child_stone__backwards_brook, name: 거꾸로 흐르는 시내, hours: 47, node: lost_child_stone}
+  - {id: thornmist__second_mothers, name: 두번째 엄마들의 마을 (철 울타리), hours: 60, node: lost_child_stone}
+  - {id: thornmist__south_tower, name: 숲 남쪽 경계 폐탑, hours: 20, node: thorn_court}

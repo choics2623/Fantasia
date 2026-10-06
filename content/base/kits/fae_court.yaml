@@ -1,0 +1,109 @@
+# 지역 생성 키트 — 페이 궁정·가시안개 숲 (25_REGION_KITS.md). 가시 궁정, 안개 장터, 장난감 정원, 두번째 엄마들의 마을, 숲 경계의 이 모든 곳이 이것으로 태어난다.
+# 원천: REGIONS §6 (가시안개 숲), fac_fae(관습·법·위계), fac_laugh_shards, docs/world/people/thornmist.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_fae.law / customs / ranks 를 본다. 여기에는 '숲에만 있는 재료'(약속의 문법, 칭호의 계절 바뀜, 시간의 왜곡, 이름·목소리·기억의 값, 철)를 더한다.
+# 이 키트의 사람들은 하루라는 단위가 없다 — 일과는 '불리는 순서'에 가깝다. 엔진 호환을 위해 24시 블록으로 적었지만 페이는 같은 일과를 두 번 같게 하지 않는다(alt 확률을 크게 둔다).
+id: kit_fae_court
+applies_to: [가시안개 숲, 가시 궁정, 안개 장터, 장난감 정원, 두번째 엄마들의 마을, 아이 잃은 돌, 숲 남쪽 경계]
+reuses: []
+faction_refs: [fac_fae, fac_laugh_shards, fac_eldar, fac_swamp_hags, fac_nameless]
+time_rules:          # 숲 안 시간 — 위치 엔진은 쓰지 않는다. 판정·분위기용
+  - {id: tr_entry, rule: "진입 시 의지 판정. 실패하면 바깥 날짜가 1d7일 지난다. 숲 안 하루가 바깥 1~7일일 수 있다"}
+  - {id: tr_season, rule: "숲 안 계절은 실제 달력과 30% 확률로 어긋난다 (여름에 서리, 겨울에 꽃)"}
+  - {id: tr_brook, rule: "거꾸로 흐르는 시내를 따라가면 자기 몸만 1d3일 되감긴다 (바깥 시간은 그대로)"}
+  - {id: tr_iron, rule: "철을 지니면 페이의 길이 닫힌다 — 안내도 받을 수 없다. 철 울타리 안(두번째 엄마들의 마을)은 페이의 법이 약하다"}
+names:
+  페이:
+    # 이름 있는 페이는 '진짜 이름'을 쓰지 않는다. 칭호는 물건·동작·계절에서 따온 별칭이며 계절마다 바뀔 수 있다. 진짜 이름을 입에 올리면 이름 수집가가 가져간다.
+    title_patterns: ["{물건} 공 / 공작 / 부인 / 기사", "{동작}하는 {직책}", "거꾸로 {동작}하는 이", "{감각} 시녀"]
+    titles_noble: [재채기 공작, 엉겅퀴 공, 은방울 부인, 유리 손가락 부인, 세 번 웃는 기사, 녹슨 장미 기사, 휘파람 판사, 이름 수집가, 거울 시녀 어제, 거울 시녀 아니, 거울 시녀 혹시, 실뜨기]
+    epithet: [이슬, 먼지, 반딧, 살구, 서리, 발소리, 속삭임, 문턱, 접시, 두 번째 그림자]
+    pixie_rule: "작은 이(픽시)는 이름이 없고 별명만 있다 — 웃음꽃, 버섯눈, 코골이. 대부분 수명 1~30년이며 니블만 900세다"
+    changeling_rule: "바꿔치기 페이 아이는 인간 이름으로 자란다. 숲으로 돌아오면 이름을 내놓아야 한다"
+  인간:
+    # 숲의 인간은 '이름을 빼앗긴 이'가 많다. 쓰는 이름은 별명이거나 페이가 붙여 준 장난감 이름이다. 진짜 이름은 이름 무덤의 유리병 속에 있다.
+    male_nick: [오도, 토비, 이끼, 모자, 다섯째, 외눈, 가락, 풍뎅이, 껍질, 말씨]
+    female_nick: [엘린, 엘레노르, 니나, 거울, 방울, 실, 별꽃, 이슬, 담쟁이, 조약돌]
+    given_by_fae: ["{n}번째 장난감", "접시 든 {이름}", "춤추는 {이름}", "거꾸로 웃는 {이름}"]
+    returned_rule: "바꿔치기 출신(돌아온 아이)은 성인이 되면 이름을 하나 되찾는다. 두번째 엄마들의 마을에서 그 이름으로 불린다"
+    stone_counter_rule: "돌 세는 자들은 조약돌 하나를 하루로 센다. 주머니 속 돌이 이름 대신이다"
+    garden_exile_rule: "실바렌에서 '잊힌' 정원지기 출신은 번호를 기억한다 — 두번째 엄마들의 마을에서는 번호를 부르지 않는다"
+classes:            # 숲 인간 약 700, 페이 2,000 이상(변신하므로 확정 불가)
+  페이 궁정귀족: 0.01
+  이름 있는 페이: 0.05
+  작은 이 (픽시 등): 0.12
+  가시 기사: 0.005
+  장난감 (인간): 0.6
+  돌아온 아이: 0.05
+  두번째 엄마: 0.16
+jobs:
+  - {id: toy_gardener, name: 장난감 정원의 인간 (여왕의 놀이 상대), class: 장난감 (인간), race: 인간, weight: 12, schedule: sch_toy_garden}
+  - {id: toy_servant, name: 궁정의 인간 하인 (접시·거울 시중), class: 장난감 (인간), race: 인간, weight: 10, schedule: sch_court_servant}
+  - {id: market_slave, name: 안개 장터 상인 노예, class: 장난감 (인간), race: 인간, weight: 8, schedule: sch_market}
+  - {id: stone_counter, name: 돌 세는 자, class: 장난감 (인간), race: 인간, weight: 3, schedule: sch_stone_counter}
+  - {id: second_mother, name: 두번째 엄마 (바꿔치기 아이를 맡아 기르는 여성), class: 두번째 엄마, race: 인간, sex: female, weight: 8, schedule: sch_second_mother}
+  - {id: returned_child, name: 돌아온 아이 (바꿔치기 출신 청소년), class: 돌아온 아이, race: 인간, age: [8, 19], weight: 3, schedule: sch_returned_child}
+  - {id: fae_noble, name: 이름 있는 페이 (궁정 귀족), class: 페이 궁정귀족, race: 페이, weight: 4, schedule: sch_fae_noble}
+  - {id: fae_named, name: 이름 있는 페이 (직분을 가진), class: 이름 있는 페이, race: 페이, weight: 6, schedule: sch_fae_named}
+  - {id: fae_small, name: 작은 이 (픽시·도깨비불), class: 작은 이 (픽시 등), race: 페이, weight: 10, schedule: sch_fae_small}
+  - {id: thorn_knight, name: 가시 기사 (13), class: 가시 기사, race: 페이, weight: 1, schedule: sch_thorn_knight}
+  - {id: dawn_hunter, name: 새벽 사냥꾼, class: 이름 있는 페이, race: 페이, weight: 2, schedule: sch_dawn_hunter}
+  - {id: changeling_maker, name: 바꿔치기 장인, class: 이름 있는 페이, race: 페이, weight: 1, schedule: sch_changeling_maker}
+schedules:          # at = 정착지 틀의 역할(role). 페이는 블록 사이를 비워 두는 일이 잦다 — 비면 home 으로 돌아간다
+  sch_toy_garden:     [{days: all, from: "05:00", to: "08:00", at: toy_garden, doing: 정원에서 춤 연습 — 여왕이 부르기 전에 몸을 푼다}, {days: all, from: "08:00", to: "13:00", at: toy_garden, doing: 페이가 부르는 대로 춤추고 노래한다 — 부르지 않으면 서서 기다린다, alt: {p: 0.4, at: court_hall, doing: 궁정 홀에서 접시를 든다}}, {days: all, from: "13:00", to: "14:00", at: toy_garden, doing: 페이의 음식 — 세 번째 먹는 날을 센다}, {days: all, from: "14:00", to: "19:00", at: toy_garden, doing: 수수께끼를 맞히거나 짐승이 된다, alt: {p: 0.3, at: maze, doing: 미로에서 길 잃은 척하는 놀이}}, {days: all, from: "19:00", to: "04:30", at: servants_room, doing: 잔다 — 잠든 사이에도 계절이 바뀐다}]
+  sch_court_servant:  [{days: all, from: "05:00", to: "09:00", at: servants_room, doing: 접시와 거울 닦기}, {days: all, from: "09:00", to: "18:00", at: court_hall, doing: 궁정 시중 — 눈을 들지 않고 이름을 입에 올리지 않는다, alt: {p: 0.3, at: mirror_chamber, doing: 거울 시녀 곁에서 시중}}, {days: all, from: "18:00", to: "22:00", at: kitchen, doing: 페이의 음식을 나른다 — 자신은 먹지 않는다}, {days: all, from: "22:00", to: "05:00", at: servants_room, doing: 잔다}]
+  sch_market:         [{days: all, from: "06:00", to: "12:00", at: fog_market, doing: 노점을 펴고 저울을 닦는다 — 값은 아픔의 무게로}, {days: all, from: "12:00", to: "13:00", at: fog_market, doing: 안개 속에서 선 채로 점심}, {days: all, from: "13:00", to: "20:00", at: fog_market, doing: 손님(페이·인간)에게 기억과 이름을 판다, alt: {p: 0.2, at: name_grave, doing: 이름 무덤 곁에서 병을 나른다}}, {days: all, from: "21:00", to: "05:00", at: servants_room, doing: 잔다}]
+  sch_stone_counter:  [{days: all, from: "06:00", to: "07:00", at: stone_hollow, doing: 조약돌 하나를 주워 하루를 센다}, {days: all, from: "08:00", to: "17:00", at: toy_garden, doing: 페이가 시키는 일을 하며 주머니 속 돌을 센다, alt: {p: 0.3, at: court_hall, doing: 궁정에서 접시를 든다}}, {days: all, from: "20:00", to: "22:00", at: stone_hollow, doing: 돌 세는 자들의 낮은 모임 — 오늘 돌의 수를 맞춘다}, {days: all, from: "22:00", to: "05:30", at: servants_room, doing: 잔다}]
+  sch_second_mother:  [{days: all, from: "05:00", to: "07:00", at: second_mothers, doing: 공동 화덕에 불을 지핀다}, {days: all, from: "07:00", to: "12:00", at: second_mothers, doing: 바꿔치기 아이를 돌본다 — 철 못을 문턱에 박는다}, {days: all, from: "12:00", to: "13:00", at: second_mothers, doing: 공동 점심}, {days: all, from: "13:00", to: "18:00", at: second_mothers, doing: 철 울타리 손질과 빨래}, {days: all, from: "18:00", to: "22:00", at: second_mothers, doing: 화덕가에서 이야기 — 아이의 진짜 이름을 속삭이지 않는다}, {days: all, from: "22:00", to: "05:00", at: second_mothers, doing: 잔다}]
+  sch_returned_child: [{days: all, from: "06:00", to: "12:00", at: second_mothers, doing: 철 울타리 안에서 일한다 — 페이어가 들리면 귀를 막는다}, {days: all, from: "13:00", to: "18:00", at: second_mothers, doing: 어린 바꿔치기 아이를 돌본다, alt: {p: 0.3, at: lost_stone, doing: 아이 잃은 돌 곁에서 신발을 센다}}, {days: all, from: "19:00", to: "21:00", at: second_mothers, doing: 화덕가에서 이름을 되찾는 연습}, {days: all, from: "21:00", to: "05:30", at: second_mothers, doing: 잔다}]
+  sch_fae_noble:      [{days: all, from: "10:00", to: "14:00", at: throne_room, doing: 궁정 접견 — 약속을 받는다, alt: {p: 0.5, at: court_hall, doing: 궁정 홀에서 구경한다}}, {days: all, from: "16:00", to: "20:00", at: ballroom, doing: 춤을 구경하며 농담을 던진다}, {days: all, from: "22:00", to: "04:00", at: throne_room, doing: 방이 바뀌는 시각 — 새 방을 찾는다}]
+  sch_fae_named:      [{days: all, from: "08:00", to: "12:00", at: court_hall, doing: 직분을 맡은 놀이 — 이름 수집, 거울 닦기, 판결, alt: {p: 0.5, at: fog_market, doing: 안개 장터를 돌며 값을 흥정한다}}, {days: all, from: "14:00", to: "20:00", at: court_hall, doing: 궁정의 질문에 답한다}, {days: all, from: "22:00", to: "05:00", at: throne_room, doing: 불리기를 기다린다}]
+  sch_fae_small:      [{days: all, from: "05:00", to: "21:00", at: fog_market, doing: 안개 속을 날아다니며 장난을 치고 소문을 퍼뜨린다, alt: {p: 0.5, at: court_hall, doing: 궁정 구석에서 속닥인다}}, {days: all, from: "21:00", to: "05:00", at: mushroom_ring, doing: 버섯 고리 곁에서 존다}]
+  sch_thorn_knight:   [{days: all, from: "05:00", to: "09:00", at: knights_yard, doing: 가시 기사의 훈련 — 검이 아니라 말씀을 겨룬다}, {days: all, from: "09:00", to: "18:00", at: lost_stone, doing: 숲 경계를 돌며 약속을 이행시킨다 — 초대 없는 이를 장난감으로 만든다, outdoor: true}, {days: all, from: "18:00", to: "23:00", at: maze, doing: 미로 벽을 따라 순찰}, {days: all, from: "23:00", to: "05:00", at: knights_yard, doing: 쉰다}]
+  sch_dawn_hunter:    [{days: all, from: "04:00", to: "09:00", at: maze, doing: 숲에 들어온 자를 놀이로 쫓는다, outdoor: true}, {days: all, from: "09:00", to: "18:00", at: hunt_kennel, doing: 그림자 사냥개를 길들인다}, {days: all, from: "18:00", to: "23:00", at: lost_stone, doing: 경계에서 냄새를 맡는다, outdoor: true}, {days: all, from: "23:00", to: "04:00", at: hunt_kennel, doing: 쉰다}]
+  sch_changeling_maker: [{days: all, from: "08:00", to: "18:00", at: nursery_workshop, doing: 나뭇가지와 그림자로 대체품을 만든다}, {days: all, from: "20:00", to: "23:00", at: lost_stone, doing: 숲 밖 아이를 점찍는다 — 어느 집에 놓을지 정한다}, {days: all, from: "23:00", to: "08:00", at: nursery_workshop, doing: 쉰다}]
+voices:
+  - {id: v_fae_promise, name: 약속의 문법으로 말하는 페이, register: "거래의 말. '이만큼의 대가로 이만큼을'. 사실은 말하지 않고 약속만 한다. 상대를 직책이나 별칭으로만 부른다", tics: ["'대가는?'", "'약속이다.'"], use: [약속, 대가, 초대, 놀이, 빚, 이름], avoid: [고맙다, 미안하다, 진짜 이름, 철, 거짓말], sample: "대가는? 이 말 한마디에 네 첫 글자 하나. 약속이다. 되돌릴 수 없는 약속."}
+  - {id: v_fae_riddle, name: 수수께끼로 답하는 페이, register: "질문에 질문, 답은 비유로. 참인 것만 돌려 말하고 거짓은 반대말로 한다", tics: ["'그것은 무엇일까.'"], use: [무엇일까, 거꾸로, 계절, 문, 그림자], avoid: [예, 아니오, 모른다], sample: "문이 열리면 닫히고 닫히면 열리는 것. 그것은 무엇일까. 맞히면 길을 하나 열고, 틀리면 이름을 하나 닫지."}
+  - {id: v_fae_inverse, name: 반대말로 말하는 픽시, register: "진실을 말하면 그 말에 묶이므로 모든 말을 뒤집는다. 가르침도 거꾸로", tics: ["'절대 아니야.'"], use: [반대로, 틀렸어, 맞아(=틀림), 잘했어(=못했어)], avoid: [진실, 맹세, 철], sample: "잘했어. 정말 못했어. 오늘도 거꾸로 들어, 그래야 배우니까."}
+  - {id: v_fae_mirror, name: 거울 시녀, register: "한 가지 시제·한 가지 부정으로만 말한다 — 어제 / 아니 / 혹시. 감정 없는 평평한 소리", tics: ["'어제는…'", "'아니.'", "'혹시…'"], use: [어제, 아니, 혹시, 거울, 얼굴], avoid: [오늘, 내일, 예], sample: "어제는 네 얼굴이 하나였어. 오늘 거울은 아직 말하지 않았고."}
+  - {id: v_toy_human, name: 장난감 정원의 인간, register: "페이 앞에서는 말끝을 삼키고 몸으로 답한다(춤·절). 인간끼리는 낮은 속삭임. '고맙다'를 입에 올리지 않는다", tics: ["'받았습니다.'", "(고개를 한 번 숙임)"], use: [놀이, 춤, 접시, 부르심, 계절], avoid: [고맙다, 진짜 이름, 철, 집], sample: "(낮게) 부르심을 받았습니다. 고맙다고는… 안 합니다. 빚이 되니까."}
+  - {id: v_stone_counter, name: 돌 세는 인간, register: "숫자로 말한다. '돌 몇 개째'. 시간 이야기에는 목소리가 낮아진다", tics: ["'돌이 몇 개째지.'"], use: [돌, 개째, 하루, 바깥, 주머니], avoid: [계절, 영원, 고맙다], sample: "돌이 몇 개째지. 내 주머니엔 이천삼백일흔여덟 개. 바깥은 그만큼 갔다."}
+  - {id: v_second_mother, name: 두번째 엄마, register: "철 울타리 안에서는 거칠고 따뜻한 말. 아이의 진짜 이름은 속삭이지 않고 숨으로 부른다", tics: ["'철 못을 잊지 마.'"], use: [철 못, 문턱, 화덕, 우리 아이, 숨], avoid: [페이 이름, 고맙다, 약속], sample: "철 못 잊지 마. 문턱에 하나, 침대 발치에 하나. 우리 아이는 우리가 지켜."}
+  - {id: v_thorn_knight, name: 가시 기사, register: "말씀을 겨루는 기사. 정중하나 문장 끝에 '약속이니까'가 붙는다. 칼보다 말이 날카롭다", tics: ["'약속이니까.'"], use: [초대, 약속, 경계, 장난감, 이행], avoid: [고맙다, 실수, 용서], sample: "초대 없이 선 자는 이 문턱에서 장난감이 된다. 약속이니까. 나도 어쩔 수 없다."}
+temperaments: [변덕, 심술, 호기심, 무심, 장난, 겁, 체념, 다정, 영리, 집착, 계산, 고독, 약속에 묶임, 분노, 웃음, 멍함]
+city_customs:       # 법·관습 본문은 fac_fae.law / customs
+  - "한 번 한 약속은 반드시 지켜진다. 원하든 원하지 않든 — 약속 그 자체가 집행자다"
+  - "'고맙다'고 말하면 빚이 생긴다. 페이가 아무 때나 갚으라고 할 수 있다 — 인간은 '받았습니다'라고 말한다"
+  - "진짜 이름을 말하면 이름 수집가가 가져간다. 빼앗긴 이름은 이름 무덤의 유리병에 담겨 묻힌다"
+  - "여왕의 이름을 부르면 여왕의 주의가 닿는다 — 결과는 무작위, 대개 끔찍하다"
+  - "음식을 세 번 먹으면 숲 밖 음식이 재 맛이 난다. 세 번 넘은 인간은 숲을 떠나면 7일 안에 굶주림 판정 −20"
+  - "철을 지니고 들어오면 길이 닫힌다. 철 울타리 안에서는 페이의 법이 약하다"
+  - "긴밤월에는 '가시 무도회'가 열린다. 초대받은 인간은 돌아오지 않거나 무언가를 잃고 돌아온다"
+  - "페이어를 배우면 미친다는 전설은 거짓이 아니다 — 엘린은 밤마다 손바닥에 낱말을 써서 잊지 않으려 한다"
+settlement_templates:
+  - id: tpl_fae_court
+    name: 페이 궁정 (가시 궁정형)
+    grid: {w: 1000, h: 900}
+    roles:
+      throne_room:   {count: [1, 1], place: "가시나무가 엮인 궁정 한가운데. 방이 매일 바뀐다", access: owner, name: 왕좌의 방}
+      court_hall:    {count: [1, 1], place: "왕좌의 방 남쪽", access: staff, name: 궁정 홀}
+      ballroom:      {count: [1, 1], place: "궁정 동쪽", access: staff, name: 무도회장}
+      mirror_chamber: {count: [0, 1], place: "왕좌의 방 곁", access: owner, name: 거울 방}
+      judge_hall:    {count: [0, 1], place: "궁정 홀 서쪽", access: staff, name: 웃음 재판 홀}
+      maze:          {count: [1, 1], place: "궁정 북쪽", access: public, name: 가시 미로}
+      name_grave:    {count: [1, 1], place: "궁정 서쪽", access: staff, name: 이름 무덤}
+      fog_market:    {count: [1, 1], place: "궁정 바깥 남서쪽 안개 속", access: public, name: 안개 장터}
+      toy_garden:    {count: [1, 1], place: "궁정 정원", access: staff, name: 장난감 정원}
+      servants_room: {count: [1, 2], place: "궁정 아래층", access: serf, name: 인간 하인 방}
+      kitchen:       {count: [0, 1], place: "궁정 홀 뒤", access: staff, name: 페이 주방}
+      knights_yard:  {count: [0, 1], place: "궁정 남문 안", access: staff, name: 가시 기사 마당}
+      hunt_kennel:   {count: [0, 1], place: "궁정 바깥 북동쪽", access: staff, name: 사냥개 집}
+      nursery_workshop: {count: [0, 1], place: "궁정 바깥 남동쪽", access: staff, name: 바꿔치기 작업실}
+      summer_court:  {count: [0, 1], place: "궁정 동쪽 정원 안", access: staff, name: 여름 궁정}
+      winter_court:  {count: [0, 1], place: "궁정 서쪽 정원 안", access: staff, name: 겨울 궁정}
+      stone_hollow:  {count: [0, 1], place: "궁정 정원 가장자리 구덩이", access: secret, name: 조약돌 구덩이}
+      mushroom_ring: {count: [0, 2], place: "숲 안쪽 빈터", access: public, name: 버섯 고리}
+    outer:
+      lost_stone:      {hours: [3, 6], name: 아이 잃은 돌}
+      second_mothers:  {hours: [3, 6], name: 두번째 엄마들의 마을}
+      south_tower:     {hours: [4, 8], name: 숲 남쪽 경계 폐탑}

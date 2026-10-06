@@ -34,7 +34,7 @@
 # ── 푸른월 ~ 태양월: 맹약회의 313 ──
 - {id: ev_eg_covenant_leave, npcs: [npc_isilea], date: "313-05-17", from: "06:00", to: "09:00", at: silver_leaf_gate, doing: "여왕의 대리인이 은잎문을 나선다 — 바알카르로. 소매 속에 흰 알 섭정안과 '다시 기억'안", travel_from: eg_princess_house}
 - {id: ev_eg_covenant_council, npcs: [npc_isilea], date: "313-05-20", from: "09:00", to: "18:00", at: baalkar, doing: "맹약회의 313 — 엘다르 대리. 잔향 대숙청이냐 현상 유지냐 맹약 균열이냐. 한 박자 어긋남을 선언할 자리", travel_from: eg_princess_house, return_to: eg_princess_house}
-- {id: ev_eg_covenant_wait, npcs: [npc_elastriel, npc_miriel, npc_caelon], date: "313-05-20", from: "09:00", to: "18:00", at: eg_first_tree, doing: "맹약회의 날 — 은잎문과 관리장 처소는 낭송을 멈춘다. 여왕은 대리인의 결과를 '아직' 기억하지 않는다"}
+- {id: ev_eg_covenant_wait, npcs: [npc_elastriel], date: "313-05-20", from: "09:00", to: "18:00", at: eg_root_chamber, doing: "맹약회의 날 — 여왕은 대리인의 결과를 '아직' 기억하지 않는다. 호수에 비친 것을 한 번도 보지 않는다"}
 # ── 건초월·수확월 ──
 - {id: ev_eg_carven_courier_4, npcs: [npc_carven], date: "313-06-20", from: "20:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "네 번째 급사 — 맹약회의 뒤라 서류가 한 겹 더 봉인된다"}
 - {id: ev_eg_harvest_sorting, npcs: [npc_loren, npc_ada, npc_wren], date: "313-07-15", from: "08:00", to: "16:00", at: eg_orchard, doing: "수확월 — 정원 안에는 수확이 없으니 과수원은 늘 같은 열매를 달고 있다. 렌이 가을을 찾아 한 번 더 올려다본다"}

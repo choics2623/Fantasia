@@ -1,0 +1,120 @@
+# 지역 생성 키트 — 요툰 서리땅 (25_REGION_KITS.md). 흐로스가르드: 얼음턱 전당, 뼈울타리 노예 수용지, 울음 고개와 마지막 불, 돌무릎 골짜기.
+# 원천: REGIONS §13, HOUSES §3.5(요툰 씨족)·§4.8(서리손), fac_jotun(얼음 탁자·나눔 식사·덜어냄·노래 한 달), fac_frosthand(자장가), fac_grey_thread(얼음 실).
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_jotun.customs / decision, fac_frosthand 를 본다.
+# 핵심: 요툰은 느리고 먼저 굶는 왕을 세우며, 인간은 씨족 재산이다 — 노예 감독은 다른 인간('서리 목줄')이 한다. 요툰은 인간을 먹지 않는다 (소문은 거짓). 먹을 것을 주지 않을 뿐이다.
+id: kit_jotun_frost
+applies_to: [얼음턱 전당, 뼈울타리, 울음 고개, 마지막 불, 돌무릎 골짜기, 서리 어머니 사당, 깊은우물 온천 지대]
+reuses: [kit_human_serf]       # 인간 노예의 노동 틀은 농노 키트를 쓰되 18시간 경작기와 겨울 얼음 깨기로 바꾼다
+faction_refs: [fac_jotun, fac_frosthand, fac_grey_thread]
+names:
+  요툰:
+    # 요툰은 '이름 + 아비의 이름 + 업적'을 길게 부른다. 짧게 줄이는 것은 모욕. 공적으로는 씨족 별칭('돌무릎', '얼음턱')이 앞선다.
+    # 이름은 느린 모음(ㅜ·ㅡ·ㅗ)과 받침 ㄹ·ㅁ·ㄱ이 많다. 여자 이름은 끝이 '라·다·미'로 열린다.
+    male: [흐림니르, 우트가, 브라기, 오르, 보른, 고르, 흐룸, 스루드, 야른, 베르가, 토르그, 스카디르, 바우그]
+    female: [스칼라, 헬다, 헤임라, 브리미르, 할그리드, 우그라, 길라, 로그미, 요룬]
+    clans: [흐림, 돌팔, 서리눈, 잿턱, 돌무릎, 바위배, 눈늑대가죽, 깊은우물]
+    epithet_rule: "이름 + '○○의 아들/딸 ○○' + 업적. 인간이 줄여 부르면 모욕이다. 별칭은 씨족명(돌무릎 바우그)이며 굶주림을 견딘 해가 늘면 이름이 길어진다"
+    size_note: "서리 요툰 4~5m(언덕 요툰), 돌 요툰은 더 크고 느리다 — 키가 아니라 '굶은 해'가 존칭의 단위"
+  인간:
+    # 서리 인간(서리손)은 서리말을 모국어로 쓴다. 이름은 짧고 북쪽 소리. 씨족의 표식(뼈 구슬·매듭)이 이름 뒤에 붙는다.
+    male: [에이나르, 스벤, 토르, 토르발트, 울프, 올레, 군나르, 라르스, 비욘, 하프단, 시구르, 할르]
+    female: [시그리드, 잉에, 아스타, 호르디스, 라그나, 헤르야, 군데, 아스트리드, 소냐, 순나, 브린야, 토라]
+    given_by_clan: ["{씨족} 뼈 구슬 {n}호", "얼음손", "발가락 없는", "절름", "불 든 이", "솥 맡은 이", "셋째 매듭", "잿귀"]
+    epithet_rule: "씨족이 붙인 표식(뼈 구슬·매듭의 수) + 동료가 부르는 몸의 별명 + 서리말 진짜 이름(어머니의 자장가에만). 서리 목줄은 요툰 씨족 이름을 앞세워 부른다"
+  크릭:
+    male: [빅스, 즈닉, 틱, 핍, 쏙, 삑]
+    female: [찍, 삐야, 치크]
+    note: "서리땅 크릭 약 1,000 — 곡물·모피 거간. 용제국 교역이 끊긴 뒤 곡물값 10배의 장부를 쥔다. 요툰은 크릭을 '작은 계산'이라 부른다"
+  수인족:
+    note: "산장지기 곰 수인 마투쉬 등 소수 — 꿀과 가죽을 받고 서리 길 첫 밤을 재운다"
+  와이번:
+    note: "서리 와이번 흐로아 아래 구역장들 — 짐삯을 받고 산을 넘긴다 (하르바)"
+classes:            # 얼음턱 전당 기준 (요툰 600, 인간 4,000)
+  요툰 씨족장·전사: 0.04
+  요툰 사냥·돌 거인: 0.06
+  인간 노예 (경작·땔감·온천): 0.62
+  인간 노예 (전당 시중·솥): 0.14
+  서리 목줄 (노예 맏이): 0.04
+  인간 자유 안내인 (얼음 실): 0.01
+  크릭 거간: 0.02
+  기타 (수인·사당 사제): 0.07
+jobs:
+  - {id: barley_slave, name: 굶주린 들 경작 노예, class: 인간 노예 (경작·땔감·온천), race: 인간, weight: 16, schedule: sch_frost_field}
+  - {id: ice_breaker, name: 얼음 깨기·물 긷기, class: 인간 노예 (경작·땔감·온천), race: 인간, weight: 8, schedule: sch_ice_break}
+  - {id: firewood_slave, name: 땔감 하치장 노예, class: 인간 노예 (경작·땔감·온천), race: 인간, weight: 8, schedule: sch_firewood}
+  - {id: spring_tender, name: 온천 관리 노예 (거인의 온천), class: 인간 노예 (경작·땔감·온천), race: 인간, weight: 5, schedule: sch_spring}
+  - {id: whale_oil, name: 고래기름·소금 짜기, class: 인간 노예 (경작·땔감·온천), race: 인간, weight: 4, schedule: sch_oil}
+  - {id: hall_servant, name: 전당 시중 (솥·마당), class: 인간 노예 (전당 시중·솥), race: 인간, weight: 9, schedule: sch_hall_servant}
+  - {id: fire_hut_keeper, name: 불 오두막지기, class: 인간 노예 (전당 시중·솥), race: 인간, weight: 2, schedule: sch_fire_hut}
+  - {id: frost_chain, name: 서리 목줄 (노예 맏이), class: 서리 목줄 (노예 맏이), race: 인간, weight: 4, schedule: sch_chain}
+  - {id: frost_guide, name: 얼음 실 안내인, class: 인간 자유 안내인 (얼음 실), race: 인간, weight: 1, schedule: sch_guide}
+  - {id: jotun_hunter, name: 사냥 거인, class: 요툰 사냥·돌 거인, race: 요툰, weight: 4, schedule: sch_hunter}
+  - {id: jotun_warrior, name: 전사단원 (스카디르), class: 요툰 씨족장·전사, race: 요툰, weight: 3, schedule: sch_warband}
+  - {id: song_apprentice, name: 노래 거인의 제자 (인간 소녀 포함), class: 인간 노예 (전당 시중·솥), race: 인간, weight: 1, schedule: sch_song}
+  - {id: krik_broker, name: 크릭 곡물·모피 거간, class: 크릭 거간, race: 크릭, weight: 2, schedule: sch_broker_frost}
+  - {id: shrine_helper, name: 서리 어머니 사당 시중, class: 기타 (수인·사당 사제), race: 요툰, weight: 1, schedule: sch_shrine_frost}
+schedules:          # at = 정착지 틀의 역할(role). 경작기(여름)는 18시간, 겨울엔 얼음 깨기·땔감·온천.
+  sch_frost_field: [{days: all, from: "04:00", to: "04:30", at: pens, doing: 새벽 매듭 점호 — 서리 목줄이 매듭을 센다, fixed: true}, {days: workday, from: "04:30", to: "12:00", at: field, doing: 굶주린 들 경작 — 얼어붙은 이삭을 줍는다, outdoor: true}, {days: all, from: "12:00", to: "12:40", at: kitchen, doing: "귀리죽 한 그릇 이하 (굶주림월엔 배급 없음)", fixed: true}, {days: workday, from: "12:40", to: "20:00", at: field, doing: 경작, outdoor: true}, {days: all, from: "21:00", to: "04:00", at: pens, doing: 움막}, {days: sabbath, from: "08:00", to: "10:00", at: fire_hut, doing: 불 오두막에서 서리말 노래를 낮게 부른다}]
+  sch_ice_break: [{days: all, from: "05:00", to: "17:00", at: ice_field, doing: 얼음 깨기·물 긷기, outdoor: true}, {days: all, from: "17:00", to: "18:00", at: kitchen, doing: 귀리죽, fixed: true}, {days: all, from: "19:00", to: "05:00", at: pens, doing: 움막}]
+  sch_firewood:  [{days: all, from: "05:00", to: "17:00", at: firewood, doing: 땔감 패기·나르기, outdoor: true}, {days: all, from: "17:00", to: "18:00", at: kitchen, doing: 귀리죽, fixed: true}, {days: all, from: "19:00", to: "05:00", at: pens, doing: 움막}]
+  sch_spring:    [{days: all, from: "05:00", to: "19:00", at: spring, doing: 거인의 온천 청소·물 길어 붓기}, {days: all, from: "19:00", to: "05:00", at: pens, doing: 움막}]
+  sch_oil:       [{days: all, from: "05:00", to: "18:00", at: oil_press, doing: 고래기름 짜기·소금 긁기}, {days: all, from: "19:00", to: "05:00", at: pens, doing: 움막}]
+  sch_hall_servant: [{days: all, from: "04:00", to: "20:00", at: kitchen, doing: 큰 솥 곁 — 거인의 식탁 시중}, {days: all, from: "21:00", to: "04:00", at: pens, doing: 움막}]
+  sch_fire_hut:  [{days: all, from: "00:00", to: "24:00", at: fire_hut, doing: 불 오두막 불을 꺼뜨리지 않는다 — 노예들이 교대로 와서 언 손을 녹인다}]
+  sch_chain:     [{days: all, from: "04:00", to: "04:30", at: pens, doing: 새벽 매듭 점호, fixed: true}, {days: workday, from: "04:30", to: "19:00", at: field, doing: 노예 감독 — 매듭 끈으로 머릿수를 센다, outdoor: true}, {days: all, from: "19:00", to: "21:00", at: chain_post, doing: 씨족 장부에 머릿수를 올린다}, {days: all, from: "21:00", to: "04:00", at: chain_post, doing: 맏이 방}]
+  sch_guide:     [{days: all, from: "00:00", to: "24:00", at: last_fire, doing: 마지막 불 곁에서 다음 무리를 기다린다 — 바위 밑 서리말 룬을 새로 새긴다}]
+  sch_hunter:    [{days: all, from: "04:00", to: "18:00", at: hunting, doing: 눈 위 사냥 — 늑대·순록, outdoor: true}, {days: all, from: "18:00", to: "04:00", at: clan_hall, doing: 씨족 회관 식탁}]
+  sch_warband:   [{days: all, from: "05:00", to: "12:00", at: barracks, doing: 전사단 훈련 — 돌 망치 휘두르기}, {days: all, from: "12:00", to: "13:00", at: barracks, doing: 같은 고기를 나눠 먹는다}, {days: all, from: "13:00", to: "20:00", at: barracks, doing: 막사 대기}]
+  sch_song:      [{days: all, from: "07:00", to: "12:00", at: song_hall, doing: 노래 거인 곁에 앉아 한 구절씩 외운다}, {days: all, from: "12:00", to: "19:00", at: kitchen, doing: 솥 곁 시중 — 입 모양으로 외운 구절을 되뇐다}, {days: all, from: "21:00", to: "07:00", at: pens, doing: 움막}]
+  sch_broker_frost: [{days: workday, from: "08:00", to: "17:00", at: krik_stall, doing: 곡물 장부 — 매일 값이 오른다}, {days: all, from: "17:00", to: "08:00", at: krik_stall, doing: 천막 안}]
+  sch_shrine_frost: [{days: all, from: "05:00", to: "19:00", at: shrine, doing: 사당의 얼음 쓸기·제단 곁 시중}, {days: all, from: "19:00", to: "05:00", at: shrine, doing: 동굴 곁방}]
+voices:             # 말투 원형 — 요툰은 느리고, 인간은 짧고, 목줄은 둘 다에게 가혹하다
+  - {id: v_slow_giant, name: 느린 요툰, register: "한 문장을 말하고 숨을 고른다. 하오체와 하게체 사이. 서두르는 상대는 의심한다. 인간은 '작은 이'라 부른다", tics: ["'같은 고기를 먹었는가?'", "'(숨을 고른다)'"], use: [고기, 굶은 해, 얼음, 식탁, 아비, 어머니], avoid: [빨리, 곧, 서둘러, 거짓(에둘러 말하지 않는다)], sample: "(숨을 고른다) 작은 이여. 같은 고기를 먹었는가. 먹지 않았다면 이 식탁에서 말하지 마라."}
+  - {id: v_song_giant, name: 노래하는 거인, register: "말이 가락에 얹힌다. 낮은 목소리로 구절을 길게 늘인다. 질문에는 선례로 답한다", tics: ["'옛 노래에 이르기를.'"], use: [노래, 선례, 달, 아비의 아비, 서리 어머니], avoid: [지금, 내 생각, 결정], sample: "옛 노래에 이르기를 — 먼저 굶은 자가 먼저 일어선다. 일어선 자의 그림자 안에서는 먹지 마라."}
+  - {id: v_frost_human, name: 서리 인간, register: "서리말이 섞인 짧은 반말. 북쪽을 보고 말하지 않는다. 거인에게는 천천히, 높임말 대신 '아비의 이름'을 부른다", tics: ["'서리 어머니가 본다.'", "'북쪽은 보지 마.'"], use: [불, 솥, 얼음, 매듭, 남쪽, 손], avoid: [탈주(그들은 '남쪽으로 간다'고 한다), 희망, 요툰을 괴물이라 부르기], sample: "서리 어머니가 본다. 북쪽은 보지 마. 불 곁으로 와, 손부터 녹여."}
+  - {id: v_frost_chain, name: 서리 목줄, register: "인간에게 거칠고 단조로운 반말. 요툰 앞에서는 바닥까지 낮춘 서리말 존대. 머릿수를 큰 소리로 센다", tics: ["'매듭 세어라.'", "'오늘 몇이 빈다.'"], use: [매듭, 머릿수, 덜어냄, 배급, 씨족 이름], avoid: [동족, 탈주(그는 '실종'이라 한다)], sample: "매듭 세어라. 오늘 몇이 빈다. 빈 숫자는 내가 아니라 씨족 장부에 적힌다."}
+  - {id: v_frost_guide, name: 얼음 실 안내인, register: "말이 거의 없다. 날씨와 짐으로 말한다 — '짐이 셋', '바람이 맵다'", tics: ["'바람이 맵다.'"], use: [짐, 바람, 불, 룬, 고개, 사흘], avoid: [이름, 탈주, 요툰], sample: "짐이 셋이다. 바람이 맵다. 사흘 안에 고개를 못 넘으면 불 곁에 두고 간다."}
+  - {id: v_krik_broker, name: 곡물 거간 크릭, register: "빠른 혀 차는 소리와 존대. 값을 말할 때 목소리가 높아진다. 요툰에게는 '큰 분께서'", tics: ["'큰 분께서.'", "'값은 오늘 아침 그대로입니다.'"], use: [섬, 값, 장부, 오늘 아침, 교역, 중단], avoid: [굶주림, 자유], sample: "큰 분께서 물으시니 답합죠. 보리 한 섬이 어제보다 한 뼘 올랐습니다. 값은 오늘 아침 그대로입니다."}
+temperaments: [과묵, 완고, 느림, 굶주림, 다정, 의심, 체념, 자존, 비굴, 영리, 잔혹, 경건, 겁, 앙심, 계산]
+frost_customs:      # 서리땅에서만 있는 것 — 법·관습 본문은 fac_jotun.law/customs
+  - "'같은 고기를 먹었는가?'가 인사다. 처음 만나면 고기 한 점을 나눈다 — 먹으면 1년간 싸우지 않는다"
+  - "'서리 어머니가 본다' — 북쪽을 보고 소변 보지 않기. 회색여울까지 전해진 금기다"
+  - "씨족 회관 안에서 불을 피우지 않는다. 그래서 회관 밖에 '불 오두막'을 두고 인간 노예가 지킨다"
+  - "'덜어냄' — 흉년의 굶주림월에 씨족이 먹는 입을 줄인다. 노예는 먼저 덜어지고(배급이 끊기고), 늙은 거인은 스스로 얼음 들판으로 걸어 나간다"
+  - "노예는 씨족 재산이라 얼음 탁자의 안건이 아니다 — 씨족장의 사적 처분. 노예 맏이(서리 목줄)가 같은 인간을 감독한다"
+  - "서리말 노래 — 노래 거인이 한 달씩 걸려 씨족의 역사를 노래하면 노예가 듣고 외운다. 인간의 서리말 노래의 출처다"
+  - "얼음 판결 — 얼어붙은 호수 위에서 먼저 얼음을 깨는 쪽이 진다. 무거운 쪽이 불리해서 굶주림이 덕목이 된다"
+settlement_templates:
+  - id: tpl_frost_hall
+    name: 요툰 전당 (왕궁·씨족 장원형)
+    grid: {w: 900, h: 700}
+    roles:
+      gate:        {count: [1, 1], place: "남쪽 끝", access: public, name: 전당 문 (높이 20m)}
+      hall:        {count: [1, 1], place: "가운데", access: staff, name: 왕좌의 방과 얼음 탁자}
+      clan_hall:   {count: [1, 4], place: "가운데 옆", access: staff, name: 씨족 회관}
+      barracks:    {count: [1, 1], place: "남쪽 아래", access: staff, name: 전사단 막사}
+      granary:     {count: [1, 1], place: "북쪽 안쪽", access: locked, name: 곡물 창고 (비어 간다)}
+      spring:      {count: [1, 2], place: "북쪽", access: staff, name: 온천}
+      kitchen:     {count: [1, 2], place: "동쪽 낮은 쪽", access: serf, name: 큰 솥 마당 (배급)}
+      pens:        {count: [2, 6], place: "가장 낮은 가장자리", access: serf, name: 인간 움막 지대, locked: "점호 이후"}
+      fire_hut:    {count: [1, 2], place: "회관 밖 바람막이 쪽", access: serf, name: 불 오두막}
+      chain_post:  {count: [1, 2], place: "움막 지대 입구", access: staff, name: 서리 목줄 초소}
+      song_hall:   {count: [0, 1], place: "가운데 뒤", access: staff, name: 노래 거인의 방}
+      krik_stall:  {count: [0, 1], place: "문 안쪽", access: public, name: 크릭 거간 천막}
+      ice_field:   {count: [1, 1], place: "얼음 들판 쪽", access: public, name: 얼음 들판}
+      firewood:    {count: [1, 2], place: "움막 옆", access: serf, name: 땔감 하치장}
+    outer:
+      field:     {hours: [1.0, 3.0], name: 굶주린 들}
+      shrine:    {hours: [2.0, 4.0], name: 서리 어머니 빙하 사당}
+  - id: tpl_bone_pens
+    name: 노예 수용지 (뼈울타리형)
+    grid: {w: 700, h: 500}
+    roles:
+      pens:        {count: [8, 24], place: "울타리 안", access: serf, name: 고래뼈 움막, locked: "점호 이후"}
+      chain_post:  {count: [1, 1], place: "문 곁", access: staff, name: 서리 목줄 초소}
+      kitchen:     {count: [1, 2], place: "가운데", access: serf, name: 공동 화덕}
+      fire_hut:    {count: [0, 1], place: "바람막이 쪽", access: serf, name: 불 오두막}
+      firewood:    {count: [1, 1], place: "북쪽", access: serf, name: 땔감 하치장}
+    outer:
+      field:     {hours: [0.5, 2.0], name: 굶주린 들}
+calendar_ref: "content/base/events/hrosgard_312.yaml — 흐로스가르드 사건 달력"

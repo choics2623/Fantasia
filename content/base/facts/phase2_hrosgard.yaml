@@ -1,0 +1,167 @@
+# 흐로스가르드 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). id 접두사 fact_p2hg_. 기존 fact_hg_*(facts/hrosgard.yaml)는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 왕비와 곡창 ──
+- id: fact_p2hg_skala_deepwell_born
+  text: "왕비 스칼라는 깊은우물 씨족 출신이다. 브리미르의 꿈 — '작은 자들이 우리를 먹여 살릴 것' — 을 왕에게 전할 입을 3년째 찾고 있다"
+  truth: true
+  danger: 3
+  names: [스칼라, 브리미르]
+- id: fact_p2hg_skala_feeds_children
+  text: "스칼라는 자기 몫을 매 끼니 인간 시중 아이들에게 돌려 왕보다 더 적게 먹는다. 왕과 따로 먹는 것은 그 때문이다"
+  truth: true
+  danger: 2
+  names: [스칼라]
+- id: fact_p2hg_skala_back_passage
+  text: "왕비의 방 침상 머리 쪽문은 곡창 뒤로 이어진다. 지난달 곡창지기 브라기가 그 문 앞에서 보리 열두 섬을 내렸고, 그 보리는 불 오두막으로 갔다"
+  truth: true
+  danger: 4
+  names: [스칼라, 브라기]
+- id: fact_p2hg_bragi_counts_barley
+  text: "곡창지기 브라기는 마지막 보리 300섬을 매일 센다. 지금은 288섬이다. 열두 섬이 사라진 것을 그는 왕에게 보고하지 않았다"
+  truth: true
+  danger: 4
+  names: [브라기]
+- id: fact_p2hg_bragi_two_keys
+  text: "곡창 바닥판의 열쇠는 둘이다 — 왕과 브라기. 왕은 서리월 3일에 한 번 바닥판을 열어 보고 닫는다"
+  truth: true
+  danger: 3
+  names: [브라기, 흐림니르]
+# ── 씨족장들 ──
+- id: fact_p2hg_ugra_hidden_barley
+  text: "바위배 씨족장 우그라의 씨족 창고에 왕 몰래 보리 120섬이 있다. 남침 때 자기 씨족 전사만 먹이려는 것이다"
+  truth: true
+  danger: 4
+  names: [우그라, 바위배]
+- id: fact_p2hg_ugra_starves_slaves_first
+  text: "바위배 씨족은 노예를 가장 먼저 굶긴다. 그 덜어냄으로 북방 대탈주를 부른 씨족 가운데 하나다"
+  truth: true
+  danger: 2
+  names: [바위배]
+- id: fact_p2hg_helda_gorr_tomb
+  text: "눈늑대가죽 씨족의 시조 고르의 무덤에는 네스티라의 이빨이 박혀 있다. 헬다는 그 이빨에 용족 원한의 맹세를 올린다"
+  truth: true
+  danger: 3
+  names: [헬다, 고르, 네스티라]
+- id: fact_p2hg_helda_spares_frost_scale
+  text: "헬다는 남침에 찬성하지만 서리비늘 혈통의 와이번과는 싸우지 않겠다고 하르바에게 이미 말했다"
+  truth: true
+  danger: 3
+  names: [헬다, 하르바]
+- id: fact_p2hg_brimir_asks_asta
+  text: "브리미르는 아스타를 통역으로 부른다. 깊은우물 씨족과 인간 사이에 협상이 가능한 유일한 길이 그 통역이다"
+  truth: true
+  danger: 3
+  names: [브리미르, 아스타]
+- id: fact_p2hg_brimir_ash_shadow
+  text: "깊은우물 온천 지대는 산 그늘에 막혀 황무지 재가 북풍에 실려 오지 않는다. 그곳의 보리만 3년째 흉작이 아니다"
+  truth: true
+  danger: 3
+  names: [깊은우물]
+- id: fact_p2hg_utga_attack_plan
+  text: "돌팔 씨족장 우트가는 313 푸른월 까마귀 문을 칠 계획이다. 돌 망치 이백과 하르바의 정찰, 썩은이빨 무리를 선봉으로 쓴다. 서리 길이 열린 뒤 보름이면 닿는다"
+  truth: true
+  danger: 5
+  names: [우트가, 까마귀 문]
+- id: fact_p2hg_utga_owns_pens
+  text: "뼈울타리의 인간 6,000은 돌팔 씨족 소유다. 우트가는 서리 목줄 스벤에게 탈주자를 팔 권한을 주되 머릿수를 매달 보고하라고 했다"
+  truth: true
+  danger: 3
+  names: [우트가, 스벤]
+- id: fact_p2hg_orr_war_survivor
+  text: "쇠무릎 오르는 거인 전쟁(SK 2,310~2,390)의 생존자다. 용의 불에 무릎이 쇠처럼 굳어 이름이 그렇게 되었다. 그는 그 전쟁이 끝났다고 믿지 않는다"
+  truth: true
+  danger: 2
+  names: [오르]
+- id: fact_p2hg_orr_calls_skadir_child
+  text: "오르는 스카디르를 '살찐 아이'라 부른다. 따르지는 않지만 명령은 선봉으로서 수행한다 — 스카디르가 굶지 않는 이유를 알기 때문이다"
+  truth: true
+  danger: 3
+  names: [오르, 스카디르]
+# ── 노래와 사당 ──
+- id: fact_p2hg_heimla_song_gunde
+  text: "헤임라의 3,000년 노래에는 거인 전쟁 때 요툰 진영에서 사라진 방패 노예 '군데'가 나온다. 노래는 그가 '거인은 배고픈 아이'라 말했다고 한다 — 서리손 구전과 같은 구절이다"
+  truth: true
+  danger: 3
+  names: [헤임라, 군데]
+- id: fact_p2hg_heimla_dragon_betrayal
+  text: "헤임라의 '거인 전쟁의 진짜 노래'에는 그롬이 아니라 용이 배신을 꾸몄다는 구절이 있다. 이 구절은 얼음 탁자에서 한 번도 낭송되지 않았다"
+  truth: true
+  danger: 4
+  names: [헤임라]
+- id: fact_p2hg_heimla_teaches_ragna
+  text: "헤임라는 인간 노예 소녀 라그나에게 노래를 구절째 가르쳤다. 라그나는 그 구절을 입 모양으로만 외운다 — 소리를 내면 서리 목줄이 듣는다"
+  truth: true
+  danger: 3
+  names: [헤임라, 라그나]
+- id: fact_p2hg_hallgrid_no_sacrifice
+  text: "흉작 이후 인간을 서리 어머니에게 바쳤다는 소문은 거짓이다. 사제 할그리드는 사당에 바쳐진 소녀 헤르야를 죽이지 않고 얼음 쓰는 일을 맡겼다"
+  truth: true
+  danger: 3
+  names: [할그리드, 헤르야]
+- id: fact_p2hg_hallgrid_giant_eye
+  text: "빙하 속에 얼어 있는 신을 붙잡았던 거인의 눈이 지난 세 해에 걸쳐 조금씩 남쪽으로 돌아갔다. 사제 할그리드와 헤르야만 그것을 안다"
+  truth: true
+  danger: 3
+  names: [할그리드, 헤르야]
+# ── 뼈울타리와 마지막 불 ──
+- id: fact_p2hg_sven_sells_frees
+  text: "스벤은 탈주자를 판다. 그러나 매년 해빙월에 한 무리를 일부러 놓아준다 — 서리 길이 열린 첫 사흘 가운데 하루, 울타리 바깥문의 빗장을 올려 둔다"
+  truth: true
+  danger: 4
+  names: [스벤]
+- id: fact_p2hg_sven_sister_sold
+  text: "스벤은 서리 목줄 자리를 얻으려고 열여섯 해 전 자기 누이가 낀 한 무리를 씨족에 팔았다. 누이는 돌아오지 않았다. 해마다 한 무리를 놓아주는 것은 그 값을 치르는 것이라 믿는다"
+  truth: true
+  danger: 4
+  names: [스벤]
+- id: fact_p2hg_inge_carves_runes
+  text: "잉에는 해빙월 서리 길이 열리는 날 마지막 불 바위 밑에 서리말 룬으로 첫 무리가 고개를 넘는 날짜를 새긴다. 룬을 읽는 사람이 곧 까마귀 문에서 기다릴 사람이다"
+  truth: true
+  danger: 3
+  names: [잉에]
+- id: fact_p2hg_inge_thinks_einar_dead
+  text: "잉에는 서리 길에서 낙오한 에이나르의 이름을 사망자 룬 명단에 새겼다. 에이나르가 돌무릎 골짜기에 살아 있다는 것은 아스타와 이름 없는 몇 사람만 안다"
+  truth: true
+  danger: 4
+  names: [잉에, 에이나르]
+- id: fact_p2hg_inge_last_group
+  text: "서리월 1일 북문이 닫히기 전에 보낸 마지막 무리 열둘은 제때 닿지 못한다. 잉에는 그것을 알고도 '물빼기 굴로 가라'고 일렀다 — 굴 이야기는 그녀가 까마귀 문의 삐걱에게서 들은 것이다"
+  truth: true
+  danger: 4
+  names: [잉에, 물빼기 굴]
+# ── 불 오두막과 골짜기 ──
+- id: fact_p2hg_hordis_gunde_words
+  text: "불 오두막지기 호르디스는 '거인은 배고픈 짐승이 아니라 배고픈 아이다'를 대대로 전하는 서리손이다. 이 말을 전당 안에서 큰 소리로 한 적은 없다"
+  truth: true
+  danger: 2
+  names: [호르디스]
+- id: fact_p2hg_hordis_fire_weapon
+  text: "호르디스는 불 오두막의 불이 전당 곡창 지붕 쪽으로 번질 때 어떤 바람이 되는지 안다. 그녀는 그 계산을 한 번도 입 밖에 내지 않았다"
+  truth: true
+  danger: 5
+  names: [호르디스]
+- id: fact_p2hg_runa_chant_whole
+  text: "라그나는 노래 한 달 가운데 열이레째까지를 외웠다. 그 부분에 '용이 다시 칼을 쥐면 거인은 먼저 일어선다'는 구절이 있다"
+  truth: true
+  danger: 3
+  names: [라그나]
+- id: fact_p2hg_halr_counts_short
+  text: "서리 목줄 하랄은 머릿수 매듭을 매일 실제보다 두 개 적게 올린다. 적게 올린 두 사람은 그날 밤 서리 길로 떠난다"
+  truth: true
+  danger: 4
+  names: [하랄]
+- id: fact_p2hg_krik_grain_ledger
+  text: "크릭 거간 삑의 장부에는 용제국 곡물 상인이 AS 311에 교역을 끊으면서 남긴 '재개 조건' 한 줄이 있다. 조건은 서리왕의 남침 포기 서약이다"
+  truth: true
+  danger: 4
+  names: [삑, 서리왕]
+- id: fact_p2hg_torvald_counts_baug
+  text: "돌무릎 씨족장 바우그의 노예 셈쟁이 토르발트는 매듭으로 노예 수를 센다. 아스타가 말하는 800과 바우그의 장부 수가 오십 명 어긋난다. 그는 그 오십을 장부에서 지운 사람이다"
+  truth: true
+  danger: 4
+  names: [토르발트, 바우그, 아스타]
+- id: fact_p2hg_asta_last_200_group
+  text: "아스타는 서리월 전 마지막 200명을 열 명씩 스무 번에 나눠 보낸다. 마지막 무리가 울음 고개를 넘는 날이 낙엽월 29일이다"
+  truth: true
+  danger: 4
+  names: [아스타]

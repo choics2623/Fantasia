@@ -40,11 +40,11 @@
 # ── 313 푸른월 (4) — 서명 회기, 맹약회의 길 ──
 - {id: ev_kz_apr1_session, date: "313-04-01", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa, npc_kz_urla, npc_kz_hag, npc_grimbald], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "푸른월 서명 회기 — 맹약회의 313 두르강 대표 서명. 왕이 부재하는 동안 하그린이 서명 대행을 맡는 조항이 쇠판에 찍힌다", fixed: true}
 - {id: ev_kz_apr15_king_leaves, date: "313-04-15", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa], from: "06:00", to: "09:00", at: dh_king_hall, doing: "왕이 맹약회의 313 길에 오른다 — 서명 대행 조항이 발동하고 하그린이 서명 책상에 선다. 서랍 안 쇠판 세 장이 책상 위로 올라온다"}
-- {id: ev_kz_apr16_hagrin_desk, date: "313-04-16", npcs: [npc_kz_hagrin], from: "06:30", to: "18:00", at: dh_signing_desk, doing: "서명 대행 첫날 — '대기 중 안건 포함' 조항이 걸린 쇠판 세 장 앞에서 하루를 보낸다, if: hilda_pushes_gate"}
-- {id: ev_kz_apr16_hilda_waits, date: "313-04-16", npcs: [npc_hilda], from: "10:00", to: "18:00", at: dh_king_hall, doing: "서명 책상 앞 줄에 선다 — 오빠가 쇠판을 올려놓는 것을 지켜본다, if: hilda_pushes_gate}
+- {id: ev_kz_apr16_hagrin_desk, date: "313-04-16", npcs: [npc_kz_hagrin], from: "06:30", to: "18:00", at: dh_signing_desk, doing: "서명 대행 첫날 — '대기 중 안건 포함' 조항이 걸린 쇠판 세 장 앞에서 하루를 보낸다", if: hilda_pushes_gate}
+- {id: ev_kz_apr16_hilda_waits, date: "313-04-16", npcs: [npc_hilda], from: "10:00", to: "18:00", at: dh_king_hall, doing: "서명 책상 앞 줄에 선다 — 오빠가 쇠판을 올려놓는 것을 지켜본다", if: hilda_pushes_gate}
 # ── 313 태양월 (5) — 맹약회의 ──
-- {id: ev_kz_may_gate_session, date: "313-05-20", npcs: [npc_kz_grodin, npc_kz_krag, npc_kz_sigrun], from: "06:00", to: "20:00", at: deep_gate__seal_door, doing: "왕이 맹약회의에 가 있는 동안 서명 대행이 개방 안건에 서명했다면 — 탐사대가 다섯째 자물쇠 앞에 서고 크라그가 오른손을 든다, if: gate_signed_by_proxy"}
-- {id: ev_kz_may_reseal_ready, date: "313-05-20", npcs: [npc_kz_sigrun], from: "06:00", to: "20:00", at: deep_gate__bardum, doing: "석공 열 명이 열한 겹의 첫 겹을 새기기 시작한다 — 서명 한 줄로 하루 안에 덮으려고, if: gate_resealed"}
+- {id: ev_kz_may_gate_session, date: "313-05-20", npcs: [npc_kz_grodin, npc_kz_krag, npc_kz_sigrun], from: "06:00", to: "20:00", at: deep_gate__seal_door, doing: "왕이 맹약회의에 가 있는 동안 서명 대행이 개방 안건에 서명했다면 — 탐사대가 다섯째 자물쇠 앞에 서고 크라그가 오른손을 든다", if: gate_signed_by_proxy}
+- {id: ev_kz_may_reseal_ready, date: "313-05-20", npcs: [npc_kz_sigrun], from: "06:00", to: "20:00", at: deep_gate__bardum, doing: "석공 열 명이 열한 겹의 첫 겹을 새기기 시작한다 — 서명 한 줄로 하루 안에 덮으려고", if: gate_resealed}
 # ── 313 수확월 (7) ──
 - {id: ev_kz_jul1_session, date: "313-07-01", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa, npc_kz_urla, npc_kz_hag, npc_grimbald], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "수확월 서명 회기 — 맹약회의 313의 결과가 서명 쇠판으로 올라온다. 왕이 돌아왔고, 대행 서명한 것들의 처리가 첫 안건이다", fixed: true}
 # ── 매달 반복 ──

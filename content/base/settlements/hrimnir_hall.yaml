@@ -1,0 +1,63 @@
+# 얼음턱 전당 — 흐로스가르드 왕궁 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §13.9, HOUSES §3.5, fac_jotun, 카드(흐림니르·스카디르·요룬·헤르야 등).
+# grid: 전당 단지 평면 (m), 원점 = 북서쪽 모서리. x 동쪽, y 남쪽. 북쪽(y=0)이 곡창과 온천(빙하 쪽), 남쪽(y=480)이 20m 높이 전당 문과 울음 고개로 가는 서리 길.
+# 요툰은 키가 4~5m(언덕 요툰)에서 그 이상이라 문과 천장이 높다. 걷는 속도는 인간 기준 80m/분 — 거인은 한 걸음이 길어도 느리게 걷는다.
+# 같은 노드에서 걷는 거리는 80m/분. 서리 어머니 사당·돌팔 장원·돌무릎 골짜기는 도보 거리가 길어 outer로, 뼈울타리·울음 고개는 다른 노드라 outer(node)로 두었다.
+id: hrimnir_hall
+name: 얼음턱 전당
+node: hrimnir_hall
+kind: giant_hall
+grid: {w: 720, h: 500}
+curfew: {from: "20:00", to: "04:00", note: "움막 지대 점호 이후 인간은 매듭 점호 없이 움막 밖에 서 있을 수 없다. 전당 문 안쪽은 요툰의 식탁 시간(18:00~24:00)에 인간이 시중 이외로 서 있으면 '그림자 안의 먹기' 금기에 닿는다. 서리월~굶주림월 서리 길 폐쇄"}
+bells:
+  - {at: "04:00", name: 새벽 매듭 점호 (서리 목줄의 호각)}
+  - {at: "12:00", name: 정오 귀리죽 (굶주림월엔 없음)}
+  - {at: "18:00", name: 요툰 식탁 개시 (북 가죽 세 번)}
+  - {at: "20:00", name: 움막 점호}
+patrols: ["21:00", "01:00", "04:00"]
+locations:
+  # ── 왕의 전당 ──
+  - {id: hh_gate, name: 전당 문 (높이 20m), xy: [360, 470], kind: gate, access: public, hours: "05:00-20:00", note: "빙하를 깎은 문. 인간은 문턱 아래 쪽문으로 다닌다. 문 밖 눈이 가장 깊다 — 문지기는 요툰 둘"}
+  - {id: hh_throne_hall, name: 왕좌의 방, xy: [360, 220], kind: hall, access: staff, hours: "08:00-20:00", rooms: [hh_ice_table, hh_king_seat, hh_king_chamber], note: "얼음을 깎은 거대한 방. 기둥이 서리로 하얗다. 왕의 그림자가 닿는 자리에서는 먹지 않는다"}
+  - {id: hh_ice_table, name: 얼음 탁자, parent: hh_throne_hall, access: staff, hours: "겨울 회합 3일", note: "씨족장들이 앉는 얼어붙은 호수 얼음판 같은 탁자. 한 안건은 사흘 — 첫날 제안, 둘째 날 먹기, 셋째 날 답. 표결은 고기다"}
+  - {id: hh_king_seat, name: 왕의 자리, parent: hh_throne_hall, access: staff, note: "왕좌가 아니라 낮은 얼음 의자 — 왕은 먼저 굶는 자라 제일 마른 몸으로 앉는다"}
+  - {id: hh_king_chamber, name: 왕의 침소, parent: hh_throne_hall, access: owner, hidden: "침상 밑 가죽 주머니 — 서리월마다 한 번씩 풀어 주기로 정한 노예 이름 쪽지(AS 311 비밀 칙령의 명단 사본)"}
+  - {id: hh_queen_hall, name: 왕비의 방, xy: [470, 170], kind: hall, access: owner, hours: "07:00-22:00", note: "왕비 스칼라의 거처. 인간 시중 아이들이 부엌처럼 드나든다 — 왕비는 따로 먹는다", hidden: "침상 머리 벽 쪽문 — 곡창 뒤로 이어지는 좁은 통로(왕비와 곡창지기만 안다)"}
+  # ── 곡창과 온천 ──
+  - {id: hh_granary, name: 곡물 창고, xy: [330, 60], kind: store, access: locked, hours: "08:00-16:00 반출 (왕의 열쇠 + 곡창지기)", rooms: [hh_granary_floor], note: "겉은 비어 간다 — 흉작 3년. 보리 자루가 벽 쪽에 몇 개 남았다"}
+  - {id: hh_granary_floor, name: 곡창 바닥 (보리 300섬), parent: hh_granary, access: secret, hidden: "바닥판 밑 — 마지막 보리 300섬 (왕의 남침 군량). 지난달 열두 섬이 줄었다"}
+  - {id: hh_hot_spring, name: 왕의 온천, xy: [440, 80], kind: spring, access: staff, hours: "24시", note: "화산 온천. 인간 노예가 물을 길어 붓고 바닥을 닦는다. 거인이 몸을 담글 때 인간은 벽 쪽에 서 있는다"}
+  # ── 전사단과 씨족 ──
+  - {id: hh_warrior_barracks, name: 전사단 막사, xy: [220, 330], kind: barracks, access: staff, hours: "24시", rooms: [hh_prince_seat], note: "스카디르의 전사단 약 120. 돌 망치가 벽에 걸렸다. 막사 뒤 가죽 헛간은 열지 않는다"}
+  - {id: hh_prince_seat, name: 왕자의 자리, parent: hh_warrior_barracks, access: owner, hidden: "왕자의 자리 아래 얼음 구덩이 — 지난 겨울의 뼈 열한 구 (fact_hg_skadir_eats_slaves)"}
+  - {id: hh_clan_hall, name: 씨족장 숙소, xy: [520, 280], kind: hall, access: staff, hours: "24시", note: "얼음 탁자 때 씨족장들이 머무는 회관. 불은 피우지 않는다. 하인은 불 오두막에서 데운 돌을 들여온다"}
+  - {id: hh_song_hall, name: 노래 거인의 방, xy: [420, 140], kind: hall, access: staff, hours: "07:00-19:00", note: "노래 거인 헤임라의 방. 서리 어머니의 노래가 한 달에 한 번 첫 구절을 올린다. 제자 인간 소녀의 자리가 벽 쪽에 있다"}
+  # ── 인간의 구역 ──
+  - {id: hh_kitchen, name: 큰 솥 마당, xy: [240, 400], kind: canteen, access: serf, hours: "04:00-20:00 (굶주림월 배급 중단)", note: "귀리죽 솥 열두 개. 한 솥이 인간 오백이 먹을 수 있으나 흉작 이후 한 솥이 천 명에게 돌아간다"}
+  - {id: hh_slave_huts, name: 인간 움막 지대, xy: [140, 440], kind: barracks, access: serf, locked: "20:00-04:00", note: "전당 아래 눈 속에 고래뼈를 얹은 움막 약 이백. 인간 4,000 가운데 전당 시중·온천·솥이 산다"}
+  - {id: hh_fire_hut, name: 불 오두막 (회관 밖), xy: [310, 420], kind: hut, access: serf, hours: "24시", note: "회관 밖 바람막이 쪽의 낮은 오두막. 불을 꺼뜨리지 않는다. 노예들이 교대로 와서 언 손을 녹인다 — 불을 무기로 쓸 수 있음을 깨달은 자도 여기서 처음 본다"}
+  - {id: hh_chain_post, name: 서리 목줄 초소, xy: [190, 400], kind: post, access: staff, hours: "24시", note: "노예 맏이들이 머릿수 매듭을 올리는 초소. 요툰 씨족 이름이 문 위에 새겨졌다"}
+  - {id: hh_firewood, name: 땔감 하치장, xy: [100, 380], kind: work, access: serf, hours: "05:00-17:00"}
+  - {id: hh_ice_field, name: 얼음 들판 (덜어냄의 땅), xy: [600, 400], kind: field, access: public, note: "노동 불능자가 걸어 나가거나 버려지는 얼어붙은 들판. 늙은 거인은 스스로 이쪽으로 걸어 나간다. 굶주림월에 가장 많이 선다"}
+  - {id: hh_krik_stall, name: 크릭 거간 천막, xy: [390, 440], kind: market, access: public, hours: "08:00-17:00", note: "용제국 교역이 끊긴 뒤 곡물값이 10배가 된 장부의 천막. 모피와 고래기름을 쌓아 두고 보리를 기다린다"}
+# 전당 밖 — hours = 전당에서 걷는 시간. 다른 노드의 장소는 node로 구분한다.
+outer:
+  - {id: hh__frost_mother, name: 서리 어머니 빙하 사당, hours: 3.0, node: hrimnir_hall}
+  - {id: hh__ice_cave, name: 얼어 있는 거인의 굴 (사당 아래), hours: 3.2, node: hrimnir_hall}
+  - {id: hh__stonefist_hold, name: 돌팔 씨족 장원, hours: 4.0, node: hrimnir_hall}
+  - {id: hh__stoneknee_hold, name: 돌무릎 씨족 장원 (돌무릎 골짜기 위), hours: 9.0, node: hrimnir_hall}
+  - {id: hh__stoneknee_huts, name: 돌무릎 골짜기 노예 움막, hours: 9.2, node: hrimnir_hall}
+  - {id: hh__deepwell_springs, name: 깊은우물 온천 지대, hours: 7.0, node: hrimnir_hall}
+  - {id: hh__hungry_field, name: 굶주린 들 (3년째 흉작), hours: 5.5, node: hrimnir_hall}
+  # 뼈울타리 (다른 노드)
+  - {id: bone_pens__huts, name: 고래뼈 움막 지대, hours: 0, node: bone_pens}
+  - {id: bone_pens__chief_hut, name: 노예 맏이 스벤의 움막, hours: 0, node: bone_pens}
+  - {id: bone_pens__fire, name: 공동 화덕, hours: 0, node: bone_pens}
+  - {id: bone_pens__fence, name: 뼈 울타리 바깥문, hours: 0, node: bone_pens}
+  - {id: bone_pens__hungry_field, name: 굶주린 들 (뼈울타리 쪽), hours: 0, node: bone_pens}
+  # 울음 고개 (다른 노드)
+  - {id: weeping_pass__last_fire, name: 마지막 불 (온천 바위 그늘), hours: 0, node: weeping_pass}
+  - {id: weeping_pass__rune_rock, name: 마지막 불 바위 밑 서리말 룬, hours: 0, node: weeping_pass}
+  - {id: weeping_pass__shelter_cave, name: 대피 동굴 (얼음 실 비상 식량), hours: 0, node: weeping_pass}
+  - {id: weeping_pass__lodge, name: 서리 길 마지막 산장 (곰의 꿀 단지 열 개), hours: 0, node: weeping_pass}
+  - {id: weeping_pass__ogre_cave, name: 썩은이빨 고개 동굴, hours: 0, node: weeping_pass}
+  - {id: weeping_pass__harva_nest, name: 하르바의 둥지 동굴 (울음 협곡 곁), hours: 0, node: weeping_pass}
