@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""docs/world/CHARACTERS.md → content/base/npcs/npcs.json, relations.json
+"""docs/world/CHARACTERS.md (+ SECRETS_AND_HERMITS.md, people/*.md) → content/base/npcs/npcs.json, relations.json
 
 - 인물: §1 색인 표 (ID | 이름 | npc id | 종족·파생종 | 지역 | 역할 | 중요도)
 - 관계: §0.3 규약의 튜플 `[npc_대상 | 유형 | 호감 ±N | 신뢰 ±N | 공개여부 | 메모]`
@@ -12,6 +12,8 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "docs/world/CHARACTERS.md"
+# 같은 형식(색인 표 + ### 항목 + 관계 튜플)을 쓰는 인물 문서들. 지역 열은 '#번호 지역명'으로 쓴다.
+EXTRA = [ROOT / "docs/world/SECRETS_AND_HERMITS.md", *sorted((ROOT / "docs/world/people").glob("*.md"))]
 OUT = ROOT / "content/base/npcs"
 REGION_NAMES = {
     1: "드라크마르 용좌령", 2: "회색여울 변경", 3: "잿불 언덕", 4: "루멘", 5: "실바렌", 6: "가시안개 숲",
@@ -44,8 +46,10 @@ def family(kind, affection):
 
 
 def main():
-    text = SRC.read_text(encoding="utf-8")
-    lines = text.splitlines()
+    lines = []
+    for src in [SRC, *EXTRA]:
+        if src.exists():
+            lines += src.read_text(encoding="utf-8").splitlines() + ["## (문서 끝)"]
     npcs, seen = [], set()
     for line in lines:
         m = re.match(r"\|\s*R?\w+-\w+\s*\|([^|]+)\|\s*`(npc_\w+)`\s*\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|", line)

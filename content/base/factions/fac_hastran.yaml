@@ -148,7 +148,7 @@ relations:
   # HOUSES §2.2 '관계' 서술에서 환산 (행렬 §6.1 밖)
   - {to: fac_kaldaran, stance: 60, note: "혼인 동맹 — 2대"}
   - {to: fac_morgant, stance: -40, note: "경멸 — '국경의 겁쟁이들'"}
-  - {to: fac_varg_guild, stance: 40, note: "탈주자 추격 계약 (id는 바르그 조합 담당 작가 확인)"}
+  - {to: fac_barg, stance: 40, note: "탈주자 추격 계약 (id는 바르그 조합 담당 작가 확인)"}
   - {to: fac_vermion, stance: -40, note: "원한 — 붉은 길 이후 광산 노동력 손실 책임 공방"}
   - {to: fac_granek, stance: 40, note: "군량 공급"}
 toward_echo: "화형 → 단절. 아우락스 진영의 한 축이다. 발레리우스는 대붕괴의 '무언가'를 본 사람이고, 잔향 사냥이 왜 계속되는지 안다 — 증언을 하느냐 불을 끄고 자느냐가 이 가문의 선택이다."

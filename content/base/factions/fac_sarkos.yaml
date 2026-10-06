@@ -144,7 +144,7 @@ secrets:
 
 relations:
   # HOUSES §2.3 '관계' 서술에서 환산 (행렬 §6.1 밖)
-  - {to: fac_varg_guild, stance: 50, note: "공생 — 최대 후원자 (id는 바르그 조합 담당 작가 확인)"}
+  - {to: fac_barg, stance: 50, note: "공생 — 최대 후원자 (id는 바르그 조합 담당 작가 확인)"}
   - {to: fac_kaldaran, stance: -20, note: "칼다란이 이용하지만 경멸한다 — 사르코스는 두려움 섞인 거리 두기"}
   - {to: fac_orsel, stance: 40, note: "노예선 공동 운영"}
   - {to: fac_seren_broker_guild, stance: 10, note: "세렌 계약 중개인 조합('먹물비늘 조합') — 경쟁 겸 협력 (id는 담당 작가 확인)"}

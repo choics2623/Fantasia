@@ -334,10 +334,10 @@ membership:
   signs: ["오른쪽 어깨 — 회색 장부 번호 낙인", "왼쪽 어깨 — 소유 용의 표(문장)", "왼쪽 손등 — 사르코스의 등급 낙인(매매 이력)", "바알카르 시내 인간은 목에 사슬 표찰(소유주 각인 쇠판)", "쇠 패 통행증", "용인의 목덜미·관자놀이 비늘과 가문 문장"]
 
 internal_factions:
-  - {name: "불의 손 (전통파)", leader: npc_aurax, aim: "재의 법 강화, 잔향 대숙청, 반용 처단. 용인 대가문 다수·바르그 조합·그롬 용병을 쥔다", strength: 41}
-  - {name: "은의 서약 (개량파)", leader: npc_melisande, aim: "인간은 개량할 자원 — 이식·육종과 '견디는 그릇'. 잿빛 탑·엘다르 존속파·세렌 자본이 받친다", strength: 32}
+  - {name: "불의 손 (전통파)", faction_id: fac_aurax, leader: npc_aurax, aim: "재의 법 강화, 잔향 대숙청, 반용 처단. 용인 대가문 다수·바르그 조합·그롬 용병을 쥔다", strength: 41}
+  - {name: "은의 서약 (개량파)", faction_id: fac_melisande, leader: npc_melisande, aim: "인간은 개량할 자원 — 이식·육종과 '견디는 그릇'. 잿빛 탑·엘다르 존속파·세렌 자본이 받친다", strength: 32}
   - {name: "알의 수호 + 섭정", leader: npc_isolde, aim: "흰 알을 지킨다. 원로회는 이 알을 꼭두각시로 세워 '용 이후의 제국'을 짜려 한다 — 이졸데는 알이 누구의 것도 아니게 키우려 한다", strength: 18}
-  - {name: "국경 (카스파르)", leader: npc_kaspar, aim: "반용 서자의 즉위가 아니라 해방 칙령을 '할 수 있는 자리'. 까마귀 문 국경군·모르간트·이름 없는 자들(비밀)", strength: 9}
+  - {name: "국경 (카스파르)", faction_id: fac_kaspar, leader: npc_kaspar, aim: "반용 서자의 즉위가 아니라 해방 칙령을 '할 수 있는 자리'. 까마귀 문 국경군·모르간트·이름 없는 자들(비밀)", strength: 9}
   # strength = HOUSES §6.3 귀족 지지율(%). 엔진의 클락 세력 점수는 SCENARIOS §2.1 (60/45/25/15)이며 같은 순서다.
 
 assets:

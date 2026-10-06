@@ -163,11 +163,13 @@ membership:
 
 internal_factions:
   - name: "불의 손 (아우락스파)"
+    faction_id: fac_aurax
     leader: npc_aurax
     aim: "재의 법 강화, 잔향 대숙청, 반용 처단. 잔향자가 회귀를 깨닫기 전에 '아버지의 불'로 끊는다 (아버지가 살아 있는 동안에만 가능)"
     strength: 41
     matrix: {aurax: null, melisande: -60, kaspar: -90, eldar: 10, nocturne: -20, durgan: 10, seren: 20, jotun: -70, grom: 40, light: 30, nameless: -100, collar: 40, tower: -30, varg: 70, hags: -90}
   - name: "은의 서약 (멜리산드파)"
+    faction_id: fac_melisande
     leader: npc_melisande
     aim: "인간은 개량할 자원 — 이식과 육종, 그리고 '견디는 단 하나의 그릇'(잔향). 최종 목표는 아버지의 시간의 상처를 그릇에 옮겨 담아 용족이 이름을 잃지 않는 것 + 즉위"
     strength: 32
@@ -178,6 +180,7 @@ internal_factions:
     strength: 18
     matrix: {note: "행렬 행이 없음 — HOUSES §6.1은 후계자 진영 3개만 행으로 둔다. 원로회 쪽 값(이졸데/흰 알 +60)은 fac_scale_council 참조"}
   - name: "서자의 국경 (카스파르파)"
+    faction_id: fac_kaspar
     leader: npc_kaspar
     aim: "혈통을 깨지 않고 어머니의 종족에게 성(姓)을 줄 수 있는 자리. 공개로는 침묵, 비밀리에 이름 없는 자들(탈주자 수송을 세 번 눈감아 줌)"
     strength: 9
@@ -212,8 +215,11 @@ secrets:
   - {truth: T07, level: whole, holders: [npc_varskar, npc_aurax]}
   - {truth: T08, level: whole, holders: [npc_aurax]}
 
-relations:
-  - {to: fac_scale_council, stance: -40, note: "아우락스파 → 원로회 −40 (HOUSES §6.1 행렬 밖 값, 아우락스파 기준). 멜리산드파 −10, 카스파르파 −50, 이졸데/흰 알 +60은 원로회 쪽에서 본 값"}
+relations: []
+# 의도적으로 비워 둔다. 혈족 전체의 행은 HOUSES §6.1에 없다 — 행은 후계자 진영(아우락스파·멜리산드파·카스파르파)별이다.
+# 진영별 14개 열 값은 internal_factions[].matrix에 그대로 있다 (진영 id: fac_aurax, fac_melisande, fac_kaspar — 다른 세력 파일이 쓰는 id).
+# 원로회가 혈족을 보는 값은 fac_scale_council.relations.
+
 toward_echo: "혈족 안에서도 갈린다. 아우락스·드라반: 화형 후 아버지의 불로 단절. 멜리산드: 포획 후 이식. 카스파르: 불명 — 동질감인가 이용인가. 이졸데: 알의 각인에 닿는 잔향 — 껍질의 실금이 빛난다. 용황: 기시감, '다시 오겠다'는 아스테리온의 눈빛을 반쯤 기다린다."
 player_paths:
   - "임종 시중 노예 — 노라 곁에서 용황의 마지막 숨을 듣는다 (불의 진명 한 마디가 전해질 수 있으나 그 순간 아우락스가 냄새를 맡는다)"

@@ -221,19 +221,19 @@ secrets:
   - {truth: T07, level: rumor, holders: [npc_kaidor]}
 
 relations:
-  # HOUSES §6.1 '행렬 밖 세력 — 비늘 원로회' 값. 후계자 진영은 fac_varskar_brood의 내부 진영 이름으로 표기.
-  - {to: "fac_varskar_brood/불의 손", stance: -40, note: "강한 진룡 = 원로회의 몰락. 아우락스를 가장 두려워한다"}
-  - {to: "fac_varskar_brood/은의 서약", stance: -10, note: "재날개 둥지는 동정적"}
-  - {to: "fac_varskar_brood/서자의 국경", stance: -50, note: "그러나 긴그림자·카이도르는 대안으로 잰다"}
-  - {to: "fac_varskar_brood/알의 수호", stance: 60, note: "이졸데/흰 알 — 섭정안의 알"}
+  # HOUSES §6.1 '행렬 밖 세력 — 비늘 원로회' 값. 후계자 진영은 fac_aurax·fac_melisande·fac_kaspar(다른 세력 파일이 쓰는 진영 id), 이졸데/흰 알은 fac_varskar_brood(알의 수호).
+  - {to: fac_aurax, stance: -40, note: "강한 진룡 = 원로회의 몰락. 아우락스를 가장 두려워한다"}
+  - {to: fac_melisande, stance: -10, note: "재날개 둥지는 동정적"}
+  - {to: fac_kaspar, stance: -50, note: "그러나 긴그림자·카이도르는 대안으로 잰다"}
+  - {to: fac_varskar_brood, stance: 60, note: "이졸데/흰 알 — 섭정안의 알"}
   - {to: fac_kaldaran, stance: -30, note: "순혈 집사 — 행정 서명권과 400년 경쟁"}
   - {to: fac_raven_house, stance: 20, note: "비늘혈 가문 후원 관계. 단 고드릭의 농노 무단 매각은 끈으로 쥔다"}
   - {to: fac_morgant, stance: 20, note: "비늘혈 가문"}
   - {to: fac_bold, stance: 20, note: "비늘혈 가문"}
   - {to: fac_sarkos, stance: 20, note: "비늘혈 가문"}
-  - {to: fac_collar_guild, stance: 20, note: "목줄단 (id는 목줄단 담당 작가 확인)"}
+  - {to: fac_collar, stance: 20, note: "목줄단 (id는 목줄단 담당 작가 확인)"}
   - {to: fac_nameless, stance: -60, note: "이름 없는 자들 (id는 담당 작가 확인)"}
-  - {to: fac_seren_council, stance: 30, note: "세렌 (id는 담당 작가 확인)"}
+  - {to: fac_seren, stance: 30, note: "세렌 (id는 담당 작가 확인)"}
   - {to: fac_ashen_tower, stance: 10, note: "잿빛 탑"}
 toward_echo: "조용히 처리한다. 섭정 체제를 흔들 소문의 근원을 없앤다. 단 긴그림자 둥지는 처리 전에 '쓸모'를 먼저 계산한다 — 잔향을 데려오는 인간에게 '네 마을을 비늘 장부에서 지워 주겠다'고 제안할 수 있고, 그 인간이 잔향이라는 것을 아직 모르거나, 안다."
 player_paths:
