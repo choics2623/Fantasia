@@ -1,0 +1,170 @@
+# 흔적지기 — 앞선 잔향자들이 '끝난 자리'와 그들이 남긴 물건을 줍고 지키는 인간 결사. 매듭집이 말을 묶는다면, 흔적지기는 자리와 물건을 묶는다.
+# [신설 결사 — HOUSES에 없음] 세계가 함의하는 것: 앞선 잔향자들의 최후(WORLD_BIBLE §1.3.1, T12), 시간 유리 칼 '첫 침묵'이 AS 214부터 이름 없는 아이들에게 쓰였다
+# (fact_ar_glass_blades), 매듭집의 기억 매듭줄(HOUSES §4.10), 주춧돌(REGIONS §11.5), 교본 상자(fact_aw_kyle_found_box), 할라의 첫 불씨 기록(fact_ar_halla_first_ember_page),
+# 서리손의 군데 전승(fact_hi_gunde_hungry_child), 다라의 곡괭이 머리와 9번 갱 손자국(HOUSES §4.2), 멈춘 광장(REGIONS §11.9), 15 문서 '앞선 잔향자의 목소리'.
+# 왜 지금(AS 312): AS 311 징후 보고가 세 배가 되었다 — 흔적지기는 '그'가 깨어났다고 믿는다. 잔향 안의 목소리들은 그들이 끝난 자리에서 가장 크게 들린다.
+# 흔적을 그에게 닿게 하는 것이 결사가 214년 동안 준비한 일이다. 그리고 잿빛 탑이 같은 물건(교본 상자 200비늘, 청동 열쇠, 첫 불씨 기록)을 사들이기 시작했다.
+id: fac_trace_keepers
+name: 흔적지기 (다섯 끝의 길)
+kind: secret
+race: [인간]
+governance: 길 합의 — 다섯 '끝지기'가 각자 끝난 자리 하나를 지킨다. 결정은 끝지기 다섯 중 셋이 길 위에서 만나야 난다
+motto: "어디서 끝났나? — 끝나지 않은 곳에서."
+seat: 없음. 다섯 끝의 길 — 실바렌 흰 울타리 밖 재 구덩이(첫 불씨), 흐로스가르드 남쪽 옛 방패줄 들판(군데), 재의 황무지 멈춘 광장(아스테리온), 잿불 언덕 붉은 길(다라), 아르카스 탑섬 맞은편 바위(이름 없는 아이들 — 첫 침묵)
+size:
+  members: "끝지기 5, 길꾼(순례하며 나르는 자) 약 40, 줍는 자(협력자) 약 150 — 노예선 선원, 서기 노예, 유물 사냥꾼, 무덤지기"
+  territory: "다섯 끝의 길 — 대륙을 가로지르는 순례. 길은 글이 아니라 노래 「다섯 끝의 노래」로 외운다"
+  wealth: "흔적 — 첫 불씨 정원의 그을린 돌, 군데의 방패 테 조각, 아스테리아 아이의 신발 한 짝, 다라 갱도의 붉은 진흙, 첫 침묵에 끝난 아이들의 이름 매듭(매듭집과 나눠 가짐)"
+  force: "없다. 걷는 다리뿐"
+
+reason_now: >
+  흔적지기의 믿음은 하나 — 잔향 안의 목소리들(앞선 잔향자들)은 그들이 끝난 자리에서 깨어난다. 그가 다섯 끝을 다 걸으면 다섯 목소리가 모두 깨어난다.
+  AS 311 징후 3배 — 그가 왔다. 그리고 탑이 흔적을 사들이고 있다: 교본 상자에 200비늘, 할라의 기록은 이미 탑 안에 있다. 흔적이 탑의 서가에 들어가면 다시 나오지 않는다.
+
+decision: >
+  다섯 끝지기는 각자 자기 끝을 떠나지 않는다(떠나면 그 자리가 잊힌다). 그래서 결정은 길꾼이 나른다 — 길꾼 하나가 다섯 끝을 한 바퀴 돌며 안건을 노래로 묻고,
+  끝지기가 '흙 한 줌'(찬성)이나 '빈손'(반대)을 쥐여 준다. 한 바퀴(약 1년 반)가 끝나 흙이 셋이면 정해진다. 급한 일은 '세 끝 모임' — 가장 가까운 셋이 길 위에서 만난다.
+  지금 안건은 하나다: '흔적을 그에게 주는가, 그를 흔적에게 데려가는가.' 첫 바퀴가 아직 돌아오지 않았다.
+succession: "끝지기는 자기 끝에서 죽는다. 그 자리는 그 끝을 가장 많이 걸어 본 길꾼이 잇는다. 첫 침묵의 끝(아르카스 맞은편)은 AS 214 결사의 시작부터 한 번도 비지 않았다."
+
+offices:
+  - id: off_road_head
+    title: 길머리 — 붉은 길의 끝지기 (다라)
+    holder: npc_orso   # 신설 은자 H-08
+    reports_to: null
+    powers: ["다섯 끝의 노래 전체", "길꾼 파견", "다라 갱도의 붉은 진흙"]
+    chosen_by: "가장 많은 바퀴(일곱 바퀴)"
+    perks: ["붉은 길 옛 숯가마"]
+  - id: off_end_gunde
+    title: 끝지기 — 방패줄의 끝 (군데)
+    holder: npc_herja   # 신설 은자 H-09
+    reports_to: off_road_head
+    powers: ["군데의 방패 테 조각", "요툰의 노래 '방패 노예가 거인에게 말을 걸었다'", "얼어 있는 거인 곁"]
+    chosen_by: "서리손의 피 — 그리고 귀가 먼 뒤에도 노래를 기억한다"
+    perks: []
+  - id: off_end_square
+    title: 끝지기 — 멈춘 광장의 끝 (아스테리온)
+    holder: "unnamed:광장의 끝지기 — 마지막 등불 '주춧돌'의 하나(이름 숨김)"
+    reports_to: off_road_head
+    powers: ["멈춘 광장까지의 길", "아스테리아 아이의 신발 한 짝"]
+    chosen_by: "바퀴"
+    perks: []
+  - id: off_end_garden
+    title: 끝지기 — 정원의 재 구덩이 (첫 불씨)
+    holder: "unnamed:정원 끝지기 — 실바렌에서 탈주한 정원지기(뿌리집), 흰 울타리 밖 숲발굽 야영지에 숨어 산다"
+    reports_to: off_road_head
+    powers: ["그을린 돌", "손가락 놀이(첫 불씨의 글자 모양)"]
+    chosen_by: "바퀴"
+    perks: []
+  - id: off_end_silence
+    title: 끝지기 — 첫 침묵의 바위 (이름 없는 아이들)
+    holder: "unnamed:바위 끝지기 — 아르카스 맞은편 바위섬의 늙은 어부(전 서기 노예)"
+    reports_to: off_road_head
+    powers: ["첫 침묵에 끝난 아이들의 이름 매듭", "탑 안의 줍는 자들과의 연락"]
+    chosen_by: "AS 214 이후 끊긴 적 없는 자리"
+    perks: []
+  - id: off_tower_gatherer
+    title: 줍는 자 — 탑 안 (기준체)
+    holder: npc_halla
+    reports_to: off_end_silence
+    powers: ["첫 불씨에 관한 엘다르 기록 필사 한 장", "이졸의 편지 속 분기 숫자"]
+    chosen_by: "결사가 그녀를 찾았다 — 그녀는 결사를 '바위 아래 어부의 노래'로만 안다"
+    perks: []
+  - id: off_ledger_gatherer
+    title: 줍는 자 — 탑 안 (서기)
+    holder: npc_milo
+    reports_to: off_end_silence
+    powers: ["셋째 시험 사망자 14명의 명단(외움)"]
+    chosen_by: "결사"
+    perks: []
+  - id: off_knot_ally
+    title: 길동무 — 매듭집 (조직 밖의 동맹)
+    holder: "unnamed:오마 (인간, 80) — 매듭 읽는 자, 루멘 외곽 순례자 숙소 관리인"
+    reports_to: null
+    powers: ["기억 매듭줄 — 여섯 잔향자의 말"]
+    chosen_by: "결사원이 아니다 — 흔적지기는 자리를, 매듭집은 말을 지킨다"
+    perks: []
+
+ranks:
+  - {id: rank_end_keeper, title: "끝지기 (5)", duties: "끝 하나를 떠나지 않는다", privileges: "흙 한 줌 — 표", open_to_player: false}
+  - {id: rank_walker, title: "길꾼", duties: "다섯 끝을 걷고 노래로 나른다", privileges: "다섯 끝의 노래", open_to_player: true}
+  - {id: rank_gatherer, title: "줍는 자 (협력자)", duties: "흔적 하나를 줍거나 숨긴다", privileges: "-", open_to_player: true}
+# 플레이어의 사다리: 줍는 자(흔적 하나를 탑보다 먼저 줍기) → 길꾼(한 구간을 혼자 걷고 '무엇을 들었나'에 답하기) → 끝지기(빈 끝을 잇는다).
+
+cell_graph:
+  rule: "끝지기는 자기 끝과 길꾼만 안다. 길꾼은 걸은 구간의 끝지기만 안다. 줍는 자는 끝지기 하나만 안다. 길이 하나라서, 길꾼 하나가 잡히면 그가 걸은 구간의 끝들이 드러난다"
+  nodes:
+    - {id: n_orso, who: npc_orso, knows_up: null, knows_members: [n_herja, n_square, n_garden, n_rock, "길꾼 약 40"], if_captured: "다섯 끝의 노래 전체 — 결사의 지도. 탑과 정화청이 동시에 원한다"}
+    - {id: n_herja, who: npc_herja, knows_up: "n_orso — 길꾼이 해빙월에 온다", knows_members: ["npc_asta (서리손 친척 — 얼음 실)"], if_captured: "방패 테 조각 — 요툰은 관심이 없다. 위험이 가장 적은 끝"}
+    - {id: n_square, who: "unnamed:광장의 끝지기", knows_up: "n_orso", knows_members: ["주춧돌 14", "npc_kyle_sandeye (교본 상자 — 그는 결사를 모른다)"], if_captured: "멈춘 광장의 길 — 회색 순례자가 원한다"}
+    - {id: n_garden, who: "unnamed:정원 끝지기", knows_up: "n_orso", knows_members: ["숲발굽 하르칸 야영지"], if_captured: "탈주 정원지기 — 엘다르의 잊힘"}
+    - {id: n_rock, who: "unnamed:바위 끝지기", knows_up: "n_orso", knows_members: ["npc_halla", "npc_milo"], if_captured: "탑 안의 줍는 자 둘이 드러난다 — 할라는 기준체에서 피험대로"}
+
+infiltration:
+  join_real: >
+    줍는 자는 흔적 하나를 탑·정화청·회색 순례자보다 먼저 주워 끝지기에게 가져오면 된다. 길꾼 시험은 '빈 귀': 한 구간을 혼자 걸어 끝에서 하룻밤을 자고 오면
+    끝지기가 묻는다 — '무엇을 들었나?' 평범한 인간의 정직한 답은 '아무것도'다. 목소리를 들었다고 말하는 자는 거짓말쟁이(탑의 미끼, 회색 순례자)로 거른다 — 지난 100년 길꾼 후보 열둘이 그렇게 걸렀다.
+  join_fake: "탑의 잿빛 눈과 회색 순례자가 길꾼으로 들어오려 한다 — 둘 다 '목소리를 들었다'고 말하는 버릇이 있다(탑은 사리풀 즙으로 정말 듣는다고 믿는다). 빈 귀 시험이 그들을 거른다"
+  proof_test: "잔향에게: 빈 귀 시험이 거꾸로 선다 — 그는 정말 듣는다. 끝지기는 그 답을 두려워하며 확인한다: 그 끝의 잔향자만 아는 것(첫 불씨의 손짓 — 허공에 가로획, 다라의 마지막 매듭 문구, 군데의 '배고픈 아이')을 말하게 한다. 맞히면 흔적을 그의 손에 쥐여 준다"
+  exposure: "흔적을 사고파는 시장(마지막 등불 튀크, 탑의 구매)에 결사의 물건이 나오면 탑이 줍는 자를 거슬러 찾는다. 정화청에게 흔적지기는 '유골 숭배 이단'이다"
+
+law:
+  crimes:
+    - {act: "흔적을 팖", punishment: "길에서 지운다 — 다시는 노래를 듣지 못한다", note: "결사원"}
+    - {act: "빈 귀 시험에서 들었다고 거짓말", punishment: "거른다", note: "후보"}
+    - {act: "끝을 떠남 (끝지기)", punishment: "벌은 없다 — 그 끝이 잊힌다", note: "끝지기"}
+    - {act: "바깥 법 — 유물·글자 석판 소지", punishment: "재의 법 — 처형", note: "인간 대상"}
+
+customs:
+  greeting: "아이 신발끈 매듭(두 번 감은 고리)을 손목에 보인다. 말로는 '어디서 끝났나?' — 답 '끝나지 않은 곳에서.'"
+  taboos: ["앞선 잔향자들의 이름을 '영웅'으로 부르기 — 그들은 끝난 사람들이다", "끝의 흙을 맨발로 밟기", "목소리를 들었다고 말하기(평범한 인간에게는 거짓말이다)"]
+  rites:
+    - {name: "다섯 끝의 노래", when: "길꾼이 끝에 닿은 밤", what: "끝지기와 길꾼이 노래의 그 끝 소절을 함께 부른다 — 길의 지도이자 다섯 잔향자의 끝"}
+    - {name: "흙 한 줌", when: "결정의 바퀴", what: "끝지기가 끝의 흙을 길꾼의 손에 쥐여 준다(찬성) — 빈손(반대)"}
+    - {name: "재의 날 신발", when: "재의 날", what: "아스테리아 아이의 신발 한 짝을 꺼내 끝지기가 밤새 손에 쥔다 — 이름 없는 아이들을 위한 것"}
+  speech: "노예말 그대로, 끝에 대해서는 과거형만 쓴다('여기서 끝났다'). 길의 거리를 노래 소절로 잰다('셋째 소절만큼 남았다')."
+
+membership:
+  join: "위 infiltration.join_real"
+  leave: "길에서 내려오면 된다 — 노래는 남는다"
+  signs: ["손목의 아이 신발끈 매듭(두 번 감은 고리)", "'어디서 끝났나?' — '끝나지 않은 곳에서.'", "「다섯 끝의 노래」 한 소절"]
+
+internal_factions:
+  - {name: "흔적을 그에게", leader: npc_orso, aim: "흔적을 모아 잔향에게 넘긴다 — 그가 끝까지 걷지 않아도 목소리가 깨어나도록. 탑보다 먼저", strength: 55}
+  - {name: "그를 끝으로", leader: npc_herja, aim: "흔적은 자리에 있어야 산다 — 그가 다섯 끝을 직접 걸어야 한다. (끝 하나는 시간의 상처 가장자리다 — 끝지기들은 그 위험을 다르게 센다)", strength: 45}
+
+assets: ["다섯 흔적", "「다섯 끝의 노래」 — 대륙을 가로지르는 순례 지도", "탑 안의 줍는 자 둘", "매듭집과의 동맹"]
+
+secrets:
+  - {fact: fact_ar_glass_blades, known_by_rank: rank_end_keeper}
+  - {fact: fact_ar_halla_first_ember_page, known_by_rank: rank_walker}
+  - {fact: fact_ar_milo_memorized_14, known_by_rank: rank_walker}
+  - {fact: fact_aw_kyle_found_box, known_by_rank: rank_end_keeper}
+  - {fact: fact_hi_ember_garden_game, known_by_rank: rank_walker}
+  - {fact: fact_hi_gunde_hungry_child, known_by_rank: rank_walker}
+  - {fact: fact_hi_dara_last_knot, known_by_rank: rank_end_keeper}
+  - {fact: fact_sv_elastriel_remembers_ember_voice, known_by_rank: rank_end_keeper}
+  # TODO-FACT: 흔적지기는 AS 214 시간 유리 칼 '첫 침묵'이 처음 쓰인 날 아이의 신발 한 짝을 들고 탑을 걸어 나온 서기 노예가 시작했다 (이 파일 신설)
+  # TODO-FACT: 잔향 안의 목소리(15 문서)는 그 잔향자가 끝난 자리에서 가장 크게 들린다 — 흔적지기의 믿음 (15 문서와 대조 필요)
+  - {truth: T12, level: whole, holders: [npc_orso]}
+  - {truth: T12, level: fragment, holders: [npc_herja, npc_halla]}
+  - {truth: T03, level: fragment, holders: [npc_orso]}
+  - {truth: T05, level: fragment, holders: [npc_orso]}
+
+relations:
+  - {to: fac_ashen_tower, stance: -60, note: "신설 — 같은 물건을 노린다"}
+  - {to: fac_light, stance: -40, note: "신설 — 유골 숭배 이단"}
+  - {to: fac_grey_pilgrims, stance: -50, note: "신설 — 멈춘 광장을 성소로 삼으려 한다"}
+  - {to: fac_nameless, stance: 40, note: "신설 — 같은 것을 기다린다. 흔적지기는 세포가 아니라 길이다"}
+  - {to: fac_star_house, stance: 30, note: "신설 — 청동 열쇠의 집들"}
+  - {to: fac_last_lantern, stance: 10, note: "신설 — 주춧돌"}
+toward_echo: "그를 위해 214년을 걸었다. 빈 귀 시험이 거꾸로 서는 순간 끝지기는 무릎을 꿇지 않는다 — 신발끈을 풀어 그의 손목에 맨다. 그리고 묻는다: '그분은 여기서 무엇을 보았소?'"
+player_paths:
+  - "붉은 길 숯가마(H-08): 오르소 — 「다섯 끝의 노래」"
+  - "다섯 끝을 걷기: 첫 불씨·군데·아스테리온·다라·이름 없는 아이들 — 각 끝에서 목소리(15 문서)와 T12"
+  - "탑보다 먼저: 교본 상자(카일), 할라의 기록, 마일로의 명단"
+  - "위험: 멈춘 광장의 끝은 시간의 상처 가장자리다 — 한 걸음 더 들어가면 진짜 죽음"
+regression:
+  fixed: ["다섯 끝의 위치와 흔적", "오르소 일곱 바퀴", "AS 214 첫 침묵"]
+  flow: ["길꾼의 바퀴 — 첫 안건의 흙이 돌아오는 때"]
+  drift: ["어느 길꾼이 어느 구간을 걷는지", "카일이 교본 상자를 탑에 넘기는 회차"]

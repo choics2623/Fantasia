@@ -77,3 +77,19 @@
 # ── 크릭 (fac_krik)
 - {truth: T06, who: fac_krik, level: rumor, note: "크릭 노파(npc 없음) — 대붕괴의 날 아스테리아에서 '재 속에서 일어난 인간'을 보았다는 옛이야기. 진실은 아스테리온이 세계를 찢은 게 아니라는 소문과 닿는다"}
 - {truth: T04, who: fac_krik, level: rumor, note: "재굴 무리 치륵(npc 없음) — 시간 잔상을 냄새로 맡는다. 젖은 재 냄새의 소문"}
+
+# ── 인간 숨은 혈통 (HOUSES §4) — 평범한 인간의 집안이므로 진실은 소문·조각 수준이다
+- {truth: T03, who: fac_star_house, level: rumor, note: "별의 집(노르나·칼·리스·에멧) — 아스테리온이 '내가 하려던 일'을 딸에게 남겼다는 구전. 진짜 후손도 평범한 인간"}
+- {truth: T06, who: fac_star_house, level: rumor, note: "에멧의 노래 — 아스테리온의 의식 날짜를 연합군에게 판 인간이 있었다는 반쪽 이야기"}
+- {truth: T12, who: npc_rok, level: rumor, note: "다라손 — 붉은 손 다라의 말 '나는 전에도 왔고 또 올 것이다'. 다라가 아스테리온과 같은 사람이었다고 믿는다(오해: 같은 영혼, 다른 사람) (fact_eh_rok_dara_words)"}
+- {truth: T12, who: fac_darason, level: rumor, note: "칼렙·도르테 — 노래 「붉은 길」 7절 속 다라의 이야기"}
+- {truth: T11, who: fac_hag_lineages, level: fragment, note: "일곱 계보 — 진명은 신의 목소리 조각이며 평범한 인간이 맨입으로 말하면 몸이 탄다. 여덟째 근원(시간) 금지. 낱말 400개를 지킨다"}
+- {truth: T10, who: npc_alberic, level: fragment, note: "등잔지기 — 두 번째 설교로 교리가 엘다르의 서명 받은 글이라는 것까지(fact_hi_maren_signed_only). 설계 목적은 모른다"}
+- {truth: T10, who: fac_lampkeepers, level: rumor, note: "한나·엘리 — 마렌이 경전을 서명만 했다는 구전"}
+- {truth: T12, who: fac_rootfamily, level: rumor, note: "뿌리집 — 아이들의 손가락 놀이가 3,000년 전 한 노예의 가르침이라는 어렴풋한 구전(뜻은 잊힘)"}
+- {truth: T11, who: fac_rootfamily, level: rumor, note: "글자는 이름의 그릇 — 정원에서 글을 금하는 이유의 소문"}
+- {truth: T12, who: fac_frosthand, level: rumor, note: "서리손 — 군데의 말 '거인은 배고픈 아이'와 '방패 노예가 거인에게 말을 걸었다'. 군데가 사라진 경위는 모른다"}
+- {truth: T11, who: fac_underhammer, level: rumor, note: "망치아래 — 별강철 마지막 단계는 대지의 진명 한 마디를 쇠에 말해 넣는 것이고 평범한 인간은 죽는다는 소문"}
+- {truth: T03, who: fac_knot_house, level: fragment, note: "오마 — 매듭줄의 여섯이 모두 '같은 날이 다시 왔다'고 말했다는 사실. 잔향이 하나이고 돌아온다는 것까지는 읽는다"}
+- {truth: T04, who: fac_knot_house, level: fragment, note: "오마 — 아이들이 '또 그 아침이야'라고 울었다. 돌아온 아이들은 기억만 가졌다"}
+- {truth: T12, who: fac_knot_house, level: fragment, note: "오마 — 다라 이후 다섯 아이 모두 회귀를 깨닫기도 전에 그물과 칼에 끊겼다(매듭이 짧다)"}

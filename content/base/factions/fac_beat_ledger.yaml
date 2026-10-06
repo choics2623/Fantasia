@@ -1,0 +1,174 @@
+# 고동 장부 — 뼈가 다시 뛰면 세고, 세되 말하지 않겠다고 맹세한 두르강들. 3,400년의 박자를 돌에 새겨 왔다.
+# [신설 결사 — HOUSES에 없음] 세계가 함의하는 것: 두린 깊은망치가 에오르의 뼈를 산 아래 묻었다(HOUSES §3.3, WORLD_BIBLE §1.4), 깊은 문은 AS 289
+# '고동이 신의 심장'이라는 원로들의 판단으로 봉인되었다(fact_kz_seal_reason), 고동은 AS 311부터 빨라졌고 인간 목소리에 반응한다(fact_kz_pulse_faster_311·
+# fact_kz_pulse_answers_song), 할그림 반돌은 '깊은 문 아래의 것을 말하지 않는다'는 맹세를 깼다(REGIONS §11.9), 맹세지기 우를라는 돌의 숲의 하나가
+# 에오르를 묻을 때 맹세를 거부한 자임을 안다(HOUSES §3.3), 드라우르 셀른의 기억 노래는 고동과 같은 박자다(fact_kz_seln_eor_voice).
+# 왜 지금(AS 312): 고동이 빨라졌다(최하층 보고 한 달 40건). 잿수염 탐사대가 룬 자물쇠를 하나씩 풀고 있고, 힐다는 개방 기계를 완성했고,
+# 니다르의 신도들은 노래할 인간을 납치한다. 장부지기들은 침묵의 맹세를 깨고 왕에게 장부를 보일지 정해야 한다 — 깨면 돌이 된다.
+id: fac_beat_ledger
+name: 고동 장부 (박자지기들)
+kind: secret
+race: [산 두르강, (협력) 드라우르 1, (협력) 이름 없는 자(맹세 파기 두르강)]
+governance: 맹세 합의 — 아홉 박자지기의 돌판 서약. 결정은 '돌에 새김'으로만 나고, 새기려면 아홉 전원의 망치 자국이 필요하다
+motto: "센다. 말하지 않는다."
+seat: 카즈둠 깊은 곳 — 고동 갱도(deep_gate__pulse_shaft) 아래로 이어지는 버려진 환기 갱 끝 '박자 방'
+size:
+  members: "박자지기 아홉(정원 — 지금 일곱이 살아 있고 둘은 공석), 귀(듣는 자 — 장부를 새기지는 못하는 견습) 약 20"
+  territory: "고동 갱도, 박자 방, 조상의 망치 신전의 '맥박 치는 기둥'(deephammer__ancestor_shrine), 돌의 숲"
+  wealth: "3,400년의 박자 장부 — 돌판 약 1,300장(하루 박자 수와 세기의 변화를 룬으로)"
+  force: "없다. 맹세 — 그리고 그 맹세가 그들을 돌로 만들 수 있다는 사실"
+
+reason_now: >
+  장부는 말한다 — 고동은 아스테리온의 아홉 해 동안 빨라졌고 대붕괴의 날 멎을 듯 느려졌다. 붉은 손 다라의 석 달 동안 다시 빨라졌고 붉은 길의 날 느려졌다.
+  AS 311 다시 빨라졌다. 장부지기들은 그것이 무엇을 뜻하는지 서로 다르게 읽는다(T21). 그리고 지금 깊은 문을 여는 자들(힐다·그로딘)과 깨우려는 자들(니다르)은
+  장부를 보지 못한 채 문 앞에 서 있다.
+
+decision: >
+  아홉은 1년에 한 번, 재의 날 둘째 날 박자 방에 모여 그해의 돌판을 새긴다. 결정이 필요한 일(장부를 누구에게 보일 것인가, 문을 막을 것인가)은 돌판 한 장에 룬으로 새겨
+  아홉이 각자 자기 망치 자국을 찍어야 효력이 난다 — 하나라도 찍지 않으면 그 돌판은 깨서 고동 갱도에 버린다. 두르강은 맹세를 깨면 피가 돌로 굳으므로,
+  찍은 자국은 곧 맹세다. 그래서 결정은 3,400년 동안 아홉 번뿐이었다. 공석이 있으면 남은 자들의 자국만으로는 새길 수 없다 — AS 312 현재 둘이 비어 있어 장부는 '결정하지 못하는' 상태다.
+succession: "박자지기가 죽거나(혹은 돌이 되거나) 맹세를 깨면 귀 중 하나가 하루 종일 박자 방에 앉아 장부와 한 박자도 틀리지 않게 세면 그 자리를 잇는다. 할그림 반돌이 맹세를 깬 뒤(AS 296) 그의 자리와, AS 289 봉인 날 문 안쪽에 갇힌 박자지기 하나의 자리가 비어 있다."
+
+offices:
+  - id: off_ledger_keeper
+    title: 장부지기 (첫 박자지기)
+    holder: npc_osval   # 신설 은자 H-04
+    reports_to: null
+    powers: ["박자 방 관리", "돌판 1,300장의 순서", "귀 시험 감독"]
+    chosen_by: "가장 오래 센 자 — 140년째 박자 방에 산다"
+    perks: ["박자 방"]
+  - id: off_oath_judge
+    title: 박자지기 — 맹세지기 (돌 법정)
+    holder: "unnamed:대재판관 우를라 (두르강, 470) — 돌의 숲의 하나가 에오르를 묻을 때 맹세를 거부한 자임을 안다"
+    reports_to: off_ledger_keeper
+    powers: ["돌 법정 — 맹세 위반 재판", "결사의 맹세를 법정의 언어로 지킨다"]
+    chosen_by: "귀 시험"
+    perks: []
+  - id: off_rune_judge
+    title: 박자지기 — 룬판관
+    holder: npc_grimbald
+    reports_to: off_ledger_keeper
+    powers: ["맹세를 푸는 룬 — 대가는 맹세한 자의 이름 하나", "우르드의 판결문을 쓴 손"]
+    chosen_by: "귀 시험"
+    perks: ["결사가 맹세를 깨야 할 때의 유일한 출구 — 이름을 바치고 돌화 없이 말하기"]
+  - id: off_shrine_ear
+    title: 박자지기 — 조상의 망치 신전 기둥지기
+    holder: "unnamed:신전 사제 하나 — 맥박 치는 기둥 옆에서 센다 (대사제 오드는 모른다)"
+    reports_to: off_ledger_keeper
+    powers: ["지상 쪽 박자 대조"]
+    chosen_by: "귀 시험"
+    perks: []
+  - id: off_seat_broken
+    title: 박자지기 — 맹세를 깬 자리 (공석)
+    holder: null
+    reports_to: off_ledger_keeper
+    powers: ["—"]
+    chosen_by: "할그림 반돌(마지막 등불 등불지기)이 AS 296 '깊은 문 아래의 것'을 말해 자리를 잃었다 — 누구에게 말했는지는 장부지기만 안다(탑의 해그 룬새김에게)"
+    perks: []
+  - id: off_seat_sealed
+    title: 박자지기 — 문 안쪽의 자리 (공석)
+    holder: null
+    reports_to: off_ledger_keeper
+    powers: ["—"]
+    chosen_by: "AS 289 봉인 날 인간 광부 41명과 함께 문 안쪽에 갇혔다 — 살아 있다면 문 너머에서 여전히 세고 있다"
+    perks: []
+  - id: off_outside_ear
+    title: 바깥 귀 (드라우르)
+    holder: npc_seln
+    reports_to: null
+    powers: ["신살 전 에오르의 목소리를 들은 자들의 기억 노래 — 고동과 같은 박자"]
+    chosen_by: "결사원이 아니다. 장부지기가 박자를 대조하러 그녀의 동굴에 내려간다"
+    perks: []
+  - id: off_ear
+    title: 귀 (견습 — 집합 자리, 약 20)
+    holder: "unnamed:귀 약 20 — 젊은 산 두르강"
+    reports_to: off_ledger_keeper
+    powers: ["세기 — 새기지 못한다"]
+    chosen_by: "장부지기의 지명"
+    perks: []
+
+ranks:
+  - {id: rank_keeper, title: "장부지기", duties: "돌판 순서", privileges: "박자 방", open_to_player: false}
+  - {id: rank_counter, title: "박자지기 (아홉)", duties: "세고 새긴다", privileges: "망치 자국 — 거부권", open_to_player: false}
+  - {id: rank_ear, title: "귀 (견습)", duties: "센다", privileges: "-", open_to_player: false}
+  - {id: rank_human_ear, title: "인간 귀 (전례 없음)", duties: "노래로 고동에 답한다", privileges: "-", open_to_player: true}
+# 인간은 박자지기가 될 수 없다 — 두르강의 맹세는 피가 돌로 굳어 지켜진다. 인간에게는 그 피가 없다. 결사는 그래서 인간을 믿지 않는다.
+# 다만 '인간 귀' — 고동이 인간 목소리에 답하므로, 장부지기는 처음으로 인간 하나를 박자 방에 들일지 고민한다(페타르, 또는 잔향).
+
+cell_graph:
+  rule: "박자지기는 서로를 안다(아홉뿐이다). 그러나 바깥에 대해선 각자 한 사람만 안다 — 왕궁·법정·신전·탑에 하나씩 박혀 있다. 한 박자지기가 잡히면 그는 맹세 때문에 말하지 못한다. 대신 돌이 된다 — 굳은 몸이 드러냄이다"
+  nodes:
+    - {id: n_osval, who: npc_osval, knows_up: null, knows_members: [n_urla, n_grimbald, n_shrine, "npc_seln (바깥 귀)"], if_captured: "박자 방의 위치 — 돌판 1,300장. 그는 박자 방을 떠난 적이 없다"}
+    - {id: n_urla, who: "unnamed:우를라", knows_up: "n_osval", knows_members: ["돌의 숲의 '거부한 자'"], if_captured: "돌 법정이 결사를 재판할 수 있게 된다 — 법정의 수장이 결사원이다"}
+    - {id: n_grimbald, who: npc_grimbald, knows_up: "n_osval", knows_members: ["npc_urd (판결문)"], if_captured: "맹세를 푸는 룬 — 결사가 말할 수 있는 유일한 길"}
+    - {id: n_shrine, who: "unnamed:신전 기둥지기", knows_up: "n_osval", knows_members: [], if_captured: "맥박 치는 기둥의 박자 기록"}
+    - {id: n_halgrim, who: "unnamed:할그림 반돌 (전 박자지기 — 마지막 등불)", knows_up: "n_osval — 끊겼다", knows_members: ["unnamed:해그 룬새김 (잿빛 탑 — 그가 말한 상대)", "unnamed:그로딘 잿수염 (형제 — 깊은 문 탐사대장)"], if_captured: "그는 이미 말했다. 돌이 심장에 닿기 전에 무엇을 더 말할지"}
+
+infiltration:
+  join_real: "귀가 되려면 장부지기가 고른 젊은 두르강이 하루 종일 박자 방에 앉아 센다. 박자지기가 되려면 장부와 한 박자도 틀리지 않아야 하고, 돌판에 첫 망치 자국을 찍으며 맹세한다: '센다. 말하지 않는다.' 맹세는 거짓으로 할 수 없다 — 두르강의 피가 판정한다"
+  join_fake: "두르강은 거짓 맹세를 할 수 없다(피가 굳는다) — 그래서 가짜 박자지기는 없다. 위험은 맹세하지 않은 '귀'에게서 샌다. 니다르의 창백한 예배당이 귀 하나를 끌어들였다는 의심이 있다"
+  proof_test: "잔향에게: 장부지기는 묻지 않는다 — 센다. 잔향이 박자 방에 들어서면 고동이 한 박자 빨라진다(장부에 새길 일이다). 시험은 노래 — 그가 페타르의 노래를 부르면 고동이 어떻게 답하는지를 장부와 대조한다"
+  exposure: "박자지기는 말하지 않으므로 드러나는 길은 몸이다 — 맹세를 깬 자는 돌이 되어 간다(할그림의 왼팔과 왼얼굴). 왕실 경비가 깊은 문 근처의 버려진 환기 갱에서 두르강의 발자국을 찾으면 박자 방이 드러난다(깊은 문 접근 = 투옥)"
+
+law:
+  crimes:
+    - {act: "장부를 말함", punishment: "맹세 파기 — 피가 돌로 굳는다(스스로 집행된다). 결사는 그 자리를 지운다", note: "두르강 대상"}
+    - {act: "돌판을 깨뜨림", punishment: "같다", note: "-"}
+    - {act: "바깥 법 — 깊은 문 접근", punishment: "투옥(왕실 경비)", note: "카즈둠 법 — 박자 방은 그 법 아래에 있다"}
+    - {act: "고동을 깨우려 노래함 (니다르의 신도)", punishment: "결사 법에는 없다 — 막을 뿐", note: "-"}
+
+customs:
+  greeting: "돌을 두드린다 — 고동의 박자(넷, 그리고 한 박자 쉼). 말로는 '몇 박?' — 답 '아직 센다.'"
+  taboos: ["깊은 문 쪽을 향해 망치질(카즈둠 전체의 금기)", "박자를 세다 멈추는 것", "'심장'이라는 낱말 — 장부지기들은 '그것'이라 한다"]
+  rites:
+    - {name: "새김", when: "재의 날 둘째 날", what: "박자 방에서 그해의 돌판을 새긴다. 아홉이 각자 망치 자국을 찍는다"}
+    - {name: "대조", when: "계절마다", what: "장부지기가 드라우르 셀른의 동굴에 내려가 기억 노래와 박자를 맞춘다"}
+  speech: "숫자와 박자로 말한다 — 두르강 룬어의 셈말. 문장이 넷씩 끊긴다. 맹세를 두려워해 '말하지 않겠다'고는 말하지 않는다 — '센다'고만 한다."
+
+membership:
+  join: "위 infiltration.join_real"
+  leave: "맹세를 풀어야 한다 — 그림발드의 룬, 대가는 이름 하나. 아니면 돌"
+  signs: ["돌 두드리기(넷, 쉼)", "'몇 박?' — '아직 센다.'", "귀 뒤의 굳은살(바닥에 귀를 대고 잔다 — 심층 두르강과 같은 버릇이라 니다르의 신도로 오인받는다)"]
+
+internal_factions:
+  - {name: "심장파", leader: npc_osval, aim: "장부가 말하는 것은 하나 — 그것은 살아 있다(T09). 문을 막아야 한다. 아니면 깨어날 때 그 앞에 서 있을 자가 장부를 아는 자여야 한다", strength: 45}
+  - {name: "메아리파", leader: npc_grimbald, aim: "그것은 심장이 아니라 뼈에 남은 메아리다 — 잔향이 가까이 올 때 뼈가 울린다. 문 너머의 것은 41명의 광부다. 문을 열어 그들을 꺼내야 한다(우르드의 맹세가 완성된다)", strength: 35}
+  - {name: "말해야 한다", leader: null, aim: "우를라(unnamed) — 이름 하나를 바치고서라도 왕에게 장부를 보인다. 힐다가 문을 열기 전에", strength: 20}
+
+assets: ["돌판 약 1,300장 — 3,400년의 박자", "박자 방", "맹세를 푸는 룬(그림발드)", "드라우르 셀른의 기억 노래"]
+
+secrets:
+  - {fact: fact_kz_seal_reason, known_by_rank: rank_counter}
+  - {fact: fact_kz_pulse_answers_song, known_by_rank: rank_counter}
+  - {fact: fact_kz_pulse_faster_311, known_by_rank: rank_ear}
+  - {fact: fact_kz_41_sealed_inside, known_by_rank: rank_counter}
+  - {fact: fact_kz_oath_release_rune, known_by_rank: rank_counter}
+  - {fact: fact_kz_seln_eor_voice, known_by_rank: rank_keeper}
+  - {fact: fact_kz_nidar_voice_wakes, known_by_rank: rank_counter}
+  - {fact: fact_kz_nidar_cult_abducts, known_by_rank: rank_counter}
+  - {fact: fact_kz_gate_reopening, known_by_rank: rank_counter}
+  - {fact: fact_kz_hilda_gate_machine, known_by_rank: rank_keeper}
+  - {fact: fact_hg_yorun_pulse_south, known_by_rank: rank_keeper}
+  # TODO-FACT: 고동 장부 — 고동은 아스테리온의 아홉 해와 다라의 봉기 때 빨라졌다가 그들이 끊긴 날 느려졌다 (이 파일 신설 — truths_extra T21)
+  # TODO-FACT: 박자지기 하나가 AS 289 봉인 날 문 안쪽에 갇혔다 (이 파일 신설)
+  # TODO-FACT: 할그림 반돌이 깬 맹세의 상대는 잿빛 탑의 해그 룬새김이다 — 해그가 '깊은 문의 룬과 황무지 균열의 룬이 같은 손의 글씨'임을 찾은 계기 (이 파일 신설, REGIONS §11.9·HOUSES §5.8 연결)
+  - {truth: T21, level: whole, holders: [npc_osval]}
+  - {truth: T21, level: fragment, holders: [npc_grimbald, npc_seln]}
+  - {truth: T09, level: fragment, holders: [npc_osval, npc_grimbald, npc_seln]}
+  - {truth: T01, level: fragment, holders: [npc_osval]}
+
+relations:
+  - {to: fac_durgan, stance: 20, note: "신설 — 몸은 그 안에 있다. 왕에게 숨긴다"}
+  - {to: fac_ashen_tower, stance: -40, note: "신설 — 할그림이 말한 상대가 탑에 있다. 금지된 주제 '고동'"}
+  - {to: fac_last_lantern, stance: 0, note: "신설 — 등불지기는 맹세를 깬 옛 형제"}
+  - {to: fac_nameless, stance: 10, note: "신설 — 카즈둠 만료장의 '두 번째 서명'이 인간 광부를 지킨다"}
+toward_echo: "센다. 잔향이 카즈둠에 들어서면 고동이 빨라진다 — 장부지기는 그것으로 그를 알아본다. 심장파는 그를 깊은 문에서 떼어 놓으려 하고(깨어날 때 그 앞에 서게 하지 않으려), 메아리파는 그를 문 앞에 세워 41명을 꺼내려 한다."
+player_paths:
+  - "박자 방(H-04): 오스발의 시험 — 하루를 세기"
+  - "깊은 문(클락 #6): 다시 봉인 / 고동의 각성 — 장부를 왕에게 보이면 브로르는 문을 연다 또는 막는다(맹세의 왕)"
+  - "41명: 메아리파와 함께 문을 열어 꺼내면 우르드의 돌화가 멈춘다"
+  - "니다르: 창백한 예배당의 납치를 끝내기"
+regression:
+  fixed: ["장부 1,300장, 공석 둘", "고동 AS 311부터 빨라짐, 최하층 보고 한 달 40건", "41명 문 안쪽 23년"]
+  flow: ["탐사대가 룬 자물쇠를 푸는 속도", "니다르 신도의 다음 납치"]
+  drift: ["그날의 박자 수 — 잔향이 카즈둠에 가까울수록 늘어난다", "어느 귀가 박자 방에 앉아 있는지"]

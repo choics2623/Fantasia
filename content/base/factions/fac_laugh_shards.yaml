@@ -1,0 +1,135 @@
+# 웃음 조각 — 웃지 못하는 페이들. 여왕의 '웃음의 상자'를 한 번씩 열어 진실 한 조각과 맞바꾸고 웃음을 영원히 잃은 자들. 신살 때 왜 웃었는지 기억한다.
+# [신설 결사 — HOUSES에 없음] 세계가 함의하는 것: 신살 때 페이는 웃었다(WORLD_BIBLE §1.4), 여왕이 웃은 이유는 에오르가 마지막 말을 인간에게 남기는 것을
+# 그녀만 들었기 때문이다(fact_tm_queen_laugh_reason), 왕좌 뒤 '웃음의 상자' — 열면 진실 한 조각, 대가는 웃음(fact_tm_laugh_box), 여왕의 진명은 잔향이 '모든 이름'을
+# 말하는 날 불린다(fact_tm_queen_true_name_fate), 떨어진 자들(HOUSES §3.9), 엉겅퀴 공은 대붕괴 당시 아스테리아 인간의 기억 한 해를 가졌다(fac_fae — RACES 신규).
+# 왜 지금(AS 312): 여왕이 AS 311부터 '가장 좋은 장난감이 돌아왔다'며 숲 밖으로 사자를 보낸다(fact_tm_queen_knows_echo). 궁정 페이의 이름은 여왕의 진명에서
+# 갈라져 나온 가지다 — 그녀의 이름이 불리는 날 그들의 이름도 불린다. 웃음 조각들은 그날을 '구경'이 아니라 '선택'으로 맞으려 한다.
+id: fac_laugh_shards
+name: 웃음 조각 (웃지 못하는 페이들)
+kind: secret
+race: [페이 — 궁정 페이와 떨어진 자, (귀) 바꿔치기된 인간]
+governance: 조각 합의 — 각자 상자에서 꺼낸 진실 한 조각을 가졌고, 조각을 맞대야만 말이 된다. 페이는 진실을 말하면 그 말에 묶이므로 결사의 결정은 곧 결사의 굴레다
+motto: "아무것도 우습지 않다."
+seat: 가시안개 숲 궁정 안(웃음 재판관의 그늘), 그리고 숲 밖 — 모르바 늪 깊은 곳 가라앉은 종탑(잿가루)
+size:
+  members: "일곱 — 궁정 안 넷(거울 시녀 '혹시', 엉겅퀴 공, 가시 기사 '녹슨 장미', 이름 수집가의 시동), 떨어진 자 셋(잿가루 포함)"
+  territory: "가시안개 숲, 모르바 늪"
+  wealth: "진실 일곱 조각 — 페이에게 진실은 가장 비싼 것이다. 엉겅퀴 공이 가진 아스테리아 인간의 기억 한 해"
+  force: "페이의 계약 마법, 환영 — 그리고 여왕에게 들키면 아무것도 아니다"
+
+reason_now: >
+  여왕이 사자를 보낸다. 웃음 조각들은 여왕이 3,400년 '구경'만 해 온 이유를 안다 — 자기 이름이 불리는 날이 죽음인지 해방인지 모르기 때문이다.
+  조각들의 이름은 여왕의 이름의 가지이므로 그날 함께 불린다. 그들은 잔향을 여왕보다 먼저 만나 그날의 '순서'를 바꾸고 싶어 한다 — 여왕의 이름을 마지막에, 혹은 맨 처음에.
+
+decision: >
+  일곱은 새벽 사냥이 끝나는 시각 숲 경계의 '울지 않는 나무' 아래에서 만난다(한 계절에 한 번). 페이는 진실을 말하면 그 말에 묶이므로, 결정은 '진실 하나를 말하는 것'으로 한다 —
+  안건마다 일곱 중 하나가 진실을 말하고(예: '우리는 그 아이를 여왕보다 먼저 만난다'), 그 말에 묶인 자가 그 일을 한다. 반대하는 자는 같은 자리에서 반대의 진실을 말할 수 있다 —
+  그러면 둘 다 묶여 서로를 막는다. 그래서 반대는 드물다. 떨어진 자들은 진실을 말해도 묶이지 않는다(이미 떨어졌다) — 그래서 위험한 말은 떨어진 자가 한다.
+succession: "조각은 이어지지 않는다 — 상자를 연 자만 조각을 가진다. 결사원이 사라지면(잊히면) 그 조각도 사라진다. 새 결사원은 상자를 한 번 열어야 한다 — 웃음을 영원히 잃는다."
+
+offices:
+  - id: off_fallen_mouth
+    title: 떨어진 입 — 결사가 진실을 말하게 하는 자
+    holder: npc_ashdust   # 신설 은자 H-06 — fac_fae '떨어진 자들' 자리의 잿가루와 같은 자
+    reports_to: null
+    powers: ["진실을 말해도 묶이지 않는다 — 결사의 위험한 말은 그녀가 한다", "바꿔치기 아이를 숲에서 되찾는 방법"]
+    chosen_by: "가장 오래 떨어져 있었다"
+    perks: ["가라앉은 종탑"]
+  - id: off_mirror_maybe
+    title: 궁정 안의 조각 — 거울 시녀 '혹시'
+    holder: "unnamed:거울 시녀 '혹시' — 여왕의 말을 거꾸로 전한다(그래서 그녀의 말은 진실일 수 있다)"
+    reports_to: off_fallen_mouth
+    powers: ["여왕의 다음 말을 미리 안다"]
+    chosen_by: "상자를 열었다"
+    perks: []
+  - id: off_thistle
+    title: 궁정 안의 조각 — 엉겅퀴 공
+    holder: "unnamed:엉겅퀴 공 — 대붕괴 당시 아스테리아 인간의 기억 한 해를 가졌다"
+    reports_to: off_fallen_mouth
+    powers: ["아스테리아의 마지막 한 해 — 인간의 눈으로 본 의식 전야"]
+    chosen_by: "상자를 열었다"
+    perks: []
+  - id: off_rusted_rose
+    title: 궁정 안의 조각 — 가시 기사 '녹슨 장미'
+    holder: "unnamed:가시 기사 '녹슨 장미'"
+    reports_to: off_fallen_mouth
+    powers: ["숲 경계 — 잔향이 숲에 들어오는 길을 연다/닫는다"]
+    chosen_by: "상자를 열었다"
+    perks: []
+  - id: off_ear_human
+    title: 인간 귀 (바꿔치기된 인간)
+    holder: npc_elin
+    reports_to: off_fallen_mouth
+    powers: ["페이어를 안다 — 결사의 진실을 인간 말로 옮긴다"]
+    chosen_by: "결사가 골랐다 — 그녀는 '혹시'의 심부름으로만 안다"
+    perks: []
+
+ranks:
+  - {id: rank_shard, title: "조각 (상자를 연 페이)", duties: "진실 한 조각을 지킨다", privileges: "웃지 못한다 — 그것이 증표다", open_to_player: false}
+  - {id: rank_fallen, title: "떨어진 입", duties: "결사 대신 진실을 말한다", privileges: "묶이지 않는다", open_to_player: false}
+  - {id: rank_ear, title: "귀 (인간)", duties: "옮긴다", privileges: "-", open_to_player: true}
+
+cell_graph:
+  rule: "조각들은 서로의 조각을 모른다 — 맞댈 때만 안다. 궁정 안 넷은 서로를 안다(웃지 않는 얼굴은 숨기기 어렵다). 떨어진 셋은 궁정 안을 '혹시' 하나로만 안다"
+  nodes:
+    - {id: n_ashdust, who: npc_ashdust, knows_up: null, knows_members: [n_maybe, "npc_hag_elsbet (오랜 친구 — 결사는 모른다)", "npc_elin"], if_captured: "그녀는 진실을 말한다 — 묻는 것에 모두 답한다. 그것이 떨어진 자의 약점이다"}
+    - {id: n_maybe, who: "unnamed:거울 시녀 '혹시'", knows_up: "n_ashdust", knows_members: [n_thistle, n_rose], if_captured: "여왕의 거울 앞에서 웃지 못하는 얼굴 — 웃음 재판관이 판결한다"}
+    - {id: n_thistle, who: "unnamed:엉겅퀴 공", knows_up: "n_maybe", knows_members: [], if_captured: "아스테리아의 한 해 — 여왕이 빼앗아 갈 것이다"}
+    - {id: n_rose, who: "unnamed:녹슨 장미", knows_up: "n_maybe", knows_members: [], if_captured: "숲 경계의 길"}
+
+infiltration:
+  join_real: "웃음의 상자를 한 번 연다 — 진실 한 조각을 얻고 웃음을 영원히 잃는다. 그 뒤 숲 경계 '울지 않는 나무' 아래에서 일곱 앞에 서서 아무 농담에도 웃지 않으면 된다(페이에게 그것은 죽음만큼 어렵다 — 상자를 열지 않은 자는 참지 못한다)"
+  join_fake: "가짜는 불가능에 가깝다 — 웃음은 숨길 수 없다. 여왕의 밀정은 웃음을 참으려다 입꼬리가 떨린다"
+  proof_test: "잔향에게: 잿가루의 값 — '네가 가장 아끼는 기억 하나'. 그리고 질문 하나: '그분이 마지막에 무엇을 보고 말했나?' — 잔향 안의 목소리가 답을 안다"
+  exposure: "여왕은 자기 농담에 웃지 않는 자를 본다. 웃음 재판관이 '농담의 형태로' 판결한다 — 대개 추방(떨어진 자가 된다) 또는 잊힘(사라짐)"
+
+law:
+  crimes:
+    - {act: "결사원이 웃음을 흉내 냄", punishment: "결사에서 지운다 — 웃음 흉내는 거짓이다", note: "페이 대상"}
+    - {act: "바깥 법 — 여왕의 농담에 웃지 않음", punishment: "웃음 재판관의 판결", note: "fac_fae의 법"}
+    - {act: "바깥 법 — 진실을 말하게 될 만큼 인간과 놂", punishment: "추방(떨어진 자)", note: "fac_fae의 법"}
+
+customs:
+  greeting: "주먹을 입 앞에 쥔다(웃음을 막는 손). 페이가 '무엇이 우스운가?'라고 물으면 '아무것도.' — 다른 페이에게는 거짓말이고, 결사원에게는 진실이다."
+  taboos: ["여왕의 이름을 추측하기 — 추측한 자는 그녀의 것이 된다", "웃음 흉내", "상자를 두 번 열기"]
+  rites:
+    - {name: "울지 않는 나무 아래", when: "계절마다 새벽 사냥 끝", what: "조각 하나씩을 맞댄다 — 진실을 말하고 그 말에 묶인다"}
+  speech: "페이의 뒤틀린 말장난이 아니라 이상하게 곧은 말. 그래서 다른 페이에게는 무섭게 들린다. 떨어진 자는 진실을 말하되 늘 대가를 먼저 말한다."
+
+membership:
+  join: "위 infiltration.join_real"
+  leave: "나갈 수 없다 — 웃음은 돌아오지 않는다"
+  signs: ["웃지 않는 얼굴", "입 앞에 쥔 주먹", "'무엇이 우스운가?' — '아무것도.'"]
+
+internal_factions:
+  - {name: "순서를 바꾸려는 자들", leader: npc_ashdust, aim: "잔향이 '모든 이름'을 말하는 날, 여왕의 이름을 마지막에 — 조각들의 이름이 먼저 풀리도록", strength: 60}
+  - {name: "구경을 끝내려는 자들", leader: null, aim: "엉겅퀴 공(unnamed) — 여왕의 이름을 맨 처음에. 3,400년의 구경을 끝낸다", strength: 40}
+
+assets: ["진실 일곱 조각", "엉겅퀴 공의 아스테리아 한 해", "숲 경계의 길(녹슨 장미)", "바꿔치기 아이를 되찾는 방법(잿가루)"]
+
+secrets:
+  - {fact: fact_tm_queen_laugh_reason, known_by_rank: rank_shard}
+  - {fact: fact_tm_laugh_box, known_by_rank: rank_shard}
+  - {fact: fact_tm_queen_true_name_fate, known_by_rank: rank_shard}
+  - {fact: fact_tm_queen_name_rule, known_by_rank: rank_shard}
+  - {fact: fact_tm_queen_knows_echo, known_by_rank: rank_shard}
+  - {fact: fact_tm_elin_double, known_by_rank: rank_fallen}
+  # TODO-FACT: 궁정 페이의 이름은 여왕의 진명에서 갈라진 가지다 — 그녀의 이름이 불리는 날 그들의 이름도 불린다 (이 파일 신설)
+  # TODO-FACT: 웃음의 상자를 연 페이 일곱이 결사를 이룬다 (이 파일 신설)
+  - {truth: T23, level: whole, holders: [npc_ashdust]}
+  - {truth: T01, level: fragment, holders: [npc_ashdust]}
+  - {truth: T03, level: fragment, holders: [npc_ashdust]}
+
+relations:
+  - {to: fac_fae, stance: -20, note: "신설 — 몸은 궁정 안에 있다. 여왕을 미워하지 않는다 — 웃지 못할 뿐"}
+  - {to: fac_swamp_hags, stance: 40, note: "신설 — 잿가루와 안개 계보"}
+  - {to: fac_seril_silence, stance: 10, note: "신설 — 엘다르도 그날의 뒷부분을 기억한다는 소문"}
+toward_echo: "기다렸다 — 여왕과 다른 이유로. 그들에게 잔향은 장난감이 아니라 자기 이름을 부를 입이다. 잿가루는 기억 하나를 값으로 받고, 진실 하나를 묶이지 않은 채 준다."
+player_paths:
+  - "가라앉은 종탑(H-06): 잿가루의 값 — 가장 아끼는 기억 하나(회귀해도 돌아오지 않는가는 22·03 문서가 정한다)"
+  - "엘린: 결사의 귀 — 그녀의 마을 이름은 니블의 거짓말 속에"
+  - "웃음의 상자: 플레이어가 열면 진실 한 조각(T23), 대가로 웃음을 잃는다. 웃음이 몸의 것인지 영혼의 것인지(회귀해도 남는지)는 03 문서의 판정에 맡긴다 — TODO-RULE"
+regression:
+  fixed: ["일곱 조각", "여왕의 사자(AS 311~)"]
+  flow: ["울지 않는 나무 아래의 계절 모임"]
+  drift: ["여왕의 사자가 회색여울 근처 옛 돌 고리에 나타나는 날"]

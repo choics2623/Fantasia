@@ -1,0 +1,139 @@
+# 지역 생성 키트 — 용인 도시 (25_REGION_KITS.md). 바알카르와 용인 성읍의 이름 없는 사람들이 이것으로 태어난다.
+# 원천: REGIONS §1 (바알카르), HOUSES §1.7·§2, fac_drakmar_empire(관습·법·말투), fac_krik, fac_collar, fac_barg.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_drakmar_empire.customs / law, fac_krik, fac_collar 를 본다.
+# 인간 노예의 이름·말투는 kit_human_serf를 재사용하고, 여기에는 도시 노예에만 있는 것(사슬 표찰, 하역 수신호, 재 글씨)만 더한다.
+id: kit_dragonkin_city
+applies_to: [드라크마르 용좌령, 바알카르, 용인 성읍, 붉은 첨탑 성하, 하스트 요새 성하, 오르셀 나루]
+reuses: [kit_human_serf]          # 인간 노예의 이름 목록·말투 원형은 그쪽에서 뽑는다
+faction_refs: [fac_drakmar_empire, fac_scale_council, fac_krik, fac_collar, fac_barg, fac_rat_crown]
+names:
+  용인:
+    # 용인은 '이름 + 가문명'. 가문이 없는 비늘혈은 '○○의 비늘'(섬기는 가문·용) 또는 별칭.
+    # 순혈은 고어풍 긴 이름, 비늘혈은 짧고 단단한 이름을 즐긴다.
+    pure_male: [세베로, 아우렐, 카시우스, 마르셀, 테오도르, 라디슬라프, 오렐리안, 율리안, 데키무스, 플라비안, 코르넬, 세라핀]
+    pure_female: [오렐리아, 리비아, 로잘린드, 세실리아, 비비안, 클라우디아, 이레나, 마리엘, 코델리아, 아스트리드]
+    scale_male: [드레크, 바렌, 카델, 토르, 헤른, 그라임, 오스크, 브란트, 렘, 시그바르트, 볼코, 하크]
+    scale_female: [에다, 마르가, 테아, 빌마, 린데, 스벤야, 오다르, 헤사, 이르마, 브루나]
+    houses_minor: [하스크, 쇠목, 재손톱, 붉은띠, 굽은창, 놋비늘, 검은홰, 다섯줄, 반칼, 숯턱]
+    epithet_rule: "순혈: 이름 + 대가문명. 비늘혈: 이름 + 소가문명 또는 '○○의 비늘'. 공적인 자리에서 가문명을 먼저 말한다 (칼다란의 세베리안)"
+  와이번:
+    # 왕관 와이번은 '이름 + 둥지 가문'. 기사·잿빛 와이번은 번호와 날개대 이름.
+    crown: [볼가스, 테사르, 이르마스, 모르나, 엘렌드, 카이도르, 사르밧, 헤렌, 오르크, 비스카]
+    nests: [높은홰, 청동발, 긴그림자, 재날개, 흰목, 녹청관]
+    knight: ["{n}번 깃", "테사르의 깃", "검은 깃 {n}", "쌍발톱 {n}"]
+    grey: ["잿빛 {n}", "짐날개 {n}", "회색 {n}"]
+  크릭:
+    # 크릭은 이름이 짧고 된소리·혀차는 소리가 많다. 길드 서열이 오르면 꼬리 수(별명)가 붙는다.
+    male: [스킥, 즈닉, 빅스, 틱, 핍, 그림, 고르, 렉, 칙, 뷕, 짝, 스낙, 크락, 피프]
+    female: [숨, 니브, 시스, 치크, 마브, 우그, 찍, 삐야, 쓰릭, 키타]
+    given_by_master: ["셋꼬리", "여섯꼬리", "놋귀", "굽은등", "그을음", "{n}번 손"]
+  바르그:
+    male: [볼크, 그로드, 하르크, 테쉬, 우르, 갈름]
+    female: [이르가, 루가, 세타, 브렌, 오샤]
+    epithet_rule: "이름 + 털빛·흉터 별명 (회색송곳니, 붉은귀, 이빨잡이)"
+  나가:
+    any: [지올, 모스, 사스리, 엘루, 니에바, 시렌, 카사]
+  인간:
+    # 인간 이름은 kit_human_serf.names.인간 을 쓴다. 도시 노예에게만 붙는 부름:
+    given_by_master: ["{소유 가문} {n}호", "표찰 {n}", "물통", "짐", "열둘째", "갈고리", "목청", "숯손"]
+    epithet_rule: "주인이 부르는 표찰 번호(사슬 표찰의 숫자) + 동료가 부르는 별명(일·생김새) + 진짜 이름(어머니만). 바알카르 태생은 진짜 이름이 없는 경우가 많다"
+classes:            # 바알카르 인구 약 13만에서의 비율 (REGIONS §1.4)
+  인간 국유 노예: 0.38
+  인간 사유 노예: 0.31
+  크릭 하인·감독: 0.14
+  용인 비늘혈: 0.08
+  용인 순혈: 0.01
+  와이번: 0.02
+  바르그: 0.02
+  나가: 0.01
+  목줄단: 0.03
+jobs:
+  - {id: dock_porter, name: 사슬 부두 하역 노예, class: 인간 국유 노예, weight: 14, schedule: sch_dock}
+  - {id: state_laborer, name: 국유 공방·석공 노예, class: 인간 국유 노예, weight: 12, schedule: sch_workshop}
+  - {id: house_slave, name: 저택 하인 노예, class: 인간 사유 노예, weight: 14, schedule: sch_house}
+  - {id: laundress, name: 세탁장 노예, class: 인간 사유 노예, sex: female, weight: 6, schedule: sch_laundry}
+  - {id: water_carrier, name: 물지게 노예, class: 인간 국유 노예, weight: 5, schedule: sch_water}
+  - {id: ash_sweeper, name: 재 쓸이 (용좌봉 증기 재를 쓰는 노예), class: 인간 국유 노예, weight: 4, schedule: sch_sweeper}
+  - {id: tribute_bearer, name: 공물 운반자 (용좌봉), class: 인간 국유 노예, age: [14, 40], weight: 2, schedule: sch_tribute}
+  - {id: market_stock, name: 비늘 시장 '진열' 노예 (매물), class: 인간 국유 노예, weight: 5, schedule: sch_stock}
+  - {id: slum_child, name: 재받이 아이, class: 인간 국유 노예, age: [5, 13], weight: 6, schedule: sch_slum_child}
+  - {id: collar_city, name: 목줄 (막사 밀고꾼), class: 목줄단, weight: 3, schedule: sch_collar_city}
+  - {id: krik_servant, name: 크릭 하인 (굴뚝·배관·부엌), class: 크릭 하인·감독, race: 크릭, weight: 8, schedule: sch_krik_servant}
+  - {id: krik_overseer_city, name: 굽은 등 감독관, class: 크릭 하인·감독, race: 크릭, weight: 4, schedule: sch_overseer_city}
+  - {id: scale_clerk, name: 비늘혈 관리 (징세·통행증·장부), class: 용인 비늘혈, race: 용인, weight: 4, schedule: sch_clerk}
+  - {id: scale_guard, name: 비늘 근위 / 검문 경비, class: 용인 비늘혈, race: 용인, weight: 4, schedule: sch_guard}
+  - {id: pure_idle, name: 순혈 귀족 (관직·학당), class: 용인 순혈, race: 용인, weight: 1, schedule: sch_noble}
+  - {id: grey_wyvern, name: 잿빛 와이번 짐날개, class: 와이번, race: 와이번, weight: 2, schedule: sch_wyvern_haul}
+  - {id: varg_nose, name: 바르그 코 (송곳니 회관), class: 바르그, race: 바르그, weight: 2, schedule: sch_varg}
+  - {id: naga_factor, name: 나가 상관원·대금업자, class: 나가, race: 나가, weight: 1, schedule: sch_naga}
+schedules:          # at = 정착지 틀의 역할(role) 이름
+  sch_dock:      [{days: all, from: "04:30", to: "05:00", at: post, doing: 새벽종 점호, fixed: true}, {days: workday, from: "05:00", to: "12:00", at: dock, doing: 하역 — 노예말 수신호}, {days: all, from: "12:00", to: "12:40", at: canteen, doing: 정오 귀리죽}, {days: workday, from: "12:40", to: "19:00", at: dock, doing: 하역}, {days: all, from: "20:00", to: "04:30", at: barracks, doing: 막사}]
+  sch_workshop:  [{days: all, from: "04:30", to: "05:00", at: post, doing: 점호, fixed: true}, {days: workday, from: "05:00", to: "19:00", at: workshop, doing: 공방 노동}, {days: all, from: "12:00", to: "12:40", at: canteen, doing: 귀리죽}, {days: all, from: "20:00", to: "04:30", at: barracks, doing: 막사}, {days: sabbath, from: "07:00", to: "09:00", at: chapel, doing: 예배}]
+  sch_house:     [{days: all, from: "04:00", to: "22:00", at: mansion, doing: 저택 시중}, {days: all, from: "22:00", to: "04:00", at: mansion, doing: 하인방 바닥에서 잔다}]
+  sch_laundry:   [{days: all, from: "04:30", to: "19:00", at: laundry, doing: "불 피우기, 빨래, 다림질"}, {days: all, from: "19:00", to: "20:00", at: mansion, doing: 세탁물 배달 — 하인 통로}, {days: all, from: "21:00", to: "04:30", at: laundry, doing: 세탁장 곁방}]
+  sch_water:     [{days: all, from: "04:30", to: "18:00", at: well, doing: "물지게 — 우물에서 층계로", outdoor: true}, {days: all, from: "20:00", to: "04:30", at: barracks, doing: 막사}]
+  sch_sweeper:   [{days: all, from: "05:00", to: "15:00", at: stairs, doing: 층계의 증기 재를 쓴다, outdoor: true}, {days: all, from: "20:00", to: "05:00", at: slum, doing: 재받이 움막}]
+  sch_tribute:   [{days: all, from: "03:00", to: "17:00", at: tribute_stair, doing: 공물 계단 오르내리기}, {days: all, from: "19:00", to: "03:00", at: barracks, doing: 막사}]
+  sch_stock:     [{days: workday, from: "06:00", to: "18:00", at: market, doing: 가격 목판을 목에 걸고 선다}, {days: all, from: "18:00", to: "06:00", at: pens, doing: 우리}]
+  sch_slum_child: [{days: all, from: "05:00", to: "12:00", at: slum, doing: 쓰레기 더미 뒤지기}, {days: all, from: "12:00", to: "18:00", at: market, doing: 시장 바닥 이삭줍기}, {days: all, from: "19:00", to: "05:00", at: slum, doing: 움막}]
+  sch_collar_city: [{days: workday, from: "05:00", to: "19:00", at: dock, doing: 할당 감시}, {days: all, from: "19:00", to: "21:00", at: collar_office, doing: 밀고 보고}, {days: all, from: "21:00", to: "05:00", at: barracks, doing: 막사 문 옆 침상}]
+  sch_krik_servant: [{days: all, from: "03:30", to: "10:00", at: mansion, doing: "굴뚝, 아궁이"}, {days: all, from: "10:00", to: "21:00", at: mansion, doing: 부엌·배관}, {days: all, from: "21:00", to: "03:30", at: mansion, doing: 아궁이 옆}]
+  sch_overseer_city: [{days: all, from: "04:30", to: "05:00", at: post, doing: 점호, fixed: true}, {days: workday, from: "05:00", to: "19:00", at: dock, doing: 채찍 순회}, {days: all, from: "19:00", to: "20:00", at: post, doing: 일몰 점호}, {days: all, from: "20:00", to: "04:30", at: guildhall, doing: 길드 회관}]
+  sch_clerk:     [{days: workday, from: "07:00", to: "17:00", at: office, doing: 장부·통행증}, {days: all, from: "18:00", to: "23:00", at: tavern, doing: 비늘혈 선술집}, {days: all, from: "23:00", to: "07:00", at: lodging, doing: 셋방}]
+  sch_guard:     [{days: all, from: "06:00", to: "18:00", at: checkpoint, doing: 층계 검문, outdoor: true}, {days: all, from: "21:00", to: "02:00", at: streets, doing: 통금 순찰}, {days: all, from: "02:00", to: "06:00", at: guard_barracks, doing: 막사}]
+  sch_noble:     [{days: all, from: "10:00", to: "13:00", at: mansion, doing: 접견}, {days: workday, from: "13:00", to: "17:00", at: hall, doing: 관청·학당}, {days: all, from: "19:00", to: "24:00", at: mansion, doing: 만찬}]
+  sch_wyvern_haul: [{days: workday, from: "05:00", to: "17:00", at: tribute_stair, doing: 짐 운반 비행}, {days: all, from: "17:00", to: "05:00", at: perch, doing: 홰}]
+  sch_varg:      [{days: all, from: "06:00", to: "18:00", at: streets, doing: 냄새 순찰}, {days: all, from: "18:00", to: "06:00", at: hunters_hall, doing: 회관}]
+  sch_naga:      [{days: workday, from: "08:00", to: "18:00", at: counting_house, doing: 대출 장부}, {days: all, from: "18:00", to: "08:00", at: counting_house, doing: 상관 물방}]
+voices:             # 말투 원형 — kit_human_serf.voices 에 더해 도시에서만 나는 목소리
+  - {id: v_ledger, name: 장부의 용인, register: "하십시오체, 끝을 한 박자 낮춘다. 인간에게는 직접 말하지 않고 집사에게 묻는다", tics: ["'값으로 말하자면'"], use: [장부, 값, 머릿수, 낙인, 기한], avoid: [잃었다, 도둑], sample: "저것의 값으로 말하자면 두 비늘이 넘지 않소. 집사, 저것을 치우게."}
+  - {id: v_pure_disdain, name: 오만한 순혈, register: "느린 하오체, 비늘혈에게도 반말에 가깝다", tics: ["'피가 묽군.'"], use: [피, 비늘, 서약, 가문], avoid: [섭정, 이후], sample: "피가 묽군. 비늘 수를 세어 보았나? 세지 마라. 부끄러운 숫자일 테니."}
+  - {id: v_krik_cringe, name: 엎드리는 크릭, register: "강한 자에겐 끝없는 존대, 약한 자에겐 혀 차는 반말", tics: ["'흐흥.'", "'강하신 분께서…'"], use: [강한, 주인, 채찍, 목록], avoid: [자유], sample: "흐흥, 강하신 분께서 물으시니 답합죠. 저 인간은 어제도 늦었습죠."}
+  - {id: v_wyvern_record, name: 대독되는 와이번, register: "크릭 서기가 대신 읽는다. '기록에 의하면'으로 시작", tics: ["'기록에 의하면'"], use: [기록, 홰, 배당, 원로], avoid: [도마뱀], sample: "(서기가 읽는다) '기록에 의하면 너는 장부 밖이다. 장부 밖은 없다.'"}
+  - {id: v_dock_signs, name: 수신호 하역꾼, register: "말이 거의 없다. 손이 대신 말한다 (노예말 수신호)", tics: ["손가락 두 개로 어깨를 두드린다 — '새벽'"], use: [짐칸, 밧줄, 물때, 새벽], avoid: [이름], sample: "(입은 다물고 손가락이 움직인다) …짐칸. 둘째 종. 물 없음."}
+  - {id: v_collar_city, name: 수도의 목줄, register: "인간에게 반말, 용인에게 바닥까지 존대. 남의 이름을 일부러 크게 부른다", tics: ["'표찰 보여.'"], use: [표찰, 장부, 밀고, 배급 가산], avoid: [동족], sample: "표찰 보여. 번호 없는 목은 내가 먼저 적는다."}
+  - {id: v_ash_slum, name: 재받이 사람, register: "반말, 기침 섞인 짧은 말. 그림자가 길 때 목소리를 더 낮춘다", tics: ["'그림자 밟지 마.'"], use: [재, 기침, 하수구, 그림자], avoid: [용의 이름], sample: "그림자 밟지 마. 해 질 때는 고개 숙이고 걸어. 그래야 재가 안 돼."}
+  - {id: v_naga_lender, name: 나가 대금업자, register: "부드러운 하게체, 숫자를 노래처럼", tics: ["'이자는 기다려 주지 않지요.'"], use: [두카트, 담보, 기한, 서명], avoid: [], sample: "서명만 하시면 됩니다. 이자는 기다려 주지 않지요. 기다리는 건 저 하나뿐이고요."}
+temperaments: [오만, 계산, 아첨, 무심, 의심, 체념, 잔혹, 비굴, 겁, 영리, 다정, 앙심, 탐욕, 결벽, 냉정]
+city_customs:       # 도시에서만 있는 것 — 법·관습 본문은 fac_drakmar_empire.law/customs
+  - "바알카르 시내 인간은 목에 '사슬 표찰'(소유주 각인 쇠판)을 단다. 표찰 없는 인간은 층계 검문에서 태형 20"
+  - "층계구역 일곱 — 위로 갈수록 용인. 인간은 소유주의 일 없이는 자기 층 위로 오르지 못한다 (층계 검문소)"
+  - "해 질 녘 그림자가 길 때 노예는 고개를 숙이고 걷는다 ('용의 그림자를 밟으면 다음 생에 재가 된다')"
+  - "용좌봉 증기 재가 내리는 여름엔 '재 쓸이' 노예가 층계를 쓴다. 재 빵(5못)은 용인 귀족의 사치"
+  - "사슬 부두 하역 노예의 노예말 수신호 — 출항 시각·짐칸 수·물 유무 (지식:노예말_수신호)"
+  - "재 글씨 — 아궁이 재 위에 손가락으로 쓰고 바로 지운다 ('등잔' 세포)"
+settlement_templates:
+  - id: tpl_dragonkin_town
+    name: 용인 성읍
+    grid: {w: 1200, h: 900}
+    roles:
+      keep:       {count: [1, 1], place: "가장 높은 곳", access: owner, name: "{주인} 성채"}
+      market:     {count: [1, 1], place: "가운데", access: public, name: 시장}
+      pens:       {count: [1, 2], place: "시장 옆 낮은 쪽", access: locked, name: 노예 우리}
+      tollhouse:  {count: [1, 1], place: "성문 안쪽", access: public, name: 징세소}
+      guard_barracks: {count: [1, 1], place: "성채 아래", access: staff, name: 경비 막사}
+      mansion:    {count: [2, 6], place: "성채와 시장 사이 높은 쪽", access: owner, name: "{가문} 저택"}
+      barracks:   {count: [2, 6], place: "가장 낮은 가장자리", access: serf, name: 인간 막사, locked: "통금-새벽종"}
+      canteen:    {count: [1, 2], place: "막사 옆", access: public, name: 배급소}
+      post:       {count: [1, 2], place: "막사와 시장 사이", access: public, name: 사슬 기둥·감독관 초소}
+      chapel:     {count: [0, 1], place: "막사 쪽", access: public, name: 사슬등불 예배당}
+      guildhall:  {count: [0, 1], place: "시장 뒤", access: staff, name: 감독관 길드 회관}
+      well:       {count: [2, 4], place: "층마다", access: public, name: 공용 우물}
+      post_station: {count: [0, 1], place: "대로 쪽 성문 밖", access: public, name: 용주 역참}
+      shrine:     {count: [0, 1], place: "성채 옆", access: owner, name: 가문 신전 (서약한 용의 비늘 단)}
+    outer:
+      fields:   {hours: [0.5, 2.0], name: 국유농장}
+      quarry:   {hours: [1.0, 3.0], name: 채석장}
+  - id: tpl_dragonkin_capital_district
+    name: 수도 구역 (바알카르 층계구역 하나)
+    grid: {w: 800, h: 600}
+    roles:
+      checkpoint: {count: [1, 2], place: "층계 위아래 끝", access: public, name: 층계 검문소}
+      well:       {count: [1, 3], place: "가운데", access: public, name: 공용 우물}
+      mansion:    {count: [0, 8], place: "위쪽 (높은 층계구역일수록 많다)", access: owner, name: "{가문} 저택"}
+      workshop:   {count: [0, 6], place: "아래쪽", access: staff, name: 국유 공방}
+      barracks:   {count: [0, 8], place: "가장 낮은 곳", access: serf, name: 노예 막사, locked: "통금-새벽종"}
+      tavern:     {count: [0, 2], place: "시장 가장자리", access: public, name: 비늘혈 선술집}
+      chain_post: {count: [1, 1], place: "광장", access: public, name: 사슬 기둥}
+    outer: {}
+calendar_ref: "content/base/events/baalkar_312.yaml — 바알카르 사건 달력"

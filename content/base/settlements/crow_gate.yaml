@@ -1,0 +1,63 @@
+# 까마귀 문 — 북방 국경 요새 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §2.10, §1 국경군, 카스파르·레아 카드.
+# grid: 요새 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 북쪽(y=0)이 서리 길, 남쪽(y=270)이 용의 대로.
+# 협곡 폭 약 320m를 석조 성벽(높이 14m, 문 2중)이 막았다. 성벽 길은 위, 병영·마당은 안쪽.
+# 지금 일과 파일에 카스파르·레아가 greyford.yaml에도 한 줄씩 있다면 이 파일의 id(cg_*)를 쓰는 쪽이 정본이다.
+id: crow_gate
+name: 까마귀 문 요새
+node: crow_gate          # 지역 지도(map.json)의 노드
+kind: border_fort
+grid: {w: 320, h: 270}
+curfew: {from: "22:00", to: "05:00", note: "짐꾼 막사 잠김. 병영 밖의 인간은 순찰이 세워 문서를 본다. 북문은 서리월 1일~해빙월 10일 내내 닫힘"}
+bells:
+  - {at: "05:00", name: 기상 나팔}
+  - {at: "06:00", name: 문 여는 나팔}
+  - {at: "12:00", name: 정오 교대}
+  - {at: "18:00", name: 문 닫는 나팔}
+  - {at: "22:00", name: 소등 나팔}
+patrols: ["22:00", "00:00", "03:00"]
+locations:
+  # ── 문과 성벽 ──
+  - {id: cg_north_gate, name: 북문, xy: [160, 12], kind: gate, access: staff, hours: "06:00-18:00 개방 (서리월 1일~해빙월 10일 봉쇄)", rooms: [cg_north_windlass], note: "2중문. 바깥문은 참나무에 철판, 안쪽문은 내리닫이 쇠창살. 서리 길에서 오는 사람은 여기서 멈춘다"}
+  - {id: cg_north_windlass, name: 북문 권양기실, parent: cg_north_gate, access: staff, locked: "18:00-06:00", note: "내리닫이창살을 올리는 권양기. 열쇠는 크릭 열쇠지기와 수비대장이 하나씩"}
+  - {id: cg_drain, name: "북문 옆 '물빼기 굴'", xy: [118, 20], kind: culvert, access: secret, hidden: "폭 0.8m, 길이 약 40m의 석조 배수로. 북쪽 입구는 서리 길 쪽 바위 틈, 남쪽 출구는 빨래터 수챗구멍. 철창은 녹슬어 안쪽 고리만 풀면 열린다. 카스파르가 대장간에 수리를 계속 미룬다", note: "겨울 눈 녹은 물이 흐를 때는 허리까지 찬다"}
+  - {id: cg_south_gate, name: 남문, xy: [160, 258], kind: gate, access: public, hours: "06:00-20:00", note: "용의 대로 쪽. 통행증과 국경군 문서를 본다. 인간은 짐꾼 인솔 문서가 없으면 들어가지 못한다"}
+  - {id: cg_west_tower, name: 서쪽 망루, xy: [40, 30], kind: tower, access: staff, hours: "24시 보초"}
+  - {id: cg_east_tower, name: 동쪽 망루, xy: [280, 30], kind: tower, access: staff, hours: "24시 보초", note: "카스파르가 새벽마다 서는 자리. 서리 길이 한눈에 내려다보인다"}
+  - {id: cg_wall_walk, name: 성벽 길, xy: [160, 30], kind: wall, access: staff, note: "북쪽 벽 위. 바람이 세고, 서리 길 쪽으로 몸을 내밀면 아래 이정표 불빛이 보인다"}
+  # ── 지휘부 ──
+  - {id: cg_commander_office, name: 사령관 집무실, xy: [170, 120], kind: office, access: owner, hours: "05:30-23:00", rooms: [cg_commander_study, cg_commander_chamber, cg_war_room]}
+  - {id: cg_commander_study, name: 사령관 서재, parent: cg_commander_office, access: owner, hidden: "책상 셋째 서랍 — 물빼기 굴을 막으라는 서기의 보고서 (결재란 빈칸)"}
+  - {id: cg_commander_chamber, name: 사령관 침실, parent: cg_commander_office, access: owner, hidden: "침상 틀 안쪽 — 어머니의 녹슨 쇠사슬 성표를 걸어 두는 못(낮에는 갑옷 안)"}
+  - {id: cg_war_room, name: 작전실, parent: cg_commander_office, access: staff, note: "서리 길 모형과 순찰 핀. 회의 때 장교 열이 모인다"}
+  - {id: cg_adjutant_room, name: 부관실, xy: [195, 122], kind: office, access: owner, hours: "05:30-24:00", hidden: "마룻장 밑 — 오웬의 편지와 카스파르의 답장 사본, 용언 보고서 초안 (라벤더 기름으로 냄새를 덮었다)"}
+  - {id: cg_clerk_room, name: 서기실, xy: [205, 100], kind: office, access: staff, hours: "06:00-20:00", hidden: "서기 크릭의 서랍 이중바닥 — 물빼기 굴 보고서 사본"}
+  - {id: cg_officers_quarters, name: 장교 숙소, xy: [235, 135], kind: barracks, access: staff, rooms: [cg_captain_room]}
+  - {id: cg_captain_room, name: 수비대장실, parent: cg_officers_quarters, access: owner}
+  # ── 병영 ──
+  - {id: cg_dragonkin_barracks, name: 용인 병영, xy: [75, 150], kind: barracks, access: staff, note: "용인 120. 난로가 열 개, 겨울에도 침상은 덥다"}
+  - {id: cg_crick_barracks, name: 크릭 병영, xy: [55, 205], kind: barracks, access: staff, note: "크릭 60. 지하식 굴. 문이 낮다"}
+  - {id: cg_porter_barracks, name: 짐꾼 막사, xy: [255, 205], kind: barracks, access: serf, locked: "22:00-05:00", note: "인간 짐꾼·하인 80. AS 309에 불탄 자리에 다시 지은 목조. 아무도 그 일을 입에 올리지 않는다"}
+  - {id: cg_kitchens, name: 취사장과 식당, xy: [130, 190], kind: canteen, access: staff, hours: "04:30-21:00", note: "용인·크릭 식당이 둘로 갈리고, 인간 하인은 뒷문 쪽 긴 널판에서 먹는다"}
+  - {id: cg_drill_yard, name: 훈련 마당, xy: [150, 170], kind: yard, access: staff, hours: "06:00-18:00", note: "카스파르가 직접 검술을 지도하는 날이 있다"}
+  - {id: cg_well_yard, name: 우물 마당, xy: [160, 215], kind: well, access: public}
+  - {id: cg_infirmary, name: 병사 의무실, xy: [125, 135], kind: clinic, access: staff, hours: "24시", note: "동상 환자 침상 열두 개. 탈주자 수용자는 간수 허락이 있어야 눈에 띈다"}
+  - {id: cg_armory, name: 무기고와 대장간, xy: [100, 235], kind: work, access: staff, hours: "06:00-18:00"}
+  - {id: cg_laundry, name: 빨래터, xy: [150, 240], kind: work, access: serf, hours: "06:00-17:00", hidden: "구석 돌 수챗구멍 — 물빼기 굴의 남쪽 출구. 빨래하는 여인들이 철창 소리를 안다"}
+  # ── 보급과 마구간 ──
+  - {id: cg_granary, name: 보급 창고와 곡창, xy: [215, 215], kind: store, access: locked, hours: "06:00-18:00 반출", note: "남작령 귀리 납품분 600섬/년이 들어오는 곳. 312년 입고는 장부보다 얇다"}
+  - {id: cg_stable, name: 말 마구간, xy: [235, 165], kind: work, access: staff, hours: "05:00-22:00", note: "말 돌보는 노예로 배속되면 카스파르 눈에 띈다"}
+  - {id: cg_wyvern_stable, name: 와이번 마구간, xy: [280, 90], kind: work, access: staff, note: "늙은 잿빛 와이번 고름의 잠자리. 지붕이 높다"}
+  # ── 전령과 감옥 ──
+  - {id: cg_raven_loft, name: 까마귀 사육장, xy: [200, 70], kind: loft, access: staff, hours: "05:00-20:00", rooms: [cg_pigeon_cote], note: "국경군의 상징. 전령 까마귀 서른 마리. 죽이면 크릭이 처벌한다"}
+  - {id: cg_pigeon_cote, name: 비둘기장, parent: cg_raven_loft, access: owner, hidden: "전서구 여섯 마리. 다리끈 무늬가 잿불 언덕 쪽 것이다 — 부관만 연다. 라벤더 기름은 이 냄새를 덮으려는 것"}
+  - {id: cg_prison, name: 감옥, xy: [110, 95], kind: prison, access: staff, locked: "24시 (열쇠는 간수)", rooms: [cg_cells, cg_interrogation], note: "탈주자 임시 수용 30칸. 서리 길 쪽 벽 아래 반지하"}
+  - {id: cg_cells, name: 수용 칸 (30칸), parent: cg_prison, access: staff, note: "칸마다 짚 한 단. 마지막 칸 셋은 병든 사람용"}
+  - {id: cg_interrogation, name: 심문실, parent: cg_prison, access: staff, note: "카스파르가 직접 앉는 날이 있다. 질문은 같은 세 가지 — 어디서 왔나, 누가 길을 열었나, 몇이나 더 오나"}
+  - {id: cg_fire_shrine, name: 불의 감실, xy: [90, 70], kind: shrine, access: staff, note: "용인 병사가 출정 전에 비늘 한 조각을 올리는 작은 석실. 카스파르는 발길을 끊었다"}
+  - {id: cg_graves, name: 국경 묘역, xy: [25, 235], kind: graveyard, access: staff, note: "이름 있는 비석 마흔, 이름 없는 돌무더기 일곱 — 서리 길에서 얼어 죽은 사람들을 누가 밤에 묻는다"}
+# 요새 밖 — hours = 요새에서 걷는 시간
+outer:
+  - {id: crow_gate__drain_mouth, name: 물빼기 굴 북쪽 입구, hours: 0.4, node: crow_gate}
+  - {id: crow_gate__frost_road_head, name: "서리 길 초입 '마지막 이정표'", hours: 2.5, node: crow_gate}
+  - {id: crow_gate__ravine_road, name: 협곡 대로 (요새 남쪽), hours: 0.5, node: crow_gate}
+  - {id: crow_gate__signal_ledge, name: 북쪽 바위 선반 (신호 불), hours: 1.2, node: crow_gate}

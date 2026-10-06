@@ -1,0 +1,37 @@
+# 용주 역참 — 용의 대로 세 번째 용주 옆 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §2.10, fac_drakmar_empire off_road_post.
+# grid: 역참 격자 (m), 원점 = 북서쪽 모서리. 대로가 북(회색여울)에서 남(바알카르)으로 가운데를 가른다.
+id: dragon_pillar_post
+name: 용주 역참
+node: dragon_pillar_post
+kind: road_post
+grid: {w: 220, h: 170}
+curfew: {from: "22:00", to: "04:30", note: "검문대 차단봉이 내려온다. 막사 잠김. 통행증 없는 인간이 마당에 있으면 하사가 부른다"}
+bells:
+  - {at: "04:30", name: 첫 말 교대}
+  - {at: "12:00", name: 정오 교대}
+  - {at: "18:00", name: 저녁 점호}
+  - {at: "22:00", name: 차단봉 내림}
+patrols: ["22:00", "01:00", "04:00"]
+locations:
+  - {id: dp_pillar, name: 세 번째 용주, xy: [110, 75], kind: landmark, access: public, hidden: "기둥 밑동 홈 — 지나던 인간들이 손톱으로 새긴 사슬 표 서른 개 남짓. 이름 없는 자들의 길표로 읽는 사람도 있다", note: "용 모양으로 깎은 이정 기둥. 높이 6m, 윗부분은 용언 거리 새김(바알카르 28h)"}
+  - {id: dp_checkpoint, name: 검문대, xy: [110, 20], kind: checkpoint, access: public, hours: "04:30-22:00 (그 뒤 차단봉)", note: "통행증(인간)·국경군 문서를 본다. 호송대는 여기서 명부를 맞춘다"}
+  - {id: dp_post_hall, name: 역참 본관, xy: [155, 65], kind: office, access: public, hours: "05:00-20:00", rooms: [dp_postmaster_study, dp_mail_room]}
+  - {id: dp_postmaster_study, name: 역참장 서재, parent: dp_post_hall, access: owner, hidden: "서랍 — 월말 봉인 수·밀랍 색 기록장. 봉인은 열지 않는다"}
+  - {id: dp_mail_room, name: 우편실, parent: dp_post_hall, access: staff, hidden: "분류함 뒤 — 증기 주전자. 봉인 밑을 데우는 데 쓴다"}
+  - {id: dp_mailbox, name: 전령 우편함, xy: [168, 78], kind: mailbox, access: locked, hours: "투입구는 24시, 열쇠는 전령만", hidden: "본관 뒷벽 돌 우편함. 레아의 보고서(용언, 은밀랍 봉인)가 매월 25일 낮에 들어가고 26일 새벽 전령이 비운다", note: "무쇠 문, 투입구가 좁다. 열쇠는 둘 — 전령 한 개, 역참장 한 개(쓰지 않는다)"}
+  - {id: dp_stable, name: 마구간·말 교대장, xy: [60, 95], kind: work, access: staff, hours: "04:30-22:00", rooms: [dp_hayloft], note: "말 서른 마리. 군용 말과 전령 말이 따로"}
+  - {id: dp_hayloft, name: 건초 다락, parent: dp_stable, access: secret, hidden: "건초 더미 뒤 두 사람이 누울 칸. 마구간 노예가 가끔 하룻밤 손님을 재운다 (남쪽으로 가는 사람들)"}
+  - {id: dp_merchant_lodge, name: 상인 숙소, xy: [170, 120], kind: lodging, access: public, hours: "16:00-08:00 체크인", rooms: [dp_dorvan_room], note: "방 열둘. 호송대와 상인이 나눠 쓴다. 방값은 역참장이 아니라 도르반 같은 단골이 값을 정한다"}
+  - {id: dp_dorvan_room, name: 도르반의 방, parent: dp_merchant_lodge, access: owner, hidden: "침대 밑 상자 — 헨릭의 인장이 찍힌 귀리 영수 여섯 장과 이중 장부"}
+  - {id: dp_caravan_yard, name: 짐마차 마당, xy: [115, 125], kind: yard, access: public, note: "마차 스무 대가 선다. 호송대가 밤에 서는 곳"}
+  - {id: dp_store, name: 역참 창고, xy: [145, 145], kind: store, access: locked, hours: "06:00-18:00", hidden: "구석 귀리 통 — 용좌 국고 인장이 긁혀 나간 자루 80섬 (회색여울 국경군 납품분)"}
+  - {id: dp_cookhouse, name: 취사장, xy: [90, 45], kind: canteen, access: public, hours: "04:30-21:30", note: "역참 식구와 손님이 한 솥을 나눈다. 인간 노예는 뒷문에서 먹는다"}
+  - {id: dp_dragonkin_quarters, name: 용인 숙소, xy: [180, 28], kind: barracks, access: staff, note: "용인 4 — 역참장, 검문 하사, 병사 둘"}
+  - {id: dp_crick_quarters, name: 크릭 숙소, xy: [40, 45], kind: barracks, access: staff, note: "크릭 6. 우편 서기와 마부"}
+  - {id: dp_slave_shed, name: 노예 막사, xy: [35, 135], kind: barracks, access: serf, locked: "22:00-04:30", note: "인간 15"}
+  - {id: dp_well, name: 우물, xy: [100, 105], kind: well, access: public}
+  - {id: dp_smithy, name: 편자 대장간, xy: [45, 75], kind: work, access: staff, hours: "05:00-19:00"}
+outer:
+  - {id: dragon_pillar_post__roadside_copse, name: 길가 잡목숲, hours: 1.0, node: dragon_pillar_post}
+  - {id: dragon_pillar_post__ford, name: 개울 여울, hours: 0.7, node: dragon_pillar_post}
+  - {id: dragon_pillar_post__south_road, name: 대로 남쪽 (바알카르 방면), hours: 0.5, node: dragon_pillar_post}
