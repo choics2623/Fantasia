@@ -1,0 +1,54 @@
+# 모르바 늪 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §8(늪 마녀·공물 여섯·첫 이름 날·재의 날 반딧불), WORLD_BIBLE §8(달력)·§10(클락 2 맹약회의 313, 클락 3 북방 대탈주), fac_swamp_hags(보름 회합 — 피 병을 그릇 쪽으로 밀고 당긴다), docs/world/people/morva.md, facts/phase2_morva.yaml.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림 13 재의 날(5일). 늪은 얼지 않는다 — 겨울에는 안개가 오고 굶주림이 온다.
+# 다른 지역과의 연결: 312-09-25 볼크의 굶주린 언덕 대수색(회색여울) 소식 → 가르 / 312-10-20·12-14 회색여울 매각 40·31이 세렌 소금 나루에 닿는 날 헤드비가가 마르디 상가에 가 있다(매달 20일) / 312-12-12 마레크가 노예선 소식을 듣는다 / 313-03 흰 알 부화 소식(루멘 장어 장수) / 313-05-16·20 맹약회의 313(서약섬 5/1~11) 소식('인간 증언' 의제, 12일 이후 전파) / 313-07 바르그 원정대 탐문.
+# 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다. 쉼표가 든 값은 큰따옴표로.
+
+# ── 낙엽월 (9) — 장어철과 첫 이름 날 ──
+- {id: ev_mv_eel_reserve, date: "312-09-05", npcs: [npc_mv_hilke], from: "22:00", to: "24:00", at: rv_pot, doing: "장어철 첫 줄 — 솥 몫에서 훈제 장어 열 줄을 덜어 늪 아래 항아리에 묻는다. 올해 마흔 줄의 첫 열"}
+- {id: ev_mv_first_name_day, date: "312-09-12", npcs: [npc_mv_nanne, npc_mv_alek, npc_bern], from: "18:00", to: "22:00", at: rv_council_island, doing: "첫 이름 날 모임 — 일 년을 채운 탈주자 열한 명이 스스로 성을 짓는다. 난네가 매듭 끈 하나씩을 이름 바구니에 넣는다 (지금까지 412)", travel_from: rv_mud_school, fixed: true}
+- {id: ev_mv_volk_hunt_news, date: "312-09-27", npcs: [npc_mv_garr, npc_hag_brita], from: "20:00", to: "22:00", at: sh_guest_lodge, doing: "회색여울 굶주린 언덕에서 볼크가 대수색을 했다는 소식이 잿빛 실로 닿는다 — 가르가 서른일곱 이름 뒤에 아무 말 없이 한 줄을 더 외운다"}
+- {id: ev_mv_oct_tribute, date: "312-10-20", npcs: [npc_bern, npc_saska, npc_nadia, npc_mv_sirra], from: "10:00", to: "14:00", at: rv__mud_lantern_dike, doing: "올해의 공물 여섯 — 베른이 '사냥 원정'이라 말하고 사스카의 꼬리 앞에 선다. 나디아가 화살통의 줄 한 가닥을 만지고 시라가 목을 기울여 여섯을 센다", travel_from: rv__hissing_marsh, fixed: true}
+- {id: ev_mv_oct_circle_blood, date: "312-10-15", npcs: [npc_oda, npc_hag_brita, npc_hag_hana, npc_hag_jorda, npc_hag_mag, npc_hag_elsbet, npc_hag_rune, npc_mv_sunni], from: "19:00", to: "24:00", at: sh_circle, doing: "보름 회합 — 안건은 겨울 전 독꼬리의 피 석 병. 오다는 병을 그릇 쪽으로 밀고 브리타는 자기 쪽으로 당긴다 (넷이면 정해진다)", fixed: true}
+- {id: ev_mv_oct_seren_arrival, date: "312-10-20", npcs: [npc_mv_hedwiga], from: "06:00", to: "10:00", at: sr_salt_quay, doing: "소금 나루에 회색여울 마흔이 노예선에서 내린다 — 헤드비가가 약초 자루를 안은 채 마흔 얼굴을 센다. 쪽지 하나를 자루 바닥에 더 넣는다", travel_from: sh_eel_dock, return_to: sh_eel_dock}
+# ── 서리월 (10) ──
+- {id: ev_mv_nov_fog, date: "312-10-28", npcs: [npc_mv_rena], from: "05:00", to: "08:00", at: rv__mist_bank, doing: "첫 짙은 안개 — 갈대 엮기 자리에서 안개의 두께를 가늠한다. 매듭 지시의 '겨울 안개가 덮을 때까지'가 가까워졌다"}
+# ── 긴밤월 (11) ──
+- {id: ev_mv_fog_covers, date: "312-11-15", npcs: [npc_mv_rena], from: "22:00", to: "24:00", at: rv__mist_bank_hut, doing: "겨울 안개가 둑을 덮는 첫 밤 — 아이 일곱을 갈대 방 안쪽으로 옮긴다. 이름을 부르지 않고 손만 잡는다"}
+- {id: ev_mv_nov_hilke_check, date: "312-11-22", npcs: [npc_mv_hilke, npc_mv_nanne], from: "20:00", to: "22:00", at: rv_pot, doing: "굶주림월 한 달 전 — 힐케가 마흔 줄의 항아리 위치를 난네에게만 말해 둔다. 난네는 이름 바구니 맨 밑 영번째 끈 곁에 항아리 이야기도 넣어 둔다"}
+# ── 굶주림월 (12) ──
+- {id: ev_mv_dec_pot_once, date: "312-12-01", npcs: [npc_mv_hilke], from: "05:00", to: "08:00", at: rv_pot, doing: "굶주림월 1일 — 솥 하나가 하루 한 끼로 줄어든다. 힐케가 국자를 들고 한 사람도 돌려보내지 않겠다고 중얼거린다", fixed: true}
+- {id: ev_mv_dec_barge_news, date: "312-12-12", npcs: [npc_mv_marek, npc_mv_beni], from: "12:00", to: "17:00", at: mm_rotten_pier, doing: "루멘 장어 장수가 '소금 바늘'호 소식을 가져온다 — 회색여울 서른한 명이 어제 루멘 부두를 지났다. 마레크가 보름 정보에 노예선 일정을 덧붙일지 망설이고 베니가 그의 손을 본다"}
+- {id: ev_mv_dec_seren_31, date: "312-12-14", npcs: [npc_mv_shirel], from: "22:00", to: "24:00", at: sh_eel_dock, doing: "소금 나루에 서른한 명이 닿았다는 말이 물비늘대 소식으로 뱃사공의 귀에 닿는다 — 눈먼 등대의 천 색이 흰색에서 붉은색으로 바뀌었다고 한다"}
+- {id: ev_mv_dec_hilke_jar, date: "312-12-20", npcs: [npc_mv_hilke], from: "22:00", to: "24:00", at: rv_pot, doing: "항아리에서 첫 열 줄을 꺼낸다 — 솥에 넣지 않고 아이들 몫에서 두 숟갈씩 덜어 얹는다"}
+# ── 재의 날 (13) — 반딧불 병 ──
+- {id: ev_mv_ash_day_1, date: "312-13-01", npcs: [npc_mv_alek, npc_mv_nanne, npc_mv_hilke, npc_mv_torr, npc_mv_rif], from: "18:00", to: "24:00", at: rv_glow_field, doing: "재의 날 첫 밤 — 불 대신 반딧불 병을 든다. 대륙에서 유일하게 아스테리온을 공개적으로 기린다. 알렉이 열여덟 자 가운데 한 자를 땅에 쓰고 물로 지운다", fixed: true}
+- {id: ev_mv_ash_day_3, date: "312-13-03", npcs: [npc_mv_nanne, npc_mv_alek], from: "20:00", to: "24:00", at: rv_name_basket, doing: "재의 날 사흘째 — 이름 바구니를 열어 412개의 끈을 한 번씩 만진다. 난네가 영번째 끈 곁에서 손을 멈춘다", fixed: true}
+- {id: ev_mv_ash_day_circle, date: "312-13-03", npcs: [npc_oda, npc_hag_mag, npc_hag_hana, npc_hag_rune], from: "20:00", to: "24:00", at: sh_moss_rock, doing: "재의 날 바위 앞 — 노파들이 평소보다 한 줄씩 더 외운다. 시간 근원의 자리가 비어 있다는 것을 아무도 입에 올리지 않는다"}
+- {id: ev_mv_ash_day_children, date: "312-13-04", npcs: [npc_mv_rena], from: "20:00", to: "23:00", at: rv__mist_bank_hut, doing: "재의 날 — 안개 낀 둑에서 아이 일곱에게 반딧불 병 하나씩을 쥐여 주고 '불은 불이 아니니까 괜찮다'고 말한다"}
+# ── 313 해빙월 (1) ──
+- {id: ev_mv_moss_clearing, date: "313-01-10", npcs: [npc_oda, npc_hag_brita, npc_hag_hana, npc_hag_jorda, npc_hag_mag, npc_hag_elsbet, npc_hag_rune], from: "07:00", to: "13:00", at: sh_moss_rock, doing: "이끼 걷기 — 일곱이 바위의 이끼를 걷고 각문을 한 줄씩 다시 외운다. 견습은 이때 처음 바위를 본다. 바위 뒷면은 아무도 만지지 않는다", fixed: true}
+- {id: ev_mv_jan_mud_school_twenty, date: "313-01-25", npcs: [npc_mv_alek, npc_mv_rif], from: "09:00", to: "16:00", at: rv_mud_school, doing: "열아홉 가운데 열여덟째 글자를 모두 안 학생이 둘이 된다 — 리프가 열아홉째가 뭐냐고 묻고 알렉은 '천천히'라고만 한다"}
+# ── 313 파종월 (2) ──
+- {id: ev_mv_feb_forge_visit, date: "313-02-14", npcs: [npc_mv_torr, npc_mv_beni], from: "10:00", to: "16:00", at: rv_forge, doing: "베니가 늪 어귀에서 올라와 가스 함정 세 곳의 위치를 토르와 다시 맞춘다 — 겨울 안개에 표식이 닳았다", travel_from: mm_spotters_hut, return_to: mm_spotters_hut}
+# ── 313 꽃월 (3) — 알의 부화와 흰 알 소문 ──
+- {id: ev_mv_mar_eggs_hatch, date: "313-03-12", npcs: [npc_saska, npc_mv_sirra, npc_mv_bren, npc_oda], from: "04:00", to: "20:00", at: rv__saska_nest, doing: "알 열넷 가운데 열하나가 깨진다 — 셋은 끝내 깨지 못한다. 사스카가 식은 알을 꼬리로 한 번 쓰다듬고 오다는 눈먼 손으로 갈라진 껍질을 센다", travel_from: sh_overturned_boat, return_to: sh_overturned_boat, fixed: true}
+- {id: ev_mv_mar_egg_news_pier, date: "313-03-22", npcs: [npc_mv_marek, npc_mv_jude], from: "12:00", to: "17:00", at: mm_rotten_pier, doing: "루멘 장어 장수가 흰 알이 깨졌다는 소문을 가져온다 — 마레크가 소문의 값을 장어 값처럼 올리고 쥬드가 장어를 받으며 그 말을 한 번 더 외운다"}
+# ── 313 푸른월 (4) ──
+- {id: ev_mv_apr_school_decide, date: "313-04-10", npcs: [npc_mv_alek, npc_bern, npc_mv_rena], from: "18:00", to: "22:00", at: rv_council_island, doing: "뿌리 모임 — 알렉이 학생을 늘릴지 처음으로 안건에 올린다. 레나가 낯선 눈으로 그를 본다. 투표는 오른발과 왼발이 반으로 갈린다", travel_from: rv_mud_school}
+# ── 313 태양월 (5) — 맹약회의 313 소식 ──
+- {id: ev_mv_may_covenant_pier, date: "313-05-16", npcs: [npc_mv_marek, npc_mv_beni, npc_mv_jude], from: "12:00", to: "17:00", at: mm_rotten_pier, doing: "루멘 장어 장수가 서약섬 소식을 전한다 — 맹약회의 313(5월 1~11일, 서약섬)에서 '인간 증언'이 처음 안건에 올랐다는 소문이 12일 이후 닿는다. 마레크가 웃음을 지운다"}
+- {id: ev_mv_may_covenant_root, date: "313-05-20", npcs: [npc_mv_alek, npc_bern, npc_mv_nanne], from: "18:00", to: "22:00", at: rv_council_island, doing: "맹약회의 소식이 늪 깊이 닿는다 — 알렉이 '인간 증언'이라는 말을 진흙판에 한 번 쓰고 물로 지우지 못한다. 난네가 이름 바구니 곁에서 숨을 멈춘다", travel_from: rv_mud_school}
+# ── 313 건초월 (6) ──
+- {id: ev_mv_jun_fever, date: "313-06-10", npcs: [npc_mv_hilke, npc_mv_nanne], from: "08:00", to: "20:00", at: rv_herb_hut, doing: "늪열 철 — 약초 오두막 열 침상이 모두 찬다. 힐케가 솥에서 죽을 나르고 난네가 이름을 하나씩 확인한다"}
+# ── 313 수확월 (7) ──
+- {id: ev_mv_jul_barg_probe, date: "313-07-25", npcs: [npc_mv_marek, npc_mv_beni, npc_mv_jude], from: "10:00", to: "17:00", at: mm_rotten_pier, doing: "바르그 지부 사람 셋이 장어 장수로 꾸미고 늪 어귀 장터에 닿는다 — 베니가 호루라기를 장어 장수로 불게 하고 마레크가 아무것도 모르는 얼굴로 값을 부른다", if: barg_probe}
+# ── 매달 반복 ──
+- {id: ev_mv_monthly_circle, npcs: [npc_oda, npc_hag_brita, npc_hag_hana, npc_hag_jorda, npc_hag_mag, npc_hag_elsbet, npc_hag_rune, npc_mv_sunni], repeat: monthly, day: 15, from: "19:00", to: "24:00", at: sh_circle, doing: "보름 회합 — 일곱 노파가 피 병을 그릇 쪽으로 밀거나 자기 쪽으로 당긴다. 끝나면 일곱이 바위 앞에 서서 한 줄씩 외운다", fixed: true}
+- {id: ev_mv_monthly_mirror, npcs: [npc_mv_marek], repeat: monthly, day: 15, from: "22:00", to: "24:00", at: mm_mudflat, doing: "보름 밤 — 갈대배를 내어 갯벌로 나간다. 루멘 쪽으로 거울 빛을 세 번 반짝인다. 그의 장어 자루는 비어 있다"}
+- {id: ev_mv_monthly_boat_count, npcs: [npc_mv_beni], repeat: monthly, day: 16, from: "05:00", to: "06:00", at: mm_reed_boats, doing: "갈대배 열세 척의 수를 센다 — 한 척이 밤새 비었다가 돌아왔다. 장부에 보름 밤 날짜를 옮긴다"}
+- {id: ev_mv_monthly_oda_saska, npcs: [npc_oda, npc_saska], repeat: monthly, day: 22, from: "22:00", to: "24:00", at: rv__saska_nest, doing: "피의 거래 — 오다가 알 부화를 거드는 대가로 와이번의 피 한 병을 받는다. 겨울 전 석 병을 채워야 한다", travel_from: sh_overturned_boat, return_to: sh_overturned_boat}
+- {id: ev_mv_monthly_hedwiga, npcs: [npc_mv_hedwiga], repeat: monthly, day: 20, from: "10:00", to: "16:00", at: sr_mardi_house, doing: "세렌 마르디 상가 약초 정산 — 약초 값을 올려 받고 소식을 한 줄 대신 건넨다. 자루 바닥에 빚 골목의 쪽지를 넣는다", travel_from: sh_eel_dock, return_to: sh_eel_dock}
+- {id: ev_mv_monthly_shirel, npcs: [npc_mv_shirel], repeat: monthly, day: 12, from: "14:00", to: "17:00", at: sr_zolak_vault, doing: "졸라크 상가에 숫자를 판다 — 이달 늪을 드나든 배와 사람의 수. 위치는 말하지 않는다", travel_from: sh_eel_dock, return_to: sh_eel_dock}
+- {id: ev_mv_monthly_marek_root, npcs: [npc_mv_marek], repeat: monthly, day: 10, from: "11:00", to: "14:00", at: rv_pot, doing: "뿌리마을 솥 곁에서 훈제 장어를 판다 — 웃으며 사람들의 이름을 외운다. 뿌리마을의 위치는 팔지 않았다", travel_from: mm_eel_stall, return_to: mm_eel_stall}
+- {id: ev_mv_monthly_hilke_count, npcs: [npc_mv_hilke], repeat: monthly, day: 1, from: "20:00", to: "22:00", at: rv_pot, doing: "달 첫날 — 뿌리 가루 자루와 장어 줄의 수를 센다. 줄어든 수를 장부에 쓰지 않고 자기 몫에서 채운다"}

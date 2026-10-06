@@ -1,0 +1,187 @@
+# 예순 늙은굽 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_yesun
+name: 예순 늙은굽
+aka:
+- 늙은굽
+- 떠나지 않은 이
+- 옛 바람
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 71
+region: "하르칸 초원"
+home: "늙은이의 언덕 아래 천막"
+job: "옛 바람파 수장 — 칸 없는 초원을 주장하는 9부족의 대표, 서풍 금지 옛 법의 기억"
+rank: "벡이 아니면서 벡들이 찾는 늙은 말. 칸의 수에는 들지 않는다"
+summary: "달리지 못하게 된 뒤에도 무리를 떠나지 않고 서 있는 옛 바람파의 늙은이. 서풍 날 서쪽으로 가지 않는 법이 재의 바람에서 온다는 것을 알고, 무거운발굽 멍에 서약의 원문을 외운다"
+source: "docs/world/people/harkan.md (npc_hk_yesun)"
+life:
+- year: 241
+  age: 0
+  event: "바람발굽에서 태어남"
+- year: 270
+  age: 29
+  event: "서풍 날 서쪽으로 간 젊은 부족을 따라가다 혼자 돌아옴"
+- year: 295
+  age: 54
+  event: "달리지 못하게 된 뒤에도 무리를 떠나지 않겠다고 선언"
+- year: 303
+  age: 62
+  event: "옛 바람파 9부족의 수장으로 추대됨"
+- year: 311
+  age: 70
+  event: "바투에게 갈기 가닥을 내밀었으나 돌려받음"
+appearance:
+- 흰 털이 섞인 회갈색 하체, 앞다리 관절이 부어올랐다
+- 갈기를 땋지 않고 풀어 두었다 — 달리지 않는 자의 표
+- 등에 말뼈 막대 열둘을 묶은 작은 가죽 끈
+smell: "오래된 말뼈와 마른 풀, 늙은 말의 숨"
+voice_sound: "낮고 느리다. 과거형을 쓰는 하르칸"
+personality:
+  disposition:
+    용기: 40
+    자비: 45
+    정직: 70
+    신앙: 70
+    탐욕: -50
+    충성: 50
+  temperament:
+  - 완고
+  - 경건
+  - 다정
+  habits:
+  - 말 사이에 서쪽 바람 냄새를 한 번 맡는다
+  - 손으로 말뼈 막대를 세어 본다
+  values: 옛 법에는 이유가 있었다. 이유를 잊은 법은 법이 아니라 습관이다
+  fears:
+  - 재 냄새가 나는 날 서쪽으로 간 젊은 부족이 돌아오지 못하는 것
+  - 자기가 죽으면 이름들이 사라지는 것
+  desires:
+    short: 칸이 서풍 날 진군을 다시 하기 전에 막대의 이름들을 벡 앞에서 읽는 것
+    long: 칸 없는 초원이 아니라 옛 법을 기억하는 칸이 서는 초원
+voice:
+  register:
+    to_superior: 칸에게는 말하지 않고 다리만 본다
+    to_equal: 늙은이에게는 느린 평어
+    to_inferior: 젊은 질주자에게는 다정하게 길게
+    to_player_default: 낯선 사람에게는 서쪽 바람을 먼저 묻는다
+  tics:
+  - 서쪽 냄새를 맡는다
+  - '''내가 달릴 때는.'''
+  use:
+  - 옛 법
+  - 서풍
+  - 막대
+  - 이름
+  - 언덕
+  - 재
+  avoid:
+  - 부양
+  - 정착
+  - 칸의 영예
+  length: 느리고 길다. 이름을 부를 때는 짧다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 서쪽에서 불 때는 앉아 있어도 좋소 — 나처럼 앉은 자가 많으니.
+  - situation: 호의
+    line: 당신은 서풍에 얼굴을 돌리지 않는군. 그런 사람이 좋소.
+  - situation: 거절
+    line: 이름은 막대에 있소. 입으로는 아직 부르지 않소.
+  - situation: 슬픔
+    line: 내가 달릴 때 서풍이 불던 날 열세 부족이 서쪽으로 갔소. 돌아온 이름이 없었소.
+  - situation: 비밀 누설
+    line: 서풍은 재를 싣고 오오. 재 냄새가 나는 날 서쪽으로 가면 돌아오지 못하오. 옛 법은 그래서 있소.
+  - situation: 거래
+    line: 바투에게 이 가닥을 다시 건네 주시오. 이번에는 받을 것이오.
+schedule:
+  아침: 늙은이의 언덕 서쪽 비탈에 서서 서풍의 냄새를 맡는다
+  낮: 언덕 아래 천막에서 젊은 질주자에게 옛 법을 말한다
+  저녁: 정주병 천막에서 달리지 못하는 이들 곁에 앉는다
+  밤: 말뼈 막대 열둘을 하나씩 손으로 쓸어 본다
+places:
+- 늙은이의 언덕
+- 정주병 천막
+- 부족장 연회 천막
+knows:
+- fact_hk_west_wind_broken
+- fact_hk_yoke_oath_expired
+- fact_hk_temur_broke_leg
+hides:
+- fact: fact_p2hk_yesun_west_wind_origin
+  reveal_when: "신뢰 50 이상이고 말뼈 막대를 직접 본 뒤"
+  reveal: [{"trust":50,"scene":"말뼈 막대"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "서풍 이야기가 나오면 '옛 법은 법이오'라고만 한다"
+- fact: fact_p2hk_yesun_yoke_oath_text
+  reveal_when: "신뢰 60 이상, 또는 옥타이가 먼저 말한 뒤"
+  reveal: [{"trust":60},{"told_by":"npc_oktai"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "멍에 이야기가 나오면 '짐은 짐이오'라고만 한다"
+relations:
+- to: npc_hk_batu
+  type: "돌려받은 가닥의 상대"
+  like: 30
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "칸의 아들이 받아 주기를 바라는 사람"
+- to: npc_batar
+  type: "함께 선 늙은이"
+  like: 55
+  trust: 65
+  visibility: 공개
+  memo: null
+  words: "정주병을 같이 겪는 벗"
+- to: npc_oktai
+  type: "멍에 서약의 증인"
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "원문을 외운다는 것을 아는 무거운발굽"
+- to: npc_hk_boro
+  type: "옛 법의 벗"
+  like: 40
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "서풍 금지를 같이 믿는 서쪽 늙은이"
+- to: npc_temur
+  type: "법을 깬 칸"
+  like: -35
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: "서풍 날 서진을 처음 깬 사람"
+toward_player: "느리게 서쪽을 먼저 묻는다. 달리지 못하는 사람도 사람이라 여기는 이에게 열린다"
+persuade:
+  likes: 옛 법에 대한 경청(+25)
+  hates: 늙음을 조롱하는 말(역린 +40)
+roles:
+  teacher: '스승 가능 — 학식(초원 옛 법, 상한 50). 조건: 말뼈 막대를 한 번 읽기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_elder_horse
+  office: off_old_wind_head
+  since: 303
+  loyalty: 35
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 말뼈 막대 열둘이 서쪽 비탈에 박혀 있다
+  - 예순 늙은굽은 떠나지 않았다
+  drift:
+  - 그날 서풍 냄새의 세기
+  - 정주병 천막에 누운 늙은이의 수
+  deja_vu: none
+hard_rules:
+- 늙음을 낮추는 말에 응하지 않는다
+- 막대의 이름을 신뢰 50 전에 부르지 않는다
+on_death: "옛 바람파의 수장이 사라져 9부족이 흩어지거나 검은바람에게 모인다. 서풍 금지의 이유를 아는 마지막 입이 사라진다."
+story_seeds:
+- 막대의 이름을 벡 앞에서 읽으면 칸은 서풍 날 진군을 다시 하지 못한다.
+- 멍에 서약 원문을 증언하면 무거운발굽이 바람발굽의 짐을 내려놓는다.

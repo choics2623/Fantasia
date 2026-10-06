@@ -1,0 +1,52 @@
+# 뿌리마을 — 모르바 늪의 숨은 자유 마을 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §8.9(뿌리마을·진흙판 학교), §8.3~8.8, HOUSES §4.3·§5.6, fac_swamp_hags, docs/world/people/morva.md.
+# grid: 마을 평면 (m), 원점 = 북서쪽 모서리. x 동쪽, y 남쪽. 뿌리나무 위와 아래에 지은 집 220채, 섬 9개를 줄다리로 이었다 — 걷는 속도 80m/분이되 줄다리는 한 번에 한 사람이라 길이 직선이 아니다 (엔진은 직선 거리로 계산).
+# 법이 닿지 않는 곳이라 통금도 점호도 없다. 대신 밤 물길은 가스 웅덩이와 검은 턱(악어) 때문에 혼자 다니지 않는다 — 그것은 규칙이 아니라 생존이다.
+# 같은 노드에서 걷는 거리는 80m/분. 진흙등불·쉿소리 늪·물안개 둑 같은 먼 곳은 outer(hours = 뿌리마을에서 걷는 시간). 늪 어귀(morva_mouth)와 일곱 노파의 둥지(seven_hags_circle)는 다른 노드라 각자의 배치도(morva_mouth.yaml, seven_hags_circle.yaml)를 가진다 — 뿌리마을에서 44시간·26시간.
+id: root_village
+name: 뿌리마을
+node: root_village
+kind: swamp_village
+grid: {w: 700, h: 520}
+curfew: {from: "23:00", to: "04:00", note: "법이 닿지 않는 곳이라 통금이 없다. 그러나 밤 물길은 가스 웅덩이와 검은 턱 때문에 혼자 다니지 않는다 (밤에 줄다리 밖에서 헤매면 체질 판정)"}
+bells:
+  - {at: "05:00", name: 새벽 솥 불 (힐케의 첫 불씨 — 연기가 오르면 하루가 시작된다)}
+  - {at: "12:00", name: 정오 국자 소리 (솥 가장자리를 세 번 친다)}
+  - {at: "18:00", name: 저녁 공동 솥 (장어와 뿌리죽)}
+  - {at: "22:00", name: 마지막 불 덮기 (불 대신 반딧불 병을 든다)}
+patrols: ["22:00", "02:00"]
+locations:
+  # ── 가운데 섬들 — 모임과 학교 ──
+  - {id: rv_council_island, name: 회의 섬, xy: [360, 260], kind: council, access: public, hours: "24시", rooms: [rv_name_basket, rv_vote_circle], note: "뿌리나무 아홉 그루가 둘러싼 둥근 섬. 성인 전원이 서서 투표한다 — 한 사람 한 표, 말은 길어도 손은 한 번. 뿌리 모임은 초승달과 보름 밤"}
+  - {id: rv_vote_circle, name: 투표의 원, parent: rv_council_island, access: public, hours: "초승달·보름 밤", note: "찬성은 오른발을 앞으로, 반대는 왼발. 밀고자 판결은 여기서 노파 한 사람의 동의를 받는다"}
+  - {id: rv_name_basket, name: 이름 바구니, parent: rv_council_island, access: staff, hours: "첫 이름 날 외에는 난네가 연다", hidden: "바구니 맨 밑 영번째 끈(가라앉은 종탑 종의 아스테리아 성)과 이름 없는 끈 열둘. 412개의 성 가운데 셋은 옛 주인의 번호·성을 그대로 쓴 것", note: "물 위에 달린 짚 바구니. 첫 이름 날에 지은 성이 매듭 끈 하나씩으로 보관된다 (지금까지 412명)"}
+  - {id: rv_mud_school, name: 진흙판 학교, xy: [330, 220], kind: school, access: public, hours: "09:00-16:00", note: "진흙판에 막대로 글을 쓰고 다 쓰면 물로 지운다. 학생 열아홉. 선생은 알렉 하나", hidden: "진흙판 바닥 물통 밑에 아스테리아 글자 스물여섯 가운데 학교에서 가르치지 않는 여덟 자의 모양을 알렉이 새긴 나무판 한 장"}
+  - {id: rv_rope_bridges, name: 줄다리 (아홉 섬 사이), xy: [300, 300], kind: path, access: public, hours: "24시", note: "삼 줄과 갈대 널로 엮은 다리. 한 번에 한 사람 — 서로 마주치면 먼저 서 있는 쪽이 길을 연다. 밤에는 줄에 반딧불 병을 단다"}
+  # ── 먹는 곳과 일하는 곳 ──
+  - {id: rv_pot, name: 공동 솥, xy: [260, 320], kind: canteen, access: public, hours: "05:00-22:00 (굶주림월 하루 한 끼)", note: "솥 셋. 장어와 뿌리죽과 개구리. 배급이 아니라 몫 — 솥지기가 정한다. 솥 가장자리에 국자 자국이 줄지어 있다", hidden: "솥 뒤 늪 아래 항아리 — 훈제 장어 마흔 줄 (겨울 반 끼의 비축, 뿌리 모임은 모른다)"}
+  - {id: rv_smokehouse, name: 훈제장, xy: [200, 380], kind: work, access: public, hours: "05:00-18:00", note: "갈대와 늪 버드나무 연기로 장어를 말리는 움막. 연기가 바르그 냄새도 지운다"}
+  - {id: rv_eel_traps, name: 장어 덫 물길, xy: [150, 300], kind: work, access: public, hours: "04:00-17:00", note: "대나무 통발 수백 개가 늘어선 좁은 물길. 새벽에 올리고 저녁에 내린다. 가을 장어철이 일 년의 반을 먹인다", hidden: "한 통발 밑 진흙 속에 묻힌 진흙판 한 장 (이끼 바위의 각문 한 줄 — 리프가 베낌)"}
+  - {id: rv_reed_works, name: 갈대 엮기 작업장, xy: [520, 300], kind: work, access: public, hours: "06:00-17:00", note: "갈대 바구니·돗자리·지붕을 엮는 열린 섬. 나이 든 사람과 아이가 앉아서 하는 일이 모인다"}
+  - {id: rv_forge, name: 대장간, xy: [440, 360], kind: forge, access: public, hours: "05:00-18:00", note: "작은 대장간 하나. 호미·장어 갈고리·화살촉. 칼 한 자루가 잿빛 표 열 개", hidden: "풀무 밑 땅속 칼날 열두 자루 (토르가 값 없이 모은 것)"}
+  - {id: rv_herb_hut, name: 약초 오두막, xy: [400, 160], kind: clinic, access: public, hours: "06:00-20:00", note: "늪 약초(해열·지혈)를 건조하는 오두막. 병자를 눕힌다 — 노파의 견습이나 딸이 낮에 와서 앉는다. 여름 늪열 때는 열 침상이 꽉 찬다"}
+  # ── 사는 곳 ──
+  - {id: rv_stilt_homes_n, name: 뿌리나무 위 집들 (북), xy: [300, 120], kind: homes, access: public, hours: "24시", note: "뿌리나무 가지 사이에 짓고 줄사다리로 오른다. 집 110채. 탈주 5년 이상의 오랜 사람들"}
+  - {id: rv_stilt_homes_s, name: 뿌리나무 아래 집들 (남), xy: [380, 420], kind: homes, access: public, hours: "24시", note: "물 위 뗏목 기둥 위의 집 110채. 새로 온 가족이 먼저 자리를 잡는 곳. 봄 범람 때 가장 먼저 잠긴다"}
+  - {id: rv_arrival_hut, name: 새 도착자 초막 (심사 섬), xy: [90, 420], kind: hut, access: public, hours: "24시", note: "탈주해 온 사람이 사흘 먹고 자는 초막. 손바닥을 보고 세 가지를 묻는다 — 어디서 왔는가, 쫓는 이가 누구인가, 배가 고픈가. 목줄단 첩자를 가리는 첫 문이다"}
+  # ── 모임과 의례 ──
+  - {id: rv_glow_field, name: 반딧불 병 공터, xy: [250, 200], kind: field, access: public, hours: "24시", note: "재의 날 5일 동안 반딧불 병을 들고 모이는 곳. 대륙에서 유일하게 아스테리온을 공개적으로 기린다. 평소에는 아이들이 반딧불을 잡아 병에 모은다"}
+  - {id: rv_black_pool, name: 검은 웅덩이, xy: [560, 200], kind: pool, access: secret, hours: "뿌리 모임 판결 때만", locked: "판결 외에는 아무도 가지 않는다", note: "깊이를 모르는 검은 물웅덩이. 밀고자는 여기서 익사한다 — 뿌리마을에서 유일한 사형. 노파 한 사람의 동의가 있어야 집행한다", hidden: "웅덩이 바닥에 묶인 돌 일곱 — 지금까지의 집행 수. 베른이 처형한 일곱과는 다른 숫자다"}
+  - {id: rv_watch_post, name: 안쪽 망루, xy: [470, 120], kind: post, access: staff, hours: "24시", note: "마을 북동쪽 뿌리나무 위의 낮은 망루. 늪 어귀 망꾼의 호루라기가 여기서 한 번 더 전해진다"}
+# 뿌리마을 밖 — hours = 뿌리마을에서 걷는 시간. 다른 노드의 장소는 node로 구분한다.
+outer:
+  # 섬 마을들 (같은 노드)
+  - {id: rv__mud_lantern, name: 진흙등불 (섬 마을, 인구 340), hours: 6.0, node: root_village}
+  - {id: rv__mud_lantern_hall, name: 진흙등불 회관 (베른의 장부), hours: 6.0, node: root_village}
+  - {id: rv__mud_lantern_dike, name: 진흙등불 둑, hours: 6.2, node: root_village}
+  - {id: rv__mist_bank, name: 물안개 둑 (탈주자 섬 마을), hours: 4.0, node: root_village}
+  - {id: rv__mist_bank_hut, name: 물안개 둑 갈대 오두막 (레나), hours: 4.0, node: root_village}
+  - {id: rv__sunken_belfry, name: 가라앉은 종탑, hours: 5.0, node: root_village}
+  - {id: rv__red_reed_line, name: 붉은 갈대 선 (녹테른 경계), hours: 7.0, node: root_village}
+  # 독꼬리 와이번의 쉿소리 늪 (진흙등불에서 가깝다)
+  - {id: rv__hissing_marsh, name: 쉿소리 늪 (독꼬리 와이번), hours: 9.0, node: root_village}
+  - {id: rv__saska_nest, name: 사스카의 둥지 (알 열넷), hours: 9.1, node: root_village}
+  - {id: rv__reed_pen, name: 갈대 우리 (공물 스물여섯), hours: 9.2, node: root_village}

@@ -1,0 +1,101 @@
+# 솥지기 힐케 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-05)
+id: npc_mv_hilke
+name: 솥지기 힐케
+aka: [국자 할멈, 겨울 반 끼]
+tier: B
+type: living
+race: 인간
+subrace: 인간(늪 자유민)
+sex: 여
+age: 62
+region: 모르바 늪
+home: 뿌리마을 공동 솥 곁 초막
+job: 뿌리마을 공동 솥 지기 (솥 셋)
+rank: 뿌리 모임 구성원
+summary: 배급이 없는 늪에서 몫을 나누는 노파. 장어철마다 솥 몫에서 훈제 장어 마흔 줄을 덜어 항아리에 묻고, 올가을 줄어든 뿌리 가루의 주인을 알면서도 자기 몫으로 채웠다
+source: docs/world/people/morva.md (npc_mv_hilke)
+life:
+  - {year: 250, age: 0, event: "늪 가장자리 섬 마을에서 태어남"}
+  - {year: 275, age: 25, event: "뿌리마을이 처음 솥 하나를 걸 때 불을 올린 사람 가운데 하나"}
+  - {year: 290, age: 40, event: "굶주림월에 솥 앞에서 열한 사람을 한꺼번에 돌려보낸 겨울. 그해부터 비축을 묻기 시작함"}
+  - {year: 311, age: 61, event: "솥을 셋으로 늘림. 뿌리 모임이 솥지기에게 몫 결정권을 맡김"}
+  - {year: 312, age: 62, event: "올가을 뿌리 가루가 줄어든 것을 보고도 자기 몫에서 채움 (낙엽월 1일 기준)"}
+appearance:
+  - "둥글고 단단한 노파, 팔뚝에 국자 자국이 굳은살로 남았다"
+  - "늘 머리에 젖은 수건을 두른다"
+  - "오른손 새끼손가락이 휘었다 — 끓는 솥에서"
+smell: "장어 기름과 뿌리죽 김, 젖은 수건"
+voice_sound: "굵고 따뜻하다. 문장 끝에 작은 한숨이 붙는다"
+personality:
+  disposition: {용기: 15, 자비: 60, 정직: 20, 신앙: 20, 탐욕: -30, 충성: 50}
+  temperament: [다정, 알뜰, 눈치, 완고]
+  habits:
+    - "사람을 보면 '먹었어?'부터 묻는다"
+    - "솥을 닦고 나서 마지막 국자를 한 번 핥아 본다"
+  values: "몫은 나누는 것이지 따지는 것이 아니다. 모르는 척하는 것도 몫이다"
+  fears: ["굶주림월에 솥 앞에서 사람을 돌려보내는 일", "비축 항아리가 들키는 일"]
+  desires:
+    short: "올겨울 굶주림월에 한 사람도 솥에서 돌려보내지 않는 것"
+    long: "솥이 하나 더 생기는 것"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존댓말"
+    to_equal: "이웃에게 다정한 반말"
+    to_inferior: "아이에게 천천히 풀어서 하는 반말"
+    to_player_default: "다정한 반말. 먹었는지부터"
+  tics: ["'먹었어?'", "국자로 사람을 가리킨다"]
+  use: [솥, 국자, 몫, 겨울, 장어, 뿌리 가루, 먹었어]
+  avoid: [비축, 항아리, 따지다]
+  length: "짧고 따뜻하다"
+  samples:
+    - {situation: 첫 만남, line: "먹었어? 안 먹었으면 앉아. 말은 먹고 나서 해."}
+    - {situation: 호의, line: "겨울엔 한 끼가 두 끼 같은 날이 있고 두 끼가 한 끼 같은 날이 있어. 모르는 척하는 거야."}
+    - {situation: 거절, line: "솥에 손대는 건 노역 이레야. 근데 아이 손은… 그건 내가 볼게."}
+    - {situation: 비밀 누설, line: "마흔 줄. 항아리에 묻었어. 굶주림월에 한 사람이 열 사람 몫을 하루 더 살게 하려고."}
+    - {situation: 슬픔, line: "그해 겨울, 솥 앞에서 열한 사람을 돌려보냈어. 지금도 이름은 다 외워."}
+schedule:
+  아침: "솥에 불을 올린다"
+  낮: "뿌리를 캐는 아이들에게 죽을 나눠 준다"
+  저녁: "공동 솥 — 장어와 뿌리죽"
+  밤: "솥을 닦고 마지막 국자를 핥아 본다"
+places: [뿌리마을 공동 솥, 줄다리, 장어 훈제장]
+knows:
+  - fact_p2mv_hilke_winter_reserve
+  - fact_p2mv_hilke_knows_pot_thief
+hides:
+  - fact: fact_p2mv_hilke_winter_reserve
+    reveal_when: "신뢰 45 이상이고 굶주림월에 솥을 같이 지킨 뒤"
+    reveal: [{"trust":45}]
+    cover: "'솥 몫은 뿌리 모임이 정해. 나는 국자만 들어'라고 한다"
+  - fact: fact_p2mv_hilke_knows_pot_thief
+    reveal_when: "신뢰 55 이상이고 아이를 먹이는 사정을 먼저 말했을 때"
+    reveal: [{"trust":55}]
+    cover: "'뿌리 가루는 습기에 줄어. 습기는 가끔 손이 달려'라고 한다"
+relations:
+  - {to: npc_mv_nanne, type: 이웃, like: 50, trust: 55, visibility: 공개, memo: null, words: "솥 곁의 국자와 회의 섬의 매듭. 서로 안 묻는 것이 서로의 위로"}
+  - {to: npc_mv_alek, type: 아이들의 선생, like: 35, trust: 40, visibility: 공개, memo: null, words: "글 배우는 아이에게 국자를 조금 더 얹어 주는 이유"}
+  - {to: npc_mv_rif, type: 솥에 숨어드는 아이, like: 45, trust: 30, visibility: 공개, memo: null, words: "솥 곁에서 국자 자국을 아이처럼 센다"}
+  - {to: npc_oda, type: 병든 노파, like: 25, trust: 35, visibility: 공개, memo: null, words: "눈먼 노파의 쑥 즙. 솥이 먹이는 만큼 약이 돌아온다"}
+toward_player: "국자로 가리키며 먹었는지부터 묻는다"
+persuade:
+  likes: ["먹을 것을 나누는 일 (+25)", "아이를 돌보는 일 (+20)"]
+  hates: ["솥 몫을 따지는 말 (+0)"]
+roles:
+  teacher: "가능 — 제작(요리, 상한 55). 조건: 솥 곁에서 하루 / 수업료: 장어 한 마리"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "공동 솥은 셋이다"
+    - "겨울 한 끼를 모르는 척하는 비축이 있다"
+  drift:
+    - "그날 솥에 오르는 뿌리의 양"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "비축 항아리의 위치를 먼저 말하지 않는다"
+  - "설교하지 않는다. 솥과 국자와 몫으로 말한다"
+on_death: "겨울 비축의 위치가 사라져 굶주림월 한 끼가 줄고 아이들의 사망이 늘어난다."
+story_seeds:
+  - "힐케의 항아리는 뿌리 모임에 올리면 솥 몫 문제가 되고 말하지 않으면 올겨울 열 사람을 살린다."

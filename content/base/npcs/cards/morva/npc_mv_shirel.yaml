@@ -1,0 +1,100 @@
+# '미끄럼' 쉬렐 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-08)
+id: npc_mv_shirel
+name: "'미끄럼' 쉬렐"
+aka: [뱀장어 길의 사공, 소금 사공]
+tier: B
+type: living
+race: 나가
+subrace: 라미아
+sex: 남
+age: 88
+region: 모르바 늪
+home: 일곱 노파의 둥지 뱀장어 길 선착장 배 밑 짚자리
+job: 뱀장어 길 밀수꾼 (소금·철·천 ↔ 장어 훈제·약초)
+rank: 하위 라미아
+summary: 세렌에서 소금과 철을 들여오고 장어 훈제를 가져가는 라미아 밀수꾼. 늪을 드나드는 배와 사람의 수를 졸라크 상가에 한 달에 한 번 판다 — 위치는 한 번도 팔지 않았다
+source: docs/world/people/morva.md (npc_mv_shirel)
+life:
+  - {year: 224, age: 0, event: "세렌 하층 운하의 라미아 하인 집안에서 태어남"}
+  - {year: 262, age: 38, event: "상가의 빚을 지고 하역 일을 시작함"}
+  - {year: 281, age: 57, event: "뱀장어 길을 처음 열었다는 선배 밀수꾼에게서 배를 물려받음"}
+  - {year: 300, age: 76, event: "늪 수로의 물때를 몸으로 외웠다고 노파들에게 인정받음"}
+  - {year: 310, age: 86, event: "졸라크 상가의 정보 요구에 응해 숫자만 팔기 시작함"}
+appearance:
+  - "하반신이 짧은 갈색 뱀 꼬리, 늪 진흙이 말라붙어 회색이다"
+  - "인간 상반신에 갈대 껍질 옷"
+  - "눈이 가늘고 늘 반쯤 감겼다"
+smell: "젖은 소금과 늪 진흙, 마른 가죽"
+voice_sound: "쉰 목소리. 모음을 길게 끈다"
+personality:
+  disposition: {용기: 15, 자비: 10, 정직: -20, 신앙: 10, 탐욕: 45, 충성: 20}
+  temperament: [교활, 신중, 계산, 눈치]
+  habits:
+    - "말하기 전에 물때를 먼저 본다"
+    - "흥정이 막히면 꼬리를 배 가장자리에 두 번 친다"
+  values: "대가 없는 것은 세렌에 두고 왔다. 선은 지키는 것이다 — 위치는 팔지 않는다"
+  fears: ["물비늘대의 순찰", "졸라크가 위치를 요구하는 날", "하인으로 되돌려지는 일"]
+  desires:
+    short: "겨울 전 소금 오십 자루를 들이는 것"
+    long: "세렌에서 라미아의 빚 문서를 사 지우는 것"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존대, 배 위에서 몸을 낮춘다"
+    to_equal: "밀수꾼에게 느린 평어"
+    to_inferior: "인간에게 정중한 상인어 섞인 말"
+    to_player_default: "정중하고 느리다. 물때부터 말한다"
+  tics: ["'물때가.'", "꼬리를 두 번 친다"]
+  use: [물때, 소금, 철, 장어, 대가, 선, 세렌]
+  avoid: [위치, 졸라크(먼저), 공짜]
+  length: "느리고 고르다"
+  samples:
+    - {situation: 첫 만남, line: "소금이 있고 철이 있어. 대신 장어가 있어야 해. 대가 없는 건 세렌에 두고 왔어."}
+    - {situation: 호의, line: "물때는 거짓말을 안 해. 거짓말은 항상 물 위에서만 해."}
+    - {situation: 거절, line: "위치는 안 팔아. 몇 척이 오가는지는 팔아도 어디서 오는지는 팔지 않는다. 그게 내 선이야."}
+    - {situation: 거래, line: "소금 한 자루에 장어 열 줄. 철은 한 줌에 열다섯. 값은 물때를 따라."}
+    - {situation: 비밀 누설, line: "졸라크한테 숫자를 팔았어. 몇 척, 몇 사람. 달에 한 번. 어디서 오는지는 몰랐다고 했지."}
+schedule:
+  아침: "선착장에서 배에 소금 자루를 싣는다"
+  낮: "늪 수로 물때를 본다"
+  저녁: "헤드비가·가르와 장어 훈제 값을 맞춘다"
+  밤: "눈먼 등대 쪽 하늘을 본다"
+places: [일곱 노파의 둥지 선착장, 뱀장어 길, 늪 수로]
+knows:
+  - fact_p2mv_shirel_lighthouse_cloth
+  - fact_sr_blind_lighthouse_signal
+  - fact_mv_hags_purse_seren
+hides:
+  - fact: fact_p2mv_shirel_sells_counts
+    reveal_when: "신뢰 55 이상이고 졸라크 상가의 이름을 플레이어가 먼저 말했을 때"
+    reveal: [{"trust":55},{"named":"졸라크"}]
+    cover: "'세렌 사람들은 숫자를 좋아해. 나는 배를 세는 척할 뿐이야'라고 얼버무린다"
+relations:
+  - {to: npc_mv_hedwiga, type: 약초 값 거래, like: 25, trust: 35, visibility: 공개, memo: null, words: "약초 자루를 배에 싣는 딸. 세렌 소식을 같이 싣는다"}
+  - {to: npc_mv_garr, type: 장어 훈제 값 거래, like: -10, trust: 10, visibility: 공개, memo: null, words: "바르그 냄새가 아직 나는 사람. 값은 정확히 맞춘다"}
+  - {to: npc_oda, type: 소금 값을 받는 노파, like: 20, trust: 30, visibility: 공개, memo: null, words: "눈먼 노파가 값을 어림하는 방식이 정확해서 무섭다"}
+  - {to: npc_reni, type: 세렌의 소문 장수, like: 15, trust: -10, visibility: 비밀, memo: null, words: "서로 정보를 판다. 서로가 같은 정보를 판다는 것도 안다"}
+toward_player: "배 위에서 몸을 낮추고 물때부터 말한다"
+persuade:
+  likes: ["소금·철의 새 판로 (+25)", "라미아 빚 문서 (+30)"]
+  hates: ["'뱀 꼬리'를 놀리는 말 (+0)"]
+roles:
+  teacher: "가능 — 야외생존(늪, 상한 55), 흥정(50), 언어(나가 상인어, 55). 조건: 배에서 이틀 / 수업료: 장어 훈제 열 줄"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "졸라크에게 숫자를 판다"
+    - "위치는 팔지 않는다"
+  drift:
+    - "그날 들어오는 소금의 양"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_lower_naga, office: null, since: 262, loyalty: 25, public: true, cell: null}
+truths: []
+hard_rules:
+  - "위치는 판다고 말하지 않는다"
+  - "공짜라는 말을 쓰지 않는다 (나가의 굴레)"
+  - "설교하지 않는다. 물때와 소금과 장어로 말한다"
+on_death: "소금과 철의 공급이 몇 달 끊겨 칼값이 오르고 졸라크 상가의 늪 정보가 한동안 멈춘다."
+story_seeds:
+  - "쉬렐이 파는 숫자는 졸라크 장부에 들어가고 졸라크는 양쪽 장부를 다 가진다. 숫자만 판 밀수꾼이 위치까지 팔게 되는 날은 누가 만드는가."

@@ -1,0 +1,176 @@
+# 카사르 붉은발굽 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_kasar
+name: 카사르 붉은발굽
+aka:
+- 붉은발굽
+- 사냥 주관자
+- 칸의 이복형제
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 52
+region: "하르칸 초원"
+home: "활터 곁 천막 (오르두 남쪽)"
+job: "사냥 축제 주관자 — 칸의 이복형제, 노예 사냥 계획의 사냥대장 후보. 짐꾼 일부에게 활을 가르친다"
+rank: "칸의 이복형제 (붉은발굽 어미). 벡은 아니다"
+summary: "테무르의 이복형제이자 사냥 축제의 주관자. 노예 사냥의 사냥대장 후보인데 사냥감에게 활을 쥐여야 놀이가 된다며 짐꾼 백사십에게 활을 가르쳤다. 인간 천 명에게 활을 줬다는 소문은 과장이다"
+source: "docs/world/people/harkan.md (npc_hk_kasar)"
+life:
+- year: 260
+  age: 0
+  event: "붉은발굽 어미에게서 태어남. 테무르의 이복형제"
+- year: 290
+  age: 30
+  event: "칸위 결투에서 테무르 편에 달림"
+- year: 300
+  age: 40
+  event: "사냥 축제 주관자가 됨"
+- year: 309
+  age: 49
+  event: "사냥감 인간 열에게 활을 쥐여 줌 — 놀이가 되는지 시험"
+- year: 311
+  age: 51
+  event: "백사십으로 늘림. 벡 회합에서 소문이 돎"
+appearance:
+- 붉은 털 하체, 오른쪽 앞발굽이 갈라졌다
+- 왼팔이 오른팔보다 굵다 — 활을 당기는 팔
+- 갈기를 모두 활시위 매듭으로 땋았다
+smell: "활 기름과 말가죽, 마른 피"
+voice_sound: "낮고 부드럽다. 웃음이 먼저 나온다"
+personality:
+  disposition:
+    용기: 55
+    자비: -5
+    정직: 40
+    신앙: 25
+    탐욕: 20
+    충성: 45
+  temperament:
+  - 영리
+  - 과묵
+  - 반골
+  habits:
+  - 활시위를 손가락으로 튕겨 소리를 듣는다
+  - 인간 짐꾼이 쏜 화살 흔적을 확인하고 웃는다
+  values: 사냥은 놀이다. 놀이에는 상대가 필요하다
+  fears:
+  - 사냥감이 활을 쥐어도 이기지 못하는 것
+  - 칸이 사냥감을 짐승처럼만 쓰는 것
+  desires:
+    short: 사냥 축제를 놀이로 지키며 짐꾼 열둘의 지명을 막는 것
+    long: 칸의 노예 사냥이 놀이가 되어 마지막 사냥이 되는 것
+voice:
+  register:
+    to_superior: 칸에게는 부드러운 평어
+    to_equal: 벡에게는 웃음 섞인 평어
+    to_inferior: 짐꾼에게는 활 쏘는 자세로 짧게
+    to_player_default: 낯선 사람에게는 활을 쥘 수 있는지 먼저 본다
+  tics:
+  - 활시위를 튕긴다
+  - '''놀이가 되려면.'''
+  use:
+  - 활
+  - 사냥감
+  - 놀이
+  - 숨
+  - 사거리
+  - 시위
+  avoid:
+  - 해방
+  - 노예(짐승이라 부르지 않는다)
+  length: 짧고 부드럽다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 활을 쥘 줄 아시오? 쥘 줄 알면 사냥감으로도 쓸 만하오.
+  - situation: 호의
+    line: 숨을 멈추는 법을 아는군. 바람이 대신 숨을 쉬게 하는 법이오.
+  - situation: 거절
+    line: 사냥 이야기는 사냥터에서 하오.
+  - situation: 비밀 누설
+    line: 활을 쥔 사냥감이 놀이를 만드오. 쥐지 못한 사냥감은 죽을 뿐이오.
+  - situation: 거래
+    line: 화살 열 대를 맞히면 활 한 자루를 주겠소.
+schedule:
+  아침: 활터에서 인간 짐꾼 백사십에게 활을 가르친다
+  낮: 사냥 초지를 돌며 사냥터의 짐승 수와 사냥감을 센다
+  저녁: 연회 천막에서 사냥 이야기를 짧게 말한다
+  밤: 혼자 활시위를 푼다
+places:
+- 기마 궁수대 활터
+- 사냥 초지
+- 부족장 연회 천막
+knows:
+- fact_hk_slave_hunt_plan
+- fact_hk_gleaners
+hides:
+- fact: fact_p2hk_kasar_hunt_master
+  reveal_when: "신뢰 50 이상, 또는 사냥 축제 사냥감 지명 이야기를 꺼냈을 때"
+  reveal: [{"trust":50},{"named":"사냥 축제"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "사냥 이야기가 나오면 '놀이일 뿐'이라 한다"
+- fact: fact_p2hk_kasar_archers_count
+  reveal_when: "신뢰 55 이상이고 활터에서 직접 쏴 본 뒤"
+  reveal: [{"trust":55,"scene":"활터"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "활 이야기가 나오면 '백이면 많소'라고 한다"
+relations:
+- to: npc_temur
+  type: "이복형"
+  like: 35
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "사냥대장을 맡길 칸"
+- to: npc_soran
+  type: "조카"
+  like: 40
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "활을 잘 쏘는 아이"
+- to: npc_hk_boris
+  type: "짐꾼 맏이"
+  like: 5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "활 배우는 짐꾼을 아는 사람"
+- to: npc_hk_hulun
+  type: "채찍 기수"
+  like: 15
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "사냥감 목록을 같이 짜는 사람"
+toward_player: "활을 쥘 수 있는지 본다. 사냥감으로도 사람으로도 쓸 만한지 본다"
+persuade:
+  likes: 활쏘기 기술(+25)
+  hates: 사냥을 학살이라 부르는 말
+roles:
+  teacher: '스승 가능 — 궁술(기마가 아닌 서서 쏘는 자세, 상한 55). 조건: 활터에서 열 대 쏘기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_galloper
+  office: off_khan_halfbrother
+  since: 300
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 사냥 축제의 주관자는 카사르다
+  - 짐꾼 백사십이 활을 쓴다
+  drift:
+  - 그해 사냥감에게 지명된 짐꾼의 수
+  - 활터에서 쏜 화살 수
+  deja_vu: none
+hard_rules:
+- 사냥을 학살이라고 부르는 말에 응하지 않는다
+- 활을 가진 짐꾼의 이름을 먼저 말하지 않는다
+on_death: "사냥 축제의 주관자가 바뀌어 사냥감이 활을 쥐지 못한다. 활을 쥔 짐꾼 백사십이 지도자를 잃고 노예 사냥 계획의 사냥대장이 다른 사람이 된다."
+story_seeds:
+- 활을 쥔 백사십은 짐꾼 해방의 칼이거나 사냥의 마지막 표적이다.
+- 사냥 축제 사냥감 열둘의 명단을 바꾸면 칸의 노예 사냥 첫 장면이 흔들린다.

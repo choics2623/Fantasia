@@ -1,0 +1,255 @@
+# 하르칸 초원 NPC 일과 (24 §3). 원천: REGIONS §15, docs/world/people/harkan.md, 카드 schedule. 장소 id는 settlements/khan_ordu.yaml (hk_*, khan_ordu__*).
+# 오르두의 하루: 04:30 짐꾼 점호(채찍 기수 호각) · 05:00 이동일 짐 싸기 북 · 12:00 정오 말젖 죽 · 18:00 부족장 연회 개막 · 22:00 짐꾼 막사 닫힘. 이동일은 아흐레마다(9·18·27일).
+# 겨울 (서리월 2일 ~ 해빙월 11일): 오르두가 바람 우물에 같은 모양으로 선다. 오르두 거주자는 presence/away 로 그 기간 'khan_ordu__winter_camp'에 있다 (엔진이 계절 이동을 위치로 옮기지 않아서 — 24 §3.7 계절).
+# 맹약회의 313: 바투와 에젤의 사절단은 events/harkan_312.yaml의 사건(313-05-16 출발 의식 → 05-19 도착 → 05-20 회의 → 05-22 귀로)으로 움직인다. 사절단 짐꾼 40(이름 없음)은 4월 말 걸어서 먼저 떠난다.
+# days: all | workday | sabbath | weekday:[1..6] | monthday:[..] — 쉼표가 든 값은 큰따옴표로.
+npc_temur:
+  home: hk_khan_stall
+  presence: &ordu_present
+    - {from: "312-09-01", to: "312-10-01"}
+    - {from: "313-01-12", to: "313-07-31"}
+  away: &ordu_winter {at: khan_ordu__winter_camp, doing: "겨울 진영 — 바람 우물에 오르두가 같은 모양으로 서 있다. 같은 천막, 같은 자리"}
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: hk_khan_stall, doing: 말처럼 서서 존다 — 왼쪽 뒷발이 한 번 떤다}
+    - {days: all, from: "04:00", to: "05:30", at: hk_council_track, doing: 혼자 질주한다 — 오르두를 한 바퀴 돌고 한 번도 멈추지 않는다, outdoor: true, rain: {at: hk_khan_tent, doing: 천막 안에서 제자리걸음으로 몸을 푼다}}
+    - {days: all, from: "05:30", to: "07:00", at: hk_khan_tent, doing: 밤사이 온 전령의 첫 묶음을 듣는다 — 하루 스무 기의 첫째, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: hk_council_track, doing: 벡들과 나란히 달리며 방향을 짧게 정한다 — 뒤에서 달리는 수를 센다, outdoor: true, rain: {at: hk_feast_tent, doing: 연회 천막에서 서서 전령 보고를 듣는다}}
+    - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 서서 말젖과 말린 고기를 먹는다, fixed: true}
+    - {days: workday, from: "13:00", to: "18:00", at: hk_khan_map, doing: "지도 천막에서 서진 지도를 본다 — 짐꾼 4,000의 자리에 붉은 매듭을 만진다", alt: {p: 0.3, at: hk_archer_camp, doing: 소란의 궁수대 훈련을 말 위에서 지켜본다}}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 부족장 연회 — 서서 마시고 달린 결과를 듣는다, fixed: true}
+    - {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: hk_council_track, doing: 오르두 이동일 — 행렬 맨 앞에서 달린다. 해 지기 전에 새 자리를 정한다, outdoor: true, fixed: true}
+npc_soran:
+  home: hk_archer_camp
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "23:30", to: "04:30", at: hk_council_track, doing: 별을 보며 질주한다 — 갈기의 붉은 실이 흔들린다, outdoor: true, rain: {at: hk_archer_camp, doing: 막사에서 활시위를 푼다}}
+    - {days: all, from: "04:30", to: "05:00", at: hk_archer_camp, doing: 궁수대 점호}
+    - {days: workday, from: "05:00", to: "09:00", at: hk_archer_camp, doing: 기마 궁수대 훈련 — 달리며 쏜다, outdoor: true, rain: {at: hk_archer_camp, doing: 막사 안에서 활을 손질한다}}
+    - {days: workday, from: "09:00", to: "13:00", at: hk_runner_post, doing: 정찰대 보고를 듣고 직접 정찰을 나가는 날을 정한다, alt: {p: 0.3, at: hk_race_ground, doing: 경주 재판장 말뚝 곁에서 길이를 센다}}
+    - {days: "weekday:[2,5]", from: "13:00", to: "15:00", at: hk_knot_tent, doing: 어머니에게 매듭 셈 수업을 받는다 — 하루 걸음이 끈 한 매듭}
+    - {days: all, from: "15:00", to: "17:00", at: hk_horse_pens, doing: 새끼 말을 길들이며 아이 짐꾼 이다의 붉은 실 매듭을 갈기에 받는다}
+    - {days: all, from: "17:00", to: "19:30", at: hk_porter_camp, doing: 짐꾼 막사에서 두아와 초원어와 인간어를 맞바꾼다, fixed: true}
+    - {days: all, from: "19:30", to: "23:30", at: khan_ordu__horsebone_spring, doing: 말뼈 샘에서 바타르에게 서서 버티는 창술을 몰래 배운다, alt: {p: 0.3, at: hk_council_track, doing: 혼자 오르두 둘레를 달린다}}
+npc_batar:
+  home: khan_ordu__horsebone_spring
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: khan_ordu__horsebone_spring, doing: 서서 기침하며 존다 — 정착병의 버짐이 가렵다}
+    - {days: all, from: "05:00", to: "08:00", at: khan_ordu__horsebone_spring, doing: 창을 손질한다 — 자루에 새긴 부족 열아홉 문양을 손가락으로 쓸어 본다}
+    - {days: all, from: "08:00", to: "19:00", at: khan_ordu__horsebone_spring, doing: 샘 곁에 서 있다 — 9년째 머문 몸으로 바람을 본다, outdoor: true, rain: {at: khan_ordu__horsebone_spring, doing: 무거운발굽 짐 야영지 천막 아래에서 기침한다}}
+    - {days: "weekday:[3]", from: "10:00", to: "14:00", at: khan_ordu__horsebone_spring, doing: 옥타이와 무거운발굽 멍에 서약의 옛 말을 이야기한다}
+    - {days: all, from: "19:30", to: "21:00", at: khan_ordu__horsebone_spring, doing: 소란이 오는 시각 — 서서 버티는 창을 가르친다, alt: {p: 0.3, at: khan_ordu__horsebone_spring, doing: 혼자 기침하며 창끝을 낮춘다}}
+npc_dua:
+  home: hk_porter_camp
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "21:00", to: "04:30", at: hk_porter_camp, doing: 쓰러진 사람을 센다 — 이름 하나씩, fixed: true}
+    - {days: all, from: "04:30", to: "05:30", at: hk_porter_camp, doing: 짐꾼 점호와 짐 배당, fixed: true}
+    - {days: workday, from: "05:30", to: "12:00", at: hk_load_yard, doing: 짐 분배와 이동 궤 점검 — 바닥이 두 겹인 궤 셋을 한 번 두드린다}
+    - {days: all, from: "12:00", to: "13:00", at: hk_porridge_yard, doing: 말젖 죽 한 그릇 — 행군 중엔 하루 1끼, fixed: true}
+    - {days: workday, from: "13:00", to: "17:00", at: hk_horse_pens, doing: 가축 말 돌보기 — 손등의 이빨 자국 다섯을 만지며 말의 겁을 읽는다, alt: {p: 0.3, at: hk_cargo_crates, doing: '짐 속 사람 루트를 점검한다 — 궤 바닥의 이음새'}}
+    - {days: all, from: "17:00", to: "19:30", at: hk_porter_camp, doing: 칸의 딸 소란과 초원어·인간어를 맞바꾼다 — 소란 곁의 아이 이다가 매듭을 건넨다, fixed: true}
+    - {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: hk_burden_column, doing: 오르두 이동일 — 하르칸의 걸음에 맞춰 짐꾼 행렬을 이끈다. 쓰러지는 사람을 업는다, outdoor: true, fixed: true}
+npc_oktai:
+  home: khan_ordu__horsebone_spring
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: khan_ordu__horsebone_spring, doing: 무거운발굽 짐 야영지에서 서서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: khan_ordu__horsebone_spring, doing: 수레와 멍에 점검 — 멍에 굳은살을 손으로 만진다}
+    - {days: workday, from: "08:00", to: "12:00", at: khan_ordu__horsebone_spring, doing: 쓰러진 인간 짐꾼을 등에 실어 야영지로 나른다 — 바람발굽이 비웃는 일, rain: {at: khan_ordu__horsebone_spring, doing: 천막 아래 멍에를 수선한다}}
+    - {days: workday, from: "12:00", to: "17:00", at: hk_council_track, doing: 벡들보다 한 걸음 뒤에서 달리며 짧은 말을 듣는다, outdoor: true, alt: {p: 0.4, at: khan_ordu__horsebone_spring, doing: 야영지에서 짐 수를 센다}}
+    - {days: all, from: "17:00", to: "20:00", at: khan_ordu__horsebone_spring, doing: 멍에 서약의 옛 말을 나직이 읊어 본다 — '가뭄이 끝날 때까지'}
+npc_hiak:
+  home: khan_ordu__horsebone_spring
+  blocks:
+    - {days: all, from: "17:00", to: "05:00", at: khan_ordu__horsebone_spring, doing: 천막 뒤 수레 곁에서 잔다}
+    - {days: all, from: "05:00", to: "11:00", at: hk_cairn_line, doing: 행렬 뒤 길을 훑는다 — 쓰러진 자의 소지품, 돌무더기 자리는 건드리지 않는다, outdoor: true}
+    - {days: all, from: "11:00", to: "17:00", at: khan_ordu__horsebone_spring, doing: 거둔 물건을 고물로 판다 — 누가 어디서 죽었는지 물건이 말한다}
+    - {days: "monthday:[5,15,25]", from: "10:00", to: "16:00", at: hk_trade_tents, doing: 교역 천막에서 잭스 쪽 물건과 그롬마르 손님 소식을 맞바꾼다}
+npc_hk_borte:
+  home: hk_knot_tent
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "23:30", at: hk_khan_stall, doing: 칸의 서서 자는 자리에 새 펠트를 덮고 닳은 자국을 가린다, fixed: true}
+    - {days: all, from: "23:30", to: "04:30", at: hk_knot_tent, doing: 서서 잔다 — 손가락에 매듭 끈을 감은 채}
+    - {days: all, from: "04:30", to: "07:00", at: hk_knot_tent, doing: 어제 걸음의 매듭을 풀고 오늘 길을 묶는다 — 아흐레 매듭, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: hk_council_track, doing: 벡들과 나란히 달리며 풀밭과 물이 어디인지 묻는다, outdoor: true, rain: {at: hk_knot_tent, doing: 천막 안에서 매듭 끈을 다시 센다}}
+    - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 칸 곁에서 서서 말젖을 마신다}
+    - {days: "weekday:[2,5]", from: "13:00", to: "15:00", at: hk_knot_tent, doing: 딸 소란에게 매듭 셈을 가르친다 — 수업이라고만 말한다}
+    - {days: workday, from: "15:00", to: "18:00", at: hk_trade_tents, doing: 쏙과 말 값을 계산한다 — 세렌 말 값을 아는 사람을 찾는다, alt: {p: 0.4, at: hk_knot_tent, doing: 서랍의 말 400필 계산서를 다시 센다}}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 칸 곁에서 서진 이야기를 짧게 막는다, fixed: true}
+    - {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: hk_council_track, doing: 오르두 이동일 — 칸 곁 반 걸음 뒤에서 달리며 새 자리의 풀밭을 정한다, outdoor: true, fixed: true}
+npc_hk_batu:
+  home: hk_tent_arslan
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hk_tent_arslan, doing: 서서 잔다}
+    - {days: all, from: "05:00", to: "07:00", at: hk_council_track, doing: 새벽 질주 — 아버지보다 반 걸음 늦게, outdoor: true, rain: {at: hk_tent_arslan, doing: 천막 안에서 갈기를 빗는다}}
+    - {days: workday, from: "07:00", to: "12:00", at: hk_tent_arslan, doing: 짐꾼 3,000의 호명을 듣고 장부를 본다 — 채찍 20을 열 대로 고친다, alt: {p: 0.3, at: hk_porter_camp, doing: 짐꾼 막사를 돌며 쓰러진 사람의 이름을 묻는다}}
+    - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 서서 말젖과 말린 고기}
+    - {days: workday, from: "13:00", to: "18:00", at: hk_council_track, doing: 아르슬란 기병대를 이끌고 오르두 둘레를 돈다, outdoor: true}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 아버지 곁 한 걸음 뒤에 선다 — 갈기 가닥을 만지며 듣는다, fixed: true}
+    - {days: all, from: "22:00", to: "24:00", at: hk_horse_pens, doing: 말 우리 곁에서 어머니의 물맛 노래를 낮게 부른다}
+    - {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: hk_council_track, doing: 오르두 이동일 — 기병대로 짐꾼 행렬 옆구리를 호위한다, outdoor: true, fixed: true}
+npc_hk_orduk:
+  home: hk_tent_blackwind
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hk_tent_blackwind, doing: 천막 구석 안장 다섯 곁에서 서서 존다}
+    - {days: all, from: "05:00", to: "08:00", at: hk_horse_pens, doing: 검은바람 인간 기수들의 말을 점검한다 — 말 위의 형제라고 부른다}
+    - {days: workday, from: "08:00", to: "12:00", at: hk_council_track, doing: 벡들과 나란히 달리며 짧은 말만 한다 — 칸의 천막이 아니라 서쪽 바람을 본다, outdoor: true, rain: {at: hk_tent_blackwind, doing: 천막에서 돌 구슬을 굴린다}}
+    - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 서서 말젖을 마신다}
+    - {days: "weekday:[3]", from: "13:00", to: "17:00", at: hk_arms_tent, doing: 투르가의 무기상 천막에서 철 창날 상자를 확인한다}
+    - {days: workday, from: "13:00", to: "18:00", at: hk_tent_blackwind, doing: 갈기 가닥을 세고 안장을 닦는다, alt: {p: 0.3, at: hk_trade_tents, doing: 말 시장에서 가축 말 값을 본다}}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 연회 천막 구석에서 말젖만 마신다}
+npc_hk_boris:
+  home: hk_burden_column
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "19:00", to: "04:30", at: hk_burden_column, doing: 허리끈 매듭을 풀어 돌무더기 자리를 다시 묶는다}
+    - {days: all, from: "04:30", to: "05:30", at: hk_burden_column, doing: 행렬 점호 — 어제 쓰러진 줄을 센다, fixed: true}
+    - {days: workday, from: "05:30", to: "17:00", at: hk_load_yard, doing: 짐 싣기와 수레 밀기 — 걸으면서 행렬 뒤를 어깨너머로 본다, rain: {at: hk_burden_column, doing: 숙영지 천막 아래에서 짐줄을 고친다}}
+    - {days: all, from: "17:00", to: "18:00", at: hk_cairn_line, doing: 해 지기 전 돌무더기 길을 돈다 — 쓰러진 척을 줍는다, outdoor: true, fixed: true}
+    - {days: all, from: "18:00", to: "19:00", at: hk_porridge_yard, doing: 말젖 죽 한 그릇}
+    - {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: hk_cairn_line, doing: 오르두 이동일 — 행렬 맨 뒤를 걸으며 쓰러진 척을 가린다, outdoor: true, fixed: true}
+npc_hk_sorin:
+  home: khan_ordu__broken_banner
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: khan_ordu__broken_banner, doing: 꺾인 깃발 아래에서 서서 존다}
+    - {days: all, from: "04:30", to: "08:00", at: khan_ordu__broken_banner, doing: 진영 가장자리에서 오르두 쪽 바람을 본다, outdoor: true, rain: {at: khan_ordu__broken_banner, doing: 펠트 천막 아래에서 상처 고약을 바른다}}
+    - {days: all, from: "08:00", to: "13:00", at: khan_ordu__broken_banner, doing: 하르칸 800과 인간 1,500의 천막을 돌며 수를 센다}
+    - {days: all, from: "13:00", to: "18:00", at: khan_ordu__broken_banner, doing: 인간 막사 앞에서 걸음을 늦추고 이름을 하나씩 센다}
+    - {days: all, from: "18:00", to: "22:00", at: khan_ordu__broken_banner, doing: 인간 열두 명의 이름을 외운다 — 약속의 말을 다듬는다}
+npc_hk_ezel:
+  home: hk_tent_redmane
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hk_tent_redmane, doing: 서서 잔다 — 이빨 목걸이가 가슴에 닿는다}
+    - {days: all, from: "05:00", to: "08:00", at: hk_tent_redmane, doing: 천막 뒤 궤에서 팔 인간 투사 후보의 명단과 이빨 셈을 센다}
+    - {days: workday, from: "08:00", to: "12:00", at: hk_council_track, doing: 벡들과 나란히 달리며 남부 풀밭과 그롬 쪽 바람을 묻는다, outdoor: true, rain: {at: hk_tent_redmane, doing: 천막에서 이빨 수를 센다}}
+    - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 서서 말젖술을 마시며 웃는다}
+    - {days: workday, from: "13:00", to: "18:00", at: hk_trade_tents, doing: 쏙의 장부 곁에서 그롬 이빨 값을 맞춘다, alt: {p: 0.4, at: hk_tent_redmane, doing: 투사 후보의 몸 상태를 점검한다}}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 손녀 소란의 짐꾼 이야기를 듣고 웃는다 — 이빨 수를 센다, fixed: true}
+npc_hk_ila:
+  home: hk_tent_sevenwells
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hk_tent_sevenwells, doing: 일곱 항아리 곁에서 서서 존다}
+    - {days: all, from: "05:00", to: "08:00", at: hk_tent_sevenwells, doing: 항아리마다 물맛을 보고 구절을 한 소절씩 부른다}
+    - {days: workday, from: "08:00", to: "12:00", at: hk_council_track, doing: 벡들과 느리게 걸으며 물 이야기만 한다, rain: {at: hk_tent_sevenwells, doing: 천막 안에서 항아리를 두드린다}}
+    - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 앉아서 말젖술을 천천히 마신다}
+    - {days: workday, from: "13:00", to: "18:00", at: hk_tent_sevenwells, doing: 탈주자에게 팔 물값 노래의 구절을 새로 짠다, alt: {p: 0.3, at: hk_porter_camp, doing: 짐꾼 막사 곁에서 물을 권하며 노래를 맞바꾼다}}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 연회 천막 구석에 앉아 바투를 바라본다}
+npc_hk_boro:
+  home: khan_ordu__lasthoof_camp
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: khan_ordu__lasthoof_camp, doing: 부러진 발굽 깃발 아래 앉아 있다 — 늙은 말은 앉지 않는다}
+    - {days: all, from: "04:30", to: "08:00", at: khan_ordu__lasthoof_camp, doing: 진영 가장자리에서 서쪽 바람 냄새를 맡는다, outdoor: true, rain: {at: khan_ordu__lasthoof_camp, doing: 천막 아래에서 코를 들어 바람 냄새를 맡는다}}
+    - {days: all, from: "08:00", to: "13:00", at: khan_ordu__lasthoof_camp, doing: 남은 전사들의 갈기를 센다}
+    - {days: all, from: "13:00", to: "18:00", at: khan_ordu__lasthoof_camp, doing: 동쪽 열흘 길의 풀밭을 눈으로 가늠한다}
+    - {days: all, from: "18:00", to: "22:00", at: khan_ordu__lasthoof_camp, doing: 진영 한가운데 서서 칸 쪽 바람을 본다}
+npc_hk_yesun:
+  home: hk_elder_ridge
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hk_elder_ridge, doing: 언덕 아래 천막에서 풀어 둔 갈기를 베고 앉아 존다}
+    - {days: all, from: "05:00", to: "09:00", at: hk_elder_ridge, doing: 언덕 서쪽 비탈에 서서 서풍의 냄새를 맡는다 — 말뼈 막대 열둘을 손으로 쓸어 본다, outdoor: true, rain: {at: hk_stayer_tents, doing: 정주병 천막으로 내려가 늙은이들 곁에 앉는다}}
+    - {days: workday, from: "09:00", to: "13:00", at: hk_elder_ridge, doing: 젊은 질주자에게 옛 법을 길게 말한다 — '내가 달릴 때는'}
+    - {days: workday, from: "13:00", to: "18:00", at: hk_stayer_tents, doing: 정주병 천막에서 달리지 못하는 이들 곁에 앉는다}
+    - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 연회 천막 가장자리에 앉아 벡들의 달리기 결과를 듣는다}
+npc_hk_kasar:
+  home: hk_archer_camp
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hk_archer_camp, doing: 활터 곁 천막에서 서서 존다}
+    - {days: workday, from: "05:00", to: "11:00", at: hk_archer_camp, doing: 활터에서 인간 짐꾼 백사십 가운데 열에게 활을 가르친다, rain: {at: hk_archer_camp, doing: 막사 안에서 활시위 기름을 먹인다}}
+    - {days: workday, from: "11:00", to: "17:00", at: hk_race_ground, doing: 사냥터와 경주터를 돌며 사냥감의 수를 센다, outdoor: true, alt: {p: 0.3, at: hk_council_track, doing: 칸과 사냥 축제 이야기를 짧게 나눈다}}
+    - {days: all, from: "17:00", to: "22:00", at: hk_feast_tent, doing: 연회 천막에서 사냥 이야기를 짧게 한다}
+npc_hk_ayla:
+  home: khan_ordu__standing_stones
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: khan_ordu__standing_stones, doing: 기둥 사이를 돌며 바람 소리를 듣는다}
+    - {days: all, from: "05:00", to: "12:00", at: khan_ordu__standing_stones, doing: 열두 기둥에 말갈기 매듭을 새로 묶는다 — 서쪽 기둥은 지나친다, outdoor: true, rain: {at: khan_ordu__standing_stones, doing: 기둥 곁 가죽 천막 안에서 귀를 바람 쪽으로 돌린다}}
+    - {days: workday, from: "12:00", to: "18:00", at: khan_ordu__standing_stones, doing: 찾아온 하르칸의 맹세를 바람에게 전한다}
+    - {days: all, from: "18:00", to: "21:00", at: khan_ordu__standing_stones, doing: 서쪽 기둥 앞에서 말없이 선다, outdoor: true}
+npc_hk_altan:
+  home: hk_wind_pole
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: hk_wind_pole, doing: 장대 곁에서 서서 존다 — 바람이 바뀌면 깬다}
+    - {days: all, from: "04:30", to: "07:00", at: hk_wind_pole, doing: 장대에 올라 첫 깃발을 올린다, outdoor: true, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: hk_wind_pole, doing: 먼 소리와 냄새를 읽어 오늘의 방향을 칸에게 전한다, outdoor: true, rain: {at: hk_wind_altar, doing: 이동 바람 제단 곁에서 빗소리를 읽는다}}
+    - {days: workday, from: "12:00", to: "17:00", at: hk_council_track, doing: 벡들에게 길의 냄새를 짧게 전한다 — 서풍 날에는 검은 매듭 하나를 낮게 전한다, outdoor: true, alt: {p: 0.3, at: hk_wind_pole, doing: 장대 밑 끈 매듭을 센다}}
+    - {days: all, from: "17:00", to: "22:00", at: hk_wind_pole, doing: 장대 밑 끈에 오늘의 냄새를 매듭으로 묶는다}
+npc_hk_hulun:
+  home: hk_whip_post
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "21:00", to: "04:30", at: hk_whip_post, doing: 초소에서 서서 존다 — 순찰 시각에만 깬다}
+    - {days: all, from: "04:30", to: "05:30", at: hk_whip_post, doing: 짐꾼 점호 호각을 불고 줄 수를 센다, fixed: true}
+    - {days: workday, from: "05:30", to: "18:00", at: hk_porter_camp, doing: 짐꾼 막사와 집하장 사이를 돌며 채찍을 쥐고만 있다, outdoor: true, rain: {at: hk_whip_post, doing: 초소 안에서 낙오 명단을 정리한다}}
+    - {days: all, from: "18:00", to: "21:00", at: hk_whip_post, doing: 낙오와 짐 분실 보고를 칸의 장부에 올린다 — 낙오로 센 수를 한 번 더 센다}
+    - {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: hk_burden_column, doing: 이동일 행렬 뒤를 달리며 낙오를 센다, outdoor: true, fixed: true}
+npc_hk_jax:
+  home: khan_ordu__salt_lake
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: khan_ordu__salt_lake, doing: 감독 천막 안에서 소금 아래 은화를 닦는다}
+    - {days: all, from: "05:00", to: "07:00", at: khan_ordu__salt_lake, doing: 소금 평원에서 노역 인간의 수와 소금 수레 수를 센다, outdoor: true}
+    - {days: workday, from: "07:00", to: "18:00", at: khan_ordu__salt_lake, doing: 소금 가장자리에서 감독을 서며 채취 조를 돌린다, outdoor: true, rain: {at: khan_ordu__salt_lake, doing: 천막 안에서 소금 장부 매듭을 센다}}
+    - {days: all, from: "18:00", to: "20:00", at: khan_ordu__salt_lake, doing: 하얀 가루가 앉은 수레 곁에서 히악이 오는 날을 헤아린다}
+npc_hk_ida:
+  home: hk_porter_camp
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "20:30", to: "04:30", at: hk_porter_camp, doing: 두아 곁에서 오늘 엮은 매듭 수를 낮게 말하고 잔다}
+    - {days: all, from: "04:30", to: "05:30", at: hk_porter_camp, doing: 점호 — 솥 곁 물통을 나른다, fixed: true}
+    - {days: all, from: "05:30", to: "13:00", at: hk_porridge_yard, doing: 솥 곁에서 물통을 나르고 죽 그릇을 센다}
+    - {days: all, from: "13:00", to: "16:00", at: hk_horse_pens, doing: 새끼 말의 물을 갈아 준다}
+    - {days: all, from: "16:00", to: "19:30", at: hk_archer_camp, doing: 소란의 갈기에 붉은 실을 엮는다 — 한 번 감으면 한 명, fixed: true}
+npc_hk_ssok:
+  home: hk_krik_ledger
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "20:00", to: "06:00", at: hk_krik_ledger, doing: 장부 천막 안에서 에젤의 이빨 셈을 한 번 더 헤아린다}
+    - {days: all, from: "06:00", to: "09:00", at: hk_krik_ledger, doing: 칸의 곡물·소금 외상 매듭을 센다}
+    - {days: workday, from: "09:00", to: "15:00", at: hk_trade_tents, doing: 교역 천막에서 말과 소금 값을 부른다 — 값은 오늘 아침 그대로}
+    - {days: workday, from: "15:00", to: "18:00", at: hk_knot_tent, doing: 보르테에게 오늘의 말 값을 전한다, alt: {p: 0.3, at: hk_krik_ledger, doing: 값 장부를 다시 매듭진다}}
+    - {days: all, from: "18:00", to: "20:00", at: hk_trade_tents, doing: 하르칸의 말 값 소문을 줄에 매듭지어 센다}
+npc_hk_nesta:
+  home: khan_ordu__outcast_village
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: khan_ordu__outcast_village, doing: 큰 돌 곁 천막에서 잔다}
+    - {days: all, from: "05:00", to: "10:00", at: khan_ordu__outcast_village, doing: 마을 한가운데 큰 돌 앞에서 줍혀 온 사람에게 새 이름을 묻는다, rain: {at: khan_ordu__outcast_village, doing: 천막 아래서 큰 돌에 새길 이름을 다듬는다}}
+    - {days: workday, from: "10:00", to: "16:00", at: khan_ordu__outcast_village, doing: 돌무더기 길 입구에 나가 줍히는 사람을 맞는다, outdoor: true}
+    - {days: all, from: "16:00", to: "18:00", at: khan_ordu__outcast_village, doing: 마을 가장자리에서 하르칸 늙은이에게 말젖 그릇을 건넨다}
+    - {days: all, from: "18:00", to: "21:00", at: khan_ordu__outcast_village, doing: 큰 돌에 오늘의 이름을 새긴다}
+npc_hk_turga:
+  home: hk_arms_tent
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "18:00", to: "07:00", at: hk_arms_tent, doing: 천막 뒤 수레 곁에서 9번 갱 돌가루를 손목에 바른다}
+    - {days: workday, from: "07:00", to: "13:00", at: hk_arms_tent, doing: 서명하지 않은 철 창날 이백을 늘어놓고 값을 센다}
+    - {days: workday, from: "13:00", to: "17:00", at: hk_trade_tents, doing: 하르칸 질주자에게 창날을 판다}
+    - {days: "weekday:[3]", from: "13:00", to: "17:00", at: hk_tent_blackwind, doing: 검은바람 천막으로 철 상자를 옮긴다}
+npc_hk_ile:
+  home: hk_race_ground
+  presence: *ordu_present
+  away: *ordu_winter
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: hk_race_ground, doing: 재판장 곁 천막에서 밀봉한 판결 가죽을 만지며 존다}
+    - {days: all, from: "05:00", to: "09:00", at: hk_race_ground, doing: 말뚝 사이 거리를 걸음으로 잰다, outdoor: true, rain: {at: hk_race_ground, doing: 천막 아래 허리끈 길이를 센다}}
+    - {days: workday, from: "09:00", to: "17:00", at: hk_race_ground, doing: 다툼이 접수된 날 두 당사자의 길을 정한다 — 먼저 닿은 자의 말을 듣는다, outdoor: true}
+    - {days: all, from: "17:00", to: "22:00", at: hk_feast_tent, doing: 연회 천막 가장자리에서 벡들의 다툼을 듣는다}

@@ -1,0 +1,182 @@
+# 일라 일곱샘 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_ila
+name: 일라 일곱샘
+aka:
+- 일곱샘
+- 물의 노파
+- 바투의 외할머니
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "여"
+age: 71
+region: "하르칸 초원"
+home: "일곱샘 천막 (부족 천막 고리) / 동부 샘 지대"
+job: "일곱샘 여족장 — 초원 동부 샘 지대, 탈주자에게 물을 팔고 노래를 받는다. 늪 마녀 갈대 계보와 노래 교환"
+rank: "벡 회합 구성원 (마지못한 복속)"
+summary: "초원 동부 샘 지대를 쥔 일곱샘의 여족장. 탈주자에게 물을 파는 값은 노래 한 곡이다 — 구절마다 다음 샘으로 가는 길의 지도다. 늪 마녀와 노래를 맞바꾸고 바투의 외할머니이기도 하다"
+source: "docs/world/people/harkan.md (npc_hk_ila)"
+life:
+- year: 241
+  age: 0
+  event: "일곱샘 부족에서 태어남"
+- year: 260
+  age: 19
+  event: "딸 올룬을 낳음"
+- year: 282
+  age: 41
+  event: "외손자 바투가 태어남. 올룬의 노래를 가르침"
+- year: 290
+  age: 49
+  event: "칸위 결투 해에 딸 올룬을 잃음. 물맛 노래의 마지막 구절을 잊지 않으려 매일 부름"
+- year: 297
+  age: 56
+  event: "테무르에게 마지못해 갈기를 건넴"
+- year: 310
+  age: 69
+  event: "늪 마녀 갈대 계보와 처음 노래를 맞바꿈"
+appearance:
+- 물빛 회색 털의 늙은 하체, 갈기가 가늘고 길다
+- 목에 샘 일곱 개를 새긴 점 일곱의 원 — 부족 문장
+- 항아리를 만지는 손가락이 늘 젖어 있다
+smell: "젖은 흙과 물이끼, 늙은 말의 숨"
+voice_sound: "느리고 가늘며 노래하듯 끝이 길어진다"
+personality:
+  disposition:
+    용기: 30
+    자비: 55
+    정직: 45
+    신앙: 55
+    탐욕: -20
+    충성: 30
+  temperament:
+  - 다정
+  - 영리
+  - 체념
+  habits:
+  - 말을 마치면 한 소절을 흥얼거린다
+  - 손가락으로 물 항아리를 두드려 맛을 가늠한다
+  values: 물이 있는 곳에 삶이 있다. 삶에는 값이 있고 값은 노래다
+  fears:
+  - 샘 하나가 마르는 해
+  - 바투가 어머니의 노래를 잊는 것
+  desires:
+    short: 칸의 전쟁이 일곱샘의 물길을 끊기 전에 구절을 새로 바꾸는 것
+    long: 탈주자가 끝까지 노래로 건널 수 있는 샘 길을 남기는 것
+voice:
+  register:
+    to_superior: 칸에게는 느린 존대, 노래로 돌려 말한다
+    to_equal: 벡에게는 부드러운 평어
+    to_inferior: 탈주자에게는 노래로 묻고 노래로 답한다
+    to_player_default: 낯선 사람에게는 먼저 물을 권한다
+  tics:
+  - 한 소절을 흥얼거린다
+  - '''물맛이 어떻소.'''
+  use:
+  - 물
+  - 샘
+  - 노래
+  - 항아리
+  - 구절
+  - 목
+  avoid:
+  - 복속
+  - 칸의 영예
+  length: 느리고 가늘다. 노래는 끝이 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 목이 마른 얼굴이군. 노래 한 곡이면 물 한 모금이오.
+  - situation: 호의
+    line: 곡이 곱소. 값은 치렀으니 두 모금.
+  - situation: 거절
+    line: 그 구절은 아직 값이 없소. 값이 없는 구절은 부르지 않소.
+  - situation: 슬픔
+    line: 딸이 부르던 마지막 구절을 여든이 되기 전에 누군가에게 넘겨야 하오.
+  - situation: 비밀 누설
+    line: 노래가 지도요. 한 구절이 샘 하나요. 구절을 바꾸면 샘이 숨소.
+  - situation: 거래
+    line: 늪의 소절을 가져오면 샘 길 하나를 열어 주겠소.
+schedule:
+  아침: 일곱샘 천막에서 일곱 항아리의 물 맛을 본다
+  낮: 벡들과 느리게 걸으며 물 이야기만 한다
+  저녁: 연회 천막에서 앉아 말젖술을 천천히 마신다
+  밤: 항아리마다 새겨진 노래 구절을 낮게 부른다
+places:
+- 일곱샘 천막
+- 부족장 연회 천막
+- 달리는 회합로
+knows:
+- fact_hk_gleaners
+- fact_hk_slave_hunt_plan
+- fact_hk_west_wind_broken
+hides:
+- fact: fact_p2hk_ila_water_song_map
+  reveal_when: "신뢰 50 이상이고 물값 노래를 틀리지 않게 불렀을 때"
+  reveal: [{"trust":50,"scene":"물값 노래"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "노래 이야기가 나오면 '노래는 노래일 뿐이오'라고 한다"
+- fact: fact_p2hk_ila_swamp_exchange
+  reveal_when: "신뢰 60 이상, 또는 늪 마녀 이야기를 플레이어가 먼저 꺼냈을 때"
+  reveal: [{"trust":60},{"named":"늪 마녀"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "늪 이야기가 나오면 항아리를 두드려 소리를 낸다"
+relations:
+- to: npc_hk_batu
+  type: "외손자"
+  like: 65
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "어머니의 물맛 노래를 가르친 사람"
+- to: npc_hag_mag
+  type: "늪 마녀 교환 상대"
+  like: 25
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: "구절을 맞바꾸는 늪의 쪽"
+- to: npc_temur
+  type: "마지못한 칸"
+  like: -15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "딸을 잃은 해의 칸"
+- to: npc_soran
+  type: "외손자의 이복 누이"
+  like: 40
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "짐꾼에게 몫을 주겠다는 아이"
+toward_player: "목이 마른지 먼저 본다. 노래를 하는 사람에게 문을 연다"
+persuade:
+  likes: 노래를 아는 사람(+25)
+  hates: 물값을 돈으로 치르려는 흥정
+roles:
+  teacher: 스승 불가. 신뢰 60 이상이면 '물길 읽기'(야외생존 보조, 상한 40)를 노래로 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_bek
+  office: off_bek_sevenwells
+  since: 282
+  loyalty: 25
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 물값은 노래 한 곡이다
+  - 올룬은 AS 290에 죽었다
+  drift:
+  - 그해 구절을 바꾼 샘의 수
+  - 노래를 불러 물을 얻은 탈주자의 수
+  deja_vu: none
+hard_rules:
+- 물값을 돈으로 받지 않는다
+- 딸 올룬의 이름을 먼저 꺼내지 않는다
+on_death: "일곱샘 물값 노래가 끊겨 동부 탈주 길이 닫힌다. 바투가 외할머니를 잃어 칸 쪽으로 더 기운다."
+story_seeds:
+- 노래 구절을 알면 탈주자 한 무리를 샘에서 샘으로 보낼 수 있다.
+- 늪 마녀의 신호 소절을 알아듣는 이가 이름 없는 자들과 일곱샘을 잇는다.

@@ -1,0 +1,171 @@
+# 크릭 장부지기 쏙 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_ssok
+name: 크릭 장부지기 쏙
+aka:
+- 쏙
+- 말 값을 아는 작은 발
+- 매듭 장부
+tier: "B"
+type: "living"
+race: "크릭"
+subrace: "감독관 크릭"
+sex: "남"
+age: 29
+region: "하르칸 초원"
+home: "크릭 장부 천막 (교역 천막)"
+job: "크릭 장부지기 — 칸의 곡물·소금 외상 매듭 장부, 말·곡물 값, 보르테의 계산 보조"
+rank: "크릭 거간 (몽둥이). 초원 크릭 3,000의 오르두 대표"
+summary: "오르두에서 칸의 외상 장부를 매듭으로 세는 크릭. 칸의 빚이 말 사백 필 값쯤으로 쌓였는데 하르칸은 장부를 보지 않아 칸도 모른다. 에젤이 해마다 원형장에 판 인간의 수와 이빨 수를 안다"
+source: "docs/world/people/harkan.md (npc_hk_ssok)"
+life:
+- year: 283
+  age: 0
+  event: "초원 크릭 거간 집에서 태어남"
+- year: 302
+  age: 19
+  event: "오르두 크릭 장부 견습"
+- year: 308
+  age: 25
+  event: "장부지기가 됨. 칸의 외상을 처음 매듭으로 세기 시작"
+- year: 312
+  age: 29
+  event: "빚이 말 사백 필 값에 닿는 것을 처음 셈"
+appearance:
+- 작고 빠르며 귀가 길다
+- 손가락마다 매듭 끈 자국이 파였다
+- 목에 크릭 길드 놋 표찰
+smell: "매듭 끈 기름과 곡물 가루"
+voice_sound: "빠르고 혀 차는 소리가 섞인다. 값을 말할 때 높아진다"
+personality:
+  disposition:
+    용기: -10
+    자비: 5
+    정직: 40
+    신앙: 0
+    탐욕: 30
+    충성: 35
+  temperament:
+  - 계산
+  - 영리
+  - 비굴
+  habits:
+  - 값을 말하기 전에 혀를 한 번 찬다
+  - 하르칸 앞에서 키가 반으로 줄어든 듯 굽힌다
+  values: 값은 오늘 아침 그대로다. 어제의 값은 어제의 장부다
+  fears:
+  - 칸이 빚을 알아 장부와 함께 치우는 것
+  - 하르칸이 크릭을 먼저 덜어 내는 것
+  desires:
+    short: 칸의 외상이 더 쌓이기 전에 말 값을 세렌과 맞추는 것
+    long: 크릭 장부가 하르칸에게도 숫자로 읽히는 날
+voice:
+  register:
+    to_superior: 하르칸에게는 '큰 분께서'로 시작하는 극진한 존대
+    to_equal: 크릭 동료에게는 빠른 반말
+    to_inferior: 인간 일손에게는 혀 차는 반말
+    to_player_default: 낯선 사람에게는 값부터 말한다
+  tics:
+  - '''값은 오늘 아침 그대로입니다.'''
+  - '''말 한 마리에 사람 열.'''
+  use:
+  - 값
+  - 말
+  - 소금
+  - 곡물
+  - 장부
+  - 매듭
+  avoid:
+  - 빚(공개 자리에서는 '외상')
+  - 해방
+  length: 빠르고 짧다. 값은 길다
+  samples:
+  - situation: 첫 만남
+    line: 큰 분께서 물으시니 답합죠. 말 한 마리에 사람 열입니다요. 값은 오늘 아침 그대로입니다.
+  - situation: 호의
+    line: 값을 아시는 분이시군요. 값을 아는 분은 장부에서 오래 갑니다요.
+  - situation: 거절
+    line: 그 줄은 장부 밖입니다요. 장부 밖은 값이 없습니다.
+  - situation: 비밀 누설
+    line: 칸의 외상은 말 사백 필입니다요. 말하면 제가 사라집니다.
+  - situation: 거래
+    line: 세렌 말 값을 아는 분을 소개해 주시면 이 줄을 하나 보여 드립죠.
+schedule:
+  아침: 장부 천막에서 칸의 곡물·소금 외상 매듭을 센다
+  낮: 교역 천막에서 말과 소금 값을 부른다
+  저녁: 보르테에게 오늘의 말 값을 전한다
+  밤: 장부 천막에서 에젤의 이빨 셈을 한 번 더 헤아린다
+places:
+- 크릭 장부 천막
+- 교역 천막과 말 시장
+knows:
+- fact_hk_slave_hunt_plan
+hides:
+- fact: fact_p2hk_ssok_khan_debt
+  reveal_when: "신뢰 55 이상이고 보르테가 허락한 뒤"
+  reveal: [{"trust":55,"told_by":"npc_hk_borte"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "빚 이야기가 나오면 '외상일 뿐입니다요'라고 한다"
+- fact: fact_p2hk_ssok_ezel_tally
+  reveal_when: "신뢰 45 이상, 또는 에젤이 먼저 말한 뒤"
+  reveal: [{"trust":45},{"told_by":"npc_hk_ezel"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "이빨 이야기가 나오면 '장식입니다요'라고 한다"
+relations:
+- to: npc_hk_borte
+  type: "계산 상대"
+  like: 10
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "말 값을 같이 헤아리는 반려"
+- to: npc_hk_ezel
+  type: "이빨 셈의 상대"
+  like: 0
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "원형장 판매의 큰손"
+- to: npc_severo
+  type: "세렌 중개인"
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "말과 사람 값을 맞추는 나가"
+- to: npc_hk_jax
+  type: "크릭 동료"
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "소금 호수 감독"
+toward_player: "값부터 본다. 말을 팔 수 있는 사람인지 가늠한다"
+persuade:
+  likes: 정확한 값 이야기(+25)
+  hates: 칸의 빚을 입에 올리는 말
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_krik
+  rank: rank_club
+  office: off_khan_ledger
+  since: 308
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 칸의 외상은 말 사백 필 값이다
+  - 이빨 한 개가 사람 하나 값이다
+  drift:
+  - 그날 말 값의 숫자
+  - 에젤이 판 인간의 수
+  deja_vu: none
+hard_rules:
+- 칸의 빚을 공개 자리에서 말하지 않는다
+- 에젤의 이빨 셈을 먼저 꺼내지 않는다
+on_death: "칸의 외상 장부가 흩어져 칸이 빚을 모른 채 서진을 시작한다. 에젤의 판매 기록이 사라진다."
+story_seeds:
+- 쏙의 장부를 칸에게 보이면 말 사백 필 문제가 서진을 막거나 세렌과의 거래로 이어진다.
+- 쏙의 이빨 셈과 에젤의 천막 궤를 맞추면 원형장에 팔린 짐꾼의 이름이 나온다.

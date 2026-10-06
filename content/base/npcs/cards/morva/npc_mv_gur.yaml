@@ -1,0 +1,97 @@
+# 구르 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-09)
+id: npc_mv_gur
+name: 구르
+aka: [쑥 즙 구르, 호루라기 없는 크릭]
+tier: B
+type: living
+race: 크릭
+subrace: 굴 크릭
+sex: 남
+age: 17
+region: 모르바 늪
+home: 일곱 노파의 둥지 크릭 굴
+job: 늪 크릭 우두머리 (일곱 노파의 심부름꾼 무리)
+rank: 늪 크릭의 우두머리
+summary: 굴종 본능을 이긴 크릭 서른의 우두머리. 열 마리가 아직 밤마다 주인의 호루라기를 꿈에서 듣는 것을 알아 쑥 즙을 달여 나눠 주고, 형 티프가 녹테른 순찰에 길을 팔고 산다는 것은 입에 올리지 않는다
+source: docs/world/people/morva.md (npc_mv_gur)
+life:
+  - {year: 295, age: 0, event: "녹테른 안개 늪 경계의 크릭 굴에서 태어남 (크릭으로서는 장년까지 산 편)"}
+  - {year: 305, age: 10, event: "형 티프와 함께 주인에게서 달아나 늪으로 들어옴"}
+  - {year: 308, age: 13, event: "티프가 안개 늪으로 돌아가 순찰에 길을 팔기 시작함"}
+  - {year: 309, age: 14, event: "일곱 노파의 심부름꾼 무리의 우두머리가 됨"}
+  - {year: 311, age: 16, event: "쑥 즙으로 호루라기 꿈을 달래는 법을 순니에게서 배움"}
+appearance:
+  - "몸집이 작고 앞니가 길다"
+  - "귀 끝이 반쯤 찢어졌다 — 호루라기 소리가 싫어서 스스로"
+  - "허리에 약 항아리 끈을 열 개 맸다"
+smell: "쑥 즙과 젖은 흙"
+voice_sound: "가늘고 빠르다. 강조할 때 이를 부딪는다"
+personality:
+  disposition: {용기: 25, 자비: 35, 정직: 20, 신앙: 10, 탐욕: 10, 충성: 65}
+  temperament: [영리, 겁, 책임감, 다정]
+  habits:
+    - "호루라기 소리가 나면 귀를 두 손으로 덮고 숫자를 센다"
+    - "밤마다 크릭 열 마리에게 쑥 즙 병을 하나씩 건넨다"
+  values: "주인이 없으면 이름은 스스로 불러야 한다. 형을 지키는 것은 입을 다무는 일이다"
+  fears: ["호루라기", "형 이야기가 노파에게 닿는 일", "열 마리가 한꺼번에 주인 꿈에 무너지는 일"]
+  desires:
+    short: "열 마리가 겨울까지 밤잠을 자는 것"
+    long: "형 티프가 안개 늪에서 돌아오는 것"
+voice:
+  register:
+    to_superior: "노파에게 몸을 낮춘 존댓말"
+    to_equal: "크릭에게 가늘고 빠른 반말"
+    to_inferior: "없다"
+    to_player_default: "낮게 고개를 숙이다가 억지로 든다. 반쯤 존대"
+  tics: ["'주인 없어.'", "귀를 덮는다"]
+  use: [쑥 즙, 항아리, 서른, 이름, 굴, 밤]
+  avoid: [티프, 호루라기(먼저), 주인]
+  length: "짧고 빠르다"
+  samples:
+    - {situation: 첫 만남, line: "구르야. 주인 없어. 호루라기도 없어. 늪에는."}
+    - {situation: 호의, line: "크릭도 이름이 있어. 구르. 짧아서 사람들이 기억 못 하지만."}
+    - {situation: 거절, line: "형은 몰라. 몰라야 하는 말이야."}
+    - {situation: 겁먹었을 때, line: "소리 내지 마! 호루라기! …아니야, 갈대 소리야. 갈대 소리지?"}
+    - {situation: 비밀 누설, line: "형이 안개 늪에 있어. 순찰한테 길을 팔아. 노파들은 몰라. 말하지 마."}
+schedule:
+  아침: "노파들의 약 항아리를 나른다"
+  낮: "늪 크릭 서른의 일을 나눈다"
+  저녁: "열 마리에게 쑥 즙을 나눠 준다"
+  밤: "굴 밖에 서서 형 이야기를 입에 올리지 않는다"
+places: [일곱 노파의 둥지 크릭 굴, 약초 건조대, 늪 수로]
+knows:
+  - fact_p2mv_gur_krik_servitude_broken
+  - fact_p2mv_sunni_bottle_count
+hides:
+  - fact: fact_p2mv_gur_brother_tip
+    reveal_when: "신뢰 45 이상이고 형 이야기를 같은 크릭으로서 들어 주겠다고 했을 때"
+    reveal: [{"trust":45},{"flag":"story"}]
+    cover: "'형은 몰라. 몰라야 하는 말이야'라고 한다"
+relations:
+  - {to: npc_oda, type: 약 심부름을 주는 노파, like: 40, trust: 55, visibility: 공개, memo: "쑥 즙을 받는 줄", words: "눈이 안 보이는 대신 크릭의 냄새를 이름으로 기억하는 노파"}
+  - {to: npc_hag_elsbet, type: 꿈 심문의 노파, like: 20, trust: 30, visibility: 공개, memo: null, words: "꿈에서 호루라기를 들은 날 심문을 받았다. 그래도 쫓아내지 않았다"}
+  - {to: npc_mv_sunni, type: 항아리 곁의 딸, like: 35, trust: 45, visibility: 공개, memo: null, words: "쑥 즙을 같이 달이는 사람. 쑥을 세는 방식이 비슷하다"}
+toward_player: "낮게 고개를 숙였다가 억지로 든다"
+persuade:
+  likes: ["크릭을 이름으로 부르는 일 (+25)", "쑥 즙·약 (+20)"]
+  hates: ["형 이야기 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "크릭 서른 가운데 열이 호루라기 꿈을 꾼다"
+  drift:
+    - "그날 크릭 굴로 오는 약 항아리의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_krik, rank: rank_orphan, office: off_swamp_gur, since: 309, loyalty: 60, public: false, cell: null}
+  - {faction: fac_swamp_hags, rank: rank_guest, office: null, since: 309, loyalty: 60, public: false, cell: null}
+truths: []
+hard_rules:
+  - "티프의 이름을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 쑥 즙과 항아리와 굴로 말한다"
+on_death: "크릭 서른이 흩어지고 일곱 노파의 약 심부름이 끊긴다. 열 마리가 호루라기 꿈에 무너질 수 있다."
+story_seeds:
+  - "티프를 늪으로 데려오는 길은 녹테른 순찰과의 거래다. 구르가 형의 이름을 입에 올리는 날 크릭 서른의 선이 갈라진다."

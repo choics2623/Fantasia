@@ -1,0 +1,178 @@
+# 투르가 돌피 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_turga
+name: 투르가 돌피
+aka:
+- 돌피 투르가
+- 수레의 두르강
+- 서명하지 않은 칼
+tier: "B"
+type: "living"
+race: "두르강"
+subrace: "산 두르강(추방 씨족 돌피)"
+sex: "남"
+age: 140
+region: "하르칸 초원"
+home: "무기상 천막 (교역 천막)"
+job: "두르강 무기상 — 서명하지 않은 철 창날·화살촉, 칸과 검은바람에게 같은 수레에서 판다"
+rank: "추방 씨족 돌피 출신. 두르강 법정이 쫓는 맹세 파기자의 친척"
+summary: "카즈둠에서 쫓겨난 돌피 씨족 출신 무기상. 서명하지 않은 철 창날을 반은 칸에게, 반은 검은바람에게 판다. 맹세를 깬 몸이 돌이 되어 가는 것을 늦추려 9번 갱 돌가루를 바르고 다닌다"
+source: "docs/world/people/harkan.md (npc_hk_turga)"
+life:
+- year: 172
+  age: 0
+  event: "카즈둠 바깥 돌피 동굴에서 태어남"
+- year: 260
+  age: 88
+  event: "씨족이 맹세 파기로 추방된 뒤 초원 길로 들어섬"
+- year: 290
+  age: 118
+  event: "칸위 결투 해 칸에게 처음 창날을 팖"
+- year: 305
+  age: 133
+  event: "검은바람 오르두와 처음 거래 — 동맹의 시작"
+- year: 311
+  age: 139
+  event: "손등이 굳기 시작함"
+appearance:
+- 짧고 단단한 몸에 왼손 손등이 회색 돌처럼 굳기 시작했다
+- 수염에 돌가루가 하얗게 앉았다
+- 수레 바퀴 살에 돌피 씨족의 금이 간 돌 표식이 새겨져 있다
+smell: "쇠 녹과 돌가루, 말기름"
+voice_sound: "굵고 느리다. 하르칸 초원어에 두르강 룬어 악센트가 섞인다"
+personality:
+  disposition:
+    용기: 30
+    자비: 10
+    정직: 40
+    신앙: 20
+    탐욕: 50
+    충성: 20
+  temperament:
+  - 계산
+  - 과묵
+  - 의심
+  habits:
+  - 돌이 된 손등을 장갑으로 가린 채 쓰다듬는다
+  - 수레 바닥을 발로 한 번 두드려 소리를 확인한다
+  values: 철은 서명하지 않는다. 서명은 사람이 하고 철은 값을 가진다
+  fears:
+  - 돌피병이 손에서 어깨로 번지는 것
+  - 두르강 법정 사자가 수레를 열어 보는 것
+  desires:
+    short: 철을 두 군데에 같은 값으로 팔고 돌피 우두머리 퀴그에게 돌아가는 것
+    long: 돌피병이 번지기 전에 9번 갱 돌가루의 출처를 알아내는 것
+voice:
+  register:
+    to_superior: 하르칸에게는 짧은 존대
+    to_equal: 상인에게는 굵고 느린 평어
+    to_inferior: 견습에게는 짧은 명령
+    to_player_default: 낯선 사람에게는 먼저 손을 본다 — 장갑을 낀 손에는 말을 걸지 않는다
+  tics:
+  - 손등을 쓰다듬는다
+  - '''철은 서명하지 않소.'''
+  use:
+  - 철
+  - 창날
+  - 수레
+  - 값
+  - 돌
+  - 서명
+  avoid:
+  - 맹세
+  - 돌피병
+  - 퀴그(공개 자리에서)
+  length: 굵고 짧다. 값 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 철이 필요하오? 서명 안 한 칼이오. 값은 서명한 칼과 같소.
+  - situation: 호의
+    line: 손이 쇠를 안다는 건 서명보다 믿을 만하오.
+  - situation: 거절
+    line: 그 수레는 열지 않소. 열면 값이 달라지오.
+  - situation: 슬픔
+    line: 손이 하루가 다르게 굳소. 어제는 손등이었는데 오늘은 손가락이오.
+  - situation: 비밀 누설
+    line: 칸에게 반, 검은바람에게 반. 같은 값이오. 철은 주인이 없소.
+  - situation: 거래
+    line: 9번 갱 돌가루가 어디서 온 것인지 알려 주면 창날 열 자루를 덤으로 주겠소.
+schedule:
+  아침: 무기상 천막에서 철 창날 이백을 늘어놓고 값을 센다
+  낮: 하르칸 질주자에게 창날을 판다
+  저녁: 검은바람 천막으로 철 상자를 옮긴다
+  밤: 천막 뒤 수레 곁에서 9번 갱 돌가루를 손목에 바른다
+places:
+- 교역 천막과 말 시장
+- 무기상 천막
+- 검은바람 천막
+knows:
+- fact_hk_slave_hunt_plan
+hides:
+- fact: fact_p2hk_turga_double_sale
+  reveal_when: "신뢰 50 이상, 또는 오르두가 먼저 말한 뒤"
+  reveal: [{"trust":50},{"told_by":"npc_hk_orduk"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "철 이야기가 나오면 '값은 같소'라고만 한다"
+- fact: fact_p2hk_turga_dolpi
+  reveal_when: "신뢰 60 이상이고 손등을 보고 묻지 않고 약을 건넨 뒤"
+  reveal: [{"trust":60,"player_offer":"돌피병을 늦출 약을"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "손 이야기가 나오면 장갑을 당겨 올린다"
+relations:
+- to: npc_hk_orduk
+  type: "철 거래 상대"
+  like: 30
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: "돌피의 철을 대는 벡"
+- to: npc_temur
+  type: "손님"
+  like: 5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "같은 수레에서 창날을 사 가는 칸"
+- to: npc_hk_ssok
+  type: "크릭 장부지기"
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "철 값을 장부에 적는 작은 발"
+- to: npc_kz_krag
+  type: "두르강 문지기 대장"
+  like: -20
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: "추방자를 쫓는 쪽"
+toward_player: "손을 보고 값을 부른다. 장갑 낀 손을 만지려는 사람을 싫어한다"
+persuade:
+  likes: 값을 정확히 아는 흥정(+20)
+  hates: 맹세와 돌피병을 입에 올리는 말
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_oath_breaker
+  office: null
+  since: 260
+  loyalty: 25
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 철 창날 이백이 같은 수레에서 두 군데로 팔린다
+  - 손등이 굳기 시작했다
+  drift:
+  - 수레 바닥의 창날 수
+  - 손등의 굳은 넓이
+  deja_vu: none
+hard_rules:
+- 돌피병을 먼저 꺼내지 않는다
+- 퀴그의 이름을 공개 자리에서 말하지 않는다
+on_death: "칸과 검은바람의 철 길이 끊긴다. 서명하지 않은 철이 사라져 검은바람의 반란 준비가 늦춰진다."
+story_seeds:
+- 투르가의 수레 바닥을 열면 칸과 검은바람이 같은 철을 쓰는 것이 드러난다.
+- 투르가의 손에 9번 갱 돌가루를 바른 약을 건네면 돌피병이 늦어지는 이유가 처음으로 확인된다.

@@ -1,0 +1,171 @@
+# 잭스 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_jax
+name: 잭스
+aka:
+- 소금손
+- 소금 호수의 감독
+- 하얀 평원의 계산
+tier: "B"
+type: "living"
+race: "크릭"
+subrace: "감독관 크릭"
+sex: "남"
+age: 34
+region: "하르칸 초원"
+home: "소금 호수 감독 천막"
+job: "소금 호수 노역장 감독 — 인간 3,000의 소금 채취, 수레 운송, 칸에게 소금 공납"
+rank: "크릭 감독관 (채찍을 쥔 자). 칸의 소금 공납을 맡은 거간"
+summary: "소금 호수의 인간 노역장을 감독하는 크릭. 소금 아래 아스테리아 시대 대상 행렬의 장부 판을 읽을 수 있다. 캐낸 은화와 문패를 히악을 거쳐 그롬마르 고르바에게 판다"
+source: "docs/world/people/harkan.md (npc_hk_jax)"
+life:
+- year: 278
+  age: 0
+  event: "초원 크릭 거간 집에서 태어남"
+- year: 299
+  age: 21
+  event: "소금 호수 감독 견습"
+- year: 306
+  age: 28
+  event: "감독관이 됨. 소금 아래 짐수레 바닥을 처음 봄"
+- year: 310
+  age: 32
+  event: "장부 판 한 장을 읽어 냄 — 아스테리아의 대상 장부"
+appearance:
+- 키가 작고 소금 가루가 하얗게 앉은 털
+- 왼손 손가락 하나가 소금에 녹아 없다
+- 목에 소금 빛 놋 표찰
+smell: "소금과 마른 가죽, 땀 냄새"
+voice_sound: "빠르고 갈라진 존대. 숫자에서 목소리가 높아진다"
+personality:
+  disposition:
+    용기: 0
+    자비: -10
+    정직: 25
+    신앙: 0
+    탐욕: 50
+    충성: 35
+  temperament:
+  - 계산
+  - 영리
+  - 비굴
+  habits:
+  - 인사 전에 수레 수를 센다
+  - 소금 가루를 손가락으로 비벼 순도를 가늠한다
+  values: 소금은 값이고 사람은 소금을 캔다. 값은 장부에 있다
+  fears:
+  - 칸이 소금 아래의 것을 알아 감독을 바꾸는 것
+  - 장부 판이 소금에 녹는 것
+  desires:
+    short: 소금 아래에서 은화를 더 캐 내는 것
+    long: 소금 호수에서 빠져나가 장부가 필요 없는 곳에서 장부를 읽는 것
+voice:
+  register:
+    to_superior: 하르칸에게는 극진한 존대
+    to_equal: 크릭 동료에게는 빠른 반말
+    to_inferior: 노역 인간에게는 숫자를 섞은 반말
+    to_player_default: 낯선 사람에게는 값부터 말한다
+  tics:
+  - 수레 수를 센다
+  - '''소금은 정직합니다.'''
+  use:
+  - 소금
+  - 수레
+  - 값
+  - 하얀
+  - 은화
+  - 장부 판
+  avoid:
+  - 아스테리아(공개 자리에서)
+  - 소금 사고
+  length: 빠르고 갈라진다. 숫자에서 길다
+  samples:
+  - situation: 첫 만남
+    line: 소금이 필요하십니까요. 값부터 말씀드립죠. 한 수레에 말 한 마리의 절반입니다.
+  - situation: 호의
+    line: 숫자를 아시는 분이로군요. 수레 한 대를 덤으로 얹어 드립죠.
+  - situation: 거절
+    line: 그건 소금 아래 이야기입니다요. 소금 아래는 제 몫이 아닙니다.
+  - situation: 비밀 누설
+    line: 아래에 수레가 있습니다. 장부 판이 있습니다. 아스테리아의 인간이 글을 쓰던 판입니다.
+  - situation: 거래
+    line: 은화 한 닢의 값만큼 사람을 한 줄 빼 드리겠습니다.
+schedule:
+  아침: 소금 평원에서 노역 인간의 수와 소금 수레 수를 센다
+  낮: 소금 가장자리에서 감독을 서며 채취 조를 돌린다
+  저녁: 소금 아래에서 캐낸 것을 천막 안에서 닦는다
+  밤: 천막 뒤 수레에서 히악이 오는 날을 기다린다
+places:
+- 소금 호수 노역장
+- 소금 수레 집하장
+knows:
+- fact_hk_hiak_death_ledger
+hides:
+- fact: fact_p2hk_jax_asteria_caravan
+  reveal_when: "신뢰 50 이상이고 소금 아래를 직접 본 뒤"
+  reveal: [{"trust":50,"scene":"소금 아래"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "소금 아래 이야기가 나오면 '소금뿐입니다요'라고 한다"
+- fact: fact_p2hk_jax_sells_relics
+  reveal_when: "신뢰 60 이상, 또는 히악이 먼저 말한 뒤"
+  reveal: [{"trust":60},{"told_by":"npc_hiak"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "은화 이야기가 나오면 '소금 값뿐입니다요'라고 한다"
+relations:
+- to: npc_hiak
+  type: "고물상"
+  like: 20
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: "유물 값을 같이 치르는 웃는 사람"
+- to: npc_gorba
+  type: "그롬 구매자"
+  like: 15
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: "이빨과 투사로 값을 치르는 조련사"
+- to: npc_hk_ssok
+  type: "크릭 장부지기"
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "같은 길드의 작은 발"
+- to: npc_temur
+  type: "소금을 바치는 칸"
+  like: 5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "공납의 상대"
+toward_player: "값부터 본다. 수레와 은화를 모두 헤아려 사람을 가늠한다"
+persuade:
+  likes: 소금과 장부의 정확한 계산(+25)
+  hates: 소금 사고의 이름을 물어보는 말
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_krik
+  rank: rank_whip
+  office: off_salt_lake_overseer
+  since: 306
+  loyalty: 40
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 소금 아래에 대상 행렬이 있다
+  - 소금 사고는 장부에 있다
+  drift:
+  - 그날 캐낸 은화의 수
+  - 소금 아래에서 죽은 노역 인간의 수
+  deja_vu: none
+hard_rules:
+- 소금 사고의 이름을 먼저 말하지 않는다
+- 아스테리아 이야기를 공개 자리에서 하지 않는다
+on_death: "소금 아래 대상 행렬의 장부 판을 읽을 이가 사라지고 소금 노역장이 칸의 직접 관리로 넘어간다. 고르바의 유물 길이 끊긴다."
+story_seeds:
+- 장부 판을 직접 읽으면 아스테리아 시절 인간이 대륙을 자유롭게 오가던 증거가 된다.
+- 잭스의 소금 사고 장부는 노역 인간 몇이 소금 아래에서 죽었는지의 증거다.

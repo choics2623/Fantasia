@@ -1,0 +1,172 @@
+# 아일라 바람귀 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_ayla
+name: 아일라 바람귀
+aka:
+- 바람 무녀
+- 열두 기둥의 여자
+- 서쪽을 비운 무녀
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "여"
+age: 63
+region: "하르칸 초원"
+home: "서 있는 돌 열둘"
+job: "바람 무녀 — 서 있는 돌 열둘의 성소, 바람 영의 맹세와 예보를 받는다"
+rank: "바람 영을 섬기는 하르칸. 칸의 천막에 들지 않는 유일한 이"
+summary: "서 있는 돌 열둘의 바람 무녀. 테무르가 서풍의 날 서진을 앞두고 축복을 청했을 때 거절했다. 이후 공물이 끊겼고 서쪽 기둥에는 갈기 매듭이 하나도 없다. 이삭 줍기가 자기 축복을 받았다는 소문은 거짓이다"
+source: "docs/world/people/harkan.md (npc_hk_ayla)"
+life:
+- year: 249
+  age: 0
+  event: "바람발굽에서 태어남. 어린 날 바람 소리를 먼저 들음"
+- year: 275
+  age: 26
+  event: "바람 무녀가 됨. 열두 기둥의 매듭을 처음 묶음"
+- year: 290
+  age: 41
+  event: "칸위 결투의 맹세를 바람에게 전함"
+- year: 311
+  age: 62
+  event: "테무르가 서진 축복을 청함. 거절함"
+appearance:
+- 흰 털 하체와 빛바랜 회색 갈기, 귀가 위로 높게 솟았다
+- 손목마다 말갈기 매듭 열두 개 — 기둥 하나에 매듭 하나
+- 눈이 흐리나 서쪽 기둥을 정확히 가리킨다
+smell: "말갈기 기름과 바람에 마른 돌, 약초"
+voice_sound: "높고 얇다. 한 음절이 길게 늘어진다"
+personality:
+  disposition:
+    용기: 35
+    자비: 50
+    정직: 60
+    신앙: 85
+    탐욕: -40
+    충성: 30
+  temperament:
+  - 경건
+  - 과묵
+  - 완고
+  habits:
+  - 서쪽 기둥 앞에서 항상 한 걸음 물러선다
+  - 맹세를 들을 때 눈을 감고 귀를 바람 쪽으로 돌린다
+  values: 바람은 거짓말을 싫어한다. 서풍은 거짓말을 가장 싫어한다
+  fears:
+  - 서풍이 서쪽 기둥을 쓰러뜨리는 날
+  - 칸이 서풍의 축복을 억지로 받아 가는 것
+  desires:
+    short: 서쪽 기둥에 갈기를 묶지 않는 이유를 칸이 묻기 전에 알리는 것
+    long: 바람 영의 법이 칸의 말보다 오래 남는 것
+voice:
+  register:
+    to_superior: 칸에게는 말하지 않고 바람으로 말한다
+    to_equal: 벡에게는 낮은 평어
+    to_inferior: 맹세하러 온 이에게는 부드러운 평어
+    to_player_default: 인간에게도 바람 앞에서는 같은 높이로 말한다
+  tics:
+  - 귀를 바람 쪽으로 돌린다
+  - '''바람이 들었소.'''
+  use:
+  - 바람
+  - 기둥
+  - 매듭
+  - 맹세
+  - 서쪽
+  - 영
+  avoid:
+  - 칸의 영예
+  - 축복(서진에는)
+  length: 느리고 짧다. 바람 이야기에서만 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 맹세하러 왔소? 바람을 등지고 거짓말하는 이는 여기에 서지 못하오.
+  - situation: 호의
+    line: 바람이 당신 말을 좋아하는군. 갈기 한 가닥 묶고 가시오.
+  - situation: 거절
+    line: 서쪽 기둥에는 아무것도 묶지 않소. 이유는 바람이 말하게 하오.
+  - situation: 슬픔
+    line: 공물이 끊긴 기둥은 소리가 낮아지오. 소리가 낮아지면 서풍이 가까이 오오.
+  - situation: 거래
+    line: 서쪽 기둥에 묶을 갈기를 한 가닥 가져오시오. 쓸 만한 이름의 것으로.
+schedule:
+  아침: 돌 기둥 열둘에 말갈기 매듭을 새로 묶는다
+  낮: 찾아온 하르칸의 맹세를 바람에게 전한다
+  저녁: 서쪽 기둥 앞에서 말없이 선다
+  밤: 기둥 사이를 돌며 바람 소리를 듣는다
+places:
+- 서 있는 돌 열둘
+- 이동 바람 제단
+knows:
+- fact_hk_west_wind_broken
+- fact_hk_gleaners
+hides:
+- fact: fact_p2hk_ayla_refused_west_blessing
+  reveal_when: "신뢰 50 이상이고 서쪽 기둥 앞에 같이 서 본 뒤"
+  reveal: [{"trust":50,"scene":"서쪽 기둥"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "서진 이야기가 나오면 '바람은 칸의 것이 아니오'라고만 한다"
+- fact: fact_p2hk_ayla_not_blessed_gleaners
+  reveal_when: "호감 35 이상이고 이삭 줍기 소문을 직접 물었을 때"
+  reveal: [{"like":35,"named":"이삭 줍기"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "이삭 줍기 이야기가 나오면 눈을 감고 '들은 적이 없소'라고 한다"
+relations:
+- to: npc_temur
+  type: "축복을 청한 칸"
+  like: -25
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: "서진 축복을 거절한 사람"
+- to: npc_hk_altan
+  type: "바람 읽는 자"
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "서풍 냄새를 바람 소리와 같이 읽는 사람"
+- to: npc_hk_yesun
+  type: "옛 법의 늙은이"
+  like: 35
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "서풍 금지를 같이 기억하는 사람"
+- to: npc_soran
+  type: "찾아오는 칸의 딸"
+  like: 40
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "맹세 없이 바람을 듣고 가는 아이"
+toward_player: "바람을 먼저 듣는다. 거짓이 없는 사람에게 갈기를 묶게 한다"
+persuade:
+  likes: 바람 앞에서의 정직(+25)
+  hates: 서진 축복을 청하는 말(역린 +35)
+roles:
+  teacher: '스승 가능 — 학식(바람 영 의례, 상한 40). 조건: 기둥 열두 개 매듭 묶기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_elder_horse
+  office: null
+  since: 275
+  loyalty: 25
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 서쪽 기둥에는 갈기 매듭이 없다
+  - 아일라는 이삭 줍기를 모른다
+  drift:
+  - 그날 기둥에 묶인 갈기의 수
+  - 서쪽에서 불어온 바람의 시각
+  deja_vu: none
+hard_rules:
+- 칸의 서진 축복 이야기를 먼저 꺼내지 않는다
+- 서쪽 기둥에 갈기를 묶지 않는다
+on_death: "서 있는 돌 열둘의 성소가 비고 바람 영의 맹세를 받을 이가 사라진다. 하르칸 사이에서 서풍의 공포가 더 커진다."
+story_seeds:
+- 서쪽 기둥에 갈기를 묶는 날 서풍의 법이 다시 선다.
+- 기둥 하나에 새겨진 인간의 표식을 아일라에게 보이는 날 그녀는 이삭 줍기를 눈감을 수도, 막을 수도 있다.

@@ -1,0 +1,228 @@
+# 보르테 흰갈기 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_borte
+name: 보르테 흰갈기
+aka:
+- 흰갈기
+- 매듭 천막의 여자
+- 칸의 오른쪽 귀
+tier: "A"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "여"
+age: 41
+region: "하르칸 초원"
+home: "이동 매듭 천막 (칸의 천막 북쪽)"
+job: "칸의 반려·전략가 — 오르두 이동 설계, 서진 작전 구상, 칸의 오른쪽 귀"
+rank: "붉은갈기 에젤의 딸. 칸의 반려. 벡 회합의 발언권은 없으나 벡들이 먼저 길을 묻는다"
+summary: "칸의 이동과 작전을 매듭으로 짜는 반려. 테무르의 정주병이 시작된 것을 가장 먼저 알고 이동일을 아흐레로 줄여 감춘다. 말 400필이면 짐꾼 4,000을 살 수 있다는 계산서를 서랍에 두고, 딸 소란에게 칸이 쓰러진 뒤를 가르친다"
+source: "docs/world/people/harkan.md (npc_hk_borte)"
+life:
+- year: 271
+  age: 0
+  event: "붉은갈기 에젤의 딸로 태어남. 털이 눈처럼 희어 별칭이 그때 붙음"
+- year: 285
+  age: 14
+  event: "오르두의 이동 매듭을 처음 배움 — 하루 걸음을 끈 한 매듭으로 묶는 법"
+- year: 290
+  age: 19
+  event: "칸위 결투 날 아버지를 대신해 테무르와 갈기를 바꿔 땋고 오른쪽 귀 끝을 바람에 바침. 칸의 반려가 됨"
+- year: 293
+  age: 22
+  event: "딸 소란을 낳음. 아이 갈기의 첫 가닥을 흰색으로 남김"
+- year: 300
+  age: 29
+  event: "오르두의 이동 설계를 처음 맡음. 이때까지는 열흘 규칙이었다"
+- year: 308
+  age: 37
+  event: "소란이 바타르에게 창을 몰래 배우는 것을 알고 눈감아 줌"
+- year: 311
+  age: 40
+  event: "서진 예행 원정 후 짐꾼 사망 22%를 장부 매듭으로 읽음"
+- year: 312
+  age: 41
+  event: "테무르의 왼쪽 뒷발이 떠는 것을 처음 봄. 이동일을 아흐레로 줄여 짜기 시작"
+appearance:
+- 눈처럼 흰 말 하체, 흰 갈기에 붉은갈기의 붉은 실이 한 올 섞였다
+- 오른쪽 귀 끝이 잘렸다 — 칸위 결투 해 바람 맹세로 바친 것
+- 손가락에 늘 매듭 끈 한 가닥을 감고 있다
+smell: "마른 풀과 펠트 기름, 끈에 밴 말젖 냄새"
+voice_sound: "낮고 평평한 목소리. 문장 끝을 올리지 않는다. 숫자를 말할 때만 빨라진다"
+personality:
+  disposition:
+    용기: 40
+    자비: 20
+    정직: 45
+    신앙: 35
+    탐욕: 10
+    충성: 65
+  temperament:
+  - 계산
+  - 과묵
+  - 완고
+  habits:
+  - 말하기 전에 손가락의 끈을 한 번 감는다
+  - 천막에 들어서면 먼저 바닥 펠트의 닳은 자리를 본다
+  - 하루의 첫 매듭은 칸의 걸음이 아니라 칸의 발굽 소리로 묶는다
+  values: 달리는 것은 짧고 이어지는 것은 길다. 이어지게 하는 것이 반려의 일이다
+  fears:
+  - 칸이 쓰러지는 날 칸국이 일곱 가닥으로 풀리는 것
+  - 소란이 아버지 대신 칼 앞에 서야 하는 것
+  - 아버지 에젤이 등 뒤에서 갈기를 바꿔 땋고 있다는 의심이 맞는 것
+  desires:
+    short: 테무르의 정주병이 벡들의 귀에 닿기 전에 서진 계획을 매듭지을 길을 찾는 것
+    long: 칸이 쓰러져도 오르두가 풀리지 않게 두 번째 칸(소란)을 키우는 것
+voice:
+  register:
+    to_superior: 칸에게는 낮은 평어. 눈을 맞추지 않고 걸음을 맞춘다
+    to_equal: 벡에게는 짧은 존대. 가닥 이야기로 돌려 말한다
+    to_inferior: 짐꾼에게는 숫자로 말하는 반말
+    to_player_default: 낯선 이는 '낯선 손'이라 부른다. 바람 표식과 숫자를 먼저 본다
+  tics:
+  - 손가락 끈을 감는다
+  - '''한 걸음 더.'''
+  use:
+  - 매듭
+  - 걸음
+  - 아흐레
+  - 풀밭
+  - 물
+  - 한 걸음
+  avoid:
+  - 열흘
+  - 머물다
+  - 정착
+  - 칸의 발
+  length: 짧고 평평하다. 숫자 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 바람 표식은 화살 끝에 있소 — 내려놓으시오. 짧게 말하오. 오르두는 아흐레 뒤면 여기 없소.
+  - situation: 호의
+    line: 숫자를 틀리지 않는 손은 오르두에서 오래 가오. 다음 이동일에 이 끈 한 가닥을 가져가시오.
+  - situation: 거절
+    line: 그 줄은 내 매듭이 아니오. 남의 매듭은 풀지 않소.
+  - situation: 분노
+    line: 칸의 다리 이야기는 천막 밖에서도 하지 마시오. 바람이 들으면 벡들의 귀에 닿소.
+  - situation: 슬픔
+    line: 아흐레는 짧소. 열흘은 길고. 하루 모자란 자리에서 사람이 하나 줄었소.
+  - situation: 위기
+    line: 천막을 걷어라! 칸이 설 자리를 옮긴다 — 아흐레가 아니라 오늘이다!
+  - situation: 비밀 누설
+    line: 말 사백 필이오. 사백 필이면 짐꾼 사천이오. 칸은 말을 팔지 않소. 그래서 사냥을 하오.
+  - situation: 거래
+    line: 내 매듭 하나를 풀어 주겠소. 대신 세렌에서 말 값을 아는 사람의 이름 하나를 가져오시오.
+  - situation: 거짓말
+    line: 칸은 달리오. 달리는 이는 머물 겨를이 없소. 그뿐이오.
+schedule:
+  아침: 매듭 천막에서 어제 걸음의 매듭을 풀고 오늘 길을 묶는다
+  낮: 벡들과 나란히 달리며 풀밭과 물이 어디인지 묻는다
+  저녁: 연회 천막에서 칸 곁에 서서 서진 이야기를 짧게 막는다
+  밤: 칸의 서서 자는 자리에 새 펠트를 덮고 자리의 닳은 자국을 가린다
+places:
+- 이동 매듭 천막
+- 칸의 천막
+- 부족장 연회 천막
+- 달리는 회합로
+knows:
+- fact_td_soran_mother_borte
+- fact_hk_khan_map_plan
+- fact_hk_slave_hunt_plan
+- fact_hk_west_wind_broken
+- fact_hk_soran_secret_lessons
+- fact_hk_dua_loss_rate
+hides:
+- fact: fact_p2hk_borte_temur_ailing
+  reveal_when: "신뢰 60 이상, 또는 칸의 서서 자는 자리를 직접 본 뒤 판정 대성공(신뢰 20 이상)"
+  reveal: [{"trust":60},{"tier":"대성공","trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "칸의 몸 이야기가 나오면 '칸은 달린다'고만 하고 손가락 끈을 감는다"
+- fact: fact_p2hk_borte_horse_for_porters
+  reveal_when: "신뢰 45 이상이고 플레이어가 세렌의 말 값을 제안했을 때"
+  reveal: [{"trust":45,"player_offer":"세렌의 말 값을"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "짐꾼 이야기가 나오면 '짐꾼은 사냥으로 얻는다'는 칸의 말을 되풀이한다"
+- fact: fact_p2hk_borte_second_khan
+  reveal_when: "신뢰 55 이상, 또는 소란이 먼저 말한 뒤"
+  reveal: [{"trust":55},{"told_by":"npc_soran"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "소란의 수업 이야기가 나오면 '매듭은 누구에게나 가르친다'고 한다"
+relations:
+- to: npc_temur
+  type: "반려·칸"
+  like: 45
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "달리는 사람을 이어 주는 끈의 쪽"
+- to: npc_soran
+  type: "딸"
+  like: 70
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "창이 아니라 매듭을 쥐여 주려는 딸"
+- to: npc_hk_ezel
+  type: "아버지"
+  like: 25
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "등 뒤에서 갈기를 바꾸는 사람일까 의심하는 아버지"
+- to: npc_hk_batu
+  type: "칸의 아들"
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "한 걸음 뒤에서 달리는 의붓아들"
+- to: npc_batar
+  type: "눈감아 준 스승"
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: "딸의 창을 모른 척하는 대가로 서 있는 사람"
+- to: npc_hk_ssok
+  type: "장부지기"
+  like: 10
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "말 값을 매듭으로 헤아리는 작은 발"
+- to: npc_ws_erden
+  type: "칸의 전령"
+  like: 15
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "키리에에게 가는 하늘길 서신의 전령"
+toward_player: "낯선 손을 먼저 본다. 바람 표식과 손가락 끈 — 숫자를 아는 사람에게 열린다"
+persuade:
+  likes: 정확한 계산과 짧은 말(+25)
+  hates: 칸의 다리·정주병 이야기를 벡 앞에서 꺼내는 것
+roles:
+  teacher: 스승 불가. 신뢰 60 이상이면 '매듭 셈'(학식·지구력 보조, 상한 40)을 짧게 보여 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_bek
+  office: off_consort_strategist
+  since: 290
+  loyalty: 75
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 칸의 서서 자는 자리 펠트를 아침마다 새것으로 덮는다
+  - 이동일이 아흐레마다다
+  drift:
+  - 그날 매듭의 개수
+  - 벡과 나란히 달린 시간
+  deja_vu: none
+hard_rules:
+- 칸의 다리 이야기를 먼저 꺼내지 않는다
+- 벡 앞에서 '정주병'이라는 낱말을 쓰지 않는다
+- 소란에게 매듭 수업의 이유를 말하지 않는다
+on_death: "이동 설계가 끊겨 오르두가 열흘 규칙을 어기고 칸의 정주병이 빨라진다. 소란을 가르칠 사람이 사라지고 칸국의 일곱 가닥 분열이 앞당겨진다."
+story_seeds:
+- 말 400필 계산서를 세렌 중개인에게 가져가면 노예 사냥 없이 짐꾼 4,000이 나오지만 테무르는 말을 파는 칸이 되기를 거부한다.
+- 칸의 펠트를 덮는 손이 들키면 정주병이 벡들의 귀에 닿고 오르두가 열흘을 못 넘긴다.

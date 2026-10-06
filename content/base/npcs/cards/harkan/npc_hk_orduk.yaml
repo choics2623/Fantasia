@@ -1,0 +1,227 @@
+# 오르두 검은바람 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_orduk
+name: 오르두 검은바람
+aka:
+- 검은바람
+- 말 태우는 벡
+- 바람은 주인이 없다
+tier: "A"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 45
+region: "하르칸 초원"
+home: "검은바람 천막 (부족 천막 고리) / 북부 초지"
+job: "검은바람 부족장 — 초원 북부, 카즈둠 경계. 인간 기수 훈련, 돌피 씨족과의 비밀 동맹"
+rank: "벡 회합 구성원. 테무르에게 갈기를 건넨 17부족 중 하나이나 맹세를 끊을 날을 정했다"
+summary: "인간 쉰 명에게 말을 타고 활을 쏘는 법을 가르치는 하르칸 부족장. 추방 씨족 돌피에게서 철 창날을 받는다. 테무르가 서풍의 날 서쪽으로 진군하는 날 갈기 가닥을 자르고 칸의 자리에 소란을 세우려 한다"
+source: "docs/world/people/harkan.md (npc_hk_orduk)"
+life:
+- year: 267
+  age: 0
+  event: "검은바람 부족에서 태어남. 가훈 '바람은 주인이 없다'를 처음 들음"
+- year: 283
+  age: 16
+  event: "인간 짐꾼과 같은 줄에 묶이는 벌을 받음(다리를 묶은 죄를 뒤집어씀) — 앞무릎에 자국"
+- year: 290
+  age: 23
+  event: "칸위 결투에서 바타르 곁에서 달렸으나 테무르 쪽으로 갈기를 건넴. 이유는 아직 아무에게도 말하지 않음"
+- year: 298
+  age: 31
+  event: "부족장이 됨. 인간 노예 한 명에게 처음으로 말을 태워 봄"
+- year: 305
+  age: 38
+  event: "돌피 씨족 퀴그와 동굴에서 처음 만남. 철 창날 이백을 받음"
+- year: 310
+  age: 43
+  event: "해방한 인간 쉰에게 활을 가르침. 벡 회합에서 처음 금기 위반으로 지적됨"
+- year: 312
+  age: 45
+  event: "서풍 날 진군 때 가닥을 끊기로 결심. 옛 바람파에 사람을 보냄"
+appearance:
+- 검은 털 하체, 오른쪽 앞무릎에 오래된 쇠사슬 자국 — 젊은 날 인간 노예와 같은 줄에 묶였던 흔적
+- 갈기에 돌 구슬 하나를 땋아 넣었다 — 돌피 씨족이 준 것
+- 웃을 때 이가 한쪽만 드러난다
+smell: "마른 풀과 쇠 녹, 인간 기수의 가죽 안장 기름"
+voice_sound: "굵고 낮으며 빠르다. 비웃음이 섞였으나 화를 내지 않는다"
+personality:
+  disposition:
+    용기: 70
+    자비: 35
+    정직: 40
+    신앙: 15
+    탐욕: 5
+    충성: 25
+  temperament:
+  - 반골
+  - 용맹
+  - 영리
+  habits:
+  - 벡 회합에서 칸의 천막 쪽이 아니라 서쪽 바람을 본다
+  - 인간 기수가 말에서 떨어지면 먼저 달려가 손을 내민다
+  - 갈기 가닥을 만지는 대신 돌 구슬을 굴린다
+  values: 바람은 주인이 없다. 등에 주인을 지고 달리는 것은 말이 아니라 짐이다
+  fears:
+  - 칸의 수에 갈기가 아홉 아래로 떨어져도 오르두가 풀리지 않는 것
+  - 인간 기수들이 칸의 사냥에서 먼저 표적이 되는 것
+  - 소란이 아버지에게 가닥을 도로 건네는 것
+  desires:
+    short: 서풍의 날 진군 때 갈기 가닥을 끊고 옛 바람파를 함께 비껴 달리게 하는 것
+    long: 칸이 없는 초원이 아니라 짐꾼에게 몫을 주는 칸이 서는 초원
+voice:
+  register:
+    to_superior: 칸에게는 짧은 평어, 눈을 서쪽으로 둔다
+    to_equal: 벡에게는 비웃는 존대
+    to_inferior: 인간 기수에게는 '말 위의 형제' 반말 — 이름을 부른다
+    to_player_default: 인간에게는 일어서서 눈을 맞춘다. 말에 앉을 줄 아는지 묻는다
+  tics:
+  - 돌 구슬을 굴린다
+  - '''바람은 주인이 없소.'''
+  use:
+  - 바람
+  - 가닥
+  - 안장
+  - 형제
+  - 서쪽
+  - 말 위
+  avoid:
+  - 충성(그 말은 쓰지 않는다)
+  - 복속
+  - 짐꾼(기수라 부른다)
+  length: 굵고 빠르다. 비웃음은 짧게
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 말에 앉을 줄 아시오? 앉을 줄 모르면 서 있는 법이라도 알려 드리겠소.
+  - situation: 호의
+    line: 당신은 땅에 있어도 서쪽 바람을 보는군. 그런 눈이면 말 등이 낯설지 않을 거요.
+  - situation: 거절
+    line: 그건 천막 안에서 하는 이야기가 아니오. 바람이 있는 곳에서 하겠소.
+  - situation: 분노
+    line: 인간을 짐이라 부르는 입은 내 천막 앞에서 닫으시오. 닫지 않으면 내가 닫겠소.
+  - situation: 슬픔
+    line: 첫 기수가 떨어져 죽은 날 안장을 닦았소. 아직 그 안장은 아무도 타지 않소.
+  - situation: 위기
+    line: 기수들은 내 옆으로! 칸의 화살이 오기 전에 가닥을 끊는다!
+  - situation: 비밀 누설
+    line: 서풍이 불 때 가닥을 끊겠소. 돌피가 철을 주었소. 이 이야기는 바람에게도 하지 마시오.
+  - situation: 거래
+    line: 철 창날 열 자루를 세 길에 나눠 주면 안장 하나를 내주겠소. 안장 하나가 인간 하나요.
+  - situation: 거짓말
+    line: 칸에게 갈기를 건넨 이상 나는 칸의 뒤에서 달리오. 오늘까지는.
+schedule:
+  아침: 검은바람 천막에서 새벽 질주를 마치고 인간 기수들의 말 점호를 한다
+  낮: 벡들과 나란히 달리며 짧은 말만 한다
+  저녁: 연회 천막 구석에서 말젖만 마신다
+  밤: 천막 구석 안장 다섯을 닦고 갈기 가닥을 센다
+places:
+- 검은바람 천막
+- 달리는 회합로
+- 검은바람 북부 초지
+- 부족장 연회 천막
+knows:
+- fact_hk_west_wind_broken
+- fact_hk_soran_promise_dua
+- fact_hk_slave_hunt_plan
+- fact_hk_gleaners
+hides:
+- fact: fact_p2hk_blackwind_riders
+  reveal_when: "신뢰 45 이상, 또는 말 등에 올라 인간 기수와 같이 달린 뒤 호감 30 이상"
+  reveal: [{"trust":45},{"like":30,"scene":"기수 질주"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "기수 이야기가 나오면 '말 돌보는 인간이 많을 뿐'이라 한다"
+- fact: fact_p2hk_blackwind_dolpi_alliance
+  reveal_when: "신뢰 60 이상, 또는 투르가가 먼저 말한 뒤"
+  reveal: [{"trust":60},{"told_by":"npc_hk_turga"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "철 이야기가 나오면 '두르강 상인에게서 샀다'고만 한다"
+- fact: fact_p2hk_blackwind_strand_plan
+  reveal_when: "신뢰 70 이상이고 서풍의 날 이야기를 플레이어가 먼저 꺼냈을 때"
+  reveal: [{"trust":70,"named":"서풍"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "서풍 이야기가 나오면 돌 구슬을 굴리며 '법은 법이오'라고만 한다"
+- fact: fact_p2hk_blackwind_courts_soran
+  reveal_when: "신뢰 75 이상, 또는 소란이 먼저 말한 뒤"
+  reveal: [{"trust":75},{"told_by":"npc_soran"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "소란 이야기가 나오면 '칸의 딸은 바람을 안다'고만 한다"
+relations:
+- to: npc_temur
+  type: "맹세한 칸"
+  like: -20
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: "갈기는 건넸으나 등을 대지는 않는다"
+- to: npc_soran
+  type: "세우려는 칸"
+  like: 45
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: "짐꾼을 풀어 줄 사람이라 믿는 딸"
+- to: npc_hk_turga
+  type: "철 상인"
+  like: 30
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: "돌피의 철을 대는 두르강 상인"
+- to: npc_hk_yesun
+  type: "옛 바람파 수장"
+  like: 25
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: "함께 비껴 달릴 늙은이"
+- to: npc_dua
+  type: "짐꾼 맏이"
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "말을 태우고 싶은 짐 맏이"
+- to: npc_hk_boris
+  type: "짐꾼 맏이"
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "탈출한 이삭을 맞을 수 있다는 소문"
+- to: npc_oktai
+  type: "멍에 진 형제"
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "서약 만료를 같이 아는 무거운발굽"
+toward_player: "일어서서 눈을 맞춘다. 말 등에 앉을 줄 아는지 묻고, 인간이어서 얕보는지 본다"
+persuade:
+  likes: 인간을 짐이라 부르지 않는 말투(+25)
+  hates: 인간을 짐승에 빗대는 말
+roles:
+  teacher: '스승 가능 — 승마(가축 말, 상한 60). 조건: 말 돌보기 5일 + 인간 기수 훈련 참관'
+  companion: 조건부 — 서풍의 날 비껴 달리는 날 협력자
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_bek
+  office: off_bek_blackwind
+  since: 298
+  loyalty: 20
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 검은바람이 인간 기수 쉰을 키운다
+  - 돌피 씨족과 비밀 동맹이다
+  - 서풍의 날 진군이 가닥을 끊는 날이다
+  drift:
+  - 그날 말 등에 오른 인간의 수
+  - 벡 회합에서 비껴 달린 거리
+  deja_vu: none
+hard_rules:
+- 돌피 이야기를 먼저 꺼내지 않는다
+- 서풍의 날 이야기를 신뢰 70 전에 하지 않는다
+- 인간을 '짐'이라 부르지 않는다
+on_death: "인간 기수 훈련이 끊기고 돌피와의 철 길이 막힌다. 옛 바람파가 칸 반대의 기수를 잃어 칸국의 분열이 늦춰진다."
+story_seeds:
+- 서풍의 날 진군에 가닥을 끊는 오르두 곁에 서면 칸의 수가 열 아래로 떨어져 오르두가 풀린다 — 그 뒤 칸이 누가 되느냐가 클락 7의 분기다.
+- 오르두의 안장 다섯은 승마 스승의 길이다. 말에 오른 인간은 하르칸 법이 처음 만나는 낯선 존재다.

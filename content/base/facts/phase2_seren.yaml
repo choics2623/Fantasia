@@ -1,0 +1,245 @@
+# 세렌 해안 동맹 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). 인물: docs/world/people/seren.md (P2R-). id 접두사 fact_p2sr_. 기존 fact_sr_*(facts/seren.yaml)는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. truth: false는 세계에 퍼진 거짓 소문이다.
+# 나가는 대가 없이는 아무것도 주지 못한다 — 카드의 hides/cover 는 '값을 먼저 부르는 말'로 쓴다.
+# ── 깊은 바다와 도둑맞은 알 ──
+- id: fact_p2sr_sirenna_egg_bills
+  text: "대사제 시렌나는 도둑맞은 알의 '보관료' 청구서를 매년 한 장씩 써서 용제국에 보내 왔다. 수령을 거부당한 청구서는 모두 사원 지하에 쌓여 있고, 그 더미가 알의 소유권을 주장할 유일한 증거다"
+  truth: true
+  danger: 4
+  names: [시렌나, 도둑맞은 알]
+- id: fact_p2sr_sirenna_egg_never_cold
+  text: "SK 2,951 이후 도둑맞은 알은 한 번도 식은 적도, 따뜻해진 적도 없다. 시렌나는 매일 아침 지하 수조에서 알의 온도를 잰다"
+  truth: true
+  danger: 4
+  names: [시렌나, 알]
+- id: fact_p2sr_sirenna_egg_warms_with_white
+  text: "흰 알이 깨진다는 소문이 세렌에 닿는 밤 도둑맞은 알이 처음으로 따뜻해진다. 시렌나는 그것이 부화의 징조인지 두 번째 죽음의 징조인지 모른다"
+  truth: true
+  danger: 5
+  names: [시렌나, 흰 알]
+- id: fact_p2sr_sirenna_only_envoy_contact
+  text: "시렌나는 세렌 안에서 심해 나가 사절과 말을 나누는 유일한 사람이다. 사절은 그믐 밤에만 사원 앞 고인 피의 문 위쪽까지 올라온다"
+  truth: true
+  danger: 3
+  names: [시렌나, 심해의 사절]
+- id: fact_p2sr_sirenna_egg_for_vote
+  text: "시렌나는 의회 표결에서 중립이지만, 도둑맞은 알의 처분을 인정해 주는 쪽에 표를 줄 준비가 되어 있다. 그녀가 값으로 받으려는 것은 알의 소유권 문서다"
+  truth: true
+  danger: 4
+  names: [시렌나]
+# ── 먹물비늘 조합과 푸른 장부관 ──
+- id: fact_p2sr_dona_eternal_contract
+  text: "조합장 도나 벨렌은 '죽음으로 끝나지 않는 계약서' 양식을 연구시켰다. 죽어도 돌아오는 자가 있다면 빚도 따라 돌아온다는 가정이다. 양식은 아직 서명을 받아 본 적이 없다"
+  truth: true
+  danger: 4
+  names: [도나, 먹물비늘 조합]
+- id: fact_p2sr_dona_formula_03
+  text: "계약민법의 상환 공식은 이자율이 노동 가치보다 언제나 0.3% 높게 설계되어 있다. 이 공식을 쓴 것은 조합장 도나 벨렌이다. 22년 평균 상환은 운이 좋을 때의 숫자다"
+  truth: true
+  danger: 4
+  names: [도나, 상환 공식]
+- id: fact_p2sr_dona_forged_seal
+  text: "도나의 인장 아홉 가운데 일곱째는 졸라크 상가가 파 준 사본이다. 도나는 그것이 정품인 줄 안다. 졸라크는 원할 때 그 인장으로 찍힌 계약서를 무효로 만들 수 있다"
+  truth: true
+  danger: 5
+  names: [도나, 졸라크]
+- id: fact_p2sr_sebo_37_names
+  text: "세보 리크는 AS 310~311에 고드릭에게서 농노 서른일곱을 사들여 계약민으로 올렸다. 그것이 고드릭의 불법 매각 37건의 상대방이다. 세베로의 마흔과 서른하나는 그 뒤의 일이다"
+  truth: true
+  danger: 4
+  names: [세보, 고드릭]
+- id: fact_p2sr_sebo_skims_severo
+  text: "세보는 세베로의 인수 서류에서 한 줄을 지워 고드릭의 이자 일부를 자기 몫으로 돌린다. 세베로는 아직 모른다"
+  truth: true
+  danger: 3
+  names: [세보, 세베로]
+- id: fact_p2sr_oscar_proof_formula
+  text: "'반쪽 혀' 오스카는 상환 공식의 함정을 숫자로 증명할 수 있다 — 조합장의 0.3%가 어떻게 22년을 40년으로 바꾸는지의 계산 열두 쪽을 외웠다. 쪽지로 쓰면 계약 사기의 증거가 되므로 입으로만 가졌다"
+  truth: true
+  danger: 5
+  names: [오스카, 상환 공식]
+- id: fact_p2sr_oscar_half_tongue
+  text: "오스카는 나가 상인어를 읽을 수 있으나 말하면 인간 발음이 새서 '반쪽 혀'라 불린다. 계약서의 숫자는 눈으로 읽고 소리로는 세지 않는다"
+  truth: true
+  danger: 1
+  names: [오스카]
+- id: fact_p2sr_oscar_to_lupo
+  text: "오스카는 증명의 일곱째 쪽까지만 루포에게 보였다. 루포가 그 쪽을 대가로 '숫자 하나'로 받았고, 나머지 다섯 쪽은 오스카가 아직 건네지 않았다"
+  truth: true
+  danger: 4
+  names: [오스카, 루포]
+- id: fact_p2sr_oscar_lamp
+  text: "오스카는 이름 없는 자들의 세렌 등잔이다. 계약 감정사라는 자리에서 셈 모임과 닿고, 늪(뿌리마을·물안개 둑)이나 루멘의 등잔과는 직접 닿지 않는다. 숫자만 오가는 줄이다"
+  truth: true
+  danger: 5
+  names: [오스카, 등잔, 셈 모임]
+- id: fact_p2sr_oral_greyford_mortgage
+  text: "푸른 장부관 서가 맨 위 칸에 회색여울 저당 계약서 원본이 있다. 기한은 313 포도월 30일이다. 시르 오랄은 그 칸의 열쇠를 목에 걸고 다닌다"
+  truth: true
+  danger: 5
+  names: [오랄, 회색여울]
+- id: fact_p2sr_oral_hold_forty
+  text: "회색여울 1차 40명은 소금 나루에 닿은 뒤 열흘간 '전환 등록 보류'로 검역소에 묶였다가 서리월 30일 계약 시장에 선다. 보류 기간의 숙식비는 빚에 먼저 붙는다"
+  truth: true
+  danger: 3
+  names: [오랄, 회색여울]
+- id: fact_p2sr_oral_smudged_seals
+  text: "푸른 장부관 서가 계약서의 7%는 원본 인장이 번졌다. 오랄은 그것을 알고도 처리 비용 때문에 덮어 두었다. 루포가 그 번짐에서 무효 212건을 찾았다"
+  truth: true
+  danger: 3
+  names: [오랄, 루포]
+# ── 빚 골목과 셈 모임 ──
+- id: fact_p2sr_catarina_hush_contract
+  text: "카타리나 셈손은 이중 장부 증거로 합의금을 받고 빚을 갚았다. 합의 조건은 증언을 하지 않겠다는 서명이었다. 그래서 그녀는 셈 모임의 대표이면서 법정에 설 수 없다"
+  truth: true
+  danger: 4
+  names: [카타리나, 셈 모임]
+- id: fact_p2sr_catarina_ledger_copies
+  text: "빚 골목 숙소 매점 이중 장부의 사본 셋이 지붕 다리 밑 서로 다른 세 곳에 숨겨져 있다. 사본마다 숨긴 사람이 다르고 서로의 위치를 모른다"
+  truth: true
+  danger: 4
+  names: [카타리나, 빚 골목]
+- id: fact_p2sr_catarina_greyford_count
+  text: "카타리나는 회색여울 마흔이 소금 나루에 닿던 날 한 사람씩 빚 장부 번호를 외웠다. 셈 모임이 그 가운데 열 명을 빚 골목 숙소에 먼저 받을 계획이다"
+  truth: true
+  danger: 3
+  names: [카타리나, 회색여울]
+- id: fact_p2sr_catarina_win_four_pct
+  text: "셈 모임의 판관 청원 승소율 4%는 이긴 사건이 많아서가 아니다. 이긴 몇 건이 모두 상가의 사기를 숫자로 증명한 사건이어서 판관이 인정한 것이다"
+  truth: true
+  danger: 2
+  names: [셈 모임]
+# ── 계약 시장과 부두 ──
+- id: fact_p2sr_run_greyford_lots
+  text: "룬 카이르의 경매장 장부에는 회색여울 마흔의 로트 번호가 이미 적혀 있다. 서른하나의 로트는 사라 단독 로트가 '심해 지정'으로 빠지고 서른 개로 선다"
+  truth: true
+  danger: 4
+  names: [룬, 사라]
+- id: fact_p2sr_run_bid_ring
+  text: "경매관 룬은 입찰자 둘이 사전에 담합한다는 것을 안다. 아마란트 상가 몫이다. 룬은 담합을 막지 않고 낙찰가의 1%를 수수료로 받는다"
+  truth: true
+  danger: 3
+  names: [룬, 아마란트]
+- id: fact_p2sr_skre_off_book_23
+  text: "스크레의 하역 장부에는 미코가 센 1,140명보다 스물셋이 더 적혀 있다. 그 스물셋은 밤에 등록 없이 내려 산호 채석장으로 곧장 갔다. 빚 장부가 없으므로 상환도 없다"
+  truth: true
+  danger: 5
+  names: [스크레, 미코]
+- id: fact_p2sr_skre_krik_debts
+  text: "스크레의 크릭 하역꾼 열둘도 빚이 있다. 스크레는 계약민에게서 몰래 받은 뇌물로 열둘의 빚 이자를 막아 준다"
+  truth: true
+  danger: 2
+  names: [스크레]
+- id: fact_p2sr_lucio_mortality_books
+  text: "루치오 카셀론은 노예선 사망률 기록을 조작해 보험금을 받는다. '소금 바늘'호의 이번 항해 기록에는 사망자가 열둘 이하로 적히도록 미리 정해져 있다"
+  truth: true
+  danger: 4
+  names: [루치오 카셀론, 소금 바늘]
+- id: fact_p2sr_lucio_needle_route
+  text: "'소금 바늘'호는 바알카르 12월 10일 출항 후 갈림목에 12월 13일 밤 들러 검역을 받고 12월 14일 아침 소금 나루에 닿는다. 서른한 명 가운데 사라는 선원실 옆 별도 칸에 실린다"
+  truth: true
+  danger: 3
+  names: [소금 바늘, 사라]
+- id: fact_p2sr_olaf_cloth_codes
+  text: "눈먼 등대 꼭대기 창의 천 색은 신호다 — 흰색은 안전, 붉은색은 물비늘대 순찰, 푸른색은 소금배 도착, 검은색은 위험. 모르바 밀수선은 색을 보고 물때를 정한다"
+  truth: true
+  danger: 3
+  names: [올라프, 눈먼 등대]
+- id: fact_p2sr_olaf_297_runner
+  text: "올라프는 AS 297 밤 아르카스에서 탈출해 세렌까지 헤엄쳐 온 피험자를 등대 계단에 하룻밤 숨겼다. 그 사람이 뒷날 그롬마르 원형장의 투사가 되었다는 소문의 당사자다"
+  truth: true
+  danger: 3
+  names: [올라프, 아르카스]
+- id: fact_p2sr_olaf_no_heir
+  text: "눈먼 등대의 계약민 등대지기는 셋이었으나 둘이 빚으로 채석장에 넘겨졌다. 올라프가 죽으면 천 신호가 끊긴다"
+  truth: true
+  danger: 2
+  names: [올라프]
+# ── 갈림목과 채석장 ──
+- id: fact_p2sr_dominic_manifest_gap
+  text: "갈림목 항만관 도미닉 베스페린은 노예선 입항 장부와 소금 나루 도착 장부의 숫자를 대조해 선박마다 사망 보고를 줄여 준다. 대가는 카셀론 상가에서 받는다"
+  truth: true
+  danger: 4
+  names: [도미닉 베스페린, 카셀론]
+- id: fact_p2sr_dominic_reed_market_eye
+  text: "갈대 시장 뒤편이 뱀장어 길(모르바 밀수로)의 출발점이라는 것을 도미닉은 알고 눈감는다. 대가로 소금 한 자루 값의 인지세를 받는다"
+  truth: true
+  danger: 3
+  names: [도미닉 베스페린, 뱀장어 길]
+- id: fact_p2sr_dominic_aurelia_kin
+  text: "도미닉은 바알카르 재무청장 오렐리아 베스페린의 먼 친척이고, 세렌 대출 창구의 상환 일정 사본을 바알카르에 한 달에 한 번 보낸다"
+  truth: true
+  danger: 3
+  names: [도미닉 베스페린, 오렐리아 베스페린]
+- id: fact_p2sr_sepa_tide_cave
+  text: "산호 채석장 절벽 아래 밀물 때만 닫히는 동굴을 채석감 세파 레이는 알면서도 막지 않았다. 죽는 계약민이 늘면 상가의 보수가 줄고 그의 몫도 줄기 때문이다"
+  truth: true
+  danger: 3
+  names: [세파 레이, 산호 채석장]
+- id: fact_p2sr_sepa_quota_rise
+  text: "채석 할당량은 상환 속도를 늦추도록 분기마다 3%씩 오른다. 세파 레이는 그 수를 줄여 보고하는 대신 일손이 느는 것을 본다"
+  truth: true
+  danger: 3
+  names: [세파 레이]
+- id: fact_p2sr_sepa_two_brothers
+  text: "채석장에는 마레크의 아들 오토와 칼이 있다. 두 사람은 조합이 빚 문서를 쥔 이들이고, 세파는 그들의 할당량을 한 번도 올린 적이 없다"
+  truth: true
+  danger: 3
+  names: [세파 레이, 마레크]
+# ── 의석과 장부 ──
+- id: fact_p2sr_norval_citizenship_swap
+  text: "노르발 세스는 맹약회의 313에서 세렌의 표를 '계약민 시민권' 의제와 맞바꿀 준비가 되어 있다. 열쇠는 과반 11표 가운데 아직 모자란 네 표다"
+  truth: true
+  danger: 5
+  names: [노르발, 맹약회의]
+- id: fact_p2sr_norval_five_oaths
+  text: "노르발은 맹약회의 서약섬에서 대표 서명을 다섯 번 한 유일한 나가다. 그 서명 다섯 번의 대가가 무엇이었는지 장부에 적어 두지 않았다"
+  truth: true
+  danger: 3
+  names: [노르발, 서약섬]
+- id: fact_p2sr_zolak_both_ledgers
+  text: "졸라크 니에바는 아우락스와 멜리산드 양쪽의 장부 사본을 가지고 있다. 사르코스의 징후자 판매 사본과 쥐들의 왕관의 진짜 장부도 금고에 있다"
+  truth: true
+  danger: 5
+  names: [졸라크, 사르코스, 쥐들의 왕관]
+- id: fact_p2sr_zolak_buys_swamp_counts
+  text: "졸라크는 쉬렐에게서 늪을 드나드는 배와 사람의 수를 한 달에 한 번 산다. 뿌리마을 인구를 헤아려 늪 마녀 회합과의 약초 값 협상에서 마르디 상가에 팔 카드로 삼는다"
+  truth: true
+  danger: 3
+  names: [졸라크, 쉬렐]
+- id: fact_p2sr_lis_second_key
+  text: "리스는 별의 집 둘째 열쇠를 가졌다. 오필 상가 필경소의 서기로서 글을 숫자 이상으로 읽을 수 있는 합법의 틈에 앉아 있고, 조상의 이름을 노래로 받았다"
+  truth: true
+  danger: 4
+  names: [리스, 별의 집]
+- id: fact_p2sr_lis_copies_tower_maps
+  text: "오필 상가는 잿빛 탑 원로 오필 시라의 겸임 때문에 탑의 연구 결과를 의회보다 먼저 받는다. 리스는 그 필사 가운데 지도 한 장을 몰래 두 번 베낀다 — 서가의 위치가 그려진 장이다"
+  truth: true
+  danger: 4
+  names: [리스, 오필 시라, 잿빛 탑]
+- id: fact_p2sr_mardi_asks_news
+  text: "마르디 카예의 상가는 약초 값 대신 소식을 요구한다. 최근 요구는 잿빛 탑 사냥꾼 부서 '귀'가 모르바 근처에 풀었다는 밀정의 이름이다"
+  truth: true
+  danger: 3
+  names: [마르디, 귀]
+- id: fact_p2sr_mardi_pays_hags_double
+  text: "마르디 상가는 늪 마녀 회합에서 사는 약초를 세렌 시장에서 세 배로 되판다. 회합의 돈줄이 마르디 상가의 이윤 속에 묻혀 있다"
+  truth: true
+  danger: 2
+  names: [마르디, 늪 마녀]
+- id: fact_p2sr_pescar_debt_boat
+  text: "조선소 계약민 300명의 공제회 '빚 갚는 배'는 매달 5일 각자의 노임에서 몇 못씩 모아 가장 급한 이의 빚을 대신 갚는다. 페스카르 오스윈은 그것을 알면서 공제회 장부를 조선소 경비로 처리해 준다"
+  truth: true
+  danger: 3
+  names: [페스카르 오스윈, 빚 갚는 배]
+- id: fact_p2sr_pescar_ship_for_exit
+  text: "페스카르는 조선소 뒷마당에 건조 중 장부가 없는 배 한 척을 두고 있다. 공제회 회원이 빚을 모두 갚지 못한 채 도망쳐야 할 때를 위한 배다"
+  truth: true
+  danger: 4
+  names: [페스카르 오스윈]
+# ── 거짓 소문 ──
+- id: fact_p2sr_rumor_debt_forgiven_at_death
+  text: "세렌 계약민은 죽으면 빚이 없어진다"
+  truth: false
+  danger: 2
+  names: [계약민]

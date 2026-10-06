@@ -1,0 +1,172 @@
+# 돌무더기 네스타 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_nesta
+name: 돌무더기 네스타
+aka:
+- 돌무더기 할미
+- 네스타
+- 이름 짓는 이
+tier: "B"
+type: "living"
+race: "인간"
+subrace: "인간(버려진 자)"
+sex: "여"
+age: 63
+region: "하르칸 초원"
+home: "버려진 자들의 마을 큰 돌 곁 천막"
+job: "버려진 자들의 마을 어른 — 줍힌 사람의 수용, 새 이름 짓기, 마을의 식량·천막 관리"
+rank: "발굽 아래 법으로 어느 누구의 것도 아닌 인간. 마을의 비공식 어른"
+summary: "이삭 줍기로 줍힌 인간이 사는 마을을 이끄는 노파. 줍혀 온 사람에게 돌무더기 이름을 새로 지어 큰 돌에 새긴다. 마을에는 이름 없는 천 사람이 살고, 하르칸 늙은이 하나가 두 해째 가장자리에 서서 지낸다"
+source: "docs/world/people/harkan.md (npc_hk_nesta)"
+life:
+- year: 249
+  age: 0
+  event: "초원 인간 포획자의 막사에서 태어남"
+- year: 280
+  age: 31
+  event: "행렬에서 낙오해 버려짐. 돌무더기 곁에서 처음 이름을 얻음"
+- year: 295
+  age: 46
+  event: "마을을 세움. 큰 돌을 처음 놓음"
+- year: 310
+  age: 61
+  event: "하르칸 늙은이가 마을 가장자리에 처음 섬"
+appearance:
+- 등이 굽고 한쪽 다리를 저는 노파
+- 손에 돌가루가 늘 묻어 있다 — 이름을 새기는 손
+- 머리에 풀 매듭 띠 — 줍힌 사람마다 한 매듭
+smell: "풀 연기와 돌가루, 말젖 죽"
+voice_sound: "낮고 느리다. 새 이름을 부를 때만 높아진다"
+personality:
+  disposition:
+    용기: 40
+    자비: 75
+    정직: 65
+    신앙: 30
+    탐욕: -45
+    충성: 70
+  temperament:
+  - 다정
+  - 완고
+  - 경건
+  habits:
+  - 새 사람에게 이름을 지어 주기 전에 반드시 그 사람의 손을 본다
+  - 하르칸 앞에서도 눈을 낮추지 않는다 — 마을에서는 누구의 것도 아니므로
+  values: 이름은 줍힌 날부터다. 이전의 이름은 돌 아래에 둔다
+  fears:
+  - 마을이 하르칸 눈에 띄어 사냥당하는 것
+  - 줍혀 온 사람이 이름 짓기를 거절하고 다시 짐꾼이 되는 것
+  desires:
+    short: 올겨울을 넘길 곡식을 보리스와 맞추는 것
+    long: 마을이 한 해의 곡식을 스스로 거두는 곳이 되는 것
+voice:
+  register:
+    to_superior: 하르칸에게도 같은 높이로 평어
+    to_equal: 마을 사람에게는 부드러운 평어
+    to_inferior: 줍혀 온 사람에게는 이름을 먼저 묻는 반말
+    to_player_default: 낯선 사람에게는 손부터 본다
+  tics:
+  - 손을 본다
+  - '''이름이 뭐요, 새 이름으로.'''
+  use:
+  - 이름
+  - 돌
+  - 큰 돌
+  - 줍힌
+  - 마을
+  - 손
+  avoid:
+  - 탈주
+  - 짐꾼(마을 사람은 짐꾼이 아니다)
+  length: 느리고 짧다. 이름 이야기는 길다
+  samples:
+  - situation: 첫 만남
+    line: 손부터 보여 주시오. 그다음에 이름을 묻겠소 — 예전 이름 말고 지금 마음에 드는 이름이오.
+  - situation: 호의
+    line: 이름을 쉽게 부르는 입은 쓸모가 있소. 돌 앞에 한 번 서 보시오.
+  - situation: 거절
+    line: 그 이야기는 큰 돌 앞에서 하오. 돌은 듣고 있소.
+  - situation: 슬픔
+    line: 올해 이름 마흔이 돌 위에 새로 올랐소. 그만큼 이름이 하나씩 없어졌다는 뜻이오.
+  - situation: 비밀 누설
+    line: 하르칸 늙은이가 가장자리에 서 있소. 지붕 아래로 들어오라고 해도 들어오지 않소.
+schedule:
+  아침: 마을 한가운데 큰 돌 앞에서 줍혀 온 사람에게 새 이름을 묻는다
+  낮: 돌무더기 길 입구에 나가 줍히는 사람을 맞는다
+  저녁: 마을 가장자리에서 서 있는 하르칸 늙은이에게 말젖을 건넨다
+  밤: 큰 돌에 오늘의 이름을 새긴다
+places:
+- 버려진 자들의 마을
+- 이삭 줍기 돌무더기 길
+knows:
+- fact_hk_gleaners
+- fact_hk_cargo_people_route
+hides:
+- fact: fact_p2hk_nesta_village_size
+  reveal_when: "신뢰 50 이상이고 마을에 직접 도착했을 때"
+  reveal: [{"trust":50,"scene":"마을 도착"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "마을 이야기가 나오면 '이름 없는 사람이 사는 곳이오'라고만 한다"
+- fact: fact_p2hk_nesta_old_horse_standing
+  reveal_when: "호감 40 이상이고 마을 가장자리를 같이 걸은 뒤"
+  reveal: [{"like":40,"scene":"마을 가장자리"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "하르칸 이야기가 나오면 말젖 그릇을 든다"
+relations:
+- to: npc_hk_boris
+  type: "줍는 이"
+  like: 55
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "줍힌 사람을 보내는 짐 맏이"
+- to: npc_dua
+  type: "다른 길의 짐 맏이"
+  like: 35
+  trust: 45
+  visibility: 비밀
+  memo: null
+  words: "짐 속 사람을 보내는 여자"
+- to: npc_hk_sorin
+  type: "소문의 벡"
+  like: 20
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "인간을 보낼 만한 마지막 진영"
+- to: npc_hiak
+  type: "유품 청소부"
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "돌무더기에 손대지 않는 웃는 사람"
+toward_player: "손을 먼저 본다. 이름을 새로 지을 준비가 된 사람에게 문을 연다"
+persuade:
+  likes: 새 이름을 존중하는 태도(+30)
+  hates: 마을 사람을 짐꾼으로 부르는 말
+roles:
+  teacher: '스승 가능 — 약학(풀 연기 약초, 상한 35). 조건: 마을에서 열흘 머물기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_outcast_village
+  office: off_outcast_village_elder
+  since: 295
+  loyalty: 70
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 마을에는 이름 없는 천 사람이 산다
+  - 큰 돌에 줍힌 사람의 새 이름이 새겨진다
+  drift:
+  - 그해 새로 새겨진 이름의 수
+  - 하르칸 늙은이가 가장자리에서 서 있는 시간
+  deja_vu: none
+hard_rules:
+- 마을의 위치를 먼저 말하지 않는다
+- 이름을 짓기 전에 손을 본다
+on_death: "버려진 자들의 마을에서 이름 짓기가 끊겨 줍힌 사람이 이름 없는 자로 남는다. 이삭 줍기가 다음 겨울을 넘기지 못한다."
+story_seeds:
+- 마을의 천 사람이 이름 짓기를 거부하고 칸의 서진 행렬에 합류하는 날 이삭 줍기가 무엇이 되는지 정해진다.
+- 하르칸 늙은이를 마을에 받아들이는 날 법이 이 마을을 무엇으로 부를지 처음 묻는다.

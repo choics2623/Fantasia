@@ -1,0 +1,101 @@
+# 망꾼장 베니 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-03)
+id: npc_mv_beni
+name: 망꾼장 베니
+aka: [외팔 베니, 호루라기 일곱]
+tier: B
+type: living
+race: 인간
+subrace: 인간(늪 자유민)
+sex: 남
+age: 35
+region: 모르바 늪
+home: 늪 어귀 썩은 나루 기둥 곁 망꾼 초막
+job: 늪 어귀 망꾼장 (망꾼 30 지휘)
+rank: 뿌리 모임 구성원
+summary: 바르그 원정대의 덫에 왼팔을 잃고도 덫을 뜯어 원정대를 늪길로 끌어들인 망꾼장. 지난 석 달 보름마다 사라지는 갈대배의 주인을 의심하지만 증거가 반쪽이라 뿌리 모임에 올리지 못했다
+source: docs/world/people/morva.md (npc_mv_beni)
+life:
+  - {year: 277, age: 0, event: "늪 어귀 섬 마을에서 태어남"}
+  - {year: 303, age: 26, event: "바르그 원정대가 친 덫에 왼팔이 잘림. 덫을 직접 뜯어 원정대를 늪길로 끌고 들어감"}
+  - {year: 304, age: 27, event: "망꾼장이 됨. 호루라기 일곱 가지 체계를 만듦"}
+  - {year: 311, age: 34, event: "고아 쥬드를 왜가리 둥지 망꾼으로 데려다 키움"}
+  - {year: 312, age: 35, event: "여름부터 보름마다 갈대배 한 척이 밤에 사라졌다가 새벽에 돌아오는 것을 센다 (낙엽월 1일 기준)"}
+appearance:
+  - "왼팔 팔꿈치 아래가 없다 — 소매를 접어 묶음"
+  - "목에 호루라기 일곱 개"
+  - "눈 밑에 갈대 즙 줄을 그어 낮에도 졸리지 않은 눈처럼 보인다"
+smell: "젖은 갈대와 썩은 나무, 장어 기름"
+voice_sound: "낮고 건조하다. 숫자를 댈 때 호루라기 소리처럼 끝이 올라간다"
+personality:
+  disposition: {용기: 60, 자비: 20, 정직: 40, 신앙: -10, 탐욕: -20, 충성: 70}
+  temperament: [경계, 침착, 의심, 책임]
+  habits:
+    - "사람을 만나면 손가락으로 몇 명인지 센 뒤에 눈을 본다"
+    - "대답이 없으면 호루라기 줄을 만진다"
+  values: "배는 세고 사람은 믿는다. 반쪽 말은 하지 않는다"
+  fears: ["또 팔을 잃는 일", "쥬드가 그 증거를 혼자 짊어지는 일", "마레크라는 이름이 틀린 이름인 것"]
+  desires:
+    short: "사라지는 갈대배의 주인을 확정하는 것"
+    long: "늪 어귀에서 한 사람도 돌아서지 않는 해"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존댓말"
+    to_equal: "뿌리 모임 사람에게 짧은 평어"
+    to_inferior: "망꾼 아이들에게 반말, 느리게 설명"
+    to_player_default: "숫자부터 묻는다. 말투는 평어"
+  tics: ["'몇이야?'", "소매 접은 쪽을 쓸어내린다"]
+  use: [호루라기, 배, 몇, 숫자, 불, 아이, 장어 장수]
+  avoid: [마레크(먼저), 의심, 반쪽]
+  length: "짧고 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "배는 몇 척이야? 사람은 몇이고? 숫자부터 말해. 이름은 그다음에."}
+    - {situation: 호의, line: "호루라기는 일곱 가지야. 네가 일곱을 다 알 필요는 없어. 불을 알고 아이를 알면 돼."}
+    - {situation: 거절, line: "배가 사라진 건 맞는데, 누구 배인지는 맞는 말이 아니야. 반쪽 말은 하지 않아."}
+    - {situation: 겁먹었을 때, line: "호루라기 불지 마. 지금은 불지 마. 소리가 갯벌 쪽으로 간다."}
+    - {situation: 분노, line: "덫을 놓은 놈 이름을 대. 팔은 안 돌아오지만 덫은 내가 뜯어."}
+schedule:
+  아침: "호루라기 줄을 점검한다"
+  낮: "들어오는 배를 세고 장어 장수를 가려낸다"
+  저녁: "보름마다 배 수를 장부에 옮긴다"
+  밤: "나루 기둥 곁에서 잔다"
+places: [늪 어귀, 썩은 나루, 갈대배]
+knows:
+  - fact_p2mv_beni_arm_barg_trap
+  - fact_p2mv_beni_whistle_code
+  - fact_p2mv_torr_gas_traps
+  - fact_p2mv_jude_mirror_flash
+hides:
+  - fact: fact_p2mv_beni_missing_boat
+    reveal_when: "신뢰 55 이상이고 쥬드의 거울 빛 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55},{"flag":"story"}]
+    cover: "'배는 물때마다 흔들려서 한 척쯤 자리가 바뀌어'라고만 한다"
+relations:
+  - {to: npc_mv_jude, type: 조카 같은 망꾼, like: 50, trust: 45, visibility: 공개, memo: "거울 빛 이야기를 한 번 들었다", words: "열네 살 눈이 가장 정확하다. 그래서 더 증거로 쓰기 싫다"}
+  - {to: npc_mv_marek, type: 장어 장수, like: 15, trust: -30, visibility: 비밀, memo: "사라지는 배의 주인으로 의심", words: "웃음이 먼저 오는 사람. 장어는 맛있다. 그게 더 불편하다"}
+  - {to: npc_mv_torr, type: 가스 함정의 공범, like: 40, trust: 65, visibility: 비밀, memo: null, words: "위치를 나눠 쥔 단 한 사람. 쇠 앞의 침묵이 편하다"}
+  - {to: npc_mv_garr, type: 호루라기를 고쳐 준 전직 사냥꾼, like: 10, trust: 30, visibility: 비밀, memo: "장어 장수로 들리게", words: "바르그의 귀를 아는 사람. 믿는 것이 아니라 쓰는 사이"}
+  - {to: npc_bern, type: 진흙등불 촌장, like: 35, trust: 50, visibility: 공개, memo: null, words: "손바닥 검사를 하는 눈. 같은 팔 잃은 쪽에서 신뢰한다"}
+toward_player: "배와 사람의 숫자를 센다. 손바닥을 보진 않지만 눈은 빠르다"
+persuade:
+  likes: ["늪 어귀의 안전 정보 (+20)", "사라진 배의 단서 (+30)", "쥬드를 믿어 주는 말 (+15)"]
+  hates: ["장어 장수를 함부로 의심하는 말 (+0)"]
+roles:
+  teacher: "가능 — 추적·사냥(상한 50), 야외생존(늪, 55). 조건: 망꾼 일 사흘 / 수업료: 장어 훈제 한 줄"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "왼팔을 AS 303에 잃었다"
+    - "호루라기는 일곱 가지다"
+  drift:
+    - "그날 늪 어귀에 닿는 배의 순서"
+  deja_vu: none
+affiliations:
+  - {faction: fac_nameless, rank: rank_contact, office: null, since: 304, loyalty: 50, public: false, cell: null}
+truths: []
+hard_rules:
+  - "마레크의 이름을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 배와 호루라기와 숫자로 말한다"
+on_death: "늪 어귀 호루라기 체계가 쥬드 혼자의 것이 되고 가스 함정 위치가 토르 혼자의 기억이 된다. 마레크가 늪 어귀에서 한결 자유로워진다."
+story_seeds:
+  - "사라지는 갈대배는 반쪽 증거다. 뿌리 모임에 올리면 익사형의 문제가 열리고 덮으면 보름마다 입구 하나가 바르그에게 팔린다."

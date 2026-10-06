@@ -1,0 +1,122 @@
+# 지역 생성 키트 — 하르칸 초원 (25_REGION_KITS.md). 칸의 오르두(이동 수도), 겨울 진영 바람 우물, 말뼈 샘, 소금 호수, 버려진 자들의 마을.
+# 원천: REGIONS §15, RACES §11, SUBRACES §9, HOUSES §3.6, fac_harkan(달리는 합의·바람 맹세·경주 재판·발굽 아래 법), CONTINUITY_LOG(부족 19중 17 복속).
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_harkan.customs / law / decision 을 본다.
+# 핵심: 하르칸은 한곳에 오래 머물면 병든다(10일 열병·30일 쇠약·90일 죽음). 그래서 정착지가 '틀'이다 — 칸의 오르두는 아흐레마다 같은 모양으로 다시 선다.
+#       인간은 짐꾼이고, 초원에 버려진 인간은 누구의 것도 아니다. 하르칸은 땅에 묻지 않고, 늙으면 스스로 떠나고, 약속은 바람에게 한다.
+id: kit_harkan_ordu
+applies_to: [칸의 오르두, 바람 우물 겨울 진영, 말뼈 샘, 무거운발굽 짐 야영지, 소금 호수, 꺾인 깃발 진영, 버려진 자들의 마을, 하르칸 부족 천막 고리]
+reuses: [kit_human_serf]       # 인간 짐꾼의 이름 붙이기·말투 원형 일부를 쓰되 '하루 12시간 행군'과 '낙오 = 버림'의 틀로 바꾼다
+faction_refs: [fac_harkan, fac_krik, fac_beastkin, fac_durgan]
+seasonal_route:    # 오르두는 열흘을 넘겨 한곳에 서지 않는다. 계절 길은 REGIONS §15.2 — 정착지 배치도는 같은 모양으로 매번 다시 선다
+  봄 (해빙월~꽃월): "겨울 진영(바람 우물)에서 북상 — 짐꾼 행군 하루 12시간. 북부 여름 초원으로"
+  여름 (푸른월~건초월): "우기·말뼈 여울 범람·전쟁 시즌 — 통일 전쟁에서 짐꾼이 가장 많이 쓰러진다"
+  가을 (수확월~낙엽월): "남하와 사냥 축제. 남쪽 사냥 초지에서 말뼈 샘 곁에 선다"
+  겨울 (서리월~굶주림월): "바람 우물 겨울 진영 — 4만이 모인다. 동사와 짐꾼 사망이 늘어난다"
+  이동일: "아흐레마다 (열흘 규칙보다 하루 짧게 — 보르테의 매듭). 이동일 05:00 짐 싸기 북, 같은 날 해 지기 전에 다시 선다"
+names:
+  하르칸:
+    # 이름 = 개인명 + 별칭(털색·업적·몸) + 부족명 (RACES §11). 짧은 두 음절이 많고 거센소리가 많다. 땋은 갈기 수가 승리 수라 별칭에 수를 쓰기도 한다.
+    male: [테무르, 바타르, 옥타이, 바투, 에젤, 카사르, 보로, 알탄, 투멘, 사이칸, 델게르, 아르군, 수베데이, 쿠추, 차간, 투그릴, 오르두, 무칼리, 하단]
+    female: [소란, 보르테, 일라, 아일라, 홀룬, 일레, 올룬, 체첵, 나랑, 수흐, 알탄이, 예수이]
+    clans: [아르슬란, 붉은갈기, 일곱샘, 검은바람, 마지막발굽, 붉은발굽, 무거운발굽, 숲발굽, 꺾인 깃발]
+    epithet_rule: "개인명 + 털색·몸의 별칭(흰갈기·잿빛꼬리·바람귀·늙은굽·얼룩) + 부족명. 승리 수만큼 땋은 갈기로 존대가 정해진다. 늙은이는 '늙은굽'을 붙여 스스로 떠날 날을 알린다"
+    size_note: "서 있는 키 2.2~2.6m, 체중 500~800kg. 무거운발굽은 2.6~2.9m·1톤 안팎. 갈·흑·회·얼룩 털. 하루 200km"
+  인간:
+    # 짐꾼은 부족 이름이 아니라 '짐'으로 불린다. 낙오하면 이름 없는 자가 되고, 버려진 자들의 마을에서 다시 이름을 얻는다.
+    male: [보리스, 두아르, 닐스, 얀, 오토, 하노, 마르텐, 요나스, 토비, 코른, 로만, 빌, 에고르]
+    female: [두아, 이다, 네스타, 올가, 리나, 멜라, 소냐, 바샤, 우나, 헬가]
+    given_by_load: ["{n}번 짐", "물통", "솥뚜껑", "한 짝", "넷째 줄", "절름", "갈기 실", "젖소리", "말뼈", "쉰 번째 줄"]
+    epithet_rule: "하르칸이 부르는 짐 이름(물통·한 짝) + 동료가 부르는 몸의 별명 + 진짜 이름(밤 불가에서만). 칸 직속 짐꾼은 머리를 한 줄만 남기고 민다 — 영예이자 표식. 버려진 자들의 마을 사람은 이름을 새로 짓는다 (돌무더기 이름)"
+  크릭:
+    male: [쏙, 잭스, 딸깍, 틱, 핍, 삑, 스니]
+    female: [찍, 삐야, 치크]
+    note: "초원 크릭 약 3,000 — 소금 호수 감독, 말·곡물·소금 거간, 오르두 장부. 하르칸은 크릭을 '숫자 세는 작은 발'이라 부르며 장부는 무시하되 값은 믿는다"
+  수인족:
+    note: "그나르(하이에나) 시체 청소부 — 모두가 경멸하나 쓸모가 있다 (히악). 줄무늬 왕좌와 초원 남부 경계 분쟁"
+  두르강:
+    note: "카즈둠 무기상 — 철 무기·창날을 대는 수입 길. 추방 씨족 돌피 출신이 섞여 있다 (검은바람과 비밀 동맹)"
+classes:            # 칸의 오르두 기준 (하르칸 약 20,000, 인간 약 10,000, 크릭·기타 약 300)
+  하르칸 질주자 (전사): 0.28
+  하르칸 어린 말 (15세 미만·훈련): 0.12
+  하르칸 늙은 말 (스스로 떠날 날을 기다림): 0.04
+  하르칸 가축·말 돌보는 이: 0.05
+  하르칸 벡·반려·전령·바람 읽는 자: 0.04
+  인간 짐꾼 (칸 직속·부족 소유): 0.22
+  인간 등짐 행렬: 0.17
+  인간 솥·젖·펠트·매듭 일손: 0.05
+  채찍 기수: 0.02
+  크릭·그나르·무기상: 0.01
+jobs:
+  - {id: galloper, name: 질주자 (기마 궁수), class: 하르칸 질주자 (전사), race: 하르칸, age: [16, 45], weight: 14, schedule: sch_galloper}
+  - {id: young_horse, name: 어린 말 (훈련 중), class: 하르칸 어린 말 (15세 미만·훈련), race: 하르칸, age: [3, 15], weight: 8, schedule: sch_young_horse}
+  - {id: old_horse, name: 늙은 말 (떠날 날을 기다림), class: 하르칸 늙은 말 (스스로 떠날 날을 기다림), race: 하르칸, age: [62, 80], weight: 2, schedule: sch_old_horse}
+  - {id: messenger_rider, name: 전령 기수, class: 하르칸 벡·반려·전령·바람 읽는 자, race: 하르칸, age: [18, 35], weight: 3, schedule: sch_messenger}
+  - {id: whip_rider, name: 채찍 기수, class: 채찍 기수, race: 하르칸, age: [25, 50], weight: 4, schedule: sch_whip}
+  - {id: horse_keeper, name: 가축 말 돌보는 이 (인간), class: 인간 솥·젖·펠트·매듭 일손, race: 인간, weight: 4, schedule: sch_horse_keeper}
+  - {id: tent_bearer, name: 천막 짐꾼, class: 인간 짐꾼 (칸 직속·부족 소유), race: 인간, weight: 16, schedule: sch_porter}
+  - {id: burden_hand, name: 등짐 행렬 짐꾼, class: 인간 등짐 행렬, race: 인간, weight: 14, schedule: sch_burden}
+  - {id: milk_hand, name: 말젖 짜는 일손, class: 인간 솥·젖·펠트·매듭 일손, race: 인간, sex: female, weight: 5, schedule: sch_milk}
+  - {id: porridge_hand, name: 죽 솥 일손, class: 인간 솥·젖·펠트·매듭 일손, race: 인간, weight: 4, schedule: sch_porridge}
+  - {id: felt_hand, name: 펠트·가죽 일손 (손재주 일), class: 인간 솥·젖·펠트·매듭 일손, race: 인간, weight: 3, schedule: sch_felt}
+  - {id: knot_hand, name: 매듭 묶는 이 (이동 셈), class: 인간 솥·젖·펠트·매듭 일손, race: 인간, weight: 1, schedule: sch_knot}
+  - {id: krik_trader, name: 크릭 거간 (말·소금·곡물), class: 크릭·그나르·무기상, race: 크릭, weight: 2, schedule: sch_krik_trade}
+  - {id: gnar_scavenger, name: 그나르 시체 청소부, class: 크릭·그나르·무기상, race: 수인족, weight: 1, schedule: sch_gnar}
+  - {id: arms_dealer, name: 두르강 무기상, class: 크릭·그나르·무기상, race: 두르강, weight: 1, schedule: sch_arms}
+schedules:          # at = 정착지 틀의 역할(role). 오르두가 옮기는 날(아흐레마다)은 monthday:[9,18,27]
+  sch_galloper:   [{days: all, from: "04:30", to: "07:00", at: ring, doing: 새벽 질주 — 오르두를 한 바퀴 돌며 바람을 본다, outdoor: true}, {days: workday, from: "07:00", to: "12:00", at: archers, doing: 기마 궁술 훈련 — 달리며 쏜다, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: feast, doing: 말젖과 말린 고기}, {days: workday, from: "13:00", to: "18:00", at: ring, doing: 정찰·돌격 대형 연습, outdoor: true}, {days: all, from: "18:00", to: "24:00", at: ring, doing: 부족 천막 앞 불가 — 서서 쉰다}, {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: ring, doing: "오르두 이동일 — 짐꾼 행렬 양옆을 달리며 호위한다", outdoor: true, fixed: true}]
+  sch_young_horse: [{days: all, from: "05:00", to: "09:00", at: pens, doing: 어른 말 곁에서 달리기 훈련 — 오늘은 얼마나 멀리 갔나}, {days: workday, from: "09:00", to: "13:00", at: archers, doing: 활 쥐는 법 — 쏘는 순간엔 숨을 멈춘다}, {days: all, from: "13:00", to: "18:00", at: ring, doing: 천막 고리 안을 뛰어다닌다}, {days: all, from: "18:00", to: "24:00", at: ring, doing: 서서 잔다}]
+  sch_old_horse:   [{days: all, from: "05:00", to: "12:00", at: elder_ridge, doing: 늙은이의 언덕에서 바람을 맞는다 — 아직 떠나지 않았다, outdoor: true}, {days: all, from: "12:00", to: "18:00", at: elder_ridge, doing: 언덕 아래 천막에서 말젖 한 모금}, {days: all, from: "18:00", to: "24:00", at: elder_ridge, doing: 불가에서 달리던 이야기를 한다}]
+  sch_messenger:   [{days: all, from: "05:00", to: "06:00", at: runner_post, doing: 밤사이 온 전령을 받는다}, {days: all, from: "06:00", to: "18:00", at: runner_post, doing: "전령 기수 교대 — 하루 스무 기가 오르두를 나가고 들어온다", fixed: true}, {days: all, from: "18:00", to: "24:00", at: feast, doing: 전갈을 칸 앞에서 짧게 말한다}]
+  sch_whip:        [{days: all, from: "04:30", to: "05:30", at: whip_post, doing: 짐꾼 점호 — 줄 수를 센다, fixed: true}, {days: workday, from: "05:30", to: "18:00", at: porter_camp, doing: 짐꾼 감독 — 채찍은 쥐고만 있다가 낙오자 앞에서 든다, outdoor: true}, {days: all, from: "18:00", to: "21:00", at: whip_post, doing: 낙오와 짐 분실 보고를 칸의 장부에 올린다}, {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: burden, doing: "이동일 행렬 뒤를 달린다 — 낙오를 센다", outdoor: true, fixed: true}]
+  sch_horse_keeper: [{days: all, from: "04:00", to: "09:00", at: pens, doing: 가축 말 물 주기·솔질 — 이빨 자국을 한 번 더 얻는다}, {days: workday, from: "09:00", to: "17:00", at: pens, doing: 말 우리 청소와 발굽 손질}, {days: all, from: "17:00", to: "19:00", at: porridge, doing: 말젖 죽 한 그릇}, {days: all, from: "20:00", to: "04:00", at: porter_camp, doing: 천막 막사에서 선 채 졸다시피 눕는다}]
+  sch_porter:      [{days: all, from: "04:30", to: "05:30", at: porter_camp, doing: 점호와 짐 배당 — 줄 수를 센다, fixed: true}, {days: workday, from: "05:30", to: "12:00", at: load, doing: 천막 걷기·펠트 말기·궤 묶기}, {days: all, from: "12:00", to: "13:00", at: porridge, doing: 말젖 죽 한 그릇 (행군 중엔 하루 1끼), fixed: true}, {days: workday, from: "13:00", to: "18:00", at: load, doing: 짐 점검과 매듭 고치기}, {days: all, from: "20:00", to: "04:00", at: porter_camp, doing: 막사 — 서로 발을 주무르고 쓰러진 사람을 센다}, {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: burden, doing: "오르두 이동일 — 하르칸의 걸음에 맞춰 하루 12시간 짐을 지고 걷는다", fixed: true}]
+  sch_burden:      [{days: all, from: "04:30", to: "05:30", at: burden, doing: 행렬 점호 — 어제 낙오한 줄을 센다, fixed: true}, {days: workday, from: "05:30", to: "18:00", at: load, doing: 짐 싣기·내리기·수레 밀기}, {days: all, from: "18:00", to: "19:00", at: porridge, doing: 말젖 죽 한 그릇}, {days: all, from: "20:00", to: "04:00", at: burden, doing: 행렬 숙영지 — 낮은 소리로 돌무더기 이야기를 한다}, {days: "monthday:[9,18,27]", from: "05:00", to: "19:00", at: burden, doing: "이동일 행군 — 행렬 맨 뒤의 쓰러진 척을 가린다", fixed: true}]
+  sch_milk:        [{days: all, from: "03:30", to: "07:00", at: pens, doing: 암말 젖 짜기 — 새벽 말젖}, {days: workday, from: "07:00", to: "12:00", at: porridge, doing: 말젖 발효통 젓기}, {days: all, from: "17:00", to: "19:00", at: porridge, doing: 저녁 죽 퍼 담기}, {days: all, from: "20:00", to: "03:30", at: porter_camp, doing: 막사}]
+  sch_porridge:    [{days: all, from: "04:00", to: "13:00", at: porridge, doing: 말젖 죽 솥 불 지피기·젓기}, {days: all, from: "17:00", to: "20:00", at: porridge, doing: 저녁 죽 배식 — 한 그릇씩 센다}, {days: all, from: "20:00", to: "04:00", at: porter_camp, doing: 막사}]
+  sch_felt:        [{days: workday, from: "05:00", to: "18:00", at: load, doing: 펠트 두드리기·가죽 이음 — 하르칸이 못 하는 손의 일}, {days: all, from: "18:00", to: "21:00", at: porter_camp, doing: 손목을 주무르며 낮게 노래한다}, {days: all, from: "21:00", to: "05:00", at: porter_camp, doing: 막사}]
+  sch_knot:        [{days: all, from: "05:00", to: "12:00", at: knot_tent, doing: 이동 매듭 셈 — 하루 걸음을 끈 한 매듭으로 묶는다}, {days: all, from: "12:00", to: "18:00", at: knot_tent, doing: 벡 천막으로 매듭 끈을 나른다}, {days: all, from: "21:00", to: "05:00", at: porter_camp, doing: 막사}]
+  sch_krik_trade:  [{days: workday, from: "06:00", to: "18:00", at: trade, doing: 말·소금·곡물 값을 부른다 — 하르칸은 장부를 안 보고 값만 믿는다}, {days: all, from: "18:00", to: "06:00", at: trade, doing: 천막 안 — 오늘 본 값을 줄에 매듭지어 센다}]
+  sch_gnar:        [{days: all, from: "05:00", to: "11:00", at: cairn_line, doing: 행렬 뒤 길을 훑는다 — 쓰러진 자의 소지품, outdoor: true}, {days: all, from: "11:00", to: "17:00", at: trade, doing: 거둔 물건을 고물로 판다}, {days: all, from: "17:00", to: "05:00", at: trade, doing: 천막 뒤 수레 곁에서 잔다}]
+  sch_arms:        [{days: workday, from: "07:00", to: "17:00", at: trade, doing: 철 창날·화살촉을 늘어놓고 값을 센다 — 두르강 법에 서명하지 않은 칼만 판다}, {days: all, from: "17:00", to: "07:00", at: trade, doing: 천막 뒤 수레}]
+voices:             # 말투 원형 — 하르칸은 '오늘'을 사는 빠르고 짧은 말, 인간은 낮추고 걸으며 말한다
+  - {id: v_wind_rider, name: 질주자, register: "빠르고 짧은 평어. 인간에겐 '느린 발'과 명령형. 같은 질주자끼리는 갈기 수와 속도로 존대가 정해진다. 약속은 '바람이 들었다'로 끝낸다", tics: ["'어느 쪽 바람이오?'", "'바람이 들었다.'"], use: [오늘, 바람, 갈기, 달린다, 먼저, 느린 발], avoid: [내일(먼 미래), 머물다, 정착, 지붕, 늙었다], sample: "어느 쪽 바람이오. 다리부터 보이겠소. 짧게 말하시오 — 오르두는 아흐레 뒤면 여기 없소. 바람이 들었다."}
+  - {id: v_bek, name: 벡 (부족장), register: "느리게 걸으며 말한다. 한 문장마다 갈기 한 가닥을 만진다. 이탈할 때는 말이 아니라 가닥을 자른다", tics: ["갈기 가닥을 만지작거린다", "'뒤에서 달리는 수가 내 말이오.'"], use: [가닥, 맹세, 부족, 뒤에서, 옆으로, 물, 샘], avoid: [투표, 결정(결정은 달리기가 한다), 사과], sample: "내 뒤에서 달리는 이가 몇인지 세어 보시오. 그 수가 내 말이오. 옆으로 비껴 달리는 이가 생기면 그때 말이 바뀌오."}
+  - {id: v_elder_horse, name: 늙은 말, register: "느린 평어에 과거형이 많다 — 하르칸답지 않은 말. 젊은 질주자에게 '달리지 못하는 자의 말도 바람이 듣는다'고 한다", tics: ["'내가 달릴 때는.'", "'바람이 아직 이름을 부르지 않았다.'"], use: [옛 법, 서풍, 언덕, 늙은굽, 떠남, 마지막], avoid: [오늘 중심 말투, 부양, 정착(수치)], sample: "내가 달릴 때는 서풍 날 서쪽으로 가는 자가 없었다. 달리지 못하게 된 뒤에야 법이 무엇을 막았는지 보인다."}
+  - {id: v_porter, name: 짐꾼, register: "하르칸에게는 눈을 낮춘 짧은 존대('예, 달리시는 분'). 같은 짐꾼에겐 걸으며 낮게 반말. 사람 수와 짐 수를 입에 단다", tics: ["'넷째 줄은 아직 있어.'", "'걸으면서 말해.'"], use: [줄, 짐, 쓰러진, 줍는, 돌무더기, 걸음, 물통], avoid: [탈주(그들은 '줍힌다'고 한다), 자유, 하르칸을 말이라 부르기], sample: "걸으면서 말해. 넷째 줄은 아직 있어. 쓰러진 척은 해가 지면 줍힌다 — 돌무더기가 서 있는 자리에서."}
+  - {id: v_load_elder, name: 짐 맏이, register: "하르칸에게 초원어로 짧고 정확한 존대, 짐꾼에게는 반말인데 이름을 불러 준다. 낙오 수를 빼고는 숫자를 말하지 않는다", tics: ["'줄 센다.'", "'짐부터 들어.'"], use: [짐, 줄, 사람이 먼저, 걸음, 물], avoid: [탈주, 해방, 칸의 계획 비평], sample: "짐부터 들어. 이야기는 걸으면서. 줄 센다 — 어제보다 하나 빈다."}
+  - {id: v_krik_ledger, name: 크릭 거간, register: "혀 차는 소리와 빠른 존대. 하르칸 앞에서는 값만 말한다. 장부를 읽어 주지 않는다", tics: ["'값은 오늘 아침 그대로입니다.'", "'말 한 마리에 사람 열.'"], use: [값, 말, 소금, 곡물, 마리, 섬], avoid: [노예(물건이라 부른다), 자유], sample: "말 한 마리에 사람 열입니다요. 안장 하나에 사람 하나. 값은 오늘 아침 그대로입니다."}
+  - {id: v_gnar, name: 그나르 청소부, register: "웃음이 섞인 느린 평어. 모두에게 같은 높이로 말하는 유일한 사람 — 아무도 그를 높이지 않으므로", tics: ["'(웃는다)'", "'죽은 사람은 말이 많소.'"], use: [유품, 주머니, 어디서 죽었나, 돌무더기, 장부], avoid: [이름(죽은 자의 이름은 밤에만)], sample: "(웃는다) 죽은 사람은 말이 많소. 주머니가 말하오. 이 신발 주인은 사흘 전 넷째 줄에서 쓰러졌소."}
+temperaments: [성급, 과묵, 자존, 겸손, 영리, 완고, 다정, 의심, 체념, 반골, 계산, 경건, 용맹, 앙심, 느림]
+harkan_customs:     # 하르칸에서만 있는 것 — 법·관습 본문은 fac_harkan.law/customs
+  - "인사는 '어느 쪽 바람이오?' — 서로 등 뒤 바람을 말하고 상대의 다리부터 본다. 갈기 한 가닥을 건네 보이는 것이 신뢰의 시작"
+  - "정착 권유('여기 머물라')는 결투 사유 — 인간이 하면 역린이다"
+  - "죽은 자는 땅에 묻지 않고 높은 언덕에 둔다. 인간 짐꾼의 시신을 묻는 것도 부족 전체의 사냥감이 되는 일이었으나 쓰러진 짐꾼을 돌무더기로 덮는 것은 눈감아 왔다"
+  - "늙은 하르칸은 달리지 못하게 되면 스스로 무리를 떠난다. 부양하는 쪽이 치욕이다 — 바타르·예순 늙은굽은 예외"
+  - "경주 재판 — 길이 다툼의 무게. 먼저 닿은 자의 말을 듣는다. 인간이 이긴 적은 법이 한 번 헤아려 보았을 뿐이다"
+  - "바람 맹세 — 갈기를 한 가닥씩 바꿔 땋는다. 깨면 가닥을 잘라 바람에 날린다. 부족이 칸의 수에서 빠진다"
+  - "'이삭 줍기' — 행렬 뒤에 쓰러진 척으로 남긴 동료를 다음 행렬이 줍는다. 초원의 돌무더기가 그 표식이고 하르칸은 못 본 척한다"
+settlement_templates:
+  - id: tpl_harkan_ordu
+    name: 칸의 오르두 (이동 천막 도시 — 아흐레마다 같은 모양으로 다시 선다)
+    grid: {w: 1600, h: 1200}
+    roles:
+      khan_tent:    {count: [1, 1], place: "가운데 — 바람 아래쪽 가장자리를 등지고", access: staff, name: 칸의 천막과 지도 천막}
+      feast:        {count: [1, 1], place: "칸의 천막 곁 동쪽", access: staff, name: 부족장 연회 천막}
+      ring:         {count: [1, 1], place: "칸의 천막을 에워싼 둥근 길 — 벡 천막 고리", access: staff, name: 부족 천막 고리와 회합 질주로}
+      knot_tent:    {count: [0, 1], place: "칸의 천막 북쪽 한 걸음 거리", access: staff, name: 이동 매듭 천막}
+      archers:      {count: [1, 2], place: "남쪽 바깥", access: staff, name: 기마 궁수대 막사와 활터}
+      runner_post:  {count: [1, 1], place: "동쪽 바깥 — 전령이 들고나는 쪽", access: staff, name: 전령 막사}
+      pens:         {count: [1, 3], place: "남서쪽", access: staff, name: 말 우리 (가축 말)}
+      whip_post:    {count: [1, 1], place: "고리와 짐꾼 막사 사이", access: staff, name: 채찍 기수 초소}
+      porter_camp:  {count: [1, 2], place: "서쪽 — 바람 위가 아니라 바람 아래, 가장 낮은 자리", access: serf, name: 짐꾼 막사, locked: "점호 이후"}
+      burden:       {count: [1, 1], place: "서쪽 가장자리", access: serf, name: 등짐 행렬 숙영지}
+      load:         {count: [1, 2], place: "짐꾼 막사 곁", access: serf, name: 짐 집하장}
+      porridge:     {count: [1, 2], place: "짐꾼 막사 한가운데", access: serf, name: 말젖 죽 솥 마당}
+      trade:        {count: [1, 1], place: "동쪽 입구 — 낯선 사람이 처음 서는 곳", access: public, name: 교역 천막과 말 시장}
+      cairn_line:   {count: [1, 1], place: "행렬이 지나온 뒤쪽", access: public, name: 이삭 줍기 돌무더기 길}
+      elder_ridge:  {count: [1, 1], place: "북동쪽 가장 높은 언덕", access: public, name: 늙은이의 언덕}
+    outer:
+      salt_lake:    {hours: [12.0, 18.0], name: 소금 호수 노역장}
+      springs:      {hours: [2.0, 4.0], name: 말뼈 샘과 무거운발굽 짐 야영지}
+      stones:       {hours: [8.0, 12.0], name: 서 있는 돌 열둘}
+calendar_ref: "content/base/events/harkan_312.yaml — 하르칸 초원 사건 달력"

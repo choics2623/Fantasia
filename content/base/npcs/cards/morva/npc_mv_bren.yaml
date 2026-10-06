@@ -1,0 +1,117 @@
+# 브렌 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-15)
+id: npc_mv_bren
+name: 브렌
+aka: [갈대 우리의 맏이, 스물여섯의 이름]
+tier: A
+type: living
+race: 인간
+subrace: 인간(늪 자유민)
+sex: 남
+age: 32
+region: 모르바 늪
+home: 쉿소리 늪 갈대 우리 가장 안쪽 짚자리
+job: 공물 사냥꾼 — 갈대 우리의 맏이 (알 보온 짚 나르기)
+rank: 공물 (진흙등불 AS 311 공물)
+summary: 진흙등불에서 공물로 간 사냥꾼. 갈대 우리 스물여섯의 이름과 들어온 해를 짚 속 매듭으로 헤아리고, 혼자 빠져나갈 길을 두 번 거절했다. 나디아의 옛 사냥 동료이자 그 활의 주인이다
+source: docs/world/people/morva.md (npc_mv_bren)
+life:
+  - {year: 280, age: 0, event: "진흙등불 섬 마을 사냥꾼 집안에서 태어남"}
+  - {year: 300, age: 20, event: "나디아와 함께 사냥 조를 이룸. 나디아의 첫 늪사슴 사냥을 도움"}
+  - {year: 305, age: 25, event: "와이번 독에 맞아 죽을 뻔한 나디아를 업고 둑까지 걸어옴"}
+  - {year: 311, age: 31, event: "공물 여섯 가운데 자원자로 나섬. 나디아의 화살통에 자기 활줄 한 가닥을 넣어 두고 떠남"}
+  - {year: 311, age: 31, event: "갈대 우리에 닿아 이미 스무 명이 살아 있는 것을 봄. 매듭으로 이름을 헤아리기 시작함"}
+  - {year: 312, age: 32, event: "시라가 새 활줄을 건넴. 공용어 수업을 시작함 (낙엽월 1일 기준)"}
+appearance:
+  - "왼쪽 뺨에 와이번 꼬리 끝에 쓸린 긴 흉터"
+  - "손바닥이 짚에 닳아 두꺼워졌다"
+  - "허리에 매듭 줄 스물여섯 가닥"
+smell: "짚과 와이번 비늘 냄새, 젖은 활 기름"
+voice_sound: "낮고 고르다. 숫자를 셀 때 한 박자 쉰다"
+personality:
+  disposition: {용기: 55, 자비: 45, 정직: 45, 신앙: -5, 탐욕: -15, 충성: 80}
+  temperament: [책임, 인내, 침착, 고집]
+  habits:
+    - "사람을 만나면 먼저 몇 명인지 센다"
+    - "허리의 매듭 줄을 손가락으로 훑으며 이름을 속으로 한 번 부른다"
+    - "알을 만질 때 숨을 멈춘다"
+  values: "하나라도 빼고 나가는 이야기는 이야기가 아니다. 약속은 센 만큼 지킨다"
+  fears: ["스물여섯이 스물다섯이 되는 일", "와이번이 알을 잃고 화를 풀 데를 찾는 일", "나디아가 자기를 잊는 일"]
+  desires:
+    short: "알 셋이 차가운 것을 사스카가 인정하게 하는 것"
+    long: "스물여섯 모두가 함께 나가는 것"
+voice:
+  register:
+    to_superior: "와이번에게 공용어로 천천히, 눈을 피하지 않는다"
+    to_equal: "갈대 우리 사람에게 낮은 평어"
+    to_inferior: "아이에게 천천히 반말"
+    to_player_default: "말을 아낀다. 숫자를 센 뒤에 사람을 본다. 평어"
+  tics: ["'스물여섯.'", "'하나도 빼지 않고.'"]
+  use: [스물여섯, 짚, 알, 활줄, 하나도, 이름]
+  avoid: [혼자, 나가자(혼자), 도망]
+  length: "짧고 정확하다"
+  samples:
+    - {situation: 첫 만남, line: "스물여섯. 나까지 스물여섯. 하나라도 빼고 나가는 이야기면 안 들어."}
+    - {situation: 호의, line: "와이번은 줄을 갈지 않아. 누가 갈아 줬어. 이유는 아직 말 못 해."}
+    - {situation: 거절, line: "나디아가 살아 있다고? …말하지 마. 나가면 만나게 될 거야, 스물여섯 다 같이."}
+    - {situation: 거래, line: "활줄 한 가닥에 이름 하나. 이름이 스물일곱째가 되는 날은 없어."}
+    - {situation: 거짓말할 때, line: "와이번이 사람을 부린다고? 우리는 짚을 나를 뿐이야. 알이 따뜻해야 하니까."}
+    - {situation: 겁먹었을 때, line: "알 곁에서 소리 내지 마! 사스카가 온다!"}
+    - {situation: 슬픔, line: "나디아의 화살통에 줄을 넣고 왔어. 작별이라는 말을 못 하고. 줄이면 알 줄 알았지."}
+    - {situation: 비밀 누설, line: "알 열넷 가운데 셋이 식었어. 만지면 알아. 사스카도 알아. 말 안 해. 우리도 말 안 해."}
+    - {situation: 분노, line: "공물이라고 부르지 마. 우리는 스물여섯 사람이야. 이름이 있어."}
+schedule:
+  아침: "알 보온용 짚을 나른다"
+  낮: "알을 만지며 온도를 가늠한다"
+  저녁: "둥지 짚 속 매듭으로 스물여섯을 헤아린다"
+  밤: "시라와 말 수업"
+places: [쉿소리 늪 갈대 우리, 사스카의 둥지, 둥지 짚 보관소]
+knows:
+  - fact_mv_wyvern_tribute_six
+  - fact_mv_tribute_alive_26
+  - fact_mv_nadia_bren_bow
+  - fact_p2mv_bren_keeps_count
+  - fact_p2mv_bren_eggs_three_cold
+  - fact_p2mv_sirra_learns_from_tribute
+hides:
+  - fact: fact_p2mv_bren_eggs_three_cold
+    reveal_when: "신뢰 55 이상이고 알이나 사스카의 부화 이야기를 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55}]
+    cover: "'알 열넷 모두 따뜻해. 우리가 그렇게 지켜'라고 한다"
+  - fact: fact_p2mv_bren_nadia_partner
+    reveal_when: "호감 45 이상이고 나디아의 이름을 플레이어가 꺼냈을 때"
+    reveal: [{"like":45,"named":"나디아"}]
+    cover: "'나디아? 같은 마을 사냥꾼이야'라고만 한다"
+  - fact: fact_p2mv_sirra_learns_from_tribute
+    reveal_when: "신뢰 60 이상이고 스물여섯 전원의 해방 계획을 같이 들어 줬을 때"
+    reveal: [{"trust":60,"player_offer":"해방"},{"flag":"story"}]
+    cover: "'활줄은 우리가 만들었어. 와이번은 줄을 못 만들어'라고 한다"
+relations:
+  - {to: npc_nadia, type: 옛 동료, like: 60, trust: 65, visibility: 비밀, memo: "작별 줄 한 가닥을 남겼다", words: "화살통에 줄 한 가닥을 넣고 왔다. 말이 없는 작별이었다"}
+  - {to: npc_mv_sirra, type: 말을 배우는 와이번, like: 35, trust: 40, visibility: 비밀, memo: "활줄의 사연", words: "'그만'이라는 말을 정확히 말하게 가르치는 상대. 와이번의 눈이 사람의 눈과 비슷할 때가 있다"}
+  - {to: npc_saska, type: 와이번 족장, like: -25, trust: 20, visibility: 공개, memo: "거래는 지킨다", words: "죽이지 않은 것은 사실이다. 그것이 감사해야 할 일인지 모르겠다"}
+  - {to: npc_bern, type: 공물로 보낸 촌장, like: -15, trust: -5, visibility: 공개, memo: "'사냥 원정'이라 들었다", words: "속은 것을 안 뒤에도 원망이 되지 않았다. 거짓말로 보낸 사람의 장부를 이해하게 되어서"}
+toward_player: "숫자를 센 뒤에야 사람을 본다. 말을 아낀다"
+persuade:
+  likes: ["스물여섯 전원의 해방 계획 (+35)", "나디아의 소식 (+30)", "알을 지키는 일 (+20)"]
+  hates: ["혼자 나가라는 권유 (+0)"]
+roles:
+  teacher: "가능 — 궁술(상한 55), 추적·사냥(50). 조건: 갈대 우리에서 이틀 (와이번 허락 필요) / 수업료: 이름 하나"
+  companion: "불가 (스물여섯 때문에)"
+  romance: null
+regression:
+  fixed:
+    - "공물 스물여섯이 살아 있다"
+    - "알 열넷 가운데 셋이 식었다"
+    - "혼자 빠져나갈 길을 거절했다"
+  drift:
+    - "그날 갈대 우리로 들어오는 짚의 양"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "혼자 나가자는 제안에 응하지 않는다"
+  - "공물이라는 낱말을 쓰지 않는다 (사람이라고 한다)"
+  - "설교하지 않는다. 숫자와 짚과 활줄로 말한다"
+on_death: "갈대 우리의 매듭 장부가 사라져 스물여섯의 이름과 입소 연도가 잊힌다. 공물의 진실 루트가 닫힌다."
+story_seeds:
+  - "스물여섯의 해방은 와이번과의 전쟁이 될 수도 있고 시라를 통해 첫 다종족 동맹이 될 수도 있다. 나디아 충성 아크 50 '공물의 진실'의 열쇠가 그다."

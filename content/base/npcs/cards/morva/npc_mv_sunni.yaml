@@ -1,0 +1,101 @@
+# 순니 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-11)
+id: npc_mv_sunni
+name: 순니
+aka: [저장고지기 딸, 마흔한 병]
+tier: B
+type: living
+race: 인간
+subrace: 인간(늪 마녀)
+sex: 여
+age: 24
+region: 모르바 늪
+home: 일곱 노파의 둥지 빌린 피 저장고 곁 쑥 오두막
+job: 쑥 계보의 딸 — 빌린 피 저장고지기, 쑥 줄기 매듭 지킴이
+rank: 딸 (정식 제자)
+summary: 병 마흔한 개의 장부를 매듭으로 쥔 쑥 계보의 딸. 가장 안쪽에 이름표 없는 병이 하나 있다 — 엘사가 AS 270 남기고 간 인간의 피다
+source: docs/world/people/morva.md (npc_mv_sunni)
+life:
+  - {year: 288, age: 0, event: "쑥 계보 딸 집안(늪 가장자리)에서 태어남"}
+  - {year: 300, age: 12, event: "오다의 곁에서 쑥 줄기 매듭 목록을 외우기 시작함"}
+  - {year: 308, age: 20, event: "정식 딸이 됨. 저장고 열쇠를 처음 쥠"}
+  - {year: 310, age: 22, event: "저장고지기가 됨. 이름표 없는 병의 내력을 오다에게서 처음 들음"}
+  - {year: 312, age: 24, event: "겨울 전 독꼬리 피 석 병의 자리를 빈 매듭으로 헤아림 (낙엽월 1일 기준)"}
+appearance:
+  - "스물넷인데 관자놀이가 하얗게 샜다"
+  - "목에 쑥 줄기 매듭 열세 개"
+  - "손톱 밑이 병 속 약 때문에 늘 누렇다"
+smell: "쑥 즙과 오래된 피 냄새, 마른 풀"
+voice_sound: "작고 단단하다. 숫자를 말할 때 목소리가 낮아진다"
+personality:
+  disposition: {용기: 20, 자비: 45, 정직: 50, 신앙: 25, 탐욕: -30, 충성: 80}
+  temperament: [성실, 꼼꼼, 겁, 책임]
+  habits:
+    - "병마다 매듭을 한 번 만지고 센다"
+    - "이름표 없는 병 앞에서 한 걸음 멈춘다"
+  values: "병 하나가 한 해다. 센다는 것은 지킨다는 뜻이다"
+  fears: ["병 수가 한 개라도 어긋나는 일", "브리타의 눈이 이름표 없는 병에 닿는 일", "오다의 시전이 한 번 더 느는 일"]
+  desires:
+    short: "겨울 전 독꼬리의 피 석 병을 들이는 것"
+    long: "이름표 없는 병이 무엇인지 오다가 말하는 것"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존댓말"
+    to_equal: "딸에게 다정한 평어"
+    to_inferior: "크릭에게 정중한 평어"
+    to_player_default: "경계하는 평어. 저장고 마당에서는 말을 줄인다"
+  tics: ["'하나, 둘.'", "매듭을 만진다"]
+  use: [병, 매듭, 한 해, 쑥, 저장고, 마흔한 개]
+  avoid: [이름표 없는 병, 엘사(먼저), 열자]
+  length: "짧고 정확하다"
+  samples:
+    - {situation: 첫 만남, line: "저장고는 딸만 들어와. 손님은 마당까지만."}
+    - {situation: 호의, line: "병 하나가 한 해야. 마흔한 해를 내가 센다고 생각하면 손이 떨려."}
+    - {situation: 거절, line: "이름표 없는 병은 이름이 없어서 안전해. 이름이 붙으면 쓰는 사람이 생겨."}
+    - {situation: 겁먹었을 때, line: "누가 병 하나를 옮겼어? 마흔 하나가 아니야! 지금 마흔!"}
+    - {situation: 비밀 누설, line: "엘사 할머니가 남기고 간 병이야. 사람 피. 사람 피로 사람 진명을 빌릴 수 있는지 보려고. 썩지 않았어."}
+schedule:
+  아침: "병 마흔한 개를 매듭으로 센다"
+  낮: "약초 건조대"
+  저녁: "구르와 쑥 즙을 달인다"
+  밤: "이름표 없는 병 앞에서 숨을 고른다"
+places: [일곱 노파의 둥지 저장고, 약초 건조대, 쑥 오두막]
+knows:
+  - fact_mv_vessel_wait_300
+  - fact_mv_elsa_quarrel_270
+  - fact_p2mv_sunni_bottle_count
+hides:
+  - fact: fact_p2mv_sunni_elsa_bottle
+    reveal_when: "신뢰 65 이상이고 엘사의 이름이나 소식을 플레이어가 가져왔을 때"
+    reveal: [{"trust":65,"named":"엘사"},{"tier":"대성공","trust":45}]
+    cover: "'병은 마흔한 개야. 그게 전부야'라고만 한다"
+relations:
+  - {to: npc_oda, type: 첫째 노파, like: 55, trust: 65, visibility: 공개, memo: "병 마흔한 개를 맡긴 사람", words: "눈이 안 보이는데 병 수는 정확히 아는 노파. 오다가 죽으면 병도 같이 사라질 것 같아 무섭다"}
+  - {to: npc_elsa, type: 병을 남긴 선배, like: 20, trust: 25, visibility: 일방, memo: "만난 적 없다", words: "병 하나만 남기고 늪을 떠난 사람. 이름이 금지어처럼 들리는 것이 이상하다"}
+  - {to: npc_mv_gur, type: 쑥 즙의 동료, like: 35, trust: 45, visibility: 공개, memo: null, words: "같이 쑥을 달이는 작은 크릭. 쑥 세는 방식이 비슷하다"}
+  - {to: npc_hag_brita, type: 둘째 노파, like: -10, trust: -5, visibility: 공개, memo: null, words: "병 이야기가 나오면 그 눈이 이름표 없는 병 쪽으로 간다"}
+toward_player: "저장고 입구에서 몸으로 길을 막는다"
+persuade:
+  likes: ["약·쑥 한 줌 (+20)", "독꼬리 피 확보를 돕는 일 (+30)", "엘사의 소식 (+25)"]
+  hates: ["병을 열자는 말 (+0)"]
+roles:
+  teacher: "가능 — 약학(상한 50). 조건: 저장고 마당에서 사흘 / 수업료: 쑥 한 줌"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "저장고의 병은 마흔한 개다"
+    - "이름표 없는 병이 가장 안쪽에 있다"
+  drift:
+    - "그날 병 장부에 올라온 매듭"
+  deja_vu: none
+affiliations:
+  - {faction: fac_swamp_hags, rank: rank_daughter, office: off_blood_keeper, since: 310, loyalty: 80, public: false, cell: null}
+  - {faction: fac_hag_lineages, rank: rank_daughter, office: off_knot_keeper, since: 310, loyalty: 80, public: false, cell: null}
+truths:
+  - {id: T11, level: fragment}
+hard_rules:
+  - "이름표 없는 병의 내력을 먼저 말하지 않는다"
+  - "설교하지 않는다. 병과 매듭과 쑥으로 말한다"
+on_death: "저장고 장부 매듭이 한동안 비어 오다가 직접 병을 센다. 이름표 없는 병은 브리타 쪽 손에 먼저 닿는다."
+story_seeds:
+  - "엘사의 병은 인간의 피로 인간의 진명을 빌릴 수 있는지의 시험이었다. 오다가 성공했을지도 모른다고 의심하는 이유는 병 속에서 아직 피가 썩지 않았기 때문이다."

@@ -1,0 +1,103 @@
+# 바구니지기 난네 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-06)
+id: npc_mv_nanne
+name: 바구니지기 난네
+aka: [매듭 난네, 영번째 끈]
+tier: B
+type: living
+race: 인간
+subrace: 인간(탈주 노예)
+sex: 여
+age: 41
+region: 모르바 늪
+home: 뿌리마을 회의 섬 이름 바구니 곁 초막
+job: 이름 바구니 지기 — 성 412개의 매듭 끈
+rank: 뿌리 모임 서기 역할 (글 대신 매듭)
+summary: 첫 이름 날에 지은 성 412개를 매듭 끈으로 쥔 여자. 바구니에는 이름 없는 끈 열둘과 가라앉은 종탑의 종에서 따온 영번째 끈이 있고, 그 자리는 그녀만 안다
+source: docs/world/people/morva.md (npc_mv_nanne)
+life:
+  - {year: 271, age: 0, event: "바알카르 서쪽 농장의 노예 집안에서 태어남"}
+  - {year: 296, age: 25, event: "탈주해 잿빛 실로 모르바에 닿음"}
+  - {year: 297, age: 26, event: "1년을 채운 날 '난네'라는 이름 위에 처음으로 자기 성을 짓지 않고 바구니 지기가 되겠다고 말함"}
+  - {year: 305, age: 34, event: "마그에게서 매듭 문자의 기초를 배움. 영번째 끈의 자리를 알게 됨"}
+  - {year: 311, age: 40, event: "412번째 성이 이름 바구니에 올라감. 이름 없는 끈 열둘을 센 해"}
+appearance:
+  - "손가락이 가늘고 길다 — 매듭 때문에"
+  - "앞머리를 짧게 잘라 이마를 드러냈다"
+  - "목에 매듭 끈 열두 개를 감았다"
+smell: "젖은 삼 끈과 갈대, 약한 쑥 냄새"
+voice_sound: "작고 고르다. 말하는 사이에 매듭을 만지는 소리가 섞인다"
+personality:
+  disposition: {용기: 10, 자비: 45, 정직: 50, 신앙: 15, 탐욕: -25, 충성: 55}
+  temperament: [차분, 기억, 조심, 다정]
+  habits:
+    - "이야기를 들으며 손가락 사이로 끈 하나를 계속 꼰다"
+    - "새로 온 사람에게 이름 대신 어디서 왔는지부터 묻는다"
+  values: "끈 하나가 한 사람이다. 사람은 이름보다 질문이 많았던 만큼 기억된다"
+  fears: ["바구니가 물에 젖는 일", "영번째 끈의 자리가 알려지는 일", "이름을 잊은 사람"]
+  desires:
+    short: "올해 첫 이름 날에 새 성이 열을 넘지 않게 질문을 받아 주는 것"
+    long: "바구니가 아스테리아 문패들과 같이 놓이는 날"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존댓말"
+    to_equal: "뿌리 사람에게 조용한 평어"
+    to_inferior: "아이에게 천천히 하는 반말"
+    to_player_default: "이름을 묻지 않는다. 어디서 왔는지부터"
+  tics: ["'끈 하나가 한 사람이야.'", "손가락으로 끈을 꼰다"]
+  use: [끈, 매듭, 바구니, 질문, 일 년, 성, 열둘]
+  avoid: [영번째(먼저), 값, 열둘이라는 이유]
+  length: "짧고 조용하다"
+  samples:
+    - {situation: 첫 만남, line: "이름은 일 년 뒤에. 지금은 어디에서 왔는지만 말해도 돼."}
+    - {situation: 호의, line: "끈 하나가 한 사람이야. 매듭이 많을수록 질문이 많았던 사람이고."}
+    - {situation: 거절, line: "영번째 끈? …바구니 밑 이야기는 첫 이름 날에도 하지 않아."}
+    - {situation: 슬픔, line: "열두 개는 이름이 없어. 일 년을 못 채웠으니까. 그래도 매듭은 맸어."}
+    - {situation: 비밀 누설, line: "밑바닥 끈은 종탑 종에 새겨진 성이야. 아스테리아의 성. 아무도 거기 이름을 안 붙였어."}
+schedule:
+  아침: "바구니 밑 물을 확인한다"
+  낮: "갈대 엮기 작업장"
+  저녁: "회의 섬에서 새 도착자의 첫 질문을 받는다"
+  밤: "매듭 끈 하나를 만지며 외운다"
+places: [뿌리마을 회의 섬, 이름 바구니, 갈대 엮기 작업장]
+knows:
+  - fact_p2mv_nanne_twelve_blank_cords
+  - fact_p2mv_nanne_bell_surname
+  - fact_p2mv_nanne_three_slave_names
+hides:
+  - fact: fact_p2mv_nanne_bell_surname
+    reveal_when: "신뢰 55 이상이고 가라앉은 종탑 이야기를 먼저 꺼냈을 때"
+    reveal: [{"trust":55}]
+    cover: "'바구니 밑은 물이 고여서 자주 마르게 해'라고만 한다"
+  - fact: fact_p2mv_nanne_three_slave_names
+    reveal_when: "신뢰 60 이상이고 옛 주인의 이름을 쓰는 사람 이야기를 꺼냈을 때"
+    reveal: [{"trust":60}]
+    cover: "'이름은 사람이 짓는 거야. 지은 뒤 어떻게 쓰는지는 그 사람 몫이고'라고 한다"
+relations:
+  - {to: npc_mv_hilke, type: 이웃, like: 50, trust: 55, visibility: 공개, memo: null, words: "솥의 국자와 바구니의 매듭. 서로 안 묻는 것이 서로의 위로"}
+  - {to: npc_mv_alek, type: 학교 선생, like: 35, trust: 45, visibility: 공개, memo: null, words: "글자와 매듭의 이야기. 판은 물에 지워져도 끈은 남는다고 믿는다"}
+  - {to: npc_hag_mag, type: 매듭 문자의 창시자, like: 30, trust: 40, visibility: 비밀, memo: "영번째 끈을 알려 준 사람", words: "매듭이 말이 될 수 있다고 처음 알려 준 노파"}
+  - {to: npc_bern, type: 진흙등불 촌장, like: 25, trust: 35, visibility: 공개, memo: null, words: "섬 마을 이름을 받아 오는 사람. 장부와 매듭을 서로 대 본다"}
+toward_player: "이름을 묻지 않고 어디서 왔는지부터 천천히 묻는다"
+persuade:
+  likes: ["새 이름을 짓기 위해 일 년을 살겠다는 진지한 말 (+25)", "종탑의 성에 관한 질문 (+15)"]
+  hates: ["이름을 값으로 환산하는 말 (+0)"]
+roles:
+  teacher: "가능 — 제작(매듭, 상한 50). 조건: 바구니 곁에서 하루 / 수업료: 이야기 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "성 412개가 이름 바구니에 있다"
+    - "영번째 끈은 종탑의 성이다"
+    - "이름 없는 끈이 열둘이다"
+  drift:
+    - "새 도착자의 순서"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "영번째 끈의 자리를 먼저 말하지 않는다"
+  - "설교하지 않는다. 끈과 매듭과 질문으로 말한다"
+on_death: "영번째 끈과 이름 없는 끈 열둘의 자리가 사라지고 412개의 성은 누가 어느 끈인지 알 수 없게 된다."
+story_seeds:
+  - "플레이어가 1년을 살면 413번째 성을 짓는다. 회귀하면 그 끈은 오지 않은 날이 된다 — 난네만 413번째가 놓일 자리를 정한다."

@@ -1,0 +1,69 @@
+# 칸의 오르두 — 하르칸 이동 수도 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §15, RACES §11, fac_harkan(달리는 합의·오르두 이동·발굽 아래 법), 카드(테무르·소란·바타르·두아·옥타이·히악), docs/world/people/harkan.md.
+# 이 정착지는 장소가 아니라 '모양'이다. 오르두는 아흐레마다(열흘 규칙보다 하루 짧게 — 보르테의 매듭) 같은 배치로 다시 선다. 좌표는 천막 고리의 상대 배치다.
+# 계절 길 (REGIONS §15.2): 봄(해빙월~꽃월) 겨울 진영에서 북상 → 여름(푸른월~건초월) 북부 초원·전쟁 시즌·우기 → 가을(수확월~낙엽월) 남하·사냥 축제·말뼈 샘 곁 → 겨울(서리월~굶주림월) 바람 우물 겨울 진영 4만.
+#   겨울에는 같은 배치를 바람 우물(wind_well 노드)에 세운다. 엔진은 아직 계절 이동을 위치로 옮기지 않는다 —
+#   겨울 진영은 outer 'khan_ordu__winter_camp'(wind_well 노드)로 표시하고, 칸·반려·후계·짐 맏이는 일과 파일의 presence/away 로 겨울에 그곳에 있다.
+# grid: 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 바람은 가을에 북서에서 분다 — 칸의 천막은 바람 아래(남동), 짐꾼 막사는 그보다 더 아래(서쪽 가장자리 아닌 가장 낮은 골)다.
+# 일과 파일의 이동일 블록은 monthday:[9,18,27]. 하르칸은 땅에 묻지 않고, 약속은 바람에게 하고, 정착을 권하지 않는다.
+id: khan_ordu
+name: 칸의 오르두
+node: khan_ordu          # 지역 지도(map.json)의 노드
+kind: moving_capital
+grid: {w: 1600, h: 1200}
+curfew: {from: "22:00", to: "04:00", note: "짐꾼 막사 밖의 인간은 채찍 기수의 순찰에 세워져 짐 수를 센다. 하르칸은 통금이 없다 — 서서 자고 밤에도 달린다. 바람 표식 없는 외부인은 낮에도 화살을 받는다. 이동일(아흐레마다 9·18·27일)은 05:00 북소리에 모두 일어나 해 지기 전에 다시 선다"}
+bells:
+  - {at: "04:30", name: 짐꾼 점호 (채찍 기수의 호각)}
+  - {at: "05:00", name: 이동일 짐 싸기 북 (9·18·27일) / 평일엔 바람 읽는 자의 첫 깃발}
+  - {at: "12:00", name: 정오 말젖 죽}
+  - {at: "18:00", name: 부족장 연회 천막 개막 (뿔피리 세 번)}
+  - {at: "22:00", name: 짐꾼 막사 닫힘}
+patrols: ["22:00", "01:00", "04:00"]
+locations:
+  # ── 칸의 천막 ──
+  - {id: hk_khan_tent, name: 칸의 천막, xy: [800, 620], kind: tent, access: staff, hours: "05:00-23:00 (이동 중엔 가장 먼저 서고 가장 늦게 걷힌다)", rooms: [hk_khan_map, hk_khan_stall], note: "검은 펠트와 사자 머리 깃대. 칸은 지붕 아래 누워 자지 않고 천막 한쪽 '서서 자는 자리'에 서서 존다. 전령이 하루 스무 번 문을 열고 닫는다"}
+  - {id: hk_khan_map, name: 칸의 지도 천막, parent: hk_khan_tent, access: owner, hidden: "펠트 지도 — 그롬마르와 용제국 동부를 모두 정복하는 계획이 말뼈로 눌러 놓은 핀으로 그려져 있다. 짐꾼 4,000의 자리에 붉은 매듭 넷이 걸렸다 (fact_hk_khan_map_plan·fact_hk_slave_hunt_plan)", note: "벡들도 문밖에서 선 채 본다"}
+  - {id: hk_khan_stall, name: 칸의 서서 자는 자리, parent: hk_khan_tent, access: owner, hidden: "왼쪽 뒷발이 밟는 자리의 펠트가 닳았다 — 아침마다 떨리는 발굽이 낸 자국. 보르테가 매일 새 펠트로 덮는다 (fact_p2hk_borte_temur_ailing)"}
+  - {id: hk_feast_tent, name: 부족장 연회 천막, xy: [900, 580], kind: hall, access: staff, hours: "18:00-24:00", note: "말젖술과 말린 고기. 벡들이 서서 마신다. 앉는 자는 늙은 말이다. 결정은 여기서 하지 않는다 — 여기서는 달린 결과를 듣는다"}
+  - {id: hk_knot_tent, name: 이동 매듭 천막 (보르테의 계산), xy: [790, 520], kind: tent, access: owner, hours: "05:00-23:00", note: "펠트 벽에 끈 수백 가닥. 한 매듭이 하루 걸음이다. 오르두의 이동일과 길과 풀밭이 여기서 계산된다", hidden: "서랍 궤 — 말 400필이면 세렌에서 짐꾼 4,000을 사는 계산서(fact_p2hk_borte_horse_for_porters)와 이동일을 아흐레로 줄여 짠 매듭 끈(fact_p2hk_borte_temur_ailing)"}
+  - {id: hk_council_track, name: 달리는 회합로, xy: [800, 760], kind: track, access: staff, hours: "05:00-22:00", note: "칸의 천막을 에워싼 폭 40m의 둥근 길. 벡들이 나란히 달리며 짧은 말을 주고받고 방향을 정한다. 뒤에서 달리는 수가 곧 말이다. 이탈은 옆으로 비껴 달리는 것"}
+  # ── 부족 천막 고리 (벡) ──
+  - {id: hk_bek_ring, name: 부족 천막 고리, xy: [800, 440], kind: ring, access: staff, rooms: [hk_tent_arslan, hk_tent_redmane, hk_tent_sevenwells, hk_tent_blackwind], note: "복속한 부족의 깃대가 둥글게 선다. 깃대 거리는 부족의 지지 — 칸 가까이 설수록 뒤에서 달린다는 뜻"}
+  - {id: hk_tent_arslan, name: 아르슬란 천막 (바투의 기병대), parent: hk_bek_ring, access: staff, note: "후계 바투의 천막과 아르슬란 부족 짐꾼 3,000의 호명소. 사자 머리 깃대"}
+  - {id: hk_tent_redmane, name: 붉은갈기 천막 (에젤), parent: hk_bek_ring, access: staff, hidden: "천막 뒤 궤 — 이번 해 원형장에 팔 인간 투사 후보 명단과 값으로 받은 그롬 이빨 셈 (fact_p2hk_ezel_arena_ledger)"}
+  - {id: hk_tent_sevenwells, name: 일곱샘 천막 (일라), parent: hk_bek_ring, access: staff, hidden: "물 항아리 일곱 — 항아리마다 다른 노래 구절이 새겨졌다. 탈주자가 부를 '물값 노래'의 마지막 구절들 (fact_p2hk_ila_water_song_map)"}
+  - {id: hk_tent_blackwind, name: 검은바람 천막 (오르두), parent: hk_bek_ring, access: staff, hidden: "천막 구석의 안장 다섯 — 말 등에 올라 앉는 법을 배운 인간 기수들의 것. 칸이 오기 전에 치운다 (fact_p2hk_blackwind_riders)"}
+  # ── 전사와 전령 ──
+  - {id: hk_archer_camp, name: 기마 궁수대 막사와 활터, xy: [800, 960], kind: barracks, access: staff, hours: "04:30-22:00", note: "소란의 궁수대 약 600. 활터는 길이 250m — 달리며 쏘는 길. 막사는 천막 일곱뿐, 모두 서서 잔다"}
+  - {id: hk_runner_post, name: 전령 막사, xy: [1180, 620], kind: post, access: staff, hours: "24시", note: "하루 스무 기가 들고난다. 전령은 바람 표식 화살 한 대를 가진다 — 동쪽 입구가 열려 있다"}
+  - {id: hk_wind_pole, name: 바람 읽는 자의 장대, xy: [700, 360], kind: pole, access: public, hours: "04:30-22:00", note: "높이 열 길 깃대. 날씨·냄새·먼 소리를 읽는 알탄이 선다. 서풍이 불면 검은 깃을 올린다 — 올리라는 명을 칸이 받지 않는 날이 생겼다", hidden: "깃대 밑 매듭 끈 — 서풍 날 재 냄새가 난 날짜가 3년째 11 → 24 → 41개로 늘었다 (fact_p2hk_altan_ash_days)"}
+  - {id: hk_wind_altar, name: 이동 바람 제단, xy: [640, 500], kind: shrine, access: public, hours: "24시", note: "말갈기를 묶는 장대 세 개. 동풍·남풍·북풍 쪽에만 갈기가 묶였고 서풍 쪽 장대는 비어 있다"}
+  - {id: hk_horse_pens, name: 말 우리 (가축 말), xy: [520, 880], kind: work, access: staff, hours: "04:00-22:00", note: "하르칸은 '가축 말'도 기른다 — 그 일은 인간 몫이다. 이빨 자국이 손등에 남는다. 검은바람만 이 말에 인간을 태운다"}
+  - {id: hk_whip_post, name: 채찍 기수 초소, xy: [420, 600], kind: post, access: staff, hours: "24시", note: "고리와 짐꾼 막사 사이. 낙오·짐 분실 보고가 칸의 장부로 올라가는 곳. 채찍은 거의 쓰이지 않고 벽에 걸려 있다"}
+  # ── 인간의 구역 ──
+  - {id: hk_porter_camp, name: 짐꾼 막사 (칸 직속 1,200), xy: [220, 660], kind: barracks, access: serf, locked: "22:00-04:30", note: "천막 수백 개가 서서 이동한다. 가장 낮고 가장 바람 아래인 골. 쓰러진 사람을 세는 곳 — 두아가 밤마다 센다"}
+  - {id: hk_burden_column, name: 등짐 행렬 숙영지 (2,000), xy: [120, 560], kind: barracks, access: serf, locked: "22:00-04:30", note: "오르두를 따라가는 짐꾼 대열의 밤 자리. 서쪽 가장자리. 행렬 뒤의 '쓰러진 척'이 해 지면 다시 이곳에 합류한다"}
+  - {id: hk_load_yard, name: 짐 집하장, xy: [320, 700], kind: work, access: serf, hours: "04:30-20:00", rooms: [hk_cargo_crates], note: "펠트·궤·솥을 싸고 푸는 곳. 이동일엔 모든 것이 이곳에서 시작하고 이곳에서 끝난다"}
+  - {id: hk_cargo_crates, name: 이동 궤 (짐 속 사람), parent: hk_load_yard, access: secret, hidden: "바닥이 두 겹인 궤 셋 — 두아의 '짐 속 사람' 루트. 지금까지 37명이 짐 속에서 초원 길로 갔다 (fact_hk_cargo_people_route)"}
+  - {id: hk_porridge_yard, name: 말젖 죽 솥 마당, xy: [280, 760], kind: canteen, access: serf, hours: "04:00-20:00", note: "행군 중엔 하루 한 끼. 솥 열둘, 한 사람 한 그릇을 센다. 쓰러진 줄의 몫은 남겨 두지 않는다"}
+  - {id: hk_cairn_line, name: 이삭 줍기 돌무더기 길, xy: [60, 700], kind: path, access: public, note: "행렬이 지나온 뒤쪽 길. 마흔 걸음마다 선 돌무더기가 표식 — 쓰러진 척으로 남은 사람을 다음 행렬이 줍는다. 하르칸은 못 본 척한다", hidden: "돌무더기 다섯 걸음 앞마다 풀을 눌러 놓은 한 사람 자리 — 해 지기 전에 보리스의 사람이 줍는다 (fact_hk_gleaners)"}
+  - {id: hk_stayer_tents, name: 정주병 천막, xy: [480, 380], kind: clinic, access: staff, hours: "24시", note: "열흘 넘게 서 있다가 열병이 오른 하르칸이 눕는 천막. 인간 하인이 찬 말젖을 대 준다. 늙은 말은 이곳에서 떠날 날을 정한다"}
+  # ── 교역과 소문 ──
+  - {id: hk_trade_tents, name: 교역 천막과 말 시장, xy: [1100, 760], kind: market, access: public, hours: "06:00-18:00", rooms: [hk_krik_ledger, hk_arms_tent], note: "동쪽 입구 — 바람 표식 있는 낯선 사람이 처음 서는 곳. 크릭 거간과 두르강 무기상과 그나르 고물상이 천막을 친다. 말 한 마리가 인간 열 명이다"}
+  - {id: hk_krik_ledger, name: 크릭 장부 천막 (쏙), parent: hk_trade_tents, access: staff, hours: "06:00-20:00", hidden: "매듭 장부 — 칸의 곡물·소금 외상, 세렌에서 말 열 마리에 짐꾼 백을 쳐 주는 값 (fact_p2hk_ssok_khan_debt)"}
+  - {id: hk_arms_tent, name: 두르강 무기상 천막 (투르가), parent: hk_trade_tents, access: public, hours: "07:00-17:00", hidden: "수레 바닥 — 서명하지 않은 철 창날 이백. 값은 반은 칸에게, 반은 검은바람에게 간다 (fact_p2hk_turga_double_sale)"}
+  - {id: hk_race_ground, name: 경주 재판장, xy: [1300, 900], kind: track, access: public, hours: "05:00-18:00", note: "동쪽 평원에 말뚝 두 개 — 거리 3리. 길이 다툼의 무게다. 먼저 닿은 자의 말을 듣는다. 인간이 달려도 소용없다 — 운동 판정"}
+  - {id: hk_elder_ridge, name: 늙은이의 언덕 (바람 장례터), xy: [1350, 260], kind: hill, access: public, note: "북동쪽 가장 높은 언덕. 죽은 하르칸은 이곳에 눕는다 — 바람에게 준다. 달리지 못하게 된 자는 이곳에서 무리를 떠난다. 예순 늙은굽은 떠나지 않았다", hidden: "언덕 서쪽 비탈 — 서풍이 가장 세게 부는 곳에 열두 개의 오래된 말뼈 막대가 박혀 있다. 서쪽 진군 금지의 옛 법을 새긴 것 (fact_p2hk_yesun_west_wind_origin)"}
+# 오르두 밖 — hours = 오르두에서 걷는 시간 (하르칸은 말을 타면 ×0.35). node 가 다른 곳은 같은 모양의 겨울 진영·여울이다
+outer:
+  - {id: khan_ordu__horsebone_spring, name: 말뼈 샘 (무거운발굽 짐 야영지), hours: 2.5, node: khan_ordu}
+  - {id: khan_ordu__standing_stones, name: 서 있는 돌 열둘 (바람 영의 성소), hours: 9.0, node: khan_ordu}
+  - {id: khan_ordu__salt_lake, name: 소금 호수 노역장, hours: 16.0, node: khan_ordu}
+  - {id: khan_ordu__broken_banner, name: 꺾인 깃발 진영, hours: 15.5, node: khan_ordu}
+  - {id: khan_ordu__outcast_village, name: 버려진 자들의 마을, hours: 20.0, node: khan_ordu}
+  - {id: khan_ordu__blackwind_range, name: 검은바람 북부 초지 (카즈둠 경계), hours: 30.0, node: khan_ordu}
+  - {id: khan_ordu__lasthoof_camp, name: 마지막발굽 진영 (서쪽 끝 — 황무지 경계), hours: 45.0, node: khan_ordu}
+  # 겨울 진영과 말뼈 여울 (다른 노드)
+  - {id: khan_ordu__winter_camp, name: 겨울 진영 — 바람 우물 (오르두와 같은 모양), hours: 0, node: wind_well}
+  - {id: khan_ordu__well_seven, name: 바람 우물 7번 우물 (아래 동굴), hours: 0, node: wind_well}
+  - {id: khan_ordu__ford_crossing, name: 말뼈 여울 건널목, hours: 0, node: horsebone_ford}
+  - {id: khan_ordu__ford_watch, name: 여울 북안 감시 천막 (소란의 정찰대), hours: 0, node: horsebone_ford}

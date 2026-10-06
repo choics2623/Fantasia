@@ -1,0 +1,22 @@
+# 늪 어귀 — 루멘에서 오는 늪길이 늪으로 들어오는 곳 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §8.9(morva_mouth·왜가리 둥지), docs/world/people/morva.md, facts/phase2_morva.yaml.
+# grid: 늪 어귀 평면 (m), 원점 = 북서쪽 모서리. 남쪽이 루멘 쪽 늪길, 북쪽이 갯벌과 뿌리마을 가는 물길. 망꾼 30이 산다.
+id: morva_mouth
+name: 늪 어귀
+node: morva_mouth
+kind: swamp_gate
+grid: {w: 420, h: 300}
+curfew: {from: "22:00", to: "04:00", note: "나루가 닫힌다. 밤에 들어오는 배는 호루라기로 신호를 보내지 않으면 갈대 사이에서 화살이 날아온다"}
+bells:
+  - {at: "05:00", name: 새벽 호루라기 점검}
+  - {at: "12:00", name: 정오 나루 열기 (상인 허가)}
+  - {at: "20:00", name: 해 질 녘 나루 닫기}
+patrols: ["22:00", "02:00"]
+locations:
+  - {id: mm_rotten_pier, name: 썩은 나루 장터, xy: [200, 220], kind: market, access: public, hours: "06:00-20:00", note: "썩은 나루 기둥을 따라 선 장어 훈제·소금·천 가판 열두 곳. 루멘에서 오는 장어 장수들이 하루 한 번 들어와 값을 맞춘다"}
+  - {id: mm_eel_stall, name: 장어 훈제 가판 (마레크), parent: mm_rotten_pier, access: public, hours: "06:00-20:00", note: "훈제 장어가 줄에 걸린 가판. 장어는 오늘 아침 것과 어제 것이 같은 값이다", hidden: "가판 뒤 초막 바닥 아래 상자 — 바르그 지부 연락용 깃털과 빚 문서 사본(아들 둘의 이름)"}
+  - {id: mm_spotters_hut, name: 망꾼 초막 (베니), xy: [175, 200], kind: hut, access: staff, hours: "24시", note: "나루 기둥 곁 낮은 초막. 호루라기 줄이 일곱 갈래로 벽에 걸렸다. 망꾼 30의 교대표가 있다", hidden: "벽 널 밑 늪길 지도 — 가스 웅덩이 세 곳의 표시 (토르와 베니만 아는 것)"}
+  - {id: mm_reed_boats, name: 갈대배 정박, xy: [250, 255], kind: dock, access: public, hours: "24시", note: "나루 아래 갈대배 열세 척. 바닥에 매듭 문자 표식 — 뿌리마을로 가는 물길 지도(`지식:뿌리마을_표식`)", hidden: "한 척이 보름 밤마다 비어 있다 — 베니가 세는 사라지는 배"}
+  - {id: mm_heron_nest, name: 왜가리 둥지 망루, xy: [215, 120], kind: tower, access: staff, hours: "24시", note: "높은 뿌리나무 위 망루. 루멘 쪽과 녹테른 쪽을 모두 본다. 줄사다리 하나", hidden: "나무 구멍 속 바르그 냄새를 지우는 늪 진흙 단지"}
+  - {id: mm_mudflat, name: 갯벌 (루멘 쪽), xy: [260, 60], kind: flat, access: public, hours: "24시 (밤에는 위험)", note: "썰물에 드러나는 갯벌. 가스 웅덩이와 검은 턱이 있다. 보름 밤마다 갯벌 쪽에서 루멘 방향으로 거울 빛이 세 번 반짝인다"}
+  - {id: mm_south_path, name: 루멘 쪽 늪길 입구, xy: [190, 285], kind: path, access: public, hours: "24시", note: "루멘까지 50시간. 깃털 하나가 꽂힌 말뚝 — 바르그가 꽂으면 표식이 된다"}
+outer: []

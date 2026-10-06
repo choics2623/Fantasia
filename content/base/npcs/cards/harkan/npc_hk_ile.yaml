@@ -1,0 +1,170 @@
+# 일레 얼룩 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_ile
+name: 일레 얼룩
+aka:
+- 얼룩
+- 경주의 판관
+- 길이 재는 이
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "여"
+age: 52
+region: "하르칸 초원"
+home: "경주 재판장 곁 천막"
+job: "경주 재판관 — 다툼의 무게를 길로 정하고 먼저 닿은 자의 말을 듣게 한다"
+rank: "벡이 아닌 판관. 칸도 경주 재판 결과를 뒤집지 못한다"
+summary: "하르칸 경주 재판을 주관하는 얼룩무늬 재판관. AS 301 인간 짐꾼이 하르칸 질주자를 이긴 판결을 '무효'가 아니라 '밀봉'했다. 법은 그가 이겼는지 아직 말하지 않았다"
+source: "docs/world/people/harkan.md (npc_hk_ile)"
+life:
+- year: 260
+  age: 0
+  event: "바람발굽에서 태어남"
+- year: 283
+  age: 23
+  event: "경주 재판 견습"
+- year: 295
+  age: 35
+  event: "경주 재판관이 됨"
+- year: 301
+  age: 41
+  event: "인간 짐꾼이 하르칸을 이긴 판결을 밀봉함"
+- year: 310
+  age: 50
+  event: "밀봉한 가죽을 처음 다시 꺼냈다 넣음"
+appearance:
+- 흑백 얼룩 하체, 털이 빛에 따라 지도 같다
+- 허리에 매듭 끈 길이가 서로 다른 열두 가닥 — 재판 길이
+- 눈이 가늘고 먼 곳을 보는 습관이 있다
+smell: "말 땀과 먼지, 가죽 끈"
+voice_sound: "낮고 평평하다. 숫자를 말할 때만 높낮이가 생긴다"
+personality:
+  disposition:
+    용기: 45
+    자비: 20
+    정직: 80
+    신앙: 55
+    탐욕: -20
+    충성: 60
+  temperament:
+  - 신중
+  - 과묵
+  - 완고
+  habits:
+  - 판결을 말하기 전에 허리끈 중 한 가닥을 꺼내 손가락에 감는다
+  - 길이를 걸음으로 세고 말뚝에서 눈을 떼지 않는다
+  values: 길이 다툼의 무게다. 무게는 재는 이의 감정을 따르지 않는다
+  fears:
+  - 밀봉한 판결이 열리는 날
+  - 법이 인간을 무엇으로 부를지 정하라고 요구받는 것
+  desires:
+    short: 올해 재판이 칸의 뜻을 따르지 않게 하는 것
+    long: 밀봉한 판결 가죽이 바람에게 돌아가는 것
+voice:
+  register:
+    to_superior: 칸에게는 낮은 평어, 판결은 칸의 뜻이 아니라고 말한다
+    to_equal: 벡에게는 평평한 존대
+    to_inferior: 인간 당사자에게도 같은 높이로 평어
+    to_player_default: 낯선 사람에게는 다툼의 이름부터 묻는다
+  tics:
+  - 허리끈을 감는다
+  - '''길이 말하오.'''
+  use:
+  - 길
+  - 말뚝
+  - 무게
+  - 먼저
+  - 닿은
+  - 판결
+  avoid:
+  - 무효
+  - 밀봉(공개 자리에서)
+  - 인간이 이겼다
+  length: 낮고 평평하다. 길이를 말할 때만 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 다툼이 있으면 말뚝 앞에서 말하시오. 말은 길이 들어 주오.
+  - situation: 호의
+    line: 다리가 길든 짧든 먼저 닿은 쪽이 옳소. 그게 법이오.
+  - situation: 거절
+    line: 그 판결은 가죽에 있소. 가죽은 바람이 열 때까지 열지 않소.
+  - situation: 슬픔
+    line: 그 짐꾼은 이긴 날 저녁 쓰러졌소. 법은 그가 이긴 것인지 아직 말하지 않았소.
+  - situation: 비밀 누설
+    line: 인간이 이겼을 때 법은 그를 부를 이름이 없소. 그래서 가죽에 넣었소.
+  - situation: 거래
+    line: 말뚝 사이를 달려 보시오. 이기면 가죽 이야기를 하겠소.
+schedule:
+  아침: 경주 재판장 말뚝 사이 거리를 걸음으로 잰다
+  낮: 다툼이 접수된 날 두 당사자의 길을 정한다
+  저녁: 연회 천막 가장자리에서 벡들의 다툼을 듣는다
+  밤: 재판장 곁 천막에서 밀봉한 판결 가죽을 만진다
+places:
+- 경주 재판장
+- 부족장 연회 천막
+knows:
+- fact_hk_west_wind_broken
+hides:
+- fact: fact_p2hk_ile_human_won_sealed
+  reveal_when: "신뢰 55 이상이고 경주 재판장에서 운동 판정으로 이긴 뒤"
+  reveal: [{"trust":55,"tier":"성공","scene":"경주 재판"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "AS 301 이야기가 나오면 '판결은 가죽에 있소'라고만 한다"
+- fact: fact_p2hk_ile_race_rule
+  reveal_when: "호감 35 이상이고 경주 재판 규칙을 물었을 때"
+  reveal: [{"like":35,"named":"경주 재판"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "규칙 이야기가 나오면 '승마는 소용없소'라고만 한다"
+relations:
+- to: npc_temur
+  type: "칸"
+  like: -5
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "판결을 뒤집지 못하는 칸"
+- to: npc_hk_yesun
+  type: "옛 법의 늙은이"
+  like: 30
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "법의 이유를 아는 사람"
+- to: npc_soran
+  type: "경주 재판 구경꾼"
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "말뚝 곁에서 길이를 세는 칸의 딸"
+toward_player: "다툼의 이름부터 묻는다. 먼저 닿는 쪽이 법이라고 말한다"
+persuade:
+  likes: 판결을 존중하는 태도(+25)
+  hates: 인간이 이겼다는 말을 판결 전에 꺼내는 것
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_galloper
+  office: off_race_judge
+  since: 295
+  loyalty: 60
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - AS 301 판결이 밀봉되어 있다
+  - 인간은 운동 판정으로만 이긴다
+  drift:
+  - 그날 재판 접수된 다툼의 수
+  - 허리끈에서 꺼낸 가닥
+  deja_vu: none
+hard_rules:
+- 밀봉한 판결을 먼저 말하지 않는다
+- '''인간이 이겼다''는 말을 판결 전에 하지 않는다'
+on_death: "경주 재판관이 바뀌고 밀봉 판결이 열려 법이 인간을 부를 이름이 한 번 정해진다. 칸이 재판 결과를 따르게 만들 수 있는 사람이 사라진다."
+story_seeds:
+- 플레이어가 경주 재판에서 이기면 일레는 판결을 밀봉에서 꺼낸다 — 법은 그를 길 위의 손님으로 부른다.
+- 밀봉한 가죽이 열리는 날 AS 301의 짐꾼 이름이 처음 불린다.

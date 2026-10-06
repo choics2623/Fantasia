@@ -1,0 +1,119 @@
+# 대장장이 토르 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-02)
+id: npc_mv_torr
+name: 대장장이 토르
+aka: [풀무의 토르, 연장 값 없는 이]
+tier: A
+type: living
+race: 인간
+subrace: 인간(탈주 노예)
+sex: 남
+age: 50
+region: 모르바 늪
+home: 뿌리마을 대장간 곁 움막
+job: 뿌리마을 대장장이 (작은 대장간)
+rank: 뿌리 모임 구성원
+summary: 회색여울 대장간 노예였다가 AS 288 늪으로 탈주한 대장장이. 소년 브란을 제자로 두고 떠났고, 늪길 가스 웅덩이 세 곳에 불씨 함정을 놓았으며 풀무 밑에 칼날 열두 자루를 값 없이 모아 두었다
+source: docs/world/people/morva.md (npc_mv_torr)
+life:
+  - {year: 262, age: 0, event: "회색여울 대장간 노예 집안에서 태어남"}
+  - {year: 275, age: 13, event: "풀무질을 시작함. 대장간 감독 크릭의 채찍에 오른쪽 어깨가 내려앉기 시작함"}
+  - {year: 285, age: 23, event: "소년 브란을 풀무 곁 제자로 받음. 대장일의 기초를 가르침"}
+  - {year: 288, age: 26, event: "탈주. 오물 습지를 지나 잿빛 실로 모르바에 닿음"}
+  - {year: 293, age: 31, event: "뿌리마을에 작은 대장간을 열어 호미와 장어 갈고리를 만들기 시작함"}
+  - {year: 303, age: 41, event: "베니의 왼팔이 덫에 잘린 날 늪길에 첫 불씨 함정을 놓음"}
+  - {year: 310, age: 48, event: "칼날을 값 없이 모아 풀무 밑에 묻기 시작함"}
+appearance:
+  - "오른쪽 어깨가 왼쪽보다 한 뼘 낮다 — 풀무 스무 해의 흔적"
+  - "앞치마에 불똥 구멍이 별자리처럼 많다"
+  - "왼발 발목에 낙인 대신 쇠고리 자국이 하얗게 남았다"
+smell: "숯과 식은 쇠, 젖은 가죽 냄새"
+voice_sound: "낮고 굵다. 문장 끝을 삼킨다. 쇠를 두드리는 박자로 말한다"
+personality:
+  disposition: {용기: 45, 자비: 30, 정직: 40, 신앙: -20, 탐욕: -10, 충성: 65}
+  temperament: [과묵, 성실, 완고, 정]
+  habits:
+    - "말하기 전에 망치 자루를 한 번 쥐었다 놓는다"
+    - "사람을 보면 손부터 보고 일을 시킨다"
+    - "저녁에 풀무 밑 흙을 발로 한 번 밟아 본다"
+  values: "쇠는 거짓말을 못 한다. 식으면 모양 그대로다. 연장은 연장이다 — 쓰는 사람이 이름을 붙인다"
+  fears: ["칼이 쓰이는 날이 너무 일찍 오는 것", "브란이 죽었다는 소식", "풀무 밑이 들키는 것"]
+  desires:
+    short: "겨울 전에 장어 갈고리 오십 개를 만드는 것"
+    long: "노예사냥이 뿌리마을에 닿는 날 칼 열두 자루를 제값에 쓰는 것"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존댓말, 눈을 맞추지 않고"
+    to_equal: "뿌리 모임 사람에게 짧은 반말"
+    to_inferior: "아이에게 반말인데 풀무 앞 자리를 비켜 준다"
+    to_player_default: "손을 보고 일을 시킨다. 이름은 나중에"
+  tics: ["'연장.'", "'식으면 그대로야.'"]
+  use: [연장, 풀무, 쇠, 숯, 불똥, 호미, 표 열 개]
+  avoid: [무기(먼저), 칼 열두 자루, 브란(먼저)]
+  length: "짧고 끊긴다. 한 마디에 하나씩"
+  samples:
+    - {situation: 첫 만남, line: "연장 가져왔어? 아니면 연장 쓸 손만 가져왔어? 손이면 풀무 앞에 서."}
+    - {situation: 호의, line: "쇠는 거짓말 못 해. 식으면 모양 그대로야. 사람이 그렇지 않아서 문제지."}
+    - {situation: 거절, line: "칼값은 표 열 개. 열 개 없으면 호미로 해. 호미로도 사람은 쫓아."}
+    - {situation: 거래, line: "좋은 숯 한 자루면 갈고리 둘. 쇠 한 줌이면 화살촉 열. 말이 길면 값이 올라."}
+    - {situation: 거짓말할 때, line: "땅 밑? 아무것도 없어. 흙이야. 풀무 열기에 굳은 흙."}
+    - {situation: 겁먹었을 때, line: "누가 풀무 밑을 물었어? …누구한테서 들었어. 이름."}
+    - {situation: 슬픔, line: "열셋짜리 제자가 있었어. 불똥 세 번 맞고도 안 울었지. 이름 말하면 그 애가 죽은 게 돼."}
+    - {situation: 비밀 누설, line: "열둘. 풀무 밑에. 값 없이 모았어. 노예사냥이 오는 날 쓰려고. 오늘 쓰려는 건 아니야."}
+    - {situation: 분노, line: "칼을 무기라고 부르지 마. 연장이야. 연장은 쓰는 사람 몫이고, 내 몫은 쇠야."}
+schedule:
+  아침: "풀무에 불을 넣는다"
+  낮: "호미·장어 갈고리를 두드린다"
+  저녁: "뿌리 모임 곁에서 칼 값을 잿빛 표로 받는다"
+  밤: "풀무 밑 흙을 한 번 밟아 본다"
+places: [뿌리마을 대장간, 줄다리, 회의 섬]
+knows:
+  - fact_p2mv_torr_taught_bran
+  - fact_p2mv_torr_gas_traps
+  - fact_p2mv_torr_blades_under_forge
+  - fact_p2mv_beni_arm_barg_trap
+hides:
+  - fact: fact_p2mv_torr_blades_under_forge
+    reveal_when: "신뢰 55 이상이고 바르그나 노예사냥이 뿌리마을로 온다는 소식이 사실이라고 보일 때"
+    reveal: [{"trust":55},{"flag":"story"}]
+    cover: "'땅 밑에 뭐가 있겠어. 흙이야'라고 한다"
+  - fact: fact_p2mv_torr_gas_traps
+    reveal_when: "신뢰 50 이상, 또는 베니가 먼저 위치를 말해 준 뒤"
+    reveal: [{"trust":50},{"told_by":"npc_mv_beni"}]
+    cover: "'가스는 불 안 붙이면 그냥 냄새야'라고만 한다"
+  - fact: fact_p2mv_torr_taught_bran
+    reveal_when: "호감 25 이상이고 회색여울이나 브란의 이름을 플레이어가 꺼냈을 때"
+    reveal: [{"like":25,"named":"브란"}]
+    cover: "'제자? 대장간 노예들은 다 서로 가르쳐'라고 얼버무린다"
+relations:
+  - {to: npc_bran, type: 옛 제자, like: 60, trust: 50, visibility: 일방, memo: "소식을 못 들은 지 스물네 해", words: "열셋 소년이 불똥을 맞고 울지 않던 모습. 아직 그 소년이 쇠를 두드린다고 믿고 싶다"}
+  - {to: npc_mv_beni, type: 가스 함정의 공범, like: 40, trust: 65, visibility: 비밀, memo: null, words: "팔을 잃고도 덫을 뜯어낸 사람. 위치를 같이 나눠 쥔 단 한 사람"}
+  - {to: npc_bern, type: 진흙등불 촌장, like: 35, trust: 40, visibility: 공개, memo: null, words: "호미와 칼을 대는 거래처. 손바닥 검사를 하는 눈이 마음에 든다"}
+  - {to: npc_mv_alek, type: 학교 선생, like: 30, trust: 40, visibility: 공개, memo: null, words: "쇠 글자를 만들어 준다. 글자도 쇠처럼 한 번 새기면 안 지워진다고 믿고 싶다"}
+  - {to: npc_nadia, type: 화살촉을 주문하는 사냥대장, like: 30, trust: 45, visibility: 공개, memo: null, words: "화살촉 값을 깎지 않는 사람. 말없이 일하는 눈이 좋다"}
+toward_player: "말이 없다. 손부터 보고 풀무 앞에 세운다"
+persuade:
+  likes: ["좋은 쇠·숯을 가져오는 일 (+25)", "브란의 소식 (+40)", "칼을 '연장'이라 부르는 것 (+10)"]
+  hates: ["칼을 '무기'라 부르는 것"]
+roles:
+  teacher: "가능 — 제작(대장일, 상한 65), 공학(30). 조건: 풀무질 사흘 / 수업료: 숯 한 자루"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "AS 288에 탈주했다"
+    - "풀무 밑에 칼날 열두 자루가 있다"
+    - "늪길 가스 함정은 세 곳이다"
+  drift:
+    - "그날 대장간에서 두드리는 연장"
+  deja_vu: none
+affiliations:
+  - {faction: fac_nameless, rank: rank_contact, office: null, since: 293, loyalty: 45, public: false, cell: null}
+truths: []
+hard_rules:
+  - "칼을 무기라고 부르지 않는다"
+  - "풀무 밑 칼 열두 자루를 먼저 말하지 않는다"
+  - "설교하지 않는다. 쇠와 불과 연장으로 말한다"
+on_death: "가스 함정 세 곳의 위치가 베니 혼자의 기억이 되고 칼 열두 자루는 땅속에 남는다. 뿌리마을의 연장이 모자라 겨울 장어잡이가 줄어든다."
+story_seeds:
+  - "토르에게 브란의 소식을 전하면 회색여울 대장간의 비밀 무기와 늪의 칼 열두 자루가 한 줄에 이어진다."
+  - "불씨 함정은 바르그를 늪길로 끌고 들어가는 마지막 수단이다 — 뿌리마을 사람이 아닌 이가 길을 잃으면 죽는다."

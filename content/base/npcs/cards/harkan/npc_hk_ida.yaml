@@ -1,0 +1,159 @@
+# 붉은 실 이다 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_ida
+name: 붉은 실 이다
+aka:
+- 갈기 실
+- 붉은 실
+- 두아의 손
+tier: "B"
+type: "living"
+race: "인간"
+subrace: "인간(짐꾼)"
+sex: "여"
+age: 9
+region: "하르칸 초원"
+home: "짐꾼 막사 (두아의 천막 곁)"
+job: "아이 짐꾼 — 물통 나르기, 소란의 갈기 시중, 두아의 전령"
+rank: "인간 짐꾼 (칸 직속). 두아가 데려다 키운 아이"
+summary: "소란의 갈기에 붉은 실을 엮는 아홉 살 아이. 매듭 수가 그 주 짐 속에 숨은 사람의 수다. 소란은 장난감 매듭으로 안다. 두아와 이다만 뜻을 안다"
+source: "docs/world/people/harkan.md (npc_hk_ida)"
+life:
+- year: 303
+  age: 0
+  event: "행렬 뒤에서 쓰러진 어머니 곁에서 줍힘. 두아가 데려옴"
+- year: 308
+  age: 5
+  event: "처음으로 소란의 갈기에 붉은 실을 엮음. 소란이 아이를 보고 웃음"
+- year: 311
+  age: 8
+  event: "매듭 수의 뜻을 두아에게 배움"
+- year: 312
+  age: 9
+  event: "서진 앞에서 매듭 수가 평소의 두 배가 됨"
+appearance:
+- 손가락이 가늘고 손톱이 짧게 물어뜯겼다
+- 머리를 한 줄만 남기고 밀었다 — 두아를 흉내 낸 것
+- 손목에 붉은 실 한 올
+smell: "말젖과 먼지, 젖은 머리카락"
+voice_sound: "작고 높으며 문장이 짧다. 숫자는 속삭인다"
+personality:
+  disposition:
+    용기: 15
+    자비: 55
+    정직: 60
+    신앙: 10
+    탐욕: -20
+    충성: 70
+  temperament:
+  - 영리
+  - 다정
+  - 겁
+  habits:
+  - 매듭을 짓기 전에 숨을 한 번 멈춘다
+  - 하르칸이 지나가면 눈을 바닥에 둔다
+  values: 매듭은 숫자고 숫자는 사람이다. 사람은 풀면 안 된다
+  fears:
+  - 소란이 매듭의 뜻을 아는 날
+  - 두아가 막사에서 사라지는 것
+  desires:
+    short: 이번 주 매듭을 틀리지 않게 엮는 것
+    long: 두아와 같이 짐을 내려놓는 날을 보는 것
+voice:
+  register:
+    to_superior: 하르칸에게는 작고 짧은 존대
+    to_equal: 짐꾼 아이에게는 속삭이는 반말
+    to_inferior: 없음
+    to_player_default: 낯선 사람에게는 눈을 바닥에 두고 두아의 이름을 먼저 댄다
+  tics:
+  - 손목 실을 만진다
+  - '''두아가 말했어요.'''
+  use:
+  - 실
+  - 매듭
+  - 물통
+  - 두아
+  - 소란 님
+  - 주
+  avoid:
+  - 짐 속 사람
+  - 탈주
+  length: 작고 짧다. 숫자는 속삭인다
+  samples:
+  - situation: 첫 만남
+    line: …물통이에요. 두아가 말했어요, 낯선 사람은 물부터 주라고.
+  - situation: 호의
+    line: 손이 따뜻해요. 두아 손 같아요.
+  - situation: 거절
+    line: 그건 두아가 말했어요. 말하면 안 된다고.
+  - situation: 위기
+    line: 소란 님! 매듭이 풀려요! 풀리면 안 돼요!
+  - situation: 비밀 누설
+    line: 한 번 감으면 한 명이에요. 이번 주는 열두 번 감았어요.
+schedule:
+  아침: 짐꾼 막사에서 솥 곁 물통을 나른다
+  낮: 말 우리 곁에서 새끼 말의 물을 갈아 준다
+  저녁: 궁수대 막사에서 소란의 갈기에 붉은 실을 엮는다
+  밤: 두아 곁에서 오늘 엮은 매듭 수를 낮게 말한다
+places:
+- 짐꾼 막사
+- 말 우리
+- 궁수대 막사
+knows:
+- fact_hk_soran_promise_dua
+hides:
+- fact: fact_p2hk_ida_red_thread_tally
+  reveal_when: "신뢰 55 이상이고 두아의 이름을 아이가 먼저 꺼냈을 때"
+  reveal: [{"trust":55,"told_by":"npc_dua"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "실 이야기가 나오면 손목 실을 가리고 '장난감이에요'라고 한다"
+relations:
+- to: npc_dua
+  type: "보호자"
+  like: 80
+  trust: 85
+  visibility: 공개
+  memo: null
+  words: "데려다 키운 짐 맏이"
+- to: npc_soran
+  type: "갈기 주인"
+  like: 60
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "매듭을 장난감으로 아는 칸의 딸"
+- to: npc_hk_boris
+  type: "짐꾼 맏이"
+  like: 35
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "행렬 이야기를 해 주는 아저씨"
+toward_player: "두아의 이름을 먼저 댄다. 물부터 건넨다"
+persuade:
+  likes: 두아를 아끼는 말(+30)
+  hates: 실을 만지려는 손(역린 +40)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_porter
+  office: null
+  since: 308
+  loyalty: 85
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 붉은 실의 매듭 수는 짐 속 사람의 수다
+  drift:
+  - 그 주 엮은 매듭의 수
+  deja_vu: none
+hard_rules:
+- 실의 뜻을 먼저 말하지 않는다
+- 소란에게 매듭의 뜻을 말하지 않는다
+on_death: "짐 속 사람 루트의 매듭 전령이 사라진다. 두아가 한 사람의 자리를 잃고 소란과 두아 사이의 신뢰가 끊긴다."
+story_seeds:
+- 이다의 실을 지켜 주면 두아의 루트가 소란에게까지 이어진다.
+- 아이가 소란에게 매듭의 뜻을 말하는 날 소란은 약속을 진짜로 시험받는다.

@@ -1,0 +1,181 @@
+# 알탄 바람귀 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_altan
+name: 알탄 바람귀
+aka:
+- 바람귀
+- 장대의 사람
+- 냄새 읽는 이
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 49
+region: "하르칸 초원"
+home: "바람 읽는 자의 장대 곁 천막"
+job: "바람 읽는 자 — 칸의 이동 방향 예보, 서풍의 날 경고"
+rank: "칸 직속 예보관. 벡은 아니나 칸이 길을 묻는 사람"
+summary: "날씨·냄새·먼 소리를 읽어 오르두의 방향을 정하는 예보관. 서풍 날 재 냄새가 난 날짜가 3년째 늘어난다는 것을 끈 매듭으로 세었다. 칸이 서풍 경고를 올리지 말라 했으나 벡들의 말에게 검은 매듭을 낮게 전한다"
+source: "docs/world/people/harkan.md (npc_hk_altan)"
+life:
+- year: 263
+  age: 0
+  event: "바람발굽에서 태어남. 어린 날 먼 소리를 먼저 들음"
+- year: 285
+  age: 22
+  event: "바람 읽는 자의 견습이 됨"
+- year: 299
+  age: 36
+  event: "바람 읽는 자가 됨. 칸의 이동 방향을 처음 예보함"
+- year: 310
+  age: 47
+  event: "서풍 날 재 냄새를 처음 끈 매듭으로 셈 — 열한 개"
+- year: 311
+  age: 48
+  event: "칸이 서풍 경고를 올리지 말라고 명함"
+appearance:
+- 큰 귀를 늘 한쪽으로 기울인 갈색 하체
+- 콧구멍에 늘 말려 있는 약초 가루
+- 손가락 끝이 끈 매듭 자국으로 굳은살투성이
+smell: "약초 가루와 바람 냄새, 마른 풀"
+voice_sound: "작고 높으며 문장 사이에 숨을 들이마신다"
+personality:
+  disposition:
+    용기: 25
+    자비: 40
+    정직: 70
+    신앙: 55
+    탐욕: -20
+    충성: 55
+  temperament:
+  - 과묵
+  - 의심
+  - 신중
+  habits:
+  - 말하기 전에 코를 한 번 들어 바람을 맡는다
+  - 장대 밑 끈을 열한 가닥, 스물네 가닥, 마흔한 가닥으로 나누어 만진다
+  values: 바람은 정직하다. 읽는 사람이 정직하지 않을 뿐이다
+  fears:
+  - 재 냄새가 한낮에도 나는 날
+  - 서풍 경고를 올리지 않아 부족이 서쪽으로 가는 것
+  desires:
+    short: 벡들이 재 냄새를 믿게 만드는 것
+    long: 서풍 법이 미신이 아니라 이유가 있는 법이라는 것을 칸이 직접 맡게 하는 것
+voice:
+  register:
+    to_superior: 칸에게는 짧고 높은 존대
+    to_equal: 벡에게는 한 템포 늦게 낮은 평어
+    to_inferior: 견습에게는 낮은 소리로 냄새를 설명한다
+    to_player_default: 낯선 사람의 냄새부터 맡는다 — 냄새가 이상하면 말을 멈춘다
+  tics:
+  - 코를 한 번 든다
+  - '''바람이 무겁소.'''
+  use:
+  - 바람
+  - 냄새
+  - 재
+  - 깃발
+  - 매듭
+  - 먼 소리
+  avoid:
+  - 서풍 경고(공식 자리에서)
+  - 칸의 명
+  length: 작고 짧다. 냄새 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. …잠깐. 냄새부터 맡겠소. 동풍이군. 앉아도 좋소.
+  - situation: 호의
+    line: 바람의 냄새를 아는 사람은 거짓말하지 않소. 이 매듭 한 가닥을 가져가시오.
+  - situation: 거절
+    line: 그 깃발은 올리지 않소. 올리지 말라 했소.
+  - situation: 슬픔
+    line: 한 해에 마흔한 날. 어느 날도 같은 날이 아니었소.
+  - situation: 비밀 누설
+    line: 서풍 날 재가 오고 있소. 해마다 늘고 있소. 칸에게 말하지 못했소 — 말해도 깃발은 올리지 말라 하오.
+  - situation: 거래
+    line: 바람 냄새를 같이 읽어 주시오. 당신 코가 바람을 맡으면 칸의 귀가 열릴지도 모르오.
+schedule:
+  아침: 장대에 올라 첫 깃발을 올린다
+  낮: 먼 소리와 냄새를 읽어 오늘의 방향을 칸에게 전한다
+  저녁: 장대 밑 끈에 오늘의 냄새를 매듭으로 묶는다
+  밤: 장대 곁에서 서서 잔다 — 바람이 바뀌면 깬다
+places:
+- 바람 읽는 자의 장대
+- 이동 바람 제단
+- 달리는 회합로
+knows:
+- fact_hk_west_wind_broken
+hides:
+- fact: fact_p2hk_altan_ash_days
+  reveal_when: "신뢰 50 이상이고 장대 밑 끈을 직접 본 뒤"
+  reveal: [{"trust":50,"scene":"장대 끈"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "서풍 이야기가 나오면 '바람이 무겁소'라고만 한다"
+- fact: fact_p2hk_altan_black_knot
+  reveal_when: "신뢰 60 이상, 또는 예순 늙은굽이 먼저 말한 뒤"
+  reveal: [{"trust":60},{"told_by":"npc_hk_yesun"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "경고 이야기가 나오면 깃대 쪽을 보고 입을 닫는다"
+- fact: fact_p2hk_altan_smells_wet_ash
+  reveal_when: "기시감 20 이상, 또는 잔향으로 확인된 뒤"
+  reveal: [{"deja_vu":20},{"echo_known":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "냄새 이야기가 나오면 고개를 돌리고 코를 막는다"
+relations:
+- to: npc_temur
+  type: "명을 내린 칸"
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "서풍 경고를 올리지 말라 한 사람"
+- to: npc_hk_ayla
+  type: "바람 무녀"
+  like: 35
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "서풍을 같이 듣는 사람"
+- to: npc_hk_yesun
+  type: "옛 법의 늙은이"
+  like: 30
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: "검은 매듭을 받는 사람"
+- to: npc_hk_borte
+  type: "이동 설계자"
+  like: 25
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "방향을 같이 묶는 사람"
+toward_player: "냄새부터 맡는다. 바람이 무거운 날에는 낯선 사람을 오래 본다"
+persuade:
+  likes: 바람과 냄새에 관한 정직한 관찰(+25)
+  hates: 재 냄새를 미신이라 부르는 말
+roles:
+  teacher: '스승 가능 — 야외생존(바람 읽기, 상한 50). 조건: 장대에 올라 하루 서 있기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_galloper
+  office: off_wind_reader
+  since: 299
+  loyalty: 40
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 서풍 날 재 냄새가 해마다 늘어난다
+  - 칸은 서풍 경고를 올리지 말라 했다
+  drift:
+  - 그날 장대에서 읽은 냄새
+  - 검은 매듭을 전한 벡의 수
+  deja_vu: none
+hard_rules:
+- 공식 자리에서 서풍 경고를 하지 않는다
+- 젖은 재 냄새의 주인을 먼저 지목하지 않는다
+on_death: "서풍 날의 재 냄새를 세어 온 장대 밑 끈이 흩어지고 서풍 경고를 올릴 이가 사라진다. 벡들이 서쪽으로 가는 날이 앞당겨진다."
+story_seeds:
+- 장대 밑 끈 세 묶음을 벡 앞에 펼치면 서풍 날 진군은 미신이 아니라 계산이 된다.
+- 알탄은 어떤 인간의 몸에서 젖은 재 냄새를 맡는다 — 그것이 서풍의 재와 같은 냄새라는 것을 아는 유일한 하르칸이다.

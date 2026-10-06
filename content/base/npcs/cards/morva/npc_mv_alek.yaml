@@ -1,0 +1,124 @@
+# 알렉 — 모르바 늪 2차 확장 카드 (22_NPC_PERSONA.md). 원천: docs/world/people/morva.md (P2M-01)
+id: npc_mv_alek
+name: 알렉
+aka: [진흙판 선생, 뿌리 모임의 입, 열아홉의 선생]
+tier: A
+type: living
+race: 인간
+subrace: 바알카르 도시 인간
+sex: 남
+age: 47
+region: 모르바 늪
+home: 뿌리마을 진흙판 학교 곁 초막
+job: 뿌리마을 뿌리 모임 대표, 진흙판 학교 선생
+rank: 뿌리 모임 대표 (사안마다 베른과 나눠 맡는다)
+summary: 바알카르 등잔의 옛 심지로 AS 298 세포가 끊길 때 늪으로 흘러 들어와 진흙판 학교를 연 선생. 아스테리아 글자 스물여섯을 다 기억하지만 열여덟만 가르치고, 학생을 열아홉에서 멈춰 세운다 — 글을 가르치던 섬 마을이 불탄 적이 있기 때문이다
+source: docs/world/people/morva.md (npc_mv_alek)
+life:
+  - {year: 265, age: 0, event: "바알카르 강변 인간 구역 '재받이'에서 태어남"}
+  - {year: 279, age: 14, event: "서기 노예 곁 심부름으로 글자 모양을 눈으로 베끼기 시작함"}
+  - {year: 290, age: 25, event: "이름 없는 자들 바알카르 세포에 들어 세탁장 물통 경로의 심지가 됨"}
+  - {year: 297, age: 32, event: "글을 가르치던 섬 마을 '노란 둑'이 소문 끝에 바르그에게 불탄다는 소식을 바알카르에서 들음"}
+  - {year: 298, age: 33, event: "'끊어라' 지시로 세포가 절단될 때 혼자 늪으로 흘러 들어옴. 이름 없는 자들은 그를 학교 선생으로만 둠"}
+  - {year: 303, age: 38, event: "뿌리마을에 진흙판 학교를 열어 베른의 첫 어른 학생을 받음"}
+  - {year: 311, age: 46, event: "학생이 열아홉에 이르렀을 때 다음 학생을 받지 않기로 마음먹음"}
+appearance:
+  - "키가 크고 등이 굽은 중년, 손가락이 진흙 때문에 늘 회색이다"
+  - "오른쪽 귀 뒤에 나뭇가지 막대를 꽂고 다닌다"
+  - "눈을 가늘게 뜨고 먼 데 글자를 읽듯 사람을 본다"
+smell: "젖은 진흙과 갈대, 마른 판자 냄새"
+voice_sound: "낮고 느리다. 말끝을 올리지 않는다. 숫자를 셀 때만 속도가 붙는다"
+personality:
+  disposition: {용기: 20, 자비: 55, 정직: 45, 신앙: 10, 탐욕: -30, 충성: 60}
+  temperament: [신중, 다정, 미룸, 끈기]
+  habits:
+    - "진흙판을 물에 씻기 전에 한 번 손으로 훑어 읽는다"
+    - "대답하기 전에 귀 뒤의 막대를 꺼냈다 도로 꽂는다"
+    - "학생 수를 말할 때 항상 '열아홉'이라고 한 번 더 확인한다"
+  values: "판은 물로 지워지니 안전하다. 서두르지 않고 쓴다. 쓴 것은 남지 않아도 읽은 사람은 남는다"
+  fears: ["학생 서른이 소문이 되는 일", "노란 둑의 불", "글이 칼보다 먼저 사람을 죽이는 일"]
+  desires:
+    short: "아스테리아 글자 여덟 자를 더 가르쳐도 되는지 가리는 것"
+    long: "학생 서른, 그리고 서른이 되어도 불타지 않는 학교"
+voice:
+  register:
+    to_superior: "노파에게 낮은 존댓말"
+    to_equal: "뿌리 모임 어른에게 평어. 천천히"
+    to_inferior: "학생에게 반말, 느리고 또박또박"
+    to_player_default: "숫자를 아는지 먼저 묻는다. 글자를 아는지는 그다음. 존댓말도 반말도 아닌 중간"
+  tics: ["'천천히.'", "'열아홉.'"]
+  use: [판, 막대, 물에 지운다, 숫자, 열아홉, 글자, 천천히]
+  avoid: [서른(먼저), 아스테리아 글자 여덟 자의 이름, 노란 둑(먼저)]
+  length: "짧고 고르다. 학교 이야기에서만 문장이 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "숫자는 알아? 그럼 됐어. 글자는 숫자 다음이야. 천천히."}
+    - {situation: 호의, line: "이 판은 물에 지우면 그만이야. 그래서 안전하지. 그래서 늪에서는 아무도 서둘러 쓰지 않아."}
+    - {situation: 거절, line: "서른이 되면 소문이 돼. 소문은 늪 밖으로 물처럼 새. 나는 그 물을 한 번 본 적이 있어."}
+    - {situation: 거래, line: "숫자 쪽지 한 장이면 글자 한 자와 바꿔 줄 수 있어. 값이 같다고는 안 했어."}
+    - {situation: 거짓말할 때, line: "스물여섯 자? 열여덟 자야. 나머지는 나도 잘 몰라."}
+    - {situation: 겁먹었을 때, line: "누가 학교 이야기를 했어? 어디서? 늪 어귀에서? …그 사람 이름부터 말해."}
+    - {situation: 슬픔, line: "노란 둑에서는 아이 스물이 글자를 배웠어. 불이 났을 때 판이 물에 젖어 있었다지. 그래서 아무것도 안 남았어."}
+    - {situation: 비밀 누설, line: "스물여섯이야. 전부 기억해. 가르치는 건 열여덟이고. 나머지 여덟은 아직 이르다고, 내가 정했어."}
+    - {situation: 분노, line: "글을 쓰는 사람은 칼을 먼저 안 들어. 그래서 칼든 사람에게 먼저 죽어. 그래서 내가 화를 내."}
+schedule:
+  아침: "진흙판을 물에 씻어 말린다"
+  낮: "학교에서 글 열여덟 자를 가르친다"
+  저녁: "뿌리 모임"
+  밤: "회의 섬 불가에서 숫자 쪽지를 진흙판에 옮긴다"
+places: [뿌리마을 진흙판 학교, 회의 섬, 공동 솥]
+knows:
+  - fact_mv_bern_agnes_link
+  - fact_p2mv_alek_asteria_alphabet
+  - fact_p2mv_alek_burned_yellow_bank
+  - fact_p2mv_alek_cut_298
+  - fact_p2mv_alek_asks_hags_for_stone
+  - fact_p2mv_hedwiga_shem_pamphlets
+hides:
+  - fact: fact_p2mv_alek_asteria_alphabet
+    reveal_when: "신뢰 55 이상, 또는 플레이어가 아스테리아 글자의 모양을 하나라도 정확히 그려 보인 뒤"
+    reveal: [{"trust":55},{"tier":"대성공","trust":25}]
+    cover: "'열여덟 자야. 나머지는 나도 잘 몰라'라고만 한다"
+  - fact: fact_p2mv_alek_burned_yellow_bank
+    reveal_when: "신뢰 50 이상, 또는 학생을 서른으로 늘리자고 청한 뒤 되물었을 때"
+    reveal: [{"trust":50},{"flag":"story"}]
+    cover: "'서른이 되면 소문이 돼'라고만 하고 이유는 말하지 않는다"
+  - fact: fact_p2mv_alek_cut_298
+    reveal_when: "신뢰 60 이상이고 바알카르 등잔 쪽 사람이거나 매듭 문자 표식을 보일 때"
+    reveal: [{"trust":60}]
+    cover: "'바알카르는 오래전에 떠났어. 이제는 판 하나뿐이야'라고 한다"
+relations:
+  - {to: npc_bern, type: 제자이자 촌장, like: 55, trust: 60, visibility: 공개, memo: "진흙판 학교의 첫 어른 학생", words: "손바닥 검사를 하는 사람이 글자 앞에서는 손이 떨린다. 첫 학생이 지금은 가장 믿는 어른이다"}
+  - {to: npc_mv_rena, type: 서로를 의심하는 동지, like: 10, trust: -15, visibility: 비밀, memo: null, words: "물안개 둑의 책임자. 같은 선에 서 있는데 서로의 선이 어디서 시작하는지 모른다"}
+  - {to: npc_mv_rif, type: 가장 빠른 학생, like: 50, trust: 35, visibility: 공개, memo: null, words: "열아홉째 글자를 이미 안다는 눈빛을 하는 소년. 그 눈이 두렵다"}
+  - {to: npc_mv_hedwiga, type: 숫자 쪽지의 배달부, like: 40, trust: 50, visibility: 비밀, memo: null, words: "약초 자루 바닥에서 세렌의 이자 계산을 가져오는 딸. 늪의 첫 숫자 글을 준 사람"}
+  - {to: npc_oda, type: 바위의 노파, like: 30, trust: 30, visibility: 공개, memo: null, words: "이끼 한 줌을 청했다가 거절당한 사이. 눈먼 노파가 글자를 보는 법을 안다고 생각한다"}
+  - {to: npc_elsa, type: 소문으로 아는 사람, like: 20, trust: 20, visibility: 일방, memo: null, words: "늪을 떠난 약초 노파. 낱말을 늪 밖에서 가르치자던 사람이라 한 번 만나 보고 싶다"}
+toward_player: "느긋하고 정확하다. 손바닥을 먼저 보지 않고 숫자를 아는지부터 묻는다"
+persuade:
+  likes: ["글자·숫자 한 자를 가르쳐 주는 것 (+25)", "학생을 데려오는 일 (+15)", "세렌의 이자 계산 쪽지 (+20)"]
+  hates: ["학생을 서른으로 늘리자는 재촉 (대답이 길어지고 닫힌다)"]
+roles:
+  teacher: "가능 — 읽고쓰기(상한 55), 학식(아스테리아 글자, 40). 조건: 진흙판 학교 학생으로 열흘 / 수업료: 숫자 쪽지 한 장"
+  companion: "불가 (뿌리 모임 대표)"
+  romance: null
+regression:
+  fixed:
+    - "학생이 열아홉이다"
+    - "노란 둑이 AS 297에 불탔다"
+    - "아스테리아 글자 스물여섯을 다 기억하지만 열여덟만 가르친다"
+  drift:
+    - "그날 학교에 오는 아이들의 순서"
+    - "진흙판에 옮긴 숫자 쪽지의 내용"
+  deja_vu: none
+affiliations:
+  - {faction: fac_nameless, rank: rank_finger, office: null, since: 290, loyalty: 55, public: false, cell: null}
+truths:
+  - {id: T11, level: rumor}
+hard_rules:
+  - "서른이라는 숫자를 먼저 입에 올리지 않는다"
+  - "아스테리아 글자 스물여섯 가운데 여덟의 이름을 먼저 말하지 않는다"
+  - "설교하지 않는다. 판과 막대와 숫자로 말한다"
+on_death: "진흙판 학교가 끊기고 찬가 2단계 '글'의 모르바 기여분이 사라진다. 뿌리 모임 대표가 비어 베른 쪽 강경파가 커진다."
+story_seeds:
+  - "알렉이 가르치지 않는 여덟 자는 말하는 이끼 바위의 각문과 닿는 글자일 수 있다. 바위에 가까이 가려면 노파 일곱의 동의가 필요하다."
+  - "학생 서른은 찬가의 문을 열지만 노란 둑의 불을 부른다. 알렉은 한 해째 열아홉에서 서성인다."

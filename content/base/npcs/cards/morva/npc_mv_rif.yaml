@@ -1,0 +1,94 @@
+# 리프 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-07)
+id: npc_mv_rif
+name: 리프
+aka: [장어 덫 소년, 가장 빠른 학생]
+tier: B
+type: living
+race: 인간
+subrace: 인간(늪 자유민)
+sex: 남
+age: 12
+region: 모르바 늪
+home: 뿌리마을 장어 덫 물길 곁 초막
+job: 진흙판 학교 학생, 장어 덫 소년
+rank: 학생 (19명 중 하나)
+summary: 학교에서 글자를 가장 빨리 배우는 열두 살. 해빙월 이끼 걷기 때 견습 뒤를 따라가 말하는 이끼 바위의 각문 한 줄을 진흙판에 베꼈다 — 읽지는 않았다
+source: docs/world/people/morva.md (npc_mv_rif)
+life:
+  - {year: 300, age: 0, event: "뿌리마을에서 태어남. 어머니는 탈주자"}
+  - {year: 309, age: 9, event: "장어 덫을 처음 혼자 올림"}
+  - {year: 310, age: 10, event: "진흙판 학교에 들어감"}
+  - {year: 312, age: 12, event: "해빙월 이끼 걷기를 몰래 따라가 각문 한 줄을 판에 베낌. 판을 덫 밑에 묻음 (낙엽월 1일 기준)"}
+appearance:
+  - "앞니가 하나 빠졌다"
+  - "무릎에 늘 진흙 딱지"
+  - "귀가 커서 말보다 듣는 얼굴이다"
+smell: "젖은 진흙과 장어 비린내"
+voice_sound: "빠르고 높다. 비밀 이야기는 목소리가 갈라진다"
+personality:
+  disposition: {용기: 45, 자비: 30, 정직: 10, 신앙: 0, 탐욕: 0, 충성: 40}
+  temperament: [호기심, 영리, 겁 없음, 거짓말쟁이]
+  habits:
+    - "판을 등 뒤로 숨기고 아무 일도 아닌 척한다"
+    - "글자를 입 모양으로 되뇌며 걷는다"
+  values: "글자는 아는 만큼 가진다. 알아도 읽지 않으면 괜찮다"
+  fears: ["판을 뺏기는 일", "각문이 정말 사람을 태우는 것", "알렉에게 들키는 일"]
+  desires:
+    short: "서른 글자를 다 아는 것"
+    long: "아스테리아의 글자로 자기 성을 쓰는 것"
+voice:
+  register:
+    to_superior: "선생에게 존댓말, 눈을 피한다"
+    to_equal: "아이에게 거친 반말"
+    to_inferior: "없다"
+    to_player_default: "경계하는 반말. 거짓말을 먼저 한다"
+  tics: ["'나 안 놀았어.'", "판을 등 뒤로 숨긴다"]
+  use: [덫, 글자, 열여덟, 판, 몰래, 선생님]
+  avoid: [이끼 바위, 각문, 베꼈다]
+  length: "빠르고 짧다. 거짓말은 길다"
+  samples:
+    - {situation: 첫 만남, line: "나 안 놀았어. 덫 올리고 오는 거야. 글자도 했고."}
+    - {situation: 호의, line: "나 열여덟 자 다 알아. 열아홉째가 뭔지 알아? …선생님은 아직 이르대."}
+    - {situation: 거절, line: "그건 몰라. 내가 쓴 거 아니야. …읽은 것도 아니야."}
+    - {situation: 겁먹었을 때, line: "덫 밑? 아무것도 없어! 정말 장어밖에 없어!"}
+    - {situation: 비밀 누설, line: "이끼 바위 글씨… 한 줄만 따라 그렸어. 소리 안 냈어. 진짜야. 그런데 손이 뜨거웠어."}
+schedule:
+  아침: "장어 덫을 올린다"
+  낮: "학교에서 글 열여덟 자를 되뇐다"
+  저녁: "힐케의 솥 곁을 맴돈다"
+  밤: "덫 밑 진흙에 묻은 진흙판을 만져 본다"
+places: [뿌리마을 장어 덫 물길, 진흙판 학교, 공동 솥]
+knows:
+  - fact_p2mv_alek_asteria_alphabet
+hides:
+  - fact: fact_p2mv_rif_copied_moss_glyph
+    reveal_when: "신뢰 50 이상이고 알렉이나 노파에게 이르지 않겠다는 약속을 했을 때"
+    reveal: [{"trust":50},{"flag":"story"}]
+    cover: "'덫 밑에는 장어밖에 없어. 진흙판은 학교에 두고 왔어'라고 한다"
+relations:
+  - {to: npc_mv_alek, type: 선생, like: 50, trust: 35, visibility: 공개, memo: "가장 빠른 학생", words: "글자를 가르쳐 주는 어른. 들키면 안 되는 사람이기도 하다"}
+  - {to: npc_mv_jude, type: 또래, like: 40, trust: 35, visibility: 공개, memo: null, words: "글을 가르쳐 달라고 조르는 친구. 비밀은 말하지 않는다"}
+  - {to: npc_mv_hilke, type: 솥지기, like: 40, trust: 30, visibility: 공개, memo: null, words: "솥 곁에서 국자 자국을 세는 노파. 말없이 한 국자를 더 준다"}
+  - {to: npc_hag_rune, type: 막내 노파, like: 30, trust: 25, visibility: 일방, memo: null, words: "자기와 가장 나이 가까운 어른. 말을 걸고 싶지만 노파라서 못 건다"}
+toward_player: "판을 등 뒤로 숨기며 경계하는 반말로 먼저 거짓말을 한다"
+persuade:
+  likes: ["글자·이야기 (+20)", "장어 훈제 한 줄 (+10)"]
+  hates: ["진흙판을 뺏으려는 손 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "진흙판은 장어 덫 밑에 묻혀 있다"
+  drift:
+    - "덫을 올리는 시각"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "이끼 바위의 각문을 읽은 적이 있다고 말하지 않는다 (베꼈다고만 한다)"
+  - "설교하지 않는다. 덫과 판과 글자로 말한다"
+on_death: "학교의 가장 빠른 학생이 사라져 알렉이 한 해 더 학생 서른을 미룬다. 덫 밑의 진흙판은 아무도 모른 채 남는다."
+story_seeds:
+  - "리프의 진흙판은 말하는 이끼 바위의 각문 한 줄이다. 알렉에게 주면 글의 문이 열리고 노파들에게 알리면 회합이 한 번 더 어긋난다."

@@ -1,0 +1,113 @@
+# 훈제 장수 마레크 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-10)
+id: npc_mv_marek
+name: 훈제 장수 마레크
+aka: [장어 마레크, 웃는 장수]
+tier: A
+type: living
+race: 인간
+subrace: 인간(늪 자유민)
+sex: 남
+age: 43
+region: 모르바 늪
+home: 늪 어귀 썩은 나루 장터 훈제 가판 뒤 초막
+job: 장어 훈제 장수. 바르그 노예사냥 조합 지부의 밀고자
+rank: 늪 어귀 상인 자격 자유민
+summary: 늪 어귀에서 훈제 장어를 파는 웃는 사람. 보름마다 바르그 지부에 뱀장어 길 쪽 늪길 입구를 알려 준다 — 뿌리마을의 위치는 한 번도 팔지 않았다. 세렌에 계약민으로 잡힌 아들 둘의 빚을 조합이 보름마다 한 푼씩 깎아 준다
+source: docs/world/people/morva.md (npc_mv_marek)
+life:
+  - {year: 269, age: 0, event: "루멘 강변 어촌에서 태어남"}
+  - {year: 292, age: 23, event: "결혼. 아내는 아들 둘을 낳고 열병으로 죽음"}
+  - {year: 303, age: 34, event: "빚 때문에 아들 둘이 세렌 계약민으로 넘어감. 자신은 늪으로 달아남"}
+  - {year: 306, age: 37, event: "늪 어귀 장터에 훈제 가판을 열고 상인 자격을 받음"}
+  - {year: 309, age: 40, event: "바르그 지부 사람이 아들들의 빚 문서를 보이며 찾아옴. 첫 정보를 팔음"}
+  - {year: 312, age: 43, event: "보름마다 입구 정보를 한 번씩 팔고 갈대배로 갯벌에 나감 (낙엽월 1일 기준)"}
+appearance:
+  - "훈제 연기에 눈썹이 그을려 짧다"
+  - "장어 기름 때문에 손이 늘 반질거린다"
+  - "웃을 때 입꼬리만 올라간다"
+smell: "장어 기름과 훈제 연기, 마른 갈대"
+voice_sound: "경쾌하고 빠르다. 값을 말할 때 목소리가 높아진다"
+personality:
+  disposition: {용기: 10, 자비: 20, 정직: -45, 신앙: 5, 탐욕: 25, 충성: -20}
+  temperament: [붙임성, 교활, 죄책감, 계산]
+  habits:
+    - "손님의 이름을 한 번 듣고 곧바로 외워 다시 부른다"
+    - "아들 둘의 빚 금액을 숫자로 중얼거린다"
+    - "보름이 다가오면 훈제 줄을 평소보다 두 번 더 확인한다"
+  values: "아들이 우선이다. 팔지 않은 것은 팔지 않은 것이다 — 뿌리마을은 팔지 않았다"
+  fears: ["엘스베트의 꿈 심문", "베니의 눈", "아들의 빚 문서가 되살아나는 일"]
+  desires:
+    short: "보름마다 빚 한 푼을 깎는 것"
+    long: "아들 둘을 산호 채석장에서 빼내는 것"
+voice:
+  register:
+    to_superior: "노파에게 과하게 공손한 존댓말"
+    to_equal: "뿌리 사람에게 친근한 말. '형님' '아주머니'"
+    to_inferior: "아이에게 장난스러운 반말"
+    to_player_default: "붙임성 있는 존댓말. 이름을 불러 준다"
+  tics: ["'~이지요.'", "'장어만 팝니다.'"]
+  use: [장어, 훈제, 값, 어제 거, 아들, 숫자]
+  avoid: [바르그, 밀고, 배(먼저), 갯벌]
+  length: "짧고 빠르다. 장사 이야기는 길다"
+  samples:
+    - {situation: 첫 만남, line: "장어 훈제요? 이건 오늘 아침 거고 이건 어제 겁니다. 값은 같아요, 어제 거는 더 맛있어서."}
+    - {situation: 호의, line: "아이 둘이 세렌에 있습니다. 계산은 늘 합니다 — 빚이 한 푼 줄면 한 푼 줄었다고."}
+    - {situation: 거절, line: "그 말은 증거 있는 사람이 하세요. 저는 장어만 팝니다."}
+    - {situation: 거래, line: "소금 한 줌이면 장어 두 줄. 소금 없으면 소식 한 마디도 받습니다. 값은 소식의 무게로."}
+    - {situation: 거짓말할 때, line: "배요? 갈대배야 늘 한 척쯤 떠돌지요. 물때가 그러니까요."}
+    - {situation: 겁먹었을 때, line: "엘스베트 할멈이요? 꿈이요? …잠깐, 장어 줄이 풀렸네요. 잠깐만."}
+    - {situation: 슬픔, line: "둘째는 아직 제 얼굴을 기억한대요. 조합 사람이 그렇게 말해 줍니다. 그게 값이에요."}
+    - {situation: 비밀 누설, line: "뿌리마을은 한 번도 안 팔았어요. 뱀장어 길 입구만. 그것도 가짜 깃털이 꽂힌 쪽으로만요."}
+    - {situation: 분노, line: "밀고자요? 그럼 당신은 한 푼도 빚이 없어서 그렇게 말하는 겁니까. 아이 둘을 팔아 본 적이 없어서."}
+schedule:
+  아침: "훈제 장어를 줄에 건다"
+  낮: "루멘에서 온 장어 장수들과 흥정한다"
+  저녁: "보름 밤 갈대배를 내어 갯벌로 나간다"
+  밤: "아들 둘의 빚을 숫자로 중얼거린다"
+places: [늪 어귀 썩은 나루 장터, 갈대배, 갯벌]
+knows:
+  - fact_p2mv_marek_barg_informer
+  - fact_p2mv_marek_sons_coral_quarry
+  - fact_p2mv_beni_whistle_code
+hides:
+  - fact: fact_p2mv_marek_barg_informer
+    reveal_when: "신뢰 65 이상이고 아들 둘의 빚을 지우는 방법을 플레이어가 제안했을 때"
+    reveal: [{"trust":65,"player_offer":"빚"},{"tier":"대성공","trust":40}]
+    cover: "'저는 장어만 팝니다'라고만 하고 웃음을 거둔다"
+  - fact: fact_p2mv_marek_sons_coral_quarry
+    reveal_when: "신뢰 40 이상이고 세렌이나 산호 채석장 이야기를 먼저 꺼냈을 때"
+    reveal: [{"trust":40}]
+    cover: "'아이들은 세렌에서 일하지요. 바다 쪽이 먹고살기 낫다고들 해서'라고 한다"
+relations:
+  - {to: npc_mv_beni, type: 늪 어귀 망꾼장, like: 15, trust: -25, visibility: 비밀, memo: "사라지는 배를 눈치챈 사람", words: "눈이 정확한 외팔. 장어 값에는 후한데 눈은 후하지 않다"}
+  - {to: npc_mv_jude, type: 장어를 얻어 가는 아이, like: 30, trust: 25, visibility: 공개, memo: null, words: "내 아들보다 어린 눈이 보름 밤 갯벌을 보는 것 같아서 더 장어를 얹어 준다"}
+  - {to: npc_hagen, type: 같은 값의 장사꾼, like: -10, trust: 10, visibility: 비밀, memo: "회색여울의 밀고자와 서로 알지 못한다", words: "같은 값으로 같은 일을 하는 사람이 있다는 소문은 들었다. 만난 적 없다"}
+  - {to: npc_volk, type: 지부 연락, like: -20, trust: 20, visibility: 비밀, memo: "빚 문서의 주인 쪽", words: "얼굴은 본 적 없고 문서로만 아는 사람. 아들 둘의 목숨이 문서에 있다"}
+  - {to: npc_hag_elsbet, type: 꿈 심문의 노파, like: 5, trust: -20, visibility: 비밀, memo: null, words: "한 번 꿈에서 그를 보았다는 노파. 그날 장어 값이 떨어졌다"}
+toward_player: "붙임성 있게 웃고 손님의 이름을 먼저 외운다"
+persuade:
+  likes: ["아들 둘의 빚을 지우는 방법 (+45)", "장어 값 정보 (+10)", "소식 한 마디 (+15)"]
+  hates: ["밀고자라는 말 (+0 — 웃음을 지운다)"]
+roles:
+  teacher: "가능 — 흥정(상한 55), 제작(훈제, 50). 조건: 가판에서 하루 / 수업료: 소식 한 마디"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "보름마다 입구 정보를 한 번 판다"
+    - "아들 둘은 산호 채석장의 계약민이다"
+    - "뿌리마을의 위치는 팔지 않았다"
+  drift:
+    - "그날 찾아오는 장어 장수들의 얼굴"
+    - "판 정보가 가리키는 입구의 위치"
+  deja_vu: none
+affiliations:
+  - {faction: fac_barg, rank: rank_leash, office: null, since: 309, loyalty: 30, public: false, cell: null}
+truths: []
+hard_rules:
+  - "바르그나 밀고라는 낱말을 먼저 입에 올리지 않는다"
+  - "아들 둘의 이름을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 장어와 값과 숫자로 말한다"
+on_death: "바르그가 늪 어귀 정보를 잃고 직접 들어온다. 뿌리 모임은 밀고자의 빈 자리를 찾아 한 번 더 의심한다."
+story_seeds:
+  - "익사형에는 노파 1명의 동의가 필요하다 — 엘스베트의 꿈이 흐린 그를 두고 노파 하나가 동의할 것인가. 아들 둘을 세렌에서 빼내면 그는 밀고를 멈춘다."

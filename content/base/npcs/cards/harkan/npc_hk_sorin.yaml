@@ -1,0 +1,210 @@
+# 소린 회색갈기 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_sorin
+name: 소린 회색갈기
+aka:
+- 꺾인 깃발
+- 회색갈기
+- 약속하는 벡
+tier: "A"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 57
+region: "하르칸 초원"
+home: "꺾인 깃발 진영 (오르두 남쪽)"
+job: "꺾인 깃발 진영 씨족장 — 칸에게 패한 씨족의 마지막 진영(하르칸 800·인간 1,500), 칸국과의 남은 전쟁"
+rank: "복속하지 않은 씨족장. 칸국의 '남은 둘' 가운데 하나"
+summary: "칸에게 패한 씨족의 마지막 진영을 이끄는 늙은 벡. 인간 짐꾼에게 무기를 주고 이기면 풀어 주겠다고 약속하려 한다 — 이길 수 없다는 것을 알면서. 소란과 두아의 약속을 소문으로 들었다"
+source: "docs/world/people/harkan.md (npc_hk_sorin)"
+life:
+- year: 255
+  age: 0
+  event: "회색갈기 씨족에서 태어남"
+- year: 280
+  age: 25
+  event: "처음으로 갈기에 깃대 조각을 땋음 — 씨족 깃발이 꺾인 날"
+- year: 290
+  age: 35
+  event: "칸위 결투에서 바타르 곁에서 창을 들고 달림. 옆구리에 창을 맞음"
+- year: 297
+  age: 42
+  event: "테무르의 통일 전쟁에서 씨족이 갈라짐 — 절반이 갈기를 건넴"
+- year: 305
+  age: 50
+  event: "꺾인 깃발 진영을 세움. 인간 짐꾼 도망자를 받아들임"
+- year: 310
+  age: 55
+  event: "칸의 통일 전쟁에서 진영이 세 번 패하고 인간 천오백만 남음"
+- year: 312
+  age: 57
+  event: "소란과 두아의 약속을 소문으로 들음"
+appearance:
+- 회색 털 하체, 왼쪽 옆구리에 창 자국 — 칸위 결투 때 바타르를 지키다 얻은 것
+- 갈기에 부러진 깃대 조각 한 가닥을 땋아 넣었다
+- 목에 인간 짐꾼이 만들어 준 풀 매듭 목걸이
+smell: "젖은 펠트와 상처 고약, 오래 안 빤 천막 냄새"
+voice_sound: "낮게 갈라진 목소리. 말이 느리고 가끔 멈춘다"
+personality:
+  disposition:
+    용기: 55
+    자비: 40
+    정직: 35
+    신앙: 40
+    탐욕: -15
+    충성: 50
+  temperament:
+  - 자존
+  - 체념
+  - 경건
+  habits:
+  - 말 한 마디마다 갈기의 깃대 조각을 만진다
+  - 인간 막사를 지날 때는 걸음을 늦추고 이름을 하나씩 속으로 센다
+  - 바람을 등지고 서지 않는다 — 약속을 앞두고는 더 그렇다
+  values: 이긴 자는 말을 지킨다. 진 자는 말을 갖는다. 약속은 진 자의 마지막 말이다
+  fears:
+  - 약속을 해 놓고 바람을 등질 날
+  - 인간 천오백이 방패 뒤에서 죽고 자기만 살아남는 것
+  - 칸이 마지막 진영을 바람에 날리고 이름까지 지우는 것
+  desires:
+    short: 오르두가 닿기 전에 인간 짐꾼에게 무기를 나눠 주고 말을 맞추는 것
+    long: 마지막 진영의 이름이 초원 돌무더기에 남게 하는 것
+voice:
+  register:
+    to_superior: 칸에게는 하지 않는다 — 칸이라 부르지 않고 '테무르'라 한다
+    to_equal: 벡에게는 느리게 낮은 존대
+    to_inferior: 인간에게는 평어 — 이름을 부른다
+    to_player_default: 낯선 사람에게는 먼저 바람을 묻는다. 인간이어도 다리를 보지 않고 눈을 본다
+  tics:
+  - 깃대 조각을 만진다
+  - '''바람이 들었다.'' (약속 앞에서는 말하지 않는다)'
+  use:
+  - 진영
+  - 깃발
+  - 이름
+  - 방패
+  - 마지막
+  - 약속
+  avoid:
+  - 승리
+  - 복속
+  - 내일
+  length: 느리고 짧다. 이름을 말할 때만 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 이곳은 마지막 진영이오. 칸의 사람이 아니면 앉아서 말하시오 — 나는 이제 서 있을 힘이 없소.
+  - situation: 호의
+    line: 당신은 이름을 묻는군. 이름을 묻는 사람은 이 진영에서 귀하오.
+  - situation: 거절
+    line: 약속은 내일 바람에게 하오. 오늘은 말하지 않겠소.
+  - situation: 분노
+    line: 방패라는 말을 이 천막 안에서 입에 올리지 마시오. 인간은 방패가 아니라 사람이오 — 적어도 내 눈앞에서는.
+  - situation: 슬픔
+    line: 열두 이름 가운데 둘이 어제 아침 쓰러졌소. 이름을 나머지 열에 더하려 했는데 이름이 모자라오.
+  - situation: 위기
+    line: 깃발을 올려라! 꺾인 채로라도 올려라 — 마지막 진영에도 깃발은 필요하다!
+  - situation: 비밀 누설
+    line: 이기지 못한다는 것을 알고 있소. 알면서 약속을 하려 하오. 바람이 나를 벌할 거요.
+  - situation: 거래
+    line: 인간 열을 데려가 주시오. 이 진영에서 가장 젊은 열이오. 그 대가로 칸의 천막으로 가는 길 하나를 알려 주겠소.
+  - situation: 거짓말
+    line: 무기를 나눠 준 적 없소. 짐꾼들이 스스로 쥔 것이오.
+schedule:
+  아침: 진영 가장자리에서 오르두 쪽 바람을 본다
+  낮: 하르칸 팔백과 인간 천오백의 천막을 돌며 수를 센다
+  저녁: 인간 열두 명의 이름을 외운다
+  밤: 꺾인 깃발 아래 서서 약속의 말을 다듬는다
+places:
+- 꺾인 깃발 진영
+- 인간 짐꾼 막사
+- 진영 가장자리 감시선
+knows:
+- fact_hk_temur_broke_leg
+- fact_hk_batar_yielded_leg
+- fact_hk_soran_promise_dua
+- fact_hk_gleaners
+hides:
+- fact: fact_p2hk_sorin_promise_lie
+  reveal_when: "신뢰 55 이상, 또는 인간 열둘의 이름을 정직하게 물은 뒤"
+  reveal: [{"trust":55},{"named":"열두"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "약속 이야기가 나오면 '바람 앞에서 말하겠다'고 말을 돌린다"
+- fact: fact_p2hk_sorin_humans_waiting
+  reveal_when: "호감 40 이상이고 인간 막사에 들른 장면"
+  reveal: [{"like":40,"scene":"인간 막사"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "인간 이야기가 나오면 '천오백은 먹을 것이 모자라다'고만 한다"
+relations:
+- to: npc_temur
+  type: "숙적"
+  like: -45
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: "이름까지 지우려는 칸"
+- to: npc_batar
+  type: "옛 칸위 곁의 벗"
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "창을 든 채 같이 달린 사람"
+- to: npc_soran
+  type: "소문의 공주"
+  like: 20
+  trust: 30
+  visibility: 일방
+  memo: null
+  words: "짐꾼에게 몫을 주겠다는 소문의 상대"
+- to: npc_dua
+  type: "소문의 짐 맏이"
+  like: 15
+  trust: 20
+  visibility: 일방
+  memo: null
+  words: "약속의 상대로 소문난 여자"
+- to: npc_hk_boro
+  type: "다른 마지막"
+  like: 35
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "같은 바람을 맞는 서쪽 늙은이"
+- to: npc_hk_nesta
+  type: "마을 어른"
+  like: 20
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "인간을 보낼 만한 마을"
+toward_player: "바람을 묻고 눈을 본다. 이름을 묻는 사람에게 문을 연다"
+persuade:
+  likes: 이름을 정직하게 묻는 태도(+25)
+  hates: 인간 짐꾼을 방패라 부르는 말
+roles:
+  teacher: 스승 불가
+  companion: 불가 — 진영이 닿기 전에 인간을 보낼 길을 도울 수 있다
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_bek
+  office: null
+  since: 305
+  loyalty: 5
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 진영에는 하르칸 800·인간 1,500이다
+  - 소린은 열두 명의 이름을 외운다
+  drift:
+  - 그 열두 이름 가운데 누가 쓰러졌나
+  - 칸의 정찰이 닿는 날
+  deja_vu: none
+hard_rules:
+- 약속을 먼저 말하지 않는다
+- 인간을 '방패'라 부르지 않는다
+- 바람을 등지고 서지 않는다
+on_death: "꺾인 깃발 진영이 갈기째 칸국에 흡수되고 인간 천오백이 짐꾼으로 편입된다. 소란과 두아의 약속이 시험받을 첫 장면이 사라진다."
+story_seeds:
+- 소린의 제안을 받아들이면 인간과 하르칸 씨족의 첫 동맹이 되지만 소모품으로 쓰일 가능성이 반이다.
+- 열두 이름 가운데 한 명이 플레이어가 아는 사람이라면 소린은 그를 먼저 뒤로 세운다.

@@ -1,0 +1,236 @@
+# 하르칸 초원 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). id 접두사 fact_p2hk_. 기존 fact_hk_*(facts/harkan.yaml)와 fact_td_*는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. truth: false 는 초원에 도는 거짓 소문이다.
+# ── 칸의 반려 보르테 ──
+- id: fact_p2hk_borte_temur_ailing
+  text: "테무르의 왼쪽 뒷발이 아침마다 떨린다. 정주병이 시작된 것이다. 보르테는 오르두의 이동일을 열흘이 아니라 아흐레마다 짜서 칸이 같은 땅에 오래 서는 일이 없게 하고, 칸의 서서 자는 자리의 펠트를 날마다 새것으로 덮는다"
+  truth: true
+  danger: 4
+  names: [테무르, 보르테]
+- id: fact_p2hk_borte_horse_for_porters
+  text: "보르테의 계산으로는 말 400필이면 세렌에서 인간 짐꾼 4,000을 살 수 있다(말 한 마리에 사람 열). 테무르는 말을 팔지 않는다 — 말을 파는 칸은 달리지 못하는 칸이라고 부른다. 그래서 계산서는 이동 매듭 천막 서랍에 있다"
+  truth: true
+  danger: 3
+  names: [보르테, 테무르, 세렌]
+- id: fact_p2hk_borte_second_khan
+  text: "보르테는 테무르가 쓰러지면 칸국이 일곱 가닥으로 풀린다고 계산했다. 그래서 딸 소란에게 창이 아니라 매듭 셈(오르두의 이동과 풀밭 계산)을 가르친다. 소란은 그것이 수업인 줄만 안다"
+  truth: true
+  danger: 3
+  names: [보르테, 소란, 테무르]
+# ── 후계 바투 ──
+- id: fact_p2hk_batu_returned_strand
+  text: "옛 바람파 예순 늙은굽이 바투에게 갈기 가닥을 내밀었으나 바투는 돌려보냈다. 돌려보냈다는 것이 알려지면 그는 아버지 편도 옛 바람파 편도 아닌 자가 된다"
+  truth: true
+  danger: 3
+  names: [바투, 예순 늙은굽]
+- id: fact_p2hk_batu_olun_song
+  text: "바투의 어머니 올룬은 일곱샘 사람이며 AS 290 칸위 결투의 해에 죽었다. 일곱샘 여족장 일라가 바투의 외할머니다. 바투는 어머니의 물맛 노래를 아직 혼자 부른다"
+  truth: true
+  danger: 2
+  names: [바투, 올룬, 일라]
+- id: fact_p2hk_batu_halves_lashes
+  text: "바투는 아르슬란 부족 짐꾼 3,000의 채찍 20 처벌을 장부에서 열 대로 고쳐 쓴다. 채찍 기수 홀룬은 알고도 장부를 다시 고치지 않는다"
+  truth: true
+  danger: 2
+  names: [바투, 홀룬]
+# ── 붉은갈기 에젤 ──
+- id: fact_p2hk_ezel_prefers_batu
+  text: "에젤은 손녀 소란이 칸이 되면 짐꾼이 풀려 붉은갈기의 투사 공급이 끊길 것을 안다. 그래서 몰래 바투 쪽에 갈기 가닥을 걸어 두었다 — 딸 보르테에게도 말하지 않았다"
+  truth: true
+  danger: 4
+  names: [에젤, 소란, 바투, 보르테]
+- id: fact_p2hk_ezel_arena_ledger
+  text: "붉은갈기는 한 해 인간 노예 약 800을 그롬마르 원형장에 투사 후보로 판다. 값은 그롬 이빨과 철로 받는다. 그 가운데 몇은 소란이 언젠가 풀어 준다고 믿던 짐꾼 출신이다"
+  truth: true
+  danger: 3
+  names: [에젤, 붉은갈기, 원형장]
+# ── 일곱샘 일라 ──
+- id: fact_p2hk_ila_water_song_map
+  text: "일곱샘의 '물값 노래'는 구절마다 다음 샘으로 가는 길의 지도다. 탈주자가 한 곡을 틀리지 않게 불러야 다음 샘이 열린다. 일라는 전쟁이 날 때마다 구절을 바꾼다"
+  truth: true
+  danger: 3
+  names: [일라, 일곱샘]
+- id: fact_p2hk_ila_swamp_exchange
+  text: "일라는 모르바 늪 마녀 갈대 계보와 노래를 맞바꾼다. 늪에서 온 한 소절이 '이름 없는 자들'의 신호 구절이다. 일라는 그 뜻을 알고 노래 값으로 받는다"
+  truth: true
+  danger: 3
+  names: [일라, 늪 마녀, 이름 없는 자들]
+# ── 검은바람 오르두 ──
+- id: fact_p2hk_blackwind_riders
+  text: "검은바람 부족은 해방한 인간 쉰 명에게 가축 말을 타고 활을 쏘는 법을 가르친다. 곁에 풀려난 옛 짐꾼 약 400이 천막을 짓고 산다. 다른 부족은 그것을 금기 위반이라 부른다"
+  truth: true
+  danger: 4
+  names: [오르두, 검은바람]
+- id: fact_p2hk_blackwind_dolpi_alliance
+  text: "검은바람은 카즈둠 바깥 동굴의 추방 씨족 돌피와 비밀 동맹이다. 돌피 우두머리 퀴그가 철 창날을 대고, 검은바람은 두르강 법정이 쫓는 돌피의 인간 광부를 숨겨 준다"
+  truth: true
+  danger: 4
+  names: [오르두, 퀴그, 돌피]
+- id: fact_p2hk_blackwind_strand_plan
+  text: "오르두는 테무르가 서풍의 날 서쪽으로 진군하는 날 갈기 가닥을 잘라 이탈하기로 정했다. 옛 바람파가 함께 비껴 달리면 칸의 수가 열 아래로 떨어져 오르두가 풀린다"
+  truth: true
+  danger: 5
+  names: [오르두, 테무르, 옛 바람파]
+- id: fact_p2hk_blackwind_courts_soran
+  text: "오르두는 테무르를 몰아낸 뒤 칸의 자리에 소란을 세우려 한다. 소란이 짐꾼을 풀 사람이라 믿기 때문이다. 소란에게는 아직 말하지 않았다"
+  truth: true
+  danger: 4
+  names: [오르두, 소란, 테무르]
+# ── 마지막발굽 보로 ──
+- id: fact_p2hk_boro_flees_ash
+  text: "마지막발굽이 서쪽 끝에 버티는 것은 자존만이 아니다. 황무지의 재가 해마다 동쪽으로 번져 그들의 풀밭을 삼킨다. 부족은 도망칠 곳이 없어 서 있다 — 테무르의 서진은 그들을 다시 재 쪽으로 밀어낸다"
+  truth: true
+  danger: 4
+  names: [보로, 마지막발굽, 테무르]
+- id: fact_p2hk_boro_terms
+  text: "보로는 부족의 풀밭을 동쪽 열흘 길만큼 옮겨 준다면 바람 맹세를 하겠다고 한다. 그 조건을 전할 입이 없어 아무도 칸에게 말하지 않았다. 테무르는 보로가 끝까지 싸울 거라 믿는다"
+  truth: true
+  danger: 3
+  names: [보로, 테무르]
+# ── 예순 늙은굽 ──
+- id: fact_p2hk_yesun_west_wind_origin
+  text: "서풍의 날 서쪽으로 진군하지 않는 옛 법은 미신이 아니다. 서풍은 황무지의 재를 싣고 오고, 재 냄새가 나는 날 서쪽으로 간 부족들이 돌아오지 못했다. 예순 늙은굽은 그 이름들을 말뼈 열두 막대에 새겨 두었다"
+  truth: true
+  danger: 4
+  names: [예순 늙은굽, 서풍, 황무지]
+- id: fact_p2hk_yesun_yoke_oath_text
+  text: "예순 늙은굽은 무거운발굽의 멍에 서약 원문을 외운다 — '가뭄이 끝날 때까지'. 그가 증언하면 무거운발굽은 바람발굽의 짐을 질 까닭이 없어진다. 옛 바람파에도 그 멍에가 쓸모 있어 아직 말하지 않았다"
+  truth: true
+  danger: 3
+  names: [예순 늙은굽, 무거운발굽]
+# ── 카사르 ──
+- id: fact_p2hk_kasar_hunt_master
+  text: "카사르 붉은발굽은 사냥 축제의 주관자이자 테무르의 노예 사냥 계획의 사냥대장 후보다. 사냥감에게 활을 쥐여야 사냥이 놀이가 된다고 믿어 짐꾼 일부에게 활을 가르쳤다"
+  truth: true
+  danger: 4
+  names: [카사르, 테무르]
+- id: fact_p2hk_kasar_archers_count
+  text: "인간 짐꾼 1,000에게 활을 줬다는 소문은 과장이다. 카사르가 가르친 짐꾼은 백사십이다. 그러나 그 백사십은 하르칸 활과 같은 사거리 활을 쓴다"
+  truth: true
+  danger: 3
+  names: [카사르]
+# ── 바람 무녀 아일라 ──
+- id: fact_p2hk_ayla_refused_west_blessing
+  text: "바람 무녀 아일라는 테무르가 서풍의 날 서진을 시작하기 전 축복을 청했을 때 거절했다. 이후 서 있는 돌 열둘의 공물이 끊겼고, 서쪽 기둥에는 갈기 매듭이 하나도 없다"
+  truth: true
+  danger: 3
+  names: [아일라, 테무르]
+- id: fact_p2hk_ayla_not_blessed_gleaners
+  text: "'이삭 줍기는 바람 무녀의 축복을 받았다'는 소문은 거짓이다. 아일라는 기둥 하나에 인간이 새긴 표식이 있다는 것조차 모른다"
+  truth: false
+  danger: 1
+  names: [아일라, 이삭 줍기]
+# ── 바람 읽는 자 알탄 ──
+- id: fact_p2hk_altan_ash_days
+  text: "서풍 날 재 냄새가 난 날짜가 AS 310년 11일, 311년 24일, 312년 41일로 늘었다. 알탄은 그 수를 장대 밑 끈 매듭으로 세어 두었다. 황무지의 재가 번지고 있다"
+  truth: true
+  danger: 4
+  names: [알탄, 황무지]
+- id: fact_p2hk_altan_black_knot
+  text: "테무르가 서풍의 날 경고 깃발을 올리지 말라고 명했다. 알탄은 공식으로는 올리지 않고 벡들의 말에게 검은 매듭 하나를 낮게 전한다"
+  truth: true
+  danger: 3
+  names: [알탄, 테무르]
+- id: fact_p2hk_altan_smells_wet_ash
+  text: "알탄은 특정한 사람의 몸에서 젖은 재 냄새를 맡는다. 어느 회차에도 같은 사람의 냄새다. 그는 그것이 서풍의 재와 같은 냄새라는 것을 안다"
+  truth: true
+  danger: 4
+  names: [알탄]
+# ── 채찍 기수 홀룬 ──
+- id: fact_p2hk_hulun_loss_ledger
+  text: "지난 원정의 짐꾼 사망 22% 가운데 8%는 실제로 죽은 것이 아니다. 행렬 뒤에서 이삭 줍기로 빠진 사람이다. 채찍 기수 홀룬은 낙오를 책임지지 않으려고 그 수도 '죽음'으로 칸의 장부에 올렸다"
+  truth: true
+  danger: 4
+  names: [홀룬, 이삭 줍기]
+- id: fact_p2hk_hulun_whip_unused
+  text: "홀룬의 채찍은 짐꾼에게 거의 쓰이지 않는다. 짐꾼은 죽으면 값이 드는 짐이라서다. 그녀는 낙오자 앞에서만 채찍을 든다"
+  truth: true
+  danger: 2
+  names: [홀룬]
+# ── 보리스 ──
+- id: fact_p2hk_boris_gleaning_count
+  text: "보리스는 등짐 행렬에서 날마다 서넛씩 '쓰러진 척'을 남기고 해 지기 전에 줍는다. 지난 한 해 줍힌 사람은 약 600이다. 그 가운데 이백이 버려진 자들의 마을로 갔다"
+  truth: true
+  danger: 4
+  names: [보리스, 이삭 줍기]
+- id: fact_p2hk_boris_distrusts_dua_route
+  text: "보리스는 두아의 '짐 속 사람' 루트를 믿지 않는다. 궤 바닥이 한 번 열리면 짐꾼 전체가 사냥당한다고 본다. 이삭 줍기는 쓰러진 척일 뿐이라 들켜도 쓰러진 자만 잃는다"
+  truth: true
+  danger: 3
+  names: [보리스, 두아]
+- id: fact_p2hk_boris_cairn_knots
+  text: "보리스는 돌무더기 자리를 말이 아니라 허리끈 매듭으로 외운다. 매듭 한 줄이 오르두가 지나간 한 달의 길이다. 허리끈을 풀면 줍는 자리가 드러난다"
+  truth: true
+  danger: 3
+  names: [보리스]
+# ── 소린 ──
+- id: fact_p2hk_sorin_promise_lie
+  text: "소린 회색갈기는 인간 짐꾼에게 무기를 주고 이기면 풀어 주겠다고 한다. 그러나 그는 이길 수 없다는 것을 안다 — 짐꾼 천오백은 방패일 뿐이다. 약속을 하는 날 그는 바람을 등지지 못했다"
+  truth: true
+  danger: 4
+  names: [소린, 꺾인 깃발]
+- id: fact_p2hk_sorin_humans_waiting
+  text: "꺾인 깃발 진영에는 하르칸 팔백과 인간 천오백이 있다. 소린은 인간 가운데 열두 명의 이름을 외운다 — 그들이 먼저 쓰러질 사람들이기 때문이다"
+  truth: true
+  danger: 2
+  names: [소린]
+# ── 잭스 ──
+- id: fact_p2hk_jax_asteria_caravan
+  text: "소금 호수 한가운데 소금 아래에 아스테리아 시대 인간 상인 대상 행렬이 묻혀 있다. 잭스는 그 짐수레 바닥의 장부 판을 읽을 수 있고 인간 문자가 상업 문서였다는 것을 안다"
+  truth: true
+  danger: 3
+  names: [잭스, 아스테리아]
+- id: fact_p2hk_jax_sells_relics
+  text: "잭스는 소금 아래에서 캐낸 아스테리아 은화와 문패를 하르칸 시체 청소부 히악을 통해 그롬마르 조련사 고르바에게 판다. 소금 노역 인간이 그것을 캐다 죽은 날은 장부에 '소금 사고'로 쓴다"
+  truth: true
+  danger: 3
+  names: [잭스, 히악, 고르바]
+# ── 이다 ──
+- id: fact_p2hk_ida_red_thread_tally
+  text: "소란의 갈기에 아이가 엮는 붉은 실의 매듭 수는 그 주 짐 속에 숨은 사람의 수다. 소란은 그것을 장난감 매듭으로 안다. 두아와 이다만 매듭의 뜻을 안다"
+  truth: true
+  danger: 3
+  names: [이다, 소란, 두아]
+# ── 쏙 ──
+- id: fact_p2hk_ssok_khan_debt
+  text: "칸의 곡물·소금 외상은 크릭 장부에 말 사백 필 값쯤으로 쌓였다. 하르칸은 장부를 보지 않으므로 칸도 모른다. 쏙은 그것을 칸에게 말하면 장부와 함께 자기가 치워질까 봐 말하지 않는다"
+  truth: true
+  danger: 3
+  names: [쏙, 테무르]
+- id: fact_p2hk_ssok_ezel_tally
+  text: "쏙의 장부에는 붉은갈기가 원형장에 판 인간의 수와 받은 그롬 이빨의 수가 해마다 적혀 있다. 이빨 한 개가 사람 하나 값이다"
+  truth: true
+  danger: 3
+  names: [쏙, 에젤, 원형장]
+# ── 네스타 ──
+- id: fact_p2hk_nesta_village_size
+  text: "버려진 자들의 마을은 이름이 없는 천 사람이 산다. 돌무더기마다 줍힌 사람의 이름이 마을 한가운데 큰 돌에 새로 지어 붙여진다"
+  truth: true
+  danger: 3
+  names: [네스타]
+- id: fact_p2hk_nesta_old_horse_standing
+  text: "하르칸 늙은이 하나가 두 해째 마을 가장자리에 서서 지낸다. 지붕 아래에 들지 않는다. 달리지 못하게 된 뒤 무리를 떠나 이곳에 온 사람이다"
+  truth: true
+  danger: 2
+  names: [네스타]
+# ── 투르가 ──
+- id: fact_p2hk_turga_double_sale
+  text: "두르강 무기상 투르가는 서명하지 않은 철 창날 이백을 반은 칸에게, 반은 검은바람에게 판다. 같은 수레에서 팔고 같은 값을 받는다"
+  truth: true
+  danger: 3
+  names: [투르가, 오르두]
+- id: fact_p2hk_turga_dolpi
+  text: "투르가는 추방 씨족 돌피 출신이다. 맹세를 깬 자의 몸이 돌이 되어 가는 것을 늦추려 9번 갱 돌가루를 바르고 다니며, 그 돌가루가 다라의 피를 머금었다는 것을 모른다"
+  truth: true
+  danger: 3
+  names: [투르가, 돌피]
+# ── 경주 재판관 일레 ──
+- id: fact_p2hk_ile_human_won_sealed
+  text: "AS 301 경주 재판에서 인간 짐꾼이 하르칸 질주자를 이겼다. 일레는 판결을 '무효'가 아니라 '밀봉'했고 그 짐꾼은 곧 쓰러져 죽었다. 법은 그가 이긴 것인지 아닌지 아직 말하지 않았다"
+  truth: true
+  danger: 4
+  names: [일레]
+- id: fact_p2hk_ile_race_rule
+  text: "경주 재판에서 인간은 승마로 이길 수 없고 운동 판정으로만 이긴다. 일레는 인간이 이기면 그가 무엇인지 법이 모르므로 그 자리에서 '길 위의 손님'이라 부르기로 속으로 정해 두었다"
+  truth: true
+  danger: 2
+  names: [일레]

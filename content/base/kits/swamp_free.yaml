@@ -1,0 +1,116 @@
+# 지역 생성 키트 — 모르바 자유 늪 마을 (25_REGION_KITS.md). 뿌리마을·진흙등불·물안개 둑·노란 둑 같은 불법 자유 인간 마을과 일곱 노파의 둥지.
+# 원천: REGIONS §8(8.5 인간의 삶·8.7 법·8.8 문화), HOUSES §4.3(늪 마녀 일곱 계보)·§5.6, fac_swamp_hags, fac_hag_lineages, docs/world/people/morva.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_swamp_hags.law / customs 를 본다. 여기에는 '자유 마을에만 있는 재료'(성을 짓는 첫 이름 날, 공동 솥 몫, 망꾼 호루라기, 진흙판, 늪의 계절)를 더한다.
+# 핵심: 감독이 없고 배급이 없고 법이 없다 — 그래서 굶주림이 법이다. 인간 농노 키트(kit_human_serf)와 정반대의 결: 점호가 없고 '먹여 주는 사람'도 없다. 서로의 몫을 서로 센다.
+id: kit_swamp_free
+applies_to: [뿌리마을, 진흙등불, 물안개 둑, 늪 어귀, 섬 마을 31곳, 일곱 노파의 둥지(견습 숙소), 노란 둑(불탄 마을의 흔적)]
+reuses: []
+faction_refs: [fac_swamp_hags, fac_hag_lineages, fac_nameless, fac_grey_thread, fac_krik]
+names:
+  인간:
+    # 탈주자는 노예 이름·번호를 버리고 '일 년 뒤' 성을 짓는다. 그 전에는 이름 하나와 어디서 왔는지로 부른다. 아이는 어머니의 이름 + 태어난 섬.
+    male: [알렉, 토르, 베니, 마레크, 브렌, 베른, 가르, 리프, 쥬드, 니크, 우란, 하겐스, 오토, 헬름, 칼, 듀크, 사무, 올프]
+    female: [힐케, 난네, 레나, 나디아, 순니, 헤드비가, 엘사, 아냐, 베트, 이다, 요나, 마리카, 테아, 올가, 로타]
+    surname_new: ["갈대", "뿌리", "장어", "안개", "둑", "진흙", "물때", "반딧불", "솥", "매듭", "여울", "버들", "쑥", "새벽", "이끼"]
+    surname_rule: "성은 일 년을 산 첫 이름 날에 스스로 짓는다. 옛 주인의 이름은 쓰지 않는 것이 관습이지만 셋은 그대로 썼다(난네만 안다). 성이 없는 사람은 '일 년 전'이다"
+    epithet_rule: "이름 + 하는 일 또는 몸의 표지(외팔 베니, 솥지기 힐케, 망꾼 쥬드). 노파는 별명이 먼저(눈먼 오다·쇠손 브리타·재혀 요르다)"
+    mud_lamp: "섬 마을 사람은 '○○ 둑 사람'으로 소개한다 (진흙등불 둑 사람, 물안개 둑 사람)"
+  크릭:
+    male: [구르, 티프, 핍, 쏙, 틱틱, 쉬]
+    female: [찍, 삐야, 치크]
+    note: "늪 크릭 약 30 — 굴종 본능을 이긴 자들. 일곱 노파의 심부름꾼 무리(우두머리 구르 17세). 이 가운데 열은 아직 밤마다 주인의 호루라기를 꿈에서 듣는다"
+  나가:
+    note: "라미아 밀수꾼(쉬렐)만 출입 — 세렌 뱀장어 길. '미끄럼' '소금 사공' 같은 별명으로 불린다"
+  와이번:
+    note: "독꼬리 와이번(사스카) 약 60마리 — 쉿소리 늪. 공물 인간 26명을 갈대 우리에서 부린다. 이름은 쉿소리를 닮은 두 음절(사스카·시라·투르)"
+classes:            # 뿌리마을 기준 (인구 1,300). 신분이 아니라 하는 일의 비율 — 계급은 없다
+  장어잡이·덫꾼: 0.26
+  뿌리 캐기·약초: 0.14
+  갈대 엮기: 0.14
+  훈제·솥: 0.08
+  망꾼·호루라기: 0.06
+  사냥꾼·궁수: 0.05
+  대장간·목수: 0.04
+  학생·아이: 0.15
+  노파 견습·딸: 0.03
+  병자·노인(일 못 함): 0.05
+jobs:
+  - {id: eel_trapper, name: 장어 덫꾼, class: 장어잡이·덫꾼, race: 인간, weight: 24, schedule: sch_eel_trap}
+  - {id: root_digger, name: 뿌리 캐는 사람, class: 뿌리 캐기·약초, race: 인간, weight: 12, schedule: sch_root_dig}
+  - {id: herb_picker, name: 약초꾼, class: 뿌리 캐기·약초, race: 인간, weight: 4, schedule: sch_herb_pick}
+  - {id: reed_weaver, name: 갈대 엮는 사람, class: 갈대 엮기, race: 인간, weight: 14, schedule: sch_reed_weave}
+  - {id: pot_keeper, name: 솥지기, class: 훈제·솥, race: 인간, weight: 3, schedule: sch_pot_keeper}
+  - {id: smoker, name: 훈제장이, class: 훈제·솥, race: 인간, weight: 5, schedule: sch_smoker}
+  - {id: spotter, name: 망꾼, class: 망꾼·호루라기, race: 인간, weight: 6, schedule: sch_spotter}
+  - {id: hunter, name: 늪 사냥꾼, class: 사냥꾼·궁수, race: 인간, weight: 5, schedule: sch_hunter_swamp}
+  - {id: smith, name: 대장장이, class: 대장간·목수, race: 인간, weight: 1, schedule: sch_smith}
+  - {id: carpenter, name: 둑·줄다리 목수, class: 대장간·목수, race: 인간, weight: 3, schedule: sch_carpenter}
+  - {id: student, name: 진흙판 학교 학생, class: 학생·아이, race: 인간, weight: 4, schedule: sch_student}
+  - {id: child, name: 아이(덫 곁 놀이·솥 곁 심부름), class: 학생·아이, race: 인간, weight: 11, schedule: sch_child}
+  - {id: hag_novice, name: 노파 견습·딸, class: 노파 견습·딸, race: 인간, weight: 3, schedule: sch_hag_novice}
+  - {id: sick_old, name: 병자·노인, class: 병자·노인(일 못 함), race: 인간, weight: 5, schedule: sch_sick_old}
+schedules:          # at = 정착지 틀의 역할(role). 늪은 새벽에 시작해 해 지면 접는다 — 밤 물길은 혼자 가지 않는다.
+  sch_eel_trap:   [{days: all, from: "04:00", to: "09:00", at: eel_traps, doing: 새벽 장어 덫을 올린다, outdoor: true}, {days: all, from: "09:00", to: "12:00", at: smokehouse, doing: 잡은 장어를 훈제장에 넘긴다}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리 — 죽 한 그릇, fixed: true}, {days: all, from: "13:00", to: "17:00", at: eel_traps, doing: 덫을 손보고 새 미끼를 건다, outdoor: true}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "04:00", at: homes, doing: 잔다}]
+  sch_root_dig:   [{days: all, from: "05:00", to: "12:00", at: root_bank, doing: 늪 가장자리에서 뿌리를 캔다, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "17:00", at: reed_works, doing: 캔 뿌리를 가루로 빻는다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "05:00", at: homes, doing: 잔다}]
+  sch_herb_pick:  [{days: all, from: "06:00", to: "12:00", at: root_bank, doing: 해열·지혈 약초를 딴다, outdoor: true}, {days: all, from: "12:00", to: "17:00", at: herb_hut, doing: 약초를 말리고 병자를 본다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "06:00", at: homes, doing: 잔다}]
+  sch_reed_weave: [{days: all, from: "06:00", to: "12:00", at: reed_works, doing: 갈대를 엮어 바구니·돗자리·지붕을 만든다}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "17:00", at: reed_works, doing: 지붕 이을 갈대를 단으로 묶는다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "06:00", at: homes, doing: 잔다}]
+  sch_pot_keeper: [{days: all, from: "05:00", to: "08:00", at: pot, doing: 솥 셋에 불을 올린다, fixed: true}, {days: all, from: "08:00", to: "12:00", at: smokehouse, doing: 훈제 장어 줄을 센다}, {days: all, from: "12:00", to: "14:00", at: pot, doing: 정오 국자 소리 — 죽을 나눈다, fixed: true}, {days: all, from: "14:00", to: "18:00", at: pot, doing: 솥을 닦고 뿌리 가루를 센다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "05:00", at: pot, doing: 솥 곁 초막에서 잔다}]
+  sch_smoker:     [{days: all, from: "05:00", to: "12:00", at: smokehouse, doing: 장어를 훈제한다 — 갈대와 버드나무 연기}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "18:00", at: smokehouse, doing: 말린 줄을 걷어 단으로 묶는다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "05:00", at: homes, doing: 잔다}]
+  sch_spotter:    [{days: all, from: "04:00", to: "12:00", at: watch_post, doing: 호루라기 줄을 쥐고 물길을 본다, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "20:00", at: watch_post, doing: 늦은 배를 센다 — 교대표에 적는다, outdoor: true}, {days: all, from: "20:00", to: "04:00", at: watch_post, doing: 밤 망 — 호루라기로만 말한다}]
+  sch_hunter_swamp: [{days: all, from: "04:00", to: "10:00", at: hunting, doing: 새벽 사냥 — 물새·늪사슴, outdoor: true}, {days: all, from: "10:00", to: "14:00", at: dike, doing: 젊은이 활 훈련, outdoor: true}, {days: all, from: "14:00", to: "18:00", at: homes, doing: 활과 화살촉을 손본다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "04:00", at: homes, doing: 잔다}]
+  sch_smith:      [{days: all, from: "05:00", to: "12:00", at: forge, doing: 풀무에 불을 넣고 호미·갈고리를 두드린다, fixed: true}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "18:00", at: forge, doing: 화살촉과 칼 주문을 받는다}, {days: all, from: "18:00", to: "21:00", at: council, doing: 뿌리 모임 곁에서 값을 받는다}, {days: all, from: "21:00", to: "05:00", at: forge, doing: 대장간 곁 움막에서 잔다}]
+  sch_carpenter:  [{days: all, from: "05:00", to: "12:00", at: dike, doing: 둑과 줄다리를 보수한다, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "18:00", at: dike, doing: 새 줄다리 널을 짠다, outdoor: true}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "05:00", at: homes, doing: 잔다}]
+  sch_student:    [{days: all, from: "04:00", to: "09:00", at: eel_traps, doing: 덫 곁 아침 일을 돕는다}, {days: all, from: "09:00", to: "16:00", at: school, doing: 진흙판에 글을 쓰고 물로 지운다, fixed: true}, {days: all, from: "16:00", to: "18:00", at: pot, doing: 솥 곁 심부름}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "04:00", at: homes, doing: 잔다}]
+  sch_child:      [{days: all, from: "05:00", to: "12:00", at: root_bank, doing: 뿌리를 캐는 어른 곁에서 심부름한다}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "18:00", at: glow_field, doing: 반딧불을 잡아 병에 모은다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "05:00", at: homes, doing: 잔다}]
+  sch_hag_novice: [{days: all, from: "05:00", to: "08:00", at: blood_store, doing: 피 병을 씻는다}, {days: all, from: "08:00", to: "13:00", at: herb_racks, doing: 약초 건조대 일을 돕는다}, {days: all, from: "13:00", to: "18:00", at: hut, doing: 노파에게서 낱말을 입 모양으로만 배운다}, {days: all, from: "20:00", to: "21:00", at: moss_rock, doing: 바위 앞에서 한 줄을 입 모양으로 따라 한다, fixed: true}, {days: all, from: "21:00", to: "05:00", at: lodge, doing: 견습 숙소에서 잔다}]
+  sch_sick_old:   [{days: all, from: "06:00", to: "12:00", at: herb_hut, doing: 약초 오두막 침상에서 쉰다}, {days: all, from: "12:00", to: "13:00", at: pot, doing: 정오 국자 소리, fixed: true}, {days: all, from: "13:00", to: "18:00", at: reed_works, doing: 앉은 채 갈대를 가른다}, {days: all, from: "18:00", to: "20:00", at: pot, doing: 저녁 공동 솥, fixed: true}, {days: all, from: "20:00", to: "06:00", at: homes, doing: 잔다}]
+voices:             # 말투 원형 — 짧고 마르고 숫자가 많다. 말을 헤프게 쓰면 '헤프다'고 한다
+  - {id: v_swamp_free, name: 늪 자유민, register: "짧은 평어. 인사 대신 '먹었어?'. 숫자와 몫으로 말한다. 높임말은 노파에게만", tics: ["'먹었어?'", "'몫이야.'"], use: [솥, 몫, 덫, 물때, 안개, 호루라기, 둑], avoid: [주인, 허락, 배급, 죄], sample: "솥이 식었어. 먹었어? 안 먹었으면 앉아. 말은 먹고 나서 해."}
+  - {id: v_swamp_spotter, name: 늪 어귀 망꾼, register: "숫자부터 묻는다. 이름은 나중. 대답은 호루라기로도 한다", tics: ["'몇이야?'"], use: [몇, 배, 호루라기, 불, 아이], avoid: [이름(먼저), 의심], sample: "배는 몇 척이야? 사람은 몇이고? 숫자부터 말해."}
+  - {id: v_swamp_hag_daughter, name: 노파의 딸, register: "낮은 존대와 비유. 낱말 하나에 수명이 드니 말을 아낀다. 외부인에게는 질문으로 시험한다", tics: ["'말해 봐요, 아무 말이나.'"], use: [피 병, 낱말, 쑥, 바위, 그릇, 한 해], avoid: [시간(낱말), 마녀(스스로), 공짜], sample: "병 하나가 한 해예요. 마흔 하나를 내가 센다고 생각해 봐요."}
+  - {id: v_swamp_student, name: 진흙판 학생, register: "빠른 반말. 글자를 입 모양으로 되뇌며 걷는다. 모르는 낱말은 '선생님이 아직 이르대'", tics: ["'나 열여덟 자 알아.'"], use: [판, 막대, 글자, 열여덟, 선생님], avoid: [아직 모르는 글자의 이름], sample: "나 열여덟 자 다 알아. 열아홉째는 선생님이 아직 이르대."}
+  - {id: v_swamp_tribute, name: 갈대 우리 사람, register: "느리고 낮은 평어. 숫자를 센 뒤에 말한다. 와이번에게는 공용어 한 낱말씩", tics: ["'하나도 빼지 않고.'"], use: [스물여섯, 짚, 알, 활줄], avoid: [혼자, 공물], sample: "스물여섯. 나까지 스물여섯. 하나라도 빼고 나가는 이야기면 안 들어."}
+  - {id: v_swamp_krik, name: 늪 크릭, register: "가늘고 빠른 말. 호루라기 소리를 싫어한다. 고개를 숙였다가 억지로 든다", tics: ["'주인 없어.'"], use: [쑥 즙, 굴, 밤, 이름], avoid: [호루라기, 주인], sample: "구르야. 주인 없어. 호루라기도 없어. 늪에는."}
+temperaments: [과묵, 계산, 다정, 의심, 끈기, 겁, 완고, 호기심, 경계, 체념, 정, 눈치, 책임, 속죄, 영리]
+swamp_customs:      # 늪에서만 있는 것 — 법·관습 본문은 fac_swamp_hags.law / customs, REGIONS §8.7·§8.8
+  - "'먹었어?'가 인사다. 대답이 '아니'면 앉혀서 먹인다 — 솥은 몫이지 배급이 아니다. 굶주림월에는 하루 한 끼, 솥지기가 정한다"
+  - "첫 이름 날 — 탈주자가 뿌리마을에서 일 년을 살면 스스로 성을 짓는다. 매듭 끈 하나가 한 사람. 지금까지 412. 이름 없는 끈은 일 년을 못 채우고 죽은 사람의 몫이다"
+  - "재의 날에는 불 대신 반딧불 병을 든다 — 대륙에서 유일하게 아스테리온을 공개적으로 기린다"
+  - "밀고자는 익사한다 (뿌리마을 유일한 사형). 뿌리 모임 판결에 노파 한 사람의 동의가 있어야 한다"
+  - "붉은 갈대 선을 넘으면 처벌은 없다 — 돌아오지 못할 뿐이다. 말하는 이끼 바위에 이름을 새기지 않고, 노파의 그림자에 침을 뱉지 않는다"
+  - "호루라기 일곱: 상인·탈주자·안내인·목줄단·녹테른 순찰·불·아이. 아이 호루라기가 불면 모든 일을 멈춘다"
+settlement_templates:
+  - id: tpl_swamp_root_village
+    name: 늪 자유 마을 (뿌리마을형)
+    grid: {w: 700, h: 520}
+    roles:
+      council:    {count: [1, 1], place: "가운데 섬", access: public, name: 회의 섬 (이름 바구니)}
+      school:     {count: [0, 1], place: "회의 섬 곁", access: public, name: 진흙판 학교, hours: "09:00-16:00"}
+      pot:        {count: [1, 3], place: "가운데 낮은 쪽", access: public, name: 공동 솥, hours: "05:00-22:00"}
+      smokehouse: {count: [1, 2], place: "바람 아래", access: public, name: 훈제장}
+      eel_traps:  {count: [1, 3], place: "서쪽 좁은 물길", access: public, name: 장어 덫 물길}
+      reed_works: {count: [1, 2], place: "동쪽 열린 섬", access: public, name: 갈대 엮기 작업장}
+      forge:      {count: [0, 1], place: "남쪽 단단한 땅", access: public, name: 대장간}
+      herb_hut:   {count: [1, 1], place: "북쪽 건조한 쪽", access: public, name: 약초 오두막}
+      homes:      {count: [6, 40], place: "뿌리나무 위와 아래", access: public, name: 뿌리나무 집}
+      glow_field: {count: [0, 1], place: "북서쪽 열린 땅", access: public, name: 반딧불 병 공터}
+      watch_post: {count: [1, 2], place: "가장자리 높은 뿌리나무", access: staff, name: 망루}
+      dike:       {count: [1, 1], place: "둑 쪽", access: public, name: 둑과 줄다리}
+      hunting:    {count: [1, 1], place: "늪 가장자리", access: public, name: 사냥터}
+      root_bank:  {count: [1, 1], place: "뿌리 캐는 물가", access: public, name: 뿌리 캐는 둑}
+    outer:
+      mist_bank:   {hours: [3.0, 6.0], name: 섬 마을 (둑)}
+      wyvern_marsh: {hours: [8.0, 12.0], name: 독꼬리 와이번의 늪}
+  - id: tpl_swamp_hag_island
+    name: 늪 마녀 둥지 (일곱 오두막 섬)
+    grid: {w: 360, h: 300}
+    roles:
+      yard:        {count: [1, 1], place: "가운데", access: staff, name: 원형 마당}
+      hut:         {count: [7, 7], place: "마당 둘레", access: owner, name: 계보 오두막}
+      moss_rock:   {count: [1, 1], place: "남쪽 가운데", access: staff, name: 말하는 이끼 바위}
+      blood_store: {count: [1, 1], place: "북쪽 안쪽", access: secret, name: 빌린 피 저장고}
+      herb_racks:  {count: [1, 1], place: "북서쪽", access: public, name: 약초 건조대}
+      lodge:       {count: [1, 1], place: "서쪽 가장자리", access: staff, name: 손님·견습 숙소}
+      burrow:      {count: [0, 1], place: "섬 가장자리 흙", access: public, name: 크릭 굴}
+      dock:        {count: [1, 1], place: "동쪽 물가", access: public, name: 뱀장어 길 선착장}
+calendar_ref: "content/base/events/morva_312.yaml — 모르바 늪 사건 달력"

@@ -1,0 +1,178 @@
+# 홀룬 잿빛꼬리 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_hulun
+name: 홀룬 잿빛꼬리
+aka:
+- 잿빛꼬리
+- 채찍 기수
+- 낙오를 세는 이
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "여"
+age: 38
+region: "하르칸 초원"
+home: "채찍 기수 초소 (고리와 짐꾼 막사 사이)"
+job: "채찍 기수 대장 — 짐꾼 감독, 낙오 판정, 짐 분실 처벌, 행렬 호송"
+rank: "칸이 임명한 채찍 기수 우두머리. 짐 맏이(인간)가 그녀 아래다"
+summary: "채찍 기수를 이끄는 잿빛꼬리의 여자. 채찍은 거의 쓰지 않는다 — 죽은 짐꾼은 값이 드는 짐이라서다. 지난 원정 사망 22% 가운데 8%가 이삭 줍기로 빠진 사람이라는 것을 알고도 '죽음'으로 장부에 올렸다"
+source: "docs/world/people/harkan.md (npc_hk_hulun)"
+life:
+- year: 274
+  age: 0
+  event: "바람발굽에서 태어남"
+- year: 295
+  age: 21
+  event: "채찍 기수 견습이 됨"
+- year: 303
+  age: 29
+  event: "채찍 기수 대장이 됨. 낙오 판정을 처음 맡음"
+- year: 311
+  age: 37
+  event: "서진 예행 원정 후 사망 22%를 장부에 올림 — 8%는 낙오로 뺌"
+appearance:
+- 잿빛 꼬리가 땅에 끌릴 만큼 길다
+- 오른쪽 눈 밑에 채찍 끝에 맞은 오래된 흉터
+- 채찍을 허리에 말아 감았지만 손은 닿지 않는 자리에 두었다
+smell: "가죽 기름과 땀, 말젖"
+voice_sound: "낮고 건조하다. 명령은 짧고 숫자는 큰 소리로 센다"
+personality:
+  disposition:
+    용기: 50
+    자비: 10
+    정직: 25
+    신앙: 20
+    탐욕: 15
+    충성: 55
+  temperament:
+  - 계산
+  - 냉정
+  - 의심
+  habits:
+  - 채찍을 들 때 한 번 숨을 멈춘다
+  - 줄 수를 세고 나서 한 줄씩 다시 센다
+  values: 짐은 죽으면 값이 든다. 값이 드는 것은 아껴야 한다
+  fears:
+  - 낙오를 숨긴 것이 칸의 장부에서 맞춰지는 날
+  - 채찍을 처음 든 날의 일을 다시 하게 되는 것
+  desires:
+    short: 이번 원정에서 쓰러지는 짐꾼 수를 장부와 같게 만드는 것
+    long: 채찍 기수가 짐꾼 값을 지키는 자리로 인정받는 것
+voice:
+  register:
+    to_superior: 칸에게는 짧은 존대
+    to_equal: 벡에게는 건조한 평어
+    to_inferior: 짐꾼에게는 숫자를 섞은 짧은 반말
+    to_player_default: 낯선 사람에게는 먼저 줄에 서 있는지 본다
+  tics:
+  - 줄 수를 센다
+  - '''값이 든다.'''
+  use:
+  - 줄
+  - 값
+  - 낙오
+  - 짐
+  - 장부
+  - 호각
+  avoid:
+  - 이삭 줍기
+  - 자비
+  - 죽음(공개 자리에서는 '낙오')
+  length: 짧고 건조하다. 숫자만 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 줄에 서 있소? 없으면 서 있는 자리를 말하시오.
+  - situation: 호의
+    line: 줄을 세 번 세어도 같은 수가 나오는 사람은 드물소. 이 호각을 한 번 불어 보시오.
+  - situation: 거절
+    line: 그 줄은 장부 밖이오. 장부 밖은 세지 않소.
+  - situation: 분노
+    line: 채찍을 들게 만들지 마시오. 한 번 들면 내려놓는 데 닷새가 걸리오.
+  - situation: 비밀 누설
+    line: 열 가운데 여덟이 죽지 않았소. 그런데 장부에는 죽었다고 적었소. 줍는 자가 있다는 것을 칸이 알면 줍는 자가 먼저 사냥당하오.
+  - situation: 거래
+    line: 낙오 줄에서 한 명을 세지 않겠소. 대신 그 한 명의 이름을 장부에 올리지 마시오.
+schedule:
+  아침: 채찍 기수 초소에서 점호 호각을 불고 줄 수를 센다
+  낮: 짐꾼 막사와 집하장 사이를 돌며 채찍을 쥐고만 있다
+  저녁: 초소에서 낙오와 짐 분실 보고를 칸의 장부에 올린다
+  밤: 초소 벽에 걸린 채찍을 한 번 만지고 순찰을 돈다
+places:
+- 채찍 기수 초소
+- 짐꾼 막사
+- 짐 집하장
+- 등짐 행렬 숙영지
+knows:
+- fact_hk_dua_loss_rate
+- fact_hk_gleaners
+- fact_hk_slave_hunt_plan
+hides:
+- fact: fact_p2hk_hulun_loss_ledger
+  reveal_when: "신뢰 55 이상, 또는 보리스가 먼저 말한 뒤"
+  reveal: [{"trust":55},{"told_by":"npc_hk_boris"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "사망률 이야기가 나오면 '장부에 있소'라고만 한다"
+- fact: fact_p2hk_hulun_whip_unused
+  reveal_when: "호감 35 이상이고 채찍을 직접 본 장면"
+  reveal: [{"like":35,"scene":"초소"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "채찍 이야기가 나오면 벽의 채찍을 보고 입을 닫는다"
+relations:
+- to: npc_hk_boris
+  type: "행렬 지휘자"
+  like: -10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "알고도 눈감는 이유를 숨기는 짐 맏이"
+- to: npc_dua
+  type: "짐 맏이"
+  like: 10
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "낙오를 막으려는 짐 맏이"
+- to: npc_hk_batu
+  type: "눈감는 후계"
+  like: 15
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "채찍 장부를 고치는 칸의 아들"
+- to: npc_temur
+  type: "칸"
+  like: 10
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "짐 값을 따지는 칸"
+toward_player: "줄에 서 있는지 먼저 본다. 짐인지 사람인지는 걸음을 보고 정한다"
+persuade:
+  likes: 짐을 아끼는 계산(+25)
+  hates: 이삭 줍기를 입에 올리는 것
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_galloper
+  office: off_whip_rider
+  since: 303
+  loyalty: 45
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 채찍은 거의 쓰이지 않는다
+  - 사망 22% 가운데 8%가 낙오다
+  drift:
+  - 그날 센 줄 수
+  - 채찍을 든 횟수
+  deja_vu: none
+hard_rules:
+- 이삭 줍기라는 낱말을 먼저 쓰지 않는다
+- 채찍을 짐꾼 앞에서 빼 들지 않는다
+on_death: "채찍 기수의 장부가 흩어져 낙오와 사망의 구분이 사라진다. 짐꾼 감독이 거칠어지고 이삭 줍기가 더 위험해진다."
+story_seeds:
+- 홀룬이 장부를 고치지 않는다는 것을 알면 이삭 줍기의 8%를 장부 밖으로 지킬 수 있다.
+- 홀룬의 장부와 보리스의 허리끈이 같은 수를 가리킨다 — 둘 중 하나를 칸이 보면 다른 하나가 불탄다.

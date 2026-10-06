@@ -1,0 +1,222 @@
+# 바투 아르슬란 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_batu
+name: 바투 아르슬란
+aka:
+- 칸의 아들
+- 한 걸음 뒤
+- 일곱샘의 외손자
+tier: "A"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 30
+region: "하르칸 초원"
+home: "아르슬란 천막 (부족 천막 고리)"
+job: "칸의 아들 — 아르슬란 부족 기병대 3,000 지휘, 부족 소유 짐꾼 3,000 관리, 맹약회의 313 하르칸 대표"
+rank: "테무르의 장자. 혈통 후계 후보 — 그러나 칸위는 결투로 정한다"
+summary: "칸의 장자이자 혈통 후계 후보. 아버지와의 결투에서 이길 수 없다고 알고 옛 바람파가 내민 갈기 가닥을 돌려보냈다. 어머니는 일곱샘 사람이다. 짐꾼 채찍 20을 장부에서 열 대로 고치는 조용한 사람이고, 맹약회의 사절로 서약섬에 간다"
+source: "docs/world/people/harkan.md (npc_hk_batu)"
+life:
+- year: 282
+  age: 0
+  event: "테무르와 일곱샘 올룬의 아들로 태어남"
+- year: 290
+  age: 8
+  event: "칸위 결투 날 어머니를 잃음. 일곱샘의 물맛 노래를 마지막으로 들음"
+- year: 297
+  age: 15
+  event: "성년. 아버지 곁에서 처음 달림. 갈기에 첫 가닥을 땋음"
+- year: 303
+  age: 21
+  event: "서진 예행 원정에서 아르슬란 기병 오백을 지휘함"
+- year: 308
+  age: 26
+  event: "아르슬란 부족 짐꾼 3,000의 관리를 맡음. 채찍 20을 열 대로 고치기 시작"
+- year: 311
+  age: 29
+  event: "옛 바람파 예순 늙은굽이 갈기 가닥을 내밀었으나 돌려보냄"
+- year: 312
+  age: 30
+  event: "맹약회의 313의 하르칸 대표로 지명됨"
+appearance:
+- 짙은 밤색 하체, 아버지와 달리 어깨가 좁고 걸음이 조심스럽다
+- 왼쪽 손목에 일곱샘의 '원 안의 점 일곱' 문신 — 어머니의 표
+- 갈기 땋은 수가 아버지의 절반이다 — 그러나 한 가닥도 거짓으로 땋지 않았다
+smell: "말젖과 마른 풀, 어머니의 샘 냄새를 닮은 젖은 흙"
+voice_sound: "조심스럽고 낮은 목소리. 말끝이 부드럽게 닫힌다"
+personality:
+  disposition:
+    용기: 45
+    자비: 40
+    정직: 65
+    신앙: 40
+    탐욕: -10
+    충성: 60
+  temperament:
+  - 겸손
+  - 성실
+  - 의심
+  habits:
+  - 말을 마칠 때마다 자기 갈기 가닥 하나를 만진다 — 거짓을 땋지 않았다는 확인
+  - 아버지 곁에서는 걸음을 반 박자 늦춘다
+  - 짐꾼이 쓰러지면 못 본 척 말을 돌려 그쪽 길을 막는다
+  values: 아버지를 이길 수 없는 아들은 아버지의 짐을 같이 지어야 한다. 그러나 짐이 사람이라면 가볍게 져야 한다
+  fears:
+  - 아버지와 결투해야 하는 날
+  - 옛 바람파가 자기 이름으로 칸국을 쪼개는 것
+  - 어머니의 노래를 부르는 목소리가 아버지의 천막까지 닿는 것
+  desires:
+    short: 맹약회의에서 하르칸을 부끄럽지 않게 대표하고 돌아오는 것
+    long: 결투 없이 칸국이 소란 쪽으로 넘어가거나 풀어지지 않게 두는 것
+voice:
+  register:
+    to_superior: 아버지에게는 낮은 평어, 눈을 아래로
+    to_equal: 벡에게는 정중한 존대
+    to_inferior: 짐꾼에게는 조심스러운 평어 — 이름을 부른다
+    to_player_default: 낯선 사람에게는 먼저 '어느 쪽 바람이오'를 묻고 다리가 아니라 눈을 본다
+  tics:
+  - 갈기 가닥을 만진다
+  - '''그랬던 것 같소.'''
+  use:
+  - 가닥
+  - 어머니
+  - 물
+  - 한 걸음
+  - 아르슬란
+  - 짐
+  avoid:
+  - 결투
+  - 칸위
+  - 아버지보다
+  length: 짧고 조심스럽다. 가끔 말을 삼킨다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 아르슬란의 바투요. 편히 말하시오 — 칸의 아들이라 해서 달려 도망치지는 않소.
+  - situation: 호의
+    line: 당신 말은 갈기에 거짓이 없소. 아버지는 이런 사람을 싫어하오. 나는 좋아하오.
+  - situation: 거절
+    line: 그 이야기는 아버지의 몫이오. 아들의 입으로 하면 아버지의 말이 줄어드오.
+  - situation: 분노
+    line: 짐꾼은 짐이오, 그러나 짐은 사람이 진다는 것을 잊은 자는 걷지 마시오.
+  - situation: 슬픔
+    line: 어머니가 부르던 노래는 마지막 구절을 끝까지 들어 본 적이 없소.
+  - situation: 위기
+    line: 기병대는 내 뒤로! 짐꾼부터 안쪽으로 세워라!
+  - situation: 비밀 누설
+    line: 일곱샘의 외손자요. 외할머니의 샘이 나를 키웠소. 그렇다고 칸의 아들이 아닌 것은 아니오.
+  - situation: 거래
+    line: 회의에 데려가 달라는 말이오? 짐꾼으로라면 데려가겠소. 장부에는 짐으로 올리겠소.
+  - situation: 거짓말
+    line: 갈기 가닥을 한 번 만지시오. 거짓이면 내 가닥이 흔들릴 거요 — 오늘은 흔들리지 않았소.
+schedule:
+  아침: 아르슬란 천막에서 짐꾼 3,000의 호명을 듣고 장부를 본다
+  낮: 기병대를 이끌고 오르두 둘레를 돈다
+  저녁: 연회 천막에서 아버지 곁 한 걸음 뒤에 선다
+  밤: 혼자 말 우리 곁에서 어머니의 물맛 노래를 낮게 부른다
+places:
+- 아르슬란 천막
+- 말 우리
+- 부족장 연회 천막
+- 달리는 회합로
+knows:
+- fact_hk_west_wind_broken
+- fact_hk_slave_hunt_plan
+- fact_hk_temur_broke_leg
+- fact_hk_yoke_oath_expired
+hides:
+- fact: fact_p2hk_batu_returned_strand
+  reveal_when: "신뢰 55 이상, 또는 예순 늙은굽이 먼저 말한 뒤"
+  reveal: [{"trust":55},{"told_by":"npc_hk_yesun"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "옛 바람파 이야기가 나오면 갈기 가닥을 한 번 만지고 '들은 적 있소'만 말한다"
+- fact: fact_p2hk_batu_olun_song
+  reveal_when: "호감 40 이상이고 일곱샘 이야기를 꺼냈을 때"
+  reveal: [{"like":40,"named":"일곱샘"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "어머니 이야기가 나오면 '어머니는 오래전에 달렸소'라고만 한다"
+- fact: fact_p2hk_batu_halves_lashes
+  reveal_when: "신뢰 50 이상이고 짐꾼을 아끼는 제안을 먼저 했을 때"
+  reveal: [{"trust":50,"player_offer":"짐꾼을 아끼는"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "장부 이야기가 나오면 '채찍은 홀룬의 일이오'라고 한다"
+relations:
+- to: npc_temur
+  type: "아버지·칸"
+  like: 40
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "이길 수 없다고 아는 아버지"
+- to: npc_soran
+  type: "이복 누이"
+  like: 55
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "칸이 되면 자기보다 나을 동생"
+- to: npc_hk_borte
+  type: "아버지의 반려"
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "한 걸음 앞에서 길을 설계하는 사람"
+- to: npc_hk_ila
+  type: "외할머니"
+  like: 65
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "어머니의 물맛 노래를 가르쳐 준 사람"
+- to: npc_hk_yesun
+  type: "갈기를 내민 늙은이"
+  like: 20
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: "돌려보낸 갈기 가닥의 주인"
+- to: npc_hk_hulun
+  type: "채찍 기수"
+  like: 10
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "알고도 눈감는 사람"
+- to: npc_hk_ezel
+  type: "외종조부 격"
+  like: 25
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "붉은갈기의 눈이 어디로 향하는지 모르는 벡"
+toward_player: "조심스럽게 다리부터 보고 눈을 본다. 갈기에 거짓이 없는 사람에게 열린다"
+persuade:
+  likes: 정직한 직언과 짐꾼을 아끼는 제안(+25)
+  hates: 결투와 칸위 이야기를 아들 앞에서 꺼내는 것
+roles:
+  teacher: 스승 불가
+  companion: 불가 — 맹약회의 길에 짐꾼으로 동행할 수 있다
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_bek
+  office: off_khan_heir_batu
+  since: 297
+  loyalty: 70
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 어머니는 일곱샘의 올룬이고 AS 290에 죽었다
+  - 313 태양월 맹약회의에 하르칸 대표로 간다
+  drift:
+  - 그날 짐꾼 장부에서 고친 채찍의 수
+  - 갈기 가닥을 만진 횟수
+  deja_vu: none
+hard_rules:
+- 결투와 칸위 이야기를 먼저 꺼내지 않는다
+- 일곱샘 이야기는 호감 40 전에 하지 않는다
+- 짐꾼을 이름 없이 '짐'이라고만 부르지 않는다
+on_death: "아르슬란 부족 짐꾼 3,000의 채찍이 원래대로 돌아간다. 혈통 후계가 사라져 칸위는 소란과 결투 후보에게만 남고 옛 바람파가 내세울 이름이 없어진다."
+story_seeds:
+- 맹약회의 길에 짐꾼으로 동행하면 바투가 회의장에서 하르칸을 대표해 어느 쪽에 서는지 곁에서 본다.
+- 바투가 돌려보낸 갈기 가닥이 알려지면 옛 바람파가 그를 내세워 칸국을 쪼갠다.

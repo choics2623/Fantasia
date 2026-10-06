@@ -1,0 +1,213 @@
+# 모르바 늪 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). 인물: docs/world/people/morva.md (P2M-). id 접두사 fact_p2mv_. 기존 fact_mv_*(facts/morva.yaml)는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. truth: false는 세계에 퍼진 거짓 소문이다.
+# ── 뿌리마을: 학교와 이름 바구니 ──
+- id: fact_p2mv_alek_asteria_alphabet
+  text: "알렉은 아스테리아 시대 인간이 쓰던 글자의 알파벳 스물여섯을 모두 기억한다. 진흙판 학교에서 가르치는 것은 그 가운데 열여덟 자뿐이다 — 나머지 여덟은 '아직 이르다'며 가르치지 않는다"
+  truth: true
+  danger: 3
+  names: [알렉, 진흙판 학교]
+- id: fact_p2mv_alek_burned_yellow_bank
+  text: "알렉은 학생이 서른이 되면 찬가의 '글' 단계에 이르는 것을 안다. 그러면서도 열아홉에서 멈춘 것은 AS 297 글을 가르치던 섬 마을 '노란 둑'이 소문 끝에 바르그에게 불탔기 때문이다. 그는 그 불을 바알카르에서 소식으로 들었다"
+  truth: true
+  danger: 4
+  names: [알렉, 노란 둑]
+- id: fact_p2mv_alek_cut_298
+  text: "알렉은 바알카르 등잔의 옛 심지였다. AS 298 '끊어라' 지시로 세포가 절단될 때 혼자 늪으로 흘러 들어왔고, 이름 없는 자들은 그를 '학교 선생'으로만 둔다. 모르바 등잔은 레나가 쥐고 있다"
+  truth: true
+  danger: 4
+  names: [알렉, 레나, 등잔]
+- id: fact_p2mv_alek_asks_hags_for_stone
+  text: "알렉은 말하는 이끼 바위의 각문이 아스테리아 글자와 닿는 데가 있는지 알고 싶어 하지만 바위에 다가갈 허락을 노파들에게 받지 못했다. 그는 이끼 한 줌의 모양만이라도 진흙판에 옮기고 싶어 한다"
+  truth: true
+  danger: 2
+  names: [알렉, 말하는 이끼 바위]
+- id: fact_p2mv_nanne_twelve_blank_cords
+  text: "이름 바구니에는 이름이 적히지 않은 매듭 끈 열둘이 있다. 성을 지을 1년을 채우지 못하고 죽은 탈주자들의 끈이다. 난네는 첫 이름 날마다 그 열둘의 매듭을 한 번씩 만져 준다"
+  truth: true
+  danger: 2
+  names: [난네, 이름 바구니]
+- id: fact_p2mv_nanne_bell_surname
+  text: "이름 바구니의 영번째 끈은 가라앉은 종탑의 종에 새겨진 아스테리아 시대 인간의 성이다. 412개의 성 어느 것도 아닌 그 끈은 바구니 맨 밑에 있고, 난네만 그 자리를 안다"
+  truth: true
+  danger: 3
+  names: [난네, 가라앉은 종탑, 이름 바구니]
+- id: fact_p2mv_nanne_three_slave_names
+  text: "첫 이름 날에 지은 성 412개 가운데 셋은 옛 주인이 붙인 번호나 성을 그대로 쓴 것이다. 난네는 그 셋을 이름 없이 매듭만 남겼고, 그들은 아직 모른다"
+  truth: true
+  danger: 2
+  names: [난네]
+- id: fact_p2mv_rif_copied_moss_glyph
+  text: "열두 살 리프는 해빙월 이끼 걷기 때 견습 뒤를 따라가 말하는 이끼 바위의 각문 한 줄을 진흙판에 베꼈다. 읽지는 않았고 판은 장어 덫 밑에 묻었다. 보통 인간이 각문을 소리 내 읽으면 수명이 탄다"
+  truth: true
+  danger: 4
+  names: [리프, 말하는 이끼 바위]
+- id: fact_p2mv_hilke_winter_reserve
+  text: "공동 솥 지기 힐케는 가을 장어철마다 솥 몫에서 훈제 장어 마흔 줄을 덜어 늪 아래 항아리에 묻어 둔다. 겨울 굶주림월에 하루 한 끼가 하루 반 끼가 되게 하는 비축이다. 뿌리 모임은 모른다"
+  truth: true
+  danger: 2
+  names: [힐케, 공동 솥]
+- id: fact_p2mv_hilke_knows_pot_thief
+  text: "올가을 공동 솥에서 뿌리 가루가 두 번 줄었다. 힐케는 누가 가져갔는지 안다 — 아이를 먹이려던 탈주자 여인이다. 힐케는 그것을 뿌리 모임에 올리지 않고 자기 몫에서 채웠다"
+  truth: true
+  danger: 1
+  names: [힐케]
+# ── 대장간과 늪길 ──
+- id: fact_p2mv_torr_taught_bran
+  text: "대장장이 토르는 회색여울 대장간의 노예였고 AS 285에 소년 브란을 제자로 두고 있다가 AS 288 늪으로 탈주했다. 그 뒤로 브란이 살았는지 모른다"
+  truth: true
+  danger: 3
+  names: [토르, 브란]
+- id: fact_p2mv_torr_gas_traps
+  text: "토르는 늪길의 가스 웅덩이 세 곳에 불씨 함정을 만들어 두었다. 횃불을 든 추적자가 길을 잃으면 웅덩이가 터진다. 위치는 토르와 베니만 안다"
+  truth: true
+  danger: 4
+  names: [토르, 베니]
+- id: fact_p2mv_torr_blades_under_forge
+  text: "대장간 풀무 밑에 칼날 열두 자루가 땅에 묻혀 있다. 칼 한 자루가 잿빛 표 열 개인 늪에서 토르가 값을 받지 않고 모아 둔 것이다. 노예사냥이 뿌리마을에 닿는 날 쓰려는 것이다"
+  truth: true
+  danger: 3
+  names: [토르]
+- id: fact_p2mv_beni_arm_barg_trap
+  text: "베니의 왼팔은 AS 303 바르그 원정대가 늪 어귀에 친 덫에 물려 잘렸다. 그는 그 덫을 직접 뜯어내 원정대를 늪길로 끌고 들어갔고, 돌아온 바르그는 없다"
+  truth: true
+  danger: 3
+  names: [베니, 바르그]
+- id: fact_p2mv_beni_missing_boat
+  text: "지난 석 달 보름마다 늪 어귀의 갈대배 한 척이 밤에 사라졌다가 새벽에 돌아왔다. 베니는 누구의 배인지 안다고 생각하지만 장어 훈제 장수 마레크의 이름은 아직 뿌리 모임에 올리지 않았다"
+  truth: true
+  danger: 4
+  names: [베니, 마레크]
+- id: fact_p2mv_beni_whistle_code
+  text: "늪 어귀 망꾼의 호루라기는 일곱 가지다 — 상인, 탈주자, 안내인, 목줄단, 녹테른 순찰, 불, 아이. 바르그에게는 '장어 장수'로 들리게 불도록 가르쳐 왔다"
+  truth: true
+  danger: 2
+  names: [베니, 늪 어귀]
+- id: fact_p2mv_jude_mirror_flash
+  text: "쥬드는 보름 밤마다 늪 어귀 갯벌 쪽에서 루멘 방향으로 짧게 반짝이는 거울 빛을 세 번 보았다. 열네 살 망꾼의 말은 믿기 어려워 베니에게만 한 번 말했다"
+  truth: true
+  danger: 3
+  names: [쥬드, 베니]
+- id: fact_p2mv_jude_mud_jar
+  text: "왜가리 둥지 망루의 나무 구멍에는 바르그 냄새를 지우는 늪 진흙 단지가 있다. 쥬드는 단지를 열흘마다 새 진흙으로 갈아 넣고, 그 진흙을 구하러 갈 때 루멘 쪽 길을 본다"
+  truth: true
+  danger: 2
+  names: [쥬드, 왜가리 둥지]
+- id: fact_p2mv_marek_barg_informer
+  text: "장어 훈제 장수 마레크는 바르그 노예사냥 조합 지부에 '뿌리마을 쪽 늪길의 입구'를 보름마다 한 번씩 알려 주고 있다. 그가 파는 것은 뱀장어 길 쪽 입구뿐이고 뿌리마을 자체의 위치는 한 번도 팔지 않았다"
+  truth: true
+  danger: 5
+  names: [마레크, 바르그, 뿌리마을]
+- id: fact_p2mv_marek_sons_coral_quarry
+  text: "마레크의 아들 둘은 세렌의 계약민이다. 조합이 빚 문서를 쥐고 있고, 두 아들은 산호 채석장에서 일한다. 마레크가 정보를 파는 것은 아들의 빚을 보름마다 한 푼씩 깎아 주기 때문이다"
+  truth: true
+  danger: 4
+  names: [마레크, 산호 채석장]
+- id: fact_p2mv_marek_not_proven
+  text: "마레크가 밀고자라는 증거는 쥐고 있는 사람마다 반쪽씩이다 — 베니의 사라진 배, 쥬드의 거울 빛, 엘스베트의 흐릿한 꿈 하나. 셋을 합쳐도 익사형의 '노파 1명 동의'를 받을 만큼 분명하지 않다"
+  truth: true
+  danger: 4
+  names: [마레크, 베니, 쥬드, 엘스베트]
+# ── 노파의 둥지와 그 곁 ──
+- id: fact_p2mv_sunni_elsa_bottle
+  text: "빌린 피 저장고 가장 안쪽에 이름표 없는 병이 하나 있다. 엘사가 AS 270 늪을 떠나기 전 자기 피 한 병을 남기고 갔다 — 인간의 피로 인간의 진명을 빌릴 수 있는지 시험한 병이다. 회합은 실패한 실험이라 믿고, 오다만 '성공했을지도 모른다'고 생각한다"
+  truth: true
+  danger: 4
+  names: [순니, 엘사, 오다]
+- id: fact_p2mv_sunni_bottle_count
+  text: "저장고의 병은 마흔한 개다. 겨울 전에 독꼬리 와이번의 피 셋이 들어와야 하고, 순니의 매듭 장부에는 그 석 병의 자리가 빈 매듭으로 남아 있다"
+  truth: true
+  danger: 2
+  names: [순니, 독꼬리]
+- id: fact_p2mv_hedwiga_shem_pamphlets
+  text: "버들 계보의 딸 헤드비가는 세렌 마르디 상가에 약초를 팔고 올 때마다 약초 자루 바닥에 셈 모임의 이자 계산 쪽지를 넣어 온다. 알렉이 그것을 진흙판에 옮겨 가르친다 — 늪에 들어온 첫 '숫자 글'이다"
+  truth: true
+  danger: 3
+  names: [헤드비가, 셈 모임, 알렉]
+- id: fact_p2mv_hedwiga_mardi_asks_tower
+  text: "마르디 상가는 약초 값 대신 잿빛 탑 사냥꾼 부서 '귀'가 모르바 근처에 풀었다는 밀정 소식을 요구했고, 헤드비가는 그 대가를 치를지 오다에게 아직 묻지 않았다"
+  truth: true
+  danger: 3
+  names: [헤드비가, 마르디, 귀]
+- id: fact_p2mv_garr_volk_pack_survivor
+  text: "손님 제자 가르는 AS 298 볼크의 무리가 녹테른 경계에서 몰살당했을 때 홀로 살아남은 바르그 노예사냥꾼이다. 볼크는 그가 죽었다고 믿는다"
+  truth: true
+  danger: 4
+  names: [가르, 볼크]
+- id: fact_p2mv_garr_knows_bounty_marks
+  text: "가르는 바르그 지부가 탈주자를 쫓을 때 쓰는 표식(코에 바르는 냄새 기름의 빛깔과 늪길 어귀에 꽂는 깃털의 수)을 안다. 베니의 호루라기가 바르그에게 '장어 장수'로 들리는 것도 그가 알려 준 것이다"
+  truth: true
+  danger: 3
+  names: [가르, 바르그, 베니]
+- id: fact_p2mv_garr_penance_names
+  text: "가르가 노파들에게 손님 제자로 들어온 조건은 자기가 잡아 팔았다고 기억하는 탈주자 이름 서른일곱을 하나도 잊지 않고 매일 입으로 외우는 것이다. 그 가운데 열한 명은 뿌리마을에 살고 있다"
+  truth: true
+  danger: 4
+  names: [가르]
+- id: fact_p2mv_rena_hides_children
+  text: "물안개 둑에는 징후자로 지목된 아이 일곱이 숨어 있다. 루멘에서 잿빛 실로 내려온 아이들이고, 레나가 낮에는 갈대 엮기를, 밤에는 글자를 가르친다. 뿌리마을에는 알리지 않았다"
+  truth: true
+  danger: 5
+  names: [레나, 물안개 둑]
+- id: fact_p2mv_rena_distrusts_alek
+  text: "레나는 알렉이 바알카르 등잔을 떠난 사연이 '세포 절단'이 아니라고 의심한다. 그가 학교를 키우면 소문이 나고 소문이 나면 아이들이 위험하다고 본다. 두 사람은 서로의 처지를 정확히 모른다"
+  truth: true
+  danger: 3
+  names: [레나, 알렉]
+- id: fact_p2mv_rena_knot_message
+  text: "회색 여인의 지시는 마그의 매듭 문자로 레나에게 닿는다. 이번 가을 온 매듭의 뜻은 '아이 일곱은 지금 움직이지 마라 — 겨울 안개가 덮을 때까지'다"
+  truth: true
+  danger: 4
+  names: [레나, 마그, 회색 여인]
+# ── 와이번과 공물 ──
+- id: fact_p2mv_sirra_learns_from_tribute
+  text: "사스카의 딸 시라는 갈대 우리의 인간들에게서 공용어를 배우고 있다. 그녀가 새 활줄을 브렌에게 건넨 것은 인간이 그 줄로 무엇을 쏘는지 보고 싶어서였다"
+  truth: true
+  danger: 4
+  names: [시라, 브렌, 사스카]
+- id: fact_p2mv_sirra_heir_dispute
+  text: "사스카가 죽으면 후계는 딸 시라와 꼬리 끝이 잘린 수컷 투르가 다툰다. 투르는 공물을 열 배로 올리고 마을을 요구하자는 쪽이고, 시라는 공물을 폐지하고 용제국 정찰 거부를 약속하는 쪽이다"
+  truth: true
+  danger: 4
+  names: [시라, 투르, 사스카]
+- id: fact_p2mv_bren_keeps_count
+  text: "브렌은 갈대 우리의 스물여섯 명의 이름과 들어온 해를 둥지 짚 속 매듭으로 헤아린다. 해방이 오면 스물여섯 모두여야 한다며 혼자 빠져나갈 길을 두 번 거절했다"
+  truth: true
+  danger: 3
+  names: [브렌]
+- id: fact_p2mv_bren_eggs_three_cold
+  text: "사스카의 알 열넷 가운데 셋은 차갑다. 갈대 우리 사람들은 매일 알을 만지는 짚 나르기 일을 하며 그것을 안다. 사스카는 모르는 척한다"
+  truth: true
+  danger: 3
+  names: [브렌, 사스카]
+- id: fact_p2mv_bren_nadia_partner
+  text: "브렌은 나디아의 사냥 동료였고 공물로 간 해 마지막 밤 나디아의 화살통에 자기 활줄 한 가닥을 넣어 두었다. 나디아는 아직 그것이 작별이었다는 것을 인정하지 못한다"
+  truth: true
+  danger: 2
+  names: [브렌, 나디아]
+# ── 세렌과 닿는 길 ──
+- id: fact_p2mv_shirel_sells_counts
+  text: "뱀장어 길 밀수꾼 쉬렐은 소금과 철을 장어 훈제와 맞바꾸면서, 늪을 드나드는 배와 사람의 수를 세렌 졸라크 상가에 한 달에 한 번 판다. 위치는 팔지 않는다"
+  truth: true
+  danger: 4
+  names: [쉬렐, 졸라크]
+- id: fact_p2mv_shirel_lighthouse_cloth
+  text: "쉬렐은 눈먼 등대 창에 걸린 천의 색으로 물비늘대 순찰 날짜를 읽는다. 올라프가 걸어 주는 천이다. 둘은 서로의 얼굴을 한 번도 본 적이 없다"
+  truth: true
+  danger: 3
+  names: [쉬렐, 올라프]
+- id: fact_p2mv_gur_brother_tip
+  text: "늪 크릭 우두머리 구르의 형 티프는 녹테른 안개 늪에서 순찰에 길을 팔고 산다. 구르는 일곱 노파의 심부름을 하면서 형의 이름을 입에 올리지 않는다"
+  truth: true
+  danger: 3
+  names: [구르, 티프]
+- id: fact_p2mv_gur_krik_servitude_broken
+  text: "늪의 크릭 서른은 모두 '굴종 본능을 이긴' 자들이 아니다. 열은 아직도 밤마다 주인의 호루라기를 꿈에서 듣는다. 구르는 그 열에게 호루라기 소리를 지우는 쑥 즙을 노파에게서 받아 준다"
+  truth: true
+  danger: 3
+  names: [구르]
+# ── 거짓 소문 ──
+- id: fact_p2mv_rumor_hags_eat_children
+  text: "늪 마녀는 아이를 잡아먹는다"
+  truth: false
+  danger: 2
+  names: [늪 마녀]

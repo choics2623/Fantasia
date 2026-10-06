@@ -1,0 +1,30 @@
+# 일곱 노파의 둥지 — 늪 마녀 회합지 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §8.9(seven_hags_circle·말하는 이끼 바위), HOUSES §4.3·§5.6, fac_swamp_hags, fac_hag_lineages, docs/world/people/morva.md.
+# grid: 버섯 섬 평면 (m), 원점 = 북서쪽 모서리. 일곱 오두막이 원형 마당을 둘러싼다. 뿌리마을에서 26시간 — 노파의 초대 없이 가면 섬이 '사라진다'.
+id: seven_hags_circle
+name: 일곱 노파의 둥지
+node: seven_hags_circle
+kind: hag_island
+grid: {w: 360, h: 300}
+curfew: {from: "22:00", to: "05:00", note: "손님은 마당까지만. 밤에 오두막 쪽으로 걷는 외부인은 안개가 길을 지운다 (감각 판정)"}
+bells:
+  - {at: "05:00", name: 새벽 쑥 태우기}
+  - {at: "12:00", name: 정오 피 병 점검}
+  - {at: "20:00", name: 저녁 낱말 외우기 (바위 앞)}
+patrols: []
+locations:
+  - {id: sh_circle, name: 원형 마당 (보름 회합), xy: [180, 150], kind: yard, access: staff, hours: "보름 밤 회합 / 낮에는 손님도 마당까지", note: "일곱 오두막이 둘러싼 둥근 마당. 보름 밤마다 노파가 피 병을 그릇 쪽으로 밀거나 당긴다 — 넷이면 정해진다. 끝나면 일곱이 바위 앞에 서서 한 줄씩 외운다"}
+  - {id: sh_moss_rock, name: 말하는 이끼 바위, xy: [200, 205], kind: stone, access: staff, hours: "24시 (손님은 마당에서 본다)", note: "이끼 덮인 거대한 바위. 이끼를 걷으면 고대 진명어 각문. 각문은 신살 무렵의 것이고 노파들이 300년 동안 한 줄씩 외워 왔다. 해빙월 이끼 걷기 때만 견습이 처음 본다", hidden: "각문 가운데 '생명'과 '물' 근원의 진명. 바위 뒷면은 아무도 읽어 본 적이 없다 — 읽으려면 일곱 전원의 동의로 바위를 움직여야 한다"}
+  - {id: sh_blood_store, name: 빌린 피 저장고, xy: [215, 105], kind: store, access: secret, hours: "딸만 들어간다", locked: "열쇠는 순니와 오다", note: "낮은 흙벽 안 병 선반. 병 마흔한 개 — 우르사 피, 거인 골수, 나가 허물 피, 용인의 피, 녹테른 피, 페이 이슬, 하르칸 피", hidden: "가장 안쪽 이름표 없는 병 하나 (엘사가 AS 270 남긴 인간의 피 — 썩지 않았다)"}
+  - {id: sh_herb_racks, name: 약초 건조대, xy: [140, 95], kind: work, access: public, hours: "05:00-19:00", note: "쑥·버들 껍질·늪 약초가 걸린 긴 건조대. 약초 값이 회합의 돈줄 (세렌 마르디 상가). 병자가 찾아오면 여기서 돌본다"}
+  - {id: sh_overturned_boat, name: 뒤집힌 배 (오다의 오두막), xy: [145, 165], kind: hut, access: owner, hours: "24시", note: "뒤집은 늪 배 위에 갈대를 얹은 첫째 노파의 거처. 문 대신 가죽이 늘어졌다. 목에 건 뼈 병 일곱이 걸리는 소리가 안에서 난다"}
+  - {id: sh_hut_bonenedle, name: 뼈바늘 오두막 (브리타), xy: [250, 145], kind: hut, access: owner, hours: "24시", note: "거인 뼈 바늘이 처마에 매달린 오두막. 북방 탈주자 출신 제자가 가장 많다"}
+  - {id: sh_hut_willow, name: 버들 오두막 (하나·헤드비가), xy: [105, 135], kind: hut, access: owner, hours: "24시", note: "버들가지 점 막대가 문 곁에 꽂힌 오두막. 하나의 꿈 기록판이 벽에 걸렸다"}
+  - {id: sh_hut_leech, name: 거머리 오두막 (요르다), xy: [100, 195], kind: hut, access: owner, hours: "24시", note: "검게 칠한 거머리 단지가 줄지어 선 오두막. 요르다가 저주 의식 재료를 쌓는다"}
+  - {id: sh_hut_ash, name: 재 오두막 (마그), xy: [250, 195], kind: hut, access: owner, hours: "24시", note: "잿빛 고리 모양 목걸이가 걸린 오두막. 벽에 매듭 문자가 가득하다"}
+  - {id: sh_hut_mist, name: 안개 오두막 (엘스베트), xy: [180, 245], kind: hut, access: owner, hours: "24시", note: "안개 낀 날만 보이는 그림 조각 유리판이 창에 걸린 오두막. 꿈 심문을 하는 방이 안쪽에 있다", hidden: "이끼판 — 꿈 심문으로 처형된 일곱 가운데 의심스러운 둘의 이름"}
+  - {id: sh_hut_reed, name: 갈대 오두막 (루네), xy: [70, 165], kind: hut, access: owner, hours: "24시", note: "갈대 피리가 처마에 걸린 가장 작은 오두막. 루네는 아직 한 번도 시전하지 않았다"}
+  - {id: sh_hut_mugwort, name: 쑥 오두막 (순니), xy: [215, 70], kind: hut, access: staff, hours: "24시", note: "저장고 곁 작은 오두막. 쑥 줄기 매듭 300개가 벽에 걸렸다 — 약초 진명 목록"}
+  - {id: sh_guest_lodge, name: 손님 거처, xy: [60, 235], kind: lodge, access: staff, hours: "24시", note: "손님 제자와 견습 40이 자는 낮은 움막. 오래 머무는 외부인도 여기서 잔다"}
+  - {id: sh_krik_burrows, name: 크릭 굴, xy: [40, 80], kind: burrow, access: public, hours: "24시", note: "섬 가장자리 흙 속 굴. 늪 크릭 서른이 산다 — 열은 밤마다 호루라기 꿈을 꾼다"}
+  - {id: sh_eel_dock, name: 뱀장어 길 선착장, xy: [310, 250], kind: dock, access: public, hours: "물때에 따라", note: "세렌 갈림목으로 가는 늪 수로(뱀장어 길)의 출발점. 쉬렐의 배가 닿는다. 갈림목까지 70시간"}
+outer: []

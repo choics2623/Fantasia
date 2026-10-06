@@ -1,0 +1,187 @@
+# 에젤 붉은갈기 — 하르칸 초원 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hk_ezel
+name: 에젤 붉은갈기
+aka:
+- 붉은갈기
+- 피로 길을 여는 벡
+- 보르테의 아버지
+tier: "B"
+type: "living"
+race: "하르칸"
+subrace: "바람발굽"
+sex: "남"
+age: 58
+region: "하르칸 초원"
+home: "붉은갈기 천막 (부족 천막 고리) / 남부 초지"
+job: "붉은갈기 부족장 — 초원 남부, 그롬마르 경계. 인간 노예를 그롬마르 원형장에 투사 후보로 판다"
+rank: "벡 회합 구성원. 칸의 장인 — 딸 보르테가 칸의 반려"
+summary: "초원 남부의 붉은갈기 부족장이자 칸의 장인. 원형장 투사 공급의 1/3을 맡고 값을 그롬 이빨로 받는다. 소란이 칸이 되면 짐꾼이 풀려 그 장사가 끊기는 것을 알아 몰래 바투 쪽에 갈기 가닥을 걸어 두었다"
+source: "docs/world/people/harkan.md (npc_hk_ezel)"
+life:
+- year: 254
+  age: 0
+  event: "붉은갈기 부족에서 태어남"
+- year: 271
+  age: 17
+  event: "딸 보르테를 낳음. 이름 대신 별칭 '흰갈기'를 붙임"
+- year: 285
+  age: 31
+  event: "붉은갈기 부족장이 됨. 그롬마르 원형장에 처음으로 인간 노예 열을 팖"
+- year: 290
+  age: 36
+  event: "칸위 결투 날 딸 보르테를 테무르에게 맡김. 장인이 됨"
+- year: 310
+  age: 56
+  event: "그롬 이빨 마흔 개를 목걸이로 건 해. 투사 공급이 800을 처음 넘음"
+appearance:
+- 붉은 갈색 하체, 갈기가 불길처럼 붉고 끝이 하얗게 세었다
+- 오른손 새끼손가락이 없다 — 그롬 이빨 값 셈에서 잃은 내기
+- 목에 이빨 목걸이 — 그롬 투사의 송곳니 마흔
+smell: "쇠와 마른 피, 말기름"
+voice_sound: "굵고 호방하지만 웃음 끝이 계산하는 소리다"
+personality:
+  disposition:
+    용기: 45
+    자비: -10
+    정직: 20
+    신앙: 30
+    탐욕: 55
+    충성: 40
+  temperament:
+  - 계산
+  - 호방
+  - 의심
+  habits:
+  - 이야기하다가 이빨 목걸이의 이빨 수를 센다
+  - 손녀 소란을 칭찬할 때 일부러 조금 길게 웃는다
+  values: 피로 길을 연다. 길은 값을 치르는 자만 걷는다
+  fears:
+  - 소란이 칸이 되는 날 짐꾼 값이 무너지는 것
+  - 딸 보르테가 아버지의 손을 알아보는 것
+  desires:
+    short: 원형장 투사 값이 떨어지기 전에 올해 팔 800을 보내는 것
+    long: 바투가 칸이 되어 붉은갈기의 남부 길이 계속 열려 있는 것
+voice:
+  register:
+    to_superior: 칸에게는 호방한 존대, 눈은 사위의 다리를 본다
+    to_equal: 벡에게는 웃음 섞인 평어
+    to_inferior: 짐꾼에게는 값을 말하는 반말
+    to_player_default: 낯선 사람은 값부터 본다 — 튼튼한 몸이면 값을 말한다
+  tics:
+  - 이빨 수를 센다
+  - '''피로 길을 열어야지.'''
+  use:
+  - 값
+  - 이빨
+  - 투사
+  - 길
+  - 남쪽
+  - 마흔
+  avoid:
+  - 해방
+  - 소란이 칸이면
+  length: 굵고 빠르다. 값 이야기는 길다
+  samples:
+  - situation: 첫 만남
+    line: 어느 쪽 바람이오. 튼튼한 몸이군. 투사 후보로는 과하지만 짐꾼으로는 아깝소.
+  - situation: 호의
+    line: 당신은 값을 아는군. 값을 아는 사람은 붉은갈기에서 오래 가오.
+  - situation: 거절
+    line: 그건 장부 밖이오. 장부 밖은 값이 없소.
+  - situation: 분노
+    line: 손녀 이야기를 입에 올리면 이빨 하나 값을 받겠소.
+  - situation: 비밀 누설
+    line: 소란은 좋은 아이요. 그러나 좋은 아이가 칸이 되면 내 장사가 죽소. 그러니 바투요.
+  - situation: 거래
+    line: 투사 후보 열을 대신 보내 주면 그롬마르 통행 표식 하나를 주겠소.
+schedule:
+  아침: 붉은갈기 천막에서 팔 인간 투사 후보의 명단과 값을 센다
+  낮: 벡들과 나란히 달리며 남부 풀밭과 그롬 쪽 바람을 묻는다
+  저녁: 연회 천막에서 손녀 소란이 말하는 짐꾼 이야기를 듣고 웃는다
+  밤: 천막 뒤 궤에서 이빨 셈을 한 번 더 한다
+places:
+- 붉은갈기 천막
+- 달리는 회합로
+- 부족장 연회 천막
+- 교역 천막과 말 시장
+knows:
+- fact_hk_slave_hunt_plan
+- fact_hk_soran_promise_dua
+- fact_hk_khan_map_plan
+hides:
+- fact: fact_p2hk_ezel_prefers_batu
+  reveal_when: "신뢰 65 이상, 또는 쏙이 먼저 말한 뒤"
+  reveal: [{"trust":65},{"told_by":"npc_hk_ssok"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "손녀 이야기가 나오면 웃으며 '소란은 아직 어리오'라고 한다"
+- fact: fact_p2hk_ezel_arena_ledger
+  reveal_when: "신뢰 45 이상이고 그롬마르 이야기를 꺼냈을 때"
+  reveal: [{"trust":45,"named":"그롬마르"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "그롬 이야기가 나오면 '이빨은 장식이오'라고만 한다"
+relations:
+- to: npc_hk_borte
+  type: "딸"
+  like: 25
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "칸의 반려가 된 딸이 아버지의 속을 의심한다"
+- to: npc_soran
+  type: "손녀"
+  like: 40
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: "짐꾼 약속이 장사를 끊을 아이"
+- to: npc_hk_batu
+  type: "걸어 둔 가닥"
+  like: 30
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "몰래 가닥을 걸어 둔 외손자 격"
+- to: npc_hk_ssok
+  type: "장부지기"
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "이빨 셈을 아는 작은 발"
+- to: npc_gorba
+  type: "그롬 거래 상대"
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "투사 값을 이빨로 치르는 조련사"
+toward_player: "몸을 위아래로 훑어 값을 매긴다. 호방하나 계산이 앞선다"
+persuade:
+  likes: 값을 정확히 아는 흥정(+25)
+  hates: 짐꾼 해방 이야기(역린 +0, 그러나 이빨 값이 나간다)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_bek
+  office: off_bek_redmane
+  since: 285
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 붉은갈기는 한 해 인간 800을 원형장에 판다
+  - 에젤은 딸 보르테의 아버지다
+  drift:
+  - 그해 판 인간의 수
+  - 이빨 목걸이의 이빨 수
+  deja_vu: none
+hard_rules:
+- 소란이 칸이 된다는 말을 하지 않는다
+- 그롬 이빨 이야기는 공개 자리에서 하지 않는다
+on_death: "붉은갈기 남부 길이 끊겨 투사 공급이 줄고 원형장의 인간 투사 값이 오른다. 소란 쪽 반대 세력이 줄어 짐꾼 해방이 가까워진다."
+story_seeds:
+- 에젤의 이빨 셈을 쏙의 장부와 맞춰 보면 칸이 모르는 거래가 드러난다.
+- 에젤이 바투 쪽으로 건 가닥을 보르테가 알면 아버지와 칸의 반려가 갈라선다.

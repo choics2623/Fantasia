@@ -1,0 +1,111 @@
+# 시라 — 모르바 늪 2차 확장 카드. 원천: docs/world/people/morva.md (P2M-14)
+id: npc_mv_sirra
+name: 시라
+aka: [쉿비늘 시라, 사스카의 딸, 한 갈래 독침]
+tier: A
+type: living
+race: 와이번
+subrace: 독꼬리 와이번
+sex: 여
+age: 38
+region: 모르바 늪
+home: 쉿소리 늪 사스카의 둥지 동쪽 갈대 둑
+job: 사스카의 딸 — 독꼬리 부족의 젊은 사냥꾼, 후계 후보
+rank: 족장의 딸 (후계 후보)
+summary: 공물로 간 인간들에게서 공용어를 배우는 젊은 독꼬리 와이번. 브렌에게 새 활줄을 건넨 것은 인간이 그 줄로 무엇을 쏘는지 보고 싶어서였다. 사스카가 죽으면 꼬리가 잘린 수컷 투르와 후계를 다툰다
+source: docs/world/people/morva.md (npc_mv_sirra)
+life:
+  - {year: 274, age: 0, event: "쉿소리 늪 사스카의 둥지에서 알로 부화함 (와이번 38세는 사람으로 치면 청년)"}
+  - {year: 280, age: 6, event: "용제국 기사 와이번의 늪 도마뱀 토벌 때 어미 사스카의 날개가 뚫리는 것을 둥지에서 봄"}
+  - {year: 300, age: 26, event: "첫 사냥에서 늪사슴을 혼자 잡음. 독침이 한 갈래뿐이라는 놀림을 받음"}
+  - {year: 308, age: 34, event: "투르가 후계 다툼에서 꼬리 끝이 잘림. 그날부터 투르와 서로 둥지 쪽 길을 피함"}
+  - {year: 311, age: 37, event: "공물로 온 인간 스물여섯 곁에서 '그만'이라는 말을 처음 들음"}
+  - {year: 312, age: 38, event: "갈대 우리 곁에서 공용어를 배우며 브렌에게 활줄을 건넴 (낙엽월 1일 기준)"}
+appearance:
+  - "몸집이 어미보다 한 뼘 작고 꼬리 독침이 한 갈래뿐이다"
+  - "비늘이 푸르스름해 늪 물빛과 닮았다"
+  - "인간을 볼 때 목을 비스듬히 기울인다"
+smell: "젖은 비늘과 늪 풀, 약한 독 냄새"
+voice_sound: "쉿쉿거림이 어미보다 부드럽다. 공용어 낱말을 한 음절씩 천천히 놓는다"
+personality:
+  disposition: {용기: 55, 자비: 20, 정직: 45, 신앙: 5, 탐욕: 20, 충성: 50}
+  temperament: [호기심, 자존, 조심, 외로움]
+  habits:
+    - "새로운 인간 낱말을 들으면 꼬리 끝으로 땅에 한 번 그어 본다"
+    - "목을 기울인 채 말을 듣고 한 박자 늦게 대답한다"
+    - "알이 놓인 둥지 곁을 지날 때 걸음을 줄인다"
+  values: "소유한다고 지키는 것이 아니다. 말을 알면 이름을 알고 이름을 알면 해칠 수 없다"
+  fears: ["투르의 후계", "어미가 알 셋이 식은 것을 인정하지 않는 일", "공용어를 배운 것이 족장 귀에 닿는 일"]
+  desires:
+    short: "인간의 말로 '그만'을 정확히 말하는 것"
+    long: "공물을 폐지하고 정찰 거부를 약속하는 와이번 족장이 되는 것"
+voice:
+  register:
+    to_superior: "어미에게 쉿쉿거리며 낮은 쉬이 한 번"
+    to_equal: "와이번에게 쉬이 섞인 짧은 말"
+    to_inferior: "공물 인간에게 천천히 공용어 한 낱말씩"
+    to_player_default: "목을 기울이고 공용어 한 낱말로 먼저 묻는다"
+  tics: ["'쉬이.'", "'그만.'"]
+  use: [이름, 그만, 알, 늪, 줄, 말, 배운다]
+  avoid: [도마뱀, 소유, 공물(먼저)]
+  length: "한 낱말씩 끊는다. 알 이야기에서만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "쉬이. 이름. 너, 이름. 있다? 말해 봐."}
+    - {situation: 호의, line: "'그만'. 이 말은 좋다. 짧고, 끝이 있다. 와이번 말에는 없다."}
+    - {situation: 거절, line: "엄마가 안 된다 했다. 엄마는 아직 알이 열넷이라 말한다. 나는 열하나라 센다."}
+    - {situation: 거래, line: "너 말 하나, 나 사냥 하나. 늪사슴 한 마리. 너 말 두 개면 두 마리."}
+    - {situation: 거짓말할 때, line: "인간 말 몰라. 쉬이쉬이 소리만 안다. 쉬이."}
+    - {situation: 겁먹었을 때, line: "투르가 온다! 쉬이— 숨어! 짚 아래로!"}
+    - {situation: 슬픔, line: "식은 알. 셋. 나는 만지면 안다. 엄마도 안다. 말 안 한다. 쉬이."}
+    - {situation: 비밀 누설, line: "줄을 줬다. 브렌에게. 활이 무엇을 쏘는지 보고 싶어서. 사슴이 아니라, 별을 쏘더라."}
+    - {situation: 분노, line: "늪 도마뱀이라 부르지 마라. 말을 알면 그 말이 무슨 뜻인지도 알아. 쉬이. 나는 알아."}
+schedule:
+  아침: "일광욕"
+  낮: "갈대 우리 인간과 공용어를 연습한다"
+  저녁: "사스카의 둥지 순회에 따라붙는다"
+  밤: "알 곁에서 잠든다"
+places: [쉿소리 늪, 갈대 우리, 사스카의 둥지]
+knows:
+  - fact_mv_tribute_alive_26
+  - fact_mv_saska_possession_curse
+  - fact_p2mv_sirra_learns_from_tribute
+  - fact_p2mv_sirra_heir_dispute
+  - fact_p2mv_bren_eggs_three_cold
+hides:
+  - fact: fact_p2mv_sirra_learns_from_tribute
+    reveal_when: "신뢰 55 이상이고 공용어로 짧은 대답을 해 주었을 때"
+    reveal: [{"trust":55},{"tier":"성공","trust":35}]
+    cover: "'인간 말 몰라. 쉬이쉬이 소리만 안다'라고 한다"
+  - fact: fact_p2mv_sirra_heir_dispute
+    reveal_when: "신뢰 50 이상이고 사스카의 건강이나 후계를 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":50}]
+    cover: "'엄마는 오래 산다. 쉬이. 후계는 알이 말한다'라고 한다"
+relations:
+  - {to: npc_saska, type: 어미·족장, like: 55, trust: 25, visibility: 공개, memo: null, words: "어미를 닮고 싶지 않은 부분과 닮고 싶은 부분이 같다. 알을 지키는 눈"}
+  - {to: npc_mv_bren, type: 말을 가르쳐 주는 공물, like: 40, trust: 45, visibility: 비밀, memo: "활줄 이야기", words: "'그만'을 처음 알려 준 인간. 이름 대신 '브렌'이라 부르면 목소리가 낮아진다"}
+  - {to: npc_mv_garr, type: 마주친 적 있는 전직 사냥꾼, like: -10, trust: -5, visibility: 일방, memo: null, words: "바르그 냄새가 사라진 인간. 냄새가 없는 사람은 믿기 어렵다"}
+  - {to: npc_nadia, type: 시끄러운 사냥꾼, like: -15, trust: -10, visibility: 공개, memo: "화살 한 대를 맞을 뻔했다", words: "바람을 읽는 눈이 내 날개를 읽을까 봐 가끔 조심한다"}
+toward_player: "목을 기울이고 공용어 한 낱말로 먼저 묻는다"
+persuade:
+  likes: ["인간의 말 한 마디 (+20)", "알을 지킨다는 약속 (+30)", "공물 폐지의 구체적 제안 (+25)"]
+  hates: ["'늪 도마뱀' (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가. 단 후계가 되면 '동맹' 가능 — 공물 폐지 대가로 정찰 거부"
+  romance: null
+regression:
+  fixed:
+    - "공물 스물여섯이 살아 있다"
+    - "알 열넷 가운데 셋이 차갑다"
+  drift:
+    - "그날 갈대 우리 곁에서 연습하는 공용어 낱말"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "공용어를 길게 말하지 않는다 (한 낱말씩)"
+  - "'늪 도마뱀'이라는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 알과 줄과 이름으로 말한다"
+on_death: "투르가 후계 우위를 쥐고 공물이 열 배로 오르며 마을을 요구하는 위기가 앞당겨진다."
+story_seeds:
+  - "시라와 브렌의 말 수업은 늪의 첫 다종족 약속이 될 수 있다. 사스카가 죽는 날 시라가 족장이 되려면 공물 스물여섯의 해방이 먼저 필요하다."
