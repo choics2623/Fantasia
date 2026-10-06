@@ -519,3 +519,47 @@ storylets:
           text: |
             {nem}의 손이 네 목에 닿는다. 하늘이 기운다.
           effects: ["nem_die"]
+
+  # ── 앎의 흔적 (03 §4.3, 14 §7.4): 잿빛 탑의 이졸 — 응시는 회차마다 길어진다 ──
+  - id: isol_gaze
+    trigger: {window: {from: "312-09-18 08:00", to: "312-09-30 22:00"}, with: npc_isol}
+    text: |
+      순례자의 회색 옷. 여자 하나가 막사 아이들에게 꿈 이야기를 묻다가, 너를 본다.
+
+      {gaze}초. 너무 길다. 그녀의 눈이 네 눈 안쪽의 무언가를 센다. 그리고 웃는다 — 아이에게 웃듯이.
+    choices:
+      - id: look_down
+        label: 눈을 내리깐다 — 아무것도 모르는 농노처럼
+        check: {skill: 기만, D: 36, D_per_loop: 2, warn: []}
+        success:
+          text: |
+            그녀의 시선이 네 정수리에서 미끄러진다. 다음 아이에게로.
+          effects: []
+        failure:
+          text: |
+            "꿈을 꾸니?" 그녀가 묻는다. 대답을 기다리지 않는다. 그녀는 가면서 무언가를 적는다 — 이 마을에서 글을 쓰는 손은 셋뿐이다.
+          effects: ["var isol_marked = true", "nemesis npc_isol 1"]
+      - id: meet_eyes
+        label: 마주 본다
+        text: |
+          그녀의 웃음이 깊어진다. "아." 그 한 마디. 그리고 간다. 그날 밤, 순례자 헛간의 등불이 늦게까지 켜져 있다.
+        effects: ["var isol_marked = true", "nemesis npc_isol 2", "memory npc_isol 이상함 그 아이는 눈을 피하지 않았다"]
+
+  # ── 엘사: '같은 날을 두 번 산 얼굴' (14 §4.6 #14) — 회차가 쌓일수록 그녀가 먼저 다가온다 ──
+  - id: elsa_two_days
+    trigger: {window: {from: "312-09-01 20:00", to: "312-09-30 22:00", from_loop: {"2": "312-09-03 06:00", "3": "312-09-02 06:00", "4": "312-09-01 20:00"}}, with: npc_elsa, when: ["loop >= 2"]}
+    text: |
+      늪 냄새. 엘사가 네 앞에 멈춘다. 늙은 손이 네 턱을 들어 올린다. 오래 본다.
+
+      "너, 같은 날을 두 번 산 얼굴이구나." 그녀는 놀라지 않는다. "돌아오는 이. 옛날엔 그렇게 불렀지. 지금은 부르는 사람이 다 불에 탔고."
+    choices:
+      - id: ask
+        label: '"돌아오는 이…?"'
+        text: |
+          "쉿." 엘사가 네 입술에 손가락을 댄다. "그 말은 탑이 듣는다. 아는 걸 함부로 쓰지 마라. 네가 안 타면, 네 옆의 누가 탄다."
+        effects: ["var echo_named = true", "rel npc_elsa trust 15", "note 엘사 — '같은 날을 두 번 산 얼굴'. 돌아오는 이. 아는 걸 함부로 쓰지 마라"]
+      - id: deny
+        label: 고개를 젓는다
+        text: |
+          "그래, 그래." 엘사가 손을 거둔다. "나도 아무것도 못 봤다." 그녀는 가면서 한 번 돌아본다.
+        effects: ["var echo_named = true", "rel npc_elsa trust 5"]

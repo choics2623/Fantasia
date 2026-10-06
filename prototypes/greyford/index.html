@@ -143,7 +143,7 @@ button.ui:hover { border-color: var(--gold); }
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane">
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
-  <h2 data-sec="secNotes">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
+  <h2 data-sec="secNotes" id="notesH">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
   <h2 id="oathH" hidden>맹세</h2><ul id="oaths" hidden></ul>
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
   <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
@@ -237,9 +237,10 @@ function render(d, loading = false) {
     $("goals").innerHTML = (v.goals || []).map((x) => `<span><b>${esc(x.who)}</b> ${esc(x.what)}${x.days != null ? ` <span class="d">D-${x.days}</span>` : ""}</span>`).join("");
     const p = v.player;
     const U = new Set(v.unlocked || []);
+    $("notesH").textContent = v.echoNamed ? "잔향 — 회귀해도 남는다" : "기억 — 회귀해도 남는다";
     $("rewindBtn").hidden = v.mode !== "story";
     for (const [id, key] of [["secNotes", "notebook"], ["secWhom", "people"], ["secItems", "items"], ["secRep", "reputation"]]) for (const el of document.querySelectorAll(`[data-sec=${id}]`)) el.hidden = !U.has(key);
-    $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, p.fatigue >= 50 ? `지침 ${p.fatigue}` : "", p.fear >= 2 ? `<span class="chip hot">떨림</span>` : "", `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
+    $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, p.fatigue >= 50 ? `지침 ${p.fatigue}` : "", p.fear >= 2 ? `<span class="chip hot">떨림</span>` : "", v.fight ? `<span class="chip hot">싸움 — ${esc(v.fight.name)} · ${v.fight.round}합</span>` : "", `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
     $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
     $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";

@@ -262,6 +262,25 @@ storylets:
       - id: count
         label: 센다 ▸
         text: "{record_full}\n\n{again_card}"
+      # 회귀 각성 (06 §8.3, 03 §4.2): 잔향에 새겨진 것이 쌓이면, 어둠 속에서 영혼의 재능 하나가 깨어난다
+      - id: wake_voice
+        label: "어둠 속에서 — 목소리가 깨어난다 (화술·기만)"
+        needs_tp: 3
+        talent: voice
+        text: "누군가의 말이 귀에 남아 있다. 그 말의 높낮이를, 너는 이제 흉내 낼 수 있다."
+        effects: ["awaken voice"]
+      - id: wake_shadow
+        label: "어둠 속에서 — 그림자 걸음이 깨어난다 (은신·손재주)"
+        needs_tp: 3
+        talent: shadow
+        text: "발바닥이 바닥의 소리를 먼저 안다. 어디를 디디면 울리지 않는지."
+        effects: ["awaken shadow"]
+      - id: wake_gunnar
+        label: "어둠 속에서 — 군나르의 팔이 깨어난다 (싸움)"
+        needs_tp: 3
+        talent: gunnar
+        text: "주먹을 쥐면, 손가락 마디가 어디로 가야 하는지 안다. 배운 적이 없는데."
+        effects: ["awaken gunnar"]
 
 
   # 들일 첫날 (14 §5.1 0:17~0:24): 낫 세 번 — 그리고 키트 대신 맞을 것인가

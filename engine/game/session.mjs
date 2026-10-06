@@ -57,7 +57,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     if (!res) return !g.story;                       // 대본 장면은 손으로 쓴 글 그대로 — LLM을 부르지 않는다
     if (res.storyText != null || g.story) return false;
     if (g.convo || res.convoEnded) return true;
-    if (res.id.startsWith("attack:") || res.id.startsWith("loot:")) return true;
+    if (res.id.startsWith("attack:") || res.id.startsWith("loot:") || res.id.startsWith("fight_") || g.fight) return true;
     if (res.feed?.some((f) => !INK.has(f.kind))) return true;
     if (g.ended) return true;
     if (res.kind === "move" && G.view(g).people.length) return true;

@@ -118,4 +118,57 @@ const fresh = () => G.boot(C, G.newRun({ seed: 7, opening: false }));
   const S2 = createSession(C, createProvider({ kind: "mock" }), {});
   check("그림다크에서는 되돌릴 수 없다", !!(await S2.rewind({})).error);
 }
+
+// 싸움의 합: 한 번에 끝나지 않으면 — 다시 달려든다 / 막는다 / 달아난다 / 매달린다 / 무릎 꿇는다
+{
+  let found = null;
+  for (let seed = 1; seed < 60 && !found; seed++) {
+    const g = G.boot(C, G.newRun({ seed, opening: false }));
+    const a = G.options(g).find((o) => o.id === "attack:npc_znik"); if (!a) continue;
+    G.act(g, { id: a.id });
+    if (g.fight) found = g;
+  }
+  check("부분 성공이면 싸움이 이어진다", !!found);
+  if (found) {
+    check("합마다 다섯 갈래", ["fight_strike", "fight_guard", "fight_flee", "fight_plead", "fight_yield"].every((x) => ids(found).includes(x)));
+    G.act(found, { id: "fight_guard" });
+    if (found.fight) { const o = G.options(found).find((x) => x.id === "fight_strike"); check("막아 낸 뒤엔 틈이 보인다 (또는 맞았다)", G.odds(found, o).parts.some((p) => p.text.includes("틈") || p.text.includes("맞았다"))); }
+    let guard = 0; while (found.fight && guard++ < 10) G.act(found, { id: "fight_strike" });
+    check("싸움은 끝난다 — 쓰러뜨리거나, 쓰러지거나, 물러나거나", !found.fight, `${found.ended?.why || ""} ${found.deeds.map((d) => d.kind).join(",")}`);
+  }
+}
+// 기억대로 보낸다 (03 §3.5): 지난 회차의 이 하루를 다시 — 어긋나면 멈춘다
+{
+  const g = fresh();
+  G.act(g, { id: "go:gf_well_square" }); G.act(g, { id: "wait:60" }); G.act(g, { id: "go:gf_rooster" }); G.act(g, { id: "wait:60" });
+  const g2 = G.boot(C, { ...G.regressRun(g), opening: false });
+  check("두 번째 회차엔 '기억대로 보낸다'", ids(g2).includes("recall"));
+  const r = G.act(g2, { id: "recall" });
+  check("지난 회차처럼 걸음을 보낸다", r.notes.some((n) => /걸음을 보냈다/.test(n)), r.notes.join(" / "));
+  check("기억대로 보낸 하루도 재생하면 같다", JSON.stringify(G.view(G.boot(C, JSON.parse(JSON.stringify(g2.run))))) === JSON.stringify(G.view(g2)));
+}
+// 업적 → 재능 점수 → 회귀 각성 (03 §4.2, 06 §8.3)
+{
+  const g = fresh(); g.S.vars.fayne_saved = true; g.S.vars.den_saved = true;
+  const run2 = G.regressRun(g);
+  check("업적이 잔향에 새겨진다 — 재능 점수", run2.carry.soul.tp >= 4 && run2.carry.soul.achievements.includes("fayne_saved"), `tp ${run2.carry.soul.tp}`);
+  run2.carry.trueName = "하린"; run2.carry.talent = "shadow";
+  const n2 = G.boot(C, run2);
+  for (let i = 0; i < 40 && !G.view(n2).story?.id?.startsWith("count"); i++) { const o = ids(n2); G.act(n2, { id: G.view(n2).story ? (o.includes("story:stay_in_line") ? "story:stay_in_line" : o[0]) : n2.at !== "gf_river_huts" && o.includes("go:gf_river_huts") ? "go:gf_river_huts" : o.includes("sleep") ? "sleep" : "wait:60" }); }
+  check("첫 잠자리 — 깨어날 재능을 고른다", ids(n2).includes("story:wake_voice") && !ids(n2).includes("story:wake_shadow"), ids(n2).join(","));
+  const v0 = G.skill(n2, "화술");
+  G.act(n2, { id: "story:wake_voice" });
+  check("목소리가 깨어난다 (화술 +6)", G.skill(n2, "화술") === v0 + 6 && G.view(n2).talents.includes("voice"));
+  const n3 = G.boot(C, { ...G.regressRun(n2), opening: false });
+  check("깨어난 재능은 영혼에 남는다", G.view(n3).talents.includes("voice") && G.view(n3).talents.includes("shadow"));
+}
+// 앎의 흔적: 기억을 쓰면 징후가 쌓이고 — 엘사가 먼저 다가온다
+{
+  const run = G.newRun({ seed: 7 }); run.loop = 3; run.carry.trueName = "하린";
+  const g = G.boot(C, run); G.act(g, { id: "story:next" });
+  G.act(g, { id: "story:mem_sara_first" });
+  check("◈를 쓰면 앎의 흔적이 쌓인다", (g.S.vars.echo_signs || 0) >= 1);
+  const st = C.game.storylets.find((x) => x.id === "elsa_two_days");
+  check("엘사의 장면은 회차가 쌓일수록 이르다 (3회차 → 2일)", st.trigger.window.from_loop["3"].startsWith("312-09-02"));
+}
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

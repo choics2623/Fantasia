@@ -47,7 +47,7 @@ const again = G.boot(C, JSON.parse(JSON.stringify(g2.run)));
 check("영혼이 있어도 재생하면 같다", JSON.stringify(G.view(again)) === JSON.stringify(G.view(g2)));
 
 // ── 죽음에서 회귀까지 (14 §4·§6.5·§6.6) ──
-const step = (g, pref) => { const ids = G.options(g).map((o) => o.id); const a = pref.map((x) => ids.find((i) => i.startsWith(x))).find(Boolean) || ids.find((x) => x.startsWith("story:")) || "wait:60"; return G.act(g, { id: a }); };
+const step = (g, pref) => { const ids = G.options(g).map((o) => o.id); const a = (ids.includes("fight_strike") ? "fight_strike" : null) || pref.map((x) => ids.find((i) => i.startsWith(x))).find(Boolean) || ids.find((x) => x.startsWith("story:")) || "wait:60"; return G.act(g, { id: a }); };
 let dead = null;
 for (let seed = 1; seed < 40 && !dead; seed++) {
   const d = G.boot(C, G.newRun({ seed }));
