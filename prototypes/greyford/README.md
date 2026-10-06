@@ -11,6 +11,8 @@ node prototypes/greyford/server.mjs     # 기본: 이 PC의 Claude Code 로그�
 - PC: `http://localhost:5174`
 - 폰(같은 와이파이): 서버 창에 나오는 `http://<PC IP>:5174/?key=…` 를 한 번 열면 기억된다.
 - `LLM_PROVIDER=api` (ANTHROPIC_API_KEY 필요, 종량제) / `LLM_PROVIDER=mock` (테스트 전용 가짜 LLM)
+- 모델: 서술은 기본 **sonnet** (인물의 말투 카드를 따라 쓰는 힘이 haiku와 크게 다르다), 자유 입력 해석·기록관은 **haiku**.
+  사용량을 아끼려면 `LLM_MODEL=haiku node prototypes/greyford/server.mjs` (글이 눈에 띄게 납작해진다)
 
 ## 저장
 - `prototypes/greyford/saves/auto.json` 에 자동 저장 — 내용은 **시드 + 행동 기록**뿐이다. 불러오면 처음부터 다시 재생한다.
