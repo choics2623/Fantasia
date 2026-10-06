@@ -77,9 +77,11 @@ knows: []
 hides:
   - fact: fact_gb_kit_heard_first
     reveal_when: "셋째가 명단 이야기를 먼저 꺼낸 뒤의 밤 장면, 또는 '비밀 지켜 주기'(설득 +15)를 한 번 받은 뒤"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "그 이야기가 나오면 거위 이야기를 한다. 너무 밝게 웃는다"
   - fact: fact_gb_kit_rain_song
     reveal_when: "비 오는 날 움막 12호 (표류 전용 `rain_on_hut12`) — 플레이어가 그 노래를 묻는다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그냥 나와'라고 하고 입을 다문다"
 relations:
   - {to: npc_gerda, type: 어머니, like: 95, trust: 90, visibility: 공개, memo: null, words: "엄마. 기침 소리로 엄마가 어디 있는지 안다. 엄마 빵은 엄마가 먹어야 한다"}

@@ -80,18 +80,23 @@ knows:
 hides:
   - fact: fact_lu_sere_wrote_doctrine
     reveal_when: "엘다르어로 말하기(+15)와 기억에 없는 새 사실(+25)을 모두 갖췄을 때. 교리 이야기가 교단 안의 사람 입에서 나오면 말하지 않는다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'교리는 인간의 것이다. 쓴 이가 누구였는지는 기억할 가치가 없다'"
   - fact: fact_lu_sere_double_report
     reveal_when: "아에린과의 연결을 증명했거나, 마테우스와 아에린 모두와 접촉한 증거를 쥔 이가 직접 물을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'교단의 보고서는 교단의 것이다'"
   - fact: fact_lu_sere_sends_suspects
     reveal_when: "맑은물 정자의 호송 일정을 입수했거나 신뢰 60 이상일 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정원으로 가는 순례자가 있다. 그것은 정원의 일이다'"
   - fact: fact_lu_sere_mateus_work
     reveal_when: "신뢰 50 이상이거나 마테우스의 위기 장면에서 그녀가 직접 개입할 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'후원이라는 낱말은 쓰지 않는다. 기록이라 한다'"
   - fact: fact_lu_doctrine_false
     reveal_when: "플레이어가 잔향임이 확정되었거나 신뢰 70 이상. 교단 안에서는 어떤 경우에도 말하지 않는다"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'교리는 아름답게 쓰였다. 진위는 아름다움과 별개다'"
 relations:
   - {to: npc_aerin, type: 파벌 수장, like: 70, trust: 80, visibility: 비밀, memo: null, words: "새벽가지의 지도자. '끝은 선택이다'라고 말하는 사람. 선택을 같이 하기로 한 것이 이천 년 중 가장 긴 약속이다"}

@@ -67,6 +67,7 @@ knows: ["fact_dk_scale_market_ledger", "fact_bk_severin_market_skim"]
 hides:
   - fact: fact_bk_vix_dead_names
     reveal_when: "2발톱 이상, 또는 신뢰 30 + 헨릭의 이름을 꺼낼 때"
+    reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'선매는 선매야. 번호만 맞으면 돼'"
 relations:
   - {to: "npc_severin_targul", type: "주인·1할", like: -10, trust: 20, visibility: "공개", memo: null, words: "웃는 재상. 두 장부를 쓰게 한 분. 웃음이 길면 무섭다"}

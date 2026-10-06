@@ -81,15 +81,19 @@ knows: [fact_aw_ian_hunters_suspect, fact_aw_box_bounty]
 hides:
   - fact: fact_aw_ian_decoy
     reveal_when: "플레이어가 진짜 잔향의 징후를 그에게만 보였을 때(+50), 또는 신뢰 70 이상"
+    reveal: [{"flag":"story"},{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "연극적으로 '나는 돌아왔노라'를 되풀이하고 눈에 재를 비빈다"
   - fact: fact_aw_ian_ash_eyes
     reveal_when: "신뢰 50 이상이거나, 눈의 재를 직접 본 뒤 질문을 존중으로 건넸을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'재는 신의 축복이오'라고 한다. 소매로 눈가를 닦는다"
   - fact: fact_aw_ian_night_contact
     reveal_when: "신뢰 80 이상이거나, 그가 미끼 계획을 먼저 털어놓은 뒤"
+    reveal: [{"trust":80}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'밤에는 기도한다'고만 한다"
   - fact: fact_aw_ian_followers_half
     reveal_when: "호감 60 이상이거나, 추종자의 안전을 걸고 부탁했을 때"
+    reveal: [{"like":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'모두 진심으로 믿는 자들이오'라고 한다 — 말끝이 조금 흔들린다"
 relations:
   - {to: npc_grey_woman, type: 미끼 계획 승인자, like: 70, trust: 80, visibility: 비밀, memo: null, words: "나를 이 자리에 세운 분. 얼굴은 보지 못했다. 타도 된다고 승인했지, 타라고는 하지 않았다 — 그 차이를 매일 밤 센다"}

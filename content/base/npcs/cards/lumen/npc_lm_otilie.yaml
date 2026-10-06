@@ -78,9 +78,11 @@ knows:
 hides:
   - fact: fact_lm_otilie_reads
     reveal_when: "글자를 정직하게 가르쳐 주거나 모양의 뜻을 한 번 알려 준 뒤. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저는 읽지 못해요. 이 방의 규칙이에요'라고 한다. 손가락이 허공에서 멈춘다"
   - fact: fact_lm_otilie_copies
     reveal_when: "한나나 아그네스의 소개가 있거나 신뢰 65 이상"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'낭독문 말고는 베낀 적 없어요'라고 한다"
 relations:
   - {to: npc_lm_hanna, type: 밀랍과 먹을 가져다 주는 사람, like: 40, trust: 50, visibility: 비밀, memo: null, words: "양초 조각에 숨은 쪽지를 주는 노수녀. 무엇을 나르는지 모른다고 생각한다"}

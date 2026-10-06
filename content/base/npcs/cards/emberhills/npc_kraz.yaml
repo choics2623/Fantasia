@@ -72,9 +72,11 @@ knows: [fact_eh_grax_supply_list, fact_eh_grax_supply_pays, fact_em_hadrian_quot
 hides:
   - fact: fact_em_kraz_water_trade
     reveal_when: "신뢰 50 이상이거나, 장부실 증거를 직접 보였을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물은 정량이다'라고 한다"
   - fact: fact_em_leonic_sells_to_kraz
     reveal_when: "신뢰 65 이상이거나, 광부등 전체를 건드리지 않겠다는 약속을 했을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'작은 정보야 아무나 판다'며 웃는다"
 relations:
   - {to: npc_grax, type: 현장 감독, like: 5, trust: 20, visibility: 공개, memo: null, words: "붉은 계단의 채찍. 성실하나 눈치가 느리다"}

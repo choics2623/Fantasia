@@ -78,12 +78,15 @@ knows: [fact_kz_seal_reason, fact_kz_pulse_answers_song, fact_kz_pulse_faster_31
 hides:
   - fact: fact_kz_seln_eor_voice
     reveal_when: "신뢰 40 이상, 또는 플레이어가 셀른의 기억 노래를 먼저 꺼낼 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'박자는 박자다. 누구 목소리인지는 장부가 말하지 않는다'"
   - fact: fact_hm_beat_ledger_pattern   # 사실: 고동 장부 — 고동은 아스테리온의 아홉 해와 다라의 석 달에 빨라졌다가 그들이 끊긴 날 느려졌고 AS 311에 다시 빨라졌다 (T21)
     reveal_when: "은자 시험(하루 세기 — 거짓 없이) 통과 + 값(고동에게 노래 한 곡)을 치른 뒤. 또는 그림발드의 룬으로 맹세를 풀어 준 뒤"
+    reveal: [{"flag":"trial"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'센다. 말하지 않는다.' 수염의 매듭을 하나씩 만진다"
   - fact: fact_kz_hilda_gate_machine
     reveal_when: "신뢰 30 이상 — 그는 그것을 막고 싶다"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'왕녀의 일은 왕녀의 일'이라며 손가락 박자를 빨리 센다"
 relations:
   - {to: npc_seln, type: 바깥 귀, like: 50, trust: 70, visibility: 비밀, memo: 계절마다 박자를 맞춘다, words: "엘다르의 노래가 우리 장부와 박자가 같다. 그게 무섭고 그게 위안이다"}

@@ -63,6 +63,7 @@ knows: []
 hides:
   - fact: fact_gb_liz_knows_mother
     reveal_when: "호감 30 이상이고 마르타가 없는 자리, 또는 사라가 곁에 있을 때"
+    reveal: [{"like":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'엄마는 열쇠만 세요'라고 하고 노래를 흥얼거린다"
 relations:
   - {to: npc_martha, type: 어머니, like: 90, trust: 60, visibility: 공개, memo: 모르는 척한다, words: "엄마. 열쇠 꾸러미에 내 아기 모자를 매달고 다닌다. 한 달에 한 번, 빵을 안 먹는 밤이 있다"}

@@ -78,21 +78,27 @@ knows: [fact_nc_starved_follow_breath, fact_nc_thirst_night_tribute, fact_nc_led
 hides:
   - fact: fact_nc_tessa_convoy
     reveal_when: "신뢰 35 이상이거나, 플레이어가 탈주자를 도운 행적이 있고 호송 동행을 청할 때"
+    reveal: [{"trust":35}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 정찰만 해. 사람은 안 데려가'라고 한다. 칼끝이 한 치 올라온다"
   - fact: fact_nc_tessa_black_cup_born
     reveal_when: "신뢰 40 이상이거나, 플레이어가 소매 아래 손목을 먼저 알아본 뒤"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "소매를 내리고 '목장 이야기는 안 해'라고 한다"
   - fact: fact_nc_tessa_family_left
     reveal_when: "신뢰 35 이상이거나, 플레이어가 검은성배 혈목장 구출 계획을 제시한 뒤(+35)"
+    reveal: [{"trust":35,"player_offer":"검은성배 혈목장 구출 계획을 제시한 뒤(+35)"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'가족 없어. 번호만 있었어'라고 답한다 — 천을 만지는 손이 빨라진다"
   - fact: fact_nc_tessa_promise_end
     reveal_when: "호감 60 이상이거나 아크 70 '세실의 마지막 밤', 또는 세실이 먼저 말한 뒤"
+    reveal: [{"like":60},{"told_by":"npc_cecile"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'레이디는 약해 보여도 오래 가'라고 돌려 말한다"
   - fact: fact_nc_cecile_route
     reveal_when: "신뢰 50 이상이거나 직접 호송에 참여한 뒤"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'통로는 통로야. 어디서 열리는지는 길 가면 알아'라고 한다"
   - fact: fact_nc_cecile_beast_blood_212
     reveal_when: "신뢰 60 이상이거나 테사가 스스로 꺼낼 만큼 불안이 커진 뒤"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'레이디는 짐승 피를 좋아해. 그뿐이야'라고 짧게 말한다"
 relations:
   - {to: npc_cecile, type: 구원자, like: 85, trust: 80, visibility: 비밀, memo: null, words: "번호를 이름으로 바꿔 준 사람. 그 이름을 한 번도 틀리게 부르지 않았다. 그 사람이 굶주린 자가 되어 가는 것을 가장 먼저 알았고 가장 늦게 말한다"}

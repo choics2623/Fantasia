@@ -78,15 +78,19 @@ knows: [fact_gf_sigrid_volk_escape, fact_gf_sigrid_defers_revenge, fact_gb_dietm
 hides:
   - fact: fact_gf_wolf_den
     reveal_when: "신뢰 30 이상 — 무리의 일원으로 인정(뼈 구슬)한 뒤. 식량을 다섯 번 날라 왔다면 조건 −10"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "무리는 열둘뿐이고 나머지는 서리 길에서 죽었다고 한다"
   - fact: fact_gf_egil_family_in_cellar
     reveal_when: "신뢰 40 이상, 또는 브람이 먼저 말한 뒤"
+    reveal: [{"trust":40},{"told_by":"npc_bram"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "에길 이야기가 나오면 '서리 길에서 떨어졌다'고 한다"
   - fact: fact_gf_sigrid_einar
     reveal_when: "충성 아크 50 — 그녀가 스스로 말한다. 플레이어가 에이나르를 먼저 꺼내면 역린"
+    reveal: [{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "동생 이야기가 나오면 '북쪽엔 아무도 안 남았다'고 하고 창을 다시 쥔다"
   - fact: fact_gf_sigrid_runes
     reveal_when: "신뢰 50 이상이고 늑대굴 안쪽에 들어온 뒤 — 사망자 이름을 함께 세는 장면"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "동굴 벽의 긁힌 자국을 '거인 사냥꾼들 흔적'이라 한다"
 relations:
   - {to: npc_bram, type: 동지, like: 55, trust: 60, visibility: 비밀, memo: null, words: "에길 일가를 맡긴 절름발이. 그 집 지하가 이 마을에서 유일하게 지붕 있는 곳이다"}

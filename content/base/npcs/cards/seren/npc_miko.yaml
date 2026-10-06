@@ -78,12 +78,15 @@ knows: [fact_sr_blind_lighthouse_signal, fact_sr_cell_meeting_1100, fact_sr_repa
 hides:
   - fact: fact_sr_miko_count_1140
     reveal_when: "신뢰 30 이상, 또는 플레이어가 노예선 사람들을 돕는 계획을 제시해 호감 40 이상일 때"
+    reveal: [{"trust":30},{"like":40,"player_offer":"노예선 사람들을 돕는 계획을 제시해 호감 40 이상일 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'배에 탄 사람 수? 하역꾼이 그런 걸 세겠어. 숫자는 빚이나 센다'고 웃으며 휘파람을 분다"
   - fact: fact_sr_miko_nadia_escape
     reveal_when: "신뢰 40 이상이고 나디아의 안부를 플레이어가 전해 줄 때, 또는 호감 50 이상"
+    reveal: [{"trust":40},{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'등불은 원래 자주 꺼져. 선장이 기름값 아끼느라고'라고 얼버무린다"
   - fact: fact_sr_miko_duty_roster
     reveal_when: "신뢰 50 이상이고 플레이어가 31명의 수송을 막을 방법을 제시했을 때"
+    reveal: [{"trust":50,"player_offer":"31명의 수송을 막을 방법을 제시했을 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그날은 비번이야'라고 한다. 거짓말할 때 앞니 사이로 휘파람이 더 크게 샌다"
 relations:
   - {to: npc_nadia, type: 옛 동료, like: 55, trust: 60, visibility: 비밀, memo: 도주를 도움, words: "같은 배에서 컸고, 뛰어내린 사람. 갚을 수 없는 5두카트의 어둠을 아직도 후회하지 않는다. 소식을 듣고 싶다. 묻지는 못한다"}

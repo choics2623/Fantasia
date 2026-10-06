@@ -78,9 +78,11 @@ knows: [fact_ws_tyla_wings_orn, fact_ws_caged_aeri_die, fact_ws_eiros_dissent, f
 hides:
   - fact: fact_ws_tyla_glide
     reveal_when: "신뢰 60 이상이고 갇힘의 공포를 함께 견딘 뒤(충성 아크 50 이상), 또는 높은 곳에서 위험에 처한 플레이어를 구해야 하는 위기 때"
+    reveal: [{"trust":60,"like":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'바람이 도와줬을 뿐'이라고 말한다. 활공 이야기가 나오면 입구 쪽으로 시선을 돌린다"
   - fact: fact_ws_descent_rope
     reveal_when: "신뢰 50 이상이고 오른 구출 계획을 함께 짠 뒤"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'줄은 짧아'라고만 한다. 구체적인 길이는 말하지 않는다"
 relations:
   - {to: npc_kyrie, type: 판결한 여왕, like: -20, trust: 20, visibility: 공개, memo: null, words: "내 날개를 자르게 한 사람. 그런데 밤마다 땅의 불빛을 센다는 소문을 들었다. 미워하기 어렵게 만드는 여왕이다"}

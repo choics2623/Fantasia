@@ -77,15 +77,19 @@ knows: [fact_gf_hagen_drinks_volk]
 hides:
   - fact: fact_gf_egil_family_in_cellar
     reveal_when: "신뢰 40 이상, 또는 지하실을 떠보는 판정 대성공(신뢰 10 이상), 또는 플레이어가 에길 일가의 탈출로를 제시하는 판정 성공"
+    reveal: [{"trust":40},{"trust":10,"tier":"대성공"},{"tier":"성공","player_offer":"에길 일가의 탈출로를"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "쥐 이야기로 얼버무린다. 저장고 쪽을 보지 않으려다 오히려 본다"
   - fact: fact_gf_bram_pays_henrik
     reveal_when: "신뢰 50 이상, 또는 헨릭이 죽거나 실각한 뒤"
+    reveal: [{"trust":50},{"dead":"npc_henrik"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "헨릭 이야기가 나오면 화제를 배급으로 돌린다"
   - fact: fact_gf_thomas_grain_route
     reveal_when: "신뢰 60 이상, 또는 토마스가 먼저 말한 뒤"
+    reveal: [{"trust":60},{"told_by":"npc_thomas"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'곡물은 성채에서 받는 만큼이다'라고만 한다"
   - fact: fact_gf_bram_leg_martha
     reveal_when: "호감 40 이상이고 술자리 장면 — 그가 스스로 꺼낸다. 플레이어가 먼저 묻는 것은 역린"
+    reveal: [{"like":40,"scene":"술자리","self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "다리 이야기가 나오면 침묵하고 등을 돌린다"
 relations:
   - {to: npc_thomas, type: 곡물 공범, like: 60, trust: 75, visibility: 비밀, memo: null, words: "말없이 믿는 사이. 서로의 목을 쥐고 있다"}

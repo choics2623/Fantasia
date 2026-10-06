@@ -76,12 +76,15 @@ knows: ["fact_dk_varskar_hours", "fact_dk_succession_split", "fact_bk_branek_pur
 hides:
   - fact: fact_bk_morkan_elena_debt
     reveal_when: "엘레나의 노래를 플레이어가 부르거나(노라에게 배운 것), 신뢰 50 이상에서 카스파르의 이름을 꺼낼 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'근위대는 막사에 있다' — 편을 묻는 질문으로 돌려 닫는다"
   - fact: fact_bk_morkan_hairpin
     reveal_when: "신뢰 60 이상, 또는 카스파르를 직접 데려왔을 때. 그가 스스로 갑옷 끈을 푼다"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "가슴을 손으로 덮는 버릇 — 무엇을 덮는지 말하지 않는다"
   - fact: fact_bk_morkan_stand_still
     reveal_when: "용황 사망 국면에서 신뢰 40 이상 + 엘레나의 빚을 아는 상태"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'근위대는 움직이지 않는다' — 무엇을 위해서인지는 말하지 않는다"
 relations:
   - {to: "npc_elena", type: "목숨의 빚(고인)", like: 90, trust: 80, visibility: "비밀", memo: "284년의 불", words: "젖은 천과 노래. 그녀가 아니었으면 나는 회랑의 재였다"}

@@ -78,21 +78,27 @@ knows: [fact_sv_elastriel_neutral_stance, fact_sv_dane_silvanus_son, fact_sv_ise
 hides:
   - fact: fact_sv_first_ember_burned
     reveal_when: "플레이어가 앞선 잔향자의 꿈('첫 불씨')을 해금한 상태에서 그녀가 먼저 부를 때, 또는 신뢰 50 이상에서 '정원째'를 묻는 판정 성공"
+    reveal: [{"flag":"story"},{"trust":50,"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그 정원은 기억에 있다'고만 하고 오른손으로 반지를 덮는다"
   - fact: fact_sv_elastriel_remembers_ember_voice
     reveal_when: "플레이어가 첫 불씨의 말투(해요체, '획 하나만')를 쓴 장면 — 기시감과 무관하게 그 자리에서 드러난다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'오래된 노래의 억양과 닮았다'고 돌려 말한다"
   - fact: fact_sv_prophecy_first_seen
     reveal_when: "신뢰 40 이상에서 플레이어가 아버지 이실도르를 먼저 꺼낼 때, 또는 비밀 누설 장면(호감 60 이상)"
+    reveal: [{"trust":40},{"like":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'예언은 아버지의 것이라 불린다'고 답한다"
   - fact: fact_sv_elastriel_name_loss_doubt
     reveal_when: "호감 60 이상, 신뢰 50 이상이며 플레이어가 그녀가 기억하지 못하는 새것(노래·기술·이야기)을 보여 준 직후"
+    reveal: [{"trust":50,"like":60,"player_offer":"그녀가 기억하지 못"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이름을 잃는다는 것은 퇴색과 같다'고 정해진 답을 한다. 말이 반 박자 늦는다"
   - fact: fact_sv_elastriel_senses_echo
     reveal_when: "기시감 25 이상의 알현에서 플레이어가 정직으로 답했을 때, 또는 신뢰 70 이상"
+    reveal: [{"deja_vu":25},{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "눈을 오래 맞추고 '아직'이라고만 한다"
   - fact: fact_sv_time_net_soul_garden
     reveal_when: "그녀가 플레이어를 잔향으로 확인했고 신뢰 70 이상일 때, 또는 플레이어가 그물에 걸려 영혼 정원에서 깨어난 뒤"
+    reveal: [{"trust":70,"echo_known":true},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정원에는 노래가 한 곡 더 있다'고 흐린다"
 relations:
   - {to: npc_aerin, type: 존속파 수장, like: 30, trust: 20, visibility: 공개, memo: null, words: "손톱에 흙을 묻힌 아이. 600년째 같은 브로치를 단다. 그 아이가 변하려 한다는 것을 안다. 말리지도, 거들지도 않는다"}

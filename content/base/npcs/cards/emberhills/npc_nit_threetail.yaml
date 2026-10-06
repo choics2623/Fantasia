@@ -63,9 +63,11 @@ knows: [fact_em_vent_leak_summer]
 hides:
   - fact: fact_em_nit_water_bowl
     reveal_when: "신뢰 45 이상이거나, 첫 갱 앞 바람 이야기를 먼저 건넸을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물? 내가 마시려고 놔둔 거야'라고 우긴다"
   - fact: fact_em_nit_sleep_trade
     reveal_when: "신뢰 55 이상이거나, 빵 반 덩이를 건넸을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'하층 7번? 순시하는 데야'라고 한다"
 relations:
   - {to: npc_kraz, type: 상관, like: -10, trust: 5, visibility: 공개, memo: null, words: "물 장사를 하는 지부장. 밤 이야기는 하지 않는다"}

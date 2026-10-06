@@ -73,12 +73,15 @@ knows: [fact_em_druss_gas_devices, fact_em_vent_leak_summer, fact_em_yan_knows_v
 hides:
   - fact: fact_em_cassel_dummies
     reveal_when: "신뢰 65 이상이거나, 그가 들킬 위기에서 덮어 주겠다고 약속했을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'41기'라고 반복하며 구리관을 쥔다"
   - fact: fact_em_cassel_sleepless
     reveal_when: "신뢰 55 이상이거나, 잠을 도와줄 약을 주었을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'잠? 잘 잔다'라고 하며 눈을 피한다"
   - fact: fact_em_druss_key_neck
     reveal_when: "신뢰 70 이상이거나, 드루스가 큰 위기에 처했을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'열쇠는 가주 가문의 일이오'라고만 한다"
 relations:
   - {to: npc_druss_vermion, type: 주인, like: 10, trust: 40, visibility: 비밀, memo: "장치의 반쪽", words: "열쇠를 쥔 사람. 그가 죽으면 열쇠가 자신에게 온다는 것을 안다"}

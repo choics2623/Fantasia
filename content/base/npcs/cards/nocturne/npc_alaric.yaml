@@ -74,21 +74,27 @@ knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_starved_f
 hides:
   - fact: fact_nc_alaric_c17_decoy
     reveal_when: "플레이어나 테사가 가족 구출 작전을 실제로 시작해 덫이 닫히기 직전, 또는 알라리크가 승리를 확신해 직접 자랑할 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "C-17 이야기가 나오면 '좋은 혈통이었지. 도망친 해는 아깝다'라고 한탄하듯 말하며 성배를 문지른다"
   - fact: fact_nc_alaric_bloodline_from_cecile
     reveal_when: "신뢰 40 이상이거나 세실에 대한 정보를 교환한 뒤(+30), 또는 그가 승리를 확신한 자리"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'최상급 혈통은 내 안목의 결과다'라고 자랑한다"
   - fact: fact_nc_alaric_elder_ambition
     reveal_when: "신뢰 50 이상이거나, 잔향이 확인되어 그의 야망이 흔들릴 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'원로께 충성할 뿐이다. 충성에는 값이 있지'라고만 한다"
   - fact: fact_nc_alaric_hunts_ledger
     reveal_when: "신뢰 35 이상이거나 세실의 이야기를 플레이어가 먼저 꺼낸 뒤"
+    reveal: [{"trust":35}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'세실 레이디와는 같은 영지의 이웃일 뿐이다'라고 웃는다"
   - fact: fact_nc_bat_wing_blood_myth
     reveal_when: "신뢰 60 이상이거나, 녹타의 이름과 증거를 플레이어가 먼저 내밀었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'박쥐날개는 이레마다 피 한 방울이다. 규칙이다'라고 정색하고 말한다"
   - fact: fact_nc_alaric_courts_quint
     reveal_when: "플레이어가 퀸트의 서명을 쥔 채 압박하거나 신뢰 45 이상일 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'감독들은 나의 단골이다. 누구나'라고 한다"
 relations:
   - {to: npc_mordecai, type: 군주, like: 40, trust: 30, visibility: 공개, memo: null, words: "원로시여. 쓸모를 알아주는 유일한 눈. 그 눈이 자기 야망의 크기를 아는 것은 두렵다. 두려워서 더 충성한다"}

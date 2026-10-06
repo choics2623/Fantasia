@@ -64,6 +64,7 @@ knows: []
 hides:
   - fact: fact_gb_gorm_patrol
     reveal_when: "양 한 마리 (뇌물), 또는 고기를 세 번 건넨 뒤 신뢰 20"
+    reveal: [{"gift":12},{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'고름은 지그문트가 말하는 대로 난다'고만 한다"
 relations:
   - {to: npc_sigmund, type: 상관, like: 10, trust: 20, visibility: 공개, memo: null, words: "용인 백인대장. 고기를 더 안 준다. 그래도 때리진 않는다"}

@@ -63,6 +63,7 @@ knows: [fact_em_barto_sells_passes]
 hides:
   - fact: fact_em_bolt_blade_molds
     reveal_when: "신뢰 50 이상이거나, 1발톱 이상의 값을 제시했을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'불량 주형은 폐기 대기다'라고만 한다"
 relations:
   - {to: npc_kraz, type: 상관, like: -5, trust: 10, visibility: 공개, memo: null, words: "물 장사를 하는 지부장. 같은 목록 아래 있다"}

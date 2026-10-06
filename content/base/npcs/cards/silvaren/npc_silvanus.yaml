@@ -81,15 +81,19 @@ knows: [fact_sv_elastriel_neutral_stance, fact_sv_silvan_children_born, fact_sv_
 hides:
   - fact: fact_sv_dane_silvanus_son
     reveal_when: "호감 50 이상이고 플레이어가 데인에 대한 배려(+30)를 보인 뒤 그가 스스로 꺼낼 때, 또는 데인의 충성 아크 70 장면(대면)"
+    reveal: [{"like":50,"self":true},{"like":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'낭독을 잘하는 정원지기'라고만 한다. 엄지가 지팡이 눈금을 쓴다"
   - fact: fact_sv_silvanus_teach_time
     reveal_when: "그가 플레이어를 잔향으로 확인한 뒤(시험: 지팡이 눈금 하나 되돌리기)"
+    reveal: [{"echo_known":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시간의 이름은 망설임이다'라고만 하고 강의를 피한다"
   - fact: fact_sv_silvanus_evidence
     reveal_when: "신뢰 60 이상이고 플레이어가 영혼 정원을 비난하는 논거를 성공시켰을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'숲은 조용하다'며 연대기 이야기로 돌린다"
   - fact: fact_sv_ise_first_ritual
     reveal_when: "신뢰 70 이상이고 데인이 곁에 없을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "그 이름이 나오면 별 이야기를 시작한다. 별 하나가 모자란다고 한다"
 relations:
   - {to: npc_aerin, type: 정적, like: -40, trust: -30, visibility: 공개, memo: null, words: "손톱에 흙을 묻히고 아이를 심는 자. 그의 온실이 3동 아래에 무엇을 묻었는지 나는 안다"}

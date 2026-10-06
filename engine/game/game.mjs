@@ -417,7 +417,7 @@ const DO = {
     const ctx = revealCtx(g, n, res.tier);
     for (const r of g.content.reveals[n] || []) {
       if (!about(r.fact) || m.revealed.has(r.fact)) continue;
-      if (revealOK(r.alts, ctx)) { m.revealed.add(r.fact); m.toldPlayer.add(r.fact); learn(g, r.fact, `${c.name}이(가) 털어놓았다`); res.reveal = r.fact; return; }
+      if (revealOK(r.alts, { ...ctx, topic }, r.fact)) { m.revealed.add(r.fact); m.toldPlayer.add(r.fact); learn(g, r.fact, `${c.name}이(가) 털어놓았다`); res.reveal = r.fact; return; }
       res.cover = r.cover; res.notes.push("무언가 숨긴다");
       return;
     }
@@ -432,7 +432,7 @@ const DO = {
   },
   give(g, what, res) {
     const n = g.convo.npc;
-    g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12;
+    g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12;
     talkTurn(g, res, { 대성공: [10, 5], 성공: [8, 3], "부분 성공": [4, 1], 실패: [1, 0], 대실패: [-2, 0] });
     addMemory(g, n, { kind: "debt", tag: "빚", text: "셋째가 돈을 쥐여 주었다", salience: 3, source: "engine" });
   },
@@ -470,7 +470,11 @@ function endIfSpent(g, res, cost) {
 function revealCtx(g, n, tier) {
   const r = relOf(g, n);
   const toldBy = new Set(Object.entries(g.M).filter(([k, m]) => k !== n && m.toldPlayer.size).map(([k]) => k));
-  return { trust: r.trust, like: r.like, tier, dead: g.S.dead, toldBy, scene: null, offer: false };
+  const m = mind(g, n);
+  const flags = new Set(Object.keys(g.S.vars).filter((k) => g.S.vars[k] === true && /^(trial|story):/.test(k)));
+  return { npc: n, trust: r.trust, like: r.like, tier, dead: g.S.dead, toldBy, scene: null, offer: false, flags,
+    dejaVu: (g.run.loop - 1) * 10,                                                     // 시간에 민감한 존재의 기시감 (03 §7) — 회차마다 쌓인다
+    echoKnown: m.memories.some((x) => x.tag === "이상함") && (g.run.loop > 1), gifts: m.gifts || 0 };
 }
 function describeBelief(g, b) {
   const N = (x) => nameOf(g, x);

@@ -68,6 +68,7 @@ knows: ["fact_dk_succession_split", "fact_dk_elders_after_dragons"]
 hides:
   - fact: fact_bk_aurelia_collateral
     reveal_when: "재무청 금고의 차용증 사본을 손에 넣거나, 신뢰 40 이상에서 아우락스가 장부를 불태울 계획을 증거로 보여 줄 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'국고의 대출은 관례요. 세렌은 제국의 친구지'"
 relations:
   - {to: "npc_melisande", type: "주군·대리", like: 60, trust: 50, visibility: "공개", memo: null, words: "숫자를 아는 유일한 진룡. 그녀의 실험은 낭비가 많지만 방향은 맞다"}

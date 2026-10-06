@@ -71,12 +71,15 @@ knows: [fact_em_yana_slot_37, fact_eh_flue_exit]
 hides:
   - fact: fact_em_fourteen_escape_plan
     reveal_when: "신뢰 55 이상이거나, 야나를 함께 데려가겠다는 약속을 했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'연통은 연기 길일 뿐이야'라고 한다"
   - fact: fact_em_fourteen_reads_numbers
     reveal_when: "신뢰 50 이상이거나, 숫자 이야기를 먼저 건넸을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'글은 몰라'라고만 한다"
   - fact: fact_em_tiberion_delays_fourteen
     reveal_when: "신뢰 70 이상이거나, 티베리온의 이름을 먼저 꺼냈을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'일정은 저들 몫이야'라고 한다"
 relations:
   - {to: npc_eve, type: 연통 정보, like: 30, trust: 30, visibility: 비밀, memo: null, words: "수레를 끄는 사람. 연기가 많이 나가는 쪽이 출구라고 알려 준 사람"}

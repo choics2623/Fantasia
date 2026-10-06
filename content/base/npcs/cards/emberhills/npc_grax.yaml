@@ -67,6 +67,7 @@ knows:
 hides:
   - fact: fact_eh_grax_supply_pays
     reveal_when: "신뢰 40 이상이거나 2 비늘을 쥐여 주었을 때. 담배를 건네면 열린다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공급은 규정이야. 규정에 값이 어딨어' 하며 점호 패를 문다"
 relations:
   - {to: npc_adrian_corvel, type: 요람 인수자, like: 5, trust: 20, visibility: 비밀, memo: null, words: "번호 없는 놈을 정확히 받아 주는 사람. 받으면 내 몫이 나온다. 그의 손을 보면 눈을 돌린다"}

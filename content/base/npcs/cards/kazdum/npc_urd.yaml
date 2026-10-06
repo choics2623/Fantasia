@@ -79,15 +79,19 @@ knows: [fact_kz_urd_stone_clock, fact_kz_pulse_faster_311, fact_kz_grimbald_wrot
 hides:
   - fact: fact_kz_urd_opened_door
     reveal_when: "신뢰 60 이상이고 41명에 대한 단서를 가져온 뒤, 또는 '문을 열었다'는 질문이 대성공(방패를 먼저 받은 상태)"
+    reveal: [{"trust":60},{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'팔은 사고였다'고 한다. 방패를 내밀며 화제를 돌린다"
   - fact: fact_kz_petar_rescued_by_urd
     reveal_when: "충성 아크 50 — 페타르에게 직접 진실을 말하는 장면. 그 전에는 플레이어가 누설해도 아크가 막힌다"
+    reveal: [{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'페타르는 좋은 광부다'라고만 한다. 그의 이름이 나오면 방패를 만진다"
   - fact: fact_kz_urd_taught_hilda
     reveal_when: "신뢰 55 이상이고 힐다의 이름을 먼저 존중하며 꺼낸 뒤"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아가씨는 겁이 없었다'고만 하고 가르쳤다는 말은 하지 않는다"
   - fact: fact_kz_oath_completion
     reveal_when: "그림발드에게서 단서를 얻은 뒤, 또는 신뢰 75 이상"
+    reveal: [{"flag":"story"},{"trust":75}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'돌이 어떻게 될지는 모른다'고 말한다. 돌을 만진다"
 relations:
   - {to: npc_bror, type: 판결한 왕, like: 30, trust: 50, visibility: 공개, memo: null, words: "나를 추방한 왕. 판결은 정확했다. 그 정확함이 나를 여기까지 오게 했고, 그 정확함이 나를 용서하지 못하게 한다"}

@@ -76,12 +76,15 @@ knows:
 hides:
   - fact: fact_dk_irga_flute
     reveal_when: "충성 아크 40 — 신뢰 40 이상이거나 그녀가 스스로 꺼낼 때. 플레이어가 먼저 피리를 묻는 것은 역린"
+    reveal: [{"trust":40,"like":40,"self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "피리를 손으로 가리고 '아무 것도 아니야'라고만 한다"
   - fact: fact_dk_irga_needs_hagen
     reveal_when: "신뢰 30 이상이거나 하겐의 정보를 플레이어가 먼저 입에 올렸을 때"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정보는 정보다. 냄새는 가리지 않아'라고 한다"
   - fact: fact_dk_irga_opposes_hit
     reveal_when: "아버지를 막을 방법(+25)을 플레이어가 제시하거나 신뢰 50 이상. 카스파르에 관한 정보를 가져와도 열린다"
+    reveal: [{"trust":50,"player_offer":"제시하거나 신뢰 50 이상. 카스파르에 관한 정보를 가져와도 열린다"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아버지 일은 조합 일이야'라고 하며 시선을 코끝으로 돌린다"
 relations:
   - {to: npc_volk, type: 아버지, like: 60, trust: 30, visibility: 공개, memo: null, words: "존경하는 사냥꾼이자 규칙을 만든 손. 피리 주인이 처형되던 날부터 그 손을 똑바로 보지 못한다. 카스파르를 겨누는 것을 말리고 싶지만 아직 말하지 못한다"}

@@ -62,9 +62,11 @@ voice:
 hides:
   - fact: fact_hg_harva_sells_scouting
     reveal_when: "신뢰 40 이상이고 거래에 이익이 걸린 장면, 또는 스카디르 이야기에서 위압 판정 성공"
+    reveal: [{"trust":40},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정찰은 누구에게나 판다'고만 한다. 구체적인 값과 상대는 말하지 않는다"
   - fact: fact_hg_harva_carried_runaways
     reveal_when: "신뢰 50 이상이고 30 비늘을 지불할 수 있다고 제시"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 짐을 나른다. 짐의 이름은 묻지 않는다'고 대답한다"
 schedule:
   아침: "울음 협곡 상공 순회 — 아래 길의 움직임을 본다"

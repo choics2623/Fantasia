@@ -82,9 +82,11 @@ knows:
 hides:
   - fact: fact_lm_aegidius_dream_book
     reveal_when: "꿈 이야기를 정직하게 털어놓아 마음을 열었거나 신뢰 65 이상. 책을 직접 보았을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'평범한 꿈들뿐입니다. 정화청의 문서입니다'라고만 한다"
   - fact: fact_lm_aegidius_fear_spiral
     reveal_when: "화형과 밀고 수의 관계를 숫자로 제시했을 때. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정화는 신도를 두렵게 하는 것이 아니라 깨우는 것입니다'라고 한다"
 relations:
   - {to: npc_mateus, type: 상관, like: 50, trust: 60, visibility: 공개, memo: null, words: "존경하고 닮으려는 사람. 머리핀은 모른다"}

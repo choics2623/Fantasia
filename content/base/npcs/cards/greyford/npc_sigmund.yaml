@@ -67,6 +67,7 @@ knows: []
 hides:
   - fact: fact_gb_sigmund_aurax_house
     reveal_when: "신뢰 50 이상, 또는 가문 서신을 손에 넣었을 때, 또는 용황 사망 소식이 닿은 뒤"
+    reveal: [{"trust":50},{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "가문 이야기가 나오면 '나는 문의 사람이다'라고만 한다"
 relations:
   - {to: npc_kaspar, type: 사령관, like: 55, trust: 60, visibility: 공개, memo: 가문의 뜻과 어긋난다, words: "잡종이라 불렀던 사령관. 눈 속에서 내 병사 여섯을 맨손으로 파냈다. 그 뒤로는 그렇게 부르지 않는다"}

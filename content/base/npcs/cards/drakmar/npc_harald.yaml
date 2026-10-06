@@ -68,6 +68,7 @@ knows: ["fact_bk_arden_erasures", "fact_bk_mariel_gate_ledger", "fact_bk_lamp_ce
 hides:
   - fact: fact_bk_harald_passes
     reveal_when: "등잔의 표식, 또는 잿빛 실 쪽 사람(엘사·올레)의 보증"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'통행증은 돈 받고 팔아. 누구한테든'"
 relations:
   - {to: "npc_nora", type: "등잔", like: 60, trust: 70, visibility: "비밀", memo: "목소리만", words: "나를 심지로 부른 목소리. 얼굴은 몰라. 몰라야 하고"}

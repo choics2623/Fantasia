@@ -77,12 +77,15 @@ knows: [fact_tm_elin_double, fact_tm_nibble_took_elin, fact_mv_elsbet_dream_inte
 hides:
   - fact: fact_tm_queen_laugh_reason
     reveal_when: "은자 시험(아무에게도 말하지 않은 진실 하나) 통과 + 값(가장 아끼는 기억 하나)을 치른 뒤"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그건 상자 속의 진실이야. 상자 값을 내면'이라고 곧게 말한다"
   - fact: fact_tm_laugh_box
     reveal_when: "신뢰 40 이상"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "입을 주먹으로 막는다"
   - fact: fact_tm_queen_true_name_fate
     reveal_when: "신뢰 60 이상, 플레이어가 잔향임을 보인 뒤"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이름 이야기는 마지막 장에서'"
 relations:
   - {to: npc_hag_elsbet, type: 오랜 친구, like: 60, trust: 70, visibility: 비밀, memo: null, words: "안개를 함께 걷는 딸. 그 애가 꿈을 심문할 때 나는 옆에서 진실만 말한다"}

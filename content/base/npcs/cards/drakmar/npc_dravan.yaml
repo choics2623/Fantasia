@@ -68,6 +68,7 @@ knows: ["fact_dk_aurax_purge_plan", "fact_bk_branek_purge_list"]
 hides:
   - fact: fact_bk_dravan_name_called
     reveal_when: "세라크를 통해서만 — 세라크와 신뢰 50인 플레이어에게 그녀가 전한다"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "말이 없다. 콧김"
 relations:
   - {to: "npc_aurax", type: "아버지", like: 90, trust: 95, visibility: "공개", memo: "숨김을 모른다", words: "틀리지 않는 불. 그분이 맡긴 일은 정확해야 한다"}

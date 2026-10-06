@@ -79,21 +79,27 @@ knows: [fact_gf_sara_on_sale_list, fact_gf_serf_sale_contract, fact_gf_znik_wet_
 hides:
   - fact: fact_gf_martha_swapped_list
     reveal_when: "공개하지 않는다 — 플레이어가 지난 회차의 기억이나 사라에게서 듣고 꺼낼 때만 반응한다. 리즈를 위협하면 즉시 밀고, 리즈의 안전을 약속하면 신뢰 +40"
+    reveal: [{"never":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "명단 이야기가 나오면 '나는 글을 모른다'고 한다"
   - fact: fact_gf_martha_23
     reveal_when: "충성 아크 70 — 그녀가 스스로 이름을 들려준다. 협박 카드로 쓰면 신뢰 영구 −50"
+    reveal: [{"like":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'셀 수 있는 것만 센다'고 하고 털모자를 쓰다듬는다"
   - fact: fact_gf_martha_pact
     reveal_when: "신뢰 30 이상의 거래 장면, 또는 리즈의 안전을 보장할 실질적 방안을 내놓았을 때"
+    reveal: [{"trust":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'남작님께 받을 것은 매일 받는 배급뿐'이라 한다"
   - fact: fact_gf_bram_leg_martha
     reveal_when: "호감 40 이상이고 브람 이야기가 나온 밤 — 그녀가 스스로 말한다"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "브람 이야기에는 '오래된 일'이라고만 한다"
   - fact: fact_gf_martha_elsa_deals
     reveal_when: "신뢰 50 이상, 또는 엘사가 먼저 말한 뒤"
+    reveal: [{"trust":50},{"told_by":"npc_elsa"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "엘사는 '하인들 약값 셈'으로만 안다고 한다"
   - fact: fact_gf_martha_ring_house
     reveal_when: "신뢰 40 이상. '한 해에 하나'를 플레이어에게 쓸지는 그 뒤의 일이다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "집안 이야기는 '바알카르에 외삼촌이 있다'로 끝낸다"
 relations:
   - {to: npc_liz, type: 딸, like: 100, trust: 100, visibility: 공개, memo: null, words: "세상에서 값을 매기지 않는 단 하나"}

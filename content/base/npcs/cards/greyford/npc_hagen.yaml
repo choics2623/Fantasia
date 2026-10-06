@@ -77,18 +77,23 @@ knows: [fact_gf_znik_sells_to_hagen, fact_gb_grod_buys_hagen, fact_gf_hagen_drin
 hides:
   - fact: fact_gf_hagen_killed_ulf
     reveal_when: "공개하지 않는다 — 페인의 증언, 울프의 무덤, 이르마의 복수로만 드러난다. 배 위에서 가면이 벗겨질 때 반쯤 흘린다"
+    reveal: [{"never":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'탈주자들이 그랬다니까'를 되풀이하고 은니를 혀로 훑는다"
   - fact: fact_gf_hagen_sells_runaways
     reveal_when: "볼크 앞에서 대질, 또는 위장 동료 30일째 배신 이벤트에서 스스로 드러낸다"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 길을 알려 줬을 뿐'이라 하고 잡힌 것은 그들 운이라 한다"
   - fact: fact_gf_hagen_hut_cache
     reveal_when: "공개하지 않는다 — 헛간 마루를 직접 뜯어야 한다"
+    reveal: [{"never":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "헛간 문 자물쇠를 장어 도둑 때문이라 한다"
   - fact: fact_sr_severo_buys_hagen_peyn
     reveal_when: "더 큰 거래 제안으로 흥정 대성공 — 그는 페인을 '물건'으로 다시 흥정하려 든다"
+    reveal: [{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "세렌 선원과는 '소금 셈'만 한다고 한다"
   - fact: fact_gf_hagen_sigrid_price
     reveal_when: "볼크의 이름으로 떠보는 판정 성공, 또는 위장 동료가 된 뒤 신뢰 40"
+    reveal: [{"tier":"성공"},{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "북방 사람들 이야기에는 '불쌍한 사람들, 형이 도와줘야지'라고 한다"
 relations:
   - {to: npc_volk, type: 두려운 고용주, like: 20, trust: 10, visibility: 비밀, memo: null, words: "냄새로 거짓말을 맡는 늙은 늑대. 그 앞에서만은 웃음이 반 박자 늦다"}

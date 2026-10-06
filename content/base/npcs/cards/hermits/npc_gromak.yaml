@@ -82,9 +82,11 @@ knows: [fact_aw_echo_girl_calls]
 hides:
   - fact: fact_dk_collapse_truth
     reveal_when: "은자 시험 통과 — 해 질 녘 시간이 얇아지는 틈에 '내일은 오지 않는다. 312년이 지났다'를 말하고, 그가 그것을 들은 뒤(신뢰 30 이상). 또는 '내일은 대붕괴의 날'이라고 설득하는 판정 대성공"
+    reveal: [{"trust":30,"flag":"trial"},{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'회의의 일은 회의에서 말하오'라며 서고 이야기로 돌린다"
   - fact: fact_hm_gromak_envoy_bargain   # 사실: 대붕괴 전날 밤 그로마크는 아스테리아의 인간 사절과 '서고를 태우지 않고 그에게 — 대가로 남문을 하루 늦게' 거래했고 사절은 돌아오지 않았다
     reveal_when: "호감 40 이상이고 플레이어가 아스테리아 서고 이야기를 먼저 꺼낼 때"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그건 사절과 나 사이의 일이오. 너는 그 사절이 아닌가?'"
 relations:
   - {to: npc_varskar, type: 옛 주군·같은 시대의 용, like: 10, trust: 30, visibility: 공개, memo: 그날의 계획을 말한 자, words: "형제를 문 용. 그분의 불이 서고에 닿지 않기를 매일 바란다"}

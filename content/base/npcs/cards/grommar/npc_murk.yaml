@@ -75,12 +75,15 @@ knows: [fact_aw_goz_deserter]
 hides:
   - fact: fact_gm_murk_toy_horse
     reveal_when: "신뢰 30 이상(동료 아크 30). 또는 플레이어가 장난감 말을 직접 만지지 않고 '그것은 무엇인가'만 조용히 물을 때"
+    reveal: [{"trust":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "목에 건 것을 옷 속에 넣고 '아이 물건.'이라고만 한다. 더 물으면 걸레를 짠다"
   - fact: fact_gm_murk_urgash_brothers
     reveal_when: "신뢰 60 이상이고 다른 그롬이 없는 곳에서. 플레이어가 우르가쉬 이야기를 먼저 꺼내 그가 스스로 입을 열 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "우르가쉬 이야기가 나오면 '군주.'라고만 하고 손을 닦는다. 더 이상 대답하지 않는다"
   - fact: fact_gm_murk_hears_chains
     reveal_when: "신뢰 50 이상. 또는 마라나 플레이어가 지하의 소문(탈이 아직 살아 있다는)을 직접 묻고 그가 대답을 피하지 않을 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "배수로 이야기가 나오면 '물소리다.'라고 한다. 귀를 벽 쪽으로 기울이다 멈춘다"
 # (해결 → fact_aw_goz_deserter (무르크 knows)) 고즈(npc_goz)가 싸움터에서 돌아선 탈영 그롬이라는 사실 — 재의 황무지(fact_aw_) 작가 담당. 무르크는 소문으로만 안다
 relations:

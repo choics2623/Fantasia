@@ -63,6 +63,7 @@ knows: [fact_em_sorga_blind_eye]
 hides:
   - fact: fact_em_nils_courier
     reveal_when: "신뢰 45 이상이거나, 빵이나 안전을 약속했을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물만 길어요'라며 바퀴를 만진다"
 relations:
   - {to: npc_sorga, type: 주인, like: 30, trust: 20, visibility: 공개, memo: null, words: "무섭게 굴지만 밤마다 빵을 남겨 놓는 분"}

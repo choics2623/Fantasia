@@ -78,15 +78,19 @@ knows: [fact_mv_witch_forty_limit, fact_mv_poison_for_hags, fact_nc_thirst_night
 hides:
   - fact: fact_mv_bern_spy_executions
     reveal_when: "신뢰 50 이상, 또는 엘스베트가 먼저 일곱 건을 말한 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "사망 장부 이야기가 나오면 '열병과 물'이라고만 하고 장부를 덮는다"
   - fact: fact_mv_wyvern_tribute_six
     reveal_when: "신뢰 60 이상, 또는 플레이어가 공물 인원이 매년 여섯이라는 것을 정확히 말한 뒤"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공물은 노동력이다'라고만 한다. 어디서 일하느냐고 물으면 장부의 다른 줄을 읽는다"
   - fact: fact_mv_bern_agnes_link
     reveal_when: "신뢰 40 이상이고 플레이어가 루멘의 끊어진 고리 쪽 사람이거나 그 표식을 보일 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'루멘 소식은 장어 장수들한테서나 듣는다'고 얼버무린다"
   - fact: fact_nc_tessa_convoy
     reveal_when: "신뢰 40 이상이고 플레이어가 녹테른 경계(붉은 갈대 선) 이야기를 먼저 꺼낼 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'붉은 갈대 선 너머는 돌아오지 못하는 길이다'라고만 한다"
 relations:
   - {to: npc_oda, type: 늪 마녀 첫째, like: 50, trust: 60, visibility: 공개, memo: null, words: "자유촌의 병자를 돌보는 눈먼 노파. 그녀의 병이 비어 가는 것을 그는 알고 있다. 존경하고, 그만큼 불편하다"}

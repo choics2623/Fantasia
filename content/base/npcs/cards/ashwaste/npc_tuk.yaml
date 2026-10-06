@@ -81,9 +81,11 @@ knows: [fact_aw_box_bounty, fact_aw_goz_deserter, fact_aw_goz_weakness]
 hides:
   - fact: fact_aw_tuk_sold_hearts
     reveal_when: "신뢰 50 이상이거나, 흥정을 두 번 이긴 뒤 용심 조각 이야기를 꺼냈을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그런 건 취급 안 해'라고 웃으며 보따리를 가린다"
   - fact: fact_aw_tuk_knows_ian_fake
     reveal_when: "신뢰 70 이상이거나, 플레이어가 이안의 진짜 사정을 알고 있음을 보였을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'수도자는 제값 내는 손님이야'라고만 한다. 은 의치가 한 번 부딪힌다"
 relations:
   - {to: npc_kyle_sandeye, type: 납품자, like: 15, trust: 20, visibility: 공개, memo: null, words: "유물을 끌어다 주는 인간. 몫을 따지는 눈이 마음에 든다. 상자 이야기가 나오면 귀가 서는데 값을 물으면 입을 닫는다"}

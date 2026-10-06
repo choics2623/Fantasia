@@ -73,9 +73,11 @@ knows: [fact_hi_dara_nine_uprisings, fact_hi_dara_last_words, fact_ar_glass_blad
 hides:
   - fact: fact_hi_dara_last_knot
     reveal_when: "은자 시험(빈 귀 — 잔향이라면 다라만 아는 것을 말함) 통과 후"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'마지막 매듭은 매듭집에 물어라'"
   - fact: fact_hm_trace_keepers_five_ends   # 사실: 흔적지기 '다섯 끝의 길' — 다섯 앞선 잔향자의 끝난 자리와 흔적, 「다섯 끝의 노래」
     reveal_when: "신뢰 50 이상, 또는 값(신발끈)을 치른 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "노래를 입 모양으로만 부른다 — 소리를 내지 않는다"
 relations:
   - {to: npc_herja, type: 방패줄의 끝지기, like: 50, trust: 60, visibility: 비밀, memo: null, words: "귀먹은 서리손. 그 끝은 내가 다섯 번 걸었다. 그녀는 그가 끝을 직접 걸어야 한다고 한다"}

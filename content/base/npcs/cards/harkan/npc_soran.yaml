@@ -75,9 +75,11 @@ knows: [fact_hk_west_wind_broken, fact_hk_dua_loss_rate, fact_hk_gleaners]
 hides:
   - fact: fact_hk_soran_promise_dua
     reveal_when: "신뢰 45 이상이고 짐꾼을 이름으로 부르는 등 공정함을 보인 뒤, 또는 두아가 먼저 말한 뒤"
+    reveal: [{"trust":45},{"told_by":"npc_dua"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'짐꾼들은 지치지 않으면 좋겠다'고만 한다. 약속 이야기에는 갈기의 붉은 실을 만진다"
   - fact: fact_hk_soran_secret_lessons
     reveal_when: "신뢰 55 이상이고 정착(머무름)에 대한 존중을 보인 뒤, 또는 바타르가 허락한 뒤"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저녁엔 정찰 나간다'고 한다. 말뼈 샘 이야기가 나오면 화제를 돌린다"
 relations:
   - {to: npc_temur, type: 아버지, like: 60, trust: 40, visibility: 공개, memo: null, words: "달리면 아무도 따라잡지 못하는 칸. 존경하고 두렵다. 그가 아는 길만이 길이라고 믿는 것이 가장 두렵다"}

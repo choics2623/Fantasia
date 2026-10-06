@@ -81,9 +81,11 @@ knows:
 hides:
   - fact: fact_lm_anselm_praised_denunciation
     reveal_when: "클라라의 이름을 정직한 연민으로 꺼냈거나 신뢰 60 이상. 마테우스가 정원에 앉은 날 함께 있었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'내가 가르친 구절 중 하나였을 뿐이네'라고 한다"
   - fact: fact_lm_anselm_clasp
     reveal_when: "아그네스나 아델의 보증을 가져왔거나 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'신학원에 고리라는 건 없네. 낭독 연습뿐이지'라고 한다"
 relations:
   - {to: npc_mateus, type: 키운 아이, like: 40, trust: -10, visibility: 공개, memo: null, words: "아직도 가끔 정원에 앉으러 오는 정화청장. 칭찬한 날이 둘 사이의 벽"}

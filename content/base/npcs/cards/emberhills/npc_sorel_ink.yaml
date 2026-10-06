@@ -63,6 +63,7 @@ knows: [fact_em_sorel_cradle_as_fall, fact_em_cassian_monthly_numbers]
 hides:
   - fact: fact_em_sorel_second_ledger
     reveal_when: "신뢰 60 이상이거나, 이름을 기록하겠다는 약속을 했을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'장부는 하나뿐입니다'라고 적는 시늉을 한다"
 relations:
   - {to: npc_cassian_vermion, type: 상관, like: 0, trust: 20, visibility: 공개, memo: null, words: "숫자를 낭독하는 분. 그 숫자의 뒤를 기록하는 것이 내 일"}

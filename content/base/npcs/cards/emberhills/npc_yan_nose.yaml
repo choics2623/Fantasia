@@ -63,6 +63,7 @@ knows: [fact_em_vent_leak_summer]
 hides:
   - fact: fact_em_yan_knows_vents
     reveal_when: "신뢰 50 이상이거나, 물이나 빵을 크게 건넸을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'냄새는 매일 달라서 몰라'라고 한다"
 relations:
   - {to: npc_cassel_smokeiron, type: 고용주, like: 0, trust: 10, visibility: 비밀, memo: null, words: "돈 주는 용인. 잠을 못 자는 얼굴이 불쌍하기도 하다"}

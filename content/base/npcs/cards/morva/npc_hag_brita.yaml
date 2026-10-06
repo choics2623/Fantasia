@@ -66,6 +66,7 @@ knows: [fact_mv_witch_forty_limit, fact_mv_time_forbidden, fact_mv_vessel_wait_3
 hides:
   - fact: fact_mv_brita_confine_plan
     reveal_when: "신뢰 60 이상, 또는 오다가 죽거나 쓰러진 뒤, 또는 플레이어가 진명을 말해도 타지 않는 것이 확인된 뒤"
+    reveal: [{"trust":60},{"dead":"npc_oda"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그릇은 지켜야 하는 것이다'라고만 한다. 어떻게 지킬 것인가를 묻는 말에는 대답하지 않고 뼈바늘로 손바닥을 찌른다"
 relations:
   - {to: npc_oda, type: 첫째·선임, like: 55, trust: 50, visibility: 공개, memo: 후계자, words: "자기를 가르친 사람은 아니지만 늪을 지탱하는 사람. 그가 죽는 날 이 자리를 이어야 하는 것이 두렵다. 그 안이 틀렸다고 믿지는 않는다"}

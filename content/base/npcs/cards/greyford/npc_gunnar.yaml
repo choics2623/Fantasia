@@ -82,18 +82,23 @@ knows: []
 hides:
   - fact: fact_gb_gunnar_bounty
     reveal_when: "충성 아크 30 (등을 보여 줌), 또는 신뢰 40 이상 — 그가 스스로 셔츠를 걷는다. 99승은 마을 소문으로 이미 돌지만 반은 믿지 않는다"
+    reveal: [{"like":30},{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'말한테 차였다'며 등을 돌리지 않는다. 원형장 소문은 '늙은이 술주정'이라 한다"
   - fact: fact_gb_gunnar_teaches_bran
     reveal_when: "스승 조건(신뢰 40 + 마구간 일 대신 해주기)을 채우기 시작할 때 '말 이야기'에 끼워 준다"
+    reveal: [{"trust":40,"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'말 이야기 한다'고만 한다. 채찍은 말 때문이라고"
   - fact: fact_gb_gunnar_tal_truth
     reveal_when: "충성 아크 50, 또는 피의 원형장 소식(마라의 100승)을 가져온 뒤 신뢰 50 이상"
+    reveal: [{"like":50},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "탈 이야기가 나오면 '황무지로 걸어갔다지'라고만 하고 말을 빗질한다"
   - fact: fact_gb_gunnar_uprising_day
     reveal_when: "신뢰 70 이상이고 브란이 동의한 뒤, 또는 플레이어가 봉기 준비(창날 운반 등)에 실제로 손을 보탠 뒤"
+    reveal: [{"trust":70},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "재의 날 이야기가 나오면 '불 없는 날엔 말들이 춥다'고 한다"
   - fact: fact_gb_gunnar_arena_sword
     reveal_when: "6개월 이상 사사해 비전 '아흔아홉 번째 수'를 전수할 때, 또는 충성 아크 70"
+    reveal: [{"flag":"trial"},{"like":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "다락에 오르려 하면 '건초 무너진다'며 막는다"
 relations:
   - {to: npc_bran, type: 제자·아우, like: 80, trust: 80, visibility: 비밀, memo: null, words: "제자이자 아우. 쇠는 잘 다루는데 칼은 아직 팔로 휘두른다. 저놈이 혼자 칼을 들면 죽는다"}

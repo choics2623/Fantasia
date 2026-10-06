@@ -63,6 +63,7 @@ knows: [fact_em_dara_handprint_wall]
 hides:
   - fact: fact_em_song_gap
     reveal_when: "신뢰 45 이상이거나, 노래 한 구절을 정확히 불렀을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'일곱째 절은 이미 다 불렀어'라고 한다"
 relations:
   - {to: npc_caleb_dara, type: 낭송 지시, like: 40, trust: 40, visibility: 공개, memo: null, words: "갱조장. 이름을 가장 많이 외운 사람"}

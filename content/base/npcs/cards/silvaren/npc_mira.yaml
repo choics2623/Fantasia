@@ -72,6 +72,7 @@ knows: [fact_sv_mira_sold_eye]
 hides:
   - fact: fact_sv_mira_fifth_ritual
     reveal_when: "신뢰 30 이상이거나, 플레이어가 그녀를 빼내겠다고 제안했을 때"
+    reveal: [{"trust":30,"player_offer":"그녀를 빼내겠다고 제안했을 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "날짜 이야기가 나오면 손가락 마디 세기로 화제를 돌린다"
 relations:
   - {to: npc_dane, type: 정원지기 동료, like: 50, trust: 60, visibility: 공개, memo: null, words: "내가 잊는 것까지 대신 외워 주는 아이. 그 아이가 먼저 잊을까 봐 그게 걱정이에요"}

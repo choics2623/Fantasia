@@ -79,15 +79,19 @@ knows: [fact_gf_godric_henrik_headcount, fact_gf_serf_sale_contract, fact_gf_vol
 hides:
   - fact: fact_gf_godric_debt
     reveal_when: "만취한 밤 서재 장면에서 신뢰 20 이상, 또는 빚을 덜 방안을 내놓는 판정 성공, 또는 서재 금고의 증서를 플레이어가 읽은 뒤"
+    reveal: [{"trust":20},{"tier":"성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'셈이 조금 늦어졌을 뿐이다'라고 하고 화제를 오웬의 혼처로 돌린다"
   - fact: fact_gf_sara_on_sale_list
     reveal_when: "신뢰 40 이상, 또는 세베로의 계약서를 손에 넣은 뒤. 오웬 앞에서는 절대 말하지 않는다"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'하녀 하나 옮기는 일까지 내가 기억해야 하느냐'며 짜증을 낸다"
   - fact: fact_gf_godric_sold_37
     reveal_when: "원로회 재날개 둥지 쪽 압박이 실제로 닥쳤을 때, 또는 협박 판정 대성공"
+    reveal: [{"flag":"story"},{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'남쪽 영지로 옮겼다'고 한다. 어느 영지냐고 물으면 대답하지 않는다"
   - fact: fact_gf_keep_strongbox
     reveal_when: "공개하지 않는다 — 플레이어가 목걸이 열쇠를 보거나 서재에 들어가 직접 알아야 한다"
+    reveal: [{"never":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "열쇠 목걸이를 셔츠 안으로 밀어 넣는다"
 relations:
   - {to: npc_owen_raven, type: 아들, like: 40, trust: -10, visibility: 공개, memo: 물러터진 놈, words: "하나뿐인 상속자. 사랑하지만 믿지 않는다. 그 애가 장부를 보는 날이 두렵다"}

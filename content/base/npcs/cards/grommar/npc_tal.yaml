@@ -76,12 +76,15 @@ knows: [fact_gm_tal_alive_chained, fact_gm_urgash_first_hit_taken, fact_gm_ulb_h
 hides:
   - fact: fact_gm_tal_told_gunnar_run
     reveal_when: "군나르의 소식을 전하거나 신뢰 40 이상. 군나르가 살아 있다는 확신을 주면 스스로 말한다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'오래된 이야기다. 누가 내려왔는지 모른다.'라고 말을 돌린다"
   - fact: fact_gm_red_milk_ritual
     reveal_when: "신뢰 45 이상, 또는 플레이어가 금단 증세를 곁에서 견디는 장면을 겪은 뒤"
+    reveal: [{"trust":45},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'잔이다. 그롬이 주는 잔. 마시면 어깨가 따뜻하다.'라고만 한다"
   - fact: fact_gm_tal_true_name_under_altar
     reveal_when: "호감 70 이상이고 플레이어가 먼저 빈 무덤의 봉헌대를 말하지 않았을 때 — 그가 스스로 '내 이름은 다른 것이었다'고 꺼낸다"
+    reveal: [{"like":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "이름을 묻는 말에는 '탈이다.'라고 한다. 사슬 마디를 센다"
 relations:
   - {to: npc_urgash, type: 주인이자 형제, like: 40, trust: 50, visibility: 비밀, memo: null, words: "여덟 살에 처음 맞았던 아이. 이제는 매일 밤 자기를 키운 늙은이를 때리러 내려오는 군주. 미워하지 못한다. 그 사실이 가장 지독하다"}

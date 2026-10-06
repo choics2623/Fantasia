@@ -80,27 +80,35 @@ knows: [fact_gf_martha_elsa_deals, fact_gf_egil_family_in_cellar, fact_gf_osric_
 hides:
   - fact: fact_gf_elsa_nameless
     reveal_when: "플레이어가 탈주자를 한 번 숨겨 주거나 밀고를 거부한 것을 그녀가 알았을 때 — 그녀가 찾아온다. 또는 신뢰 50"
+    reveal: [{"self":true},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "늪 미신과 약초 이야기로 돌린다"
   - fact: fact_gf_greyash_route
     reveal_when: "암호를 맞히거나 잿빛 표를 내밀었을 때, 또는 신뢰 50 이상이고 아이들을 돕는 일을 한 뒤"
+    reveal: [{"flag":"story"},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물총새는 파란 깃털이 예뻐서 꽂아 둔 것'이라 한다"
   - fact: fact_gf_kaspar_nameless_contact
     reveal_when: "신뢰 60 이상 — 15일 돌 틈 전갈을 대신 맡길 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "돌 고리 이야기에는 '이끼를 뜯으러 간다'고 한다"
   - fact: fact_gf_elsa_midwife_kaspar
     reveal_when: "신뢰 60 이상, 또는 카스파르 앞에서 그녀의 신분이 위태로울 때"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'바알카르에 있었던 적은 있다. 늙은이는 어디든 있었지'라고만 한다"
   - fact: fact_gf_elsa_swamp_witch
     reveal_when: "늪 이야기로 설득 성공 + 신뢰 40"
+    reveal: [{"trust":40,"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'늪에서 약초를 배웠다'까지만 말한다"
   - fact: fact_gf_elsa_burned_children
     reveal_when: "호감 50 이상이고 그녀의 눈 이야기가 나온 밤 — 스스로 말한다"
+    reveal: [{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "눈의 고리를 '병 자국'이라고만 한다"
   - fact: fact_gf_elsa_marks_children
     reveal_when: "셋째의 문설주에 원을 그은 뒤 셋째가 그것을 물을 때, 신뢰 30 이상"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'열 내리라고 그린 늪 미신'이라 한다"
   - fact: fact_gf_elsa_name_words
     reveal_when: "플레이어가 진짜 잔향 징후를 보이고 신뢰 50 이상 — 그녀가 스승이 되는 순간"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "솥 밑을 들여다보면 '개구리 단지'라며 막아선다"
 relations:
   - {to: npc_kaspar, type: 받아낸 아기, like: 60, trust: 60, visibility: 비밀, memo: null, words: "피 속에서 꺼낸 반쪽 비늘 아기. 그가 어머니의 마지막 말을 들었는지 그녀는 모른다 — 묻고 싶다"}

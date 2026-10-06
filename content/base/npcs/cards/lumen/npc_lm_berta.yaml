@@ -64,6 +64,7 @@ knows:
 hides:
   - fact: fact_lm_berta_second_ledger
     reveal_when: "정화청이 숙소를 수색하러 오는 날이거나 아그네스의 보증을 가져왔을 때. 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'장부는 한 부뿐이야. 내가 한 부 이상 쓸 줄 아는 사람으로 보여?'라고 한다"
 toward_player: "크고 둥근 목소리. 빵과 이름을 먼저 묻는다"
 persuade:

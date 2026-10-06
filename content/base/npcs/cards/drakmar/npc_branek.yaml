@@ -68,6 +68,7 @@ knows: ["fact_dk_aurax_purge_plan", "fact_bk_branek_purge_list"]
 hides:
   - fact: fact_bk_branek_rain_child
     reveal_when: "비 오는 날 신뢰 20 이상에서 징후 이야기를 꺼내면 — 그가 먼저 말한다. 그 밖에는 위압 판정 대성공"
+    reveal: [{"trust":20,"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "날씨 이야기가 나오면 말을 끊고 명단으로 돌아간다"
 relations:
   - {to: "npc_aurax", type: "주군", like: 80, trust: 90, visibility: "공개", memo: null, words: "이름을 준 분. 그분의 불은 틀리지 않는다 — 틀려서는 안 된다"}

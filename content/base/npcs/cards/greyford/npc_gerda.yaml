@@ -78,6 +78,7 @@ knows: [fact_gb_gerda_true_name, fact_gb_gerda_lullaby_breath, fact_gb_kit_on_fi
 hides:
   - fact: fact_gb_gerda_cough
     reveal_when: "엘사가 진찰한 뒤, 또는 셋째 신뢰 30 이상에서 밤 장면 — 약 이야기가 나올 때"
+    reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "기침은 먼지 탓이라고 한다. 약 이야기가 나오면 화제를 키트의 빵으로 돌린다"
 relations:
   - {to: npc_kit, type: 아들, like: 95, trust: 80, visibility: 공개, memo: null, words: "막내. 명단의 스물여섯째 줄. 그 애가 웃을 때 혀가 보이는 걸 하루에 한 번은 봐야 숨이 쉬어진다"}

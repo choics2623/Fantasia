@@ -67,6 +67,7 @@ knows: [fact_gb_heinz_informs]
 hides:
   - fact: fact_gb_heinz_son
     reveal_when: "호감 40 이상, 또는 안식일 밤 예배당 장면에서 그가 스스로 꺼낸다"
+    reveal: [{"like":40},{"self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "아들 이야기가 나오면 '빛 속에 있다'고만 하고 종 줄을 만진다"
 relations:
   - {to: npc_gerda, type: 같은 예배당의 어머니, like: 30, trust: 30, visibility: 공개, memo: null, words: "기침하는 어머니. 믿음이 깊다. 그 두 아이의 영혼까지 빛 쪽으로 데려가고 싶다"}

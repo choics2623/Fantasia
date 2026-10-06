@@ -62,9 +62,11 @@ voice:
 hides:
   - fact: fact_hg_matusz_lodge_runaways
     reveal_when: "신뢰 40 이상이고 꿀 한 단지를 선물하거나 아스타의 이름을 먼저 말한 뒤"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'손님은 누구나 앉는다'고만 하고 산장 안쪽 헛간을 보지 않는다"
   - fact: fact_hg_volk_marked_lodge
     reveal_when: "신뢰 50 이상, 또는 볼크가 실제로 산장 근처에 나타났을 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'올해 겨울 늑대가 많다'고만 하고 눈길을 피한다"
 schedule:
   아침: "산장 주변에서 장작과 꿀 단지를 확인한다"

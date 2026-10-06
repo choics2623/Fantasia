@@ -67,9 +67,11 @@ knows: ["fact_gf_godric_debt", "fact_gf_serf_sale_contract"]
 hides:
   - fact: fact_bk_varen_commission
     reveal_when: "흥정 판정 성공(수수료를 나누자는 제안), 또는 신뢰 30"
+    reveal: [{"tier":"성공"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'가문을 위한 일이다. 수수료라니'"
   - fact: fact_bk_varen_sara_silence
     reveal_when: "오웬의 이름을 꺼내고 신뢰 40 이상, 또는 술자리 판정 대성공"
+    reveal: [{"trust":40},{"tier":"대성공","scene":"술자리"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "명단 이야기가 나오면 '숫자만 들었다'고 한다"
 relations:
   - {to: "npc_godric_raven", type: "형", like: 40, trust: 20, visibility: "공개", memo: "편지에 답이 없다", words: "빚더미에 앉은 형. 그래도 레이번의 이름을 쥔 유일한 손"}

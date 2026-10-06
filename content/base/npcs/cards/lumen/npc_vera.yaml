@@ -78,9 +78,11 @@ knows:
 hides:
   - fact: fact_lu_vera_false_accusation
     reveal_when: "알베릭의 메시지(+30)를 전하거나 신뢰 45 이상일 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이웃이요? 아무도 없어요. 눈이 이상했던 거예요'라고 눈을 가린다"
   - fact: fact_lu_vera_sister
     reveal_when: "충성 아크 40 — 그녀가 스스로 꺼낼 때. 플레이어가 먼저 묻는 것은 역린"
+    reveal: [{"like":40,"self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'언니는… 멀리 갔어요'라고만 한다. 두드림이 멎는다"
 relations:
   - {to: npc_alberic, type: 스승, like: 85, trust: 85, visibility: 비밀, memo: null, words: "벽 너머의 선생님. 한 번도 얼굴을 보지 못했다. 박자만으로 사람을 아는 법을 알려 준 사람"}

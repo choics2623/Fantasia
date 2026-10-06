@@ -70,9 +70,11 @@ knows: [fact_nc_starved_follow_breath, fact_nc_starved_future_of_nobles, fact_nc
 hides:
   - fact: fact_nc_gods_last_word
     reveal_when: "은자 시험(가시 숲의 밤 — 달아나지 않기) 통과 후"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "손목에 귀를 대고 아무 말도 하지 않는다"
   - fact: fact_hm_iserda_return_name   # 사실: 이세르다는 90일째 밤 피 속의 목소리에 잊었던 이름 하나로 답해 굶주림에서 돌아왔다 — 그 이름이 무엇인지는 그녀만 안다
     reveal_when: "공개하지 않는다 — 단, 값(잔향의 피 한 잔)을 치르면 '돌아오는 길'의 절차를 세실에게 전할 수 있다"
+    reveal: [{"never":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이름. 그건 안 알려 줘.'"
 relations:
   - {to: npc_mordecai, type: 사냥을 거둔 군주, like: -40, trust: -50, visibility: 공개, memo: null, words: "나를 사냥하라 했다가 거둔 자. 그도 그 목소리를 듣는다"}

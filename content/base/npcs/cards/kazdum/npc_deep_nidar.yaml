@@ -63,9 +63,11 @@ voice:
 hides:
   - fact: fact_kz_nidar_cult_abducts
     reveal_when: "신뢰 50 이상이고 납치된 광부의 이름을 제시한 뒤, 또는 문 앞에서 신도를 직접 마주쳤을 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'계약자는 스스로 문 앞에 온다'고만 한다. 신도 이야기가 나오면 귀를 바닥에 댄다"
   - fact: fact_kz_nidar_voice_wakes
     reveal_when: "힐다의 이름과 함께 노래할 인간을 찾는다고 하면 신뢰 40 이상에서"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'심장은 말을 기다린다'라고만 한다. 인간의 목소리라는 조건은 말하지 않는다"
 schedule:
   아침: "문 앞 예배당에서 바닥에 귀를 대고 박자를 센다"

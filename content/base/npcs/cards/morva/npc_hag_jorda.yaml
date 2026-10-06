@@ -66,6 +66,7 @@ knows: [fact_mv_witch_forty_limit, fact_mv_time_forbidden, fact_mv_hag_split_4_3
 hides:
   - fact: fact_mv_jorda_curse_ritual
     reveal_when: "신뢰 50 이상이고 플레이어가 광산·잿불 언덕의 사람을 구한 이야기를 한 뒤, 또는 은비늘 요람의 재·피를 가져온 판정 성공"
+    reveal: [{"trust":50},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'단지는 피를 먹는다. 뭐에 쓰는지는 묻지 마'라고만 한다"
 relations:
   - {to: npc_melisande, type: 저주 대상, like: -90, trust: -80, visibility: 비밀, memo: 은비늘 요람, words: "얼굴도 모르는 은비늘의 주인. 그 이름 때문에 광산 사람들이 사흘을 못 넘기고 죽는다. 용서하지 않는다"}

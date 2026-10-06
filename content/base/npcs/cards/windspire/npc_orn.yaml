@@ -64,9 +64,11 @@ voice:
 hides:
   - fact: fact_ws_orn_spire_knowledge
     reveal_when: "신뢰 55 이상이고 땅으로 데려가겠다는 계획을 진지하게 말한 뒤, 또는 타일라와 함께 있을 때"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 계단 하나도 제대로 못 외워'라고 웃는다. 첨탑 구조 이야기가 나오면 휘파람을 불어 화제를 돌린다"
   - fact: fact_ws_three_feathers_song
     reveal_when: "신뢰 40 이상이고 키리에나 땅손의 노래 이야기가 나온 뒤"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'노래가 많아서 어떤 노래인지 모르겠어'라고 한다. 키리에 이름이 나오면 눈을 하늘로 돌린다"
 schedule:
   아침: "바람 정원의 땅손들과 계단밭 손질"

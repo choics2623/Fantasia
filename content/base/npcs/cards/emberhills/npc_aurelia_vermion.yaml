@@ -73,12 +73,15 @@ knows: [fact_eh_cradle_experiment, fact_em_sorel_cradle_as_fall, fact_em_krom_ya
 hides:
   - fact: fact_em_aurelia_selection_rule
     reveal_when: "신뢰 55 이상이거나, 연좌 소동을 막는 방법을 논하며 그녀의 사정을 이해했다고 말했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'순번은 명부 순서대로'라고만 한다"
   - fact: fact_em_aurelia_empty_cells
     reveal_when: "신뢰 65 이상이거나, 멜리산드의 귀환 일정이 가까워졌을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'감방은 늘 가득합니다'라고 웃는다"
   - fact: fact_em_krom_yana
     reveal_when: "신뢰 50 이상이거나, 야나의 이름이 먼저 나왔을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'명부는 크롬의 소관'이라며 말을 돌린다"
 relations:
   - {to: npc_melisande, type: 숭배, like: 80, trust: 60, visibility: 공개, memo: null, words: "공주님. 그분의 담요를 개는 일이 평생의 일"}

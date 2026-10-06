@@ -68,9 +68,11 @@ knows: [fact_mv_witch_forty_limit, fact_mv_time_forbidden, fact_mv_hag_split_4_3
 hides:
   - fact: fact_mv_mag_knot_script
     reveal_when: "신뢰 40 이상이고 플레이어가 잿빛 실의 연락원이거나 매듭 하나를 정확히 읽어 보일 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'실은 실일 뿐이야. 어부의 딸이니까 매듭은 당연히 알지'라고 웃는다"
   - fact: fact_nc_cecile_ash_lineage_blood
     reveal_when: "신뢰 50 이상이고 플레이어가 녹테른 쪽 사람을 도운 행적이 있을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그림자 낱말은 재에서 길어. 재가 어디서 오는지는 묻지 마'라고 한다"
 relations:
   - {to: npc_hag_rune, type: 제자, like: 65, trust: 60, visibility: 공개, memo: 바람 낱말, words: "휘파람부터 가르치는 막내. 낱말이 아니라 숨을 가르친다고 생각하면 마음이 덜 무겁다"}

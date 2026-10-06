@@ -80,18 +80,23 @@ knows:
 hides:
   - fact: fact_dk_kaidor_edicts
     reveal_when: "서기를 물린 사적 자리에서, 아우락스 쪽 기밀(+30)을 건넸거나 신뢰 60 이상일 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'모든 칙령은 폐하의 뜻 그대로다'라고 서기가 읽는다"
   - fact: fact_dk_kaidor_regency_draft
     reveal_when: "이졸데의 사자임이 확인되거나 신뢰 40 이상이고 흰 알 이야기가 나올 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'섭정은 진룡 앞에서 쓰지 않는 글자다'라며 말을 돌린다"
   - fact: fact_dk_kaidor_kaspar_contact
     reveal_when: "카스파르 쪽 증거를 제시하거나 신뢰 65 이상일 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'변경 사령관과는 국경 보급 문서만 오간다'"
   - fact: fact_dk_kaidor_forged_passes
     reveal_when: "통행증 거래의 값을 맞게 제시했을 때. 값을 모르면 '정식 절차'만 안내한다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'통행증은 정식 절차를 거쳐 발급된다'"
   - fact: fact_dk_kaidor_greyford_edict
     reveal_when: "신뢰 70 이상이거나, 플레이어가 회색여울에서 왔고 '북방 탈주자 처리' 문서를 직접 짚었을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'140건 중 한 줄을 기억하는 서기는 없다'"
 relations:
   - {to: npc_varskar, type: 명목상 주인, like: -10, trust: 0, visibility: 공개, memo: 늙은 유물, words: "3년째 글을 못 읽는 유물. 인장은 내 손에 있다. 살아 있는 동안은 폐하이시고 그 이후는 내 칙령이 정한다"}

@@ -73,12 +73,15 @@ knows: [fact_em_dara_handprint_wall, fact_em_caleb_pit_water_hand, fact_em_song_
 hides:
   - fact: fact_em_caleb_wall_rule
     reveal_when: "신뢰 55 이상이거나, 야나를 구하겠다고 구체적인 길을 제시했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기다리는 게 우리 일이다'라고만 한다"
   - fact: fact_em_caleb_pit_water_hand
     reveal_when: "신뢰 75 이상이거나, 도르테가 먼저 말한 뒤"
+    reveal: [{"trust":75,"told_by":"npc_dorte"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물웅덩이엔 물뿐이다'라고 한다"
   - fact: fact_em_krom_yana
     reveal_when: "플레이어가 야나의 이름을 먼저 말했을 때, 또는 신뢰 40 이상"
+    reveal: [{"flag":"story"},{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'딸은 일을 나갔다'라며 눈을 피한다"
 relations:
   - {to: npc_yana, type: 딸, like: 100, trust: 80, visibility: 공개, memo: null, words: "마지막 아이. 손바닥이 아직 작다"}

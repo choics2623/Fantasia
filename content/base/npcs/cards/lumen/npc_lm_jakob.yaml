@@ -81,9 +81,11 @@ knows:
 hides:
   - fact: fact_lm_jakob_culvert_oil
     reveal_when: "아그네스나 한나의 보증을 가져왔거나 신뢰 60 이상. 구출 날짜를 정직하게 물었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'쇠창살은 녹슬었소. 열리지 않소'라고 한다. 소매 안의 열쇠를 쥔다"
   - fact: fact_lm_simon_second_jailer
     reveal_when: "시몬의 이름을 정직하게 꺼냈거나 아그네스의 암호를 알고 있을 때"
+    reveal: [{"named":"시몬"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'간수는 둘이 교대하는 법이오'라고만 한다"
 relations:
   - {to: npc_alberic, type: 감방의 스승, like: 70, trust: 60, visibility: 비밀, memo: null, words: "한 번도 말을 건넨 적 없는 죄수. 물그릇 놓는 소리로 안다"}

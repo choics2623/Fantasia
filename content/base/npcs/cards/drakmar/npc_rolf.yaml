@@ -67,6 +67,7 @@ knows:
 hides:
   - fact: fact_dk_scale_market_ledger
     reveal_when: "2 비늘 이상을 쥐여 주거나 신뢰 40 이상일 때. 장부는 용언이라 못 읽으나 호가와 선매 숫자는 머리에 있다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'장부는 용언이라 나는 못 읽소. 나는 값만 외칩니다'"
 relations:
   - {to: npc_volk, type: 거래처, like: 30, trust: 40, visibility: 공개, memo: 사냥꾼이 잡은 탈주자를 경매에 올림, words: "잡아 온 사람을 값에 맞춰 올려 주는 큰 손님. 사냥꾼의 값과 시장의 값을 함께 센다"}

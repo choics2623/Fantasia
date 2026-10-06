@@ -67,9 +67,11 @@ knows: ["fact_dk_egg_voice"]
 hides:
   - fact: fact_bk_noeul_heard_crack
     reveal_when: "신뢰 10이면 그녀가 먼저 말한다 — 숨기지 못한다. (그래서 위험하다)"
+    reveal: [{"trust":10}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "말하고 싶어 입술을 깨문다"
   - fact: fact_bk_noeul_marked
     reveal_when: "숨(시녀)의 물 이야기를 꺼내거나 신뢰 30"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시녀들이 그냥 보는 거야'"
 relations:
   - {to: "npc_white_egg", type: "소리를 들은 알", like: 60, trust: 0, visibility: "일방", memo: null, words: "얼음이 노래했다. 다시 듣고 싶다"}

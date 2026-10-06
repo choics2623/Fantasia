@@ -79,9 +79,11 @@ knows: [fact_aw_box_bounty, fact_aw_school_echo, fact_aw_goz_deserter]
 hides:
   - fact: fact_aw_kyle_found_box
     reveal_when: "신뢰 50 이상이거나, 몫 나누기(+20)와 잔상 주기 정보(+25)를 둘 다 건넨 뒤"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'상자는 소문일 뿐이야'라고 하며 주기표 이야기로 돌린다"
   - fact: fact_aw_kyle_tower_spy
     reveal_when: "신뢰 60 이상이거나, 플레이어가 탑의 서신을 쥐고 있을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'내 패는 깨끗해'라고 한다. 동전 꿰미를 짤랑인다"
 relations:
   - {to: npc_tuk, type: 거래처, like: 10, trust: 20, visibility: 공개, memo: null, words: "유물을 사 주는 크릭. 값은 나쁘지 않고 입은 가볍지 않다. 가끔 정보를 덤으로 얹는다"}

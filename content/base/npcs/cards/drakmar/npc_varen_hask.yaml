@@ -59,6 +59,7 @@ knows: []
 hides:
   - fact: fact_bk_hask_granary_seven
     reveal_when: "곡창 7동 바닥을 직접 보거나 카델이 사촌을 팔 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'곡창은 아홉 동, 장부대로다'"
 relations:
   - {to: "npc_cadel_hask", type: "사촌·공범", like: 30, trust: 30, visibility: "비밀", memo: null, words: "부두의 사촌. 내가 빼면 그가 싣는다"}

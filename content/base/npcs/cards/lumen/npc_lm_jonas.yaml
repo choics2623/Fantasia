@@ -79,9 +79,11 @@ knows:
 hides:
   - fact: fact_lm_jonas_copy
     reveal_when: "세실 그림자장미의 이름을 정직하게 꺼냈거나 신뢰 60 이상. 호송 전날 서기실에 플레이어가 와 있을 때"
+    reveal: [{"trust":60,"named":"그림자장미"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'사본은 없습니다. 없다고 말해야 합니다'라고 한다"
   - fact: fact_lm_jonas_swapped
     reveal_when: "지울 이름 이야기를 정직하게 꺼내고 신뢰 45 이상"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'지운 적은 있습니다. 연습으로'라고만 한다"
 relations:
   - {to: npc_mateus, type: 상관, like: -25, trust: -10, visibility: 공개, memo: null, words: "불순한 자 목록을 건네는 정중한 사람. 이름을 읽지 않는다"}

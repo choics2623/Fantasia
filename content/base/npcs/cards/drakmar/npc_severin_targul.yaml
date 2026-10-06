@@ -75,9 +75,11 @@ knows: ["fact_dk_scale_market_ledger", "fact_dk_succession_split", "fact_dk_aura
 hides:
   - fact: fact_bk_severin_aurax_pact
     reveal_when: "붉은 홀 출입 기록(피직·틸데)이나 아우락스 쪽 문서를 증거로 내밀 때, 또는 아우락스가 실각한 뒤"
+    reveal: [{"flag":"story"},{"dead":"npc_aurax"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'중립이지요' — 웃음으로 덮는다. 웃음이 길어진다"
   - fact: fact_bk_severin_market_skim
     reveal_when: "시장 장부(빅스)와 재상청 정본을 둘 다 손에 넣어 대조할 때. 흥정 판정 대성공이면 값을 받고 스스로 인정한다"
+    reveal: [{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정본은 재상청에 있소. 시장 장부는 시장의 셈이오'"
 relations:
   - {to: "npc_aurax", type: "비밀 밀약", like: 10, trust: 20, visibility: "비밀", memo: "값으로 맺은 약속", words: "불로 갚는 자와 값으로 맺은 약속. 내가 맺어 본 가장 위험한 거래다"}

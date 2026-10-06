@@ -87,15 +87,19 @@ knows: [fact_ar_halla_three_accusations]
 hides:
   - fact: fact_ar_halla_taught_isol_letters
     reveal_when: "신뢰 40 이상이고 바다 이야기를 건넸을 때, 또는 플레이어가 이졸의 이름을 먼저 꺼낼 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'글자는 혼자 아는 것'이라고 하며 오른손 중지로 허공에 획을 긋는다"
   - fact: fact_ar_ottilie_books_to_halla
     reveal_when: "신뢰 50 이상이거나, 오틸리가 직접 플레이어를 보증했을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'책은 탑이 준 거예요'라고만 한다"
   - fact: fact_ar_halla_first_ember_page
     reveal_when: "신뢰 60 이상이고 플레이어가 앞선 잔향자의 꿈('첫 불씨')을 해금했을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'오래된 엘다르 기록은 아름답지만 쓸모는 없어요'라고 돌린다"
   - fact: fact_ar_halla_reference_body
     reveal_when: "호감 50 이상이고, 플레이어가 '진짜일지도'라는 질문 없이 그녀의 눈 이야기를 존중으로 꺼냈을 때"
+    reveal: [{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'탑이 나를 필요로 하는 건 글씨가 곱기 때문'이라고 웃음 없이 말한다"
 relations:
   - {to: npc_isol, type: 제자이자 사랑, like: 60, trust: 40, visibility: 비밀, memo: null, words: "내가 글자를 가르친 아이. 서른여덟 번째 숫자가 올 때마다 글자를 가르친 것이 죄였는지 생각한다. 죄가 아니라고 결론짓는 데 한 해가 걸린다"}

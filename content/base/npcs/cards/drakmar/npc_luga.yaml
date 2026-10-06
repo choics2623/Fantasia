@@ -67,9 +67,11 @@ knows: ["fact_gf_volk_sweep_contract"]
 hides:
   - fact: fact_bk_luga_scent_jars
     reveal_when: "단지 선반에 잠입해 직접 보거나, 흥정 판정 대성공"
+    reveal: [{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'단지? 탈주자 옷이 몇 백 개야. 하나하나 기억 못 해'"
   - fact: fact_bk_luga_tower_bid
     reveal_when: "이졸이나 이레네 볼드 쪽 끈을 플레이어가 쥐고 거래를 제안할 때"
+    reveal: [{"player_offer":"쥐고 거래를 제안할 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'잔향 현상금은 조합장이 입찰해'"
 relations:
   - {to: "npc_volk", type: "사냥대장", like: 40, trust: 30, visibility: "공개", memo: "자리를 노린다", words: "늙은 송곳니. 아직 가장 빠르다. 아직"}

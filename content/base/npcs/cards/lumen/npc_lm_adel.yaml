@@ -86,12 +86,15 @@ knows:
 hides:
   - fact: fact_lm_adel_seal
     reveal_when: "허가증 위조를 비난하지 않고 그 허가증으로 지켜질 이름을 물었거나 신뢰 60 이상. 도장 두 개가 직접 눈앞에 놓였을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'북부 직인은 하나입니다'라고 하며 인장 가장자리를 손톱으로 긋는다"
   - fact: fact_lm_adel_second_letter_twelve
     reveal_when: "알베릭의 이름이 플레이어 입에서 먼저 나오고 신뢰 55 이상이거나 아그네스의 소개가 있을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서신이라니요, 저는 허가증밖에 몰라요'라고 웃는다"
   - fact: fact_lu_agnes_underground
     reveal_when: "플레이어가 아그네스의 보증을 가져왔거나 신뢰 70 이상"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아그네스 수녀님은 순례자 숙소 일에 성실하신 분이에요'라고만 한다"
 relations:
   - {to: npc_agnes, type: 고리 동지, like: 60, trust: 70, visibility: 비밀, memo: null, words: "숙소 지하의 웃음 큰 수녀. 구출 계획을 위에서 받친다"}

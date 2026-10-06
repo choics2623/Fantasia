@@ -66,9 +66,11 @@ knows: [fact_sr_sahar_armed_contractees, fact_sr_draft_votes_7_of_11]
 hides:
   - fact: fact_sr_sahar_loves_ophelia
     reveal_when: "신뢰 60 이상이고 오필리아의 안전과 관련된 위기가 있었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'칼값은 의장님이 낸다. 그게 전부다'라고 짧게 말한다. 꼬리 끝이 한 번 움직인다"
   - fact: fact_sr_ophelia_jan_lover
     reveal_when: "신뢰 70 이상이거나, 오필리아가 직접 허락했을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'담당 구역 밖의 일이다'라고만 한다"
 relations:
   - {to: npc_beatrix, type: 계약 상대 의장, like: 20, trust: 70, visibility: 공개, memo: null, words: "칼값을 정확히 치르는 의장. 충성은 정확하나 눈이 딸에게 더 오래 머무는 것을 안다. 의장은 그것을 모르는 척한다"}

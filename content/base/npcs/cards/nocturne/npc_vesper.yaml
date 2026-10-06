@@ -66,9 +66,11 @@ knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_starved_f
 hides:
   - fact: fact_nc_vesper_unreported_convoy
     reveal_when: "신뢰 55 이상이고 플레이어가 탈주자를 도운 행적이 있거나, 하늘에서 같은 행렬을 마주친 뒤"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이번 달 보고는 모두 올렸습니다'라고 높은 소리로 빠르게 답한다. 날개막이 먼저 접힌다"
   - fact: fact_nc_vesper_saw_nokta
     reveal_when: "신뢰 60 이상이거나, 플레이어가 녹타의 이름을 먼저 꺼낸 뒤"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'피 한 방울은 7일마다 필요합니다. 규칙입니다'라고만 한다"
 relations:
   - {to: npc_tyla, type: 같은 둥지 출신, like: 20, trust: 30, visibility: 공개, memo: 타일라는 그를 배신자로 본다, words: "일곱 살 아래의 아이가 날개를 잘리는 것을 하늘에서 보았다. 내려가지 않았다. 그 사실을 한 번도 말하지 않았다"}

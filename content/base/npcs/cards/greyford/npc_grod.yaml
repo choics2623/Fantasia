@@ -74,12 +74,15 @@ knows: [fact_gb_grod_irga_rival]
 hides:
   - fact: fact_gb_grod_volk_shame
     reveal_when: "숙적 해소 '꺾인 자'(공포 50 이상), 또는 볼크 앞에서 그를 세워 준 뒤의 술자리 (신뢰 40)"
+    reveal: [{"flag":"story"},{"trust":40,"scene":"술자리"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "볼크 이야기에 '대장은 대장이다'라고만 하고 꼬리를 감춘다"
   - fact: fact_gb_grod_buys_hagen
     reveal_when: "하겐을 미행해 세 소나무 매듭 교환을 목격, 또는 신뢰 30 이상에서 더 큰 사냥감 정보를 건넬 때"
+    reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'코는 혼자서도 맡는다'고 한다"
   - fact: fact_gb_fangfire_cart_nail
     reveal_when: "그가 스스로 말할 일은 없다 — 우리 수레를 직접 살피는 감각 판정, 또는 지난 회차의 기억 (17 §2.2)"
+    reveal: [{"never":true},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "수레 이야기가 나오면 '튼튼하다, 들어가 볼래?'라고 웃는다"
 relations:
   - {to: npc_volk, type: 상관, like: 20, trust: 30, visibility: 공개, memo: 그 앞에서 작아진다, words: "대장. 그 앞에서 귀가 더 작아진다. 그의 침묵은 채찍보다 아프다"}

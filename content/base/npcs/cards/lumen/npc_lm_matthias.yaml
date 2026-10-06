@@ -85,12 +85,15 @@ knows:
 hides:
   - fact: fact_lm_matthias_key
     reveal_when: "서고에서 마렌의 설교 이야기를 정직하게 꺼냈거나 신뢰 55 이상일 때. 혹은 정화청이 서고를 수색하러 올 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'뒷방은 오래된 사본 보관소일 뿐입니다'라고 말하며 소매 안쪽을 만진다"
   - fact: fact_lm_gregor_asks_matthias
     reveal_when: "그레고르 7세의 낭독 계획이 화제에 오르고 플레이어가 증거를 가져왔을 때. 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'성하께서는 많은 분께 많은 말씀을 하십니다'라고 흐린다"
   - fact: fact_lm_matthias_burnt_page
     reveal_when: "손의 흉터 이야기가 나왔을 때 연민이 아니라 정직한 호기심으로 물었거나 신뢰 45 이상"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'젊을 때 불에 데었습니다'라고만 한다"
 relations:
   - {to: npc_gregor7, type: 후견 상관, like: 60, trust: 50, visibility: 비밀, memo: null, words: "후계를 맡기려는 늙은이. 그 부탁을 듣고 침묵한 죄책이 있다"}

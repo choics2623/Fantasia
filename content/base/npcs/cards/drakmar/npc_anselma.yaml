@@ -67,6 +67,7 @@ knows: ["fact_dk_scale_market_ledger", "fact_bk_vix_dead_names", "fact_bk_lamp_c
 hides:
   - fact: fact_bk_anselma_lists
     reveal_when: "등잔의 표식(잿빛 표)을 보이거나, 노라·베노가 보증할 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'못 들었어요. 빨래 중이라'"
 relations:
   - {to: "npc_nora", type: "등잔", like: 70, trust: 80, visibility: "비밀", memo: "목소리만 안다", words: "물통 너머의 목소리. 그분께 이름을 넘기면 이름이 어딘가에 남는다"}

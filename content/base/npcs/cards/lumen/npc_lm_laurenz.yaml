@@ -78,9 +78,11 @@ knows:
 hides:
   - fact: fact_lm_laurenz_hymn_code
     reveal_when: "요한의 일곱 곡을 직접 불렀거나 오스릭의 이름을 정직하게 꺼냈을 때. 신뢰 60 이상"
+    reveal: [{"trust":60,"named":"오스릭"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그냥 오래된 성가일세'라고 한다. 귀의 밀랍 마개를 만진다"
   - fact: fact_lm_laurenz_watched_choir
     reveal_when: "합창단 선발 자리에서 정화청 의자를 플레이어가 먼저 가리켰을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'의자는 늘 거기 있었네'라고 한다"
 relations:
   - {to: npc_johan, type: 제자, like: 60, trust: 50, visibility: 공개, memo: null, words: "성가 막사에서 자란 찬송 순례자. 일곱 곡의 비밀은 반만 말했다"}

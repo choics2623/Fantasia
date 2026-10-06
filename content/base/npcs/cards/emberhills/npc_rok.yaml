@@ -78,15 +78,19 @@ knows:
 hides:
   - fact: fact_eh_rok_dara_words
     reveal_when: "다라 이야기로 설득(+20)에 성공한 뒤 신뢰 40 이상. 아무 맥락 없이 묻는 것은 닫힌다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'다라는 죽은 사람이다. 죽은 사람은 말이 없어'라고 한다"
   - fact: fact_eh_rok_stockpile
     reveal_when: "갱반에 합류해 하루를 버티고 신뢰 55 이상일 때. 폐갱을 직접 데려가는 것은 신뢰 65 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'폐갱은 지지대가 썩었어. 가까이 가면 묻힌다'"
   - fact: fact_eh_rok_informers
     reveal_when: "신뢰 60 이상이거나, 밀고자 색출(+30)을 돕겠다고 말했을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'갱반은 한 사람이다. 한 사람 안에 쥐는 없어'"
   - fact: fact_eh_rok_uprising_day
     reveal_when: "신뢰 65 이상이고 광부등과 연결되어 있음이 확인되었을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'경고의 날에는 모두 조용히 손을 겹친다. 그게 우리가 하는 전부야'"
 relations:
   - {to: npc_eve, type: 동지, like: 40, trust: 45, visibility: 비밀, memo: null, words: "소각로 곁에서 오는 아이. 이름을 번호로 부르지 않는다. 눈이 다라의 눈과 닮았다고 생각한 적은 없다 — 있다"}

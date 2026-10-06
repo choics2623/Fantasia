@@ -77,12 +77,15 @@ knows: []
 hides:
   - fact: fact_gb_sara_overheard_sale
     reveal_when: "신뢰 30 이상 (충성 아크 30), 또는 사람을 살리는 구체적 계획을 내놓는 화술 판정 성공(신뢰 15 이상). 회귀점 직후 키트의 줄 하나는 스스로 말한다"
+    reveal: [{"trust":30,"like":30},{"trust":15,"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'성채 안 일은 몰라요'라고 하고 상대의 신발을 본다. 키트 이야기까지만 한다"
   - fact: fact_gb_sara_saw_list_swap
     reveal_when: "신뢰 50 이상, 또는 리즈의 안전을 함께 계획한 뒤. 그 말이 리즈를 위험하게 만드는 상황이면 신뢰가 높아도 미룬다"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "마르타 이야기가 나오면 '아주머니는 바쁘세요'라고만 하고 앞치마 끈을 고쳐 맨다"
   - fact: fact_gb_sara_reads
     reveal_when: "신뢰 40 이상, 또는 플레이어가 먼저 글자를 써 보인 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "글을 모른다고 한다. 흙에 그은 금이 보이면 발로 지운다"
 relations:
   - {to: npc_owen_raven, type: 두려운 관심, like: 20, trust: 10, visibility: 일방, memo: null, words: "북탑 창가에서 나를 보는 도련님. 다정한 눈인데, 용인의 다정은 노예에게 대개 재앙이었다"}

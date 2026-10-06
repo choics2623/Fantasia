@@ -79,12 +79,15 @@ knows:
 hides:
   - fact: fact_dk_serak_reads_archive
     reveal_when: "서고에서 마주쳤을 때 상대가 소리를 낮추고 이유를 묻지 않는다면, 또는 신뢰 20 이상"
+    reveal: [{"flag":"story"},{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'훈련장에서 왔다'며 그을음 핑계를 댄다"
   - fact: fact_dk_serak_asteria_primer
     reveal_when: "신뢰 50 이상이거나, 플레이어가 인간의 문해를 증명하거나 아스테리아의 글자를 아는 판정에 성공했을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서고에는 인간이 쓴 것이 없다'고 잘라 말한다. 날개막으로 서가 한 곳을 가린다"
   - fact: fact_dk_serak_nurse_betty
     reveal_when: "유모 이야기로 설득(+20)에 성공하거나 신뢰 40 이상 — 먼저 묻는 것은 역린에 가깝다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'유모? 용에게 그런 것은 없다'라며 눈을 반쯤 감는다"
 relations:
   - {to: npc_aurax, type: 아버지, like: 50, trust: 10, visibility: 공개, memo: null, words: "아버지. 존경과 의심이 같은 방향으로 자란다. 날개막 서른두째 줄을 본 뒤로 눈을 마주치기 어렵다. 그래도 사랑한다"}

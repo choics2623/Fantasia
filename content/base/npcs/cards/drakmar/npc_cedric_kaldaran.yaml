@@ -59,6 +59,7 @@ knows: []
 hides:
   - fact: fact_bk_cedric_saw_drawer
     reveal_when: "탐욕을 건드리는 거래 (5비늘 이상) 또는 신뢰 30"
+    reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서랍? 집무실에 서랍이 몇 개인데'"
 relations:
   - {to: "npc_severian_kaldaran", type: "할아버지·스승", like: 30, trust: 10, visibility: "공개", memo: "열쇠를 노린다", words: "열쇠가 언제 내 목에 올지. 할아버님은 서두르지 않으신다"}

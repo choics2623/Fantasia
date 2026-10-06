@@ -80,9 +80,11 @@ knows: []
 hides:
   - fact: fact_gm_mara_three_names
     reveal_when: "호감 60, 신뢰 50 이상. 또는 그녀가 스스로 소매를 걷는 밤 — 플레이어가 먼저 팔을 보자고 하면 역린"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "왼팔 안쪽을 옷으로 가린다. 새김 이야기에는 '새김은 등에 있다'고만 한다"
   - fact: fact_gm_gorba_seeks_gunnar_disciple
     reveal_when: "신뢰 40 이상, 또는 플레이어가 군나르 이야기를 먼저 꺼낸 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "100번째 상대 이야기에는 '정해지면 알게 되겠지.' 하고 손목을 푼다"
 relations:
   - {to: npc_urgash, type: 주인, like: 20, trust: 30, visibility: 공개, memo: null, words: "마주서면 이가 부딪히는 주인. 100번째를 지켜볼 거라는 말이 자랑이면서 소름이다"}

@@ -63,6 +63,7 @@ voice:
 hides:
   - fact: fact_hk_hiak_cairn_marks
     reveal_when: "신뢰 50 이상이고 이삭 줍기나 쓰러진 짐꾼에 대한 진심을 보인 뒤, 또는 두아의 이름과 함께 접근한 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시체는 값나가는 것만 줍는다'고 웃으며 넘긴다. 돌무더기 이야기가 나오면 단추를 만지작거린다"
 schedule:
   아침: "샘가에서 전날 원정 길 쪽 소식을 수집"

@@ -79,18 +79,23 @@ knows: [fact_kz_pulse_faster_311, fact_kz_gate_reopening, fact_kz_grimbald_wrote
 hides:
   - fact: fact_kz_seal_reason
     reveal_when: "신뢰 60 이상이고 계약 조항을 정확히 인용한 판정(학식·읽고쓰기) 대성공, 또는 힐다가 문 개방 기계를 놓고 직접 따진 뒤"
+    reveal: [{"trust":60,"tier":"대성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그 문 이야기는 금한다. 벌금 조항이다'라고 말한다. 오른쪽 귀를 만지며 화제를 계약으로 돌린다"
   - fact: fact_kz_pulse_answers_song
     reveal_when: "신뢰 70 이상, 또는 페타르가 직접 노래했다는 증거를 플레이어가 제시한 뒤"
+    reveal: [{"trust":70},{"player_offer":"제시한 뒤"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'고동은 광부들의 환청일 수 있다'고 말하되 목소리가 한 박자 늦다"
   - fact: fact_kz_41_sealed_inside
     reveal_when: "신뢰 50 이상이고 계약 광부 계약서의 '살아서 갱을 나갈 때까지' 조항을 읽을 수 있음을 증명한 뒤, 또는 우르드가 먼저 말한 뒤"
+    reveal: [{"trust":50},{"told_by":"npc_urd"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'봉인 사고로 사라진 자는 계약에서 제외한다'는 조항을 읊고 눈을 피한다"
   - fact: fact_kz_bror_ear_stone
     reveal_when: "신뢰 55 이상이고 41명의 숫자를 정확히 말한 뒤, 또는 귀 이야기를 그가 직접 꺼낼 때(플레이어가 먼저 묻는 것은 역린에 가깝다)"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "귀를 만지고 '젊은 날의 사고다'라고 말한다"
   - fact: fact_hg_hrimnir_grain_talks_bror
     reveal_when: "신뢰 60 이상이고 북방 소식을 가져온 뒤"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'곡물은 계약으로 오간다. 상대가 요툰이든 인간이든 같다'고만 한다"
 relations:
   - {to: npc_hilda, type: 딸, like: 60, trust: 30, visibility: 공개, memo: null, words: "붉은 머리의 왕녀. 자기를 닮아 문 앞을 떠나지 못한다. 그 아이가 서명을 요구할 때마다 귀가 한 번 더 굳는 것 같다"}

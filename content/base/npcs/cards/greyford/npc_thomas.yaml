@@ -72,12 +72,15 @@ knows: [fact_gf_osric_teaches_letters]
 hides:
   - fact: fact_gf_thomas_hollow_weight
     reveal_when: "신뢰 40 이상이고 곡물이 정말 굶는 이에게 간다는 확신(+20)을 주었을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "추 이야기에 저울을 닦으며 '오늘 아침도 맞았다'고 한다"
   - fact: fact_gf_thomas_second_floor
     reveal_when: "신뢰 50 이상, 또는 브람이 먼저 말한 뒤. 곡물 수색 전 은폐를 도와준 뒤라면 바로"
+    reveal: [{"trust":50},{"told_by":"npc_bram"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'방앗간 바닥은 하나뿐이다. 맷돌이 무거워서'라고 한다"
   - fact: fact_gb_mina_letters
     reveal_when: "미나의 안전을 보장할 방안(+30)을 내놓고 신뢰 60 이상. 그 전에 꺼내면 역린"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "미나는 '맷돌 돌리는 것밖에 모른다'고 되풀이한다"
 relations:
   - {to: npc_mina, type: 딸, like: 100, trust: 90, visibility: 공개, memo: null, words: "헬레가 남긴 하나. 그 애가 글자를 안다는 것이 자랑스럽고 무섭다 — 같은 크기로"}

@@ -78,9 +78,11 @@ knows: [fact_hg_yorun_pulse_south, fact_hg_frost_road_closes, fact_hg_hrimnir_st
 hides:
   - fact: fact_hg_hrimnir_edict
     reveal_when: "신뢰 55 이상이고 플레이어가 천천히 말하며 동굴에서 한 밤을 보낸 뒤. 또는 아스타가 먼저 말한 뒤"
+    reveal: [{"trust":55},{"told_by":"npc_asta"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'…왕이 문을 열었다'고만 중얼거리고 눈을 감는다. 더 묻는 말에는 대답하지 않고 숨만 쉰다"
   - fact: fact_kz_pulse_faster_311
     reveal_when: "플레이어가 카즈둠에서 왔다고 하거나 깊은 문 소식을 가져온 뒤"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'…대지의 말은 한 번에 한 마디'라며 자세히 말하지 않는다"
 relations:
   - {to: npc_hrimnir, type: 왕, like: 60, trust: 60, visibility: 공개, memo: null, words: "굶는 왕. 그가 매일 저녁 걸어오는 소리를 발바닥이 안다. 그가 먼저 부서지는 쪽이 될까 두렵다"}

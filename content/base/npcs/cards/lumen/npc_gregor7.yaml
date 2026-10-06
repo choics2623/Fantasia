@@ -81,24 +81,31 @@ knows:
 hides:
   - fact: fact_lu_gregor_delays_signature
     reveal_when: "알베릭의 목숨을 걸고 찾아와(+30) 신뢰 50 이상일 때. 마테우스가 곁에 있을 때는 어떤 경우에도 말하지 않는다"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서명은 절차의 일이다. 절차는 느리다'며 성표를 만진다"
   - fact: fact_lu_gregor_paper
     reveal_when: "1,107명의 이름을 '기록으로 남기겠다'는 약속(+35)을 받거나 신뢰 70 이상일 때. 종탑 기도실로 직접 데려간다"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "밤에 무엇을 하느냐는 질문에는 '기도를 한다. 이름 없는 기도다'라고 한다"
   - fact: fact_lu_gregor_teacher
     reveal_when: "신뢰 55 이상에서 알베릭 이야기가 길어질 때. '빛의 서신'의 첫 문장을 알고 있음을 증명하면 곧바로"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'알베릭은 신학원의 한 학생이었다. 많은 학생이 있었다'"
   - fact: fact_lu_gregor_maren_descendant
     reveal_when: "매듭집의 매듭줄이나 마렌의 첫 성표를 보여 주었거나 신뢰 65 이상일 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그 이름 때문이 아니다. 나는 제자를 죽이지 못할 뿐이다'"
   - fact: fact_lu_gregor_maren_day
     reveal_when: "매듭집의 매듭줄이나 볼드 사본을 보여 주었을 때 — 그는 낭독을 결심한다. 신뢰 75 이상에서 먼저 털어놓는 일도 있다"
+    reveal: [{"trust":75}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "마렌 축일 이야기가 나오면 '축일은 낭독문이 정한다'며 입을 닫는다"
   - fact: fact_lu_doctrine_false
     reveal_when: "플레이어가 잔향이라는 확신을 줬거나 알베릭 구출이 가시화되어 신뢰 60 이상일 때. 공적 자리에서는 어떤 경우에도 말하지 않는다"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'고난은 정화이니 견디라'를 되풀이한다. 손이 더 떨린다"
   - fact: fact_lu_gregor_fears_massacre
     reveal_when: "신뢰 40 이상이고 교리 이야기가 직접 나왔을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'신도들은 믿음으로 산다. 믿음이 꺼지면 어둠이 삼킨다'"
 relations:
   - {to: npc_alberic, type: 제자, like: 80, trust: 60, visibility: 공개, memo: 처형 서명 지연은 비밀, words: "제자이자 내 입에서 나온 문장의 임자. 우물에 둔 것이 나다. 서명을 미루는 것이 내가 할 수 있는 전부이고, 그것이 얼마나 갈지도 안다"}

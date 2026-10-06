@@ -80,9 +80,11 @@ knows:
 hides:
   - fact: fact_lm_ivan_sealed_order
     reveal_when: "플레이어가 바알카르 쪽 정보(아우락스·세베린)를 가지고 있거나 신뢰 65 이상. 혹은 사슬방 열쇠 이야기를 먼저 꺼냈을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'수비대는 수비대의 명령만 받는다'고 한다"
   - fact: fact_lm_ivan_crowd_math
     reveal_when: "축일 군중 이야기를 정직하게 걱정하며 꺼냈거나 신뢰 50 이상"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'병력은 충분하다'고만 한다. 허벅지를 두드리는 손이 빨라진다"
 relations:
   - {to: npc_mateus, type: 정화청 협력자, like: -10, trust: 10, visibility: 공개, memo: null, words: "화형 병력을 요청하는 정중한 사람. 이반은 그의 침묵이 두렵다"}

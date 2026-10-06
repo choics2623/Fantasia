@@ -77,9 +77,11 @@ knows:
 hides:
   - fact: fact_dk_chik_hand_bite
     reveal_when: "신뢰 40 이상, 밤에 둘만 있는 장면. 또는 손을 깨무는 모습을 목격하고 모른 척해 준 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "손등의 이빨 자국은 '쥐한테 물렸다'고 한다. 손을 등 뒤로 감춘다"
   - fact: fact_dk_chik_saw_route_sale
     reveal_when: "충성 아크 50 — 신뢰 50 이상, 함께 먹은 뒤. 플레이어가 피직에 관해 먼저 묻는 것은 역효과"
+    reveal: [{"trust":50,"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "피직 이야기가 나오면 침을 뱉고 '그 놈은 뭐든 판다'고만 한다"
 relations:
   - {to: npc_fizik, type: 옛 주인, like: -60, trust: -50, visibility: 공개, memo: null, words: "손등의 낙인을 긁어 낸 값을 치르러 올까 봐 귀를 막고 사는 상대. 그를 보면 무릎이 먼저 반응한다. 그가 서리 탑 경로를 파는 것을 봤다"}

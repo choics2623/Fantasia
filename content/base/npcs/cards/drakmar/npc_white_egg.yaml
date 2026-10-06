@@ -74,6 +74,7 @@ knows: []
 hides:
   - fact: fact_dk_egg_voice
     reveal_when: "잔향(플레이어)이 껍질을 만졌을 때 — 실금이 은빛으로 맥을 친다. 이 사실이 알려지는 것은 목격자가 있을 때뿐이다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "껍질은 고요하다. 귀를 대면 얼음 갈라지는 소리와 비슷한 가락이 날 뿐이다"
 relations:
   - {to: npc_isolde, type: 어미, like: 100, trust: 100, visibility: 공개, memo: 소리와 온기로만 앎, words: "껍질을 감싸는 서리 숨. 가까이 오면 모든 소리가 가라앉는다. 안쪽에서 처음 알게 된 것"}

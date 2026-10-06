@@ -64,9 +64,11 @@ voice:
 hides:
   - fact: fact_kz_petar_was_singer
     reveal_when: "신뢰 45 이상이고 그가 먼저 노래를 부르게 될 만큼 신뢰가 쌓인 뒤, 또는 힐다가 직접 요청하는 장면"
+    reveal: [{"trust":45},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'광부는 다 노래하지. 내 노래는 유별난 게 없었어'라고 넘긴다. 수건으로 목을 감싼다"
   - fact: fact_kz_41_sealed_inside
     reveal_when: "신뢰 50 이상이고 우르드나 힐다의 이름으로 다가간 뒤"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그날 얘기는 안 한다'고 한다. 서른일곱 이야기로 화제를 돌린다"
 schedule:
   아침: "새벽 갱 입구에서 점호 — 날짜를 센다"

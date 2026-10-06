@@ -86,18 +86,23 @@ knows:
 hides:
   - fact: fact_eh_mel_vessel
     reveal_when: "플레이어가 잔향임이 확정된 뒤 (6개월 사사로 확정), 또는 '그릇'을 직접 입에 올리는 위기 장면. 그 전에는 '그릇'이 시술 용어라고만 한다"
+    reveal: [{"flag":"trial"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그릇'은 시술 대기 명단의 말이라고 한다. 질문이 많아지고 맥을 한 번 더 잰다"
   - fact: fact_eh_mel_bait_hearts
     reveal_when: "신뢰 60 이상에서 드래곤 하트 밀거래를 직접 짚었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'폐기물이 흘러나가는 것은 내 관리 소홀이야'라고 한다"
   - fact: fact_eh_mel_goal_wound
     reveal_when: "신뢰 70 이상이거나, 아버지의 상처를 직접 본 사람이 구체적으로 묘사할 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아버지의 병은 학문적으로 아름다워. 그 이상은 아니야'라고 한다"
   - fact: fact_eh_mel_311_reports
     reveal_when: "레아·헨릭의 보고서 사본을 제시하거나 신뢰 55 이상일 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'보고서는 늘 받아. 설명되지 않는 것은 늘 있으니까'"
   - fact: fact_eh_cradle_experiment
     reveal_when: "은비늘 요람 근접 판정에 성공했거나, 요람에서 나온 증거를 제시했을 때 (3,214명이라는 숫자는 그녀가 스스로 말한다)"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'은비늘 요람은 의학원이야. 아픈 사람은 많거든'"
 relations:
   - {to: npc_aurax, type: 오빠·경쟁자, like: -60, trust: -70, visibility: 공개, memo: null, words: "인간을 가축으로 태우는 오라버니. 그의 불은 낭비다. 그릇을 먼저 태워 버릴 수 있어서 가장 먼저 막아야 한다"}

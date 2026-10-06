@@ -79,24 +79,31 @@ knows: []
 hides:
   - fact: fact_gb_isol_tower_hound
     reveal_when: "충성 아크 30 — 플레이어를 '진짜'로 의심하고 그것을 감춘 채 거래를 제안할 때, 또는 짐 속 렌즈·봉인 편지가 발견된 뒤"
+    reveal: [{"like":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "가장 열심인 순례자 행세. 탑 이야기는 '먼 곳의 학자들'이라고만 한다"
   - fact: fact_gb_isol_lens
     reveal_when: "순례자 헛간 짐 수색(손재주 판정) 성공, 또는 신뢰 50 이상"
+    reveal: [{"flag":"story"},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "짐을 베개 삼아 잔다. 짐 이야기에는 '기도서뿐'이라 한다"
   - fact: fact_gb_isol_sariful
     reveal_when: "호감 30 이상 — 그가 스스로 말한다"
+    reveal: [{"like":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "동공 이야기에 '빛을 오래 봐서요'라며 웃는다"
   - fact: fact_gb_isol_subject_seven
     reveal_when: "신뢰 40 이상이고 플레이어가 할라나 탑 이야기를 먼저 꺼낸 뒤, 또는 그가 스트레스 판정에 실패한 밤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "손목을 소매로 덮는다. '화로에 덴 자국'이라 한다"
   - fact: fact_gb_isol_halla
     reveal_when: "플레이어가 할라의 이름이나 탑 13층 이야기를 먼저 꺼낼 때(설득 +40), 또는 신뢰 50 이상"
+    reveal: [{"flag":"story"},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'바다 위의 탑과 웃는 여자'를 사리풀 환상이라고만 말한다"
   - fact: fact_gb_isol_38_false
     reveal_when: "'네가 바친 38명은 전부 무고했다'를 직면시키는 판정 성공(스트레스 판정 동반), 또는 충성 아크 50"
+    reveal: [{"tier":"성공"},{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "숫자 이야기에는 '빛이 가려 준다'는 교리로 답한다"
   - fact: fact_gb_isol_spares_elsa
     reveal_when: "신뢰 40 이상, 또는 플레이어가 엘사를 지키려고 그와 흥정할 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "엘사 오두막 쪽을 보다 들키면 '약초를 사러'라고 한다"
 relations:
   - {to: npc_irene_bold, type: 주인·감옥, like: -40, trust: 30, visibility: 비밀, memo: null, words: "주인이자 감옥. 증서를 약속한 사람. 그 종이를 믿지 않으면서 붙잡고 있다"}

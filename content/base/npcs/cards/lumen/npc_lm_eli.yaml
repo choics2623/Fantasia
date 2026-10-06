@@ -65,6 +65,7 @@ knows:
 hides:
   - fact: fact_lm_eli_memorizing
     reveal_when: "한나의 소개가 있거나 신뢰 65 이상. 알베릭의 이름을 정직하게 꺼냈을 때"
+    reveal: [{"trust":65,"named":"알베릭"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'외삼촌은 잘 모릅니다. 어머니의 오빠일 뿐입니다'라고 한다"
 toward_player: "정중한 접수 말투. 이름은 두 번 묻는다"
 persuade:

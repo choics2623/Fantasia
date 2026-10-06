@@ -79,12 +79,15 @@ knows: [fact_sv_aerin_87_failures, fact_sv_ise_first_ritual, fact_sv_aerin_wants
 hides:
   - fact: fact_sv_aerin_vessel_liandel
     reveal_when: "신뢰 40 이상, 또는 플레이어가 리안델을 지킨 증거를 그루터기에 놓은 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "리안델 이야기가 나오면 나뭇잎을 가슴에 대고 등을 돌린다"
   - fact: fact_sv_elastriel_name_loss_doubt
     reveal_when: "은자 시험(하루의 침묵 + 배운 것 하나) 통과 후 신뢰 50 이상"
+    reveal: [{"trust":50,"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "흙에 원을 그렸다가 지운다 — 그 이상은 보여 주지 않는다"
   - fact: fact_hm_seril_breath_crystal   # 사실: 새벽가지 금고에 시조 세릴이 신살 때 기록한 에오르의 마지막 숨(숨 수정)이 있고, 숨은 인간 쪽으로 나갔다
     reveal_when: "비밀 누설 장면 — 평생 단 한 번의 말. 신뢰 70 이상이고 플레이어가 잔향임을 보인 뒤"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "숨을 한 박자 늦게 쉬고, 입술에 손가락을 댄다"
 relations:
   - {to: npc_aerin, type: 쌍둥이 형, like: 10, trust: -40, visibility: 공개, memo: 침묵의 이유, words: "같은 얼굴. 같은 숨 수정을 만졌는데 다른 것을 보았다"}

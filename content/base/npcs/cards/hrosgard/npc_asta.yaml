@@ -77,12 +77,15 @@ knows: [fact_hg_asta_counts_800, fact_hg_baug_owns_stonekneed_slaves, fact_hg_fr
 hides:
   - fact: fact_hg_hrimnir_edict
     reveal_when: "신뢰 55 이상, 또는 플레이어가 서리말로 천천히 말하며 남은 사람들을 직접 센 뒤, 또는 흐림니르가 먼저 말한 뒤"
+    reveal: [{"trust":55},{"flag":"story"},{"told_by":"npc_hrimnir"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서리 길은 원래 열려 있었어'라고 말을 돌린다. 숫자를 세는 것으로 화제를 바꾼다"
   - fact: fact_hg_einar_alive
     reveal_when: "신뢰 60 이상이고 시그리드의 이름이나 뼈 구슬을 제시한 뒤"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'골짜기에 소년은 많아. 다 뼈야'라고 한다. 움막 안쪽을 보지 않으려 하다 오히려 본다"
   - fact: fact_hg_skadir_eats_slaves
     reveal_when: "신뢰 70 이상, 또는 플레이어가 전사단 막사 쪽 증거를 직접 보았을 때"
+    reveal: [{"trust":70},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'막사 쪽으로 간 사람은 세지 않아'라고만 하고 입을 다문다"
 relations:
   - {to: npc_sigrid, type: 남쪽으로 간 동지, like: 80, trust: 85, visibility: 비밀, memo: null, words: "같은 뼈 구슬을 달고 같은 노래를 부르는 사촌. 그 애가 남쪽에서 살아 있다는 것만이 매일의 이유다"}

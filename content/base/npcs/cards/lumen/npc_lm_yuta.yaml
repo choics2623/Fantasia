@@ -64,6 +64,7 @@ knows:
 hides:
   - fact: fact_lm_yuta_marta_channel
     reveal_when: "남편의 행방 정보를 가져왔거나 신뢰 60 이상. 요한의 짐 이야기를 정직하게 꺼냈을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'소금 팔 뿐이에요. 쪽지는 모릅니다'라고 한다"
 toward_player: "밝고 시끄러운 장사 말투. 소문을 먼저 묻는다"
 persuade:

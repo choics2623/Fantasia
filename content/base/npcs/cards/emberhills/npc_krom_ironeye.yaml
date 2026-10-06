@@ -64,9 +64,11 @@ knows: [fact_em_aurelia_selection_rule]
 hides:
   - fact: fact_em_krom_yana
     reveal_when: "신뢰 40 이상이거나, 돈이나 보호를 크게 제시했을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'명단은 갱조 이름순이야'라며 눈을 돌린다"
   - fact: fact_em_krom_volk_deal
     reveal_when: "신뢰 55 이상이거나, 볼크 이름을 먼저 꺼냈을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'탈주자는 그냥 팔려 오는 거야'라고 한다"
 relations:
   - {to: npc_caleb_dara, type: 보복 대상, like: -30, trust: -30, visibility: 비밀, memo: null, words: "손바닥이 붉은 놈. 입을 안 연 값은 이미 받았다"}

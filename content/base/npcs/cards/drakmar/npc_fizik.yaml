@@ -82,15 +82,19 @@ knows:
 hides:
   - fact: fact_dk_fizik_sold_route
     reveal_when: "신뢰 30 이상이거나 값 5 발톱 이상. 이졸데나 서리 탑 편에 선 인물이 압박해도 새어 나온다 — 그때는 겁에 질려서"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'피직은 아무것도 안 팔았어'. 나팔관을 튕기며 말을 돌린다"
   - fact: fact_dk_fizik_sound_room
     reveal_when: "신뢰 40 이상이거나 정보 3건을 가져와 스승 조건을 채웠을 때"
+    reveal: [{"trust":40,"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'소리 방? 쥐 소리밖에 안 나는 방이야'라고 한다"
   - fact: fact_dk_fizik_knows_soom
     reveal_when: "값 3 발톱 이상이거나 크릭 시녀의 정체를 플레이어가 먼저 짚었을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시녀들은 다 입이 무거워. 말 안 하는 건 크릭 본성이지'라고 한다"
   - fact: fact_dk_fizik_sells_all_sides
     reveal_when: "신뢰 20 이상. 팔았다고 자랑하지는 않으나 값이 맞으면 인정한다"
+    reveal: [{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'피직은 중립이야. 벽이 중립이거든'이라고 말한다"
 relations:
   - {to: npc_nora, type: 정보 거래, like: 30, trust: 20, visibility: 비밀, memo: null, words: "노라는 소문을 맞바꾸지 팔지 않는다. 안 파는 걸 어떻게 사는지 아직도 연구 중이다. 노라가 용황 곁에서 하는 일을 절반쯤 엿들었다는 것은 말하지 않는다"}

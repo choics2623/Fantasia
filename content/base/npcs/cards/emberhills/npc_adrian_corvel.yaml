@@ -77,12 +77,15 @@ knows:
 hides:
   - fact: fact_eh_adrian_wasted
     reveal_when: "멜리산드에게 이 일을 폭로하겠다는 협박(+30)이 먹혔을 때이거나 신뢰 60 이상. 학문적 칭찬만으로는 열리지 않는다"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'모든 소모는 가설의 한 칸입니다. 낭비는 없습니다'"
   - fact: fact_eh_adrian_abel
     reveal_when: "신뢰 50 이상에서 이브 쪽 이야기가 나오거나, 아벨의 번호를 직접 짚었을 때. 이브 앞에서는 말하지 않는다"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'2,871씨는 좋은 기록이었습니다. 그 이상은 기록되어 있지 않습니다'"
   - fact: fact_eh_adrian_ledger
     reveal_when: "시술 보조 30일을 마치고 스승 조건을 채웠을 때"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'사망 기록부는 열람이 허가된 의관에게만 열립니다'"
 relations:
   - {to: npc_melisande, type: 주인, like: 70, trust: 50, visibility: 비밀, memo: null, words: "손을 믿어 주는 유일한 용. 그녀는 숫자를 원하고 나는 기록을 원한다. 그 차이가 드러나는 날을 가장 두려워한다"}

@@ -86,24 +86,31 @@ knows: [fact_ar_first_second_tests_flawed, fact_ar_halla_three_accusations, fact
 hides:
   - fact: fact_ar_third_test_dead14
     reveal_when: "플레이어가 셋째 시험을 먼저 꺼내거나, 적대 장면에서 그녀가 위협으로 스스로 숫자를 말할 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시험은 단계적이다'라고만 하고 숫자를 말하지 않는다"
   - fact: fact_ar_halla_reference_body
     reveal_when: "호감 40 이상이고 할라 이야기가 나왔을 때"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기준체는 연구에 필요한 변수'라고만 한다"
   - fact: fact_ar_isol_paper_void
     reveal_when: "신뢰 50 이상이거나, 플레이어가 이졸의 해방 증서를 쥐고 따졌을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'증서는 규정대로 발급된다'고만 한다"
   - fact: fact_ar_tower_supplies_aerin
     reveal_when: "신뢰 60 이상이거나, 플레이어가 아에린의 서신을 들고 있을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'엘다르와의 학술 교환'이라고 한다. 징후자라는 낱말은 쓰지 않는다"
   - fact: fact_ar_glass_blades
     reveal_when: "신뢰 70 이상이거나, 칼('마지막 금')을 걸고 한 거래 장면"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'칼은 연구 도구'라고만 한다. 몸을 곧추세운다"
   - fact: fact_ar_glass_blade_ends_return
     reveal_when: "같은 장면에서 플레이어가 잔향임을 그녀가 확인했을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'유리는 시간을 가둔다'는 학술 문장으로 돌린다"
   - fact: fact_ar_irene_ledger_deja_vu
     reveal_when: "기시감 25 이상이고 그녀가 장부를 펼쳐 보일 때, 또는 신뢰 60 이상"
+    reveal: [{"deja_vu":25},{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'측정 오차예요'라고만 하고 장부를 덮는다"
 relations:
   - {to: npc_melisande, type: 후원자, like: 20, trust: 40, visibility: 공개, memo: null, words: "용의 심장에 대한 열의가 같아서 후원을 받는다. 그녀가 찾는 '그릇'과 내가 재는 '표본'은 같은 것이다. 같은 것에 다른 값을 매기는 사이"}

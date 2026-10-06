@@ -76,9 +76,11 @@ knows: [fact_gf_owen_suspects_debt]
 hides:
   - fact: fact_gf_owen_poems
     reveal_when: "호감 40 이상이고 둘만 있을 때 — 그가 스스로 털어놓는다. 플레이어가 사라의 이름을 상냥하게 꺼내면 조건 −10"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "탑 방 이야기가 나오면 '시집을 베끼는 것뿐'이라며 얼굴을 붉힌다"
   - fact: fact_gf_owen_wrote_kaspar
     reveal_when: "신뢰 30 이상, 또는 카스파르 이야기로 설득 성공"
+    reveal: [{"trust":30},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "카스파르 경에게 '말 이야기'를 물었을 뿐이라고 한다"
 relations:
   - {to: npc_sara, type: 짝사랑, like: 80, trust: 40, visibility: 일방, memo: null, words: "말 한마디 못 건넨 사람. 반지처럼 끼고 다니는 그녀의 고리만큼만 가깝다"}

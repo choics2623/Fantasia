@@ -75,6 +75,7 @@ knows: [fact_tm_grik_south_border, fact_tm_queen_name_rule]
 hides:
   - fact: fact_tm_grik_hat
     reveal_when: "호감 60 이상이거나, 플레이어가 그의 모자를 빼앗는 장면"
+    reveal: [{"like":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "모자 이야기가 나오면 두 손으로 모자를 감싸고 '비를 피하시오'를 되풀이한다"
 relations:
   - {to: npc_thorn_queen, type: 통제 못 하는 군주, like: -10, trust: -40, visibility: 공개, memo: null, words: "여왕은 나를 통제하지 못하오. 가시 기사를 통해 부릴 뿐이오. 서로 모자를 벗지 않는 사이오"}

@@ -82,9 +82,11 @@ knows:
 hides:
   - fact: fact_lm_hartmund_ring_not_stain
     reveal_when: "플레이어가 눈의 얼룩이 아니라 징후서의 '고리'를 이름으로 물었거나 신뢰 60 이상. 정직하게 눈을 재도록 허락했을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'얼룩과 고리는 정화청에서 같은 것입니다'라고 한다"
   - fact: fact_lm_hartmund_light_vote
     reveal_when: "베라의 석판이나 잿빛 저울실의 표결 이야기가 나오고 신뢰 50 이상"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'표결은 정화청의 기밀입니다'라고만 한다. 엄지가 눈꺼풀을 뒤집는 시늉을 한다"
 relations:
   - {to: npc_mateus, type: 정화청 상관, like: -10, trust: -20, visibility: 공개, memo: null, words: "표결 석판 앞에서 말이 없는 사람. 그의 확률이 두렵다"}

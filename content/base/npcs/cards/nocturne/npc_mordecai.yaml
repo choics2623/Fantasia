@@ -77,18 +77,23 @@ knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_starved_f
 hides:
   - fact: fact_nc_mordecai_hears_echo
     reveal_when: "플레이어의 피가 닿거나 중상 이상으로 피를 흘려 잔향이 확인된 뒤, 또는 그가 직접 플레이어를 마주했을 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'네 피가 노래를 한다'고만 한다. 무슨 노래인지는 말하지 않고 입술 없는 입을 움직인다"
   - fact: fact_nc_mordecai_goal_last_word
     reveal_when: "잔향임이 확인되고 플레이어가 그의 앞에서 피를 보이는 선택을 한 뒤"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'신이 무엇을 말하려 했는지 알고 싶을 뿐이다'라고만 한다"
   - fact: fact_nc_mordecai_knows_cecile
     reveal_when: "세실이 발각되었거나 사망한 뒤, 또는 잔향이 확인되어 그가 계산이 맞았음을 확인한 뒤"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "세실 이야기가 나오면 '가축이 가축을 구하는 척하는 것은 꽃이 피는 것처럼 자연스럽다'고 한다"
   - fact: fact_nc_mordecai_sends_hunters
     reveal_when: "플레이어가 사냥꾼을 죽이거나 잡은 뒤, 또는 그의 곁에 선 신하가 입을 열었을 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 성을 떠나지 않는다'고만 한다"
   - fact: fact_nc_gods_last_word
     reveal_when: "잔향이 확인되고 신뢰 70 이상, 또는 우물 곁에서 단둘이 마주한 장면"
+    reveal: [{"trust":70},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'신의 피는 말한다. 그러나 말의 뜻은 마시는 자의 것이다'라고만 한다"
 relations:
   - {to: npc_cecile, type: 이단 귀족·미끼, like: 10, trust: -20, visibility: 일방, memo: 알면서 방치, words: "인간을 구하는 척 가장 오래 걷는 장미. 그녀가 데려올 것을 기다리기에 베지 않는다. 그녀가 굶주린 자가 되어 가는 것도 안다"}

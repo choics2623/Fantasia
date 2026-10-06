@@ -77,12 +77,15 @@ knows: [fact_sr_draft_votes_7_of_11, fact_sr_repay_rate_true, fact_sr_cell_meeti
 hides:
   - fact: fact_sr_ophelia_draft_author_lupo
     reveal_when: "신뢰 40 이상이고 초안의 증거 수집을 도운 뒤, 또는 플레이어가 루포 이름을 먼저 꺼낼 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'초안은 제 이름으로 올라가요. 조항은 여러 사람의 손에서 나온 거고요'라고 한다"
   - fact: fact_sr_ophelia_jan_lover
     reveal_when: "신뢰 55 이상이거나, 얀과 함께 있는 장면을 플레이어가 먼저 목격했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'빚진 골목에는 일 때문에 가요. 실태 조사예요'라고 한다 — 얼굴이 연분홍에서 더 붉어진다"
   - fact: fact_sr_jan_debt_cannot_be_paid
     reveal_when: "신뢰 60 이상이거나, 얀이 먼저 말한 뒤"
+    reveal: [{"trust":60,"told_by":"npc_jan"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'빚은 개인의 것이에요. 누구도 대신 갚을 수 없어요'라고 법 조항처럼 말한다"
 relations:
   - {to: npc_beatrix, type: 어머니, like: 40, trust: 10, visibility: 공개, memo: null, words: "닮고 싶지 않은 사람을 가장 많이 닮은 딸. 사랑하지만 어머니의 숫자는 믿지 않는다"}

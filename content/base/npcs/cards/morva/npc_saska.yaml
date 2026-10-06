@@ -76,12 +76,15 @@ knows: [fact_mv_wyvern_tribute_six, fact_mv_poison_for_hags]
 hides:
   - fact: fact_mv_tribute_alive_26
     reveal_when: "알을 지켜 준 행동(+40) 후 신뢰 50 이상, 또는 플레이어가 공물 인간의 해방을 대가와 함께 제안하는 판정 성공"
+    reveal: [{"trust":50},{"tier":"성공","player_offer":"공물 인간의 해방을 대가와 함께 제안"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공물은 일한다'라고만 한다. 갈대 우리 쪽을 보지 않으려다 오히려 꼬리를 말아 올린다"
   - fact: fact_mv_saska_possession_curse
     reveal_when: "호감 60 이상이거나, 플레이어가 '소유'가 아니라 '맡김'의 언어로 공물 이야기를 꺼낸 뒤"
+    reveal: [{"like":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'와이번은 가진다. 가지는 게 와이번이다'라고 짧게 말하고 화제를 돌린다"
   - fact: fact_mv_oda_saska_blood_deal
     reveal_when: "신뢰 40 이상이고 오다와의 거래를 플레이어가 먼저 알고 있다는 것을 보일 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'피는 노파가 가져간다. 값은 알이 낸다'라고만 한다"
 relations:
   - {to: npc_oda, type: 피의 거래, like: 10, trust: 30, visibility: 비밀, memo: null, words: "알을 까 주는 눈먼 노파. 값을 매기러 올 날을 아는 쪽은 이쪽이다. 그 날이 오기 전까지는 알 곁에 앉혀 준다"}

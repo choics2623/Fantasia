@@ -85,18 +85,23 @@ knows:
 hides:
   - fact: fact_dk_collapse_truth
     reveal_when: "신뢰 70 이상 (충성 아크 70 — 용황의 고백 전문을 들려준다). 용황이 직접 허락한 밤에만"
+    reveal: [{"trust":70,"like":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'병석에서 들은 것은 열에 뜬 헛소리뿐이다. 용언은 노예에게 의미 없는 소리다'"
   - fact: fact_dk_nora_twelfth_listener
     reveal_when: "신뢰 55 이상이거나, 용황이 '열두 번째'라고 말하는 자리에 플레이어가 함께 있을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'앞서 일하던 시중들은 병으로 바뀌었다'고만 한다"
   - fact: fact_dk_nora_elena_grave
     reveal_when: "엘레나 또는 카스파르 이야기로 설득(+25)에 성공한 뒤 신뢰 40 이상. 카스파르 본인이 찾아오면 곧바로"
+    reveal: [{"flag":"story"},{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'엘레나? 궁에 그런 이름은 없었다'고 잘라 말한다"
   - fact: fact_dk_elena_last_words
     reveal_when: "신뢰 50 이상이고 엘레나의 노래를 플레이어가 알거나 노라가 그 노래를 먼저 꺼낸 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "노래 이야기만 하고 마지막 말은 '그건 엘레나의 것이다'라며 숨긴다"
   - fact: fact_dk_nora_grey_cell
     reveal_when: "플레이어가 잿빛 표를 제시하거나 이름 없는 자들이 먼저 접촉한 뒤 신뢰 40 이상"
+    reveal: [{"trust":40,"player_offer":"잿빛 표를 제시하거나 이름 없는 자들이 먼저 접촉한 뒤 신뢰 40 이상"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "표를 보면 시선을 판석으로 돌리고 '예법을 모르는 노예가 많다'고 한다"
 relations:
   - {to: npc_varskar, type: 주인·고백자, like: 30, trust: 60, visibility: 비밀, memo: null, words: "그분. 열한 명을 삼키고도 나를 살려 두신 불. 미움과 연민을 합쳐도 이름이 붙지 않는다. 밤에 이름을 불러 주는 유일한 주인"}

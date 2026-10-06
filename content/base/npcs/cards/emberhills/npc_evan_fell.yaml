@@ -64,9 +64,11 @@ knows: [fact_em_mel_ash_stakes]
 hides:
   - fact: fact_em_evan_true_rate
     reveal_when: "신뢰 45 이상이거나, 정확한 수치를 직접 요구하는 논거를 냈을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공식 기록은 40미터입니다'라고만 한다"
   - fact: fact_em_evan_double_book
     reveal_when: "신뢰 65 이상이거나, 하드리안의 압박을 막아 주겠다고 했을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기록은 하나입니다'라고 한다"
 relations:
   - {to: npc_hadrian_ashjaw, type: 압박자, like: -20, trust: -20, visibility: 비밀, memo: null, words: "숫자를 낮추라 하는 총감. 낮춰진 숫자 뒤의 재는 낮춰지지 않는다"}

@@ -62,6 +62,7 @@ voice:
 hides:
   - fact: fact_hg_baug_blind_eye
     reveal_when: "신뢰 60 이상, 또는 아스타가 먼저 말한 뒤, 또는 장부의 칸이 비는 이유를 증거로 제시한 판정 성공"
+    reveal: [{"trust":60},{"told_by":"npc_asta"},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'칸이 비면 값을 치르게 된다'고 위협하며 화제를 돌린다. 호송 이야기는 '짐이 줄었을 뿐'이라 한다"
 schedule:
   아침: "골짜기 장부 정리 — 노예 머릿수와 배급량을 대조한다"

@@ -64,6 +64,7 @@ knows:
 hides:
   - fact: fact_lm_marlene_counts_logs
     reveal_when: "벤치에 함께 앉아 장작을 같이 세 주었거나 신뢰 45 이상. 아그네스의 소개가 있을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 그냥 벤치에 앉아 해를 쬐는 늙은이야'라고 한다"
 toward_player: "다정하고 닳은 말투. '다음 생에는'을 위로처럼 단다"
 persuade:

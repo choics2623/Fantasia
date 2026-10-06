@@ -73,9 +73,11 @@ knows: [fact_em_orin_ventilation_map, fact_em_vent_leak_summer]
 hides:
   - fact: fact_em_orin_loophole
     reveal_when: "신뢰 55 이상이거나, 계약서 문구의 빈틈을 찾아 제시했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'지도는 분실물입니다'라고만 한다"
   - fact: fact_em_orin_ventilation_map
     reveal_when: "신뢰 75 이상이거나, 장치 위치를 먼저 알고 있다는 증거를 보였을 때"
+    reveal: [{"trust":75}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'환기 설계는 공기만 다룹니다'라고 한다"
 relations:
   - {to: npc_petar, type: 서신 루트, like: 20, trust: 30, visibility: 비밀, memo: null, words: "바깥 갱의 계약 광부 대표. 서신은 문구상 문제가 없다"}

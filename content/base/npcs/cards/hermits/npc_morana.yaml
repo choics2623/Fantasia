@@ -77,12 +77,15 @@ knows: [fact_sr_deep_naga_god_blood, fact_sr_beatrix_deep_naga_bargain, fact_sr_
 hides:
   - fact: fact_nc_gods_last_word
     reveal_when: "은자 시험(물의 이름) 통과 + 값(죽음 하나의 이야기)을 치른 뒤"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'피는 피야. 맛보고 싶으면 값을 내'"
   - fact: fact_sr_deep_naga_wants_speaker
     reveal_when: "신뢰 50 이상 — 그녀는 원로들의 뜻에 반대하므로 반쯤은 말하고 싶다"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아래의 일은 아래의 노래로만 말해'"
   - fact: fact_hm_morana_saw_egg   # 사실: 모라나는 AS 140 도둑맞은 알이 시렌나 상가 창고에서 깊은 바다 사원 지하로 옮겨지던 날을 보았다 (SUBRACES 심해 나가)
     reveal_when: "호감 40 이상, 용족 혈통 이야기가 나올 때"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "허물 하나에 대고 '넷째야, 그날 일은 말하지 마'"
 relations:
   - {to: npc_deep_naga, type: 아래와 위 사이의 사절, like: 20, trust: 40, visibility: 비밀, memo: null, words: "노래를 낱말로 바꾸는 자. 늘 값을 먼저 받는다"}

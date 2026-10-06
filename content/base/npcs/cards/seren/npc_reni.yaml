@@ -65,6 +65,7 @@ knows: [fact_sr_blind_lighthouse_signal, fact_sr_cell_meeting_1100]
 hides:
   - fact: fact_sr_reni_sells_to_all
     reveal_when: "호감 30 이상이고 플레이어가 정보 거래 값을 두 배로 쳐 줄 때, 또는 세 쪽 중 하나가 먼저 말했을 때"
+    reveal: [{"like":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저는 누구 편도 아니에요. 소문 장사는 편 안 들어요'라고 웃는다"
 relations:
   - {to: npc_severo, type: 정보 고객, like: -10, trust: 10, visibility: 비밀, memo: null, words: "값만 잘 쳐 주는 큰손. 속으로는 가마꾼을 이름으로 불러 주고 싶다. 하지만 값이 더 크다"}

@@ -59,6 +59,7 @@ knows: ["fact_bk_lamp_cells"]
 hides:
   - fact: fact_bk_benno_ash_letters
     reveal_when: "아이들 앞에서 신뢰 20, 또는 재 글씨를 플레이어가 먼저 써 보일 때"
+    reveal: [{"trust":20},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'재 그림이야. 아이들 장난'"
 relations:
   - {to: "npc_nora", type: "등잔", like: 60, trust: 70, visibility: "비밀", memo: null, words: "가르치라고 한 목소리"}

@@ -61,6 +61,7 @@ voice:
 hides:
   - fact: fact_hg_einar_chose_to_stay
     reveal_when: "플레이어가 시그리드의 이름이나 뼈 구슬을 제시하거나 신뢰 40 이상"
+    reveal: [{"trust":40,"player_offer":"시그리드의 이름이나 뼈 구슬을 제시하거나 신뢰 40 이상"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'누나는 남쪽에서 잘 살고 있을 거야'라고만 한다. 발가락 이야기가 나오면 말없이 발을 감춘다"
 schedule:
   아침: "불 오두막에서 불씨를 살핀다"

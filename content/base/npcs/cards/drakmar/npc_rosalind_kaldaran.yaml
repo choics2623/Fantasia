@@ -59,6 +59,7 @@ knows: ["fact_dk_aurax_purge_plan"]
 hides:
   - fact: fact_bk_rosalind_letters
     reveal_when: "서신을 훔쳐 오거나 세드릭이 일러바칠 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'친정에 보내는 편지요'"
 relations:
   - {to: "npc_severian_kaldaran", type: "남편", like: 0, trust: 10, visibility: "공개", memo: null, words: "기다리는 사람. 기다리다 단상을 빼앗길 사람"}

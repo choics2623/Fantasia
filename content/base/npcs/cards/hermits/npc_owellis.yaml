@@ -71,9 +71,11 @@ knows: [fact_lu_sere_wrote_doctrine, fact_lu_doctrine_false, fact_lu_pyres_autum
 hides:
   - fact: fact_hi_maren_signed_only
     reveal_when: "신뢰 30 이상 — 그는 그것을 자기 죄를 나누는 증거로 쓴다"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서명은 서명이오'"
   - fact: fact_hm_owellis_first_chapter   # 사실: 『빛의 말씀』 첫 장 「무혈자를 다루는 법」은 빛실 가지의 오웰리스가 썼고, 그 초안 한 장이 갈대 수도원 터 제단 돌 밑에 있다 (T10 전모의 증거)
     reveal_when: "은자 시험(고해를 판단 없이 듣기) 통과 + 값(그가 모르는 화형된 자의 이름 셋)을 치른 뒤"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'첫 장 이야기는 이름을 가져온 자와만 하오'"
 relations:
   - {to: npc_serenielle, type: 셋째 장을 쓴 동료, like: -20, trust: -30, visibility: 공개, memo: null, words: "'고난은 정화다'를 쓴 손. 그녀는 아직 루멘에서 거리를 재며 산다"}

@@ -64,9 +64,11 @@ knows: [fact_eh_abel_record]
 hides:
   - fact: fact_em_erhard_abel_last
     reveal_when: "신뢰 45 이상이거나, 이브의 이름을 먼저 꺼냈을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'임종의 말은 빛에게만 전합니다'라고 한다"
   - fact: fact_em_erhard_osric_classmate
     reveal_when: "신뢰 35 이상이거나, 오스릭의 이름을 먼저 꺼냈을 때"
+    reveal: [{"trust":35}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'신학원에는 동기가 많았습니다'라고 한다"
 relations:
   - {to: npc_osric, type: 옛 동기, like: 40, trust: 30, visibility: 공개, memo: "오스릭이 아직 쓴소리를 한다고 들었다", words: "같은 방을 쓰던 이. 나는 입을 닫았고 그는 열었다"}

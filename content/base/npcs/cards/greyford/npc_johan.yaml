@@ -72,9 +72,11 @@ knows: [fact_gf_johan_reports_felix]
 hides:
   - fact: fact_gf_johan_hymn_cipher
     reveal_when: "충성 아크 30 — 암호 찬송의 의미를 함께 해독하는 장면. 그는 반만 알고, 나머지 반은 플레이어와 함께 알아낸다"
+    reveal: [{"like":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "셋째 줄이 이상하다는 이야기를 스스럼없이 하고, 뜻은 정말로 모른다고 한다"
   - fact: fact_gf_osric_letter_copies
     reveal_when: "신뢰 50 이상, 또는 오스릭이 플레이어를 '말 없는 형제'로 받아들인 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "오스릭 사제님이 맡긴 '루멘 수녀님께 드릴 안부'라고만 한다 — 그 안부가 무엇인지 그도 다 알지는 못한다"
 relations:
   - {to: npc_osric, type: 스승, like: 60, trust: 65, visibility: 공개, memo: null, words: "셋째 줄을 틀리지 말라던 사제. 왜 셋째 줄인지 묻지 않았다 — 물으면 대답해 줄 사람이라서 더 못 물었다"}

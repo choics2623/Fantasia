@@ -71,9 +71,11 @@ knows: [fact_hi_gunde_hungry_child, fact_hi_gunde_shield_line, fact_hg_yorun_pul
 hides:
   - fact: fact_hi_gunde_vanished
     reveal_when: "은자 시험(불 없는 한겨울 밤 + 노래 따라 부르기) 통과 후"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'노래는 노래로만'이라며 입술을 다문다"
   - fact: fact_hm_frozen_giant_eye_turns   # 사실: 빙하 사당에 얼어 있는 거인(에오르를 붙잡았던 흐림 대주먹)의 눈이 AS 311부터 남쪽(카즈둠)으로 조금씩 돌아간다
     reveal_when: "신뢰 50 이상, 또는 플레이어가 고동·카즈둠 이야기를 꺼낼 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "거인 쪽을 보지 않으려 한다"
 relations:
   - {to: npc_asta, type: 서리손 친척, like: 60, trust: 60, visibility: 비밀, memo: null, words: "골짜기의 장로. 얼음 실로 사람을 보낸다"}

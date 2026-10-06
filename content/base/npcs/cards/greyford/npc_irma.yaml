@@ -72,9 +72,11 @@ knows: [fact_gb_irma_hagen_meat]
 hides:
   - fact: fact_gb_irma_wolfden_marks
     reveal_when: "신뢰 40 이상이고 플레이어를 탈주자 편이 아니라고 믿을 때, 또는 지팡이 칼자국을 읽는 통찰 판정 대성공"
+    reveal: [{"trust":40},{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "칼자국은 '울프한테 한 맹세'라고만 한다"
   - fact: fact_gb_irma_sheltered_child
     reveal_when: "호감 50 이상이고 울프의 진짜 사인을 안 뒤, 또는 그녀가 흔들리는 밤 장면"
+    reveal: [{"like":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "탈주자 이야기가 나오면 더 거칠게 욕한다"
 relations:
   - {to: npc_hagen, type: 은인으로 믿음, like: 50, trust: 60, visibility: 공개, memo: 실은 원수, words: "굶주림월에 고기를 갖다 준 은인. 이 마을에서 울프 이야기를 끝까지 들어 준 유일한 남자"}

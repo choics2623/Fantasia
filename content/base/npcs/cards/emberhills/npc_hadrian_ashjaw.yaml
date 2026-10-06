@@ -72,12 +72,15 @@ knows: [fact_em_cassian_monthly_numbers, fact_eh_grax_supply_list, fact_em_corvi
 hides:
   - fact: fact_em_hadrian_quota_lie
     reveal_when: "신뢰 55 이상이거나, 검열 소문이 돌 때 그를 돕겠다고 말했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'채굴량은 정상이다'라고만 하고 놋반지를 돌린다"
   - fact: fact_em_hadrian_hastran_cadet
     reveal_when: "신뢰 65 이상이거나, 하스트란 요새의 다라의 손을 아는 증거를 보였을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그건 오래된 집안 이야기'라며 화제를 숫자로 돌린다"
   - fact: fact_em_hadrian_afraid_cradle
     reveal_when: "신뢰 50 이상이거나, 요람 이야기를 두 번째로 꺼냈을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'요람은 영주의 일이다'라고 한 줄 말하고 창밖을 본다"
 relations:
   - {to: npc_melisande, type: 영주, like: 10, trust: 30, visibility: 공개, memo: "그녀 앞에서는 숫자만 말한다", words: "친절하지만 숫자 밖의 것을 보는 눈. 그 눈 앞에서는 장부가 얇아진다"}

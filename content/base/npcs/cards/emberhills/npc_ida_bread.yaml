@@ -63,6 +63,7 @@ knows: [fact_em_dorte_cook_route]
 hides:
   - fact: fact_em_ida_hidden_child
     reveal_when: "신뢰 55 이상이거나, 소녀를 위해 음식과 안전을 약속했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'반죽 통엔 밀가루뿐이야'라고 한다"
 relations:
   - {to: npc_dorte, type: 같은 가마, like: 40, trust: 30, visibility: 공개, memo: null, words: "취사장의 동무. 서로의 가마를 열어 보지 않는다"}

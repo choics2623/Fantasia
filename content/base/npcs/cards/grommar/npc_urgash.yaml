@@ -82,18 +82,23 @@ knows: [fact_gm_urgash_red_glass_eye, fact_gm_gorba_seeks_gunnar_disciple, fact_
 hides:
   - fact: fact_gm_red_milk_ritual
     reveal_when: "신뢰 50 이상, 또는 원형장 정면 결투에서 플레이어가 쓰러지지 않고 끝낸 뒤 호감 40 이상. 그는 이것을 부끄러워하지 않는다"
+    reveal: [{"trust":50},{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'형제가 되는 의식이다. 구경하지 마라.'라고만 한다. '붉은 젖'이라는 낱말이 나오면 눈이 굳고 이빨을 세던 엄지가 멈춘다"
   - fact: fact_gm_tal_alive_chained
     reveal_when: "신뢰 55 이상, 또는 플레이어가 지하 감방 앞까지 와서 탈과 대면한 뒤"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'탈은 황무지로 걸어갔다. 전설이다.'라고 되풀이한다. 오른눈이 바닥으로 내려간다"
   - fact: fact_gm_urgash_loves_tal
     reveal_when: "신뢰 65 이상, 또는 탈이 위기에 빠져 그가 '탈!' 하고 외치는 장면"
+    reveal: [{"trust":65},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "대련 이야기가 나오면 '싸움이다. 그뿐이다.'라고 자른다. 대신 이빨을 센다"
   - fact: fact_gm_murk_urgash_brothers
     reveal_when: "신뢰 70 이상이고 무르크 이야기를 플레이어가 먼저 꺼내 그가 스스로 말할 때. 다른 그롬이 듣는 자리에서는 절대 말하지 않는다"
+    reveal: [{"trust":70,"self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "무르크 이야기가 나오면 대답하지 않고 이빨을 센다. 끝까지 센 뒤 '말 끝났다.'라고 한다"
   - fact: fact_gm_urgash_first_hit_taken
     reveal_when: "신뢰 60 이상, 또는 아침 대련을 플레이어가 지켜보다 그가 쓰러지는 순간을 본 경우"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'모래가 미끄러웠다.'라고 한다. 사실을 묻는 자에게는 대련을 청한다"
 relations:
   - {to: npc_tal, type: 묶어 둔 투사왕, like: 80, trust: 60, visibility: 비밀, memo: null, words: "형제. 이 말을 그는 누구에게도 하지 못하게 한다. 매일 밤 내려가 맞는다. 맞는 쪽이 자기라는 것을 아무도 모른다"}

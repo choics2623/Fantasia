@@ -68,6 +68,7 @@ knows:
 hides:
   - fact: fact_dk_greta_servant_routes
     reveal_when: "브란의 소식을 전해 주거나 신뢰 40 이상일 때. 브란의 이름을 입모양으로 알아듣는 것이 가장 빠른 열쇠다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 빨래만 알아요'라며 손을 물속에 더 깊이 담근다"
 relations:
   - {to: npc_bran, type: 남편(생사 모름), like: 100, trust: 100, visibility: 공개, memo: 입모양으로만 부름, words: "7년째 입모양으로만 부르는 이름. 살아 있는지 모른다. 살아 있다고 믿는 것 말고는 손에 쥔 것이 없다"}

@@ -63,6 +63,7 @@ knows: [fact_em_cassian_monthly_numbers, fact_em_bolt_blade_molds]
 hides:
   - fact: fact_em_haro_knotcords
     reveal_when: "신뢰 50 이상이거나, 갱조원 한 명을 구한 직후"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'매듭은 할머니가 감아 준 부적이다'라고 한다"
 relations:
   - {to: npc_leonic, type: 세포 연결, like: 20, trust: 15, visibility: 비밀, memo: null, words: "굴 312호의 노인. 눈이 맑아서 한 번 속은 적이 있다"}

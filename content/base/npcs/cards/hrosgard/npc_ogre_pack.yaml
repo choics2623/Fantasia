@@ -61,6 +61,7 @@ voice:
 hides:
   - fact: fact_hg_ogre_leader_old_name
     reveal_when: "플레이어가 옛 이름(오그룬)을 우연히 알거나 아스타·마투쉬에게서 들은 뒤 그것을 불렀을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "그냥 으르렁거리며 '…고기'만 반복한다. 이름이 나오는 순간 한 박자 멈춘다"
 schedule:
   아침: "동굴 입구에서 냄새로 서리 길의 움직임을 살핀다"

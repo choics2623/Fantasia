@@ -67,6 +67,7 @@ knows: ["fact_bk_nebra_212_copy"]
 hides:
   - fact: fact_bk_isabel_no_true
     reveal_when: "신뢰 30 이상, 또는 그녀가 '아니다'라고 적고 돌려보낸 아이가 살아 있음을 보여 줄 때"
+    reveal: [{"trust":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'분류는 정확하다' — 질문지로 돌아간다"
 relations:
   - {to: "npc_nebra_sarkos", type: "어머니", like: 30, trust: 40, visibility: "공개", memo: null, words: "값을 세는 어머니. 나는 세지 않는다. 그래서 견딘다"}

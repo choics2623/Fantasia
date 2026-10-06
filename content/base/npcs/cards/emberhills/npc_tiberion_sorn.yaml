@@ -73,12 +73,15 @@ knows: [fact_eh_cradle_experiment, fact_eh_mel_vessel, fact_eh_adrian_wasted, fa
 hides:
   - fact: fact_em_tiberion_reports_tower
     reveal_when: "신뢰 55 이상이거나, 잿빛 탑의 암호 구절을 들려주었을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'보고서는 영주께 올립니다'라고만 하고 서랍을 닫는다"
   - fact: fact_em_tiberion_delays_fourteen
     reveal_when: "신뢰 50 이상이거나, 열넷의 이름을 먼저 꺼냈을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'일정은 행정실 소관입니다'라고 하며 서류를 넘긴다"
   - fact: fact_em_tiberion_no_vessel_theory
     reveal_when: "신뢰 70 이상이거나, 플레이어가 '그릇이 아닐 이유'를 학술적으로 논했을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이론은 아직 미완입니다'라고 얼버무린다"
 relations:
   - {to: npc_melisande, type: 주인, like: 20, trust: 40, visibility: 공개, memo: null, words: "친절하게 맥을 짚는 분. 그분의 목표가 자기 결론과 어긋나는 것이 두렵다"}

@@ -67,9 +67,11 @@ knows: [fact_sr_cell_meeting_1100]
 hides:
   - fact: fact_sr_ophelia_jan_lover
     reveal_when: "신뢰 50 이상이거나, 오필리아가 직접 데려와 소개했을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'손님이에요. 문턱 고쳐 드린 손님'이라고 하며 시선을 못 마주친다"
   - fact: fact_sr_jan_debt_cannot_be_paid
     reveal_when: "신뢰 60 이상이거나, 플레이어가 빚을 대신 갚아 주겠다고 제안했을 때"
+    reveal: [{"trust":60,"player_offer":"빚을 대신 갚아 주겠다고 제안했을 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'제 빚은 제 손으로 갚는 거예요'라고만 한다. 대패를 쥔 손에 힘이 들어간다"
 relations:
   - {to: npc_ophelia, type: 연인, like: 75, trust: 70, visibility: 비밀, memo: 추문, words: "문턱 앞에서 이름을 물어 준 사람. 나가라는 사실을 잊고 싶고, 잊을 수 없다. 이 사람을 구매의 대상이 되게 하지 않으려고 매번 거절한다"}

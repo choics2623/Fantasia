@@ -82,9 +82,11 @@ knows: [fact_tm_nibble_inverse, fact_tm_elin_double, fact_tm_elin_nail_words, fa
 hides:
   - fact: fact_tm_nibble_took_elin
     reveal_when: "호감 40 이상이고 플레이어가 그의 거짓말을 정확히 뒤집어(통찰 D 40) 엘린에 대해 물었을 때"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'엘린은 내가 데려온 게 아니야!'라고 반대로 말한다 — 뒤집으면 그것이 답이다. 날개가 유리 소리를 낸다"
   - fact: fact_tm_elin_village_in_lies
     reveal_when: "같은 판정을 두 번 성공해 그의 거짓 이야기 속에서 마을 이름이 풀릴 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "엘린의 고향을 '북쪽 바다 건너 눈 속의 마을'이라 거짓으로 늘어놓는다. 그 안에 철자가 숨어 있다"
 relations:
   - {to: npc_thorn_queen, type: 주인, like: 10, trust: -60, visibility: 공개, memo: null, words: "무섭다. 웃음 뒤에 무엇이 있는지 모르는 것이 가장 무섭다. 그래서 더 열심히 거짓말한다"}

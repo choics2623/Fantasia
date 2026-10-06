@@ -67,6 +67,7 @@ knows: [fact_mv_witch_forty_limit, fact_mv_time_forbidden, fact_mv_hag_split_4_3
 hides:
   - fact: fact_mv_elsbet_two_doubtful
     reveal_when: "신뢰 60 이상, 또는 베른이 먼저 그 이야기를 꺼낸 뒤, 또는 플레이어가 그 둘 중 하나의 가족을 데려왔을 때"
+    reveal: [{"trust":60},{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'일곱 모두 확실했어요'라고 말한다 — 거짓말할 때 이끼판을 손으로 덮는다"
 relations:
   - {to: npc_bern, type: 처형 공범, like: 20, trust: 55, visibility: 비밀, memo: 처형 7건 연루, words: "같이 일곱 줄을 그은 사람. 서로 그 이야기는 먼저 꺼내지 않는다. 그가 장부를 덮을 때의 손이 마음에 걸린다"}

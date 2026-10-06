@@ -62,6 +62,7 @@ knows:
 hides:
   - fact: fact_lm_simon_second_jailer
     reveal_when: "야코프의 보증이나 아그네스의 암호를 가져왔을 때. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'간수는 둘이 교대하는 법이오'라고만 한다"
 toward_player: "서두르지 마라, 하고 먼저 말한다. 느리고 정중하다"
 persuade:

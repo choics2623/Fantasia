@@ -59,6 +59,7 @@ knows: ["fact_bk_lamp_cells"]
 hides:
   - fact: fact_bk_tilde_wall
     reveal_when: "등잔의 표식 또는 노라의 보증"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기름만 채웁니다'"
 relations:
   - {to: "npc_nora", type: "등잔", like: 70, trust: 80, visibility: "비밀", memo: null, words: "물통 너머의 목소리. 회의를 들으면 그분께"}

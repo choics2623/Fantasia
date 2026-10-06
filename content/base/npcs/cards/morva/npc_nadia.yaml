@@ -76,15 +76,19 @@ knows: [fact_mv_poison_for_hags]
 hides:
   - fact: fact_mv_nadia_seren_fugitive
     reveal_when: "신뢰 40 이상, 또는 플레이어가 세렌 낙인을 알아보고 조용히 묻는 판정 성공"
+    reveal: [{"trust":40},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "소매를 내리고 '활 때문에 굳은 거다'라고 한다. 세렌 이야기가 나오면 바람 쪽을 본다"
   - fact: fact_mv_nadia_bren_bow
     reveal_when: "신뢰 50 이상, 또는 플레이어가 와이번 둥지 근처에서 같은 활줄이나 흔적을 먼저 찾아낸 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "브렌 이야기가 나오면 '공물로 갔다'라고만 하고 활을 닦기 시작한다"
   - fact: fact_mv_nadia_sister_seren
     reveal_when: "신뢰 35 이상, 또는 플레이어가 세렌 빚진 골목 소식을 가져온 뒤"
+    reveal: [{"trust":35},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'가족은 없다'고 한다 — 거짓말할 때 갈대 줄기를 세게 돌린다"
   - fact: fact_sr_miko_nadia_escape
     reveal_when: "플레이어가 미코를 만나 그의 소식을 전하고 신뢰 30 이상"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'뛰어내린 건 나 혼자다'라고 한다. 등불 이야기는 하지 않는다"
 relations:
   - {to: npc_bern, type: 촌장, like: 60, trust: 65, visibility: 공개, memo: null, words: "심사 날 손바닥만 보고 받아 준 사람. 그에게 거짓말하는 것이 제일 힘들다. 브렌의 활 이야기는 아직 못 했다"}

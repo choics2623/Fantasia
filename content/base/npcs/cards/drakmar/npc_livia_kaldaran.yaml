@@ -67,9 +67,11 @@ knows: ["fact_dk_elena_last_words"]
 hides:
   - fact: fact_bk_livia_opened_door
     reveal_when: "카스파르의 이름을 꺼내고 신뢰 30 이상, 또는 모르칸이 먼저 말한 뒤"
+    reveal: [{"trust":30},{"told_by":"npc_morkan"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'291년엔 의전 견습 일로 바빴다' — 식순표로 시선을 돌린다"
   - fact: fact_bk_livia_rite_cancel
     reveal_when: "신뢰 20 이상 — 그녀는 이것을 큰 비밀로 여기지 않는다"
+    reveal: [{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'의례는 폐하께서 나오시는 대로' "
 relations:
   - {to: "npc_kaspar", type: "동정", like: 50, trust: 20, visibility: "일방", memo: "291년의 문", words: "울지 않던 아이. 그가 잡종이라 불릴 때마다 나는 자리에서 일어난다"}

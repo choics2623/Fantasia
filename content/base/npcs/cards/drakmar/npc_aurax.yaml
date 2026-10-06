@@ -88,18 +88,23 @@ knows:
 hides:
   - fact: fact_dk_aurax_saw_collapse
     reveal_when: "플레이어가 대붕괴의 진실 조각을 이미 쥐고 있음을 그가 알아챈 때, 또는 아버지가 위독하다는 위기 장면. 그 자리에서 상대를 곧 태울 생각일 때만 말한다"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아버지의 일은 아버지의 것이다'라며 말을 끊는다. 대붕괴 이야기가 나오면 날개막의 이름을 한 번 긋는다"
   - fact: fact_dk_collapse_truth
     reveal_when: "'그 인간은 거의 해냈다' 대사의 조건 — 상대가 이미 알고 있어 입을 닫게 할 수 있거나, 세라크 앞에서 위기가 터졌을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "공식 역사를 그대로 읊는다. '인간이 세계를 찢었다. 그것으로 충분하다'"
   - fact: fact_dk_aurax_echo_belief
     reveal_when: "플레이어가 잔향의 정체를 시사하는 장면에서, 그가 판단하고 있을 때. 자기 의도를 숨기지는 않으나 '왜'는 말하지 않는다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'4,000을 태워 나는 질서를 샀다. 이유는 숫자가 설명한다'라고만 한다"
   - fact: fact_dk_aurax_kaspar_contract
     reveal_when: "볼크나 사냥꾼 쪽 인물이 먼저 말하거나, 카스파르가 궁에 끌려와 처형이 임박했을 때. 일반 장면에서는 '표적'이라고만 한다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "카스파르의 이름이 나오면 '그것은 아직 일어나지 않은 일이다'라고만 한다"
   - fact: fact_dk_aurax_doubts_serak
     reveal_when: "세라크가 서고나 대붕괴를 거론할 때 그가 가까이 있을 때. 플레이어에게는 말하지 않는다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "딸 이야기가 나오면 말이 짧아지고 턱을 든다"
 relations:
   - {to: npc_varskar, type: 아버지, like: 10, trust: -20, visibility: 공개, memo: null, words: "어미를 죽인 불이자 세상을 찢은 불. 그 불이 꺼지기 전에 이어받아야 한다. 밤마다 문밖에서 숨소리를 센다 — 존경인지 감시인지 스스로도 가려지지 않는다"}

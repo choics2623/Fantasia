@@ -79,12 +79,15 @@ knows: [fact_hk_west_wind_broken, fact_hk_dua_loss_rate, fact_hk_oktai_helps_fal
 hides:
   - fact: fact_hk_temur_broke_leg
     reveal_when: "신뢰 55 이상이고 바타르에 대한 정직한 직언을 한 뒤, 또는 바타르가 먼저 말한 뒤"
+    reveal: [{"trust":55},{"told_by":"npc_batar"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'결투는 경주 재판이다. 이긴 자가 칸이다'라고 한다. 스승 이야기가 나오면 말발굽을 굴러 화제를 끊는다"
   - fact: fact_hk_slave_hunt_plan
     reveal_when: "신뢰 50 이상이고 서진·짐꾼 문제에 대해 실용적 대안을 제안한 뒤, 또는 소란이 증언한 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서진에는 짐이 많다'라고만 하고 구체적인 수는 말하지 않는다. 사냥터 이야기에는 눈을 서쪽으로 돌린다"
   - fact: fact_hk_khan_map_plan
     reveal_when: "신뢰 65 이상이고 칸의 천막 안으로 초대된 뒤"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'지도는 바람이 그린다'고 한다. 천막 안쪽의 천을 내린다"
 relations:
   - {to: npc_soran, type: 딸, like: 70, trust: 40, visibility: 공개, memo: null, words: "멀리 보는 눈을 가진 딸. 나보다 느리지만 더 오래 달릴 아이. 그 눈이 나를 향할 날이 두렵다"}

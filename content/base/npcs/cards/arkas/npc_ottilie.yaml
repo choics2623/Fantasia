@@ -82,9 +82,11 @@ knows: [fact_ar_tower_clerks_literate, fact_ar_halla_three_accusations, fact_ar_
 hides:
   - fact: fact_ar_ottilie_vow_gap
     reveal_when: "호감 50 이상이거나, 플레이어가 '읽기'와 '쓰기'의 차이를 정확히 짚었을 때"
+    reveal: [{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'맹세는 지킵니다'라고 정중히 말하고 오른손을 소매에 넣는다"
   - fact: fact_ar_ottilie_books_to_halla
     reveal_when: "신뢰 60 이상이거나, 플레이어가 할라의 편지·쪽지를 전해 주었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기준체에게는 필사 허가가 있어요'라고만 한다"
 relations:
   - {to: npc_irene_bold, type: 탑주, like: -10, trust: 30, visibility: 공개, memo: null, words: "숫자로 사람을 세는 탑주. 그녀가 내 서고를 건드리지 않는 이유는 서고가 그녀의 장부를 지키기 때문이다. 서로를 이용하는 법을 정확히 안다"}

@@ -63,9 +63,11 @@ knows: [fact_em_dara_handprint_wall, fact_em_song_gap]
 hides:
   - fact: fact_em_dorte_cook_route
     reveal_when: "신뢰 50 이상이거나, 굶은 아이에게 음식을 나눈 장면 직후"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그릇은 그릇일 뿐이야'라며 국자로 솥을 한 번 친다"
   - fact: fact_em_caleb_pit_water_hand
     reveal_when: "신뢰 75 이상이거나, 칼렙이 먼저 허락했을 때"
+    reveal: [{"trust":75}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물웅덩이엔 물뿐이야'라고 한다"
 relations:
   - {to: npc_caleb_dara, type: 오빠, like: 70, trust: 80, visibility: 공개, memo: null, words: "손을 벽에서 못 떼는 오빠. 손을 대신 쥐어 주고 싶다"}

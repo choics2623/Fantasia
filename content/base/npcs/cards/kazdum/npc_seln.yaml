@@ -64,9 +64,11 @@ voice:
 hides:
   - fact: fact_kz_seln_eor_voice
     reveal_when: "신뢰 50 이상이고 새 이야기를 두 개 이상 건넨 뒤, 또는 플레이어가 잔향임을 그녀가 알아챈 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'고동에 대해서는 이야기가 부족해. 더 가져와'라고 한다. 박자 이야기가 나오면 눈을 감는다"
   - fact: fact_kz_drau_serve_echo
     reveal_when: "플레이어가 잔향임이 드러난 장면 후 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아이들은 언제나 이상한 이름으로 불리지'라고만 하며 눈을 돌린다"
 schedule:
   아침: "동굴 안에서 고동의 박자를 센다"

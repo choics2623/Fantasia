@@ -76,12 +76,15 @@ knows: ["fact_gf_martha_ring_house", "fact_gb_heinz_informs", "fact_bk_irmas_ech
 hides:
   - fact: fact_bk_ebert_holds_anselma
     reveal_when: "안셀마의 목숨을 거래로 꺼낼 때(신뢰 30 + 고리집의 안전을 보장하는 제안), 또는 이르마스가 그를 버린 뒤"
+    reveal: [{"trust":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시장 세탁부? 이름이 두더지였나. 말이 없는 여자지'"
   - fact: fact_bk_ebert_seven_names
     reveal_when: "플레이어가 일곱 이름 중 하나를 부를 때(회귀 지식), 또는 그가 죽기 전 마르타에게"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'장부는 하나도 빠짐없이 넘긴다'"
   - fact: fact_bk_ebert_north_signs
     reveal_when: "신뢰 40 이상, 또는 긴그림자 홰 아래 보고를 엿들을 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'긴그림자께는 배급 값만큼 이름을 올린다. 그뿐이다'"
 relations:
   - {to: "npc_martha", type: "조카딸·장부의 후계", like: 50, trust: 60, visibility: "공개", memo: "23명을 넘겼다", words: "누이의 딸. 열여섯에 첫 이름을 올린 아이. 내 기침보다 먼저 2,000을 받아야 한다"}

@@ -77,9 +77,11 @@ knows: [fact_hk_dua_loss_rate, fact_hk_gleaners, fact_hk_oktai_helps_fallen, fac
 hides:
   - fact: fact_hk_cargo_people_route
     reveal_when: "신뢰 55 이상이고 짐꾼 보호에 대한 진심을 보인 뒤, 또는 소란이 증언한 뒤, 또는 플레이어가 쓰러진 짐꾼을 직접 구한 뒤"
+    reveal: [{"trust":55},{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'짐은 많아서 아무도 안 센다'고 말한다. 짐 적재량을 묻는 말에는 화제를 돌린다"
   - fact: fact_hk_soran_promise_dua
     reveal_when: "신뢰 45 이상이고 소란에 대한 존중을 보인 뒤"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'칸의 딸은 가끔 인간 말을 배우러 온다'고만 한다. 약속 이야기에는 짐을 고쳐 멘다"
 relations:
   - {to: npc_temur, type: 주인, like: 0, trust: 30, visibility: 공개, memo: null, words: "내 어깨 위 1,200의 짐을 정하는 사람. 미워하지는 않는다. 다만 그가 4,000이라고 말할 때 숫자가 아니라 얼굴이 떠오른다"}

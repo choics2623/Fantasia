@@ -86,18 +86,23 @@ knows: [fact_tm_queen_name_rule, fact_tm_nibble_took_elin, fact_tm_elin_double, 
 hides:
   - fact: fact_tm_queen_laugh_reason
     reveal_when: "호감 70 이상이고 플레이어가 진짜 새로운 이야기(+30)를 건넨 직후, 그녀가 스스로 '이 말에 묶여도 재미있다'고 할 때"
+    reveal: [{"like":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'웃는 데 이유가 필요하니? 웃으니까 웃은 거야'라고 되묻는다"
   - fact: fact_tm_queen_true_name_fate
     reveal_when: "시대의 마지막 장, 또는 플레이어가 그녀의 이름 놀이에서 세 번 모두 틀렸으나 이름을 입에 올리지 않는 선택을 했을 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "이름 이야기가 나오면 웃음이 한 번 멎고 화제를 장난감으로 돌린다"
   - fact: fact_tm_queen_knows_echo
     reveal_when: "호감 40 이상이거나, 플레이어가 잔향의 증표(잿빛 고리, 앞선 잔향자의 목소리)를 보였을 때"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'너는 특별한 손님이야'라고 모든 손님에게 똑같이 말한다"
   - fact: fact_tm_laugh_box
     reveal_when: "호감 80 이상이거나 플레이어가 웃음의 상자 앞에 섰을 때"
+    reveal: [{"like":80}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "왕좌 뒤를 보지 않는 척하며 가시를 손톱으로 튕긴다"
   - fact: fact_tm_queen_asterion_spectacle
     reveal_when: "플레이어가 앞선 잔향자의 꿈(아스테리온)을 해금한 뒤 그 이름을 입에 올렸을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그 아가의 이야기는 이름 병 장수에게 물어봐'로 돌린다"
 relations:
   - {to: npc_nibble, type: 시종 픽시, like: 20, trust: -50, visibility: 공개, memo: null, words: "내 작은 거짓말쟁이. 진실을 못 말하니 믿을 수 있는 유일한 아이. 그래서 마음에 들지 않아"}

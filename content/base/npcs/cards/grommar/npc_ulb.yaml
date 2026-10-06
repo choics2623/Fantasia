@@ -69,9 +69,11 @@ knows: []
 hides:
   - fact: fact_gm_ulb_holds_cell_key
     reveal_when: "마라가 직접 부탁하거나 신뢰 60 이상. 마라의 경기가 이긴 날 밤에 가장 쉽다"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "목을 손으로 덮고 '목 아프다.'라고 한다. 그 손이 열쇠 위에 있다"
   - fact: fact_gm_tal_alive_chained
     reveal_when: "신뢰 50 이상, 또는 마라와 함께 와서 마라가 묻는 경우"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아래는 물건 있다. 물건.' 하고 몇 번이고 되풀이한다"
 relations:
   - {to: npc_mara, type: 좋아하는 투사, like: 70, trust: 60, visibility: 공개, memo: null, words: "붉은 머리. 칼 쥔 팔이 곧다. 문 앞에서 이름을 중얼거려 주는 것이 그가 할 수 있는 응원이다. 열쇠를 줄 수 있는 유일한 사람"}

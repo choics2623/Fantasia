@@ -59,6 +59,7 @@ knows: ["fact_gf_godric_sold_37"]
 hides:
   - fact: fact_bk_morna_raven_leash
     reveal_when: "멜리산드파 정보를 대가로 줄 때, 또는 신뢰 30"
+    reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'배당 명부는 원로회의 일이다'"
 relations:
   - {to: "npc_godric_raven", type: "끈에 매단 영주", like: -20, trust: -40, visibility: "일방", memo: "37명", words: "빚진 남작. 당기기만 하면 떨어진다"}

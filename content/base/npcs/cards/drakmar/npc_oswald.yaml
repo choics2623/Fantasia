@@ -68,6 +68,7 @@ knows: ["fact_bk_cadel_water_loss"]
 hides:
   - fact: fact_bk_oswald_silence
     reveal_when: "신뢰 40 이상, 또는 짐칸에서 사람을 하나 살려 그 앞에 데려올 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'할당은 맞다' — 등을 돌린다"
 relations:
   - {to: "npc_cadel_hask", type: "부두장·딸의 원수", like: -60, trust: -20, visibility: "일방", memo: "마야", words: "곡물 위에 노예, 노예 위에 곡물. 그의 명부에 마야는 '하나'다"}

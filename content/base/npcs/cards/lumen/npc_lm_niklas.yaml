@@ -75,9 +75,11 @@ knows:
 hides:
   - fact: fact_lm_niklas_shape_memory
     reveal_when: "'모양'을 비웃지 않고 물어보았거나 신뢰 50 이상. 안셀름의 소개가 있을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'평범하게 외워요. 남들처럼요'라고 한다. 눈이 담벼락 그늘로 흘러간다"
   - fact: fact_lm_niklas_three_watchers
     reveal_when: "순례자 이졸이나 정자·심문소의 이름을 플레이어가 먼저 꺼냈거나 신뢰 45 이상"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아무도 저를 보지 않아요'라고 말하며 성표를 만진다"
 relations:
   - {to: npc_lm_anselm, type: 스승, like: 50, trust: 40, visibility: 공개, memo: null, words: "구절을 외우는 방식을 묻지 않는 원장"}

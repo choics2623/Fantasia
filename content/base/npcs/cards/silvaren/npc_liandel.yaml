@@ -83,9 +83,11 @@ knows: [fact_sv_dane_taught_human_songs]
 hides:
   - fact: fact_sv_liandel_learned_songs
     reveal_when: "신뢰 40 이상이거나, 플레이어가 새 노래를 가르쳐 준 직후"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'엘다르 노래예요!'라고 우긴다. 호주머니의 피리를 쥔다"
   - fact: fact_sv_aerin_vessel_liandel
     reveal_when: "신뢰 50 이상이거나, 아에린이 가까이 온 위기 장면에서 스스로 터뜨릴 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'무슨 소리죠?' 하고 되묻고 다른 질문으로 도망친다"
 relations:
   - {to: npc_elastriel, type: 보호자, like: 70, trust: 60, visibility: 공개, memo: null, words: "할머님은 아무것도 잊지 않으셔서 제가 처음 한 질문도 기억하세요. 그래서 좋은데 무서워요"}

@@ -65,6 +65,7 @@ knows: [fact_gf_egil_family_in_cellar]
 hides:
   - fact: fact_gb_egil_blood
     reveal_when: "서리말로 말할 수 있고 신뢰 30 이상, 또는 엘사가 진찰한 뒤"
+    reveal: [{"trust":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "(서리말) 기침은 '지하 곰팡이' 탓이라 한다"
 relations:
   - {to: npc_bram, type: 숨겨 준 은인, like: 70, trust: 75, visibility: 비밀, memo: null, words: "다리를 끄는 남쪽 사람. 자정마다 죽을 들고 내려온다. 그에게 진 빚은 갚을 길이 없다"}

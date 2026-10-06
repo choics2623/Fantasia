@@ -78,9 +78,11 @@ knows:
 hides:
   - fact: fact_lm_hero_ledger_dots
     reveal_when: "명부 점의 뜻을 정직하게 물었거나 신뢰 45 이상. 아델이나 아그네스의 소개가 있을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'점은 그냥 장부 정리요'라고 한다"
   - fact: fact_lm_hero_oven_ash
     reveal_when: "플레이어가 화덕 밑에서 표를 찾았거나 헤로가 직접 재를 파내는 장면. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'화덕 밑에는 재뿐이오'라고 한다"
 relations:
   - {to: npc_johan, type: 길의 단골, like: 55, trust: 45, visibility: 공개, memo: null, words: "노래하는 순례자. 찬송에 맞춰 빵이 구워진다고 한다"}

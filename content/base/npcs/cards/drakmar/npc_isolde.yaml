@@ -83,12 +83,15 @@ knows:
 hides:
   - fact: fact_dk_egg_voice
     reveal_when: "알이 플레이어의 손에 반응한 뒤, 또는 신뢰 50 이상에서 플레이어가 알의 소리에 관해 구체적으로 묻거나 해석할 실마리를 가져왔을 때"
+    reveal: [{"flag":"story"},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'얼음 갈라지는 소리다'라고 잘라 말한다. 껍질에서 시선을 떼지 못한다"
   - fact: fact_dk_isolde_kaspar_letters
     reveal_when: "알의 안전에 관한 구체적 정보를 가져오거나 신뢰 60 이상일 때. 아우락스가 알을 향해 움직이는 위기에서도 터져 나온다"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "까마귀 문 이야기가 나오면 서리 숨이 한 번 일고 '북쪽 하늘은 내 소관이 아니다'라고 한다"
   - fact: fact_dk_isolde_forced_mating
     reveal_when: "신뢰 40 이상이고 알이 '고른 것'이라는 이야기가 나올 때. 용황을 '그녀의 주인'이라 부르면 오히려 입을 닫는다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'짝은 짝이다. 서리비늘은 약속을 지킨다'라고만 한다"
 relations:
   - {to: npc_white_egg, type: 자식, like: 100, trust: 100, visibility: 공개, memo: null, words: "내가 고른 단 하나. 껍질 너머에서 부르는 소리를 매일 밤 듣는다. 이 아이는 아무도 소유하지 못한다"}

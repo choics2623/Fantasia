@@ -80,15 +80,19 @@ knows: [fact_hg_hrimnir_starves_first, fact_hg_frost_road_closes, fact_hg_yorun_
 hides:
   - fact: fact_hg_hrimnir_edict
     reveal_when: "신뢰 50 이상이고 식량 정보나 곡물 제안으로 그가 먼저 마음을 연 뒤, 또는 아스타가 먼저 말한 뒤, 또는 스카디르가 칙령을 폭로한 뒤"
+    reveal: [{"trust":50},{"told_by":"npc_asta"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'탈주'라는 낱말에 입을 닫는다. '서리 길은 원래 열려 있다'고만 한다"
   - fact: fact_hg_hrimnir_envoy_kaspar
     reveal_when: "서리말을 아는 길잡이(플레이어)에게 신뢰 40 이상, 또는 곡물 거래로 화술 대성공"
+    reveal: [{"trust":40},{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'남쪽에는 곡식이 있다'고만 하고 사신 이야기는 꺼내지 않는다. 카스파르의 이름이 나오면 눈을 가늘게 뜬다"
   - fact: fact_hg_last_barley_300
     reveal_when: "신뢰 60 이상, 또는 플레이어가 곡창 바닥을 직접 보았을 때"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "곡창 이야기가 나오면 '비어 있다'고 말한다. 곡창 쪽을 보지 않는다"
   - fact: fact_hg_hrimnir_grain_talks_bror
     reveal_when: "신뢰 55 이상이고 카즈둠 소식을 가져온 자에게만"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "두르강 이야기가 나오면 '두르강은 계약을 쓴다. 우리는 식탁에 앉는다'고 말을 돌린다"
 relations:
   - {to: npc_skadir, type: 아들, like: 50, trust: 10, visibility: 공개, memo: 남침파, words: "내 아들. 힘이 있고 굶주려 본 적이 없다. 그 아이가 왕관을 쓰는 겨울이 두렵다"}

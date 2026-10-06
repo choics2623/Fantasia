@@ -68,9 +68,11 @@ knows: ["fact_bk_severian_halved_signs", "fact_gf_godric_henrik_headcount"]
 hides:
   - fact: fact_bk_arden_erasures
     reveal_when: "신뢰 40 이상, 또는 지워진 이름의 사람(살아 있는)을 그 앞에 데려올 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'사망 처리는 서기단의 일이오. 나는 결재만 하지'"
   - fact: fact_bk_arden_ledger_mismatch
     reveal_when: "높은홰 장부 사본을 플레이어가 먼저 보여 주거나, 아버지가 실각한 뒤"
+    reveal: [{"player_offer":"먼저 보여 주거나, 아버지가 실각한 뒤"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'숫자가 맞지 않는 해도 있소. 겨울 열병이 많았다'"
 relations:
   - {to: "npc_severian_kaldaran", type: "아버지", like: 40, trust: 30, visibility: "공개", memo: "숫자만 보고한다", words: "아버지의 질서는 피로 맞춰진다. 나는 같은 숫자를 펜으로 맞춘다. 아버지는 그 차이를 모른다"}

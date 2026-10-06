@@ -74,18 +74,23 @@ knows: [fact_sr_repay_rate_true, fact_sr_draft_votes_7_of_11]
 hides:
   - fact: fact_sr_severo_sara_deep_sea
     reveal_when: "플레이어가 흥정·기만 판정 대성공으로 그의 약점(심해 앞에 서는 두려움)을 짚었을 때, 또는 사라가 이미 그의 손에 있을 때"
+    reveal: [{"tier":"대성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'세렌 오락의 집에 들어갈 물건이지'라고 둘러댄다 — 꼬리 끝이 톡 멈춘다"
   - fact: fact_sr_severo_greyford_batches
     reveal_when: "플레이어가 흥정 성공으로 이득을 제안하고 신뢰 30 이상일 때"
+    reveal: [{"trust":30,"tier":"성공","player_offer":"흥정 성공으로 이득을 제안하고 신뢰 30 이상일 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'호송 일정은 계약서 부록이야. 부록은 계약 상대에게만 보여 준다'라고 한다"
   - fact: fact_sr_severo_buys_hagen_peyn
     reveal_when: "신뢰 40 이상이거나, 하겐 이야기를 플레이어가 먼저 꺼내고 정보 거래가 오간 뒤"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정보는 늘 값을 치르고 산다. 누구에게 샀는지는 값에 들어 있지 않아'라고 한다"
   - fact: fact_sr_severo_henrik_remit
     reveal_when: "신뢰 45 이상이거나 헨릭의 장부 증거를 플레이어가 내밀었을 때"
+    reveal: [{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'송금 고객 명단은 몬달리의 문서야. 내 입으로는 못 말해'라고 한다"
   - fact: fact_sr_godric_debt_designed
     reveal_when: "신뢰 50 이상이고 베아트릭스의 의도에 대한 정보를 플레이어가 먼저 제시했을 때"
+    reveal: [{"trust":50,"player_offer":"먼저 제시했을 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'1,840두카트는 갚을 수 있는 숫자야. 갚지 못하는 건 영주의 사정이지'라고 한다"
 relations:
   - {to: npc_godric_raven, type: 채무자, like: -10, trust: 10, visibility: 비밀, memo: null, words: "갚을 수 없는 숫자를 안고 웃는 영주. 비늘 한 장 값도 안 되는 허세를 가진 채무자다. 갚지 못하는 날을 기다린다"}

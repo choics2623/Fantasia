@@ -72,9 +72,11 @@ knows: [fact_eh_cradle_experiment, fact_em_corvin_forgery]
 hides:
   - fact: fact_em_amelie_list_copy
     reveal_when: "신뢰 50 이상이거나, 이름 하나를 먼저 불러 주었을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'사본? 저는 못 봤어요'라며 손톱을 문다"
   - fact: fact_em_yana_slot_37
     reveal_when: "신뢰 60 이상이거나, 야나의 이름을 먼저 꺼냈을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'모르는 이름이에요'라고 하며 시선을 돌린다"
 relations:
   - {to: npc_aurelia_vermion, type: 할머니, like: 10, trust: -10, visibility: 공개, memo: null, words: "다정한데 무서운 분. 복도에서 이름을 읊는 걸 들켰다"}

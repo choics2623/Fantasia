@@ -83,12 +83,15 @@ knows:
 hides:
   - fact: fact_lm_leanel_loophole
     reveal_when: "플레이어가 '낭독이 아니라 낭송이면 어떠냐'는 질문을 정직하게 했거나 신뢰 70 이상. 마티아스나 아델이 정식으로 묻는 장면"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'절차는 절차요. 금실이 오지 않은 낭독은 낭독이 아니오'라고만 한다"
   - fact: fact_lm_leanel_sealed_not_burned
     reveal_when: "마렌의 원래 설교를 이름으로 불렀고 서고 뒷방 이야기를 정직하게 꺼냈을 때. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'삭제된 것은 삭제되었소'라고 한다. 손가락이 소매 안에서 멈춘다"
   - fact: fact_lm_leanel_doctrine_twist
     reveal_when: "세레니엘이 쓴 문장의 기원을 알고 있다는 증거를 제시했을 때. 신뢰 65 이상"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'교리의 문장은 모두 회의를 거쳤소'라고 한다"
 relations:
   - {to: npc_serenielle, type: 상관, like: 10, trust: -20, visibility: 공개, memo: null, words: "같은 뿌리의 다른 해석. 그녀의 문장에 금실을 감은 것은 그다"}

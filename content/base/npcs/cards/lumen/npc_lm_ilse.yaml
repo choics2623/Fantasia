@@ -82,9 +82,11 @@ knows:
 hides:
   - fact: fact_lm_ilse_knows_neighbor
     reveal_when: "베라의 소식을 정직하게 전했거나 신뢰 55 이상. 루츠의 이름을 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이웃은 많소. 누구인지는 모르오'라고 한다"
   - fact: fact_lm_ilse_sister_pin
     reveal_when: "큰딸의 이름을 그녀가 직접 말하도록 기다려 주었거나 신뢰 65 이상"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'풀무 밑에는 쇠 조각뿐이오'라고 한다"
 relations:
   - {to: npc_vera, type: 딸, like: 90, trust: 30, visibility: 공개, memo: null, words: "눈을 마주 보지 못하는 둘째 딸. 빵 한 덩이로 이어진다"}

@@ -77,15 +77,19 @@ knows: [fact_sr_lupo_212_voided, fact_sr_repay_rate_true, fact_sr_cell_meeting_1
 hides:
   - fact: fact_sr_lupo_numbers_ledger
     reveal_when: "신뢰 50 이상이고 플레이어가 대가로 '숫자 하나'를 두 번 이상 건넨 뒤, 또는 장부가 위험에 처했을 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'상담 기록은 의뢰인 비밀이에요'라고 한다. 서가 쪽을 보지 않으려다 오히려 한 번 본다"
   - fact: fact_sr_lupo_lamia_revoke
     reveal_when: "신뢰 40 이상이거나, 플레이어가 라미아의 신분 이야기를 존중하며 먼저 꺼낼 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'변론권이 없는 건 법이 그런 거지 제가 틀린 게 아니에요'라고 짧게 말한다"
   - fact: fact_sr_ophelia_draft_author_lupo
     reveal_when: "신뢰 35 이상이고 오필리아가 직접 소개했거나 초안을 도운 행적이 있을 때"
+    reveal: [{"trust":35}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'조항의 문장은 여러 변호인의 어깨너머 글이에요'라고 얼버무린다"
   - fact: fact_sr_lupo_knows_water_name
     reveal_when: "플레이어가 물의 낱말이나 진명을 말해도 이상이 없는 것이 확인된 뒤, 또는 신뢰 55 이상"
+    reveal: [{"flag":"story"},{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물의 이름은 인간의 입에 맞지 않는 법이에요. 법 얘기가 아니라 물 얘기죠'라고 한다"
 relations:
   - {to: npc_ophelia, type: 공저자, like: 60, trust: 65, visibility: 비밀, memo: null, words: "3년 동안 같은 서재에서 같은 조항을 고친 사람. 몬달리의 딸이라는 사실을 잊게 만드는 눈. 그녀를 위험에 두는 일이 가장 두렵다"}

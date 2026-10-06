@@ -67,9 +67,11 @@ knows: ["fact_bk_greyford_convoy_dock"]
 hides:
   - fact: fact_bk_cadel_water_loss
     reveal_when: "출항 명부와 실제 짐칸 사망을 대조해 내밀 때, 또는 오스발트가 증언할 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물 손실은 강의 일이야'"
   - fact: fact_bk_hask_grain_ships
     reveal_when: "곡창 7동의 증거를 쥐고 위협할 때 — 그는 사촌을 판다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'곡물은 원로회 배당분이야. 서류 있어'"
 relations:
   - {to: "npc_varen_hask", type: "사촌·곡물 공범", like: 30, trust: 40, visibility: "비밀", memo: null, words: "농장의 사촌. 그가 빼고 내가 싣는다. 둘 중 하나가 무너지면 둘 다"}

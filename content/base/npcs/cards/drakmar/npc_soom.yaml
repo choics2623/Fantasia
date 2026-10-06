@@ -66,6 +66,7 @@ knows:
 hides:
   - fact: fact_dk_soom_melisande_spy
     reveal_when: "신뢰 60 이상이고 은비늘 요람이나 멜리산드에 관한 판정에 성공했을 때, 또는 이졸데에게 들킨 뒤. 조건 없이는 어떤 압박에도 입을 열지 않는다"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'…시녀예요. 닦는 일만 해요.' 이후 말을 하지 않는다"
 relations:
   - {to: npc_isolde, type: 모시는 용, like: 10, trust: 30, visibility: 일방, memo: null, words: "무서운 은룡. 알을 만질 때 숨이 부드러워진다. 그 숨이 한 번 자기 손가락을 가져갔다"}

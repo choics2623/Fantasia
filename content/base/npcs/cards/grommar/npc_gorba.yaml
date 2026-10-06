@@ -68,9 +68,11 @@ knows: [fact_gm_gorba_buys_relics]
 hides:
   - fact: fact_gm_gorba_seeks_gunnar_disciple
     reveal_when: "신뢰 50 이상, 또는 플레이어가 군나르의 이름을 입에 올린 뒤 위압 판정 성공"
+    reveal: [{"trust":50},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'대진은 군주가 정한다.'라고만 한다. 이빨 꿰미 짤랑이는 소리가 멎는다"
   - fact: fact_gm_gorba_rigged_bouts
     reveal_when: "신뢰 70 이상, 또는 마라가 이미 알고 있어 숨길 이유가 사라졌을 때"
+    reveal: [{"trust":70},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'내 손을 거친 승은 다 몸값이다.' 하고 판돈 이야기로 돌린다"
 relations:
   - {to: npc_urgash, type: 군주, like: 30, trust: 50, visibility: 공개, memo: null, words: "하사받은 자리를 지켜 주는 힘. 무섭고 필요하다. 군주가 쓰러지면 자기도 쓰러지는 줄 안다"}

@@ -85,21 +85,27 @@ knows: [fact_sv_ise_first_ritual, fact_sv_elastriel_neutral_stance]
 hides:
   - fact: fact_sv_aerin_87_failures
     reveal_when: "신뢰 50 이상이거나, 플레이어가 엘다르 아이에 대한 공감 논거(+20)를 성공시킨 직후 그가 스스로 꺼낼 때"
+    reveal: [{"trust":50,"self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아이들은 자랑스러운 자원'이라 하며 숫자를 말하다 멈춘다. 브로치를 만진다"
   - fact: fact_sv_aerin_transfer_outcome
     reveal_when: "호감 60 이상이며 플레이어가 잔향의 징후를 보였을 때, 또는 플레이어가 의식 대상으로 확정된 뒤"
+    reveal: [{"like":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'구원'이라는 낱말만 되풀이하고 그 뒤 문장을 말하지 않는다"
   - fact: fact_sv_aerin_wants_change
     reveal_when: "신뢰 60 이상이며 시간 진명에 대한 질문(+15)을 건넨 직후"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'엘다르는 변하지 않아요'라고 담담히 말하고 화제를 정원으로 돌린다"
   - fact: fact_sv_aerin_vessel_liandel
     reveal_when: "신뢰 70 이상이거나, 플레이어가 '빈 요람'을 언급해 그가 격분한 장면에서"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "리안델 이야기가 나오면 '마지막 아이의 건강'으로 화제를 돌린다. 말끝의 질문이 사라진다"
   - fact: fact_ar_tower_supplies_aerin
     reveal_when: "신뢰 40 이상이고 플레이어가 탑의 서신(증거)을 쥐고 있을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'먼 데서 보내 주는 선물'이라 한다. 서신 이야기는 하지 않는다"
   - fact: fact_sv_time_net_soul_garden
     reveal_when: "기시감 45 이상이고 플레이어가 잔향으로 확정되었을 때, 또는 플레이어가 그물에 붙잡힌 뒤"
+    reveal: [{"deja_vu":45,"echo_known":true},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "수정 기둥은 '노래를 모으는 곳'이라 한다"
 relations:
   - {to: npc_elastriel, type: 여왕, like: 40, trust: 10, visibility: 공개, memo: null, words: "그분의 침묵을 승낙으로 읽는다. 아직까지는 틀린 적이 없다"}

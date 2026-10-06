@@ -70,9 +70,11 @@ knows: [fact_ws_kyrie_saw_waste_grow, fact_ws_caged_aeri_die, fact_ws_descent_ro
 hides:
   - fact: fact_ws_retrograde_star
     reveal_when: "은자 시험(밤새 별 세기 + 새벽의 질문에 답하기) 통과 후"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'하늘 일은 여왕의 일'이라며 날개를 접는다"
   - fact: fact_hm_korak_double_night   # 사실: 코라크의 하늘 기록에는 같은 밤을 두 번 적은 듯한 자리가 있고, 그것이 역행하는 별이 물러난 칸과 맞는다 (회귀의 흔적)
     reveal_when: "신뢰 50 이상"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'늙어서 그래'"
 relations:
   - {to: npc_kyrie, type: 기록을 비밀에 부친 여왕, like: 30, trust: 20, visibility: 공개, memo: null, words: "아래를 내려다보기 시작한 여왕. 내 해석을 덮었다"}

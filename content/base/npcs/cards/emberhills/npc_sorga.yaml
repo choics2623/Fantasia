@@ -63,6 +63,7 @@ knows: [fact_em_nils_courier]
 hides:
   - fact: fact_em_sorga_blind_eye
     reveal_when: "신뢰 50 이상이거나, 닐스를 보호하겠다고 말했을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'뒷마당엔 물뿐이에요'라고 웃는다"
 relations:
   - {to: npc_nils_cinder, type: 심부름꾼, like: 30, trust: 20, visibility: 공개, memo: null, words: "짝짝이 신발의 꼬마. 물을 길어 오지만 끈을 건지는 걸 안다"}

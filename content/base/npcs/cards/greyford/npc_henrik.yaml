@@ -70,18 +70,23 @@ knows: [fact_gf_godric_henrik_headcount, fact_gf_godric_debt, fact_gf_serf_sale_
 hides:
   - fact: fact_gf_henrik_skims_baron
     reveal_when: "목숨이 걸린 위기 장면(위압 대성공), 또는 플레이어가 다락의 실제 장부를 손에 넣은 뒤 흥정"
+    reveal: [{"tier":"대성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'남작님과 나는 셈이 같다'고 웃는다"
   - fact: fact_gf_bram_pays_henrik
     reveal_when: "플레이어가 브람의 공범임을 보였을 때 흥정 성공 — 그는 이것을 '보험'으로 팔려 든다"
+    reveal: [{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "수탉 뒷문에 간 이유를 '배급 셈'이라 한다"
   - fact: fact_gf_henrik_sold_debt_info
     reveal_when: "신뢰 40 이상이고 뇌물 3발톱 이상, 또는 레아가 실각한 뒤"
+    reveal: [{"trust":40,"gift":36},{"dead":"npc_lea"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "까마귀 문 사람과는 '보급 셈'만 한다고 한다"
   - fact: fact_gf_henrik_granary_skim
     reveal_when: "곡물 수색(서리월 20일) 뒤 즈닉과 대질, 또는 도르반의 증언을 플레이어가 쥐었을 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "부족분을 농노의 도둑질과 쥐 탓으로 돌린다"
   - fact: fact_gf_henrik_seren_account
     reveal_when: "위기 장면에서 목숨을 살려 주는 대가로"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "포도밭 이야기는 '늙은이의 꿈'이라며 웃어넘긴다"
 relations:
   - {to: npc_godric_raven, type: 주인·공범, like: 5, trust: 10, visibility: 비밀, memo: 이중 착복, words: "셈 못 하는 주인. 그래서 좋은 주인"}

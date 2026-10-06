@@ -64,6 +64,7 @@ knows: [fact_em_hadrian_quota_lie]
 hides:
   - fact: fact_em_barto_sells_passes
     reveal_when: "신뢰 40 이상이거나, 1발톱을 먼저 건넸을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'발급은 합법입니다'라며 웃는다"
 relations:
   - {to: npc_sorga, type: 단골, like: 15, trust: 10, visibility: 공개, memo: null, words: "숯불의 주인. 외상을 잘 받아 주는 사람"}

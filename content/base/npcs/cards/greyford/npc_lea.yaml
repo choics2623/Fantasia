@@ -71,18 +71,23 @@ knows: [fact_gf_godric_debt, fact_gf_owen_wrote_kaspar, fact_gf_crowgate_drain, 
 hides:
   - fact: fact_gf_lea_melisande_spy
     reveal_when: "멜리산드의 배신 가능성 증거를 보이는 판정 성공 + 신뢰 40, 또는 비둘기장 전서구를 플레이어가 가로챈 뒤 협박(충성 이동 확률 40%)"
+    reveal: [{"trust":40,"tier":"성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "손가락 이야기에는 '요툰 도끼'라고 짧게 답하고 대화를 끝낸다"
   - fact: fact_gf_lea_report_route
     reveal_when: "역첩자 루트에 들어선 뒤, 또는 25일 역참 우편함에서 현장을 들켰을 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "역참에는 '보급 서신'을 부치러 간다고 한다"
   - fact: fact_gf_owen_letter_kaspar
     reveal_when: "신뢰 50 이상, 또는 그녀가 카스파르 편으로 돌아선 뒤 — 그때 답장을 꺼내 준다"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'도련님 편지는 전했다. 답이 없는 것은 사령관님의 뜻'이라고 한다"
   - fact: fact_gf_kaspar_fire_309
     reveal_when: "카스파르의 목숨이 위험하다는 증거를 보이고 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'등잔 사고였다. 짐꾼들이 기름을 엎었다'고 보고서 그대로 말한다"
   - fact: fact_gf_henrik_sold_debt_info
     reveal_when: "헨릭이 실각한 뒤, 또는 그녀를 협박할 증거를 쥐었을 때"
+    reveal: [{"dead":"npc_henrik"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "징세관과는 '보급 곡물 셈'만 한다고 한다"
 relations:
   - {to: npc_kaspar, type: 상관, like: 55, trust: 5, visibility: 공개, memo: 감정과 임무의 충돌, words: "감시하러 온 사내. 열두 해 동안 그가 병사 하나 버리는 것을 본 적이 없다. 그것이 보고서에서 빠지기 시작했다"}

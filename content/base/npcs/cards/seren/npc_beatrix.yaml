@@ -81,24 +81,31 @@ knows: [fact_sr_deep_naga_god_blood, fact_sr_draft_votes_7_of_11, fact_sr_cell_m
 hides:
   - fact: fact_sr_beatrix_deep_naga_bargain
     reveal_when: "신뢰 60 이상이고 플레이어가 '이름을 말할 수 있음'을 보이거나 탈피 실패 장면에 함께 있을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'깊은 바다와는 매달 그믐에 대가를 던지는 사이일 뿐이에요'라고 하며 반지를 돌린다"
   - fact: fact_sr_beatrix_molting_decay
     reveal_when: "신뢰 50 이상이거나, 플레이어가 탈피·허물의 해법(약학·물 낱말)을 정확히 제시했을 때"
+    reveal: [{"trust":50,"player_offer":"탈피·허물의 해법(약학·물 낱말)을 정확히 제시했을 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'탈피는 때가 있어요. 늦는 게 아니라 아끼는 거죠'라고 하며 옷깃을 올린다"
   - fact: fact_sr_repay_rate_true
     reveal_when: "호감 40 이상이고 플레이어가 장부 증거나 정확한 계산을 내밀 때(정직은 계약에 대해서만)"
+    reveal: [{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공식 6퍼센트예요. 그게 법이 말하는 숫자죠'라고 정확히 말한다"
   - fact: fact_sr_godric_debt_designed
     reveal_when: "신뢰 55 이상이고 거래(이득 보정)가 오간 뒤, 또는 푸른 장부관의 원본 계약서를 플레이어가 쥐고 있을 때"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'1,840두카트는 정확히 계산된 숫자죠. 갚는 건 그분의 몫이에요'라고만 한다"
   - fact: fact_sr_beatrix_both_sides
     reveal_when: "신뢰 40 이상이거나, 플레이어가 채권 문서를 카스파르·아우락스 쪽에서 가져온 뒤"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'은행은 누구에게나 빌려줘요. 그게 은행이에요'라고 한다"
   - fact: fact_sr_beatrix_regent_funds
     reveal_when: "신뢰 55 이상이고 카이도르 이야기가 플레이어 쪽에서 나왔을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'섭정이라는 말은 아직 계약서에 없어요'라고만 한다"
   - fact: fact_sr_severo_sara_deep_sea
     reveal_when: "신뢰 65 이상이고 사라의 이름을 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'세베로 칼레스의 일은 세베로의 장부예요. 저는 상위 가문일 뿐이에요'라고 선을 긋는다"
 relations:
   - {to: npc_ophelia, type: 딸·후계자, like: 50, trust: 20, visibility: 공개, memo: null, words: "연분홍 비늘의 딸. 사랑하고, 계산이 가장 안 맞는 숫자다. 초안이 장부를 뒤집을 것이라는 것을 안다. 그래서 믿지 못한다"}

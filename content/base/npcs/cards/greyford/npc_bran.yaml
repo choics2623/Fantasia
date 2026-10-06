@@ -79,15 +79,19 @@ knows: [fact_gf_bran_greta_taken, fact_gf_elsa_nameless]
 hides:
   - fact: fact_gf_bran_spearheads
     reveal_when: "신뢰 30 이상 — 숨긴 창날 운반을 도운 뒤. 플레이어가 창날을 '장난감'이라 부르면 영구 봉인"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'쟁기날'이라 하고, 슬래그 더미 쪽으로 가는 사람의 길을 막아선다"
   - fact: fact_gb_dietmar_bran_blades
     reveal_when: "신뢰 40 이상, 또는 디트마르가 플레이어를 무리에 받아들인 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "디트마르 이야기가 나오면 '습지 놈들은 쇠 볼 줄 모른다'고만 한다"
   - fact: fact_gb_gunnar_uprising_day
     reveal_when: "신뢰 50 이상이고 봉기에 대한 현실적 계획을 내놓는 판정 성공. 군나르가 먼저 말했다면 바로"
+    reveal: [{"trust":50,"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'재의 날엔 불을 안 피운다. 대장장이는 쉬는 날이지'라고만 한다"
   - fact: fact_gb_gunnar_teaches_bran
     reveal_when: "군나르가 플레이어를 제자로 받은 뒤"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'늙은이 말 이야기 들어 주는 거다'라고 한다"
 relations:
   - {to: npc_gunnar, type: 스승·형님, like: 75, trust: 80, visibility: 비밀, memo: null, words: "등의 새김을 본 몇 안 되는 사람. 그의 말채찍 아래서 처음으로 칼이 쇠 말고 다른 것이라는 걸 배웠다"}

@@ -79,21 +79,27 @@ knows: [fact_gf_owen_wrote_kaspar, fact_dk_kaidor_kaspar_contact]
 hides:
   - fact: fact_gf_kaspar_nameless_contact
     reveal_when: "신뢰 50 이상, 또는 플레이어가 엘사의 전갈을 대신 전하고 돌 틈 암호를 아는 것을 보였을 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'돌 고리는 금지 구역이다. 순찰 경로일 뿐'이라 한다"
   - fact: fact_gf_kaspar_fire_309
     reveal_when: "신뢰 60 이상이고 그의 불을 직접 본 뒤 — 떠벌리면 역린"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'등잔 사고였다'고 보고서 그대로 말하고 왼손을 물에 넣는다"
   - fact: fact_gf_kaspar_mother_words
     reveal_when: "호감 50 이상이고 어머니 이야기로 설득 성공 — 또는 플레이어가 잔향의 징후를 보였을 때 그가 먼저 묻는다"
+    reveal: [{"like":50,"tier":"성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "어머니 이야기가 나오면 '노래를 잘 불렀다'는 말만 한다"
   - fact: fact_gf_kaspar_slave_tongue
     reveal_when: "신뢰 40 이상이고 단둘일 때. 플레이어가 노예말로 먼저 말을 걸면 조건 −10"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "노예말을 알아듣고도 통역을 부른다"
   - fact: fact_gf_crowgate_drain
     reveal_when: "탈주자를 살릴 실현 가능한 계획을 내놓는 판정 성공"
+    reveal: [{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'사람 하나 지나갈 폭이 아니다'라고 한다"
   - fact: fact_dk_isolde_kaspar_letters
     reveal_when: "용황 사망 이후, 신뢰 70 이상"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "용좌 쪽 이야기는 '변경의 일이 아니다'라며 자른다"
 relations:
   - {to: npc_lea, type: 부관, like: 70, trust: 80, visibility: 공개, memo: 오판, words: "열두 해 등을 맡긴 사람. 그녀의 잘린 손가락은 자기 때문이라고 믿는다"}

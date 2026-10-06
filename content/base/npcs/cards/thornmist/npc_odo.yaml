@@ -74,6 +74,7 @@ knows: [fact_tm_elin_time_keeper]
 hides:
   - fact: fact_tm_odo_contract
     reveal_when: "신뢰 40 이상이거나, 엘린이 이미 말했을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'춤 때문이오'라고만 하고 박자를 센다"
 relations:
   - {to: npc_elin, type: 장난감 정원 동료, like: 60, trust: 70, visibility: 공개, memo: null, words: "날짜를 알려 주는 아이. 그 아이의 목소리는 소절을 하나 바꾼다. 나는 그 아이에게 검을 가르치고 싶었으나 계약이 막았다"}

@@ -67,6 +67,7 @@ knows: ["fact_dk_aurax_purge_plan", "fact_bk_hastran_mobilization"]
 hides:
   - fact: fact_bk_valerius_h_saw_fire
     reveal_when: "불을 모두 끈 어둠 속 장면에서 신뢰 40 이상, 또는 볼드 사본의 구절을 그 앞에서 말할 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'깃발이 탔다. 그게 전부다'"
 relations:
   - {to: "npc_aurax", type: "서약한 주군", like: 40, trust: 50, visibility: "공개", memo: "그날을 함께 본 자", words: "그날 나를 뒤로 물린 분. 무엇을 보지 말라고 물렸는지 나는 안다"}

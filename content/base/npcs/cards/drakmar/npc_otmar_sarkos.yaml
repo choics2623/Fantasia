@@ -59,6 +59,7 @@ knows: []
 hides:
   - fact: fact_bk_otmar_ring
     reveal_when: "선술집 내기판에서 그를 이기거나 신뢰 20"
+    reveal: [{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'반지는 손가락에 있지 않나'"
 relations:
   - {to: "npc_nebra_sarkos", type: "누나", like: 20, trust: 10, visibility: "공개", memo: null, words: "값을 매기는 누나. 나는 그 값을 외칠 뿐"}

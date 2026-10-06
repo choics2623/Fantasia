@@ -67,9 +67,11 @@ knows: ["fact_dk_elders_after_dragons", "fact_dk_kaidor_regency_draft", "fact_gf
 hides:
   - fact: fact_bk_volgas_off_ledger
     reveal_when: "아르덴의 대조표나 둥지탑 공사장의 장부 밖 노예를 증거로 내밀 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'(서기) 기록에 의하면 두 장부는 이중 확인이다'"
   - fact: fact_bk_volgas_regent_copy
     reveal_when: "높은홰 탑 금고 잠입 성공, 또는 이르마스 긴그림자가 플레이어에게 흘릴 때"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'섭정안은 흰목의 일이다'"
 relations:
   - {to: "npc_kaidor", type: "서기장·원로회의 손", like: 30, trust: 30, visibility: "공개", memo: null, words: "인장을 쥔 녹청관. 그가 찍는 한 원로회는 진룡의 목소리다"}

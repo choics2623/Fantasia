@@ -63,9 +63,11 @@ voice:
 hides:
   - fact: fact_kz_oath_release_rune
     reveal_when: "신뢰 60 이상이고 우르드나 돌화를 멈추는 방법에 대한 정직한 질문을 한 뒤, 또는 오틸리의 문의서를 가져온 뒤"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그런 룬은 기록에 없다'라고 말하되, 그 말을 기록하겠다는 말은 하지 않는다"
   - fact: fact_kz_oath_completion
     reveal_when: "신뢰 70 이상이고 41명의 단서를 플레이어가 가져온 뒤"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'판결문에 쓰인 것이 전부이다'라고 한다. 마지막 줄 이야기가 나오면 입을 닫는다"
 schedule:
   아침: "돌 법정에서 계약 공증"

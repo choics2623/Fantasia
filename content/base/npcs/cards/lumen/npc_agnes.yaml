@@ -80,18 +80,23 @@ knows:
 hides:
   - fact: fact_lu_agnes_underground
     reveal_when: "탈주자를 도운 행적(+25)을 보이거나 신뢰 40 이상일 때. 수프를 같이 먹는 장면이 열쇠다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저는 숙소 관리 수녀예요. 순례자들 수프를 끓이죠'라고 웃는다"
   - fact: fact_lu_agnes_rescue_plan
     reveal_when: "알베릭 구출 계획(+30)을 제시하거나 신뢰 55 이상일 때. 마지막 간수의 약값을 해결할 수 있다고 하면 곧바로"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'알베릭? 이단자의 이야기는 제 몫이 아니에요'"
   - fact: fact_lu_agnes_well
     reveal_when: "우물에 들어갈 사람이 확정되었고 신뢰 50 이상일 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저장고에는 쥐가 많아요. 안 내려가는 게 좋아요'"
   - fact: fact_lu_agnes_grey_voice
     reveal_when: "신뢰 65 이상이거나 플레이어가 잿빛 표를 제시했을 때"
+    reveal: [{"trust":65,"player_offer":"잿빛 표를 제시했을 때"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'잠결에 들은 말이에요. 꿈이죠, 그렇죠?'"
   - fact: fact_lu_agnes_felix_suspicion
     reveal_when: "펠릭스에 관한 질문이 직접 나왔고 신뢰 40 이상일 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'펠릭스 신부님은 존경해요'라고 웃음을 늦춘다"
 relations:
   - {to: npc_alberic, type: 구출 대상, like: 80, trust: 85, visibility: 비밀, memo: null, words: "벽 너머의 선생. '구출'이라는 낱말을 그가 싫어한다는 걸 안다. 그러니 '손님을 모신다'고 말한다"}

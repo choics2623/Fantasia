@@ -80,9 +80,11 @@ knows:
 hides:
   - fact: fact_lm_anna_cave_tide
     reveal_when: "아그네스의 암호를 알거나 식량·밀물 정보를 가져왔을 때. 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공방 지하는 밀랍 저장고뿐이야'라고 한다. 심지를 세는 손가락이 빨라진다"
   - fact: fact_lm_anna_numbers_only
     reveal_when: "안내인의 이름을 정직하게 물었거나 신뢰 55 이상"
+    reveal: [{"trust":55,"named":"안내인"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이름은 몰라. 이름을 모르는 게 서로를 지켜'라고 한다"
 relations:
   - {to: npc_agnes, type: 같은 잿빛 실, like: 55, trust: 65, visibility: 비밀, memo: null, words: "숙소 지하 저장고의 수녀. 탈주자가 두 길에서 만난다"}

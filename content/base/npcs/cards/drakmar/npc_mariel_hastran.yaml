@@ -59,6 +59,7 @@ knows: ["fact_gb_gunnar_bounty"]
 hides:
   - fact: fact_bk_mariel_gate_ledger
     reveal_when: "1비늘 이상을 내기에 걸거나, 하랄을 통해"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기록은 기록이지'"
 relations:
   - {to: "npc_gunnar", type: "내기를 무너뜨린 투사", like: -20, trust: -10, visibility: "일방", memo: "현상금을 올렸다", words: "99승의 웃음. 그 웃음에 장원 하나를 잃었다"}

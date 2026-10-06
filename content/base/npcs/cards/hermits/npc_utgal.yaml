@@ -69,9 +69,11 @@ knows: [fact_hg_hrimnir_grain_talks_bror, fact_hg_yorun_pulse_south, fact_dk_aur
 hides:
   - fact: fact_hm_utgal_council_agendas   # 사실: 우트갈은 13·113·213 맹약회의에 요툰의 기억돌로 앉았고, 313에 각 종족이 들고 올 안건을 사절들이 그의 등 앞에서 다툰 것을 안다 (T13 전모)
     reveal_when: "은자 시험(아흐레 기다림 — 아홉 문장을 순서대로 답하기) 통과 후"
+    reveal: [{"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "그날의 한 문장을 다른 것에 쓴다"
   - fact: fact_hg_hrimnir_starves_first
     reveal_when: "신뢰 30 이상"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'왕의 일은 왕의 그림자 밖에서'"
 relations:
   - {to: npc_hrimnir, type: 서리왕 — 그를 회의에 부르는 자, like: 20, trust: 30, visibility: 공개, memo: null, words: "먼저 굶는 왕. 곡식을 원한다"}

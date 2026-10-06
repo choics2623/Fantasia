@@ -67,9 +67,11 @@ knows: ["fact_dk_varskar_scales_stolen", "fact_dk_varskar_time_wound"]
 hides:
   - fact: fact_bk_edun_scale_skim
     reveal_when: "물방 나가의 영수 기록을 보여 주거나, 흥정 판정 대성공(비늘 거래 제안)"
+    reveal: [{"tier":"대성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'노예들이 훔친다. 매달아도 훔친다' — 공물 운반자 탓"
   - fact: fact_bk_edun_aging
     reveal_when: "신뢰 20 이상이면 스스로 투덜거린다"
+    reveal: [{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'증기 때문이다' — 늙음을 증기 탓으로"
 relations:
   - {to: "npc_varskar", type: "섬기는 주인", like: -10, trust: 0, visibility: "공개", memo: "비늘을 훔치는 상대", words: "떨어지는 비늘. 그분은 셀 수 없다. 나는 센다"}

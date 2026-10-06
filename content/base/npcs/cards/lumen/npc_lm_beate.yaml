@@ -80,12 +80,15 @@ knows:
 hides:
   - fact: fact_lm_beate_first_token
     reveal_when: "마렌의 후손(등잔지기)의 암호('사슬을 감은 것은?')에 올바른 답을 했거나 한나의 소개가 있을 때. 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'봉헌 상자에는 순례자의 동전뿐이란다'라고 한다"
   - fact: fact_lm_beate_wax_plates
     reveal_when: "우물 속 글에 정직하게 호기심을 보이고 우물을 존중했을 때. 신뢰 50 이상"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'우물 속에는 물뿐이란다'라고 한다"
   - fact: fact_lm_beate_inscription
     reveal_when: "안식일 정오 열한 시 우물가에 와서 직접 수면을 보았을 때. 신뢰 40 이상"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'물 밑은 어두워서 아무것도 안 보인단다'라고 한다"
 relations:
   - {to: npc_lm_hanna, type: 마렌의 후손, like: 40, trust: 55, visibility: 비밀, memo: null, words: "알베릭의 누이. 후손에게 성표를 건넬 때가 온다"}

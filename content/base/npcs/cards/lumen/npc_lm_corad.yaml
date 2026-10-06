@@ -81,9 +81,11 @@ knows:
 hides:
   - fact: fact_lm_corad_jar
     reveal_when: "단추·핀 같은 타다 남은 물건을 가져왔거나 이름 하나를 먼저 불러 주었을 때. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'장작 창고에는 물통뿐이오'라고 한다. 집게를 쥔 손이 허리춤으로 내려간다"
   - fact: fact_lm_byuk_ash_to_pilgrims
     reveal_when: "회색 순례자나 재먹이 이야기를 정직하게 꺼냈을 때. 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'재는 강에 버리오. 그것이 법이오'라고만 한다"
 relations:
   - {to: npc_mateus, type: 상관, like: -5, trust: 10, visibility: 공개, memo: null, words: "장작 수를 센 숫자를 입에 올리지 않는 사람. 그의 숫자와 항아리의 숫자가 같다"}

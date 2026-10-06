@@ -85,15 +85,19 @@ knows:
 hides:
   - fact: fact_lu_mateus_clara
     reveal_when: "클라라에 대한 진실을 말해 주어(+20) 말문을 열었을 때, 또는 그를 부수는 방식으로 몰아붙여 −50 적대가 된 뒤. 플레이어가 먼저 이름을 부르는 것은 역린"
+    reveal: [{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정화청장은 가족을 갖지 않습니다'라고만 한다. 엄지가 약지를 돈다"
   - fact: fact_lu_mateus_212_none
     reveal_when: "신뢰 70 이상이거나, 그의 확신이 한 번 무너지는 장면(진짜가 나타난 줄 알았다가 아니었을 때)"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'212명 모두 확률이 있었습니다. 확률이 있었으니 태웠습니다'"
   - fact: fact_lu_mateus_reported_paper
     reveal_when: "세레니엘과의 연결 증거를 제시했거나 신뢰 60 이상일 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'대사제의 밤 기도는 보고할 일이 아닙니다'"
   - fact: fact_lu_mateus_vera_213
     reveal_when: "베라의 이름이 직접 나왔을 때. 신뢰와 무관하다 — 그는 말하는 데 거리낌이 없다"
+    reveal: [{"named":"베라"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'고발 대기자는 숫자가 아니라 확인 대상입니다'"
 relations:
   - {to: npc_gregor7, type: 상관, like: 20, trust: -10, visibility: 공개, memo: null, words: "서명하는 손이 떨리는 상관. 존경은 남았으나 신뢰는 아니다. 서명을 미루는 것이 두려움인지 연민인지 알아내야 한다"}

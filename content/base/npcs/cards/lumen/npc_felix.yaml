@@ -68,9 +68,11 @@ knows:
 hides:
   - fact: fact_lu_felix_informs_mateus
     reveal_when: "신뢰 60 이상이거나 마테우스가 직접 그를 지명했을 때. 고해실 밖에서는 말하지 않는다"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'고해는 영혼의 일입니다. 영혼의 일은 영혼이 알지요'"
   - fact: fact_lu_felix_ledger
     reveal_when: "신뢰 70 이상이거나 마테우스가 몰락한 뒤. 장부를 직접 건드리면 곧바로 닫힌다"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저는 아무것도 적지 않습니다. 외울 뿐입니다'"
 relations:
   - {to: npc_mateus, type: 영혼의 후원자, like: 55, trust: 65, visibility: 비밀, memo: null, words: "내게 영혼의 값을 알려 준 사람. 그의 고행은 나의 고해와 같은 일이라고 믿는다. 이단을 향한 그의 눈이 흔들리지 않아 안심이다"}

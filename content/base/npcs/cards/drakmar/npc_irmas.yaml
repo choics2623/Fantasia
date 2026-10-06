@@ -68,6 +68,7 @@ knows: ["fact_gf_lea_melisande_spy", "fact_dk_elders_after_dragons", "fact_bk_eb
 hides:
   - fact: fact_bk_irmas_echo_watch
     reveal_when: "회귀자 의심 판정이 그녀 쪽에서 성공하고 신뢰 30 이상 — 그녀가 먼저 거래를 건다"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'징후 보고는 해마다 오르내린다' — 질문으로 되묻는다"
 relations:
   - {to: "npc_lea", type: "읽고 있는 첩자", like: 0, trust: -30, visibility: "일방", memo: "아직 쓰지 않았다", words: "멜리산드의 첩자. 3년째 편지를 다시 봉한다. 쓸 날이 오면 가장 비싸게"}

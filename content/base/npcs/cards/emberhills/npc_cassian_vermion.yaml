@@ -64,9 +64,11 @@ knows: [fact_em_corvin_forgery]
 hides:
   - fact: fact_em_cassian_monthly_numbers
     reveal_when: "신뢰 55 이상이거나, 갱조 매듭끈 증거를 보였을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'보고서는 사실이오'라며 안경을 닦는다"
   - fact: fact_em_corvin_forgery
     reveal_when: "신뢰 70 이상이거나, 그가 큰 위기에 처했을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'코르빈은 용감한 전사였소'라고 한 줄 말한다"
 relations:
   - {to: npc_melisande, type: 영주, like: 40, trust: 30, visibility: 공개, memo: "비늘 서약", words: "서약의 주인. 그분이 불평하는 날은 숫자가 흔들린다"}

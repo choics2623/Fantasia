@@ -59,6 +59,7 @@ knows: []
 hides:
   - fact: fact_bk_grim_grade_skim
     reveal_when: "1발톱 이상을 쥐여 주면 스스로 제안한다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'등급은 쇠가 정해'"
 relations:
   - {to: "npc_nebra_sarkos", type: "주인·계약자", like: 20, trust: 30, visibility: "공개", memo: null, words: "강하신 분. 차액은 모르신다"}

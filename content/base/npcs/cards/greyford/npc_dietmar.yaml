@@ -78,15 +78,19 @@ knows: [fact_gb_dietmar_killed_sigrid_two]
 hides:
   - fact: fact_gb_dietmar_raid_plan
     reveal_when: "충성 아크 30 (술친구), 또는 습격 1회 동행 뒤, 또는 굶주림월 1일 이후 사람을 모을 때 그가 먼저 꺼낸다 (`dietmar_raid_plan`)"
+    reveal: [{"like":30},{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'겨울엔 다들 굶는다. 우리도 먹을 데를 찾을 뿐'이라 한다"
   - fact: fact_gb_dietmar_holds_frida
     reveal_when: "섬의 갈대 오두막을 뒤지는 판정 성공, 또는 신뢰 40 이상"
+    reveal: [{"tier":"성공"},{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그 계집애는 자기가 남겠다고 했다'고 한다"
   - fact: fact_gb_dietmar_bran_blades
     reveal_when: "신뢰 50 이상, 또는 브란이 먼저 플레이어를 보증한 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "창날은 '역참 놈들한테서 뺏었다'고 한다"
   - fact: fact_gb_dietmar_brother
     reveal_when: "충성 아크 50 — 술자리에서 그가 스스로 꺼낸다. 플레이어가 먼저 묻는 것은 역린"
+    reveal: [{"like":50,"scene":"술자리","self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "형 이야기 근처로 가면 술잔을 엎고 일어난다"
 relations:
   - {to: npc_bran, type: 무기 공급자, like: 40, trust: 30, visibility: 비밀, memo: null, words: "창날을 대 주는 대장장이. 말이 없어서 좋다. 저 사람도 뭔가를 기다린다"}

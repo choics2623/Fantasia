@@ -66,6 +66,7 @@ knows: [fact_mv_witch_forty_limit, fact_mv_time_forbidden, fact_mv_hags_purse_se
 hides:
   - fact: fact_mv_hana_dreamed_grey_ring
     reveal_when: "신뢰 40 이상이고 플레이어의 눈 가장자리에서 잿빛 고리가 보일 때(잔향의 눈 특질) 또는 '바위 앞' 이야기를 플레이어가 먼저 꺼낼 때"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'꿈 이야기는 아침이 지나면 흩어져요'라고 웃으며 화제를 약초로 돌린다"
 relations:
   - {to: npc_oda, type: 첫째, like: 50, trust: 60, visibility: 공개, memo: 같은 쪽, words: "꿈을 믿어 주는 몇 안 되는 사람. 그 꿈의 한 장면을 말하지 못하고 있는 것이 마음에 걸린다"}

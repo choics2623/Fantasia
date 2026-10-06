@@ -67,6 +67,7 @@ knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_alaric_co
 hides:
   - fact: fact_nc_quint_signs_dead_list
     reveal_when: "신뢰 50 이상이거나, 플레이어가 손녀의 순번을 보장하겠다는 제안을 믿을 만하게 했을 때, 또는 알라리크가 서명 이야기를 꺼낸 뒤"
+    reveal: [{"trust":50,"player_offer":"손녀의 순번을 보장하겠다는 제안을 믿을 만하게 했을 때"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'명단은 그림자장미 나리의 서류다. 나는 열쇠만 쥔다'라고 한다"
 relations:
   - {to: npc_cecile, type: 매수자 마님, like: 10, trust: 35, visibility: 비밀, memo: 손녀 순번, words: "손녀의 순번을 비워 주는 마님. 이상한 마님이다. 경멸하면서도 따른다 — 서명을 하면 마음이 편해지는 건 처음이다"}

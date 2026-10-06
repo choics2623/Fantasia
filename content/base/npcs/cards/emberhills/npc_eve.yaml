@@ -80,15 +80,19 @@ knows:
 hides:
   - fact: fact_eh_eve_stolen_page
     reveal_when: "충성 아크 30 — 신뢰 30 이상이거나, 플레이어가 글을 읽을 수 있음을 증명했을 때. 글을 읽을 줄 안다는 것이 열쇠다"
+    reveal: [{"trust":30,"like":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기록부? 글도 모르는데 그런 걸 뭐 하러 훔쳐'라고 하며 소매로 손목을 덮는다"
   - fact: fact_eh_eve_kill_plan
     reveal_when: "신뢰 55 이상이고 아드리안 이야기를 플레이어가 먼저 꺼내지 않았을 때. 협박이나 먼저 '죽이자'고 하는 것은 오히려 닫는다"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그 사람? 연통 청소할 때 가끔 마주쳐. 그게 다야'"
   - fact: fact_eh_eve_volunteered
     reveal_when: "충성 아크 50 — 플레이어가 그릇임을 그녀가 알게 되는 순간(분노), 또는 신뢰 45 이상에서 아벨의 이름을 부른 뒤"
+    reveal: [{"like":50},{"trust":45}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'아벨은… 운이 없었어'라고만 한다. 눈이 연통 쪽으로 간다"
   - fact: fact_eh_adrian_abel
     reveal_when: "신뢰 40 이상에서 아벨의 이름을 먼저 불러 주었을 때. 번호로 부르면 즉시 닫힌다"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'시술은 의사가 해. 그 이름은 몰라'라고 한다"
 relations:
   - {to: npc_abel, type: 쌍둥이(고인), like: 100, trust: 100, visibility: 공개, memo: null, words: "손목의 숫자가 된 사람. 그 이름을 입에 올려 주는 사람은 모두 믿고 싶고, 번호로 부르는 사람은 평생 용서하지 못한다"}

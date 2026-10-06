@@ -64,6 +64,7 @@ knows:
 hides:
   - fact: fact_lm_kale_double_check
     reveal_when: "선적 날 부두에서 정직하게 도움을 청했거나 신뢰 55 이상. 아그네스의 소개가 있을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'숫자는 숫자예요. 맞춰서 적을 뿐입니다'라고 한다"
 toward_player: "번호부터 묻는다. 건조하고 빠르다"
 persuade:

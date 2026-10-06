@@ -78,15 +78,19 @@ knows: [fact_kz_pulse_faster_311, fact_kz_gate_reopening, fact_kz_urd_stone_cloc
 hides:
   - fact: fact_kz_hilda_gate_machine
     reveal_when: "신뢰 50 이상이고 공학 실력을 인정받은 뒤(제작 판정 성공), 또는 깊은 문에 대한 정보를 가져온 뒤"
+    reveal: [{"trust":50,"tier":"성공"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'설계도는 있다. 만들 수 있는지는 모른다'고 말한다. 공방 안쪽 작업대를 천으로 덮는다"
   - fact: fact_kz_hilda_seeks_singer
     reveal_when: "신뢰 40 이상이고 노래 이야기가 나온 뒤, 또는 플레이어가 페타르의 이름을 먼저 꺼낸 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'노래할 줄 아나?'를 묻고는 '…그냥 묻는 거다'로 얼버무린다"
   - fact: fact_kz_nidar_voice_wakes
     reveal_when: "신뢰 55 이상이고 고동에 관해 진지한 질문을 한 뒤"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'정보원이 있다. 이름은 말하지 않는다'고 한다. 저녁 일정을 말해 달라 하면 화제를 돌린다"
   - fact: fact_kz_urd_taught_hilda
     reveal_when: "신뢰 65 이상이고 우르드의 이름을 존중하며 말한 뒤"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'문 구조는 도서고에서 읽었다'고 한다. 우르드 이야기가 나오면 장갑을 고쳐 낀다"
 relations:
   - {to: npc_bror, type: 아버지, like: 50, trust: 20, visibility: 공개, memo: null, words: "문을 두려워하는 왕. 서명하지 않는 손. 그래도 그 손으로 만든 망치가 내 첫 망치였다"}

@@ -74,12 +74,15 @@ knows: [fact_gf_serf_sale_contract]
 hides:
   - fact: fact_gf_znik_sells_to_hagen
     reveal_when: "위압으로 그를 꺾은 뒤(위압 판정 대성공), 또는 더 강한 주인의 보호를 약속하는 판정 성공"
+    reveal: [{"tier":"대성공"},{"tier":"성공"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'즈닉은 주인님 거'라며 목걸이를 내민다"
   - fact: fact_gf_znik_anne
     reveal_when: "오물 습지 처형터의 앤의 무덤에 데려갔을 때만 — 그 자리에서 무너진다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "앤 이야기가 나오면 날카롭게 '큰 것들은 속인다'고 외치고 채찍을 든다"
   - fact: fact_gf_znik_wet_himself
     reveal_when: "공개하지 않는다 — 마르타에게서 듣거나 협박의 패로 써야 한다"
+    reveal: [{"never":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "남작 이야기에 몸을 떨며 화제를 할당으로 돌린다"
 relations:
   - {to: npc_godric_raven, type: 주인, like: 60, trust: 30, visibility: 공개, memo: 공포의 숭배, words: "가장 강한 것. 목걸이를 준 손. 그 손이 무서워 오줌을 지렸다"}

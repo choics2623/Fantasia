@@ -77,21 +77,27 @@ knows:
 hides:
   - fact: fact_lu_alberic_tap_code
     reveal_when: "플레이어가 두드림에 답했거나 신뢰 20 이상일 때. 간수가 근처에 있으면 말하지 않는다"
+    reveal: [{"trust":20}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'벽에서 나는 소리는 물소리다'라고 한다"
   - fact: fact_lu_alberic_second_letter
     reveal_when: "신뢰 40 이상이고 오스릭 소식(+30)을 가져왔거나 서신 이야기를 정직하게 물었을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서신은 이미 쓴 것이 전부다. 더 쓸 말은 침묵이다'"
   - fact: fact_lu_alberic_wont_leave_alone
     reveal_when: "구출 이야기를 들었을 때, 또는 신뢰 50 이상일 때. 그 순간 첫 말은 언제나 베라의 이름이다"
+    reveal: [{"flag":"story"},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'나는 여기가 편하다. 여긴 시간이 많다'"
   - fact: fact_lu_alberic_hanna
     reveal_when: "신뢰 40 이상이거나 양초 조각이나 촛불지기의 소식을 가져왔을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'누이는 양초를 켜는 사람이다. 그뿐이다'"
   - fact: fact_lu_gregor_maren_descendant
     reveal_when: "등잔지기의 표식이나 마렌의 두 번째 설교를 아는 이가 나타났을 때, 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'마렌의 설교는 모두의 것이다. 누구의 피로 읽는 것이 아니다'"
   - fact: fact_lu_gregor_teacher
     reveal_when: "신뢰 70 이상이고 그레고르가 위험에 처한 장면. 먼저 묻는 것은 닫힌다"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'스승 이야기는 하지 않는다. 예의다'"
 relations:
   - {to: npc_gregor7, type: 스승, like: 60, trust: 50, visibility: 공개, memo: null, words: "스승이자 첫 문장의 임자. 내 서신으로 가장 괴로운 사람이 누구인지 안다 — 문 위의 종이 앞에서 떠는 손. 나는 그를 고발하지 않았다"}

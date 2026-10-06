@@ -75,6 +75,7 @@ knows: [fact_ar_retrograde_star, fact_ar_wobble_map]
 hides:
   - fact: fact_ar_corvina_reports_kirie
     reveal_when: "호감 50 이상이거나, 플레이어가 바람의 여왕의 증표를 보였을 때"
+    reveal: [{"like":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'바람이 소식을 가져가는 건 누가 막겠어'라고 돌린다. 날개 끝이 한 번 떨린다"
 relations:
   - {to: npc_kyrie, type: 하늘 기록의 수신자, like: 20, trust: 50, visibility: 비밀, memo: null, words: "내 기록을 공짜로 읽는 유일한 분. 땅을 내려다보기 시작한 여왕이 두렵기도 하고 반갑기도 하다"}

@@ -67,6 +67,7 @@ knows: ["fact_gf_znik_wet_himself"]
 hides:
   - fact: fact_bk_skik_trembling
     reveal_when: "그의 오른손을 직접 보는 판정(감각) 성공, 또는 신뢰 30 — 그가 스스로 손을 편다"
+    reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "오른손을 감싸 쥐고 '목록대로'만 반복한다"
 relations:
   - {to: "npc_znik", type: "옛 우리의 새끼", like: 15, trust: 0, visibility: "공개", memo: "후계로 가끔 생각한다", words: "오줌을 지리던 새끼. 겁 많은 놈이 오래 산다 — 그게 크릭의 미덕"}

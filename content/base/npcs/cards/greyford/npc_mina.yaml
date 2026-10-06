@@ -64,9 +64,11 @@ knows: []
 hides:
   - fact: fact_gf_thomas_second_floor
     reveal_when: "신뢰 50 이상이고 아버지를 지켜 주겠다는 약속을 받은 뒤, 또는 곡물 수색(서리월 20일)이 다가와 아버지가 위험해질 때"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "맷돌 이야기가 나오면 다락으로 올라가 버린다"
   - fact: fact_gb_mina_letters
     reveal_when: "호감 30 이상, 또는 플레이어가 먼저 글자를 써 보인 뒤 — 아이라서 금방 자랑한다"
+    reveal: [{"like":30},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "바닥의 금은 '쥐 발자국'이라 한다"
 relations:
   - {to: npc_thomas, type: 아버지, like: 95, trust: 85, visibility: 공개, memo: null, words: "밀가루 유령 아빠. 밤마다 깨서 맷돌 쪽을 본다. 내 글자 때문인 것도 안다"}

@@ -83,12 +83,15 @@ knows:
 hides:
   - fact: fact_lm_hanna_stair_third_step
     reveal_when: "알베릭의 이름을 정직한 연민으로 꺼냈거나 신뢰 55 이상. 양초 조각을 가져왔을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'감옥 층계는 간수들 일이란다'라고 한다. 손가락이 심지를 꼬는 시늉을 한다"
   - fact: fact_lm_hanna_lineage
     reveal_when: "마렌의 첫 성표 이야기를 정직하게 꺼냈거나 신뢰 65 이상. 베아테의 소개가 있을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'마렌의 후손은 천 명도 넘는다더구나'라고 웃는다"
   - fact: fact_lm_hanna_candle_oath
     reveal_when: "축일 촛불 한 줄 의식의 암호('사슬을 감은 것은?')에 올바른 답을 했을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'암호요? 양초 고르는 요령이지'라고 한다"
 relations:
   - {to: npc_alberic, type: 오빠, like: 95, trust: 90, visibility: 비밀, memo: null, words: "한 번도 얼굴을 보지 못한 지 9년. 쪽지 하나로 이어지는 사이"}

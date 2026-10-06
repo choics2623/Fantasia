@@ -78,9 +78,11 @@ knows: [fact_hk_batar_wagon_years, fact_hk_west_wind_broken, fact_hk_dua_loss_ra
 hides:
   - fact: fact_hk_batar_yielded_leg
     reveal_when: "신뢰 55 이상이고 정착에 대한 존중을 보인 뒤, 또는 테무르의 노예 사냥 계획 저지에 협조하겠다고 약속한 뒤"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'결투에서 졌다. 그것이 전부'라고 말한다. 다리 이야기가 나오면 창을 쥐고 샘을 바라본다"
   - fact: fact_hk_soran_secret_lessons
     reveal_when: "신뢰 50 이상이고 소란의 이름을 존중하며 꺼낸 뒤"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'저녁엔 샘가에 서 있을 뿐이다'라고 한다. 찾아오는 자가 있느냐고 물으면 침묵한다"
 relations:
   - {to: npc_temur, type: 옛 제자, like: 10, trust: 20, visibility: 공개, memo: null, words: "내가 창을 가르친 아이. 나를 이기려고 달렸고, 나는 그에게 이기도록 다리를 내줬다. 그 선택이 옳았는지는 지금도 모르겠다"}

@@ -83,6 +83,7 @@ knows: [fact_tm_nibble_took_elin, fact_tm_elin_double, fact_tm_elin_time_keeper,
 hides:
   - fact: fact_tm_elin_nail_words
     reveal_when: "신뢰 30 이상이거나, 플레이어가 그녀의 손바닥을 보았을 때"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "주먹을 쥐고 '손바닥엔 아무것도 없어요~'라고 한다. 목소리가 한 음 내려간다 — 그녀 자신이 거짓말을 한 것이다"
 relations:
   - {to: npc_nibble, type: 납치범·양육자, like: 10, trust: -40, visibility: 공개, memo: null, words: "나를 데려온 이. 키운 이. 거짓말만 하는 이. 미워하려면 날개 소리가 너무 가여워요"}

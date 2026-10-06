@@ -64,9 +64,11 @@ knows: [fact_sr_deep_naga_god_blood]
 hides:
   - fact: fact_sr_deep_naga_wants_speaker
     reveal_when: "플레이어가 해구 앞에서 이름을 말할 수 있음을 보이고, 의지 판정에 성공한 뒤"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'피를 지키는 대가로 바다가 먹인다'라는 말만 되풀이한다"
   - fact: fact_sr_beatrix_deep_naga_bargain
     reveal_when: "베아트릭스가 이미 인정했거나, 플레이어가 대가의 이름을 먼저 정확히 말하고 의지 판정에 성공했을 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'장사치는 값을 말했다. 값은 말했다'라고만 한다"
 relations:
   - {to: npc_beatrix, type: 대가를 요구한 장사치, like: -20, trust: 10, visibility: 비밀, memo: null, words: "신의 피 한 모금을 청한 늙어 가는 장사치. 대가를 말했고 장사치는 받아들였다. 약속은 돌아온다"}

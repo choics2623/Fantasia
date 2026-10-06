@@ -63,6 +63,7 @@ knows: [fact_em_sorel_cradle_as_fall]
 hides:
   - fact: fact_em_wenna_false_deaths
     reveal_when: "신뢰 60 이상이거나, 환자 한 명을 구하는 일에 도움을 주었을 때"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'수레는 비어 있어'라고 한다"
 relations:
   - {to: npc_eve, type: 비탈의 손, like: 20, trust: 25, visibility: 비밀, memo: null, words: "슬래그 비탈에서 수레를 받는 아이. 이름은 한 번도 입 밖에 내지 않았다"}

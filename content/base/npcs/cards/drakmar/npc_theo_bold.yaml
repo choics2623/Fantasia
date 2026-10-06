@@ -59,6 +59,7 @@ knows: ["fact_dk_varskar_hours"]
 hides:
   - fact: fact_bk_theo_false_annals
     reveal_when: "누나에게 일러바치겠다는 위협, 또는 이삭이 먼저 말한 뒤"
+    reveal: [{"flag":"story"},{"told_by":"npc_isaac"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'연대기는 집사께서 확인하신다'"
 relations:
   - {to: "npc_irene_bold", type: "누나·가주", like: -20, trust: 10, visibility: "공개", memo: null, words: "탑주. 그녀의 편지가 오면 일주일이 무너진다"}

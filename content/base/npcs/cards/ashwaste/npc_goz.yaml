@@ -78,6 +78,7 @@ knows: [fact_aw_goz_deserter]
 hides:
   - fact: fact_aw_goz_weakness
     reveal_when: "신뢰 50 이상이거나, 쇠약이 시작된 장면에서 그가 스스로 무너질 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'싸우는 건 일상'이라고만 한다. 날짜를 물으면 입을 닫는다"
 relations:
   - {to: npc_kyle_sandeye, type: 드나드는 사냥꾼, like: 20, trust: 30, visibility: 공개, memo: null, words: "주기표대로 돌아오는 사람. 돌아오는 사람은 문을 열어 줄 값이 있다"}

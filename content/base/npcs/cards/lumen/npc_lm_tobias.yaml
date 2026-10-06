@@ -82,12 +82,15 @@ knows:
 hides:
   - fact: fact_lm_tobias_marta_report
     reveal_when: "마르타·오스릭의 이름이 직접 나오고 플레이어가 밀고 함 홀의 열쇠를 쥐었거나 신뢰 65 이상"
+    reveal: [{"trust":65,"named":"오스릭"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'셋째 함은 이번 주에 비웠습니다'라고 한다"
   - fact: fact_lm_tobias_no_contract
     reveal_when: "마르타와 딸 리즈의 이름이 나오고 약속 이야기를 정직하게 물었을 때. 신뢰 55 이상"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'약속은 접수 이후의 일입니다. 제 소관이 아닙니다'라고 한다"
   - fact: fact_lm_tobias_spite_ledger
     reveal_when: "베라 고발자(루츠)의 이름을 알고 있다는 증거를 제시했거나 신뢰 60 이상"
+    reveal: [{"trust":60}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'동기는 기록하지 않습니다. 사실만 기록합니다'라고 한다"
 relations:
   - {to: npc_mateus, type: 정화청 상관, like: 10, trust: 20, visibility: 공개, memo: null, words: "책상 위의 숫자를 사랑하는 사람. 대답을 길게 하지 않는다"}

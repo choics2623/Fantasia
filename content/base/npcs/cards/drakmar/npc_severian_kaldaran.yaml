@@ -79,12 +79,15 @@ knows: ["fact_dk_varskar_hours", "fact_dk_varskar_time_wound", "fact_dk_successi
 hides:
   - fact: fact_bk_severian_third_drawer
     reveal_when: "족보를 직접 손에 넣어 그 앞에 내밀 때만. 그 전에는 어떤 판정으로도 열리지 않는다"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "가문의 시조 이야기가 나오면 '칼다르는 아그라몬의 첫 피'라는 공식 문장만 되풀이한다"
   - fact: fact_bk_severian_false_will
     reveal_when: "용황이 맑은 정신으로 다른 뜻을 말한 장면을 플레이어가 증언하거나, 노라의 증언을 얻은 뒤 신뢰 30 이상"
+    reveal: [{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'폐하께서는 아직이라 하셨다' — 확인할 수 없는 문장으로 닫는다"
   - fact: fact_bk_severian_halved_signs
     reveal_when: "회색 장부 원본(아르덴의 책상)과 높은홰 장부의 징후 항목을 대조해 내밀 때"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'징후 보고는 해마다 오르내린다. 겨울 열병이 많은 해였다'"
 relations:
   - {to: "npc_varskar", type: "섬기는 주인·뜻의 해석", like: 30, trust: 40, visibility: "공개", memo: "병상 출입 통제", words: "폐하가 깨어 있는 한 시간 밖의 모든 뜻은 내가 들은 것이다. 그분이 그것을 아시는지 나는 모른다"}

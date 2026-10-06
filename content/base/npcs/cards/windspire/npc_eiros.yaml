@@ -75,12 +75,15 @@ knows: [fact_ws_caged_aeri_die, fact_ws_celes_rival, fact_ws_tyla_wings_orn, fac
 hides:
   - fact: fact_ws_eiros_dissent
     reveal_when: "신뢰 40 이상이고 타일라의 이름을 존중하며 꺼낸 뒤, 또는 타일라가 먼저 허락한 뒤"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그날 의회는 시끄러웠어'라고 말을 흐린다. 저녁 일정을 물으면 '비행 연습'이라 한다"
   - fact: fact_ws_eiros_wing_letters
     reveal_when: "신뢰 50 이상이고 인간 글자에 호의를 보인 뒤, 또는 오른의 이름이 나온 뒤"
+    reveal: [{"trust":50},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "날개 아래쪽을 몸으로 가린다. '깃털이 가려워서'라고 말한다"
   - fact: fact_ws_eiros_knows_kyrie_secret
     reveal_when: "신뢰 55 이상이고 키리에에 대한 이해를 보인 뒤, 또는 오른이 이미 말했을 때"
+    reveal: [{"trust":55},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'어머니는 높이 나는 분이야'라고만 한다. 깃털 셋 이야기를 꺼내려다 입을 다문다"
 relations:
   - {to: npc_kyrie, type: 어머니, like: 50, trust: 30, visibility: 공개, memo: null, words: "아래를 보기 시작한 여왕. 그런데 자기가 땅에 내려갔던 건 감추고 있다. 그 비밀이 나를 아프게 한다"}

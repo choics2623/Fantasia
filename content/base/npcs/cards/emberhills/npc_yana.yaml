@@ -71,9 +71,11 @@ knows: [fact_em_yana_slot_37, fact_em_dara_handprint_wall]
 hides:
   - fact: fact_em_fourteen_escape_plan
     reveal_when: "신뢰 55 이상이거나, 열넷이 먼저 허락했을 때"
+    reveal: [{"trust":55}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'연통은 몰라요'라고 하며 벽만 쳐다본다"
   - fact: fact_em_krom_yana
     reveal_when: "신뢰 65 이상이거나, 아버지의 이름을 먼저 말했을 때"
+    reveal: [{"trust":65}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'누가 올렸는지 몰라요'라고 속삭인다"
 relations:
   - {to: npc_caleb_dara, type: 아버지, like: 100, trust: 80, visibility: 공개, memo: null, words: "손을 벽에서 떼지 못하는 사람. 원망하지 않기로 했다"}

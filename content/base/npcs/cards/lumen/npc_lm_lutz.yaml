@@ -63,6 +63,7 @@ knows:
 hides:
   - fact: fact_lm_lutz_denounced
     reveal_when: "술을 함께 마셔 주었거나 신뢰 40 이상. 베라의 눈이 불티 자국이었다는 증거를 보여 주었을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'이웃이 말했겠지. 누가 말했는지는 나도 몰라'라고 한다"
 toward_player: "얼버무리는 말투. 질문을 질문으로 돌려보낸다"
 persuade:

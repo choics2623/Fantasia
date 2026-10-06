@@ -80,9 +80,11 @@ knows: [fact_kz_seln_exiled, fact_kz_drau_serve_echo, fact_sv_first_ember_burned
 hides:
   - fact: fact_hm_emyn_witnessed_godkill   # 사실: 에뮌은 SK 0 사슬에 묶인 채 신살을 끝까지 보았다 — 열한 종족의 몫, 목소리가 이름들로 깨지는 것, 마지막 숨이 향한 쪽, 웃음
     reveal_when: "은자 시험(불 없이 들어오기 + 처음 듣는 이야기) 통과 후 신뢰 50 이상, 그리고 값(지난 회차의 기억 하나를 검은 물에)을 치른 뒤"
+    reveal: [{"trust":50,"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그것은 이야기 셋은 더 들어야 할 이야기다'라며 손바닥을 쥔다"
   - fact: fact_sv_prophecy_first_seen
     reveal_when: "신뢰 40 이상, 플레이어가 엘라스트리엘을 먼저 꺼낼 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'그녀는 그날 아버지 곁에 서 있었다'까지만 말한다"
 relations:
   - {to: npc_elastriel, type: "3,400년 전 의회의 맞은편", like: -30, trust: -50, visibility: 공개, memo: null, words: "같은 것을 보고 다른 것을 기억한 여왕. 나보다 백 해 먼저 태어났다"}

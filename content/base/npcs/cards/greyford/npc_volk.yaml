@@ -78,12 +78,15 @@ knows: [fact_gf_volk_sweep_contract, fact_gf_hagen_sells_runaways, fact_gf_hagen
 hides:
   - fact: fact_gf_volk_human_mother
     reveal_when: "호감 30 이상이고 무리·가족 이야기로 설득 성공한 술자리 — 그가 스스로 말한다. 묻는 것은 괜찮지만 동정은 역린에 가깝다"
+    reveal: [{"like":30,"tier":"성공","scene":"술자리"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'놓친 아이'에 대해 물으면 '코가 무뎌졌다'고만 한다"
   - fact: fact_nc_mordecai_volk_pack
     reveal_when: "신뢰 40 이상, 또는 위기 장면 — 녹테른의 이름을 플레이어가 먼저 꺼내면 역린"
+    reveal: [{"trust":40},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "무리 이야기가 나오면 '내 무리는 사냥이다'라고만 한다"
   - fact: fact_dk_aurax_kaspar_contract
     reveal_when: "더 큰 사냥감 정보로 설득 대성공, 또는 정직한 거래로 신뢰 50 이상. 그는 거짓말은 하지 않지만 말하지 않을 수는 있다"
+    reveal: [{"tier":"대성공"},{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "까마귀 문 이야기가 나오면 '사령관의 냄새는 반은 불이다'라고만 하고 화제를 끝낸다"
 relations:
   - {to: npc_irga, type: 딸, like: 50, trust: 20, visibility: 공개, memo: 실망, words: "하나 남은 무리. 너무 물렁해서 조합을 맡길 수 없다 — 그래서 더 놓지 못한다"}

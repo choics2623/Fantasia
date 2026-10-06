@@ -80,12 +80,15 @@ knows: [fact_dk_aurax_saw_collapse, fact_dk_varskar_time_wound, fact_dk_varskar_
 hides:
   - fact: fact_dk_collapse_truth
     reveal_when: "은자 시험 통과 — 멈춘 광장에서 그날의 장면을 기억해 와서 원의 걸음 수와 그 노예가 외친 말을 맞힐 것. 신뢰 40 이상"
+    reveal: [{"trust":40,"flag":"trial"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서약이다. 불이 살아 있는 동안'이라며 목의 천을 누른다"
   - fact: fact_hi_asterion_ritual_nearly_done
     reveal_when: "위와 같다 — 같은 장면"
+    reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'원 이야기는 원을 본 자와만 한다'"
   - fact: fact_hm_ash_witnesses_oath   # 사실: 포위군 생존 증인들은 '용황의 불이 살아 있는 동안' 침묵하기로 서약했고, 증인 여섯이 조각을 나눠 가졌다
     reveal_when: "신뢰 60 이상, 또는 바르스카르가 죽은 뒤(서약이 풀린다)"
+    reveal: [{"trust":60},{"dead":"npc_varskar"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "봉화 장작을 고쳐 쌓는다 — 말없이"
 relations:
   - {to: npc_varskar, type: 옛 주군 — 서약의 불, like: 20, trust: 40, visibility: 공개, memo: null, words: "그분의 불이 내 목을 태웠고 그분의 서약이 내 입을 묶었다. 둘 다 아직 살아 있다"}

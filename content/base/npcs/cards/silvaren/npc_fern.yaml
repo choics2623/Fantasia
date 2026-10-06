@@ -75,9 +75,11 @@ knows: [fact_sv_fern_seed_bribe, fact_sv_mira_sold_eye]
 hides:
   - fact: fact_sv_fern_north_gate_key
     reveal_when: "호감 60 이상이거나, 뇌물(바깥 숲의 씨앗)과 정원지기 하나의 사연을 함께 건넸을 때"
+    reveal: [{"like":60,"gift":12}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "열쇠 이야기가 나오면 허리춤을 한 번 치고 '그런 거 없다'고 한다"
   - fact: fact_sv_silvan_children_born
     reveal_when: "신뢰 50 이상이거나, 존속파가 '징후 아이를 정원 경계에서 거두라'는 명을 내린 장면"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'별빛 분들 말씀이 맞다'고만 하고 눈을 피한다"
 relations:
   - {to: npc_dane, type: 감시 대상 정원지기, like: 10, trust: 30, visibility: 공개, memo: null, words: "눈을 가리는 아이. 문을 닫을 때 놀라는 아이. 가리는 것을 나는 못 본 척한다 — 두 번 외우지 않기로 했다"}

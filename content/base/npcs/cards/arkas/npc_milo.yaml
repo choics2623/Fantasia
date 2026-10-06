@@ -75,12 +75,15 @@ knows: [fact_ar_tower_clerks_literate, fact_ar_halla_three_accusations]
 hides:
   - fact: fact_ar_milo_memorized_14
     reveal_when: "신뢰 40 이상이거나, 오틸리가 직접 플레이어를 보증했을 때"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기록에 없는 건 말하지 않아요'라고 하며 숫자 세기로 화제를 돌린다"
   - fact: fact_ar_third_test_dead14
     reveal_when: "신뢰 50 이상이고 플레이어가 먼저 이름 없는 14명의 흔적을 알아보았을 때"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'셋째 시험은 진행 중이라고만 적혀 있어요'라고 한다"
   - fact: fact_ar_dead14_families_told
     reveal_when: "신뢰 50 이상이고 위의 사실이 열린 뒤"
+    reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'순례 기록은 제 일이 아니에요'라고 입을 다문다"
 relations:
   - {to: npc_ottilie, type: 서기 스승, like: 55, trust: 65, visibility: 비밀, memo: null, words: "읽는 법을 가르치지 않았다고 말하는 선생님. 읽는 사람은 늘어 가는데 선생님 손은 돌이 돼요"}

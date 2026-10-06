@@ -73,9 +73,11 @@ knows: [fact_em_corvin_forgery, fact_em_cassian_monthly_numbers, fact_em_vent_le
 hides:
   - fact: fact_em_druss_gas_devices
     reveal_when: "신뢰 70 이상이거나, 다라의 반란이 곧 온다는 증거를 보였을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'갱도마다 환기 설비가 있다'라고만 한다"
   - fact: fact_em_druss_key_neck
     reveal_when: "신뢰 80 이상이거나, 그가 큰 위기를 맞았을 때"
+    reveal: [{"trust":80}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "열쇠를 손으로 가리며 '가문의 문장'이라 한다"
 relations:
   - {to: npc_cassian_vermion, type: 아버지, like: 20, trust: 10, visibility: 공개, memo: null, words: "숫자로 죽음을 말하는 사람. 그 숫자를 믿지 않는다"}

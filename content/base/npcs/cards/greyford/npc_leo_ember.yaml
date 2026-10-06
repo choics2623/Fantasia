@@ -64,6 +64,7 @@ knows: []
 hides:
   - fact: fact_gb_leo_saw_kaspar_fire
     reveal_when: "신뢰 50 이상, 또는 '한스'의 이름을 꺼내며 습지 밖으로 빼낼 길을 약속할 때, 또는 아우락스파 사람이 값을 내밀며 위협할 때"
+    reveal: [{"trust":50},{"flag":"story"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "팔은 숯 굴에서 덴 것이라 하고, 까마귀 문 이야기가 나오면 자리를 뜬다"
 relations:
   - {to: npc_dietmar, type: 두목, like: 30, trust: 40, visibility: 공개, memo: null, words: "왜 도망쳤는지 묻지 않은 두목. 그것만으로 따라왔다"}

@@ -73,9 +73,11 @@ knows: [fact_em_leonic_cell_names, fact_eh_rok_stockpile, fact_em_dorte_cook_rou
 hides:
   - fact: fact_em_leonic_sells_to_kraz
     reveal_when: "신뢰 70 이상이거나, 크라즈의 쪽지를 직접 보였을 때"
+    reveal: [{"trust":70}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'운이 좋았다'라고 웃어넘긴다"
   - fact: fact_em_leonic_cell_names
     reveal_when: "신뢰 85 이상이거나, 다라의 노래 마지막 구절로 증명했을 때"
+    reveal: [{"trust":85}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'등불 이름은 등불만 안다'며 말을 끊는다"
 relations:
   - {to: npc_kraz, type: 정보 판매, like: -10, trust: -20, visibility: 비밀, memo: null, words: "작은 것을 사는 손. 큰 것을 사지 않는 것이 이상하다"}

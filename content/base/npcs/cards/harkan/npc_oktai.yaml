@@ -62,9 +62,11 @@ voice:
 hides:
   - fact: fact_hk_yoke_oath_expired
     reveal_when: "신뢰 60 이상이고 탄나 짐굽의 이름을 존중하며 꺼낸 뒤, 또는 멍에를 벗는 일에 대해 진지하게 이야기한 뒤"
+    reveal: [{"trust":60},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서약은 서약이다'라고 한 걸음 물러난다. 원문 이야기가 나오면 말없이 걸음을 옮긴다"
   - fact: fact_hk_oktai_same_yoke
     reveal_when: "신뢰 40 이상이고 쓰러진 짐꾼을 함께 구하는 장면 뒤"
+    reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'인간 짐꾼은 인간 짐꾼이다'라고 한다. 눈을 돌린다"
 schedule:
   아침: "수레 끈을 점검하고 야영지 무거운발굽의 멍에를 확인한다"
