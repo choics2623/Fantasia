@@ -184,7 +184,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     },
     // 회귀를 놓는다 (03 §4.6): 다음 회차가 마지막 — 그 회차의 죽음은 돌아오지 않는다
     release() { g.run.release = true; save(); return { ok: true }; },
-    async newGame(seed, o, mode = "grim") { g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode }); transcript = []; save(); return turn(null, o); },
+    async newGame(seed, o, mode = "grim", narrator = "silent_god") { g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode, narrator }); transcript = []; save(); return turn(null, o); },
+    narrator(id) { G.setNarrator(g, id); save(); return { ok: true, view: G.view(g) }; },
     // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
     async rewind(o) {
       if (g.run.mode !== "story") return { error: "그림다크에서는 되돌릴 수 없다" };

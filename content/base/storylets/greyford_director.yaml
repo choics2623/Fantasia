@@ -1,0 +1,99 @@
+# 연출가의 선택적 장면 (18 §3.2 연출 기원) — 범주: threat 위협 · lack 결핍 · opportunity 기회 · bond 유대 · omen 전조 · calm 고요
+# 확정·인과를 건드리지 않는다. 판정 하나, 작은 결과. 화자의 배율과 목표 곡선이 고른다.
+storylets:
+  - id: dir_crik_stop
+    trigger: {director: true, category: threat, at: [gf_whip_square, gf_well_square, gf_rooster], hours: ["07:00", "20:00"], chance: 0.25}
+    text: |
+      크릭 감독 하나가 막대로 네 가슴을 막는다. "어디 가는 길이냐, 셋째." 대답이 늦으면 막대가 먼저 말한다.
+    choices:
+      - id: answer
+        label: '"배급 막사로요. 즈닉 감독님이 부르셨습니다."'
+        check: {skill: 기만, D: 30}
+        success: {text: "막대가 내려간다. 크릭은 이미 다른 얼굴을 보고 있다.", effects: []}
+        failure: {text: "막대가 옆구리를 친다. 한 번. 크릭은 웃지도 않는다.", effects: ["pain 10", "stress 3"]}
+      - id: bow
+        label: 고개를 숙이고 아무 말도 하지 않는다
+        text: "막대가 네 정수리를 한 번 짚고 지나간다. 머릿수를 세는 손이다."
+        effects: ["stress 2"]
+  - id: dir_watcher
+    trigger: {director: true, category: threat, at: [gf_rooster, gf_well_square, gf_river_huts], hours: ["17:00", "21:00"], chance: 0.2, when: ["var informant_assigned == true"]}
+    text: |
+      처마 밑의 그 사내가 또 있다. 너를 보고 있지 않은 척을 너무 잘한다.
+    choices:
+      - id: lose
+        label: 골목 두 개를 돌아 따돌린다
+        check: {skill: 은신, D: 34}
+        success: {text: "세 번째 모퉁이에서 돌아보면 아무도 없다.", effects: []}
+        failure: {text: "모퉁이마다 그가 있다. 서두르지 않는다.", effects: ["wanted 1 마르타의 밀고자가 따라붙었다"]}
+  - id: dir_ration_half
+    trigger: {director: true, category: lack, at: gf_rooster, hours: ["18:00", "19:00"], chance: 0.3}
+    text: |
+      솥이 바닥을 긁는다. 즈닉이 국자를 반만 채운다. "곡창 사정이 그렇다." 줄 뒤에서 누군가 웃는다 — 웃을 일이 아니라서.
+    choices:
+      - id: take
+        label: 반 그릇을 받는다
+        text: "반 그릇. 키트가 네 그릇을 본다. 너는 숟가락을 내려놓는다."
+        effects: ["hunger 1", "stress 2"]
+  - id: dir_boots
+    trigger: {director: true, category: lack, at: [greyford__west_pasture, gf_river_huts], hours: ["05:00", "19:00"], chance: 0.2}
+    text: |
+      왼쪽 신의 밑창이 마침내 떨어져 나간다. 진흙이 발가락 사이로 스민다.
+    choices:
+      - id: bind
+        label: 풀을 꼬아 동여맨다
+        check: {skill: 손재주, D: 22}
+        success: {text: "풀 끈이 버틴다. 하루는.", effects: []}
+        failure: {text: "끈이 끊어진다. 맨발로 걷는다.", effects: ["fatigue 15"]}
+  - id: dir_coin_mud
+    trigger: {director: true, category: opportunity, at: [gf_well_square, gf_whip_square, gf_iron_bridge], hours: ["06:00", "20:00"], chance: 0.15}
+    text: |
+      진흙 속에서 무언가 반짝인다. 동화 두 닢. 누가 떨어뜨렸을까. 아무도 보고 있지 않다 — 아마도.
+    choices:
+      - id: take
+        label: 발로 덮고, 허리를 굽힌다
+        text: "두 닢. 부츠 속으로."
+        effects: ["coin 2", "temper 탐욕 1"]
+      - id: leave
+        label: 그대로 둔다
+        text: "다른 누군가의 하루가 조금 나아질 것이다."
+        effects: ["temper 정직 1"]
+  - id: dir_bram_bread
+    trigger: {director: true, category: opportunity, at: gf_rooster, hours: ["19:00", "21:00"], chance: 0.2, when: ["rel_trust npc_bram >= 10"]}
+    text: |
+      배식이 끝난 뒤, 브람이 장작 더미 뒤에서 너를 부른다. 말없이 무언가를 내민다. 누룽지와 빵 꽁다리.
+    choices:
+      - id: take
+        label: 받는다
+        text: "\"키트 거다. 네 거 아니다.\" 브람은 벌써 등을 돌렸다."
+        effects: ["item bread", "rel npc_bram like 3"]
+  - id: dir_kit_letters
+    trigger: {director: true, category: bond, at: gf_river_huts, night: true, chance: 0.3, when: ["alive npc_kit"]}
+    text: |
+      키트가 손가락으로 흙바닥에 무언가를 그린다. "형(누나), 이거 뭐야? 배식대에 있던 거." 레이번. 그 글자다.
+    choices:
+      - id: teach
+        label: 손을 덮어 지운다 — 그리고 귓속말로 한 글자만
+        text: "\"이건 '레'야. 아무한테도 그리지 마.\" 키트의 눈이 반짝인다. 비밀을 가진 아이의 눈이다."
+        effects: ["bond npc_kit 4", "temper 용기 1"]
+      - id: erase
+        label: 지운다
+        text: "\"아무것도 아니야.\" 키트는 더 묻지 않는다. 그게 더 아프다."
+        effects: ["bond npc_kit 1"]
+  - id: dir_dogs_three
+    trigger: {director: true, category: omen, at: [gf_river_huts, gf_south_barracks, gf_north_barracks], night: true, chance: 0.3, when: ["date >= 312-09-14"]}
+    text: |
+      송곳니 불 쪽에서 개가 세 번 짖고 멎는다. 바르그는 개를 짖게 두지 않는다. 짖게 둔 것이다.
+    choices:
+      - id: listen
+        label: 숨을 죽인다
+        text: "다시는 짖지 않는다. 그게 더 나쁘다."
+        effects: ["fear 1"]
+  - id: dir_ash_wind
+    trigger: {director: true, category: omen, at: [gf_whip_square, old_stone_ring, gf_willow_bank], hours: ["16:00", "22:00"], chance: 0.2, when: ["loop >= 2"]}
+    text: |
+      바람이 바뀐다. 젖은 재 냄새. 너에게서 나는 것인지, 바람에서 나는 것인지 모르겠다.
+    choices:
+      - id: go
+        label: 걸음을 재촉한다
+        text: "냄새가 따라온다."
+        effects: ["stress 2"]

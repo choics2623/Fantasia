@@ -47,7 +47,8 @@ async function handle(path, body, onText) {
   if (path === "/api/state") return session.start({ onText });
   if (path === "/api/act") return session.act(body, { onText });
   if (path === "/api/regress") return session.regress({ onText });
-  if (path === "/api/new") return session.newGame(body?.seed, { onText }, body?.mode === "story" ? "story" : "grim");
+  if (path === "/api/new") return session.newGame(body?.seed, { onText }, body?.mode === "story" ? "story" : "grim", body?.narrator || "silent_god");
+  if (path === "/api/narrator") return session.narrator(body?.id);
   if (path === "/api/rewind") return session.rewind({ onText });
   if (path === "/api/release") return session.release();
   if (path === "/api/save") { writeFileSync(slot(body?.name), JSON.stringify(session.run)); return { ok: true, saves: listSaves() }; }

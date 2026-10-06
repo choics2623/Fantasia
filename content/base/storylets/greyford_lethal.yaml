@@ -20,6 +20,7 @@
 storylets:
   # ── 6.3 첫 진짜 선택 — 마르타의 값 (2일 19:40, 수탉 뒷문) ──
   - id: martha_price_night
+    severity: 3
     trigger: {at_time: "312-09-02 19:40", at: gf_rooster, when: ["var kit_on_list == true", "alive npc_martha"]}
     stage:
       - {npc: npc_martha, at: gf_rooster, from: "312-09-02 19:30", to: "312-09-02 20:10", doing: 수탉 뒷문 밖에서 열쇠 꾸러미를 손으로 쥐고 서 있다}
@@ -133,6 +134,7 @@ storylets:
 
   # ── 6.4 C 「북쪽 길」 — 21일 밤, 하겐의 배 ──
   - id: death_c_northern_road
+    severity: 4
     trigger: {window: {from: "312-09-21 21:30", to: "312-09-21 23:30"}, at: gf_hagen_shed, when: ["alive npc_hagen", "var hagen_knows_escape_intent == true"]}
     text: |
       나룻배가 갈대 사이에서 기다린다. 고물에 하겐, 노에 페인. 달이 없다.
@@ -253,6 +255,7 @@ storylets:
 
   # ── 볼크 도착 (낙엽월 14일~): 냄새 (17 §3.7, 03 §7.1) ──
   - id: volk_sniff
+    severity: 3
     trigger: {window: {from: "312-09-14 05:00", to: "312-09-18 22:00"}, with: npc_volk, when: ["alive npc_volk"]}
     stage:   # 도착하는 아침, 사냥대가 점호 줄 앞을 지나간다 — 줄의 냄새를 맡으며
       - {npc: npc_volk, at: gf_whip_square, from: "312-09-14 05:00", to: "312-09-14 05:40", doing: 바르그 사냥대를 이끌고 점호 줄 앞을 지나간다 — 한 사람씩 냄새를 맡는다}
@@ -287,6 +290,7 @@ storylets:
 
   # ── 6.4 B1 「송곳니 불」 — 25일 정오, 대수색 ──
   - id: death_b1_lure
+    severity: 4
     trigger: {window: {from: "312-09-25 10:00", to: "312-09-25 15:00"}, at: [hungry_hill, hungry_hill__wolf_den, hungry_hill__three_pines], when: ["alive npc_volk"]}
     text: |
       정오. 굶주린 언덕 남사면. 개 짖는 소리가 세 번, 그리고 사방에서.
@@ -344,6 +348,7 @@ storylets:
 
   # ── B2 「안내」 — 마르타와 거래했다면, 즈닉이 너를 사냥대에 붙인다 (25일 아침) ──
   - id: death_b2_guide
+    severity: 4
     trigger: {window: {from: "312-09-25 05:00", to: "312-09-25 09:00"}, when: ["var martha_deal == true", "alive npc_volk"]}
     text: |
       즈닉이 네 목에 끈을 건다. "언덕 길을 아는 놈." 볼크의 사냥대가 너를 앞세운다. 개들이 네 발뒤꿈치를 문다.
@@ -367,6 +372,7 @@ storylets:
 
   # ── A1 「소금 나루」 — 굶주림월 3일 아침, 2차 호송 ──
   - id: death_a1_raid
+    severity: 5
     trigger: {window: {from: "312-12-03 06:30", to: "312-12-03 10:00"}, at: [gf_iron_bridge, filth_marsh], when: ["var sara_on_list == true", "pknows fact_gf_sara_on_sale_list"]}
     text: |
       용의 대로, 습지 굽이. 눈이 무릎까지. 서른하나가 두 줄 사슬로 걷는다. 사라는 앞에서 일곱째.
@@ -413,6 +419,7 @@ storylets:
 
   # ── A2 「성채 금고」 — 남작 서재에 밤에 들어서면 ──
   - id: death_a2_keep
+    severity: 4
     trigger: {window: {from: "312-09-01 00:00", to: "313-12-30 00:00"}, at: gf_keep_study, night: true}
     text: |
       남작 서재. 식은 벽난로 냄새. 책상 뒤 벽감에 쇠 금고 — 열쇠 구멍이 셋.
@@ -448,6 +455,7 @@ storylets:
 
   # ── 협박꾼이 찾아온다 (27 반응 층의 threats를 소비한다) ──
   - id: threat_demand
+    severity: 3
     dynamic: true
     text: |
       {who}이(가) 네 앞을 막아선다. 아무도 듣지 못하게, 아주 가까이.
@@ -479,6 +487,7 @@ storylets:
 
   # ── 쫓는 자가 너를 찾아냈다 (17 §3.6 추적 거리 4) ──
   - id: nemesis_found
+    severity: 4
     dynamic: true
     text: |
       {nem}이(가) 거기 있다. 기다리고 있었다는 얼굴로.
@@ -522,6 +531,7 @@ storylets:
 
   # ── 앎의 흔적 (03 §4.3, 14 §7.4): 잿빛 탑의 이졸 — 응시는 회차마다 길어진다 ──
   - id: isol_gaze
+    severity: 3
     trigger: {window: {from: "312-09-18 08:00", to: "312-09-30 22:00"}, with: npc_isol}
     text: |
       순례자의 회색 옷. 여자 하나가 막사 아이들에게 꿈 이야기를 묻다가, 너를 본다.

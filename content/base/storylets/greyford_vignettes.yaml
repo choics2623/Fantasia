@@ -3,7 +3,7 @@
 # trigger.vignette: true · at · hours [from, to] · rain/night · when · chance (그 자리에 있을 때 30분마다)
 storylets:
   - id: vg_rain_hut12
-    trigger: {vignette: true, at: gf_river_huts, rain: true, hours: ["19:00", "23:30"], chance: 0.35, when: ["alive npc_kit"]}
+    trigger: {vignette: true, category: bond, at: gf_river_huts, rain: true, hours: ["19:00", "23:30"], chance: 0.35, when: ["alive npc_kit"]}
     text: |
       지붕 새는 자리에서 물이 똑, 똑 떨어진다. 키트가 그릇을 받쳐 놓고, 물방울 소리에 맞춰 무언가를 흥얼거린다. 어머니가 부르던 옛 노래다. 가사는 다 틀렸다.
     choices:
@@ -18,7 +18,7 @@ storylets:
           틀린 가사가 빗소리에 섞인다. 그래도 노래다.
         effects: ["stress -2"]
   - id: vg_well_quarrel
-    trigger: {vignette: true, at: gf_well_square, hours: ["07:00", "18:00"], chance: 0.3}
+    trigger: {vignette: true, category: calm, at: gf_well_square, hours: ["07:00", "18:00"], chance: 0.3}
     text: |
       우물가에서 여자 둘이 두레박줄을 두고 다툰다. 쓴물이라도 물은 물이다. 한 여자가 다른 여자의 물동이를 엎는다. 아무도 말리지 않는다.
     choices:
@@ -32,7 +32,7 @@ storylets:
         text: ""
         effects: []
   - id: vg_kennel_howl
-    trigger: {vignette: true, at: gf_kennel, hours: ["06:00", "21:00"], chance: 0.4}
+    trigger: {vignette: true, category: omen, at: gf_kennel, hours: ["06:00", "21:00"], chance: 0.4}
     text: |
       남작의 사냥개들이 일제히 너를 향해 돌아선다. 짖지 않는다. 그게 더 나쁘다. 우리 쇠창살에 코를 대고, 너만 본다.
     choices:
@@ -42,7 +42,7 @@ storylets:
           한 걸음, 두 걸음. 개 한 마리가 낮게 그르렁거린다. 사육사가 고개를 든다 — 너를 보지는 않았다.
         effects: ["fear 1"]
   - id: vg_mill_dust
-    trigger: {vignette: true, at: gf_mill, hours: ["08:00", "17:00"], chance: 0.35, when: ["alive npc_thomas"]}
+    trigger: {vignette: true, category: opportunity, at: gf_mill, hours: ["08:00", "17:00"], chance: 0.35, when: ["alive npc_thomas"]}
     text: |
       방앗간 바닥의 판자 하나가 다른 판자보다 새것이다. 그 틈에서 보리 냄새가 난다. 이 집의 보리는 모두 남작의 것인데.
     choices:
@@ -62,7 +62,7 @@ storylets:
         text: ""
         effects: []
   - id: vg_graveyard_numbers
-    trigger: {vignette: true, at: gf_graveyard, hours: ["06:00", "20:00"], chance: 0.5}
+    trigger: {vignette: true, category: calm, at: gf_graveyard, hours: ["06:00", "20:00"], chance: 0.5}
     text: |
       번호 묘지. 이름 대신 숫자가 새겨진 말뚝들. 312-214, 312-215. 올해만 이백 개가 넘는다. 말뚝 하나가 새것이다. 숫자 밑에 누군가 손톱으로 긁어 놓은 자국 — 글자다. 너는 읽을 수 있다. "미라."
     choices:
@@ -77,7 +77,7 @@ storylets:
           손톱이 나무에 박힌다. 너는 아직 그 사람의 이름을 모른다. 그래서 선 하나만 긋는다. 이름이 있었다는 표시.
         effects: ["temper 자비 2", "stress -2"]
   - id: vg_chapel_candle
-    trigger: {vignette: true, at: gf_chapel, hours: ["17:00", "21:00"], chance: 0.35, when: ["alive npc_osric"]}
+    trigger: {vignette: true, category: opportunity, at: gf_chapel, hours: ["17:00", "21:00"], chance: 0.35, when: ["alive npc_osric"]}
     text: |
       예배당에 아무도 없다. 제단의 사슬등불 하나가 꺼져 있다. 그 옆 바닥에 수지 양초 토막이 떨어져 있다.
     choices:

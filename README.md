@@ -27,6 +27,7 @@ node engine/game/test_lethal.mjs         # 첫 회차의 치명적 자리·볼�
 node engine/game/test_story.mjs          # 하루의 끝·지난 이야기·목소리·맹세와 메아리·인물 수첩 (18·15·16·08)
 node engine/game/test_p2.mjs             # 약속·낱말·몸의 상태·좋은 행적·내 소문·지도 기억 …
 node engine/game/test_p3.mjs             # 숨긴 곳·작전 카드·연애·얼룩·진명·시대의 끝
+node engine/game/test_director.mjs       # 연출가: 긴장도·목표 곡선·화자 넷·연출 장면 (18)
 node engine/gen/test_gen.mjs             # 정착지·즉석 인물 생성 (25)
 python3 tools/validate_npc_cards.py && node tools/validate_agendas.mjs && python3 tools/link_world.py
 ```
