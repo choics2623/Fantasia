@@ -1,0 +1,120 @@
+# 가시안개 숲 — 클락 3 북방 대탈주(탈주자가 숲 남쪽 경계로 번진다), 클락 1 흰 알(3.15 소식), 클락 2 맹약회의 313(5.1 '혹시'의 거꾸로 전하기)과 가시 무도회의 사슬 (26_AGENDAS.md).
+# 정본 일정(events/thorn_court_312.yaml)의 9.20 옛 돌 고리 · 9.27 아이 잃은 돌 · 10.4 물빼기 굴 · 10.12 일곱 조각 · 11.1 초대장 · 11.20 가시 무도회 · 12.10 철 울타리 · 1.18 탈주 시즌 · 3.15 · 5.1 이
+# 원인과 결과로 이어지게 한다. 플레이어가 끊을 수 있는 고리: 그릭을 죽인다(젖은 모자), 초대받은 이를 무도회에 보내지 않는다(th_chosen_protected), 탈주자를 서쪽 이슬의 길로 돌린다.
+vars:
+  th_walker_steps: 0           # 거꾸로 걷는 이가 숲 쪽으로 물러난 걸음 (여왕의 초대가 가까워진다)
+  th_thorn_given: false        # 짐 속에 가시 한 가닥이 들어갔다 (회색여울 사람 하나)
+  th_shoes: 0                  # 아이 잃은 돌 앞의 회색여울 신발 (켤레)
+  th_truth_told: false         # 가을 일곱 조각 만남에서 '혹시'가 진실 하나를 말했다
+  th_invites: 0                # 가시 무도회 초대장 (겨울 궁정 차례)
+  th_chosen_protected: false   # 플레이어가 초대받은 이를 무도회에 가지 못하게 했다
+  th_toys: 70                  # 장난감 정원의 인간 (엘린이 바깥 시간을 알려 주는 사람들)
+  th_fugitives_inside: 0       # 숲 남쪽 경계에 번진 탈주자
+  th_fugitives_dead: 0         # 그릭의 모자에 죽은 탈주자
+  th_fugitives_west: 0         # 이슬의 길(서쪽)로 몰려 사는 쪽으로 간 탈주자
+  th_grik_hat_wet: false       # 그릭의 모자가 젖어 있다
+  th_forgotten_taken: 0        # 철 울타리에 닿아 엘레노르가 받은 '잊힌 자'
+  th_egg_news: false           # 흰 알 부화 소식이 안개 장터에 먼저 돌았다
+agendas:
+  - id: ag_th_walker_ring
+    npc: npc_backwards_walker
+    goal: 9.20 이졸이 도착한 뒤 처음 옛 돌 고리를 돈다 (정본) — 한 걸음 숲 쪽으로 물러나며 가시를 넣을 사람을 기다린다
+    every: once
+    when: ["alive npc_backwards_walker", "date >= 312-09-20"]
+    at: {place: old_stone_ring, from: "21:00", to: "23:59", doing: 옛 돌 고리를 거꾸로 돈다 — 짐 속에 가시 한 가닥을 넣을 사람을 기다린다}
+    effects: ["var th_walker_steps += 1", "log 거꾸로 걷는 이가 옛 돌 고리에서 한 걸음 숲 쪽으로 물러났다 (여왕의 초대가 한 걸음 가까워졌다)"]
+  - id: ag_th_silverbell_shoes
+    npc: npc_silverbell_lady
+    goal: 9.27 아이 잃은 돌 앞의 신발을 센다 (정본) — 열일곱 켤레가 회색여울 쪽 것. 방울이 한 번 운다
+    every: once
+    when: ["alive npc_silverbell_lady", "date >= 312-09-27"]
+    at: {place: lost_child_stone, from: "05:00", to: "08:00", doing: 돌 앞의 신발을 센다 — 열일곱 켤레가 회색여울 쪽 것이다}
+    effects: ["var th_shoes = 17", "log 은방울 부인이 아이 잃은 돌 앞 회색여울 신발 {th_shoes}켤레를 세었다 — 방울이 한 번 울었다"]
+  - id: ag_th_grik_leak
+    npc: npc_grik
+    goal: 10.4 물빼기 굴에서 새어 나온 이들이 숲 남쪽 경계로 번진다 (정본) — 폐탑에서 비를 피하라며 문턱 안으로 부르고 모자를 적신다
+    every: once
+    when: ["alive npc_grik", "date >= 312-10-04"]
+    at: {place: thornmist__south_tower, from: "02:00", to: "06:00", doing: 폐탑 문턱에서 비를 피하라 부른다 — 모자가 피로 젖는다}
+    effects: ["var th_fugitives_inside += 6", "var th_grik_hat_wet = true", "log 물빼기 굴에서 새어 나온 {th_fugitives_inside}명이 숲 남쪽 경계에 닿았다 — 그릭이 모자를 적셨다"]
+  - id: ag_th_dew_west
+    npc: npc_dawn_hunter_dew
+    goal: 숲에 든 인간은 놀이로 쫓되 죽이지 않는다 — 그릭의 사냥터 쪽으로는 쫓지 않고 서쪽으로 몬다
+    every: once
+    when: ["alive npc_dawn_hunter_dew", "var th_fugitives_inside >= 3", "date >= 312-10-04"]
+    at: {place: thornmist__south_tower, from: "06:00", to: "09:00", doing: 개를 서쪽으로 푼다 — 사람들을 그릭의 문턱 밖으로 몬다}
+    effects: ["var th_fugitives_west += 3", "var th_fugitives_inside -= 3", "log 이슬이 탈주자 셋을 서쪽 길로 몰아냈다 — 그릭의 사냥터에서 벗어났다"]
+  - id: ag_th_grik_hunt
+    npc: npc_grik
+    goal: 남쪽 경계에 남은 탈주자로 모자를 적신다 — 모자가 마르면 죽는다
+    every: "every:6"
+    chance: 0.5
+    when: ["alive npc_grik", "var th_fugitives_inside > 0"]
+    at: {place: thornmist__south_tower, from: "01:00", to: "05:00", doing: 폐탑 안에서 모자를 다시 적신다}
+    effects: ["var th_fugitives_inside -= 1", "var th_fugitives_dead += 1", "var th_grik_hat_wet = true", "log 그릭이 폐탑 문턱에서 탈주자 하나를 죽였다 (모두 {th_fugitives_dead}명)"]
+  - id: ag_th_walker_thorn
+    npc: npc_backwards_walker
+    goal: 10.5 새벽 마을 가장자리를 돈다 (정본) — 짐 속에 가시 한 가닥을 넣을 사람을 고른다
+    every: once
+    when: ["alive npc_backwards_walker", "date >= 312-10-05"]
+    at: {place: greyford__north_woods, from: "04:00", to: "07:00", doing: 마을 가장자리를 돈다 — 한 사람의 짐 속에 가시를 넣는다}
+    effects: ["var th_thorn_given = true", "var th_walker_steps += 1", "log 거꾸로 걷는 이가 회색여울 사람 하나의 짐 속에 가시 한 가닥을 넣었다 — 여왕의 초대장이다"]
+  - id: ag_th_shards_autumn
+    npc: npc_mirror_perhaps
+    goal: 10.12 울지 않는 나무 아래 일곱 조각의 가을 만남 (정본) — 이번 안건 '진실 하나', 혹시가 말할 차례. 여왕의 말을 거꾸로 전하니 그 말이 진실일 수 있다
+    every: once
+    when: ["alive npc_mirror_perhaps", "date >= 312-10-12"]
+    at: {place: tc_hedge, from: "05:00", to: "07:00", doing: 울지 않는 나무 아래 — 일곱 조각 가운데 넷이 모여 '진실 하나'를 말할 차례를 센다}
+    effects: ["var th_truth_told = true", "log 일곱 조각의 가을 만남에서 '혹시'가 여왕의 말을 거꾸로 전해 진실 하나를 말했다"]
+  - id: ag_th_invites_chosen
+    npc: npc_thistle_duke
+    goal: 11.1 가시 무도회 초대장 — 겨울 궁정 차례 (정본). 웃은 기억이 많은 사람의 이름이 병에서 올라온다
+    every: once
+    when: ["alive npc_thistle_duke", "date >= 312-11-01"]
+    at: {place: tc_winter_court, from: "20:00", to: "23:59", doing: 초대장 가시 한 가닥씩을 뽑는다 — 웃은 기억이 많은 이름이 병에서 올라온다}
+    effects: ["var th_invites = 3", "if var th_thorn_given == true: var th_invites += 1 ; log 가시를 받은 회색여울 사람의 이름도 병에서 올라왔다",
+              "log 겨울 궁정이 가시 무도회 초대장 {th_invites}장을 뽑았다 — 웃은 기억이 많은 이들이다"]
+  - id: ag_th_thorn_ball
+    npc: npc_thorn_queen
+    goal: 11.20 가시 무도회 (정본) — 초대받은 인간이 돌아오지 않거나 무언가를 잃고 돌아온다. 여왕은 극도로 친절하다
+    every: once
+    when: ["alive npc_thorn_queen", "var th_invites > 0", "date >= 312-11-20"]
+    at: {place: tc_ballroom, from: "18:00", to: "23:59", doing: 가시 무도회 — 첫 춤에 여왕이 초대받은 인간의 손을 잡는다}
+    effects: ["if var th_chosen_protected == false: var th_toys += var:th_invites ; log 가시 무도회 — 초대받은 {th_invites}명이 돌아오지 않았다 (장난감 정원 {th_toys}명)",
+              "else: log 가시 무도회 — 초대받은 이가 나타나지 않았다 — 여왕은 극도로 친절하게 웃었다"]
+  - id: ag_th_fog_gate
+    npc: npc_eleanor
+    goal: 12.10 서쪽 길로 잊힌 자 둘이 철 울타리에 닿는다 (정본) — 은목 못을 확인하고 안으로 들인다
+    every: once
+    when: ["alive npc_eleanor", "date >= 312-12-10"]
+    at: {place: thornmist__second_mothers, from: "06:00", to: "12:00", doing: 은목 못을 확인하고 서쪽 길에서 온 잊힌 자 둘을 들인다 — 토비가 페이어를 번역한다}
+    effects: ["var th_forgotten_taken += 2", "log 엘레노르가 정원에서 잊힌 자 둘을 철 울타리 안으로 들였다 — 토비가 번역할 때마다 이름의 글자 하나가 흐려진다"]
+  - id: ag_th_grik_thaw
+    npc: npc_grik
+    goal: 1.18 서리 길 재개 뒤 북방 탈주 시즌 (정본, 클락 3) — 숲 남쪽 경계로 번지는 탈주자들. 모자가 마르기 전에 적신다
+    every: once
+    when: ["alive npc_grik", "date >= 313-01-18"]
+    at: {place: thornmist__south_tower, from: "03:00", to: "07:00", doing: 해빙 뒤 폐탑 문턱에서 탈주자를 맞는다 — 모자를 다시 적신다}
+    effects: ["var th_fugitives_inside += 12", "var th_grik_hat_wet = true", "log 서리 길이 열리자 북방 탈주자 열둘이 숲 남쪽 경계로 번졌다 (회색여울 언덕에는 {sigrid_group}명이 남았다)"]
+  - id: ag_th_dew_thaw
+    npc: npc_dawn_hunter_dew
+    goal: 탈주 시즌에도 개를 서쪽으로 푼다 — 모자가 마르기 전에 사람들을 그릭의 문턱 밖으로
+    every: once
+    when: ["alive npc_dawn_hunter_dew", "var th_fugitives_inside >= 8", "date >= 313-01-18"]
+    at: {place: thornmist__south_tower, from: "07:00", to: "12:00", doing: 개를 서쪽으로 푼다 — 열둘 가운데 여덟을 문턱 밖으로 몬다}
+    effects: ["var th_fugitives_west += 8", "var th_fugitives_inside -= 8", "log 이슬이 개를 서쪽으로 풀어 탈주자 여덟을 그릭의 사냥터 밖으로 몰았다 (서쪽으로 간 이 모두 {th_fugitives_west}명)"]
+  - id: ag_th_egg_news
+    npc: npc_thorn_queen
+    goal: 3.15 바알카르 흰 알 부화 소식이 안개 장터에서 먼저 돈다 (정본, 클락 1) — 여왕은 웃고 '어제'는 어제 알이 깨지지 않았다고 말한다
+    every: once
+    when: ["alive npc_thorn_queen", "date >= 313-03-15"]
+    at: {place: tc_throne_room, from: "09:00", to: "18:00", doing: 안개 장터에서 올라온 흰 알 소식을 듣는다 — 웃는다}
+    effects: ["var th_egg_news = true", "log 흰 알 부화 소식이 가시 궁정에 닿았다 — 여왕은 웃었고 거울 시녀 '어제'는 '어제는 알이 깨지지 않았어'라고 했다"]
+  - id: ag_th_covenant_reversed
+    npc: npc_mirror_perhaps
+    goal: 5.1 맹약회의 313 (정본) — 숲은 사절을 보내지 않고 '혹시'가 회의의 결과를 거꾸로 전한다
+    every: once
+    when: ["alive npc_mirror_perhaps", "date >= 313-05-01"]
+    at: {place: tc_mirror_chamber, from: "09:00", to: "18:00", doing: 여왕에게 맹약회의의 결과를 거꾸로 전한다}
+    effects: ["if var bk_purge_motion == true: log '혹시'가 맹약회의의 '잔향 대숙청' 안건을 거꾸로 전했다 — 여왕은 웃음을 거꾸로 되받았다",
+              "else: log '혹시'가 맹약회의의 결과를 거꾸로 전했다 — 여왕은 웃음을 거꾸로 되받았다"]

@@ -1,0 +1,142 @@
+# 모르바 늪 (뿌리마을 자유촌) — 마레크의 보름 신호가 바르그 지부 탐문(7.25)으로 가는 사슬, 굶주림월의 항아리, 일곱 노파의 피 석 병.
+# 클락 3 북방 대탈주(볼크의 수색 소식 → 가르), 클락 2 맹약회의 313(5.16~20 '인간 증언' 소식)에 걸린다 (26_AGENDAS.md).
+# 정본 일정(events/morva_312.yaml)의 9.27 볼크 소식 · 10.15 보름 회합 · 10.20 공물 여섯과 소금 나루 · 11.15 겨울 안개 · 12.1 솥 하루 한 끼 · 12.20 항아리 · 1.10 이끼 걷기 · 3.12 알 부화 · 5.20 맹약회의 소식 · 7.25 바르그 탐문이
+# 원인과 결과로 이어지게 한다. 마레크가 밀고자라는 증거는 세 사람이 반쪽씩 쥐고 있어 뿌리 모임이 익사형으로 가지 못한다.
+# 플레이어가 끊을 수 있는 고리: 마레크의 아들 빚을 갚아 준다(mv_marek_debt → 0이면 신호를 멈춘다), 네 번째 증거(mv_proof_hard), 힐케의 항아리(mv_reserve).
+vars:
+  mv_marek_leads: 0            # 마레크가 바르그 지부에 뱀장어 길 입구를 알려 준 횟수 (보름마다)
+  mv_marek_debt: 40            # 마레크 아들 둘(세렌 산호 채석장)의 빚 — 알릴 때마다 한 푼씩 깎인다
+  mv_proof: 0                  # 마레크 밀고의 증거 반쪽 (베니의 사라진 배, 쥬드의 거울 빛, 엘스베트의 흐릿한 꿈)
+  mv_proof_hard: false         # 네 번째 분명한 증거 (플레이어가 구한다)
+  mv_marek_suspected: false    # 베니가 세 반쪽을 뿌리 모임에 올렸다
+  mv_marek_exposed: false      # 마레크가 밀고자로 밝혀졌다 (익사형의 노파 동의를 받을 만큼)
+  mv_barg_probe: false         # 바르그 지부 사람이 장어 장수로 꾸며 늪 어귀에 닿았다
+  mv_reserve: 0                # 힐케가 항아리에 묻은 훈제 장어 줄 (마흔이면 굶주림월을 하루 반 끼로 난다)
+  mv_hunger: 0                 # 굶주림월에 굶는 사람
+  mv_tribute_sent: 0           # 와이번에게 보낸 공물 (올해 여섯)
+  mv_reed_pen: 20              # 갈대 우리의 인간 (공물 여섯이 들어오면 스물여섯)
+  mv_blood_bottles: 0          # 겨울 전에 채울 독꼬리의 피 (석 병)
+  mv_hag_vote: false           # 보름 회합이 피 병을 두고 넷 대 셋으로 정했다
+  mv_saska_claims: false       # 사스카가 알이 깨진 값을 요구했다
+  mv_children_moved: false     # 레나가 겨울 안개 첫 밤에 아이 일곱을 갈대 방 안쪽으로 옮겼다
+  mv_arrivals_seen: 0          # 헤드비가가 소금 나루에서 본 회색여울 얼굴
+  mv_testimony_news: false     # '인간 증언' 소식이 뿌리마을에 닿았다
+agendas:
+  - id: ag_mv_garr_volk_news
+    npc: npc_mv_garr
+    goal: 9.27 회색여울에서 볼크가 대수색을 했다는 소식 (정본, 클락 3) — 자기가 잡아 판 서른일곱 이름 뒤에 한 줄을 더 외운다
+    every: once
+    when: ["alive npc_mv_garr", "date >= 312-09-27"]
+    at: {place: sh_guest_lodge, from: "20:00", to: "22:00", doing: 잿빛 실로 닿은 소식을 듣는다 — 서른일곱 이름 뒤에 아무 말 없이 한 줄을 더 외운다}
+    effects: ["log 가르가 볼크의 굶주린 언덕 대수색 소식을 들었다 — 회색여울에서 {fugitives_caught}명이 끌려갔다. 서른일곱 이름 뒤에 한 줄이 더 붙었다"]
+  - id: ag_mv_marek_signal
+    npc: npc_mv_marek
+    goal: 보름 밤 갯벌에서 루멘 쪽으로 거울 빛을 세 번 보낸다 — 뱀장어 길 입구를 알려 주고 아들의 빚을 한 푼 깎는다 (뿌리마을의 위치는 팔지 않는다)
+    every: "every:15"
+    chance: 0.5
+    when: ["alive npc_mv_marek", "var mv_marek_exposed == false", "var mv_marek_debt > 0", "date >= 312-09-01"]
+    at: {place: mm_mudflat, from: "22:00", to: "23:59", doing: 갈대배를 내어 갯벌로 나가 루멘 쪽으로 거울 빛을 세 번 반짝인다}
+    effects: ["var mv_marek_leads += 1", "var mv_marek_debt -= 1", "log 마레크가 거울 빛으로 바르그 지부에 늪길 입구를 알렸다 ({mv_marek_leads}번째, 아들의 빚 {mv_marek_debt})"]
+  - id: ag_mv_jude_light
+    npc: npc_mv_jude
+    goal: 보름마다 갯벌에서 루멘 쪽으로 반짝이는 거울 빛을 본다 — 어른들이 믿지 않을까 봐 베니에게 한 번만 말한다 (반쪽 증거 하나)
+    every: once
+    when: ["alive npc_mv_jude", "var mv_marek_leads >= 1"]
+    at: {place: mm_heron_nest, from: "22:00", to: "23:59", doing: 왜가리 둥지 망루에서 갯벌 쪽의 거울 빛을 센다}
+    effects: ["var mv_proof += 1", "log 쥬드가 갯벌의 거울 빛 세 번을 베니에게 말했다 (반쪽 증거 {mv_proof})"]
+  - id: ag_mv_beni_boats
+    npc: npc_mv_beni
+    goal: 달마다 갈대배 열세 척의 수를 센다 — 보름 밤마다 한 척이 밤새 비었다가 돌아온 것을 장부에 옮긴다
+    every: once
+    when: ["alive npc_mv_beni", "var mv_marek_leads >= 3"]
+    at: {place: mm_reed_boats, from: "05:00", to: "06:00", doing: 갈대배 열세 척의 수를 센다 — 한 척이 밤새 비었다가 돌아왔다}
+    effects: ["var mv_proof += 1", "log 베니가 석 달째 보름 밤마다 갈대배 한 척이 비는 것을 장부에 옮겼다 (반쪽 증거 {mv_proof})"]
+  - id: ag_mv_elsbet_dream
+    npc: npc_hag_elsbet
+    goal: 1.10 이끼 걷기 (정본) — 꿈 심문에서 흐릿하게 비친 웃는 장수의 얼굴 하나 (반쪽 증거)
+    every: once
+    when: ["alive npc_hag_elsbet", "date >= 313-01-10"]
+    at: {place: sh_moss_rock, from: "07:00", to: "13:00", doing: 이끼를 걷으며 지난 꿈을 되짚는다 — 웃는 얼굴이 흐릿하게 비친다}
+    effects: ["var mv_proof += 1", "log 엘스베트의 흐릿한 꿈에 늪 어귀의 웃는 장수가 비쳤다 (반쪽 증거 {mv_proof})"]
+  - id: ag_mv_beni_brings
+    npc: npc_mv_beni
+    goal: 세 반쪽을 뿌리 모임에 올린다 — 익사형은 노파 1명의 동의가 필요하다
+    every: once
+    when: ["alive npc_mv_beni", "var mv_proof >= 3", "date >= 313-01-25"]
+    at: {place: rv_council_island, from: "18:00", to: "22:00", doing: 뿌리 모임에 사라진 배와 거울 빛과 꿈을 올린다}
+    effects: ["var mv_marek_suspected = true", "if var mv_proof_hard == true: var mv_marek_exposed = true ; log 네 번째 증거가 더해져 뿌리 모임이 마레크를 밀고자로 가렸다",
+              "else: log 세 반쪽을 합쳐도 노파 1명의 동의를 받을 만큼 분명하지 않았다 — 마레크는 아직 웃으며 장어를 판다"]
+  - id: ag_mv_barg_probe
+    npc: npc_mv_marek
+    goal: 7.25 바르그 지부 사람 셋이 장어 장수로 꾸며 늪 어귀 장터에 닿는다 (정본) — 알린 입구가 쌓이면
+    every: once
+    when: ["alive npc_mv_marek", "var mv_marek_leads >= 6", "date >= 313-07-25"]
+    at: {place: mm_rotten_pier, from: "10:00", to: "17:00", doing: 아무것도 모르는 얼굴로 장어 값을 부른다 — 장어 장수로 꾸민 낯선 셋이 곁에 선다}
+    effects: ["var mv_barg_probe = true", "log 바르그 지부 사람 셋이 장어 장수로 꾸며 늪 어귀에 닿았다 — 보름마다 알린 {mv_marek_leads}번의 입구가 이어진 것이다"]
+  - id: ag_mv_hilke_jar
+    npc: npc_mv_hilke
+    goal: 장어철마다 솥 몫에서 훈제 장어를 덜어 늪 아래 항아리에 묻는다 — 겨울 굶주림월의 비축 (뿌리 모임은 모른다)
+    every: "every:15"
+    chance: 0.9
+    when: ["alive npc_mv_hilke", "var mv_reserve < 40", "date >= 312-09-05"]
+    at: {place: rv_pot, from: "22:00", to: "23:59", doing: 솥 몫에서 훈제 장어 열 줄을 덜어 늪 아래 항아리에 묻는다}
+    effects: ["var mv_reserve += 10", "log 힐케가 훈제 장어 열 줄을 항아리에 더 묻었다 (모두 {mv_reserve}줄)"]
+  - id: ag_mv_pot_once
+    npc: npc_mv_hilke
+    goal: 12.1 솥 하나가 하루 한 끼로 줄어든다 (정본) — 항아리가 차 있으면 하루 반 끼로 버틴다
+    every: once
+    when: ["alive npc_mv_hilke", "date >= 312-12-01"]
+    at: {place: rv_pot, from: "05:00", to: "08:00", doing: 국자를 들고 한 사람도 돌려보내지 않겠다고 중얼거린다}
+    effects: ["if var mv_reserve >= 40: log 솥이 하루 한 끼로 줄었다 — 힐케의 항아리 마흔 줄이 겨울을 하루 반 끼로 받친다",
+              "else: var mv_hunger += 6 ; log 솥이 하루 한 끼로 줄었다 — 항아리가 차지 않아 굶는 이가 생긴다 ({mv_hunger}명)"]
+  - id: ag_mv_tribute_six
+    npc: npc_bern
+    goal: 10.20 올해의 공물 여섯 (정본) — '사냥 원정'이라 말하고 사스카의 꼬리 앞에 선다
+    every: once
+    when: ["alive npc_bern", "date >= 312-10-20"]
+    at: {place: rv__mud_lantern_dike, from: "10:00", to: "14:00", doing: 공물 여섯을 와이번의 꼬리 앞으로 보낸다 — '사냥 원정'이라 말한다}
+    effects: ["var mv_tribute_sent += 6", "var mv_reed_pen += 6", "log 베른이 공물 여섯을 사스카에게 보냈다 — 갈대 우리의 인간은 이제 {mv_reed_pen}명"]
+  - id: ag_mv_hedwiga_counts
+    npc: npc_mv_hedwiga
+    goal: 10.20 소금 나루에 내린 회색여울 마흔의 얼굴을 센다 (정본) — 약초 자루 바닥에 쪽지 하나를 더 넣는다
+    every: once
+    when: ["alive npc_mv_hedwiga", "date >= 312-10-20"]
+    at: {place: sr_salt_quay, from: "06:00", to: "10:00", doing: 약초 자루를 안은 채 노예선에서 내린 마흔 얼굴을 센다}
+    effects: ["var mv_arrivals_seen += 40", "log 헤드비가가 소금 나루에서 회색여울 마흔 얼굴을 세었다 — 자루 바닥에 쪽지 하나가 더 들어갔다"]
+  - id: ag_mv_circle_blood
+    npc: npc_oda
+    goal: 10.15 보름 회합 (정본) — 겨울 전 독꼬리의 피 석 병. 오다는 병을 그릇 쪽으로 밀고 브리타는 자기 쪽으로 당긴다 (넷이면 정해진다)
+    every: once
+    when: ["alive npc_oda", "date >= 312-10-15"]
+    at: {place: sh_circle, from: "19:00", to: "23:59", doing: 보름 회합 — 피 석 병을 그릇 쪽으로 민다}
+    effects: ["var mv_hag_vote = true", "log 보름 회합이 피 석 병을 그릇 쪽으로 밀기로 넷 대 셋으로 정했다 — 브리타는 자기 쪽으로 당겼다 (지금 {mv_blood_bottles}병)"]
+  - id: ag_mv_oda_saska
+    npc: npc_oda
+    goal: 달마다 알 부화를 거드는 대가로 와이번의 피 한 병을 받는다 — 겨울 전에 석 병
+    every: "every:30"
+    when: ["alive npc_oda", "alive npc_saska", "var mv_blood_bottles < 3", "date >= 312-09-01"]
+    at: {place: rv__saska_nest, from: "22:00", to: "23:59", doing: 알 곁에서 부화를 거들고 와이번의 피 한 병을 받는다}
+    effects: ["var mv_blood_bottles += 1", "log 오다가 사스카에게서 와이번의 피 한 병을 받았다 (모두 {mv_blood_bottles}병)"]
+  - id: ag_mv_rena_fog
+    npc: npc_mv_rena
+    goal: 11.15 겨울 안개가 둑을 덮는 첫 밤 (정본) — 회색 여인의 매듭대로 '겨울 안개가 덮을 때까지' 움직이지 않다가 아이 일곱을 갈대 방 안쪽으로 옮긴다
+    every: once
+    when: ["alive npc_mv_rena", "date >= 312-11-15"]
+    at: {place: rv__mist_bank_hut, from: "22:00", to: "23:59", doing: 아이 일곱을 갈대 방 안쪽으로 옮긴다 — 이름을 부르지 않고 손만 잡는다}
+    effects: ["var mv_children_moved = true", "log 겨울 안개가 덮자 레나가 아이 일곱을 갈대 방 안쪽으로 옮겼다 — 안개가 걷힐 때까지 둑은 비어 있다"]
+  - id: ag_mv_eggs
+    npc: npc_saska
+    goal: 3.12 알 열넷 가운데 열하나가 깨진다 (정본) — 오다의 거듦에 값을 매긴다
+    every: once
+    when: ["alive npc_saska", "date >= 313-03-12"]
+    at: {place: rv__saska_nest, from: "04:00", to: "20:00", doing: 알 열넷 가운데 열하나가 깨진다 — 식은 알을 꼬리로 한 번 쓰다듬는다}
+    effects: ["log 사스카의 알 열하나가 깨지고 셋은 끝내 깨지지 못했다",
+              "if var mv_blood_bottles >= 3: var mv_saska_claims = true ; log 사스카가 피 석 병의 값을 치렀으니 이번에는 늪 사냥터의 갈대 매듭 한 곳을 더 달라고 했다 — 젖은 휴전의 표시"]
+  - id: ag_mv_covenant_news
+    npc: npc_mv_alek
+    goal: 5.20 맹약회의 313 소식이 늪 깊이 닿는다 (정본, 클락 2) — '인간 증언'이 처음 안건에 올랐다
+    every: once
+    when: ["alive npc_mv_alek", "date >= 313-05-20"]
+    at: {place: rv_council_island, from: "18:00", to: "22:00", doing: "'인간 증언'이라는 말을 진흙판에 한 번 쓰고 물로 지우지 못한다"}
+    effects: ["var mv_testimony_news = true", "if var bk_purge_motion == true: log 맹약회의에서 '인간 증언'이 올랐다는 소식이 닿았다 — 바알카르의 대숙청 안건과 같은 자리의 이야기다",
+              "else: log 맹약회의에서 '인간 증언'이 처음 안건에 올랐다는 소식이 뿌리마을에 닿았다"]

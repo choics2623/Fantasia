@@ -1,0 +1,131 @@
+# 녹테른 밤의 영지 (red_pens) — 갈증의 밤(11.15)과 세실의 장부 사슬. 클락 2 맹약회의 313(바실리사의 안, 5.1)과 클락 5 영혼 정원(마리안의 납품, 3.13)에 걸린다 (26_AGENDAS.md).
+# 정본 일정(events/red_pens_312.yaml)의 11.5 결번 · 11.12 루멘 공물 호송 · 11.14 우물 순례 · 11.15 공물 도착과 갈증의 밤 · 12.8 알라리크의 재촉 · 3.13 마리안 · 5.1 맹약회의 · 6.10 침묵종의 보류가
+# 원인과 결과로 이어지게 한다. '병사' 칸의 장부(크릭 숫자보다 일곱 많다)가 세실의 장미 410을 가리고, 그 가림막이 얇아지면 알라리크의 증거와 침묵종의 의뢰로 간다.
+# 플레이어가 끊을 수 있는 고리: 헤트(쑥 한 자루)를 지키면 즈라그가 눈감는다, 오르페의 장부 고침, 퀸트의 서명 사본, 알라리크의 증거(no_alaric_proof), 마리안을 하얀 우리에서 빼낸다(no_marian_delivered).
+vars:
+  no_gap: 7                    # 아드리엘의 장부와 크릭 목동이 세는 인간 수의 차이 (그 일곱이 '병사')
+  no_gap_reported: false       # 즈라그가 차이를 영주에게 보고했다 (헤트가 쑥을 못 건네면)
+  no_ledger_edits: 38          # 오르페가 붉은 우리 기록판 '병사' 칸을 고친 횟수
+  no_overlap: 0                # 알라리크가 세실의 장부와 자기 혈통 장부를 겹쳐 본 횟수
+  no_alaric_proof: false       # 알라리크가 세실을 칠 '증거'를 만들었다
+  no_blank_line: false         # 집전관이 공물 명단 한 줄을 결번으로 비웠다
+  no_escaped: 364              # 세실이 장미원 통로로 빼돌린 이름 (정본 1.12에 410)
+  no_tribute_in: 0             # 루멘에서 온 공물 수
+  no_white: 0                  # 하얀 우리로 골라낸 공물
+  no_mordecai_third: false     # 군주가 우물 곁에서 세 번째 소리를 들었다
+  no_thirst_done: false        # 갈증의 밤이 치러졌다
+  no_covenant_motion: false    # 바실리사의 안이 맹약회의에 올랐다
+  no_silas_hold: true          # 침묵종이 세실 암살 의뢰를 보류 중이다
+  no_cecile_hunted: false      # 침묵종이 의뢰를 받았다 (아홉째가 세실을 쫓는다)
+  no_marian_delivered: false   # 마리안이 영혼 정원에 납품되었다
+agendas:
+  - id: ag_no_zrag_looks_away
+    npc: npc_zrag
+    goal: 헤트가 건네는 달마다의 쑥 한 자루를 받고 일곱의 차이를 못 본 척한다
+    every: "every:30"
+    when: ["alive npc_zrag", "alive npc_hedwig", "var no_gap_reported == false", "date >= 312-09-01"]
+    at: {place: rp_herders_lodge, from: "19:00", to: "21:00", doing: 달 점호 — 쑥 한 자루를 받고 숫자표를 장부와 맞추는 척한다}
+    effects: ["log 즈라그가 쑥 한 자루를 받고 크릭 숫자와 장부의 차이 {no_gap}을 못 본 척했다"]
+  - id: ag_no_zrag_reports
+    npc: npc_zrag
+    goal: 쑥이 끊기면 일곱의 차이를 영주에게 보고한다 — 목동장도 제 목은 지켜야 한다
+    every: once
+    when: ["alive npc_zrag", "dead npc_hedwig", "var no_gap_reported == false"]
+    at: {place: rp_herders_lodge, from: "19:00", to: "20:00", doing: 영주의 서기에게 숫자표를 보인다}
+    effects: ["var no_gap_reported = true", "var no_overlap += 2", "log 쑥이 끊기자 즈라그가 크릭 숫자와 장부의 차이 {no_gap}을 보고했다 — 세실의 가림막이 얇아졌다"]
+  - id: ag_no_orphe_edits
+    npc: npc_orphe
+    goal: 붉은 우리 기록판의 '병사' 칸 홈을 고친다 — 글자를 모르니 홈 깊이로만
+    every: "every:30"
+    chance: 0.8
+    when: ["alive npc_orphe", "var no_ledger_edits < 60"]
+    at: {place: rp_ledger_board, from: "03:00", to: "04:30", doing: 새벽 기록판 앞 — 왼손 깊이로 '병사' 칸 홈 하나를 더 판다}
+    effects: ["var no_ledger_edits += 1", "log 오르페가 '병사' 칸 홈을 고쳤다 ({no_ledger_edits}번째)"]
+  - id: ag_no_rose_escape
+    npc: npc_cecile
+    goal: 달마다 장미원 셋째 덤불 아래 통로로 여럿을 붉은 갈대 선 밖으로 보낸다 — 병사 명단에 이름이 오른 이들
+    every: "every:30"
+    when: ["alive npc_cecile", "date >= 312-09-01"]
+    at: {place: rose_manor__garden, from: "23:00", to: "23:59", doing: 셋째 덤불 아래 문을 직접 연다 — 아홉이 붉은 갈대 선으로 나간다}
+    effects: ["var no_escaped += 9", "log 세실이 장미원 통로로 아홉을 내보냈다 (빼돌린 이름 {no_escaped})"]
+  - id: ag_no_marcius_blank
+    npc: npc_marcius
+    goal: 11.5 공물 명단 확정 준비 (정본) — 루멘에서 온 40명의 이름 가운데 한 줄을 일부러 결번으로 비운다
+    every: once
+    when: ["alive npc_marcius", "date >= 312-11-05"]
+    at: {place: first_thirst_castle__cup_hall, from: "20:00", to: "23:59", doing: 공물 명단을 확정하다 한 줄을 결번으로 비워 둔다}
+    effects: ["var no_blank_line = true", "log 집전관 마르시우스가 공물 명단의 한 줄을 결번으로 비웠다 — 그 결번이 세실의 장미가 된다"]
+  - id: ag_no_rosalie_depart
+    npc: npc_rosalie
+    goal: 11.12 루멘 공물 호송 출발 (정본) — 번호 열일곱. 이름이 공물 명단에 오른 잿빛 실 요원
+    every: once
+    when: ["alive npc_rosalie", "date >= 312-11-12"]
+    at: {place: lumen, from: "05:00", to: "09:00", doing: 공물 호송 대열에 선다 — 주머니 속 장미 꽃잎을 만진다}
+    effects: ["var no_tribute_in = var:lm_tribute", "log 루멘의 공물 {no_tribute_in}명이 붉은 우리로 떠났다"]
+  - id: ag_no_well_pilgrimage
+    npc: npc_mordecai
+    goal: 11.14 우물 순례 (정본) — 갈증의 밤 전날 군주의 두 겹 목소리 사이에서 세 번째 소리를 듣는다
+    every: once
+    when: ["alive npc_mordecai", "date >= 312-11-14"]
+    at: {place: first_thirst_castle__well, from: "22:00", to: "23:59", doing: 우물 곁에서 소절을 읊는다 — '너희는…'에서 멈춘다}
+    effects: ["var no_mordecai_third = true", "log 군주가 우물 곁에서 세 번째 소리를 들었다 — 소절은 '너희는…'에서 또 멈췄다"]
+  - id: ag_no_tribute_arrive
+    npc: npc_kasimir
+    goal: 11.15 공물 도착 (정본) — 명단과 인원을 세고 올해도 둘을 하얀 우리로 고른다
+    every: once
+    when: ["alive npc_kasimir", "var no_tribute_in > 0", "date >= 312-11-15"]
+    at: {place: rp_tribute_yard, from: "05:00", to: "12:00", doing: 공물 마당 — 명단과 인원을 세고 둘을 하얀 우리로 고른다}
+    effects: ["var no_white += 2", "log 카시미르가 공물 {no_tribute_in}명을 세었다 — 올해도 둘이 명단과 다르다. 둘을 하얀 우리로 골랐다"]
+  - id: ag_no_thirst_night
+    npc: npc_marcius
+    goal: 11.15 갈증의 밤 (정본) — 모든 녹테른이 첫 갈증 성에 모인다. 집전관이 공물 명단을 확정하고 잔을 돌린다
+    every: once
+    when: ["alive npc_marcius", "var no_tribute_in > 0", "date >= 312-11-15"]
+    at: {place: first_thirst_castle__great_hall, from: "18:00", to: "23:59", doing: 공물 명단을 확정하고 잔을 돌린다}
+    effects: ["var no_thirst_done = true", "log 갈증의 밤 — 집전관이 공물 {no_tribute_in}명의 명단을 확정하고 잔을 돌렸다",
+              "if var no_blank_line == true: var no_escaped += 1 ; log 명단의 결번 하나는 이름 없이 남았다 — 장미 하나가 된다"]
+  - id: ag_no_alaric_overlay
+    npc: npc_alaric
+    goal: 세실의 장부와 자기 혈통 장부를 겹쳐 본다 — 인간 수가 맞지 않는 칸을 찾는다
+    every: "every:45"
+    chance: 0.5
+    when: ["alive npc_alaric", "alive npc_cecile", "date >= 312-11-15"]
+    at: {place: nocturne__black_chalice_pen, from: "20:00", to: "23:00", doing: 두 장부를 겹쳐 본다 — 홈 깊이가 어긋난 칸에 손가락을 얹는다}
+    effects: ["var no_overlap += 1", "log 알라리크가 세실의 장부와 자기 장부를 겹쳐 보았다 — 어긋난 칸이 {no_overlap}곳이다"]
+  - id: ag_no_alaric_presses
+    npc: npc_alaric
+    goal: 12.8 세실 암살 의뢰를 다시 재촉한다 (정본) — 사일라스는 '증거 없이는 집을 짓지 않는다'
+    every: once
+    when: ["alive npc_alaric", "alive npc_silas_bell", "date >= 312-12-08"]
+    at: {place: nocturne__silentbell_pen, from: "21:00", to: "23:59", doing: 침묵종 가주에게 의뢰를 재촉한다 — 증거를 만들 시간이 열흘 남았다}
+    effects: ["log 알라리크가 사일라스에게 세실 암살 의뢰를 재촉했다 — 사일라스는 증거 없이는 움직이지 않겠다고 했다"]
+  - id: ag_no_alaric_proof
+    npc: npc_alaric
+    goal: 열흘 안에 증거를 만든다 — 겹쳐 본 장부의 어긋난 칸이 충분하면 가져간다
+    every: once
+    when: ["alive npc_alaric", "var no_overlap >= 5", "date >= 312-12-18"]
+    at: {place: nocturne__black_chalice_pen, from: "20:00", to: "23:00", doing: 어긋난 칸을 베껴 증거 한 장을 만든다}
+    effects: ["var no_alaric_proof = true", "log 알라리크가 세실의 장부에서 '병사' 칸의 위조 증거를 만들어 냈다"]
+  - id: ag_no_marian_arrives
+    npc: npc_marian
+    goal: 3.13 마리안이 영혼 정원 피험자 정자에 닿는다 (정본, 클락 5) — 하얀 우리에서 고른 열둘째 아이
+    every: once
+    when: ["alive npc_marian", "var no_white >= 2", "date >= 313-03-13"]
+    at: {place: soul_garden__patient_pavilion, from: "08:00", to: "18:00", doing: 망각의 길 167시간을 지나 정자에 닿는다 — 피오나엘과 눈이 마주친다}
+    effects: ["var no_marian_delivered = true", "var sv_rituals += 1", "log 마리안이 영혼 정원에 납품되었다 — 피오나엘의 꿈이 겹쳤다 (옮김 의식 {sv_rituals}번째 피험자)"]
+  - id: ag_no_covenant_motion
+    npc: npc_basilisa
+    goal: 5.1 맹약회의 313 (정본, 서약섬) — '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낸다
+    every: once
+    when: ["alive npc_basilisa", "date >= 313-05-01"]
+    at: {place: oath_isle, from: "09:00", to: "18:00", doing: 녹테른 대표로 '징후자를 사냥꾼에게 인도하라'는 안을 낸다}
+    effects: ["var no_covenant_motion = true", "if var bk_purge_motion == true: log 바실리사가 바알카르의 '잔향 대숙청' 안건에 맞서 징후자를 녹테른 사냥꾼에게 인도하라는 안을 냈다",
+              "else: log 바실리사가 징후자를 처형하지 말고 녹테른 사냥꾼에게 인도하라는 안을 냈다"]
+  - id: ag_no_silas_decides
+    npc: npc_silas_bell
+    goal: 6.10 의뢰 목록의 첫 줄을 다시 쓸어 읽는다 (정본) — 증거가 손에 들어오면 아홉째에게 넘기고 아니면 보류
+    every: once
+    when: ["alive npc_silas_bell", "date >= 313-06-10"]
+    at: {place: nocturne__silentbell_pen, from: "21:00", to: "23:59", doing: 의뢰 목록의 첫 줄을 다시 쓸어 읽는다 — 아홉째가 곁에 선다}
+    effects: ["if var no_alaric_proof == true: var no_silas_hold = false ; var no_cecile_hunted = true ; log 사일라스가 알라리크의 증거를 읽고 세실 암살 의뢰를 아홉째에게 넘겼다",
+              "else: log 사일라스가 세실 암살 의뢰의 첫 줄을 다시 읽고 보류했다 — 아홉째는 낮게 대답을 미뤘다"]

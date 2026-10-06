@@ -1,0 +1,155 @@
+# 실바렌 영원 정원 — 클락 5 영혼 정원(WORLD_BIBLE §10 #5, 엘다르 존속파 실험)과 클락 2 맹약회의 313의 사슬 (26_AGENDAS.md).
+# 정본 일정(events/eternal_garden_312.yaml)의 9.3 첫 낙엽 · 10.8~9 미라의 다섯 번째 옮김 의식 · 10.24 경매 · 11.14 루멘 명단 ·
+# 12.2 이송 안건 · 1.10 빈 요람의 밤 · 3.15 흰 알 섭정안 · 5.1 맹약회의가 원인과 결과로 이어지게 한다.
+# 플레이어가 끊을 수 있는 고리: 미라를 의식 전에 빼낸다(sv_mira_freed), 아에린을 막아 그물을 늦춘다(아에린 사망·sv_net), 아에린의 87 실패 기록을 이실레아에게 건넨다(sv_isilea_proof → 한 박자 어긋남).
+vars:
+  sv_boundary: 8               # 정원 경계의 시간 결계 (낭송이 해마다 한 박자씩 모자라 줄어든다 — 0이면 바깥 시간이 스며든다)
+  sv_leaves: 0                 # 경계 안쪽에 떨어진 낙엽 수 (정본 9.3 첫 낙엽)
+  sv_net: 0                    # 시간의 그물 진행 0~10 (클락 5 — 10에 가까울수록 '잔향 포획'에 가깝다)
+  sv_net_closed: false         # 그물이 닫혔다 — 정원 안에서 죽은 잔향자는 회귀점에 닿지 못한다
+  sv_rituals: 31               # 올해 옮김 의식 수 (성공 0)
+  sv_mira_freed: false         # 플레이어가 의식 전에 미라를 빼냈다
+  sv_mira_memory: 60           # 미라에게 남은 기억 (0이면 이름까지 지워진다)
+  sv_stops: 0                  # 정지를 받은 정원지기 수 (정지된 이는 깨어서 낭송을 외운다)
+  sv_pen_opened: false         # 경매 전날 밤 대기 우리 문이 한 시간 열렸다
+  sv_auction_lots: 0
+  sv_naelis_gone: false        # 나엘리스가 잿빛 탑으로 떠났다
+  sv_transfers_tabled: false   # 영혼 정원 이송 건이 의회에서 한 바퀴 뒤로 넘어갔다
+  sv_vessel_marked: false      # 아에린이 리안델을 '돌아옴의 그릇'으로 점찍었다
+  sv_west_path_open: false     # 서리 길 — 잊힌 자 둘이 서쪽 안개 길로 나갔다
+  sv_regency_motion: false     # 이실레아의 '흰 알 섭정안'이 의회 낭송에 올랐다
+  sv_isilea_proof: false       # 플레이어가 이실레아에게 아에린의 87 실패 기록을 건넸다 (fact_sv_aerin_87_failures)
+  sv_offbeat_declared: false   # 이실레아가 '한 박자 어긋남'을 선언했다 (취소할 수 없다)
+agendas:
+  - id: ag_sv_first_leaf
+    npc: npc_wren
+    goal: 9.3 정원 경계 안쪽에 낙엽이 처음 떨어진다 (정본) — 가을을 이름으로만 아는 아이가 먼저 본다
+    every: once
+    when: ["alive npc_wren", "date >= 312-09-03"]
+    at: {place: eg_orchard, from: "15:00", to: "16:30", doing: 경계 안쪽에서 떨어진 낙엽 한 장을 손에 받는다}
+    effects: ["var sv_leaves += 1", "var sv_boundary -= 1", "log 정원 경계 안쪽에 낙엽이 처음 떨어졌다 — 렌이 먼저 보았다 (결계 {sv_boundary})"]
+  - id: ag_sv_council_short_beat
+    npc: npc_silvanus
+    goal: 의회의 낭송은 해마다 한 박자씩 모자란다 — 노인은 그것을 '존엄한 소멸'의 순서라 부른다
+    every: "every:30"
+    chance: 0.55
+    when: ["alive npc_silvanus", "var sv_boundary > 0", "date >= 312-09-10"]
+    at: {place: eg_ring_hall, from: "13:00", to: "18:00", doing: 노래 한 바퀴 낭송 — 결계를 기우는 구절이 한 박자 모자란다}
+    effects: ["var sv_boundary -= 1", "log 의회의 낭송이 한 박자 모자랐다 — 경계 결계 {sv_boundary}"]
+  - id: ag_sv_ritual_prep
+    npc: npc_aerin
+    goal: 10.8 다섯 번째 옮김 의식 준비 (정본) — 접목 침대 열여덟째를 닦고 수정 기둥의 그물을 조인다
+    every: once
+    when: ["alive npc_aerin", "date >= 312-10-08"]
+    at: {place: soul_garden__graft_beds, from: "17:00", to: "20:00", doing: 접목 침대 열여덟째를 닦고 수정 기둥의 그물을 조인다}
+    effects: ["var sv_net += 1", "log 아에린이 다섯 번째 옮김 의식을 준비했다 — 그물 {sv_net}"]
+  - id: ag_sv_ritual_mira
+    npc: npc_aerin
+    goal: 10.9 미라의 다섯 번째 옮김 의식 (정본) — 실패할 줄 알면서 방법을 다듬는다. 같은 날 회색여울 매각 호송이 출발한다
+    every: once
+    when: ["alive npc_aerin", "date >= 312-10-09"]
+    at: {place: soul_garden__graft_beds, from: "09:00", to: "15:00", doing: 네 번을 견딘 사람이 다시 눕는다 — 수정 기둥이 낮게 운다}
+    effects: ["if var sv_mira_freed == false: var sv_rituals += 1 ; var sv_mira_memory -= 20 ; var sv_net += 2 ; log 미라의 다섯 번째 옮김 의식 — 성공은 없고 이름이 하나 더 지워졌다 (남은 기억 {sv_mira_memory})",
+              "else: var sv_net += 1 ; log 접목 침대가 비어 있었다 — 미라가 없어서 아에린이 다른 이름을 골랐다"]
+  - id: ag_sv_boriwheat_stop
+    npc: npc_erlan
+    goal: 10.9 '보리'의 정지 (정본) — 3년째 같은 날. 정지된 이는 깨어서 낭송을 한 글자도 놓치지 않는다
+    every: once
+    when: ["alive npc_erlan", "date >= 312-10-09"]
+    at: {place: eg_steward_office, from: "08:00", to: "16:00", doing: "'보리'에게 정지를 건다 — 미리엘이 장부에 같은 칸을 쓴다"}
+    effects: ["var sv_stops += 1", "log '보리'가 3년째 미라의 의식 날에 정지를 받았다 — 정지된 이는 깨어서 외운다"]
+  - id: ag_sv_open_pen
+    npc: npc_rosevita
+    goal: 10.23 경매 전날 밤 열쇠 사본으로 대기 우리 문을 한 시간 연다 — 새로 온 사람이 아래 이름을 떠올리도록
+    every: once
+    when: ["alive npc_rosevita", "date >= 312-10-23"]
+    at: {place: silver_leaf_gate__holding_pen, from: "22:00", to: "23:00", doing: 열쇠 사본으로 우리 문을 한 시간 연다 — 회색여울에서 온 새 손님에게 흰 빵을 건넨다}
+    effects: ["var sv_pen_opened = true", "log 로즈비타가 대기 우리 문을 한 시간 열었다 — 회색여울에서 팔려 온 이가 아래 이름을 떠올렸다"]
+  - id: ag_sv_auction
+    npc: npc_caelon
+    goal: 10.24 서리월 경매 (정본) — 정원지기 후보 마흔. '선물 교환'이라 부른다
+    every: once
+    when: ["alive npc_caelon", "date >= 312-10-24"]
+    at: {place: silver_leaf_gate__auction, from: "09:00", to: "17:00", doing: 정원지기 후보 마흔을 받는다 — 시스라는 수를 입에 올리지 않는다}
+    effects: ["var sv_auction_lots += 40", "log 서리월 경매 — 정원지기 후보 마흔이 은잎문을 넘었다 (회색여울에서 온 이 포함)",
+              "if var sv_pen_opened == true: log 아치 앞 그날 밤 카엘론이 새 이름 하나를 더 외웠다"]
+  - id: ag_sv_sisra_count
+    npc: npc_sisra
+    goal: 매 경매마다 실제 넘긴 수보다 두세 명 많은 수로 은목재를 받는다
+    every: once
+    when: ["alive npc_sisra", "var sv_auction_lots >= 40"]
+    at: {place: silver_leaf_gate__auction, from: "17:00", to: "18:00", doing: 은목재 지불 대행 — 수를 두세 명 부풀려 적는다}
+    effects: ["coin npc_sisra += 3 비늘", "log 시스라가 경매 수를 두세 명 부풀려 은목재를 받았다 — 카엘론은 알고 말하지 않는다"]
+  - id: ag_sv_naelis_leaves
+    npc: npc_naelis
+    goal: 10.30 긴밤월 전 잿빛 탑으로 — 이번에는 기억 수정을 두고 간다 (정본)
+    every: once
+    when: ["alive npc_naelis", "date >= 312-10-30"]
+    at: {place: silver_leaf_gate, from: "08:00", to: "10:00", doing: 은잎문을 나선다 — 소매 속 수정은 이번에 두고 간다}
+    effects: ["var sv_naelis_gone = true", "log 나엘리스가 은잎문을 나서 잿빛 탑으로 갔다 — 호수의 기억 수정은 이번에 두고 갔다"]
+  - id: ag_sv_isalion_filters
+    npc: npc_isalion
+    goal: 11.14 루멘의 공물 명단 승인 보고를 걸러서 올린다 (정본) — 의회에는 '선물 교환'으로만
+    every: once
+    when: ["alive npc_isalion", "date >= 312-11-14"]
+    at: {place: eg_light_house, from: "10:00", to: "12:00", doing: 루멘에서 온 문서를 읽고 걸러서 올린다 — 녹테른의 갈증의 밤 전날}
+    effects: ["log 이살리온이 루멘 공물 명단 {lm_tribute}명을 '선물 교환'이라는 문장으로 걸러 의회에 올렸다"]
+  - id: ag_sv_net_knot
+    npc: npc_aerin
+    goal: 옮김 의식이 실패해도 수정 기둥의 그물은 한 매듭씩 조인다 — 실패에서 방법론을 다듬는다
+    every: "every:20"
+    chance: 0.6
+    when: ["alive npc_aerin", "var sv_net < 10", "date >= 312-11-01"]
+    at: {place: soul_garden__crystal_columns, from: "14:00", to: "18:00", doing: 수정 기둥 사이에 시간의 그물을 한 매듭 조인다}
+    effects: ["var sv_net += 1", "log 아에린이 시간의 그물을 한 매듭 조였다 (그물 {sv_net}/10)"]
+  - id: ag_sv_transfers_tabled
+    npc: npc_isilea
+    goal: 12.2 영혼 정원 이송 건 (정본) — 선례가 없어 다음 바퀴로. '어긋남'을 입에 올릴 뻔하고 멈춘다
+    every: once
+    when: ["alive npc_isilea", "date >= 312-12-02"]
+    at: {place: eg_ring_hall, from: "13:00", to: "18:00", doing: 노래 한 바퀴 안건 — 영혼 정원 이송 건. 선례가 없어 다음 바퀴로 넘어간다}
+    effects: ["var sv_transfers_tabled = true", "log 의회가 영혼 정원 이송 건을 선례가 없다며 다음 바퀴로 넘겼다 — 미리엘의 장부는 서명 없이 계속된다"]
+  - id: ag_sv_mark_vessel
+    npc: npc_aerin
+    goal: 1.10 빈 요람의 밤 — 엘다르 전원이 모인 자리에서 마지막 아이를 '돌아옴의 그릇'으로 본다 ('그 아이 안에 넣으면 된다')
+    every: once
+    when: ["alive npc_aerin", "alive npc_liandel", "var sv_net >= 3", "date >= 313-01-10"]
+    at: {place: eg_empty_cradle, from: "20:00", to: "23:00", doing: 침묵 속에서 리안델을 오래 본다 — 상냥한 눈으로 화초를 보듯}
+    effects: ["var sv_vessel_marked = true", "log 빈 요람의 밤에 아에린이 리안델을 '돌아옴의 그릇'으로 점찍었다 — 이실레아는 그 눈을 이미 알고 있었다"]
+  - id: ag_sv_west_path
+    npc: npc_ilvanor
+    goal: 1.16 서리 길 — 정원에서 잊힌 자 둘이 서쪽 안개 길로 간다. 활시위만 울리고 쏘지 않는다 (실바누스의 침묵 명령)
+    every: once
+    when: ["alive npc_ilvanor", "date >= 313-01-16"]
+    at: {place: eternal_garden__silver_forest, from: "04:00", to: "07:00", doing: 서쪽 길 앞에서 활시위만 울린다}
+    effects: ["var sv_west_path_open = true", "log 잊힌 자 둘이 서쪽 안개 길로 나갔다 — 일바노르는 쏘지 않았다"]
+  - id: ag_sv_net_closed
+    npc: npc_aerin
+    goal: 그물이 충분히 조여지면 닫는다 — 정원 안에서 죽은 잔향자는 회귀점에 닿지 못한다 (클락 5 '잔향 포획'의 문)
+    every: once
+    when: ["alive npc_aerin", "var sv_net >= 9", "date >= 313-02-01"]
+    at: {place: soul_garden__crystal_columns, from: "21:00", to: "23:30", doing: 마지막 매듭을 조인다 — 수정 기둥이 한 음으로 운다}
+    effects: ["var sv_net_closed = true", "log 시간의 그물이 닫혔다 — 정원 안에서 죽은 잔향자는 회귀점에 닿지 못한다"]
+  - id: ag_sv_white_egg_motion
+    npc: npc_isilea
+    goal: 3.15 흰 알 부화 소식 (정본) — 의회에 '흰 알 섭정안'을 낭송한다. 44년 만에 처음 '아이가 태어난 곁'이 의회의 일이 된다
+    every: once
+    when: ["alive npc_isilea", "date >= 313-03-15"]
+    at: {place: eg_ring_hall, from: "10:00", to: "18:00", doing: 의회에 흰 알 섭정안을 낭송한다 — 여왕은 한 마디도 하지 않는다}
+    effects: ["var sv_regency_motion = true", "log 이실레아가 의회에 '흰 알 섭정안'을 낭송했다 (엘다르가 흰 용의 섭정단에 이름을 올리려 한다)",
+              "if var sv_vessel_marked == true: log 딸의 이름이 안건에 오르는 순간 낭송이 한 박자 늦었다"]
+  - id: ag_sv_offbeat
+    npc: npc_isilea
+    goal: 딸이 '그릇'으로 점찍혔고 아에린의 87 실패 기록이 손에 있다면 '한 박자 어긋남'을 선언한다 — 취소할 수 없고 존속파 지지 2,000을 잃는다 (기본 궤적에서는 증거가 없어 선언하지 못한다)
+    every: once
+    when: ["alive npc_isilea", "var sv_vessel_marked == true", "var sv_isilea_proof == true", "date >= 313-02-06"]
+    at: {place: eg_ring_hall, from: "13:00", to: "18:00", doing: 의회에서 '한 박자 어긋남'을 선언한다 — 안건이 한 바퀴 뒤로 넘어간다}
+    effects: ["var sv_offbeat_declared = true", "var sv_net -= 3", "var sv_net_closed = false", "log 이실레아가 아에린의 87 실패 기록을 들고 의회에서 '한 박자 어긋남'을 선언했다 — 그릇 계획이 한 바퀴 뒤로 넘어가고 그물이 풀렸다"]
+  - id: ag_sv_covenant_stance
+    npc: npc_isilea
+    goal: 5.1 맹약회의 313 (정본, 서약섬) — 엘다르의 입장을 '막지도 돕지도 않는다'에서 다시 기억한다
+    every: once
+    when: ["alive npc_isilea", "date >= 313-05-01"]
+    at: {place: oath_isle, from: "09:00", to: "18:00", doing: 맹약회의 313 — 엘다르 대리. 흰 알 섭정안과 '다시 기억'안을 낸다}
+    effects: ["if var sv_net_closed == true: log 맹약회의 313 — 엘다르의 대리는 '다시 기억'안을 내지만 영혼 정원의 그물은 이미 닫혀 있다 (잔향 포획의 문)",
+              "else: log 맹약회의 313 — 엘다르의 대리가 '다시 기억'안을 낸다 (영혼 정원의 그물 {sv_net}/10 — 아직 닫히지 않았다)"]
