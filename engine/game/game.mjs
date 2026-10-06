@@ -136,7 +136,9 @@ function build(content, run) {
   S.purse.player = 3;      // 부츠 속 동화 3못 (14)
   // 대본 장면의 무대: 회차 시작 장면이 세우는 사람들 (모든 회차 같다 — 회귀점의 고정 인물)
   const day0 = Math.floor(START / 1440) * 1440;
-  for (const st of game.storylets || []) if (st.trigger?.start) for (const x of st.stage || []) W.override({ npc: x.npc, from: day0 + parseClock(x.from), to: day0 + parseClock(x.to), kind: "at", at: x.at, doing: x.doing });
+  // 시각만 쓰면 회귀점의 날, '날짜 시각'이면 그 날 (마르타의 뒷문 등)
+  const stT = (x) => (String(x).includes(" ") ? (() => { const [d, hm] = String(x).split(" "); const { y, m, d: dd } = parseDate(d); return toMinutes(y, m, dd) + parseClock(hm); })() : day0 + parseClock(x));
+  for (const st of game.storylets || []) for (const x of st.stage || []) W.override({ npc: x.npc, from: stT(x.from), to: stT(x.to), kind: "at", at: x.at, doing: x.doing });
   const g = {
     content, run, W, S, A, L, seed,
     t: START, at: "gf_rooster",
@@ -457,6 +459,7 @@ export function apply(g, e, { replay = false } = {}) {
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
   if (od && opt.skill) growSkill(g, opt.skill, od, tier, verb);
+  if (!g.story && !g.ended && !g.convo) { const wt = windowTrigger(g); if (wt) openStory(g, wt); else nemesisCheck(g); }
   successions(g);
   for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
   g.P.been.add(g.at);
@@ -471,6 +474,44 @@ export function apply(g, e, { replay = false } = {}) {
 const WATER = new Set(["gf_willow_bank", "gf_well_square", "gf_iron_bridge", "gf_hagen_shed"]);
 const TRIVIAL = /^(wait|sleep|leave|small_talk|story:next|story_name)\b/;
 
+// ── 위협의 소비자 (27 반응 층의 threats → 장면) ──
+// 협박꾼은 반나절 뒤부터, 같은 자리에서 마주치면 요구한다. 복수자는 쫓는 자가 된다.
+function threatsTick(g, t) {
+  if (g.story || g.convo || g.ended) return false;
+  for (const [i, th] of (g.S.threats || []).entries()) {
+    if (th.target !== "player" || th.done) continue;
+    if (th.kind === "hunt") { th.done = true; const x = ((g.nem ??= {})[th.by] ??= { grudge: 0, track: 1, since: t }); x.grudge = Math.max(x.grudge, 3); continue; }
+    if (!["blackmail", "leverage"].includes(th.kind) || t < th.t + 360 || g.S.dead.has(th.by)) continue;
+    if (!present(g, t).some((w) => w.npc === th.by && !asleep(w, t) && w.kind !== "captive")) continue;
+    const st = SL(g, "threat_demand"); if (!st) return false;
+    const about = th.about?.startsWith?.("npc_") ? `${nameOf(g, th.about)}의 일` : g.content.game.economy.goods[th.about] ? `네가 산 ${g.content.game.economy.goods[th.about].name}` : "네가 한 일";
+    g.storyCtx = { threat: i, who: th.by, whoName: displayName(g, th.by), about };
+    g.t = t; g.storyDone.delete(st.id); openStory(g, st);
+    return true;
+  }
+  return false;
+}
+// 쫓는 자 (17 §3.6 추적 거리 0~4): 하루에 한 번 거리가 줄어든다. 4가 되면 너를 찾아낸다.
+// 냄새 (03 §7.1): 회차가 쌓일수록 사냥꾼이 일찍 코를 돌린다 = min(30, 3·(회차−1)^0.7)
+export const smellOf = (g) => Math.min(30, 3 * Math.max(0, g.run.loop - 1) ** 0.7);
+function nemesisDay(g, day) {
+  for (const [n, x] of Object.entries(g.nem || {})) {
+    if (g.S.dead.has(n)) { delete g.nem[n]; continue; }
+    const w = g.W.where(n, day * 1440 + 720);
+    if (!w || w.kind === "away" || g.W.loc.get(w.at)?.settlement !== g.P.settlement) continue;
+    const heat = g.S.wanted?.player?.heat || 0;
+    if (hash(g.seed, "track", n, day) < 0.2 + 0.1 * x.grudge + smellOf(g) / 100 + heat * 0.05) x.track = Math.min(4, x.track + 1);
+  }
+}
+function nemesisCheck(g) {
+  for (const [n, x] of Object.entries(g.nem || {})) {
+    if (x.track < 4 || g.S.dead.has(n)) continue;
+    const st = SL(g, "nemesis_found"); if (!st) return;
+    g.storyCtx = { nem: n, nemName: displayName(g, n) };
+    x.track = 2; g.storyDone.delete(st.id); openStory(g, st);
+    return;
+  }
+}
 // 보이는 것이 반응을 바꾼다 (02 §3 ③): 허리·손의 칼, 피 묻은 옷 — 들어선 자리의 사람들이 본다
 function seenCarrying(g, res) {
   const here = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
@@ -507,6 +548,8 @@ function memoryInk(g) {
     const line = x.died ? "┊ 이 사람은 죽었었다. 지금은 숨을 쉰다." : told ? `┊ 이 사람이 너에게 털어놓았었다 — ${told}` : sc >= 40 ? "┊ 이 사람은 너를 깊이 믿었었다." : sc >= 20 ? "┊ 이 사람은 너에게 마음을 열었었다." : sc <= -20 ? "┊ 이 사람은 너를 미워했었다." : null;
     if (line) ink(`person:${n}`, line);
   }
+  // 지난 회차에 너를 쫓던 사람 (17 §3.7 휴면 숙적): 그는 모른다. 너는 안다
+  for (const x of soul(g).nemeses || []) if (here.includes(x.npc)) ink(`nem:${x.npc}`, "┊ 이 사람은 너를 쫓았었다. 지금은 너를 모른다.");
   // ◇ 표류: 지난 회차의 같은 날·같은 30분·같은 자리와 지금이 다르다 (회차마다 처음 3번만 진동, H5)
   const past = soul(g).obs?.[key];
   if (past) {
@@ -536,7 +579,7 @@ function tagBonus(g, t) { const [k, v] = String(t).split(":"); return TAGS[k] ? 
 
 // 시간이 흐른다: 세계를 굴리고, 그 사이 플레이어 주변에서 일어난 일을 모은다
 function pass(g, minutes, { sleeping = false } = {}) {
-  if (g.story) return;                 // 대본 장면이 열려 있으면 시간은 그 장면의 선택이 흘린다
+  if (g.story || g.ended) return;     // 대본 장면이 열려 있으면 시간은 그 장면의 선택이 흘린다 (끝난 판은 흐르지 않는다)
   const from = g.t, to = g.t + minutes;
   const logFrom = g.S.log.length;
   // 점호·통금은 시각에 걸리는 일이다 — 지나가는 시각마다 본다
@@ -580,15 +623,23 @@ function pass(g, minutes, { sleeping = false } = {}) {
     t = next;
     if (g.ended) break;
     if (trig) { openStory(g, trig.st); break; }
+    const wt = !sleeping || true ? windowTrigger(g, next) : null;
+    if (wt) { g.t = next; openStory(g, wt); break; }
+    if (threatsTick(g, next)) break;
   }
   g.t = Math.min(g.story ? t : to, g.ended?.t ?? to);
+  for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) nemesisDay(g, d);
   if (sleeping) { g.P.status.pain = clamp(g.P.status.pain - 10, 0, 100); }
   // 하루에 한 번 배가 고파진다 (배급을 받으면 준다)
   for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
     // 굶주림: 이미 바닥(4)이면 몸이 먹힌다 — 아픔 +15, 100이면 죽는다
     if (g.P.status.hunger >= 4) { g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100); g.feed.push({ kind: "rule", text: "사흘째 빈속이다. 손이 떨리고 무릎이 꺾인다." }); }
     g.P.status.hunger = clamp(g.P.status.hunger + 1, 0, 4);
-    if (g.P.status.pain >= 100 && !g.ended) { g.P.alive = false; g.ended = { kind: "dead", why: "굶주림과 상처 — 몸이 더 버티지 못했다", t: d * 1440, trace: { id: "hunger" } }; }
+    if (g.P.status.pain >= 100 && !g.ended) {
+      // 첫 회차의 무작위 사망 감쇄 (14 §3.3): 고른 길의 끝이 아닌 죽음은 한 번 빈사로 — 첫 회귀는 플레이어가 고른 길의 끝에서 와야 한다
+      if (g.run.loop === 1 && !g.P.spared) { g.P.spared = true; g.P.status.pain = 80; g.P.status.hunger = 2; g.feed.push({ kind: "rule", text: "눈앞이 하얘진다. 누군가 너를 막사로 끌고 간다. 입에 묽은 죽이 흘러든다 — 게르다다." }); g.at = HOME; continue; }
+      g.P.alive = false; g.ended = { kind: "dead", why: "굶주림과 상처 — 몸이 더 버티지 못했다", t: d * 1440, trace: { id: "hunger" } };
+    }
   }
   // 플레이어가 알 수 있는 일: 지금 이 자리에서 일어난 공개 기록, 그리고 자기에 대한 것
   for (const l of g.S.log.slice(logFrom)) {
@@ -687,7 +738,7 @@ function nextTrigger(g, t, next) {
     const tr = st.trigger || {}; if (!tr.at_time || g.storyDone.has(st.id) || g.story) continue;
     const [d, hm] = tr.at_time.split(" "); const { y, m, d: dd } = parseDate(d);
     const at = toMinutes(y, m, dd) + parseClock(hm);
-    if (at > t && at <= next && (!tr.at || g.at === tr.at)) return { t: at, st };
+    if (at > t && at <= next && atPlace(g, tr.at) && storyWhen(g, tr.when, at)) return { t: at, st };
   }
   return null;
 }
@@ -706,10 +757,45 @@ function storyText(g, st, needName = false) {
   if (g.run.loop >= 2 && st.return_ink) out += "\n\n" + fill(g, st.return_ink);
   return out;
 }
+const atPlace = (g, at) => !at || [].concat(at).some((x) => g.at === x || g.W.loc.get(g.at)?.parent === x);
+const parseDT = (x) => { const [d, hm = "00:00"] = String(x).split(" "); const { y, m, d: dd } = parseDate(d); return toMinutes(y, m, dd) + parseClock(hm); };
+// 대본 장면의 조건: 목표 행동 문법 + 플레이어 쪽 (pknows 사실 · been 장소 · loop >= n · rel_trust npc >= n · trace 흔적)
+function storyWhen(g, conds, t = g.t) {
+  for (const c of conds || []) {
+    const [k, a, b, d] = c.replace(/^not /, "").split(/\s+/), neg = c.startsWith("not ");
+    let r;
+    if (k === "pknows") r = knowsFact(g, a);
+    else if (k === "been") r = g.P.been.has(a);
+    else if (k === "loop") r = { ">=": g.run.loop >= Number(b), "==": g.run.loop === Number(b) }[a];
+    else if (k === "rel_trust") r = { ">=": relOf(g, a).trust >= Number(d), "<": relOf(g, a).trust < Number(d) }[b];
+    else if (k === "trace") r = (soul(g).traces || []).some((x) => x.id === a);
+    else r = g.A.cond(c.replace(/^not /, ""), t);
+    if (neg ? r : !r) return false;
+  }
+  return true;
+}
+// 기간 안에 조건이 맞는 첫 순간에 열리는 장면 (치명적 자리 — 14 §3.2)
+function windowTrigger(g, t = g.t) {
+  if (g.run.opening === false && !g.run.lethal) return null;
+  if (g.story || g.ended || g.convo) return null;
+  for (const st of g.content.game.storylets || []) {
+    const tr = st.trigger || {};
+    if (!tr.window || g.storyDone.has(st.id)) continue;
+    if (t < parseDT(tr.window.from) || t > parseDT(tr.window.to)) continue;
+    if (!atPlace(g, tr.at)) continue;
+    if (tr.night && !isNight(t)) continue;
+    if (tr.with && !present(g, t).some((w) => w.npc === tr.with && w.kind !== "captive" && !asleep(w, t))) continue;
+    if (!storyWhen(g, tr.when, t)) continue;
+    return st;
+  }
+  return null;
+}
 // 이름: 첫 회차에 받은 이름은 이 회차의 상태(P)에, 회귀할 때 carry로 넘어간다 (재생해도 이름 입력은 기록에서 다시 온다)
 const trueName = (g) => g.P.trueName || g.run.carry.trueName || null;
 const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
 const fill = (g, text) => String(text || "").trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
+  .replace(/\{(who|about|nem)\}/g, (_, k) => g.storyCtx?.[k + "Name"] || g.storyCtx?.[k] || "…")
+  .replace(/\{volk_last\}/g, () => (g.S.vars.volk_lied ? '"도망치는 고기가 더 맛있다."' : '"너는 거짓말은 안 했다. 그러니 나도 안 하겠다. 아프다."'))
   .replace(/\{record_full\}/g, () => { const r = soul(g).records.filter((x) => x.loop === g.run.loop - 1).pop(); return r ? recordCard(r).join("\n\n") : "…셀 것이 없다."; });
 function storyOptions(g) {
   const st = SL(g, g.story.id);
@@ -719,9 +805,11 @@ function storyOptions(g) {
     // 두 번째 회차부터 어머니의 세 카드 중 고른 것만 진하다 — 다시 고를 수 없다 (14 §6.2)
     if (st.id === "serf_mother_memory" && g.P.talent && c.id !== `talent_${g.P.talent}`) continue;
     if (c.needs) { const [, k, op, v] = /^(\w+)\s*(>=|<=|>|<|==)\s*(\S+)$/.exec(c.needs) || []; if (k === "coin" && !(g.S.purse.player >= Number(v))) continue; }
+    if (c.needs_fact && !knowsFact(g, c.needs_fact)) continue;
+    if (c.needs_been && !g.P.been.has(c.needs_been)) continue;
     let memory = null;
     if (c.needs_memory) { memory = memoryOK(g, c.needs_memory); if (!memory) continue; memory = memMark(g, `story:${c.id}`, memory); }
-    out.push({ id: `story:${c.id}`, kind: "story", label: c.label, skill: c.check?.skill || null, check: c.check || null, minutes: c.minutes || 0, memory });
+    out.push({ id: `story:${c.id}`, kind: "story", label: fill(g, c.label), skill: c.check?.skill || null, check: c.check || null, minutes: c.minutes || 0, memory, risk: c.risk || null });
   }
   if (!out.length) out.push({ id: "story:next", kind: "story", label: "▸" });
   return out;
@@ -739,9 +827,18 @@ export function optionOdds(g, o) { return o.check ? storyOdds(g, o.check) : odds
 function storyOdds(g, ck) {
   const p = g.P, mod = ck.skill === "은신" || ck.skill === "손재주" ? p.mods.민첩 * 2 : (p.mods.지능 + p.mods.감각) * 2;
   const status = -(p.status.hunger >= 2 ? 5 : 0) - (p.status.pain >= 30 ? 3 : 0);
-  const S = skill(g, ck.skill) + mod + status;
-  return { P: prob(S, ck.D), S, D: ck.D, parts: [] };
+  let S = skill(g, ck.skill) + mod + status;
+  const parts = [];
+  if (status) parts.push({ sign: "▼", text: p.status.hunger >= 2 ? "배가 고프다" : "몸이 아프다" });
+  // 경고 하나에 +10 (논거 보정, 14 §3.3) — 모은 경고만큼 '무모하다'가 '반반이다'로
+  for (const w of ck.warn || []) if (storyWhen(g, [w])) { S += 10; parts.push({ sign: "▲", text: WARN_TEXT(g, w) }); }
+  if (ck.auto && storyWhen(g, [ck.auto])) return { P: 0.97, S: 99, D: ck.D, parts: [{ sign: "▲", text: "몸이 먼저 안다" }] };
+  // 회차가 쌓일수록 시간에 닿은 것들이 낌새를 챈다 (14 §7.4 — 볼크의 코)
+  const D = ck.D + (ck.D_per_loop || 0) * (g.run.loop - 1);
+  if (ck.D_per_loop && g.run.loop > 1) parts.push({ sign: "▼", text: "젖은 재 냄새가 짙다" });
+  return { P: prob(S, D), S, D, parts };
 }
+const WARN_TEXT = (g, w) => { const [k, a] = w.split(/\s+/); if (k === "pknows") return `너는 안다 — ${shortFact(g, a) || a}`; if (k === "been") return `${placeName(g, a)}에 가 본 적이 있다`; if (k === "date") return "볼크가 마을에 왔다"; return "들은 것이 있다"; };
 function storyEffect(g, e, res) {
   const parts = String(e).split(/\s+/), k = parts[0], rest = String(e).slice(k.length + 1);
   if (k === "learn") learn(g, parts[1], "그 저녁");
@@ -756,6 +853,33 @@ function storyEffect(g, e, res) {
   else if (k === "memory") { const [, n, tag] = parts; addMemory(g, n, { kind: "impression", tag, delta: 0, text: parts.slice(3).join(" "), salience: 4, source: "engine" }); }
   else if (k === "goto") g.at = parts[1];
   else if (k === "ration") { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); }
+  else if (k === "agenda") g.A.doEffect(rest, g.t);
+  else if (k === "then") g._then = parts[1];
+  else if (k === "die" || k === "die_if") {
+    let i = 1, p = 1;
+    if (k === "die_if") { p = Number(parts[1]); i = 2; }
+    const trace = parts[i], tail = parts.slice(i + 1);
+    if (hash(g.seed, "die", g.story?.id || "", g.run.journal.length) >= p) return;
+    if (tail.length === 1 && SL(g, tail[0])) { g._then = tail[0]; return; }        // 죽음이 다음 장면에서 온다 (사라의 무릎 위)
+    const npc = tail[0]?.startsWith("npc_") ? tail.shift() : null;
+    g.P.alive = false; g.ended = { kind: "dead", why: fill(g, tail.join(" ")), t: g.t, trace: { id: trace, npc } };
+  }
+  else if (k === "captured") g.ended = { kind: "captured", why: fill(g, rest), t: g.t, trace: { id: "rope" } };
+  else if (k === "wanted") { const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += Number(parts[1]); w.since ??= g.t; w.reasons.push(parts.slice(2).join(" ")); }
+  else if (k === "nemesis") { const n = parts[1], gr = Number(parts[2] || 2); const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, gr); }
+  else if (k === "smell_mark") { if (hash(g.seed, "smell", parts[1], g.run.loop) < 0.25 + smellOf(g) / 40) storyEffect(g, `nemesis ${parts[1]} 1`, res); }
+  else if (k === "deed") deed(g, parts[1], parts[2] || null);
+  else if (k === "threat_pay") { const th = g.S.threats[g.storyCtx?.threat]; const n = Number(parts[1]); g.S.purse.player -= n; g.S.purse[th.by] = (g.S.purse[th.by] || 0) + n; th.paid = (th.paid || 0) + 1; th.t = g.t + 30 * 1440; }
+  else if (k === "threat_delay") { const th = g.S.threats[g.storyCtx?.threat]; th.t = g.t + Number(parts[1]) * 1440 - 360; }
+  else if (k === "threat_refuse") {
+    const th = g.S.threats[g.storyCtx?.threat]; th.done = true;
+    const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 2; w.since ??= g.t; if (overseer(g)) w.by.add(overseer(g)); w.reasons.push(`${nameOf(g, th.by)}이(가) 감독관에게 고했다`);
+    g.L.believe(th.by, g.t, { kind: "suspect", subject: "player", object: th.about, at: g.at, source: "told", reason: "협박을 거절했다", choice: "report" }, { react: false });
+  }
+  else if (k === "nem_track") { const x = g.nem?.[g.storyCtx?.nem]; if (x) x.track = Number(parts[1]); }
+  else if (k === "nem_caught") { const n = g.storyCtx?.nem; g.ended = { kind: "captured", why: `${nameOf(g, n)}에게 붙잡혔다`, t: g.t, trace: { id: profOf(g, n).role === "hunter" ? "teeth" : "rope", npc: n } }; }
+  else if (k === "nem_kill") { const n = g.storyCtx?.nem; g.L.player.kill(g.t, n, { at: g.at, stealth: 20 }); deed(g, "kill", n); g.P.bloody = true; delete g.nem[n]; }
+  else if (k === "nem_die") { const n = g.storyCtx?.nem; g.P.alive = false; g.ended = { kind: "dead", why: `${nameOf(g, n)}의 손에 죽었다`, t: g.t, trace: { id: profOf(g, n).role === "hunter" ? "teeth" : "blade", npc: n } }; }
 }
 
 const DO = {
@@ -793,6 +917,9 @@ const DO = {
     if (c.miss_ration) g.P.lastRation = Math.floor(g.t / 1440);   // 배식을 놓쳤다
     g.storyDone.add(st.id); g.story = null;
     res.storyText = fill(g, text) + extra;
+    if (g.ended) return;
+    const then = g._then; g._then = null;
+    if (then) { const nx = SL(g, then); if (nx) { g.storyDone.delete(nx.id); openStory(g, nx); res.storyText += "\n\n" + g.feed.pop().text; return; } }
     pass(g, c.minutes || 0);
     if (!g.story && st.next) { const nx = SL(g, st.next); if (nx) openStory(g, nx); }
     if (st.id === "ration_line_count" && c.id !== "stay_in_line" && !c.miss_ration && g.P.lastRation !== Math.floor(g.t / 1440)) {
@@ -896,6 +1023,7 @@ const DO = {
     } else {
       g.L.player.assault(g.t, n, { at: g.at });
       deed(g, "assault", n);
+      if (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 60) { const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2); }
       g.P.status.pain = clamp(g.P.status.pain + (res.tier === "대실패" ? 40 : 20), 0, 100);
       res.notes.push(`${nameOf(g, n)}을(를) 쓰러뜨리지 못했다`);
       if (res.tier === "대실패" && (cardOf(g, n).age ?? 30) >= 14 && (profOf(g, n).nerve >= 60 || worn(g, n).some((i) => i.tags?.includes("무기")) || g.P.status.pain >= 100)) { g.P.alive = false; g.ended = { kind: "dead", why: `${nameOf(g, n)}의 손에 죽었다`, t: g.t, trace: { id: "blade", npc: n } }; }
@@ -1163,6 +1291,7 @@ function settleSoul(g, record) {
   S.skills ||= {};
   for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
   S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
+  S.nemeses = [...(S.nemeses || []), ...Object.entries(g.nem || {}).map(([npc, x]) => ({ npc, loop, grudge: x.grudge }))].slice(-12);
   S.memUsed ||= {};
   for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);

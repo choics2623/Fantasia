@@ -224,7 +224,7 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
     check("헨릭(장물아비)은 위조 통행증을 판다", has(x, "buy:forged_pass"));
     play(x, "buy:forged_pass", "leave");
     play(x, "travel:crow_gate");
-    for (let i = 0; i < 72 && !x.ended; i++) play(x, "wait:60");
+    for (let i = 0; i < 72 && !x.ended; i++) { if (G.view(x).story) { const o = G.options(x).map((y) => y.id); play(x, o.includes("story:refuse") ? "story:refuse" : o[0]); continue; } play(x, "wait:60"); }
     check("위조 통행증이 있으면 검문을 넘길 수도 있다 (기만 판정)", true, x.ended?.why || `살아남음 — ${G.view(x).time}, 탈주 노예: ${!!x.S.vars.player_fugitive}`);
     check("점호에 두 번 빠지면 탈주 노예가 된다", x.ended || x.S.vars.player_fugitive === true);
     check("탈주는 평판의 행적이 된다", x.deeds.some((d) => d.kind === "flee") || !!x.ended);

@@ -155,5 +155,7 @@ export function createAgenda(world, state, agendaData, { loopSeed = 1 } = {}) {
   }
 
   world.setCond?.((c, t) => cond(c, t));
-  return { run, runDay, stepTo, intervene, cond, onFire: (h) => hooks.push(h), state, fmtLog: () => [...state.log].sort((a, b) => a.t - b.t).map((l) => `${fmt(l.t)}  ${l.text}`) };
+  // 대본 장면(스토리렛)이 세계에 바로 효과를 넣을 때 — 목표 행동과 같은 문법
+  const doEffect = (e, t) => effect(e, { id: "story", npc: "player" }, t, t);
+  return { run, runDay, stepTo, intervene, cond, doEffect, onFire: (h) => hooks.push(h), state, fmtLog: () => [...state.log].sort((a, b) => a.t - b.t).map((l) => `${fmt(l.t)}  ${l.text}`) };
 }

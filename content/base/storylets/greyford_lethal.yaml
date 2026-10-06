@@ -1,0 +1,520 @@
+# 첫 회차의 뼈대 (14 §3.2·§6.3·§6.4) — 치명적 자리. 세계 상태가 조건을 채우면 열리고, 들어서지 않으면 아무 일도 없다.
+# 자리는 세계의 일이므로 모든 회차에 다시 깔린다. 두 번째 회차부터는 기억으로 피하거나, 일부러 들어선다.
+#
+# trigger:
+#   at_time + at   : 그 시각이 지나갈 때 그 자리에 있으면 (잠도 깬다)
+#   window {from,to} + at? + with? + night? : 그 기간에 조건이 맞는 첫 순간 (with = 그 사람이 같은 자리에)
+#   when           : 목표 행동 조건 문법 + pknows <사실> (플레이어가 안다 — 지난 회차 기억 포함) · been <장소> · loop >= n
+# choice:
+#   needs_fact / needs_been / needs_memory : 없으면 선택지가 보이지 않는다 (숨김)
+#   check {skill, D, warn: [조건…], auto: 조건} : warn 하나가 참일 때마다 +10 (경고를 모은 만큼, 14 §3.3) · auto가 참이면 저절로 성공
+# effects (대본 문법에 더해):
+#   agenda <목표 행동 효과>        세계에 바로 적용 (learn npc 사실 · var · capture …)
+#   die <흔적> <까닭…>             죽는다 — 흔적: water teeth spear blade rope hunger
+#   die_if <확률> <흔적> <까닭…>   그 확률로 죽는다 (회차·기록 번호로 정해진 주사위)
+#   captured <까닭…>               붙잡혀 끝난다
+#   wanted <n> <까닭…>             수배
+#   nemesis <npc> <원한>           그 사람이 너를 쫓기 시작한다 (17)
+#   deed <종류> [npc]              평판에 남는 행적
+#   then <장면 id>                 이 선택 뒤에 이어지는 장면
+storylets:
+  # ── 6.3 첫 진짜 선택 — 마르타의 값 (2일 19:40, 수탉 뒷문) ──
+  - id: martha_price_night
+    trigger: {at_time: "312-09-02 19:40", at: gf_rooster, when: ["var kit_on_list == true", "alive npc_martha"]}
+    stage:
+      - {npc: npc_martha, at: gf_rooster, from: "312-09-02 19:30", to: "312-09-02 20:10", doing: 수탉 뒷문 밖에서 열쇠 꾸러미를 손으로 쥐고 서 있다}
+    text: |
+      뒷문 밖에 여자가 서 있다. 열쇠 꾸러미가 짤랑이지 않게 손으로 쥐고. 꾸러미 끝에 아기 털모자가 매달려 있다. 귀 끝이 잘려 있다.
+
+      "고개를 들어도 된다. 나는 주인이 아니니까."
+
+      "네 동생 이름이 첫 명단 스물여섯째 줄에 있다. 명단은 남작님 것이지만, 이름을 불러 주는 입은 내 것이지."
+
+      그녀가 수탉의 바닥을 턱으로 가리킨다. "이 집 밑에서 밤마다 누가 기침을 한다. 몇 명인지, 어디로 드나드는지. 그걸 가져오면 키트의 이름은 빠진다. 그 자리엔 누군가의 이름이 들어가겠지. 그건 네가 알 바 아니다."
+
+      털모자를 한 번 쓰다듬는다. "내일 이 시간까지."
+    choices:
+      - id: sell_cellar
+        label: 바닥 밑의 일을 말한다
+        needs_fact: fact_gf_egil_family_in_cellar
+        text: |
+          너는 말한다. 다섯. 가짜 벽. 자정 무렵 브람이 내려간다. 마르타는 고개만 한 번 끄덕인다. 털모자를 쓰다듬던 손이 멈추지 않는다.
+
+          "키트는 빠진다." 그녀가 돌아선다. 지붕 위에서 기왓장 하나가 미끄러지는 소리. 너는 올려다보지 않는다. 페인이 거기 있었다는 것을, 너는 나중에 안다.
+        effects: ["var kit_on_list = false", "var toby_on_list = true", "var martha_deal = true", "agenda learn npc_znik fact_gf_egil_family_in_cellar", "rel npc_martha trust 30", "rel npc_fayne trust -40", "memory npc_fayne 위험함 셋째가 수탉 지하를 마르타에게 팔았다", "deed inform", "note 마르타에게 수탉 지하를 팔았다 — 키트가 명단에서 빠졌다. 토비가 대신 간다"]
+      - id: dont_know
+        label: '"모릅니다."'
+        text: |
+          마르타가 너를 오래 본다. "모르는 것은 거짓말이 아니지." 그녀는 열쇠를 고쳐 쥐고 어둠 속으로 간다. "내일 이 시간."
+        effects: ["rel npc_martha trust -5"]
+      - id: dont_know_lie
+        label: '"모릅니다." — 알면서'
+        needs_fact: fact_gf_egil_family_in_cellar
+        check: {skill: 기만, D: 48}
+        success:
+          text: |
+            마르타의 눈이 네 얼굴을 한 바퀴 돈다. 아무것도 걸리지 않는다. "그래. 내일 이 시간."
+          effects: ["rel npc_martha trust -5"]
+        failure:
+          text: |
+            "아는구나." 마르타가 웃지 않는다. "아는데 모른다고 하는 아이는 오래 보게 되지." 그날부터, 어디에 서 있든 누군가 너를 보고 있다는 느낌이 든다.
+          effects: ["var martha_watches_you = true", "rel npc_martha trust -25", "wanted 1 마르타가 지켜본다"]
+      - id: i_protect
+        label: '"키트는 내가 지킨다."'
+        text: |
+          마르타가 처음으로 웃는다. 소리 없이. "너 같은 아이를 스물세 명 봤다. 다들 정의로웠지."
+
+          그녀가 가고 나서, 너는 수탉 처마 밑에 서 있는 사내 하나를 본다. 처음 보는 얼굴. 너를 보고 있지 않은 척을 너무 잘한다.
+        effects: ["var informant_assigned = true", "note 마르타 — '키트는 내가 지킨다'고 했다. 그 뒤로 처마 밑에 낯선 눈이 하나 붙었다"]
+      - id: warn_bram
+        label: 수탉 안으로 돌아가 브람에게 알린다
+        minutes: 30
+        check: {skill: 은신, D: 44, warn: ["var fayne_warned == true", "rel_trust npc_fayne >= 20"]}
+        success:
+          text: |
+            브람은 아무것도 묻지 않는다. 국자를 내려놓고, 저장고 문을 잠그고, 등잔을 끈다. 자정이 되기 전에 지하의 기침 소리가 그친다. 옛 수로 쪽으로 무언가가 기어간다 — 다섯, 하나씩.
+
+            새벽에 브람이 네 그릇에 죽을 한 국자 더 붓는다. "늪의 여자에게 넘겼다. 너는 아무것도 모른다." 처음으로 그가 네 이름을 묻는다. 셋째 말고.
+          effects: ["var egil_moved = true", "var egil_hidden = false", "rel npc_bram trust 30", "learn fact_gf_greyash_route", "note 브람이 에길 일가를 옛 수로로 엘사에게 넘겼다 — 잿빛 실"]
+        failure:
+          text: |
+            뒷문을 다시 여는 순간, 마르타가 거기 있다. 가지 않았다.
+
+            "너는 오늘 밤 남의 아이를 골랐구나." 그녀는 그 말만 하고 간다. 다음 날 아침, 명부의 스물여섯째 줄 옆에 붉은 점 하나가 찍힌다.
+          effects: ["var kit_confirmed = true", "rel npc_martha trust -30", "agenda learn npc_martha fact_gf_egil_family_in_cellar"]
+      - id: sell_grain
+        label: 다른 비밀을 판다 — 방앗간 바닥의 보리
+        needs_fact: fact_gf_thomas_grain_route
+        text: |
+          마르타가 고개를 기울인다. "토마스." 그 이름을 혀끝에서 굴린다. "보리는 남작님 것이지. 좋아. 키트는 빠진다."
+
+          목격자는 없다. 사실만 남는다. 열흘 뒤 방앗간 바닥이 뜯기고, 언덕의 누군가는 이번 겨울을 넘기지 못할 것이다.
+        effects: ["var kit_on_list = false", "var toby_on_list = true", "var grain_search_early = true", "rel npc_martha trust 20", "deed inform", "note 마르타에게 방앗간의 보리를 팔았다 — 키트가 빠졌다"]
+      - id: mem_liz
+        label: '리즈 이야기를 꺼낸다'
+        needs_memory: fact:fact_gf_martha_swapped_list
+        text: |
+          털모자를 쓰다듬던 손이 멈춘다.
+
+          "…그건 아무도 몰라. 리즈도 몰라." 처음으로 그녀의 목소리가 열쇠처럼 떨린다. "너, 누구한테 들었니?"
+
+          너는 대답하지 않는다. 마르타는 한참 뒤에 말한다. "스물여섯째 줄은 비게 하마. 그리고 너는 나를 모른다."
+        effects: ["var kit_on_list = false", "var toby_on_list = true", "rel npc_martha trust 40", "memory npc_martha 위험함 처음 보는 농노가 리즈의 이름을 알았다", "note 마르타 — 리즈. 그녀는 그 말에 졌다. 키트가 빠졌다"]
+
+  # ── 하겐의 '북쪽 길' 제안 (낙엽월 8~12일, 탈주 의도를 보였다면) ──
+  - id: hagen_northern_road
+    trigger: {window: {from: "312-09-08 06:00", to: "312-09-12 22:00"}, with: npc_hagen, when: ["var hagen_knows_escape_intent == true", "alive npc_hagen"]}
+    text: |
+      하겐이 네 옆에 와서 선다. 강물 냄새. 그는 빵을 반으로 찢어 반을 내민다. 웃고 있다. 은니가 보인다.
+
+      "생각해 봤냐. 북쪽 길." 목소리를 낮춘다. "스무하루 밤, 열 시. 내 나루 헛간. 배로 물굽이까지 올라가서, 언덕 동쪽 계곡으로 걸으면 안내인이 기다린다. 값은 나중에. 북쪽에서는 사람 값이 다르거든."
+
+      "키트도 데려와도 돼. 애들은 가볍다."
+    choices:
+      - id: accept
+        label: '"스무하루 밤. 가겠습니다."'
+        text: |
+          하겐이 네 어깨를 두드린다. "잘 생각했다." 그는 다음 얼굴로 걸어간다. 빵이 아직 따뜻하다.
+        effects: ["var hagen_offer_accepted = true", "note 하겐 — 낙엽월 21일 밤 10시, 나루 헛간. 북쪽 길"]
+      - id: think
+        label: '"생각해 보겠습니다."'
+        text: |
+          "서두를 필요는 없다." 하겐이 웃는다. "스무하루 밤. 마음이 정해지면 헛간으로 와."
+        effects: ["var hagen_offer_open = true", "note 하겐 — 21일 밤 10시, 나루 헛간. 마음이 정해지면"]
+      - id: ask_guide
+        label: '"안내인 이름이 뭡니까?"'
+        needs_memory: fact:fact_gf_hagen_sells_runaways
+        text: |
+          하겐의 웃음이 그대로 굳는다. 아주 잠깐. "이름은 길에서 듣는 거다." 그는 빵을 거둬 간다.
+
+          그날부터 하겐이 너를 볼 때, 물건을 보는 눈이 아니다. 위험을 보는 눈이다.
+        effects: ["rel npc_hagen trust -20", "nemesis npc_hagen 2", "note 하겐에게 안내인 이름을 물었다 — 그가 처음으로 웃지 않았다"]
+
+  # ── 6.4 C 「북쪽 길」 — 21일 밤, 하겐의 배 ──
+  - id: death_c_northern_road
+    trigger: {window: {from: "312-09-21 21:30", to: "312-09-21 23:30"}, at: gf_hagen_shed, when: ["alive npc_hagen", "var hagen_knows_escape_intent == true"]}
+    text: |
+      나룻배가 갈대 사이에서 기다린다. 고물에 하겐, 노에 페인. 달이 없다.
+
+      배가 물을 가른다. 노가 물을 가르는 소리만. 페인은 한 번도 뒤를 보지 않는다. 평소의 페인은 쉬지 않고 떠든다.
+    choices:
+      - id: notice
+        label: 하겐의 얼굴을 본다
+        check: {skill: 통찰, D: 50, auto: "trace water", warn: ["pknows fact_gf_hagen_sells_runaways", "pknows fact_gf_hagen_killed_ulf", "pknows fact_gf_fayne_seven_names", "date >= 312-09-14", "pknows fact_gf_znik_sells_to_hagen"]}
+        success:
+          text: |
+            하겐이 고개를 돌릴 때 귀 뒤의 머리칼이 들린다. 작은 늑대 이빨 문신. 하겐이 웃는다. 은니가 별빛을 받는다. 배급 줄에서 빵을 내밀던 그 웃음.
+
+            인간이 은을 입에 물고 다닌다. 누가 그걸 허락했을까.
+          effects: ["then boat_choice"]
+        failure:
+          text: |
+            물굽이를 돌자 강둑에 횃불이 셋. 개 짖는 소리. 하겐이 배를 대며 웃는다. "다 왔다."
+
+            우리 수레의 문이 열려 있다.
+          effects: ["then cage_cart"]
+  - id: boat_choice
+    text: |
+      페인의 노가 한 박자 늦는다. 하겐의 손이 고물 밑을 더듬는다.
+    choices:
+      - id: turn_back
+        label: '"배를 돌려."'
+        check: {skill: 위압, D: 62}
+        success:
+          text: |
+            하겐이 너를 본다. 오래. 그리고 웃는다 — 이번엔 이가 보이지 않는다. "그래. 오늘 밤은 물이 높다." 배가 돌아간다. 아무도 말하지 않는다.
+
+            나루에 닿자 하겐은 말없이 헛간으로 들어간다. 너는 안다. 이제 너는 그의 장부에 있다.
+          effects: ["nemesis npc_hagen 3", "var hagen_offer_accepted = false", "note 하겐의 배를 돌렸다. 그가 이제 너를 안다"]
+        failure:
+          text: |
+            "솔직히 말해 줄까?" 하겐이 칼을 꺼내지 않고 노를 든다. "어차피 잡혔을 거야. 나는 값을 매겼을 뿐이지."
+
+            노가 네 관자놀이에 닿는다. 물이 차다. 생각보다 깊다. 일어서려는데 가슴 위에 무언가 얹힌다. 발이다. 천천히, 무게를 싣는다. 물이 코로 들어온다. 갈대 쪽을 본다. 거기 누가
+          effects: ["die water npc_hagen 하겐의 배에서 물굽이에 빠졌다"]
+      - id: jump
+        label: 물로 뛰어든다
+        check: {skill: 싸움, D: 46}
+        success:
+          text: |
+            물이 차다. 숨이 끊어질 만큼. 갈대가 손에 잡힌다. 뒤에서 하겐이 웃는 소리 — 쫓아오지 않는다. 강둑에 닿았을 때 너는 혼자고, 젖었고, 살아 있다. 그리고 점호까지 다섯 시간.
+          effects: ["pain 20", "nemesis npc_hagen 2", "var hagen_offer_accepted = false"]
+        failure:
+          text: |
+            물이 차다. 생각보다 깊다. 옷이 너를 끌어내린다. 위에서 노가 물을 친다. 한 번, 두 번. 물이 코로 들어온다. 갈대 쪽을 본다. 거기 누가
+          effects: ["die water npc_hagen 물굽이에서 가라앉았다"]
+      - id: shove_fayne
+        label: '페인의 등을 갈대 쪽으로 민다 — "뛰어!"'
+        risk: 매우 위험해 보인다
+        check: {skill: 싸움, D: 70}
+        success:
+          text: |
+            페인이 물을 차고 갈대 속으로 사라진다. 하겐이 노를 휘두른다. 빗나간다. 너는 그의 팔에 매달리고, 둘 다 물에 빠진다. 네가 먼저 올라온다. 하겐의 은니가 물 위에서 한 번 번쩍이고, 갈대 쪽으로 멀어진다.
+
+            강둑에 닿은 것은 너 혼자다. 페인은 어디에도 없다. 살아 있다 — 너는 그것만 안다.
+          effects: ["var fayne_saved = true", "rel npc_fayne trust 30", "nemesis npc_hagen 4", "wanted 2 하겐의 배에서 도망쳤다", "pain 30"]
+        failure:
+          text: |
+            페인이 물을 차고 갈대 속으로 사라진다. 하겐은 쫓지 않는다. 너를 본다. 웃지 않는다.
+
+            "솔직히 말해 줄까?" 그가 칼을 꺼내지 않고 노를 든다. "어차피 잡혔을 거야. 나는 값을 매겼을 뿐이지."
+
+            노가 네 관자놀이에 닿는다. 물이 차다. 생각보다 깊다. 일어서려는데 가슴 위에 무언가 얹힌다. 발이다. 천천히, 무게를 싣는다. 물이 코로 들어온다. 갈대 쪽을 본다. 거기 누가
+          effects: ["var fayne_saved = true", "die water npc_hagen 페인을 갈대로 밀고, 하겐의 노에 맞아 물굽이에 빠졌다"]
+      - id: sell_me
+        label: '"나를 팔아. 키트는 놔줘."'
+        check: {skill: 화술, D: 58}
+        success:
+          text: |
+            하겐이 웃음을 거둔다. "흥정할 줄 아는구나." 그는 키트를 강둑에 내려 준다. 키트가 돌아보지 않게, 너는 손을 흔들지 않는다.
+
+            물굽이 너머, 횃불 셋과 우리 수레. 쇠 송곳니를 한 거인이 너를 내려다본다.
+          effects: ["captured 하겐이 너를 볼크에게 넘겼다 — 송곳니 불의 우리 수레"]
+        failure:
+          text: |
+            "둘 다 값이 나간다." 하겐이 웃는다. 물굽이 너머, 횃불 셋과 우리 수레.
+          effects: ["captured 하겐이 너를 볼크에게 팔았다 — 송곳니 불"]
+      - id: sit
+        label: 모른 척 앉아 있는다
+        text: |
+          물굽이를 돌자 강둑에 횃불이 셋. 개 짖는 소리. 하겐이 배를 대며 웃는다. "다 왔다."
+        effects: ["then cage_cart"]
+      - id: mem_fayne_ulf
+        label: '페인에게, 노예말로: "울프 아저씨 봤지. 나도 알아."'
+        needs_memory: trace:water
+        text: |
+          페인이 노를 놓는다. 배가 물살에 돈다. 하겐이 처음으로 웃지 않는다.
+
+          아무도 말하지 않는 사이, 배는 저절로 나루 쪽으로 밀려간다. 하겐이 노를 집어 든다 — 젓지 않는다. "…내려." 너와 페인이 강둑에 닿을 때까지 그는 고물에 앉아 있다.
+        effects: ["var fayne_saved = true", "rel npc_fayne trust 40", "nemesis npc_hagen 3", "note 페인이 노를 놓았다. 울프 — 그 이름 하나로"]
+  - id: cage_cart
+    text: |
+      볼크의 사람들이 우리 문을 연다. 개들이 네 발목 냄새를 맡는다. 우리 안의 남자 셋이 너를 보지 않는다.
+    choices:
+      - id: escape_cart
+        label: 수레가 언덕을 오를 때 빗장을 흔든다
+        check: {skill: 손재주, D: 50}
+        success:
+          text: |
+            빗장이 빠진다. 너는 수레 뒤로 굴러떨어지고, 비탈을 구른다. 개들이 짖는다 — 늦었다. 숲은 어둡고, 너는 어둠을 안다.
+          effects: ["wanted 3 볼크의 우리에서 달아났다", "nemesis npc_volk 3", "pain 25"]
+        failure:
+          text: |
+            빗장이 덜컹거린다. 개가 먼저 안다. 볼크가 수레 옆으로 걸어와 우리 안에 손을 넣는다. 아주 천천히. 목덜미를 쥔다.
+
+            "킁. 젖은 재."
+          effects: ["die teeth npc_volk 볼크의 우리에서 달아나다 목덜미를 물렸다"]
+      - id: stay_cart
+        label: 웅크리고 기다린다
+        text: |
+          수레는 밤새 언덕을 오른다. 아침에 송곳니 불의 연기가 보인다.
+        effects: ["captured 볼크에게 팔려 송곳니 불로 끌려갔다"]
+
+  # ── 볼크 도착 (낙엽월 14일~): 냄새 (17 §3.7, 03 §7.1) ──
+  - id: volk_sniff
+    trigger: {window: {from: "312-09-14 05:00", to: "312-09-18 22:00"}, with: npc_volk, when: ["alive npc_volk"]}
+    stage:   # 도착하는 아침, 사냥대가 점호 줄 앞을 지나간다 — 줄의 냄새를 맡으며
+      - {npc: npc_volk, at: gf_whip_square, from: "312-09-14 05:00", to: "312-09-14 05:40", doing: 바르그 사냥대를 이끌고 점호 줄 앞을 지나간다 — 한 사람씩 냄새를 맡는다}
+    text: |
+      사람이라기엔 너무 큰 것이 지나가다 멈춘다. 쇠 송곳니. 바르그의 사냥꾼, 볼크.
+
+      그가 허리를 굽혀 네 목 근처의 공기를 들이마신다. 오래. "킁." 눈을 가늘게 뜬다. "이상한 냄새가 나는 놈이군. 젖은 재."
+
+      "북쪽 놈들 냄새를 맡은 적 있냐, 꼬마?"
+    choices:
+      - id: lie
+        label: '"아니요. 처음 듣습니다."'
+        check: {skill: 기만, D: 46, D_per_loop: 5}
+        success:
+          text: |
+            볼크가 한참 너를 본다. "그래." 그는 지나간다. 개 한 마리가 네 발목에서 오래 머문다.
+          effects: ["var volk_lied = true"]
+        failure:
+          text: |
+            볼크가 웃는다. 송곳니가 보인다. "거짓말하는 고기가 더 맛있지." 그는 네 얼굴을 외운다. 그런 눈이다.
+          effects: ["var volk_lied = true", "nemesis npc_volk 3"]
+      - id: truth
+        label: 정직하게 말한다 — 들은 것만
+        text: |
+          볼크가 고개를 끄덕인다. "거짓말은 안 하는 놈이군." 그는 무언가를 정한 얼굴로 지나간다. "그러니 나도 안 하겠다. 다음에 만나면, 아플 거다."
+        effects: ["var volk_honest = true", "rel npc_volk trust 10"]
+      - id: silent
+        label: 고개를 숙이고 아무 말도 하지 않는다
+        text: |
+          볼크가 네 정수리 냄새를 한 번 더 맡는다. "킁." 그리고 간다. 개들이 따라간다. 하나만 남아 너를 본다.
+        effects: ["smell_mark npc_volk"]
+
+  # ── 6.4 B1 「송곳니 불」 — 25일 정오, 대수색 ──
+  - id: death_b1_lure
+    trigger: {window: {from: "312-09-25 10:00", to: "312-09-25 15:00"}, at: [hungry_hill, hungry_hill__wolf_den, hungry_hill__three_pines], when: ["alive npc_volk"]}
+    text: |
+      정오. 굶주린 언덕 남사면. 개 짖는 소리가 세 번, 그리고 사방에서.
+
+      바위 위에서 누가 부른다. "오른쪽 말고 왼쪽!" 아래쪽 어딘가, 늑대굴의 덤불이 숨을 죽인다.
+    choices:
+      - id: creek
+        label: 왼쪽 개울을 건너 숨는다
+        check: {skill: 은신, D: 38}
+        success:
+          text: |
+            물이 냄새를 끊는다. 개들이 개울가에서 빙빙 돈다. 그리고 — 늑대굴 쪽으로 간다. 너는 물속에 엎드려 그 소리를 듣는다. 끝날 때까지.
+          effects: ["var den_found = true"]
+        failure:
+          text: |
+            개울이 생각보다 얕다. 개 한 마리가 물을 건넌다. 너는 달린다.
+          effects: ["then b1_valley"]
+      - id: lure
+        label: 오른쪽 열린 비탈로 달리며 소리친다
+        risk: 매우 위험해 보인다
+        check: {skill: 은신, D: 55, warn: ["been gf_tannery", "pknows fact_gf_wolf_den"]}
+        success:
+          text: |
+            개들이 너를 따라 비탈을 내려온다. 늑대굴에서 멀어진다. 너는 계곡 끝에서 바위틈으로 기어든다. 개들이 지나간다. 볼크의 발소리가 지나간다. 아주 가까이. 그리고 멀어진다.
+          effects: ["var den_saved = true", "nemesis npc_volk 2", "deed rescue"]
+        failure:
+          text: |
+            비탈 끝 계곡. 너는 넘어진다.
+          effects: ["then b1_valley"]
+      - id: tannery
+        label: 무두장 냄새를 바르고 엎드린다
+        needs_been: gf_tannery
+        check: {skill: 은신, D: 34}
+        success:
+          text: |
+            썩은 가죽 냄새가 네 냄새를 덮는다. 개 한 마리가 코앞까지 왔다가 재채기를 하고 돌아선다.
+          effects: ["var den_saved = true"]
+        failure:
+          text: |
+            냄새가 모자라다. 개가 짖는다. 너는 달린다.
+          effects: ["then b1_valley"]
+  - id: b1_valley
+    text: |
+      개들이 원을 그리고 멈춘다. 그 원 안으로 사람이라기엔 너무 큰 것이 걸어 들어온다.
+
+      볼크가 쭈그려 앉아 네 목에 코를 댄다. "킁. 젖은 재."
+    choices:
+      - id: end
+        label: ▸
+        text: |
+          {volk_last}
+
+          쇠 송곳니가 햇빛을 받는다. 바위 위에서 누가 숨을 들이켠다.
+        effects: ["die teeth npc_volk 대수색 날 계곡에서 볼크에게"]
+
+  # ── B2 「안내」 — 마르타와 거래했다면, 즈닉이 너를 사냥대에 붙인다 (25일 아침) ──
+  - id: death_b2_guide
+    trigger: {window: {from: "312-09-25 05:00", to: "312-09-25 09:00"}, when: ["var martha_deal == true", "alive npc_volk"]}
+    text: |
+      즈닉이 네 목에 끈을 건다. "언덕 길을 아는 놈." 볼크의 사냥대가 너를 앞세운다. 개들이 네 발뒤꿈치를 문다.
+    choices:
+      - id: lead
+        label: 늑대굴로 안내한다
+        text: |
+          가시덤불 앞. 개들이 조용해진다. 덤불이 갈라진다. 창끝. 동상으로 반쪽이 검은 얼굴. "누구 소유냐. 누구를 데려왔냐."
+        effects: ["die_if 0.55 spear 늑대굴 입구에서 시그리드의 창에", "var fugitives_caught += 19", "deed betray", "note 사냥대를 늑대굴로 안내했다"]
+      - id: misdirect
+        label: 엉뚱한 골짜기로 이끈다
+        check: {skill: 기만, D: 50}
+        success:
+          text: |
+            반나절을 헛걷게 한다. 볼크가 너를 돌아본다. "킁." 그 이상은 없다. 아직은.
+          effects: ["nemesis npc_volk 3", "var den_saved = true"]
+        failure:
+          text: |
+            볼크가 걸음을 멈춘다. "이 길이 아니지." 그가 네 목의 끈을 쥔다.
+          effects: ["then b1_valley"]
+
+  # ── A1 「소금 나루」 — 굶주림월 3일 아침, 2차 호송 ──
+  - id: death_a1_raid
+    trigger: {window: {from: "312-12-03 06:30", to: "312-12-03 10:00"}, at: [gf_iron_bridge, filth_marsh], when: ["var sara_on_list == true", "pknows fact_gf_sara_on_sale_list"]}
+    text: |
+      용의 대로, 습지 굽이. 눈이 무릎까지. 서른하나가 두 줄 사슬로 걷는다. 사라는 앞에서 일곱째.
+
+      습지의 갈대가 한꺼번에 일어선다. 디트마르가 먼저 뛰쳐나간다. 소리도 지르지 않는다. 용인 경비 하나가 말에서 떨어진다. 다른 하나가 창을 고쳐 쥔다.
+
+      사라가 너를 본다. 그녀의 손목과 앞사람의 손목을 잇는 고리. 쐐기 하나만 빼면 된다.
+    choices:
+      - id: wedge
+        label: 쐐기를 뽑는다
+        risk: 매우 위험해 보인다
+        check: {skill: 손재주, D: 40}
+        success:
+          text: |
+            쐐기가 빠진다. 사라의 손이 풀린다.
+          effects: ["var sara_on_list = false", "var sara_freed = true", "die_if 0.7 spear a1_dying"]
+        failure:
+          text: |
+            쐐기가 얼어붙어 있다. 손톱이 갈라진다.
+          effects: ["die_if 0.7 spear a1_dying"]
+      - id: retreat
+        label: 갈대로 물러난다
+        text: |
+          너는 갈대 속에 엎드린다. 사슬 소리, 비명, 말 울음. 그리고 조용해진다. 눈 위에 무엇이 남았는지, 너는 보지 않는다.
+        effects: ["note 2차 호송 습격 — 갈대 속에서 끝까지 엎드려 있었다"]
+  - id: a1_dying
+    text: |
+      그 순간 옆구리가 뜨겁다. 차갑다. 창날이 들어왔다 나간다.
+
+      눈이 얼굴에 닿는다. 사라가 네 머리를 무릎에 올린다. 그녀의 손이 떨린다. "말해. 이름. 네 진짜 이름."
+    choices:
+      - id: name
+        label: 진짜 이름을 말한다
+        text: |
+          "{name}."
+
+          사라가 그 이름을 소리 없이 따라 한다. 한 번. 두 번. 눈이 그녀의 속눈썹에 내려앉는다. 그 뒤는
+        effects: ["die spear 용의 대로 습지 굽이에서 용인 경비의 창에 — 사라는 너의 이름을 알았다"]
+      - id: go
+        label: '"가."'
+        text: |
+          사라는 가지 않는다. 그녀의 손이 네 이마를 덮는다. 그 뒤는
+        effects: ["die spear 용의 대로 습지 굽이에서 용인 경비의 창에"]
+
+  # ── A2 「성채 금고」 — 남작 서재에 밤에 들어서면 ──
+  - id: death_a2_keep
+    trigger: {window: {from: "312-09-01 00:00", to: "313-12-30 00:00"}, at: gf_keep_study, night: true}
+    text: |
+      남작 서재. 식은 벽난로 냄새. 책상 뒤 벽감에 쇠 금고 — 열쇠 구멍이 셋.
+    choices:
+      - id: open_box
+        label: 금고를 연다
+        check: {skill: 손재주, D: 55}
+        success:
+          text: |
+            세 번째 쇠가 돌아간다. 명단. 빚 증서. 붉은 밀랍의 계약서. 너는 그것들을 벽난로에 넣고 부싯돌을 친다.
+
+            불빛이 창으로 샌다. 복도에서 발소리.
+          effects: ["var list_burned = true", "var sara_on_list = false", "var kit_on_list = false", "die_if 0.5 rope a2_yard"]
+        failure:
+          text: |
+            쇠가 걸린다. 다시. 다시. 복도에서 발소리가 멈춘다.
+          effects: ["die_if 0.5 rope a2_yard"]
+      - id: leave
+        label: 손대지 않고 나온다
+        text: |
+          너는 금고를 본다. 그것만으로 손이 떨린다. 너는 들어온 길로 나간다.
+        effects: []
+  - id: a2_yard
+    text: |
+      지하실에서 밤새 같은 목소리가 '열쇠'를 묻는다. 새벽, 성채 마당. 하인 서른여덟이 줄지어 본다. 들보.
+
+      창문 하나에 털모자가 매달린 열쇠 꾸러미가 걸려 있다.
+    choices:
+      - id: end
+        label: ▸
+        text: ""
+        effects: ["die rope 성채 마당의 들보에 — 금고를 연 밤의 끝"]
+
+  # ── 협박꾼이 찾아온다 (27 반응 층의 threats를 소비한다) ──
+  - id: threat_demand
+    dynamic: true
+    text: |
+      {who}이(가) 네 앞을 막아선다. 아무도 듣지 못하게, 아주 가까이.
+
+      "{about}. 나는 안다." 손바닥이 위로 펴진다. "두 발톱. 아니면 내가 아는 걸 감독관도 알게 되겠지."
+    choices:
+      - id: pay
+        label: 두 발톱(24못)을 쥐여 준다
+        needs: "coin >= 24"
+        text: |
+          {who}의 손이 닫힌다. "다음 달에 또 보자." 웃지 않는다.
+        effects: ["threat_pay 24"]
+      - id: stall
+        label: '"사흘만 주세요."'
+        check: {skill: 화술, D: 40}
+        success:
+          text: |
+            {who}이(가) 너를 한참 본다. "사흘."
+          effects: ["threat_delay 3"]
+        failure:
+          text: |
+            "사흘이면 너는 북쪽에 있겠지." {who}이(가) 돌아선다. 감독관 초소 쪽으로.
+          effects: ["threat_refuse"]
+      - id: refuse
+        label: '"마음대로 하세요."'
+        text: |
+          {who}이(가) 어깨를 으쓱한다. 그리고 감독관 초소 쪽으로 걸어간다. 서두르지 않는다.
+        effects: ["threat_refuse"]
+
+  # ── 쫓는 자가 너를 찾아냈다 (17 §3.6 추적 거리 4) ──
+  - id: nemesis_found
+    dynamic: true
+    text: |
+      {nem}이(가) 거기 있다. 기다리고 있었다는 얼굴로.
+
+      "찾았다."
+    choices:
+      - id: flee
+        label: 달아난다
+        check: {skill: 은신, D: 48}
+        success:
+          text: |
+            골목 하나, 담 하나, 개울 하나. 숨이 찰 때까지. 뒤를 보면 아무도 없다. 아직은.
+          effects: ["nem_track 1"]
+        failure:
+          text: |
+            손이 네 뒷덜미를 잡는다.
+          effects: ["nem_caught"]
+      - id: bargain
+        label: 흥정한다
+        check: {skill: 화술, D: 55}
+        success:
+          text: |
+            {nem}이(가) 네 말을 끝까지 듣는다. 그리고 침을 뱉는다. "이번만이다."
+          effects: ["nem_track 0", "coin -6"]
+        failure:
+          text: |
+            {nem}이(가) 웃는다. 대답 대신 손을 뻗는다.
+          effects: ["nem_caught"]
+      - id: fight
+        label: 맞선다
+        risk: 죽을 수 있다
+        check: {skill: 싸움, D: 68}
+        success:
+          text: |
+            흙바닥에서 둘이 뒹군다. 일어서는 것은 너다. {nem}은(는) 일어서지 않는다.
+          effects: ["nem_kill"]
+        failure:
+          text: |
+            {nem}의 손이 네 목에 닿는다. 하늘이 기운다.
+          effects: ["nem_die"]

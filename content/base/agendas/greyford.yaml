@@ -3,6 +3,8 @@
 # at: 그 일을 하는 시각·장소 — 위치 엔진에 덮어쓰기로 들어가 NPC가 실제로 그 자리에 간다.
 # effects: 그 일이 끝나면 세계 상태가 바뀐다.
 vars:                         # 회귀점의 세계 상태
+  toby_sold: false
+  martha_deal: false
   egil_hidden: true           # 에길 일가 다섯이 수탉 지하에 있다
   egil_moved: false
   henrik_extortion: 2         # 브람이 매주 내는 입막음 값 (발톱)
@@ -117,7 +119,8 @@ agendas:
     when: ["alive npc_znik", "date >= 312-10-09"]
     at: {place: gf_whip_square, from: "05:00", to: "07:00", doing: 1차 호송 — 마흔 명을 사슬로 묶는다}
     effects: ["if var kit_on_list == true: var kit_sold = true ; capture npc_kit at dragon_pillar_post ; log 1차 호송 — 키트가 마흔 명 사슬 속에서 남쪽으로 끌려갔다",
-              "else: log 1차 호송 — 마흔 명이 남쪽으로 끌려갔다. 키트의 자리에는 다른 이름이 있었다"]
+              "else: log 1차 호송 — 마흔 명이 남쪽으로 끌려갔다. 키트의 자리에는 다른 이름이 있었다",
+              "if var toby_on_list == true: var toby_sold = true ; log 강변 움막 아홉 호의 토비가 키트 대신 사슬에 묶였다"]
   - id: ag_convoy_second
     npc: npc_znik
     goal: 굶주림월 3일 2차 매각 호송 — 서른하나 (사라 포함, REGIONS 12.3)
