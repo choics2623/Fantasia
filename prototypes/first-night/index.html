@@ -171,7 +171,7 @@ function fresh() {
     coins: 2, items: ["부츠 속 은화 두 닢"],
     bond: { paine: 0, sara: 1, bram: 1, elsa: 0, egil: 0, osric: 0, hagen: 0, gerda: 5, kit: 4 },
     f: {}, lex: [], reveal: [], oath: null, events: [], met: ["gerda", "kit", "paine", "sara", "bram", "znik"],
-    awaken: 0, voiceCount: {}, life: 1, alive: true, seed: Math.floor(Math.random() * 1e9),
+    awaken: 0, voiceCount: {}, loop: 1, mem: {}, lifeLog: [], alive: true, seed: Math.floor(Math.random() * 1e9),
   };
 }
 let S = fresh();
@@ -193,6 +193,7 @@ const N = (t) => ({ k: "note", t });
 const LEX = (word, how) => ({ k: "lex", word, how });
 const VOICE_NAME = { first: "누군가", dara: "낮고 거친 목소리", self: "" };
 const VOICE_CLASS = { first: "first", dara: "dara", self: "self" };
+let VOICE_SELF_LINE = "이번엔 다르게 해.";
 const FOOD = ["빵", "귀리죽", "죽", "국자", "냄새", "고기", "수프"];
 const LIST_ROWS = ["세렌 상관 세베로 인수 명단", "회색여울 농노 서른한 명", " 1. 사라 — 스물, 하녀, 흠 없음", " 2. 토비 — 서른넷, 방앗간, 손가락 둘 없음", "   …", "17. 셋째 — 열일곱, 건강함, 등에 채찍 자국", "   …", "인도: 낙엽월 4일 새벽, 여울강 나루"];
 
@@ -454,7 +455,7 @@ SC.survived = {
   beats: [
     ["어떻게 빠져나왔는지 기억나지 않는다. 진흙과 갈대와 사라의 손. 개 짖는 소리가 멀어진다.", "새벽, 숯막의 연기가 보인다."],
     ["그러나 당신은 안다. 볼크는 냄새를 잊지 않는다.", "갈대밭 어딘가에서, 회색 늑대가 처음으로 당신의 냄새에 이름을 붙였다."],
-    [N("이번 생애의 첫 죽음은 미뤄졌다. 이 프로토타입에서는 여기서 끝난다 — 다른 선택으로 다시 해보면 '각성'을 볼 수 있다.")],
+    [N("이번 회차의 죽음은 미뤄졌다. 이 프로토타입에서는 여기서 끝난다 — 다른 선택으로 다시 해보면 '회귀'를 볼 수 있다.")],
   ],
   end: true,
 };
@@ -478,64 +479,49 @@ SC.execution = {
   death: true,
 };
 
-// 죽음 이후
-SC.soul = { soul: true };
-
-SC.wake_paine = {
-  time: [4, 9], place: "하겐의 창고 · 흐림",
-  enter() { S.body = "페인"; S.life = 2; S.fear = 1; S.hunger = 3; S.pain = 10; S.painPart = "손목"; S.awaken = 2; S.skills = { 은신: 30, 기만: 25, 화술: 15, 운동: 25, 맨손: 5, 읽고쓰기: 0 }; note("페인의 몸에서 깨어났다"); },
+// 회귀 이후 — 두 번째 회차
+const DRIFTS = ["이번에는 비가 조금 덜 온다. 사흘째가 아니라 이틀째인 것처럼.", "즈닉이 줄의 반대쪽 끝에서 걸어온다. 지난번에는 이쪽이었다.", "짐꾼들이 용황이 아니라 북쪽 거인들 이야기를 하고 있다. 지난번과 다르다."];
+const SELF_LINES = { sacrifice: "이번엔 다 같이 살아. 개들은 물총새 말뚝 쪽에서 와.", marsh: "갈대밭은 안 돼. 거긴 냄새가 고여.", execution: "무릎 꿇지 마. 다시는." };
+SC.ration2 = {
+  time: [1, 19], place: "배급 막사 앞 · 비",
+  enter() { S.hunger = 2; S.pain = 30; S.painPart = "등"; S.awaken = 2; note("회귀점에서 다시 눈을 떴다"); },
   beats: [
-    [{ k: "wake", t: "나는 — 숨을 들이켰다." }],
-    ["당신은 숨을 들이켰다. 바닥은 짚이고, 냄새는 생선과 타르. 하겐의 창고.", "손이 작다. 손목에 밧줄 자국. 손등에 오래된 화상. 이건 당신의 손이 아니다. 그런데 당신은 이 화상이 어떻게 생겼는지 안다 — 여덟 살 겨울, 하겐의 솥."],
-    ["두 개의 기억이 한 몸 안에서 서로를 밀어낸다. 열여섯 해의 페인과, 열일곱 해의 " + "{slave}" + ".", "그리고 어젯밤. 갈대. 이빨. 비."],
-    [V("self", "나를 판 건 하겐이야. 그리고 너는 — 페인, 너는 그걸 알고 있었지.", 2)],
-    ["창고 문이 열린다. 하겐이 아니다. 회색 털.", "볼크 회색송곳니가 창고 안을 둘러보다가, 당신 앞에서 멈춘다. 코가 움직인다.", "\"…이상하군. 어디서 맡아본 냄새다.\""],
+    [{ k: "wake", t: "나는 — 이 냄새를 안다." }],
+    ["빵 냄새. 젖은 줄. 마을 끝까지.", "등이 아프다. 즈닉의 채찍이 세 번 갈랐던 자리. 사흘 전에 딱지가 앉았던 상처가 — 다시 새것이다."],
+    [() => DRIFTS[S.seed % DRIFTS.length]],
+    [L("용언", ["짐승들,", "줄", "똑바로", "서!"]), () => (S.lex.includes("짐승") ? "이번에는 들린다. 페인이 가르쳐 준 말. 페인은 그걸 가르쳐 준 적이 없다 — 이 세계에서는." : null)],
+    [() => {
+      const m = S.mem, lines = [];
+      if (m.list) lines.push("사흘 뒤 새벽, 서른한 명이 여울강 나루로 간다. 사라와 당신이 그 명단에 있다.");
+      if (m.hagen) lines.push("하겐은 웃으면서 당신을 판다.");
+      if (m.egil) lines.push("브람의 지하실에는 아홉 살 에길이 있다.");
+      lines.push("볼크의 개들은 빗속에서도 냄새를 찾는다.");
+      return "당신은 기억한다.\n" + lines.join("\n");
+    }],
+    [V("self", "", 2)],
+    ["작은 손이 소매를 잡는다. 페인이다.", "처음 보는 얼굴로. 페인에게는 처음이니까."],
   ],
   choices: [
-    { t: "페인처럼 군다: 고개를 숙이고 하겐의 심부름 이야기를 늘어놓는다", check: { skill: "기만", S: () => S.skills.기만 + 10, D: 35, mods: ["이 몸의 습관 +10"] }, fx(ok) { note(ok ? "볼크 앞에서 페인인 척 연기했다" : "볼크가 무언가를 눈치챘다"); S.f.volk_suspects = !ok; }, go: "grave" },
-    { t: "눈을 피하지 않는다. 어젯밤처럼", fx() { S.f.volk_suspects = true; note("볼크의 눈을 피하지 않았다"); }, go: "grave" },
+    { t: "빵 반쪽을 주고 귀에 대고 속삭인다: \"하겐 아저씨가 늑대 머리랑 술을 마시면, 바로 나한테 와.\"", show: () => S.mem.hagen, fx() { S.f.whisper = true; S.bond.paine += 3; note("두 번째 회차 — 페인에게 하겐과 볼크의 일을 미리 귀띔했다"); }, go: "loop2_end" },
+    { t: "빵 반쪽을 준다. 지난번처럼", fx() { S.f.bread = "shared"; S.bond.paine += 3; }, go: "loop2_end" },
+    { t: "줄을 빠져나와 곧장 예배당으로 간다. 명단은 이미 안다", show: () => S.mem.list, fx() { S.f.chapel_direct = true; note("두 번째 회차 — 명단이 오기도 전에 오스릭을 찾아갔다"); }, go: "loop2_end" },
+    { t: "브람에게 다가가 속삭인다: \"지하실의 에길, 내가 데려갈게요.\"", show: () => S.mem.egil, fx() { S.f.bram_direct = true; note("두 번째 회차 — 브람의 비밀을 먼저 꺼냈다"); }, go: "loop2_end" },
   ],
 };
-
-SC.wake_sara = {
-  time: [4, 10], place: () => (S.f.others_escaped ? "검은 굴뚝 숯막 · 흐림" : "여울강 나루 · 노예 수레"),
-  enter() { S.body = "사라"; S.life = 2; S.fear = 0; S.hunger = 2; S.pain = 20; S.painPart = "발바닥"; S.awaken = 2; S.skills = { 은신: 20, 기만: 15, 화술: 30, 운동: 15, 맨손: 5, 읽고쓰기: 0 }; note("사라의 몸에서 깨어났다"); },
+SC.loop2_end = {
+  time: [1, 21], place: "회색여울 · 비",
   beats: [
-    [{ k: "wake", t: "나는 — 울고 있었다." }],
-    [() => (S.f.others_escaped ? "당신은 울고 있었다. 숯막의 연기, 갈라진 발바닥. " + (S.f.egil ? "무릎 위에서 에길이 잠들어 있다." : "옆에 아무도 없다.") : "당신은 울고 있었다. 손목의 쇠고랑, 덜컹이는 수레 바닥. 세렌으로 가는 서른 명 사이.")],
-    [() => (S.f.death === "sacrifice" ? "그리고 당신은 왜 우는지 안다. 어젯밤 갈대밭 반대편으로 달려간 사람 때문이다." : "그리고 당신은 왜 우는지 안다. 어젯밤 갈대밭에서 개들에게 끌려간 사람 때문이다."), "그 사람이 당신이다."],
-    [V("self", "울지 마. 나는 여기 있어. …너의 안에.", 2)],
-    [() => (S.oath === "sara" || S.oath === "all" ? "목구멍에 맹세가 걸려 있다. '사라를 팔려가게 두지 않는다.' 이제 그 맹세는 이상한 모양이 되었다. 지켜졌다. 그리고 당신이 사라다." : "당신은 사라의 손으로 얼굴을 닦는다. 사라의 손은 떨리지 않는다. 당신의 손보다 강하다.")],
+    [() => {
+      if (S.f.whisper) return "페인이 당신을 본다. 처음 보는 사람을 보는 눈으로. 그리고 당신이 아는 이름 둘을 듣고, 그 눈이 변한다.\n\"…어떻게 알아?\"";
+      if (S.f.chapel_direct) return "오스릭은 당신을 처음 본다. 명단 이야기를 꺼내자 그의 얼굴이 하얗게 질린다.\n\"그 종이는… 아직 이 마을에 오지도 않았다.\"";
+      if (S.f.bram_direct) return "브람의 손에서 그릇이 미끄러진다. \"…누가 말했냐.\"\n그의 눈이 지하실 판자로 갔다가 당신에게 돌아온다. 그 눈에 처음으로 두려움이 있다. 당신에 대한.";
+      return "페인은 빵을 품에 넣고 사라졌다. 지난번과 똑같이. 고맙다는 말은 없었다.\n같은 일이 같은 모양으로 일어난다. 당신이 바꾸지 않는 한.";
+    }],
+    [() => (S.f.whisper || S.f.chapel_direct || S.f.bram_direct ? "당신은 대답하지 못한다. 아직 일어나지 않은 일을 안다는 것은, 그 자체로 징후다." : null), () => (S.f.chapel_direct ? "예배당 구석에서 회색 망토의 순례자가 고개를 든다. 탑에서 왔다는 이졸. 그는 당신을 오래 본다." : null)],
+    ["멀리서 개가 짖는다.", "지난번에는 사흘째 밤이었다. 오늘은 첫날 밤이다."],
+    [N("회귀할수록 당신에게서 젖은 재 냄새가 짙어진다. 볼크의 코는 지난 회차를 기억하지 못하지만, 그 냄새는 알아챈다.")],
   ],
-  choices: [
-    { t: () => (S.f.others_escaped ? (S.f.egil ? "에길을 깨우고 숯막을 떠난다. 늪은 아직 멀다" : "숯막을 떠난다. 늪은 아직 멀다") : "쇠고랑의 이음매를 손톱으로 더듬는다"), go: "grave" },
-    { t: "회색여울 쪽을 돌아본다. 하겐이 아직 웃고 있을 것이다", fx() { S.f.vengeance_seed = true; note("회색여울 쪽을 돌아보았다 — 하겐을 잊지 않았다"); }, go: "grave" },
-  ],
-};
-
-SC.wake_gerda = {
-  time: [4, 7], place: "움막 12호 · 흐림",
-  enter() { S.body = "게르다"; S.life = 2; S.fear = 0; S.hunger = 2; S.pain = 35; S.painPart = "가슴"; S.awaken = 2; S.skills = { 은신: 10, 기만: 20, 화술: 25, 운동: 10, 맨손: 5, 읽고쓰기: 0 }; note("어머니 게르다의 몸에서 깨어났다"); },
-  beats: [
-    [{ k: "wake", t: "나는 — 기침을 했다." }],
-    ["당신은 기침을 했다. 손바닥에 붉은 것이 묻어난다. 마흔한 해 된 폐가 젖은 짚처럼 운다.", "움막 12호. 당신이 태어난 곳. 당신을 낳은 사람의 몸으로, 당신은 깨어났다."],
-    [() => (S.f.death === "execution" ? "새벽에 나루에서 무슨 일이 있었는지, 이 몸은 보았다. 말뚝, 볼크의 칼, 그리고 그 아이의 얼굴." : "새벽에 마을 사람들이 수군거렸다. 오물 습지에서 바르그의 개들이 아이 하나를 물어 왔다고."), "그 아이가 당신이다. 그리고 그 아이의 이름을 아는 사람은 이제 — 당신뿐이다."],
-    [V("self", "엄마… 아니, 나. 우리. 키트가 깼어.", 2)],
-    ["거적 아래에서 키트가 눈을 비빈다.", "\"엄마, 형은 언제 와? 아니… 누나였나.\" 키트는 잠이 덜 깨 웃는다. \"꿈에서 셋째가 이름을 알려 줬어. 진짜 이름.\""],
-  ],
-  choices: [
-    { t: "키트를 끌어안고, 그 이름을 속으로만 부른다", go: "grave" },
-    { t: "\"그 이름, 아무한테도 말하면 안 돼.\"", fx() { S.f.warned_kit = true; note("키트에게 이름을 입 밖에 내지 말라고 했다"); }, go: "grave" },
-  ],
-};
-
-SC.grave = {
-  time: [4, 18], place: "번호 묘지 · 313번 말뚝",
-  beats: [
-    [() => (S.body === "사라" && S.f.others_escaped ? "회색여울에 돌아가는 것은 한참 뒤의 일이다. 그래도 당신은 안다. 마을 북쪽 번호 묘지에, 이름 대신 숫자가 박힌 말뚝 하나가 새로 섰다는 것을." : S.body === "사라" ? "수레가 번호 묘지 옆을 지난다. 새 말뚝 하나가 보인다. 313." : "해 질 녘, 당신은 번호 묘지에 간다. 노예의 무덤에는 이름이 없다. 말뚝에 숫자만 박혀 있다."), "313번 말뚝. 그 아래 흙이 아직 무르다."],
-    [() => (S.f.egil ? "말뚝 밑동에 서리말 매듭 하나가 묶여 있다. 누군가 먼저 다녀갔다." : "말뚝에는 아무것도 없다."), "당신은 자기 무덤 앞에 서 있다."],
-  ],
-  chronicleAfter: true,
+  next: "demo_end",
 };
 
 SC.demo_end = { demoEnd: true };
@@ -585,7 +571,7 @@ const main = $("main");
 function hourStr() { return HOURS[S.hour]; }
 function renderTop(place) {
   $("top").hidden = false;
-  $("when").innerHTML = `<b>${MONTH} ${S.day}일 · ${hourStr()}</b> · ${esc(place || S.place)}${S.body !== "셋째" ? ` · <span style="color:var(--frost)">${esc(S.body)}의 몸</span>` : ""}`;
+  $("when").innerHTML = `<b>${MONTH} ${S.day}일 · ${hourStr()}</b> · ${esc(place || S.place)}${S.loop > 1 ? ` · <span style="color:var(--frost);white-space:nowrap">${S.loop}회차</span>` : ""}`;
 }
 function bar(n, max, cls) { let h = `<span class="bar ${cls}">`; for (let i = 0; i < max; i++) h += `<i class="${i < n ? "on" : ""}"></i>`; return h + "</span>"; }
 function renderBody() {
@@ -614,13 +600,15 @@ function renderItem(it, ctx) {
     const used = S.voiceCount[ctx.scene] || 0;
     if (used >= 2) return "";
     S.voiceCount[ctx.scene] = used + 1;
-    const who = it.who === "self" ? (S.name ? `${S.name} (셋째)` : "셋째") : VOICE_NAME[it.who];
-    return `<p class="voice ${VOICE_CLASS[it.who]}"><span class="who">⟨${esc(who)}⟩</span>${esc(fill(it.t))}</p>`;
+    const who = it.who === "self" ? (ORD[S.loop - 2] || S.loop - 1) + " 회차의 나" : VOICE_NAME[it.who];
+    const text = it.who === "self" && !it.t ? VOICE_SELF_LINE : it.t;
+    return `<p class="voice ${VOICE_CLASS[it.who]}"><span class="who">⟨${esc(who)}⟩</span>${esc(fill(text))}</p>`;
   }
   if (it.k === "lang") {
     const words = it.words.map((w) => (knownWord(w) ? `<span class="known">${esc(w)}</span>` : `<span class="mask">${"■".repeat(Math.max(2, w.replace(/[.,!?]/g, "").length))}${esc(w.replace(/[^.,!?]/g, ""))}</span>`));
     const known = it.words.filter(knownWord).length;
-    const tail = known === it.words.length ? "" : known ? `<span class="note"> (${esc(it.lang)}다. 몇 마디만 알아들었다.)</span>` : `<span class="note"> (${esc(it.lang)}다. 알아들을 수 없다.)</span>`;
+    const cop = esc(it.lang) + (hasBatchim(it.lang) ? "이다" : "다");
+    const tail = known === it.words.length ? "" : known ? `<span class="note"> (${cop}. 몇 마디만 알아들었다.)</span>` : `<span class="note"> (${cop}. 알아들을 수 없다.)</span>`;
     return `<p class="lang">"${words.join(" ")}"${tail}</p>${it.note ? `<p class="note">${esc(it.note)}</p>` : ""}`;
   }
   if (it.k === "read") {
@@ -664,8 +652,6 @@ function enterScene(id) {
   if (sc.enter) sc.enter();
   main.innerHTML = "";
   save();
-  if (sc.chronicle) return renderChronicle();
-  if (sc.soul) return renderSoul();
   if (sc.demoEnd) return renderDemoEnd();
   renderTop(); renderBody(); syncHeart();
   showBeat();
@@ -700,7 +686,6 @@ function showBeat() {
 function afterBeats() {
   const sc = sceneObj(S.scene);
   if (sc.death) return setTimeout(() => runDeath(), 900);
-  if (sc.chronicleAfter) return renderChronicle(true);
   if (sc.end) return renderEndButtons();
   if (sc.endDay) return renderEndDay(val(sc.endDay), sc.next);
   if (sc.choices) return renderChoices(sc);
@@ -817,7 +802,7 @@ function runDeath() {
   gaps.forEach((gap, i) => { t += gap; setTimeout(() => { if (ac && settings.snd) thump(ac.currentTime + 0.01, 0.45 - i * 0.07); if (settings.hap && navigator.vibrate) navigator.vibrate(40); }, t); });
   const lines = ["", "…", "심장이 느려진다.", "", "멈춘다."];
   lines.forEach((l, i) => setTimeout(() => { $("dtxt").textContent = l; }, 600 + i * 1700));
-  setTimeout(() => { ov.remove(); enterScene("soul"); }, 600 + lines.length * 1700 + 1200);
+  setTimeout(() => { ov.remove(); main.innerHTML = ""; renderLoopEnd(); }, 600 + lines.length * 1700 + 1200);
 }
 
 function hasBatchim(w) { const c = w.charCodeAt(w.length - 1); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 !== 0; }
@@ -839,64 +824,52 @@ function lifeStory() {
   return parts;
 }
 function oathResult() {
-  if (S.oath === "sara") return S.f.others_escaped ? "지켜졌다" : "지키지 못했다 — 맹세는 다음 생애로 따라간다";
-  if (S.oath === "all") return "지키지 못했다 — 서른 명이 세렌으로 갔다. 맹세는 다음 생애로 따라간다";
+  if (S.oath === "sara") return S.f.others_escaped ? "지켜졌다" : "지키지 못했다 — 증인은 잊었다. 당신은 기억한다";
+  if (S.oath === "all") return "지키지 못했다 — 서른 명이 세렌으로 갔다. 증인은 잊었다. 당신은 기억한다";
   if (S.oath === "self") return "어겼다 — 살아남지 못했다";
   return "없음";
 }
-function renderChronicle(inline) {
-  if (!inline) { $("top").hidden = true; $("bodybar").hidden = true; }
-  const box = document.createElement("div"); box.className = "chron";
-  box.innerHTML = `<div class="life">연대기 · 첫 번째 생애</div><h3>셋째, 회색여울의 농노</h3><div class="life">진짜 이름: ${esc(S.name || "—")} · 붕괴력 295 ~ 312 (17세)</div>${lifeStory().map((p) => `<p>${esc(p)}</p>`).join("")}<div class="life">맹세 — ${esc(oathResult())}</div>`;
-  const b = document.createElement("button"); b.type = "button"; b.textContent = "▾ 계속";
-  b.addEventListener("click", () => enterScene("demo_end"));
-  main.appendChild(box); main.appendChild(b); box.scrollIntoView({ block: "start", behavior: "smooth" });
-}
-function soulScores() {
-  const sacrificed = S.f.death === "sacrifice";
-  const sara = 40 + (S.oath === "sara" || S.oath === "all" ? 20 : 0) + (sacrificed ? 35 : 0) + Math.max(0, S.bond.sara) * 3;
-  const paine = S.f.bread === "shared" ? 70 + (S.f.taught_paine ? 28 : 0) : S.f.bread === "ignored" ? 30 : 0;
-  return [
-    { id: "wake_gerda", nm: "게르다", why: "어머니. 이름을 아는 단 한 사람", score: 88 },
-    { id: "wake_sara", nm: "사라", why: sacrificed ? "당신이 목숨을 걸고 지킨 사람. 당신이 죽는 것을 보았다" : S.oath === "sara" || S.oath === "all" ? "맹세의 증인" : "명단을 가져온 사람", score: sara },
-    { id: "wake_paine", nm: "페인", why: S.f.taught_paine ? "빵 반쪽, 그리고 글자 하나" : S.f.bread === "shared" ? "빵 반쪽의 인연" : S.f.bread === "stole" ? "인연이 아니라 원한" : "얕은 인연", score: paine },
-    { id: null, nm: "키트", why: "열 살 — 너무 어리다 (12세 이상)", score: -1 },
-    { id: null, nm: "에길", why: S.f.egil ? "아홉 살 — 너무 어리다" : "거의 모르는 아이", score: -1 },
-  ];
-}
-function renderSoul() {
+const ORD = ["첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉"];
+function loopName(n) { return (ORD[n - 1] || n) + " 번째 회차"; }
+function renderLoopEnd() {
   $("top").hidden = true; $("bodybar").hidden = true;
-  const cands = soulScores();
-  const win = cands.filter((c) => c.id).sort((a, b) => b.score - a.score)[0];
-  S.f.next_body = win.id;
-  const wrap = document.createElement("div"); wrap.className = "story";
-  const thread = (c) => {
-    const w = c.score < 0 ? 1 : Math.max(1, Math.min(8, Math.round(c.score / 14)));
-    const line = `<span style="display:inline-block;vertical-align:middle;width:70px;height:${w}px;background:${c === win ? "var(--gold)" : "var(--ink-faint)"};margin-right:10px"></span>`;
-    return `<p class="note" style="font-size:0.86rem">${line}<b style="color:${c === win ? "var(--gold)" : "var(--ink-soft)"}">${esc(c.nm)}</b> — ${esc(c.why)}</p>`;
-  };
-  wrap.innerHTML = `<div class="beat"><p>어둠 속에서, 무언가가 흩어지지 않는다.</p></div>
-    <div class="beat"><p>실이 보인다. 당신에게서 뻗어 나간, 굵고 가는 실들.</p>${cands.map(thread).join("")}</div>
-    <div class="beat"><p>당신은 고르지 않았다. 가장 굵은 실이 당신을 끌어당겼다.</p><p class="voice first"><span class="who">⟨누군가⟩</span>너희는 끝나지 않을 것이다.</p></div>`;
-  main.appendChild(wrap);
-  const b = document.createElement("button"); b.type = "button"; b.className = "continue"; b.textContent = "▾ 눈을 뜬다";
-  b.addEventListener("click", () => { S.alive = true; S.voiceCount = {}; enterScene(win.id); });
-  main.appendChild(b);
-  if (settings.hap && navigator.vibrate) setTimeout(() => navigator.vibrate(40), 3000);
+  const box = document.createElement("div"); box.className = "chron";
+  box.innerHTML = `<div class="life">회차 기록 · ${esc(loopName(S.loop))}</div><h3>셋째, 회색여울의 농노</h3><div class="life">진짜 이름: ${esc(S.name || "—")} · ${MONTH} 1일 ~ ${S.day}일</div>${lifeStory().map((p) => `<p>${esc(p)}</p>`).join("")}<div class="life">맹세 — ${esc(oathResult())}</div><p style="color:var(--gold)">그리고 시간이 접혔다.</p>`;
+  const b = document.createElement("button"); b.type = "button"; b.textContent = "▾ 시간이 접힌다";
+  b.addEventListener("click", foldTime);
+  main.appendChild(box); main.appendChild(b); box.scrollIntoView({ block: "start", behavior: "smooth" });
   save();
+}
+function foldTime() {
+  const ov = document.createElement("div"); ov.className = "death";
+  ov.innerHTML = `<div class="txt" id="fold" style="font-size:0.95rem;color:#8d8578"></div>`;
+  document.body.appendChild(ov);
+  const evs = S.events.map((e) => e.text).reverse();
+  const steps = evs.concat(["…", "빵 냄새."]);
+  steps.forEach((t, i) => setTimeout(() => { $("fold").textContent = t; if (settings.hap && navigator.vibrate) navigator.vibrate(12); }, i * 420));
+  setTimeout(() => { ov.remove(); regress(); enterScene("ration2"); }, steps.length * 420 + 900);
+}
+function regress() {
+  const mem = { hagen: !S.f.route_elsa || !!S.f.warned, list: S.met.includes("osric"), egil: S.met.includes("egil"), death: S.f.death, oath: S.oath };
+  const keep = { name: S.name, lex: S.lex.slice(), reveal: S.reveal.slice(), seed: S.seed + 7919, loop: S.loop + 1, lifeLog: S.lifeLog.concat([{ loop: S.loop, story: lifeStory() }]) };
+  S = fresh(); Object.assign(S, keep); S.mem = mem;
+  VOICE_SELF_LINE = SELF_LINES[mem.death] || "이번엔 다르게 해.";
+}
+function memList() {
+  const m = S.mem, out = [];
+  if (m.list) out.push("명단"); if (m.hagen) out.push("하겐"); if (m.egil) out.push("에길"); out.push("볼크의 개들");
+  return out.join(", ");
 }
 function renderDemoEnd() {
   stopHeart();
   $("bodybar").hidden = true;
   const box = document.createElement("div"); box.className = "chron";
-  const oathLine = S.oath === "sara" || S.oath === "all" ? (S.f.others_escaped ? "맹세는 지켜졌다. 그러나 그 맹세를 한 사람은 이제 없다." : "지키지 못한 맹세가 이 몸으로 따라왔다.") : "";
-  box.innerHTML = `<div class="life">첫 밤 · 끝</div><h3>여기까지가 첫 밤이다</h3>
-    <p>${esc(S.body)}의 몸에서, 두 번째 생애가 시작되었다. ${esc(oathLine)}</p>
-    ${S.body === "게르다" ? "<p>당신은 이제 당신을 낳은 사람이다. 그 몸은 겨울을 넘기지 못할 것이다. 그리고 키트는 진짜 이름을 알고 있다.</p>" : ""}
-    ${S.body === "페인" ? "<p>열여섯 해의 고아와 열일곱 해의 농노가 한 몸에 있다. 둘 다 글자 하나를 안다.</p>" : ""}
-    ${S.f.volk_suspects ? "<p>볼크 회색송곳니는 냄새를 기억했다. 그는 이제 당신을 사냥한다 — 몸이 바뀌어도.</p>" : ""}
-    ${S.f.vengeance_seed ? "<p>하겐은 아직 웃고 있다. 오래 웃지는 못할 것이다.</p>" : ""}
-    <p class="note">이 짧은 밤에 들어 있던 장치: 박자 단위 서술 · 몸 상태(허기·통증·공포)가 바꾸는 글 · 읽을 수 없는 명단 · 배우는 말(용언) · 전생의 목소리 · 맹세 · 메아리 · 체감 확률과 잠긴 선택지 · 첫 죽음 · 인연의 실을 따라 끌려가는 영혼 · 다른 몸에서의 각성 · 자기 무덤 앞의 연대기.</p>`;
+  const oathLine = S.mem.oath === "sara" || S.mem.oath === "all" ? "<p>맹세는 아직 당신 안에 있다. 사라는 그 맹세를 들은 적이 없다 — 이번 회차에서는.</p>" : "";
+  box.innerHTML = `<div class="life">첫 밤 · 끝</div><h3>두 번째 회차가 시작되었다</h3>
+    <p>같은 저녁, 같은 빵 냄새. 세계는 아무것도 기억하지 못한다. 당신만이 기억한다.</p>${oathLine}
+    <p class="note">남은 것: 기억(${esc(memList())}) · 배운 말 「${esc(S.lex.join(", ") || "없음")}」 · 알아본 글자 「${esc(S.reveal.join(", ") || "없음")}」 · 스킬과 재능</p>
+    <p class="note">돌아간 것: 몸(등의 상처, 허기) · 은화 두 닢 · 페인의 빵 · 사라의 신뢰 · 맹세의 증인들</p>
+    <p class="note">이 짧은 밤에 들어 있던 장치: 박자 단위 서술 · 몸 상태가 바꾸는 글 · 읽을 수 없는 명단 · 배우는 말(용언) · 목소리 · 맹세 · 메아리 · 체감 확률과 잠긴 선택지 · 첫 죽음 · 회차 기록 · 시간이 접히는 회귀 · 기억으로 열리는 선택지 · 시간의 표류 · 짙어지는 재 냄새.</p>`;
   main.appendChild(box);
   renderEndButtons();
   save();
@@ -944,7 +917,7 @@ function renderTitle() {
   </div>`;
   $("snd0").addEventListener("change", (e) => { settings.snd = e.target.checked; $("snd").checked = settings.snd; saveSettings(); });
   $("btn-new").addEventListener("click", () => { S = fresh(); if (settings.snd) audioOn(); renderName(); });
-  if ($("btn-continue")) $("btn-continue").addEventListener("click", () => { S = saved; if (settings.snd) audioOn(); if (SC[S.scene] && SC[S.scene].death) enterScene("soul"); else enterScene(S.scene); });
+  if ($("btn-continue")) $("btn-continue").addEventListener("click", () => { S = saved; if (settings.snd) audioOn(); if (SC[S.scene] && SC[S.scene].death) { main.innerHTML = ""; renderLoopEnd(); } else { if (S.mem && S.mem.death) VOICE_SELF_LINE = SELF_LINES[S.mem.death] || "이번엔 다르게 해."; enterScene(S.scene); } });
 }
 function renderName() {
   main.innerHTML = `<div class="title-screen">
