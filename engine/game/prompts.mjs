@@ -64,7 +64,29 @@ function convoCard(g, n, res) {
     guarded.length ? `숨기는 것이 있다 — 내용은 말하지 않는다. 화제가 닿으면 이렇게 얼버무린다:\n${guarded.map((x) => "- " + x).join("\n")}` : "",
     mems.length ? `셋째에 대한 기억:\n${mems.join("\n")}` : "셋째에 대한 기억: 없음",
     (c.hard_rules || []).length ? `절대 하지 않는 것: ${c.hard_rules.join(" / ")}` : "",
+    ...regressionLines(g, n),
   ].filter(Boolean).join("\n");
+}
+
+const stripMeta = (x) => String(x).replace(/\s*\([^)]*(플레이어|회차|%)[^)]*\)/g, "");
+// 카드의 회귀 메모 (22 §1, 14 §7.3): 세계 상태가 같으면 대사는 글자 그대로 같다 — 플레이어만 기억한다
+function regressionLines(g, n) {
+  const rg = g.content.cards[n]?.regression || {}, loop = g.run.loop;
+  const fixed = (rg.fixed || []).filter((x) => !/^회귀점의 사실/.test(x)).map(stripMeta);
+  const out = [];
+  if (fixed.length) out.push(`매 회차 똑같이 하는 일·하는 말 (이 시각·장면에 해당하면 글자 그대로 — 바꾸지 않는다):\n${fixed.map((x) => "- " + x).join("\n")}`);
+  if (loop >= 2 && rg.deja_vu === "strong") out.push("기시감: 셋째를 처음 보는데 이유 없이 오래 쳐다본다. 왜인지는 본인도 모른다.");
+  else if (loop >= 2 && rg.deja_vu === "weak") out.push("기시감: 셋째의 얼굴에서 아주 잠깐 멈칫한다 — 그뿐이다.");
+  if (loop >= 2) out.push("이 사람에게 이 저녁은 처음이다. 지난 회차에 셋째와 있었던 일을 하나도 모른다.");
+  return out;
+}
+// 지난 회차의 셋째와 이 사람 (영혼에 남은 것) — 서술은 주인공의 속마음으로만 짚는다 (14 §7.3 '두 겹')
+function pastLine(g, n) {
+  const P = g.run.carry.soul?.people?.[n]; if (!P?.loops?.length) return "";
+  const x = P.loops[P.loops.length - 1];
+  const s = x.like * 0.6 + x.trust * 0.4;
+  const bond = s >= 40 ? "깊이 믿는 사이였다" : s >= 20 ? "마음을 연 사이였다" : s <= -25 ? "원수였다" : s <= -10 ? "나를 믿지 않았다" : "스쳐 간 사이였다";
+  return ` · [주인공의 기억: ${x.loop}회차엔 ${bond}${x.died ? ", 그 회차에 죽었다" : ""}${x.lines?.[0] ? ` — "${x.lines[0]}"` : ""}]`;
 }
 
 function outcomeLines(g, res) {
@@ -92,7 +114,9 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
   const personLine = (p) => {
     const unknownName = p.name !== (g.content.cards[p.id]?.name);
     const tag = unknownName ? `${p.name} (이름을 모른다 — 이름을 쓰지 말 것)` : `${p.name}${p.who ? ` (${p.who})` : ""}${introduced.has(p.id) ? "" : " [서술에 처음 나온다 — 누구인지 한 구절로]"}`;
-    return `- ${tag}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${p.wears.length ? ` · 지닌 것: ${p.wears.join(", ")}` : ""} · ${p.mood}`;
+    const today = `${v.month} ${v.time.split(" ")[3]}`;   // 예: '낙엽월 1일'
+    const fixedNow = (g.content.cards[p.id]?.regression?.fixed || []).filter((x) => x.includes(today)).slice(0, 1).map(stripMeta);
+    return `- ${tag}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${p.wears.length ? ` · 지닌 것: ${p.wears.join(", ")}` : ""} · ${p.mood}${fixedNow.length ? ` · 매 회차 이 날 같은 일: ${fixedNow[0]}` : ""}${pastLine(g, p.id)}`;
   };
   const scene = [
     loopLine,

@@ -22,7 +22,17 @@ function hash(...parts) {
   return (h >>> 0) / 4294967296;
 }
 export const prob = (S, D) => clamp(1 / (1 + Math.exp(-(S - D) / 8)), 0.03, 0.97);
-export function band(p) { return p >= 0.85 ? "거의 확실하다" : p >= 0.65 ? "해볼 만하다" : p >= 0.4 ? "반반이다" : p >= 0.2 ? "불리하다" : "무모하다"; }
+// 체감 등급 6단 (01 §4.1) — 숫자 대신 캐릭터의 판단
+export function band(p) { return p >= 0.9 ? "식은 죽 먹기" : p >= 0.75 ? "확실해 보인다" : p >= 0.55 ? "해볼 만하다" : p >= 0.4 ? "반반이다" : p >= 0.2 ? "운이 따라야 한다" : "무모하다"; }
+// 체감 확률 (01 §4.2): 실제 P + 과신 편향 + 오차. 서툰 사람일수록 자기를 믿고, 틀린다. 실력이 늘면 세계가 투명해진다
+export function perceived(g, P, skill, key) {
+  const sk = g.P.skills[skill] || 10, sense = 10 + g.P.mods.감각 * 2;
+  const bias = 0.15 * Math.max(0, 1 - sk / 50);
+  const sd = 0.2 * Math.max(0, 1 - (sk + sense * 2) / 140);
+  const u1 = Math.max(1e-6, hash(g.seed, "feel", key, Math.floor(g.t / 1440))), u2 = hash(g.seed, "feel2", key);
+  const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  return clamp(P + bias + z * sd, 0.01, 0.99);
+}
 export function tierOf(P, r) {
   if (r < P * 0.15) return "대성공";
   if (r < P) return "성공";
@@ -61,6 +71,15 @@ export function prepareContent({ bundle, cards, game }) {
 export function newRun({ seed = 7, loop = 1, carry = null, opening = true } = {}) {
   return { v: 1, seed, loop, opening, journal: [], carry: carry || { notebook: [], future: [], deaths: [] } };
 }
+// 영혼 (03 §4.1·§8): 세계 밖의 유일한 상태 — 회귀를 건너는 것은 이것뿐이다.
+// 회차 안에서는 읽기만 한다 (재생이 결정적이도록). 회귀할 때 regressRun이 이번 회차를 정산해 새로 쓴다.
+//   people: {npc: {loops:[{loop, like, trust, impressions, lines}], name}} — 관계 수치는 넘어가지 않는다. 기억만.
+//   knowledge: {fact: {first, last, seen}} — 몇 번 다시 확인했는가가 확신도(03 §4.4)
+//   places: 들어가 본 곳 · records: 회차 기록 · unlocked: 해금(14 §8) · furthest: 가장 멀리 간 날
+export const emptySoul = () => ({ people: {}, knowledge: {}, places: [], records: [], unlocked: [], furthest: START });
+const EMPTY_SOUL = emptySoul();
+const soul = (g) => g.run.carry.soul || EMPTY_SOUL;
+const soulPerson = (g, n) => soul(g).people[n] || null;
 const loopSeed = (run) => Math.floor(hash(run.seed, "loop", run.loop) * 1e9);
 
 // ── 재생: 기록으로 세계를 만든다 ──
@@ -87,7 +106,7 @@ function build(content, run) {
   const g = {
     content, run, W, S, A, L, seed,
     t: START, at: "gf_rooster",
-    P: { ...NEW_PLAYER(), settlement: SETTLEMENT, alive: true, captured: false, knows: new Set(), met: new Set(), seen: {}, knowsPlaces: new Set(), found: new Set(), notebook: [], heard: new Set(), lastRollcall: null },
+    P: { ...NEW_PLAYER(), settlement: SETTLEMENT, alive: true, captured: false, knows: new Set(), met: new Set(), seen: {}, knowsPlaces: new Set(), found: new Set(), been: new Set(["gf_rooster"]), notebook: [], heard: new Set(), lastRollcall: null },
     M: {},             // NPC의 마음 (회차 안에서만): {fear, anger, memories[], impressions{}, revealed:Set, toldPlayer:Set}
     convo: null,       // {npc, turns, patience, transcript[]}
     ended: null,       // {kind: dead|captured, why}
@@ -267,7 +286,7 @@ function rawOptions(g) {
 export function knownNames(g) {
   const out = new Set();
   for (const f of [...g.P.knows, ...g.run.carry.future]) for (const nm of g.content.facts[f]?.names || []) out.add(nm);
-  for (const n of g.P.met) { const nm = nameOf(g, n); out.add(nm); out.add(nm.split(/\s+/)[0]); }
+  for (const n of [...g.P.met, ...Object.keys(soul(g).people)]) { const nm = nameOf(g, n); out.add(nm); out.add(nm.split(/\s+/)[0]); }
   for (const w of present(g)) { const nm = nameOf(g, w.npc); out.add(nm); out.add(nm.split(/\s+/)[0]); }
   return out;
 }
@@ -283,6 +302,7 @@ function topicsFor(g, n) {
 }
 
 // ── 판정 ──
+// parts: 근거 미리보기 (01 §4.3) — 캐릭터가 아는 말로만. ▲ 유리 ▼ 불리 ? 모른다
 export function odds(g, opt) {
   if (!opt.skill) return null;
   const p = g.P;
@@ -290,27 +310,56 @@ export function odds(g, opt) {
   const pr = n ? profOf(g, n) : { perception: 50, nerve: 50 };
   const m = n ? mind(g, n) : { fear: 0, anger: 0 };
   const r = n ? relOf(g, n) : { like: 0, trust: 0 };
+  const knowsHim = n && (p.met.has(n) || soulPerson(g, n));
   let S = p.skills[opt.skill] || 10, D = 10;
   const parts = [];
+  const why = (sign, text) => parts.push({ sign, text: josa(text) });
   const statMod = opt.skill === "싸움" ? (p.mods.근력 + p.mods.민첩) * 2 : opt.skill === "위압" ? (p.mods.의지 + p.mods.근력) * 2 : opt.skill === "은신" ? p.mods.민첩 * 2 : (p.mods.지능 + p.mods.감각) * 2;
   S += statMod;
-  const status = -(p.status.hunger >= 2 ? 5 : 0) - (p.status.pain >= 30 ? 3 : 0) - (p.status.pain >= 60 ? 6 : 0);
-  S += status;
-  if (opt.skill === "화술" && n) { const grp = groupOf(g, n), v = grp ? (reputation(g).views[grp] || 0) : 0; if (v) { const b = clamp(Math.round(v * 0.3), -8, 8); S += b; parts.push(`${grp}의 시선 ${b >= 0 ? "+" : ""}${b}`); } }
-  if (opt.skill === "화술") { S += Math.round(r.like * 0.3 + r.trust * 0.2); D += 5 + Math.round(pr.nerve / 10) + (opt.request || 0) + m.anger * 5 + m.fear * 2; }
-  if (opt.skill === "위압") { D += Math.round(pr.nerve / 4) + (opt.request || 0) - m.fear * 4; if (opt.fact) S += Math.min(15, (g.content.facts[opt.fact]?.danger || 2) * 3); }
-  if (opt.skill === "통찰") D += 18;
-  if (opt.skill === "은신") { const watchers = g.W.whoIsAt(opt.to, g.t + (opt.minutes || 0), g.W.npcs()).filter((w) => w.kind === "at").length; D += 10 + watchers * 6 + (isNight(g.t) ? -6 : 4); parts.push(`지켜보는 눈 ${watchers}`); }
+  if (p.status.hunger >= 2) { S -= 5; why("▼", p.status.hunger >= 3 ? "며칠째 제대로 못 먹었다 — 머리가 멍하다" : "배가 고프다"); }
+  if (p.status.pain >= 30) { S -= p.status.pain >= 60 ? 9 : 3; why("▼", p.status.pain >= 60 ? "몸이 많이 아프다" : "등의 채찍 자국이 욱신거린다"); }
+  if (opt.skill === "화술" && n) { const grp = groupOf(g, n), v = grp ? (reputation(g).views[grp] || 0) : 0; if (v) { const b = clamp(Math.round(v * 0.3), -8, 8); S += b; why(b >= 0 ? "▲" : "▼", `${grp} 사이에서 네 이름이 ${b >= 0 ? "좋게" : "나쁘게"} 돈다`); } }
+  if (opt.skill === "화술") {
+    const relB = Math.round(r.like * 0.3 + r.trust * 0.2); S += relB;
+    if (relB >= 4) why("▲", "그가 너를 좋게 본다"); else if (relB <= -4) why("▼", "그가 너를 믿지 않는다");
+    D += 5 + Math.round(pr.nerve / 10) + (opt.request || 0) + m.anger * 5 + m.fear * 2;
+    if ((opt.request || 0) >= 5) why("▼", "쉽게 내줄 것을 묻는 게 아니다");
+    if ((opt.request || 0) <= -10) why("▲", "부담 없는 말이다");
+    if (m.anger >= 2) why("▼", "화가 나 있다");
+  }
+  if (opt.skill === "위압") {
+    D += Math.round(pr.nerve / 4) + (opt.request || 0) - m.fear * 4;
+    if (opt.fact) { S += Math.min(15, (g.content.facts[opt.fact]?.danger || 2) * 3); why("▲", "그가 숨기는 것을 안다"); }
+    if (m.fear >= 2) why("▲", "이미 겁을 먹었다");
+  }
+  if (n && (opt.skill === "화술" || opt.skill === "위압")) {
+    if (!knowsHim) why("?", "이 사람이 어떤 사람인지 아직 모른다");
+    else if (pr.nerve >= 65) why("▼", "쉽게 흔들리는 사람이 아니다");
+    else if (pr.nerve <= 35) why("▲", "겁이 많은 사람이다");
+  }
+  if (opt.skill === "통찰") { D += 18; why("?", "무엇이 있을지 모른다"); }
+  if (opt.skill === "은신") {
+    const watchers = g.W.whoIsAt(opt.to, g.t + (opt.minutes || 0), g.W.npcs()).filter((w) => w.kind === "at").length;
+    D += 10 + watchers * 6 + (isNight(g.t) ? -6 : 4);
+    why(isNight(g.t) ? "▲" : "▼", isNight(g.t) ? "어둡다" : "아직 밝다");
+    if (knowsPlace(g, opt.to)) why(watchers ? "▼" : "▲", watchers ? `이 시각엔 그곳에 사람이 있다 (${watchers})` : "이 시각엔 그곳이 빈다");
+    else why("?", "그곳에 지금 누가 있는지 모른다");
+  }
   if (opt.skill === "싸움") {
     const w = g.W.where(n, g.t);
     const armed = worn(g, n).some((i) => i.tags?.includes("무기"));
     D += 10 + Math.round(pr.nerve / 5) + (armed ? 8 : 0) + (profOf(g, n).role === "hunter" ? 12 : 0);
-    if (hasWeapon(g)) { S += 10; parts.push("칼 +10"); }
-    if (asleep(w, g.t)) { S += 20; parts.push("자는 상대 +20"); }
+    if (armed) why("▼", "상대가 무기를 지녔다");
+    if (profOf(g, n).role === "hunter" && knowsHim) why("▼", "사람을 사냥하는 자다");
+    if (hasWeapon(g)) { S += 10; why("▲", "칼이 있다"); } else why("▼", "맨손이다");
+    if (asleep(w, g.t)) { S += 20; why("▲", "자고 있다"); }
+    if (p.mods.근력 < 0) why("▼", "굶어서 팔에 힘이 없다");
   }
   const P = prob(S, D);
   return { P, S: Math.round(S), D: Math.round(D), parts };
 }
+// 그 장소를 아는가: 들어가 봤거나(seen) 일정을 아는 곳 — 은신 근거에 쓴다
+const knowsPlace = (g, id) => !!id && ((g.P.been || new Set()).has(id) || (soul(g).places || []).includes(id));
 
 // ── 한 걸음: 기록 하나를 적용한다 (결정적) ──
 // entry: {i, kind:'act', id, tags?, text?} | {i, kind:'memory', npc, mems:[...]} | {i, kind:'regress'}
@@ -330,6 +379,7 @@ export function apply(g, e, { replay = false } = {}) {
   DO[verb](g, arg, res, opt, e);
   successions(g);
   for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
+  g.P.been.add(g.at);
   res.notes = res.notes.map(josa); res.label = josa(res.label);
   if (g.ended) g.ended.why = josa(g.ended.why);
   if (!replay) res.feed = g.feed.map((f) => ({ ...f, text: josa(f.text) }));
@@ -892,14 +942,61 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
   return { accepted, rejected };
 }
 
-// ── 회귀 (03): 세계는 처음으로, 기억(수첩·알게 된 사실)은 남는다 ──
+// ── 회귀 (03): 세계는 처음으로, 영혼(기억·이름·재능·아는 사람)은 남는다 ──
 export function regressRun(g) {
   const carry = g.run.carry;
   const notebook = [...carry.notebook, ...g.P.notebook.map((n) => (n.startsWith("◇") ? n : `◇ ${g.run.loop}회차 — ${n}`))];
   const future = [...new Set([...carry.future, ...g.P.knows])];
-  const deaths = [...carry.deaths, ...(g.ended ? [{ loop: g.run.loop, ...g.ended }] : [])];
+  const record = loopRecord(g);
+  const deaths = [...carry.deaths, ...(g.ended ? [{ loop: g.run.loop, ...g.ended, t: g.t, at: g.at }] : [])];
   // 이름과 재능은 영혼의 것 — 회귀해도 남는다 (WORLD_BIBLE §1.3.1, 06)
-  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null } });
+  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null, soul: settleSoul(g, record) } });
+}
+// 이번 회차를 영혼에 정산한다 — 관계는 수치가 아니라 '그 회차에 어떤 사이였나'로 (03 §4.1, 08 §5)
+function settleSoul(g, record) {
+  const old = soul(g), loop = g.run.loop;
+  const S = JSON.parse(JSON.stringify(old));
+  for (const f of g.P.knows) { const k = (S.knowledge[f] ??= { first: loop, last: loop, seen: 0 }); k.last = loop; k.seen += 1; }
+  for (const n of g.P.met) {
+    const r = relOf(g, n), m = mind(g, n);
+    const impressions = Object.entries(m.impressions || {}).filter(([, v]) => Math.abs(v) >= 2).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1])).slice(0, 3).map(([k, v]) => (v > 0 ? k : `${k}(아님)`));
+    const lines = [...(m.memories || [])].filter((x) => x.source !== "engine" || x.salience >= 4).sort((a, b) => (b.salience || 0) - (a.salience || 0)).slice(0, 3).map((x) => x.text);
+    const told = [...(m.revealed || [])];
+    const P = (S.people[n] ??= { loops: [] });
+    P.loops = [...P.loops.filter((x) => x.loop !== loop), { loop, like: r.like, trust: r.trust, impressions, lines, told, died: g.L.bodies.some((b) => b.npc === n) || !!g.S.dead?.has?.(n) }].slice(-6);
+  }
+  S.places = [...new Set([...(S.places || []), ...g.P.been])];
+  S.records = [...S.records, record].slice(-30);
+  S.unlocked = [...new Set([...S.unlocked, ...unlockedNow(g)])];
+  S.furthest = Math.max(S.furthest || START, g.t);
+  return S;
+}
+// 회차 기록 (03 §5.1, 14 §6.6): 기간·끝·가져온 것·두고 온 것
+export function loopRecord(g) {
+  const days = Math.max(0, Math.floor((g.t - START) / 1440));
+  const learned = [...g.P.knows].filter((f) => !soul(g).knowledge[f]);
+  const moved = [...g.P.met].map((n) => ({ n, r: relOf(g, n) })).filter(({ r }) => Math.abs(r.like) + Math.abs(r.trust) >= 20)
+    .sort((a, b) => Math.abs(b.r.like) + Math.abs(b.r.trust) - Math.abs(a.r.like) - Math.abs(a.r.trust)).slice(0, 4)
+    .map(({ n, r }) => ({ npc: n, name: nameOf(g, n), how: r.like + r.trust >= 0 ? "가까워졌다" : "멀어졌다" }));
+  return {
+    loop: g.run.loop, days, endT: g.t, end: fmt(g.t), at: placeName(g, g.at),
+    kind: g.ended?.kind || "alive", why: g.ended?.why || null,
+    learned: learned.length, keyFacts: learned.slice(-2).map((f) => g.content.facts[f]?.text).filter(Boolean),
+    leftBehind: moved, coin: g.S.purse.player, deeds: g.deeds.map((d) => d.kind).slice(-3),
+    goals: goals(g).map((x) => `${x.who}: ${x.what}`),
+  };
+}
+// 해금 (14 §8): 처음 15분엔 다섯 개만. 이번 회차에 일어난 일 + 영혼에 남은 해금
+function unlockedNow(g) {
+  const u = new Set(soul(g).unlocked);
+  if (g.P.notebook.length || g.run.carry.notebook.length) u.add("notebook");
+  if (g.P.met.size) u.add("people");
+  if (mine(g).length) u.add("items");
+  if ((g.S.wanted?.player?.heat || 0) > 0) u.add("wanted");
+  if (g.deeds.length) u.add("reputation");
+  if (g.run.loop >= 2) { u.add("loop"); u.add("memory"); }
+  if (g.P.settlement !== SETTLEMENT || g.P.been.size >= 3) u.add("map");
+  return [...u];
 }
 
 // 값: 기본값 × 흥정(호감·신뢰 ±20%) × 흉년(굶주림월 먹을 것 ×3) × 장물(불법 ×2)
@@ -982,7 +1079,7 @@ function groupOf(g, n) {
 // 화면과 서술에 쓰는 이름: 셋째가 이름을 아는 사람은 이름, 모르는 사람은 겉모습 구절 (content/base/npcs/public_*.yaml)
 export function displayName(g, n) {
   const pub = g.content.game.public?.[n];
-  if (pub && String(pub).startsWith("?") && !g.P.met.has(n) && !knownNames(g).has(nameOf(g, n))) return String(pub).slice(1).trim();
+  if (pub && String(pub).startsWith("?") && !g.P.met.has(n) && !soulPerson(g, n) && !knownNames(g).has(nameOf(g, n))) return String(pub).slice(1).trim();
   return nameOf(g, n);
 }
 export function whoIs(g, n) { const pub = g.content.game.public?.[n]; return pub && !String(pub).startsWith("?") ? String(pub) : null; }
@@ -1045,10 +1142,17 @@ export function view(g) {
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name })), wanted: g.S.wanted?.player?.heat || 0 },
     notebook: [...g.run.carry.notebook, ...g.P.notebook], ended: g.ended,
     story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),
-    people_known: [...g.P.met].map((n) => ({ id: n, name: nameOf(g, n), lastSeen: g.P.seen[n] ? `${fmt(g.P.seen[n].t).slice(7)} ${placeName(g, g.P.seen[n].at)}` : null, guess: estimate(g, n), mood: moodWords(relOf(g, n), mind(g, n)) })),
+    people_known: [...new Set([...g.P.met, ...Object.keys(soul(g).people)])].map((n) => ({
+      id: n, name: nameOf(g, n), who: whoIs(g, n), thisLoop: g.P.met.has(n),
+      lastSeen: g.P.seen[n] ? `${fmt(g.P.seen[n].t).slice(7)} ${placeName(g, g.P.seen[n].at)}` : null, guess: estimate(g, n),
+      mood: g.P.met.has(n) ? moodWords(relOf(g, n), mind(g, n)) : "이번 회차엔 아직 나를 모른다",
+      past: (soulPerson(g, n)?.loops || []).map((x) => `${x.loop}회차: ${pastBond(x)}${x.impressions.length ? ` · 그는 나를 '${x.impressions.join("·")}'(으)로 보았다` : ""}${x.lines[0] ? ` · ${x.lines[0]}` : ""}${x.died ? " · 그 회차에 죽었다" : ""}`),
+    })),
+    unlocked: unlockedNow(g),
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };
 }
+const pastBond = (x) => { const s = x.like * 0.6 + x.trust * 0.4; return s >= 40 ? "깊이 믿는 사이였다" : s >= 20 ? "마음을 연 사이였다" : s >= 8 ? "나쁘지 않은 사이였다" : s <= -25 ? "원수였다" : s <= -10 ? "나를 믿지 않았다" : "스쳐 간 사이였다"; };
 export function moodWords(r, m) {
   const s = r.like * 0.6 + r.trust * 0.4;
   if (m.anger >= 2) return "화가 나 있다";

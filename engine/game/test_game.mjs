@@ -50,7 +50,7 @@ const n0 = nightOf(7);
 const vh = G.view(n0);
 check("밤 11시가 넘으면 하겐은 헛간에서 잔다", vh.people.some((p) => p.id === "npc_hagen" && p.asleep), `${vh.hm} ${vh.people.map((p) => `${p.name}(${p.doing}${p.asleep ? ", 잔다" : ""})`).join(", ")}`);
 const atk0 = G.odds(n0, G.options(n0).find((o) => o.id === "attack:npc_hagen"));
-check("자는 상대는 덤비기 쉽다 (그래도 맨손의 굶은 농노다)", atk0.parts.includes("자는 상대 +20"), `${Math.round(atk0.P * 100)}% (${atk0.parts.join(", ")})`);
+check("자는 상대는 덤비기 쉽다 (그래도 맨손의 굶은 농노다)", atk0.parts.some((x) => x.sign === "▲" && x.text === "자고 있다"), `${Math.round(atk0.P * 100)}% (${atk0.parts.map((x) => x.sign + x.text).join(", ")})`);
 let n = null;
 for (let s = 1; s < 80 && !n; s++) { const x = nightOf(s); if (!has(x, "attack:npc_hagen") || x.ended) continue; play(x, "attack:npc_hagen"); if (x.S.dead.has("npc_hagen")) n = x; }
 check("어떤 회차에서는 해낸다", !!n, n && `시드 ${n.run.seed}`);

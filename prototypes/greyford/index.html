@@ -50,6 +50,15 @@ body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bot
 .choice:hover, .choice:focus-visible { border-color: var(--gold); outline: none; }
 .choice .band { font-family: var(--ui); font-size: 0.7rem; color: var(--ink-soft); display: flex; gap: 8px; flex-wrap: wrap; }
 .choice .band .risk { color: var(--rust); }
+.crow { display: flex; gap: 6px; align-items: stretch; }
+.crow .choice { flex: 1; min-width: 0; }
+.crow .q { font-family: var(--ui); font-size: .8rem; color: var(--ink-faint); background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 0 10px; cursor: pointer; }
+.crow .q[aria-expanded=true] { color: var(--gold); border-color: var(--gold); }
+.why { font-family: var(--ui); font-size: .76rem; color: var(--ink-soft); background: var(--bg); border: 1px dashed var(--line); border-radius: 4px; padding: 6px 10px; margin-top: -2px; }
+.why div { line-height: 1.6; }
+.why .up { color: #9cc29a; } .why .down { color: var(--bad); } .why .unk { color: var(--frost); }
+.mem { color: var(--frost); font-family: var(--ui); font-size: .8em; margin-right: 4px; }
+.pane li .past { display: block; color: var(--ink-faint); font-size: .84rem; }
 details.moves summary { cursor: pointer; font-family: var(--ui); font-size: 0.8rem; color: var(--ink-soft); margin: 12px 0 6px; }
 .moves .choices { grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); }
 .moves .choice { font-size: 0.92rem; padding: 8px 10px; }
@@ -105,15 +114,15 @@ button.ui:hover { border-color: var(--gold); }
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane">
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
-  <h2>수첩 — 회귀해도 남는다</h2><ul id="notes"></ul>
-  <h2>아는 사람들 — 지금 어디쯤</h2><ul id="whom"></ul>
-  <h2>소지품</h2><ul id="items"></ul>
-  <h2>평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep"></ul>
+  <h2 data-sec="secNotes">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
+  <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
+  <h2 data-sec="secItems">소지품</h2><ul id="items" data-sec="secItems"></ul>
+  <h2 data-sec="secRep">평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep" data-sec="secRep"></ul>
   <h2>저장</h2>
   <div class="row-btns"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="ui" id="saveBtn">저장</button></div>
   <div class="row-btns" id="slots" style="margin-top:8px"></div>
   <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 (새 시드)</button></div>
-  <h2>엔진 기록 (판정·검증)</h2><pre id="debug">—</pre>
+  <h2 data-dbg>엔진 기록 (판정·검증)</h2><pre id="debug" data-dbg>—</pre>
 </div></div>
 <div class="drawer" id="mapDrawer" hidden><div class="pane map">
   <div class="row-btns"><button class="ui" id="closeMap">닫기</button></div>
@@ -122,6 +131,8 @@ button.ui:hover { border-color: var(--gold); }
 </div></div>
 <script>
 const $ = (id) => document.getElementById(id);
+const DEBUG = new URLSearchParams(location.search).has("debug");
+document.querySelectorAll("[data-dbg]").forEach((el) => (el.hidden = !DEBUG));
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 let busy = false, last = null;
 
@@ -176,10 +187,12 @@ function render(d, loading = false) {
     $("where").textContent = v.place.name;
     $("goals").innerHTML = (v.goals || []).map((x) => `<span><b>${esc(x.who)}</b> ${esc(x.what)}${x.days != null ? ` <span class="d">D-${x.days}</span>` : ""}</span>`).join("");
     const p = v.player;
-    $("chips").innerHTML = [`${v.loop}회차`, `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
+    const U = new Set(v.unlocked || []);
+    for (const [id, key] of [["secNotes", "notebook"], ["secWhom", "people"], ["secItems", "items"], ["secRep", "reputation"]]) for (const el of document.querySelectorAll(`[data-sec=${id}]`)) el.hidden = !U.has(key);
+    $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
     $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
-    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b> — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}</li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
+    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}</li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
     const R = v.reputation || {};
     $("rep").innerHTML = (R.news || []).map((n) => `<li>${esc(n.scopeName)}: ${esc(n.label)}${n.place ? ` (${esc(n.place)})` : ""}${n.distortion ? ` — 소문이 ${esc(n.distortion)}` : ""}${n.identified ? "" : " — 누가 했는지는 모른다"}</li>`).join("")
       + (R.titles?.length ? `<li>사람들이 부르는 이름: ${esc(R.titles.join(", "))}</li>` : "")
@@ -213,13 +226,19 @@ function render(d, loading = false) {
   const more = ch.filter((c) => c.more);
   const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time");
   const moves = ch.filter((c) => !c.more && c.kind === "move"), time = ch.filter((c) => !c.more && c.kind === "time");
-  const btn = (c) => `<button class="choice" data-id="${esc(c.id)}"><span>${esc(c.text)}</span>${c.band || c.risk ? `<span class="band">${c.skill ? `${esc(c.skill)} · ` : ""}${esc(c.band || "")}${c.risk ? ` <span class="risk">${esc(c.risk)}</span>` : ""}</span>` : ""}</button>`;
+  const cls = { "▲": "up", "▼": "down", "?": "unk" };
+  const btn = (c) => {
+    const b = `<button class="choice" data-id="${esc(c.id)}"><span class="ct">${c.memory ? `<span class="mem" title="지난 회차의 기억">◈</span>` : ""}${esc(c.text)}</span>${c.band || c.risk ? `<span class="band">${c.skill ? `${esc(c.skill)} · ` : ""}${esc(c.band || "")}${DEBUG && c.p != null ? ` (${c.p}%)` : ""}${c.risk ? ` <span class="risk">${esc(c.risk)}</span>` : ""}</span>` : ""}</button>`;
+    if (!c.why?.length) return b;
+    return `<div><div class="crow">${b}<button class="q" aria-expanded="false" aria-label="판정 근거" data-q="${esc(c.id)}">?</button></div><div class="why" hidden>${c.why.map((w) => `<div class="${cls[w.sign] || ""}">${esc(w.sign)} ${esc(w.text)}</div>`).join("")}<div>→ "${esc(c.band)}"</div></div></div>`;
+  };
   panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
     ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
     ${more.length ? `<details class="moves"><summary>다른 행동 (${more.length})</summary><div class="choices">${more.map(btn).join("")}</div></details>` : ""}
     ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
     ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;
-  panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector("span").textContent })));
+  panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector(".ct").textContent.replace(/^◈/, "") })));
+  panel.querySelectorAll(".q").forEach((q) => (q.onclick = () => { const w = q.parentElement.nextElementSibling; w.hidden = !w.hidden; q.setAttribute("aria-expanded", !w.hidden); }));
   const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
 }
 function show(d) {
