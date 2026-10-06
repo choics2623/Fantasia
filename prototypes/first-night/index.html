@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>무혈자의 찬가: 첫 밤</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Song+Myung&family=Hahmlet:wght@400;600&family=Nanum+Brush+Script&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+/* Layout: 한 손으로 읽는 세로 한 단. 위 — 시간·장소 띠, 가운데 — 박자 단위 본문, 아래 — 선택지와 몸 상태 띠.
+   Palette: 이 화면은 일부러 어두운 한 가지 세계로 고정한다 (그을린 종이 위의 뼈색 잉크, 녹슨 피 하나). */
+:root {
+  --bg: #121211;
+  --bg-2: #1a1a18;
+  --panel: #1f1f1c;
+  --ink: #d9d1c3;
+  --ink-soft: #9a9284;
+  --ink-faint: #5f594f;
+  --line: #34322d;
+  --rust: #c3573f;
+  --ash: #7f7a72;
+  --gold: #c9b27a;
+  --frost: #8fa7b3;
+  --pain: #d06a55;
+  --ok: #8fae84;
+  --font-body: "Gowun Batang", "Nanum Myeongjo", "Batang", serif;
+  --font-display: "Song Myung", "Nanum Myeongjo", serif;
+  --font-ui: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-v-first: "Song Myung", serif;
+  --font-v-dara: "Nanum Brush Script", "Gowun Batang", cursive;
+  --font-v-self: "Hahmlet", "Gowun Batang", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.75; -webkit-tap-highlight-color: transparent; }
+.app { max-width: 640px; margin: 0 auto; min-height: 100%; display: flex; flex-direction: column; padding-inline: 16px; }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding-block: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.when { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; min-width: 0; }
+.when b { color: var(--ink); font-weight: 600; }
+.top .btns { display: flex; gap: 6px; flex: none; }
+button { font-family: var(--font-ui); font-size: 0.82rem; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 3px; padding: 7px 11px; cursor: pointer; }
+button:hover { border-color: var(--ink-faint); }
+button:focus-visible, input:focus-visible, .choice:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+main { flex: 1; display: flex; flex-direction: column; padding-block: 18px 12px; gap: 14px; }
+.story { display: flex; flex-direction: column; gap: 16px; }
+.beat { display: flex; flex-direction: column; gap: 10px; animation: fadein 220ms ease-out; }
+.beat.old { opacity: 0.45; }
+.beat p { margin: 0; white-space: pre-line; text-wrap: pretty; }
+.beat p em { color: var(--ink-soft); }
+.beat .food { font-weight: 700; color: var(--gold); }
+.beat .intr { font-size: 0.92rem; color: var(--ink-soft); }
+.beat .intr.pain { color: var(--pain); }
+.tremor { animation: tremor 160ms infinite; }
+.tremor.strong { animation-duration: 90ms; }
+@keyframes tremor { 0% { transform: translate(0,0); } 25% { transform: translate(0.4px,-0.3px); } 50% { transform: translate(-0.4px,0.3px); } 75% { transform: translate(0.3px,0.4px); } 100% { transform: translate(0,0); } }
+@keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.voice { margin: 0; padding-left: 12px; border-left: 2px solid var(--line); font-size: 1.02rem; }
+.voice .who { display: block; font-family: var(--font-ui); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 2px; }
+.voice.first { font-family: var(--font-v-first); color: var(--gold); border-color: #6b5c39; }
+.voice.dara { font-family: var(--font-v-dara); color: var(--rust); font-size: 1.35rem; line-height: 1.4; border-color: #6e2f24; }
+.voice.self { font-family: var(--font-v-self); color: var(--frost); border-color: #3f525b; }
+.lang { font-family: var(--font-body); }
+.lang .mask { letter-spacing: 0.05em; color: var(--ink-faint); }
+.lang .known { color: var(--ink); text-decoration: underline dotted var(--ink-faint); }
+.note { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-soft); }
+.lexnew { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ok); border: 1px dashed #4a5c45; border-radius: 3px; padding: 4px 8px; align-self: flex-start; }
+.paper { background: #2a2620; color: #cbbf9e; border-radius: 2px; padding: 12px 14px; font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8; box-shadow: inset 0 0 30px rgba(0,0,0,0.5); overflow-x: auto; }
+.paper .row { white-space: pre; }
+.paper .rev { color: var(--gold); font-weight: 700; }
+details.echo { border: 1px solid #4b3f2a; background: #1d1912; border-radius: 3px; padding: 8px 10px; font-family: var(--font-ui); font-size: 0.86rem; color: var(--gold); }
+details.echo summary { cursor: pointer; list-style: none; }
+details.echo summary::before { content: "메아리 — "; color: var(--ink-faint); }
+details.echo ol { margin: 8px 0 2px; padding-left: 18px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 4px; }
+.result { font-family: var(--font-ui); font-size: 0.8rem; color: var(--ink-soft); border-top: 1px dashed var(--line); padding-top: 6px; }
+.result b { color: var(--ink); }
+.result.good b { color: var(--ok); }
+.result.bad b { color: var(--rust); }
+.continue { align-self: center; font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-faint); background: none; border: none; padding: 10px 20px; }
+.choices { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; }
+.choice { text-align: left; font-family: var(--font-body); font-size: 1rem; line-height: 1.5; padding: 11px 13px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); display: flex; flex-direction: column; gap: 4px; }
+.choice:hover { border-color: var(--ink-faint); }
+.choice .meta { font-family: var(--font-ui); font-size: 0.74rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); border-radius: 99px; padding: 0 8px; }
+.chip.odds-1 { color: var(--rust); border-color: #5a2a22; }
+.chip.odds-2 { color: #d29a5c; }
+.chip.odds-3 { color: var(--ink); }
+.chip.odds-4 { color: var(--ok); }
+.choice.locked { color: var(--ink-faint); border-style: dashed; cursor: not-allowed; }
+.choice.locked .why { font-family: var(--font-ui); font-size: 0.74rem; color: var(--ink-soft); }
+.oath { border: 1px solid #6b5c39; background: #1c1810; border-radius: 4px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.oath h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; color: var(--gold); }
+footer.body { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); padding-block: 8px calc(8px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 14px; flex-wrap: wrap; font-family: var(--font-ui); font-size: 0.74rem; color: var(--ink-soft); }
+.meter { display: flex; align-items: center; gap: 6px; }
+.bar { display: inline-flex; gap: 2px; }
+.bar i { width: 9px; height: 7px; background: var(--line); border-radius: 1px; }
+.bar i.on { background: var(--ink-soft); }
+.bar.pain i.on { background: var(--pain); }
+.bar.fear i.on { background: var(--frost); }
+.bar.hunger i.on { background: var(--gold); }
+.sheet { position: fixed; inset: 0; z-index: 20; background: rgba(8,8,7,0.92); overflow-y: auto; padding-inline: 16px; padding-block: calc(16px + env(safe-area-inset-top, 0px)) 24px; }
+.sheet .inner { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.sheet h2 { font-family: var(--font-display); font-weight: 400; margin: 0; font-size: 1.5rem; }
+.person { border-bottom: 1px solid var(--line); padding-bottom: 10px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.person .nm { font-weight: 700; }
+.person .ds { font-size: 0.92rem; color: var(--ink-soft); }
+.person ul { margin: 2px 0 0; padding-left: 18px; font-size: 0.88rem; }
+.person .bond { font-family: var(--font-ui); font-size: 0.74rem; color: var(--gold); }
+.row-set { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-family: var(--font-ui); font-size: 0.86rem; }
+.title-screen { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; padding-block: 40px; }
+.title-screen h1 { font-family: var(--font-display); font-weight: 400; font-size: 2.4rem; line-height: 1.2; margin: 0; letter-spacing: 0.06em; text-wrap: balance; }
+.title-screen .sub { color: var(--ink-soft); max-width: 34em; }
+.title-screen .epi { font-family: var(--font-v-first); color: var(--gold); font-size: 1.1rem; }
+.name-input { font-family: var(--font-body); font-size: 1.2rem; background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 12px; width: 100%; max-width: 280px; }
+.death { position: fixed; inset: 0; z-index: 30; background: #050505; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.death canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.death .txt { position: relative; max-width: 30em; text-align: center; font-size: 1.15rem; color: #bdb5a7; }
+.chron { border: 1px solid var(--line); background: var(--bg-2); padding: 16px; border-radius: 4px; display: flex; flex-direction: column; gap: 10px; }
+.chron h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; }
+.chron .life { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-soft); }
+.chron p { margin: 0; font-size: 0.98rem; }
+.wake-first { font-family: var(--font-v-self); color: var(--frost); }
+@media (prefers-reduced-motion: reduce) { .tremor { animation: none; } .beat { animation: none; } }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top" id="top" hidden>
+    <div class="when" id="when"></div>
+    <div class="btns">
+      <button type="button" id="btn-book">인물 수첩</button>
+      <button type="button" id="btn-set">설정</button>
+    </div>
+  </header>
+  <main id="main"></main>
+  <footer class="body" id="bodybar" hidden></footer>
+</div>
+
+<section class="sheet" id="sheet-book" hidden aria-label="인물 수첩"><div class="inner" id="book"></div></section>
+<section class="sheet" id="sheet-set" hidden aria-label="설정"><div class="inner">
+  <h2>설정</h2>
+  <div class="row-set"><span>글 연출</span>
+    <label><input type="radio" name="fx" value="0" id="fx0"> 끔</label>
+    <label><input type="radio" name="fx" value="1" id="fx1" checked> 기본</label>
+    <label><input type="radio" name="fx" value="2" id="fx2"> 강하게</label>
+  </div>
+  <div class="row-set"><label for="snd"><input type="checkbox" id="snd"> 소리 (빗소리·심장 박동)</label></div>
+  <div class="row-set"><label for="hap"><input type="checkbox" id="hap" checked> 진동 (지원하는 기기에서)</label></div>
+  <div class="row-set"><label for="odds"><input type="checkbox" id="odds"> 체감 대신 실제 확률(%) 보기</label></div>
+  <div class="row-set"><button type="button" id="btn-restart">처음부터 다시</button><button type="button" id="btn-close-set">닫기</button></div>
+  <p class="note">이 프로토타입은 기획 문서 14~20의 몰입 장치를 실제로 체험하기 위한 것이다: 박자 단위 서술, 몸 상태에 따라 변하는 글, 읽을 수 없는 글과 배우는 말, 전생의 목소리, 맹세, 메아리, 첫 죽음과 다른 몸에서의 각성.</p>
+</div></section>
+
+<script>
+(() => {
+"use strict";
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const SAVE_KEY = "fantasia_first_night_v1";
+const MONTH = "낙엽월";
+const HOURS = ["자정", "새벽 1시", "새벽 2시", "새벽 3시", "새벽 4시", "새벽 5시", "새벽 6시", "아침 7시", "아침 8시", "아침 9시", "오전 10시", "오전 11시", "정오", "오후 1시", "오후 2시", "오후 3시", "오후 4시", "오후 5시", "저녁 6시", "저녁 7시", "저녁 8시", "밤 9시", "밤 10시", "밤 11시"];
+
+// ─────────────────────────── 상태 ───────────────────────────
+function fresh() {
+  return {
+    name: "", scene: "name", beat: 0, day: 1, hour: 19, place: "", body: "셋째",
+    hunger: 2, pain: 30, painPart: "등", fear: 0,
+    skills: { 은신: 15, 기만: 10, 화술: 15, 운동: 20, 맨손: 10, 읽고쓰기: 0 },
+    coins: 2, items: ["부츠 속 은화 두 닢"],
+    bond: { paine: 0, sara: 1, bram: 1, elsa: 0, egil: 0, osric: 0, hagen: 0 },
+    f: {}, lex: [], reveal: [], oath: null, events: [], met: ["paine", "sara", "bram", "znik"],
+    awaken: 0, voiceCount: {}, life: 1, alive: true, seed: Math.floor(Math.random() * 1e9),
+  };
+}
+let S = fresh();
+const settings = { fx: 1, snd: false, hap: true, odds: false };
+try { const raw = localStorage.getItem(SAVE_KEY + "_set"); if (raw) Object.assign(settings, JSON.parse(raw)); } catch (e) {}
+function saveSettings() { try { localStorage.setItem(SAVE_KEY + "_set", JSON.stringify(settings)); } catch (e) {} }
+function save() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(S)); } catch (e) {} }
+function load() { try { const raw = localStorage.getItem(SAVE_KEY); return raw ? JSON.parse(raw) : null; } catch (e) { return null; } }
+function rng(seed) { return () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function note(text) { S.events.push({ day: S.day, hour: S.hour, text }); }
+const stamp = (d, h) => `${MONTH} ${d}일 ${HOURS[h]}`;
+
+// ───────────────────────── 콘텐츠 도우미 ─────────────────────────
+const V = (who, t, minAwaken = 0) => ({ k: "voice", who, t, minAwaken });
+const L = (lang, words, note) => ({ k: "lang", lang, words, note });
+const R = (rows) => ({ k: "read", rows });
+const E = (title, thread) => ({ k: "echo", title, thread });
+const N = (t) => ({ k: "note", t });
+const LEX = (word, how) => ({ k: "lex", word, how });
+const VOICE_NAME = { first: "누군가", dara: "낮고 거친 목소리", self: "" };
+const VOICE_CLASS = { first: "first", dara: "dara", self: "self" };
+const FOOD = ["빵", "귀리죽", "죽", "국자", "냄새", "고기", "수프"];
+const LIST_ROWS = ["세렌 상관 세베로 인수 명단", "회색여울 농노 서른한 명", " 1. 사라 — 스물, 하녀, 흠 없음", " 2. 토비 — 서른넷, 방앗간, 손가락 둘 없음", "   …", "17. 셋째 — 열일곱, 건강함, 등에 채찍 자국", "   …", "인도: 낙엽월 4일 새벽, 여울강 나루"];
+
+// ─────────────────────────── 장면 ───────────────────────────
+const SC = {};
+
+SC.ration = {
+  time: [1, 19], place: "배급 막사 앞 · 비",
+  enter() { S.hunger = 2; S.pain = 30; S.painPart = "등"; },
+  beats: [
+    ["비가 사흘째 그치지 않는다. 배급 막사 '절름발이 수탉' 앞으로 젖은 줄이 마을 끝까지 늘어서 있다.", "오늘 배급은 귀리죽 한 국자와 검은 빵 반 덩이. 빵 냄새가 빗속에서도 난다."],
+    ["감독관 즈닉이 줄을 따라 걷는다. 회색 피부의 크릭, 키는 당신 허리께. 손에 든 채찍만은 당신 키만 하다.", "오후에 그 채찍이 당신 등을 세 번 갈랐다. 이유는 기억나지 않는다. 즈닉도 기억하지 못할 것이다."],
+    [L("용언", ["짐승들,", "줄", "똑바로", "서!"], "즈닉은 용언으로 소리친다. 주인들의 말을 쓰면 자기가 조금 높아진다고 믿는다.")],
+    ["빵을 받아 든 순간, 작은 손이 소매를 잡는다. 페인이다. 열여섯, 마을에서 제일 마른 고아.", "오늘 배급을 놓쳤다고 했다. 밀수꾼 하겐의 심부름을 하느라 줄에 서지 못했다고.", "페인은 아무 말도 하지 않는다. 빵만 본다."],
+    [V("first", "나눠라. 굶주린 아이는 오래 기억한다.")],
+  ],
+  choices: [
+    { t: "빵 반쪽을 떼어 페인에게 준다", fx() { S.bond.paine += 3; S.f.bread = "shared"; note("배급 줄에서 페인에게 빵 반쪽을 나눠주었다"); }, go: "tavern" },
+    { t: "못 본 척하고 빵을 먹는다", fx() { S.hunger = 1; S.bond.paine -= 1; S.f.bread = "ignored"; note("배급 줄에서 굶은 페인을 못 본 척했다"); }, go: "tavern" },
+    { t: "페인의 손을 뿌리치고, 그 애가 주운 부스러기까지 빼앗는다", fx() { S.hunger = 1; S.bond.paine -= 4; S.f.bread = "stole"; note("배급 줄에서 페인의 빵 부스러기를 빼앗았다"); }, go: "tavern", voice: V("dara", "잘했다. 약한 것부터 먹는 거다.") },
+  ],
+};
+
+SC.tavern = {
+  time: [1, 20], place: "배급 막사 '절름발이 수탉' · 비",
+  beats: [
+    [() => ({ shared: "페인은 빵을 품에 넣고 사라졌다. 고맙다는 말은 없었다. 이 마을에서 고맙다는 말은 사치다.", ignored: "페인은 잠시 당신을 보다가 빗속으로 사라졌다.", stole: "페인의 눈이 당신을 오래 보았다. 울지도 않았다. 그리고 사라졌다." }[S.f.bread])],
+    ["막사 안. 관리인 브람이 그릇을 닦는다. 짐꾼들이 문가에서 속삭인다.", "*\"…용황께서 또 쓰러지셨대. 바알카르 하늘이 사흘째 검었다더라.\"*"],
+    ["문이 열리고 성채 하녀 사라가 들어온다. 젖은 머리, 붉어진 눈. 사라는 곧장 당신에게 온다. 이 마을에서 사라가 먼저 말을 거는 몇 안 되는 사람이 당신이다.", "\"남작님 서재에서 이걸 봤어. 세렌에서 온 세베로라는 사람이 두고 간 거야. 네 이름 같은 게… 모르겠어. 난 못 읽어.\""],
+    ["사라가 젖은 종이를 펼친다.", R(LIST_ROWS), N("당신은 글을 모른다. 이 마을의 인간 누구도 글을 배울 수 없다. 글을 아는 인간은 죽는다.")],
+    [V("first", "그 모양… 나는 저 글자를 안다. 저건 「사」다."), () => { if (!S.reveal.includes("사")) { S.reveal.push("사"); S.awaken = 1; } return "다시 보니, 한 줄의 첫 글자가 눈에 들어온다. 배운 적 없는 글자인데."; }, R(LIST_ROWS)],
+  ],
+  choices: [
+    { t: "읽을 수 있는 척한다. \"…별거 아니야. 창고 목록이야.\"", check: { skill: "기만", S: () => S.skills.기만, D: 22 }, fx(ok) { S.f.lied_sara = true; if (ok) note("사라에게 명단이 별거 아니라고 거짓말했다"); else { S.bond.sara -= 1; note("사라에게 거짓말하다 들켰다"); } }, go: "curfew_after_lie" },
+    { t: "\"오스릭 사제한테 가져가자. 마을에서 글을 아는 건 그 사람뿐이야.\"", fx() { S.bond.sara += 1; note("명단을 오스릭 사제에게 보이기로 했다"); }, go: "curfew" },
+    { t: "종이를 화로에 던진다. 모르는 게 낫다.", fx() { S.f.burned = true; note("매각 명단을 화로에 던졌다"); }, go: "burned" },
+  ],
+};
+
+SC.curfew_after_lie = {
+  time: [1, 21], place: "배급 막사 · 비",
+  beats: [
+    [() => S.f.lied_sara && S.bond.sara >= 1 ? "사라는 안도한 얼굴로 종이를 접었다. 당신은 그 종이에 무엇이 쓰여 있는지 모른다. 사라도 모른다." : "사라의 눈이 가늘어진다. \"…너도 못 읽잖아.\" 당신은 대답하지 못했다."],
+    [V("first", "거짓은 시간을 벌 뿐이다. 그 종이는 시간을 세고 있다.")],
+    ["결국 둘은 같은 생각에 닿는다. 오스릭 사제. 통금이 지났지만."],
+  ],
+  next: "curfew",
+};
+
+SC.burned = {
+  time: [1, 20], place: "배급 막사 · 비",
+  beats: [
+    ["종이 끝에 불이 붙자 사라가 비명을 지른다. 브람이 맨손으로 화로에서 종이를 낚아챈다.", "\"미쳤냐.\" 브람은 그을린 손바닥을 털며 반쯤 탄 종이를 당신 가슴에 밀어붙인다. \"모르는 게 낫다고? 이 마을에서 모르는 놈들이 제일 먼저 팔려간다.\""],
+    ["\"읽을 줄 아는 사람한테 가져가. 오늘 밤에.\""],
+  ],
+  enter() { S.bond.bram += 1; },
+  next: "curfew",
+};
+
+SC.curfew = {
+  time: [1, 23], place: "회색여울 골목 · 통금 · 비",
+  beats: [
+    ["통금 종이 두 번 울렸다. 이 시간에 밖에 있는 노예는 도망치는 노예다.", "예배당까지는 골목 셋. 즈닉의 등불이 두 번째 골목 끝에서 흔들린다."],
+  ],
+  choices: [
+    { t: "빗소리에 발소리를 묻고 예배당까지 간다", check: { skill: "은신", S: () => S.skills.은신 + 10, D: 20, mods: ["빗소리 +10"] }, fx(ok) { if (ok) note("통금 뒤 즈닉의 등불을 피해 예배당에 닿았다"); }, go: (ok) => (ok ? "chapel" : "caught") },
+    { t: "사라를 먼저 보내고, 당신은 등불을 다른 골목으로 끈다", fx() { S.bond.sara += 1; S.f.decoy = true; note("사라를 먼저 보내고 즈닉의 눈을 끌었다"); }, go: "caught" },
+  ],
+};
+
+SC.caught = {
+  time: [1, 23], place: "회색여울 골목 · 비",
+  enter() { S.fear = Math.max(S.fear, 1); },
+  beats: [
+    [() => (S.f.decoy ? "일부러 물웅덩이를 밟았다. 등불이 당신 쪽으로 돌아선다." : "발이 진창에 빠졌다. 등불이 당신 쪽으로 돌아선다."), L("용언", ["짐승이", "밤에", "기어다니는군."])],
+    ["즈닉의 채찍이 먼저 말한다."],
+  ],
+  choices: [
+    { t: "부츠 속 은화 한 닢을 내민다", show: () => S.coins > 0, fx() { S.coins -= 1; S.items = S.coins > 0 ? ["부츠 속 은화 한 닢"] : []; note("즈닉에게 은화 한 닢을 바쳤다"); S.f.bribed_znik = true; }, go: "znik_bribe" },
+    { t: "등을 내밀고 맞는다", fx() { S.pain = Math.min(90, S.pain + 25); haptic("whip"); note("통금을 어겨 즈닉에게 채찍을 맞았다"); }, go: "znik_whip" },
+  ],
+};
+
+SC.znik_bribe = {
+  time: [1, 23], place: "회색여울 골목 · 비",
+  beats: [["즈닉이 은화를 이로 깨물어 본다. 그리고 웃는다. 이가 몇 개 없다.", "\"인간이 은화를? 어디서 났을까. …나는 아무것도 못 봤다.\"", "그는 등불을 돌린다. 그리고 당신은 안다. 즈닉은 이 은화를 기억할 것이다."]],
+  next: "chapel",
+};
+SC.znik_whip = {
+  time: [1, 23], place: "회색여울 골목 · 비",
+  beats: [["*쫙.* 이미 갈라진 자리 위로. *쫙.*", "즈닉은 다섯 대를 센 뒤 지루해졌다. \"들어가라, 짐승.\""]],
+  next: "chapel",
+};
+
+SC.chapel = {
+  time: [1, 23], place: "순종의 빛 예배당 · 비",
+  enter() { S.met.push("osric"); },
+  beats: [
+    ["예배당 안은 촛농 냄새와 젖은 돌 냄새. 늙은 사제 오스릭이 사슬 감긴 등잔 아래 앉아 있다. 사라가 먼저 와 있었다.", "오스릭은 종이를 받아 들고, 오래 들여다본다. 그리고 떨리는 목소리로 읽는다."],
+    ["\"세렌 상관 세베로 인수 명단. 회색여울 농노 서른한 명. 하나, 사라. 스물, 하녀, 흠 없음…\"", "사라의 숨이 멎는다.", "\"…열일곱, 셋째. 열일곱, 건강함, 등에 채찍 자국. 인도, 낙엽월 사흘 뒤 새벽, 여울강 나루.\""],
+    ["오스릭이 종이를 내려놓는다. \"순종의 빛은 말한다. 고난은 정화라고. 순종한 자는 다음 생에 빛의 종족으로 태어난다고.\"", "그는 등잔을 낮춘다. 그리고 아주 작게 말한다.", "\"…도망쳐라. 늪으로 가는 길을 아는 여자가 있다. 약초를 캐는 엘사.\""],
+    [V("first", "다음 생 같은 건 없다. 저들에게는.", 1)],
+  ],
+  choices: [
+    { t: "맹세가 목구멍까지 차오른다", oath: true },
+  ],
+};
+
+SC.oath_done = {
+  time: [1, 23], place: "순종의 빛 예배당 · 비",
+  beats: [
+    [() => ({ sara: "\"사라를 팔려가게 두지 않는다.\" 사라가 당신의 손을 잡는다. 오스릭은 고개를 돌린다. 증인은 둘이다.", all: "\"서른한 명 모두.\" 오스릭이 처음으로 당신을 똑바로 본다. 사라는 말이 없다. 증인은 둘이다.", self: "당신은 아무 말도 하지 않는다. 속으로만 맹세한다. 나는 살아남는다. 누구를 밟고서라도.", none: "당신은 아무것도 맹세하지 않는다. 맹세는 지킬 수 있는 자의 것이다." }[S.oath])],
+  ],
+  endDay: "예배당을 나설 때, 골목 끝 어둠 속에서 누군가 당신들을 보고 있었다.",
+  next: "day2",
+};
+
+SC.day2 = {
+  time: [2, 8], place: "남작령 순무밭 · 흐림",
+  enter() { S.fear = 0; S.hunger = Math.min(3, S.hunger + 1); },
+  beats: [
+    ["순무밭. 진흙이 무릎까지 온다. 밭 둑 위에서 용인 징세관 헨릭이 즈닉에게 무언가를 지시한다. 둘은 당신들을 보지 않는다. 짐승의 귀를 신경 쓰는 사람은 없다."],
+    [L("용언", ["짐승", "서른한", "마리,", "사흘", "뒤", "새벽에", "넘긴다."])],
+    [() => {
+      if (S.f.bread === "stole") return "옆 고랑의 페인은 당신 쪽을 보지 않는다.";
+      return "옆 고랑에서 페인이 진흙을 퍼 나르며 중얼거린다. \"'■■'은 짐승이라는 뜻이야. 크릭이 맨날 하는 말. 하겐 아저씨가 가르쳐 줬어.\"";
+    }, () => (S.f.bread === "stole" ? null : LEX("짐승", "페인이 알려줌"))],
+    [() => (S.lex.includes("짐승") ? "헨릭이 다시 말한다. 이번에는 한 단어가 귀에 걸린다." : "헨릭이 다시 말한다. 여전히 개 짖는 소리처럼 들린다."), L("용언", ["짐승들은", "어차피", "세지도", "못해."])],
+    ["해가 지기 전에 한 사람을 찾아갈 시간이 있다."],
+  ],
+  choices: [
+    { t: "약초 노파 엘사의 오두막으로 간다", fx() { S.met.push("elsa"); }, go: "elsa" },
+    { t: "밀수꾼 하겐을 찾아간다", fx() { S.met.push("hagen"); }, go: "hagen" },
+    { t: "북방 탈주자 시그리드에게 말을 건다", lock: () => "서리말을 모른다. 시그리드는 공용어로는 입을 열지 않는다.", go: "elsa" },
+  ],
+};
+
+SC.elsa = {
+  time: [2, 17], place: "엘사의 오두막 · 물총새 말뚝 근처",
+  enter() { S.bond.elsa += 2; S.f.route_elsa = true; note("엘사에게서 늪길과 암호를 얻었다"); },
+  beats: [
+    ["오두막 안은 마른 쑥과 썩은 물 냄새. 엘사는 당신을 보지도 않고 약초를 빻는다. \"오스릭이 보냈구나. 그 늙은이는 겁이 많아서 남을 보내지.\""],
+    ["\"늪은 과거를 묻지 않는다. 대신 늪에 빚을 진다.\" 엘사가 말뚝 그림을 진흙 바닥에 긋는다. \"물총새 말뚝에서 묻거든 — '여울은 얕은가?' 이렇게 답해. '얕아도 차갑다.'\""],
+    ["엘사가 갑자기 고개를 든다. 노란 눈이 당신을 오래 본다.", "\"너, 혼잣말을 하는구나. 아까 문밖에서 들었다.\"", "\"조심해라. 마을에 탑의 순례자가 와 있다. 이졸이라는 자. 그자는 혼잣말을 하는 아이들을 데려간다.\""],
+  ],
+  choices: [
+    { t: "냄새를 지우는 법을 묻는다", fx() { S.items.push("늪 진흙과 쑥 (냄새 지움)"); S.f.mud = true; note("엘사에게서 냄새를 지우는 늪 진흙을 얻었다"); }, go: "cellar" },
+    { t: "\"그 순례자는 왜 아이들을 데려가죠?\"", fx() { S.f.asked_isol = true; }, go: "elsa_isol" },
+  ],
+};
+SC.elsa_isol = {
+  time: [2, 18], place: "엘사의 오두막",
+  beats: [["엘사는 한참 대답하지 않는다.", "\"…삼백 년째 누군가를 찾고 있으니까. 돌아오는 이를. 못 찾으면 비슷한 아이를 태운다.\"", "\"너는 비슷하지 않기를 바란다.\""], [V("first", "그녀는 알고 있다. 무엇을 아는지는 모르지만.", 1)]],
+  next: "cellar",
+};
+
+SC.hagen = {
+  time: [2, 17], place: "오물 습지 가장자리 · 하겐의 창고",
+  beats: [
+    ["하겐은 웃는 얼굴로 맞는다. 이 마을에서 웃는 인간은 하겐뿐이다. 그래서 다들 하겐을 믿지 않으면서도 하겐을 찾는다."],
+    ["\"늪 건너까지? 세 사람? 은화 두 닢.\" 하겐이 손가락 두 개를 편다. \"내일 밤, 물총새 말뚝 아래에 배를 대 두지. 개 한 마리 안 짖을 거다.\""],
+    [V("first", "웃음이 너무 쉽다.", 1)],
+  ],
+  choices: [
+    { t: "부츠 속 은화를 꺼낸다", show: () => S.coins > 0, fx() { S.f.paid_hagen = true; S.coins = 0; S.items = S.items.filter((i) => !i.includes("은화")); note(`하겐에게 은화를 주고 배를 샀다`); }, go: "cellar" },
+    { t: "돈이 없다고 말하고 돌아선다", fx() { S.f.refused_hagen = true; }, go: "cellar" },
+  ],
+};
+
+SC.cellar = {
+  time: [2, 21], place: "브람의 지하실",
+  enter() { S.met.push("egil"); },
+  beats: [
+    ["밤. 브람이 배급 막사 바닥의 판자를 들어 올린다. 아래에서 아이 하나가 올려다본다. 아홉 살쯤. 목에 낡은 쇠고리 자국.", "\"에길이다. 북쪽에서 왔다. 서른일곱 날째 여기 있다.\" 브람의 목소리가 처음으로 갈라진다."],
+    ["\"데려가 줘. 이 애는 이 구멍에서 겨울을 못 넘긴다. 바르그가 냄새를 맡으면 나도 죽고.\""],
+  ],
+  choices: [
+    { t: "에길을 데려간다", fx() { S.f.egil = true; S.bond.egil += 2; S.bond.bram += 2; note("브람의 지하실에 숨어 있던 북방 아이 에길을 데려가기로 했다"); }, go: "paine_night" },
+    { t: "\"셋도 많아요. 미안해요.\"", fx() { S.bond.bram -= 2; note("에길을 데려가 달라는 브람의 부탁을 거절했다"); }, go: "paine_night" },
+  ],
+};
+
+SC.paine_night = {
+  time: [2, 23], place: "브람의 지하실",
+  beats: [
+    [() => {
+      if (S.f.bread === "shared") return "자정 무렵, 지하실 판자를 누군가 두드린다. 세 번, 쉬고, 한 번. 페인이다.";
+      return "자정 무렵, 판자 위로 누군가 지나가는 발소리. 멈추지 않는다.";
+    }],
+    [() => (S.f.bread === "shared" ? "\"하겐 아저씨가 오늘 바르그 아저씨랑 술을 마셨어. 내일 밤 물총새 말뚝에 배가 온다고, 거기 '짐승 셋'이 올 거라고.\" 페인이 숨을 고른다. \"…배에 개들이 탈 거야.\"" : null),
+     () => (S.f.bread === "shared" ? E("이틀 전 배급 줄에서, 당신은 페인에게 빵 반쪽을 나눠주었다.", [stamp(1, 19) + " — 빵 반쪽을 나눔. 페인의 마음이 당신 쪽으로 기울었다.", "페인은 밀수꾼 하겐의 심부름꾼이다.", stamp(2, 19) + " — 페인은 하겐이 노예사냥꾼 볼크와 술을 마시는 것을 보았다.", "그리고 당신에게 왔다."]) : null)],
+    [() => (S.f.bread === "shared" && !S.f.knew_elsa ? "\"엘사 할머니한테 가. 할머니는 늪길을 알아. 나도 같이 갈게. 말뚝까지만.\"" : null), () => (S.f.bread === "shared" ? (S.f.paid_hagen ? "은화는 돌아오지 않을 것이다. 하겐은 당신의 은화와 당신의 몸값을 둘 다 받는다." : "당신은 하겐에게 돈을 주지 않았다. 그래도 하겐은 밤을 팔았다.") : null)],
+  ],
+  enter() { S.f.knew_elsa = !!S.f.route_elsa; if (S.f.bread === "shared") { S.f.warned = true; S.f.route_elsa = true; S.bond.paine += 1; S.met.push("volk"); note("페인이 하겐의 배신을 알려주었다"); } },
+  endDay: () => (S.f.warned ? "내일 밤, 하겐의 배 대신 늪길로 간다. 바르그의 개들은 이미 냄새를 알고 있다." : "내일 밤, 물총새 말뚝에 배가 온다. 하겐은 웃고 있었다."),
+  next: "day3",
+};
+
+SC.day3 = {
+  time: [3, 22], place: "회색여울 뒤편 · 폭우",
+  enter() { S.fear = 1; S.met.push("volk"); },
+  beats: [
+    ["사흘째 밤. 비가 거세진다. 당신은 사라의 손을 잡는다." + "", () => (S.f.egil ? "에길은 당신 등에 업혀 있다. 가볍다. 너무 가볍다." : "브람의 지하실 판자는 닫혀 있었다. 안에서 아무 소리도 나지 않았다.")],
+    [() => (S.f.route_elsa ? "엘사의 길. 오물 습지를 따라 물총새 말뚝으로. 그다음은 숯막, 그다음은 아무도 모른다." : S.f.paid_hagen ? "하겐의 배. 물총새 말뚝 아래." : "하겐에게 돈을 주지 않았다. 늪길도 모른다. 남은 것은 오물 습지와 운뿐이다.")],
+    ["멀리서 개가 짖는다. 한 마리. 그리고 셋."],
+  ],
+  next: () => (S.f.paid_hagen && !S.f.warned ? "ambush" : "marsh"),
+};
+
+SC.marsh = {
+  time: [3, 23], place: "오물 습지 · 폭우",
+  enter() { S.fear = 2; haptic("heartStart"); },
+  beats: [
+    [() => (S.f.route_elsa ? "물총새 말뚝. 어둠 속에서 목소리가 묻는다. \"여울은 얕은가?\"\n\"얕아도 차갑다.\"\n갈대 사이로 손 하나가 길을 가리킨다. 엘사의 사람이다." : "길을 모른다. 갈대가 모두 같은 모양이다. 물이 무릎을 넘고, 허리를 넘는다.")],
+    [() => (S.f.mud ? "당신은 엘사의 진흙을 목덜미와 손목에 바른다. 쑥 냄새가 당신의 냄새를 덮는다." : "개 짖는 소리가 가까워진다. 당신의 냄새는 빗속에서도 남는다."), "숯막까지는 아직 멀다."],
+    ["그리고 갈대가 갈라진다."],
+  ],
+  next: "volk",
+};
+
+SC.ambush = {
+  time: [3, 23], place: "물총새 말뚝 · 폭우",
+  enter() { S.fear = 2; haptic("heartStart"); },
+  beats: [
+    ["말뚝 아래 배가 있다. 등불 하나. 하겐이 손을 흔든다. 웃고 있다.", "배에 오르려는 순간, 배 바닥의 거적이 들썩인다. 개들이다."],
+    [() => (S.f.bread === "stole" ? E("사흘 전 배급 줄에서, 당신은 페인의 빵 부스러기를 빼앗았다.", [stamp(1, 19) + " — 페인의 빵을 빼앗음.", "페인은 밀수꾼 하겐의 심부름꾼이다.", stamp(2, 19) + " — 페인은 하겐이 노예사냥꾼 볼크와 술을 마시는 것을 보았다.", "페인은 아무 말도 하지 않았다."]) : null), "\"미안하다, 짐승아.\" 하겐이 여전히 웃으며 말한다. \"은화 두 닢은 너무 싸더라고.\""],
+  ],
+  next: "volk",
+};
+
+SC.volk = {
+  time: [3, 23], place: () => (S.f.route_elsa ? "오물 습지 · 폭우" : "물총새 말뚝 · 폭우"),
+  enter() { S.fear = 3; S.met.push("volk"); note("노예사냥꾼 볼크 회색송곳니와 마주쳤다"); },
+  beats: [
+    ["빗속에 서 있는 것은 사람의 모양이 아니다.", "회색 털, 늑대의 머리, 사람의 손. 바르그. 노예사냥 조합장 볼크 회색송곳니."],
+    ["볼크가 고개를 기울이고 냄새를 맡는다. 오래.", "\"…냄새가 여기서 끝나는군.\""],
+    [V("dara", "목을 노려. 늑대도 목이 있다.", 0), V("first", "아이를 생각해라.", 0)],
+  ],
+  choices: [
+    { t: () => (S.f.egil ? "에길을 안은 채, 사라의 손을 잡고 갈대 속으로 달린다" : "사라의 손을 잡고 갈대 속으로 달린다"), check: { skill: "운동", S: () => S.skills.운동 + (S.f.route_elsa ? 15 : 0) + 10 - S.fear * 7 - (S.f.egil ? 10 : 0), D: 45, mods: () => [S.f.route_elsa ? "길을 앎 +15" : null, "폭우 +10", `공포 −${S.fear * 7}`, S.f.egil ? "아이를 안음 −10" : null].filter(Boolean) }, go: (ok) => (ok ? "survived" : "death_marsh") },
+    { t: "갈대 속에 엎드려 숨을 죽인다", check: { skill: "은신", S: () => S.skills.은신 + 10 + (S.f.mud ? 15 : 0) - S.fear * 7, D: 50, mods: () => ["폭우 +10", S.f.mud ? "늪 진흙 +15" : null, `공포 −${S.fear * 7}`].filter(Boolean) }, go: (ok) => (ok ? "survived" : "death_marsh") },
+    { t: "맨손으로 볼크의 목을 노린다", lock: () => (S.fear >= 2 ? "다리가 말을 듣지 않는다." : null), check: { skill: "맨손", S: () => S.skills.맨손, D: 75 }, go: (ok) => (ok ? "survived" : "death_marsh") },
+    { t: "개들을 끌고 반대쪽으로 달린다. 그들이 도망칠 시간을 번다", fx() { S.f.sacrifice = true; S.f.others_escaped = true; note("개들을 끌고 반대쪽으로 달려 사라" + (S.f.egil ? "와 에길" : "") + "이 도망칠 시간을 벌었다"); }, go: "death_sacrifice" },
+    { t: "무릎을 꿇는다", fx() { S.f.surrender = true; note("볼크 앞에 무릎을 꿇었다"); }, go: "execution" },
+  ],
+};
+
+SC.survived = {
+  time: [4, 3], place: "숯막으로 가는 길 · 비",
+  enter() { S.fear = 1; haptic("stop"); S.f.survived = true; note("볼크에게서 살아남았다"); },
+  beats: [
+    ["어떻게 빠져나왔는지 기억나지 않는다. 진흙과 갈대와 사라의 손. 개 짖는 소리가 멀어진다.", "새벽, 숯막의 연기가 보인다."],
+    ["그러나 당신은 안다. 볼크는 냄새를 잊지 않는다.", "갈대밭 어딘가에서, 회색 늑대가 처음으로 당신의 냄새에 이름을 붙였다."],
+    [N("이번 생애의 첫 죽음은 미뤄졌다. 이 프로토타입에서는 여기서 끝난다 — 다른 선택으로 다시 해보면 '각성'을 볼 수 있다.")],
+  ],
+  end: true,
+};
+
+SC.death_marsh = {
+  time: [3, 23], place: "오물 습지 · 폭우",
+  enter() { S.f.death = "marsh"; S.f.others_escaped = !!S.f.route_elsa && Math.random() < 0.5; note("오물 습지에서 볼크의 개들에게 붙잡혀 죽었다"); },
+  beats: [["갈대가 당신을 붙잡는다. 아니, 이빨이.", "다리가 땅에서 떨어진다.", "사라의 비명. 멀리."], ["비가 그친다.", "아니, 들리지 않는 것이다."]],
+  death: true,
+};
+SC.death_sacrifice = {
+  time: [3, 23], place: "오물 습지 · 폭우",
+  enter() { S.f.death = "sacrifice"; },
+  beats: [["당신은 일부러 소리를 지르며 반대쪽 갈대를 헤친다. 개들이 따라온다. 볼크도.", "등 뒤에서 사라의 발소리가 멀어진다. 멀어진다. 사라진다."], ["이빨이 종아리를 문다. 당신은 웃는다. 왜 웃는지 모른다.", "볼크의 숨결이 귀에 닿는다. \"…용감한 짐승이군. 아깝다.\""]],
+  death: true,
+};
+SC.execution = {
+  time: [4, 6], place: "여울강 나루 · 새벽",
+  enter() { S.f.death = "execution"; S.f.others_escaped = false; note("새벽, 여울강 나루에서 본보기로 처형되었다"); },
+  beats: [["새벽. 매각 명단의 서른 명이 나루에 줄지어 서 있다. 서른한 번째 자리는 비어 있다. 당신의 자리다.", "당신은 줄 앞, 말뚝에 묶여 있다. 본보기."], ["사라가 줄 속에서 당신을 본다. 손목이 묶여 있다.", "남작은 나오지 않았다. 헨릭이 용언으로 무언가를 읽는다. 이번에는 '짐승'이라는 말만 들린다."], ["볼크가 칼을 든다."]],
+  death: true,
+};
+
+// 죽음 이후
+SC.chronicle = { chronicle: true };
+SC.soul = { soul: true };
+
+SC.wake_paine = {
+  time: [4, 9], place: "하겐의 창고 · 흐림",
+  enter() { S.body = "페인"; S.life = 2; S.fear = 1; S.hunger = 3; S.pain = 10; S.painPart = "손목"; S.awaken = 2; S.skills = { 은신: 30, 기만: 25, 화술: 15, 운동: 25, 맨손: 5, 읽고쓰기: 0 }; note("페인의 몸에서 깨어났다"); },
+  beats: [
+    [{ k: "wake", t: "나는 — 숨을 들이켰다." }],
+    ["당신은 숨을 들이켰다. 바닥은 짚이고, 냄새는 생선과 타르. 하겐의 창고.", "손이 작다. 손목에 밧줄 자국. 손등에 오래된 화상. 이건 당신의 손이 아니다. 그런데 당신은 이 화상이 어떻게 생겼는지 안다 — 여덟 살 겨울, 하겐의 솥."],
+    ["두 개의 기억이 한 몸 안에서 서로를 밀어낸다. 열여섯 해의 페인과, 열일곱 해의 " + "{slave}" + ".", "그리고 어젯밤. 갈대. 이빨. 비."],
+    [V("self", "나를 판 건 하겐이야. 그리고 너는 — 페인, 너는 그걸 알고 있었지.", 2)],
+    ["창고 문이 열린다. 하겐이 아니다. 회색 털.", "볼크 회색송곳니가 창고 안을 둘러보다가, 당신 앞에서 멈춘다. 코가 움직인다.", "\"…이상하군. 어디서 맡아본 냄새다.\""],
+  ],
+  choices: [
+    { t: "페인처럼 군다: 고개를 숙이고 하겐의 심부름 이야기를 늘어놓는다", check: { skill: "기만", S: () => S.skills.기만 + 10, D: 35, mods: ["이 몸의 습관 +10"] }, fx(ok) { note(ok ? "볼크 앞에서 페인인 척 연기했다" : "볼크가 무언가를 눈치챘다"); S.f.volk_suspects = !ok; }, go: "demo_end" },
+    { t: "눈을 피하지 않는다. 어젯밤처럼", fx() { S.f.volk_suspects = true; note("볼크의 눈을 피하지 않았다"); }, go: "demo_end" },
+  ],
+};
+
+SC.wake_sara = {
+  time: [4, 10], place: "검은 굴뚝 숯막 · 흐림",
+  enter() { S.body = "사라"; S.life = 2; S.fear = 0; S.hunger = 2; S.pain = 20; S.painPart = "발바닥"; S.awaken = 2; S.skills = { 은신: 20, 기만: 15, 화술: 30, 운동: 15, 맨손: 5, 읽고쓰기: 0 }; note("사라의 몸에서 깨어났다"); },
+  beats: [
+    [{ k: "wake", t: "나는 — 울고 있었다." }],
+    [() => "당신은 울고 있었다. 숯막의 연기, 갈라진 발바닥. " + (S.f.egil ? "무릎 위에서 에길이 잠들어 있다." : "옆에 아무도 없다.")],
+    ["그리고 당신은 왜 우는지 안다. 어젯밤 갈대밭 반대편으로 달려간 사람 때문이다.", "그 사람이 당신이다."],
+    [V("self", "울지 마. 나는 여기 있어. …너의 안에.", 2)],
+    [() => (S.oath === "sara" || S.oath === "all" ? "목구멍에 맹세가 걸려 있다. '사라를 팔려가게 두지 않는다.' 이제 그 맹세는 이상한 모양이 되었다. 지켜졌다. 그리고 당신이 사라다." : "당신은 사라의 손으로 얼굴을 닦는다. 사라의 손은 떨리지 않는다. 당신의 손보다 강하다.")],
+  ],
+  choices: [
+    { t: "에길을 깨우고 숯막을 떠난다. 늪은 아직 멀다", go: "demo_end" },
+    { t: "회색여울 쪽을 돌아본다. 하겐이 아직 웃고 있을 것이다", fx() { S.f.vengeance_seed = true; note("회색여울 쪽을 돌아보았다 — 하겐을 잊지 않았다"); }, go: "demo_end" },
+  ],
+};
+
+SC.wake_baby = {
+  time: [1, 7], place: "15년 뒤 · 회색여울",
+  enter() { S.body = "이름 없는 아이"; S.life = 2; S.awaken = 2; S.f.gap15 = true; note("인연 없이 아기로 다시 태어나 15년 뒤 깨어났다"); },
+  beats: [
+    [{ k: "wake", t: "나는 — 열다섯 해를 잤다." }],
+    ["당신은 열다섯 살이다. 처음으로 기억이 돌아온 아침.", "배급 막사는 다른 사람이 지키고 있다. 브람은 3년 전 겨울에 죽었다고 한다."],
+    ["마을 어귀의 말뚝에 오래된 팻말이 걸려 있다. 비바람에 바랬다.", R(["도망친 재산", "셋째 — 현상금 2비늘", "볼크 회색송곳니 조합 수배"]), N("당신은 아직 글을 모른다. 그래도 그 팻말이 무엇인지는 안다.")],
+    [V("self", "열다섯 해. 사라는 어떻게 됐지?", 2)],
+  ],
+  choices: [{ t: "마을 사람들에게 열다섯 해 전의 일을 묻기 시작한다", go: "demo_end" }],
+};
+
+SC.demo_end = { demoEnd: true };
+
+// ─────────────────────────── 오디오·진동 ───────────────────────────
+let ac = null, rainGain = null, heartTimer = null, hapTimer = null;
+function audioOn() {
+  if (!settings.snd) return;
+  try {
+    if (!ac) {
+      ac = new (window.AudioContext || window.webkitAudioContext)();
+      const len = ac.sampleRate * 2, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+      let last = 0; for (let i = 0; i < len; i++) { const w = Math.random() * 2 - 1; last = (last + 0.04 * w) / 1.04; d[i] = last * 3.2 + w * 0.08; }
+      const src = ac.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = ac.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 1400;
+      rainGain = ac.createGain(); rainGain.gain.value = 0.0;
+      src.connect(lp).connect(rainGain).connect(ac.destination); src.start();
+    }
+    ac.resume();
+    rainGain.gain.setTargetAtTime(0.18, ac.currentTime, 1.2);
+  } catch (e) {}
+}
+function audioOff() { try { if (rainGain) rainGain.gain.setTargetAtTime(0, ac.currentTime, 0.4); } catch (e) {} stopHeart(); }
+function thump(t, vol) {
+  if (!ac || !settings.snd) return;
+  const o = ac.createOscillator(), g = ac.createGain();
+  o.type = "sine"; o.frequency.setValueAtTime(62, t); o.frequency.exponentialRampToValueAtTime(38, t + 0.18);
+  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+  o.connect(g).connect(ac.destination); o.start(t); o.stop(t + 0.25);
+}
+function startHeart(period) {
+  stopHeart();
+  const beat = () => { if (ac && settings.snd) { const t = ac.currentTime + 0.02; thump(t, 0.5); thump(t + 0.16, 0.35); } if (settings.hap && navigator.vibrate) navigator.vibrate([40, 120, 40]); };
+  beat(); heartTimer = setInterval(beat, period);
+}
+function stopHeart() { if (heartTimer) clearInterval(heartTimer); heartTimer = null; }
+function haptic(kind) {
+  const can = settings.hap && navigator.vibrate;
+  if (kind === "whip") { if (can) navigator.vibrate(30); if (ac && settings.snd) { const t = ac.currentTime; const n = ac.createBufferSource(); const b = ac.createBuffer(1, ac.sampleRate * 0.12, ac.sampleRate); const dd = b.getChannelData(0); for (let i = 0; i < dd.length; i++) dd[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / dd.length, 3); n.buffer = b; const g = ac.createGain(); g.gain.value = 0.5; n.connect(g).connect(ac.destination); n.start(t); } }
+  if (kind === "heartStart") startHeart(S.fear >= 3 ? 520 : 900);
+  if (kind === "stop") stopHeart();
+}
+function syncHeart() { if (S.fear >= 2 && !heartTimer && S.alive) startHeart(S.fear >= 3 ? 520 : 900); if (S.fear < 2) stopHeart(); }
+
+// ─────────────────────────── 렌더링 ───────────────────────────
+const main = $("main");
+function hourStr() { return HOURS[S.hour]; }
+function renderTop(place) {
+  $("top").hidden = false;
+  $("when").innerHTML = `<b>${MONTH} ${S.day}일 · ${hourStr()}</b> · ${esc(place || S.place)}${S.body !== "셋째" ? ` · <span style="color:var(--frost)">${esc(S.body)}의 몸</span>` : ""}`;
+}
+function bar(n, max, cls) { let h = `<span class="bar ${cls}">`; for (let i = 0; i < max; i++) h += `<i class="${i < n ? "on" : ""}"></i>`; return h + "</span>"; }
+function renderBody() {
+  const f = $("bodybar"); f.hidden = false;
+  f.innerHTML = `<span class="meter">허기 ${bar(S.hunger, 3, "hunger")}</span><span class="meter">통증 · ${esc(S.painPart)} ${bar(Math.ceil(S.pain / 25), 4, "pain")}</span><span class="meter">공포 ${bar(S.fear, 3, "fear")}</span><span class="meter">${S.items.length ? esc(S.items.join(" · ")) : "빈손"}</span>`;
+}
+function fill(t) { return t.replace(/\{slave\}/g, "셋째").replace(/\{name\}/g, S.name || "셋째"); }
+
+function styleText(raw, r) {
+  let t = esc(fill(raw));
+  t = t.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  if (settings.fx && S.hunger >= 2) FOOD.forEach((w) => { t = t.replace(new RegExp(w, "g"), `<span class="food">${w}</span>`); });
+  if (settings.fx && S.fear >= 2) t = t.replace(/, /g, ",\n");
+  return t;
+}
+function knownWord(w) { const base = w.replace(/[.,!?]/g, ""); return S.lex.some((x) => base.startsWith(x)); }
+function renderItem(it, ctx) {
+  if (it == null) return "";
+  if (typeof it === "function") return renderItem(it(), ctx);
+  if (typeof it === "string") {
+    const cls = settings.fx && S.fear >= 2 ? (S.fear >= 3 && settings.fx === 2 ? "tremor strong" : "tremor") : "";
+    return `<p class="${cls}">${styleText(it, ctx.r)}</p>`;
+  }
+  if (it.k === "voice") {
+    if (S.awaken < it.minAwaken) return "";
+    const used = S.voiceCount[ctx.scene] || 0;
+    if (used >= 2) return "";
+    S.voiceCount[ctx.scene] = used + 1;
+    const who = it.who === "self" ? (S.name ? `${S.name} (셋째)` : "셋째") : VOICE_NAME[it.who];
+    return `<p class="voice ${VOICE_CLASS[it.who]}"><span class="who">⟨${esc(who)}⟩</span>${esc(fill(it.t))}</p>`;
+  }
+  if (it.k === "lang") {
+    const words = it.words.map((w) => (knownWord(w) ? `<span class="known">${esc(w)}</span>` : `<span class="mask">${"■".repeat(Math.max(2, w.replace(/[.,!?]/g, "").length))}${esc(w.replace(/[^.,!?]/g, ""))}</span>`));
+    const known = it.words.filter(knownWord).length;
+    const tail = known === it.words.length ? "" : known ? `<span class="note"> (${esc(it.lang)}다. 몇 마디만 알아들었다.)</span>` : `<span class="note"> (${esc(it.lang)}다. 알아들을 수 없다.)</span>`;
+    return `<p class="lang">"${words.join(" ")}"${tail}</p>${it.note ? `<p class="note">${esc(it.note)}</p>` : ""}`;
+  }
+  if (it.k === "read") {
+    const done = new Set();
+    const rows = it.rows.map((row) => {
+      if (S.skills.읽고쓰기 >= 30) return `<div class="row">${esc(row)}</div>`;
+      let out = "";
+      for (const ch of row) {
+        if (/\s/.test(ch) || /[.,—…:]/.test(ch)) { out += ch; continue; }
+        if (S.reveal.includes(ch) && !done.has(ch)) { done.add(ch); out += `<span class="rev">${esc(ch)}</span>`; } else out += "▯";
+      }
+      return `<div class="row">${out}</div>`;
+    }).join("");
+    return `<div class="paper" role="img" aria-label="읽을 수 없는 글">${rows}</div>`;
+  }
+  if (it.k === "echo") return `<details class="echo"><summary>${esc(it.title)}</summary><ol>${it.thread.map((x) => `<li>${esc(x)}</li>`).join("")}</ol></details>`;
+  if (it.k === "note") return `<p class="note">${esc(it.t)}</p>`;
+  if (it.k === "lex") { if (S.lex.includes(it.word)) return ""; S.lex.push(it.word); return `<div class="lexnew">새로 알게 된 말 — 「${esc(it.word)}」 (용언, ${esc(it.how)})</div>`; }
+  if (it.k === "wake") return `<p class="wake-first" style="font-size:1.15rem">${esc(it.t)}</p>`;
+  return "";
+}
+const PAIN_LINES = { 등: ["(등이 욱신거린다)", "(갈라진 등 위로 옷이 달라붙는다)"], 손목: ["(손목의 밧줄 자국이 쓰라리다)"], 발바닥: ["(갈라진 발바닥이 욱신거린다)"] };
+const FEAR_LINES = ["*쿵. 쿵.* 심장이 귀에서 뛴다.", "시야 가장자리가 좁아진다.", "숨이 얕아진다."];
+function intrusions(ctx) {
+  if (!settings.fx) return "";
+  let h = "";
+  const r = ctx.r;
+  if (S.pain > 0 && r() < Math.min(0.6, S.pain / 90)) { const pool = PAIN_LINES[S.painPart] || ["(몸 어딘가가 욱신거린다)"]; h += `<p class="intr pain">${esc(pool[Math.floor(r() * pool.length)])}</p>`; }
+  if (S.fear >= 2 && r() < (S.fear >= 3 ? 0.8 : 0.45)) h += `<p class="intr">${styleText(FEAR_LINES[Math.floor(r() * FEAR_LINES.length)], r)}</p>`;
+  return h;
+}
+
+function sceneObj(id) { return SC[id]; }
+function val(x) { return typeof x === "function" ? x() : x; }
+
+function enterScene(id) {
+  const sc = sceneObj(id);
+  S.scene = id; S.beat = 0;
+  if (sc.time) { S.day = sc.time[0]; S.hour = sc.time[1]; }
+  if (sc.place) S.place = val(sc.place);
+  if (sc.enter) sc.enter();
+  main.innerHTML = "";
+  save();
+  if (sc.chronicle) return renderChronicle();
+  if (sc.soul) return renderSoul();
+  if (sc.demoEnd) return renderDemoEnd();
+  renderTop(); renderBody(); syncHeart();
+  showBeat();
+  save();
+}
+
+function showBeat() {
+  const sc = sceneObj(S.scene);
+  const beats = sc.beats || [];
+  main.querySelectorAll(".beat").forEach((b) => b.classList.add("old"));
+  main.querySelectorAll(".continue, .choices").forEach((b) => b.remove());
+  const story = main.querySelector(".story") || (() => { const d = document.createElement("div"); d.className = "story"; main.appendChild(d); return d; })();
+  const r = rng(S.seed + S.day * 977 + S.beat * 131 + S.scene.length * 17);
+  const ctx = { scene: S.scene, r };
+  const beat = beats[S.beat];
+  const items = Array.isArray(beat) ? beat : [beat];
+  let html = items.map((it) => renderItem(it, ctx)).join("");
+  html += intrusions(ctx);
+  if (html.trim()) { const div = document.createElement("div"); div.className = "beat"; div.innerHTML = html; story.appendChild(div); }
+  renderBody();
+  const last = S.beat >= beats.length - 1;
+  if (!last) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "continue"; b.textContent = "▾ 계속";
+    b.addEventListener("click", () => { S.beat++; showBeat(); save(); });
+    main.appendChild(b);
+    b.scrollIntoView({ block: "end", behavior: "smooth" });
+    return;
+  }
+  afterBeats();
+}
+
+function afterBeats() {
+  const sc = sceneObj(S.scene);
+  if (sc.death) return setTimeout(() => runDeath(), 900);
+  if (sc.end) return renderEndButtons();
+  if (sc.endDay) return renderEndDay(val(sc.endDay), sc.next);
+  if (sc.choices) return renderChoices(sc);
+  if (sc.next) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "continue"; b.textContent = "▾ 계속";
+    b.addEventListener("click", () => enterScene(val(sc.next)));
+    main.appendChild(b); b.scrollIntoView({ block: "end", behavior: "smooth" });
+  }
+}
+
+function logistic(Sv, D) { return Math.min(0.97, Math.max(0.03, 1 / (1 + Math.exp(-(Sv - D) / 8)))); }
+function band(p) {
+  if (p >= 0.9) return ["식은 죽 먹기", 4]; if (p >= 0.75) return ["확실해 보인다", 4]; if (p >= 0.55) return ["해볼 만하다", 3];
+  if (p >= 0.4) return ["반반이다", 3]; if (p >= 0.2) return ["운이 따라야 한다", 2]; return ["무모하다", 1];
+}
+function perceived(p, skill) {
+  const r = rng(S.seed + skill * 7 + S.day);
+  const over = 0.15 * Math.max(0, 1 - skill / 50);
+  const noise = (r() - 0.5) * 0.3 * Math.max(0, 1 - skill / 70);
+  return Math.min(0.99, Math.max(0.01, p + over + noise));
+}
+
+function renderChoices(sc) {
+  const box = document.createElement("div"); box.className = "choices";
+  sc.choices.forEach((c, i) => {
+    if (c.show && !c.show()) return;
+    if (c.oath) { const b = document.createElement("button"); b.type = "button"; b.className = "choice"; b.innerHTML = `<span>${esc(c.t)}</span><span class="meta"><span class="chip">맹세</span></span>`; b.addEventListener("click", renderOath); box.appendChild(b); return; }
+    const lockWhy = c.lock ? c.lock() : null;
+    const btn = document.createElement("button"); btn.type = "button";
+    let meta = "";
+    if (c.check) {
+      const skill = S.skills[c.check.skill] || 0;
+      const p = logistic(c.check.S(), c.check.D);
+      const [txt, lv] = band(perceived(p, skill));
+      meta = `<span class="meta"><span class="chip">${esc(c.check.skill)}</span><span class="chip odds-${lv}">${settings.odds ? Math.round(p * 100) + "%" : txt}</span></span>`;
+    }
+    if (lockWhy) { btn.className = "choice locked"; btn.disabled = true; btn.innerHTML = `<span>${esc(val(c.t))}</span><span class="why">${esc(lockWhy)}</span>`; }
+    else { btn.className = "choice"; btn.innerHTML = `<span>${esc(val(c.t))}</span>${meta}`; btn.addEventListener("click", () => choose(sc, c)); }
+    box.appendChild(btn);
+  });
+  main.appendChild(box);
+  box.scrollIntoView({ block: "end", behavior: "smooth" });
+}
+
+function choose(sc, c) {
+  let ok = true, resHtml = "";
+  if (c.check) {
+    const p = logistic(c.check.S(), c.check.D), roll = Math.random();
+    let tier;
+    if (roll < p * 0.15) tier = "대성공"; else if (roll < p) tier = "성공"; else if (roll < p + (1 - p) * 0.35) tier = "부분 성공"; else if (roll > 1 - (1 - p) * 0.15) tier = "대실패"; else tier = "실패";
+    ok = tier !== "실패" && tier !== "대실패";
+    if (tier === "부분 성공") { S.pain = Math.min(90, S.pain + 10); }
+    const mods = c.check.mods ? val(c.check.mods) : [];
+    resHtml = `<div class="result ${ok ? "good" : "bad"}">〔${esc(c.check.skill)}〕 <b>${tier}</b>${tier === "부분 성공" ? " — 대가를 치렀다 (통증)" : ""}${mods.length ? ` · ${esc(mods.join(", "))}` : ""}</div>`;
+  }
+  if (c.fx) c.fx(ok);
+  const story = main.querySelector(".story");
+  const chosen = document.createElement("div"); chosen.className = "beat";
+  chosen.innerHTML = `<p class="note">▸ ${esc(val(c.t))}</p>${resHtml}${c.voice ? renderItem(c.voice, { scene: S.scene, r: Math.random }) : ""}`;
+  story.appendChild(chosen);
+  main.querySelector(".choices").remove();
+  const next = typeof c.go === "function" ? c.go(ok) : c.go;
+  setTimeout(() => enterScene(next), c.check || c.voice ? 1100 : 350);
+}
+
+function renderOath() {
+  main.querySelector(".choices").remove();
+  const box = document.createElement("div"); box.className = "oath";
+  box.innerHTML = `<h3>맹세</h3><p class="note">맹세는 증인이 기억한다. 지키면 이름이 남고, 어기면 증인이 남는다. 그리고 맹세는 죽음 뒤에도 따라온다.</p>`;
+  const opts = [["sara", "사라를 팔려가게 두지 않는다", "증인: 사라, 오스릭"], ["all", "명단의 서른한 명 모두를 빼낸다", "증인: 사라, 오스릭 — 거의 불가능하다"], ["self", "(속으로) 나는 살아남는다. 누구를 밟고서라도", "증인 없음 — 어두운 맹세"], ["none", "맹세하지 않는다", ""]];
+  opts.forEach(([k, t, w]) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "choice";
+    b.innerHTML = `<span>${esc(t)}</span>${w ? `<span class="meta"><span class="chip">${esc(w)}</span></span>` : ""}`;
+    b.addEventListener("click", () => { S.oath = k; if (k === "sara" || k === "all") S.bond.sara += 2; if (k !== "none") note(`맹세: ${t}`); enterScene("oath_done"); });
+    box.appendChild(b);
+  });
+  main.appendChild(box); box.scrollIntoView({ block: "end", behavior: "smooth" });
+}
+
+function renderEndDay(text, next) {
+  const box = document.createElement("div"); box.className = "oath";
+  box.innerHTML = `<h3>하루의 끝 — ${MONTH} ${S.day}일</h3><p>${esc(text)}</p><p class="note">잠들면 기록된다. 언제든 여기서 멈춰도 된다.</p>`;
+  const b = document.createElement("button"); b.type = "button"; b.textContent = "잠든다";
+  b.addEventListener("click", () => enterScene(val(next)));
+  box.appendChild(b); main.appendChild(box); box.scrollIntoView({ block: "end", behavior: "smooth" }); save();
+}
+
+function renderEndButtons() {
+  const box = document.createElement("div"); box.className = "choices";
+  const a = document.createElement("button"); a.type = "button"; a.className = "choice"; a.textContent = "처음부터 다른 선택으로";
+  a.addEventListener("click", restart); box.appendChild(a); main.appendChild(box);
+}
+
+// ─────────────────────────── 죽음·연대기·영혼 ───────────────────────────
+function runDeath() {
+  S.alive = false; stopHeart(); save();
+  const ov = document.createElement("div"); ov.className = "death";
+  ov.innerHTML = `<canvas></canvas><div class="txt" id="dtxt"></div>`;
+  document.body.appendChild(ov);
+  const cv = ov.querySelector("canvas"), g = cv.getContext("2d");
+  const W = (cv.width = innerWidth * devicePixelRatio), H = (cv.height = innerHeight * devicePixelRatio);
+  const blots = Array.from({ length: 26 }, () => ({ x: Math.random() * W, y: Math.random() * H, r: 0, v: 0.6 + Math.random() * 1.8 }));
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let frame = 0;
+  const draw = () => {
+    frame++;
+    blots.forEach((b) => { b.r += b.v * devicePixelRatio; g.fillStyle = "rgba(90,30,22,0.035)"; g.beginPath(); g.arc(b.x, b.y, b.r, 0, Math.PI * 2); g.fill(); });
+    if (frame < 260 && !reduce) requestAnimationFrame(draw);
+  };
+  draw();
+  // 꺼지는 심장
+  const gaps = [900, 1200, 1600, 2000, 2400];
+  let t = 0;
+  gaps.forEach((gap, i) => { t += gap; setTimeout(() => { if (ac && settings.snd) thump(ac.currentTime + 0.01, 0.45 - i * 0.07); if (settings.hap && navigator.vibrate) navigator.vibrate(40); }, t); });
+  const lines = ["", "…", "심장이 느려진다.", "", "멈춘다."];
+  lines.forEach((l, i) => setTimeout(() => { $("dtxt").textContent = l; }, 600 + i * 1700));
+  setTimeout(() => { ov.remove(); enterScene("chronicle"); }, 600 + lines.length * 1700 + 1200);
+}
+
+function hasBatchim(w) { const c = w.charCodeAt(w.length - 1); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 !== 0; }
+function lifeStory() {
+  const f = S.f, nm = S.name || "셋째";
+  const parts = [];
+  parts.push(`주인은 셋째라 불렀다. 어머니만이 ${nm}${hasBatchim(nm) ? "이라는" : "라는"} 이름을 알았다.`);
+  if (f.bread === "shared") parts.push("굶주린 해의 가을, 배급 줄에서 고아에게 빵 반쪽을 떼어 주었다.");
+  if (f.bread === "stole") parts.push("굶주린 해의 가을, 배급 줄에서 고아의 빵 부스러기까지 빼앗았다.");
+  parts.push("세렌으로 팔려갈 서른한 명의 명단에 셋째의 이름이 있었다. 셋째는 그 글자를 읽지 못했다 — 한 글자를 빼고.");
+  if (S.oath === "sara") parts.push("셋째는 사라를 팔려가게 두지 않겠다고 맹세했다.");
+  if (S.oath === "all") parts.push("셋째는 서른한 명 모두를 빼내겠다고 맹세했다.");
+  if (S.oath === "self") parts.push("셋째는 아무도 모르게, 혼자 살아남겠다고 맹세했다.");
+  if (f.egil) parts.push("떠나는 밤, 셋째는 지하실의 북방 아이를 등에 업었다.");
+  if (f.death === "sacrifice") parts.push("오물 습지에서 셋째는 개들을 끌고 반대쪽으로 달렸다. 그렇게 번 시간으로 다른 이들이 늪을 건넜다.");
+  if (f.death === "marsh") parts.push("오물 습지의 갈대밭에서, 노예사냥꾼 볼크의 개들이 셋째를 붙잡았다.");
+  if (f.death === "execution") parts.push("여울강 나루에서, 팔려가는 서른 명이 보는 앞에서 셋째는 본보기로 죽었다.");
+  if (!f.route_elsa) parts.push("셋째를 판 것은 웃는 밀수꾼 하겐이었다.");
+  return parts;
+}
+function oathResult() {
+  if (S.oath === "sara") return S.f.others_escaped ? "지켜졌다" : "지키지 못했다 — 맹세는 다음 생애로 따라간다";
+  if (S.oath === "all") return "지키지 못했다 — 서른 명이 세렌으로 갔다. 맹세는 다음 생애로 따라간다";
+  if (S.oath === "self") return "어겼다 — 살아남지 못했다";
+  return "없음";
+}
+function renderChronicle() {
+  $("top").hidden = true; $("bodybar").hidden = true;
+  const box = document.createElement("div"); box.className = "chron";
+  box.innerHTML = `<div class="life">연대기 · 첫 번째 생애</div><h3>셋째, 회색여울의 농노</h3><div class="life">진짜 이름: ${esc(S.name || "—")} · 붕괴력 295 ~ 312 (17세)</div>${lifeStory().map((p) => `<p>${esc(p)}</p>`).join("")}<div class="life">맹세 — ${esc(oathResult())}</div>`;
+  const b = document.createElement("button"); b.type = "button"; b.textContent = "▾ 그리고";
+  b.addEventListener("click", () => enterScene("soul"));
+  main.appendChild(box); main.appendChild(b);
+}
+function renderSoul() {
+  $("top").hidden = true; $("bodybar").hidden = true;
+  const wrap = document.createElement("div"); wrap.className = "story";
+  wrap.innerHTML = `<div class="beat"><p>어둠 속에서, 무언가가 흩어지지 않는다.</p><p>당신은 끝나지 않았다.</p><p class="voice first"><span class="who">⟨누군가⟩</span>인연을 따라가라. 너를 붙잡는 손이 있는 곳으로.</p></div>`;
+  main.appendChild(wrap);
+  const box = document.createElement("div"); box.className = "choices";
+  const saraAlive = S.f.death !== "execution";
+  const cands = [
+    { id: "wake_paine", nm: "페인", why: S.f.bread === "shared" ? "빵 반쪽의 인연. 열여섯, 하겐의 심부름꾼" : S.f.bread === "stole" ? "인연이 아니라 원한이 있다" : "인연이 얕다", ok: S.bond.paine >= 3 },
+    { id: "wake_sara", nm: "사라", why: !saraAlive ? "이미 죽었다" : S.bond.sara >= 4 ? "맹세와 손의 인연. 스물, 성채 하녀" : "인연이 아직 얕다", ok: saraAlive && S.bond.sara >= 4 && S.f.others_escaped },
+    { id: null, nm: "에길", why: S.f.egil ? "아홉 살 — 영혼을 받기엔 아직 너무 어리다 (12세 이상)" : "만난 적이 거의 없다", ok: false },
+    { id: "wake_baby", nm: "어디에도 없는 아이", why: "인연을 따르지 않는다. 어딘가에서 아기로 태어나, 열다섯 해 뒤에 깨어난다", ok: true },
+  ];
+  if (S.f.death !== "execution" && S.bond.sara >= 4 && !S.f.others_escaped) cands[1].why = "사라는 붙잡혔다. 지금 그 몸은 사슬 속에 있다";
+  cands.forEach((c) => {
+    const b = document.createElement("button"); b.type = "button";
+    b.className = "choice" + (c.ok ? "" : " locked"); b.disabled = !c.ok;
+    b.innerHTML = `<span>${esc(c.nm)}</span><span class="${c.ok ? "meta" : "why"}">${esc(c.why)}</span>`;
+    if (c.ok) b.addEventListener("click", () => { S.alive = true; S.voiceCount = {}; enterScene(c.id); });
+    box.appendChild(b);
+  });
+  main.appendChild(box);
+  if (settings.hap && navigator.vibrate) setTimeout(() => navigator.vibrate(40), 3000);
+}
+function renderDemoEnd() {
+  stopHeart();
+  $("bodybar").hidden = true;
+  const box = document.createElement("div"); box.className = "chron";
+  const oathLine = S.oath === "sara" || S.oath === "all" ? (S.f.others_escaped ? "맹세는 지켜졌다. 그러나 그 맹세를 한 사람은 이제 없다." : "지키지 못한 맹세가 이 몸으로 따라왔다.") : "";
+  box.innerHTML = `<div class="life">첫 밤 · 끝</div><h3>여기까지가 첫 밤이다</h3>
+    <p>${esc(S.body)}의 몸에서, 두 번째 생애가 시작되었다. ${esc(oathLine)}</p>
+    ${S.f.volk_suspects ? "<p>볼크 회색송곳니는 냄새를 기억했다. 그는 이제 당신을 사냥한다 — 몸이 바뀌어도.</p>" : ""}
+    ${S.f.vengeance_seed ? "<p>하겐은 아직 웃고 있다. 오래 웃지는 못할 것이다.</p>" : ""}
+    <p class="note">이 짧은 밤에 들어 있던 장치: 박자 단위 서술 · 몸 상태(허기·통증·공포)가 바꾸는 글 · 읽을 수 없는 명단 · 배우는 말(용언) · 전생의 목소리 · 맹세 · 메아리 · 체감 확률과 잠긴 선택지 · 첫 죽음 · 연대기 · 인연을 따라 다른 몸에서의 각성.</p>`;
+  main.appendChild(box);
+  renderEndButtons();
+  save();
+}
+
+// ─────────────────────────── 인물 수첩 ───────────────────────────
+const PEOPLE = {
+  paine: ["페인", "열여섯, 고아. 밀수꾼 하겐의 심부름꾼.", () => [S.f.bread === "shared" ? "배급 줄에서 빵 반쪽을 나눠주었다." : null, S.f.bread === "stole" ? "배급 줄에서 그의 빵 부스러기를 빼앗았다." : null, S.f.warned ? "하겐이 볼크와 만나는 것을 보았다고 알려주었다. (목격)" : null]],
+  sara: ["사라", "스물, 레이번 성채 하녀.", () => ["매각 명단을 가져왔다. 명단 첫 줄에 그녀의 이름이 있다.", S.oath === "sara" || S.oath === "all" ? "그녀를 지키겠다고 맹세했다. 그녀가 증인이다." : null]],
+  bram: ["브람", "쉰둘, 배급 막사 관리인.", () => [S.f.burned ? "불타는 명단을 맨손으로 꺼냈다." : null, S.met.includes("egil") ? "지하실에 북방 아이 에길을 숨기고 있다. (목격)" : "지하에 무언가를 숨긴다는 소문. (소문)"]],
+  znik: ["즈닉", "크릭 감독관. 채찍.", () => [S.f.bribed_znik ? "은화 한 닢을 받았다. 그는 이 은화를 기억할 것이다." : null, "용언으로 소리친다."]],
+  osric: ["오스릭", "예순일곱, 순종의 빛 사제. 마을에서 유일하게 글을 아는 인간.", () => ["명단을 읽어주었다. 늪길을 아는 엘사를 알려주었다."]],
+  elsa: ["엘사", "일흔, 약초 노파. 늪에서 왔다.", () => ["늪길과 암호를 알려주었다. '여울은 얕은가? — 얕아도 차갑다.'", S.f.asked_isol ? "탑의 순례자 이졸이 '돌아오는 이'를 찾는다고 했다." : "탑의 순례자 이졸을 조심하라고 했다."]],
+  hagen: ["하겐", "스물아홉, 밀수꾼. 웃는다.", () => [S.f.paid_hagen ? "은화를 받고 배를 약속했다." : null, S.f.warned ? "볼크와 술을 마셨다. (페인의 말)" : null]],
+  egil: ["에길", "아홉 살, 북방 탈주자의 아이. 브람의 지하실.", () => [S.f.egil ? "데려가기로 했다." : "데려가지 않았다."]],
+  volk: ["볼크 회색송곳니", "바르그. 노예사냥 조합장.", () => [S.f.volk_suspects ? "새 몸의 냄새를 맡고 고개를 갸웃했다." : null, "냄새를 잊지 않는다고들 한다. (소문)"]],
+};
+function renderBook() {
+  const met = [...new Set(S.met)];
+  $("book").innerHTML = `<h2>인물 수첩</h2><p class="note">당신이 아는 것만 적혀 있다. (목격)은 직접 본 것, (소문)은 들은 것.</p>` + met.map((id) => {
+    const p = PEOPLE[id]; if (!p) return "";
+    const facts = p[2]().filter(Boolean);
+    const bond = S.bond[id];
+    return `<div class="person"><span class="nm">${esc(p[0])}</span><span class="ds">${esc(p[1])}</span>${bond != null ? `<span class="bond">인연 ${"●".repeat(Math.max(0, Math.min(5, bond)))}${"○".repeat(Math.max(0, 5 - Math.max(0, Math.min(5, bond))))}${bond < 0 ? " · 원한" : ""}</span>` : ""}<ul>${facts.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
+  }).join("") + `<div class="row-set"><button type="button" id="btn-close-book">닫기</button></div>`;
+  $("btn-close-book").addEventListener("click", () => { $("sheet-book").hidden = true; });
+}
+
+// ─────────────────────────── 시작 화면 ───────────────────────────
+function renderTitle() {
+  $("top").hidden = true; $("bodybar").hidden = true;
+  const saved = load();
+  main.innerHTML = `<div class="title-screen">
+    <div class="epi">"너희는 끝나지 않을 것이다."</div>
+    <h1>무혈자의 찬가<br>첫 밤</h1>
+    <p class="sub">붕괴력 312년 낙엽월. 용제국 북쪽 끝, 회색여울. 당신은 용인 남작의 농노다. 글을 모르고, 이름을 가질 수 없고, 사흘 뒤 팔려간다.</p>
+    <p class="note">15~25분 분량의 프로토타입. 소리는 설정에서 켤 수 있다. 진행은 자동으로 기록된다.</p>
+    <div class="row-set">
+      ${saved && saved.scene && saved.scene !== "name" ? '<button type="button" id="btn-continue">이어하기</button>' : ""}
+      <button type="button" id="btn-new">새로 시작</button>
+      <label for="snd0"><input type="checkbox" id="snd0" ${settings.snd ? "checked" : ""}> 소리 켜기</label>
+    </div>
+  </div>`;
+  $("snd0").addEventListener("change", (e) => { settings.snd = e.target.checked; $("snd").checked = settings.snd; saveSettings(); });
+  $("btn-new").addEventListener("click", () => { S = fresh(); if (settings.snd) audioOn(); renderName(); });
+  if ($("btn-continue")) $("btn-continue").addEventListener("click", () => { S = saved; if (settings.snd) audioOn(); if (["chronicle", "soul", "demo_end"].includes(S.scene) || SC[S.scene].death) { enterScene(S.scene === "demo_end" ? "demo_end" : SC[S.scene].death ? "chronicle" : S.scene); } else enterScene(S.scene); });
+}
+function renderName() {
+  main.innerHTML = `<div class="title-screen">
+    <p>어머니는 죽기 전, 아무도 듣지 못하게 당신의 귀에 이름 하나를 불어넣었다.</p>
+    <p>주인은 당신을 <b>셋째</b>라 부른다. 그 이름은 아무에게도 말한 적이 없다.</p>
+    <label for="nm" class="note">어머니가 지어준 진짜 이름</label>
+    <input class="name-input" id="nm" maxlength="8" autocomplete="off" placeholder="예: 리안">
+    <div class="row-set"><button type="button" id="btn-go">눈을 뜬다</button></div>
+  </div>`;
+  $("nm").focus();
+  const go = () => { S.name = ($("nm").value || "").trim() || "리안"; enterScene("ration"); };
+  $("btn-go").addEventListener("click", go);
+  $("nm").addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
+}
+function restart() { try { localStorage.removeItem(SAVE_KEY); } catch (e) {} stopHeart(); S = fresh(); $("sheet-set").hidden = true; renderName(); }
+
+// ─────────────────────────── 설정·버튼 ───────────────────────────
+$("btn-book").addEventListener("click", () => { renderBook(); $("sheet-book").hidden = false; });
+$("btn-set").addEventListener("click", () => { $("sheet-set").hidden = false; });
+$("btn-close-set").addEventListener("click", () => { $("sheet-set").hidden = true; });
+$("btn-restart").addEventListener("click", restart);
+[0, 1, 2].forEach((v) => { const r = $("fx" + v); r.checked = settings.fx === v; r.addEventListener("change", () => { settings.fx = v; saveSettings(); }); });
+$("snd").checked = settings.snd; $("hap").checked = settings.hap; $("odds").checked = settings.odds;
+$("snd").addEventListener("change", (e) => { settings.snd = e.target.checked; saveSettings(); settings.snd ? (audioOn(), syncHeart()) : audioOff(); });
+$("hap").addEventListener("change", (e) => { settings.hap = e.target.checked; saveSettings(); });
+$("odds").addEventListener("change", (e) => { settings.odds = e.target.checked; saveSettings(); });
+
+main.addEventListener("click", (e) => {
+  if (e.target.closest("button, details, input, label, a")) return;
+  const c = main.querySelector(".continue");
+  if (c) c.click();
+});
+renderTitle();
+})();
+</script>
+</body>
+</html>

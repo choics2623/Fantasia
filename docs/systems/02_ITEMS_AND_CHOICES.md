@@ -19,10 +19,10 @@ weight: 0.8          # kg
 bulk: 1              # 부피 (배낭 칸)
 quality: 보통         # 조악 / 보통 / 좋음 / 명품 / 걸작   → 장비보정 -5/0/+3/+6/+10
 condition: 85        # 내구도 0~100. 녹, 이 빠짐 → 품질 단계 하락
-value: { 은: 6 }
+value: { 발톱: 6 }
 visibility: 보임      # 장착 시 남에게 보이는가 (보임 / 눈에 띄지 않음 / 숨김)
 provenance:          # 소유 이력
-  - { owner: npc_brann_smith, how: 제작, year: 309 }
+  - { owner: npc_bran, how: 제작, year: 309 }
   - { owner: player, how: 훔침, year: 312, witnessed: false }
 legal: { 용제국: 불법:인간, 세렌: 계약민_한뼘이하, 루멘: 금지, 그롬마르: 투사_허용 }
 ```

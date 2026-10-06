@@ -50,33 +50,33 @@
 ### 3.2 관계 기록 형식
 
 ```yaml
-# content/base/relations/greywater.yaml
+# content/base/relations/greyford.yaml
 - from: npc_owen_raven
   to: npc_sara
   type: 연모
   values: { affection: 70, trust: 40, respect: 20 }
   since: AS 310
   public: false                 # 공개된 관계인가
-  known_by: [npc_marta]         # 이 관계를 아는 사람 (공개면 생략)
+  known_by: [npc_martha]         # 이 관계를 아는 사람 (공개면 생략)
   note: "남작의 아들이 인간 하녀를. 들키면 사라가 죽는다."
-  hooks: [owen_sara_elope, marta_blackmail_owen]   # 이 관계가 여는 스토리렛
+  hooks: [owen_sara_elope, martha_blackmail_owen]   # 이 관계가 여는 스토리렛
 
 - from: npc_hagen
   to: npc_irma
   type: 원한의_원인            # 하겐이 이르마의 남편을 죽였다
   fact: fact_hagen_killed_irma_husband
   public: false
-  known_by: [npc_paine]         # 페인이 봤다
+  known_by: [npc_fayne]         # 페인이 봤다
 ```
 
 ### 3.3 사실(Fact)과 인식(Knowledge)
 
 ```yaml
-# content/base/facts/greywater.yaml
+# content/base/facts/greyford.yaml
 - id: fact_hagen_killed_irma_husband
-  text: "하겐이 312년 봄, 이르마의 남편 오토를 오물 습지에서 죽였다"
+  text: "하겐이 AS 310, 이르마의 남편 울프의 목을 졸라 여울강에 던졌다"
   truth: true
-  known_by: [npc_hagen, npc_paine]
+  known_by: [npc_hagen, npc_fayne]
   believed_false_by: { npc_irma: "탈주자 무리가 죽였다" }   # 잘못 믿는 사람
   danger: 4                    # 퍼지면 일어날 일의 크기
 ```
@@ -92,7 +92,7 @@
 house: house_raven
 members:
   - { id: npc_godric_raven, born: AS 172, parents: [npc_aldric_raven, npc_hilde_raven] }
-  - { id: npc_owen_raven,   born: AS 272, parents: [npc_godric_raven, npc_ysolde_raven], legit: true }
+  - { id: npc_owen_raven,   born: AS 272, parents: [npc_godric_raven, npc_rowena_raven], legit: true }
 ```
 → 형제·사촌·조카·상속 순위는 **자동 계산**. 가계도 그림도 자동 생성.
 
