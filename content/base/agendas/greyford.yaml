@@ -6,7 +6,6 @@ vars:                         # 회귀점의 세계 상태
   egil_hidden: true           # 에길 일가 다섯이 수탉 지하에 있다
   egil_moved: false
   henrik_extortion: 2         # 브람이 매주 내는 입막음 값 (발톱)
-  bram_coin: 30               # 브람이 모아 둔 돈 (토마스 곡물을 세렌 선원에게 판 돈)
   bram_debt: 0                # 밀린 주 수
   grain_route: true           # 토마스 → 브람 → 세렌 선원 곡물 길이 살아 있다
   thomas_floor_hidden: false  # 방앗간 두 번째 바닥을 숨겼나 (플레이어가 도울 수 있다)
@@ -21,14 +20,14 @@ agendas:
     every: "weekday:4"
     when: ["alive npc_bram", "alive npc_thomas", "var grain_route == true"]
     at: {place: gf_hagen_shed, from: "22:30", to: "23:00", doing: 나루 헛간 뒤에서 세렌 선원에게 자루를 넘긴다}
-    effects: ["var bram_coin += 3"]
+    effects: ["coin npc_bram += 3 발톱"]   # 돈은 소지품(27)과 같은 지갑 — 브람의 지갑
   - id: ag_henrik_collect
     npc: npc_henrik
     goal: 매주 입막음 값을 받는다
     every: "weekday:2"
     when: ["alive npc_henrik", "alive npc_bram", "var egil_hidden == true", "knows npc_henrik fact_gf_bram_pays_henrik", "date >= 312-09-08"]
     at: {place: gf_rooster, from: "21:00", to: "21:30", doing: 수탉 뒷문에서 입막음 값을 받는다}
-    effects: ["if var bram_coin >= var:henrik_extortion: var bram_coin -= var:henrik_extortion ; var bram_debt = 0",
+    effects: ["if coin npc_bram >= var:henrik_extortion 발톱: pay npc_bram npc_henrik var:henrik_extortion 발톱 ; var bram_debt = 0",
               "else: var bram_debt += 1 ; rel npc_henrik>npc_bram like -10 ; log 브람이 입막음 값을 못 냈다 ({bram_debt}주째)"]
   - id: ag_henrik_raise
     npc: npc_henrik

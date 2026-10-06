@@ -2,6 +2,7 @@
 # perception: 눈치 0~100 (보고·듣고·알아보는 힘). nerve: 담력 0~100. talk: 입이 가벼운 정도 0~1. greed: 0~1. duty: 윗선에 알리려는 마음 0~1.
 # ties: 그 사람에 대한 마음 −3(증오) ~ +3(목숨). report_to: 보고하러 가는 윗선 (앞에서부터, 없거나 죽었으면 다음).
 # searches: 사람이 사라지면 찾아 나서는 자리 (감독관). role: authority(조사·체포), hunter(뒤쫓는다), fence(장물을 사고 입을 다문다).
+settlement: greyford     # 이 고장에 사는 사람 중 아래에 없는 사람은 defaults를 쓴다
 defaults: {perception: 50, nerve: 50, talk: 0.4, greed: 0.4, duty: 0.4, report_to: [npc_znik, npc_owen_raven]}
 social_places: [gf_rooster, gf_well_square, gf_chapel, gf_whip_square, gf_south_barracks, gf_north_barracks, gf_weaving_shed]
 profiles:

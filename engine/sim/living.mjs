@@ -7,6 +7,7 @@
 // 소문은 사람이 모이는 곳에서 사람 사이로만 퍼진다. 시체는 누군가 그 자리에 가야 발견된다. 물건은 소유 이력을 끌고 다닌다.
 // 결정적이다: 같은 회차 시드 + 같은 플레이어 행동 = 같은 결과. 플레이어가 아무것도 안 하면 이 층은 조용하다 (정본이 흔들리지 않는다).
 import { fmt } from "./calendar.mjs";
+import { josa } from "./text.mjs";
 
 function hash(...parts) {
   let h = 2166136261 >>> 0;
@@ -20,22 +21,30 @@ const NIGHT = (t) => { const m = ((t % 1440) + 1440) % 1440; return m >= 21 * 60
 
 export function createLivingWorld({ world, state, agenda, inventories = {}, sim = {}, cards = {}, loopSeed = 1, active = null, startAt }) {
   const P = sim.profiles || {}, D = sim.defaults || {};
-  const prof = (n) => ({ perception: 50, nerve: 50, talk: 0.4, greed: 0.4, duty: 0.4, report_to: [], ties: {}, ...D, ...(P[n] || {}), ties: { ...(P[n]?.ties || {}) } });
+  const homeSettlement = (n) => world.loc.get(world.where(n, startAt).at)?.settlement || world.loc.get(n)?.settlement;
+  const DS = sim.defaults_by_settlement || {};
+  const profCache = new Map();
+  const prof = (n) => {
+    if (profCache.has(n)) return profCache.get(n);
+    const home = DS[homeSettlement(n)] || {};   // 지역마다 기본값이 다르다 (회색여울 농노의 윗선은 즈닉)
+    const p = { perception: 50, nerve: 50, talk: 0.4, greed: 0.4, duty: 0.4, report_to: [], ...D, ...home, ...(P[n] || {}), ties: { ...(P[n]?.ties || {}) } };
+    profCache.set(n, p); return p;
+  };
   const social = new Set(sim.social_places || []);
   const activeSet = active ? new Set(active) : null;
   let now = startAt, seq = 0;
   const queue = [];                      // {t, seq, fn}
-  const beliefs = new Map();             // npc → Map(key → belief)
+  const beliefs = (state.beliefs ??= new Map());   // npc → Map(key → belief) — 세계 상태에 둔다: 목표 행동의 'believes' 조건과 LLM 장면이 같은 것을 읽는다
   const bodies = [];                     // {npc, at, t, hidden, found}
   const items = new Map();               // id → item (+ owner, provenance, at)
-  const purse = new Map([["player", 0]]);
+  const purse = { get: (n) => state.purse[n] || 0, set: (n, v) => { state.purse[n] = v; } };   // 목표 행동과 같은 지갑
   agenda?.stepTo(startAt);              // 목표 행동의 시계를 시작 시각에 맞춘다 (첫 30분을 건너뛰지 않게)
   state.wanted ??= {};                   // 'player' → {heat, by:Set, reasons:[]}
   state.threats ??= [];                  // 협박·추적 {by, target, kind, t}
 
   // ── 소지품 ──
   for (const [npc, inv] of Object.entries(inventories)) {
-    purse.set(npc, inv.coin || 0);
+    if (!(npc in state.purse)) state.purse[npc] = inv.coin || 0;
     for (const it of inv.worn || []) items.set(it.id, { ...it, owner: npc, worn: true, provenance: [{ owner: npc, how: "원래 주인" }] });
     for (const it of inv.stash || []) items.set(it.id, { ...it, owner: npc, worn: false, provenance: [{ owner: npc, how: "원래 주인" }] });
   }
@@ -43,11 +52,6 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   const holding = (owner) => [...items.values()].filter((i) => i.owner === owner);
 
   // ── 로그 ──
-  // 조사: 받침 있으면 이/은/을/과, 없으면 가/는/를/와 — "페인이(가)" 대신 "페인이"
-  const josa = (text) => text.replace(/([가-힣A-Za-z0-9])(['’")]?)(이\(가\)|은\(는\)|을\(를\)|과\(와\))/g, (_, ch, q, pair) => {
-    const code = ch.charCodeAt(0) - 0xac00, batchim = code >= 0 && code < 11172 ? code % 28 !== 0 : false;
-    const [a, b] = pair.replace(")", "").split("("); return ch + q + (batchim ? a : b);
-  });
   function log(t, npc, text, vis = "public") { state.log.push({ t, npc, agenda: "sim", text: josa(text), vis }); }
 
   // ── 큐 ──
@@ -55,7 +59,6 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
 
   // ── 누가 어디에 ──
   // 세부 수준(LOD): 활성 고장에 사는 사람 + 일정으로 드나드는 사람만 위치를 계산한다. 같은 시각은 한 번만.
-  const homeSettlement = (n) => world.loc.get(world.where(n, startAt).at)?.settlement || world.loc.get(n)?.settlement;
   const candidates = world.npcs().filter((n) => !activeSet || activeSet.has(homeSettlement(n)) || (world.hasEvents?.(n)));
   const localNpcs = () => candidates.filter((n) => !state.dead.has(n));
   let presentCache = { t: null, v: null };
@@ -126,6 +129,8 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   }
   function perceive(npc, t, s) {
     if (s.kind === "kill") { believe(npc, t, { kind: "dead", object: s.target, source: "saw" }); believe(npc, t, { kind: "body", object: s.target, at: s.at, source: "saw" }); believe(npc, t, { kind: "saw_kill", subject: s.actor, object: s.target, at: s.at, source: "saw" }); }
+    if (s.kind === "assault") believe(npc, t, { kind: "suspect", subject: s.actor, object: s.target, reason: "덤벼드는 것을 보았다", certainty: 1, at: s.at, source: "saw", assault: true });
+    if (s.kind === "trespass") believe(npc, t, { kind: "trespass", subject: s.actor, at: s.at, source: "saw" });
     if (s.kind === "loot") believe(npc, t, { kind: "saw_loot", subject: s.actor, object: origOwner(items.get(s.item)), item: s.item, at: s.at, source: "saw" });
     if (s.kind === "show_item") {
       const it = items.get(s.item);
@@ -140,14 +145,19 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
     if (state.dead.has(npc)) return;
     const pr = prof(npc);
     const victim = b.object, suspect = b.subject;
-    const vt = victim ? tie(npc, victim) : 0;
+    const vt = victim === npc ? 3 : victim ? tie(npc, victim) : 0;   // 당한 사람 자신은 자기 편이다
     const noise = (k) => hash(loopSeed, "dec", npc, bkey(b), k) * 0.15;
     const opts = [];
-    if (b.kind === "suspect" || b.kind === "illegal_weapon") {
+    if (b.kind === "suspect" || b.kind === "illegal_weapon" || b.kind === "trespass") {
       const fear = (1 - pr.nerve / 100) * (b.certainty === 1 ? 0.5 : 0.25);
-      if (pr.role === "authority") opts.push(["pursue", pr.duty + 0.3]);
-      else opts.push(["report", pr.duty + Math.max(0, vt) * 0.3 - fear]);
-      opts.push(["silence", (1 - pr.duty) * 0.5 + fear + (vt < 0 ? 0.4 : 0) + Math.max(0, tie(npc, suspect)) * 0.3]);
+      if (pr.role === "authority") {
+        // 윗선에게 이것은 자기 땅의 질서·재산 문제다 — 의무가 낮아도 확실한 범인이면 쫓는다. 덮는 건 범인에게 마음이 있을 때뿐
+        opts.push(["pursue", pr.duty + 0.3 + (b.certainty === 1 ? 0.3 : 0)]);
+        opts.push(["silence", (1 - pr.duty) * 0.3 + Math.max(0, tie(npc, suspect)) * 0.3]);
+      } else {
+        opts.push(["report", pr.duty + Math.max(0, vt) * 0.3 - fear]);
+        opts.push(["silence", (1 - pr.duty) * 0.5 + fear + (vt < 0 ? 0.4 : 0) + Math.max(0, tie(npc, suspect)) * 0.3]);
+      }
       if (suspect === "player") opts.push(["blackmail", pr.greed * 0.8 * (pr.nerve / 100) + (pr.role === "fence" ? 0.2 : 0)]);
       if (vt >= 2 || pr.role === "hunter") opts.push(["avenge", pr.role === "hunter" ? 0.6 + pr.nerve / 250 : (pr.nerve / 100) * 0.9]);
       opts.push(["gossip", pr.talk * 0.7]);
@@ -184,7 +194,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   }
 
   function act(npc, t, b, choice) {
-    const crime = b.kind === "illegal_weapon" ? "칼을 지녔다" : `${NAME(b.object)}의 죽음`;
+    const crime = b.kind === "illegal_weapon" ? "칼을 지녔다" : b.kind === "trespass" ? "들어가면 안 되는 곳에 숨어들었다" : b.assault ? `${NAME(b.object)}에게 덤벼들었다` : `${NAME(b.object)}의 죽음`;
     b.choice = choice;
     if (choice === "report") {
       const auth = authorityFor(npc, t);
@@ -212,7 +222,8 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
         return;
       }
       const w = (state.wanted[b.subject] ??= { heat: 0, by: new Set(), reasons: [] });
-      w.heat += b.certainty === 1 ? 3 : b.kind === "illegal_weapon" ? 2 : 1; w.by.add(npc); w.reasons.push(`${crime} (${b.reason || b.source})`);
+      w.since ??= t;
+      w.heat += b.assault ? 2 : b.certainty === 1 ? 3 : b.kind === "illegal_weapon" ? 2 : 1; w.by.add(npc); w.reasons.push(`${crime} (${b.reason || b.source})`);
       state.vars[`${b.subject}_wanted`] = w.heat;
       log(t, npc, `${NAME(npc)}이(가) ${NAME(b.subject)}을(를) 쫓기 시작했다 — ${crime}${b.reason ? " · " + b.reason : ""} (수배 ${w.heat})`);
     } else if (choice === "silence") {
@@ -362,14 +373,25 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       world.override({ npc: victim, from: t, to: null, kind: "dead", at: place, doing: "죽어 있다" });
       bodies.push({ npc: victim, at: place, t, hidden: false, found: null });
       const seen = emit({ kind: "kill", t, at: place, actor: "player", target: victim, vis: clamp(1 - stealth / 100, 0.05, 1), loud: true });
-      log(t, "player", `플레이어가 ${world.loc.get(place)?.name || place}에서 ${NAME(victim)}을(를) 죽였다${seen.length ? " — 본 사람: " + seen.join(", ") : " — 본 사람은 없다"}`, "player");
+      log(t, "player", `주인공이 ${world.loc.get(place)?.name || place}에서 ${NAME(victim)}을(를) 죽였다${seen.length ? " — 본 사람: " + seen.join(", ") : " — 본 사람은 없다"}`, "player");
       return seen;
     },
+    // 덤볐지만 죽이지 못했다 — 당한 사람이 살아서 안다
+    assault(t, victim, { at } = {}) {
+      advance(t);
+      const place = at || world.where(victim, t).at;
+      const seen = emit({ kind: "assault", t, at: place, actor: "player", target: victim, vis: 1, loud: true });
+      believe(victim, t, { kind: "suspect", subject: "player", object: victim, reason: "나에게 덤벼들었다", certainty: 1, at: place, source: "saw", assault: true });
+      log(t, "player", `주인공이 ${NAME(victim)}에게 덤볐지만 쓰러뜨리지 못했다`, "player");
+      return seen;
+    },
+    // 들어가면 안 되는 곳에 들어갔다가 들켰다
+    trespass(t, at, vis = 0.7) { advance(t); return emit({ kind: "trespass", t, at, actor: "player", vis }); },
     hideBody(t, victim, { to } = {}) {
       advance(t);
       const b = bodies.find((x) => x.npc === victim); if (!b) return;
       if (to) { b.at = to; world.override({ npc: victim, from: t, to: null, kind: "dead", at: to, doing: "죽어 있다" }); }
-      b.hidden = true; log(t, "player", `플레이어가 ${NAME(victim)}의 시체를 숨겼다`, "player");
+      b.hidden = true; log(t, "player", `주인공이 ${NAME(victim)}의 시체를 숨겼다`, "player");
     },
     loot(t, victim, what = "all") {
       advance(t);
@@ -381,7 +403,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
         got.push(it.name);
         emit({ kind: "loot", t, at, actor: "player", item: it.id, vis: 0.6 });
       }
-      log(t, "player", `플레이어가 ${NAME(victim)}에게서 가져갔다: ${got.join(", ") || "없음"}`, "player");
+      log(t, "player", `주인공이 ${NAME(victim)}에게서 가져갔다: ${got.join(", ") || "없음"}`, "player");
       return got;
     },
     takeFrom(t, at, itemId) {   // 은닉처·집에서 꺼내기

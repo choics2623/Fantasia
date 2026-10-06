@@ -20,7 +20,7 @@
   when: ["alive npc_henrik", "var egil_hidden == true", "knows npc_henrik fact_gf_bram_pays_henrik", "date >= 312-09-08"]
   at: {place: gf_rooster, from: "21:00", to: "21:30", doing: 수탉 뒷문에서 입막음 값을 받는다}
   effects:
-    - "if var bram_coin >= var:henrik_extortion: var bram_coin -= var:henrik_extortion ; var bram_debt = 0"
+    - "if coin npc_bram >= var:henrik_extortion 발톱: pay npc_bram npc_henrik var:henrik_extortion 발톱 ; var bram_debt = 0"
     - "else: var bram_debt += 1 ; log 브람이 입막음 값을 못 냈다 ({bram_debt}주째)"
 ```
 
@@ -30,12 +30,14 @@
 | `present npc` | 이 고장에 있나 (24 체류 기간) |
 | `knows npc fact` | 그 사람이 그 사실을 아나 (22 카드의 knows·hides에서 시작, 효과로 늘어난다) |
 | `var 이름 연산 값` | 세계 변수. 값 자리에 `var:다른변수` 가능 |
+| `coin npc >= 값 [발톱\|비늘]` | 그 사람의 지갑 (27 소지품과 같은 지갑, 못 단위) |
 | `date >= 312-09-20` | 날짜 |
 | 앞에 `not` | 부정 |
 
 | 효과 (`effects`) | 뜻 |
 |------------------|----|
 | `var x += n` / `-=` / `=` | 세계 변수 |
+| `coin npc += n [단위]` / `pay a b n [단위]` | 돈을 벌거나 넘긴다 (헨릭의 지갑이 실제로 불어난다) |
 | `learn npc fact` | 그 사람이 사실을 알게 된다 → 그 사람의 다른 목표 조건이 열린다 (사슬) |
 | `rel a>b like ±n` | 관계 |
 | `capture npc at 장소` / `punish npc at 장소 for 날수` / `kill npc` | 위치 엔진 덮어쓰기 |

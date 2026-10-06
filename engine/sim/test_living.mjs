@@ -15,7 +15,7 @@ let fail = 0; const check = (n, ok, x = "") => { console.log(`${ok ? "✓" : "�
 
 function make(seed = 7) {
   const W = createWorld(bundle, { loopSeed: seed });
-  const S = createState({ cards, vars: ag.vars });
+  const S = createState({ cards, vars: ag.vars, inventories: inv });
   const A = createAgenda(W, S, ag, { loopSeed: seed });
   const L = createLivingWorld({ world: W, state: S, agenda: A, inventories: inv, sim, cards, loopSeed: seed, active: ["greyford"], startAt: toMinutes(312, 9, 1) });
   return { W, S, A, L };
@@ -103,7 +103,7 @@ const A1 = make();
 {
   const b2 = { ...bundle, events: [...bundle.events, { id: "ev_test_hagen_ferry", date: "312-09-26", npcs: ["npc_fayne"], from: "10:00", to: "12:00", at: "gf_willow_bank", doing: "하겐의 배를 대신 젓는다", when: ["alive npc_hagen"] }] };
   const run = (kill) => {
-    const W = createWorld(b2, { loopSeed: 7 }); const S = createState({ cards, vars: ag.vars }); const A = createAgenda(W, S, ag, { loopSeed: 7 });
+    const W = createWorld(b2, { loopSeed: 7 }); const S = createState({ cards, vars: ag.vars, inventories: inv }); const A = createAgenda(W, S, ag, { loopSeed: 7 });
     const L = createLivingWorld({ world: W, state: S, agenda: A, inventories: inv, sim, cards, loopSeed: 7, active: ["greyford"], startAt: T(9, 1) });
     if (kill) L.player.kill(T(9, 20, 23, 30), "npc_hagen");
     L.advance(T(9, 26, 11)); return W.where("npc_fayne", T(9, 26, 11)).event;

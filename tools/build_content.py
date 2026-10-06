@@ -48,6 +48,34 @@ def main():
     json.dump(bundle, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"정착지 {len(settlements)} · 일과 {len(routines)}명 · 일정 {len(events)} → {p}")
 
+    # 게임 진행 루프(28)가 읽는 나머지: 목표 행동, 소지품, 행동 성향, 사실
+    agendas = {"vars": {}, "agendas": []}
+    for p2 in sorted(glob.glob(os.path.join(ROOT, "content/base/agendas/*.yaml"))):
+        a = yaml.safe_load(open(p2, encoding="utf-8")) or {}
+        agendas["vars"].update(a.get("vars") or {}); agendas["agendas"] += a.get("agendas") or []
+    inventories = {}
+    for f in load("content/base/inventories/*.yaml"):
+        inventories.update(f or {})
+    # 성향: 지역마다 기본값이 다르다 (회색여울 농노의 윗선은 즈닉, 바알카르는 다르다) → 묶을 때 지역 기본값을 사람마다 풀어 넣는다
+    sim = {"profiles": {}, "social_places": [], "defaults_by_settlement": {}}
+    for f in load("content/base/sim/*.yaml"):
+        d = (f or {}).get("defaults") or {}
+        for n, pr in ((f or {}).get("profiles") or {}).items():
+            sim["profiles"][n] = {**d, **pr}
+        sim["social_places"] += (f or {}).get("social_places") or []
+        if (f or {}).get("settlement"):
+            sim["defaults_by_settlement"][f["settlement"]] = d
+        for n in ((f or {}).get("residents") or []):
+            sim["profiles"].setdefault(n, dict(d))
+    facts = {}
+    for f in load("content/base/facts/*.yaml"):
+        for x in (f if isinstance(f, list) else (f or {}).get("facts", [])):
+            facts[x["id"]] = {"text": x.get("text", ""), "names": x.get("names", []), "danger": x.get("danger", 0)}
+    game = {"agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts}
+    p3 = os.path.join(OUT, "game.json")
+    json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
+    print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")
+
 
 if __name__ == "__main__":
     main()

@@ -8,11 +8,12 @@ import { toMinutes } from "./calendar.mjs";
 const bundle = JSON.parse(readFileSync(new URL("../../content/build/whereabouts.json", import.meta.url), "utf8"));
 const cards = JSON.parse(readFileSync(new URL("../../content/base/npcs/cards.json", import.meta.url), "utf8")).cards;
 const ag = JSON.parse(execFileSync("python3", ["-c", "import yaml,json,sys;print(json.dumps(yaml.safe_load(open(sys.argv[1]))))", new URL("../../content/base/agendas/greyford.yaml", import.meta.url).pathname]).toString());
+const inv = JSON.parse(execFileSync("python3", ["-c", "import yaml,json,sys;print(json.dumps(yaml.safe_load(open(sys.argv[1]))))", new URL("../../content/base/inventories/greyford.yaml", import.meta.url).pathname]).toString());
 let fail = 0; const check = (n, ok, x = "") => { console.log(`${ok ? "✓" : "✗"} ${n}${x ? " — " + x : ""}`); if (!ok) fail++; };
 
 function autumn(name, seed, setup) {
   const W = createWorld(bundle, { loopSeed: seed });
-  const S = createState({ cards, vars: ag.vars });
+  const S = createState({ cards, vars: ag.vars, inventories: inv });
   const A = createAgenda(W, S, ag, { loopSeed: seed });
   const steps = setup || [];
   let t = toMinutes(312, 9, 1);
@@ -40,7 +41,7 @@ check("대수색은 늑대굴을 찾지 못한다 (하겐이 팔지 못했으므
 
 // 3. 플레이어가 브람에게 돈을 대 준다 + 11/30에 에길 일가를 옮긴다
 const saved = autumn("브람에게 돈을 대고, 11/30 에길 일가를 옮겼다", 7, [
-  [toMinutes(312, 9, 7), (A, W, t) => A.intervene(t, "set", "bram_coin", 200)],
+  [toMinutes(312, 9, 7), (A, W, t) => A.intervene(t, "coin", "npc_bram", 2400)],
   [toMinutes(312, 11, 30), (A, W, t) => { A.intervene(t, "set", "egil_hidden", false); A.intervene(t, "set", "egil_moved", true); }],
 ]);
 const noFloor = autumn("10/19에 방앗간 두 번째 바닥을 숨겨 주었다", 7, [[toMinutes(312, 10, 19), (A, W, t) => A.intervene(t, "set", "thomas_floor_hidden", true)]]);
