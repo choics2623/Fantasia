@@ -1,0 +1,143 @@
+# 세렌 해안 — 회색여울 마흔(10.20)과 서른하나(12.14)가 소금 나루에 닿아 계약민이 되는 사슬. 클락 2 맹약회의 313(세렌의 표 4.29~5.14)에 걸린다 (26_AGENDAS.md).
+# 정본 일정(events/seren_312.yaml)의 9.30 인수 서류 · 10.20 마흔 · 10.25 전환 등록 보류 · 10.30 계약 시장 경매 · 12.13~14 '소금 바늘'호 서른하나(사라 포함) · 12.16 사망 보고 · 12.18 빚 골목 열 명 · 12.30 그믐 밤 심해 사절 ·
+# 3.15 도둑맞은 알 · 4.1 시민권 초안 · 5.1~6 서약섬 · 5.14 소식 · 7.28 저당 기한 점검이 원인과 결과로 이어지게 한다. 사라는 세베로가 베아트릭스의 심해 대가로 지정했다 (REGIONS §9, fact_sr_severo_sara_deep_sea).
+# 플레이어가 끊을 수 있는 고리: 사라를 2차 명단에서 빼낸다(sr_sara_on_list), 루치오의 사망 보고를 깬다, 셈 모임이 열 명을 받는다(sr_cell_took), 오스카의 증명을 루포에게 넘긴다(sr_oscar_shared), 시민권 표 네 장(sr_votes).
+vars:
+  sr_sebo_skim: false          # 세보가 세베로의 인수 서류에서 한 줄을 지웠다 (고드릭의 이자를 자기 몫으로)
+  sr_arrived: 0                # 소금 나루에 내린 회색여울 사람 (마흔 + 서른하나 = 일흔하나)
+  sr_miko_count: 1140          # 미코가 3년간 센 노예선 승선 수 (등록소 벽의 숫자)
+  sr_hold_fees: 0              # 전환 등록 보류 기간의 숙식비 (빚에 먼저 붙는다, 발톱)
+  sr_sold: 0                   # 계약 시장 경매에서 팔린 회색여울 사람
+  sr_ring_wins: 0              # 담합한 입찰자 둘이 낙찰을 가져간 횟수
+  sr_mortality_cap: 12         # 루치오가 미리 정해 둔 '소금 바늘'호 사망 보고 상한
+  sr_voyage_dead: 14           # 항해 중 실제 사망 (보고보다 많다)
+  sr_reported_dead: 0          # 도미닉이 맞춰 쓴 사망 보고
+  sr_sara_on_list: true        # 사라가 2차 서른하나 명단에 있다 (플레이어가 뺄 수 있다)
+  sr_sara_in_seren: false      # 사라가 세베로의 가마 곁 별도 문으로 내려졌다
+  sr_off_book: 23              # 밤에 등록 없이 내려 채석장으로 곧장 간 사람 (스크레의 장부)
+  sr_cell_took: 0              # 셈 모임이 빚 골목 숙소로 먼저 받은 회색여울 사람
+  sr_sara_judged: false        # 그믐 밤 사라가 심해 사절 앞에 섰다
+  sr_beatrix_unpaid: false     # 세베로가 세울 인간이 없어 베아트릭스의 심해 대가가 비었다
+  sr_egg_warm: false           # 도둑맞은 알이 처음 따뜻해졌다
+  sr_draft_deferred: false     # 오필리아의 시민권 초안 표결이 맹약회의 뒤로 미뤄졌다
+  sr_oscar_shared: false       # 오스카가 증명의 나머지 다섯 쪽을 건넸다
+  sr_votes: 7                  # 시민권 초안의 확보한 표 (21표 중 11표가 필요 — 정본 7표)
+  sr_oath_vote_won: false      # 서약섬에서 노르발이 시민권 의제 표를 얻었다
+agendas:
+  - id: ag_sr_papers
+    npc: npc_sr_sebo
+    goal: 9.30 회색여울 1차 40·2차 31 인수 서류를 맞춘다 (정본) — 세베로가 보지 못하는 곳에서 한 줄을 지운다
+    every: once
+    when: ["alive npc_sr_sebo", "alive npc_severo", "date >= 312-09-30"]
+    at: {place: sr_severo_office, from: "18:00", to: "22:00", doing: 인수 서류를 세베로와 맞춘다 — 한 줄을 지우고 세베로는 보지 못한다}
+    effects: ["var sr_sebo_skim = true", "log 세보가 회색여울 인수 서류에서 한 줄을 지웠다 — 고드릭의 이자 일부가 세보의 몫이 된다"]
+  - id: ag_sr_arrive_40
+    npc: npc_sr_skre
+    goal: 10.20 회색여울 마흔이 소금 나루에 내린다 (정본) — 하역표에 마흔 번호를 찍는다
+    every: once
+    when: ["alive npc_sr_skre", "date >= 312-10-20"]
+    at: {place: sr_salt_quay, from: "08:00", to: "14:00", doing: 하역표에 회색여울 마흔 번호를 찍는다 — 세베로의 가마가 선착장 끝에 선다}
+    effects: ["var sr_arrived += 40", "var sr_miko_count += 40", "log 회색여울 마흔이 소금 나루에 내렸다 — 미코의 승선 기록이 {sr_miko_count}이 되었다"]
+  - id: ag_sr_quarantine
+    npc: npc_sr_oral
+    goal: 10.25 전환 등록 보류 닷새째 (정본) — 번호가 한 줄씩 장부에 오르고 보류 기간의 숙식비가 빚에 먼저 붙는다
+    every: once
+    when: ["alive npc_sr_oral", "var sr_arrived >= 40", "date >= 312-10-25"]
+    at: {place: sr_registry_desk, from: "10:00", to: "16:00", doing: 회색여울 마흔의 번호를 한 줄씩 장부에 올린다 — 보류 기간의 숙식비를 먼저 붙인다}
+    effects: ["var sr_hold_fees += 40", "log 전환 등록 보류 닷새 — 숙식비 {sr_hold_fees} 발톱이 회색여울 마흔의 빚에 먼저 붙었다"]
+  - id: ag_sr_auction_40
+    npc: npc_sr_run
+    goal: 10.30 계약 시장 경매 (정본) — 회색여울 마흔이 로트 번호 아래 선다. 담합을 알면서 수수료 1%를 받는다
+    every: once
+    when: ["alive npc_sr_run", "var sr_arrived >= 40", "date >= 312-10-30"]
+    at: {place: sr_auction_stage, from: "09:00", to: "18:00", doing: 상아 망치가 열 발톱부터 부른다 — 입찰자 둘이 같은 눈짓을 나눈다}
+    effects: ["var sr_sold += 40", "var sr_ring_wins += 1", "coin npc_sr_run += 4 발톱", "log 계약 시장 경매 — 회색여울 마흔이 팔려 계약민으로 전환되었다 (담합한 입찰자 둘이 낙찰을 가져갔다)"]
+  - id: ag_sr_lucio_cap
+    npc: npc_sr_lucio
+    goal: 12.9 '소금 바늘'호 사망 보고를 열둘 이하로 미리 정해 둔다 — 보험금 (멜리산드 편)
+    every: once
+    when: ["alive npc_sr_lucio", "date >= 312-12-09"]
+    at: {place: sr_kassalon_dock, from: "19:00", to: "22:00", doing: 출항 전 항해 장부를 정리한다 — 사망 칸에 상한을 먼저 적는다}
+    effects: ["log 루치오가 '소금 바늘'호의 사망 보고를 열둘 이하로 미리 정해 두었다"]
+  - id: ag_sr_estuary_night
+    npc: npc_sr_dominic
+    goal: 12.13 '소금 바늘'호가 갈림목에 닿는다 (정본) — 서른하나가 하룻밤 검역에 묶이고 사라는 선원실 옆 별도 칸에서 나오지 않는다
+    every: once
+    when: ["alive npc_sr_dominic", "date >= 312-12-13"]
+    at: {place: se_slave_pier, from: "20:00", to: "23:59", doing: 입항 검역 — 선원 수와 사람 수를 장부에 두 줄로 적는다}
+    effects: ["log '소금 바늘'호가 갈림목에 닿았다 — 서른하나가 하룻밤 검역에 묶였다 (항해 중 죽은 이 {sr_voyage_dead}명)"]
+  - id: ag_sr_arrive_31
+    npc: npc_sr_skre
+    goal: 12.14 '소금 바늘'호가 소금 나루에 닿는다 (정본) — 서른하나(사라 포함)가 하역되고 사라는 세베로의 가마 곁 별도 문으로 내려진다
+    every: once
+    when: ["alive npc_sr_skre", "date >= 312-12-14"]
+    at: {place: sr_salt_quay, from: "09:00", to: "15:00", doing: 하역표에 서른한 번호를 찍는다 — 사라는 별도 문으로 내려진다}
+    effects: ["var sr_arrived += 31", "var sr_miko_count += 31",
+              "if var sr_sara_on_list == true: var sr_sara_in_seren = true ; log 회색여울 서른한 명이 소금 나루에 내렸다 — 사라는 세베로의 가마 곁 별도 문으로 내려졌다 (소금 나루에 닿은 회색여울 사람 {sr_arrived}명)",
+              "else: var sr_arrived -= 1 ; log 회색여울 서른이 소금 나루에 내렸다 — 사라의 칸은 비어 있었다 (소금 나루에 닿은 회색여울 사람 {sr_arrived}명)"]
+  - id: ag_sr_off_book
+    npc: npc_sr_skre
+    goal: 12.14 밤 하역 (정본) — 등록 없는 사람 몇이 부두 뒤편으로 내려진다. 스크레가 장부 상자를 두 번 두드린다
+    every: once
+    when: ["alive npc_sr_skre", "var sr_arrived >= 70", "date >= 312-12-14"]
+    at: {place: sr_salt_quay, from: "23:00", to: "23:59", doing: 등록 없이 부두 뒤편으로 사람을 내린다 — 장부 상자를 두 번 두드린다}
+    effects: ["var sr_off_book += 3", "log 밤 하역 — 등록 없는 사람 셋이 채석장으로 곧장 내려졌다 (스크레의 장부에 등록 없는 이 {sr_off_book}명)"]
+  - id: ag_sr_dominic_reconciles
+    npc: npc_sr_dominic
+    goal: 12.16 '소금 바늘'호의 항해 사망 보고를 열둘로 맞춘다 (정본) — 입항 장부와 도착 장부의 숫자가 하루 사이에 같아진다
+    every: once
+    when: ["alive npc_sr_dominic", "alive npc_sr_lucio", "date >= 312-12-16"]
+    at: {place: se_harbormaster, from: "20:00", to: "23:00", doing: 입항 장부와 도착 장부의 숫자를 하룻밤에 맞춘다}
+    effects: ["var sr_reported_dead = var:sr_mortality_cap", "log 도미닉이 항해 중 실제 사망 {sr_voyage_dead}명을 보고 {sr_reported_dead}명으로 맞췄다 — 카셀론의 보험금이 나간다"]
+  - id: ag_sr_catarina_ten
+    npc: npc_sr_catarina
+    goal: 12.18 빚 골목 우물가 — 외운 번호로 회색여울 서른한 명 가운데 열을 숙소 전환 줄로 먼저 받는다
+    every: once
+    when: ["alive npc_sr_catarina", "var sr_arrived >= 70", "date >= 312-12-18"]
+    at: {place: sr_debt_alley, from: "18:00", to: "22:00", doing: 우물가에서 외운 번호를 부른다 — 열이 숙소 전환 줄에 선다}
+    effects: ["var sr_cell_took += 10", "log 카타리나가 외운 번호로 회색여울 사람 열을 빚 골목 숙소로 먼저 받았다 (셈 모임에 {sr_cell_took}명)"]
+  - id: ag_sr_deep_shrine
+    npc: npc_sr_sirenna
+    goal: 12.30 그믐 밤 (정본) — 세베로가 글자 모르는 젊은 인간 하나를 신전 앞 물가에 세우고 심해 사절이 '말할 수 있는 입'인지 가려 본다
+    every: once
+    when: ["alive npc_sr_sirenna", "alive npc_severo", "date >= 312-12-30"]
+    at: {place: sr_deep_shrine, from: "22:00", to: "23:59", doing: 그믐 밤 대가를 던진다 — 심해 사절이 고인 피의 문 위쪽까지 올라온다}
+    effects: ["if var sr_sara_in_seren == true: var sr_sara_judged = true ; log 그믐 밤 세베로가 사라를 신전 앞 물가에 세웠다 — 심해 사절이 '말할 수 있는 입'인지 가려 보았다",
+              "else: var sr_beatrix_unpaid = true ; log 그믐 밤 세베로가 세울 인간이 없었다 — 베아트릭스의 심해 대가가 비었다"]
+  - id: ag_sr_egg_warms
+    npc: npc_sr_sirenna
+    goal: 3.15 흰 알이 깨졌다는 말이 세렌에 닿는 밤 (정본) — 도둑맞은 알이 처음으로 따뜻해진다
+    every: once
+    when: ["alive npc_sr_sirenna", "date >= 313-03-15"]
+    at: {place: sr_egg_vault, from: "22:00", to: "23:59", doing: 수조에 손바닥을 얹는다 — 알이 처음으로 따뜻하다}
+    effects: ["var sr_egg_warm = true", "log 흰 알이 깨졌다는 말이 닿은 밤 도둑맞은 알이 처음으로 따뜻해졌다 — 시렌나가 손바닥을 떼지 못했다"]
+  - id: ag_sr_beatrix_asks
+    npc: npc_beatrix
+    goal: 3.20 탈피 지연 3년 반 — 의장이 시렌나를 불러 알이 정말 따뜻해졌는지 묻는다
+    every: once
+    when: ["alive npc_beatrix", "var sr_egg_warm == true", "date >= 313-03-20"]
+    at: {place: sr_beatrix_tank, from: "22:00", to: "23:59", doing: 지하 수조에서 시렌나에게 알의 온도를 묻는다}
+    effects: ["if var sr_sara_judged == true: log 베아트릭스가 알이 따뜻해졌다는 말을 확인했다 — 사라가 사절 앞에 섰던 값이 한 줄 남았다",
+              "else: log 베아트릭스가 알이 따뜻해졌다는 말을 확인했다 — 사절에게 약속한 인간 하나는 아직 대가로 치러지지 않았다"]
+  - id: ag_sr_draft_vote
+    npc: npc_ophelia
+    goal: 4.1 정기 회기 (정본) — 시민권 초안을 상정하지만 표결은 맹약회의 뒤로 미뤄진다
+    every: once
+    when: ["alive npc_ophelia", "date >= 313-04-01"]
+    at: {place: sr_chamber, from: "09:00", to: "17:00", doing: 계약민 시민권 초안을 상정한다}
+    effects: ["var sr_draft_deferred = true", "log 오필리아가 시민권 초안을 상정했다 — 21표 중 {sr_votes}표, 표결은 맹약회의 뒤로 미뤄졌다"]
+  - id: ag_sr_oath_vote
+    npc: npc_sr_norval
+    goal: 5.6 서약섬의 열하루 한가운데 (정본, 클락 2) — 세렌의 표를 시민권 의제와 맞바꾼다. 과반 11표에서 네 표가 모자란다
+    every: once
+    when: ["alive npc_sr_norval", "date >= 313-05-06"]
+    at: {place: oath_isle, from: "09:00", to: "18:00", doing: 시민권 의제와 표를 맞바꿀 자리 — 서명 반지를 오른손에서 왼손으로 옮긴다}
+    effects: ["if var sr_votes >= 11: var sr_oath_vote_won = true ; log 서약섬에서 노르발이 시민권 의제의 표를 얻었다 (세렌 표 {sr_votes})",
+              "else: log 서약섬에서 노르발의 표가 모자랐다 — 세렌 표 {sr_votes}, 과반 11에 닿지 못했다"]
+  - id: ag_sr_mortgage_prep
+    npc: npc_sr_oral
+    goal: 7.28 포도월 대시장과 회색여울 저당 기한(313.8.30)을 앞둔 점검 (정본) — 맨 위 칸의 열쇠를 의장에게 보인다
+    every: once
+    when: ["alive npc_sr_oral", "date >= 313-07-28"]
+    at: {place: sr_ledger_stacks, from: "10:00", to: "17:00", doing: 맨 위 칸의 열쇠를 의장에게 보인다 — 세베로가 경매 순서를 묻는다}
+    effects: ["log 회색여울 저당 기한(포도월 30일)이 다가온다 — 이미 소금 나루에 닿은 회색여울 사람은 {sr_arrived}명, 그 빚의 번호가 맨 위 칸 열쇠 아래 있다"]

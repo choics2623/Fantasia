@@ -70,7 +70,7 @@ agendas:
     npc: npc_mv_marek
     goal: 7.25 바르그 지부 사람 셋이 장어 장수로 꾸며 늪 어귀 장터에 닿는다 (정본) — 알린 입구가 쌓이면
     every: once
-    when: ["alive npc_mv_marek", "var mv_marek_leads >= 6", "date >= 313-07-25"]
+    when: ["alive npc_mv_marek", "var mv_marek_exposed == false", "var mv_marek_leads >= 6", "date >= 313-07-25"]
     at: {place: mm_rotten_pier, from: "10:00", to: "17:00", doing: 아무것도 모르는 얼굴로 장어 값을 부른다 — 장어 장수로 꾸민 낯선 셋이 곁에 선다}
     effects: ["var mv_barg_probe = true", "log 바르그 지부 사람 셋이 장어 장수로 꾸며 늪 어귀에 닿았다 — 보름마다 알린 {mv_marek_leads}번의 입구가 이어진 것이다"]
   - id: ag_mv_hilke_jar

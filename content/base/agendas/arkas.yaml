@@ -1,0 +1,134 @@
+# 아르카스 잿빛 탑 — 잔향 의심자 명단과 기시감의 사슬. 클락 4 황무지 확장(재눈 초소 말뚝)과 클락 2 맹약회의 313(탑의 학술 의견, 5.6)에 걸린다 (26_AGENDAS.md).
+# 정본 일정(events/arkas_312.yaml)의 9.1 회귀점의 저녁 · 10.9 회색여울 쪽 표시 · 11.9 피험자 열둘 하선 · 11.20 셋째 시험 열다섯째 · 12.1 폭풍철 · 12.15 비밀 식량 창고 · 13.5 관측의 밤 · 3.15 둘째 별 ·
+# 4.1 낭독 논문 · 4.29~5.6 서약섬 · 5.20 서기실 소식이 원인과 결과로 이어지게 한다. 흔들림 지도와 이졸의 목록이 같은 아이들을 가리키지 않는데 아무도 대조하지 않고(fact_p2ar_mathis_two_lists_differ),
+# 사냥꾼 몫을 깎는 현상금 구조가 없는 징후를 만든다(fact_p2ar_karba_bounty_scale) — 그 명단이 피험자 하선과 셋째 시험의 정원을 채운다.
+# 플레이어가 끊을 수 있는 고리: 마티스가 두 목록을 대조하게 한다(ar_crosschecked), 셋째 시험 후보를 빼낸다(ar_third_stopped), 틱의 숫자 6,100에 진짜 0을 입으로 말하게 한다(ar_tik_spoke), 이쉬의 귀리 창고.
+vars:
+  ar_wobble: 0                 # 측정 바늘이 튄 횟수 (회색여울 쪽)
+  ar_deja_vu: false            # 이레네가 장부에 '설명되지 않는 기시감. 북쪽.'을 썼다 (회차가 쌓일수록 더 일찍)
+  ar_crosschecked: false       # 마티스가 흔들림 지도와 이졸의 목록을 대조했다 (플레이어가 시킬 수 있다)
+  ar_suspect_list: 0           # 이번 가을·겨울 잔향 의심자 명단 (사냥꾼이 올린 것)
+  ar_subjects: 0               # 하선한 피험자 (11.9 열둘)
+  ar_third_dead: 14            # 셋째 시험 사망자 (생존 0)
+  ar_third_stopped: false      # 플레이어가 셋째 시험 후보를 빼냈다
+  ar_names_kept: 14            # 마일로가 외운 사망자 이름
+  ar_ration_cut: false         # 폭풍철 피험자 배급이 절반으로 줄었다
+  ar_oats: 30                  # 이쉬의 비밀 식량 창고 귀리 (자루)
+  ar_observation: false        # 관측의 밤이 치러졌다
+  ar_second_star: false        # 코르비나가 둘째 별을 키리에에게만 보냈다
+  ar_tik_spoke: false          # 틱이 '6,100 가운데 진짜 0'을 소리 내어 말했다 (플레이어가 끌어낸다)
+  ar_opinion_sent: false       # 탑의 학술 의견에 틱의 숫자가 빠진 채 서약섬으로 갔다
+  ar_news: false               # 맹약회의 소식이 서기실에 닿았다
+  ar_stakes: 0                 # 재눈 초소의 말뚝이 밀린 걸음 (클락 4 황무지 확장)
+agendas:
+  - id: ag_ar_needle
+    npc: npc_ar_rail
+    goal: 9.1 회귀점의 저녁 6시 (정본) — 측정 바늘이 같은 자리에서 튀고 둘째 칼이 손바닥 위에서 한 번 차가워진다
+    every: once
+    when: ["alive npc_ar_rail", "date >= 312-09-01"]
+    at: {place: gt_listening_room, from: "17:30", to: "19:00", doing: 귀 기울이는 방 — 측정 바늘이 같은 자리에서 튄다}
+    effects: ["var ar_wobble += 1", "log 측정 바늘이 회색여울 쪽 같은 자리에서 튀었다 — 라일의 둘째 칼이 손바닥 위에서 한 번 차가워졌다"]
+  - id: ag_ar_irene_ledger
+    npc: npc_irene_bold
+    goal: 낙엽월 안에 장부에 '설명되지 않는 기시감. 북쪽.'을 쓴다 — 그리고 '측정 오차'라 부른다
+    every: once
+    when: ["alive npc_irene_bold", "var ar_wobble >= 1"]
+    at: {place: gt_master_room, from: "19:10", to: "19:40", doing: 장부에 한 줄을 쓴다 — '설명되지 않는 기시감. 북쪽.'}
+    effects: ["var ar_deja_vu = true", "log 이레네가 장부에 '설명되지 않는 기시감. 북쪽.'을 쓰고 측정 오차라 불렀다"]
+  - id: ag_ar_grey_wobble
+    npc: npc_ar_mathis
+    goal: 10.9 회색여울 쪽 표시가 한 칸 더 튄다 (정본) — 이졸의 목록과 대조하지 않은 채 지도에 손을 얹는다
+    every: once
+    when: ["alive npc_ar_mathis", "date >= 312-10-09"]
+    at: {place: gt_listening_room, from: "20:00", to: "23:00", doing: 흔들림 지도에 손을 얹는다 — 이졸의 목록은 곁에 펴지 않는다}
+    effects: ["var ar_wobble += 1", "if var ar_crosschecked == false: var ar_suspect_list += 7 ; log 마티스가 흔들림 지도의 표시를 이졸의 목록과 대조하지 않은 채 명단에 올렸다 (잔향 의심자 명단 {ar_suspect_list})",
+              "else: var ar_suspect_list += 2 ; log 마티스가 흔들림 지도와 이졸의 목록을 대조해 겹치는 둘만 명단에 올렸다 (잔향 의심자 명단 {ar_suspect_list})"]
+  - id: ag_ar_karba_bounty
+    npc: npc_ar_karba
+    goal: 한 분기에 못 잡은 사냥꾼의 몫을 다음 분기 현상금에서 깎는다 — 사냥꾼이 없는 징후를 만들어 올린다
+    every: "every:30"
+    when: ["alive npc_ar_karba", "date >= 312-10-01", "date < 313-04-01"]
+    at: {place: gt_courtyard, from: "08:00", to: "09:30", doing: 사냥꾼 열둘의 분기 보고를 받는다 — 못 잡은 몫을 다음 현상금에서 깎는다}
+    effects: ["var ar_suspect_list += 3", "log 사냥꾼들이 현상금을 지키려고 없는 징후 셋을 명단에 올렸다 (잔향 의심자 명단 {ar_suspect_list})"]
+  - id: ag_ar_landing
+    npc: npc_ar_ishi
+    goal: 11.9 탑이 피험자 열둘을 하선시키는 날 (정본) — 번호 팔찌를 채우고 점호한다
+    every: once
+    when: ["alive npc_ar_ishi", "date >= 312-11-09"]
+    at: {place: ar_landing_pens, from: "17:00", to: "21:00", doing: 번호 팔찌를 채우고 점호한다 — 열쇠 꾸러미를 한 번 더 흔든다}
+    effects: ["var ar_subjects += 12", "if var ar_suspect_list >= 7: var ar_suspect_list -= 7 ; log 피험자 열둘이 하선했다 — 일곱은 이번 가을 명단에서 온 이들이다 (명단 {ar_suspect_list})",
+              "else: log 피험자 열둘이 하선했다 — 명단에서 온 이는 적다"]
+  - id: ag_ar_third_test
+    npc: npc_irene_bold
+    goal: 11.20 셋째 시험 열다섯째 (정본) — 후보 하나가 수집실로 내려간다. 진룡 비늘 조직 미량 이식, 생존 0
+    every: once
+    when: ["alive npc_irene_bold", "var ar_subjects >= 12", "date >= 312-11-20"]
+    at: {place: gt_collection_room, from: "21:00", to: "23:59", doing: 셋째 시험 — 후보 하나가 수집실로 내려간다}
+    effects: ["if var ar_third_stopped == false: var ar_third_dead += 1 ; log 셋째 시험 열다섯째 — 후보 하나가 수집실에서 돌아오지 않았다 (사망자 {ar_third_dead}명, 생존 0)",
+              "else: log 셋째 시험의 후보가 수집실로 내려오지 않았다 — 정원이 비었다 (사망자 {ar_third_dead}명)"]
+  - id: ag_ar_milo_names
+    npc: npc_milo
+    goal: 베껴 쓰는 탑 장부에서 셋째 시험 사망자의 이름을 외운다 — 새 이름이 올라오면 하나를 더 외운다
+    every: once
+    when: ["alive npc_milo", "var ar_third_dead >= 15", "date >= 312-11-21"]
+    at: {place: gt_dust_desk, from: "21:00", to: "23:00", doing: 먼지 서고에서 장부를 베끼며 새 이름을 입속으로 외운다}
+    effects: ["var ar_names_kept += 1", "learn npc_ar_hester fact_ar_third_test_dead14", "log 마일로가 열다섯째 이름까지 외웠다 — 구멍 글로 서기실에 옮겨졌다 (외운 이름 {ar_names_kept})"]
+  - id: ag_ar_storm_closes
+    npc: npc_ar_ishi
+    goal: 12.1 굶주림월 폭풍철 (정본) — 마지막 배가 떠나고 섬이 고립되며 피험자 배급이 절반으로 줄어든다
+    every: once
+    when: ["alive npc_ar_ishi", "date >= 312-12-01"]
+    at: {place: ar_pier, from: "05:00", to: "10:00", doing: 부두 문을 닫고 열쇠를 한 번 더 흔든다 — 마지막 배가 떠난다}
+    effects: ["var ar_ration_cut = true", "log 폭풍철이 시작되어 섬이 고립되었다 — 피험자 배급이 절반으로 줄었다"]
+  - id: ag_ar_secret_store
+    npc: npc_ar_ishi
+    goal: 12.15 비밀 식량 창고를 연다 (정본) — 귀리 서른 자루 가운데 열을 서기와 잡역 인간 몫으로 푼다
+    every: once
+    when: ["alive npc_ar_ishi", "var ar_ration_cut == true", "date >= 312-12-15"]
+    at: {place: ar_warehouse, from: "22:00", to: "23:59", doing: 비밀 식량 창고를 연다 — 귀리 열 자루를 식당 쪽으로 옮긴다}
+    effects: ["var ar_oats -= 10", "log 이쉬가 비밀 식량 창고에서 귀리 열 자루를 서기와 잡역 인간 몫으로 풀었다 (남은 {ar_oats}자루)"]
+  - id: ag_ar_observation
+    npc: npc_irene_bold
+    goal: 재의 날 5일째 관측의 밤 (정본) — 피험자 전원을 마당에 세워 누가 '반응'하는지 본다
+    every: once
+    when: ["alive npc_irene_bold", "date >= 312-13-05"]
+    at: {place: gt_courtyard, from: "20:00", to: "23:59", doing: 피험자 전원이 탑 마당에 선다 — 반응하는 이를 헤아린다}
+    effects: ["var ar_observation = true", "if var ar_deja_vu == true: log 관측의 밤 — 이레네가 반응하는 이를 헤아렸다. 라일은 칼을 쥔 손을 소매에 감췄다 (명단 {ar_suspect_list}, 피험자 {ar_subjects})",
+              "else: log 관측의 밤 — 이레네가 반응하는 이를 헤아렸지만 아무도 가려내지 못했다"]
+  - id: ag_ar_second_star
+    npc: npc_corvina
+    goal: 3.15 흰 알이 깨지는 밤 (정본) — 하늘 기록에 두 번째 별을 적고 첫 별만 탑에 올릴 문서에 옮긴다
+    every: once
+    when: ["alive npc_corvina", "date >= 313-03-15"]
+    at: {place: gt_listening_room, from: "21:00", to: "23:59", doing: 하늘 기록에 두 번째 별을 적는다 — 탑에 올릴 사본에서는 한 줄이 빠진다}
+    effects: ["var ar_second_star = true", "log 코르비나가 하늘 기록의 둘째 별을 키리에에게만 보냈다 — 탑 문서에는 첫 별만 올랐다"]
+  - id: ag_ar_tik_reading
+    npc: npc_ar_tik
+    goal: 4.1 낭독 논문 (정본) — 맹약회의에 올릴 탑의 학술 의견 초안이 읽힌다. 틱은 6,100 가운데 진짜 0이라는 숫자를 매듭으로만 쥐고 있다
+    every: once
+    when: ["alive npc_ar_tik", "date >= 313-04-01"]
+    at: {place: gt_lecture_hall, from: "09:00", to: "18:00", doing: 학술 의견 초안을 듣는다 — 숫자 이야기가 빠진 것을 보고 입술을 떤다}
+    effects: ["if var ar_tik_spoke == true: log 틱이 징후자 6,100명 가운데 진짜 잔향이 0이라는 숫자를 처음으로 소리 내어 말했다 — 초안에 한 줄이 들어갔다",
+              "else: log 틱이 숫자 이야기가 빠진 초안을 보고 입술을 떨었지만 6,100과 0은 매듭 속에 남았다"]
+  - id: ag_ar_oath_opinion
+    npc: npc_irene_bold
+    goal: 5.6 서약섬의 열하루 한가운데 (정본, 클락 2) — 인간 증언 안건에 탑의 학술 의견이 요구된다. '연구 대상'이라는 말은 쓰지 않는다
+    every: once
+    when: ["alive npc_irene_bold", "date >= 313-05-06"]
+    at: {place: oath_isle, from: "09:00", to: "18:00", doing: 탑의 학술 의견을 낭독한다 — '진짜는 하나'}
+    effects: ["if var ar_tik_spoke == false: var ar_opinion_sent = true ; log 탑의 학술 의견에는 징후자 6,100명 가운데 진짜 0이라는 숫자가 빠졌다 — 잔향 대숙청 안건에 맞설 숫자가 서약섬에 오르지 않았다",
+              "else: log 탑의 학술 의견에 징후자 6,100명 가운데 진짜 0이라는 숫자가 들어 서약섬에서 낭독되었다"]
+  - id: ag_ar_may_news
+    npc: npc_ar_hester
+    goal: 5.20 맹약회의 소식이 서기실에 닿는다 (정본) — '인간 증언'이라는 말이 구멍 글의 첫 줄에 올라간다. '아직 소리 내지 마'
+    every: once
+    when: ["alive npc_ar_hester", "date >= 313-05-20"]
+    at: {place: gt_dust_desk, from: "21:00", to: "23:59", doing: 구멍 글 한 장을 손가락으로만 읽는다 — '아직 소리 내지 마'}
+    effects: ["var ar_news = true", "log 맹약회의 소식이 서기실에 닿았다 — 서기 칠십이 구멍 글로 '인간 증언'을 읽었다"]
+  - id: ag_ar_ash_eye_stakes
+    npc: npc_ar_borte
+    goal: 달마다 재눈 초소의 황무지 경계 보고가 닿는다 (정본, 클락 4) — 말뚝이 한 걸음씩 밀리고 바람이 거꾸로 부는 지점이 그쪽으로 옮겨 간다
+    every: "every:30"
+    when: ["alive npc_ar_borte", "date >= 312-09-12"]
+    at: {place: gt_listening_room, from: "09:00", to: "13:00", doing: 재눈 초소 보고를 받고 거꾸로 부는 지점을 지도에 점으로 찍는다}
+    effects: ["var ar_stakes += 1", "log 재눈 초소의 말뚝이 한 걸음 더 밀렸다 — 황무지가 탑 쪽으로 {ar_stakes}걸음 넓어졌다"]
