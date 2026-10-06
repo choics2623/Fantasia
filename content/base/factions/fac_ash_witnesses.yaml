@@ -1,0 +1,156 @@
+# 재 아래 증인들 — 대붕괴의 날 불이 먼저 떨어지는 것을 본 용혈의 생존자들. 312년 동안 '불이 살아 있는 동안' 침묵하기로 서약했다.
+# [신설 결사 — HOUSES에 없음] 세계가 함의하는 것: 아스테리아 포위군에 용족·용인·와이번이 있었다(WORLD_BIBLE §2 AS 0), 바르스카르는 진실을 들은 노예 11명을 처분했다
+# (fact_dk_varskar_eleven_slaves), 볼드 가문 시조 엘리아스가 목격기를 남겼다(HOUSES §2.8), 그로마크는 대붕괴 전날을 반복해 산다(HOUSES §1.5),
+# 왕관 와이번은 수명 약 600(원로 엘렌드 흰목 530 — AS 0에 218세), 순혈 용인은 400~900년.
+# 왜 지금(AS 312): 서약의 문구는 "용황의 불이 살아 있는 동안"이다. 바르스카르가 죽어 간다. 불이 꺼지는 날 그들은 말해도 된다 — 그리고 아우락스는
+# 그날 이전에 그들을 끝내려 한다. 맹약회의 313에서 대붕괴의 진실이 말해지면 계승 판세가 뒤집힌다(그로마크의 증언 = 아우락스 −5, HOUSES §6.3).
+id: fac_ash_witnesses
+name: 재 아래 증인들 (용혈의 비밀 서약)
+kind: secret
+race: [순혈 용인, 왕관 와이번, (살아 있는 증언) 진룡 그로마크]
+governance: 서약 합의 — '그날을 꿰매는' 결사. 각자가 그날의 한 조각을 가졌고, 조각이 모두 모여야만 증언이 된다. 결정은 조각을 가진 자 전원
+motto: "불은 먼저 왔다."
+seat: 없음. 잿불 언덕 동쪽 '말라붙은 봉화대'(아르벨의 은거지)와 바알카르 홰의 회랑 아래층
+size:
+  members: "살아 있는 증인 여섯(순혈 용인 셋, 왕관 와이번 둘, 진룡 하나 — 그로마크는 자기가 증인인 줄 모른다), 증언을 이어받을 '다음 입' 후보 둘"
+  territory: "바알카르, 잿불 언덕, 재의 황무지 남쪽 가장자리(검은 유리 둥지)"
+  wealth: "기억 — 그리고 각자의 비늘에 남은 그날의 화상. 원로회 흰목 둥지의 의전 기록(정식 역사의 원고를 쓰는 둥지)"
+  force: "없다. 흰목 둥지의 원로석 하나, 그리고 증언 그 자체 — 맹약회의에서 말해지면 칼보다 무겁다"
+
+reason_now: >
+  바르스카르가 죽어 간다. 서약이 풀리는 날이 온다. 그러나 아우락스도 그날 아버지 곁에 있었다 — 그는 증인들이 누구인지 반쯤 안다.
+  아우락스에게 대붕괴의 진실은 '잔향 대숙청'의 명분('인간이 세계를 찢었다')을 무너뜨리는 독이다. 증인들은 불이 꺼지기 전에 자기 조각을 누구에게 넘길지 정해야 한다.
+
+decision: >
+  여섯은 한자리에 모인 적이 없다. 조각은 '꿰맴'으로만 합쳐진다 — 한 증인이 다른 증인 하나에게 자기 조각을 말로 넘기면, 받은 자는 두 조각을 가진다. 312년 동안 꿰맴은 네 번뿐이었다.
+  결정(누구에게 말할 것인가, 언제 말할 것인가)은 조각을 가진 자 전원의 '화상 보임'으로 난다 — 각자 자기 비늘의 그날 화상을 상대에게 보이면 동의, 덮으면 거부. 하나라도 덮으면 결정은 없다.
+  그로마크는 결정에 들지 못한다(그는 대붕괴 전날을 산다). 대신 증인들은 그를 '살아 있는 원본'으로 지킨다 — 조각이 어긋날 때 그의 반복되는 하루가 대조본이다.
+succession: "증인은 늘지 않는다 — 그날을 본 자만 증인이다. 대신 '다음 입'을 고른다: 증언을 넘겨받아 맹약회의에서 말할 자. 후보는 둘 — 세라크 붉은재(아우락스의 딸, 할아버지에게 진실을 묻는 유일한 손녀), 그리고 노라(용황에게 직접 들은 열두 번째 노예 — 인간은 맹약회의에서 말할 수 없다)."
+
+offices:
+  - id: off_herald
+    title: 첫 조각 — 불의 전령
+    holder: npc_arvel   # 신설 은자 H-07
+    reports_to: null
+    powers: ["포위군의 전령으로 광장 원 바깥 열 걸음에서 의식을 보았다 — 의식의 '말'을 들은 유일한 증인", "꿰맴 셋을 이미 받았다(조각 넷)"]
+    chosen_by: "그날 거기 서 있었다"
+    perks: ["말라붙은 봉화대"]
+  - id: off_elder_white_neck
+    title: 둘째 조각 — 흰목 둥지 원로 (의전·혈통 기록)
+    holder: "unnamed:엘렌드 흰목 (왕관 와이번, 530) — 흰 알 섭정안의 설계자. AS 0에 218세, 하늘에서 불이 떨어지는 순서를 보았다"
+    reports_to: off_herald
+    powers: ["정식 역사의 원고를 쓰는 둥지 — 증언이 원고에 들어갈 수 있는 유일한 길", "원로석 하나"]
+    chosen_by: "그날 거기 있었다"
+    perks: []
+  - id: off_long_shadow
+    title: 셋째 조각 — 긴그림자 둥지 감찰 원로
+    holder: "unnamed:이르마스 긴그림자 (왕관 와이번, 450) — AS 0에 138세. '잔향 징후 3배'의 의미를 원로회에서 가장 먼저 이해했다"
+    reports_to: off_herald
+    powers: ["감찰·첩보 — 증인들을 아우락스의 눈에서 가린다"]
+    chosen_by: "그날 거기 있었다"
+    perks: []
+  - id: off_ember_scribe
+    title: 넷째 조각 — 잉크 거리의 늙은 서기
+    holder: "unnamed:서기 마르벨 재잉크 (순혈 용인, 610) — 엘리아스 볼드의 서기 동료. 오른손을 잃은 엘리아스 대신 목격기를 받아 적었다"
+    reports_to: off_herald
+    powers: ["볼드 사본의 두 번째 손 — 원본이 봉인 서가 일곱째 칸에 있다는 것과, 원본에서 한 줄이 지워졌다는 것을 안다"]
+    chosen_by: "그날 거기 있었다"
+    perks: []
+  - id: off_ash_knight
+    title: 다섯째 조각 — 그을린 기사
+    holder: "unnamed:하스트란 방계 노기사 (순혈 용인, 703) — 포위군 선봉, 바엘리스 흑요비늘의 날개 아래에서 싸웠다. 그녀가 균열에 삼켜지는 것을 보았다"
+    reports_to: off_herald
+    powers: ["비늘기사단 원로 — 하스트란이 아우락스를 떠날 수 있는 '대붕괴 증언'의 실물(HOUSES §6.3)"]
+    chosen_by: "그날 거기 있었다"
+    perks: []
+  - id: off_living_original
+    title: 살아 있는 원본 (증인이 아닌 증인)
+    holder: npc_gromak   # 신설 은자 H-01 — fac_great_dragon_lines의 '그로마크 검댕'과 같은 자
+    reports_to: null
+    powers: ["대붕괴 전날을 반복해 산다 — 포위 계획(바르스카르가 의식 한가운데에 불을 뿜기로 미리 정했다)을 매일 다시 말한다"]
+    chosen_by: "시간의 상처"
+    perks: ["검은 유리 둥지"]
+  - id: off_next_mouth
+    title: 다음 입 — 공석 (후보 둘)
+    holder: null
+    reports_to: off_herald
+    powers: ["증언을 넘겨받아 맹약회의 313에서 말할 자"]
+    chosen_by: "증인 전원의 화상 보임 — 아직 결정이 없다. 후보: npc_serak, npc_nora"
+    perks: []
+
+ranks:
+  - {id: rank_witness, title: "증인 (그날을 본 자)", duties: "조각을 지킨다, 꿰맨다", privileges: "화상 보임 — 거부권", open_to_player: false}
+  - {id: rank_mouth, title: "다음 입", duties: "말한다", privileges: "모든 조각", open_to_player: false}
+  - {id: rank_keeper, title: "지키는 자 (증인의 하인·노예)", duties: "봉화대·둥지의 문", privileges: "모르고 지킨다", open_to_player: true}
+
+cell_graph:
+  rule: "증인은 자기 조각과 꿰맨 상대만 안다. 꿰맴의 사슬: 엘렌드 → 아르벨(AS 41, 재의 법 반포 날 밤), 마르벨 → 아르벨(AS 3), 노기사 → 아르벨(AS 100, 붉은 길 진압 뒤). 이르마스만 아무와도 꿰매지 않았다 — 그가 결사의 그림자다"
+  nodes:
+    - {id: n_arvel, who: npc_arvel, knows_up: null, knows_members: [n_elend, n_marvel, n_knight, n_gromak], if_captured: "조각 넷 — 증언의 대부분. 아우락스가 그를 태우면 증언은 셋으로 흩어진다"}
+    - {id: n_elend, who: "unnamed:엘렌드 흰목", knows_up: "n_arvel — 꿰맴(AS 41)", knows_members: [n_irmas], if_captured: "흰목 둥지와 섭정안 — 원로회가 아우락스의 손에 넘어간다"}
+    - {id: n_irmas, who: "unnamed:이르마스 긴그림자", knows_up: "n_elend — 같은 원로석", knows_members: [], if_captured: "아무도 꿰매지 않았다 — 그가 잡혀도 드러나는 것은 그 한 조각뿐(불이 떨어진 시각)"}
+    - {id: n_marvel, who: "unnamed:마르벨 재잉크", knows_up: "n_arvel — 꿰맴(AS 3)", knows_members: ["npc_irene_bold (그녀는 그가 누구인지 모른다 — 볼드 서고의 늙은 필경사로만)"], if_captured: "볼드 사본에서 지워진 한 줄"}
+    - {id: n_knight, who: "unnamed:하스트란 노기사", knows_up: "n_arvel — 꿰맴(AS 100)", knows_members: [], if_captured: "하스트란 가문이 그를 숨기거나 태운다"}
+    - {id: n_gromak, who: npc_gromak, knows_up: null, knows_members: [], if_captured: "그를 잡을 수 있는 자는 없다 — 그는 진룡이다. 그러나 그를 깨우면(내일이 대붕괴라고 설득하면) 그는 누구에게든 말한다"}
+
+infiltration:
+  join_real: "들어올 수 없다 — 증인은 그날을 본 자뿐이다. 다만 '지키는 자'와 '다음 입'은 결사가 고른다"
+  join_fake: "가장 흔한 가짜는 '그날 거기 있었다'고 말하는 늙은 용인이다. 시험은 꿰맴 대조: 증인 하나가 자기 조각의 한 낱말을 빼고 말하고, 상대가 빠진 낱말을 채워야 한다. 그로마크의 반복되는 하루가 대조본이다 — 가짜는 그로마크가 매일 말하는 포위 계획과 어긋난다"
+  proof_test: "잔향에게: 증인들은 처음에 그를 두려워한다 — 그는 그날 의식 한가운데 서 있던 자와 같은 것을 품고 있다. 시험은 하나 — 멈춘 광장의 원 중앙에서 그날의 한 장면을 기억해 오는 것(REGIONS §11.13). 그 장면이 아르벨의 조각과 맞으면 아르벨은 화상을 보인다"
+  exposure: "아우락스는 증인들이 누구인지 반쯤 안다(그도 그날 거기 있었다). 드러나는 길: 맹약회의 전에 증언이 소문이 되면(21 §8) 아우락스와 드라반이 '그날 거기 있던 늙은 자들'을 하나씩 찾는다 — 바르스카르의 열한 노예와 같은 방식으로"
+
+law:
+  crimes:
+    - {act: "불이 살아 있는 동안 말함", punishment: "서약 위반 — 바르스카르의 불이 그를 찾는다(312년간 증인 둘이 그렇게 사라졌다)", note: "증인 대상 — 바르스카르의 법"}
+    - {act: "꿰매지 않은 자에게 조각을 말함", punishment: "결사 법에는 없다. 그러나 열한 노예의 일을 증인들은 모두 안다", note: "-"}
+    - {act: "바깥 법 — 공식 역사를 부정함", punishment: "재의 법 이후 '인간 편을 드는 거짓' — 서고 몰수, 가문 수치", note: "용인 대상(AS 41 엘리아스의 반대 발언 선례)"}
+
+customs:
+  greeting: "증인끼리: 상대의 비늘 화상 자리를 오래 본다. 말로는 '불은 먼저 왔다.' — 답 '의식은 끝나지 않았다.'"
+  taboos: ["'인간이 세계를 찢었다'를 소리 내어 말하는 것 — 공식 역사이지만 증인들은 입에 올리지 않는다", "용황 앞에서 그날의 날씨를 말하는 것", "아스테리온의 이름"]
+  rites:
+    - {name: "그날의 셈", when: "재의 날 첫째 날 해 질 녘", what: "각자 자기 거처에서 불을 끈다(공식 재의 날 금기와 같다 — 그래서 눈에 띄지 않는다). 그리고 그날 의식의 원이 몇 걸음이었는지를 속으로 센다"}
+  speech: "용언 귀족 말씨 그대로 — 그러나 그날 이야기를 할 때만 시제가 현재로 바뀐다('불이 떨어진다', '원이 빛난다'). 그것이 그들을 드러내는 버릇이다."
+
+membership:
+  join: "그날 거기 있었던 자만"
+  leave: "죽음 — 또는 불"
+  signs: ["비늘의 그날 화상(대개 목덜미나 날개 아래)", "'불은 먼저 왔다' — '의식은 끝나지 않았다'", "그날 이야기에서만 현재형"]
+
+internal_factions:
+  - {name: "불이 꺼지면 말한다", leader: npc_arvel, aim: "서약을 지키고, 바르스카르가 죽는 날 맹약회의에 증언을 넘긴다 — 다음 입을 세라크로", strength: 50}
+  - {name: "말하지 않는다 (용 이후의 제국)", leader: null, aim: "엘렌드 흰목(unnamed) — 증언은 원로회의 흰 알 섭정안을 위한 칼로만 쓴다. 인간을 위해 쓰지 않는다", strength: 30}
+  - {name: "그림자", leader: null, aim: "이르마스 긴그림자(unnamed) — 아무와도 꿰매지 않았다. 누가 이기든 살아남는 쪽", strength: 20}
+
+assets: ["조각 여섯(살아 있는 증인)", "흰목 둥지의 정식 역사 원고", "볼드 사본에서 지워진 한 줄(마르벨의 기억)", "그로마크 — 살아 있는 원본"]
+
+secrets:
+  - {fact: fact_dk_collapse_truth, known_by_rank: rank_witness}
+  - {fact: fact_dk_varskar_eleven_slaves, known_by_rank: rank_witness}
+  - {fact: fact_dk_aurax_saw_collapse, known_by_rank: rank_witness}
+  - {fact: fact_dk_varskar_awaits_return, known_by_rank: rank_witness}
+  - {fact: fact_hi_asterion_ritual_nearly_done, known_by_rank: rank_witness}
+  # TODO-FACT: 포위군 생존자 증인들은 '용황의 불이 살아 있는 동안' 침묵하기로 바르스카르 앞에서 서약했다 (이 파일 신설)
+  # TODO-FACT: 그로마크에게 '내일은 대붕괴의 날'이라 설득하면 그는 바르스카르가 의식 한가운데에 불을 뿜기로 미리 정했다고 증언한다 (HOUSES §1.5)
+  # TODO-FACT: 볼드 사본 원본에서 한 줄이 지워졌다 — 지운 손은 엘리아스 자신(AS 41 재의 법 날) (이 파일 신설)
+  - {truth: T06, level: whole, holders: [npc_arvel]}
+  - {truth: T06, level: fragment, holders: [npc_gromak]}
+  - {truth: T08, level: fragment, holders: [npc_arvel]}
+  - {truth: T07, level: fragment, holders: [npc_arvel]}
+
+relations:
+  - {to: fac_aurax, stance: -70, note: "신설 — 아우락스는 그들의 증언을 끝내려 한다"}
+  - {to: fac_scale_council, stance: 30, note: "신설 — 엘렌드·이르마스의 둥지. 흰 알 섭정안"}
+  - {to: fac_varskar_brood, stance: 0, note: "신설 — 용황에 대한 서약과 두려움"}
+  - {to: fac_ashen_tower, stance: -20, note: "신설 — 볼드 사본을 쥔 자들. 증언은 연구 대상이 아니다"}
+  - {to: fac_nameless, stance: -30, note: "신설 — 인간을 위해 말할 생각은 아직 없다(아르벨은 예외로 흔들린다)"}
+toward_echo: "두려워한다 — 그리고 반쯤 기다린다. 아르벨은 그날 의식 한가운데에서 '너희'라는 낱말을 들었다. 잔향이 멈춘 광장에서 그날의 장면을 가져오면 그는 화상을 보인다. 엘렌드는 잔향을 원로회의 섭정안을 흔드는 변수로만 본다."
+player_paths:
+  - "말라붙은 봉화대(H-07) — 아르벨의 시험: 멈춘 광장의 장면"
+  - "그로마크의 하루(H-01) — '내일은 대붕괴의 날'"
+  - "다음 입: 세라크에게 증언을 넘기면 맹약회의 313에서 아우락스의 명분이 무너진다(계승 −5) — 그리고 세라크는 아버지의 적이 된다"
+  - "노라: 인간은 맹약회의에서 말할 수 없다 — 그녀의 증언을 용의 입으로 옮길 길"
+regression:
+  fixed: ["증인 여섯, 꿰맴 사슬", "그로마크의 반복되는 하루", "서약의 문구 '불이 살아 있는 동안'"]
+  flow: ["바르스카르가 죽는 날짜(클락 #1) — 서약이 풀리는 날"]
+  drift: ["아르벨이 봉화대를 비우는 날", "아우락스가 '그날 거기 있던 늙은 자'를 떠올리는 시점 — 회차가 쌓여도 그는 기억하지 못한다. 대신 바르스카르의 기시감이 그를 재촉한다"]
