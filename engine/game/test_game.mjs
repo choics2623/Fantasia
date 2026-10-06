@@ -231,6 +231,16 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   } else check("(헨릭이 셈집에 없다 — 표류)", true);
 }
 
+// 18. 하루를 늘 하던 대로: 배급 → 막사 → 잠 → 점호, 기록 하나
+{
+  const x = G.boot(C, G.newRun({ seed: 7 }));
+  const h0 = G.view(x).player.hunger, n0 = x.run.journal.length;
+  const r = play(x, "routine_day")[0];
+  const v = G.view(x);
+  check("하루를 늘 하던 대로 보내면 다음 날 아침 점호 광장이다 (기록 하나)", v.place.id === "gf_whip_square" && x.run.journal.length === n0 + 1, `${v.time} 배고픔 ${h0}→${v.player.hunger}`);
+  check("배급을 받았으니 굶지 않았다", v.player.hunger <= h0 + 1 && !x.ended);
+}
+
 // 12. 자리 승계: 즈닉이 죽으면 감독관 자리는 누군가 잇고, 그 사람이 점호를 선다 / 남작이 죽으면 오웬이 남작
 {
   const x = G.boot(C, G.newRun({ seed: 7 }));

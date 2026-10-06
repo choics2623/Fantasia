@@ -250,6 +250,8 @@ function rawOptions(g) {
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
   o.push({ id: "wait:60", kind: "time", label: "한 시간 기다린다" });
+  // 18 「기억대로 보낸다」: 하루를 늘 하던 대로 — 저녁 배급, 막사, 잠, 점호. 그사이 눈앞에서 일어난 일만 남는다
+  if (g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive) o.push({ id: "routine_day", kind: "time", label: "하루를 늘 하던 대로 보낸다 (배급 → 막사 → 점호)" });
   if ((g.at === HOME && g.P.settlement === SETTLEMENT) || isNight(g.t)) o.push({ id: "sleep", kind: "time", label: g.at === HOME ? "침상에 눕는다" : "이곳에서 웅크리고 잔다" });
   return o;
 }
@@ -495,6 +497,22 @@ const DO = {
     res.notes.push(`${g.content.bundle.settlements[sid].name}에 닿았다`);
     if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
     checkpoint(g, res, 0.35);   // 낯선 인간은 들어서는 길목에서 붙잡히기 쉽다
+  },
+  routine_day(g, _, res) {
+    const start = g.t, feedAll = [];
+    const step = (fn) => { fn(); feedAll.push(...g.feed); };
+    const ra = g.content.game.economy?.ration;
+    // 1) 저녁 배급까지 (이미 지났으면 바로 막사로)
+    const m = ((g.t % 1440) + 1440) % 1440;
+    if (ra && m < parseClock(ra.to) - 10 && g.P.lastRation !== Math.floor(g.t / 1440)) {
+      step(() => { g.at = "gf_rooster"; pass(g, Math.max(1, parseClock(ra.from) - m)); });
+      if (!g.ended && present(g).some((w) => w.npc === "npc_bram")) step(() => { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); pass(g, 15); });
+    }
+    // 2) 통금 전에 막사로, 자고, 점호
+    if (!g.ended) step(() => { g.at = HOME; const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); });
+    if (!g.ended && !isSabbath(Math.floor(g.t / 1440))) step(() => { pass(g, 5); g.at = ROLLCALL; pass(g, 20); });
+    g.feed = feedAll;
+    res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
   },
   sleep(g, _, res) {
     const c = fromMinutes(g.t);

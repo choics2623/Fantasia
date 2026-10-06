@@ -58,6 +58,7 @@ export function createSession(content, provider, { run = null, onSave = null, re
     if (res.feed?.length) return true;
     if (g.ended) return true;
     if (res.kind === "move" && G.view(g).people.length) return true;
+    if (res.id === "routine_day") return true;   // 하루를 건너뛴 뒤의 짧은 몽타주 — 한 번의 호출
     if (peopleKey() !== beforePeople && G.view(g).people.length) return true;
     return false;
   }

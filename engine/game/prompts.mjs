@@ -63,6 +63,7 @@ function outcomeLines(g, res) {
   for (const n of res.notes || []) L.push(`엔진 메모: ${n}`);
   for (const f of res.feed || []) L.push(`그사이 주인공 주변에서: ${f.text}`);
   if (res.ending) L.push("이 박자로 대화를 닫는다.");
+  if (res.id === "routine_day") L.push("하루를 건너뛰었다: 배급 줄·막사·잠·점호를 두세 문장의 몽타주로. 그사이 주인공 주변에서 일어난 일만 짚는다. 없으면 같은 하루의 무게만.");
   return L.map(josa);
 }
 
