@@ -1,0 +1,1850 @@
+[
+ {
+  "id": "npc_varskar",
+  "name": "용황 바르스카르 잿날개",
+  "race": "용족",
+  "subrace": "진룡(붉은 용)",
+  "region": "드라크마르 용좌령",
+  "role": "썩어 가는 불 (정본)",
+  "tier": "S",
+  "factions": [
+   "아우락스"
+  ],
+  "summary": "드라크마르 용제국 황제, 용족 최고령"
+ },
+ {
+  "id": "npc_isolde",
+  "name": "이졸데 서리비늘",
+  "race": "용족",
+  "subrace": "진룡(은빛 용)",
+  "region": "드라크마르 용좌령",
+  "role": "알을 품은 젊은 은룡 (정본)",
+  "tier": "S",
+  "factions": [
+   "카스파르",
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": "용황의 짝, 흰 알의 어미",
+  "age": 420
+ },
+ {
+  "id": "npc_white_egg",
+  "name": "흰 알",
+  "race": "용족",
+  "subrace": "진룡(알)",
+  "region": "드라크마르 용좌령",
+  "role": "(정본 · 특수 개체)",
+  "tier": "S",
+  "factions": [
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": ""
+ },
+ {
+  "id": "npc_aurax",
+  "name": "아우락스 붉은턱",
+  "race": "용족",
+  "subrace": "진룡(붉은 용)",
+  "region": "드라크마르 용좌령",
+  "role": "장자, 대숙청의 주창자 (정본 · 주요 악역)",
+  "tier": "S",
+  "factions": [
+   "카스파르",
+   "멜리산드"
+  ],
+  "summary": "용황의 장자, 계승 1순위(전통파), 제국 서부군 총사령"
+ },
+ {
+  "id": "npc_nora",
+  "name": "노라",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "임종의 시중 노예 (예법·통찰·용언 스승)",
+  "tier": "S",
+  "factions": [
+   "이름 없는 자들",
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "국유 노예, 용황 병상 시중장(크릭 4명, 인간 2명 지휘)",
+  "age": 61
+ },
+ {
+  "id": "npc_sevrax",
+  "name": "세브락스 붉은턱",
+  "race": "용족",
+  "subrace": "진룡(붉은 용)",
+  "region": "드라크마르 용좌령",
+  "role": "의심하는 손자 (권력자의 자식)",
+  "tier": "A",
+  "factions": [
+   "아우락스"
+  ],
+  "summary": "",
+  "age": 380
+ },
+ {
+  "id": "npc_fizik",
+  "name": "피직",
+  "race": "크릭",
+  "subrace": "감독관 크릭",
+  "region": "드라크마르 용좌령",
+  "role": "궁의 귀 (정보상 · 손재주 스승)",
+  "tier": "A",
+  "factions": [
+   "아우락스"
+  ],
+  "summary": "",
+  "age": 44
+ },
+ {
+  "id": "npc_chik",
+  "name": "치크",
+  "race": "크릭",
+  "subrace": "굴 크릭",
+  "region": "드라크마르 용좌령",
+  "role": "굴뚝에서 도망친 크릭 (동료 후보)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 19
+ },
+ {
+  "id": "npc_irga",
+  "name": "이르가 붉은귀",
+  "race": "수인족",
+  "subrace": "바르그(늑대)",
+  "region": "드라크마르 용좌령",
+  "role": "자비로운 사냥꾼 (노예사냥꾼 · 경쟁자)",
+  "tier": "A",
+  "factions": [
+   "카스파르"
+  ],
+  "summary": "",
+  "age": 34
+ },
+ {
+  "id": "npc_valerius",
+  "name": "발레리우스 화염문",
+  "race": "용인(순혈)",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "비늘 언덕 저택, 용인 대가문 가주",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_greta",
+  "name": "그레타",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "발레리우스 저택 세탁장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_rolf",
+  "name": "'망치혀' 롤프",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "바알카르 노예 대시장, 목줄장 겸 경매 보조",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_soom",
+  "name": "크릭 시녀 '숨'",
+  "race": "크릭(굴 크릭)",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "서리 탑 알 보관실",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_kaidor",
+  "name": "원로 카이도르 녹청관",
+  "race": "와이번",
+  "subrace": "왕관 와이번",
+  "region": "드라크마르 용좌령",
+  "role": "비늘 원로회 서기장 (와이번 귀족 · 섭정파)",
+  "tier": "A",
+  "factions": [
+   "비늘 원로회",
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "",
+  "age": 260
+ },
+ {
+  "id": "npc_godric_raven",
+  "name": "고드릭 레이번",
+  "race": "용인",
+  "subrace": "용인(비늘혈)",
+  "region": "회색여울 변경",
+  "role": "빚진 남작",
+  "tier": "S",
+  "factions": [
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "용제국 남작, 회색여울 영주. 농노 400, 성채 노예 38, 용인 가신 11명 보유",
+  "age": 140
+ },
+ {
+  "id": "npc_owen_raven",
+  "name": "오웬 레이번",
+  "race": "용인",
+  "subrace": "용인(비늘혈)",
+  "region": "회색여울 변경",
+  "role": "동경하는 아들 (연적·잠재 동맹)",
+  "tier": "S",
+  "factions": [
+   "카스파르"
+  ],
+  "summary": "남작의 외아들, 상속자. 무관직 없음",
+  "age": 40
+ },
+ {
+  "id": "npc_henrik",
+  "name": "헨릭",
+  "race": "용인",
+  "subrace": "용인(비늘혈)",
+  "region": "회색여울 변경",
+  "role": "장부의 쥐",
+  "tier": "A",
+  "factions": [
+   "카스파르",
+   "멜리산드"
+  ],
+  "summary": "남작령 징세관, 인두세·곡물세 담당",
+  "age": 90
+ },
+ {
+  "id": "npc_lea",
+  "name": "레아",
+  "race": "용인",
+  "subrace": "용인(비늘혈)",
+  "region": "회색여울 변경",
+  "role": "이중 충성의 부관 (첩자)",
+  "tier": "A",
+  "factions": [
+   "이름 없는 자들",
+   "카스파르",
+   "멜리산드"
+  ],
+  "summary": "까마귀 문 국경군 부관(백인대장 계급), 카스파르의 오른팔",
+  "age": 60
+ },
+ {
+  "id": "npc_kaspar",
+  "name": "카스파르 반비늘",
+  "race": "반용",
+  "subrace": "혼혈(진룡 바르스카르 × 인간 노예 엘레나)",
+  "region": "회색여울 변경",
+  "role": "국경의 잡종 왕자 (정본)",
+  "tier": "S",
+  "factions": [
+   "이름 없는 자들",
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "까마귀 문 국경군 사령관(병력 용인 140, 크릭 보조병 60, 수인 용병 30), 용황의 서자",
+  "age": 35
+ },
+ {
+  "id": "npc_znik",
+  "name": "즈닉",
+  "race": "크릭",
+  "subrace": "감독관 크릭",
+  "region": "회색여울 변경",
+  "role": "채찍을 쥔 겁쟁이",
+  "tier": "A",
+  "factions": [],
+  "summary": "농노 감독관(크릭 보조 감독 3명 지휘)",
+  "age": 30
+ },
+ {
+  "id": "npc_volk",
+  "name": "볼크 회색송곳니",
+  "race": "수인족",
+  "subrace": "바르그(늑대)",
+  "region": "회색여울 변경",
+  "role": "사냥대장 (정본 · 악역)",
+  "tier": "S",
+  "factions": [
+   "목줄단",
+   "바르그 노예사냥",
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "바르그 노예사냥 조합장(조합원 약 400), 아우락스파 지지 세력",
+  "age": 87
+ },
+ {
+  "id": "npc_bram",
+  "name": "브람",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "수탉의 주인, 지하의 보호자",
+  "tier": "S",
+  "factions": [
+   "잿빛 실"
+  ],
+  "summary": "인간 배급 막사 관리인(성채 소유 노예, 반자율 운영 허가)",
+  "age": 52
+ },
+ {
+  "id": "npc_bran",
+  "name": "브란",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "쇠를 숨기는 대장장이",
+  "tier": "S",
+  "factions": [],
+  "summary": "성채 소유 대장간 노예(숙련 장인 — 시장가 14 비늘)",
+  "age": 45
+ },
+ {
+  "id": "npc_osric",
+  "name": "오스릭",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "글을 아는 사제, 끊어진 고리",
+  "tier": "S",
+  "factions": [
+   "순종의 빛",
+   "끊어진 고리"
+  ],
+  "summary": "순종의 빛 사제(루멘 서품), 마을 유일의 합법 문해자 — 경전 낭독만 허가",
+  "age": 67
+ },
+ {
+  "id": "npc_martha",
+  "name": "마르타",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "목줄장, 딸을 지키는 어머니",
+  "tier": "S",
+  "factions": [
+   "목줄단"
+  ],
+  "summary": "성채 노예 집사, 회색여울 목줄단 목줄장(밀고자 6명 관리)",
+  "age": 38
+ },
+ {
+  "id": "npc_hagen",
+  "name": "하겐",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "웃는 밀수꾼 (악역)",
+  "tier": "S",
+  "factions": [],
+  "summary": "나룻배 노예(성채 소유, 반자율) / 실제: 밀수꾼, 탈주자 '안내인'을 가장한 노예사냥 조합 끄나풀",
+  "age": 29
+ },
+ {
+  "id": "npc_sigrid",
+  "name": "시그리드",
+  "race": "인간(문화 집단: 서리 인간)",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "북방 탈주자 대표 (동료·연인 후보)",
+  "tier": "S",
+  "factions": [],
+  "summary": "흐로스가르드 거인 노예 출신 탈주자, 북방 탈주자 무리 대표",
+  "age": 33
+ },
+ {
+  "id": "npc_elsa",
+  "name": "엘사",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "늪에서 온 약초 노파 (연락책 · 스승)",
+  "tier": "S",
+  "factions": [
+   "이름 없는 자들",
+   "늪 마녀",
+   "잿빛 실",
+   "카스파르"
+  ],
+  "summary": "약초 노파(성채가 용인하는 늙은 노예 — 쓸모 있어서) / 실제: 이름 없는 자들 회색여울 연락책, 전 늪 마녀 회합의 '여덟째'",
+  "age": 70
+ },
+ {
+  "id": "npc_fayne",
+  "name": "페인",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "모든 것을 본 고아 (동료 후보 · 정보원)",
+  "tier": "S",
+  "factions": [],
+  "summary": "고아 심부름꾼(명목상 성채 소유, 실질적으로 방치됨)",
+  "age": 16
+ },
+ {
+  "id": "npc_thomas",
+  "name": "토마스",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "곡물을 숨기는 방앗간지기",
+  "tier": "A",
+  "factions": [],
+  "summary": "방앗간 노예",
+  "age": 41
+ },
+ {
+  "id": "npc_johan",
+  "name": "요한",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "노래하는 순례자 (소문 운반자)",
+  "tier": "A",
+  "factions": [
+   "이름 없는 자들",
+   "순종의 빛",
+   "끊어진 고리"
+  ],
+  "summary": "순종의 빛 허가 찬송 순례자(통행 허가 목패 소지 — 인간에게 드문 이동권)",
+  "age": 23
+ },
+ {
+  "id": "npc_irma",
+  "name": "이르마",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "복수를 잘못 겨눈 과부",
+  "tier": "A",
+  "factions": [],
+  "summary": "양치기 노예, 과부",
+  "age": 35
+ },
+ {
+  "id": "npc_dietmar",
+  "name": "디트마르",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "절망의 두목 (위험한 동료 후보)",
+  "tier": "S",
+  "factions": [
+   "카스파르"
+  ],
+  "summary": "습지 탈주 노예 무리 두목. 현상금 1 비늘 10 발톱",
+  "age": 31
+ },
+ {
+  "id": "npc_sara",
+  "name": "사라",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "엿들은 하녀 (동료·연인 후보)",
+  "tier": "S",
+  "factions": [],
+  "summary": "성채 하녀",
+  "age": 20
+ },
+ {
+  "id": "npc_gunnar",
+  "name": "군나르",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "아흔아홉 번 이긴 늙은 마구간지기 (검술 스승)",
+  "tier": "S",
+  "factions": [
+   "원형장"
+  ],
+  "summary": "늙은 마구간 노예(AS 276 바알카르 시장에서 '이름 없는 늙은 말꾼'으로 매입) / 실체: 피의 원형장 99승 투사, AS 274 100승을 앞두고 탈주",
+  "age": 74
+ },
+ {
+  "id": "npc_isol",
+  "name": "이졸",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "수상한 순례자 (잿빛 탑의 밀정 · 징후 사냥꾼)",
+  "tier": "S",
+  "factions": [
+   "순종의 빛",
+   "잿빛 탑",
+   "멜리산드"
+  ],
+  "summary": "순례자 행세 / 실체: 잿빛 탑 '징후 수집관'(탑주 이레네 볼드 직속), 순종의 빛 심문관 마테우스와도 정보 교환",
+  "age": 34
+ },
+ {
+  "id": "npc_liz",
+  "name": "리즈",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "성채 하인 숙소, 부엌 심부름",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_egil",
+  "name": "에길",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "수탉 지하 저장고(은신 37일째)",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_mina",
+  "name": "미나",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "방앗간",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_sigmund",
+  "name": "백인대장 지그문트",
+  "race": "용인(비늘혈)",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "까마귀 문 수비대장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_leo_ember",
+  "name": "숯불 레오",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "오물 습지, 디트마르 무리",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_ulf",
+  "name": "울프 (고인)",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "이르마의 남편",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_gorm",
+  "name": "'회색배' 고름",
+  "race": "와이번(잿빛 와이번)",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "용의 대로 회색여울 구간 순찰",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_heinz",
+  "name": "'늙은 순종' 하인츠",
+  "race": "인간",
+  "subrace": "",
+  "region": "회색여울 변경",
+  "role": "마을 농노 장로, 예배당 종지기",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_melisande",
+  "name": "멜리산드 은비늘",
+  "race": "용족",
+  "subrace": "진룡(은빛 용)",
+  "region": "잿불 언덕",
+  "role": "그릇을 찾는 개량자 (정본 · 주요 악역)",
+  "tier": "S",
+  "factions": [
+   "잿빛 탑",
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": "용황의 차녀, 잿불 언덕 영주, 계승 2순위(개량파)"
+ },
+ {
+  "id": "npc_adrian_corvel",
+  "name": "아드리안 코르벨",
+  "race": "용인",
+  "subrace": "용인(비늘혈)",
+  "region": "잿불 언덕",
+  "role": "메스를 든 용인 (악역)",
+  "tier": "A",
+  "factions": [
+   "멜리산드"
+  ],
+  "summary": "",
+  "age": 180
+ },
+ {
+  "id": "npc_eve",
+  "name": "'불티' 이브",
+  "race": "인간",
+  "subrace": "",
+  "region": "잿불 언덕",
+  "role": "시체를 나르던 쌍둥이 (동료·연인 후보)",
+  "tier": "S",
+  "factions": [
+   "멜리산드"
+  ],
+  "summary": "실험장 운반 노예",
+  "age": 24
+ },
+ {
+  "id": "npc_rok",
+  "name": "외팔 로크",
+  "race": "인간(문화 집단: 광산 인간)",
+  "subrace": "",
+  "region": "잿불 언덕",
+  "role": "붉은 길의 손자 (봉기 지도자)",
+  "tier": "A",
+  "factions": [
+   "목줄단"
+  ],
+  "summary": "",
+  "age": 47
+ },
+ {
+  "id": "npc_grax",
+  "name": "그락스",
+  "race": "크릭(감독관 크릭)",
+  "subrace": "",
+  "region": "잿불 언덕",
+  "role": "붉은 계단 총감독관(크릭 감독 40)",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_abel",
+  "name": "아벨 (고인)",
+  "race": "인간",
+  "subrace": "",
+  "region": "잿불 언덕",
+  "role": "피험체 #2,871",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_gregor7",
+  "name": "빛의 대사제 그레고르 7세",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "후회하는 꼭두각시 (정본)",
+  "tier": "S",
+  "factions": [
+   "순종의 빛",
+   "끊어진 고리"
+  ],
+  "summary": "순종의 빛 최고 지도자(신도 추산 30만, 사제 1,200)",
+  "age": 82
+ },
+ {
+  "id": "npc_alberic",
+  "name": "알베릭",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "우물 속의 서신 작가 (정본 · 읽고쓰기 최고 스승)",
+  "tier": "S",
+  "factions": [
+   "끊어진 고리"
+  ],
+  "summary": "파문된 사제, 이단 수감자",
+  "age": 58
+ },
+ {
+  "id": "npc_mateus",
+  "name": "심문관 마테우스",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "누이를 태운 사냥꾼 (주요 악역 · 징후 사냥꾼)",
+  "tier": "S",
+  "factions": [
+   "순종의 빛"
+  ],
+  "summary": "순종의 빛 대심문관, 재의 법·잔향 사냥 집행 책임자. 차기 대사제 유력 후보",
+  "age": 44
+ },
+ {
+  "id": "npc_serenielle",
+  "name": "세레니엘 맑은잎",
+  "race": "엘다르",
+  "subrace": "별빛 엘다르",
+  "region": "루멘",
+  "role": "루멘의 엘다르 감독관",
+  "tier": "A",
+  "factions": [
+   "순종의 빛"
+  ],
+  "summary": ""
+ },
+ {
+  "id": "npc_agnes",
+  "name": "수녀 아그네스",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "끊어진 고리의 루멘 지부장 (화술 스승)",
+  "tier": "A",
+  "factions": [
+   "목줄단",
+   "끊어진 고리",
+   "잿빛 실"
+  ],
+  "summary": "",
+  "age": 39
+ },
+ {
+  "id": "npc_vera",
+  "name": "'두 번째' 베라",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "잘못 고발된 징후자 (구출 대상 · 동료 후보)",
+  "tier": "A",
+  "factions": [
+   "이름 없는 자들"
+  ],
+  "summary": "",
+  "age": 27
+ },
+ {
+  "id": "npc_felix",
+  "name": "고해 사제 펠릭스",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "대성당 고해실",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_otto",
+  "name": "간수 오토",
+  "race": "인간",
+  "subrace": "",
+  "region": "루멘",
+  "role": "침묵의 우물 간수장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_elastriel",
+  "name": "영원 여왕 엘라스트리엘",
+  "race": "엘다르",
+  "subrace": "별빛 엘다르",
+  "region": "실바렌",
+  "role": "예언을 기억하는 자 (정본)",
+  "tier": "S",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_aerin",
+  "name": "아에린 새벽가지",
+  "race": "엘다르",
+  "subrace": "별빛 엘다르",
+  "region": "실바렌",
+  "role": "영혼 정원의 정원사 (정본 · 악역)",
+  "tier": "S",
+  "factions": [
+   "잿빛 탑",
+   "멜리산드"
+  ],
+  "summary": ""
+ },
+ {
+  "id": "npc_silvanus",
+  "name": "실바누스 고목",
+  "race": "엘다르",
+  "subrace": "별빛 엘다르",
+  "region": "실바렌",
+  "role": "존엄한 소멸을 말하는 자 (시간 마법 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_dane",
+  "name": "'은눈' 데인",
+  "race": "반엘다르",
+  "subrace": "혼혈(별빛 엘다르 × 정원 인간)",
+  "region": "실바렌",
+  "role": "아버지를 모르는 반엘다르 (동료·연인 후보)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 26
+ },
+ {
+  "id": "npc_liandel",
+  "name": "리안델",
+  "race": "엘다르",
+  "subrace": "별빛 엘다르",
+  "region": "실바렌",
+  "role": "마지막으로 태어난 엘다르 (권력자의 자식)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 45
+ },
+ {
+  "id": "npc_mira",
+  "name": "미라",
+  "race": "인간(정원 인간)",
+  "subrace": "",
+  "region": "실바렌",
+  "role": "영혼 정원 온실 2동, 피험 정원지기",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_fern",
+  "name": "'이끼손' 페른",
+  "race": "엘다르(실반)",
+  "subrace": "",
+  "region": "실바렌",
+  "role": "흰 울타리 감시인",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_ise",
+  "name": "이세 (고인)",
+  "race": "인간(정원 인간)",
+  "subrace": "",
+  "region": "실바렌",
+  "role": "데인의 어머니",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_thorn_queen",
+  "name": "가시 왕관의 여왕",
+  "race": "페이",
+  "subrace": "겨울 궁정(두 궁정의 군주)",
+  "region": "가시안개 숲",
+  "role": "신살 때 웃은 자 (정본)",
+  "tier": "S",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_nibble",
+  "name": "웃음꽃 니블",
+  "race": "페이",
+  "subrace": "픽시",
+  "region": "가시안개 숲",
+  "role": "거짓말만 하는 스승 (정신 마법·기만 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_elin",
+  "name": "'거울' 엘린",
+  "race": "인간",
+  "subrace": "",
+  "region": "가시안개 숲",
+  "role": "바꿔치기 당한 인간 (동료 후보)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 24
+ },
+ {
+  "id": "npc_odo",
+  "name": "목각 기사 오도",
+  "race": "인간",
+  "subrace": "",
+  "region": "가시안개 숲",
+  "role": "장난감 정원",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_grik",
+  "name": "'젖은 모자' 그릭",
+  "race": "페이(붉은모자)",
+  "subrace": "",
+  "region": "가시안개 숲",
+  "role": "숲 남쪽 경계",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_mordecai",
+  "name": "첫 갈증의 군주 모르데카이",
+  "race": "녹테른",
+  "subrace": "첫 갈증의 원로",
+  "region": "녹테른 밤의 영지",
+  "role": "3,200년 깨어 있는 자 (정본)",
+  "tier": "S",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_cecile",
+  "name": "레이디 세실 그림자장미",
+  "race": "녹테른",
+  "subrace": "밤의 귀족",
+  "region": "녹테른 밤의 영지",
+  "role": "가축을 빼돌리는 이단 (정본 · 그림자 마법 스승)",
+  "tier": "S",
+  "factions": [
+   "잿빛 실"
+  ],
+  "summary": ""
+ },
+ {
+  "id": "npc_alaric",
+  "name": "알라리크 검은성배",
+  "race": "녹테른",
+  "subrace": "밤의 귀족",
+  "region": "녹테른 밤의 영지",
+  "role": "혈통을 기르는 남작 (악역)",
+  "tier": "A",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_tessa",
+  "name": "'흉터목' 테사",
+  "race": "인간",
+  "subrace": "",
+  "region": "녹테른 밤의 영지",
+  "role": "혈목장에서 태어난 안내인 (동료·연인 후보)",
+  "tier": "S",
+  "factions": [
+   "목줄단",
+   "늪 마녀",
+   "잿빛 실"
+  ],
+  "summary": "",
+  "age": 22
+ },
+ {
+  "id": "npc_quint",
+  "name": "퀸트",
+  "race": "인간",
+  "subrace": "",
+  "region": "녹테른 밤의 영지",
+  "role": "그림자장미 혈목장 감독(목줄장)",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_vesper",
+  "name": "'밤날개' 베스퍼",
+  "race": "아에리(박쥐날개 아에리)",
+  "subrace": "",
+  "region": "녹테른 밤의 영지",
+  "role": "녹테른 전령·공중 감시",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_starved_pack",
+  "name": "이빨 골짜기의 굶주린 자들",
+  "race": "녹테른(굶주린 자들)",
+  "subrace": "",
+  "region": "녹테른 밤의 영지",
+  "role": "폐허, 약 30개체",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_oda",
+  "name": "'눈먼' 오다",
+  "race": "인간",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "일곱 노파의 첫째 (진명 낱말 스승)",
+  "tier": "S",
+  "factions": [
+   "늪 마녀"
+  ],
+  "summary": "",
+  "age": 37
+ },
+ {
+  "id": "npc_bern",
+  "name": "베른",
+  "race": "인간(문화 집단: 투사 혈통)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "진흙등불의 촌장",
+  "tier": "A",
+  "factions": [
+   "목줄단",
+   "늪 마녀",
+   "원형장",
+   "잿빛 실"
+  ],
+  "summary": "",
+  "age": 49
+ },
+ {
+  "id": "npc_nadia",
+  "name": "'갈대' 나디아",
+  "race": "인간(문화 집단: 해안 인간)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪의 궁수 (궁술 스승 · 동료·연인 후보)",
+  "tier": "A",
+  "factions": [
+   "늪 마녀"
+  ],
+  "summary": "",
+  "age": 29
+ },
+ {
+  "id": "npc_saska",
+  "name": "'쉿혀' 사스카",
+  "race": "와이번",
+  "subrace": "독꼬리 와이번",
+  "region": "모르바 늪",
+  "role": "독꼬리 족장 (와이번)",
+  "tier": "A",
+  "factions": [
+   "늪 마녀"
+  ],
+  "summary": "",
+  "age": 110
+ },
+ {
+  "id": "npc_hag_brita",
+  "name": "'쇠손' 브리타",
+  "race": "인간(늪 마녀)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪 마녀 — 둘째. 대지·쇠",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hag_hana",
+  "name": "'물거울' 하나",
+  "race": "인간(늪 마녀)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪 마녀 — 셋째. 물·꿈",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hag_jorda",
+  "name": "'재혀' 요르다",
+  "race": "인간(늪 마녀)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪 마녀 — 넷째. 불",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hag_mag",
+  "name": "'실뜨기' 마그",
+  "race": "인간(늪 마녀)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪 마녀 — 다섯째. 바람·그림자",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hag_elsbet",
+  "name": "'이끼눈' 엘스베트",
+  "race": "인간(늪 마녀)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪 마녀 — 여섯째. 정신",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hag_rune",
+  "name": "'막내' 루네",
+  "race": "인간(늪 마녀)",
+  "subrace": "",
+  "region": "모르바 늪",
+  "role": "늪 마녀 — 일곱째(견습)",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_beatrix",
+  "name": "의장 베아트릭스 몬달리",
+  "race": "나가",
+  "subrace": "왕관 나가",
+  "region": "세렌 해안",
+  "role": "양쪽에 돈을 빌려준 자 (정본)",
+  "tier": "S",
+  "factions": [
+   "세렌 상인 의회"
+  ],
+  "summary": "",
+  "age": 620
+ },
+ {
+  "id": "npc_ophelia",
+  "name": "오필리아 몬달리",
+  "race": "나가",
+  "subrace": "왕관 나가",
+  "region": "세렌 해안",
+  "role": "시민권 초안을 쓴 상속녀 (권력자의 자식)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 96
+ },
+ {
+  "id": "npc_severo",
+  "name": "세베로 칼레스",
+  "race": "나가",
+  "subrace": "왕관 나가(하위 가문)",
+  "region": "세렌 해안",
+  "role": "노예 중개인 (악역 · 상인)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 210
+ },
+ {
+  "id": "npc_miko",
+  "name": "'스물두 해' 미코",
+  "race": "인간(문화 집단: 해안 인간)",
+  "subrace": "",
+  "region": "세렌 해안",
+  "role": "빚을 세는 선원 (동료·연인 후보)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 30
+ },
+ {
+  "id": "npc_lupo",
+  "name": "'빈 장부' 루포",
+  "race": "나가",
+  "subrace": "라미아",
+  "region": "세렌 해안",
+  "role": "빚을 지우는 라미아 (물 진명 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 150
+ },
+ {
+  "id": "npc_sahar",
+  "name": "'줄무늬' 사하르",
+  "race": "수인족(타이란)",
+  "subrace": "",
+  "region": "세렌 해안",
+  "role": "의회 경호대장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_jan",
+  "name": "얀",
+  "race": "인간",
+  "subrace": "",
+  "region": "세렌 해안",
+  "role": "빚진 골목 목수",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_reni",
+  "name": "'여우눈' 레니",
+  "race": "수인족(바울피)",
+  "subrace": "",
+  "region": "세렌 해안",
+  "role": "굽은 닻 선술집 정보상",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_deep_naga",
+  "name": "심해의 사절",
+  "race": "나가(심해 나가)",
+  "subrace": "",
+  "region": "세렌 해안",
+  "role": "세렌 만 바닥 '고인 피의 문'",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_irene_bold",
+  "name": "탑주 이레네 볼드",
+  "race": "용인",
+  "subrace": "용인(비늘혈)",
+  "region": "아르카스 탑섬",
+  "role": "시험법을 만드는 학자 (정본 · 악역)",
+  "tier": "S",
+  "factions": [
+   "잿빛 탑",
+   "멜리산드"
+  ],
+  "summary": "",
+  "age": 170
+ },
+ {
+  "id": "npc_ottilie",
+  "name": "오틸리 철서판",
+  "race": "두르강",
+  "subrace": "잿불 두르강",
+  "region": "아르카스 탑섬",
+  "role": "맹세의 틈으로 가르치는 학자 (읽고쓰기·학식·공학 스승)",
+  "tier": "A",
+  "factions": [
+   "잿빛 탑"
+  ],
+  "summary": "",
+  "age": 230
+ },
+ {
+  "id": "npc_halla",
+  "name": "'세 번 고발된' 할라",
+  "race": "인간",
+  "subrace": "",
+  "region": "아르카스 탑섬",
+  "role": "30년째 기준체 (잘못 고발된 징후자 · 진명어 읽기 스승)",
+  "tier": "S",
+  "factions": [
+   "잿빛 탑"
+  ],
+  "summary": "",
+  "age": 66
+ },
+ {
+  "id": "npc_milo",
+  "name": "'잉크' 마일로",
+  "race": "인간",
+  "subrace": "",
+  "region": "아르카스 탑섬",
+  "role": "먼지 서고 서기 노예",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_corvina",
+  "name": "코르비나",
+  "race": "아에리(까마귀 아에리)",
+  "subrace": "",
+  "region": "아르카스 탑섬",
+  "role": "탑 기록 학자",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_ian_ash",
+  "name": "잿빛 수도자 이안",
+  "race": "인간(재태생 — 재오염된 인간)",
+  "subrace": "",
+  "region": "재의 황무지",
+  "role": "스스로 미끼가 된 '가짜 귀환자'",
+  "tier": "A",
+  "factions": [
+   "이름 없는 자들"
+  ],
+  "summary": "",
+  "age": 43
+ },
+ {
+  "id": "npc_kyle_sandeye",
+  "name": "'모래눈' 카일",
+  "race": "인간",
+  "subrace": "",
+  "region": "재의 황무지",
+  "role": "유물 사냥꾼 (경쟁자)",
+  "tier": "A",
+  "factions": [
+   "잿빛 탑",
+   "마지막 등불"
+  ],
+  "summary": "",
+  "age": 36
+ },
+ {
+  "id": "npc_tuk",
+  "name": "튀크",
+  "race": "크릭",
+  "subrace": "굴 크릭",
+  "region": "재의 황무지",
+  "role": "마지막 등불의 고물상 (상인 · 정보원)",
+  "tier": "A",
+  "factions": [
+   "마지막 등불",
+   "멜리산드"
+  ],
+  "summary": "",
+  "age": 55
+ },
+ {
+  "id": "npc_goz",
+  "name": "고즈",
+  "race": "그롬(잿빛 그롬)",
+  "subrace": "",
+  "region": "재의 황무지",
+  "role": "마지막 등불 경비대장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_echo_wall_girl",
+  "name": "성벽 위의 소녀 (잔상)",
+  "race": "시간 잔상",
+  "subrace": "",
+  "region": "재의 황무지",
+  "role": "아홉째 문 성벽",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_bror",
+  "name": "왕 브로르 깊은망치",
+  "race": "두르강",
+  "subrace": "산 두르강",
+  "region": "카즈둠 산맥",
+  "role": "계약은 신성하다 (정본)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 410
+ },
+ {
+  "id": "npc_hilda",
+  "name": "힐다 깊은망치",
+  "race": "두르강",
+  "subrace": "산 두르강",
+  "region": "카즈둠 산맥",
+  "role": "문을 열려는 왕녀 (권력자의 자식 · 공학 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 88
+ },
+ {
+  "id": "npc_urd",
+  "name": "'반석' 우르드",
+  "race": "두르강",
+  "subrace": "이름 없는 자(맹세 파기 추방자)",
+  "region": "카즈둠 산맥",
+  "role": "돌이 되어 가는 맹세 파기자 (동료 후보 · 방패·둔기·대지 스승)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 140
+ },
+ {
+  "id": "npc_petar",
+  "name": "'마흔 해' 페타르",
+  "race": "인간(광산 인간)",
+  "subrace": "",
+  "region": "카즈둠 산맥",
+  "role": "바깥 갱 계약 광부",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_grimbald",
+  "name": "룬판관 그림발드",
+  "race": "두르강(산 두르강)",
+  "subrace": "",
+  "region": "카즈둠 산맥",
+  "role": "변하지 않는 돌 법정",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_deep_nidar",
+  "name": "사제 니다르",
+  "race": "두르강(심층 두르강)",
+  "subrace": "",
+  "region": "카즈둠 산맥",
+  "role": "깊은 문 앞 '창백한 예배당'",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_seln",
+  "name": "셀른",
+  "race": "엘다르(드라우르)",
+  "subrace": "",
+  "region": "카즈둠 산맥",
+  "role": "깊은 문 옆 지하 동굴",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hrimnir",
+  "name": "서리왕 흐림니르",
+  "race": "요툰",
+  "subrace": "서리 요툰",
+  "region": "흐로스가르드",
+  "role": "굶주린 왕 (정본)",
+  "tier": "S",
+  "factions": [
+   "카스파르"
+  ],
+  "summary": ""
+ },
+ {
+  "id": "npc_skadir",
+  "name": "스카디르",
+  "race": "요툰",
+  "subrace": "서리 요툰",
+  "region": "흐로스가르드",
+  "role": "남침을 원하는 왕자 (권력자의 자식)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 190
+ },
+ {
+  "id": "npc_yorun",
+  "name": "무녀 요룬",
+  "race": "요툰",
+  "subrace": "돌 요툰",
+  "region": "흐로스가르드",
+  "role": "서리 어머니의 목소리 (대지 마법 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 600
+ },
+ {
+  "id": "npc_asta",
+  "name": "'얼음손' 아스타",
+  "race": "인간(문화 집단: 서리 인간)",
+  "subrace": "",
+  "region": "흐로스가르드",
+  "role": "남은 노예들의 장로 (지구력 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 45
+ },
+ {
+  "id": "npc_baug",
+  "name": "'돌무릎' 바우그",
+  "race": "요툰(언덕 요툰)",
+  "subrace": "",
+  "region": "흐로스가르드",
+  "role": "돌무릎 씨족장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_einar",
+  "name": "에이나르",
+  "race": "인간(서리 인간)",
+  "subrace": "",
+  "region": "흐로스가르드",
+  "role": "돌무릎 골짜기 노예",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_matusz",
+  "name": "'늙은 곰' 마투쉬",
+  "race": "수인족(우르사)",
+  "subrace": "",
+  "region": "흐로스가르드",
+  "role": "서리 길 마지막 산장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_harva",
+  "name": "'얼음턱' 하르바",
+  "race": "와이번(서리 와이번)",
+  "subrace": "",
+  "region": "흐로스가르드",
+  "role": "북방 경계 독립 부족장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_ogre_pack",
+  "name": "썩은이빨 무리",
+  "race": "요툰(오우거)",
+  "subrace": "",
+  "region": "흐로스가르드",
+  "role": "서리 길 중턱 동굴",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_kyrie",
+  "name": "바람의 여왕 키리에",
+  "race": "아에리",
+  "subrace": "백조 아에리",
+  "region": "바람첨탑",
+  "role": "아래를 내려다보기 시작한 여왕 (정본)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 210
+ },
+ {
+  "id": "npc_eiros",
+  "name": "에이로스",
+  "race": "아에리",
+  "subrace": "백조 아에리",
+  "region": "바람첨탑",
+  "role": "땅에 내려가고 싶은 왕자 (권력자의 자식)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 60
+ },
+ {
+  "id": "npc_tyla",
+  "name": "잘린깃 타일라",
+  "race": "아에리",
+  "subrace": "매 아에리",
+  "region": "바람첨탑",
+  "role": "날개 잘린 전사 (동료 후보 · 바람 마법 스승)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 33
+ },
+ {
+  "id": "npc_orn",
+  "name": "'구름 아래' 오른",
+  "race": "인간",
+  "subrace": "",
+  "region": "바람첨탑",
+  "role": "흰 깃 첨탑 '애완 인간'",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_temur",
+  "name": "칸 테무르 아르슬란",
+  "race": "하르칸",
+  "subrace": "바람발굽",
+  "region": "하르칸 초원",
+  "role": "초원을 통일하는 자 (정본)",
+  "tier": "S",
+  "factions": [],
+  "summary": "",
+  "age": 58
+ },
+ {
+  "id": "npc_soran",
+  "name": "소란 아르슬란",
+  "race": "하르칸",
+  "subrace": "바람발굽",
+  "region": "하르칸 초원",
+  "role": "칸의 딸 (권력자의 자식)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 19
+ },
+ {
+  "id": "npc_batar",
+  "name": "'느린발' 바타르",
+  "race": "하르칸",
+  "subrace": "바람발굽(강등 — 무거운발굽 야영지 거주)",
+  "region": "하르칸 초원",
+  "role": "달리지 못하는 창술사 (창·장병기 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 61
+ },
+ {
+  "id": "npc_dua",
+  "name": "두아",
+  "race": "인간",
+  "subrace": "",
+  "region": "하르칸 초원",
+  "role": "짐꾼들의 우두머리 (승마·초원어 스승)",
+  "tier": "A",
+  "factions": [],
+  "summary": "",
+  "age": 40
+ },
+ {
+  "id": "npc_oktai",
+  "name": "옥타이",
+  "race": "하르칸(무거운발굽)",
+  "subrace": "",
+  "region": "하르칸 초원",
+  "role": "무거운발굽 짐 야영지 우두머리",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_hiak",
+  "name": "'웃는' 히악",
+  "race": "수인족(그나르)",
+  "subrace": "",
+  "region": "하르칸 초원",
+  "role": "말뼈 샘 시체 청소부 겸 고물상",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_urgash",
+  "name": "대전쟁군주 우르가쉬 해골이빨",
+  "race": "그롬",
+  "subrace": "전쟁 그롬",
+  "region": "그롬마르 붉은 황야",
+  "role": "피의 원형장의 주인 (정본)",
+  "tier": "S",
+  "factions": [
+   "원형장"
+  ],
+  "summary": "",
+  "age": 120
+ },
+ {
+  "id": "npc_tal",
+  "name": "백승의 탈",
+  "race": "인간(문화 집단: 투사 혈통)",
+  "subrace": "",
+  "region": "그롬마르 붉은 황야",
+  "role": "사슬에 묶인 전설 (정본 · 전설 인물)",
+  "tier": "A",
+  "factions": [
+   "원형장"
+  ],
+  "summary": "",
+  "age": 88
+ },
+ {
+  "id": "npc_mara",
+  "name": "'철턱' 마라",
+  "race": "인간(문화 집단: 투사 혈통)",
+  "subrace": "",
+  "region": "그롬마르 붉은 황야",
+  "role": "87승의 투사 (경쟁자 · 동료·연인 후보)",
+  "tier": "S",
+  "factions": [
+   "원형장"
+  ],
+  "summary": "",
+  "age": 28
+ },
+ {
+  "id": "npc_murk",
+  "name": "'조용한' 무르크",
+  "race": "그롬",
+  "subrace": "붉은 그롬(단명 광전사 혈통)",
+  "region": "그롬마르 붉은 황야",
+  "role": "싸움을 거부한 그롬 (동료 후보 · 맨손격투 스승)",
+  "tier": "A",
+  "factions": [
+   "원형장",
+   "마지막 등불"
+  ],
+  "summary": "",
+  "age": 52
+ },
+ {
+  "id": "npc_gorba",
+  "name": "'이빨장수' 고르바",
+  "race": "그롬(전쟁 그롬)",
+  "subrace": "",
+  "region": "그롬마르 붉은 황야",
+  "role": "원형장 투사 조련·매매상",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_ulb",
+  "name": "울브",
+  "race": "그롬(오그림)",
+  "subrace": "",
+  "region": "그롬마르 붉은 황야",
+  "role": "원형장 공성 계급 경비",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_grey_woman",
+  "name": "회색 여인",
+  "race": "불명(인간으로 추정)",
+  "subrace": "",
+  "region": "무소속",
+  "role": "이름 없는 자들의 머리 (정본 · 정체 불명)",
+  "tier": "S",
+  "factions": [
+   "이름 없는 자들",
+   "늪 마녀"
+  ],
+  "summary": ""
+ },
+ {
+  "id": "npc_first_ember",
+  "name": "'첫 불씨'",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "잔향의 전생. 엘다르 정원의 이름 지워진 노예, 정원지기들에…",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_gunde",
+  "name": "군데",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "잔향의 전생. 거인 전쟁의 방패 노예. 전쟁터에서 사라짐",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_asterion",
+  "name": "아스테리온",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "잔향의 전생. 잿불 언덕 광산 노예, 아스테리아 건설, 대붕…",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_dara",
+  "name": "붉은 손 다라",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "잔향의 전생. 잿불 광산 봉기, 붉은 길에서 처형. 남긴 말…",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_st_maren",
+  "name": "성 마렌",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "순종의 빛 창시자(인간 사제). 엘다르의 후원",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_elena",
+  "name": "엘레나",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "카스파르의 어머니, 용황의 노예. 노래 때문에 선택됨. 궁 …",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_clara",
+  "name": "클라라",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "마테우스의 누이. 결막 질환을 징후로 고발당해 화형",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_anne",
+  "name": "앤",
+  "race": "인간",
+  "subrace": "",
+  "region": "역사·고인",
+  "role": "어린 즈닉을 돌본 인간 노예 여인. 즈닉의 고자질로 처형",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ }
+]
