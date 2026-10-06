@@ -115,12 +115,14 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   const tr = [{ who: "player", text: "하겐이 탈주자를 볼크에게 판대요. 그리고 수탉 지하에 사람이 있다는 걸 마르타도 알아요." }];
   const v = G.validateMemories(w, "npc_bram", tr, [
     { npc: "npc_bram", kind: "claim", text: "셋째 말로는 하겐이 탈주자를 판다", evidence: "하겐이 탈주자를 볼크에게 판대요", salience: 4, claim: { about: "하겐", content: "하겐이 탈주자를 볼크에게 판다", believed: true } },
-    { npc: "npc_bram", kind: "learned", text: "셋째가 지하실 일을 안다", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_egil_family_in_cellar" },
     { npc: "npc_bram", kind: "learned", text: "모르는 사실", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_henrik_skims_baron" },
+    { npc: "npc_bram", kind: "learned", text: "자기가 숨긴 일", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_egil_family_in_cellar" },
   ]);
-  check("플레이어가 모르는 사실을 '말해 주었다'는 제안은 버린다", v.accepted.length === 2 && v.rejected.length === 1);
+  check("플레이어가 모르는 사실, 그 NPC가 이미 아는 사실을 '말해 주었다'는 제안은 버린다", v.accepted.length === 1 && v.rejected.length === 2);
   G.recordMemories(w, "npc_bram", v.accepted);
-  check("말해 준 사실은 그 NPC의 지식이 된다 (목표 행동의 knows 조건)", w.S.knows.get("fact_gf_egil_family_in_cellar")?.has("npc_bram"));
+  const vm2 = G.validateMemories(w, "npc_martha", tr, [{ npc: "npc_martha", kind: "learned", text: "셋째가 수탉 지하 이야기를 했다", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_egil_family_in_cellar" }]);
+  G.recordMemories(w, "npc_martha", vm2.accepted);
+  check("말해 준 사실은 그 NPC의 지식이 된다 (목표 행동의 knows 조건 — 마르타가 지하실을 알게 된다)", w.S.knows.get("fact_gf_egil_family_in_cellar")?.has("npc_martha"));
   play(w, "leave");
   for (let i = 0; i < 48; i++) play(w, G.options(w).some((o) => o.id === "wait:60") ? "wait:60" : "sleep");
   const spread = Object.keys(C.cards).filter((n) => n !== "npc_bram" && w.L.beliefs(n).some((b) => b.kind === "claim"));
