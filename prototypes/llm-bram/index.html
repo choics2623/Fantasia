@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>브람 실험실</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #12100e; --bg-2: #1b1815; --bg-3: #24201b; --line: #3a332b;
+  --ink: #e2d8c5; --ink-soft: #a89c88; --ink-faint: #6f6556;
+  --gold: #c9a35c; --rust: #b4532f; --frost: #8fb3c4; --ok: #8fb07c; --bad: #c46a5a;
+  --font-body: "Gowun Batang", "Nanum Myeongjo", "Batang", serif;
+  --font-ui: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font-family: var(--font-body); font-size: 17px; line-height: 1.75; }
+.wrap { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 24px; max-width: 1180px; margin: 0 auto; padding: 20px 16px 60px; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); } }
+header { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+header h1 { font-size: 1.25rem; margin: 0; font-weight: 700; }
+header .meta { font-family: var(--font-ui); font-size: 0.8rem; color: var(--ink-soft); }
+header .prov { font-family: var(--font-ui); font-size: 0.75rem; padding: 2px 8px; border: 1px solid var(--line); border-radius: 99px; color: var(--frost); }
+main { min-width: 0; }
+.story p { margin: 0 0 12px; }
+.story .player { color: var(--gold); font-style: italic; }
+.story .player::before { content: "▸ "; font-style: normal; }
+.story .sys { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-faint); border-left: 2px solid var(--line); padding-left: 10px; }
+.story .tier { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-soft); }
+.story .tier b { color: var(--ink); }
+.choices { display: grid; gap: 8px; margin: 18px 0; }
+.choice { text-align: left; font-family: var(--font-body); font-size: 1rem; line-height: 1.5; padding: 11px 13px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); cursor: pointer; display: grid; gap: 4px; }
+.choice:hover { border-color: var(--gold); }
+.choice .band { font-family: var(--font-ui); font-size: 0.72rem; color: var(--ink-soft); display: flex; gap: 8px; flex-wrap: wrap; }
+.choice .band .fb { color: var(--rust); }
+.free { display: flex; gap: 8px; margin-top: 4px; }
+.free input { flex: 1; min-width: 0; font-family: var(--font-body); font-size: 1rem; background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; }
+button.ui { font-family: var(--font-ui); font-size: 0.82rem; background: var(--bg-3); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 9px 14px; cursor: pointer; }
+button.ui:hover { border-color: var(--gold); }
+button.ui.warn { border-color: #5b3a2c; color: #e7b6a4; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.busy { font-family: var(--font-ui); font-size: 0.8rem; color: var(--frost); min-height: 1.2em; margin-top: 10px; }
+.busy.on::after { content: " …"; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }
+aside { min-width: 0; display: grid; gap: 14px; align-content: start; }
+.panel { background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; }
+.panel h2 { font-family: var(--font-ui); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 8px; }
+.panel .hint { font-family: var(--font-ui); font-size: 0.72rem; color: var(--ink-faint); margin: 0 0 8px; }
+.stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; font-family: var(--font-ui); font-size: 0.72rem; text-align: center; }
+.stats div { background: var(--bg-3); border-radius: 4px; padding: 6px 2px; }
+.stats b { display: block; font-size: 1rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+ul.mem { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; font-size: 0.88rem; line-height: 1.5; }
+ul.mem li { border-left: 2px solid var(--line); padding-left: 8px; }
+ul.mem li .k { font-family: var(--font-ui); font-size: 0.68rem; color: var(--ink-faint); display: block; }
+ul.mem li.engine { border-color: var(--frost); }
+ul.mem li.llm { border-color: var(--gold); }
+ul.mem li.rej { border-color: var(--bad); color: var(--ink-faint); text-decoration: line-through; }
+ul.mem li.rej .k { text-decoration: none; color: var(--bad); }
+ul.note { margin: 0; padding-left: 18px; font-size: 0.9rem; line-height: 1.55; }
+ul.note li.past { color: var(--frost); }
+details.log { font-family: var(--font-ui); font-size: 0.72rem; color: var(--ink-soft); }
+details.log summary { cursor: pointer; }
+details.log pre { white-space: pre-wrap; word-break: break-word; background: var(--bg); border: 1px solid var(--line); padding: 8px; border-radius: 4px; max-height: 320px; overflow: auto; color: var(--ink-soft); }
+.legend { display: flex; gap: 10px; flex-wrap: wrap; font-family: var(--font-ui); font-size: 0.68rem; color: var(--ink-faint); }
+.legend i { display: inline-block; width: 10px; height: 2px; vertical-align: middle; margin-right: 4px; }
+.err { color: var(--bad); font-family: var(--font-ui); font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>브람 실험실</h1>
+    <span class="meta" id="meta">낙엽월 2일 저녁 · 절름발이 수탉</span>
+    <span class="prov" id="prov">…</span>
+  </header>
+  <main>
+    <div class="story" id="story"></div>
+    <div class="busy" id="busy"></div>
+    <div class="choices" id="choices"></div>
+    <form class="free" id="free">
+      <input id="freeText" placeholder="직접 말하거나 행동하기 — 예: 술을 한 잔 따라 주며 하겐 얘기를 슬쩍 꺼낸다" autocomplete="off">
+      <button class="ui" type="submit">하기</button>
+    </form>
+    <div class="toolbar">
+      <button class="ui" id="btnEnd" type="button">대화를 끝낸다</button>
+      <button class="ui warn" id="btnRegress" type="button">죽고 회귀한다 (회차 +1)</button>
+      <button class="ui" id="btnReset" type="button">처음부터</button>
+    </div>
+  </main>
+  <aside>
+    <section class="panel">
+      <h2>브람의 속 — 엔진 상태</h2>
+      <p class="hint">실험용으로 보여 준다. 게임에서는 수치가 보이지 않는다.</p>
+      <div class="stats" id="stats"></div>
+      <div class="legend"><span><i style="background:var(--frost)"></i>규칙이 남긴 기억</span><span><i style="background:var(--gold)"></i>LLM이 뽑고 통과한 기억</span><span><i style="background:var(--bad)"></i>버려진 후보</span></div>
+      <ul class="mem" id="mem"></ul>
+    </section>
+    <section class="panel">
+      <h2>인물 수첩 — 플레이어 쪽 (회귀해도 남는다)</h2>
+      <ul class="note" id="notebook"></ul>
+    </section>
+    <section class="panel">
+      <h2>엔진·LLM 기록</h2>
+      <div id="log"></div>
+    </section>
+  </aside>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let busy = false, rejectedShown = [];
+
+async function call(path, body) {
+  if (busy) return; busy = true;
+  $("busy").textContent = "브람이 생각한다"; $("busy").classList.add("on");
+  $("choices").innerHTML = "";
+  try {
+    const r = await fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body || {}) });
+    const d = await r.json();
+    if (d.error && !d.beats) throw new Error(d.error);
+    render(d);
+  } catch (e) {
+    $("story").insertAdjacentHTML("beforeend", `<p class="err">${esc(e.message)}</p>`);
+  } finally {
+    busy = false; $("busy").textContent = ""; $("busy").classList.remove("on");
+  }
+}
+
+function render(d) {
+  $("prov").textContent = d.provider === "offline" ? "LLM 없음 (규칙 대체 문장)" : `LLM: ${d.provider === "cli" ? "구독 (Claude Code)" : "API"} · ${d.model}`;
+  $("meta").textContent = `${d.loop}회차 · 낙엽월 2일 저녁 · 절름발이 수탉`;
+  const st = $("story");
+  if (d.regressed) st.insertAdjacentHTML("beforeend", `<p class="sys">— 시간이 접혔다. ${d.loop}회차. 브람은 당신을 처음 본다. 당신은 기억한다. —</p>`);
+  if (d.result) st.insertAdjacentHTML("beforeend", `<p class="tier">${d.result.skill ? `${esc(d.result.skill)} 판정 · <b>${esc(d.result.tier)}</b> (${d.result.p}%)` : ""}</p>`);
+  for (const b of d.beats || []) st.insertAdjacentHTML("beforeend", `<p>${esc(b).replace(/\n/g, "<br>")}</p>`);
+  if (d.memo) {
+    const ins = (d.memo.insight || []).map((l) => `<p class="sys">수첩에 적힌다 — ${esc(l)}</p>`).join("");
+    st.insertAdjacentHTML("beforeend", `<p class="sys">대화가 끝났다. 브람의 기억이 정리된다: 받아들임 ${d.memo.accepted.length} · 버림 ${d.memo.rejected.length}</p>${ins}`);
+    rejectedShown = d.memo.rejected;
+  }
+  const ch = $("choices"); ch.innerHTML = "";
+  for (const c of d.choices || []) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "choice";
+    b.innerHTML = `<span>${esc(c.text)}</span><span class="band">${c.skill ? `<span>${esc(c.skill)} · ${esc(c.band)}</span><span title="${esc((c.math || []).join("\n"))}">${c.p}%</span>` : "<span>판정 없음</span>"}${c.fallback ? '<span class="fb">대체 문장</span>' : ""}</span>`;
+    b.addEventListener("click", () => { $("story").insertAdjacentHTML("beforeend", `<p class="player">${esc(c.text)}</p>`); call("/api/act", { affordance: c.affordance, text: c.text }); });
+    ch.appendChild(b);
+  }
+  $("free").style.display = d.over ? "none" : "";
+  const br = d.bram;
+  $("stats").innerHTML = [["호감", br.like], ["신뢰", br.trust], ["두려움", br.fear], ["분노", br.anger], ["인내", br.patience]].map(([k, v]) => `<div>${k}<b>${v}</b></div>`).join("");
+  const imp = Object.entries(br.impressions || {}).filter(([, v]) => v).map(([k, v]) => `${k} ${v > 0 ? "+" : ""}${v}`).join(" · ");
+  $("mem").innerHTML = (imp ? `<li><span class="k">인상</span>${esc(imp)}</li>` : "") +
+    br.memories.map((m) => `<li class="${m.source}"><span class="k">${esc(m.kind)}${m.tag ? " · " + esc(m.tag) : ""} · 중요도 ${m.salience}${m.capped ? " · 상한 " + esc(m.capped) : ""}</span>${esc(m.text)}</li>`).join("") +
+    rejectedShown.map((m) => `<li class="rej"><span class="k">버림: ${esc((m.why || []).join(", "))}</span>${esc(m.text || m.evidence)}</li>`).join("") || `<li><span class="k">없음</span>브람은 당신을 모른다.</li>`;
+  $("notebook").innerHTML = (d.notebook || []).map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 적힌 것이 없다.</li>";
+  const log = $("log");
+  for (const e of d.debug || []) {
+    const title = e.kind === "engine" ? `엔진 · ${e.note}` : e.kind === "validate" ? `검증 · 문제 ${(e.problems || []).length}개` : e.kind === "memory" && e.accepted ? `메모리 · 통과 ${e.accepted.length} / 버림 ${e.rejected.length}` : e.error ? `LLM ${e.kind} · 실패 → 대체` : `LLM ${e.kind}${e.meta?.duration_ms ? ` · ${(e.meta.duration_ms / 1000).toFixed(1)}초` : ""}`;
+    const body = { ...e }; delete body.kind;
+    log.insertAdjacentHTML("afterbegin", `<details class="log"><summary>${esc(title)}</summary><pre>${esc(JSON.stringify(body, null, 1))}</pre></details>`);
+  }
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+
+$("free").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const t = $("freeText").value.trim(); if (!t) return;
+  $("freeText").value = "";
+  $("story").insertAdjacentHTML("beforeend", `<p class="player">${esc(t)}</p>`);
+  call("/api/act", { free: t });
+});
+$("btnEnd").addEventListener("click", () => call("/api/end"));
+$("btnRegress").addEventListener("click", () => { rejectedShown = []; call("/api/regress"); });
+$("btnReset").addEventListener("click", () => { rejectedShown = []; $("story").innerHTML = ""; $("log").innerHTML = ""; call("/api/reset"); });
+call("/api/start");
+</script>
+</body>
+</html>
