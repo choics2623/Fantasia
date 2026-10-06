@@ -29,6 +29,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   const bodies = [];                     // {npc, at, t, hidden, found}
   const items = new Map();               // id → item (+ owner, provenance, at)
   const purse = new Map([["player", 0]]);
+  agenda?.stepTo(startAt);              // 목표 행동의 시계를 시작 시각에 맞춘다 (첫 30분을 건너뛰지 않게)
   state.wanted ??= {};                   // 'player' → {heat, by:Set, reasons:[]}
   state.threats ??= [];                  // 협박·추적 {by, target, kind, t}
 
