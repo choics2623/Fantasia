@@ -238,3 +238,27 @@ flowchart TB
 | 연출가 긴장도 | `director.tension` (지역 긴장 `greyford.tension`과 별개) |
 | 앞선 잔향자의 목소리 id | 정본: `voice.ember`('첫 불씨' — 15 §2.1 id `ember`), `voice.gunde`, `voice.asterion`, `voice.dara`, `voice.children` / 지난 회차의 나: `loop:{n}` (15 문서) |
 | 메아리 표시 기호 | 모든 문서에서 〰 (옛 표기 ⟲는 폐기). 알림 줄의 표류 표시("기억과 다르다")도 〰를 쓴다. 회차 비교(16)·지식 확신도의 표류 칸은 ◇, 인과는 ≠ |
+
+---
+
+## 9. LLM 레이어 (21) — 제안하는 LLM, 판정하는 규칙
+
+```mermaid
+flowchart LR
+  ST[세계 상태] --> AF[어포던스<br/>02]
+  AF -->|위험 등급만| L1((LLM<br/>선택지 문장))
+  L1 -->|검증| CH[선택지]
+  CH --> CK[판정<br/>01]
+  CK --> EV[사건]
+  EV --> L2((LLM<br/>결과 서술·메모리 후보·소문 문장))
+  L2 -->|검증·상한| MEM[NPC 메모리<br/>08·21 §6]
+  EV --> RU[소문 전파·평판<br/>10·21 §8]
+  MEM --> ST
+  RU --> ST
+```
+
+| 규칙 엔진만 하는 것 | LLM이 하는 것 | LLM이 꺼지면 |
+|---------------------|---------------|--------------|
+| 가능한 행동, 확률, 결과 등급, 수치, 사실의 진위, 소문의 범위·속도·왜곡 종류, 회귀 초기화 | 선택지 문장, 결과 서술, NPC 대사, 메모리 후보, 소문 문장, 자유 입력 해석 | 05 대사 DB, 선택지 템플릿, 소문 템플릿 |
+
+- 이름 규약: `llm.provider` (`local-subscription` · `server-api` · `byok` · `offline`), 메모리 `npc.memory[]`, 소문 `rumor.scale`.

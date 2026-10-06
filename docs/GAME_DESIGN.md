@@ -32,6 +32,7 @@
 | [systems/18_STORYTELLER.md](systems/18_STORYTELLER.md) | **이야기 연출가**: 긴장 곡선, 연출가 4종(난이도), 짧은 세션 구조 |
 | [systems/19_PRESENTATION.md](systems/19_PRESENTATION.md) | **글이 몸을 가진다**: 박자, 상태별 문장 변형, 문맹·언어 가림, 소리·진동·삽화 |
 | [systems/20_ATTACHMENT_AND_LOSS.md](systems/20_ATTACHMENT_AND_LOSS.md) | **애착과 상실**: 매듭, 상실의 규칙, 나를 처음 보는 사랑한 사람과의 재회 |
+| [systems/21_LLM_HYBRID.md](systems/21_LLM_HYBRID.md) | **LLM 하이브리드**: LLM은 제안하고 규칙이 판정한다 — 선택지 문장, NPC 대화, 캐릭터 메모리, 소문의 규모(마을→대륙), 구독·API 실행 환경 |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |
@@ -643,7 +644,7 @@ choices:
 | 세계관 | 신을 죽인 고대 종족 다수가 지배, **인간은 최약체 노예 종족**. 세대를 이어 해방을 이루는 서사 | world/ 전체 |
 | 플랫폼 | **모바일 우선**, 이후 PC(스팀) — TS + React + Capacitor + Tauri | tech/04_MOBILE_AND_LLM.md |
 | 대사·텍스트 | **런타임 LLM 없이** 규칙 기반 대사 DB. 개발 단계에서 LLM(대량: Haiku 4.5 / Sonnet 5.5 low, 핵심: Opus 5.5)으로 생성 + 사람 검수 | systems/05_DIALOGUE_AND_REACTIVITY.md |
-| 런타임 LLM | 선택 기능 (연대기 → 자유 입력 해석 순), 나중에 | tech/04_MOBILE_AND_LLM.md |
+| 런타임 LLM | **하이브리드**: 선택지 문장·NPC 대화·캐릭터 메모리·소문은 LLM, 가능한 행동·확률·결과·수치는 규칙. LLM 없이도 완성 (도입: 메모리·소문 → 선택지 → 자유 대화). 개발 중엔 구독으로 실험, 배포는 서버 API | systems/21_LLM_HYBRID.md, tech/04_MOBILE_AND_LLM.md |
 | 개발 형태 | 1인 개발, 지속 업데이트 → 반응이 좋으면 상업화 | §12 |
 | 플레이 구조 | **회귀 로그라이트 "회차 → 시대"**: 죽으면 자기 몸으로 같은 저녁에 회귀. 기억·기술·영혼 재능은 남고 몸·세계·관계는 돌아감. 진짜 죽음은 드물고 예고되며 시대를 끝냄 | WORLD_BIBLE §1.3.1, systems/03_ROGUELITE_AND_LEGACY.md |
 | 캐릭터 생성 | **재능 포인트** (기본 10, 업적으로 최대 40): 9개 분야 119개 재능 × 소질·수재·천재·신재, 혈통 특질, 결점. 기술은 기억, 몸은 재단련 | systems/06_CHARACTER_CREATION.md |
