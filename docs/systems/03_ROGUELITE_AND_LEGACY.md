@@ -209,7 +209,7 @@
 | **진명** — 배운 이름은 영혼에 새겨진다 | 01 마법, 11 | **평판·칭호·위협도·세력 대응 단계** | 10 |
 | **스킬 수치** (몸·그릇의 스킬은 상한에, §3.4), 경지, 단련도 최고치 | 01, 06 §4 | **영역·관리자·가문** | 09, 12 |
 | **영혼의 재능** (등급 포함, 드러난 숨은 재능), **몸의 특질(혈통)** — 같은 몸이므로 | 06 | **사랑한 사람, 낳은 아이** — 기억하지 못한다. 아이는 다시 태어나지 않는다 | 12 |
-| **성향** (용기·자비·정직…) — 마음의 것이므로 (이 문서의 결정. 06과 맞출 것) | 01 §1.3 | **월드 클락·찬가 단계** (회귀점의 진행으로) | WORLD_BIBLE §10~11 |
+| **성향** (용기·자비·정직…)·**각성도**·**본디**·**고독** — 마음의 것이므로 (15·20과 맞춤) | 01 §1.3 | **월드 클락·찬가 단계** (회귀점의 진행으로) | WORLD_BIBLE §10~11 |
 | **죽음의 기억** (스트레스·트라우마 일부, 아래) | 01 §1.4 | 원한·빚·현상금 — 세계가 잊는다 | 10, 11 |
 | **재능 포인트·해금·업적** (§4.2) | 06 | 맹세의 상대방 기억 (맹세 자체는 16 문서가 정한다) | 16 |
 | `loop.count`, 기시감, 냄새 (§7) | 17 | 단련도 (몸·그릇의 상한, §3.4) | 06 |
@@ -553,11 +553,21 @@ interface Soul extends SoulState {      // 세계 상태 밖에 있는 유일한
   dejaVuContact: Record<BeingId, number>; // 기시감 접촉 보정
   achievements: AchievementId[];          // 시대 단위, 중복 TP 없음
   finalLoopDeclared: boolean;
+  awakening: number;                      // 각성도 — 회귀해도 내려가지 않는다 (15 문서)
+  bondi: number;                          // 본디 0~100 — 첫 회차의 나가 얼마나 남았나 (15 §7.5)
+  loneliness: number;                     // 고독 (20 §8.6)
+  names: NameRecord[];                    // 플레이어가 붙인 이름 — 세계에서는 사라지고 나에게 남는다 (20)
+  memoryWall: { npc: NpcId; loop: number; child?: boolean }[]; // 마음속 기억의 벽 (20 §5.6)
+  ritualPhrases: string[];                // 의식 말 (20 RitualInstance.phrase)
+  oathsRemembered: OathId[];              // 증인은 잊었다, 나는 기억한다 (16)
 }
 interface LoopRecord { loop: number; start: GameDate; end: GameDate; farthest: GameDate; cause: CauseId; killer?: NpcId; severed: boolean;
   chronicle: string; gained: Diff<Soul>; disposition: Record<Axis, number>;      // 15 문서의 '지난 회차의 나'(loop:{n})가 이 기록에서 생긴다
   forgottenBy: { npc: NpcId; attachment: number; child?: boolean }[]; vanishedChildren: NpcId[];
-  firstWish?: string; hymnStage: number; bondi?: number }                         // 본디 값 (15 §7.5)
+  firstWish?: string; hymnStage: number; bondi?: number;                          // 본디 값 (15 §7.5)
+  children: ChildRecord[];                                                         // 소멸한 아이 (20 §6.8)
+  namesLeft: string[];                                                             // 회차 기록 맨 아래 "남긴 이름들" (20)
+  leftBehind: string[] }                                                           // 잊힘 페이지 — "두고 온 것" (20, 14)
 ```
 
 - **회귀 파이프라인**: 죽음 → 단절 판정(§4.5: 원인이 단절 수단인가) → `LoopRecord` 작성 → `Soul` 갱신 → `loopCount++`, 새 `loopSeed` → **회귀점 스냅샷**에서 세계 재생성 → 표류 적용 → 깨어남 장면.
