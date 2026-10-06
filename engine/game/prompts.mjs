@@ -153,3 +153,27 @@ export function mockTurn(g, res, opts, { memories = false } = {}) {
   const mems = memories ? [] : undefined;
   return `<서술>\n${b.join("\n\n")}\n</서술>\n<선택지>\n${JSON.stringify({ choices, ...(mems ? { memories: mems } : {}) })}\n</선택지>`;
 }
+
+// ── 기록관 (28 §6): 끝난 대화를 '제안'으로 옮긴다. 플레이어는 기다리지 않는다 (뒤에서 돈다) ──
+export const RECORDER_SYSTEM = `너는 텍스트 게임의 기록관이다. 끝난 대화를 읽고, 그 NPC가 앞으로 기억하거나 행동에 옮길 것을 구조화된 제안으로 뽑는다.
+세계를 바꾸지 않는다 — 제안만 한다. 엔진이 대화 기록에서 근거를 확인하고 받아들일지 정한다.
+근거(evidence)는 반드시 대화 기록에서 글자 그대로 옮긴다. 대화에 없는 것은 쓰지 않는다. 출력은 JSON 하나뿐.`;
+
+export function recorderPrompt(g, jobs) {
+  const facts = [...g.P.knows, ...g.run.carry.future].map((f) => `${f}: ${g.content.facts[f]?.text}`).join("\n");
+  const places = [...g.W.loc.values()].filter((l) => l.settlement === "greyford" && !l.parent).map((l) => l.name).join(", ");
+  return [
+    `[주인공이 아는 사실 — 주인공이 NPC에게 이것을 말해 주었으면 kind "learned"로, fact에 이 id를]\n${facts || "(없음)"}`,
+    `[마을의 장소 이름 — 약속 장소는 이 중에서]\n${places}`,
+    ...jobs.map((j, i) => `[대화 ${i + 1}] NPC: ${j.npc} (${g.content.cards[j.npc]?.name}), 끝난 시각: ${j.time}\n${j.transcript.map((x) => `${x.who === "player" ? "셋째" : "서술"}: ${x.text}`).join("\n")}`),
+    `출력: {"records": [{"npc": "npc id", "kind": "impression|emotion|promise|claim|learned|suspicion|debt|threat", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "그 NPC의 입장에서 한 줄", "evidence": "대화 기록 그대로", "salience": "1~5",
+  "promise": {"place": "장소 이름", "when": "오늘 밤|내일 정오|모레 새벽 다섯 시 처럼", "what": "무엇을"},
+  "claim": {"about": "주인공이 말한 대상 인물 이름", "content": "주인공의 주장 한 줄", "believed": true},
+  "fact": "learned일 때 사실 id"}]}
+대화마다 0~4개. 약속·주장·들은 사실이 없으면 그 칸은 빼라.`,
+  ].join("\n\n");
+}
+export function parseRecords(text) {
+  const s = String(text || ""); const i = s.indexOf("{"), j = s.lastIndexOf("}");
+  try { return JSON.parse(s.slice(i, j + 1)).records || []; } catch { return null; }
+}

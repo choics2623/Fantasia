@@ -5,13 +5,50 @@
 //   - 부르지 않는 때: 아무도 없는 곳으로 걷기, 아무 일 없이 기다리기·자기 → 엔진의 짧은 문장
 //   - 자유 입력은 해석 호출이 하나 더 든다
 import * as G from "./game.mjs";
-import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn } from "./prompts.mjs";
+import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn, RECORDER_SYSTEM, recorderPrompt, parseRecords } from "./prompts.mjs";
+import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 
-export function createSession(content, provider, { run = null, onSave = null } = {}) {
+export function createSession(content, provider, { run = null, onSave = null, recorder = provider, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());
   let transcript = g.run.transcript || [];
   const save = () => { g.run.transcript = transcript.slice(-40); onSave?.(g.run); };
+  // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
+  const jobs = [], pending = [];
+  let busy = false, working = null, recDebug = [];
+  function enqueue(npc, conv) { jobs.push({ npc, transcript: conv, t: g.t, time: fmt(g.t), tries: 0 }); kick(); }
+  function kick() {
+    if (working || !jobs.length) return working;
+    working = (async () => {
+      while (jobs.length) {
+        const batch = jobs.splice(0, 4);   // 여러 대화를 한 번에
+        try {
+          const out = await recorder.complete(RECORDER_SYSTEM, recorderPrompt(g, batch), { mock: () => JSON.stringify({ records: mockRecords ? mockRecords(batch) : [] }) });
+          const recs = parseRecords(out);
+          if (!recs) throw new Error("기록관 출력을 읽지 못했다");
+          for (const j of batch) pending.push({ job: j, recs: recs.filter((r) => r.npc === j.npc) });
+        } catch (e) {
+          recDebug.push({ kind: "recorder-error", error: String(e.message || e) });
+          for (const j of batch) if (++j.tries < 3) jobs.push(j); else recDebug.push({ kind: "recorder-drop", npc: j.npc });
+          if (jobs.length) await new Promise((r) => setTimeout(r, 2000 * batch[0].tries));
+        }
+      }
+      working = null; flush();
+    })();
+    return working;
+  }
+  function flush() {
+    if (busy) return;
+    let any = false;
+    while (pending.length) {
+      const { job, recs } = pending.shift();
+      const { accepted, rejected } = G.validateMemories(g, job.npc, job.transcript, recs, { t: job.t });
+      G.recordMemories(g, job.npc, accepted);
+      recDebug.push({ kind: "recorder", npc: job.npc, accepted, rejected });
+      any = true;
+    }
+    if (any) save();
+  }
   const peopleKey = () => G.view(g).people.map((p) => p.id).sort().join(",");
 
   function needsLLM(res, beforePeople) {
@@ -51,8 +88,12 @@ export function createSession(content, provider, { run = null, onSave = null } =
   }
 
   // 한 턴. 실패하면 기록을 되돌리고 { broken } — 같은 행동을 다시 보내면 같은 주사위로 다시 한다
-  async function turn(input = null, { onText } = {}) {
-    const debug = [];
+  async function turn(input = null, opts2 = {}) {
+    busy = true;
+    try { return await turnInner(input, opts2); } finally { busy = false; flush(); }
+  }
+  async function turnInner(input = null, { onText } = {}) {
+    const debug = recDebug.splice(0);
     const keep = g.run.journal.length, keepT = transcript.length;
     try {
       let res = null, opts;
@@ -74,14 +115,11 @@ export function createSession(content, provider, { run = null, onSave = null } =
         opts = G.options(g);
         if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       } else opts = G.options(g);
-      const n = await narrate(res, opts, { onText, free: input?.free, memories: !!res?.convoEnded });
+      const n = await narrate(res, opts, { onText, free: input?.free, memories: false });
       if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
       transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
       if (res?.convoEnded) {
-        const conv = transcript.slice(-(res.convoEnded.turns * 2 + 6));
-        const { accepted, rejected } = G.validateMemories(g, res.convoEnded.npc, conv, n.memories);
-        G.recordMemories(g, res.convoEnded.npc, accepted);
-        debug.push({ kind: "memory", accepted, rejected });
+        enqueue(res.convoEnded.npc, transcript.slice(-(res.convoEnded.turns * 2 + 6)));   // 기록관에게 — 기다리지 않는다
         transcript = [];
       }
       save();
@@ -109,6 +147,7 @@ export function createSession(content, provider, { run = null, onSave = null } =
     act: (input, o) => turn(input, o),
     async regress(o) { g = G.boot(content, G.regressRun(g)); transcript = []; save(); return turn(null, o); },
     async newGame(seed, o) { g = G.boot(content, G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) })); transcript = []; save(); return turn(null, o); },
+    drain: () => kick() || Promise.resolve(),   // 검사용: 기록관이 끝날 때까지
     load(run) { g = G.boot(content, run); transcript = run.transcript || []; },
     get run() { return g.run; }, get game() { return g; },
   };

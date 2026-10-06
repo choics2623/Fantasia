@@ -80,7 +80,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   const tie = (a, b) => (b === "player" ? Math.round((state.rel.get(`${a}>player`)?.like || 0) / 20) : prof(a).ties[b] || 0);
 
   // ── 믿음 ──
-  const bkey = (b) => [b.kind, b.subject, b.object, b.item].join("|");
+  const bkey = (b) => [b.kind, b.subject, b.object, b.item, b.content].join("|");
   function has(npc, kind, pred = () => true) { return [...(beliefs.get(npc)?.values() || [])].some((b) => b.kind === kind && pred(b)); }
   function believe(npc, t, b, { react = true } = {}) {
     if (state.dead.has(npc)) return false;
@@ -300,7 +300,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   }
 
   // ── 소문: 사람이 모인 곳에서, 사람 사이로 ──
-  const GOSSIP_KINDS = new Set(["suspect", "dead", "body", "saw_item", "missing"]);
+  const GOSSIP_KINDS = new Set(["suspect", "dead", "body", "saw_item", "missing", "claim"]);
   const anyHot = () => { for (const m of beliefs.values()) for (const b of m.values()) if (GOSSIP_KINDS.has(b.kind) && b.heat > 0.3) return true; return false; };
   function gossip(t) {
     for (const [place, people] of present(t)) {

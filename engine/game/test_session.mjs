@@ -2,12 +2,19 @@
 import { loadContent } from "./load.mjs";
 import { createSession } from "./session.mjs";
 import { createProvider } from "../llm/provider.mjs";
+import * as G0 from "./game.mjs";
 const C = loadContent();
 let fail = 0; const check = (n, ok, x = "") => { console.log(`${ok ? "✓" : "✗"} ${n}${x ? " — " + x : ""}`); if (!ok) fail++; };
 
 const prov = createProvider({ kind: "mock" });
 let saved = null;
-const s = createSession(C, prov, { onSave: (r) => (saved = JSON.parse(JSON.stringify(r))) });
+// 가짜 기록관: 대화에서 약속 하나와 인상 하나를 뽑았다고 치자
+const mockRecords = (batch) => batch.flatMap((j) => [
+  { npc: j.npc, kind: "promise", text: "셋째와 내일 정오 방앗간에서 보기로 했다", evidence: j.transcript.find((x) => x.who === "player")?.text || "", salience: 3, promise: { place: "방앗간", when: "내일 정오", what: "곡물 이야기" } },
+  { npc: j.npc, kind: "impression", tag: "쓸모 있음", delta: 3, text: "말을 잘 듣는다", evidence: j.transcript.find((x) => x.who === "player")?.text || "", salience: 2 },
+  { npc: j.npc, kind: "impression", tag: "영리함", delta: 2, text: "지어낸 것", evidence: "대화에 없던 말", salience: 2 },
+]);
+const s = createSession(C, prov, { onSave: (r) => (saved = JSON.parse(JSON.stringify(r))), mockRecords });
 const r0 = await s.start();
 check("시작 장면에 서술과 선택지가 있다", r0.beats.length > 0 && r0.choices.length > 3);
 check("선택지에 확률 띠가 붙는다 (판정이 있는 것만)", r0.choices.some((c) => c.band) && r0.choices.some((c) => !c.band));
@@ -16,8 +23,15 @@ const r1 = await s.act({ id: "talk:npc_bram" }, { onText: (t) => (streamed = t) 
 check("서술이 흘러나온다 (스트리밍)", streamed.length > 0 && !streamed.includes("<선택지>"), streamed.slice(0, 40));
 check("대화 중 선택지", r1.choices.some((c) => c.id === "small_talk"));
 const calls0 = prov.usage.calls;
-await s.act({ id: "leave" });
-check("대화를 끝내는 턴은 기억까지 한 번에 (호출 1)", prov.usage.calls - calls0 === 1);
+const rl = await s.act({ id: "leave" });
+check("대화를 끝내는 턴은 서술 호출 하나 — 기록관은 뒤에서", prov.usage.calls - calls0 >= 1 && rl.beats.length > 0);
+await s.drain();
+const g0 = s.game;
+const bramMem = g0.M.npc_bram?.memories || [];
+check("기록관의 제안 중 근거 있는 것만 들어간다", bramMem.some((m) => m.tag === "쓸모 있음") && !bramMem.some((m) => m.tag === "영리함"));
+const prom = bramMem.find((m) => m.promise);
+check("약속은 브람의 일정이 된다 (내일 정오 방앗간)", prom && g0.W.where("npc_bram", prom.promise.from + 10).at === "gf_mill", prom && JSON.stringify(prom.promise));
+check("약속은 수첩에도 적힌다", G0.view(g0).notebook.some((n) => n.includes("약속")));
 const calls1 = prov.usage.calls;
 const rw = await s.act({ id: "go:gf_graveyard" });
 check("아무도 없는 곳으로 걷기는 LLM을 부르지 않는다", prov.usage.calls === calls1 && rw.engineOnly, rw.beats.join(" "));

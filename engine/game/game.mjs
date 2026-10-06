@@ -248,7 +248,7 @@ export function odds(g, opt) {
 // entry: {i, kind:'act', id, tags?, text?} | {i, kind:'memory', npc, mems:[...]} | {i, kind:'regress'}
 export function apply(g, e, { replay = false } = {}) {
   g.feed = [];
-  if (e.kind === "memory") { for (const m of e.mems) addMemory(g, e.npc, m); return { kind: "memory" }; }
+  if (e.kind === "memory") { for (const m of e.mems) applyRecord(g, e.npc, m); return { kind: "memory" }; }
   const opt = options(g).find((o) => o.id === e.id);
   if (!opt) throw new Error(`지금은 할 수 없는 행동: ${e.id}`);
   const roll = hash(g.seed, "roll", e.i);
@@ -482,8 +482,21 @@ function describeBelief(g, b) {
 }
 
 // ── 기억 (21 §6) ──
-const KINDS = ["fact_learned", "claim", "impression", "emotion", "promise", "debt", "threat", "suspicion"];
+const KINDS = ["fact_learned", "claim", "impression", "emotion", "promise", "debt", "threat", "suspicion", "learned"];
 export const IMPRESSION_TAGS = ["영리함", "위험함", "정직함", "거짓말쟁이", "다정함", "비굴함", "용감함", "이상함", "쓸모 있음", "짐"];
+// 기록 하나를 세계에 — 기억은 마음에, 약속은 일정에, 주장은 믿음(소문)에, 들은 사실은 지식에
+function applyRecord(g, n, mem) {
+  addMemory(g, n, mem);
+  if (mem.promise && !g.S.dead.has(n)) {
+    g.W.override({ npc: n, from: mem.promise.from, to: mem.promise.to, kind: "at", at: mem.promise.place, doing: `셋째와 약속한 대로 기다린다 — ${mem.promise.what}` });
+    g.P.notebook.push(josa(`${nameOf(g, n)}과(와)의 약속 — ${fmt(mem.promise.from)}, ${placeName(g, mem.promise.place)}: ${mem.promise.what}`));
+  }
+  if (mem.claim?.believed) {
+    // 믿은 주장은 그 NPC의 믿음이 된다 → 사람이 모이는 곳에서 소문으로 퍼진다 (27 §3.4)
+    g.L.believe(n, g.t, { kind: "claim", subject: mem.claim.about || "unknown", content: mem.claim.content, source: "player", heat: 1.2 }, { react: false });
+  }
+  if (mem.fact) { if (!g.S.knows.has(mem.fact)) g.S.knows.set(mem.fact, new Set()); g.S.knows.get(mem.fact).add(n); }   // 목표 행동의 knows 조건이 열린다
+}
 function addMemory(g, n, mem) {
   const m = mind(g, n);
   m.memories.push(mem);
@@ -497,8 +510,38 @@ function addMemory(g, n, mem) {
   const slots = { S: 60, A: 30, B: 12 }[cardOf(g, n).tier] || 8;
   if (m.memories.length > slots) { m.memories.sort((a, b) => (b.salience || 0) - (a.salience || 0)); m.memories.length = slots; }
 }
+// "방앗간" → gf_mill (이름의 일부로 찾는다)
+function resolvePlace(g, name) {
+  const key = (x) => String(x || "").replace(/[\s'"]/g, "");
+  const n = key(name);
+  if (!n) return null;
+  const cands = [...g.W.loc].filter(([, l]) => l.settlement === SETTLEMENT && l.name);
+  // 정확히 같은 이름 → 이름에 들어 있는 것 중 가장 짧은 것(건물이 방보다 먼저) → 이름의 앞부분이 들어 있는 것
+  const exact = cands.find(([, l]) => key(l.name) === n) || cands.find(([, l]) => (l.aka || []).some((a) => key(a) === n));
+  if (exact) return exact[0];
+  const inName = cands.filter(([, l]) => key(l.name).includes(n)).sort((a, b) => (a[1].parent ? 1 : 0) - (b[1].parent ? 1 : 0) || key(a[1].name).length - key(b[1].name).length);
+  if (inName.length) return inName[0][0];
+  const part = cands.find(([, l]) => n.includes(key(l.name).split("·")[0]));
+  return part ? part[0] : null;
+}
+// "내일 정오", "오늘 밤", "모레 새벽 다섯 시" → 절대 시각
+const NUMK = { 한: 1, 두: 2, 세: 3, 네: 4, 다섯: 5, 여섯: 6, 일곱: 7, 여덟: 8, 아홉: 9, 열: 10, 열한: 11, 열두: 12 };
+export function resolveWhen(text, t) {
+  const s = String(text || "");
+  const day = Math.floor(t / 1440) + (/모레/.test(s) ? 2 : /내일/.test(s) ? 1 : 0);
+  let h = null;
+  const m = /(\d{1,2})\s*시/.exec(s) || new RegExp(`(${Object.keys(NUMK).sort((a, b) => b.length - a.length).join("|")})\\s*시`).exec(s);
+  if (m) h = Number(m[1]) || NUMK[m[1]];
+  const part = /새벽/.test(s) ? 5 : /아침/.test(s) ? 7 : /정오|한낮/.test(s) ? 12 : /오후|낮/.test(s) ? 15 : /저녁|해 질/.test(s) ? 19 : /자정/.test(s) ? 24 : /밤/.test(s) ? 22 : null;
+  if (h == null) h = part;
+  else if (part && part >= 15 && h < 12) h += 12;          // "저녁 일곱 시"
+  if (h == null) return null;
+  let at = day * 1440 + h * 60;
+  if (at <= t) at += 1440;                                    // 이미 지난 시각이면 다음 날
+  return at;
+}
 // LLM이 뽑은 기억 후보를 검증한다 → 받아들인 것만 기록(journal)에 들어간다
-export function validateMemories(g, npc, transcript, cands) {
+export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
   const norm = (s) => String(s).replace(/[\s"'“”‘’.,!?…·—-]/g, "");
   const T = norm(transcript.map((x) => x.text).join(""));
   const accepted = [], rejected = [], perTag = {};
@@ -514,7 +557,23 @@ export function validateMemories(g, npc, transcript, cands) {
     if (why.length) { rejected.push({ ...c, why }); continue; }
     let delta = clamp(Number(c.delta) || 0, -5, 5);
     if (c.kind === "impression") { const used = perTag[c.tag] || 0; delta = clamp(delta, -5 - used, 5 - used); perTag[c.tag] = used + delta; }
-    accepted.push({ kind: c.kind, tag: c.tag || null, delta, text: String(c.text || c.evidence).slice(0, 120), salience: clamp(Number(c.salience) || 2, 1, 5), source: "llm" });
+    const mem = { kind: c.kind, tag: c.tag || null, delta, text: String(c.text || c.evidence).slice(0, 120), salience: clamp(Number(c.salience) || 2, 1, 5), source: "llm" };
+    // 기록관의 제안 — 규칙을 거쳐 세계에 닿는다 (28 §6)
+    if (c.kind === "promise" && c.promise) {
+      const place = resolvePlace(g, c.promise.place), when = resolveWhen(c.promise.when, t);
+      if (place && when) mem.promise = { place, from: when, to: when + 60, what: String(c.promise.what || "약속").slice(0, 60) };
+      else mem.note = "약속의 장소·시각을 엔진이 알아듣지 못함 → 기억으로만";
+    }
+    if (c.kind === "claim" && c.claim) {
+      const about = g.content.names[String(c.claim.about || "").trim()] || null;
+      mem.claim = { about, content: String(c.claim.content || "").slice(0, 80), believed: !!c.claim.believed };
+    }
+    if (c.kind === "learned") {
+      // 플레이어가 그 NPC에게 말해 준 사실 — 플레이어가 아는 사실이어야 한다
+      if (!c.fact || !knowsFact(g, c.fact)) { rejected.push({ ...c, why: ["플레이어가 모르는 사실 ID"] }); continue; }
+      mem.fact = c.fact;
+    }
+    accepted.push(mem);
   }
   return { accepted, rejected };
 }
@@ -567,7 +626,7 @@ export function act(g, choice) {
   g.run.journal.push(e);
   return res;
 }
-export function recordMemories(g, npc, mems) {
+export function recordMemories(g, npc, mems) {   // 기억과 기록관의 제안 모두 같은 기록으로
   if (!mems.length) return;
   const e = { i: g.run.journal.length, kind: "memory", npc, mems };
   apply(g, e); g.run.journal.push(e);

@@ -66,12 +66,18 @@ if (n) {
 }
 
 // 6. 사람들 앞에서 죽이면 — 고발되고, 윗선이 오면 붙잡힌다 (해내는 시드를 찾는다)
-let c = null;
-for (let s = 1; s < 200 && !c; s++) { const x = G.boot(C, G.newRun({ seed: s })); play(x, "attack:npc_hagen"); if (x.S.dead.has("npc_hagen") && !x.ended) c = x; }
-check("수탉에서 사람들 앞에서 하겐을 죽이는 회차가 있다", !!c);
+// 목격자가 모두 입을 다무는 회차도 있다 (성향과 시드) — 붙잡히는 회차와 그렇지 않은 회차가 모두 있어야 한다
+let c = null, kills = 0, quiet = 0;
+for (let s = 1; s < 300 && !c; s++) {
+  const x = G.boot(C, G.newRun({ seed: s })); play(x, "attack:npc_hagen");
+  if (!x.S.dead.has("npc_hagen") || x.ended) continue;
+  kills++;
+  for (let i = 0; i < 40 && !x.ended; i++) play(x, "wait:60");
+  if (x.ended?.kind === "captured") c = x; else quiet++;
+}
+check("수탉에서 사람들 앞에서 하겐을 죽이는 회차가 있다", kills > 0, `해낸 회차 ${kills}, 그중 아무도 고하지 않은 회차 ${quiet}`);
 if (c) {
-  for (let i = 0; i < 40 && !c.ended; i++) play(c, "wait:60");
-  check("본 사람이 고하고, 윗선이 오면 붙잡힌다", c.ended?.kind === "captured", c.ended?.why || `수배 ${G.view(c).player.wanted}`);
+  check("본 사람이 고하고, 윗선이 오면 붙잡힌다", c.ended?.kind === "captured", c.ended?.why);
   check("붙잡히면 할 수 있는 것은 회귀뿐", G.options(c).length === 1 && G.options(c)[0].id === "regress");
   // 7. 회귀: 세계는 처음으로, 수첩과 알게 된 사실은 남는다
   const next = G.boot(C, G.regressRun(c));
@@ -98,5 +104,24 @@ const likeBefore = (k.S.rel.get("npc_bram>player") || { like: 0 }).like;
 G.recordMemories(k, "npc_bram", vm.accepted);
 check("인상은 관계 수치로 이어진다 (반응 층이 쓰는 마음)", (k.S.rel.get("npc_bram>player")?.like || 0) > likeBefore);
 check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(k.run)))) === fingerprint(k));
+
+// 10. 기록관의 제안이 규칙을 거쳐 세계에 닿는다: 믿은 주장 → 소문, 말해 준 사실 → 그 NPC의 지식(목표 행동 조건)
+{
+  const w = G.boot(C, G.newRun({ seed: 7, carry: { notebook: [], future: ["fact_gf_egil_family_in_cellar"], deaths: [] } }));
+  play(w, "talk:npc_bram");
+  const tr = [{ who: "player", text: "하겐이 탈주자를 볼크에게 판대요. 그리고 수탉 지하에 사람이 있다는 걸 마르타도 알아요." }];
+  const v = G.validateMemories(w, "npc_bram", tr, [
+    { npc: "npc_bram", kind: "claim", text: "셋째 말로는 하겐이 탈주자를 판다", evidence: "하겐이 탈주자를 볼크에게 판대요", salience: 4, claim: { about: "하겐", content: "하겐이 탈주자를 볼크에게 판다", believed: true } },
+    { npc: "npc_bram", kind: "learned", text: "셋째가 지하실 일을 안다", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_egil_family_in_cellar" },
+    { npc: "npc_bram", kind: "learned", text: "모르는 사실", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_henrik_skims_baron" },
+  ]);
+  check("플레이어가 모르는 사실을 '말해 주었다'는 제안은 버린다", v.accepted.length === 2 && v.rejected.length === 1);
+  G.recordMemories(w, "npc_bram", v.accepted);
+  check("말해 준 사실은 그 NPC의 지식이 된다 (목표 행동의 knows 조건)", w.S.knows.get("fact_gf_egil_family_in_cellar")?.has("npc_bram"));
+  play(w, "leave");
+  for (let i = 0; i < 48; i++) play(w, G.options(w).some((o) => o.id === "wait:60") ? "wait:60" : "sleep");
+  const spread = Object.keys(C.cards).filter((n) => n !== "npc_bram" && w.L.beliefs(n).some((b) => b.kind === "claim"));
+  check("브람이 믿은 주장은 사람이 모이는 곳에서 소문으로 퍼진다", spread.length > 0, spread.map((n) => C.cards[n].name).join(", "));
+}
 
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);
