@@ -82,6 +82,15 @@ const server = http.createServer(async (req, res) => {
     res.end(JSON.stringify({ error: String(e.message || e) }));
   }
 });
+server.on("error", (e) => {
+  if (e.code === "EADDRINUSE") {
+    console.error(`\n포트 ${PORT}을(를) 이미 다른 프로그램이 쓰고 있다 — 아마 전에 띄운 이 서버가 아직 켜져 있다.`);
+    console.error(`  그 창에서 Ctrl+C로 끄거나:  lsof -ti :${PORT} | xargs kill`);
+    console.error(`  아니면 다른 포트로:          PORT=${PORT + 1} node prototypes/greyford/server.mjs\n`);
+    process.exit(1);
+  }
+  throw e;
+});
 server.listen(PORT, HOST, () => {
   console.log(`회색여울 → 이 PC: http://localhost:${PORT}`);
   if (HOST === "0.0.0.0") for (const ip of Object.values(networkInterfaces()).flat().filter((i) => i && i.family === "IPv4" && !i.internal).map((i) => i.address))
