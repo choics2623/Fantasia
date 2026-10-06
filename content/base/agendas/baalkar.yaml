@@ -1,0 +1,93 @@
+# 바알카르 — 용황의 죽음 클락(WORLD_BIBLE §10 #1)과 잔향 숙청의 사슬 (26_AGENDAS.md).
+# 정본 일정(events/baalkar_312.yaml)의 9.8 발작 · 10.4 원로회 '흰 알 + 섭정' 초안 · 10.8 재받이 색출 · 10.12 화형 · 11.20 비상 섭정 회의 · 11.23 틸데의 등잔 회합이
+# 원인과 결과로 이어지게 한다. 플레이어가 끊을 수 있는 고리: 노을을 지킨다, 틸데의 벽 틈을 막는다(들킨다), 색출 명단을 빼낸다.
+vars:
+  bk_varskar_health: 10        # 용황의 몸 (0이면 죽는다 — 기본 궤적에서는 313 봄까지 버틴다)
+  bk_regency_draft: false      # 원로회의 '흰 알 + 섭정' 초안
+  bk_ash_list: 0               # 재받이 색출 명단 (정본 63)
+  bk_burned: 0
+  bk_purge_motion: false       # 맹약회의 수석 대표 안건 '잔향 대숙청'
+  bk_tilde_heard: false
+  bk_lamps_warned: false       # 등잔(이름 없는 자들)이 숙청 안건을 안다
+  bk_noeul_protected: false    # 플레이어가 노을을 숨겼다
+agendas:
+  - id: ag_bk_varskar_first_fit
+    npc: npc_severian_kaldaran
+    goal: 9.8 — 회귀점 뒤 첫 발작 (정본)
+    every: once
+    when: ["alive npc_severian_kaldaran", "date >= 312-09-08"]
+    at: {place: dragon_throne_peak__ash_nest, from: "06:00", to: "12:00", doing: 용황의 발작 — 병상 문을 사흘 닫는다}
+    effects: ["var bk_varskar_health -= 1", "log 용황의 발작 — 병상 문이 닫혔다 (몸 {bk_varskar_health})"]
+  - id: ag_bk_great_sweep
+    npc: npc_branek
+    goal: 10.8 재받이 일제 색출 — 명단 63을 한 번에 (정본)
+    every: once
+    when: ["alive npc_branek", "date >= 312-10-08"]
+    at: {place: bk_lower_court, from: "03:00", to: "10:00", doing: 재받이 일제 색출 — 명단 63을 채운다}
+    effects: ["var bk_ash_list = 63", "log 재받이 일제 색출 — 명단 63"]
+  - id: ag_bk_first_pyre
+    npc: npc_dravan
+    goal: 10.12 첫 화형 (정본)
+    every: once
+    when: ["alive npc_dravan", "var bk_ash_list >= 9", "date >= 312-10-12"]
+    at: {place: bk_pyre_yard, from: "17:00", to: "19:00", doing: 재 마당 화형 — 붉은 첨탑 쪽으로 세 번 선회한 뒤 내려앉는다}
+    effects: ["var bk_burned += 9", "var bk_ash_list -= 9", "log 재 마당 첫 화형 — 아홉이 탔다"]
+  - id: ag_bk_varskar_fit
+    npc: npc_severian_kaldaran
+    goal: 병상 문을 지킨다 — 발작이 오면 사흘 닫는다
+    every: "every:9"
+    chance: 0.45
+    when: ["alive npc_severian_kaldaran", "var bk_varskar_health > 2", "date >= 312-09-20"]
+    at: {place: dragon_throne_peak__ash_nest, from: "06:00", to: "12:00", doing: 닫힌 병상 문 앞 — 발작의 숨소리를 센다}
+    effects: ["var bk_varskar_health -= 1", "log 용황의 발작 — 병상 문이 닫혔다 (몸 {bk_varskar_health})"]
+  - id: ag_bk_regency_draft
+    npc: npc_severin_targul
+    goal: 용황이 약해지면 '흰 알 + 섭정' 초안을 돌린다 — 값으로 재는 재상의 계산
+    every: once
+    when: ["alive npc_severin_targul", "var bk_varskar_health <= 9", "date >= 312-10-04"]
+    at: {place: bk_hall_five_chairs, from: "20:00", to: "23:00", doing: 다섯 의자의 방 — 원로회 비공개 회의, 초안 회람}
+    effects: ["var bk_regency_draft = true", "log 원로회가 '흰 알 + 섭정' 초안을 돌렸다"]
+  - id: ag_bk_ash_sweep
+    npc: npc_branek
+    goal: 아우락스를 위해 재받이를 턴다 — 명단 63을 채울 때까지
+    every: "weekday:2"
+    chance: 0.6
+    when: ["alive npc_branek", "var bk_ash_list < 63", "date >= 312-11-01"]
+    at: {place: bk_lower_court, from: "04:00", to: "09:00", doing: 재받이 새벽 색출 — 문을 차고 이름을 받아 적는다}
+    effects: ["var bk_ash_list += 9", "log 브라넉의 재받이 색출 — 명단 {bk_ash_list}"]
+  - id: ag_bk_pyre
+    npc: npc_dravan
+    goal: 명단이 차면 재 마당에 불을 놓는다
+    every: "every:14"
+    when: ["alive npc_dravan", "var bk_ash_list >= 9", "date >= 312-10-20"]
+    at: {place: bk_pyre_yard, from: "17:00", to: "19:00", doing: 재 마당 화형 — 붉은 첨탑 쪽으로 세 번 선회한 뒤 내려앉는다}
+    effects: ["var bk_burned += 9", "var bk_ash_list -= 9", "log 재 마당 화형 — 아홉이 탔다 (모두 {bk_burned})"]
+  - id: ag_bk_purge_motion
+    npc: npc_severin_targul
+    goal: 초안이 돌면 맹약회의 수석 대표 안건을 정한다 — '잔향 대숙청'
+    every: once
+    when: ["alive npc_severin_targul", "var bk_regency_draft == true", "date >= 312-11-20"]
+    at: {place: bk_hall_five_chairs, from: "19:00", to: "23:00", doing: 비상 섭정 회의 — 맹약회의 안건}
+    effects: ["var bk_purge_motion = true", "log 비상 섭정 회의가 맹약회의 수석 안건을 '잔향 대숙청'으로 정했다"]
+  - id: ag_bk_tilde_listens
+    npc: npc_tilde
+    goal: 등잔 기름을 갈며 벽 틈으로 듣는다
+    every: once
+    when: ["alive npc_tilde", "var bk_purge_motion == true"]
+    at: {place: bk_hall_five_chairs, from: "22:00", to: "23:30", doing: 등잔 열둘에 기름을 붓는다 — 귀는 벽 틈에}
+    effects: ["var bk_tilde_heard = true", "log 틸데가 숙청 안건을 처음부터 끝까지 들었다"]
+  - id: ag_bk_lamp_meeting
+    npc: npc_tilde
+    goal: 하수도 셋째 갈래 등잔 회합에 안건을 넘긴다
+    every: once
+    when: ["alive npc_tilde", "var bk_tilde_heard == true", "date >= 312-11-23"]
+    at: {place: bk_sewer_third, from: "23:00", to: "23:59", doing: 등잔 회합 — 맹약회의 안건을 넘긴다}
+    effects: ["var bk_lamps_warned = true", "log 등잔 회합이 숙청 안건을 받았다 — 이름 없는 자들이 맹약회의 전에 움직일 수 있다"]
+  - id: ag_bk_noeul_silenced
+    npc: npc_branek
+    goal: 흰 알의 균열을 들은 인간 아이를 '정리'한다 (REGIONS §1.13 씨앗 1)
+    every: daily
+    chance: 0.06
+    when: ["alive npc_noeul", "var bk_noeul_protected == false", "date >= 312-11-01"]
+    at: {place: bk_tribute_stair, from: "05:00", to: "05:30", doing: 공물 계단 — 운반자 하나를 끌고 내려간다}
+    effects: ["kill npc_noeul", "log 공물 운반자 노을이 계단에서 사라졌다 — 흰 알 클락의 열쇠 하나가 없어졌다"]

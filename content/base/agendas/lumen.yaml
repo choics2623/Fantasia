@@ -1,0 +1,78 @@
+# 루멘 — 끊어진 고리 클락(§10 #8)과 정화청의 장작 (26_AGENDAS.md).
+# 정본: 9.17·10.8·11.5·12.12 정화(장작 12→14→16→18), 11.3 '불순한 자' 목록, 11.12 녹테른 공물 40 호송, 12.14 대사제 그레고르 7세가 쓰러짐 → 임시 회의.
+# 끊을 수 있는 고리: 알베릭(9번 감방)을 빼낸다 → 마테우스가 공물 명단을 두 배로 늘린다(REGIONS 씨앗 1) / 서기 요나스의 명단 사본 / 대사제의 약.
+vars:
+  lm_impure: 26                # 정화청의 '불순한 자' 목록 (9.17·10.8 두 번의 장작 분량이 이미 있다)
+  lm_burned: 0
+  lm_tribute: 40               # 녹테른 공물 명단
+  lm_alberic_escaped: false
+  lm_hp_health: 6              # 대사제의 몸
+  lm_succession_open: false
+  lm_mateus_chair: false
+  lm_list_copy: false          # 요나스가 몰래 쓴 명단 사본 (플레이어가 손에 넣을 수 있다)
+agendas:
+  - id: ag_lm_inquisition_list
+    npc: npc_mateus
+    goal: 매주 '불순한 자'를 목록에 올린다
+    every: "weekday:1"
+    chance: 0.7
+    when: ["alive npc_mateus"]
+    at: {place: lm_inq_hall, from: "09:00", to: "11:00", doing: 심문청 대청 — 고해에서 나온 이름을 목록에 옮긴다}
+    effects: ["var lm_impure += 6", "log 정화청 목록이 늘었다 ({lm_impure})"]
+  - id: ag_lm_pyre_1
+    npc: npc_mateus
+    goal: 정화 1 — 장작 12 (정본 09.17). 정화청장이 살아 있고 목록이 찼을 때만
+    every: once
+    when: ["alive npc_mateus", "var lm_impure >= 12", "date >= 312-09-17"]
+    at: {place: lm_pyre_court, from: "15:00", to: "18:00", doing: 정화 — 장작 앞 의자에 앉는다}
+    effects: ["var lm_burned += 12", "var lm_impure -= 12", "log 루멘의 정화 — 장작 12 (모두 {lm_burned})"]
+  - id: ag_lm_pyre_2
+    npc: npc_mateus
+    goal: 정화 2 — 장작 14 (정본 10.08). 정화청장이 살아 있고 목록이 찼을 때만
+    every: once
+    when: ["alive npc_mateus", "var lm_impure >= 14", "date >= 312-10-08"]
+    at: {place: lm_pyre_court, from: "15:00", to: "18:00", doing: 정화 — 장작 앞 의자에 앉는다}
+    effects: ["var lm_burned += 14", "var lm_impure -= 14", "log 루멘의 정화 — 장작 14 (모두 {lm_burned})"]
+  - id: ag_lm_pyre_3
+    npc: npc_mateus
+    goal: 정화 3 — 장작 16 (정본 11.05). 정화청장이 살아 있고 목록이 찼을 때만
+    every: once
+    when: ["alive npc_mateus", "var lm_impure >= 16", "date >= 312-11-05"]
+    at: {place: lm_pyre_court, from: "15:00", to: "18:00", doing: 정화 — 장작 앞 의자에 앉는다}
+    effects: ["var lm_burned += 16", "var lm_impure -= 16", "log 루멘의 정화 — 장작 16 (모두 {lm_burned})"]
+  - id: ag_lm_pyre_4
+    npc: npc_mateus
+    goal: 정화 4 — 장작 18 (정본 12.12). 정화청장이 살아 있고 목록이 찼을 때만
+    every: once
+    when: ["alive npc_mateus", "var lm_impure >= 18", "date >= 312-12-12"]
+    at: {place: lm_pyre_court, from: "15:00", to: "18:00", doing: 정화 — 장작 앞 의자에 앉는다}
+    effects: ["var lm_burned += 18", "var lm_impure -= 18", "log 루멘의 정화 — 장작 18 (모두 {lm_burned})"]
+  - id: ag_lm_double_tribute
+    npc: npc_mateus
+    goal: 알베릭이 사라지면 공물 명단을 두 배로 — 본보기
+    every: once
+    when: ["alive npc_mateus", "var lm_alberic_escaped == true"]
+    at: {place: lm_inq_records, from: "08:00", to: "10:00", doing: 기록실 — 공물 명단에 줄을 더 긋는다}
+    effects: ["var lm_tribute = 80", "log 알베릭이 사라지자 마테우스가 녹테른 공물 명단을 여든으로 늘렸다"]
+  - id: ag_lm_jonas_copy
+    npc: npc_lm_jonas
+    goal: 호송 전날 밤 명단 사본을 한 부 더 쓴다 — 지운 자국을 일부러 남긴다
+    every: once
+    when: ["alive npc_lm_jonas", "date >= 312-11-11"]
+    at: {place: lm_scriptorium, from: "22:00", to: "23:30", doing: 필사실 촛불 하나 — 명단을 한 부 더 쓴다}
+    effects: ["var lm_list_copy = true", "log 서기 요나스가 공물 명단 사본을 몰래 썼다"]
+  - id: ag_lm_hp_decline
+    npc: npc_gregor7
+    goal: 대사제는 기도실에서 기도한다 — 몸이 기도를 따라가지 못한다
+    every: "every:7"
+    chance: 0.65
+    when: ["alive npc_gregor7", "var lm_hp_health > 0", "date >= 312-10-10"]
+    at: {place: lm_cath_prayer_room, from: "04:00", to: "07:00", doing: 종탑 밑 기도실 — 무릎이 오래 펴지지 않는다}
+    effects: ["var lm_hp_health -= 1", "if var lm_hp_health <= 0: var lm_succession_open = true ; log 대사제 그레고르 7세가 기도실에서 쓰러졌다 — 의식이 돌아오지 않는다"]
+  - id: ag_lm_mateus_chair
+    npc: npc_mateus
+    goal: 대사제가 쓰러지면 회의 서기로서 의장석에 앉는다 — 끊어진 고리 클락
+    every: once
+    when: ["alive npc_mateus", "var lm_succession_open == true"]
+    at: {place: lm_cath_chain_hall, from: "10:00", to: "14:00", doing: 사슬의 방 임시 회의 — 서기의 자리에서 의장석으로}
+    effects: ["var lm_mateus_chair = true", "log 마테우스가 임시 회의 의장석에 앉았다 — 순종의 빛이 숙청 쪽으로 기운다"]

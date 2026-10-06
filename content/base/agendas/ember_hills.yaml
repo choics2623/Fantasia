@@ -1,0 +1,62 @@
+# 잿불 언덕 — 광산 봉기의 조짐 (REGIONS 잿불 언덕, 붉은 길: AS 100 진압 · 313-05-12 경고의 날 · 313-07-19 낙반의 날).
+# 할당량이 모자라면 처벌이, 처벌과 요람의 죽음이 '붉은 길'의 손바닥 자국을 늘리고, 조짐이 차면 밀고와 진압이 온다.
+# 끊을 수 있는 고리: 비축 광석을 채워 준다, 밀고자를 먼저 안다, 요람의 증거를 빼낸다.
+vars:
+  em_quota_short: 0
+  em_signs: 0                  # 봉기 조짐 (손바닥 자국, 노래, 멈춘 곡괭이)
+  em_cradle_dead: 0            # 은비늘 요람에서 나오지 못한 사람
+  em_crackdown: false
+  em_rising: false
+agendas:
+  - id: ag_em_quota
+    npc: npc_hadrian_ashjaw
+    goal: 주마다 할당량을 본다 — 모자라면 갱조에 매를 친다
+    every: "weekday:5"
+    chance: 0.5
+    when: ["alive npc_hadrian_ashjaw"]
+    at: {place: em_roll_yard, from: "18:00", to: "19:00", doing: 점호 마당 — 할당량 판을 읽는다}
+    effects: ["var em_quota_short += 1", "if var em_quota_short >= 3: var em_signs += 1 ; var em_quota_short = 0 ; log 할당량이 세 번 모자랐다 — 9번 갱조가 사슬 구덩이에 섰다"]
+  - id: ag_em_cradle
+    npc: npc_aurelia_vermion
+    goal: 요람에 피험자를 들이고, 나오지 못한 사람을 장부에서 지운다
+    every: "every:10"
+    when: ["alive npc_aurelia_vermion", "date >= 312-10-14"]
+    at: {place: em_cradle_records, from: "20:00", to: "22:00", doing: 요람 기록실 — 이름에 줄을 긋는다}
+    effects: ["var em_cradle_dead += 3", "if var em_cradle_dead >= 9: var em_signs += 1 ; log 요람에서 돌아오지 않은 사람이 {em_cradle_dead} — 소각로 연기를 광부들이 센다"]
+  - id: ag_em_handprints
+    npc: npc_caleb_dara
+    goal: 9번 갱 막장 벽에 손바닥 자국을 하나 더 — '붉은 길'을 잊지 않는다
+    every: "weekday:3"
+    chance: 0.35
+    when: ["alive npc_caleb_dara", "var em_crackdown == false"]
+    at: {place: em_drift_9, from: "22:00", to: "23:00", doing: 9번 갱 막장 — 등잔 하나, 벽에 손바닥을 댄다}
+    effects: ["var em_signs += 1", "log 9번 갱 막장에 손바닥 자국이 늘었다 (조짐 {em_signs})"]
+  - id: ag_em_ration_cut
+    npc: npc_kraz
+    goal: 굶주림월 — 바알카르 곡물이 늦으면 배급을 줄인다
+    every: once
+    when: ["alive npc_kraz", "date >= 312-12-15"]
+    at: {place: em_ration, from: "06:00", to: "07:00", doing: 배급소 — 국자를 반으로}
+    effects: ["var em_signs += 2", "log 잿불 언덕의 배급이 반으로 줄었다"]
+  - id: ag_em_informer
+    npc: npc_nit_threetail
+    goal: 조짐이 차면 붉은 교대 감독반장이 냄새를 맡는다 — 밀고는 그의 승진이다
+    every: daily
+    chance: 0.15
+    when: ["alive npc_nit_threetail", "var em_signs >= 6", "var em_crackdown == false"]
+    at: {place: em_office_chief, from: "21:00", to: "21:30", doing: 총감 사무실 문을 두드린다}
+    effects: ["var em_crackdown = true", "log 밀고 — 9번 갱 막장의 모임이 총감에게 새어 나갔다"]
+  - id: ag_em_crackdown
+    npc: npc_hadrian_ashjaw
+    goal: 본보기 — 갱조장을 사슬 구덩이에
+    every: once
+    when: ["alive npc_hadrian_ashjaw", "var em_crackdown == true"]
+    at: {place: em_roll_yard, from: "05:00", to: "07:00", doing: 점호 마당 — 본보기}
+    effects: ["punish npc_caleb_dara at em_chain_pit for 7", "var em_signs -= 4", "log 칼렙 다라가 사슬 구덩이에 묶였다 — 붉은 길은 다시 숨는다"]
+  - id: ag_em_rising
+    npc: npc_caleb_dara
+    goal: 밀고가 오기 전에 조짐이 넘치면 — 곡괭이가 멈춘다
+    every: once
+    when: ["alive npc_caleb_dara", "var em_signs >= 12", "var em_crackdown == false"]
+    at: {place: em_seventh_face, from: "06:00", to: "12:00", doing: 제7막장 — 곡괭이를 내려놓는다}
+    effects: ["var em_rising = true", "log 잿불 언덕 9번 갱이 멈췄다 — 봉기"]
