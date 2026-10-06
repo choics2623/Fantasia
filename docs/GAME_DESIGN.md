@@ -27,7 +27,7 @@
 | **몰입 설계** | |
 | [systems/14_FIRST_HOURS.md](systems/14_FIRST_HOURS.md) | **첫 시간**: 첫 회차 설계, 첫 죽음 = 첫 회귀, 시스템 점진 해금 |
 | [systems/15_INNER_VOICES.md](systems/15_INNER_VOICES.md) | **전생의 목소리**: 첫 불씨·군데·아스테리온·다라·아이들 + 이 시대의 전생, 동조도·잠식·중얼거림 |
-| [systems/16_ECHOES_AND_OATHS.md](systems/16_ECHOES_AND_OATHS.md) | **메아리와 맹세**: 원인의 실 자동 추적, "당신이 없던 N년" 꿈, 맹세록 |
+| [systems/16_ECHOES_AND_OATHS.md](systems/16_ECHOES_AND_OATHS.md) | **메아리와 맹세**: 원인의 실 자동 추적, 회차를 겹쳐 보는 「두 겹의 날」, 맹세록 (맹세는 회차를 넘어 기억된다) |
 | [systems/17_NEMESIS.md](systems/17_NEMESIS.md) | **사냥꾼이 기억한다**: 회차 안의 숙적, 회차를 넘어 짙어지는 젖은 재 냄새와 기시감 |
 | [systems/18_STORYTELLER.md](systems/18_STORYTELLER.md) | **이야기 연출가**: 긴장 곡선, 연출가 4종(난이도), 짧은 세션 구조 |
 | [systems/19_PRESENTATION.md](systems/19_PRESENTATION.md) | **글이 몸을 가진다**: 박자, 상태별 문장 변형, 문맹·언어 가림, 소리·진동·삽화 |
@@ -593,7 +593,7 @@ choices:
 - 헤드리스 장기 시뮬레이션 밸런싱
 
 ### Phase 3 — 대륙과 세대
-- 전체 지도, 두 번째 죽음부터의 계승 선택 화면, 연대기·"당신이 없던 N년"
+- 전체 지도, 진짜 죽음과 새 시대(다른 출신), 시대 연대기·「두 겹의 날」
 - 모딩 도구 공개, LLM 보조 기능(선택)
 
 ---
