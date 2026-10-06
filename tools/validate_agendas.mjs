@@ -2,7 +2,7 @@
 //   node tools/validate_agendas.mjs
 import { readFileSync } from "node:fs";
 const R = (p) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url), "utf8"));
-const game = R("content/build/game.json"), bundle = R("content/build/whereabouts.json"), cards = R("content/base/npcs/cards.json").cards;
+const game = R("content/build/game.json"), bundle = R("content/build/whereabouts.json"), cards = { ...R("content/base/npcs/cards.json").cards, ...(game.extraCards || {}) };
 const places = new Set(); for (const s of Object.values(bundle.settlements)) { for (const l of s.locations || []) places.add(l.id); for (const o of s.outer || []) places.add(o.id); }
 for (const n of bundle.map.nodes) places.add(n.id);
 const vars = game.agendas.vars, facts = game.facts;

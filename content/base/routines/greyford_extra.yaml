@@ -1,0 +1,21 @@
+# C등급 셋의 일과 (24 §3.5 B등급 LOD와 같은 네 칸)
+npc_toby:
+  home: gf_river_huts
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: gf_river_huts, doing: 움막 아홉 호에서 잔다}
+    - {days: workday, from: "06:00", to: "17:30", at: greyford__west_pasture, doing: 들에서 단을 나른다, outdoor: true}
+    - {days: all, from: "17:50", to: "19:00", at: gf_rooster, doing: 배급 줄에서 키트 뒤에 선다}
+    - {days: all, from: "19:00", to: "21:00", at: gf_willow_bank, doing: 둑에서 돌을 던진다, outdoor: true, rain: {at: gf_river_huts, doing: 움막에서 젖은 발을 턴다}}
+npc_aldo:
+  home: gf_south_barracks
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: gf_south_barracks, doing: 기침을 하며 잔다}
+    - {days: workday, from: "06:00", to: "17:00", at: gf_weaving_shed, doing: 직조 헛간 구석에서 실을 감는다}
+    - {days: all, from: "17:40", to: "19:30", at: gf_rooster, doing: 배급 줄 맨 끝에서 옛 노래를 웅얼거린다}
+    - {days: all, from: "19:30", to: "21:00", at: gf_well_square, doing: 우물가에 앉아 지나가는 사람에게 말을 건다}
+npc_stray_dog:
+  home: gf_river_huts
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: gf_river_huts, doing: 움막 처마 밑에 웅크려 있다}
+    - {days: all, from: "06:00", to: "17:00", at: gf_tannery, doing: 무두장 뒤에서 버린 가죽 찌꺼기를 뒤진다}
+    - {days: all, from: "17:00", to: "22:00", at: gf_willow_bank, doing: 둑을 따라 냄새를 맡으며 걷는다, outdoor: true}

@@ -147,6 +147,7 @@ button.ui:hover { border-color: var(--gold); }
   <h2 id="oathH" hidden>맹세</h2><ul id="oaths" hidden></ul>
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
   <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
+  <h2 id="twoH" hidden>두 겹의 날</h2><div id="two" hidden class="book"></div>
   <h2>몸과 손</h2><ul id="skills"></ul>
   <h2>낱말</h2><ul id="lex"></ul>
   <h2 data-sec="secRep">평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep" data-sec="secRep"></ul>
@@ -243,7 +244,7 @@ function render(d, loading = false) {
     $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, p.fatigue >= 50 ? `지침 ${p.fatigue}` : "", p.fear >= 2 ? `<span class="chip hot">떨림</span>` : "", v.fight ? `<span class="chip hot">싸움 — ${esc(v.fight.name)} · ${v.fight.round}합</span>` : "", `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
     $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
-    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
+    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.knots ? ` <span style="color:var(--gold)" title="매듭">${"⟡".repeat(x.knots)}</span>` : ""}${x.heldKnots && !x.thisLoop ? ` <span style="color:var(--ink-faint)" title="지난 회차의 매듭">${"◇".repeat(x.heldKnots)}</span>` : ""}${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
     const OA = [...(v.oaths || []).map((o) => `<li>"${esc(o.line)}" — ${o.state === "held" ? "품고 있다" : o.state === "kept" ? "지켜졌다" : "깨졌다"}${o.witnesses.length ? ` <span style="color:var(--ink-faint)">(증인: ${esc(o.witnesses.join(", "))})</span>` : ""}</li>`), ...(v.pastOaths || []).map((l) => `<li class="past">┊ "${esc(l)}" — 증인은 잊었다. 너는 기억한다</li>`)];
     $("oaths").innerHTML = OA.join(""); $("oaths").hidden = $("oathH").hidden = !OA.length;
     $("whom").querySelectorAll(".memo").forEach((m) => (m.onchange = () => fetch("/api/memo", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ npc: m.dataset.npc, text: m.value }) })));
@@ -253,6 +254,8 @@ function render(d, loading = false) {
       + (Object.keys(R.views || {}).length ? `<li>${Object.entries(R.views).map(([k, x]) => `${esc(k)} ${x > 0 ? "+" : ""}${x}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
     $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
     $("skills").dataset.traits = (v.traits || []).join(", ");
+    const T2 = v.twoDays; $("two").hidden = $("twoH").hidden = !T2?.then;
+    if (T2?.then) $("two").innerHTML = `<div style="color:var(--ink-faint)">┊ 지난 회차의 이 날 (${esc(T2.then.date)}) — ${esc(T2.then.at)}${T2.then.notes.map((n) => `<br>┊ ${esc(n)}`).join("")}</div>${T2.now ? `<div style="margin-top:6px">이번 — ${esc(T2.now.at)}${T2.now.notes.map((n) => `<br>· ${esc(n)}`).join("")}</div>` : `<div style="margin-top:6px">이번 — 아직 하루가 끝나지 않았다</div>`}`;
     $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
     $("skills").innerHTML = ((v.traits || []).length ? `<li style="color:var(--gold)">기질 — ${esc(v.traits.join(", "))}</li>` : "") + (v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span style="color:var(--ink-faint)">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("");
   }
@@ -281,8 +284,10 @@ function render(d, loading = false) {
     setTimeout(() => $("tn")?.focus(), 50);
     return;
   }
-  const more = ch.filter((c) => c.more);
-  const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time");
+  // 이름 붙이기: 선택지를 누르면 입력칸이 열린다
+  const nameNpc = ch.filter((c) => c.input === "npc_name");
+  const more = ch.filter((c) => c.more && c.input !== "npc_name");
+  const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time" && c.input !== "npc_name");
   const moves = ch.filter((c) => !c.more && c.kind === "move"), time = ch.filter((c) => !c.more && c.kind === "time");
   const cls = { "▲": "up", "▼": "down", "?": "unk" };
   const btn = (c) => {
@@ -292,11 +297,13 @@ function render(d, loading = false) {
   };
   panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
     ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
+    ${nameNpc.map((c) => `<form class="free nameNpc" data-id="${esc(c.id)}"><input placeholder="${esc(c.text)}" maxlength="10" autocomplete="off"><button class="ui">이름</button></form>`).join("")}
     ${more.length ? `<details class="moves"><summary>다른 행동 (${more.length})</summary><div class="choices">${more.map(btn).join("")}</div></details>` : ""}
     ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
     ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;
   panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector(".ct").textContent.replace(/^◈/, "") })));
   panel.querySelectorAll(".q").forEach((q) => (q.onclick = () => { const w = q.parentElement.nextElementSibling; w.hidden = !w.hidden; q.setAttribute("aria-expanded", !w.hidden); }));
+  panel.querySelectorAll(".nameNpc").forEach((fm) => (fm.onsubmit = (e) => { e.preventDefault(); const v = fm.querySelector("input").value.trim(); if (v) act({ id: fm.dataset.id, text: v }, false, `"${v}." — 이름을 붙여 준다`); }));
   const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
 }
 function show(d, isFresh = false) {

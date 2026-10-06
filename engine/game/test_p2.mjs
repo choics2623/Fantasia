@@ -171,4 +171,39 @@ const fresh = () => G.boot(C, G.newRun({ seed: 7, opening: false }));
   const st = C.game.storylets.find((x) => x.id === "elsa_two_days");
   check("엘사의 장면은 회차가 쌓일수록 이르다 (3회차 → 2일)", st.trigger.window.from_loop["3"].startsWith("312-09-02"));
 }
+
+// C등급 사람들 · 이름 붙이기 · 애착과 밤의 의식 · 두 겹의 날 · 고요한 날의 소품
+{
+  check("토비·알도·떠돌이 개 (C등급)", ["npc_toby", "npc_aldo", "npc_stray_dog"].every((n) => C.cards[n]?.tier === "C"));
+  const g = fresh();
+  let dog = null;
+  for (let i = 0; i < 30 && !dog; i++) { if (g.at !== "gf_willow_bank" && ids(g).includes("go:gf_willow_bank")) G.act(g, { id: "go:gf_willow_bank" }); dog = G.options(g).find((o) => o.id === "name:npc_stray_dog"); if (!dog) G.act(g, { id: ids(g).includes("wait:60") ? "wait:60" : ids(g)[0] }); }
+  check("떠돌이 개에게 이름을 붙일 수 있다", !!dog && dog.input === "npc_name", G.view(g).time);
+  if (dog) {
+    G.act(g, { id: dog.id, text: "재" });
+    check("이름을 붙이면 그 이름으로 보인다", G.displayName(g, "npc_stray_dog") === "재");
+    const g2 = G.boot(C, { ...G.regressRun(g), opening: false });
+    check("회귀하면 그 이름은 너만 기억한다", G.displayName(g2, "npc_stray_dog") !== "재" && g2.run.carry.soul.names.npc_stray_dog === "재");
+    check("애착은 회귀를 건넌다 (주는 쪽만)", (g2.run.carry.soul.bonds.npc_stray_dog || 0) >= 7);
+  }
+  // 키트 대신 맞은 채찍은 매듭이 된다 — 그리고 밤의 의식
+  const h = G.boot(C, G.newRun({ seed: 7 })); G.act(h, { id: "story_name", text: "하린|형" }); G.act(h, { id: "story:stay_in_line" });
+  G.act(h, { id: "go:gf_river_huts" });
+  let rit = null;
+  for (let i = 0; i < 8 && !rit; i++) { if (G.view(h).story) { G.act(h, { id: ids(h)[0] }); continue; } rit = ids(h).find((x) => x === "ritual:song"); if (!rit) G.act(h, { id: "wait:60" }); }
+  check("밤, 움막, 키트 — 강물 노래", !!rit, G.view(h).time);
+  if (rit) { const s0 = h.P.status.stress; G.act(h, { id: rit }); check("의식은 매듭을 묶고 짐을 덜어 준다", (h.P.bond?.npc_kit || 0) >= 3 && h.P.status.stress < s0); check("하룻밤에 한 번", !ids(h).includes("ritual:song")); }
+  // 두 겹의 날: 지난 회차의 같은 날
+  const d = fresh(); G.act(d, { id: "go:gf_well_square" }); G.act(d, { id: "wait:60" }); G.act(d, { id: "routine_day" });
+  const d2 = G.boot(C, { ...G.regressRun(d), opening: false });
+  check("두 겹의 날 — 지난 회차의 이 날이 있다", !!G.view(d2).twoDays?.then, JSON.stringify(G.view(d2).twoDays));
+}
+
+// 고요한 날의 소품 (18 §3.10): 긴장이 낮은 날, 그 자리에 있으면
+{
+  const g = G.boot(C, { ...G.newRun({ seed: 7, opening: false }), lethal: true });
+  let hit = null;
+  for (let i = 0; i < 40 && !hit; i++) { if (G.view(g).story) { hit = G.view(g).story.id; break; } if (g.at !== "gf_graveyard" && ids(g).includes("go:gf_graveyard")) G.act(g, { id: "go:gf_graveyard" }); else G.act(g, { id: ids(g).includes("wait:60") ? "wait:60" : ids(g)[0] }); }
+  check("번호 묘지에 머물면 고요한 날의 소품", hit === "vg_graveyard_numbers", hit);
+}
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

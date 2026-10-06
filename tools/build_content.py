@@ -116,7 +116,10 @@ def main():
     lexicon = []
     for f in load("content/base/lexicon/*.yaml"):
         lexicon += (f or {}).get("words") or []
-    game = {"lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
+    extra_cards = {}
+    for f in load("content/base/npcs/extra_*.yaml"):
+        extra_cards.update((f or {}).get("cards") or {})
+    game = {"extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")

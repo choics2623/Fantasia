@@ -94,6 +94,7 @@ const NEW_PLAYER = () => ({
 
 // ── 콘텐츠 ── (content/build/*.json + cards.json)
 export function prepareContent({ bundle, cards, game }) {
+  cards = { ...cards, ...(game.extraCards || {}) };   // C등급 (손으로 쓴 이름 없는 사람들)
   const names = {};
   for (const c of Object.values(cards)) {
     if (!c.name) continue;
@@ -366,6 +367,12 @@ function rawOptions(g) {
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
+  // 이름 붙이기 / 밤의 의식
+  for (const w of present(g)) if (cardOf(g, w.npc).nameable && !g.P.names?.[w.npc]) o.push({ id: `name:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 이름을 붙여 준다`, input: "npc_name", npc: w.npc });
+  if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && g.P.lastRitual !== Math.floor((g.t - 6 * 60) / 1440)) {
+    o.push({ id: "ritual:song", kind: "scene", label: "키트에게 강물 노래를 불러 준다" });
+    if (mine(g).some((i) => i.eat)) o.push({ id: "ritual:bread", kind: "scene", label: "빵을 반으로 나눠 키트와 먹는다" });
+  }
   // 맹세 (16 §5.3): 계기가 온 뒤, 아직 하지 않은 맹세 하나를 소리 내어 말할 수 있다 — 이 자리 사람들이 증인이 된다
   for (const oa of g.content.game.oaths || []) {
     if ((g.oaths || []).some((x) => x.id === oa.id) || !storyWhen(g, oa.offer_when) || g.t > parseDT(oa.deadline)) continue;
@@ -560,8 +567,15 @@ function dayEnd(g) {
   const goalsNow = goals(g).filter((x) => x.days != null).map((x) => `${x.who}까지 ${x.days}일`);
   const card = [`수첩 +${Math.max(0, g.P.notebook.length - mk.notebook)}`, `아는 사람 ${g.P.met.size}`, `동화 ${g.S.purse.player}못`, ...goalsNow].join(" · ");
   g.feed.push({ kind: "dayend", text, card });
+  (g.P.days ??= []).push({ day: Math.floor((g.t - START) / 1440), date: fmt(g.t).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, ""), at: placeName(g, g.at), notes: g.P.notebook.slice(mk.notebook).slice(-3), hook: text });
   g.P.dayMark = { notebook: g.P.notebook.length, met: g.P.met.size, coin: g.S.purse.player, journal: g.run.journal.length };
   g.P.lastDayEnd = day;
+}
+// 두 겹의 날 (16 §4): 지난 회차의 같은 날과 오늘을 나란히 — 같음/달라짐은 플레이어가 본다
+function twoDays(g) {
+  const day = Math.floor((g.t - START) / 1440), prev = soul(g).days?.[g.run.loop - 1] || [];
+  const then = prev.find((x) => x.day === day) || null, now = (g.P.days || []).find((x) => x.day === day) || null;
+  return then || now ? { day, then, now } : null;
 }
 // 아침 표지 (18 §5.2 ③): 마지막으로 잠에서 깬 때의 기록 길이 — 이야기 모드의 되돌리기 지점
 export function morningMark(g) { return g.P.marks?.length ? g.P.marks[g.P.marks.length - 1] : null; }
@@ -784,6 +798,37 @@ const ACHIEVEMENTS = [
   { id: "no_blood", tp: 1, text: "이레 동안 아무도 죽이지 않았다", when: (g) => g.t - START >= 7 * 1440 && !g.deeds.some((d) => /^kill/.test(d.kind)) },
   { id: "oath_kept", tp: 2, text: "맹세를 지켰다", when: (g) => (g.oaths || []).some((o) => o.state === "kept") },
 ];
+// ── 애착 (20 §4): 플레이어가 들인 것으로 잰다 — 나눈 빵, 대신 맞은 채찍, 붙여 준 이름, 밤의 의식 ──
+function bond(g, n, d) { (g.P.bond ??= {})[n] = clamp((g.P.bond[n] || 0) + d, 0, 100); }
+const knots = (v) => (v >= 40 ? 4 : v >= 25 ? 3 : v >= 12 ? 2 : v >= 5 ? 1 : 0);
+// ── 연출가 (18 §3.3·§3.10): 긴장도가 낮은 날, 그 자리에 있으면 고요한 날의 소품 하나 (하루 두 번까지) ──
+function tension(g) {
+  let T = 0;
+  T += Math.min(30, (g.S.wanted?.player?.heat || 0) * 8);
+  T += Object.values(g.nem || {}).reduce((a, x) => a + x.track * 5, 0);
+  T += g.P.status.hunger >= 3 ? 15 : 0;
+  T += goals(g).some((x) => x.days != null && x.days <= 2) ? 30 : 0;
+  return Math.min(100, T);
+}
+function vignetteTrigger(g, t) {
+  if (g.run.opening === false && !g.run.lethal) return null;
+  if (g.story || g.ended || g.convo || g.fight) return null;
+  if (t < START + 11 * 60) return null;            // 첫 저녁과 첫 밤은 대본의 것이다 (2일 새벽까지)
+  const day = Math.floor(t / 1440), used = (g.P.vignettes ??= {});
+  if ((used[day] || 0) >= 2 || tension(g) >= 40) return null;
+  const hm = ((t % 1440) + 1440) % 1440;
+  for (const st of g.content.game.storylets || []) {
+    const tr = st.trigger || {};
+    if (!tr.vignette || g.storyDone.has(st.id) || !atPlace(g, tr.at)) continue;
+    if (tr.hours && !(hm >= parseClock(tr.hours[0]) && hm < parseClock(tr.hours[1]))) continue;
+    if (tr.rain && !g.W.rainy(day)) continue;
+    if (!storyWhen(g, tr.when, t)) continue;
+    if (hash(g.seed, "director", st.id, Math.floor(t / 30)) >= (tr.chance ?? 0.3)) continue;   // 연출 난수 (판정 난수와 따로)
+    used[day] = (used[day] || 0) + 1;
+    return st;
+  }
+  return null;
+}
 // 성향 (01 §1.3): −100~100. ±60에서 특성이 된다. 처음의 나(0)에서 얼마나 멀어졌나 = 본디의 거리 (15 §7.5)
 function temper(g, axis, d) { if (g.P.temper[axis] == null) return; g.P.temper[axis] = clamp(g.P.temper[axis] + d, -100, 100); }
 const TRAITS = { 용기: ["겁 많은", "대담한"], 자비: ["냉혹한", "다정한"], 정직: ["거짓에 능한", "곧은"], 신앙: ["믿지 않는", "경건한"], 탐욕: ["욕심 없는", "탐욕스러운"], 충성: ["누구도 믿지 않는", "곁을 지키는"] };
@@ -811,6 +856,8 @@ function memoryInk(g) {
     const line = x.died ? "┊ 이 사람은 죽었었다. 지금은 숨을 쉰다." : told ? `┊ 이 사람이 너에게 털어놓았었다 — ${told}` : sc >= 40 ? "┊ 이 사람은 너를 깊이 믿었었다." : sc >= 20 ? "┊ 이 사람은 너에게 마음을 열었었다." : sc <= -20 ? "┊ 이 사람은 너를 미워했었다." : null;
     if (line) ink(`person:${n}`, line);
   }
+  // 지난 회차에 이름을 붙여 준 것 (이번엔 그 이름을 모른다)
+  for (const n of here) if (soul(g).names?.[n] && !g.P.names?.[n]) ink(`named:${n}`, `┊ 너는 이 개를 '${soul(g).names[n]}'(이)라 불렀다. 지금은 아무도 그렇게 부르지 않는다.`);
   // 지난 회차에 너를 쫓던 사람 (17 §3.7 휴면 숙적): 그는 모른다. 너는 안다
   for (const x of soul(g).nemeses || []) if (here.includes(x.npc)) ink(`nem:${x.npc}`, "┊ 이 사람은 너를 쫓았었다. 지금은 너를 모른다.");
   // ◇ 표류: 지난 회차의 같은 날·같은 30분·같은 자리와 지금이 다르다 (회차마다 처음 3번만 진동, H5)
@@ -888,6 +935,8 @@ function pass(g, minutes, { sleeping = false } = {}) {
     if (trig) { openStory(g, trig.st); break; }
     const wt = !sleeping || true ? windowTrigger(g, next) : null;
     if (wt) { g.t = next; openStory(g, wt); break; }
+    const vg = vignetteTrigger(g, next);
+    if (vg) { g.t = next; openStory(g, vg); break; }
     if (threatsTick(g, next)) break;
     oathsTick(g, next);
     promisesTick(g, next);
@@ -1128,6 +1177,7 @@ function storyEffect(g, e, res) {
   else if (k === "goto") g.at = parts[1];
   else if (k === "ration") { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); }
   else if (k === "agenda") g.A.doEffect(rest, g.t);
+  else if (k === "bond") bond(g, parts[1], Number(parts[2]));
   else if (k === "awaken") { (g.P.awakened ??= []).push(parts[1]); g.P.tpSpent = (g.P.tpSpent || 0) + 3; }
   else if (k === "temper") temper(g, parts[1], Number(parts[2]));
   else if (k === "stress") g.P.status.stress = clamp(g.P.status.stress + Number(parts[1]), 0, 100);
@@ -1211,6 +1261,10 @@ const DO = {
   talk(g, n, res) {
     const w = g.W.where(n, g.t);
     g.P.met.add(n);                    // 말을 섞으면 이름을 안다 (이름 모르던 사람도 — 대화에서 이름을 듣는다)
+    if (!cardOf(g, n).nameable) bond(g, n, 1);
+    // C등급은 세 번 말을 섞으면 B등급으로 (08 §2) — 기억 칸이 늘어난다
+    const tc = (g.P.talks ??= {}); tc[n] = (tc[n] || 0) + 1;
+    if (cardOf(g, n).tier === "C" && tc[n] >= 3) (g.P.promoted ??= new Set()).add(n);
     g.convo = { npc: n, turns: 0, patience: 6 + Math.max(0, Math.round(relOf(g, n).like / 10)), transcript: [] };
     if (asleep(w, g.t)) { mind(g, n).anger += 1; res.notes.push(`${nameOf(g, n)}은(는) 자다 깼다`); }
     pass(g, 1);
@@ -1356,6 +1410,18 @@ const DO = {
     } else res.notes.push("해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
     g.at = "gf_rooster";
   },
+  // 이름 붙이기 (20 §5.1): 이름 없는 것에 이름을 — 그 이름은 너만 기억한다
+  name(g, n, res, opt, e) {
+    const nm = String(e.text || "").trim().slice(0, 10) || "…";
+    (g.P.names ??= {})[n] = nm; bond(g, n, 8); pass(g, 2);
+    res.notes.push(`이제 이 개는 '${nm}'이다. 아무도 그렇게 부르지 않는다. 너만`);
+  },
+  // 밤의 의식 (20 §5.2): 움막, 통금 뒤, 키트와 — 노래 하나, 빵 반 쪽
+  ritual(g, kind, res) {
+    pass(g, 15); g.P.lastRitual = Math.floor((g.t - 6 * 60) / 1440);
+    if (kind === "song") { bond(g, "npc_kit", 3); bond(g, "npc_gerda", 1); g.P.status.stress = clamp(g.P.status.stress - 4, 0, 100); res.notes.push("강물 노래 한 소절. 키트가 따라 부르다 잠든다"); }
+    else { const it = mine(g).find((i) => i.eat); if (it) g.L.items.delete(it.id); bond(g, "npc_kit", 5); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); g.P.status.stress = clamp(g.P.status.stress - 3, 0, 100); res.notes.push("빵을 반으로. 큰 쪽을 키트에게"); }
+  },
   oath(g, id, res) {
     const oa = (g.content.game.oaths || []).find((x) => x.id === id);
     const witnesses = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
@@ -1430,6 +1496,7 @@ const DO = {
       addMemory(g, n, { kind: "emotion", tag: "다정함", text: `셋째가 ${it.name}을(를) 나눠 주었다`, salience: hungry ? 4 : 2, source: "engine" });
       res.notes.push(`${it.name}을(를) 나눴다`);
       if (hungry) deed(g, "share_food", null, g.at, { witnessed: true });
+      bond(g, n, hungry ? 8 : 5);
       return;
     }
     g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12;
@@ -1536,7 +1603,7 @@ function addMemory(g, n, mem) {
     if (good) bumpRel(g, n, mem.delta || 0, Math.round((mem.delta || 0) / 2));
     if (bad) bumpRel(g, n, -Math.abs(mem.delta || 0), -Math.abs(mem.delta || 0));
   }
-  const slots = { S: 60, A: 30, B: 12 }[cardOf(g, n).tier] || 8;
+  const slots = { S: 60, A: 30, B: 12 }[g.P.promoted?.has(n) ? "B" : cardOf(g, n).tier] || 8;
   if (m.memories.length > slots) { m.memories.sort((a, b) => (b.salience || 0) - (a.salience || 0)); m.memories.length = slots; }
 }
 // "방앗간" → gf_mill (이름의 일부로 찾는다)
@@ -1656,6 +1723,12 @@ function settleSoul(g, record) {
   S.echoNamed = S.echoNamed || !!g.S.vars.echo_named;
   S.paths = { ...(S.paths || {}), [loop]: (g.P.path || []).slice(0, 800) };
   for (const k of Object.keys(S.paths)) if (Number(k) < loop - 2) delete S.paths[k];   // 최근 세 회차만
+  // 애착은 회귀를 건넌다 — 주는 쪽만 (held = max(held × 0.9, 이번 최고치), 20 §4.3)
+  S.bonds ||= {};
+  for (const [n, v] of Object.entries({ ...Object.fromEntries(Object.keys(S.bonds).map((k) => [k, 0])), ...(g.P.bond || {}) })) S.bonds[n] = Math.round(Math.max((S.bonds[n] || 0) * 0.9, v));
+  S.names = { ...(S.names || {}), ...(g.P.names || {}) };
+  S.days = { ...(S.days || {}), [loop]: (g.P.days || []).slice(-120) };
+  for (const k of Object.keys(S.days)) if (Number(k) < loop - 3) delete S.days[k];
   S.memUsed ||= {};
   for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);
@@ -1824,6 +1897,7 @@ function groupOf(g, n) {
 // ── 장면 보기 (UI와 LLM이 같은 것을 본다 — 플레이어가 알 수 있는 것만) ──
 // 화면과 서술에 쓰는 이름: 셋째가 이름을 아는 사람은 이름, 모르는 사람은 겉모습 구절 (content/base/npcs/public_*.yaml)
 export function displayName(g, n) {
+  if (g.P.names?.[n]) return g.P.names[n];
   const pub = g.content.game.public?.[n];
   if (pub && String(pub).startsWith("?") && !g.P.met.has(n) && !soulPerson(g, n) && !knownNames(g).has(nameOf(g, n))) return String(pub).slice(1).trim();
   return nameOf(g, n);
@@ -1896,7 +1970,7 @@ export function view(g) {
       id: n, name: nameOf(g, n), who: whoIs(g, n), thisLoop: g.P.met.has(n),
       lastSeen: g.P.seen[n] ? `${fmt(g.P.seen[n].t).slice(7)} ${placeName(g, g.P.seen[n].at)}` : null, guess: estimate(g, n),
       mood: g.P.met.has(n) ? moodWords(relOf(g, n), mind(g, n)) : "이번 회차엔 아직 나를 모른다",
-      ...bookOf(g, n),
+      ...bookOf(g, n), knots: knots(g.P.bond?.[n] || 0), heldKnots: knots(soul(g).bonds?.[n] || 0),
       past: (soulPerson(g, n)?.loops || []).map((x) => `${x.loop}회차: ${pastBond(x)}${x.impressions.length ? ` · 그는 나를 '${x.impressions.join("·")}'(으)로 보았다` : ""}${x.lines[0] ? ` · ${x.lines[0]}` : ""}${x.died ? " · 그 회차에 죽었다" : ""}`),
     })),
     unlocked: unlockedNow(g),
@@ -1904,6 +1978,7 @@ export function view(g) {
     pastOaths: (soul(g).oaths || []).filter((o) => !(g.oaths || []).some((x) => x.id === o.id)).map((o) => o.line),
     lastHook: g.P.lastHook || null,
     lexicon: lexicon(g),
+    twoDays: twoDays(g),
     traits: traits(g), mode: g.run.mode || "grim", echoNamed: !!g.S.vars.echo_named || (soul(g).echoNamed || false),
     talents: talentsOf(g), achievements: soul(g).achievements || [],
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),

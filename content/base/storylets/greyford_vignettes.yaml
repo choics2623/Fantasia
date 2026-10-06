@@ -1,0 +1,93 @@
+# 고요한 날의 소품 (18 §3.10) — 연출가가 고르는 선택적 장면. 확정·인과는 건드리지 않는다.
+# 긴장도가 낮을 때, 그 자리에 있으면, 하루 두 번까지. 연출 난수는 판정 난수와 따로 굴린다.
+# trigger.vignette: true · at · hours [from, to] · rain/night · when · chance (그 자리에 있을 때 30분마다)
+storylets:
+  - id: vg_rain_hut12
+    trigger: {vignette: true, at: gf_river_huts, rain: true, hours: ["19:00", "23:30"], chance: 0.35, when: ["alive npc_kit"]}
+    text: |
+      지붕 새는 자리에서 물이 똑, 똑 떨어진다. 키트가 그릇을 받쳐 놓고, 물방울 소리에 맞춰 무언가를 흥얼거린다. 어머니가 부르던 옛 노래다. 가사는 다 틀렸다.
+    choices:
+      - id: sing
+        label: 가사를 고쳐 같이 부른다
+        text: |
+          네 목소리가 키트의 목소리 아래로 깔린다. 게르다가 어둠 속에서 기침을 멈추고 듣는다. 노래가 끝나도 아무도 말하지 않는다.
+        effects: ["bond npc_kit 3", "bond npc_gerda 2", "stress -4"]
+      - id: listen
+        label: 그냥 듣는다
+        text: |
+          틀린 가사가 빗소리에 섞인다. 그래도 노래다.
+        effects: ["stress -2"]
+  - id: vg_well_quarrel
+    trigger: {vignette: true, at: gf_well_square, hours: ["07:00", "18:00"], chance: 0.3}
+    text: |
+      우물가에서 여자 둘이 두레박줄을 두고 다툰다. 쓴물이라도 물은 물이다. 한 여자가 다른 여자의 물동이를 엎는다. 아무도 말리지 않는다.
+    choices:
+      - id: help
+        label: 엎어진 물동이를 세워 준다
+        text: |
+          여자가 너를 본다. 고맙다는 말 대신 턱으로 남 막사 쪽을 가리킨다. "오늘 밤 순찰은 스니야. 스니는 우물 쪽으로 안 와."
+        effects: ["temper 자비 2", "note 우물가 여자의 말 — 스니의 순찰은 우물 쪽으로 오지 않는다"]
+      - id: pass
+        label: 지나간다
+        text: ""
+        effects: []
+  - id: vg_kennel_howl
+    trigger: {vignette: true, at: gf_kennel, hours: ["06:00", "21:00"], chance: 0.4}
+    text: |
+      남작의 사냥개들이 일제히 너를 향해 돌아선다. 짖지 않는다. 그게 더 나쁘다. 우리 쇠창살에 코를 대고, 너만 본다.
+    choices:
+      - id: back
+        label: 천천히 물러난다
+        text: |
+          한 걸음, 두 걸음. 개 한 마리가 낮게 그르렁거린다. 사육사가 고개를 든다 — 너를 보지는 않았다.
+        effects: ["fear 1"]
+  - id: vg_mill_dust
+    trigger: {vignette: true, at: gf_mill, hours: ["08:00", "17:00"], chance: 0.35, when: ["alive npc_thomas"]}
+    text: |
+      방앗간 바닥의 판자 하나가 다른 판자보다 새것이다. 그 틈에서 보리 냄새가 난다. 이 집의 보리는 모두 남작의 것인데.
+    choices:
+      - id: look
+        label: 판자 틈을 들여다본다
+        check: {skill: 통찰, D: 24}
+        success:
+          text: |
+            틈 아래로 자루 하나. 둘. 장부에는 없는 자루들이다. 토마스가 문간에서 너를 본다. 아무 말도 하지 않는다. 너도.
+          effects: ["learn fact_gf_thomas_grain_route", "rel npc_thomas trust -5"]
+        failure:
+          text: |
+            먼지뿐이다. 토마스가 비질을 하며 다가온다. "거기 서 있지 마라. 다리 걸린다."
+          effects: []
+      - id: leave
+        label: 냄새만 기억해 둔다
+        text: ""
+        effects: []
+  - id: vg_graveyard_numbers
+    trigger: {vignette: true, at: gf_graveyard, hours: ["06:00", "20:00"], chance: 0.5}
+    text: |
+      번호 묘지. 이름 대신 숫자가 새겨진 말뚝들. 312-214, 312-215. 올해만 이백 개가 넘는다. 말뚝 하나가 새것이다. 숫자 밑에 누군가 손톱으로 긁어 놓은 자국 — 글자다. 너는 읽을 수 있다. "미라."
+    choices:
+      - id: read
+        label: 그 이름을 소리 내어 읽는다
+        text: |
+          "미라." 바람이 말뚝 사이를 지나간다. 이 이름을 마지막으로 부른 사람은 누구였을까.
+        effects: ["stress 3", "temper 신앙 2"]
+      - id: scratch
+        label: 옆 말뚝에도 무언가를 긁는다
+        text: |
+          손톱이 나무에 박힌다. 너는 아직 그 사람의 이름을 모른다. 그래서 선 하나만 긋는다. 이름이 있었다는 표시.
+        effects: ["temper 자비 2", "stress -2"]
+  - id: vg_chapel_candle
+    trigger: {vignette: true, at: gf_chapel, hours: ["17:00", "21:00"], chance: 0.35, when: ["alive npc_osric"]}
+    text: |
+      예배당에 아무도 없다. 제단의 사슬등불 하나가 꺼져 있다. 그 옆 바닥에 수지 양초 토막이 떨어져 있다.
+    choices:
+      - id: take
+        label: 양초 토막을 품에 넣는다
+        text: |
+          작은 토막. 한 시간은 탈 것이다. 어둠 속에서 한 시간은 길다.
+        effects: ["item candle", "temper 정직 -1"]
+      - id: light
+        label: 꺼진 등불에 불을 옮겨 붙인다
+        text: |
+          불이 붙는다. 사슬등불이 흔들린다. 뒤에서 누가 숨을 들이쉰다 — 오스릭 사제다. 그는 아무 말 없이 고개를 한 번 숙인다.
+        effects: ["rel npc_osric trust 5", "temper 신앙 3"]
