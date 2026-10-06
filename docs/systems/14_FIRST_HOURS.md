@@ -300,18 +300,13 @@
 
 ```
 ┌────────────────────────────────┐
-│                                  │
 │  어둠. 젖은 짚 냄새.               │
 │  누군가 기침을 손바닥으로 삼킨다.    │
-│                                  │
 │  "…얘야. 깨 있니."                │
-│                                  │
 │  어머니의 입술이 귀에 닿는다.        │
 │  주인이 부르는 이름 말고. 너를 낳던   │
 │  밤에 어머니가 몰래 지은 이름.       │
-│                                  │
 │      [ ______________ ]          │
-│                                  │
 │  "아무한테도 말하지 마라.            │
 │   이름을 아는 자가 너를 가진다."     │
 └────────────────────────────────┘
@@ -371,21 +366,17 @@
 │ 키트는 무릎을 가슴까지 끌어당긴 채   │
 │ 네 등에 이마를 대고 잔다. 어머니의   │
 │ 기침은 한 시간 전에 멎었다.          │
-│                                  │
 │ 꿈을 꾼다. 문마다 글자가 새겨진     │
 │ 거리. 누군가 네 손목을 잡고 문      │
 │ 하나 앞에 세운다. "읽어 봐."         │
 │ 너는 읽는다. 소리 내어.             │
 │ 노예말도 공용어도 아닌 소리로.       │
-│                                  │
 │ 손끝이 아파서 깬다.                 │
 │ 흙바닥에 손톱으로 그은 자국이 있다.   │
 │ 선 셋이 한 점에서 만나는 모양.       │
 │ 꿈속의 문에 있던 것과 같은 모양.      │
-│                                  │
 │ "{player.형누나}, 그거 뭐야?"        │
 │ 키트가 깨어 있다.                   │
-│                                  │
 │ 그때 움막 틈으로 등불 빛이 기어든다.  │
 │ 크릭 감독 스니의 두 시 순회.         │
 │ 발소리가 문 앞에서 멈춘다.           │
@@ -418,10 +409,8 @@
 │ 물동이를 들고 나서다 멈춘다.         │
 │ 문설주에 숯으로 그은 작은 원.        │
 │ 어젯밤엔 없었다.                   │
-│                                  │
 │ 옆 움막 문설주엔 없다.              │
 │ 그 옆에도.                         │
-│                                  │
 │        ─────── 1일 ───────        │
 │  매듭 +3 · 들은 말 +1 · 동화 3못    │
 │  키트의 이름이 불릴 때까지 38일       │
@@ -442,21 +431,17 @@
 │ 꾸러미가 짤랑이지 않게 손으로 쥐고.   │
 │ 꾸러미 끝에 아기 털모자가 매달려     │
 │ 있다. 귀 끝이 잘려 있다.             │
-│                                  │
 │ "고개를 들어도 된다. 나는 주인이     │
 │  아니니까."                        │
-│                                  │
 │ "네 동생 이름이 첫 명단 스물여섯째    │
 │  줄에 있다. 명단은 남작님 것이지만,   │
 │  이름을 불러 주는 입은 내 것이지."    │
-│                                  │
 │ 그녀가 수탉의 바닥을 턱으로 가리킨다. │
 │ "이 집 밑에서 밤마다 누가 기침을     │
 │  한다. 몇 명인지, 어디로 드나드는지.  │
 │  그걸 가져오면 키트의 이름은 빠진다.  │
 │  그 자리엔 누군가의 이름이 들어가겠지.│
 │  그건 네가 알 바 아니다."            │
-│                                  │
 │ 털모자를 한 번 쓰다듬는다.           │
 │ "내일 이 시간까지."                 │
 └────────────────────────────────┘
@@ -486,13 +471,11 @@
 │ 달이 없다. 노가 물을 가르는 소리만.  │
 │ 페인은 한 번도 뒤를 보지 않는다.     │
 │ 평소의 페인은 쉬지 않고 떠든다.      │
-│                                  │
 │ 하겐이 키트의 어깨를 두드린다.        │
 │ "키트. 춥지? 금방이다."             │
 │ 그는 언제나 이름을 먼저 부른다.       │
 │ 고개를 돌릴 때 귀 뒤의 머리칼이      │
 │ 들린다. 작은 늑대 이빨 문신.         │
-│                                  │
 │ 하겐이 웃는다. 은니가 별빛을 받는다.  │
 │ 인간이 은을 입에 물고 다닌다.        │
 │ 누가 그걸 허락했을까.               │
@@ -519,16 +502,13 @@
 │ 페인이 물을 차고 갈대 속으로        │
 │ 사라진다. 하겐은 쫓지 않는다.        │
 │ 너를 본다. 웃지 않는다.             │
-│                                  │
 │ "솔직히 말해 줄까?" 그가 칼을 꺼내지  │
 │ 않고 노를 든다. "어차피 잡혔을 거야. │
 │ 나는 값을 매겼을 뿐이지."            │
-│                                  │
 │ 노가 네 관자놀이에 닿는다.           │
 │ 물이 차다. 생각보다 깊다.            │
 │ 일어서려는데 가슴 위에 무언가 얹힌다.  │
 │ 발이다. 천천히, 무게를 싣는다.        │
-│                                  │
 │ 물이 코로 들어온다. 갈대 쪽을 본다.   │
 │ 거기 누가                          │
 └────────────────────────────────┘
@@ -547,12 +527,10 @@
 │ 개들이 원을 그리고 멈춘다. 그 원     │
 │ 안으로 사람이라기엔 너무 큰 것이     │
 │ 걸어 들어온다.                      │
-│                                  │
 │ 볼크가 쭈그려 앉아 네 목에 코를 댄다. │
 │ "킁. 젖은 재."                     │
 │ "너는 거짓말은 안 했다. 그러니 나도   │
 │  안 하겠다. 아프다."                │
-│                                  │
 │ 쇠 송곳니가 햇빛을 받는다.           │
 │ 바위 위에서 누가 숨을 들이켠다.       │
 └────────────────────────────────┘
@@ -571,11 +549,9 @@
 │ 디트마르가 먼저 뛰쳐나간다. 소리도    │
 │ 지르지 않는다. 습지의 갈대가 한꺼번에 │
 │ 일어선다.                          │
-│                                  │
 │ 용인 경비 하나가 말에서 떨어진다.     │
 │ 다른 하나가 창을 고쳐 쥔다.          │
 │ 사슬 줄이 비명을 지르며 엉킨다.       │
-│                                  │
 │ 사라가 너를 본다. 눈 밑의 점 두 개.   │
 │ 그녀의 손목과 앞사람의 손목을 잇는    │
 │ 고리. 쐐기 하나만 빼면 된다.          │
@@ -595,7 +571,6 @@
 │ 쐐기가 빠진다. 사라의 손이 풀린다.    │
 │ 그 순간 옆구리가 뜨겁다. 차갑다.      │
 │ 창날이 들어왔다 나간다.              │
-│                                  │
 │ 눈이 얼굴에 닿는다. 사라가 네 머리를   │
 │ 무릎에 올린다. 그녀의 손이 떨린다.    │
 │ "말해. 이름. 네 진짜 이름."          │
@@ -626,23 +601,18 @@
 │ 22:44 · 여울강 물굽이, 갈대숲       │
 │ ──────────────────────────────── │
 │ 숨을 쉬면 안 된다.                  │
-│                                  │
 │ 갈대가 볼을 벤다. 발가락 하나가       │
 │ 없는 발이 진흙 속에서 얼어 간다.      │
 │ ▏열여섯 해 동안 이 몸은 숨는 법을    │
 │ ▏먼저 배웠다.                       │
-│                                  │
 │ 물 위에서 하겐이 허리를 편다.         │
 │ ▏울프 아저씨도 이랬다. 물에 넣기     │
 │ ▏전에 아직 숨 쉬고 있었다.           │
 │   물이 차다. 가슴 위의 발. 갈대      │
 │   쪽을 봤다. 거기 누가 —            │
-│                                  │
 │ 같은 장면이다. 이쪽에서 보고 있다.    │
-│                                  │
 │ 무언가가 물 위로 떠오른다. 누더기.    │
 │ 열여섯 살. 얼굴이 아래로.            │
-│                                  │
 │ "페인?" 하겐이 갈대를 향해 부른다.    │
 │ "페인, 거기 있냐? 놀랐지? 괜찮아.    │
 │  이 녀석이 미끄러졌어. 이리 와.      │
@@ -670,18 +640,15 @@
 │ ──────────────────────────────── │
 │ 짚 속에 눕는다. 이 자리는 처음인데    │
 │ 몸이 어디가 따뜻한지 안다.           │
-│                                  │
 │ 아래층에서 토마스가 코를 곤다.        │
 │ 손가락으로 다락 바닥 먼지에 글자를    │
 │ 쓴다. 네 개. 창문 너머로 훔쳐본      │
 │ 글자. 그리고 다섯 번째.               │
 │ 선 셋이 한 점에서 만나는 모양.        │
 │ 이 손은 그걸 배운 적이 없다.          │
-│                                  │
 │ 사다리가 삐걱인다. 하겐의 목소리.     │
 │ "페인. 내일 밤 일 있다. 세렌에서      │
 │  손님이 와. 너 좋은 데 보내 줄게."    │
-│                                  │
 │ 송곳니 불 쪽에서 개가 한 번 짖는다.   │
 │ 키트는 우리 수레 안에 있다.           │
 └────────────────────────────────┘
@@ -697,16 +664,13 @@
 │ 있다. 손목의 쇠가 다시 차갑다.        │
 │ ▏잿물에 터진 손바닥. 이 손으로        │
 │ ▏어제 아침에도 남작의 요강을 비웠다.  │
-│                                  │
 │ 눈밭에 누군가 누워 있다. 누더기.      │
 │ 옆구리에서 김이 오른다.              │
 │   그 얼굴을 올려다보고 있었다.        │
 │   눈 밑의 점 두 개.                 │
-│                                  │
 │ 입이 저절로 이름을 부른다.            │
 │ "{player.true_name}."               │
 │ 사라의 목소리로.                    │
-│                                  │
 │ 라미아 호송관이 사슬을 잡아당긴다.    │
 │ "일어나. 서른하나. 하나라도 모자라면 │
 │  내 꼬리가 잘린다. 너는 특별 화물이야.│
@@ -732,21 +696,17 @@
 │ ──────────────────────────────── │
 │ 허리가 무겁다. 열쇠 꾸러미. 그 끝의   │
 │ 작은 털모자.                        │
-│                                  │
 │ 마당 한가운데 들보. 매달린 것이       │
 │ 천천히 돈다. 열여섯 살.              │
 │ ▏저 아이는 끝까지 내 이름을 말하지    │
 │ ▏않았다.                            │
 │   말하지 않았다. 손톱이 셋 빠질 때까지.│
-│                                  │
 │ 이름들이 떠오른다. 외운 적 없는       │
 │ 이름들이. 이 입이 습관처럼 하나씩     │
 │ 센다. 스물셋. 그리고 스물넷째에서     │
 │ 멈춘다. 마당에 매달린 이름에서.       │
-│                                  │
 │ 뒤에서 리즈가 뒤척인다.              │
 │ "엄마? …끝났어?"                    │
-│                                  │
 │ 문을 두드리는 소리. 열쇠 열한 개가    │
 │ 짤랑인다. 헨릭.                     │
 │ "남작님 분부다. 도둑의 식구를 2차     │
@@ -789,16 +749,13 @@
 │ 새 말뚝의 흙이 아직 검다.            │
 │ 돌 밑에 무언가 끼워져 있다.          │
 │ {grave_token}                       │
-│                                  │
 │      ─ ─ ─ ─ ─ ─ ─ ─ ─ ─          │
 │  {player.true_name}                 │
 │  회색여울 강변 움막 12호의 아이        │
 │  붕괴력 296 ~ 312 (16세)            │
-│                                  │
 │  "{chronicle.sentence_1}            │
 │   {chronicle.sentence_2}            │
 │   {chronicle.cause_chain_line}"     │
-│                                  │
 │  남은 것  ▸ {legacy.items_left}      │
 │  잔향     다음 시대의 재능 +{tp}      │
 └────────────────────────────────┘
@@ -827,7 +784,7 @@
 | 9 | 시간 몰아서 보내기 | 사흘이 지나고 숨을 돌린다 | 3일 21:00 | 0:48 | 4일 | "며칠을 보낸다" 버튼 |
 | 10 | 지도 (지역·정착지) | 마을 밖, 높은 곳에서 처음 내려다봄 | 첫 3h 이상 이동 + 고지 | 0:55 | 10일: 페인이 흙바닥에 약도를 그린다 (불법 — 그림도 글) | 흙바닥 약도 질감, 안개 대부분 |
 | 11 | 평판 (시선 · 칭호) | 내 소문이 남의 입으로 돌아온다 | 플레이어 관련 소문 첫 역수신 | 0:57 | 20일 | "사람들이 너를 이렇게 말한다" 한 줄 |
-| 12 | 맹세 (16) | 첫 상실 | 애정·신뢰 30+ 인물의 죽음·매각·실종, 또는 가족 매각 확정 | 0:44~1:38 | 첫 각성 (자기 몸을 잃은 것) | 16 문서 |
+| 12 | 맹세 (16) · 메아리 (16) | 맹세: 첫 상실 또는 첫 불의 (16 §5.3 제안 계기 중 먼저 오는 것). 메아리: 원인이 결과로 처음 돌아옴 | 맹세 제안 첫 발생 / 첫 메아리 | 맹세 0:44~1:38, 메아리 권장 9.25 M1 「세 소나무의 매듭」(≈1:14) | 맹세: 첫 각성(자기 몸을 잃은 것). 맹세록은 첫 맹세 뒤 | 16 문서 |
 | 13 | 영역 (09, 은닉처) | 처음으로 누군가를 숨긴다 | `player_hid_person` 첫 사실 | 1:00 전후 | 없음 (선택적) | "숨긴 곳" 카드: 사람 수·먹을 것·노출 |
 | 14 | 숙적 표식 (17) | 사냥꾼이 냄새를 맡는다 | 볼크 `volk_sniff` | 1:06 | — | 17 문서 |
 | 15 | 전투 (합 단위) | 처음 맞서 싸운다 | 첫 전투 판정 | C·B창 | — | 01 §3.4 |
@@ -836,19 +793,16 @@
 | 18 | 연대기 · 업적 · 다음 시대 TP 한 줄 | 자기 무덤 앞 | `own_grave_313` | T+12 | 새 몸의 첫 잠 | 무덤 카드 (§6.6) |
 | 19 | 인물 수첩 병합 (전생 잉크) | 아는 얼굴을 다른 눈으로 봄 | 첫 각성 후 첫 대화 | T+20 | — | 흐린 잉크 매듭 |
 | 20 | 메뉴 이름 "잔향" | 엘사가 '돌아오는 이'를 말한다 | `elsa_names_returner` | T+35 | 생애 2 시작 후 실제 60분 | 메뉴 제목이 바뀐다 |
-| 21 | 전생의 목소리 (15) | 15 문서 결정 | — | 권장: 생애 2, T+10 이후 | — | 15 문서 |
+| 21 | 내면의 목소리 (15) | 15 §15 제안을 따른다: 각성 단락에 한 줄 → 0:00~0:30 `voice_silence` → 0:30~1:00 첫 판정 힌트 → 생애 2 첫 장면에 직전 생애의 목소리 | 15 문서 | 0:04 / 0:30 / T+0 | — | 15 문서 |
 | 22 | 스승 수련 (03 §3 상한) | 스승이 처음 받아 준다 (군나르·브람·엘사…) | 첫 `mentor.accept` | 생애 1~2 (2~4h) | — | "가르침" 탭 |
 | 23 | 진명 · 마법 | 엘사가 첫 낱말을 가르친다 | 엘사 신뢰 50 + 수업 | 생애 2 (3~6h) | — | 낱말 카드 (뼈판 질감) |
 | 24 | 정세 (클락) | 플레이어가 처음으로 클락 단계를 움직이는 선택을 받는다 (`raven_chooses`, `echo_quota` 등) | 클락 스토리렛 첫 진입 | 생애 2 (4~8h) | 맹약회의 313 소문 도착 | 흐린 막대 8개, 이름만 |
 | 25 | 세력 대응 단계 (10 §5) | 처음 수배된다 | 위협도 1단계 | 가변 | — | 수배 전단 |
-| 26 | 연애 단계 (12) | 처음 연인이 된다 | 관계 '연인' | 생애 2~3 (5~12h) | — | 12 문서 |
-| 27 | 혼인 · 임신 · 자녀 | 처음 비밀 혼인 또는 임신 | 12 §5~6 | 생애 2~4 (8~20h) | — | 12 문서 |
-| 28 | 가문 (12 §8) | 첫 아이에게 비밀 이름을 준다 | 첫 자녀 또는 비밀 가문명 | 생애 3+ (10~25h) | — | 가문 카드 |
-| 29 | 영역 관리자 (09) | 숨긴 곳을 남에게 맡기고 떠난다 | 영역 1단계 + 플레이어 이탈 | 6~15h | — | 관리자 칸 |
-| 30 | 재능 전체 생성 화면 (06) | 아기로 다시 태어남 / 새 시대 | `wake_rebirth` 또는 시대 시작 | 10~40h | — | 06 §9 |
-| 31 | 출신 선택 (12종) | 같음 | 같음 | 같음 | — | 해금된 출신만 |
-| 32 | 시대 끝내기 | 시대 종결 클락 또는 플레이어 결정 | 03 §1 | 20~100h | — | 03 §5 버튼 |
-| 33 | 정확한 % 표시 · 난이도 | 설정 메뉴 (접근성) | 항상 | 0:00 | — | 첫 실행엔 묻지 않는다. 기본 그림다크 |
+| 26 | 연애 · 혼인 · 자녀 · 가문 (12) | 처음 연인이 된다 → 비밀 혼인·임신 → 첫 아이에게 비밀 이름 | 12 §2·§5~6·§8 | 생애 2~4 (5~25h) | — | 12 문서 |
+| 27 | 영역 관리자 (09) | 숨긴 곳을 남에게 맡기고 떠난다 | 영역 1단계 + 플레이어 이탈 | 6~15h | — | 관리자 칸 |
+| 28 | 재능 전체 생성 화면 (06) · 출신 선택 | 아기로 다시 태어남 / 새 시대 | `wake_rebirth` 또는 시대 시작 | 10~40h | — | 06 §9, 해금된 출신만 |
+| 29 | 시대 끝내기 | 시대 종결 클락 또는 플레이어 결정 | 03 §1 | 20~100h | — | 03 §5 버튼 |
+| 30 | 정확한 % 표시 · 난이도 | 설정 메뉴 (접근성) | 항상 | 0:00 | — | 첫 실행엔 묻지 않는다. 기본 그림다크 |
 
 - 첫 15분에 보이는 시스템은 **1~7번 일곱 개**다. 그중 플레이어가 "배운다"고 느끼는 것은 선택지·체감·소지품·인물 수첩·소문 다섯 개뿐이다 (상태·지식은 그냥 보인다).
 - 13번 영역은 "숨긴 곳" 카드 하나로 시작한다. 인구·식량·노출 세 수치만 보인다. 09 문서의 나머지 수치(방어·은폐·사기·문해율·질서·재화)는 인구 6명 이상(비밀 거점)이 되면 열린다.
@@ -898,7 +852,7 @@
 
 ### 8.4 다시 열었을 때
 
-앱을 8시간 이상 닫았다가 열면, 장면 대신 **마지막 장면의 마지막 두 줄**과 **가장 최근에 바뀐 매듭 하나**를 먼저 보여 주고 바로 선택지로 돌아간다. 줄거리 요약문은 쓰지 않는다. 게임 안 시간이 크게 흐른 경우의 요약은 16 문서("당신이 없던 N년")가 맡는다.
+8시간 이상 닫았다 열면 **마지막 장면의 마지막 두 줄**과 **가장 최근에 바뀐 매듭 하나**만 보여 주고 선택지로 돌아간다. 줄거리 요약문은 쓰지 않는다 (게임 안 시간이 크게 흐른 경우는 16·18 문서).
 
 ---
 
@@ -935,83 +889,50 @@
 ### 10.1 TypeScript
 
 ```ts
-// engine/onboarding/ — 첫 시간 장치. 사건 버스(00 §7)만 구독하고 다른 모듈을 직접 부르지 않는다.
-
-type SystemId =
-  | 'choices' | 'feel' | 'notebook' | 'inventory' | 'conditions' | 'knowledge' | 'rumors'
-  | 'check_preview' | 'time_skip' | 'map' | 'standing' | 'oath' | 'domain' | 'nemesis_mark'
-  | 'combat' | 'intrigue' | 'dreams' | 'chronicle' | 'notebook_merge' | 'echo_menu_name'
-  | 'inner_voices' | 'mentor' | 'truename' | 'clocks' | 'response_ladder' | 'romance'
-  | 'family' | 'house' | 'steward' | 'talent_screen' | 'origin_select' | 'era_end';
+// engine/onboarding/ — 사건 버스(00 §7)만 구독·발행. 다른 모듈을 직접 부르지 않는다.
+type SystemId = 'choices' | 'feel' | 'notebook' | 'inventory' | 'conditions' | 'knowledge' | 'rumors'
+  | 'check_preview' | 'time_skip' | 'map' | 'standing' | 'echoes' | 'oath' | 'domain' | 'nemesis_mark'
+  | 'combat' | 'intrigue' | 'dreams' | 'chronicle' | 'notebook_merge' | 'echo_menu_name' | 'inner_voices'
+  | 'mentor' | 'truename' | 'clocks' | 'response_ladder' | 'romance' | 'family' | 'house' | 'steward'
+  | 'talent_screen' | 'origin_select' | 'era_end';
 
 interface UnlockRule {
-  id: string;
-  system: SystemId;
-  trigger: Criterion[];                 // 05 문서 Criterion 재사용 (순수 함수)
+  id: string; system: SystemId;
+  trigger: Criterion[];                            // 05 문서 Criterion (순수 함수)
   fallback?: { gameDay?: number; playMinutes?: number; lifeIndex?: number; scene?: StoryletId };
-  revealScene?: StoryletId;             // 해금을 허구로 보여 주는 장면
-  skin?: string;                        // 첫 모습 ('knot_cord', 'dirt_map' …)
-  hintLine?: 1 | 2 | 3;                 // §9.2 속마음 힌트 번호
+  revealScene?: StoryletId; skin?: string; hintLine?: 1 | 2 | 3;
 }
-
-interface OnboardingState {               // 세이브에 포함, meta 부분은 시대를 넘어 유지
+interface OnboardingState {                        // 세이브. meta는 시대를 넘어 유지
   unlocked: Partial<Record<SystemId, { gameTime: GameTime; playMinutes: number; via: string }>>;
   meta: { everUnlocked: SystemId[]; eraIndex: number };   // eraIndex ≥ 2 → 전부 해금
-  hintsShown: (1 | 2 | 3)[];
-  playMinutes: number;
+  hintsShown: (1 | 2 | 3)[]; playMinutes: number;
 }
-
-interface FirstLifeProfile {              // 18 문서 연출가의 성격 하나
-  id: 'first_winter';
-  safeUntilDay: 3;
-  softenRandomDeaths: { count: 1; minPlayerChoicesInChain: 2; result: 'near_death' };
-  lethalCadenceMinutes: 20;
-  maxArmedSetups: 1; reservedSetups: 1;
-  minWarnings: 2; warningWindowMinutes: 10;
-  warningBonusPerItem: 10;              // 논거 보정
-  endsAt: 'AS312-12-04T00:00';
-}
-
 interface LethalSetup {
-  id: string;
-  route: 'A1' | 'A2' | 'B1' | 'B2' | 'C';
+  id: string; route: 'A1' | 'A2' | 'B1' | 'B2' | 'C';
   window: { from: GameDate; to: GameDate };
-  arm: Criterion[];                     // 설치 조건
+  arm: Criterion[];
   warnings: { id: string; kind: 'rumor' | 'line' | 'feel' | 'scent' | 'sight' }[];
-  lethalChoiceIds: string[];
-  exits: string[];
-  beneficiaries: NpcRef[];              // §4.3 "죽음이 지킨 사람"
-  targetDeathRate: number;              // 플레이테스트 목표 (런타임에 쓰지 않음)
+  lethalChoiceIds: string[]; exits: string[];
+  beneficiaries: NpcRef[];                         // §4.3
+  targetDeathRate: number;                         // 플레이테스트 목표 (런타임 미사용)
 }
-
-interface CauseLink { event: EventId; choiceId?: string; at: GameTime }   // 연대기·16 메아리용
-
+interface CauseLink { event: EventId; choiceId?: string; at: GameTime }   // 연대기·16 메아리 공용
 interface BondCandidate {
-  npc: NpcRef;
-  category: 'child' | 'student' | 'companion' | 'family';
-  eligible: boolean;
-  reason?: 'too_young' | 'dead' | 'betrayed' | 'below_threshold' | 'netted';
+  npc: NpcRef; category: 'child' | 'student' | 'companion' | 'family';
+  eligible: boolean; reason?: 'too_young' | 'dead' | 'betrayed' | 'below_threshold' | 'netted';
   parts: { base: number; life: number; presence: number; name: number; secrets: number; distance: number };
   score: number;
 }
-
 interface SoulTransfer {
-  auto: boolean;                        // 첫 죽음 true
-  candidates: BondCandidate[];          // 실 화면(§4.1-4)에 그대로 그린다
+  auto: boolean;                                   // 첫 죽음 true
+  candidates: BondCandidate[];                     // 실 화면(§4.1-4)에 그대로
   host: NpcRef | 'rebirth';
   causeChain: CauseLink[];
   carry: { memoryFragments: string[]; notebookFaded: FactId[]; echoAwakening: number };
 }
-
-interface AwakeningVariant {
-  id: string;                           // 'wake_fayne' …
-  host: NpcRef | 'rebirth';
-  usualRoutes: LethalSetup['route'][];
-  scene: StoryletId;
-  routeVars: string[];                  // '{death.route}', '{kit.status}' …
-  closingHook: { threat: string; person: NpcRef; secret: FactId };
-}
 ```
+
+- `first_life` 프로파일 값은 18 문서의 `StorytellerProfile` 형식에 §3.3 표를 그대로 넣는다 (이 문서에 별도 타입을 두지 않는다).
 
 ### 10.2 YAML
 
@@ -1019,86 +940,47 @@ interface AwakeningVariant {
 # content/base/onboarding/unlocks.yaml
 - id: unlock_map
   system: map
-  trigger:
-    - event == travel_arrived
-    - edge.hours >= 3
-    - location.tags has 고지
-  fallback: { gameDay: 10, scene: fayne_dirt_map }
+  trigger: [ event == travel_arrived, edge.hours >= 3, location.tags has 고지 ]
+  fallback: { gameDay: 10, scene: fayne_dirt_map }   # 흙바닥 약도 (그림도 글 — 불법)
   revealScene: stone_ring_overlook
   skin: dirt_map
   hintLine: 2
-
-- id: unlock_oath
-  system: oath
-  trigger:
-    - any:
-      - event == npc_lost and npc.rel_to_player.max >= 30     # 죽음·매각·실종
-      - event == family_sale_confirmed
-  fallback: { lifeIndex: 2, scene: first_awakening }          # 자기 몸을 잃은 것도 상실이다
-  revealScene: night_after_loss
-
 - id: unlock_domain
   system: domain
   trigger: [ fact.new == player_hid_person ]
-  revealScene: hidden_place_card                               # 은닉처, 사람 수·먹을 것·노출만
-```
+  revealScene: hidden_place_card                     # 사람 수 · 먹을 것 · 노출만
 
-```yaml
 # content/base/onboarding/lethal_setups.yaml
 - id: death_c_northern_road
   route: C
   window: { from: AS312-09-21, to: AS312-09-22 }
-  arm:
-    - npc_hagen.memory has hagen_knows_escape_intent
-    - npc_hagen.alive and not npc_hagen.exposed
+  arm: [ npc_hagen.memory has hagen_knows_escape_intent, npc_hagen.alive, not npc_hagen.exposed ]
   warnings:
     - { id: fayne_avoids_hagen_talk, kind: line }
     - { id: rumor_irma_husband,      kind: rumor }
     - { id: hagen_silver_tooth,      kind: sight }
-    - { id: volk_arrived,            kind: rumor }
     - { id: bram_nobody_came_back,   kind: line }
   lethalChoiceIds: [ boat_shove_fayne, boat_strike_hagen, cage_escape_night ]
   exits: [ delay_trip, ask_fayne_truth, grey_thread_password, boat_bargain_self ]
   beneficiaries: [ npc_fayne, npc_kit ]
   targetDeathRate: 0.75
-```
 
-```yaml
 # content/base/storylets/greyford/wake_fayne.yaml
-id: wake_fayne
-kind: awakening
-conditions:
-  - soul.host == npc_fayne
-  - soul.first_death == true
-text_ref: 14_FIRST_HOURS §6.5 A
-vars: [ death.place, kit.status, player.true_name ]
-choices:
-  - id: hide
-    text: 숨어 있는다
-    check: { skill: stealth, difficulty: 30 }       # 페인 은신 50 → "확실해 보인다"
-    on_success: [ set: { player_body.place: numbered_graves_bank } , start_scene: fayne_morning_lie ]
-  - id: answer
-    text: "\"…응, 형.\" 하고 나간다"
-    check: { opposed: { skill: deception, vs: npc_hagen.insight } }
-    on_success: [ stress: +25, relation: { from: npc_hagen, to: npc_fayne, trust: +10 } ]
-  - id: grab_body
-    text: 물에 들어가 몸을 붙잡는다
-    check: { skill: athletics, difficulty: 30 }
-    effects: [ relation: { from: npc_hagen, to: npc_fayne, trust: -20 } ]
-then:
-  - schedule: { scene: hagen_ladder_tonight, at: '+3.5h' }   # "내일 밤 일 있다"
-  - unlock_after_first_choice: [ dreams ]
-```
-
-```yaml
-# content/base/onboarding/lessons.yaml — 05 대사 규칙과 같은 형식의 '확인 신호'
-- id: lesson_hidden_coin
-  concept: 수색
-  criteria: [ first_search == true, player.items has 화폐 at slot 숨김 ]
-  lines:
-    - "크릭의 손이 네 허리를 더듬고, 소매를 털고, 부츠 앞에서 멈춘다."
-    - "누런 손가락이 부츠 목을 젖힌다. 냄새를 맡는다. 다음 사람으로 간다."
-  then: { flag: lesson_hidden_coin_seen }
+- id: wake_fayne
+  kind: awakening
+  conditions: [ soul.host == npc_fayne, soul.first_death == true ]
+  text_ref: 14_FIRST_HOURS §6.5 A
+  vars: [ death.place, kit.status, player.true_name ]
+  choices:
+    - { id: hide,   check: { skill: stealth, difficulty: 30 },
+        on_success: [ set: { player_body.place: numbered_graves_bank }, start_scene: fayne_morning_lie ] }
+    - { id: answer, check: { opposed: { skill: deception, vs: npc_hagen.insight } },
+        on_success: [ stress: +25, relation: { from: npc_hagen, to: npc_fayne, trust: +10 } ] }
+    - { id: grab_body, check: { skill: athletics, difficulty: 30 },
+        effects: [ relation: { from: npc_hagen, to: npc_fayne, trust: -20 } ] }
+  then:
+    - schedule: { scene: hagen_ladder_tonight, at: '+3.5h' }   # "내일 밤 일 있다"
+    - unlock_after_first_choice: [ dreams ]
 ```
 
 ---
@@ -1112,7 +994,7 @@ then:
 | 02 아이템 | 숨김 칸, 태그, 수색 규칙 | 첫 점호 수색 100% (첫 회만) |
 | 03 계승 | 자격 문턱, 몸에 지닌 것은 시체와 남음, 자동 저장, 난이도 | 첫 죽음 화면 예외(메뉴·연대기 지연), 연대기 원인 사슬 |
 | 05 대사 | Criterion, 기억 태그, 폴백 계층 | 각성 후 "의심 대사" 규칙, 확인 신호 문장 |
-| 06 생성 | 추천 조합, TP | 첫 생애는 이름 + 카드 3장만, 전체 화면은 §7 #30에서 |
+| 06 생성 | 추천 조합, TP | 첫 생애는 이름 + 카드 3장만, 전체 화면은 §7 #28에서 |
 | 07 지도 | 인지 5단계, 노드 메모 | 지도 해금 시점, 흙바닥 약도 스킨 |
 | 08 관계 | 신뢰·애정, 사실·known_by, 인물 수첩 확신도 | `player_died_for_me` 관계 사건(+25/+15), 수첩 병합 |
 | 09 영역 | 은닉처 단계 0 | 영역 해금, 첫 카드의 수치 3개 제한 |
@@ -1120,7 +1002,7 @@ then:
 | 11 음모 | 작전 단계, 보안 등급 | 작전 해금 (A창) |
 | 12 연애·가족 | 관계 단계, 자녀 12세 | 연애·혼인·가문 해금 시점 |
 | 13 어둠의 길 | '배신자' → 인연 소멸 | B2·마르타 경로의 진입점 |
-| 15 내면의 목소리 | 첫 목소리 시점 | (권장) 생애 2의 첫 목소리 = 생애 1의 자신 |
+| 15 내면의 목소리 | 15 §15 해금 순서, `voice_silence` | 첫 30분 침묵 구간, 생애 2 첫 장면 = 직전 생애의 목소리 |
 | 16 메아리·맹세 | 메아리 형식, 맹세 UI | 맹세 해금 계기(첫 상실), 원인 사슬 데이터 |
 | 17 숙적 | 냄새 기억 등록 | `volk_sniff` 등록 요청, B1 사망 시 숙적 후보 |
 | 18 연출가 | 화자·막 체계 | `first_life` 프로파일 값(§3.3), 종료 사건 `director.unlock` |
@@ -1167,21 +1049,13 @@ then:
 
 ## 14. 수직 슬라이스 범위
 
-**반드시 들어갈 것**
-- 첫 사흘 전체(§5.1)와 §6의 장면 원고 전부 (여는 장면, 첫 밤, 마르타의 값, 죽음 C·B1·A1, 각성 A·B·C·D)
-- 치명적 자리 5개 중 C·B1·A1은 완전 구현, A2·B2는 요약 스토리렛(각 2개)
-- 결속 점수 · 실 화면 · `player_died_for_me` 관계 사건
-- 첫 생애 연출 프로파일 (§3.3 값 전부)
-- 해금표 1~20번
-- 자기 무덤(`own_grave_313`)과 원인 사슬 문장 틀 12개
-- 속마음 힌트 3개, 확인 신호 문장
-
-**나중으로 미룰 것**
-- 아기로 다시 태어남(E) → 06 전체 생성 화면과 함께 Phase 3
-- 볼크·호송 이탈 분기의 회색여울 밖 진행 (VS는 1개 스토리렛으로 수렴)
-- 해금표 21~33번 (각 시스템 문서의 VS 범위를 따름)
-- 다른 출신 11종의 첫 생애 설계 (1.0)
-- 두 번째 시대의 "전생 기억으로만 열리는 선택지" (`martha_price_night` 6번 등)
+| 반드시 들어갈 것 | 나중으로 미룰 것 |
+|------------------|------------------|
+| 첫 사흘 전체(§5.1)와 §6 장면 원고 전부: 여는 장면, 첫 밤, 마르타의 값, 죽음 C·B1·A1, 각성 페인·사라·마르타·게르다, 자기 무덤 | 아기로 다시 태어남(E) — 06 전체 생성 화면과 함께 Phase 3 |
+| 치명적 자리 C·B1·A1 완전 구현, A2·B2는 요약 스토리렛 각 2개 | 볼크·호송 이탈 분기의 회색여울 밖 진행 (VS는 스토리렛 1개로 수렴) |
+| 결속 점수 · 실 화면 · `player_died_for_me` 관계 사건 | 해금표 21~30번 (각 시스템 문서의 VS 범위를 따름) |
+| `first_life` 프로파일 (§3.3 값 전부) · 해금표 1~20번 | 다른 출신 11종의 첫 생애 설계 (1.0) |
+| 원인 사슬 문장 틀 12개 · 속마음 힌트 3개 · 확인 신호 문장 | 두 번째 시대의 "전생 기억으로만 열리는 선택지" (`martha_price_night` 6번 등) |
 
 ---
 
@@ -1189,12 +1063,14 @@ then:
 
 | 문서 | 맞출 내용 |
 |------|-----------|
-| 03 §5 | 첫 죽음에는 연대기·선택 화면을 띄우지 않고 무덤 장면으로 미룬다. 두 번째 죽음부터 §5 그대로 |
+| 03 §5 | 첫 죽음에는 연대기·선택 화면을 띄우지 않고 무덤 장면(§6.6)으로 미룬다. 두 번째 죽음부터 §5 그대로 |
 | 03 §6 | 이야기 모드의 "마지막 아침으로 되돌리기 3회"는 **두 번째 죽음부터** 적용한다 (첫 죽음은 되돌리지 않는다) |
 | 06 §1 | 첫 시대 첫 생애의 생성은 진짜 이름 + 카드 3장(O-01 추천 조합). 전체 화면은 첫 아기 환생 또는 새 시대 |
 | 08 §3 | 신규 관계 사건 `player_died_for_me` (목격 수혜자 신뢰 +25, 애정 +15) |
-| 16 | 맹세 해금 계기 = 첫 상실(애정·신뢰 30+ 인물의 죽음·매각·실종). 원인 사슬 데이터(`CauseLink`) 공유 |
-| 17 | `volk_sniff` 등록과 B1 사망 시 볼크를 첫 숙적 후보로 |
-| 18 | `first_winter` 성격 (§3.3) |
-| 15 · 19 · 20 | 첫 목소리 시점, 죽음 시퀀스 효과, 키트의 "어리다" 실 |
-| SCENARIOS O-01 | 「첫 1~3시간 흐름」 2번과 4번 사이에 `martha_price_night`를 넣는다. 오프닝 2~5번의 점호 누락 규칙 |
+| 15 §15 | 해금 순서는 15의 제안을 그대로 받는다. 단 "첫 죽음: 연대기 화면의 목소리 한 줄씩"은 연대기가 무덤 장면으로 옮겨 가므로 **무덤 카드**에서 나온다 |
+| 16 | 맹세 제안 첫 발생 = 16 §5.3 계기 중 먼저 오는 것. 첫 메아리 M1(9.25) 시점 수용. `CauseLink` 공유 |
+| 17 | `volk_sniff` 흔적 등록. 새 몸 3일 유예(17)와 각성 장면은 충돌하지 않는다 (하겐·헨릭은 숙적이 아니라 현재의 위협) |
+| 18 | `first_life` = §3.3 값, 종료 사건 `director.unlock`. 첫 죽음 뒤 순서는 각성 → 무덤(연대기) → 18 §6.3 재진입. 18 §6.3의 "연대기 → N년 → 재진입"은 두 번째 죽음부터 |
+| 20 | "첫 90분 깊은 상실 없음"과의 관계: C창의 키트는 **우리 안에 갇힐 뿐**이고 구출 가능하다 (상실 아님). 1차 호송(실제 1:30 이후)이 첫 깊은 상실 후보. 키트의 "어리다" 실과 무덤 토큰은 20과 공유 |
+| 19 | 죽음 시퀀스(§4.1)의 글·순서·입력 잠금 6초는 이 문서, 효과·소리·햅틱은 19 |
+| SCENARIOS O-01 | 「첫 1~3시간 흐름」 2번과 4번 사이에 `martha_price_night`. 오프닝 2~5번의 점호 누락 규칙 |
