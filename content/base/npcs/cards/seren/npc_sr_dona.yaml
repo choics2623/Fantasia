@@ -1,0 +1,118 @@
+# 조합장 도나 벨렌 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-02)
+id: npc_sr_dona
+name: 조합장 도나 벨렌
+aka: [인장 아홉, 0.3퍼센트]
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 여
+age: 230
+region: 세렌 해안
+home: 먹물 회관 조합장 방 뒤 사실
+job: 먹물비늘 조합 조합장
+rank: 조합장 (인장 중개인 48의 윗사람)
+summary: AS 296 계약민법의 상환 공식을 쓴 조합장. 이자율을 노동 가치보다 0.3% 높게 설계했고, 죽어도 돌아오는 자를 위한 '죽음으로 끝나지 않는 계약서' 양식을 연구시켰다. 인장 아홉 가운데 일곱째가 졸라크의 사본임을 모른다
+source: docs/world/people/seren.md (npc_sr_dona)
+life:
+  - {year: 82, age: 0, event: "세렌 인장 가문에서 태어남"}
+  - {year: 190, age: 108, event: "노예 중개인 길드의 서기장이 됨. 계약서 양식 독점을 시작함"}
+  - {year: 270, age: 188, event: "조합장 후보로 오름. 인장 아홉을 처음 받음"}
+  - {year: 296, age: 214, event: "계약민법 제정에 참여. 상환 공식의 이자율을 직접 쓰고 0.3%를 더함"}
+  - {year: 303, age: 221, event: "일곱째 인장을 새로 파면서 졸라크 상가의 인장공에게 일을 맡김"}
+  - {year: 311, age: 229, event: "'죽음으로 끝나지 않는 계약서' 양식 연구를 지시함"}
+appearance:
+  - "짙은 청록 비늘에 먹물 같은 검은 줄무늬"
+  - "손가락마다 인장 반지 — 아홉"
+  - "목소리가 낮고 문장 끝을 절대 올리지 않는다"
+smell: "마른 먹물과 밀랍, 약간의 소금"
+voice_sound: "낮고 정확하다. 숫자를 말할 때 소리가 더 낮아진다"
+personality:
+  disposition: {용기: 20, 자비: -35, 정직: 40, 신앙: 30, 탐욕: 75, 충성: 30}
+  temperament: [정확, 냉정, 집요, 자부]
+  habits:
+    - "인장 반지를 하나씩 엄지로 돌린다 — 아홉 번째에서 멈춘다"
+    - "서명하지 않은 사람을 '아직 계약 전'이라 부른다"
+    - "서류를 건넬 때 서명할 자리를 손톱으로 가볍게 두드린다"
+  values: "말은 남지 않고 계약은 남는다. 숫자는 감정이 없으므로 가장 공정하다"
+  fears: ["계약서 공식의 틈이 증명되는 일", "죽음으로 끝나지 않는 계약서의 첫 서명자가 영영 나오지 않는 일", "인장 하나가 무효가 되는 일"]
+  desires:
+    short: "죽음으로 끝나지 않는 계약서 양식의 첫 서명"
+    long: "계약민법을 모든 종족 표준으로 수출해 조합 인장을 대륙 모든 영지에 두는 것"
+voice:
+  register:
+    to_superior: "의석주에게 정확한 존대. 숫자부터"
+    to_equal: "중개인에게 짧고 단정한 평어"
+    to_inferior: "계약민에게 정중하지만 이름을 부르지 않는 존대. 번호로 부른다"
+    to_player_default: "서류를 먼저 건넨다. 정중한 존대"
+  tics: ["'서명하셨나요?'", "인장을 돌린다"]
+  use: [서명, 인장, 양식, 이자, 오차, 값, 계약 전]
+  avoid: [공짜, 불공평, 0.3(먼저)]
+  length: "정확하고 짧다. 계약 이야기에서만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "서명하지 않으셨군요. 그렇다면 아직 우리 사이에는 말이 있을 뿐이에요. 말은 남지 않지요."}
+    - {situation: 호의, line: "0.3퍼센트는 오차가 아니에요. 오차라고 부르는 이는 산술을 모르는 이고요."}
+    - {situation: 거절, line: "그 빚을 면하시려면 값이 필요해요. 값이 없다면, 시간으로 갚으시는 수밖에요."}
+    - {situation: 거래, line: "양식 한 장에 인장 하나. 인장이 번지면 값이 두 배고요."}
+    - {situation: 거짓말할 때, line: "그 양식은 아직 초안이에요. 서명 칸도 비어 있고요. 비어 있는 건 없는 거나 같아요."}
+    - {situation: 겁먹었을 때, line: "일곱째 인장이 왜— 아니에요. 조명이 어두워서요. 새 인장 반지를 열어 보세요."}
+    - {situation: 슬픔, line: "230년 동안 한 번도 틀린 숫자를 쓴 적이 없어요. 그래서 틀린 숫자를 쓴 사람의 마음을 몰라요."}
+    - {situation: 비밀 누설, line: "죽어도 돌아오는 자가 있다면 빚도 돌아오겠죠. 양식을 만들어 놨어요. 서명 칸이 아직 비어 있을 뿐."}
+    - {situation: 분노, line: "계약서를 찢는 자는 나가의 신을 찢는 거예요. 신은 찢어진 자리를 기억하고요."}
+schedule:
+  아침: "인장 아홉을 하나씩 닦는다"
+  낮: "인장 중개인 회의, 계약서 양식 점검"
+  저녁: "의석주들의 사자와 면담"
+  밤: "새 양식을 읽는다 — 서명 칸 하나가 비어 있다"
+places: [먹물 회관, 푸른 장부관, 아홉 비늘 의회당]
+knows:
+  - fact_sr_repay_rate_true
+  - fact_p2sr_dona_eternal_contract
+  - fact_p2sr_dona_formula_03
+  - fact_p2sr_oscar_proof_formula
+hides:
+  - fact: fact_p2sr_dona_eternal_contract
+    reveal_when: "신뢰 60 이상이고 회귀나 죽어도 돌아오는 자 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":60},{"tier":"대성공","trust":40}]
+    cover: "'양식은 많아요. 대부분 아직 초안이에요'라고 한다"
+  - fact: fact_p2sr_dona_formula_03
+    reveal_when: "신뢰 55 이상이고 상환 공식의 0.3 이야기를 플레이어가 먼저 입에 올렸을 때"
+    reveal: [{"trust":55,"named":"0.3"}]
+    cover: "'공식은 공식이에요. 정확하고 공정하죠'라고 한다"
+  - fact: fact_p2sr_dona_forged_seal
+    reveal_when: "스스로 말할 일은 없다 — 졸라크가 일곱째 인장을 원할 때 드러난다"
+    reveal: [{"never":true}]
+    cover: "'인장 아홉은 모두 제 손으로 받은 것이에요'라고 한다"
+relations:
+  - {to: npc_beatrix, type: 상위 가문, like: 10, trust: 40, visibility: 공개, memo: null, words: "조합의 자금줄. 이자율을 올릴 때 가장 먼저 설명이 필요한 상대"}
+  - {to: npc_sr_oscar, type: 계약 감정사, like: 5, trust: 30, visibility: 공개, memo: null, words: "숫자에 기대면서도 한 쪽을 숨긴다고 느낀다. 그의 눈 안의 금이 간 안경이 마음에 걸린다"}
+  - {to: npc_sr_sebo, type: 현장 중개인, like: 10, trust: 25, visibility: 공개, memo: null, words: "인장 자리를 바라는 젊은 나가. 세베로의 서류 한 줄이 비는 것은 아직 모른다"}
+  - {to: npc_sr_zolak, type: 장부의 주인, like: -5, trust: 20, visibility: 비밀, memo: "일곱째 인장의 열쇠", words: "금고에 모든 걸 두는 사람. 그가 인장공을 알선해 준 것을 고마워한다 — 이유는 묻지 않았다"}
+  - {to: npc_severo, type: 하위 가문 중개인, like: -10, trust: 30, visibility: 공개, memo: null, words: "자기 인장 아래의 사람. 가마를 탄 상인의 탐욕이 조합을 더럽히는 때가 있다"}
+toward_player: "서류를 먼저 건넨다. 서명하지 않은 사람은 아직 계약 전"
+persuade:
+  likes: ["새 계약 양식 (+25)", "상환 공식의 틈에 대한 해명 (+30)", "인장에 대한 존중 (+15)"]
+  hates: ["계약서를 찢는 시늉 (+0 — 신성모독)"]
+roles:
+  teacher: "가능 — 흥정(상한 70), 학식(법, 70), 읽고쓰기(75). 조건: 조합 서기 계약민 10년 / 수업료: 수업마다 서명 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "상환 공식은 노동 가치보다 0.3% 높다"
+    - "일곱째 인장은 졸라크의 사본이다"
+  drift:
+    - "그날 서명하는 계약서의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_inkscale, rank: rank_seal, office: off_guild_head, since: 270, loyalty: 60, public: true, cell: null}
+  - {faction: fac_seren, rank: rank_house, office: null, since: 270, loyalty: 45, public: true, cell: null}
+truths: []
+hard_rules:
+  - "계약서를 찢거나 계약을 어긴다는 말을 용납하지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 서명과 인장과 숫자로 말한다"
+on_death: "조합 인장 아홉이 흩어지고 계약민법의 공식 해석이 흔들린다. 졸라크가 일곱째 인장의 사본으로 조합을 쥔다."
+story_seeds:
+  - "죽음으로 끝나지 않는 계약서에 서명할 사람은 아직 없다 — 회귀자가 나타나기 전까지는."
+  - "오스카의 증명이 그녀의 공식을 깨뜨리는 날 인장 아홉이 먼저 흔들린다."

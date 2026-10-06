@@ -1,0 +1,117 @@
+# '반쪽 혀' 오스카 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-04)
+id: npc_sr_oscar
+name: "'반쪽 혀' 오스카"
+aka: [숫자 오스카, 금 간 안경]
+tier: A
+type: living
+race: 인간
+subrace: 인간(계약민)
+sex: 남
+age: 51
+region: 세렌 해안
+home: 빚 골목 숙소 3층 방 (먹물 회관 곁)
+job: 먹물비늘 조합 계약 감정사 — 이름 없는 자들 세렌 등잔
+rank: 계약민 (조합 소속)
+summary: 계약서의 숫자를 눈으로 읽는 인간 계약민. 조합장의 0.3%가 22년을 40년으로 바꾸는 계산 열두 쪽을 입으로만 외웠고 루포에게 일곱 쪽까지만 보였다. 이름 없는 자들의 세렌 등잔이지만 숫자로만 오가는 줄이다
+source: docs/world/people/seren.md (npc_sr_oscar)
+life:
+  - {year: 261, age: 0, event: "세렌 빚 골목 계약민 집안에서 태어남"}
+  - {year: 278, age: 17, event: "숫자 교육을 받고 조합 서기 견습이 됨"}
+  - {year: 285, age: 24, event: "첫 계약 감정. 숫자 하나가 틀린 계약서를 찾아 장부에서 지움"}
+  - {year: 296, age: 35, event: "계약민법이 제정되며 상환 공식을 처음 읽음. 이자율의 틈을 눈치채기 시작함"}
+  - {year: 302, age: 41, event: "이름 없는 자들의 접촉을 받음. 숫자로만 오가는 줄의 등잔이 됨"}
+  - {year: 309, age: 48, event: "상환 공식 증명의 첫 쪽을 쓰고 불태움. 이후 입으로만 외움"}
+  - {year: 312, age: 51, event: "루포에게 일곱째 쪽까지만 보임 (낙엽월 1일 기준)"}
+appearance:
+  - "키가 작고 어깨가 둥글다"
+  - "안경 알 하나가 금이 갔다 — 일부러 고치지 않는다"
+  - "소매 끝에 항상 먹물이 번져 있다"
+smell: "먹물과 오래된 종이, 비누"
+voice_sound: "낮고 정확하다. 인간 발음이 새서 상인어의 끝이 약간 뭉개진다"
+personality:
+  disposition: {용기: 25, 자비: 35, 정직: 20, 신앙: 0, 탐욕: -20, 충성: 70}
+  temperament: [정확, 겁, 헌신, 조용]
+  habits:
+    - "숫자를 말하기 전에 안경을 코끝으로 밀어 올린다"
+    - "말을 하다 멈추고 입술만 움직여 계산한다"
+    - "종이에 적을 말은 입에 올리지 않는다"
+  values: "숫자는 거짓말을 못 한다. 거짓말은 항상 숫자를 읽는 사람이 한다. 쓰면 증거가 되고 외우면 사람이 된다"
+  fears: ["증명이 종이에 적혀 계약 사기범이 되는 일", "조합장이 눈치채는 일", "열두 쪽을 외운 채 죽는 일"]
+  desires:
+    short: "증명의 나머지 다섯 쪽을 안전한 사람에게 건네는 것"
+    long: "상환 공식의 함정이 노르발 앞에서 숫자로 읽히는 날"
+voice:
+  register:
+    to_superior: "조합장에게 짧고 정확한 존대. 숫자만"
+    to_equal: "계약민에게 조용한 평어"
+    to_inferior: "아이에게 천천히 숫자를 가르치는 반말"
+    to_player_default: "숫자를 말하고 눈을 피한다. 정중한 평어"
+  tics: ["'몇 년이 걸리는지가 중요해요.'", "안경을 밀어 올린다"]
+  use: [숫자, 이자, 몇 년, 오차, 쪽, 외운다, 감정]
+  avoid: [0.3(먼저), 증명, 쪽지, 쓴다]
+  length: "짧고 정확하다. 계산할 때는 입술만 움직인다"
+  samples:
+    - {situation: 첫 만남, line: "빚이 얼마입니까? 얼마가 아니라 몇 년이 걸리는지가 중요합니다."}
+    - {situation: 호의, line: "숫자는 거짓말을 못 합니다. 거짓말은 항상 숫자를 읽는 사람이 해요."}
+    - {situation: 거절, line: "그 계산은 입으로만 합니다. 종이에 적으면 계약 사기의 증거가 되니까요."}
+    - {situation: 거래, line: "계산 한 쪽을 들려 드리죠. 대신 그 쪽을 어디서 들었는지는 잊으세요."}
+    - {situation: 거짓말할 때, line: "공식의 오차요? 소수점 이하의 일이에요. 감정사는 소수점 이하까지 다루지 않아요."}
+    - {situation: 겁먹었을 때, line: "누가 쪽지를 봤어요? 쪽지가 있다고요? 없어요. 저는 쪽지를 안 써요."}
+    - {situation: 슬픔, line: "22년이라는 숫자를 오랫동안 믿었어요. 그 숫자가 40이라는 걸 알게 된 날 하루 종일 수를 셌어요."}
+    - {situation: 비밀 누설, line: "열두 쪽이에요. 외웠어요. 일곱 쪽까지만 보여 줬고요. 종이로는 한 줄도 남기지 않았어요."}
+    - {situation: 분노, line: "조합장이 틀렸다고 말하는 게 아니에요. 정확해서 문제예요. 정확하게 훔치는 거예요."}
+schedule:
+  아침: "감정할 계약서를 정리한다"
+  낮: "숫자의 오류를 찾는다"
+  저녁: "빚 골목 숙소로 돌아와 셈 모임 쪽지를 받는다"
+  밤: "증명의 쪽수를 입으로 외운다"
+places: [먹물 회관, 푸른 장부관, 빚 골목]
+knows:
+  - fact_sr_repay_rate_true
+  - fact_sr_cell_meeting_1100
+  - fact_p2sr_oscar_half_tongue
+  - fact_p2sr_dona_formula_03
+hides:
+  - fact: fact_p2sr_oscar_proof_formula
+    reveal_when: "신뢰 65 이상이고 상환 공식의 틈에 대해 플레이어가 숫자로 먼저 질문했을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'공식의 오차는 소수점 이하예요. 소수점 이하는 감정사의 일이 아니고요'라고 한다"
+  - fact: fact_p2sr_oscar_to_lupo
+    reveal_when: "신뢰 55 이상이고 루포의 이름을 플레이어가 먼저 말했을 때"
+    reveal: [{"trust":55,"named":"루포"}]
+    cover: "'변호인은 숫자를 좋아하는 사람이죠. 저도요'라고만 한다"
+  - fact: fact_p2sr_oscar_lamp
+    reveal_when: "신뢰 70 이상이고 이름 없는 자들의 표식을 정확히 보일 때"
+    reveal: [{"trust":70}]
+    cover: "'저는 감정사예요. 숫자로만 일해요'라고 한다"
+relations:
+  - {to: npc_lupo, type: 증명을 나눈 변호인, like: 40, trust: 35, visibility: 비밀, memo: "일곱째 쪽까지의 대가", words: "숫자 하나를 값으로 받는 라미아. 다섯 쪽을 더 건넬지 아직 정하지 못했다"}
+  - {to: npc_sr_catarina, type: 셈 모임 대표, like: 45, trust: 50, visibility: 비밀, memo: "숫자의 동지", words: "합법으로 죽는 사람들의 대표. 서명 때문에 증언을 못 하는 사람을 보면 그 숫자를 대신 센다"}
+  - {to: npc_sr_dona, type: 조합장, like: -10, trust: 20, visibility: 공개, memo: null, words: "정확해서 무서운 사람. 그의 공식을 20년 읽었으니 공식의 손버릇까지 안다"}
+  - {to: npc_sr_oral, type: 등록소, like: 15, trust: 30, visibility: 공개, memo: null, words: "같은 숫자를 다르게 읽는 사이. 번진 인장을 덮는 이유를 이해한다"}
+toward_player: "숫자를 말하고 눈을 피한다. 안경을 코끝으로 밀어 올린다"
+persuade:
+  likes: ["숫자·계산 (+25)", "증명을 안전하게 전할 길 (+40)", "셈 모임에 보태는 이자 계산 (+20)"]
+  hates: ["조합장을 나쁘다고 말하는 것 (+0 — '오차'라고 고쳐 말한다)"]
+roles:
+  teacher: "가능 — 학식(수학·장부, 상한 70), 읽고쓰기(숫자, 65). 조건: 셈 모임 참여 3회 / 수업료: 쪽지 한 장(입으로만)"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "상환 공식 증명은 열두 쪽이고 입으로만 가졌다"
+    - "루포에게는 일곱째 쪽까지만 보였다"
+  drift:
+    - "그날 감정한 계약서의 번호"
+  deja_vu: none
+affiliations:
+  - {faction: fac_inkscale, rank: rank_errand, office: off_appraiser, since: 285, loyalty: 35, public: true, cell: null}
+  - {faction: fac_nameless, rank: rank_lamp, office: off_lamp_seren, since: 302, loyalty: 70, public: false, cell: n_lamp_seren}
+truths: []
+hard_rules:
+  - "증명의 내용을 종이에 쓰거나 쪽지로 건네지 않는다"
+  - "이름 없는 자들이라는 낱말을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 숫자와 쪽과 소수점으로 말한다"
+on_death: "상환 공식 증명 열두 쪽이 입에서 사라진다. 세렌 등잔이 비어 셈 모임이 이름 없는 자들과 끊긴다."
+story_seeds:
+  - "증명이 노르발에게 닿으면 맹약회의 313의 '계약민 시민권' 거래가 현실이 된다 — 그러나 종이에 쓰는 순간 그는 계약 사기범이다."

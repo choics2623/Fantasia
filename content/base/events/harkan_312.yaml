@@ -1,0 +1,65 @@
+# 하르칸 초원 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §15(오르두 이동·사냥 축제·말뼈 여울 범람·통일 전쟁), WORLD_BIBLE §10(클락 7 초원 통일, 클락 2 맹약회의 313, 클락 3 북방 대탈주, 클락 1 흰 알), fac_harkan, facts/harkan.yaml·phase2_harkan.yaml, docs/world/people/harkan.md.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림. 오르두 이동일은 아흐레마다(9·18·27일 — 일과의 monthday 블록). 겨울(서리월 2일~해빙월 11일)은 바람 우물 겨울 진영.
+# 다른 지역과의 연결: 313-02 테무르의 서신(→ 바람첨탑 줄내림 장터 하르칸 전령 에르덴, 키리에), 313-03-14 흰 알 부화 소식(바알카르 → 오르두), 313-04-09 서풍의 날 서진(검은바람의 이탈 — 클락 7),
+#   313-05-01~11 맹약회의 313 서약섬(oath_isle): 바투·에젤의 사절단이 313-04-27 출발 의식 → 05-01 도착 → 05-12 귀로 (지도 최단 경로 154h, 말을 타면 ×0.35 = 약 54h. 길이 그롬 영역을 지난다 — 휴전 깃발),
+#   313-05-30 그롬마르 피의 원형장 대축제 마지막 날(말뼈 여울 건너편 연기), 313-04 말뼈 여울 우기 범람(그롬 정찰대와 마주침).
+# 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다.
+
+# ── 낙엽월 (9) — 사냥 축제 ──
+- {id: ev_hk_sep_hunt_nominate, date: "312-09-12", npcs: [npc_hk_kasar, npc_hk_hulun, npc_dua, npc_hk_batu, npc_soran], from: "18:00", to: "22:00", at: hk_feast_tent, doing: "사냥 축제 사냥감 지명 — 카사르가 짐꾼 열둘의 명단을 읽는다. 두아가 이름을 하나씩 되묻고 바투가 장부의 채찍 수를 말없이 센다"}
+- {id: ev_hk_sep_hunt_festival, date: "312-09-21", npcs: [npc_hk_kasar, npc_temur, npc_soran, npc_hk_batu, npc_hk_hulun, npc_hk_ile], from: "06:00", to: "18:00", at: hk_race_ground, doing: "사냥 축제 — 경주와 사냥. 활을 쥔 짐꾼 열둘 가운데 둘이 쓰러진다. 일레가 말뚝 사이 길이를 잰다", fixed: true}
+- {id: ev_hk_sep_altan_ash, date: "312-09-27", npcs: [npc_hk_altan], from: "10:00", to: "16:00", at: hk_wind_pole, doing: "서풍 — 재 냄새가 난 날 올해 마흔한 번째. 깃발은 올리지 않고 장대 밑 끈에 매듭 하나를 더한다"}
+- {id: ev_hk_sep_ayla_west_pillar, date: "312-09-30", npcs: [npc_hk_ayla, npc_soran], from: "10:00", to: "14:00", at: khan_ordu__standing_stones, doing: "소란이 서 있는 돌을 찾아온다 — 아일라가 서쪽 기둥에만 갈기가 묶이지 않은 것을 말없이 가리킨다", travel_from: hk_archer_camp, return_to: hk_archer_camp, mounted: true}
+# ── 서리월 (10) — 겨울 진영 ──
+- {id: ev_hk_oct_winter_move, date: "312-10-01", npcs: [npc_temur, npc_hk_borte, npc_hk_batu, npc_dua, npc_hk_hulun, npc_hk_altan, npc_hk_boris], from: "05:00", to: "19:00", at: hk_council_track, doing: "오르두가 겨울 진영으로 옮긴다 — 짐 싸기 북, 이틀 행군. 쓰러진 척 셋이 행렬 뒤 돌무더기 곁에 남는다", fixed: true}
+- {id: ev_hk_oct_winter_arrive, date: "312-10-03", npcs: [npc_temur, npc_hk_borte, npc_hk_batu, npc_dua, npc_hk_hulun, npc_hk_altan], from: "06:00", to: "20:00", at: khan_ordu__winter_camp, doing: "바람 우물에 오르두가 같은 모양으로 선다 — 우물 일곱을 센다. 4만이 모이는 겨울이 시작된다", fixed: true}
+- {id: ev_hk_oct_ila_water, date: "312-10-15", npcs: [npc_hk_ila], from: "10:00", to: "16:00", at: khan_ordu__well_seven, doing: "물값 노래 — 탈주자 한 무리가 일곱 번째 우물 곁에서 한 곡을 틀리지 않고 부른다. 일라가 항아리를 두드려 다음 샘을 연다"}
+# ── 긴밤월 (11) ──
+- {id: ev_hk_nov_turga_double, date: "312-11-12", npcs: [npc_hk_turga, npc_hk_orduk], from: "20:00", to: "23:00", at: khan_ordu__winter_camp, doing: "같은 수레에서 철 창날 이백이 반으로 갈라진다 — 반은 칸의 천막으로, 반은 검은바람 천막 구석으로"}
+- {id: ev_hk_nov_porters_die, date: "312-11-20", npcs: [npc_dua, npc_hk_hulun, npc_hk_boris, npc_hk_ida], from: "05:00", to: "12:00", at: khan_ordu__winter_camp, doing: "겨울 첫 동사 — 쓰러진 열일곱을 센다. 홀룬이 장부에 '낙오'로 올리고 보리스는 해 지기 전에 돌무더기 길을 돈다"}
+- {id: ev_hk_nov_borte_calc, date: "312-11-28", npcs: [npc_hk_borte, npc_hk_ssok], from: "14:00", to: "18:00", at: khan_ordu__winter_camp, doing: "말 값 계산 — 말 사백 필이면 짐꾼 사천. 쏙이 매듭 한 가닥을 보르테의 손가락에 감아 건넨다"}
+# ── 굶주림월 (12) ──
+- {id: ev_hk_dec_pots_half, date: "312-12-01", npcs: [npc_dua, npc_hk_ida, npc_hk_hulun], from: "04:00", to: "12:00", at: khan_ordu__winter_camp, doing: "굶주림월 — 말젖 죽 한 그릇이 반 그릇이 된다. 두아가 막사의 쓰러진 사람을 센 숫자를 이다에게만 낮게 말한다"}
+- {id: ev_hk_dec_letter_to_kyrie, date: "312-12-20", npcs: [npc_temur, npc_hk_borte], from: "20:00", to: "23:00", at: hk_khan_tent, doing: "서진 때 하늘길을 지나가게 해 달라는 서신을 아에리 여왕 키리에에게 보낸다 — 보르테가 문장을 매듭으로 세어 칸의 이름으로 봉한다 (바람첨탑 전령 에르덴의 서신)"}
+# ── 313 해빙월 (1) — 북상과 벡 회합 ──
+- {id: ev_hk_jan_leave_winter, date: "313-01-12", npcs: [npc_temur, npc_hk_borte, npc_hk_batu, npc_dua, npc_hk_hulun], from: "05:00", to: "19:00", at: khan_ordu__winter_camp, doing: "겨울 진영을 걷는다 — 북상 시작. 서리 길이 열리는 달에 오르두가 바람 우물을 떠난다", fixed: true}
+- {id: ev_hk_jan_bek_run, date: "313-01-20", npcs: [npc_temur, npc_hk_borte, npc_hk_batu, npc_hk_orduk, npc_hk_ezel, npc_hk_ila, npc_hk_yesun, npc_hk_altan], from: "06:00", to: "18:00", at: hk_council_track, doing: "벡 회합 달리기 — 서진 안건. 검은바람이 칸과 나란히 달리지 않고 반 걸음 비껴 달린다. 일곱샘은 뒤에서 달리고 예순 늙은굽은 언덕에서 지켜본다", fixed: true}
+# ── 313 파종월 (2) ──
+- {id: ev_hk_feb_letter_wait, date: "313-02-02", npcs: [npc_hk_borte], from: "20:00", to: "23:00", at: hk_knot_tent, doing: "키리에에게 간 서신의 답을 기다리는 매듭을 푼다 — 하늘길이 열릴지 알 수 없다. 오늘 서신이 줄지기에게 건네졌다는 것을 보르테는 아직 모른다"}
+- {id: ev_hk_feb_ash_line, date: "313-02-15", npcs: [npc_hk_boro], from: "05:00", to: "12:00", at: khan_ordu__lasthoof_camp, doing: "서쪽 풀밭이 재에 한 뼘 더 덮인다 — 보로가 천막을 한 걸음 동쪽으로 옮기고 아무에게도 말하지 않는다"}
+# ── 313 꽃월 (3) — 흰 알 ──
+- {id: ev_hk_mar_egg_news, date: "313-03-17", npcs: [npc_temur, npc_hk_borte, npc_hk_batu], from: "08:00", to: "14:00", at: hk_khan_tent, doing: "흰 알이 깨졌다는 전령 — 용황의 뒤가 이어지면 서진이 용 앞에서 달리는 길이 된다. 보르테가 서진 날짜를 푸른월로 다시 묶는다"}
+- {id: ev_hk_mar_jax_find, date: "313-03-22", npcs: [npc_hk_jax, npc_hiak], from: "10:00", to: "15:00", at: khan_ordu__salt_lake, doing: "소금 아래에서 장부 판이 한 장 더 나온다 — 잭스가 닦고 히악이 값을 매긴다. 노역 인간 하나가 구덩이에서 올라오지 못한다", travel_from: khan_ordu__horsebone_spring, return_to: khan_ordu__horsebone_spring}
+- {id: ev_hk_mar_sorin_envoy, date: "313-03-28", npcs: [npc_hk_sorin], from: "08:00", to: "14:00", at: khan_ordu__broken_banner, doing: "소린이 인간 열 명과 약속의 말을 소란에게 보낼 채비를 한다 — 열둘의 이름 가운데 둘이 모자란다"}
+# ── 313 푸른월 (4) — 전쟁 시즌·서풍의 날 ──
+- {id: ev_hk_apr_hunt_plan, date: "313-04-03", npcs: [npc_temur, npc_hk_kasar, npc_hk_hulun, npc_hk_borte, npc_hk_batu], from: "08:00", to: "14:00", at: hk_khan_map, doing: "노예 사냥 안건 — 사냥터는 카즈둠 바깥 갱과 그롬마르 경계. 카사르가 사냥대장 후보로 선다. 보르테의 서랍 계산서는 열리지 않는다", if: slave_hunt}
+- {id: ev_hk_apr_west_wind, date: "313-04-09", npcs: [npc_temur, npc_hk_altan, npc_hk_yesun, npc_soran, npc_hk_batu], from: "05:00", to: "19:00", at: hk_council_track, doing: "서풍의 날 — 칸이 서진 첫 행군을 명한다. 알탄은 깃발을 올리지 않고, 예순 늙은굽은 언덕에서 말뼈 막대를 한 번 만진다", fixed: true}
+- {id: ev_hk_apr_blackwind_cut, date: "313-04-09", npcs: [npc_hk_orduk], from: "05:00", to: "19:00", at: hk_council_track, doing: "오르두가 갈기 가닥을 잘라 바람에 날린다 — 옛 바람파가 함께 비껴 달리면 칸의 수가 열 아래로 떨어진다 (클락 7)", if: blackwind_cuts_strand}
+- {id: ev_hk_apr_porters_selected, date: "313-04-10", npcs: [npc_dua, npc_hk_batu, npc_hk_boris], from: "06:00", to: "14:00", at: hk_porter_camp, doing: "맹약회의 사절단 짐꾼 마흔을 가린다 — 두아가 이름을 하나씩 고르고 보리스는 한 명도 짐 속에 넣지 말라고 말한다. 마흔은 걸어서 먼저 떠난다"}
+- {id: ev_hk_apr_ford_flood, date: "313-04-18", npcs: [npc_soran], from: "05:00", to: "18:00", at: khan_ordu__ford_crossing, doing: "우기 말뼈 여울이 범람한다 — 소란의 정찰대가 건널목에서 그롬 정찰대와 마주친다. 두 쪽 모두 활을 내리지 않는다", travel_from: hk_archer_camp, return_to: hk_archer_camp, mounted: true, if: ford_scout}
+- {id: ev_hk_apr_sorin_scouted, date: "313-04-25", npcs: [npc_hk_sorin, npc_temur], from: "05:00", to: "19:00", at: khan_ordu__broken_banner, doing: "칸의 정찰이 꺾인 깃발 진영에 닿는다 — 소린이 깃발을 올리고 인간 천오백의 천막이 안쪽으로 모인다", if: sorin_battle}
+# ── 313 태양월 (5) — 맹약회의 313 (서약섬) ──
+- {id: ev_hk_apr27_envoy_leave, date: "313-04-27", npcs: [npc_hk_batu, npc_hk_ezel, npc_temur, npc_hk_borte], from: "18:00", to: "24:00", at: hk_khan_tent, doing: "맹약회의 사절단 출발 의식 — 바투와 에젤이 칸 앞에서 갈기 가닥을 바꿔 땋는다. 길은 그롬 영역을 지난다. 보르테가 휴전 깃발의 매듭을 묶어 건넨다", fixed: true}
+- {id: ev_hk_may01_arrive, date: "313-05-01", npcs: [npc_hk_batu, npc_hk_ezel], from: "06:00", to: "24:00", at: oath_isle, doing: "서약섬 도착 — 맹약회의 313의 열하루가 시작된다. 하르칸 천막터는 섬 서쪽 모래밭이다. 지붕 아래 자지 않고 천막터를 날마다 옮긴다", travel_from: hk_khan_tent, mounted: true, fixed: true}
+- {id: ev_hk_may02_oath_isle, date: "313-05-02", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 이틀째 — 바투가 하르칸 대표로 첫 발언을 한다. 말은 짧고 갈기 가닥을 한 번 만진다"}
+- {id: ev_hk_may03_oath_isle, date: "313-05-03", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 사흘째 — 에젤이 그롬 쪽 대표와 같은 불가에 선다. 이빨 목걸이가 회의장 문턱에서 눈에 띈다"}
+- {id: ev_hk_may04_oath_isle, date: "313-05-04", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 나흘째 — 짐꾼 우리 곁에서 하르칸 사절 짐꾼 마흔이 말젖 죽을 나눈다. 바투가 한 사람의 이름을 묻는다"}
+- {id: ev_hk_may05_oath_isle, date: "313-05-05", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 닷새째 — 잔향 대숙청안 낭독. 하르칸 천막터가 침묵한다"}
+- {id: ev_hk_may06_oath_isle, date: "313-05-06", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 엿새째 — 바투가 천막터를 서쪽 모래밭 끝으로 옮긴다. 정주병의 첫 기침이 나온다"}
+- {id: ev_hk_may07_oath_isle, date: "313-05-07", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 이레째 — 두르강·아에리 사절과 하르칸 사절이 같은 해변에서 길을 묻는다"}
+- {id: ev_hk_may08_oath_isle, date: "313-05-08", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 여드레째 — 에젤이 몰래 그롬 대표에게 투사 값 셈을 건넨다"}
+- {id: ev_hk_may09_oath_isle, date: "313-05-09", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 아흐레째 — 인간 증언 요청이 의제에 오른다. 바투가 갈기를 만지며 듣는다"}
+- {id: ev_hk_may10_oath_isle, date: "313-05-10", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 열흘째 — 표결 전야. 바투는 어머니의 물맛 노래를 낮게 부른다"}
+- {id: ev_hk_may11_oath_isle, date: "313-05-11", npcs: [npc_hk_batu, npc_hk_ezel], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 열하루째 — 표결. 하르칸은 손을 들지 않고 한 걸음 물러선다"}
+- {id: ev_hk_may12_return, date: "313-05-12", npcs: [npc_hk_batu, npc_hk_ezel], from: "05:00", to: "09:00", at: oath_isle, doing: "서약섬을 떠난다 — 천막터를 걷는다. 그롬 영역을 지나 오르두로 돌아가는 길", return_to: hk_khan_tent, mounted: true}
+- {id: ev_hk_may30_grom_smoke, date: "313-05-30", npcs: [npc_soran], from: "05:00", to: "20:00", at: khan_ordu__ford_watch, doing: "그롬마르 피의 원형장 대축제 마지막 날 — 여울 건너편 하늘에 연기가 오른다. 소란이 정찰대를 세우고 칸에게 전령을 보낸다", travel_from: hk_archer_camp, return_to: hk_archer_camp, mounted: true}
+# ── 313 건초월~수확월 ──
+- {id: ev_hk_jun_ash_reaches, date: "313-06-10", npcs: [npc_hk_boro, npc_hk_altan], from: "05:00", to: "19:00", at: khan_ordu__lasthoof_camp, doing: "재가 마지막발굽 진영 가장자리 천막에 닿는다 — 보로가 칸에게 사람을 보낼지 마지막으로 정한다", if: ash_reaches_lasthoof}
+- {id: ev_hk_jul_blackwind_riders, date: "313-07-06", npcs: [npc_hk_orduk], from: "06:00", to: "16:00", at: hk_council_track, doing: "검은바람의 인간 기수 쉰이 처음으로 오르두 앞에서 말을 타고 달린다 — 벡 회합이 말없이 갈라진다", if: blackwind_show}
+- {id: ev_hk_jul_move_south, date: "313-07-18", npcs: [npc_temur, npc_hk_borte, npc_hk_kasar], from: "05:00", to: "19:00", at: hk_council_track, doing: "수확월 — 오르두가 남쪽 사냥 초지로 내려가기 시작한다. 사냥 축제의 준비가 시작된다", fixed: true}
+# ── 매달 반복 ──
+- {id: ev_hk_monthly_ssok_count, repeat: monthly, day: 28, npcs: [npc_hk_ssok, npc_hk_borte], from: "14:00", to: "17:00", at: hk_krik_ledger, doing: "월말 말 값 장부 — 칸의 외상 매듭 한 가닥이 늘어난다"}
+- {id: ev_hk_monthly_boris_village, repeat: monthly, day: 5, npcs: [npc_hk_boris, npc_hk_nesta], from: "10:00", to: "16:00", at: khan_ordu__outcast_village, doing: "줍힌 사람을 마을로 보낸다 — 네스타가 새 이름을 큰 돌에 새긴다", travel_from: hk_cairn_line, return_to: hk_burden_column}
+- {id: ev_hk_monthly_hiak_jax, repeat: monthly, day: 25, npcs: [npc_hiak, npc_hk_jax], from: "10:00", to: "16:00", at: khan_ordu__salt_lake, doing: "소금 아래 물건을 값 매긴다 — 그롬마르로 갈 은화 몇 닢", travel_from: khan_ordu__horsebone_spring, return_to: khan_ordu__horsebone_spring}
+- {id: ev_hk_monthly_ile_trial, repeat: monthly, day: 10, npcs: [npc_hk_ile, npc_hk_kasar], from: "08:00", to: "16:00", at: hk_race_ground, doing: "경주 재판 — 두 벡의 다툼을 길이로 가른다. 먼저 닿은 쪽의 말을 듣는다"}

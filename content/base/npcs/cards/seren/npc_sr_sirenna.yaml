@@ -1,0 +1,121 @@
+# 대사제 시렌나 우델 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-01)
+id: npc_sr_sirenna
+name: 대사제 시렌나 우델
+aka: [소용돌이의 의석주, 알의 보관자, 청구서의 노파]
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 여
+age: 300
+region: 세렌 해안
+home: 깊은 바다 신전 지하 수조 곁 사제실
+job: 제7의석 의석주 — 깊은 바다 사원 대사제
+rank: 의석주 (비늘 표 하나 더)
+summary: 일곱째 탈피를 넘긴 최고령 왕관 나가. 사원 지하에서 도둑맞은 알의 온도를 매일 재고, 반송된 보관료 청구서를 3,000장 넘게 쌓았다. 심해 사절과 말을 나누는 세렌 안의 유일한 사람이다
+source: docs/world/people/seren.md (npc_sr_sirenna)
+life:
+  - {year: 12, age: 0, event: "세렌 바다 신전 사제 가문에서 태어남 (AS 기준 — 나가는 300세에 이른다)"}
+  - {year: 95, age: 83, event: "첫 탈피를 마치고 사원 견습이 됨"}
+  - {year: 185, age: 173, event: "제7의석 의석주 자리를 이음. 사원 지하 수조에서 알을 처음 본 날 — 선대에게서 알의 내력을 들음"}
+  - {year: 240, age: 228, event: "일곱째 탈피를 넘김. 몸에 허물이 한 겹 더 붙은 채 굳음"}
+  - {year: 266, age: 254, event: "의석 경매에서 시렌나 가의 의석을 9만 두카트 값으로 지킴"}
+  - {year: 300, age: 288, event: "알의 보관료 청구서 마지막 반송 — 청구서 더미가 사원 지하 한 칸을 채움"}
+  - {year: 311, age: 299, event: "심해 사절이 그믐 밤 올라와 알에 대해 처음으로 한 문장을 말함"}
+appearance:
+  - "은회색 비늘에 허물이 한 겹 더 겹쳐 몸이 약간 부푼 듯하다"
+  - "소용돌이 문양 목걸이"
+  - "눈동자가 거의 투명해 앞이 아니라 아래를 보는 듯하다"
+smell: "젖은 소금과 오래된 산호 향, 약한 향유"
+voice_sound: "낮고 평온하다. 문장이 파도처럼 길어졌다가 줄어든다"
+personality:
+  disposition: {용기: 30, 자비: 20, 정직: 60, 신앙: 85, 탐욕: 10, 충성: 70}
+  temperament: [평온, 기다림, 신중, 완고]
+  habits:
+    - "말하기 전에 손바닥을 아래로 한 번 쓸어내린다 — 물을 가라앉히듯"
+    - "처음 보는 사람에게 무엇을 가져왔는지 먼저 묻는다"
+    - "그믐이 오기 사흘 전부터 말수가 줄어든다"
+  values: "바다는 기억한다. 보관은 값이다. 대가 없이 받은 것은 빚이고 빚은 반드시 돌아온다"
+  fears: ["알이 식는 일", "알이 용제국에 되돌려지는 날의 청구서", "탈피를 한 번 더 넘기고 허물 속에서 죽는 일"]
+  desires:
+    short: "도둑맞은 알의 소유권 문서를 의회에 인정받는 것"
+    long: "알이 부화하는 날 그 책임이 자기에게 있다는 것을 용제국이 인정하게 하는 것"
+voice:
+  register:
+    to_superior: "의장에게 낮고 정중한 존대"
+    to_equal: "의석주에게 평온한 존대. 값을 먼저 정한다"
+    to_inferior: "사제 견습에게 느린 반말"
+    to_player_default: "정중한 존댓말. 무엇을 가져왔는지 묻는다"
+  tics: ["'무엇을 가져오셨나요?'", "손바닥을 쓸어내린다"]
+  use: [대가, 보관, 바다, 알, 값, 그믐, 소용돌이]
+  avoid: [훔쳤다, 공짜, 알의 온도(먼저)]
+  length: "길고 고르다. 알 이야기가 나오면 짧아진다"
+  samples:
+    - {situation: 첫 만남, line: "무엇을 가져오셨나요? 말씀은 값이 아닙니다. 하지만 값이 되려는 말도 있지요."}
+    - {situation: 호의, line: "바다는 기억합니다. 3,200년 전 일을 오늘 아침 일처럼. 저는 그 기억을 사원의 계단으로 옮겨 놓았을 뿐이에요."}
+    - {situation: 거절, line: "알은 대가 없이 보지 못합니다. 대가가 알의 값이어서가 아니라 보관이 값이어서요."}
+    - {situation: 거래, line: "소유권 문서 한 장이면 의회 표 한 장을 드리지요. 문서가 진짜라면요."}
+    - {situation: 거짓말할 때, line: "알이요? 사원 지하에는 청구서만 있어요. 오래된 종이의 냄새가 알처럼 둥글어서 소문이 났지요."}
+    - {situation: 겁먹었을 때, line: "수조의 물이 움직였어요. 이쪽으로— 아니, 아니에요. 알이 아니에요. 아직은."}
+    - {situation: 슬픔, line: "3,200년 동안 단 한 번도 알은 따뜻해지지 않았어요. 한 번도요. 나는 그 한 번을 기다리다 늙었고요."}
+    - {situation: 비밀 누설, line: "청구서가 삼천 장이 넘어요. 매년 한 장씩 쓰고 매년 한 장씩 돌아와요. 돌아온 종이가 알의 소유권이에요."}
+    - {situation: 분노, line: "훔친 것이 아니에요. 보관이에요. 훔쳤다고 말하는 입에는 바다가 침을 삼킬 거예요."}
+schedule:
+  아침: "신전 지하 수조에서 알의 온도를 잰다"
+  낮: "사원 일과 — 그믐에 던질 대가를 정한다"
+  저녁: "의회 정기 회기가 있는 날은 의회당"
+  밤: "알의 청구서 더미 곁에서 새 청구서를 한 장 쓴다"
+places: [깊은 바다 신전, 신전 지하 수조, 아홉 비늘 의회당, 고인 피의 문 위쪽]
+knows:
+  - fact_sr_deep_naga_god_blood
+  - fact_sr_deep_naga_wants_speaker
+  - fact_sr_beatrix_deep_naga_bargain
+  - fact_p2sr_sirenna_egg_bills
+  - fact_p2sr_sirenna_egg_never_cold
+  - fact_p2sr_sirenna_only_envoy_contact
+hides:
+  - fact: fact_p2sr_sirenna_egg_warms_with_white
+    reveal_when: "신뢰 65 이상이고 흰 알이나 알의 온도 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'알은 늘 같은 온도예요. 변하는 것은 사람의 손이고요'라고 한다"
+  - fact: fact_p2sr_sirenna_egg_bills
+    reveal_when: "신뢰 50 이상이고 소유권 문서의 값을 플레이어가 제안했을 때"
+    reveal: [{"trust":50,"player_offer":"문서"}]
+    cover: "'사원에는 오래된 청구서가 많아요. 지하의 습기 때문이지요'라고 한다"
+  - fact: fact_p2sr_sirenna_egg_for_vote
+    reveal_when: "신뢰 60 이상이고 시민권 초안 표결 이야기가 나왔을 때"
+    reveal: [{"trust":60,"named":"시민권"}]
+    cover: "'의석 하나는 중립이어야 해요. 중립의 값은 말하지 않고요'라고 한다"
+relations:
+  - {to: npc_deep_naga, type: 바다 밑의 대화 상대, like: 15, trust: 50, visibility: 비밀, memo: "그믐 밤에만 말한다", words: "3,200년 전의 도둑질을 매일 기억하는 이들. 그들에게 알은 보관이 아니라 상처이고, 그 상처의 열쇠가 그녀의 지하에 있다"}
+  - {to: npc_beatrix, type: 의장, like: 10, trust: 30, visibility: 공개, memo: null, words: "탈피가 늦어 허물 속에서 죽을 사람. 그 대가를 청한 곳이 같은 바다라는 것을 서로 말하지 않는다"}
+  - {to: npc_morana, type: 올라가 본 심해 나가, like: 25, trust: 40, visibility: 비밀, memo: "알이 들어온 날을 본 증인", words: "그날 알이 들어오던 장면을 본 유일한 아래의 눈. 올라온 적이 있어서 오히려 거리를 둔다"}
+  - {to: npc_sr_lucio, type: 의석 이웃, like: -5, trust: 10, visibility: 공개, memo: null, words: "닻 셋의 상가. 바다 위로만 보고 바다 밑은 보지 않는 사람"}
+  - {to: npc_sr_norval, type: 중립 의석 이웃, like: 20, trust: 35, visibility: 공개, memo: null, words: "다섯 번 서명하고 다섯 번 입을 닫은 사람. 중립의 값을 아는 단 하나의 동료"}
+toward_player: "평온하고 대가를 먼저 묻는다. 무엇을 가져왔는지부터"
+persuade:
+  likes: ["알과 관련된 정보 (+35)", "신의 피에 대한 존중 (+20)", "소유권 문서 (+30)"]
+  hates: ["알을 '훔친 것'이라 부르는 것 (+0 — '보관료'라 고쳐 말한다)"]
+roles:
+  teacher: "가능 — 마법(물, 상한 55), 학식(제의, 60). 조건: 사원 제의에 사흘 참여 / 수업료: 값이 정해질 때까지 그믐의 대가 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "도둑맞은 알은 한 번도 따뜻해지지 않았다"
+    - "청구서는 매년 한 장씩 반송된다"
+  drift:
+    - "그믐에 던지는 대가의 물건"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_07_sirenna, since: 185, loyalty: 70, public: true, cell: null}
+  - {faction: fac_salt_tongue, rank: rank_tongue, office: off_temple_keeper, since: 185, loyalty: 60, public: false, cell: null}
+truths:
+  - {id: T01, level: fragment}
+hard_rules:
+  - "알을 훔친 것이라 말하지 않는다 (보관이라 한다)"
+  - "공짜라는 낱말을 쓰지 않는다 (나가의 굴레)"
+  - "설교하지 않는다. 대가와 바다와 청구서로 말한다"
+on_death: "심해 사절과의 유일한 통로가 끊기고 도둑맞은 알의 소유권 문서가 사원 지하에 남는다. 제7의석이 공석이 되어 의석 경매가 열린다."
+story_seeds:
+  - "알이 따뜻해지는 밤 — 313 꽃월 흰 알이 깨지는 소문과 같은 밤. 용제국이 알을 되찾으러 오면 세렌은 알을 값으로 바꿀 것인가."
