@@ -24,3 +24,29 @@
 - {truth: T09, who: npc_mordecai, level: fragment, note: "마른 우물 바닥의 신의 피 몇 방울 — 에오르가 완전히 죽지 않았다는 단서 (fact_nc_well_blood_remains)"}
 - {truth: T11, who: npc_cecile, level: fragment, note: "신의 피 속 말 '너희는 끝나지 않을 것이다'를 여섯 살에 들었다. 그림자 진명 스승"}
 - {truth: T13, who: npc_mordecai, level: rumor, note: "용제국이 약해지기를 기다린다. 맹약회의 313의 시기는 소문으로"}
+
+# ── 두르강 (fac_durgan)
+- {truth: T01, who: npc_bror, level: whole, note: "두르강의 몫은 에오르의 뼈를 묻은 것. 룬판 기록으로 열한 종족의 몫을 안다 (계약의 역사)"}
+- {truth: T09, who: npc_bror, level: fragment, note: "깊은 문 안쪽의 '고동'. 41개의 계약을 깼는가를 매일 묻는다"}
+- {truth: T09, who: npc_hilda, level: fragment, note: "문 개방 기계를 완성했다. 고동이 인간 목소리에 반응함을 안다"}
+- {truth: T09, who: npc_deep_nidar, level: fragment, note: "'고동은 신의 마지막 말이 다가오면 인간의 목소리로 깨어난다'고 믿는다"}
+- {truth: T09, who: npc_urd, level: rumor, note: "AS 289 문을 열고 인간 아홉을 빼냈다. 안에서 들은 박자를 말하지 않는다"}
+- {truth: T11, who: fac_durgan, level: fragment, note: "룬새김 씨족(rank_hammer_house)만 — 서명 룬 하나가 진명의 첫 음절. 해그 룬새김, 시그나가 안다"}
+
+# ── 나가 세렌 (fac_seren)
+- {truth: T01, who: npc_beatrix, level: fragment, note: "나가의 몫은 피를 받아 바다에 숨긴 것. 붉은 해구의 신의 피를 아는 상가 기록"}
+- {truth: T03, who: npc_beatrix, level: rumor, note: "심해 나가에게 신의 피 한 모금을 청했고 '이름을 말할 수 있는 인간 하나'를 요구받았다 (fact_sr_beatrix_deep_naga_bargain)"}
+- {truth: T03, who: npc_lupo, level: fragment, note: "물의 진명을 말하는 인간이 있다면 잔향이라 판단한다 (fact_sr_lupo_knows_water_name)"}
+- {truth: T09, who: npc_deep_naga, level: fragment, note: "해구에 고인 신의 피를 지킨다 — 에오르의 죽음이 완전하지 않다는 믿음의 근거"}
+- {truth: T13, who: npc_beatrix, level: fragment, note: "맹약회의 313에 세렌의 표를 관리한다. 노르발과 시민권 의제를 맞바꿀 준비"}
+- {truth: T13, who: fac_seren, level: fragment, note: "제12의석 노르발 세스 — 각 종족 표의 흐름"}
+
+# ── 요툰 (fac_jotun)
+- {truth: T01, who: npc_hrimnir, level: fragment, note: "요툰의 몫은 에오르를 붙잡은 것. 서리 씨족 시조 이미르딘의 검은 팔. 다른 종족의 몫은 거인사 노래로 반쯤 안다"}
+- {truth: T01, who: fac_jotun, level: whole, note: "노래 거인 헤임라(npc 없음, rank_song) — 3,000년 거인사 전체를 노래로 기억한다. 각 종족의 몫과 거인 전쟁의 진짜 원인(용의 배신)까지"}
+- {truth: T09, who: npc_yorun, level: rumor, note: "남쪽 산 아래에서 무언가 심장처럼 뛰고, 그것이 뛸 때마다 북방 밭이 언다고 대지가 말한다 (fact_hg_yorun_pulse_south)"}
+- {truth: T13, who: npc_hrimnir, level: fragment, note: "맹약회의 313의 시기를 안다. 남침 여부를 회의 전에 정해야 한다"}
+
+# ── 하르칸 (fac_harkan)
+- {truth: T01, who: npc_temur, level: fragment, note: "신살 때 하르칸이 방관해 공범이 된 이야기 — 초원 구전으로 '엘다르가 계획, 용이 앞장'까지 안다"}
+- {truth: T13, who: npc_temur, level: rumor, note: "맹약회의 313이 인간 문제로 열린다는 말을 서진 계획에 넣었다 — 시기는 소문 수준"}

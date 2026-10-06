@@ -1,0 +1,478 @@
+# 이름 없는 자들 — 아스테리온의 유산을 잇는 세포 결사. "우리는 아스테리아가 무너진 날 태어났다."
+# 근거: HOUSES §5.2·§5.5·§4·§6, WORLD_BIBLE §4.3·§6.3·§7.1, CHARACTERS R00-01·R02-14·R01-05·R04-05·R11-01, facts/wanderers.yaml·greyford.yaml.
+# 세포 그래프(cell_graph)는 23 §4.1: 각 마디는 knows_up(한 단계 위로 가는 길)과 knows_members(아는 동료)만 안다.
+# 한 마디가 잡히면 엔진은 그 마디의 간선만큼 드러낸다(if_captured).
+id: fac_nameless
+name: 이름 없는 자들
+kind: secret
+race: [인간, (접촉자) 반용·녹테른·두르강 일부]
+governance: 세포 결사 — 위에서 아래로 한 줄. 서로의 얼굴을 모른다
+motto: "밤이 기네요. — 그래도 끝나지 않아요."
+seat: 없음. 지역 '등잔' 12곳. 회색 여인의 위치는 아무도 모른다
+size:
+  members: "정식 '손가락' 약 1,800 / 불씨(수습) 약 600 / 협력자 약 1만"
+  territory: "용제국 전역, 루멘, 세렌, 모르바, 잿불 언덕, 아르카스, 카즈둠 만료장, 재의 황무지 가장자리 — 등잔 12곳"
+  wealth: "잿빛 표(비밀 신용 — 1단위 = 빵 열 덩이), 잿빛 실(fac_grey_thread), 비밀 학교 11곳(학생 약 140), 별 칼 약 60자루, 잿모루산 화살촉 2,000"
+  force: "무장 봉기 능력은 거의 없다. 대신 목줄장 암살 기록 23건(AS 200~312), 탈주 통로, 위조 통행증, 그리고 기다림"
+
+decision: >
+  결정은 위에서만 내려온다. 회색 여인의 지시는 잿빛 표 뒷면의 실 매듭 문자(마그가 만든 체계)로 등잔에게 가고,
+  등잔은 그것을 입으로 심지에게, 심지는 손에게 전한다. 아래에서 위로는 '요청'만 올라간다 — 한 달에 한 번, 등잔이 한 줄.
+  지시는 세 종류다: ① '숨겨라'(아이·탈주자), ② '가르쳐라'(학교·땅 글씨), ③ '끊어라'(세포 절단 — 이 지시가 오면 그 손은 서로를 모르는 사이가 된다).
+  등잔은 지역 안에서 재량을 가진다 — 다만 피를 흘리는 일(목줄장 암살, 밀고자 처리)은 반드시 회색 여인의 매듭을 받아야 한다(받지 않고 하면 그 등잔이 끊긴다).
+  거부권은 없다. 대신 '침묵'이 있다: 등잔이 지시에 한 달 동안 답하지 않으면 회색 여인은 그 등잔이 잡혔다고 보고 경로를 끊는다 — 그래서 반대하는 등잔은 침묵으로 버틴다.
+  AS 244 이후 규칙 셋은 바뀌지 않는다: 문서를 남기지 않는다 / 돌아오는 이라고 말하는 자는 먼저 의심한다 / 하나 때문에 많은 것을 잃지 않는다.
+succession: >
+  위가 아래를 지명한다. 등잔이 잡히거나 죽으면 회색 여인이 그 지역 심지 중 하나에게 '새 등잔 매듭'(잿빛 표 세 개를 엮은 것)을 보낸다.
+  지명된 자는 옛 등잔이 알던 경로를 모두 버리고 새 경로를 만든다 — 공석 동안 그 지역 심지들은 회색 여인과 '임시 실'로 직접 이어지며, 이것이 조직의 가장 위험한 순간이다
+  (임시 실 하나가 잡히면 회색 여인까지 한 칸이다). 회색 여인의 자리는 승계를 말하지 않는다 — 수십 년간 같은 목소리, 같은 명령이 온다.
+  (작가 전용: 회색 여인의 정체는 시대 시드가 정한다 — fact_wd_grey_woman_identity_by_seed. ⓓ 공유 가명이면 '승계'는 이미 매번 일어나고 있다.)
+
+offices:
+  - id: off_grey_woman
+    title: 회색 여인 (최고 지도자)
+    holder: npc_grey_woman
+    reports_to: null
+    powers: ["모든 지시", "등잔 지명·절단", "피를 흘리는 일의 승인", "미끼 계획 같은 희생의 결정"]
+    chosen_by: "말하지 않는다 (시드에 따라 노라·아그네스·마그·공유 가명)"
+    perks: ["얼굴 없음 — 그 자체가 방패", "등잔 열둘에게 가는 경로 하나씩"]
+  - id: off_lamp_baalkar
+    title: 바알카르 등잔
+    holder: npc_nora
+    reports_to: off_grey_woman
+    powers: ["수도 세포 지휘", "궁정 소문 전달", "노예시장 매매 명단 수집(심지 안셀마 경유)"]
+    chosen_by: "회색 여인의 지명 (AS 295 접촉, AS 301 등잔)"
+    perks: ["궁 남쪽 세탁장 물통 — 전달 경로"]
+  - id: off_lamp_lumen
+    title: 루멘 등잔
+    holder: "unnamed:야코 (인간, 49) — 감옥 열쇠공 노예, 알베릭의 감방 열쇠 본을 떠 두었다"
+    reports_to: off_grey_woman
+    powers: ["루멘 세포", "잿빛 실 루멘 구간 협조", "감옥 열쇠"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_north
+    title: 북부 등잔 (까마귀 문~회색여울) — AS 310부터 공석
+    holder: null
+    reports_to: off_grey_woman
+    powers: ["북부 세포·잿빛 실 북부 구간"]
+    chosen_by: "공석 — 전 등잔 '숯쟁이'(이름 숨김)가 AS 310 서리 길에서 돌아오지 않았다. 회색여울 심지 엘사가 임시 실로 직접 닿는다"
+    perks: []
+  - id: off_lamp_emberhills
+    title: 잿불 언덕 등잔
+    holder: "unnamed:칼렙 (인간, 58) — 다라손, 9번 갱 갱조장. 봉기를 원하지만 '기다리라'는 명령에 묶여 있다"
+    reports_to: off_grey_woman
+    powers: ["광산 세포", "다라손 40명의 연락"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_silver
+    title: 은빛 강 등잔
+    holder: "unnamed:은빛 강 등잔 — 이름 숨김"
+    reports_to: off_grey_woman
+    powers: ["은빛 강 유역 비밀 학교 4곳", "순회 교사 지휘"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_seren
+    title: 세렌 등잔
+    holder: "unnamed:세렌 등잔 — 계약민 '셈 모임'과 닿는 자"
+    reports_to: off_grey_woman
+    powers: ["세렌 위조 통행증", "계약민 연락"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_morva
+    title: 모르바 등잔
+    holder: "unnamed:레나 (인간, 31) — 탈주자 마을 '물안개 둑' 책임자"
+    reports_to: off_grey_woman
+    powers: ["늪 수령지", "자유민 마을 연락"]
+    chosen_by: "회색 여인의 지명"
+    perks: ["늪 마녀 회합과의 공식 창구"]
+  - id: off_lamp_arkas
+    title: 아르카스 등잔 — 공석
+    holder: null
+    reports_to: off_grey_woman
+    powers: ["잿빛 탑 서기 노예 세포"]
+    chosen_by: "공석. 후보는 볼드 가문 수석 서기 노예 이삭(unnamed, 39) — 볼드 사본을 필사한 적이 있다"
+    perks: []
+  - id: off_lamp_west
+    title: 서부 평원 등잔
+    holder: "unnamed:서부 평원 등잔 — 그라넥 곡창의 농노"
+    reports_to: off_grey_woman
+    powers: ["곡창 세포"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_kazdum
+    title: 카즈둠 등잔 (굴뚝 숙영지 만료장)
+    holder: "unnamed:카즈둠 등잔 — 만료장 '두 번째 서명' 모임과 겹친다"
+    reports_to: off_grey_woman
+    powers: ["계약 광부 세포", "룬 읽기"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_ash
+    title: 재의 황무지 등잔 (마지막 등불)
+    holder: "unnamed:재의 황무지 등잔 — 사냥꾼 모임 '주춧돌'의 하나"
+    reports_to: off_grey_woman
+    powers: ["아스테리아 글자 석판 조각 수집", "미끼(이안)의 보급"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_lamp_rose
+    title: 장미 담장 등잔 (녹테른 경계)
+    holder: "unnamed:장미 담장 등잔 — 그림자장미 혈목장에서 빠져나온 자"
+    reports_to: off_grey_woman
+    powers: ["장미 실 수령", "세실과의 서신 운반"]
+    chosen_by: "회색 여인의 지명"
+    perks: []
+  - id: off_wick_greyford
+    title: 회색여울 심지 (세포 셋을 묶는 연락책)
+    holder: npc_elsa
+    reports_to: off_lamp_north
+    powers: ["회색여울 손 셋", "아이 표식(재 가로줄)", "카스파르와의 접촉 창구"]
+    chosen_by: "북부 등잔의 지명 (AS 279). 등잔 공석 뒤 회색 여인과 임시 실"
+    perks: ["진명 낱말 140개 — 조직 안의 유일한 '증명 판정자'"]
+  - id: off_wick_baalkar_market
+    title: 바알카르 심지 (노예시장)
+    holder: "unnamed:두더지 안셀마 (인간, 40) — 노예시장 세탁부, 사르코스 수용소의 매매 명단을 '듣는다'"
+    reports_to: off_lamp_baalkar
+    powers: ["매매 명단 수집", "시장 손 넷"]
+    chosen_by: "바알카르 등잔의 지명"
+    perks: []
+  - id: off_wick_baalkar_sewer
+    title: 바알카르 심지 (하수도 — 쥐들의 왕관 안)
+    holder: "unnamed:하랄 (인간, 44) — 쥐들의 왕관 이빨(위조). 그의 통행증 1/3이 잿빛 실로 간다"
+    reports_to: off_lamp_baalkar
+    powers: ["위조 통행증", "하수도 통로"]
+    chosen_by: "바알카르 등잔의 지명"
+    perks: []
+  - id: off_wick_silver_teacher
+    title: 은빛 강 심지 (순회 교사)
+    holder: "unnamed:먹물 티아 (인간, 34) — 비밀 학교 4곳, 가르친 학생 63명"
+    reports_to: off_lamp_silver
+    powers: ["학교 운영", "땅 글씨 교재(뼈 막대)"]
+    chosen_by: "은빛 강 등잔의 지명"
+    perks: []
+
+ranks:
+  - {id: rank_grey_woman, title: "회색 여인", duties: "지시와 희생의 결정", privileges: "얼굴 없음", open_to_player: false}
+  - {id: rank_lamp, title: "등잔 (지역 책임자, 12)", duties: "지역 세포 운영, 한 달에 한 줄의 요청", privileges: "회색 여인에게 가는 경로 하나", open_to_player: true}
+  - {id: rank_wick, title: "심지 (세포장)", duties: "손 3~5개를 묶는다", privileges: "등잔의 암호명을 안다", open_to_player: true}
+  - {id: rank_finger, title: "손가락 (정식 단원 — 셋이 한 손)", duties: "숨기기, 가르치기, 나르기", privileges: "잿빛 표 신용", open_to_player: true}
+  - {id: rank_ember, title: "불씨 (수습)", duties: "한 가지 일만", privileges: "자기 심지의 목소리 하나를 안다", open_to_player: true}
+  - {id: rank_contact, title: "접촉자·협력자 (계급 밖)", duties: "거래, 은신처, 정보", privileges: "단원 하나만 안다", open_to_player: true}
+# 플레이어의 사다리: (탈주자를 숨기거나 밀고를 거부한 것을 들킴) → 엘사의 접근 → 불씨(빵 심부름) → 손가락(땅 글씨 한 학기 가르치기)
+# → 심지(손 셋을 1년 지키기) → 북부 등잔(공석 — 회색 여인의 매듭). '돌아오는 이' 증명을 통과하면 사다리 밖의 자리 — 회색 여인이 직접 닿는다.
+
+cell_graph:
+  rule: "마디는 knows_up(위로 가는 길 하나)과 knows_members(아는 동료)만 안다. 잡히면 if_captured만큼 드러난다. 고문으로 나오는 것은 간선이지 얼굴이 아니다 — 대부분의 간선은 '물건·장소·시간'이다"
+  nodes:
+    - id: n_grey_woman
+      who: npc_grey_woman
+      rank: rank_grey_woman
+      knows_up: null
+      knows_members: [n_lamp_baalkar, n_lamp_lumen, n_lamp_emberhills, n_lamp_silver, n_lamp_seren, n_lamp_morva, n_lamp_west, n_lamp_kazdum, n_lamp_ash, n_lamp_rose, n_wick_greyford, n_bait_ian, n_letter_cecile, n_junction_agnes]
+      medium: "경로 하나씩 — 우물 너머 목소리, 세탁 바구니 바닥 매듭, 잿빛 표 뒷면, 커튼"
+      if_captured: "시드에 따라 다르다. ⓓ 공유 가명이면 아무것도 드러나지 않는다 — 다음 달에도 같은 목소리가 온다"
+    - id: n_lamp_baalkar
+      who: npc_nora
+      rank: rank_lamp
+      knows_up: "n_grey_woman — 궁 남쪽 세탁장 셋째 물통 바닥의 매듭. 목소리는 두 번, 커튼 너머로"
+      knows_members: [n_wick_market, n_wick_sewer]
+      medium: "세탁물"
+      if_captured: "심지 둘(안셀마·하랄)의 암호명과 세탁장 물통 — 회색 여인까지 '물통 하나'만 드러난다. 노라는 용황의 진실(T06)도 쥐고 있어 아우락스가 먼저 그녀를 원한다"
+    - id: n_wick_market
+      who: "unnamed:두더지 안셀마"
+      rank: rank_wick
+      knows_up: "n_lamp_baalkar — 암호명 '빨래'. 얼굴은 모른다"
+      knows_members: ["unnamed:시장 손 넷 (손가락 12)"]
+      medium: "노예시장 빨랫줄의 매듭"
+      if_captured: "시장 손 넷이 무너진다(손가락 12). 등잔으로는 '빨래'라는 이름과 빨랫줄만"
+    - id: n_wick_sewer
+      who: "unnamed:하랄"
+      rank: rank_wick
+      knows_up: "n_lamp_baalkar — 같은 세탁장"
+      knows_members: ["unnamed:하수도 손 둘", n_thread_crown]
+      medium: "위조 통행증 묶음"
+      if_captured: "쥐들의 왕관 안의 세포가 드러나고, 쥐왕 피프가 졸라크 상가에 그를 판다 — 하수도 통로 상실"
+    - id: n_thread_crown
+      who: "unnamed:쥐들의 왕관 꼬리 하나 (협력자)"
+      rank: rank_contact
+      knows_up: "n_wick_sewer"
+      knows_members: []
+      medium: "장물"
+      if_captured: "하랄의 이름"
+    - id: n_lamp_lumen
+      who: "unnamed:야코"
+      rank: rank_lamp
+      knows_up: "n_grey_woman — 대성당 양초 공방 '등불지기'의 심지 매듭"
+      knows_members: [n_junction_agnes, "unnamed:루멘 손 다섯"]
+      medium: "양초 심지"
+      if_captured: "알베릭 감방 열쇠 본, 양초 공방 경로, 아그네스의 얼굴 — 루멘에서 가장 큰 구멍"
+    - id: n_junction_agnes
+      who: npc_agnes
+      rank: rank_contact
+      knows_up: "n_grey_woman — 목소리를 한 번 들었다('기다려라, 돌아오는 이를'). 그 뒤로는 야코를 통해서만"
+      knows_members: [n_lamp_lumen, "npc_osric (끊어진 고리 — 만난 적 없다, 구절로만)", "npc_bern (모르바 매듭 끈)", "npc_johan (운반자)"]
+      medium: "순례자 숙소 '물 없는 우물'"
+      if_captured: "끊어진 고리 루멘 지부와 잿빛 실 루멘 거점이 동시에 무너진다(탈주자 214명이 지난 길). 두 결사가 겹치는 유일한 마디"
+    - id: n_wick_greyford
+      who: npc_elsa
+      rank: rank_wick
+      knows_up: "n_grey_woman — 임시 실(북부 등잔 공석). 옛 돌 고리 셋째 돌 틈의 잿빛 표. 목소리를 들은 적은 없다"
+      knows_members: [n_hand_greyford_a, n_hand_greyford_b, n_hand_greyford_c, n_contact_kaspar, n_coop_bram, n_coop_bran, n_coop_osric]
+      medium: "약초 꾸러미, 아이 옷깃 안의 재 가로줄"
+      if_captured: "회색여울 세포 셋 전부, 카스파르와의 접촉(용제국 내전의 폭탄), 그리고 회색 여인까지 '돌 틈 하나' — 임시 실이라 위로 가장 짧다"
+    - id: n_hand_greyford_a
+      who: "unnamed:회색여울 '수탉 손' — 손가락 셋 (배급 줄의 농노)"
+      rank: rank_finger
+      knows_up: "n_wick_greyford — 목소리만"
+      knows_members: ["같은 손 둘"]
+      medium: "배급 그릇 밑"
+      if_captured: "엘사의 목소리(노파라는 것까지)"
+    - id: n_hand_greyford_b
+      who: "unnamed:회색여울 '방앗간 손' — 손가락 셋"
+      rank: rank_finger
+      knows_up: "n_wick_greyford"
+      knows_members: ["같은 손 둘"]
+      medium: "곡물 자루 매듭"
+      if_captured: "엘사의 목소리"
+    - id: n_hand_greyford_c
+      who: "unnamed:회색여울 '언덕 손' — 손가락 셋 (굶주린 언덕 동굴 담당)"
+      rank: rank_finger
+      knows_up: "n_wick_greyford"
+      knows_members: ["같은 손 둘", "굶주린 언덕 셋째 동굴"]
+      medium: "빵 속 뼈 막대"
+      if_captured: "굶주린 언덕 셋째 동굴 — 시그리드 무리가 드러난다"
+    - id: n_coop_bram
+      who: npc_bram
+      rank: rank_contact
+      knows_up: "n_wick_greyford — 엘사 하나"
+      knows_members: ["npc_sigrid (북방 무리)", "잿빛 실 북부 매듭"]
+      medium: "수탉 지하 저장고"
+      if_captured: "에길 일가와 잿빛 실 회색여울 매듭. 위로는 엘사뿐"
+    - id: n_coop_bran
+      who: npc_bran
+      rank: rank_contact
+      knows_up: "n_wick_greyford — 무기를 맡길 사람을 보증하는 노파"
+      knows_members: ["npc_dietmar (창의 고객)"]
+      medium: "슬래그 더미"
+      if_captured: "창날 은닉처와 디트마르 무리"
+    - id: n_coop_osric
+      who: npc_osric
+      rank: rank_contact
+      knows_up: "n_wick_greyford — 동지. (그는 끊어진 고리의 고리이기도 하다)"
+      knows_members: ["끊어진 고리 회색여울 고리"]
+      medium: "안식일 낭독"
+      if_captured: "글자를 배운 아이들의 이름 — 정화청이 가장 원하는 것"
+    - id: n_contact_kaspar
+      who: npc_kaspar
+      rank: rank_contact
+      knows_up: "n_wick_greyford — 엘사(산파). 암호명 '반달'"
+      knows_members: []
+      medium: "옛 돌 고리 3번 돌 틈 전갈 (월 1회, 15일 보급 회의 귀로)"
+      if_captured: "카스파르가 잡히면 조직은 아무것도 잃지 않는다 — 그는 엘사 하나만 안다. 그러나 엘사가 잡히면 카스파르가 끝난다"
+    - id: n_lamp_emberhills
+      who: "unnamed:칼렙"
+      rank: rank_lamp
+      knows_up: "n_grey_woman — 9번 갱 막장 벽의 손자국 사이"
+      knows_members: ["unnamed:다라손 손 넷"]
+      medium: "갱도 벽 붉은 진흙"
+      if_captured: "9번 갱 봉기 준비와 다라손 40명"
+    - id: n_lamp_silver
+      who: "unnamed:은빛 강 등잔"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: [n_wick_tia]
+      medium: "노예선 화물 표"
+      if_captured: "비밀 학교 4곳의 위치"
+    - id: n_wick_tia
+      who: "unnamed:먹물 티아"
+      rank: rank_wick
+      knows_up: "n_lamp_silver"
+      knows_members: ["학교 4곳 — 학생 63명"]
+      medium: "뼈 막대"
+      if_captured: "학생 63명 — 정화청이 아이들을 잡는다"
+    - id: n_lamp_seren
+      who: "unnamed:세렌 등잔"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: ["unnamed:바늘 (손가락, 26 — 오필 상가 계약민 서기, 통행증 위조)"]
+      medium: "계약서 사본의 숫자"
+      if_captured: "위조 통행증 공방"
+    - id: n_lamp_morva
+      who: "unnamed:레나"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: ["npc_bern (진흙등불 — 잿빛 실 수령)", "늪 마녀 회합 창구"]
+      medium: "갈대배 바닥 표식"
+      if_captured: "늪 안의 마을 위치는 이미 반쯤 알려져 있다 — 드러나는 것은 회합과의 거래"
+    - id: n_lamp_west
+      who: "unnamed:서부 평원 등잔"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: ["곡창 손 셋"]
+      medium: "곡물 수레"
+      if_captured: "곡창 세포"
+    - id: n_lamp_kazdum
+      who: "unnamed:카즈둠 등잔"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: ["두 번째 서명 모임"]
+      medium: "계약 룬 읽기 석판"
+      if_captured: "두르강은 계약에 없는 처벌을 하지 않는다 — 카즈둠 세포는 잡혀도 살아남는 유일한 세포"
+    - id: n_lamp_ash
+      who: "unnamed:재의 황무지 등잔"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: [n_bait_ian, "주춧돌 14"]
+      medium: "글자 석판 조각"
+      if_captured: "이안이 가짜라는 것 — 미끼 계획 붕괴, 추종자 60 학살"
+    - id: n_bait_ian
+      who: npc_ian_ash
+      rank: rank_contact
+      knows_up: "n_grey_woman — 직접(미끼는 중간을 두지 않는다)"
+      knows_members: [n_lamp_ash]
+      medium: "밤 접선 — 징후 아이들의 위치를 받는다"
+      if_captured: "징후 아이들의 위치 목록(무고한 아이들) — 그가 가장 지키는 것"
+    - id: n_letter_cecile
+      who: npc_cecile
+      rank: rank_contact
+      knows_up: "n_grey_woman — 서신. 얼굴은 서로 모른다"
+      knows_members: [n_lamp_rose, "npc_oda (늪 쪽 수령)"]
+      medium: "장미 꽃잎이 든 편지"
+      if_captured: "녹테른이 그녀를 잡으면 이름 없는 자들은 편지 한 묶음을 잃는다. 장미 실이 끊긴다"
+    - id: n_lamp_rose
+      who: "unnamed:장미 담장 등잔"
+      rank: rank_lamp
+      knows_up: "n_grey_woman"
+      knows_members: [n_letter_cecile]
+      medium: "장미 꽃잎"
+      if_captured: "장미 실 경로"
+
+infiltration:
+  join_real: "그들이 찾아온다. 탈주자를 한 번 숨기거나 정화청 밀고를 거부하는 것을 들키면 엘사(또는 지역 심지)가 접근한다. 첫 임무(불씨): '이 빵을 굶주린 언덕의 세 번째 동굴로 가져가라. 빵 속에 무엇이 들었는지 묻지 마라.' 빵 속에는 땅 글씨 연습용 뼈 막대가 들어 있다 — 묻거나 열어 보면 그 불씨는 거기서 끝난다(시험)."
+  join_fake: "가입한 척하기 — 목줄단·정화청·바르그의 미끼로 들어가는 길. 불씨는 위로 한 칸밖에 모르므로 가짜 불씨가 얻는 것은 목소리 하나다. 가짜를 거르는 장치: 불씨는 1년 동안 한 가지 일만 받고, 그 일의 결과(아이가 늪에 닿았는가)로만 다음 칸에 오른다. 잡힌 아이가 있으면 그 줄의 불씨 전부가 의심받는다."
+  climb_by_capture: "한 세포를 잡아 위로 올라가기 — 플레이어가 사냥꾼 쪽에 설 때. 손가락 하나를 잡으면 심지의 목소리, 심지를 잡으면 등잔의 암호명과 매개물(물통·양초·돌 틈), 등잔의 매개물을 지켜보면 회색 여인의 경로 하나. 회색여울은 북부 등잔 공석 때문에 손가락 → 엘사 → 회색 여인까지 세 칸뿐이다 — 대륙에서 가장 짧은 줄"
+  proof_test: >
+    '돌아오는 이' 증명 — AS 180·244 두 번 속은 뒤 생긴 시험. 말로는 통과할 수 없다. 셋 중 둘을 요구한다.
+    ① 오지 않은 날: 그 세포만 아는 일이 7일 안에 일어날 것을 미리 말한다(회귀 지식). 엘사나 등잔이 확인한다.
+    ② 타지 않는 입: 엘사(진명 낱말 140개)나 늪 노파 앞에서 진명 한 낱말을 말하고 타지 않는다.
+    ③ 죽어 본 사람만 아는 것: 회색 여인이 정한 질문 하나 — 매 시드 다르다(예: '지난 겨울 서리 길 마지막 이정표에서 몇 명이 물렸나').
+    통과해도 환영은 없다. 회색 여인은 증명된 잔향을 '조직의 통제 아래' 두려 하고, 통제를 벗어나면 가장 먼저 그를 버린다(fact_wd_grey_woman_would_sacrifice_echo).
+  exposure: >
+    정체가 탄로 나는 길: 표식을 잘못 쓰기(쇄골을 세 번 두드리면 '위험' — 아무 때나 쓰면 그 자리의 세포가 흩어진다), 잿빛 표를 받은 손바닥을 씻지 않고 검문을 받기,
+    '그래도 끝나지 않아요'를 앞 구절 없이 말하기(목줄단이 아는 미끼 문구다 — 진짜 답은 앞 구절을 들은 뒤에만), 아이 옷깃의 재 가로줄을 지우지 않고 아이를 넘기기.
+    세포가 잡히면 '끊어라' 지시가 하루 안에 내려간다 — 플레이어가 그 줄에 있었다면 다음 날부터 아무도 그를 모른다.
+  signs_misuse: "플레이어가 표식을 아는 것은 지식 카드다(회귀해도 남는다). 회차 초반에 표식을 쓰면 상대는 '누가 가르쳤나'를 묻는다 — 답하지 못하면 미끼로 의심받는다(AS 244의 기억)."
+
+law:
+  crimes:
+    - {act: "문서를 남김 (글을 땅 외에 씀)", punishment: "그 손을 끊는다(세포 절단). 재범이면 조직 밖으로", note: "단원 대상"}
+    - {act: "다른 손의 얼굴을 알려고 함", punishment: "끊는다", note: "단원 대상"}
+    - {act: "승인 없이 피를 흘림 (목줄장·밀고자 처리)", punishment: "그 등잔·심지를 끊는다", note: "단원 대상 — 칼렙이 가장 오래 참고 있는 규칙"}
+    - {act: "밀고 (조직을 판 자)", punishment: "회색 여인의 매듭이 오면 죽음. 오지 않으면 그 밀고자가 아는 간선 전부를 버린다", note: "단원·협력자. AS 200~312 처리 기록 23건(목줄장 포함)"}
+    - {act: "'돌아오는 이'를 자칭함", punishment: "의심, 격리, 증명 요구 — 증명 실패 시 그 줄을 끊는다", note: "누구에게나. AS 244 규칙"}
+    - {act: "아이 표식을 지움 / 표식이 있는 아이를 넘김", punishment: "끊는다", note: "단원 대상"}
+    - {act: "용제국 법의 '글 가르치기' (인간에게 적용되는 바깥 법)", punishment: "즉결 처형 — 조직은 그 처벌을 막지 못한다. 대신 그 자의 이름을 재의 날에 부른다", note: "인간 대상 — 재의 법"}
+
+customs:
+  greeting: "'밤이 기네요.' — 답: '그래도 끝나지 않아요.' 상대가 답하면 엄지로 자기 쇄골을 두 번 두드린다(동지). 세 번은 위험 — 그 자리를 떠라."
+  taboos:
+    - "얼굴을 묻는 것, 이름을 묻는 것 — 이름 대신 직급과 지역으로 부른다"
+    - "'돌아오는 이'를 쉽게 입에 올리는 것 — 기다림을 가볍게 하는 말"
+    - "땅에 쓴 글을 발로 지우지 않고 자리를 뜨는 것"
+    - "재의 날에 아스테리온의 이름을 소리 내어 부르는 것 — 속으로만. 대신 아홉 해를 손가락으로 센다"
+  rites:
+    - {name: "재의 날의 셈", when: "재의 날 (연말 5일)", what: "불을 끈 어둠 속에서 아스테리아의 아홉 해를 손가락 아홉으로 세고, 그해 잡혀 간 이들의 이름을 한 번씩 부른다. 이름 없는 자들이 이름을 쓰는 유일한 날"}
+    - {name: "첫 글자", when: "아이가 땅에 첫 글자를 쓴 날", what: "그 글자를 쓴 막대를 부러뜨려 반은 아이가, 반은 심지가 갖는다. 글자는 발로 지운다"}
+    - {name: "잿빛 표 찍기", when: "거래·빚 갚기", what: "엄지에 재를 묻혀 상대 손바닥 가운데 동그라미 — 신용 1단위(빵 열 덩이)"}
+    - {name: "아이 표식", when: "징후로 의심받을 아이가 생기면", what: "옷깃 안쪽에 재로 작은 가로줄 — '이 아이를 데려가라.' 지난 10년간 약 300명"}
+  speech: "짧은 노예말, 은어와 날씨 이야기로 감싼다('비가 오겠네' = 바르그가 온다, '빵이 탔다' = 세포가 잡혔다). 존댓말과 반말을 섞지 않고, 서로 같은 높이의 평어를 쓴다 — 조직 안에 주인이 없다는 표시. '기다린다', '버틴다', '끝나지 않는다'를 자주 쓴다."
+
+membership:
+  join: "찾아갈 수 없다. 그들이 찾아온다(위 infiltration.join_real)"
+  leave: "나갈 수는 있다 — '끊긴다.' 끊긴 자는 아무도 모르는 사람이 된다. 다만 아는 간선이 많을수록 끊기 전에 그 간선을 모두 버려야 하므로, 등잔이 나가면 지역 하나가 1년 동안 멈춘다."
+  signs:
+    - "인사 '밤이 기네요.' — '그래도 끝나지 않아요.'"
+    - "엄지로 쇄골 두 번 = 동지, 세 번 = 위험"
+    - "손바닥 가운데의 재 동그라미 (잿빛 표)"
+    - "아이 옷깃 안쪽의 재 가로줄"
+    - "잿빛 표 뒷면의 실 매듭 문자 (마그가 만든 체계 — fact_wd_knot_script_by_mag)"
+    - "아홉을 세는 손가락 (재의 날)"
+
+internal_factions:
+  - {name: "기다리는 자들 (본류)", leader: npc_grey_woman, aim: "돌아오는 이가 올 때까지 아이를 숨기고 글을 가르치고 살아 있는다. 희생은 셈으로", strength: 55}
+  - {name: "일어서는 자들 (잿불 언덕·회색여울)", leader: npc_elsa, aim: "기다림이 너무 길었다 — 엘사는 낱말을 늪 밖 아이들에게 가르쳐야 한다고 믿는다(AS 270의 다툼). 칼렙(unnamed)은 봉기를 원한다. 카스파르와 손잡자는 쪽", strength: 25}
+  - {name: "미끼파 (재의 황무지)", leader: npc_ian_ash, aim: "사냥꾼의 눈을 가짜에게 모은다 — 무고한 추종자의 피로 진짜를 숨긴다", strength: 10}
+  - {name: "의심하는 자들 (AS 244 생존 세포)", leader: npc_nora, aim: "돌아오는 이라고 말하는 자는 미끼다. 증명 없이는 아무것도 주지 않는다. 노라는 그 '진짜'가 대붕괴의 불을 다시 부를까 두려워한다", strength: 10}
+
+assets:
+  - "잿빛 표 신용망, 잿빛 실(fac_grey_thread), 비밀 학교 11곳(학생 약 140), 별 칼 약 60자루, 화살촉 2,000"
+  - "목줄단 안의 이중 협력자(마르타 — 두 번의 거래), 쥐들의 왕관 안의 심지(하랄), 볼드 서기 노예(이삭)"
+  - "용황 병상의 귀(노라) — 대붕괴의 진실을 들은 열두 번째"
+  - "카스파르와의 접촉(엘사 경유), 세실과의 서신"
+  - "아이 표식으로 빼낸 아이 약 300(지난 10년)"
+
+secrets:
+  - {fact: fact_wd_grey_woman_faceless, known_by_rank: rank_lamp}
+  - {fact: fact_wd_grey_woman_identity_by_seed, known_by_rank: rank_grey_woman}
+  - {fact: fact_wd_grey_woman_creed, known_by_rank: rank_ember}
+  - {fact: fact_wd_grey_woman_approved_decoy, known_by_rank: rank_grey_woman}
+  - {fact: fact_wd_grey_woman_would_sacrifice_echo, known_by_rank: rank_grey_woman}
+  - {fact: fact_wd_knot_script_by_mag, known_by_rank: rank_lamp}
+  - {fact: fact_wd_grey_woman_kaspar_contact, known_by_rank: rank_wick}
+  - {fact: fact_gf_kaspar_nameless_contact, known_by_rank: rank_wick}
+  - {fact: fact_gf_elsa_nameless, known_by_rank: rank_wick}
+  - {fact: fact_gf_elsa_marks_children, known_by_rank: rank_finger}
+  - {fact: fact_aw_ian_decoy, known_by_rank: rank_lamp}
+  - {fact: fact_nc_cecile_grey_woman_letters, known_by_rank: rank_grey_woman}
+  - {fact: fact_dk_nora_grey_cell, known_by_rank: rank_lamp}
+  - {fact: fact_gf_martha_elsa_deals, known_by_rank: rank_wick}
+  # TODO-FACT: AS 244 '가짜 돌아오는 이' 사건 때 세포 40개가 한꺼번에 무너졌고, 두 번(AS 180·244) 모두 정화청의 미끼였다 (HOUSES §5.2)
+  # TODO-FACT: 북부 등잔은 AS 310 서리 길에서 돌아오지 않아 공석이고, 엘사가 임시 실로 회색 여인에게 직접 닿는다 (이 파일의 신설 — 확정 필요)
+  # TODO-FACT: 쥐들의 왕관 이빨 하랄은 이름 없는 자들의 심지이며 그의 위조 통행증 1/3이 잿빛 실로 간다 (HOUSES §5.11)
+  - {truth: T03, level: whole, holders: [npc_grey_woman]}
+  - {truth: T03, level: fragment, holders: [npc_elsa, npc_nora, npc_agnes, npc_ian_ash]}
+  - {truth: T09, level: fragment, holders: [npc_grey_woman, npc_elsa]}
+  - {truth: T04, level: fragment, holders: [npc_elsa]}
+  - {truth: T06, level: whole, holders: [npc_nora]}
+  - {truth: T12, level: fragment, holders: [npc_grey_woman]}
+
+relations:
+  - {to: fac_aurax, stance: -100, note: "HOUSES §6.1 행렬 (이름 없는 자들 행)"}
+  - {to: fac_melisande, stance: -90, note: "행렬"}
+  - {to: fac_kaspar, stance: 50, note: "행렬 — 엘사 경유 비밀 접촉"}
+  - {to: fac_eldar, stance: -60, note: "행렬"}
+  - {to: fac_nocturne, stance: -20, note: "행렬 — 세실은 예외(+50)"}
+  - {to: fac_durgan, stance: 20, note: "행렬 — 카즈둠 계약은 지켜진다"}
+  - {to: fac_seren, stance: -20, note: "행렬"}
+  - {to: fac_jotun, stance: 0, note: "행렬"}
+  - {to: fac_grom, stance: -10, note: "행렬"}
+  - {to: fac_light, stance: -20, note: "행렬 — 교단 전체가 아니라 정화청이 적이다"}
+  - {to: fac_collar, stance: -70, note: "행렬"}
+  - {to: fac_ashen_tower, stance: -80, note: "행렬"}
+  - {to: fac_barg, stance: -100, note: "행렬"}
+  - {to: fac_swamp_hags, stance: 70, note: "행렬 — 매듭 문자, 냄새 지우기 약"}
+  - {to: fac_grey_thread, stance: 90, note: "행렬 밖 — 하부 조직"}
+  - {to: fac_broken_ring, stance: 60, note: "행렬 밖 — 아그네스·오스릭이 겹친다"}
+  - {to: fac_grey_pilgrims, stance: -30, note: "행렬 밖 — 아이들을 데려가 준다. 그러나 그들의 교리는 돌아오는 이를 재의 중심에서 죽이려 한다"}
+toward_echo: >
+  기다린다 — 그러나 증명을 요구한다. AS 180·244 두 번 미끼에 속은 뒤 첫 반응은 환영이 아니라 시험이다.
+  증명된 뒤에도 회색 여인은 잔향을 지키는 것이 아니라 잔향이 일으킬 사람들을 지킨다: 잔향이 통제를 벗어나 사냥꾼을 부르면 가장 먼저 밀고할 수도 있다.
+  잔향이 그들 사이에 있다는 사실이 새면, 바르그와 정화청은 그 지역의 아이를 모두 잡아들인다 — 플레이어의 존재 자체가 동지들을 위험하게 만든다.
+  계승 지지율: 카스파르 1 → 찬가 단계와 연동해 최대 8.
+player_paths:
+  - "가입: 불씨 → 손가락 → 심지 → (공석) 북부 등잔. 회색여울은 줄이 가장 짧아 가장 빨리 오르고 가장 쉽게 무너진다"
+  - "증명: 세 시험 중 둘 — 회차 지식(오지 않은 날)이 가장 쉬운 열쇠다. 두 번째 회차부터는 엘사의 질문에 먼저 대답할 수 있다"
+  - "이용: 잿빛 표 신용, 위조 통행증, 비밀 학교 — '글' 단계(찬가 2)의 뼈대"
+  - "침투(사냥꾼 쪽): 한 세포를 잡아 위로 — 엘사가 잡히면 카스파르와 회색 여인까지 한 칸씩. 그 길은 13_DARK_PATHS의 목줄 길과 이어진다"
+  - "구하기: 이안의 추종자 60, 페니(매듭집), 회색여울 이졸의 목록에 오른 아이 셋 — 미끼파와 기다리는 자들 사이의 선택"
+regression:
+  fixed:
+    - "회색 여인의 정체는 시대 시드에 고정 — 회차마다 같다"
+    - "북부 등잔 공석, 엘사의 임시 실"
+    - "이안의 미끼 계획 진행 중, 추종자 약 60"
+    - "인사 암호와 표식 — 매 회차 같다(지식 카드로 남는다)"
+  flow:
+    - "세포 하나가 잡히는 날 — 대개 서리월 전후(회색여울 이졸의 목록)"
+    - "엘사가 카스파르의 전갈을 받는 날 — 매달 15일 귀로"
+  drift:
+    - "그 주에 어느 손이 무슨 일을 받았는지"
+    - "아이 표식이 그어진 아이의 이름"
+    - "목줄장 암살 지시가 내려오는 시점"

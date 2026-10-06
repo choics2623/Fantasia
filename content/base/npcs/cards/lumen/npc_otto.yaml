@@ -1,60 +1,100 @@
 id: npc_otto
 name: 간수 오토
-aka: []
+aka: [우물의 열쇠, 마테우스의 사촌]
 tier: B
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 36
 region: 루멘
-home: null
+home: 대성당 지하 간수 숙소
 job: 침묵의 우물 간수장
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+rank: 순종의 빛 고리지기 (간수장)
+summary: 침묵의 우물의 간수장. 마테우스의 사촌이라 매수가 통하지 않지만, 아픈 아내를 위한 약값이 필요하다
+source: docs/world/CHARACTERS.md:1212
+life:
+  - {year: 276, age: 0, event: "루멘 성표 신도 집안에서 태어남. 마테우스의 사촌이다"}
+  - {year: 288, age: 12, event: "대성당 허드렛일을 시작. 마테우스가 신학원에 있던 시절의 이야기를 곁에서 들었다"}
+  - {year: 295, age: 19, event: "간수 견습. 열쇠를 헝겊으로 감아 소리를 줄이는 법을 처음 배움"}
+  - {year: 302, age: 26, event: "결혼. 아내는 순례자 숙소의 빨래를 하던 사람이었다"}
+  - {year: 303, age: 27, event: "알베릭이 우물에 들어오자 열쇠 담당이 됨. 이후 같은 방의 같은 소리를 아홉 해 들었다"}
+  - {year: 308, age: 32, event: "아내가 기침을 시작함. 순례길 약방의 약은 한 달에 5 발톱 — 간수장의 봉급을 넘는다"}
+  - {year: 312, age: 36, event: "간수 두 명이 이상하게 약값이 넉넉해졌다는 것을 알아챘다. 자기에게는 아무도 돈을 내밀지 않았다. 아내의 기침이 깊어졌다 (낙엽월 1일 기준)"}
+appearance:
+  - "키가 크고 어깨가 처졌다. 눈 밑에 아내를 간호한 그늘이 있다"
+  - "허리에 열쇠 꾸러미를 헝겊으로 감아 소리가 나지 않게 걸었다"
+  - "턱선이 마테우스와 같다 — 같은 사람이라는 말을 듣기 싫어한다"
+smell: "곰팡이 낀 가죽과 약초 달인 냄새"
+voice_sound: "낮고 무겁다. 말수가 적고 한 마디 한 마디가 끊겨 나온다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 25, 자비: 25, 정직: 50, 신앙: 40, 탐욕: -10, 충성: 65}
+  temperament: [무거움, 성실, 돈에 흔들리지 않는 고집]
+  habits:
+    - "열쇠를 헝겊으로 감아 소리가 나지 않게 한다"
+    - "밤 순찰 때 모든 방 앞에서 세 호흡 동안 서 있다 — 인원 점검이라 말하지만 안부를 듣는다"
+    - "물그릇을 놓을 때 소리가 나지 않게 두 손으로 놓는다"
+    - "대답하기 전에 열쇠 꾸러미를 한 번 쥔다"
+  values: "규정. 가족. 아내"
+  fears: [아내가 죽는 것, 열쇠를 잃는 것, 매수 제의가 마테우스에게 닿아 사촌의 의심을 사는 것]
   desires:
-    short: null
-    long: null
+    short: "아내의 약값을 구하기 — 엘사나 오다의 약이 열쇠다"
+    long: "아내와 평범한 가을을 보내기"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "공적으로는 '대심문관님.' 사적으로는 낮은 '형님.' 짧고 정확하다"
+    to_equal: "간수 동료에게는 낮은 반말. 단어 하나씩"
+    to_inferior: "수감자에게는 이름 대신 방 번호. '9번.' 말을 길게 걸지 않는다"
+    to_player_default: "무뚝뚝한 존댓말. '…무슨 일입니까.' 규정으로 답한다"
+  tics: ["'규정입니다.'", "대답 전 열쇠 꾸러미를 한 번 쥔다", "말끝을 '…그뿐입니다.'로 끊는다"]
+  use: [규정, 열쇠, 방 번호, 순찰, 약, 아내]
+  avoid: [수감자의 이름, 뇌물(→ '선물'), 희망, 감옥 밖의 소문]
+  length: "아주 짧다. 한 문장이 한두 어절. 아내 이야기가 나오면 처음으로 문장이 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "…무슨 일입니까. 면회는 규정에 없습니다. 그뿐입니다."}
+    - {situation: 호의, line: "물은 소리 안 나게 놓았습니다. 옆 방이 자고 있으니까요. …그뿐입니다."}
+    - {situation: 적대, line: "열쇠는 하나입니다. 이 열쇠는 제 목에 걸려 있습니다. 가져가려면 제 목째로 가져가야 합니다."}
+    - {situation: 거래, line: "돈은 필요 없습니다. 제 아내에게 필요한 건 약입니다. 엘사 마녀의 약이 값이 나가는 걸 압니다. …약이라면 말씀드릴 수 있습니다."}
+    - {situation: 비밀 누설(아내), line: "아내는… 밤마다 기침을 합니다. 형님은 그 소리를 모릅니다. 저는 압니다. 그 소리가 매수 제의보다 큽니다."}
+    - {situation: 겁먹었을 때, line: "(열쇠를 움켜쥔다) …마테우스 형님이 오십니다. 방금 하신 말씀은 못 들은 것으로 하겠습니다. 못 들었습니다."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
+  아침: "우물 순찰, 수감자 점호"
+  낮: "간수 교대 감독, 물그릇 분배"
+  저녁: "밤 점검 전 마지막 순찰"
+  밤: "아내 곁에서 약을 달인다. 새벽에 열쇠를 들고 복귀"
+places: [침묵의 우물, 대성당 지하 간수 숙소, 순례길 약방]
+knows:
+  - fact_lu_otto_cousin
+  - fact_lu_otto_wife
+  - fact_lu_pyres_autumn
 hides: []
-relations: []
-toward_player: null
+relations:
+  - {to: npc_mateus, type: 사촌, like: 50, trust: 40, visibility: 공개, memo: null, words: "믿는 쪽이 아니라 기대는 쪽. 형님이 우물에 무엇을 묻는지 안다 — 묻지 않는다. 묻지 않는 것이 이 집안의 일이다"}
+  - {to: npc_alberic, type: 수감자, like: 10, trust: 20, visibility: 일방, memo: 두드림 소리를 듣고도 못 들은 것으로 함, words: "9번 방. 이름은 부르지 않는다. 벽을 두드리는 소리는 아홉 해째 들었다. 못 들은 것으로 한다 — 그뿐이다"}
+  - {to: npc_vera, type: 수감자, like: 5, trust: 10, visibility: 일방, memo: null, words: "옆 방의 여자. 두드림에 박자를 맞추는 게 들린다. 물그릇을 놓을 때 조금 더 조심한다"}
+toward_player: "무뚝뚝하고 규정만 말한다. 매수의 기색이 보이면 '규정입니다'로 닫는다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["아내의 약 (엘사·오다의 약 +40)", "규정을 존중하는 태도"]
+  hates: ["돈으로 열쇠를 사려는 것", "마테우스를 욕하는 말"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "밤마다 순찰하며 방 앞에서 세 호흡 서 있는다"
+    - "아내의 약값을 구하지 못했다 (회귀점의 사실)"
+  flow:
+    - "아내의 기침이 깊어지는 날 — 대개 낙엽월 중순, 0~3일 어긋난다"
+  drift:
+    - "그날 순찰의 순서와 간수 교대"
+    - "물그릇의 양"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "돈을 받지 않는다. 약이라면 받는다"
+  - "수감자의 이름을 입에 올리지 않는다. 방 번호로 부른다"
+  - "마테우스 앞에서는 '형님' 대신 '대심문관님'이라 부른다"
+on_death: "침묵의 우물 열쇠 공백 — 알베릭 구출의 마지막 장애물이 사라지거나, 마테우스가 더 가혹한 간수를 앉힌다"
+story_seeds:
+  - "엘사나 오다의 약이 그의 아내를 살리면 그의 열쇠가 열린다"
+  - "그는 알베릭의 벽 두드림을 아홉 해째 듣고 있다 — 말하지 않았다"

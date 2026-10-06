@@ -1,0 +1,234 @@
+# 바르스카르 혈족 (Brood) — 정본: HOUSES §1.3~1.4, §1.6, §6.1(진영 행), §6.3 / RACES §2 / SUBRACES §3.1 / WORLD_BIBLE §4.1
+# 혈족은 '가문'이면서 계승 위기의 세 진영(+알)이 갈라서는 선이다. 이 파일은 피로 묶인 쪽 — 제국 행정(fac_drakmar_empire)과 구분한다.
+# 기준: AS 312 낙엽월 1일. id 없는 자리의 holder는 'unnamed:...' (TODO-NPC).
+id: fac_varskar_brood
+name: 바르스카르 혈족
+kind: house
+race: [용족(진룡), 반용(서자)]
+governance: 힘의 서열 — 그러나 '더 센 자'가 아니라 '더 많이 가진 자'
+governance_note: >
+  혈족에는 회의도 표결도 없다. 서열은 도전과 결투로 바뀌고, 결투의 승패는 힘이 아니라 소유 — 보고, 짝, 알, 영지 — 로 가려진다.
+  용은 가진 것으로 자신을 정의하므로 혈족의 다툼은 언제나 약탈의 모양을 한다. 가문의 '의사 결정'이라 부를 수 있는 것은 두 가지뿐이다.
+  ① 용황이 후계자 셋을 오후 한 시간씩 교대로 접견하는 순서(누가 먼저 병상에 닿는가). ② 알의 법 — 알은 어미만 이름을 부를 수 있다.
+motto: "가진 것이 곧 이름이다."   # RACES §2: 정식 이름 = 고유명 + 몸의 특징 + 소유 목록
+seat: dragon_throne_peak     # 용좌봉 '재의 둥지'. 혈족은 흩어져 산다 — 붉은 첨탑(red_spire), 잿불 언덕 은비늘 요람, 서리 요람, 재의 요람(남해), 까마귀 문
+size:
+  members: "진룡 8(바르스카르·아우락스·드라반·세라크·멜리산드·실바라·이졸데·세벨린) + 반용 1(카스파르) + 알 1 + 생사불명 1(아르젠티아) + 도둑맞은 알 1. 사망자는 계승의 증인이다(바엘리스·토르반·하길라·그림바르·아그라몬)"
+  territory: "붉은 첨탑(아우락스), 잿불 언덕(멜리산드), 용좌봉(용황), 서리 요람(이졸데), 까마귀 문(카스파르의 지휘소), 재의 요람(세벨린의 자진 유배)"
+  wealth: "제국 전체가 용황의 보고. 혈족 개인 재산은 영지·광산·노예·비늘 — 용황의 비늘은 하루 한 바구니씩 바래 떨어지고 암시장에서 2비늘에 팔린다"
+  force: "진룡 8마리 중 계승 위기에 실제로 날아올 수 있는 것은 아우락스·드라반·세라크·멜리산드·실바라·이졸데·(세벨린)·바르스카르(병석) — 그러나 한 마리가 군대 하나다"
+
+offices:
+  - id: off_brood_head
+    title: 혈족의 수장 (용황이자 아비)
+    holder: npc_varskar
+    reports_to: null
+    powers: ["혈족 안의 모든 짝·알·영지·보고의 최종 주인", "후계자 접견의 순서를 정한다(깨어 있는 한 시간)"]
+    chosen_by: "불의 계승 (SK 1,231 '잿날개의 밤' — 형 그림바르를 죽이고 아버지 아그라몬을 굴복시켰다)"
+    perks: ["두개골 회랑에 놓일 권리 — 사후에도 보고는 세어진다"]
+  - id: off_brood_consort
+    title: 현재의 짝
+    holder: npc_isolde
+    reports_to: off_brood_head
+    powers: ["알의 법의 주인 — 흰 알에 관해 누구도 그녀의 동의 없이 움직이지 못한다", "서리비늘 혈통(스카디아)의 대표 — 혈족 밖 대룡과의 연결 고리"]
+    chosen_by: "AS 307 짝지음 — 본인의 선택이 아니었다. 경쟁자 2마리가 죽었다 (RACES §2)"
+    perks: ["서리 탑·알 보관실"]
+  - id: off_white_egg
+    title: 흰 알 (다음 대)
+    holder: npc_white_egg
+    reports_to: off_brood_consort
+    powers: ["부화하는 순간 흰 알 지지율이 ×1.5가 된다 — 존재 자체가 칼날", "처음 보는 얼굴을 '어미'로 각인한다는 전승(fact_dk_egg_imprint)"]
+    chosen_by: "AS 309 산란, 313 꽃월 부화 예정"
+    perks: ["이졸데 외에는 이름을 부르지 못한다"]
+  - id: off_firstborn
+    title: 장자 (전통파 '불의 손')
+    holder: npc_aurax
+    reports_to: off_brood_head
+    powers: ["혈족 안 최강의 날개와 가장 큰 병력(서부군)", "대붕괴의 진실을 아는 유일한 후계자"]
+    chosen_by: "출생 (하길라 흑연기의 장자). 토르반을 '가마솥 결투'에서 죽여 영지를 멜리산드에게 넘겼다"
+    perks: ["오른쪽 날개막에 새겨진 약 4,000명의 이름"]
+  - id: off_second_daughter
+    title: 차녀 (개량파 '은의 서약')
+    holder: npc_melisande
+    reports_to: off_brood_head
+    powers: ["잿불 언덕과 은비늘 요람", "세렌 자본·잿빛 탑·엘다르 존속파를 끌어오는 줄"]
+    chosen_by: "출생 (아르젠티아 은빛서리의 차녀)"
+    perks: ["이식 실험 기록 3,214"]
+  - id: off_bastard
+    title: 서자 (비인정)
+    holder: npc_kaspar
+    reports_to: off_brood_head
+    powers: ["공식 지위 없음 — 족보에 이름이 없다", "까마귀 문 국경군의 지휘는 제국 쪽 직함이지 혈족 쪽 자리가 아니다"]
+    chosen_by: "용황이 '살려 두기로 한' 것 외에 어떤 선택도 없었다 — 이유는 기록에 없다"
+    perks: ["은회색 비늘(아버지의 잿빛)", "용황이 죽으면 가장 먼저 죽을 자"]
+    note: "다른 두 반용 자식(AS 140년대, 230년대)은 출생 직후 '처분'되었다 — 칼다란 가문 기록"
+  - id: off_executor
+    title: 집행자 (잔향 사냥)
+    holder: "unnamed:드라반 붉은발톱 — 적룡, 520세. 아우락스의 아들"   # TODO-NPC
+    reports_to: off_firstborn
+    powers: ["AS 213 이후 '징후자 화형'을 직접 수행 — 수백 명이 모두 평범한 인간이었다"]
+    chosen_by: "아비의 위임"
+    perks: ["아우락스가 패하면 독자 노선을 걸을 수 있는 자"]
+  - id: off_doubting_granddaughter
+    title: 의심하는 손녀
+    holder: npc_serak
+    reports_to: off_firstborn
+    powers: ["용의 대로 정찰대와 용인 기사단 훈련", "궁 서고 출입 — 대붕괴 기록을 밤마다 몰래 읽는다"]
+    chosen_by: "출생. 아버지보다 할아버지를 존경한다"
+    perks: ["그라넥 평원 상공 '재 언덕' 둥지", "아버지의 날개에 새겨진 유모(베티)의 이름을 안다"]
+  - id: off_silver_granddaughter
+    title: 은빛 손녀 (실험 보조)
+    holder: "unnamed:실바라 은재 — 은룡, 190세. 아직 성체 아님"   # TODO-NPC
+    reports_to: off_second_daughter
+    powers: ["어머니의 이식 실험을 '보조'한다", "피험자들의 이름을 몰래 외운다 — 명단을 넘겨줄 수 있는 균열"]
+    chosen_by: "출생"
+    perks: ["은비늘 요람 지하 '은비늘 요람' 둥지"]
+  - id: off_exile
+    title: 가장 오래된 용 (유배)
+    holder: "unnamed:세벨린 연기날개 — 2,950세. 남해 화산섬 '재의 요람'"   # TODO-NPC
+    reports_to: off_brood_head
+    powers: ["그녀가 날아오면 '가장 오래된 용'의 권위로 즉위 자격이 생긴다 (0 → 최대 지지율 10)"]
+    chosen_by: "SK 1,300 오빠의 형제 살해에 반발해 스스로 떠났다. 3,000년 가까이 혈족과 말하지 않는다"
+    perks: ["아무도 그녀를 부르지 못한다 — 누군가 재의 요람까지 날아가 설득할 때만"]
+  - id: off_second_mate
+    title: 둘째 짝 (공석)
+    holder: null       # 아르젠티아 은빛서리 — SK 2,700 바르스카르를 떠남, 생사 불명. 살아 있다면 제국 밖 은거룡 6 중 하나
+    reports_to: off_brood_head
+    powers: ["멜리산드와 도둑맞은 알의 어미 — 그녀의 행방이 알려지면 멜리산드의 정당성이 흔들린다"]
+    chosen_by: "짝지음 (SK ~2,500) — 떠났으므로 공석"
+    perks: []
+  - id: off_stolen_egg
+    title: 도둑맞은 알 (행방불명)
+    holder: null       # SK 2,951 실종. 나가 상인이 '보관료' 명목으로 가져간 뒤 반환 없음. 세렌 '깊은 바다' 사원 지하에 있다는 소문
+    reports_to: off_second_mate
+    powers: ["부화하면 멜리산드의 동복형제 — 혈통 분쟁의 폭탄"]
+    chosen_by: "—"
+    perks: []
+  - id: off_eldest_daughter
+    title: 장녀 (고인 — 시간의 균열에 삼켜짐)
+    holder: null       # 바엘리스 흑요비늘 †AS 0. 재의 황무지 중심에 날개를 편 채 굳은 그림자가 목격된다
+    reports_to: off_brood_head
+    powers: ["시간 잔상으로 나타난 그녀는 대붕괴의 '목격자'로서 말할 수 있다"]
+    chosen_by: "출생 (하길라 흑연기의 장녀)"
+    perks: []
+
+ranks:
+  - {id: rank_brood_head, title: "수장 (용황)", duties: "보고와 짝과 알의 주인", privileges: "혈족 안의 모든 결정", open_to_player: false}
+  - {id: rank_pretender, title: "후계 후보 (성룡·고룡)", duties: "영지 보고를 지키고 진영을 모은다", privileges: "접견 순서, 영지 병력", open_to_player: false}
+  - {id: rank_young_dragon, title: "젊은 용 (350~500세)", duties: "번식 가능, 아직 성체 아님", privileges: "아비 영지의 둥지 사용", open_to_player: false}
+  - {id: rank_egg, title: "알", duties: "—", privileges: "알의 법 — 어미만 이름을 부른다", open_to_player: false}
+  - {id: rank_half_dragon, title: "반용 (비인정 서자)", duties: "없다", privileges: "없다 — 족보에 이름이 없다", open_to_player: false}
+  - {id: rank_lost, title: "유배·실종·고인", duties: "—", privileges: "존재가 곧 증언이나 약점", open_to_player: false}
+
+decision: >
+  혈족 전체의 결정은 없다. 용황이 깨어 있는 오후 한 시간의 접견이 유일한 '가족 회의'이고, 그 순서가 곧 서열의 신호다.
+  나머지는 영지별 독단. 짝이 다른 용과 날면 결투가 법이다(이졸데 307년 결투에서 2마리가 죽었다). 진룡끼리의 직접 충돌은 낙하물 피해가
+  제국 전체에 미치므로 계승 전쟁의 가장 두려운 장면이다. 혈족 안에서 '표결'이 있는 것은 오직 불꽃 홀의 확인 — 용인 가주들의 표 — 뿐이며 그것은 혈족의 것이 아니다.
+succession: >
+  용황이 죽으면 그의 보고를 가장 많이 차지한 자가 용황이 된다(계승 원칙 없음 → 계승 위기는 곧 약탈전). 아우락스는 장자이고 병력이 있으나 과반이 없다.
+  멜리산드는 돈과 지식이 있다. 이졸데는 알이라는 가장 큰 보고를 쥐었다. 카스파르는 족보에 없으므로 즉위하려면 족보를 쓰는 자들(칼다란)과 싸워야 한다.
+  세벨린은 오지 않으면 0, 오면 10. 흰 알은 부화가 313 꽃월이므로 '용황이 그 전에 죽는가'가 알의 운명을 정한다.
+  한 후보의 지지율이 80을 넘거나 내전 6개월이 지나면 결말이 난다(SCENARIOS §2.1 — 클락 점수 아우락스 60 / 멜리산드 45 / 흰 알 25 / 카스파르 15).
+
+law:
+  crimes:
+    - {act: "남의 보고를 만진다", punishment: "용이면 결투, 아니면 즉결 처단", note: "혈족 안에서도 같다 — 토르반은 아우락스의 보고를 건드려 가마솥 결투에서 죽었다"}
+    - {act: "짝이 다른 용과 난다", punishment: "결투", note: "이졸데의 짝짓기 때 경쟁자 2마리가 죽었다"}
+    - {act: "알을 깬다", punishment: "용서 없음", note: "3,400년간 단 한 번도 용서받지 못했다. 아우락스의 자객 3명이 서리 탑에서 이졸데에게 찢겼다"}
+    - {act: "역린을 입에 올린다", punishment: "살해 위협으로 간주", note: "혈족 안에서도 다르지 않다"}
+    - {act: "대붕괴의 진실을 입 밖에 낸다 ('불의 침묵')", punishment: "듣는 인간은 처분 — 용황은 열한 명을 처분했다", note: "아우락스와 소수의 고룡만 안다"}
+    - {act: "반용 자식을 살려 둔다", punishment: "출생 직후 처분이 관례", note: "카스파르가 예외인 이유는 기록에 없다 (칼다란 기록)"}
+    - {act: "자기 소유물(노예)을 스스로 죽인다", punishment: "금기 — 용인 집행관을 시킨다", note: "화형 집행관 드라반도 '용인 집행관을 대신해' 직접 불을 뿜는 것을 영예로 삼을 뿐이다"}
+    - {act: "잃었다고 말한다", punishment: "관계 −50 (역린)", note: "패배는 '양보했다'"}
+
+customs:
+  greeting: "영공에 들 때 세 번 선회한다. 인사는 말이 아니라 소유의 확인 — '네 보고의 목록은 안녕한가'를 뜻하는 낮은 울음. 용인의 중개 없이 인간이 말을 거는 것 자체가 무례."
+  taboos:
+    - "남의 보고, 알, 역린"
+    - "'잃었다', '도둑'"
+    - "바엘리스의 이름 — 아비는 그날을 입에 올리지 않는다"
+    - "하길라 흑연기의 이름 — 아우락스가 유일하게 '약해지는' 화제"
+    - "대붕괴 때 의식 한가운데에 불을 뿜었다는 사실 — '불의 침묵'"
+  rites:
+    - {name: "소유의 낭송", when: "새 용황의 즉위", what: "모든 것의 목록을 낭송한다. 정식 이름을 다 읊는 데 사흘"}
+    - {name: "두개골 회랑의 셈", when: "재의 날", what: "죽은 용의 두개골은 기도의 대상이 아니라 그들의 보고를 세어 보는 대상이다. 용좌봉 지하 회랑"}
+    - {name: "알 품기", when: "산란 후 300일", what: "화산열 또는 어미의 체온. 부화의 화로 — 이졸데는 화로지기 인간 노예들을 아낀다"}
+    - {name: "접견 교대", when: "매일 오후 용황이 깨는 한 시간", what: "세 후계자가 교대로 병상에 든다. 그 순서가 그날의 서열"}
+  speech: "용언. 문장은 소유격으로 끝나는 선언 — '이것은 나의 것이다'가 아닌 '이것은 내가 가진 것의 일부다'. 인간을 가축의 울음으로 듣는다. 직접 호명하지 않고 목록으로 부른다."
+
+membership:
+  join: "출생. 짝으로 들어온 용은 혈족이 아니라 '소유'다. 반용은 출생 직후 처분이 관례 — 살려진 것이 예외."
+  leave: "유배(세벨린), 이탈(아르젠티아), 결투의 죽음. 용은 혈족을 '그만두지' 않는다 — 가진 것을 잃을 뿐이다."
+  signs: ["색: 잿빛(바르스카르)·붉은 계(아우락스)·은빛 계(멜리산드·이졸데·실바라)·흑 계(하길라·바엘리스)", "용의 표: 소유한 인간 왼쪽 어깨의 문장"]
+
+internal_factions:
+  - name: "불의 손 (아우락스파)"
+    leader: npc_aurax
+    aim: "재의 법 강화, 잔향 대숙청, 반용 처단. 잔향자가 회귀를 깨닫기 전에 '아버지의 불'로 끊는다 (아버지가 살아 있는 동안에만 가능)"
+    strength: 41
+    matrix: {aurax: null, melisande: -60, kaspar: -90, eldar: 10, nocturne: -20, durgan: 10, seren: 20, jotun: -70, grom: 40, light: 30, nameless: -100, collar: 40, tower: -30, varg: 70, hags: -90}
+  - name: "은의 서약 (멜리산드파)"
+    leader: npc_melisande
+    aim: "인간은 개량할 자원 — 이식과 육종, 그리고 '견디는 단 하나의 그릇'(잔향). 최종 목표는 아버지의 시간의 상처를 그릇에 옮겨 담아 용족이 이름을 잃지 않는 것 + 즉위"
+    strength: 32
+    matrix: {aurax: -60, melisande: null, kaspar: -50, eldar: 60, nocturne: 0, durgan: 20, seren: 60, jotun: -40, grom: 0, light: 20, nameless: -80, collar: 20, tower: 70, varg: 10, hags: -60}
+  - name: "알의 수호 (이졸데)"
+    leader: npc_isolde
+    aim: "흰 알을 아무에게도 소유되지 않는 용으로 키운다. 용황이 죽으면 알을 까마귀 문으로 피신시킬 계획(카스파르와 비밀 서신 두 번). 알이 위협받으면 누구와도 손잡는다"
+    strength: 18
+    matrix: {note: "행렬 행이 없음 — HOUSES §6.1은 후계자 진영 3개만 행으로 둔다. 원로회 쪽 값(이졸데/흰 알 +60)은 fac_scale_council 참조"}
+  - name: "서자의 국경 (카스파르파)"
+    leader: npc_kaspar
+    aim: "혈통을 깨지 않고 어머니의 종족에게 성(姓)을 줄 수 있는 자리. 공개로는 침묵, 비밀리에 이름 없는 자들(탈주자 수송을 세 번 눈감아 줌)"
+    strength: 9
+    matrix: {aurax: -80, melisande: -50, kaspar: null, eldar: -10, nocturne: -20, durgan: 20, seren: 0, jotun: -30, grom: -10, light: 0, nameless: 40, collar: -40, tower: -30, varg: -60, hags: 20}
+  # matrix 열 = HOUSES §6.1 열 순서(아우·멜리·카스·엘다·녹테·두르·세렌·요툰·그롬·순빛·이름·목줄·탑·바르·늪마). null은 자기 자신.
+  # strength = HOUSES §6.3 귀족 지지율(%).
+
+assets:
+  - "진룡 8 — 각자의 영지가 곧 보고"
+  - "용좌봉 두개골 회랑, 불꽃 홀 지하 '첫 둥지'의 아그라몬 해골(이빨 하나가 '신을 태운 이빨'로 밀거래된다는 소문)"
+  - "흰 알과 서리 탑 / 서리비늘 혈통의 후원(스카디아, 서리 이빨)"
+  - "붉은 첨탑과 재송곳 기사단 / 잿불 언덕과 은비늘 요람 / 까마귀 문과 국경군"
+  - "토르반의 송곳니 — 잿불 언덕 광산 깊은 곳에 박혀 있다('열이 나는 돌')"
+  - "그림바르의 뿔 — 두르강 왕가 보물고"
+
+secrets:
+  - {fact: fact_dk_collapse_truth, known_by_rank: rank_brood_head}
+  - {fact: fact_dk_varskar_eleven_slaves, known_by_rank: rank_brood_head}
+  - {fact: fact_dk_varskar_awaits_return, known_by_rank: rank_brood_head}
+  - {fact: fact_dk_aurax_wing_record, known_by_rank: rank_pretender}
+  - {fact: fact_dk_aurax_assassins_tower, known_by_rank: rank_pretender}
+  - {fact: fact_dk_isolde_forced_mating, known_by_rank: rank_pretender}
+  - {fact: fact_dk_isolde_kaspar_letters, known_by_rank: rank_pretender}
+  - {fact: fact_dk_soom_melisande_spy, known_by_rank: rank_pretender}
+  - {fact: fact_dk_serak_reads_archive, known_by_rank: rank_young_dragon}
+  - {fact: fact_dk_serak_nurse_betty, known_by_rank: rank_young_dragon}
+  - {fact: fact_eh_mel_goal_wound, known_by_rank: rank_pretender}
+  # TODO-FACT: 반용 '처분' 기록 (AS 140년대·230년대, 칼다란 기록) / 도둑맞은 알의 소재(세렌 '깊은 바다' 사원 지하 소문) / 세벨린의 자진 유배 이유와 즉위 자격 / 하길라 살해와 아우락스의 300년 / 바엘리스의 굳은 그림자(재의 황무지 중심) / 토르반 송곳니
+  - {truth: T01, level: whole, holders: [npc_varskar]}
+  - {truth: T03, level: whole, holders: [npc_aurax]}
+  - {truth: T06, level: whole, holders: [npc_varskar, npc_aurax]}
+  - {truth: T07, level: whole, holders: [npc_varskar, npc_aurax]}
+  - {truth: T08, level: whole, holders: [npc_aurax]}
+
+relations:
+  - {to: fac_scale_council, stance: -40, note: "아우락스파 → 원로회 −40 (HOUSES §6.1 행렬 밖 값, 아우락스파 기준). 멜리산드파 −10, 카스파르파 −50, 이졸데/흰 알 +60은 원로회 쪽에서 본 값"}
+toward_echo: "혈족 안에서도 갈린다. 아우락스·드라반: 화형 후 아버지의 불로 단절. 멜리산드: 포획 후 이식. 카스파르: 불명 — 동질감인가 이용인가. 이졸데: 알의 각인에 닿는 잔향 — 껍질의 실금이 빛난다. 용황: 기시감, '다시 오겠다'는 아스테리온의 눈빛을 반쯤 기다린다."
+player_paths:
+  - "임종 시중 노예 — 노라 곁에서 용황의 마지막 숨을 듣는다 (불의 진명 한 마디가 전해질 수 있으나 그 순간 아우락스가 냄새를 맡는다)"
+  - "흰 알 — 부화를 지키거나, 이졸데의 신뢰를 얻거나, 극단적으로 훔쳐 이름 없는 자들에게 넘긴다"
+  - "멜리산드의 사냥 — 일부러 잡혀 들어가 안에서 무너뜨린다 (빈 그릇만 살아 나온다)"
+  - "카스파르 — 레아의 정체 증명, 아우락스파의 암살 계획 전달"
+  - "세라크·실바라 — 혈족 안의 균열: 진실을 묻는 손녀, 피험자 명단을 외운 손녀"
+regression:
+  fixed:
+    - "용황의 병세(건강 34/100, 매달 −3), 접견 시간, 낙엽월 초하루의 '또 그 저녁' 중얼거림"
+    - "흰 알 부화 313 꽃월 / 지지율 41·32·18·9"
+    - "아우락스가 대붕괴의 진실을 안다, 멜리산드가 3,214명을 번호로 남겼다"
+  flow:
+    - "후계자 접견 순서의 평균 경향 (대개 아우락스 > 멜리산드 > 카스파르)"
+  drift:
+    - "세라크·드라반의 정찰 경로, 아우락스의 순회 날짜"
+    - "누가 서리 탑 상공을 몇 시에 도는가"
+  time_sensitive: "바르스카르(감도 1.5)는 회차가 쌓일수록 기시감이 강해진다 — 열 번째 회차쯤이면 화로지기에게 남쪽 강가 인간 아이들을 세어 오라 하고, 더 쌓이면 스스로 날개를 편다."

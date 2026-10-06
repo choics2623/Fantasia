@@ -1,0 +1,273 @@
+# 두르강 씨족 — 돌 혈명('불변')의 굴레(맹세를 깰 수 없다)가 만든 계약 공화국.
+# 근거: HOUSES §3.3, RACES §9, REGIONS §12(카즈둠 산맥), facts/kazdum.yaml.
+id: fac_durgan
+name: 두르강 씨족 연합 (카즈둠 계약 공화국)
+kind: polity
+race: [산 두르강, 심층 두르강, 잿불 두르강, 이름 없는 자(맹세 파기 추방자), 계약 광부(인간)]
+governance: 계약 공화국  # 법 = 쇠판에 새긴 계약. 왕도 한 서명자일 뿐이다
+motto: "계약은 신성하다. 깨진 맹세는 돌이 된다."
+seat: 카즈벨 왕의 홀 (카즈둠 중심) / 계약의 전당 / 돌 법정
+size:
+  members: "두르강 약 170,000 (왕도 카즈벨 6만, 그림하르 3.5만, 바르둠 8천), 인간 계약 광부 약 28,000"
+  territory: "카즈둠 산맥(신의 뼈) 전역, 깊은 문(AS 289 봉인)"
+  wealth: "금속·갑옷·무기. 용제국 비늘기사단 갑옷의 80%는 잿모루 씨족. 용제국·세렌·요툰과 교역"
+  force: "방어의 종족 — 갱도·관문·함정, 판금 중갑 방진, 쇠뇌. 공격하러 나간 적은 거의 없다"
+
+decision: >
+  두르강에게 결정은 '서명'이다. 법은 쇠판에 룬으로 새기고, 영향받는 씨족의 족장이 피 한 방울과 손바닥 자국으로 서명해야 효력이 선다.
+  서명하지 않은 자에게는 어떤 왕명도 닿지 않는다 — 그래서 모든 사안은 협상이 아니라 계약서 문구의 싸움이다.
+  정기 회기는 둘이다. 매 계절 첫날(해빙월·푸른월·수확월·서리월 1일)에 계약의 전당에서 '서명 회기'가 열려 새 계약과 개정이 올라오고,
+  7년마다 인간 계약 광부의 '갱신 회기'가 있다. 안건은 룬새김 씨족의 서기가 쇠판으로 만들고 돌 법정(맹세지기 씨족)이 조항 충돌을 심사한다.
+  왕 브로르의 권한은 '서명을 받는 책상'이다. 용제국과의 계약은 용황 개인이 아니라 용좌와 맺은 것이라, 승자가 서면 갱신 서명만 받는다.
+  거부권은 모든 서명자에게 있다. 한 번 서명하면 깰 수 없으므로 서명을 아끼고, 그래서 회기는 길고 문구는 촘촘하다 — 계약의 '빈틈'이 곧 정치이고 지렛대다.
+  개정은 옛 계약을 고치는 것이 아니라 '옛 계약의 소멸 조항 + 새 계약'을 세우는 것이다. 맹세를 지키지 못한 자는 돌피병으로 스스로 처벌받는다(재판 이전에 몸이 판결한다).
+succession: >
+  왕은 깊은망치 씨족이 뽑는다. 왕 자리는 '용좌와의 계약, 인간 계약 광부 계약, 깊은 문 봉인 계약'을 모두 물려받는 일이라 승계는 곧 계약 승계다.
+  후보는 족장 회합이 서명으로 추천하고, 망치 가문 9곳 중 과반의 서명과 돌 법정의 '맹세 청정' 판정(현재 깨진 맹세가 없다는 증명)을 받아야 한다.
+  브로르의 오른쪽 귀가 돌로 굳어 가고 있다 — 반쯤 깨진 맹세의 흔적이다(fact_kz_bror_ear_stone). 그가 쓰러지면 왕위보다 먼저 '깊은 문 계약'의 서명자 자리가 비게 된다.
+
+offices:
+  - id: off_king
+    title: 왕
+    holder: npc_bror
+    reports_to: null
+    powers: ["서명 회기 소집", "용좌·인간 광부·깊은 문 계약의 서명자", "맹약회의 313 두르강 대표"]
+    chosen_by: "망치 가문 9곳 과반 서명 + 돌 법정의 맹세 청정 판정"
+    perks: ["왕의 홀", "계약 광부 2,000 직할(만료 시 70%가 자유 — 대륙 최고)"]
+  - id: off_crown_prince
+    title: 왕자
+    holder: "unnamed:하그린 (160)"
+    reports_to: off_king
+    powers: ["왕 부재 시 서명 대행(법정 승인 필요)"]
+    chosen_by: "세습 추천"
+    perks: []
+  - id: off_gate_survey
+    title: 깊은 문 조사 책임자
+    holder: npc_hilda
+    reports_to: off_king
+    powers: ["깊은 문 개방 기계 설계·탐사대 지휘", "고동의 박자 기록"]
+    chosen_by: "왕의 지명 — 아버지 브로르의 서명만 남았다 (HOUSES는 '왕의 누이 베라'로 적음 — 보고)"
+    perks: ["공학 스승", "굴착파 지지"]
+  - id: off_hammer_houses
+    title: 망치 가문 9 회합 (각 도시·광맥 소유)
+    holder: "unnamed:망치 가문 9곳의 족장들"
+    reports_to: off_king
+    powers: ["왕 추천 서명", "도시·광맥 소유와 갱신 회기 합의"]
+    chosen_by: "가문 세습"
+    perks: []
+  - id: off_oath_court
+    title: 돌 법정 대재판관 (맹세지기 씨족)
+    holder: "unnamed:우를라 (470, 두르강 최고령)"
+    reports_to: off_king
+    powers: ["계약 조항 충돌 심사", "맹세 청정 판정", "맹세 위반 재판", "다른 씨족 계약 무효화"]
+    chosen_by: "씨족 내 최고령자 — 왕이 해임할 수 없다"
+    perks: ["돌 법정", "맹세 회랑 열쇠"]
+  - id: off_rune_judge
+    title: 룬판관
+    holder: npc_grimbald
+    reports_to: off_oath_court
+    powers: ["판결문 작성", "'맹세를 푸는 룬' 시행 (대가: 맹세한 자의 이름 하나)"]
+    chosen_by: "돌 법정의 지명"
+    perks: ["우르드의 판결문 작성자"]
+  - id: off_rune_hall_master
+    title: 계약의 전당 장인 (룬새김 씨족)
+    holder: "unnamed:해그 룬새김 (380, 잿빛 탑 원로 겸임)"
+    reports_to: off_king
+    powers: ["계약서 쇠판 제작·서명 룬 관리", "인간 광부에게 서명 룬 몇 개를 가르침"]
+    chosen_by: "씨족 세습"
+    perks: ["진명의 첫 음절이 서명 룬임을 안다"]
+  - id: off_rune_clerk
+    title: 서명 회기 서기장
+    holder: "unnamed:시그나 (140, 룬새김 해그의 딸)"
+    reports_to: off_rune_hall_master
+    powers: ["회기 의사록(쇠판) 작성", "룬 '첫 교재' 수집"]
+    chosen_by: "해그의 지명"
+    perks: []
+  - id: off_gate_captain
+    title: 문지기 대장 (무쇠문 씨족)
+    holder: "unnamed:크라그 (350) — 왼손이 돌이 되어 가는 중"
+    reports_to: off_king
+    powers: ["깊은 문 경비 120 지휘", "봉인 점검"]
+    chosen_by: "씨족 세습"
+    perks: []
+  - id: off_bardum_commander
+    title: 바르둠 요새장 (봉인파)
+    holder: "unnamed:시그룬 맹세지기 — 깊은 문 앞 요새"
+    reports_to: off_king
+    powers: ["요새 병력", "깊은 문 영구 봉인 주장"]
+    chosen_by: "왕의 지명"
+    perks: []
+  - id: off_ashanvil_head
+    title: 잿모루 족장 (무기 대장간 거리)
+    holder: "unnamed:타르나 (300) / 무기장 둔(210)"
+    reports_to: off_hammer_houses
+    powers: ["용제국 갑옷 80% 생산", "인간 대장간 노예 '임대' 계약"]
+    chosen_by: "씨족 세습"
+    perks: []
+  - id: off_greyvein_head
+    title: 회색광맥 족장 (회색 갱)
+    holder: "unnamed:마그나 회색광맥 (260)"
+    reports_to: off_hammer_houses
+    powers: ["인간 계약 광부 최다 고용(1,400)", "탈주자 '계약 광부' 위장 등록"]
+    chosen_by: "씨족 세습"
+    perks: ["인간 플레이어가 합법적으로 자유를 얻는 가장 현실적인 길"]
+  - id: off_grimhar_reformer
+    title: 그림하르 계약서 개정 운동 대표
+    holder: "unnamed:하랄다 석회손 — 인간 광부에게 몰래 룬을 가르친다는 의심"
+    reports_to: off_hammer_houses
+    powers: ["계약서 개정안 발의(인간 광부 서명 100개 필요)"]
+    chosen_by: "그림하르 길드의 추대"
+    perks: []
+  - id: off_dig_leader
+    title: 굴착파 수장
+    holder: null
+    reports_to: off_hammer_houses
+    powers: ["고동의 근원을 파내자는 젊은 장인들의 대표"]
+    chosen_by: "공석 — 두린 검은광맥이 AS 311 깊은 문 근처에서 실종되었다. 현장에 남은 룬판: '그것은 뛰고 있다'"
+    perks: []
+  - id: off_deep_priest
+    title: 심층 두르강 사제 (창백한 예배당)
+    holder: npc_deep_nidar
+    reports_to: off_oath_court
+    powers: ["'고동'을 듣는 신도 지도", "깊은 문 앞 예배"]
+    chosen_by: "심층 두르강의 추대 — 법정이 묵인"
+    perks: []
+  - id: off_exile_head
+    title: 돌피 우두머리 (추방 씨족)
+    holder: "unnamed:퀴그 (190, 왼팔 전체가 돌)"
+    reports_to: off_oath_court
+    powers: ["카즈둠 바깥 동굴 공동체", "하르칸 검은바람과 비밀 동맹"]
+    chosen_by: "맹세를 깨고 살아남은 자들의 추대 — 법적으로는 법정의 판결 아래 있다"
+    perks: ["돌화를 늦추는 방법(9번 갱 돌가루)"]
+  - id: off_nameless_exile
+    title: 이름 없는 자 (맹세 파기 추방자, 돌화 진행)
+    holder: npc_urd
+    reports_to: off_oath_court
+    powers: ["없음 — 판결의 집행 대상. 그러나 깊은 문의 구조를 아는 유일한 자"]
+    chosen_by: "돌 법정의 판결 (AS 289 맹세 파기)"
+    perks: ["돌화는 3~5년 안에 심장에 닿는다"]
+  - id: off_gallery_keeper
+    title: 맹세 회랑 지기
+    holder: "unnamed:맹세 회랑(돌이 된 두르강 412구) 관리인"
+    reports_to: off_oath_court
+    powers: ["회랑 출입 통제", "'눈을 깜박이는 석상' 관리"]
+    chosen_by: "돌 법정의 지명"
+    perks: []
+  - id: off_ember_envoy
+    title: 잿불 두르강 대표 (용제국 도시의 지상 장인·상인)
+    holder: null
+    reports_to: off_king
+    powers: ["지상 도시의 장인·상인 길드 대표"]
+    chosen_by: "공석 — 오틸리 철서판은 잿빛 탑에 속해 있다"
+    perks: []
+  - id: off_contract_foreman
+    title: 계약 광부 대표 (인간 — 바깥 갱)
+    holder: npc_petar
+    reports_to: off_greyvein_head
+    powers: ["인간 광부 간 중재(공식 권한 없음)"]
+    chosen_by: "광부들의 신뢰 — 40년을 채운 극소수"
+    perks: ["계약 만료 AS 312 서리월 8일"]
+
+ranks:
+  - {id: rank_king, title: "왕", duties: "서명 회기 소집, 용좌·광부·깊은 문 계약", privileges: "왕의 홀", open_to_player: false}
+  - {id: rank_hammer_house, title: "망치 가문 (씨족장)", duties: "도시·광맥 소유, 서명", privileges: "회기 서명권", open_to_player: false}
+  - {id: rank_guild_master, title: "장인 길드 (대장·석공·룬각인·광부)", duties: "걸작으로 지위를 증명, 길드 규율", privileges: "길드 서명, 불량품 판정권", open_to_player: false}
+  - {id: rank_apprentice, title: "견습", duties: "10~50년의 도제", privileges: "길드 보호", open_to_player: false}
+  - {id: rank_stone_token, title: "돌 증표 보유 자유민 (인간)", duties: "카즈둠 안 계약 준수", privileges: "자유민 증명 — 카즈둠 안에서만 존중, 용제국은 인정하지 않는다", open_to_player: true, condition: "7년 계약 만료. 실제로 7년에 끝나는 계약은 열에 셋뿐 — 조항의 빈틈을 정확히 읽고 지적하면 두르강은 반드시 따른다"}
+  - {id: rank_contract_miner, title: "계약 광부 (인간)", duties: "갱도 노동, 룬 계약서 서명(피 한 방울 + 손바닥 자국)", privileges: "빵과 같은 갱, 만료 시 자유(70% 도달 — 왕 직할)", open_to_player: true, condition: "바깥 갱(그림하르·회색 갱)에서 계약 체결. 계약 문구를 읽는 인간은 '글을 아는지는 묻지 않는다'"}
+  - {id: rank_oath_breaker, title: "이름 없는 자 (맹세 파기, 돌화)", duties: "없음", privileges: "없음 — 몸이 서서히 돌로 굳는 계급", open_to_player: false}
+
+law:
+  crimes:
+    - {act: "맹세·계약 파기 (두르강)", punishment: "돌피병 — 손끝부터 피가 굳어 1~5년 안에 석상. 재판은 몸이 먼저 한다. 돌 법정은 '이름 없는 자'로 선고", note: "두르강 대상. 맹세 회랑에 굳은 석상 412구(HOUSES는 1,312 — 보고)"}
+    - {act: "거짓 맹세 / 맹세를 농담으로 함", punishment: "경고 후 벌금. 두 번째는 서명권 박탈", note: "두르강 대상 — '맹세코'는 진지할 때만"}
+    - {act: "불량품 판매", punishment: "길드 추방", note: "두르강 대상 — 장인의 이름이 걸린 일"}
+    - {act: "남의 작품에 허락 없이 손댐(수리 포함)", punishment: "작품값 배상 + 길드 견책", note: "양쪽 모두. 인간은 계약 연장 조항으로 처리"}
+    - {act: "깊은 문 이야기를 입에 올림 (AS 289 이후)", punishment: "벌금 — 두 번째는 갱 접근 금지", note: "양쪽 모두"}
+    - {act: "조상의 벽을 두드림 / 조상 도굴(룬 돌심장 뜯기)", punishment: "도굴은 추방 + 후손 배상. 조상의 벽을 두드리면 길드 정지", note: "양쪽 모두. 두르강 최대의 죄"}
+    - {act: "빚을 지고 죽음", punishment: "후손이 갚는다", note: "두르강 대상"}
+    - {act: "인간이 깊은 층(무쇠문 구역)에 들어감", punishment: "계약 1년 연장, 재범은 계약 해지 후 용제국 인계", note: "인간 대상"}
+    - {act: "인간이 서명용 룬 외의 글자를 씀", punishment: "룬 계약서 서명용만 허용 — 위반은 계약 연장. 두르강은 묻지 않는다(묻는 순간 재의 법에 걸린다)", note: "인간 대상"}
+    - {act: "도구 파손 / 갱도 붕괴로 멈춘 날", punishment: "도구 파손은 계약 1년 연장, 붕괴로 멈춘 날은 계약 일수에서 뺀다", note: "인간 대상 — 계약서의 덫. 두르강은 '읽지 않은 쪽의 책임'이라 한다"}
+
+customs:
+  greeting: "상대의 손바닥을 본다 — 굳은살의 결로 하는 일을 읽는다. '무엇을 만드시오?'가 인사다. 서명 자리에서는 '피를 걸겠소?'라고 묻는다. 손을 맞잡기 전에 계약의 범위를 말한다."
+  taboos:
+    - "맹세를 농담으로 하는 것. '맹세코'는 진지할 때만"
+    - "남의 작품에 손대는 것(수리조차 허락이 필요)"
+    - "조상의 벽을 두드리는 것"
+    - "깊은 문 이야기 — AS 289 이후, 언급 시 벌금"
+    - "불량품을 파는 것, 빚을 지고 죽는 것(후손이 갚는다)"
+    - "'신의 뼈 도둑'이라 부르는 것, 맹세를 이용한 함정을 두르강에게 걸기"
+  rites:
+    - {name: "조상의 망치 앞 낭송", when: "매일 아침 작업 전", what: "조상 이름 일곱을 부른다. 조상의 영혼이 돌 속에서 후손의 작업을 지켜본다"}
+    - {name: "서명 회기", when: "해빙월·푸른월·수확월·서리월 1일", what: "계약의 전당에서 쇠판에 새긴 안건을 서명한다. 피 한 방울 + 손바닥 자국"}
+    - {name: "계약 갱신 회기", when: "7년마다", what: "인간 계약 광부 계약 갱신. 만료자에게 돌 증표(각인 철패)를 준다"}
+    - {name: "조상의 벽 안치", when: "죽음", what: "시신을 조상의 벽에 묻는다. 영혼이 돌 속에 산다고 믿는다"}
+    - {name: "맹세 회랑 참배", when: "서리월", what: "돌이 된 맹세 파기자들 앞에서 서명자가 자기 서약을 낭독한다"}
+  speech: "짧고 정확하다. 숫자와 조항으로 말하며 형용사를 아낀다. 존대는 '만든 것'의 무게로 정한다 — 걸작을 가진 장인에게는 족장도 '장인께'라 부른다. 인간에게도 '계약자'라 부르며 거짓말은 하지 않고, 대신 '묻지 않은 것은 말하지 않는다'. 약속의 말을 할 때는 한 박자 쉰다 — 그 말이 곧 돌이 될 수 있기 때문."
+
+membership:
+  join: "두르강은 태어남으로. 길드는 견습 10~50년 후 걸작 하나로 승급한다. 인간은 7년 계약서에 피 한 방울과 손바닥 자국으로 서명해 들어간다. 계약서를 읽을 수 있다는 것은 묻지 않는다."
+  leave: "계약이 끝나면 나간다. 인간은 돌 증표를 받아 자유민이 되나 카즈둠 밖에서는 용제국이 '주인 없는 재산'으로 잡을 수 있다. 맹세를 깬 두르강은 나가는 것이 아니라 돌이 된다 — 이름 없는 자로 추방되거나 회랑에 선다."
+  signs: ["룬 문장 — 깊은망치(모루를 내리치는 망치), 룬새김(세 겹 원), 무쇠문(닫힌 문과 빗장), 잿모루(불꽃 속 모루), 회색광맥(바위를 가르는 회색 줄), 맹세지기(저울과 돌 심장)", "돌 증표(각인 철패)", "손바닥의 돌 같은 굳은살, 돌로 굳은 귀·손끝"]
+
+internal_factions:
+  - {name: "계약파 (인간과의 계약도 신성)", leader: npc_bror, aim: "계약을 지키고 승자와 갱신한다. 깊은 문 봉인을 지킨다 — 단 마흔한 명의 계약이 마음에 걸려 있다", strength: 45}
+  - {name: "문을 여는 쪽 (굴착파 + 힐다)", leader: npc_hilda, aim: "고동의 근원을 파내자. 깊은 문 개방 기계는 완성됐다 — 아버지의 서명만 없다. 노래하는 인간(페타르)을 찾는다", strength: 25}
+  - {name: "봉인파", leader: null, aim: "깊은 문을 영구 봉인한다. 바르둠 요새장 시그룬 맹세지기 휘하", strength: 20}
+  - {name: "계약서 개정 운동 (그림하르)", leader: null, aim: "인간 광부 처우 개정. 하랄다 석회손이 인간 서명 100개를 모은다 — 서명 자체가 글에 가까운 행위", strength: 10}
+  - {name: "창백한 예배당 (심층 두르강)", leader: npc_deep_nidar, aim: "고동은 신의 마지막 말이 다가오면 인간의 목소리로 깨어난다. 노래할 인간을 모은다(광부 납치)", strength: 8}
+
+assets:
+  - "맹세 회랑 — 돌이 된 두르강 412구(HOUSES 1,312). '돌의 숲'"
+  - "조상의 벽 — 영혼이 산다는 돌"
+  - "깊은 문(AS 289 봉인) — 인간 계약 광부 41명이 갇힌 채 23년"
+  - "룬 계약서 쇠판, 돌 증표(각인 철패), 계약 광부 약 28,000"
+  - "비늘기사단 갑옷 80%, 쇠뇌, 갱도 함정"
+  - "요툰과의 곡물 교역, 세렌 금속 교역"
+
+secrets:
+  - {fact: fact_kz_seal_reason, known_by_rank: rank_hammer_house}
+  - {fact: fact_kz_41_sealed_inside, known_by_rank: rank_hammer_house}
+  - {fact: fact_kz_bror_ear_stone, known_by_rank: rank_king}
+  - {fact: fact_kz_pulse_faster_311, known_by_rank: rank_guild_master}
+  - {fact: fact_kz_gate_reopening, known_by_rank: rank_hammer_house}
+  - {fact: fact_kz_hilda_gate_machine, known_by_rank: rank_king}
+  - {fact: fact_kz_contract_clauses, known_by_rank: rank_guild_master}
+  - {fact: fact_kz_urd_opened_door, known_by_rank: rank_hammer_house}
+  - {fact: fact_kz_oath_release_rune, known_by_rank: rank_hammer_house}
+  - {truth: T09, level: fragment, holders: [npc_bror, npc_hilda, npc_deep_nidar]}
+  - {truth: T01, level: whole, holders: [npc_bror]}
+  # TODO-FACT: 룬 계약서의 서명 룬 하나는 진명의 첫 음절이다 — 3,000년간 인간 손에 진명의 첫 계단을 쥐여 준 셈 (HOUSES §3.3 룬새김)
+  # TODO-FACT: 잿모루 씨족은 중개인 경유로 이름 없는 자들에게 화살촉 2,000개를 팔았다(본인들은 모른다고 믿는다) (HOUSES §3.3)
+  # TODO-FACT: 회색광맥 족장 마그나는 북방 탈주자를 '계약 광부'로 위장 등록해 받는다(AS 311~ 약 200명) (HOUSES §3.3)
+  # TODO-FACT: 맹세를 깨도 돌화를 늦추는 방법 — 다라의 피가 스민 9번 갱 돌가루 (돌피 씨족, HOUSES §3.3)
+  # TODO-FACT: 문 안에서 두드리는 소리는 인간의 심장 박동과 같은 박자였다. 문에는 '끝나지 않는 자만 들어온다'는 룬이 새겨져 있다 (HOUSES §3.3 깊은망치)
+
+relations:
+  - {to: fac_aurax, stance: 10, note: "HOUSES §6.1 행렬 — 두르강. 계승 지지: 중립(승자와 계약 갱신)"}
+  - {to: fac_melisande, stance: 10, note: "행렬"}
+  - {to: fac_kaspar, stance: 20, note: "행렬"}
+  - {to: fac_eldar, stance: 0, note: "행렬"}
+  - {to: fac_nocturne, stance: -20, note: "행렬"}
+  - {to: fac_seren, stance: 30, note: "행렬"}
+  - {to: fac_jotun, stance: -40, note: "행렬 — 거인 전쟁 때 양쪽에 무기를 팔았다. 요툰 곡물 교역 찬반이 내부 쟁점"}
+  - {to: fac_grom, stance: -20, note: "행렬"}
+  - {to: fac_light, stance: 0, note: "행렬"}
+  - {to: fac_nameless, stance: 10, note: "행렬 — 잿모루 화살촉 사건이 드러나면 맹세 위반 재판"}
+  - {to: fac_collar, stance: 0, note: "행렬"}
+  - {to: fac_ashen_tower, stance: 10, note: "행렬 — 해그 룬새김이 잿빛 탑 원로"}
+  - {to: fac_barg, stance: -30, note: "행렬"}
+  - {to: fac_swamp_hags, stance: 0, note: "행렬"}
+toward_echo: "기다리기. 깊은 문이 기다리는 것은 잔향이다('끝나지 않는 자만 들어온다'). 힐다는 노래할 인간을, 니다르는 마지막 말을 섬기려 한다. 왕은 마흔한 명의 계약이 깨졌는가를 매일 묻는다. 계약을 정확히 읽고 지적하는 인간에게는 반드시 따른다."
+player_paths:
+  - "가입: 7년 계약 광부로 서명 — 조항을 읽고 지적하면 두르강이 따른다. 회색 광맥은 합법적 자유의 가장 현실적인 길"
+  - "이용: 계약서의 빈틈. 룬판관 그림발드의 '맹세를 푸는 룬'(대가: 이름 하나)으로 우르드를 돌화에서 구한다"
+  - "침투: 힐다의 기계에 노래하는 인간(페타르) 데려다 주기 / 봉인파의 반대편에서 문 열기를 막기"
+  - "무너뜨리기: 잿모루의 화살촉 출처를 폭로해 맹세 위반 재판을 연다"
+  - "연대: 하랄다의 개정안에 인간 광부 서명 100개 — 서명이 곧 글이라는 위험"
+regression:
+  fixed: ["깊은 문 봉인과 41명의 계약('살아서 갱을 나갈 때까지')", "룬 계약 서명 회기와 돌 법정의 절차", "페타르의 계약 만료일(서리월 8일)", "우르드의 돌화 진행 속도(계절마다 민첩 −1)"]
+  flow: ["고동의 박자 — AS 311부터 빨라진다", "깊은 문 룬 자물쇠가 탐사대에 풀리는 속도", "계약서 개정 서명 수"]
+  drift: ["두린 검은광맥의 실종 현장에서 발견되는 것", "광부 납치 건수(니다르 신도)", "잿모루 화살촉이 드러나는 경로"]

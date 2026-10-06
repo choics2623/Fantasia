@@ -1,0 +1,248 @@
+# 하르칸 초원 부족 — 바람 혈명('질주')의 굴레(정착 불가)가 만든 '달리는 합의'.
+# 근거: HOUSES §3.6, RACES §11, REGIONS §15, facts/harkan.yaml.
+# 조정: HOUSES(5부족) · RACES(부족 약 40, 31 복속) · REGIONS(씨족 14, 11 복속)의 부족 수가 어긋난다 — 이 파일은 HOUSES의 5부족을 중심에 두고 나머지는 '그 외 부족'으로 처리했다 (보고).
+id: fac_harkan
+name: 하르칸 초원 통일 칸국 (칸의 오르두)
+kind: polity
+race: [하르칸 바람발굽, 하르칸 무거운발굽, 하르칸 숲발굽, 인간 짐꾼, 크릭, 그나르(시체 청소부)]
+governance: 씨족 연합 — 달리는 합의  # 칸은 '뒤에서 달리는 부족의 수'. 회의는 이동 중에 끝난다
+motto: "바람보다 먼저."
+seat: 칸의 오르두 (움직이는 수도 — 봄 북상, 가을 남하, 겨울 바람 우물)
+size:
+  members: "하르칸 약 60,000(REGIONS)~240,000(RACES), 인간 짐꾼 약 35,000~130,000(문서마다 다름), 크릭 약 3,000"
+  territory: "하르칸 초원 — 서쪽 카즈둠 산기슭, 남쪽 말뼈 여울(그롬마르 분쟁지), 북부 여름 초원, 남부 겨울 초원"
+  wealth: "말(대륙 최고, 8~15 비늘), 가죽, 소금 호수, 전리품. 수입은 무기(카즈둠)와 곡물"
+  force: "기마 궁술(사거리 250m), 돌격·후퇴·포위. 도시는 교대 포위로 굶긴다. 인간 짐꾼 1,000명에게 활을 줬다는 소문"
+
+decision: >
+  하르칸의 정치는 달리면서 한다. 칸의 오르두는 열흘을 넘겨 한곳에 머물 수 없으므로(정주병), 모든 회의는 이동 중에 열리고 열흘 안에 끝나야 한다.
+  부족장(벡)들은 오르두를 따라 나란히 달리며 짧은 말을 주고받고, 방향을 정하는 것은 바람 읽는 자의 예보와 칸의 한 마디다.
+  칸은 혈통이 아니라 '추종하는 부족 수'로 정해진다 — 부족이 칸 뒤에서 달리면 지지이고, 옆으로 비껴 달리면 이탈이며, 이탈이 곧 불신임이다.
+  그래서 투표는 없고, 모든 결정은 매일의 신임투표다. 벡은 '갈기 가닥을 잘라 날려' 칸과의 바람 맹세를 끊을 수 있고, 그 순간 그의 부족은 칸의 수에서 빠진다.
+  거부권은 이탈이다. 다툼은 경주 재판으로 가른다 — 길이가 다툼의 무게다. 서풍(죽음의 바람)이 부는 날 서쪽으로 진군하지 않는다는 옛 법을 테무르가 처음 깼고, 그것이 옛 바람파의 분노다.
+  인간은 의제가 아니다. 짐꾼은 짐으로 센다 — 다만 짐 맏이(인간)가 행렬을 지휘하는 자리를 가진다.
+succession: >
+  칸의 자리는 칸위 결투(경주 또는 맞대결)로 이어진다. AS 290 테무르가 스승 바타르의 다리를 부수고 칸위에 올랐다(바타르는 일부러 다리를 내주었다).
+  칸이 죽으면 부족들이 흩어져 오르두는 사라지고 새 칸은 '가장 먼저 달리는 자' 뒤에서 다시 생긴다. 통일 칸국의 약점이 그것이다 — 테무르 하나가 쓰러지면 칸국은 일곱 가닥으로 풀린다.
+  후계 구도: 아들 바투(HOUSES) 대 딸 소란(카드). 소란은 짐꾼의 짐을 내려놓게 하겠다고 두아에게 약속했다.
+
+offices:
+  - id: off_khan
+    title: 칸
+    holder: npc_temur
+    reports_to: null
+    powers: ["오르두 이동 방향", "벡들과의 바람 맹세", "서진 결정 — 서풍의 날 진군", "노예 사냥 계획"]
+    chosen_by: "추종하는 부족 수 + 칸위 결투. 40부족 중 31(RACES) / 14씨족 중 11(REGIONS) 복속"
+    perks: ["칸의 천막 지도(그롬마르와 용제국 동부를 모두 정복하는 계획)", "정착병이 시작됐다(통일 후 정착 왕국은 그를 병들게 한다)"]
+  - id: off_consort_strategist
+    title: 칸의 반려·전략가
+    holder: "unnamed:보르테 흰갈기 (RACES 신규)"
+    reports_to: off_khan
+    powers: ["작전 구상", "오르두 이동 설계"]
+    chosen_by: "칸의 선택"
+    perks: []
+  - id: off_khan_heir_batu
+    title: 칸의 아들 (HOUSES 후계 후보)
+    holder: "unnamed:바투 (30)"
+    reports_to: off_khan
+    powers: ["부족 일부의 지지"]
+    chosen_by: "혈통 — 그러나 칸위는 결투로"
+    perks: []
+  - id: off_khan_heir_soran
+    title: 칸의 딸 (카드 후계 후보)
+    holder: npc_soran
+    reports_to: off_khan
+    powers: ["짐꾼 해방의 암류", "바타르에게서 몰래 창술을 배운다"]
+    chosen_by: "혈통 — 칸위는 결투로"
+    perks: []
+  - id: off_bek_council
+    title: 벡 회합 (부족장 — 집합 자리)
+    holder: "unnamed:복속한 부족의 부족장(벡)들 — 달리는 회의"
+    reports_to: off_khan
+    powers: ["이동 중 의견 개진", "갈기 가닥을 잘라 이탈(거부권)", "경주 재판 청구"]
+    chosen_by: "부족 내 추대"
+    perks: []
+  - id: off_bek_redmane
+    title: 붉은갈기 부족장 (칸의 장인)
+    holder: "unnamed:에젤 (58)"
+    reports_to: off_bek_council
+    powers: ["초원 남부, 그롬마르 경계", "투사 공급 — 원형장의 1/3을 인간 노예로"]
+    chosen_by: "부족"
+    perks: []
+  - id: off_bek_sevenwells
+    title: 일곱샘 여족장
+    holder: "unnamed:일라 (71)"
+    reports_to: off_bek_council
+    powers: ["초원 동부 샘 지대 — 탈주자에게 물을 판다(물값은 노래 한 곡)"]
+    chosen_by: "부족 — 마지못해 복속"
+    perks: ["늪 마녀 갈대 계보와 노래 교환"]
+  - id: off_bek_blackwind
+    title: 검은바람 부족장 (반란 준비)
+    holder: "unnamed:오르두 (45)"
+    reports_to: off_bek_council
+    powers: ["초원 북부, 카즈둠 경계", "인간 노예를 해방해 기수로 쓴다(금기 위반)", "돌피 씨족과 비밀 동맹"]
+    chosen_by: "부족"
+    perks: ["인간이 말을 탈 수 있는 유일한 부족 — 승마 스승 확보 가능"]
+  - id: off_bek_lasthoof
+    title: 마지막발굽 부족장 (전쟁 중)
+    holder: "unnamed:보로 (80, 테무르의 숙적)"
+    reports_to: off_bek_council
+    powers: ["초원 서쪽 끝, 황무지 경계 — 패배 직전"]
+    chosen_by: "부족 — 칸에게 복속하지 않았다"
+    perks: ["패배하면 부족 전체가 노예가 된다"]
+  - id: off_old_wind_head
+    title: 옛 바람파 수장
+    holder: "unnamed:예순 늙은굽 (71, 떠나지 않은 늙은이)"
+    reports_to: off_bek_council
+    powers: ["칸 없는 초원을 주장 — 9부족"]
+    chosen_by: "옛 바람파의 추대"
+    perks: []
+  - id: off_khan_halfbrother
+    title: 칸의 이복형제
+    holder: "unnamed:카사르 붉은발굽 — 인간 짐꾼들에게 활을 가르쳤다는 소문"
+    reports_to: off_khan
+    powers: ["짐꾼 궁술(소문)"]
+    chosen_by: "혈통"
+    perks: []
+  - id: off_heavy_hoof_head
+    title: 무거운발굽 짐 야영지 우두머리
+    holder: npc_oktai
+    reports_to: off_bek_council
+    powers: ["짐 끄는 하위 부족 — 바람발굽에 반쯤 예속", "쓰러진 짐꾼을 등에 실어 나름"]
+    chosen_by: "부족"
+    perks: ["멍에 서약의 기한이 만료되었음을 안다"]
+  - id: off_retired_master
+    title: 강등된 스승 (바람발굽 → 무거운발굽 야영지 거주)
+    holder: npc_batar
+    reports_to: off_heavy_hoof_head
+    powers: ["없음 — 칸위 결투에서 다리를 내준 전 칸 후보. 창·장병기 스승"]
+    chosen_by: "결투의 결과 (일부러 졌다)"
+    perks: ["서서 버티는 창술"]
+  - id: off_whip_rider
+    title: 채찍 기수
+    holder: "unnamed:채찍 기수들 — 짐꾼 감독 하르칸"
+    reports_to: off_khan
+    powers: ["행렬 낙오 버림, 채찍 20, 도주 사냥"]
+    chosen_by: "칸·벡의 지명"
+    perks: []
+  - id: off_load_elder
+    title: 짐 맏이 (인간, 계급 밖)
+    holder: npc_dua
+    reports_to: off_whip_rider
+    powers: ["짐꾼 행렬 지휘", "'짐 속 사람' 탈주 루트 운영"]
+    chosen_by: "짐꾼들의 신뢰 + 채찍 기수의 묵인"
+    perks: ["초원어 스승, 승마 스승"]
+  - id: off_wind_reader
+    title: 바람 읽는 자
+    holder: "unnamed:날씨·냄새·먼 소리를 읽는 하르칸"
+    reports_to: off_khan
+    powers: ["이동 방향 예보", "서풍의 날 경고"]
+    chosen_by: "부족 추천"
+    perks: []
+  - id: off_death_ledger
+    title: 말뼈 샘 시체 청소부 (그나르 — 비공식 기록자)
+    holder: npc_hiak
+    reports_to: off_khan
+    powers: ["원정 길과 전장의 죽음 장부 — 누가 어디서 죽었는지"]
+    chosen_by: "아무도 뽑지 않는다 — 그나르라 경멸받으나 쓸모가 있다"
+    perks: ["쓰러진 짐꾼들의 유품 목록을 머릿속에 지닌다"]
+
+ranks:
+  - {id: rank_khan, title: "칸", duties: "추종 부족을 이끌어 달린다", privileges: "칸의 오르두", open_to_player: false}
+  - {id: rank_bek, title: "부족장 (벡)", duties: "부족 이동과 맹세 유지", privileges: "회합 발언, 이탈권", open_to_player: false}
+  - {id: rank_galloper, title: "질주자 (전사)", duties: "돌격·후퇴·포위, 땋은 갈기 수 = 승리 수", privileges: "부족 보호", open_to_player: false}
+  - {id: rank_elder_horse, title: "어린 말·늙은 말", duties: "어린 말은 훈련, 늙은 말은 스스로 무리를 떠난다", privileges: "부양하지 않는다 — 늙어 달리지 못하는 자는 떠난다", open_to_player: false}
+  - {id: rank_load_elder, title: "짐 맏이 (인간)", duties: "짐꾼 행렬 지휘", privileges: "행렬에서 낙오해도 한 번은 줍는다", open_to_player: true, condition: "초원어를 배우고(두아가 스승) 행렬을 낙오 없이 이끈다. 하르칸 한 명당 짐꾼 0.5명"}
+  - {id: rank_porter, title: "짐꾼 (인간)", duties: "이동 천막·물자 나르기 — 하루 12시간", privileges: "말젖 죽, 행군 중 하루 1끼", open_to_player: true, condition: "초원에서 포획되거나 노예 시장에서 팔려 온다. '발굽 아래 법' — 초원에 버려진 인간은 누구의 것도 아니다"}
+  - {id: rank_outcast_village, title: "버려진 자들의 마을 주민 (인간)", duties: "없음 — 누구의 것도 아닌 자", privileges: "초원에서 합법적으로 자유", open_to_player: true, condition: "행렬에서 낙오한 뒤 마을에 닿는다"}
+
+law:
+  crimes:
+    - {act: "하르칸의 다리를 묶음(밧줄·덫)", punishment: "즉시 처형", note: "인간 대상 — 최악의 모욕"}
+    - {act: "행렬 낙오", punishment: "버림", note: "인간 대상. 집행 채찍 기수 — 초원에 버려진 인간은 누구의 것도 아니다"}
+    - {act: "짐 분실", punishment: "채찍 20", note: "인간 대상"}
+    - {act: "말 훔치기 / 도주", punishment: "사냥(놀이) — 하르칸 누구나 쫓을 수 있다", note: "인간 대상"}
+    - {act: "바람 표식 없는 통행(외부인)", punishment: "화살", note: "외부인 대상"}
+    - {act: "바람을 등지고 거짓말함", punishment: "바람이 말을 실어 간다 — 맹세 무효, 신뢰 상실", note: "하르칸·인간 모두"}
+    - {act: "지붕 아래 사흘 넘게 자거나 정착을 권유", punishment: "정주병의 모욕. 권유는 결투 사유", note: "하르칸 대상. 인간이 '여기 머물라'고 하면 역린"}
+    - {act: "죽은 자를 땅에 묻음", punishment: "시신 훼손은 부족 전체의 사냥감 — 바람에게 줘야 한다(높은 언덕)", note: "양쪽 모두"}
+    - {act: "늙어 달리지 못하는 자를 부양함", punishment: "부양하는 쪽이 치욕 — 늙은 하르칸은 스스로 무리를 떠난다", note: "하르칸 대상. 바타르·예순 늙은굽은 예외로 남았다"}
+    - {act: "바람 맹세(갈기 교환) 파기", punishment: "그 갈기 가닥을 잘라 바람에 날린다 — 부족이 칸의 수에서 빠진다", note: "벡 대상"}
+
+customs:
+  greeting: "'어느 쪽 바람이오?' — 서로의 등 뒤 바람을 말하고 상대의 다리부터 본다. 갈기 한 가닥을 건네 보이는 것이 신뢰의 시작이다. 인간은 짐을 내려놓지 않고 눈을 낮춘다."
+  taboos:
+    - "다리를 묶는 것 — 밧줄·덫·말뚝. 가장 큰 모욕"
+    - "지붕 아래 사흘 넘게 자는 것, '여기 머물라'는 정착 권유"
+    - "바람을 등지고 거짓말하는 것"
+    - "죽은 자를 땅에 묻는 것 — 시신은 높은 언덕에 둔다"
+    - "늙음 조롱, 늙어 달리지 못하는 자를 부양하는 것"
+    - "서풍(죽음)이 부는 날 서쪽으로 진군하는 것 — 테무르가 깨뜨렸다"
+  rites:
+    - {name: "바람 맹세", when: "수시", what: "서로 갈기를 한 가닥씩 바꿔 땋는다. 깨면 그 가닥을 잘라 바람에 날린다"}
+    - {name: "경주 재판", when: "다툼이 있을 때", what: "길이 = 다툼의 무게. 먼저 닿은 자의 말을 듣는다. 승마는 소용없고 운동 판정이다"}
+    - {name: "바람 장례", when: "죽음", what: "시신을 높은 언덕에 둔다 — 바람에게 준다"}
+    - {name: "사냥 축제", when: "낙엽월", what: "오르두 남하와 함께. 사냥과 경주"}
+    - {name: "오르두 이동", when: "봄 북상·가을 남하", what: "열흘을 넘기지 않는다. 겨울 진영은 바람 우물"}
+    - {name: "늙은이의 떠남", when: "달리지 못하게 되었을 때", what: "스스로 무리를 떠난다 — 예순 늙은굽은 떠나지 않았다"}
+  speech: "빠르고 짧다. 과거형은 거의 쓰지 않는다 — '오늘'을 사는 말. 존대는 땋은 갈기 수(승리 수)와 달리는 속도로 정한다. 인간에게는 '느린 발'이라 부르며 반말, 명령형 위주. 약속은 바람에게 하므로 '바람이 들었다'로 끝낸다. 머물러야 하는 이야기(긴 설명, 협상)는 서둘러 끝낸다 — 열흘을 넘기지 않는다."
+
+membership:
+  join: "하르칸은 부족에 태어난다. 다른 부족에게 받아들여지려면 갈기 가닥을 바꿔 땋는다(바람 맹세). 인간은 짐꾼으로 포획·구매되거나 버려진 자들의 마을에서 나와 짐 맏이가 된다."
+  leave: "벡의 이탈은 갈기 가닥을 잘라 날리는 것. 늙은 하르칸은 스스로 무리를 떠난다. 인간 짐꾼은 낙오하면 버려지고, 그것이 곧 초원에서의 자유다."
+  signs: ["땋은 갈기와 꼬리(땋은 수 = 승리 수)", "부족 문장 — 사자 머리(아르슬란), 붉은 말꼬리(붉은갈기), 원 안의 점 일곱(일곱샘), 검은 회오리(검은바람), 부러진 발굽(마지막발굽)", "초원의 돌무더기 — 이삭 줍기 표식"]
+
+internal_factions:
+  - {name: "통일파 (테무르)", leader: npc_temur, aim: "초원 통일 후 서진 — 용제국 곡창 또는 그롬마르. 인간 짐꾼을 전사로 쓰는 실용주의. 서진에 짐꾼 4,000명 필요 → 노예 사냥 계획", strength: 50}
+  - {name: "옛 바람파 (9부족)", leader: null, aim: "칸 없는 초원. 서풍의 날 진군 금지 복원. 예순 늙은굽이 수장", strength: 20}
+  - {name: "무거운발굽 (멍에 서약 만료)", leader: npc_oktai, aim: "멍에 서약의 기한이 SK 1,004에 이미 끝났다는 것을 안다. 바람발굽 예속에서 벗어날 날을 기다린다", strength: 10}
+  - {name: "소란의 해방 암류", leader: npc_soran, aim: "칸이 되면 짐꾼의 짐을 내려놓게 한다. 두아와의 약속. 바타르의 창술을 몰래 배운다", strength: 8}
+  - {name: "검은바람의 반란", leader: null, aim: "인간 노예를 해방해 기수로 쓰고 칸에 맞선다. 돌피 씨족과 비밀 동맹", strength: 12}
+
+assets:
+  - "칸의 오르두 — 움직이는 수도, 칸의 천막 지도"
+  - "말 — 대륙 최고, 한 마리가 인간 10명"
+  - "소금 호수, 가죽, 전리품, 말뼈 여울"
+  - "짐꾼 행렬과 '짐 속 사람' 루트(37명 탈주), 이삭 줍기 돌무더기 표식"
+  - "카즈둠 무기 수입, 두르강 무기상"
+  - "히악의 죽음 장부 — 쓰러진 짐꾼들의 유품 목록"
+
+secrets:
+  - {fact: fact_hk_west_wind_broken, known_by_rank: rank_bek}
+  - {fact: fact_hk_temur_broke_leg, known_by_rank: rank_galloper}
+  - {fact: fact_hk_slave_hunt_plan, known_by_rank: rank_bek}
+  - {fact: fact_hk_khan_map_plan, known_by_rank: rank_khan}
+  - {fact: fact_hk_batar_yielded_leg, known_by_rank: rank_khan}
+  - {fact: fact_hk_soran_secret_lessons, known_by_rank: rank_bek}
+  - {fact: fact_hk_cargo_people_route, known_by_rank: rank_load_elder}
+  - {fact: fact_hk_dua_loss_rate, known_by_rank: rank_load_elder}
+  - {fact: fact_hk_yoke_oath_expired, known_by_rank: rank_bek}
+  - {fact: fact_hk_hiak_death_ledger, known_by_rank: rank_porter}
+  - {truth: T01, level: fragment, holders: [npc_temur]}
+  - {truth: T13, level: rumor, holders: [npc_temur]}
+  # TODO-FACT: 테무르는 정착병 증세가 시작됐다 — 통일 후 '정착 왕국'을 세우면 그 자신이 병든다 (HOUSES §3.6)
+  # TODO-FACT: 붉은갈기 부족은 피의 원형장 투사 공급의 1/3을 맡는다 (HOUSES §3.6)
+  # TODO-FACT: 일곱샘 부족은 탈주자에게 물을 팔며 물값은 노래 한 곡이다 (HOUSES §3.6)
+
+relations:
+  # 하르칸은 HOUSES §6.1 행렬에 없다 — 아래 값은 서술 근거로 정한 '행렬 밖' 값이다.
+  - {to: fac_aurax, stance: 0, note: "행렬 밖 — 통일 칸국 서진 시 모든 후보 지지 −2 (HOUSES §6.3). 용제국 곡창이 목표 중 하나"}
+  - {to: fac_melisande, stance: 0, note: "행렬 밖"}
+  - {to: fac_kaspar, stance: 0, note: "행렬 밖"}
+  - {to: fac_durgan, stance: 20, note: "행렬 밖 — 무기 수입. 검은바람은 돌피 씨족과 비밀 동맹"}
+  - {to: fac_grom, stance: -55, note: "행렬 밖 — 말뼈 여울 분쟁, 그롬마르가 숙적 후보. 붉은갈기는 투사를 공급(내부 모순)"}
+  - {to: fac_jotun, stance: 0, note: "행렬 밖"}
+  - {to: fac_seren, stance: 10, note: "행렬 밖 — 말·곡물 교역"}
+  - {to: fac_beastkin, stance: -10, note: "행렬 밖 — 줄무늬 왕좌(타이란)와 초원 남부 경계"}
+  - {to: fac_swamp_hags, stance: 20, note: "행렬 밖 — 일곱샘 부족과 갈대 계보의 노래 교환"}
+toward_echo: "기다리기 / 이용하기. 하르칸에게 인간은 느린 발이다 — 잔향 자체에는 관심이 없다. 먼저 도착한 자의 말을 듣고, 경주에서 이긴 인간은 법이 처음 마주치는 낯선 존재가 된다. 소란은 짐꾼의 짐을 내려놓게 할 사람을 찾는다."
+player_paths:
+  - "가입: 짐꾼으로 들어가 두아에게 초원어를 배우고 짐 맏이로 오른다"
+  - "탈주: '짐 속 사람' 루트 — 37명이 먼저 갔다. 이삭 줍기 돌무더기를 따라 버려진 자들의 마을로"
+  - "경주: 경주 재판에서 하르칸을 이긴다(운동 판정) — 법이 그를 무엇으로 인정할지 모르는 첫 사례"
+  - "침투: 소란에게 접근해 짐꾼 해방을 앞당기거나, 검은바람의 반란에 합류해 승마를 배운다"
+  - "무너뜨리기: 노예 사냥 계획(카즈둠 바깥 갱·그롬마르 경계)의 사냥터를 폭로"
+regression:
+  fixed: ["오르두 열흘 이동 규칙과 달리는 합의 절차", "서풍의 날 진군 금지를 테무르가 처음 깼다는 사실", "AS 290 칸위 결투(바타르가 일부러 다리를 내줌)", "멍에 서약이 SK 1,004에 만료"]
+  flow: ["통일 칸국이 복속시킨 부족 수", "서진 원정 준비와 짐꾼 소모율(22%)", "소란과 두아의 약속의 진전"]
+  drift: ["오르두가 그 계절에 멈춘 장소", "짐꾼 행렬에서 누가 쓰러지는가", "이삭 줍기에 주워진 사람의 수"]

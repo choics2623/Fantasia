@@ -1,0 +1,276 @@
+# 나가 세렌 열두 의석 — 물 혈명('흐름')과 교환의 굴레가 만든 상인 과두제.
+# 근거: HOUSES §3.4, RACES §10, REGIONS §9 (장소 id: REGIONS §9.9), facts/seren.yaml.
+# 조정: HOUSES(열두 의석) · REGIONS(아홉 비늘 의회당, 9상가) · RACES(가문 대표 21명) · facts(21명 중 11표)가 어긋난다.
+#       이 파일은 '의석주 12 + 옛 아홉 상가의 비늘 표 9 = 21표, 과반 11'로 묶었다 (보고).
+id: fac_seren
+name: 세렌 해안 동맹 — 열두 의석
+kind: polity
+race: [왕관 나가, 심해 나가(외부 은둔), 라미아, 인간 계약민, 크릭(하역), 용인 용병]
+governance: 상인 과두제 (의석 지분제) # 의석은 지분이고, 표는 값이 장부에 적히는 한 합법이다
+motto: "대가 없이는 아무것도 주지 못한다."
+seat: 세렌 — 아홉 비늘 의회당 (seren__nine_scales, 산호석 돔, 기록 수조)
+size:
+  members: "나가 약 14,000(세렌 도시권; RACES는 종족 전체 88,000), 인간 계약민 약 80,000(RACES는 340,000), 자유민 1,900, 용인 1,200, 크릭 5,000"
+  territory: "세렌 항구 도시(섬 구역 14, 운하와 기둥 위 도시), 상업 도시 일곱, 소금 나루, 아르카스 상관, 그롬마르 항 상관"
+  wealth: "대륙 최대. 몬달리 은행(양쪽 용제국 채권 합계 9만 두카트), 소금·진주·산호·해운·금융, 계약민 빚 채권"
+  force: "물비늘대(나가 300, 용인 용병 200), 타이란·그롬(쇠턱)·인간 계약민 병사 용병, 해상 봉쇄, 곡물 금수"
+
+decision: >
+  의회는 표 21개로 움직인다 — 열두 의석의 의석주가 한 표씩, 그리고 옛 아홉 비늘(몬달리·카셀론·루첸티·바드라·오필·테르사·시렌나·마르디·졸라크)의
+  의석주는 '비늘 표'를 한 표 더 쥔다. 과반은 11표. 모든 안건은 '계약안'의 형식으로 올라와야 한다 — 누가 무엇을 대가로 무엇을 받는지가 문장으로 적혀 있지 않으면 접수되지 않는다.
+  정기 회기는 매달 그믐 이튿날, 포도월 대시장 기간에는 매일 임시 회기가 열린다. 의장은 4년마다 의석주가 투표로 뽑으며 연임 제한이 없다(베아트릭스 3선).
+  표는 팔고 살 수 있고, 표의 값은 의회 기록 수조(물속 장부)에 적힌다. 장부에 적힌 매수는 합법이고, 적히지 않은 매수는 계약 사기다. 그래서 표 매수는 은폐가 아니라 '정산'이다.
+  거부권은 '대가 미정산 이의'다 — 의석주 누구든 안건에 '대가가 정산되지 않았다'고 이의하면 정산이 끝날 때까지 안건은 정지한다. 이의를 풀려면 이의한 자가 받을 값을 맞추면 된다.
+  나가는 상대가 값을 지불하는 한 약속을 어기지 못하므로, 결정은 늦으나 한번 서면 지켜진다. 계약 분쟁은 계약 판관 12명이 판결한다.
+succession: >
+  의석은 상가에 세습되며 사고팔 수 있다(최근 거래 AS 266, 9만 두카트). 의석주가 죽거나 파산해 공석이 되면 의석 경매가 열리고, 최고가 입찰자가 앉는다.
+  인간이 자금줄을 대고 대리인을 앉히면 '세렌 내부의 인간 의석'이 생긴다(씨앗). 의장은 4년 임기마다 새로 선출한다. 베아트릭스는 6회 탈피 후 일곱째 탈피가 3년째 늦어지고 있고, 탈피에 실패하면 허물 속에서 죽는다 — 의장 자리가 비는 날의 대비는 아직 없다.
+
+offices:
+  - id: off_chair
+    title: 의장
+    holder: npc_beatrix
+    reports_to: null
+    powers: ["회기 소집·안건 순서", "맹약회의 313 세렌 표의 조정", "몬달리 은행 채권(용제국 양쪽)"]
+    chosen_by: "4년마다 의석주 투표, 연임 제한 없음"
+    perks: ["의회당 의장 금고 — 아우락스·멜리산드 양쪽 채권"]
+  - id: off_seat_01_mondali
+    title: 제1의석 — 몬달리 (대부·채권)
+    holder: npc_beatrix
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "레이번·오르셀 채권", "카스파르에게 비밀 대출 제안"]
+    chosen_by: "의석 세습 (의장 겸임)"
+    perks: ["계약민 4,000"]
+  - id: off_seat_02_kassalon
+    title: 제2의석 — 카셀론 (해운·노예 운송)
+    holder: "unnamed:루치오 카셀론 (480)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "노예선 운항"]
+    chosen_by: "의석 세습·매매"
+    perks: ["노예선 사망률 기록 조작, 계약민 2,600"]
+  - id: off_seat_03_luchenti
+    title: 제3의석 — 루첸티 (진주·보석)
+    holder: "unnamed:아다 루첸티 (390)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "청동물결 혈통 살라스트라 진주 잠수 노예 독점"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 1,800"]
+  - id: off_seat_04_badra
+    title: 제4의석 — 바드라 (소금)
+    holder: "unnamed:고르도 바드라 (520)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "용제국 군납(아우락스)"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 3,200 — 평균 상환 31년, 세렌 최악"]
+  - id: off_seat_05_ophil
+    title: 제5의석 — 오필 (정보·필경·지도)
+    holder: "unnamed:오필 시라 (450, 잿빛 탑 원로 겸임)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "계약민 서기에게 숫자 이상의 글을 가르침(서기 효율)"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 300, 잿빛 탑과의 창구"]
+  - id: off_seat_06_tersa
+    title: 제6의석 — 테르사 (용병 중개·경비)
+    holder: "unnamed:테르사 벤 (330)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "쇠턱 전쟁무리 용병 계약"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 경비 500에게 칼날 한 뼘 이상의 무기를 몰래 지급(법 위반)"]
+  - id: off_seat_07_sirenna
+    title: 제7의석 — 시렌나 (깊은 바다 사원·제사)
+    holder: "unnamed:대사제 시렌나 우델 (1,100, 최고령 나가)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "깊은 바다 사원 지하 — 도둑맞은 알 '보관료'"]
+    chosen_by: "의석 세습"
+    perks: ["계약민 0"]
+  - id: off_seat_08_mardi
+    title: 제8의석 — 마르디 (향신료·약재)
+    holder: "unnamed:마르디 카예 (290)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "늪 마녀 회합에서 약초를 사들이는 유일한 상가"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 1,100"]
+  - id: off_seat_09_zolak
+    title: 제9의석 — 졸라크 (금고·장부 보관·첩보)
+    holder: "unnamed:졸라크 니에바 (410)"
+    reports_to: off_chair
+    powers: ["비늘 표 1 + 의석 표 1", "양쪽 장부 보관 — 사르코스 징후자 판매 장부 사본, 쥐들의 왕관 실제 장부"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 200"]
+  - id: off_seat_10_pescar
+    title: 제10의석 — 페스카르 (어업·조선)
+    holder: "unnamed:페스카르 오스윈 (360)"
+    reports_to: off_chair
+    powers: ["의석 표 1"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 2,900 — 조선소 300명의 공제회 '빚 갚는 배'"]
+  - id: off_seat_11_amarant
+    title: 제11의석 — 아마란트 (사치품·유흥·노예 경매)
+    holder: "unnamed:아마란트 리비아 (270)"
+    reports_to: off_chair
+    powers: ["의석 표 1", "포도월 세렌 대시장 경매 운영, 계약민 빚 문서 2차 거래"]
+    chosen_by: "의석 세습·매매"
+    perks: ["계약민 1,500"]
+  - id: off_seat_12_norval
+    title: 제12의석 — 노르발 (외교·통역·맹약회의 대표)
+    holder: "unnamed:노르발 세스 (540)"
+    reports_to: off_chair
+    powers: ["의석 표 1", "맹약회의 313에서 세렌의 표 관리 — '계약민 시민권' 의제와 맞바꿀 준비"]
+    chosen_by: "의석 세습"
+    perks: ["찬가 6단계(세렌 시민권)의 열쇠"]
+  - id: off_heir
+    title: 몬달리 상속녀 (시민권 초안 발의자)
+    holder: npc_ophelia
+    reports_to: off_seat_01_mondali
+    powers: ["계약민 시민권 초안(상환자 시민권, 이자 상한 연 4%) 의회 상정", "표 확보(현재 7/11)"]
+    chosen_by: "혈통"
+    perks: []
+  - id: off_house_counsel
+    title: 라미아 변호인 (면허 없음)
+    holder: npc_lupo
+    reports_to: off_heir
+    powers: ["계약서 오류로 빚 무효화(212건)", "시민권 초안 실무 작성"]
+    chosen_by: "오필리아의 비공식 고용 — 의회 변론권 없음, 언제든 '하인'으로 되돌릴 수 있다"
+    perks: ["약 4,000개 숫자 장부"]
+  - id: off_guard_captain
+    title: 의회 경호대장 (물비늘대 파견)
+    holder: npc_sahar
+    reports_to: off_chair
+    powers: ["의회당 출입 통제 — 표결 날 문을 열고 닫는 자", "계약민 출신 경호원 30 지휘(무장 허가)"]
+    chosen_by: "의장 지명"
+    perks: []
+  - id: off_contract_judges
+    title: 계약 판관 (12명)
+    holder: "unnamed:나가 판관 12명"
+    reports_to: off_chair
+    powers: ["계약 분쟁 판결", "계약민 청원 접수(승소율 4%)"]
+    chosen_by: "의회 임명, 종신"
+    perks: []
+  - id: off_broker
+    title: 노예 중개인 (하위 가문)
+    holder: npc_severo
+    reports_to: off_seat_01_mondali
+    powers: ["회색여울 농노 인수 — 1차 40명, 2차 31명", "담보 영지 경매 매입"]
+    chosen_by: "몬달리 은행과의 거래 관계 (의석 없음)"
+    perks: ["하겐·헨릭과의 관계"]
+  - id: off_deep_envoy
+    title: 심해의 사절
+    holder: npc_deep_naga
+    reports_to: off_seat_07_sirenna
+    powers: ["세렌 만 바닥 '고인 피의 문' — 신의 피를 지키는 대가 교환"]
+    chosen_by: "심해 나가 — 의회 밖. 시렌나 우델이 창구"
+    perks: ["이름을 말할 수 있는 인간 하나를 요구"]
+  - id: off_ledger_keeper
+    title: 의회 기록 수조 장부지기
+    holder: "unnamed:물속 장부를 관리하는 장부지기 — 표의 값이 여기에 적힌다"
+    reports_to: off_chair
+    powers: ["표 매수 정산 기록", "계약안 접수 검수"]
+    chosen_by: "의장 지명"
+    perks: []
+
+ranks:
+  - {id: rank_seat_holder, title: "의석주", duties: "표결, 자기 상가 장부", privileges: "표 1~2, 의석 매매권", open_to_player: false}
+  - {id: rank_house, title: "상가(商家) 가족·장부지기·선장", duties: "상가 사업, 평생 장부 기록", privileges: "상가 보호", open_to_player: false}
+  - {id: rank_lower_naga, title: "하위 나가·라미아", duties: "하인·창부·밀정·변호", privileges: "의회가 언제든 하인으로 되돌릴 수 있다", open_to_player: false}
+  - {id: rank_free_citizen, title: "자유민 (빚을 다 갚은 자)", duties: "세금", privileges: "빚 없음. 600명이 다시 빚을 졌다. 시민권 초안이 통과되면 세렌 시민으로 오른다", open_to_player: true, condition: "상환율 1.8% — 실제로는 거의 불가능. '갚은 골목' 사람들이 다른 계약민의 빚을 몰래 사서 탕감한다"}
+  - {id: rank_contractee, title: "계약민 (인간)", duties: "계약에 적힌 노동 시간 평균 11시간", privileges: "돈 소유(대륙 유일), 상거래용 숫자, 한 뼘 이하 칼날, 판관에 청원권", open_to_player: true, condition: "빚 30 두카트로 시작. 노예 낙인 보유자(타 지역 탈주 노예)는 체포 후 원주인 반환 또는 계약민 전환. 몸값이 곧 빚이 된다"}
+  - {id: rank_hauler, title: "크릭 하역꾼", duties: "하역, 장부 보조", privileges: "항만 출입", open_to_player: false}
+
+law:
+  crimes:
+    - {act: "계약 노동 불이행", punishment: "빚 +10%", note: "인간(계약민) 대상. 집행 상가"}
+    - {act: "숫자 외 글자를 씀", punishment: "벌금 5 두카트 + 탑 인계 검토", note: "인간 대상. 집행 물비늘대"}
+    - {act: "한 뼘 넘는 칼날 소지", punishment: "압수 + 벌금 2 두카트", note: "인간 대상. 테르사 상가가 경비 계약민에게 몰래 지급하는 것은 같은 위반"}
+    - {act: "마법", punishment: "벌금 후 잿빛 탑 인계", note: "인간 대상"}
+    - {act: "계약민 도주", punishment: "빚 2배 + 바르그 지부에 현상금", note: "인간 대상"}
+    - {act: "계약 사기(상가 측)", punishment: "판관 청원 시 빚 감면 — 승소율 4%", note: "나가 대상, 계약민이 청원 가능(대륙 유일)"}
+    - {act: "장부를 찢거나 빚을 없던 것으로 만듦", punishment: "살인보다 무거운 죄 — 의석 박탈, 가문 장부 압류", note: "나가 대상 — 신성모독"}
+    - {act: "녹테른을 들임 / 녹테른과의 거래", punishment: "의회 제명과 거래 동결", note: "나가 대상 — 피의 빚. 나가는 녹테른을 계약 없이 죽일 권리를 주장한다"}
+    - {act: "붉은 해구에 인간을 들임", punishment: "의석 정지, 심해 나가에게 대가 지불 의무", note: "나가 대상"}
+    - {act: "계약서 없는 약속 / 공짜로 주고받음", punishment: "약속은 무효. 공짜를 받으면 나가는 갚을 때까지 의지 판정 −5", note: "양쪽 모두"}
+    - {act: "눈을 가린 상대에게 매혹을 건 서명", punishment: "판관 무효 소송 대상 — 첫 인간 소송 사례 없음", note: "나가 대상. '비겁'으로 친다"}
+    - {act: "표 매수를 장부에 적지 않음", punishment: "계약 사기 — 의석 정지", note: "나가 대상. 적으면 합법이다"}
+
+customs:
+  greeting: "처음 만나면 작은 것(조개, 동전)을 서로 건넨다. 받기만 하고 주지 않으면 모욕이다. 이어 '정산은?' — 상대가 무엇을 가져왔고 무엇을 원하는지 먼저 묻는다."
+  taboos:
+    - "'공짜'라는 말 — 세렌에서는 모욕이다. 대신 '미정산'이라 한다"
+    - "장부를 찢거나 빚 탕감을 요구하는 것"
+    - "녹테른을 들이는 것, 붉은 해구에 인간을 들이는 것"
+    - "계약서 없는 약속, 눈을 가린 상대에게 매혹을 거는 것"
+    - "그믐 밤 바다에 침 뱉기, 계약서를 찢기(신성모독)"
+  rites:
+    - {name: "그믐 대가 던지기", when: "매달 그믐", what: "신전 앞바다에 값비싼 물건을 '대가'로 던진다. 다음 날이 정기 회기"}
+    - {name: "포도월 대시장", when: "포도월", what: "한 달간 운하가 배로 메워진다. 계약민 빚 채권 거래와 노예 경매. 임시 회기 매일"}
+    - {name: "허물 장례", when: "탈피 후·죽음", what: "탈피한 허물을 바다에 띄운다. 죽은 나가의 마지막 허물은 가문 신전에 보관"}
+    - {name: "의석 경매", when: "의석 공석 시", what: "의석주 사망·파산 시 열린다. 최고가 입찰자가 앉는다 — 인간 자금줄의 대리인도 앉을 수 있다"}
+    - {name: "교환의 첫인사", when: "초면", what: "조개나 동전을 주고받는다. 받은 쪽이 갚으면 '정산 완료'"}
+  speech: "숫자와 대가로 말한다. 문장 끝에 값을 붙이는 버릇('그건 한 닢어치 이야기요'). 존대는 장부의 크기로 정한다 — 큰 장부 앞에서는 정중하게, 작은 장부에는 낮추되 모욕은 아니다(숫자를 다루는 인간에게는 이상하게 공정하다). 눈을 맞추며 말하는 것이 예의이자 무기이다. '미안하다'는 말 대신 '값을 치르겠다'."
+
+membership:
+  join: "나가는 상가에 태어난다. 의석은 매입(9만 두카트 선례). 인간은 빚으로 들어와 계약민이 된다 — 계약서에 서명하는 순간 몸값이 빚이다. 계약민법(AS 296)에 따라 등록."
+  leave: "나가는 장부가 정산되기 전에는 나갈 수 없다. 계약민은 빚을 다 갚으면 자유민(공식 상환율 6%, 실제 1.8%). 도주는 빚 2배와 현상금."
+  signs: ["상가 문장 — 금빛 저울 위의 뱀(몬달리), 닻 셋(카셀론), 진주를 문 뱀(루첸티), 소금 결정(바드라), 펼친 두루마리와 뱀(오필), 교차한 단검(테르사), 소용돌이(시렌나), 향신료 잎 셋(마르디), 눈 하나 달린 열쇠(졸라크), 그물에 걸린 물고기(페스카르), 붉은 꽃(아마란트), 갈라진 뱀 혀(노르발)", "계약민의 노임 패(빚 차감 기록 동판)", "계약민 '셈 모임' — 숫자 암호(약 1,100명)"]
+
+internal_factions:
+  - {name: "몬달리 파 (양다리 대출)", leader: npc_beatrix, aim: "용제국 내전이 길고 비싸게 끝나도록 조율한다. 아우락스에 1만 2천, 멜리산드에 2만 두카트. 원로 카이도르와 섭정 자금을 협상 중", strength: 40}
+  - {name: "멜리산드 자금줄 (로자르카 가문, 의석 없음)", leader: null, aim: "멜리산드의 이식 실험에 독점 투자. 금고지기 세바스티아 로자르카. 용심 운송 기록이 나왔다", strength: 25}
+  - {name: "계약민법 개정파 (세르비안 가문 + 오필리아)", leader: npc_ophelia, aim: "상환율을 올려 노동 의욕을 높이는 수익 개혁. 시민권 초안에 현재 7표 — 21표 중 11표가 필요", strength: 20}
+  - {name: "녹테른 전쟁파", leader: null, aim: "3,200년 묵은 피의 빚을 갚는다. 녹테른 귀족 한 명의 머리에 3,000 두카트 현상금", strength: 10}
+
+assets:
+  - "몬달리 은행 — 용제국 양쪽 채권(합계 9만 두카트)"
+  - "계약민 빚 문서·채권 — 포도월 대시장에서 2차 거래"
+  - "의회 기록 수조(물속 장부) — 표의 값과 계약안이 적힌다"
+  - "졸라크 금고 — 양쪽 장부 사본, 징후자 판매 장부, 쥐들의 왕관 실제 장부"
+  - "물비늘대(나가 300, 용인 용병 200), 용병 계약(쇠턱·타이란)"
+  - "도둑맞은 알 — 깊은 바다 사원 지하(시렌나 우델의 '보관료')"
+  - "심해 나가와의 교환 — 신의 피를 지키는 대가"
+
+secrets:
+  - {fact: fact_sr_beatrix_molting_decay, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_beatrix_deep_naga_bargain, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_repay_rate_true, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_godric_debt_designed, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_beatrix_both_sides, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_beatrix_regent_funds, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_draft_votes_7_of_11, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_severo_sara_deep_sea, known_by_rank: rank_house}
+  - {fact: fact_sr_severo_greyford_batches, known_by_rank: rank_house}
+  - {fact: fact_sr_deep_naga_god_blood, known_by_rank: rank_seat_holder}
+  - {fact: fact_sr_cell_meeting_1100, known_by_rank: rank_contractee}
+  - {truth: T01, level: fragment, holders: [npc_beatrix]}
+  - {truth: T03, level: rumor, holders: [npc_beatrix]}
+  - {truth: T03, level: fragment, holders: [npc_lupo]}
+  - {truth: T09, level: fragment, holders: [npc_deep_naga]}
+  - {truth: T13, level: fragment, holders: [npc_beatrix]}
+  # TODO-FACT: 의석 시렌나 — 깊은 바다 사원 지하에 도둑맞은 알(§1.4)이 있다. 시렌나 우델이 '보관료'로 가져왔다 (HOUSES §3.4 제7의석)
+  # TODO-FACT: 의석 노르발은 맹약회의 313에서 세렌의 표를 '계약민 시민권' 의제와 맞바꿀 준비가 되어 있다 (HOUSES §3.4 제12의석)
+  # TODO-FACT: 의석 페스카르 — 조선소 계약민 300명의 비밀 공제회 '빚 갚는 배' (HOUSES §3.4 제10의석)
+
+relations:
+  - {to: fac_aurax, stance: 30, note: "HOUSES §6.1 행렬 — 세렌 의회. 몬달리는 양쪽 대출, 바드라·테르사는 아우락스"}
+  - {to: fac_melisande, stance: 60, note: "행렬 — 의회 7표 중심(몬달리 외 6석), 계승 지지 멜리산드(양다리) 6%"}
+  - {to: fac_kaspar, stance: 10, note: "행렬 — 단 시민권 약속이 오면 노르발이 흔들린다"}
+  - {to: fac_eldar, stance: 30, note: "행렬"}
+  - {to: fac_nocturne, stance: 30, note: "행렬 — 의회는 +30이나 나가 정서는 피의 빚(비대칭), 고요물 가문은 세렌 항에 있다"}
+  - {to: fac_durgan, stance: 30, note: "행렬"}
+  - {to: fac_jotun, stance: -20, note: "행렬"}
+  - {to: fac_grom, stance: 20, note: "행렬 — 쇠턱 전쟁무리 용병 계약"}
+  - {to: fac_light, stance: 10, note: "행렬"}
+  - {to: fac_nameless, stance: -60, note: "행렬"}
+  - {to: fac_collar, stance: 10, note: "행렬"}
+  - {to: fac_ashen_tower, stance: 40, note: "행렬 — 오필 시라 원로 겸임"}
+  - {to: fac_barg, stance: 20, note: "행렬 — 바르그 지부가 도주 현상금을 맡는다"}
+  - {to: fac_swamp_hags, stance: 10, note: "행렬 — 마르디 상가의 약초 거래"}
+toward_echo: "계약 — 영원한 계약민 또는 맹약회의의 판돈. 심해 나가는 '이름을 말할 수 있는 인간'을 요구했다(베아트릭스의 대가). 루포는 물의 이름을 말하는 인간이면 잔향이라 판단한다. 값을 정산하는 한 거래는 성립한다."
+player_paths:
+  - "계약: 계약민으로 빚 30 두카트를 지고 들어가 돈을 가진다. 셈 모임(약 1,100)에 숫자로 합류"
+  - "이용: 흥정 스킬을 화술 대신 쓴다. 대가를 먼저 제시하면 +10. 다른 상가의 정보를 판다"
+  - "침투: 의석 경매에서 인간 자금줄의 대리인을 앉힌다 — 세렌 내부의 인간 의석"
+  - "연합: 시민권 초안 7표 → 11표. 오필리아·사하르·루포. 얀의 빚 22 두카트는 갚을 수 없다 — 구매가 되기 때문"
+  - "무너뜨리기: 몬달리 은행의 이자 조항 갱신 증거, 양쪽 채권 폭로, 졸라크 금고 장부"
+regression:
+  fixed: ["의석 12(+표 21)와 의석 가격, 계약민법 AS 296", "상환율 1.8%", "포도월 대시장과 그믐 대가 던지기", "베아트릭스의 탈피 지연"]
+  flow: ["시민권 초안의 확보 표 수(플레이어 개입으로만 변함)", "회색여울 농노 1·2차 인수 일정", "몬달리 채권 규모"]
+  drift: ["계약민 개개인의 빚 액수와 숙소 매점 가격", "노예선 갑판 당번표", "의석주 개인의 매수 가격"]

@@ -1,0 +1,256 @@
+# 비늘 원로회 — 왕관 와이번 다섯 둥지의 회의체. 정본: HOUSES §1.7, §6.1(행렬 밖 값), §6.3 / SUBRACES §3.3~3.4 / RACES §2~3 / WORLD_BIBLE §1.2.1
+# 카드 npc_kaidor(서기장)와 맞춘다. 원로회 회의장은 불꽃 홀 바로 아래층 '홰의 회랑'(칼다란과의 관계를 위치가 말해 준다).
+# 기준: AS 312 낙엽월 1일.
+id: fac_scale_council
+name: 비늘 원로회
+kind: org
+race: [와이번(왕관·기사·잿빛), 크릭(서기), 비늘혈 용인(후원 관계), 인간(서기 노예·장부 밖 노예)]
+governance: 과두 의회 — 둥지 세습 원로석 9
+governance_note: >
+  의석은 돈으로 사지 못한다. 다섯 둥지 가문이 알로 상속한다(와이번은 40년에 알 하나뿐이라 의석은 늘 모자란다).
+  세제·군수·국유 노예 배분·감찰이라는 제국 행정의 실무가 모두 이 회의의 장부에서 나온다 — 그래서 원로회의 힘은 오직 기록이다.
+  진룡 앞에서는 목을 땅에 대고 엎드리고 둥지로 돌아오면 진룡을 '보물더미 위에서 잠자는 늙은 짐승'이라 부른다.
+motto: "기록되지 않은 것은 날지 못한다."   # 볼드 가훈과 겹치지 않게 와이번식으로 — 원로회의 비공식 격언. TODO: 디자이너 확인
+seat: baalkar          # 불꽃 홀 아래층 '홰의 회랑'. 각 진룡 영지에 연락 둥지 약 60 (잿불 언덕 12, 회색여울 감찰 2)
+size:
+  members: "왕관 와이번 약 300 (바알카르 둥지탑 다섯 약 240) / 기사 와이번 1,500 (가신) / 잿빛 와이번 약 4,000 (육종한 짐승) / 크릭 서기 다수 / 서기 노예·장부 밖 노예"
+  territory: "바알카르 '둥지탑' 다섯 + 각 영지 연락 둥지. 영지가 아니라 장부를 소유한다"
+  wealth: "인두세 총괄과 이중 장부, 장부 밖 노예 3,000, 세렌과의 자금 협상 창구(섭정 자금은 몬달리 장부를 지난다)"
+  force: "기사 와이번 1,500 (공중 전력의 전부 — 청동발 지휘) · 까마귀 문 날개대 60은 카스파르 지휘 아래에 있어 청동발이 못마땅해한다"
+
+offices:
+  - id: off_chair
+    title: 수석 원로 (의장) — 높은홰 가주
+    holder: "unnamed:볼가스 높은홰 — 왕관 와이번, 410세"   # TODO-NPC npc_volgas
+    reports_to: null
+    powers: ["원로회 의장 — 동수일 때 결정", "재무·인두세 총괄 (높은홰 장부 — 칼다란의 회색 장부와 이중, 매년 3,000명이 어긋난다)", "섭정 후보 1순위(본인)"]
+    chosen_by: "높은홰 둥지 가주가 의장을 겸한다 — 높은홰는 3석이므로 단독으로 과반에 못 미친다"
+    perks: ["홰의 회랑 가장 높은 홰(금을 입힌 쇠막대)", "아그라몬의 알에서 내려온 혈통을 홰 밑에 새겨 두었다 — 계보상 바르스카르와 같은 아비의 알에서 내려온 먼 방계. 원로회 최대의 비밀이자 자부심"]
+    seats: 3
+  - id: off_bronze_head
+    title: 청동발 둥지 가주 (군수)
+    holder: "unnamed:테사르 청동발 — 원로, 320세"   # TODO-NPC
+    reports_to: off_chair
+    powers: ["기사 와이번 1,500의 지휘", "군수 — 하스트란 비늘기사단과 공중·지상 지휘권을 다툰다"]
+    chosen_by: "둥지 세습"
+    perks: ["청동 둥지 '부화 막사'"]
+    seats: 2
+    note: "흰 알 지지이나 아우락스가 우세해지면 가장 먼저 넘어갈 둥지. 기사 와이번을 아우락스에게 넘기는 밀약 초안이 있다"
+  - id: off_longshadow_head
+    title: 긴그림자 둥지 가주 (감찰·첩보)
+    holder: "unnamed:이르마스 긴그림자 — 원로, 450세"   # TODO-NPC
+    reports_to: off_chair
+    powers: ["감찰·첩보 — 목줄단 상층(수석 목줄장 에베르트)에게 정보 대가로 배급을 지급한다", "회색여울 감찰 둥지 2의 보고를 받는다"]
+    chosen_by: "둥지 세습"
+    perks: ["레아가 멜리산드의 첩자임을 안다 — 아직 쓰지 않았다", "'잔향 징후 3배'의 의미를 원로회에서 가장 먼저 이해했다 — 죽이는 것보다 '쓰는 것'이 낫다고 계산 중"]
+    seats: 2
+  - id: off_ashwing_head
+    title: 재날개 둥지 가주 (영지·국유 노예 배분)
+    holder: "unnamed:모르나 재날개 — 원로, 280세"   # TODO-NPC
+    reports_to: off_chair
+    powers: ["국유 노예를 각 영지에 '배당'한다 — 레이번에 배당된 농노 400의 명부", "배당 노예의 무단 매각 적발 — 고드릭의 37명을 이미 안다 (영지 몰수 사유)"]
+    chosen_by: "둥지 세습"
+    perks: ["고드릭 레이번을 쥔 또 하나의 끈"]
+    seats: 1
+    note: "멜리산드에게 동정적인 흰 알 지지"
+  - id: off_whitethroat_head
+    title: 흰목 둥지 가주 (의전·혈통 기록·섭정안 설계)
+    holder: "unnamed:엘렌드 흰목 — 원로, 530세 (최고령)"   # TODO-NPC
+    reports_to: off_chair
+    powers: ["의전 노예 약 200", "혈통 기록 — 서른 마리의 '첫 식은 알'이 어느 진룡의 알이었는지를 3,000년간 족보에 적어 왔다", "섭정안 3단계('용 이후의 제국')의 설계자 — 비공개"]
+    chosen_by: "둥지 세습"
+    perks: ["이졸데와의 합의 — 흰 알이 부화하면 흰목 둥지가 첫 '보모'를 맡는다"]
+    seats: 1
+    note: "흰 알 예언 '사슬이 깨어나리라'를 '진룡의 사슬(진룡의 지배)이 끝난다'로 읽는다"
+  - id: off_council_scribe
+    title: 원로회 서기장 (수석 행정관)
+    holder: npc_kaidor
+    reports_to: off_chair
+    powers: ["용황의 인장을 사슬에 걸고 찍는다 (제국 칙령 초안 — 최근 140건)", "크릭 서기 셋을 '손'으로 부린다 — 공식 자리에서는 서기들의 합창 대독", "위조 통행증 사업 (그는 '사본'이라 부른다 — 1장 3비늘)"]
+    chosen_by: "원로회 합의, AS 250 — 인장은 서기장의 이름으로 찍힌다"
+    perks: ["밤마다 서리 탑 상공을 한 바퀴 돈다 — 알의 안위 확인"]
+    note: "소속 둥지와 의석 보유 여부가 카드에 없다 (카드는 '원로'라 부른다). TODO: 의석 9에 들어가는지 확정"
+  - id: off_double_ledger
+    title: 높은홰 장부실 (이중 장부 관리)
+    holder: "unnamed:높은홰 장부실 크릭 서기장"
+    reports_to: off_chair
+    powers: ["회색 장부와 비늘 장부를 대조해 3,000명의 '차이'를 장부 밖으로 보낸다"]
+    chosen_by: "의장 지명"
+    perks: ["장부 밖 노예의 현재 위치"]
+  - id: off_knight_wing_elite
+    title: 청동 둥지 최정예 날개대장
+    holder: "unnamed:코르스 테사르의 깃 — 기사 와이번, 120세"   # TODO-NPC (SUBRACES §3.4)
+    reports_to: off_bronze_head
+    powers: ["북방 대탈주 수색 담당 날개대 (12마리 단위)"]
+    chosen_by: "깃 서약 — 둥지에 깃을 바친다"
+    perks: []
+  - id: off_crowgate_wing
+    title: 까마귀 문 날개대장
+    holder: "unnamed:이슈카 — 기사 와이번, 95세"   # TODO-NPC (SUBRACES §3.4)
+    reports_to: off_bronze_head
+    powers: ["까마귀 문 날개대 60 — 카스파르의 인간 병사들과 같은 막사 배급을 받는 유일한 기사 와이번"]
+    chosen_by: "깃 서약. 청동발 둥지의 소환 명령을 받았다 — 거부하면 반역, 따르면 까마귀 문의 하늘이 빈다"
+    perks: []
+  - id: off_greyford_watch
+    title: 회색여울 감찰 둥지
+    holder: "unnamed:왕관 와이번 감찰관 2 (이름 미상)"
+    reports_to: off_longshadow_head
+    powers: ["회색여울·까마귀 문 일대의 감찰 — 카스파르와 레아와 남작의 움직임 보고"]
+    chosen_by: "긴그림자 파견"
+    perks: []
+  - id: off_emberhills_nest
+    title: 잿불 언덕 연락 둥지
+    holder: "unnamed:왕관 와이번 연락관 12"
+    reports_to: off_chair
+    powers: ["멜리산드 영지와의 연락 — 은비늘 요람은 들어가지 못한다"]
+    chosen_by: "원로회 파견"
+    perks: []
+  - id: off_sleep_incense
+    title: 잠의 향 관리 서기 (비공개)
+    holder: "unnamed:잠의 향 관리 서기 — 이름은 장부에 없다"
+    reports_to: off_whitethroat_head
+    powers: ["둥지탑의 젊은 진룡 셋(베일가스·오르테아·바엘린)을 재우는 향 — 린드웜 쓸개 + 붉은 양귀비 + 화산재, 하루 한 덩이. AS 290부터 피워졌다", "린드웜 쓸개는 인간 사냥꾼이 징발되어 구한다"]
+    chosen_by: "흰목 둥지 직속 — 원로회 안에서도 '셋이 자고 있다'는 말은 금지"
+    perks: []
+  - id: off_regent_draft
+    title: 섭정 칙령 초안 (인장 대기)
+    holder: npc_kaidor
+    reports_to: off_chair
+    powers: ["'흰 알 + 섭정' 칙령 — 초안 완성, 인장만 기다린다. 첫 줄은 '어린 용이 깨어났다'"]
+    chosen_by: "서기장이 AS 307부터 쓰기 시작"
+    perks: []
+  - id: off_wet_nurse
+    title: 흰 알의 첫 보모 (공석)
+    holder: null          # 부화 313 꽃월에 흰목 둥지가 채우기로 이졸데와 합의
+    reports_to: off_whitethroat_head
+    powers: ["어린 흰 용이 성룡이 되기까지 약 500년 — 그동안 섭정권은 원로회"]
+    chosen_by: "흰목 둥지 합의"
+    perks: []
+  - id: off_egg_ledger
+    title: 알 장부 (미설립)
+    holder: null          # 앞으로 낳는 모든 진룡 알을 '제국 재산'으로 등록해 관리하는 3단계 안 — 첫 장은 흰 알이 깨어난 뒤
+    reports_to: off_chair
+    powers: ["진룡을 왕관이 아니라 국고로 만든다 — '진룡을 키우는 제국'"]
+    chosen_by: "—"
+    perks: []
+
+ranks:
+  - {id: rank_crown_elder, title: "왕관 와이번 원로 (의석)", duties: "표를 얹고 둥지를 대표한다", privileges: "홰 높이, 진룡 앞 첫 줄, 원로석 투표", open_to_player: false}
+  - {id: rank_nest_noble, title: "둥지 가문 왕관 와이번", duties: "둥지 행정과 실무", privileges: "정수리의 뼈 돌기 왕관, 가문 장부 열람", open_to_player: false}
+  - {id: rank_knight_wyvern, title: "기사 와이번 (깃 서약)", duties: "공중 전투·탈주자 수색·불 신호 처형 보조", privileges: "둥지에 깃을 바친 이름 — '○○의 깃'", open_to_player: false}
+  - {id: rank_grey_wyvern, title: "잿빛 와이번", duties: "수송·노동·순찰", privileges: "수송청 장부의 번호 날개", open_to_player: false}
+  - {id: rank_kric_scribe, title: "크릭 서기 ('손')", duties: "대독, 받아쓰기, 장부 정리", privileges: "앞다리 없는 와이번의 손 노릇 — 서기장 곁에 선다", open_to_player: false}
+  - {id: rank_patronage, title: "후원 관계 비늘혈 관직자", duties: "원로회가 준 관직(비늘혈 하급 귀족의 대부분)을 지킨다", privileges: "관직과 불의 잔 배정의 줄", open_to_player: false}
+  - {id: rank_scribe_hand, title: "서기 노예 (손으로 위장 배속)", duties: "서기 노예 신분으로 서기장의 손을 도운다", privileges: "글이 쓰인 방에 들어간다 — 발각되면 즉결 처형, 서기장이 알면서 모른 척할 때만 안전", open_to_player: true, condition: "서기장의 '손'으로 위장 배속되고 비밀을 엄수. 서기장은 값(+돈·아우락스 측 기밀)을 본다 — 예법·학식 스승 조건"}
+  - {id: rank_off_ledger_slave, title: "장부 밖 노예", duties: "둥지탑 건설·수송 노동", privileges: "없다 — 두 장부 어디에도 없다", open_to_player: true, condition: "원로회의 이중 장부 차이에 들어 있는 3,000명 중 하나가 되는 것 (가족이 사라져 둥지탑 공사장에 있다)"}
+
+decision: >
+  정례 회의는 매달 첫 4일째 정오(홰의 회랑), 비상 소집은 서기장이 한다. 발언은 앉은 홰 높이 순. 의사는 9석 5/9 다수결,
+  동수는 의장. 높은홰 3 + 청동발 2 = 5로 재무와 군수가 합치면 과반 — 그래서 원로회는 이 둘을 쥐는 자가 움직인다.
+  '섭정 선포'는 7/9(높은홰 3 + 청동발 2 + 흰목 1 + 긴그림자 또는 재날개 1)이어야 하므로 청동발이 이탈하면 섭정안이 선다.
+  진룡 앞에서는 표결이 없다. 혈명의 명령 — 진룡의 직접 명령은 거역할 수 없다 — 이 모든 표를 무효로 한다.
+  모든 결정의 문서는 서기장의 손(크릭 서기 셋)을 거쳐 인장이 찍힌다. 공석인 의석은 같은 둥지의 가신이 이어받아야 하며
+  다른 둥지는 가져가지 못한다. 서기장·의장이 죽는 순간 인장과 장부가 한꺼번에 행방불명이 된다.
+succession: >
+  의석은 둥지 세습 — 알로 상속한다. 와이번은 40년에 알 하나이고 성숙에 80년이 걸리므로 공석이 오래간다. 가주가 죽으면
+  같은 둥지에서 가장 높은 홰의 와이번이 이어받는다(둥지 안 서열 싸움이 곧 후계 다툼). 흰목은 최고령 엘렌드 이후 후계자가
+  뚜렷하지 않다 — 그것이 흰 알 섭정안의 가장 약한 고리이다. 서기장은 의장이 임명한다(합의가 아니라 사실상 지명).
+  '용황의 인장'을 누가 쥐는가는 용황이 죽은 뒤의 첫 쟁점이다.
+
+law:
+  crimes:
+    - {act: "'섭정'이라는 낱말을 진룡 앞에서 입에 올린다", punishment: "원로회 안의 침묵 처분 — 의석 박탈 투표, 공개적이라면 진룡의 처벌", note: "와이번에게만. 기록은 '사본'이라 표현한다"}
+    - {act: "잠든 진룡의 수를 센다 ('셋이 자고 있다')", punishment: "서기 노예라면 즉결 처형, 와이번이면 장부에서 이름이 지워진다", note: "원로회 안에서도 금지. 잠의 향을 가리는 규칙"}
+    - {act: "'첫 식은 알' 기록을 외부에 보인다", punishment: "흰목 둥지가 내부 심판 — 둥지 추방", note: "와이번은 진룡의 버려진 자식이라는 사실 — 경멸이 존경의 모양을 하고 있는 이유"}
+    - {act: "장부 밖 노예 3,000을 폭로한다", punishment: "폭로자는 반역 — 서기 노예면 가족 전원 장부 밖으로", note: "칼다란이 알면 원로회를 칠 명분이 생긴다. 공사장의 3,000은 증거 인멸 대상이 된다"}
+    - {act: "홰의 순서를 어기고 위에 선다", punishment: "해당 회의 퇴장·발언 박탈", note: "인간은 홰 아래 땅에 엎드려서만 말할 수 있다 — 위반하면 서기가 발언을 기록에서 지운다"}
+    - {act: "기사 와이번이 명령 없이 움직인다", punishment: "깃 서약 박탈 → 서리 와이번처럼 '미회수 재산' 장부", note: "이슈카의 소환 거부는 반역"}
+    - {act: "칙령 날짜를 앞당긴다 ('사본')", punishment: "합법 — 서기장의 권한", note: "'위조'라는 낱말은 쓰지 않는다. 인장이 마르기 전에 찍는다"}
+    - {act: "서리 와이번·독꼬리 와이번이 제국 장부에 오른다", punishment: "서리 와이번은 '미회수 재산', 독꼬리는 '늪 도마뱀' — 법적 지위 없음", note: "SUBRACES §3.3 관계"}
+    - {act: "인간이 글을 읽고 쓴다", punishment: "즉결 처형 (재의 법)", note: "서기장이 위장 배속한 '손'만 알면서 모른 척한다 — 원로회 내부 암묵 관행"}
+
+customs:
+  greeting: "앉은 높이가 서열이다. 서로 홰 높이를 확인하는 짧은 눈짓. 진룡 앞에서는 목을 땅에 댄다. 용인 대가문에게는 '귀하의 비늘 수를 여쭙지는 않겠습니다'라는 얼음처럼 정중한 가시. 인간에게는 직접 말하지 않고 서기가 대독한다."
+  taboos:
+    - "진룡 앞에서 '섭정'을 말하는 것"
+    - "잠든 진룡의 이름을 세는 것 — '셋이 자고 있다'"
+    - "족보의 '첫 식은 알' 기록을 외부에 보이는 것"
+    - "공개석상에서 '날개 달린 도마뱀'이라 부르는 것 — 기록하지 않되 기억한다"
+    - "'위조'라는 낱말 (→ '사본')"
+  rites:
+    - {name: "홰의 서열 확인", when: "정례 회의 첫머리 (매달 첫 4일째)", what: "원로석 9가 홰의 높이 순서로 앉았는지 확인. 한 칸이라도 어긋나면 그날 회의는 서열 정리로 끝난다"}
+    - {name: "깃 서약", when: "기사 와이번 성숙 40세", what: "왕관 둥지 하나에 깃을 바친다. 이름은 '개인명 + ○○의 깃'"}
+    - {name: "식은 알의 낭송", when: "흰목 둥지 내부, 해빙월", what: "서른 마리 첫 식은 알이 각각 어느 진룡의 알이었는지 읊는다. 외부 비공개"}
+    - {name: "인두세 대조", when: "수확월", what: "높은홰의 장부와 칼다란의 회색 장부를 대조 — 3,000명이 어긋난다"}
+  speech: "공문서체와 장부의 말. 공식 자리는 크릭 서기 셋의 합창 대독, '기록에 의하면'으로 시작하고 숫자와 날짜로 끝낸다. 진룡 앞에서는 엎드린 공문서체('폐하께서', '어명을 받들어'), 사적으로는 '진룡은 23마리다. 우리는 300이고 기사 와이번은 1,500이지.' 금지어: 도마뱀, 위조, 믿는다, 약속."
+
+membership:
+  join: "와이번 알에서 태어나 둥지 가문에 속한다. 비늘혈 용인은 원로회가 관직을 주는 후원 관계로 묶인다. 인간은 서기 노예('손')나 장부 밖 노예로 쓰인다 — 가입이 아니라 사용이다."
+  leave: "둥지 추방(깃 서약 박탈). 서리 와이번이 그 결과다 — 지금도 '미회수 재산'으로 장부에 남는다."
+  signs: ["정수리의 뼈 돌기 왕관과 섬기는 진룡 계통의 흐린 색", "녹청색 뿔 다섯(카이도르)", "목에 건 용황의 인장 사슬(서기장)", "각 둥지 문장 — 높은홰(탑 위 왕관 와이번)·청동발(교차한 청동 발톱)·긴그림자(펼친 날개의 긴 그림자)·재날개(잿빛 날개 한 쌍과 쇠사슬)·흰목(흰 목둘레의 옆모습)"]
+
+internal_factions:
+  - {name: "섭정 설계파 (흰목·높은홰)", leader: npc_kaidor, aim: "흰 알 + 섭정 → 잠을 유지한다 → 알 장부. '용 이후의 제국'. 인장만 기다린다", strength: 55}
+  - {name: "청동발 군부", leader: null, aim: "흰 알을 지지하지만 아우락스가 우세해지면 기사 와이번을 그에게 넘긴다 (밀약 초안). 하스트란과 공중·지상 지휘권을 다툰다", strength: 20}
+  - {name: "긴그림자 '쓰임파'", leader: null, aim: "잔향을 죽이는 것보다 '쓰는 것'이 낫다. 레아를 아직 쓰지 않았고, 카스파르를 대안으로 잰다 (카이도르와 비밀 서신)", strength: 15}
+  - {name: "재날개 동정파", leader: null, aim: "멜리산드에 동정적. 국유 노예 배당권으로 영주들을 쥔다. 고드릭의 37명 무단 매각을 이미 안다", strength: 10}
+  # strength = 의석 영향력의 추정 비율(합 100). 의석 9 중 높은홰 3·흰목 1 = 설계파 4, 청동발 2, 긴그림자 2, 재날개 1에서 환산. leader null = 카드 없는 원로
+
+assets:
+  - "다섯 둥지탑과 홰의 회랑 (불꽃 홀 바로 아래층)"
+  - "높은홰의 이중 장부 — 칼다란 회색 장부와 3,000명 차이"
+  - "용황의 인장 + 칙령 초안 140건 + 섭정 칙령 초안(인장 대기)"
+  - "기사 와이번 1,500의 지휘선과 청동 둥지 부화 막사"
+  - "잠의 향 — 린드웜 쓸개 징발 체계"
+  - "세렌 자금 창구 (섭정 자금은 몬달리 장부를 지난다)"
+  - "회색여울 감찰 둥지 2 + 잿불 언덕 연락 둥지 12 + 목줄단 상층 정보망"
+
+secrets:
+  - {fact: fact_dk_elders_after_dragons, known_by_rank: rank_nest_noble}
+  - {fact: fact_dk_kaidor_edicts, known_by_rank: rank_crown_elder}
+  - {fact: fact_dk_kaidor_regency_draft, known_by_rank: rank_crown_elder}
+  - {fact: fact_dk_kaidor_kaspar_contact, known_by_rank: rank_crown_elder}
+  - {fact: fact_dk_kaidor_forged_passes, known_by_rank: rank_kric_scribe}
+  - {fact: fact_dk_kaidor_greyford_edict, known_by_rank: rank_kric_scribe}
+  - {fact: fact_gf_godric_sold_37, known_by_rank: rank_crown_elder}
+  - {fact: fact_gf_lea_melisande_spy, known_by_rank: rank_crown_elder}
+  - {fact: fact_dk_egg_hatch, known_by_rank: rank_nest_noble}
+  # TODO-FACT: 장부 밖 노예 3,000 (높은홰 이중 장부) / 잠의 향 — 둥지탑 진룡 셋을 재우는 향(AS 290~) / '첫 식은 알' 족보와 높은홰의 계보(볼가스는 아그라몬 알의 방계) / 섭정안 3단계(흰 알 + 섭정 → 잠을 유지한다 → 알 장부) / 청동발–아우락스 밀약 초안 / 313 맹약회의 '인간 번식 할당' 상향 제안(노동력 1.4배) / 이르마스의 '잔향을 쓰는' 계산
+  - {truth: T03, level: fragment, holders: [off_longshadow_head]}
+  - {truth: T13, level: fragment, holders: [npc_kaidor]}
+  - {truth: T07, level: rumor, holders: [npc_kaidor]}
+
+relations:
+  # HOUSES §6.1 '행렬 밖 세력 — 비늘 원로회' 값. 후계자 진영은 fac_varskar_brood의 내부 진영 이름으로 표기.
+  - {to: "fac_varskar_brood/불의 손", stance: -40, note: "강한 진룡 = 원로회의 몰락. 아우락스를 가장 두려워한다"}
+  - {to: "fac_varskar_brood/은의 서약", stance: -10, note: "재날개 둥지는 동정적"}
+  - {to: "fac_varskar_brood/서자의 국경", stance: -50, note: "그러나 긴그림자·카이도르는 대안으로 잰다"}
+  - {to: "fac_varskar_brood/알의 수호", stance: 60, note: "이졸데/흰 알 — 섭정안의 알"}
+  - {to: fac_kaldaran, stance: -30, note: "순혈 집사 — 행정 서명권과 400년 경쟁"}
+  - {to: fac_raven_house, stance: 20, note: "비늘혈 가문 후원 관계. 단 고드릭의 농노 무단 매각은 끈으로 쥔다"}
+  - {to: fac_morgant, stance: 20, note: "비늘혈 가문"}
+  - {to: fac_bold, stance: 20, note: "비늘혈 가문"}
+  - {to: fac_sarkos, stance: 20, note: "비늘혈 가문"}
+  - {to: fac_collar_guild, stance: 20, note: "목줄단 (id는 목줄단 담당 작가 확인)"}
+  - {to: fac_nameless, stance: -60, note: "이름 없는 자들 (id는 담당 작가 확인)"}
+  - {to: fac_seren_council, stance: 30, note: "세렌 (id는 담당 작가 확인)"}
+  - {to: fac_ashen_tower, stance: 10, note: "잿빛 탑"}
+toward_echo: "조용히 처리한다. 섭정 체제를 흔들 소문의 근원을 없앤다. 단 긴그림자 둥지는 처리 전에 '쓸모'를 먼저 계산한다 — 잔향을 데려오는 인간에게 '네 마을을 비늘 장부에서 지워 주겠다'고 제안할 수 있고, 그 인간이 잔향이라는 것을 아직 모르거나, 안다."
+player_paths:
+  - "서기장의 '손' — 통행증 거래의 값을 맞게 제시해 접점을 열고, 서기 노예로 위장 배속 (예법·학식 스승 조건)"
+  - "장부 밖 3,000 — 이중 장부를 칼다란에 넘기면 원로회가 흔들리지만 공사장 노예는 증거 인멸 대상이 된다"
+  - "긴그림자의 제안 — '잔향을 데려오면 마을을 장부에서 지워 주겠다'를 이용하거나 거부한다"
+  - "잠의 향 운반 — 린드웜 쓸개 사냥에 징발된다"
+  - "청동발 이탈 유도 — 아우락스가 우세해지면 청동발이 먼저 넘어간다 (표 이동 −2/+2)"
+  - "이슈카 — 소환 명령을 어떻게 받아들일지 묻는 기사 와이번과의 대화 ('인간은 이럴 때 어떻게 하느냐')"
+regression:
+  fixed:
+    - "'흰 알 + 섭정' 칙령 초안 완성, 인장 대기 / 최근 140건의 칙령"
+    - "높은홰와 칼다란 장부의 3,000명 차이, 잠의 향 AS 290~"
+    - "서기장이 밤마다 서리 탑 상공을 한 바퀴 돈다"
+  flow:
+    - "정례 회의 날 — 대개 같고 0~3일 어긋난다"
+    - "의석 5/9 대 7/9의 표 계산 (청동발의 기울기)"
+  drift:
+    - "그날 대독하는 크릭 서기, 회의에서 누가 먼저 발언하는가"
+    - "위조 통행증(사본)의 값 (3비늘 안팎)"

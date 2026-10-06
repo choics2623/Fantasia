@@ -1,0 +1,341 @@
+# 순종의 빛 — 엘다르가 인간에게 만들어 준 신정(神政). 인간이 합법적으로 모일 수 있는 유일한 조직.
+# 근거: HOUSES §5.1·§4.6·§3.1.5·§6.1, WORLD_BIBLE §6.1·§1.6·§2(AS 87·213·303), REGIONS §4(루멘), CHARACTERS R04, facts/lumen.yaml.
+# id 규칙은 fac_eldar.yaml(다른 작가)과 맞춘다: 이 세력의 id는 fac_light.
+id: fac_light
+name: 순종의 빛 (교단)
+kind: faith
+race: [인간(사제·신도), 엘다르(외부 후견 — 빛실 가지)]
+governance: 신정 (경전 해석권을 쥔 사제단 + 외부 후견인의 감수권)
+motto: "고난은 정화다. 사슬은 등불을 지킨다."
+seat: 루멘 사슬등불 대성당 (lumen__cathedral) — 정화청 본거지 등불 심문소 (lumen__inquisition), 빛의 지하 감옥 '침묵의 우물' (lumen__undercroft)
+size:
+  members: "성직자 약 4,000 (사슬사제 약 900, 고리지기 약 2,500, 찬송 순례자 약 600) / 루멘 수도자 2,000·서원 견습 400 / 성표 신도 — 용제국 인간의 대다수(약 30만이 성표를 건다)"
+  territory: "루멘 성도(인구 약 45,700)와 일곱 대교구(루멘·바알카르·북부·잿불 언덕·은빛 강·세렌·서부 평원). 영지는 없다 — 사람의 머릿속이 영토다"
+  wealth: "성표 판매(1개 3못, 주인이 대신 지불), 순례 허가증(1발톱), 헌금 쪽지(교단 발행 동판 — 대륙 유일의 합법 인간 '돈'), 엘다르 후원 물자 연 2,000비늘 상당"
+  force: "무장 없음(인간 무기 금지). 대신 정화청 심문 사제 40, 목줄단 정보원 약 200(루멘), 대륙의 고해실 수천 개, 화형 집행 요청권 — 집행은 용인 수비대(루멘 300)와 각 영주의 손"
+
+decision: >
+  교리는 사람이 아니라 경전이 정한다는 것이 공식 입장이다. 실제 결정은 세 층에서 난다.
+  ① 일곱 등불 회의 — 대사제와 등불관 일곱이 1년에 두 번(꽃월 성 마렌 축일 전야, 낙엽월 수확 공물 뒤) 대성당 종탑 아래 '사슬방'에서 모인다.
+  등불관 일곱이 흰 사슬(찬성)과 검은 사슬(반대)을 제단 그릇에 던져 다수로 정하고, 대사제는 동수일 때만 던진다.
+  정화청장은 등불관 자격으로 한 표를 가지며, 이단·징후 안건은 그만 상정할 수 있다(상정권 독점).
+  ② 교리 감수 — 회의를 통과한 교리·낭독문 변경은 엘다르 교리 감수관(빛실 가지)의 '금실 표시'를 받아야 효력이 난다. 금실이 오지 않으면 안건은 '아직 빛이 닿지 않음'으로 무기한 보류된다 — 사실상의 절대 거부권.
+  ③ 정화청 즉결 — 징후자 심문·이단 고발·화형 집행 요청은 회의를 거치지 않는다. 정화청장이 서명하고 대사제가 확인 서명하면 끝이다(대사제는 미룰 수만 있다 — 그레고르 7세는 알베릭의 처형 서명을 1년째 미루고 있다).
+  임시 회의는 대사제 또는 후견인이 '등불을 든다'(대성당 종을 일곱 번 친다)로 소집한다. 대사제가 의식이 없는 날이 길어 AS 312 현재 회의의 실권은 회의 서기를 겸하는 정화청장에게 기울었다.
+succession: >
+  대사제가 죽으면 영원등 앞에서 등불관 일곱이 '빈 사슬의 밤'을 지내고, 사흘 뒤 일곱 등불 회의가 후보 둘을 흰 사슬로 뽑아 올린다.
+  후견인(빛실 가지)이 둘 중 하나에 금실을 감으면 그가 대사제다 — 실제로는 후견인과 루멘 수석 감독관이 미리 정한다.
+  AS 312 현재 후보는 마테우스(정화청장, 세레니엘이 민다)와 마티아스 회색손(은빛 강 등불관, 개혁파). 그레고르 7세가 죽는 날 마테우스가 즉시 알베릭의 처형에 서명한다(fact_lu_gregor_delays_signature).
+  등불관 자리는 대사제가 사슬사제 중에서 지명하고 후견인이 확인한다. 공석은 대리(수녀·사슬사제)가 맡는다 — 북부 등불관은 AS 309부터 공석이고 수녀 아델이 대리한다.
+  사슬사제는 교구 고리지기 중에서 등불관이 서품한다(낭독문 300구절 암송 시험). 고리지기는 사슬사제 추천 + 루멘 순례 1회.
+
+offices:
+  # ── 외부 후견 (엘다르) — fac_eldar의 같은 사람들. 교단 조직도의 꼭대기는 교단 밖에 있다
+  - id: off_light_patron
+    title: 빛의 후견인 (외부 — 빛실 가지 수장)
+    holder: "unnamed:이살리온 빛실 (엘다르, 2,400) — fac_eldar off_light_guardian와 같은 사람"
+    reports_to: null
+    powers: ["대사제 임명 승인(금실)", "교리 변경의 최종 감수", "엘다르 후원 물자 배분", "영원등 기름 공급"]
+    chosen_by: "빛실 가지 세습. 교단은 고를 수 없다"
+    perks: ["『빛의 말씀』 엘다르어 원본('관리 지침서') 보관", "후견인의 정원 — 루멘 안의 엘다르 땅"]
+  - id: off_doctrine_auditor
+    title: 교리 감수관 (외부)
+    holder: "unnamed:레아넬 (엘다르, 1,100)"
+    reports_to: off_light_patron
+    powers: ["회의 결정에 금실 표시 또는 보류", "낭독문 목록 확정", "이단 판정 자문"]
+    chosen_by: "후견인의 지명"
+    perks: ["사슬방 회의 참관석(말하지 않는다)"]
+  - id: off_lumen_supervisor
+    title: 루멘 수석 감독관 (외부 — 실질 인사권)
+    holder: npc_serenielle
+    reports_to: off_light_patron
+    powers: ["대사제 지명권(후견인에게 올린다)", "정화청 보고서 열람", "매년 '잔향 의심자' 3명을 실바렌 영혼 정원으로 송출"]
+    chosen_by: "후견인의 지명"
+    perks: ["맑은물 정자", "교리 셋째 장의 저자 — '고난은 정화다'는 그녀의 문장 (fact_lu_sere_wrote_doctrine)"]
+  # ── 교단 본체
+  - id: off_high_priest
+    title: 빛의 대사제
+    holder: npc_gregor7
+    reports_to: off_light_patron
+    powers: ["교단 총괄", "등불관 지명", "화형 승인 확인 서명(미룰 수 있다)", "맹약회의 '인간 대표 의견서' 낭독(투표권 없음)", "성 마렌 축일 설교"]
+    chosen_by: "일곱 등불 회의가 둘을 올리고 후견인이 금실로 고른다"
+    perks: ["흰 사슬 일곱 겹", "대성당 종탑 밑 기도실", "글을 읽을 수 있는 공식 특권(낭독문 한정)"]
+  - id: off_council_scribe
+    title: 일곱 등불 회의 서기 (정화청장 겸임 관례)
+    holder: npc_mateus
+    reports_to: off_high_priest
+    powers: ["회의 안건 순서", "회의 기록(사제만 읽는 '사슬 장부')", "대사제가 누운 날 회의 진행"]
+    chosen_by: "관례 — AS 296 이후 정화청장이 맡는다"
+    perks: ["사실상의 회의 의장"]
+  - id: off_lamp_lumen
+    title: 루멘 등불관 (대교구장)
+    holder: npc_mateus
+    reports_to: off_high_priest
+    powers: ["루멘 대교구 사슬사제 서품", "등불 회의 한 표", "녹테른 공물 명단 작성(긴밤월)"]
+    chosen_by: "대사제의 지명, 후견인의 확인"
+    perks: ["흰 사슬 세 겹"]
+  - id: off_lamp_baalkar
+    title: 바알카르 등불관
+    holder: "unnamed:그리말도 (인간, 61) — 정치가, 칼다란·사르코스와 결탁"
+    reports_to: off_high_priest
+    powers: ["수도 교구", "등불 회의 한 표", "징후자 '선별 인계'(1인당 5비늘 — 사르코스)"]
+    chosen_by: "대사제의 지명"
+    perks: ["용인 귀족 저택 출입 — 교단 유일"]
+  - id: off_lamp_north
+    title: 북부 등불관 (까마귀 문~회색여울) — AS 309부터 공석
+    holder: null
+    reports_to: off_high_priest
+    powers: ["북부 교구 사슬사제 서품", "등불 회의 한 표 — 공석 동안 대리에게 표가 없다(6표 회의)"]
+    chosen_by: "대사제의 지명. 마테우스는 자기 사람을, 그레고르는 아델을 원해 3년째 비어 있다"
+    perks: []
+  - id: off_lamp_north_deputy
+    title: 북부 등불관 대리 (수녀)
+    holder: "unnamed:아델 (인간, 44) — 끊어진 고리의 '일곱째 고리'"
+    reports_to: off_lamp_north
+    powers: ["북부 순례자 관리", "순례 허가증 발급(북부)", "투표권 없음"]
+    chosen_by: "대사제의 임시 지명"
+    perks: ["순례자 숙소 열쇠 — 끊어진 고리의 통로"]
+  - id: off_lamp_emberhills
+    title: 잿불 언덕 등불관
+    holder: "unnamed:잿불 언덕 등불관 — 멜리산드 영지의 광산 교구"
+    reports_to: off_high_priest
+    powers: ["광산 교구", "등불 회의 한 표", "광산 노예 고해 접수"]
+    chosen_by: "대사제의 지명"
+    perks: []
+  - id: off_lamp_silver_river
+    title: 은빛 강 등불관 (대성당 상주)
+    holder: "unnamed:마티아스 회색손 (인간, 61) — 개혁파, 차기 대사제 후보"
+    reports_to: off_high_priest
+    powers: ["은빛 강 교구", "등불 회의 한 표", "대성당 서고 관리"]
+    chosen_by: "대사제의 지명"
+    perks: ["서고 뒷방 열쇠 — 엘다르가 '삭제'한 성 마렌 설교 사본이 있다"]
+  - id: off_lamp_seren
+    title: 세렌 등불관
+    holder: "unnamed:세렌 등불관 — 계약민 교구"
+    reports_to: off_high_priest
+    powers: ["세렌 계약민 교구", "등불 회의 한 표"]
+    chosen_by: "대사제의 지명. 세렌 의회의 묵인"
+    perks: ["계약민은 헌금으로 상환 기간을 줄일 수 없다는 칙서를 낭독하는 일"]
+  - id: off_lamp_west
+    title: 서부 평원 등불관
+    holder: "unnamed:서부 평원 등불관 — 그라넥 곡창 교구"
+    reports_to: off_high_priest
+    powers: ["농노 교구", "등불 회의 한 표"]
+    chosen_by: "대사제의 지명"
+    perks: []
+  # ── 정화청 (등불 심문소)
+  - id: off_purifier
+    title: 정화청장 (대심문관)
+    holder: npc_mateus
+    reports_to: off_high_priest
+    powers: ["징후자 심문", "이단 재판", "화형 집행 요청 — 대사제 확인 서명만 남긴다", "이단·징후 안건 상정권 독점", "목줄단 정보원 보상 배분"]
+    chosen_by: "대사제의 지명 + 후견인의 확인. AS 296 이후 루멘 등불관 겸임"
+    perks: ["검은 사슬", "등불 심문소 본거지", "모든 고해실의 보고를 받는다"]
+  - id: off_inquisitor
+    title: 심문 사제 (집합 자리, 약 40)
+    holder: "unnamed:심문 사제 40 — 정화청장이 직접 고른 사슬사제"
+    reports_to: off_purifier
+    powers: ["순회 심문 — 마을 단위 징후 조사", "세 질문(어디서 왔나, 누구에게 배웠나, 꿈을 꾸는가) 집행", "구금"]
+    chosen_by: "정화청장의 지명"
+    perks: ["순례 허가 없이 어디든 간다", "검은 끈을 단 성표"]
+  - id: off_ash_scale
+    title: 잿빛 저울 (징후 판별관)
+    holder: "unnamed:잿빛 저울 — 눈의 잿빛 얼룩을 '재는' 사제 셋. 저울 셋 중 둘이 '무겁다'고 하면 화형"
+    reports_to: off_purifier
+    powers: ["징후 판별(눈의 회색 얼룩, 꿈, 이상한 학습 속도)", "잿빛 탑 인계 여부 결정"]
+    chosen_by: "정화청장의 지명"
+    perks: []
+  - id: off_informant_desk
+    title: 밀고 접수관 (루멘 고리지기)
+    holder: "unnamed:토비아스 (인간, 35) — 한 해 접수 412건, 그중 화형 31건"
+    reports_to: off_inquisitor
+    powers: ["밀고 함 관리", "목줄단 '혀'의 보고 수령", "밀고자 보상(배급 쪽지) 지급"]
+    chosen_by: "심문 사제의 지명"
+    perks: ["출세의 사다리 — 밀고 접수관 셋 중 하나는 사슬사제가 된다"]
+  - id: off_confessor
+    title: 대성당 고해 사제
+    holder: npc_felix
+    reports_to: off_purifier
+    powers: ["고해실 40 중 순례자 고해실 관리", "고해 내용을 정화청에 넘김(공식적으로는 금지 — 실제로는 관례)"]
+    chosen_by: "루멘 등불관의 지명"
+    perks: ["'고해 장부' — 루멘 일대 비밀의 절반 (fact_lu_felix_ledger)"]
+  - id: off_warden
+    title: 침묵의 우물 간수장
+    holder: npc_otto
+    reports_to: off_purifier
+    powers: ["지하 아홉 층 감옥 관리", "수감자 80의 열쇠", "벽 회칠(알베릭의 글 지우기)"]
+    chosen_by: "정화청장의 지명 — 마테우스의 사촌"
+    perks: ["매수 불가로 알려짐 — 아픈 아내의 약만이 예외"]
+  - id: off_pyre_keeper
+    title: 정화의 뜰 장작지기
+    holder: "unnamed:장작지기 — 크릭 잡역 넷을 부리는 고리지기"
+    reports_to: off_purifier
+    powers: ["화형대 준비(이번 가을에만 장작 네 번)", "재 수거 — 재는 강에 버린다"]
+    chosen_by: "정화청장의 지명"
+    perks: []
+  # ── 대성당·순례
+  - id: off_candle_keeper
+    title: 대성당 촛불지기
+    holder: "unnamed:한나 (인간, 58) — 등잔지기, 알베릭의 누이"
+    reports_to: off_lamp_silver_river
+    powers: ["영원등 곁 초 관리", "제단 출입"]
+    chosen_by: "대성당 관리 사제의 임명"
+    perks: ["감옥 쪽 계단까지 다닌다 — 양초 조각과 소식을 나른다 (fact_lu_alberic_hanna)"]
+  - id: off_pilgrim_house
+    title: 순례자 숙소 관리 수녀
+    holder: npc_agnes
+    reports_to: off_lamp_lumen
+    powers: ["순례자 숙소 운영", "순례 허가증 확인"]
+    chosen_by: "루멘 등불관의 임명 — 마테우스는 그녀를 '쓸모 있는 할멈'으로 본다"
+    perks: ["지하 저장고 '물 없는 우물' — 잿빛 실 입구 (fact_lu_agnes_well)"]
+  - id: off_parish_greyford
+    title: 회색여울 교구 사슬사제
+    holder: npc_osric
+    reports_to: off_lamp_north
+    powers: ["경전 낭독(마을 유일의 합법 문해자)", "안식일 예배", "고해 접수"]
+    chosen_by: "북부 등불관의 서품(AS 270대)"
+    perks: ["쇠사슬 성표 + 등불", "낭독을 핑계로 아이들에게 글자 모양을 '보여 준다'"]
+  - id: off_bellringer_greyford
+    title: 회색여울 예배당 종지기 (성표 신도 장로)
+    holder: npc_heinz
+    reports_to: off_parish_greyford
+    powers: ["예배 소집 종", "기도 불참 명단 보고"]
+    chosen_by: "사슬사제의 지명"
+    perks: ["배급 줄 맨 앞", "정화청 '혀' 보상 (fact_gb_heinz_informs)"]
+  - id: off_hymn_pilgrim
+    title: 찬송 순례자 (집합 자리, 약 600)
+    holder: npc_johan
+    reports_to: off_lamp_north_deputy
+    powers: ["허가받은 순회", "마을마다 찬송 인도", "소문 수집 — 고해 사제에게 보고"]
+    chosen_by: "등불관의 순례 허가증"
+    perks: ["통행 허가증 — 인간에게 가장 넓은 합법 이동권"]
+
+ranks:
+  - {id: rank_high_priest, title: "빛의 대사제", duties: "교단 총괄, 축일 설교, 의견서 낭독", privileges: "흰 사슬 일곱 겹, 금실 등불 아래 서는 유일한 인간", open_to_player: false}
+  - {id: rank_lamp, title: "등불관 (대교구장)", duties: "대교구 통치, 회의 표결, 사슬사제 서품", privileges: "흰 사슬 세 겹, 회의 한 표, 영주 저택 출입", open_to_player: false}
+  - {id: rank_purifier, title: "심문 사제 (정화청)", duties: "징후 조사, 심문, 화형 요청", privileges: "검은 끈 성표, 무허가 이동, 구금권", open_to_player: false}
+  - {id: rank_chain_priest, title: "사슬사제", duties: "교구 사목, 경전 낭독, 고해", privileges: "인간 중 유일한 합법 문해자(낭독문 한정), 쇠사슬 성표 + 등불", open_to_player: true}
+  - {id: rank_ring_keeper, title: "고리지기", duties: "예배 준비, 밀고 접수, 성표 판매", privileges: "쇠고리 두 개, 배급 1.2배, 낭독 불가", open_to_player: true}
+  - {id: rank_hymn_pilgrim, title: "찬송 순례자", duties: "순회 찬송, 소문 운반", privileges: "통행 허가증, 순례 지팡이", open_to_player: true}
+  - {id: rank_believer, title: "성표 신도", duties: "안식일 예배, 고해, 일곱 번의 기도(루멘)", privileges: "쇠사슬 고리 하나 — '다음 생'의 약속", open_to_player: true}
+# 플레이어의 사다리: 성표 신도 → 고리지기(사슬사제 추천 + 루멘 순례 1회, 첫 임무 '이상한 꿈을 말하는 아이를 보고하라')
+# → 찬송 순례자(등불관 허가증) → 사슬사제(낭독문 300구절 암송 시험 — 잔향은 이 시험을 너무 쉽게 통과해 잿빛 저울의 눈에 띈다).
+
+law:
+  crimes:
+    - {act: "기도 불참 3회 누적", punishment: "고해 광장 공개 고해", note: "신도(인간) — 루멘. 지방 교구는 안식일 불참 2회"}
+    - {act: "사제 아닌 자의 경전 낭독", punishment: "금식 7일 + 등불 심문소 심문", note: "인간"}
+    - {act: "글자 소지 (쪽지·막대 글씨 포함)", punishment: "화형. 공식적으로 사제도 예외 없음 — 실제로는 '낭독문 필사'라는 이름으로 사제는 넘어간다", note: "인간. 재의 법"}
+    - {act: "에오르의 이름을 입에 올림", punishment: "혀 지짐", note: "인간. 교리상 신은 '아우렐, 빛의 일자'뿐이다"}
+    - {act: "잔향 징후 (눈의 잿빛 얼룩, 오지 않은 일을 말하는 꿈, 이상한 학습 속도)", punishment: "세 질문 → 잿빛 저울 → 화형 또는 잿빛 탑·영혼 정원 인계", note: "인간. AS 213 이후 '징후자 1인당 맹약 보상금 3비늘'이 고발을 부른다. AS 213 이후 화형 약 6,100명, 그중 잔향 0"}
+    - {act: "이단 — 다른 내세·다른 신을 말함 (회색 순례자의 '재가 신의 몸', 빛의 서신)", punishment: "투옥(침묵의 우물) → 공개 철회 거부 시 화형", note: "인간·사제 모두. 사제는 성표의 고리를 하나 끊는 '강등 의식' 뒤 처벌"}
+    - {act: "밀고 거부 (고리지기·사슬사제가 징후 보고를 숨김)", punishment: "성표 박탈, 공물 명단 등재", note: "성직자 대상 — 끊어진 고리가 가장 많이 걸리는 죄"}
+    - {act: "허가 없는 결혼", punishment: "둘 다 다른 성지로 분리", note: "인간 신도"}
+    - {act: "사제가 대성당 안에서 성표를 벗음", punishment: "금식 3일, 재범 시 강등", note: "성직자"}
+    - {act: "고해 내용 누설 (공식 교리)", punishment: "강등", note: "성직자 — 정화청으로의 '누설'은 관례상 죄가 아니다. 이중 잣대 자체가 끊어진 고리의 공격 지점"}
+    - {act: "엘다르 감독관의 그림자를 가로지름", punishment: "공개 고해 + 금식 1일", note: "인간 — 엘다르는 처벌하지 않는다. 교단이 대신 처벌한다"}
+
+customs:
+  greeting: "신도끼리: '빛이 사슬을 비추기를.' — 답: '사슬이 빛을 지키기를.' 사제에게는 성표를 쥐고 고개를 숙이며 '등불 아래 엎드립니다.' 사제는 신도의 정수리에 손가락 두 개를 대고 '견디어라'라고만 한다. 엘다르 감독관을 만나면 인간은 말없이 세 걸음 물러나 무릎을 꿇는다."
+  taboos:
+    - "에오르의 이름 — '그분'조차 아니고, 아예 없는 것으로 친다. 신은 아우렐뿐"
+    - "영원등 쪽으로 등을 돌리기, 영원등 앞에서 숨을 세게 쉬기"
+    - "'돌아오지 않는다', '끝'을 신도 앞에서 말하기 — 교리의 핵심(다음 생)을 부정하는 말"
+    - "재의 날에 불을 켜기 — 교단은 이날을 '인간이 세계를 찢은 날'의 속죄일로 지킨다"
+    - "성표의 고리를 일부러 벌려 두기 — 끊어진 고리의 표식. 정화청이 눈여겨본다"
+    - "꿈 이야기 — 특히 아이가 '오지 않은 일'을 꿈꾸었다고 말하는 것. 부모는 아이 입을 막는다"
+  rites:
+    - {name: "안식일 예배", when: "6일째마다", what: "사슬사제가 승인된 낭독문 한 구절을 낭독하고 신도는 '견디어라'를 세 번 따라 한다. 노예에게 유일한 쉬는 날이자 유일한 합법 집회"}
+    - {name: "성표 서약", when: "일곱 살 되는 해 파종월", what: "아이 목에 쇠사슬 고리 하나를 건다. '나는 견디고 다음 생에 빛이 된다.' 고리 값 3못은 주인이 낸다 — 주인에게 이 의식은 재산 등록이다"}
+    - {name: "성 마렌 축일", when: "꽃월 12일", what: "루멘 강변에 순례자 3만이 사슬 감긴 등불을 든다. 대사제가 설교한다 — AS 313에는 그레고르 7세가 마렌의 '두 번째 설교'를 낭독할지가 걸려 있다"}
+    - {name: "정화", when: "정화청이 정한 날 (가을에 잦다)", what: "정화의 뜰 화형. 신도는 참석해 '그의 고난이 그를 정화하기를'을 외친다. 재는 은빛 강에 뿌린다"}
+    - {name: "빈 사슬의 밤", when: "대사제 사망 시", what: "등불관 일곱이 영원등 앞에서 밤을 새우고 대사제의 흰 사슬을 한 겹씩 풀어 제단에 놓는다"}
+    - {name: "재의 날 금불", when: "연말 5일", what: "모든 불을 끈다. 영원등만 탄다. 신도는 '우리 피가 세계를 찢었다'를 외우고 굶는다 — 이름 없는 자들은 같은 날 몰래 아스테리온을 기린다"}
+  speech: "사제는 엘다르가 승인한 낭독문의 높은 말씨('~하리라', '~할지니')를 일상에서도 섞고, 신도에게는 단정한 반말, 엘다르에게는 극존칭에 고개를 든 적 없는 문장. '신' 대신 '빛', '죽음' 대신 '정화', '노예' 대신 '견디는 자'라고 한다. 신도는 '다음 생에는'이라는 말을 위로처럼 달고 산다. 정화청 사제는 질문을 세 개씩 묶어 말한다."
+
+membership:
+  join: "인간이라면 일곱 살에 성표를 걸어 누구나 신도가 된다(선택이 아니다). 고리지기: 사슬사제의 추천 + 루멘 순례 1회 + 첫 임무 — '이웃 중 이상한 꿈을 말하는 아이를 정화청에 보고하라'(HOUSES §5.1). 사슬사제: 고리지기 5년 + 낭독문 300구절 암송 시험 + 등불관의 서품. 정화청 심문 사제는 사슬사제 중 '밀고 접수 실적'으로 뽑힌다."
+  leave: "나갈 수 없다 — 성표를 벗는 인간은 이단이다. 사제는 '강등 의식'(성표 고리 하나를 끊는다)으로 신도로 떨어진다. 유일한 출구는 죽음, 탈주(모르바), 또는 회색 순례자 — 모두 이단."
+  signs: ["목의 쇠사슬 성표 — 고리 수가 신분(신도 1, 고리지기 2, 사슬사제 사슬+등불, 등불관 흰 사슬 세 겹, 대사제 일곱 겹, 정화청 검은 사슬·검은 끈)", "찬송 순례자의 지팡이와 통행 허가증(동판)", "헌금 쪽지(교단 동판)", "정화청 사제는 등불을 들지 않는다 — 대신 쇠 집게를 찬다"]
+
+internal_factions:
+  - {name: "강경파 (정화청)", leader: npc_mateus, aim: "다음 대사제가 되어 정화를 늘린다. 세레니엘이 민다. 알베릭 처형, 끊어진 고리 숙청, 잔향 대숙청에 교단의 손을 보탠다", strength: 45}
+  - {name: "개혁파 (마티아스 회색손 — 대성당 서고)", leader: npc_gregor7, aim: "그레고르 7세는 공식적으로 중심이지만 사적으로 개혁에 기운다. 마티아스(unnamed)를 후계로, 마렌의 두 번째 설교를 축일에 낭독해 교리를 '남긴다'", strength: 25}
+  - {name: "정치파 (바알카르 교구)", leader: null, aim: "그리말도(unnamed) — 용인 가문과 결탁해 징후자를 팔고 누가 이기든 교단의 자리를 지킨다. 아우락스 쪽에 줄을 섰다(계승 지지율 2)", strength: 20}
+  - {name: "끊어진 고리 (지하 신도회 — fac_broken_ring)", leader: npc_alberic, aim: "안에서 바꾼다. '사슬을 감은 것은 등불이 아니라 손이다'", strength: 10}
+
+assets:
+  - "합법 집회권(인간 유일), 경전 낭독권, 순례 허가증 발급권"
+  - "대륙의 고해실 수천 개 = 정화청의 밀고망. 루멘 등불 심문소 목줄단 정보원 약 200"
+  - "엘다르 후원 물자 연 2,000비늘 상당, 영원등 기름"
+  - "헌금 쪽지 — 대륙 유일의 합법 인간 '돈'"
+  - "사슬등불 대성당 서고 — 승인된 낭독문, 그리고 서고 뒷방의 삭제된 마렌 설교 사본"
+  - "빛의 지하 감옥 '침묵의 우물'(수감 80) — 알베릭, 베라"
+  - "맹약회의 313의 '인간 대표 의견서' 낭독권(투표권 없음)"
+
+secrets:
+  - {fact: fact_lu_doctrine_false, known_by_rank: rank_lamp}
+  - {fact: fact_lu_sere_wrote_doctrine, known_by_rank: rank_high_priest}
+  - {fact: fact_hi_maren_signed_only, known_by_rank: rank_lamp}
+  - {fact: fact_lu_gregor_signed_1107, known_by_rank: rank_high_priest}
+  - {fact: fact_lu_gregor_paper, known_by_rank: rank_high_priest}
+  - {fact: fact_lu_gregor_teacher, known_by_rank: rank_high_priest}
+  - {fact: fact_lu_gregor_maren_descendant, known_by_rank: rank_high_priest}
+  - {fact: fact_lu_gregor_maren_day, known_by_rank: rank_high_priest}
+  - {fact: fact_lu_mateus_212_none, known_by_rank: rank_purifier}
+  - {fact: fact_lu_mateus_clara, known_by_rank: rank_purifier}
+  - {fact: fact_lu_felix_informs_mateus, known_by_rank: rank_purifier}
+  - {fact: fact_lu_sere_sends_suspects, known_by_rank: rank_purifier}
+  - {fact: fact_lu_sere_double_report, known_by_rank: rank_high_priest}
+  - {fact: fact_lu_pyres_autumn, known_by_rank: rank_ring_keeper}
+  # TODO-FACT: 『빛의 말씀』 원본은 엘다르어 '관리 지침서'이고 첫 장 제목이 "무혈자를 다루는 법"이다 (HOUSES §3.1.5 — fac_eldar에도 같은 TODO)
+  # TODO-FACT: 정화청 기록상 AS 213 이후 화형된 징후자 약 6,100명, 그중 잔향 0 (HOUSES §5.1 — 틱 셈쟁이도 셈했다)
+  # TODO-FACT: 바알카르 등불관 그리말도는 징후자를 사르코스에 1인당 5비늘로 '선별 인계'한다 (HOUSES §5.1)
+  # TODO-FACT: 루멘 지하 감옥 간수 둘(야코프 외 1)이 끊어진 고리다 (HOUSES §5.3, REGIONS §4.9)
+  - {truth: T10, level: whole, holders: [npc_serenielle]}
+  - {truth: T10, level: fragment, holders: [npc_gregor7, npc_mateus]}
+  - {truth: T10, level: rumor, holders: [npc_osric, npc_agnes]}
+  - {truth: T03, level: fragment, holders: [npc_gregor7]}
+  - {truth: T12, level: rumor, holders: [npc_mateus]}
+  - {truth: T13, level: fragment, holders: [npc_gregor7, npc_mateus]}
+
+relations:
+  - {to: fac_aurax, stance: 30, note: "HOUSES §6.1 행렬 (순종의 빛 행)"}
+  - {to: fac_melisande, stance: 20, note: "행렬"}
+  - {to: fac_kaspar, stance: -10, note: "행렬"}
+  - {to: fac_eldar, stance: 80, note: "행렬 — 후견인. 교단의 꼭대기는 교단 밖에 있다"}
+  - {to: fac_nocturne, stance: -40, note: "행렬 — 그러나 긴밤월 공물 명단은 교단이 쓴다"}
+  - {to: fac_durgan, stance: 0, note: "행렬"}
+  - {to: fac_seren, stance: 10, note: "행렬"}
+  - {to: fac_jotun, stance: 0, note: "행렬"}
+  - {to: fac_grom, stance: -20, note: "행렬"}
+  - {to: fac_nameless, stance: -90, note: "행렬"}
+  - {to: fac_collar, stance: 60, note: "행렬 — 목줄단은 정화청의 귀다"}
+  - {to: fac_ashen_tower, stance: -10, note: "행렬 — 징후자 인계를 두고 경쟁"}
+  - {to: fac_barg, stance: 20, note: "행렬"}
+  - {to: fac_swamp_hags, stance: -80, note: "행렬 — 마녀는 화형"}
+  - {to: fac_broken_ring, stance: -60, note: "행렬 밖 — 공식 입장. 대사제 개인은 +40(HOUSES §6.1 예외)"}
+  - {to: fac_grey_pilgrims, stance: -70, note: "행렬 밖 — 이단"}
+toward_echo: >
+  공식: 잔향은 '아우렐을 거역한 저주받은 영혼' — 정화청이 화형으로 다룬다(화형은 잔향을 끊지 못한다. 정화청은 그것을 모른다. 마테우스는 의심한다).
+  정화청은 '진짜'를 잡으면 태우는 대신 세레니엘을 통해 영혼 정원으로 보낸다 — 엘다르가 원하는 쪽. 그레고르 7세는 사적으로 다르게 생각한다: 잔향은 교리가 비튼 원본 —
+  '돌아오는 단 하나'의 실물이고, 그것이 드러나는 날 교단은 끝난다. 그는 잔향을 만나면 태우지도 넘기지도 못할 것이다.
+player_paths:
+  - "가입: 성표 신도 → 고리지기 → 찬송 순례자 → 사슬사제. 고리지기 첫 임무(아이 밀고)에서 자비·신앙 축이 갈린다. 사슬사제가 되면 합법 문해자 — '글' 단계의 가장 안전한 위장"
+  - "이용: 찬송 순례자의 통행 허가증으로 대륙을 움직인다. 고해실은 소문 판정의 최고 출처다(펠릭스의 고해 장부)"
+  - "침투: 정화청 밀고 접수관 자리로 들어가 밀고 함을 '잃어버린다' — 오스릭 관련 마르타의 보고가 거기 있다"
+  - "무너뜨리기: 마렌의 두 번째 설교·『빛의 말씀』 원본 한 장·매듭집 매듭줄·볼드 사본 — 그레고르 7세에게 보여 축일 낭독을 결심시키면 끊어진 고리 클락(#8)이 '교단 분열/개혁'으로 넘어간다. 그날 밤 마테우스가 움직인다"
+  - "계승 개입: 그레고르 7세가 죽는 날짜를 늦추거나(엘사·오다의 약), 마티아스 회색손에게 용기를 줄 증거를 쥐여 주기"
+regression:
+  fixed:
+    - "그레고르 7세 82세, 알베릭 처형 서명 1년째 미룸, 1,107장의 종이"
+    - "마테우스의 212명과 베라(213번째 후보)"
+    - "북부 등불관 공석(AS 309~)"
+    - "AS 313 꽃월 12일 성 마렌 축일, 정화의 뜰 이번 가을 장작 네 번"
+  flow:
+    - "그레고르 7세의 건강 — 대개 굶주림월에 한 번 크게 쓰러진다"
+    - "가을 순회 심문관이 회색여울에 오는 날 — 마르타의 밀고 함 보고가 회수되지 않으면 이듬해 해빙월"
+  drift:
+    - "고해실에 그날 앉은 사제, 밀고 함의 작은 보고들"
+    - "정화의 뜰에 오르는 개별 징후자의 얼굴 — 숫자는 비슷하고 사람은 다르다"
+    - "토비아스가 그 주에 접수한 건수"

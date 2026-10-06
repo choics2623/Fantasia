@@ -1,0 +1,258 @@
+# 요툰 서리 씨족 — 서리와 대지('거대')의 굴레(느린 사고, 굶주림)가 만든 식탁의 씨족 연합.
+# 근거: HOUSES §3.5, RACES §8, REGIONS §13, facts/hrosgard.yaml.
+# 조정: HOUSES(흐림·바위배·눈늑대가죽·깊은우물) · REGIONS(돌팔·서리눈·잿턱) · facts(돌무릎 바우그)의 씨족명이 다르다.
+#       여기서는 HOUSES를 중심 4씨족으로, REGIONS·facts의 씨족을 '그 외 씨족'으로 넣었다 (보고).
+id: fac_jotun
+name: 요툰 서리 씨족 연합 (얼음 탁자)
+kind: polity
+race: [서리 요툰, 돌 요툰, 언덕 요툰, 오우거(퇴화), 서리 와이번(교역 외부), 인간 노예(서리손)]
+governance: 씨족 연합 — 식탁 합의 (얼음 탁자)  # 결정은 '고기를 받아 먹는 쪽'이 이긴다
+motto: "서리 어머니는 배고픈 자를 먼저 안는다."
+seat: 흐로스가르드 얼음턱 전당 — 서리왕의 홀
+size:
+  members: "요툰 약 14,000(AS 300년 17,500에서 감소), 씨족 약 60개. 인간 노예 약 150,000(AS 309년 230,000에서 감소)"
+  territory: "흐로스가르드(서리땅) 전역 — 남쪽 경계 울음 고개(서리 길), 돌무릎 골짜기, 남쪽 온천 지대"
+  wealth: "곡물 없음(3년 연속 흉작). 털·가죽·꿀, 얼음턱 전당 곡창 바닥의 마지막 보리 300섬"
+  force: "돌 던지기(사거리 200m), 통나무 곤봉, 인간 노예 방패벽, 겨울에만 진군(얼어붙은 강). 오우거 무리"
+
+decision: >
+  요툰의 결정은 '식탁'에서 나온다. 얼음 탁자는 씨족장(욀드)들이 모이는 겨울 회합으로, 얼어붙은 호수 가장자리의 전당에서 열린다.
+  느린 사고 때문에 한 안건은 사흘에 걸친다 — 첫날 제안을 말하고, 둘째 날은 아무도 말하지 않고 먹기만 하며, 셋째 날 답한다.
+  표결은 '고기'다. 제안자가 고기를 내놓고, 찬성하는 씨족장은 그 고기를 받아 먹는다. 같은 고기를 먹은 자와는 1년간 싸우지 않으므로 먹는 것이 곧 서약이다.
+  고기를 거절하면 반대이고, 거절은 곧 식탁 결렬(전쟁 가능성)이다. 거부권은 따로 없다 — 거절이 거부권이고 그 값은 피다.
+  다툼은 얼음 호수 위의 '얼음 판결'(먼저 얼음을 깨는 쪽이 진다 — 무거운 쪽이 불리해 굶주림이 덕목이 된다)로 가른다.
+  왕은 '먼저 굶는 자'다. 흉년에는 왕이 씨족장 누구보다 적게 먹어야 하고(흐림니르는 3년째 그렇게 한다), 그렇지 못한 왕은 얼음 탁자에서 고기를 거절당한다.
+  인간 노예는 씨족 재산이라 얼음 탁자의 의제가 아니다 — 씨족장의 사적 처분이다. 그래서 왕의 칙령(노예를 남쪽으로 풀어 줌)조차 씨족장들 몰래 아스타를 통해 전해졌다.
+succession: >
+  서리왕은 씨족장 회의가 추대한다. 선례는 '가장 오래 굶고도 서 있는 자' — 힘이 아니라 인내를 본다. 흐림 씨족이 왕 씨족이지만 세습은 아니다.
+  왕이 죽거나 식탁에서 거절당하면 얼음 판결이 열릴 수 있고, 현재 후계 구도는 왕자 스카디르(남침파, 전사단)가 아버지의 노예 칙령을 반역으로 몰아 찬탈하려는 계획이다.
+  왕 자리가 비는 겨울은 서리 어머니의 '덜어냄'이 가장 많이 바쳐지는 때다.
+
+offices:
+  - id: off_frost_king
+    title: 서리왕
+    holder: npc_hrimnir
+    reports_to: null
+    powers: ["얼음 탁자 소집", "남침 결정 제안", "비밀 칙령(노예를 남쪽으로 풀어 줌)", "맹약회의 313 요툰 대표"]
+    chosen_by: "씨족장 회의(얼음 탁자)의 추대 — 가장 오래 굶고도 서 있는 자"
+    perks: ["얼음턱 전당 곡창 열쇠", "왕의 식탁 — 그러나 가장 적게 먹는다"]
+  - id: off_queen_consort
+    title: 왕비
+    holder: "unnamed:스칼라 (540 — 문서에 따라 1,100)"
+    reports_to: off_frost_king
+    powers: ["전당 안살림", "노래 거인과의 연락"]
+    chosen_by: "혼인"
+    perks: []
+  - id: off_prince_skadir
+    title: 왕자 (남침파 전사단장)
+    holder: npc_skadir
+    reports_to: off_frost_king
+    powers: ["전사단 막사 지휘", "썩은이빨 무리 먹이 공급", "남침 선봉"]
+    chosen_by: "왕의 아들 — 전사단원의 충성(같은 고기를 나눈 자들)"
+    perks: ["전사단 막사"]
+  - id: off_ice_table
+    title: 얼음 탁자 (씨족장 회의 — 집합 자리)
+    holder: "unnamed:60개 씨족의 씨족장(욀드)들"
+    reports_to: off_frost_king
+    powers: ["왕 추대", "남침·곡물 교역 결정(고기 표결)", "얼음 판결 선언"]
+    chosen_by: "씨족 내부 — 씨족 30~400명을 다스리는 자"
+    perks: ["씨족 재산(인간 노예) 처분권"]
+  - id: off_clan_hrim
+    title: 흐림 씨족장 (왕가)
+    holder: npc_hrimnir
+    reports_to: off_ice_table
+    powers: ["왕가 씨족 — 노예 약 5만"]
+    chosen_by: "씨족 내 최고령자(흐림니르)"
+    perks: []
+  - id: off_clan_rockbelly
+    title: 바위배 씨족장
+    holder: "unnamed:우그라 (900)"
+    reports_to: off_ice_table
+    powers: ["즉시 남침 주장", "노예를 겨울 식량 비축으로 본다"]
+    chosen_by: "씨족"
+    perks: ["북방 대탈주의 직접 원인 — 시그리드의 탈출 씨족"]
+  - id: off_clan_snowwolf
+    title: 눈늑대가죽 씨족장
+    holder: "unnamed:헬다 얼음턱 (700)"
+    reports_to: off_ice_table
+    powers: ["남침 찬성(용족 원한), 서리비늘 혈통과는 싸우지 않음", "노예를 사냥 몰이꾼으로"]
+    chosen_by: "씨족"
+    perks: ["얼음턱 고르의 무덤 — 네스티라의 이빨"]
+  - id: off_clan_deepwell
+    title: 깊은우물 씨족장 (남쪽 온천 지대)
+    holder: "unnamed:노파 브리미르 (1,400, 최고령 거인)"
+    reports_to: off_ice_table
+    powers: ["남침 반대", "노예를 온천 농사에 씀 — 북방에서 가장 덜 죽는 곳", "서리 어머니의 꿈 — '작은 자들이 우리를 먹여 살릴 것'"]
+    chosen_by: "씨족 최고령"
+    perks: ["인간과의 협상 창구 — 통역은 아스타"]
+  - id: off_clan_stoneknee
+    title: 돌무릎 씨족장 (언덕 요툰)
+    holder: npc_baug
+    reports_to: off_ice_table
+    powers: ["돌무릎 골짜기 노예(시그리드·아스타·에이나르의 옛 주인)", "아스타의 호송을 눈감는다"]
+    chosen_by: "씨족"
+    perks: ["뼈 구슬 — 노예 표식"]
+  - id: off_song_giant
+    title: 노래 거인 장로
+    holder: "unnamed:헤임라 — 3,000년 거인사를 한 달씩 걸려 노래한다. 인간 노예 소녀에게 노래를 가르쳤다"
+    reports_to: off_ice_table
+    powers: ["구전 역사 보관", "얼음 판결의 선례 낭송", "전쟁·평화의 선례"]
+    chosen_by: "노래 거인의 사승"
+    perks: ["'거인 전쟁의 진짜 노래' — 그롬이 아니라 용이 배신을 꾸몄다는 구절"]
+  - id: off_mother_voice
+    title: 서리 어머니의 목소리 (무녀)
+    holder: npc_yorun
+    reports_to: off_ice_table
+    powers: ["덜어냄 의례 주관", "대지의 말 해석", "서리 어머니 호수 관리"]
+    chosen_by: "돌 요툰 중 대지의 울림을 듣는 자"
+    perks: ["남쪽 심장 소리를 듣는다 (fact_hg_yorun_pulse_south)"]
+  - id: off_south_vanguard
+    title: 남침파 선봉
+    holder: "unnamed:쇠무릎 오르 (약 420, 거인 전쟁 생존자)"
+    reports_to: off_prince_skadir
+    powers: ["남침 선봉 지휘"]
+    chosen_by: "스카디르의 신임"
+    perks: []
+  - id: off_granary_keeper
+    title: 얼음턱 전당 곡창지기
+    holder: "unnamed:마지막 보리 300섬(남침 군량)을 지키는 자"
+    reports_to: off_frost_king
+    powers: ["왕의 곡창 열쇠 관리"]
+    chosen_by: "왕의 지명"
+    perks: []
+  - id: off_slave_elder
+    title: 노예 장로 (인간, 계급 밖)
+    holder: npc_asta
+    reports_to: off_clan_stoneknee
+    powers: ["돌무릎 골짜기 노예 약 800명 관리", "왕의 칙령 전달 통로", "브리미르와 인간의 유일한 통역"]
+    chosen_by: "노예들의 신뢰 — 씨족은 공식 인정하지 않는다"
+    perks: ["서리 길 호송대 지휘(마지막 200명을 서리월 전에)"]
+  - id: off_fire_hut_keeper
+    title: 불 오두막지기 (인간 노예)
+    holder: "unnamed:회관 밖 '불 오두막'을 지키는 인간 노예들"
+    reports_to: off_slave_elder
+    powers: ["씨족 땔감·불 유지"]
+    chosen_by: "씨족이 정한 노예"
+    perks: ["불을 무기로 쓸 수 있음을 깨달았다"]
+  - id: off_frost_chain
+    title: 서리 목줄 (노예 맏이 — 노예 감독)
+    holder: "unnamed:다른 인간을 감독하는 노예 맏이들"
+    reports_to: off_ice_table
+    powers: ["노예 감독 — 거인이 감독에 무관심해서 생긴 자리"]
+    chosen_by: "씨족장의 지명"
+    perks: []
+  - id: off_wyvern_trader
+    title: 서리 와이번 교역 부족장 (외부)
+    holder: npc_harva
+    reports_to: off_ice_table
+    powers: ["북방 경계 독립 부족 — 요툰과 교역", "탈주자 수송·남쪽 정찰 판매(스카디르·카스파르 모두에게)"]
+    chosen_by: "독립 부족 — 얼음 탁자에 복속하지 않는다"
+    perks: []
+  - id: off_ogre_pack
+    title: 썩은이빨 무리 (오우거 — 이름 잃은 자들)
+    holder: "unnamed:오그룬(옛 이름) — 썩은이빨 무리 우두머리"
+    reports_to: off_prince_skadir
+    powers: ["서리 길 중턱 '썩은이빨 고개'의 겨울 저장고"]
+    chosen_by: "스카디르가 노예를 먹이로 보내 길들인다"
+    perks: []
+
+ranks:
+  - {id: rank_frost_king, title: "서리왕", duties: "얼음 탁자 소집, 먼저 굶음", privileges: "곡창 열쇠, 칙령", open_to_player: false}
+  - {id: rank_jarl, title: "씨족장 (욀드)", duties: "씨족 30~400명과 노예 관리, 얼음 탁자 출석", privileges: "씨족 재산 처분권", open_to_player: false}
+  - {id: rank_hunter, title: "사냥 거인 / 돌 거인", duties: "사냥·채석", privileges: "씨족 식탁", open_to_player: false}
+  - {id: rank_song, title: "노래 거인", duties: "씨족 역사를 한 달씩 걸려 노래", privileges: "구전의 권위", open_to_player: false}
+  - {id: rank_warband, title: "전사단원 (스카디르)", duties: "남침 준비", privileges: "같은 고기를 나눈 충성", open_to_player: false}
+  - {id: rank_slave_elder, title: "노예 장로 / 서리 목줄 (인간)", duties: "노예 관리·호송", privileges: "씨족이 공인하지 않는 영향력", open_to_player: true, condition: "서리말을 배우고(시그리드·아스타가 스승), 노예로서 씨족 안에서 신뢰를 쌓는다"}
+  - {id: rank_slave, title: "인간 노예 (씨족 재산)", duties: "사냥 몰이·운반·땔감·털 손질·아이 돌보기", privileges: "평년에는 맞지 않는다(실수로 죽이기 때문). 흉년에는 먹이지 않는다", open_to_player: true, condition: "북방에서 노예로 팔려 들어오거나 위장 입소. 표식은 씨족별 — 돌무릎은 뼈 구슬"}
+
+law:
+  crimes:
+    - {act: "음식을 버림", punishment: "그 자리에서 맞아 죽을 수 있다", note: "인간·요툰 모두. 거인 앞에서 빵 한 조각을 버려도"}
+    - {act: "회관 안에서 불을 피움", punishment: "노예는 회관 밖 불 오두막에서만 가능. 위반은 중벌", note: "인간 대상 — 거인은 불을 두려워한다"}
+    - {act: "서리 어머니의 호수에 침을 뱉음 / 호수의 거인 뼈 도굴", punishment: "도굴은 요툰 전체의 원수 — 씨족이 추적한다. 침은 얼음 판결", note: "인간·요툰 모두"}
+    - {act: "거인의 이름을 줄여 부름", punishment: "생명을 깎는 모욕 — 얼음 판결 청구", note: "인간 대상. 거인의 이름은 길다"}
+    - {act: "나눔 식사 후의 배신", punishment: "씨족 전체의 영원한 적 — 3,400년 최대의 죄", note: "요툰 대상. 거인 전쟁(SK 2,310~2,390)의 원인"}
+    - {act: "인간 노예가 도망 — 먹일 입이 줄어든다", punishment: "방치하는 씨족이 많다. 쫓는 것은 씨족장의 사적 판단", note: "인간 대상 — 그래서 북방 대탈주가 가능했다"}
+    - {act: "흉년에 노예를 먼저 '덜어냄'(배급 끊기)", punishment: "처벌 없음 — 의례다", note: "요툰 법에서 죄가 아니다. 결과로만 말해진다(대량 아사)"}
+    - {act: "사람고기를 먹음", punishment: "법은 명시적으로 금하지 않는다. '부끄러운 일' — 그 부끄러움을 버린 자는 오우거로 떨어진다고 여긴다", note: "요툰 대상. 스카디르의 전사단이 이 선을 넘었다"}
+    - {act: "왕이 먹는 만큼 먹지 않고 더 먹음 (흉년)", punishment: "얼음 탁자에서 고기를 거절당한다 = 불신임", note: "왕 대상"}
+    - {act: "얼음 판결 후 결과를 거부", punishment: "씨족에서 '덜어짐' — 얼음 들판으로 걸어 나가야 한다", note: "요툰 대상"}
+
+customs:
+  greeting: "'같은 고기를 먹었는가?'가 인사다. 처음 만나면 고기 한 점을 나눈다 — 먹으면 1년간 싸우지 않는다. 이름은 길게, 아비의 이름과 업적까지 부른다. 인간은 거인에게 서리말로 천천히 말해야 한다."
+  taboos:
+    - "음식을 버리는 것, 거인 앞에서 먹을 것을 낭비하는 것"
+    - "씨족 회관 안의 불. 서리 어머니의 호수에 침 뱉기"
+    - "거인의 이름을 줄여 부르는 것"
+    - "나눔 식사 후의 배신 — 가장 큰 죄"
+    - "사람고기 — 법은 침묵하나 부끄러움이다. '오우거' 소리가 오는 것을 두려워한다"
+  rites:
+    - {name: "나눔 식사", when: "수시, 겨울 얼음 탁자 첫날", what: "같은 고기를 먹는 서약. 거인과 동맹을 맺는 유일한 방법은 식탁이다"}
+    - {name: "얼음 판결", when: "다툼이 생길 때(겨울)", what: "얼음 호수 위에서 맞붙어 먼저 얼음을 깨는 자가 진다"}
+    - {name: "덜어냄", when: "흉년 — 굶주림월 중심", what: "씨족이 먹는 입을 줄인다. 늙은 거인은 스스로 얼음 들판으로 걸어 나가고, 노예는 먼저 덜어진다(배급을 끊는다)"}
+    - {name: "노래 한 달", when: "노래 거인이 정함", what: "씨족의 역사를 한 달씩 걸려 노래한다. 노예가 듣고 외운다 — 서리말 노래의 출처"}
+    - {name: "서리 어머니의 품", when: "죽음", what: "거인은 죽으면 북쪽 끝 얼어붙은 바다의 거대한 여인에게 걸어간다. 3년 흉작으로 '어머니가 우리를 버렸다'는 절망이 퍼지고 있다"}
+  speech: "느리고 낮다. 한 문장을 말하고 숨을 고른다 — 서둘러 대답하는 요툰은 의심받는다. 존칭은 나이(굶주림을 견딘 해)와 업적이 긴 이름으로 정한다. 인간에게는 짧고 직설적이며 '작은 이', '불 든 이'라 부른다. 약속은 음식으로 한다 — '네 고기를 먹었다'가 맹세다. 서두르는 말, 거짓말을 에둘러 하는 말은 느린 사고에는 들리지 않는다."
+
+membership:
+  join: "요툰은 씨족에 태어난다. 다른 씨족이 되려면 나눔 식사로 받아들여져야 한다. 인간은 노예로 팔려 오거나 씨족이 전쟁에서 가져온다 — 입문 의례는 없다."
+  leave: "요툰은 덜어짐으로 나간다(얼음 들판으로). 노예는 탈주한다 — 서리월 전에 울음 고개를 넘어야 하고, 넘지 못하면 겨울을 서리땅에서 난다."
+  signs: ["씨족 문장 — 얼어붙은 손바닥(흐림), 바위를 문 입(바위배), 늑대 가죽을 두른 거인(눈늑대가죽), 우물 안의 눈(깊은우물)", "돌무릎 노예의 뼈 구슬", "서리말 노래 — 서리손은 「서리 어머니의 자장가」"]
+
+internal_factions:
+  - {name: "남침파", leader: npc_skadir, aim: "용제국 곡창을 약탈한다. 아버지의 칙령을 반역으로 몰아 왕위를 찬탈한다. 오우거를 선봉으로 쓴다", strength: 40}
+  - {name: "협상파", leader: npc_hrimnir, aim: "곡물과 평화를 맞바꾼다 — 카스파르에게 비밀 사신, 두르강 브로르와 비밀 곡물 교역. 노예를 남쪽으로 풀어 입을 줄인다", strength: 25}
+  - {name: "어머니파", leader: npc_yorun, aim: "서리 어머니에게 더 많은 덜어냄을 바친다. 극단파는 노예를 바치자 한다", strength: 20}
+  - {name: "깊은우물 (공존파)", leader: null, aim: "남침 반대. 인간이 우리를 먹여 살린다는 서리 어머니의 꿈. 브리미르", strength: 15}
+
+assets:
+  - "얼음턱 전당 곡창 바닥의 마지막 보리 300섬 — 남침 군량"
+  - "인간 노예 약 150,000, 서리 와이번 교역망"
+  - "3,000년 거인사를 담은 노래 거인(헤임라)"
+  - "서리 어머니의 호수(거인 무덤) — 거인 뼈, 얼음 판결장"
+  - "남쪽을 향한 겨울 진군로(얼어붙은 강), 울음 고개(서리 길)"
+
+secrets:
+  - {fact: fact_hg_hrimnir_edict, known_by_rank: rank_frost_king}
+  - {fact: fact_hg_hrimnir_envoy_kaspar, known_by_rank: rank_frost_king}
+  - {fact: fact_hg_last_barley_300, known_by_rank: rank_frost_king}
+  - {fact: fact_hg_hrimnir_grain_talks_bror, known_by_rank: rank_jarl}
+  - {fact: fact_hg_hrimnir_starves_first, known_by_rank: rank_jarl}
+  - {fact: fact_hg_skadir_eats_slaves, known_by_rank: rank_warband}
+  - {fact: fact_hg_skadir_usurp_plan, known_by_rank: rank_warband}
+  - {fact: fact_hg_skadir_feeds_ogres, known_by_rank: rank_warband}
+  - {fact: fact_hg_yorun_pulse_south, known_by_rank: rank_song}
+  - {fact: fact_hg_brimir_dream, known_by_rank: rank_jarl}
+  - {fact: fact_hg_baug_blind_eye, known_by_rank: rank_jarl}
+  - {truth: T01, level: whole, holders: [fac_jotun]}   # 노래 거인 헤임라 (npc 없음) — holders 파일 참조
+  - {truth: T09, level: rumor, holders: [npc_yorun]}
+  # TODO-FACT: 노래 거인 헤임라의 '거인 전쟁의 진짜 노래'에는 그롬이 아니라 용이 나눔 식사 배신을 꾸몄다는 구절이 있다 (RACES §8 씨앗 4)
+  # TODO-FACT: 흐림니르는 그라넥의 곡물 거절(HOUSES §2.4)을 알지 못한다 — 증거를 넘기면 칼끝이 아우락스에게 향한다 (HOUSES §3.5)
+  # TODO-FACT: 바위배 씨족은 북방 대탈주의 직접 원인이며, 시그리드가 탈출한 씨족이다 (HOUSES §3.5)
+
+relations:
+  - {to: fac_aurax, stance: -70, note: "HOUSES §6.1 행렬 — 요툰. 용황 사망 시 남진, 남침 시 아우락스의 군권 강화(+3), 그라넥 문서를 받으면 −3"}
+  - {to: fac_melisande, stance: -40, note: "행렬"}
+  - {to: fac_kaspar, stance: -20, note: "행렬 — 곡물과 평화를 맞바꾸는 비밀 사신 구상(fact_hg_hrimnir_envoy_kaspar)"}
+  - {to: fac_eldar, stance: -30, note: "행렬"}
+  - {to: fac_nocturne, stance: -10, note: "행렬"}
+  - {to: fac_durgan, stance: -30, note: "행렬 — 거인 전쟁 때 두르강이 양쪽에 무기를 팔았다. 협상파가 곡물 교역 접촉 중"}
+  - {to: fac_seren, stance: -10, note: "행렬"}
+  - {to: fac_grom, stance: -50, note: "행렬 — 나눔 식사 배신의 원한(거인 전쟁)"}
+  - {to: fac_light, stance: 0, note: "행렬"}
+  - {to: fac_nameless, stance: 0, note: "행렬"}
+  - {to: fac_collar, stance: 0, note: "행렬"}
+  - {to: fac_ashen_tower, stance: -20, note: "행렬"}
+  - {to: fac_barg, stance: -30, note: "행렬"}
+  - {to: fac_swamp_hags, stance: 0, note: "행렬 — 엘사는 거인 뼈를 '빌린 혈명' 촉매로 원한다"}
+toward_echo: "이용하기 / 기다리기. 거인은 인간에게 무관심하다 — 노예로서 기억하지 않는다. 다만 깊은우물의 브리미르는 서리 어머니의 꿈에서 '작은 자들이 우리를 먹여 살릴 것'을 들었고, 무녀 요룬은 남쪽 심장 소리를 듣는다. 곡식 한 수레는 화술 +30."
+player_paths:
+  - "연합: 서리손(아스타)을 통해 브리미르와 협상 — 북방 대탈주 클락의 열쇠. 곡식을 들고 가면 나눔 식사가 열린다"
+  - "탈주: 서리 길 마지막 산장(마투쉬) 거쳐 울음 고개를 서리월 전에 넘기. 에이나르와 아스타의 마지막 200명"
+  - "이용: 그라넥 문서를 흐림니르에게 넘겨 남침 칼끝을 아우락스에서 그라넥으로 돌린다"
+  - "무너뜨리기: 스카디르의 전사단 막사와 오우거 사육의 증거 — 왕자의 찬탈을 막거나 앞당긴다"
+  - "침투: 불 오두막지기 노예를 규합해 불을 무기로"
+regression:
+  fixed: ["3년 연속 흉작과 얼음 탁자의 식탁 합의 절차", "서리 길은 서리월에 닫힘", "나눔 식사 후의 배신이 최대의 죄 — 거인 전쟁의 원인", "왕이 먼저 굶는다"]
+  flow: ["남침파 대 협상파의 세력비 — 곡물 수급에 따라", "노예 탈주 규모(대탈주 클락)", "스카디르의 찬탈 시도 시점"]
+  drift: ["어느 씨족이 오우거가 되었다는 소문", "서리 길의 눈보라 날짜", "왕의 칙령이 씨족장에게 새는 경로"]
