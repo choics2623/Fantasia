@@ -17,9 +17,14 @@
 | [systems/05_DIALOGUE_AND_REACTIVITY.md](systems/05_DIALOGUE_AND_REACTIVITY.md) | **LLM 없이 방대한 반응형 대사**를 만드는 규칙 DB, 콘텐츠 생성 파이프라인·비용 |
 | [systems/06_CHARACTER_CREATION.md](systems/06_CHARACTER_CREATION.md) | **재능 포인트**: 천부 재능, 신체 특질(용심 등), 결점, 업적 보상 |
 | [systems/07_MAPS_AND_FOG.md](systems/07_MAPS_AND_FOG.md) | **지도 4단계 줌, 현재 위치, 전장의 안개 5단계**, 지도 아이템 |
+| [systems/08_NPC_RELATIONSHIPS.md](systems/08_NPC_RELATIONSHIPS.md) | **NPC 관계망**: 등급, 관계 데이터, 자동 관계도, 인물 수첩, 검증 |
+| [systems/09_DOMAINS_AND_STEWARDS.md](systems/09_DOMAINS_AND_STEWARDS.md) | **영역·영지와 관리자**: 은신처→인간의 도시, 노출도, 위임, 배신 |
+| [systems/10_REPUTATION_AND_WORLD_RESPONSE.md](systems/10_REPUTATION_AND_WORLD_RESPONSE.md) | **명성·악명**: 집단별 시선, 칭호, 정체(가면·돌아오는 이), 세력 대응 단계, 정세 변화 |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |
+| [world/SUBRACES.md](world/SUBRACES.md) | 파생종과 종족 내부 서열 |
+| [world/relations/](world/relations/) | NPC 관계도 (데이터에서 자동 생성) |
 | [world/REGIONS.md](world/REGIONS.md) | 지역·정착지·장소, 이동 그래프 |
 | [world/HOUSES_AND_FACTIONS.md](world/HOUSES_AND_FACTIONS.md) | 가문·조직의 역사 |
 | [world/CHARACTERS.md](world/CHARACTERS.md) | 이름 있는 NPC 명부 |
