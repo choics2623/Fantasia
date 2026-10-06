@@ -178,7 +178,10 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
 
   const NAME = (n) => (n === "player" ? "주인공" : cards[n]?.name || n);
   function authorityFor(npc, t) {
-    for (const a of prof(npc).report_to || []) {
+    // 윗선이 죽었으면 그 자리를 이은 사람에게 (23 승계 — state.heirs)
+    const chain = [];
+    for (let a of prof(npc).report_to || []) { let guard = 0; while (state.dead.has(a) && state.heirs?.[a] && guard++ < 5) a = state.heirs[a]; chain.push(a); }
+    for (const a of chain) {
       if (a === npc || state.dead.has(a)) continue;
       const w = world.where(a, t);
       if (w.kind === "at" && w.at && (!activeSet || activeSet.has(w.settlement))) return { a, w };

@@ -11,6 +11,8 @@ import { createLivingWorld } from "../sim/living.mjs";
 import { fmt, toMinutes, fromMinutes, isSabbath, parseClock, MONTHS } from "../sim/calendar.mjs";
 import { cardReveals, revealOK } from "./reveal.mjs";
 import { josa } from "../sim/text.mjs";
+import { createReputation, classifyDeed } from "../sim/reputation.mjs";
+import { createOffices } from "../sim/offices.mjs";
 
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 function hash(...parts) {
@@ -85,7 +87,12 @@ function build(content, run) {
     convo: null,       // {npc, turns, patience, transcript[]}
     ended: null,       // {kind: dead|captured, why}
     feed: [],          // 이번 턴에 플레이어가 겪은 일 (서술 재료)
+    deeds: [],         // 플레이어의 행적 — 평판은 이것과 '아는 사람들'에서 계산한다 (재생으로 저절로 맞다)
+    rep: createReputation(game.reputation || {}, { seed }),
+    offices: createOffices(game.factions || {}),
+    seenDead: new Set(),
   };
+  S.heirs = {};       // 죽은 사람 → 그 일을 이은 사람 (반응 층의 '윗선' 찾기가 쓴다)
   return g;
 }
 const mind = (g, n) => (g.M[n] ??= { fear: 0, anger: 0, memories: [], impressions: {}, revealed: new Set(), toldPlayer: new Set() });
@@ -229,6 +236,7 @@ export function odds(g, opt) {
   S += statMod;
   const status = -(p.status.hunger >= 2 ? 5 : 0) - (p.status.pain >= 30 ? 3 : 0) - (p.status.pain >= 60 ? 6 : 0);
   S += status;
+  if (opt.skill === "화술" && n) { const grp = groupOf(g, n), v = grp ? (reputation(g).views[grp] || 0) : 0; if (v) { const b = clamp(Math.round(v * 0.3), -8, 8); S += b; parts.push(`${grp}의 시선 ${b >= 0 ? "+" : ""}${b}`); } }
   if (opt.skill === "화술") { S += Math.round(r.like * 0.3 + r.trust * 0.2); D += 5 + Math.round(pr.nerve / 10) + (opt.request || 0) + m.anger * 5 + m.fear * 2; }
   if (opt.skill === "위압") { D += Math.round(pr.nerve / 4) + (opt.request || 0) - m.fear * 4; if (opt.fact) S += Math.min(15, (g.content.facts[opt.fact]?.danger || 2) * 3); }
   if (opt.skill === "통찰") D += 18;
@@ -260,6 +268,7 @@ export function apply(g, e, { replay = false } = {}) {
   const [verb, arg] = e.id.split(/:(.*)/s);
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
+  successions(g);
   res.notes = res.notes.map(josa); res.label = josa(res.label);
   if (g.ended) g.ended.why = josa(g.ended.why);
   if (!replay) res.feed = g.feed.map((f) => ({ ...f, text: josa(f.text) }));
@@ -281,10 +290,11 @@ function pass(g, minutes, { sleeping = false } = {}) {
   while (t < to) {
     const next = Math.min(to, Math.floor(t / 30) * 30 + 30);
     g.L.advance(next);
+    successions(g);
     const c = fromMinutes(next);
     const hm = c.hh * 60 + c.mm;
     // 점호 (04:45~05:00, 안식일 제외): 그 시각 광장에 없으면 즈닉이 안다
-    if (hm === 5 * 60 && !isSabbath(c.day) && g.P.lastRollcall !== c.day && !g.S.dead.has("npc_znik")) {
+    if (hm === 5 * 60 && !isSabbath(c.day) && g.P.lastRollcall !== c.day && overseer(g) && !g.S.dead.has(overseer(g))) {   // 점호는 감독관 자리의 일 — 즈닉이 죽으면 이은 사람이, 공석이면 점호도 없다
       g.P.lastRollcall = c.day;
       if (g.at !== ROLLCALL) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: "새벽 점호에 나가지 않았다. 즈닉의 명단에 빈칸이 생겼다." }); }
     }
@@ -314,6 +324,23 @@ function pass(g, minutes, { sleeping = false } = {}) {
   }
   checkDanger(g);
 }
+
+// 죽음 → 자리 승계 (23 §2.1). 잇는 사람은 다음 날 아침부터 전임자의 일과를 산다
+function successions(g) {
+  for (const n of g.S.dead) {
+    if (g.seenDead.has(n)) continue;
+    g.seenDead.add(n);
+    const changes = g.offices.onDeath(n, g.t, g.S.dead);
+    const heir = g.offices.heirOf(n, changes);
+    if (heir) {
+      g.S.heirs[n] = heir;
+      const c = fromMinutes(g.t); const from = (Math.floor(g.t / 1440) + 1) * 1440 + 6 * 60;
+      g.W.inherit(heir, n, from);
+    }
+    for (const ch of changes) g.S.log.push({ t: g.t, npc: ch.to || n, agenda: "sim", vis: "public", text: josa(ch.to ? `${nameOf(g, ch.to)}이(가) ${ch.title} 자리를 이었다` : `${ch.title} 자리가 비었다`) });
+  }
+}
+const overseer = (g) => g.offices.holder("fac_raven_house.off_overseer");
 
 // 수배: 쫓는 윗선이 같은 자리에 있으면 붙잡힌다. 수배 3 이상이면 낮 동안 사람을 풀어 찾는다 —
 // 막사·광장처럼 뻔한 곳은 금방, 숨은 곳(비밀 장소)·마을 밖은 느리게. 숨을 곳을 찾아 달아나는 것이 길이다
@@ -359,6 +386,7 @@ const DO = {
     pass(g, Math.max(1, opt.minutes || 1));
     if (sneak && !OK(res.tier)) {
       const seen = g.L.player.trespass(g.t, to, res.tier === "대실패" ? 1 : 0.7);
+      if (seen.length) deed(g, "trespass", null, to);
       res.notes.push(seen.length ? `들어가다 ${seen.map((n) => nameOf(g, n)).join(", ")}의 눈에 띄었다` : "발소리가 났지만 아무도 보지 못한 듯하다");
     }
     g.at = to;
@@ -384,10 +412,12 @@ const DO = {
     pass(g, 2);
     if (OK(res.tier)) {
       const seen = g.L.player.kill(g.t, n, { at: g.at, stealth: res.tier === "대성공" ? 60 : 20 });
+      deed(g, "kill", n);
       res.notes.push(`${nameOf(g, n)}이(가) 쓰러졌다. 움직이지 않는다`);
       if (seen.length) res.notes.push(`누군가 보았다: ${seen.map((x) => nameOf(g, x)).join(", ")}`);
     } else {
       g.L.player.assault(g.t, n, { at: g.at });
+      deed(g, "assault", n);
       g.P.status.pain = clamp(g.P.status.pain + (res.tier === "대실패" ? 40 : 20), 0, 100);
       res.notes.push(`${nameOf(g, n)}을(를) 쓰러뜨리지 못했다`);
       if (res.tier === "대실패" && (profOf(g, n).nerve >= 60 || g.P.status.pain >= 100)) { g.P.alive = false; g.ended = { kind: "dead", why: `${nameOf(g, n)}의 손에 죽었다`, t: g.t }; }
@@ -439,6 +469,7 @@ const DO = {
   show(g, id, res) {
     pass(g, 2);
     const seen = g.L.player.show(g.t, id, g.at);
+    if (g.L.items.get(id)?.tags?.includes("무기") && seen.some((x) => profOf(g, x).role === "authority")) deed(g, "weapon", null);
     const n = g.convo?.npc;
     const knew = n && g.L.beliefs(n).some((b) => b.kind === "saw_item" && b.item === id);
     res.notes.push(knew ? `${nameOf(g, n)}의 눈빛이 달라진다` : `${g.L.items.get(id).name}을(를) 꺼내 보였다`);
@@ -591,6 +622,35 @@ export function regressRun(g) {
   return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths } });
 }
 
+// ── 평판 (10 · 21 §8) ──
+function deed(g, kind, victim, at = g.at) {
+  const k = classifyDeed(kind, victim ? profOf(g, victim) : {}, victim ? cardOf(g, victim) : {});
+  g.deeds.push({ id: `d${g.deeds.length + 1}`, kind: k, victim, at, placeName: placeName(g, at), t: g.t });
+}
+// 행적을 아는 사람이 생긴 때(known)와 플레이어가 했다고 믿는 사람이 생긴 때(identified) — 반응 층의 믿음에서
+function deedKnowledge(g, d) {
+  let known = null, ident = null;
+  for (const [, m] of g.S.beliefs || []) for (const b of m.values()) {
+    const about = d.victim ? b.object === d.victim : (b.subject === "player" && b.at === d.at && b.t >= d.t);
+    if (!about) continue;
+    if (known == null || b.t < known) known = b.t;
+    if (b.subject === "player" && (ident == null || b.t < ident)) ident = b.t;
+  }
+  return { ...d, knownAt: known, identifiedAt: ident };
+}
+export function reputation(g) { return g.rep.summary(g.deeds.map((d) => deedKnowledge(g, d)), g.t); }
+// 처음 보는 사람이 나를 보는 눈 — 그 사람이 속한 집단의 시선 (화술 판정에 ±8까지)
+function groupOf(g, n) {
+  const c = cardOf(g, n), r = `${c.rank || ""} ${c.job || ""}`;
+  if (/사제|순종|정화청/.test(r)) return "순종의 빛";
+  if (/목줄|크릭|감독/.test(r) && !/농노/.test(c.rank || "")) return "목줄단";
+  if (/사냥꾼|바르그/.test(r)) return "바르그 조합";
+  if (/레이번|남작|영주가/.test(r)) return "영주가";
+  if (/용인|귀족|가주/.test(r)) return "용인 귀족";
+  if ((c.race || "인간").includes("인간")) return "인간 노예";
+  return null;
+}
+
 // ── 장면 보기 (UI와 LLM이 같은 것을 본다 — 플레이어가 알 수 있는 것만) ──
 export function view(g) {
   const c = fromMinutes(g.t);
@@ -611,6 +671,7 @@ export function view(g) {
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name })), wanted: g.S.wanted?.player?.heat || 0 },
     notebook: [...g.run.carry.notebook, ...g.P.notebook], ended: g.ended,
+    reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };
 }
 export function moodWords(r, m) {

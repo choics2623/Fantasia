@@ -124,4 +124,33 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   check("브람이 믿은 주장은 사람이 모이는 곳에서 소문으로 퍼진다", spread.length > 0, spread.map((n) => C.cards[n].name).join(", "));
 }
 
+// 11. 평판: 행적 + 아는 사람들에서 계산한다. 알려지지 않으면 퍼지지 않고, 누가 했는지 모르면 사건만 퍼진다
+{
+  let pub = null;
+  for (let s = 1; s < 300 && !pub; s++) { const x = G.boot(C, G.newRun({ seed: s })); play(x, "attack:npc_hagen"); if (x.S.dead.has("npc_hagen") && !x.ended) pub = x; }
+  const r0 = G.reputation(pub);
+  check("행적 직후에는 아직 어디에도 퍼지지 않았다", !r0.reach, JSON.stringify(r0.news));
+  for (let i = 0; i < 12 && !pub.ended; i++) play(pub, "wait:60");
+  const r1 = G.reputation(pub);
+  check("반나절 안에 마을에 퍼진다 (목격자가 있으므로)", r1.news.some((n) => n.scope === "village"), r1.reach);
+  check("사람들이 플레이어가 했다고 알면 집단의 시선이 움직인다 (노예사냥 패거리를 죽였다 → 인간 노예 +)", (r1.views["인간 노예"] || 0) > 0 || !r1.news.some((n) => n.identified), JSON.stringify(r1.views));
+  // 영지 단계까지: 붙잡히지 않은 회차에서 며칠 더
+  const k2 = G.reputation(pub); 
+  if (!pub.ended) { for (let i = 0; i < 5 * 24 && !pub.ended; i++) play(pub, G.options(pub).some((o) => o.id === "wait:60") ? "wait:60" : "sleep"); }
+  const r2 = G.reputation(pub);
+  check("크기 2의 사건은 며칠 뒤 영지까지 간다 (붙잡히면 시간이 멈춘다)", pub.ended || r2.news.some((n) => n.scope === "domain"), `${r2.reach} ${r2.news.map((n) => n.scopeName + (n.distortion ? "(" + n.distortion + ")" : "")).join(", ")}`);
+}
+
+// 12. 자리 승계: 즈닉이 죽으면 감독관 자리는 누군가 잇고, 그 사람이 점호를 선다 / 남작이 죽으면 오웬이 남작
+{
+  const x = G.boot(C, G.newRun({ seed: 7 }));
+  x.A.intervene(x.t, "kill", "npc_godric_raven");
+  play(x, "wait:60");
+  check("남작이 죽으면 후계자가 남작 자리를 잇는다", x.offices.holder("fac_raven_house.off_baron") === "npc_owen_raven");
+  for (let i = 0; i < 20; i++) play(x, "wait:60");
+  const w = x.W.where("npc_owen_raven", x.t - (x.t % 1440) + 10 * 60);
+  check("다음 날부터 오웬이 남작의 일과를 산다 (서재)", w.at === "gf_keep_study", `${w.at} ${w.doing}`);
+  check("승계는 공개 기록으로 남는다 (소문·서술의 재료)", x.S.log.some((l) => /남작 자리를 이었다/.test(l.text)));
+}
+
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

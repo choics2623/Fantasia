@@ -1,0 +1,19 @@
+# 평판 평가표 (10 §2.2) — 행동 종류 × 집단. 단계마다 규모 계수를 곱한다 (21 §8.2: 마을 1.0 · 영지 0.7 · 지방 0.5 · 국가 0.35 · 대륙 0.2).
+# 엔진은 사건의 피해자·장소로 종류와 크기(M)를 정한다 (engine/sim/reputation.mjs).
+groups: [인간 노예, 이름 없는 자들, 목줄단, 순종의 빛, 용인 귀족, 영주가, 바르그 조합]
+scale:
+  - {id: village, name: 마을, min_m: 0, days: [0.3, 0.6], k: 1.0}
+  - {id: domain,  name: 영지, min_m: 2, days: [2, 4], k: 0.7}
+  - {id: province, name: 지방, min_m: 3, days: [7, 14], k: 0.5}
+  - {id: realm,   name: 국가, min_m: 4, days: [21, 42], k: 0.35}
+  - {id: continent, name: 대륙, min_m: 5, days: [60, 90], k: 0.2}
+distortions: [과장, 주체 바뀜, 동기 바뀜, 신원 흐림]
+kinds:
+  kill_overseer:  {m: 3, label: 감독관 살해,       views: {인간 노예: 10, 이름 없는 자들: 5, 목줄단: -25, 순종의 빛: -10, 용인 귀족: -25, 영주가: -30, 바르그 조합: -10}, title: 감독관 목을 딴 자}
+  kill_hunter:    {m: 2, label: 노예사냥꾼 패거리 살해, views: {인간 노예: 12, 이름 없는 자들: 10, 목줄단: -15, 순종의 빛: -3, 용인 귀족: -8, 영주가: -10, 바르그 조합: -25}, title: 사냥꾼 사냥꾼}
+  kill_lord:      {m: 4, label: 영주가 사람 살해,  views: {인간 노예: 8, 이름 없는 자들: 10, 목줄단: -30, 순종의 빛: -15, 용인 귀족: -40, 영주가: -60, 바르그 조합: -10}, title: 주인을 문 개}
+  kill_serf:      {m: 2, label: 같은 인간 살해,    views: {인간 노예: -15, 이름 없는 자들: -10, 목줄단: 0, 순종의 빛: -10, 용인 귀족: -5, 영주가: -10, 바르그 조합: 0}, title: 배급 줄의 칼}
+  assault:        {m: 1, label: 폭행,              views: {인간 노예: -2, 목줄단: -5, 영주가: -5}, title: null}
+  assault_overseer: {m: 2, label: 감독관 폭행,     views: {인간 노예: 8, 이름 없는 자들: 3, 목줄단: -15, 용인 귀족: -10, 영주가: -15}, title: 채찍에 덤빈 아이}
+  trespass:       {m: 0, label: 금지된 곳 출입,    views: {영주가: -3}, title: null}
+  weapon:         {m: 1, label: 인간이 칼을 지님,   views: {인간 노예: 3, 목줄단: -8, 용인 귀족: -8, 영주가: -10}, title: 칼 든 농노}

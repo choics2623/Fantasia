@@ -116,8 +116,15 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
     return best;
   }
 
+  // 승계(23): 자리를 이은 사람은 그 시각부터 전임자의 일과를 산다 (오웬이 남작이 되면 서재와 판결이 오웬의 것)
+  const inherits = new Map();   // npc → [{from, routineOf}]
+  function routineFor(npc, t) {
+    const list = inherits.get(npc); let id = npc;
+    if (list) for (const x of list) if (t >= x.from) id = x.routineOf;
+    return routines[id];
+  }
   function routineAt(npc, t, depth = 0) {
-    const r = routines[npc];
+    const r = routineFor(npc, t);
     if (!r) return null;
     const day = Math.floor(t / 1440);
     // 사람마다 하루가 조금씩 이르거나 늦다 (표류). fixed 블록은 흔들리지 않는다.
@@ -246,7 +253,8 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
   // 장면이 바꾼 것: 죽음, 포로, 플레이어가 데려감… (세이브에 남는다. 회귀하면 비운다)
   function override(o) { if (!overrides.has(o.npc)) overrides.set(o.npc, []); overrides.get(o.npc).push(o); }
   function setCond(fn) { condFn = fn; }
+  function inherit(npc, routineOf, from) { if (!routines[routineOf]) return; if (!inherits.has(npc)) inherits.set(npc, []); inherits.get(npc).push({ from, routineOf }); }
   const npcs = () => [...new Set([...Object.keys(routines), ...eventsByNpc.keys()])];
 
-  return { where, whoIsAt, timeline, override, setCond, npcs, hasEvents: (n) => eventsByNpc.has(n), travelMinutes, route, rainy, exists, loc };
+  return { where, whoIsAt, timeline, override, setCond, inherit, npcs, hasEvents: (n) => eventsByNpc.has(n), travelMinutes, route, rainy, exists, loc };
 }
