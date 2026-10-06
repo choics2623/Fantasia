@@ -82,7 +82,7 @@ function build(content, run) {
   const g = {
     content, run, W, S, A, L, seed,
     t: START, at: "gf_rooster",
-    P: { ...NEW_PLAYER(), settlement: SETTLEMENT, alive: true, captured: false, knows: new Set(), met: new Set(), knowsPlaces: new Set(), found: new Set(), notebook: [], heard: new Set(), lastRollcall: null },
+    P: { ...NEW_PLAYER(), settlement: SETTLEMENT, alive: true, captured: false, knows: new Set(), met: new Set(), seen: {}, knowsPlaces: new Set(), found: new Set(), notebook: [], heard: new Set(), lastRollcall: null },
     M: {},             // NPC의 마음 (회차 안에서만): {fear, anger, memories[], impressions{}, revealed:Set, toldPlayer:Set}
     convo: null,       // {npc, turns, patience, transcript[]}
     ended: null,       // {kind: dead|captured, why}
@@ -321,6 +321,7 @@ export function apply(g, e, { replay = false } = {}) {
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
   successions(g);
+  for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
   res.notes = res.notes.map(josa); res.label = josa(res.label);
   if (g.ended) g.ended.why = josa(g.ended.why);
   if (!replay) res.feed = g.feed.map((f) => ({ ...f, text: josa(f.text) }));
@@ -822,6 +823,14 @@ function rollcallSearch(g, day) {
   g.feed.push({ kind: "rule", text: josa(text) });
 }
 
+// 플레이어가 아는 행방 (24 §3.6): 진짜 위치가 아니라 '늘 그 시각엔 거기' — 표류 없는 일과로 추정한다. 그래서 가끔 틀린다
+let ESTIMATOR = null;
+function estimate(g, n) {
+  if (!ESTIMATOR || ESTIMATOR.bundle !== g.content.bundle) ESTIMATOR = { bundle: g.content.bundle, W: createWorld(g.content.bundle, { loopSeed: 0 }) };
+  const w = ESTIMATOR.W.where(n, g.t);
+  return w.kind === "away" ? "이 고장에 없을 것" : w.at ? `아마 ${placeName(g, w.at)}` : null;
+}
+
 // ── 평판 (10 · 21 §8) ──
 function deed(g, kind, victim, at = g.at) {
   const k = classifyDeed(kind, victim ? profOf(g, victim) : {}, victim ? cardOf(g, victim) : {});
@@ -871,6 +880,7 @@ export function view(g) {
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name })), wanted: g.S.wanted?.player?.heat || 0 },
     notebook: [...g.run.carry.notebook, ...g.P.notebook], ended: g.ended,
+    people_known: [...g.P.met].map((n) => ({ id: n, name: nameOf(g, n), lastSeen: g.P.seen[n] ? `${fmt(g.P.seen[n].t).slice(7)} ${placeName(g, g.P.seen[n].at)}` : null, guess: estimate(g, n), mood: moodWords(relOf(g, n), mind(g, n)) })),
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };
 }

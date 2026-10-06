@@ -78,6 +78,7 @@ button.ui:hover { border-color: var(--gold); }
 <div class="drawer" id="drawer" hidden><div class="pane">
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
   <h2>수첩 — 회귀해도 남는다</h2><ul id="notes"></ul>
+  <h2>아는 사람들 — 지금 어디쯤</h2><ul id="whom"></ul>
   <h2>소지품</h2><ul id="items"></ul>
   <h2>평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep"></ul>
   <h2>저장</h2>
@@ -133,6 +134,7 @@ function render(d, loading = false) {
     $("chips").innerHTML = [`${v.loop}회차`, `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
     $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b> · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
+    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b> — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}</li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
     const R = v.reputation || {};
     $("rep").innerHTML = (R.news || []).map((n) => `<li>${esc(n.scopeName)}: ${esc(n.label)}${n.place ? ` (${esc(n.place)})` : ""}${n.distortion ? ` — 소문이 ${esc(n.distortion)}` : ""}${n.identified ? "" : " — 누가 했는지는 모른다"}</li>`).join("")
       + (R.titles?.length ? `<li>사람들이 부르는 이름: ${esc(R.titles.join(", "))}</li>` : "")
