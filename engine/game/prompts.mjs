@@ -113,8 +113,11 @@ function bodyLine(g, v) {
   const L = [];
   if (v.player.hunger >= 3) L.push("굶주림 — 음식 낱말(빵·죽·김)이 눈에 걸린다. 생각이 자꾸 먹을 것으로 미끄러진다");
   if (v.player.pain >= 60) L.push("통증 — 문장 사이에 아픔이 끼어든다. 한 박자에 한 번");
+  if (v.player.fatigue >= 70) L.push("피로 — 감각이 둔하다. 소리가 멀다. 문장이 무겁게 늘어진다");
+  if (v.player.stress >= 70) L.push("짓눌림 — 사소한 것에 오래 머문다. 손이 저절로 무언가를 센다");
   const fear = (v.player.wanted || 0) >= 2 || v.people.some((p) => (g.content.game.sim.profiles[p.id] || {}).role === "hunter");
   if (fear) L.push("공포 — 문장이 짧아진다. 쉼표가 많아진다. 소리에 먼저 반응한다");
+  if (v.traits?.length) L.push(`기질 — 주인공은 이제 ${v.traits.join(", ")} 사람이다. 고르는 말과 몸짓에 배어난다`);
   return L.length ? `[몸의 상태 — 서술의 결이 이것을 따른다]\n${L.map((x) => "- " + x).join("\n")}` : "";
 }
 export function turnPrompt(g, res, opts, { transcript = [], memories = false, sceneNew = false, introduced = new Set() } = {}) {

@@ -63,4 +63,59 @@ const fresh = () => G.boot(C, G.newRun({ seed: 7, opening: false }));
   const node = C.bundle.settlements.crow_gate?.node;
   check("가 본 고장은 '기억하는 곳'으로", G.mapView(g2).world.nodes.find((n) => n.id === node)?.remembered === true, node);
 }
+
+// 성향 (01 §1.3): 고른 것이 그 사람을 만든다. ±60이면 특성
+{
+  const g = fresh();
+  for (let i = 0; i < 3; i++) { const a = G.options(g).find((o) => o.id === "attack:npc_kit"); if (!a || g.ended) break; G.act(g, { id: a.id }); }
+  check("덤비면 자비가 줄고 용기가 는다", g.P.temper.자비 < 0 && g.P.temper.용기 > 0, JSON.stringify(g.P.temper));
+  g.P.temper.자비 = -70;
+  check("±60이면 특성 — 냉혹한", G.traits(g).includes("냉혹한"));
+  const g2 = G.boot(C, { ...G.regressRun(g), opening: false });
+  check("성향은 영혼에 남는다", g2.P.temper.자비 === -70);
+}
+// 스트레스 이월 (14 §4.3)
+{
+  const g = fresh(); g.P.status.stress = 80; g.ended = { kind: "dead", why: "x", t: g.t, trace: { id: "water" } };
+  const g2 = G.boot(C, { ...G.regressRun(g), opening: false });
+  check("스트레스 이월 = 30 + (80−30)×0.4 + 잔혹한 죽음 12 = 62", g2.P.status.stress === 62, g2.P.status.stress);
+}
+// 두려움이 손을 묶는다 / 피로가 판정을 깎는다
+{
+  const g = fresh(); g.P.status.fear = 3;
+  check("두려움 3 — 덤벼드는 선택지가 사라진다", !ids(g).some((x) => x.startsWith("attack:")));
+  g.P.status.fear = 0; g.P.status.fatigue = 80;
+  const a = G.options(g).find((o) => o.id.startsWith("attack:"));
+  check("지치면 근거에 '지쳤다'", G.odds(g, a).parts.some((p) => p.text.includes("지쳤다")));
+}
+// 들일 (14 §5.1): 첫날엔 낫 세 번과 키트, 그 뒤로는 몰아서
+{
+  const g = G.boot(C, G.newRun({ seed: 7 })); G.act(g, { id: "story_name", text: "하린|형" }); G.act(g, { id: "story:stay_in_line" });
+  for (let i = 0; i < 30 && !ids(g).includes("work_day"); i++) G.act(g, { id: G.view(g).story ? ids(g)[0] : ids(g).includes("sleep") && G.view(g).night ? "sleep" : "wait:60" });
+  check("아침이면 들일에 나갈 수 있다", ids(g).includes("work_day"), G.view(g).time);
+  const r = G.act(g, { id: "work_day" });
+  check("첫 들일 — 낫 세 번 (대본 장면)", G.view(g).story?.id === "znik_lash" && r.storyText.includes("세 번"));
+  G.act(g, { id: "story:take_lash" });
+  check("키트 대신 맞으면 키트의 마음이 움직이고 용기가 는다", (g.S.rel.get("npc_kit>player")?.like || 0) >= 10 && g.P.temper.용기 > 0);
+  check("낫 신호를 배운다", g.P.knows.has("fact_gf_scythe_signal"));
+  const h = fresh();
+  for (let i = 0; i < 20 && !ids(h).includes("work_day"); i++) G.act(h, { id: ids(h).includes("sleep") && G.view(h).night ? "sleep" : "wait:60" });
+  const f0 = h.P.status.fatigue; const w = G.act(h, { id: "work_day" });
+  check("들일은 해 질 때까지 — 지치고, 할당을 채우거나 못 채운다", h.P.status.fatigue > f0 && w.notes.some((n) => /고랑|할당/.test(n)) && G.view(h).hm >= "18:00", `${G.view(h).hm} ${w.notes.join(" / ")}`);
+}
+// 이야기 모드: 마지막 아침으로 (03 §6)
+{
+  const { createSession } = await import("./session.mjs"); const { createProvider } = await import("../llm/provider.mjs");
+  const S = createSession(C, createProvider({ kind: "mock" }), {});
+  await S.newGame(7, {}, "story");
+  await S.act({ id: "story_name", text: "하린|형" }); await S.act({ id: "story:stay_in_line" });
+  let guard = 0;
+  while (!G.morningMark(S.game) && guard++ < 30) { const o = G.options(S.game).map((x) => x.id); await S.act({ id: G.view(S.game).story ? o[0] : o.includes("sleep") && G.view(S.game).night ? "sleep" : "wait:60" }); }
+  await S.act({ id: G.options(S.game).some((o) => o.id === "wait:60") ? "wait:60" : G.options(S.game)[0].id });
+  const len = S.run.journal.length, mark = G.morningMark(S.game);
+  const r = await S.rewind({});
+  check("이야기 모드 — 마지막 아침으로 되돌린다", !r.error && S.run.journal.length === mark && mark < len, `${len} → ${S.run.journal.length}`);
+  const S2 = createSession(C, createProvider({ kind: "mock" }), {});
+  check("그림다크에서는 되돌릴 수 없다", !!(await S2.rewind({})).error);
+}
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

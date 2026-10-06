@@ -4,3 +4,8 @@
   truth: true
   danger: 3
   names: [스니]
+- id: fact_gf_scythe_signal
+  text: "들일 노예들의 신호 — 낫으로 땅을 세 번 치면 '감독관이 온다'. 두 번은 '물 마셔라', 한 번 길게 끌면 '누가 쓰러졌다'"
+  truth: true
+  danger: 1
+  names: []

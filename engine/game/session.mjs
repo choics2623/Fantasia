@@ -178,7 +178,17 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     memo(npc, text) { g.run.memos = { ...(g.run.memos || {}), [npc]: String(text || "").slice(0, 200) }; save(); return { ok: true }; },
     act: (input, o) => turn(input, o),
     async regress(o) { g = G.boot(content, G.regressRun(g)); transcript = []; save(); return turn(null, o); },
-    async newGame(seed, o) { g = G.boot(content, G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) })); transcript = []; save(); return turn(null, o); },
+    async newGame(seed, o, mode = "grim") { g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode }); transcript = []; save(); return turn(null, o); },
+    // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
+    async rewind(o) {
+      if (g.run.mode !== "story") return { error: "그림다크에서는 되돌릴 수 없다" };
+      const used = g.run.rewinds?.[g.run.loop] || 0;
+      if (used >= 3) return { error: "이번 회차의 되돌리기를 다 썼다" };
+      const mark = G.morningMark(g);
+      if (mark == null) return { error: "되돌아갈 아침이 아직 없다" };
+      g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, mark), rewinds: { ...(g.run.rewinds || {}), [g.run.loop]: used + 1 } });
+      transcript = []; save(); return turn(null, o);
+    },
     drain: () => kick() || Promise.resolve(),   // 검사용: 기록관이 끝날 때까지
     load(run) { g = G.boot(content, run); transcript = run.transcript || []; },
     get run() { return g.run; }, get game() { return g; },

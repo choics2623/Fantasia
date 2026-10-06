@@ -153,7 +153,8 @@ button.ui:hover { border-color: var(--gold); }
   <h2>저장</h2>
   <div class="row-btns"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="ui" id="saveBtn">저장</button></div>
   <div class="row-btns" id="slots" style="margin-top:8px"></div>
-  <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 (새 시드)</button></div>
+  <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 — 그림다크</button><button class="ui" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
+  <div class="row-btns" style="margin-top:8px"><button class="ui" id="rewindBtn" hidden>마지막 아침으로 되돌린다</button></div>
   <h2 data-dbg>엔진 기록 (판정·검증)</h2><pre id="debug" data-dbg>—</pre>
 </div></div>
 <div class="veil" id="veil" hidden></div>
@@ -236,8 +237,9 @@ function render(d, loading = false) {
     $("goals").innerHTML = (v.goals || []).map((x) => `<span><b>${esc(x.who)}</b> ${esc(x.what)}${x.days != null ? ` <span class="d">D-${x.days}</span>` : ""}</span>`).join("");
     const p = v.player;
     const U = new Set(v.unlocked || []);
+    $("rewindBtn").hidden = v.mode !== "story";
     for (const [id, key] of [["secNotes", "notebook"], ["secWhom", "people"], ["secItems", "items"], ["secRep", "reputation"]]) for (const el of document.querySelectorAll(`[data-sec=${id}]`)) el.hidden = !U.has(key);
-    $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
+    $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, p.fatigue >= 50 ? `지침 ${p.fatigue}` : "", p.fear >= 2 ? `<span class="chip hot">떨림</span>` : "", `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
     $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
     $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
@@ -249,8 +251,9 @@ function render(d, loading = false) {
       + (R.titles?.length ? `<li>사람들이 부르는 이름: ${esc(R.titles.join(", "))}</li>` : "")
       + (Object.keys(R.views || {}).length ? `<li>${Object.entries(R.views).map(([k, x]) => `${esc(k)} ${x > 0 ? "+" : ""}${x}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
     $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
+    $("skills").dataset.traits = (v.traits || []).join(", ");
     $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
-    $("skills").innerHTML = (v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span style="color:var(--ink-faint)">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("");
+    $("skills").innerHTML = ((v.traits || []).length ? `<li style="color:var(--gold)">기질 — ${esc(v.traits.join(", "))}</li>` : "") + (v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span style="color:var(--ink-faint)">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("");
   }
   $("debug").textContent = JSON.stringify({ debug: d.debug, usage: d.usage, provider: d.provider }, null, 1);
   const panel = $("panel");
@@ -347,6 +350,8 @@ $("closeDrawer").onclick = () => ($("drawer").hidden = true);
 $("drawer").onclick = (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; };
 $("saveBtn").onclick = async () => { await fetch("/api/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: $("slotName").value }) }); $("menuBtn").onclick(); };
 $("newBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", {})); };
+$("newStoryBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", { mode: "story" })); };
+$("rewindBtn").onclick = async () => { $("drawer").hidden = true; const d = await call("/api/rewind"); if (d.error) { $("busy").textContent = d.error; return; } $("story").innerHTML = ""; currentTurn = null; show(d); };
 // ── 지도: 이 고장(건물 배치·아는 사람의 '아마 거기')과 대륙(가 본 곳·들은 곳만 밝게) ──
 let mapTab = "town", mapData = null;
 async function openMap() {

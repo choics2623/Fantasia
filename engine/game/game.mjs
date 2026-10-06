@@ -84,7 +84,8 @@ const NEW_PLAYER = () => ({
   name: "셋째", age: 17,
   skills: { 화술: 22, 기만: 15, 위압: 8, 통찰: 18, 손재주: 12, 은신: 16, 싸움: 12 },
   mods: { 근력: -0.5, 민첩: 0.5, 지능: 0.5, 감각: 1, 의지: 0 },
-  status: { hunger: 2, pain: 30 },
+  status: { hunger: 2, pain: 30, fatigue: 20, fear: 0, stress: 30 },
+  temper: { 용기: 0, 자비: 0, 정직: 0, 신앙: 0, 탐욕: 0, 충성: 0 },   // 성향 (01 §1.3): 행동으로 움직이고, ±60에 특성이 된다
   gain: {}, train: 5,        // 단련도: 들일로 굳은 몸 (06 §4.2) — 회귀하면 여기로
 });
 
@@ -156,6 +157,9 @@ function build(content, run) {
   };
   // 영혼이 기억하는 스킬 (머리는 그대로, 몸은 상한에 묶여서 — skill()이 처리한다)
   for (const [sk, v] of Object.entries((run.carry.soul || {}).skills || {})) g.P.skills[sk] = Math.max(g.P.skills[sk] || 0, v);
+  // 스트레스 이월 (14 §4.3): 30 + (죽기 전 − 30) × 0.4 + 죽음 가산, 상한 70 · 성향은 영혼에 남는다 (01 §1.3)
+  if (run.carry.soul?.stressCarry != null) g.P.status.stress = run.carry.soul.stressCarry;
+  if (run.carry.soul?.temper) g.P.temper = { ...g.P.temper, ...run.carry.soul.temper };
   S.heirs = {};       // 죽은 사람 → 그 일을 이은 사람 (반응 층의 '윗선' 찾기가 쓴다)
   return g;
 }
@@ -313,7 +317,7 @@ function rawOptions(g) {
     if (w.kind === "captive") continue;
     o.push({ id: `talk:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 말을 건다${asleep(w, g.t) ? " (자고 있다)" : ""}`, npc: w.npc });
   }
-  for (const w of present(g)) if (w.kind !== "captive") o.push({ id: `attack:${w.npc}`, kind: "scene", more: true, label: `${displayName(g, w.npc)}에게 덤벼든다${hasWeapon(g) ? " (칼이 있다)" : " (맨손)"}`, skill: "싸움", npc: w.npc, risk: "죽을 수 있다" });
+  if (g.P.status.fear < 3) for (const w of present(g)) if (w.kind !== "captive") o.push({ id: `attack:${w.npc}`, kind: "scene", more: true, label: `${displayName(g, w.npc)}에게 덤벼든다${hasWeapon(g) ? " (칼이 있다)" : " (맨손)"}`, skill: "싸움", npc: w.npc, risk: "죽을 수 있다" });
   for (const b of bodiesHere(g)) {
     const left = (g.S.purse[b.npc] || 0) > 0 || worn(g, b.npc).length;
     if (left) o.push({ id: `loot:${b.npc}`, kind: "scene", label: `${nameOf(g, b.npc)}의 시체를 뒤진다`, npc: b.npc });
@@ -353,6 +357,8 @@ function rawOptions(g) {
     if ((g.oaths || []).some((x) => x.id === oa.id) || !storyWhen(g, oa.offer_when) || g.t > parseDT(oa.deadline)) continue;
     o.push({ id: `oath:${oa.id}`, kind: "scene", more: present(g).length === 0, label: `소리 내어 맹세한다 — "${oa.line}"`, oath: true });
   }
+  // 들일 (03 §2.1, 14 §5.1): 낮 노동은 몰아서. 할당을 못 채우면 즈닉의 채찍과 배급 삭감
+  { const hm = ((g.t % 1440) + 1440) % 1440; if (g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive && hm >= 6 * 60 && hm < 14 * 60 && !isSabbath(Math.floor(g.t / 1440)) && g.P.lastWork !== Math.floor(g.t / 1440)) o.push({ id: "work_day", kind: "time", label: "들일에 나간다 (해 질 때까지)" }); }
   o.push({ id: "wait:60", kind: "time", label: "한 시간 기다린다" });
   // 18 「기억대로 보낸다」: 하루를 늘 하던 대로 — 저녁 배급, 막사, 잠, 점호. 그사이 눈앞에서 일어난 일만 남는다
   if (g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive) o.push({ id: "routine_day", kind: "time", label: "하루를 늘 하던 대로 보낸다 (배급 → 막사 → 점호)" });
@@ -396,6 +402,9 @@ export function odds(g, opt) {
   S += statMod;
   if (p.status.hunger >= 2) { S -= 5; why("▼", p.status.hunger >= 3 ? "며칠째 제대로 못 먹었다 — 머리가 멍하다" : "배가 고프다"); }
   if (p.status.pain >= 30) { S -= p.status.pain >= 60 ? 9 : 3; why("▼", p.status.pain >= 60 ? "몸이 많이 아프다" : "등의 채찍 자국이 욱신거린다"); }
+  if (p.status.fatigue >= 70) { S -= 5; why("▼", "눈꺼풀이 무겁다 — 지쳤다"); }
+  if (p.status.fear >= 2 && ["싸움", "위압"].includes(opt.skill)) { S -= 3 * p.status.fear; why("▼", "다리가 떨린다"); }
+  if (p.status.stress >= 70 && ["화술", "기만"].includes(opt.skill)) { S -= 5; why("▼", "목소리가 갈라진다 — 너무 많은 것을 짊어졌다"); }
   if (opt.skill === "화술" && n) { const grp = groupOf(g, n), v = grp ? (reputation(g).views[grp] || 0) : 0; if (v) { const b = clamp(Math.round(v * 0.3), -8, 8); S += b; why(b >= 0 ? "▲" : "▼", `${grp} 사이에서 네 이름이 ${b >= 0 ? "좋게" : "나쁘게"} 돈다`); } }
   if (opt.skill === "화술") {
     const relB = Math.round(r.like * 0.3 + r.trust * 0.2); S += relB;
@@ -464,6 +473,10 @@ export function apply(g, e, { replay = false } = {}) {
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
   if (od && opt.skill) growSkill(g, opt.skill, od, tier, verb);
+  for (const [k, d] of Object.entries(TEMPER_OF[verb] || {})) temper(g, k, d);
+  // 두려움 (01 §1.4): 사냥꾼과 같은 자리, 수배 — 쌓이고, 장면이 바뀌면 조금씩 가라앉는다
+  const scary = present(g).some((w) => profOf(g, w.npc).role === "hunter") || (g.S.wanted?.player?.heat || 0) >= 3;
+  g.P.status.fear = clamp(g.P.status.fear + (scary ? 1 : -1), 0, 5);
   if (!g.story && !g.ended && !g.convo) { const wt = windowTrigger(g); if (wt) openStory(g, wt); else nemesisCheck(g); }
   pickVoice(g, e, opt);
   successions(g);
@@ -522,6 +535,8 @@ function dayEnd(g) {
   g.P.dayMark = { notebook: g.P.notebook.length, met: g.P.met.size, coin: g.S.purse.player, journal: g.run.journal.length };
   g.P.lastDayEnd = day;
 }
+// 아침 표지 (18 §5.2 ③): 마지막으로 잠에서 깬 때의 기록 길이 — 이야기 모드의 되돌리기 지점
+export function morningMark(g) { return g.P.marks?.length ? g.P.marks[g.P.marks.length - 1] : null; }
 // 지난 이야기 (18 §5.4): 실제로 얼마나 비웠나에 따라 — 한 줄 / 짧은 요약. 회차 2부터는 맨 위에 '{n}째 저녁.'
 export function recap(g, gapHours) {
   if (gapHours < 6) return [];
@@ -708,6 +723,12 @@ export function lexicon(g) {
   }
   return out;
 }
+// 성향 (01 §1.3): −100~100. ±60에서 특성이 된다. 처음의 나(0)에서 얼마나 멀어졌나 = 본디의 거리 (15 §7.5)
+function temper(g, axis, d) { if (g.P.temper[axis] == null) return; g.P.temper[axis] = clamp(g.P.temper[axis] + d, -100, 100); }
+const TRAITS = { 용기: ["겁 많은", "대담한"], 자비: ["냉혹한", "다정한"], 정직: ["거짓에 능한", "곧은"], 신앙: ["믿지 않는", "경건한"], 탐욕: ["욕심 없는", "탐욕스러운"], 충성: ["누구도 믿지 않는", "곁을 지키는"] };
+export function traits(g) { return Object.entries(g.P.temper).filter(([, v]) => Math.abs(v) >= 60).map(([k, v]) => TRAITS[k][v > 0 ? 1 : 0]); }
+// 행동이 성향을 민다 — 고른 것이 그 사람을 만든다
+const TEMPER_OF = { attack: { 자비: -3, 용기: 2 }, give: { 자비: 2, 탐욕: -1 }, press: { 정직: -1, 용기: 1 }, loot: { 탐욕: 2, 자비: -1 }, hide_body: { 정직: -2 }, ration: {}, oath: { 충성: 3 }, wash: { 정직: -1 } };
 // ── 기억 표지 (14 §7.5): ┊ 지난 회차에 일어났던 일 · ◇ 기억과 어긋남 ──
 // 엔진이 고른 줄을 그대로 화면에 (LLM이 쓰지 않는다). 회차 안에서 같은 방아쇠에 한 번, 한 박자에 둘까지.
 function memoryInk(g) {
@@ -816,7 +837,8 @@ function pass(g, minutes, { sleeping = false } = {}) {
     // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
     for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
   }
-  if (sleeping) { g.P.status.pain = clamp(g.P.status.pain - 10, 0, 100); }
+  if (sleeping) { g.P.status.pain = clamp(g.P.status.pain - 10, 0, 100); g.P.status.fatigue = clamp(g.P.status.fatigue - Math.round(minutes / 60) * 12, 0, 100); }
+  else g.P.status.fatigue = clamp(g.P.status.fatigue + Math.round(minutes / 60) * 3 + (g.P.working ? Math.round(minutes / 60) * 3 : 0), 0, 100);
   // 하루에 한 번 배가 고파진다 (배급을 받으면 준다)
   for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
     // 굶주림: 이미 바닥(4)이면 몸이 먹힌다 — 아픔 +15, 100이면 죽는다
@@ -1042,6 +1064,9 @@ function storyEffect(g, e, res) {
   else if (k === "goto") g.at = parts[1];
   else if (k === "ration") { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); }
   else if (k === "agenda") g.A.doEffect(rest, g.t);
+  else if (k === "temper") temper(g, parts[1], Number(parts[2]));
+  else if (k === "stress") g.P.status.stress = clamp(g.P.status.stress + Number(parts[1]), 0, 100);
+  else if (k === "fear") g.P.status.fear = clamp(g.P.status.fear + Number(parts[1]), 0, 5);
   else if (k === "then") g._then = parts[1];
   else if (k === "die" || k === "die_if") {
     let i = 1, p = 1;
@@ -1168,8 +1193,9 @@ const DO = {
     g.feed = feedAll;
     res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
   },
-  sleep(g, _, res) {
+  sleep(g, _, res, opt, e) {
     dayEnd(g);
+    (g.P.marks ??= []).push((e?.i ?? g.run.journal.length) + 1);   // 이 잠까지 포함한 기록 길이 = 깨어난 아침
     // 두 번째 회차부터, 첫 잠자리 전에 지난 회차를 센다 (14 §6.6)
     const cnt = SL(g, "count_before_sleep");
     if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
@@ -1227,6 +1253,25 @@ const DO = {
     it.slot = sl; it.visibility = SLOTS[sl].seen ? "보임" : "숨김"; pass(g, 2);
     res.notes.push(`${it.name}을(를) ${sl}에 지녔다`);
     if (SLOTS[sl].seen) seenCarrying(g, res);
+  },
+  work_day(g, _, res) {
+    const day = Math.floor(g.t / 1440);
+    g.P.lastWork = day; g.at = "greyford__west_pasture"; g.P.working = true;
+    // 첫 들일: 낫 세 번, 그리고 키트 (대본 장면)
+    const zl = SL(g, "znik_lash");
+    if (zl && !g.storyDone.has(zl.id) && g.run.opening !== false) { openStory(g, zl); res.storyText = g.feed.pop()?.text; g.P.working = false; return; }
+    const hm = ((g.t % 1440) + 1440) % 1440;
+    pass(g, Math.max(60, 18 * 60 - hm));
+    g.P.working = false;
+    if (g.ended || g.story) return;
+    g.P.train = Math.min(60, g.P.train + 0.4 * (g.P.train < (soul(g).trainPeak || 0) ? 3 : 1));
+    // 할당: 지친 몸, 빈속은 단을 덜 묶는다
+    const P = clamp(0.8 - g.P.status.fatigue / 250 - (g.P.status.hunger >= 3 ? 0.2 : 0) - (g.P.status.pain >= 60 ? 0.2 : 0), 0.1, 0.95);
+    if (hash(g.seed, "quota", day) >= P) {
+      g.P.status.pain = clamp(g.P.status.pain + 12, 0, 100); g.P.lastRation = day;
+      res.notes.push("할당을 못 채웠다. 즈닉의 채찍 셋 — 오늘 저녁 배급은 없다"); g.P.status.stress = clamp(g.P.status.stress + 4, 0, 100);
+    } else res.notes.push("해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
+    g.at = "gf_rooster";
   },
   oath(g, id, res) {
     const oa = (g.content.game.oaths || []).find((x) => x.id === id);
@@ -1503,6 +1548,9 @@ function settleSoul(g, record) {
   S.skills ||= {};
   for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
   S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
+  const brutal = ["water", "teeth", "spear", "rope"].includes(g.ended?.trace?.id);
+  S.stressCarry = Math.min(70, Math.round(30 + (g.P.status.stress - 30) * 0.4 + (g.ended?.kind === "dead" ? (brutal ? 12 : 5) : 0)));
+  S.temper = { ...g.P.temper };
   S.lexicon = [...new Set([...(S.lexicon || []), ...lexicon(g).filter((w) => w.meaning).map((w) => w.word)])];
   for (const o of g.oaths || []) { const oa = (g.content.game.oaths || []).find((x) => x.id === o.id); if (oa && !(S.oaths ||= []).some((x) => x.id === o.id)) S.oaths.push({ id: o.id, line: oa.line, loop, state: o.state }); }
   S.nemeses = [...(S.nemeses || []), ...Object.entries(g.nem || {}).map(([npc, x]) => ({ npc, loop, grudge: x.grudge }))].slice(-12);
@@ -1753,6 +1801,7 @@ export function view(g) {
     pastOaths: (soul(g).oaths || []).filter((o) => !(g.oaths || []).some((x) => x.id === o.id)).map((o) => o.line),
     lastHook: g.P.lastHook || null,
     lexicon: lexicon(g),
+    traits: traits(g), mode: g.run.mode || "grim",
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };
 }
