@@ -15,5 +15,6 @@ kinds:
   kill_serf:      {m: 2, label: 같은 인간 살해,    views: {인간 노예: -15, 이름 없는 자들: -10, 목줄단: 0, 순종의 빛: -10, 용인 귀족: -5, 영주가: -10, 바르그 조합: 0}, title: 배급 줄의 칼}
   assault:        {m: 1, label: 폭행,              views: {인간 노예: -2, 목줄단: -5, 영주가: -5}, title: null}
   assault_overseer: {m: 2, label: 감독관 폭행,     views: {인간 노예: 8, 이름 없는 자들: 3, 목줄단: -15, 용인 귀족: -10, 영주가: -15}, title: 채찍에 덤빈 아이}
+  flee:           {m: 2, label: 농노 탈주,          views: {인간 노예: 4, 이름 없는 자들: 5, 목줄단: -10, 영주가: -12, 바르그 조합: -8}, title: 달아난 셋째}
   trespass:       {m: 0, label: 금지된 곳 출입,    views: {영주가: -3}, title: null}
   weapon:         {m: 1, label: 인간이 칼을 지님,   views: {인간 노예: 3, 목줄단: -8, 용인 귀족: -8, 영주가: -10}, title: 칼 든 농노}

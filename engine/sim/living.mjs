@@ -31,7 +31,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
     profCache.set(n, p); return p;
   };
   const social = new Set(sim.social_places || []);
-  const activeSet = active ? new Set(active) : null;
+  let activeSet = active ? new Set(active) : null;
   let now = startAt, seq = 0;
   const queue = [];                      // {t, seq, fn}
   const beliefs = (state.beliefs ??= new Map());   // npc → Map(key → belief) — 세계 상태에 둔다: 목표 행동의 'believes' 조건과 LLM 장면이 같은 것을 읽는다
@@ -59,8 +59,9 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
 
   // ── 누가 어디에 ──
   // 세부 수준(LOD): 활성 고장에 사는 사람 + 일정으로 드나드는 사람만 위치를 계산한다. 같은 시각은 한 번만.
-  const candidates = world.npcs().filter((n) => !activeSet || activeSet.has(homeSettlement(n)) || (world.hasEvents?.(n)));
-  const localNpcs = () => candidates.filter((n) => !state.dead.has(n));
+  let candidates = null;
+  const computeCandidates = () => (candidates = world.npcs().filter((n) => !activeSet || activeSet.has(homeSettlement(n)) || (world.hasEvents?.(n))));
+  const localNpcs = () => (candidates || computeCandidates()).filter((n) => !state.dead.has(n));
   let presentCache = { t: null, v: null };
   function present(t) {
     if (presentCache.t === t) return presentCache.v;
@@ -448,9 +449,11 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   };
 
   // 새 물건 (산 것·만든 것) — 소유 이력이 '삼'으로 시작한다
+  // 플레이어가 다른 고장으로 가면 그 고장이 '활성' — 그곳 사람들이 보고, 말하고, 반응한다 (LOD)
+  function setActive(list) { activeSet = new Set(list); candidates = null; presentCache = { t: null, v: null }; }
   function give(owner, def) { const it = { ...def, owner, worn: false, provenance: [{ owner, how: "삼", t: now }] }; items.set(def.id, it); return it; }
   return {
-    advance, player, emit, believe, items, purse, bodies, give,
+    advance, player, emit, believe, items, purse, bodies, give, setActive,
     get now() { return now; },
     beliefs: (npc) => [...(beliefs.get(npc)?.values() || [])],
     knowsAbout: (npc, kind, subject) => has(npc, kind, (b) => !subject || b.subject === subject),

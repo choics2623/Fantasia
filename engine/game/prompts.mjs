@@ -6,7 +6,7 @@ import { view, knownNames, moodWords, IMPRESSION_TAGS } from "./game.mjs";
 import { josa } from "../sim/text.mjs";
 
 export const SYSTEM = `너는 한국어 그림다크 판타지 텍스트 게임의 문장 담당이다. 규칙 엔진이 이미 모든 결과를 정했다. 너는 그것을 문장으로만 쓴다.
-세계: 신을 죽인 고대 종족들이 인간을 노예로 부리는 대륙. 붕괴력 312년. 회색여울 — 용인 남작 영지의 인간 농노 마을.
+세계: 신을 죽인 고대 종족들이 인간을 노예로 부리는 대륙. 붕괴력 312년. 주인공이 매인 곳은 회색여울 — 용인 남작 영지의 인간 농노 마을. 지금 있는 곳은 장면 자료에 있다.
 주인공: '셋째'라 불리는 열일곱 살 인간 농노. 등에 채찍 자국. 늘 배가 고프다. 한 번 죽었다가 이 가을 첫날 저녁으로 돌아왔다(회귀) — 아무도 모른다.
 문체: 2인칭. 서술에서 주인공은 언제나 "당신". 짧은 문장. 한 박자 150자 안팎, 박자 1~3개. 감정 형용사보다 몸과 사물. 설교하지 않는다. 현대어·외래어 금지.
 절대 규칙:
@@ -161,7 +161,7 @@ export const RECORDER_SYSTEM = `너는 텍스트 게임의 기록관이다. 끝�
 
 export function recorderPrompt(g, jobs) {
   const facts = [...g.P.knows, ...g.run.carry.future].map((f) => `${f}: ${g.content.facts[f]?.text}`).join("\n");
-  const places = [...g.W.loc.values()].filter((l) => l.settlement === "greyford" && !l.parent).map((l) => l.name).join(", ");
+  const places = [...g.W.loc.values()].filter((l) => l.settlement === g.P.settlement && !l.parent).map((l) => l.name).join(", ");
   return [
     `[주인공이 아는 사실 — 주인공이 NPC에게 이것을 말해 주었으면 kind "learned"로, fact에 이 id를]\n${facts || "(없음)"}`,
     `[마을의 장소 이름 — 약속 장소는 이 중에서]\n${places}`,

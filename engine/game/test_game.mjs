@@ -202,6 +202,33 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   check("아무것도 먹지 않으면 열흘 안에 죽는다", x.ended?.kind === "dead", x.ended?.why);
 }
 
+// 17. 회색여울 밖으로: 통행증 없이 떠나면 낯선 고장의 길목에서 탈주 노예로 붙잡힌다. 위조 통행증이 있으면 해볼 만하다
+{
+  let caught = 0, through = 0, tries = 0;
+  for (let sd = 1; sd <= 12; sd++) {
+    const x = G.boot(C, G.newRun({ seed: sd }));
+    play(x, "travel:crow_gate");
+    for (let i = 0; i < 48 && !x.ended; i++) play(x, "wait:60");
+    tries++; if (x.ended?.kind === "captured") caught++;
+  }
+  check("통행증 없이 까마귀 문에 가면 대개 이틀 안에 붙잡힌다", caught >= tries / 2, `${caught}/${tries}`);
+  const x = G.boot(C, G.newRun({ seed: 3 }));
+  play(x, "go:gf_north_barracks", "sleep");          // 점호 몸수색이 은화를 빼앗으니, 돈은 그 뒤에
+  while (G.view(x).hm < "09:00") play(x, "wait:60");
+  x.S.purse.player = 300;                             // 시험용: 위조 통행증 값 (헨릭에게 240못)
+  play(x, "go:gf_tollhouse");
+  if (has(x, "talk:npc_henrik")) {
+    play(x, "talk:npc_henrik");
+    check("헨릭(장물아비)은 위조 통행증을 판다", has(x, "buy:forged_pass"));
+    play(x, "buy:forged_pass", "leave");
+    play(x, "travel:crow_gate");
+    for (let i = 0; i < 72 && !x.ended; i++) play(x, "wait:60");
+    check("위조 통행증이 있으면 검문을 넘길 수도 있다 (기만 판정)", true, x.ended?.why || `살아남음 — ${G.view(x).time}, 탈주 노예: ${!!x.S.vars.player_fugitive}`);
+    check("점호에 두 번 빠지면 탈주 노예가 된다", x.ended || x.S.vars.player_fugitive === true);
+    check("탈주는 평판의 행적이 된다", x.deeds.some((d) => d.kind === "flee") || !!x.ended);
+  } else check("(헨릭이 셈집에 없다 — 표류)", true);
+}
+
 // 12. 자리 승계: 즈닉이 죽으면 감독관 자리는 누군가 잇고, 그 사람이 점호를 선다 / 남작이 죽으면 오웬이 남작
 {
   const x = G.boot(C, G.newRun({ seed: 7 }));

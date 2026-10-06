@@ -34,7 +34,7 @@ const OK = (t) => t === "성공" || t === "대성공";
 
 // ── 회귀점 (14 첫 시간, WORLD_BIBLE §1.3) ──
 export const START = toMinutes(312, 9, 1, 18, 30);
-const SETTLEMENT = "greyford";
+const SETTLEMENT = "greyford";            // 주인공이 매인 곳 (회귀점). 지금 있는 곳은 g.P.settlement
 const HOME = "gf_north_barracks";
 const ROLLCALL = "gf_whip_square";
 const NEW_PLAYER = () => ({
@@ -82,7 +82,7 @@ function build(content, run) {
   const g = {
     content, run, W, S, A, L, seed,
     t: START, at: "gf_rooster",
-    P: { ...NEW_PLAYER(), alive: true, captured: false, knows: new Set(), met: new Set(), knowsPlaces: new Set(), found: new Set(), notebook: [], heard: new Set(), lastRollcall: null },
+    P: { ...NEW_PLAYER(), settlement: SETTLEMENT, alive: true, captured: false, knows: new Set(), met: new Set(), knowsPlaces: new Set(), found: new Set(), notebook: [], heard: new Set(), lastRollcall: null },
     M: {},             // NPC의 마음 (회차 안에서만): {fear, anger, memories[], impressions{}, revealed:Set, toldPlayer:Set}
     convo: null,       // {npc, turns, patience, transcript[]}
     ended: null,       // {kind: dead|captured, why}
@@ -104,7 +104,7 @@ function bumpRel(g, n, like = 0, trust = 0) {
 const cardOf = (g, n) => g.content.cards[n] || { id: n, name: n };
 const nameOf = (g, n) => (n === "player" ? "당신" : cardOf(g, n).name || n);
 const placeName = (g, id) => g.W.loc.get(id)?.name || id;
-const profOf = (g, n) => ({ perception: 50, nerve: 50, ...(g.content.game.sim.defaults_by_settlement?.[SETTLEMENT] || {}), ...(g.content.game.sim.profiles[n] || {}) });
+const profOf = (g, n) => ({ perception: 50, nerve: 50, ...(g.content.game.sim.defaults_by_settlement?.[g.P.settlement] || {}), ...(g.content.game.sim.profiles[n] || {}) });
 const knowsFact = (g, f) => g.P.knows.has(f) || g.run.carry.future.includes(f);
 const isFuture = (g, f) => g.run.carry.future.includes(f) && !g.P.knows.has(f);
 function learn(g, f, how) {
@@ -113,7 +113,7 @@ function learn(g, f, how) {
   const text = g.content.facts[f]?.text || f;
   g.P.notebook.push(`${how} — ${text}`);
   // 사실에 장소 이름이 나오면 그 장소를 안다 (숨은 장소에 들어갈 수 있게)
-  for (const [id, l] of g.W.loc) if (l.settlement === SETTLEMENT && l.name && text.includes(l.name.replace(/'.*'/, "").trim().split(" ")[0]) && (l.access === "secret")) g.P.knowsPlaces.add(id);
+  for (const [id, l] of g.W.loc) if (l.settlement === g.P.settlement && l.name && text.includes(l.name.replace(/'.*'/, "").trim().split(" ")[0]) && (l.access === "secret")) g.P.knowsPlaces.add(id);
   if (f === "fact_gf_egil_family_in_cellar") g.P.knowsPlaces.add("gf_rooster_cellar");
   return true;
 }
@@ -121,12 +121,13 @@ function learn(g, f, how) {
 // ── 지금 장면 ──
 // 이 고장에 올 수 있는 사람만 본다: 여기 사는 사람 + 일정으로 여기 오는 사람 (LOD — 다른 고장 수백 명은 계산하지 않는다)
 function localNpcs(g) {
-  if (g._local) return g._local;
-  const inHere = (id) => g.W.loc.get(id)?.settlement === SETTLEMENT;
+  if (g._local?.s === g.P.settlement) return g._local.list;
+  const inHere = (id) => g.W.loc.get(id)?.settlement === g.P.settlement;
   const set = new Set();
   for (const [n, r] of Object.entries(g.content.bundle.routines)) if (inHere(r.home) || (r.blocks || []).some((b) => inHere(b.at))) set.add(n);
   for (const e of g.content.bundle.events) if (inHere(e.at) || inHere(e.travel_from) || inHere(e.return_to)) e.npcs.forEach((n) => set.add(n));
-  return (g._local = [...set]);
+  g._local = { s: g.P.settlement, list: [...set] };
+  return g._local.list;
 }
 function present(g, t = g.t) {
   return g.W.whoIsAt(g.at, t, localNpcs(g)).filter((w) => (w.kind === "at" || w.kind === "captive") && w.at === g.at && !g.S.dead.has(w.npc));
@@ -154,15 +155,37 @@ function locAccess(g, id, t) {
   if (l.locked && typeof l.locked === "string") { const [f, to] = l.locked.split("-").map(parseClock); const shut = f < to ? mod >= f && mod < to : mod >= f || mod < to; if (shut) a = id === HOME ? "home_locked" : "locked"; }
   return a;
 }
+function settlementAtNode(g, node) {
+  for (const [sid, st] of Object.entries(g.content.bundle.settlements)) if (st.node === node) return sid;
+  return null;
+}
+function travels(g) {
+  const st = g.content.bundle.settlements[g.P.settlement]; if (!st) return [];
+  const here = g.W.loc.get(g.at);
+  // 고장의 가장자리(마을 밖 장소)나 고장 안 어디서든 떠날 수 있다 — 길은 지도의 이웃 노드
+  const out = [];
+  for (const [sid, s2] of Object.entries(g.content.bundle.settlements)) {
+    if (sid === g.P.settlement) continue;
+    const r = g.W.route(st.node, s2.node);
+    if (!r || r.path.length > 3 || r.hours > 40) continue;      // 한두 걸음 거리의 이웃만
+    out.push({ settlement: sid, name: s2.name, hours: Math.round(r.hours * 10) / 10 });
+  }
+  return out.sort((a, b) => a.hours - b.hours).slice(0, 4);
+}
+function entryOf(g, sid) {
+  const st = g.content.bundle.settlements[sid];
+  const L = st.locations || [];
+  return (L.find((l) => /gate|square|checkpoint/.test(l.kind || "") && (l.access || "public") === "public") || L.find((l) => (l.access || "public") === "public" && !l.parent) || L[0])?.id || st.node;
+}
 function exits(g) {
   const here = g.W.loc.get(g.at);
   const out = [];
   for (const [id, l] of g.W.loc) {
-    if (l.settlement !== SETTLEMENT || id === g.at) continue;
+    if (l.settlement !== g.P.settlement || id === g.at) continue;
     const isRoomHere = l.parent && (l.parent === g.at || l.parent === here?.parent);
     const isTop = !l.parent;
     if (!isTop && !isRoomHere) continue;
-    if (l.outer && (l.node !== "greyford" && l.outerHours > 3)) continue;
+    if (l.outer && settlementAtNode(g, l.node) && settlementAtNode(g, l.node) !== g.P.settlement) continue;   // 다른 고장 = 길 떠나기 (travel)
     let a = locAccess(g, id, g.t);
     if (g.W.placeState(id, g.t)) continue;           // 닫힘·통제·불탐 (24 §3.7)
     if (a === "secret" && !g.P.knowsPlaces.has(id)) continue;
@@ -223,8 +246,10 @@ function rawOptions(g) {
     const sneak = ["owner", "staff", "closed", "secret", "home_locked"].includes(e.access) && !(e.id === HOME);
     o.push({ id: `go:${e.id}`, kind: "move", label: `${e.name}(으)로 간다${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id });
   }
+  // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
+  for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
   o.push({ id: "wait:60", kind: "time", label: "한 시간 기다린다" });
-  if (g.at === HOME || isNight(g.t)) o.push({ id: "sleep", kind: "time", label: g.at === HOME ? "침상에 눕는다" : "이곳에서 웅크리고 잔다" });
+  if ((g.at === HOME && g.P.settlement === SETTLEMENT) || isNight(g.t)) o.push({ id: "sleep", kind: "time", label: g.at === HOME ? "침상에 눕는다" : "이곳에서 웅크리고 잔다" });
   return o;
 }
 
@@ -318,13 +343,23 @@ function pass(g, minutes, { sleeping = false } = {}) {
     const c = fromMinutes(next);
     const hm = c.hh * 60 + c.mm;
     // 점호 (04:45~05:00, 안식일 제외): 그 시각 광장에 없으면 즈닉이 안다
-    if (hm === 5 * 60 && !isSabbath(c.day) && g.P.lastRollcall !== c.day && overseer(g) && !g.S.dead.has(overseer(g))) {   // 점호는 감독관 자리의 일 — 즈닉이 죽으면 이은 사람이, 공석이면 점호도 없다
+    if (hm === 5 * 60 && !isSabbath(c.day) && g.P.lastRollcall !== c.day && overseer(g) && !g.S.dead.has(overseer(g)) && !g.S.vars.player_fugitive) {   // 점호는 감독관 자리의 일 — 즈닉이 죽으면 이은 사람이, 공석이면 점호도 없다
       g.P.lastRollcall = c.day;
       if (g.at !== ROLLCALL) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: "새벽 점호에 나가지 않았다. 감독관의 명단에 빈칸이 생겼다." }); }
       else rollcallSearch(g, c.day);
+      // 점호에 두 번 빠진 채 마을 밖에 있으면 — 탈주 노예. 감독관이 바르그 조합에 현상금을 건다
+      if ((g.S.vars.player_missed_rollcall || 0) >= 2 && g.P.settlement !== SETTLEMENT && !g.S.vars.player_fugitive) {
+        g.S.vars.player_fugitive = true;
+        const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] });
+        w.heat += 3; w.since ??= next; w.by.add(overseer(g)); w.reasons.push("탈주"); w.settlement = SETTLEMENT;
+        g.deeds.push({ id: `d${g.deeds.length + 1}`, kind: "flee", victim: null, at: ROLLCALL, placeName: placeName(g, ROLLCALL), t: next });
+        g.L.believe(overseer(g), next, { kind: "trespass", subject: "player", at: ROLLCALL, source: "noticed", reason: "탈주" }, { react: false });
+        g.S.log.push({ t: next, npc: overseer(g), agenda: "sim", vis: "public", text: "감독관이 셋째를 탈주 노예로 올렸다 — 바르그 조합에 현상금" });
+      }
     }
     // 통금 순찰 (21:00·23:00·02:00): 막사 밖에 있는 인간은 걸린다 — 은신 판정
-    if (["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && g.at !== HOME && !g.W.loc.get(g.at)?.outer && !g.ended) {
+    if (!g.P.traveling && g.P.settlement !== SETTLEMENT && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08);
+    if (g.P.settlement === SETTLEMENT && !g.P.traveling && ["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && g.at !== HOME && !g.W.loc.get(g.at)?.outer && !g.ended) {
       const P = prob(g.P.skills.은신 + g.P.mods.민첩 * 2 + 6, 22);
       if (hash(g.seed, "patrol", next) >= P) {
         g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100);
@@ -372,11 +407,36 @@ function successions(g) {
 }
 const overseer = (g) => g.offices.holder("fac_raven_house.off_overseer");
 
+// 낯선 고장의 인간: 길목·순찰에서 통행증을 요구받는다. 없으면 탈주 노예로 붙잡힌다. 위조 통행증은 기만 판정.
+// 소문(평판)이 이 고장까지 닿았고 얼굴이 알려졌으면 더 어렵다. 자유민의 땅(윗선이 없는 고장)은 묻지 않는다.
+function checkpoint(g, res, p) {
+  const chain = g.content.game.sim.defaults_by_settlement?.[g.P.settlement]?.report_to || [];
+  if (!chain.length || g.ended) return;
+  if (g.P.clearedUntil > g.t) return;                       // 한 번 넘긴 검문은 하루 동안 다시 묻지 않는다
+  const l = g.W.loc.get(g.at) || {};
+  if (l.outer || ["secret", "serf"].includes(l.access)) p *= 0.25;   // 마을 밖·숨은 곳·인간 거처는 덜 묻는다
+  const roll = hash(g.seed, "check", g.P.settlement, g.t);
+  if (roll >= p) return;
+  const pass = mine(g).find((i) => i.tags?.includes("통행증"));
+  const rep = reputation(g);
+  const known = rep.news.some((n) => n.identified && n.scope !== "village");
+  let ok = false, text;
+  if (pass) {
+    const P2 = prob(g.P.skills.기만 + g.P.mods.지능 * 2 + (pass.tags.includes("위조") ? 0 : 20) - (known ? 10 : 0), 22);
+    ok = hash(g.seed, "check-pass", g.t) < P2;
+    text = ok ? "경비가 통행증을 오래 들여다보다가 돌려준다." : "경비가 통행증의 인장을 손톱으로 긁는다. 위조다.";
+  } else text = "경비가 묻는다. 누구의 것이냐, 통행증은. 대답할 것이 없다.";
+  if (ok) g.P.clearedUntil = g.t + 1440;
+  if (!ok) { g.ended = { kind: "captured", why: `${text} 탈주 노예로 붙잡혔다 — ${g.content.bundle.settlements[g.P.settlement]?.name}`, t: g.t }; }
+  (res?.notes || g.feed).push(res ? text : { kind: "rule", text });
+}
+
 // 수배: 쫓는 윗선이 같은 자리에 있으면 붙잡힌다. 수배 3 이상이면 낮 동안 사람을 풀어 찾는다 —
 // 막사·광장처럼 뻔한 곳은 금방, 숨은 곳(비밀 장소)·마을 밖은 느리게. 숨을 곳을 찾아 달아나는 것이 길이다
 function manhunt(g, next) {
   const w = g.S.wanted?.player;
   if (!w || w.heat < 3 || g.ended || next - (w.since ?? next) < 60 || next % 60 !== 0) return;
+  if (g.P.traveling || (w.settlement || SETTLEMENT) !== g.P.settlement) return;   // 쫓는 사람들은 자기 고장에서만 찾는다 (소문이 닿은 곳은 검문이 맡는다)
   const hm = ((next % 1440) + 1440) % 1440;
   const day = hm >= 6 * 60 && hm < 21 * 60;
   const l = g.W.loc.get(g.at) || {};
@@ -423,6 +483,18 @@ const DO = {
     checkDanger(g);
   },
   wait(g, m) { pass(g, Number(m) || 60); },
+  travel(g, sid, res, opt) {
+    const from = g.P.settlement;
+    g.P.traveling = true;
+    pass(g, opt.minutes || 60);
+    g.P.traveling = false;
+    if (g.ended) return;
+    g.P.settlement = sid; g.at = entryOf(g, sid); g._local = null;
+    g.L.setActive([sid]);
+    res.notes.push(`${g.content.bundle.settlements[sid].name}에 닿았다`);
+    if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
+    checkpoint(g, res, 0.35);   // 낯선 인간은 들어서는 길목에서 붙잡히기 쉽다
+  },
   sleep(g, _, res) {
     const c = fromMinutes(g.t);
     let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440;
@@ -619,7 +691,7 @@ function resolvePlace(g, name) {
   const key = (x) => String(x || "").replace(/[\s'"]/g, "");
   const n = key(name);
   if (!n) return null;
-  const cands = [...g.W.loc].filter(([, l]) => l.settlement === SETTLEMENT && l.name);
+  const cands = [...g.W.loc].filter(([, l]) => l.settlement === g.P.settlement && l.name);
   // 정확히 같은 이름 → 이름에 들어 있는 것 중 가장 짧은 것(건물이 방보다 먼저) → 이름의 앞부분이 들어 있는 것
   const exact = cands.find(([, l]) => key(l.name) === n) || cands.find(([, l]) => (l.aka || []).some((a) => key(a) === n));
   if (exact) return exact[0];
