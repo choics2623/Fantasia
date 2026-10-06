@@ -61,8 +61,10 @@ schedule:
   밤: "주 1~2회 교리 문답을 핑계로 예배당에서 글자 수업"
 places: [물레방아간, 방앗간 다락, 사슬등불 예배당]
 knows: []
-# TODO-FACT: 토마스의 '두 번째 바닥'(맷돌 받침 아래 보리 14섬) — 미나도 안다. 토마스 작가의 사실 id가 생기면 hides로 연결 (cover: "다락으로 올라가 버린다")
 hides:
+  - fact: fact_gf_thomas_second_floor
+    reveal_when: "신뢰 50 이상이고 아버지를 지켜 주겠다는 약속을 받은 뒤, 또는 곡물 수색(서리월 20일)이 다가와 아버지가 위험해질 때"
+    cover: "맷돌 이야기가 나오면 다락으로 올라가 버린다"
   - fact: fact_gb_mina_letters
     reveal_when: "호감 30 이상, 또는 플레이어가 먼저 글자를 써 보인 뒤 — 아이라서 금방 자랑한다"
     cover: "바닥의 금은 '쥐 발자국'이라 한다"

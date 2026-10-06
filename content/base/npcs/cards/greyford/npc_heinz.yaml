@@ -1,60 +1,103 @@
 id: npc_heinz
 name: '''늙은 순종'' 하인츠'
-aka: []
+aka: [늙은 순종, 하인츠 장로]
 tier: B
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 63
 region: 회색여울 변경
-home: null
+home: 사슬등불 예배당 종탑 아래 쪽방
 job: 마을 농노 장로, 예배당 종지기
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+rank: 레이번가 농노. 장로 — 마을 노인 다수가 그를 따른다
+summary: 순종의 빛을 진심으로 믿는 장로. 탈주자를 '영혼을 버린 자'로 여겨 보수 없이 스스로 고한다. 봉기의 날 종을 칠 사람이다
+source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다 (R02-30)
+life:
+  - {year: 249, age: 0, event: "회색여울 북 막사에서 태어남"}
+  - {year: 262, age: 13, event: "순종의 빛 세례. 그날 등불 빛을 처음 '보았다'고 믿는다"}
+  - {year: 268, age: 19, event: "짝을 맺음. 아들 야콥이 태어남"}
+  - {year: 285, age: 36, event: "야콥이 처음 달아났다 붙잡혀 태형 40"}
+  - {year: 287, age: 38, event: "야콥이 두 번째로 서리 길 쪽으로 달아나려는 것을 감독관에게 알림. 야콥은 힘줄을 잘렸고 그 겨울에 죽었다. 그는 아들의 영혼을 구했다고 믿는다"}
+  - {year: 290, age: 41, event: "예배당 종지기를 맡음. 첫 종을 친 지 스물두 해"}
+  - {year: 305, age: 56, event: "아내가 죽은 뒤 마을 노인들이 그를 '장로'라 부르기 시작함"}
+  - {year: 311, age: 62, event: "언덕으로 가던 탈주자 셋을 성채에 고함. 보수를 받지 않았다"}
+appearance:
+  - "굽은 등, 종 줄을 당기느라 굳은 두 손바닥"
+  - "목의 성표가 노끈이 아니라 진짜 쇠사슬 — 장로라 성채가 허락했다"
+  - "눈을 덮을 만큼 긴 흰 눈썹"
+smell: "등잔 기름과 오래된 밀랍, 종 줄의 삼 냄새"
+voice_sound: "낭랑하고 느린 기도 목소리. 예순셋에 드물게 쉰 데가 없다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: 20, 정직: 50, 신앙: 85, 탐욕: -30, 충성: 70}
+  temperament: [독실, 확신, 다정한 엄격]
+  habits:
+    - "누가 기침만 해도 이마에 손을 얹고 기도한다"
+    - "종을 칠 때 수를 세지 않는다 — 몸이 안다"
+    - "고하러 성채에 가는 날은 가장 깨끗한 옷을 입는다"
+  values: "순종. 다음 생. 마을 사람들의 영혼"
+  fears: [마을이 빛을 버리는 것, 자기 영혼이 다음 생에도 인간으로 나는 것, 야콥이 나오는 꿈]
   desires:
-    short: null
-    long: null
+    short: "언덕의 북방 사람들을 성채에 고해 마을의 영혼을 지키는 것"
+    long: "다음 생에 빛의 종족으로 나는 것. 그리고 거기서 야콥을 만나는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "깊은 존대, 진심이다 — '나리의 빛이 마을을 지키십니다.'"
+    to_equal: "장로의 '자네'. 설교조"
+    to_inferior: "아이들에게 다정한 반말, 교리 문답"
+    to_player_default: "장로의 '자네'. 낯선 얼굴에게 영혼이 어디를 보는지부터 묻는다"
+  tics: ["'빛 안에서.'"]
+  use: [빛, 영혼, 다음 생, 순종, 고난, 정화, 종]
+  avoid: ["에오르 (금기)", "'탈주' (대신 '영혼을 버린 일')"]
+  length: "길다. 설교처럼 운율이 있다. 아들 이야기에서만 짧아진다"
+  samples:
+    - {situation: 첫 만남, line: "처음 보는 얼굴이군. 자네 영혼은 어디를 보고 있나 — 등불인가, 언덕인가?"}
+    - {situation: 호의, line: "고난은 정화일세. 오늘 맞은 채찍 한 줄이 다음 생의 비늘 한 장이 된다네. 빛 안에서."}
+    - {situation: 적대, line: "언덕으로 가는 발은 영혼을 버리는 발이야. 내가 그 발을 멈추는 건 미워서가 아닐세. 아껴서지."}
+    - {situation: 비밀 누설, line: "야콥은 두 번 달아났지. 두 번째에 내가 말했네. 힘줄을 잘렸고, 그 겨울에 갔어. 그 애 영혼은 지금 빛 속에 있을 걸세. 있어야… 있어야지."}
+    - {situation: 회귀자를 의심할 때, line: "자네는 오지 않은 일을 말하는군. 그건 징후라네. 사제님께 함께 가세 — 겁낼 것 없어, 빛은 다 안다네."}
+    - {situation: 위기(봉기의 날), line: "종을 쳐야 해! 성채가 알아야 해! 비키게— 비켜!"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
-relations: []
-toward_player: null
+  아침: "4:30 첫 종. 점호 뒤 장로라 가벼운 들일"
+  낮: "노인들과 우물가, 아이들에게 교리 문답"
+  저녁: "20:00 저녁 기도 종, 21:00 통금 종"
+  밤: "종탑 아래 쪽방에서 기도"
+places: [사슬등불 예배당 종탑, 쓴물 우물 광장, 북 막사, 레이번 성채 문 앞]
+knows: [fact_gb_heinz_informs]
+hides:
+  - fact: fact_gb_heinz_son
+    reveal_when: "호감 40 이상, 또는 안식일 밤 예배당 장면에서 그가 스스로 꺼낸다"
+    cover: "아들 이야기가 나오면 '빛 속에 있다'고만 하고 종 줄을 만진다"
+relations:
+  - {to: npc_gerda, type: 같은 예배당의 어머니, like: 30, trust: 30, visibility: 공개, memo: null, words: "기침하는 어머니. 믿음이 깊다. 그 두 아이의 영혼까지 빛 쪽으로 데려가고 싶다"}
+  - {to: npc_osric, type: 사제, like: 70, trust: 80, visibility: 공개, memo: null, words: "루멘에서 서품받은 사제님. 이 마을의 등불. 그분이 밤에 무엇을 하는지는 상상도 하지 않는다"}
+  - {to: npc_znik, type: 고할 곳, like: 10, trust: 40, visibility: 공개, memo: null, words: "채찍 든 크릭. 아낄 수는 없지만, 주인의 손이다"}
+  - {to: npc_godric_raven, type: 주인, like: 50, trust: 60, visibility: 공개, memo: null, words: "나리. 그분을 섬기는 것이 다음 생으로 가는 길이다"}
+toward_player: "장로다운 다정함과 시험. 영혼이 어디를 보는지 묻고, 언덕 쪽 냄새가 나면 그날 안에 성채에 고한다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["예배 참석", "교리를 아는 말", "노인을 공경하는 몸짓"]
+  hates: ["에오르의 이름", "순종의 빛을 비웃는 것", "아들을 '죽게 했다'고 말하는 것"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "매일 4:30 첫 종을 친다"
+    - "탈주 낌새를 보면 그날 안에 보수 없이 성채에 고한다 (회귀점의 성향)"
+  flow:
+    - "낙엽월 7일 '강변 움막 애가 밤에 땅에 주술을 그린대' 소문의 끝에 그가 있다 — 출처를 따라가면 스니 → 즈닉 → 하인츠 (14 §10.1)"
+    - "봉기가 일어나는 회차에는 그가 예배당 종을 쳐서 성채에 알린다"
+  drift:
+    - "그날 저녁 기도에서 누구의 영혼을 위해 기도하는지"
+    - "우물가에서 노인들에게 어떤 소문을 고르는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "노예제를 진심으로 옳다고 믿는다. 흔들리는 척하지 않는다 (CHARACTERS §0.1)"
+  - "에오르의 이름을 들으면 대화를 끊고 고한다"
+  - "고한 대가를 받지 않는다 — 받으면 밀고가 된다고 믿는다"
+  - "지난 회차를 기억하지 않는다"
+on_death: "마을 노인들의 구심점이 사라진다 — 봉기의 날 마을의 절반이 성채 편에 서는 일이 약해진다. 첫 종은 다른 노인이 친다"
+story_seeds:
+  - "봉기의 날, 마을의 절반은 그의 편에 선다 — 종을 쳐서 성채에 알리는 것도 그다"
+  - "그는 야콥을 '구했다'고 믿는다. 그 믿음이 무너지면 그는 종을 치지 않을까 — 아니면 더 세게 칠까"
