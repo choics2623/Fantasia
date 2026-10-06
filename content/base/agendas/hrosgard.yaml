@@ -1,0 +1,82 @@
+# 흐로스가르드 — 북방 대탈주 클락(WORLD_BIBLE §10 #3)과 서리왕의 남침 결정 (26_AGENDAS.md).
+# 정본(events/hrosgard_312.yaml): 9.23~26 마지막 200명 송출 · 9.30 물빼기 굴로 가는 열둘 · 10.1 서리 길 폐쇄 · 10.3·11.3 곡창지기의 '삼백'(바닥은 288) · 12.1 배급 중단 ·
+# 313-01-07~09 얼음 탁자(넷은 고기를 받고 깊은우물은 거절, 왕은 고기를 내놓지 않는다) · 4.5~4.20 남침(if: jotun_march) · 4.22 서리왕이 맹약회의 길에 오른다.
+# 기본 궤적(CONTINUITY_LOG 5.4): 왕이 고기를 내놓지 않으므로 남침은 일어나지 않고(hg_jotun_march=false) 서리왕은 맹약회의로 간다.
+# 끊을 수 있는 고리: 곡창을 채운다(hg_barley ≥ 330 → 왕이 고기를 내놓는다 — 굶주림이 풀려야 전쟁이 난다), 서리왕을 죽인다(스카디르가 상석에), 곡창지기 브라기, 잉에의 열둘.
+# 까마귀 문(agendas/crow_gate.yaml)이 hg_stragglers·hg_jotun_march를 읽는다.
+vars:
+  hg_famine_years: 4          # 북부 흉작 햇수 (정본 9.20 4년째)
+  hg_fugitives_sent: 0        # 마지막으로 서리 길에 보낸 탈주자 (정본 200)
+  hg_stragglers: 0            # 서리월 1일 전에 닿지 못해 물빼기 굴로 보낸 무리 (정본 12)
+  hg_road_closed: false       # 서리 길 폐쇄 (10.1 ~ 1.10)
+  hg_barley: 288              # 곡창 바닥의 실제 보리(섬) — 곡창지기는 삼백이라 말한다
+  hg_granary_reported: 0      # 곡창지기가 왕에게 보고한 수
+  hg_rations_cut: false       # 굶주림월 배급 중단
+  hg_war_clans: 0             # 얼음 탁자에서 고기를 받은 씨족 (정본 4: 돌팔·바위배·눈늑대가죽·돌무릎)
+  hg_king_meat: false         # 왕이 남침의 고기를 내놓았다
+  hg_jotun_march: false       # 요툰 남침 (월드 플래그 jotun_march와 같은 뜻 — 기본 궤적에서는 꺼져 있다)
+  hg_king_to_oath: false      # 서리왕이 맹약회의(서약섬)로 떠났다
+agendas:
+  - id: ag_hg_asta_send
+    npc: npc_asta
+    goal: 서리월 전 마지막 200명을 서리 길로 보낸다 — 흉작 넷째 해, 먹일 입을 줄인다 (정본 9.23)
+    every: once
+    when: ["alive npc_asta", "var hg_famine_years >= 4", "date >= 312-09-23"]
+    at: {place: hh__stoneknee_huts, from: "22:00", to: "23:59", doing: 마지막 200명 송출 시작 — 첫 열 명이 움막에서 나간다}
+    effects: ["var hg_fugitives_sent = 200", "log 서리땅의 마지막 200명이 서리 길로 나갔다 — 흉작 {hg_famine_years}년째"]
+  - id: ag_hg_inge_twelve
+    npc: npc_hg_inge
+    goal: 서리월 1일 전에 닿지 못할 열둘을 '물빼기 굴로 가라'고 보내고, 다음 날 길을 닫는다 (정본 9.30 · 10.1)
+    every: once
+    when: ["alive npc_hg_inge", "var hg_fugitives_sent >= 200", "date >= 312-09-30"]
+    at: {place: weeping_pass__last_fire, from: "05:00", to: "07:00", doing: 닿지 못할 무리 열둘에게 '물빼기 굴로 가라'고 이른다 — 열둘의 이름은 룬 명단에 적지 않는다}
+    effects: ["var hg_stragglers = 12", "var hg_road_closed = true", "log 잉에가 열둘을 물빼기 굴로 보냈고, 서리월 1일에 서리 길이 닫혔다"]
+  - id: ag_hg_granary_lie
+    npc: npc_hg_bragi
+    goal: 왕이 바닥판에 손을 얹으면 '삼백'이라 말한다 — 바닥에는 288 (정본 10.3)
+    every: once
+    when: ["alive npc_hg_bragi", "alive npc_hrimnir", "date >= 312-10-03"]
+    at: {place: hh_granary_floor, from: "10:00", to: "12:00", doing: 왕이 바닥판을 열어 손을 얹는다 — 자루를 세지 않는다. '삼백입니다'}
+    effects: ["var hg_granary_reported = 300", "log 곡창지기가 왕에게 '삼백'을 말했다 (바닥에는 {hg_barley})"]
+  - id: ag_hg_rations_cut
+    npc: npc_hg_skala
+    goal: 굶주림월 1일 — 솥 열둘이 식는다. 왕비가 자기 몫을 덜고 배급을 끊는다 (정본 12.1)
+    every: once
+    when: ["alive npc_hg_skala", "var hg_barley < 300", "date >= 312-12-01"]
+    at: {place: hh_kitchen, from: "05:00", to: "12:00", doing: 솥 열둘이 식는다 — 왕비가 자기 몫을 덜고 배급을 끊는다}
+    effects: ["var hg_rations_cut = true", "var hg_barley -= 18", "log 굶주림월 배급이 끊겼다 — 곡창에 {hg_barley}섬이 남았다"]
+  - id: ag_hg_ice_table
+    npc: npc_hrimnir
+    goal: 얼음 탁자 셋째 날 — 네 씨족은 고기를 받고, 왕은 곡창이 비어 고기를 내놓지 못한다 (정본 313-01-09)
+    every: once
+    when: ["alive npc_hrimnir", "alive npc_skadir", "date >= 313-01-09"]
+    at: {place: hh_ice_table, from: "08:00", to: "20:00", doing: 얼음 탁자 셋째 날 — 스카디르의 남침 제안에 답한다. 왕은 고기를 내놓지 않는다}
+    effects:
+      - "var hg_war_clans = 4"
+      - "if var hg_barley >= 330: var hg_king_meat = true ; log 얼음 탁자 — 곡창이 찼다 왕이 고기를 내놓았고 남침 안건이 정해졌다"
+      - "else: log 얼음 탁자 — 네 씨족이 고기를 받고 깊은우물이 거절했다. 왕은 고기를 내놓지 않아 남침 안건이 푸른월로 넘어갔다 (곡창 {hg_barley}섬)"
+  - id: ag_hg_king_decides
+    npc: npc_hrimnir
+    goal: 푸른월 — 곡창이 전쟁을 먹일 수 있나, 흰 알이 깨졌다는 소문 앞에서 남침을 정한다 (클락 3 결정)
+    every: once
+    when: ["alive npc_hrimnir", "var hg_war_clans >= 4", "date >= 313-04-05"]
+    at: {place: hh_throne_hall, from: "08:00", to: "14:00", doing: 남침 안건의 마지막 답 — 곡창 바닥판과 흰 알 소문을 함께 저울에 올린다}
+    effects:
+      - "if var hg_king_meat == true: var hg_jotun_march = true ; log 서리왕이 남침을 허락했다 — 돌팔과 돌무릎의 군량 수레가 돌팔 장원에 모인다 (까마귀 문 4.20)"
+      - "else: log 서리왕이 남침을 거두었다 — 곡창 {hg_barley}섬으로는 용 앞에서 굶을 뿐이다. 왕은 맹약회의로 간다"
+  - id: ag_hg_skadir_seizes
+    npc: npc_skadir
+    goal: 왕이 없으면 얼음 탁자 상석에 앉아 푸른월 남침을 스스로 선언한다
+    every: once
+    when: ["alive npc_skadir", "dead npc_hrimnir", "var hg_war_clans >= 4", "date >= 313-04-05"]
+    at: {place: hh_throne_hall, from: "08:00", to: "20:00", doing: 빈 상석에 앉는다 — 고기를 받은 네 씨족이 일어선다}
+    effects: ["var hg_king_meat = true", "var hg_jotun_march = true", "log 서리왕이 없는 전당에서 스카디르가 남침을 선언했다 — 클락 3이 '요툰 남침'으로 간다"]
+  - id: ag_hg_king_departs
+    npc: npc_hrimnir
+    goal: 4.22 곡창 열쇠를 왕비에게 맡기고 맹약회의 313 길에 오른다 — 남침이 켜진 회차에는 가지 않는다 (정본)
+    every: once
+    when: ["alive npc_hrimnir", "date >= 313-04-22"]
+    at: {place: hh_granary, from: "05:00", to: "07:00", doing: 곡창 열쇠를 왕비에게 맡기고 맹약회의 313 길에 오른다}
+    effects:
+      - "if var hg_jotun_march == false: var hg_king_to_oath = true ; log 서리왕이 곡창 열쇠를 왕비에게 맡기고 서약섬 맹약회의로 떠났다"
+      - "else: log 남침이 시작되어 서리왕은 전당을 떠나지 못했다 — 맹약회의의 요툰 자리가 비었다"

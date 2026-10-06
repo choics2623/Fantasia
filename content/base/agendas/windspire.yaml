@@ -1,0 +1,78 @@
+# 바람첨탑(아에리) — 깃털 의회의 맹약회의 대표 선정과 시룬의 회색여울 상공 정찰 (26_AGENDAS.md). 클락 2 맹약회의 313(대표 파견)에 걸린다.
+# 정본(events/windspire_312.yaml): 9.10 시룬의 회색여울 상공 임무 · 10.6 키리에에게 보고 · 10.14 깃털 의회 첫 회(에이로스와 셀레스가 모두 이름을 올린다) · 11.30 하늘만 보는 자들의 줄 거둠 표 ·
+# 313-02-02 하르칸 전령의 서신 통 · 2.6 키리에가 테무르 칸의 서신을 읽는다 · 3.5 표결(셋 대 셋, 키리에의 마지막 한 표) · 4.20 여왕이 아들을 서약섬 맹약회의 대표로 보낸다.
+# 끊을 수 있는 고리: 시룬(보고가 없으면 에이로스 표가 하나 모자라 셀레스가 뽑힌다), 아엘라(줄 거둠 표), 카이르(폭풍깃의 침묵 — 죽으면 에이로스 표가 하나 준다), 하르칸 전령 에르덴.
+vars:
+  ws_sirun_flew: false        # 시룬이 회색여울 상공을 날았다
+  ws_kyrie_informed: false    # 시룬의 보고가 여왕에게 닿았다
+  ws_council_met: false       # 깃털 의회 첫 회 (대표 후보 둘)
+  ws_vote_eiros: 0            # 대표 표결 — 에이로스(땅과 마주 앉자는 쪽)
+  ws_vote_celes: 0            # 대표 표결 — 셀레스(줄을 거두자는 쪽)
+  ws_rope_pull_counted: false # 하늘만 보는 자들의 줄 거둠 표를 센 날
+  ws_letter_delivered: false  # 테무르 칸의 서신 통이 바구니로 올라갔다
+  ws_letter_read: false       # 키리에가 서신을 읽었다 (서진 때 하늘길을 지나게 해 달라는 청)
+  ws_envoy: 0                 # 맹약회의 대표 — 0 미정, 1 에이로스, 2 셀레스
+  ws_envoy_sent: false        # 아에리의 대표가 길에 올랐다
+agendas:
+  - id: ag_ws_sirun_recon
+    npc: npc_ws_sirun
+    goal: 땅 관찰자 수장 — 낙엽월 열흘째 회색여울 상공을 정찰한다 (정본 9.10)
+    every: once
+    when: ["alive npc_ws_sirun", "date >= 312-09-10"]
+    at: {place: ws_scout_ring, from: "05:00", to: "10:00", doing: 정찰 고리에서 날아올라 회색여울 상공으로 간다 — 땅의 불빛을 셈한다}
+    effects: ["var ws_sirun_flew = true", "log 시룬이 회색여울 상공을 날며 땅 위의 사람과 불빛을 줄에 얹었다"]
+  - id: ag_ws_sirun_report
+    npc: npc_ws_sirun
+    goal: 키리에에게 보고한다 — '셋째는 한 번도 위를 올려다보지 않습니다' (정본 10.6)
+    every: once
+    when: ["alive npc_ws_sirun", "var ws_sirun_flew == true", "date >= 312-10-06"]
+    at: {place: ws_high_nest_house, from: "19:00", to: "21:00", doing: 키리에에게 보고한다 — 이름은 적히지 않는다}
+    effects: ["var ws_kyrie_informed = true", "var ws_vote_eiros += 1", "log 여왕이 시룬의 보고를 들었다 — 땅 쪽에서 눈을 떼지 말자는 목소리가 힘을 얻는다"]
+  - id: ag_ws_council_one
+    npc: npc_kyrie
+    goal: 깃털 의회 첫 회 — 맹약회의 313 대표 논의, 에이로스와 셀레스가 모두 이름을 올린다 (정본 10.14)
+    every: once
+    when: ["alive npc_kyrie", "date >= 312-10-14"]
+    at: {place: ws_feather_council, from: "09:00", to: "17:00", doing: 깃털 의회 — 대표 논의 첫 회, 표가 일곱으로 갈린다}
+    effects: ["var ws_council_met = true", "var ws_vote_eiros += 2", "var ws_vote_celes += 2", "log 깃털 의회가 대표 후보로 에이로스와 셀레스를 올렸다 (에이로스 {ws_vote_eiros} · 셀레스 {ws_vote_celes})"]
+  - id: ag_ws_aela_counts
+    npc: npc_ws_aela
+    goal: 하늘만 보는 자들의 저녁 — 줄 거둠 표를 한 번 더 센다 (정본 11.30)
+    every: once
+    when: ["alive npc_ws_aela", "var ws_council_met == true", "date >= 312-11-30"]
+    at: {place: ws_looking_up_nest, from: "17:00", to: "22:00", doing: 줄 거둠 표 셋을 더 센다 — 균열이 보이는 쪽은 아무도 보지 않는다}
+    effects: ["var ws_rope_pull_counted = true", "var ws_vote_celes += 1", "log 하늘만 보는 자들이 줄 거둠 표를 세었다 — 셀레스 쪽이 {ws_vote_celes}표"]
+  - id: ag_ws_letter_delivered
+    npc: npc_ws_erden
+    goal: 하르칸 전령이 서신 통을 줄지기에게 건넨다 (정본 313-02-02)
+    every: once
+    when: ["alive npc_ws_erden", "var hk_letter_sent == true", "date >= 313-02-02"]
+    at: {place: sky_market__basket_lift, from: "10:00", to: "12:00", doing: 테무르 칸의 서신 통을 줄지기에게 건넨다 — 바구니에 실려 올라간다}
+    effects: ["var ws_letter_delivered = true", "log 하르칸 전령이 테무르 칸의 서신을 바구니에 실어 올렸다"]
+  - id: ag_ws_kyrie_reads
+    npc: npc_kyrie
+    goal: 테무르 칸의 서신을 혼자 읽는다 — 서진 때 하늘길을 지나가게 해 달라는 청 (정본 2.6)
+    every: once
+    when: ["alive npc_kyrie", "var ws_letter_delivered == true", "date >= 313-02-06"]
+    at: {place: ws_queen_perch, from: "19:00", to: "21:00", doing: 서신을 혼자 읽는다 — 아래의 불빛 대신 동쪽 초원 쪽을 바라본다}
+    effects: ["var ws_letter_read = true", "log 키리에가 테무르 칸의 하늘길 청을 읽었다 — 답은 대표 손에 맡겨진다 (클락 7)"]
+  - id: ag_ws_vote
+    npc: npc_kyrie
+    goal: 맹약회의 대표 표결 — 마지막 한 표를 쥐고 오래 말하지 않는다 (정본 3.5)
+    every: once
+    when: ["alive npc_kyrie", "var ws_council_met == true", "date >= 313-03-05"]
+    at: {place: ws_feather_council, from: "09:00", to: "17:00", doing: 깃털 의회 — 대표 표결, 키리에가 마지막 한 표를 쥐고 오래 말하지 않는다}
+    effects:
+      - "if dead npc_ws_kair: var ws_vote_eiros -= 1"
+      - "if var ws_vote_celes > var:ws_vote_eiros: var ws_envoy = 2 ; log 표결 — 에이로스 {ws_vote_eiros} 셀레스 {ws_vote_celes}. 줄 거둠 쪽이 이겨 셀레스가 대표로 뽑혔다"
+      - "else: var ws_envoy = 1 ; log 표결 — 에이로스 {ws_vote_eiros} 셀레스 {ws_vote_celes}. 키리에의 마지막 한 표로 에이로스가 대표로 뽑혔다"
+  - id: ag_ws_envoy_departs
+    npc: npc_kyrie
+    goal: 4.20 여왕이 맹약회의 313 아에리 대표를 보낸다 — 아에리가 처음으로 대표를 보낸다 (정본)
+    every: once
+    when: ["alive npc_kyrie", "var ws_envoy >= 1", "date >= 313-04-20"]
+    at: {place: ws_high_nest, from: "05:00", to: "09:00", doing: 맹약회의 313 대표를 보낸다 — 은빛 깃털 한 장을 목에 걸어 준다}
+    effects:
+      - "var ws_envoy_sent = true"
+      - "if var ws_envoy == 1: log 여왕이 아들 에이로스를 서약섬 맹약회의 아에리 대표로 보냈다"
+      - "else: log 여왕이 셀레스를 서약섬 맹약회의 대표로 보냈다 — 에이로스는 남았고 아에리의 말은 '줄을 거두자'가 된다"

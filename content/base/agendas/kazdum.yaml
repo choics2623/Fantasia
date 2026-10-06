@@ -1,0 +1,82 @@
+# 카즈둠 — 깊은 문 클락(WORLD_BIBLE §10 #6)과 서명 대행·개방 안건의 사슬 (26_AGENDAS.md).
+# 정본(events/kazdum_312.yaml): 10.1 네 번째 '다음 회기로' · 12.12 개방 기계 일곱 바퀴 중 여섯 · 313-03-12 그로딘의 '목소리' · 4.15 왕이 맹약회의 길에 오르고 서명 대행 조항 발동 ·
+# 4.16 하그린이 서명 책상 앞에 선다 · 5.20 개방 서명이 있었다면 탐사대가 다섯째 자물쇠 앞에 서고, 봉인 지시가 있었다면 석공이 열한 겹을 새긴다.
+# 끊을 수 있는 고리: 대재판관 우를라(대행 요건 판정), 하그린(서명 책상), 시그룬의 봉인 지시(kz_reseal_ordered), 힐다의 압력(kz_gate_pressure — 낮추면 하그린이 또 미룬다).
+vars:
+  kz_gate_motions: 3          # 힐다의 개방 승인 안건이 '다음 회기로' 넘어간 횟수 (정본 311~312: 세 번)
+  kz_gate_pressure: 0         # 힐다가 서명 책상을 미는 힘 (회기 미룸·기계 시험·그로딘의 '목소리'로 쌓인다)
+  kz_machine_wheels: 4        # 개방 기계의 룬 바퀴 (일곱 중 시험이 끝난 것 — 정본 12.12에 여섯)
+  kz_voice_known: false       # 그로딘이 '목소리' — 다섯째 자물쇠를 열 사람 — 를 말했다
+  kz_king_gone: false         # 왕이 맹약회의 길에 올랐다 (서명 대행 조항 발동)
+  kz_proxy_valid: false       # 돌 법정이 하그린의 대행 요건(맹세 청정)을 판정했다
+  kz_proxy_hagrin: false      # 서명 책상에 하그린이 섰다
+  kz_gate_signed: false       # 대행 서명이 개방 안건에 찍혔다
+  kz_reseal_ordered: false    # 봉인 지시 (시그룬의 석공 열 명을 움직인다 — 플레이어의 열쇠)
+  kz_gate_resealed: false     # 열한 겹 봉인이 시작됐다
+  kz_gate_attempt: false      # 탐사대가 다섯째 자물쇠 앞에 섰다
+agendas:
+  - id: ag_kz_postpone_oct
+    npc: npc_kz_hagrin
+    goal: 10.1 서리월 서명 회기 — 힐다의 개방 승인 안건을 네 번째로 '다음 회기로' 넘긴다 (정본)
+    every: once
+    when: ["alive npc_kz_hagrin", "date >= 312-10-01"]
+    at: {place: dh_signing_hall, from: "06:00", to: "20:00", doing: 서명 회기 — 개방 승인 안건이 네 번째로 '다음 회기로' 넘어간다}
+    effects: ["var kz_gate_motions += 1", "var kz_gate_pressure += 1", "log 개방 승인 안건이 {kz_gate_motions}번째로 '다음 회기로' 넘어갔다 — 힐다는 오빠 쪽을 보았다"]
+  - id: ag_kz_hilda_machine
+    npc: npc_hilda
+    goal: 12.12 두 번째 방문 — 개방 기계의 룬 바퀴 일곱 중 여섯을 시험한다 (정본)
+    every: once
+    when: ["alive npc_hilda", "alive npc_kz_grodin", "date >= 312-12-12"]
+    at: {place: deep_gate__survey_camp, from: "10:00", to: "17:00", doing: 개방 기계 시험 — 다섯째 자물쇠 앞에서 기계가 멈춘다}
+    effects: ["var kz_machine_wheels = 6", "var kz_gate_pressure += 2", "log 개방 기계가 여섯 바퀴까지 돌았고 다섯째 자물쇠 앞에서 멈췄다 — 힐다는 안건을 다시 올릴 근거를 얻었다"]
+  - id: ag_kz_grodin_voice
+    npc: npc_kz_grodin
+    goal: 313-03-12 세 번째 방문 — 다섯째 자물쇠는 사람의 '목소리'로만 열린다고 힐다에게 처음 말한다 (정본)
+    every: once
+    when: ["alive npc_kz_grodin", "var kz_machine_wheels >= 6", "date >= 313-03-12"]
+    at: {place: deep_gate__survey_camp, from: "10:00", to: "17:00", doing: 힐다에게 도면의 '목소리' 한 줄을 처음 꺼낸다}
+    effects: ["var kz_voice_known = true", "var kz_gate_pressure += 2", "log 그로딘이 힐다에게 '목소리' — 다섯째 자물쇠를 열 사람 — 이야기를 꺼냈다"]
+  - id: ag_kz_king_leaves
+    npc: npc_bror
+    goal: 4.15 왕이 맹약회의 313 길에 오른다 — 서명 대행 조항 발동 (정본)
+    every: once
+    when: ["alive npc_bror", "date >= 313-04-15"]
+    at: {place: dh_king_hall, from: "06:00", to: "09:00", doing: 맹약회의 길에 오른다 — 서명 대행 조항이 발동한다}
+    effects:
+      - "var kz_king_gone = true"
+      - "if alive npc_kz_urla: var kz_proxy_valid = true ; log 대재판관 우를라가 하그린의 대행 요건을 '청정'으로 판정했다 — 서랍의 쇠판 세 장이 책상 위로 올라온다"
+      - "else: log 맹세 청정 판정을 내릴 대재판관이 없다 — 대행 요건이 불확실한 채 왕이 떠났다"
+  - id: ag_kz_hagrin_desk
+    npc: npc_kz_hagrin
+    goal: 4.16 서명 대행 첫날 — '대기 중 안건 포함' 조항 앞에서 서명하거나 또 미룬다
+    every: once
+    when: ["alive npc_kz_hagrin", "var kz_king_gone == true", "var kz_proxy_valid == true", "date >= 313-04-16"]
+    at: {place: dh_signing_desk, from: "06:30", to: "18:00", doing: 서명 대행 첫날 — 쇠판 세 장 앞에서 하루를 보낸다}
+    effects:
+      - "var kz_proxy_hagrin = true"
+      - "if var kz_gate_pressure >= 4: var kz_gate_signed = true ; log 하그린이 대행 서명 책상에서 개방 승인 쇠판 세 장에 피 한 방울씩을 찍었다 (힐다의 압력 {kz_gate_pressure})"
+      - "else: var kz_gate_motions += 1 ; log 하그린이 대행 조항 앞에서도 서명하지 않았다 — 안건이 {kz_gate_motions}번째로 미뤄졌다"
+  - id: ag_kz_hilda_takes_desk
+    npc: npc_hilda
+    goal: 대행 요건이 불확실하거나 하그린이 없으면 서명 책상 앞에 직접 선다
+    every: once
+    when: ["alive npc_hilda", "var kz_king_gone == true", "var kz_proxy_hagrin == false", "date >= 313-04-16"]
+    at: {place: dh_king_hall, from: "10:00", to: "18:00", doing: 서명 책상 앞에 선다 — 오빠 대신 쇠판을 자기 손으로 올려놓는다}
+    effects: ["var kz_gate_signed = true", "log 하그린 없이 힐다가 서명 책상을 차지해 개방 승인 쇠판 세 장에 서명했다"]
+  - id: ag_kz_sigrun_reseal
+    npc: npc_kz_sigrun
+    goal: 5.20 봉인 지시가 있으면 석공 열 명으로 열한 겹의 첫 겹을 새긴다 (정본)
+    every: once
+    when: ["alive npc_kz_sigrun", "var kz_reseal_ordered == true", "date >= 313-05-20"]
+    at: {place: deep_gate__bardum, from: "06:00", to: "20:00", doing: 석공 열 명이 열한 겹의 첫 겹을 새기기 시작한다}
+    effects: ["var kz_gate_resealed = true", "log 바르둠 석공들이 열한 겹 봉인의 첫 겹을 새기기 시작했다"]
+  - id: ag_kz_gate_session
+    npc: npc_kz_grodin
+    goal: 5.20 개방 서명이 있었다면 탐사대가 다섯째 자물쇠 앞에 선다 (정본)
+    every: once
+    when: ["alive npc_kz_grodin", "var kz_gate_signed == true", "var kz_gate_resealed == false", "date >= 313-05-20"]
+    at: {place: deep_gate__seal_door, from: "06:00", to: "20:00", doing: 탐사대가 다섯째 자물쇠 앞에 선다 — 크라그가 오른손을 든다}
+    effects:
+      - "var kz_gate_attempt = true"
+      - "if var kz_voice_known == true: log 탐사대가 '목소리'를 데리러 사람을 보냈다 — 깊은 문 클락이 '고동의 각성' 쪽으로 기운다"
+      - "else: log 탐사대가 목소리 없이 다섯째 자물쇠 앞에 섰다 — 기계만 돌고 문은 열리지 않았다"

@@ -1,0 +1,79 @@
+# 하르칸 초원 — 초원 통일 클락(WORLD_BIBLE §10 #7)과 테무르 칸의 서진 (26_AGENDAS.md).
+# 정본(events/harkan_312.yaml): 11.12 철 창날 이백이 반으로 갈라진다(반은 검은바람 천막으로) · 11.28 보르테의 말 값 계산(말 400 = 짐꾼 4,000) · 12.20 키리에에게 하늘길 서신 ·
+# 313-01-20 벡 회합 달리기(검은바람이 반 걸음 비껴 달린다) · 3.17 흰 알 소식으로 서진 날짜를 푸른월로 다시 묶는다 · 4.9 서풍의 날 서진 첫 행군(검은바람의 갈기 자름은 if: blackwind_cuts_strand) · 4.27 사절단 출발.
+# 기본 궤적: 검은바람은 반 걸음 비껴 달리지만 아직 갈라서지 않고, 서진이 시작된다. 끊을 수 있는 고리: 투르가(창날 이백 — 검은바람의 무기가 200을 넘으면 오르두가 갈기를 자른다),
+# 보르테(날짜 계산), 테무르(서신과 행군 명령), 오르두. 바람첨탑(agendas/windspire.yaml)의 에르덴이 hk_letter_sent를 읽는다.
+vars:
+  hk_blackwind_arms: 0        # 검은바람 천막으로 들어간 철 창날 (정본 11.12 — 이백 가운데 절반)
+  hk_porter_levy: 0           # 서진을 위해 보르테가 계산한 짐꾼 (말 400 = 짐꾼 4,000)
+  hk_letter_sent: false       # 키리에에게 하늘길 서신이 떠났다
+  hk_khan_strength: 12        # 칸의 수 — 열 아래로 떨어지면 서진이 비틀거린다 (클락 7)
+  hk_march_set: false         # 서진 날짜가 푸른월로 묶였다
+  hk_west_march: false        # 서진 첫 행군 (서풍의 날)
+  hk_blackwind_cut: false     # 검은바람이 갈기 가닥을 잘라 칸과 갈라섰다
+  hk_envoy_sent: false        # 맹약회의 사절단 출발
+agendas:
+  - id: ag_hk_turga_split
+    npc: npc_hk_turga
+    goal: 같은 수레의 철 창날 이백을 반으로 가른다 — 반은 칸의 천막으로, 반은 검은바람 천막 구석으로 (정본 11.12)
+    every: once
+    when: ["alive npc_hk_turga", "alive npc_hk_orduk", "date >= 312-11-12"]
+    at: {place: khan_ordu__winter_camp, from: "20:00", to: "23:00", doing: 철 창날 이백을 반으로 가른다 — 반은 검은바람 천막 구석으로}
+    effects: ["var hk_blackwind_arms += 100", "log 투르가의 창날 이백 가운데 백이 검은바람 천막 구석으로 갔다 (검은바람의 무기 {hk_blackwind_arms})"]
+  - id: ag_hk_borte_calc
+    npc: npc_hk_borte
+    goal: 서진의 말 값을 계산한다 — 말 사백이면 짐꾼 사천 (정본 11.28)
+    every: once
+    when: ["alive npc_hk_borte", "date >= 312-11-28"]
+    at: {place: khan_ordu__winter_camp, from: "14:00", to: "18:00", doing: 말 값 계산 — 쏙이 외상 매듭 한 가닥을 보르테의 손가락에 감아 건넨다}
+    effects: ["var hk_porter_levy = 4000", "log 보르테의 계산 — 서진에는 말 사백이 필요하고 짐꾼 {hk_porter_levy}이 그 값을 진다"]
+  - id: ag_hk_temur_letter
+    npc: npc_temur
+    goal: 서진 때 하늘길을 지나가게 해 달라는 서신을 아에리 여왕에게 보낸다 (정본 12.20)
+    every: once
+    when: ["alive npc_temur", "alive npc_hk_borte", "date >= 312-12-20"]
+    at: {place: hk_khan_tent, from: "20:00", to: "23:00", doing: 키리에에게 보낼 서신을 칸의 이름으로 봉한다 — 보르테가 문장을 매듭으로 센다}
+    effects: ["var hk_letter_sent = true", "log 테무르 칸이 아에리 여왕 키리에에게 하늘길 서신을 보냈다 — 서신은 바람첨탑 줄내림 장터의 전령 손으로 간다"]
+  - id: ag_hk_bek_run
+    npc: npc_hk_orduk
+    goal: 벡 회합 달리기 — 서진 안건. 칸과 나란히 달리지 않고 반 걸음 비껴 달린다 (정본 313-01-20)
+    every: once
+    when: ["alive npc_hk_orduk", "date >= 313-01-20"]
+    at: {place: hk_council_track, from: "06:00", to: "18:00", doing: 벡 회합 달리기 — 칸과 나란히 달리지 않고 반 걸음 비껴 달린다}
+    effects:
+      - "if var hk_blackwind_arms >= 100: var hk_khan_strength -= 1 ; log 서진 안건이 통과했지만 검은바람이 칸 곁이 아니라 반 걸음 비껴 달렸다 (칸의 수 {hk_khan_strength})"
+      - "else: log 서진 안건이 벡 회합을 통과했고 검은바람이 칸과 나란히 달렸다"
+  - id: ag_hk_egg_news
+    npc: npc_hk_borte
+    goal: 흰 알이 깨졌다는 전령 — 용황의 뒤가 이어지면 서진이 용 앞에서 달리는 길이 된다. 서진 날짜를 푸른월로 다시 묶는다 (정본 3.17)
+    every: once
+    when: ["alive npc_hk_borte", "date >= 313-03-17"]
+    at: {place: hk_khan_tent, from: "08:00", to: "14:00", doing: 흰 알 소식의 전령을 듣고 서진 날짜를 푸른월로 다시 묶는다}
+    effects: ["var hk_march_set = true", "log 흰 알이 깨졌다는 소식에 보르테가 서진 날짜를 푸른월로 다시 묶었다"]
+  - id: ag_hk_west_wind
+    npc: npc_temur
+    goal: 4.9 서풍의 날 — 서진 첫 행군을 명한다 (정본)
+    every: once
+    when: ["alive npc_temur", "date >= 313-04-09"]
+    at: {place: hk_council_track, from: "05:00", to: "19:00", doing: 서풍의 날 — 서진 첫 행군을 명한다. 알탄은 깃발을 올리지 않는다}
+    effects:
+      - "var hk_west_march = true"
+      - "if var hk_march_set == false: var hk_khan_strength -= 2 ; log 보르테의 날짜 계산 없이 서진이 출발했다 (칸의 수 {hk_khan_strength})"
+      - "else: log 서풍의 날 칸이 서진 첫 행군을 명했다 — 클락 7 '통일 칸국의 서진'이 시작됐다 (칸의 수 {hk_khan_strength})"
+  - id: ag_hk_blackwind_cut
+    npc: npc_hk_orduk
+    goal: 서진 첫 날 갈기 가닥을 잘라 바람에 날린다 — 검은바람의 무기가 충분하면 칸과 갈라선다 (정본 플래그 blackwind_cuts_strand)
+    every: once
+    when: ["alive npc_hk_orduk", "var hk_blackwind_arms >= 200", "date >= 313-04-09"]
+    at: {place: hk_council_track, from: "05:00", to: "19:00", doing: 갈기 가닥을 잘라 바람에 날린다 — 옛 바람파가 함께 비껴 달린다}
+    effects:
+      - "var hk_blackwind_cut = true"
+      - "var hk_khan_strength -= 3"
+      - "log 오르두가 갈기를 잘라 칸과 갈라섰다 (칸의 수 {hk_khan_strength})"
+  - id: ag_hk_envoy_leave
+    npc: npc_hk_batu
+    goal: 4.27 맹약회의 사절단 출발 의식 — 바투와 에젤이 칸 앞에서 갈기 가닥을 바꿔 땋는다 (정본)
+    every: once
+    when: ["alive npc_hk_batu", "date >= 313-04-27"]
+    at: {place: hk_khan_tent, from: "18:00", to: "23:59", doing: 맹약회의 사절단 출발 의식 — 휴전 깃발의 매듭을 받는다}
+    effects: ["var hk_envoy_sent = true", "log 바투가 하르칸 사절단을 이끌고 서약섬으로 떠났다 — 길은 그롬 영역을 지난다"]

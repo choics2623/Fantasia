@@ -1,0 +1,82 @@
+# 그롬마르 — 피의 원형장 대축제(태양월 30일)와 백승, 대전쟁군주 도전 (26_AGENDAS.md). 클락 7 초원 통일(하르칸과 맞닿은 말뼈 여울)과 클락 2 맹약회의 313(같은 달)에 걸린다.
+# 정본(events/grommar_312.yaml): 10.11 우르가쉬의 오른쪽 어깨가 한 박자 느리다 · 10.20 오그가 새 투사에게 '하르트의 100승 경기에서 상대의 무기에 금이 가 있게 하라' ·
+# 11.25 소모품이 녹슨 무기 백 자루에 기름을 먹인다 · 12.18 문턱의 정식 대진(승수가 한 칸 오른다) · 313-01-15 피도끼 그라샤의 원정 제안 · 5.29 상대의 칼 점검 ·
+# 5.30 하르트의 100승 도전 → 마라의 시합 → 해 질 녘 그라샤의 도전 → (조건부) 투사 조합 봉기. 승수는 정본 달력에 숫자가 없다 — 이 목표 행동이 정한다.
+# 기본 궤적: 하르트는 금 간 칼 덕에 100승에 닿고, 우르가쉬는 한 박자 느린 어깨로 하루를 버티며 그라샤의 도전을 간신히 막는다. 봉기는 일어나지 않는다(무기 100 < 300).
+# 끊을 수 있는 고리: 오그의 첫 임무(금 간 칼), 우르가쉬의 대련(어깨), 그라샤의 백 투사, 9번 숙소 바닥의 무기(300이 되면 봉기).
+vars:
+  gm_urgash_edge: 10          # 우르가쉬의 날 — 대련·하루 종일의 싸움으로 깎인다 (그라샤의 힘을 넘지 못하면 지킨다)
+  gm_gracha_power: 7          # 피도끼 그라샤의 힘 — 원정 약속과 투사 백으로 오른다
+  gm_hart_wins: 94            # 외팔 하르트의 승수 (정식 대진만 센다 — 정본 문턱 94승)
+  gm_sabotage_planned: false  # 오그가 새 투사에게 첫 임무를 줬다 — 상대 칼에 금
+  gm_blade_cracked: false     # 100승 경기 전날 밤 점검 대장에 오른 '금 간 칼'
+  gm_hart_free: false         # 하르트가 100승에 닿았다 (백승 — 쇠우리에서 풀려난다)
+  gm_arms: 100                # 9번 숙소 바닥 아래의 무기 (11.25 쿠르트의 기름 먹인 백 자루 — 300이 되면 봉기)
+  gm_uprising: false          # 투사 조합 봉기
+  gm_urgash_fell: false       # 우르가쉬가 그라샤의 도전에 쓰러졌다 (새 대전쟁군주)
+agendas:
+  - id: ag_gm_tal_night
+    npc: npc_urgash
+    goal: 탈과의 밤 대련이 한 시간 길어진다 — 오른쪽 어깨가 한 박자 느리다 (정본 10.11)
+    every: once
+    when: ["alive npc_urgash", "date >= 312-10-11"]
+    at: {place: ba_tal_cell, from: "21:00", to: "23:59", doing: 밤 대련이 평소보다 한 시간 길게 이어진다 — 오른쪽 어깨가 한 박자 느리다}
+    effects:
+      - "if alive npc_tal: var gm_urgash_edge -= 1 ; log 우르가쉬의 밤 대련이 길어졌고 오른쪽 어깨가 한 박자 느렸다 (날 {gm_urgash_edge})"
+      - "else: var gm_urgash_edge -= 2 ; log 대련 상대 없이 혼자 선 우르가쉬의 어깨가 굳었다 (날 {gm_urgash_edge})"
+  - id: ag_gm_og_mission
+    npc: npc_gm_og
+    goal: 새 투사에게 첫 임무를 말한다 — '하르트의 100승 경기에서 상대의 무기에 금이 가 있게 하라' (정본 10.20)
+    every: once
+    when: ["alive npc_gm_og", "alive npc_gm_hart", "date >= 312-10-20"]
+    at: {place: ba_dorm1, from: "19:00", to: "22:00", doing: 새 투사에게 첫 임무를 말한다 — 에이다가 국그릇을 내려놓고 문 앞에 선다}
+    effects: ["var gm_sabotage_planned = true", "log 오그가 새 투사에게 하르트의 100승 경기 상대 무기에 금을 내라고 일렀다"]
+  - id: ag_gm_hart_ladder
+    npc: npc_gm_hart
+    goal: 문턱의 정식 대진 — 한 달에 한 번 승수가 한 칸 오른다 (정본 12.18부터)
+    every: "every:30"
+    when: ["alive npc_gm_hart", "var gm_hart_wins < 99", "date >= 312-12-18"]
+    at: {place: ba_arena, from: "13:00", to: "16:00", doing: 문턱의 정식 대진 — 외팔 하르트가 모래에 선다. 크롤이 심판석에서 깃발을 올린다}
+    effects: ["var gm_hart_wins += 1", "log 하르트가 정식 대진을 이겼다 — 승수 {gm_hart_wins}"]
+  - id: ag_gm_gracha_visit
+    npc: npc_gm_gracha
+    goal: 피도끼의 사자가 조련장을 찾아와 원정 이야기를 꺼낸다 — 도끼날 훈련용 투사 백을 값에 얹는다 (정본 313-01-15)
+    every: once
+    when: ["alive npc_gm_gracha", "date >= 313-01-15"]
+    at: {place: ba_gorba_pens, from: "12:00", to: "18:00", doing: 고르바에게 원정 이야기를 꺼낸다 — 투사 백을 값에 얹는다}
+    effects: ["var gm_gracha_power += 1", "log 피도끼 그라샤가 고르바의 조련장에서 투사 백을 얻었다 (그라샤의 힘 {gm_gracha_power})"]
+  - id: ag_gm_weapon_check
+    npc: npc_gm_yala
+    goal: 100승 도전 경기 전날 밤 상대의 칼을 점검해 대장에 한 줄을 적는다 (정본 5.29)
+    every: once
+    when: ["alive npc_gm_yala", "date >= 313-05-29"]
+    at: {place: ba_weapon_room, from: "18:00", to: "23:59", doing: 상대의 칼을 점검한다 — 대장에 한 줄이 적힌다. 크롤이 문 밖에서 의자를 두드린다}
+    effects:
+      - "if var gm_sabotage_planned == true: var gm_blade_cracked = true ; log 점검 대장에 '상대 칼 날밑에 금'이라는 한 줄이 올랐다 — 크롤이 의자를 두드렸지만 칼은 바뀌지 않았다"
+      - "else: log 점검 대장에 이상이 없다고 올랐다"
+  - id: ag_gm_hart_bout
+    npc: npc_gm_hart
+    goal: 5.30 하르트의 100승 도전 경기 — 3만이 숨을 멈춘다 (정본)
+    every: once
+    when: ["alive npc_gm_hart", "var gm_hart_wins >= 99", "date >= 313-05-30"]
+    at: {place: ba_arena, from: "09:00", to: "12:00", doing: 100승 도전 경기 — 심판석 크롤, 상대는 그롬}
+    effects:
+      - "if var gm_blade_cracked == true: var gm_hart_wins = 100 ; var gm_hart_free = true ; log 하르트가 금 간 칼 앞에서 100승에 닿았다 — 문턱이 열린다"
+      - "else: log 하르트가 마지막 한 칸을 넘지 못하고 모래에서 내려왔다 (승수 {gm_hart_wins})"
+  - id: ag_gm_uprising
+    npc: npc_gm_og
+    goal: 9번 숙소 바닥이 열린다 — 무기가 300 이상이면 투사 조합이 봉기한다 (정본 플래그 arena_uprising)
+    every: once
+    when: ["alive npc_gm_og", "var gm_arms >= 300", "date >= 313-05-30"]
+    at: {place: ba_arena, from: "12:00", to: "23:59", doing: 9번 숙소 바닥이 열린다 — 무기가 모래로 올라온다}
+    effects: ["var gm_uprising = true", "log 9번 숙소 바닥에서 무기 {gm_arms}이 올라왔다 — 투사 조합이 모래에서 봉기했다"]
+  - id: ag_gm_gracha_challenge
+    npc: npc_gm_gracha
+    goal: 해 질 녘 그라샤의 도전 — 하루 종일 싸운 우르가쉬가 한 번 더 서서 도전을 받는다 (정본 5.30)
+    every: once
+    when: ["alive npc_gm_gracha", "alive npc_urgash", "date >= 313-05-30"]
+    at: {place: ba_arena, from: "17:00", to: "19:30", doing: 해 질 녘 도전 — 하루 종일 싸운 우르가쉬가 한 번 더 모래에 선다}
+    effects:
+      - "var gm_urgash_edge -= 1"
+      - "if var gm_gracha_power > var:gm_urgash_edge: var gm_urgash_fell = true ; kill npc_urgash ; log 그라샤의 도끼가 우르가쉬를 쓰러뜨렸다 — 새 대전쟁군주의 즉위가 건초월 5일로 잡혔다 (날 {gm_urgash_edge} 대 힘 {gm_gracha_power})"
+      - "else: log 우르가쉬가 한 박자 느린 어깨로 그라샤의 도전을 막았다 — 군주 자리가 간신히 남았다 (날 {gm_urgash_edge} 대 힘 {gm_gracha_power})"

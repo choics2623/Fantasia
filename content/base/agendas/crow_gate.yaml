@@ -1,0 +1,77 @@
+# 까마귀 문 — 카스파르와 레아의 보고, 북문 봉쇄, 탈주자 방관 (26_AGENDAS.md). 클락 3 북방 대탈주(회색여울 쪽 끝)에 걸린다.
+# 정본(events/crow_gate_312.yaml): 10.1 북문 봉쇄(권양기 열쇠를 사령관이 걸어 잠근다) · 10.3 밤 물빼기 굴의 열두 명(카스파르 방관) · 10.4 마그다가 데우고 에다가 넷을 묻는다 ·
+# 10.25 레아가 '카스파르가 탈주자를 방관한다'는 보고서를 우편함에 넣고 10.26 이스멜이 수거 · 313-01-10 북문 재개방 · 4.3 짐꾼 징발 서른 · 4.20 서리왕 남침(if: jotun_march).
+# 사슬의 입구는 흐로스가르드의 잉에(agendas/hrosgard.yaml hg_stragglers = 12). 끊을 수 있는 고리: 잉에(열둘이 오지 않는다), 마그다(열둘이 모두 얼어 죽는다), 레아(보고서 — 방관이 바알카르 책상에 오르는 길), 카스파르.
+vars:
+  cg_gate_closed: false       # 북문 봉쇄 (10.1 ~ 1.10)
+  cg_twelve_in: 0             # 물빼기 굴로 들어온 탈주자 (정본 12 — 흐로스가르드 잉에가 보낸 무리)
+  cg_twelve_alive: 0          # 의무실에서 살아남은 이 (정본: 열둘 가운데 넷은 이미 늦었다)
+  cg_buried: 0                # 이름 없는 돌무더기에 묻힌 이
+  cg_looked_away: false       # 카스파르가 북문 망루를 비우고 굴 쪽을 보지 않았다
+  cg_report_filed: false      # 레아가 방관 보고서를 우편함에 넣었다
+  cg_report_collected: false  # 멜리산드의 전령이 보고서를 가져갔다
+  cg_conscripts: 0            # 푸른월 짐꾼 징발 (정본 30)
+  cg_jotun_battle: false      # 서리왕 남침 — 까마귀 문 전투
+agendas:
+  - id: ag_cg_gate_closed
+    npc: npc_kaspar
+    goal: 서리월 1일 — 권양기 열쇠를 직접 걸어 잠그고 북문을 봉쇄한다 (정본)
+    every: once
+    when: ["alive npc_kaspar", "date >= 312-10-01"]
+    at: {place: cg_north_gate, from: "06:00", to: "07:30", doing: 북문 봉쇄 — 권양기 열쇠를 사령관이 직접 걸어 잠근다}
+    effects: ["var cg_gate_closed = true", "log 까마귀 문 북문이 봉쇄됐다 — 서리 길이 닫혔다"]
+  - id: ag_cg_twelve_wait
+    npc: npc_kaspar
+    goal: 북문 망루에 아무도 세우지 않은 밤 — 물빼기 굴 쪽을 보지 않는다 (정본 10.3, 카스파르 방관)
+    every: once
+    when: ["alive npc_kaspar", "var cg_gate_closed == true", "var hg_stragglers >= 12", "date >= 312-10-03"]
+    at: {place: cg_commander_study, from: "22:30", to: "04:00", doing: 북문 망루에 아무도 세우지 않은 밤 — 불을 끄고 창가에 앉는다}
+    effects: ["var cg_looked_away = true", "var cg_twelve_in = 12", "log 카스파르가 불을 끄고 물빼기 굴 쪽을 보지 않았다 — 서리 길의 열둘이 굴로 들어왔다"]
+  - id: ag_cg_magda_warms
+    npc: npc_cg_magda
+    goal: 굴에서 나온 열둘 가운데 얼어붙은 이들을 몰래 데운다 (정본 10.4)
+    every: once
+    when: ["var cg_twelve_in >= 12", "date >= 312-10-04"]
+    at: {place: cg_infirmary, from: "03:00", to: "09:00", doing: 얼어붙은 이들을 몰래 데운다 — 넷은 이미 늦었다}
+    effects:
+      - "if alive npc_cg_magda: var cg_twelve_alive = 8 ; var cg_buried = 4 ; log 마그다가 열둘을 데웠고 에다가 동사한 넷을 이름 없는 돌무더기에 묻었다 (살아남은 {cg_twelve_alive})"
+      - "else: var cg_buried = 12 ; log 데워 줄 사람이 없어 굴에서 나온 열둘이 모두 얼어 죽었다"
+  - id: ag_cg_lea_report
+    npc: npc_lea
+    goal: "'카스파르가 탈주자를 방관한다'는 보고서를 용주 역참 우편함에 넣는다 (정본 10.25)"
+    every: once
+    when: ["alive npc_lea", "var cg_looked_away == true", "date >= 312-10-25"]
+    at: {place: dp_mailbox, from: "12:00", to: "14:00", doing: 방관 보고서를 우편함에 넣는다 — 은밀랍 봉인}
+    effects: ["var cg_report_filed = true", "log 레아가 '카스파르가 탈주자를 방관한다'는 보고서를 우편함에 넣었다"]
+  - id: ag_cg_ismel_collect
+    npc: npc_dp_ismel
+    goal: 멜리산드의 전령이 방관 보고서가 든 우편함을 비운다 (정본 10.26)
+    every: once
+    when: ["alive npc_dp_ismel", "var cg_report_filed == true", "date >= 312-10-26"]
+    at: {place: dp_mailbox, from: "04:30", to: "06:00", doing: 방관 보고서가 든 우편함을 비우고 바알카르로 떠날 채비를 한다}
+    effects: ["var cg_report_collected = true", "log 이스멜이 방관 보고서를 바알카르로 가져갔다 — 카스파르의 이름이 멜리산드 쪽 책상에 올랐다"]
+  - id: ag_cg_gate_reopen
+    npc: npc_kaspar
+    goal: 해빙월 10일 — 북문을 다시 연다. 서리 길이 열린다 (정본)
+    every: once
+    when: ["alive npc_kaspar", "var cg_gate_closed == true", "date >= 313-01-10"]
+    at: {place: cg_north_gate, from: "05:30", to: "07:00", doing: 북문 재개방 — 권양기가 돌고 서리 길이 열린다}
+    effects: ["var cg_gate_closed = false", "log 까마귀 문 북문이 다시 열렸다 — 서리 길의 첫 손님을 브린야가 이정표에서 맞는다"]
+  - id: ag_cg_conscription
+    npc: npc_cg_gunter
+    goal: 푸른월 짐꾼 징발 명단을 읽는다 — 서리땅에서 행군이 오는 소문의 크기에 따라 (정본 4.3)
+    every: once
+    when: ["alive npc_cg_gunter", "date >= 313-04-03"]
+    at: {place: cg_porter_barracks, from: "06:00", to: "09:00", doing: 푸른월 짐꾼 징발 명단을 읽는다 — 이름마다 막사가 조용해진다}
+    effects:
+      - "if var hg_war_clans >= 4: var cg_conscripts = 30 ; log 서리땅의 네 씨족이 고기를 받았다는 소문에 짐꾼 {cg_conscripts}이 징발됐다"
+      - "else: var cg_conscripts = 10 ; log 짐꾼 열이 징발됐다"
+  - id: ag_cg_jotun_battle
+    npc: npc_kaspar
+    goal: 4.20 서리왕 남침의 날 — 성벽 위 창진과 짐꾼들 (정본 플래그 jotun_march)
+    every: once
+    when: ["alive npc_kaspar", "date >= 313-04-20"]
+    at: {place: cg_wall_walk, from: "04:00", to: "23:00", doing: 성벽 위에서 북쪽을 본다 — 창진과 징발된 짐꾼들이 선다}
+    effects:
+      - "if var hg_jotun_march == true: var cg_jotun_battle = true ; log 서리왕의 남침이 까마귀 문에 닿았다 — 징발된 짐꾼 {cg_conscripts}이 성벽에 섰다"
+      - "else: log 서리 길에서 행군은 오지 않았다 — 북문은 조용했고 짐꾼들은 창진 훈련만 했다"
