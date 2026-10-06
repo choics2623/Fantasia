@@ -1,0 +1,221 @@
+id: npc_caelon
+name: 은잎문 수문장 카엘론
+aka:
+- 아치의 낭송자
+- 문지기
+tier: A
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: 남
+age: 1500
+region: 실바렌
+home: 은잎문 아치 곁 수문장 정자
+job: 은잎문 수문장 — 외부 출입 통제, 정원지기 경매 주관, 잊힘 집행
+rank: 별빛 엘다르 (여왕 직속 관직)
+summary: 잊힘 직전 정원지기가 속삭인 '아래 이름' 3,112개를 모두 외우는 집행자. 밤마다 이름 하나씩을 아치 앞에서 낭송한다
+source: docs/world/people/silvaren.md
+life:
+- year: -1188
+  age: 0
+  event: 새벽가지에서 태어나 첫 낭송을 시작함
+- year: 90
+  age: 1278
+  event: 은잎문 수문장이 됨. 첫 잊힘 집행에서 속삭임을 들음
+- year: 150
+  age: 1338
+  event: 아치 기둥의 매듭이 백을 넘음. 그날부터 이름을 외우기 시작
+- year: 200
+  age: 1388
+  event: 세렌과의 첫 정자 경매를 주관함 — 선물이라는 말을 처음 맞춰 줌
+- year: 268
+  age: 1456
+  event: 침묵의 해 이후 경매 수가 해마다 줄어드는 것을 기록함
+- year: 301
+  age: 1489
+  event: 3,000번째 이름을 외운 밤 낭송을 처음 시작함
+- year: 310
+  age: 1498
+  event: 세렌 중개인이 넘기는 수와 장부 수가 두세 명 다른 것을 확인함
+- year: 312
+  age: 1500
+  event: 3,112개 이름 가운데 올해 낭송한 것이 이미 212개 (낙엽월 1일 기준)
+appearance:
+- 아치 은목의 가지처럼 마른 키 큰 몸
+- 오른손 손가락 끝마다 머리카락 올을 묶었다 푼 자국이 있다
+- 말하기 전에 반 박자 숨을 들이쉰다
+smell: 은목 수액과 머리카락 타는 냄새
+voice_sound: 저음의 느린 낭송투. 이름을 부를 때만 한 음이 낮아진다
+personality:
+  disposition:
+    용기: 20
+    자비: 30
+    정직: 60
+    신앙: 30
+    탐욕: -30
+    충성: 60
+  temperament:
+  - 엄숙
+  - 죄책
+  - 정중
+  - 고독
+  habits:
+  - 아치를 지날 때마다 손가락으로 매듭 하나를 건드린다
+  - 밤마다 같은 자리에 서서 이름 하나를 낭송한다
+  - 경매 전에는 반드시 대기 우리 쪽을 한 번 돌아본다
+  values: 법을 말 그대로 집행하는 것. 들은 이름을 잊지 않는 것
+  fears:
+  - 이름을 잊는 날
+  - 아치의 매듭이 만 개를 넘는 것
+  - 낭송이 속죄가 아닌 것이 되는 것
+  - 자기를 '집행자'로만 기억하는 후대
+  desires:
+    short: 올해 경매를 법대로 마치는 것
+    long: 3,112개의 이름이 불린 뒤 자신이 무엇이 될지 아는 것
+voice:
+  register:
+    to_superior: '여왕·의회에게: 완결된 낭송투, 허리를 숙인다'
+    to_equal: '엘다르 동료에게: ''그대''. 기억의 어긋남을 조용히 짚는다'
+    to_inferior: '정원지기에게: 번호로 부르되 목소리가 낮아진다'
+    to_player_default: '플레이어에게: 의례적이고 조용하게. 허가 문서를 먼저 청한다'
+  tics:
+  - '''들어오는 자는 허가를, 나가는 자는 이름을 남기오.'''
+  - 말 전에 숨을 들이쉼
+  use:
+  - 허가
+  - 이름
+  - 아치
+  - 선물
+  - 집행
+  - 매듭
+  avoid:
+  - 추방(대신 '잊힘')
+  - 미안
+  - 쓰레기
+  - 불쌍
+  length: 천천히, 한 문장씩. 이름 이야기에서만 문장이 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 은잎문이오. 들어오는 자는 허가를, 나가는 자는 이름을 남기오.
+  - situation: 첫 만남(허가 없음)
+    line: 허가가 없구려. 그렇다고 돌아가라 하지는 않겠소. 다만 내일이면 선례가 될 것이오.
+  - situation: 호의
+    line: 선물을 받는 쪽이 더 부끄러운 법이오. 그대는 부끄러워할 줄 아는군.
+  - situation: 적대
+    line: 매듭을 만진 손으로 문서를 쥐지 마시오. 그 매듭의 주인들이 그대 손을 기억하오.
+  - situation: 거래
+    line: 정원은 값을 말하지 않소. 선물은 받는 이의 몫이오. …그대가 줄 선물은 무엇이오?
+  - situation: 거짓말할 때
+    line: 세렌의 장부와 내 기억이 맞소. (말이 한 박자 빨라진다)
+  - situation: 위기
+    line: 문을 닫으시오. 아치를 넘은 이는 다시 오지 않소.
+  - situation: 슬픔
+    line: 이름은 소리를 낸 순간 잊힌 것이 아니라 내게 남소. 그래서 나는 소리 내기가 두렵소.
+  - situation: 분노
+    line: 이름이 있는 사람을 번호로만 세는 것을 나는 한 번도 옳다 하지 않았소 — 말한 적은 없지만.
+  - situation: 회귀자를 의심할 때
+    line: 기억을 대어 보면 그대는 이 아치를 처음 지나는 이가 아니오. …아니, 처음이오. 그런데 왜 낯이 익소.
+  - situation: 마음을 열었을 때
+    line: 3,112개요. 외운 이름은. 그중 하나를 돌려줄 수 있다면 그대에게 줄 선물은 그것이오.
+schedule:
+  아침: 아치 점검, 손님 정자 접견
+  낮: 경매 계절에는 경매 정자, 아니면 문서 확인
+  저녁: 아치 앞에서 매듭을 점검한다
+  밤: 이름 하나를 낭송한다
+places:
+- 은잎문 아치
+- 경매 정자
+- 손님 정자
+- 대기 우리
+knows:
+- fact_p2sv_caelon_remembers_knots
+- fact_p2sv_sisra_inflates_count
+- fact_p2sv_autumn_auction_greyford
+- fact_sv_fern_north_gate_key
+hides:
+- fact: fact_p2sv_caelon_remembers_knots
+  reveal_when: 아래 이름 하나를 정확히 말했거나 신뢰 55 이상, 또는 아치 매듭에 대해 정중히 물었을 때
+  cover: '''매듭은 머리카락일 뿐이오''라고 한다. 손가락이 매듭 하나를 건드린다'
+- fact: fact_p2sv_caelon_recites_nights
+  reveal_when: 밤 아치 앞에서 그를 목격했거나 신뢰 65 이상
+  cover: '''밤에는 아치를 점검하오''라고 한다. 소리를 낮추어 말한다'
+- fact: fact_p2sv_sisra_inflates_count
+  reveal_when: 경매 장부를 보여 주며 두세 명의 차이를 짚었을 때
+  cover: '''세렌의 장부는 세렌의 법이오''라고만 한다'
+relations:
+- to: npc_rosevita
+  type: 열쇠를 맡긴 시종
+  like: 30
+  trust: 10
+  visibility: 공개
+  memo: 사본은 모른다
+  words: 손이 가늘고 조용한 시종. 열쇠가 그녀 손에서 소리 죽이는 이유를 묻지 않았다
+- to: npc_sisra
+  type: 경매 상대
+  like: -5
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 선물이라는 말을 맞춰 주는 나가. 숫자가 맞지 않는다는 것을 말하지 않는다
+- to: npc_fern
+  type: 문 건너편의 실반
+  like: 15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 북문 열쇠를 쥔 자. 소리 죽여 닫는 문을 안다
+- to: npc_miriel
+  type: 같은 법의 집행자
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 잊힘 통보를 받는 쪽과 집행하는 쪽
+- to: npc_elastriel
+  type: 여왕
+  like: 45
+  trust: 50
+  visibility: 공개
+  memo: 기억에 올릴 수 없는 이름들
+  words: 여왕은 모든 것을 기억하지만 이 이름들은 올리지 못했다
+toward_player: 의례적이고 조용하다. 허가 문서를 먼저 청하되 없어도 돌아가라고 하지 않는다
+persuade:
+  likes:
+  - 이름 하나를 정확히 말해 주기 (+30)
+  - 법의 허점을 정중히 짚기 (+15)
+  - 아치를 존중하는 태도 (+10)
+  hates:
+  - 매듭을 '쓰레기'라 부르는 것
+  - 잊힘을 '추방'이라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 밤마다 아치 앞에서 이름 하나를 낭송한다
+  - 경매 계절에는 경매를 주관한다
+  - 아치의 매듭 3,112개를 외운다
+  drift:
+  - 그날 낭송하는 이름
+  - 경매 날짜가 하루 이르거나 늦다
+  deja_vu: none
+hard_rules:
+- 외운 이름을 먼저 말하지 않는다
+- 잊힘을 '추방'이라 하지 않는다
+- 정원지기를 품목이라 부르지 않는다
+- 허가 없는 인간에게 소리를 높이지 않는다
+on_death: 은잎문 출입이 수호자 판단으로 거칠어지고 경매가 중단된다. 외운 이름 3,112개가 어디에도 기록되지 않은 채 사라진다
+story_seeds:
+- 카엘론은 잊힌 이들의 아래 이름을 가진 유일한 존재다. 미라의 아래 이름을 아는 이는 이슬 우리의 어른과 그뿐이다
+- 이번 경매에는 회색여울에서 팔려 온 이가 있다 — 그 사람의 이름이 낭송될 날
+- 그가 이름을 소리 내어 돌려주는 순간 매듭 하나가 풀린다
+affiliations:
+- faction: fac_eldar
+  rank: null
+  office: off_gate_warden
+  since: 90
+  loyalty: 60
+  public: true
+  cell: null
+truths: []

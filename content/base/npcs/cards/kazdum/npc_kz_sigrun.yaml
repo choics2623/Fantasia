@@ -1,0 +1,175 @@
+# 시그룬 맹세지기 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_sigrun
+name: 시그룬 맹세지기
+aka:
+- 바르둠의 못
+- 열한 겹
+- 봉인파
+tier: B
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 여
+age: 290
+region: 카즈둠 산맥
+home: 깊은 문 앞 바르둠 요새 (요새장실)
+job: 바르둠 요새장 — 깊은 문 앞 요새 경비와 석공 열 명의 지휘
+rank: 맹세지기 씨족 방계, 봉인파 수장
+summary: 문이 다시 열릴 날을 서랍 속 보고서로 기다리는 요새장. 석공 열 명을 비밀리에 대기시켜 두고, 요새 경비들이 잠꼬대로 같은 박자를 센다는 보고를 왕궁에 올리지 않았다
+source: docs/world/people/kazdum.md (npc_kz_sigrun)
+life:
+- year: 22
+  age: 0
+  event: 맹세지기 씨족 방계에서 태어남 (AS 22)
+- year: 180
+  age: 158
+  event: 봉인파 수습 석공. 열한 겹의 도면을 처음 봄
+- year: 289
+  age: 267
+  event: 깊은 문 봉인에 석공으로 참여. 마지막 겹을 덧새긴 손
+- year: 301
+  age: 279
+  event: 바르둠 요새장에 오름. 문을 닫아 두는 일을 평생의 맹세로 삼음
+appearance:
+- 키가 작고 단단한 몸, 땋은 수염에 놋 못 열한 개를 꿰었다
+- 요새장 외투 안에 항상 석공 정을 한 자루 지닌다
+- 눈 밑이 거뭇하다 — 박자를 세다 잠을 놓친 사람의 얼굴
+smell: 요새 난로 연기와 차가운 석회, 정에 먹인 기름
+voice_sound: 작고 단호한 목소리. 명령할 때 끝을 짧게 자른다
+personality:
+  disposition:
+    용기: 70
+    자비: 10
+    정직: 85
+    신앙: 65
+    탐욕: -15
+    충성: 85
+  temperament:
+  - 신중
+  - 엄격
+  - 불면
+  habits:
+  - 요새 층계를 오를 때 단 수를 센다 — 박자를 세지 않으려고
+  - 서랍을 열기 전에 장갑부터 벗는다
+  - 경비 잠꼬대 보고를 받으면 말없이 서랍에 넣고 손을 닦는다
+  values: 닫는 것이 지키는 것이다. 닫을 준비는 닫는 일의 절반이다
+  fears:
+  - 서명하는 날 하루 안에 열한 겹을 못 덮는 것
+  - 경비들의 잠꼬대가 하나의 박자로 맞아 가는 것
+  - 아래층 예배당의 신도들이 요새를 안에서 흔드는 것
+  desires:
+    short: 왕이 봉인 재가동에 서명하는 날 하루 안에 열한 겹을 덧새기는 것
+    long: 크라그의 왼손이 어깨에 닿기 전에 그의 후임 자리에 앉는 것
+voice:
+  register:
+    to_superior: 왕·족장에게는 하오체
+    to_equal: 요새 장교에게는 하게체
+    to_inferior: 경비·석공에게는 짧은 해라체
+    to_player_default: 인간 손님에게는 '손님'이라 부르고 증표를 먼저 본다
+  tics:
+  - '''(층계 수를 센다) 일곱.'''
+  - '''규정이다.'''
+  use:
+  - 요새
+  - 규정
+  - 층계
+  - 겹
+  - 석공
+  - 서랍
+  avoid:
+  - 박자
+  - 소리
+  - 열다
+  length: 짧다. 요새 이야기는 길다
+  samples:
+  - situation: 첫 만남
+    line: 여기는 요새다. 방문 증표를 보이고 요새 바닥에는 귀를 대지 마라.
+  - situation: 호의
+    line: 물 한 잔 들겠나. 요새는 맥주를 쓰지 않는다. 맥주는 박자를 느슨하게 한다.
+  - situation: 거절
+    line: 그 층계는 안내하지 않는다. 안내하지 않는 이유는 말하지 않는다. 그것도 규정이다.
+  - situation: 위기
+    line: 석공 열을 불러라! 열한 겹이다, 하루 안에! 서명은 내가 받아 온다!
+  - situation: 비밀 누설
+    line: 경비들이 잠꼬대로 센다. 하나, 둘, 하나, 둘 — 같은 박자로. 그 보고는 서랍에 있다.
+schedule:
+  아침: 요새 점호와 석공 열 명의 점검 — 이름을 부르지 않고 번호만 센다
+  낮: 요새 층별 순시 — 아래층 예배당 앞은 지나간다
+  저녁: 서랍을 열어 봉인 룬 열한 겹의 도면을 한 번 본다
+  밤: 밤 순시 — 요새 바닥에 귀를 대지 않는다
+places:
+- 바르둠 요새
+- 요새장실
+- 창백한 예배당 입구
+- 봉인 문 앞
+knows:
+- fact_kz_pulse_faster_311
+- fact_kz_gate_reopening
+- fact_kz_seal_reason
+hides:
+- fact: fact_p2kz_sigrun_reseal_crew
+  reveal_when: 신뢰 50 이상이고 봉인 이야기가 법정 문구가 아닌 실행 방법으로 나왔을 때
+  cover: '''요새 정비 인원''이라고만 한다'
+- fact: fact_p2kz_sigrun_hears_pulse
+  reveal_when: 신뢰 60 이상이거나 경비 잠꼬대 보고서를 보았을 때
+  cover: 서랍을 닫고 장갑을 낀다
+relations:
+- to: npc_kz_krag
+  type: 문지기 대장
+  like: 35
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 봉인파 동지. 그의 후임으로 지목되고 있다
+- to: npc_deep_nidar
+  type: 요새 아래층 사제
+  like: -45
+  trust: -40
+  visibility: 공개
+  memo: null
+  words: 같은 요새의 위층과 아래층, 마주치면 인사만 한다
+- to: npc_kz_grodin
+  type: 탐사대장
+  like: -35
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 자물쇠를 푸는 사람, 맹세지기 입장에서 가장 큰 불안
+- to: npc_kz_urla
+  type: 대재판관
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 같은 씨족 어른
+toward_player: 냉정하나 정직하다. 문 쪽 이야기가 아닌 사람은 환대한다
+persuade:
+  likes: 석공 열 명의 일을 법정 문구로 보호하는 안(+25)
+  hates: 경비 잠꼬대를 증언할 의사(+20)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 제작-석공(상한 55)을 요새 석공장에서 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: off_bardum_commander
+  since: 301
+  loyalty: 85
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 서랍 속 경비 잠꼬대 보고서가 있다
+  drift:
+  - 그날 요새 난로 위의 물주전자 수
+  - 석공 열 명의 이름 중 몇이 자리에 있는가
+  deja_vu: none
+hard_rules:
+- 박자라는 낱말을 입에 올리지 않는다
+- 석공 열 명의 이름을 밖에 말하지 않는다
+on_death: 봉인 재가동 석공대가 지휘를 잃어 서명 당일 봉인이 늦는다. 요새 아래층 신도들이 요새를 흔들 여지가 커진다.
+story_seeds:
+- 열한 겹을 덮는 데 필요한 건 서명 한 줄과 하루다. 그 하루를 줄이거나 늘릴 사람은 탐사대장이다.
+- 경비 잠꼬대의 박자는 장부의 박자와 맞는다. 요새장의 서랍이 장부의 증거가 된다.

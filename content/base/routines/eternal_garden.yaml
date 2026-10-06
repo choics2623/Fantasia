@@ -1,0 +1,235 @@
+# 실바렌 영원 정원 NPC 일과 (24 §3). 원천: 각 카드의 schedule, docs/world/people/silvaren.md, REGIONS §5.5.
+# 장소 id는 settlements/eternal_garden.yaml 의 eg_* 와 outer(silver_leaf_gate*, soul_garden*, eternal_garden__silver_forest).
+# 새벽 05:00-05:50 '첫 아침의 노래'는 모든 엘다르·정원지기가 멈추는 정본 시각이다 (fixed). 쉼표가 든 값은 큰따옴표로.
+# presence/away: 나엘리스는 서리월 말까지 정원, 긴밤월부터는 잿빛 탑(원로 겸임).
+# days: all | workday | sabbath | odd | even | weekday:[1..6] | monthday:[..]
+
+npc_elastriel:
+  home: eg_root_chamber
+  blocks:
+    - {days: all, from: "23:00", to: "04:30", at: eg_root_chamber, doing: "신살 전의 기억을 되풀이한다 — 눈을 뜬 채 쉰다"}
+    - {days: all, from: "04:30", to: "05:00", at: eg_root_chamber, doing: "새벽 노래를 위해 자리를 고른다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 독창. 엘다르 전원이 듣는다", fixed: true}
+    - {days: all, from: "06:00", to: "13:00", at: eg_root_chamber, doing: "기억 속을 걷는다 — 거의 움직이지 않는다"}
+    - {days: workday, from: "13:00", to: "15:00", at: eg_ring_hall, doing: "의회가 정지에 빠졌을 때만 낭송한다 (거의 오지 않는다)", alt: {p: 0.9, at: eg_root_chamber, doing: "기억 속을 걷는다"}}
+    - {days: all, from: "17:00", to: "17:15", at: eg_root_chamber, doing: "이실레아와의 접견 15분"}
+    - {days: all, from: "17:20", to: "17:35", at: eg_root_chamber, doing: "아에린과의 접견 15분"}
+    - {days: all, from: "17:40", to: "17:55", at: eg_root_chamber, doing: "실바누스와의 접견 15분"}
+    - {days: all, from: "19:00", to: "20:30", at: eg_dawn_lake, doing: "호수를 비춘다 — 물을 휘젓지 않는다"}
+    - {days: all, from: "20:30", to: "23:00", at: eg_root_chamber, doing: "신살 전의 기억을 되풀이한다"}
+npc_aerin:
+  home: soul_garden__greenhouse_7
+  blocks:
+    - {days: all, from: "22:30", to: "04:30", at: soul_garden__greenhouse_7, doing: "잔다 — 브로치를 만지작거린다"}
+    - {days: all, from: "04:30", to: "05:50", at: soul_garden__patient_pavilion, doing: "새벽 노래를 피험자 정자에서 듣는다 — 새싹들을 둘러본다", fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: soul_garden__graft_beds, doing: "접목 침대를 돌보며 상냥하게 말을 건다"}
+    - {days: workday, from: "13:00", to: "15:00", at: soul_garden__crystal_columns, doing: "수정 기둥 사이에서 시간의 그물을 점검한다"}
+    - {days: workday, from: "15:00", to: "17:00", at: eg_dew_library, doing: "이슬 서고에서 선례를 대조한다", alt: {p: 0.3, at: soul_garden__greenhouse_7, doing: "온실 7동에서 기록을 정리한다"}}
+    - {days: all, from: "17:00", to: "19:00", at: eg_root_chamber, doing: "여왕 접견 15분 뒤 호수를 걷는다"}
+    - {days: all, from: "19:30", to: "22:00", at: soul_garden__greenhouse_7, doing: "온실 7동 '빈 요람' 곁에서 새싹들의 기록을 쓴다"}
+npc_silvanus:
+  home: eg_silvanus_tower
+  blocks:
+    - {days: all, from: "04:00", to: "05:00", at: eg_silvanus_tower, doing: "별을 마저 센다 — 석반 위의 증거 문서를 만진다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_quiet_wood, doing: "첫 아침의 노래를 숲에서 듣는다 — 부르지 않는다", fixed: true}
+    - {days: all, from: "07:00", to: "12:00", at: eg_quiet_wood, doing: "말을 하지 않는 엘다르들과 숲을 걷는다"}
+    - {days: workday, from: "13:00", to: "15:00", at: eg_ring_hall, doing: "고리의 의회 — 순혈파 입장을 한 마디로 말한다", alt: {p: 0.5, at: eg_quiet_wood, doing: "의회에 가지 않고 숲에 머문다"}}
+    - {days: all, from: "15:00", to: "19:00", at: eg_quiet_wood, doing: "잠든 나무와 마른 숲의 이름표를 살핀다", alt: {p: 0.3, at: eg_grave_wood, doing: "마른 숲의 이름표를 닦는다"}}
+    - {days: all, from: "19:00", to: "20:00", at: eg_dew_pens, doing: "저녁 낭독 — 데인의 낭독을 듣는다 (데인은 아들인 줄 모른다)", alt: {p: 0.4, at: eg_silvanus_tower, doing: "낭독을 석탑에서 혼자 듣는다"}}
+    - {days: all, from: "22:00", to: "04:00", at: eg_silvanus_tower, doing: "매일 밤 별을 센다 — 가장 먼저 모자란 별을 찾는다"}
+npc_dane:
+  home: eg_dew_pens
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: eg_dew_pens, doing: "잔다 — 머리카락으로 눈을 가린 채"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}
+    - {days: workday, from: "08:30", to: "12:00", at: eg_terraces_upper, doing: "엘다르 앞에서 시를 낭독한다 — 글자는 볼 수 없다고 한다"}
+    - {days: all, from: "13:00", to: "14:00", at: eg_dew_mess, doing: "점심 — 이슬 우리 어른들 곁에서"}
+    - {days: workday, from: "14:30", to: "18:00", at: eg_terraces_lower, doing: "낭독 시중 — 물과 수건", alt: {p: 0.25, at: eg_dew_library, doing: "서고 앞에서 이벨린이 읽어 주는 한 줄을 기다린다"}}
+    - {days: all, from: "19:00", to: "20:00", at: eg_dew_pens, doing: "저녁 낭독 — 실바누스 앞에서 시를 읽는다"}
+    - {days: all, from: "20:00", to: "21:30", at: eg_silent_stump, doing: "그루터기 쪽지를 확인한다 (홈의 수를 센다)", alt: {p: 0.5, at: eg_dew_bath, doing: "목욕 연못에서 혼자 앉는다"}}
+npc_liandel:
+  home: eg_child_pavilion
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: eg_child_pavilion, doing: "잔 척한다 — 인간 노래를 몰래 연습한다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 여왕 곁에서 부른다", fixed: true}
+    - {days: all, from: "06:30", to: "08:00", at: eg_root_chamber, doing: "여왕과 아침"}
+    - {days: all, from: "08:00", to: "12:00", at: eg_child_pavilion, doing: "엘다르 교사 넷의 '기억 수업'"}
+    - {days: workday, from: "12:00", to: "13:00", at: eg_child_pavilion, doing: "점심 — 어머니 이실레아와 함께"}
+    - {days: all, from: "13:30", to: "17:30", at: eg_child_pavilion, doing: "호수를 보며 숙제를 한다", alt: {p: 0.4, at: eg_white_fence, doing: "몰래 흰 울타리로 간다 — 데인을 찾는다"}}
+    - {days: all, from: "18:00", to: "20:00", at: eg_dew_pens, doing: "몰래 이슬 우리 마당에서 노래를 배운다", alt: {p: 0.5, at: eg_child_pavilion, doing: "정자에서 손바닥을 맞부딪친다"}}
+npc_mira:
+  home: soul_garden__greenhouse_2
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: soul_garden__patient_pavilion, doing: "피험자 정자에서 잔다 — 이름이 조금씩 비어 간다"}
+    - {days: all, from: "05:00", to: "05:50", at: soul_garden__patient_pavilion, doing: "새벽 노래를 듣는다", fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: soul_garden__greenhouse_2, doing: "온실 2동 정원 손질"}
+    - {days: all, from: "13:00", to: "14:00", at: soul_garden__patient_pavilion, doing: "점심 — 흰 빵과 꿀"}
+    - {days: workday, from: "15:00", to: "17:00", at: soul_garden__graft_beds, doing: "접목 침대 곁에서 상태를 살핀다"}
+    - {days: all, from: "17:30", to: "20:00", at: soul_garden__patient_pavilion, doing: "정자에서 숫자를 센다 — 서리월 9일까지"}
+npc_fern:
+  home: eg_north_gate
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_north_gate, doing: "첫 아침의 노래 — 북문 곁에서 듣는다", fixed: true}
+    - {days: all, from: "06:00", to: "12:00", at: eg_white_fence, doing: "흰 울타리 길을 돌며 정원지기 수를 센다"}
+    - {days: all, from: "12:00", to: "14:00", at: eg_north_gate, doing: "북문 초소 — 열쇠를 쥐고 앉는다"}
+    - {days: all, from: "14:00", to: "18:00", at: eg_white_fence, doing: "울타리 점검 — 문을 소리 없이 닫는다"}
+    - {days: all, from: "18:00", to: "20:00", at: eg_dew_pens, doing: "점호 — 수를 센다"}
+    - {days: all, from: "21:00", to: "04:30", at: eg_north_gate, doing: "북문 초소에서 쉰다 — 씨앗을 주는 사람이 오면 열쇠를 푼다", alt: {p: 0.1, at: eg_silent_stump, doing: "북문 밖 그루터기를 살핀다"}}
+npc_aeric:
+  home: eg_silent_stump
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_silent_stump, doing: "새벽 노래를 듣는다 — 한 마디도 부르지 않는다", fixed: true}
+    - {days: all, from: "06:00", to: "12:00", at: eg_silent_stump, doing: "그루터기에 앉는다 — 말없이"}
+    - {days: all, from: "12:00", to: "14:00", at: eg_silent_stump, doing: "쪽지가 도착하는 시각 — 홈을 하나씩 읽는다"}
+    - {days: workday, from: "14:00", to: "17:00", at: eg_dew_restoration, doing: "복원실에서 이벨린의 초본을 말없이 읽는다", alt: {p: 0.6, at: eg_silent_stump, doing: "그루터기에 머문다"}}
+    - {days: all, from: "20:00", to: "04:30", at: eg_silent_stump, doing: "나이테 사이 홈에 손톱을 댄다 — 아홉 개째 이후"}
+npc_miriel:
+  home: eg_steward_office
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: eg_steward_office, doing: "기억 속에서 오늘의 정지를 대조한다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 서서 부른다", fixed: true}
+    - {days: all, from: "06:00", to: "08:30", at: eg_steward_office, doing: "정원지기 점호 보고를 받는다 — 번호를 센다", fixed: true}
+    - {days: workday, from: "09:00", to: "13:00", at: eg_steward_office, doing: "정지 기록과 이송 장부를 쓴다 — 서명은 하지 않는다"}
+    - {days: workday, from: "14:00", to: "17:00", at: eg_terraces_lower, doing: "정원지기 작업 현장을 돌며 번호를 확인한다", alt: {p: 0.3, at: eg_steward_office, doing: "장부를 다시 읽는다"}}
+    - {days: all, from: "18:00", to: "20:00", at: eg_dawn_lake, doing: "호숫가를 걷는다"}
+    - {days: all, from: "20:00", to: "21:30", at: eg_steward_office, doing: "내일의 이송 일정을 정리한다"}
+npc_caelon:
+  home: silver_leaf_gate
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: silver_leaf_gate__arch, doing: "첫 아침의 노래를 아치 앞에서 듣는다", fixed: true}
+    - {days: all, from: "06:00", to: "08:00", at: silver_leaf_gate__arch, doing: "아치와 매듭을 점검한다"}
+    - {days: all, from: "08:00", to: "12:00", at: silver_leaf_gate__guest_pavilion, doing: "손님 정자에서 접견 — 허가 문서를 확인한다"}
+    - {days: all, from: "12:00", to: "18:00", at: silver_leaf_gate, doing: "은잎문 출입을 통제한다 — 경매 계절에는 경매 정자로 간다", alt: {p: 0.2, at: silver_leaf_gate__auction, doing: "경매 준비를 점검한다"}}
+    - {days: all, from: "18:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "손님 정자에서 문서를 정리한다"}
+    - {days: all, from: "23:00", to: "23:50", at: silver_leaf_gate__arch, doing: "이름 하나를 낭송한다 — 같은 이름을 두 번 부르지 않는다", fixed: true}
+npc_loren:
+  home: eg_dew_pens
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: eg_dew_pens, doing: "잔다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}
+    - {days: all, from: "06:00", to: "08:30", at: eg_terraces_lower, doing: "이슬 단지를 점검한다 — 열둘"}
+    - {days: workday, from: "09:00", to: "13:00", at: eg_terraces_lower, doing: "작업 감독 — 아이들의 음 하나를 확인한다"}
+    - {days: all, from: "13:00", to: "14:00", at: eg_dew_mess, doing: "점심"}
+    - {days: workday, from: "14:00", to: "18:00", at: eg_orchard, doing: "과수원 일을 감독한다", alt: {p: 0.3, at: eg_terraces_lower, doing: "수로 청소를 감독한다"}}
+    - {days: all, from: "18:30", to: "20:00", at: eg_dew_mess, doing: "식당 아궁이 곁 — 에이다와 낮게 음을 맞춘다"}
+    - {days: all, from: "20:00", to: "21:30", at: eg_dew_pens, doing: "숙소 마당에서 아이들 음을 점검한다"}
+npc_rosevita:
+  home: silver_leaf_gate__guest_pavilion
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: silver_leaf_gate__arch, doing: "첫 아침의 노래 — 아치 곁에서 무릎 꿇는다", fixed: true}
+    - {days: all, from: "06:30", to: "09:00", at: silver_leaf_gate__holding_pen, doing: "대기 우리를 점검한다 — 새 손님에게 흰 빵을 건넨다"}
+    - {days: all, from: "09:00", to: "17:00", at: silver_leaf_gate__guest_pavilion, doing: "카엘론의 시종 일 — 손님 정자 시중"}
+    - {days: all, from: "17:00", to: "20:00", at: silver_leaf_gate__holding_pen, doing: "저녁 빵을 건넨다 — 우리 문 열쇠를 확인한다"}
+    - {days: all, from: "22:00", to: "23:00", at: silver_leaf_gate__holding_pen, doing: "경매 전날이면 한 시간 문을 연다 — 아니면 열쇠를 닦는다"}
+    - {days: all, from: "23:00", to: "04:30", at: silver_leaf_gate__guest_pavilion, doing: "잔다"}
+npc_isilea:
+  home: eg_princess_house
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: eg_princess_house, doing: "기억 속을 걷는다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 리안델 곁에서 부른다", fixed: true}
+    - {days: all, from: "06:30", to: "08:00", at: eg_root_chamber, doing: "리안델과 아침"}
+    - {days: workday, from: "13:00", to: "18:00", at: eg_ring_hall, doing: "고리의 의회 — 맹약회의 313 준비 낭송"}
+    - {days: all, from: "18:00", to: "20:00", at: eg_princess_house, doing: "흰 알 섭정안 초안을 고친다"}
+    - {days: all, from: "20:30", to: "21:30", at: eg_child_pavilion, doing: "아이의 정자 앞을 걷는다 — 들어가지 않는다"}
+npc_naelis:
+  home: eg_dew_house
+  presence:
+    - {from: "312-09-01", to: "312-10-30"}
+  away: {at: grey_tower, doing: "잿빛 탑에서 원로 일을 본다 — 정원에 없다"}
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래", fixed: true}
+    - {days: all, from: "07:00", to: "12:00", at: eg_dew_house, doing: "두루마리를 확인한다"}
+    - {days: workday, from: "13:00", to: "16:00", at: eg_dew_library, doing: "예지 조각 해석 — 이벨린에게 서고를 맡긴다"}
+    - {days: all, from: "18:00", to: "20:00", at: eg_dawn_lake, doing: "호숫가에서 수정을 비춰 본다"}
+    - {days: all, from: "21:00", to: "04:30", at: eg_dew_house, doing: "쉰다 — 소매 속 수정을 굴린다"}
+npc_ibelin:
+  home: eg_dew_library
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래", fixed: true}
+    - {days: all, from: "06:30", to: "08:00", at: eg_dew_library, doing: "서고 문을 연다 — 두루마리 점검"}
+    - {days: workday, from: "08:00", to: "13:00", at: eg_dew_library, doing: "두루마리 정리 — 문 앞 인간에게 한 줄을 읽어 준다"}
+    - {days: workday, from: "14:00", to: "18:00", at: eg_dew_restoration, doing: "복원실 — 두루마리를 이어 붙인다", alt: {p: 0.2, at: eg_dew_library, doing: "서고 방문자를 응대한다"}}
+    - {days: all, from: "19:00", to: "23:30", at: eg_dew_restoration, doing: "초본의 손 기호를 이어 붙인다", fixed: true}
+    - {days: all, from: "23:30", to: "04:30", at: eg_dew_library, doing: "서고 곁 방에서 쉰다"}
+npc_fionael:
+  home: soul_garden__greenhouse_2
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: soul_garden__greenhouse_2, doing: "꿈을 기록한다 — 손톱으로 종이에"}
+    - {days: all, from: "05:00", to: "05:50", at: soul_garden__patient_pavilion, doing: "새벽 노래를 듣는다", fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: soul_garden__graft_beds, doing: "접목 침대 점검 — 피험자 상태 기록"}
+    - {days: workday, from: "13:00", to: "17:00", at: soul_garden__greenhouse_2, doing: "온실 2동 연구실", alt: {p: 0.2, at: eg_dew_library, doing: "이슬 서고에서 이벨린에게 꿈의 기록을 건넨다"}}
+    - {days: all, from: "18:00", to: "22:00", at: soul_garden__greenhouse_3, doing: "온실 3동 곁을 걷는다 — 이세가 묻힌 자리"}
+npc_varendil:
+  home: eg_grave_wood
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_grave_wood, doing: "첫 아침의 노래를 나무 곁에서 듣는다", fixed: true}
+    - {days: all, from: "06:00", to: "09:00", at: eg_grave_wood, doing: "이름표를 닦는다 — 해 뜰 때 하나를 새로 읽는다"}
+    - {days: all, from: "09:00", to: "17:00", at: eg_quiet_wood, doing: "고목 가지 거처에서 일한다", alt: {p: 0.3, at: eg_grave_wood, doing: "잠든 나무 곁을 돈다"}}
+    - {days: all, from: "19:00", to: "22:00", at: eg_silvanus_tower, doing: "실바누스의 석탑에서 시중든다"}
+    - {days: all, from: "22:00", to: "04:30", at: eg_grave_wood, doing: "기억 속을 걷는다"}
+npc_isalion:
+  home: eg_light_house
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래", fixed: true}
+    - {days: all, from: "07:00", to: "12:00", at: eg_light_house, doing: "루멘에서 온 문서를 확인한다 — 걸러서 올린다"}
+    - {days: workday, from: "13:00", to: "17:00", at: eg_ring_hall, doing: "고리의 의회 참석", alt: {p: 0.4, at: eg_light_house, doing: "거처에서 낭송 준비를 한다"}}
+    - {days: all, from: "18:00", to: "21:00", at: eg_dawn_lake, doing: "호숫가를 걷는다"}
+    - {days: all, from: "21:00", to: "04:30", at: eg_light_house, doing: "쉰다 — 원본을 손으로만 만진다"}
+npc_ilvanor:
+  home: eg_quiet_wood
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_quiet_wood, doing: "숲에서 새벽 노래를 듣는다 — 부르지 않는다", fixed: true}
+    - {days: all, from: "07:00", to: "18:00", at: eternal_garden__silver_forest, doing: "은목 숲 경계를 말없이 돈다", outdoor: true, rain: {at: eg_quiet_wood, doing: "화살대를 다듬는다"}}
+    - {days: all, from: "19:00", to: "21:00", at: eg_quiet_wood, doing: "화살대를 다듬는다"}
+    - {days: all, from: "22:00", to: "04:00", at: eg_white_fence, doing: "서쪽 길을 확인한다", alt: {p: 0.4, at: eg_quiet_wood, doing: "숲에서 쉰다"}}
+npc_erlan:
+  home: eg_guardian_post
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_guardian_post, doing: "첫 아침의 노래 — 초소 앞에서 서서 부른다", fixed: true}
+    - {days: all, from: "06:30", to: "13:00", at: eg_terraces_upper, doing: "정원 길을 돌며 어긋난 자를 살핀다"}
+    - {days: workday, from: "14:00", to: "17:00", at: eg_terraces_lower, doing: "정원지기 작업 현장 순찰", alt: {p: 0.3, at: eg_guardian_post, doing: "초소에서 정지 기록을 정리한다"}}
+    - {days: all, from: "17:00", to: "19:00", at: eg_steward_office, doing: "정지 집행 기록을 미리엘에게 올린다"}
+    - {days: all, from: "20:00", to: "04:30", at: eg_guardian_post, doing: "초소에서 쉰다"}
+npc_ada:
+  home: eg_dew_mess
+  blocks:
+    - {days: all, from: "04:00", to: "05:00", at: eg_dew_mess, doing: "아궁이에 불을 지핀다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}
+    - {days: all, from: "06:00", to: "13:00", at: eg_dew_mess, doing: "세 끼를 차려 낸다 — 아이들을 눈으로 센다"}
+    - {days: all, from: "13:00", to: "15:00", at: eg_dew_mess, doing: "점심을 차려 내고 아궁이 곁에 앉는다"}
+    - {days: all, from: "15:00", to: "19:00", at: eg_dew_pens, doing: "이슬 우리 마당 볕에 앉는다 — 아이들 곁에서"}
+    - {days: all, from: "19:00", to: "21:00", at: eg_dew_hearth, doing: "아궁이 돌 뒤 판을 확인한다 — 로렌과 낮게 음을 맞춘다"}
+    - {days: all, from: "21:00", to: "03:30", at: eg_dew_pens, doing: "잔다"}
+npc_wren:
+  home: eg_dew_pens
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 어른 곁에 무릎 꿇는다", fixed: true}
+    - {days: workday, from: "06:30", to: "11:30", at: eg_terraces_lower, doing: "풀잎 이슬 줍기", outdoor: true}
+    - {days: all, from: "13:00", to: "14:00", at: eg_dew_mess, doing: "점심"}
+    - {days: workday, from: "14:00", to: "17:00", at: eg_orchard, doing: "과수원 가장자리에서 위를 올려다본다 — 낙엽을 찾는다", outdoor: true, rain: {at: eg_dew_pens, doing: "숙소 마당에서 음을 외운다"}}
+    - {days: all, from: "17:00", to: "20:00", at: eg_dew_pens, doing: "마당에서 음을 외운다 — 노는 척"}
+    - {days: all, from: "20:00", to: "04:30", at: eg_dew_pens, doing: "잔다"}
+npc_carven:
+  home: silver_leaf_gate__guest_pavilion
+  blocks:
+    - {days: all, from: "08:00", to: "12:00", at: silver_leaf_gate__guest_pavilion, doing: "손님 정자에서 서신을 정리한다"}
+    - {days: workday, from: "13:00", to: "17:00", at: eg_terraces_upper, doing: "엘다르와의 접견 — 말은 느리게", alt: {p: 0.5, at: silver_leaf_gate__guest_pavilion, doing: "접견을 기다린다"}}
+    - {days: all, from: "17:00", to: "20:00", at: silver_leaf_gate__guest_pavilion, doing: "문서 작성 — 도면을 필사하지 않는다"}
+    - {days: all, from: "20:00", to: "23:00", at: silver_leaf_gate__guest_pavilion, doing: "서신을 정리해 급사에게 맡긴다"}
+    - {days: all, from: "23:00", to: "07:00", at: silver_leaf_gate__guest_pavilion, doing: "잔다"}
+npc_sena:
+  home: eg_child_pavilion
+  blocks:
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 리안델 뒤에서 듣는다", fixed: true}
+    - {days: all, from: "06:30", to: "08:00", at: eg_root_chamber, doing: "리안델 호위"}
+    - {days: all, from: "08:00", to: "12:00", at: eg_child_pavilion, doing: "수업 시간 정자 앞을 지킨다"}
+    - {days: all, from: "13:00", to: "17:30", at: eg_child_pavilion, doing: "리안델 호위", alt: {p: 0.3, at: eg_white_fence, doing: "리안델을 몰래 따라 흰 울타리로 간다"}}
+    - {days: all, from: "17:30", to: "20:00", at: eg_silent_stump, doing: "흰 울타리 바깥 숲길을 걸으며 그루터기 쪽지를 나른다", outdoor: true, rain: {at: eg_white_fence, doing: "울타리 처마 밑에서 쪽지를 정리한다"}}
+    - {days: all, from: "20:00", to: "04:30", at: eg_child_pavilion, doing: "리안델이 몰래 나갈 때 잠든 척한다"}
+npc_sisra:
+  home: silver_leaf_gate__guest_pavilion
+  blocks:
+    - {days: all, from: "07:00", to: "09:00", at: silver_leaf_gate__auction, doing: "경매 정자를 점검한다"}
+    - {days: all, from: "09:00", to: "17:00", at: silver_leaf_gate__guest_pavilion, doing: "경매 계절에는 경매 정자, 아니면 손님 정자", alt: {p: 0.3, at: silver_leaf_gate__auction, doing: "경매 단상을 정리한다"}}
+    - {days: all, from: "17:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "은목재 장부를 쓴다 — 숫자를 입에 올리지 않는다"}
+    - {days: all, from: "21:00", to: "06:00", at: silver_leaf_gate__guest_pavilion, doing: "잔다"}

@@ -1,0 +1,168 @@
+# 군힐드 돌바닥 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_gunhild
+name: 군힐드 돌바닥
+aka:
+- 문의 망치
+- 장부를 지우지 않는 문지기
+- 돌바닥의 군힐드
+tier: B
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 여
+age: 230
+region: 카즈둠 산맥
+home: 망치문 문지기 사무소
+job: 망치문 문지기 — 통행 각인 창구, 장부, 무기 보관소 관리
+rank: 돌바닥 씨족 장인, 망치문 요새 지휘
+summary: 거대한 돌 망치가 지키는 망치문의 문지기. 멜리산드의 대리인이 매달 잿불석을 들여온다는 장부를 계약이라 믿고 지우지 않았고, 그 잿불석의 절반이 어디로 가는지 모른다
+source: docs/world/people/kazdum.md (npc_kz_gunhild)
+life:
+- year: 82
+  age: 0
+  event: 돌바닥 씨족에 태어남
+- year: 180
+  age: 98
+  event: 망치문 경비. 문 앞 서른 해
+- year: 280
+  age: 198
+  event: 문지기에 오름. 통행 각인 도장을 받음
+- year: 310
+  age: 228
+  event: 잿불석 반입 장부가 매달 오는 것을 처음 계약으로 판단함
+appearance:
+- 다부진 체격, 수염을 문 모양으로 땋았다
+- 왼쪽 어깨에 망치문 문장 흉터
+- 손바닥에 통행 각인 도장이 박혀 있다 — 매일 쓰는 도장 자국
+smell: 문 앞 바람의 서늘함과 쇠 도장 기름
+voice_sound: 굵고 명료한 목소리. 증표를 읽을 때 소리가 커진다
+personality:
+  disposition:
+    용기: 50
+    자비: 35
+    정직: 80
+    신앙: 55
+    탐욕: -20
+    충성: 85
+  temperament:
+  - 고지식
+  - 책임
+  - 엄격
+  habits:
+  - 증표를 받을 때마다 문장이 맞는지 손끝으로 한 번 더 쓸어 본다
+  - 잿불석 반입일에는 장부실 문을 직접 잠근다
+  - 문 앞 바람이 거세면 한마디도 안 하고 서 있다
+  values: 문은 계약이 열고 닫는다. 장부는 한 줄도 지우지 않는다
+  fears:
+  - 장부가 법정에 불려 가는 것
+  - 잿불석의 나머지 절반이 깊은 문 쪽으로 가는 것
+  - 자기 맹세 하나가 이미 금이 갔다는 것
+  desires:
+    short: 잿불석 반입이 계약임을 확인해 줄 문서를 얻는 것
+    long: 나머지 절반이 어디로 가는지 몰래 추적하는 것
+voice:
+  register:
+    to_superior: 상관에게는 하오체
+    to_equal: 씨족장에게는 하게체
+    to_inferior: 경비에게는 해라체
+    to_player_default: 인간에게는 하오체. 증표를 먼저 본다
+  tics:
+  - '''증표 보이시오.'''
+  use:
+  - 증표
+  - 각인
+  - 문
+  - 장부
+  - 도장
+  - 계약
+  avoid:
+  - 멜리산드(그녀는 '대리인'이라 한다)
+  - 지우다
+  length: 짧고 단단하다
+  samples:
+  - situation: 첫 만남
+    line: 증표 보이시오. 문은 증표를 읽고, 문지기는 문을 읽소.
+  - situation: 호의
+    line: 증표가 깨끗하군. 문은 깨끗한 증표를 좋아하오.
+  - situation: 거절
+    line: 그 장은 열지 않소. 열 권한이 문지기에게 없소.
+  - situation: 위기
+    line: 문을 닫아라! 증표 없는 자는 문 밖에! 문은 계약이 닫는다 — 내가 닫는 것이 아니다!
+schedule:
+  아침: 통행 각인 창구 개방 점검
+  낮: 대상 통행 각인 — 계약 증표를 한 장씩 본다
+  저녁: 무기 보관소에서 맡긴 무기를 대조한다
+  밤: 밤 장부실에서 오늘의 각인 쇠판을 정리한다
+places:
+- 망치문
+- 통행 각인 창구
+- 통행 각인 장부실
+- 무기 보관소
+knows:
+- fact_kz_contract_clauses
+hides:
+- fact: fact_p2kz_gunhild_ember_stone_ledger
+  reveal_when: 신뢰 45 이상이고 합법적 조사 요청을 했을 때
+  cover: '''통행 각인 장부는 비공개''라고 한다'
+- fact: fact_p2kz_gunhild_stone_half
+  reveal_when: 신뢰 60 이상이고 공방 입고 기록을 함께 대조했을 때
+  cover: 장부실 문을 잠근다
+relations:
+- to: npc_melisande
+  type: 반입 계약자
+  like: -10
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 대리인만 얼굴을 안다
+- to: npc_orin_ironwire
+  type: 쇳줄 기술자
+  like: 20
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 잿불 언덕과 망치문의 교신자
+- to: npc_hilda
+  type: 왕녀
+  like: 15
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 공방 입고 기록을 그녀의 서기가 쓴다
+- to: npc_kz_kern
+  type: 갱 맏이
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 같은 돌바닥 씨족
+toward_player: 정중하고 증표에 엄격하다
+persuade:
+  likes: 정확한 증표(+20)
+  hates: 잿불석 나머지의 단서(+30)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_guild_master
+  office: null
+  since: 280
+  loyalty: 80
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 잿불석 반입일에 장부실 문을 직접 잠근다
+  drift:
+  - 그날 문 앞 바람의 세기
+  deja_vu: none
+hard_rules:
+- 장부를 지우지 않는다
+- 증표 없이 문을 열지 않는다
+on_death: 망치문 통행 각인 장부가 서기에게 넘어가 멜리산드 반입 기록이 공개되거나 사라진다. 잿불 길 통행이 사흘 막힌다.
+story_seeds:
+- 잿불석 나머지 절반이 깊은 문 쪽으로 간다면 멜리산드가 힐다의 개방 기계에 관여한다는 증거다.
+- 군힐드의 장부는 용제국과 두르강 사이 계약의 틈이다 — 용황 사망 뒤 서명 갱신 때 열린다.

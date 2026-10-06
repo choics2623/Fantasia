@@ -1,0 +1,193 @@
+# 하랄다 석회손 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_haralda
+name: 하랄다 석회손
+aka:
+- 읽어 주는 두르강
+- 개정 운동가
+- 일곱 조항
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 여
+age: 175
+region: 카즈둠 산맥
+home: 굴뚝 숙영지 숙소 방 한 칸 (임차)
+job: 그림하르 계약서 개정 운동 대표 — 계약 문법 강의, 조항 대조
+rank: 석회손 씨족 장인, 개정파
+summary: 인간 광부에게 몰래 룬을 가르친다는 의심을 받는 개정 운동가. 사실 그녀가 가르치는 것은 서명 글자가 아니라 연장 조항이 숨는 자리를 읽는 문법이며, 인간 시민권 계약의 초안 일곱 조항을 써 두었다
+source: docs/world/people/kazdum.md (npc_kz_haralda)
+life:
+- year: 137
+  age: 0
+  event: 석회손 씨족에 태어남. 석회 가루로 쇠판을 닦는 집안
+- year: 230
+  age: 93
+  event: 그림하르 계약서 서기. 연장 조항 문구가 점점 길어지는 것을 처음 봄
+- year: 290
+  age: 153
+  event: 깊은 문 봉인 서명 회기에서 마흔한 명의 '대기' 조항을 읽은 날 개정 운동에 투신
+- year: 298
+  age: 161
+  event: 그림하르 개정 운동 대표에 뽑힘. 서명 회기에서 첫 개정안이 문구 충돌로 기각됨
+- year: 305
+  age: 168
+  event: 굴뚝 숙영지에서 첫 문법 강의. 광부 열둘이 모임
+- year: 312
+  age: 175
+  event: 초안 여섯 조항 완성. 대가 칸이 비어 있다
+appearance:
+- 키가 크고 야윈 두르강 여자, 수염을 짧게 깎고 대신 목에 계약서 문장 쇠 고리를 걸었다
+- 양손 석회로 하얗게 갈라진 손
+- 소매 안에 초안 일곱 조항을 새긴 놋 판을 감췄다
+smell: 석회 가루와 새로 쓴 쇠판 먹물, 굴뚝 숙영지의 연기
+voice_sound: 맑고 높은 목소리. 조항 번호를 노래처럼 말한다
+personality:
+  disposition:
+    용기: 65
+    자비: 55
+    정직: 75
+    신앙: 45
+    탐욕: -15
+    충성: 55
+  temperament:
+  - 열정
+  - 영리
+  - 조심
+  habits:
+  - 허공에 조항 번호를 새기며 말한다
+  - 의심 눈길이 느껴지면 일부러 계약서의 서명용 글자만 짚는다
+  - 초안 놋 판을 만지작거리며 대가 칸을 소리 없이 읽는다
+  values: 계약은 읽을 수 있어야 신성하다. 읽을 수 없는 계약은 함정이다
+  fears:
+  - 초안의 비어 있는 대가 칸
+  - 돌 법정이 문법 강의를 '룬 읽기'로 판단하는 날
+  - 광부들이 읽은 것이 만료 전에 알려져 연장되는 것
+  desires:
+    short: 인간 시민권 계약의 대가 칸을 채우는 것
+    long: 서명 회기에서 개정안을 올릴 족장의 서명 세 개를 모으는 것
+voice:
+  register:
+    to_superior: 왕에게는 하오체
+    to_equal: 동료 장인에게는 해요체와 하게체 혼합
+    to_inferior: 광부에게는 해요체
+    to_player_default: 인간에게도 해요체. 눈높이를 맞춘다
+  tics:
+  - '''문법을 읽는 거예요.'''
+  - '''(허공에 조항을 새기며)'''
+  use:
+  - 조항
+  - 문법
+  - 대가
+  - 서명
+  - 연장
+  - 일곱째
+  avoid:
+  - 룬 읽기(공개 자리)
+  - 시민권(공개 자리)
+  - 반란
+  length: 빠르고 길다. 열정 때문에 문장이 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 새 광부신가요? 아니면 구경꾼? 구경꾼도 괜찮아요. 연장 조항은 누구나 알아야 하는 거니까.
+  - situation: 호의
+    line: 조항을 정확히 짚으시네요. 룬을 읽는 게 아니에요 — 문법을 읽는 거예요. 아주 달라요.
+  - situation: 거절
+    line: 그 줄은 가르치지 않아요. 가르치면 읽기가 되니까요. 문법까지만 해요.
+  - situation: 분노
+    line: 계약서를 일부러 어렵게 쓰는 건 거짓이 아니죠. 하지만 읽지 못하게 하는 건 거짓이에요 — 최소한 저에게는.
+  - situation: 슬픔
+    line: 마흔 해를 채운 사람이 있어요. 계약서를 처음부터 읽을 수 있었다면 일곱 해였을 거예요.
+  - situation: 위기
+    line: 모임을 닫아요! 베른트 씨, 아래 불을 꺼요! 돌 법정 서기가 지나가요!
+  - situation: 비밀 누설
+    line: 일곱 조항이에요. 여섯은 썼어요. 일곱째가 대가인데 — 값을 누가 치르는지 모르겠어요.
+  - situation: 거래
+    line: 읽는 법을 알려 드릴게요. 대신 한 가지만 약속해요. 소리 내어 읽지 마세요.
+schedule:
+  아침: 숙영지 식당에서 새 광부 계약서를 대조한다
+  낮: 만료장 시장 곁에서 광부 계약 문법을 질문받는다
+  저녁: 그림하르로 보낼 서신을 쓴다
+  밤: 밤에 만료장 지하 연습 모임에서 문법 강의를 한다
+places:
+- 굴뚝 숙영지
+- 만료장 시장
+- 베른트의 집
+- 그림하르 연락소
+knows:
+- fact_kz_contract_clauses
+hides:
+- fact: fact_p2kz_haralda_teaches_reading
+  reveal_when: 신뢰 45 이상이고 그림하르 개정 운동에 호의를 보였을 때
+  cover: '''서명 글자만 가르친다''고 말한다'
+- fact: fact_p2kz_haralda_citizen_draft
+  reveal_when: 신뢰 60 이상이고 대가 조항에 대한 제안을 했을 때
+  cover: 놋 판을 소매에 넣고 화제를 돌린다
+relations:
+- to: npc_kz_berndt
+  type: 만료장 대표
+  like: 40
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: 지하 연습 모임을 연 집주인
+- to: npc_kz_signa
+  type: 서기장
+  like: 35
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 초안을 몰래 대조해 준다
+- to: npc_kz_kern
+  type: 갱 맏이
+  like: -5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 그녀가 가르친 광부 계약서의 연장 조항을 '읽지 않는' 맏이
+- to: npc_petar
+  type: 노광부
+  like: 25
+  trust: 30
+  visibility: 일방
+  memo: null
+  words: 마흔 해를 채운 광부에게 연장 조항 읽는 법을 가르친 적이 있다
+- to: npc_bror
+  type: 왕
+  like: 20
+  trust: 15
+  visibility: 일방
+  memo: null
+  words: 시민권 계약을 고민한다는 소문을 믿고 초안을 쓴다
+toward_player: 친절하고 호기심 많다. 권력자에게는 의심이 빠르다
+persuade:
+  likes: 조항 문법을 이해하는 질문(+25)
+  hates: 대가 조항 하나를 채울 제안(+40)
+roles:
+  teacher: '스승 가능. 읽고쓰기(룬 서명 문법, 상한 45) — 조건: 비밀 모임 세 번 참석, 소리 내어 읽지 않기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_guild_master
+  office: off_grimhar_reformer
+  since: 230
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 초안 놋 판이 소매에 있다
+  - 일곱째 조항이 비어 있다
+  drift:
+  - 그날 강의 모임의 인원
+  - 석회 가루가 손에 번진 정도
+  deja_vu: none
+hard_rules:
+- 룬 읽기라는 낱말을 공개 자리에서 쓰지 않는다
+- 초안 이야기를 먼저 꺼내지 않는다
+on_death: 계약 광부 문법 강의가 끊기고 두 번째 서명 모임이 베른트 혼자 이어 간다. 시민권 계약 초안이 사라진다.
+story_seeds:
+- 일곱째 대가 조항에 무엇을 적을 것인가. 플레이어가 대가를 정하는 순간 맹약의 균열(찬가 6단계)로 가는 가장 현실적인 길이 열린다.
+- 문법 강의를 룬 읽기로 몰고 가려는 서기들이 있다 — 법정 소환을 막아 줄 사람이 필요하다.

@@ -1,0 +1,250 @@
+# 카즈둠 산맥 NPC 일과 (24 §3). 원천: REGIONS §12, docs/world/people/kazdum.md, 카드 schedule. 장소 id는 settlements/deephammer_hall.yaml (dh_*, hammer_gate__*, contract_camp__*, deep_gate__*).
+# 두르강의 하루는 '두드림'으로 열고 닫는다: 새벽 05:00 신전 세 번 두드림 · 06:00 작업 시작 · 16:30 작업 끝 · 22:00 돌 침상. 계약 광부는 계약서에 적힌 10시간(06:00-16:00)만 일한다.
+# 판결일은 6일 주의 2·5일째(돌 법정 개정). 안식일(6일째)은 두르강에게도 '계약서에 적힌 하루'다.
+# days: all | workday | sabbath | weekday:[1..6] | monthday:[..] — 쉼표가 든 값은 큰따옴표로.
+npc_bror:
+  home: dh_king_chamber
+  presence:   # 맹약회의 313 길 — 4월 15일 서명 대행 조항을 발동하고 떠나 6월 19일 돌아온다
+    - {from: "312-09-01", to: "313-04-14"}
+    - {from: "313-06-20", to: "313-07-30"}
+  away: {at: baalkar, doing: "맹약회의 313 길 — 서약섬으로 가는 사절단과 함께, 왕의 서명 대행은 하그린이 맡는다"}
+  blocks:
+    - {days: all, from: "00:30", to: "04:30", at: dh_king_chamber, doing: 잔다 — 베개 맡 돌벽에 오늘의 금을 새기고 눕는다}
+    - {days: all, from: "04:30", to: "06:00", at: dh_ancestor_shrine, doing: 조상의 망치 앞에서 기도 — 오른쪽 귀를 손으로 가린다, fixed: true}
+    - {days: all, from: "06:00", to: "07:30", at: dh_hall_canteen, doing: 왕도 같은 줄에 서서 귀리죽을 받는다}
+    - {days: "weekday:[2,5]", from: "08:00", to: "14:00", at: dh_judge_bench, doing: "룬 법정 판결 — 인간 계약 분쟁도 같은 쇠판에 새긴다", fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: dh_signing_desk, doing: 서명 책상에서 올라온 쇠판에 피 한 방울을 찍는다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_king_hall, doing: 점심을 들며 문지기 대장의 보고를 듣는다}
+    - {days: workday, from: "14:00", to: "18:00", at: dh_king_hall, doing: 족장과 서기를 접견하고 계약 문구를 대조한다}
+    - {days: all, from: "18:00", to: "20:00", at: dh_king_hall, doing: 깊은 문 경비 보고를 듣는다 — 마흔한 명의 계약이 깨졌는지 매번 묻는다, fixed: true}
+    - {days: all, from: "20:00", to: "00:30", at: dh_king_forge, doing: 대장간에서 철판 하나에 사흘을 쏟는다 — 왕의 망치질, fixed: true}
+    - {days: sabbath, from: "08:00", to: "12:00", at: dh_oath_gallery, doing: 맹세 회랑을 한 바퀴 돈다 — 413번 좌대 앞은 지나간다}
+npc_hilda:
+  home: dh_hilda_room
+  blocks:
+    - {days: all, from: "01:30", to: "06:30", at: dh_hilda_room, doing: 잔다 — 도면을 베개 밑에 넣고}
+    - {days: all, from: "06:30", to: "07:30", at: dh_hall_canteen, doing: 서서 귀리죽을 먹는다 — 도면을 펼쳐 놓고}
+    - {days: workday, from: "07:30", to: "12:00", at: dh_royal_workshop, doing: 공학 제자 열둘을 가르친다, alt: {p: 0.3, at: dh_gate_machine, doing: 깊은 문 개방 기계의 룬 바퀴를 점검한다}}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_royal_workshop, doing: 점심 — 서기가 올린 잿불석 입고 장부를 본다}
+    - {days: workday, from: "13:00", to: "18:00", at: dh_gate_machine, doing: "개방 기계 조립실에서 정과 도면, 기어를 맞춘다"}
+    - {days: all, from: "18:00", to: "20:00", at: dh_beer_gallery, doing: 공방 제자들과 맥주를 마시며 도면을 그린다, alt: {p: 0.4, at: dh_hilda_room, doing: 방에서 노래할 인간 후보 명단을 본다}}
+    - {days: all, from: "20:00", to: "01:30", at: dh_gate_machine, doing: 밤 개방 기계 작업 — 아버지의 서명이 비어 있는 안건 쇠판을 곁에 둔다}
+    - {days: sabbath, from: "08:00", to: "12:00", at: dh_hilda_room, doing: 도면만 본다 — 하루를 쉰다는 계약이 있어서다}
+npc_urd:
+  home: deep_gate__exile_tunnel
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: deep_gate__exile_tunnel, doing: 굳은 왼팔을 감싸고 돌 침상에 눕는다 — 심장 쪽으로 번지는 돌을 만진다}
+    - {days: all, from: "05:00", to: "06:00", at: deep_gate__exile_tunnel, doing: 새벽 두드림을 혼자 한다 — 세 번째는 일부러 두드리지 않는다, fixed: true}
+    - {days: workday, from: "06:00", to: "16:30", at: deep_gate__exile_tunnel, doing: 추방자 갱에서 광석을 캔다 — 오른팔 하나로}
+    - {days: all, from: "16:30", to: "21:00", at: deep_gate__exile_tunnel, doing: 광석을 팔러 온 상인을 보내고 벽에 기대 앉는다 — 문 쪽 벽은 보지 않는다}
+    - {days: sabbath, from: "08:00", to: "10:00", at: deep_gate__exile_tunnel, doing: 도면을 땅에 펼쳐 놓고 한 줄씩 지운다}
+npc_petar:
+  home: contract_camp__dorm
+  blocks:
+    - {days: all, from: "21:00", to: "05:30", at: contract_camp__dorm, doing: 잔다 — 만료까지 남은 날수를 손가락 마디로 센다}
+    - {days: workday, from: "05:30", to: "06:00", at: contract_camp__pit_gate, doing: 점호에 선다 — 번호를 부르면 짧게 대답한다, fixed: true}
+    - {days: workday, from: "06:00", to: "16:00", at: contract_camp__pit_gate, doing: 바깥 갱에서 채굴 — 마흔 해 동안 한 번도 쉬지 않은 손, outdoor: false}
+    - {days: all, from: "16:00", to: "17:00", at: contract_camp__dorm, doing: 귀리죽 둘과 버섯빵, fixed: true}
+    - {days: all, from: "17:00", to: "21:00", at: contract_camp__bulletin, doing: 계약 게시판 앞에서 만료일 방을 읽는다 — 자기 번호 아래의 날짜}
+    - {days: "weekday:[2,5]", from: "20:00", to: "21:00", at: contract_camp__berndt_house, doing: 베른트의 집에 앉아 있는다 — 석판은 보지 않으려 한다}
+    - {days: sabbath, from: "08:00", to: "11:00", at: contract_camp__camp_chapel, doing: 안식일 예배당 맨 뒤에 앉아 입을 열지 않는다}
+npc_grimbald:
+  home: dh_judge_chamber
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: dh_judge_chamber, doing: 판관 휴게실 돌 침상에서 잔다}
+    - {days: all, from: "06:00", to: "08:00", at: dh_judge_chamber, doing: 판결문 사본을 정리한다 — 우르드의 판결문 한 장을 맨 위에 둔다}
+    - {days: "weekday:[2,5]", from: "08:00", to: "16:00", at: dh_judge_bench, doing: 판관석 맨 왼쪽에서 맹세 재판을 한다, fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: dh_scribe_room, doing: 서기들이 새긴 판결문 쇠판을 대조한다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: dh_stone_archive, doing: 서고에서 맹세 조항 선례를 찾는다}
+    - {days: all, from: "17:00", to: "22:00", at: dh_judge_chamber, doing: 오틸리의 문의서를 읽다 덮는다 — 맹세를 푸는 룬의 대가를 계산한다}
+npc_deep_nidar:
+  home: deep_gate__pale_chapel
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: deep_gate__pale_chapel, doing: 예배당 한구석에서 눕는다 — 벽에 귀를 대고}
+    - {days: all, from: "05:00", to: "07:00", at: deep_gate__pale_chapel, doing: 신도들과 새벽 노래 연습 — 인간 목소리가 있어야 한다는 것을 안다, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: deep_gate__pale_chapel, doing: 신도들에게 고동의 말을 전한다}
+    - {days: workday, from: "13:00", to: "17:00", at: deep_gate__bardum, doing: 요새장실 앞을 지나 층계를 오른다 — 경비들의 잠꼬대 소리를 센다, alt: {p: 0.4, at: deep_gate__pale_chapel, doing: 신도 모집 명단을 정리한다}}
+    - {days: all, from: "17:00", to: "21:00", at: deep_gate__pale_chapel, doing: 조용히 박자를 따라 숨 쉰다}
+npc_seln:
+  home: deep_gate__draur_cave
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: deep_gate__draur_cave, doing: 동굴 안쪽에서 고동의 박자를 기억 노래에 맞춰 센다 — 낮과 밤을 가리지 않는다}
+    - {days: "weekday:[3]", from: "20:00", to: "22:00", at: deep_gate__pulse_shaft, doing: 고동 갱도 입구까지 나가 벽의 따뜻한 물을 만진다}
+npc_osval:
+  home: deep_gate__beat_room
+  blocks:
+    - {days: all, from: "05:00", to: "10:00", at: deep_gate__beat_room, doing: 맥박 치는 벽에 귀를 대고 센다 — 백 박마다 작은 돌판에 금, fixed: true}
+    - {days: all, from: "10:00", to: "18:00", at: deep_gate__beat_room, doing: 돌판에 오늘의 수를 룬으로 새긴다}
+    - {days: all, from: "18:00", to: "22:00", at: deep_gate__beat_room, doing: 큰 돌판에 합계를 옮긴다 — 어제와 한 박 다르면 지우고 처음부터}
+    - {days: all, from: "22:00", to: "05:00", at: deep_gate__beat_room, doing: 바닥에 귀를 대고 잔다 — 자면서도 센다고 믿는다}
+npc_utgal:
+  home: dh__sleeping_hill
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: dh__sleeping_hill, doing: "움직이지 않는다 — 등 위의 언덕등 사람들이 밭을 갈고, 한낮에 하루 한 문장을 말한다"}
+npc_kz_hagrin:
+  home: dh_crown_prince_room
+  blocks:
+    - {days: all, from: "23:00", to: "05:30", at: dh_crown_prince_room, doing: 잔다}
+    - {days: all, from: "05:30", to: "06:30", at: dh_hall_canteen, doing: 서서 귀리죽을 먹는다 — 아버지가 먼저 나가도록 기다린다}
+    - {days: workday, from: "06:30", to: "12:00", at: dh_signing_desk, doing: 서명 책상에 올라온 쇠판의 문구를 대조한다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:30", at: dh_contract_hall, doing: 서명 회기 준비 — 족장들의 문구 충돌을 조정한다, alt: {p: 0.3, at: dh_signing_desk, doing: 서랍을 열었다 닫는다 — 열쇠 없는 서랍도}}
+    - {days: all, from: "17:30", to: "19:30", at: dh_king_hall, doing: 아버지의 깊은 문 경비 보고를 곁에서 듣는다 — 아버지의 오른쪽 귀 쪽을 본다}
+    - {days: all, from: "19:30", to: "23:00", at: dh_crown_prince_room, doing: 서재에서 줄자를 꺼내 기록 책에 한 줄을 적는다 (매달 1일에만 잰다)}
+    - {days: sabbath, from: "08:00", to: "10:00", at: dh_ancestor_shrine, doing: 조상의 망치 앞에서 서명한 것을 점검한다}
+npc_kz_urla:
+  home: dh_judge_chamber
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: dh_judge_chamber, doing: 잔다}
+    - {days: all, from: "06:00", to: "08:00", at: dh_judge_chamber, doing: 맹세 청정 명부를 확인한다 — 의자 아래 표시를 한 번 만진다}
+    - {days: "weekday:[2,5]", from: "08:00", to: "16:00", at: dh_oath_court, doing: 대재판관으로 판결한다 — 발뒤꿈치로 바닥을 세 번 두드린다, fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: dh_judge_bench, doing: 판결문 쇠판을 읽고 서명한다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: dh_judge_chamber, doing: 사건 기록을 대조한다 — 돌의 숲 명단을 펼친다}
+    - {days: all, from: "17:00", to: "19:00", at: dh_ancestor_shrine, doing: 신전 층계를 천천히 오르내린다 — 걸음 수가 아니라 박자를 센다}
+    - {days: all, from: "19:00", to: "22:00", at: dh_judge_chamber, doing: 휴게실에서 장부로 보낼 쇠판 한 장을 만든다}
+    - {days: sabbath, from: "08:00", to: "10:00", at: dh_oath_gallery, doing: 413번 좌대 앞에서 회랑 지기와 단둘이 서 있다}
+npc_kz_hag:
+  home: dh_scribe_room
+  blocks:
+    - {days: all, from: "22:30", to: "06:30", at: dh_scribe_room, doing: 새김방 안쪽 방에서 잔다}
+    - {days: workday, from: "06:30", to: "12:00", at: dh_scribe_room, doing: 서기들의 새김을 검수한다 — 틀린 획은 지우지 않고 고쳐 새긴다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: dh_scribe_room, doing: 쇠판 첫 줄을 새긴다}
+    - {days: all, from: "17:00", to: "22:30", at: dh_scribe_room, doing: 잿빛 탑에 보낼 서신을 쓰고 불에 넣는다 — 서명용 룬을 허공에 새겼다 지운다}
+    - {days: sabbath, from: "08:00", to: "10:00", at: dh_stone_archive, doing: 서고에서 일곱째 줄과 문 자물쇠 도면을 대조한다}
+npc_kz_signa:
+  home: dh_scribe_room
+  blocks:
+    - {days: all, from: "23:00", to: "06:30", at: dh_scribe_room, doing: 잔다}
+    - {days: workday, from: "07:00", to: "12:00", at: dh_scribe_room, doing: 서명 회기 안건 쇠판 초안을 확인한다, alt: {p: 0.3, at: dh_signing_hall, doing: 회기장 서기석을 정리한다}}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 서서 점심}
+    - {days: "weekday:[4]", from: "13:00", to: "14:00", at: dh_stone_archive, doing: 서고를 한 바퀴 돈다 — 맨 아래 서랍 앞을 걸음 늦추지 않고 지나간다, fixed: true}
+    - {days: workday, from: "14:00", to: "18:00", at: dh_scribe_room, doing: 서기들의 새김을 대조한다}
+    - {days: all, from: "18:00", to: "23:00", at: dh_scribe_room, doing: 방에서 룬 연습 — 이중판 밑 석판을 한 번 쓰다듬는다}
+    - {days: sabbath, from: "08:00", to: "12:00", at: dh_oath_court, doing: 돌 법정 방청 — 서기장이 판결문 문구를 눈으로 따라 쓴다}
+npc_kz_krag:
+  home: deep_gate__guard_post
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: deep_gate__guard_post, doing: 초소에서 잔다 — 굳은 왼손을 천으로 감고}
+    - {days: all, from: "05:00", to: "06:00", at: deep_gate__guard_post, doing: "점호 — 경비 이름을 하나하나 부르고 마지막에 사라진 셋의 이름도 부른다", fixed: true}
+    - {days: all, from: "06:00", to: "12:00", at: deep_gate__seal_door, doing: 봉인 문 앞 순시 — 문에 귀를 대지 않는다, outdoor: false}
+    - {days: all, from: "12:00", to: "14:00", at: deep_gate__guard_post, doing: 초소 식탁에서 경비와 같이 먹는다}
+    - {days: all, from: "14:00", to: "18:00", at: deep_gate__seal_door, doing: 오후 교대 지휘 — 탐사대 손이 자물쇠에 닿을 때마다 눈이 따라간다}
+    - {days: all, from: "18:00", to: "19:00", at: deep_gate__guard_post, doing: 저녁 점호 — 셋의 이름 중 마지막을 한 번 더 부른다, fixed: true}
+    - {days: all, from: "19:00", to: "22:00", at: deep_gate__guard_post, doing: 교대 문서를 정리하고 난로 곁에서 왼손을 쥐었다 편다}
+    - {days: sabbath, from: "08:00", to: "10:00", at: deep_gate__bardum, doing: 시그룬과 요새 위에서 문 쪽 벽을 보지 않고 선다}
+npc_kz_sigrun:
+  home: deep_gate__bardum
+  blocks:
+    - {days: all, from: "22:30", to: "05:30", at: deep_gate__bardum, doing: 요새장실에서 잔다 — 바닥에 귀를 대지 않으려 침상 다리에 천을 덧댔다}
+    - {days: all, from: "05:30", to: "07:00", at: deep_gate__bardum, doing: 요새 점호와 석공 열 명의 번호를 센다, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: deep_gate__bardum, doing: 요새 층별 순시 — 아래층 예배당 앞을 지나간다}
+    - {days: workday, from: "12:00", to: "13:00", at: deep_gate__bardum, doing: 요새 식탁에서 물만 마신다}
+    - {days: workday, from: "13:00", to: "17:00", at: deep_gate__bardum, doing: 요새 문서 집무, alt: {p: 0.3, at: deep_gate__guard_post, doing: 크라그와 문 앞 교대를 점검한다}}
+    - {days: all, from: "17:00", to: "22:30", at: deep_gate__bardum, doing: 서랍을 열어 장갑을 벗고 열한 겹의 도면을 한 번 본다}
+npc_kz_grodin:
+  home: deep_gate__survey_camp
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: deep_gate__survey_camp, doing: 막사 침상에서 잔다 — 형의 편지를 베개 밑에}
+    - {days: all, from: "06:00", to: "07:00", at: deep_gate__survey_camp, doing: 탐사대 점호와 해체 작업 배분, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: deep_gate__seal_door, doing: 룬 자물쇠 해체 — 넷째를 푼 정을 닦고 다섯째의 도면을 본다}
+    - {days: workday, from: "12:00", to: "13:00", at: deep_gate__survey_camp, doing: 막사에서 맥주와 점심}
+    - {days: workday, from: "13:00", to: "17:30", at: deep_gate__seal_door, doing: 오후 해체 — 정으로 자물쇠 틈 한 올을 벌린다}
+    - {days: all, from: "17:30", to: "20:00", at: deep_gate__survey_camp, doing: 해체 기록을 쇠판에 새긴다}
+    - {days: all, from: "20:00", to: "22:00", at: deep_gate__pulse_shaft, doing: 고동 갱도 입구에서 박자를 듣는다 — 들으려고 간 것이 아니라고 혼자 말한다}
+npc_kz_odd:
+  home: dh_priest_quarters
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: dh_priest_quarters, doing: 대사제실에서 잔다}
+    - {days: all, from: "04:30", to: "06:00", at: dh_ancestor_shrine, doing: 새벽 세 번 두드림 — 마지막 한 번을 반 박자 늦게 친다, fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: dh_ancestor_shrine, doing: 사제들의 기도를 이끌고 맹세 상담을 한다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: dh_priest_quarters, doing: 대사제실에서 조상 이름을 층층이 읽는다, alt: {p: 0.3, at: dh_ancestor_shrine, doing: 맥박 기둥 쪽 사제들을 살피다 물러난다}}
+    - {days: all, from: "17:00", to: "18:00", at: dh_pulse_pillar, doing: 맥박 기둥 앞에서 기도 — 사제들을 물리고 한 걸음 떨어져 선다, fixed: true}
+    - {days: all, from: "18:00", to: "22:00", at: dh_priest_quarters, doing: 조상 이름을 읽다가 경비 셋의 이름 앞에서 멈춘다}
+npc_kz_brun:
+  home: dh_priest_quarters
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: dh_priest_quarters, doing: 잔다 — 자면서도 센다}
+    - {days: all, from: "04:30", to: "06:00", at: dh_ancestor_shrine, doing: 새벽 두드림을 보조한다 — 박자를 속으로 센다, fixed: true}
+    - {days: all, from: "06:00", to: "18:00", at: dh_pulse_pillar, doing: 맥박 기둥 곁 돌바닥을 닦는다 — 걸음마다 센다, alt: {p: 0.3, at: dh_ancestor_shrine, doing: 신전 시중}}
+    - {days: all, from: "18:00", to: "20:00", at: dh_ancestor_shrine, doing: 저녁 기도 후 기둥 곁 돌바닥을 한 번 더 닦는다}
+    - {days: all, from: "20:00", to: "22:00", at: dh_priest_quarters, doing: 오늘의 박 수를 작은 돌판에 새긴다 — 매달 한 번 박자 방으로 내려보낼 것}
+npc_kz_torben:
+  home: dh_oath_gallery
+  blocks:
+    - {days: all, from: "20:00", to: "07:30", at: dh_oath_gallery, doing: 회랑 끝 작은 방에서 잔다}
+    - {days: all, from: "07:30", to: "08:30", at: dh_oath_gallery, doing: 회랑 문을 열고 412구의 먼지를 턴다 — 이름을 입 모양으로 읽는다, fixed: true}
+    - {days: all, from: "08:30", to: "18:00", at: dh_oath_gallery, doing: 방문객 안내와 석상 곁 청소, alt: {p: 0.2, at: dh_oath_court, doing: 법정에서 새 판결 이름을 받아 온다}}
+    - {days: all, from: "18:00", to: "20:00", at: dh_oath_gallery, doing: 413번 좌대 앞을 지나 돌아간다 — 솔을 등 뒤로 감추고}
+npc_kz_tarna:
+  home: dh_ashanvil_row
+  blocks:
+    - {days: all, from: "22:00", to: "05:30", at: dh_ashanvil_row, doing: 족장 방에서 잔다}
+    - {days: workday, from: "06:00", to: "12:00", at: dh_ashanvil_row, doing: 대장간 거리를 한 바퀴 돈다 — 화로마다 불 색을 본다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "16:30", at: dh_ashanvil_row, doing: 용제국 납품 쇠판 검수와 계약 문구 대조}
+    - {days: all, from: "17:00", to: "21:00", at: dh_beer_gallery, doing: 맥주를 마시며 용제국 납품 날짜를 센다, alt: {p: 0.4, at: dh_ashanvil_row, doing: 방에서 갑옷판 하나를 직접 두드린다}}
+npc_kz_dun:
+  home: dh_arms_ledger
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: dh_ashanvil_row, doing: 대장간 거리 숙소에서 잔다}
+    - {days: workday, from: "06:30", to: "12:00", at: dh_arms_ledger, doing: 장부실에서 어제의 반출 쇠판을 대조한다}
+    - {days: workday, from: "12:00", to: "13:00", at: dh_hall_canteen, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: dh_ashanvil_row, doing: 화로 배분과 검수 — 촉 한 자루씩 손가락으로 쓸어 본다}
+    - {days: workday, from: "17:00", to: "19:00", at: dh_arms_ledger, doing: 수레 입출입 기록 — 번호만 읽고 짐은 보지 않는다}
+    - {days: all, from: "19:00", to: "22:00", at: dh_arms_ledger, doing: 서명한 쇠판 사본을 다시 센다}
+npc_kz_magna:
+  home: contract_camp__grey_pit
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: contract_camp__grey_pit, doing: 족장 사무소 곁방에서 잔다}
+    - {days: workday, from: "05:30", to: "06:00", at: contract_camp__pit_gate, doing: 인간 광부와 같은 점호에 선다 — 이름을 하나씩 부른다, fixed: true}
+    - {days: workday, from: "06:00", to: "16:00", at: contract_camp__grey_pit, doing: 회색 갱 순시 — 곡괭이를 한 자루 들고 인간 광부 옆에서 판다}
+    - {days: all, from: "16:00", to: "17:00", at: contract_camp__dorm, doing: 같은 식당에서 귀리죽을 먹는다 — 맨 뒤에 선다, fixed: true}
+    - {days: all, from: "17:00", to: "21:00", at: contract_camp__grey_pit, doing: 계약 등록 쇠판을 대조한다 — 출신지 칸은 비어 있다}
+    - {days: sabbath, from: "08:00", to: "10:00", at: contract_camp__bulletin, doing: 계약 게시판의 해빙월 자리 서른 칸을 한 번 보고 간다}
+npc_kz_haralda:
+  home: contract_camp__dorm
+  blocks:
+    - {days: all, from: "23:00", to: "07:00", at: contract_camp__dorm, doing: 잔다}
+    - {days: all, from: "07:00", to: "09:00", at: contract_camp__dorm, doing: 식당에서 새 광부 계약서를 대조한다}
+    - {days: workday, from: "09:00", to: "17:00", at: contract_camp__expiry_market, doing: 만료장 시장 곁에서 광부들의 계약 질문에 답한다}
+    - {days: "weekday:[2,5]", from: "20:00", to: "23:00", at: contract_camp__reading_cellar, doing: 베른트의 집 지하에서 '문법 읽기' 강의 — 소리 내어 읽지 않게 한다, fixed: true}
+    - {days: all, from: "17:00", to: "23:00", at: contract_camp__dorm, doing: 그림하르로 보낼 서신과 초안 여섯 조항을 다듬는다}
+npc_kz_berndt:
+  home: contract_camp__berndt_house
+  blocks:
+    - {days: all, from: "23:30", to: "06:30", at: contract_camp__berndt_house, doing: 잔다}
+    - {days: workday, from: "07:00", to: "18:00", at: contract_camp__expiry_market, doing: 만료장 시장 가게 — 이름을 먼저 묻고 소금과 가죽을 판다}
+    - {days: "weekday:[2,5]", from: "20:00", to: "23:30", at: contract_camp__reading_cellar, doing: 두 번째 서명 모임 — 서명용 글자만이라고 말한다, fixed: true}
+    - {days: all, from: "18:00", to: "20:00", at: contract_camp__berndt_house, doing: 만료자 저녁 식탁을 차린다 — 끝나면 지하 문 쪽을 한 번 본다}
+    - {days: sabbath, from: "08:00", to: "11:00", at: contract_camp__camp_chapel, doing: 안식일 예배당 앞에서 만료 앞둔 광부와 이야기한다}
+npc_kz_gunhild:
+  home: hammer_gate__gate_office
+  blocks:
+    - {days: all, from: "21:30", to: "05:30", at: hammer_gate__gate_office, doing: 사무소 곁방에서 잔다}
+    - {days: all, from: "05:30", to: "06:30", at: hammer_gate__stamp_window, doing: 통행 각인 창구 개방 점검, fixed: true}
+    - {days: workday, from: "06:30", to: "12:00", at: hammer_gate__stamp_window, doing: 대상 통행 각인 — 증표를 한 장씩 손끝으로 쓸어 본다}
+    - {days: workday, from: "12:00", to: "13:00", at: hammer_gate__gate_office, doing: 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: hammer_gate__arms_store, doing: 무기 보관소 — 맡긴 무기를 대조한다, alt: {p: 0.3, at: hammer_gate__stamp_window, doing: 오후 대상 각인}}
+    - {days: all, from: "17:00", to: "21:30", at: hammer_gate__ledger_room, doing: 장부실에서 오늘의 각인 쇠판을 정리한다 — 잿불석 줄은 지우지 않는다}
+npc_kz_kern:
+  home: contract_camp__foreman_desk
+  blocks:
+    - {days: all, from: "21:30", to: "05:00", at: contract_camp__foreman_desk, doing: 맏이 방에서 잔다}
+    - {days: workday, from: "05:30", to: "06:00", at: contract_camp__pit_gate, doing: 계약 광부 점호 — 번호를 부른다, fixed: true}
+    - {days: workday, from: "06:00", to: "16:00", at: contract_camp__pit_gate, doing: 갱 순시 — 환기구와 지지대를 눈으로 확인한다}
+    - {days: workday, from: "16:00", to: "18:00", at: contract_camp__foreman_desk, doing: 초과 노동 철괴 조각 정산 — 연장 조항 줄은 읽지 않는다}
+    - {days: all, from: "18:00", to: "21:30", at: contract_camp__foreman_desk, doing: 점호 쇠판을 정리한다}
+    - {days: "weekday:[2,5]", from: "19:00", to: "21:00", at: contract_camp__pit_gate, doing: 점호가 길다 — 일부러 번호를 천천히 부른다, fixed: true}
+npc_kz_rota:
+  home: contract_camp__dorm
+  blocks:
+    - {days: all, from: "21:00", to: "05:30", at: contract_camp__dorm, doing: 잔다 — 회색여울 말씨로 잠꼬대를 한다}
+    - {days: workday, from: "05:30", to: "06:00", at: contract_camp__pit_gate, doing: 점호 — 번호 삼백이십일에 이름을 속으로 되뇐다, fixed: true}
+    - {days: workday, from: "06:00", to: "16:00", at: contract_camp__pit_gate, doing: 바깥 갱에서 지지대 수리와 채굴}
+    - {days: all, from: "16:00", to: "17:00", at: contract_camp__dorm, doing: 귀리죽 둘과 버섯빵 — 맨 안쪽 자리, fixed: true}
+    - {days: all, from: "17:00", to: "21:00", at: contract_camp__bulletin, doing: 계약 게시판 앞에서 만료일을 센다, alt: {p: 0.35, at: contract_camp__expiry_market, doing: 만료장 시장을 구경한다 — 사지 않는다}}
+    - {days: sabbath, from: "08:00", to: "11:00", at: contract_camp__camp_chapel, doing: 안식일 예배당 구석에서 고향 노래를 입 모양으로 부른다}

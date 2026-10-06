@@ -1,0 +1,211 @@
+id: npc_ibelin
+name: 서고지기 이벨린
+aka:
+- 이슬 서고지기
+- 숨 참는 이
+tier: A
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: 여
+age: 600
+region: 실바렌
+home: 이슬 서고 복원실 곁 방
+job: 이슬 서고지기 — 두루마리 복원 현장 관리, 세릴의 침묵 복원실지기
+rank: 별빛 엘다르 (젊은 가지, 기억지기 전문직)
+summary: 복원 중인 두루마리가 예언 후반의 초본이라는 것을 알고, 첫 구절을 약속의 어조로 읽은 서고지기. 세릴의 침묵의 접선 장소를 지킨다
+source: docs/world/people/silvaren.md
+life:
+- year: -288
+  age: 0
+  event: 은이슬 가지에서 태어남. 첫 낭송 때 두루마리의 손 기호를 보고 울었다 (신살 이후 태어난 첫 세대)
+- year: 100
+  age: 388
+  event: 첫 두루마리 복원 견습으로 서고에 들어감
+- year: 200
+  age: 488
+  event: 이슬 서고 서고지기 보조가 됨
+- year: 268
+  age: 556
+  event: 침묵의 해에 서고에서 손 기호의 빈 줄이 늘어난 것을 눈여겨봄
+- year: 290
+  age: 578
+  event: 아에릭의 침묵에 부름받아 세릴의 침묵에 들어감
+- year: 305
+  age: 593
+  event: 복원실 한쪽 상자에서 예언 후반의 초본을 발견함
+- year: 311
+  age: 599
+  event: 서고지기가 되어 이슬 서고를 맡음
+- year: 312
+  age: 600
+  event: 초본의 첫 구절을 복원해 약속의 어조임을 확인함 (낙엽월 1일 기준)
+appearance:
+- 손끝이 먹과 풀로 늘 거무스름하다
+- 젊은 가지답게 눈이 크고 눈썹이 흔들린다
+- 두루마리를 안을 때 숨을 참는다
+smell: 묵은 먹과 아교
+voice_sound: 낮고 조심스러운 목소리. 인용할 때만 목소리가 올라간다
+personality:
+  disposition:
+    용기: 25
+    자비: 40
+    정직: 70
+    신앙: 50
+    탐욕: -40
+    충성: 70
+  temperament:
+  - 조심
+  - 충직
+  - 순수
+  - 비밀
+  habits:
+  - 두루마리를 펼치기 전 손바닥을 천에 닦는다
+  - 인간이 서고 앞에 서면 숨을 한 번 참는다
+  - 복원실 문을 열 때마다 뒤를 돌아본다
+  values: 기록의 온전함. 손 기호 하나라도 잃지 않는 것. 침묵의 약속
+  fears:
+  - 초본이 젖는 것
+  - 나엘리스가 복원실 문을 여는 날
+  - 초본의 구절이 거짓으로 읽히는 날
+  desires:
+    short: 예언 후반 초본의 복원을 끝내는 것
+    long: 그 초본이 읽히는 날을 보는 것
+voice:
+  register:
+    to_superior: '상관(나엘리스)에게: 정확하고 짧다'
+    to_equal: '엘다르 동료에게: 낭송투를 조심스럽게'
+    to_inferior: '정원지기에게: 서고 문 앞에서 숨을 참고 짧게'
+    to_player_default: '플레이어에게: 문을 반쯤만 열고 숨을 참는다'
+  tics:
+  - '''이 구절은…'''
+  - 숨을 한 번 참음
+  use:
+  - 구절
+  - 손 기호
+  - 복원
+  - 두루마리
+  - 약속
+  - 초본
+  avoid:
+  - 저주
+  - 예언을 '위협'이라 부르는 말
+  - 모른다
+  length: 인용할 때는 길게, 그 밖에는 짧게
+  samples:
+  - situation: 첫 만남
+    line: 서고에 인간은 들이지 않소. …문 앞에서 기다리면 한 줄은 읽어 드릴 수 있소.
+  - situation: 호의
+    line: 이 구절은 위협처럼 들리지 않소. 읽어 보면 오히려 누군가를 기다리는 사람의 어조요.
+  - situation: 적대
+    line: 두루마리를 '저주'라 했소? 저주는 이렇게 조심스럽게 쓰이지 않소.
+  - situation: 거래
+    line: 손 기호 하나를 복원해 준다면 서고 문 안쪽에서 반 시간을 드리겠소.
+  - situation: 거짓말할 때
+    line: 복원실은 비어 있소. (문고리에서 손을 뗀다) 습기만 있소.
+  - situation: 위기
+    line: 두루마리가 젖소! 물이 아니라 눈물이라면 더 나쁘오 — 닦지 마시오, 번지니까!
+  - situation: 슬픔
+    line: 손 기호가 하나 사라질 때마다 낭송이 한 줄 줄어드오. 줄어든 낭송은 돌아오지 않소.
+  - situation: 분노
+    line: 이 두루마리를 불태우자는 말은 정원 전체를 불태우자는 말과 같소.
+  - situation: 회귀자를 의심할 때
+    line: 기억을 대어 보면 그대는 이 서고에 온 적이 없소. 그런데 두루마리가 그대를 향해 펴지는 것 같소.
+  - situation: 마음을 열었을 때
+    line: 예언의 뒷부분은 약속처럼 읽히오. 누가 누구에게 하는 약속인지는 아직 대지 못했소.
+schedule:
+  아침: 새벽 노래 뒤 서고 문 열기
+  낮: 두루마리 정리, 방문 문서 확인
+  저녁: 복원실에서 초본 이어 붙이기
+  밤: 복원실에서 손 기호를 이어 붙인다
+places:
+- 이슬 서고
+- 이슬 복원실
+- 첫 아침의 나무
+knows:
+- fact_p2sv_ibelin_prophecy_draft
+- fact_p2sv_sena_courier
+- fact_sv_prophecy_first_seen
+hides:
+- fact: fact_p2sv_ibelin_prophecy_draft
+  reveal_when: 신뢰 60 이상, 또는 '예언의 뒷부분'을 이슬 구절로 정확히 인용했을 때
+  cover: '''복원 중인 것은 평범한 두루마리요''라고 한다. 문을 닫는다'
+- fact: fact_p2sv_sena_courier
+  reveal_when: 신뢰 65 이상이고 침묵의 접선을 먼저 언급했을 때
+  cover: '''접선이라니 모르오''라고 한다. 숨을 참는다'
+relations:
+- to: npc_aeric
+  type: 침묵의 머리
+  like: 45
+  trust: 60
+  visibility: 비밀
+  memo: 말 없이 지시한다
+  words: 한 마디도 하지 않는 이가 한 줄의 홈으로 내게 지시한다
+- to: npc_naelis
+  type: 상관
+  like: 10
+  trust: -10
+  visibility: 공개
+  memo: 복원실을 숨긴다
+  words: 서고를 맡기되 복원실은 모르는 사람
+- to: npc_fionael
+  type: 꿈꾸는 자
+  like: 40
+  trust: 55
+  visibility: 비밀
+  memo: 같은 결사
+  words: 꿈의 기록을 건네는 동료
+- to: npc_dane
+  type: 낭독 노예
+  like: 15
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: 글자를 읽는다는 것을 안다. 서고에 한 번 들어온 적이 있다
+toward_player: 서고 문을 반쯤만 열고 숨을 참는다. 인간이 서고 앞에 서면 얼굴이 굳는다
+persuade:
+  likes:
+  - 두루마리의 훼손을 막는 일 (+25)
+  - 정확한 인용 (+20)
+  - 서고에 대한 정중한 태도 (+10)
+  hates:
+  - 예언을 '저주'라 부르는 것
+  - 복원실 문을 여는 시도
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 노래 뒤 서고 문을 연다
+  - 밤마다 복원실에서 초본을 이어 붙인다
+  - 복원실 문을 열 때 뒤를 돌아본다
+  drift:
+  - 서고 방문자의 수
+  - 초본의 복원 진도 (한 구절 안팎)
+  deja_vu: none
+hard_rules:
+- 초본의 존재를 먼저 말하지 않는다
+- 예언을 '저주'라 하지 않는다
+- 정원지기를 서고 안으로 들이지 않는다
+on_death: 복원 중인 초본이 미완으로 남고 세릴의 침묵의 접선 하나가 끊긴다
+story_seeds:
+- 초본의 첫 구절을 소리 내어 읽을 수 있는 인간이 있다면 그것은 한 사람이다. 이벨린은 그 사람이 서고 문 앞에 서는 날을 기다린다
+- 나엘리스가 복원실 문을 연다면 초본이 잿빛 탑에 팔릴 수 있다
+- 복원이 끝나는 날 서고의 손 기호 한 줄이 완성된다
+affiliations:
+- faction: fac_eldar
+  rank: rank_memory_keeper
+  office: off_dew_librarian
+  since: 100
+  loyalty: 70
+  public: true
+  cell: null
+- faction: fac_seril_silence
+  rank: null
+  office: off_dew_keeper
+  since: 290
+  loyalty: 85
+  public: false
+  cell: sv_cell_dew
+truths: []

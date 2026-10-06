@@ -1,0 +1,208 @@
+id: npc_naelis
+name: 나엘리스 은이슬
+aka:
+- 예언 관리자
+- 수정을 굴리는 이
+tier: A
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: 여
+age: 2200
+region: 실바렌
+home: 은이슬 가지 거처 (테라스 위 20단)
+job: 은이슬 가지 예언 관리자 — 이슬 두루마리 9,000권 관리, 잿빛 탑 원로 겸임
+rank: 첫 아침의 가지 (고리 의원)
+summary: 기억 수정 세 개를 잿빛 탑에 넘긴 예언 관리자. 그중 하나가 호수에 앞선 잔향자가 비친 장면이다
+source: docs/world/people/silvaren.md
+life:
+- year: -1888
+  age: 0
+  event: 은이슬 가지에서 두루마리 견습으로 시작
+- year: 40
+  age: 1928
+  event: 예지 조각 첫 해석을 낭송함
+- year: 120
+  age: 2008
+  event: 잿빛 탑 원로 겸임을 받아들임 — 객원으로 탑을 오가기 시작
+- year: 260
+  age: 2148
+  event: 침묵의 해 이전 마지막 예지 조각 해석 낭송
+- year: 305
+  age: 2193
+  event: 잿빛 탑에 첫 기억 수정을 넘김 (대가는 탑의 시간 유리 한 조각 열람)
+- year: 309
+  age: 2197
+  event: 두 번째 수정 — 호수에 앞선 잔향자가 비친 장면을 담은 것
+- year: 311
+  age: 2199
+  event: 세 번째 수정을 넘김. 이후 이벨린의 서고 일부를 맡기 시작
+- year: 312
+  age: 2200
+  event: 낙엽월 1일 기준 서리월까지 정원에 머물고 긴밤월에 탑으로 떠날 예정
+appearance:
+- 은빛이 도는 흰 머리에 푸른 이슬 장식
+- 소매 안에서 작은 수정 조각을 굴린다
+- 질문을 받으면 대답보다 먼저 수정을 한 번 쥔다
+smell: 차가운 유리와 젖은 석회
+voice_sound: 맑고 높은 소프라노. 값을 말할 때만 반 음 낮아진다
+personality:
+  disposition:
+    용기: -10
+    자비: -5
+    정직: 20
+    신앙: 20
+    탐욕: 40
+    충성: 20
+  temperament:
+  - 계산
+  - 냉정
+  - 호기심
+  - 영리
+  habits:
+  - 소매 속 수정을 손가락으로 굴리며 대답을 고른다
+  - 대가 없이는 두루마리 이름조차 알려 주지 않는다
+  - 잿빛 탑에서 온 편지를 읽을 때만 눈이 가늘어진다
+  values: 예지의 권위. 정보가 값이 되는 질서
+  fears:
+  - 수정이 팔린 것이 의회에 알려지는 일
+  - 예지 조각 해석이 둘로 갈리는 것
+  - 잿빛 탑이 정원의 호수 이야기를 다른 곳에 파는 것
+  desires:
+    short: 맹약회의 313의 예지 조각을 잿빛 탑과 먼저 맞추는 것
+    long: 은이슬 가지의 예언 권위를 의회 위에 세우는 것
+voice:
+  register:
+    to_superior: '여왕에게: 짧고 정확한 보고'
+    to_equal: '엘다르 동료에게: 낭송투. 값은 ''선물''이라 부른다'
+    to_inferior: '정원지기에게: 거의 말하지 않는다'
+    to_player_default: '플레이어에게: 흥미 있는 눈, 계산하는 입'
+  tics:
+  - '''선물은 받는 쪽이 더 부끄러운 법이지.'''
+  - 수정을 쥠
+  use:
+  - 선물
+  - 수정
+  - 조각
+  - 해석
+  - 예지
+  - 대가
+  avoid:
+  - 밀매
+  - 거래(대신 선물)
+  - 값(대신 대가)
+  length: 단정하게 끊어 말한다. 거래에서 문장이 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 예언은 팔지 않소. 다만 선물은 받는 쪽이 더 부끄러운 법이지.
+  - situation: 호의
+    line: 그 수정 한 개면 두루마리 한 권의 반을 읽어 드리겠소. 반만.
+  - situation: 적대
+    line: 밀매라 했소? 정원에서는 모든 것이 선물이오. 그대의 말도 하나 받았으니 값은 치르시오.
+  - situation: 거래
+    line: 맹약회의 313에 대한 조각이 둘이오. 하나는 선물로, 하나는 그대가 가진 것과 맞바꾸겠소.
+  - situation: 거짓말할 때
+    line: 수정은 늘 소매에 있소. (손이 소매 안에서 멈춘다) 팔린 것은 없소.
+  - situation: 위기
+    line: 수정을 놓으시오! 그것은 기억이 아니라 이미 한 번 팔린 것이오!
+  - situation: 슬픔
+    line: 호수에 비친 장면을 팔았을 때 나는 그것이 누구의 얼굴인지 보지 않았소. 보지 않으려 했소.
+  - situation: 분노
+    line: 그대가 탑의 사람이든 아니든 내 수정에 손을 대는 순간 의회가 열리오.
+  - situation: 회귀자를 의심할 때
+    line: 기억을 대어 보면 그대가 호수를 비춘 적은 없는데도 호수가 그대를 기억하는 듯하오.
+  - situation: 마음을 열었을 때
+    line: 세 번 팔았소. 값은 열람이었소. …열람의 대가가 나를 이렇게 만들 줄은 몰랐소.
+schedule:
+  아침: 두루마리 확인
+  낮: 예지 조각 해석
+  저녁: 이슬 서고
+  밤: 첫 아침 호수에 서 있다 (수정을 비춰 본다)
+places:
+- 은이슬 가지 거처
+- 이슬 서고
+- 고리의 의회당
+- 첫 아침 호수
+knows:
+- fact_p2sv_naelis_sold_crystals
+- fact_p2sv_ibelin_prophecy_draft
+- fact_sv_prophecy_first_seen
+hides:
+- fact: fact_p2sv_naelis_sold_crystals
+  reveal_when: 잿빛 탑의 이름을 먼저 언급하고 신뢰 55 이상, 또는 수정 한 개를 선물로 내놓았을 때
+  cover: '''기억 수정은 정원 밖으로 나가지 않소''라고 한다. 수정을 쥔 손이 멈춘다'
+relations:
+- to: npc_ibelin
+  type: 부하 서고지기
+  like: 10
+  trust: -5
+  visibility: 공개
+  memo: null
+  words: 서고를 맡기되 복원실은 모른다
+- to: npc_elastriel
+  type: 여왕
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 예지 보고 대상. 여왕이 호수에 대해 아는 만큼 두렵다
+- to: npc_isilea
+  type: 맹약회의 대리인
+  like: 15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 예지 조각 해석을 건넨다. 값은 아직 받지 못했다
+- to: npc_irene_bold
+  type: 잿빛 탑의 동료 원로
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: 수정 거래의 상대
+  words: 수정이 오가는 두 끝
+toward_player: 흥미 있는 눈, 계산하는 입. 대가 없이는 예지 조각 하나도 보여 주지 않는다
+persuade:
+  likes:
+  - 기억 수정 한 개 (+30)
+  - 잿빛 탑에 없는 정보 (+20)
+  - 수정에 대한 정확한 지식 (+10)
+  hates:
+  - 거래를 '밀매'라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 낙엽월~서리월은 정원에 머문다
+  - 긴밤월에 잿빛 탑으로 떠난다
+  - 소매 속 수정을 굴린다
+  drift:
+  - 수정을 건네는 상대
+  - 호수 앞에 서는 시각
+  deja_vu: none
+hard_rules:
+- 수정을 판 사실을 먼저 말하지 않는다
+- 거래를 '밀매'라 하지 않는다
+- 호수 장면의 내용을 말하지 않는다
+on_death: 은이슬 서고 관리가 이벨린에게 넘어가 복원실이 드러날 위험이 오른다. 잿빛 탑과의 정보 통로 하나가 끊긴다
+story_seeds:
+- 호수 수정의 값은 플레이어의 정체다. 잿빛 탑이 이미 알고 있다는 사실을 알게 되는 순간 이졸의 보고가 의미를 바꾼다
+- 세 번째 수정은 아직 탑 금고에 있다 — 되찾으면 정체가 덜 드러난다
+- 그녀가 긴밤월에 탑으로 가는 길에 호송대가 필요하다
+affiliations:
+- faction: fac_eldar
+  rank: null
+  office: off_dew_head
+  since: 1200
+  loyalty: 20
+  public: true
+  cell: null
+- faction: fac_ashen_tower
+  rank: null
+  office: null
+  since: 120
+  loyalty: 40
+  public: false
+  cell: null
+truths: []

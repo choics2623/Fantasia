@@ -1,0 +1,53 @@
+# 카즈둠 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §12(계절·서명 회기·만료일), WORLD_BIBLE §10(클락 2 맹약회의 313, 클락 3 북방 대탈주, 클락 6 깊은 문, 클락 1 흰 알 부화), facts/kazdum.yaml·phase2_kazdum.yaml, docs/world/people/kazdum.md.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림. 서명 회기는 계절 첫날(해빙월·푸른월·수확월·서리월 1일)에 계약의 돌 전당에서 열린다.
+# 다른 지역과의 연결: 313-04-15 왕의 서명 대행 발동(맹약회의 313 → 하그린의 대행 조항 → 깊은 문 안건), 313-02-20 북방 탈주자 첫 무리(마그나의 서른 자리 ← 북방 대탈주), 313-03 흰 알 부화 → 용좌 계약 갱신 대비, 매달 14일 멜리산드 대리인의 잿불석(잿불 언덕).
+# 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다.
+
+# ── 낙엽월 (9) ──
+- {id: ev_kz_hilda_visit_sep, date: "312-09-12", npcs: [npc_hilda], from: "10:00", to: "17:00", at: deep_gate__survey_camp, doing: "탐사대 막사 방문 — 그로딘의 해체 기록을 보고 다섯째 자물쇠 도면을 대조한다", travel_from: dh_royal_workshop, return_to: dh_royal_workshop, mounted: true}
+- {id: ev_kz_hilda_visit_grodin_sep, date: "312-09-12", npcs: [npc_kz_grodin], from: "10:00", to: "17:00", at: deep_gate__survey_camp, doing: "왕녀에게 해체 기록을 올린다 — 다섯째 도면 한 줄은 보여 주지 않는다"}
+- {id: ev_kz_ottilie_letter, date: "312-09-20", npcs: [npc_grimbald], from: "14:00", to: "15:30", at: dh_judge_chamber, doing: "아르카스 탑섬에서 온 오틸리의 문의서를 받는다 — '맹세를 푸는 룬'의 대가를 묻는 한 줄이 있다"}
+- {id: ev_kz_oct_prep_hagrin, date: "312-09-28", npcs: [npc_kz_hagrin, npc_kz_signa], from: "13:00", to: "17:30", at: dh_contract_hall, doing: "서리월 서명 회기 안건 쇠판 마감 — 힐다의 개방 승인 안건이 '대기 중'으로 다시 올라온다"}
+# ── 서리월 (10) — 서명 회기, 페타르 만료 ──
+- {id: ev_kz_oct1_session, date: "312-10-01", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa, npc_kz_urla, npc_kz_hag, npc_grimbald], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "서리월 서명 회기 — 족장들이 피 한 방울과 손바닥 자국을 쇠판에 찍는다. 힐다의 개방 승인 안건은 네 번째로 '다음 회기로' 넘어간다", fixed: true}
+- {id: ev_kz_oct1_tarna, date: "312-10-01", npcs: [npc_kz_tarna, npc_kz_magna], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "서명 회기 방청 — 잿모루의 용제국 납품 갱신과 회색광맥의 계약 광부 등록 갱신이 같은 날 올라온다", travel_from: dh_ashanvil_row}
+- {id: ev_kz_oct1_haralda, date: "312-10-01", npcs: [npc_kz_haralda], from: "14:00", to: "17:00", at: dh_signing_hall, doing: "개정안 제출 — 족장 서명 세 개가 필요한데 하나뿐이다. 안건은 '문구 충돌'로 기록된다", travel_from: contract_camp__dorm, return_to: contract_camp__dorm}
+- {id: ev_kz_oct1_hilda, date: "312-10-01", npcs: [npc_hilda], from: "09:00", to: "13:00", at: dh_signing_hall, doing: "자기 안건이 다시 미뤄지는 것을 서 있는 채 지켜본다 — 아버지 쪽이 아니라 오빠 쪽을 본다"}
+- {id: ev_kz_petar_expiry_trip, date: "312-10-08", npcs: [npc_petar], from: "14:00", to: "17:00", at: dh_contract_hall, doing: "만료일 — 마흔 해를 채운 광부가 자기 계약서를 직접 부순다. 쇠판 모서리를 쥔 손이 떨린다", travel_from: contract_camp__dorm, return_to: contract_camp__dorm}
+- {id: ev_kz_petar_expiry_signa, date: "312-10-08", npcs: [npc_kz_signa], from: "14:00", to: "17:00", at: dh_contract_hall, doing: "마흔 해 계약판 원본을 서고에서 내려 만료 증인석에 놓는다 — 서명 룬 서른 개가 한 쇠판에 있다"}
+- {id: ev_kz_petar_expiry_king, date: "312-10-08", npcs: [npc_bror], from: "16:00", to: "16:40", at: dh_contract_hall, doing: "왕이 증인석에 선다 — 마흔 해를 채운 광부는 드물다. 오른쪽 귀 쪽으로 고개를 기울여 광부의 말을 듣는다"}
+- {id: ev_kz_petar_free_day, date: "312-10-09", npcs: [npc_petar], from: "06:00", to: "20:00", at: contract_camp__expiry_market, doing: "자유민 첫날 — 점호 없는 새벽에 눈을 뜬다. 시장 한가운데 서서 이름을 누가 부르는지 기다린다", travel_from: dh_contract_hall}
+- {id: ev_kz_oct12_beat_slab, date: "312-10-12", npcs: [npc_kz_brun, npc_kz_urla], from: "18:00", to: "21:00", at: deep_gate__beat_room, doing: "박자 방에 이달 돌판을 내려보낸다 — 신전의 박과 법정 쇠판이 한 박 어긋난 날짜를 따로 적어 간다", travel_from: dh_priest_quarters, return_to: dh_priest_quarters}
+# ── 긴밤월 (11) ──
+- {id: ev_kz_nov_pale_chapel, date: "312-11-05", npcs: [npc_deep_nidar], from: "17:00", to: "21:00", at: deep_gate__pale_chapel, doing: "신도 모집 — 새 노래할 인간 후보 명단을 한 번 더 정리한다. 이번에는 계약 광부가 둘이 아니라 여섯이다"}
+- {id: ev_kz_nov_sigrun_report, date: "312-11-15", npcs: [npc_kz_sigrun, npc_kz_krag], from: "19:00", to: "21:00", at: deep_gate__bardum, doing: "경비 잠꼬대 보고서가 열두 장이 된다. 시그룬은 서랍에 넣고 크라그는 보지 않는다"}
+- {id: ev_kz_nov_magna_list, date: "312-11-24", npcs: [npc_kz_magna], from: "17:00", to: "21:00", at: contract_camp__grey_pit, doing: "해빙월 서른 자리 명단을 서명 쇠판에 새긴다 — 이름 칸 서른이 비어 있다"}
+# ── 굶주림월 (12) ──
+- {id: ev_kz_dec_hilda_visit, date: "312-12-12", npcs: [npc_hilda], from: "10:00", to: "17:00", at: deep_gate__survey_camp, doing: "두 번째 방문 — 개방 기계의 룬 바퀴 일곱 중 여섯을 시험한다. 다섯째 자물쇠 앞에서 기계가 멈춘다", travel_from: dh_royal_workshop, return_to: dh_royal_workshop, mounted: true}
+- {id: ev_kz_dec_grodin_machine, date: "312-12-12", npcs: [npc_kz_grodin], from: "10:00", to: "17:00", at: deep_gate__seal_door, doing: "기계가 멈추는 순간 그로딘의 손이 가슴의 증표 위로 간다 — '목소리' 이야기는 꺼내지 않는다"}
+- {id: ev_kz_dec_krag_roll, date: "312-12-20", npcs: [npc_kz_krag], from: "18:00", to: "19:00", at: deep_gate__guard_post, doing: "연말 점호 — 경비 명부를 새로 쓰는 날. 사라진 셋의 이름 칸을 비워 두고 다음 줄로 넘어가지 못한다"}
+# ── 313 해빙월 (1) ──
+- {id: ev_kz_jan1_session, date: "313-01-01", npcs: [npc_kz_hagrin, npc_kz_signa, npc_kz_urla, npc_kz_hag, npc_bror], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "해빙월 서명 회기 — 마그나가 '출신지 불문' 계약 광부 서른 자리를 안건으로 올리고, 개방 승인 안건은 다섯 번째로 넘어간다", fixed: true}
+- {id: ev_kz_jan1_magna, date: "313-01-01", npcs: [npc_kz_magna], from: "10:00", to: "14:00", at: dh_signing_hall, doing: "해빙월 서른 자리 안건을 직접 설명한다 — 돌 법정이 거부할 조항이 없음을 쇠판 문구로 보인다", travel_from: contract_camp__grey_pit, return_to: contract_camp__grey_pit}
+- {id: ev_kz_jan10_road_open, date: "313-01-10", npcs: [npc_kz_magna], from: "08:00", to: "10:00", at: contract_camp__bulletin, doing: "서리 길이 열리는 날 — 게시판 서른 칸 앞에서 북쪽 소문이 오기를 기다린다"}
+# ── 313 파종월 (2) ──
+- {id: ev_kz_feb20_first_group, date: "313-02-20", npcs: [npc_kz_magna, npc_kz_gunhild], from: "08:00", to: "16:00", at: hammer_gate__stamp_window, doing: "북방 탈주자 첫 무리 서른 — 마그나가 직접 나와 '출신지 불문' 계약 줄에 세운다. 군힐드가 서른 번 각인한다", travel_from: contract_camp__grey_pit, return_to: contract_camp__grey_pit}
+- {id: ev_kz_feb20_ledger, date: "313-02-20", npcs: [npc_kz_gunhild], from: "17:00", to: "19:00", at: hammer_gate__ledger_room, doing: 서른 번 각인한 쇠판 사본을 장부실에 넣는다 — 잿불석 줄 바로 아래에 둔다}
+# ── 313 꽃월 (3) — 흰 알 부화 ──
+- {id: ev_kz_mar_hilda_visit, date: "313-03-12", npcs: [npc_hilda], from: "10:00", to: "17:00", at: deep_gate__survey_camp, doing: "세 번째 방문 — 다섯째 자물쇠 앞에서 다른 방법을 묻는다. 그로딘이 '목소리'라는 말을 처음 꺼낸다", travel_from: dh_royal_workshop, return_to: dh_royal_workshop, mounted: true}
+- {id: ev_kz_mar_egg_prep, date: "313-03-25", npcs: [npc_kz_hagrin, npc_kz_signa, npc_kz_hag], from: "13:00", to: "18:00", at: dh_contract_hall, doing: "용좌 계약 갱신 쇠판 두 벌을 준비한다 — 흰 알이 부화해 승자가 서면 갱신 서명만 받는다. 어느 승자의 이름도 아직 새기지 않는다"}
+# ── 313 푸른월 (4) — 서명 회기, 맹약회의 길 ──
+- {id: ev_kz_apr1_session, date: "313-04-01", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa, npc_kz_urla, npc_kz_hag, npc_grimbald], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "푸른월 서명 회기 — 맹약회의 313 두르강 대표 서명. 왕이 부재하는 동안 하그린이 서명 대행을 맡는 조항이 쇠판에 찍힌다", fixed: true}
+- {id: ev_kz_apr15_king_leaves, date: "313-04-15", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa], from: "06:00", to: "09:00", at: dh_king_hall, doing: "왕이 맹약회의 313 길에 오른다 — 서명 대행 조항이 발동하고 하그린이 서명 책상에 선다. 서랍 안 쇠판 세 장이 책상 위로 올라온다"}
+- {id: ev_kz_apr16_hagrin_desk, date: "313-04-16", npcs: [npc_kz_hagrin], from: "06:30", to: "18:00", at: dh_signing_desk, doing: "서명 대행 첫날 — '대기 중 안건 포함' 조항이 걸린 쇠판 세 장 앞에서 하루를 보낸다, if: hilda_pushes_gate"}
+- {id: ev_kz_apr16_hilda_waits, date: "313-04-16", npcs: [npc_hilda], from: "10:00", to: "18:00", at: dh_king_hall, doing: "서명 책상 앞 줄에 선다 — 오빠가 쇠판을 올려놓는 것을 지켜본다, if: hilda_pushes_gate}
+# ── 313 태양월 (5) — 맹약회의 ──
+- {id: ev_kz_may_gate_session, date: "313-05-20", npcs: [npc_kz_grodin, npc_kz_krag, npc_kz_sigrun], from: "06:00", to: "20:00", at: deep_gate__seal_door, doing: "왕이 맹약회의에 가 있는 동안 서명 대행이 개방 안건에 서명했다면 — 탐사대가 다섯째 자물쇠 앞에 서고 크라그가 오른손을 든다, if: gate_signed_by_proxy"}
+- {id: ev_kz_may_reseal_ready, date: "313-05-20", npcs: [npc_kz_sigrun], from: "06:00", to: "20:00", at: deep_gate__bardum, doing: "석공 열 명이 열한 겹의 첫 겹을 새기기 시작한다 — 서명 한 줄로 하루 안에 덮으려고, if: gate_resealed"}
+# ── 313 수확월 (7) ──
+- {id: ev_kz_jul1_session, date: "313-07-01", npcs: [npc_bror, npc_kz_hagrin, npc_kz_signa, npc_kz_urla, npc_kz_hag, npc_grimbald], from: "06:00", to: "20:00", at: dh_signing_hall, doing: "수확월 서명 회기 — 맹약회의 313의 결과가 서명 쇠판으로 올라온다. 왕이 돌아왔고, 대행 서명한 것들의 처리가 첫 안건이다", fixed: true}
+# ── 매달 반복 ──
+- {id: ev_kz_hagrin_ear_measure, npcs: [npc_kz_hagrin], repeat: monthly, day: 1, from: "00:40", to: "01:10", at: dh_king_chamber, doing: "잠든 왕의 오른쪽 귀 굳은 부분을 놋 줄자로 잰다 — 기록 책에 한 줄을 적고 돌아선다", travel_from: dh_crown_prince_room, return_to: dh_crown_prince_room}
+- {id: ev_kz_gunhild_ember_stone, npcs: [npc_kz_gunhild], repeat: monthly, day: 14, from: "09:00", to: "12:00", at: hammer_gate__ledger_room, doing: "멜리산드 대리인의 잿불석 반입 — 장부실 문을 직접 잠그고 각인한다. '왕립 공방 입고'라는 칸에 줄을 긋지 않는다"}
+- {id: ev_kz_monthly_expiry_list, npcs: [npc_kz_kern, npc_kz_berndt], repeat: monthly, day: 25, from: "16:00", to: "18:00", at: contract_camp__foreman_desk, doing: "다음 달 만료자 명단을 확인한다 — 케른은 한 줄을 읽지 않고, 베른트는 그 줄 앞에 이름을 적는다"}

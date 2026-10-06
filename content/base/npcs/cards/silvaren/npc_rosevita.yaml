@@ -1,0 +1,166 @@
+id: npc_rosevita
+name: 로즈비타
+aka:
+- 이브
+- 열쇠를 두 개 가진 시종
+tier: B
+type: living
+race: 인간
+subrace: 정원 인간
+sex: 여
+age: 40
+region: 실바렌
+home: 은잎문 손님 정자 뒤 시종 방
+job: 카엘론의 시종 — 경매 대기 우리 열쇠 담당
+rank: 정원지기 (계급 밖), 수문장 시종
+summary: 새로 온 사람이 아래 이름을 떠올리도록 경매 전날 밤 한 시간 우리 문을 여는 시종. 열쇠 사본을 몰래 지니고 있다
+source: docs/world/people/silvaren.md
+life:
+- year: 272
+  age: 0
+  event: 이슬 우리 3동에서 태어남. 엘다르가 '로즈비타'라는 정원 이름을 붙임
+- year: 292
+  age: 20
+  event: 은잎문으로 차출되어 카엘론의 시종이 됨
+- year: 302
+  age: 30
+  event: 처음 경매 전날 밤에 우리 문을 열었다. 열쇠 사본은 그날 만든 것
+- year: 312
+  age: 40
+  event: 올 서리월 경매에 회색여울에서 팔려 오는 이가 있다는 것을 장부에서 읽음 (낙엽월 1일 기준)
+appearance:
+- 옷깃에 아이 머리카락 한 올을 꿰어 달았다
+- 열쇠 꾸러미를 소리 나지 않게 헝겊으로 감았다
+- 웃을 때 입꼬리를 한쪽만 올린다
+smell: 흰 빵과 은목 수액
+voice_sound: 부드럽고 낮은 목소리. 끝을 삼킨다
+personality:
+  disposition:
+    용기: 30
+    자비: 50
+    정직: 0
+    신앙: 10
+    탐욕: -10
+    충성: 40
+  temperament:
+  - 다정
+  - 조심
+  - 비밀
+  - 단단
+  habits:
+  - 새 손님에게 먼저 흰 빵을 건넨다
+  - 열쇠 꾸러미를 허리 뒤로 돌려 숨긴다
+  - 카엘론의 낭송 소리가 들리면 걸음을 멈춘다
+  values: 새로 온 사람이 이름을 잃지 않는 것
+  fears:
+  - 카엘론에게 사본이 들키는 것
+  - 대기 우리의 밤이 한 시간도 허락되지 않는 날
+  desires:
+    short: 올 서리월 경매 전날 밤 새 손님이 아래 이름을 떠올리게 하는 것
+    long: 자기 아래 이름이 더 이상 '이브'가 아닌 날을 보는 것
+voice:
+  register:
+    to_superior: '카엘론에게: 극존대, 고개를 숙임'
+    to_equal: '정원지기에게: 부드러운 낮은 반말'
+    to_inferior: '나가 중개인에게: 차갑고 짧은 존댓말'
+    to_player_default: '플레이어에게: 먼저 먹을 것을 묻는다'
+  tics:
+  - '''배는 안 고프세요?'''
+  - 헝겊으로 열쇠를 감는 소리
+  use:
+  - 빵
+  - 아래 이름
+  - 열쇠
+  - 손님
+  - 밤
+  - 한 시간
+  avoid:
+  - 품목
+  - 낙찰
+  - 값
+  length: 부드럽고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 배는 안 고프세요? 흰 빵이 있어요. 내일은 당신 번호가 붙는 날이라, 오늘은 밤이 조금 길어요.
+  - situation: 호의
+    line: 아래 이름을 한 번만 떠올려 보세요. 부르지는 말고요. 번호가 붙기 전에, 한 번만.
+  - situation: 적대
+    line: 손님을 품목이라 부르는 입은 빵을 받을 수 없어요.
+  - situation: 위기
+    line: 우리 문이 열려 있으면 안 돼요! 열쇠는 제가… 아니, 열쇠는 없었어요!
+  - situation: 비밀 누설
+    line: 열쇠는 둘이에요. 하나는 카엘론 님이 아시고, 하나는 제 허리 뒤에 있어요. 한 시간만요.
+schedule:
+  아침: 우리 점검, 손님 정자 시중
+  낮: 수문장 시종 일
+  저녁: 새 손님에게 흰 빵을 건넨다
+  밤: 경매 전날에는 한 시간 문을 연다
+places:
+- 경매 대기 우리
+- 손님 정자
+- 은잎문 아치
+knows:
+- fact_p2sv_rosevita_second_key
+- fact_p2sv_sisra_inflates_count
+- fact_p2sv_autumn_auction_greyford
+hides:
+- fact: fact_p2sv_rosevita_second_key
+  reveal_when: 신뢰 50 이상이고 새 손님의 안위를 걱정하는 모습을 보였을 때
+  cover: '''열쇠는 제 허리에 하나 있어요. 하나뿐이에요''라고 한다. 손이 허리 뒤로 간다'
+relations:
+- to: npc_caelon
+  type: 주인
+  like: 25
+  trust: 5
+  visibility: 공개
+  memo: 사본은 모른다
+  words: 밤마다 이름을 낭송하는 분. 그 낭송을 들으며 열쇠를 만진다
+- to: npc_sisra
+  type: 손님을 부르는 나가
+  like: -15
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 손님을 품목으로 센다. 나는 그 말이 열쇠 소리처럼 싫다
+- to: npc_ada
+  type: 이슬 우리 어른
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: 새 손님의 소식을 전한다
+  words: 문 너머의 어른. 소식 하나를 한 줄로 건넨다
+toward_player: 부드러운 시선, 깊게 숙인 고개. 새로 온 사람에게 이름을 묻지 않는다
+persuade:
+  likes:
+  - 새 손님을 돕는 일 (+25)
+  - 밤 한 시간의 비밀을 지켜 주기 (+20)
+  hates:
+  - 열쇠를 빼앗으려는 시도
+  - 손님을 품목이라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 경매 전날 밤 한 시간 대기 우리 문을 연다
+  - 열쇠 사본을 허리 뒤에 지닌다
+  drift:
+  - 문을 여는 시각 (10분 안팎)
+  deja_vu: none
+hard_rules:
+- 사본의 존재를 먼저 말하지 않는다
+- 손님을 '품목'이라 하지 않는다
+on_death: 경매 대기 우리의 한 시간이 사라진다. 사본 열쇠가 카엘론 손에 들어가 우리가 엄격해진다
+story_seeds:
+- 이번 서리월 경매에는 회색여울에서 팔려 온 이가 있다. 그 사람의 아래 이름이 불리려면 로즈비타의 한 시간이 필요하다
+- 사본 열쇠는 경매 정자 수납함 이중 바닥에도 하나 숨겨져 있다
+affiliations:
+- faction: fac_eldar
+  rank: rank_gardener
+  office: null
+  since: 292
+  loyalty: 40
+  public: true
+  cell: null
+truths: []

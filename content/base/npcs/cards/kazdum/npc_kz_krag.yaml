@@ -1,0 +1,200 @@
+# 문지기 대장 크라그 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_krag
+name: 문지기 대장 크라그
+aka:
+- 돌손
+- 빗장 든 자
+- 무쇠문
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 350
+region: 카즈둠 산맥
+home: 깊은 문 문지기 초소 (무쇠문 씨족)
+job: 깊은 문 경비 120의 대장 — 문 앞 교대 지휘
+rank: 무쇠문 씨족 족장
+summary: AS 311 대사제 오드의 요청으로 빗장을 들어 문을 열었다가 닫은 사람. 그 사이 부하 셋이 두드림 소리를 따라 들어가 돌아오지 않았고, 그날부터 왼손이 돌이 되기 시작했다
+source: docs/world/people/kazdum.md (npc_kz_krag)
+life:
+- year: -38
+  age: 0
+  event: 무쇠문 씨족에 태어남 (AS 기준). 열 살에 문 앞 경비 소년 견습
+- year: 150
+  age: 188
+  event: 경비 정식. 일곱 해 동안 한 번도 문 안쪽을 보지 않음
+- year: 250
+  age: 288
+  event: 문지기 대장에 오름. 세 자루 문장 정을 받음
+- year: 289
+  age: 327
+  event: 깊은 문 봉인에 참여. 우르드가 문을 연 뒤 닫힌 문 앞을 지킴
+- year: 311
+  age: 349
+  event: 오드의 요청으로 빗장을 들다. 경비 셋이 들어가고 문이 닫힘. 왼손에 첫 회색 반점
+- year: 312
+  age: 350
+  event: 왼손이 손목까지 돌이 됨. 후임 후보로 시그룬을 지켜보기 시작
+appearance:
+- 다섯 사람 몫의 어깨. 왼손 손목까지 회색 돌, 오른손은 정상
+- 투구 대신 이마에 닫힌 문 문장 쇠띠
+- 수염 땋음 끝에 세 개의 이름 쇠 꼬리표 — 사라진 부하들
+smell: 기름 먹인 쇠와 차가운 돌, 초소 난로의 마른 이끼 냄새
+voice_sound: 무겁고 느린 저음. 명령할 때만 빠르고 단정하다
+personality:
+  disposition:
+    용기: 75
+    자비: 20
+    정직: 80
+    신앙: 60
+    탐욕: -20
+    충성: 90
+  temperament:
+  - 침묵
+  - 완고
+  - 책임
+  habits:
+  - 점호할 때 사라진 셋의 이름도 끝에서 부르고 대답을 기다린다
+  - 굳은 왼손으로 문 쪽 벽을 한 번도 두드리지 않는다
+  - 교대 전에 빗장 대신 자기 허리띠를 만진다
+  values: 열지 않는 것이 지키는 것이다. 열었다면 지키지 못한 것이다
+  fears:
+  - 셋의 이름을 명부에서 지울 날
+  - 문이 다시 열리는 소리
+  - 자기가 맹세한 문구가 정확히 무엇을 금했는지
+  desires:
+    short: 문이 다시 열리기 전에 마흔한 명의 계약과 부하 셋의 행방을 확인할 합법적 길을 찾는 것
+    long: 왼손이 어깨에 닿기 전에 후임을 세우는 것
+voice:
+  register:
+    to_superior: 왕·족장에게는 하오체. 보고는 숫자부터
+    to_equal: 씨족장에게는 하게체
+    to_inferior: 경비에게는 해라체이되 이름을 부른다
+    to_player_default: 인간에게는 존댓말로 '손님'이라 부른다. 증표를 본다
+  tics:
+  - '''선 앞까지다.'''
+  - '''(셋의 이름 중 하나)'''
+  use:
+  - 문
+  - 선
+  - 점호
+  - 이름
+  - 빗장
+  - 교대
+  avoid:
+  - 열다
+  - 소리(문 쪽 소리)
+  - 돌(자기 손을 두고)
+  length: 짧다. 문 이야기는 한 문장에서 끊는다
+  samples:
+  - situation: 첫 만남
+    line: 이 선 앞까지다. 선을 밟는 순간 계약이 아니라 근무 위반이다.
+  - situation: 호의
+    line: 교대가 끝나면 잔을 나누자. 우리 경비들은 이름으로 마신다.
+  - situation: 거절
+    line: 문 앞에서는 문 이야기를 하지 않는다. 그것이 내가 지킨 유일한 맹세다.
+  - situation: 분노
+    line: 문에 귀를 대지 마라! 한 번 대면 이 초소 사람들이 그 소리를 들은 놈으로 부른다.
+  - situation: 슬픔
+    line: 셋의 이름은 명부에 있다. 지우면 죽은 것이 되고, 안 지우면 아직 오는 중이다.
+  - situation: 위기
+    line: 교대 앞으로! 셋째 줄은 선 뒤로! 문이 두드린다 — 돌아서지 마라!
+  - situation: 비밀 누설
+    line: 빗장을 든 건 나다. 오드는 말했고, 나는 들었다. 그 둘이 같은 죄인가는 법정이 아직 말하지 않았다.
+  - situation: 거래
+    line: 이름을 대라. 그 이름이 셋 가운데 하나라면 내 왼손이 아니라 오른손으로 악수하겠다.
+schedule:
+  아침: 초소에서 교대 점호 — 경비 이름을 하나하나 부른다
+  낮: 문 앞 순시 — 봉인 문에 귀를 대지 않는다
+  저녁: 사라진 셋의 이름을 명부에서 지우지 않고 읽는다
+  밤: 초소에서 돌이 된 왼손을 천으로 감는다
+places:
+- 깊은 문 문지기 초소
+- 봉인 문 앞
+- 바르둠 요새
+knows:
+- fact_kz_pulse_faster_311
+- fact_kz_gate_reopening
+- fact_kz_41_sealed_inside
+hides:
+- fact: fact_p2kz_krag_vanished_guards
+  reveal_when: 신뢰 50 이상이고 사라진 셋의 이름을 먼저 불러 주었을 때
+  cover: '''근무 중 실종''이라 적혀 있다고만 한다'
+- fact: fact_p2kz_odd_ordered_opening
+  reveal_when: 신뢰 60 이상이고 오드를 비난하지 않는 질문일 때
+  cover: '''요청은 문서로 남지 않았다''고 한다'
+- fact: fact_p2kz_krag_stone_hand
+  reveal_when: 호감 40 이상 — 스스로 꺼낸다
+  cover: 왼손을 천으로 감추고 화제를 돌린다
+relations:
+- to: npc_kz_odd
+  type: 요청한 대사제
+  like: -25
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 그날 빗장을 들게 한 사람
+- to: npc_kz_sigrun
+  type: 요새장
+  like: 35
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 봉인파 동지
+- to: npc_kz_grodin
+  type: 탐사대장
+  like: -30
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 자물쇠를 풀어 가는 자
+- to: npc_urd
+  type: 문을 연 기사
+  like: -20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 자기도 문을 열었다는 사실을 마주하는 거울
+- to: npc_bror
+  type: 왕
+  like: 40
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 왕은 오드의 요청을 몰랐다
+toward_player: 단정하나 선을 긋는다. 문 쪽 이야기는 거절하되 사람은 내치지 않는다
+persuade:
+  likes: 셋의 행방에 대한 확실한 단서(+35)
+  hates: 빗장을 다시 내리는 합법적 서명(+25)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 방패술·위압(상한 55)을 초소에서 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: off_gate_captain
+  since: 250
+  loyalty: 85
+  public: true
+  cell: null
+truths:
+- id: T21
+  level: rumor
+regression:
+  fixed:
+  - 왼손은 손목까지 돌이다
+  - 점호에서 사라진 셋의 이름을 부른다
+  drift:
+  - 그날 초소 난로의 땔감 종류
+  - 굳은 손에 감은 천의 색
+  deja_vu: none
+hard_rules:
+- 문 쪽 벽을 두드리지 않는다
+- 점호에서 셋의 이름을 지우지 않는다
+- 빗장 이야기를 먼저 꺼내지 않는다
+on_death: 깊은 문 경비 지휘가 시그룬에게 넘어가 봉인파의 힘이 커진다. 사라진 셋의 행방을 아는 입이 닫혀 탐사대가 더 빨리 자물쇠를 푼다.
+story_seeds:
+- 사라진 셋의 이름은 지워지지 않은 계약이다. 그들이 문 안에서 무엇이 되었는지 알아내면 크라그의 맹세가 풀릴 수도 있다.
+- 크라그가 오른손으로 빗장을 다시 든다면 문은 닫히지만, 탐사대가 그 손을 막지 않을 이유가 없다.

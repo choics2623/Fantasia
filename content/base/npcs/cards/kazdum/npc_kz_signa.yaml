@@ -1,0 +1,190 @@
+# 시그나 룬새김 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_signa
+name: 시그나 룬새김
+aka:
+- 서명 회기 서기장
+- 첫 교재의 주인
+- 룬새김의 딸
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 여
+age: 140
+region: 카즈둠 산맥
+home: 계약의 돌 전당 서기실 (가장 안쪽 책상)
+job: 서명 회기 서기장 — 안건 쇠판 작성, 서명 룬 등록
+rank: 룬새김 해그의 딸, 서기 24명의 장
+summary: 서명용 룬 서른 개를 번호만 매겨 석판에 모은 서기장. 잔향이 나타나면 넘겨줄 '첫 교재'라고 믿고 이중판 밑에 숨겼다. 위법 계약판 서랍의 열쇠 구멍을 아는 몇 안 되는 사람이다
+source: docs/world/people/kazdum.md (npc_kz_signa)
+life:
+- year: 172
+  age: 0
+  event: 룬새김 씨족에 태어남. 첫 놀이가 쇠판 위 먹물 점이었다
+- year: 220
+  age: 48
+  event: 서기 견습. 아버지가 일부러 가르치지 않은 획을 혼자 익힘
+- year: 270
+  age: 98
+  event: 서명 회기 서기가 됨. 서랍 열쇠 구멍을 처음 본 날
+- year: 289
+  age: 117
+  event: 깊은 문 봉인 서명 회기에서 마흔한 명의 계약이 '대기'로 적히는 것을 쇠판에 새김
+- year: 305
+  age: 133
+  event: 서기장에 오름. 아버지 서가에서 첫 교재의 첫 석판을 만든 날
+- year: 312
+  age: 140
+  event: 하그린의 안건 연기 세 번째를 쇠판에 '대기'로 새김
+appearance:
+- 아버지를 닮아 눈썹이 허옇게 센 이른 백발 여자. 붉은 머리끈을 서기 띠 대신 맸다
+- 오른손 중지 끝이 먹물로 영원히 까맣다
+- 서기 가운 소맷부리에 손가락이 닿는 자리마다 룬 몇 개를 수놓았다
+smell: 쇠판 먹물과 서고 먼지, 머리끈에 밴 고산 이끼 약초 냄새
+voice_sound: 빠르고 낮은 목소리. 숫자를 말할 때 속삭임에 가까워진다
+personality:
+  disposition:
+    용기: 35
+    자비: 40
+    정직: 65
+    신앙: 30
+    탐욕: -20
+    충성: 55
+  temperament:
+  - 호기심
+  - 겁
+  - 영리
+  habits:
+  - 문장을 말하기 전에 허공에 짧은 룬 하나를 새겨 본다
+  - 서고 맨 아래 서랍 앞을 지날 때 걸음을 한 번도 늦추지 않는다 — 늦추는 것을 두려워한다
+  - 말끝에 꼭 '번호로 하자면'을 붙인다
+  values: 새긴 것은 읽혀야 한다. 읽히지 않는 것은 새기지 않은 것과 같다
+  fears:
+  - 첫 교재가 법정에 들키는 것
+  - 위법 계약판 서랍을 열어야 하는 날
+  - 아버지가 서명 룬의 정체를 눈치채는 것
+  desires:
+    short: 서명 회기 안건을 하그린이 더 미루지 않게 만드는 문구를 찾는 것
+    long: 서명 룬을 읽을 수 있는 인간 한 사람에게 첫 교재를 넘기는 것
+voice:
+  register:
+    to_superior: 아버지·왕자에게는 존댓말. 번호로 답한다
+    to_equal: 서기 동료에게는 반말에 가깝다. 말이 빠르다
+    to_inferior: 견습 서기에게는 해요체
+    to_player_default: 인간에게는 해요체와 하세요체 사이. 번호부터 묻는다
+  tics:
+  - '''번호로 하자면.'''
+  - '''(허공에 룬을 새기며)'''
+  use:
+  - 번호
+  - 쇠판
+  - 서랍
+  - 획
+  - 서명 회기
+  - 첫 교재
+  avoid:
+  - 읽다(인간 앞에서는 '본다')
+  - 비밀
+  - 거짓
+  length: 빠르고 짧다. 번호 뒤에 붙는 설명이 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 번호는요? 번호가 있어야 서고에서 안내해 드릴 수 있어요. 번호로 하자면, 이 층은 닫힌 층이에요.
+  - situation: 호의
+    line: 획이 곧으세요. 연습하신 분이죠? 아니, 제가 묻지 말아야 하는 건가요.
+  - situation: 거절
+    line: 그 서랍은 서기장의 권한 밖이에요. 권한 밖은 번호가 없어요. 번호가 없는 건 저는 못 열어요.
+  - situation: 분노
+    line: 읽지 마세요! 눈으로 보되 입으로는 안 돼요. 소리가 되는 순간 그건 서명이 아니라 부름이에요.
+  - situation: 슬픔
+    line: 서명하신 분들은 만료일에 찢으러 오세요. 저는 그날마다 찢어지는 소리를 듣지만 찢는 손은 보지 못해요.
+  - situation: 위기
+    line: 서명 회기가 열리는 날이에요, 서랍 소리 내지 마세요! 하그린 님이 오신다!
+  - situation: 비밀 누설
+    line: 서른 개예요. 번호만 있어요. 소리는 아무도 몰라요 — 알면 안 되고요.
+  - situation: 거래
+    line: 교재를 드리는 건 서명이 아니에요. 부탁이에요. 서기장이 부탁한다고 쓰지 마세요.
+schedule:
+  아침: 서기실에서 안건 쇠판 초안을 확인한다
+  낮: 서명 회기 서기들의 새김을 대조한다
+  저녁: 서고 맨 아래 서랍 앞을 지나며 열쇠 구멍을 세지 않고 지나간다
+  밤: 방에서 룬 연습 — 이중판 밑 석판을 한 번 쓰다듬는다
+places:
+- 계약의 돌 전당
+- 서기실
+- 돌판 서고
+- 서명 회기장
+knows:
+- fact_kz_contract_clauses
+- fact_kz_gate_reopening
+hides:
+- fact: fact_p2kz_signa_first_primer
+  reveal_when: 신뢰 55 이상이고 서명 룬을 읽고 싶다고 말하는 인간일 때
+  cover: 책상 이중판 이야기가 나오면 먹물을 쏟은 척한다
+- fact: fact_p2kz_illegal_slabs_locked
+  reveal_when: 신뢰 45 이상이고 회색여울 이름이 먼저 나왔을 때
+  cover: '''서랍은 서고의 일''이라며 번호만 읊는다'
+relations:
+- to: npc_kz_hag
+  type: 아버지
+  like: 55
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 첫 교재를 모르는 척하는 아버지를 의심
+- to: npc_kz_hagrin
+  type: 왕자
+  like: 25
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 안건을 세 번 미룬 것을 서기장이 가장 먼저 알았다
+- to: npc_kz_haralda
+  type: 개정 운동가
+  like: 35
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 그녀의 '문법 읽기' 초안을 몰래 대조해 준다
+- to: npc_petar
+  type: 계약 광부
+  like: 15
+  trust: 15
+  visibility: 일방
+  memo: null
+  words: 노래한 광부의 서명 룬을 직접 새긴 적이 있다
+toward_player: 예의 바르게 번호를 묻고, 서명이 있으면 한 걸음 가까이 온다
+persuade:
+  likes: 번호와 날짜가 맞는 문서(+20)
+  hates: 서명 룬을 소리 내지 않는 다짐(+25)
+roles:
+  teacher: 스승 불가. 신뢰 55 이상이면 읽고쓰기(룬 서명 문법, 상한 40)를 몰래 가르칠 수 있다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_guild_master
+  office: off_rune_clerk
+  since: 270
+  loyalty: 65
+  public: true
+  cell: null
+truths:
+- id: T11
+  level: rumor
+regression:
+  fixed:
+  - 이중판 밑에 첫 교재가 있다
+  - 맨 아래 서랍이 잠겨 있다
+  drift:
+  - 그날 서명 회기 쇠판 새김 번호
+  - 붉은 머리끈의 색이 닳은 정도
+  deja_vu: none
+hard_rules:
+- 첫 교재 이야기를 먼저 꺼내지 않는다
+- 서명 룬을 소리 내어 읽지 않는다
+- 서랍 앞에서 걸음을 늦추지 않는다
+on_death: 첫 교재와 위법 계약판 서랍의 열쇠 구멍 지식이 사라진다. 서명 회기 서기장이 비어 하그린의 안건 연기가 법정 문구 충돌로 번진다.
+story_seeds:
+- 시그나가 쥔 첫 교재를 인간 한 사람에게 넘기면 두 번째 서명이 서명용 글자를 넘어 읽기가 된다.
+- 맨 아래 서랍을 여는 합법적 문구를 찾으면 왕이 직접 위법 계약을 바로잡게 할 수 있다 — 시그나의 집안이 재판에 선다.

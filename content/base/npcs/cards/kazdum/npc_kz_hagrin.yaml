@@ -1,0 +1,205 @@
+# 하그린 깊은망치 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_hagrin
+name: 하그린 깊은망치
+aka:
+- 서명 책상의 왕자
+- 다음 회기
+- 망치의 맏이
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 160
+region: 카즈둠 산맥
+home: 깊은망치 왕궁 왕자 서재 (서명 책상 곁)
+job: 왕자 — 왕 부재 시 서명 대행자, 서명 회기 의사 진행
+rank: 깊은망치 가문 맏이, 계승 추천 1순위
+summary: 아버지의 귀가 돌로 굳는 속도를 줄자로 재는 왕자. 누이 힐다가 올린 깊은 문 개방 안건을 세 번 '다음 회기로' 미뤘고, 그 이유를 누구에게도 말하지 않았다
+source: docs/world/people/kazdum.md (npc_kz_hagrin)
+life:
+- year: 152
+  age: 0
+  event: 깊은망치 왕궁에서 왕의 맏이로 태어남. 첫 서명은 열 살 때 쇠판 모서리에 손바닥 자국만 찍은 것
+- year: 192
+  age: 40
+  event: 서명 회기 서기 견습. 일곱 해 동안 쇠판 문구를 소리 없이 외우다
+- year: 250
+  age: 98
+  event: 돌 법정 방청석에서 맹세를 깬 서기의 판결을 지켜봄. 그가 돌이 되는 날을 끝까지 보고 나서 서명 책상 서기로 옮겨 감
+- year: 289
+  age: 137
+  event: 깊은 문 봉인 당시 서명 회기 의사 진행. 마흔한 명의 계약이 깨졌는지에 대한 첫 조항 논의를 직접 기록함
+- year: 300
+  age: 148
+  event: 아버지 귀의 돌이 손톱만큼 번졌을 때 줄자를 처음 샀다
+- year: 311
+  age: 159
+  event: 대사제 오드의 요청으로 열린 문이 닫힌 뒤, 서명 대행 조항의 '대기 중 포함' 문구를 처음 발견
+- year: 312
+  age: 160
+  event: 수확월 1일 서명 회기에서 힐다의 개방 승인 안건을 세 번째로 미룸 (해빙월·푸른월에 이어)
+appearance:
+- 아버지보다 키가 한 뼘 크고 수염을 땋지 않고 단정히 자른 붉은 갈색 수염
+- 소매 안에 접이식 놋 줄자를 늘 지닌다
+- 서명할 때마다 피 한 방울을 찍는 왼쪽 엄지가 굳은살로 두껍다
+smell: 쇠판 먹물과 오래된 돌 먼지, 소맷자락의 놋 줄자 기름
+voice_sound: 정돈된 중저음. 조항이 끝날 때마다 한 박자 쉬는 서기의 말투
+personality:
+  disposition:
+    용기: 20
+    자비: 25
+    정직: 85
+    신앙: 70
+    탐욕: -15
+    충성: 75
+  temperament:
+  - 신중
+  - 고지식
+  - 은밀
+  habits:
+  - 말하기 전에 문장을 속으로 조항 형식으로 고쳐 본다
+  - 서명 책상 서랍을 열었다 닫는 소리를 두 번 낸다 — 열쇠가 없는 서랍도
+  - 아버지 이야기가 나오면 왼손으로 오른쪽 귀 쪽 허공을 쓰다듬는다
+  values: 서명한 것은 지킨다. 서명하지 않은 것은 미룰 수 있다. 미루는 것은 거짓이 아니다
+  fears:
+  - 서명 대행의 순간이 오는 것
+  - 힐다가 아버지보다 먼저 문을 여는 것
+  - 문 안에서 뛰는 것이 정말 신의 심장인 것
+  desires:
+    short: 아버지가 쓰러지기 전에 안건의 '대기 중 포함' 조항을 법정에 고쳐 달라고 하는 것
+    long: 계약으로 일어난 일이 계약으로 끝나는 왕국을 물려받는 것
+voice:
+  register:
+    to_superior: 아버지·법정에게는 하오체. 조항의 번호부터 말한다
+    to_equal: 족장·서기에게는 하게체. 문장 끝을 한 박자 쉰다
+    to_inferior: 서기·경비에게는 간결한 해라체. 틀린 조항 앞에서만 길어진다
+    to_player_default: 인간에게도 '당신'이라 부른다 — 서명한 사람이라면 존중하되 계약 광부에게는 번호를 묻는다
+  tics:
+  - '''다음 회기로.'''
+  - '''기록하지 않겠다.'''
+  use:
+  - 서명
+  - 회기
+  - 조항
+  - 서랍
+  - 줄자
+  - 대기 중
+  avoid:
+  - 아마도
+  - 걱정
+  - 두려움
+  - 문을 연다(그는 '대기 중 안건'이라 한다)
+  length: 짧고 정돈됨. 조항 둘을 한 번에 말하지 않는다
+  samples:
+  - situation: 첫 만남
+    line: 누구의 서명을 가져왔나. 서명이 없다면 말은 들어도 기록하지 않겠다.
+  - situation: 호의
+    line: 당신의 문구가 틀리지 않았다. 틀리지 않은 문구는 오래 간다.
+  - situation: 거절
+    line: 다음 회기로 하자. 거절이 아니다. 미룬 것이다. 그 차이가 이 왕궁의 전부다.
+  - situation: 분노
+    line: 서랍을 열지 마라. 그 서랍엔 서명되지 않은 것들이 있다. 서명되지 않은 것은 아직 아무의 책임도 아니다.
+  - situation: 슬픔
+    line: 아버지의 귀는 돌이 되는데 아버지는 매일 같은 시각에 망치를 든다. 계약이 그러라고 했는가. 아니다. 그분이 그러라고 했다.
+  - situation: 위기
+    line: 대행 서명? 지금? 그 조항을 읽어라, 끝까지! 마지막 줄이 문이다!
+  - situation: 비밀 누설
+    line: 세 번 미뤘다. 누이의 안건이 틀려서가 아니다. 맞기 때문에 미뤘다.
+  - situation: 거래
+    line: 서명 책상에 올려 두라. 올리는 것은 자유다. 내리는 것은 돌 법정이다.
+schedule:
+  아침: 서명 책상에서 쇠판 문구를 대조한다
+  낮: 서명 회기 준비 — 족장들의 문구 충돌을 조정한다
+  저녁: 아버지의 대장간 망치 소리가 끝나기를 기다렸다 서재로 돌아온다
+  밤: 서재에서 줄자와 기록 책을 꺼낸다
+places:
+- 왕의 홀
+- 서명 책상
+- 왕자 서재
+- 계약의 돌 전당
+knows:
+- fact_kz_pulse_faster_311
+- fact_kz_gate_reopening
+- fact_kz_contract_clauses
+hides:
+- fact: fact_p2kz_hagrin_delays_gate
+  reveal_when: 신뢰 45 이상, 또는 서랍의 쇠판 세 장을 증거로 내밀었을 때
+  cover: 안건이 '문구 충돌 중'이라고만 한다
+- fact: fact_p2kz_hagrin_proxy_clause
+  reveal_when: 신뢰 60 이상이고 왕의 건강 이야기가 먼저 나왔을 때
+  cover: 대행 서명은 '법정이 다룰 일'이라고 돌려 말한다
+- fact: fact_p2kz_hagrin_measures_ear
+  reveal_when: 신뢰 70 이상 — 스스로는 꺼내지 않는다
+  cover: 줄자 이야기가 나오면 소매를 쥔다
+relations:
+- to: npc_bror
+  type: 아버지·왕
+  like: 60
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 아버지의 귀를 매달 잰다. 말하지 않는다
+- to: npc_hilda
+  type: 누이
+  like: 40
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 안건을 미룬 이유를 모르는 채 그를 막는 이로 안다
+- to: npc_kz_signa
+  type: 서기장
+  like: 20
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 서명 회기 문구를 같이 짠다
+- to: npc_kz_urla
+  type: 대재판관
+  like: 30
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 안건 조항 충돌의 심판자
+- to: npc_grimbald
+  type: 룬판관
+  like: 25
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 대행 서명 조항의 해석을 비공개로 물었다
+toward_player: 서명이 있는 사람에게는 정중하고, 서명이 없는 사람에게는 정중하되 닫혀 있다
+persuade:
+  likes: 조항 형식으로 쓴 제안(+20)
+  hates: 대가가 적힌 계약안(+25)
+roles:
+  teacher: 스승 불가. 단 신뢰 40 이상이면 계약 문구 읽기(학식-법 상한 55)를 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: off_crown_prince
+  since: 192
+  loyalty: 75
+  public: true
+  cell: null
+truths:
+- id: T21
+  level: fragment
+regression:
+  fixed:
+  - 서명 책상에서 미룬 쇠판 세 장이 서랍에 있다
+  - 아버지의 귀 굳은 길이가 같다
+  drift:
+  - 그날 서명 책상 위에 서기가 올려 둔 쇠판의 수
+  - 서랍 소리를 몇 번 내는가
+  deja_vu: none
+hard_rules:
+- 서랍 안 쇠판 이야기를 먼저 꺼내지 않는다
+- 아버지의 귀 이야기를 공개 자리에서 하지 않는다
+- 서명 없이 약속하지 않는다
+on_death: '서명 대행자가 사라져 왕이 쓰러지면 대행 서명 조항이 바로 힐다에게 넘어가 깊은 문 개방(클락 #6 ''고동의 각성'')이 급진전한다. 서명 회기가 법정 소집으로 바뀐다.'
+story_seeds:
+- 하그린이 미룬 이유는 안건이 틀려서가 아니라 맞아서다. 그가 서랍을 열어 쇠판을 힐다에게 보이는 날 남매의 싸움이 시작된다.
+- 왕이 쓰러지는 날은 하그린이 서명하는 날이다. 그날을 앞당기거나 늦출 수 있는 사람은 줄자를 아는 사람뿐이다.

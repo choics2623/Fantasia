@@ -1,0 +1,124 @@
+# 지역 생성 키트 — 엘다르 정원 (25_REGION_KITS.md). 실바렌 영원 정원, 은잎문, 루멘 감독관의 '후견인의 정원', 아르카스 객원 거처가 이것으로 태어난다.
+# 원천: REGIONS §5 (실바렌), fac_eldar(관습·법·결정), fac_seril_silence, docs/world/people/silvaren.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_eldar.law / customs / ranks 를 본다. 여기에는 '정원에만 있는 재료'(시간이 느린 구역, 이슬 우리의 하루, 정원지기의 번호와 꽃 이름, 첫 아침의 노래)를 더한다.
+# 정원지기(인간)의 일과·말투는 kit_human_serf 와 닮은 데가 하나도 없다 — 배고픔이 없고, 갇혀 있다. 그 반대 결을 여기서 새로 만든다.
+id: kit_elf_garden
+applies_to: [실바렌 영원 정원, 은잎문과 경매 정자, 흰 울타리(이슬 우리), 루멘 후견인의 정원, 아르카스 엘다르 객원 거처]
+reuses: []
+faction_refs: [fac_eldar, fac_seril_silence, fac_light, fac_ashen_tower, fac_seren]
+time_zones:           # 시간이 느린 구역 — 정원 안에서도 결계의 농도가 다르다. 위치 엔진은 이것을 쓰지 않는다(분위기·판정용: 시간 감각, 의지)
+  - {id: tz_first_tree, name: 첫 아침의 나무 둘레 80걸음, ratio: "바깥의 1/9", note: "뿌리에 앉아 있으면 한 시간이 아홉 시간 어치로 몸에 쌓이지 않는다 — 대신 나올 때 하루가 지나 있다. 여왕이 이 안에 산다"}
+  - {id: tz_terraces, name: 테라스 41단 (위 20단), ratio: "바깥의 1/3", note: "엘다르 거처. 정원지기들은 이 단에서 일하고 나오면 '아직 오전'이라고 느낀다"}
+  - {id: tz_dew_pens, name: 이슬 우리와 아래 테라스, ratio: "바깥과 같다(거의)", note: "정원지기가 하루를 세는 단 한 곳. 그래서 늙는 속도가 바깥의 2/3일 뿐이다 — 평균 수명 61세"}
+  - {id: tz_dawn_lake, name: 첫 아침 호수, ratio: "멈춤", note: "물이 거울처럼 정지한다. 비추면 기억이 보인다"}
+  - {id: tz_boundary, name: 정원 경계 (시간 단층), ratio: "한 걸음에 계절이 바뀜", note: "체질 판정. 수로 배수구로 나가는 순간 의지 판정"}
+names:
+  엘다르:
+    # 별빛 엘다르: 이름 + 가지 이름. 가지는 새벽가지·고목·이슬지기·은이슬·빛실·별무게·금실·맑은잎·마지막빛(추방). 이름은 두세 음절, 'ㄹ'과 모음이 길다.
+    male_starlight: [아에릭, 실바누스, 이살리온, 바렌딜, 에를란, 탈렌디르, 오르넨, 엘로리온, 카엘론, 세로윈, 이리엘, 테오리엘]
+    female_starlight: [미리엘, 이실레아, 나엘리스, 이벨린, 피오나엘, 세레니엘, 모리엘, 아에린, 엘레스, 이렐리아, 라엘리스, 엘베리스]
+    branch: [새벽가지, 고목, 이슬지기, 은이슬, 빛실, 별무게, 금실, 맑은잎, 마지막빛, 첫목소리, 흰그늘]
+    epithet_rule: "이름 + 가지(미리엘 이슬지기). 같은 가지에 같은 이름이 두 명 있으면 '앞의 / 뒤의'를 붙이지 않고 기억을 한 줄 덧붙인다(탈렌디르 별무게 '호수를 마신')"
+    age_rule: "별빛 엘다르는 약 500~3,600세. 나이 = 기억의 양이므로 의회 발언권과 직결된다. 44세 리안델이 최연소"
+  실반:
+    # 숲 엘프. 짧은 이름 + 몸에서 따온 별명(이끼손·마른가지·새벽발). 별빛에게는 하인, 정원지기에게는 감독. 600세 안팎, 아이가 연 3~5명 태어난다(숨겨진 사실).
+    male: [페른, 헤니, 오스크, 뮈르, 탄, 리크, 바에]
+    female: [세나, 이니, 올루, 베이, 뮈아, 다니]
+    epithet: [이끼손, 마른가지, 새벽발, 물냄새, 돌귀, 가는눈]
+  인간:
+    # 정원지기. 성은 없다. 엘다르가 부르는 '정원 이름'(꽃·풀·이슬 이름)과 정원 번호(이슬 우리 동-호), 그리고 어머니가 지어 준 '아래 이름'(이슬 우리 안에서만 부른다)이 따로 있다.
+    male_garden_name: [로렌, 데인, 이슬, 클로버, 쑥, 오리나무, 박하, 느릅, 보리, 담쟁이]
+    female_garden_name: [이세, 미라, 로즈비타, 에이다, 수련, 버들, 아네모네, 제비꽃, 백리향, 라일락]
+    under_name_rule: "이슬 우리 안에서는 엘다르가 붙인 꽃 이름 대신 어머니가 부르던 이름을 쓴다. 번호를 지우면(잊힘) 그 이름도 함께 지운다"
+    number_rule: "정원 번호는 동·호·순번(14동 3호 9번). 경매 정자 대기 우리에서 처음 붙고, 이슬 우리 기둥에 새겨진다"
+  나가:
+    # 세렌 사절·경매 중개인. 상인어 이름 + 의회 번호.
+    broker_rule: "중개인은 이름 + 의회 소속 번호 (시스라 일곱째표). 인간 정원지기 후보를 '품목'이라 부르지 않고 '손님'이라 부른다 — 엘다르가 '선물'이라 부르므로 말을 맞춰 준다"
+  용인:
+    garrison_rule: "멜리산드 측 사절 2명. 이름 + 소가문(카르벤 잿송곳). 정원 안에서는 비늘 모양 장식을 가리고 다닌다 — 엘다르가 비늘을 불쾌히 여긴다"
+classes:            # 정원 인구 약 3만 (엘다르 24,600 + 정원지기 3,100 + 실반·기타). 정원 안 지역별 비율은 아래
+  별빛 엘다르 (의회·가지): 0.60
+  실반 (감독·사냥꾼·하인): 0.20
+  정원지기 (인간, 계급 밖): 0.115
+  기억지기 (가문 전문직): 0.04
+  객원·사절: 0.005
+  피험 정원지기 (영혼 정원): 0.005
+jobs:
+  - {id: dew_gatherer, name: 이슬 거두는 정원지기 (새벽), class: 정원지기 (인간, 계급 밖), race: 인간, weight: 14, schedule: sch_gardener_dew}
+  - {id: terrace_tender, name: 테라스 손질 정원지기, class: 정원지기 (인간, 계급 밖), race: 인간, weight: 24, schedule: sch_gardener_terrace}
+  - {id: orchard_keeper, name: 과수원·벌통 정원지기, class: 정원지기 (인간, 계급 밖), race: 인간, weight: 12, schedule: sch_gardener_orchard}
+  - {id: recitation_servant, name: 기억 낭송 시중 (서서 듣는 정원지기), class: 정원지기 (인간, 계급 밖), race: 인간, weight: 9, schedule: sch_gardener_recite}
+  - {id: reader_servant, name: 낭독 노예 (듣기·낭독만 허용), class: 정원지기 (인간, 계급 밖), race: 인간, weight: 1, schedule: sch_gardener_reader}
+  - {id: pen_cook, name: 이슬 우리 식당 정원지기, class: 정원지기 (인간, 계급 밖), race: 인간, weight: 5, schedule: sch_gardener_kitchen}
+  - {id: gardener_child, name: 정원지기의 아이 (이슬 줍기), class: 정원지기 (인간, 계급 밖), race: 인간, age: [5, 14], weight: 6, schedule: sch_gardener_child}
+  - {id: gardener_elder, name: 노년 정원지기 (이슬 우리 어른), class: 정원지기 (인간, 계급 밖), race: 인간, age: [58, 70], weight: 5, schedule: sch_gardener_elder}
+  - {id: test_gardener, name: 피험 정원지기 (영혼 정원 온실), class: 피험 정원지기 (영혼 정원), race: 인간, weight: 2, schedule: sch_test_gardener}
+  - {id: starlight_elder, name: 별빛 엘다르 (거처·기억 낭송), class: 별빛 엘다르 (의회·가지), race: 엘다르, weight: 20, schedule: sch_elf_elder}
+  - {id: young_branch, name: 젊은 가지 (1,000세 미만), class: 별빛 엘다르 (의회·가지), race: 엘다르, weight: 8, schedule: sch_elf_young}
+  - {id: memory_keeper, name: 기억지기 (노래·법·약초·별 가문), class: 기억지기 (가문 전문직), race: 엘다르, weight: 5, schedule: sch_memory_keeper}
+  - {id: silent_hunter, name: 말 없는 사냥꾼 (은목 숲 궁수), class: 실반 (감독·사냥꾼·하인), race: 엘다르, weight: 5, schedule: sch_silent_hunter}
+  - {id: silvan_overseer, name: 실반 감독 (흰 울타리·정원 길), class: 실반 (감독·사냥꾼·하인), race: 엘다르, weight: 6, schedule: sch_silvan_overseer}
+  - {id: silvan_servant, name: 실반 하인 (별빛의 시중), class: 실반 (감독·사냥꾼·하인), race: 엘다르, weight: 7, schedule: sch_silvan_servant}
+  - {id: still_guardian, name: 정원 수호자 (정지 집행), class: 별빛 엘다르 (의회·가지), race: 엘다르, weight: 1, schedule: sch_still_guardian}
+  - {id: envoy_guest, name: 객원 사절 (나가·용인), class: 객원·사절, weight: 1, schedule: sch_envoy}
+schedules:          # at = 정착지 틀의 역할(role). 새벽 '첫 아침의 노래'는 정원 전체가 멈추는 시각이다(fixed)
+  sch_gardener_dew:      [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: all, from: "06:00", to: "08:30", at: terrace, doing: 풀잎의 이슬을 단지에 거둔다, outdoor: true}, {days: workday, from: "09:00", to: "13:00", at: terrace, doing: 이슬 단지를 엘다르 거처로 나른다}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 흰 빵과 꿀 점심}, {days: workday, from: "14:00", to: "17:30", at: orchard, doing: 과수원 가지치기, outdoor: true}, {days: all, from: "18:30", to: "20:00", at: dew_pens_mess, doing: 저녁 식사 — 우유와 과일}, {days: all, from: "20:00", to: "21:30", at: dew_pens, doing: 숙소 마당에서 낮은 목소리로 이야기한다}, {days: all, from: "21:30", to: "04:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_terrace:  [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: workday, from: "06:30", to: "12:30", at: terrace, doing: 테라스 화단 손질 — 꽃은 꺾지 않는다, outdoor: true}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 점심}, {days: workday, from: "14:00", to: "18:00", at: terrace, doing: 수로 청소와 은목 가지 닦기, outdoor: true}, {days: all, from: "18:30", to: "20:00", at: dew_pens_mess, doing: 저녁 식사}, {days: all, from: "20:00", to: "21:30", at: dew_pens, doing: 목욕 연못과 숙소 마당}, {days: all, from: "21:30", to: "04:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_orchard:  [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: workday, from: "06:30", to: "12:30", at: orchard, doing: 과일을 따고 벌통 연기를 피운다, outdoor: true}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 점심}, {days: workday, from: "14:00", to: "18:00", at: orchard, doing: 꿀 거르기와 과수원 울타리 손질}, {days: all, from: "18:30", to: "20:00", at: dew_pens_mess, doing: 저녁 식사}, {days: all, from: "21:30", to: "04:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_recite:   [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: workday, from: "08:00", to: "13:00", at: terrace, doing: "엘다르의 기억 낭송을 서서 듣는다 — 몇 시간이고 움직이지 않는다"}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 점심}, {days: workday, from: "14:30", to: "18:00", at: terrace, doing: 낭송 시중 — 물과 수건}, {days: all, from: "18:30", to: "20:00", at: dew_pens_mess, doing: 저녁 식사}, {days: all, from: "21:30", to: "04:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_reader:   [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: workday, from: "09:00", to: "12:00", at: terrace, doing: 엘다르 앞에서 시를 낭독한다 — 글자는 볼 수 없다고 한다}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 점심}, {days: workday, from: "15:00", to: "18:00", at: terrace, doing: 낭독 시중}, {days: all, from: "21:30", to: "04:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_kitchen:  [{days: all, from: "04:00", to: "05:00", at: dew_pens_mess, doing: 아궁이에 불을 지핀다}, {days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: all, from: "06:00", to: "20:30", at: dew_pens_mess, doing: 세 끼를 차려 낸다 — 흰 빵, 꿀, 우유, 과일}, {days: all, from: "21:30", to: "03:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_child:    [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 어른 곁에 무릎 꿇는다", fixed: true}, {days: workday, from: "06:30", to: "11:30", at: terrace, doing: 풀잎 이슬 줍기, outdoor: true}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 점심}, {days: workday, from: "14:00", to: "17:00", at: dew_pens, doing: 숙소 마당에서 음 높이를 외운다 — 노는 척한다}, {days: all, from: "20:00", to: "04:30", at: dew_pens, doing: 잔다}]
+  sch_gardener_elder:    [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 듣는다", fixed: true}, {days: all, from: "07:00", to: "13:00", at: dew_pens_mess, doing: 식당에서 아궁이 곁을 지킨다 — 아이들을 눈으로 센다}, {days: all, from: "13:00", to: "14:00", at: dew_pens_mess, doing: 점심}, {days: all, from: "15:00", to: "19:00", at: dew_pens, doing: 숙소 마당 볕에 앉는다}, {days: all, from: "20:00", to: "04:00", at: dew_pens, doing: 잔다}]
+  sch_test_gardener:     [{days: all, from: "05:00", to: "05:50", at: soul_garden, doing: 피험자 정자에서 노래를 듣는다 — 첫 아침의 나무까지 가지 못한다}, {days: workday, from: "08:00", to: "12:00", at: soul_garden, doing: 정자 정원 손질 — 기억이 조금씩 비어 간다}, {days: all, from: "13:00", to: "14:00", at: soul_garden, doing: 흰 빵과 꿀 점심}, {days: workday, from: "15:00", to: "17:00", at: soul_garden, doing: 접목 침대 곁에서 상태를 살핀다}, {days: all, from: "20:00", to: "05:00", at: soul_garden, doing: 피험자 정자에서 잔다}]
+  sch_elf_elder:         [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 서서 부른다", fixed: true}, {days: all, from: "07:00", to: "13:00", at: terrace, doing: 거처 정원에서 기억을 낭송하거나 듣는다}, {days: workday, from: "14:00", to: "17:00", at: ring_hall, doing: 고리의 의회 — 선례 낭송}, {days: all, from: "18:00", to: "20:00", at: dawn_lake, doing: 호숫가를 걷는다 — 물을 휘젓지 않는다}, {days: all, from: "21:00", to: "04:30", at: terrace, doing: 기억 속을 걷는다 (눈을 뜬 채 쉰다)}]
+  sch_elf_young:         [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 서서 부른다", fixed: true}, {days: workday, from: "08:00", to: "13:00", at: library, doing: 선례 두루마리를 외운다}, {days: workday, from: "14:00", to: "18:00", at: terrace, doing: 연장자의 낭송을 듣는다 — 발언권은 없다}, {days: all, from: "19:00", to: "21:00", at: dawn_lake, doing: 호숫가에서 쉰다}, {days: all, from: "21:30", to: "04:30", at: terrace, doing: 기억 속을 걷는다}]
+  sch_memory_keeper:     [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래", fixed: true}, {days: workday, from: "08:00", to: "13:00", at: library, doing: 가문의 전문 기억(노래·법·약초·별)을 낭송해 다음 증인에게 전한다}, {days: workday, from: "14:00", to: "18:00", at: ring_hall, doing: 의회 증언 대기}, {days: all, from: "21:30", to: "04:30", at: terrace, doing: 쉰다}]
+  sch_silent_hunter:     [{days: all, from: "05:00", to: "05:50", at: quiet_wood, doing: 숲에서 첫 아침의 노래를 듣는다 — 부르지 않는다, fixed: true}, {days: all, from: "07:00", to: "18:00", at: quiet_wood, doing: 은목 숲 경계를 말없이 돈다, outdoor: true}, {days: all, from: "19:00", to: "21:00", at: quiet_wood, doing: 화살대를 다듬는다}, {days: all, from: "22:00", to: "04:00", at: quiet_wood, doing: 쉰다}]
+  sch_silvan_overseer:   [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 문 곁에서 듣는다", fixed: true}, {days: all, from: "06:00", to: "18:00", at: white_fence, doing: 흰 울타리 길을 돌며 정원지기 수를 센다}, {days: all, from: "18:00", to: "20:00", at: dew_pens, doing: 점호 — 수를 센다}, {days: all, from: "21:00", to: "04:30", at: white_fence, doing: 북문 초소에서 쉰다}]
+  sch_silvan_servant:    [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래", fixed: true}, {days: all, from: "06:30", to: "20:00", at: terrace, doing: 별빛 거처에서 시중든다}, {days: all, from: "21:00", to: "04:30", at: white_fence, doing: 하인 방에서 잔다}]
+  sch_still_guardian:    [{days: all, from: "05:00", to: "05:50", at: first_tree, doing: "첫 아침의 노래 — 서서 부른다", fixed: true}, {days: all, from: "06:30", to: "20:00", at: terrace, doing: 정원 길을 돌며 어긋난 자를 살핀다 — 필요하면 '정지'를 건다}, {days: all, from: "21:00", to: "04:30", at: guardian_post, doing: 수호자 초소에서 쉰다}]
+  sch_envoy:             [{days: all, from: "08:00", to: "12:00", at: guest_pavilion, doing: 손님 정자에서 선물 교환을 기다린다}, {days: workday, from: "13:00", to: "17:00", at: terrace, doing: 엘다르와의 접견 — 말은 느리게, 서두르지 않는다}, {days: all, from: "20:00", to: "23:00", at: guest_pavilion, doing: 손님 정자에서 쉰다}]
+voices:
+  - {id: v_elf_recital, name: 낭송하는 별빛 엘다르, register: "완결된 느린 문장. 인간에게는 '그대'가 아니라 이름 없이 '정원지기'. 같은 엘다르에게는 '기억을 대어 보면' 으로 시작한다", tics: ["'기억을 대어 보면'"], use: [기억, 낭송, 선례, 한 박자, 처음, 선물], avoid: [죽음, 끝, 새롭다, 미안, 모르겠다], sample: "기억을 대어 보면, 그 말은 이미 한 번 있었소. 그때도 그대 같은 이가 같은 말로 청했고, 같은 답을 받았소."}
+  - {id: v_elf_young, name: 젊은 가지 엘다르, register: "어른 앞에서는 낭송투를 흉내 내다 문장이 끊긴다. 모르는 일을 만나면 말이 짧아진다", tics: ["'…기억에 없는데.'"], use: [처음, 기억에 없다, 어른, 한 걸음], avoid: [모른다(낭송투에서는 '아직 대지 못했다')], sample: "…기억에 없는데. 아니, 대어 보겠소. 아직 대지 못했을 뿐이오."}
+  - {id: v_silvan_overseer, name: 실반 감독, register: "짧고 낮은 말. 별빛에게는 눈을 내리깔고 두 마디, 정원지기에게는 수만 센다", tics: ["'하나, 둘.'"], use: [수, 울타리, 문, 열쇠, 이끼, 숲], avoid: [별빛 이름 직접 부르기], sample: "하나, 둘, 열. 문은 해 지면 닫는다. 열쇠는 내가 쥔다."}
+  - {id: v_gardener_low, name: 낮추어 말하는 정원지기, register: "엘다르 앞에서는 말끝을 삼키는 극존대('~이옵니다'를 쓰지 않고 '예'와 고개로만). 이슬 우리 안에서는 낮은 반말, 음 높이로 말을 맺는다", tics: ["말끝을 반 음 올린다", "'기억해 주십시오'"], use: [이슬, 선물, 기억, 감사(엘다르에게는 '선물입니다'), 어머니], avoid: [죽음, 밖, 글자, 숲(대신 '바깥'), 도망], sample: "예. 이슬은 오늘도 단지 열둘입니다. …(우리 안에서) 단지 열둘. 아래 이름은 아직 아무도 안 불렸어."}
+  - {id: v_gardener_song, name: 음으로 말하는 정원지기, register: "낭송을 들은 사람답게 문장 끝을 일정한 음으로 맺는다. 이슬 노래를 아는 사람끼리 반 음 낮추어 '네 노래는 어때' 하고 묻는다", tics: ["'음을 맞춰'"], use: [음, 아래 이름, 이슬, 맞추다, 노래], avoid: [진명(입에 올리면 수명이 탄다), 글], sample: "음을 맞춰. 가사는 말고, 높이만. 그건 틀리게 불러도 되는 거야."}
+  - {id: v_test_gardener, name: 지워지는 피험 정원지기, register: "자기 이름을 찾는 말버릇. 문장 중간에 같은 질문을 되풀이한다", tics: ["'내가 방금 뭐라고 했죠.'"], use: [새싹, 잠, 침대, 이름, 어제], avoid: [피험자, 실험], sample: "내가 방금 뭐라고 했죠. …새싹이 잠들면 이름이 떨어진대요. 내 이름은 떨어진 걸까요."}
+  - {id: v_naga_broker, name: 경매 정자의 나가 중개인, register: "부드러운 상인어, 엘다르의 '선물' 문법에 말을 맞춘다. 숫자를 말하지 않고 '교환'이라 한다", tics: ["'기꺼이 교환하겠습니다.'"], use: [선물, 교환, 손님, 의회, 은목재], avoid: [값, 품목, 낙찰(대신 '맞춤')], sample: "손님 마흔을 은목재 일곱 짐과 기꺼이 교환하겠습니다. 선물은 늘 받는 쪽이 더 부끄러운 법이지요."}
+  - {id: v_dragonkin_envoy, name: 정원의 용인 사절, register: "격식 하오체. 엘다르에게는 한 박자 늦게 대답하고 시선을 피한다. 비늘 이야기를 입에 올리지 않는다", tics: ["'기다리겠소.'"], use: [사절, 기다리다, 협정, 기술, 예의], avoid: [비늘(정원 안에서), 인간 숫자], sample: "기다리겠소. 이곳의 시간은 우리 것이 아니니, 협정서도 이곳의 속도로 읽혀야겠지."}
+temperaments: [침착, 완고, 몽상, 겁, 고집, 체념, 다정, 영리, 호기심, 비밀, 과묵, 냉정, 외로움, 헌신, 낙관, 집착, 오만, 순응, 은근한 반항]
+city_customs:       # 법·관습 본문은 fac_eldar.law / customs
+  - "하루는 새벽 '첫 아침의 노래'(05:00~05:50)로 열린다. 이 시각 정원 안의 모든 일이 멈추고, 정원지기는 무릎을 꿇는다"
+  - "정원 안에는 가격이 없다 — 모든 건넴은 '선물'이다. 정원지기가 엘다르에게 '고맙다'고 하지 않고 '선물입니다'라고 하는 이유"
+  - "엘다르어는 듣기만 허용된다. 말하면 정지 7일, 글자는 잊힘"
+  - "엘다르 앞에서 '죽음'·'끝'을 말하면 정지 1일(누구든)"
+  - "정원지기의 번호는 이슬 우리 기둥에 새겨진다. 잊힘은 번호를 지우는 것이다 — 이름보다 번호가 먼저 지워진다"
+  - "이슬 우리의 문은 잠기지 않는다. 문을 잠그는 것은 숲이다"
+  - "이슬 노래는 글이 아니라 음 높이다. 그래서 법에 걸리는지 엘다르도 오래 정하지 못했다"
+  - "정원의 물을 손으로 휘젓지 않는다. 첫 아침의 나무를 등지고 서지 않는다"
+settlement_templates:
+  - id: tpl_elf_garden
+    name: 엘다르 정원 도시 (실바렌형)
+    grid: {w: 1600, h: 1400}
+    roles:
+      first_tree:     {count: [1, 1], place: "정원 중앙, 첫 아침 호수 북안", access: public, name: 첫 아침의 나무}
+      dawn_lake:      {count: [1, 1], place: "첫 아침의 나무 동쪽", access: public, name: 첫 아침 호수}
+      ring_hall:      {count: [1, 1], place: "첫 아침의 나무 서쪽 은목 사이", access: staff, name: 고리의 의회당}
+      library:        {count: [1, 2], place: "의회당 곁", access: staff, name: 이슬 서고}
+      terrace:        {count: [1, 1], place: "나무와 호수에서 아래로 이어지는 41단", access: public, name: 테라스 거처}
+      empty_cradle:   {count: [0, 1], place: "테라스 중간 단", access: public, name: 빈 요람 전당}
+      quiet_wood:     {count: [1, 1], place: "정원 서남쪽 가장자리", access: staff, name: 조용한 숲}
+      dew_pens:       {count: [1, 1], place: "정원 남동쪽 아래 테라스", access: serf, name: 이슬 우리}
+      dew_pens_mess:  {count: [1, 1], place: "이슬 우리 가운데", access: serf, name: 공동 식당}
+      orchard:        {count: [1, 2], place: "테라스 아래 동쪽", access: serf, name: 과수원}
+      white_fence:    {count: [1, 1], place: "이슬 우리 바깥 둘레", access: staff, name: 흰 울타리 마을}
+      gate:           {count: [1, 1], place: "정원 남쪽 끝", access: staff, name: 은잎문}
+      auction:        {count: [0, 1], place: "은잎문 곁", access: public, name: 경매 정자}
+      guest_pavilion: {count: [1, 1], place: "은잎문 안쪽", access: public, name: 손님 정자}
+      guardian_post:  {count: [1, 2], place: "테라스 둘레", access: staff, name: 수호자 초소}
+      soul_garden:    {count: [0, 1], place: "정원 북서쪽 안개 계곡", access: secret, name: 영혼 정원}
+    outer:
+      silver_forest:  {hours: [2, 6], name: 은목 숲}
+      boundary_drain: {hours: [0.5, 1], name: 수로 배수구 (정원 경계 밖)}

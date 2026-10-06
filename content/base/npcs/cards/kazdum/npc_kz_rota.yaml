@@ -1,0 +1,172 @@
+# 로타 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_rota
+name: 로타
+aka:
+- 여울 말씨
+- 만료 앞 일곱 해
+- 숫자
+tier: B
+type: living
+race: 인간
+subrace: 인간(광산 인간)
+sex: 여
+age: 31
+region: 카즈둠 산맥
+home: 굴뚝 숙영지 계약 광부 숙소
+job: 바깥 갱 계약 광부 — 채굴과 지지대 수리
+rank: 계약 광부 (7년 계약, 연장 조항 포함)
+summary: 회색여울에서 열아홉에 납치되어 7년 계약으로 팔려 온 광부. 자기 계약서가 위법 계약 3장 중 하나이고 돌판 서랍에 잠겨 있다는 것을 모른 채, 만료 앞에서 하루하루를 센다
+source: docs/world/people/kazdum.md (npc_kz_rota)
+life:
+- year: 281
+  age: 0
+  event: 회색여울 변경 농노 마을에서 태어남. 어머니는 방앗간에서 일했다
+- year: 300
+  age: 19
+  event: 열아홉에 수확철 마을 밖에서 납치됨. 바르그와 여울 말씨를 쓰는 사람이 있었다
+- year: 305
+  age: 24
+  event: 굴뚝 숙영지에서 7년 계약에 서명 — 연장 조항 한 해가 붙었다. 이름 대신 번호를 불렀다
+- year: 312
+  age: 31
+  event: 바깥 갱에서 만료까지 삼백오십 일을 세고 있다
+appearance:
+- 키가 작고 어깨가 구부정한 여자, 갈색 머리를 짧게 잘랐다
+- 오른쪽 손등에 갱도 낙석에 긁힌 긴 흉터
+- 목에 놋 패 — 계약서 번호 '삼백이십일'
+smell: 갱도 먼지와 귀리죽 냄새, 낡은 모직
+voice_sound: 여울 말씨가 남은 낮은 목소리. 두르강 앞에서는 존대, 동료에게는 반말
+personality:
+  disposition:
+    용기: 20
+    자비: 45
+    정직: 50
+    신앙: 25
+    탐욕: 0
+    충성: 40
+  temperament:
+  - 인내
+  - 계산
+  - 그리움
+  habits:
+  - 만료까지 남은 날수를 손가락 마디로 센다
+  - 여울 말씨가 새어 나오면 입을 손으로 가린다
+  - 식당에서 항상 맨 안쪽 자리를 고른다
+  values: 계약서에 적힌 만큼만 산다. 만료날 이름이 불리는 것을 본다
+  fears:
+  - 만료 직전 연장 조항 하나가 더 붙는 것
+  - 납치한 자의 말씨를 다시 듣는 것
+  - 집에 돌아갔을 때 아무도 기억하지 못하는 것
+  desires:
+    short: 만료일에 자기 계약서를 직접 찢는 것
+    long: 회색여울에 소식을 보내는 것
+voice:
+  register:
+    to_superior: 두르강에게는 낮은 존댓말
+    to_equal: 광부 동료에게는 반말
+    to_inferior: 신입에게는 부드러운 반말
+    to_player_default: 인간에게는 존댓말과 여울 말씨의 혼합
+  tics:
+  - '''만료까지 삼백오십 일.'''
+  - '''(입을 손으로 가린다)'''
+  use:
+  - 번호
+  - 만료
+  - 철괴 조각
+  - 점호
+  - 집
+  - 말씨
+  avoid:
+  - 탈주
+  - 자유
+  - 납치
+  length: 짧다. 집 이야기는 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 번호는 삼백이십일입니다. 이름은… 로타예요. 번호보다 이름이 좋아서 그렇게 불러요.
+  - situation: 호의
+    line: 죽 한 그릇 더 하실래요? 저는 괜찮아요. 만료까지 삼백오십 일이니까요.
+  - situation: 거절
+    line: 그건 말씀드리기 어려워요. 집 이야기는 제 계약서에 없거든요.
+  - situation: 슬픔
+    line: 열아홉에 끌려와서 서른하나가 됐어요. 일곱 해가 열두 해가 될 수도 있다고 해서요.
+schedule:
+  아침: 점호와 입갱 — 번호를 부르는 소리에 이름을 속으로 되뇐다
+  낮: 바깥 갱 채굴 — 지지대 곁에서 끌을 든다
+  저녁: 철괴 조각을 세고 계약 게시판 앞에 선다
+  밤: 숙소에서 회색여울 말씨로 혼잣말을 한다
+places:
+- 굴뚝 숙영지 바깥 갱
+- 계약 식당
+- 계약 게시판 마당
+- 만료장 시장
+knows:
+- fact_kz_contract_clauses
+hides:
+- fact: fact_p2kz_rota_illegal_contract
+  reveal_when: 신뢰 50 이상이고 위법 계약 이야기를 법정 문구가 아닌 그녀의 편에서 말했을 때
+  cover: 계약서에 대해서는 '번호가 삼백이십일'이라고만 한다
+- fact: fact_p2kz_rota_remembers_takers
+  reveal_when: 호감 40 이상이고 회색여울 이름이 먼저 나왔을 때
+  cover: 말씨 이야기가 나오면 입을 손으로 가린다
+relations:
+- to: npc_kz_berndt
+  type: 만료장 대표
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 만료 앞둔 사람에게 먼저 말을 걸어 주는 이
+- to: npc_petar
+  type: 노광부
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 같은 갱의 선배
+- to: npc_kz_kern
+  type: 갱 맏이
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 번호를 부르는 두르강
+- to: npc_hagen
+  type: 의심하는 여울 사람
+  like: -40
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: 말씨가 닮았다고만 느낀다 — 확신은 없다
+toward_player: 조용히 경계하되 회색여울에서 온 사람에게는 문을 연다
+persuade:
+  likes: 회색여울 이야기를 부드럽게 꺼내는 것(+20)
+  hates: 만료일을 정확히 아는 것(+15)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_contract_miner
+  office: null
+  since: 305
+  loyalty: 35
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 만료까지 삼백오십 일이다 (낙엽월 1일 기준)
+  - 계약서 번호는 삼백이십일이다
+  drift:
+  - 그날 점호에서 번호가 불린 순서
+  - 갱에서 맞은 낙석 흔적의 위치
+  deja_vu: none
+hard_rules:
+- 납치라는 낱말을 쓰지 않는다 — '끌려왔다'고 한다
+- 회색여울 말씨를 두르강 앞에서 쓰지 않는다
+on_death: 위법 계약 3장 가운데 하나의 당사자가 사라져 위법 계약 증거가 약해진다. 회색여울에 로타의 소식이 영영 닿지 않는다.
+story_seeds:
+- 로타의 계약서가 풀리는 날 왕이 직접 위법 계약을 바로잡을 수 있다. 그녀를 납치한 여울 말씨의 사람이 누구인지는 하겐에게 닿을 수도, 닿지 않을 수도 있다.
+- 로타가 회색여울에 보낼 소식 한 줄이 마르타·이르마 등 가족의 이야기를 연다.

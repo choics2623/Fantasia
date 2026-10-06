@@ -1,0 +1,196 @@
+# 그로딘 잿수염 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_grodin
+name: 그로딘 잿수염
+aka:
+- 자물쇠 푸는 이
+- 다섯째 자물쇠
+- 할그림의 동생
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 200
+region: 카즈둠 산맥
+home: 깊은 문 탐사대 막사 (잿수염 씨족)
+job: 깊은 문 탐사대장 — 룬 자물쇠 해체, 탐사 사다리와 환기 갱도 관리
+rank: 잿수염 씨족 족장, 굴착파 수장 (왕녀 힐다 아래 실무 책임)
+summary: 형 할그림이 깬 맹세를 문 안에서 풀 수 있다고 믿는 탐사대장. 룬 자물쇠 일곱 중 넷을 풀었고, 다섯째가 '사람의 목소리'로만 열린다는 도면의 한 줄을 알아 버렸다
+source: docs/world/people/kazdum.md (npc_kz_grodin)
+life:
+- year: 112
+  age: 0
+  event: 잿수염 씨족에 태어남. 형 할그림은 열 살 위
+- year: 190
+  age: 78
+  event: 굴착파 견습. 형과 같은 조에서 자물쇠 도면을 배움
+- year: 250
+  age: 138
+  event: 형이 박자 장부의 첫 맹세를 깨고 씨족을 떠남 — 그날 이후 수염을 땋지 않음
+- year: 289
+  age: 177
+  event: 깊은 문 봉인 때 사다리 지기로 마흔한 명이 갇히는 것을 지켜봄
+- year: 311
+  age: 199
+  event: 문이 열렸다 닫힌 뒤 탐사대장에 오름. 첫 자물쇠를 풀다
+- year: 312
+  age: 200
+  event: 넷째 자물쇠를 풀고 다섯째의 도면 한 줄을 읽음
+appearance:
+- 잿빛 수염이 무릎까지 닿고 땋지 않았다 — 형의 맹세 이후 땋기를 멈췄다
+- 손바닥 한가운데 룬 정 자국 일곱 줄
+- 왼쪽 어깨에 형이 준 마지막 등불의 놋 증표를 꿰맸다
+smell: 정 기름과 막사 난로 연기, 고동 갱도에서 올라온 미지근한 물비린내
+voice_sound: 굵고 호탕한 목소리. 형 이야기가 나오면 갑자기 낮아진다
+personality:
+  disposition:
+    용기: 65
+    자비: 25
+    정직: 55
+    신앙: 40
+    탐욕: 10
+    충성: 70
+  temperament:
+  - 집착
+  - 호방
+  - 겁
+  habits:
+  - 자물쇠 하나를 풀 때마다 수염 끝을 한 올 자른다
+  - 형의 편지 첫 줄만 외우고 나머지는 보지 않는다
+  - 문 앞에 서면 엄지로 가슴의 증표를 쓰다듬는다
+  values: 맹세는 풀 수 있다. 푸는 값을 치르면
+  fears:
+  - 다섯째 자물쇠가 사람 목소리로만 열린다는 것이 사실인 것
+  - 형이 돌이 되어 죽기 전에 문을 못 여는 것
+  - 문 안에서 마흔한 명이 아닌 다른 것이 나오는 것
+  desires:
+    short: 다섯째 자물쇠를 열 '목소리'를 찾는 것 — 인간 한 사람
+    long: 형이 문 안에서 맹세를 푸는 방법을 얻게 하는 것
+voice:
+  register:
+    to_superior: 왕녀·왕에게는 하오체이되 말이 빠르다
+    to_equal: 족장에게는 하게체, 탐사대원에게는 반말과 하게체 혼합
+    to_inferior: 대원·견습에게는 반말. 칭찬이 많다
+    to_player_default: 인간에게는 하게체. '손님'이라 부르고 맥주부터 권한다
+  tics:
+  - '''두 잔 뒤에.'''
+  - '''(수염 끝을 만지며)'''
+  use:
+  - 자물쇠
+  - 형
+  - 맥주
+  - 정
+  - 줄
+  - 다섯째
+  avoid:
+  - 죽음
+  - 포기
+  - 고동(그는 '문의 숨'이라 한다)
+  length: 길고 호탕하다. 형 이야기는 짧게 끊는다
+  samples:
+  - situation: 첫 만남
+    line: 손님이군! 맥주부터 들어. 문 이야기는 두 잔 뒤에.
+  - situation: 호의
+    line: 자네 손은 일하는 손이로군. 정 한 자루 줄 테니 내일 자물쇠 곁에 서 보게.
+  - situation: 거절
+    line: 다섯째는 안 된다. 안 되는 이유는 말하지 않겠다. 말하면 도면이 맞는 거니까.
+  - situation: 분노
+    line: 형을 건드리지 마라! 그가 깬 건 맹세지, 그가 아니다.
+  - situation: 슬픔
+    line: 편지의 첫 줄만 읽는다. 나머지를 읽으면 형이 얼마나 돌이 되었는지 알게 되니까.
+  - situation: 위기
+    line: 자물쇠에서 물러나라! 넷째 줄이 떨린다 — 문이 숨을 쉰다!
+  - situation: 비밀 누설
+    line: 다섯째는 사람 목소리다. 도면에 그렇게 쓰여 있었다. 내가 본 건 그 한 줄이다.
+  - situation: 거래
+    line: 인간 한 사람을 찾는다. 노래할 수 있는 사람. 값은 형이 말한 맹세 한 조각.
+schedule:
+  아침: 탐사대 점호와 자물쇠 해체 작업 배분
+  낮: 봉인 문 앞 룬 자물쇠 해체 — 넷째를 풀어 낸 정을 닦는다
+  저녁: 막사에서 해체 기록을 쇠판에 새기고 형에게 보낼 편지를 쓴다
+  밤: 밤 고동 갱도 입구에서 박자를 듣는다 — 들으려고 간 것이 아니라고 말한다
+places:
+- 깊은 문 탐사대 막사
+- 봉인 문 앞
+- 고동 갱도
+knows:
+- fact_kz_pulse_faster_311
+- fact_kz_gate_reopening
+- fact_kz_hilda_gate_machine
+hides:
+- fact: fact_p2kz_grodin_four_locks
+  reveal_when: 신뢰 45 이상이고 자물쇠 이야기를 기술자의 말로 꺼냈을 때
+  cover: '''순조롭다''고만 말한다'
+- fact: fact_p2kz_grodin_brother_halgrim
+  reveal_when: 호감 40 이상이고 형에 대한 따뜻한 말이 먼저 나왔을 때
+  cover: 맥주잔을 들고 화제를 돌린다
+relations:
+- to: npc_hilda
+  type: 책임자
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 자기가 푼 자물쇠의 기록을 그녀에게 올린다
+- to: npc_osval
+  type: 장부지기
+  like: 5
+  trust: 30
+  visibility: 일방
+  memo: null
+  words: 박자 방 위쪽 갱도를 판다. 아래에서 누가 세는지는 모른다
+- to: npc_kz_krag
+  type: 문지기 대장
+  like: -30
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 문 앞 경비의 눈이 항상 탐사대 손을 따라온다
+- to: npc_petar
+  type: 노래한 광부
+  like: 10
+  trust: 20
+  visibility: 일방
+  memo: null
+  words: 다섯째 자물쇠의 열쇠일지 모른다고 의심한다
+- to: npc_kz_sigrun
+  type: 요새장
+  like: -35
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 석공 열 명을 모르지 않는다
+toward_player: 호방하게 맞되 문 이야기는 두 잔 뒤에 한다
+persuade:
+  likes: 자물쇠 해체에 도움이 되는 기술(+20)
+  hates: 할그림에 대한 따뜻한 말(+25)
+roles:
+  teacher: 스승 불가. 신뢰 40 이상이면 공학(룬 자물쇠 기초, 상한 60)을 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: off_dig_leader
+  since: 311
+  loyalty: 70
+  public: true
+  cell: null
+truths:
+- id: T21
+  level: rumor
+regression:
+  fixed:
+  - 넷째 자물쇠가 풀려 있다
+  - 다섯째 자물쇠의 도면 한 줄이 쇠판에 있다
+  drift:
+  - 그날 막사 난로 위 맥주통의 수
+  - 수염 끝에서 자른 올의 수
+  deja_vu: none
+hard_rules:
+- 형의 맹세가 무엇인지 먼저 말하지 않는다
+- 다섯째의 열쇠가 사람 목소리라는 것을 힐다 말고 아무에게도 먼저 말하지 않는다
+on_death: 깊은 문 해체 작업이 힐다에게 넘어가 속도가 더 빨라지고, 다섯째 자물쇠의 도면 한 줄이 사라져 열쇠 찾기가 어려워진다. 할그림에게 소식이 가서 마지막 등불이 두르강에 움직인다.
+story_seeds:
+- 다섯째 자물쇠를 열 목소리는 페타르일지 모른다. 그로딘이 그를 찾으러 숙영지로 가는 날이 온다.
+- 할그림의 맹세는 박자 장부의 첫 맹세였다. 형제의 이야기는 장부의 전부를 연다.

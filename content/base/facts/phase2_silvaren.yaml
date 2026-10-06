@@ -1,0 +1,143 @@
+# 실바렌 영원 정원 2차 확장의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3). 인물: docs/world/people/silvaren.md (P2S-)
+# id 규칙: fact_p2sv_<주제>. 기존 fact_sv_*(facts/silvaren.yaml)는 고치지 않는다. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# truth: false는 세계에 퍼진 거짓 소문이다.
+# ── 정원 관리·법의 틈 ──
+- id: fact_p2sv_miriel_knows_song
+  text: "정원 관리장 미리엘 이슬지기는 이슬 노래의 존재를 40년 전부터 알고 있다. 노래가 법의 '글자'에 해당하는지 선례가 없다는 이유로 의회에 올리지 않았다. 올리면 의회가 판정하고, 판정이 그녀의 기억과 어긋날 수 있다"
+  truth: true
+  danger: 4
+  names: [미리엘, 이슬 노래]
+- id: fact_p2sv_miriel_ledger_transfers
+  text: "영혼 정원으로 가는 정원지기 140명은 의회 안건이 아니라 미리엘의 장부에 '이송'으로 적혀 간다. 미리엘은 그 장부를 3년째 한 줄도 빼먹지 않고 쓰며, 서명한 적은 한 번도 없다"
+  truth: true
+  danger: 4
+  names: [미리엘, 영혼 정원]
+- id: fact_p2sv_boriwheat_repeat_stop
+  text: "정지 기록에서 '보리'라는 정원지기 한 사람이 3년째 같은 날짜(서리월 9일 전후)에 정지를 받는다. 그는 노래 때문이 아니라 미라의 의식 날에 맞춰 일부러 어긋나는 것이다"
+  truth: true
+  danger: 3
+  names: [보리, 미라]
+# ── 은잎문·경매 ──
+- id: fact_p2sv_caelon_remembers_knots
+  text: "은잎문 수문장 카엘론은 아치 기둥에 매달린 머리카락 매듭 수백 개의 주인 이름을 모두 외우고 있다. 잊힘을 집행하기 직전에 정원지기가 속삭인 '아래 이름'을 듣고 기억하기 때문이다. 3,112개"
+  truth: true
+  danger: 4
+  names: [카엘론, 은잎문]
+- id: fact_p2sv_caelon_recites_nights
+  text: "카엘론은 밤마다 아치 앞에서 외운 아래 이름을 하나씩 낭송한다. 그것이 집행자의 의무인지 속죄인지 자신도 정하지 못했다. 한 번 낭송한 이름은 다시 부르지 않는다 — 이름이 아직 3,112개 남았다"
+  truth: true
+  danger: 3
+  names: [카엘론]
+- id: fact_p2sv_rosevita_second_key
+  text: "대기 우리 열쇠를 쥔 로즈비타(아래 이름 이브)는 열쇠를 본뜬 사본을 하나 더 가지고 있다. 새로 온 사람이 자기 아래 이름을 떠올릴 수 있도록 경매 전날 밤 한 시간 우리 문을 연다"
+  truth: true
+  danger: 3
+  names: [로즈비타, 이브]
+- id: fact_p2sv_autumn_auction_greyford
+  text: "서리월 경매에 오르는 정원지기 후보 가운데 회색여울에서 팔려 온 이가 있다. 헨릭이 세렌 중개인에게 넘긴 농노가 바알카르를 거쳐 은잎문까지 온다"
+  truth: true
+  danger: 3
+  names: [헨릭, 회색여울]
+- id: fact_p2sv_sisra_inflates_count
+  text: "세렌 중개인 시스라는 매 경매에서 실제 넘긴 수보다 두세 명 많은 수로 은목재를 받는다. 카엘론은 알고 있고 '선물에는 값이 없다'는 이유로 말하지 않는다"
+  truth: true
+  danger: 2
+  names: [시스라, 카엘론]
+# ── 이슬 노래·정원지기 ──
+- id: fact_p2sv_dew_song_missing_pitch
+  text: "이슬 노래는 마지막 음 하나가 비어 있다. 처음 부른 사람이 끝을 부르지 못하고 정원에서 잊혔기 때문이다. 로렌은 그 빈 음 앞에서 늘 숨을 멈춘다. 그 음을 아는 사람이 오면 노래가 끝난다는 믿음이 이슬 우리에 전해 온다"
+  truth: true
+  danger: 4
+  names: [로렌, 이슬 노래]
+- id: fact_p2sv_stopped_memorize
+  text: "정지를 받은 정원지기는 의식이 깨어 있어 엘다르의 낭송을 한 글자도 놓치지 않고 외운다. 정지가 길수록 노래에 실을 진명 조각이 많아진다. 처벌이 저항을 키운다는 것을 수호자 에를란이 알아챘으나 보고하지 않았다"
+  truth: true
+  danger: 4
+  names: [에를란, 정지]
+- id: fact_p2sv_ada_pitch_board
+  text: "이슬 우리 식당 어른 에이다 할멈은 아궁이 돌 뒤의 음 높이 나무판과, 벌통 일곱째 아래 묻은 도자기 조각들의 자리를 안다. 도자기 조각에는 지난 40년간 틀리게 부른 음들이 새겨져 있다"
+  truth: true
+  danger: 3
+  names: [에이다]
+- id: fact_p2sv_waterway_three_elders
+  text: "41단 맨 아래 수로 배수구가 정원 밖으로 이어진다는 것을 아는 사람은 이슬 우리의 어른 셋(에이다 포함)과 실반 페른뿐이다. 배수구 쇠창살의 고리는 안쪽에서 풀린다"
+  truth: true
+  danger: 4
+  names: [에이다, 페른]
+- id: fact_p2sv_wren_leaf
+  text: "열두 살 렌이 은목 숲 가장자리에서 줍은 붉은 단풍잎 한 장을 숨기고 있다. 정원 안에는 잎이 지지 않으므로 그는 '가을'을 이름으로만 안다. 올해 낙엽월에 정원 경계 안쪽에서도 잎이 한 장 떨어졌다"
+  truth: true
+  danger: 2
+  names: [렌]
+- id: fact_p2sv_boundary_weakening
+  text: "정원 경계의 시간 결계가 침묵의 해 이후 해마다 약해지고 있다. 낙엽 한 장이 경계 안에서 떨어진 것은 올해가 처음이다. 결계를 보수하는 의회의 낭송이 해마다 한 박자씩 모자란다"
+  truth: true
+  danger: 3
+  names: [시간 결계]
+# ── 존속파·영혼 정원 ──
+- id: fact_p2sv_fionael_dream_wet_ash
+  text: "영혼 정원 연구자 피오나엘은 AS 311부터 한 번도 본 적 없는 인간의 기억을 꿈꾼다. 그 인간은 늘 비를 맞고, 몸에서 젖은 재 냄새가 난다. 그녀는 그것이 '곧 올 사람'의 기억이라고 짐작하지만 누구에게도 말하지 않았다"
+  truth: true
+  danger: 4
+  names: [피오나엘, 젖은 재]
+- id: fact_p2sv_fionael_two_homes
+  text: "피오나엘은 잿빛 탑의 객원이자 영혼 정원의 연구자이며, 세릴의 침묵의 '꿈꾸는 자'다. 세 곳에서 같은 꿈을 다르게 보고한다"
+  truth: true
+  danger: 4
+  names: [피오나엘, 세릴의 침묵]
+- id: fact_p2sv_carven_blueprint
+  text: "멜리산드의 사절 카르벤 잿송곳은 영혼 정원 접목 침대의 도면 사본을 석 달에 한 번 바알카르 경유로 잿불 언덕에 보낸다. 그 값으로 멜리산드는 은목재 대신 '비늘혈 한 방울'을 엘다르에게 건넨다"
+  truth: true
+  danger: 4
+  names: [카르벤, 멜리산드, 접목 침대]
+# ── 순혈파·퇴색·의회 ──
+- id: fact_p2sv_fading_accelerating
+  text: "고목 가지의 마른 숲 '잠든 나무'에 최근 3년 동안 엘다르 셋이 퇴색해 나무가 되었다. 그 전에는 100년에 한 명도 없었다. 시종장 바렌딜은 이름표를 새로 닦으며 순서를 센다"
+  truth: true
+  danger: 3
+  names: [바렌딜, 잠든 나무]
+- id: fact_p2sv_hunters_do_not_shoot_west
+  text: "말 없는 사냥꾼은 정원에서 잊힌 자가 숲 서쪽 가시안개 쪽으로 가는 길을 쏘지 않는다. 실바누스의 침묵 명령이다. 일바노르는 그것이 자비인지 책임 회피인지 알지 못한 채 따른다"
+  truth: true
+  danger: 3
+  names: [일바노르, 실바누스]
+- id: fact_p2sv_isilea_reinterpret
+  text: "왕녀 이실레아는 맹약회의 313에서 '막지도 돕지도 않는다'는 엘다르의 신살 이후 입장을 '다시 기억'(해석 변경)하는 안을 낼 생각이다. 의회의 낭송으로만 가능하고, 여왕이 낭송하면 곧바로 닫힌다"
+  truth: true
+  danger: 4
+  names: [이실레아, 맹약회의]
+- id: fact_p2sv_isilea_white_egg
+  text: "이실레아의 '흰 알 섭정안'은 엘다르가 흰 용의 섭정단에 이름을 올려, 44년 만에 처음으로 '아이가 태어나는 일'의 곁에 서려는 안이다"
+  truth: true
+  danger: 3
+  names: [이실레아, 흰 알]
+- id: fact_p2sv_naelis_sold_crystals
+  text: "은이슬 가지의 예언 관리자 나엘리스는 기억 수정 세 개를 잿빛 탑에 넘겼다. 그중 하나는 첫 아침 호수에 앞선 잔향자가 비친 장면의 기억이다. 잿빛 탑은 호수가 잔향을 드러낸다는 것을 안다"
+  truth: true
+  danger: 5
+  names: [나엘리스, 잿빛 탑, 첫 아침 호수]
+- id: fact_p2sv_ibelin_prophecy_draft
+  text: "이슬 복원실에서 이어 붙이는 두루마리 한 권은 예언 후반의 초본이다. 이벨린이 읽은 첫 구절은 위협의 어조가 아니라 약속의 어조다"
+  truth: true
+  danger: 4
+  names: [이벨린, 예언]
+- id: fact_p2sv_isalion_edited_words
+  text: "『빛의 말씀』 엘다르어 원본은 인간 교단이 읽는 낭독문과 세 군데가 다르다. 어느 세 군데인지는 빛의 후견인 이살리온만 낭송할 수 있다"
+  truth: true
+  danger: 3
+  names: [이살리온, 빛의 말씀]
+- id: fact_p2sv_sena_courier
+  text: "세릴의 침묵의 접선 쪽지는 아에릭의 그루터기 속에 놓이고, 실반 심부름꾼 셋(세나 포함)이 흰 울타리 바깥 숲길로 나른다. 쪽지는 글이 아니라 손톱으로 낸 홈의 수다"
+  truth: true
+  danger: 3
+  names: [세나, 아에릭]
+- id: fact_p2sv_rumor_elf_child_born
+  text: "영혼 정원 빈 요람에서 엘다르 아이가 깨어났다는 소문이 정원지기 사이에 돈다"
+  truth: false
+  danger: 2
+  names: [영혼 정원, 빈 요람]
+- id: fact_p2sv_isilea_knows_vessel
+  text: "이실레아는 아에린이 딸 리안델을 '돌아옴의 그릇'으로 본다는 것을 안다. 막으려면 의회에서 '한 박자 어긋남'을 선언해야 하는데, 선언은 취소할 수 없고 존속파 지지 2,000과 정면으로 어긋난다. 그녀는 아직 선언하지 않았다"
+  truth: true
+  danger: 5
+  names: [이실레아, 아에린, 리안델]

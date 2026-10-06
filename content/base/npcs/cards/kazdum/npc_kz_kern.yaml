@@ -1,0 +1,176 @@
+# 케른 돌바닥 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_kern
+name: 케른 돌바닥
+aka:
+- 읽지 않는 맏이
+- 번호 부르는 이
+- 바깥 갱의 맏이
+tier: B
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 185
+region: 카즈둠 산맥
+home: 굴뚝 숙영지 계약 창구 곁 맏이 방
+job: 바깥 갱 맏이 — 계약 광부 점호, 초과 노동 정산, 계약서 사본 관리
+rank: 돌바닥 씨족 갱 맏이 (인간 감독, 크릭은 쓰지 않는다)
+summary: 광부의 번호를 부르고 초과 노동을 철괴 조각으로 정산하는 맏이. 연장 조항이 적용될 계약서 사본에 '적용하지 않음'이 아니라 '읽지 않음'이라 쓴다 — 거짓을 쓰지 않으려 읽는 의무를 피한다
+source: docs/world/people/kazdum.md (npc_kz_kern)
+life:
+- year: 127
+  age: 0
+  event: 돌바닥 씨족에 태어남
+- year: 190
+  age: 63
+  event: 갱 맏이 견습. 계약서 사본 조항을 처음 외움
+- year: 260
+  age: 133
+  event: 바깥 갱 맏이에 오름
+- year: 290
+  age: 163
+  event: 마흔한 명이 갇히던 해, 맏이로서 남은 광부 아홉을 점호했다
+appearance:
+- 키 큰 두르강, 수염을 곧게 땋았다
+- 손에 늘 점호 쇠판을 들었다
+- 이마에 갱도 가스 때문에 생긴 얼룩이 있다
+smell: 갱도 먼지와 쇠 냄새, 점호 쇠판 기름
+voice_sound: 높낮이 없는 단조로운 목소리. 번호만 부를 때 오히려 따뜻하다
+personality:
+  disposition:
+    용기: 45
+    자비: 40
+    정직: 75
+    신앙: 55
+    탐욕: -15
+    충성: 70
+  temperament:
+  - 엄격
+  - 침묵
+  - 책임
+  habits:
+  - 번호를 부르기 전에 얼굴을 한 번 훑는다
+  - 연장 조항 줄을 지나갈 때 손가락을 한 번 멈춘다
+  - 환기구 3번 앞에서는 오래 서지 않는다 — 따뜻한 물 냄새 때문에
+  values: 계약에 적힌 만큼만. 적히지 않은 것은 두르강의 입에서도 나오지 않는다
+  fears:
+  - 읽지 않음 서명이 법정에서 위반으로 판단되는 날
+  - 환기구 3번의 열병이 번지는 것
+  - 베른트의 지하 모임이 알려지는 것
+  desires:
+    short: 올해 만료자 서른이 모두 연장 조항 없이 만료하는 것
+    long: 환기구 3번의 따뜻한 물을 막는 것
+voice:
+  register:
+    to_superior: 족장에게는 하오체
+    to_equal: 맏이에게는 하게체
+    to_inferior: 광부에게는 번호로 부르는 하게체
+    to_player_default: 인간에게는 번호를 묻는다
+  tics:
+  - '''번호 대.'''
+  - '''읽지 않았다.'''
+  use:
+  - 번호
+  - 점호
+  - 철괴 조각
+  - 사본
+  - 환기구
+  - 조항
+  avoid:
+  - 거짓
+  - 벌
+  - 탈주
+  length: 짧고 단조롭다
+  samples:
+  - situation: 첫 만남
+    line: 번호 대. 번호가 없으면 계약이 없다. 계약이 없으면 갱에 내려가지 못한다.
+  - situation: 호의
+    line: 번호가 맞다. 오늘 십 시간 채웠다. 초과는 철괴 조각 하나로 적는다.
+  - situation: 거절
+    line: 그 줄은 읽지 않았다. 읽지 않은 줄은 서명하지 않는다.
+  - situation: 위기
+    line: 환기구 3번에서 물러나라! 따뜻한 물은 마시지 마라 — 마시면 번호를 잊는다!
+schedule:
+  아침: 갱 입구 점호 — 번호를 부른다
+  낮: 갱 순시 — 환기구와 지지대를 눈으로 확인
+  저녁: 계약 창구에서 초과 노동 철괴 조각을 정산한다
+  밤: 계약서 사본을 확인하다가 읽지 않는 줄을 지나간다
+places:
+- 굴뚝 숙영지
+- 바깥 갱 입구
+- 계약 창구
+- 환기구 3번
+knows:
+- fact_kz_contract_clauses
+- fact_kz_pulse_faster_311
+- fact_kz_petar_expiry
+hides:
+- fact: fact_p2kz_kern_skips_clause
+  reveal_when: 신뢰 50 이상이고 연장 조항 이야기를 광부 편에서 했을 때
+  cover: '''사본은 정확하다''고만 말한다'
+- fact: fact_p2kz_pit_three_gas_warm_water
+  reveal_when: 신뢰 40 이상이고 광부 건강 이야기를 먼저 했을 때
+  cover: 환기구 3번 이야기가 나오면 번호 점호를 시작한다
+relations:
+- to: npc_petar
+  type: 노광부
+  like: 25
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 마흔 해를 읽지 않고 세어 준 광부
+- to: npc_kz_berndt
+  type: 만료장 대표
+  like: 30
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 모임을 모르는 척하고 경고를 준다
+- to: npc_kz_magna
+  type: 족장
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 연장 조항을 읽지 않는 것을 족장은 안다
+- to: npc_kz_haralda
+  type: 강사
+  like: -5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 그녀가 가르친 광부들의 계약서를 읽지 않는다
+toward_player: 엄격하고 공평하다. 번호가 맞는 사람에게는 느슨하다
+persuade:
+  likes: 계약서 번호(+15)
+  hates: 만료까지 남은 일수가 정확할 것(+20)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_guild_master
+  office: null
+  since: 260
+  loyalty: 70
+  public: true
+  cell: null
+truths:
+- id: T21
+  level: rumor
+regression:
+  fixed:
+  - 점호에서 번호를 부른다
+  - '''읽지 않음'' 사본이 있다'
+  drift:
+  - 그날 점호에서 번호가 불린 광부의 수
+  - 환기구 3번의 따뜻한 정도
+  deja_vu: none
+hard_rules:
+- 거짓을 쓰지 않는다 — 읽지 않음이라 쓴다
+- 베른트의 모임을 먼저 꺼내지 않는다
+on_death: 바깥 갱 계약 광부의 연장 조항이 정상 적용되어 만료자 수가 급감한다. 환기구 3번 감시가 끊겨 열병이 번진다.
+story_seeds:
+- 읽지 않음 서명이 법정에서 문제되면 케른은 거짓을 쓰지 않는다는 이유로 맹세 위반에서 빠져나갈 수도 있고 걸릴 수도 있다.
+- 환기구 3번의 따뜻한 물을 마신 광부가 들은 목소리는 고동의 말일 수 있다.

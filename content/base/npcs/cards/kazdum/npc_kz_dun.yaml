@@ -1,0 +1,152 @@
+# 무기장 둔 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_dun
+name: 무기장 둔
+aka:
+- 점 하나
+- 서명한 손
+- 장부지기 둔
+tier: B
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 210
+region: 카즈둠 산맥
+home: 잿모루 대장간 거리 무기 수출 장부실
+job: 잿모루 무기장 — 무기 수출 장부 작성, 화로 구분, 서명
+rank: 잿모루 씨족 무기장 (족장 다음)
+summary: 구매자 칸에 '나가 중개인 지올'이라 적힌 화살촉 2,000개의 장부에 서명한 무기장. 수령 수레가 이름 없는 자들의 짐수레임을 한 번 보았고, 촉 꼬리마다 낙인 대신 점 하나가 찍혀 있다
+source: docs/world/people/kazdum.md (npc_kz_dun)
+life:
+- year: 102
+  age: 0
+  event: 잿모루 씨족에 태어남. 서른 해 만에 장부 견습
+- year: 210
+  age: 108
+  event: 무기장 보좌. 수출 장부 서명권을 받음
+- year: 301
+  age: 199
+  event: 무기장에 오름. 나가 중개인과 첫 거래 장부
+- year: 311
+  age: 209
+  event: 수레에서 '점'이 찍힌 촉을 처음 봄
+appearance:
+- 둥근 어깨와 작은 키, 수염을 짧게 깎고 쇠가루가 붙었다
+- 오른손 엄지에 서명용 피 자국이 늘 갈색으로 남아 있다
+- 작업복 소매에 '점' 모양 자국이 난 쇠판 사본 조각을 꿰맸다
+smell: 먹물과 쇠가루, 장부실의 마른 가죽 냄새
+voice_sound: 작고 빠르다. 숫자 말할 때 침을 삼킨다
+personality:
+  disposition:
+    용기: 20
+    자비: 25
+    정직: 55
+    신앙: 35
+    탐욕: 15
+    충성: 60
+  temperament:
+  - 겁
+  - 계산
+  - 은밀
+  habits:
+  - 서명 직전 쇠판 구석을 엄지로 한 번 문지른다
+  - 점 이야기가 나오면 소매 속 쇠판 조각을 만진다
+  - 수레가 나갈 때 번호만 읽고 짐 쪽은 보지 않으려 한다
+  values: 서명한 것은 지킨다. 서명하지 않은 곳은 내 책임이 아니다
+  fears:
+  - 장부가 법정에 올라가 서명한 자기 책임이 되는 것
+  - 점 하나의 의미를 아는 자가 찾아오는 것
+  - 족장이 장부를 열기로 하는 날
+  desires:
+    short: 장부를 정정할 합법적 구멍을 찾아 서명을 '미확정'으로 돌리는 것
+    long: 촉에 점을 찍은 손이 누구인지 확인하는 것
+voice:
+  register:
+    to_superior: 족장에게는 매우 낮은 존대
+    to_equal: 무기장 동료에게는 하게체
+    to_inferior: 견습에게는 부드러운 반말
+    to_player_default: 인간에게는 해요체. 서명을 먼저 묻는다
+  tics:
+  - '''서명 있는 사람만이라.'''
+  - '''(엄지로 쇠판 구석을 문지른다)'''
+  use:
+  - 장부
+  - 번호
+  - 서명
+  - 수레
+  - 촉
+  - 점
+  avoid:
+  - 이름 없는 자들
+  - 책임(그는 '서명'이라 한다)
+  length: 짧고 빠르다
+  samples:
+  - situation: 첫 만남
+    line: 장부실은 서명 있는 사람만이라. 서명이 없으면 문 밖에서 말씀하세요.
+  - situation: 호의
+    line: 숫자를 틀림없이 읽으시네요. 저는 읽기만 하고 해석은 안 해요.
+  - situation: 거절
+    line: 그 장은 열지 않아요. 열면 제가 서명한 사람이 되니까요 — 이미 그렇지만.
+  - situation: 위기
+    line: 수레 번호가 틀렸어요! 아니, 맞아요. 번호는 맞아요. 짐이 틀린 거예요.
+schedule:
+  아침: 장부실에서 어제의 반출 쇠판을 대조한다
+  낮: 화로 배분과 검수 — 촉 한 자루씩 손가락으로 쓸어 본다
+  저녁: 수레 입출입 기록 확인 — 짐수레 번호만 읽는다
+  밤: 방에서 서명한 쇠판 사본을 다시 센다
+places:
+- 잿모루 대장간 거리
+- 무기 수출 장부실
+knows:
+- fact_kz_contract_clauses
+hides:
+- fact: fact_p2kz_dun_signed_broker
+  reveal_when: 신뢰 45 이상이고 장부의 번호가 아니라 그의 책임을 덜어 주는 제안을 했을 때
+  cover: '''정식 계약''이라고 되풀이한다'
+- fact: fact_p2kz_dun_loaned_slaves
+  reveal_when: 호감 25 이상
+  cover: 계약과 임대는 족장의 영역이라 말한다
+relations:
+- to: npc_kz_tarna
+  type: 족장
+  like: 30
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 장부를 확인하지 않는 상관이라 안심하면서 불안하다
+- to: npc_orin_ironwire
+  type: 쇳줄 기술자
+  like: 5
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 가끔 잿불 언덕 서신을 전해 준다
+toward_player: 예의 바르고 불안하다. 책임이 무서워 말이 짧다
+persuade:
+  likes: 서명 책임을 줄이는 합법적 문구(+25)
+  hates: 점의 의미를 푸는 단서(+20)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_guild_master
+  office: null
+  since: 301
+  loyalty: 60
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 장부실 문틈으로 먼저 본다
+  drift:
+  - 그날 장부에 올라온 수레 번호
+  deja_vu: none
+hard_rules:
+- 점 이야기를 먼저 하지 않는다
+on_death: 수출 장부 서명이 족장에게 넘어가 장부가 열릴 확률이 커지고, 점의 의미를 아는 입이 사라진다.
+story_seeds:
+- 점 하나가 찍힌 촉은 이름 없는 자들의 낙인이 아니라 누군가가 일부러 찍은 표식이다 — 누구의 장난인가.
+- 둔의 서명을 '미확정'으로 돌릴 문구를 쥔 사람이 장부를 쥔다.

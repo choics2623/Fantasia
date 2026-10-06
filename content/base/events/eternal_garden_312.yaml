@@ -1,0 +1,40 @@
+# 실바렌 영원 정원 사건 달력 — AS 312 낙엽월 1일 ~ AS 313 수확월 (24 §3.2). 원천: REGIONS §5.8·§5.13, fac_eldar(빈 요람의 밤·의회 한 바퀴 9일), 월드 클락(WORLD_BIBLE §10 클락 2 맹약회의 313, 클락 5 영혼 정원).
+# 날짜 일정이 일과보다 우선한다. 날짜 표기 "년-월-일" (월: 9 낙엽월, 10 서리월, 11 긴밤월, 12 굶주림월, 13 재의 날, 1 해빙월, 2 파종월, 3 꽃월, 4 푸른월, 5 태양월, 6 건초월, 7 수확월).
+# 다른 지역과 이어지는 것: 10.9 미라의 의식 = 회색여울 매각 호송 날 / 10.24 경매에 회색여울 농노 / 11.14 루멘 공물 명단 / 313-03-15 흰 알 부화(바알카르) / 313-05-20 맹약회의(바알카르).
+# 쉼표가 든 값은 큰따옴표로.
+
+# ── 매달 반복 ──
+- {id: ev_eg_council_round, npcs: [npc_isilea, npc_isalion, npc_silvanus], repeat: monthly, day: 6, from: "13:00", to: "18:00", at: eg_ring_hall, doing: "노래 한 바퀴(9일) 가운데 6일째 — 고리의 의회가 안건을 낭송한다. 인간·외부의 일은 올라오지 않는다"}
+- {id: ev_eg_ledger_close, npcs: [npc_miriel, npc_erlan], repeat: monthly, day: 30, from: "17:00", to: "19:00", at: eg_steward_office, doing: "달 마지막 날 — 정지 기록과 이송 장부를 닫는다. 서명 칸은 비워 둔다"}
+# ── 낙엽월: 첫 낙엽 ──
+- {id: ev_eg_first_leaf, npcs: [npc_wren, npc_varendil, npc_ada], date: "312-09-03", from: "15:00", to: "16:30", at: eg_orchard, doing: "정원 경계 안쪽에서 낙엽이 한 장 떨어진다 — 렌이 먼저 보고, 바렌딜이 멀리서 걸음을 멈춘다. 에이다는 렌의 손에서 잎을 받아 행주에 싼다"}
+- {id: ev_eg_carven_courier_1, npcs: [npc_carven], date: "312-09-20", from: "20:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "급사에게 봉인한 서류 상자를 맡긴다 — 바알카르 경유 잿불 언덕행. 접목 침대 도면의 사본이 들어 있다"}
+# ── 서리월: 미라의 다섯 번째 의식, 서리월 경매 (회색여울 9.15 보급 회의, 10.9 매각 호송과 같은 가을) ──
+- {id: ev_eg_ritual_prep, npcs: [npc_aerin, npc_fionael], date: "312-10-08", from: "17:00", to: "20:00", at: soul_garden__graft_beds, doing: "다섯 번째 옮김 의식 준비 — 접목 침대 열여덟째를 닦고 수정 기둥의 그물을 조인다"}
+- {id: ev_eg_ritual_mira, npcs: [npc_mira, npc_aerin, npc_fionael], date: "312-10-09", from: "09:00", to: "15:00", at: soul_garden__graft_beds, doing: "미라의 다섯 번째 옮김 의식 — 네 번을 견딘 사람이 다시 눕는다. 피오나엘은 눈을 감지 못한다. (같은 날 회색여울에서는 매각 호송이 출발한다)"}
+- {id: ev_eg_ritual_ada, npcs: [npc_ada, npc_loren], date: "312-10-09", from: "09:00", to: "15:00", at: eg_dew_mess, doing: "식당 어른이 솥을 두 번 친다 — 이슬 우리 전체가 한 음을 낮게 부른다. 반장은 아이들을 마당에 앉힌다"}
+- {id: ev_eg_ritual_boriwheat, npcs: [npc_erlan, npc_miriel], date: "312-10-09", from: "08:00", to: "16:00", at: eg_steward_office, doing: "'보리'의 정지 — 3년째 같은 날. 에를란이 직접 걸고 미리엘이 장부에 같은 칸을 쓴다"}
+- {id: ev_eg_ritual_carven, npcs: [npc_carven], date: "312-10-09", from: "09:00", to: "11:00", at: soul_garden__patient_pavilion, doing: "접목 의식을 참관한다 — 이름 칸이 비어 있던 서류를 떠올린다"}
+- {id: ev_eg_hold_open, npcs: [npc_rosevita], date: "312-10-23", from: "22:00", to: "23:00", at: silver_leaf_gate__holding_pen, doing: "경매 전날 밤 — 열쇠 사본으로 대기 우리 문을 한 시간 연다. 회색여울에서 온 새 손님에게 흰 빵을 건넨다"}
+- {id: ev_eg_auction_autumn, npcs: [npc_caelon, npc_sisra, npc_rosevita, npc_carven], date: "312-10-24", from: "09:00", to: "17:00", at: silver_leaf_gate__auction, doing: "서리월 경매 — 정원지기 후보 마흔 가운데 회색여울에서 팔려 온 이가 있다. 카엘론은 '선물 교환'이라 부르고 시스라는 수를 입에 올리지 않는다"}
+- {id: ev_eg_naelis_leaves, npcs: [npc_naelis, npc_caelon], date: "312-10-30", from: "08:00", to: "10:00", at: silver_leaf_gate, doing: "나엘리스가 은잎문을 나선다 — 긴밤월 전 잿빛 탑으로. 소매 속 수정은 이번에 두고 간다고 한다"}
+# ── 긴밤월·굶주림월: 갈증의 밤과 의회 ──
+- {id: ev_eg_isalion_lumen_dove, npcs: [npc_isalion], date: "312-11-14", from: "10:00", to: "12:00", at: eg_light_house, doing: "루멘에서 온 문서 — 공물 명단 승인 보고. 걸러서 올린다. 녹테른의 갈증의 밤 전날"}
+- {id: ev_eg_council_transfers, npcs: [npc_miriel, npc_aerin, npc_erlan, npc_isilea], date: "312-12-02", from: "13:00", to: "18:00", at: eg_ring_hall, doing: "노래 한 바퀴 안건 — 영혼 정원 이송 건. 선례가 없어 다음 바퀴로 넘어간다. 이실레아는 '어긋남'을 입에 올릴 뻔하고 멈춘다"}
+- {id: ev_eg_carven_courier_2, npcs: [npc_carven], date: "312-12-20", from: "20:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "두 번째 급사 — 겨울 길이 닫히기 전에 도면 사본을 보낸다"}
+# ── 재의 날 (13월) ──
+- {id: ev_eg_ash_days, npcs: [npc_elastriel, npc_loren], date: "312-13-01", from: "05:00", to: "06:00", at: eg_first_tree, doing: "재의 날 첫날 — 정원은 불을 쓰지 않으니 바깥만 어둡다. 정원지기들은 노래를 한 음 낮춘다. 렌은 하늘을 본다"}
+# ── 해빙월: 빈 요람의 밤 (날짜 임시), 서리 길 재개 ──
+- {id: ev_eg_empty_cradle_night, npcs: [npc_elastriel, npc_isilea, npc_liandel, npc_isalion, npc_naelis, npc_silvanus], date: "313-01-10", from: "20:00", to: "24:00", at: eg_empty_cradle, doing: "빈 요람의 밤 — AS 268 마지막 출생 기념. 엘다르 전원이 빈 요람 전당에 모여 울지 않고 침묵한다. 요람 1,200개"}
+- {id: ev_eg_empty_cradle_gardeners, npcs: [npc_loren, npc_ada, npc_wren], date: "313-01-10", from: "20:00", to: "24:00", at: eg_dew_pens, doing: "이슬 우리의 낮은 노래 — 정원지기는 한 옥타브 낮추어 부른다. 마지막 음 앞에서 로렌이 숨을 멈춘다"}
+- {id: ev_eg_west_path_thaw, npcs: [npc_ilvanor, npc_fern], date: "313-01-16", from: "04:00", to: "07:00", at: eternal_garden__silver_forest, doing: "서리 길이 열리는 달 — 잊힌 자 둘이 서쪽 안개 길로 간다. 일바노르는 활시위만 울리고 쏘지 않는다. 페른은 북문을 소리 없이 닫는다"}
+# ── 파종월 ~ 꽃월: 흰 알 부화 ──
+- {id: ev_eg_carven_courier_3, npcs: [npc_carven], date: "313-03-20", from: "20:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "세 번째 급사 — 멜리산드가 흰 알 곁에 있어 도면 사본이 늦게 읽힌다"}
+- {id: ev_eg_white_egg_hatch, npcs: [npc_isilea, npc_elastriel], date: "313-03-15", from: "10:00", to: "18:00", at: eg_ring_hall, doing: "바알카르에서 흰 알 부화 소식이 들어온다 — 이실레아가 의회에 섭정안을 낭송한다. 여왕은 한 마디도 하지 않는다. 44년 만에 처음 '아이가 태어난 곁'이 의회의 일이 된다"}
+# ── 푸른월 ~ 태양월: 맹약회의 313 ──
+- {id: ev_eg_covenant_leave, npcs: [npc_isilea], date: "313-05-17", from: "06:00", to: "09:00", at: silver_leaf_gate, doing: "여왕의 대리인이 은잎문을 나선다 — 바알카르로. 소매 속에 흰 알 섭정안과 '다시 기억'안", travel_from: eg_princess_house}
+- {id: ev_eg_covenant_council, npcs: [npc_isilea], date: "313-05-20", from: "09:00", to: "18:00", at: baalkar, doing: "맹약회의 313 — 엘다르 대리. 잔향 대숙청이냐 현상 유지냐 맹약 균열이냐. 한 박자 어긋남을 선언할 자리", travel_from: eg_princess_house, return_to: eg_princess_house}
+- {id: ev_eg_covenant_wait, npcs: [npc_elastriel, npc_miriel, npc_caelon], date: "313-05-20", from: "09:00", to: "18:00", at: eg_first_tree, doing: "맹약회의 날 — 은잎문과 관리장 처소는 낭송을 멈춘다. 여왕은 대리인의 결과를 '아직' 기억하지 않는다"}
+# ── 건초월·수확월 ──
+- {id: ev_eg_carven_courier_4, npcs: [npc_carven], date: "313-06-20", from: "20:00", to: "21:00", at: silver_leaf_gate__guest_pavilion, doing: "네 번째 급사 — 맹약회의 뒤라 서류가 한 겹 더 봉인된다"}
+- {id: ev_eg_harvest_sorting, npcs: [npc_loren, npc_ada, npc_wren], date: "313-07-15", from: "08:00", to: "16:00", at: eg_orchard, doing: "수확월 — 정원 안에는 수확이 없으니 과수원은 늘 같은 열매를 달고 있다. 렌이 가을을 찾아 한 번 더 올려다본다"}

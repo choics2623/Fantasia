@@ -1,0 +1,88 @@
+# 깊은망치 왕궁 — 카즈둠 지하 왕도 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §12.9, HOUSES §3.3, fac_durgan, fac_beat_ledger, 카드(브로르·힐다·그림발드 등).
+# grid: 왕도 중심 구역 평면 (m), 원점 = 북서쪽 모서리. 지하 9층 가운데 제3~5층(왕의 홀·전당·법정·신전·대장간 회랑)을 한 장에 눌러 그렸다.
+#       x 동쪽, y 남쪽. 북쪽(y=0)이 왕의 홀, 남쪽(y=520)이 하강 층계와 깊은 문 쪽 갱도. 층 높이 차이는 note에 쓴다.
+# 같은 노드에서 걷는 거리는 80m/분. 깊은 문·망치문·굴뚝 숙영지는 다른 노드라 outer로 두었다 (id 앞부분이 노드 이름).
+# 두르강은 모든 문을 '서명'으로 연다 — access: staff는 두르강 증표, owner는 그 자리의 주인.
+id: deephammer_hall
+name: 깊은망치 왕궁 (지하 왕도 카즈벨)
+node: deephammer_hall
+kind: underground_city
+grid: {w: 760, h: 520}
+curfew: {from: "22:00", to: "05:30", note: "통금이 아니라 '돌 침상 시간' — 인간은 소유 층 위로 오르지 못하고 층 검문이 계약 증표를 본다. 깊은 문 쪽 갱도는 24시간 봉쇄. 왕궁 경비의 야간 순찰은 하강 층계 앞에서 돌아선다"}
+bells:
+  - {at: "05:00", name: 새벽 세 번 두드림 (신전)}
+  - {at: "06:00", name: 갱 열기·작업 시작}
+  - {at: "12:00", name: 점심 두드림}
+  - {at: "16:30", name: 작업 끝 두드림}
+  - {at: "22:00", name: 돌 침상 두드림}
+patrols: ["22:00", "02:00", "05:00"]
+locations:
+  # ── 위쪽 층: 왕의 홀 ──
+  - {id: dh_king_hall, name: 왕의 홀, xy: [380, 40], kind: hall, access: staff, hours: "06:00-20:00 (판결일 개방)", rooms: [dh_throne, dh_signing_desk, dh_king_chamber], note: "기둥 삼백. 기둥 하나하나가 조상 무덤이라 아무도 기대지 않는다. 왕은 왕좌에 앉기보다 서명 책상에 서 있다"}
+  - {id: dh_throne, name: 왕좌, parent: dh_king_hall, access: staff, note: "돌 왕좌. 방석이 없다. 브로르는 판결 때만 앉는다"}
+  - {id: dh_signing_desk, name: 서명 책상, parent: dh_king_hall, access: staff, hours: "06:00-18:00", hidden: "서랍 안 — 하그린이 '다음 회기로' 미룬 깊은 문 개방 승인 안건 쇠판 세 장 (서명란 비어 있음)", note: "왕이 서명을 받는 책상. 모든 계약서가 여기를 한 번 지난다"}
+  - {id: dh_king_chamber, name: 왕의 침실, parent: dh_king_hall, access: owner, hidden: "침상 머리맡 돌벽 — 오른쪽 귀가 굳은 날마다 새긴 금 (1일 1줄, 이천 줄이 넘는다)"}
+  - {id: dh_crown_prince_room, name: 왕자 서재, xy: [440, 70], kind: office, access: owner, hours: "06:00-23:00", hidden: "서가 뒤 — 왕의 귀가 돌로 굳은 속도를 매달 줄자로 잰 기록(AS 300부터)"}
+  # ── 계약의 전당과 돌 법정 ──
+  - {id: dh_contract_hall, name: 계약의 돌 전당, xy: [330, 150], kind: archive, access: public, hours: "07:00-17:00 (만료일은 해 질 때까지)", rooms: [dh_stone_archive, dh_signing_hall, dh_scribe_room, dh_illegal_slabs], note: "모든 계약서 원본이 쇠판과 돌판으로 보관된다. 만료일에 광부가 자기 계약서를 직접 부수는 곳"}
+  - {id: dh_stone_archive, name: 돌판 서고, parent: dh_contract_hall, access: staff, note: "삼천 년의 계약판. 층층이 돌 선반. 서기가 번호를 소리 없이 입 모양으로만 부른다"}
+  - {id: dh_signing_hall, name: 서명 회기장, parent: dh_contract_hall, access: public, hours: "계절 첫날 06:00-24:00", note: "계절 첫날(해빙·푸른·수확·서리월 1일)의 서명 회기. 족장이 피 한 방울과 손바닥 자국을 쇠판에 찍는다"}
+  - {id: dh_scribe_room, name: 서기실, parent: dh_contract_hall, access: staff, hours: "07:00-22:00", note: "룬새김 씨족의 서기들이 쇠판을 새기는 방. 시그나의 책상이 가장 안쪽에 있다", hidden: "시그나의 책상 이중판 — 서명 룬 서른 개를 모은 '첫 교재' 석판 (소리 내어 읽지 않게 번호만 매겼다)"}
+  - {id: dh_illegal_slabs, name: 위법 계약 돌판 서랍, parent: dh_contract_hall, access: secret, hidden: "회색여울 출신 계약 광부 셋의 계약서 — 계약 시작일이 '납치 직후' 날짜. 두르강에게 위법 계약은 신성모독이라 서기들이 서랍을 잠가 둔 채 아무도 왕에게 올리지 못했다", note: "서고 맨 아래 층 오른쪽 구석"}
+  - {id: dh_oath_court, name: 변하지 않는 돌 법정, xy: [250, 150], kind: court, access: public, hours: "판결일 08:00-16:00", rooms: [dh_judge_bench, dh_judge_chamber], note: "맹세지기 씨족의 법정. 판관석 일곱, 방청석은 돌 계단. 판결문은 즉시 쇠판에 새겨진다. 법정 바닥은 한 번도 닦지 않았다"}
+  - {id: dh_judge_bench, name: 판관석, parent: dh_oath_court, access: staff, note: "룬판관 일곱이 앉는 돌의자 — 그림발드의 자리는 맨 왼쪽"}
+  - {id: dh_judge_chamber, name: 판관 휴게실, parent: dh_oath_court, access: staff, hidden: "대재판관 우를라의 의자 아래 — 돌의 숲 명단에 손으로 표시한 '거부한 자' 한 줄 (AS 300부터 지워지지 않는 선)"}
+  - {id: dh_oath_gallery, name: 맹세 회랑, xy: [180, 210], kind: gallery, access: public, hours: "08:00-18:00", note: "맹세를 깬 뒤 돌이 된 두르강 412구가 늘어선 긴 회랑. 이름과 깬 맹세가 발 밑에 새겨져 있다. 413번 좌대가 비어 있다", hidden: "413번 좌대 — '반석 우르드'의 이름이 이미 새겨져 있다 (돌화가 닿기 전에 법정이 준비해 둠)"}
+  # ── 신전 ──
+  - {id: dh_ancestor_shrine, name: 조상의 망치 신전, xy: [470, 180], kind: shrine, access: public, hours: "24시 (새벽 세 번 두드림 05:00)", rooms: [dh_pulse_pillar, dh_priest_quarters], note: "조상의 망치 서른 자루가 천장에서 늘어져 있다. 신전 사제 서른이 새벽마다 세 번 두드린다"}
+  - {id: dh_pulse_pillar, name: 맥박 기둥, parent: dh_ancestor_shrine, access: staff, hidden: "신전 가장 안쪽 기둥 하나가 세 번에 한 번 맥박 친다 — 고동. 기둥 곁 돌바닥에 오래 앉으면 그 박자가 발바닥으로 올라온다. 사제 하나가 몰래 센다"}
+  - {id: dh_priest_quarters, name: 사제 숙소, parent: dh_ancestor_shrine, access: staff, note: "벽에 조상 이름이 층층이 새겨졌다. 대사제 오드의 방은 맨 위층"}
+  # ── 공방과 대장간 ──
+  - {id: dh_royal_workshop, name: 왕립 공방, xy: [570, 130], kind: work, access: staff, hours: "06:00-24:00", rooms: [dh_gate_machine, dh_hilda_room], note: "기어와 도르래가 천장까지 닿는 공방. 공학 제자는 열둘, 왕녀가 직접 가르친다"}
+  - {id: dh_gate_machine, name: 깊은 문 개방 기계 (조립실), parent: dh_royal_workshop, access: owner, hidden: "룬 자물쇠 일곱을 한 번에 푸는 쇠 바퀴 기계 — 이미 완성되었다. 왕의 서명 한 줄이 비어 있다"}
+  - {id: dh_hilda_room, name: 왕립 공방장의 방, parent: dh_royal_workshop, access: owner, hidden: "침상 아래 — 우르드에게서 배운 깊은 문 도면 사본과, 노래할 인간 후보 명단(페타르의 이름 위에 동그라미)"}
+  - {id: dh_forge_gallery, name: 대장간 회랑, xy: [500, 260], kind: work, access: staff, hours: "06:00-16:30", note: "서른여 개의 화로가 늘어선 회랑. 용제국 갑옷판이 여기서 두드려진다"}
+  - {id: dh_king_forge, name: 왕의 대장간, xy: [520, 300], kind: work, access: staff, hours: "20:00-24:00 (밤 왕의 망치질)", note: "왕이 직접 망치질하는 작은 화로 — 왕의 의무. 철판 하나에 사흘을 쏟는다"}
+  - {id: dh_ashanvil_row, name: 잿모루 대장간 거리, xy: [90, 270], kind: work, access: staff, hours: "06:00-16:30", rooms: [dh_arms_ledger], note: "서쪽 끝 무기 대장간 거리. 용제국 비늘기사단 갑옷의 팔 할이 여기서 나간다. 인간 대장간 노예 '임대분'이 일꾼 뒷줄에 있다"}
+  - {id: dh_arms_ledger, name: 무기 수출 장부실, parent: dh_ashanvil_row, access: owner, hidden: "화살촉 2,000개의 반출 장부 — 구매자 이름 칸이 '나가 중개인 지올'로만 적혀 있고, 수령지는 '이름 없는 자들' 쪽 짐수레로 이어진다 (무기장 둔의 서명)"}
+  # ── 공공 구역 ──
+  - {id: dh_hall_canteen, name: 회랑 식당, xy: [350, 320], kind: canteen, access: public, hours: "05:30-22:00", note: "귀리죽과 버섯빵. 인간과 두르강이 같은 줄에 선다 — 계약서에 적힌 대로"}
+  - {id: dh_beer_gallery, name: 맥주 회랑 '서명 잔', xy: [400, 330], kind: tavern, access: public, hours: "17:00-22:00", note: "계약 이야기를 하는 맥주통. 서명 잔을 비운 사람은 거짓말을 하지 않겠다는 농담이 있다 — 두르강은 농담으로 맹세하지 않는다"}
+  - {id: dh_stone_market, name: 돌 시장, xy: [330, 380], kind: market, access: public, hours: "08:00-18:00", note: "나가 곡물 중개인, 하르칸 말 장수, 두르강 보석 상인. 계약서를 소리 내어 읽는 상인이 가장 환영받는다"}
+  - {id: dh_guest_lodge, name: 손님 숙소, xy: [420, 400], kind: inn, access: public, hours: "24시", note: "외국 사절·상인 숙소. 벽에 '여기서 한 약속도 돌에 새긴다'는 룬이 있다"}
+  - {id: dh_miner_quarters, name: 직할 계약 광부 숙소, xy: [240, 400], kind: barracks, access: serf, locked: "22:00-05:30", note: "왕실 직할 계약 광부 2,000 가운데 왕궁 수리조 오십이 사는 층. 침상마다 계약서 번호를 새긴 놋 패가 걸렸다"}
+  - {id: dh_checkpoint, name: 층계 검문, xy: [330, 450], kind: checkpoint, access: public, hours: "24시", note: "하강 층계 위. 계약 증표나 손님 증표가 없으면 더 내려가지 못한다"}
+  - {id: dh_lift, name: 승강 수레, xy: [300, 250], kind: lift, access: staff, hours: "06:00-22:00", note: "쇠사슬 수레가 층을 오르내린다. 인간 광부는 자기 층 위로 가는 서명이 있어야 탄다"}
+  - {id: dh_guard_barracks, name: 왕실 경비 막사, xy: [230, 90], kind: barracks, access: staff, hidden: "지하 감방 — 깊은 문 접근 투옥자 셋. 둘은 신도, 하나는 계약 광부(소리를 내어 노래를 불렀다)", rooms: [dh_prison], note: "중갑 경비 이백. 방패에 문장 룬이 새겨졌다"}
+  - {id: dh_prison, name: 왕실 감옥, parent: dh_guard_barracks, access: staff, locked: "24시", note: "깊은 문 접근 투옥. 재판 없이 기간 투옥만 — 계약에 적힌 만큼"}
+  - {id: dh_descent_stair, name: 하강 층계, xy: [330, 500], kind: stair, access: staff, hours: "24시 봉쇄", note: "깊은 문까지 이어지는 층계. 층마다 두드림 석 자리가 있어 올라올 때 신호를 보낸다"}
+# 왕궁 밖 — hours = 왕궁 중심에서 걷는 시간. 다른 노드의 장소는 node로 구분한다.
+outer:
+  - {id: dh__sleeping_hill, name: 북단 고원 '잠든 언덕' (우트갈의 등), hours: 6.0, node: deephammer_hall}
+  - {id: dh__outer_pit, name: 왕궁 아래 바깥 갱, hours: 1.5, node: deephammer_hall}
+  # 망치문 (다른 노드)
+  - {id: hammer_gate__gate_office, name: 망치문 문지기 사무소, hours: 0, node: hammer_gate}
+  - {id: hammer_gate__stamp_window, name: 통행 각인 창구, hours: 0, node: hammer_gate}
+  - {id: hammer_gate__ledger_room, name: 통행 각인 장부실, hours: 0, node: hammer_gate}
+  - {id: hammer_gate__arms_store, name: 망치문 무기 보관소, hours: 0, node: hammer_gate}
+  - {id: hammer_gate__gate_inn, name: 문 밖 대상 숙소, hours: 0, node: hammer_gate}
+  # 굴뚝 숙영지 (다른 노드)
+  - {id: contract_camp__bulletin, name: 계약 게시판 마당, hours: 0, node: contract_camp}
+  - {id: contract_camp__dorm, name: 계약 광부 숙소와 식당, hours: 0, node: contract_camp}
+  - {id: contract_camp__pit_gate, name: 바깥 갱 입구와 점호 마당, hours: 0, node: contract_camp}
+  - {id: contract_camp__expiry_market, name: 만료장 시장, hours: 0, node: contract_camp}
+  - {id: contract_camp__berndt_house, name: 베른트의 집, hours: 0, node: contract_camp}
+  - {id: contract_camp__reading_cellar, name: 베른트의 집 지하 (두 번째 서명), hours: 0, node: contract_camp}
+  - {id: contract_camp__grey_pit, name: 회색 갱 (회색광맥 씨족), hours: 0, node: contract_camp}
+  - {id: contract_camp__foreman_desk, name: 계약 창구 (갱 맏이), hours: 0, node: contract_camp}
+  - {id: contract_camp__camp_chapel, name: 안식일 예배당, hours: 0, node: contract_camp}
+  # 깊은 문 (다른 노드)
+  - {id: deep_gate__guard_post, name: 문지기 초소 (무쇠문 씨족), hours: 0, node: deep_gate}
+  - {id: deep_gate__seal_door, name: 봉인 문 앞, hours: 0, node: deep_gate}
+  - {id: deep_gate__survey_camp, name: 탐사대 막사 (잿수염 씨족), hours: 0, node: deep_gate}
+  - {id: deep_gate__bardum, name: 바르둠 요새, hours: 0, node: deep_gate}
+  - {id: deep_gate__pale_chapel, name: 창백한 예배당 (요새 아래층), hours: 0, node: deep_gate}
+  - {id: deep_gate__pulse_shaft, name: 고동 갱도, hours: 0, node: deep_gate}
+  - {id: deep_gate__draur_cave, name: 드라우르 동굴 (셀른), hours: 0, node: deep_gate}
+  - {id: deep_gate__beat_room, name: 박자 방 (버려진 환기 갱 끝), hours: 0, node: deep_gate}
+  - {id: deep_gate__exile_tunnel, name: 추방자 갱 '돌이 된 자들의 길', hours: 0, node: deep_gate}

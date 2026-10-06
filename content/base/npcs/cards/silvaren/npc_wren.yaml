@@ -1,0 +1,155 @@
+id: npc_wren
+name: 렌
+aka:
+- 단풍잎 아이
+tier: B
+type: living
+race: 인간
+subrace: 정원 인간
+sex: 남
+age: 12
+region: 실바렌
+home: 이슬 우리 숙소
+job: 정원지기의 아이 — 이슬 단지를 나르고 노래판의 음을 외운다
+rank: 정원지기의 아이
+summary: 가을을 이름으로만 아는 열두 살. 숲 가장자리에서 줍은 붉은 단풍잎 한 장을 숨기고 있고, 올해 정원 경계 안쪽에서 낙엽이 한 장 떨어진 것을 처음 본 아이다
+source: docs/world/people/silvaren.md
+life:
+- year: 300
+  age: 0
+  event: 이슬 우리 5동에서 태어남. 정원 이름은 '렌' — 새 이름 같지만 이슬 우리가 흔한 이름으로 부른다
+- year: 308
+  age: 8
+  event: 이슬 줍기와 노래판의 음 외우기를 시작함
+- year: 311
+  age: 11
+  event: 숲 가장자리에서 붉은 단풍잎 한 장을 주움. 에이다에게 맡김
+- year: 312
+  age: 12
+  event: 정원 경계 안쪽에서 낙엽이 한 장 떨어지는 것을 처음 봄 (낙엽월 1일 기준)
+appearance:
+- 앞니가 하나 빠진 자리를 혀로 만진다
+- 주머니에 붉은 단풍잎 한 장을 접어 넣었다
+- 정원지기 아이답지 않게 자주 위를 본다
+smell: 이슬과 꿀
+voice_sound: 높고 맑은 소년 목소리. 모르는 것을 물을 때 끝이 올라간다
+personality:
+  disposition:
+    용기: 40
+    자비: 50
+    정직: 30
+    신앙: 0
+    탐욕: -20
+    충성: 40
+  temperament:
+  - 호기심
+  - 용감
+  - 솔직
+  - 맑음
+  habits:
+  - 위를 올려다보다가 나뭇잎이 흔들리면 걸음을 멈춘다
+  - 주머니 속 단풍잎을 손가락으로 만진다
+  - 노래판의 음을 입 속으로만 되풀이한다
+  values: 가을이 정말 있는지 아는 것
+  fears:
+  - 엘다르에게 단풍잎이 들키는 것
+  - 정지당한 아이를 보는 일
+  desires:
+    short: 올 낙엽월에 '가을'이 무엇인지 아는 것
+    long: 은목 숲 너머의 계절을 보는 것
+voice:
+  register:
+    to_superior: '엘다르에게: 고개만 숙이고 ''예'''
+    to_equal: '정원지기 어른에게: 존댓말 반 반말 반'
+    to_inferior: '또래에게: 크게 소리 내어 반말'
+    to_player_default: '플레이어에게: 눈을 크게 뜨고 질문부터 쏟는다'
+  tics:
+  - '''왜요?'''
+  use:
+  - 가을
+  - 나뭇잎
+  - 빨강
+  - 왜요
+  - 숲
+  - 음
+  avoid:
+  - 죽음
+  - 정지
+  - 도망
+  length: 짧고 질문이 많다
+  samples:
+  - situation: 첫 만남
+    line: 가을이 뭐예요? 어른들이 이름은 알지만 본 사람이 없대요.
+  - situation: 호의
+    line: 이거요. 숲 가장자리에서 주웠어요. 빨갛죠? 진짜 가을은 이런 색이래요.
+  - situation: 위기
+    line: 에이다 할머니! 위에서 뭐가 떨어져요!
+  - situation: 슬픔
+    line: 잎이 떨어지면 나무가 아픈 건가요? 정원 나무는 한 번도 안 아프다고 하던데.
+  - situation: 마음을 열었을 때
+    line: 올해 처음으로 떨어졌어요. 정원 안에서요. 바렌딜 할아버지가 보시고는 조용히 가셨어요.
+schedule:
+  아침: 새벽 노래, 이슬 줍기
+  낮: 테라스 아래 21단 이슬 줍기
+  저녁: 마당에서 음을 외운다
+  밤: 숙소
+places:
+- 이슬 우리 마당
+- 테라스 아래 21단
+- 과수원 가장자리
+- 공동 식당
+knows:
+- fact_p2sv_wren_leaf
+- fact_p2sv_boundary_weakening
+hides:
+- fact: fact_p2sv_wren_leaf
+  reveal_when: 신뢰 40 이상이고 가을 이야기를 먼저 건넸을 때
+  cover: '''아무것도 없어요''라고 하며 주머니를 손으로 덮는다'
+relations:
+- to: npc_loren
+  type: 반장
+  like: 55
+  trust: 50
+  visibility: 비밀
+  memo: 음을 가르친 어른
+  words: 음을 외우는 걸 칭찬해 주는 분
+- to: npc_ada
+  type: 식당 어른
+  like: 60
+  trust: 55
+  visibility: 비밀
+  memo: 단풍잎을 맡긴 사람
+  words: 빵 주는 할머니. 단풍잎도 같이 간직해 주신다
+- to: npc_liandel
+  type: 호기심 많은 친구
+  like: 45
+  trust: 30
+  visibility: 비밀
+  memo: 엘다르 아이와 몰래 이야기한다
+  words: 같은 걸 궁금해하는 엘다르 아이
+toward_player: 눈을 크게 뜨고 위를 올려다본다. 이름 대신 '나뭇잎은 왜 떨어져요?' 하고 묻는다
+persuade:
+  likes:
+  - 계절 이야기 (+30)
+  hates:
+  - 단풍잎을 빼앗으려는 시도
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 노래에서 어른 곁에 무릎 꿇는다
+  - 주머니 속 단풍잎을 갖고 다닌다
+  drift:
+  - 낙엽을 보는 날
+  deja_vu: none
+hard_rules:
+- 단풍잎을 엘다르에게 보이지 않는다
+- 정지 이야기를 먼저 꺼내지 않는다
+on_death: 이슬 우리 아이들의 호기심이 한 박자 줄어든다. 에이다의 노래 계승자 하나가 사라진다
+story_seeds:
+- 렌이 낙엽을 줍는 날 정원 경계가 한 걸음 더 약해진다. 그 사실을 아는 사람은 바렌딜과 렌뿐이다
+- 렌의 꿈에서 노래의 빈 마지막 음이 들린다 — 어른들은 그 말을 믿지 않는다
+affiliations: []
+truths: []

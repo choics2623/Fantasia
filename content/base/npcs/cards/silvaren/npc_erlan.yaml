@@ -1,0 +1,165 @@
+id: npc_erlan
+name: 수호자 에를란 정지손
+aka:
+- 정지를 거는 이
+tier: B
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: 남
+age: 1200
+region: 실바렌
+home: 정원 수호자 초소
+job: 정원 수호자 대장 — 시간 마법 '정지'를 거는 자
+rank: 별빛 엘다르 (수호자)
+summary: 정지된 정원지기가 엘다르의 낭송을 한 글자도 놓치지 않고 외운다는 것을 알면서 보고하지 않은 수호자
+source: docs/world/people/silvaren.md
+life:
+- year: -1188
+  age: 0
+  event: 별빛 엘다르 수호자 가문에서 태어남 (AS -888 근처)
+- year: 100
+  age: 988
+  event: 정원 수호자에 들어가 정지 마법을 익힘
+- year: 290
+  age: 1178
+  event: 수호자 대장이 되어 첫 정지 30일을 집행함
+- year: 309
+  age: 1197
+  event: '''보리''의 첫 정지에서 눈이 깜박이지 않는 이유를 알아챔'
+- year: 312
+  age: 1200
+  event: 정지된 이들이 낭송을 외운다는 것을 의회에 보고하지 못한 채 3년째 (낙엽월 1일 기준)
+appearance:
+- 손바닥이 늘 차갑다
+- 말하기 전에 손가락 하나를 들어 시간을 가늠한다
+- 눈 밑에 시간 마법 흉터 같은 은선
+smell: 서늘한 유리
+voice_sound: 낮고 평탄한 목소리. 정지 선언 때만 음이 내려간다
+personality:
+  disposition:
+    용기: 30
+    자비: 15
+    정직: 55
+    신앙: 25
+    탐욕: -30
+    충성: 55
+  temperament:
+  - 엄정
+  - 침착
+  - 죄책
+  - 관찰
+  habits:
+  - 손가락 하나를 들어 시간을 가늠한 뒤 말한다
+  - 정지를 걸고 나면 상대의 눈을 한참 본다
+  - 초소 앞에서 새벽 노래를 서서 부른다
+  values: 법의 집행. 정지가 처벌로만 남는 것
+  fears:
+  - 정지가 저항을 키운다는 사실이 의회에 알려지는 것
+  - 정지당한 이의 눈이 깜박이지 않는 이유
+  desires:
+    short: 올 서리월 '보리'의 정지가 같은 날짜에 겹치는 이유를 알아내는 것
+    long: 정지가 처벌이 아니게 되는 날을 피하는 것
+voice:
+  register:
+    to_superior: '미리엘에게: 보고 어조'
+    to_equal: '엘다르 동료에게: 낭송투'
+    to_inferior: '정원지기에게: 번호로 부르고 짧게 명령한다'
+    to_player_default: '플레이어에게: 의례적 시선, 관찰하는 눈'
+  tics:
+  - 손가락 하나 들기
+  - '''움직임이 어긋났소.'''
+  use:
+  - 정지
+  - 어긋남
+  - 한 걸음
+  - 시간
+  - 일수
+  avoid:
+  - 고문
+  - 처벌(대신 '정지')
+  - 미안
+  length: 짧고 평탄하게
+  samples:
+  - situation: 첫 만남
+    line: 움직임이 어긋났소. 오늘은 경고로 끝내겠소. 내일은 기억하지 못할 것이오.
+  - situation: 호의
+    line: 정지된 이들은 눈을 감지 못하오. 그들이 무엇을 보는지 알고 싶어졌소.
+  - situation: 위기
+    line: 움직이지 마시오! 한 걸음이면 되오 — 한 걸음이.
+  - situation: 슬픔
+    line: 정지가 끝나면 그들은 낭송을 한 글자도 틀리지 않고 되풀이하오. 처벌이 그들에게 기억을 준 셈이오.
+  - situation: 마음을 열었을 때
+    line: 보고해야 하오. 그런데 보고하면 법이 바뀌고, 법이 바뀌면 이슬 우리가 먼저 다치오.
+schedule:
+  아침: 새벽 노래
+  낮: 정원 길 순찰
+  저녁: 정지 집행
+  밤: 초소에서 쉰다
+places:
+- 수호자 초소
+- 테라스 위 20단
+- 테라스 아래 21단
+knows:
+- fact_p2sv_stopped_memorize
+- fact_p2sv_boriwheat_repeat_stop
+hides:
+- fact: fact_p2sv_stopped_memorize
+  reveal_when: 신뢰 55 이상, 또는 정지 후 정원지기가 낭송을 한 글자도 틀리지 않고 외웠음을 정중히 지적했을 때
+  cover: '''정지는 시간이 지나면 풀리오''라고만 한다. 손가락 하나를 든다'
+relations:
+- to: npc_miriel
+  type: 정지 승인자
+  like: 20
+  trust: 40
+  visibility: 공개
+  memo: 같은 장부
+  words: 서명하지 않는 분. 그러나 장부는 한 번도 틀리지 않는다
+- to: npc_loren
+  type: 감시 대상 반장
+  like: 5
+  trust: -10
+  visibility: 공개
+  memo: 보고하지 않는 이유가 있다
+  words: 눈을 마주치지 않는 사람. 눈을 마주치지 않는 이유를 안다
+- to: npc_fern
+  type: 실반 감시인
+  like: 10
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 정원 길의 동료. 문을 소리 죽여 닫는 이
+toward_player: 의례적 시선, 관찰하는 눈. 움직임이 어긋나면 한 걸음 가까이 온다
+persuade:
+  likes:
+  - 정지의 실제 효과에 대한 질문 (+20)
+  hates:
+  - 정지를 '고문'이라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 노래를 초소 앞에서 부른다
+  - 저녁에 정지 집행 기록을 미리엘에게 올린다
+  drift:
+  - 순찰 경로
+  - 정지를 거는 대상
+  deja_vu: none
+hard_rules:
+- 정지를 '고문'이라 하지 않는다
+- 정지된 이의 낭송 이야기를 먼저 하지 않는다
+on_death: 정지 집행이 정원 관리장에게 넘어가고 정지 기간이 길어진다
+story_seeds:
+- 정지가 노래를 키운다는 것을 의회에 알리면 정지 법이 바뀐다. 그러면 이슬 노래도 법의 시선에 들어온다
+- '''보리''의 정지는 에를란이 직접 걸었다 — 보리가 정지 중에 외운 낭송이 노래의 진명 조각을 늘렸다'
+affiliations:
+- faction: fac_eldar
+  rank: null
+  office: null
+  since: 290
+  loyalty: 55
+  public: true
+  cell: null
+truths: []

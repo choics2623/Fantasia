@@ -1,0 +1,64 @@
+# 영원 정원 — 엘다르의 마지막 도시 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §5.9, fac_eldar, fac_seril_silence, docs/world/people/silvaren.md.
+# grid: 정원 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 정원 한가운데 첫 아침 호수, 북쪽 위가 은목 숲 고원이고 41단 테라스가 남쪽 아래로 흘러내린다(위 = 북·중앙, 아래 = 남·동).
+# 정원 안은 늘 늦봄이다. 시간이 느린 구역은 kits/elf_garden.yaml 의 time_zones — 위치 엔진은 쓰지 않는다. 여기서는 분(分)이 바깥과 같다고 본다.
+# 은잎문(silver_leaf_gate)과 영혼 정원(soul_garden)은 지역 지도의 별개 노드이므로 outer 에 둔다 (id 는 REGIONS §5.9).
+id: eternal_garden
+name: 영원 정원
+node: eternal_garden
+kind: elf_garden
+grid: {w: 1400, h: 1200}
+curfew: {from: "21:30", to: "04:30", note: "이슬 우리의 문은 잠기지 않는다 — 나가면 숲이 죽인다. 점호는 18:00(실반 감독이 수를 센다). 해 진 뒤 테라스 위 단은 정원지기 출입 금지, 어기면 '정지'"}
+bells:
+  - {at: "05:00", name: 첫 아침의 노래 (정원 전체가 멈춘다)}
+  - {at: "13:00", name: 정오의 낭송 (은목 가지 사이 종 없는 종소리 — 엘다르가 한 음을 낸다)}
+  - {at: "18:00", name: 점호 (실반이 수를 센다)}
+  - {at: "21:30", name: 등 끄기 (이슬 우리의 흰 등)}
+patrols: ["06:00", "12:00", "18:00", "22:00"]
+locations:
+  # ── 중심: 첫 아침의 나무와 호수 ──
+  - {id: eg_first_tree, name: 첫 아침의 나무, xy: [700, 430], kind: sacred_tree, access: staff, hours: "24시", rooms: [eg_root_chamber, eg_root_stone], note: "높이 140m의 은목. 새벽 노래가 이 뿌리에서 시작된다. 정원지기는 노래 시각에만 무릎 꿇는 자리까지 올 수 있고, 뿌리 안쪽은 들어가지 못한다"}
+  - {id: eg_root_chamber, name: 뿌리 사이 석실, parent: eg_first_tree, access: owner, hidden: "여왕이 신살 전의 기억을 되풀이하는 방. 벽에 가로획 하나가 반복해 긋혀 있다 — 첫 불씨의 버릇을 기억하기 위해 3,000년 전 손톱으로 처음 그은 것", note: "엘라스트리엘의 거처"}
+  - {id: eg_root_stone, name: 에오르의 획 돌, parent: eg_first_tree, access: secret, hidden: "뿌리 사이에 신살 이전부터 있던 돌 — 에오르의 진명 '말하다'의 한 획. 만지면 시간 근원의 진명 조각이 손바닥에 떠오른다(진명 사용 가능한 자만)"}
+  - {id: eg_dawn_lake, name: 첫 아침 호수, xy: [790, 440], kind: lake, access: public, hours: "24시", note: "물이 거울처럼 정지해 있다. 휘젓지 않는다. 비추면 기억이 보인다 — 잔향이 비추면 앞선 잔향자의 한 장면, 회차가 쌓이면 지난 회차의 자기 죽음", hidden: "호수 동안 은목 배 두 척. 한 척의 바닥에 '손톱으로 그은 가로획' 하나 — 누가 그었는지 엘다르는 기억하지 못한다"}
+  - {id: eg_ring_hall, name: 고리의 의회당, xy: [610, 460], kind: council, access: staff, hours: "13:00-18:00 (선례 낭송일). 노래 한 바퀴(9일)마다 안건을 연다", note: "첫 아침의 가지 140석이 반원으로 둘러앉는다. 의장석이 없다. 어긋남을 선언하면 안건은 한 바퀴 뒤로 넘어간다"}
+  - {id: eg_dew_library, name: 이슬 서고, xy: [590, 395], kind: library, access: staff, hours: "08:00-18:00", rooms: [eg_dew_restoration], note: "이슬 두루마리 9,000권. 서고지기 이벨린이 문을 연다. 두루마리는 글이 아니라 낭송의 '손 기호' — 정원지기는 들어오지 못한다"}
+  - {id: eg_dew_restoration, name: 이슬 복원실, parent: eg_dew_library, access: secret, hidden: "금이 간 두루마리를 이어 붙이는 방. 세릴의 침묵의 접선 장소 — 복원 중인 두루마리 한 권이 예언 후반의 초본이다. 첫 낭송 구절이 '두려움이 아닌 약속'으로 읽힌다"}
+  # ── 테라스: 엘다르 거처(위)와 정원지기 일터(아래) ──
+  - {id: eg_terraces_upper, name: 테라스 위 20단 (엘다르 거처), xy: [680, 560], kind: district, access: staff, hours: "24시", rooms: [eg_steward_office, eg_princess_house, eg_light_house, eg_dew_house, eg_child_pavilion], note: "은목 둥치 속과 위에 지은 거처. 시간이 바깥의 1/3로 흐른다. 정원지기는 일하는 시각(낮)에만 올라온다"}
+  - {id: eg_steward_office, name: 정원 관리장 처소, parent: eg_terraces_upper, access: staff, hidden: "책상 위 '정지 기록' — 정지를 받은 정원지기 이름과 일수. 3년 전부터 한 이름('보리')이 같은 날짜에 반복해 올라 있다"}
+  - {id: eg_princess_house, name: 왕녀 처소, parent: eg_terraces_upper, access: owner, hidden: "맹약회의 313 때 가져갈 '흰 알 섭정안' 초안 — 엘다르가 흰 용 섭정단에 이름을 올리는 안"}
+  - {id: eg_light_house, name: 빛실 가지 거처, parent: eg_terraces_upper, access: owner, hidden: "『빛의 말씀』 엘다르어 원본 — 인간 교단이 읽는 낭독문과 세 군데가 다르다"}
+  - {id: eg_dew_house, name: 은이슬 가지 거처, parent: eg_terraces_upper, access: owner, note: "예언 관리자의 처소. 잿빛 탑과 오가는 문서함"}
+  - {id: eg_child_pavilion, name: 아이의 정자, parent: eg_terraces_upper, access: owner, hours: "교사 시간 08:00-12:00 / 그 뒤 비어 있음", hidden: "정자 기둥 안쪽에 아이가 새긴 작은 음표 모양 — 인간 노래 세 곡의 높이. 교사들은 장식이라고 생각한다"}
+  - {id: eg_terraces_lower, name: 테라스 아래 21단 (정원지기 일터), xy: [760, 760], kind: district, access: serf, hours: "06:00-18:00", rooms: [eg_waterway], note: "화단·은목 가지 닦기·수로 청소. 41단 맨 아래가 수로다"}
+  - {id: eg_waterway, name: 41단 맨 아래 수로, parent: eg_terraces_lower, access: secret, hidden: "수로 배수구는 정원 경계 밖으로 이어진다 — 시간 경계를 넘는 순간 의지 판정. 배수구 쇠창살 고리는 안쪽에서 풀린다. 이 문을 아는 사람은 이슬 우리의 어른 셋과 페른"}
+  - {id: eg_empty_cradle, name: 빈 요람 전당, xy: [660, 600], kind: hall, access: public, hours: "24시 (빈 요람의 밤에는 엘다르 전원)", note: "AS 268 이후 비어 있는 요람 1,200개. 소리가 울리지 않게 지어져 있다", hidden: "요람 하나에 존속파가 '첫 성공'이라 부르는 엘다르 아이 인형 — 실은 인간 아이의 기억을 옮겨 담은 수정"}
+  # ── 이슬 우리와 과수원 ──
+  - {id: eg_dew_pens, name: 이슬 우리, xy: [900, 820], kind: quarters, access: serf, hours: "24시 (문은 잠기지 않는다)", rooms: [eg_dew_mess, eg_dew_bath, eg_dew_hearth], note: "흰 석조 숙소 30동. 정원지기 3,000이 산다. 점호는 18:00"}
+  - {id: eg_dew_mess, name: 공동 식당, parent: eg_dew_pens, access: serf, hours: "04:00-21:00", note: "흰 빵·꿀·우유·과일. 하루 세 끼. 대륙에서 가장 좋은 배급"}
+  - {id: eg_dew_hearth, name: 식당 아궁이, parent: eg_dew_mess, access: serf, hidden: "아궁이 돌 뒤 나무판에 글자가 아니라 '음 높이'를 새겼다 — 이슬 노래. 글자인지 아닌지 엘다르가 오래 정하지 못했다"}
+  - {id: eg_dew_bath, name: 목욕 연못, parent: eg_dew_pens, access: serf, hours: "19:00-21:00", note: "정원지기가 소리 내어 웃는 유일한 시각"}
+  - {id: eg_orchard, name: 과수원과 벌통, xy: [1020, 700], kind: orchard, access: serf, hours: "06:00-18:00", note: "벌은 엘다르의 기억 속 꽃에서만 꿀을 모은다고 한다 — 정원지기는 그 말을 믿는 척한다", hidden: "벌통 일곱째 아래 빈 공간 — 이슬 노래 음 높이를 새긴 도자기 조각들을 묻은 곳"}
+  - {id: eg_white_fence, name: 흰 울타리 마을, xy: [980, 900], kind: village, access: staff, hours: "24시", rooms: [eg_north_gate], note: "이슬 우리를 두르는 울타리와 실반 감독의 집 열 채. 흰 울타리는 가두는 벽이 아니라 '수를 세는 선'이라고 실반은 말한다"}
+  - {id: eg_north_gate, name: 흰 울타리 북문 초소, parent: eg_white_fence, access: staff, hidden: "페른이 쥔 북문의 열쇠. '바깥 숲의 씨앗'을 받고 눈감아 준 밤이 올해 세 번", note: "북문 밖은 마른 숲 쪽"}
+  # ── 조용한 숲·잠든 나무 ──
+  - {id: eg_quiet_wood, name: 조용한 숲, xy: [420, 700], kind: wood, access: staff, hours: "24시", rooms: [eg_silvanus_tower], note: "말을 하지 않는 엘다르 약 600이 사는 숲. 순혈파의 거처. 새벽 노래도 부르지 않고 듣는다"}
+  - {id: eg_silvanus_tower, name: 고요한 숲 석탑, parent: eg_quiet_wood, access: owner, hours: "밤 별 헤는 시각 22:00-04:00", hidden: "석탑 꼭대기 석반에 쌓인 영혼 정원의 '정지 기록' 사본과 온실 3동의 위치 도면. 실바누스가 증거로 모으는 것", note: "실바누스가 매일 밤 별을 센다"}
+  - {id: eg_grave_wood, name: 마른 숲 '잠든 나무', xy: [330, 880], kind: grave, access: staff, hours: "해 뜰 때", note: "퇴색해 몸이 나무가 된 엘다르들의 숲. 시종장 바렌딜이 이름표를 닦는다"}
+  - {id: eg_guardian_post, name: 정원 수호자 초소, xy: [820, 640], kind: post, access: staff, hours: "24시", note: "정지를 거는 수호자 셋이 교대로 선다"}
+  - {id: eg_silent_stump, name: 침묵의 그루터기 (북문 밖 마른 숲 가장자리), xy: [1130, 840], kind: spot, access: secret, hours: "24시", hidden: "침묵 서약자 아에릭이 말없이 앉는 자리. 그루터기 나이테 사이에 가로획을 손톱으로 새긴 흔적이 아홉 개", note: "접선 쪽지는 이 그루터기 속에 둔다"}
+outer:
+  - {id: silver_leaf_gate, name: 은잎문, hours: 46, node: silver_leaf_gate}
+  - {id: silver_leaf_gate__arch, name: 은목 아치 (잊힌 자들의 머리카락 매듭), hours: 46, node: silver_leaf_gate}
+  - {id: silver_leaf_gate__auction, name: 경매 정자, hours: 46, node: silver_leaf_gate}
+  - {id: silver_leaf_gate__guest_pavilion, name: 손님 정자, hours: 46, node: silver_leaf_gate}
+  - {id: silver_leaf_gate__holding_pen, name: 경매 대기 우리, hours: 46, node: silver_leaf_gate}
+  - {id: soul_garden, name: 영혼 정원, hours: 17, node: soul_garden}
+  - {id: soul_garden__graft_beds, name: 접목 침대 정자 (30개), hours: 17, node: soul_garden}
+  - {id: soul_garden__crystal_columns, name: 수정 기둥 사이 (시간의 그물), hours: 17, node: soul_garden}
+  - {id: soul_garden__patient_pavilion, name: 피험자 정자, hours: 17, node: soul_garden}
+  - {id: soul_garden__greenhouse_2, name: 유리 온실 2동, hours: 17, node: soul_garden}
+  - {id: soul_garden__greenhouse_3, name: 유리 온실 3동 (이세의 묘 위), hours: 17, node: soul_garden}
+  - {id: soul_garden__greenhouse_7, name: 유리 온실 7동 (아에린의 거처), hours: 17, node: soul_garden}
+  - {id: eternal_garden__silver_forest, name: 은목 숲 (정원 밖 숲길), hours: 4, node: eternal_garden}
+  - {id: lost_child_stone, name: 아이 잃은 돌 (가시안개 경계), hours: 72, node: lost_child_stone}

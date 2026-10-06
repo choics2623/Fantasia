@@ -1,0 +1,178 @@
+# 해그 룬새김 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_hag
+name: 해그 룬새김
+aka:
+- 잿빛 탑의 두르강
+- 칠 줄 새기는 이
+- 룬 장인
+tier: B
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 380
+region: 카즈둠 산맥
+home: 계약의 돌 전당 새김방
+job: 계약의 전당 장인 — 룬 쇠판 새김 총책, 잿빛 탑 원로 (황무지 봉인 룬 설계자)
+rank: 룬새김 씨족 족장
+summary: 서명용 룬 한 글자가 진명의 첫 음절임을 알고도 삼천 년 동안 개정하지 않은 장인. 재의 황무지 봉인 룬의 일곱째 줄과 깊은 문 룬 자물쇠가 닮았다는 것을 혼자만 안다
+source: docs/world/people/kazdum.md (npc_kz_hag)
+life:
+- year: -64
+  age: 0
+  event: 룬새김 씨족에 태어남 (AS 기준). 열 살 때 정 하나를 받음
+- year: 100
+  age: 164
+  event: 계약의 전당 정식 새김공이 됨
+- year: 230
+  age: 294
+  event: 잿빛 탑에 황무지 봉인 룬 설계를 의뢰받음
+- year: 311
+  age: 379
+  event: 깊은 문 룬 자물쇠 변형 도면을 우연히 대조하다 일곱째 줄의 닮음을 발견
+appearance:
+- 눈썹이 허옇고 수염이 짧다 — 쇠가루가 붙기 때문이다
+- 양손 엄지 끝마다 룬 새김 정이 박힌 굳은살
+- 작업복 가슴에 여덟 갈래 별 모양 흠집이 있다 — 잿빛 탑 증표 자리
+smell: 쇠가루와 정 기름, 서랍 속 먹물 냄새
+voice_sound: 작고 건조한 목소리. 룬 이름을 말할 때만 입술이 거의 움직이지 않는다
+personality:
+  disposition:
+    용기: 10
+    자비: 15
+    정직: 55
+    신앙: 20
+    탐욕: -10
+    충성: 60
+  temperament:
+  - 조용
+  - 계산
+  - 은밀
+  habits:
+  - 허공에 룬 일곱 줄을 새기듯 손가락을 움직이며 말한다
+  - 새김 정을 내려놓을 때 쇠판 모서리에 세 번 두드린다
+  - 모르는 얼굴의 인간 앞에서는 일부러 룬 하나를 틀리게 새겨 보인다
+  values: 새긴 것은 지워지지 않는다. 그러니 새기기 전에 오래 본다
+  fears:
+  - 서명 룬 한 글자의 정체가 광부들 입에서 소리가 되어 나오는 것
+  - 황무지 봉인 줄이 약해지는 것
+  - 잿빛 탑에 보낸 서신이 읽히는 것
+  desires:
+    short: 서명용 룬을 개정 없이 안전하게 만드는 방법을 찾는 것
+    long: 깊은 문 룬 자물쇠와 황무지 봉인 줄의 연결을 끊는 것
+voice:
+  register:
+    to_superior: 왕에게는 하오체. 쇠판 번호로 답한다
+    to_equal: 장인에게는 하게체. 획 수로 말한다
+    to_inferior: 서기에게는 해라체. 틀린 획에는 말 없이 정을 든다
+    to_player_default: 인간에게는 말이 거의 없다. 룬 하나를 허공에 새겨 보이는 것으로 갈음한다
+  tics:
+  - '''(정을 두드리며) 쇠판은 거짓이 없다.'''
+  use:
+  - 획
+  - 줄
+  - 쇠판
+  - 정
+  - 서명 룬
+  - 일곱째
+  avoid:
+  - 소리
+  - 이름(룬이름 외에는)
+  - 비밀
+  length: 아주 짧다. 룬 이름은 입술만 움직인다
+  samples:
+  - situation: 첫 만남
+    line: (눈을 들지 않고) 서명을 가져왔나. 서명이 아니라면 서기실이다.
+  - situation: 호의
+    line: 획이 곧다. 곧은 획은 쇠판에서 오래 산다. 가르칠 만하다.
+  - situation: 거절
+    line: 그 줄은 새기지 않는다. 새길 수 있어서가 아니라 지울 수 없어서다.
+  - situation: 분노
+    line: 서명 룬을 소리 내지 마라! 눈으로 써라. 입으로 쓰는 순간 그것은 계약이 아니라 부름이 된다.
+schedule:
+  아침: 새김방에서 쇠판 첫 줄을 새긴다
+  낮: 서기들의 새김을 검수한다 — 틀린 획은 지우지 않고 고쳐 새긴다
+  저녁: 잿빛 탑에 보낼 서신을 쓰고 불에 넣는다
+  밤: 잠들기 전 서명용 룬 하나를 허공에 새겼다 지운다
+places:
+- 계약의 돌 전당
+- 새김방
+- 서고
+knows:
+- fact_kz_contract_clauses
+- fact_kz_gate_reopening
+hides:
+- fact: fact_p2kz_hag_syllable_rune
+  reveal_when: 신뢰 55 이상이고 서명 룬의 소리 이야기가 먼저 나왔을 때
+  cover: '''서명은 눈으로만 쓴다''고 되풀이한다'
+- fact: fact_p2kz_hag_waste_seal_lock
+  reveal_when: 신뢰 65 이상이거나 깊은 문 자물쇠 도면을 보였을 때
+  cover: 도면을 덮고 '탑의 일'이라 한다
+relations:
+- to: npc_kz_signa
+  type: 딸·서기장
+  like: 50
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 그녀가 모은 첫 교재를 알면서 모르는 척한다
+- to: npc_kz_urla
+  type: 대재판관
+  like: 15
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 문구 해석 분쟁의 상대
+- to: npc_grimbald
+  type: 룬판관
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 판결문 룬 새김을 감수
+- to: npc_hilda
+  type: 왕녀
+  like: 10
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 깊은 문 개방 기계의 룬 바퀴 일곱을 새겨 주었으나 목적을 묻지 않았다
+toward_player: 일하는 손에는 관대하고 입이 빠른 손에는 닫힌다
+persuade:
+  likes: 룬 한 획의 정확한 이해(+20)
+  hates: 황무지 봉인 줄의 약해진 곳 보고(+25)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 제작-룬 새김(상한 60)을 가르친다 — 서명용 룬만
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: off_rune_hall_master
+  since: 100
+  loyalty: 70
+  public: true
+  cell: null
+- faction: fac_ashen_tower
+  rank: rank_elder
+  office: off_elder_rift
+  since: 230
+  loyalty: 55
+  public: false
+  cell: null
+truths:
+- id: T11
+  level: fragment
+regression:
+  fixed:
+  - 일곱째 줄과 문 자물쇠의 닮음이 도면에 있다
+  drift:
+  - 그날 새김방에 걸린 쇠판의 수
+  deja_vu: none
+hard_rules:
+- 서명 룬을 소리 내어 읽지 않는다
+- 잿빛 탑 이야기를 계약의 전당 안에서 하지 않는다
+on_death: 계약의 돌 전당 룬 새김이 사흘 멈춘다. 황무지 봉인 일곱째 줄 해석이 시그나에게 넘어가 문 자물쇠와의 연결이 방치된다.
+story_seeds:
+- 서명 룬 한 글자의 정체는 계약 광부 전체를 지켜 온 침묵이다. 그 침묵을 깨는 방법을 찾는 자가 있다.
+- 황무지 봉인 일곱째 줄과 깊은 문 자물쇠는 같은 손이 새겼다. 한쪽을 푸는 것이 다른 쪽을 푸는 일이다.

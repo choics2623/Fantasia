@@ -1,0 +1,218 @@
+id: npc_ada
+name: 에이다 할멈
+aka:
+- 식당 어른
+- 행주 꽂은 노파
+tier: A
+type: living
+race: 인간
+subrace: 정원 인간
+sex: 여
+age: 64
+region: 실바렌
+home: 이슬 우리 공동 식당 곁 방
+job: 이슬 우리 식당 어른 — 정원지기 평균보다 3년 더 산 사람
+rank: 정원지기 (계급 밖)
+summary: 이슬 노래판을 아궁이 뒤에 숨긴 어른. 세 어른 가운데 하나로 수로의 존재를 알고, 이세의 마지막 말을 아직 데인에게 전하지 못했다
+source: docs/world/people/silvaren.md
+life:
+- year: 248
+  age: 0
+  event: 이슬 우리 9동에서 태어남
+- year: 262
+  age: 14
+  event: 이슬 우리 식당 일꾼이 됨. 처음으로 흰 빵 반죽을 배움
+- year: 272
+  age: 24
+  event: 노래판을 이어받음. 아궁이 돌 뒤의 나무판을 처음 봄
+- year: 287
+  age: 39
+  event: 이세가 온실로 끌려가기 전 마지막 말을 부탁받음 — '네 아버지는 매일 밤 별을 센단다'
+- year: 290
+  age: 42
+  event: 수로의 존재를 알게 되는 세 어른 중 하나가 됨
+- year: 300
+  age: 52
+  event: 로렌에게 노래판을 가르침. 이후 서로 번갈아 지킴
+- year: 309
+  age: 61
+  event: 벌통 일곱째 아래 도자기 조각을 묻는 자리를 정함
+- year: 312
+  age: 64
+  event: 데인에게 이세의 말을 전할 날을 기다린 지 25년째 (낙엽월 1일 기준)
+appearance:
+- 귀 뒤에 행주를 꽂았다
+- 손마디가 휘었고 한 손으로 국자를 든다
+- 웃을 때 눈가 주름이 이슬 우리 아이들이 아는 지도 같다
+smell: 따뜻한 빵과 꿀
+voice_sound: 낮고 퍼진 목소리. 아이를 부를 때 높낮이가 올라간다
+personality:
+  disposition:
+    용기: 40
+    자비: 70
+    정직: -10
+    신앙: 0
+    탐욕: -50
+    충성: 80
+  temperament:
+  - 다정
+  - 고집
+  - 버팀
+  - 비밀
+  habits:
+  - 아이가 들어오면 먼저 입에 빵을 넣어 준다
+  - 아궁이 곁에 앉아 아이 수를 센다
+  - 국자로 솥 가장자리를 두 번 친다 — 노래판이 안전하다는 신호
+  values: 아이들. 이슬 우리의 아궁이. 약속은 25년이 걸려도 지킨다
+  fears:
+  - 엘다르가 아궁이 돌 뒤를 보는 날
+  - 미라가 의식에서 이름을 잃는 것
+  - 이세의 말을 데인에게 전하기 전에 죽는 것
+  desires:
+    short: 미라의 다섯 번째 의식 전에 그녀를 수로로 빼내는 것
+    long: 노래판을 다음 어른에게 넘기는 것
+voice:
+  register:
+    to_superior: '엘다르에게: 고개만 숙이고 ''예'''
+    to_equal: '정원지기 동료에게: 낮은 반말, 음으로 맺는다'
+    to_inferior: '아이에게: 부드럽고 크고 먹이는 말투'
+    to_player_default: '플레이어에게: 먼저 먹을 것을 건네고 질문은 그 뒤에'
+  tics:
+  - '''질문은 입이 비고 나서 해.'''
+  - 국자 두 번
+  use:
+  - 빵
+  - 꿀
+  - 아궁이
+  - 아래 이름
+  - 음
+  - 먹어
+  avoid:
+  - 진명
+  - 수로(입에 올리지 않고 '아래 문'이라 한다)
+  - 죽음
+  length: 짧게 끊고 먹을 것을 주는 동작으로 이어진다
+  samples:
+  - situation: 첫 만남
+    line: 흰 빵이다. 꿀은 아직 따뜻할 때. 질문은 입이 비고 나서 해.
+  - situation: 호의
+    line: 아궁이 뒤는 보지 마라. 보면 눈이 높아져서 그만큼 낮게 불러야 하니까.
+  - situation: 적대
+    line: 국자는 내 손에 있다. 이 식당에 들어와서 함부로 묻는 입은 국자로 막는다.
+  - situation: 거래
+    line: 아이들이 오늘 먹은 빵 값은 네 이야기다. 바깥 계절 이야기, 하나.
+  - situation: 거짓말할 때
+    line: 벌통 아래? 벌레밖에 없어. (국자로 솥을 한 번 친다)
+  - situation: 위기
+    line: 아이들은 다 아래로! 수로 쪽 말고 — 아니다, 수로 쪽으로!
+  - situation: 슬픔
+    line: 이세는 마지막에 웃었어. 네 아버지는 별을 센다고. 그 말을 스물다섯 해 가슴에 넣고 있다.
+  - situation: 분노
+    line: 노래를 엘다르 멈추는 도구로 쓸 거면 이 아궁이에서 나가라. 이건 아이들이 잠드는 노래다.
+  - situation: 회귀자를 의심할 때
+    line: 너 우리 아이들 이름을 안다. 아래 이름 말이다. 어떻게 아는지 말하지 마라. 그냥 먹어라.
+  - situation: 마음을 열었을 때
+    line: 아래 문이 있어. 41단 맨 아래, 쇠창살 고리는 안쪽에서 풀려. 문 너머는 계절이 바뀐다. 의지 판정이 있다고들 해.
+schedule:
+  아침: 아궁이 불 지피기
+  낮: 식당에서 아이들을 눈으로 센다
+  저녁: 이슬 우리 마당 볕에 앉는다
+  밤: 아궁이 돌 뒤 판을 확인한다
+places:
+- 이슬 우리 공동 식당
+- 식당 아궁이
+- 이슬 우리 마당
+- 벌통 일곱째
+knows:
+- fact_p2sv_ada_pitch_board
+- fact_p2sv_waterway_three_elders
+- fact_p2sv_dew_song_missing_pitch
+- fact_p2sv_wren_leaf
+- fact_sv_ise_last_words
+- fact_sv_mira_fifth_ritual
+hides:
+- fact: fact_p2sv_waterway_three_elders
+  reveal_when: 신뢰 65 이상, 또는 미라를 빼낼 구체적 계획을 제시했을 때
+  cover: '''아래 문''이라는 말도 쓰지 않고 ''아래는 습기가 차''라고만 한다'
+- fact: fact_p2sv_ada_pitch_board
+  reveal_when: 로렌이 먼저 인정했거나 신뢰 60 이상
+  cover: '''아궁이 뒤에는 쥐 구멍밖에 없다''고 한다. 국자로 솥을 한 번 친다'
+- fact: fact_sv_ise_last_words
+  reveal_when: 데인이 직접 물었거나 신뢰 70 이상, 또는 데인 앞에서
+  cover: '''이세 이야기는 이제 안 한다''고 등을 돌린다'
+relations:
+- to: npc_loren
+  type: 반장
+  like: 60
+  trust: 70
+  visibility: 비밀
+  memo: 노래판을 함께 지킨다
+  words: 나보다 늦게 배운 아이. 그래도 나보다 숨을 오래 참는다
+- to: npc_dane
+  type: 이세의 아들
+  like: 65
+  trust: 55
+  visibility: 비밀
+  memo: 말을 전해 주지 못한 죄책
+  words: 눈을 머리카락으로 가린 아이. 그 말을 건네면 눈을 들 것이다
+- to: npc_mira
+  type: 이슬 우리 딸
+  like: 55
+  trust: 50
+  visibility: 비밀
+  memo: 의식 날짜를 세는 사람
+  words: 서리월 9일이다. 손가락으로 세는 날
+- to: npc_wren
+  type: 노래를 배우는 아이
+  like: 50
+  trust: 45
+  visibility: 비밀
+  memo: 단풍잎의 비밀을 안다
+  words: 숲에서 가을을 가져온 아이
+- to: npc_ise
+  type: 마지막 말을 맡긴 이
+  like: 70
+  trust: 60
+  visibility: 비밀
+  memo: 이미 죽었다
+  words: 스물다섯 해 전의 웃음을 기억한다
+toward_player: 먼저 먹을 것을 건넨다. 질문은 먹은 뒤에 받는다
+persuade:
+  likes:
+  - 아이들을 지키는 일 (+30)
+  - 미라를 살리는 길 (+30)
+  - 빵을 맛있게 먹는 것 (+10)
+  hates:
+  - 노래를 '엘다르를 멈추는 도구'로 부르는 것
+  - 아궁이 뒤를 들여다보는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 노래 전 아궁이 불을 지핀다
+  - 저녁에 아궁이 돌 뒤 판을 확인한다
+  - 이세의 말을 아직 전하지 못했다
+  drift:
+  - 국자 신호를 하는 횟수
+  - 미라에게 빵을 건네는 시각
+  deja_vu: none
+hard_rules:
+- 이세의 말을 데인 없이 말하지 않는다
+- '''수로''라는 낱말을 입에 올리지 않는다'
+- 엘다르에게 눈을 마주치지 않는다
+on_death: 이슬 노래의 판 두 곳의 위치가 에이다 한 사람에게서 사라진다. 수로의 존재를 아는 어른이 둘로 줄어든다
+story_seeds:
+- 데인에게 이세의 말을 전하는 날 데인의 이름이 '낭독 노예'에서 '이세의 아들'로 바뀐다. 그 한마디를 위해 에이다는 25년을 아궁이 곁에서 버텼다
+- 미라를 수로로 빼내려면 서리월 9일 이전에 아래 문을 쓸 사람이 필요하다
+- 렌의 단풍잎이 에이다의 주머니에도 한 장 있다
+affiliations:
+- faction: fac_eldar
+  rank: rank_gardener
+  office: null
+  since: 262
+  loyalty: 80
+  public: true
+  cell: null
+truths: []

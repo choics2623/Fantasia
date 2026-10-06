@@ -1,0 +1,118 @@
+# 지역 생성 키트 — 두르강 굴과 계약 광부촌 (25_REGION_KITS.md). 카즈둠 산맥: 깊은망치 왕궁(지하 9층), 망치문, 굴뚝 숙영지(만료장 포함).
+# 원천: REGIONS §12, HOUSES §3.3, fac_durgan(계약·서명 회기·돌피병), fac_beat_ledger(고동 장부 — 키트에는 쓰지 않는다), kit_mine_slave(바깥 갱의 인간 광부).
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_durgan.law / customs / decision 을 본다.
+# 두르강의 핵심: 모든 일이 '서명'이고, 시간은 계약서에 적힌 대로 흐른다. 하루는 10시간 노동 — 초과는 각인 철괴 조각으로 값을 친다. 크릭은 쓰지 않는다.
+id: kit_durgan_delve
+applies_to: [깊은망치 왕궁, 망치문, 굴뚝 숙영지, 만료장, 바깥 갱, 회색 갱, 깊은 문 탐사 진지, 바르둠 요새]
+reuses: [kit_mine_slave]      # 바깥 갱의 인간 계약 광부 일과는 광산 노예 키트의 2교대 틀을 쓰되 '계약서에 적힌 10시간'으로 줄인다
+faction_refs: [fac_durgan, fac_beat_ledger]
+names:
+  두르강:
+    # 두르강은 '이름 + 씨족명'. 씨족명은 가문 문장(룬)의 뜻이다. 맹세를 깬 이는 씨족명을 잃고 '이름 없는 자'가 된다.
+    # 이름은 두 음절 단단한 소리(ㅋ·ㄱ·ㄷ·ㅌ·ㄹ). 여자 이름은 끝이 'ㅏ·ㅎ·ㄹ'로 닫힌다. 나이는 숫자가 아니라 '맹세의 수'로 센다.
+    male: [브로르, 하그린, 크라그, 타른, 둔, 케른, 그로딘, 도린, 발람, 토르크, 오드, 해그, 시그룬, 라그, 보르크, 군트, 데르크, 마크]
+    female: [힐다, 우를라, 시그나, 타르나, 마그나, 군힐드, 브룬, 헬가, 오달, 하랄다, 베라, 스바]
+    clans: [깊은망치, 룬새김, 무쇠문, 잿모루, 회색광맥, 맹세지기, 돌바닥, 쇳줄, 잿수염, 석회손]
+    epithet_rule: "이름 + 씨족명. 공적인 자리에서는 씨족명을 먼저 부르고 계약 번호(가슴 룬)를 뒤에 붙인다. 별명은 쇠붙이·돌 이름(반석, 재송곳)이며 맹세를 깬 뒤에만 생긴다"
+    oath_count: "나이 대신 '맹세 n개'로 신분을 말한다. 어린 두르강은 맹세가 둘, 왕은 천이백열둘 (브로르 수염 구슬)"
+  인간:
+    # 계약 광부는 계약서에 이름(서명용 룬 글자)이 적힌다 — 인간이 법적으로 '이름'을 갖는 드문 곳. 별명은 갱에서 붙는다.
+    male: [페타르, 베른트, 얀, 울리, 마테, 하인, 브란, 한스, 에릭, 라스, 로타르, 오토, 쿠르트, 헤르만, 닐스]
+    female: [로타, 마리, 한나, 이다, 에다, 일제, 그레테, 루트, 헬가, 우테, 클라라, 프리다, 리스베트, 야나, 엘케]
+    given_by_mine: ["{n}년 차", "만료 앞", "서명손", "굳은무릎", "읽는 눈(금기 별명 — 룬을 읽는다는 소문)", "마흔 해", "계약 사본", "숫자"]
+    epithet_rule: "계약서의 서명 룬 이름(공식) + 갱 별명(몸·버릇·남은 계약 햇수) + 진짜 이름(집에서 부르던 것). 만료자는 만료일을 별명 대신 단다 ('서리월 만료 로타')"
+  나가:
+    any: [지올, 모스, 사스리, 엘루, 니에바, 시렌, 카사]
+    note: "나가 상인 60 — 곡물·소금 수입 중개. 계약서를 가장 빨리 읽는 손님이고, 두르강은 그들의 서명을 믿되 문구를 의심한다"
+  하르칸:
+    any: [바타르, 에르덴, 소론, 투멘, 사이한, 올치]
+    note: "하르칸 사절 20 — 동문 쪽 사절관. 말(馬)과 무기를 맞바꾸는 말 계약"
+classes:            # 깊은망치 왕궁 기준 (REGIONS §12.4 — 두르강 약 46,000 중 3만이 왕도)
+  두르강 장인: 0.34
+  두르강 광부·석공: 0.24
+  두르강 경비: 0.10
+  두르강 서기·판관: 0.06
+  두르강 사제: 0.02
+  계약 광부 (인간): 0.14
+  만료 자유민 (인간): 0.06
+  외국 상인·사절: 0.04
+jobs:
+  - {id: forge_smith, name: 대장간 회랑 장인, class: 두르강 장인, race: 두르강, weight: 14, schedule: sch_forge}
+  - {id: armor_smith, name: 갑옷 장인 (잿모루 거리), class: 두르강 장인, race: 두르강, weight: 8, schedule: sch_armor}
+  - {id: stone_cutter, name: 석공·기둥 다듬이, class: 두르강 광부·석공, race: 두르강, weight: 10, schedule: sch_stone}
+  - {id: pit_foreman, name: 갱 맏이 (인간 감독), class: 두르강 광부·석공, race: 두르강, weight: 5, schedule: sch_foreman}
+  - {id: royal_guard, name: 왕실 경비 (중갑), class: 두르강 경비, race: 두르강, weight: 8, schedule: sch_guard_delve}
+  - {id: rune_scribe, name: 룬 서기 (계약의 전당), class: 두르강 서기·판관, race: 두르강, weight: 5, schedule: sch_scribe}
+  - {id: shrine_acolyte, name: 조상의 망치 신전 사제·수습, class: 두르강 사제, race: 두르강, weight: 2, schedule: sch_shrine}
+  - {id: contract_miner, name: 계약 광부 (바깥 갱), class: 계약 광부 (인간), race: 인간, weight: 12, schedule: sch_contract_miner}
+  - {id: direct_miner, name: 왕실 직할 계약 광부, class: 계약 광부 (인간), race: 인간, weight: 3, schedule: sch_contract_miner}
+  - {id: camp_cook, name: 숙영지 식당 요리사, class: 계약 광부 (인간), race: 인간, sex: female, weight: 3, schedule: sch_camp_cook}
+  - {id: expired_trader, name: 만료장 상인 (만료 자유민), class: 만료 자유민 (인간), race: 인간, weight: 4, schedule: sch_expired_trader}
+  - {id: expired_reader, name: 만료장의 '읽어 주는 이' (두 번째 서명), class: 만료 자유민 (인간), race: 인간, weight: 1, schedule: sch_reader}
+  - {id: naga_broker, name: 나가 곡물 중개인, class: 외국 상인·사절, race: 나가, weight: 2, schedule: sch_broker}
+  - {id: harkan_envoy, name: 하르칸 사절·말 장수, class: 외국 상인·사절, race: 하르칸, weight: 2, schedule: sch_envoy}
+schedules:          # at = 정착지 틀의 역할(role) 이름. 모든 두르강 일은 '종소리'가 아니라 '계약서의 시각'으로 열고 닫힌다.
+  sch_forge:     [{days: all, from: "05:30", to: "06:00", at: shrine_hall, doing: 조상의 망치에 인사 — 세 번 두드린다, fixed: true}, {days: workday, from: "06:00", to: "12:00", at: forge, doing: 단조}, {days: all, from: "12:00", to: "12:40", at: canteen, doing: 귀리죽과 버섯빵}, {days: workday, from: "12:40", to: "16:30", at: forge, doing: 단조·담금질}, {days: all, from: "18:00", to: "22:00", at: tavern, doing: 맥주통 곁에서 계약 이야기}, {days: all, from: "22:00", to: "05:30", at: lodging, doing: 돌 침상}, {days: sabbath, from: "08:00", to: "10:00", at: shrine_hall, doing: 조상의 망치 앞에서 맹세 점검}]
+  sch_armor:     [{days: workday, from: "06:00", to: "16:30", at: armory, doing: 갑옷판 두드리기}, {days: all, from: "12:00", to: "12:40", at: canteen, doing: 점심}, {days: all, from: "18:00", to: "21:00", at: tavern, doing: 저녁}, {days: all, from: "21:00", to: "06:00", at: lodging, doing: 잠}]
+  sch_stone:     [{days: workday, from: "06:00", to: "16:00", at: quarry, doing: 기둥 다듬기·조상 무덤 보수}, {days: all, from: "12:00", to: "12:40", at: canteen, doing: 점심}, {days: all, from: "17:00", to: "22:00", at: tavern, doing: 저녁}, {days: all, from: "22:00", to: "06:00", at: lodging, doing: 잠}]
+  sch_foreman:   [{days: workday, from: "05:30", to: "06:00", at: pit_gate, doing: 계약 광부 점호 — 계약서 번호를 부른다, fixed: true}, {days: workday, from: "06:00", to: "16:00", at: pit, doing: 갱 순시}, {days: workday, from: "16:00", to: "17:00", at: contract_desk, doing: 초과 노동 철괴 조각 정산}, {days: all, from: "19:00", to: "22:00", at: tavern, doing: 맏이들의 저녁}, {days: all, from: "22:00", to: "05:30", at: lodging, doing: 잠}]
+  sch_guard_delve: [{days: all, from: "06:00", to: "14:00", at: checkpoint, doing: 층계 검문 — 계약 증표를 본다}, {days: all, from: "14:00", to: "18:00", at: guard_barracks, doing: 무장 점검}, {days: all, from: "22:00", to: "06:00", at: streets, doing: 야간 순찰 (깊은 문 쪽은 가지 않는다)}]
+  sch_scribe:    [{days: workday, from: "07:00", to: "17:00", at: contract_hall, doing: 돌판 새김·조항 대조}, {days: all, from: "18:00", to: "22:00", at: lodging, doing: 방에서 룬 연습}, {days: sabbath, from: "08:00", to: "12:00", at: oath_court, doing: 돌 법정 방청}]
+  sch_shrine:    [{days: all, from: "05:00", to: "06:00", at: shrine_hall, doing: 새벽 세 번 두드림, fixed: true}, {days: all, from: "06:00", to: "18:00", at: shrine_hall, doing: 신전 시중}, {days: all, from: "20:00", to: "05:00", at: lodging, doing: 사제 숙소}]
+  sch_contract_miner: [{days: workday, from: "05:30", to: "06:00", at: pit_gate, doing: 점호 — 계약서 번호, fixed: true}, {days: workday, from: "06:00", to: "16:00", at: pit, doing: 채굴 (계약에 적힌 10시간)}, {days: all, from: "16:00", to: "17:00", at: canteen, doing: 귀리죽 둘과 버섯빵, fixed: true}, {days: all, from: "17:00", to: "21:00", at: camp_square, doing: 철괴 조각을 세고 계약 게시판 앞에서 이야기}, {days: all, from: "21:00", to: "05:30", at: dorm, doing: 숙소}, {days: sabbath, from: "08:00", to: "11:00", at: camp_chapel, doing: 안식일 — 두르강은 쉬는 날을 따로 두지 않으나 계약서에 적힌 하루다}]
+  sch_camp_cook: [{days: all, from: "04:00", to: "20:00", at: canteen, doing: 귀리죽·버섯빵·주 1회 고기}, {days: all, from: "20:00", to: "04:00", at: dorm, doing: 취사장 곁방}]
+  sch_expired_trader: [{days: workday, from: "07:00", to: "18:00", at: expiry_market, doing: 만료장 시장 — 적립 철괴를 쓴다}, {days: all, from: "18:00", to: "07:00", at: lodging, doing: 임차한 방}]
+  sch_reader:    [{days: workday, from: "08:00", to: "17:00", at: expiry_market, doing: 시장 일 (겉)}, {days: "weekday:[2,5]", from: "20:00", to: "23:00", at: reading_cellar, doing: 새 계약 광부에게 계약서 룬을 '읽어 준다' — 서명용 글자만이라고 말한다}, {days: all, from: "23:00", to: "07:00", at: lodging, doing: 잠}]
+  sch_broker:    [{days: workday, from: "08:00", to: "17:00", at: market, doing: 곡물 계약 — 문구를 소리 내어 읽는다}, {days: all, from: "17:00", to: "08:00", at: guest_lodge, doing: 객실}]
+  sch_envoy:     [{days: workday, from: "09:00", to: "16:00", at: market, doing: 말 계약 흥정}, {days: all, from: "16:00", to: "09:00", at: guest_lodge, doing: 사절관}]
+voices:             # 말투 원형 — 두르강은 '조항'으로 말하고 거짓을 말하지 않는다 (침묵은 한다)
+  - {id: v_clause, name: 조항으로 말하는 두르강, register: "하게체와 하오체를 섞는다. 문장이 '~하는 한', '~하지 아니하면'으로 닫힌다. 비교 대신 조건을 쓴다", tics: ["'돌이 듣는다.'", "'그 조항이 그렇다.'"], use: [계약, 서명, 조항, 맹세, 돌, 값], avoid: [아마, 어쩌면, 약속하지, 믿는다(그들은 '서명했다'고 한다)], sample: "서명했다면 지킨다. 서명하지 않았다면 나는 아무것도 아니다. 그 사이는 없다."}
+  - {id: v_oathbreaker, name: 돌이 되어 가는 자, register: "말이 짧고 낮다. 굳은 팔 쪽을 감추며 '맹세 없는 자'라 스스로를 부른다", tics: ["'굳은 쪽은 묻지 마라.'"], use: [맹세, 팔, 돌, 값, 남은 조항], avoid: [용서, 명예], sample: "굳은 쪽은 묻지 마라. 물어도 팔이 대답하지 않는다. 심장에 닿으면 알려 주마."}
+  - {id: v_gang_elder, name: 갱 맏이, register: "인간에게도 반말이 아니라 '번호'로 부르며 높임말과 반말 사이의 하게체. 틀린 조항 앞에서만 목소리가 높아진다", tics: ["'번호 대.'", "'계약에 적힌 만큼만.'"], use: [번호, 철괴 조각, 점호, 교대, 갱도], avoid: [채찍, 벌(그들은 '조항'이라 한다)], sample: "번호 대. 사백이십일. 오늘 십 시간 채웠다. 초과 한 시간은 철괴 조각 하나로 적는다."}
+  - {id: v_contract_miner, name: 계약 광부, register: "조항 이름을 외워서 말한다. 두르강에게는 존대, 같은 광부에게는 반말. 만료가 가까울수록 말수가 줄고 날짜를 센다", tics: ["'계약서에 있는 대로.'", "'만료까지 사십 일.'"], use: [만료, 조항, 철괴, 점호, 연장], avoid: [탈주, 자유(만료 전에는 입에 올리지 않는다)], sample: "계약서에 있는 대로 합니다. 만료까지 사십 일. 그 전에는 아무것도 묻지 마세요."}
+  - {id: v_expired_free, name: 만료장 자유민, register: "어색한 반말과 존댓말이 섞인다. 처음 가져 본 자기 이름을 자주 말한다. 새 광부 앞에서는 낮은 목소리", tics: ["'내 계약서는 내가 찢었다.'"], use: [찢다, 적립, 이름, 임차, 읽다], avoid: [주인], sample: "내 계약서는 내가 찢었다. 그날 이름을 불러 줬어. 아무도 번호로 부르지 않더라."}
+  - {id: v_rune_scribe, name: 룬 서기, register: "속삭임에 가까운 존대. 글자를 입으로 읽지 않고 손가락으로 허공에 새기며 말한다", tics: ["'(허공에 새기며) 이 줄은.'"], use: [줄, 돌판, 새김, 서명 룬, 대조], avoid: [읽다(인간 앞에서는 '본다'고 한다)], sample: "(허공에 새기며) 이 줄은 서명하신 분만 읽는 줄입니다. 저는 그저 새깁니다."}
+temperaments: [엄격, 고지식, 침묵, 계산, 의심, 체념, 자존, 완고, 정직, 은밀, 다정, 앙심, 겁, 영리, 호기심, 집착]
+camp_customs:       # 숙영지·왕도에만 있는 것 — 법·관습 본문은 fac_durgan.law/customs
+  - "갱을 새로 열 때 망치로 벽을 세 번 두드려 조상의 허락을 구한다. 두드림 없이 파면 계약 위반이 아니라 '불경'이다"
+  - "계약서는 쇠판에 새긴 원본이 계약의 돌 전당에, 사본이 광부 가슴 주머니에 있다. 사본을 잃으면 기간이 하루 늘어난다"
+  - "인간 광부는 서명용 룬 몇 개만 읽을 수 있다. 소리 내어 읽지 않는 한 무해한 표식이다 — 읽기 연습은 법의 회색지대"
+  - "만료일에 광부는 계약의 돌 전당에서 자기 계약서를 받아 직접 부순다. 두르강 증인 하나와 돌 법정 서기가 서 있다"
+  - "굴뚝 숙영지의 굴뚝은 갱도 환기구다. 굴뚝 연기가 곧게 오르면 갱이 건강하고, 휘면 가스가 샌다는 뜻이다"
+  - "깊은 문 쪽을 향해 망치질하지 않는다. 문 쪽 벽은 두드림 없이 파지도 않는다"
+settlement_templates:
+  - id: tpl_durgan_underhall
+    name: 두르강 지하 도시 (왕도 층 하나)
+    grid: {w: 900, h: 700}
+    roles:
+      shrine_hall:  {count: [1, 1], place: "가운데 기둥 곁", access: public, name: 조상의 망치 신전}
+      contract_hall: {count: [0, 1], place: "가운데", access: public, name: 계약의 돌 전당}
+      forge:        {count: [2, 8], place: "서쪽 회랑", access: staff, name: 대장간}
+      armory:       {count: [0, 4], place: "서쪽 끝", access: staff, name: 갑옷 공방}
+      quarry:       {count: [1, 3], place: "동쪽", access: staff, name: 석공 구역}
+      canteen:      {count: [1, 2], place: "광장 옆", access: public, name: 회랑 식당}
+      tavern:       {count: [1, 3], place: "광장 옆", access: public, name: 맥주 회랑}
+      lodging:      {count: [2, 6], place: "가장자리 층계", access: owner, name: 돌 침상 숙소}
+      checkpoint:   {count: [1, 2], place: "층계 위아래", access: public, name: 층계 검문}
+      guard_barracks: {count: [1, 1], place: "문 곁", access: staff, name: 왕실 경비 막사}
+      market:       {count: [0, 1], place: "광장", access: public, name: 돌 시장}
+      guest_lodge:  {count: [0, 1], place: "광장 옆", access: public, name: 손님 숙소}
+      streets:      {count: [1, 1], place: "전 구역", access: public, name: 층 회랑}
+    outer:
+      pit:      {hours: [1.0, 3.0], name: 바깥 갱}
+  - id: tpl_contract_camp
+    name: 계약 광부촌 (굴뚝 숙영지형)
+    grid: {w: 800, h: 600}
+    roles:
+      pit_gate:     {count: [1, 1], place: "숙영지 위쪽", access: public, name: 갱 입구와 점호 마당}
+      dorm:         {count: [4, 12], place: "굴뚝 아래", access: serf, name: 계약 광부 숙소}
+      canteen:      {count: [1, 3], place: "가운데", access: public, name: 계약 식당}
+      camp_square:  {count: [1, 1], place: "가운데", access: public, name: 계약 게시판 마당}
+      contract_desk: {count: [1, 1], place: "게시판 옆", access: staff, name: 계약 창구 (갱 맏이)}
+      camp_chapel:  {count: [0, 1], place: "숙영지 아래", access: public, name: 안식일 예배당}
+      expiry_market: {count: [1, 1], place: "서쪽 끝 — 만료장", access: public, name: 만료장 시장}
+      lodging:      {count: [3, 10], place: "만료장 안쪽", access: public, name: 만료자 임차방}
+      reading_cellar: {count: [0, 1], place: "만료장 안쪽 지하", access: secret, name: 룬 읽기 연습 지하}
+    outer:
+      pit:        {hours: [0.5, 2.0], name: 바깥 갱}
+calendar_ref: "content/base/events/kazdum_312.yaml — 카즈둠 사건 달력"

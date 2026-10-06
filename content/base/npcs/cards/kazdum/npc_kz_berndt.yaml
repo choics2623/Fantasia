@@ -1,0 +1,186 @@
+# 베른트 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_berndt
+name: 베른트
+aka:
+- 만료장 대표
+- 집 지하의 주인
+- 찢은 자
+tier: A
+type: living
+race: 인간
+subrace: 인간(만료 자유민)
+sex: 남
+age: 55
+region: 카즈둠 산맥
+home: 굴뚝 숙영지 만료장 베른트의 집 (지하에 룬 읽기 연습 석판)
+job: 만료장 대표, 만료장 시장 상인 / 두 번째 서명 모임 집주인
+rank: 두르강 자유민 증표 보유 인간
+summary: 22년 전 자기 계약서를 직접 찢은 만료 자유민. 지하에서 새 광부에게 계약서 룬을 '읽어 주는' 모임을 열고, 갱 맏이 케른의 돌려 말한 경고로 모임 날짜를 한 번 바꿨다
+source: docs/world/people/kazdum.md (npc_kz_berndt)
+life:
+- year: 257
+  age: 0
+  event: 굴뚝 숙영지에서 계약 광부의 아이로 태어남 (AS 257)
+- year: 275
+  age: 18
+  event: 7년 계약에 서명. 연장 조항이 쌓여 열다섯 해가 됨
+- year: 290
+  age: 33
+  event: 마흔한 명이 갇히던 해 만료. 계약의 돌 전당에서 자기 계약서를 직접 찢음
+- year: 295
+  age: 38
+  event: 만료장 시장에 가게를 냄. 지하를 파기 시작
+- year: 305
+  age: 48
+  event: 하랄다와 첫 만남. 두 번째 서명 모임을 시작
+- year: 312
+  age: 55
+  event: 케른의 경고로 모임 날짜를 한 번 바꿈
+appearance:
+- 손이 굵은 키 작은 남자. 오른쪽 손바닥에 계약서 서명 룬 자국 같은 흉터
+- 이마에 갱도 모자 자국이 영원히 남은 흰 선
+- 목에 자기가 찢은 계약서 한 조각을 가죽 주머니에 넣어 걸었다
+smell: 만료장 시장의 소금과 가죽, 석판 먼지
+voice_sound: 굵고 따뜻한 목소리. 두르강 존댓말을 굳은 혀로 쓴다
+personality:
+  disposition:
+    용기: 45
+    자비: 60
+    정직: 65
+    신앙: 40
+    탐욕: 5
+    충성: 60
+  temperament:
+  - 다정
+  - 조심
+  - 은밀
+  habits:
+  - 이름을 부를 때 상대의 계약서 번호가 아니라 이름을 한 번 되풀이한다
+  - 지하 문을 열기 전에 시장 쪽 소리를 한 번 듣는다
+  - 목의 가죽 주머니를 손으로 눌러 본다
+  values: 내 계약서는 내가 찢었다. 다음 사람이 찢을 수 있어야 한다
+  fears:
+  - 모임이 법정에 알려져 광부들의 만료가 연장되는 것
+  - 연습 석판 스무 장이 압수되는 것
+  - 하랄다가 의심받아 모임이 닫히는 것
+  desires:
+    short: 올해 만료자 서른이 모두 자기 계약서를 직접 찢게 하는 것
+    long: 광부 스무 명이 서명용 글자를 눈으로 읽게 하는 것
+voice:
+  register:
+    to_superior: 두르강에게는 굳은 존댓말
+    to_equal: 만료자 동료에게는 반말
+    to_inferior: 새 광부에게는 부드러운 하오체
+    to_player_default: 인간에게는 하오체와 반말 사이. 이름을 부른다
+  tics:
+  - '''이름이 뭐요.'''
+  - '''내 계약서는 내가 찢었소.'''
+  use:
+  - 이름
+  - 찢다
+  - 지하
+  - 모임
+  - 만료
+  - 죽
+  avoid:
+  - 탈주
+  - 룬 읽기(공개 자리)
+  - 반란
+  length: 짧고 따뜻하다
+  samples:
+  - situation: 첫 만남
+    line: 새로 오셨소? 이름이 뭐요. 번호 말고. 여기선 이름부터 묻는다오.
+  - situation: 호의
+    line: 죽 한 그릇 식기 전에 앉으시오. 내 계약서는 내가 찢었소. 그날 이름을 불러 줬지.
+  - situation: 거절
+    line: 그건 내 집 지하 이야기요. 지하 이야기는 시장 이야기가 아니오.
+  - situation: 분노
+    line: 연습 석판에 손대지 마시오. 스무 장이 스무 사람 몫이오.
+  - situation: 슬픔
+    line: 만료 앞에서 죽은 이가 올해만 둘이오. 계약서는 살아 있었는데.
+  - situation: 위기
+    line: 아래 불을 끄시오! 서기가 지나가오! 석판은 뒤집으시오 — 글자가 안 보이게!
+  - situation: 비밀 누설
+    line: 읽어 주는 거요. 소리는 안 내오. 소리 내면 서명이 아니라 부름이 되니까.
+  - situation: 거래
+    line: 만료일에 찢으러 오시오. 그날 증인이 필요하면 내가 서 주겠소.
+schedule:
+  아침: 만료장 시장 가게 문을 연다
+  낮: 광부 계약 상담 — 문구를 그림으로 풀어 설명한다
+  저녁: 만료자 저녁 식탁을 닫고 지하 문을 연다
+  밤: 밤 두 번째 서명 모임 — 서명용 글자만이라고 말한다
+places:
+- 굴뚝 숙영지 만료장 시장
+- 베른트의 집 지하
+- 계약 게시판 마당
+knows:
+- fact_kz_contract_clauses
+- fact_kz_petar_expiry
+hides:
+- fact: fact_p2kz_berndt_second_signature
+  reveal_when: 신뢰 45 이상이고 이름을 먼저 묻는 태도를 보였을 때
+  cover: '''만료자 친목 모임''이라고만 한다'
+- fact: fact_p2kz_berndt_warned_by_kern
+  reveal_when: 신뢰 60 이상이고 케른에 대한 호의를 말했을 때
+  cover: 모임 날짜가 '그냥 바뀐 것'이라 한다
+relations:
+- to: npc_kz_haralda
+  type: 강사
+  like: 45
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: 지하에서 문법을 가르치는 사람
+- to: npc_kz_kern
+  type: 갱 맏이
+  like: 30
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 돌려 말한 경고를 준 두르강
+- to: npc_petar
+  type: 노광부
+  like: 35
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 마흔 해째 만료 앞의 광부, 같은 숙영지
+- to: npc_kz_rota
+  type: 광부
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 만료 앞둔 여인이 자주 들른다
+toward_player: 따뜻하나 신중하다. 이름을 묻는 사람에게는 문을 연다
+persuade:
+  likes: 이름을 먼저 묻는 태도(+20)
+  hates: 만료를 앞둔 광부를 돕는 행동(+25)
+roles:
+  teacher: '스승 가능. 읽고쓰기(룬 서명 글자, 상한 30) — 조건: 이름을 말하고 지하 모임 참석'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_stone_token
+  office: null
+  since: 290
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 지하 석판 스무 장이 있다
+  - 목의 가죽 주머니에 찢은 계약서 조각이 있다
+  drift:
+  - 그날 시장의 소금 값
+  - 지하 모임의 인원
+  deja_vu: none
+hard_rules:
+- 지하 모임을 먼저 꺼내지 않는다
+- 법정 서기 앞에서 석판을 가리지 않는다 — 뒤집는다
+on_death: 두 번째 서명 모임이 하랄다 혼자 이어 가다 의심을 받아 닫힌다. 만료장이 지도자를 잃어 만료자 시장의 안전이 흔들린다.
+story_seeds:
+- 베른트의 지하 석판을 플레이어가 확보하면 새 광부에게 읽기 연습을 시킬 수 있다 — 찬가 2단계(글).
+- 케른의 돌려 말한 경고는 모임이 곧 법정에 알려질 것이라는 신호다.

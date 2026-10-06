@@ -1,0 +1,176 @@
+# 사제 브룬 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_brun
+name: 사제 브룬
+aka:
+- 기둥지기
+- 센 입
+- 세 번째 두드림
+tier: B
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 여
+age: 95
+region: 카즈둠 산맥
+home: 조상의 망치 신전 사제 숙소
+job: 신전 기둥지기 — 맥박 기둥 청소와 새벽 두드림 보조 / 박자지기 (비밀)
+rank: 신전 사제, 박자지기 (아홉 중 하나)
+summary: 대사제 오드가 모르는 박자지기. 맥박 기둥 곁 돌바닥을 닦으며 하루 천 박을 세어 오스발에게 보낸다. 기둥에 귀를 대지 말라는 규칙을 지키려 애쓰는 법을 이미 잊었다
+source: docs/world/people/kazdum.md (npc_kz_brun)
+life:
+- year: 217
+  age: 0
+  event: 돌바닥 씨족의 석공 집안에서 태어남. 어려서부터 두드리는 소리 수를 세던 아이
+- year: 290
+  age: 73
+  event: 신전 사제 수습. 맥박 기둥 곁의 첫 날을 맞음
+- year: 301
+  age: 84
+  event: 박자지기에 듦. 오스발에게 첫 돌판을 보냄
+- year: 311
+  age: 94
+  event: 기둥의 박자가 한 달 새 두 배가 된 날을 센 첫 사람이 됨
+appearance:
+- 작고 단단한 몸에 이른 흰 수염 두 가닥
+- 오른손 검지로 허벅지를 두드리는 버릇 때문에 사제복 한쪽이 닳았다
+- 눈이 먼 곳을 본다 — 소리를 보는 사람의 눈
+smell: 돌 먼지와 마른 이끼, 새벽 두드림 뒤의 식은 쇠 냄새
+voice_sound: 속삭이듯 낮은 목소리. 말하다가 박자가 어긋나면 멈추고 다시 센다
+personality:
+  disposition:
+    용기: 30
+    자비: 35
+    정직: 60
+    신앙: 75
+    탐욕: -20
+    충성: 80
+  temperament:
+  - 집착
+  - 겁
+  - 헌신
+  habits:
+  - 걸음마다 속으로 센다 — 말할 때도 숫자를 입술로만 움직인다
+  - 오스발에게 갈 돌판을 만들 때 숨을 멈춘다
+  - 오드가 가까이 오면 갑자기 바닥을 더 열심히 닦는다
+  values: 센다. 말하지 않는다. 센 것은 틀리지 않는다
+  fears:
+  - 대사제 오드가 그녀의 수를 알게 되는 것
+  - 기둥의 박자가 AS 311처럼 두 배가 되는 것
+  - 수를 세다 틀리는 것
+  desires:
+    short: 오드가 모르는 채 박자지기의 일을 계속하는 것
+    long: 누군가 박자의 뜻을 들려주는 것
+voice:
+  register:
+    to_superior: 대사제에게는 매우 낮은 존대
+    to_equal: 동료 사제에게는 해요체
+    to_inferior: 수습에게는 부드러운 반말
+    to_player_default: 인간에게도 해요체. 눈을 피한다
+  tics:
+  - '''(속으로 센다)'''
+  - '''발바닥이 먼저 알아요.'''
+  use:
+  - 기둥
+  - 바닥
+  - 박
+  - 수
+  - 걸음
+  - 돌판
+  avoid:
+  - 고동
+  - 장부
+  - 센다(공개 자리)
+  length: 짧다. 센 숫자는 입술로만
+  samples:
+  - situation: 첫 만남
+    line: (속으로 센다) …아, 예. 기둥 곁에는 오래 서 계시면 안 돼요. 발바닥이 먼저 알아요.
+  - situation: 호의
+    line: 손이 차가우세요. 신전 바닥이 차서 그래요. 제 이름은 브룬이에요. 아무도 안 물으셨지만.
+  - situation: 거절
+    line: 그건 말씀드릴 수 없어요. 말하지 않는 것도 맹세예요, 저에게는.
+  - situation: 위기
+    line: 대사제님, 기둥이 — 아, 아니에요! 바닥이 미끄러워서요!
+schedule:
+  아침: 새벽 두드림 보조 후 기둥 곁 바닥 청소
+  낮: 신전 시중 중 틈틈이 박자를 센다 — 걸음마다
+  저녁: 저녁 기도 후 기둥 곁 돌바닥을 한 번 더 닦는다
+  밤: 밤에 숙소에서 오늘의 박 수를 작은 돌판에 새긴다
+places:
+- 조상의 망치 신전
+- 맥박 기둥
+- 사제 숙소
+knows:
+- fact_kz_pulse_faster_311
+hides:
+- fact: fact_p2kz_pillar_beat_counted
+  reveal_when: 신뢰 50 이상이고 박자를 같이 세 주었을 때
+  cover: 걸음 수를 세는 것이라고 둘러댄다
+relations:
+- to: npc_kz_odd
+  type: 대사제
+  like: 20
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 이 사람에게만 센 입을 감춘다
+- to: npc_osval
+  type: 장부지기
+  like: 25
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: 매달 돌판을 박자 방으로 내려보낸다
+- to: npc_kz_urla
+  type: 대재판관
+  like: 15
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 같은 장부의 동료
+- to: npc_deep_nidar
+  type: 사제
+  like: -10
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 같은 소리를 다르게 읽는다
+toward_player: 수줍고 경계하며, 박자를 같이 듣는 사람에게는 문을 연다
+persuade:
+  likes: 박자를 같이 듣는 것(+15)
+  hates: 오드와 부딪치지 않는 행동(+20)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_apprentice
+  office: null
+  since: 290
+  loyalty: 70
+  public: true
+  cell: null
+- faction: fac_beat_ledger
+  rank: rank_counter
+  office: off_shrine_ear
+  since: 301
+  loyalty: 95
+  public: false
+  cell: n_shrine
+truths:
+- id: T21
+  level: fragment
+regression:
+  fixed:
+  - 기둥 곁 바닥을 새벽에 한 번 닦는다
+  drift:
+  - 그날 기둥에서 센 박의 수
+  - 닳은 사제복이 어느 쪽인가
+  deja_vu: none
+hard_rules:
+- 오드 앞에서 박을 세지 않는다
+- 장부라는 낱말을 신전 안에서 쓰지 않는다
+on_death: 신전의 박자 기록이 끊겨 장부에 한 달의 구멍이 생긴다. 박자지기들이 새 기둥지기를 심어야 한다.
+story_seeds:
+- 브룬이 센 박과 장부의 박이 어긋나는 날짜가 서로 다른 읽기의 열쇠다.
+- 오드가 그녀의 돌판을 발견하는 날 신전이 갈라지거나, 오드가 장부 편에 선다.

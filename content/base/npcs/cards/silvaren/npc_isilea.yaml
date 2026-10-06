@@ -1,0 +1,216 @@
+id: npc_isilea
+name: 왕녀 이실레아 첫아침
+aka:
+- 여왕의 대리인
+- 리안델의 어머니
+tier: A
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: 여
+age: 1900
+region: 실바렌
+home: 테라스 위 20단 왕녀 처소
+job: 여왕의 대리인 — 맹약회의 313의 엘다르 대리, '흰 알 섭정안' 제출자
+rank: 첫 아침 가지 왕녀
+summary: 딸을 그릇으로 보는 눈을 알면서 '한 박자 어긋남'을 아직 선언하지 못한 왕녀. 맹약회의 313에서 엘다르의 입장을 다시 기억하려 한다
+source: docs/world/people/silvaren.md
+life:
+- year: -1588
+  age: 0
+  event: 영원 여왕의 딸로 태어남. 신살을 보지 못한 첫 세대
+- year: 100
+  age: 1688
+  event: 맹약회의 AS 113 준비 낭송에 처음 참석함
+- year: 213
+  age: 1801
+  event: 맹약회의 AS 213에서 잔향 사냥 조항이 의결되는 것을 보고 '한 박자 어긋남'을 선언하지 못했다
+- year: 267
+  age: 1855
+  event: 침묵의 해 직전 딸 리안델을 가짐
+- year: 268
+  age: 1856
+  event: 마지막 출생 낭송에서 딸의 이름을 처음 낭송함
+- year: 300
+  age: 1888
+  event: 아에린이 리안델 곁을 오래 서 있는 것을 처음 눈여겨봄
+- year: 311
+  age: 1899
+  event: 맹약회의 313 대리인으로 지명됨
+- year: 312
+  age: 1900
+  event: 흰 알 섭정안 초안을 소매에 넣고 다닌다 (낙엽월 1일 기준)
+appearance:
+- 금빛이 도는 머리를 길게 땋아 한 번만 둘렀다
+- 딸과 같은 솜털 같은 앞머리
+- 소매 안에 접은 초안을 늘 쥐고 있다
+smell: 은목 수액과 마른 종이
+voice_sound: 깊고 완결된 문장. 딸 이야기에서만 반 음 올라간다
+personality:
+  disposition:
+    용기: 35
+    자비: 10
+    정직: 40
+    신앙: 30
+    탐욕: -30
+    충성: 70
+  temperament:
+  - 단호
+  - 조심
+  - 사랑
+  - 초조
+  habits:
+  - 소매 속 초안을 말 사이마다 손가락으로 만진다
+  - 리안델이 간 쪽을 한 번 돌아보고 말을 잇는다
+  - '''어긋남''이라는 단어 앞에서 말을 멈춘다'
+  values: 딸. 선례를 만드는 것. 막지도 돕지도 않는 중립이 비겁이 되는 날을 피하는 것
+  fears:
+  - 아에린의 손이 딸 머리 위에 오래 머무는 것
+  - 어긋남 선언이 취소되지 않는 것
+  - 44년이 아니라 400년이 지나도 아이가 없는 것
+  desires:
+    short: 맹약회의 313에서 흰 알 섭정안을 통과시키는 것
+    long: 딸이 그릇이 되지 않는 세상에서 엘다르가 '다시 기억'하는 것
+voice:
+  register:
+    to_superior: '여왕에게: 어머니로서 낭송투를 낮춘다'
+    to_equal: '엘다르 동료에게: 격식 낭송, ''기억을 대어 보면'''
+    to_inferior: '정원지기에게: 정중하지만 눈을 맞추지 않는다'
+    to_player_default: '플레이어에게: 격식 뒤에 한 박자 따뜻함'
+  tics:
+  - '''기억을 대어 보면'''
+  - '''한 박자 남았소.'''
+  use:
+  - 대리
+  - 선례
+  - 한 박자
+  - 아이
+  - 섭정
+  - 다시 기억
+  avoid:
+  - 마지막(아이를 가리킬 때)
+  - 소멸
+  - 반역
+  length: 완결된 문장을 천천히. 딸 이야기가 나오면 문장이 짧아진다
+  samples:
+  - situation: 첫 만남
+    line: 기억을 대어 보면, 그대의 얼굴은 선례에 없소. 그것이 오늘 내가 그대에게 말을 거는 이유요.
+  - situation: 호의
+    line: 아이가 태어나는 곁에 서 보는 일. 우리는 44년 동안 그것조차 해 보지 못했소.
+  - situation: 적대
+    line: 내 딸을 '마지막'이라 부르는 입은 이 정원에서 다시 말하지 못하게 되오.
+  - situation: 거래
+    line: 흰 알 섭정안에 표를 줄 수 있다면 그대의 청 하나를 의회 앞에서 낭송하겠소.
+  - situation: 거짓말할 때
+    line: 어긋남은 없소. (소매 속 종이를 만진다) 한 박자도.
+  - situation: 위기
+    line: 어긋남을 선언하겠소. …아니, 아직이오. 아직 한 박자 남았소.
+  - situation: 슬픔
+    line: 그 아이는 기억하는 대신 배우려 하오. 그것이 병인지 선물인지 선례가 없어 대지 못하오.
+  - situation: 분노
+    line: 존속파 2,000의 기억과 내 한 박자가 맞서는 날, 그대들은 무엇을 낭송하려오.
+  - situation: 회귀자를 의심할 때
+    line: 기억을 대어 보면 처음인데, 어머니의 낭송에서 들은 말투와 닮았소. …모르겠소.
+  - situation: 마음을 열었을 때
+    line: 딸이 인간 노래를 부르는 것을 압니다. 병이라 부를 의회 앞에서 나는 어머니이고 싶소.
+  - situation: 비밀 누설
+    line: 아에린이 딸 머리 위에서 손을 멈추는 시간을 세어 보았소. 열을 넘기는 날 나는 어긋남을 선언하오.
+schedule:
+  아침: 새벽 노래, 리안델과 아침
+  낮: 고리의 의회 참석
+  저녁: 맹약회의 준비 낭송
+  밤: 아이의 정자 앞을 걷는다
+places:
+- 왕녀 처소
+- 고리의 의회당
+- 아이의 정자
+- 첫 아침 호수
+knows:
+- fact_p2sv_isilea_reinterpret
+- fact_p2sv_isilea_white_egg
+- fact_p2sv_isilea_knows_vessel
+- fact_sv_aerin_vessel_liandel
+- fact_sv_elastriel_neutral_stance
+hides:
+- fact: fact_p2sv_isilea_knows_vessel
+  reveal_when: 아에린의 그릇 이야기를 먼저 꺼내고 신뢰 55 이상, 또는 리안델의 안전을 보증했을 때
+  cover: '''딸은 교사들이 돌본다''고 말을 돌린다. 소매 속 종이를 만진다'
+- fact: fact_p2sv_isilea_reinterpret
+  reveal_when: 신뢰 60 이상이고 맹약회의 313에 대한 증거를 가져왔을 때
+  cover: '''엘다르의 입장은 여왕이 정할 일이오''라고만 한다'
+relations:
+- to: npc_liandel
+  type: 딸
+  like: 85
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 배우려는 것이 두렵고 자랑스럽다. 병이라 부르는 날 어머니이고 싶다
+- to: npc_elastriel
+  type: 어머니
+  like: 55
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 아무것도 잊지 않는 사람의 딸. 나는 기억할 수 없는 시절을 어머니는 전부 안다
+- to: npc_aerin
+  type: 위협
+  like: -35
+  trust: -45
+  visibility: 비밀
+  memo: 딸을 보는 눈
+  words: 손이 따뜻해서 더 두렵다. 딸을 요람 세는 얼굴로 본다
+- to: npc_silvanus
+  type: 순혈파 수장
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 같은 곳을 걱정하지만 다른 말을 쓰는 사람
+- to: npc_sena
+  type: 딸의 호위
+  like: 30
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 잠든 척하는 것을 안다. 그것이 딸을 지키는 방식이라는 것도
+toward_player: 완결된 문장의 격식, 따뜻함은 한 박자 뒤. 낯선 인간을 곧바로 '정원지기'라 부르지 않는다
+persuade:
+  likes:
+  - 딸의 안전 (+30)
+  - 새로운 것의 선례를 만들 증거 (+20)
+  - 흰 알에 대한 정확한 소식 (+15)
+  hates:
+  - 리안델을 '마지막'이라 부르는 것
+  - 어긋남을 '반역'이라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 노래 뒤 리안델과 아침을 먹는다
+  - 맹약회의 313 대리인으로 준비 낭송을 한다
+  - 소매 속 흰 알 섭정안 초안
+  drift:
+  - 그날 어긋남을 선언할 뻔한 시각
+  - 리안델을 찾는 순서
+  deja_vu: none
+hard_rules:
+- 딸을 '마지막'이라 부르지 않는다
+- 어긋남 선언을 먼저 말하지 않는다
+- 아에린 앞에서 딸의 이름을 부르지 않는다
+on_death: 흰 알 섭정안이 사라지고 맹약회의 313에서 엘다르는 '관망'으로 기운다. 리안델의 보호막이 벗겨져 아에린의 접근이 쉬워진다
+story_seeds:
+- 그녀가 어긋남을 선언하는 날 존속파 2,000이 갈라지고 영혼 정원 클락이 '실패와 정원 붕괴'로 움직인다
+- 선언을 이끌어 낼 증거는 실바누스의 석탑에 있다
+- 흰 알이 부화하는 날(꽃월 14일) 그녀가 바알카르로 사자를 보낸다
+affiliations:
+- faction: fac_eldar
+  rank: rank_first_morning
+  office: off_princess_deputy
+  since: 1500
+  loyalty: 70
+  public: true
+  cell: null
+truths: []

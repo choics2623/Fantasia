@@ -1,0 +1,173 @@
+# 카즈둠 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). id 접두사 fact_p2kz_. 기존 fact_kz_*(facts/kazdum.yaml)는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 왕가와 서명 책상 ──
+- id: fact_p2kz_hagrin_delays_gate
+  text: "왕자 하그린은 힐다가 올린 깊은 문 개방 승인 안건을 서명 회기에서 세 번 '다음 회기로' 넘겼다. 서명란은 비어 있고 쇠판 세 장은 서명 책상 서랍에 있다. 힐다는 아버지가 막는다고만 믿는다"
+  truth: true
+  danger: 4
+  names: [하그린, 힐다]
+- id: fact_p2kz_hagrin_measures_ear
+  text: "하그린은 AS 300부터 매달 왕의 귀가 굳은 부분을 줄자로 쟀다. 지금 속도라면 돌이 턱뼈에 닿는 것은 AS 314 가을이고, 그때 왕은 오른쪽 말을 잃는다"
+  truth: true
+  danger: 3
+  names: [하그린, 브로르]
+- id: fact_p2kz_hagrin_proxy_clause
+  text: "왕이 쓰러지면 서명 대행을 하는 것은 왕자인데, 그 대행 서명에는 '개방 승인 안건 중 대기 중인 것을 포함한다'는 조항이 있다. 하그린은 대행하는 순간 문 여는 일에 서명하게 된다는 것을 안다"
+  truth: true
+  danger: 4
+  names: [하그린]
+# ── 돌 법정과 계약의 전당 ──
+- id: fact_p2kz_urla_knows_refuser
+  text: "대재판관 우를라는 돌의 숲 1,312구 가운데 하나가 에오르를 묻을 때 맹세를 거부한 자임을 안다. 그 자리의 표시를 판관 휴게실 의자 아래에 새겼다"
+  truth: true
+  danger: 4
+  names: [우를라, 돌의 숲]
+- id: fact_p2kz_urla_is_counter
+  text: "우를라는 고동 장부의 박자지기 하나다. 그래서 돌 법정은 자기 수장이 속한 결사를 재판할 수 없다"
+  truth: true
+  danger: 4
+  names: [우를라, 고동 장부]
+- id: fact_p2kz_hag_syllable_rune
+  text: "서명용 룬 한 글자는 진명의 첫 음절이다. 계약 광부 만 이천이 삼천 년 동안 소리 내지 않고 그 표식을 서명해 왔다. 해그 룬새김은 그것을 알고도 개정하지 않았다"
+  truth: true
+  danger: 4
+  names: [해그, 룬새김]
+- id: fact_p2kz_hag_waste_seal_lock
+  text: "해그가 설계한 재의 황무지 봉인 룬의 일곱째 줄은 깊은 문 룬 자물쇠의 변형이다. 한쪽이 풀리면 다른 쪽 줄도 약해진다"
+  truth: true
+  danger: 4
+  names: [해그, 깊은 문]
+- id: fact_p2kz_signa_first_primer
+  text: "시그나는 서명 룬 서른 개를 번호만 매겨 모은 석판 '첫 교재'를 서기실 이중판 밑에 보관한다. 잔향이 나타나면 넘겨줄 것이다"
+  truth: true
+  danger: 4
+  names: [시그나, 첫 교재]
+- id: fact_p2kz_illegal_slabs_locked
+  text: "회색여울 출신 계약 광부 셋의 위법 계약판은 서고 맨 아래 서랍에 잠겨 있다. 서기들은 왕이 직접 바로잡을 것이 두려워서가 아니라, 그 계약을 받아 적은 서기가 선대에 있어 집안이 맹세 위반 재판에 설까 봐 올리지 못했다"
+  truth: true
+  danger: 4
+  names: [위법 계약]
+- id: fact_p2kz_gallery_413_carved
+  text: "맹세 회랑 413번 좌대에는 '반석 우르드'의 이름이 이미 새겨져 있다. 돌 법정이 그의 돌화가 끝날 날을 기다리며 준비했다"
+  truth: true
+  danger: 3
+  names: [우르드, 맹세 회랑]
+# ── 신전과 깊은 문 ──
+- id: fact_p2kz_odd_ordered_opening
+  text: "AS 311 깊은 문을 열게 한 사람은 대사제 오드다. 신전 기둥의 맥박이 한 달 새 두 배가 된 날, 그는 문지기 대장 크라그에게 빗장을 들라고 했다"
+  truth: true
+  danger: 4
+  names: [오드, 크라그]
+- id: fact_p2kz_krag_vanished_guards
+  text: "AS 311 문이 열렸던 짧은 사이, 문지기 경비 셋이 문 안쪽의 두드림 소리를 따라 들어갔고 돌아오지 않았다. 크라그는 그들의 이름을 아직 경비 명부에서 지우지 않았다"
+  truth: true
+  danger: 5
+  names: [크라그]
+- id: fact_p2kz_krag_stone_hand
+  text: "크라그의 왼손은 빗장을 든 날부터 돌이 되기 시작했다. 맹세 문구는 '열지 않는 것이 지키는 것이다'였다"
+  truth: true
+  danger: 3
+  names: [크라그]
+- id: fact_p2kz_pillar_beat_counted
+  text: "조상의 망치 신전 맥박 기둥 곁에서 사제 브룬이 매일 박자를 센다. 대사제 오드는 그가 수를 센다는 것을 모른다"
+  truth: true
+  danger: 3
+  names: [브룬, 오드]
+- id: fact_p2kz_sigrun_reseal_crew
+  text: "바르둠 요새장 시그룬은 석공 열 명을 비밀리에 대기시켰다. 왕이 서명하는 날 하루 안에 봉인 룬 열한 겹을 덧새기기 위해서다"
+  truth: true
+  danger: 3
+  names: [시그룬, 바르둠]
+- id: fact_p2kz_sigrun_hears_pulse
+  text: "요새 경비들이 잠꼬대로 같은 박자를 센다. 시그룬은 그 보고를 왕궁에 올리지 않고 서랍에 넣어 두었다"
+  truth: true
+  danger: 3
+  names: [시그룬]
+- id: fact_p2kz_grodin_four_locks
+  text: "그로딘 탐사대는 룬 자물쇠 일곱 중 넷을 풀었다. 다섯째는 기계로 풀리지 않고 '사람의 목소리'로만 열린다는 도면의 한 줄을 그는 본 적 있다"
+  truth: true
+  danger: 4
+  names: [그로딘]
+- id: fact_p2kz_grodin_brother_halgrim
+  text: "그로딘의 형은 마지막 등불의 할그림 반돌이다. 할그림은 문 아래의 것을 말하지 않겠다는 맹세를 깨 왼팔과 얼굴 반쪽이 돌이다. 그로딘은 문 안에서 그 맹세를 풀 방법이 나온다고 믿는다"
+  truth: true
+  danger: 3
+  names: [그로딘, 할그림]
+# ── 대장간 거리와 광맥 ──
+- id: fact_p2kz_tarna_suspects_arrows
+  text: "잿모루 족장 타르나는 화살촉 2,000개가 이름 없는 자들 쪽으로 흘러갔다고 짐작한다. 증거를 보면 맹세 위반 재판에 서게 되므로 장부를 열지 않는다"
+  truth: true
+  danger: 4
+  names: [타르나, 잿모루]
+- id: fact_p2kz_dun_signed_broker
+  text: "무기장 둔은 구매자 칸에 '나가 중개인 지올'이라 적힌 장부에 서명했고, 수령 수레가 이름 없는 자들의 짐수레임을 한 번 본 적이 있다. 화살촉 꼬리마다 잿모루 낙인 대신 점 하나가 찍혀 있다"
+  truth: true
+  danger: 4
+  names: [둔, 지올]
+- id: fact_p2kz_magna_registers_runaways
+  text: "회색광맥 족장 마그나는 북방 탈주자 약 200명을 계약 광부로 등록했다. 그들의 계약서에는 '출신지 불문' 조항이 있고, 그것은 거짓이 아니어서 돌 법정이 위반으로 판단하지 못한다"
+  truth: true
+  danger: 4
+  names: [마그나]
+- id: fact_p2kz_magna_takes_spring_group
+  text: "마그나는 해빙월에 첫 탈주자 무리가 까마귀 문에서 내려올 때 맞이할 계약 광부 자리 서른을 비워 둔다. 서리손의 이름을 아는 이는 시그리드 말고 그녀 하나다"
+  truth: true
+  danger: 3
+  names: [마그나, 서리손]
+# ── 인간 쪽: 만료장·갱·계약 ──
+- id: fact_p2kz_haralda_teaches_reading
+  text: "하랄다 석회손은 새 계약 광부에게 서명용 글자만이 아니라 조항 문법을 가르친다. 연장 조항이 어디에 숨는지 읽게 하는 일은 법의 회색지대다"
+  truth: true
+  danger: 3
+  names: [하랄다]
+- id: fact_p2kz_haralda_citizen_draft
+  text: "하랄다는 인간에게 시민권을 주는 계약의 초안 일곱 조항을 써 두었다. 대가 조항 하나가 비어 있다 — 두르강은 계약에 대가가 적히지 않으면 서명하지 않는다"
+  truth: true
+  danger: 4
+  names: [하랄다]
+- id: fact_p2kz_berndt_second_signature
+  text: "굴뚝 숙영지 만료장의 베른트 집 지하에서 '두 번째 서명' 모임이 열린다. 계약 룬 읽기 연습 석판 스무 장이 거기 있다"
+  truth: true
+  danger: 3
+  names: [베른트, 두 번째 서명]
+- id: fact_p2kz_berndt_warned_by_kern
+  text: "베른트는 갱 맏이 케른이 돌려 말한 경고를 받고 모임 날짜를 한 번 바꿨다. 케른은 거짓말을 하지 않았고 다만 '그날 점호가 길다'고 말했다"
+  truth: true
+  danger: 3
+  names: [베른트, 케른]
+- id: fact_p2kz_kern_skips_clause
+  text: "갱 맏이 케른은 연장 조항이 적용될 광부의 계약서 사본에 '적용하지 않음'이라고 쓰지 않고 '읽지 않음'이라 쓴다. 두르강은 거짓을 쓰지 않으므로 그는 적용할 의무가 생기는 쪽을 읽지 않는다"
+  truth: true
+  danger: 3
+  names: [케른]
+- id: fact_p2kz_pit_three_gas_warm_water
+  text: "바깥 갱 3번 환기구에서 깊은 문 쪽 벽을 지나 따뜻한 물이 스민다. 마신 광부 열에 하나가 열병을 앓았고, 하나는 '말하는 자의 목소리'를 들었다고 했다"
+  truth: true
+  danger: 3
+  names: [바깥 갱]
+- id: fact_p2kz_rota_illegal_contract
+  text: "로타의 계약서는 위법 계약 3장 중 하나다. 계약 시작일이 납치 직후이고, 계약서 구석에 바르그 송곳니 자국 같은 표식이 찍혀 있다. 그녀는 자기 계약서가 돌판 서랍에 잠긴 것을 모른다"
+  truth: true
+  danger: 4
+  names: [로타]
+- id: fact_p2kz_rota_remembers_takers
+  text: "로타를 잡아 판 사람은 둘이었다. 하나는 바르그였고, 하나는 여울 말씨를 쓰는 사람이었다. 그녀는 그 말씨를 지금도 기억한다"
+  truth: true
+  danger: 3
+  names: [로타]
+- id: fact_p2kz_dun_loaned_slaves
+  text: "잿모루가 용제국에서 '임대'받는 인간 대장간 노예는 계약 광부가 아니다. 두르강 안에서도 이것이 계약인가 소유인가를 두고 논란이다"
+  truth: true
+  danger: 2
+  names: [잿모루]
+# ── 망치문 ──
+- id: fact_p2kz_gunhild_ember_stone_ledger
+  text: "망치문 통행 각인 장부에는 멜리산드의 대리인이 매달 잿불석을 들여온다는 기록이 있다. 군힐드는 그것을 계약이라 보고 지운 적이 없다"
+  truth: true
+  danger: 4
+  names: [군힐드, 멜리산드]
+- id: fact_p2kz_gunhild_stone_half
+  text: "잿불석은 장부에 '왕립 공방 입고'로 적히지만 공방 입고 기록에는 그 절반뿐이다. 나머지 절반이 어디로 가는지 군힐드는 모른다"
+  truth: true
+  danger: 4
+  names: [군힐드]

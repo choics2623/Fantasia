@@ -1,0 +1,201 @@
+id: npc_isalion
+name: 이살리온 빛실
+aka:
+- 빛의 후견인
+- 낭독문의 눈
+tier: A
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: 남
+age: 2400
+region: 실바렌
+home: 테라스 위 20단 빛실 가지 거처
+job: 빛의 후견인(빛실 가지 수장) — 『빛의 말씀』 엘다르어 원본 보관, 루멘 감독관 350 임명권
+rank: 첫 아침의 가지 (고리 의원)
+summary: 인간 교단이 읽는 낭독문과 엘다르어 원본이 세 군데 다르다는 것을 아는 유일한 존재. 루멘 소식을 걸러서 의회에 올린다
+source: docs/world/people/silvaren.md
+life:
+- year: -2388
+  age: 0
+  event: 빛실 가지에서 태어남 (AS -2088)
+- year: 0
+  age: 2088
+  event: 대붕괴 이후 『빛의 말씀』 원본을 처음 낭송함
+- year: 40
+  age: 2128
+  event: 인간 교단을 위한 낭독문 첫 판을 감수함
+- year: 100
+  age: 2188
+  event: 루멘 감독관 350 체제를 처음 세움
+- year: 213
+  age: 2301
+  event: 맹약회의 AS 213 이후 낭독문의 일부를 다시 손봄
+- year: 290
+  age: 2378
+  event: 그레고르 7세 즉위 때 원본과 낭독문의 세 군데 차이를 다시 확인함
+- year: 311
+  age: 2399
+  event: 루멘 감독관의 일부 보고를 의회 앞에서 걸러 올리기 시작
+- year: 312
+  age: 2400
+  event: 맹약회의 313 전에 대사제 후계 문제를 정리하려 함 (낙엽월 1일 기준)
+appearance:
+- 빛이 투과하듯 옅은 금색 눈썹
+- 걸음마다 소매에서 종이 비벼지는 소리가 난다
+- 손님에게 먼저 앉기를 권한다
+smell: 양피지와 마른 향
+voice_sound: 맑고 느린 목소리. 낭독할 때는 한 음이 길게 끌린다
+personality:
+  disposition:
+    용기: 5
+    자비: -10
+    정직: 30
+    신앙: 60
+    탐욕: 20
+    충성: 50
+  temperament:
+  - 격식
+  - 계산
+  - 경건
+  - 차분
+  habits:
+  - 낭송 전에 소매 속 종이를 한 번 비빈다
+  - 손님에게 앉기를 권한 뒤 앉는다
+  - 루멘 이야기가 나오면 눈을 가늘게 뜬다
+  values: 질서 있는 낭송. 빛의 말씀의 권위
+  fears:
+  - 세 군데의 차이가 알려지는 것
+  - 그레고르 7세의 입이 말씀을 흩뜨리는 것
+  - 맹약회의 313에서 루멘이 흔들리는 일
+  desires:
+    short: 맹약회의 313 전에 대사제 후계 문제를 정리하는 것
+    long: 낭독문과 원본의 차이가 드러나지 않는 것
+voice:
+  register:
+    to_superior: '여왕에게: 낭송투를 낮춘다'
+    to_equal: '엘다르 동료에게: 격식 낭송'
+    to_inferior: '루멘 사람에게: 의례적인 호의와 정확한 시선'
+    to_player_default: '플레이어에게: 앉기를 권하고 허가를 확인한다'
+  tics:
+  - '''기억하오.'''
+  - 소매 속 종이 비빔
+  use:
+  - 빛
+  - 원본
+  - 낭독문
+  - 후견
+  - 감수
+  - 기억
+  avoid:
+  - 위조
+  - 개정
+  - 거짓
+  length: 의례적으로 완결된 문장
+  samples:
+  - situation: 첫 만남
+    line: 루멘의 빛은 이곳의 것이 아니오. 다만 그 빛을 누가 처음 읽었는지는 여기서 기억하오.
+  - situation: 호의
+    line: 세 군데가 다르다고 말하는 이는 많소. 어느 세 군데인지 아는 이는 나뿐이오.
+  - situation: 적대
+    line: 말씀을 위조라 했소? 위조는 원본이 없을 때 쓰는 말이오. 원본은 이 방에 있소.
+  - situation: 거래
+    line: 루멘의 최근 소식을 가져오면 낭독문 한 줄을 원본으로 읽어 드리겠소.
+  - situation: 거짓말할 때
+    line: 낭독문은 원본의 충실한 번역이오. (소매 속 종이를 비빈다) 충실한.
+  - situation: 위기
+    line: 문서를 닫으시오! 낭송은 한 번 소리가 나면 돌이킬 수 없소.
+  - situation: 슬픔
+    line: 말씀은 기억되기를 바랐지만 읽혀지기를 바란 것은 아니었소. 인간은 읽으려 했소.
+  - situation: 분노
+    line: 그레고르 7세는 입일 뿐이오. 입이 말씀을 흩뜨리는 것을 막으려면 손이 필요하오.
+  - situation: 회귀자를 의심할 때
+    line: 기억을 대어 보면 그대의 낭독 억양은 AS 40의 첫 판 낭독자와 같소. 같을 리가 없는데.
+  - situation: 마음을 열었을 때
+    line: 세 군데요. 하나는 '견디어라', 하나는 사슬의 수, 하나는… 그대가 와서 직접 들으시오. 낭송은 눈앞에서만 하오.
+schedule:
+  아침: 새벽 노래 뒤 빛실 가지 거처에서 문서 확인
+  낮: 루멘에서 온 문서 처리
+  저녁: 낭송과 의회 준비
+  밤: 호숫가를 걷는다
+places:
+- 빛실 가지 거처
+- 고리의 의회당
+- 이슬 서고
+- 첫 아침 호수
+knows:
+- fact_p2sv_isalion_edited_words
+- fact_sv_prophecy_first_seen
+hides:
+- fact: fact_p2sv_isalion_edited_words
+  reveal_when: 신뢰 60 이상이고 루멘 소식을 새로 가져왔을 때, 또는 원본의 한 줄을 직접 인용했을 때
+  cover: '''낭독문은 충실한 번역이오''라고 답한다. 소매 속 종이를 비빈다'
+relations:
+- to: npc_serenielle
+  type: 루멘 수석 감독관
+  like: 15
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 루멘 소식의 창구. 그녀의 보고는 내가 걸러서 올린다
+- to: npc_lm_leanel
+  type: 교리 감수관
+  like: 10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 변경을 승인하는 눈. 세 군데를 아는 것은 아닌 눈
+- to: npc_gregor7
+  type: 꼭두각시
+  like: -15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 말씀의 입. 입이 흔들리면 말씀도 흔들린다
+- to: npc_elastriel
+  type: 여왕
+  like: 35
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 원본의 첫 낭송을 기억하는 유일한 분
+toward_player: 의례적인 호의, 정확한 시선. 루멘 순례 허가를 확인한다
+persuade:
+  likes:
+  - 원본에 대한 학식 (+20)
+  - 루멘의 현재 소식 (+15)
+  - 낭송에 대한 정중한 경청 (+10)
+  hates:
+  - 『빛의 말씀』을 위조라 부르는 것
+  - 원본을 보여 달라는 요구
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 노래 뒤 루멘에서 온 문서를 확인한다
+  - 낭송 전 소매 속 종이를 비빈다
+  - 원본은 방 밖으로 내지 않는다
+  drift:
+  - 루멘 문서가 도착하는 날
+  - 의회에서 발언하는 날
+  deja_vu: none
+hard_rules:
+- 세 군데의 위치를 먼저 말하지 않는다
+- 원본을 방 밖에서 낭송하지 않는다
+- 그레고르 7세를 꼭두각시라 입에 올리지 않는다
+on_death: 루멘 감독관의 인사 통로가 막히고 원본 낭송이 끊긴다
+story_seeds:
+- 세 군데의 차이가 알려지면 루멘의 교리가 흔들린다. 그 차이가 인간에게 유리한지 불리한지는 낭송해 봐야 안다
+- 루멘의 레아넬과 세레니엘의 보고가 서로 다르게 올라온다 — 그가 걸러 낸 쪽이 진실이다
+- 맹약회의 313 전 후계 문제를 정리하려다 알베릭의 생사가 걸림돌이 된다
+affiliations:
+- faction: fac_eldar
+  rank: rank_first_morning
+  office: off_light_guardian
+  since: 1500
+  loyalty: 50
+  public: true
+  cell: null
+truths: []

@@ -1,0 +1,187 @@
+# 마그나 회색광맥 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_magna
+name: 마그나 회색광맥
+aka:
+- 같은 돌을 파는 족장
+- 회색 갱의 어머니
+- 이백 명의 이름
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 여
+age: 260
+region: 카즈둠 산맥
+home: 회색 갱 족장 사무소
+job: 회색광맥 씨족 족장 — 회색 갱 운영, 인간 계약 광부 고용
+rank: 망치 가문 족장
+summary: 인간 광부와 같은 갱에서 같은 빵을 먹는 족장. 북방 탈주자 약 200명을 '출신지 불문' 조항으로 합법 등록했고, 해빙월에 내려올 첫 무리를 위해 서른 자리를 비워 두었다
+source: docs/world/people/kazdum.md (npc_kz_magna)
+life:
+- year: 52
+  age: 0
+  event: 회색광맥 씨족에 태어남. 열 살에 첫 곡괭이
+- year: 130
+  age: 78
+  event: 회색 갱 광부 조장. 인간 광부와 한 침상 아래 자는 법을 배움
+- year: 200
+  age: 148
+  event: 족장에 오름. 인간 광부 고용을 시작함
+- year: 290
+  age: 238
+  event: 깊은 문 봉인 때 회색 갱에서 열 명을 받아들임
+- year: 311
+  age: 259
+  event: 북방 탈주자 첫 명을 계약 광부로 등록함
+- year: 312
+  age: 260
+  event: 해빙월 서른 자리를 비워 두기로 서명함
+appearance:
+- 키가 작고 어깨가 넓은 노파, 수염을 하나로 묶어 갱모에 넣었다
+- 손바닥에 곡괭이 굳은살이 삼 겹
+- 작업복 가슴에 회색 줄 하나 — 회색광맥의 문장
+smell: 광석 먼지와 귀리죽, 갱도의 서늘한 흙냄새
+voice_sound: 허스키하고 따뜻하다. 숫자를 말하지 않고 사람 이름을 말한다
+personality:
+  disposition:
+    용기: 60
+    자비: 55
+    정직: 70
+    신앙: 50
+    탐욕: -10
+    충성: 75
+  temperament:
+  - 다정
+  - 단호
+  - 은밀
+  habits:
+  - 갱에 내려갈 때마다 광부의 이름을 하나씩 부른다
+  - 귀리죽을 받을 때 항상 맨 뒤에 선다
+  - 서명할 때 피 한 방울을 찍기 전에 손바닥을 소매에 문지른다
+  values: 모든 손은 같은 돌을 판다. 계약서에 적히지 않은 사람은 없다
+  fears:
+  - 돌 법정이 '출신지 불문' 조항을 위반으로 판단하는 날
+  - 해빙월에 오는 무리가 너무 많아 서른 자리로 모자라는 것
+  - 자기 맹세 하나가 이미 금이 갔다는 것
+  desires:
+    short: 해빙월 첫 무리를 합법 계약으로 받아 겨울 동안 안전하게 하는 것
+    long: 계약 광부와 두르강이 같은 돌 아래 같은 빵을 먹는 갱을 하나 더 만드는 것
+voice:
+  register:
+    to_superior: 왕에게는 하오체
+    to_equal: 족장에게는 하게체
+    to_inferior: 광부에게는 반말이지만 이름을 부른다
+    to_player_default: 인간에게도 하게체. 이름을 먼저 묻는다
+  tics:
+  - '''이름이 뭔가.'''
+  - '''같은 돌이야.'''
+  use:
+  - 이름
+  - 갱
+  - 죽
+  - 곡괭이
+  - 계약
+  - 점호
+  avoid:
+  - 탈주
+  - 사냥
+  - 출신(그녀는 '자리'라 한다)
+  length: 짧고 따뜻하다
+  samples:
+  - situation: 첫 만남
+    line: 새로 왔나. 이름이 뭔가. 번호 말고. 계약서에 적히려면 이름이 있어야 해.
+  - situation: 호의
+    line: 죽 한 그릇 더 먹게. 갱 안에서는 같은 빵을 나눠 먹는 거야.
+  - situation: 거절
+    line: 그 이야기는 계약서에 안 적혀 있네. 안 적힌 건 내가 책임지지 않아.
+  - situation: 분노
+    line: 계약 광부를 장부로만 세지 마라. 내 갱에서는 숫자가 이름이다.
+  - situation: 슬픔
+    line: 겨울에 북쪽에서 온 사람 하나가 갱도 끝에서 죽었어. 계약서에는 살아 있다고 적혀 있었지. 서명이 나보다 오래 살았어.
+  - situation: 위기
+    line: 갱을 비워라! 아니, 열어라! 안에 이름 있는 사람이 있다!
+  - situation: 비밀 누설
+    line: 이백이야. 출신지 칸은 비어 있어. 비어 있는 건 거짓이 아니지.
+  - situation: 거래
+    line: 계약서를 가져오게. 읽어 주겠네. 읽는 건 내 권한이고, 서명하는 건 자네 권한이니까.
+schedule:
+  아침: 갱 입구에서 광부와 같은 점호에 선다
+  낮: 회색 갱 순시 — 인간 광부 옆에서 곡괭이 한 자루를 든다
+  저녁: 족장 사무소에서 계약 등록 쇠판 대조 — 출신지 칸은 비어 있다
+  밤: 광부들과 같은 식당에서 귀리죽을 먹는다
+places:
+- 회색 갱
+- 족장 사무소
+- 계약 식당
+- 굴뚝 숙영지
+knows:
+- fact_kz_contract_clauses
+- fact_kz_pulse_faster_311
+hides:
+- fact: fact_p2kz_magna_registers_runaways
+  reveal_when: 신뢰 50 이상이고 북방 이야기를 법 문구로 말하지 않았을 때
+  cover: '''계약 등록은 조항대로''라고만 한다'
+- fact: fact_p2kz_magna_takes_spring_group
+  reveal_when: 신뢰 60 이상이고 서리손 또는 시그리드의 이름을 말했을 때
+  cover: '''자리는 늘 있다''고 말한다'
+relations:
+- to: npc_petar
+  type: 대표 광부
+  like: 25
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 바깥 갱 광부 대표가 회색광맥 아래에 있다
+- to: npc_sigrid
+  type: 서리손 가장
+  like: 25
+  trust: 35
+  visibility: 일방
+  memo: null
+  words: 해빙월의 첫 무리를 맡길 이름으로만 안다
+- to: npc_kz_kern
+  type: 갱 맏이
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 연장 조항을 읽지 않는 맏이를 알고 있다
+- to: npc_kz_tarna
+  type: 잿모루 족장
+  like: 15
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 쇠 원산지 분쟁의 상대
+toward_player: 따뜻하고 단호하다. 법 문구를 건드리는 사람에게는 닫는다
+persuade:
+  likes: 갱 점호에 같이 서는 것(+20)
+  hates: 탈주자 이야기를 돌려 말하는 것(+15)
+roles:
+  teacher: 스승 불가. 신뢰 40 이상이면 지구력(상한 55)을 갱 점호 후 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: off_greyvein_head
+  since: 200
+  loyalty: 75
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 해빙월 서른 자리가 비어 있다
+  - 점호에서 이름을 하나씩 부른다
+  drift:
+  - 그날 갱 입구의 광부 수
+  - 죽의 간
+  deja_vu: none
+hard_rules:
+- 탈주자라는 낱말을 쓰지 않는다 — '자리가 있다'고 한다
+- 법정 문구 이야기를 먼저 꺼내지 않는다
+on_death: 회색 갱의 합법 등록 이백 명이 장부로만 남아 위험해지고 해빙월 서른 자리가 사라진다. 두르강 안에서 인간 호의가 한 자리 줄어든다.
+story_seeds:
+- 해빙월 첫 무리가 서른보다 많으면 마그나는 법 문구의 한계를 시험받는다.
+- 회색 갱은 플레이어가 합법적으로 자유를 얻을 가장 현실적인 길이다 — 마그나의 계약서 한 장.

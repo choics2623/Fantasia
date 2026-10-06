@@ -1,0 +1,197 @@
+# 대사제 오드 — 카즈둠 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_kz_odd
+name: 대사제 오드
+aka:
+- 조상의 망치지기
+- 문을 열게 한 입
+- 맥박 앞의 기도
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 310
+region: 카즈둠 산맥
+home: 조상의 망치 신전 사제 숙소 (맨 위층)
+job: 조상의 망치 신전 대사제 — 새벽 세 번 두드림, 신전 사제 서른의 장
+rank: 깊은망치 외가, 왕궁 제사장
+summary: AS 311 신전 기둥의 맥박이 한 달 새 두 배가 된 날, 문지기 대장에게 빗장을 들라고 한 대사제. 그는 그것이 조상의 부름이라 믿었고, 문이 닫히고 경비 셋이 사라진 뒤 매일 새벽 두드림의 박자를 한 번 늦춘다
+source: docs/world/people/kazdum.md (npc_kz_odd)
+life:
+- year: 2
+  age: 0
+  event: 깊은망치 외가에서 태어남. 열 살에 조상의 망치를 처음 흔듦
+- year: 120
+  age: 118
+  event: 신전 사제. 조상 이름 삼천 개를 외움
+- year: 200
+  age: 198
+  event: 부대사제. 맥박 기둥을 처음 가까이서 봄
+- year: 280
+  age: 278
+  event: 대사제에 오름. 새벽 세 번 두드림을 맡음
+- year: 311
+  age: 309
+  event: 맥박이 두 배가 된 날 크라그에게 빗장을 요청함. 경비 셋이 사라짐
+- year: 312
+  age: 310
+  event: 두드림의 마지막 한 번을 반 박자 늦추기 시작함
+appearance:
+- 큰 키에 마른 몸, 수염을 세 겹으로 땋아 망치 모양 고리에 걸었다
+- 오른쪽 눈 밑에 작은 돌 반점 하나 — 아직 맹세 하나가 확정되지 않았다는 표시
+- 대사제 외투 안쪽에 조상 이름 서른 개가 수놓였다
+smell: 향 대신 쇠 먼지와 오래된 돌, 새벽 두드림 뒤의 차가운 공기
+voice_sound: 잔잔하고 깊은 목소리. 기도문은 낮고 느리다
+personality:
+  disposition:
+    용기: 35
+    자비: 50
+    정직: 55
+    신앙: 95
+    탐욕: -30
+    충성: 70
+  temperament:
+  - 경건
+  - 후회
+  - 고집
+  habits:
+  - 두드림 석 자리에서 매번 마지막 한 번을 반 박자 늦게 친다
+  - 맥박 기둥 곁에 오래 앉지 않는다 — 앉으면 박자가 발바닥으로 올라온다
+  - '''조상이 말씀하신다''는 말을 하고 나서 한참 입을 다문다'
+  values: 조상은 돌 속에서 말한다. 돌이 말하는 것은 서명이 아니라 부름이다
+  fears:
+  - 자기가 열게 한 문이 부름이 아니었을 가능성
+  - 경비 셋의 가족이 신전 문 앞에 서는 날
+  - 맥박 기둥이 멈추는 것 — 그리고 더 빨라지는 것
+  desires:
+    short: 문이 다시 열릴 때 조상의 뜻이 무엇이었는지 확인하는 것
+    long: 대사제 자리에서 내려오기 전에 한 번 더 빗장을 들 용기를 얻거나 완전히 버리는 것
+voice:
+  register:
+    to_superior: 왕에게는 하오체이되 '폐하' 대신 '왕'이라 부른다
+    to_equal: 사제에게는 하게체
+    to_inferior: 수습 사제에게는 부드러운 해라체
+    to_player_default: 인간에게는 '그대'. 손을 먼저 본다
+  tics:
+  - '''돌이 듣는다.'''
+  - '''조상이 보신다.'''
+  use:
+  - 조상
+  - 망치
+  - 두드림
+  - 기둥
+  - 돌
+  - 손
+  avoid:
+  - 열다
+  - 명령
+  - 문(그는 '부름이 난 곳'이라 한다)
+  length: 느리고 길지 않다. 기도문은 낭송한다
+  samples:
+  - situation: 첫 만남
+    line: 조상이 보고 계신다. 이름이 아니라 손을 보신다 — 손을 보이라.
+  - situation: 호의
+    line: 그대가 서명한 곳에서 조상이 웃으실 것이다. 아니다, 웃지 않으신다. 조상은 웃지 않으신다 — 다만 지켜보신다.
+  - situation: 거절
+    line: 맥박 기둥은 이야기하는 곳이 아니다. 들으러 오는 곳도 아니다. 서 있는 곳이다.
+  - situation: 분노
+    line: 조상의 부름을 계약 문구로 재려 하는가? 돌이 듣는다. 부름은 문구 위에 있다.
+  - situation: 슬픔
+    line: 경비 셋은 내 요청으로 들어갔다. 요청이 곧 길이 되는 것을 서른 해 동안 믿지 않았는데.
+  - situation: 위기
+    line: 두드려라! 서른 자루 모두 흔들어라! 박자를 늦춰라 — 늦추는 것이 막는 것이다!
+  - situation: 비밀 누설
+    line: 부름이었다. 그렇게 믿었다. 지금은 부르는 이가 조상인지 그것인지 구분하지 못한다.
+  - situation: 거래
+    line: 문서로는 남기지 않겠다. 그러나 기도로는 남긴다. 돌이 듣는다.
+schedule:
+  아침: 새벽 세 번 두드림 — 조상의 망치 서른 자루를 직접 흔든다
+  낮: 사제들의 기도 지도, 맹세 상담
+  저녁: 맥박 기둥 앞 기도 — 사제들을 물린다
+  밤: 대사제실에서 조상 이름을 층층이 읽는다
+places:
+- 조상의 망치 신전
+- 맥박 기둥
+- 사제 숙소
+- 맹세 회랑
+knows:
+- fact_kz_pulse_faster_311
+- fact_kz_gate_reopening
+- fact_kz_41_sealed_inside
+hides:
+- fact: fact_p2kz_odd_ordered_opening
+  reveal_when: 신뢰 55 이상이고 경비 셋의 이름을 먼저 말했을 때
+  cover: '''AS 311의 일''이라고만 한다'
+- fact: fact_kz_nidar_voice_wakes
+  reveal_when: 신뢰 60 이상이고 니다르의 해석을 알고 있다는 것을 말했을 때
+  cover: 대답 대신 기도문을 외운다
+relations:
+- to: npc_kz_krag
+  type: 빗장을 든 대장
+  like: -15
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 그날의 공범이자 피해자
+- to: npc_deep_nidar
+  type: 심층 두르강 사제
+  like: -35
+  trust: -25
+  visibility: 공개
+  memo: null
+  words: 같은 소리를 다르게 읽는 자
+- to: npc_kz_brun
+  type: 사제
+  like: 25
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 맥박 곁에서 오래 앉는 젊은 사제를 걱정한다
+- to: npc_bror
+  type: 왕
+  like: 30
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 요청을 왕에게 보고하지 않았다
+- to: npc_hilda
+  type: 왕녀
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 그녀의 개방 기계에 맥박 기둥의 박자를 알려 주었다
+toward_player: 잔잔하고 경건하다. 맥박 기둥에 대한 호기심은 막는다
+persuade:
+  likes: 조상의 이름을 아는 것(+20)
+  hates: 경비 셋의 소식(+30)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 신앙·예법(상한 55)의 두르강식 기도를 알려 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_hammer_house
+  office: null
+  since: 280
+  loyalty: 80
+  public: true
+  cell: null
+truths:
+- id: T21
+  level: rumor
+regression:
+  fixed:
+  - 새벽 두드림의 마지막 한 번이 반 박자 늦다
+  - 맥박 기둥 곁에 오래 앉지 않는다
+  drift:
+  - 그날 새벽 두드림에 쓰인 망치의 수
+  - 대사제실 창가의 이슬 냄새
+  deja_vu: none
+hard_rules:
+- 빗장 이야기를 먼저 꺼내지 않는다
+- 맥박 기둥의 박자를 입으로 세지 않는다
+on_death: 새벽 두드림이 사제 브룬에게 넘어가 맥박 센 기록이 노출될 위험이 커진다. 경비 셋의 사라진 날 요청의 진실이 영영 문서로 남지 않는다.
+story_seeds:
+- 오드가 문을 열게 한 것은 부름이었는가 속임수였는가. 니다르와 오드의 해석 싸움이 신전을 가른다.
+- 오드가 한 번 더 빗장을 들겠다고 하면 크라그와 시그룬이 막고 힐다와 그로딘이 돕는다.
