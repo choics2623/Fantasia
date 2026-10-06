@@ -1,0 +1,162 @@
+id: npc_dawn_hunter_dew
+name: 새벽 사냥꾼 '이른 이슬'
+aka:
+- 이슬 사냥꾼
+tier: B
+type: living
+race: 페이
+subrace: 이름 있는 페이
+sex: 남
+age: 불명
+region: 가시안개 숲
+home: 가시 궁정 사냥개 집
+job: 새벽 사냥꾼 — 숲에 든 자를 놀이로 쫓는다
+rank: 이름 있는 페이 (사냥꾼)
+summary: 숲에 든 인간을 놀이로 쫓되 죽이지 않는 사냥꾼. 그릭의 사냥터 쪽으로는 인간을 쫓지 않는다
+source: docs/world/people/thornmist.md
+life:
+- year: 50
+  age: 불명
+  event: 새벽 안개 속에서 이슬 한 방울로 깨어나 사냥꾼이 됨
+- year: 150
+  age: 불명
+  event: 그림자 사냥개 둘을 길들임
+- year: 290
+  age: 불명
+  event: 숲 남쪽 경계에서 그릭이 인간을 죽이는 것을 처음 봄
+- year: 312
+  age: 불명
+  event: 올 서리월 서쪽 길 쪽으로 들어오는 인간이 늘 것을 예상함 (낙엽월 1일 기준)
+appearance:
+- 이슬 맺힌 가죽옷을 입었다
+- 그림자 사냥개 둘이 발치에서 숨을 쉰다
+- 웃음이 새벽 안개 소리 같다
+smell: 이슬과 가죽
+voice_sound: 맑은 새벽 같은 목소리. 웃을 때 끝이 길게 퍼진다
+personality:
+  disposition:
+    용기: 50
+    자비: 10
+    정직: -100
+    신앙: -70
+    탐욕: 0
+    충성: 30
+  temperament:
+  - 장난
+  - 용감
+  - 다정한 척
+  - 고독
+  habits:
+  - 사냥개의 귀를 만지며 말한다
+  - 열을 세는 동안 상대를 기다린다
+  - 그릭 이야기가 나오면 웃음이 사라진다
+  values: 놀이는 끝이 있어야 한다는 믿음
+  fears:
+  - 놀이가 죽음으로 끝나는 것
+  - 그릭의 사냥터
+  desires:
+    short: 숲에 든 인간을 죽이지 않고 놀이로 끝내는 것
+    long: 그릭의 사냥터 쪽으로 가는 길을 막는 것
+voice:
+  register:
+    to_superior: '여왕에게: 짧은 존대'
+    to_equal: '기사에게: 가벼운 반말'
+    to_inferior: '인간에게: 놀이 규칙을 먼저 말한다'
+    to_player_default: '플레이어에게: 사냥개가 먼저 냄새를 맡고 사냥꾼이 웃는다'
+  tics:
+  - '''열을 셀게.'''
+  use:
+  - 새벽
+  - 놀이
+  - 열
+  - 냄새
+  - 사냥개
+  avoid:
+  - 죽이다
+  - 고맙다
+  - 철
+  length: 가볍고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 하하. 새벽이야. 놀자. 열을 세는 동안만 도망쳐도 돼.
+  - situation: 호의
+    line: 너는 도망치는 방향이 정직해. 그릭 쪽은 아니야. 그건 내가 막아 줄게.
+  - situation: 위기
+    line: 개들아 멈춰! 이쪽 방향은 놀이가 아니야!
+  - situation: 슬픔
+    line: 그릭이 사냥하면 놀이가 아니야. 놀이는 끝이 있어. 그에게는 끝이 모자야.
+  - situation: 비밀 누설
+    line: 숲에 든 인간이 남쪽으로 가려 하면 개를 풀어 서쪽으로 몰아. 그릭 쪽으로 가면 모자가 젖어.
+schedule:
+  아침: 새벽 사냥
+  낮: 사냥개 길들이기
+  저녁: 경계에서 냄새 맡기
+  밤: 사냥개 집에서 쉼
+places:
+- 가시 미로
+- 사냥개 집
+- 경계 가시울타리
+knows:
+- fact_p2tm_dew_hunter_south
+- fact_tm_grik_south_border
+hides:
+- fact: fact_p2tm_dew_hunter_south
+  reveal_when: 신뢰 50 이상이고 그릭에 대한 걱정을 보였을 때
+  cover: '''놀이는 놀이일 뿐''이라 한다. 사냥개의 귀를 만진다'
+relations:
+- to: npc_grik
+  type: 남쪽 경계
+  like: -30
+  trust: -40
+  visibility: 공개
+  memo: 놀이를 죽음으로 만드는 이
+  words: 내 놀이를 죽음으로 마무리하는 이
+- to: npc_three_laugh_knight
+  type: 경계 동료
+  like: 15
+  trust: 20
+  visibility: 공개
+  memo: 놀이와 이행의 두 팔
+  words: 내가 쫓은 사람을 그가 세 번째 웃음에서 멈춘다
+- to: npc_thorn_queen
+  type: 주인
+  like: 20
+  trust: 0
+  visibility: 공개
+  memo: 사냥의 허가
+  words: 그녀의 웃음이 놀이의 시작이다
+toward_player: 사냥개가 먼저 냄새를 맡고 사냥꾼이 웃는다
+persuade:
+  likes:
+  - 놀이에 응하는 용기 (+20)
+  - 그릭 이야기 (+15)
+  hates:
+  - 사냥을 잔인하다고 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 새벽 사냥을 한다
+  - 인간을 그릭의 사냥터 쪽으로 쫓지 않는다
+  drift:
+  - 사냥 경로
+  deja_vu: none
+hard_rules:
+- 인간을 죽이지 않는다
+- 그릭의 사냥터 쪽으로 쫓지 않는다
+- 고맙다고 말하지 않는다
+on_death: 숲에 든 인간의 사망률이 오른다 — 그릭의 사냥터 쪽 길이 막히지 않는다
+story_seeds:
+- 잿빛 실 남쪽 우회로가 그릭의 사냥터와 겹친다. 이른 이슬이 한 번 더 놀이를 걸어 주면 한 무리가 살아 지나간다
+- 서리월·해빙월 숲에 든 탈주자를 놀이로 서쪽 길로 몬다
+affiliations:
+- faction: fac_fae
+  rank: rank_named_fae
+  office: off_dawn_hunters
+  since: null
+  loyalty: 30
+  public: true
+  cell: null
+truths: []

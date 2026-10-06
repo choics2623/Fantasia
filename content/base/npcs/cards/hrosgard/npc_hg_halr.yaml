@@ -1,0 +1,168 @@
+# 서리 목줄 하랄 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_halr
+name: 서리 목줄 하랄
+aka:
+- 두 개 적게 올리는 이
+- 전당의 머릿수
+- 하랄 매듭
+tier: B
+type: living
+race: 인간
+subrace: 인간(서리 인간)
+sex: 남
+age: 44
+region: 흐로스가르드
+home: 얼음턱 전당 서리 목줄 초소 곁방
+job: 전당 인간 움막 지대 노예 맏이 — 머릿수 매듭 점호, 감독, 처벌
+rank: 서리 목줄 (노예 맏이), 돌팔 씨족 지명
+summary: 전당의 인간 움막 지대 머릿수를 맡은 서리 목줄. 겉으로는 가장 엄격하지만 매일 머릿수를 실제보다 두 개 적게 올리고, 적게 올린 두 사람은 그날 밤 서리 길로 떠난다
+source: docs/world/people/hrosgard.md (npc_hg_halr)
+life:
+- year: 268
+  age: 0
+  event: 전당 인간 움막 지대에서 태어남
+- year: 290
+  age: 22
+  event: 돌팔 씨족의 머릿수 소년에서 서리 목줄로 올라감. 왼쪽 귀가 반쯤 잘림
+- year: 309
+  age: 41
+  event: 흉작 첫해, 머릿수 장부를 줄이기 시작
+- year: 311
+  age: 43
+  event: 왕의 비밀 칙령 후 머릿수를 두 개 적게 올리기 시작
+appearance:
+- 호리호리한 44세 남자, 눈매가 날카롭고 입술이 얇다
+- 손에 매듭 끈 묶음, 허리에 노예 감독용 채찍 — 한 번도 휘두르지 않았다
+- 왼쪽 귀가 반쯤 잘려 있다
+smell: 가죽 채찍 기름과 초소 난로 연기
+voice_sound: 단조로운 높은 목소리. 머릿수를 셀 때는 일부러 갈라진다
+personality:
+  disposition:
+    용기: 50
+    자비: 35
+    정직: 20
+    신앙: 30
+    탐욕: 10
+    충성: 45
+  temperament:
+  - 냉정
+  - 은밀
+  - 계산
+  habits:
+  - 머릿수를 센 뒤 매듭 끈 둘을 따로 쥔다
+  - 소리가 새어 나오는 움막 앞을 지나갈 때 걸음이 일부러 늦어진다
+  - 요툰 앞에서는 바닥까지 몸을 낮춘다
+  values: 머릿수는 장부가 믿는다. 장부가 믿는 숫자와 사람은 다르다
+  fears:
+  - 씨족이 머릿수 어긋남을 알고 장부를 대조하는 것
+  - 라그나 같은 아이의 소리를 자기가 먼저 듣게 되는 것
+  - 빠진 두 사람이 서리 길에서 죽었다는 소식
+  desires:
+    short: 겨울 전에 열 사람을 더 빼내는 것
+    long: 자기가 서리 목줄이면서 인간이라는 것을 용서받는 것
+voice:
+  register:
+    to_superior: 요툰에게는 바닥까지 낮춘 서리말 존대
+    to_equal: 서리 목줄에게는 짧은 반말
+    to_inferior: 노예에게는 거칠고 단조로운 반말
+    to_player_default: 인간에게는 반말. 머릿수를 먼저 센다
+  tics:
+  - '''매듭 세어라.'''
+  - '''오늘 몇이 빈다.'''
+  use:
+  - 머릿수
+  - 매듭
+  - 장부
+  - 점호
+  - 채찍
+  - 숫자
+  avoid:
+  - 탈주
+  - 풀어 주다
+  - 노래
+  length: 짧고 단조롭다
+  samples:
+  - situation: 첫 만남
+    line: 매듭 세어라. 오늘 몇이 빈다. 빈 숫자는 장부에 적힌다 — 내가 아니라.
+  - situation: 호의
+    line: 너는 소리를 안 낸다. 소리를 안 내는 놈이 오래 산다.
+  - situation: 거절
+    line: 그건 내 장부 밖이다. 내 장부 밖에는 사람이 없다.
+  - situation: 분노
+    line: 서리 목줄이라고 부르지 마라! 나도 같은 솥에서 먹는다.
+schedule:
+  아침: 새벽 매듭 점호 — 머릿수를 크게 센다
+  낮: 큰 솥 마당과 땔감 하치장 감독
+  저녁: 씨족 장부에 머릿수를 올린다 — 두 개를 빼고
+  밤: 밤 초소에서 빠진 두 사람의 이름을 매듭 끈 하나에 맨다
+places:
+- 서리 목줄 초소
+- 큰 솥 마당
+- 땔감 하치장
+- 인간 움막 지대
+knows:
+- fact_hg_frost_road_closes
+hides:
+- fact: fact_p2hg_halr_counts_short
+  reveal_when: 신뢰 55 이상이고 서리 목줄을 인간으로 대하는 태도를 보였을 때
+  cover: '''매듭은 정확하다''고 말한다'
+relations:
+- to: npc_hg_ragna
+  type: 노래 소녀
+  like: -5
+  trust: -10
+  visibility: 비밀
+  memo: null
+  words: 소리를 가장 먼저 들을 귀가 자기라는 것을 안다
+- to: npc_hg_sven
+  type: 뼈울타리 맏이
+  like: -15
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: 같은 서리 목줄이지만 방식이 다르다
+- to: npc_hg_utga
+  type: 돌팔 씨족장
+  like: -10
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 머릿수 장부를 올리는 주인
+- to: npc_hg_hordis
+  type: 불 오두막지기
+  like: 15
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: 매일 밤 두 사람이 지나는 불 곁
+toward_player: 단조롭고 거칠다. 소리를 내지 않는 사람은 못 본 척한다
+persuade:
+  likes: 머릿수 장부의 일관성(+15)
+  hates: 빠진 두 사람의 안위(+35)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_slave_elder
+  office: off_frost_chain
+  since: 290
+  loyalty: 35
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 매일 머릿수를 두 개 적게 올린다
+  drift:
+  - 그날 매듭 끈의 색
+  - 채찍을 들고 있는 손
+  deja_vu: none
+hard_rules:
+- 빠진 두 사람의 이름을 입 밖에 내지 않는다
+- 탈주라는 낱말을 쓰지 않는다 — '빈다'고 한다
+on_death: 전당 쪽 머릿수 감독이 더 엄격한 서리 목줄에게 넘어가 매일 밤 서리 길로 떠나던 두 사람의 길이 끊긴다.
+story_seeds:
+- 하랄의 두 개는 얼음 실의 은밀한 출구다 — 그 두 사람이 매일 밤 지나는 불 곁이 불 오두막이다.
+- 하랄이 장부를 대조당하는 날 두 개의 빈자리를 채울 이름이 필요하다.

@@ -1,0 +1,187 @@
+# 노파 브리미르 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_brimir
+name: 노파 브리미르
+aka:
+- 우물의 눈
+- 가장 오래 굶은 이
+- 천사백 해
+tier: A
+type: living
+race: 요툰
+subrace: 돌 요툰
+sex: 여
+age: 1400
+region: 흐로스가르드
+home: 깊은우물 온천 지대 우물 곁
+job: 깊은우물 씨족장 — 남침 반대, 온천 농사와 인간 노예 관리
+rank: 요툰 씨족장 (욀드), 최고령 거인
+summary: 서리 어머니의 꿈에서 '작은 자들이 우리를 먹여 살릴 것'이라는 말을 들은 천사백 살 노파. 남쪽 온천 지대의 보리는 3년째 흉작이 아니고, 북방에서 인간 노예가 가장 덜 죽는 곳이다. 협상의 통역으로 아스타를 부른다
+source: docs/world/people/hrosgard.md (npc_hg_brimir)
+life:
+- year: -1088
+  age: 0
+  event: 깊은우물 씨족에 태어남 (AS 기준)
+- year: -300
+  age: 788
+  event: 첫 온천 농사. 보리가 처음 거인의 땅에서 자라는 것을 봄
+- year: 20
+  age: 1008
+  event: 씨족장에 오름. 인간 노예를 온천 농사에 쓰기 시작
+- year: 309
+  age: 1397
+  event: 서리 어머니의 꿈 — '작은 자들이 우리를 먹여 살릴 것'
+- year: 310
+  age: 1398
+  event: 남쪽 산 아래에서 심장처럼 뛰는 소리가 땅으로 올라온다는 무녀 요룬의 말을 처음 들음
+- year: 311
+  age: 1399
+  event: 아스타를 처음 통역으로 불러 앉힘
+appearance:
+- 이끼와 이끼 같은 얼음이 어깨에 붙은 돌 같은 노파, 눈이 우물처럼 깊다
+- 손바닥에 보리알을 쥔 채 잔다
+- 머리를 땋지 않고 이끼를 얹었다
+smell: 온천 증기와 젖은 이끼, 보리 싹 냄새
+voice_sound: 매우 느리고 깊은 목소리. 한 문장에 숨을 세 번 고른다
+personality:
+  disposition:
+    용기: 30
+    자비: 70
+    정직: 75
+    신앙: 85
+    탐욕: -40
+    충성: 55
+  temperament:
+  - 느림
+  - 경건
+  - 다정
+  habits:
+  - 보리알을 손바닥에 굴리며 말한다
+  - 아스타 이야기가 나오면 눈을 감고 입가가 올라간다
+  - 해가 지면 우물에 보리알 하나를 떨어뜨린다
+  values: 땅은 기억한다. 작은 자는 땅을 기억한다. 그러므로 작은 자와 먹는다
+  fears:
+  - 남침이 결정되어 우물 그늘의 인간이 전쟁에 쓰이는 것
+  - 꿈이 한 번도 입 밖에 나오지 못하고 끝나는 것
+  - 자기 죽음 뒤 온천 농사의 노예가 흩어지는 것
+  desires:
+    short: 남침 전에 인간과의 협상 창구를 열어 보리를 사 오는 것
+    long: 작은 자와 거인이 한 식탁에서 먹는 날을 보는 것
+voice:
+  register:
+    to_superior: 왕에게는 낮은 존대
+    to_equal: 씨족장에게는 하오체
+    to_inferior: 노예·아이에게는 부드러운 반말
+    to_player_default: 인간에게는 '작은 이'. 앉으라고 말한다
+  tics:
+  - '''(숨을 세 번 고른다)'''
+  - '''땅은 기억한다.'''
+  use:
+  - 땅
+  - 우물
+  - 보리
+  - 꿈
+  - 비
+  - 앉다
+  avoid:
+  - 남침
+  - 서둘러
+  - 빨리
+  length: 아주 짧고 느리다
+  samples:
+  - situation: 첫 만남
+    line: (숨을 세 번 고른다) 앉아라, 작은 이여. 서 있으면 나는 하늘을 보게 된다. 하늘은 3년째 말이 없다.
+  - situation: 호의
+    line: 보리알을 손에 쥐어라. 따뜻하다. 따뜻한 것은 거인과 작은 자가 다르지 않다.
+  - situation: 거절
+    line: 남침은 고기가 아니라 비다. 비는 한 번 내리면 거둘 수 없다.
+  - situation: 슬픔
+    line: 꿈에서 서리 어머니가 말했다. 작은 자들이 우리를 먹여 살릴 것이라고. 아무도 믿지 않았고 나도 3년 동안 입을 열지 않았다.
+  - situation: 분노
+    line: 비를 부르지 마라. 한 번 내린 비는 거두지 못한다. 남침은 비다.
+  - situation: 위기
+    line: (숨을 세 번 고른다) 일어나라. 서두르지 말고. 작은 자들을 우물 쪽으로 — 바람이 이쪽이다.
+  - situation: 비밀 누설
+    line: 우리 땅의 보리만 자랐다. 산이 재를 막았다. 막아 준 것이 산인지 어머니인지는 모른다.
+  - situation: 거래
+    line: 보리알 하나로 시작하자. 하나로. 하나를 받아 준 자와는 나머지도 나눌 수 있다.
+schedule:
+  아침: 온천 우물 곁에서 해를 보며 앉아 있는다
+  낮: 인간 노예의 온천 농사 곁을 돌며 이삭을 센다
+  저녁: 저녁 식탁에서 꿈 이야기를 한 번 한다
+  밤: 밤 우물 속 눈을 들여다본다
+places:
+- 깊은우물 온천 지대
+- 온천 농사 밭
+- 우물
+knows:
+- fact_hg_brimir_dream
+- fact_hg_frost_road_closes
+- fact_hg_yorun_pulse_south
+hides:
+- fact: fact_p2hg_brimir_asks_asta
+  reveal_when: 신뢰 50 이상이고 협상 이야기를 합법적 형식으로 말했을 때
+  cover: 통역 이야기에는 눈을 감고 침묵한다
+- fact: fact_p2hg_brimir_ash_shadow
+  reveal_when: 신뢰 60 이상이고 흉작의 원인에 대한 질문을 했을 때
+  cover: 땅은 기억한다고만 한다
+relations:
+- to: npc_asta
+  type: 통역
+  like: 40
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 서리손 인간 — 작은 자의 입
+- to: npc_hg_skala
+  type: 손녀뻘 왕비
+  like: 60
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: 꿈을 왕에게 전할 입을 부탁했다
+- to: npc_yorun
+  type: 무녀
+  like: 35
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 같은 돌의 말을 듣는 이
+- to: npc_hrimnir
+  type: 왕
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 먼저 굶는 왕을 믿는다
+toward_player: 다정하고 느리다. 작은 자를 앉히는 것으로 시작한다
+persuade:
+  likes: 작은 자의 협상 제안(+30)
+  hates: 황무지 재의 증거(+25)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 야외생존·약학(온천 약초, 상한 55)을 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_jarl
+  office: off_clan_deepwell
+  since: 20
+  loyalty: 70
+  public: true
+  cell: null
+truths:
+- id: T01
+  level: fragment
+regression:
+  fixed:
+  - 해가 지면 우물에 보리알을 떨어뜨린다
+  drift:
+  - 그날 온천 농사 밭의 보리 키
+  deja_vu: none
+hard_rules:
+- 남침 찬성 발언을 하지 않는다
+- 작은 자를 서 있게 두지 않는다
+on_death: 깊은우물 온천 농사가 흩어져 인간 노예 수천이 서리 길로 향하고 협상 창구가 사라진다. 서리 어머니의 꿈이 입 밖에 나오지 못한 채 끝난다.
+story_seeds:
+- 브리미르의 온천 지대는 재가 닿지 않는다 — 그 보리를 증거로 가져가면 흉작의 원인을 서리왕에게 보일 수 있다.
+- 브리미르가 아스타를 통해 인간과 보리를 거래하는 날 남침 대신 식탁이 열린다.

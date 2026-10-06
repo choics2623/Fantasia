@@ -1,0 +1,187 @@
+# 스벤 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_sven
+name: 스벤
+aka:
+- 놓아주는 맏이
+- 서리 목줄의 스벤
+- 한 무리의 사람
+tier: A
+type: living
+race: 인간
+subrace: 인간(서리 인간)
+sex: 남
+age: 40
+region: 흐로스가르드
+home: 뼈울타리 노예 맏이의 움막
+job: 뼈울타리 노예 맏이 — 인간 6,000의 머릿수 매듭과 탈주자 판매
+rank: 돌팔 씨족이 지명한 서리 목줄
+summary: 탈주자를 팔아 돌팔 씨족에 머릿수를 바치는 서리 목줄. 해마다 해빙월 서리 길이 열린 첫 사흘 가운데 하루 울타리 바깥문의 빗장을 올려 한 무리를 놓아준다. 열여섯 해 전 자기 누이가 낀 무리를 판 값이다
+source: docs/world/people/hrosgard.md (npc_hg_sven)
+life:
+- year: 272
+  age: 0
+  event: 뼈울타리 인간 노예의 자식으로 태어남. 어머니는 서리말 자장가를 불렀다
+- year: 290
+  age: 18
+  event: 돌팔 씨족의 머릿수 매듭 소년으로 올라감
+- year: 296
+  age: 24
+  event: 누이가 낀 탈주 무리를 씨족에 팔고 서리 목줄 자리를 얻음
+- year: 303
+  age: 31
+  event: 뼈울타리 노예 맏이가 됨. 해빙월 한 무리를 처음 놓아줌
+- year: 310
+  age: 38
+  event: 흉작 3년째, 머릿수 장부에서 노예 사백이 줄어듦
+- year: 312
+  age: 40
+  event: 올해도 해빙월 빗장을 올릴 준비를 시작함
+appearance:
+- 키가 크고 어깨가 구부정한 40세 남자, 오른쪽 눈 밑에 돌팔 씨족의 주먹 낙인
+- 손에 매듭 끈 묶음을 늘 쥐고 있다
+- 누이의 이름을 맨 매듭 끈 하나를 목에 걸었다
+smell: 고래기름 냄새와 눈 젖은 가죽, 매듭 끈의 기름
+voice_sound: 단조롭고 낮은 목소리. 머릿수를 셀 때 큰 소리로 바뀐다
+personality:
+  disposition:
+    용기: 35
+    자비: 15
+    정직: 25
+    신앙: 35
+    탐욕: 15
+    충성: 25
+  temperament:
+  - 계산
+  - 죄책
+  - 냉정
+  habits:
+  - 머릿수를 센 뒤 매듭 끈 하나를 따로 쥔다
+  - 해빙월이 가까워지면 바깥문 빗장을 손으로 만져 본다
+  - 탈주자 이야기가 나오면 '실종'이라고 말한다
+  values: 머릿수는 정직하다. 정직한 머릿수만이 노예를 살린다
+  fears:
+  - 돌팔 씨족이 머릿수가 어긋난 이유를 아는 것
+  - 해빙월의 한 무리가 누이의 이야기를 알아보는 것
+  - 스스로 선택한 한 무리가 서리 길에서 죽는 것
+  desires:
+    short: 올해 해빙월에도 한 무리를 놓아주어 값을 치르는 것
+    long: 누이의 소식을 서리 길에서 들어 보는 것
+voice:
+  register:
+    to_superior: 요툰에게는 바닥까지 낮춘 서리말 존대
+    to_equal: 서리 목줄에게는 짧은 반말
+    to_inferior: 노예에게는 거칠고 단조로운 반말
+    to_player_default: 인간에게는 반말. 머릿수를 먼저 센다
+  tics:
+  - '''매듭 세어라.'''
+  - '''머릿수.'''
+  use:
+  - 머릿수
+  - 매듭
+  - 장부
+  - 빗장
+  - 값
+  - 누이
+  avoid:
+  - 탈주
+  - 풀어 주다
+  - 용서
+  length: 짧고 단조롭다. 누이 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 매듭 세어라. 머릿수가 맞으면 말해 줄 게 있다. 틀리면 서리 어머니가 본다.
+  - situation: 호의
+    line: 너는 머릿수를 틀리지 않는구나. 틀리지 않는 사람은 오래 간다.
+  - situation: 거절
+    line: 빗장 이야기는 한 번도 한 적 없다. 한 번도.
+  - situation: 분노
+    line: 나를 도둑이라 부르지 마라. 나는 머릿수를 지키는 사람이다.
+  - situation: 슬픔
+    line: 열여섯 해다. 누이가 낀 무리를 팔았다. 값은 이 목줄이었다.
+  - situation: 위기
+    line: 바깥문을 닫아라! 빗장을 올린 건 나다 — 아니다, 바람이 올렸다!
+  - situation: 비밀 누설
+    line: 해빙월 첫 사흘이다. 사흘 가운데 하루. 그날 한 무리는 내가 못 본 것이다.
+  - situation: 거래
+    line: 머릿수가 둘 비면 장부에 올릴 이름이 필요하다. 이름을 줄 수 있나. 네 이름 말고.
+schedule:
+  아침: 새벽 매듭 점호 — 머릿수를 큰 소리로 센다
+  낮: 울타리 순시 — 도망치려는 낌새를 본다
+  저녁: 씨족 장부에 머릿수를 올리고 탈주자의 값을 적는다
+  밤: 밤 움막에서 누이의 이름을 매듭 끈 하나에 맨다
+places:
+- 뼈울타리
+- 노예 맏이의 움막
+- 공동 화덕
+- 뼈 울타리 바깥문
+knows:
+- fact_hg_frost_road_closes
+- fact_hg_asta_counts_800
+hides:
+- fact: fact_p2hg_sven_sells_frees
+  reveal_when: 신뢰 50 이상이고 서리 길 이야기를 판단 없이 꺼냈을 때
+  cover: '''실종''이라고 한다'
+- fact: fact_p2hg_sven_sister_sold
+  reveal_when: 호감 35 이상이고 누이에 대한 질문이 먼저 나왔을 때
+  cover: 매듭 끈을 만지며 말을 돌린다
+relations:
+- to: npc_hg_utga
+  type: 주인
+  like: -15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 머릿수를 매달 보고하는 씨족장
+- to: npc_asta
+  type: 노예 장로
+  like: 20
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 같은 서리손 이야기를 서로 모른 체한다
+- to: npc_hg_inge
+  type: 안내인
+  like: 5
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 한 무리가 마지막 불로 가는 길의 첫 매듭
+- to: npc_hg_halr
+  type: 서리 목줄
+  like: -20
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: 같은 서리 목줄이지만 방식이 다르다
+toward_player: 단조롭고 거칠다. 머릿수를 정확히 아는 사람에게는 눈을 마주친다
+persuade:
+  likes: 머릿수 장부의 일관성(+15)
+  hates: 누이의 소식(+40)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_slave_elder
+  office: off_frost_chain
+  since: 303
+  loyalty: 30
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 해빙월 첫 사흘 가운데 하루 바깥문 빗장을 올린다
+  - 누이의 이름을 맨 매듭 끈이 목에 있다
+  drift:
+  - 그날 머릿수 매듭의 수
+  - 바깥문 빗장의 위치
+  deja_vu: none
+hard_rules:
+- 빗장 이야기를 먼저 꺼내지 않는다
+- 탈주라는 낱말을 쓰지 않는다 — '실종'이라 한다
+on_death: 뼈울타리의 해빙월 한 무리가 사라져 돌팔 머릿수가 줄지 않고, 탈주자의 판매가 매일로 바뀐다. 뼈울타리가 서리 목줄 하랄류의 손에 넘어간다.
+story_seeds:
+- 스벤이 놓아주는 한 무리는 누이의 값이다. 그 이유를 아는 사람이 스벤에게 누이의 소식을 전하면 빗장은 더 오래 올라간다.
+- 스벤이 판 나머지 탈주자들은 서리 길 위에서 어디로 갔는가 — 그 명단이 얼음 실의 장부에 있다.

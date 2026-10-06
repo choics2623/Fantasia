@@ -37,7 +37,7 @@ offices:
     perks: ["얼음턱 전당 곡창 열쇠", "왕의 식탁 — 그러나 가장 적게 먹는다"]
   - id: off_queen_consort
     title: 왕비
-    holder: "unnamed:스칼라 (540 — 문서에 따라 1,100)"
+    holder: npc_hg_skala
     reports_to: off_frost_king
     powers: ["전당 안살림", "노래 거인과의 연락"]
     chosen_by: "혼인"
@@ -65,21 +65,21 @@ offices:
     perks: []
   - id: off_clan_rockbelly
     title: 바위배 씨족장
-    holder: "unnamed:우그라 (900)"
+    holder: npc_hg_ugra
     reports_to: off_ice_table
     powers: ["즉시 남침 주장", "노예를 겨울 식량 비축으로 본다"]
     chosen_by: "씨족"
     perks: ["북방 대탈주를 부른 씨족 중 하나 (시그리드의 탈출 씨족은 돌무릎)"]
   - id: off_clan_snowwolf
     title: 눈늑대가죽 씨족장
-    holder: "unnamed:헬다 얼음턱 (700)"
+    holder: npc_hg_helda
     reports_to: off_ice_table
     powers: ["남침 찬성(용족 원한), 서리비늘 혈통과는 싸우지 않음", "노예를 사냥 몰이꾼으로"]
     chosen_by: "씨족"
     perks: ["얼음턱 고르의 무덤 — 네스티라의 이빨"]
   - id: off_clan_deepwell
     title: 깊은우물 씨족장 (남쪽 온천 지대)
-    holder: "unnamed:노파 브리미르 (1,400, 최고령 거인)"
+    holder: npc_hg_brimir
     reports_to: off_ice_table
     powers: ["남침 반대", "노예를 온천 농사에 씀 — 북방에서 가장 덜 죽는 곳", "서리 어머니의 꿈 — '작은 자들이 우리를 먹여 살릴 것'"]
     chosen_by: "씨족 최고령"
@@ -93,7 +93,7 @@ offices:
     perks: ["뼈 구슬 — 노예 표식"]
   - id: off_song_giant
     title: 노래 거인 장로
-    holder: "unnamed:헤임라 — 3,000년 거인사를 한 달씩 걸려 노래한다. 인간 노예 소녀에게 노래를 가르쳤다"
+    holder: npc_hg_heimla
     reports_to: off_ice_table
     powers: ["구전 역사 보관", "얼음 판결의 선례 낭송", "전쟁·평화의 선례"]
     chosen_by: "노래 거인의 사승"
@@ -107,14 +107,14 @@ offices:
     perks: ["남쪽 심장 소리를 듣는다 (fact_hg_yorun_pulse_south)"]
   - id: off_south_vanguard
     title: 남침파 선봉
-    holder: "unnamed:쇠무릎 오르 (약 420, 거인 전쟁 생존자)"
+    holder: npc_hg_orr
     reports_to: off_prince_skadir
     powers: ["남침 선봉 지휘"]
     chosen_by: "스카디르의 신임"
     perks: []
   - id: off_granary_keeper
     title: 얼음턱 전당 곡창지기
-    holder: "unnamed:마지막 보리 300섬(남침 군량)을 지키는 자"
+    holder: npc_hg_bragi
     reports_to: off_frost_king
     powers: ["왕의 곡창 열쇠 관리"]
     chosen_by: "왕의 지명"
@@ -128,14 +128,14 @@ offices:
     perks: ["서리 길 호송대 지휘(마지막 200명을 서리월 전에)"]
   - id: off_fire_hut_keeper
     title: 불 오두막지기 (인간 노예)
-    holder: "unnamed:회관 밖 '불 오두막'을 지키는 인간 노예들"
+    holder: npc_hg_hordis
     reports_to: off_slave_elder
     powers: ["씨족 땔감·불 유지"]
     chosen_by: "씨족이 정한 노예"
     perks: ["불을 무기로 쓸 수 있음을 깨달았다"]
   - id: off_frost_chain
     title: 서리 목줄 (노예 맏이 — 노예 감독)
-    holder: "unnamed:다른 인간을 감독하는 노예 맏이들"
+    holder: npc_hg_halr
     reports_to: off_ice_table
     powers: ["노예 감독 — 거인이 감독에 무관심해서 생긴 자리"]
     chosen_by: "씨족장의 지명"

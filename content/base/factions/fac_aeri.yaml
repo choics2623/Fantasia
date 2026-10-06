@@ -43,7 +43,7 @@ offices:
     perks: []
   - id: off_feather_council
     title: 깃털 의회 (둥지 가문 7 — 집합 자리)
-    holder: "unnamed:둥지 가문 7곳의 가주"
+    holder: npc_ws_aela
     reports_to: off_queen
     powers: ["고도 투표", "'바람을 거슬러 떠남'으로 거부", "아에리를 가두거나 묶은 자에 대한 사형 판결"]
     chosen_by: "가문 세습 — 날개폭과 비행 고도로 서열"
@@ -57,28 +57,28 @@ offices:
     perks: ["아래를 처음 내려다본 가문"]
   - id: off_stormfeather_head
     title: 폭풍깃 전쟁장 (바람첨탑 동쪽 절벽)
-    holder: "unnamed:전쟁장 카이르 (95)"
+    holder: npc_ws_kair
     reports_to: off_feather_council
     powers: ["땅의 전쟁 개입 반대", "가끔 인간을 납치해 '땅의 기억'을 이야기하게 한다"]
     chosen_by: "가문 세습"
     perks: ["절벽 둥지의 납치된 인간 7명(내려가는 법을 모른다)"]
   - id: off_hawkeye_head
     title: 매눈 정찰장 (서쪽, 서리 이빨이 보이는 곳)
-    holder: "unnamed:정찰장 레이 (130)"
+    holder: npc_ws_rei
     reports_to: off_feather_council
     powers: ["정보 판매(세렌 오필 상가와 거래)", "서리 요람(이졸데의 흰 둥지) 위치·경비를 그린 지도 보유"]
     chosen_by: "가문 세습"
     perks: []
   - id: off_looking_up_head
     title: 올려다보는 자들 수장
-    holder: "unnamed:셀레스 긴목 — 키리에의 하강을 '추락'이라 부른다"
+    holder: npc_ws_celes
     reports_to: off_feather_council
     powers: ["하늘만 보는 높은 바람파의 대표", "맹약회의 313 아에리 대표 자리를 노린다"]
     chosen_by: "높은 바람파의 추대"
     perks: []
   - id: off_watcher_chief
     title: 땅 관찰자 수장
-    holder: "unnamed:시룬 매눈 — 회색여울 상공을 열흘째 맴돈다"
+    holder: npc_ws_sirun
     reports_to: off_queen
     powers: ["AS 311부터 대륙 곳곳 잔향 징후 마을 감시"]
     chosen_by: "키리에의 지명"
@@ -92,7 +92,7 @@ offices:
     perks: []
   - id: off_rope_keeper
     title: 줄지기 (줄내림 장터 관리)
-    holder: "unnamed:줄지기 세라 (아에리, 줄지기 20)"
+    holder: npc_ws_sera
     reports_to: off_feather_council
     powers: ["바구니 승강 줄 — 줄을 거두면 고립", "두르강 상인 조합과 장터 운영"]
     chosen_by: "의회 위임"
@@ -106,14 +106,14 @@ offices:
     perks: ["바람 진명으로 날개 없는 짧은 활공(아무도 모른다)"]
   - id: off_hawk_breeder
     title: 매 사육장 관리 (일곱 손가락)
-    holder: "unnamed:일곱 손가락 둥지 군의 매 사육사"
+    holder: npc_ws_tur
     reports_to: off_feather_council
     powers: ["`매` 획득처", "새장 청소는 땅손의 일"]
     chosen_by: "가문"
     perks: []
   - id: off_ground_elder
     title: 땅손 원로 (인간)
-    holder: "unnamed:마르코 (61, 9살에 납치됨) — 바람 정원 지도자"
+    holder: npc_ws_marco
     reports_to: off_rope_keeper
     powers: ["땅손 140의 대표 — 줄을 거두는 처벌 대상", "「세 깃의 노래」 전승"]
     chosen_by: "땅손들의 신뢰"
@@ -127,14 +127,14 @@ offices:
     perks: []
   - id: off_wounded_nester
     title: 날지 못하나 뛰어내리지 않은 아에리
-    holder: "unnamed:미르 찢긴깃 — 땅손 마을에서 산다"
+    holder: npc_ws_mir
     reports_to: off_rope_keeper
     powers: ["없음 — 땅손에게 날개 없는 활공 날개를 함께 만들자고 한다"]
     chosen_by: "스스로 (법의 예외)"
     perks: []
   - id: off_sky_funeral
     title: 하늘 장례 집전자
-    holder: "unnamed:가장 높은 봉우리에서 시신을 바람에 놓아 주는 아에리"
+    holder: npc_ws_orea
     reports_to: off_feather_council
     powers: ["하늘 장례 — 시신을 바람에 놓음. 깃뼈 도굴이 가장 큰 모독"]
     chosen_by: "가문 지명"

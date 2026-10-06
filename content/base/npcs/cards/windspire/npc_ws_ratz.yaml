@@ -1,0 +1,178 @@
+# 라츠 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_ratz
+name: 라츠
+aka:
+- 철망의 주인
+- 계곡의 두목
+- 몸값 장수
+tier: A
+type: living
+race: 인간
+subrace: 인간(떠돌이)
+sex: 남
+age: 44
+region: 바람첨탑
+home: 줄내림 장터 계곡 도적 은신처
+job: 계곡 도적 두목 — 도적 서른 명, 장터 교역 약탈과 아에리 몸값 납치
+rank: 두르강 상인 조합이 눈감아 주는 계곡 도적, 전직 짐꾼
+summary: 옛 짐꾼 출신 도적 두목. 몸값을 받으려고 아에리 하나를 철망 새장에 가두었다. 지붕 대신 그물을 낮게 덮었고 그는 갇힌 아에리가 죽는다는 것을 믿지 않는다. 몸값 요구서를 전할 전령이 없다
+source: docs/world/people/windspire.md (npc_ws_ratz)
+life:
+- year: 268
+  age: 0
+  event: 떠돌이 인간 집안에서 태어남
+- year: 290
+  age: 22
+  event: 두르강 상인의 짐꾼으로 줄내림 장터에서 일함
+- year: 300
+  age: 32
+  event: 도적 무리를 모아 계곡 안쪽에 은신처를 세움
+- year: 312
+  age: 44
+  event: 건초월 말 계곡 위에서 그물에 걸린 아에리를 철망 새장에 가둠
+- year: 305
+  age: 37
+  event: 두르강 상인에게서 처음 곡식 외상을 받음
+- year: 310
+  age: 42
+  event: 아에리 하나를 가둘 새장을 만들 철망을 사들임
+appearance:
+- 덩치가 크고 어깨가 넓은 44세 남자, 수염이 덥수룩하다
+- 왼쪽 뺨에 새 발톱 자국 세 줄
+- 허리에 쇠사슬 열쇠 꾸러미
+smell: 땀과 모닥불 연기, 철망의 녹 냄새
+voice_sound: 굵고 거친 목소리. 말하다가 침을 삼킨다
+personality:
+  disposition:
+    용기: 55
+    자비: -10
+    정직: 20
+    신앙: 15
+    탐욕: 55
+    충성: 35
+  temperament:
+  - 탐욕
+  - 성급
+  - 불안
+  habits:
+  - 말하면서 허리춤의 열쇠 꾸러미를 흔든다
+  - 새장 쪽을 일부러 쳐다보지 않는다
+  - 아에리라는 낱말을 '새'라고 바꿔 말한다
+  values: 몸값은 정직한 장사다. 값을 못 받으면 장사가 아니라 도둑질이다
+  fears:
+  - 몸값 전령이 오지 않고 새가 죽는 것
+  - 높은둥지가 모든 계곡 도적을 쓸어 버리는 것
+  - 자기가 아에리를 가둔 것이 모든 아에리의 적이 되는 일인 줄 모르고 있다는 것
+  desires:
+    short: 백조 귀족 하나의 몸값으로 도적 서른 명이 겨울을 나는 것
+    long: 몸값 요구서를 높은둥지에 전할 전령을 구하는 것
+voice:
+  register:
+    to_superior: 두르강 상인에게는 낮은 존대
+    to_equal: 도적에게는 거친 반말
+    to_inferior: 부하에게는 해라체
+    to_player_default: 인간에게는 하오체. 값부터 묻는다
+  tics:
+  - '''새.'''
+  - '''몸값은 장사요.'''
+  use:
+  - 몸값
+  - 새장
+  - 값
+  - 곡식
+  - 전령
+  - 그물
+  avoid:
+  - 아에리(그는 '새'라 한다)
+  - 죽다
+  - 가두다
+  length: 굵고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 누구 보냈소. 장터 쪽이오, 위쪽이오. 위쪽이면 돌아가시오. 위쪽은 전령이 아니라 칼을 보내니까.
+  - situation: 호의
+    line: 당신은 몸값 이야기를 이해하는군. 몸값은 장사요. 장사는 정직해야 오래 가오.
+  - situation: 거절
+    line: 새는 안 내놓소. 값이 올 때까지는.
+  - situation: 위기
+    line: 새장 문 잠가라! 아니, 열지 마! 위에서 새들이 온다 — 쏘지 마! 쏘면 안 돼!
+  - situation: 슬픔
+    line: 새가 말을 안 해. 물도 안 마셔. 어제는 날개를 한 번 폈다. 폈다가 접는 걸 보고 이틀을 잤소.
+  - situation: 비밀 누설
+    line: 그물을 지붕 대신 덮었소. 지붕을 올릴 줄 모르오. 지붕을 올리면 죽는다고 해서.
+  - situation: 거래
+    line: 전령을 구해 주시오. 위로 가서 요구서를 던지고 오기만 하면 되오. 돌아오면 새를 풀어 주겠소.
+  - situation: 분노
+    line: 새를 건드리지 마시오! 몸값이 달린 새요! 건드린 놈은 장터에서 목을 매야 하오!
+schedule:
+  아침: 은신처에서 도적들의 아침 점호
+  낮: 새장 곁에서 포로를 지켜본다
+  저녁: 장터 토린에게 곡식을 사 온다
+  밤: 밤 몸값 요구서의 문구를 고친다
+places:
+- 줄내림 장터 계곡 도적 은신처
+- 철망 새장
+- 장터 천막
+knows:
+- fact_ws_caged_aeri_die
+hides:
+- fact: fact_p2ws_ratz_ransom
+  reveal_when: 신뢰 45 이상이고 몸값을 장사로 대하는 태도를 보였을 때
+  cover: '''새는 값이 오면 풀어 준다''고만 한다'
+- fact: fact_p2ws_ratz_net_roof
+  reveal_when: 신뢰 55 이상이고 새가 죽는다는 증거를 보였을 때
+  cover: 새장 쪽을 보지 않으려 한다
+relations:
+- to: npc_ws_feris
+  type: 포로
+  like: -30
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: 그가 가둔 백조 귀족
+- to: npc_ws_torin
+  type: 곡식 상인
+  like: 15
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: 곡식을 파는 상인장
+- to: npc_ws_erden
+  type: 하르칸 전령
+  like: 5
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 전령을 구하려 눈여겨본 상대
+- to: npc_ws_sera
+  type: 줄지기
+  like: -25
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: 장터 줄을 지키는 아에리
+toward_player: 거칠고 불안하다. 장사로 대하는 사람에게는 수군거린다
+persuade:
+  likes: 몸값 대신 값을 치르는 제안(+35)
+  hates: 높은둥지에 전하는 전령(+40)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations: []
+truths: []
+regression:
+  fixed:
+  - 철망 새장에 백조 귀족이 갇혀 있다
+  - 몸값 요구서를 전할 전령이 없다
+  drift:
+  - 그날 새장 위 그물의 높이
+  - 곡식이 남은 양
+  deja_vu: none
+hard_rules:
+- 새가 죽는다는 말을 믿지 않는다
+- 높은둥지의 칼이 오기 전에는 새를 풀지 않는다
+on_death: 철망 새장의 열쇠가 부하에게 넘어가 페리스의 목숨이 더 불확실해진다. 계곡 도적이 흩어져 장터 교역이 흔들린다.
+story_seeds:
+- 라츠에게 전령을 구해 주면 페리스는 몸값이 아니라 약속으로 풀려난다 — 대가는 높은둥지의 약속이어야 한다.
+- 라츠가 아에리를 가둔 이유가 장사라는 것이 알려지면 토린의 곡식 판매가 아에리 공범으로 읽힌다.

@@ -1,0 +1,187 @@
+# 셀레스 긴목 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_celes
+name: 셀레스 긴목
+aka:
+- 올려다보는 자
+- 추락이라 부르는 입
+- 높이의 사나이
+tier: A
+type: living
+race: 아에리
+subrace: 백조 아에리
+sex: 남
+age: 240
+region: 바람첨탑
+home: 올려다보는 자들 둥지 (벽 없는 높은 둥지)
+job: 올려다보는 자들 수장 — 맹약회의 313 아에리 대표 후보, 깃털 의회 가주 둘의 표 보유
+rank: 백조 아에리 귀족, 높은둥지의 먼 일가
+summary: 키리에의 하강을 '추락'이라 부르며 맹약회의 313의 아에리 대표 자리를 빼앗으려는 백조 귀족. 폭풍깃의 침묵을 값으로 가문 둘의 표를 약속받았다. 그도 균열이 위로 뻗는 것을 보았으나 가훈으로 스스로 부정한다
+source: docs/world/people/windspire.md (npc_ws_celes)
+life:
+- year: 72
+  age: 0
+  event: 백조 귀족 가문에서 알로 부화
+- year: 100
+  age: 28
+  event: 처음 의회를 방청. 아래 이야기를 하지 않는 법을 배움
+- year: 200
+  age: 128
+  event: 올려다보는 자들의 수장에 오름
+- year: 311
+  age: 239
+  event: 키리에가 아래를 보기 시작한 해, 균열이 위로 뻗는 것을 본 뒤 한 달 동안 둥지를 떠나지 않음
+- year: 250
+  age: 178
+  event: 처음으로 의회에서 '아래 이야기는 아래에서'라는 표현을 입 밖에 냄
+- year: 305
+  age: 233
+  event: 키리에의 첫 땅 방문 소문을 듣고 한 달 동안 말을 잃음
+appearance:
+- 날개폭 6m의 순백 날개, 긴 목, 은빛 눈
+- 목의 깃털이 한쪽만 짧다 — 부러뜨린 가훈의 증표
+- 어깨에 은빛 깃털 세 겹을 덧댔다
+smell: 높은 곳의 차가운 공기와 향기 없는 흰 깃털
+voice_sound: 높고 맑은 목소리. 문장 끝이 위로 올라간다
+personality:
+  disposition:
+    용기: 45
+    자비: -10
+    정직: 35
+    신앙: 60
+    탐욕: 25
+    충성: 55
+  temperament:
+  - 고고
+  - 불안
+  - 자존
+  habits:
+  - 말하기 전에 위를 한 번 올려다본다
+  - 균열이 보이는 방향을 등지고 앉는다
+  - 아래 이야기가 나오면 날개를 반쯤 접는다
+  values: 하늘은 아래를 보지 않는다. 보는 순간 하늘이 아니다
+  fears:
+  - 균열이 위로 뻗는다는 것이 사실이라는 것
+  - 키리에의 하강이 아에리의 새 법이 되는 것
+  - 자신이 대표가 되어도 하늘이 무너지는 것
+  desires:
+    short: 맹약회의 313의 대표 자리를 얻어 '아래 이야기는 아래에서' 원칙을 지키는 것
+    long: 키리에의 하강을 의회가 '추락'으로 공식 기록하게 하는 것
+voice:
+  register:
+    to_superior: 여왕에게는 낮은 존대. 눈을 마주치지 않는다
+    to_equal: 가주들에게는 하오체
+    to_inferior: 시종에게는 하게체
+    to_player_default: 인간에게는 하게체. '아래 사람'이라 부른다
+  tics:
+  - '''위에서 보면.'''
+  - '''아래 이야기는 아래에서.'''
+  use:
+  - 고도
+  - 높이
+  - 의회
+  - 법
+  - 하늘
+  - 올려다보다
+  avoid:
+  - 추락(그는 이 말을 쓰되 자신이 쓰는 것을 모르는 척한다)
+  - 균열
+  - 두려움
+  length: 높고 길다. 균열 이야기에서는 짧아진다
+  samples:
+  - situation: 첫 만남
+    line: 위에서 보면 다 작다. 아래에서 온 이야기는 아래에서 끝내라.
+  - situation: 호의
+    line: 너는 올려다볼 줄 아는구나. 올려다보는 눈이 가장 높은 눈이다.
+  - situation: 거절
+    line: 하늘은 아래의 일을 맹세하지 않는다. 맹세하는 순간 하늘이 아니다.
+  - situation: 분노
+    line: 추락을 하강이라 부르지 마라. 이름이 사실을 바꾸지는 못한다.
+  - situation: 슬픔
+    line: 어린 날 위에서 처음으로 아래를 본 적이 있다. 아주 짧게. 그 짧은 한 순간이 지금까지 부끄럽다.
+  - situation: 위기
+    line: 균열이다! 균열이 이쪽이다 — 아니다, 아무것도 없다! 모두 위를 봐라!
+  - situation: 비밀 누설
+    line: 표를 받았다. 가문 둘. 값은 폭풍깃의 침묵이다. 바람이 알고 있고 나도 알고 있다.
+  - situation: 거래
+    line: 내 대표 자리를 인정하면 땅손의 줄은 한 해 더 허락하겠다. 두 해는 약속하지 않는다.
+schedule:
+  아침: 높은 둥지에서 해를 향해 날개를 편다
+  낮: 깃털 의회 방청 — 키리에의 발언에 한 박자 늦게 고개를 숙인다
+  저녁: 저녁 만찬에서 가주들을 모은다
+  밤: 밤 균열이 보이는 쪽을 등지고 앉는다
+places:
+- 올려다보는 자들 둥지
+- 깃털 의회
+- 높은둥지 가문 둥지
+knows:
+- fact_ws_celes_rival
+- fact_ws_kyrie_saw_waste_grow
+hides:
+- fact: fact_p2ws_celes_saw_crack
+  reveal_when: 신뢰 60 이상이고 균열에 대한 두려움을 인정해 주었을 때
+  cover: '''하늘은 아래를 보지 않는다''고 되풀이한다'
+- fact: fact_p2ws_celes_votes
+  reveal_when: 신뢰 55 이상이고 폭풍깃 이야기를 정치가 아닌 두려움으로 말했을 때
+  cover: '''표는 바람이 정한다''고 한다'
+relations:
+- to: npc_kyrie
+  type: 여왕
+  like: -25
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 같은 높이의 일족이 하늘을 아래로 기울이는 것을 지켜본다
+- to: npc_eiros
+  type: 왕자
+  like: -40
+  trust: -15
+  visibility: 공개
+  memo: null
+  words: 대표 자리를 두고 맞서는 상대
+- to: npc_ws_kair
+  type: 폭풍깃 가주
+  like: 20
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: 표를 놓고 맺은 비밀 서약
+- to: npc_ws_aela
+  type: 하늘만 보는 가주
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 같은 입장
+toward_player: 높게 군림하나 두려움을 인정해 주는 사람에게는 문을 연다
+persuade:
+  likes: 하늘의 법에 대한 존중(+20)
+  hates: 균열에 대한 두려움을 인정하게 하는 조심스러운 질문(+30)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 예법(아에리 의회, 상한 70)을 알려 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_wind_house
+  office: off_looking_up_head
+  since: 200
+  loyalty: 75
+  public: true
+  cell: null
+truths:
+- id: T13
+  level: rumor
+regression:
+  fixed:
+  - 균열이 보이는 방향을 등지고 앉는다
+  - 가문 둘의 표 약속이 있다
+  drift:
+  - 그날 둥지의 은빛 깃털 덧댐의 수
+  deja_vu: none
+hard_rules:
+- 균열이라는 낱말을 입에 올리지 않는다
+- 에이로스를 대표로 인정하는 말을 하지 않는다
+on_death: 올려다보는 자들 파가 아엘라에게 넘어가 더 강경해지고 에이로스의 대표 길이 쉬워진다. 폭풍깃의 침묵 서약이 공개된다.
+story_seeds:
+- 셀레스가 균열을 인정하는 날 하늘만 보는 자들 파가 갈라진다.
+- 표 약속을 증거로 쥔 사람이 셀레스의 대표 도전을 막을 수 있다.

@@ -1,0 +1,208 @@
+id: npc_basilisa
+name: 바실리사 붉은달
+aka:
+- 붉은 달의 가주
+tier: A
+type: living
+race: 녹테른
+subrace: 첫 잔의 가문
+sex: 여
+age: 2900
+region: 녹테른 밤의 영지
+home: 첫 갈증 성 첫 잔의 회합장 곁 붉은 달 가문 방
+job: 붉은 달 가문 가주 (최대 혈목장 11곳) — 맹약회의 313 녹테른 대표
+rank: 첫 잔의 가문 (가주)
+summary: 맹약회의 313에서 '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낼 가주. 붉은 우리 영주 아드리엘의 목줄을 쥐고 있다
+source: docs/world/people/nocturne.md
+life:
+- year: -2588
+  age: 0
+  event: 녹테른의 첫 세대로 피의 전수를 받음
+- year: -1288
+  age: 1300
+  event: 붉은 달 가문의 가주가 됨
+- year: 0
+  age: 2588
+  event: 대붕괴 때 붉은 달 가문이 열한 혈목장을 확보함
+- year: 213
+  age: 2801
+  event: 맹약회의 AS 213 때 녹테른 대표 수행원으로 참석함
+- year: 290
+  age: 2878
+  event: 아드리엘을 붉은 우리 영주로 임명함
+- year: 309
+  age: 2897
+  event: 아드리엘의 장부가 처음 적자를 냄 — 원인을 알고도 묻지 않음
+- year: 312
+  age: 2900
+  event: 맹약회의 313 녹테른 대표로 지명됨 (낙엽월 1일 기준)
+appearance:
+- 붉은 비단 옷에 붉은 달 모양 은 장식
+- 손톱이 길고 투명하다
+- 웃을 때 입꼬리가 한쪽만 올라간다
+smell: 붉은 포도주와 향유
+voice_sound: 낮고 윤기 있는 목소리. 웃음 섞인 하오체
+personality:
+  disposition:
+    용기: 40
+    자비: -60
+    정직: 10
+    신앙: 60
+    탐욕: 70
+    충성: 50
+  temperament:
+  - 야심
+  - 계산
+  - 여유
+  - 냉정
+  habits:
+  - 손톱으로 잔을 가볍게 두드린다
+  - 웃으며 상대의 맥박을 듣는다
+  - 장부는 직접 읽지 않고 소리로 듣는다
+  values: 붉은 달 가문의 지위. 잔향의 피를 군주에게 산 채로 바치는 이익
+  fears:
+  - 대숙청이 통과되어 잔향이 죽는 것
+  - 아드리엘이 장부를 열어 책임이 자기에게 오는 것
+  desires:
+    short: 맹약회의 313에서 '처형 금지·사냥꾼 인도' 안을 통과시키는 것
+    long: 붉은 달이 첫 잔의 가문 중 첫째가 되는 것
+voice:
+  register:
+    to_superior: '군주에게: ''군주시여'' 극존대'
+    to_equal: '가문 귀족에게: 한 문장마다 가시 있는 정중함'
+    to_inferior: '인간에게: 번호로 부르는 짧은 반말'
+    to_player_default: '플레이어에게: 웃으며 가치를 가늠한다'
+  tics:
+  - '''맥박이 흥미롭군.'''
+  - 손톱으로 잔 두드리기
+  use:
+  - 맥박
+  - 잔
+  - 배당
+  - 첫째
+  - 붉은 달
+  - 사냥꾼
+  avoid:
+  - 배고프다
+  - 도둑
+  - 엘다르
+  - 이름(인간 앞에서)
+  length: 윤기 있는 중간 길이. 계산에서는 짧아진다
+  samples:
+  - situation: 첫 만남
+    line: 밤이 깊기를. 맥박이 흥미롭군. 낮에는 말하지 않았을 이야기를 하게 될 맥박이야.
+  - situation: 호의
+    line: 맹약회의에서 내가 낼 안은 단순하오. 처형하지 말 것. 우리가 먼저 마신다는 뜻이오.
+  - situation: 적대
+    line: 붉은 달의 배당을 건드리는 입은 맥박이 먼저 멈춘다. 그대는 어느 쪽인가.
+  - situation: 거래
+    line: 사냥꾼 인도 조항에 표를 주는 이에게는 붉은 우리 배당 한 몫을 나누어 드리지.
+  - situation: 거짓말할 때
+    line: 장부는 완전하오. (잔을 한 번 두드린다) 완전하지 않다면 내가 먼저 알았을 터.
+  - situation: 위기
+    line: 아드리엘은 어디 있느냐! …그의 장부를 가져오라. 지금 당장.
+  - situation: 슬픔
+    line: 2,900년을 살면 잔이 비는 소리가 익숙해지오. 비는 소리가 조용해질 때가 두렵소.
+  - situation: 분노
+    line: 대숙청을 지지하는 입은 군주의 갈증을 모르는 입이오. 그 입을 닫는 건 붉은 달이 하오.
+  - situation: 회귀자를 의심할 때
+    line: 그 맥박은 군주가 우물에서 듣는 박자와 같소. 같을 리가 없는데. …아니, 같을 수도 있겠군.
+  - situation: 마음을 열었을 때
+    line: 군주께서 원하시는 건 죽은 잔향이 아니오. 산 한 방울이오. 그걸 모르는 가문은 멸하오.
+schedule:
+  아침: 낮의 방
+  낮: 붉은 우리 장부 점검
+  저녁: 첫 잔의 가문 회합
+  밤: 맹약회의 준비 — 안 초안을 고친다
+places:
+- 첫 잔의 회합장
+- 붉은 달 가문 방
+- 붉은 우리 영주 저택
+knows:
+- fact_p2nc_basilisa_mandate
+- fact_p2nc_basilisa_adriel_leash
+- fact_nc_mordecai_goal_last_word
+- fact_nc_mordecai_sends_hunters
+hides:
+- fact: fact_p2nc_basilisa_mandate
+  reveal_when: 신뢰 70 이상이고 군주의 목적을 이해하는 모습을 보였을 때
+  cover: '''우리는 맹약회의에서 합리적인 안을 낼 뿐이오''라고만 한다'
+- fact: fact_p2nc_basilisa_adriel_leash
+  reveal_when: 신뢰 65 이상이고 아드리엘의 장부 이야기를 먼저 꺼냈을 때
+  cover: '''영주는 영주의 일을 한다''고 웃는다. 손톱으로 잔을 한 번 친다'
+relations:
+- to: npc_adriel
+  type: 아래 영주
+  like: 5
+  trust: -30
+  visibility: 공개
+  memo: 쥔 목줄
+  words: 충직한 척하지만 겁 많은 영주. 희생양으로 쓸 날을 센다
+- to: npc_cecile
+  type: 견제 대상
+  like: -30
+  trust: -50
+  visibility: 공개
+  memo: 장부 위조의 의심
+  words: 그림자장미의 아이. 그녀의 장부가 내 장부를 갉는다
+- to: npc_mordecai
+  type: 군주
+  like: 25
+  trust: 30
+  visibility: 공개
+  memo: 잔향의 소리를 듣는 이
+  words: 그분이 듣는 소리를 나도 한 번 듣고 싶다
+- to: npc_alaric
+  type: 비슷한 야심가
+  like: -10
+  trust: -40
+  visibility: 공개
+  memo: 집전관 자리를 노린다
+  words: 비슷한 야심, 다른 방법
+- to: npc_marcius
+  type: 집전관
+  like: 10
+  trust: 10
+  visibility: 공개
+  memo: 명단의 확정자
+  words: 결번의 의미를 묻지 않는 사이
+toward_player: 웃으며 상대의 가치를 가늠한다. 인간은 '번호'로만 부른다
+persuade:
+  likes:
+  - 군주의 이익이 되는 정보 (+30)
+  - 장부의 정확한 숫자 (+20)
+  - 사냥꾼 인도 조항에 대한 지지 (+25)
+  hates:
+  - 군주의 목적이 잔향의 '산 채'가 아님을 암시하는 것
+  - 아드리엘을 공개적으로 모욕하는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 맹약회의 313에 녹테른 대표로 간다
+  - 붉은 우리 장부를 소리로 듣는다
+  - 낮에는 방에서 나오지 않는다
+  drift:
+  - 회합 날짜 (사흘 안팎)
+  - 안 초안의 문구
+  deja_vu: none
+hard_rules:
+- 대숙청을 지지한다고 말하지 않는다
+- 아드리엘의 약점을 먼저 말하지 않는다
+- 낮에 맹세하지 않는다
+on_death: 맹약회의 313 녹테른 대표가 비게 되어 '처형 금지' 안이 사라진다. 붉은 우리의 목줄이 풀려 아드리엘이 폭주한다
+story_seeds:
+- 그녀의 안이 통과되면 잔향 징후자는 녹테른 사냥꾼에게 인도된다 — 플레이어에게 가장 위험한 조항이다
+- 아드리엘의 장부를 그녀에게 보이면 세실에게 책임이 돌아간다
+- 맹약회의 313 직전 그녀가 바알카르로 떠나는 길목에 틈이 있다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_first_cup
+  office: off_house_redmoon
+  since: 500
+  loyalty: 50
+  public: true
+  cell: null
+truths: []

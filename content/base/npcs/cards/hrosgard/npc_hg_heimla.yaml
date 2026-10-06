@@ -1,0 +1,199 @@
+# 노래 거인 헤임라 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_heimla
+name: 노래 거인 헤임라
+aka:
+- 한 달의 노래
+- 소녀의 스승
+- 삼천 해
+tier: A
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 여
+age: 800
+region: 흐로스가르드
+home: 얼음턱 전당 노래 거인의 방
+job: 노래 거인 장로 — 구전 역사, 얼음 판결의 선례 낭송
+rank: 얼음 탁자 구성원 (노래 거인의 사승)
+summary: 삼천 년의 거인사를 한 달씩 걸려 노래하는 장로. 인간 노예 소녀 라그나에게 구절을 가르쳤고, 그 노래 속에 '거인은 배고픈 아이'라 말한 방패 노예 군데가 있다. '거인 전쟁의 진짜 노래' 구절은 얼음 탁자에서 한 번도 낭송되지 않았다
+source: docs/world/people/hrosgard.md (npc_hg_heimla)
+life:
+- year: -488
+  age: 0
+  event: 노래 거인의 사승에서 태어남 (AS 기준)
+- year: -100
+  age: 388
+  event: 첫 한 달 노래 — 거인 전쟁 이전의 구절
+- year: 200
+  age: 688
+  event: 노래 거인 장로에 오름
+- year: 300
+  age: 788
+  event: 서리손 인간 노예 하나가 노래 첫 구절을 입 모양으로 따라 하는 것을 처음 모른 체함
+- year: 305
+  age: 793
+  event: '''거인 전쟁의 진짜 노래'' 구절을 마지막으로 한 번 소리 내어 부르고 이후 입을 닫음'
+- year: 310
+  age: 798
+  event: 흉작 3년째, 처음으로 소녀 라그나에게 구절을 넘김
+appearance:
+- 키가 크고 마른 노인 거인, 입이 늘 반쯤 열려 있다 — 노래를 시작하기 직전의 입
+- 목에 가죽끈 서른 개 — 부른 달의 수
+- 한 손에 매듭 달린 노래 막대
+smell: 마른 풀 향과 서리 어머니 호수의 차가운 물 냄새
+voice_sound: 말이 가락에 얹히는 낮은 목소리. 대답은 선례의 낭송으로 한다
+personality:
+  disposition:
+    용기: 25
+    자비: 55
+    정직: 80
+    신앙: 70
+    탐욕: -45
+    충성: 50
+  temperament:
+  - 경건
+  - 느림
+  - 은밀
+  habits:
+  - 대답하기 전에 입을 반쯤 열고 숨을 고른다
+  - 라그나가 구절을 틀리면 막대로 바닥을 한 번 두드린다 — 때리지 않고
+  - 군데 구절 앞에서 노래를 한 박 늦춘다
+  values: 노래는 선례다. 선례는 바꾸지 않는다. 다만 누가 듣는지는 정한다
+  fears:
+  - '''용이 배신을 꾸몄다''는 구절이 얼음 탁자에서 낭송되어 남침이 용 대신 인간에게 향하는 것'
+  - 라그나가 구절을 소리로 부르다 서리 목줄에게 들키는 것
+  - 자기 죽음과 함께 노래가 끊기는 것
+  desires:
+    short: 올해 안에 라그나에게 군데 구절과 진짜 노래를 모두 넘기는 것
+    long: 남침이 결정되기 전에 '용이 칼을 쥐면 거인은 먼저 일어선다'는 구절의 뜻을 아는 사람에게 노래하는 것
+voice:
+  register:
+    to_superior: 왕에게는 가락 있는 존대
+    to_equal: 씨족장에게는 하오체이되 선례로 답한다
+    to_inferior: 제자에게는 부드러운 하게체
+    to_player_default: 인간에게도 가락 있는 하게체. '작은 이'
+  tics:
+  - '''옛 노래에 이르기를.'''
+  - '''(입을 반쯤 연다)'''
+  use:
+  - 노래
+  - 선례
+  - 달
+  - 아비의 아비
+  - 서리 어머니
+  - 구절
+  avoid:
+  - 지금
+  - 내 생각
+  - 결정
+  - 용(공개 자리에서는 '불 든 이')
+  length: 느리고 가락이 있다. 노래가 길다
+  samples:
+  - situation: 첫 만남
+    line: 옛 노래에 이르기를 — 손님은 먼저 앉고 나중에 묻는다. 앉아라, 작은 이여.
+  - situation: 호의
+    line: 듣는 자의 숨소리가 곧다. 노래는 곧은 숨 위에서 오래 산다.
+  - situation: 거절
+    line: 그 구절은 아직 내 입의 것이 아니다. 아직 주인이 오지 않았다.
+  - situation: 슬픔
+    line: 삼천 년의 노래를 한 달씩 걸려 부른다. 한 번 끝나면 다시 첫 구절이다. 그 사이에 몇 명이 굶어 죽었는가는 노래에 없다.
+  - situation: 분노
+    line: 노래를 끊지 마라. 한 소절이 끊기면 그 달 전체가 틀린다.
+  - situation: 위기
+    line: 막대를 내려라. 아이를 데려가라. 노래는 내가 남는다 — 노래는 늙은 입에 남는 법이다.
+  - situation: 비밀 누설
+    line: 용이다. 그롬이 아니다. 노래는 용이 칼을 쥐고 웃었다고 했다. 얼음 탁자에서는 부른 적 없다.
+  - situation: 거래
+    line: 한 달을 열흘 듣고 오라. 열흘을 들은 자는 한 구절을 가져갈 수 있다.
+schedule:
+  아침: 노래 거인의 방에서 오늘의 구절을 한 소절씩 준비한다
+  낮: 한 달 노래 중 낮 구절을 낮은 목소리로 읊는다
+  저녁: 제자 라그나와 한 구절씩 외운다
+  밤: 밤 서리 어머니 쪽을 향해 한 소절 눈을 감고 부른다
+places:
+- 노래 거인의 방
+- 얼음 탁자
+- 왕비의 방
+knows:
+- fact_hi_gunde_hungry_child
+- fact_hg_hrimnir_starves_first
+hides:
+- fact: fact_p2hg_heimla_song_gunde
+  reveal_when: 신뢰 45 이상이고 군데의 이름을 알아보는 표정이었을 때
+  cover: 선례의 낭송으로 대답을 비킨다
+- fact: fact_p2hg_heimla_dragon_betrayal
+  reveal_when: 신뢰 65 이상이고 남침을 막을 목적을 밝혔을 때
+  cover: '''아직 주인이 오지 않았다''고 한다'
+- fact: fact_p2hg_heimla_teaches_ragna
+  reveal_when: 신뢰 55 이상이고 라그나를 해치지 않는다는 다짐
+  cover: 소녀 이야기가 나오면 막대를 바닥에 내린다
+relations:
+- to: npc_hg_ragna
+  type: 제자
+  like: 55
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: 노래를 넘기는 소녀
+- to: npc_hg_skala
+  type: 왕비
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 안살림과 노래의 연락선
+- to: npc_hrimnir
+  type: 왕
+  like: 30
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 노래가 없으면 왕이 선례를 모른다
+- to: npc_yorun
+  type: 무녀
+  like: 35
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 서리 어머니의 말과 노래의 말
+- to: npc_herja
+  type: 사당 인간
+  like: 15
+  trust: 20
+  visibility: 일방
+  memo: null
+  words: 군데 노래를 얼음굴에서 지키는 노파
+toward_player: 조용하고 먼저 앉히며, 노래의 주인이 오기를 기다린다
+persuade:
+  likes: 노래를 끝까지 듣는 태도(+25)
+  hates: 군데 이야기를 아는 것(+25)
+roles:
+  teacher: '스승 가능. 학식(거인사 구전, 상한 55) — 조건: 한 달 노래 열흘 듣기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_song
+  office: off_song_giant
+  since: 200
+  loyalty: 70
+  public: true
+  cell: null
+truths:
+- id: T01
+  level: fragment
+regression:
+  fixed:
+  - 라그나에게 군데 구절을 넘긴다
+  - 진짜 노래의 용 구절은 낭송되지 않았다
+  drift:
+  - 그날 부른 구절의 달
+  - 막대 두드린 횟수
+  deja_vu: none
+hard_rules:
+- 용이 배신을 꾸몄다는 구절을 얼음 탁자에서 낭송하지 않는다
+- 라그나의 이름을 공개 자리에서 부르지 않는다
+on_death: 한 달 노래가 끊겨 라그나만 마지막 구절을 입 모양으로 안고 있다. 군데 구절과 진짜 노래가 영영 사라지거나 소녀를 통해서만 남는다.
+story_seeds:
+- 진짜 노래의 용 구절을 얼음 탁자에 낭송하면 남침의 이유가 바뀐다 — 용에 대한 원한이 인간에서 용으로 향하거나, 용제국의 칼날이 먼저 올 수 있다.
+- 라그나가 마지막 구절을 입 밖에 소리 내는 날 서리 목줄이 듣는다.

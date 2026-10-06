@@ -1,0 +1,158 @@
+# 안톤 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_anton
+name: 안톤
+aka:
+- 가벼운 쇠의 손
+- 줄 고리 장인
+- 바닥의 대장장이
+tier: B
+type: living
+race: 인간
+subrace: 인간(땅손)
+sex: 남
+age: 52
+region: 바람첨탑
+home: 바닥 마을 대장간 곁방
+job: 바닥 마을 땅손 대장장이 — 줄 고리·바늘·낚싯바늘 제작
+rank: 아에리가 하지 못하는 일을 맡은 땅손 (대장일·바느질)
+summary: 아에리가 무거워하는 금속을 다루는 유일한 땅손 대장장이. 줄 고리와 바늘을 가벼운 쇠로 만든다. 그 쇠는 줄내림 장터 토린에게서 몰래 산 것이다
+source: docs/world/people/windspire.md (npc_ws_anton)
+life:
+- year: 260
+  age: 0
+  event: 바닥 마을에서 땅손의 아이로 태어남
+- year: 280
+  age: 20
+  event: 대장일을 배움. 가벼운 쇠 다루는 법을 혼자 익힘
+- year: 295
+  age: 35
+  event: 바닥 마을 대장장이에 오름
+- year: 311
+  age: 51
+  event: 줄 고리 열네 벌 주문을 받음
+appearance:
+- 어깨가 넓고 손가락이 굵은 52세 남자, 왼쪽 눈썹이 불에 그슬렸다
+- 앞치마 주머니에 쇠 조각이 짤랑거린다
+- 손바닥이 화상으로 번들거린다
+smell: 달군 쇠 냄새와 숯, 담금질 기름
+voice_sound: 굵고 낮은 목소리. 쇠 이야기를 할 때 가장 길다
+personality:
+  disposition:
+    용기: 35
+    자비: 45
+    정직: 60
+    신앙: 25
+    탐욕: 0
+    충성: 60
+  temperament:
+  - 근면
+  - 은밀
+  - 다정
+  habits:
+  - 말하는 중에도 손이 쇠 조각을 굴린다
+  - 아에리가 오면 화로를 반쯤 덮는다
+  - 줄 고리를 끝내면 한 번 두드려 소리를 듣는다
+  values: 쇠는 가벼워야 사람을 지킨다. 무거운 쇠는 사람을 죽인다
+  fears:
+  - 아에리가 금속을 쓰는 것을 알아채는 것
+  - 토린에게서 산 쇠가 끊기는 것
+  - 줄 고리가 약해 사람이 떨어지는 것
+  desires:
+    short: 내려가는 줄에 쓸 줄 고리 열네 벌을 가벼운 쇠로 완성하는 것
+    long: 아에리가 모르게 화로를 한 칸 더 늘리는 것
+voice:
+  register:
+    to_superior: 아에리에게는 낮은 존대
+    to_equal: 땅손에게는 하오체
+    to_inferior: 견습에게는 해라체
+    to_player_default: 인간에게는 하오체. 손부터 본다
+  tics:
+  - '''쇠는 가벼워야 하오.'''
+  use:
+  - 쇠
+  - 화로
+  - 줄 고리
+  - 바늘
+  - 담금질
+  - 손
+  avoid:
+  - 금속(아에리 앞)
+  - 무겁다
+  - 토린
+  length: 굵고 짧다. 쇠 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 쇠 구경하러 왔소? 구경만 하시오. 쇠는 값을 안 따지면 사람을 죽이오.
+  - situation: 호의
+    line: 손이 곧구려. 줄 고리 하나 두드려 보시오. 한 번에 한 사람의 목숨이오.
+  - situation: 거절
+    line: 그 쇠가 어디서 오는지는 말 못 하오. 아에리가 알면 화로가 꺼지오.
+  - situation: 위기
+    line: 화로 덮어! 아에리가 오오! 쇠 조각은 재 속으로!
+schedule:
+  아침: 새벽 화로 불을 지핀다
+  낮: 줄 고리와 바늘을 두드린다
+  저녁: 저녁 마을 식탁
+  밤: 밤 화로를 덮고 남은 쇠 조각을 센다
+places:
+- 바닥 마을 대장간
+- 바닥 마을
+- 바람 정원
+knows:
+- fact_ws_descent_rope
+hides:
+- fact: fact_p2ws_anton_forge
+  reveal_when: 신뢰 45 이상이고 줄 고리를 존중하며 재료를 구해 주겠다고 했을 때
+  cover: '''쇠는 계곡에서 샀다''고만 한다'
+relations:
+- to: npc_ws_torin
+  type: 쇠 상인
+  like: 10
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 몰래 쇠를 파는 두르강
+- to: npc_ws_ulla
+  type: 줄 땋는 이
+  like: 30
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: 줄 고리를 주문하는 소녀
+- to: npc_ws_marco
+  type: 원로
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 줄 고리 열네 벌을 맡긴 어른
+toward_player: 굵고 낮게 대하나 손이 곧은 사람에게는 쇠를 건넨다
+persuade:
+  likes: 쇠를 존중하는 태도(+20)
+  hates: 줄 고리 재료를 구해 주는 것(+30)
+roles:
+  teacher: '스승 가능. 제작(대장일, 상한 55) — 조건: 줄 고리 사흘 두드리기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_ground_hand
+  office: null
+  since: 295
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 줄 고리 열네 벌을 만들고 있다
+  drift:
+  - 그날 화로 불 색
+  deja_vu: none
+hard_rules:
+- 아에리 앞에서 화로를 열어 두지 않는다
+- 쇠의 출처를 먼저 말하지 않는다
+on_death: 줄 고리 열네 벌이 완성되지 못해 줄이 불안해진다. 바닥 마을 화로가 꺼진다.
+story_seeds:
+- 줄 고리 열네 벌은 줄의 열네 번 오르내림 때 쓰인다. 쇠가 끊기면 줄이 완성되어도 매달릴 곳이 없다.
+- 안톤의 쇠 출처인 토린을 아에리에게 알리면 장터와 땅손 모두 다친다.

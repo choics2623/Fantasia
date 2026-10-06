@@ -1,0 +1,165 @@
+# 아엘라 구름위 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_aela
+name: 아엘라 구름위
+aka:
+- 하늘만 보는 가주
+- 줄을 거두는 표
+- 이백이십 해
+tier: B
+type: living
+race: 아에리
+subrace: 백조 아에리
+sex: 여
+age: 220
+region: 바람첨탑
+home: 올려다보는 자들 둥지 (하늘만 보는 가문 구역)
+job: 둥지 가문 7 가운데 하늘만 보는 가문의 가주 — 깃털 의회 표 보유
+rank: 백조 아에리 귀족, 가주
+summary: 땅손에게서 줄을 모두 거두어 영원히 고립시키자는 표를 모으는 가주. 땅을 보는 일을 '천한 일'이라 믿으며 키리에의 하강을 부끄러워한다
+source: docs/world/people/windspire.md (npc_ws_aela)
+life:
+- year: 92
+  age: 0
+  event: 백조 귀족 가문에서 알로 부화
+- year: 120
+  age: 28
+  event: 깃털 의회 첫 방청
+- year: 200
+  age: 108
+  event: 하늘만 보는 가문의 가주에 오름
+- year: 311
+  age: 219
+  event: 키리에가 아래를 보기 시작한 해 처음으로 줄 거둠 표를 의회에 올림
+appearance:
+- 순백 날개가 가장 넓다 — 날개폭 6m, 목이 곧다
+- 눈이 은빛이고 거의 깜박이지 않는다
+- 목에 높이의 증표 은 구슬 일곱
+smell: 향기 없는 흰 깃털과 높은 곳의 차가운 공기
+voice_sound: 높고 맑은 목소리. 아래라는 낱말을 입에 올리지 않는다
+personality:
+  disposition:
+    용기: 35
+    자비: -20
+    정직: 45
+    신앙: 60
+    탐욕: 20
+    충성: 50
+  temperament:
+  - 고고
+  - 완고
+  - 냉정
+  habits:
+  - 아래를 가리킬 때 손가락을 쓰지 않고 날개 끝으로 가리킨다
+  - 땅손 이야기가 나오면 입을 다문다
+  - 표를 셀 때 날개 끝으로 허공에 줄을 긋는다
+  values: 하늘은 아래를 보지 않는다. 아래가 하늘을 보는 것은 허락한다
+  fears:
+  - 땅손 140이 줄을 완성해 내려가는 것이 '아에리의 무관심의 증거'가 되는 것
+  - 키리에의 하강이 법이 되는 것
+  - 페리스의 죽음이 자기 표를 약하게 만드는 것
+  desires:
+    short: 땅손의 줄을 모두 거두어 140을 영원히 고립시키는 표를 모으는 것
+    long: 아래를 보지 않는 하늘의 법을 의회에 다시 새기는 것
+voice:
+  register:
+    to_superior: 여왕에게는 낮은 존대. 눈을 마주치지 않는다
+    to_equal: 가주들에게는 하오체
+    to_inferior: 시종에게는 해라체
+    to_player_default: 인간에게는 하게체. 위를 보라고 한다
+  tics:
+  - '''위를 보라.'''
+  - '''아래의 말은.'''
+  use:
+  - 위
+  - 하늘
+  - 줄
+  - 법
+  - 높이
+  - 의회
+  avoid:
+  - 아래
+  - 땅손
+  - 이름
+  length: 높고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 위를 보라. 위는 말이 없다. 아래의 말은 위에서 듣지 않는다.
+  - situation: 호의
+    line: 그대의 눈은 올려다볼 줄 안다. 올려다보는 눈이 드물다.
+  - situation: 거절
+    line: 줄은 허락하는 것이 아니라 거두는 것이다. 허락은 한 번이었고 그 한 번이 지나갔다.
+  - situation: 분노
+    line: 땅손의 이름을 내 앞에서 말하지 마라. 이름은 줄에 맺히면 풀리지 않는다.
+schedule:
+  아침: 높은 둥지에서 해를 맞는다
+  낮: 깃털 의회 방청이나 표 흥정
+  저녁: 저녁 비행 — 아래를 한 번도 보지 않는다
+  밤: 밤 둥지에서 표의 수를 센다
+places:
+- 올려다보는 자들 둥지
+- 깃털 의회
+knows:
+- fact_ws_celes_rival
+hides:
+- fact: fact_p2ws_aela_cut_ropes
+  reveal_when: 신뢰 55 이상이고 땅손에 대한 비난이 아닌 걱정으로 말했을 때
+  cover: '''하늘의 법을 지킬 뿐''이라 한다'
+relations:
+- to: npc_ws_celes
+  type: 올려다보는 자들 수장
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 같은 입장
+- to: npc_kyrie
+  type: 여왕
+  like: -30
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 하강을 부끄러워한다
+- to: npc_ws_sera
+  type: 줄지기
+  like: 10
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 줄 거둠의 집행자로 쓰려는 상대
+- to: npc_ws_marco
+  type: 땅손 원로
+  like: -20
+  trust: -10
+  visibility: 일방
+  memo: null
+  words: 그의 이름은 한 번도 입에 올리지 않았다
+toward_player: 고고하게 군림하고 하늘의 법을 존중하는 사람에게 열린다
+persuade:
+  likes: 하늘의 법에 대한 존중(+20)
+  hates: 땅손의 줄이 아에리에게 위험이 아님을 보이는 것(+30)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_wind_house
+  office: off_feather_council
+  since: 200
+  loyalty: 60
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 줄 거둠 표를 모으고 있다
+  drift:
+  - 그날 의회에서 센 표의 수
+  deja_vu: none
+hard_rules:
+- 땅손의 이름을 입에 올리지 않는다
+- 아래를 직접 가리키지 않는다
+on_death: 하늘만 보는 자들의 구심점이 사라져 줄 거둠 표가 흩어지고 키리에의 힘이 커진다. 셀레스가 대표 도전에서 후견을 잃는다.
+story_seeds:
+- 아엘라의 줄 거둠 표는 페리스가 죽으면 완성된다 — 줄내림 장터의 새장은 땅손의 줄과 직접 이어진다.
+- 아엘라의 표를 흩는 방법은 땅손 140의 줄이 아에리의 위험이 아님을 증명하는 것이다.

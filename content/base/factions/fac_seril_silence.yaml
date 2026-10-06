@@ -38,14 +38,14 @@ offices:
     perks: ["침묵의 그루터기 — 정원지기도 엘다르도 다가오지 않는다"]
   - id: off_dreamer
     title: 꿈꾸는 자
-    holder: "unnamed:피오나엘 (엘다르, 980) — 잿빛 탑 객원, AS 311부터 본 적 없는 인간의 기억을 꿈꾼다"
+    holder: npc_fionael
     reports_to: off_silent_head
     powers: ["잔향의 회차 장면을 꿈으로 본다(회차가 쌓일수록 같은 저녁의 배급 줄)", "탑과의 자료 교환 — 결사의 눈"]
     chosen_by: "꿈이 그녀를 골랐다 — AS 311 겨울 첫 빈 음"
     perks: []
   - id: off_dew_keeper
     title: 이슬 복원실지기
-    holder: "unnamed:이벨린 (엘다르, 600) — 은이슬 가지 서고지기"
+    holder: npc_ibelin
     reports_to: off_silent_head
     powers: ["흰 알 예언 두루마리 복원실 출입", "예언 원문 조각 대조"]
     chosen_by: "빈 음"
@@ -59,7 +59,7 @@ offices:
     perks: []
   - id: off_silvan_runner
     title: 실반 심부름꾼
-    holder: "unnamed:실반 셋 — 흰 울타리 바깥 숲길"
+    holder: npc_sena
     reports_to: off_silent_head
     powers: ["드라우르 '아래 정원'과의 연락(모르바 검은 우물 경유)", "반엘다르 접촉자와의 연락"]
     chosen_by: "실반은 노래의 빈 음을 듣지 못한다 — 그래서 무엇을 나르는지 모른다"

@@ -1,0 +1,174 @@
+# 오리아 폭풍넘은 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_orea
+name: 오리아 폭풍넘은
+aka:
+- 바람에 놓는 손
+- 날개를 놓지 않은 이
+- 가장 높은 장례
+tier: B
+type: living
+race: 아에리
+subrace: 백조 아에리
+sex: 여
+age: 270
+region: 바람첨탑
+home: 하늘 장례 봉우리 바위 틈 곁 둥지
+job: 하늘 장례 집전자 — 가장 높은 봉우리에서 죽은 아에리를 바람에 놓아 줌
+rank: 백조 아에리 원로, 깃털 의회의 방청석 한 자리
+summary: 가장 높은 봉우리에서 죽은 아에리의 시신을 바람에 놓는 집전자. 타일라의 잘린 날개는 놓지 않고 남쪽 바위 틈에 보관한다. 지난 겨울 장례에서 시신 하나가 사라진 것을 깃뼈를 주워 가는 자의 소행이라 의심한다
+source: docs/world/people/windspire.md (npc_ws_orea)
+life:
+- year: 42
+  age: 0
+  event: 백조 아에리 가문에서 알로 부화
+- year: 100
+  age: 58
+  event: 하늘 장례 견습. 첫 시신을 바람에 놓음
+- year: 200
+  age: 158
+  event: 장례 집전자에 오름
+- year: 302
+  age: 260
+  event: 타일라의 잘린 날개를 장례 의식에 쓰지 않고 따로 보관
+- year: 311
+  age: 269
+  event: 지난 겨울 시신 하나가 사라진 것을 알아챔
+appearance:
+- 은회색 날개, 날개폭 5.5m, 긴 목이 약간 굽었다
+- 눈이 은빛이고 눈동자가 작다
+- 손에 깃털 비녀 대신 작은 뼈 막대를 쥔다
+smell: 높은 바위의 차가운 냄새와 깃털
+voice_sound: 느리고 낮은 목소리. 의식문은 노래처럼 읊는다
+personality:
+  disposition:
+    용기: 30
+    자비: 55
+    정직: 70
+    신앙: 85
+    탐욕: -40
+    충성: 60
+  temperament:
+  - 경건
+  - 침묵
+  - 완고
+  habits:
+  - 말하기 전에 바람 방향을 한 번 읽는다
+  - 바위 틈 쪽을 등지고 앉지 않는다
+  - 죽은 이의 이름을 한 번 부른 뒤 놓는다
+  values: 놓는 것이 존중이다. 놓지 못하는 것은 아직 죽지 않았기 때문이다
+  fears:
+  - 타일라의 날개를 둔 것이 발견되는 것
+  - 깃뼈를 주워 가는 자가 장례를 모독하는 것
+  - 자신이 놓아야 할 날을 끝내 놓지 못하는 것
+  desires:
+    short: 타일라가 날개 없이 바람을 타는 날 날개를 돌려주는 것
+    long: 사라진 시신의 행방을 몰래 추적하는 것
+voice:
+  register:
+    to_superior: 여왕에게는 낮은 존대
+    to_equal: 원로에게는 하오체
+    to_inferior: 견습에게는 부드러운 하게체
+    to_player_default: 인간에게는 '그대'. 바람 방향을 읽으며 말한다
+  tics:
+  - '''바람이 네 냄새를.'''
+  - '''놓는 것이 존중이다.'''
+  use:
+  - 바람
+  - 놓다
+  - 이름
+  - 봉우리
+  - 날개
+  - 장례
+  avoid:
+  - 죽다(그녀는 '놓였다'고 한다)
+  - 가두다
+  - 매장
+  length: 느리고 짧다. 의식문만 길다
+  samples:
+  - situation: 첫 만남
+    line: (바람 방향을 읽는다) 바람이 네 냄새를 가져왔다. 여기는 가장 높은 곳이다. 가장 낮은 이야기를 하러 오지 마라.
+  - situation: 호의
+    line: 죽은 이의 이름을 한 번 불러 주겠나. 이름은 바람에 놓을 때 가장 가볍다.
+  - situation: 거절
+    line: 그 틈은 열지 않는다. 열면 안에 놓인 것이 죽은 것이 된다.
+  - situation: 슬픔
+    line: 날개는 바람에 놓는 것이다. 놓지 못한 날개는 아직 이름이 있다.
+schedule:
+  아침: 해 뜰 때 봉우리 바위에서 바람 방향을 읽는다
+  낮: 죽은 아에리의 장례 준비와 의식
+  저녁: 바위 틈의 날개를 한 번 보고 덮는다
+  밤: 밤 봉우리 둥지에서 별을 바라본다
+places:
+- 하늘 장례 봉우리
+- 바위 틈
+- 높은둥지 가문 둥지
+knows:
+- fact_ws_tyla_wings_orn
+- fact_ws_tyla_glide
+hides:
+- fact: fact_p2ws_orea_keeps_wings
+  reveal_when: 신뢰 55 이상이고 타일라를 돕겠다는 말을 했을 때
+  cover: '''바위 틈은 장례의 것''이라 한다'
+- fact: fact_p2ws_orea_missing_body
+  reveal_when: 호감 35 이상이고 깃뼈 이야기를 존중하며 꺼냈을 때
+  cover: 장례의 순서만 읊는다
+relations:
+- to: npc_tyla
+  type: 날개를 자른 전사
+  like: 40
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 날개를 맡긴 사형의 집행인이 아닌 집전자
+- to: npc_kyrie
+  type: 여왕
+  like: 20
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 처벌을 승인한 여왕
+- to: npc_eiros
+  type: 왕자
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 타일라의 판결에 반대표를 던진 젊은이
+- to: npc_korak
+  type: 늙은 기록관
+  like: 30
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 같은 봉우리 근처에서 사는 노인
+toward_player: 경건하고 느리다. 죽은 이를 존중하는 사람에게 열린다
+persuade:
+  likes: 죽은 이에 대한 존중(+20)
+  hates: 타일라를 도울 의지(+30)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_wind_house
+  office: off_sky_funeral
+  since: 200
+  loyalty: 75
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 바위 틈에 타일라의 날개가 있다
+  drift:
+  - 그날 봉우리의 바람 방향
+  - 장례의 수
+  deja_vu: none
+hard_rules:
+- 죽은 이를 놓을 때 이름을 부른다
+- 날개 이야기를 장례 밖에서 하지 않는다
+on_death: 장례의 집전이 끊기고 타일라의 날개가 방치되어 사라진다. 깃뼈 도굴자 추적이 중단된다.
+story_seeds:
+- 타일라의 날개를 돌려주는 날은 타일라가 날개 없이 활공으로 봉우리에 오르는 날이다.
+- 사라진 시신은 깃뼈 이식을 노리는 자의 증거다 — 그 자는 하늘 장례를 모독한 대가로 모든 아에리의 적이 된다.

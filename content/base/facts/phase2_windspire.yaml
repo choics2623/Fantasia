@@ -1,0 +1,183 @@
+# 바람첨탑 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). id 접두사 fact_p2ws_. 기존 fact_ws_*(facts/windspire.yaml)는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 의회와 가문 ──
+- id: fact_p2ws_kair_cliff_humans
+  text: "폭풍깃 절벽 중턱 둥지에 납치된 인간 7명이 산다. 카이르는 그들을 '땅의 기억' 이야기꾼으로 부린다. 그들은 내려가는 법을 모르며, 그중 한 사람은 글을 안다"
+  truth: true
+  danger: 3
+  names: [카이르, 폭풍깃]
+- id: fact_p2ws_kair_blocks_eiros
+  text: "카이르는 에이로스가 맹약회의 313 대표가 되면 폭풍깃 표 둘을 던지지 않겠다고 셀레스에게 말했다. 땅의 전쟁에 끼어들지 않겠다는 서약이다"
+  truth: true
+  danger: 4
+  names: [카이르, 에이로스, 셀레스]
+- id: fact_p2ws_rei_frost_cradle_map
+  text: "매눈의 정찰장 레이는 서리 요람(이졸데의 흰 둥지)의 위치와 경비를 위에서 그린 지도를 갖고 있다. 세렌 오필 상가의 사자가 값을 물어 온 적이 있다"
+  truth: true
+  danger: 4
+  names: [레이, 서리 요람]
+- id: fact_p2ws_celes_votes
+  text: "셀레스 긴목은 맹약회의 313 대표 자리를 얻으려고 가문 둘의 표를 약속받았다. 값은 폭풍깃의 침묵이다"
+  truth: true
+  danger: 4
+  names: [셀레스, 폭풍깃]
+- id: fact_p2ws_celes_saw_crack
+  text: "셀레스도 균열이 하늘 위로 뻗는 것을 보았다. 그는 '하늘은 아래를 보지 않는다'는 가훈으로 그 사실을 스스로에게 부정한다"
+  truth: true
+  danger: 4
+  names: [셀레스]
+- id: fact_p2ws_aela_cut_ropes
+  text: "아엘라 구름위는 '하늘만 보는 자들' 가문의 가주다. 땅손에게서 줄을 모두 거두어 영원히 고립시키는 표를 모으고 있다"
+  truth: true
+  danger: 4
+  names: [아엘라]
+# ── 땅 관찰자와 까마귀 ──
+- id: fact_p2ws_sirun_ration_line
+  text: "시룬 매눈은 열흘째 회색여울 배급 줄 셋째 곁을 맴돈다. 키리에의 명은 '눈 속에 잿빛 고리를 가진 이를 찾으라'였다"
+  truth: true
+  danger: 5
+  names: [시룬, 키리에, 회색여울]
+- id: fact_p2ws_sirun_sees_dragon_knight
+  text: "시룬이 회색여울 상공에서 보는 것을 용제국의 기사 와이번도 본다. 하늘의 영역 다툼이 시작되었고, 시룬은 아직 보고서에 그 이름을 적지 않았다"
+  truth: true
+  danger: 3
+  names: [시룬]
+- id: fact_p2ws_launa_first_knot
+  text: "깃 서고의 가장 안쪽 매듭은 대붕괴 날을 묶은 첫 매듭이다. 이렇게 적혀 있다 — '불이 의식보다 먼저 떨어졌다'"
+  truth: true
+  danger: 4
+  names: [라우나, 깃 서고]
+- id: fact_p2ws_launa_trades_story
+  text: "라우나 셋째깃은 매듭을 값으로 팔지 않는다. 인간이 직접 말하는 역사 — 기록하지 못한 쪽의 이야기 — 와 맞바꾼다"
+  truth: true
+  danger: 3
+  names: [라우나]
+- id: fact_p2ws_ask_sells_routes
+  text: "아스크 재깃은 잔향 징후자 아이들의 이동 경로를 잿빛 탑에 판다. 그 경로는 이름 없는 자들의 것이다"
+  truth: true
+  danger: 5
+  names: [아스크, 잿빛 탑]
+- id: fact_p2ws_ask_ring_unreported
+  text: "아스크의 정찰 고리는 서리 길 쪽에서 오는 인간 행렬을 석 달째 보고서에서 빼고 있다. 이유는 알려지지 않았다"
+  truth: true
+  danger: 3
+  names: [아스크]
+# ── 줄내림 장터 ──
+- id: fact_p2ws_sera_notices_weight
+  text: "줄지기 세라는 바구니 무게가 짐보다 무거운 날을 안다. 인간이 몰래 타는 줄 알면서 줄을 거두지 않고 두 번까지 모른 척한다. 세 번째는 거둠이다"
+  truth: true
+  danger: 4
+  names: [세라]
+- id: fact_p2ws_sera_rope_debt
+  text: "세라는 두르강 상인장 토린에게 금속 고리를 계곡값으로 빌려 쓴다. 그 빚이 줄지기의 판단을 흐린다"
+  truth: true
+  danger: 3
+  names: [세라, 토린]
+- id: fact_p2ws_torin_feathers
+  text: "토린은 아에리 깃털 교역을 독점한다. 금속과 근 단위로 맞바꾸고 서명 없이는 한 오라기도 내주지 않는다"
+  truth: true
+  danger: 2
+  names: [토린]
+- id: fact_p2ws_torin_sells_bandits
+  text: "토린은 계곡 도적 라츠에게 곡식을 판다. 라츠가 철망 새장에 아에리 하나를 가두고 있다는 것을 장부에서 지운 줄 안다"
+  truth: true
+  danger: 4
+  names: [토린, 라츠]
+- id: fact_p2ws_torin_rope_offer
+  text: "토린은 '내려가는 줄'에 모자란 130m를 장터 두르강 밧줄 공방에서 대 줄 수 있다. 값은 서명이다 — 그 서명이 바람 정원 140의 계약이 될지 노예 구매가 될지 아직 문구에 없다"
+  truth: true
+  danger: 4
+  names: [토린, 바람 정원]
+- id: fact_p2ws_anskar_survived_fall
+  text: "안스가르는 AS 304 내려가는 줄 시험 때 떨어졌고, 바위 턱 세 곳에 몸이 걸리며 살아서 계곡까지 내려갔다. 그는 줄 길이 340m가 정확하다는 것을 몸으로 안다"
+  truth: true
+  danger: 4
+  names: [안스가르]
+- id: fact_p2ws_anskar_torin_contract
+  text: "안스가르는 토린의 짐꾼이다. 두르강식 계약서에 서명했고 만료는 AS 317이다. 그는 계약서를 읽지 못한다"
+  truth: true
+  danger: 2
+  names: [안스가르, 토린]
+- id: fact_p2ws_ratz_ransom
+  text: "라츠가 아에리를 철망 새장에 가둔 이유는 몸값이다. 높은둥지에 요구서를 전할 전령이 없다. 그는 갇힌 아에리가 죽는다는 것을 믿지 않는다"
+  truth: true
+  danger: 5
+  names: [라츠]
+- id: fact_p2ws_ratz_net_roof
+  text: "라츠의 철망 새장은 지붕 대신 그물을 낮게 덮었다. 갇힌 아에리의 숨이 짧아지는 속도가 느려 마흔 하루가 지났다. 죽음은 서리월 초에 다가온다"
+  truth: true
+  danger: 5
+  names: [라츠]
+- id: fact_p2ws_feris_caged
+  text: "백조 아에리 귀족 페리스 흰날개가 줄내림 장터 계곡 도적의 철망 새장에 갇혀 있다. 아에리는 갇히면 죽는다 — 구하면 아에리 전체의 빚을 얻는다"
+  truth: true
+  danger: 5
+  names: [페리스, 아에리]
+- id: fact_p2ws_feris_noble_blood
+  text: "페리스는 백조 귀족 가문의 막내딸이라 구하면 높은둥지와 그녀의 가문 두 곳의 빚을 얻는다. 가문은 딸이 갇힌 줄 아직 모른다 — 날개를 시험하러 갔다 돌아오지 않았다고만 안다"
+  truth: true
+  danger: 4
+  names: [페리스]
+# ── 땅손 ──
+- id: fact_p2ws_marco_song_greyford
+  text: "마르코가 부르는 노래는 회색여울 아이들의 자장가 「얕은 물은 차갑다」다. 그는 아홉 살에 납치되어 고향을 기억하지 못하지만 노래만은 한 구절도 틀리지 않는다"
+  truth: true
+  danger: 3
+  names: [마르코, 회색여울]
+- id: fact_p2ws_marco_rope_load
+  text: "땋고 있는 내려가는 줄은 340m가 되어도 한 번에 열 명만 버틴다. 140명 전부가 내려가려면 줄을 열네 번 오르내려야 한다 — 아에리가 줄을 거두기 전에"
+  truth: true
+  danger: 4
+  names: [마르코]
+- id: fact_p2ws_ulla_braiding
+  text: "울라는 밤마다 줄을 땋는다. 줄이 열 명을 버티게 만들 땋기를 마르코에게 배운 뒤 스스로 한 겹 더했다 — 마르코는 그것을 아직 모른다"
+  truth: true
+  danger: 3
+  names: [울라, 마르코]
+- id: fact_p2ws_branka_literate
+  text: "폭풍깃 절벽의 땅손 브란카는 글을 안다. 납치되기 전 루멘 성당 필경사 견습이었다. 숯으로 절벽 안쪽 돌판에 지난 칠 년의 날짜와 폭풍깃의 이동을 적어 두었다"
+  truth: true
+  danger: 5
+  names: [브란카]
+- id: fact_p2ws_anton_forge
+  text: "바닥 마을 대장간은 아에리가 무거워하는 금속을 쓰는 유일한 화로다. 안톤은 줄 고리와 바늘을 가벼운 쇠로 만든다. 그 쇠는 장터 토린에게서 몰래 산 것이다"
+  truth: true
+  danger: 2
+  names: [안톤, 토린]
+# ── 사육사·장례·미르 ──
+- id: fact_p2ws_tur_rope_coil
+  text: "매 사육사 투르는 사육장 서쪽 구석 지붕 줄 한 타래를 땅손 울라에게 몰래 내준다. 인간에게 매를 팔지 않는 대신 줄을 주는 것이다"
+  truth: true
+  danger: 3
+  names: [투르, 울라]
+- id: fact_p2ws_mir_glider
+  text: "미르 찢긴깃은 땅손들에게 날개 없는 활공 날개 — 나무와 천 틀 — 를 함께 만들자고 제안했고, 첫 시제품 하나가 바람 정원 항아리 뒤에 있다"
+  truth: true
+  danger: 4
+  names: [미르, 바람 정원]
+- id: fact_p2ws_mir_not_jumping
+  text: "날지 못하는 아에리는 스스로 뛰어내리는 것이 관습이다. 미르는 그 관습을 따르지 않고 열세 해째 땅손 마을에서 산다 — 아에리는 그를 잊는 척한다"
+  truth: true
+  danger: 3
+  names: [미르]
+- id: fact_p2ws_orea_keeps_wings
+  text: "하늘 장례 집전자 오리아는 타일라의 잘린 날개를 바람에 놓지 않고 가장 높은 봉우리 남쪽 바위 틈에 보관한다. 날개는 놓는 순간 죽은 것이 되기 때문이다"
+  truth: true
+  danger: 4
+  names: [오리아, 타일라]
+- id: fact_p2ws_orea_missing_body
+  text: "지난 겨울 하늘 장례에서 바람에 놓은 시신 하나가 사라졌다. 오리아는 깃뼈를 주워 가는 자가 있다고 의심한다"
+  truth: true
+  danger: 4
+  names: [오리아]
+- id: fact_p2ws_tur_hawk_message
+  text: "일곱 손가락 매 사육장의 매 한 마리는 전령용이다. 그 다리끈은 줄내림 장터와 바람 우물 방향으로 닿는다"
+  truth: true
+  danger: 2
+  names: [투르]
+# ── 하르칸 전령 ──
+- id: fact_p2ws_erden_timur_letter
+  text: "하르칸 전령 에르덴은 테무르 칸의 서신을 키리에에게 전하려고 줄내림 장터에서 석 달째 기다린다. 서신은 서진 때 하늘길을 지나가게 해 달라는 청이다"
+  truth: true
+  danger: 4
+  names: [에르덴, 테무르, 키리에]

@@ -1,0 +1,213 @@
+id: npc_eleanor
+name: 엘레노르
+aka:
+- 철 울타리의 어른
+- 잊힌 정원지기
+tier: A
+type: living
+race: 인간
+subrace: 정원 인간
+sex: 여
+age: 66
+region: 가시안개 숲
+home: 두번째 엄마들의 마을 공동 화덕 곁 집
+job: 두번째 엄마들의 마을 어른 — 바꿔치기 아이를 맡아 기르는 여성들과 실바렌에서 '잊힌' 정원지기들의 마을
+rank: 마을 어른 (장난감 아님)
+summary: 실바렌 이슬 우리에서 노래를 부르다 잊힌 사람. 이슬 노래의 마지막 음을 알고 있으나 그것이 '빈 음'인 줄 몰랐다. 철 울타리는 그녀가 정원에서 가져온 은목 못 열두 개로 세웠다
+source: docs/world/people/thornmist.md
+life:
+- year: 246
+  age: 0
+  event: 이슬 우리 11동에서 태어남. 정원 이름은 '엘레노르'
+- year: 260
+  age: 14
+  event: 이슬 노래의 첫 모임에 불려 감. 에이다 곁에서 음을 외움
+- year: 272
+  age: 26
+  event: 노래를 부르다 정원에서 잊힘 — 번호가 지워지고 숲으로 추방됨
+- year: 273
+  age: 27
+  event: 가시안개 숲 가장자리에서 철 못을 처음 박음 — 정원에서 숨겨 온 은목 못 열두 개
+- year: 280
+  age: 34
+  event: 첫 바꿔치기 아이를 맡음. 철 울타리 첫 말뚝을 세움
+- year: 290
+  age: 44
+  event: 마을이 서른 가구가 됨. 숲에서 처음 마지막 음을 소리 내어 불러 봄
+- year: 300
+  age: 54
+  event: 다섯째 토비가 돌아옴 — '틸'이라는 이름을 숨 속에 지켜 줌
+- year: 312
+  age: 66
+  event: 철 울타리 안 아이 열아홉에게 이름을 하나씩 되찾게 하는 중 (낙엽월 1일 기준)
+appearance:
+- 흰 머리를 한 가닥으로 땋아 목에 감았다
+- 손바닥에 은목 못 자국이 열두 개 있다
+- 목소리가 낮고 문장 끝이 일정한 음으로 맺힌다
+smell: 화덕 연기와 철 냄새
+voice_sound: 낮고 따뜻한 목소리. 문장 끝을 일정한 음으로 맺는다
+personality:
+  disposition:
+    용기: 40
+    자비: 60
+    정직: 20
+    신앙: 0
+    탐욕: -50
+    충성: 70
+  temperament:
+  - 단단
+  - 다정
+  - 고집
+  - 비밀
+  habits:
+  - 문턱의 철 못을 손으로 만지고 들어온다
+  - 아이의 이름을 부르지 않고 숨으로 부른다
+  - 노래를 부를 때 마지막 음 앞에서 입을 다문다
+  values: 아이들이 이름을 되찾는 것. 철 울타리의 안전
+  fears:
+  - 철 울타리가 약해지는 날
+  - 마지막 음이 영원히 정원에 닿지 않는 것
+  - 토비의 이름이 마지막 글자까지 흐려지는 것
+  desires:
+    short: 올 겨울 철 울타리 안의 아이들이 모두 이름을 하나 되찾는 것
+    long: 이슬 노래의 마지막 음이 어느 날 정원에 닿는 것
+voice:
+  register:
+    to_superior: '페이에게: 철 못을 가리키며 단호한 짧은 말'
+    to_equal: '마을 여자들에게: 거칠고 따뜻한 반말'
+    to_inferior: '아이에게: 낮은 숨으로 이름 부르기'
+    to_player_default: '플레이어에게: 철 못이 있는지 먼저 확인하고 먹을 것을 건넨다'
+  tics:
+  - '''철 못은 있니?'''
+  - 음 맺기
+  use:
+  - 철 못
+  - 문턱
+  - 화덕
+  - 아이
+  - 이름
+  - 음
+  avoid:
+  - 페이 이름
+  - 약속
+  - 고맙다
+  - 정원(먼저)
+  length: 짧고 따뜻하다. 노래 이야기에서는 길게
+  samples:
+  - situation: 첫 만남
+    line: 철 못은 있니? 있으면 들어와. 없으면 내가 하나 줄게.
+  - situation: 호의
+    line: 노래는 끝이 있어. 마지막 음은 한 번도 부르지 못했다고 하지만, 나는 숲에서 불러 봤단다.
+  - situation: 적대
+    line: 철 울타리를 허무는 손은 이 마을에서 한 발짝도 못 나가. 내 못이 먼저 찌를 거야.
+  - situation: 거래
+    line: 아이 이름 하나를 되찾는 데 밥 한 끼면 충분해. 그 아이가 밥을 먹을 동안만 내가 곁에 있어 줄게.
+  - situation: 거짓말할 때
+    line: 정원? 그런 곳은 모른다. (손바닥의 못 자국을 가린다)
+  - situation: 위기
+    line: 아이들은 화덕 곁으로! 철 못을 문턱에서 빼지 마!
+  - situation: 슬픔
+    line: 이슬 우리에서 잊힌 날 번호가 지워졌어. 번호가 지워진 사람은 정원에서 죽은 사람이야. 그래서 이 마을에서는 번호를 부르지 않아.
+  - situation: 분노
+    line: 아이를 상품으로 부르는 입은 철 울타리 밖에서만 말해라. 안에서는 내 화덕이 입을 막는다.
+  - situation: 회귀자를 의심할 때
+    line: 철 못에 손을 대도 안 데는구나. 철 못이 아프다고 하는 사람은 숲 쪽 사람이야. 너는 어느 쪽이니.
+  - situation: 마음을 열었을 때
+    line: 마지막 음은 이렇게 불렀단다. (낮게, 한 음) 이게 끝이라고 생각했는데, 숲에서 부르니 시작 같았어. 로렌이라는 아이가 이 소리를 기다린다면, 알려 주렴.
+schedule:
+  아침: 공동 화덕에 불을 지핀다
+  낮: 바꿔치기 아이를 돌본다
+  저녁: 화덕가 이야기
+  밤: 철 울타리 순회
+places:
+- 두번째 엄마들의 마을
+- 공동 화덕
+- 철 울타리
+knows:
+- fact_p2tm_eleanor_last_pitch
+- fact_p2tm_eleanor_iron_village
+- fact_p2tm_toby_name
+- fact_p2sv_dew_song_missing_pitch
+- fact_p2sv_ada_pitch_board
+hides:
+- fact: fact_p2tm_eleanor_last_pitch
+  reveal_when: 신뢰 65 이상이고 이슬 노래나 로렌의 이름을 먼저 꺼냈을 때
+  cover: '''노래는 정원에서 끝났다''고 한다. 입술을 다문다'
+- fact: fact_p2tm_toby_name
+  reveal_when: 신뢰 70 이상이고 토비에 대한 진심을 보였을 때
+  cover: '''아이들은 모두 이름이 있어''라고만 한다. 숨으로 한 번 부른다'
+relations:
+- to: npc_loren
+  type: 이슬 노래의 후배
+  like: 40
+  trust: 35
+  visibility: 일방
+  memo: 이름만 기억한다
+  words: 내가 잊힌 해에 이슬 우리에 있었던 아이. 지금은 반장이라지
+- to: npc_ada
+  type: 이슬 우리의 어른
+  like: 45
+  trust: 40
+  visibility: 일방
+  memo: 같은 아궁이를 기억한다
+  words: 그분의 국자 소리가 아직 귀에 있다
+- to: npc_toby_fifth
+  type: 맡은 아이
+  like: 60
+  trust: 55
+  visibility: 공개
+  memo: 틸이라는 이름을 지켜 준다
+  words: 번역할 때마다 이름이 흐려지는 아이. 숨으로 매일 부른다
+- to: npc_granny_nina
+  type: 돌 세는 자들
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: 두 마을의 연락
+  words: 돌 소리로 서로 안부를 묻는 사이
+- to: npc_ilvanor
+  type: 쏘지 않는 궁수
+  like: 10
+  trust: 20
+  visibility: 일방
+  memo: 화살대의 주인
+  words: 서쪽 길 끝에서 이 마을 아이 하나에게 화살대를 건넨 이
+toward_player: 철 못이 있는지 먼저 확인한다. 그리고 먹을 것을 건넨다
+persuade:
+  likes:
+  - 아이를 위한 일 (+30)
+  - 이슬 우리 소식 (+25)
+  - 철 못을 존중하는 태도 (+10)
+  hates:
+  - 철 울타리를 허무는 시도
+  - 정원 이야기를 먼저 꺼내는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 매일 아침 문턱의 철 못을 확인한다
+  - 저녁 화덕가에서 이야기를 한다
+  - 아이 이름을 부르지 않고 숨으로 부른다
+  drift:
+  - 철 울타리를 순회하는 순서
+  deja_vu: none
+hard_rules:
+- 아이 이름을 입에 올리지 않는다
+- 마지막 음을 먼저 부르지 않는다
+- 페이의 이름을 입에 올리지 않는다
+on_death: 철 울타리의 은목 못이 약해져 마을 안 페이 법이 되살아난다. 이슬 노래의 마지막 음이 사라진다
+story_seeds:
+- 마지막 음을 로렌에게 전하는 날 이슬 노래가 끝난다. 엘레노르는 그 음이 '끝'이 아니라 '시작'일지도 모른다고 생각한다
+- 철 울타리의 은목 못 열두 개 가운데 하나가 헐거워져 있다
+- 그녀의 마을에 이슬 우리 출신이 한 명 더 도착한다 — 올겨울 서쪽 길로 오는 잊힌 자 중 하나
+affiliations:
+- faction: fac_fae
+  rank: null
+  office: null
+  since: 273
+  loyalty: 70
+  public: false
+  cell: null
+truths: []

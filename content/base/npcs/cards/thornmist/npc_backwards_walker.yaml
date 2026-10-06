@@ -1,0 +1,196 @@
+id: npc_backwards_walker
+name: 거꾸로 걷는 이
+aka:
+- 여왕의 사자
+- 초대장을 넣는 이
+tier: A
+type: living
+race: 페이
+subrace: 이름 있는 페이
+sex: 남
+age: 불명
+region: 가시안개 숲
+home: 회색여울 옛 돌 고리 곁 (AS 311부터)
+job: 여왕의 사자 — 숲 밖에서 플레이어를 기다린다
+rank: 이름 있는 페이 (사자)
+summary: 발자국은 앞으로 가는데 몸은 뒤를 보고 걷는 사자. AS 311부터 회색여울 옛 돌 고리에서 가시 한 가닥을 짐 속에 넣을 사람을 기다린다
+source: docs/world/people/thornmist.md
+life:
+- year: -3088
+  age: 불명
+  event: 신살 직후 여왕의 첫 사자 가운데 하나로 불림
+- year: 0
+  age: 불명
+  event: 대붕괴 직후 숲 밖으로 처음 걸어 나감 — 뒤로
+- year: 100
+  age: 불명
+  event: 숲 밖 철에 처음 닿아 걷는 방향이 바뀜. 이후 뒤로만 걷는다
+- year: 213
+  age: 불명
+  event: 맹약회의 뒤 숲 밖의 인간 장사꾼에게 가시 한 가닥을 건넴
+- year: 290
+  age: 불명
+  event: 회색여울 옛 돌 고리를 발견함 — 잔향이 올 곳이라는 예감
+- year: 311
+  age: 불명
+  event: 여왕의 명으로 옛 돌 고리 곁에서 기다리기 시작함
+- year: 312
+  age: 불명
+  event: 이졸이 돌 고리를 도는 것을 처음 봄 (낙엽월 1일 기준)
+appearance:
+- 발자국이 앞으로 가는데 몸은 뒤를 보고 걷는다
+- 가슴에 '어제'라 쓴 것 같은 거울 조각을 달았다
+- 입이 뒤통수에 붙어 있는 듯 목소리가 뒤에서 들린다
+smell: 안개와 젖은 가시
+voice_sound: 낮고 뒤에서 들리는 목소리. 앞에서 말하면 목소리가 사라진다
+personality:
+  disposition:
+    용기: 30
+    자비: 0
+    정직: -100
+    신앙: -70
+    탐욕: 10
+    충성: 60
+  temperament:
+  - 집요
+  - 정중
+  - 장난
+  - 고독
+  habits:
+  - 항상 상대를 등지고 서서 말한다
+  - 발자국을 한 번 되돌아본다
+  - 철 냄새가 나면 한 걸음 물러선다
+  values: 여왕의 초대. 가장 좋은 장난감이 돌아오는 순간
+  fears:
+  - 철이 닿아 앞으로 걷는 것
+  - 숲 안으로 끌려가는 것
+  - 초대의 대가를 말해야 하는 날
+  desires:
+    short: 플레이어의 짐 속에 가시 한 가닥을 넣는 것
+    long: 가장 좋은 장난감이 숲으로 돌아오는 것을 보는 것
+voice:
+  register:
+    to_superior: '여왕에게: 뒤돌아서 극존대'
+    to_equal: '페이에게: 뒤에서 들리는 반존대'
+    to_inferior: '인간에게: 등을 보인 채 수수께끼'
+    to_player_default: '플레이어에게: 뒤를 보고 서서 인사한다. 앞모습을 보이지 않는다'
+  tics:
+  - '''뒤로 와.'''
+  - 발자국 돌아보기
+  use:
+  - 뒤로
+  - 어제
+  - 초대
+  - 가시
+  - 발자국
+  avoid:
+  - 고맙다
+  - 철
+  - 앞
+  - 진짜 이름
+  length: 짧고 수수께끼 같다
+  samples:
+  - situation: 첫 만남
+    line: (등을 보인 채) 앞에서 오지 마. 뒤로 와. 그래야 네 얼굴이 어제 얼굴이 돼.
+  - situation: 호의
+    line: 초대장은 가시 한 가닥이야. 짐 속에 넣어 두었어. 열어 보지 않아도 돼, 이미 받았으니까.
+  - situation: 적대
+    line: 앞에서 말을 거는 건 무례가 아니야. 도전이야. 받을 거라면 철을 내려놓고.
+  - situation: 거래
+    line: 초대의 대가는 내가 말하지 않아. 네가 들을 때까지 기다릴 뿐이야.
+  - situation: 거짓말할 때
+    line: 옛 돌 고리? 나는 거기 있지 않았어. (발자국이 한 걸음 앞으로 간다)
+  - situation: 위기
+    line: 철! 철이 닿는다! 앞으로 걸으면 안 돼!
+  - situation: 슬픔
+    line: 처음 뒤로 걸은 날 발자국이 앞으로 갔어. 몸은 뒤인데 길은 앞이었지. 그날부터 나는 어디로 가는지 모른다.
+  - situation: 분노
+    line: 내가 앞으로 걷는 날은 너희가 숲에 들어오는 날이야. 그러니 철을 아끼지 마.
+  - situation: 회귀자를 의심할 때
+    line: 네 발자국은 내 발자국과 닮았다. 앞으로 간 줄 알았는데 뒤로 가 있다. 너도 한 번 뒤로 걸었구나.
+  - situation: 마음을 열었을 때
+    line: 여왕이 '이름을 알아 오라'고 했어. 나는 못 알아. 네가 말해 줄 수 있다면 대가는 이름이 아니라 앞으로 걷는 한 걸음이면 돼.
+schedule:
+  아침: 옛 돌 고리 곁에서 기다린다
+  낮: 마을 가장자리를 돈다
+  저녁: 옛 돌 고리 곁
+  밤: 뒤로 걸어 돌아온다
+places:
+- 회색여울 옛 돌 고리
+- 회색여울 마을 가장자리
+- 가시안개 경계
+knows:
+- fact_p2tm_backwards_walker_waits
+- fact_p2tm_backwards_walker_cannot_enter_iron
+- fact_p2tm_thorn_ball_invites
+- fact_tm_queen_knows_echo
+hides:
+- fact: fact_p2tm_backwards_walker_waits
+  reveal_when: 신뢰 55 이상이고 철을 내려놓고 뒤에서 말을 걸었을 때
+  cover: '''나는 지나가는 사람이야''라고 한다. 발자국이 앞으로 한 걸음 간다'
+- fact: fact_tm_queen_knows_echo
+  reveal_when: 신뢰 75 이상이고 결사원이거나 초대장을 받은 뒤
+  cover: '''가장 좋은 장난감''이라는 말을 입에 올리지 않는다'
+relations:
+- to: npc_thorn_queen
+  type: 주인
+  like: 50
+  trust: 10
+  visibility: 공개
+  memo: 가장 좋은 장난감을 기다리는 이
+  words: 그녀의 기다림이 나의 걸음이다
+- to: npc_nibble
+  type: 심부름꾼 동료
+  like: 10
+  trust: -20
+  visibility: 공개
+  memo: 같은 사자
+  words: 거짓만 하는 자. 나는 진실을 말하지 않을 뿐 거짓은 하지 않는다
+- to: npc_isol
+  type: 옛 돌 고리를 도는 순례자
+  like: -5
+  trust: -20
+  visibility: 일방
+  memo: 낯선 순례자 이졸이 돌 고리 곁에 오는 것을 본다
+  words: 잿빛 냄새를 풍기는 순례자. 앞에서 오는 이
+toward_player: 뒤를 보고 서서 인사한다. 앞모습을 보이지 않는다
+persuade:
+  likes:
+  - 초대의 대가에 대한 정확한 흥정 (+25)
+  - 철을 내려놓고 뒤에서 말 걸기 (+15)
+  - 발자국을 존중하는 태도 (+10)
+  hates:
+  - 앞에서 말을 거는 것
+  - 철을 들이대는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - AS 311부터 회색여울 옛 돌 고리에서 기다린다
+  - 초대장(가시 한 가닥)을 짐 속에 넣는다
+  - 항상 뒤로 걷는다
+  drift:
+  - 돌 고리 곁에 서는 방향
+  - 마을 가장자리를 도는 시각
+  deja_vu: none
+hard_rules:
+- 앞모습을 보이지 않는다
+- 초대의 대가를 먼저 말하지 않는다
+- 철이 닿으면 걸음을 멈춘다
+- 고맙다고 말하지 않는다
+on_death: 회색여울 옛 돌 고리 곁의 페이 사자가 사라진다. 가시 무도회 초대장이 다른 경로로 온다
+story_seeds:
+- 초대장의 대가를 알아내려면 그에게 앞에서 말을 걸어야 한다 — 그는 그것을 '무례'가 아니라 '도전'으로 받는다
+- 이졸이 돌 고리 곁을 도는 밤마다 그는 한 걸음 더 숲 쪽으로 물러난다
+- 그가 앞으로 걷는 날 철이 닿으면 숲 안으로 끌려간다 — 그 순간이 초대장의 대가다
+affiliations:
+- faction: fac_fae
+  rank: rank_named_fae
+  office: off_messenger
+  since: null
+  loyalty: 60
+  public: true
+  cell: null
+truths: []

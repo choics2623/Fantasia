@@ -19,6 +19,41 @@
     "title": "왕자 (후계 후보)"
    }
   ],
+  "npc_ws_aela": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_feather_council",
+    "title": "깃털 의회 (둥지 가문 7 — 집합 자리)"
+   }
+  ],
+  "npc_ws_kair": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_stormfeather_head",
+    "title": "폭풍깃 전쟁장 (바람첨탑 동쪽 절벽)"
+   }
+  ],
+  "npc_ws_rei": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_hawkeye_head",
+    "title": "매눈 정찰장 (서쪽, 서리 이빨이 보이는 곳)"
+   }
+  ],
+  "npc_ws_celes": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_looking_up_head",
+    "title": "올려다보는 자들 수장"
+   }
+  ],
+  "npc_ws_sirun": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_watcher_chief",
+    "title": "땅 관찰자 수장"
+   }
+  ],
   "npc_corvina": [
    {
     "faction": "fac_aeri",
@@ -31,6 +66,13 @@
     "title": "잔상 관측 담당 (하늘 기록)"
    }
   ],
+  "npc_ws_sera": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_rope_keeper",
+    "title": "줄지기 (줄내림 장터 관리)"
+   }
+  ],
   "npc_tyla": [
    {
     "faction": "fac_aeri",
@@ -38,11 +80,39 @@
     "title": "날개 잘린 전사 (판결의 결과)"
    }
   ],
+  "npc_ws_tur": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_hawk_breeder",
+    "title": "매 사육장 관리 (일곱 손가락)"
+   }
+  ],
+  "npc_ws_marco": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_ground_elder",
+    "title": "땅손 원로 (인간)"
+   }
+  ],
   "npc_orn": [
    {
     "faction": "fac_aeri",
     "office": "off_pet_human",
     "title": "흰 깃 첨탑 '애완 인간' (인간)"
+   }
+  ],
+  "npc_ws_mir": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_wounded_nester",
+    "title": "날지 못하나 뛰어내리지 않은 아에리"
+   }
+  ],
+  "npc_ws_orea": [
+   {
+    "faction": "fac_aeri",
+    "office": "off_sky_funeral",
+    "title": "하늘 장례 집전자"
    }
   ],
   "npc_mara": [
@@ -113,6 +183,18 @@
     "faction": "fac_melisande",
     "office": "off_melisande_scholar",
     "title": "탑의 손 — 볼드 가주 겸 잿빛 탑 탑주"
+   }
+  ],
+  "npc_kz_hag": [
+   {
+    "faction": "fac_ashen_tower",
+    "office": "off_elder_rift",
+    "title": "원로 — 균열학파 수장"
+   },
+   {
+    "faction": "fac_durgan",
+    "office": "off_rune_hall_master",
+    "title": "계약의 전당 장인 (룬새김 씨족)"
    }
   ],
   "npc_isol": [
@@ -350,6 +432,18 @@
     "title": "장부지기 (첫 박자지기)"
    }
   ],
+  "npc_kz_urla": [
+   {
+    "faction": "fac_beat_ledger",
+    "office": "off_oath_judge",
+    "title": "박자지기 — 맹세지기 (돌 법정)"
+   },
+   {
+    "faction": "fac_durgan",
+    "office": "off_oath_court",
+    "title": "돌 법정 대재판관 (맹세지기 씨족)"
+   }
+  ],
   "npc_grimbald": [
    {
     "faction": "fac_beat_ledger",
@@ -360,6 +454,13 @@
     "faction": "fac_durgan",
     "office": "off_rune_judge",
     "title": "룬판관"
+   }
+  ],
+  "npc_kz_brun": [
+   {
+    "faction": "fac_beat_ledger",
+    "office": "off_shrine_ear",
+    "title": "박자지기 — 조상의 망치 신전 기둥지기"
    }
   ],
   "npc_seln": [
@@ -888,11 +989,67 @@
     "title": "왕"
    }
   ],
+  "npc_kz_hagrin": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_crown_prince",
+    "title": "왕자"
+   }
+  ],
   "npc_hilda": [
    {
     "faction": "fac_durgan",
     "office": "off_gate_survey",
     "title": "깊은 문 조사 책임자"
+   }
+  ],
+  "npc_kz_signa": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_rune_clerk",
+    "title": "서명 회기 서기장"
+   }
+  ],
+  "npc_kz_krag": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_gate_captain",
+    "title": "문지기 대장 (무쇠문 씨족)"
+   }
+  ],
+  "npc_kz_sigrun": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_bardum_commander",
+    "title": "바르둠 요새장 (봉인파)"
+   }
+  ],
+  "npc_kz_tarna": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_ashanvil_head",
+    "title": "잿모루 족장 (무기 대장간 거리)"
+   }
+  ],
+  "npc_kz_magna": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_greyvein_head",
+    "title": "회색광맥 족장 (회색 갱)"
+   }
+  ],
+  "npc_kz_haralda": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_grimhar_reformer",
+    "title": "그림하르 계약서 개정 운동 대표"
+   }
+  ],
+  "npc_kz_grodin": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_dig_leader",
+    "title": "굴착파 수장"
    }
   ],
   "npc_deep_nidar": [
@@ -909,6 +1066,13 @@
     "title": "이름 없는 자 (맹세 파기 추방자, 돌화 진행)"
    }
   ],
+  "npc_kz_torben": [
+   {
+    "faction": "fac_durgan",
+    "office": "off_gallery_keeper",
+    "title": "맹세 회랑 지기"
+   }
+  ],
   "npc_petar": [
    {
     "faction": "fac_durgan",
@@ -921,6 +1085,13 @@
     "faction": "fac_eldar",
     "office": "off_queen",
     "title": "영원 여왕"
+   }
+  ],
+  "npc_isilea": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_princess_deputy",
+    "title": "여왕의 대리인 (첫 아침 가지 왕녀)"
    }
   ],
   "npc_liandel": [
@@ -942,6 +1113,32 @@
     "faction": "fac_eldar",
     "office": "off_old_head",
     "title": "고목 가지 수장 (순혈파)"
+   }
+  ],
+  "npc_naelis": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_dew_head",
+    "title": "은이슬 가지 예언 관리자"
+   }
+  ],
+  "npc_ibelin": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_dew_librarian",
+    "title": "이슬 서고지기"
+   },
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_dew_keeper",
+    "title": "이슬 복원실지기"
+   }
+  ],
+  "npc_isalion": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_light_guardian",
+    "title": "빛의 후견인 (빛실 가지 수장)"
    }
   ],
   "npc_lm_leanel": [
@@ -968,6 +1165,18 @@
     "title": "루멘 수석 감독관 (외부 — 실질 인사권)"
    }
   ],
+  "npc_fionael": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_soul_researcher",
+    "title": "영혼 정원 연구자 (잿빛 탑 객원)"
+   },
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_dreamer",
+    "title": "꿈꾸는 자"
+   }
+  ],
   "npc_aeric": [
    {
     "faction": "fac_eldar",
@@ -980,6 +1189,27 @@
     "title": "침묵 (머리)"
    }
   ],
+  "npc_varendil": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_grave_chamberlain",
+    "title": "시종장 (고목 가지, 마른 숲)"
+   }
+  ],
+  "npc_miriel": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_garden_steward",
+    "title": "정원 관리장"
+   }
+  ],
+  "npc_caelon": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_gate_warden",
+    "title": "은잎문 수문장"
+   }
+  ],
   "npc_fern": [
    {
     "faction": "fac_eldar",
@@ -987,11 +1217,117 @@
     "title": "흰 울타리 감시인 (실반)"
    }
   ],
+  "npc_ilvanor": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_silent_hunter",
+    "title": "말 없는 사냥꾼 (은목 숲 궁수)"
+   }
+  ],
+  "npc_loren": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_gardener_foreman",
+    "title": "정원지기 반장 (인간, 계급 밖)"
+   }
+  ],
   "npc_thorn_queen": [
    {
     "faction": "fac_fae",
     "office": "off_queen",
     "title": "가시 왕관의 여왕"
+   }
+  ],
+  "npc_mirror_yesterday": [
+   {
+    "faction": "fac_fae",
+    "office": "off_mirror_yesterday",
+    "title": "거울 시녀 '어제'"
+   }
+  ],
+  "npc_mirror_no": [
+   {
+    "faction": "fac_fae",
+    "office": "off_mirror_no",
+    "title": "거울 시녀 '아니'"
+   }
+  ],
+  "npc_mirror_perhaps": [
+   {
+    "faction": "fac_fae",
+    "office": "off_mirror_perhaps",
+    "title": "거울 시녀 '혹시'"
+   },
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_mirror_maybe",
+    "title": "궁정 안의 조각 — 거울 시녀 '혹시'"
+   }
+  ],
+  "npc_whistle_judge": [
+   {
+    "faction": "fac_fae",
+    "office": "off_laugh_judge",
+    "title": "웃음 재판관"
+   }
+  ],
+  "npc_knight_rustrose": [
+   {
+    "faction": "fac_fae",
+    "office": "off_thorn_knights",
+    "title": "가시 기사 (13)"
+   },
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_rusted_rose",
+    "title": "궁정 안의 조각 — 가시 기사 '녹슨 장미'"
+   }
+  ],
+  "npc_glass_fingers": [
+   {
+    "faction": "fac_fae",
+    "office": "off_changeling_master",
+    "title": "바꿔치기 장인 (실뜨기 / 유리 손가락 부인 / 은방울 부인)"
+   }
+  ],
+  "npc_dawn_hunter_dew": [
+   {
+    "faction": "fac_fae",
+    "office": "off_dawn_hunters",
+    "title": "새벽 사냥꾼"
+   }
+  ],
+  "npc_silverbell_lady": [
+   {
+    "faction": "fac_fae",
+    "office": "off_summer_court",
+    "title": "여름 궁정 (인간 아이 수집)"
+   }
+  ],
+  "npc_thistle_duke": [
+   {
+    "faction": "fac_fae",
+    "office": "off_winter_court",
+    "title": "겨울 궁정 (인간 기억 수집)"
+   },
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_thistle",
+    "title": "궁정 안의 조각 — 엉겅퀴 공"
+   }
+  ],
+  "npc_sneeze_duke": [
+   {
+    "faction": "fac_fae",
+    "office": "off_fog_market",
+    "title": "안개 장터 관장 ('재채기 공작')"
+   }
+  ],
+  "npc_name_collector": [
+   {
+    "faction": "fac_fae",
+    "office": "off_name_collector",
+    "title": "이름 수집가"
    }
   ],
   "npc_nibble": [
@@ -1006,6 +1342,13 @@
     "faction": "fac_fae",
     "office": "off_red_cap",
     "title": "붉은모자 (남쪽 경계 사냥)"
+   }
+  ],
+  "npc_backwards_walker": [
+   {
+    "faction": "fac_fae",
+    "office": "off_messenger",
+    "title": "거꾸로 걷는 이 (여왕의 사자 — 숲 밖)"
    }
   ],
   "npc_ashdust": [
@@ -1037,6 +1380,13 @@
     "faction": "fac_laugh_shards",
     "office": "off_ear_human",
     "title": "인간 귀 (바꿔치기된 인간)"
+   }
+  ],
+  "npc_granny_nina": [
+   {
+    "faction": "fac_fae",
+    "office": "off_stone_counters",
+    "title": "돌 세는 자들 지도자 (인간)"
    }
   ],
   "npc_sigrid": [
@@ -1073,6 +1423,25 @@
     "faction": "fac_frosthand",
     "office": "off_brother_einar",
     "title": "남은 동생 (후계 후보 — 숨겨진 자)"
+   }
+  ],
+  "npc_hg_ragna": [
+   {
+    "faction": "fac_frosthand",
+    "office": "off_lullaby_singer",
+    "title": "서리 어머니의 자장가 낭송자"
+   }
+  ],
+  "npc_hg_hordis": [
+   {
+    "faction": "fac_frosthand",
+    "office": "off_gunde_word_keeper",
+    "title": "군데의 말 전승자"
+   },
+   {
+    "faction": "fac_jotun",
+    "office": "off_fire_hut_keeper",
+    "title": "불 오두막지기 (인간 노예)"
    }
   ],
   "npc_lm_byuk": [
@@ -1125,6 +1494,13 @@
     "faction": "fac_grey_thread",
     "office": "off_runner_rose",
     "title": "장미 실 실잡이 (붉은 갈대 선 호송)"
+   }
+  ],
+  "npc_hg_inge": [
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_ice_thread_fire",
+    "title": "얼음 실 — '마지막 불' 안내인 (북방 갈래)"
    }
   ],
   "npc_urgash": [
@@ -1344,11 +1720,39 @@
     "title": "흐림 씨족장 (왕가)"
    }
   ],
+  "npc_hg_skala": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_queen_consort",
+    "title": "왕비"
+   }
+  ],
   "npc_skadir": [
    {
     "faction": "fac_jotun",
     "office": "off_prince_skadir",
     "title": "왕자 (남침파 전사단장)"
+   }
+  ],
+  "npc_hg_ugra": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_clan_rockbelly",
+    "title": "바위배 씨족장"
+   }
+  ],
+  "npc_hg_helda": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_clan_snowwolf",
+    "title": "눈늑대가죽 씨족장"
+   }
+  ],
+  "npc_hg_brimir": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_clan_deepwell",
+    "title": "깊은우물 씨족장 (남쪽 온천 지대)"
    }
   ],
   "npc_baug": [
@@ -1358,11 +1762,39 @@
     "title": "돌무릎 씨족장 (언덕 요툰)"
    }
   ],
+  "npc_hg_heimla": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_song_giant",
+    "title": "노래 거인 장로"
+   }
+  ],
   "npc_yorun": [
    {
     "faction": "fac_jotun",
     "office": "off_mother_voice",
     "title": "서리 어머니의 목소리 (무녀)"
+   }
+  ],
+  "npc_hg_orr": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_south_vanguard",
+    "title": "남침파 선봉"
+   }
+  ],
+  "npc_hg_bragi": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_granary_keeper",
+    "title": "얼음턱 전당 곡창지기"
+   }
+  ],
+  "npc_hg_halr": [
+   {
+    "faction": "fac_jotun",
+    "office": "off_frost_chain",
+    "title": "서리 목줄 (노예 맏이 — 노예 감독)"
    }
   ],
   "npc_harva": [
@@ -1503,6 +1935,13 @@
     "faction": "fac_last_lantern",
     "office": "off_hunter_sandeye",
     "title": "허가 사냥꾼 — '모래눈' 패 (6)"
+   }
+  ],
+  "npc_name_page": [
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_name_page",
+    "title": "궁정 안의 조각 — 이름 수집가의 시동"
    }
   ],
   "npc_mateus": [
@@ -1685,11 +2124,81 @@
     "title": "첫 갈증의 군주"
    }
   ],
+  "npc_eloise": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_attendant",
+    "title": "군주의 시종"
+   }
+  ],
+  "npc_carnon": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_executioner",
+    "title": "사형 집행인"
+   }
+  ],
+  "npc_marcius": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_thirst_night_officiant",
+    "title": "갈증의 밤 집전관"
+   }
+  ],
+  "npc_basilisa": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_house_redmoon",
+    "title": "붉은 달 가문 가주 (최대 혈목장, 11곳)"
+   }
+  ],
+  "npc_baltasar": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_house_obsidian",
+    "title": "흑수정 가문 가주 (잿빛 탑 원로)"
+   }
+  ],
+  "npc_silas_bell": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_house_silentbell",
+    "title": "침묵종 가주 (사냥·암살 의뢰)"
+   }
+  ],
+  "npc_marendis": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_house_stillwater",
+    "title": "고요물 가주 (밤 부두, 피 교역)"
+   }
+  ],
   "npc_alaric": [
    {
     "faction": "fac_nocturne",
     "office": "off_house_blackchalice",
     "title": "검은성배 혈목장 남작"
+   }
+  ],
+  "npc_kasimir": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_tribute_keeper",
+    "title": "공물 담당 (하얀 우리 영주)"
+   }
+  ],
+  "npc_zrag": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_pen_head_herder",
+    "title": "크릭 목동장 '울타리 혀'"
+   }
+  ],
+  "npc_orphe": [
+   {
+    "faction": "fac_nocturne",
+    "office": "off_rose_steward",
+    "title": "그림자장미 저택 집사"
    }
   ],
   "npc_vesper": [
@@ -1831,6 +2340,13 @@
     "faction": "fac_seren",
     "office": "off_heir",
     "title": "몬달리 상속녀 (시민권 초안 발의자)"
+   }
+  ],
+  "npc_sena": [
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_silvan_runner",
+    "title": "실반 심부름꾼"
    }
   ],
   "npc_dane": [
@@ -2231,9 +2747,9 @@
  "stats": {
   "factions": 57,
   "offices": 669,
-  "filled": 305,
-  "npcs": 276,
-  "npcs_with_office": 196,
+  "filled": 381,
+  "npcs": 382,
+  "npcs_with_office": 264,
   "truth_holders": 62
  }
 }

@@ -1,0 +1,213 @@
+id: npc_eloise
+name: 시종 엘로이즈
+aka:
+- 군주의 시종
+- 은 골무
+tier: A
+type: living
+race: 녹테른
+subrace: 첫 갈증의 원로
+sex: 여
+age: 2900
+region: 녹테른 밤의 영지
+home: 첫 갈증 성 군주의 방 곁 시종실
+job: 군주의 시종 — 군주의 일정과 서신, 잔을 관리한다
+rank: 첫 잔의 가문 직계 전수자
+summary: 군주가 우물 곁에서 매일 밤 중얼거리는 소절이 '너희는…'에서 멈춘다는 것을 아는 사람. 세실의 병사 명단 사본이 군주의 책상에 오르는 길목이다
+source: docs/world/people/nocturne.md
+life:
+- year: -2588
+  age: 0
+  event: 녹테른의 첫 세대로 피의 전수를 받음 — 엘다르 소녀가 군주의 곁에 서게 됨
+- year: -1588
+  age: 1000
+  event: 군주의 시종이 됨. 첫 잔을 따르는 일을 맡음
+- year: 0
+  age: 2588
+  event: 대붕괴의 밤 군주가 우물 곁에서 처음 한 소절을 중얼거리는 것을 들음
+- year: 213
+  age: 2801
+  event: 맹약회의 이후 군주의 서신이 하룻밤에 열두 통으로 늘어난 것을 정리함
+- year: 290
+  age: 2878
+  event: 세실의 병사 명단 사본이 처음 군주의 책상에 오름
+- year: 311
+  age: 2899
+  event: 군주가 매일 밤 같은 소절을 되풀이하기 시작함
+- year: 312
+  age: 2900
+  event: 소절이 '너희는…'에서 멈추는 것을 이백 밤째 듣는다 (낙엽월 1일 기준)
+appearance:
+- 얼굴이 가죽을 팽팽히 당긴 듯 나이를 짐작할 수 없다
+- 손가락 끝마다 은 골무를 끼웠다
+- 눈을 깜박일 때 소리가 나지 않는다
+smell: 마른 향과 오래된 잔 냄새
+voice_sound: 낮고 평평한 목소리. 군주 이야기에서만 목소리가 한 겹 낮아진다
+personality:
+  disposition:
+    용기: 20
+    자비: -20
+    정직: 40
+    신앙: 70
+    탐욕: -10
+    충성: 90
+  temperament:
+  - 충직
+  - 냉정
+  - 정확
+  - 비밀
+  habits:
+  - 군주의 잔에 한 방울도 흘리지 않고 따른다
+  - 우물 곁에 서면 숨을 멈춘다
+  - 은 골무로 탁자를 한 번 두드려 말을 끊는다
+  values: 군주의 일상. 의례의 정확함
+  fears:
+  - 군주의 목소리가 소절의 끝에서 갈라지는 것
+  - 세실의 명단이 군주에게 닿지 못하는 것
+  - 군주가 원하는 것이 '끝'이 아닐 가능성
+  desires:
+    short: 갈증의 밤에 군주의 두 겹 목소리가 흔들리지 않게 하는 것
+    long: 군주가 소절의 끝을 소리 내는 날을 보는 것
+voice:
+  register:
+    to_superior: '군주에게: ''군주시여''와 극존대 하오체'
+    to_equal: '가문 귀족에게: 정중하지만 한 문장마다 가시'
+    to_inferior: '인간에게: 말을 걸지 않는다. 걸 때는 번호로'
+    to_player_default: '플레이어에게: 정중하고 서늘하다. 낮의 말은 없던 것으로 친다'
+  tics:
+  - '''밤이 깊기를.'''
+  - 은 골무로 탁자 두드리기
+  use:
+  - 잔
+  - 맥박
+  - 군주
+  - 밤
+  - 소절
+  - 의례
+  avoid:
+  - 배고프다
+  - 도둑
+  - 엘다르
+  - 이름(인간 앞에서)
+  length: 정확하고 짧다. 군주 이야기에서만 문장이 완결되어 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 밤이 깊기를. …낮에 말씀하신 것은 없던 것으로 하겠소. 군주께서는 아직 주무시지 않으셨으니까.
+  - situation: 호의
+    line: 맥박이 말하는군. 그대는 거짓을 하지 않으려 애쓰고 있소. 군주께서 그런 맥박을 좋아하시오.
+  - situation: 적대
+    line: 인간의 입으로 군주의 이름을 부르는 것은 한 번이면 족하오. 두 번째는 잔이 대신 답할 것이오.
+  - situation: 거래
+    line: 서신 한 통을 올리는 데 대가는 필요 없소. 다만 올린 서신은 돌아오지 않소.
+  - situation: 거짓말할 때
+    line: 군주께서는 우물을 보지 않으시오. (은 골무가 탁자를 한 번 친다) 보지 않으시오.
+  - situation: 위기
+    line: 잔을 놓으시오! 군주의 첫 잔은 한 방울도 바닥에 닿으면 안 되오.
+  - situation: 슬픔
+    line: 이백 밤을 들었소. 같은 소절. '너희는…' 다음은 한 번도 들은 적이 없소. 3,000년을 섬긴 시종에게조차.
+  - situation: 분노
+    line: 군주를 늙었다고 하지 마시오. 늙은 이는 소절을 멈추지 않소. 군주는 멈추는 것이오 — 끝을 기다리며.
+  - situation: 회귀자를 의심할 때
+    line: 맥박이 한 번 어긋났소. 그 어긋남은 우물이 군주에게 들려주는 소리와 같소. 같을 리가 없는데.
+  - situation: 마음을 열었을 때
+    line: 소절의 끝이 무엇인지 아시오? 나는 모르오. 다만 군주가 그 끝을 입에 올리는 날, 내가 시종으로 남을 이유가 없다는 것은 아오.
+schedule:
+  아침: 군주의 방 곁에 선다
+  낮: 군주의 서신을 정리한다
+  저녁: 저녁 첫 잔을 따른다
+  밤: 우물 곁에서 군주의 중얼거림을 듣는다
+places:
+- 첫 갈증 성 군주의 방
+- 첫 갈증 성 대연회장
+- 첫 갈증의 우물
+- 옥좌
+knows:
+- fact_p2nc_eloise_mordecai_hum
+- fact_p2nc_eloise_cecile_letters
+- fact_nc_mordecai_hears_echo
+- fact_nc_well_blood_remains
+- fact_nc_gods_last_word
+hides:
+- fact: fact_p2nc_eloise_mordecai_hum
+  reveal_when: 신뢰 70 이상, 또는 우물 곁에서 소절에 대한 정확한 언급을 했을 때
+  cover: '''군주께서는 우물을 보지 않으시오''라고 한다. 은 골무가 탁자를 친다'
+- fact: fact_p2nc_eloise_cecile_letters
+  reveal_when: 신뢰 60 이상이고 세실의 이름을 정중히 언급했을 때
+  cover: '''서신은 모두 군주의 책상에 오르오''라고만 한다'
+relations:
+- to: npc_mordecai
+  type: 군주
+  like: 60
+  trust: 80
+  visibility: 공개
+  memo: 3,000년을 곁에서 섬겼다
+  words: 나에게 이름을 지어 준 분. 그 이름은 군주의 입에서 한 번도 불리지 않았다
+- to: npc_cecile
+  type: 서신의 상대
+  like: -5
+  trust: 10
+  visibility: 비밀
+  memo: 사본을 올려 주는 길목
+  words: 그녀의 서신을 읽지 않고 올린다. 읽지 않는 것이 가장 정확한 일이다
+- to: npc_carnon
+  type: 같은 군주의 손
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: 집행과 시종
+  words: 손은 다르나 같은 몸의 손
+- to: npc_marcius
+  type: 집전관
+  like: 15
+  trust: 25
+  visibility: 공개
+  memo: 우물 순례의 동료
+  words: 우물 곁에서 군주의 목소리를 같이 듣는다
+- to: npc_vesper
+  type: 탑의 전령
+  like: 5
+  trust: -10
+  visibility: 공개
+  memo: 서신을 받는 입
+  words: 배신자라는 말을 듣는 날개. 나는 서신만 본다
+toward_player: 정중하고 서늘하다. 인간에게는 말을 걸지 않는다
+persuade:
+  likes:
+  - 군주의 소절에 대한 정확한 언급 (+30)
+  - 신의 피에 대한 지식 (+20)
+  - 의례의 정확함 (+10)
+  hates:
+  - 군주를 '늙었다'고 부르는 것
+  - 소절을 먼저 입에 올리는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 매일 저녁 군주의 첫 잔을 따른다
+  - 밤마다 우물 곁에서 군주의 소절을 듣는다
+  - 세실의 서신을 읽지 않고 올린다
+  drift:
+  - 서신이 쌓이는 양
+  - 우물 곁에 서는 시각 (30분 안팎)
+  deja_vu: none
+hard_rules:
+- 군주의 소절을 먼저 말하지 않는다
+- 낮에 맹세하지 않는다
+- 인간 앞에서 이름을 부르지 않는다
+- 세실의 서신을 읽었다고 하지 않는다
+on_death: 군주의 일정과 서신이 흐트러지고 세실의 명단 사본이 올라갈 길목이 사라진다. 우물 곁의 소절을 아는 이가 없어진다
+story_seeds:
+- 소절의 끝을 아는 사람이 우물 곁에 선다면 군주의 목소리가 처음으로 세 겹이 된다. 그 순간 엘로이즈는 시종의 자리를 놓는다
+- 세실의 서신을 한 번 읽는 순간 그녀의 충성이 갈라진다
+- 군주가 우물을 보지 않는 날은 그가 소절을 소리 내기 전날이다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_first_cup
+  office: off_attendant
+  since: 1500
+  loyalty: 90
+  public: true
+  cell: null
+truths: []

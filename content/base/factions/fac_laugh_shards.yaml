@@ -37,21 +37,21 @@ offices:
     perks: ["가라앉은 종탑"]
   - id: off_mirror_maybe
     title: 궁정 안의 조각 — 거울 시녀 '혹시'
-    holder: "unnamed:거울 시녀 '혹시' — 여왕의 말을 거꾸로 전한다(그래서 그녀의 말은 진실일 수 있다)"
+    holder: npc_mirror_perhaps
     reports_to: off_fallen_mouth
     powers: ["여왕의 다음 말을 미리 안다"]
     chosen_by: "상자를 열었다"
     perks: []
   - id: off_thistle
     title: 궁정 안의 조각 — 엉겅퀴 공
-    holder: "unnamed:엉겅퀴 공 — 대붕괴 당시 아스테리아 인간의 기억 한 해를 가졌다"
+    holder: npc_thistle_duke
     reports_to: off_fallen_mouth
     powers: ["아스테리아의 마지막 한 해 — 인간의 눈으로 본 의식 전야"]
     chosen_by: "상자를 열었다"
     perks: []
   - id: off_rusted_rose
     title: 궁정 안의 조각 — 가시 기사 '녹슨 장미'
-    holder: "unnamed:가시 기사 '녹슨 장미'"
+    holder: npc_knight_rustrose
     reports_to: off_fallen_mouth
     powers: ["숲 경계 — 잔향이 숲에 들어오는 길을 연다/닫는다"]
     chosen_by: "상자를 열었다"
@@ -66,7 +66,7 @@ offices:
 
   - id: off_name_page
     title: 궁정 안의 조각 — 이름 수집가의 시동
-    holder: "unnamed:이름 수집가의 시동 — 빼앗은 이름 보관소의 문지기"
+    holder: npc_name_page
     reports_to: off_mirror_maybe
     powers: ["여왕이 빼앗은 이름들의 보관소 출입 — 바꿔치기된 아이들의 인간 이름도 거기 있다"]
     chosen_by: "상자를 열었다"

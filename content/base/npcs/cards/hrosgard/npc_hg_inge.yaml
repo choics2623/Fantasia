@@ -1,0 +1,205 @@
+# 잉에 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_inge
+name: 잉에
+aka:
+- 마지막 불의 안내인
+- 룬을 새기는 동생
+- 짐이 셋
+tier: A
+type: living
+race: 인간
+subrace: 인간(서리 인간)
+sex: 여
+age: 28
+region: 흐로스가르드
+home: 울음 고개 직전 온천 바위 그늘 '마지막 불'
+job: 얼음 실 안내인 — 마지막 불 지킴, 서리말 룬 새김, 대피 동굴 식량 관리
+rank: 서리손 친족, 얼음 실 '마지막 불' 안내인
+summary: 시그리드의 동생. 마지막 불에서 다음 무리를 기다리며 서리 길이 열린 날 바위 밑에 첫 무리가 고개를 넘는 날짜를 룬으로 새긴다. 낙오한 에이나르의 이름을 사망자 명단에 새겼고, 그가 살아 있다는 것을 모른다
+source: docs/world/people/hrosgard.md (npc_hg_inge)
+life:
+- year: 284
+  age: 0
+  event: 서리 인간 마을에서 태어남. 어머니는 서리손의 자장가를 불렀다
+- year: 298
+  age: 14
+  event: 돌무릎 씨족의 노예 소녀로 노동에 나감. 노래를 외우는 일을 도왔다
+- year: 309
+  age: 25
+  event: 시그리드·에이나르와 서리 길을 넘다 낙오자 셋을 두고 가야 했다. 에이나르의 이름을 사망자 룬으로 새김
+- year: 310
+  age: 26
+  event: 마지막 불에 안내인으로 남음
+- year: 311
+  age: 27
+  event: 북부 실과 합류하는 첫 매듭을 맡음
+- year: 312
+  age: 28
+  event: 서리월 전 마지막 무리를 보내고 겨울을 기다림
+appearance:
+- 시그리드와 눈매가 닮은 야윈 여자, 짧게 자른 갈색 머리를 서리 가죽 모자로 눌렀다
+- 왼손 새끼손가락이 동상으로 짧다
+- 목에 서리말 룬 새기는 뼈 정을 걸었다
+smell: 온천 증기와 그을린 이끼, 서리 가죽 냄새
+voice_sound: 낮고 짧다. 소리를 내지 않으려 입을 작게 움직인다
+personality:
+  disposition:
+    용기: 60
+    자비: 60
+    정직: 60
+    신앙: 40
+    탐욕: -20
+    충성: 85
+  temperament:
+  - 인내
+  - 은밀
+  - 다정
+  habits:
+  - 말하기 전에 북쪽 바람 방향을 한 번 본다
+  - 룬을 새기기 전에 손바닥으로 바위를 한 번 쓸어 온도를 잰다
+  - 에이나르의 이름이 나오면 룬 정을 쥔다
+  values: 짐은 사흘 안에 닿는다. 닿지 못한 짐은 이름이 룬이 된다
+  fears:
+  - 서리월 1일 북문이 닫히기 전에 닿지 못하는 무리
+  - 자기가 새긴 사망자 명단의 이름이 틀렸다는 것
+  - 시그리드가 동생을 기다리다 사라지는 것
+  desires:
+    short: 해빙월 서리 길이 열리는 날 첫 룬을 새겨 첫 무리를 맞는 것
+    long: 시그리드에게 직접 룬 명단을 전하는 것
+voice:
+  register:
+    to_superior: 요툰에게는 낮은 서리말 존대
+    to_equal: 동료에게는 짧은 반말
+    to_inferior: 탈주자에게는 부드러운 반말, 짐으로 부른다
+    to_player_default: 인간에게는 반말. '짐'과 '불'로 부른다
+  tics:
+  - '''바람이 맵다.'''
+  - '''짐이 몇이야.'''
+  use:
+  - 짐
+  - 바람
+  - 불
+  - 룬
+  - 고개
+  - 사흘
+  avoid:
+  - 탈주
+  - 이름
+  - 희망
+  length: 짧다. 동생 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 짐이 몇이야. 셋? 둘? 바람이 맵다 — 불 곁에 앉아.
+  - situation: 호의
+    line: 손부터 녹여. 서리 어머니가 본다. 오늘 밤은 안 죽는다고 생각해.
+  - situation: 거절
+    line: 그 이름은 룬에 있어. 룬에 있는 이름은 부르지 않는 거야.
+  - situation: 분노
+    line: 사흘 안에 못 넘으면 두고 간다 — 그게 규칙이야. 규칙이 싫으면 네가 업고 가.
+  - situation: 슬픔
+    line: 사망자 룬은 서른일곱이야. 서른일곱. 하나는 동생이야. 내가 새겼어.
+  - situation: 위기
+    line: 불을 꺼! 바위 뒤로! 발소리가 일곱이야 — 한 쌍은 말이 아니다!
+  - situation: 비밀 누설
+    line: 서리월 1일 전에 못 닿는 무리를 보냈어. 굴로 가라고 일렀어. 굴이 열려 있기를.
+  - situation: 거래
+    line: 에이나르 소식이 있으면 값 없이 넘길게. 대신 시그리드한테 이 룬을 전해 줘.
+schedule:
+  아침: 마지막 불 곁에서 불씨를 지킨다
+  낮: 대피 동굴 세 곳의 비상 식량을 확인한다
+  저녁: 바위 밑 룬 표식을 점검한다
+  밤: 밤 불 곁에서 오는 사람의 발소리를 기다린다
+places:
+- 마지막 불
+- 울음 고개
+- 대피 동굴
+- 바위 밑 룬
+knows:
+- fact_hg_frost_road_closes
+- fact_hg_matusz_lodge_runaways
+- fact_hg_ogre_larder_cave
+hides:
+- fact: fact_p2hg_inge_thinks_einar_dead
+  reveal_when: 신뢰 60 이상이고 에이나르의 소식을 말했을 때
+  cover: 사망자 룬 명단 이야기를 하지 않는다
+- fact: fact_p2hg_inge_carves_runes
+  reveal_when: 신뢰 50 이상이고 서리 길 개방 날짜를 물었을 때
+  cover: 룬 이야기는 '바위 표식'이라고만 한다
+- fact: fact_p2hg_inge_last_group
+  reveal_when: 신뢰 55 이상이고 서리월 3일의 열둘 이야기를 먼저 꺼냈을 때
+  cover: 입을 다물고 불씨를 쑤신다
+relations:
+- to: npc_sigrid
+  type: 언니
+  like: 85
+  trust: 90
+  visibility: 비밀
+  memo: null
+  words: 서리 길에서 헤어진 서리손 가장
+- to: npc_asta
+  type: 사촌
+  like: 70
+  trust: 80
+  visibility: 비밀
+  memo: null
+  words: 돌무릎 골짜기에서 무리를 보내는 이
+- to: npc_einar
+  type: 낙오한 동생
+  like: 80
+  trust: 85
+  visibility: 일방
+  memo: null
+  words: 죽은 줄 알고 이름을 룬으로 새겼다
+- to: npc_matusz
+  type: 산장지기
+  like: 45
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 서리 길 첫 밤의 곰
+- to: npc_hg_sven
+  type: 뼈울타리 맏이
+  like: 5
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 해마다 한 무리를 놓아주는 첫 매듭
+toward_player: 낮고 경계하나 짐을 나누는 사람에게는 불 곁을 내준다
+persuade:
+  likes: 짐을 나누어 지는 태도(+25)
+  hates: 사망자 룬 명단을 읽어 주는 것(+20)
+roles:
+  teacher: '스승 가능. 야외생존·지구력(서리 길, 상한 60) — 조건: 마지막 불 사흘 불씨 지키기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grey_thread
+  rank: rank_runner
+  office: off_ice_thread_fire
+  since: 310
+  loyalty: 90
+  public: false
+  cell: null
+- faction: fac_frosthand
+  rank: rank_kin
+  office: null
+  since: 284
+  loyalty: 90
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 사망자 룬 명단이 서른일곱이다
+  - 마지막 불 바위 밑 룬을 새로 새긴다
+  drift:
+  - 그날 마지막 불의 바람 방향
+  - 대피 동굴 식량의 양
+  deja_vu: none
+hard_rules:
+- 탈주라는 낱말을 쓰지 않는다
+- 사망자 룬 명단을 먼저 보여 주지 않는다
+on_death: 마지막 불이 꺼져 울음 고개를 넘는 무리가 길을 잃는다. 시그리드가 동생의 룬을 영영 받지 못한다.
+story_seeds:
+- 에이나르가 살아 있다는 소식 한 줄이 잉에와 시그리드를 한곳으로 부른다 — 서리 길이 닫히기 전에는 불가능하다.
+- 잉에가 해빙월에 새기는 룬은 첫 무리의 날짜다. 그 룬을 지우거나 바꾸면 무리가 다른 날에 고개를 넘는다.

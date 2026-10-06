@@ -1,0 +1,119 @@
+# 지역 생성 키트 — 녹테른 저택·혈목장 (25_REGION_KITS.md). 첫 갈증 성, 그림자장미 저택, 일곱 우리(붉은·하얀·장미·검은성배·흑수정·침묵종·고요물), 밤 부두가 이것으로 태어난다.
+# 원천: REGIONS §7 (녹테른 밤의 영지), fac_nocturne(관습·법·위계), fac_scale_council 참조, docs/world/people/nocturne.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_nocturne.law / customs / ranks 를 본다. 여기에는 '녹테른 영지에만 있는 재료'(밤의 일과, 피 표, 번호와 혈통 계보, 크릭 목동의 울타리, 갈증의 밤, 맑은 날)를 더한다.
+# 인간은 이곳에서 굶지 않는다 — 굶주림이 없다는 것이 이 키트의 공포다. 일과는 해 뜰 때 시작하고 녹테른은 해 지고 일어난다. 두 일과가 해 질 녘 한 시간 겹친다.
+id: kit_nocturne_estate
+applies_to: [녹테른 밤의 영지, 첫 갈증 성(흑성 아르네스), 혈목장 일곱 우리, 그림자장미 저택, 세렌 밤 부두, 공물 길]
+reuses: []
+faction_refs: [fac_nocturne, fac_nameless, fac_swamp_hags, fac_light, fac_scale_council, fac_eldar]
+day_rules:
+  - {id: dr_sun, rule: "해가 나는 날 녹테른은 성 밖으로 나오지 않는다 — 맑은 날은 탈출의 날(순찰 없음, 크릭 목동만). 연 흐림 280일"}
+  - {id: dr_dusk, rule: "해 질 녘 한 시간(18:00~19:00)은 인간이 우리로 돌아오고 녹테른이 깨어나는 겹침. 이 시각 우리 입구에 목동이 선다"}
+  - {id: dr_bleed, rule: "채혈은 밤. 주 1회 순번(붉은 우리는 10일에 1회, 문서마다 6주에 1회). 피 표(나무패)로 횟수를 센다"}
+  - {id: dr_thirst_night, rule: "긴밤월 15일 갈증의 밤 — 모든 녹테른이 깨어 있고 경비 최고. 인간은 우리 안에서 촛불을 끄고 숨을 죽인다"}
+names:
+  녹테른:
+    # 가문 이름 + 가문 별칭(붉은달, 핏빛유리, 그림자장미, 검은성배, 재의 잔, 흑수정, 침묵종, 고요물). 엘다르의 이름 소리가 남아 있으나 'ㄹ' 받침과 모음이 짧게 닫힌다. 엘다르였음을 상기시키는 말은 금기다.
+    male: [모르데카이, 알라리크, 카르논, 카시미르, 발타사르, 사일라스, 마렌디스, 마르시우스, 아드리엘, 세오도르, 에두아르트, 라자르]
+    female: [세실, 엘로이즈, 바실리사, 이세르다, 오렐리아, 알렉시아, 카트린, 이졸레, 미네르바]
+    house_epithets: [붉은달, 핏빛유리, 그림자장미, 검은성배, 재의 잔, 흑수정, 침묵종, 고요물, 붉은잔, 열한째밤]
+    epithet_rule: "이름 + 가문 별칭(카시미르 재의 잔). 갈증 칭호('열한째밤', '붉은잔')는 굶주림에서 돌아온 자나 첫 잔의 원로만 쓴다. 인간 앞에서 이름은 밝히지 않고 직위로 불린다"
+    age_rule: "녹테른은 수명이 길고(1,000~3,500세) 갈증이 지나치면 나이보다 몸이 먼저 무너진다. 30일 굶주리면 이성이 흐려지고 90일이면 짐승이 된다"
+  인간:
+    # 혈목장 인간에게는 이름이 없다. 번호와 혈통 계보('붉은 혈통 7대 12번')로만 불린다. 이름은 인간끼리 속삭이는 것이 전부이며 이름을 주면 마시기 어려워진다(녹테른 금기).
+    number_rule: "혈통 계보(색) + 대수 + 번호 (붉은 혈통 7대 12번, C-17은 검은성배 17번). 하얀 우리는 흰 혈통 + 열두 번째 아이 같은 서수"
+    whisper_name_male: [하인, 얀, 벤, 루드, 에곤, 팀, 니클, 이르, 오토, 칼]
+    whisper_name_female: [그레타, 마리안, 헤트, 우르술라, 로자, 안나, 클라라, 일제, 베아, 리나]
+    blood_ticket_rule: "피 표(나무패)는 채혈 횟수의 기록이다. 많을수록 서열이 높고 특식을 받는다. 글자가 아니라 홈의 수라 글자 금지에 걸리지 않는다"
+    nickname_rule: "인간끼리는 몸의 특징·일·꿈 이야기로 별명을 만든다 (흉터목, 쑥 노파, 열둘째). 진짜 이름은 우리 안에서도 속삭임으로만"
+    servant_rule: "저택·성의 인간 하인은 이름 대신 일(집사·시종)로 불리고 가문 이름이 아닌 저택 이름을 쓴다 (장미 저택의 오르페)"
+  크릭:
+    # 목동·하인. 이름은 짧고 소리 나며 하는 일이 붙는다. 울타리 혀(목동장), 열쇠꾼, 울타리 지기, 정원지기.
+    male: [즈라그, 핍스, 칙, 딱, 쥐, 삑, 소크, 드릭, 쿠즈, 틱]
+    female: [미크, 핍, 니아, 소프, 제카, 치르]
+    epithet: [울타리 혀, 열쇠꾼, 나무패 지기, 빗물, 쑥 곁, 횃불, 끈, 딱지]
+  아에리:
+    # 박쥐날개 아에리. 전령·공중 감시. 이름은 바람 소리를 닮는다.
+    male: [베스퍼, 노크티스, 바일, 세로]
+    female: [타일라, 녹타, 에오라]
+    epithet: [밤날개, 천장지기, 매달린]
+classes:            # 영지 인구 (REGIONS §7.4): 녹테른 약 1,100 · 크릭 약 2,500 · 인간 약 25,000
+  녹테른 귀족: 0.011
+  녹테른 하급: 0.028
+  갈증받이·사냥꾼: 0.004
+  크릭 목동·하인: 0.088
+  혈목장 인간: 0.80
+  하얀 우리 선별 육종: 0.043
+  저택·성 인간 하인: 0.015
+  굶주린 자들: 0.001
+  아에리 전령: 0.002
+jobs:
+  - {id: pen_runner, name: 운동·달리기 인간 (붉은 우리), class: 혈목장 인간, race: 인간, weight: 24, schedule: sch_pen_human}
+  - {id: vineyard_hand, name: 포도밭 일손, class: 혈목장 인간, race: 인간, weight: 18, schedule: sch_pen_vineyard}
+  - {id: feed_hall_worker, name: 배급 홀 인간, class: 혈목장 인간, race: 인간, weight: 6, schedule: sch_pen_feed}
+  - {id: pen_child, name: 우리 아이, class: 혈목장 인간, race: 인간, age: [4, 14], weight: 8, schedule: sch_pen_child}
+  - {id: pen_elder, name: 노년 인간 (피 표가 가득 찬), class: 혈목장 인간, race: 인간, age: [52, 68], weight: 4, schedule: sch_pen_elder}
+  - {id: white_pen_human, name: 하얀 우리 선별 육종 인간, class: 하얀 우리 선별 육종, race: 인간, weight: 10, schedule: sch_white_pen}
+  - {id: manor_servant, name: 저택·성 인간 하인, class: 저택·성 인간 하인, race: 인간, weight: 4, schedule: sch_manor_servant}
+  - {id: krik_herder, name: 크릭 목동, class: 크릭 목동·하인, race: 크릭, weight: 10, schedule: sch_krik_herder}
+  - {id: krik_key, name: 열쇠꾼·울타리 지기, class: 크릭 목동·하인, race: 크릭, weight: 3, schedule: sch_krik_key}
+  - {id: krik_garden, name: 정원지기 크릭 (장미·온실), class: 크릭 목동·하인, race: 크릭, weight: 1, schedule: sch_krik_garden}
+  - {id: nocturne_noble, name: 녹테른 귀족 (잔의 가문), class: 녹테른 귀족, race: 녹테른, weight: 2, schedule: sch_noble}
+  - {id: nocturne_junior, name: 하급 녹테른 (감독·시음), class: 녹테른 하급, race: 녹테른, weight: 4, schedule: sch_junior}
+  - {id: thirst_bearer, name: 갈증받이 사냥꾼 (반쯤 전수된 인간), class: 갈증받이·사냥꾼, race: 인간, weight: 2, schedule: sch_hunter}
+  - {id: bat_courier, name: 박쥐날개 아에리 전령, class: 아에리 전령, race: 아에리, weight: 1, schedule: sch_bat_courier}
+schedules:          # at = 정착지 틀의 역할(role). 인간은 낮, 녹테른은 밤
+  sch_pen_human:     [{days: all, from: "05:30", to: "06:30", at: pen_barracks, doing: 해 뜰 때 기상 — 점호와 피 표 확인}, {days: all, from: "06:30", to: "09:00", at: exercise_ground, doing: 의무 달리기 — 피를 '좋게' 하는 운동, outdoor: true, rain: {at: feed_hall, doing: 배급 홀 처마 밑에서 몸을 푼다}}, {days: workday, from: "09:00", to: "12:30", at: vineyard, doing: 가벼운 포도밭 일 — 붉은 고기와 포도로 몸을 채운다, outdoor: true}, {days: all, from: "12:30", to: "13:30", at: feed_hall, doing: 붉은 고기·간·콩 점심}, {days: workday, from: "13:30", to: "18:00", at: vineyard, doing: 포도밭 일, outdoor: true}, {days: all, from: "18:00", to: "19:00", at: pen_barracks, doing: 우리로 귀환 — 문 앞에 목동이 선다, fixed: true}, {days: all, from: "19:00", to: "20:30", at: feed_hall, doing: 저녁 식사}, {days: "weekday:[1]", from: "21:00", to: "23:00", at: bleed_shed, doing: 채혈 순번 — 나무패에 홈 하나}, {days: all, from: "21:30", to: "05:00", at: pen_barracks, doing: 잔다 — 촛불은 일찍 끈다}]
+  sch_pen_vineyard:  [{days: all, from: "05:30", to: "06:30", at: pen_barracks, doing: 기상 점호}, {days: all, from: "06:30", to: "09:00", at: exercise_ground, doing: 달리기, outdoor: true}, {days: workday, from: "09:00", to: "18:00", at: vineyard, doing: 혈포도 수확 — 포도를 따는 손이 붉다, outdoor: true, rain: {at: feed_hall, doing: 배급 홀에서 포도를 분류한다}}, {days: all, from: "18:00", to: "19:00", at: pen_barracks, doing: 우리로 귀환, fixed: true}, {days: all, from: "19:00", to: "20:30", at: feed_hall, doing: 저녁 식사}, {days: all, from: "21:30", to: "05:00", at: pen_barracks, doing: 잔다}]
+  sch_pen_feed:      [{days: all, from: "04:30", to: "06:30", at: feed_hall, doing: 큰 솥에 붉은 고기와 콩을 올린다}, {days: all, from: "06:30", to: "20:30", at: feed_hall, doing: 세 끼를 차린다 — 살찌우는 것이 목적이다}, {days: all, from: "20:30", to: "22:00", at: pen_barracks, doing: 우리로 돌아가 잔다}, {days: all, from: "22:00", to: "04:30", at: pen_barracks, doing: 잔다}]
+  sch_pen_child:     [{days: all, from: "06:00", to: "09:00", at: exercise_ground, doing: 아이들의 달리기 놀이, outdoor: true}, {days: workday, from: "09:00", to: "12:00", at: vineyard, doing: 포도 줍기, outdoor: true}, {days: all, from: "12:30", to: "13:30", at: feed_hall, doing: 점심}, {days: all, from: "14:00", to: "18:00", at: pen_barracks, doing: 우리 마당에서 논다 — 이름 없는 놀이}, {days: all, from: "19:00", to: "21:00", at: feed_hall, doing: 저녁}, {days: all, from: "21:00", to: "05:30", at: pen_barracks, doing: 잔다}]
+  sch_pen_elder:     [{days: all, from: "06:00", to: "09:00", at: exercise_ground, doing: 가볍게 걷는다 — 피 표가 가득 찬 몸으로}, {days: all, from: "09:00", to: "17:00", at: infirmary, doing: 회복 막사에서 채혈 뒤의 몸을 돌본다}, {days: all, from: "18:00", to: "21:00", at: pen_barracks, doing: 우리로 귀환, 저녁 식사}, {days: all, from: "21:00", to: "05:30", at: pen_barracks, doing: 잔다}]
+  sch_white_pen:     [{days: all, from: "06:00", to: "08:00", at: white_pen, doing: 깨끗하고 조용한 흰 막사에서 기상}, {days: all, from: "08:00", to: "12:00", at: white_garden, doing: 정원 산책 — 선별된 몸을 운동시킨다}, {days: all, from: "12:00", to: "13:00", at: white_pen, doing: 점심 — 가장 좋은 고기와 우유}, {days: all, from: "13:00", to: "18:00", at: white_garden, doing: 조용히 앉는다 — 꿈 이야기는 하지 않는다}, {days: all, from: "18:00", to: "21:00", at: white_pen, doing: 저녁과 채혈실 점검}, {days: all, from: "21:00", to: "06:00", at: white_pen, doing: 잔다}]
+  sch_manor_servant: [{days: all, from: "18:00", to: "19:00", at: manor, doing: 해 질 녘 기상 시중 — 주인이 일어나기 전 방을 정리}, {days: all, from: "19:00", to: "04:00", at: manor, doing: 밤 시중 — 잔과 촛불과 장부}, {days: all, from: "04:00", to: "09:00", at: servant_room, doing: 아침에 잠든다}, {days: all, from: "09:00", to: "17:00", at: servant_room, doing: 낮 잠과 낮 일 (주인이 잠든 사이 집을 닦는다)}]
+  sch_krik_herder:   [{days: all, from: "05:00", to: "06:00", at: herders_lodge, doing: 목동 점호 — 울타리 혀의 지시}, {days: all, from: "06:00", to: "18:00", at: exercise_ground, doing: 달리기·울타리 순찰 — 채찍과 호루라기, outdoor: true, rain: {at: herders_lodge, doing: 목동 숙소에서 비를 피한다}}, {days: all, from: "18:00", to: "19:00", at: pen_barracks, doing: 우리 입구에 서서 귀환을 센다, fixed: true}, {days: all, from: "19:00", to: "23:00", at: bleed_shed, doing: 채혈 헛간 경비}, {days: all, from: "23:00", to: "05:00", at: herders_lodge, doing: 목동 숙소에서 잔다}]
+  sch_krik_key:      [{days: all, from: "06:00", to: "18:00", at: fence, doing: 울타리 열쇠를 쥐고 문을 열고 닫는다, outdoor: true}, {days: all, from: "18:00", to: "19:30", at: pen_barracks, doing: 귀환 점호 — 열쇠를 잠근다, fixed: true}, {days: all, from: "20:00", to: "05:00", at: herders_lodge, doing: 열쇠를 베개 밑에 두고 잔다}]
+  sch_krik_garden:   [{days: all, from: "06:00", to: "17:00", at: manor_greenhouse, doing: 온실 화분과 장미 정원 — 수로 뚜껑을 점검한다}, {days: all, from: "17:00", to: "20:00", at: manor_greenhouse, doing: 장미 꽃잎을 수로 입구에 놓는다}, {days: all, from: "20:00", to: "05:00", at: servant_room, doing: 잔다}]
+  sch_noble:         [{days: all, from: "18:00", to: "19:30", at: manor, doing: 해 질 녘 기상 — 첫 잔}, {days: all, from: "19:30", to: "23:00", at: pen_overview, doing: 혈목장 순시 — 채혈을 참관한다}, {days: all, from: "23:00", to: "04:00", at: manor, doing: 장부와 서재}, {days: all, from: "04:00", to: "18:00", at: coffin_room, doing: 낮의 잠 — 맑은 날은 반드시 안에서}]
+  sch_junior:        [{days: all, from: "18:00", to: "20:00", at: tasting_room, doing: 시음 — 혈통별 피 맛을 기록한다}, {days: all, from: "20:00", to: "03:00", at: bleed_shed, doing: 채혈 감독}, {days: all, from: "03:00", to: "18:00", at: coffin_room, doing: 낮의 잠}]
+  sch_hunter:        [{days: all, from: "19:00", to: "04:00", at: pen_overview, doing: 사냥 — 탈주 흔적을 따른다, outdoor: true}, {days: all, from: "04:00", to: "09:00", at: hunter_post, doing: 사냥꾼 초소에서 쉬며 7일째 피를 받는다}, {days: all, from: "09:00", to: "19:00", at: hunter_post, doing: 낮 잠}]
+  sch_bat_courier:   [{days: all, from: "19:00", to: "04:00", at: tower, doing: 하늘을 돈다 — 공중 감시와 서신 전령, outdoor: true, rain: {at: tower, doing: 탑 천장에 매달려 비를 피한다}}, {days: all, from: "04:00", to: "19:00", at: tower, doing: 탑 천장에 거꾸로 매달려 잔다}]
+voices:
+  - {id: v_noble_court, name: 첫 잔의 가문 귀족, register: "피의 사슬 순서로 경어가 정해진다. 전수해 준 자에게 '언니시여/군주시여' + 하오체, 같은 줄기끼리 정중하되 한 문장마다 가시. 맥박을 듣고 상대의 거짓을 짚는다", tics: ["'밤이 깊기를.'", "'맥박이 말하는군.'"], use: [마르다(갈증), 잔, 맥박, 밤, 사슬, 피의 빚], avoid: [배고프다, 도둑, 시체, 엘다르, 이름(인간 앞에서)], sample: "밤이 깊기를. …맥박이 한 번 어긋났소. 지금 하신 말씀은 낮의 말이오."}
+  - {id: v_house_head, name: 혈목장 영주 (남작·영주), register: "장부와 혈통의 문법. 인간을 '번호'로, 크릭을 '목동'으로 부른다. 상급에게는 짧은 극존대", tics: ["'혈통 번호는?'"], use: [혈통, 번호, 등급, 은혈, 장부, 배당], avoid: [이름, 불쌍, 가축(인간 앞에서)], sample: "혈통 번호는? 번호 없는 입으로 말하지 마라. 장부에 없는 것은 먹을 수 없다."}
+  - {id: v_krik_herder, name: 크릭 목동, register: "짧고 호루라기 같은 말. 인간에게 반말과 채찍 소리, 녹테른에게 몸을 낮춘 존대. '울타리 혀'는 존대를 길게 한다", tics: ["'울타리!'", "'피 표는!'"], use: [울타리, 목동, 피 표, 운동, 넘다], avoid: [이름, 고맙다, 장미(입 밖으로)], sample: "울타리! 선 넘으면 하얀 우리다. 피 표는? 가져와라. 홈이 하나 모자란다."}
+  - {id: v_pen_human, name: 혈목장 인간, register: "목동 앞에서는 한 단어, 숫자로 답한다. 우리 안에서는 낮고 부드러운 반말, 이름을 속삭인다. '장미'는 은어", tics: ["'예, 번호.'", "'장미.'"], use: [번호, 피 표, 홈, 장미, 쑥, 촛불], avoid: [이름(목동 앞에서), 도망, 자유, 밖], sample: "예, 붉은 7대 12번. 피 표는 홈 열다섯입니다. …(속삭임) 장미. 오늘은 장미가 늦어."}
+  - {id: v_white_pen, name: 하얀 우리의 인간, register: "조용하고 깨끗한 말씨. 감정을 숨기는 훈련이 되어 있다. 꿈 이야기를 하지 않는다", tics: ["'조용히 지내고 있습니다.'"], use: [조용히, 깨끗하다, 흰, 괜찮다], avoid: [꿈, 밖, 엘다르, 이름], sample: "조용히 지내고 있습니다. 먹는 것도 입는 것도 괜찮습니다. …꿈은 안 꿉니다."}
+  - {id: v_manor_servant, name: 저택의 인간 하인, register: "낮에는 입을 열지 않고 밤에 직책으로만 대답한다. 문장 앞에 '주인께서'를 단다. 장부 얘기를 거의 숫자로만 한다", tics: ["'주인께서는…'"], use: [주인, 장부, 잔, 촛불, 낮], avoid: [이름, 도망, 장미(하인이 입에 올리면 안 됨)], sample: "주인께서는 해 지기 전에는 말씀이 없으십니다. 장부는 스물일곱 장. 오늘 밤은 서른."}
+  - {id: v_hunter_bearer, name: 갈증받이 사냥꾼, register: "짧은 명령형. 인간을 '번호'로, 목표를 '냄새'로 부른다. 주인에게는 한 박자 지연된 복종", tics: ["'냄새가 난다.'"], use: [냄새, 흔적, 7일, 피, 사냥, 목표], avoid: [이름, 용서, 인간(자기 자신)], sample: "냄새가 난다. 이쪽이다. 7일째 피 전에 끝낸다."}
+  - {id: v_bat_courier, name: 박쥐날개 전령, register: "높고 빠른 말투, 바람 소리 섞인 존대. 모든 것을 '위에서 본 것'으로 말한다", tics: ["'위에서 보면…'"], use: [위에서, 바람, 날개, 전령, 하늘], avoid: [땅, 이름, 배신자], sample: "위에서 보면 행렬이 열둘이었습니다. 위에서 보면 아무것도 아닌 것이 땅에선 사람이더군요."}
+temperaments: [냉정, 갈증, 체념, 겁, 고집, 순응, 집착, 영리, 호기심, 비밀, 과묵, 다정, 오만, 광기, 충직, 조심, 부끄러움]
+city_customs:       # 법·관습 본문은 fac_nocturne.law / customs
+  - "인사는 손바닥을 잔 모양으로 모아 가슴에 대고 '밤이 깊기를.' — 답은 '목마르지 않기를.' 인간은 낮에 말을 걸지 않는다"
+  - "인간에게 이름을 주지 않는다. 번호와 혈통 계보로만 부른다 — 이름을 주면 마시기 어려워진다(녹테른 금기)"
+  - "인간은 글자를 모른다. 피 표는 글자가 아니라 홈이다"
+  - "갈증의 밤(긴밤월 15일)에는 루멘의 공물 40명 + 용좌령 매입 등 300명이 도착한다. 우물 순례는 전날 밤(14일)"
+  - "해가 나는 날 녹테른은 성 밖에 나오지 않는다. 맑은 날은 탈출의 날이다"
+  - "장미는 인간끼리의 은어다 — '장미를 따라가라' = 세실의 탈출로. 쑥은 피를 묽게 하는 약초(회색 쑥)다"
+  - "낮에 한 맹세는 거짓으로 친다. 모든 계약은 밤에 다시 확인된다"
+settlement_templates:
+  - id: tpl_nocturne_pen
+    name: 혈목장 (붉은 우리형)
+    grid: {w: 1600, h: 1200}
+    roles:
+      tribute_gate:   {count: [0, 1], place: "공물 길이 들어오는 북쪽 끝", access: staff, name: 공물 문}
+      fence:          {count: [1, 1], place: "우리 둘레 흰 울타리", access: staff, name: 흰 울타리}
+      exercise_ground: {count: [1, 1], place: "우리 가운데 넓은 터", access: serf, name: 운동장}
+      pen_barracks:   {count: [3, 12], place: "운동장 둘레", access: serf, name: 우리 막사, locked: "21:30-05:00"}
+      feed_hall:      {count: [1, 2], place: "운동장 곁", access: serf, name: 배급 홀}
+      vineyard:       {count: [1, 3], place: "우리 바깥 남쪽", access: serf, name: 검은 포도밭}
+      bleed_shed:     {count: [1, 2], place: "막사 뒤", access: staff, name: 채혈 헛간}
+      infirmary:      {count: [0, 1], place: "채혈 헛간 곁", access: staff, name: 회복 막사}
+      herders_lodge:  {count: [1, 1], place: "우리 입구", access: staff, name: 크릭 목동 숙소}
+      manor:          {count: [1, 1], place: "우리 뒤 언덕", access: owner, name: 영주 저택}
+      tasting_room:   {count: [0, 1], place: "저택 안", access: owner, name: 시음실}
+      coffin_room:    {count: [1, 1], place: "저택 지하", access: owner, name: 낮의 방}
+      white_pen:      {count: [0, 1], place: "붉은 우리 서쪽 담 너머", access: secret, name: 하얀 우리}
+      hunter_post:    {count: [0, 1], place: "우리 바깥 길가", access: staff, name: 사냥꾼 초소}
+    outer:
+      castle:         {hours: [10, 14], name: 첫 갈증 성}
+      tribute_road:   {hours: [20, 50], name: 공물 길}

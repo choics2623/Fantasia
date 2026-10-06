@@ -1,0 +1,208 @@
+id: npc_adriel
+name: 아드리엘 핏빛유리
+aka:
+- 붉은 우리 영주
+tier: A
+type: living
+race: 녹테른
+subrace: 밤의 귀족
+sex: 남
+age: 1600
+region: 녹테른 밤의 영지
+home: 붉은 우리 영주 저택 낮의 방
+job: 붉은 우리 영주 — 최대 혈목장 인간 6,800을 맡은 붉은 달 가문의 영주
+rank: 나중의 잔
+summary: 장부가 크릭 목동이 세는 인간 수보다 일곱 많다는 것을 알면서 그 일곱이 '병사'라고 믿기로 한 영주
+source: docs/world/people/nocturne.md
+life:
+- year: -1288
+  age: 0
+  event: 밤의 귀족으로 태어남 (AS -1288)
+- year: 150
+  age: 1438
+  event: 붉은 달 가문의 시음 견습
+- year: 213
+  age: 1501
+  event: 맹약회의 이후 붉은 우리 확장에 참여함
+- year: 290
+  age: 1578
+  event: 바실리사에게 붉은 우리 영주로 임명됨
+- year: 309
+  age: 1597
+  event: 장부가 처음 적자를 냄 — 원인을 확인하지 않기로 정함
+- year: 311
+  age: 1599
+  event: 7번 막사 마룻바닥 아래 쑥을 발견하고도 모르는 척함
+- year: 312
+  age: 1600
+  event: 장부와 크릭 숫자표의 차이가 일곱임을 직감함 (낙엽월 1일 기준)
+appearance:
+- 투명한 유리 같은 손가락
+- 붉은 보석 단추
+- 장부를 넘길 때 입술이 마른다
+smell: 붉은 포도주와 향
+voice_sound: 윤기 있지만 약간 떨리는 목소리
+personality:
+  disposition:
+    용기: 0
+    자비: -50
+    정직: -20
+    신앙: 40
+    탐욕: 60
+    충성: 60
+  temperament:
+  - 겁
+  - 탐욕
+  - 회피
+  - 예의
+  habits:
+  - 장부를 넘기며 입술을 핥는다
+  - 맑은 날은 낮의 방에서 나오지 않는다
+  - 숫자를 말할 때 목소리가 한 박자 빨라진다
+  values: 가주의 신임. 장부의 균형
+  fears:
+  - 바실리사가 장부를 직접 열어 보는 것
+  - 일곱의 진실
+  - 크릭 숫자표
+  desires:
+    short: 붉은 우리 장부의 적자를 갈증의 밤 전에 줄이는 것
+    long: 가주 바실리사의 눈 밖에 나지 않는 것
+voice:
+  register:
+    to_superior: '가주에게: 극존대, 눈을 낮춘다'
+    to_equal: '가문 귀족에게: 정중하고 불안하다'
+    to_inferior: '크릭 목동에게: 짧은 명령'
+    to_player_default: '플레이어에게: 정중하고 불안하다. 장부 이야기에 입술이 마른다'
+  tics:
+  - '''장부는 거짓을 말하지 않소.'''
+  - 입술 핥기
+  use:
+  - 장부
+  - 배당
+  - 적자
+  - 병사
+  - 일곱
+  - 가주
+  avoid:
+  - 가축
+  - 일곱(먼저)
+  - 쑥
+  length: 정중하고 중간 길이. 숫자 이야기에서 빨라진다
+  samples:
+  - situation: 첫 만남
+    line: 밤이 깊기를. …혈통 번호는? 아, 아니, 번호가 없어도 되오. 이쪽으로 앉으시오.
+  - situation: 호의
+    line: 일곱이 병사라는 건 장부가 말하오. 장부는 거짓을 말하지 않소 — 그렇소?
+  - situation: 적대
+    line: 바실리사 님의 명이라 하셨소? 그렇다면 증서를 보시오. 증서 없는 명은 밤의 말이오.
+  - situation: 거래
+    line: 장부를 정리해 주는 이에게는 붉은 우리 배당 한 푼도 아끼지 않겠소. 정리의 범위는 묻지 마시오.
+  - situation: 거짓말할 때
+    line: 7번 막사는 점검했소. (입술을 핥는다) 문제는 없었소.
+  - situation: 위기
+    line: 문을 닫아라! 목동은 어디 있느냐! 장부를 가져와라, 지금 즉시!
+  - situation: 슬픔
+    line: 장부는 완전하지 않소. 완전해야 하오. 완전하지 않으면 내가 불완전해지는 것이오.
+  - situation: 분노
+    line: 일곱이라고 했소? 그 숫자를 입에 올리는 입은 붉은 달의 입이 아니오.
+  - situation: 회귀자를 의심할 때
+    line: 맥박이 일곱 번째 박자에서 어긋났소. 일곱이라는 숫자와 맞는군. 어떻게 알았소?
+  - situation: 마음을 열었을 때
+    line: 일곱은 병사가 아니오. 나도 아오. 그러나 알면 책임이 내게 오니 모르는 쪽을 택했소. 내 잘못이 아니라 장부의 잘못이오.
+schedule:
+  아침: 낮의 방
+  낮: 시음
+  저녁: 채혈 참관과 순시
+  밤: 장부와 숫자 점검
+places:
+- 붉은 우리 영주 저택
+- 시음실
+- 순시 언덕
+- 채혈 헛간
+knows:
+- fact_p2nc_adriel_ledger_gap
+- fact_p2nc_adriel_knows_wormwood
+- fact_p2nc_basilisa_adriel_leash
+- fact_nc_ledger_mismatch
+hides:
+- fact: fact_p2nc_adriel_ledger_gap
+  reveal_when: 신뢰 65 이상이고 크릭 숫자표를 거론했을 때, 또는 바실리사의 압력에서 보호를 약속했을 때
+  cover: '''장부는 완전하오''라고만 한다. 입술을 핥는다'
+- fact: fact_p2nc_adriel_knows_wormwood
+  reveal_when: 신뢰 70 이상이고 회복 막사 이야기를 정중히 꺼냈을 때
+  cover: '''막사의 풀은 약일 뿐이오''라고 말한다'
+relations:
+- to: npc_basilisa
+  type: 가주
+  like: -10
+  trust: -30
+  visibility: 공개
+  memo: 목줄을 쥔 이
+  words: 나를 영주로 앉힌 사람. 앉히는 이는 내릴 줄도 안다
+- to: npc_zrag
+  type: 목동장
+  like: 10
+  trust: 15
+  visibility: 공개
+  memo: 숫자를 가진 크릭
+  words: 장부보다 숫자표를 믿는 목동. 그가 두렵다
+- to: npc_cecile
+  type: 책임을 돌릴 대상
+  like: -40
+  trust: -60
+  visibility: 공개
+  memo: 사라진 인간의 원흉으로 지목
+  words: 내 장부를 갉는 그림자장미. 그녀가 책임지면 좋겠다
+- to: npc_hedwig
+  type: 쑥 탕약의 노파
+  like: 0
+  trust: -10
+  visibility: 일방
+  memo: 알면서 눈감는다
+  words: 약초를 파는 노파로 안다. 그 이상은 모른 척
+- to: npc_chik_tally
+  type: 기록판 서기
+  like: 0
+  trust: 5
+  visibility: 공개
+  memo: 홈의 숫자
+  words: 홈이 말하는 대로 장부를 맞춘다
+toward_player: 정중하고 불안하다. 장부 이야기를 하면 입술이 마른다
+persuade:
+  likes:
+  - 장부와 맞는 숫자 (+25)
+  - 바실리사로부터의 보호 (+15)
+  - 크릭 숫자표를 직접 보지 않는 배려 (+10)
+  hates:
+  - '''일곱''이라는 숫자'
+  - 크릭 숫자표 이야기
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 맑은 날은 낮의 방에서 나오지 않는다
+  - 저녁 시음 뒤 채혈을 참관한다
+  - 7번 막사 점검 보고를 직접 읽지 않는다
+  drift:
+  - 순시 언덕에 서는 시각 (30분 안팎)
+  deja_vu: none
+hard_rules:
+- 일곱이라는 숫자를 먼저 말하지 않는다
+- 쑥을 입에 올리지 않는다
+- 낮에 맹세하지 않는다
+on_death: 붉은 우리 장부 책임이 비어 바실리사가 직접 우리를 접수한다. 일곱의 진실이 크릭 서기 칙에게 넘어간다
+story_seeds:
+- 일곱을 확인하려면 크릭 숫자표가 필요하다. 아드리엘은 확인하는 순간 책임을 지게 되므로 직접 확인하지 않는다 — 대신 플레이어가 확인해 주길 바랄 수도 있다
+- 바실리사가 장부를 열기 전에 장부를 고치는 일을 부탁할 수 있다
+- 맑은 날 그는 저택 밖으로 나오지 못한다 — 그날이 우리의 약한 틈이다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_later_cup
+  office: null
+  since: 290
+  loyalty: 60
+  public: true
+  cell: null
+truths: []

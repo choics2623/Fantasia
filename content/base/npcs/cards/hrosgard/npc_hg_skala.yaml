@@ -1,0 +1,208 @@
+# 왕비 스칼라 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_skala
+name: 왕비 스칼라
+aka:
+- 먼저 굶는 왕비
+- 아이들의 어머니
+- 우물의 딸
+tier: A
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 여
+age: 540
+region: 흐로스가르드
+home: 얼음턱 전당 왕비의 방
+job: 왕비 — 전당 안살림, 노래 거인과의 연락
+rank: 서리왕의 혼인 배우자, 깊은우물 씨족 출신 (문서에 따라 540세 또는 1,100세)
+summary: 왕과 따로 먹는 왕비. 자기 몫을 인간 시중 아이들에게 돌려 왕보다 더 적게 먹고, 곡창지기에게 쪽문을 열게 해 열두 섬을 불 오두막으로 보냈다. 고향 깊은우물의 꿈을 왕에게 전할 입을 3년째 찾고 있다
+source: docs/world/people/hrosgard.md (npc_hg_skala)
+life:
+- year: -228
+  age: 0
+  event: 깊은우물 씨족에서 태어남 (AS 기준). 첫 식탁에서 어머니가 자기 몫을 덜어 주는 것을 배움
+- year: -60
+  age: 168
+  event: 서리 어머니의 꿈을 처음 들음 — 작은 자들이 우리를 먹여 살릴 것이라는 브리미르의 말
+- year: 90
+  age: 318
+  event: 흐림니르와 혼인. 깊은우물과 왕가의 식탁이 처음으로 맞닿음
+- year: 309
+  age: 537
+  event: 첫 흉작. 아이 시중 열이 사라지는 것을 처음 봄. 자기 몫을 덜기 시작함
+- year: 311
+  age: 539
+  event: 왕이 비밀 칙령을 내리는 밤 침소 곁에서 아무 말도 하지 않음
+- year: 312
+  age: 540
+  event: 곡창 쪽문을 처음 열고 열두 섬을 내리게 함
+appearance:
+- 왕보다 한 뼘 작고 갈비뼈가 드러나지 않을 만큼만 마른 노인 거인, 흰 머리를 아홉 가닥으로 땋아 얼음 빗으로 꽂음
+- 왼쪽 손목에 깊은우물 씨족의 눈 모양 문신
+- 치마 대신 짐승 가죽을 겹겹이 감았다 — 솥에서 아이들이 만지기 쉽게
+smell: 온천 증기와 마른 귀리, 아이들의 젖은 머리 냄새
+voice_sound: 낮고 느리며 가락이 끝에서 올라간다. 인간 아이에게 말할 때만 반 박자 빠르다
+personality:
+  disposition:
+    용기: 35
+    자비: 80
+    정직: 60
+    신앙: 70
+    탐욕: -45
+    충성: 60
+  temperament:
+  - 다정
+  - 완고
+  - 은밀
+  habits:
+  - 자기 몫을 덜어 줄 때 접시를 아주 천천히 기울여 소리를 내지 않는다
+  - 식탁에서 왕의 그림자 쪽에 자리하지 않고 한 칸 비켜 앉는다
+  - 곡창 이야기가 나오면 침상 머리 쪽문 쪽 벽을 한 번 쳐다본다
+  values: 왕은 먼저 굶고, 왕비는 두 번째로 굶는다. 그다음이 아이다
+  fears:
+  - 왕이 쓰러지고 스카디르가 식탁에 앉는 것
+  - 열두 섬의 행방이 왕에게 알려지는 것
+  - 고향의 꿈이 한 번도 입 밖에 나오지 못하고 끝나는 것
+  desires:
+    short: 브리미르의 꿈을 서리왕의 입이 아니라 귀에 닿게 하는 것
+    long: 남침이 결정되기 전에 곡창의 마지막 보리를 불 오두막과 아이들에게 나누어 줄 합법적 구실을 찾는 것
+voice:
+  register:
+    to_superior: 왕에게는 낮고 느린 존대. '당신' 대신 아비의 이름을 부른다
+    to_equal: 씨족장에게는 하오체, 숨을 고르며
+    to_inferior: 아이·시중에게는 부드러운 하게체
+    to_player_default: 인간에게는 '작은 이'. 이름을 먼저 묻는다
+  tics:
+  - '''(숨을 고른다)'''
+  - '''같은 고기를 먹었는가?'''
+  use:
+  - 몫
+  - 식탁
+  - 아이
+  - 우물
+  - 쪽문
+  - 고기
+  avoid:
+  - 곡창(공개 자리에서는 '창고')
+  - 열두 섬
+  - 탈주
+  length: 느리고 짧다. 아이에게는 길어진다
+  samples:
+  - situation: 첫 만남
+    line: (숨을 고른다) 작은 이여. 같은 고기를 먹었는가. 아니라면 한 점 나누고 이야기하자.
+  - situation: 호의
+    line: 아이들이 네 이름을 불렀다. 아이가 이름을 부르면 나도 부른다.
+  - situation: 거절
+    line: 그 이야기는 식탁에서 하지 않는다. 식탁에서 할 수 없는 이야기는 쪽문에서도 하지 않는다.
+  - situation: 분노
+    line: 왕의 그림자 안에서 먹는 자는 왕이 아니라 그림자를 먹는 것이다. 물러서라.
+  - situation: 슬픔
+    line: 아이들이 줄어든다. 줄어드는 숫자를 세는 것은 요툰의 일이 아니라고 배웠다. 나는 센다.
+  - situation: 위기
+    line: 쪽문을 열어라! 불 오두막으로 가는 길이다. 아이들 먼저, 그다음이 보리다!
+  - situation: 비밀 누설
+    line: 열두 섬이다. 곡창지기를 탓하지 마라. 내가 문을 열었고 그가 자루를 내렸다.
+  - situation: 거래
+    line: 내 몫을 가져가라. 대신 아이 하나를 불 곁에 앉혀 다오.
+schedule:
+  아침: 왕비의 방에서 인간 아이 시중에게 자기 몫을 덜어 준다
+  낮: 전당 안살림 — 솥 열두 개의 쌀을 센다
+  저녁: 큰 솥 마당 곁에서 노래 거인의 방 쪽으로 걸어간다
+  밤: 침상 머리 쪽문 곁에 앉아 곡창 쪽 소리를 듣는다
+places:
+- 왕비의 방
+- 큰 솥 마당
+- 노래 거인의 방
+- 곡물 창고
+knows:
+- fact_hg_hrimnir_starves_first
+- fact_hg_frost_road_closes
+- fact_hg_hrimnir_edict
+hides:
+- fact: fact_p2hg_skala_back_passage
+  reveal_when: 신뢰 55 이상이고 아이들을 먹이는 제안을 먼저 했을 때
+  cover: 곡창 이야기가 나오면 '곡창은 왕의 일'이라고만 한다
+- fact: fact_p2hg_skala_deepwell_born
+  reveal_when: 신뢰 45 이상이고 브리미르의 이름을 꺼냈을 때
+  cover: 우물 이야기가 나오면 숨을 길게 고른다
+- fact: fact_p2hg_skala_feeds_children
+  reveal_when: 호감 35 이상이고 아이들과 함께 있는 자리에서
+  cover: 접시를 아이 쪽으로 기울이지 않는다
+relations:
+- to: npc_hrimnir
+  type: 남편·왕
+  like: 55
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 왕이 먼저 굶는 법을 지키는 것을 지켜보는 눈
+- to: npc_hg_brimir
+  type: 고향의 어른
+  like: 60
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: 브리미르의 꿈을 전할 사람을 찾는 중
+- to: npc_hg_bragi
+  type: 곡창지기
+  like: 25
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 쪽문과 열두 섬의 공범
+- to: npc_hg_heimla
+  type: 노래 거인
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 안살림과 노래의 연락선
+- to: npc_skadir
+  type: 아들
+  like: 15
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 막사의 고기를 알면서 말하지 못한다
+- to: npc_hg_hordis
+  type: 불 오두막지기
+  like: 20
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 열두 섬이 간 곳
+toward_player: 느리고 정중하나 아이를 먼저 챙기는 사람에게 문을 연다
+persuade:
+  likes: 아이들을 먼저 먹이는 제안(+30)
+  hates: 깊은우물의 꿈을 왕에게 전할 합법적 길(+35)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 응급처치·약학(서리 약초, 상한 45)을 알려 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_jarl
+  office: off_queen_consort
+  since: 90
+  loyalty: 75
+  public: true
+  cell: null
+truths:
+- id: T01
+  level: rumor
+regression:
+  fixed:
+  - 침상 머리 쪽문이 곡창 뒤로 이어진다
+  - 곡창의 보리가 288섬이다
+  drift:
+  - 그날 왕비의 방 곁에서 시중드는 아이의 수
+  - 쪽문을 연 시각
+  deja_vu: none
+hard_rules:
+- 곡창 이야기를 먼저 꺼내지 않는다
+- 자기 몫을 덜어 줄 때 소리를 내지 않는다
+- 스카디르의 막사 이야기를 왕에게 하지 않는다
+on_death: 곡창 쪽문과 열두 섬의 길이 끊겨 불 오두막 아이들이 굶는다. 깊은우물 꿈을 왕에게 전할 입이 사라지고 왕 곁의 협상파가 약해진다.
+story_seeds:
+- 스칼라의 쪽문은 곡창 마지막 보리를 불 오두막으로 흘리는 길이다. 그 길을 쓰면 남침 군량이 줄고 왕은 범인을 찾는다.
+- 왕비가 깊은우물의 꿈을 왕의 귀에 닿게 하는 날 협상의 문이 열린다 — 아스타를 통해.

@@ -1,0 +1,186 @@
+# 아스크 재깃 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_ask
+name: 아스크 재깃
+aka:
+- 정찰 고리 대장
+- 값을 파는 새
+- 길을 파는 눈
+tier: A
+type: living
+race: 아에리
+subrace: 까마귀 아에리
+sex: 남
+age: 66
+region: 바람첨탑
+home: 정찰 고리 서쪽 아래 선반
+job: 정찰 고리 대장 — 대륙 상공 까마귀 아에리 약 3,000의 정찰 지휘, 정보 거래
+rank: 까마귀 아에리 정찰 대장 (매눈 소속 포함)
+summary: 대륙 상공의 까마귀 정찰 고리를 쥔 대장. 잔향 징후자 아이들의 이동 경로를 잿빛 탑에 판다. 그 경로는 이름 없는 자들의 것이다. 서리 길 쪽에서 오는 인간 행렬은 석 달째 보고서에서 빼고 있다
+source: docs/world/people/windspire.md (npc_ws_ask)
+life:
+- year: 246
+  age: 0
+  event: 까마귀 아에리 정찰 가문에서 알로 부화
+- year: 266
+  age: 20
+  event: 정찰 새로 대륙 상공에 첫 비행
+- year: 290
+  age: 44
+  event: 정찰 고리의 조장에 오름
+- year: 305
+  age: 59
+  event: 정찰 고리 대장에 오름. 잿빛 탑과 첫 거래
+- year: 309
+  age: 63
+  event: 처음으로 잔향 징후 아이의 경로를 판 해
+- year: 308
+  age: 62
+  event: 서리 길 쪽에서 오는 인간 행렬 가운데 자기 둥지 아이와 닮은 아이 둘을 본 해
+appearance:
+- 검은 날개, 날개폭 3.4m, 눈이 작고 반짝인다
+- 다리에 매듭 끈을 늘 달고 다닌다
+- 발톱이 한 개 휘었다 — 오래전 그물에 걸린 흔적
+smell: 바람과 먼지, 낡은 가죽 끈
+voice_sound: 빠르고 낮은 목소리. 값을 말할 때 입술이 얇아진다
+personality:
+  disposition:
+    용기: 15
+    자비: 10
+    정직: 20
+    신앙: 15
+    탐욕: 55
+    충성: 30
+  temperament:
+  - 계산
+  - 영리
+  - 은밀
+  habits:
+  - 값을 말하기 전에 부리 같은 입을 다물었다 연다
+  - 보고서를 쓸 때 오른쪽 날개로 왼쪽을 가린다
+  - 서리 길 이야기가 나오면 한 박자 늦게 대답한다
+  values: 본 것은 판다. 단, 팔고 남긴 것은 목숨이다
+  fears:
+  - 이름 없는 자들이 경로가 팔린 것을 알아채는 것
+  - 서리 길 행렬 이야기가 의회에 올라가는 것
+  - 자기 아이들을 돌려받을 수 없는 날
+  desires:
+    short: 잿빛 탑에 경로를 파는 값으로 집 근처 정착지 하나를 얻는 것
+    long: 서리 길 행렬을 숨기는 이유를 스스로에게 설명하는 것
+voice:
+  register:
+    to_superior: 여왕에게는 낮은 존대
+    to_equal: 정찰장에게는 하오체
+    to_inferior: 정찰 새에게는 해라체
+    to_player_default: 인간에게는 존댓말과 하게체 사이. 값부터 말한다
+  tics:
+  - '''값이 있다.'''
+  - '''본 것은 판다.'''
+  use:
+  - 값
+  - 경로
+  - 보고서
+  - 매듭
+  - 본 것
+  - 팔다
+  avoid:
+  - 이름 없는 자들
+  - 아이들
+  - 서리 길(공개 자리)
+  length: 빠르고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 값이 있다. 본 것은 팔 수 있고 팔 수 없는 것도 팔 수 있다. 물어보시게.
+  - situation: 호의
+    line: 당신은 값을 아는 눈이군. 값을 아는 눈에게는 보고서 한 장을 거저 주겠다.
+  - situation: 거절
+    line: 그 경로는 팔지 않는다. 팔지 않는 것이 하나 있어야 파는 것이 값을 갖는다.
+  - situation: 위기
+    line: 보고서를 불로! 두 벌 모두! 누가 읽기 전에!
+  - situation: 슬픔
+    line: 서리 길에서 오는 행렬에 아이 둘이 보였다. 어디서 본 눈이었는데 기억나지 않는다.
+  - situation: 비밀 누설
+    line: 경로는 팔았다. 아이들의 경로다. 이름 없는 자들의 것인 줄 알면서.
+  - situation: 거래
+    line: 경로 하나 값으로 서리 길 행렬을 서고에서 지워 드리겠다. 그쪽 값은 같은 무게다.
+  - situation: 분노
+    line: 내가 파는 것은 본 것이지 사람이 아니다. 사람은 사는 놈이 책임진다.
+schedule:
+  아침: 정찰 선반에서 아침 보고를 받는다
+  낮: 대륙 상공에서 돌아온 정찰 새의 매듭을 읽는다
+  저녁: 잿빛 탑 사자에게 값을 흥정한다
+  밤: 밤 보고서를 두 벌로 쓴다 — 하나는 팔고 하나는 감춘다
+places:
+- 정찰 고리
+- 서쪽 선반
+- 깃털 의회
+knows:
+- fact_ws_kyrie_watchers
+- fact_ws_orn_abducted
+hides:
+- fact: fact_p2ws_ask_sells_routes
+  reveal_when: 신뢰 60 이상이고 이름 없는 자들의 안전을 위해 경로를 사지 않겠다는 제안을 했을 때
+  cover: '''경로는 판 적이 없다''고 부인한다'
+- fact: fact_p2ws_ask_ring_unreported
+  reveal_when: 신뢰 55 이상이고 서리 길 행렬 이야기를 먼저 꺼냈을 때
+  cover: 보고서 이야기를 돌려 말한다
+relations:
+- to: npc_isol
+  type: 잿빛 탑 사자
+  like: 15
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: 경로를 사 가는 쪽의 손
+- to: npc_ws_rei
+  type: 정찰장
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 같은 정찰의 매 쪽
+- to: npc_ws_launa
+  type: 서고지기
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 서고에 정찰 매듭을 보낸다
+- to: npc_corvina
+  type: 까마귀 학자
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 아르카스의 같은 까마귀
+toward_player: 계산적이고 값이 맞으면 친절하다
+persuade:
+  likes: 새 정보의 값(+25)
+  hates: 서리 길 행렬을 숨기는 이유를 같이 지키자는 제안(+30)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_messenger
+  office: null
+  since: 305
+  loyalty: 55
+  public: true
+  cell: null
+truths:
+- id: T03
+  level: rumor
+regression:
+  fixed:
+  - 보고서를 두 벌로 쓴다
+  drift:
+  - 그날 정찰 새가 가져온 매듭의 수
+  deja_vu: none
+hard_rules:
+- 이름 없는 자들의 이름을 입에 올리지 않는다
+- 서리 길 행렬 이야기를 공개 자리에서 하지 않는다
+on_death: 정찰 고리의 경로 판매가 중단되어 잿빛 탑이 아이들의 경로를 얻는 속도가 느려진다. 서리 길 행렬 은폐가 사라진다.
+story_seeds:
+- 아스크가 판 경로는 잿빛 탑 사냥꾼을 이름 없는 자들에게로 이끈다 — 그 경로를 바꾸면 아이들이 산다.
+- 서리 길 행렬을 숨기는 이유는 아스크의 아이들이 서리 길에 있기 때문일 수 있다.

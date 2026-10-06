@@ -1,0 +1,160 @@
+# 매 사육사 투르 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_tur
+name: 매 사육사 투르
+aka:
+- 일곱째 손가락
+- 닫지 않는 새장지기
+- 줄 한 타래
+tier: B
+type: living
+race: 아에리
+subrace: 매 아에리
+sex: 남
+age: 70
+region: 바람첨탑
+home: 일곱 손가락 매 사육장 곁 둥지
+job: 일곱 손가락 매 사육사 — 길들인 매 한 마리 3비늘의 판매, 전령 매 훈련
+rank: 일곱 손가락 둥지 군의 사육사, 땅손 새장 청소부를 부린다
+summary: 닫지 않는 새장에서 매를 길들이는 사육사. 인간에게 매를 팔지 않는 대신 사육장 서쪽 구석의 지붕 줄 한 타래를 땅손 울라에게 몰래 내준다. 전령용 매 한 마리의 다리끈이 줄내림 장터와 바람 우물 방향으로 닿는다
+source: docs/world/people/windspire.md (npc_ws_tur)
+life:
+- year: 242
+  age: 0
+  event: 매 아에리 가문에서 알로 부화
+- year: 262
+  age: 20
+  event: 사육장 견습. 첫 매를 손에 앉힘
+- year: 290
+  age: 48
+  event: 사육사에 오름
+- year: 311
+  age: 69
+  event: 땅손 울라에게 첫 줄 한 타래를 내줌
+appearance:
+- 날개폭 4.2m, 어깨가 낮고 손이 크다
+- 손등에 매 발톱 자국이 수십 개
+- 목에 새장 열쇠 대신 깃털 한 장
+smell: 매 먹이와 깃털 먼지, 사육장의 마른 풀
+voice_sound: 낮고 부드러운 목소리. 매에게 말할 때가 가장 길다
+personality:
+  disposition:
+    용기: 35
+    자비: 50
+    정직: 55
+    신앙: 30
+    탐욕: -10
+    충성: 50
+  temperament:
+  - 다정
+  - 조용
+  - 은밀
+  habits:
+  - 말하는 중에도 손이 새장 문 쪽에 닿는다
+  - 새장 문이 닫혀 있으면 아무 말 없이 연다
+  - 매에게 이름 대신 소리를 붙여 부른다
+  values: 새장은 닫지 않는다. 닫는 순간 새는 새가 아니다
+  fears:
+  - 새장이 한 번이라도 닫히는 날
+  - 전령 매가 엉뚱한 곳에서 잡히는 것
+  - 땅손에게 준 줄 한 타래가 알려지는 것
+  desires:
+    short: 사육장의 새장을 단 하나도 닫지 않고 한 해를 보내는 것
+    long: 땅손들의 줄이 340m가 되는 것을 말없이 돕는 것
+voice:
+  register:
+    to_superior: 여왕에게는 낮은 존대
+    to_equal: 사육사에게는 하오체
+    to_inferior: 새·견습에게는 부드러운 반말
+    to_player_default: 인간에게는 하게체. 매를 먼저 본다
+  tics:
+  - '''새장은 닫지 않는다.'''
+  use:
+  - 새장
+  - 매
+  - 발끈
+  - 먹이
+  - 줄
+  - 소리
+  avoid:
+  - 닫다
+  - 팔다(매에 대해서는)
+  - 가두다
+  length: 짧고 부드럽다
+  samples:
+  - situation: 첫 만남
+    line: 새장 문을 건드리지 마라. 닫는 사람도 열지 말라는 사람도 오래 못 산다.
+  - situation: 호의
+    line: 손이 조용하군. 조용한 손은 매가 좋아한다. 한 번 앉혀 보겠나.
+  - situation: 거절
+    line: 그 매는 팔지 않는다. 팔지 않는 매는 한 마리 있어야 사육장이다.
+  - situation: 위기
+    line: 새장을 열어라! 전부! 닫혀 있으면 새가 죽는다!
+schedule:
+  아침: 새벽 매 먹이 주기
+  낮: 길들이기 — 발끈을 매고 풀기를 되풀이한다
+  저녁: 땅손 새장 청소부에게 새장 점검을 지시한다
+  밤: 밤 사육장 곁 둥지에서 전령 매의 발끈을 점검한다
+places:
+- 일곱 손가락
+- 매 사육장
+knows:
+- fact_ws_descent_rope
+hides:
+- fact: fact_p2ws_tur_rope_coil
+  reveal_when: 신뢰 50 이상이고 새장을 닫지 않는 것을 존중했을 때
+  cover: '''사육장 줄은 사육장의 것''이라 한다'
+- fact: fact_p2ws_tur_hawk_message
+  reveal_when: 신뢰 60 이상이고 하르칸 전령 이야기가 나왔을 때
+  cover: 매 발끈을 만지작거린다
+relations:
+- to: npc_ws_ulla
+  type: 땅손
+  like: 20
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 줄 한 타래를 받는 사람
+- to: npc_ws_erden
+  type: 하르칸 전령
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: 전령 매의 다른 끝
+- to: npc_eiros
+  type: 왕자
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 땅 이야기를 매에게도 들려준 사람
+toward_player: 부드럽고 조용하다. 새장을 닫으려는 사람에게는 닫힌다
+persuade:
+  likes: 새장을 존중하는 태도(+25)
+  hates: 줄 이야기를 지켜 주는 약속(+30)
+roles:
+  teacher: 스승 불가. 신뢰 45 이상이면 추적·사냥(매 길들이기, 상한 55)을 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_messenger
+  office: off_hawk_breeder
+  since: 290
+  loyalty: 65
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 새장이 하나도 닫혀 있지 않다
+  drift:
+  - 그날 사육장에서 앉은 매의 수
+  deja_vu: none
+hard_rules:
+- 새장을 닫지 않는다
+- 인간에게 매를 팔지 않는다
+on_death: 일곱 손가락 매 사육장이 올려다보는 자들 쪽 사육사에게 넘어가 새장이 닫힐 위험이 생기고, 땅손 줄 공급이 끊긴다.
+story_seeds:
+- 투르의 줄 한 타래는 130m 가운데 일부다 — 나머지 줄은 장터 밧줄 공방에서 온다.
+- 전령 매는 줄내림 장터와 바람 우물의 하르칸 전령을 잇는다 — 테무르의 서신이 매를 타고 온다.

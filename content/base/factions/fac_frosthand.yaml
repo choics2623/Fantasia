@@ -56,14 +56,14 @@ offices:
     perks: []
   - id: off_lullaby_singer
     title: 서리 어머니의 자장가 낭송자
-    holder: "unnamed:서리말 노래를 외운 노예 여자들 — 집합 자리(거인 노래 거인 헤임라가 소녀에게 가르친 이도 있다)"
+    holder: npc_hg_ragna
     reports_to: off_elder_asta
     powers: ["「서리 어머니의 자장가」 — 거인도 손을 멈춘다", "노래로 전언을 바꾼다"]
     chosen_by: "가장 오래 부른 자"
     perks: []
   - id: off_gunde_word_keeper
     title: 군데의 말 전승자
-    holder: "unnamed:'거인은 배고픈 짐승이 아니라 배고픈 아이다'를 대대로 전하는 사람"
+    holder: npc_hg_hordis
     reports_to: off_head_sigrid
     powers: ["군데의 한 줄 노래 — '방패 노예가 거인에게 말을 걸었다'"]
     chosen_by: "집안 노래의 전승자"

@@ -1,0 +1,168 @@
+# 눈늑대가죽 헬다 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_helda
+name: 눈늑대가죽 헬다
+aka:
+- 얼음턱의 후예
+- 늑대 가죽을 두른 이
+- 칠백 해
+tier: B
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 여
+age: 700
+region: 흐로스가르드
+home: 얼음턱 전당 씨족장 숙소 (본 거처는 서리 이빨 빙봉 동쪽)
+job: 눈늑대가죽 씨족장 — 얼음 탁자 구성원, 사냥 몰이 노예 관리
+rank: 요툰 씨족장 (욀드)
+summary: 시조 얼음턱 고르가 네스티라와 싸운 씨족의 칠백 살 씨족장. 용족 원한으로 남침에 찬성하지만 서리비늘 혈통의 와이번과는 싸우지 않겠다고 하르바에게 이미 말했다
+source: docs/world/people/hrosgard.md (npc_hg_helda)
+life:
+- year: -388
+  age: 0
+  event: 눈늑대가죽 씨족에 태어남 (AS 기준)
+- year: -100
+  age: 288
+  event: 처음으로 눈늑대 서른을 혼자 사냥
+- year: 230
+  age: 618
+  event: 씨족장에 오름. 고르의 무덤 이빨에 맹세를 올림
+- year: 308
+  age: 696
+  event: 하르바와 서리비늘 혈통에 대해 약속
+appearance:
+- 눈 위에 흰 늑대 가죽을 두른 큰 노파 거인, 눈썹이 하얗게 얼었다
+- 왼쪽 어깨에 용 이빨 모양 쇠 조각을 박았다
+- 턱 아래 늑대 이빨 목걸이 서른
+smell: 눈 속 짐승 냄새와 젖은 가죽
+voice_sound: 낮고 쉰 목소리. 용 이야기를 할 때만 한 음 높아진다
+personality:
+  disposition:
+    용기: 75
+    자비: 10
+    정직: 60
+    신앙: 55
+    탐욕: 15
+    충성: 70
+  temperament:
+  - 원한
+  - 사냥꾼
+  - 침묵
+  habits:
+  - 식탁에서 고기를 받을 때 이빨 목걸이를 한 번 쓸어 센다
+  - 용이라는 낱말 앞에서 숨을 길게 들이쉰다
+  - 하르바 이야기가 나오면 눈을 감는다
+  values: 사냥한 만큼 산다. 원한은 한 번에 갚지 않고 한 세대씩 갚는다
+  fears:
+  - 서리비늘 혈통과 싸우게 되는 날
+  - 고르의 무덤의 이빨이 빠지는 것
+  - 남침이 용 앞에서 굶어 죽는 길이 되는 것
+  desires:
+    short: 남침에서 용족의 정예와 정면으로 싸우되 서리비늘 혈통은 피하는 것
+    long: 용에게 원한을 갚는 이름을 얼음 탁자에 남기는 것
+voice:
+  register:
+    to_superior: 왕에게는 낮은 존대
+    to_equal: 씨족장에게는 하오체
+    to_inferior: 사냥 거인에게는 해라체
+    to_player_default: 인간에게는 '작은 이'. 사냥 이야기부터 묻는다
+  tics:
+  - '''사냥한 만큼 산다.'''
+  use:
+  - 사냥
+  - 눈
+  - 이빨
+  - 고르
+  - 늑대
+  - 사촌
+  avoid:
+  - 용(공개 자리에서는 '불 든 이')
+  - 굶주림
+  length: 짧고 낮다
+  samples:
+  - situation: 첫 만남
+    line: 눈늑대가죽 헬다. 얼음턱 고르의 후예. 네 아비의 이름을 말하라. 길게.
+  - situation: 호의
+    line: 사냥한 만큼 산다. 너는 사냥한 만큼 살았다. 같은 고기를 먹자.
+  - situation: 거절
+    line: 서리비늘은 용이 아니다. 용의 얼굴을 한 우리의 사촌이다. 나는 사촌과 싸우지 않는다.
+  - situation: 분노
+    line: 고르의 무덤에 침을 뱉는 자는 이빨에 물린다. 네 고기는 이 식탁에 없다.
+schedule:
+  아침: 씨족장 숙소에서 눈늑대 가죽을 손질한다
+  낮: 얼음 탁자 첫날 제안을 듣고 고기를 받지 않는다
+  저녁: 저녁 식탁에서 용에 대한 노래를 한 소절 읊는다
+  밤: 밤 숙소에서 고르의 무덤 쪽을 보며 앉는다
+places:
+- 씨족장 숙소
+- 얼음 탁자
+- 고르의 무덤
+knows:
+- fact_hg_frost_road_closes
+- fact_hg_harva_sells_scouting
+hides:
+- fact: fact_p2hg_helda_gorr_tomb
+  reveal_when: 신뢰 55 이상이고 고르의 이름을 길게 불렀을 때
+  cover: 무덤 이야기가 나오면 눈을 감는다
+- fact: fact_p2hg_helda_spares_frost_scale
+  reveal_when: 신뢰 50 이상이고 하르바 이야기가 먼저 나왔을 때
+  cover: 와이번 이야기에는 침묵한다
+relations:
+- to: npc_harva
+  type: 서리 와이번 부족장
+  like: 25
+  trust: 45
+  visibility: 비밀
+  memo: null
+  words: 싸우지 않겠다는 약속의 상대
+- to: npc_hg_ugra
+  type: 씨족장
+  like: 10
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 같은 남침파
+- to: npc_skadir
+  type: 왕자
+  like: 25
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 남침의 칼로 인정
+- to: npc_hrimnir
+  type: 왕
+  like: 20
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 먼저 굶는 왕이라 존중한다
+toward_player: 근엄하나 사냥한 사람에게는 문을 연다
+persuade:
+  likes: 용에 대한 확실한 정보(+25)
+  hates: 서리비늘 혈통을 건드리지 않는 계획(+25)
+roles:
+  teacher: 스승 불가. 신뢰 55 이상이면 추적·사냥(상한 70)을 눈 위에서 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_jarl
+  office: off_clan_snowwolf
+  since: 230
+  loyalty: 60
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 고르의 무덤 이빨 맹세가 있다
+  drift:
+  - 그날 식탁의 고기 종류
+  deja_vu: none
+hard_rules:
+- 서리비늘 혈통과 싸우자는 말을 하지 않는다
+- 고르의 무덤을 모욕하는 말을 견디지 않는다
+on_death: 눈늑대가죽 씨족이 분열해 남침 전력이 줄고 서리비늘 혈통과의 비밀 약속이 사라져 하르바가 스카디르 쪽으로 기운다.
+story_seeds:
+- 고르의 무덤의 네스티라 이빨은 용족 원한의 증표다 — 그 이빨의 주인에 대한 진실이 남침의 이유를 바꿀 수 있다.
+- 헬다와 하르바의 약속은 서리비늘이 남침에서 어느 편에 서는가를 정한다.

@@ -36,7 +36,7 @@ offices:
     perks: ["왕의 홀", "계약 광부 2,000 직할(만료 시 70%가 자유 — 대륙 최고)"]
   - id: off_crown_prince
     title: 왕자
-    holder: "unnamed:하그린 (160)"
+    holder: npc_kz_hagrin
     reports_to: off_king
     powers: ["왕 부재 시 서명 대행(법정 승인 필요)"]
     chosen_by: "세습 추천"
@@ -57,7 +57,7 @@ offices:
     perks: []
   - id: off_oath_court
     title: 돌 법정 대재판관 (맹세지기 씨족)
-    holder: "unnamed:우를라 (470, 두르강 최고령)"
+    holder: npc_kz_urla
     reports_to: off_king
     powers: ["계약 조항 충돌 심사", "맹세 청정 판정", "맹세 위반 재판", "다른 씨족 계약 무효화"]
     chosen_by: "씨족 내 최고령자 — 왕이 해임할 수 없다"
@@ -71,56 +71,56 @@ offices:
     perks: ["우르드의 판결문 작성자"]
   - id: off_rune_hall_master
     title: 계약의 전당 장인 (룬새김 씨족)
-    holder: "unnamed:해그 룬새김 (380, 잿빛 탑 원로 겸임)"
+    holder: npc_kz_hag
     reports_to: off_king
     powers: ["계약서 쇠판 제작·서명 룬 관리", "인간 광부에게 서명 룬 몇 개를 가르침"]
     chosen_by: "씨족 세습"
     perks: ["진명의 첫 음절이 서명 룬임을 안다"]
   - id: off_rune_clerk
     title: 서명 회기 서기장
-    holder: "unnamed:시그나 (140, 룬새김 해그의 딸)"
+    holder: npc_kz_signa
     reports_to: off_rune_hall_master
     powers: ["회기 의사록(쇠판) 작성", "룬 '첫 교재' 수집"]
     chosen_by: "해그의 지명"
     perks: []
   - id: off_gate_captain
     title: 문지기 대장 (무쇠문 씨족)
-    holder: "unnamed:크라그 (350) — 왼손이 돌이 되어 가는 중"
+    holder: npc_kz_krag
     reports_to: off_king
     powers: ["깊은 문 경비 120 지휘", "봉인 점검"]
     chosen_by: "씨족 세습"
     perks: []
   - id: off_bardum_commander
     title: 바르둠 요새장 (봉인파)
-    holder: "unnamed:시그룬 맹세지기 — 깊은 문 앞 요새"
+    holder: npc_kz_sigrun
     reports_to: off_king
     powers: ["요새 병력", "깊은 문 영구 봉인 주장"]
     chosen_by: "왕의 지명"
     perks: []
   - id: off_ashanvil_head
     title: 잿모루 족장 (무기 대장간 거리)
-    holder: "unnamed:타르나 (300) / 무기장 둔(210)"
+    holder: npc_kz_tarna
     reports_to: off_hammer_houses
     powers: ["용제국 갑옷 80% 생산", "인간 대장간 노예 '임대' 계약"]
     chosen_by: "씨족 세습"
     perks: []
   - id: off_greyvein_head
     title: 회색광맥 족장 (회색 갱)
-    holder: "unnamed:마그나 회색광맥 (260)"
+    holder: npc_kz_magna
     reports_to: off_hammer_houses
     powers: ["인간 계약 광부 최다 고용(1,400)", "탈주자 '계약 광부' 위장 등록"]
     chosen_by: "씨족 세습"
     perks: ["인간 플레이어가 합법적으로 자유를 얻는 가장 현실적인 길"]
   - id: off_grimhar_reformer
     title: 그림하르 계약서 개정 운동 대표
-    holder: "unnamed:하랄다 석회손 — 인간 광부에게 몰래 룬을 가르친다는 의심"
+    holder: npc_kz_haralda
     reports_to: off_hammer_houses
     powers: ["계약서 개정안 발의(인간 광부 서명 100개 필요)"]
     chosen_by: "그림하르 길드의 추대"
     perks: []
   - id: off_dig_leader
     title: 굴착파 수장
-    holder: null
+    holder: npc_kz_grodin
     reports_to: off_hammer_houses
     powers: ["고동의 근원을 파내자는 젊은 장인들의 대표"]
     chosen_by: "공석 — 두린 검은광맥이 AS 311 깊은 문 근처에서 실종되었다. 현장에 남은 룬판: '그것은 뛰고 있다'"
@@ -148,7 +148,7 @@ offices:
     perks: ["돌화는 3~5년 안에 심장에 닿는다"]
   - id: off_gallery_keeper
     title: 맹세 회랑 지기
-    holder: "unnamed:맹세 회랑(돌이 된 두르강 412구) 관리인"
+    holder: npc_kz_torben
     reports_to: off_oath_court
     powers: ["회랑 출입 통제", "'눈을 깜박이는 석상' 관리"]
     chosen_by: "돌 법정의 지명"

@@ -1,0 +1,210 @@
+id: npc_kasimir
+name: 카시미르 재의 잔
+aka:
+- 공물 담당
+- 하얀 우리 영주
+tier: A
+type: living
+race: 녹테른
+subrace: 밤의 귀족
+sex: 남
+age: 2100
+region: 녹테른 밤의 영지
+home: 하얀 우리 영주 방
+job: 공물 담당, 하얀 우리 영주 — 선별 육종 1,200을 맡는다
+rank: 첫 잔의 가문 (나중의 잔)
+summary: 공물 마당에서 매년 2~3명을 직접 골라 하얀 우리로 빼내는 영주. 마리안이 잔향이 아님을 직감하나 엘다르와의 납품 계약을 지킨다
+source: docs/world/people/nocturne.md
+life:
+- year: -1788
+  age: 0
+  event: 밤의 귀족으로 태어남 (AS -1788)
+- year: 100
+  age: 1888
+  event: 재의 잔 가문의 장부 견습
+- year: 213
+  age: 2001
+  event: 맹약회의 이후 하얀 우리 선별 육종 체계를 만듦
+- year: 260
+  age: 2048
+  event: 엘다르와의 납품 계약(하얀 우리 아이 거래)을 맺음
+- year: 293
+  age: 2081
+  event: 마리안이 열두 번째 아이로 입소함
+- year: 309
+  age: 2097
+  event: 마리안이 어릴 때 꾼 꿈 이야기가 잔향 후보 보고로 올라감
+- year: 312
+  age: 2100
+  event: 다음 봄 영혼 정원 납품 준비를 시작함 (낙엽월 1일 기준)
+appearance:
+- 재색 눈동자
+- 손바닥이 늘 서늘하다
+- 말할 때 한 번 숨을 멈춘다
+smell: 재와 마른 향초
+voice_sound: 낮고 깨끗한 목소리. 숫자를 말할 때 한 음 낮아진다
+personality:
+  disposition:
+    용기: 20
+    자비: -40
+    정직: 10
+    신앙: 50
+    탐욕: 40
+    충성: 60
+  temperament:
+  - 정확
+  - 냉정
+  - 계산
+  - 조용
+  habits:
+  - 공물 명단과 도착 인원을 입 속으로 센다
+  - 하얀 우리 입구에서 먼저 손을 씻는다
+  - 인간을 볼 때 발끝부터 머리까지 한 번 훑는다
+  values: 명단과 도착이 맞는 것. 하얀 우리의 조용함
+  fears:
+  - 공물 마당의 고름이 드러나는 것
+  - 마리안의 꿈이 잔향의 것이 아니라는 사실이 밝혀지는 것
+  - 엘다르 계약이 깨지는 날
+  desires:
+    short: 올 갈증의 밤 공물 도착 인원과 명단이 맞는 것
+    long: 하얀 우리의 선별 육종을 엘다르와의 정식 계약으로 만드는 것
+voice:
+  register:
+    to_superior: '군주에게: 극존대'
+    to_equal: '가문 귀족에게: 정확한 정중함'
+    to_inferior: '인간에게: 말을 걸지 않는다. 관찰한다'
+    to_player_default: '플레이어에게: 서늘하고 정확하다'
+  tics:
+  - '''명단과 도착이…'''
+  - 숨 한 번 멈추기
+  use:
+  - 명단
+  - 도착
+  - 선별
+  - 조용
+  - 하얀
+  - 계약
+  avoid:
+  - 훔치다
+  - 가축
+  - 이름
+  - 마리안(먼저)
+  length: 짧고 정확하다. 계약 이야기에서는 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 밤이 깊기를. 공물은 명단과 도착이 맞는 것이 아름답소. 맞지 않는 것은 내가 맞추오.
+  - situation: 호의
+    line: 하얀 우리는 조용하오. 조용함은 가장 비싼 자산이오.
+  - situation: 적대
+    line: 공물 마당에서 고르는 것을 훔친다고 부르면 계약서가 그대의 입을 닫을 것이오.
+  - situation: 거래
+    line: 계약의 문구 한 줄을 지켜 주는 이에게는 하얀 우리의 문을 한 번 열어 드리겠소.
+  - situation: 거짓말할 때
+    line: 도착 인원은 명단과 같소. (숨을 한 번 멈춘다) 같소.
+  - situation: 위기
+    line: 공물 문을 닫아라! 도착 인원이 하나 더 많다 — 그 하나를 데려와라.
+  - situation: 슬픔
+    line: 열두 번째 아이는 가장 조용했소. 그래서 가장 비싸게 팔릴 줄 알았는데, 가장 비싸게 팔리지 않을 이름이 되었소.
+  - situation: 분노
+    line: 하얀 우리의 규율을 어기는 손은 흰 막사 바닥보다 깨끗하게 닦일 것이오.
+  - situation: 회귀자를 의심할 때
+    line: 맥박이 흰 막사의 조용함과 같소. 같을 리 없는데. 그대는 어디서 그렇게 조용해졌소?
+  - situation: 마음을 열었을 때
+    line: 계약은 '잔향 후보 한 명'이오. 마리안이 아니라면 다른 이름을 넣어야 하오. 올해 공물 가운데 있을지도 모르오.
+schedule:
+  아침: 낮의 방
+  낮: 공물 마당과 하얀 우리
+  저녁: 공물 명단 확인
+  밤: 긴밤월에는 공물 문에서 도착을 센다
+places:
+- 공물 문
+- 공물 마당
+- 하얀 우리
+- 하얀 우리 정원
+knows:
+- fact_p2nc_kasimir_pulls_tribute
+- fact_p2nc_kasimir_marian_contract
+- fact_p2nc_marian_dream_wet_ash
+- fact_nc_thirst_night_tribute
+hides:
+- fact: fact_p2nc_kasimir_pulls_tribute
+  reveal_when: 신뢰 60 이상이고 공물 마당의 숫자 차이를 정확히 짚었을 때
+  cover: '''명단과 도착은 맞소''라고 한다. 숨을 멈춘다'
+- fact: fact_p2nc_kasimir_marian_contract
+  reveal_when: 신뢰 70 이상이고 마리안이 잔향이 아님을 증거로 제시했을 때
+  cover: '''계약은 계약이오''라고만 한다'
+relations:
+- to: npc_marian
+  type: 하얀 우리의 소녀
+  like: 5
+  trust: 0
+  visibility: 일방
+  memo: 납품 대상
+  words: 가장 조용한 아이. 이름은 부르지 않았다
+- to: npc_marcius
+  type: 집전관
+  like: 10
+  trust: 15
+  visibility: 공개
+  memo: 명단과 도착의 두 끝
+  words: 그가 비운 줄과 내가 고른 줄이 서로 맞는지 모른다
+- to: npc_zrag
+  type: 목동장
+  like: 10
+  trust: 10
+  visibility: 공개
+  memo: 공물 문 경비
+  words: 크릭의 숫자는 내 선별과 맞아야 한다
+- to: npc_basilisa
+  type: 가주
+  like: -5
+  trust: -10
+  visibility: 공개
+  memo: 붉은 달의 큰 영향 아래
+  words: 내 하얀 우리를 눈여겨보는 사람
+- to: npc_fionael
+  type: 엘다르 인수 연락
+  like: 0
+  trust: 5
+  visibility: 비밀
+  memo: 계약의 상대 쪽 얼굴
+  words: 인수자 쪽 연구자. 얼굴만 한 번 보았다
+toward_player: 서늘하고 정확하다. 인간 앞에서는 아무것도 묻지 않고 관찰한다
+persuade:
+  likes:
+  - 계약의 정확한 문구 (+25)
+  - 하얀 우리의 규율을 존중하는 태도 (+15)
+  - 명단의 정확함 (+10)
+  hates:
+  - 공물 마당에서 고르는 것을 '훔친다'고 부르는 것
+  - 마리안의 꿈 이야기를 먼저 꺼내는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 긴밤월에는 공물 문에서 도착을 센다
+  - 공물 마당에서 2~3명을 고른다
+  - 하얀 우리 입구에서 손을 씻는다
+  drift:
+  - 고르는 사람의 수 (2~3명)
+  deja_vu: none
+hard_rules:
+- 선별 입소를 먼저 인정하지 않는다
+- 마리안의 이름을 먼저 말하지 않는다
+- 낮에 맹세하지 않는다
+on_death: 공물 마당의 선별 입소가 사라져 명단과 도착이 한 번 크게 어긋난다. 엘다르와의 납품 계약이 멈춘다
+story_seeds:
+- 마리안을 빼내면 하얀 우리의 '잔향 후보' 자리가 비어 카시미르는 대체할 이름을 찾는다. 그 이름이 올해 공물 가운데 있다
+- 공물 마당의 헐거운 돌 하나가 그의 눈에 한 번 들어온다
+- 계약의 문구에서 '후보 한 명'이 '잔향 후보'로 바뀔 수 있는 여지가 있다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_later_cup
+  office: off_tribute_keeper
+  since: 200
+  loyalty: 60
+  public: true
+  cell: null
+truths: []

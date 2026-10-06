@@ -1,0 +1,159 @@
+# 정찰장 레이 눈먼바람 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_rei
+name: 정찰장 레이 눈먼바람
+aka:
+- 서쪽의 눈
+- 멀리 본 자
+- 서리 요람의 그림쟁이
+tier: B
+type: living
+race: 아에리
+subrace: 매 아에리
+sex: 남
+age: 130
+region: 바람첨탑
+home: 매눈 서쪽 선반 둥지
+job: 매눈 정찰장 — 서쪽 정찰과 정보 거래, 세렌 오필 상가와 거래
+rank: 둥지 가문 7 가운데 매눈의 가주
+summary: 눈이 그려진 깃털의 가문 정찰장. 서리 요람(이졸데의 흰 둥지)의 위치와 경비를 위에서 그린 지도를 갖고 있고 세렌 오필 상가에 팔 값을 흥정해 왔다
+source: docs/world/people/windspire.md (npc_ws_rei)
+life:
+- year: 182
+  age: 0
+  event: 매눈 가문에서 알로 부화
+- year: 200
+  age: 18
+  event: 첫 정찰. 서쪽 서리 이빨에서 거인 사냥꾼의 불을 처음 봄
+- year: 250
+  age: 68
+  event: 정찰 고리에 오름
+- year: 290
+  age: 108
+  event: 정찰장에 오름. 서리 요람의 윤곽을 처음 그림
+appearance:
+- 날개 가장자리가 낡은 회색으로 닳은 마른 노인 아에리
+- 한쪽 눈이 흰 막에 덮여 있다
+- 목에 눈이 그려진 깃털 목걸이
+smell: 바람에 닳은 깃털과 먹 냄새
+voice_sound: 작고 건조한 목소리. 값을 말할 때만 한 음 높아진다
+personality:
+  disposition:
+    용기: 30
+    자비: 5
+    정직: 35
+    신앙: 25
+    탐욕: 45
+    충성: 40
+  temperament:
+  - 계산
+  - 시야
+  - 비밀
+  habits:
+  - 말하기 전에 흰 눈 쪽으로 고개를 한 번 돌린다
+  - 값을 부르면 지도 둥지 쪽을 슬쩍 본다
+  - 돌을 던져 떨어지는 소리를 세며 생각한다
+  values: 멀리 본 자가 먼저 안다. 먼저 안 것은 값이 있다
+  fears:
+  - 지도가 이졸데의 하늘길에 알려지는 것
+  - 세렌이 값을 낮추는 것
+  - 자기 눈이 마저 멀어 지도를 못 그리는 것
+  desires:
+    short: 서리 요람 지도의 값을 세렌 오필 상가에서 최대한 얻는 것
+    long: 죽기 전에 서쪽 정찰 선을 후임에게 넘기는 것
+voice:
+  register:
+    to_superior: 여왕에게는 짧은 존대
+    to_equal: 가주들에게는 하오체
+    to_inferior: 정찰 새에게는 해라체
+    to_player_default: 인간에게는 하게체. 값부터 묻는다
+  tics:
+  - '''먼저 본 쪽이 안다.'''
+  - '''값이 있다.'''
+  use:
+  - 서쪽
+  - 지도
+  - 값
+  - 선
+  - 눈
+  - 요람
+  avoid:
+  - 공짜
+  - 거저
+  - 지도를 판다(공개 자리)
+  length: 짧고 건조하다
+  samples:
+  - situation: 첫 만남
+    line: 서쪽을 보러 왔나. 서쪽은 값이 있다. 눈 하나 값이다.
+  - situation: 호의
+    line: 너는 먼 것을 보는 눈을 가졌구나. 값을 깎아 주지는 않지만 지도는 보여 주마.
+  - situation: 거절
+    line: 그 지도는 둥지 밖으로 나가지 않는다. 나간 지도는 지도가 아니라 칼이다.
+  - situation: 위기
+    line: 지도를 접어라! 아니, 불로! 서리 요람 선이 보이면 안 된다!
+schedule:
+  아침: 서쪽 선반에서 서리 이빨 쪽을 본다
+  낮: 정찰 보고를 깃털 지도에 옮긴다
+  저녁: 세렌 사자와 값 흥정
+  밤: 밤 지도 둥지에서 새 선을 한 줄 더한다
+places:
+- 매눈 서쪽 선반
+- 지도 둥지
+- 정찰 고리
+knows:
+- fact_ws_kyrie_watchers
+hides:
+- fact: fact_p2ws_rei_frost_cradle_map
+  reveal_when: 신뢰 50 이상이고 세렌 값보다 높은 값을 제시했을 때
+  cover: '''지도는 서리 이빨 선뿐''이라고 한다'
+relations:
+- to: npc_ws_ask
+  type: 정찰 고리 대장
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 같은 정찰의 까마귀 쪽
+- to: npc_kyrie
+  type: 여왕
+  like: 10
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 땅 관찰자 명령의 한쪽을 맡는다
+- to: npc_ws_sirun
+  type: 땅 관찰자
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 시룬이 가져오는 새 선을 지도에 얹는다
+toward_player: 계산적이고 건조하며 새 정보를 가진 사람에게 열린다
+persuade:
+  likes: 새 정찰 정보(+25)
+  hates: 세렌 값보다 높은 값(+30)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_wind_house
+  office: off_hawkeye_head
+  since: 290
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 서리 요람 지도가 지도 둥지에 있다
+  drift:
+  - 그날 선반에서 보인 서리 이빨의 구름
+  deja_vu: none
+hard_rules:
+- 지도를 값 없이 보여 주지 않는다
+- 서리 요람이라는 낱말을 공개 자리에서 쓰지 않는다
+on_death: 서쪽 정찰 선이 아스크에게 넘어가 정보가 더 싸게 잿빛 탑으로 흘러간다. 서리 요람 지도의 행방이 불확실해진다.
+story_seeds:
+- 서리 요람 지도는 세렌·잿빛 탑·이졸데 모두가 탐낸다 — 값을 정하는 사람이 서쪽 하늘의 힘을 쥔다.
+- 레이의 한쪽 눈이 완전히 멀면 그의 지도는 유일한 사본이 된다.

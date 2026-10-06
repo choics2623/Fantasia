@@ -1,0 +1,204 @@
+# 흐로스가르드 NPC 일과 (24 §3). 원천: REGIONS §13, docs/world/people/hrosgard.md, 카드 schedule. 장소 id는 settlements/hrimnir_hall.yaml (hh_*, hh__*, bone_pens__*, weeping_pass__*).
+# 서리땅의 하루: 04:00 새벽 매듭 점호(서리 목줄) · 12:00 정오 귀리죽(굶주림월 없음) · 18:00 요툰 식탁 개시 · 20:00 움막 점호. 경작기(여름) 노동 18시간, 겨울엔 얼음 깨기·땔감·온천.
+# 서리월~굶주림월 서리 길 폐쇄 — 마지막 불·산장의 사람들은 겨울 내내 제자리에서 기다린다.
+# days: all | workday | sabbath | weekday:[1..6] | monthday:[..] — 쉼표가 든 값은 큰따옴표로.
+npc_hrimnir:
+  home: hh_king_chamber
+  presence:   # 맹약회의 313 요툰 대표 — 4월 22일 곡창 열쇠를 왕비에게 맡기고 떠나 6월 18일 돌아온다
+    - {from: "312-09-01", to: "313-04-21"}
+    - {from: "313-06-19", to: "313-07-30"}
+  away: {at: baalkar, doing: "맹약회의 313 길 — 서약섬으로 가는 요툰 사절단과 함께, 굶주린 왕이 전당을 오래 비운다"}
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: hh_king_chamber, doing: 잔다 — 갈비뼈가 드러난 몸을 가죽 한 장으로 덮고}
+    - {days: all, from: "05:00", to: "07:00", at: hh_king_seat, doing: 왕의 자리에 앉아 해가 뜨기를 기다린다 — 아직 아무것도 먹지 않았다}
+    - {days: workday, from: "07:00", to: "12:00", at: hh_throne_hall, doing: 씨족장과 사자를 접견한다 — 한 문장을 말하고 숨을 고른다}
+    - {days: all, from: "12:00", to: "13:00", at: hh_king_seat, doing: "왕의 식탁 — 귀리죽 반 그릇. 씨족장 누구보다 적게 먹는다", fixed: true}
+    - {days: workday, from: "13:00", to: "17:00", at: hh_throne_hall, doing: 얼음 탁자 안건을 정리하고 곡창 보고를 듣는다}
+    - {days: all, from: "17:00", to: "18:00", at: hh_ice_field, doing: 얼음 들판 가장자리에 서서 덜어냄의 땅을 바라본다, outdoor: true, rain: {at: hh_king_seat, doing: 왕의 자리에서 창 쪽을 본다}}
+    - {days: all, from: "18:00", to: "20:00", at: hh_throne_hall, doing: 요툰 식탁 개시 — 가장 마른 몸으로 맨 끝에 앉는다, fixed: true}
+    - {days: all, from: "20:00", to: "24:00", at: hh_king_chamber, doing: 침소에서 비밀 칙령의 이름 쪽지를 한 장씩 읽는다}
+    - {days: sabbath, from: "07:00", to: "13:00", at: hh__frost_mother, doing: 서리 어머니 사당에서 빙하 벽 앞에 서 있는다 — 말을 하지 않는다}
+npc_skadir:
+  home: hh_prince_seat
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: hh_prince_seat, doing: 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: hh_warrior_barracks, doing: 전사단 훈련을 지휘한다 — 돌 망치를 직접 휘두른다}
+    - {days: all, from: "12:00", to: "13:00", at: hh_warrior_barracks, doing: 같은 고기를 나눠 먹는다 — 전사단원 모두가 같은 접시에서, fixed: true}
+    - {days: workday, from: "13:00", to: "18:00", at: hh_warrior_barracks, doing: 남침 지도와 군량 장부를 본다, alt: {p: 0.3, at: hh_gate, doing: 문 밖 서리 길 쪽을 순찰한다}}
+    - {days: all, from: "18:00", to: "24:00", at: hh_prince_seat, doing: 왕자의 자리에서 아버지의 식탁 소식을 듣는다}
+npc_yorun:
+  home: hh__frost_mother
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: hh__frost_mother, doing: 서리 어머니의 동굴에서 숨 세 번에 한 문장을 말한다 — 대지가 남쪽에서 뛴다고 한다}
+npc_asta:
+  home: hh__stoneknee_huts
+  blocks:
+    - {days: all, from: "04:00", to: "05:00", at: hh__stoneknee_huts, doing: 새벽 매듭 점호 곁에 서서 800명을 센다, fixed: true}
+    - {days: all, from: "05:00", to: "18:00", at: hh__stoneknee_huts, doing: 일 배분과 아픈 사람 확인 — 서리말로 낮게 이야기한다}
+    - {days: all, from: "18:00", to: "21:00", at: hh__stoneknee_huts, doing: 불 곁에서 보내는 무리의 순서를 정한다 — 이름을 말하지 않는다}
+    - {days: all, from: "21:00", to: "04:00", at: hh__stoneknee_huts, doing: 가장 안쪽 움막에서 소년 곁에 눕는다}
+npc_baug:
+  home: hh__stoneknee_hold
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: hh__stoneknee_hold, doing: 잔다}
+    - {days: workday, from: "05:00", to: "12:00", at: hh__stoneknee_hold, doing: 씨족 장부 — 인간 노예 수를 매듭으로 대조한다}
+    - {days: workday, from: "12:00", to: "13:00", at: hh__stoneknee_hold, doing: 점심 — 군량 값 이야기를 한다}
+    - {days: workday, from: "13:00", to: "18:00", at: hh__stoneknee_huts, doing: 골짜기 움막을 돌며 머릿수를 확인한다, alt: {p: 0.3, at: hh__stoneknee_hold, doing: 장원에서 남침 군량 셈을 한다}}
+    - {days: all, from: "18:00", to: "21:00", at: hh__stoneknee_hold, doing: 저녁 식탁에서 셈을 마친다}
+npc_einar:
+  home: hh__stoneknee_huts
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: hh__stoneknee_huts, doing: 가장 안쪽 움막에 숨어 잔다 — 발가락 셋을 잃은 오른발을 감싸고}
+    - {days: all, from: "05:00", to: "19:00", at: hh__stoneknee_huts, doing: 움막 안쪽에서 매듭을 만든다 — 아스타가 허락한 일만 한다}
+    - {days: all, from: "19:00", to: "20:00", at: hh__stoneknee_huts, doing: 불가에서 서리말 자장가를 입 모양으로만 따라 한다}
+npc_matusz:
+  home: weeping_pass__lodge
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: weeping_pass__lodge, doing: 겨울잠 직전의 얕은 잠 — 꿀 단지 열 개가 곁에 있다}
+    - {days: all, from: "05:00", to: "10:00", at: weeping_pass__lodge, doing: 산장 난로를 살리고 꿀 단지를 센다}
+    - {days: all, from: "10:00", to: "17:00", at: weeping_pass__lodge, doing: 서리 길 쪽을 보며 가죽을 손질한다}
+    - {days: all, from: "17:00", to: "24:00", at: weeping_pass__lodge, doing: 호송대가 오면 첫 밤을 재운다 — 오지 않으면 혼자 꿀을 한 숟갈 떠 먹는다}
+npc_harva:
+  home: weeping_pass__harva_nest
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: weeping_pass__harva_nest, doing: 둥지 동굴에서 잔다 — 서리 안개가 입 주변에 낀다}
+    - {days: all, from: "06:00", to: "11:00", at: weeping_pass__harva_nest, doing: 짐삯 흥정 — 산을 넘길 손님을 기다린다}
+    - {days: all, from: "11:00", to: "17:00", at: weeping_pass__harva_nest, doing: 울음 협곡 위를 한 번 돈다 — 스카디르에게 팔 지도를 머릿속에 그린다}
+    - {days: all, from: "17:00", to: "24:00", at: weeping_pass__harva_nest, doing: 동굴 입구에서 얼음 안개를 뿜어 깃털을 닦는다}
+npc_ogre_pack:
+  home: weeping_pass__ogre_cave
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: weeping_pass__ogre_cave, doing: 썩은이빨 고개 동굴 — 말을 잃은 열댓이 웅크려 있다. 우두머리만 가끔 옛 이름 한 음절을 중얼거린다}
+npc_herja:
+  home: hh__ice_cave
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: hh__ice_cave, doing: 불 없이 잔다}
+    - {days: all, from: "05:00", to: "10:00", at: hh__frost_mother, doing: 사당의 얼음을 쓴다}
+    - {days: all, from: "10:00", to: "16:00", at: hh__ice_cave, doing: 얼어 있는 거인의 눈 앞에서 입 모양으로 군데의 노래를 한다}
+    - {days: all, from: "16:00", to: "19:00", at: hh__ice_cave, doing: 옛 방패줄 들판까지 걸어가 방패 테 조각을 꽂았다 뽑는다}
+    - {days: all, from: "19:00", to: "24:00", at: hh__ice_cave, doing: 불 없이 앉아 있는다}
+npc_hg_skala:
+  home: hh_queen_hall
+  blocks:
+    - {days: all, from: "22:30", to: "05:30", at: hh_queen_hall, doing: 잔다 — 침상 머리 쪽문 곁에서}
+    - {days: all, from: "05:30", to: "07:00", at: hh_kitchen, doing: 큰 솥 곁에서 아이 시중에게 자기 몫을 덜어 준다 — 접시를 천천히 기울여 소리 없이}
+    - {days: workday, from: "07:00", to: "12:00", at: hh_queen_hall, doing: 전당 안살림 — 솥 열두 개의 귀리 수를 센다}
+    - {days: all, from: "12:00", to: "13:00", at: hh_kitchen, doing: 정오 죽 배식을 곁에서 본다 — 굶주림월엔 솥이 비어 있다, fixed: true}
+    - {days: workday, from: "13:00", to: "17:00", at: hh_song_hall, doing: 노래 거인과 안살림 연락 — 아이들 이야기는 구절 사이에 끼운다, alt: {p: 0.3, at: hh_queen_hall, doing: 방에서 곡창 쪽 소리를 듣는다}}
+    - {days: all, from: "17:00", to: "18:00", at: hh_queen_hall, doing: 쪽문 곁에 앉아 곡창 쪽 바닥 소리를 듣는다}
+    - {days: all, from: "18:00", to: "22:30", at: hh_queen_hall, doing: 왕과 따로 먹는다 — 접시에는 손도 대지 않는다}
+npc_hg_ugra:
+  home: hh_clan_hall
+  presence:   # 얼음 탁자 겨울 회합 전후와 남침 집결기만 전당에 머문다
+    - {from: "312-12-20", to: "313-01-20"}
+    - {from: "313-04-01", to: "313-04-25"}
+  away: {at: hrimnir_hall, doing: "서리땅 동부 바위배 씨족 영지에서 창고 열쇠를 어루만진다"}
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hh_clan_hall, doing: 씨족장 숙소에서 잔다 — 창고 열쇠를 허리에}
+    - {days: all, from: "05:00", to: "12:00", at: hh_clan_hall, doing: 창 가죽에 기름을 먹이고 남침 날짜를 묻는다}
+    - {days: all, from: "12:00", to: "13:00", at: hh_throne_hall, doing: 식탁에서 먼저 먹는다 — 왕이 먼저 굶는 법에 눈을 흘기며}
+    - {days: all, from: "13:00", to: "22:00", at: hh_clan_hall, doing: 씨족장 숙소 식탁에서 우트가와 남침 이야기를 한다}
+npc_hg_helda:
+  home: hh_clan_hall
+  presence:
+    - {from: "312-12-20", to: "313-01-20"}
+    - {from: "313-04-01", to: "313-04-25"}
+  away: {at: hrimnir_hall, doing: "서리 이빨 빙봉 동쪽 눈늑대가죽 씨족 영지에서 고르의 무덤을 본다"}
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hh_clan_hall, doing: 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: hh_clan_hall, doing: 눈늑대 가죽을 손질하고 이빨 목걸이를 센다}
+    - {days: all, from: "12:00", to: "14:00", at: hh_throne_hall, doing: 식탁에서 고기를 받지 않고 듣기만 한다}
+    - {days: all, from: "14:00", to: "22:00", at: hh_clan_hall, doing: 저녁 식탁에서 용에 대한 노래를 한 소절 읊는다}
+npc_hg_brimir:
+  home: hh__deepwell_springs
+  blocks:
+    - {days: all, from: "20:00", to: "06:00", at: hh__deepwell_springs, doing: 온천 우물 곁에서 잔다 — 보리알 하나를 손바닥에 쥐고}
+    - {days: all, from: "06:00", to: "12:00", at: hh__deepwell_springs, doing: 해를 보며 앉아 있다 — 인간 노예가 온천 밭에서 이삭을 줍는다}
+    - {days: all, from: "12:00", to: "13:00", at: hh__deepwell_springs, doing: 정오 죽을 인간 노예와 같은 줄에서 받는다}
+    - {days: all, from: "13:00", to: "19:00", at: hh__deepwell_springs, doing: 온천 농사 곁을 돌며 이삭을 센다}
+    - {days: all, from: "19:00", to: "20:00", at: hh__deepwell_springs, doing: 해 질 녘 우물에 보리알 하나를 떨어뜨린다, fixed: true}
+npc_hg_heimla:
+  home: hh_song_hall
+  blocks:
+    - {days: all, from: "21:00", to: "06:00", at: hh_song_hall, doing: 잔다}
+    - {days: all, from: "06:00", to: "07:00", at: hh_song_hall, doing: 오늘 부를 구절의 첫 소절을 입 속으로 한다}
+    - {days: all, from: "07:00", to: "12:00", at: hh_song_hall, doing: 한 달 노래 중 낮 구절을 낮은 목소리로 부른다 — 제자가 벽 쪽에서 입 모양으로 따라 한다, fixed: true}
+    - {days: workday, from: "13:00", to: "18:00", at: hh_song_hall, doing: 선례를 청하는 사람에게 구절로 답한다, alt: {p: 0.3, at: hh_queen_hall, doing: 왕비의 방에서 안살림 이야기를 구절에 얹는다}}
+    - {days: all, from: "18:00", to: "21:00", at: hh_song_hall, doing: 밤 구절 — 서리 어머니 쪽을 향해 눈을 감고 한 소절을 부른다}
+npc_hg_orr:
+  home: hh_warrior_barracks
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hh_warrior_barracks, doing: 서서 잔다 — 쇠가 된 무릎은 꿇을 수 없다}
+    - {days: all, from: "05:00", to: "12:00", at: hh_warrior_barracks, doing: 전사단 훈련을 곁에서 지켜본다 — 굳은 무릎을 기름으로 문지르며}
+    - {days: all, from: "12:00", to: "13:00", at: hh_warrior_barracks, doing: 왕자의 식탁 곁에 서서 같은 고기를 거절한다, fixed: true}
+    - {days: all, from: "13:00", to: "22:00", at: hh_warrior_barracks, doing: 남침 선봉 편성을 정한다 — 막사 뒤 가죽 헛간 쪽은 보지 않는다}
+npc_hg_bragi:
+  home: hh_granary
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: hh_granary, doing: 곡창 곁방에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: hh_granary, doing: "곡창 문을 열고 바닥판 위 자루를 눈으로 센다 — 이백팔십팔, 팔", fixed: true}
+    - {days: all, from: "08:00", to: "16:00", at: hh_granary, doing: 반출 시각에 서서 아무것도 내보내지 않는다}
+    - {days: all, from: "16:00", to: "20:00", at: hh_granary, doing: 바닥판 곁에 앉아 한 번 더 센다 — 왕비의 쪽문 쪽 벽을 보지 않으려 애쓴다}
+    - {days: "monthday:[3]", from: "10:00", to: "12:00", at: hh_granary_floor, doing: "서리월·긴밤월·굶주림월 3일 — 왕이 바닥판을 열어 보는 날. 숫자는 삼백이라고 말한다", fixed: true}
+npc_hg_hallgrid:
+  home: hh__frost_mother
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: hh__frost_mother, doing: 동굴 곁방에서 잔다}
+    - {days: all, from: "05:00", to: "10:00", at: hh__frost_mother, doing: 제단 곁에서 얼음을 쓸고 첫 것을 올린다}
+    - {days: all, from: "10:00", to: "16:00", at: hh__ice_cave, doing: 빙하 벽 앞에서 얼어 있는 거인의 눈을 올려다본다}
+    - {days: all, from: "16:00", to: "20:00", at: hh__frost_mother, doing: 제단 곁에 앉아 어머니의 말을 기다린다}
+npc_hg_utga:
+  home: hh__stonefist_hold
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: hh__stonefist_hold, doing: 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: hh__stonefist_hold, doing: 무기 더미에서 돌 망치 이백의 수를 센다}
+    - {days: all, from: "12:00", to: "13:00", at: hh__stonefist_hold, doing: 점심 — 남침 서신을 쓴다}
+    - {days: all, from: "13:00", to: "21:00", at: hh__stonefist_hold, doing: 장원 마당에서 돌 망치 휘두르기를 감독한다, outdoor: true, rain: {at: hh__stonefist_hold, doing: 장원 안에서 군량을 센다}}
+npc_hg_sven:
+  home: bone_pens__chief_hut
+  blocks:
+    - {days: all, from: "04:00", to: "04:30", at: bone_pens__huts, doing: 새벽 매듭 점호 — 머릿수를 큰 소리로 센다, fixed: true}
+    - {days: workday, from: "04:30", to: "12:00", at: bone_pens__hungry_field, doing: 굶주린 들 노동 감독 — 매듭 끈으로 머릿수를 센다, outdoor: true, rain: {at: bone_pens__huts, doing: 움막 지대를 돌며 머릿수를 센다}}
+    - {days: workday, from: "12:00", to: "13:00", at: bone_pens__fire, doing: 공동 화덕 곁에서 귀리죽 한 그릇}
+    - {days: workday, from: "13:00", to: "19:00", at: bone_pens__fence, doing: 뼈 울타리 바깥문을 돌며 도망치려는 낌새를 본다}
+    - {days: all, from: "19:00", to: "21:00", at: bone_pens__chief_hut, doing: 씨족 장부에 머릿수를 올린다}
+    - {days: all, from: "21:00", to: "04:00", at: bone_pens__chief_hut, doing: 누이의 이름을 맨 매듭 끈 하나를 쥐고 잔다}
+npc_hg_inge:
+  home: weeping_pass__last_fire
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: weeping_pass__last_fire, doing: 마지막 불 곁에서 불씨를 지키며 다음 무리를 기다린다}
+    - {days: "weekday:[3]", from: "10:00", to: "14:00", at: weeping_pass__shelter_cave, doing: 대피 동굴 세 곳의 비상 식량을 한 곳씩 확인한다}
+    - {days: all, from: "06:00", to: "07:00", at: weeping_pass__rune_rock, doing: 바위 밑 서리말 룬 표식을 손바닥으로 쓸어 점검한다, outdoor: true}
+npc_hg_hordis:
+  home: hh_fire_hut
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: hh_fire_hut, doing: 불 오두막 불을 꺼뜨리지 않는다 — 교대로 오는 노예들의 언 손을 녹이고 아이에게 죽 한 숟갈을 먹인다}
+    - {days: all, from: "18:00", to: "20:00", at: hh_kitchen, doing: 솥 곁에서 전당 시중 아이들에게 죽을 가져다준다, alt: {p: 0.4, at: hh_fire_hut, doing: 불 곁에서 아이의 말을 낮게 되뇐다}}
+npc_hg_ragna:
+  home: hh_slave_huts
+  blocks:
+    - {days: all, from: "21:00", to: "04:00", at: hh_slave_huts, doing: 아이들 곁에서 잔다 — 입 모양으로 구절을 되뇌며}
+    - {days: all, from: "04:00", to: "04:30", at: hh_slave_huts, doing: 새벽 매듭 점호 — 숨을 멈춘다, fixed: true}
+    - {days: all, from: "07:00", to: "12:00", at: hh_song_hall, doing: 노래 거인 곁에 앉아 한 구절씩 외운다 — 소리를 내지 않는다, fixed: true}
+    - {days: all, from: "12:00", to: "18:00", at: hh_kitchen, doing: 솥 곁 시중 — 입 모양으로 외운 구절을 되뇐다}
+    - {days: all, from: "18:00", to: "21:00", at: hh_fire_hut, doing: 불 오두막에서 호르디스 곁에 앉아 노래 한 소절을 입 모양으로 반복한다}
+npc_hg_halr:
+  home: hh_chain_post
+  blocks:
+    - {days: all, from: "04:00", to: "04:30", at: hh_slave_huts, doing: 새벽 매듭 점호 — 머릿수를 크게 센다, fixed: true}
+    - {days: workday, from: "04:30", to: "12:00", at: hh_firewood, doing: 땔감 하치장 감독 — 매듭 끈으로 머릿수를 센다, outdoor: true, rain: {at: hh_kitchen, doing: 솥 마당을 돌며 머릿수를 센다}}
+    - {days: workday, from: "12:00", to: "19:00", at: hh_kitchen, doing: 큰 솥 마당 감독 — 소리가 새어 나오는 움막 앞은 천천히 지나간다}
+    - {days: all, from: "19:00", to: "21:00", at: hh_chain_post, doing: 씨족 장부에 머릿수를 올린다 — 두 개를 뺀다}
+    - {days: all, from: "21:00", to: "04:00", at: hh_chain_post, doing: 빠진 두 사람의 이름을 매듭 끈 하나에 맨다}
+npc_hg_pik:
+  home: hh_krik_stall
+  blocks:
+    - {days: all, from: "17:00", to: "08:00", at: hh_krik_stall, doing: 천막 안에서 재개 조건 줄을 소리 없이 읽다가 잔다}
+    - {days: workday, from: "08:00", to: "17:00", at: hh_krik_stall, doing: 곡물 장부를 쓴다 — 오늘 아침 값 그대로, alt: {p: 0.3, at: hh_gate, doing: 전당 문 밖 서리 길에서 들어오는 소식을 기다린다}}
+npc_hg_torvald:
+  home: hh__stoneknee_hold
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: hh__stoneknee_hold, doing: 셈쟁이 방에서 잔다}
+    - {days: workday, from: "05:00", to: "12:00", at: hh__stoneknee_huts, doing: 골짜기 움막을 돌며 매듭으로 머릿수를 센다}
+    - {days: workday, from: "12:00", to: "18:00", at: hh__stoneknee_hold, doing: 바우그 앞에서 군량 셈을 보고한다}
+    - {days: all, from: "18:00", to: "20:00", at: hh__stoneknee_hold, doing: 밤 매듭 끈에서 지운 오십 명의 자리를 손으로 만진다}

@@ -1,0 +1,208 @@
+# 바람첨탑 NPC 일과 (24 §3). 원천: REGIONS §14, RACES §14, docs/world/people/windspire.md, 카드 schedule. 장소 id는 settlements/windspire.yaml (ws_*, sky_market__*, wind_well__*).
+# 아에리의 하루: 05:00 바람 종(첫 비행) · 12:00 정오 종 · 18:00 저녁 줄 거둠 점검. 건물에 지붕이 없으니 비는 깃털로 막고(rain 블록은 '둥지에서 쉰다'), 겨울엔 기둥 위가 얼어 땅손의 이동이 닫힌다.
+# 깃털 의회는 6일 주의 2·5일째에 연다. 안식일(6일째)은 아에리에게 의미 없고 땅손에게는 쉬는 날일 뿐이다.
+# days: all | workday | sabbath | weekday:[1..6] | monthday:[..] — 쉼표가 든 값은 큰따옴표로.
+npc_kyrie:
+  home: ws_queen_perch
+  blocks:
+    - {days: all, from: "23:00", to: "04:00", at: ws_queen_perch, doing: 잔다 — 깃털 한 겹을 더 덮고}
+    - {days: all, from: "04:00", to: "05:00", at: ws_queen_perch, doing: 새벽 땅의 불빛이 몇 개 꺼졌는지 센다}
+    - {days: all, from: "05:00", to: "08:00", at: ws_high_nest, doing: 새벽 첫 비행 — 지붕 없는 둥지 위를 한 바퀴 돈다, outdoor: true, rain: {at: ws_queen_perch, doing: 깃털로 비를 막고 앉아 있다}}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 깃털 의회를 주재한다 — 아래 보는 자들과 하늘만 보는 자들의 표를 센다, fixed: true}
+    - {days: workday, from: "09:00", to: "17:00", at: ws_high_nest, doing: 사자와 전령을 접견한다}
+    - {days: all, from: "17:00", to: "21:00", at: ws_queen_perch, doing: 횃대에 앉아 아래의 불빛을 센다 — 하나도 놓치지 않으려고, fixed: true}
+    - {days: all, from: "21:00", to: "23:00", at: ws_queen_perch, doing: 혼자 앉는다 — 역행하는 별 쪽을 올려다보지 않는다}
+npc_eiros:
+  home: ws_prince_nest
+  presence:   # 맹약회의 313 아에리 대표 — 4월 20일 첨탑을 떠나 6월 24일 돌아온다
+    - {from: "312-09-01", to: "313-04-19"}
+    - {from: "313-06-25", to: "313-07-30"}
+  away: {at: baalkar, doing: "맹약회의 313 길 — 아에리 대표로 서약섬으로 가는 사절단과 함께, 걷는 연습을 한 번이라도 더 하려 한다"}
+  blocks:
+    - {days: all, from: "23:00", to: "05:00", at: ws_prince_nest, doing: 잔다 — 목에 건 흙 주머니를 쥐고}
+    - {days: all, from: "05:00", to: "08:00", at: ws_prince_nest, doing: 비행 훈련 — 새벽 바람 속에서 다리 근육을 쓰는 연습을 몰래 한다}
+    - {days: workday, from: "09:00", to: "14:00", at: ws_ground_nest, doing: 오른에게 땅의 말을 배운다 — 걷는 연습을 한 번 더}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 깃털 의회 방청 — 어머니 곁 맨 끝 자리}
+    - {days: workday, from: "14:00", to: "17:00", at: ws_high_nest_house, doing: 가문 둥지에서 시종이 가져온 땅 소식을 읽는다}
+    - {days: all, from: "17:00", to: "19:00", at: ws_high_nest, doing: 어머니와 땅 이야기로 언쟁한다, alt: {p: 0.3, at: ws_prince_nest, doing: 둥지에서 혼자 날개 글자를 본다}}
+    - {days: all, from: "19:00", to: "21:00", at: ws_feather_cliff_cave, doing: 깃털 절벽 아래로 내려가 타일라를 몰래 찾아간다, fixed: true}
+    - {days: all, from: "21:00", to: "23:00", at: ws_prince_nest, doing: 둥지에서 깃털 절벽 쪽을 내려다본다}
+npc_tyla:
+  home: ws_feather_cliff_cave
+  blocks:
+    - {days: all, from: "04:00", to: "07:00", at: ws_feather_cliff_cave, doing: 절벽을 기어오른다 — 날 수 없으니 손으로 바람을 읽는다, outdoor: true}
+    - {days: all, from: "07:00", to: "16:00", at: ws_fallen_slope, doing: 활로 사냥 — 떨어진 자의 비탈에서 산 위 사냥감을 쫓는다, outdoor: true, rain: {at: ws_feather_cliff_cave, doing: 동굴 입구에서 비를 보며 활줄을 손본다}}
+    - {days: all, from: "16:00", to: "19:00", at: ws_feather_cliff_cave, doing: 입구가 넓은 동굴에서 사냥감을 손질한다}
+    - {days: all, from: "19:00", to: "21:00", at: ws_feather_cliff_cave, doing: 에이로스의 몰래 방문 — 날개 없이 바람을 타는 이야기를 한다, fixed: true}
+    - {days: all, from: "21:00", to: "04:00", at: ws_feather_cliff_cave, doing: 바람 소리를 들으며 잠들지 못한다}
+npc_orn:
+  home: ws_ground_nest
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: ws_ground_nest, doing: 잔다 — 땅을 걷는 꿈에 현기증을 앓는다}
+    - {days: all, from: "06:00", to: "09:00", at: ws_ground_nest, doing: 아침 — 말린 생선과 열매를 먹고 숯으로 인간 글자 연습을 한다}
+    - {days: workday, from: "09:00", to: "14:00", at: ws_ground_nest, doing: 왕자 에이로스에게 인간 글자와 땅의 말을 가르친다}
+    - {days: workday, from: "14:00", to: "17:00", at: ws_wind_garden, doing: 바람 정원 땅손들을 찾아가 땅 이야기를 나눈다 — 마르코의 노래 곁에 앉는다, alt: {p: 0.3, at: ws_ground_nest, doing: 둥지에서 기억나는 회색여울 이야기를 숯으로 적는다}}
+    - {days: all, from: "17:00", to: "22:00", at: ws_ground_nest, doing: 에이로스가 오지 않는 저녁은 홀로 앉아 땅의 소리를 입 모양으로만 한다}
+npc_korak:
+  home: ws_wind_bell
+  blocks:
+    - {days: all, from: "05:00", to: "08:00", at: ws_wind_bell, doing: 바람 종의 줄을 고친다 — 새벽 종을 직접 당긴다, fixed: true}
+    - {days: all, from: "08:00", to: "12:00", at: ws_wind_bell, doing: 지붕 없는 종 틀에 매달려 낮잠}
+    - {days: all, from: "12:00", to: "12:30", at: ws_wind_bell, doing: 정오 종 — 줄을 당긴다, fixed: true}
+    - {days: all, from: "12:30", to: "18:00", at: ws_wind_bell, doing: 잠 — 종 틀 나무에 기대어}
+    - {days: all, from: "18:00", to: "21:00", at: ws_wind_bell, doing: 별 기록을 종 틀 나무에 새긴다}
+    - {days: all, from: "21:00", to: "05:00", at: ws_wind_bell, doing: 역행하는 별을 센다 — 같은 밤이 두 번 적힌 자리 곁에서}
+npc_ws_kair:
+  home: ws_stormfeather_cliff
+  blocks:
+    - {days: all, from: "23:00", to: "05:00", at: ws_stormfeather_cliff, doing: 절벽 맨 위 열린 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: ws_stormfeather_cliff, doing: 새벽 급강하 훈련 — 폭풍깃 전사 이백이 번개 모양 날개로 낙하한다, outdoor: true, rain: {at: ws_stormfeather_cliff, doing: 비를 깃털로 막고 둥지에서 훈련 보고를 듣는다}}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 깃털 의회 방청 — 표를 말없이 센다, fixed: true}
+    - {days: workday, from: "09:00", to: "17:00", at: ws_stormfeather_cliff, doing: 동쪽 절벽 방어 점검과 사냥 지휘}
+    - {days: all, from: "17:00", to: "20:00", at: ws_cliff_nests, doing: 절벽 중턱 땅손 둥지에서 땅 이야기를 듣는다 — 눈을 감고 날개 끝을 한 번 떤다}
+    - {days: all, from: "20:00", to: "23:00", at: ws_stormfeather_cliff, doing: 번개 모양 깃털을 정리하며 바람을 읽는다}
+npc_ws_rei:
+  home: ws_hawkeye_ledge
+  blocks:
+    - {days: all, from: "23:00", to: "05:00", at: ws_hawkeye_ledge, doing: 서쪽 선반 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "11:00", at: ws_hawkeye_ledge, doing: 서쪽 서리 이빨 쪽을 본다 — 흰 눈 쪽으로 고개를 돌렸다 돌린다, outdoor: true}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 의회 방청 — 정찰 보고를 짧게 올린다}
+    - {days: workday, from: "11:00", to: "17:00", at: ws_map_nest, doing: 정찰 보고를 깃털 지도에 옮긴다}
+    - {days: all, from: "17:00", to: "20:00", at: ws_hawkeye_ledge, doing: 세렌 오필 상가의 사자와 값을 흥정한다, alt: {p: 0.5, at: ws_map_nest, doing: 지도 둥지에서 새 선을 한 줄 더한다}}
+    - {days: all, from: "20:00", to: "23:00", at: ws_map_nest, doing: 지도를 덮고 눈을 쉰다}
+npc_ws_celes:
+  home: ws_looking_up_nest
+  blocks:
+    - {days: all, from: "23:00", to: "05:00", at: ws_looking_up_nest, doing: 잔다 — 균열이 보이는 쪽을 등지고}
+    - {days: all, from: "05:00", to: "09:00", at: ws_looking_up_nest, doing: 높은 둥지에서 해를 향해 날개를 편다}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 의회 방청 — 키리에의 발언에 한 박자 늦게 고개를 숙인다, fixed: true}
+    - {days: workday, from: "09:00", to: "17:00", at: ws_high_nest_house, doing: 가문 일을 보고 하늘만 보는 가주들을 만난다}
+    - {days: all, from: "17:00", to: "22:00", at: ws_looking_up_nest, doing: 저녁 만찬에서 가주들을 모은다 — 표를 헤아린다}
+    - {days: all, from: "22:00", to: "23:00", at: ws_looking_up_nest, doing: 균열이 보이는 쪽을 일부러 보지 않으려 눈을 감는다}
+npc_ws_sirun:
+  home: ws_scout_ring
+  presence:   # 평소에는 회색여울 상공 임무 중. 정찰 고리에 돌아와 보고하는 사흘~한 주만 첨탑에 머문다
+    - {from: "312-10-05", to: "312-10-12"}
+    - {from: "312-11-20", to: "312-11-27"}
+    - {from: "313-01-20", to: "313-01-26"}
+    - {from: "313-03-15", to: "313-03-21"}
+    - {from: "313-05-10", to: "313-05-16"}
+  away: {at: greyford_village, doing: "회색여울 상공 임무 — 배급 줄 곁 지붕 위를 돌며 키리에의 명을 따른다"}
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ws_scout_ring, doing: 정찰 선반 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "17:00", at: ws_scout_ring, doing: 하늘 순찰 — 보고 마을의 불빛을 센다, outdoor: true}
+    - {days: all, from: "17:00", to: "21:00", at: ws_high_nest_house, doing: 키리에에게 보고한다 — 이름은 적지 않는다, fixed: true}
+npc_ws_launa:
+  home: ws_feather_library
+  blocks:
+    - {days: all, from: "22:00", to: "06:00", at: ws_feather_library, doing: 서고 맨 위 둥지에서 잔다}
+    - {days: workday, from: "06:00", to: "18:00", at: ws_feather_library, doing: 서고에서 깃털 매듭을 읽고 묶는다, alt: {p: 0.3, at: ws_knot_room, doing: 가장 안쪽 매듭 곁에서 한 번 더 손을 얹는다}}
+    - {days: all, from: "18:00", to: "21:00", at: ws_scout_ring, doing: 저녁 비행 — 낮게 날며 땅을 본다, outdoor: true, rain: {at: ws_feather_library, doing: 서고에서 매듭 하나를 더 푼다}}
+    - {days: all, from: "21:00", to: "22:00", at: ws_knot_room, doing: 가장 안쪽 매듭 곁에 앉는다 — 할머니의 매듭을 쓰다듬는다, fixed: true}
+    - {days: sabbath, from: "08:00", to: "12:00", at: ws_feather_library, doing: 서고를 닫고 매듭 먼지를 털어 낸다}
+npc_ws_ask:
+  home: ws_scout_ring
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ws_scout_ring, doing: 정찰 선반 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: ws_scout_ring, doing: 아침 정찰 보고를 받는다}
+    - {days: all, from: "08:00", to: "17:00", at: ws_scout_ring, doing: 대륙 상공에서 돌아온 정찰 새의 매듭을 읽는다, alt: {p: 0.3, at: ws_hawkeye_ledge, doing: 레이와 서쪽 보고를 맞춘다}}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 의회 방청석에서 정찰 보고를 한다}
+    - {days: all, from: "17:00", to: "21:00", at: ws_scout_ring, doing: 보고서를 두 벌로 쓴다 — 하나는 팔고 하나는 감춘다}
+npc_ws_sera:
+  home: sky_market__basket_lift
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: sky_market__basket_lift, doing: 초소 곁 낮은 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: sky_market__basket_lift, doing: 새벽 줄 매듭을 하나씩 만져 점검한다, fixed: true}
+    - {days: workday, from: "06:00", to: "18:00", at: sky_market__basket_lift, doing: 바구니 승강 — 오르내리는 짐의 무게를 줄의 떨림으로 잰다}
+    - {days: all, from: "18:00", to: "20:00", at: sky_market__basket_lift, doing: 저녁 줄 거둠 점검, fixed: true}
+npc_ws_tur:
+  home: ws_hawk_mews
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: ws_hawk_mews, doing: 사육장 곁 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: ws_hawk_mews, doing: 새벽 매 먹이를 준다}
+    - {days: all, from: "09:00", to: "17:00", at: ws_hawk_mews, doing: 매 길들이기 — 발끈을 매고 푸는 일을 되풀이한다}
+    - {days: all, from: "17:00", to: "20:00", at: ws_seven_fingers, doing: 땅손 새장 청소부에게 새장이 열려 있는지 점검하게 한다 — 서쪽 구석 줄 한 타래를 만진다}
+npc_ws_mir:
+  home: ws_ground_village
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ws_ground_village, doing: 땅손 움막 곁 지붕 없는 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "07:00", at: ws_ground_village, doing: 땅손과 같은 식탁에서 아침을 먹는다}
+    - {days: workday, from: "07:00", to: "17:00", at: ws_wind_garden, doing: 항아리 뒤 활공 날개 틀을 손본다 — 나무 가루와 천, alt: {p: 0.3, at: ws_ground_village, doing: 마을 아이들에게 하늘말 휘파람을 가르친다}}
+    - {days: all, from: "17:00", to: "21:00", at: ws_ground_village, doing: 땅손 식탁에서 저녁 — 바람이 틀린 날은 오른쪽 날개만 한 번 편다}
+npc_ws_orea:
+  home: ws_funeral_peak
+  blocks:
+    - {days: all, from: "18:00", to: "06:00", at: ws_funeral_peak, doing: 봉우리 바위 틈 곁 높은 둥지에서 잔다}
+    - {days: all, from: "06:00", to: "10:00", at: ws_funeral_peak, doing: 해 뜰 때 바람 방향을 읽는다 — 하늘 장례가 있으면 이름을 한 번 부르고 놓는다, fixed: true}
+    - {days: all, from: "10:00", to: "18:00", at: ws_funeral_peak, doing: 장례 준비와 바위 틈 점검 — 남쪽 틈의 가죽 싼 것을 한 번 본다}
+npc_ws_feris:
+  home: sky_market__bandit_den
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: sky_market__bandit_den, doing: 철망 새장 안에서 서 있다 — 숨이 짧다. 하늘은 그물에 가렸다}
+npc_ws_aela:
+  home: ws_looking_up_nest
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: ws_looking_up_nest, doing: 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: ws_looking_up_nest, doing: 높은 둥지에서 해를 맞는다 — 아래를 보지 않는다}
+    - {days: "weekday:[2,5]", from: "09:00", to: "17:00", at: ws_feather_council, doing: 의회에서 줄 거둠 표를 말없이 센다, fixed: true}
+    - {days: workday, from: "09:00", to: "17:00", at: ws_high_nest_house, doing: 하늘만 보는 가문 일 — 표를 흥정한다}
+    - {days: all, from: "17:00", to: "22:00", at: ws_looking_up_nest, doing: 저녁 비행 — 아래를 한 번도 보지 않고 돌아온다}
+npc_ws_marco:
+  home: ws_wind_garden
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ws_ground_village, doing: 마을 움막에서 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: ws_water_jars, doing: 새벽 물 항아리 점검 — 줄이 있는지 한 번 만진다, fixed: true}
+    - {days: workday, from: "06:00", to: "17:00", at: ws_wind_garden, doing: 계단밭 손질과 약초 수확 감독, outdoor: true, rain: {at: ws_ground_village, doing: 마을에서 줄 땋기를 거든다}}
+    - {days: all, from: "17:00", to: "21:00", at: ws_ground_village, doing: 마을 식탁에서 말린 생선을 나눈다 — 「얕은 물은 차갑다」를 낮게 부른다}
+    - {days: sabbath, from: "08:00", to: "12:00", at: ws_water_jars, doing: 항아리 밑 줄을 몰래 손으로 쓸어 길이를 잰다}
+npc_ws_anskar:
+  home: sky_market__porter_shed
+  blocks:
+    - {days: all, from: "18:00", to: "06:00", at: sky_market__porter_shed, doing: 짐꾼 막사에서 잔다 — 떨어진 높이를 손가락으로 센다}
+    - {days: all, from: "06:00", to: "07:00", at: sky_market__porter_shed, doing: 새벽 점호, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: sky_market__durgan_depot, doing: 두르강 창고 하역과 운반}
+    - {days: workday, from: "12:00", to: "18:00", at: sky_market__tents, doing: 시장 천막 짐 나르기 — 위를 올려다보는 일을 멈추지 못한다}
+npc_ws_branka:
+  home: ws_cliff_nests
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ws_cliff_nests, doing: 절벽 중턱 둥지에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: ws_cliff_nests, doing: 아침 불을 지핀다}
+    - {days: all, from: "09:00", to: "17:00", at: ws_cliff_nests, doing: 폭풍깃 전사에게 땅 이야기를 들려준다 — 허공에 글자를 쓰려다 손을 멈춘다}
+    - {days: all, from: "17:00", to: "21:00", at: ws_cliff_nests, doing: 절벽 안쪽 돌판 앞에서 오늘의 일을 숯으로 적는다, fixed: true}
+npc_ws_ulla:
+  home: ws_ground_village
+  blocks:
+    - {days: all, from: "23:00", to: "05:00", at: ws_ground_village, doing: 움막에서 잔다}
+    - {days: workday, from: "06:00", to: "17:00", at: ws_rope_bridge_main, doing: 줄다리 수리 — 매달린 채 매듭을 다시 묶는다, outdoor: true, rain: {at: ws_ground_village, doing: 마을에서 줄을 땋는다}}
+    - {days: all, from: "17:00", to: "20:00", at: ws_ground_village, doing: 마을 식탁}
+    - {days: all, from: "20:00", to: "23:00", at: ws_water_jars, doing: 항아리 밑 줄에 한 뼘씩 더한다 — 한 겹 더, fixed: true}
+    - {days: "monthday:[7]", from: "16:00", to: "18:00", at: ws_seven_fingers, doing: 사육장 서쪽 구석에서 투르의 지붕 줄 한 타래를 받아 온다}
+npc_ws_ratz:
+  home: sky_market__bandit_den
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: sky_market__bandit_den, doing: 은신처에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: sky_market__bandit_den, doing: 도적 아침 점호}
+    - {days: workday, from: "09:00", to: "14:00", at: sky_market__bandit_den, doing: 새장 곁을 지킨다 — 새장 쪽을 일부러 쳐다보지 않는다}
+    - {days: "weekday:[3]", from: "14:00", to: "18:00", at: sky_market__tents, doing: 장터에서 토린에게 곡식을 사 온다 — 몰래}
+    - {days: all, from: "18:00", to: "22:00", at: sky_market__bandit_den, doing: 몸값 요구서의 문구를 고친다 — 전령이 없다}
+npc_ws_anton:
+  home: ws_ground_forge
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ws_ground_village, doing: 움막에서 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: ws_ground_forge, doing: 새벽 화로 불을 지핀다, fixed: true}
+    - {days: workday, from: "06:00", to: "17:00", at: ws_ground_forge, doing: 줄 고리와 바늘을 가벼운 쇠로 두드린다}
+    - {days: all, from: "17:00", to: "21:00", at: ws_ground_village, doing: 마을 식탁 — 화로를 덮은 뒤 쇠 조각을 센다}
+npc_ws_torin:
+  home: sky_market__durgan_depot
+  blocks:
+    - {days: all, from: "20:00", to: "06:00", at: sky_market__durgan_depot, doing: 창고 곁방에서 잔다}
+    - {days: workday, from: "06:00", to: "12:00", at: sky_market__durgan_depot, doing: 창고 문을 열고 어제의 깃털 근수를 재검한다}
+    - {days: workday, from: "12:00", to: "17:00", at: sky_market__basket_lift, doing: 줄지기 세라와 바구니 승강 일정과 계약 문구를 협의한다, alt: {p: 0.3, at: sky_market__tents, doing: 시장 천막에서 하르칸 전령과 말 계약을 흥정한다}}
+    - {days: all, from: "17:00", to: "20:00", at: sky_market__durgan_depot, doing: 짐꾼 계약서 번호를 대조한다 — 서명 쇠판 사본을 센다}
+npc_ws_erden:
+  home: sky_market__tents
+  blocks:
+    - {days: all, from: "20:00", to: "06:00", at: sky_market__tents, doing: 말 곁에서 선 채로 잔다 — 서신 통을 가슴에 끼고}
+    - {days: all, from: "06:00", to: "09:00", at: sky_market__tents, doing: 말먹이와 발굽 손질}
+    - {days: workday, from: "09:00", to: "17:00", at: sky_market__basket_lift, doing: 줄지기에게 전갈을 건넬 기회를 기다린다 — 발굽으로 땅을 두드린다}
+    - {days: all, from: "17:00", to: "20:00", at: sky_market__tents, doing: 말 곁에서 초원 노래를 낮게 부른다}

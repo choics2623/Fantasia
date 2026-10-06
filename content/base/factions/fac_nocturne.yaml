@@ -36,14 +36,14 @@ offices:
     perks: ["첫 갈증 성 지하 마른 우물", "잠들지 않음(3,200년)", "잔향의 피 냄새를 '듣는다'"]
   - id: off_attendant
     title: 군주의 시종
-    holder: "unnamed:엘로이즈 (2,900)"
+    holder: npc_eloise
     reports_to: off_first_thirst
     powers: ["군주의 말을 가문에 전한다", "알현 순서"]
     chosen_by: "군주의 지명"
     perks: []
   - id: off_executioner
     title: 사형 집행인
-    holder: "unnamed:카르논 (1,800)"
+    holder: npc_carnon
     reports_to: off_first_thirst
     powers: ["굶주린 자·맹세 파기자의 처형", "공물 명단 집행"]
     chosen_by: "군주의 지명"
@@ -64,14 +64,14 @@ offices:
     perks: ["은혈 혈통"]
   - id: off_thirst_night_officiant
     title: 갈증의 밤 집전관
-    holder: "unnamed:현직 집전관 — 알라리크 검은성배가 이 자리와 공물 명단을 노린다"
+    holder: npc_marcius
     reports_to: off_first_thirst
     powers: ["갈증의 밤 의례와 공물 명단 확정", "혈목장별 배당 조정"]
     chosen_by: "군주의 지명 (첫 잔의 가문 중)"
     perks: ["공물 장부 열람"]
   - id: off_house_redmoon
     title: 붉은 달 가문 가주 (최대 혈목장, 11곳)
-    holder: "unnamed:바실리사 붉은달 (약 2,900) — 붉은 우리 영주 아드리엘 핏빛유리는 그녀 아래 (RACES·SUBRACES의 '바일란 붉은잔'은 바실리사로 통일)"
+    holder: npc_basilisa
     reports_to: off_cup_conclave
     powers: ["녹테른 영지 서부 평원 혈목장 11곳, 인간 약 1만 4천", "아우락스 지지"]
     chosen_by: "SK 410 창건, 세습"
@@ -85,21 +85,21 @@ offices:
     perks: ["검은 장미 코르사주(41송이)", "모르바 늪 경계"]
   - id: off_house_obsidian
     title: 흑수정 가문 가주 (잿빛 탑 원로)
-    holder: "unnamed:발타사르 흑수정 (약 2,500)"
+    holder: npc_baltasar
     reports_to: off_cup_conclave
     powers: ["아르카스 탑섬 근처 '수정 동굴' 연구소", "저주 연구", "멜리산드 지지"]
     chosen_by: "SK 900 창건, 세습"
     perks: ["유일하게 잔향을 '초대'하려는 원로"]
   - id: off_house_silentbell
     title: 침묵종 가주 (사냥·암살 의뢰)
-    holder: "unnamed:사일라스 침묵종 (약 1,700) / 사냥꾼 '아홉째'(이름 없음, 400)"
+    holder: npc_silas_bell
     reports_to: off_cup_conclave
     powers: ["암살·사냥 의뢰 수행 — 영지 없음"]
     chosen_by: "SK 1,800 창건. 의뢰주가 곧 지지 대상"
     perks: ["현재 세렌 졸라크 상가의 의뢰 수행 중"]
   - id: off_house_stillwater
     title: 고요물 가주 (밤 부두, 피 교역)
-    holder: "unnamed:마렌디스 고요물 (약 900)"
+    holder: npc_marendis
     reports_to: off_cup_conclave
     powers: ["세렌 항구 '밤 부두' 피 교역(병에 담은 인간 피)", "멜리산드 지지"]
     chosen_by: "SK 2,950 세렌 동맹 결성기에 창건"
@@ -113,14 +113,14 @@ offices:
     perks: ["혈통 번호 체계(C-17 등)"]
   - id: off_tribute_keeper
     title: 공물 담당 (하얀 우리 영주)
-    holder: "unnamed:카시미르 재의 잔 (REGIONS §7.3)"
+    holder: npc_kasimir
     reports_to: off_cup_conclave
     powers: ["공물 문(red_pens__tribute_gate) 명단 판", "하얀 우리 선별 육종 1,200"]
     chosen_by: "군주의 지명"
     perks: []
   - id: off_pen_head_herder
     title: 크릭 목동장 '울타리 혀'
-    holder: "unnamed:즈라그 (크릭, 44)"
+    holder: npc_zrag
     reports_to: off_cup_conclave
     powers: ["각 우리의 일상 관리", "울타리 넘기 처벌"]
     chosen_by: "영주들의 합의"
@@ -134,7 +134,7 @@ offices:
     perks: []
   - id: off_rose_steward
     title: 그림자장미 저택 집사
-    holder: "unnamed:오르페 (인간 출신 하인, 51) — 장부 위조 담당"
+    holder: npc_orphe
     reports_to: off_house_shadowrose
     powers: ["혈목장 장부 관리·위조"]
     chosen_by: "세실의 지명"

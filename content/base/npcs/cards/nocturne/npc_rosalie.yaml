@@ -1,0 +1,195 @@
+id: npc_rosalie
+name: 로잘리
+aka:
+- 공물 열일곱
+- 장미를 아는 공물
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 28
+region: 녹테른 밤의 영지
+home: 공물 길 호송대 (긴밤월 12일~15일)
+job: 루멘 공물 40명 가운데 잿빛 실 요원 — 이름이 공물 명단에 오른 사람
+rank: 공물 (번호 열일곱)
+summary: 이름이 공물 명단에 오른 것이 밀고인지 의도인지 모르는 잿빛 실 요원. 장미 꽃잎 한 장을 입에 물면 세실의 사람이 알아본다
+source: docs/world/people/nocturne.md
+life:
+- year: 284
+  age: 0
+  event: 루멘 서안 신도 집안에서 태어남
+- year: 298
+  age: 14
+  event: 이름 없는 자들의 연락책으로 들어감 — 잿빛 실의 루멘 거점
+- year: 305
+  age: 21
+  event: 회색 순례자의 심부름꾼으로 활동함
+- year: 309
+  age: 25
+  event: 세실에게 보내는 암호 '장미 꽃잎'을 배움
+- year: 311
+  age: 27
+  event: 루멘 정화청이 잿빛 실 거점 하나를 검거함 — 로잘리의 이름이 서류에 오른다
+- year: 312
+  age: 28
+  event: 공물 명단에 번호 열일곱으로 올라감. 호송은 긴밤월 12일 (낙엽월 1일 기준)
+appearance:
+- 손이 거칠고 손톱 밑이 검다
+- 허리가 곧고 걸음이 조용하다
+- 입술을 자주 깨문다
+smell: 먼지와 짚, 희미한 장미 향
+voice_sound: 낮고 건조한 목소리. 거짓말을 할 때 반 박자 빨라진다
+personality:
+  disposition:
+    용기: 60
+    자비: 30
+    정직: -10
+    신앙: 0
+    탐욕: -20
+    충성: 60
+  temperament:
+  - 용감
+  - 계산
+  - 침착
+  - 조급
+  habits:
+  - 입술을 자주 깨문다
+  - 호송대의 걸음 수를 입 속으로 센다
+  - 주머니에 말린 장미 꽃잎 한 장을 지닌다
+  values: 잿빛 실의 연결. 열두 살 소녀가 명단에서 지워지는 것
+  fears:
+  - 밀고였다는 사실
+  - 정화청이 자기 이름의 출처를 아는 것
+  - 장미 꽃잎이 젖는 것
+  desires:
+    short: 공물 명단에서 빠져나가 세실의 사람과 만나는 것
+    long: 루멘의 명단이 한 줄 사라지는 날을 보는 것
+voice:
+  register:
+    to_superior: '공물 감시병에게: 짧고 고분고분하게'
+    to_equal: '공물 동료에게: 낮은 반말'
+    to_inferior: '크릭에게: 눈을 낮춘 한 단어'
+    to_player_default: '플레이어에게: 낮고 조용하다. 장미 이야기가 나오면 눈빛이 변한다'
+  tics:
+  - '''번호는 열일곱.'''
+  use:
+  - 번호
+  - 공물
+  - 줄
+  - 장미
+  - 열일곱
+  avoid:
+  - 이름(먼저)
+  - 도망
+  - 잿빛 실
+  - 루멘의 이름
+  length: 낮고 짧다. 장미 이야기에서는 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 공물이에요. 번호는 열일곱. 이름은 말하지 않는 게 낫죠.
+  - situation: 호의
+    line: 장미를 따라가라는 말이 있잖아요. 그 장미를 만져 본 적 있어요.
+  - situation: 적대
+    line: 공물 줄에서 말을 건다는 건 같은 줄에 선다는 뜻이에요. 같은 줄에 설 각오가 있나요.
+  - situation: 거래
+    line: 제 이름이 명단에 어떻게 올랐는지 알면 알려 주세요. 대신 제가 아는 줄 하나를 드릴게요.
+  - situation: 거짓말할 때
+    line: 저는 그냥 루멘의 신도예요. (말이 반 박자 빨라진다) 정말이에요.
+  - situation: 위기
+    line: 줄에서 벗어나요! 결번이 나예요 — 아니, 내가 아니길 바라요!
+  - situation: 슬픔
+    line: 열두 살 소녀의 이름이 올해도 명단에 있어요. 지운 자국만 남겨 놓고. 그 자국이 나보다 오래 가요.
+  - situation: 분노
+    line: 명단은 이름을 먹는 거예요. 먹는 데 쓰는 종이가 하얀 게 가장 화가 나요.
+  - situation: 회귀자를 의심할 때
+    line: 그 말투… 루멘 서고에서 한 번 본 필체와 닮았어요. 필체는 아니고 말투가. 같을 리 없는데.
+  - situation: 마음을 열었을 때
+    line: 주머니에 꽃잎이 한 장 있어요. 마른 지 열이틀. 젖으면 길이 지워진대요. 그래서 입에 물고 걸어요.
+schedule:
+  아침: 호송대에서 걸음 수를 센다
+  낮: 공물 줄에 선다
+  저녁: 공물 문 앞에서 기다린다
+  밤: 공물 숙소에서 눕는다
+places:
+- 공물 길
+- 붉은 우리 공물 문
+- 공물 마당
+- 첫 갈증 성 대연회장
+knows:
+- fact_p2nc_rosalie_agent
+- fact_p2nc_thirst_night_timeline
+- fact_nc_cecile_roses
+- fact_nc_cecile_grey_woman_letters
+hides:
+- fact: fact_p2nc_rosalie_agent
+  reveal_when: 장미 꽃잎이나 암호를 먼저 보였거나 신뢰 65 이상
+  cover: '''저는 평범한 신도예요''라고 한다. 주머니 속 꽃잎을 만진다'
+relations:
+- to: npc_cecile
+  type: 접선 상대
+  like: 20
+  trust: 30
+  visibility: 비밀
+  memo: 서신 한 번 없이 기대한다
+  words: 얼굴을 모르는 사람을 믿는다는 건 이상한 일이에요
+- to: npc_marcius
+  type: 결번의 집전관
+  like: 0
+  trust: 0
+  visibility: 일방
+  memo: 결번이 자신인지 모른다
+  words: 그가 비운 줄에 내가 있길 빌어요
+- to: npc_kasimir
+  type: 공물 담당
+  like: -10
+  trust: -20
+  visibility: 일방
+  memo: 마당에서 고를 사람
+  words: 공물 마당에서 눈이 마주칠까 봐 고개를 숙일 사람
+- to: npc_grey_woman
+  type: 연락 상대
+  like: 30
+  trust: 40
+  visibility: 비밀
+  memo: 루멘 이전의 지시자
+  words: 얼굴을 모르는 사람의 편지를 읽은 지 십 년
+toward_player: 낮고 조용하다. 장미 이야기가 나오면 눈빛이 변한다
+persuade:
+  likes:
+  - 장미 꽃잎 (+30)
+  - 열두 살 소녀 이야기 (+25)
+  - 공물 줄을 존중하는 태도 (+10)
+  hates:
+  - 명단 이야기를 먼저 꺼내는 것
+  - 잿빛 실 이야기
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 긴밤월 12일 새벽 루멘에서 호송을 시작한다
+  - 15일 이른 아침 공물 문에 도착한다
+  - 주머니에 말린 장미 꽃잎을 지닌다
+  drift:
+  - 호송 중 줄에서의 위치 (앞뒤 5명 안팎)
+  deja_vu: none
+hard_rules:
+- 이름을 먼저 말하지 않는다
+- 잿빛 실을 입에 올리지 않는다
+- 낮에 맹세하지 않는다
+on_death: 세실의 이번 갈증의 밤 결번이 하나 비고 잿빛 실의 루멘 연락이 한 갈래 끊긴다
+story_seeds:
+- 세실이 로잘리를 빼낼지 자기 정체를 지킬지가 이번 갈증의 밤의 선택이다. 플레이어가 호송 49시간 동안 로잘리와 열두 살 소녀를 한 번에 빼낼 수 있는 틈이 있다
+- 로잘리는 루멘에서 정화청이 아는 이름이다 — 그녀가 빠지면 루멘의 다른 거점이 위험하다
+- 공물 마당의 헐거운 돌 하나가 그녀의 길이다
+affiliations:
+- faction: fac_nameless
+  rank: null
+  office: null
+  since: 298
+  loyalty: 60
+  public: false
+  cell: nc_cell_tribute
+truths: []

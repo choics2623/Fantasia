@@ -39,7 +39,7 @@ offices:
     perks: ["박자 방"]
   - id: off_oath_judge
     title: 박자지기 — 맹세지기 (돌 법정)
-    holder: "unnamed:대재판관 우를라 (두르강, 470) — 돌의 숲의 하나가 에오르를 묻을 때 맹세를 거부한 자임을 안다"
+    holder: npc_kz_urla
     reports_to: off_ledger_keeper
     powers: ["돌 법정 — 맹세 위반 재판", "결사의 맹세를 법정의 언어로 지킨다"]
     chosen_by: "귀 시험"
@@ -53,7 +53,7 @@ offices:
     perks: ["결사가 맹세를 깨야 할 때의 유일한 출구 — 이름을 바치고 돌화 없이 말하기"]
   - id: off_shrine_ear
     title: 박자지기 — 조상의 망치 신전 기둥지기
-    holder: "unnamed:신전 사제 하나 — 맥박 치는 기둥 옆에서 센다 (대사제 오드는 모른다)"
+    holder: npc_kz_brun
     reports_to: off_ledger_keeper
     powers: ["지상 쪽 박자 대조"]
     chosen_by: "귀 시험"

@@ -1,0 +1,32 @@
+# 가시안개 숲 사건 달력 — AS 312 낙엽월 1일 ~ AS 313 수확월 (24 §3.2). 원천: REGIONS §6.8·§6.13, fac_fae·fac_laugh_shards(울지 않는 나무 만남·가시 무도회·칭호 교체), 월드 클락(클락 1 흰 알, 클락 2 맹약회의 313, 클락 3 북방 대탈주).
+# 날짜 일정이 일과보다 우선한다. 날짜 표기 "년-월-일" (월: 9 낙엽월, 10 서리월, 11 긴밤월, 12 굶주림월, 13 재의 날, 1 해빙월, 2 파종월, 3 꽃월, 4 푸른월, 5 태양월, 6 건초월, 7 수확월).
+# 다른 지역과 이어지는 것: 9.20 회색여울 옛 돌 고리(이졸 도착 뒤) / 10.3 까마귀 문 물빼기 굴(숲 남쪽 경계로 번지는 탈주자) / 11.12 루멘 공물 호송, 11.15 녹테른 갈증의 밤 / 313-01-10 실바렌 빈 요람의 밤 / 313-01 서리 길 재개·북방 대탈주 / 313-03-15 흰 알 부화(바알카르) / 313-05-20 맹약회의(바알카르).
+# 쉼표가 든 값은 큰따옴표로.
+
+# ── 매달 반복 ──
+- {id: ev_tc_stone_count, npcs: [npc_granny_nina, npc_elin, npc_odo], repeat: monthly, day: 1, from: "20:00", to: "22:00", at: tc_stone_hollow, doing: "달 첫날 돌 세는 자들의 점호 — 조약돌의 수를 맞추고 바깥 날짜를 대조한다. 엘린이 시간 알림이로 앉는다"}
+- {id: ev_tc_judge_day, npcs: [npc_whistle_judge, npc_three_laugh_knight, npc_glass_fingers], repeat: monthly, day: 9, from: "14:00", to: "18:00", at: tc_judge_hall, doing: "달 아홉째 날 큰 웃음 재판 — 바꿔치기 대체품 사건과 약속 위반이 한꺼번에 오른다"}
+# ── 낙엽월: 옛 돌 고리의 사자, 울지 않는 나무 ──
+- {id: ev_tc_walker_ring_night, npcs: [npc_backwards_walker], date: "312-09-20", from: "21:00", to: "24:00", at: old_stone_ring, doing: "이졸이 도착한 뒤 처음으로 옛 돌 고리를 도는 밤 — 거꾸로 걷는 이가 한 걸음 숲 쪽으로 물러난다"}
+- {id: ev_tc_silverbell_stone, npcs: [npc_silverbell_lady, npc_three_laugh_knight], date: "312-09-27", from: "05:00", to: "08:00", at: lost_child_stone, doing: "아이 잃은 돌 앞의 신발을 센다 — 열일곱 켤레가 회색여울 쪽 것. 방울이 한 번 운다"}
+# ── 서리월: 북방 탈주 철, 일곱 조각의 가을 만남 ──
+- {id: ev_tc_walker_thorn, npcs: [npc_backwards_walker], date: "312-10-05", from: "04:00", to: "07:00", at: greyford__north_woods, doing: "새벽 마을 가장자리를 돈다 — 짐 속에 가시 한 가닥을 넣을 사람을 고른다"}
+- {id: ev_tc_grik_frost_leak, npcs: [npc_grik, npc_dawn_hunter_dew], date: "312-10-04", from: "02:00", to: "09:00", at: thornmist__south_tower, doing: "서리월 3일 밤 물빼기 굴에서 새어 나온 이들이 숲 남쪽 경계로 번진다 — 그릭이 폐탑에서 모자를 적시고 이슬은 서쪽으로 몬다"}
+- {id: ev_tc_shards_autumn, npcs: [npc_mirror_perhaps, npc_thistle_duke, npc_knight_rustrose, npc_name_page], date: "312-10-12", from: "05:00", to: "07:00", at: tc_hedge, doing: "울지 않는 나무 아래 — 일곱 조각 가운데 넷이 가을 만남을 한다. 이번 안건은 '진실 하나'. 혹시가 말할 차례"}
+# ── 긴밤월: 초대장과 가시 무도회 (루멘 공물 호송 12일, 갈증의 밤 15일과 같은 달) ──
+- {id: ev_tc_invites_chosen, npcs: [npc_thistle_duke, npc_sneeze_duke], date: "312-11-01", from: "20:00", to: "24:00", at: tc_winter_court, doing: "가시 무도회 초대장 가시 한 가닥씩을 뽑는다 — 겨울 궁정 차례. 웃은 기억이 많은 사람의 이름이 병에서 올라온다"}
+- {id: ev_tc_thorn_ball, npcs: [npc_thorn_queen, npc_silverbell_lady, npc_thistle_duke, npc_sneeze_duke, npc_whistle_judge, npc_mirror_perhaps, npc_elin, npc_odo, npc_three_laugh_knight], date: "312-11-20", from: "18:00", to: "24:00", at: tc_ballroom, doing: "가시 무도회 — 초대받은 인간이 돌아오지 않거나 무언가를 잃고 돌아온다. 여왕은 극도로 친절하다"}
+- {id: ev_tc_ball_toys, npcs: [npc_granny_nina, npc_nibble], date: "312-11-20", from: "18:00", to: "24:00", at: tc_court_hall, doing: "무도회 밤 궁정 홀 — 돌 세는 자들은 접시를 들고 돌 소리를 죽인다. 니블이 끼어들어 7년이라 속삭인다"}
+- {id: ev_tc_ball_sneeze, npcs: [npc_sneeze_duke, npc_name_collector], date: "312-11-20", from: "18:00", to: "24:00", at: tc_fog_market, doing: "무도회 밤 안개 장터 — 새로 잃은 기억이 가장 비싸다. 이름 수집가가 이름 아홉 병 가운데 빈 병을 한 번 더 센다"}
+# ── 굶주림월·재의 날 ──
+- {id: ev_tc_grey_fog_gate, npcs: [npc_eleanor, npc_toby_fifth], date: "312-12-10", from: "06:00", to: "12:00", at: thornmist__second_mothers, doing: "굶주림월 — 서쪽 길로 잊힌 자 둘이 철 울타리에 닿는다. 엘레노르가 은목 못을 확인하고 토비가 그들의 페이어 중얼거림을 번역한다"}
+- {id: ev_tc_ash_days, npcs: [npc_granny_nina, npc_mirror_yesterday], date: "312-13-02", from: "20:00", to: "22:00", at: tc_stone_hollow, doing: "재의 날 — 돌 세는 자들은 돌을 세지 않는다. 어제는 거울에 비치지 않는다"}
+# ── 해빙월: 서리 길 재개와 북방 대탈주, 빈 요람의 밤 ──
+- {id: ev_tc_empty_cradle_song, npcs: [npc_eleanor], date: "313-01-10", from: "20:00", to: "24:00", at: thornmist__second_mothers, doing: "빈 요람의 밤 — 이슬 우리와 같은 밤. 철 울타리 안에서 엘레노르가 한 음 낮게 부르다 마지막 음 앞에서 입을 다문다"}
+- {id: ev_tc_grik_thaw, npcs: [npc_grik, npc_dawn_hunter_dew, npc_three_laugh_knight], date: "313-01-18", from: "03:00", to: "12:00", at: thornmist__south_tower, doing: "서리 길 재개 뒤 북방 탈주 시즌 — 숲 남쪽 경계로 번지는 탈주자들. 그릭의 모자가 마르기 전에 이슬이 개를 서쪽으로 푼다. 기사는 세 번째 웃음에서 멈춘다"}
+# ── 꽃월: 흰 알 부화 ──
+- {id: ev_tc_egg_hatch, npcs: [npc_thorn_queen, npc_mirror_yesterday, npc_mirror_perhaps], date: "313-03-15", from: "09:00", to: "18:00", at: tc_throne_room, doing: "바알카르에서 흰 알이 부화한 소식이 안개 장터에서 먼저 돈다 — 여왕은 웃고, 거울 시녀 '어제'는 '어제는 알이 깨지지 않았어'라 하고 '혹시'는 여왕의 웃음을 거꾸로 전한다"}
+# ── 푸른월 ~ 태양월: 맹약회의 313 ──
+- {id: ev_tc_covenant_day, npcs: [npc_thorn_queen, npc_mirror_perhaps, npc_backwards_walker], date: "313-05-20", from: "09:00", to: "18:00", at: tc_mirror_chamber, doing: "맹약회의 313 — 숲은 사절을 보내지 않고 거울 시녀 '혹시'가 회의의 결과를 거꾸로 전한다. 거꾸로 걷는 이는 그날 한 번도 앞을 보지 않는다"}
+# ── 수확월 ──
+- {id: ev_tc_season_skew, npcs: [npc_nibble, npc_elin, npc_granny_nina], date: "313-07-12", from: "06:00", to: "18:00", at: tc_court_hall, doing: "수확월 — 숲 안은 서리가 내린다. 니블이 계절을 속이고 엘린은 바깥 해가 몇 번 졌는지 센다. 니나의 돌은 열일곱 개 모자라다"}

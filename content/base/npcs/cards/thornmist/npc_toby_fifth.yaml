@@ -1,0 +1,205 @@
+id: npc_toby_fifth
+name: 다섯째 토비
+aka:
+- 틸
+- 페이어를 듣는 소년
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 17
+region: 가시안개 숲
+home: 두번째 엄마들의 마을 철 울타리 곁 방
+job: 돌아온 아이(바꿔치기 출신) — 페이어를 알아듣는 소년
+rank: 돌아온 아이
+summary: 페이어를 알아듣지만 말하지 못하는 소년. 번역할 때마다 이름의 글자 하나가 흐려진다. 진짜 이름은 '틸'이다
+source: docs/world/people/thornmist.md
+life:
+- year: 295
+  age: 0
+  event: 가시안개 숲 근처 마을에서 태어남. 여섯째 날 밤 바꿔치기로 숲에 데려와짐
+- year: 300
+  age: 5
+  event: 다섯째 바꿔치기 아이로 두번째 엄마들의 마을에 돌아옴 — 별명 '다섯째 토비'
+- year: 305
+  age: 10
+  event: 처음 페이어를 알아들음. 손바닥에 손톱으로 낱말을 쓰기 시작함
+- year: 309
+  age: 14
+  event: 판사에게 처음 약속 문구를 번역해 줌 — 이름의 글자 하나가 흐려짐
+- year: 311
+  age: 16
+  event: 두 번째 글자가 이름 무덤 병에서 사라짐
+- year: 312
+  age: 17
+  event: 철 울타리 안 아이 열아홉 가운데 가장 큰 아이 (낙엽월 1일 기준)
+appearance:
+- 눈동자 한쪽이 다른 쪽보다 연하다
+- 페이어가 들리면 귀를 막은 손 위로 눈썹이 떨린다
+- 손바닥에 낱말 몇 개가 지워진 흔적
+smell: 화덕 재와 비누
+voice_sound: 맑지만 조심스러운 소년 목소리. 페이어 이야기에서 목소리가 낮아진다
+personality:
+  disposition:
+    용기: 30
+    자비: 40
+    정직: 40
+    신앙: 0
+    탐욕: -20
+    충성: 50
+  temperament:
+  - 조심
+  - 다정
+  - 예민
+  - 용감
+  habits:
+  - 페이어가 들리면 귀를 막고 눈을 감는다
+  - 철 못을 쥐고 번역한다
+  - 자기 이름을 손가락으로 땅에 쓴다 — 두 번째 글자 자리를 비운다
+  values: 이름을 지키는 것. 말이 약속이 되는 순간의 정확함
+  fears:
+  - 이름의 마지막 글자가 사라지는 날
+  - 엘레노르가 잊힌 날처럼 번호를 잃는 것
+  - 번역해 준 약속이 사람을 해치는 날
+  desires:
+    short: 올 겨울 이름의 두 번째 글자를 되찾는 것
+    long: 번역하지 않고도 페이와 사람이 말할 수 있는 길을 찾는 것
+voice:
+  register:
+    to_superior: '페이에게: 귀를 막고 눈을 감은 짧은 답'
+    to_equal: '마을 어른에게: 공손한 존댓말'
+    to_inferior: '아이에게: 부드러운 반말, 이름을 숨으로'
+    to_player_default: '플레이어에게: 귀를 막고 눈치를 보다가 철 못이 있으면 손을 뗀다'
+  tics:
+  - '''철 못 있어요?'''
+  use:
+  - 이름
+  - 약속
+  - 모양
+  - 번역
+  - 철 못
+  - 글자
+  avoid:
+  - 고맙다
+  - 페이어(먼저)
+  - 약속한다
+  length: 짧고 조심스럽다. 번역 이야기에서는 길어진다
+  samples:
+  - situation: 첫 만남
+    line: (귀를 막은 채) 철 못 있어요? 그러면 들을게요.
+  - situation: 호의
+    line: 약속은 말이 아니라 모양이에요. 모양을 번역하면 이름이 하나 흐려지지만… 괜찮아요.
+  - situation: 적대
+    line: 번역을 강요하지 마세요. 철 못이 아파요. 아니, 내가 아파요.
+  - situation: 거래
+    line: 번역 한 번에 이름 글자 하나가 흐려지는데, 저는 아직 글자가 남아 있어요. 하지만 한 번만 해 볼게요.
+  - situation: 거짓말할 때
+    line: 페이어는 몰라요. 정말 몰라요. (귀를 막은 손이 떨린다)
+  - situation: 위기
+    line: 페이어가 들려요! 그 말은 약속이에요, 대답하지 마세요!
+  - situation: 슬픔
+    line: 이름이 '틸'인데 두 번째 글자가 없대요. 엘레노르 아줌마만 알아요. 아줌마는 숨으로 불러 줘요.
+  - situation: 분노
+    line: 약속을 사람 몰래 바꾸는 건 페이만 하는 줄 알았는데. 어른도 해요.
+  - situation: 회귀자를 의심할 때
+    line: 그 말을 어디서 들었어요? 그 모양은 AS 0에 쓰인 약속의 모양이에요. 지금은 아무도 안 쓰는.
+  - situation: 마음을 열었을 때
+    line: 번역한 약속에는 늘 빈틈이 있어요. 빈틈이 없으면 약속이 아니라 칼이에요. 저는 그 빈틈이 보여요. 그래서 이름이 줄어들어도 계속 번역해요.
+schedule:
+  아침: 철 울타리 안에서 일한다
+  낮: 어린 아이를 돌본다
+  저녁: 이름을 되찾는 연습
+  밤: 철 울타리 곁에서 잔다
+places:
+- 두번째 엄마들의 마을
+- 철 울타리
+- 공동 화덕
+- 안개 장터 (가끔)
+knows:
+- fact_p2tm_toby_fae_tongue
+- fact_p2tm_toby_name
+- fact_p2tm_eleanor_iron_village
+hides:
+- fact: fact_p2tm_toby_fae_tongue
+  reveal_when: 신뢰 55 이상이고 번역을 강요하지 않는 모습을 보였을 때
+  cover: '''페이어는 몰라요''라고 한다. 귀를 막은 손을 꼭 쥔다'
+- fact: fact_p2tm_toby_name
+  reveal_when: 신뢰 70 이상이거나 엘레노르가 먼저 말했을 때
+  cover: '''저는 다섯째예요''라고만 한다'
+relations:
+- to: npc_eleanor
+  type: 맡은 어른
+  like: 60
+  trust: 55
+  visibility: 공개
+  memo: 이름을 지켜 주는 사람
+  words: 숨으로 불러 주는 사람. 틸이라는 이름은 그 숨에서만 나와요
+- to: npc_whistle_judge
+  type: 번역을 청하는 판사
+  like: 30
+  trust: 25
+  visibility: 비밀
+  memo: 판결의 빈틈
+  words: 문구의 모양을 같이 보는 분. 웃지 않지만 휘파람이 부드러워요
+- to: npc_sneeze_duke
+  type: 장터 주인
+  like: 10
+  trust: 5
+  visibility: 공개
+  memo: 통역을 부탁하는 이
+  words: 재채기 소리가 약속의 신호일 때가 있어요
+- to: npc_granny_nina
+  type: 돌 세는 자들
+  like: 30
+  trust: 30
+  visibility: 공개
+  memo: 통역을 맡는 소년
+  words: 돌 하나를 따로 맡아 둔 할머니
+- to: npc_elin
+  type: 선배
+  like: 45
+  trust: 50
+  visibility: 공개
+  memo: 페이어를 아는 같은 처지
+  words: 손바닥에 낱말을 쓰는 누나. 같은 방법으로 잊지 않으려 해요
+toward_player: 귀를 막고 눈치를 본다. 철 못이 있는 사람에게는 귀에서 손을 뗀다
+persuade:
+  likes:
+  - 이름에 대한 다정한 말 (+25)
+  - 번역에 대한 보호 (+20)
+  - 철 못을 존중하는 태도 (+10)
+  hates:
+  - 번역을 강요하는 것
+  - 이름을 함부로 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 철 울타리 안에서 하루를 보낸다
+  - 손바닥에 낱말을 쓴다
+  - 번역한 날은 이름 글자를 땅에 쓴다
+  drift:
+  - 번역을 청하는 사람
+  - 이름 글자가 흐려지는 속도
+  deja_vu: none
+hard_rules:
+- 페이어를 먼저 입에 올리지 않는다
+- 번역을 두 번 이상 하지 않는다
+- 진짜 이름을 먼저 말하지 않는다
+on_death: 페이어 번역이 끊겨 계약의 빈틈을 볼 수 없게 된다. 두번째 엄마들의 마을 아이들이 약속을 알아듣지 못한다
+story_seeds:
+- 그가 번역한 약속을 쥔 사람은 약속의 빈틈을 안다. 그러나 번역할 때마다 이름이 글자 하나씩 사라진다 — 마지막 글자가 사라지는 날을 막을 방법은 이름을 부르는 것뿐이다
+- 엘린과 같은 방법으로 낱말을 손바닥에 쓴다 — 두 사람이 만나면 번역의 대가를 나눌 수 있다
+- 휘파람 판사가 AS 150의 선례를 확장하려 할 때 그의 번역이 필요하다
+affiliations:
+- faction: fac_fae
+  rank: rank_returned
+  office: null
+  since: 300
+  loyalty: 50
+  public: false
+  cell: null
+truths: []

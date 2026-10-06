@@ -1,0 +1,159 @@
+id: npc_name_page
+name: 이름 수집가의 시동
+aka:
+- 병 마개 모자
+tier: B
+type: living
+race: 페이
+subrace: 픽시
+sex: 남
+age: 불명
+region: 가시안개 숲
+home: 가시 궁정 이름 수집가의 움막 문 앞
+job: 이름 수집가의 시동 — 이름 보관소의 문지기. 웃음 조각의 궁정 안 일원
+rank: 작은 이 (시동)
+summary: 이름 무덤 병 가운데 하나의 위치를 아는 아이. 아스테리온이라는 이름이 붙었다는 전설의 병
+source: docs/world/people/thornmist.md
+life:
+- year: 200
+  age: 불명
+  event: 병 마개 하나에서 깨어나 '시동'으로 불림
+- year: 290
+  age: 불명
+  event: 웃음 조각의 첫 만남에서 병 하나의 위치를 맡음
+- year: 312
+  age: 불명
+  event: 올 가을 울지 않는 나무 만남에 참석할 차례 (낙엽월 1일 기준)
+appearance:
+- 손바닥만 한 몸에 유리병 마개를 모자로 쓴다
+- 날개가 가늘고 병 속 이름의 빛처럼 희미하다
+- 주먹을 입 앞에 쥐고 다닌다
+smell: 유리 마개와 이슬
+voice_sound: 가늘고 곧은 소리
+personality:
+  disposition:
+    용기: 20
+    자비: 20
+    정직: -20
+    신앙: -60
+    탐욕: -10
+    충성: 40
+  temperament:
+  - 조심
+  - 충직
+  - 호기심
+  - 곧음
+  habits:
+  - 병 마개 모자를 벗었다 쓴다
+  - 주먹을 입 앞에 쥔다
+  - 병 하나 곁에서 조용히 존다
+  values: 병 하나의 위치를 지키는 것
+  fears:
+  - 수집가가 병 하나의 위치를 되묻는 것
+  desires:
+    short: 병 하나의 위치를 결사 밖 누구에게도 말하지 않는 것
+    long: 그 병이 열리는 날 곁에 있는 것
+voice:
+  register:
+    to_superior: '수집가에게: 짧은 존대'
+    to_equal: '결사에게: 곧고 낮은 말'
+    to_inferior: '인간에게: 주먹을 쥐고 짧게'
+    to_player_default: '플레이어에게: 병 마개 모자를 벗고 주먹을 입 앞에 쥔다'
+  tics:
+  - 주먹 쥐기
+  - '''아무것도.'''
+  use:
+  - 병
+  - 마개
+  - 이름
+  - 하나
+  - 문
+  avoid:
+  - 열다
+  - 고맙다
+  length: 짧다
+  samples:
+  - situation: 첫 만남
+    line: (주먹을 쥔다) 무엇이 우스운가? — 아무것도.
+  - situation: 호의
+    line: 곧게 말하는 건 어려워. 그래도 말해 줄게. 병은 하나만 열면 돼, 열 개는 필요 없어.
+  - situation: 위기
+    line: 병이 울어! 이 병은 깨뜨리면 안 돼!
+  - situation: 슬픔
+    line: 이름이 병에 들어가는 소리를 매일 들어. 마개가 닫힐 때 아주 작은 한숨이 나와.
+  - situation: 비밀 누설
+    line: 병 하나. 아스테리온이라고 쓰인 병이래. 어디 있는지는 나만 알아. 어딘가의 흙 밑이 아니야.
+schedule:
+  아침: 문 앞에 선다
+  낮: 병 목록 정리
+  저녁: 울지 않는 나무 만남 (계절에 한 번)
+  밤: 병 하나 곁에서 존다
+places:
+- 이름 수집가의 움막
+- 이름 무덤
+- 울지 않는 나무
+knows:
+- fact_p2tm_name_page_shard
+- fact_p2tm_name_collector_nine_bottles
+- fact_tm_laugh_box
+hides:
+- fact: fact_p2tm_name_page_shard
+  reveal_when: 결사의 인사를 한 뒤 신뢰 70 이상
+  cover: '''병은 다 같은 병이야''라고 한다. 주먹을 꼭 쥔다'
+relations:
+- to: npc_name_collector
+  type: 주인
+  like: 20
+  trust: 10
+  visibility: 공개
+  memo: 병을 맡긴 이
+  words: 내게 병 하나를 맡기고 잊은 척하는 이
+- to: npc_mirror_perhaps
+  type: 같은 조각
+  like: 30
+  trust: 35
+  visibility: 비밀
+  memo: 궁정 안의 입
+  words: 곧게 말해 주는 시녀
+- to: npc_ashdust
+  type: 떨어진 입
+  like: 35
+  trust: 40
+  visibility: 비밀
+  memo: 곧은 말의 어른
+  words: 웃음을 잃은 대신 진실을 얻은 분
+toward_player: 병 마개 모자를 벗고 주먹을 입 앞에 쥔다. 대답은 '아무것도.'
+persuade:
+  likes:
+  - 결사의 인사 (+30)
+  - 병을 지키는 약속 (+20)
+  hates:
+  - 병을 열어 보자는 제안
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 움막 문 앞을 지킨다
+  - 계절마다 울지 않는 나무 아래에서 조각을 맞댄다
+  drift:
+  - 문 앞에 서는 방향
+  deja_vu: none
+hard_rules:
+- 병의 위치를 먼저 말하지 않는다
+- 결사 이야기를 먼저 꺼내지 않는다
+- 고맙다고 말하지 않는다
+on_death: 병 하나의 위치를 아는 이가 줄어 아스테리온 병이 영원히 묻힌다
+story_seeds:
+- 병 하나를 열면 대붕괴 전 마지막 이름이 풀려난다는 전설을 확인할 수 있다. 시동은 열 사람을 정해 두지 않았다
+- 수집가가 병 하나의 위치를 시동에게 맡긴 이유를 시동만 안다
+affiliations:
+- faction: fac_laugh_shards
+  rank: null
+  office: off_name_page
+  since: 290
+  loyalty: 80
+  public: false
+  cell: tm_cell_court
+truths: []

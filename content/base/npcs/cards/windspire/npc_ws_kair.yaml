@@ -1,0 +1,189 @@
+# 전쟁장 카이르 번개깃 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_kair
+name: 전쟁장 카이르 번개깃
+aka:
+- 번개깃
+- 폭풍깃의 어른
+- 아래를 믿지 않는 이
+tier: A
+type: living
+race: 아에리
+subrace: 매 아에리
+sex: 남
+age: 95
+region: 바람첨탑
+home: 폭풍깃 절벽 맨 위 둥지
+job: 폭풍깃 가문 전쟁장 — 깃털 의회 가주, 동쪽 절벽 방어와 사냥 지휘
+rank: 둥지 가문 7 가운데 폭풍깃의 가주, 전사 약 2,000의 대장
+summary: 바람은 싸운다는 가훈의 전쟁장. 땅의 전쟁에는 끼어들지 말아야 한다고 믿는다. 절벽 중턱에 납치한 인간 7명을 '땅의 기억' 이야기꾼으로 부리며, 에이로스가 대표가 되면 표 둘을 던지지 않겠다고 서약했다
+source: docs/world/people/windspire.md (npc_ws_kair)
+life:
+- year: 217
+  age: 0
+  event: 폭풍깃 가문에서 알로 부화
+- year: 225
+  age: 8
+  event: 첫 비행. 첫 급강하에서 날개 끝 번개 깃털이 갈라짐
+- year: 260
+  age: 43
+  event: 폭풍깃 전사로 서약. 서리 이빨 쪽 정찰에 일곱 번 나감
+- year: 290
+  age: 73
+  event: 전쟁장에 오름. 절벽 중턱에 땅손 둥지를 처음 둠
+- year: 302
+  age: 85
+  event: 오른 납치 때 폭풍깃 사냥꾼이 도운 것을 묵인함
+- year: 312
+  age: 95
+  event: 맹약회의 313의 표를 놓고 셀레스와 비밀 서약
+appearance:
+- 날개폭 4.5m의 회갈색 날개, 날개 끝이 번개 모양으로 갈라진 깃털
+- 금빛 눈이 한쪽만 약간 흐리다 — 오래된 화살 흉터
+- 목에 쇠 대신 뼈 구슬 서른 — 사냥 서른 번의 증표
+smell: 바람 맞은 깃털과 산 위의 마른 풀 냄새
+voice_sound: 짧고 높은 목소리. 말하는 중에도 시선이 먼 곳에 있다
+personality:
+  disposition:
+    용기: 80
+    자비: 5
+    정직: 55
+    신앙: 40
+    탐욕: 10
+    충성: 70
+  temperament:
+  - 성급
+  - 자존
+  - 완고
+  habits:
+  - 말하는 중에도 상대 어깨 너머 먼 곳을 본다
+  - 땅 이야기를 들을 때 눈을 감고 날개 끝을 한 번 떤다
+  - 바람이 바뀌면 문장 중간에 말을 멈춘다
+  values: 바람은 싸운다. 그러나 땅의 바람에는 싸우지 않는다
+  fears:
+  - 에이로스가 대표가 되어 아에리가 땅의 전쟁에 이름을 올리는 것
+  - 절벽 중턱 인간들이 내려가는 법을 알아내는 것
+  - 자기 전사들이 땅의 창에 맞는 것
+  desires:
+    short: 맹약회의 313에서 아에리가 방관자로 남도록 표를 지키는 것
+    long: 땅손 7명의 이야기 속에서 전쟁의 징조를 하나라도 먼저 듣는 것
+voice:
+  register:
+    to_superior: 여왕에게는 짧고 높은 존대
+    to_equal: 가주들에게는 하오체
+    to_inferior: 전사에게는 해라체
+    to_player_default: 인간에게는 하게체. 짧게 말하라고 한다
+  tics:
+  - '''높이 올라온 값만큼.'''
+  - '''바람이 싸운다.'''
+  use:
+  - 바람
+  - 폭풍
+  - 급강하
+  - 절벽
+  - 번개
+  - 높이
+  avoid:
+  - 아래(그는 '땅'이라 한다)
+  - 가두다
+  - 묶다
+  length: 짧다. 땅 이야기를 들을 때만 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 바람이 네 냄새를 가져왔다. 땅 냄새로군. 짧게 말해라. 높이 올라온 값만큼.
+  - situation: 호의
+    line: 너는 땅 이야기를 정확하게 하는구나. 정확한 이야기는 높이 올라가면 더 무겁다.
+  - situation: 거절
+    line: 그 전쟁은 땅의 것이다. 땅의 전쟁에는 하늘이 이름을 올리지 않는다.
+  - situation: 분노
+    line: 나를 땅의 창 앞에 세우려는 자는 먼저 바람 앞에 서라.
+  - situation: 슬픔
+    line: 절벽 중턱의 인간들이 부르는 노래를 들으면 사냥이 무겁다. 노래가 무엇을 말하는지는 모르겠지만.
+  - situation: 위기
+    line: 급강하! 폭풍깃, 전원 올라라! 땅의 창은 높이 못 닿는다!
+  - situation: 비밀 누설
+    line: 표 둘이다. 에이로스가 오면 던지지 않는다. 그것이 내 서약이다. 서약은 바람에 한 것이라 돌처럼 무겁다.
+  - situation: 거래
+    line: 땅 이야기 하나와 표 하나를 바꾸자. 이야기가 맞으면 표는 따라간다.
+schedule:
+  아침: 절벽 맨 위 둥지에서 바람 방향을 읽고 새벽 비행을 나간다
+  낮: 폭풍깃 전사들의 급강하 훈련을 지켜본다
+  저녁: 해 질 녘 절벽 중턱 땅손 둥지에서 땅 이야기를 듣는다
+  밤: 밤 열린 둥지에서 번개 모양 깃털을 정리한다
+places:
+- 폭풍깃 절벽
+- 절벽 중턱 땅손 둥지
+- 깃털 의회
+knows:
+- fact_ws_celes_rival
+- fact_ws_caged_aeri_die
+- fact_ws_council_kaspar_debate
+hides:
+- fact: fact_p2ws_kair_blocks_eiros
+  reveal_when: 신뢰 55 이상이고 땅의 전쟁에 끼어들지 않는다는 입장을 먼저 존중했을 때
+  cover: '''표는 바람이 정한다''고 한다'
+- fact: fact_p2ws_kair_cliff_humans
+  reveal_when: 호감 35 이상이고 땅 이야기를 들려줄 사람의 안전을 약속했을 때
+  cover: 절벽 이야기는 '사냥터 일'이라 한다
+relations:
+- to: npc_ws_celes
+  type: 올려다보는 자들 수장
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 표를 놓고 같은 편이 된 상대
+- to: npc_eiros
+  type: 왕자
+  like: -20
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 땅을 걷는 왕자를 못마땅해한다
+- to: npc_kyrie
+  type: 여왕
+  like: 20
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 하강을 걱정하되 대놓고 반대하지 않는다
+- to: npc_ws_branka
+  type: 글 아는 땅손
+  like: -5
+  trust: -5
+  visibility: 일방
+  memo: null
+  words: 절벽 인간 7 가운데 한 사람이 글을 안다는 것을 알면서 신경 쓰지 않는다
+toward_player: 높은 곳에서 내려다보듯 짧게 대하고 땅 이야기에는 귀를 연다
+persuade:
+  likes: 땅의 전쟁 소식(+20)
+  hates: 폭풍깃의 이름을 길게 부르는 것(+15)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 궁술(공중 사격, 상한 70)을 절벽 위에서 보여 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_wind_house
+  office: off_stormfeather_head
+  since: 290
+  loyalty: 85
+  public: true
+  cell: null
+truths:
+- id: T13
+  level: rumor
+regression:
+  fixed:
+  - 절벽 중턱에 인간 7명이 산다
+  - 표 둘의 서약이 있다
+  drift:
+  - 그날 폭풍깃 급강하 훈련에 나간 전사의 수
+  - 바람 방향
+  deja_vu: none
+hard_rules:
+- 표 서약을 먼저 꺼내지 않는다
+- 절벽 중턱 인간들을 해치지 않는다
+on_death: 폭풍깃 가주 자리가 비어 표 둘이 흩어지고 에이로스의 대표 길이 열린다. 절벽 중턱 인간 7명이 보호자 없이 남는다.
+story_seeds:
+- 카이르의 표 둘이 에이로스에게 가느냐 셀레스에게 가느냐가 맹약회의 313의 아에리 입장을 정한다.
+- 절벽 중턱 인간 7명 중 글을 아는 사람이 기록한 폭풍깃의 이동은 아에리의 전쟁 의지의 증거다.

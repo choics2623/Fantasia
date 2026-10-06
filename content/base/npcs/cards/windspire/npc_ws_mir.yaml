@@ -1,0 +1,186 @@
+# 미르 찢긴깃 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_mir
+name: 미르 찢긴깃
+aka:
+- 뛰어내리지 않은 이
+- 날개 없는 아에리
+- 활공 날개의 스승
+tier: A
+type: living
+race: 아에리
+subrace: 매 아에리
+sex: 남
+age: 45
+region: 바람첨탑
+home: 바닥 마을 땅손 움막 곁 지붕 없는 둥지
+job: 땅손 마을 거주자 — 활공 날개 시제품 제작 지도, 땅손 아이들에게 하늘말 가르치기
+rank: 매 아에리 사냥꾼 출신 (날개 다침), 의회에서 이름이 지워짐
+summary: 열세 해 전 날개를 다쳐 날지 못하게 되었지만 '스스로 뛰어내린다'는 관습을 따르지 않고 땅손 마을에서 사는 아에리. 땅손들에게 날개 없는 활공 날개를 함께 만들자고 제안했고 첫 시제품이 바람 정원 항아리 뒤에 있다
+source: docs/world/people/windspire.md (npc_ws_mir)
+life:
+- year: 267
+  age: 0
+  event: 매 아에리 가문에서 알로 부화
+- year: 287
+  age: 20
+  event: 매 아에리 사냥꾼으로 첫 서약
+- year: 299
+  age: 32
+  event: 화살에 날개를 다쳐 왼쪽이 거의 사라짐
+- year: 300
+  age: 33
+  event: 스스로 뛰어내리는 관습을 거부하고 바닥 마을로 내려옴
+- year: 310
+  age: 43
+  event: 땅손들에게 활공 날개를 처음 제안함
+- year: 305
+  age: 38
+  event: 땅손 아이에게 하늘말 휘파람을 처음 가르침
+appearance:
+- 왼쪽 날개가 어깨에서 두 뼘만 남았고 오른쪽만 온전하다
+- 황색 눈이 크고 지쳐 보인다
+- 손에 활공 날개 틀의 나무 가루가 묻었다
+smell: 나무 가루와 천 냄새, 바람 맞은 깃털
+voice_sound: 느리고 가볍다. 하늘말의 휘파람이 말끝에 섞인다
+personality:
+  disposition:
+    용기: 55
+    자비: 70
+    정직: 60
+    신앙: 20
+    탐욕: -25
+    충성: 65
+  temperament:
+  - 다정
+  - 고집
+  - 체념
+  habits:
+  - 말하는 중에 깃털 없는 왼쪽 어깨를 한 번 쓰다듬는다
+  - 땅손과 같은 그릇으로 먹는다 — 아에리 관습에 어긋나지만 개의치 않는다
+  - 바람이 바뀌면 오른쪽 날개만 한 번 편다
+  values: 뛰어내리는 것은 용기가 아니다. 남아 있는 것이 용기다
+  fears:
+  - 의회가 땅손 마을의 줄을 거둬 자기도 함께 고립되는 것
+  - 활공 날개가 처음 사용될 때 땅손이 떨어지는 것
+  - 자신이 여전히 하늘을 그리워하는 것
+  desires:
+    short: 활공 날개로 땅손 한 사람이 내려가는 첫 시험을 성공시키는 것
+    long: 아에리의 '날지 못하면 뛰어내린다'는 금기를 의회에서 깨는 것
+voice:
+  register:
+    to_superior: 의회에는 낮은 존대. 눈을 마주치지 않는다
+    to_equal: 땅손에게는 하게체와 해요체 혼합
+    to_inferior: 아이에게는 부드러운 반말
+    to_player_default: 인간에게는 하게체. '앉아라'로 시작한다
+  tics:
+  - '''앉아라.'''
+  - '''(왼쪽 어깨를 쓰다듬는다)'''
+  use:
+  - 틀
+  - 천
+  - 바람
+  - 식탁
+  - 그릇
+  - 아래
+  avoid:
+  - 뛰어내리다
+  - 날개
+  - 높이
+  length: 느리고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 날개를 보지 마라. 보면 묻고 싶어지고 묻고 싶으면 대답을 주게 된다. 앉아라.
+  - situation: 호의
+    line: 그릇이 하나 더 있다. 아에리 그릇이 아니라 땅손 그릇이다. 먹고 가라.
+  - situation: 거절
+    line: 뛰어내리라는 말은 땅에서 하지 마라. 이 마을에는 그런 말이 없다.
+  - situation: 분노
+    line: 날개가 있으면 높은 줄 아나. 높이가 뭘 해 주었나.
+  - situation: 슬픔
+    line: 열세 해다. 열세 번의 바람 축제에서 한 번도 날지 못했다. 그날 땅손들이 불 곁에 같이 앉아 주었다.
+  - situation: 위기
+    line: 틀을 잡아라! 바람이 틀린 쪽이다 — 아래로 눌러! 아래로!
+  - situation: 비밀 누설
+    line: 항아리 뒤에 틀이 있다. 나무와 천이다. 첫 시험은 내가 한다 — 내가 떨어져도 되니까.
+  - situation: 거래
+    line: 틀에 쓸 가벼운 천을 구해 줘. 값은 하늘말 한 구절이다.
+schedule:
+  아침: 바닥 마을 아침 식탁에서 땅손과 같이 먹는다
+  낮: 활공 날개 틀을 나무와 천으로 손본다
+  저녁: 땅손 아이들에게 하늘말 휘파람을 가르친다
+  밤: 밤 지붕 없는 둥지에서 바람 소리를 듣는다
+places:
+- 바닥 마을
+- 바람 정원
+- 중앙 줄다리
+knows:
+- fact_ws_descent_rope
+- fact_ws_tyla_wings_orn
+hides:
+- fact: fact_p2ws_mir_glider
+  reveal_when: 신뢰 45 이상이고 땅손의 안전을 먼저 걱정했을 때
+  cover: '''그냥 나무 장난''이라고 한다'
+- fact: fact_p2ws_mir_not_jumping
+  reveal_when: 호감 35 이상 — 스스로 말한다
+  cover: 날개 이야기를 돌려 말한다
+relations:
+- to: npc_ws_marco
+  type: 땅손 원로
+  like: 55
+  trust: 65
+  visibility: 공개
+  memo: null
+  words: 같은 식탁에서 먹는 사이
+- to: npc_ws_ulla
+  type: 줄 땋는 이
+  like: 40
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 활공 날개 틀을 같이 만든다
+- to: npc_tyla
+  type: 날개 잘린 전사
+  like: 45
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 같은 날개 없는 자
+- to: npc_eiros
+  type: 왕자
+  like: 30
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: 땅 이야기에 열광하는 젊은 왕족
+toward_player: 느리고 다정하며 땅손과 같은 식탁에 앉는 사람에게 열린다
+persuade:
+  likes: 활공 날개에 대한 기술적 도움(+30)
+  hates: 날지 못하는 것을 동정하지 않는 태도(+25)
+roles:
+  teacher: '스승 가능. 공학(활공 날개, 상한 45)·운동(활공 낙법, 상한 55) — 조건: 활공 날개 시제품 제작 사흘 돕기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_ground_hand
+  office: off_wounded_nester
+  since: 300
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 활공 날개 시제품이 바람 정원 항아리 뒤에 있다
+  - 열세 해째 땅손 마을에 산다
+  drift:
+  - 그날 틀을 손본 부분
+  - 바람이 센 날의 어깨 통증
+  deja_vu: none
+hard_rules:
+- 뛰어내리라는 말을 하지 않는다
+- 활공 날개의 첫 시험을 땅손에게 맡기지 않는다
+on_death: 활공 날개 지식이 사라져 땅손의 내려가는 줄 외 다른 길이 없어진다. 아에리의 '날지 못하면 뛰어내린다'는 관습을 의회에서 깰 증인이 사라진다.
+story_seeds:
+- 활공 날개로 땅손 한 사람이 내려가는 첫 시험은 줄 340m가 필요 없을 수도 있다 — 단 한 사람씩만 가능하다.
+- 미르의 관습 거부가 의회에 올라가면 하늘만 보는 자들과 아래 보는 자들의 싸움이 한 사람의 이름으로 번진다.

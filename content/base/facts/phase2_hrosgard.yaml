@@ -140,7 +140,7 @@
   truth: true
   danger: 5
   names: [호르디스]
-- id: fact_p2hg_runa_chant_whole
+- id: fact_p2hg_ragna_chant_whole
   text: "라그나는 노래 한 달 가운데 열이레째까지를 외웠다. 그 부분에 '용이 다시 칼을 쥐면 거인은 먼저 일어선다'는 구절이 있다"
   truth: true
   danger: 3

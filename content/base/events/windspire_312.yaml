@@ -1,0 +1,50 @@
+# 바람첨탑 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §14(바람 축제·독수리 계단 폐쇄), RACES §14, WORLD_BIBLE §10(클락 2 맹약회의 313, 클락 7 초원 통일, 클락 1 흰 알 부화), facts/windspire.yaml·phase2_windspire.yaml, docs/world/people/windspire.md.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림. 깃털 의회는 6일 주의 2·5일째에 열린다.
+# 다른 지역과의 연결: 시룬의 회색여울 상공 임무(낙엽월 1일 기준 열흘째), 독수리 계단 폐쇄(서리월 1일 — 카즈둠과의 교역 단절), 313-04-20 에이로스의 맹약회의 출발(= 카즈둠 313-04-15 브로르의 출발과 같은 길), 313-02 테무르 칸의 서신(바람 우물 → 하르칸), 313-03 흰 알 부화와 역행하는 별, 313-04 돌팔 남침을 보는 매눈.
+# 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다.
+
+# ── 낙엽월 (9) ──
+- {id: ev_ws_sep_rope_length, date: "312-09-10", npcs: [npc_ws_marco, npc_ws_ulla], from: "20:00", to: "23:00", at: ws_water_jars, doing: "항아리 밑 줄을 손으로 쓸어 길이를 잰다 — 이백십이 미터. 울라가 한 겹을 더한 것을 마르코는 아직 모른다"}
+- {id: ev_ws_sep_ratz_cage, date: "312-09-18", npcs: [npc_ws_ratz, npc_ws_torin], from: "14:00", to: "18:00", at: sky_market__tents, doing: "라츠가 곡식을 사 간다 — 토린은 장부에서 한 줄을 지우고 라츠는 새장 쪽을 보지 않는다", travel_from: sky_market__bandit_den, return_to: sky_market__bandit_den}
+- {id: ev_ws_sep_erden_wait, date: "312-09-25", npcs: [npc_ws_erden, npc_ws_sera], from: "10:00", to: "12:00", at: sky_market__basket_lift, doing: "하르칸 전령이 서신 통을 보이지 않고 줄지기 곁에 선다 — 줄지기는 '의회가 읽을지는 모른다'고만 한다"}
+# ── 서리월 (10) — 독수리 계단 폐쇄 ──
+- {id: ev_ws_oct1_stair_closed, date: "312-10-01", npcs: [npc_ws_torin, npc_ws_sera], from: "06:00", to: "12:00", at: sky_market__cliff_trail, doing: "서리월 1일 — 독수리 계단이 닫힌다. 마지막 두르강 짐수레가 내려가고 장터는 겨울 장을 연다. 줄지기가 계단 입구의 줄을 거둔다", fixed: true}
+- {id: ev_ws_oct2_feris_dead, date: "312-10-02", npcs: [npc_ws_ratz], from: "06:00", to: "09:00", at: sky_market__bandit_den, doing: "철망 새장 안 흰 날개가 움직이지 않는다 — 라츠가 처음으로 새장 문을 연다. 열어도 날아오르지 않는다, if: feris_dead"}
+- {id: ev_ws_oct6_sirun_report, date: "312-10-06", npcs: [npc_ws_sirun, npc_kyrie], from: "19:00", to: "21:00", at: ws_high_nest_house, doing: "시룬이 키리에에게 보고한다 — '셋째는 한 번도 위를 올려다보지 않습니다.' 이름은 적히지 않는다", fixed: true}
+- {id: ev_ws_oct14_council_one, date: "312-10-14", npcs: [npc_kyrie, npc_eiros, npc_ws_celes, npc_ws_kair, npc_ws_aela, npc_ws_rei, npc_ws_ask], from: "09:00", to: "17:00", at: ws_feather_council, doing: "깃털 의회 — 맹약회의 313 대표 논의 첫 회. 에이로스와 셀레스가 모두 이름을 올린다. 표는 일곱으로 갈린다", fixed: true}
+- {id: ev_ws_oct_launa_trade, date: "312-10-22", npcs: [npc_ws_launa, npc_orn], from: "14:00", to: "17:00", at: ws_feather_library, doing: "오른이 서고에서 땅 이야기를 한 시간 말한다 — 라우나가 매듭을 하나 묶어 준다. '손가락 길이의 값이다'라고 한다", travel_from: ws_ground_nest, return_to: ws_ground_nest}
+# ── 긴밤월 (11) ──
+- {id: ev_ws_nov_sirun_second, date: "312-11-22", npcs: [npc_ws_sirun, npc_ws_rei], from: "10:00", to: "14:00", at: ws_hawkeye_ledge, doing: "시룬이 새 선을 지도 둥지에 얹는다 — 회색여울 상공에서 용제국 기사 와이번을 보았다는 말은 하지 않는다"}
+- {id: ev_ws_nov_aela_votes, date: "312-11-30", npcs: [npc_ws_aela, npc_ws_celes], from: "17:00", to: "22:00", at: ws_looking_up_nest, doing: "하늘만 보는 자들의 저녁 — 줄 거둠 표 셋을 더 센다. 균열이 보이는 쪽은 아무도 보지 않는다"}
+# ── 굶주림월 (12) ──
+- {id: ev_ws_dec_torin_draft, date: "312-12-10", npcs: [npc_ws_torin, npc_ws_anskar], from: "14:00", to: "18:00", at: sky_market__durgan_depot, doing: "토린이 130m 줄 공급 계약 초안을 쇠판에 새긴다 — 대가 칸이 비어 있다. 안스가르가 숫자를 한 번 정확히 말해 준다, if: torin_rope_deal"}
+- {id: ev_ws_dec_ratz_letter, date: "312-12-20", npcs: [npc_ws_ratz, npc_ws_erden], from: "16:00", to: "20:00", at: sky_market__tents, doing: "라츠가 하르칸 전령에게 몸값 요구서를 높은둥지에 전해 달라고 청한다 — 전령은 '칸의 서신이 먼저'라고 거절한다, if: feris_alive", travel_from: sky_market__bandit_den, return_to: sky_market__bandit_den}
+# ── 313 해빙월 (1) — 바람 축제 ──
+- {id: ev_ws_jan18_festival, date: "313-01-18", npcs: [npc_kyrie, npc_eiros, npc_ws_kair, npc_ws_celes, npc_ws_aela, npc_ws_rei, npc_ws_launa, npc_ws_ask, npc_ws_tur, npc_ws_orea], from: "07:00", to: "19:00", at: windspire, doing: "바람 축제 — 아에리 전원이 하늘을 난다. 기둥 위에 아무도 없는 하루. 의회 가문도, 사냥꾼도, 서고지기도 모두 바람 속에 있다", fixed: true}
+- {id: ev_ws_jan18_marco, date: "313-01-18", npcs: [npc_ws_marco, npc_ws_ulla], from: "07:00", to: "19:00", at: ws_water_jars, doing: "혼자인 날 — 항아리 밑 줄 전체를 꺼내 길이를 잰다. 이백칠십 미터. 한 겹 더한 부분을 마르코가 처음 만져 본다", fixed: true}
+- {id: ev_ws_jan18_mir, date: "313-01-18", npcs: [npc_ws_mir], from: "07:00", to: "19:00", at: ws_ground_village, doing: "날개 없는 아에리가 땅손과 불 곁에 앉는다 — 바람 축제에서 열세 번째로 날지 못한다. 땅손 아이가 휘파람으로 하늘말을 따라 한다", fixed: true}
+- {id: ev_ws_jan18_orn, date: "313-01-18", npcs: [npc_orn], from: "07:00", to: "19:00", at: ws_ground_nest, doing: "혼자인 날 — 둥지에서 땅 이야기를 숯으로 적는다. 가끔 위를 본다. 첨탑이 비어 있다", fixed: true}
+- {id: ev_ws_jan18_orea, date: "313-01-18", npcs: [npc_ws_orea], from: "07:00", to: "12:00", at: ws_funeral_peak, doing: "남쪽 바위 틈의 가죽 싼 것을 꺼내 바람을 맞게 한다 — 놓지는 않는다. 바람 축제 날만 날개가 바람을 느낀다"}
+- {id: ev_ws_jan18_tyla, date: "313-01-18", npcs: [npc_tyla], from: "07:00", to: "19:00", at: ws_feather_cliff_cave, doing: "축제의 날 — 하늘에 아에리가 가득한 것을 동굴 입구에서 올려다본다. 에이로스가 오지 않는 낮이 처음이다"}
+# ── 313 파종월 (2) ──
+- {id: ev_ws_feb2_letter, date: "313-02-02", npcs: [npc_ws_erden, npc_ws_sera], from: "10:00", to: "12:00", at: sky_market__basket_lift, doing: "하르칸 전령이 드디어 서신 통을 줄지기에게 건넨다 — 의회가 읽을지는 모른다. 서신은 바구니에 실려 올라간다", fixed: true}
+- {id: ev_ws_feb6_letter_kyrie, date: "313-02-06", npcs: [npc_kyrie], from: "19:00", to: "21:00", at: ws_queen_perch, doing: "테무르 칸의 서신을 혼자 읽는다 — 서진 때 하늘길을 지나가게 해 달라는 청이다. 아래의 불빛 대신 동쪽 초원 쪽을 바라본다"}
+- {id: ev_ws_feb14_rope, date: "313-02-14", npcs: [npc_ws_torin, npc_ws_ulla, npc_ws_tur], from: "16:00", to: "19:00", at: sky_market__basket_lift, doing: "바구니에 밧줄 한 타래가 올라간다 — 토린의 서명이 든 쇠판이 줄지기 눈을 지나간다. 투르가 사육장 쪽에서 받을 자리를 비워 둔다, if: torin_rope_deal", travel_from: ws_ground_village}
+# ── 313 꽃월 (3) — 흰 알과 역행하는 별 ──
+- {id: ev_ws_mar5_vote, date: "313-03-05", npcs: [npc_kyrie, npc_eiros, npc_ws_celes, npc_ws_kair, npc_ws_aela, npc_ws_rei], from: "09:00", to: "17:00", at: ws_feather_council, doing: "깃털 의회 — 맹약회의 313 대표 표결. 표가 셋 대 셋으로 갈리고 키리에가 마지막 한 표를 쥐고 오래 말하지 않는다. 폭풍깃의 침묵이 표를 하나 지운다", fixed: true}
+- {id: ev_ws_mar5_celes, date: "313-03-05", npcs: [npc_ws_celes], from: "17:00", to: "22:00", at: ws_looking_up_nest, doing: "표결 뒤 둥지에서 균열이 보이는 쪽으로 처음 고개를 돌린다 — 아무에게도 말하지 않는다", if: celes_loses}
+- {id: ev_ws_mar14_star, date: "313-03-14", npcs: [npc_korak, npc_ws_launa], from: "21:00", to: "24:00", at: ws_wind_bell, doing: "역행하는 별이 가장 낮게 내려온다 — 코라크가 흰 알 부화 소식이 오는 밤과 같은 밤으로 종 틀 나무에 새긴다. 라우나가 서고에서 그 줄을 따로 묶는다", travel_from: ws_feather_library, return_to: ws_feather_library}
+# ── 313 푸른월 (4) — 대표 출발 ──
+- {id: ev_ws_apr12_rei_march, date: "313-04-12", npcs: [npc_ws_rei, npc_ws_ask], from: "05:00", to: "17:00", at: ws_hawkeye_ledge, doing: "서리 이빨 쪽에서 거인 행렬이 서리 길로 내려오는 것을 본다 — 정찰 고리가 보고서에 올릴지 한 번 더 망설인다, if: jotun_march"}
+- {id: ev_ws_apr20_depart, date: "313-04-20", npcs: [npc_kyrie, npc_eiros], from: "05:00", to: "09:00", at: ws_high_nest, doing: "여왕이 아들을 맹약회의 313 아에리 대표로 보낸다 — 은빛 깃털 한 장을 목에 걸어 준다. 아에리가 처음으로 대표를 보낸다", fixed: true}
+- {id: ev_ws_apr20_celes_oppose, date: "313-04-20", npcs: [npc_ws_celes, npc_ws_aela], from: "05:00", to: "09:00", at: ws_looking_up_nest, doing: "출발을 지켜보지 않고 높은 둥지에서 등을 돌린다 — 아엘라가 줄 거둠 표를 한 번 더 센다"}
+# ── 313 태양월 (5) — 맹약회의 ──
+- {id: ev_ws_may12_wait, date: "313-05-12", npcs: [npc_kyrie], from: "19:00", to: "23:00", at: ws_queen_perch, doing: "아들이 서약섬에서 첫 발언을 하는 날 — 아래의 불빛 대신 남쪽 바다를 오래 바라본다"}
+- {id: ev_ws_may_rope_done, date: "313-05-20", npcs: [npc_ws_marco, npc_ws_ulla, npc_ws_anskar], from: "20:00", to: "23:00", at: ws_water_jars, doing: "줄이 삼백사십 미터가 된다 — 안스가르가 확인한 숫자와 맞는다. 한 번에 열 명만 버틴다는 것도 확인된다, if: rope_340"}
+# ── 313 수확월 (7) ──
+- {id: ev_ws_jun_return, date: "313-06-25", npcs: [npc_kyrie, npc_eiros], from: "05:00", to: "09:00", at: ws_high_nest, doing: "대표가 맹약회의에서 돌아온다 — 키리에는 아들에게 무엇을 말했는지 묻지 않는다"}
+# ── 매달 반복 ──
+- {id: ev_ws_monthly_rei_seren, npcs: [npc_ws_rei], repeat: monthly, day: 5, from: "15:00", to: "18:00", at: ws_hawkeye_ledge, doing: "세렌 오필 상가의 사자가 줄을 타고 오른다 — 서리 요람 지도의 값을 한 번 더 부른다. 레이는 지도를 보이지 않고 값만 듣는다"}
+- {id: ev_ws_monthly_ask_tower, npcs: [npc_ws_ask], repeat: monthly, day: 20, from: "16:00", to: "19:00", at: ws_scout_ring, doing: "잿빛 탑 사자와 경로 값을 흥정한다 — 보고서 두 벌 중 한 벌만 건넨다"}
+- {id: ev_ws_monthly_torin_feathers, npcs: [npc_ws_torin, npc_ws_sera], repeat: monthly, day: 1, from: "08:00", to: "12:00", at: sky_market__durgan_depot, doing: "깃털 근수를 맞교환한다 — 서명 쇠판 한 장이 오고 가며 줄지기의 금속 고리 빚이 한 줄 줄어든다"}

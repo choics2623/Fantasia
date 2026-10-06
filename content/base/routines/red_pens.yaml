@@ -1,0 +1,182 @@
+# 녹테른 밤의 영지 NPC 일과 (24 §3). 원천: 각 카드의 schedule, docs/world/people/nocturne.md, REGIONS §7.5, kits/nocturne_estate.yaml.
+# 장소 id는 settlements/red_pens.yaml 의 rp_*, red_pens__*, outer(first_thirst_castle__*, rose_manor*, nocturne__*). 해 질 녘 18:00~19:00 은 인간 귀환과 녹테른 기상이 겹치는 정본 시각이다 (fixed).
+# 녹테른은 낮에 잔다 — 맑은 날은 저택 밖에 나오지 않는다. 인간은 해 뜰 때 시작하고 21:30 에 촛불을 끈다.
+# 로잘리는 공물 호송 기간(긴밤월 12~15일)에만 영지에 있다 (presence/away). 발타사르는 잿빛 탑 원로 일로 오간다.
+# 쉼표가 든 값은 큰따옴표로. days: all | workday | sabbath | odd | even | weekday:[1..6] | monthday:[..]
+
+npc_mordecai:
+  home: first_thirst_castle__throne
+  blocks:
+    - {days: all, from: "05:00", to: "17:00", at: first_thirst_castle__well, doing: "성 지하 우물 곁 — 빛을 피해 우물에 비친 것을 본다"}
+    - {days: all, from: "17:00", to: "18:00", at: first_thirst_castle__well, doing: "해가 지는 것을 우물 바닥의 피 몇 방울로 듣는다"}
+    - {days: all, from: "18:00", to: "23:00", at: first_thirst_castle__throne, doing: "옥좌 '마르지 않는 잔' — 밤의 귀족 접견", alt: {p: 0.2, at: first_thirst_castle__great_hall, doing: "대연회장을 한 바퀴 돈다"}}
+    - {days: all, from: "23:00", to: "05:00", at: first_thirst_castle__well, doing: "우물 곁에서 소절을 중얼거린다 — '너희는…'에서 멈춘다", fixed: true}
+npc_eloise:
+  home: first_thirst_castle__throne
+  blocks:
+    - {days: all, from: "05:00", to: "12:00", at: first_thirst_castle__throne, doing: "군주가 잠들지 않은 방 곁에 선다"}
+    - {days: all, from: "12:00", to: "17:00", at: first_thirst_castle__throne, doing: "군주의 서신을 정리한다 — 세실의 사본을 올린다"}
+    - {days: all, from: "17:00", to: "19:00", at: first_thirst_castle__throne, doing: "저녁 첫 잔을 따른다", fixed: true}
+    - {days: all, from: "19:00", to: "23:00", at: first_thirst_castle__throne, doing: "접견 시중"}
+    - {days: all, from: "23:00", to: "05:00", at: first_thirst_castle__well, doing: "우물 곁에서 군주의 중얼거림을 듣는다"}
+npc_carnon:
+  home: first_thirst_castle__kennel
+  blocks:
+    - {days: all, from: "18:00", to: "23:00", at: first_thirst_castle__kennel, doing: "집행 도구를 닦는다 — 날 선 도구에 이름을 새기지 않는다"}
+    - {days: all, from: "23:00", to: "04:00", at: first_thirst_castle__great_hall, doing: "군주의 명을 기다리며 대연회장 가장자리에 선다", alt: {p: 0.5, at: first_thirst_castle__kennel, doing: "집행인의 방에서 줄 장부를 읽는다"}}
+    - {days: all, from: "04:00", to: "18:00", at: first_thirst_castle__kennel, doing: "낮의 잠"}
+npc_marcius:
+  home: first_thirst_castle__cup_hall
+  blocks:
+    - {days: all, from: "18:00", to: "23:00", at: first_thirst_castle__cup_hall, doing: "공물 명단을 정리한다 — 한 줄은 비워 둔다"}
+    - {days: all, from: "23:00", to: "03:00", at: first_thirst_castle__well, doing: "우물 곁에서 군주의 두 겹 목소리를 받아 적는다 (순례 철)", alt: {p: 0.6, at: first_thirst_castle__cup_hall, doing: "회합장에서 명단 확정을 준비한다"}}
+    - {days: all, from: "03:00", to: "18:00", at: first_thirst_castle__cup_hall, doing: "낮의 잠"}
+npc_basilisa:
+  home: first_thirst_castle__cup_hall
+  blocks:
+    - {days: all, from: "18:00", to: "20:00", at: first_thirst_castle__cup_hall, doing: "해 질 녘 기상 — 첫 잔"}
+    - {days: all, from: "20:00", to: "23:00", at: first_thirst_castle__cup_hall, doing: "첫 잔의 가문 회합 — 맹약회의 안 초안을 고친다", alt: {p: 0.3, at: rp_lord_manor, doing: "붉은 우리 장부를 소리로 듣는다"}}
+    - {days: all, from: "23:00", to: "03:00", at: first_thirst_castle__cup_hall, doing: "가문 회합과 장부 청취"}
+    - {days: all, from: "03:00", to: "18:00", at: first_thirst_castle__cup_hall, doing: "낮의 잠"}
+npc_adriel:
+  home: rp_lord_manor
+  blocks:
+    - {days: all, from: "18:00", to: "19:30", at: rp_lord_manor, doing: "해 질 녘 기상 — 첫 잔"}
+    - {days: all, from: "19:30", to: "21:00", at: rp_tasting_room, doing: "시음 — 혈통별 피 맛을 기록한다"}
+    - {days: all, from: "21:00", to: "23:30", at: rp_overlook, doing: "채혈 순번을 내려다본다", alt: {p: 0.3, at: rp_bleed_shed, doing: "채혈 헛간에서 직접 참관한다"}}
+    - {days: all, from: "23:30", to: "04:00", at: rp_lord_manor, doing: "장부와 숫자 점검 — 일곱 앞에서 책장을 넘긴다"}
+    - {days: all, from: "04:00", to: "18:00", at: rp_coffin_room, doing: "낮의 잠 — 맑은 날은 이 방에서 나오지 않는다"}
+npc_kasimir:
+  home: red_pens__white_pen
+  blocks:
+    - {days: all, from: "18:00", to: "20:00", at: red_pens__white_pen, doing: "해 질 녘 기상 — 하얀 우리 입구에서 손을 씻는다"}
+    - {days: all, from: "20:00", to: "23:00", at: rp_white_garden, doing: "하얀 우리 정원을 돌며 선별된 이들을 관찰한다"}
+    - {days: all, from: "23:00", to: "03:00", at: rp_tribute_yard, doing: "공물 마당에서 명단과 도착을 확인한다 (긴밤월 외에는 비어 있다)", alt: {p: 0.6, at: red_pens__white_pen, doing: "하얀 우리 장부를 읽는다"}}
+    - {days: all, from: "03:00", to: "18:00", at: red_pens__white_pen, doing: "낮의 잠"}
+npc_zrag:
+  home: rp_herders_lodge
+  blocks:
+    - {days: all, from: "05:00", to: "06:00", at: rp_herders_lodge, doing: "목동 점호 — 호루라기", fixed: true}
+    - {days: all, from: "06:00", to: "18:00", at: rp_exercise_ground, doing: "우리 순찰 — 달리기와 울타리를 본다", outdoor: true, rain: {at: rp_herders_lodge, doing: "목동 숙소에서 숫자표를 정리한다"}}
+    - {days: all, from: "18:00", to: "19:00", at: rp_pen_barracks, doing: "우리 입구에서 귀환을 센다", fixed: true}
+    - {days: all, from: "19:00", to: "23:00", at: rp_bleed_shed, doing: "채혈 헛간 경비"}
+    - {days: all, from: "23:00", to: "05:00", at: rp_herders_lodge, doing: "숫자표를 침대 아래에 두고 잔다"}
+npc_chik_tally:
+  home: rp_bleed_shed
+  blocks:
+    - {days: all, from: "06:00", to: "18:00", at: rp_ledger_board, doing: "숫자표 정리 — 홈을 손톱으로 쓸어 읽는다"}
+    - {days: all, from: "18:00", to: "19:00", at: rp_pen_barracks, doing: "귀환 점호를 홈으로 센다", fixed: true}
+    - {days: all, from: "19:00", to: "03:00", at: rp_bleed_shed, doing: "채혈 순번을 나무패에 기록한다"}
+    - {days: all, from: "03:00", to: "06:00", at: rp_herders_lodge, doing: "잠깐 눈을 붙인다"}
+npc_hedwig:
+  home: rp_infirmary
+  blocks:
+    - {days: all, from: "05:30", to: "06:30", at: rp_pen_barracks, doing: "기상 점호 — 아픈 사람의 맥을 먼저 본다"}
+    - {days: all, from: "06:30", to: "12:00", at: rp_infirmary, doing: "솥에 쑥을 앉힌다 — 채혈 뒤 쓰러진 이를 돌본다"}
+    - {days: all, from: "12:30", to: "13:30", at: rp_feed_hall, doing: "점심 — 아이들에게 누룽지를 나눈다"}
+    - {days: all, from: "13:30", to: "18:00", at: rp_infirmary, doing: "탕약을 끓이고 맥을 잡는다"}
+    - {days: all, from: "18:00", to: "19:00", at: rp_pen_barracks, doing: "우리로 귀환", fixed: true}
+    - {days: all, from: "19:00", to: "23:00", at: rp_infirmary, doing: "채혈 뒤 쓰러진 이를 돌본다"}
+    - {days: "monthday:[5]", from: "23:00", to: "23:50", at: rp_herders_lodge, doing: "즈라그에게 쑥 한 자루를 건넨다", fixed: true}
+    - {days: all, from: "23:00", to: "05:30", at: rp_pen_barracks, doing: "잔다"}
+npc_marian:
+  home: red_pens__white_pen
+  blocks:
+    - {days: all, from: "06:00", to: "08:00", at: red_pens__white_pen, doing: "흰 막사에서 기상"}
+    - {days: all, from: "08:00", to: "12:00", at: rp_white_garden, doing: "정원 산책 — 선별된 몸을 운동시킨다"}
+    - {days: all, from: "12:00", to: "13:00", at: red_pens__white_pen, doing: "점심 — 가장 좋은 고기와 우유"}
+    - {days: all, from: "13:00", to: "18:00", at: rp_white_garden, doing: "조용히 앉는다 — 꿈 이야기는 하지 않는다"}
+    - {days: all, from: "18:00", to: "21:00", at: red_pens__white_pen, doing: "저녁과 채혈실 점검"}
+    - {days: all, from: "21:00", to: "06:00", at: red_pens__white_pen, doing: "잔다"}
+npc_rosalie:
+  home: nocturne__tribute_road
+  presence:
+    - {from: "312-11-12", to: "312-11-16"}
+  away: {at: lumen, doing: "루멘에서 공물 명단에 오른 채 평범한 신도로 산다 — 이 고장에 없다"}
+  blocks:
+    - {days: all, from: "03:00", to: "18:00", at: nocturne__tribute_road, doing: "호송대에 섞여 걸으며 걸음 수를 센다 — 장미 꽃잎을 입에 문다", outdoor: true}
+    - {days: all, from: "18:00", to: "03:00", at: red_pens__tribute_gate, doing: "공물 문 앞에서 줄에 선다"}
+npc_orphe:
+  home: rose_manor
+  blocks:
+    - {days: all, from: "04:00", to: "09:00", at: rose_manor, doing: "주인이 잠든 사이 집을 닦는다"}
+    - {days: all, from: "09:00", to: "17:00", at: rose_manor, doing: "낮 잠과 낮 일"}
+    - {days: all, from: "18:00", to: "19:00", at: rose_manor, doing: "해 질 녘 기상 시중 — 주인이 일어나기 전 방을 정리", fixed: true}
+    - {days: all, from: "19:00", to: "04:00", at: rose_manor__library, doing: "서재에서 장부를 홈으로 쓴다 — 촛불은 장부에서 멀리", alt: {p: 0.15, at: rp_ledger_board, doing: "붉은 우리 채혈 헛간 기록판의 '병사' 칸을 고친다"}}
+npc_pips:
+  home: rose_manor__greenhouse
+  blocks:
+    - {days: all, from: "06:00", to: "17:00", at: rose_manor__greenhouse, doing: "온실 화분과 수로 뚜껑 점검"}
+    - {days: all, from: "17:00", to: "20:00", at: rose_manor__garden, doing: "장미 꽃잎을 수로 입구에 놓는다", outdoor: true, rain: {at: rose_manor__greenhouse, doing: "꽃잎을 온실 안에서 말린다"}}
+    - {days: all, from: "20:00", to: "06:00", at: rose_manor__greenhouse, doing: "온실 곁 방에서 잔다"}
+npc_baltasar:
+  home: nocturne__obsidian_pen
+  presence:
+    - {from: "312-09-01", to: "312-10-20"}
+    - {from: "312-12-01", to: "313-05-10"}
+  away: {at: grey_tower, doing: "잿빛 탑 원로 일로 영지를 비운다"}
+  blocks:
+    - {days: all, from: "18:00", to: "20:00", at: nocturne__obsidian_pen, doing: "해 질 녘 기상"}
+    - {days: all, from: "20:00", to: "03:00", at: nocturne__obsidian_pen, doing: "시음 보고를 듣는다"}
+    - {days: all, from: "03:00", to: "18:00", at: nocturne__obsidian_pen, doing: "낮의 잠"}
+npc_silas_bell:
+  home: nocturne__silentbell_pen
+  blocks:
+    - {days: all, from: "18:00", to: "21:00", at: nocturne__silentbell_pen, doing: "의뢰 목록을 쓸어 읽는다 — 맨 위의 세실 줄은 보류"}
+    - {days: all, from: "21:00", to: "04:00", at: nocturne__silentbell_pen, doing: "사냥꾼에게 낮은 지시를 내린다"}
+    - {days: all, from: "04:00", to: "18:00", at: nocturne__silentbell_pen, doing: "낮의 잠"}
+npc_ninth_hunter:
+  home: rp_hunter_post
+  blocks:
+    - {days: all, from: "19:00", to: "04:00", at: nocturne__marsh_edge, doing: "사냥 — 붉은 갈대 선을 따라 탈주 흔적을 훑는다", outdoor: true, rain: {at: rp_hunter_post, doing: "초소에서 비를 피한다"}, alt: {p: 0.4, at: rp_hunter_post, doing: "초소에서 지시를 기다린다"}}
+    - {days: all, from: "04:00", to: "09:00", at: rp_hunter_post, doing: "초소에서 쉬며 7일째 피를 받는다"}
+    - {days: all, from: "09:00", to: "19:00", at: rp_hunter_post, doing: "낮 잠"}
+npc_marendis:
+  home: nocturne__stillwater_dock
+  blocks:
+    - {days: all, from: "18:00", to: "21:00", at: nocturne__stillwater_dock, doing: "해 질 녘 기상 — 병 번호를 정리한다"}
+    - {days: all, from: "21:00", to: "03:00", at: nocturne__stillwater_dock, doing: "세렌 사절을 접견한다", alt: {p: 0.4, at: nocturne__stillwater_dock, doing: "부두를 걷는다"}}
+    - {days: all, from: "03:00", to: "18:00", at: nocturne__stillwater_dock, doing: "낮의 잠"}
+npc_cecile:
+  home: rose_manor
+  blocks:
+    - {days: all, from: "04:00", to: "18:00", at: rose_manor, doing: "관 속에서 쉰다 (형식상) — 맑은 날은 서재에서 장부를 본다", alt: {p: 0.2, at: rose_manor__library, doing: "서재에서 병사 명단을 위조한다"}}
+    - {days: all, from: "18:00", to: "20:00", at: rose_manor, doing: "해 질 녘 기상 — 짐승 피 한 잔"}
+    - {days: all, from: "20:00", to: "23:00", at: rose_manor__overseer_hut, doing: "장미 우리를 순시한다 — '병사' 명단을 쓴다"}
+    - {days: all, from: "23:00", to: "04:00", at: rose_manor__library, doing: "서재에서 빼돌린 명단을 읽는다", alt: {p: 0.3, at: rose_manor__garden, doing: "장미원 셋째 덤불 아래 지하 통로를 점검한다"}}
+npc_alaric:
+  home: nocturne__black_chalice_pen
+  blocks:
+    - {days: all, from: "18:00", to: "20:00", at: nocturne__black_chalice_pen, doing: "해 질 녘 기상 — 육종 장부를 본다"}
+    - {days: all, from: "20:00", to: "23:00", at: nocturne__black_chalice_pen, doing: "저녁 시음 — 혈통별 피 맛을 기록한다"}
+    - {days: all, from: "23:00", to: "03:00", at: rose_manor, doing: "세실 저택을 감시한다 (밖에서)", alt: {p: 0.5, at: nocturne__black_chalice_pen, doing: "서재에서 세실 장부와 자기 장부를 겹쳐 본다"}}
+    - {days: all, from: "03:00", to: "18:00", at: nocturne__black_chalice_pen, doing: "낮의 잠"}
+npc_tessa:
+  home: nocturne__marsh_edge
+  blocks:
+    - {days: all, from: "05:00", to: "12:00", at: nocturne__marsh_edge, doing: "늪 경계 은신처에서 칼을 닦고 길을 외운다"}
+    - {days: all, from: "12:00", to: "18:00", at: nocturne__marsh_edge, doing: "낮의 잠 — 한 번씩 깬다"}
+    - {days: all, from: "18:00", to: "23:00", at: nocturne__marsh_edge, doing: "붉은 갈대 선을 따라 호송길을 점검한다", outdoor: true, alt: {p: 0.2, at: rose_manor__garden, doing: "장미원 쪽문에서 호송 약속을 확인한다"}}
+    - {days: all, from: "23:00", to: "05:00", at: nocturne__marsh_edge, doing: "호송이 있는 날은 갈대 선을 넘는다 — 아니면 잔다"}
+npc_quint:
+  home: rose_manor__overseer_hut
+  blocks:
+    - {days: all, from: "05:30", to: "06:30", at: rose_manor__overseer_hut, doing: "기상 점호"}
+    - {days: all, from: "06:30", to: "18:00", at: rose_manor__overseer_hut, doing: "장미 우리 감독 — '병사' 명단에 서명한다"}
+    - {days: all, from: "18:00", to: "19:00", at: rose_manor__overseer_hut, doing: "귀환 점호", fixed: true}
+    - {days: all, from: "19:00", to: "23:00", at: rose_manor__overseer_hut, doing: "저녁 시음 참관"}
+    - {days: all, from: "23:00", to: "05:30", at: rose_manor__overseer_hut, doing: "잔다"}
+npc_vesper:
+  home: first_thirst_castle__tower
+  blocks:
+    - {days: all, from: "19:00", to: "04:00", at: first_thirst_castle__tower, doing: "하늘을 돈다 — 공중 감시와 전령", outdoor: true, rain: {at: first_thirst_castle__tower, doing: "탑 천장에 매달려 비를 피한다"}}
+    - {days: all, from: "04:00", to: "19:00", at: first_thirst_castle__tower, doing: "탑 천장에 거꾸로 매달려 잔다"}
+npc_starved_pack:
+  home: nocturne__tooth_valley
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: nocturne__tooth_valley, doing: "폐허의 정원에서 숨소리를 따라 웅얼거린다 — 엘다르 노래의 조각", fixed: true}
+npc_iserda:
+  home: nocturne__thorn_roots
+  blocks:
+    - {days: all, from: "19:00", to: "04:00", at: nocturne__tooth_valley, doing: "굶주린 자들 사이를 걷는다 — 이름 하나를 입에 올린다", alt: {p: 0.4, at: nocturne__thorn_roots, doing: "뿌리 굴에서 홀로 있다"}}
+    - {days: all, from: "04:00", to: "19:00", at: nocturne__thorn_roots, doing: "뿌리 굴에서 쉰다 — 햇빛 없는 곳"}

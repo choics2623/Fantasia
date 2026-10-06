@@ -1,0 +1,148 @@
+# 녹테른 밤의 영지 2차 확장의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3). 인물: docs/world/people/nocturne.md (P2N-)
+# id 규칙: fact_p2nc_<주제>. 기존 fact_nc_*(facts/nocturne.yaml)는 고치지 않는다. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# 인물 수는 CONTINUITY_LOG §3 녹테른 결정을 따른다 — 세실이 빼돌린 인간 410명, 장미 410그루.
+# truth: false는 세계에 퍼진 거짓 소문이다.
+# ── 성과 군주 ──
+- id: fact_p2nc_eloise_mordecai_hum
+  text: "AS 311 이후 모르데카이는 매일 밤 첫 갈증의 우물 곁에서 같은 소절을 중얼거린다. '너희는…'에서 멈춘다. 시종 엘로이즈는 그 소절의 끝을 군주가 아직 한 번도 소리 내지 못했다는 것을 안다"
+  truth: true
+  danger: 4
+  names: [엘로이즈, 모르데카이, 우물]
+- id: fact_p2nc_eloise_cecile_letters
+  text: "세실이 '병사 명단 사본'을 군주의 책상에 올리는 경로는 엘로이즈의 손이다. 엘로이즈는 군주가 그 명단을 읽고 매번 한 줄도 지우지 않는다는 것을 안다"
+  truth: true
+  danger: 4
+  names: [엘로이즈, 세실, 병사 명단]
+- id: fact_p2nc_carnon_spares_children
+  text: "사형 집행인 카르논은 갈증의 밤 공물 가운데 열두 살 이하를 집행 줄이 아니라 '공물 아님' 줄에 세워 둔다. 같은 소녀가 3년째 그 줄에 서 있다. 군주는 아직 그 줄을 묻지 않았다"
+  truth: true
+  danger: 4
+  names: [카르논, 공물 아님 줄]
+- id: fact_p2nc_carnon_waits_order
+  text: "카르논은 세실의 장부 위조를 집행하라는 명이 내려오기를 기다리는 사람 가운데 하나다. 명은 알라리크가 밀고해야 내려오고, 알라리크는 증거를 잡을 때까지 밀고하지 않는다"
+  truth: true
+  danger: 3
+  names: [카르논, 알라리크]
+- id: fact_p2nc_marcius_blank_line
+  text: "현직 갈증의 밤 집전관 마르시우스는 공물 명단을 확정할 때 한 줄을 일부러 '결번'으로 비워 둔다. 그 결번 하나가 세실의 장미 하나가 된다. 알라리크가 집전관 자리를 노리는 이유가 이 결번이다"
+  truth: true
+  danger: 5
+  names: [마르시우스, 결번, 알라리크]
+- id: fact_p2nc_marcius_well_night
+  text: "우물 순례(갈증의 밤 전날 밤) 때 집전관은 우물 가장자리에서 군주의 '두 겹 목소리'를 받아 적는다. 올해는 두 겹 사이에 세 번째 소리가 들린다 — 마르시우스는 그것이 잔향의 소리라고 짐작하나 기록하지 않았다"
+  truth: true
+  danger: 5
+  names: [마르시우스, 우물 순례, 잔향]
+# ── 가주와 영주 ──
+- id: fact_p2nc_basilisa_mandate
+  text: "붉은 달 가문 가주 바실리사는 맹약회의 313에서 녹테른 대표로 '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낸다. 군주는 잔향의 피가 산 채로 필요하다. 대숙청은 군주에게 가장 나쁜 결과다"
+  truth: true
+  danger: 5
+  names: [바실리사, 맹약회의, 군주]
+- id: fact_p2nc_basilisa_adriel_leash
+  text: "바실리사는 붉은 우리 영주 아드리엘의 장부가 3년째 적자인 이유가 사라진 인간 때문임을 알고, 아드리엘이 그 책임을 세실에게 돌리게 둔다. 때가 되면 아드리엘을 희생양으로 쓴다"
+  truth: true
+  danger: 4
+  names: [바실리사, 아드리엘]
+- id: fact_p2nc_adriel_ledger_gap
+  text: "아드리엘의 붉은 우리 장부는 크릭 목동이 세는 인간 수보다 일곱 많다. 아드리엘은 그 일곱이 '병사'라고 믿기로 했다. 확인하면 책임이 자기에게 오기 때문이다"
+  truth: true
+  danger: 3
+  names: [아드리엘, 일곱]
+- id: fact_p2nc_adriel_knows_wormwood
+  text: "아드리엘은 7번 막사 마룻바닥 아래의 회색 쑥을 안다. 모르는 척한다 — 채혈이 줄어도 장부가 줄지 않는다면 쑥은 해가 아니라 그에게 이익이라고 계산한다"
+  truth: true
+  danger: 3
+  names: [아드리엘, 회색 쑥]
+- id: fact_p2nc_kasimir_pulls_tribute
+  text: "카시미르는 공물 명단과 도착 인원이 매년 2~3명 다른 이유를 안다 — 공물 마당에서 그가 직접 고른 이가 하얀 우리로 빠진다. 명단에서 사라진 것이 아니라 선별 입소다"
+  truth: true
+  danger: 4
+  names: [카시미르, 공물 마당, 하얀 우리]
+- id: fact_p2nc_kasimir_marian_contract
+  text: "카시미르는 하얀 우리 열두 번째 아이 마리안이 잔향이 아님을 직감하나 엘다르와의 납품 계약(하얀 우리 아이 거래)을 지킨다. 계약은 '잔향 후보 한 명'이라 마리안이 아니라면 다른 이름을 넣어야 한다"
+  truth: true
+  danger: 5
+  names: [카시미르, 마리안, 엘다르]
+- id: fact_p2nc_zrag_wormwood_bribe
+  text: "크릭 목동장 즈라그는 매달 쑥 한 자루를 받고 장부와 크릭 숫자표의 일곱 차이를 못 본 척한다. 쑥은 간호인 노파 헤트가 가져온다"
+  truth: true
+  danger: 3
+  names: [즈라그, 헤트, 쑥]
+- id: fact_p2nc_baltasar_gray_ring
+  text: "흑수정 가문 가주 발타사르(잿빛 탑 원로 겸임)는 흑수정 우리 시음 보고에서 '피에 잿빛 고리가 비치는 자'를 한 명 받은 적이 있다. 탑에 보고하지 않았다. 그 인간은 지금도 흑수정 우리 막사에 있다"
+  truth: true
+  danger: 5
+  names: [발타사르, 잿빛 탑, 잿빛 고리]
+- id: fact_p2nc_silas_assassination_pending
+  text: "침묵종 가주 사일라스의 의뢰 목록 맨 위에 세실의 이름이 한 줄 있다. 알라리크의 의뢰이고 사일라스는 '증거 없이 집을 짓지 않는다'며 보류했다. 증거가 오면 열흘 안에 사냥꾼 '아홉째'가 움직인다"
+  truth: true
+  danger: 5
+  names: [사일라스, 세실, 알라리크, 아홉째]
+- id: fact_p2nc_ninth_hunter_spared_tessa
+  text: "사냥꾼 '아홉째'는 2년 전 붉은 갈대 선에서 테사를 보고 풀어 주었다. 테사의 목 흉터가 자기 목의 흉터와 같은 자리였기 때문이다. 그는 갈증받이가 되기 전 검은성배 우리의 인간이었다"
+  truth: true
+  danger: 4
+  names: [아홉째, 테사]
+- id: fact_p2nc_marendis_bottles_serene
+  text: "고요물의 밤 부두는 세렌 나가 의회에 인간의 피를 병째 판다. 병마다 혈통 번호가 붙어 나가가 어느 우리의 피인지 안다 — 사라진 인간의 번호가 병에 남지 않는 우리가 세실의 장미 우리다"
+  truth: true
+  danger: 3
+  names: [마렌디스, 세렌, 나가]
+# ── 저택과 우리 ──
+- id: fact_p2nc_orphe_notch_forgery
+  text: "세실 저택의 집사 오르페는 글자를 모른다. 장부는 글자가 아니라 홈 표기이며, 오르페는 홈의 수와 위치로만 위조한다 — 인간이 읽고 쓸 수 있는 유일한 기록이라 위조를 그가 한다"
+  truth: true
+  danger: 4
+  names: [오르페, 홈 표기]
+- id: fact_p2nc_orphe_thirty_eight
+  text: "오르페는 붉은 우리 채혈 헛간 기록판의 '병사' 칸을 3년 동안 서른여덟 번 고쳤다. 고칠 때마다 홈의 깊이가 달라지는 것을 크릭 서기 칙이 알아본 적이 있다"
+  truth: true
+  danger: 4
+  names: [오르페, 칙, 기록판]
+- id: fact_p2nc_pips_shoes
+  text: "정원지기 크릭 핍스는 온실 수로를 통해 빠져나간 인간의 신발을 한 켤레씩 센다. 올해 신발이 410번째에 이르렀고, 그는 410번째 신발 하나를 지니고 있다. 세실의 장미 410그루가 그 수와 맞는다"
+  truth: true
+  danger: 3
+  names: [핍스, 410, 신발]
+- id: fact_p2nc_chik_notch_known
+  text: "채혈 헛간 크릭 서기 칙은 '병사' 칸의 홈이 일부러 틀리게 새겨진 것을 안다. 그는 누가 고치는지 모르고, 고쳐진 칸의 홈이 부드러운 쪽 손(왼손) 깊이임을 안다"
+  truth: true
+  danger: 3
+  names: [칙, 병사 칸]
+- id: fact_p2nc_hedwig_wormwood_source
+  text: "간호인 노파 헤트가 쓰는 회색 쑥은 모르바 늪의 재 계보가 보낸 씨앗으로 키운 것이다. 그 대가로 녹테른의 피 한 병이 늪으로 간다 — 세실이 50년째 하는 거래의 반대쪽 끝이다"
+  truth: true
+  danger: 4
+  names: [헤트, 회색 쑥, 재 계보]
+- id: fact_p2nc_hedwig_tea_secret
+  text: "헤트의 탕약을 마신 사람은 한 달 동안 피 표 홈이 하나도 늘지 않는다. 이 사실을 아는 우리 사람은 일흔이고, 쑥을 대량으로 들이면 채혈이 멈추나 녹테른은 인간을 '쓸모없다'고 판단해 처분할 수도 있다"
+  truth: true
+  danger: 5
+  names: [헤트, 탕약]
+# ── 마리안과 공물 ──
+- id: fact_p2nc_marian_dream_wet_ash
+  text: "마리안이 어릴 때 꿈 이야기로 말한 것은 '마른 우물 바닥에서 올라오는 사람이 비를 맞고 있고 젖은 재 냄새가 났다'였다. 그것이 잔향 후보로 분류된 이유다. 마리안은 잔향이 아니다 — 그러나 피오나엘이 꿈꾸는 사람과 같은 사람을 꿈꾼다"
+  truth: true
+  danger: 5
+  names: [마리안, 피오나엘, 젖은 재]
+- id: fact_p2nc_marian_transfer_route
+  text: "마리안의 영혼 정원 납품은 꽃월 초(313-03-05경) 하얀 우리에서 출발해 첫 갈증 성을 거쳐 망각의 길 167시간을 지나는 길이다. 엘다르 인수자가 공식 폐쇄된 길의 끝에서 기다린다"
+  truth: true
+  danger: 5
+  names: [마리안, 망각의 길, 영혼 정원]
+- id: fact_p2nc_rosalie_agent
+  text: "루멘 공물 40명 가운데 한 명은 잿빛 실 요원 '로잘리'다. 그녀의 이름이 공물 명단에 오른 것이 밀고인지 의도인지 그녀도 모른다. 그녀는 장미 꽃잎 한 장을 입에 물면 세실의 사람이 알아본다는 암호를 안다"
+  truth: true
+  danger: 4
+  names: [로잘리, 잿빛 실, 공물]
+- id: fact_p2nc_thirst_night_timeline
+  text: "갈증의 밤 일정은 이렇다 — 12일 새벽 루멘에서 호송 출발, 15일 이른 아침(03:00경) 붉은 우리 공물 문 도착, 낮에 첫 갈증 성으로 이동, 14일 밤 우물 순례, 15일 18:00부터 대연회장에서 공물 확정. 인간은 우리 안에서 촛불을 끄고 숨을 죽인다"
+  truth: true
+  danger: 3
+  names: [갈증의 밤, 우물 순례]
+- id: fact_p2nc_rumor_thirst_night_free
+  text: "갈증의 밤에 우리 안에서 숨을 죽이면 그해 채혈이 한 번 면제된다는 소문이 우리에 돈다"
+  truth: false
+  danger: 2
+  names: [갈증의 밤]

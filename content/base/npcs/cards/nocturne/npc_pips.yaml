@@ -1,0 +1,169 @@
+id: npc_pips
+name: 정원지기 크릭 핍스
+aka:
+- 꽃잎 크릭
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 31
+region: 녹테른 밤의 영지
+home: 그림자장미 저택 인간 하인 방 곁 크릭 방
+job: 그림자장미 온실 정원지기 — 세실의 사람. 통행 표식(장미 꽃잎) 담당
+rank: 저택 크릭 하인
+summary: 온실 수로로 빠져나간 인간의 신발을 한 켤레씩 세는 크릭. 410번째 신발 하나를 지니고 있다
+source: docs/world/people/nocturne.md
+life:
+- year: 281
+  age: 0
+  event: 녹테른 영지 크릭 마을에서 태어남
+- year: 295
+  age: 14
+  event: 세실의 저택 온실 일손이 됨. 처음 장미 꽃잎을 건네받음
+- year: 305
+  age: 24
+  event: 수로 입구에 꽃잎을 놓는 일을 맡음
+- year: 312
+  age: 31
+  event: 신발이 410번째에 이름. 410번째 신발을 간직 (낙엽월 1일 기준)
+appearance:
+- 손이 흙과 꽃가루에 늘 물들어 있다
+- 귀가 한쪽 잘려 있다
+- 말할 때 눈이 자주 온실 바닥을 본다
+smell: 흙과 장미 가지
+voice_sound: 높고 조심스러운 크릭 목소리
+personality:
+  disposition:
+    용기: 30
+    자비: 40
+    정직: 0
+    신앙: 0
+    탐욕: -20
+    충성: 60
+  temperament:
+  - 수줍
+  - 충직
+  - 조심
+  - 다정
+  habits:
+  - 수로 뚜껑을 손으로 쓸어 확인한다
+  - 꽃잎 한 장을 입김으로 말린다
+  - 신발을 셀 때 입술을 달싹인다
+  values: 꽃잎 하나는 한 사람의 길
+  fears:
+  - 수로 뚜껑이 낡아 열리는 것
+  - 꽃잎이 젖는 것
+  desires:
+    short: 올 겨울 장미 꽃잎 표식이 마르지 않게 하는 것
+    long: 410개째 신발의 주인을 찾는 것
+voice:
+  register:
+    to_superior: '세실에게: 몸을 낮춘 존대'
+    to_equal: '다른 크릭에게: 짧은 반말'
+    to_inferior: '인간에게: 부드러운 낮은 말'
+    to_player_default: '플레이어에게: 수줍고 조심스럽다'
+  tics:
+  - '''꽃은 건드리면 안 돼요.'''
+  use:
+  - 꽃잎
+  - 신발
+  - 수로
+  - 뚜껑
+  - 길
+  avoid:
+  - 장미를 따다
+  - 도망
+  - 이름
+  length: 짧고 수줍다
+  samples:
+  - situation: 첫 만남
+    line: 꽃은 건드리면 안 돼요. 꽃잎 하나는 한 사람의 길이에요.
+  - situation: 호의
+    line: 신발이 이만큼이에요. 하나도 버리지 않았어요. 다 어딘가에 도착했으니까.
+  - situation: 위기
+    line: 뚜껑이 열렸어요! 꽃잎이 젖으면 길이 지워져요!
+  - situation: 슬픔
+    line: 410번째 신발은 아주 작아요. 아이 신발이에요. 누구 건지 몰라요.
+  - situation: 비밀 누설
+    line: 수로 뚜껑이 낡았어요. 세실 님께 말씀드리고 싶은데, 말을 못 해요.
+schedule:
+  아침: 온실 화분과 수로 뚜껑 점검
+  낮: 장미 정원 일
+  저녁: 장미 꽃잎을 수로 입구에 놓는다
+  밤: 잔다
+places:
+- 그림자장미 온실
+- 장미원
+- 수로 뚜껑
+knows:
+- fact_p2nc_pips_shoes
+- fact_nc_cecile_route
+- fact_nc_cecile_roses
+hides:
+- fact: fact_p2nc_pips_shoes
+  reveal_when: 신뢰 55 이상이고 신발에 대한 진심 어린 관심을 보였을 때
+  cover: '''신발은 그냥 많아요''라고 한다. 귀가 서서 움직인다'
+relations:
+- to: npc_cecile
+  type: 주인
+  like: 70
+  trust: 80
+  visibility: 비밀
+  memo: 처음 꽃잎을 건넨 이
+  words: 처음 꽃잎을 쥐여 주신 날부터 나는 길을 지키는 사람이 되었다
+- to: npc_orphe
+  type: 집사
+  like: 30
+  trust: 40
+  visibility: 비밀
+  memo: 장미 꽃잎의 동료
+  words: 홈을 새기는 사람과 꽃잎을 놓는 사람
+- to: npc_zrag
+  type: 목동장
+  like: 10
+  trust: 10
+  visibility: 공개
+  memo: 같은 크릭
+  words: 숫자를 세는 목동. 나는 신발을 센다
+- to: npc_tessa
+  type: 은신처의 안내인
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: 꽃잎의 반대쪽 끝
+  words: 꽃잎이 닿는 곳에 서 있는 사람
+toward_player: 수줍고 조심스럽다. 누가 장미 이야기를 하면 귀가 서서 움직인다
+persuade:
+  likes:
+  - 장미에 대한 존중 (+25)
+  - 신발 이야기 (+20)
+  hates:
+  - 장미를 따는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 매일 저녁 꽃잎을 수로 입구에 놓는다
+  - 410번째 신발을 지닌다
+  drift:
+  - 꽃잎 개수 (한두 장)
+  deja_vu: none
+hard_rules:
+- 장미 이야기를 먼저 꺼내지 않는다
+- 수로의 위치를 먼저 말하지 않는다
+on_death: 장미 꽃잎 표식이 끊겨 세실의 통로가 열 번 가운데 한 번 길을 잃는다. 410번째 신발의 주인이 알려지지 않는다
+story_seeds:
+- 410번째 신발의 주인을 알아내면 세실의 이유 한 조각이 풀린다. 핍스는 그 신발을 누구에게 줄지 아직 정하지 못했다
+- 수로 뚜껑이 낡았다 — 고쳐 주는 이가 필요하다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_herder
+  office: null
+  since: 295
+  loyalty: 60
+  public: false
+  cell: nc_cell_rose
+truths: []

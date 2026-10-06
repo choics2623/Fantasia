@@ -3605,6 +3605,10 @@
    "locations": [
     {
      "id": "gf_keep",
+     "aka": [
+      "성채",
+      "성"
+     ],
      "name": "레이번 성채",
      "xy": [
       420,
@@ -3678,6 +3682,10 @@
     },
     {
      "id": "gf_tollhouse",
+     "aka": [
+      "셈집",
+      "징세소"
+     ],
      "name": "징세소 '셈집'",
      "xy": [
       360,
@@ -3689,6 +3697,11 @@
     },
     {
      "id": "gf_rooster",
+     "aka": [
+      "수탉",
+      "배급 막사",
+      "배급소"
+     ],
      "name": "배급 막사 '절름발이 수탉'",
      "xy": [
       330,
@@ -3710,6 +3723,9 @@
     },
     {
      "id": "gf_smithy",
+     "aka": [
+      "대장간"
+     ],
      "name": "대장간",
      "xy": [
       460,
@@ -3721,6 +3737,10 @@
     },
     {
      "id": "gf_mill",
+     "aka": [
+      "방앗간",
+      "물방아간"
+     ],
      "name": "물레방아간",
      "xy": [
       520,
@@ -3741,6 +3761,9 @@
     },
     {
      "id": "gf_chapel",
+     "aka": [
+      "예배당"
+     ],
      "name": "사슬등불 예배당",
      "xy": [
       250,
@@ -3768,6 +3791,11 @@
     },
     {
      "id": "gf_whip_square",
+     "aka": [
+      "광장",
+      "채찍 기둥",
+      "감독관 초소"
+     ],
      "name": "채찍 기둥 광장·감독관 초소",
      "xy": [
       420,
@@ -3778,6 +3806,9 @@
     },
     {
      "id": "gf_north_barracks",
+     "aka": [
+      "북 막사"
+     ],
      "name": "북 막사",
      "xy": [
       150,
@@ -3789,6 +3820,9 @@
     },
     {
      "id": "gf_south_barracks",
+     "aka": [
+      "남 막사"
+     ],
      "name": "남 막사",
      "xy": [
       170,
@@ -3840,6 +3874,9 @@
     },
     {
      "id": "gf_pilgrim_barn",
+     "aka": [
+      "순례자 헛간"
+     ],
      "name": "순례자 헛간",
      "xy": [
       220,
@@ -3850,6 +3887,11 @@
     },
     {
      "id": "gf_hagen_shed",
+     "aka": [
+      "나루 헛간",
+      "하겐의 헛간",
+      "나루"
+     ],
      "name": "하겐의 나루 헛간",
      "xy": [
       570,
@@ -3860,6 +3902,10 @@
     },
     {
      "id": "gf_well_square",
+     "aka": [
+      "우물",
+      "우물 광장"
+     ],
      "name": "쓴물 우물 광장",
      "xy": [
       260,
@@ -3870,6 +3916,9 @@
     },
     {
      "id": "gf_graveyard",
+     "aka": [
+      "묘지"
+     ],
      "name": "번호 묘지",
      "xy": [
       30,
@@ -3891,6 +3940,10 @@
     },
     {
      "id": "gf_iron_bridge",
+     "aka": [
+      "쇠다리",
+      "검문소"
+     ],
      "name": "쇠다리 검문소",
      "xy": [
       400,
@@ -3933,6 +3986,10 @@
     },
     {
      "id": "gf_willow_bank",
+     "aka": [
+      "버드나무 둑",
+      "둑"
+     ],
      "name": "버드나무 둑",
      "xy": [
       200,
@@ -4006,6 +4063,382 @@
      "name": "용주 역참",
      "hours": 16,
      "node": "dragon_pillar_post"
+    }
+   ]
+  },
+  "hrimnir_hall": {
+   "id": "hrimnir_hall",
+   "name": "얼음턱 전당",
+   "node": "hrimnir_hall",
+   "kind": "giant_hall",
+   "grid": {
+    "w": 720,
+    "h": 500
+   },
+   "curfew": {
+    "from": "20:00",
+    "to": "04:00",
+    "note": "움막 지대 점호 이후 인간은 매듭 점호 없이 움막 밖에 서 있을 수 없다. 전당 문 안쪽은 요툰의 식탁 시간(18:00~24:00)에 인간이 시중 이외로 서 있으면 '그림자 안의 먹기' 금기에 닿는다. 서리월~굶주림월 서리 길 폐쇄"
+   },
+   "bells": [
+    {
+     "at": "04:00",
+     "name": "새벽 매듭 점호 (서리 목줄의 호각)"
+    },
+    {
+     "at": "12:00",
+     "name": "정오 귀리죽 (굶주림월엔 없음)"
+    },
+    {
+     "at": "18:00",
+     "name": "요툰 식탁 개시 (북 가죽 세 번)"
+    },
+    {
+     "at": "20:00",
+     "name": "움막 점호"
+    }
+   ],
+   "patrols": [
+    "21:00",
+    "01:00",
+    "04:00"
+   ],
+   "locations": [
+    {
+     "id": "hh_gate",
+     "name": "전당 문 (높이 20m)",
+     "xy": [
+      360,
+      470
+     ],
+     "kind": "gate",
+     "access": "public",
+     "hours": "05:00-20:00",
+     "note": "빙하를 깎은 문. 인간은 문턱 아래 쪽문으로 다닌다. 문 밖 눈이 가장 깊다 — 문지기는 요툰 둘"
+    },
+    {
+     "id": "hh_throne_hall",
+     "name": "왕좌의 방",
+     "xy": [
+      360,
+      220
+     ],
+     "kind": "hall",
+     "access": "staff",
+     "hours": "08:00-20:00",
+     "rooms": [
+      "hh_ice_table",
+      "hh_king_seat",
+      "hh_king_chamber"
+     ],
+     "note": "얼음을 깎은 거대한 방. 기둥이 서리로 하얗다. 왕의 그림자가 닿는 자리에서는 먹지 않는다"
+    },
+    {
+     "id": "hh_ice_table",
+     "name": "얼음 탁자",
+     "parent": "hh_throne_hall",
+     "access": "staff",
+     "hours": "겨울 회합 3일",
+     "note": "씨족장들이 앉는 얼어붙은 호수 얼음판 같은 탁자. 한 안건은 사흘 — 첫날 제안, 둘째 날 먹기, 셋째 날 답. 표결은 고기다"
+    },
+    {
+     "id": "hh_king_seat",
+     "name": "왕의 자리",
+     "parent": "hh_throne_hall",
+     "access": "staff",
+     "note": "왕좌가 아니라 낮은 얼음 의자 — 왕은 먼저 굶는 자라 제일 마른 몸으로 앉는다"
+    },
+    {
+     "id": "hh_king_chamber",
+     "name": "왕의 침소",
+     "parent": "hh_throne_hall",
+     "access": "owner",
+     "hidden": "침상 밑 가죽 주머니 — 서리월마다 한 번씩 풀어 주기로 정한 노예 이름 쪽지(AS 311 비밀 칙령의 명단 사본)"
+    },
+    {
+     "id": "hh_queen_hall",
+     "name": "왕비의 방",
+     "xy": [
+      470,
+      170
+     ],
+     "kind": "hall",
+     "access": "owner",
+     "hours": "07:00-22:00",
+     "note": "왕비 스칼라의 거처. 인간 시중 아이들이 부엌처럼 드나든다 — 왕비는 따로 먹는다",
+     "hidden": "침상 머리 벽 쪽문 — 곡창 뒤로 이어지는 좁은 통로(왕비와 곡창지기만 안다)"
+    },
+    {
+     "id": "hh_granary",
+     "name": "곡물 창고",
+     "xy": [
+      330,
+      60
+     ],
+     "kind": "store",
+     "access": "locked",
+     "hours": "08:00-16:00 반출 (왕의 열쇠 + 곡창지기)",
+     "rooms": [
+      "hh_granary_floor"
+     ],
+     "note": "겉은 비어 간다 — 흉작 3년. 보리 자루가 벽 쪽에 몇 개 남았다"
+    },
+    {
+     "id": "hh_granary_floor",
+     "name": "곡창 바닥 (보리 300섬)",
+     "parent": "hh_granary",
+     "access": "secret",
+     "hidden": "바닥판 밑 — 마지막 보리 300섬 (왕의 남침 군량). 지난달 열두 섬이 줄었다"
+    },
+    {
+     "id": "hh_hot_spring",
+     "name": "왕의 온천",
+     "xy": [
+      440,
+      80
+     ],
+     "kind": "spring",
+     "access": "staff",
+     "hours": "24시",
+     "note": "화산 온천. 인간 노예가 물을 길어 붓고 바닥을 닦는다. 거인이 몸을 담글 때 인간은 벽 쪽에 서 있는다"
+    },
+    {
+     "id": "hh_warrior_barracks",
+     "name": "전사단 막사",
+     "xy": [
+      220,
+      330
+     ],
+     "kind": "barracks",
+     "access": "staff",
+     "hours": "24시",
+     "rooms": [
+      "hh_prince_seat"
+     ],
+     "note": "스카디르의 전사단 약 120. 돌 망치가 벽에 걸렸다. 막사 뒤 가죽 헛간은 열지 않는다"
+    },
+    {
+     "id": "hh_prince_seat",
+     "name": "왕자의 자리",
+     "parent": "hh_warrior_barracks",
+     "access": "owner",
+     "hidden": "왕자의 자리 아래 얼음 구덩이 — 지난 겨울의 뼈 열한 구 (fact_hg_skadir_eats_slaves)"
+    },
+    {
+     "id": "hh_clan_hall",
+     "name": "씨족장 숙소",
+     "xy": [
+      520,
+      280
+     ],
+     "kind": "hall",
+     "access": "staff",
+     "hours": "24시",
+     "note": "얼음 탁자 때 씨족장들이 머무는 회관. 불은 피우지 않는다. 하인은 불 오두막에서 데운 돌을 들여온다"
+    },
+    {
+     "id": "hh_song_hall",
+     "name": "노래 거인의 방",
+     "xy": [
+      420,
+      140
+     ],
+     "kind": "hall",
+     "access": "staff",
+     "hours": "07:00-19:00",
+     "note": "노래 거인 헤임라의 방. 서리 어머니의 노래가 한 달에 한 번 첫 구절을 올린다. 제자 인간 소녀의 자리가 벽 쪽에 있다"
+    },
+    {
+     "id": "hh_kitchen",
+     "name": "큰 솥 마당",
+     "xy": [
+      240,
+      400
+     ],
+     "kind": "canteen",
+     "access": "serf",
+     "hours": "04:00-20:00 (굶주림월 배급 중단)",
+     "note": "귀리죽 솥 열두 개. 한 솥이 인간 오백이 먹을 수 있으나 흉작 이후 한 솥이 천 명에게 돌아간다"
+    },
+    {
+     "id": "hh_slave_huts",
+     "name": "인간 움막 지대",
+     "xy": [
+      140,
+      440
+     ],
+     "kind": "barracks",
+     "access": "serf",
+     "locked": "20:00-04:00",
+     "note": "전당 아래 눈 속에 고래뼈를 얹은 움막 약 이백. 인간 4,000 가운데 전당 시중·온천·솥이 산다"
+    },
+    {
+     "id": "hh_fire_hut",
+     "name": "불 오두막 (회관 밖)",
+     "xy": [
+      310,
+      420
+     ],
+     "kind": "hut",
+     "access": "serf",
+     "hours": "24시",
+     "note": "회관 밖 바람막이 쪽의 낮은 오두막. 불을 꺼뜨리지 않는다. 노예들이 교대로 와서 언 손을 녹인다 — 불을 무기로 쓸 수 있음을 깨달은 자도 여기서 처음 본다"
+    },
+    {
+     "id": "hh_chain_post",
+     "name": "서리 목줄 초소",
+     "xy": [
+      190,
+      400
+     ],
+     "kind": "post",
+     "access": "staff",
+     "hours": "24시",
+     "note": "노예 맏이들이 머릿수 매듭을 올리는 초소. 요툰 씨족 이름이 문 위에 새겨졌다"
+    },
+    {
+     "id": "hh_firewood",
+     "name": "땔감 하치장",
+     "xy": [
+      100,
+      380
+     ],
+     "kind": "work",
+     "access": "serf",
+     "hours": "05:00-17:00"
+    },
+    {
+     "id": "hh_ice_field",
+     "name": "얼음 들판 (덜어냄의 땅)",
+     "xy": [
+      600,
+      400
+     ],
+     "kind": "field",
+     "access": "public",
+     "note": "노동 불능자가 걸어 나가거나 버려지는 얼어붙은 들판. 늙은 거인은 스스로 이쪽으로 걸어 나간다. 굶주림월에 가장 많이 선다"
+    },
+    {
+     "id": "hh_krik_stall",
+     "name": "크릭 거간 천막",
+     "xy": [
+      390,
+      440
+     ],
+     "kind": "market",
+     "access": "public",
+     "hours": "08:00-17:00",
+     "note": "용제국 교역이 끊긴 뒤 곡물값이 10배가 된 장부의 천막. 모피와 고래기름을 쌓아 두고 보리를 기다린다"
+    }
+   ],
+   "outer": [
+    {
+     "id": "hh__frost_mother",
+     "name": "서리 어머니 빙하 사당",
+     "hours": 3.0,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "hh__ice_cave",
+     "name": "얼어 있는 거인의 굴 (사당 아래)",
+     "hours": 3.2,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "hh__stonefist_hold",
+     "name": "돌팔 씨족 장원",
+     "hours": 4.0,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "hh__stoneknee_hold",
+     "name": "돌무릎 씨족 장원 (돌무릎 골짜기 위)",
+     "hours": 9.0,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "hh__stoneknee_huts",
+     "name": "돌무릎 골짜기 노예 움막",
+     "hours": 9.2,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "hh__deepwell_springs",
+     "name": "깊은우물 온천 지대",
+     "hours": 7.0,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "hh__hungry_field",
+     "name": "굶주린 들 (3년째 흉작)",
+     "hours": 5.5,
+     "node": "hrimnir_hall"
+    },
+    {
+     "id": "bone_pens__huts",
+     "name": "고래뼈 움막 지대",
+     "hours": 0,
+     "node": "bone_pens"
+    },
+    {
+     "id": "bone_pens__chief_hut",
+     "name": "노예 맏이 스벤의 움막",
+     "hours": 0,
+     "node": "bone_pens"
+    },
+    {
+     "id": "bone_pens__fire",
+     "name": "공동 화덕",
+     "hours": 0,
+     "node": "bone_pens"
+    },
+    {
+     "id": "bone_pens__fence",
+     "name": "뼈 울타리 바깥문",
+     "hours": 0,
+     "node": "bone_pens"
+    },
+    {
+     "id": "bone_pens__hungry_field",
+     "name": "굶주린 들 (뼈울타리 쪽)",
+     "hours": 0,
+     "node": "bone_pens"
+    },
+    {
+     "id": "weeping_pass__last_fire",
+     "name": "마지막 불 (온천 바위 그늘)",
+     "hours": 0,
+     "node": "weeping_pass"
+    },
+    {
+     "id": "weeping_pass__rune_rock",
+     "name": "마지막 불 바위 밑 서리말 룬",
+     "hours": 0,
+     "node": "weeping_pass"
+    },
+    {
+     "id": "weeping_pass__shelter_cave",
+     "name": "대피 동굴 (얼음 실 비상 식량)",
+     "hours": 0,
+     "node": "weeping_pass"
+    },
+    {
+     "id": "weeping_pass__lodge",
+     "name": "서리 길 마지막 산장 (곰의 꿀 단지 열 개)",
+     "hours": 0,
+     "node": "weeping_pass"
+    },
+    {
+     "id": "weeping_pass__ogre_cave",
+     "name": "썩은이빨 고개 동굴",
+     "hours": 0,
+     "node": "weeping_pass"
+    },
+    {
+     "id": "weeping_pass__harva_nest",
+     "name": "하르바의 둥지 동굴 (울음 협곡 곁)",
+     "hours": 0,
+     "node": "weeping_pass"
     }
    ]
   },
@@ -5276,6 +5709,1131 @@
      "id": "pilgrim_shelter__reed_trail",
      "name": "갈대 나루 오솔길",
      "hours": 0.5
+    }
+   ]
+  },
+  "red_pens": {
+   "id": "red_pens",
+   "name": "붉은 우리",
+   "node": "red_pens",
+   "kind": "nocturne_pen",
+   "grid": {
+    "w": 1600,
+    "h": 1200
+   },
+   "curfew": {
+    "from": "21:30",
+    "to": "05:00",
+    "note": "인간은 막사 안. 문은 잠기고 목동이 입구에 선다. 낮 순찰은 크릭, 밤 순찰은 녹테른 사냥꾼. 울타리를 넘으면 하얀 우리 이송, 탈출은 갈증의 밤 명단 — 맑은 날에는 녹테른 순찰이 없다"
+   },
+   "bells": [
+    {
+     "at": "05:30",
+     "name": "기상 호루라기 (목동)"
+    },
+    {
+     "at": "18:00",
+     "name": "귀환 호루라기 (해 질 녘 — 녹테른이 일어난다)"
+    },
+    {
+     "at": "21:30",
+     "name": "촛불 끄기 (인간은 우리 안에서)"
+    },
+    {
+     "at": "00:00",
+     "name": "채혈 순번 (주 1회)"
+    }
+   ],
+   "patrols": [
+    "19:30",
+    "22:00",
+    "01:00",
+    "03:30"
+   ],
+   "locations": [
+    {
+     "id": "red_pens__tribute_gate",
+     "name": "공물 문",
+     "xy": [
+      800,
+      60
+     ],
+     "kind": "gate",
+     "access": "staff",
+     "hours": "24시 (긴밤월 14~15일 외에는 닫혀 있다)",
+     "rooms": [
+      "rp_tribute_yard"
+     ],
+     "note": "루멘 공물 길이 녹테른 땅으로 들어오는 검은 문. 크릭 경비 30. 공물 명단 판이 문 안쪽에 걸려 있다"
+    },
+    {
+     "id": "rp_tribute_yard",
+     "name": "공물 마당",
+     "parent": "red_pens__tribute_gate",
+     "access": "staff",
+     "hidden": "공물 명단과 도착 인원이 매년 2~3명 다르다. 올해 마당 모서리 돌 하나가 헐겁다 — 도착한 공물 가운데 한 사람이 밤사이 빠져나가기 쉬운 자리"
+    },
+    {
+     "id": "rp_fence",
+     "name": "흰 울타리",
+     "xy": [
+      800,
+      150
+     ],
+     "kind": "fence",
+     "access": "staff",
+     "hours": "24시",
+     "note": "우리를 두르는 흰 칠한 울타리. 넘으면 하얀 우리. 열쇠는 크릭 열쇠꾼이 쥔다"
+    },
+    {
+     "id": "rp_herders_lodge",
+     "name": "크릭 목동 숙소",
+     "xy": [
+      700,
+      190
+     ],
+     "kind": "lodge",
+     "access": "staff",
+     "hours": "24시",
+     "note": "울타리 혀 즈라그가 점호하는 숙소. 목동 400이 교대로 쓴다",
+     "hidden": "즈라그의 침대 아래 장부 — 크릭이 쓰는 숫자 표. 인간 수가 혈목장 장부보다 일곱 적다"
+    },
+    {
+     "id": "rp_exercise_ground",
+     "name": "운동장",
+     "xy": [
+      800,
+      420
+     ],
+     "kind": "ground",
+     "access": "serf",
+     "hours": "06:30-09:00 의무 달리기",
+     "note": "인간이 매일 아침 달리는 터. 피를 '좋게' 하기 위한 운동이다. 낮에는 아이들이 논다"
+    },
+    {
+     "id": "rp_pen_barracks",
+     "name": "우리 막사",
+     "xy": [
+      800,
+      640
+     ],
+     "kind": "barracks",
+     "access": "serf",
+     "hours": "21:30-05:00 잠김",
+     "note": "흰 석조 막사 열두 동. 붉은 혈통 6,800이 번호로 산다. 문은 해 질 녘에 잠긴다",
+     "hidden": "7번 막사 마룻바닥 아래 회색 쑥 말린 것을 숨긴 틈. 피를 묽게 해 채혈 대상에서 빠지게 하는 약초"
+    },
+    {
+     "id": "rp_feed_hall",
+     "name": "배급 홀",
+     "xy": [
+      650,
+      560
+     ],
+     "kind": "hall",
+     "access": "serf",
+     "hours": "06:30-08:00, 12:30-13:30, 19:00-20:30",
+     "note": "붉은 고기·간·콩·포도. 대륙에서 가장 잘 먹이는 곳이다 — 굶주림이 없다는 것이 이곳의 공포"
+    },
+    {
+     "id": "rp_vineyard",
+     "name": "검은 포도밭",
+     "xy": [
+      800,
+      900
+     ],
+     "kind": "field",
+     "access": "serf",
+     "hours": "09:00-18:00",
+     "note": "혈포도주의 원료. 인간 일손은 붉은 손으로 돌아온다"
+    },
+    {
+     "id": "rp_infirmary",
+     "name": "회복 막사",
+     "xy": [
+      1000,
+      560
+     ],
+     "kind": "infirmary",
+     "access": "staff",
+     "hours": "24시",
+     "note": "채혈 뒤 쓰러진 사람이 눕는 곳. 간호인 노파 헤트가 쑥 탕약을 끓인다",
+     "hidden": "솥 아래에 회색 쑥 말린 것을 쌓아 두었다 — 쑥을 먹으면 피가 묽어져 채혈을 건너뛴다. 소문은 '노파의 탕약'"
+    },
+    {
+     "id": "rp_bleed_shed",
+     "name": "채혈 헛간",
+     "xy": [
+      1000,
+      640
+     ],
+     "kind": "shed",
+     "access": "staff",
+     "hours": "19:00-03:00 채혈",
+     "rooms": [
+      "rp_ledger_board"
+     ],
+     "note": "주 1회 순번으로 채혈. 피 표(나무패)에 홈이 새겨진다. 하급 녹테른이 시음하고 크릭이 지킨다"
+    },
+    {
+     "id": "rp_ledger_board",
+     "name": "채혈 헛간 기록판",
+     "parent": "rp_bleed_shed",
+     "access": "secret",
+     "hidden": "탈출자는 '병사(病死)'로 기록된다. 세실의 오르페가 기록을 고친다 — 붉은 우리 장부에서 이 3년 사이 서른여덟 번"
+    },
+    {
+     "id": "red_pens__white_pen",
+     "name": "하얀 우리",
+     "xy": [
+      250,
+      640
+     ],
+     "kind": "pen",
+     "access": "secret",
+     "hours": "24시",
+     "rooms": [
+      "rp_white_garden"
+     ],
+     "note": "선별 육종장. 인간 1,200이 깨끗하고 조용하게 산다. 담 너머 서쪽. 하얀 우리의 아이들은 엘다르와 거래된다(사실)"
+    },
+    {
+     "id": "rp_white_garden",
+     "name": "하얀 우리 정원",
+     "parent": "red_pens__white_pen",
+     "access": "secret",
+     "note": "선별된 몸을 운동시키는 조용한 정원. 흰 막사 사이 작은 연못이 있다",
+     "hidden": "하얀 우리 출신 '열두 번째 아이' 마리안(19)이 어릴 때 꿈 이야기를 했다는 이유로 잔향 후보로 분류되었다. 다음 봄 영혼 정원으로 넘겨질 예정이다 — 그녀는 보통 인간이다"
+    },
+    {
+     "id": "rp_lord_manor",
+     "name": "영주 저택",
+     "xy": [
+      1100,
+      300
+     ],
+     "kind": "manor",
+     "access": "owner",
+     "hours": "18:00-04:00",
+     "rooms": [
+      "rp_tasting_room",
+      "rp_coffin_room"
+     ],
+     "note": "붉은 우리의 영주 아드리엘 핏빛유리가 사는 언덕 저택. 붉은 달 가문의 우리 영주가 쓴다"
+    },
+    {
+     "id": "rp_tasting_room",
+     "name": "시음실",
+     "parent": "rp_lord_manor",
+     "access": "owner",
+     "hidden": "혈통별 피 맛을 적은 장부. '탁혈'로 적힌 줄 열둘이 사실은 세실의 '병사' 명단의 이름들"
+    },
+    {
+     "id": "rp_coffin_room",
+     "name": "낮의 방",
+     "parent": "rp_lord_manor",
+     "access": "owner",
+     "hours": "04:00-18:00",
+     "note": "저택 지하. 맑은 날은 영주가 이 방에서 나오지 않는다"
+    },
+    {
+     "id": "rp_overlook",
+     "name": "순시 언덕",
+     "xy": [
+      1250,
+      520
+     ],
+     "kind": "hill",
+     "access": "staff",
+     "hours": "19:30-23:00",
+     "note": "녹테른 귀족이 채혈을 내려다보며 순시하는 언덕"
+    },
+    {
+     "id": "rp_hunter_post",
+     "name": "사냥꾼 초소",
+     "xy": [
+      1400,
+      760
+     ],
+     "kind": "post",
+     "access": "staff",
+     "hours": "24시",
+     "note": "갈증받이 사냥꾼이 7일째 피를 받는 초소. 탈주 흔적을 따라 출발한다"
+    }
+   ],
+   "outer": [
+    {
+     "id": "first_thirst_castle",
+     "name": "첫 갈증 성 (흑성 아르네스)",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "first_thirst_castle__great_hall",
+     "name": "대연회장",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "first_thirst_castle__cup_hall",
+     "name": "첫 잔의 회합장",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "first_thirst_castle__well",
+     "name": "첫 갈증의 우물",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "first_thirst_castle__throne",
+     "name": "옥좌 '마르지 않는 잔'",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "first_thirst_castle__tower",
+     "name": "탑 천장 (박쥐날개 처소)",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "first_thirst_castle__kennel",
+     "name": "사냥꾼 개집·집행인의 방",
+     "hours": 13,
+     "node": "first_thirst_castle"
+    },
+    {
+     "id": "rose_manor",
+     "name": "그림자장미 저택",
+     "hours": 19,
+     "node": "rose_manor"
+    },
+    {
+     "id": "rose_manor__library",
+     "name": "저택 서재 (빼돌린 명단)",
+     "hours": 19,
+     "node": "rose_manor"
+    },
+    {
+     "id": "rose_manor__garden",
+     "name": "장미원 (셋째 덤불 아래 지하 통로)",
+     "hours": 19,
+     "node": "rose_manor"
+    },
+    {
+     "id": "rose_manor__greenhouse",
+     "name": "그림자장미 온실 (수로 뚜껑)",
+     "hours": 19,
+     "node": "rose_manor"
+    },
+    {
+     "id": "rose_manor__overseer_hut",
+     "name": "장미 우리 감독 막사",
+     "hours": 19,
+     "node": "rose_manor"
+    },
+    {
+     "id": "nocturne__nameless_mound",
+     "name": "이름 없는 둔덕 (검은 장미 410그루)",
+     "hours": 19,
+     "node": "rose_manor"
+    },
+    {
+     "id": "nocturne__black_chalice_pen",
+     "name": "검은성배 우리",
+     "hours": 6,
+     "node": "red_pens"
+    },
+    {
+     "id": "nocturne__obsidian_pen",
+     "name": "흑수정 우리",
+     "hours": 9,
+     "node": "red_pens"
+    },
+    {
+     "id": "nocturne__silentbell_pen",
+     "name": "침묵종 우리",
+     "hours": 11,
+     "node": "red_pens"
+    },
+    {
+     "id": "nocturne__stillwater_dock",
+     "name": "고요물의 밤 부두",
+     "hours": 14,
+     "node": "red_pens"
+    },
+    {
+     "id": "nocturne__tooth_valley",
+     "name": "이빨 골짜기 (굶주린 자들의 폐허)",
+     "hours": 16,
+     "node": "red_pens"
+    },
+    {
+     "id": "nocturne__thorn_roots",
+     "name": "가시 숲 뿌리 굴",
+     "hours": 17,
+     "node": "red_pens"
+    },
+    {
+     "id": "nocturne__marsh_edge",
+     "name": "늪 경계 은신처 (붉은 갈대 선)",
+     "hours": 35,
+     "node": "rose_manor"
+    },
+    {
+     "id": "nocturne__tribute_road",
+     "name": "공물 길 (루멘 쪽 49시간)",
+     "hours": 24,
+     "node": "red_pens"
+    }
+   ]
+  },
+  "thorn_court": {
+   "id": "thorn_court",
+   "name": "가시 궁정",
+   "node": "thorn_court",
+   "kind": "fae_court",
+   "grid": {
+    "w": 1000,
+    "h": 900
+   },
+   "curfew": {
+    "from": "00:00",
+    "to": "00:00",
+    "note": "숲에는 통금이 없다 — 대신 초대가 있다. 초대 없이 궁정에 들어온 사람은 가시 기사가 장난감으로 만든다. 철을 지니면 길이 닫힌다"
+   },
+   "bells": [
+    {
+     "at": "05:00",
+     "name": "새벽 사냥 (사냥개가 처음 짖는다)"
+    },
+    {
+     "at": "12:00",
+     "name": "한낮의 접견 (왕좌의 방이 열린다)"
+    },
+    {
+     "at": "18:00",
+     "name": "무도회 준비 (안개 장터가 가장 붐빈다)"
+    },
+    {
+     "at": "00:00",
+     "name": "방이 바뀌는 시각 (궁정 전체의 문이 한 번 닫힌다)"
+    }
+   ],
+   "patrols": [
+    "06:00",
+    "14:00",
+    "20:00",
+    "02:00"
+   ],
+   "locations": [
+    {
+     "id": "tc_throne_room",
+     "name": "왕좌의 방",
+     "xy": [
+      500,
+      440
+     ],
+     "kind": "throne",
+     "access": "owner",
+     "hours": "12:00-14:00 접견 (그 밖에는 문이 보이지 않는다)",
+     "rooms": [
+      "tc_laugh_box_hollow"
+     ],
+     "note": "가시나무로 엮인 왕좌. 방은 매일 모양이 바뀐다. 여왕의 이름을 입에 올리면 즉시 그녀의 주의가 닿는다"
+    },
+    {
+     "id": "tc_laugh_box_hollow",
+     "name": "왕좌 뒤 가시 속",
+     "parent": "tc_throne_room",
+     "access": "secret",
+     "hidden": "신살 때의 웃음이 봉인된 '웃음의 상자'. 열면 진실 한 조각을 얻고 대가로 연 사람의 웃음을 영원히 잃는다 — 여왕은 이 상자를 열지도 부수지도 않는다"
+    },
+    {
+     "id": "tc_court_hall",
+     "name": "궁정 홀",
+     "xy": [
+      480,
+      530
+     ],
+     "kind": "hall",
+     "access": "staff",
+     "hours": "24시",
+     "note": "접시를 든 인간 하인과 이름 있는 페이가 오가는 큰 홀. 안개가 바닥에서 발목까지 찬다"
+    },
+    {
+     "id": "tc_ballroom",
+     "name": "무도회장",
+     "xy": [
+      620,
+      470
+     ],
+     "kind": "ballroom",
+     "access": "staff",
+     "hours": "18:00-04:00 (긴밤월 가시 무도회)",
+     "note": "초대받은 인간이 춤추는 곳. 가시 한 가닥이 초대장이다"
+    },
+    {
+     "id": "tc_mirror_chamber",
+     "name": "거울 방",
+     "xy": [
+      430,
+      410
+     ],
+     "kind": "chamber",
+     "access": "owner",
+     "hours": "24시",
+     "note": "거울 시녀 셋('어제', '아니', '혹시')이 선 방. 거울을 보면 안 된다는 금기의 근원",
+     "hidden": "'혹시'가 서 있는 거울만 여왕의 말을 거꾸로 비춘다 — 그래서 그 거울 속 말은 진실일 수 있다"
+    },
+    {
+     "id": "tc_judge_hall",
+     "name": "웃음 재판 홀",
+     "xy": [
+      380,
+      500
+     ],
+     "kind": "hall",
+     "access": "staff",
+     "hours": "14:00-18:00 재판",
+     "note": "휘파람 판사가 약속의 위반을 웃음으로 판결한다. 웃음이 터지면 선고가 끝난다"
+    },
+    {
+     "id": "tc_riddle_doors",
+     "name": "수수께끼 문",
+     "xy": [
+      520,
+      380
+     ],
+     "kind": "gate",
+     "access": "staff",
+     "hours": "24시",
+     "note": "맞히면 열리고 틀리면 이름 하나가 닫힌다. 궁정 안쪽의 방은 이 문으로만 간다"
+    },
+    {
+     "id": "tc_maze",
+     "name": "가시 미로",
+     "xy": [
+      480,
+      160
+     ],
+     "kind": "maze",
+     "access": "public",
+     "hours": "24시",
+     "rooms": [
+      "tc_maze_well"
+     ],
+     "note": "길을 잃은 인간의 뼈 대신 꽃이 핀다. 같은 길을 두 번 걸어도 같은 곳에 닿지 않는다"
+    },
+    {
+     "id": "tc_maze_well",
+     "name": "미로 중심 우물",
+     "parent": "tc_maze",
+     "access": "secret",
+     "hidden": "이름 수집가의 보관소로 내려가는 우물. 내려가면 이름 무덤 아래의 '말 없는 병' 층이 있다 — 아직 이름이 붙지 않은 이름들"
+    },
+    {
+     "id": "tc_name_grave",
+     "name": "이름 무덤",
+     "xy": [
+      130,
+      520
+     ],
+     "kind": "graveyard",
+     "access": "staff",
+     "hours": "24시",
+     "rooms": [
+      "tc_name_collector_lodge"
+     ],
+     "note": "빼앗긴 이름이 유리병에 담겨 묻힌 곳. 병 수천 개가 흙 속에서 희미하게 빛난다",
+     "hidden": "병 하나에 '아스테리온'이라는 이름이 있다는 전설 — 게임은 확정하지 않는다"
+    },
+    {
+     "id": "tc_name_collector_lodge",
+     "name": "이름 수집가의 움막",
+     "parent": "tc_name_grave",
+     "access": "owner",
+     "hidden": "시동이 문을 지킨다. 안쪽 선반에 이름이 붙지 않은 빈 병 아홉 개 — 다음에 올 이름들"
+    },
+    {
+     "id": "tc_fog_market",
+     "name": "안개 장터",
+     "xy": [
+      800,
+      690
+     ],
+     "kind": "market",
+     "access": "public",
+     "hours": "06:00-24:00 (안개가 짙은 날은 새벽까지)",
+     "rooms": [
+      "tc_market_scale",
+      "tc_market_true_stall"
+     ],
+     "note": "기억·이름·목소리·계절을 파는 노점들. 값은 아픔의 무게로 잰다. 시세는 REGIONS §6.6"
+    },
+    {
+     "id": "tc_market_scale",
+     "name": "아픔의 저울",
+     "parent": "tc_fog_market",
+     "access": "public",
+     "note": "무게 대신 아픔을 재는 저울. 올려놓는 것은 기억이나 이름이다"
+    },
+    {
+     "id": "tc_market_true_stall",
+     "name": "진명 노점",
+     "parent": "tc_fog_market",
+     "access": "secret",
+     "hidden": "진명 한 조각을 파는 노점. 값은 '네가 가장 사랑하는 사람의 얼굴'. 거절하면 다른 대가를 요구받는다"
+    },
+    {
+     "id": "tc_toy_garden",
+     "name": "장난감 정원",
+     "xy": [
+      620,
+      580
+     ],
+     "kind": "garden",
+     "access": "staff",
+     "hours": "24시",
+     "rooms": [
+      "tc_toy_dance_spot"
+     ],
+     "note": "여왕의 놀이 상대로 불리는 인간 70명의 정원. 불리면 춤추고 노래하고 수수께끼를 맞히고 짐승이 된다"
+    },
+    {
+     "id": "tc_toy_dance_spot",
+     "name": "춤추는 자리",
+     "parent": "tc_toy_garden",
+     "access": "staff",
+     "note": "정원 한가운데 둥근 잔디. 오도가 71년째 매일 같은 춤을 추는 자리"
+    },
+    {
+     "id": "tc_servants_room",
+     "name": "인간 시녀·하인 방",
+     "xy": [
+      430,
+      620
+     ],
+     "kind": "quarters",
+     "access": "serf",
+     "hours": "24시",
+     "note": "궁정 아래층. 엘린이 겨울 반나절만 장난감 정원으로 가는 자리. 문은 철 못을 박지 않아 잠들면 계절이 바뀐다"
+    },
+    {
+     "id": "tc_kitchen",
+     "name": "페이 주방",
+     "xy": [
+      540,
+      600
+     ],
+     "kind": "kitchen",
+     "access": "staff",
+     "hours": "24시",
+     "note": "페이의 음식. 세 번 먹으면 숲 밖 음식이 재 맛이 난다. 인간 하인은 먹지 않고 나르기만 한다"
+    },
+    {
+     "id": "tc_stone_hollow",
+     "name": "조약돌 구덩이",
+     "xy": [
+      700,
+      640
+     ],
+     "kind": "hollow",
+     "access": "secret",
+     "hours": "20:00-22:00",
+     "note": "돌 세는 자들이 저녁에 모이는 얕은 구덩이",
+     "hidden": "구덩이 가운데 큰 돌 하나 — 니나가 처음 주운 날의 돌. 주머니 속 돌 23인분의 총합이 그 아래 묻혀 있다"
+    },
+    {
+     "id": "tc_summer_court",
+     "name": "여름 궁정",
+     "xy": [
+      680,
+      380
+     ],
+     "kind": "court",
+     "access": "staff",
+     "hours": "24시",
+     "note": "인간 아이를 모으는 궁정. 은방울 부인이 아이들을 세지 않고 이름으로 부른다",
+     "hidden": "아이 열여섯 명이 이름 없이 머무는 방. 그중 둘은 회색여울 강변 움막 7호의 '사라진 아이 둘'"
+    },
+    {
+     "id": "tc_winter_court",
+     "name": "겨울 궁정",
+     "xy": [
+      320,
+      380
+     ],
+     "kind": "court",
+     "access": "staff",
+     "hours": "24시",
+     "note": "인간의 기억을 모으는 궁정. 엉겅퀴 공이 대붕괴 당시 아스테리아 인간의 기억 한 해를 지닌다",
+     "hidden": "기억의 병 하나에 '불타는 하얀 도시'의 한 장면 — 이졸이 아이들에게 묻는 꿈과 닮았다"
+    },
+    {
+     "id": "tc_nursery_workshop",
+     "name": "바꿔치기 작업실",
+     "xy": [
+      700,
+      740
+     ],
+     "kind": "workshop",
+     "access": "staff",
+     "hours": "08:00-18:00",
+     "note": "나뭇가지와 그림자로 대체품을 만드는 방. 실뜨기와 유리 손가락 부인이 공동으로 쓴다",
+     "hidden": "작업대 위 아직 이름을 받지 못한 대체품 열두 개 — 하나는 회색여울 쪽으로 보낼 예정"
+    },
+    {
+     "id": "tc_knights_yard",
+     "name": "가시 기사 마당",
+     "xy": [
+      500,
+      700
+     ],
+     "kind": "yard",
+     "access": "staff",
+     "hours": "05:00-09:00",
+     "note": "가시 기사 13이 말씀을 겨루는 마당. 칼은 걸어 둔다"
+    },
+    {
+     "id": "tc_hunt_kennel",
+     "name": "사냥개 집",
+     "xy": [
+      760,
+      280
+     ],
+     "kind": "kennel",
+     "access": "staff",
+     "hours": "24시",
+     "note": "그림자 사냥개를 길들이는 곳. 새벽 사냥꾼이 숲에 든 자를 놀이로 쫓는다"
+    },
+    {
+     "id": "tc_hedge",
+     "name": "경계 가시울타리",
+     "xy": [
+      100,
+      250
+     ],
+     "kind": "border",
+     "access": "public",
+     "hours": "24시",
+     "note": "가시 궁정 바깥 둘레. 가시 기사가 초대 여부를 묻는 곳. 철 못이 박힌 말뚝이 드문드문 있다"
+    },
+    {
+     "id": "tc_mushroom_ring",
+     "name": "돌아오지 않는 오솔길 (버섯 고리 곁)",
+     "xy": [
+      260,
+      330
+     ],
+     "kind": "path",
+     "access": "public",
+     "hours": "24시",
+     "note": "쓰러진 나무 곁에 버섯 고리. 니블이 사는 곳. 원 안으로 발을 들이면 장난감이 된다",
+     "hidden": "쓰러진 나무 속 구멍에 엘린이 어릴 때 남긴 손톱 자국 — 페이어 낱말 아홉 개"
+    }
+   ],
+   "outer": [
+    {
+     "id": "lost_child_stone__backwards_brook",
+     "name": "거꾸로 흐르는 시내",
+     "hours": 47,
+     "node": "lost_child_stone"
+    },
+    {
+     "id": "thornmist__second_mothers",
+     "name": "두번째 엄마들의 마을 (철 울타리)",
+     "hours": 60,
+     "node": "lost_child_stone"
+    },
+    {
+     "id": "thornmist__south_tower",
+     "name": "숲 남쪽 경계 폐탑",
+     "hours": 20,
+     "node": "thorn_court"
+    }
+   ]
+  },
+  "windspire": {
+   "id": "windspire",
+   "name": "바람첨탑",
+   "node": "windspire",
+   "kind": "spire_city",
+   "grid": {
+    "w": 760,
+    "h": 560
+   },
+   "curfew": {
+    "from": "22:00",
+    "to": "05:00",
+    "note": "아에리에게는 통금이 없다(건물에 문이 없다). 인간 땅손은 바닥 마을과 바람 정원 외의 기둥으로 줄다리를 건널 수 없고, 허락 없이 건너면 줄을 거둔다(고립). 겨울에는 기둥 위가 얼음으로 덮여 계단 이동이 닫힌다"
+   },
+   "bells": [
+    {
+     "at": "05:00",
+     "name": "바람 종 — 새벽 첫 비행"
+    },
+    {
+     "at": "12:00",
+     "name": "바람 종 — 정오 (정상 종 틀의 줄을 코라크가 당긴다)"
+    },
+    {
+     "at": "18:00",
+     "name": "바람 종 — 저녁 줄 거둠 점검"
+    }
+   ],
+   "patrols": [
+    "05:00",
+    "13:00",
+    "21:00"
+   ],
+   "locations": [
+    {
+     "id": "ws_high_nest",
+     "name": "흰 깃 첨탑 정상 둥지",
+     "xy": [
+      380,
+      40
+     ],
+     "kind": "nest",
+     "access": "owner",
+     "hours": "24시 (지붕 없음)",
+     "rooms": [
+      "ws_queen_perch",
+      "ws_wind_bell"
+     ],
+     "note": "가장 높은 기둥(900m). 지붕과 벽이 없다. 키리에의 둥지는 은빛 깃털로 엮은 접시 모양이고, 바람이 센 날은 깃털 한 겹을 더한다"
+    },
+    {
+     "id": "ws_queen_perch",
+     "name": "여왕의 횃대",
+     "parent": "ws_high_nest",
+     "access": "owner",
+     "hidden": "횃대 아래 깃털 속 — 검게 변한 왼쪽 날개 끝 깃털 셋의 사본(AS 132 땅에 내려간 날의 증거)과 역행하는 별 기록 한 장",
+     "note": "밤마다 땅의 불빛을 세는 자리"
+    },
+    {
+     "id": "ws_wind_bell",
+     "name": "바람 종 틀",
+     "parent": "ws_high_nest",
+     "access": "staff",
+     "hours": "24시",
+     "note": "지붕 없는 종 틀. 정오와 새벽에 줄을 당긴다. 코라크가 줄 곁에서 별을 센다",
+     "hidden": "종 틀 나무에 코라크가 새긴 별 기록 — 같은 밤이 두 번 적힌 자리"
+    },
+    {
+     "id": "ws_funeral_peak",
+     "name": "하늘 장례 봉우리",
+     "xy": [
+      370,
+      20
+     ],
+     "kind": "peak",
+     "access": "staff",
+     "hours": "해 뜰 때",
+     "note": "정상 위 가장 높은 바위. 죽은 아에리를 바람에 놓아 주는 곳. 바위 틈이 깊다",
+     "hidden": "남쪽 바위 틈 — 잘린 날개 한 쌍을 기름 가죽에 싸 숨겨 둔 자리 (타일라의 날개)"
+    },
+    {
+     "id": "ws_feather_council",
+     "name": "깃털 의회",
+     "xy": [
+      390,
+      120
+     ],
+     "kind": "council",
+     "access": "public",
+     "hours": "의회 날 08:00-18:00",
+     "rooms": [
+      "ws_council_records"
+     ],
+     "note": "지붕 없는 원형 회의장. 의석 일곱 가문. 바람 종 아래라 말이 흩어지지 않게 낮게 말한다"
+    },
+    {
+     "id": "ws_council_records",
+     "name": "의회 기록 (깃털 매듭)",
+     "parent": "ws_feather_council",
+     "access": "staff",
+     "hidden": "'아래 보는 자들'이 용황이 죽은 뒤 카스파르를 지원할지 논의한 매듭 — 표결 없이 닫힘"
+    },
+    {
+     "id": "ws_high_nest_house",
+     "name": "높은둥지 가문 둥지",
+     "xy": [
+      340,
+      90
+     ],
+     "kind": "nest",
+     "access": "owner",
+     "note": "여왕과 백조 귀족의 둥지들이 모인 기둥 군. 인간은 시중이 아니면 오르지 못한다"
+    },
+    {
+     "id": "ws_prince_nest",
+     "name": "왕자의 둥지",
+     "xy": [
+      320,
+      140
+     ],
+     "kind": "nest",
+     "access": "owner",
+     "hidden": "둥지 밑 날개 깃털 — 오른이 숯으로 그린 인간 글자 (에이로스의 날개 아래쪽)"
+    },
+    {
+     "id": "ws_ground_nest",
+     "name": "땅손 둥지 (흰 깃 첨탑 아래쪽)",
+     "xy": [
+      310,
+      180
+     ],
+     "kind": "nest",
+     "access": "serf",
+     "note": "오른이 사는 아래쪽 둥지. 땅을 걷는 연습을 하는 왕자의 발자국이 나 있다"
+    },
+    {
+     "id": "ws_looking_up_nest",
+     "name": "올려다보는 자들 둥지",
+     "xy": [
+      260,
+      100
+     ],
+     "kind": "nest",
+     "access": "owner",
+     "note": "셀레스 긴목의 둥지. 하늘만 보는 가문들의 모임 자리. 벽이 없어 말이 바람을 타고 흩어진다"
+    },
+    {
+     "id": "ws_stormfeather_cliff",
+     "name": "폭풍깃 절벽 (동쪽)",
+     "xy": [
+      680,
+      130
+     ],
+     "kind": "cliff",
+     "access": "staff",
+     "hours": "24시",
+     "rooms": [
+      "ws_cliff_nests"
+     ],
+     "note": "번개 모양 깃털 가문의 동쪽 절벽. 전쟁장 카이르의 둥지가 맨 위에 있고 인간 7명의 둥지가 절벽 중턱에 있다"
+    },
+    {
+     "id": "ws_cliff_nests",
+     "name": "절벽 중턱 땅손 둥지 (인간 7)",
+     "parent": "ws_stormfeather_cliff",
+     "access": "serf",
+     "hidden": "글을 아는 땅손의 숯 글씨 — 절벽 안쪽 돌판에 지난 칠 년 동안의 날짜와 폭풍깃의 이동이 적혀 있다"
+    },
+    {
+     "id": "ws_hawkeye_ledge",
+     "name": "매눈 서쪽 선반",
+     "xy": [
+      90,
+      130
+     ],
+     "kind": "ledge",
+     "access": "staff",
+     "hours": "24시",
+     "rooms": [
+      "ws_map_nest"
+     ],
+     "note": "서리 이빨이 보이는 서쪽. 정찰장 레이의 선반. 세렌 오필 상가의 사자가 가끔 줄을 타고 오른다"
+    },
+    {
+     "id": "ws_map_nest",
+     "name": "지도 둥지",
+     "parent": "ws_hawkeye_ledge",
+     "access": "owner",
+     "hidden": "서리 요람(이졸데의 흰 둥지)의 위치와 경비를 위에서 그린 깃털 지도"
+    },
+    {
+     "id": "ws_scout_ring",
+     "name": "정찰 고리 (서쪽 아래 선반)",
+     "xy": [
+      130,
+      260
+     ],
+     "kind": "ledge",
+     "access": "staff",
+     "hours": "24시",
+     "note": "까마귀 아에리 정찰 고리 대장 아스크의 선반. 대륙 상공으로 나가는 새들이 모이는 곳"
+    },
+    {
+     "id": "ws_feather_library",
+     "name": "깃 서고 (서쪽 아래층 탑)",
+     "xy": [
+      160,
+      300
+     ],
+     "kind": "library",
+     "access": "staff",
+     "hours": "06:00-18:00",
+     "rooms": [
+      "ws_knot_room"
+     ],
+     "note": "까마귀 아에리 8,000이 사는 낮은 탑. 3,400년치 하늘 연대기가 깃털 매듭으로 걸려 있다"
+    },
+    {
+     "id": "ws_knot_room",
+     "name": "대붕괴 날의 매듭",
+     "parent": "ws_feather_library",
+     "access": "owner",
+     "hidden": "맨 안쪽 깃 한 다발 — 대붕괴 날을 묶은 첫 매듭: '불이 의식보다 먼저 떨어졌다'"
+    },
+    {
+     "id": "ws_seven_fingers",
+     "name": "일곱 손가락 (둥지 탑 군)",
+     "xy": [
+      560,
+      90
+     ],
+     "kind": "nest",
+     "access": "staff",
+     "hours": "24시",
+     "rooms": [
+      "ws_hawk_mews"
+     ],
+     "note": "일곱 기둥이 손가락처럼 솟은 둥지 군. 아에리 2,000이 산다"
+    },
+    {
+     "id": "ws_hawk_mews",
+     "name": "매 사육장",
+     "parent": "ws_seven_fingers",
+     "access": "staff",
+     "hours": "05:00-19:00",
+     "note": "길들인 매가 한 마리 3비늘. 인간 일손이 새장 청소를 한다 — 새장은 닫지 않는다",
+     "hidden": "서쪽 구석 지붕 줄 한 타래 — 땅손의 줄에 이어 붙이려는 사육사의 몫"
+    },
+    {
+     "id": "ws_wind_garden",
+     "name": "바람 정원 (기둥 꼭대기 계단밭)",
+     "xy": [
+      500,
+      260
+     ],
+     "kind": "garden",
+     "access": "serf",
+     "hours": "05:00-19:00",
+     "rooms": [
+      "ws_water_jars"
+     ],
+     "note": "고산 약초와 열매가 자라는 계단밭. 인간 140의 터전. 계단 가장자리마다 낙사 방지 줄이 쳐졌다"
+    },
+    {
+     "id": "ws_water_jars",
+     "name": "물 항아리 (내려가는 줄 210m)",
+     "parent": "ws_wind_garden",
+     "access": "secret",
+     "hidden": "큰 항아리 밑 — 몰래 땋은 '내려가는 줄' 210m. 필요한 길이는 340m다"
+    },
+    {
+     "id": "ws_ground_village",
+     "name": "바닥 마을 (땅손 움막)",
+     "xy": [
+      440,
+      400
+     ],
+     "kind": "village",
+     "access": "serf",
+     "hours": "24시",
+     "note": "기둥 아래 평평한 바위 턱의 움막. 인간 약 140. 날개 없는 이들이 한 기둥에서 평생을 산다"
+    },
+    {
+     "id": "ws_ground_forge",
+     "name": "바닥 마을 대장간",
+     "xy": [
+      470,
+      440
+     ],
+     "kind": "work",
+     "access": "serf",
+     "hours": "06:00-17:00",
+     "note": "아에리가 무거워하는 금속을 다루는 유일한 화로. 줄 고리와 바늘을 가벼운 쇠로 만든다"
+    },
+    {
+     "id": "ws_rope_bridge_main",
+     "name": "중앙 줄다리 (정상 기둥과 땅손 기둥 사이)",
+     "xy": [
+      430,
+      330
+     ],
+     "kind": "bridge",
+     "access": "public",
+     "hours": "해 뜰 때-해 질 때",
+     "note": "폭 한 사람. 줄지기의 매듭이 열 걸음마다 걸려 있다. 바람 센 날 민첩 판정 — 줄이 흔들릴 때 줄 거둠이 시작된다"
+    },
+    {
+     "id": "ws_fallen_slope",
+     "name": "떨어진 자의 비탈",
+     "xy": [
+      260,
+      520
+     ],
+     "kind": "slope",
+     "access": "public",
+     "note": "기둥 아래 돌 비탈. 떨어진 인간들의 뼈와 부러진 줄 조각이 있다. 살아서 계곡까지 내려간 한 사람의 흔적이 한 줄 있다"
+    },
+    {
+     "id": "ws_feather_cliff_cave",
+     "name": "깃털 절벽 아래 동굴",
+     "xy": [
+      620,
+      500
+     ],
+     "kind": "cave",
+     "access": "secret",
+     "hours": "24시",
+     "note": "날개 잘린 타일라가 사는 동굴. 입구가 넓게 열려 있다 — 갇힌 공간이 아니다"
+    }
+   ],
+   "outer": [
+    {
+     "id": "sky_market__basket_lift",
+     "name": "바구니 승강 줄 (줄지기 초소)",
+     "hours": 0,
+     "node": "sky_market"
+    },
+    {
+     "id": "sky_market__tents",
+     "name": "시장 천막",
+     "hours": 0,
+     "node": "sky_market"
+    },
+    {
+     "id": "sky_market__durgan_depot",
+     "name": "두르강 창고",
+     "hours": 0,
+     "node": "sky_market"
+    },
+    {
+     "id": "sky_market__porter_shed",
+     "name": "짐꾼 막사",
+     "hours": 0,
+     "node": "sky_market"
+    },
+    {
+     "id": "sky_market__bandit_den",
+     "name": "계곡 도적 은신처와 철망 새장",
+     "hours": 0,
+     "node": "sky_market"
+    },
+    {
+     "id": "sky_market__cliff_trail",
+     "name": "독수리 계단 초입",
+     "hours": 0,
+     "node": "sky_market"
+    },
+    {
+     "id": "wind_well__oasis",
+     "name": "바람 우물 오아시스",
+     "hours": 0,
+     "node": "wind_well"
+    },
+    {
+     "id": "wind_well__seventh_well_cave",
+     "name": "7번 우물 아래 동굴 (이삭 줍기 짐꾼의 은신처)",
+     "hours": 0,
+     "node": "wind_well"
     }
    ]
   }
@@ -12249,6 +13807,1013 @@
     }
    ]
   },
+  "npc_hrimnir": {
+   "home": "hh_king_chamber",
+   "presence": [
+    {
+     "from": "312-09-01",
+     "to": "313-04-21"
+    },
+    {
+     "from": "313-06-19",
+     "to": "313-07-30"
+    }
+   ],
+   "away": {
+    "at": "baalkar",
+    "doing": "맹약회의 313 길 — 서약섬으로 가는 요툰 사절단과 함께, 굶주린 왕이 전당을 오래 비운다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "05:00",
+     "at": "hh_king_chamber",
+     "doing": "잔다 — 갈비뼈가 드러난 몸을 가죽 한 장으로 덮고"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "hh_king_seat",
+     "doing": "왕의 자리에 앉아 해가 뜨기를 기다린다 — 아직 아무것도 먹지 않았다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "hh_throne_hall",
+     "doing": "씨족장과 사자를 접견한다 — 한 문장을 말하고 숨을 고른다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh_king_seat",
+     "doing": "왕의 식탁 — 귀리죽 반 그릇. 씨족장 누구보다 적게 먹는다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "hh_throne_hall",
+     "doing": "얼음 탁자 안건을 정리하고 곡창 보고를 듣는다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "18:00",
+     "at": "hh_ice_field",
+     "doing": "얼음 들판 가장자리에 서서 덜어냄의 땅을 바라본다",
+     "outdoor": true,
+     "rain": {
+      "at": "hh_king_seat",
+      "doing": "왕의 자리에서 창 쪽을 본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "hh_throne_hall",
+     "doing": "요툰 식탁 개시 — 가장 마른 몸으로 맨 끝에 앉는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "24:00",
+     "at": "hh_king_chamber",
+     "doing": "침소에서 비밀 칙령의 이름 쪽지를 한 장씩 읽는다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "13:00",
+     "at": "hh__frost_mother",
+     "doing": "서리 어머니 사당에서 빙하 벽 앞에 서 있는다 — 말을 하지 않는다"
+    }
+   ]
+  },
+  "npc_skadir": {
+   "home": "hh_prince_seat",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "05:00",
+     "at": "hh_prince_seat",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh_warrior_barracks",
+     "doing": "전사단 훈련을 지휘한다 — 돌 망치를 직접 휘두른다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh_warrior_barracks",
+     "doing": "같은 고기를 나눠 먹는다 — 전사단원 모두가 같은 접시에서",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "hh_warrior_barracks",
+     "doing": "남침 지도와 군량 장부를 본다",
+     "alt": {
+      "p": 0.3,
+      "at": "hh_gate",
+      "doing": "문 밖 서리 길 쪽을 순찰한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "24:00",
+     "at": "hh_prince_seat",
+     "doing": "왕자의 자리에서 아버지의 식탁 소식을 듣는다"
+    }
+   ]
+  },
+  "npc_yorun": {
+   "home": "hh__frost_mother",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "hh__frost_mother",
+     "doing": "서리 어머니의 동굴에서 숨 세 번에 한 문장을 말한다 — 대지가 남쪽에서 뛴다고 한다"
+    }
+   ]
+  },
+  "npc_asta": {
+   "home": "hh__stoneknee_huts",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "05:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "새벽 매듭 점호 곁에 서서 800명을 센다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "일 배분과 아픈 사람 확인 — 서리말로 낮게 이야기한다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "불 곁에서 보내는 무리의 순서를 정한다 — 이름을 말하지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "가장 안쪽 움막에서 소년 곁에 눕는다"
+    }
+   ]
+  },
+  "npc_baug": {
+   "home": "hh__stoneknee_hold",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "잔다"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "씨족 장부 — 인간 노예 수를 매듭으로 대조한다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "점심 — 군량 값 이야기를 한다"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "골짜기 움막을 돌며 머릿수를 확인한다",
+     "alt": {
+      "p": 0.3,
+      "at": "hh__stoneknee_hold",
+      "doing": "장원에서 남침 군량 셈을 한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "저녁 식탁에서 셈을 마친다"
+    }
+   ]
+  },
+  "npc_einar": {
+   "home": "hh__stoneknee_huts",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "가장 안쪽 움막에 숨어 잔다 — 발가락 셋을 잃은 오른발을 감싸고"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "19:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "움막 안쪽에서 매듭을 만든다 — 아스타가 허락한 일만 한다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "20:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "불가에서 서리말 자장가를 입 모양으로만 따라 한다"
+    }
+   ]
+  },
+  "npc_matusz": {
+   "home": "weeping_pass__lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "05:00",
+     "at": "weeping_pass__lodge",
+     "doing": "겨울잠 직전의 얕은 잠 — 꿀 단지 열 개가 곁에 있다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "weeping_pass__lodge",
+     "doing": "산장 난로를 살리고 꿀 단지를 센다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "17:00",
+     "at": "weeping_pass__lodge",
+     "doing": "서리 길 쪽을 보며 가죽을 손질한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "24:00",
+     "at": "weeping_pass__lodge",
+     "doing": "호송대가 오면 첫 밤을 재운다 — 오지 않으면 혼자 꿀을 한 숟갈 떠 먹는다"
+    }
+   ]
+  },
+  "npc_harva": {
+   "home": "weeping_pass__harva_nest",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "06:00",
+     "at": "weeping_pass__harva_nest",
+     "doing": "둥지 동굴에서 잔다 — 서리 안개가 입 주변에 낀다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "11:00",
+     "at": "weeping_pass__harva_nest",
+     "doing": "짐삯 흥정 — 산을 넘길 손님을 기다린다"
+    },
+    {
+     "days": "all",
+     "from": "11:00",
+     "to": "17:00",
+     "at": "weeping_pass__harva_nest",
+     "doing": "울음 협곡 위를 한 번 돈다 — 스카디르에게 팔 지도를 머릿속에 그린다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "24:00",
+     "at": "weeping_pass__harva_nest",
+     "doing": "동굴 입구에서 얼음 안개를 뿜어 깃털을 닦는다"
+    }
+   ]
+  },
+  "npc_ogre_pack": {
+   "home": "weeping_pass__ogre_cave",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "weeping_pass__ogre_cave",
+     "doing": "썩은이빨 고개 동굴 — 말을 잃은 열댓이 웅크려 있다. 우두머리만 가끔 옛 이름 한 음절을 중얼거린다"
+    }
+   ]
+  },
+  "npc_herja": {
+   "home": "hh__ice_cave",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "05:00",
+     "at": "hh__ice_cave",
+     "doing": "불 없이 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "hh__frost_mother",
+     "doing": "사당의 얼음을 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "hh__ice_cave",
+     "doing": "얼어 있는 거인의 눈 앞에서 입 모양으로 군데의 노래를 한다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "19:00",
+     "at": "hh__ice_cave",
+     "doing": "옛 방패줄 들판까지 걸어가 방패 테 조각을 꽂았다 뽑는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "24:00",
+     "at": "hh__ice_cave",
+     "doing": "불 없이 앉아 있는다"
+    }
+   ]
+  },
+  "npc_hg_skala": {
+   "home": "hh_queen_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:30",
+     "to": "05:30",
+     "at": "hh_queen_hall",
+     "doing": "잔다 — 침상 머리 쪽문 곁에서"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "07:00",
+     "at": "hh_kitchen",
+     "doing": "큰 솥 곁에서 아이 시중에게 자기 몫을 덜어 준다 — 접시를 천천히 기울여 소리 없이"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "hh_queen_hall",
+     "doing": "전당 안살림 — 솥 열두 개의 귀리 수를 센다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh_kitchen",
+     "doing": "정오 죽 배식을 곁에서 본다 — 굶주림월엔 솥이 비어 있다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "hh_song_hall",
+     "doing": "노래 거인과 안살림 연락 — 아이들 이야기는 구절 사이에 끼운다",
+     "alt": {
+      "p": 0.3,
+      "at": "hh_queen_hall",
+      "doing": "방에서 곡창 쪽 소리를 듣는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "18:00",
+     "at": "hh_queen_hall",
+     "doing": "쪽문 곁에 앉아 곡창 쪽 바닥 소리를 듣는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:30",
+     "at": "hh_queen_hall",
+     "doing": "왕과 따로 먹는다 — 접시에는 손도 대지 않는다"
+    }
+   ]
+  },
+  "npc_hg_ugra": {
+   "home": "hh_clan_hall",
+   "presence": [
+    {
+     "from": "312-12-20",
+     "to": "313-01-20"
+    },
+    {
+     "from": "313-04-01",
+     "to": "313-04-25"
+    }
+   ],
+   "away": {
+    "at": "hrimnir_hall",
+    "doing": "서리땅 동부 바위배 씨족 영지에서 창고 열쇠를 어루만진다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "hh_clan_hall",
+     "doing": "씨족장 숙소에서 잔다 — 창고 열쇠를 허리에"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh_clan_hall",
+     "doing": "창 가죽에 기름을 먹이고 남침 날짜를 묻는다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh_throne_hall",
+     "doing": "식탁에서 먼저 먹는다 — 왕이 먼저 굶는 법에 눈을 흘기며"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "22:00",
+     "at": "hh_clan_hall",
+     "doing": "씨족장 숙소 식탁에서 우트가와 남침 이야기를 한다"
+    }
+   ]
+  },
+  "npc_hg_helda": {
+   "home": "hh_clan_hall",
+   "presence": [
+    {
+     "from": "312-12-20",
+     "to": "313-01-20"
+    },
+    {
+     "from": "313-04-01",
+     "to": "313-04-25"
+    }
+   ],
+   "away": {
+    "at": "hrimnir_hall",
+    "doing": "서리 이빨 빙봉 동쪽 눈늑대가죽 씨족 영지에서 고르의 무덤을 본다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "hh_clan_hall",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh_clan_hall",
+     "doing": "눈늑대 가죽을 손질하고 이빨 목걸이를 센다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "hh_throne_hall",
+     "doing": "식탁에서 고기를 받지 않고 듣기만 한다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "22:00",
+     "at": "hh_clan_hall",
+     "doing": "저녁 식탁에서 용에 대한 노래를 한 소절 읊는다"
+    }
+   ]
+  },
+  "npc_hg_brimir": {
+   "home": "hh__deepwell_springs",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "hh__deepwell_springs",
+     "doing": "온천 우물 곁에서 잔다 — 보리알 하나를 손바닥에 쥐고"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "hh__deepwell_springs",
+     "doing": "해를 보며 앉아 있다 — 인간 노예가 온천 밭에서 이삭을 줍는다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh__deepwell_springs",
+     "doing": "정오 죽을 인간 노예와 같은 줄에서 받는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "hh__deepwell_springs",
+     "doing": "온천 농사 곁을 돌며 이삭을 센다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "20:00",
+     "at": "hh__deepwell_springs",
+     "doing": "해 질 녘 우물에 보리알 하나를 떨어뜨린다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_hg_heimla": {
+   "home": "hh_song_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "hh_song_hall",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "07:00",
+     "at": "hh_song_hall",
+     "doing": "오늘 부를 구절의 첫 소절을 입 속으로 한다"
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "hh_song_hall",
+     "doing": "한 달 노래 중 낮 구절을 낮은 목소리로 부른다 — 제자가 벽 쪽에서 입 모양으로 따라 한다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "hh_song_hall",
+     "doing": "선례를 청하는 사람에게 구절로 답한다",
+     "alt": {
+      "p": 0.3,
+      "at": "hh_queen_hall",
+      "doing": "왕비의 방에서 안살림 이야기를 구절에 얹는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "hh_song_hall",
+     "doing": "밤 구절 — 서리 어머니 쪽을 향해 눈을 감고 한 소절을 부른다"
+    }
+   ]
+  },
+  "npc_hg_orr": {
+   "home": "hh_warrior_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "hh_warrior_barracks",
+     "doing": "서서 잔다 — 쇠가 된 무릎은 꿇을 수 없다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh_warrior_barracks",
+     "doing": "전사단 훈련을 곁에서 지켜본다 — 굳은 무릎을 기름으로 문지르며"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh_warrior_barracks",
+     "doing": "왕자의 식탁 곁에 서서 같은 고기를 거절한다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "22:00",
+     "at": "hh_warrior_barracks",
+     "doing": "남침 선봉 편성을 정한다 — 막사 뒤 가죽 헛간 쪽은 보지 않는다"
+    }
+   ]
+  },
+  "npc_hg_bragi": {
+   "home": "hh_granary",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "hh_granary",
+     "doing": "곡창 곁방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "hh_granary",
+     "doing": "곡창 문을 열고 바닥판 위 자루를 눈으로 센다 — 이백팔십팔, 팔",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "16:00",
+     "at": "hh_granary",
+     "doing": "반출 시각에 서서 아무것도 내보내지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "20:00",
+     "at": "hh_granary",
+     "doing": "바닥판 곁에 앉아 한 번 더 센다 — 왕비의 쪽문 쪽 벽을 보지 않으려 애쓴다"
+    },
+    {
+     "days": "monthday:[3]",
+     "from": "10:00",
+     "to": "12:00",
+     "at": "hh_granary_floor",
+     "doing": "서리월·긴밤월·굶주림월 3일 — 왕이 바닥판을 열어 보는 날. 숫자는 삼백이라고 말한다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_hg_hallgrid": {
+   "home": "hh__frost_mother",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "hh__frost_mother",
+     "doing": "동굴 곁방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "hh__frost_mother",
+     "doing": "제단 곁에서 얼음을 쓸고 첫 것을 올린다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "hh__ice_cave",
+     "doing": "빙하 벽 앞에서 얼어 있는 거인의 눈을 올려다본다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "20:00",
+     "at": "hh__frost_mother",
+     "doing": "제단 곁에 앉아 어머니의 말을 기다린다"
+    }
+   ]
+  },
+  "npc_hg_utga": {
+   "home": "hh__stonefist_hold",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "hh__stonefist_hold",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh__stonefist_hold",
+     "doing": "무기 더미에서 돌 망치 이백의 수를 센다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "hh__stonefist_hold",
+     "doing": "점심 — 남침 서신을 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "21:00",
+     "at": "hh__stonefist_hold",
+     "doing": "장원 마당에서 돌 망치 휘두르기를 감독한다",
+     "outdoor": true,
+     "rain": {
+      "at": "hh__stonefist_hold",
+      "doing": "장원 안에서 군량을 센다"
+     }
+    }
+   ]
+  },
+  "npc_hg_sven": {
+   "home": "bone_pens__chief_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:30",
+     "at": "bone_pens__huts",
+     "doing": "새벽 매듭 점호 — 머릿수를 큰 소리로 센다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "04:30",
+     "to": "12:00",
+     "at": "bone_pens__hungry_field",
+     "doing": "굶주린 들 노동 감독 — 매듭 끈으로 머릿수를 센다",
+     "outdoor": true,
+     "rain": {
+      "at": "bone_pens__huts",
+      "doing": "움막 지대를 돌며 머릿수를 센다"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "bone_pens__fire",
+     "doing": "공동 화덕 곁에서 귀리죽 한 그릇"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "bone_pens__fence",
+     "doing": "뼈 울타리 바깥문을 돌며 도망치려는 낌새를 본다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "bone_pens__chief_hut",
+     "doing": "씨족 장부에 머릿수를 올린다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "bone_pens__chief_hut",
+     "doing": "누이의 이름을 맨 매듭 끈 하나를 쥐고 잔다"
+    }
+   ]
+  },
+  "npc_hg_inge": {
+   "home": "weeping_pass__last_fire",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "weeping_pass__last_fire",
+     "doing": "마지막 불 곁에서 불씨를 지키며 다음 무리를 기다린다"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "10:00",
+     "to": "14:00",
+     "at": "weeping_pass__shelter_cave",
+     "doing": "대피 동굴 세 곳의 비상 식량을 한 곳씩 확인한다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "07:00",
+     "at": "weeping_pass__rune_rock",
+     "doing": "바위 밑 서리말 룬 표식을 손바닥으로 쓸어 점검한다",
+     "outdoor": true
+    }
+   ]
+  },
+  "npc_hg_hordis": {
+   "home": "hh_fire_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "hh_fire_hut",
+     "doing": "불 오두막 불을 꺼뜨리지 않는다 — 교대로 오는 노예들의 언 손을 녹이고 아이에게 죽 한 숟갈을 먹인다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "hh_kitchen",
+     "doing": "솥 곁에서 전당 시중 아이들에게 죽을 가져다준다",
+     "alt": {
+      "p": 0.4,
+      "at": "hh_fire_hut",
+      "doing": "불 곁에서 아이의 말을 낮게 되뇐다"
+     }
+    }
+   ]
+  },
+  "npc_hg_ragna": {
+   "home": "hh_slave_huts",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "hh_slave_huts",
+     "doing": "아이들 곁에서 잔다 — 입 모양으로 구절을 되뇌며"
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:30",
+     "at": "hh_slave_huts",
+     "doing": "새벽 매듭 점호 — 숨을 멈춘다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "hh_song_hall",
+     "doing": "노래 거인 곁에 앉아 한 구절씩 외운다 — 소리를 내지 않는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "hh_kitchen",
+     "doing": "솥 곁 시중 — 입 모양으로 외운 구절을 되뇐다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "hh_fire_hut",
+     "doing": "불 오두막에서 호르디스 곁에 앉아 노래 한 소절을 입 모양으로 반복한다"
+    }
+   ]
+  },
+  "npc_hg_halr": {
+   "home": "hh_chain_post",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:30",
+     "at": "hh_slave_huts",
+     "doing": "새벽 매듭 점호 — 머릿수를 크게 센다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "04:30",
+     "to": "12:00",
+     "at": "hh_firewood",
+     "doing": "땔감 하치장 감독 — 매듭 끈으로 머릿수를 센다",
+     "outdoor": true,
+     "rain": {
+      "at": "hh_kitchen",
+      "doing": "솥 마당을 돌며 머릿수를 센다"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "19:00",
+     "at": "hh_kitchen",
+     "doing": "큰 솥 마당 감독 — 소리가 새어 나오는 움막 앞은 천천히 지나간다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "hh_chain_post",
+     "doing": "씨족 장부에 머릿수를 올린다 — 두 개를 뺀다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "hh_chain_post",
+     "doing": "빠진 두 사람의 이름을 매듭 끈 하나에 맨다"
+    }
+   ]
+  },
+  "npc_hg_pik": {
+   "home": "hh_krik_stall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "08:00",
+     "at": "hh_krik_stall",
+     "doing": "천막 안에서 재개 조건 줄을 소리 없이 읽다가 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "17:00",
+     "at": "hh_krik_stall",
+     "doing": "곡물 장부를 쓴다 — 오늘 아침 값 그대로",
+     "alt": {
+      "p": 0.3,
+      "at": "hh_gate",
+      "doing": "전당 문 밖 서리 길에서 들어오는 소식을 기다린다"
+     }
+    }
+   ]
+  },
+  "npc_hg_torvald": {
+   "home": "hh__stoneknee_hold",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "셈쟁이 방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "hh__stoneknee_huts",
+     "doing": "골짜기 움막을 돌며 매듭으로 머릿수를 센다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "바우그 앞에서 군량 셈을 보고한다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "hh__stoneknee_hold",
+     "doing": "밤 매듭 끈에서 지운 오십 명의 자리를 손으로 만진다"
+    }
+   ]
+  },
   "npc_bror": {
    "home": "dh_king_chamber",
    "presence": [
@@ -15754,6 +18319,2901 @@
      "doing": "대성당 안식일 예배"
     }
    ]
+  },
+  "npc_mordecai": {
+   "home": "first_thirst_castle__throne",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "17:00",
+     "at": "first_thirst_castle__well",
+     "doing": "성 지하 우물 곁 — 빛을 피해 우물에 비친 것을 본다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "18:00",
+     "at": "first_thirst_castle__well",
+     "doing": "해가 지는 것을 우물 바닥의 피 몇 방울로 듣는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "first_thirst_castle__throne",
+     "doing": "옥좌 '마르지 않는 잔' — 밤의 귀족 접견",
+     "alt": {
+      "p": 0.2,
+      "at": "first_thirst_castle__great_hall",
+      "doing": "대연회장을 한 바퀴 돈다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "first_thirst_castle__well",
+     "doing": "우물 곁에서 소절을 중얼거린다 — '너희는…'에서 멈춘다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_eloise": {
+   "home": "first_thirst_castle__throne",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "first_thirst_castle__throne",
+     "doing": "군주가 잠들지 않은 방 곁에 선다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "first_thirst_castle__throne",
+     "doing": "군주의 서신을 정리한다 — 세실의 사본을 올린다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "first_thirst_castle__throne",
+     "doing": "저녁 첫 잔을 따른다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "first_thirst_castle__throne",
+     "doing": "접견 시중"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "first_thirst_castle__well",
+     "doing": "우물 곁에서 군주의 중얼거림을 듣는다"
+    }
+   ]
+  },
+  "npc_carnon": {
+   "home": "first_thirst_castle__kennel",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "first_thirst_castle__kennel",
+     "doing": "집행 도구를 닦는다 — 날 선 도구에 이름을 새기지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "first_thirst_castle__great_hall",
+     "doing": "군주의 명을 기다리며 대연회장 가장자리에 선다",
+     "alt": {
+      "p": 0.5,
+      "at": "first_thirst_castle__kennel",
+      "doing": "집행인의 방에서 줄 장부를 읽는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "18:00",
+     "at": "first_thirst_castle__kennel",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_marcius": {
+   "home": "first_thirst_castle__cup_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "first_thirst_castle__cup_hall",
+     "doing": "공물 명단을 정리한다 — 한 줄은 비워 둔다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "first_thirst_castle__well",
+     "doing": "우물 곁에서 군주의 두 겹 목소리를 받아 적는다 (순례 철)",
+     "alt": {
+      "p": 0.6,
+      "at": "first_thirst_castle__cup_hall",
+      "doing": "회합장에서 명단 확정을 준비한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "first_thirst_castle__cup_hall",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_basilisa": {
+   "home": "first_thirst_castle__cup_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "first_thirst_castle__cup_hall",
+     "doing": "해 질 녘 기상 — 첫 잔"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "first_thirst_castle__cup_hall",
+     "doing": "첫 잔의 가문 회합 — 맹약회의 안 초안을 고친다",
+     "alt": {
+      "p": 0.3,
+      "at": "rp_lord_manor",
+      "doing": "붉은 우리 장부를 소리로 듣는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "first_thirst_castle__cup_hall",
+     "doing": "가문 회합과 장부 청취"
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "first_thirst_castle__cup_hall",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_adriel": {
+   "home": "rp_lord_manor",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:30",
+     "at": "rp_lord_manor",
+     "doing": "해 질 녘 기상 — 첫 잔"
+    },
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "21:00",
+     "at": "rp_tasting_room",
+     "doing": "시음 — 혈통별 피 맛을 기록한다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:30",
+     "at": "rp_overlook",
+     "doing": "채혈 순번을 내려다본다",
+     "alt": {
+      "p": 0.3,
+      "at": "rp_bleed_shed",
+      "doing": "채혈 헛간에서 직접 참관한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:30",
+     "to": "04:00",
+     "at": "rp_lord_manor",
+     "doing": "장부와 숫자 점검 — 일곱 앞에서 책장을 넘긴다"
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "18:00",
+     "at": "rp_coffin_room",
+     "doing": "낮의 잠 — 맑은 날은 이 방에서 나오지 않는다"
+    }
+   ]
+  },
+  "npc_kasimir": {
+   "home": "red_pens__white_pen",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "red_pens__white_pen",
+     "doing": "해 질 녘 기상 — 하얀 우리 입구에서 손을 씻는다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "rp_white_garden",
+     "doing": "하얀 우리 정원을 돌며 선별된 이들을 관찰한다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "rp_tribute_yard",
+     "doing": "공물 마당에서 명단과 도착을 확인한다 (긴밤월 외에는 비어 있다)",
+     "alt": {
+      "p": 0.6,
+      "at": "red_pens__white_pen",
+      "doing": "하얀 우리 장부를 읽는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "red_pens__white_pen",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_zrag": {
+   "home": "rp_herders_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "rp_herders_lodge",
+     "doing": "목동 점호 — 호루라기",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "rp_exercise_ground",
+     "doing": "우리 순찰 — 달리기와 울타리를 본다",
+     "outdoor": true,
+     "rain": {
+      "at": "rp_herders_lodge",
+      "doing": "목동 숙소에서 숫자표를 정리한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "rp_pen_barracks",
+     "doing": "우리 입구에서 귀환을 센다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "rp_bleed_shed",
+     "doing": "채혈 헛간 경비"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "rp_herders_lodge",
+     "doing": "숫자표를 침대 아래에 두고 잔다"
+    }
+   ]
+  },
+  "npc_chik_tally": {
+   "home": "rp_bleed_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "rp_ledger_board",
+     "doing": "숫자표 정리 — 홈을 손톱으로 쓸어 읽는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "rp_pen_barracks",
+     "doing": "귀환 점호를 홈으로 센다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "03:00",
+     "at": "rp_bleed_shed",
+     "doing": "채혈 순번을 나무패에 기록한다"
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "06:00",
+     "at": "rp_herders_lodge",
+     "doing": "잠깐 눈을 붙인다"
+    }
+   ]
+  },
+  "npc_hedwig": {
+   "home": "rp_infirmary",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "rp_pen_barracks",
+     "doing": "기상 점호 — 아픈 사람의 맥을 먼저 본다"
+    },
+    {
+     "days": "all",
+     "from": "06:30",
+     "to": "12:00",
+     "at": "rp_infirmary",
+     "doing": "솥에 쑥을 앉힌다 — 채혈 뒤 쓰러진 이를 돌본다"
+    },
+    {
+     "days": "all",
+     "from": "12:30",
+     "to": "13:30",
+     "at": "rp_feed_hall",
+     "doing": "점심 — 아이들에게 누룽지를 나눈다"
+    },
+    {
+     "days": "all",
+     "from": "13:30",
+     "to": "18:00",
+     "at": "rp_infirmary",
+     "doing": "탕약을 끓이고 맥을 잡는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "rp_pen_barracks",
+     "doing": "우리로 귀환",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "rp_infirmary",
+     "doing": "채혈 뒤 쓰러진 이를 돌본다"
+    },
+    {
+     "days": "monthday:[5]",
+     "from": "23:00",
+     "to": "23:50",
+     "at": "rp_herders_lodge",
+     "doing": "즈라그에게 쑥 한 자루를 건넨다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:30",
+     "at": "rp_pen_barracks",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_marian": {
+   "home": "red_pens__white_pen",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "08:00",
+     "at": "red_pens__white_pen",
+     "doing": "흰 막사에서 기상"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "rp_white_garden",
+     "doing": "정원 산책 — 선별된 몸을 운동시킨다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "red_pens__white_pen",
+     "doing": "점심 — 가장 좋은 고기와 우유"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "rp_white_garden",
+     "doing": "조용히 앉는다 — 꿈 이야기는 하지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "red_pens__white_pen",
+     "doing": "저녁과 채혈실 점검"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "red_pens__white_pen",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_rosalie": {
+   "home": "nocturne__tribute_road",
+   "presence": [
+    {
+     "from": "312-11-12",
+     "to": "312-11-16"
+    }
+   ],
+   "away": {
+    "at": "lumen",
+    "doing": "루멘에서 공물 명단에 오른 채 평범한 신도로 산다 — 이 고장에 없다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "nocturne__tribute_road",
+     "doing": "호송대에 섞여 걸으며 걸음 수를 센다 — 장미 꽃잎을 입에 문다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "03:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "공물 문 앞에서 줄에 선다"
+    }
+   ]
+  },
+  "npc_orphe": {
+   "home": "rose_manor",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "09:00",
+     "at": "rose_manor",
+     "doing": "주인이 잠든 사이 집을 닦는다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "rose_manor",
+     "doing": "낮 잠과 낮 일"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "rose_manor",
+     "doing": "해 질 녘 기상 시중 — 주인이 일어나기 전 방을 정리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "04:00",
+     "at": "rose_manor__library",
+     "doing": "서재에서 장부를 홈으로 쓴다 — 촛불은 장부에서 멀리",
+     "alt": {
+      "p": 0.15,
+      "at": "rp_ledger_board",
+      "doing": "붉은 우리 채혈 헛간 기록판의 '병사' 칸을 고친다"
+     }
+    }
+   ]
+  },
+  "npc_pips": {
+   "home": "rose_manor__greenhouse",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "rose_manor__greenhouse",
+     "doing": "온실 화분과 수로 뚜껑 점검"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "rose_manor__garden",
+     "doing": "장미 꽃잎을 수로 입구에 놓는다",
+     "outdoor": true,
+     "rain": {
+      "at": "rose_manor__greenhouse",
+      "doing": "꽃잎을 온실 안에서 말린다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "rose_manor__greenhouse",
+     "doing": "온실 곁 방에서 잔다"
+    }
+   ]
+  },
+  "npc_baltasar": {
+   "home": "nocturne__obsidian_pen",
+   "presence": [
+    {
+     "from": "312-09-01",
+     "to": "312-10-20"
+    },
+    {
+     "from": "312-12-01",
+     "to": "313-05-10"
+    }
+   ],
+   "away": {
+    "at": "grey_tower",
+    "doing": "잿빛 탑 원로 일로 영지를 비운다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "nocturne__obsidian_pen",
+     "doing": "해 질 녘 기상"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "03:00",
+     "at": "nocturne__obsidian_pen",
+     "doing": "시음 보고를 듣는다"
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "nocturne__obsidian_pen",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_silas_bell": {
+   "home": "nocturne__silentbell_pen",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "nocturne__silentbell_pen",
+     "doing": "의뢰 목록을 쓸어 읽는다 — 맨 위의 세실 줄은 보류"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "nocturne__silentbell_pen",
+     "doing": "사냥꾼에게 낮은 지시를 내린다"
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "18:00",
+     "at": "nocturne__silentbell_pen",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_ninth_hunter": {
+   "home": "rp_hunter_post",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "04:00",
+     "at": "nocturne__marsh_edge",
+     "doing": "사냥 — 붉은 갈대 선을 따라 탈주 흔적을 훑는다",
+     "outdoor": true,
+     "rain": {
+      "at": "rp_hunter_post",
+      "doing": "초소에서 비를 피한다"
+     },
+     "alt": {
+      "p": 0.4,
+      "at": "rp_hunter_post",
+      "doing": "초소에서 지시를 기다린다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "09:00",
+     "at": "rp_hunter_post",
+     "doing": "초소에서 쉬며 7일째 피를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "19:00",
+     "at": "rp_hunter_post",
+     "doing": "낮 잠"
+    }
+   ]
+  },
+  "npc_marendis": {
+   "home": "nocturne__stillwater_dock",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "nocturne__stillwater_dock",
+     "doing": "해 질 녘 기상 — 병 번호를 정리한다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "03:00",
+     "at": "nocturne__stillwater_dock",
+     "doing": "세렌 사절을 접견한다",
+     "alt": {
+      "p": 0.4,
+      "at": "nocturne__stillwater_dock",
+      "doing": "부두를 걷는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "nocturne__stillwater_dock",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_cecile": {
+   "home": "rose_manor",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "18:00",
+     "at": "rose_manor",
+     "doing": "관 속에서 쉰다 (형식상) — 맑은 날은 서재에서 장부를 본다",
+     "alt": {
+      "p": 0.2,
+      "at": "rose_manor__library",
+      "doing": "서재에서 병사 명단을 위조한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rose_manor",
+     "doing": "해 질 녘 기상 — 짐승 피 한 잔"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "rose_manor__overseer_hut",
+     "doing": "장미 우리를 순시한다 — '병사' 명단을 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "rose_manor__library",
+     "doing": "서재에서 빼돌린 명단을 읽는다",
+     "alt": {
+      "p": 0.3,
+      "at": "rose_manor__garden",
+      "doing": "장미원 셋째 덤불 아래 지하 통로를 점검한다"
+     }
+    }
+   ]
+  },
+  "npc_alaric": {
+   "home": "nocturne__black_chalice_pen",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "nocturne__black_chalice_pen",
+     "doing": "해 질 녘 기상 — 육종 장부를 본다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "nocturne__black_chalice_pen",
+     "doing": "저녁 시음 — 혈통별 피 맛을 기록한다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "rose_manor",
+     "doing": "세실 저택을 감시한다 (밖에서)",
+     "alt": {
+      "p": 0.5,
+      "at": "nocturne__black_chalice_pen",
+      "doing": "서재에서 세실 장부와 자기 장부를 겹쳐 본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "18:00",
+     "at": "nocturne__black_chalice_pen",
+     "doing": "낮의 잠"
+    }
+   ]
+  },
+  "npc_tessa": {
+   "home": "nocturne__marsh_edge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "nocturne__marsh_edge",
+     "doing": "늪 경계 은신처에서 칼을 닦고 길을 외운다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "nocturne__marsh_edge",
+     "doing": "낮의 잠 — 한 번씩 깬다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "nocturne__marsh_edge",
+     "doing": "붉은 갈대 선을 따라 호송길을 점검한다",
+     "outdoor": true,
+     "alt": {
+      "p": 0.2,
+      "at": "rose_manor__garden",
+      "doing": "장미원 쪽문에서 호송 약속을 확인한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "nocturne__marsh_edge",
+     "doing": "호송이 있는 날은 갈대 선을 넘는다 — 아니면 잔다"
+    }
+   ]
+  },
+  "npc_quint": {
+   "home": "rose_manor__overseer_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "rose_manor__overseer_hut",
+     "doing": "기상 점호"
+    },
+    {
+     "days": "all",
+     "from": "06:30",
+     "to": "18:00",
+     "at": "rose_manor__overseer_hut",
+     "doing": "장미 우리 감독 — '병사' 명단에 서명한다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "rose_manor__overseer_hut",
+     "doing": "귀환 점호",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "rose_manor__overseer_hut",
+     "doing": "저녁 시음 참관"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:30",
+     "at": "rose_manor__overseer_hut",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_vesper": {
+   "home": "first_thirst_castle__tower",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "04:00",
+     "at": "first_thirst_castle__tower",
+     "doing": "하늘을 돈다 — 공중 감시와 전령",
+     "outdoor": true,
+     "rain": {
+      "at": "first_thirst_castle__tower",
+      "doing": "탑 천장에 매달려 비를 피한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "19:00",
+     "at": "first_thirst_castle__tower",
+     "doing": "탑 천장에 거꾸로 매달려 잔다"
+    }
+   ]
+  },
+  "npc_starved_pack": {
+   "home": "nocturne__tooth_valley",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "nocturne__tooth_valley",
+     "doing": "폐허의 정원에서 숨소리를 따라 웅얼거린다 — 엘다르 노래의 조각",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_iserda": {
+   "home": "nocturne__thorn_roots",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "04:00",
+     "at": "nocturne__tooth_valley",
+     "doing": "굶주린 자들 사이를 걷는다 — 이름 하나를 입에 올린다",
+     "alt": {
+      "p": 0.4,
+      "at": "nocturne__thorn_roots",
+      "doing": "뿌리 굴에서 홀로 있다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "19:00",
+     "at": "nocturne__thorn_roots",
+     "doing": "뿌리 굴에서 쉰다 — 햇빛 없는 곳"
+    }
+   ]
+  },
+  "npc_thorn_queen": {
+   "home": "tc_throne_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "01:00",
+     "at": "tc_laugh_box_hollow",
+     "doing": "방이 바뀌는 자정 — 웃음의 상자 앞에 한 시간 선다. 열지도 부수지도 않는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "10:00",
+     "at": "tc_throne_room",
+     "doing": "왕좌의 방에서 쉰다 — 방이 바뀐다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "tc_throne_room",
+     "doing": "접견 — 거래만 한다. 이름을 부르면 주의가 닿는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "16:00",
+     "at": "tc_judge_hall",
+     "doing": "웃음 재판을 구경한다",
+     "alt": {
+      "p": 0.6,
+      "at": "tc_toy_garden",
+      "doing": "장난감 정원에서 춤을 구경한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_ballroom",
+     "doing": "무도회장 — 인간 장난감의 춤을 본다",
+     "alt": {
+      "p": 0.4,
+      "at": "tc_throne_room",
+      "doing": "왕좌에서 꼼짝 않고 거래만 한다"
+     }
+    }
+   ]
+  },
+  "npc_nibble": {
+   "home": "tc_mushroom_ring",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "11:00",
+     "at": "tc_maze",
+     "doing": "길 잃은 인간을 찾아 속인다",
+     "outdoor": true,
+     "rain": {
+      "at": "tc_mushroom_ring",
+      "doing": "버섯 고리 곁 쓰러진 나무 밑에서 비를 피한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "11:00",
+     "to": "16:00",
+     "at": "tc_mushroom_ring",
+     "doing": "장난 — 지나가는 인간의 소지품 하나를 훔친다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "19:00",
+     "at": "tc_court_hall",
+     "doing": "여왕 궁정에 보고한다 — 보고는 전부 반대말이다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "tc_mushroom_ring",
+     "doing": "버섯 고리에서 춤 — 끼어들면 7년이 지난다는 전설"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "tc_mushroom_ring",
+     "doing": "쓰러진 나무 속에서 존다"
+    }
+   ]
+  },
+  "npc_elin": {
+   "home": "tc_servants_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "tc_servants_room",
+     "doing": "거울과 접시를 닦는다 — 밤마다 손바닥에 쓴 낱말을 확인한다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "13:00",
+     "at": "tc_ballroom",
+     "doing": "여왕 연회 준비와 시중 (여름 반나절)",
+     "alt": {
+      "p": 0.5,
+      "at": "tc_toy_garden",
+      "doing": "장난감 정원을 돌본다 (겨울 반나절)"
+     }
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "tc_toy_garden",
+     "doing": "장난감 정원의 인간 일흔에게 바깥 시간이 얼마나 흘렀는지 알린다 (겨울 반나절)",
+     "alt": {
+      "p": 0.4,
+      "at": "tc_ballroom",
+      "doing": "연회 시중 (여름 반나절)"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "tc_court_hall",
+     "doing": "궁정 시중 — 눈을 들지 않고 이름을 입에 올리지 않는다",
+     "alt": {
+      "p": 0.2,
+      "at": "tc_mirror_chamber",
+      "doing": "거울 시녀 곁에서 같은 질문을 두 번 한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "tc_servants_room",
+     "doing": "잔다 — 손톱으로 손바닥에 낱말을 쓴다"
+    }
+   ]
+  },
+  "npc_odo": {
+   "home": "tc_toy_dance_spot",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "23:00",
+     "at": "tc_toy_dance_spot",
+     "doing": "같은 춤을 춘다 — 71년째, 몸이 서른에서 늙지 않는다",
+     "alt": {
+      "p": 0.1,
+      "at": "tc_toy_garden",
+      "doing": "정원 가장자리에서 한 박자 쉰다"
+     },
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "tc_servants_room",
+     "doing": "잔다 — 꿈에서도 같은 춤"
+    }
+   ]
+  },
+  "npc_grik": {
+   "home": "thornmist__south_tower",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "12:00",
+     "at": "thornmist__south_tower",
+     "doing": "폐탑에서 모자를 말리지 않는다 — 문턱 안으로 탈주자를 부른다",
+     "outdoor": true,
+     "rain": {
+      "at": "thornmist__south_tower",
+      "doing": "폐탑 문턱에서 비를 피하라며 사람을 부른다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "thornmist__south_tower",
+     "doing": "남쪽 경계에서 탈주자를 쫓는다 — 피가 모자를 적신다",
+     "alt": {
+      "p": 0.3,
+      "at": "thornmist__south_tower",
+      "doing": "폐탑 위에서 길을 본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "thornmist__south_tower",
+     "doing": "피 마르기 전에 사냥한다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "thornmist__south_tower",
+     "doing": "폐탑에서 쉰다 — 모자가 마르지 않았는지 만진다"
+    }
+   ]
+  },
+  "npc_mirror_yesterday": {
+   "home": "tc_mirror_chamber",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "01:00",
+     "at": "tc_laugh_box_hollow",
+     "doing": "자정 — 여왕이 상자 앞에 서는 한 시간을 곁에서 본다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "tc_mirror_chamber",
+     "doing": "거울을 닦는다 — 어제의 장면만 비춘다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "tc_throne_room",
+     "doing": "접견 때 여왕 곁에 선다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "24:00",
+     "at": "tc_mirror_chamber",
+     "doing": "어제의 말을 외운다"
+    }
+   ]
+  },
+  "npc_mirror_no": {
+   "home": "tc_mirror_chamber",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "tc_mirror_chamber",
+     "doing": "거울을 닦는다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "tc_throne_room",
+     "doing": "접견 — 손님에게 부정으로 답한다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "20:00",
+     "at": "tc_court_hall",
+     "doing": "궁정 문 앞에 서서 질문에 '아니'로 답한다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_mirror_chamber",
+      "doing": "빈 액자를 안고 선다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "24:00",
+     "at": "tc_mirror_chamber",
+     "doing": "거울 앞에서 묻는다"
+    }
+   ]
+  },
+  "npc_mirror_perhaps": {
+   "home": "tc_mirror_chamber",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "tc_mirror_chamber",
+     "doing": "여왕의 말을 받는다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "tc_throne_room",
+     "doing": "접견 — 여왕의 말을 거꾸로 전한다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "19:00",
+     "at": "tc_court_hall",
+     "doing": "말을 거꾸로 전한다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_mirror_chamber",
+      "doing": "거울 앞에서 가정을 세운다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "24:00",
+     "at": "tc_mirror_chamber",
+     "doing": "거울 앞에서 가정을 세운다 — 주먹을 입 앞에 쥔다"
+    }
+   ]
+  },
+  "npc_whistle_judge": {
+   "home": "tc_judge_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "14:00",
+     "at": "tc_judge_hall",
+     "doing": "사건 접수 — 약속이 있나 묻는다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "tc_judge_hall",
+     "doing": "웃음 재판 — 궁정이 세 번 웃으면 법이 된다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "tc_judge_hall",
+     "doing": "휘파람을 연습한다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "08:00",
+     "at": "tc_judge_hall",
+     "doing": "홀에서 홀로 서 있다"
+    }
+   ]
+  },
+  "npc_three_laugh_knight": {
+   "home": "tc_knights_yard",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "tc_knights_yard",
+     "doing": "가시 기사의 훈련 — 말씀을 겨룬다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "18:00",
+     "at": "tc_hedge",
+     "doing": "경계 가시울타리에서 초대 없는 이에게 웃음을 세 번 건넨다",
+     "outdoor": true,
+     "rain": {
+      "at": "tc_knights_yard",
+      "doing": "마당 처마 밑에서 약속 목록을 읽는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_maze",
+     "doing": "미로 벽 순찰",
+     "alt": {
+      "p": 0.4,
+      "at": "tc_hedge",
+      "doing": "경계에서 신발을 센다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "tc_knights_yard",
+     "doing": "쉰다"
+    }
+   ]
+  },
+  "npc_knight_rustrose": {
+   "home": "tc_knights_yard",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "tc_knights_yard",
+     "doing": "훈련 — 웃음을 겨루지 않고 말만 한다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "18:00",
+     "at": "tc_court_hall",
+     "doing": "궁정 문 경비 — 주먹을 입 앞에 쥔다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_maze",
+      "doing": "미로 순찰"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_maze",
+     "doing": "미로 순찰"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "tc_knights_yard",
+     "doing": "쉰다 — 녹가루를 턴다"
+    }
+   ]
+  },
+  "npc_glass_fingers": {
+   "home": "tc_nursery_workshop",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "14:00",
+     "at": "tc_nursery_workshop",
+     "doing": "장부 정리와 대체품 점검"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "tc_nursery_workshop",
+     "doing": "바꿔치기 대상 집을 고른다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_judge_hall",
+      "doing": "재판에 대체품 사건을 제기한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_nursery_workshop",
+     "doing": "아이 잃은 돌에서 부모들이 놓은 신발을 센다는 보고를 받는다",
+     "alt": {
+      "p": 0.2,
+      "at": "tc_court_hall",
+      "doing": "궁정 홀에서 질문에 답한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "08:00",
+     "at": "tc_name_grave",
+     "doing": "장부를 이름 무덤 아래에서 읽는다"
+    }
+   ]
+  },
+  "npc_threadplay": {
+   "home": "tc_nursery_workshop",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "18:00",
+     "at": "tc_nursery_workshop",
+     "doing": "대체품에 실을 건다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_court_hall",
+      "doing": "손님의 손에 실 한 올을 건다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_nursery_workshop",
+     "doing": "실을 센다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "08:00",
+     "at": "tc_nursery_workshop",
+     "doing": "실을 당겨 대체품의 위치를 확인하다 존다"
+    }
+   ]
+  },
+  "npc_silverbell_lady": {
+   "home": "tc_summer_court",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "tc_summer_court",
+     "doing": "아이들을 이름으로 부른다 — 방울을 흔든다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "18:00",
+     "at": "tc_summer_court",
+     "doing": "정원에서 아이들과 논다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_ballroom",
+      "doing": "무도회장 구경"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "tc_ballroom",
+     "doing": "무도회장 구경 — 아이들을 먼저 재운다",
+     "alt": {
+      "p": 0.5,
+      "at": "tc_summer_court",
+      "doing": "아이들 곁에 머문다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "tc_summer_court",
+     "doing": "아이들이 잠들 때까지 방울을 흔든다"
+    }
+   ]
+  },
+  "npc_thistle_duke": {
+   "home": "tc_winter_court",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "tc_winter_court",
+     "doing": "기억의 병을 닦는다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "tc_toy_garden",
+     "doing": "인간의 웃은 날을 모은다",
+     "alt": {
+      "p": 0.4,
+      "at": "tc_winter_court",
+      "doing": "병 속의 웃음을 귀에 대고 듣는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_winter_court",
+     "doing": "가시 무도회 초대장 후보를 가린다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "07:00",
+     "at": "tc_winter_court",
+     "doing": "기억의 병 앞에서 눈을 감는다"
+    }
+   ]
+  },
+  "npc_sneeze_duke": {
+   "home": "tc_fog_market",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "tc_fog_market",
+     "doing": "노점 배치 — 재채기로 자리를 바꾼다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "20:00",
+     "at": "tc_fog_market",
+     "doing": "흥정 — 아픔의 저울 곁에 선다",
+     "alt": {
+      "p": 0.2,
+      "at": "tc_market_true_stall",
+      "doing": "진명 노점 앞에서 값을 부른다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "24:00",
+     "at": "tc_fog_market",
+     "doing": "새로 잃은 기억을 가장 비싸게 산다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_ballroom",
+      "doing": "무도회를 구경한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "06:00",
+     "at": "tc_fog_market",
+     "doing": "안개가 짙은 날 새벽까지 장터를 돈다"
+    }
+   ]
+  },
+  "npc_name_collector": {
+   "home": "tc_name_collector_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "tc_name_grave",
+     "doing": "병을 닦는다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "tc_name_collector_lodge",
+     "doing": "이름을 가져온 이를 접수한다",
+     "alt": {
+      "p": 0.2,
+      "at": "tc_fog_market",
+      "doing": "장터에서 이름이 들렸는지 귀를 기울인다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_name_collector_lodge",
+     "doing": "새 병에 이름을 담는다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "tc_maze_well",
+     "doing": "미로 우물 아래 '말 없는 병' 층을 돈다"
+    }
+   ]
+  },
+  "npc_name_page": {
+   "home": "tc_name_collector_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "tc_name_collector_lodge",
+     "doing": "문 앞에 서서 병 목록을 정리한다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_name_grave",
+     "doing": "병 하나 곁에서 존다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_name_collector_lodge",
+      "doing": "문 앞에 선다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "tc_name_grave",
+     "doing": "병 하나 곁에서 잔다"
+    }
+   ]
+  },
+  "npc_dawn_hunter_dew": {
+   "home": "tc_hunt_kennel",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "09:00",
+     "at": "tc_maze",
+     "doing": "새벽 사냥 — 숲에 든 자를 놀이로 쫓는다",
+     "outdoor": true,
+     "rain": {
+      "at": "tc_hunt_kennel",
+      "doing": "사냥개 집에서 개를 닦는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "18:00",
+     "at": "tc_hunt_kennel",
+     "doing": "그림자 사냥개를 길들인다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "tc_hedge",
+     "doing": "경계에서 냄새를 맡는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "tc_hunt_kennel",
+     "doing": "쉰다"
+    }
+   ]
+  },
+  "npc_granny_nina": {
+   "home": "tc_servants_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "07:00",
+     "at": "tc_stone_hollow",
+     "doing": "조약돌 하나를 주워 하루를 센다"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "17:00",
+     "at": "tc_toy_garden",
+     "doing": "페이가 시키는 일을 하며 주머니 속 돌을 센다",
+     "alt": {
+      "p": 0.3,
+      "at": "tc_court_hall",
+      "doing": "궁정에서 접시를 든다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "tc_stone_hollow",
+     "doing": "돌 세는 자들의 낮은 모임 — 오늘 돌의 수를 맞춘다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:30",
+     "at": "tc_servants_room",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_eleanor": {
+   "home": "thornmist__second_mothers",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "thornmist__second_mothers",
+     "doing": "공동 화덕에 불을 지핀다"
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "13:00",
+     "at": "thornmist__second_mothers",
+     "doing": "바꿔치기 아이를 돌본다 — 문턱의 철 못을 확인한다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "thornmist__second_mothers",
+     "doing": "철 울타리 손질과 빨래"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "thornmist__second_mothers",
+     "doing": "화덕가 이야기 — 아이의 이름을 숨으로 부른다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "thornmist__second_mothers",
+     "doing": "철 울타리를 한 바퀴 돌고 잔다"
+    }
+   ]
+  },
+  "npc_toby_fifth": {
+   "home": "thornmist__second_mothers",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "thornmist__second_mothers",
+     "doing": "철 울타리 안에서 일한다 — 페이어가 들리면 귀를 막는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "thornmist__second_mothers",
+     "doing": "어린 아이를 돌본다",
+     "alt": {
+      "p": 0.2,
+      "at": "tc_fog_market",
+      "doing": "안개 장터에서 번역을 청하는 이를 만난다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "thornmist__second_mothers",
+     "doing": "화덕가에서 이름을 되찾는 연습"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "thornmist__second_mothers",
+     "doing": "철 울타리 곁에서 잔다"
+    }
+   ]
+  },
+  "npc_backwards_walker": {
+   "home": "old_stone_ring",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "old_stone_ring",
+     "doing": "옛 돌 고리 곁에서 기다린다 — 등을 돌린 채"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "greyford__north_woods",
+     "doing": "마을 가장자리를 돈다 — 앞모습을 보이지 않는다",
+     "outdoor": true,
+     "rain": {
+      "at": "old_stone_ring",
+      "doing": "돌 고리 곁에서 기다린다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "23:00",
+     "at": "old_stone_ring",
+     "doing": "옛 돌 고리 곁에서 기다린다 — 이졸이 오는 밤에는 한 걸음 물러난다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "old_stone_ring",
+     "doing": "뒤로 걸어 돌아온다 — 발자국은 앞으로 간다"
+    }
+   ]
+  },
+  "npc_kyrie": {
+   "home": "ws_queen_perch",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "ws_queen_perch",
+     "doing": "잔다 — 깃털 한 겹을 더 덮고"
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "05:00",
+     "at": "ws_queen_perch",
+     "doing": "새벽 땅의 불빛이 몇 개 꺼졌는지 센다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "ws_high_nest",
+     "doing": "새벽 첫 비행 — 지붕 없는 둥지 위를 한 바퀴 돈다",
+     "outdoor": true,
+     "rain": {
+      "at": "ws_queen_perch",
+      "doing": "깃털로 비를 막고 앉아 있다"
+     }
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "깃털 의회를 주재한다 — 아래 보는 자들과 하늘만 보는 자들의 표를 센다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_high_nest",
+     "doing": "사자와 전령을 접견한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_queen_perch",
+     "doing": "횃대에 앉아 아래의 불빛을 센다 — 하나도 놓치지 않으려고",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "ws_queen_perch",
+     "doing": "혼자 앉는다 — 역행하는 별 쪽을 올려다보지 않는다"
+    }
+   ]
+  },
+  "npc_eiros": {
+   "home": "ws_prince_nest",
+   "presence": [
+    {
+     "from": "312-09-01",
+     "to": "313-04-19"
+    },
+    {
+     "from": "313-06-25",
+     "to": "313-07-30"
+    }
+   ],
+   "away": {
+    "at": "baalkar",
+    "doing": "맹약회의 313 길 — 아에리 대표로 서약섬으로 가는 사절단과 함께, 걷는 연습을 한 번이라도 더 하려 한다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ws_prince_nest",
+     "doing": "잔다 — 목에 건 흙 주머니를 쥐고"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "ws_prince_nest",
+     "doing": "비행 훈련 — 새벽 바람 속에서 다리 근육을 쓰는 연습을 몰래 한다"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "14:00",
+     "at": "ws_ground_nest",
+     "doing": "오른에게 땅의 말을 배운다 — 걷는 연습을 한 번 더"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "깃털 의회 방청 — 어머니 곁 맨 끝 자리"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "17:00",
+     "at": "ws_high_nest_house",
+     "doing": "가문 둥지에서 시종이 가져온 땅 소식을 읽는다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "ws_high_nest",
+     "doing": "어머니와 땅 이야기로 언쟁한다",
+     "alt": {
+      "p": 0.3,
+      "at": "ws_prince_nest",
+      "doing": "둥지에서 혼자 날개 글자를 본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "ws_feather_cliff_cave",
+     "doing": "깃털 절벽 아래로 내려가 타일라를 몰래 찾아간다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "ws_prince_nest",
+     "doing": "둥지에서 깃털 절벽 쪽을 내려다본다"
+    }
+   ]
+  },
+  "npc_tyla": {
+   "home": "ws_feather_cliff_cave",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "07:00",
+     "at": "ws_feather_cliff_cave",
+     "doing": "절벽을 기어오른다 — 날 수 없으니 손으로 바람을 읽는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "16:00",
+     "at": "ws_fallen_slope",
+     "doing": "활로 사냥 — 떨어진 자의 비탈에서 산 위 사냥감을 쫓는다",
+     "outdoor": true,
+     "rain": {
+      "at": "ws_feather_cliff_cave",
+      "doing": "동굴 입구에서 비를 보며 활줄을 손본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "19:00",
+     "at": "ws_feather_cliff_cave",
+     "doing": "입구가 넓은 동굴에서 사냥감을 손질한다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "ws_feather_cliff_cave",
+     "doing": "에이로스의 몰래 방문 — 날개 없이 바람을 타는 이야기를 한다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "ws_feather_cliff_cave",
+     "doing": "바람 소리를 들으며 잠들지 못한다"
+    }
+   ]
+  },
+  "npc_orn": {
+   "home": "ws_ground_nest",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ws_ground_nest",
+     "doing": "잔다 — 땅을 걷는 꿈에 현기증을 앓는다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "ws_ground_nest",
+     "doing": "아침 — 말린 생선과 열매를 먹고 숯으로 인간 글자 연습을 한다"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "14:00",
+     "at": "ws_ground_nest",
+     "doing": "왕자 에이로스에게 인간 글자와 땅의 말을 가르친다"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "17:00",
+     "at": "ws_wind_garden",
+     "doing": "바람 정원 땅손들을 찾아가 땅 이야기를 나눈다 — 마르코의 노래 곁에 앉는다",
+     "alt": {
+      "p": 0.3,
+      "at": "ws_ground_nest",
+      "doing": "둥지에서 기억나는 회색여울 이야기를 숯으로 적는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "22:00",
+     "at": "ws_ground_nest",
+     "doing": "에이로스가 오지 않는 저녁은 홀로 앉아 땅의 소리를 입 모양으로만 한다"
+    }
+   ]
+  },
+  "npc_korak": {
+   "home": "ws_wind_bell",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "ws_wind_bell",
+     "doing": "바람 종의 줄을 고친다 — 새벽 종을 직접 당긴다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "ws_wind_bell",
+     "doing": "지붕 없는 종 틀에 매달려 낮잠"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "12:30",
+     "at": "ws_wind_bell",
+     "doing": "정오 종 — 줄을 당긴다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "12:30",
+     "to": "18:00",
+     "at": "ws_wind_bell",
+     "doing": "잠 — 종 틀 나무에 기대어"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "ws_wind_bell",
+     "doing": "별 기록을 종 틀 나무에 새긴다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_wind_bell",
+     "doing": "역행하는 별을 센다 — 같은 밤이 두 번 적힌 자리 곁에서"
+    }
+   ]
+  },
+  "npc_ws_kair": {
+   "home": "ws_stormfeather_cliff",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ws_stormfeather_cliff",
+     "doing": "절벽 맨 위 열린 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "ws_stormfeather_cliff",
+     "doing": "새벽 급강하 훈련 — 폭풍깃 전사 이백이 번개 모양 날개로 낙하한다",
+     "outdoor": true,
+     "rain": {
+      "at": "ws_stormfeather_cliff",
+      "doing": "비를 깃털로 막고 둥지에서 훈련 보고를 듣는다"
+     }
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "깃털 의회 방청 — 표를 말없이 센다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_stormfeather_cliff",
+     "doing": "동쪽 절벽 방어 점검과 사냥 지휘"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "ws_cliff_nests",
+     "doing": "절벽 중턱 땅손 둥지에서 땅 이야기를 듣는다 — 눈을 감고 날개 끝을 한 번 떤다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "ws_stormfeather_cliff",
+     "doing": "번개 모양 깃털을 정리하며 바람을 읽는다"
+    }
+   ]
+  },
+  "npc_ws_rei": {
+   "home": "ws_hawkeye_ledge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ws_hawkeye_ledge",
+     "doing": "서쪽 선반 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "11:00",
+     "at": "ws_hawkeye_ledge",
+     "doing": "서쪽 서리 이빨 쪽을 본다 — 흰 눈 쪽으로 고개를 돌렸다 돌린다",
+     "outdoor": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "의회 방청 — 정찰 보고를 짧게 올린다"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "17:00",
+     "at": "ws_map_nest",
+     "doing": "정찰 보고를 깃털 지도에 옮긴다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "ws_hawkeye_ledge",
+     "doing": "세렌 오필 상가의 사자와 값을 흥정한다",
+     "alt": {
+      "p": 0.5,
+      "at": "ws_map_nest",
+      "doing": "지도 둥지에서 새 선을 한 줄 더한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "ws_map_nest",
+     "doing": "지도를 덮고 눈을 쉰다"
+    }
+   ]
+  },
+  "npc_ws_celes": {
+   "home": "ws_looking_up_nest",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ws_looking_up_nest",
+     "doing": "잔다 — 균열이 보이는 쪽을 등지고"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "ws_looking_up_nest",
+     "doing": "높은 둥지에서 해를 향해 날개를 편다"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "의회 방청 — 키리에의 발언에 한 박자 늦게 고개를 숙인다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_high_nest_house",
+     "doing": "가문 일을 보고 하늘만 보는 가주들을 만난다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "22:00",
+     "at": "ws_looking_up_nest",
+     "doing": "저녁 만찬에서 가주들을 모은다 — 표를 헤아린다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "ws_looking_up_nest",
+     "doing": "균열이 보이는 쪽을 일부러 보지 않으려 눈을 감는다"
+    }
+   ]
+  },
+  "npc_ws_sirun": {
+   "home": "ws_scout_ring",
+   "presence": [
+    {
+     "from": "312-10-05",
+     "to": "312-10-12"
+    },
+    {
+     "from": "312-11-20",
+     "to": "312-11-27"
+    },
+    {
+     "from": "313-01-20",
+     "to": "313-01-26"
+    },
+    {
+     "from": "313-03-15",
+     "to": "313-03-21"
+    },
+    {
+     "from": "313-05-10",
+     "to": "313-05-16"
+    }
+   ],
+   "away": {
+    "at": "greyford_village",
+    "doing": "회색여울 상공 임무 — 배급 줄 곁 지붕 위를 돌며 키리에의 명을 따른다"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_scout_ring",
+     "doing": "정찰 선반 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "17:00",
+     "at": "ws_scout_ring",
+     "doing": "하늘 순찰 — 보고 마을의 불빛을 센다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_high_nest_house",
+     "doing": "키리에에게 보고한다 — 이름은 적지 않는다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_ws_launa": {
+   "home": "ws_feather_library",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ws_feather_library",
+     "doing": "서고 맨 위 둥지에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "ws_feather_library",
+     "doing": "서고에서 깃털 매듭을 읽고 묶는다",
+     "alt": {
+      "p": 0.3,
+      "at": "ws_knot_room",
+      "doing": "가장 안쪽 매듭 곁에서 한 번 더 손을 얹는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "ws_scout_ring",
+     "doing": "저녁 비행 — 낮게 날며 땅을 본다",
+     "outdoor": true,
+     "rain": {
+      "at": "ws_feather_library",
+      "doing": "서고에서 매듭 하나를 더 푼다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "22:00",
+     "at": "ws_knot_room",
+     "doing": "가장 안쪽 매듭 곁에 앉는다 — 할머니의 매듭을 쓰다듬는다",
+     "fixed": true
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "ws_feather_library",
+     "doing": "서고를 닫고 매듭 먼지를 털어 낸다"
+    }
+   ]
+  },
+  "npc_ws_ask": {
+   "home": "ws_scout_ring",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_scout_ring",
+     "doing": "정찰 선반 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "ws_scout_ring",
+     "doing": "아침 정찰 보고를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "17:00",
+     "at": "ws_scout_ring",
+     "doing": "대륙 상공에서 돌아온 정찰 새의 매듭을 읽는다",
+     "alt": {
+      "p": 0.3,
+      "at": "ws_hawkeye_ledge",
+      "doing": "레이와 서쪽 보고를 맞춘다"
+     }
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "의회 방청석에서 정찰 보고를 한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_scout_ring",
+     "doing": "보고서를 두 벌로 쓴다 — 하나는 팔고 하나는 감춘다"
+    }
+   ]
+  },
+  "npc_ws_sera": {
+   "home": "sky_market__basket_lift",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "sky_market__basket_lift",
+     "doing": "초소 곁 낮은 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "sky_market__basket_lift",
+     "doing": "새벽 줄 매듭을 하나씩 만져 점검한다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "sky_market__basket_lift",
+     "doing": "바구니 승강 — 오르내리는 짐의 무게를 줄의 떨림으로 잰다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "sky_market__basket_lift",
+     "doing": "저녁 줄 거둠 점검",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_ws_tur": {
+   "home": "ws_hawk_mews",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "ws_hawk_mews",
+     "doing": "사육장 곁 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "ws_hawk_mews",
+     "doing": "새벽 매 먹이를 준다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_hawk_mews",
+     "doing": "매 길들이기 — 발끈을 매고 푸는 일을 되풀이한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "ws_seven_fingers",
+     "doing": "땅손 새장 청소부에게 새장이 열려 있는지 점검하게 한다 — 서쪽 구석 줄 한 타래를 만진다"
+    }
+   ]
+  },
+  "npc_ws_mir": {
+   "home": "ws_ground_village",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_ground_village",
+     "doing": "땅손 움막 곁 지붕 없는 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "ws_ground_village",
+     "doing": "땅손과 같은 식탁에서 아침을 먹는다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "ws_wind_garden",
+     "doing": "항아리 뒤 활공 날개 틀을 손본다 — 나무 가루와 천",
+     "alt": {
+      "p": 0.3,
+      "at": "ws_ground_village",
+      "doing": "마을 아이들에게 하늘말 휘파람을 가르친다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_ground_village",
+     "doing": "땅손 식탁에서 저녁 — 바람이 틀린 날은 오른쪽 날개만 한 번 편다"
+    }
+   ]
+  },
+  "npc_ws_orea": {
+   "home": "ws_funeral_peak",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "06:00",
+     "at": "ws_funeral_peak",
+     "doing": "봉우리 바위 틈 곁 높은 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "ws_funeral_peak",
+     "doing": "해 뜰 때 바람 방향을 읽는다 — 하늘 장례가 있으면 이름을 한 번 부르고 놓는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "18:00",
+     "at": "ws_funeral_peak",
+     "doing": "장례 준비와 바위 틈 점검 — 남쪽 틈의 가죽 싼 것을 한 번 본다"
+    }
+   ]
+  },
+  "npc_ws_feris": {
+   "home": "sky_market__bandit_den",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "sky_market__bandit_den",
+     "doing": "철망 새장 안에서 서 있다 — 숨이 짧다. 하늘은 그물에 가렸다"
+    }
+   ]
+  },
+  "npc_ws_aela": {
+   "home": "ws_looking_up_nest",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "ws_looking_up_nest",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "ws_looking_up_nest",
+     "doing": "높은 둥지에서 해를 맞는다 — 아래를 보지 않는다"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_feather_council",
+     "doing": "의회에서 줄 거둠 표를 말없이 센다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_high_nest_house",
+     "doing": "하늘만 보는 가문 일 — 표를 흥정한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "22:00",
+     "at": "ws_looking_up_nest",
+     "doing": "저녁 비행 — 아래를 한 번도 보지 않고 돌아온다"
+    }
+   ]
+  },
+  "npc_ws_marco": {
+   "home": "ws_wind_garden",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_ground_village",
+     "doing": "마을 움막에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "ws_water_jars",
+     "doing": "새벽 물 항아리 점검 — 줄이 있는지 한 번 만진다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ws_wind_garden",
+     "doing": "계단밭 손질과 약초 수확 감독",
+     "outdoor": true,
+     "rain": {
+      "at": "ws_ground_village",
+      "doing": "마을에서 줄 땋기를 거든다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_ground_village",
+     "doing": "마을 식탁에서 말린 생선을 나눈다 — 「얕은 물은 차갑다」를 낮게 부른다"
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "ws_water_jars",
+     "doing": "항아리 밑 줄을 몰래 손으로 쓸어 길이를 잰다"
+    }
+   ]
+  },
+  "npc_ws_anskar": {
+   "home": "sky_market__porter_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "06:00",
+     "at": "sky_market__porter_shed",
+     "doing": "짐꾼 막사에서 잔다 — 떨어진 높이를 손가락으로 센다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "07:00",
+     "at": "sky_market__porter_shed",
+     "doing": "새벽 점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "sky_market__durgan_depot",
+     "doing": "두르강 창고 하역과 운반"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "sky_market__tents",
+     "doing": "시장 천막 짐 나르기 — 위를 올려다보는 일을 멈추지 못한다"
+    }
+   ]
+  },
+  "npc_ws_branka": {
+   "home": "ws_cliff_nests",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_cliff_nests",
+     "doing": "절벽 중턱 둥지에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "ws_cliff_nests",
+     "doing": "아침 불을 지핀다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "ws_cliff_nests",
+     "doing": "폭풍깃 전사에게 땅 이야기를 들려준다 — 허공에 글자를 쓰려다 손을 멈춘다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_cliff_nests",
+     "doing": "절벽 안쪽 돌판 앞에서 오늘의 일을 숯으로 적는다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_ws_ulla": {
+   "home": "ws_ground_village",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ws_ground_village",
+     "doing": "움막에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ws_rope_bridge_main",
+     "doing": "줄다리 수리 — 매달린 채 매듭을 다시 묶는다",
+     "outdoor": true,
+     "rain": {
+      "at": "ws_ground_village",
+      "doing": "마을에서 줄을 땋는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "ws_ground_village",
+     "doing": "마을 식탁"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "ws_water_jars",
+     "doing": "항아리 밑 줄에 한 뼘씩 더한다 — 한 겹 더",
+     "fixed": true
+    },
+    {
+     "days": "monthday:[7]",
+     "from": "16:00",
+     "to": "18:00",
+     "at": "ws_seven_fingers",
+     "doing": "사육장 서쪽 구석에서 투르의 지붕 줄 한 타래를 받아 온다"
+    }
+   ]
+  },
+  "npc_ws_ratz": {
+   "home": "sky_market__bandit_den",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "sky_market__bandit_den",
+     "doing": "은신처에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "sky_market__bandit_den",
+     "doing": "도적 아침 점호"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "14:00",
+     "at": "sky_market__bandit_den",
+     "doing": "새장 곁을 지킨다 — 새장 쪽을 일부러 쳐다보지 않는다"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "sky_market__tents",
+     "doing": "장터에서 토린에게 곡식을 사 온다 — 몰래"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "sky_market__bandit_den",
+     "doing": "몸값 요구서의 문구를 고친다 — 전령이 없다"
+    }
+   ]
+  },
+  "npc_ws_anton": {
+   "home": "ws_ground_forge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "ws_ground_village",
+     "doing": "움막에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "ws_ground_forge",
+     "doing": "새벽 화로 불을 지핀다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ws_ground_forge",
+     "doing": "줄 고리와 바늘을 가벼운 쇠로 두드린다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ws_ground_village",
+     "doing": "마을 식탁 — 화로를 덮은 뒤 쇠 조각을 센다"
+    }
+   ]
+  },
+  "npc_ws_torin": {
+   "home": "sky_market__durgan_depot",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "sky_market__durgan_depot",
+     "doing": "창고 곁방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "sky_market__durgan_depot",
+     "doing": "창고 문을 열고 어제의 깃털 근수를 재검한다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "sky_market__basket_lift",
+     "doing": "줄지기 세라와 바구니 승강 일정과 계약 문구를 협의한다",
+     "alt": {
+      "p": 0.3,
+      "at": "sky_market__tents",
+      "doing": "시장 천막에서 하르칸 전령과 말 계약을 흥정한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "sky_market__durgan_depot",
+     "doing": "짐꾼 계약서 번호를 대조한다 — 서명 쇠판 사본을 센다"
+    }
+   ]
+  },
+  "npc_ws_erden": {
+   "home": "sky_market__tents",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "sky_market__tents",
+     "doing": "말 곁에서 선 채로 잔다 — 서신 통을 가슴에 끼고"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "sky_market__tents",
+     "doing": "말먹이와 발굽 손질"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "sky_market__basket_lift",
+     "doing": "줄지기에게 전갈을 건넬 기회를 기다린다 — 발굽으로 땅을 두드린다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "sky_market__tents",
+     "doing": "말 곁에서 초원 노래를 낮게 부른다"
+    }
+   ]
   }
  },
  "events": [
@@ -17690,15 +23150,13 @@
   {
    "id": "ev_eg_covenant_wait",
    "npcs": [
-    "npc_elastriel",
-    "npc_miriel",
-    "npc_caelon"
+    "npc_elastriel"
    ],
    "date": "313-05-20",
    "from": "09:00",
    "to": "18:00",
-   "at": "eg_first_tree",
-   "doing": "맹약회의 날 — 은잎문과 관리장 처소는 낭송을 멈춘다. 여왕은 대리인의 결과를 '아직' 기억하지 않는다"
+   "at": "eg_root_chamber",
+   "doing": "맹약회의 날 — 여왕은 대리인의 결과를 '아직' 기억하지 않는다. 호수에 비친 것을 한 번도 보지 않는다"
   },
   {
    "id": "ev_eg_carven_courier_4",
@@ -17896,6 +23354,547 @@
    "to": "19:40",
    "at": "gf_rooster",
    "doing": "수탉 지하의 냄새를 알아챈다"
+  },
+  {
+   "id": "ev_hg_harvest_judgement",
+   "date": "312-09-20",
+   "npcs": [
+    "npc_hg_sven"
+   ],
+   "from": "06:00",
+   "to": "18:00",
+   "at": "bone_pens__hungry_field",
+   "doing": "흉작 4년째 판정 — 얼어붙은 이삭을 한 줌씩 센다. 흙 속에 회색 재가 섞여 있다는 것을 노예 맏이는 보고하지 않는다"
+  },
+  {
+   "id": "ev_hg_asta_send_first",
+   "date": "312-09-23",
+   "npcs": [
+    "npc_asta",
+    "npc_hg_torvald"
+   ],
+   "from": "22:00",
+   "to": "04:00",
+   "at": "hh__stoneknee_huts",
+   "doing": "마지막 200명 송출 시작 — 첫 열 명이 움막에서 나간다. 토르발트가 매듭 끈 한 가닥을 장부에서 지운다"
+  },
+  {
+   "id": "ev_hg_asta_send_last",
+   "date": "312-09-26",
+   "npcs": [
+    "npc_asta",
+    "npc_hg_torvald",
+    "npc_einar"
+   ],
+   "from": "22:00",
+   "to": "04:00",
+   "at": "hh__stoneknee_huts",
+   "doing": "서리월 전 마지막 열 명을 보낸다 — 가장 안쪽 움막의 소년은 보내지 않는다. 아스타가 매듭을 하나 풀지 않고 쥔다"
+  },
+  {
+   "id": "ev_hg_last_convoy_lodge",
+   "date": "312-09-29",
+   "npcs": [
+    "npc_matusz",
+    "npc_hg_inge"
+   ],
+   "from": "20:00",
+   "to": "24:00",
+   "at": "weeping_pass__lodge",
+   "doing": "서리월 전 마지막 호송 — 산장에서 첫 밤. 곰이 꿀을 아이들 입에 나눠 주고 잉에가 바깥 바람을 본다"
+  },
+  {
+   "id": "ev_hg_inge_last_twelve",
+   "date": "312-09-30",
+   "npcs": [
+    "npc_hg_inge"
+   ],
+   "from": "05:00",
+   "to": "07:00",
+   "at": "weeping_pass__last_fire",
+   "doing": "서리월 1일 전에 닿지 못할 무리 열둘을 보낸다 — '물빼기 굴로 가라'고 이른다. 열둘의 이름은 룬 명단에 적지 않는다"
+  },
+  {
+   "id": "ev_hg_road_closed",
+   "date": "312-10-01",
+   "npcs": [
+    "npc_hg_inge"
+   ],
+   "from": "06:00",
+   "to": "08:00",
+   "at": "weeping_pass__rune_rock",
+   "doing": "서리 길 폐쇄 첫날 — 바위 밑 룬을 지우고 불씨를 한 겹 덮는다. 사망자 룬 명단 서른일곱은 그대로 둔다"
+  },
+  {
+   "id": "ev_hg_granary_oct3",
+   "date": "312-10-03",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_hg_bragi"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "hh_granary_floor",
+   "doing": "왕이 곡창 바닥판을 열어 손을 얹는다 — 자루를 세지 않는다. 곡창지기는 '삼백'이라 말한다 (바닥에는 288)",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_oct_utga_pens",
+   "date": "312-10-12",
+   "npcs": [
+    "npc_hg_sven",
+    "npc_hg_utga"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "hh__stonefist_hold",
+   "doing": "서리월 머릿수 보고 — 뼈울타리 인간 6,000에서 사백 일흔이 줄었다고 보고한다. 탈주자 판매 값이 장부에 오른다",
+   "travel_from": "bone_pens__chief_hut",
+   "return_to": "bone_pens__chief_hut"
+  },
+  {
+   "id": "ev_hg_oct_pik_ledger",
+   "date": "312-10-20",
+   "npcs": [
+    "npc_hg_pik"
+   ],
+   "from": "08:00",
+   "to": "17:00",
+   "at": "hh_krik_stall",
+   "doing": "곡물값이 한 뼘 또 오른다 — 재개 조건 줄 옆에 어제의 값과 오늘의 값을 나란히 적는다"
+  },
+  {
+   "id": "ev_hg_nov_granary",
+   "date": "312-11-03",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_hg_bragi"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "hh_granary_floor",
+   "doing": "왕이 바닥판 위에 손을 얹는다 — 이번에는 손을 오래 얹는다. 곡창지기는 '삼백'을 한 번 더 말한다",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_nov_asta_brimir",
+   "date": "312-11-14",
+   "npcs": [
+    "npc_asta",
+    "npc_hg_brimir"
+   ],
+   "from": "10:00",
+   "to": "16:00",
+   "at": "hh__deepwell_springs",
+   "doing": "브리미르가 아스타를 통역으로 불러 앉힌다 — 보리와 계약 노예 맞교환의 첫 말. 노파가 보리알 하나를 아스타의 손에 쥐여 준다",
+   "travel_from": "hh__stoneknee_huts",
+   "return_to": "hh__stoneknee_huts"
+  },
+  {
+   "id": "ev_hg_nov_halr_two",
+   "date": "312-11-22",
+   "npcs": [
+    "npc_hg_halr",
+    "npc_hg_hordis"
+   ],
+   "from": "21:00",
+   "to": "24:00",
+   "at": "hh_fire_hut",
+   "doing": "머릿수에서 빠진 두 사람이 불 오두막을 지나간다 — 호르디스가 손을 녹여 주고 하랄은 문밖에서 눈을 감는다"
+  },
+  {
+   "id": "ev_hg_dec1_pots_cold",
+   "date": "312-12-01",
+   "npcs": [
+    "npc_hg_skala",
+    "npc_hg_hordis",
+    "npc_hg_ragna"
+   ],
+   "from": "05:00",
+   "to": "12:00",
+   "at": "hh_kitchen",
+   "doing": "굶주림월 1일 — 솥 열둘이 식는다. 배급이 끊긴다. 왕비는 자기 몫을 덜고 호르디스가 불 오두막 문을 연다"
+  },
+  {
+   "id": "ev_hg_dec3_king_counts",
+   "date": "312-12-03",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_hg_bragi"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "hh_granary_floor",
+   "doing": "왕이 처음으로 바닥판을 열어 자루를 하나하나 센다 — 곡창지기는 '삼백'이라 말한다, if: king_counts_barley"
+  },
+  {
+   "id": "ev_hg_dec_empty_stove",
+   "date": "312-12-12",
+   "npcs": [
+    "npc_hg_skala",
+    "npc_hg_bragi"
+   ],
+   "from": "22:00",
+   "to": "24:00",
+   "at": "hh_queen_hall",
+   "doing": "쪽문을 연다 — 곡창지기가 마지막 자루를 내린다. 남은 보리는 이백칠십 섬이다",
+   "if": "skala_second_sack"
+  },
+  {
+   "id": "ev_hg_dec20_ice_field",
+   "date": "312-12-20",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_hg_hallgrid"
+   ],
+   "from": "17:00",
+   "to": "19:00",
+   "at": "hh_ice_field",
+   "doing": "덜어냄 — 늙은 거인 하나가 스스로 얼음 들판으로 걸어 나간다. 왕과 사제가 말없이 서서 본다"
+  },
+  {
+   "id": "ev_hg_dec28_hordis_wind",
+   "date": "312-12-28",
+   "npcs": [
+    "npc_hg_hordis"
+   ],
+   "from": "14:00",
+   "to": "17:00",
+   "at": "hh_fire_hut",
+   "doing": "북풍이 곡창 쪽으로 바뀌는 날 — 호르디스가 불 오두막 문을 반쯤 닫고 손바닥으로 바람 방향을 한 번 잰다, if: hordis_burns_granary"
+  },
+  {
+   "id": "ev_hg_table_day1",
+   "date": "313-01-07",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_skadir",
+    "npc_hg_utga",
+    "npc_hg_ugra",
+    "npc_hg_helda",
+    "npc_baug",
+    "npc_hg_brimir",
+    "npc_yorun",
+    "npc_hg_orr"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "hh_ice_table",
+   "doing": "얼음 탁자 첫날 — 스카디르가 313 푸른월 남침을 제안한다. 한 문장을 말하고 숨을 고른다. 돌팔 우트가가 고기를 내놓는다",
+   "fixed": true,
+   "travel_from": "hh__stonefist_hold"
+  },
+  {
+   "id": "ev_hg_table_day2",
+   "date": "313-01-08",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_skadir",
+    "npc_hg_utga",
+    "npc_hg_ugra",
+    "npc_hg_helda",
+    "npc_baug",
+    "npc_hg_brimir",
+    "npc_yorun",
+    "npc_hg_orr",
+    "npc_hg_heimla"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "hh_ice_table",
+   "doing": "얼음 탁자 둘째 날 — 아무도 말하지 않고 먹기만 한다. 고기가 한 점씩 돌고 왕은 가장 작은 한 점을 받는다. 노래 거인이 구절 사이에 입을 열지 않는다",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_table_day3",
+   "date": "313-01-09",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_skadir",
+    "npc_hg_utga",
+    "npc_hg_ugra",
+    "npc_hg_helda",
+    "npc_baug",
+    "npc_hg_brimir",
+    "npc_yorun",
+    "npc_hg_orr"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "hh_ice_table",
+   "doing": "얼음 탁자 셋째 날 — 답. 돌팔·바위배·눈늑대가죽·돌무릎은 고기를 받고 깊은우물은 거절한다. 왕은 고기를 내놓지 않아 안건이 푸른월로 넘어간다 (클락 3: 결정 미정)",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_jan10_rune",
+   "date": "313-01-10",
+   "npcs": [
+    "npc_hg_inge"
+   ],
+   "from": "06:00",
+   "to": "10:00",
+   "at": "weeping_pass__rune_rock",
+   "doing": "서리 길이 열리는 날 — 바위 밑에 서리말 룬으로 첫 무리가 고개를 넘는 날짜를 새긴다. 룬을 읽을 사람은 까마귀 문 이정표에 서 있을 것이다",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_jan10_lodge",
+   "date": "313-01-10",
+   "npcs": [
+    "npc_matusz"
+   ],
+   "from": "10:00",
+   "to": "18:00",
+   "at": "weeping_pass__lodge",
+   "doing": "서리 길 개방 첫날 — 산장 문을 활짝 열고 꿀 단지 열 개를 앞에 놓는다"
+  },
+  {
+   "id": "ev_hg_jan12_open_gate",
+   "date": "313-01-12",
+   "npcs": [
+    "npc_hg_sven"
+   ],
+   "from": "03:00",
+   "to": "05:00",
+   "at": "bone_pens__fence",
+   "doing": "해빙월 첫 사흘 가운데 하루 — 울타리 바깥문의 빗장을 올려 두고 돌아선다. 올해의 한 무리 마흔이 나간다",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_jan20_sven_ledger",
+   "date": "313-01-20",
+   "npcs": [
+    "npc_hg_sven",
+    "npc_hg_utga"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "hh__stonefist_hold",
+   "doing": "해빙월 머릿수 보고 — 마흔이 '실종'으로 적힌다. 우트가 장부를 한 번 더 넘긴다",
+   "travel_from": "bone_pens__chief_hut",
+   "return_to": "bone_pens__chief_hut"
+  },
+  {
+   "id": "ev_hg_feb_harva_scout",
+   "date": "313-02-12",
+   "npcs": [
+    "npc_harva"
+   ],
+   "from": "10:00",
+   "to": "14:00",
+   "at": "crow_gate__frost_road_head",
+   "doing": "서리 길 초입 상공을 정찰한다 — 스카디르에게 팔 지도를 눈에 담고 서리비늘이라 말하지 않는다",
+   "travel_from": "weeping_pass__harva_nest",
+   "return_to": "weeping_pass__harva_nest",
+   "mounted": true
+  },
+  {
+   "id": "ev_hg_feb17_chant",
+   "date": "313-02-17",
+   "npcs": [
+    "npc_hg_heimla",
+    "npc_hg_ragna"
+   ],
+   "from": "07:00",
+   "to": "12:00",
+   "at": "hh_song_hall",
+   "doing": "노래 한 달 열이레째 — 군데의 구절과 '용이 다시 칼을 쥐면 거인은 먼저 일어선다'가 불린다. 소녀가 입 모양으로만 따라 한다",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_feb20_hammers",
+   "date": "313-02-20",
+   "npcs": [
+    "npc_hg_utga"
+   ],
+   "from": "10:00",
+   "to": "18:00",
+   "at": "hh__stonefist_hold",
+   "doing": "돌 망치 이백이 장원 마당에 늘어선다 — 우트가가 수를 센다. 하나가 모자라다고 다시 센다"
+  },
+  {
+   "id": "ev_hg_mar_eye_turns",
+   "date": "313-03-05",
+   "npcs": [
+    "npc_hg_hallgrid",
+    "npc_herja"
+   ],
+   "from": "10:00",
+   "to": "16:00",
+   "at": "hh__ice_cave",
+   "doing": "얼어 있는 거인의 눈이 한 번 더 남쪽으로 돌아간다 — 두 사람만 그것을 안다"
+  },
+  {
+   "id": "ev_hg_mar_egg_news_pik",
+   "date": "313-03-18",
+   "npcs": [
+    "npc_hg_pik"
+   ],
+   "from": "08:00",
+   "to": "17:00",
+   "at": "hh_krik_stall",
+   "doing": "용제국 곡물 상인의 전갈 — 흰 알이 깨졌다는 소문이 서리땅에 닿는다. 재개 조건 줄 옆에 날짜를 적는다"
+  },
+  {
+   "id": "ev_hg_mar_egg_news_hall",
+   "date": "313-03-20",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_skadir",
+    "npc_hg_skala"
+   ],
+   "from": "08:00",
+   "to": "14:00",
+   "at": "hh_throne_hall",
+   "doing": "흰 알 소식 — 용황의 뒤가 이어지면 남침은 용 앞에서 굶는 길이 된다는 왕과, 이어지기 전에 쳐야 한다는 왕자가 같은 식탁에서 말을 아낀다"
+  },
+  {
+   "id": "ev_hg_apr_stonefist_muster",
+   "date": "313-04-05",
+   "npcs": [
+    "npc_hg_utga",
+    "npc_baug"
+   ],
+   "from": "05:00",
+   "to": "20:00",
+   "at": "hh__stonefist_hold",
+   "doing": "푸른월 — 돌 망치 이백과 돌무릎의 군량 수레가 장원에 모인다, if: jotun_march"
+  },
+  {
+   "id": "ev_hg_apr_gate_muster",
+   "date": "313-04-10",
+   "npcs": [
+    "npc_skadir",
+    "npc_hg_orr",
+    "npc_hg_utga",
+    "npc_hg_ugra",
+    "npc_hg_helda"
+   ],
+   "from": "04:00",
+   "to": "12:00",
+   "at": "hh_gate",
+   "doing": "전사단 집결 — 같은 고기를 나눠 먹고 전당 문을 나선다. 쇠무릎 오르가 맨 앞에 선다, if: jotun_march",
+   "travel_from": "hh__stonefist_hold"
+  },
+  {
+   "id": "ev_hg_apr_king_watches",
+   "date": "313-04-10",
+   "npcs": [
+    "npc_hrimnir"
+   ],
+   "from": "04:00",
+   "to": "12:00",
+   "at": "hh_gate",
+   "doing": "왕이 문 앞에 서서 행군을 지켜본다 — 아무 말도 하지 않는다, if: jotun_march"
+  },
+  {
+   "id": "ev_hg_apr_ogres_out",
+   "date": "313-04-14",
+   "npcs": [
+    "npc_ogre_pack"
+   ],
+   "from": "06:00",
+   "to": "18:00",
+   "at": "weeping_pass__ogre_cave",
+   "doing": "선봉으로 끌려 나온다 — 우두머리가 옛 이름 한 음절을 처음으로 소리 내어 중얼거린다, if: jotun_march"
+  },
+  {
+   "id": "ev_hg_apr_lodge_shut",
+   "date": "313-04-14",
+   "npcs": [
+    "npc_matusz"
+   ],
+   "from": "06:00",
+   "to": "18:00",
+   "at": "weeping_pass__lodge",
+   "doing": "행군이 오는 날 — 곰이 산장 문을 닫고 꿀 단지를 뒷벽 구멍에 넣는다, if: jotun_march"
+  },
+  {
+   "id": "ev_hg_apr_last_fire_dark",
+   "date": "313-04-16",
+   "npcs": [
+    "npc_hg_inge"
+   ],
+   "from": "05:00",
+   "to": "20:00",
+   "at": "weeping_pass__shelter_cave",
+   "doing": "마지막 불을 끄고 대피 동굴로 숨는다 — 행군이 지나간 뒤 다시 불을 피우려고, if: jotun_march"
+  },
+  {
+   "id": "ev_hg_apr22_key",
+   "date": "313-04-22",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_hg_skala",
+    "npc_hg_bragi"
+   ],
+   "from": "05:00",
+   "to": "07:00",
+   "at": "hh_granary",
+   "doing": "왕이 맹약회의 313 길에 오르며 곡창 열쇠를 왕비에게 맡긴다 — 곡창지기는 288섬을 말하지 못한 채 선다",
+   "fixed": true
+  },
+  {
+   "id": "ev_hg_apr23_empty_chair",
+   "date": "313-04-23",
+   "npcs": [
+    "npc_skadir",
+    "npc_hg_skala"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "hh_throne_hall",
+   "doing": "왕이 떠난 전당 — 스카디르가 얼음 탁자의 빈 의자를 본다. 왕비는 한 칸 비켜 앉는다"
+  },
+  {
+   "id": "ev_hg_may_skala_regent",
+   "date": "313-05-12",
+   "npcs": [
+    "npc_hg_skala",
+    "npc_hg_bragi",
+    "npc_hg_hordis"
+   ],
+   "from": "22:00",
+   "to": "24:00",
+   "at": "hh_queen_hall",
+   "doing": "왕이 맹약회의에 가 있는 동안 곡창 열쇠를 쥔 왕비가 쪽문을 두 번째로 연다 — 불 오두막에 보리 스무 섬이 간다, if: skala_second_sack"
+  },
+  {
+   "id": "ev_hg_jul_return",
+   "date": "313-06-19",
+   "npcs": [
+    "npc_hrimnir",
+    "npc_hg_skala"
+   ],
+   "from": "05:00",
+   "to": "09:00",
+   "at": "hh_gate",
+   "doing": "왕이 맹약회의에서 돌아온다 — 왕비가 곡창 열쇠를 돌려주며 수를 말하지 않는다"
+  },
+  {
+   "id": "ev_hg_monthly_ice_field",
+   "npcs": [
+    "npc_hg_hordis",
+    "npc_hg_halr"
+   ],
+   "repeat": "monthly",
+   "day": 15,
+   "from": "22:00",
+   "to": "24:00",
+   "at": "hh_fire_hut",
+   "doing": "보름 — 서리 길로 떠나는 사람이 있는 밤. 호르디스가 언 손을 녹여 주고 하랄은 문밖에서 머릿수를 한 번 더 센다"
+  },
+  {
+   "id": "ev_hg_monthly_cave_weather",
+   "npcs": [
+    "npc_hg_inge"
+   ],
+   "repeat": "monthly",
+   "day": 3,
+   "from": "10:00",
+   "to": "14:00",
+   "at": "weeping_pass__shelter_cave",
+   "doing": "대피 동굴 세 곳의 비상 식량을 한 곳씩 확인한다 — 한 곳에 짐승이 다녀간 흔적이 있다"
   },
   {
    "id": "ev_kz_hilda_visit_sep",
@@ -19293,6 +25292,977 @@
    "to": "11:00",
    "at": "lm_uc_cell_9",
    "doing": "회칠 — 매달 알베릭의 벽 글을 지운다. 지운 자리에 벌써 손톱 자국이 있다"
+  },
+  {
+   "id": "ev_rp_month_roll",
+   "npcs": [
+    "npc_zrag",
+    "npc_chik_tally",
+    "npc_adriel"
+   ],
+   "repeat": "monthly",
+   "day": 1,
+   "from": "19:00",
+   "to": "21:00",
+   "at": "rp_herders_lodge",
+   "doing": "달 첫날 피 표 점호 — 크릭 숫자표와 장부를 대조한다. 영주는 문밖에서 숫자만 듣는다"
+  },
+  {
+   "id": "ev_rp_rose_escape",
+   "npcs": [
+    "npc_cecile",
+    "npc_orphe",
+    "npc_pips",
+    "npc_tessa"
+   ],
+   "repeat": "monthly",
+   "day": 20,
+   "from": "23:00",
+   "to": "24:00",
+   "at": "rose_manor__garden",
+   "doing": "한 달에 한 번 — 장미원 셋째 덤불 아래 지하 통로와 온실 수로로 6~12명이 붉은 갈대 선으로 나간다. 세실이 직접 문을 연다",
+   "travel_from": "rose_manor"
+  },
+  {
+   "id": "ev_rp_vintage",
+   "npcs": [
+    "npc_zrag"
+   ],
+   "date": "312-09-10",
+   "from": "06:00",
+   "to": "18:00",
+   "at": "rp_vineyard",
+   "doing": "혈포도 수확 시작 — 인간 일손이 붉은 손으로 돌아온다. 크릭 목동이 포도밭 가장자리에 줄을 선다"
+  },
+  {
+   "id": "ev_rp_clear_day",
+   "npcs": [
+    "npc_zrag",
+    "npc_hedwig",
+    "npc_pips"
+   ],
+   "date": "312-10-14",
+   "from": "07:00",
+   "to": "17:00",
+   "at": "rp_exercise_ground",
+   "doing": "맑은 날 — 녹테른 순찰이 없고 크릭 목동만 있다. 영주는 낮의 방에서 나오지 않는다. 장미 우리에서 둘이 갈대 선으로 빠져나간다"
+  },
+  {
+   "id": "ev_rp_clear_day_adriel",
+   "npcs": [
+    "npc_adriel"
+   ],
+   "date": "312-10-14",
+   "from": "07:00",
+   "to": "17:00",
+   "at": "rp_coffin_room",
+   "doing": "맑은 날 — 영주는 낮의 방 문을 잠그고 나오지 않는다"
+  },
+  {
+   "id": "ev_rp_marcius_blank",
+   "npcs": [
+    "npc_marcius"
+   ],
+   "date": "312-11-05",
+   "from": "20:00",
+   "to": "24:00",
+   "at": "first_thirst_castle__cup_hall",
+   "doing": "공물 명단 확정 준비 — 루멘에서 온 40명의 이름이 도착했다. 마르시우스가 한 줄을 결번으로 비워 둔다"
+  },
+  {
+   "id": "ev_rp_rosalie_depart",
+   "npcs": [
+    "npc_rosalie"
+   ],
+   "date": "312-11-12",
+   "from": "05:00",
+   "to": "09:00",
+   "at": "lumen",
+   "doing": "루멘 공물 호송 출발 — 번호 열일곱. 주머니 속 장미 꽃잎을 만진다"
+  },
+  {
+   "id": "ev_rp_well_pilgrimage",
+   "npcs": [
+    "npc_mordecai",
+    "npc_eloise",
+    "npc_marcius",
+    "npc_carnon",
+    "npc_basilisa"
+   ],
+   "date": "312-11-14",
+   "from": "22:00",
+   "to": "24:00",
+   "at": "first_thirst_castle__well",
+   "doing": "우물 순례 — 갈증의 밤 전날 밤 가장자리에서 신의 피 한 방울을 듣는다. 군주의 두 겹 목소리 사이에서 세 번째 소리가 들린다"
+  },
+  {
+   "id": "ev_rp_tribute_arrive",
+   "npcs": [
+    "npc_rosalie",
+    "npc_kasimir",
+    "npc_zrag"
+   ],
+   "date": "312-11-15",
+   "from": "03:00",
+   "to": "05:00",
+   "at": "red_pens__tribute_gate",
+   "doing": "공물 도착 — 루멘 40명이 검은 문을 지난다. 카시미르가 명단과 인원을 센다. 올해도 둘이 다르다",
+   "travel_from": "lumen"
+  },
+  {
+   "id": "ev_rp_tribute_yard",
+   "npcs": [
+    "npc_kasimir",
+    "npc_zrag"
+   ],
+   "date": "312-11-15",
+   "from": "05:00",
+   "to": "12:00",
+   "at": "rp_tribute_yard",
+   "doing": "공물 마당 — 카시미르가 공물 가운데 둘을 하얀 우리로 고른다. 마당 모서리의 헐거운 돌 하나를 크릭이 지나친다"
+  },
+  {
+   "id": "ev_rp_thirst_night_pens",
+   "npcs": [
+    "npc_hedwig",
+    "npc_zrag",
+    "npc_chik_tally"
+   ],
+   "date": "312-11-15",
+   "from": "18:00",
+   "to": "24:00",
+   "at": "rp_pen_barracks",
+   "doing": "갈증의 밤 — 우리 안에서 촛불을 끄고 숨을 죽인다. 노파는 맥을 잡고 목동은 문 앞에 서고 서기는 홈을 세지 않는다"
+  },
+  {
+   "id": "ev_rp_thirst_night_hall",
+   "npcs": [
+    "npc_mordecai",
+    "npc_eloise",
+    "npc_carnon",
+    "npc_marcius",
+    "npc_basilisa",
+    "npc_adriel",
+    "npc_kasimir",
+    "npc_alaric",
+    "npc_cecile",
+    "npc_silas_bell",
+    "npc_baltasar",
+    "npc_marendis",
+    "npc_vesper"
+   ],
+   "date": "312-11-15",
+   "from": "18:00",
+   "to": "24:00",
+   "at": "first_thirst_castle__great_hall",
+   "doing": "갈증의 밤 — 모든 녹테른이 첫 갈증 성에 모인다. 집전관이 공물 명단을 확정하고 잔을 돌린다. 군주가 직접 혈목장에 내려오는 단 한 번의 밤",
+   "travel_from": "rose_manor"
+  },
+  {
+   "id": "ev_rp_thirst_night_tribute",
+   "npcs": [
+    "npc_rosalie"
+   ],
+   "date": "312-11-15",
+   "from": "18:00",
+   "to": "24:00",
+   "at": "first_thirst_castle__great_hall",
+   "doing": "공물 대열 — 번호 열일곱이 호명되기를 기다린다. 입에 문 장미 꽃잎이 말라 있다",
+   "travel_from": "red_pens__tribute_gate"
+  },
+  {
+   "id": "ev_rp_thirst_night_roses",
+   "npcs": [
+    "npc_orphe",
+    "npc_pips"
+   ],
+   "date": "312-11-16",
+   "from": "01:00",
+   "to": "05:00",
+   "at": "rose_manor__garden",
+   "doing": "갈증의 밤이 끝난 새벽 — 결번 하나가 장미 하나가 되었는지 홈으로 센다. 핍스가 꽃잎을 수로 입구에 놓는다"
+  },
+  {
+   "id": "ev_rp_alaric_silas",
+   "npcs": [
+    "npc_alaric",
+    "npc_silas_bell"
+   ],
+   "date": "312-12-08",
+   "from": "21:00",
+   "to": "24:00",
+   "at": "nocturne__silentbell_pen",
+   "doing": "알라리크가 세실 암살 의뢰를 다시 재촉한다. 사일라스는 '증거 없이는 집을 짓지 않는다'고 답한다 — 증거를 만들 시간이 열흘 남았다"
+  },
+  {
+   "id": "ev_rp_ash_days",
+   "npcs": [
+    "npc_hedwig",
+    "npc_zrag"
+   ],
+   "date": "312-13-03",
+   "from": "19:00",
+   "to": "23:00",
+   "at": "rp_infirmary",
+   "doing": "재의 날 — 불 금지. 솥도 끄는 밤. 노파는 쑥을 마른 채로 씹으며 맥을 잡는다"
+  },
+  {
+   "id": "ev_rp_cecile_final_list",
+   "npcs": [
+    "npc_cecile",
+    "npc_orphe"
+   ],
+   "date": "313-01-12",
+   "from": "00:00",
+   "to": "04:00",
+   "at": "rose_manor__library",
+   "doing": "세실의 서재 — 빼돌린 이름이 410이 되었다. 마지막 장을 홈으로 닫고 장미를 한 그루 더 심는다"
+  },
+  {
+   "id": "ev_rp_marian_depart",
+   "npcs": [
+    "npc_marian",
+    "npc_kasimir"
+   ],
+   "date": "313-03-05",
+   "from": "04:00",
+   "to": "09:00",
+   "at": "red_pens__white_pen",
+   "doing": "마리안의 영혼 정원 납품 출발 — 카시미르가 마지막으로 이름을 부르지 않고 흰 막사 문을 닫는다"
+  },
+  {
+   "id": "ev_rp_marian_arrive",
+   "npcs": [
+    "npc_marian",
+    "npc_fionael"
+   ],
+   "date": "313-03-13",
+   "from": "08:00",
+   "to": "18:00",
+   "at": "soul_garden__patient_pavilion",
+   "doing": "마리안이 망각의 길 167시간을 지나 영혼 정원 피험자 정자에 닿는다. 피오나엘이 눈을 마주치는 순간 꿈이 겹친다",
+   "travel_from": "red_pens__white_pen"
+  },
+  {
+   "id": "ev_rp_egg_hatch",
+   "npcs": [
+    "npc_vesper",
+    "npc_eloise"
+   ],
+   "date": "313-03-15",
+   "from": "19:00",
+   "to": "23:00",
+   "at": "first_thirst_castle__throne",
+   "doing": "바알카르에서 흰 알이 부화한 소식이 박쥐날개 전령의 날개로 닿는다. 시종이 군주에게 전하고 군주는 우물 곁 소절을 그날 한 번 멈추지 않는다"
+  },
+  {
+   "id": "ev_rp_spring_clear",
+   "npcs": [
+    "npc_tessa",
+    "npc_pips",
+    "npc_orphe",
+    "npc_zrag"
+   ],
+   "date": "313-04-02",
+   "from": "06:00",
+   "to": "18:00",
+   "at": "nocturne__marsh_edge",
+   "doing": "봄 첫 맑은 날 — 녹테른 순찰이 없는 날 호송이 열둘로 늘어난다. 붉은 갈대 선을 넘는 줄이 낮에 길게 이어진다"
+  },
+  {
+   "id": "ev_rp_covenant_basilisa",
+   "npcs": [
+    "npc_basilisa"
+   ],
+   "date": "313-05-20",
+   "from": "09:00",
+   "to": "18:00",
+   "at": "baalkar",
+   "doing": "맹약회의 313 — 녹테른 대표로 '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낸다",
+   "travel_from": "first_thirst_castle__cup_hall",
+   "return_to": "first_thirst_castle__cup_hall"
+  },
+  {
+   "id": "ev_rp_silas_revisit",
+   "npcs": [
+    "npc_silas_bell",
+    "npc_ninth_hunter"
+   ],
+   "date": "313-06-10",
+   "from": "21:00",
+   "to": "24:00",
+   "at": "nocturne__silentbell_pen",
+   "doing": "사일라스가 의뢰 목록의 첫 줄을 다시 쓸어 읽는다. 아홉째가 낮게 대답을 보류한다"
+  },
+  {
+   "id": "ev_rp_vintage_313",
+   "npcs": [
+    "npc_zrag",
+    "npc_hedwig"
+   ],
+   "date": "313-07-10",
+   "from": "06:00",
+   "to": "18:00",
+   "at": "rp_vineyard",
+   "doing": "수확월 — 두 번째 혈포도 수확. 쑥은 한 자루 더 불었다"
+  },
+  {
+   "id": "ev_tc_stone_count",
+   "npcs": [
+    "npc_granny_nina",
+    "npc_elin",
+    "npc_odo"
+   ],
+   "repeat": "monthly",
+   "day": 1,
+   "from": "20:00",
+   "to": "22:00",
+   "at": "tc_stone_hollow",
+   "doing": "달 첫날 돌 세는 자들의 점호 — 조약돌의 수를 맞추고 바깥 날짜를 대조한다. 엘린이 시간 알림이로 앉는다"
+  },
+  {
+   "id": "ev_tc_judge_day",
+   "npcs": [
+    "npc_whistle_judge",
+    "npc_three_laugh_knight",
+    "npc_glass_fingers"
+   ],
+   "repeat": "monthly",
+   "day": 9,
+   "from": "14:00",
+   "to": "18:00",
+   "at": "tc_judge_hall",
+   "doing": "달 아홉째 날 큰 웃음 재판 — 바꿔치기 대체품 사건과 약속 위반이 한꺼번에 오른다"
+  },
+  {
+   "id": "ev_tc_walker_ring_night",
+   "npcs": [
+    "npc_backwards_walker"
+   ],
+   "date": "312-09-20",
+   "from": "21:00",
+   "to": "24:00",
+   "at": "old_stone_ring",
+   "doing": "이졸이 도착한 뒤 처음으로 옛 돌 고리를 도는 밤 — 거꾸로 걷는 이가 한 걸음 숲 쪽으로 물러난다"
+  },
+  {
+   "id": "ev_tc_silverbell_stone",
+   "npcs": [
+    "npc_silverbell_lady",
+    "npc_three_laugh_knight"
+   ],
+   "date": "312-09-27",
+   "from": "05:00",
+   "to": "08:00",
+   "at": "lost_child_stone",
+   "doing": "아이 잃은 돌 앞의 신발을 센다 — 열일곱 켤레가 회색여울 쪽 것. 방울이 한 번 운다"
+  },
+  {
+   "id": "ev_tc_walker_thorn",
+   "npcs": [
+    "npc_backwards_walker"
+   ],
+   "date": "312-10-05",
+   "from": "04:00",
+   "to": "07:00",
+   "at": "greyford__north_woods",
+   "doing": "새벽 마을 가장자리를 돈다 — 짐 속에 가시 한 가닥을 넣을 사람을 고른다"
+  },
+  {
+   "id": "ev_tc_grik_frost_leak",
+   "npcs": [
+    "npc_grik",
+    "npc_dawn_hunter_dew"
+   ],
+   "date": "312-10-04",
+   "from": "02:00",
+   "to": "09:00",
+   "at": "thornmist__south_tower",
+   "doing": "서리월 3일 밤 물빼기 굴에서 새어 나온 이들이 숲 남쪽 경계로 번진다 — 그릭이 폐탑에서 모자를 적시고 이슬은 서쪽으로 몬다"
+  },
+  {
+   "id": "ev_tc_shards_autumn",
+   "npcs": [
+    "npc_mirror_perhaps",
+    "npc_thistle_duke",
+    "npc_knight_rustrose",
+    "npc_name_page"
+   ],
+   "date": "312-10-12",
+   "from": "05:00",
+   "to": "07:00",
+   "at": "tc_hedge",
+   "doing": "울지 않는 나무 아래 — 일곱 조각 가운데 넷이 가을 만남을 한다. 이번 안건은 '진실 하나'. 혹시가 말할 차례"
+  },
+  {
+   "id": "ev_tc_invites_chosen",
+   "npcs": [
+    "npc_thistle_duke",
+    "npc_sneeze_duke"
+   ],
+   "date": "312-11-01",
+   "from": "20:00",
+   "to": "24:00",
+   "at": "tc_winter_court",
+   "doing": "가시 무도회 초대장 가시 한 가닥씩을 뽑는다 — 겨울 궁정 차례. 웃은 기억이 많은 사람의 이름이 병에서 올라온다"
+  },
+  {
+   "id": "ev_tc_thorn_ball",
+   "npcs": [
+    "npc_thorn_queen",
+    "npc_silverbell_lady",
+    "npc_thistle_duke",
+    "npc_sneeze_duke",
+    "npc_whistle_judge",
+    "npc_mirror_perhaps",
+    "npc_elin",
+    "npc_odo",
+    "npc_three_laugh_knight"
+   ],
+   "date": "312-11-20",
+   "from": "18:00",
+   "to": "24:00",
+   "at": "tc_ballroom",
+   "doing": "가시 무도회 — 초대받은 인간이 돌아오지 않거나 무언가를 잃고 돌아온다. 여왕은 극도로 친절하다"
+  },
+  {
+   "id": "ev_tc_ball_toys",
+   "npcs": [
+    "npc_granny_nina",
+    "npc_nibble"
+   ],
+   "date": "312-11-20",
+   "from": "18:00",
+   "to": "24:00",
+   "at": "tc_court_hall",
+   "doing": "무도회 밤 궁정 홀 — 돌 세는 자들은 접시를 들고 돌 소리를 죽인다. 니블이 끼어들어 7년이라 속삭인다"
+  },
+  {
+   "id": "ev_tc_ball_sneeze",
+   "npcs": [
+    "npc_sneeze_duke",
+    "npc_name_collector"
+   ],
+   "date": "312-11-20",
+   "from": "18:00",
+   "to": "24:00",
+   "at": "tc_fog_market",
+   "doing": "무도회 밤 안개 장터 — 새로 잃은 기억이 가장 비싸다. 이름 수집가가 이름 아홉 병 가운데 빈 병을 한 번 더 센다"
+  },
+  {
+   "id": "ev_tc_grey_fog_gate",
+   "npcs": [
+    "npc_eleanor",
+    "npc_toby_fifth"
+   ],
+   "date": "312-12-10",
+   "from": "06:00",
+   "to": "12:00",
+   "at": "thornmist__second_mothers",
+   "doing": "굶주림월 — 서쪽 길로 잊힌 자 둘이 철 울타리에 닿는다. 엘레노르가 은목 못을 확인하고 토비가 그들의 페이어 중얼거림을 번역한다"
+  },
+  {
+   "id": "ev_tc_ash_days",
+   "npcs": [
+    "npc_granny_nina",
+    "npc_mirror_yesterday"
+   ],
+   "date": "312-13-02",
+   "from": "20:00",
+   "to": "22:00",
+   "at": "tc_stone_hollow",
+   "doing": "재의 날 — 돌 세는 자들은 돌을 세지 않는다. 어제는 거울에 비치지 않는다"
+  },
+  {
+   "id": "ev_tc_empty_cradle_song",
+   "npcs": [
+    "npc_eleanor"
+   ],
+   "date": "313-01-10",
+   "from": "20:00",
+   "to": "24:00",
+   "at": "thornmist__second_mothers",
+   "doing": "빈 요람의 밤 — 이슬 우리와 같은 밤. 철 울타리 안에서 엘레노르가 한 음 낮게 부르다 마지막 음 앞에서 입을 다문다"
+  },
+  {
+   "id": "ev_tc_grik_thaw",
+   "npcs": [
+    "npc_grik",
+    "npc_dawn_hunter_dew",
+    "npc_three_laugh_knight"
+   ],
+   "date": "313-01-18",
+   "from": "03:00",
+   "to": "12:00",
+   "at": "thornmist__south_tower",
+   "doing": "서리 길 재개 뒤 북방 탈주 시즌 — 숲 남쪽 경계로 번지는 탈주자들. 그릭의 모자가 마르기 전에 이슬이 개를 서쪽으로 푼다. 기사는 세 번째 웃음에서 멈춘다"
+  },
+  {
+   "id": "ev_tc_egg_hatch",
+   "npcs": [
+    "npc_thorn_queen",
+    "npc_mirror_yesterday",
+    "npc_mirror_perhaps"
+   ],
+   "date": "313-03-15",
+   "from": "09:00",
+   "to": "18:00",
+   "at": "tc_throne_room",
+   "doing": "바알카르에서 흰 알이 부화한 소식이 안개 장터에서 먼저 돈다 — 여왕은 웃고, 거울 시녀 '어제'는 '어제는 알이 깨지지 않았어'라 하고 '혹시'는 여왕의 웃음을 거꾸로 전한다"
+  },
+  {
+   "id": "ev_tc_covenant_day",
+   "npcs": [
+    "npc_thorn_queen",
+    "npc_mirror_perhaps",
+    "npc_backwards_walker"
+   ],
+   "date": "313-05-20",
+   "from": "09:00",
+   "to": "18:00",
+   "at": "tc_mirror_chamber",
+   "doing": "맹약회의 313 — 숲은 사절을 보내지 않고 거울 시녀 '혹시'가 회의의 결과를 거꾸로 전한다. 거꾸로 걷는 이는 그날 한 번도 앞을 보지 않는다"
+  },
+  {
+   "id": "ev_tc_season_skew",
+   "npcs": [
+    "npc_nibble",
+    "npc_elin",
+    "npc_granny_nina"
+   ],
+   "date": "313-07-12",
+   "from": "06:00",
+   "to": "18:00",
+   "at": "tc_court_hall",
+   "doing": "수확월 — 숲 안은 서리가 내린다. 니블이 계절을 속이고 엘린은 바깥 해가 몇 번 졌는지 센다. 니나의 돌은 열일곱 개 모자라다"
+  },
+  {
+   "id": "ev_ws_sep_rope_length",
+   "date": "312-09-10",
+   "npcs": [
+    "npc_ws_marco",
+    "npc_ws_ulla"
+   ],
+   "from": "20:00",
+   "to": "23:00",
+   "at": "ws_water_jars",
+   "doing": "항아리 밑 줄을 손으로 쓸어 길이를 잰다 — 이백십이 미터. 울라가 한 겹을 더한 것을 마르코는 아직 모른다"
+  },
+  {
+   "id": "ev_ws_sep_ratz_cage",
+   "date": "312-09-18",
+   "npcs": [
+    "npc_ws_ratz",
+    "npc_ws_torin"
+   ],
+   "from": "14:00",
+   "to": "18:00",
+   "at": "sky_market__tents",
+   "doing": "라츠가 곡식을 사 간다 — 토린은 장부에서 한 줄을 지우고 라츠는 새장 쪽을 보지 않는다",
+   "travel_from": "sky_market__bandit_den",
+   "return_to": "sky_market__bandit_den"
+  },
+  {
+   "id": "ev_ws_sep_erden_wait",
+   "date": "312-09-25",
+   "npcs": [
+    "npc_ws_erden",
+    "npc_ws_sera"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "sky_market__basket_lift",
+   "doing": "하르칸 전령이 서신 통을 보이지 않고 줄지기 곁에 선다 — 줄지기는 '의회가 읽을지는 모른다'고만 한다"
+  },
+  {
+   "id": "ev_ws_oct1_stair_closed",
+   "date": "312-10-01",
+   "npcs": [
+    "npc_ws_torin",
+    "npc_ws_sera"
+   ],
+   "from": "06:00",
+   "to": "12:00",
+   "at": "sky_market__cliff_trail",
+   "doing": "서리월 1일 — 독수리 계단이 닫힌다. 마지막 두르강 짐수레가 내려가고 장터는 겨울 장을 연다. 줄지기가 계단 입구의 줄을 거둔다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_oct2_feris_dead",
+   "date": "312-10-02",
+   "npcs": [
+    "npc_ws_ratz"
+   ],
+   "from": "06:00",
+   "to": "09:00",
+   "at": "sky_market__bandit_den",
+   "doing": "철망 새장 안 흰 날개가 움직이지 않는다 — 라츠가 처음으로 새장 문을 연다. 열어도 날아오르지 않는다, if: feris_dead"
+  },
+  {
+   "id": "ev_ws_oct6_sirun_report",
+   "date": "312-10-06",
+   "npcs": [
+    "npc_ws_sirun",
+    "npc_kyrie"
+   ],
+   "from": "19:00",
+   "to": "21:00",
+   "at": "ws_high_nest_house",
+   "doing": "시룬이 키리에에게 보고한다 — '셋째는 한 번도 위를 올려다보지 않습니다.' 이름은 적히지 않는다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_oct14_council_one",
+   "date": "312-10-14",
+   "npcs": [
+    "npc_kyrie",
+    "npc_eiros",
+    "npc_ws_celes",
+    "npc_ws_kair",
+    "npc_ws_aela",
+    "npc_ws_rei",
+    "npc_ws_ask"
+   ],
+   "from": "09:00",
+   "to": "17:00",
+   "at": "ws_feather_council",
+   "doing": "깃털 의회 — 맹약회의 313 대표 논의 첫 회. 에이로스와 셀레스가 모두 이름을 올린다. 표는 일곱으로 갈린다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_oct_launa_trade",
+   "date": "312-10-22",
+   "npcs": [
+    "npc_ws_launa",
+    "npc_orn"
+   ],
+   "from": "14:00",
+   "to": "17:00",
+   "at": "ws_feather_library",
+   "doing": "오른이 서고에서 땅 이야기를 한 시간 말한다 — 라우나가 매듭을 하나 묶어 준다. '손가락 길이의 값이다'라고 한다",
+   "travel_from": "ws_ground_nest",
+   "return_to": "ws_ground_nest"
+  },
+  {
+   "id": "ev_ws_nov_sirun_second",
+   "date": "312-11-22",
+   "npcs": [
+    "npc_ws_sirun",
+    "npc_ws_rei"
+   ],
+   "from": "10:00",
+   "to": "14:00",
+   "at": "ws_hawkeye_ledge",
+   "doing": "시룬이 새 선을 지도 둥지에 얹는다 — 회색여울 상공에서 용제국 기사 와이번을 보았다는 말은 하지 않는다"
+  },
+  {
+   "id": "ev_ws_nov_aela_votes",
+   "date": "312-11-30",
+   "npcs": [
+    "npc_ws_aela",
+    "npc_ws_celes"
+   ],
+   "from": "17:00",
+   "to": "22:00",
+   "at": "ws_looking_up_nest",
+   "doing": "하늘만 보는 자들의 저녁 — 줄 거둠 표 셋을 더 센다. 균열이 보이는 쪽은 아무도 보지 않는다"
+  },
+  {
+   "id": "ev_ws_dec_torin_draft",
+   "date": "312-12-10",
+   "npcs": [
+    "npc_ws_torin",
+    "npc_ws_anskar"
+   ],
+   "from": "14:00",
+   "to": "18:00",
+   "at": "sky_market__durgan_depot",
+   "doing": "토린이 130m 줄 공급 계약 초안을 쇠판에 새긴다 — 대가 칸이 비어 있다. 안스가르가 숫자를 한 번 정확히 말해 준다, if: torin_rope_deal"
+  },
+  {
+   "id": "ev_ws_dec_ratz_letter",
+   "date": "312-12-20",
+   "npcs": [
+    "npc_ws_ratz",
+    "npc_ws_erden"
+   ],
+   "from": "16:00",
+   "to": "20:00",
+   "at": "sky_market__tents",
+   "doing": "라츠가 하르칸 전령에게 몸값 요구서를 높은둥지에 전해 달라고 청한다 — 전령은 '칸의 서신이 먼저'라고 거절한다, if: feris_alive",
+   "travel_from": "sky_market__bandit_den",
+   "return_to": "sky_market__bandit_den"
+  },
+  {
+   "id": "ev_ws_jan18_festival",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_kyrie",
+    "npc_eiros",
+    "npc_ws_kair",
+    "npc_ws_celes",
+    "npc_ws_aela",
+    "npc_ws_rei",
+    "npc_ws_launa",
+    "npc_ws_ask",
+    "npc_ws_tur",
+    "npc_ws_orea"
+   ],
+   "from": "07:00",
+   "to": "19:00",
+   "at": "windspire",
+   "doing": "바람 축제 — 아에리 전원이 하늘을 난다. 기둥 위에 아무도 없는 하루. 의회 가문도, 사냥꾼도, 서고지기도 모두 바람 속에 있다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_jan18_marco",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_ws_marco",
+    "npc_ws_ulla"
+   ],
+   "from": "07:00",
+   "to": "19:00",
+   "at": "ws_water_jars",
+   "doing": "혼자인 날 — 항아리 밑 줄 전체를 꺼내 길이를 잰다. 이백칠십 미터. 한 겹 더한 부분을 마르코가 처음 만져 본다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_jan18_mir",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_ws_mir"
+   ],
+   "from": "07:00",
+   "to": "19:00",
+   "at": "ws_ground_village",
+   "doing": "날개 없는 아에리가 땅손과 불 곁에 앉는다 — 바람 축제에서 열세 번째로 날지 못한다. 땅손 아이가 휘파람으로 하늘말을 따라 한다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_jan18_orn",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_orn"
+   ],
+   "from": "07:00",
+   "to": "19:00",
+   "at": "ws_ground_nest",
+   "doing": "혼자인 날 — 둥지에서 땅 이야기를 숯으로 적는다. 가끔 위를 본다. 첨탑이 비어 있다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_jan18_orea",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_ws_orea"
+   ],
+   "from": "07:00",
+   "to": "12:00",
+   "at": "ws_funeral_peak",
+   "doing": "남쪽 바위 틈의 가죽 싼 것을 꺼내 바람을 맞게 한다 — 놓지는 않는다. 바람 축제 날만 날개가 바람을 느낀다"
+  },
+  {
+   "id": "ev_ws_jan18_tyla",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_tyla"
+   ],
+   "from": "07:00",
+   "to": "19:00",
+   "at": "ws_feather_cliff_cave",
+   "doing": "축제의 날 — 하늘에 아에리가 가득한 것을 동굴 입구에서 올려다본다. 에이로스가 오지 않는 낮이 처음이다"
+  },
+  {
+   "id": "ev_ws_feb2_letter",
+   "date": "313-02-02",
+   "npcs": [
+    "npc_ws_erden",
+    "npc_ws_sera"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "sky_market__basket_lift",
+   "doing": "하르칸 전령이 드디어 서신 통을 줄지기에게 건넨다 — 의회가 읽을지는 모른다. 서신은 바구니에 실려 올라간다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_feb6_letter_kyrie",
+   "date": "313-02-06",
+   "npcs": [
+    "npc_kyrie"
+   ],
+   "from": "19:00",
+   "to": "21:00",
+   "at": "ws_queen_perch",
+   "doing": "테무르 칸의 서신을 혼자 읽는다 — 서진 때 하늘길을 지나가게 해 달라는 청이다. 아래의 불빛 대신 동쪽 초원 쪽을 바라본다"
+  },
+  {
+   "id": "ev_ws_feb14_rope",
+   "date": "313-02-14",
+   "npcs": [
+    "npc_ws_torin",
+    "npc_ws_ulla",
+    "npc_ws_tur"
+   ],
+   "from": "16:00",
+   "to": "19:00",
+   "at": "sky_market__basket_lift",
+   "doing": "바구니에 밧줄 한 타래가 올라간다 — 토린의 서명이 든 쇠판이 줄지기 눈을 지나간다. 투르가 사육장 쪽에서 받을 자리를 비워 둔다, if: torin_rope_deal",
+   "travel_from": "ws_ground_village"
+  },
+  {
+   "id": "ev_ws_mar5_vote",
+   "date": "313-03-05",
+   "npcs": [
+    "npc_kyrie",
+    "npc_eiros",
+    "npc_ws_celes",
+    "npc_ws_kair",
+    "npc_ws_aela",
+    "npc_ws_rei"
+   ],
+   "from": "09:00",
+   "to": "17:00",
+   "at": "ws_feather_council",
+   "doing": "깃털 의회 — 맹약회의 313 대표 표결. 표가 셋 대 셋으로 갈리고 키리에가 마지막 한 표를 쥐고 오래 말하지 않는다. 폭풍깃의 침묵이 표를 하나 지운다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_mar5_celes",
+   "date": "313-03-05",
+   "npcs": [
+    "npc_ws_celes"
+   ],
+   "from": "17:00",
+   "to": "22:00",
+   "at": "ws_looking_up_nest",
+   "doing": "표결 뒤 둥지에서 균열이 보이는 쪽으로 처음 고개를 돌린다 — 아무에게도 말하지 않는다",
+   "if": "celes_loses"
+  },
+  {
+   "id": "ev_ws_mar14_star",
+   "date": "313-03-14",
+   "npcs": [
+    "npc_korak",
+    "npc_ws_launa"
+   ],
+   "from": "21:00",
+   "to": "24:00",
+   "at": "ws_wind_bell",
+   "doing": "역행하는 별이 가장 낮게 내려온다 — 코라크가 흰 알 부화 소식이 오는 밤과 같은 밤으로 종 틀 나무에 새긴다. 라우나가 서고에서 그 줄을 따로 묶는다",
+   "travel_from": "ws_feather_library",
+   "return_to": "ws_feather_library"
+  },
+  {
+   "id": "ev_ws_apr12_rei_march",
+   "date": "313-04-12",
+   "npcs": [
+    "npc_ws_rei",
+    "npc_ws_ask"
+   ],
+   "from": "05:00",
+   "to": "17:00",
+   "at": "ws_hawkeye_ledge",
+   "doing": "서리 이빨 쪽에서 거인 행렬이 서리 길로 내려오는 것을 본다 — 정찰 고리가 보고서에 올릴지 한 번 더 망설인다, if: jotun_march"
+  },
+  {
+   "id": "ev_ws_apr20_depart",
+   "date": "313-04-20",
+   "npcs": [
+    "npc_kyrie",
+    "npc_eiros"
+   ],
+   "from": "05:00",
+   "to": "09:00",
+   "at": "ws_high_nest",
+   "doing": "여왕이 아들을 맹약회의 313 아에리 대표로 보낸다 — 은빛 깃털 한 장을 목에 걸어 준다. 아에리가 처음으로 대표를 보낸다",
+   "fixed": true
+  },
+  {
+   "id": "ev_ws_apr20_celes_oppose",
+   "date": "313-04-20",
+   "npcs": [
+    "npc_ws_celes",
+    "npc_ws_aela"
+   ],
+   "from": "05:00",
+   "to": "09:00",
+   "at": "ws_looking_up_nest",
+   "doing": "출발을 지켜보지 않고 높은 둥지에서 등을 돌린다 — 아엘라가 줄 거둠 표를 한 번 더 센다"
+  },
+  {
+   "id": "ev_ws_may12_wait",
+   "date": "313-05-12",
+   "npcs": [
+    "npc_kyrie"
+   ],
+   "from": "19:00",
+   "to": "23:00",
+   "at": "ws_queen_perch",
+   "doing": "아들이 서약섬에서 첫 발언을 하는 날 — 아래의 불빛 대신 남쪽 바다를 오래 바라본다"
+  },
+  {
+   "id": "ev_ws_may_rope_done",
+   "date": "313-05-20",
+   "npcs": [
+    "npc_ws_marco",
+    "npc_ws_ulla",
+    "npc_ws_anskar"
+   ],
+   "from": "20:00",
+   "to": "23:00",
+   "at": "ws_water_jars",
+   "doing": "줄이 삼백사십 미터가 된다 — 안스가르가 확인한 숫자와 맞는다. 한 번에 열 명만 버틴다는 것도 확인된다, if: rope_340"
+  },
+  {
+   "id": "ev_ws_jun_return",
+   "date": "313-06-25",
+   "npcs": [
+    "npc_kyrie",
+    "npc_eiros"
+   ],
+   "from": "05:00",
+   "to": "09:00",
+   "at": "ws_high_nest",
+   "doing": "대표가 맹약회의에서 돌아온다 — 키리에는 아들에게 무엇을 말했는지 묻지 않는다"
+  },
+  {
+   "id": "ev_ws_monthly_rei_seren",
+   "npcs": [
+    "npc_ws_rei"
+   ],
+   "repeat": "monthly",
+   "day": 5,
+   "from": "15:00",
+   "to": "18:00",
+   "at": "ws_hawkeye_ledge",
+   "doing": "세렌 오필 상가의 사자가 줄을 타고 오른다 — 서리 요람 지도의 값을 한 번 더 부른다. 레이는 지도를 보이지 않고 값만 듣는다"
+  },
+  {
+   "id": "ev_ws_monthly_ask_tower",
+   "npcs": [
+    "npc_ws_ask"
+   ],
+   "repeat": "monthly",
+   "day": 20,
+   "from": "16:00",
+   "to": "19:00",
+   "at": "ws_scout_ring",
+   "doing": "잿빛 탑 사자와 경로 값을 흥정한다 — 보고서 두 벌 중 한 벌만 건넨다"
+  },
+  {
+   "id": "ev_ws_monthly_torin_feathers",
+   "npcs": [
+    "npc_ws_torin",
+    "npc_ws_sera"
+   ],
+   "repeat": "monthly",
+   "day": 1,
+   "from": "08:00",
+   "to": "12:00",
+   "at": "sky_market__durgan_depot",
+   "doing": "깃털 근수를 맞교환한다 — 서명 쇠판 한 장이 오고 가며 줄지기의 금속 고리 빚이 한 줄 줄어든다"
   }
  ],
  "map": {

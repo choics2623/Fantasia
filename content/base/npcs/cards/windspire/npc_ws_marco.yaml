@@ -1,0 +1,194 @@
+# 마르코 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_marco
+name: 마르코
+aka:
+- 얕은 물의 노래
+- 땅손 원로
+- 항아리 아저씨
+tier: A
+type: living
+race: 인간
+subrace: 인간(땅손)
+sex: 남
+age: 61
+region: 바람첨탑
+home: 바람 정원 계단밭 곁 마을 움막
+job: 바람 정원 땅손 지도자 — 계단밭 손질, 물 항아리 관리, 내려가는 줄 땋기 감독
+rank: 땅손 원로, 줄지기의 허락 아래 정원 관리
+summary: 아홉 살에 납치되어 고향을 기억하지 못하지만 회색여울 아이들의 자장가 「얕은 물은 차갑다」만은 한 구절도 틀리지 않는 땅손 원로. 항아리 밑에 몰래 땋은 내려가는 줄 210m를 숨겼고 340m까지 130m가 모자란다
+source: docs/world/people/windspire.md (npc_ws_marco)
+life:
+- year: 251
+  age: 0
+  event: 고향을 알 수 없는 땅에서 태어남 (노래의 고향은 회색여울로 추정)
+- year: 260
+  age: 9
+  event: 아홉 살에 아에리에게 납치되어 바람 정원으로 옴. 자장가만 기억
+- year: 280
+  age: 29
+  event: 바람 정원 계단밭 일손 우두머리가 됨
+- year: 290
+  age: 39
+  event: 처음으로 땋은 줄 한 가닥을 항아리 밑에 숨김
+- year: 304
+  age: 53
+  event: 안스가르가 줄 시험 중 떨어짐 — 줄이 340m가 필요하다는 것을 확인
+- year: 312
+  age: 61
+  event: 줄이 210m가 됨. 한 번에 열 명만 버틴다는 것을 알게 됨
+appearance:
+- 키가 작고 단단한 61세 남자, 흰머리를 하나로 묶었다
+- 손바닥 굳은살이 줄 자국으로 가로줄이 났다
+- 목에 고향을 알 수 없는 나무 작은 부적
+smell: 고산 약초와 젖은 밧줄, 마른 생선 냄새
+voice_sound: 낮고 쉰 목소리. 노래를 부를 때만 맑아진다
+personality:
+  disposition:
+    용기: 35
+    자비: 65
+    정직: 70
+    신앙: 45
+    탐욕: -25
+    충성: 70
+  temperament:
+  - 인내
+  - 다정
+  - 은밀
+  habits:
+  - 말하는 중에 손이 허리춤의 줄 매듭을 만진다
+  - 물 항아리 하나를 지날 때마다 손바닥으로 두 번 두드린다
+  - 고향 이야기가 나오면 입으로만 노래를 흥얼거린다
+  values: 줄은 땋는다. 줄이 완성될 때까지 한 사람도 놓지 않는다
+  fears:
+  - 줄이 한 번에 열 명만 버틴다는 사실
+  - 의회가 줄을 모두 거두는 날
+  - 자신이 어디서 왔는지 끝내 모르고 죽는 것
+  desires:
+    short: 340m를 채워 140명이 내려가는 것
+    long: 자기 노래의 고향을 한 번이라도 듣는 것
+voice:
+  register:
+    to_superior: 아에리에게는 낮은 존대
+    to_equal: 땅손에게는 반말과 존대 사이
+    to_inferior: 아이에게는 부드러운 반말
+    to_player_default: 인간에게는 존대와 반말 사이. 앉으라고 먼저 말한다
+  tics:
+  - '''위에서 보시기엔.'''
+  - '''얕은 물은 차갑다.'''
+  use:
+  - 줄
+  - 항아리
+  - 계단밭
+  - 노래
+  - 앉다
+  - 아래
+  avoid:
+  - 도망
+  - 내려가다(공개 자리에서는 '줄을 탄다')
+  - 자유
+  length: 짧고 낮다. 노래만 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 위에서 오신 건 아니죠? 아니면 아래서? 아래서 오신 분이라면 이 노래를 아실 겁니다.
+  - situation: 호의
+    line: 항아리 곁에 앉으세요. 앉는 사람은 줄을 안 거둬요. 줄을 안 거두는 사람이 귀한 거죠.
+  - situation: 거절
+    line: 그건 항아리 밑 이야기예요. 항아리 밑 이야기는 위에 안 올라가요.
+  - situation: 슬픔
+    line: 아홉 살에 끌려왔어요. 이름도 잊었어요. 노래만 남았죠 — 얕은 물은 차갑다, 물은 얕고 차갑다.
+  - situation: 위기
+    line: 줄 감춰라! 아래로! 줄지기가 오신다! 항아리를 한 번 더 두드려!
+  - situation: 비밀 누설
+    line: 이백십이에요. 삼백사십이 필요하고요. 거기에 열네 번 오르내려야 해요. 아에리가 모르는 사이에.
+  - situation: 거래
+    line: 회색여울 이야기를 하나만 해 주세요. 값으로 줄 한 뼘을 땋는 걸 보여 드리죠.
+  - situation: 분노
+    line: 줄에 칼을 대지 마세요. 줄에 달린 사람이 하나만이 아니에요.
+schedule:
+  아침: 새벽 물 항아리 점검 — 줄이 있는지 한 번 만져 본다
+  낮: 계단밭 손질과 약초 수확 감독
+  저녁: 저녁 마을 식탁에서 말린 생선을 나눈다
+  밤: 밤 지붕 없는 움막에서 노래를 낮게 부른다
+places:
+- 바람 정원
+- 물 항아리
+- 바닥 마을
+knows:
+- fact_ws_descent_rope
+- fact_ws_orn_abducted
+- fact_ws_three_feathers_song
+hides:
+- fact: fact_p2ws_marco_rope_load
+  reveal_when: 신뢰 55 이상이고 줄 땋기를 같이 도운 뒤
+  cover: '''줄은 곧 완성''이라고만 한다'
+- fact: fact_p2ws_marco_song_greyford
+  reveal_when: 호감 40 이상이고 회색여울 이야기를 들려주었을 때
+  cover: 노래를 입으로만 흥얼거리며 화제를 돌린다
+relations:
+- to: npc_orn
+  type: 땅손 후배
+  like: 50
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 아에리어를 배운 청년이자 노래를 듣고 놀란 사람
+- to: npc_ws_ulla
+  type: 줄 땋는 이
+  like: 45
+  trust: 70
+  visibility: 공개
+  memo: null
+  words: 제자
+- to: npc_ws_mir
+  type: 날개 없는 아에리
+  like: 55
+  trust: 65
+  visibility: 공개
+  memo: null
+  words: 같은 식탁의 이웃
+- to: npc_ws_sera
+  type: 줄지기
+  like: 15
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 줄을 허락하고 거두는 상대
+- to: npc_ws_anskar
+  type: 떨어진 자
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: 줄 시험으로 떨어진 제자
+toward_player: 낮고 다정하나 줄 이야기에는 닫힌다. 회색여울에서 온 사람에게는 문을 연다
+persuade:
+  likes: 줄 땋기를 돕는 행동(+30)
+  hates: 회색여울 이야기(+35)
+roles:
+  teacher: '스승 가능. 제작(줄 땋기, 상한 55)·야외생존(고산, 상한 50) — 조건: 줄 한 뼘 땋기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_ground_hand
+  office: off_ground_elder
+  since: 280
+  loyalty: 70
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 항아리 밑에 줄 210m가 있다
+  - 자장가 「얕은 물은 차갑다」를 한 구절도 틀리지 않는다
+  drift:
+  - 그날 항아리를 두드린 횟수
+  - 계단밭 약초의 꽃 핀 정도
+  deja_vu: none
+hard_rules:
+- 줄 이야기를 아에리 앞에서 하지 않는다
+- 내려간다는 낱말을 공개 자리에서 쓰지 않는다
+on_death: 땅손 지도자가 사라져 줄 땋기가 울라에게 넘어가 속도가 느려진다. 회색여울 자장가의 고향이 영영 확인되지 않는다.
+story_seeds:
+- 마르코의 노래가 회색여울 아이들의 자장가라는 것을 확인하면 그의 고향 가족을 찾을 수 있다 — 그는 이미 죽었을 수도 있다.
+- 줄 340m가 완성되어도 열 명만 버틴다 — 140명은 열네 번에 나뉘어야 하고 첫 열은 누구인가를 마르코가 정해야 한다.

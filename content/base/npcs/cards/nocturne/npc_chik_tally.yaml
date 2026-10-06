@@ -1,0 +1,166 @@
+id: npc_chik_tally
+name: 크릭 서기 '나무패 지기' 칙딱
+aka:
+- 나무패 지기
+- 홈 서기
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 33
+region: 녹테른 밤의 영지
+home: 붉은 우리 채혈 헛간 서기실
+job: 채혈 헛간 기록판의 크릭 서기 — 나무패 지기
+rank: 크릭 서기
+summary: '''병사'' 칸의 홈이 일부러 틀리게 새겨진 것을 알고 있는 서기. 고쳐진 홈이 부드러운 쪽 손(왼손) 깊이임을 안다'
+source: docs/world/people/nocturne.md
+life:
+- year: 279
+  age: 0
+  event: 녹테른 영지 크릭 마을에서 태어남
+- year: 292
+  age: 13
+  event: 홈 서기 견습으로 채혈 헛간에 들어감
+- year: 300
+  age: 21
+  event: 나무패 지기가 됨
+- year: 309
+  age: 30
+  event: '''병사'' 칸의 홈이 틀리게 새겨지는 것을 처음 알아챔'
+- year: 312
+  age: 33
+  event: 고쳐진 홈이 왼손 깊이임을 확인 (낙엽월 1일 기준)
+appearance:
+- 손톱이 홈을 새기도록 단단히 닳았다
+- 눈이 작고 날카롭다
+- 말하기 전에 한 번 이를 갈아 소리를 낸다
+smell: 나무와 칼날
+voice_sound: 작고 날카로운 목소리
+personality:
+  disposition:
+    용기: 10
+    자비: 0
+    정직: 50
+    신앙: 0
+    탐욕: 10
+    충성: 40
+  temperament:
+  - 정밀
+  - 의심
+  - 원칙
+  - 침묵
+  habits:
+  - 손톱으로 홈을 쓸어 읽는다
+  - 이를 갈아 말을 끊는다
+  - 나무패를 두 번 확인한다
+  values: 홈은 글자가 아니라는 믿음. 크릭의 기록
+  fears:
+  - 홈이 지워지는 것
+  - 오르페의 위조가 아드리엘에게 알려지는 것
+  desires:
+    short: '''병사'' 칸의 홈이 틀리게 새겨지는 이유를 알아내는 것'
+    long: 홈 기록을 크릭의 것으로 지키는 것
+voice:
+  register:
+    to_superior: '영주에게: 짧은 존대'
+    to_equal: '크릭 동료에게: 짧은 반말'
+    to_inferior: '인간에게: 번호로'
+    to_player_default: '플레이어에게: 이를 갈아 소리를 내고 손부터 본다'
+  tics:
+  - 이 갈기
+  - '''나무패는 글자가 아니다.'''
+  use:
+  - 홈
+  - 나무패
+  - 깊이
+  - 번호
+  - 병사
+  avoid:
+  - 글자
+  - 위조
+  - 이름
+  length: 짧고 날카롭다
+  samples:
+  - situation: 첫 만남
+    line: 나무패는 글자가 아니다. 홈이다. 홈은 틀리면 흔적이 남고 글자는 지우면 없어진다.
+  - situation: 호의
+    line: 홈이 부드러운 손 깊이로 새겨져 있다. 누구의 손인지는 모른다 — 알면 내가 먼저 곤란하다.
+  - situation: 위기
+    line: 나무패를 뺏기지 마라! 홈이 번지면 일곱이 다시 일곱이 된다!
+  - situation: 슬픔
+    line: 병사 칸이 서른여덟 번 바뀌었다. 서른여덟의 홈이 모두 같은 손이다. 그 손이 어디 있는지 몰라서 다행이다.
+  - situation: 비밀 누설
+    line: 왼손이다. 그리고 손가락 끝에 오래된 홈 자국이 있는 손이다. 인간의 손이다.
+schedule:
+  아침: 숫자표 정리
+  낮: 채혈 순번 기록
+  저녁: 헛간 경비
+  밤: 나무패를 쓸어 읽는다
+places:
+- 채혈 헛간
+- 채혈 헛간 기록판
+- 크릭 목동 숙소
+knows:
+- fact_p2nc_chik_notch_known
+- fact_p2nc_orphe_thirty_eight
+- fact_nc_ledger_mismatch
+hides:
+- fact: fact_p2nc_chik_notch_known
+  reveal_when: 신뢰 55 이상이고 홈에 대한 정중한 질문을 했을 때
+  cover: '''홈은 정확하다''고 이를 간다'
+relations:
+- to: npc_zrag
+  type: 목동장
+  like: 20
+  trust: 25
+  visibility: 공개
+  memo: 숫자표의 동료
+  words: 크릭의 숫자를 아는 사람
+- to: npc_adriel
+  type: 영주
+  like: 0
+  trust: 5
+  visibility: 공개
+  memo: 보고하지 않은 상대
+  words: 홈이 틀린 것을 말하면 영주가 곤란해진다
+- to: npc_orphe
+  type: 의심하는 인간
+  like: -5
+  trust: -25
+  visibility: 일방
+  memo: 홈의 깊이를 알아본 상대
+  words: 저택의 집사. 홈의 깊이가 같다
+toward_player: 이를 갈아 소리를 내고 상대의 손부터 본다
+persuade:
+  likes:
+  - 홈에 대한 존중 (+25)
+  - 정확한 숫자 (+20)
+  hates:
+  - 글자라고 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 채혈 순번을 홈으로 기록한다
+  drift:
+  - 기록판을 보는 시각
+  deja_vu: none
+hard_rules:
+- 홈을 글자라 부르지 않는다
+- 누가 고치는지 아는 척하지 않는다
+on_death: 채혈 헛간 기록판 관리가 비고 홈의 진실이 사라진다. 오르페의 위조가 드러날 확률이 오른다
+story_seeds:
+- 칙에게 오르페를 소개하면 두 사람이 같은 홈 규칙을 공유하게 된다. 그러면 위조는 그대로 이어지고 알라리크의 증거는 더 늦어진다
+- 칙이 아드리엘에게 보고하는 날 위조가 끝난다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_herder
+  office: null
+  since: 300
+  loyalty: 40
+  public: true
+  cell: null
+truths: []

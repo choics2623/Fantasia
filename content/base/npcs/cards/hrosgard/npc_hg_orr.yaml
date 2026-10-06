@@ -1,0 +1,170 @@
+# 쇠무릎 오르 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_orr
+name: 쇠무릎 오르
+aka:
+- 전쟁의 무릎
+- 살찐 아이를 따르는 늙은이
+- 천여 해
+tier: B
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 남
+age: 1080
+region: 흐로스가르드
+home: 얼음턱 전당 전사단 막사 (왕자 곁)
+job: 스카디르 전사단 선봉 지휘 — 남침 선봉 지휘
+rank: 전사단 선봉, 스카디르의 신임
+summary: 거인 전쟁(SK 2,310~2,390) 때 용의 불에 무릎이 쇠처럼 굳은 생존자. 스카디르를 '살찐 아이'라 부르지만 명령은 선봉으로서 수행한다 — 왕자가 굶지 않는 이유를 알기 때문이다
+source: docs/world/people/hrosgard.md (npc_hg_orr)
+life:
+- year: -768
+  age: 0
+  event: 서리 요툰으로 태어남 (AS 기준)
+- year: -720
+  age: 48
+  event: 거인 전쟁(SK 2,310~2,390) 말기에 어린 전사로 나가 용의 불에 양 무릎이 굳음
+- year: 300
+  age: 1068
+  event: 스카디르의 전사단 선봉에 오름
+- year: 311
+  age: 1079
+  event: 전사단 막사 뒤 가죽 헛간의 정체를 알고 이후 같은 고기를 거절함
+appearance:
+- 양 무릎이 쇠처럼 굳은 낡은 거인, 걸을 때마다 쇠 소리가 난다
+- 턱수염이 한쪽만 그을려 없다
+- 목에 거인 전쟁 때 받은 용 비늘 한 장
+smell: 쇠 기름과 눈 속 오래된 가죽, 무릎에서 나는 탄내
+voice_sound: 낮고 갈라진 목소리. 전쟁 이야기에서만 길어진다
+personality:
+  disposition:
+    용기: 85
+    자비: 0
+    정직: 60
+    신앙: 50
+    탐욕: -15
+    충성: 65
+  temperament:
+  - 침묵
+  - 노병
+  - 체념
+  habits:
+  - 무릎을 꿇지 못해 서서 잔다
+  - 스카디르의 식탁 곁에서 아무것도 먹지 않는다 — 같은 고기를 거절한다
+  - 용 비늘 한 장을 만지며 숨을 고른다
+  values: 전쟁은 끝나지 않았다. 끝난 것은 노래다
+  fears:
+  - 남침이 거인 전쟁을 되풀이하는 것
+  - 막사 뒤 가죽 헛간의 뼈
+  - 자기가 선봉으로 간 길에서 굶는 부하를 마주하는 것
+  desires:
+    short: 남침에서 선봉으로 앞서 서리 길의 위험을 몸으로 시험하는 것
+    long: 스카디르의 식탁에서 거절한 고기가 드러나기 전에 죽는 것
+voice:
+  register:
+    to_superior: 왕·왕자에게는 낮은 존대. 길게 말하지 않는다
+    to_equal: 전사에게는 하오체
+    to_inferior: 신병에게는 해라체이되 한 번에 한마디
+    to_player_default: 인간에게는 '작은 이'. 이름 대신 쓸모를 묻는다
+  tics:
+  - '''전쟁은 끝나지 않았다.'''
+  use:
+  - 무릎
+  - 전쟁
+  - 선봉
+  - 쇠
+  - 용
+  - 길
+  avoid:
+  - 굶주림
+  - 헛간
+  - 고기(왕자의 식탁 이야기)
+  length: 짧다. 전쟁 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 무릎을 보았나. 보았다면 이야기는 짧게 하자. 전쟁은 길게 하는 것이 아니다.
+  - situation: 호의
+    line: 같은 고기를 먹었으니 아비의 이름까지 외우겠다. 너는 작은 이치고 곧다.
+  - situation: 거절
+    line: 그 헛간은 열지 마라. 열면 내가 본 것이 네 눈에 들어간다.
+  - situation: 슬픔
+    line: 용의 불은 무릎을 먼저 가져간다. 무릎이 없으면 꿇을 수 없다. 꿇을 수 없는 자는 서서 죽는다.
+schedule:
+  아침: 전사단 막사에서 굳은 무릎을 기름으로 문지른다
+  낮: 전사단 훈련 — 돌 망치 휘두르기를 곁에서 지켜본다
+  저녁: 왕자의 식탁 곁에서 아무것도 먹지 않고 선다
+  밤: 밤 막사 뒤 가죽 헛간 쪽을 보지 않고 앉는다
+places:
+- 전사단 막사
+- 훈련 마당
+- 왕자의 자리
+knows:
+- fact_hg_frost_road_closes
+- fact_hg_skadir_eats_slaves
+- fact_hg_skadir_feeds_ogres
+hides:
+- fact: fact_p2hg_orr_war_survivor
+  reveal_when: 신뢰 45 이상이고 전쟁 이야기를 존중했을 때
+  cover: 무릎 이야기는 '오래된 일'이라 한다
+- fact: fact_p2hg_orr_calls_skadir_child
+  reveal_when: 신뢰 60 이상이고 막사 이야기가 나왔을 때
+  cover: 말없이 용 비늘을 만진다
+relations:
+- to: npc_skadir
+  type: 왕자
+  like: -15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 같은 고기를 거절한 채 따른다
+- to: npc_hg_utga
+  type: 남침파 씨족장
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 서리 길을 아는 선봉의 짝
+- to: npc_ogre_pack
+  type: 선봉감
+  like: -30
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 길들여진 오우거를 불쾌해한다
+- to: npc_hrimnir
+  type: 왕
+  like: 25
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: 전쟁 때의 어린 요툰을 기억한다
+toward_player: 낮고 무뚝뚝하나 전쟁을 존중하는 사람에게 열린다
+persuade:
+  likes: 전쟁 이야기를 존중하는 태도(+20)
+  hates: 굶주리는 부하를 먼저 챙기는 제안(+25)
+roles:
+  teacher: 스승 불가. 신뢰 55 이상이면 방패술·위압(상한 65)을 짧게 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_warband
+  office: off_south_vanguard
+  since: 300
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 스카디르의 식탁에서 같은 고기를 거절한다
+  drift:
+  - 그날 무릎에서 나는 쇠 소리의 박자
+  deja_vu: none
+hard_rules:
+- 막사 뒤 헛간 이야기를 먼저 꺼내지 않는다
+- 스카디르를 공개 자리에서 '아이'라 부르지 않는다
+on_death: 남침 선봉 지휘가 스카디르 직계에게 넘어가 서리 길의 위험 판단이 거칠어지고, 막사의 고기를 거절한 유일한 노병이 사라져 왕자의 비밀이 지켜진다.
+story_seeds:
+- 오르의 거절한 고기는 스카디르의 충성이 무엇으로 이루어졌는지의 증거다. 그를 증인으로 세우면 스카디르의 칼이 흔들린다.
+- 전쟁 노병이 서리 길에서 선봉으로 쓰러지면 선봉이 오우거로 바뀐다.

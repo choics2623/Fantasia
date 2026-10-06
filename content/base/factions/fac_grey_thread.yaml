@@ -93,7 +93,7 @@ offices:
     perks: []
   - id: off_ice_thread_fire
     title: 얼음 실 — '마지막 불' 안내인 (북방 갈래)
-    holder: "unnamed:잉에 (인간, 28) — 시그리드의 동생"
+    holder: npc_hg_inge
     reports_to: off_spool_north
     powers: ["울음 고개 넘는 날짜(바위 밑 서리말 룬)", "대피 동굴 비상 식량"]
     chosen_by: "얼음 실 장로들"

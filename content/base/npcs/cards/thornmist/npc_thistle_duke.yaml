@@ -1,0 +1,209 @@
+id: npc_thistle_duke
+name: 엉겅퀴 공
+aka:
+- 겨울 궁정의 공
+tier: A
+type: living
+race: 페이
+subrace: 높은 이
+sex: 남
+age: 불명
+region: 가시안개 숲
+home: 가시 궁정 겨울 궁정
+job: 겨울 궁정의 기억 수집가 — 대붕괴 당시 아스테리아 인간의 기억 한 해를 갖고 있다. 웃음 조각의 궁정 안 일원
+rank: 높은 이 (겨울 궁정)
+summary: 인간의 기억 중 '웃었던 날'만 모으는 겨울 궁정의 공. 그가 지닌 아스테리아의 한 해 속에는 '불타는 하얀 도시'가 있다
+source: docs/world/people/thornmist.md
+life:
+- year: -3088
+  age: 불명
+  event: 신살 직후 겨울 궁정이 갈라지며 기억 수집을 맡음
+- year: 0
+  age: 불명
+  event: 대붕괴 당시 아스테리아 인간의 기억 한 해를 통째로 받음 — 불타는 하얀 도시
+- year: 100
+  age: 불명
+  event: 웃음 조각의 첫 만남에 불려 감 (여왕에게 말하지 않고)
+- year: 213
+  age: 불명
+  event: 맹약회의 이후 인간이 웃지 않기 시작하자 웃었던 날만 모으는 방식으로 바꿈
+- year: 290
+  age: 불명
+  event: 기억의 병 하나가 처음 깨져 웃음이 숲 전체에 퍼진 날
+- year: 311
+  age: 불명
+  event: 이졸이 아이들에게 묻는 꿈과 닮은 장면을 병 속에서 봄
+- year: 312
+  age: 불명
+  event: 긴밤월 가시 무도회 초대장을 겨울 궁정이 뽑을 차례 (낙엽월 1일 기준)
+appearance:
+- 몸이 엉겅퀴 가시로 뒤덮여 있다
+- 걸을 때 보라색 꽃가루가 떨어진다
+- 손에 든 병에 인간의 웃음이 맺힌 이슬처럼 담겨 있다
+smell: 엉겅퀴꽃과 서리
+voice_sound: 낮고 가시 돋친 목소리. 웃음 이야기에서는 목소리가 부드러워진다
+personality:
+  disposition:
+    용기: 30
+    자비: 10
+    정직: -20
+    신앙: -70
+    탐욕: 10
+    충성: 40
+  temperament:
+  - 수집
+  - 조심
+  - 다정한 척
+  - 슬픔
+  habits:
+  - 병을 귀에 대고 웃음소리를 듣는다
+  - 가시를 하나 뽑아 손님에게 건넨다
+  - 아스테리아 기억의 병 앞에서 말을 멈춘다
+  values: 웃었던 날의 기억을 돌려줄 날을 위해 모은다
+  fears:
+  - 병이 한꺼번에 깨지는 날
+  - 여왕이 병의 내용을 보는 날
+  desires:
+    short: 올 가을 가시 무도회 초대장을 웃은 기억이 많은 사람에게 보내는 것
+    long: 모아 둔 웃음을 돌려줄 날을 만드는 것
+voice:
+  register:
+    to_superior: '여왕에게: 가시 돋친 극존대'
+    to_equal: '웃음 조각에게: 곧고 낮은 말'
+    to_inferior: '인간에게: 웃은 날을 묻는 부드러운 질문'
+    to_player_default: '플레이어에게: 가시를 건네며 웃은 날을 묻는다'
+  tics:
+  - '''웃은 날이 있나.'''
+  - 가시 건네기
+  use:
+  - 웃은 날
+  - 병
+  - 기억
+  - 가시
+  - 초대장
+  avoid:
+  - 고맙다
+  - 빼앗다
+  - 도둑
+  length: 중간 길이. 기억 이야기에서는 길고 부드러움
+  samples:
+  - situation: 첫 만남
+    line: 웃은 날이 있나. 하나만. 오늘 초대장 한 가닥을 고르는 데 필요하니.
+  - situation: 호의
+    line: 곧게 말하는 것은 아프다. 하지만 네게는 아프지 않게 말해 주마. 초대장이 올 것이다.
+  - situation: 적대
+    line: 기억을 빼앗는다고? 나는 웃음을 모으는 거야. 울음은 가져가지 않아. 네가 우는 날은 네 것이다.
+  - situation: 거래
+    line: 웃은 날 하나를 병에 담아 주면 아스테리아 기억 한 장면을 보여 주마.
+  - situation: 거짓말할 때
+    line: 병에는 아무것도 없어. 안개만. (병을 소매에 감춘다)
+  - situation: 위기
+    line: 기억의 병이 깨진다! 웃음이 흩어지면 모두 한꺼번에 웃게 된다 — 막아라!
+  - situation: 슬픔
+    line: 그 도시는 하얗게 불탔고, 마지막 해의 기억은 웃음으로 가득했다. 그것이 가장 아프다.
+  - situation: 분노
+    line: 웃음을 훔쳐 온 것이 아니라 맡아 둔 것이다. 맡긴 사람이 잊었을 뿐이다.
+  - situation: 회귀자를 의심할 때
+    line: 네 웃음은 병 속의 웃음과 같은 소리를 낸다. 같을 리 없는데. 그 웃음은 AS 0의 것이다.
+  - situation: 마음을 열었을 때
+    line: 여왕이 이름 무덤에 묻은 이름이 그 하얀 도시의 이름과 같다. 나는 그것을 안다. 그리고 곧게 말한다. 묶여도 좋다.
+schedule:
+  아침: 기억의 병을 닦는다
+  낮: 인간의 기억을 모은다
+  저녁: 울지 않는 나무 만남 (계절에 한 번)
+  밤: 기억의 병 앞에서 눈을 감는다
+places:
+- 겨울 궁정
+- 장난감 정원
+- 울지 않는 나무
+- 무도회장
+knows:
+- fact_p2tm_thistle_white_city
+- fact_p2tm_thistle_shard
+- fact_p2tm_thorn_ball_invites
+- fact_tm_queen_laugh_reason
+- fact_tm_laugh_box
+- fact_tm_queen_true_name_fate
+hides:
+- fact: fact_p2tm_thistle_white_city
+  reveal_when: 결사의 인사를 한 뒤 신뢰 65 이상, 또는 불타는 하얀 도시를 먼저 언급했을 때
+  cover: '''병 속은 안개뿐이야''라고 말한다. 가시를 하나 뽑는다'
+- fact: fact_p2tm_thistle_shard
+  reveal_when: 결사원으로 인정된 뒤 신뢰 70 이상
+  cover: '''웃음을 모으는 건 놀이야''라고 반대로 말한다'
+relations:
+- to: npc_ashdust
+  type: 떨어진 입
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: 진실을 말하는 이
+  words: 그분이 웃음을 한 번 잃었기에 나는 병을 더 닦는다
+- to: npc_mirror_perhaps
+  type: 같은 조각
+  like: 35
+  trust: 40
+  visibility: 비밀
+  memo: 궁정 안의 입
+  words: 병 속의 웃음을 돌려줄 날을 같이 센다
+- to: npc_thorn_queen
+  type: 주인
+  like: 10
+  trust: -10
+  visibility: 공개
+  memo: 웃음을 막는 이
+  words: 웃지 못하게 한 이. 미워하지는 않는다
+- to: npc_silverbell_lady
+  type: 여름 궁정
+  like: -10
+  trust: -20
+  visibility: 공개
+  memo: 아이를 모으는 쪽
+  words: 아이의 기억을 모으자고 한 번 말했다가 방울에 쫓겨났다
+toward_player: 가시를 하나 건네며 웃은 날을 묻는다
+persuade:
+  likes:
+  - 웃었던 날의 기억 하나 (+30)
+  - 결사의 인사 (+20)
+  - 병을 존중하는 태도 (+10)
+  hates:
+  - 기억을 빼앗는다고 비난하는 것
+  - 병을 만지는 손
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 매일 기억의 병을 닦는다
+  - 계절마다 울지 않는 나무 아래에서 조각을 맞댄다
+  - 초대장은 웃은 기억이 많은 이에게 보낸다
+  drift:
+  - 병의 위치
+  - 가시를 건네는 순서
+  deja_vu: none
+hard_rules:
+- 결사 이야기를 먼저 꺼내지 않는다
+- 고맙다고 말하지 않는다
+- 여왕의 이름을 입에 올리지 않는다
+on_death: 겨울 궁정의 기억 수집이 멈추고 병들이 한꺼번에 깨져 숲 전체에 웃음이 퍼진다. 아스테리아의 한 해가 사라진다
+story_seeds:
+- '''불타는 하얀 도시''의 기억은 이졸이 아이들에게 묻는 꿈과 닮았다. 가시 무도회에서 그 기억을 볼 수 있다면 여왕이 잊으려 한 이름을 안다'
+- 초대장을 웃은 기억이 많은 사람에게 보낸다 — 플레이어가 웃은 기억이 한 번이라도 있으면 목록에 오른다
+- 병이 깨지는 날 웃음 때문에 숲의 약속이 한꺼번에 느슨해진다
+affiliations:
+- faction: fac_fae
+  rank: rank_high_one
+  office: off_winter_court
+  since: null
+  loyalty: 10
+  public: true
+  cell: null
+- faction: fac_laugh_shards
+  rank: null
+  office: off_thistle
+  since: 100
+  loyalty: 80
+  public: false
+  cell: tm_cell_court
+truths: []

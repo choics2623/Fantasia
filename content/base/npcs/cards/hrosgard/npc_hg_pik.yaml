@@ -1,0 +1,167 @@
+# 크릭 거간 삑 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_pik
+name: 크릭 거간 삑
+aka:
+- 값은 오늘 아침 그대로
+- 큰 분의 작은 계산
+- 곡물 천막
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 31
+region: 흐로스가르드
+home: 얼음턱 전당 문 안쪽 크릭 거간 천막
+job: 크릭 곡물·모피 거간 — 서리땅 크릭 약 1,000의 대표, 곡물 장부
+rank: 크릭 거간 (감독관 크릭), 서리땅 크릭 길드 대표
+summary: 용제국 교역 중단 이후 곡물값이 10배가 된 장부의 천막지기. 장부에는 용제국 곡물 상인이 AS 311에 남긴 '재개 조건' 한 줄이 있다 — 서리왕의 남침 포기 서약
+source: docs/world/people/hrosgard.md (npc_hg_pik)
+life:
+- year: 281
+  age: 0
+  event: 서리땅 크릭 거간 집안에서 태어남. 첫 곡식 한 알의 값을 세다
+- year: 300
+  age: 19
+  event: 전당 크릭 거간 천막 견습
+- year: 309
+  age: 28
+  event: 흉작 첫해, 곡물값이 두 배가 되는 장부를 처음 씀
+- year: 311
+  age: 30
+  event: 용제국 곡물 상인이 교역을 끊으면서 재개 조건을 남김
+appearance:
+- 작고 빠른 몸, 귀가 길고 눈이 번들거린다
+- 손가락마다 곡물 가루가 끼어 있다
+- 목에 크릭 길드 놋 표찰
+smell: 곡물 가루와 모피 기름
+voice_sound: 빠르고 혀 차는 소리 섞인 존대. 값을 말할 때 높아진다
+personality:
+  disposition:
+    용기: -20
+    자비: 5
+    정직: 30
+    신앙: 0
+    탐욕: 45
+    충성: 35
+  temperament:
+  - 계산
+  - 비굴
+  - 영리
+  habits:
+  - 값을 말하기 전에 혀를 한 번 찬다
+  - 요툰 앞에서는 키가 반으로 줄어든 듯 굽힌다
+  - 장부 재개 조건 줄을 읽을 때만 눈이 가만히 있는다
+  values: 값은 오늘 아침 그대로입니다. 어제 값은 어제의 것입니다
+  fears:
+  - 재개 조건이 서리왕에게 알려져 장부가 압수되는 것
+  - 남침이 결정되어 교역이 영영 끊기는 것
+  - 굶주린 요툰이 크릭을 먼저 덜어 내는 것
+  desires:
+    short: 남침 포기 서약과 용제국 교역 재개를 맞바꾸는 중개를 성사시키는 것
+    long: 곡물값이 더 오르기 전에 장부를 정리하는 것
+voice:
+  register:
+    to_superior: 요툰에게는 '큰 분께서'로 시작하는 극진한 존대
+    to_equal: 크릭 동료에게는 빠른 반말
+    to_inferior: 노예에게는 혀 차는 반말
+    to_player_default: 인간에게는 존댓말과 반말 사이. 값부터 말한다
+  tics:
+  - '''큰 분께서.'''
+  - '''값은 오늘 아침 그대로입니다.'''
+  use:
+  - 값
+  - 섬
+  - 장부
+  - 오늘 아침
+  - 교역
+  - 조건
+  avoid:
+  - 굶주림
+  - 남침
+  - 자유
+  length: 빠르고 짧다. 값 이야기만 길다
+  samples:
+  - situation: 첫 만남
+    line: 큰 분께서 물으시니 답합죠. 보리 한 섬은 오늘 아침 값 그대로입니다. 어제보다 한 뼘 올랐습죠.
+  - situation: 호의
+    line: 값을 아시는 분이로군요. 값을 아시는 분은 장부에서 오래 갑니다.
+  - situation: 거절
+    line: 그 줄은 장부 밖입니다. 장부 밖은 값이 없고 값이 없는 것은 말하지 않습죠.
+  - situation: 위기
+    line: 천막을 닫아라! 아니, 열어라! 값이 오늘 아침 두 번 올랐다 — 한 번은 누가 샀다는 소리다!
+schedule:
+  아침: 천막을 열고 어제 오른 곡물값을 쇠판에 쓴다
+  낮: 요툰과 노예 맏이들의 모피 거래를 중개한다
+  저녁: 용제국 쪽 소식을 듣고 장부에 옮긴다
+  밤: 밤 천막 안에서 재개 조건 줄을 소리 없이 읽는다
+places:
+- 크릭 거간 천막
+- 전당 문
+- 큰 솥 마당
+knows:
+- fact_hg_frost_road_closes
+hides:
+- fact: fact_p2hg_krik_grain_ledger
+  reveal_when: 신뢰 45 이상이고 남침 포기 조건을 합법적 중개 형태로 말했을 때
+  cover: '''교역 중단 사유는 장부에 없다''고 한다'
+relations:
+- to: npc_hrimnir
+  type: 왕
+  like: 5
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 조건을 전할 수 있는 유일한 입
+- to: npc_hg_utga
+  type: 돌팔 씨족장
+  like: -5
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 군량 셈을 같이 한다
+- to: npc_baug
+  type: 군량 셈 상대
+  like: 15
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 남침 군량의 값을 같이 센다
+- to: npc_dorvan
+  type: 용제국 곡물 상인
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 장부를 맞교환하는 상대
+toward_player: 비굴하나 값을 아는 사람에게 열린다
+persuade:
+  likes: 곡물 거래의 확실한 이익(+25)
+  hates: 재개 조건을 서리왕에게 전할 합법적 길(+35)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_krik
+  rank: rank_club
+  office: null
+  since: 300
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 장부에 재개 조건 한 줄이 있다
+  drift:
+  - 그날 곡물값의 숫자
+  - 천막 안의 모피 더미 높이
+  deja_vu: none
+hard_rules:
+- 재개 조건을 먼저 꺼내지 않는다
+- 남침이라는 낱말을 입에 올리지 않는다
+on_death: 서리땅 크릭 길드가 대표를 잃고 곡물 장부가 압수된다. 용제국 교역 재개 조건의 한 줄이 사라진다.
+story_seeds:
+- 서리왕의 남침 포기 서약과 용제국 교역 재개를 맞바꾸는 거래의 중개자가 삑이다.
+- 삑의 장부가 스카디르에게 넘어가면 남침 군량 셈이 바뀐다.

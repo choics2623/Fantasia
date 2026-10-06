@@ -1,0 +1,164 @@
+id: npc_ninth_hunter
+name: 사냥꾼 '아홉째'
+aka:
+- 아홉째
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 31
+region: 녹테른 밤의 영지
+home: 사냥꾼 초소
+job: 갈증받이 사냥꾼 400 가운데 아홉째 — 침묵종의 주 사냥꾼
+rank: 갈증받이 (반쯤 전수된 인간)
+summary: 2년 전 붉은 갈대 선에서 테사를 풀어 준 사냥꾼. 목 흉터가 자기와 같은 자리였기 때문이다
+source: docs/world/people/nocturne.md
+life:
+- year: 281
+  age: 0
+  event: 검은성배 우리에서 태어남
+- year: 295
+  age: 14
+  event: 갈증받이 후보로 뽑힘 — 피의 전수에서 살아남음
+- year: 300
+  age: 19
+  event: 사냥꾼 초소에 배치됨. '아홉째'로 불림
+- year: 310
+  age: 29
+  event: 붉은 갈대 선에서 테사를 풀어 줌
+- year: 312
+  age: 31
+  event: 7일마다 피를 받는 몸으로 살고 있다 (낙엽월 1일 기준)
+appearance:
+- 목 양쪽에 채혈 흉터
+- 눈이 밤에 반쯤 빛난다
+- 말하지 않는 날이 더 많다
+smell: 가죽과 밤 풀
+voice_sound: 낮고 건조한 목소리
+personality:
+  disposition:
+    용기: 50
+    자비: -20
+    정직: 20
+    신앙: 0
+    탐욕: -20
+    충성: 40
+  temperament:
+  - 과묵
+  - 집요
+  - 죄책
+  - 냉정
+  habits:
+  - 냄새를 맡고 방향을 정한다
+  - 7일째 피를 받기 전 손목을 만진다
+  - 붉은 갈대 선에서 한 박자 멈춘다
+  values: 냄새를 따르는 일의 정확함
+  fears:
+  - 또 한 번 풀어 주는 날
+  - 알라리크의 혈통 장부
+  desires:
+    short: 올 겨울 사일라스의 첫 의뢰를 받는 것
+    long: 한 번 더 누군가를 풀어 주는 것
+voice:
+  register:
+    to_superior: '가주에게: 한 박자 늦은 복종'
+    to_equal: '다른 사냥꾼에게: 짧은 반말'
+    to_inferior: '인간에게: 번호로'
+    to_player_default: '플레이어에게: 말이 적고 냄새를 먼저 맡는다'
+  tics:
+  - '''냄새가 난다.'''
+  use:
+  - 냄새
+  - 흔적
+  - 7일
+  - 피
+  - 사냥
+  avoid:
+  - 이름
+  - 용서
+  - 인간(자기 자신)
+  length: 극히 짧다
+  samples:
+  - situation: 첫 만남
+    line: 냄새가 난다. 이쪽이다. 7일째 피 전에 끝낸다.
+  - situation: 호의
+    line: 한 번 풀어 준 적이 있다. 목의 흉터가 같은 자리였다. 그 뒤로는 사냥이 다르게 보인다.
+  - situation: 위기
+    line: 엎드려라. 냄새를 따라온다.
+  - situation: 슬픔
+    line: 검은성배 우리의 장부에 내 번호가 아직 있다. 번호가 있는 한 나는 장부의 사람이다.
+  - situation: 비밀 누설
+    line: 갈대 선에서 마주쳤다. 목에 천을 감은 여자였다. 칼부터 꺼냈다. 나도 같은 자리에 흉터가 있었다.
+schedule:
+  아침: 7일째 피를 받는다
+  낮: 낮의 잠
+  저녁: 사냥
+  밤: 탈주 흔적을 따른다
+places:
+- 사냥꾼 초소
+- 붉은 갈대 선
+- 공물 길
+knows:
+- fact_p2nc_ninth_hunter_spared_tessa
+- fact_p2nc_silas_assassination_pending
+hides:
+- fact: fact_p2nc_ninth_hunter_spared_tessa
+  reveal_when: 신뢰 60 이상이고 테사 이야기를 정중히 꺼냈을 때
+  cover: '''기억에 없다''고 한다. 목을 한 번 만진다'
+relations:
+- to: npc_silas_bell
+  type: 가주
+  like: 25
+  trust: 35
+  visibility: 공개
+  memo: 의뢰를 주는 이
+  words: 한마디 하지 않는 주인. 명이 곧 말이다
+- to: npc_tessa
+  type: 풀어 준 이
+  like: 20
+  trust: 10
+  visibility: 일방
+  memo: 테사는 그가 풀어 준 줄 모른다
+  words: 목에 천을 감은 여자. 같은 자리에 흉터가 있었다
+- to: npc_alaric
+  type: 어린 시절 주인
+  like: -35
+  trust: -50
+  visibility: 비밀
+  memo: 검은성배 우리의 장부
+  words: 혈통 번호로 나를 부른 첫 사람
+toward_player: 말이 적고 냄새를 먼저 맡는다
+persuade:
+  likes:
+  - 침묵을 존중하는 태도 (+15)
+  - 테사 이야기 (+20)
+  hates:
+  - '''인간 편이냐''고 묻는 것'
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 7일마다 피를 받는다
+  - 붉은 갈대 선 앞에서 한 박자 멈춘다
+  drift:
+  - 사냥 경로
+  deja_vu: none
+hard_rules:
+- 풀어 준 이야기를 먼저 하지 않는다
+- 이름을 입에 올리지 않는다
+on_death: 침묵종의 주 사냥꾼이 사라지고 세실 암살 시기가 늦춰진다. 테사의 보이지 않는 은인이 사라진다
+story_seeds:
+- 아홉째가 한 번 더 풀어 주는 날은 증거가 사일라스에게 닿은 날이다. 그 순간 플레이어가 그의 앞에 서 있다면 결과가 달라진다
+- 그의 혈통 번호가 검은성배 우리 장부에 있다 — 지울 수 있다
+affiliations:
+- faction: fac_nocturne
+  rank: rank_thirst_bearer
+  office: null
+  since: 295
+  loyalty: 40
+  public: true
+  cell: null
+truths: []

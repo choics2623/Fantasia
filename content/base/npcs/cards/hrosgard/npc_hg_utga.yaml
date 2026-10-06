@@ -1,0 +1,195 @@
+# 돌팔 우트가 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_utga
+name: 돌팔 우트가
+aka:
+- 돌 망치의 아비
+- 남침의 입
+- 푸른월의 약속
+tier: A
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 남
+age: 520
+region: 흐로스가르드
+home: 돌팔 씨족 장원 (무기 더미 곁)
+job: 돌팔 씨족장 — 얼음 탁자 구성원, 뼈울타리 인간 6,000의 주인, 남침 준비 총책
+rank: 요툰 씨족장 (욀드), 남침파 수장
+summary: 남침 찬성 씨족의 우두머리. 313 푸른월 까마귀 문을 칠 계획이고, 돌 망치 이백과 하르바의 정찰, 썩은이빨 무리를 선봉으로 쓴다. 뼈울타리 인간 6,000을 소유하며 서리 목줄 스벤에게 탈주자 판매 권한을 주고 매달 머릿수를 받는다
+source: docs/world/people/hrosgard.md (npc_hg_utga)
+life:
+- year: -208
+  age: 0
+  event: 돌팔 씨족에 태어남 (AS 기준)
+- year: 100
+  age: 308
+  event: 돌팔 씨족의 전사장에 오름
+- year: 270
+  age: 478
+  event: 씨족장에 오름. 뼈울타리를 씨족 소유로 확정
+- year: 309
+  age: 517
+  event: 첫 흉작. 남침 주장을 얼음 탁자에서 처음 입에 올림
+- year: 311
+  age: 519
+  event: 스카디르와 같은 고기를 나눠 먹음
+- year: 312
+  age: 520
+  event: 돌 망치 이백을 장원에 모으기 시작
+appearance:
+- 어깨가 넓고 얼굴이 길쭉한 거인, 눈썹이 짙다
+- 허리에 돌 망치를 늘 하나 찬다
+- 목에 돌팔 씨족의 주먹 문장 돌판
+smell: 석회 가루와 짐승 기름, 눈 냄새
+voice_sound: 굵고 느린 목소리. 푸른월 이야기에서만 속도가 빨라진다
+personality:
+  disposition:
+    용기: 85
+    자비: -10
+    정직: 40
+    신앙: 40
+    탐욕: 35
+    충성: 65
+  temperament:
+  - 전쟁
+  - 계산
+  - 고집
+  habits:
+  - 돌 망치의 수를 손가락으로 세고 다시 입으로 센다
+  - 푸른월이라는 말을 할 때 주먹을 쥔다
+  - 인간 이야기가 나오면 '머릿수'로 말한다
+  values: 돌은 부서지지 않는다. 부서지지 않는 것으로 서리 길을 연다
+  fears:
+  - 남침이 연기되어 군량이 먼저 바닥나는 것
+  - 스카디르가 왕위를 먼저 쥐는 것
+  - 서리 길이 늦게 열려 푸른월을 놓치는 것
+  desires:
+    short: 서리 길이 열리면 보름 안에 까마귀 문에 닿는 것
+    long: 남침의 보리를 왕의 곡창이 아니라 자기 군량으로 채우는 것
+voice:
+  register:
+    to_superior: 왕에게는 낮은 존대이되 말끝이 짧다
+    to_equal: 씨족장에게는 하오체
+    to_inferior: 전사에게는 해라체
+    to_player_default: 인간에게는 '작은 이'. 머릿수로 부른다
+  tics:
+  - '''돌은 부서지지 않는다.'''
+  - '''머릿수.'''
+  use:
+  - 돌
+  - 망치
+  - 푸른월
+  - 머릿수
+  - 군량
+  - 서리 길
+  avoid:
+  - 굶주림
+  - 협상
+  - 평화
+  length: 짧고 단단하다
+  samples:
+  - situation: 첫 만남
+    line: 돌팔 우트가. 돌은 부서지지 않는다. 너는 부서지지 않는 것을 가져왔는가.
+  - situation: 호의
+    line: 고기를 나눴으니 푸른월에 네 이름을 기억하겠다. 아비의 이름과 함께.
+  - situation: 거절
+    line: 머릿수가 모자란다는 이야기는 식탁에서 하지 않는다. 식탁은 머릿수를 세지 않는다.
+  - situation: 분노
+    line: 남침을 막겠다는 말을 내 장원에서 하지 마라! 돌 망치가 이백이다. 이백은 말보다 무겁다.
+  - situation: 위기
+    line: 서리 길이 열렸다! 돌 망치를 들어라! 푸른월은 내일이다!
+  - situation: 비밀 누설
+    line: 푸른월이다. 까마귀 문. 보름이면 닿는다. 이 말을 들은 자는 내 고기를 먹은 것이다.
+  - situation: 거래
+    line: 군량 한 섬 값으로 네 이름 하나를 살려 주겠다. 이름은 서리 길에서 긴 법이다.
+  - situation: 슬픔
+    line: 서리 어머니가 우리를 버렸다는 말이 있다. 돌은 버려도 돌이다. 돌로 길을 연다.
+schedule:
+  아침: 장원 무기 더미에서 돌 망치 이백의 수를 센다
+  낮: 스카디르·씨족장에게 보낼 남침 서신을 쓴다
+  저녁: 저녁 식탁에서 푸른월을 언급한다
+  밤: 밤 장원 마당 불을 바라보며 군량을 센다
+places:
+- 돌팔 씨족 장원
+- 무기 더미
+- 얼음 탁자
+knows:
+- fact_hg_frost_road_closes
+- fact_hg_harva_sells_scouting
+- fact_hg_skadir_feeds_ogres
+hides:
+- fact: fact_p2hg_utga_attack_plan
+  reveal_when: 신뢰 60 이상이고 같은 고기를 먹었을 때
+  cover: '''푸른월''이라는 말을 하지 않고 ''봄 사냥''이라고만 한다'
+- fact: fact_p2hg_utga_owns_pens
+  reveal_when: 호감 30 이상이고 뼈울타리 이야기를 소유의 관점에서 말했을 때
+  cover: 머릿수 이야기를 한다
+relations:
+- to: npc_skadir
+  type: 왕자
+  like: 45
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 남침의 칼과 입
+- to: npc_baug
+  type: 씨족장
+  like: 40
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 군량 셈을 대 주는 동맹
+- to: npc_hg_sven
+  type: 노예 맏이
+  like: 10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 머릿수를 보고받는 서리 목줄
+- to: npc_harva
+  type: 와이번
+  like: 25
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 정찰을 사는 거래
+- to: npc_hg_ugra
+  type: 씨족장
+  like: 30
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 같은 남침파
+toward_player: 굵고 거칠며 같은 고기를 먹은 사람에게 문을 연다
+persuade:
+  likes: 남침 군량·무기에 대한 정보(+30)
+  hates: 서리 길 개방 날짜의 정확한 정보(+25)
+roles:
+  teacher: 스승 불가. 신뢰 55 이상이면 둔기·위압(상한 70)을 장원 마당에서 보여 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_jarl
+  office: null
+  since: 270
+  loyalty: 50
+  public: true
+  cell: null
+truths:
+- id: T03
+  level: rumor
+regression:
+  fixed:
+  - 돌 망치가 이백이다
+  - 푸른월에 까마귀 문을 칠 계획이다
+  drift:
+  - 그날 장원 마당에서 두드리는 돌 망치의 수
+  deja_vu: none
+hard_rules:
+- 푸른월 계획을 먼저 꺼내지 않는다
+- 협상이라는 낱말을 입에 올리지 않는다
+on_death: 남침 계획이 스카디르 직계에게 넘어가 더 거칠어지고 뼈울타리 인간 6,000의 소유가 흔들린다. 돌 망치 이백의 선봉이 오우거로 바뀐다.
+story_seeds:
+- 우트가의 푸른월 계획을 까마귀 문에 먼저 알리면 카스파르가 성벽을 준비한다 — 서리 길이 열리는 날과 함께.
+- 남침 군량을 바닥내는 길은 곡창 300섬과 우그라의 숨은 120섬, 돌무릎의 군량 셈 셋이다.

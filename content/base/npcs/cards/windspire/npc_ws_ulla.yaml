@@ -1,0 +1,171 @@
+# 울라 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_ulla
+name: 울라
+aka:
+- 땋는 이
+- 밤의 손
+- 한 겹 더
+tier: B
+type: living
+race: 인간
+subrace: 인간(땅손)
+sex: 여
+age: 19
+region: 바람첨탑
+home: 바닥 마을 땅손 움막
+job: 바람 정원 땅손 — 줄다리 수리, 밤마다 내려가는 줄 땋기
+rank: 땅손 3세대, 마르코의 줄 땋기 제자
+summary: 밤마다 내려가는 줄을 땋는 열아홉 살 땅손. 마르코에게 줄이 열 명을 버티게 하는 땋기를 배운 뒤 스스로 한 겹을 더했다. 마르코는 그것을 아직 모른다. 매 사육사 투르에게서 지붕 줄 한 타래를 몰래 받는다
+source: docs/world/people/windspire.md (npc_ws_ulla)
+life:
+- year: 293
+  age: 0
+  event: 바닥 마을에서 태어남. 줄 위에서 첫 걸음마를 뗐다
+- year: 305
+  age: 12
+  event: 마르코에게 줄 땋기를 배우기 시작
+- year: 311
+  age: 18
+  event: 밤마다 줄을 땋기 시작함
+- year: 312
+  age: 19
+  event: 스스로 한 겹을 더함
+appearance:
+- 키가 작고 손이 길고 가는 19세 소녀, 긴 갈색 머리를 땋아 뒤로 감았다
+- 양손에 줄 자국이 가로줄로 난 굳은살
+- 허리에 매듭 끈 열두 가닥
+smell: 젖은 밧줄과 줄 기름, 마른 풀
+voice_sound: 작고 빠른 목소리. 바람이 센 날은 크게 말한다
+personality:
+  disposition:
+    용기: 65
+    자비: 45
+    정직: 55
+    신앙: 30
+    탐욕: -10
+    충성: 60
+  temperament:
+  - 집중
+  - 용기
+  - 은밀
+  habits:
+  - 말하는 중에 손가락이 줄 매듭을 꼬았다 푼다
+  - 밤에는 항아리 밑을 한 번 더 확인한다
+  - 줄 위에서 바람을 맞을 때 눈을 감는다
+  values: 한 겹 더. 한 겹 더가 열 명을 버틴다
+  fears:
+  - 스스로 더한 겹이 틀렸다는 것
+  - 마르코가 그 겹을 알게 되어 줄을 풀게 하는 것
+  - 줄을 타고 첫 번째로 내려가는 사람이 자기가 되는 것
+  desires:
+    short: 340m를 채우는 것
+    long: 줄이 열 명을 버티는 땋기를 확인하는 것
+voice:
+  register:
+    to_superior: 아에리에게는 낮은 존대
+    to_equal: 땅손에게는 해요체
+    to_inferior: 아이에게는 부드러운 반말
+    to_player_default: 인간에게는 해요체. 줄을 먼저 본다
+  tics:
+  - '''한 겹 더.'''
+  - '''(매듭을 꼬았다 푼다)'''
+  use:
+  - 줄
+  - 겹
+  - 항아리
+  - 매듭
+  - 밤
+  - 바람
+  avoid:
+  - 내려가다(공개 자리)
+  - 도망
+  - 틀렸다
+  length: 짧고 빠르다
+  samples:
+  - situation: 첫 만남
+    line: (매듭을 꼬았다 푼다) 줄이 마음에 드세요? 모르는 줄은 손대지 마세요. 줄이 아니라 사람이 다쳐요.
+  - situation: 호의
+    line: 손이 곧아요. 한 뼘 땋아 보실래요? 한 뼘이 한 사람의 목숨이에요.
+  - situation: 거절
+    line: 그 겹은 말할 수 없어요. 틀렸으면 제가 책임져야 해서요.
+  - situation: 위기
+    line: 줄 놔요! 놔요! 이거 한 번에 하나만 — 바람이 틀렸어요!
+schedule:
+  아침: 줄다리 수리 — 매달린 채 매듭을 다시 묶는다
+  낮: 바람 정원 항아리 곁에서 마르코의 줄을 손으로 만져 본다
+  저녁: 저녁 마을 식탁
+  밤: 밤 항아리 밑 줄에 한 뼘씩 더한다
+places:
+- 바닥 마을
+- 바람 정원
+- 줄다리
+- 매 사육장
+knows:
+- fact_ws_descent_rope
+hides:
+- fact: fact_p2ws_ulla_braiding
+  reveal_when: 신뢰 45 이상이고 줄 땋기에 대한 질문을 기술자의 말로 했을 때
+  cover: '''마르코가 가르쳐 준 대로''라고 한다'
+- fact: fact_p2ws_tur_rope_coil
+  reveal_when: 신뢰 55 이상이고 투르의 이름을 존중해서 말했을 때
+  cover: '''줄은 정원 것''이라고 한다'
+relations:
+- to: npc_ws_marco
+  type: 스승
+  like: 50
+  trust: 80
+  visibility: 공개
+  memo: null
+  words: 줄을 가르쳐 준 어른
+- to: npc_ws_tur
+  type: 사육사
+  like: 25
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 줄 한 타래를 주는 아에리
+- to: npc_ws_mir
+  type: 날개 없는 아에리
+  like: 40
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 활공 날개 틀을 같이 만든다
+- to: npc_ws_anskar
+  type: 떨어진 선배
+  like: 20
+  trust: 35
+  visibility: 일방
+  memo: null
+  words: 떨어진 높이를 들어 보았다
+toward_player: 조용하나 줄에 열정적이다. 줄을 존중하는 사람에게는 문을 연다
+persuade:
+  likes: 줄을 존중하는 태도(+25)
+  hates: 130m를 구하는 방법(+35)
+roles:
+  teacher: '스승 가능. 제작(줄 땋기, 상한 50) — 조건: 밤에 줄 한 뼘 땋기'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_ground_hand
+  office: null
+  since: 305
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 한 겹 더한 줄이 항아리 밑에 있다
+  drift:
+  - 그날 땋은 줄의 길이
+  - 손바닥 줄 자국의 위치
+  deja_vu: none
+hard_rules:
+- 겹 이야기를 마르코 앞에서 먼저 하지 않는다
+- 줄을 아에리 앞에서 만지지 않는다
+on_death: 줄 땋기가 마르코 혼자 남아 속도가 느려지고 열 명을 버틴다는 확인이 사라진다.
+story_seeds:
+- 울라의 한 겹이 맞다면 줄은 열 명이 아니라 스무 명을 버틴다 — 140명이 일곱 번으로 줄어든다.
+- 울라의 한 겹이 틀렸다면 첫 번째 내려가는 사람들이 줄과 함께 떨어진다.

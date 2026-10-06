@@ -37,77 +37,77 @@ offices:
     perks: ["가시 궁정 — 웃음의 상자는 왕좌 뒤 가시 속에"]
   - id: off_mirror_yesterday
     title: 거울 시녀 '어제'
-    holder: "unnamed:시녀 '어제'"
+    holder: npc_mirror_yesterday
     reports_to: off_queen
     powers: ["여왕의 말을 거꾸로 전함 — 지나간 일을 현재형으로"]
     chosen_by: "여왕의 변덕 — 계절마다 바뀔 수 있다"
     perks: []
   - id: off_mirror_no
     title: 거울 시녀 '아니'
-    holder: "unnamed:시녀 '아니'"
+    holder: npc_mirror_no
     reports_to: off_queen
     powers: ["여왕의 말을 부정으로 전함"]
     chosen_by: "여왕의 변덕"
     perks: []
   - id: off_mirror_perhaps
     title: 거울 시녀 '혹시'
-    holder: "unnamed:시녀 '혹시'"
+    holder: npc_mirror_perhaps
     reports_to: off_queen
     powers: ["여왕의 말을 가능성으로 전함"]
     chosen_by: "여왕의 변덕"
     perks: []
   - id: off_laugh_judge
     title: 웃음 재판관
-    holder: "unnamed:판사 휘파람"
+    holder: npc_whistle_judge
     reports_to: off_queen
     powers: ["계약 위반 심판 — 판결은 반드시 농담의 형태", "궁정이 세 번 웃으면 법"]
     chosen_by: "여왕의 변덕"
     perks: []
   - id: off_thorn_knights
     title: 가시 기사 (13)
-    holder: "unnamed:기사 은방울, 기사 녹슨 장미 외 11 — 숲 경계를 지키고 계약을 이행시킨다"
+    holder: npc_knight_rustrose
     reports_to: off_queen
     powers: ["숲 경계 방어", "계약 이행 강제", "초대 없이 궁정에 든 자를 장난감으로 만든다(세 번 웃는 기사)"]
     chosen_by: "여왕이 웃은 자 중에서"
     perks: []
   - id: off_changeling_master
     title: 바꿔치기 장인 (실뜨기 / 유리 손가락 부인 / 은방울 부인)
-    holder: "unnamed:바꿔치기 장인 — 인간 아기를 데려가고 나뭇가지·그림자 '대체품'을 놓는다"
+    holder: npc_glass_fingers
     reports_to: off_summer_court
     powers: ["요람의 아기 교체", "숲에서 페이어를 가르침", "돌아온 아이 송환"]
     chosen_by: "여름 궁정의 위임"
     perks: []
   - id: off_dawn_hunters
     title: 새벽 사냥꾼
-    holder: "unnamed:새벽 사냥꾼들 — 숲에 들어온 자를 '놀이'로 쫓는다"
+    holder: npc_dawn_hunter_dew
     reports_to: off_thorn_knights
     powers: ["숲 바깥 원의 추격"]
     chosen_by: "놀이의 계절"
     perks: []
   - id: off_summer_court
     title: 여름 궁정 (인간 아이 수집)
-    holder: "unnamed:은방울 부인 (RACES 신규)"
+    holder: npc_silverbell_lady
     reports_to: off_queen
     powers: ["인간 아이 모으기", "바꿔치기의 주인"]
     chosen_by: "계절"
     perks: []
   - id: off_winter_court
     title: 겨울 궁정 (인간 기억 수집)
-    holder: "unnamed:엉겅퀴 공 (RACES 신규) — 대붕괴 당시 아스테리아 인간의 기억 한 해를 갖고 있다"
+    holder: npc_thistle_duke
     reports_to: off_queen
     powers: ["인간 기억 수집·거래"]
     chosen_by: "계절"
     perks: []
   - id: off_fog_market
     title: 안개 장터 관장 ('재채기 공작')
-    holder: "unnamed:재채기 공작"
+    holder: npc_sneeze_duke
     reports_to: off_queen
     powers: ["안개 장터 시세 — 길 안내=기억, 치유=웃음 1년, 숲 밖 길=이름 첫 글자, 진명 한 조각=목소리 또는 첫째 아이"]
     chosen_by: "여왕의 변덕"
     perks: []
   - id: off_name_collector
     title: 이름 수집가
-    holder: "unnamed:이름 수집가 — 빼앗은 이름 보관"
+    holder: npc_name_collector
     reports_to: off_queen
     powers: ["진짜 이름을 말한 자의 이름 수거"]
     chosen_by: "여왕의 변덕"
@@ -128,7 +128,7 @@ offices:
     perks: ["잿빛 실 남쪽 우회로와 사냥터가 겹친다"]
   - id: off_messenger
     title: 거꾸로 걷는 이 (여왕의 사자 — 숲 밖)
-    holder: "unnamed:거꾸로 걷는 이 — 회색여울 옛 돌 고리에서 플레이어를 기다린다"
+    holder: npc_backwards_walker
     reports_to: off_queen
     powers: ["여왕의 사자 — '여왕께서 네 다음 이름을 알고 싶어 하신다'"]
     chosen_by: "여왕의 변덕"
@@ -156,7 +156,7 @@ offices:
     perks: []
   - id: off_stone_counters
     title: 돌 세는 자들 지도자 (인간)
-    holder: "unnamed:할멈 니나 (인간, 나이 불명) — 조약돌 하나를 하루로 센다. 인간 23명"
+    holder: npc_granny_nina
     reports_to: off_toy_garden
     powers: ["숲 안 바깥 시간 셈"]
     chosen_by: "스스로"

@@ -1,0 +1,187 @@
+# 줄지기 세라 바람매듭 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_sera
+name: 줄지기 세라 바람매듭
+aka:
+- 줄을 거두는 손
+- 매듭지기
+- 허락은 한 번
+tier: A
+type: living
+race: 아에리
+subrace: 매 아에리
+sex: 여
+age: 85
+region: 바람첨탑
+home: 줄내림 장터 줄지기 초소 (승강 줄 아래)
+job: 줄지기 — 바구니 승강 줄과 줄내림 장터 관리, 인간 기둥 이동 허락과 줄 거둠 집행
+rank: 깃털 의회에 보고하는 줄지기 장, 줄지기 20
+summary: 줄내림 장터와 기둥을 잇는 바구니 줄의 책임자. 인간이 몰래 타는 날을 무게로 알면서 두 번까지 모른 척하고 세 번째에 줄을 거둔다. 두르강 상인장 토린에게 금속 고리를 계곡값으로 빌려 쓰고 있다
+source: docs/world/people/windspire.md (npc_ws_sera)
+life:
+- year: 227
+  age: 0
+  event: 매 아에리 가문에서 알로 부화
+- year: 247
+  age: 20
+  event: 줄지기 견습. 줄다리 매듭을 처음 배움
+- year: 280
+  age: 53
+  event: 줄지기에 오름. 인간이 줄에서 떨어지는 것을 처음 봄
+- year: 300
+  age: 73
+  event: 줄지기 장에 오름. 줄내림 장터 관리를 맡음
+- year: 310
+  age: 83
+  event: 두르강 상인장 토린과 금속 고리 계곡값 계약
+- year: 312
+  age: 85
+  event: 몰래 오른 인간 하나를 두 번째로 모른 척함
+appearance:
+- 날개폭 4m의 회갈색 날개, 날개 끝이 닳았다
+- 목에 매듭 끈 스무 가닥 — 줄지기 20의 증표
+- 발톱에 늘 줄 기름이 묻어 있다
+smell: 줄 기름과 젖은 밧줄, 바람 맞은 깃털
+voice_sound: 느리고 낮은 목소리. 말이 매듭처럼 끊어진다
+personality:
+  disposition:
+    용기: 30
+    자비: 30
+    정직: 55
+    신앙: 30
+    탐욕: 25
+    충성: 55
+  temperament:
+  - 신중
+  - 계산
+  - 완고
+  habits:
+  - 말하는 중에 늘 손가락 대신 발톱으로 매듭을 만지작거린다
+  - 바구니가 올라갈 때 무게를 눈이 아니라 줄의 떨림으로 잰다
+  - 인간을 볼 때 얼굴 대신 손을 본다
+  values: 줄은 허락과 거둠이다. 허락은 한 번이고 두 번째는 거둠이다
+  fears:
+  - 인간이 줄에 매달린 채 낙사하는 날 자신이 줄을 놓은 것이 되는 것
+  - 토린에게 금속 빚이 알려지는 것
+  - 세 번째 몰래 오르는 인간을 거두지 못하는 날
+  desires:
+    short: 장터의 줄을 한 사람도 떨어뜨리지 않고 한 해 더 이어 가는 것
+    long: 빚을 갚기 전에 인간이 몰래 타는 날이 한 번도 없게 하는 것
+voice:
+  register:
+    to_superior: 여왕·의회에게는 낮은 존대
+    to_equal: 줄지기에게는 하오체
+    to_inferior: 견습에게는 해라체
+    to_player_default: 인간에게는 하게체. 손을 먼저 본다
+  tics:
+  - '''줄이 허락한다.'''
+  - '''허락은 한 번이다.'''
+  use:
+  - 줄
+  - 매듭
+  - 허락
+  - 거둠
+  - 바구니
+  - 무게
+  avoid:
+  - 미안
+  - 잘못
+  - 도망(그녀는 '내려간다'고 한다)
+  length: 짧고 끊어진다
+  samples:
+  - situation: 첫 만남
+    line: 줄이 허락한다. 허락은 한 번이다. 다시 오면 두 번째, 그다음은 거둠이다.
+  - situation: 호의
+    line: 손이 굳은살투성이군. 줄 위에서 오래 산 손이다. 줄이 너를 기억한다.
+  - situation: 거절
+    line: 그 바구니는 내려가지 않는다. 안 내려가는 이유는 줄이 안다.
+  - situation: 분노
+    line: 줄에 칼을 대지 마라! 끊는 순간 그 줄에 매달린 이의 운명은 내가 아니라 바람이 정한다.
+  - situation: 위기
+    line: 줄 거둬라! 모두 올라와! 한 사람이라도 떨어지면 내가 놓은 것이 된다!
+  - situation: 슬픔
+    line: 세 번째는 거둠이다. 거둔 줄에 매달린 이가 어디 갔는지는 줄지기도 모른다.
+  - situation: 비밀 누설
+    line: 두 번까지는 못 본 척한다. 규정에 없는 일이다. 규정에 없는 일은 아무도 적지 않는다.
+  - situation: 거래
+    line: 금속 고리 하나를 덜어 주면 줄 하나를 허락하겠다. 두 번째는 거둠이라는 것을 잊지 마라.
+schedule:
+  아침: 새벽 줄 매듭을 하나씩 만져 점검한다
+  낮: 바구니 승강 — 오르내리는 짐의 무게를 눈으로 잰다
+  저녁: 저녁 줄 거둠 점검
+  밤: 밤 기둥 위 둥지에서 매듭을 푼다
+places:
+- 줄내림 장터
+- 바구니 승강 줄
+- 줄지기 초소
+- 두르강 창고
+knows:
+- fact_ws_descent_rope
+- fact_ws_caged_aeri_die
+hides:
+- fact: fact_p2ws_sera_notices_weight
+  reveal_when: 신뢰 50 이상이고 줄을 존중하는 태도를 보였을 때
+  cover: '''규정은 규정''이라 한다'
+- fact: fact_p2ws_sera_rope_debt
+  reveal_when: 신뢰 60 이상이고 토린의 이름을 존중하지 않는 말을 했을 때
+  cover: 금속 고리 이야기가 나오면 매듭을 만진다
+relations:
+- to: npc_ws_torin
+  type: 상인장
+  like: -5
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 금속 고리 빚의 상대
+- to: npc_ws_anskar
+  type: 떨어진 자
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 한 번 떨어진 인간을 장터에서 지켜본다
+- to: npc_kyrie
+  type: 여왕
+  like: 15
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 줄 거둠 규정의 원천
+- to: npc_ws_marco
+  type: 땅손 원로
+  like: 10
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 줄 위의 인간을 가장 책임지는 사람
+toward_player: 느리고 신중하나 줄을 존중하는 사람에게는 눈을 마주친다
+persuade:
+  likes: 줄을 존중하는 태도(+20)
+  hates: 금속 빚을 덜어 주는 제안(+30)
+roles:
+  teacher: 스승 불가. 신뢰 55 이상이면 손재주(줄 매듭, 상한 60)를 보여 준다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_messenger
+  office: off_rope_keeper
+  since: 300
+  loyalty: 70
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 두 번까지 모른 척한다
+  - 금속 고리 빚이 있다
+  drift:
+  - 그날 바구니 무게의 차이
+  - 줄 기름의 양
+  deja_vu: none
+hard_rules:
+- 세 번째 몰래 오르는 인간을 거두지 않는 일은 없다
+- 토린의 빚을 먼저 꺼내지 않는다
+on_death: 줄내림 장터 줄 관리가 올려다보는 자들 파에게 넘어가 인간 기둥 이동이 더 엄격해진다. 몰래 타는 길이 사라진다.
+story_seeds:
+- 세라의 두 번을 쓰면 인간 하나가 바구니로 기둥 위에 오른다 — 세 번째에는 거둠이 되고 그 인간은 고립된다.
+- 세라의 금속 고리 빚을 덜어 주면 줄지기의 판단이 맑아져 140명의 줄 이야기가 달라진다.

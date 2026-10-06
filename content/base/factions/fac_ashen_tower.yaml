@@ -49,7 +49,7 @@ offices:
     perks: ["이슬 두루마리 사본 서가"]
   - id: off_elder_rift
     title: 원로 — 균열학파 수장
-    holder: "unnamed:해그 룬새김 (두르강, 380) — 황무지 봉인 룬 설계자"
+    holder: npc_kz_hag
     reports_to: off_tower_master
     powers: ["일곱 의자 한 표", "황무지 경계 측정", "피험자를 경계에 '측정용'으로 세운다"]
     chosen_by: "일곱 의자 넷"

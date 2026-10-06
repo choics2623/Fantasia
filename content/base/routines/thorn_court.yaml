@@ -1,0 +1,166 @@
+# 가시안개 숲 NPC 일과 (24 §3). 원천: 각 카드의 schedule, docs/world/people/thornmist.md, REGIONS §6.5.
+# 장소 id는 settlements/thorn_court.yaml 의 tc_* 와 outer(thornmist__*), 아이 잃은 돌(lost_child_stone — eternal_garden 정착지 outer), 회색여울 옛 돌 고리(old_stone_ring — greyford 정착지 outer).
+# 페이는 같은 하루를 두 번 같게 보내지 않는다 — alt 확률을 크게 두었다. 자정 00:00-01:00 여왕이 웃음의 상자 앞에 서는 한 시간이 정본 고정이다 (fixed).
+# 쉼표가 든 값은 큰따옴표로. days: all | workday | sabbath | odd | even | weekday:[1..6] | monthday:[..]
+
+npc_thorn_queen:
+  home: tc_throne_room
+  blocks:
+    - {days: all, from: "00:00", to: "01:00", at: tc_laugh_box_hollow, doing: "방이 바뀌는 자정 — 웃음의 상자 앞에 한 시간 선다. 열지도 부수지도 않는다", fixed: true}
+    - {days: all, from: "01:00", to: "10:00", at: tc_throne_room, doing: "왕좌의 방에서 쉰다 — 방이 바뀐다"}
+    - {days: all, from: "12:00", to: "14:00", at: tc_throne_room, doing: "접견 — 거래만 한다. 이름을 부르면 주의가 닿는다", fixed: true}
+    - {days: all, from: "14:00", to: "16:00", at: tc_judge_hall, doing: "웃음 재판을 구경한다", alt: {p: 0.6, at: tc_toy_garden, doing: "장난감 정원에서 춤을 구경한다"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_ballroom, doing: "무도회장 — 인간 장난감의 춤을 본다", alt: {p: 0.4, at: tc_throne_room, doing: "왕좌에서 꼼짝 않고 거래만 한다"}}
+npc_nibble:
+  home: tc_mushroom_ring
+  blocks:
+    - {days: all, from: "06:00", to: "11:00", at: tc_maze, doing: "길 잃은 인간을 찾아 속인다", outdoor: true, rain: {at: tc_mushroom_ring, doing: "버섯 고리 곁 쓰러진 나무 밑에서 비를 피한다"}}
+    - {days: all, from: "11:00", to: "16:00", at: tc_mushroom_ring, doing: "장난 — 지나가는 인간의 소지품 하나를 훔친다"}
+    - {days: all, from: "16:00", to: "19:00", at: tc_court_hall, doing: "여왕 궁정에 보고한다 — 보고는 전부 반대말이다"}
+    - {days: all, from: "19:00", to: "23:00", at: tc_mushroom_ring, doing: "버섯 고리에서 춤 — 끼어들면 7년이 지난다는 전설"}
+    - {days: all, from: "23:00", to: "06:00", at: tc_mushroom_ring, doing: "쓰러진 나무 속에서 존다"}
+npc_elin:
+  home: tc_servants_room
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: tc_servants_room, doing: "거울과 접시를 닦는다 — 밤마다 손바닥에 쓴 낱말을 확인한다"}
+    - {days: all, from: "09:00", to: "13:00", at: tc_ballroom, doing: "여왕 연회 준비와 시중 (여름 반나절)", alt: {p: 0.5, at: tc_toy_garden, doing: "장난감 정원을 돌본다 (겨울 반나절)"}}
+    - {days: all, from: "13:00", to: "18:00", at: tc_toy_garden, doing: "장난감 정원의 인간 일흔에게 바깥 시간이 얼마나 흘렀는지 알린다 (겨울 반나절)", alt: {p: 0.4, at: tc_ballroom, doing: "연회 시중 (여름 반나절)"}}
+    - {days: all, from: "18:00", to: "22:00", at: tc_court_hall, doing: "궁정 시중 — 눈을 들지 않고 이름을 입에 올리지 않는다", alt: {p: 0.2, at: tc_mirror_chamber, doing: "거울 시녀 곁에서 같은 질문을 두 번 한다"}}
+    - {days: all, from: "22:00", to: "05:00", at: tc_servants_room, doing: "잔다 — 손톱으로 손바닥에 낱말을 쓴다"}
+npc_odo:
+  home: tc_toy_dance_spot
+  blocks:
+    - {days: all, from: "05:00", to: "23:00", at: tc_toy_dance_spot, doing: "같은 춤을 춘다 — 71년째, 몸이 서른에서 늙지 않는다", alt: {p: 0.1, at: tc_toy_garden, doing: "정원 가장자리에서 한 박자 쉰다"}, fixed: true}
+    - {days: all, from: "23:00", to: "05:00", at: tc_servants_room, doing: "잔다 — 꿈에서도 같은 춤"}
+npc_grik:
+  home: thornmist__south_tower
+  blocks:
+    - {days: all, from: "04:00", to: "12:00", at: thornmist__south_tower, doing: "폐탑에서 모자를 말리지 않는다 — 문턱 안으로 탈주자를 부른다", outdoor: true, rain: {at: thornmist__south_tower, doing: "폐탑 문턱에서 비를 피하라며 사람을 부른다"}}
+    - {days: all, from: "12:00", to: "18:00", at: thornmist__south_tower, doing: "남쪽 경계에서 탈주자를 쫓는다 — 피가 모자를 적신다", alt: {p: 0.3, at: thornmist__south_tower, doing: "폐탑 위에서 길을 본다"}}
+    - {days: all, from: "18:00", to: "23:00", at: thornmist__south_tower, doing: "피 마르기 전에 사냥한다", outdoor: true}
+    - {days: all, from: "23:00", to: "04:00", at: thornmist__south_tower, doing: "폐탑에서 쉰다 — 모자가 마르지 않았는지 만진다"}
+npc_mirror_yesterday:
+  home: tc_mirror_chamber
+  blocks:
+    - {days: all, from: "00:00", to: "01:00", at: tc_laugh_box_hollow, doing: "자정 — 여왕이 상자 앞에 서는 한 시간을 곁에서 본다", fixed: true}
+    - {days: all, from: "06:00", to: "12:00", at: tc_mirror_chamber, doing: "거울을 닦는다 — 어제의 장면만 비춘다"}
+    - {days: all, from: "12:00", to: "14:00", at: tc_throne_room, doing: "접견 때 여왕 곁에 선다"}
+    - {days: all, from: "14:00", to: "24:00", at: tc_mirror_chamber, doing: "어제의 말을 외운다"}
+npc_mirror_no:
+  home: tc_mirror_chamber
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: tc_mirror_chamber, doing: "거울을 닦는다"}
+    - {days: all, from: "12:00", to: "14:00", at: tc_throne_room, doing: "접견 — 손님에게 부정으로 답한다"}
+    - {days: all, from: "14:00", to: "20:00", at: tc_court_hall, doing: "궁정 문 앞에 서서 질문에 '아니'로 답한다", alt: {p: 0.3, at: tc_mirror_chamber, doing: "빈 액자를 안고 선다"}}
+    - {days: all, from: "20:00", to: "24:00", at: tc_mirror_chamber, doing: "거울 앞에서 묻는다"}
+npc_mirror_perhaps:
+  home: tc_mirror_chamber
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: tc_mirror_chamber, doing: "여왕의 말을 받는다"}
+    - {days: all, from: "12:00", to: "14:00", at: tc_throne_room, doing: "접견 — 여왕의 말을 거꾸로 전한다", fixed: true}
+    - {days: all, from: "14:00", to: "19:00", at: tc_court_hall, doing: "말을 거꾸로 전한다", alt: {p: 0.3, at: tc_mirror_chamber, doing: "거울 앞에서 가정을 세운다"}}
+    - {days: all, from: "19:00", to: "24:00", at: tc_mirror_chamber, doing: "거울 앞에서 가정을 세운다 — 주먹을 입 앞에 쥔다"}
+npc_whistle_judge:
+  home: tc_judge_hall
+  blocks:
+    - {days: all, from: "08:00", to: "14:00", at: tc_judge_hall, doing: "사건 접수 — 약속이 있나 묻는다"}
+    - {days: all, from: "14:00", to: "18:00", at: tc_judge_hall, doing: "웃음 재판 — 궁정이 세 번 웃으면 법이 된다", fixed: true}
+    - {days: all, from: "18:00", to: "22:00", at: tc_judge_hall, doing: "휘파람을 연습한다"}
+    - {days: all, from: "22:00", to: "08:00", at: tc_judge_hall, doing: "홀에서 홀로 서 있다"}
+npc_three_laugh_knight:
+  home: tc_knights_yard
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: tc_knights_yard, doing: "가시 기사의 훈련 — 말씀을 겨룬다"}
+    - {days: all, from: "09:00", to: "18:00", at: tc_hedge, doing: "경계 가시울타리에서 초대 없는 이에게 웃음을 세 번 건넨다", outdoor: true, rain: {at: tc_knights_yard, doing: "마당 처마 밑에서 약속 목록을 읽는다"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_maze, doing: "미로 벽 순찰", alt: {p: 0.4, at: tc_hedge, doing: "경계에서 신발을 센다"}}
+    - {days: all, from: "23:00", to: "05:00", at: tc_knights_yard, doing: "쉰다"}
+npc_knight_rustrose:
+  home: tc_knights_yard
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: tc_knights_yard, doing: "훈련 — 웃음을 겨루지 않고 말만 한다"}
+    - {days: all, from: "09:00", to: "18:00", at: tc_court_hall, doing: "궁정 문 경비 — 주먹을 입 앞에 쥔다", alt: {p: 0.3, at: tc_maze, doing: "미로 순찰"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_maze, doing: "미로 순찰"}
+    - {days: all, from: "23:00", to: "05:00", at: tc_knights_yard, doing: "쉰다 — 녹가루를 턴다"}
+npc_glass_fingers:
+  home: tc_nursery_workshop
+  blocks:
+    - {days: all, from: "08:00", to: "14:00", at: tc_nursery_workshop, doing: "장부 정리와 대체품 점검"}
+    - {days: all, from: "14:00", to: "18:00", at: tc_nursery_workshop, doing: "바꿔치기 대상 집을 고른다", alt: {p: 0.3, at: tc_judge_hall, doing: "재판에 대체품 사건을 제기한다"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_nursery_workshop, doing: "아이 잃은 돌에서 부모들이 놓은 신발을 센다는 보고를 받는다", alt: {p: 0.2, at: tc_court_hall, doing: "궁정 홀에서 질문에 답한다"}}
+    - {days: all, from: "23:00", to: "08:00", at: tc_name_grave, doing: "장부를 이름 무덤 아래에서 읽는다"}
+npc_threadplay:
+  home: tc_nursery_workshop
+  blocks:
+    - {days: all, from: "08:00", to: "18:00", at: tc_nursery_workshop, doing: "대체품에 실을 건다", alt: {p: 0.3, at: tc_court_hall, doing: "손님의 손에 실 한 올을 건다"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_nursery_workshop, doing: "실을 센다"}
+    - {days: all, from: "23:00", to: "08:00", at: tc_nursery_workshop, doing: "실을 당겨 대체품의 위치를 확인하다 존다"}
+npc_silverbell_lady:
+  home: tc_summer_court
+  blocks:
+    - {days: all, from: "06:00", to: "10:00", at: tc_summer_court, doing: "아이들을 이름으로 부른다 — 방울을 흔든다"}
+    - {days: all, from: "10:00", to: "18:00", at: tc_summer_court, doing: "정원에서 아이들과 논다", alt: {p: 0.3, at: tc_ballroom, doing: "무도회장 구경"}}
+    - {days: all, from: "18:00", to: "22:00", at: tc_ballroom, doing: "무도회장 구경 — 아이들을 먼저 재운다", alt: {p: 0.5, at: tc_summer_court, doing: "아이들 곁에 머문다"}}
+    - {days: all, from: "22:00", to: "06:00", at: tc_summer_court, doing: "아이들이 잠들 때까지 방울을 흔든다"}
+npc_thistle_duke:
+  home: tc_winter_court
+  blocks:
+    - {days: all, from: "07:00", to: "12:00", at: tc_winter_court, doing: "기억의 병을 닦는다"}
+    - {days: all, from: "12:00", to: "18:00", at: tc_toy_garden, doing: "인간의 웃은 날을 모은다", alt: {p: 0.4, at: tc_winter_court, doing: "병 속의 웃음을 귀에 대고 듣는다"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_winter_court, doing: "가시 무도회 초대장 후보를 가린다"}
+    - {days: all, from: "23:00", to: "07:00", at: tc_winter_court, doing: "기억의 병 앞에서 눈을 감는다"}
+npc_sneeze_duke:
+  home: tc_fog_market
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: tc_fog_market, doing: "노점 배치 — 재채기로 자리를 바꾼다"}
+    - {days: all, from: "12:00", to: "20:00", at: tc_fog_market, doing: "흥정 — 아픔의 저울 곁에 선다", alt: {p: 0.2, at: tc_market_true_stall, doing: "진명 노점 앞에서 값을 부른다"}}
+    - {days: all, from: "20:00", to: "24:00", at: tc_fog_market, doing: "새로 잃은 기억을 가장 비싸게 산다", alt: {p: 0.3, at: tc_ballroom, doing: "무도회를 구경한다"}}
+    - {days: all, from: "00:00", to: "06:00", at: tc_fog_market, doing: "안개가 짙은 날 새벽까지 장터를 돈다"}
+npc_name_collector:
+  home: tc_name_collector_lodge
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: tc_name_grave, doing: "병을 닦는다"}
+    - {days: all, from: "12:00", to: "18:00", at: tc_name_collector_lodge, doing: "이름을 가져온 이를 접수한다", alt: {p: 0.2, at: tc_fog_market, doing: "장터에서 이름이 들렸는지 귀를 기울인다"}}
+    - {days: all, from: "18:00", to: "23:00", at: tc_name_collector_lodge, doing: "새 병에 이름을 담는다"}
+    - {days: all, from: "23:00", to: "06:00", at: tc_maze_well, doing: "미로 우물 아래 '말 없는 병' 층을 돈다"}
+npc_name_page:
+  home: tc_name_collector_lodge
+  blocks:
+    - {days: all, from: "06:00", to: "18:00", at: tc_name_collector_lodge, doing: "문 앞에 서서 병 목록을 정리한다"}
+    - {days: all, from: "18:00", to: "23:00", at: tc_name_grave, doing: "병 하나 곁에서 존다", alt: {p: 0.3, at: tc_name_collector_lodge, doing: "문 앞에 선다"}}
+    - {days: all, from: "23:00", to: "06:00", at: tc_name_grave, doing: "병 하나 곁에서 잔다"}
+npc_dawn_hunter_dew:
+  home: tc_hunt_kennel
+  blocks:
+    - {days: all, from: "04:00", to: "09:00", at: tc_maze, doing: "새벽 사냥 — 숲에 든 자를 놀이로 쫓는다", outdoor: true, rain: {at: tc_hunt_kennel, doing: "사냥개 집에서 개를 닦는다"}}
+    - {days: all, from: "09:00", to: "18:00", at: tc_hunt_kennel, doing: "그림자 사냥개를 길들인다"}
+    - {days: all, from: "18:00", to: "23:00", at: tc_hedge, doing: "경계에서 냄새를 맡는다", outdoor: true}
+    - {days: all, from: "23:00", to: "04:00", at: tc_hunt_kennel, doing: "쉰다"}
+npc_granny_nina:
+  home: tc_servants_room
+  blocks:
+    - {days: all, from: "05:30", to: "07:00", at: tc_stone_hollow, doing: "조약돌 하나를 주워 하루를 센다"}
+    - {days: all, from: "08:00", to: "17:00", at: tc_toy_garden, doing: "페이가 시키는 일을 하며 주머니 속 돌을 센다", alt: {p: 0.3, at: tc_court_hall, doing: "궁정에서 접시를 든다"}}
+    - {days: all, from: "20:00", to: "22:00", at: tc_stone_hollow, doing: "돌 세는 자들의 낮은 모임 — 오늘 돌의 수를 맞춘다", fixed: true}
+    - {days: all, from: "22:00", to: "05:30", at: tc_servants_room, doing: "잔다"}
+npc_eleanor:
+  home: thornmist__second_mothers
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: thornmist__second_mothers, doing: "공동 화덕에 불을 지핀다"}
+    - {days: all, from: "07:00", to: "13:00", at: thornmist__second_mothers, doing: "바꿔치기 아이를 돌본다 — 문턱의 철 못을 확인한다"}
+    - {days: all, from: "13:00", to: "18:00", at: thornmist__second_mothers, doing: "철 울타리 손질과 빨래"}
+    - {days: all, from: "18:00", to: "22:00", at: thornmist__second_mothers, doing: "화덕가 이야기 — 아이의 이름을 숨으로 부른다"}
+    - {days: all, from: "22:00", to: "05:00", at: thornmist__second_mothers, doing: "철 울타리를 한 바퀴 돌고 잔다"}
+npc_toby_fifth:
+  home: thornmist__second_mothers
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: thornmist__second_mothers, doing: "철 울타리 안에서 일한다 — 페이어가 들리면 귀를 막는다"}
+    - {days: all, from: "13:00", to: "18:00", at: thornmist__second_mothers, doing: "어린 아이를 돌본다", alt: {p: 0.2, at: tc_fog_market, doing: "안개 장터에서 번역을 청하는 이를 만난다"}}
+    - {days: all, from: "19:00", to: "21:00", at: thornmist__second_mothers, doing: "화덕가에서 이름을 되찾는 연습"}
+    - {days: all, from: "21:00", to: "06:00", at: thornmist__second_mothers, doing: "철 울타리 곁에서 잔다"}
+npc_backwards_walker:
+  home: old_stone_ring
+  blocks:
+    - {days: all, from: "05:00", to: "12:00", at: old_stone_ring, doing: "옛 돌 고리 곁에서 기다린다 — 등을 돌린 채"}
+    - {days: all, from: "12:00", to: "17:00", at: greyford__north_woods, doing: "마을 가장자리를 돈다 — 앞모습을 보이지 않는다", outdoor: true, rain: {at: old_stone_ring, doing: "돌 고리 곁에서 기다린다"}}
+    - {days: all, from: "17:00", to: "23:00", at: old_stone_ring, doing: "옛 돌 고리 곁에서 기다린다 — 이졸이 오는 밤에는 한 걸음 물러난다"}
+    - {days: all, from: "23:00", to: "05:00", at: old_stone_ring, doing: "뒤로 걸어 돌아온다 — 발자국은 앞으로 간다"}

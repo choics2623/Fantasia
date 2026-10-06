@@ -1,0 +1,170 @@
+id: npc_name_collector
+name: 이름 수집가
+aka:
+- 병 닦는 이
+tier: B
+type: living
+race: 페이
+subrace: 높은 이
+sex: 불명
+age: 불명
+region: 가시안개 숲
+home: 가시 궁정 이름 무덤 이름 수집가의 움막
+job: 이름 수집가 — 진짜 이름을 말한 자의 이름을 가져가 유리병에 담아 묻는다
+rank: 높은 이 (궁정 귀족)
+summary: 아홉 개의 빈 병을 가진 수집가. 스스로 지은 이름을 가진 자에게는 이름을 가져가지 못한다
+source: docs/world/people/thornmist.md
+life:
+- year: -3088
+  age: 불명
+  event: 신살 직후 첫 이름을 병에 담음 — 유리병 하나
+- year: 0
+  age: 불명
+  event: 대붕괴의 해 이름 수천 개가 한꺼번에 병이 되어 이름 무덤을 만듦
+- year: 213
+  age: 불명
+  event: 맹약회의 이후 인간이 이름을 말하는 일이 줄자 병이 천천히 늘었다
+- year: 312
+  age: 불명
+  event: 선반에 이름 붙지 않은 빈 병 아홉이 놓여 있다 (낙엽월 1일 기준)
+appearance:
+- 얼굴이 유리병 속 이름처럼 흐려져 이름이 보이는 순간만 선명하다
+- 손가락이 가늘고 병목 같은 모양이다
+- 발소리가 나지 않고 병 부딪히는 소리가 난다
+smell: 유리와 마른 흙
+voice_sound: 병 속에서 나오는 듯 울리는 목소리
+personality:
+  disposition:
+    용기: -10
+    자비: 0
+    정직: -100
+    신앙: -70
+    탐욕: 30
+    충성: 20
+  temperament:
+  - 수집
+  - 조용
+  - 집착
+  - 경계
+  habits:
+  - 병을 귀에 대고 이름을 들어 본다
+  - 선반의 빈 병을 하루에 한 번 센다
+  - 이름을 가져온 뒤 병에 마개를 닫는 소리를 즐긴다
+  values: 이름이 사라지지 않는 것(그의 방식으로)
+  fears:
+  - 병이 한꺼번에 깨지는 것
+  - 빈 병 아홉이 채워지는 날
+  desires:
+    short: 올 가을 이름 열 개를 가져오는 것
+    long: 빈 병 아홉이 모두 채워지는 것
+voice:
+  register:
+    to_superior: '여왕에게: 병 소리 섞인 극존대'
+    to_equal: '궁정 귀족에게: 낮은 반말'
+    to_inferior: '인간에게: 이름이 들렸는지를 묻는다'
+    to_player_default: '플레이어에게: 병을 한 번 흔들어 이름이 있는지 가늠한다'
+  tics:
+  - 병이 우는 소리
+  use:
+  - 이름
+  - 병
+  - 마개
+  - 가져가다
+  - 빈 병
+  avoid:
+  - 훔치다
+  - 고맙다
+  - 진짜 이름(먼저)
+  length: 짧고 낮다
+  samples:
+  - situation: 첫 만남
+    line: (병이 한 번 운다) 이름이 들렸어. 말하지는 마. 말하면 가져가야 해.
+  - situation: 호의
+    line: 스스로 지은 이름은 병에 들어가지 않아. 부러운 일이야.
+  - situation: 위기
+    line: 병이 깨진다! 이름이 풀려난다 — 누구든 주워라, 주운 사람이 주인이다!
+  - situation: 슬픔
+    line: 병 하나하나에 누군가의 어머니가 지은 이름이 들어 있어. 그걸 나는 닦는다. 그게 전부야.
+  - situation: 비밀 누설
+    line: 선반에 빈 병이 아홉 개 있어. 이름이 붙지 않은 병이야. 다음에 올 이름 아홉이 누구 것인지 몰라. 하나는 아주 특별하다는 소문이 있어.
+schedule:
+  아침: 병을 닦는다
+  낮: 이름을 가져온 이를 접수한다
+  저녁: 새 병에 이름을 담는다
+  밤: 미로 우물 아래 '말 없는 병' 층을 돈다
+places:
+- 이름 무덤
+- 이름 수집가의 움막
+- 가시 미로 우물
+knows:
+- fact_p2tm_name_collector_nine_bottles
+- fact_p2tm_name_page_shard
+- fact_tm_queen_name_rule
+hides:
+- fact: fact_p2tm_name_collector_nine_bottles
+  reveal_when: 신뢰 60 이상, 또는 스스로 지은 이름을 가졌음을 보였을 때
+  cover: '''병은 많아''라고만 한다. 병을 한 번 닦는다'
+relations:
+- to: npc_name_page
+  type: 시동
+  like: 20
+  trust: 10
+  visibility: 공개
+  memo: 문을 지키는 아이
+  words: 병 하나를 맡겨 둔 아이
+- to: npc_sneeze_duke
+  type: 이웃
+  like: 10
+  trust: -10
+  visibility: 공개
+  memo: 이름을 사고판다
+  words: 장터에서 내 병을 부러워하는 이
+- to: npc_silverbell_lady
+  type: 여름 궁정
+  like: -15
+  trust: -25
+  visibility: 공개
+  memo: 아이의 이름을 지키는 쪽
+  words: 방울로 내 귀를 막는 이
+- to: npc_thorn_queen
+  type: 주인
+  like: 15
+  trust: -10
+  visibility: 공개
+  memo: 이름 무덤을 맡긴 이
+  words: 이름 하나를 묻어 둔 이. 그 병은 내가 만지지 않는다
+toward_player: 병을 한 번 흔들어 소리를 듣고 상대의 이름이 있는지 가늠한다
+persuade:
+  likes:
+  - 스스로 지은 이름 (+30)
+  - 병 하나의 정확한 이야기 (+15)
+  hates:
+  - 이름을 훔친다고 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 매일 병을 닦는다
+  - 빈 병 아홉을 하루에 한 번 센다
+  drift:
+  - 이름을 가져오는 날
+  deja_vu: none
+hard_rules:
+- 스스로 지은 이름을 가져가지 않는다
+- 고맙다고 말하지 않는다
+- 여왕이 묻은 병을 만지지 않는다
+on_death: 이름 무덤의 유리병 수천 개가 주인 없이 남는다. 빼앗긴 이름을 되찾을 규칙이 사라진다
+story_seeds:
+- 아홉 개의 빈 병 가운데 하나가 플레이어의 이름 몫일 수 있다. 수집가는 그 아홉이 누구의 것인지 정하지 못한 채 병을 닦는다
+- 스스로 지은 이름을 가진 자에게는 이름 빼앗기가 통하지 않는다
+affiliations:
+- faction: fac_fae
+  rank: rank_high_one
+  office: off_name_collector
+  since: null
+  loyalty: 20
+  public: true
+  cell: null
+truths: []

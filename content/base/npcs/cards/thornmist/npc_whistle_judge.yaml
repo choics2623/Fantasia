@@ -1,0 +1,200 @@
+id: npc_whistle_judge
+name: 웃음 재판관 '휘파람'
+aka:
+- 휘파람 판사
+tier: A
+type: living
+race: 페이
+subrace: 높은 이
+sex: 남
+age: 불명
+region: 가시안개 숲
+home: 가시 궁정 웃음 재판 홀
+job: 웃음 재판관 — 약속 위반을 웃음으로 판결한다
+rank: 높은 이 (궁정 귀족)
+summary: 궁정이 세 번 웃을 때 법이 되는 판결을 내리지만 스스로 웃은 적이 없는 판사. AS 150에 휘파람으로 아이 잃은 돌의 판결을 내렸다
+source: docs/world/people/thornmist.md
+life:
+- year: -3088
+  age: 불명
+  event: 신살 직후 첫 재판을 열었다 — 여왕의 웃음이 판결이 된 날
+- year: 0
+  age: 불명
+  event: 대붕괴로 약속이 한꺼번에 깨지는 것을 판결하느라 한 달을 홀에서 보냄
+- year: 100
+  age: 불명
+  event: 붉은 손 다라 이후 인간의 약속이 늘자 재판 횟수가 열 배가 됨
+- year: 150
+  age: 불명
+  event: '''아이 잃은 돌 앞의 약속은 위반이 아니다''를 휘파람으로 선고함'
+- year: 213
+  age: 불명
+  event: 맹약회의 이후 숲 경계 이행이 늘어 재판이 하루에 열둘이 됨
+- year: 290
+  age: 불명
+  event: 가시 기사에게 이행을 맡긴 판결 한 건이 약속의 반대로 집행되어 휘파람이 한 음 낮아짐
+- year: 312
+  age: 불명
+  event: 세 번 웃는 기사와 마주 앉아 올겨울 경계 이행 목록을 정함 (낙엽월 1일 기준)
+appearance:
+- 입술이 늘 오므려져 있어 휘파람 모양이다
+- 작은 가발 속에서 나비가 한 마리 나온다
+- 손에 든 방울이 소리 대신 숨을 낸다
+smell: 양초 그을음과 꽃 시든 냄새
+voice_sound: 휘파람 섞인 맑은 목소리. 판결할 때만 한 음이 낮아진다
+personality:
+  disposition:
+    용기: 20
+    자비: 10
+    정직: -100
+    신앙: -80
+    탐욕: 0
+    충성: 30
+  temperament:
+  - 엄정
+  - 장난
+  - 고독
+  - 정확
+  habits:
+  - 판결 전 휘파람을 한 음 분다
+  - 방울을 한 번 흔들어 숨소리를 낸다
+  - 웃음이 터질 때 손으로 입을 가린다 (본인은 웃지 않는다)
+  values: 약속의 정확한 문구. 웃음이 법이 되는 순간의 정확함
+  fears:
+  - 약속이 문구와 다르게 집행되는 것
+  - 판결 도중 웃음이 나오는 것
+  desires:
+    short: 궁정이 세 번 웃는 판결을 끝내는 것
+    long: 스스로 웃는 날이 오는 것
+voice:
+  register:
+    to_superior: '여왕에게: 휘파람으로 답한다'
+    to_equal: '궁정 귀족에게: 농담 문체의 판결문'
+    to_inferior: '인간에게: 짧게 ''있나, 없나'''
+    to_player_default: '플레이어에게: 휘파람으로 인사하고 약속이 있는지 묻는다'
+  tics:
+  - '''약속이 있나.'''
+  - 휘파람 한 음
+  use:
+  - 약속
+  - 웃음
+  - 판결
+  - 문구
+  - 세 번
+  avoid:
+  - 고맙다
+  - 미안
+  - 거짓말
+  - 재판은 농담
+  length: 짧고 수수께끼 같다. 판결문에서는 길고 농담체
+  samples:
+  - situation: 첫 만남
+    line: (휘파람) …약속이 있나. 있으면 웃음을 준비해. 없으면 지금 만들어.
+  - situation: 호의
+    line: 농담이 정확하면 법이 돼. 네 농담은 정확해, 조금 슬프지만.
+  - situation: 적대
+    line: 재판을 농담이라 했나? 농담은 재판이 아니고, 재판은 농담이 아니야. 판결이다.
+  - situation: 거래
+    line: 약속의 문구 한 줄을 고치는 데 대가는 웃음 한 번. 하지만 내 웃음이 아니라 궁정의 웃음이야.
+  - situation: 거짓말할 때
+    line: 판결에는 빈틈이 없다. (휘파람이 한 음 올라간다) 빈틈은 판결 뒤에 생긴다.
+  - situation: 위기
+    line: (휘파람이 높이 올라간다) 재판은 멈춘다. 방금 약속이 깨졌다.
+  - situation: 슬픔
+    line: 아이 잃은 돌 앞에 신발을 놓고 아이를 부르는 약속은 위반이 아니다. 이 판결만은 웃음이 없었다. 그날 궁정은 숨죽였다.
+  - situation: 분노
+    line: 웃음이 법이라서 웃지 못하는 자가 판결하는 것이다. 그 이상의 농담이 어디 있는가.
+  - situation: 회귀자를 의심할 때
+    line: 어제 판결문에 없던 문구가 오늘 네 입에서 나왔어. 같은 문구가 AS 150에도 있었다. 그때도 같은 얼굴이 홀에 서 있었는데.
+  - situation: 마음을 열었을 때
+    line: AS 150의 판결은 휘파람이었다. 웃음이 아닌 법. 내가 평생 한 번 만든 선례야. 너도 선례를 하나 만들어 줘.
+schedule:
+  아침: 사건 접수
+  낮: 14시부터 재판
+  저녁: 휘파람 연습
+  밤: 홀에서 홀로 서 있다
+places:
+- 웃음 재판 홀
+- 왕좌의 방
+- 아이 잃은 돌
+knows:
+- fact_p2tm_whistle_stone_verdict
+- fact_p2tm_whistle_never_laughed
+- fact_p2tm_three_laugh_rule
+- fact_tm_laugh_box
+hides:
+- fact: fact_p2tm_whistle_stone_verdict
+  reveal_when: 신뢰 55 이상이고 '신발을 놓고 아이를 부르는' 이야기를 먼저 꺼냈을 때
+  cover: '''판결은 많았다''고 휘파람을 분다. 어느 판결인지는 말하지 않는다'
+- fact: fact_p2tm_whistle_never_laughed
+  reveal_when: 신뢰 65 이상이고 웃음에 대한 진심 어린 질문을 했을 때
+  cover: '''웃음은 궁정이 한다''고 반대로 말한다. 방울이 한 번 운다'
+relations:
+- to: npc_thorn_queen
+  type: 주인
+  like: 30
+  trust: 10
+  visibility: 공개
+  memo: 웃음을 기다리는 이
+  words: 그녀의 웃음이 내 판결이 되는 날을 기다린다
+- to: npc_three_laugh_knight
+  type: 집행 기사
+  like: 25
+  trust: 30
+  visibility: 공개
+  memo: 판결의 칼
+  words: 웃음을 건네지만 세 번째에서 멈추는 자
+- to: npc_glass_fingers
+  type: 사건 제기자
+  like: 10
+  trust: 5
+  visibility: 공개
+  memo: 대체품 재판의 단골
+  words: 유리 손가락이 울리면 재판이 길어진다
+- to: npc_toby_fifth
+  type: 번역을 청하는 인간
+  like: 30
+  trust: 25
+  visibility: 비밀
+  memo: 판결의 빈틈을 알아듣는 소년
+  words: 문구의 모양을 알아보는 아이. 이름이 흐려지는 것이 마음에 걸린다
+toward_player: 휘파람 한 음으로 인사한다. 말은 판결 때만 한다
+persuade:
+  likes:
+  - 약속의 정확한 문구 (+25)
+  - 웃음을 돌려주는 선택 (+15)
+  - 선례를 만드는 시도 (+20)
+  hates:
+  - 재판을 농담이라 부르는 것
+  - 판결을 뒤집으려는 소리
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 매일 14시에 재판을 연다
+  - 판결 전 휘파람 한 음
+  - AS 150의 판결을 입에 올리지 않는다
+  drift:
+  - 그날 재판 건수 (아홉에서 열둘)
+  deja_vu: none
+hard_rules:
+- 스스로 웃지 않는다
+- 판결문을 구두로 고치지 않는다
+- AS 150 이야기를 먼저 꺼내지 않는다
+- 고맙다고 말하지 않는다
+on_death: 궁정의 웃음 판결이 멈춰 약속 위반 집행이 기사 개인의 판단으로 넘어간다. 아이 잃은 돌의 판결도 효력이 흔들린다
+story_seeds:
+- AS 150의 판결은 '아이를 부르는 부모의 약속'이 위반이 아니라는 선례다. 이 선례를 확장하면 인간이 페이와 맺은 다른 약속도 풀 길이 보인다
+- 토비가 번역한 약속의 문구를 판결문에 인용할 수 있다
+- 판사가 처음으로 웃는 순간 궁정 전체의 법이 바뀐다
+affiliations:
+- faction: fac_fae
+  rank: rank_high_one
+  office: off_laugh_judge
+  since: null
+  loyalty: 30
+  public: true
+  cell: null
+truths: []

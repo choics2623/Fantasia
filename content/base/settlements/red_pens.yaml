@@ -1,0 +1,64 @@
+# 붉은 우리 — 녹테른 영지의 가장 큰 혈목장, 그리고 첫 갈증 성·그림자장미 저택으로 이어지는 영지의 마당 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §7.9, fac_nocturne, docs/world/people/nocturne.md.
+# 이 영지의 '수도'는 첫 갈증 성이지만 사람이 사는 곳은 우리다 — 성은 창이 없고 인간 하인 400이 전부라 outer 에 두고, 일과의 대부분이 도는 붉은 우리를 중심 배치도로 만들었다.
+# grid: 우리 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 북쪽 끝이 루멘 공물 길이 들어오는 검은 문, 남쪽이 검은 포도밭, 서쪽 담 너머가 하얀 우리, 동쪽 언덕이 영주 저택.
+# 인간은 해 뜰 때 시작해 해 질 녘(18:00~19:00) 우리로 돌아오고, 녹테른은 그 한 시간에 깨어난다. 해가 나는 날 녹테른은 저택 밖에 나오지 않는다 — 맑은 날은 탈출의 날.
+id: red_pens
+name: 붉은 우리
+node: red_pens
+kind: nocturne_pen
+grid: {w: 1600, h: 1200}
+curfew: {from: "21:30", to: "05:00", note: "인간은 막사 안. 문은 잠기고 목동이 입구에 선다. 낮 순찰은 크릭, 밤 순찰은 녹테른 사냥꾼. 울타리를 넘으면 하얀 우리 이송, 탈출은 갈증의 밤 명단 — 맑은 날에는 녹테른 순찰이 없다"}
+bells:
+  - {at: "05:30", name: 기상 호루라기 (목동)}
+  - {at: "18:00", name: 귀환 호루라기 (해 질 녘 — 녹테른이 일어난다)}
+  - {at: "21:30", name: 촛불 끄기 (인간은 우리 안에서)}
+  - {at: "00:00", name: 채혈 순번 (주 1회)}
+patrols: ["19:30", "22:00", "01:00", "03:30"]
+locations:
+  # ── 공물 문과 울타리 ──
+  - {id: red_pens__tribute_gate, name: 공물 문, xy: [800, 60], kind: gate, access: staff, hours: "24시 (긴밤월 14~15일 외에는 닫혀 있다)", rooms: [rp_tribute_yard], note: "루멘 공물 길이 녹테른 땅으로 들어오는 검은 문. 크릭 경비 30. 공물 명단 판이 문 안쪽에 걸려 있다"}
+  - {id: rp_tribute_yard, name: 공물 마당, parent: red_pens__tribute_gate, access: staff, hidden: "공물 명단과 도착 인원이 매년 2~3명 다르다. 올해 마당 모서리 돌 하나가 헐겁다 — 도착한 공물 가운데 한 사람이 밤사이 빠져나가기 쉬운 자리"}
+  - {id: rp_fence, name: 흰 울타리, xy: [800, 150], kind: fence, access: staff, hours: "24시", note: "우리를 두르는 흰 칠한 울타리. 넘으면 하얀 우리. 열쇠는 크릭 열쇠꾼이 쥔다"}
+  - {id: rp_herders_lodge, name: 크릭 목동 숙소, xy: [700, 190], kind: lodge, access: staff, hours: "24시", note: "울타리 혀 즈라그가 점호하는 숙소. 목동 400이 교대로 쓴다", hidden: "즈라그의 침대 아래 장부 — 크릭이 쓰는 숫자 표. 인간 수가 혈목장 장부보다 일곱 적다"}
+  # ── 인간의 자리 ──
+  - {id: rp_exercise_ground, name: 운동장, xy: [800, 420], kind: ground, access: serf, hours: "06:30-09:00 의무 달리기", note: "인간이 매일 아침 달리는 터. 피를 '좋게' 하기 위한 운동이다. 낮에는 아이들이 논다"}
+  - {id: rp_pen_barracks, name: 우리 막사, xy: [800, 640], kind: barracks, access: serf, hours: "21:30-05:00 잠김", note: "흰 석조 막사 열두 동. 붉은 혈통 6,800이 번호로 산다. 문은 해 질 녘에 잠긴다", hidden: "7번 막사 마룻바닥 아래 회색 쑥 말린 것을 숨긴 틈. 피를 묽게 해 채혈 대상에서 빠지게 하는 약초"}
+  - {id: rp_feed_hall, name: 배급 홀, xy: [650, 560], kind: hall, access: serf, hours: "06:30-08:00, 12:30-13:30, 19:00-20:30", note: "붉은 고기·간·콩·포도. 대륙에서 가장 잘 먹이는 곳이다 — 굶주림이 없다는 것이 이곳의 공포"}
+  - {id: rp_vineyard, name: 검은 포도밭, xy: [800, 900], kind: field, access: serf, hours: "09:00-18:00", note: "혈포도주의 원료. 인간 일손은 붉은 손으로 돌아온다"}
+  - {id: rp_infirmary, name: 회복 막사, xy: [1000, 560], kind: infirmary, access: staff, hours: "24시", note: "채혈 뒤 쓰러진 사람이 눕는 곳. 간호인 노파 헤트가 쑥 탕약을 끓인다", hidden: "솥 아래에 회색 쑥 말린 것을 쌓아 두었다 — 쑥을 먹으면 피가 묽어져 채혈을 건너뛴다. 소문은 '노파의 탕약'"}
+  - {id: rp_bleed_shed, name: 채혈 헛간, xy: [1000, 640], kind: shed, access: staff, hours: "19:00-03:00 채혈", rooms: [rp_ledger_board], note: "주 1회 순번으로 채혈. 피 표(나무패)에 홈이 새겨진다. 하급 녹테른이 시음하고 크릭이 지킨다"}
+  - {id: rp_ledger_board, name: 채혈 헛간 기록판, parent: rp_bleed_shed, access: secret, hidden: "탈출자는 '병사(病死)'로 기록된다. 세실의 오르페가 기록을 고친다 — 붉은 우리 장부에서 이 3년 사이 서른여덟 번"}
+  # ── 하얀 우리 ──
+  - {id: red_pens__white_pen, name: 하얀 우리, xy: [250, 640], kind: pen, access: secret, hours: "24시", rooms: [rp_white_garden], note: "선별 육종장. 인간 1,200이 깨끗하고 조용하게 산다. 담 너머 서쪽. 하얀 우리의 아이들은 엘다르와 거래된다(사실)"}
+  - {id: rp_white_garden, name: 하얀 우리 정원, parent: red_pens__white_pen, access: secret, note: "선별된 몸을 운동시키는 조용한 정원. 흰 막사 사이 작은 연못이 있다", hidden: "하얀 우리 출신 '열두 번째 아이' 마리안(19)이 어릴 때 꿈 이야기를 했다는 이유로 잔향 후보로 분류되었다. 다음 봄 영혼 정원으로 넘겨질 예정이다 — 그녀는 보통 인간이다"}
+  # ── 영주와 녹테른의 자리 ──
+  - {id: rp_lord_manor, name: 영주 저택, xy: [1100, 300], kind: manor, access: owner, hours: "18:00-04:00", rooms: [rp_tasting_room, rp_coffin_room], note: "붉은 우리의 영주 아드리엘 핏빛유리가 사는 언덕 저택. 붉은 달 가문의 우리 영주가 쓴다"}
+  - {id: rp_tasting_room, name: 시음실, parent: rp_lord_manor, access: owner, hidden: "혈통별 피 맛을 적은 장부. '탁혈'로 적힌 줄 열둘이 사실은 세실의 '병사' 명단의 이름들"}
+  - {id: rp_coffin_room, name: 낮의 방, parent: rp_lord_manor, access: owner, hours: "04:00-18:00", note: "저택 지하. 맑은 날은 영주가 이 방에서 나오지 않는다"}
+  - {id: rp_overlook, name: 순시 언덕, xy: [1250, 520], kind: hill, access: staff, hours: "19:30-23:00", note: "녹테른 귀족이 채혈을 내려다보며 순시하는 언덕"}
+  - {id: rp_hunter_post, name: 사냥꾼 초소, xy: [1400, 760], kind: post, access: staff, hours: "24시", note: "갈증받이 사냥꾼이 7일째 피를 받는 초소. 탈주 흔적을 따라 출발한다"}
+outer:
+  # ── 첫 갈증 성 (13시간) ──
+  - {id: first_thirst_castle, name: 첫 갈증 성 (흑성 아르네스), hours: 13, node: first_thirst_castle}
+  - {id: first_thirst_castle__great_hall, name: 대연회장, hours: 13, node: first_thirst_castle}
+  - {id: first_thirst_castle__cup_hall, name: 첫 잔의 회합장, hours: 13, node: first_thirst_castle}
+  - {id: first_thirst_castle__well, name: 첫 갈증의 우물, hours: 13, node: first_thirst_castle}
+  - {id: first_thirst_castle__throne, name: 옥좌 '마르지 않는 잔', hours: 13, node: first_thirst_castle}
+  - {id: first_thirst_castle__tower, name: 탑 천장 (박쥐날개 처소), hours: 13, node: first_thirst_castle}
+  - {id: first_thirst_castle__kennel, name: 사냥꾼 개집·집행인의 방, hours: 13, node: first_thirst_castle}
+  # ── 그림자장미 저택 (19시간) ──
+  - {id: rose_manor, name: 그림자장미 저택, hours: 19, node: rose_manor}
+  - {id: rose_manor__library, name: 저택 서재 (빼돌린 명단), hours: 19, node: rose_manor}
+  - {id: rose_manor__garden, name: 장미원 (셋째 덤불 아래 지하 통로), hours: 19, node: rose_manor}
+  - {id: rose_manor__greenhouse, name: 그림자장미 온실 (수로 뚜껑), hours: 19, node: rose_manor}
+  - {id: rose_manor__overseer_hut, name: 장미 우리 감독 막사, hours: 19, node: rose_manor}
+  - {id: nocturne__nameless_mound, name: 이름 없는 둔덕 (검은 장미 410그루), hours: 19, node: rose_manor}
+  # ── 다른 우리와 경계 ──
+  - {id: nocturne__black_chalice_pen, name: 검은성배 우리, hours: 6, node: red_pens}
+  - {id: nocturne__obsidian_pen, name: 흑수정 우리, hours: 9, node: red_pens}
+  - {id: nocturne__silentbell_pen, name: 침묵종 우리, hours: 11, node: red_pens}
+  - {id: nocturne__stillwater_dock, name: 고요물의 밤 부두, hours: 14, node: red_pens}
+  - {id: nocturne__tooth_valley, name: 이빨 골짜기 (굶주린 자들의 폐허), hours: 16, node: red_pens}
+  - {id: nocturne__thorn_roots, name: 가시 숲 뿌리 굴, hours: 17, node: red_pens}
+  - {id: nocturne__marsh_edge, name: 늪 경계 은신처 (붉은 갈대 선), hours: 35, node: rose_manor}
+  - {id: nocturne__tribute_road, name: 공물 길 (루멘 쪽 49시간), hours: 24, node: red_pens}

@@ -1,0 +1,169 @@
+# 바위배 우그라 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_ugra
+name: 바위배 우그라
+aka:
+- 바위를 문 입
+- 즉시 남침
+- 구백 해
+tier: B
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 남
+age: 900
+region: 흐로스가르드
+home: 얼음턱 전당 씨족장 숙소 (본 거처는 서리땅 동부)
+job: 바위배 씨족장 — 얼음 탁자 구성원, 씨족 창고와 노예 관리
+rank: 요툰 씨족장 (욀드), 즉시 남침파
+summary: '''먹을 수 있는 것은 먹는다''를 가훈으로 삼은 씨족의 구백 살 씨족장. 노예를 가장 먼저 굶겼고, 왕 몰래 씨족 창고에 보리 120섬을 쌓아 남침에서 자기 전사만 먹이려 한다'
+source: docs/world/people/hrosgard.md (npc_hg_ugra)
+life:
+- year: -588
+  age: 0
+  event: 바위배 씨족에 태어남 (AS 기준)
+- year: -200
+  age: 388
+  event: 바위배의 욀드가 되기 전 십 년 동안 가장 많이 먹은 전사로 불림
+- year: 280
+  age: 868
+  event: 씨족장에 오름. 노예를 '겨울 식량 비축'으로 계산하는 장부를 시작
+- year: 310
+  age: 898
+  event: 흉작 3년째, 노예를 가장 먼저 굶김
+appearance:
+- 얼굴이 바위처럼 각진 늙은 거인, 입이 크고 이가 닳았다
+- 목에 씨족 문장 '바위를 문 입' 석판
+- 허리에 보리 이삭 모양 구리 장식 — 먹는 것을 자랑한다
+smell: 짐승 기름과 오래된 가죽, 얼음 냄새
+voice_sound: 굵고 낮은 목소리. 말을 하다가 마른침을 삼킨다
+personality:
+  disposition:
+    용기: 70
+    자비: -30
+    정직: 40
+    신앙: 35
+    탐욕: 65
+    충성: 60
+  temperament:
+  - 탐욕
+  - 완고
+  - 성급
+  habits:
+  - 식탁에서 남이 먹는 것을 한 번 훑는다
+  - 창고 열쇠를 허리춤에서 손으로 확인한다
+  - 서두르는 요툰을 의심하면서도 자기 대답은 점점 빨라진다
+  values: 먹을 수 있는 것은 먹는다. 먹을 수 없는 것은 덜어낸다
+  fears:
+  - 보리 120섬이 왕에게 알려지는 것
+  - 남침이 연기되어 겨울이 한 번 더 오는 것
+  - 자기 노예가 먼저 남쪽으로 가 버리는 것
+  desires:
+    short: 서리 길이 열리면 즉시 남침하는 것
+    long: 왕의 곡창 군량 300섬을 열게 만드는 것
+voice:
+  register:
+    to_superior: 왕에게는 낮은 존대이되 말끝이 빨라진다
+    to_equal: 씨족장에게는 하오체
+    to_inferior: 전사에게는 해라체
+    to_player_default: 인간에게는 짧고 직설적. '작은 이'
+  tics:
+  - '''먹을 수 있는 것은 먹는다.'''
+  use:
+  - 고기
+  - 창고
+  - 식탁
+  - 노예
+  - 남쪽
+  - 군량
+  avoid:
+  - 기다린다
+  - 나눈다
+  - 굶주림
+  length: 짧고 빠르다
+  samples:
+  - situation: 첫 만남
+    line: 고기를 가져왔나. 아니면 입만 가져왔나. 입만이라면 식탁에서 멀리 앉아라.
+  - situation: 호의
+    line: 네 이름을 줄여 부르지 않겠다. 아비의 이름까지 기억하겠다. 같은 고기를 먹었으니.
+  - situation: 거절
+    line: 먹을 수 있는 것을 먹지 않는 것은 어리석음이다. 어리석음은 노예에게나 허락된다.
+  - situation: 분노
+    line: 내 노예 이야기를 식탁에서 하지 마라! 노예는 씨족의 것이다. 얼음 탁자의 것이 아니다.
+schedule:
+  아침: 씨족장 숙소에서 창 가죽에 기름을 먹인다
+  낮: 얼음 탁자 회합에서 침묵으로 먹기만 한다
+  저녁: 저녁 식탁에서 남침 날짜를 묻는다
+  밤: 밤 숙소에서 씨족 창고 열쇠를 어루만진다
+places:
+- 씨족장 숙소
+- 얼음 탁자
+- 바위배 씨족 창고
+knows:
+- fact_hg_frost_road_closes
+- fact_hg_baug_owns_stonekneed_slaves
+hides:
+- fact: fact_p2hg_ugra_hidden_barley
+  reveal_when: 신뢰 55 이상이고 남침 군량 이야기가 먼저 나왔을 때
+  cover: '''창고는 비었다''고 한다'
+- fact: fact_p2hg_ugra_starves_slaves_first
+  reveal_when: 호감 35 이상 — 스스로 말하지 않는다
+  cover: 노예는 씨족의 일이라 잘라 말한다
+relations:
+- to: npc_hrimnir
+  type: 왕
+  like: -20
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 왕이 먼저 굶는 것을 못마땅해한다
+- to: npc_hg_utga
+  type: 같은 남침파
+  like: 30
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 같은 고기를 먹은 사이
+- to: npc_skadir
+  type: 왕자
+  like: 35
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 남침의 칼날로 본다
+- to: npc_hg_helda
+  type: 씨족장
+  like: 10
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 같은 식탁의 남침 찬성자
+toward_player: 급하고 거칠다. 군량을 주는 사람에게는 관대하다
+persuade:
+  likes: 남침에 쓸 보리·고기(+30)
+  hates: 자기 씨족의 이름을 길게 부르는 것(+15)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_jarl
+  office: off_clan_rockbelly
+  since: 280
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 씨족 창고에 보리 120섬이 있다
+  drift:
+  - 그날 식탁에서 먼저 나오는 고기의 종류
+  deja_vu: none
+hard_rules:
+- 창고 이야기를 먼저 꺼내지 않는다
+- 노예 이야기를 얼음 탁자에서 하지 않는다
+on_death: 바위배 씨족이 즉시 분열해 남침파 힘이 약해지고, 숨은 보리 120섬이 씨족 전사들에게 풀려 약탈이 시작된다.
+story_seeds:
+- 우그라의 숨은 보리 120섬은 남침 군량 300섬과 별개의 자루다 — 두 군량을 합치면 남침 날짜가 앞당겨진다.
+- 바위배 노예가 가장 먼저 굶는다. 그들이 서리 길로 가기 전에 우그라가 막는다.

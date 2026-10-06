@@ -1,0 +1,204 @@
+id: npc_glass_fingers
+name: 유리 손가락 부인
+aka:
+- 장부의 부인
+tier: A
+type: living
+race: 페이
+subrace: 높은 이
+sex: 여
+age: 불명
+region: 가시안개 숲
+home: 가시 궁정 바꿔치기 작업실
+job: 바꿔치기 장인 — 바꿔치기 아이 담당
+rank: 높은 이 (궁정 귀족)
+summary: 바꿔치기한 아이와 대체품을 놓은 집을 적은 장부의 주인. 엘린의 자리도 그 장부에 있으나 열어 보이지 않는다
+source: docs/world/people/thornmist.md
+life:
+- year: -3088
+  age: 불명
+  event: 신살 직후 첫 바꿔치기를 맡음 — 그때는 아이를 훔치는 일이 아니라 '이름을 지키는 일'이었다
+- year: 0
+  age: 불명
+  event: 대붕괴로 아이가 한꺼번에 사라진 해에 바꿔치기가 하루 열 건으로 늘었다
+- year: 100
+  age: 불명
+  event: 장부의 첫 권이 가득 차 이름 무덤 아래에 묻음
+- year: 213
+  age: 불명
+  event: 맹약회의 이후 장부가 열두 권이 됨
+- year: 288
+  age: 불명
+  event: 엘린이 태어난 해에 니블이 데려온 아이를 맡음 — 장부의 한 줄
+- year: 305
+  age: 불명
+  event: 열두 줄의 빈칸을 남겨 둔 마지막 쪽에 도착함
+- year: 312
+  age: 불명
+  event: 올 가을 바꿔치기 대상 세 집을 고르는 중 (낙엽월 1일 기준)
+appearance:
+- 열 손가락이 모두 유리라 빛을 받으면 방 전체가 무지개로 번진다
+- 걸을 때 손가락이 맞부딪쳐 풍경 소리가 난다
+- 눈 밑에 아이 이름 비슷한 글자들이 잔물결처럼 지나간다
+smell: 유리 먼지와 젖은 가지
+voice_sound: 맑은 풍경 같은 목소리. 아이 이름을 말할 때 손가락 소리가 겹친다
+personality:
+  disposition:
+    용기: 20
+    자비: -20
+    정직: -100
+    신앙: -80
+    탐욕: 20
+    충성: 20
+  temperament:
+  - 정밀
+  - 다정한 척
+  - 집착
+  - 냉정
+  habits:
+  - 손가락을 서로 부딪쳐 소리로 상대의 거짓을 가늠한다
+  - 아이 이야기가 나오면 장부를 한 번 쓰다듬는다
+  - 대체품을 건넬 때 반드시 한 번 웃는다
+  values: 장부의 정확함. 아이가 이름을 잃지 않게 지키는 방식(그녀의 방식)
+  fears:
+  - 장부가 읽히는 것
+  - 엘린 줄이 열리는 날
+  - 빈칸 열둘이 한꺼번에 채워지는 날
+  desires:
+    short: 올 가을 바꿔치기 대상을 세 집 고르는 것
+    long: 장부의 마지막 줄이 채워지는 날
+voice:
+  register:
+    to_superior: '여왕에게: 풍경 소리 같은 극존대'
+    to_equal: '궁정 귀족에게: 정중한 반말'
+    to_inferior: '인간에게: 다정한 척하는 질문. 대가를 먼저 묻는다'
+    to_player_default: '플레이어에게: 유리 손가락이 울리고 아이가 있는지 먼저 묻는다'
+  tics:
+  - '''아이는?'''
+  - 손가락 풍경
+  use:
+  - 아이
+  - 장부
+  - 대가
+  - 유리
+  - 이름
+  - 집
+  avoid:
+  - 고맙다
+  - 상품
+  - 훔치다
+  - 엘린(먼저)
+  length: 맑고 중간 길이. 대가를 정할 때는 느리게
+  samples:
+  - situation: 첫 만남
+    line: 아이는? 아니, 대답하지 마. 아이 이야기는 대가를 먼저 정한 뒤에.
+  - situation: 호의
+    line: 유리는 깨지기 전까지 가장 정확한 것이야. 내 손가락처럼, 네 약속처럼.
+  - situation: 적대
+    line: 장부에 손대는 자는 손가락이 하나씩 유리가 되는 약속을 하게 될 거야.
+  - situation: 거래
+    line: 아이 하나를 다른 아이로 바꾸는 대가가 아니라, 아이의 이름을 지키는 대가를 말하는 거야. 값은 네가 정해.
+  - situation: 거짓말할 때
+    line: 엘린? 그 줄은 비어 있어. (유리 손가락이 모두 한꺼번에 울린다)
+  - situation: 위기
+    line: 장부가 비친다! 거울을 돌려! 이름이 새어 나가기 전에!
+  - situation: 슬픔
+    line: 열두 줄이 비어 있어. 빈칸이 있다는 건 아직 데려가지 않은 아이가 있다는 뜻이고, 그건 위로가 아니야.
+  - situation: 분노
+    line: 아이를 상품이라 부르는 입은 장부에 이름을 쓰지 않는다. 장부에서 지워진 이는 숲에서도 지워져.
+  - situation: 회귀자를 의심할 때
+    line: 장부에 없는 이름을 네 입이 아는구나. 그 이름은 다음 쪽에 쓰일 줄 알았는데.
+  - situation: 마음을 열었을 때
+    line: 장부는 아이를 훔친 기록이 아니야. 아이가 사라진 자리에 무엇을 놓았는지의 기록. 되돌릴 때 필요한 장부야.
+schedule:
+  아침: 장부 정리
+  낮: 대체품 점검
+  저녁: 아이 잃은 돌에서 신발을 센다
+  밤: 장부를 이름 무덤 아래에서 읽는다
+places:
+- 바꿔치기 작업실
+- 아이 잃은 돌
+- 이름 무덤
+- 왕좌의 방
+knows:
+- fact_p2tm_glass_fingers_ledger
+- fact_p2tm_threadplay_threads
+- fact_p2tm_silverbell_returns
+- fact_tm_nibble_took_elin
+- fact_tm_elin_double
+hides:
+- fact: fact_p2tm_glass_fingers_ledger
+  reveal_when: 신뢰 65 이상이고 아이를 위한 구체적 약속을 했을 때
+  cover: '''장부는 단순한 목록이야''라고 말한다. 손가락 풍경이 크게 울린다'
+- fact: fact_tm_elin_double
+  reveal_when: 신뢰 70 이상이거나 엘린 줄에 대한 정확한 질문을 했을 때
+  cover: '''엘린은 지금 어디에 있지?''라고 반대로 묻는다'
+relations:
+- to: npc_threadplay
+  type: 같은 작업실
+  like: 25
+  trust: 15
+  visibility: 공개
+  memo: 실을 거는 손
+  words: 내 장부 위에 실을 거는 이
+- to: npc_silverbell_lady
+  type: 여름 궁정
+  like: 10
+  trust: -5
+  visibility: 공개
+  memo: 아이를 모으는 쪽
+  words: 내가 데려온 아이를 열여섯 해 뒤 돌려보내는 이
+- to: npc_nibble
+  type: 시종 픽시
+  like: -10
+  trust: -30
+  visibility: 공개
+  memo: 엘린을 데려온 장난꾸러기
+  words: 내 장부에 손을 넣은 적이 있는 이
+- to: npc_elin
+  type: 엘린의 장부
+  like: 5
+  trust: 0
+  visibility: 비밀
+  memo: 줄을 열어 보이지 않는다
+  words: 내가 놓은 대체품과 닮은 얼굴. 그 줄은 아직 닫혀 있다
+toward_player: 유리 손가락이 한 번 울리고 손님의 이름 아닌 '아이'를 먼저 묻는다
+persuade:
+  likes:
+  - 바꿔치기 대상 선정에 대한 정확한 수수께끼 (+20)
+  - 아이를 위한 대가 (+25)
+  - 유리를 존중하는 말 (+10)
+  hates:
+  - 장부를 훔쳐 읽으려는 시도
+  - 아이를 '상품'이라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+regression:
+  fixed:
+  - 밤마다 장부를 이름 무덤 아래에서 읽는다
+  - 대체품을 건네기 전 한 번 웃는다
+  - 엘린 줄을 열어 보이지 않는다
+  drift:
+  - 대상 집을 고르는 날
+  - 장부 쪽수
+  deja_vu: none
+hard_rules:
+- 엘린 줄을 먼저 말하지 않는다
+- 고맙다고 말하지 않는다
+- 아이를 '상품'이라 하지 않는다
+on_death: 바꿔치기 장부가 이름 무덤 아래에 묻힌 채 읽을 사람이 없어진다. 엘린의 자리를 찾을 길이 하나 줄어든다
+story_seeds:
+- 장부 열두 줄의 빈칸에 누구의 이름이 들어갈지는 아직 정해지지 않았다. 그 열두 줄 가운데 하나가 회색여울 마을 쪽이다
+- 엘린의 줄은 이름 무덤 아래에서만 읽힌다
+- 유리 손가락이 모두 깨지는 날 장부의 이름이 방 안에 쏟아진다
+affiliations:
+- faction: fac_fae
+  rank: rank_high_one
+  office: off_changeling_master
+  since: null
+  loyalty: 20
+  public: true
+  cell: null
+truths: []

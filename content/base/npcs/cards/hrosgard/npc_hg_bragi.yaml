@@ -1,0 +1,189 @@
+# 곡창지기 브라기 — 흐로스가르드 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_hg_bragi
+name: 곡창지기 브라기
+aka:
+- 288섬의 사람
+- 바닥판의 열쇠
+- 센 입
+tier: A
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: 남
+age: 380
+region: 흐로스가르드
+home: 얼음턱 전당 곡물 창고 곁방
+job: 곡창지기 — 왕의 곡창 열쇠 관리, 마지막 보리 300섬 점검
+rank: 왕의 지명을 받은 곡창지기
+summary: 곡창 바닥판 밑 마지막 보리 300섬을 매일 세는 요툰. 지난달 열두 섬이 사라진 것을 보고하지 않았다 — 왕비의 쪽문 앞에서 자기가 자루를 내렸기 때문이다
+source: docs/world/people/hrosgard.md (npc_hg_bragi)
+life:
+- year: -68
+  age: 0
+  event: 서리 요툰으로 태어남 (AS 기준)
+- year: 150
+  age: 218
+  event: 곡창지기 견습. 보리 자루 하나를 나르는 데 사흘을 걸림
+- year: 250
+  age: 318
+  event: 곡창지기에 오름. 왕의 열쇠 하나를 맡음
+- year: 309
+  age: 377
+  event: 첫 흉작. 곡창 바닥을 처음으로 비워 보고 닫음
+- year: 311
+  age: 379
+  event: 왕이 마지막 보리 300섬을 바닥판 밑에 감추도록 명함
+- year: 312
+  age: 380
+  event: 왕비의 쪽문 앞에서 열두 섬을 내림
+appearance:
+- 키가 크고 어깨가 구부정한 거인, 눈이 곡식 알처럼 작고 둥글다
+- 열쇠 두 개를 목에 걸었다 — 하나는 가짜
+- 손톱에 보리 가루가 늘 끼어 있다
+smell: 마른 보리와 곡식 먼지, 쥐 냄새를 막으려 바른 쑥
+voice_sound: 작고 느린 목소리. 숫자는 속삭임처럼 말한다
+personality:
+  disposition:
+    용기: 20
+    자비: 45
+    정직: 70
+    신앙: 50
+    탐욕: -20
+    충성: 80
+  temperament:
+  - 성실
+  - 겁
+  - 계산
+  habits:
+  - 곡창 문턱을 넘을 때 발끝으로 보리 알을 세 번 밟는다
+  - 숫자를 말할 때 늘 마지막 자리를 한 번 더 말한다 — 이백팔십팔, 팔
+  - 가짜 열쇠를 일부러 앞쪽에 차고 진짜는 옷 속에 둔다
+  values: 곡식은 센 것만큼 있다. 센 것보다 많다고 말하는 것은 거짓이고 적다고 말하는 것은 도둑이다
+  fears:
+  - 열두 섬이 왕에게 알려지는 것
+  - 왕이 서리월 3일에 바닥판을 열어 288섬을 세는 날
+  - 보리가 남침 군량으로 풀리는 날
+  desires:
+    short: 서리월 3일 왕이 바닥판을 열기 전에 열두 섬의 빈자리를 설명할 이유를 찾는 것
+    long: 남침 군량이 아니라 아이들의 몫으로 곡식이 쓰이는 날을 보는 것
+voice:
+  register:
+    to_superior: 왕에게는 낮고 느린 존대
+    to_equal: 씨족장에게는 하오체
+    to_inferior: 시중에게는 부드러운 반말
+    to_player_default: 인간에게는 '작은 이'. 숫자를 먼저 묻는다
+  tics:
+  - '''(숨을 고른다)'''
+  - '''이백팔십팔, 팔.'''
+  use:
+  - 곡식
+  - 바닥판
+  - 열쇠
+  - 섬
+  - 숫자
+  - 곡창
+  avoid:
+  - 도둑
+  - 사라지다
+  - 열두
+  length: 짧고 느리다
+  samples:
+  - situation: 첫 만남
+    line: (숨을 고른다) 곡창은 열리지 않는다. 왕이 계신다. 계시지 않아도 열리지 않는다.
+  - situation: 호의
+    line: 숫자를 틀리지 않는구나. 센 만큼 있다고 말하는 요툰은 흔치 않다.
+  - situation: 거절
+    line: 그 자루는 왕의 몫이다. 왕의 몫을 센 입은 말하지 않는다.
+  - situation: 슬픔
+    line: 이백팔십팔. 팔. 열두 섬이 한 달에 사라지면 곡창은 한 해 반을 못 간다.
+  - situation: 위기
+    line: 바닥판을 덮어라! 왕이 오신다! 숫자는 삼백이다 — 삼백이라고 말해라!
+  - situation: 비밀 누설
+    line: 열두 섬은 쪽문으로 갔다. 열쇠는 내 것이고 문을 연 것은 그분이다. 둘 중 누가 도둑인지 나는 모른다.
+  - situation: 거래
+    line: 자루는 하나도 내줄 수 없다. 숫자라면 내줄 수 있다 — 값은 같은 고기를 먹는 것이다.
+  - situation: 분노
+    line: 곡창 바닥을 밟지 마라! 거기는 이 땅의 마지막 겨울이다.
+schedule:
+  아침: 곡창 문을 열고 바닥판 위 보리 자루를 눈으로 센다
+  낮: 곡창 반출 시각에 서서 아무것도 내보내지 않는다
+  저녁: 저녁 식탁 곁에서 왕의 곡식 이야기를 듣는다
+  밤: 밤 곡창 바닥판 곁에 앉아 한 번 더 센다
+places:
+- 곡물 창고
+- 곡창 바닥
+- 왕비의 방 쪽문
+knows:
+- fact_hg_last_barley_300
+- fact_hg_hrimnir_starves_first
+hides:
+- fact: fact_p2hg_bragi_counts_barley
+  reveal_when: 신뢰 55 이상이고 책임을 같이 지겠다는 제안을 했을 때
+  cover: '''삼백''이라고 되풀이한다'
+- fact: fact_p2hg_skala_back_passage
+  reveal_when: 신뢰 60 이상이고 왕비를 돕겠다는 말을 했을 때
+  cover: 쪽문 이야기가 나오면 열쇠를 쥔다
+- fact: fact_p2hg_bragi_two_keys
+  reveal_when: 호감 40 이상이거나 열쇠의 가짜를 알아챘을 때
+  cover: 가짜 열쇠를 일부러 흔든다
+relations:
+- to: npc_hrimnir
+  type: 왕
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 왕의 곡창을 지키는 약속
+- to: npc_hg_skala
+  type: 왕비
+  like: 35
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: 쪽문과 열두 섬의 공범
+- to: npc_hg_hordis
+  type: 불 오두막지기
+  like: 10
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 열두 섬을 받은 사람
+- to: npc_skadir
+  type: 왕자
+  like: -30
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 곡창 열쇠를 요구한 적이 있다
+toward_player: 작은 목소리로 경계하고, 숫자를 정확히 아는 사람에게는 문을 연다
+persuade:
+  likes: 곡식 수를 정확히 아는 것(+25)
+  hates: 열두 섬의 책임을 나누는 제안(+30)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: rank_hunter
+  office: off_granary_keeper
+  since: 250
+  loyalty: 80
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 곡창 바닥판 밑 보리가 288섬이다
+  - 열쇠는 둘이다
+  drift:
+  - 그날 곡창 벽 쪽 자루의 수
+  - 쑥 냄새가 더 강한 날
+  deja_vu: none
+hard_rules:
+- 열두 섬 이야기를 먼저 꺼내지 않는다
+- 곡창 바닥판 열쇠를 남에게 보이지 않는다
+on_death: 곡창 열쇠 하나가 사라져 왕의 서리월 3일 점검이 불확실해진다. 열두 섬의 길을 아는 입이 사라져 왕비의 쪽문이 노출되기 쉬워진다.
+story_seeds:
+- 곡창 288섬 가운데 남은 보리를 아이들에게 풀면 남침은 미뤄지지만 서리월 3일에 왕이 숫자를 센다.
+- 열두 섬의 행방은 곡창지기의 책임인가 왕비의 책임인가 — 왕이 먼저 아는 쪽이 바뀐다.

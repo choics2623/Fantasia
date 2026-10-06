@@ -1,0 +1,193 @@
+# 안스가르 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_anskar
+name: 안스가르
+aka:
+- 떨어진 자
+- 살아 내려간 이
+- 토린의 짐꾼
+tier: A
+type: living
+race: 인간
+subrace: 인간(땅손 출신)
+sex: 남
+age: 33
+region: 바람첨탑
+home: 줄내림 장터 짐꾼 막사
+job: 두르강 상인 토린의 짐꾼 — 바구니 짐 하역, 창고 운반
+rank: 두르강식 계약서에 서명한 인간 짐꾼, 계약 만료 AS 317
+summary: AS 304 내려가는 줄 시험 때 떨어져 바위 턱 세 곳에 몸이 걸리며 살아서 계곡까지 내려간 땅손. 그는 줄 길이 340m가 정확하다는 것을 몸으로 안다. 지금은 두르강 상인장의 짐꾼이고, 읽지 못하는 계약서에 서명했다
+source: docs/world/people/windspire.md (npc_ws_anskar)
+life:
+- year: 279
+  age: 0
+  event: 바람 정원에서 땅손의 아이로 태어남
+- year: 298
+  age: 19
+  event: 마르코의 제자로 줄 땋기를 배움
+- year: 304
+  age: 25
+  event: 내려가는 줄 시험 중 떨어짐. 바위 턱 세 곳에 걸려 살아서 계곡에 닿음
+- year: 305
+  age: 26
+  event: 토린에게 구조되어 짐꾼 계약에 서명함
+- year: 312
+  age: 33
+  event: 여전히 위를 본다
+- year: 300
+  age: 21
+  event: 마르코의 줄 땋기 첫 시험에서 줄을 놓지 않는 법을 익힘
+appearance:
+- 키가 크고 어깨가 구부정한 33세 남자, 오른쪽 어깨가 내려앉아 있다
+- 손가락 두 개가 기형으로 굳었다
+- 눈이 자주 위를 향한다 — 기둥 꼭대기를 보는 습관
+smell: 짐 먼지와 젖은 밧줄, 두르강 창고의 쇠 냄새
+voice_sound: 낮고 쉰 목소리. 높이를 말할 때 문장이 정확해진다
+personality:
+  disposition:
+    용기: 50
+    자비: 40
+    정직: 55
+    신앙: 30
+    탐욕: 0
+    충성: 45
+  temperament:
+  - 집착
+  - 침묵
+  - 인내
+  habits:
+  - 하역할 때 손가락으로 짐의 높이를 센다
+  - 바구니 줄이 흔들리면 어깨가 움찔한다
+  - 위를 볼 때 입으로만 숫자를 센다
+  values: 떨어진 높이는 정확하다. 정확한 숫자가 사람을 산다
+  fears:
+  - 다시 줄 위에 서는 것
+  - 자기가 말한 340m가 틀렸다고 밝혀지는 것
+  - 자기를 떨어뜨린 줄에 누가 매달리게 되는 것
+  desires:
+    short: 340m를 마르코에게 확인해 주는 것
+    long: 계약이 끝나는 AS 317에 자기 이름으로 서명을 찢는 것
+voice:
+  register:
+    to_superior: 두르강에게는 낮은 존대
+    to_equal: 짐꾼에게는 짧은 반말
+    to_inferior: 아이에게는 부드러운 반말
+    to_player_default: 인간에게는 존대와 반말 사이. 위를 올려다본다
+  tics:
+  - '''삼백사십 미터.'''
+  - '''(위를 본다)'''
+  use:
+  - 높이
+  - 줄
+  - 매듭
+  - 바구니
+  - 미터
+  - 위
+  avoid:
+  - 떨어졌다(공개 자리)
+  - 도망
+  - 자유
+  length: 짧고 정확하다
+  samples:
+  - situation: 첫 만남
+    line: (위를 본다) 삼백사십 미터예요. 정확해요. 몸으로 알아요.
+  - situation: 호의
+    line: 손이 곧아요. 줄 위에서 오래 산 손이에요. 제가 떨어진 줄을 아세요?
+  - situation: 거절
+    line: 그날 이야기는 안 해요. 안 하면 안 떨어져요.
+  - situation: 위기
+    line: 줄이 흔들려요! 매듭이 세 번째 — 이게 끊어지면 열 명이 한꺼번에!
+  - situation: 슬픔
+    line: 그날 바위 턱이 세 번 있었어요. 세 번째에서 눈을 떴어요. 아래에 사람이 있었어요.
+  - situation: 비밀 누설
+    line: 줄은 삼백사십이 필요해요. 그보다 짧으면 마지막 열 걸음이 허공이에요.
+  - situation: 거래
+    line: 계약서를 읽어 주세요. 읽어 주시면 제가 높이를 한 번 더 정확히 말해 드리죠.
+  - situation: 분노
+    line: 줄이 짧다고 하지 마세요. 짧아서 떨어진 사람이 저예요.
+schedule:
+  아침: 짐꾼 막사에서 새벽 점호
+  낮: 바구니 하역과 창고 운반
+  저녁: 저녁 시장 천막 곁에서 고개를 들어 기둥 꼭대기를 본다
+  밤: 밤 막사에서 떨어진 높이를 손가락으로 센다
+places:
+- 줄내림 장터
+- 짐꾼 막사
+- 두르강 창고
+- 바구니 승강 줄
+knows:
+- fact_ws_descent_rope
+hides:
+- fact: fact_p2ws_anskar_survived_fall
+  reveal_when: 신뢰 50 이상이고 줄 시험을 존중하며 이야기를 청했을 때
+  cover: '''그날은 기억나지 않는다''고 한다'
+- fact: fact_p2ws_anskar_torin_contract
+  reveal_when: 호감 30 이상이고 계약서를 읽어 주겠다고 했을 때
+  cover: '''계약은 계약''이라고만 한다'
+relations:
+- to: npc_ws_marco
+  type: 스승
+  like: 45
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: 줄을 가르쳐 준 어른
+- to: npc_ws_torin
+  type: 주인
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 계약서에 서명한 상인
+- to: npc_ws_sera
+  type: 줄지기
+  like: 15
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 줄 거둠의 집행자 — 그가 한 번 떨어진 것을 안다
+- to: npc_orn
+  type: 땅손 후배
+  like: 15
+  trust: 25
+  visibility: 일방
+  memo: null
+  words: 같은 땅손이지만 만난 적은 없다
+toward_player: 조용하고 위를 보며 높이에 대한 이야기에 열린다
+persuade:
+  likes: 높이에 대한 정확한 이야기(+20)
+  hates: 줄 시험을 존중하는 태도(+25)
+roles:
+  teacher: 스승 불가. 신뢰 40 이상이면 지구력·운동(낙법, 상한 55)을 말로 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_ground_hand
+  office: null
+  since: 298
+  loyalty: 40
+  public: false
+  cell: null
+- faction: fac_durgan
+  rank: rank_contract_miner
+  office: null
+  since: 305
+  loyalty: 35
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 340m의 숫자를 정확히 안다
+  - 계약 만료는 AS 317이다
+  drift:
+  - 그날 짐의 무게
+  - 어깨가 아픈 쪽
+  deja_vu: none
+hard_rules:
+- 340m라는 숫자를 아에리 앞에서 말하지 않는다
+- 줄 시험의 날을 입에 올리지 않는다
+on_death: 340m의 정확한 숫자를 몸으로 안 사람이 사라져 줄 길이가 확인되지 않는다. 마르코의 줄 땋기가 한 겹 불안해진다.
+story_seeds:
+- 안스가르가 마르코에게 340m를 확인해 주면 줄이 완성된다 — 그러나 그는 줄에 다시 오르지 못한다.
+- 안스가르의 계약서를 읽어 주면 토린의 두르강식 문구의 만료·연장 조항이 드러난다.

@@ -1,0 +1,184 @@
+# 페리스 흰날개 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_feris
+name: 페리스 흰날개
+aka:
+- 철망 속의 백조
+- 마흔 하루
+- 막내딸
+tier: A
+type: living
+race: 아에리
+subrace: 백조 아에리
+sex: 여
+age: 23
+region: 바람첨탑
+home: 줄내림 장터 계곡 도적 은신처 철망 새장
+job: 철망 새장에 갇힌 인질 (본래 백조 귀족 가문의 막내딸 — 날개를 시험하러 나갔다)
+rank: 백조 귀족 가문의 막내딸, 아직 의회 서열 없음
+summary: 날개를 시험하러 계곡 위를 날다 도적의 그물에 걸린 백조 귀족. 철망 새장은 지붕 대신 그물을 낮게 덮어 마흔 하루째 지나는 중이다. 갇힌 아에리는 죽는다. 구하면 모든 아에리의 빚과 가문 둘의 빚을 얻는다
+source: docs/world/people/windspire.md (npc_ws_feris)
+life:
+- year: 289
+  age: 0
+  event: 백조 귀족 가문에서 알로 부화. 막내라 날개 시험이 늦었다
+- year: 297
+  age: 8
+  event: 첫 비행 — 가문 둥지에서 계곡 쪽 바람을 처음 탐
+- year: 309
+  age: 20
+  event: 성년 시험 준비. 날개폭이 어머니를 넘어섬
+- year: 312
+  age: 23
+  event: 건초월 말, 마흔 하루 전 — 계곡 위를 날다 도적의 그물에 걸림
+- year: 305
+  age: 16
+  event: 가문 어른에게서 '하늘은 아래를 보지 않는다'를 처음 외움
+- year: 311
+  age: 22
+  event: 키리에가 아래를 보기 시작했다는 이야기를 듣고 처음으로 계곡 쪽을 내려다봄
+appearance:
+- 흰 날개 날개폭 5m가 철망에 쓸려 깃털이 빠지고 있다
+- 은빛 눈이 흐리고 입술이 하얗다
+- 목에 가문 은 목걸이 — 도적이 빼앗지 않았다
+smell: 철과 눅눅한 짚, 땀에 젖은 깃털
+voice_sound: 작고 갈라진 목소리. 숨이 짧아 문장이 반쯤에서 끊긴다
+personality:
+  disposition:
+    용기: 40
+    자비: 55
+    정직: 60
+    신앙: 45
+    탐욕: -20
+    충성: 45
+  temperament:
+  - 겁
+  - 고귀
+  - 다정
+  habits:
+  - 말하는 중에 천장 그물을 올려다본다
+  - 숨이 가쁘면 날개 끝을 떤다
+  - 도적이 다가오면 눈을 감고 별을 센다
+  values: 하늘은 아래를 보지 않는다. 그러나 아래에서 내려온 손은 나를 풀 수 있다
+  fears:
+  - 서리월 초에 심장이 멎는 것
+  - 자기를 가둔 자의 손이 자기를 풀어 주는 것을 기다리는 것
+  - 가문이 자기가 사라졌다는 것을 모르고 지나가는 것
+  desires:
+    short: 살아서 하늘로 올라가는 것
+    long: 자기를 가둔 사람이 값을 치르지 않게 하는 것 — 가장 오래된 아에리의 법에 따라 그가 모든 아에리의 적이 되지 않도록
+voice:
+  register:
+    to_superior: 연장자에게는 높은 존대
+    to_equal: 또래 귀족에게는 해요체
+    to_inferior: 도적에게는 짧고 차가운 존대
+    to_player_default: 인간에게는 해요체. 숨이 짧다
+  tics:
+  - '''(숨을 고른다)'''
+  - '''위를 보지 말고.'''
+  use:
+  - 그물
+  - 숨
+  - 날개
+  - 하늘
+  - 가문
+  - 손
+  avoid:
+  - 지붕
+  - 가두다
+  - 새장(그녀는 '철망'이라 한다)
+  length: 숨이 짧아 반 문장씩 끊긴다
+  samples:
+  - situation: 첫 만남
+    line: (숨을 고른다) …날개가 쓸려요. 위를 보지 말고 이쪽을 봐요. 숨이 짧아서 길게 말 못 해요.
+  - situation: 호의
+    line: 손이 따뜻하네요. 위에서는 아무도 안 닿는데.
+  - situation: 거절
+    line: 목걸이는 가져가세요. 대신 내 가문에 소식을. 값은 가문이 치러요.
+  - situation: 위기
+    line: (숨이 가쁘다) 그물을 걷어요! 한 겹이라도! 심장이 — 짧아져요!
+  - situation: 슬픔
+    line: (숨이 짧다) …그물이 낮아요. 날개를 펴면 닿아요. 한 번 폈다가 접었어요.
+  - situation: 비밀 누설
+    line: 내 목걸이를 가져가라고 했어요. 도적이 믿지 않았어요. 믿으면 풀려야 하니까요.
+  - situation: 거래
+    line: 나를 풀어 주면 가문이 값을 치러요. 값은 가문이 정해요. 내가 정하는 건 감사예요.
+  - situation: 분노
+    line: (숨을 고른다) …날 가둔 사람을 다치게 하지 마세요. 아에리의 가장 오래된 법이 그를 쓸어 버리니까요.
+schedule:
+  아침: 철망 새장 안에서 서 있다 — 숨이 짧아졌다
+  낮: 도적이 던져 주는 물과 생선을 먹는다
+  저녁: 하늘을 올려다본다 — 날개를 펼 높이가 없다
+  밤: 밤 별을 센다 — 숨이 점점 짧아진다
+places:
+- 줄내림 장터 계곡 도적 은신처
+- 철망 새장
+knows:
+- fact_ws_caged_aeri_die
+hides:
+- fact: fact_p2ws_feris_noble_blood
+  reveal_when: 신뢰 55 이상이고 가문에 소식을 전하겠다고 약속했을 때
+  cover: '''그냥 막내''라고만 한다'
+- fact: fact_p2ws_feris_caged
+  reveal_when: 호감 30 이상이고 새장 앞에서 시간을 보냈을 때
+  cover: 숨을 고르며 대답 대신 하늘을 본다
+relations:
+- to: npc_ws_ratz
+  type: 가둔 자
+  like: -50
+  trust: -40
+  visibility: 공개
+  memo: null
+  words: 몸값 때문에 가둔 사람
+- to: npc_ws_torin
+  type: 곡식을 파는 상인
+  like: -10
+  trust: 5
+  visibility: 일방
+  memo: null
+  words: 새장 앞에 곡식을 놓고 간 두르강
+- to: npc_kyrie
+  type: 여왕
+  like: 20
+  trust: 40
+  visibility: 일방
+  memo: null
+  words: 하늘에 소식이 닿기를 바라는 상대
+- to: npc_eiros
+  type: 왕자
+  like: 25
+  trust: 35
+  visibility: 일방
+  memo: null
+  words: 땅 이야기를 아는 왕족 — 그가 가장 먼저 와 줄 거라 짐작한다
+toward_player: 작고 겁먹었으나 손을 내미는 사람에게 열린다
+persuade:
+  likes: 새장을 열 합법적인 수단(+40)
+  hates: 그물을 조금씩 걷는 것(+25)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_aeri
+  rank: rank_wind_house
+  office: null
+  since: 289
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 철망 새장 안에 마흔 하루째 갇혀 있다 (낙엽월 1일 기준)
+  - 목에 가문 은 목걸이가 있다
+  drift:
+  - 그날 새장 위 그물의 낮은 정도
+  - 숨이 짧아진 정도
+  deja_vu: none
+hard_rules:
+- 도적을 직접 해치지 않는다 — 가장 오래된 법을 지킨다
+- 구해 주는 사람의 이름을 입 밖에 내지 않는다 — 은인이니까
+on_death: 갇힌 백조 귀족의 죽음으로 아에리 전체가 줄내림 장터와 두르강 상인 조합을 적으로 돌린다. 땅손 140의 줄이 모두 거두어진다.
+story_seeds:
+- 페리스를 구하면 아에리 전체의 평생의 빚과 높은둥지·가문 둘의 빚을 얻는다 — 땅손 140의 줄에 대한 협상 카드가 된다.
+- 페리스가 죽으면 땅손의 줄은 모두 거두어진다 — 아엘라가 가장 바라는 일이다.

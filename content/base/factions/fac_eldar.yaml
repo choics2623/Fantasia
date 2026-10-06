@@ -54,7 +54,7 @@ offices:
     perks: ["의회 낭송 장부(구전) 보관"]
   - id: off_princess_deputy
     title: 여왕의 대리인 (첫 아침 가지 왕녀)
-    holder: "unnamed:이실레아 (왕녀, 1,900) — 맹약회의 대리인 예정"
+    holder: npc_isilea
     reports_to: off_queen
     powers: ["맹약회의 313에서 엘다르를 대리", "'흰 알 섭정안' 제출"]
     chosen_by: "여왕의 지명 — 혈통"
@@ -82,21 +82,21 @@ offices:
     perks: ["조용한 숲 거처", "지지 엘다르 약 4,500"]
   - id: off_dew_head
     title: 은이슬 가지 예언 관리자
-    holder: "unnamed:나엘리스 은이슬 (2,200, 잿빛 탑 원로 겸임)"
+    holder: npc_naelis
     reports_to: off_ring_council
     powers: ["이슬 두루마리 9,000권 관리", "예지 조각 보고"]
     chosen_by: "세습 (나엘 은이슬의 직계)"
     perks: ["이슬 서고 출입권 독점"]
   - id: off_dew_librarian
     title: 이슬 서고지기
-    holder: "unnamed:이벨린 (600)"
+    holder: npc_ibelin
     reports_to: off_dew_head
     powers: ["두루마리 복원 작업 현장 관리"]
     chosen_by: "나엘리스의 지명"
     perks: []
   - id: off_light_guardian
     title: 빛의 후견인 (빛실 가지 수장)
-    holder: "unnamed:이살리온 빛실 (2,400)"
+    holder: npc_isalion
     reports_to: off_ring_council
     powers: ["순종의 빛 교리 설계 관할", "루멘 후견인의 정원 관리", "루멘 감독관 350 임명"]
     chosen_by: "세습 (이살 빛실의 직계)"
@@ -124,7 +124,7 @@ offices:
     perks: []
   - id: off_soul_researcher
     title: 영혼 정원 연구자 (잿빛 탑 객원)
-    holder: "unnamed:피오나엘 (980) — AS 311부터 본 적 없는 인간의 기억을 꿈꾼다"
+    holder: npc_fionael
     reports_to: off_dawn_head
     powers: ["피험자 상태 기록", "잿빛 탑과의 자료 교환"]
     chosen_by: "아에린의 지명"
@@ -138,21 +138,21 @@ offices:
     perks: []
   - id: off_grave_chamberlain
     title: 시종장 (고목 가지, 마른 숲)
-    holder: "unnamed:바렌딜 (2,000)"
+    holder: npc_varendil
     reports_to: off_old_head
     powers: ["'잠든 나무' 아래 장례 관리", "무덤지기 인간 약 150 지휘"]
     chosen_by: "실바누스의 지명"
     perks: []
   - id: off_garden_steward
     title: 정원 관리장
-    holder: "unnamed:미리엘 이슬지기 — 중립"
+    holder: npc_miriel
     reports_to: off_queen
     powers: ["정원지기 3,100 관리", "정지 처벌 집행", "꽃 명부(짝짓기) 관리"]
     chosen_by: "여왕의 지명. 의회를 거치지 않는다"
     perks: ["이슬 우리 열쇠 — 문은 잠그지 않는다"]
   - id: off_gate_warden
     title: 은잎문 수문장
-    holder: "unnamed:카엘론"
+    holder: npc_caelon
     reports_to: off_queen
     powers: ["외부 출입 통제", "정원지기 경매(선물 교환) 주관", "'잊힘' 집행"]
     chosen_by: "여왕의 지명"
@@ -166,7 +166,7 @@ offices:
     perks: []
   - id: off_silent_hunter
     title: 말 없는 사냥꾼 (은목 숲 궁수)
-    holder: "unnamed:순혈파 궁수 — 집합 자리"
+    holder: npc_ilvanor
     reports_to: off_old_head
     powers: ["은목 숲 침입자 사살(경고 없이)", "추방자 추적"]
     chosen_by: "고목 가지의 궁수 중 수백 년 같은 동작을 반복한 자"
@@ -180,7 +180,7 @@ offices:
     perks: []
   - id: off_gardener_foreman
     title: 정원지기 반장 (인간, 계급 밖)
-    holder: "unnamed:로렌 (인간, 52, 이슬 노래 지도자)"
+    holder: npc_loren
     reports_to: off_garden_steward
     powers: ["이슬 우리 운영 보조"]
     chosen_by: "미리엘의 지명"

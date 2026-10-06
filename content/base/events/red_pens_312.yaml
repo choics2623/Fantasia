@@ -1,0 +1,38 @@
+# 녹테른 밤의 영지 사건 달력 — AS 312 낙엽월 1일 ~ AS 313 수확월 (24 §3.2). 원천: REGIONS §7.5·§7.8·§7.13, fac_nocturne(갈증의 밤·우물 순례·집전관), 월드 클락(클락 2 맹약회의 313, 클락 5 영혼 정원).
+# 날짜 일정이 일과보다 우선한다. 날짜 표기 "년-월-일" (월: 9 낙엽월, 10 서리월, 11 긴밤월, 12 굶주림월, 13 재의 날, 1 해빙월, 2 파종월, 3 꽃월, 4 푸른월, 5 태양월, 6 건초월, 7 수확월).
+# 다른 지역과 이어지는 것: 11.12 루멘 공물 호송 출발 → 11.15 이른 아침 붉은 우리 공물 문 도착 → 11.15 18시 첫 갈증 성(갈증의 밤) / 313-03-13 마리안 영혼 정원 도착(실바렌) / 313-03-15 흰 알 부화(바알카르) / 313-05-20 맹약회의(바알카르).
+# 쉼표가 든 값은 큰따옴표로.
+
+# ── 매달 반복 ──
+- {id: ev_rp_month_roll, npcs: [npc_zrag, npc_chik_tally, npc_adriel], repeat: monthly, day: 1, from: "19:00", to: "21:00", at: rp_herders_lodge, doing: "달 첫날 피 표 점호 — 크릭 숫자표와 장부를 대조한다. 영주는 문밖에서 숫자만 듣는다"}
+- {id: ev_rp_rose_escape, npcs: [npc_cecile, npc_orphe, npc_pips, npc_tessa], repeat: monthly, day: 20, from: "23:00", to: "24:00", at: rose_manor__garden, doing: "한 달에 한 번 — 장미원 셋째 덤불 아래 지하 통로와 온실 수로로 6~12명이 붉은 갈대 선으로 나간다. 세실이 직접 문을 연다", travel_from: rose_manor}
+# ── 낙엽월: 혈포도 수확 ──
+- {id: ev_rp_vintage, npcs: [npc_zrag], date: "312-09-10", from: "06:00", to: "18:00", at: rp_vineyard, doing: "혈포도 수확 시작 — 인간 일손이 붉은 손으로 돌아온다. 크릭 목동이 포도밭 가장자리에 줄을 선다"}
+# ── 서리월: 맑은 날은 탈출의 날 ──
+- {id: ev_rp_clear_day, npcs: [npc_zrag, npc_hedwig, npc_pips], date: "312-10-14", from: "07:00", to: "17:00", at: rp_exercise_ground, doing: "맑은 날 — 녹테른 순찰이 없고 크릭 목동만 있다. 영주는 낮의 방에서 나오지 않는다. 장미 우리에서 둘이 갈대 선으로 빠져나간다"}
+- {id: ev_rp_clear_day_adriel, npcs: [npc_adriel], date: "312-10-14", from: "07:00", to: "17:00", at: rp_coffin_room, doing: "맑은 날 — 영주는 낮의 방 문을 잠그고 나오지 않는다"}
+# ── 긴밤월: 갈증의 밤 (루멘 공물 40명, 12일 새벽 출발 → 15일 이른 아침 공물 문 도착 → 15일 18시 첫 갈증 성) ──
+- {id: ev_rp_marcius_blank, npcs: [npc_marcius], date: "312-11-05", from: "20:00", to: "24:00", at: first_thirst_castle__cup_hall, doing: "공물 명단 확정 준비 — 루멘에서 온 40명의 이름이 도착했다. 마르시우스가 한 줄을 결번으로 비워 둔다"}
+- {id: ev_rp_rosalie_depart, npcs: [npc_rosalie], date: "312-11-12", from: "05:00", to: "09:00", at: lumen, doing: "루멘 공물 호송 출발 — 번호 열일곱. 주머니 속 장미 꽃잎을 만진다"}
+- {id: ev_rp_well_pilgrimage, npcs: [npc_mordecai, npc_eloise, npc_marcius, npc_carnon, npc_basilisa], date: "312-11-14", from: "22:00", to: "24:00", at: first_thirst_castle__well, doing: "우물 순례 — 갈증의 밤 전날 밤 가장자리에서 신의 피 한 방울을 듣는다. 군주의 두 겹 목소리 사이에서 세 번째 소리가 들린다"}
+- {id: ev_rp_tribute_arrive, npcs: [npc_rosalie, npc_kasimir, npc_zrag], date: "312-11-15", from: "03:00", to: "05:00", at: red_pens__tribute_gate, doing: "공물 도착 — 루멘 40명이 검은 문을 지난다. 카시미르가 명단과 인원을 센다. 올해도 둘이 다르다", travel_from: lumen}
+- {id: ev_rp_tribute_yard, npcs: [npc_kasimir, npc_zrag], date: "312-11-15", from: "05:00", to: "12:00", at: rp_tribute_yard, doing: "공물 마당 — 카시미르가 공물 가운데 둘을 하얀 우리로 고른다. 마당 모서리의 헐거운 돌 하나를 크릭이 지나친다"}
+- {id: ev_rp_thirst_night_pens, npcs: [npc_hedwig, npc_zrag, npc_chik_tally], date: "312-11-15", from: "18:00", to: "24:00", at: rp_pen_barracks, doing: "갈증의 밤 — 우리 안에서 촛불을 끄고 숨을 죽인다. 노파는 맥을 잡고 목동은 문 앞에 서고 서기는 홈을 세지 않는다"}
+- {id: ev_rp_thirst_night_hall, npcs: [npc_mordecai, npc_eloise, npc_carnon, npc_marcius, npc_basilisa, npc_adriel, npc_kasimir, npc_alaric, npc_cecile, npc_silas_bell, npc_baltasar, npc_marendis, npc_vesper], date: "312-11-15", from: "18:00", to: "24:00", at: first_thirst_castle__great_hall, doing: "갈증의 밤 — 모든 녹테른이 첫 갈증 성에 모인다. 집전관이 공물 명단을 확정하고 잔을 돌린다. 군주가 직접 혈목장에 내려오는 단 한 번의 밤", travel_from: rose_manor}
+- {id: ev_rp_thirst_night_tribute, npcs: [npc_rosalie], date: "312-11-15", from: "18:00", to: "24:00", at: first_thirst_castle__great_hall, doing: "공물 대열 — 번호 열일곱이 호명되기를 기다린다. 입에 문 장미 꽃잎이 말라 있다", travel_from: red_pens__tribute_gate}
+- {id: ev_rp_thirst_night_roses, npcs: [npc_orphe, npc_pips], date: "312-11-16", from: "01:00", to: "05:00", at: rose_manor__garden, doing: "갈증의 밤이 끝난 새벽 — 결번 하나가 장미 하나가 되었는지 홈으로 센다. 핍스가 꽃잎을 수로 입구에 놓는다"}
+# ── 굶주림월: 침묵종의 보류와 알라리크의 증거 ──
+- {id: ev_rp_alaric_silas, npcs: [npc_alaric, npc_silas_bell], date: "312-12-08", from: "21:00", to: "24:00", at: nocturne__silentbell_pen, doing: "알라리크가 세실 암살 의뢰를 다시 재촉한다. 사일라스는 '증거 없이는 집을 짓지 않는다'고 답한다 — 증거를 만들 시간이 열흘 남았다"}
+- {id: ev_rp_ash_days, npcs: [npc_hedwig, npc_zrag], date: "312-13-03", from: "19:00", to: "23:00", at: rp_infirmary, doing: "재의 날 — 불 금지. 솥도 끄는 밤. 노파는 쑥을 마른 채로 씹으며 맥을 잡는다"}
+# ── 해빙월·파종월 ──
+- {id: ev_rp_cecile_final_list, npcs: [npc_cecile, npc_orphe], date: "313-01-12", from: "00:00", to: "04:00", at: rose_manor__library, doing: "세실의 서재 — 빼돌린 이름이 410이 되었다. 마지막 장을 홈으로 닫고 장미를 한 그루 더 심는다"}
+# ── 꽃월: 마리안의 납품, 흰 알 ──
+- {id: ev_rp_marian_depart, npcs: [npc_marian, npc_kasimir], date: "313-03-05", from: "04:00", to: "09:00", at: red_pens__white_pen, doing: "마리안의 영혼 정원 납품 출발 — 카시미르가 마지막으로 이름을 부르지 않고 흰 막사 문을 닫는다"}
+- {id: ev_rp_marian_arrive, npcs: [npc_marian, npc_fionael], date: "313-03-13", from: "08:00", to: "18:00", at: soul_garden__patient_pavilion, doing: "마리안이 망각의 길 167시간을 지나 영혼 정원 피험자 정자에 닿는다. 피오나엘이 눈을 마주치는 순간 꿈이 겹친다", travel_from: red_pens__white_pen}
+- {id: ev_rp_egg_hatch, npcs: [npc_vesper, npc_eloise], date: "313-03-15", from: "19:00", to: "23:00", at: first_thirst_castle__throne, doing: "바알카르에서 흰 알이 부화한 소식이 박쥐날개 전령의 날개로 닿는다. 시종이 군주에게 전하고 군주는 우물 곁 소절을 그날 한 번 멈추지 않는다"}
+# ── 푸른월 ~ 태양월: 맑은 날 시즌, 맹약회의 313 ──
+- {id: ev_rp_spring_clear, npcs: [npc_tessa, npc_pips, npc_orphe, npc_zrag], date: "313-04-02", from: "06:00", to: "18:00", at: nocturne__marsh_edge, doing: "봄 첫 맑은 날 — 녹테른 순찰이 없는 날 호송이 열둘로 늘어난다. 붉은 갈대 선을 넘는 줄이 낮에 길게 이어진다"}
+- {id: ev_rp_covenant_basilisa, npcs: [npc_basilisa], date: "313-05-20", from: "09:00", to: "18:00", at: baalkar, doing: "맹약회의 313 — 녹테른 대표로 '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낸다", travel_from: first_thirst_castle__cup_hall, return_to: first_thirst_castle__cup_hall}
+# ── 건초월 ~ 수확월 ──
+- {id: ev_rp_silas_revisit, npcs: [npc_silas_bell, npc_ninth_hunter], date: "313-06-10", from: "21:00", to: "24:00", at: nocturne__silentbell_pen, doing: "사일라스가 의뢰 목록의 첫 줄을 다시 쓸어 읽는다. 아홉째가 낮게 대답을 보류한다"}
+- {id: ev_rp_vintage_313, npcs: [npc_zrag, npc_hedwig], date: "313-07-10", from: "06:00", to: "18:00", at: rp_vineyard, doing: "수확월 — 두 번째 혈포도 수확. 쑥은 한 자루 더 불었다"}

@@ -1,0 +1,166 @@
+# 전령 에르덴 바람발굽 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_erden
+name: 전령 에르덴 바람발굽
+aka:
+- 석 달째 기다리는 이
+- 칸의 편지
+- 서진의 청
+tier: B
+type: living
+race: 하르칸
+subrace: 바람발굽
+sex: 남
+age: 31
+region: 바람첨탑
+home: 줄내림 장터 시장 천막 곁 말 매는 자리
+job: 하르칸 전령 — 테무르 칸의 서신을 키리에에게 전하려 줄내림 장터에서 대기
+rank: 바람발굽 전령, 칸의 직속 전령대
+summary: 테무르 칸의 서신을 키리에에게 전하려고 줄내림 장터에서 석 달째 기다리는 하르칸 전령. 서신은 서진 때 하늘길을 지나가게 해 달라는 청이다. 줄지기가 서신을 받아도 의회가 읽을지는 모른다
+source: docs/world/people/windspire.md (npc_ws_erden)
+life:
+- year: 281
+  age: 0
+  event: 하르칸 바람발굽 부족에서 태어남
+- year: 301
+  age: 20
+  event: 칸의 직속 전령대에 들어감
+- year: 312
+  age: 31
+  event: 서신을 받고 줄내림 장터에 도착 — 석 달째 기다림
+appearance:
+- 상체는 인간형 근육질, 하체는 갈색 말 몸 — 줄내림 장터의 좁은 길에서 불편해 보인다
+- 목에 칸의 서신 통을 가죽끈으로 걸었다
+- 머리를 정수리 한 줄만 남기고 밀었다
+smell: 말 땀과 가죽, 초원 먼지
+voice_sound: 굵고 호탕한 목소리. 초원어 억양이 강하다
+personality:
+  disposition:
+    용기: 60
+    자비: 15
+    정직: 55
+    신앙: 40
+    탐욕: 10
+    충성: 65
+  temperament:
+  - 인내
+  - 호방
+  - 불편
+  habits:
+  - 말처럼 발굽으로 땅을 한 번 두드린다
+  - 서신 통을 만지며 말한다
+  - 서 있는 자세를 바꿀 때마다 발굽이 땅을 긁는다
+  values: 달리지 않으면 병든다. 기다림은 달리지 않는 일이라 병이다
+  fears:
+  - 정착병 — 석 달 동안 한곳에 머문 몸이 버짐을 앓는 것
+  - 서신이 의회에서 거절되는 것
+  - 칸의 서진이 아에리의 하늘을 가로막는 것
+  desires:
+    short: 서신을 키리에에게 직접 전하는 것
+    long: 가능하면 답을 가지고 초원으로 돌아가는 것
+voice:
+  register:
+    to_superior: 칸에게는 초원식 존대
+    to_equal: 전령에게는 반말
+    to_inferior: 말에게는 부드러운 반말
+    to_player_default: 인간에게는 하게체. 호탕하다
+  tics:
+  - '''달리지 않으면 병든다.'''
+  - '''(발굽으로 땅을 두드린다)'''
+  use:
+  - 말
+  - 서신
+  - 초원
+  - 칸
+  - 발굽
+  - 달리다
+  avoid:
+  - 기다림
+  - 서 있다
+  - 정착
+  length: 짧고 호탕하다
+  samples:
+  - situation: 첫 만남
+    line: 두 다리로 걷는 사람이군. 느리겠지만 괜찮다. 나는 석 달째 서 있다.
+  - situation: 호의
+    line: 너는 말을 무서워하지 않는군. 말은 서 있는 사람을 싫어한다. 나도 지금 그렇다.
+  - situation: 거절
+    line: 서신은 키리에에게만 전한다. 칸의 말이다.
+  - situation: 위기
+    line: 말을 풀어라! 아니, 묶어 둬! 줄이 흔들린다 — 달려선 안 된다!
+schedule:
+  아침: 말 곁에서 아침 말먹이
+  낮: 시장 천막에서 줄지기에게 전갈을 건넬 기회를 기다린다
+  저녁: 저녁 말 곁에서 초원 노래를 부른다
+  밤: 밤 말 곁에서 선 채로 잔다
+places:
+- 줄내림 장터
+- 시장 천막
+- 줄지기 초소
+- 바람 우물
+knows:
+- fact_ws_descent_rope
+hides:
+- fact: fact_p2ws_erden_timur_letter
+  reveal_when: 신뢰 45 이상이고 서진이 하늘을 막지 않는다는 보증이 있을 때
+  cover: '''칸의 일''이라고만 한다'
+relations:
+- to: npc_temur
+  type: 칸
+  like: 55
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 서신의 주인
+- to: npc_ws_sera
+  type: 줄지기
+  like: 5
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 서신을 받아야 하는 아에리
+- to: npc_ws_tur
+  type: 사육사
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: 전령 매의 다른 끝
+- to: npc_kyrie
+  type: 여왕
+  like: 5
+  trust: 10
+  visibility: 일방
+  memo: null
+  words: 서신의 받는 이
+toward_player: 호탕하나 한곳에 머문 불편이 있다. 달리는 이야기에 열린다
+persuade:
+  likes: 하르칸을 존중하는 태도(+20)
+  hates: 줄지기에게 서신을 건네는 길을 열어 주는 것(+35)
+roles:
+  teacher: 스승 불가. 신뢰 45 이상이면 승마(초원, 상한 50)를 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_harkan
+  rank: rank_galloper
+  office: null
+  since: 301
+  loyalty: 70
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 서신 통을 목에 걸고 있다
+  - 석 달째 서 있다 (낙엽월 1일 기준)
+  drift:
+  - 그날 말의 상태
+  - 발굽으로 땅을 두드린 횟수
+  deja_vu: none
+hard_rules:
+- 서신을 키리에 외의 사람에게 보이지 않는다
+- 정착병이라는 낱말을 입에 올리지 않는다
+on_death: 테무르의 서신이 전달되지 못하고 서진 협상이 사라진다. 바람 우물을 통한 하르칸·아에리 전령 길이 끊긴다.
+story_seeds:
+- 서신의 답은 아에리가 서진을 막느냐 돕느냐를 정한다 — 키리에가 맹약회의 313 전에 받아야 한다.
+- 에르덴의 정착병이 깊어지면 서신이 누구의 손에 넘어가는지 모른다.

@@ -1,0 +1,197 @@
+# 상인장 토린 쇳줄 — 바람첨탑 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_ws_torin
+name: 상인장 토린 쇳줄
+aka:
+- 서명 먼저
+- 깃털의 근
+- 장터의 두르강
+tier: A
+type: living
+race: 두르강
+subrace: 산 두르강
+sex: 남
+age: 190
+region: 바람첨탑
+home: 줄내림 장터 두르강 창고 곁방
+job: 두르강 상인 조합 상인장 — 줄내림 장터 두르강 창고와 아에리 깃털 교역, 장터 보조 관리
+rank: 쇳줄 씨족 상인, 두르강 상인 약 200의 대표, 줄지기와 공동 관리
+summary: 줄내림 장터에서 금속과 깃털을 근 단위로 맞바꾸는 두르강 상인장. 서명 없는 거래는 하지 않는다. 계곡 도적 라츠에게 곡식을 팔고 철망 새장 사정을 알면서 장부에서 지웠다. 내려가는 줄에 모자란 130m를 서명 하나로 대 줄 수 있다
+source: docs/world/people/windspire.md (npc_ws_torin)
+life:
+- year: 122
+  age: 0
+  event: 쇳줄 씨족 상인 집안에서 태어남
+- year: 200
+  age: 78
+  event: 줄내림 장터 두르강 창고 서기
+- year: 260
+  age: 138
+  event: 상인장에 오름. 깃털 교역을 독점
+- year: 304
+  age: 182
+  event: 떨어진 안스가르를 구조해 짐꾼 계약에 서명하게 함
+- year: 312
+  age: 190
+  event: 라츠에게 곡식을 파는 장부를 지움
+- year: 290
+  age: 168
+  event: 깃털 교역 독점 계약을 아에리 의회와 처음으로 맺음
+appearance:
+- 키가 작고 어깨가 넓은 두르강, 수염을 상인식 두 가닥으로 땋았다
+- 손에 늘 근 저울 추를 쥐고 있다
+- 가슴에 쇳줄 씨족의 쇠줄 문장
+smell: 깃털 먼지와 쇠 기름, 창고의 마른 널빤지 냄새
+voice_sound: 굵고 단정한 목소리. 서명을 말할 때 발음이 또렷해진다
+personality:
+  disposition:
+    용기: 20
+    자비: 15
+    정직: 55
+    신앙: 55
+    탐욕: 40
+    충성: 65
+  temperament:
+  - 계산
+  - 엄격
+  - 은밀
+  habits:
+  - 말하는 중에 근 저울 추를 손바닥에서 굴린다
+  - 서명 없는 약속을 들으면 눈을 감고 잠시 침묵한다
+  - 깃털을 만질 때 장갑을 낀다 — 금기를 존중하는 척
+  values: 서명한 것은 지킨다. 서명하지 않은 곳은 내 책임이 아니다
+  fears:
+  - 라츠에게 곡식을 판 장부 지움이 맹세 위반으로 밝혀지는 것
+  - 아에리가 장터를 폐쇄하는 것
+  - 자기 서명이 140명의 계약이 될지 노예 구매가 될지 문구에 정하지 못한 것
+  desires:
+    short: 내려가는 줄 130m를 대는 계약을 아에리와 땅손 양쪽에서 인정받는 것
+    long: 라츠가 아에리를 풀고 도적에서 손 떼게 하는 것
+voice:
+  register:
+    to_superior: 왕에게는 하오체
+    to_equal: 상인에게는 하게체
+    to_inferior: 짐꾼에게는 하게체이되 번호로 부른다
+    to_player_default: 인간에게는 하오체. 서명을 먼저 묻는다
+  tics:
+  - '''서명 먼저.'''
+  - '''깃털은 근으로.'''
+  use:
+  - 서명
+  - 깃털
+  - 근
+  - 창고
+  - 바구니
+  - 값
+  avoid:
+  - 외상
+  - 구두 약속
+  - 라츠
+  length: 단정하고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 서명 먼저. 깃털은 근으로 달고 금속은 근으로 받는다. 서명 없는 약속은 바람이오.
+  - situation: 호의
+    line: 문구를 정확히 읽으시는군. 정확한 사람은 값이 정확하오.
+  - situation: 거절
+    line: 그 장부는 지웠소. 지운 것은 지운 것이오. 서명이 없으니.
+  - situation: 분노
+    line: 계약서를 거짓으로 쓰지 마시오. 두르강은 거짓을 쓰지 않소. 침묵은 쓰지만.
+  - situation: 슬픔
+    line: 줄이 140명을 내려놓는 계약인가, 140명을 사는 계약인가. 문구가 정하지 못한 것은 내 책임이 아니오 — 아니, 내 책임이오.
+  - situation: 위기
+    line: 창고를 닫으시오! 깃털에 불이 붙었소 — 금속이 아니라 깃털이오!
+  - situation: 비밀 누설
+    line: 라츠에게 곡식을 팔았소. 장부에서 지웠소. 지운 것이 서명을 지운 것은 아니오.
+  - situation: 거래
+    line: 130m. 서명 하나. 문구는 같이 쓰시오. 대가 칸은 비워 두지 않겠소.
+schedule:
+  아침: 창고 문을 열고 어제의 깃털 근수를 재검한다
+  낮: 아에리 줄지기와 바구니 승강 일정 협의
+  저녁: 저녁 짐꾼 계약서 번호 대조
+  밤: 밤 창고 곁방에서 서명 쇠판 사본을 센다
+places:
+- 줄내림 장터
+- 두르강 창고
+- 시장 천막
+- 바구니 승강 줄
+knows:
+- fact_kz_contract_clauses
+- fact_ws_descent_rope
+hides:
+- fact: fact_p2ws_torin_sells_bandits
+  reveal_when: 신뢰 55 이상이고 새장에 대한 질문을 비난이 아닌 합의 형태로 했을 때
+  cover: '''장부에는 없는 거래''라고 한다'
+- fact: fact_p2ws_torin_rope_offer
+  reveal_when: 신뢰 50 이상이고 계약 문구의 대가를 존중하며 제안했을 때
+  cover: '''서명 먼저''라고만 한다'
+- fact: fact_p2ws_torin_feathers
+  reveal_when: 호감 30 이상 — 스스로 말한다
+  cover: 근 이야기만 한다
+relations:
+- to: npc_ws_sera
+  type: 줄지기
+  like: 10
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: 금속 고리 빚을 준 상대
+- to: npc_ws_ratz
+  type: 곡식 상대
+  like: 15
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 새장을 알면서 장부를 지움
+- to: npc_ws_anskar
+  type: 짐꾼
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 구조한 뒤 계약서에 서명하게 한 사람
+- to: npc_ws_anton
+  type: 대장장이
+  like: 10
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: 가벼운 쇠를 몰래 파는 상대
+- to: npc_bror
+  type: 왕
+  like: 25
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: 계약은 신성하다 — 같은 서명의 원칙
+toward_player: 단정하고 계산적이다. 서명 있는 사람을 우대한다
+persuade:
+  likes: 서명 있는 제안(+25)
+  hates: 130m 줄의 대가를 문구로 정한 계약(+40)
+roles:
+  teacher: 스승 불가. 신뢰 50 이상이면 흥정·학식(계약 문구, 상한 50)을 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_durgan
+  rank: rank_guild_master
+  office: null
+  since: 260
+  loyalty: 65
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 라츠에게 곡식을 파는 장부 줄을 지웠다
+  - 130m 줄을 대 줄 수 있다
+  drift:
+  - 그날 깃털 근수
+  - 창고 먼지의 양
+  deja_vu: none
+hard_rules:
+- 서명 없는 거래를 하지 않는다
+- 거짓을 쓰지 않는다 — 침묵한다
+on_death: 줄내림 장터 두르강 창고가 흔들려 깃털·금속 교역이 끊기고 130m 줄의 길이 막힌다. 라츠의 곡식 공급이 끊겨 도적이 흩어지거나 새장이 더 위험해진다.
+story_seeds:
+- 토린의 130m는 땅손 140에게 줄을 이을 유일한 합법 길이다 — 서명이 노예 구매가 되지 않게 대가 칸을 정해야 한다.
+- 토린이 라츠의 곡식을 끊으면 페리스를 지킬 힘이 사라지고, 계속 팔면 아에리 전체의 적이 된다.
