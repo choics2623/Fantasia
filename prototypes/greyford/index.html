@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>회색여울</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #12100e; --bg-2: #1b1815; --bg-3: #24201b; --line: #3a332b;
+  --ink: #e2d8c5; --ink-soft: #a89c88; --ink-faint: #6f6556;
+  --gold: #c9a35c; --rust: #b4532f; --frost: #8fb3c4; --bad: #c46a5a;
+  --body: "Gowun Batang", "Nanum Myeongjo", "Batang", serif;
+  --ui: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 16px; }
+.top .row { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; max-width: 760px; margin: 0 auto; }
+.top .when { font-weight: 700; }
+.top .where { color: var(--ink-soft); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.72rem; margin-left: auto; }
+.chip { border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.chip.hot { border-color: var(--rust); color: #e7b6a4; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 14px 16px 40px; }
+.story p { margin: 0 0 12px; }
+.story .player { color: var(--gold); font-style: italic; }
+.story .player::before { content: "▸ "; font-style: normal; }
+.story .eng { color: var(--ink-soft); font-size: 0.94rem; }
+.story .tier { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.05em; color: var(--ink-faint); margin: -6px 0 10px; }
+.story .live { white-space: pre-wrap; }
+.story hr { border: 0; border-top: 1px dashed var(--line); margin: 16px 0; }
+.people { display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.78rem; margin: 6px 0 14px; }
+.people span { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; color: var(--ink-soft); }
+.people b { color: var(--ink); font-weight: 500; }
+.group h3 { font-family: var(--ui); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px; }
+.choices { display: grid; gap: 8px; }
+.choice { text-align: left; font-family: var(--body); font-size: 1rem; line-height: 1.5; padding: 10px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); cursor: pointer; display: grid; gap: 3px; }
+.choice:hover, .choice:focus-visible { border-color: var(--gold); outline: none; }
+.choice .band { font-family: var(--ui); font-size: 0.7rem; color: var(--ink-soft); display: flex; gap: 8px; flex-wrap: wrap; }
+.choice .band .risk { color: var(--rust); }
+details.moves summary { cursor: pointer; font-family: var(--ui); font-size: 0.8rem; color: var(--ink-soft); margin: 12px 0 6px; }
+.moves .choices { grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); }
+.moves .choice { font-size: 0.92rem; padding: 8px 10px; }
+.free { display: flex; gap: 8px; margin-top: 14px; }
+.free input { flex: 1; min-width: 0; font-family: var(--body); font-size: 1rem; background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; }
+button.ui { font-family: var(--ui); font-size: 0.8rem; background: var(--bg-3); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; cursor: pointer; }
+button.ui:hover { border-color: var(--gold); }
+.busy { font-family: var(--ui); font-size: 0.78rem; color: var(--frost); min-height: 1.2em; margin-top: 8px; }
+.broken, .ended { border: 1px solid #5b3a2c; background: #1f1512; border-radius: 6px; padding: 14px 16px; margin: 14px 0; }
+.broken .sub, .ended .sub { font-family: var(--ui); font-size: 0.78rem; color: var(--ink-soft); margin: 4px 0 10px; }
+[hidden] { display: none !important; }
+.drawer { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: flex; justify-content: flex-end; z-index: 10; }
+.drawer .pane { width: min(420px, 100%); height: 100%; overflow: auto; background: var(--bg-2); border-left: 1px solid var(--line); padding: 16px; padding-top: calc(16px + env(safe-area-inset-top, 0px)); }
+.pane h2 { font-family: var(--ui); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 8px; }
+.pane ul { margin: 0; padding-left: 18px; font-size: 0.92rem; line-height: 1.55; }
+.pane li.past { color: var(--frost); }
+.pane pre { white-space: pre-wrap; word-break: break-word; font-family: var(--ui); font-size: 0.7rem; color: var(--ink-soft); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px; max-height: 300px; overflow: auto; }
+.row-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.row-btns input { flex: 1; min-width: 0; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; font-family: var(--ui); }
+</style>
+</head>
+<body>
+<div class="top"><div class="row">
+  <span class="when" id="when">…</span><span class="where" id="where"></span>
+  <span class="chips" id="chips"></span>
+  <button class="ui" id="menuBtn" aria-label="수첩과 저장">수첩</button>
+</div></div>
+<div class="wrap">
+  <div class="story" id="story"></div>
+  <div class="people" id="people"></div>
+  <div id="panel"></div>
+  <div class="busy" id="busy" aria-live="polite"></div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane">
+  <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
+  <h2>수첩 — 회귀해도 남는다</h2><ul id="notes"></ul>
+  <h2>소지품</h2><ul id="items"></ul>
+  <h2>저장</h2>
+  <div class="row-btns"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="ui" id="saveBtn">저장</button></div>
+  <div class="row-btns" id="slots" style="margin-top:8px"></div>
+  <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 (새 시드)</button></div>
+  <h2>엔진 기록 (판정·검증)</h2><pre id="debug">—</pre>
+</div></div>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let busy = false, last = null;
+
+async function call(path, body) {
+  busy = true; render(last, true);
+  const live = document.createElement("p"); live.className = "live"; $("story").appendChild(live);
+  try {
+    const r = await fetch(path, { method: "POST", headers: { "content-type": "application/json", accept: "text/event-stream" }, body: JSON.stringify(body || {}) });
+    if (!r.ok) throw new Error(await r.text());
+    const reader = r.body.getReader(), dec = new TextDecoder(); let buf = "", out = null;
+    for (;;) {
+      const { value, done } = await reader.read(); if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let i; while ((i = buf.indexOf("\n\n")) >= 0) {
+        const chunk = buf.slice(0, i); buf = buf.slice(i + 2);
+        const ev = /event: (\w+)/.exec(chunk)?.[1], data = JSON.parse(/data: ([\s\S]*)/.exec(chunk)?.[1] || "null");
+        if (ev === "text") { live.textContent = data; window.scrollTo(0, document.body.scrollHeight); }
+        if (ev === "done") out = data;
+      }
+    }
+    live.remove();
+    return out;
+  } catch (e) { live.remove(); return { broken: "서버에 닿지 않는다 — " + e.message, retry: body }; }
+  finally { busy = false; }
+}
+
+function addBeats(d) {
+  const s = $("story");
+  if (d.result && d.result.skill) { const t = document.createElement("div"); t.className = "tier"; t.innerHTML = `${esc(d.result.skill)} — <b>${esc(d.result.tier)}</b>`; s.appendChild(t); }
+  for (const b of d.beats || []) { const p = document.createElement("p"); if (d.engineOnly) p.className = "eng"; p.textContent = b; s.appendChild(p); }
+  while (s.children.length > 120) s.removeChild(s.firstChild);
+}
+function say(text) { const p = document.createElement("p"); p.className = "player"; p.textContent = text; $("story").appendChild(p); }
+
+function render(d, loading = false) {
+  $("busy").textContent = loading ? "잿빛 실이 이어지는 중" : "";
+  if (!d) return;
+  const v = d.view;
+  if (v) {
+    $("when").textContent = `${v.month} ${v.time.split(" ")[3]} ${v.hm}${v.night ? " · 밤" : ""}${v.rain ? " · 비" : ""}`;
+    $("where").textContent = v.place.name;
+    const p = v.player;
+    $("chips").innerHTML = [`${v.loop}회차`, `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
+    $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b> · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
+    $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
+    $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)}</li>`).join("") || "<li>부츠 속 동전뿐</li>";
+  }
+  $("debug").textContent = JSON.stringify({ debug: d.debug, usage: d.usage, provider: d.provider }, null, 1);
+  const panel = $("panel");
+  if (loading) { panel.querySelectorAll("button").forEach((b) => (b.disabled = true)); return; }
+  if (d.broken) {
+    panel.innerHTML = `<div class="broken"><p>${esc(d.broken)}</p><div class="sub">판정도, 시간도 흐르지 않았다. 다시 시도하면 같은 주사위로 이어진다.</div><button class="ui" id="retry">다시 시도</button></div>`;
+    $("retry").onclick = () => d.retry ? act(d.retry, true) : start();
+    return;
+  }
+  if (v?.ended) {
+    panel.innerHTML = `<div class="ended"><p>${esc(v.ended.why)}</p><div class="sub">세계는 처음으로 돌아간다. 당신이 알게 된 것과 수첩만 남는다.</div><button class="ui" id="reg">눈을 감는다 — 낙엽월 1일 저녁으로</button></div>`;
+    $("reg").onclick = async () => { $("story").innerHTML = "<hr>"; show(await call("/api/regress")); };
+    return;
+  }
+  const ch = d.choices || [];
+  const main = ch.filter((c) => c.kind !== "move" && c.kind !== "time");
+  const moves = ch.filter((c) => c.kind === "move"), time = ch.filter((c) => c.kind === "time");
+  const btn = (c) => `<button class="choice" data-id="${esc(c.id)}"><span>${esc(c.text)}</span>${c.band || c.risk ? `<span class="band">${c.skill ? `${esc(c.skill)} · ` : ""}${esc(c.band || "")}${c.risk ? ` <span class="risk">${esc(c.risk)}</span>` : ""}</span>` : ""}</button>`;
+  panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
+    ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
+    ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
+    ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;
+  panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector("span").textContent })));
+  const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
+}
+function show(d) { last = d; if (!d.broken) addBeats(d); render(d); window.scrollTo(0, document.body.scrollHeight); }
+async function act(input, retry = false) {
+  if (busy) return;
+  if (!retry) say(input.free || input.text || input.id);
+  show(await call("/api/act", input));
+}
+async function start() { show(await call("/api/state")); }
+
+$("menuBtn").onclick = async () => { $("drawer").hidden = false; const r = await fetch("/api/saves", { method: "POST" }).then((x) => x.json()); $("slots").innerHTML = r.saves.map((s) => `<button class="ui" data-s="${esc(s)}">불러오기: ${esc(s)}</button>`).join(""); $("slots").querySelectorAll("button").forEach((b) => (b.onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = "<hr>"; show(await call("/api/load", { name: b.dataset.s })); })); };
+$("closeDrawer").onclick = () => ($("drawer").hidden = true);
+$("drawer").onclick = (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; };
+$("saveBtn").onclick = async () => { await fetch("/api/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: $("slotName").value }) }); $("menuBtn").onclick(); };
+$("newBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; show(await call("/api/new", {})); };
+start();
+</script>
+</body>
+</html>

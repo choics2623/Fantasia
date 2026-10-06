@@ -39,6 +39,7 @@
 | [systems/25_REGION_KITS.md](systems/25_REGION_KITS.md) | **지역 생성 키트**: 닻(손으로 쓴 핵심) + 키트(그 지역다운 재료) + 즉석 인물(말을 거는 순간 LLM이 완성). 정착지·인물 생성기, 확장 순서 |
 | [systems/26_AGENDAS.md](systems/26_AGENDAS.md) | **목표 행동**: 플레이어가 없어도 세계가 움직인다 — NPC 목표의 조건·효과 사슬, 정본 사건이 원인과 결과로 이어지고 플레이어가 고리를 끊으면 뒤가 달라진다 |
 | [systems/27_LIVING_WORLD.md](systems/27_LIVING_WORLD.md) | **살아 있는 세계**: 설계 검토(실제로 돌리면 생길 문제 9개), 대본 + '일이 생긴 곳만' 시뮬레이션 하이브리드 — 자극→지각→믿음→효용 행동, 사람 사이로 퍼지는 소문, NPC 소지품·돈·전리품 소유 이력과 알아보는 사람 |
+| [systems/28_GAME_LOOP.md](systems/28_GAME_LOOP.md) | **진행 루프**: 부품을 한 판으로 — 저장 = 시드 + 행동 기록(재생), 하나의 지갑·믿음, 시간 흐름(점호·통금·수배), 어포던스, 공개 조건, LLM 호출 절약·스트리밍, 대화 에이전트와 기록관 |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |
