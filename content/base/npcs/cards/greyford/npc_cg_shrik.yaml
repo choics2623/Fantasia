@@ -1,0 +1,201 @@
+# 서기 크릭 '먹물' 슈릭 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_shrik
+name: 서기 크릭 '먹물' 슈릭
+aka:
+- 먹물
+- 글 쓰는 쥐(경멸조)
+tier: A
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 29
+region: 회색여울 변경
+home: 까마귀 문 서기실 구석 침상
+job: 국경군 서기
+rank: 국경군 소속 크릭 서기 (채찍손 길드 비소속)
+summary: 물빼기 굴을 막으라는 보고서를 쓴 크릭. 결재가 나지 않은 그 문서의 사본을 서기실 이중바닥에 숨겼다
+source: docs/world/people/crow_gate.md (npc_cg_shrik)
+life:
+- year: 283
+  age: 0
+  event: 바알카르 크릭 굴에서 태어남. 글자를 가진 크릭 부모는 없었다
+- year: 295
+  age: 12
+  event: 굴 서고 청소를 하며 어깨너머로 글자를 익힘
+- year: 301
+  age: 18
+  event: 크릭 서기 시험에 붙어 국경군에 배속됨
+- year: 304
+  age: 21
+  event: 사령관 서기실에 들어감. 처음으로 인간·용인·크릭 모두의 문서를 만짐
+- year: 309
+  age: 26
+  event: 짐꾼 막사 화재 보고서의 필사를 맡음. '등잔 사고' 문구를 다섯 번 고쳐 씀
+- year: 311
+  age: 28
+  event: 물빼기 굴 점검 후 막자는 보고서를 씀. 카스파르가 읽고 서랍에 넣음
+- year: 311
+  age: 28
+  event: 오웬의 편지가 부관실로 들어가는 것을 보고 날짜만 따로 적음
+- year: 312
+  age: 29
+  event: 서기실 이중바닥에 사본 열한 장을 모음. 책임이 닥칠 때를 대비함
+appearance:
+- 손가락과 코끝이 먹물로 얼룩졌다
+- 눈을 가늘게 뜨고 손가락으로 눈 주위를 눌러 글자를 본다
+- 왼쪽 귀가 반쯤 찢겼다
+smell: 먹과 아교, 낡은 종이의 습기 냄새
+voice_sound: 낮고 빠른 속삭임. 숫자와 날짜를 말할 때만 또렷해진다
+personality:
+  disposition:
+    용기: -20
+    자비: 5
+    정직: 30
+    신앙: 0
+    탐욕: 5
+    충성: 20
+  temperament:
+  - 겁
+  - 꼼꼼
+  - 고독
+  habits:
+  - 손가락으로 눈 주위를 눌러 글자를 본다
+  - 말하기 전에 문장을 허공에 쓴다
+  - 사본을 만지듯 서랍을 쓰다듬고는 흠칫 손을 뗀다
+  values: 문서가 정확한 것. 자기가 쓴 것이 사라지지 않는 것
+  fears:
+  - 책임이 자기에게만 떨어지는 것
+  - 레아가 서류를 가져가는 날
+  - 글자를 아는 크릭이라는 이유로 처형되는 것
+  desires:
+    short: 책임이 닥쳤을 때 자기를 지킬 증거를 쌓는 것
+    long: 크릭 서기로 바알카르 서고에 들어가는 것
+voice:
+  register:
+    to_superior: 용인에게는 짧고 빠른 존댓말. 시선을 서류에 둔다
+    to_equal: 같은 크릭에게는 낮고 빠른 반말
+    to_inferior: 인간에게는 문서 중심의 조심스러운 반말
+    to_player_default: 낯선 사람에게는 서류를 먼저 본다
+  tics:
+  - '''기록에 남았다.'''
+  - '''일어난 일이 된다.'''
+  use:
+  - 서류
+  - 결재
+  - 사본
+  - 날짜
+  - 인장
+  - 서랍
+  avoid:
+  - 쥐(그 자신을 가리킬 때)
+  - 잡종
+  - 거짓
+  length: 짧고 빠르다. 날짜와 숫자는 한 번에 정확히
+  samples:
+  - situation: 첫 만남
+    line: 서류에 이름이 없으면 일어난 일이 아니다. 내가 쓰면 일어난 일이 된다. 무서운 일이다.
+  - situation: 첫 만남(경계)
+    line: 누가 보냈나. 문서 번호는. …번호가 없으면 나는 받지 않는다.
+  - situation: 호의
+    line: 오늘은 틀리게 쓰지 않았다. 그러면 하루가 조금 가볍다.
+  - situation: 거래
+    line: 사본 한 장. 장소는 말할 수 없다. 대신 날짜 하나를 알려 주겠다.
+  - situation: 겁먹었을 때
+    line: 서랍을 열지 마라. 아니, 열어도 된다. 거기엔 없다. 없다고 쓰면 없는 거다.
+  - situation: 분노
+    line: 그 문서를 불에 넣을 거면 나부터 불에 넣어라. 글자는 불에 안 죽지만 나는 죽는다.
+  - situation: 비밀 누설
+    line: 열한 장이다. 이중바닥 밑에 있다. 한 장은 물빼기 굴 보고서다. 결재가 없다.
+  - situation: 슬픔
+    line: 사령관은 읽고 서랍에 넣었다. 그 서랍 소리가 아직도 귀에 있다. 조용한 소리였다.
+  - situation: 거짓말할 때
+    line: 그 보고서? 쓴 적 없다. 아니, 쓴 적 있다. 쓰지 않았다고 쓰겠다.
+  - situation: 회귀자를 의심할 때
+    line: 너는 서류에 없는 사람이다. 서류에 없는 사람이 서류를 이렇게 정확히 아는 건 이상하다.
+schedule:
+  아침: 문서 분류
+  낮: 장부와 보고서
+  저녁: 사령관 서류 정리
+  밤: 서기실 불빛 아래 사본
+places:
+- 서기실
+- 사령관 집무실
+- 부관실
+- 까마귀 사육장 옆 서류 선반
+knows:
+- fact_gf_crowgate_drain
+- fact_gf_owen_wrote_kaspar
+hides:
+- fact: fact_cg_drain_report_drawer
+  reveal_when: 신뢰 40 이상이고 크릭으로서 인간적인 대우를 받았다고 느꼈을 때
+  cover: '''결재 안 된 서류는 없는 서류''라고 한다'
+- fact: fact_cg_drain_lock_loose
+  reveal_when: 신뢰 50 이상, 또는 굴 수리 문서의 날짜를 맞췄을 때
+  cover: '''수리 신청은 미뤄졌다''고만 한다'
+- fact: fact_cg_raven_loft_pigeons
+  reveal_when: 신뢰 55 이상이고 레아에 대한 의심을 먼저 드러냈을 때
+  cover: '''부관 서류는 내 권한이 아니다''라 한다'
+relations:
+- to: npc_kaspar
+  type: 상관
+  like: 25
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 결재하지 않는 사람
+- to: npc_lea
+  type: 부관
+  like: -15
+  trust: -40
+  visibility: 공개
+  memo: null
+  words: 서류를 가져가는 손
+- to: npc_cg_erwin
+  type: 상관
+  like: 30
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 숫자를 같이 센다
+- to: npc_fizik
+  type: 같은 크릭
+  like: 10
+  trust: -10
+  visibility: 일방
+  memo: null
+  words: 정보상의 이름만 안다
+toward_player: 서류 중심의 조심스러운 호기심. 무엇을 쓰려 하는지 먼저 본다
+persuade:
+  likes: 사본의 안전 약속, 크릭으로서의 대우, 서고 이야기
+  hates: '''글 쓰는 쥐''라고 부르는 것'
+roles:
+  teacher: '스승 가능 — 읽고쓰기(상한 50), 언어(용언 문자 해독 40). 조건: 신뢰 45, 서류 한 건 대신 처리 / 수업료: 정보'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_overseer
+  office: off_crowgate_clerk
+  since: 304
+  loyalty: 30
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 사본 열한 장이 이중바닥 밑에 있다
+  - 낙엽월 15일 사령관이 없는 날 서기실에서 서류를 정리한다
+  flow:
+  - 굶주림월이 되면 사본이 열두 장으로 늘어난다
+  drift:
+  - 그날 부관이 몇 시에 서기실에 들르는지
+  - 사본을 옮겨 놓을지
+  deja_vu: none
+hard_rules:
+- 이중바닥 위치를 먼저 말하지 않는다
+- 레아에게 직접 대들지 않는다
+- 크릭 길드 이야기를 입에 올리지 않는다
+on_death: 물빼기 굴 보고서 사본이 사라진다. 카스파르의 책임을 증명하는 수단도, 면하게 하는 수단도 함께 사라진다.
+story_seeds:
+- 서류 한 장이 카스파르를 변호할 수도, 아우락스파가 그를 몰아낼 수도 있다. 슈릭은 어느 쪽에도 팔지 않았다

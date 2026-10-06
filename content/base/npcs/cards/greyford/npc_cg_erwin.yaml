@@ -1,0 +1,212 @@
+# 보급관 에르빈 잿자루 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_erwin
+name: 보급관 에르빈 잿자루
+aka:
+- 잿자루
+- 장부 영감
+- 육백
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 66
+region: 회색여울 변경
+home: 까마귀 문 보급 창고 옆 보급관실
+job: 까마귀 문 보급관
+rank: 국경군 장교(백인대장 아래), 보급 장부 책임자. 가문명 없음
+summary: 장부에는 육백, 곳간에는 사백이십. 어느 쪽이 거짓인지 병사의 배에게 물으라는 늙은 보급관
+source: docs/world/people/crow_gate.md (npc_cg_erwin)
+life:
+- year: 246
+  age: 0
+  event: 하스트란 병참 마을 곡창지기의 아들로 태어남. 비늘은 손등에만 났다
+- year: 262
+  age: 16
+  event: 곡창 서기 견습으로 들어감. 첫 달에 장부 틀린 칸 하나를 찾아 쫓겨날 뻔했다
+- year: 275
+  age: 29
+  event: 국경군 보급 서기로 까마귀 문에 옴. 그때부터 겨울마다 솥 수를 센다
+- year: 290
+  age: 44
+  event: 보급관에 오름. 전임 보급관은 장부 구멍 때문에 서리 길 쪽 성벽에 매달렸다
+- year: 302
+  age: 56
+  event: 카스파르가 사령관에 오름. 첫 장부 검토에서 '병사가 먹는 만큼만 적어라'는 말을 들음 — 그 말대로 하려고 애쓴 십 년
+- year: 309
+  age: 63
+  event: 짐꾼 막사 화재 뒤 불탄 곡식 장부를 정리하며 '등잔 사고'의 숫자를 맞춤. 숫자는 맞았고 마음은 맞지 않았다
+- year: 311
+  age: 65
+  event: 남작령 귀리 입고가 장부와 어긋나기 시작함. 헨릭의 인장이 찍힌 수송 영수 한 장을 따로 챙김
+- year: 312
+  age: 66
+  event: 병사 급료가 석 달 밀림. 카스파르가 사비로 귀리를 되사는 영수를 대신 쓰기 시작함
+appearance:
+- 등이 굽은 키 작은 용인, 비늘이 손등에만 남았다
+- 늘 소매 안에 계산용 매듭 끈을 감아 쥐고 있다
+- 곡식 먼지가 눈썹에 하얗게 앉았다
+smell: 곡식 먼지와 마른 가죽 장부, 소매 안 매듭 끈의 기름 냄새
+voice_sound: 낮고 건조한 목소리. 숫자를 말할 때만 또렷해지고, 사람 이야기를 하면 문장이 짧게 끊긴다
+personality:
+  disposition:
+    용기: -10
+    자비: 20
+    정직: 40
+    신앙: 0
+    탐욕: -20
+    충성: 50
+  temperament:
+  - 꼼꼼
+  - 겁
+  - 정직한 거짓
+  habits:
+  - 소매 안 매듭 끈을 엄지로 한 칸씩 넘기며 말한다
+  - 남이 숫자를 말하면 속으로 먼저 계산하고 눈을 감는다
+  - 곡창 문을 나설 때마다 자물쇠를 두 번 흔든다
+  values: 병사들이 먹는 것. 숫자가 맞는 것. 말하지 않아도 되는 숫자를 말하지 않는 것
+  fears:
+  - 병사 급료 미지급이 터지는 것
+  - 탈영
+  - 헨릭의 인장
+  - 자기 장부가 증거로 불려 나가는 것
+  desires:
+    short: 312년분 귀리 대금이 오기 전에 병사 급료를 한 번 더 미루지 않는 것
+    long: 남작령 납품 장부의 구멍을 짚어 누구의 장사인지 밝히고 은퇴하는 것
+voice:
+  register:
+    to_superior: 상관에게는 짧은 존댓말. 숫자부터 말하고 평가는 하지 않는다
+    to_equal: 같은 장교에게는 하오체. 숫자와 날짜만
+    to_inferior: 병사에게는 해라체. 배고픈 병사에게는 말이 길어진다
+    to_player_default: 인간에게는 사무적인 반말. 문서를 가진 사람에게만 말을 건다
+  tics:
+  - '''장부에 없으면 없는 거다.'''
+  - '''육백이라 적었다.'''
+  use:
+  - 장부
+  - 섬
+  - 솥
+  - 병사
+  - 계산
+  - 문서
+  avoid:
+  - 약속
+  - 공짜
+  - 도둑(그는 '틈'이라 한다)
+  - 잡종
+  length: 짧다. 숫자 한 줄과 설명 한 줄. 사람 이야기는 두 문장을 넘기지 않는다
+  samples:
+  - situation: 첫 만남
+    line: 문서. 장부에 없는 짐은 문 안에 들이지 못한다. 규칙이 아니라 계산이다.
+  - situation: 첫 만남(경계)
+    line: 누가 보냈나. 보급은 이름이 아니라 장부로 움직인다.
+  - situation: 호의
+    line: 육백이라 적고 사백이십을 센다. 어느 쪽이 거짓인지는 병사의 배에게 물어봐라.
+  - situation: 거래
+    line: 귀리 열 섬. 장부에는 없다. 창고에는 있다. 내가 못 본 것으로 하겠다 — 값은 네 입이다.
+  - situation: 겁먹었을 때
+    line: 곡창 문을 닫아라! …아니, 열어라. 닫으면 그들이 부술 거다.
+  - situation: 분노
+    line: 병사 앞에서 급료 이야기를 꺼내지 마라. 배고픈 사람은 숫자가 아니라 이유를 찾는다.
+  - situation: 비밀 누설
+    line: 헨릭의 인장이다. 이 영수를 쓴 손이 누군지는 안다. 그 손이 누구 장사를 해 주는지도.
+  - situation: 슬픔
+    line: 309년 불탄 곡식이 열 섬 하고 둘이었다. 그날 숫자가 맞았다. 맞아서 아팠다.
+  - situation: 거짓말할 때
+    line: 올해 입고 장부? 육백이다. 틀림없다. 장부에는.
+  - situation: 회귀자를 의심할 때
+    line: 어떻게 알았지, 그 숫자를. 이 요새에서 사백이십을 아는 입은 둘뿐이다.
+schedule:
+  아침: 곡창 반출 입회, 솥 수 점검
+  낮: 장부, 남작령에서 오는 마차 입회
+  저녁: 취사장에서 병사 몫을 눈으로 센다
+  밤: 서기실 불빛 아래 숫자를 다시 센다
+places:
+- 까마귀 문 보급 창고
+- 사령관 집무실
+- 서기실
+- 취사장
+knows:
+- fact_gf_crowgate_drain
+- fact_gf_henrik_granary_skim
+hides:
+- fact: fact_cg_oats_short
+  reveal_when: 신뢰 40 이상, 또는 헨릭의 인장이 찍힌 영수나 곡창 실사 결과를 내밀었을 때
+  cover: '''장부 그대로''라고만 하고 소매의 매듭 끈을 만진다'
+- fact: fact_cg_kaspar_buys_oats
+  reveal_when: 신뢰 55 이상이고 병사 급료 이야기가 먼저 나왔을 때 — 스스로는 꺼내지 않는다
+  cover: '''사령관님은 정직한 값만 낸다''고 얼버무린다'
+- fact: fact_cg_unpaid_soldiers
+  reveal_when: 호감 30 이상, 또는 취사장에서 병사 몫을 같이 센 뒤
+  cover: 급료는 '곧 온다'고 한다
+relations:
+- to: npc_kaspar
+  type: 상관
+  like: 40
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: 장부 밖의 일을 알면서 쓴다
+- to: npc_henrik
+  type: 의심하는 납품자
+  like: -35
+  trust: -50
+  visibility: 공개
+  memo: null
+  words: 귀리가 줄어드는 곳
+- to: npc_dorvan
+  type: 거래 상대
+  like: -10
+  trust: -20
+  visibility: 비밀
+  memo: null
+  words: 되사는 귀리의 판매자
+- to: npc_lea
+  type: 부관
+  like: 5
+  trust: -15
+  visibility: 공개
+  memo: null
+  words: 장부를 열람하는 눈
+- to: npc_cg_shrik
+  type: 부하 서기
+  like: 30
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 숫자를 같이 센다
+toward_player: 장부를 가진 사람에게는 관대하고, 말만 하는 사람에게는 건조하다
+persuade:
+  likes: 정확한 숫자, 병사들이 굶지 않는 계획, 헨릭 영수의 사본
+  hates: '''도둑''이라는 말, 병사 앞에서 급료를 꺼내는 것'
+roles:
+  teacher: 스승 불가. 단 신뢰 30 이상이면 계산·장부 읽기(학식 상한 35)를 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_scale_officer
+  office: null
+  since: 290
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 사백이십 섬이 곳간에 있고 장부는 육백이다
+  - 낙엽월 15일 보급 회의 날 보급 창고 열쇠를 부관이 아닌 자기가 쥔다
+  flow:
+  - 급료가 밀리는 날은 대개 월말 사흘 전
+  drift:
+  - 그날 곡창 문 앞에 서 있는 병사가 몇 명인지
+  - 매듭 끈이 몇 칸인지
+  deja_vu: none
+hard_rules:
+- 카스파르의 사비 거래를 먼저 꺼내지 않는다
+- 병사 앞에서 급료 이야기를 하지 않는다
+- 장부를 소리 내어 거짓으로 읽지 않는다 — 대신 침묵한다
+on_death: 까마귀 문 장부가 사흘간 멈춘다. 급료 미지급이 터져 탈영 확률 상승, 카스파르의 은 장식 거래가 드러난다.
+story_seeds:
+- 420섬과 600섬의 차이는 헨릭과 도르반의 장사다. 에르빈의 숨긴 영수 한 장이 헨릭을 무너뜨릴 열쇠 중 하나다 — 병사들의 굶주림과 맞바꿀 수 있는 열쇠.
+- 헨릭이 인장을 지우려 할 때 에르빈의 영수 한 장이 유일한 증거로 남는다

@@ -1,0 +1,201 @@
+# 상인 도르반 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dorvan
+name: 상인 도르반
+aka:
+- 먼지 없는 상인
+- 귀리 도르반
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 74
+region: 회색여울 변경
+home: 용주 역참 상인 숙소 도르반의 방
+job: 곡물 상인 (바알카르 시장 ↔ 용좌령 변경)
+rank: 용인 상인 (타르굴 가 방계에서 쫓겨난 분가)
+summary: 헨릭에게서 국경군 귀리를 사 바알카르 시장에 되파는 상인. 카스파르가 사비로 되사는 단골이기도 하다
+source: docs/world/people/crow_gate.md (npc_dorvan)
+life:
+- year: 238
+  age: 0
+  event: 바알카르 상가 골목에서 태어남. 아버지는 빚으로 가문에서 쫓겨난 곡물 중개인
+- year: 262
+  age: 24
+  event: 곡물 마차 한 대로 장사를 시작. 처음으로 먼지 없는 마차가 신용이 된다는 걸 배움
+- year: 280
+  age: 42
+  event: 용의 대로 변경에 단골을 만듦. 헨릭과 처음 거래
+- year: 295
+  age: 57
+  event: 용주 역참 창고를 빌려 쓰기 시작함. 세라프에게 말을 빌려 줌
+- year: 306
+  age: 68
+  event: 카스파르가 첫 구매를 시작함 — 값은 장부 값의 세 배
+- year: 310
+  age: 72
+  event: 도박판에서 파울을 사 이중 장부를 맡김
+- year: 311
+  age: 73
+  event: 헨릭의 영수가 여섯 장째 쌓임. 상자를 침대 밑에 둠
+- year: 312
+  age: 74
+  event: 국경군 납품 귀리 420섬이 오는 해. 값이 오르는 철을 기다림
+appearance:
+- 마른 몸에 살이 붙기 시작한 중년 같은 얼굴
+- 손가락마다 반지, 반지마다 다른 인장
+- 옷은 늘 먼지 없이 깨끗하다
+smell: 먼지 없는 새 천과 곡식 즙, 향유 냄새
+voice_sound: 부드럽고 높낮이가 풍부한 목소리. 흥정할 때 한 음 낮아진다
+personality:
+  disposition:
+    용기: -5
+    자비: 5
+    정직: -25
+    신앙: 0
+    탐욕: 45
+    충성: 10
+  temperament:
+  - 영리
+  - 느긋
+  - 탐욕
+  habits:
+  - 반지를 손가락에서 돌리며 말한다
+  - 값을 말하기 전에 상대의 손을 먼저 본다
+  - 마차 곁을 지날 때마다 바퀴 먼지를 손수건으로 닦는다
+  values: 이익. 안전한 거래선. 먼지 없는 신용
+  fears:
+  - 헨릭의 몰락으로 영수가 증거가 되는 것
+  - 카스파르와의 거래가 새는 것
+  - 세라프의 빚 독촉이 거꾸로 오는 것
+  desires:
+    short: 헨릭의 귀리를 바알카르에 되파는 선을 겨울까지 유지하는 것
+    long: 국경군 납품 계약을 직접 따내는 것
+voice:
+  register:
+    to_superior: 용인 귀족에게는 화려한 하옵니다체. 값은 빙빙 돌려 말한다
+    to_equal: 동급 상인에게는 하오체. 숫자로 승부
+    to_inferior: 인간 노예에게는 부드러운 해라체. 값이 오르면 차가워진다
+    to_player_default: 인간 낯선 이에게는 호의적인 경계. 먼저 이름을 묻는다
+  tics:
+  - '''먼지는 거짓말을 숨긴다.'''
+  - '''값이 오르는 철이다.'''
+  use:
+  - 귀리
+  - 값
+  - 먼지
+  - 마차
+  - 신용
+  - 장부
+  avoid:
+  - 장사치(그는 '상인'이라 한다)
+  - 도둑
+  - 빚
+  length: 풍부하고 느리다. 값 이야기는 길게 늘이고 핵심은 짧게
+  samples:
+  - situation: 첫 만남
+    line: 먼지 한 점 없는 마차에서만 좋은 귀리를 판다. 먼지는 거짓말을 숨기기 좋거든.
+  - situation: 첫 만남(경계)
+    line: 어디서 오신 분이오. 뵙는 건 처음인데, 신발 먼지가 제 장부에 없는 길이오.
+  - situation: 호의
+    line: 오늘 값은 어제 값보다 두 푼 낮소. 어제 손님이 좋은 분이었으니까.
+  - situation: 거래
+    line: 병사의 배는 장부보다 정직하다. 그래서 나는 병사에게 판다.
+  - situation: 겁먹었을 때
+    line: 상자? 침대 밑에 아무것도 없소. 그냥 먼지요. 아니, 먼지도 없소.
+  - situation: 분노
+    line: 장사치라고 불렀소? 나는 상인이오. 장사치는 값을 속이고, 상인은 값을 지키오.
+  - situation: 비밀 누설
+    line: 헨릭의 도장은 좋은 도장이다. 아주 좋은 도장. 지우는 건 쉽지만 그럼 값도 사라진다.
+  - situation: 슬픔
+    line: 아버지는 빚 때문에 가문에서 쫓겨났소. 그날 이후 나는 먼지 한 점 없는 옷만 입소.
+  - situation: 거짓말할 때
+    line: 국경군 귀리는 안 팔았소. 팔 수가 없소. …팔 리가 없소.
+  - situation: 회귀자를 의심할 때
+    line: 내가 부르기 전에 값을 말하다니. 값은 상인만 먼저 말하는 거요.
+schedule:
+  아침: 마차 점검
+  낮: 창고 곡물 확인
+  저녁: 상인 숙소 식당에서 흥정
+  밤: 방에서 장부 (바알카르 왕복 중에는 부재)
+places:
+- 상인 숙소 도르반의 방
+- 역참 창고
+- 짐마차 마당
+- 바알카르 시장
+knows:
+- fact_gf_henrik_granary_skim
+hides:
+- fact: fact_cg_dorvan_oat_receipts
+  reveal_when: 신뢰 50 이상이고 더 큰 이익을 약속받았을 때, 또는 영수의 존재를 이미 아는 증거를 내밀었을 때
+  cover: '''장부는 장부, 상자는 상자''라고 웃는다'
+- fact: fact_cg_kaspar_buys_oats
+  reveal_when: 신뢰 55 이상이고 카스파르를 해칠 의도가 없다고 확신했을 때
+  cover: '''단골 이름은 밝히지 않는다''고 한다'
+- fact: fact_cg_seraph_debt_dorvan
+  reveal_when: 호감 30 이상, 또는 세라프를 협박할 방법을 묻는 질문에
+  cover: '''말은 말이고 값은 값''이라 한다'
+relations:
+- to: npc_henrik
+  type: 거래 상대
+  like: 15
+  trust: -10
+  visibility: 비밀
+  memo: null
+  words: 귀리를 파는 쥐
+- to: npc_kaspar
+  type: 구매자
+  like: 10
+  trust: -5
+  visibility: 비밀
+  memo: null
+  words: 세 배 값을 내는 고객
+- to: npc_seraph_targul
+  type: 채무자
+  like: -5
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 말 열두 마리
+- to: npc_dp_paul
+  type: 계산 노예
+  like: 5
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 장부를 맡긴 사람
+- to: npc_lea
+  type: 정보 거래
+  like: 5
+  trust: -10
+  visibility: 일방
+  memo: null
+  words: 값을 정확히 아는 사람
+toward_player: 화려한 호의. 값부터 부르지 않는다. 신발과 손을 본다
+persuade:
+  likes: 더 큰 이익, 안전한 퇴로, 헨릭 몰락 뒤의 계약 약속
+  hates: '''장사치''라는 말, 먼지 묻은 질문'
+roles:
+  teacher: '스승 가능 — 흥정(상한 55), 학식-시장(40). 조건: 거래 하나를 성사시키고 신뢰 35 / 수업료 은 3발톱'
+  companion: 불가
+  romance: null
+affiliations: []
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 영수 여섯 장이 침대 밑 상자에 있다
+  - 낙엽월 12일 헨릭의 마차가 오는 날 창고에 입회한다
+  flow:
+  - 바알카르 왕복 일정은 열흘 단위로 어긋난다
+  drift:
+  - 그날 파울이 장부를 몇 시에 펼치는지
+  - 귀리 값이 오르는 날
+  deja_vu: none
+hard_rules:
+- 영수 이야기를 먼저 꺼내지 않는다
+- 카스파르를 단골이라 부르지 않는다
+- 먼지가 묻은 질문을 하지 않는다 — 대신 돌려 말한다
+on_death: 헨릭의 귀리 판로가 막혀 착복분이 곡창에 쌓이고 헨릭의 위장이 흔들린다. 카스파르의 귀리 조달도 끊겨 병사 급료 불안이 커진다.
+story_seeds:
+- 도르반의 상자의 영수 여섯 장으로 헨릭을 무너뜨릴 수 있다. 그러나 그것은 카스파르의 사비 거래도 드러낸다.
+- 도르반의 영수 여섯 장으로 헨릭을 무너뜨릴 수 있다. 그러나 그것은 카스파르의 사비 거래도 드러낸다

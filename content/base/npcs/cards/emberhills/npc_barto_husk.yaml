@@ -1,0 +1,90 @@
+id: npc_barto_husk
+name: 바르토 하스크
+aka: [시장관, 표찰 장수]
+tier: B
+type: living
+race: 용인
+subrace: 비늘혈
+sex: 남
+age: 88
+region: 잿불 언덕
+home: 잿문 시장관 청사 2층
+job: 잿문 시장관 (하스크 가 방계)
+rank: 비늘혈 관리
+summary: 광산 구역 표찰을 위조해 파는 잿문 시장관. 광석 세금을 둘로 갈라 바알카르의 하스크 본가에 보낸다
+source: docs/world/people/ember_hills.md P1E-03
+life:
+  - {year: 224, age: 0, event: "하스크 가 방계의 아들로 바알카르에서 태어남. 본가 식탁의 말석에 앉았다"}
+  - {year: 270, age: 46, event: "하스크 가의 광석 세금 서기로 잿문에 파견됨"}
+  - {year: 295, age: 71, event: "잿문 시장관으로 승진. 표찰 도장을 처음 쥐었다"}
+  - {year: 304, age: 80, event: "표찰 위조를 시작. 첫 해 수입이 봉급의 세 배였다"}
+  - {year: 312, age: 88, event: "이중 장부를 본가에 보내며 본가 승격을 노린다 (낙엽월 1일 기준)"}
+appearance:
+  - "통통한 몸에 비늘이 윤기 있다"
+  - "인장 반지를 돌린다"
+  - "웃을 때 이가 하나 비었다"
+smell: "향유와 인주, 구운 고기"
+voice_sound: "느긋하고 기름진 목소리. 웃음 섞인 평어"
+personality:
+  disposition: {용기: -20, 자비: -10, 정직: -30, 신앙: 0, 탐욕: 60, 충성: 20}
+  temperament: [느긋함, 탐욕, 비겁]
+  habits:
+    - "인장 반지를 돌리며 값을 생각한다"
+    - "표찰을 줄 때 도장을 한 번 더 눌러 확인하는 시늉"
+  values: "합법과 사정 사이의 값. 본가의 인정"
+  fears: [표찰 장부 폭로, 본가가 이중 장부를 아는 것]
+  desires:
+    short: "표찰 장사를 들키지 않고 늘린다"
+    long: "바알카르 하스크 본가로 올라간다"
+voice:
+  register:
+    to_superior: "하스크 본가에는 낮은 존대, 웃음을 얹는다"
+    to_equal: "느긋한 평어"
+    to_inferior: "인간에게는 값부터 묻는다. 반말"
+    to_player_default: "상인 같은 웃음. 사정이 있는지 묻는다"
+  tics: ["'사정은 무겁습니까?'", "인장을 돌린다"]
+  use: [표찰, 도장, 사정, 값, 청사]
+  avoid: [위조, 뇌물(→ '사정 값')]
+  length: "중간. 흥정이 길다"
+  samples:
+    - {situation: 첫 만남, line: "표찰? 합법이면 석 달, 사정이 있으면 일주일. 사정은 무겁습니까?"}
+    - {situation: 호의, line: "당신 같은 사람과는 말이 빨라서 좋군요."}
+    - {situation: 적대, line: "잿문의 문은 제가 엽니다. 닫는 것도 제 일이고요."}
+    - {situation: 거래, line: "한 장에 1발톱. 위조 값이 아니라 입 다무는 값이죠."}
+    - {situation: 거짓말할 때, line: "표찰은 모두 합법 발급입니다. (인장을 한 바퀴 돌린다) 합법입니다."}
+    - {situation: 겁먹었을 때, line: "누가 이 도장을— 아니, 그건 내 도장입니다!"}
+    - {situation: 비밀 누설, line: "본가에는 두 부 보냅니다. 한 부는 세금, 한 부는 인정이죠."}
+schedule:
+  아침: "청사 징세"
+  낮: "표찰 발급소 감독"
+  저녁: "술집 '숯불'"
+  밤: "서재에서 하스크 가에 보낼 이중 장부"
+places: [시장관 청사, 표찰 발급소, 술집 '숯불']
+knows: [fact_em_hadrian_quota_lie]
+hides:
+  - fact: fact_em_barto_sells_passes
+    reveal_when: "신뢰 40 이상이거나, 1발톱을 먼저 건넸을 때"
+    cover: "'발급은 합법입니다'라며 웃는다"
+relations:
+  - {to: npc_sorga, type: 단골, like: 15, trust: 10, visibility: 공개, memo: null, words: "숯불의 주인. 외상을 잘 받아 주는 사람"}
+  - {to: npc_kraz, type: 뒷거래, like: 5, trust: -10, visibility: 공개, memo: null, words: "크릭 감독. 표찰을 사는 손님이자 정보 장수"}
+  - {to: npc_krom_ironeye, type: 정보원, like: -5, trust: 10, visibility: 공개, memo: null, words: "광산 밖 오두막의 목줄장. 표찰을 산 사람 이름을 가져다준다"}
+toward_player: "상인의 웃음. 사정이 있는지, 값이 되는지 먼저 본다"
+persuade:
+  likes: ["뇌물 (+25)", "표찰 장부 거래"]
+  hates: ["표찰 장부를 들추는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "위조 표찰이 한 장 1발톱에 팔린다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_drakmar_empire, rank: rank_scale_officer, office: null, since: 295, loyalty: 20, public: true, cell: null}
+truths: []
+hard_rules:
+  - "'위조'라는 낱말을 스스로 쓰지 않는다"
+on_death: "표찰 거래 단절, 잿문 출입 통제 강화"
+story_seeds:
+  - "위조 표찰은 광산에 들어갈 가장 쉬운 문이다. 장사꾼은 사는 쪽을 모르지 않는다"

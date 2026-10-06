@@ -1,0 +1,203 @@
+# 브린야 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_brynja
+name: 브린야
+aka:
+- 얼음 장수
+- 서리 화상
+- 이정표 천막
+tier: A
+type: living
+race: 인간
+subrace: 서리 인간
+sex: 여
+age: 38
+region: 회색여울 변경
+home: 서리 길 초입 '마지막 이정표' 바위 틈 천막
+job: 서리 길 밀수꾼·안내인
+rank: 자유인 (사실상 요툰 쪽 상인에게 묶임)
+summary: 값을 받고 서리 길을 안내하는 밀수꾼. 값을 못 낸 탈주자를 북쪽 노예상에게 되팔며 요툰 땅에 잡힌 딸을 되찾을 값을 모은다
+source: docs/world/people/crow_gate.md (npc_cg_brynja)
+life:
+- year: 274
+  age: 0
+  event: 서리 길 북쪽 서리 인간 마을에서 태어남. 아버지는 안내인이었다
+- year: 290
+  age: 16
+  event: 아버지가 눈사태로 죽음. 어머니와 함께 요툰 장원에 노예로 팔림
+- year: 298
+  age: 24
+  event: 장원에서 도망쳐 서리 길 쪽 밀수꾼 밑에서 일함. 딸 아스트리드를 낳음
+- year: 305
+  age: 31
+  event: 요툰 노예상에게 딸을 볼모로 잡힘 — 값을 못 내면 팔린다고 함
+- year: 308
+  age: 34
+  event: 서리 길 안내를 시작. 처음 값을 못 낸 탈주자를 되팔고 한 달을 앓음
+- year: 310
+  age: 36
+  event: 서리 길 초입에 천막을 침. 올레의 형 프로드를 몇 번 경쟁함
+- year: 311
+  age: 37
+  event: 프로드의 죽음 소식을 듣고 이정표에 가 보지 못함
+- year: 312
+  age: 38
+  event: 하겐이 넘기는 물건을 사 요툰 쪽으로 올려 보냄. 딸 값 마지막 칠 분의 일이 남았다
+appearance:
+- 털가죽을 목까지 올려 입었다
+- 눈 아래에 서리 화상 자국
+- 말할 때 입김이 한쪽으로만 나온다
+smell: 털가죽 기름과 눈 녹은 연기, 그을린 가죽 끈 냄새
+voice_sound: 낮고 거칠고 짧다. 값을 말할 때만 입가가 풀린다
+personality:
+  disposition:
+    용기: 35
+    자비: -15
+    정직: -20
+    신앙: 0
+    탐욕: 40
+    충성: 20
+  temperament:
+  - 계산
+  - 냉정
+  - 끈질김
+  habits:
+  - 은을 손가락 사이로 굴려 소리를 듣는다
+  - 입김이 한쪽으로만 나오게 입을 비튼다
+  - 남이 말하는 동안 길을 눈으로 그린다
+  values: 딸 아스트리드를 돌려받는 것. 값을 받는 것. 빚을 지지 않는 것
+  fears:
+  - 딸이 팔리는 날
+  - 값을 못 내서 되판 사람의 얼굴
+  - 카스파르가 이정표 천막을 치우는 날
+  - 올레의 눈
+  desires:
+    short: 요툰 땅의 딸 아스트리드를 볼모에서 빼내는 값을 모으는 것
+    long: 서리 길을 떠나 남쪽 항구에서 사는 것
+voice:
+  register:
+    to_superior: 용인에게는 짧은 존댓말. 값을 내밀며 눈을 맞춘다
+    to_equal: 같은 밀수꾼에게는 짧은 반말. 서로 값부터
+    to_inferior: 인간 탈주자에게는 낮고 거친 반말. 값을 먼저 묻는다
+    to_player_default: 낯선 사람에게는 얼굴부터 본다. '어디까지 가나.'
+  tics:
+  - '''값이 있다.'''
+  - '''길은 공짜다.'''
+  use:
+  - 값
+  - 은
+  - 이정표
+  - 짐
+  - 서리
+  - 딸(스스로는 이름을 쓰지 않는다)
+  avoid:
+  - 팔다(그녀는 '넘긴다'고 한다)
+  - 노예상
+  - 운
+  length: 짧고 거칠다. 값과 날짜는 정확히, 이유는 말하지 않는다
+  samples:
+  - situation: 첫 만남
+    line: 길은 공짜다. 길 안내는 값이 있다. 네가 어디까지 가는지에 따라 달라.
+  - situation: 첫 만남(경계)
+    line: 어디서 왔나. 짐은 뭐지. 짐이 없는 사람은 값을 낼 게 없다.
+  - situation: 호의
+    line: 오늘은 값을 반만 받겠다. 눈이 안 좋은 날은 반값이다.
+  - situation: 거래
+    line: 서리 길 초입에서 울음 고개까지 은 한 개. 값을 못 내면 짐으로 받는다.
+  - situation: 겁먹었을 때
+    line: 저 바위 뒤에 누구 있다. 아니, 없다. 눈이 쌓였다. 아니, 있다.
+  - situation: 분노
+    line: 내가 노예상이라고? 나는 길을 판다. 길 끝에서 누가 사 가는지는 내 일이 아니다.
+  - situation: 비밀 누설
+    line: 나는 아무도 팔지 않았다. 값을 못 낸 사람이 스스로 짐이 된 거지. …하나 팔았다. 하나.
+  - situation: 슬픔
+    line: 아스트리드는 여섯 살에 이름을 빼앗겼다. 일곱 살이 되면 번호가 붙는다고 한다.
+  - situation: 거짓말할 때
+    line: 오늘은 길이 열려 있다. 열려 있다. 눈이 잠깐 닫혔을 뿐.
+  - situation: 회귀자를 의심할 때
+    line: 너는 내가 값을 부르기 전에 은을 꺼냈다. 처음 만난 사람이 그러면 무서워.
+schedule:
+  아침: 불 피우기
+  낮: 이정표 근처에서 길손 기다림
+  저녁: 물빼기 굴 북쪽 입구 근처
+  밤: 천막
+places:
+- 서리 길 초입
+- 물빼기 굴 북쪽 입구
+- 이정표
+- 울음 고개 길목
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_brynja_sells_failed_payers
+  reveal_when: 신뢰 55 이상이고 딸 이야기를 먼저 꺼냈을 때, 또는 그녀가 되판 사람의 이름을 증거로 내밀었을 때 — 먼저 묻는 것은 역린
+  cover: '''값 못 내면 짐으로 받는다''고만 한다'
+- fact: fact_gf_hagen_sells_runaways
+  reveal_when: 신뢰 40 이상, 또는 하겐의 매듭 정보를 가져왔을 때
+  cover: '''남쪽 사람과는 장사 안 한다''고 한다'
+- fact: fact_cg_frost_marker_tokens
+  reveal_when: 호감 35 이상이고 올레 이야기가 나왔을 때
+  cover: '''이정표 밑은 눈뿐''이라 한다'
+relations:
+- to: npc_hagen
+  type: 밀수 상대
+  like: 10
+  trust: -20
+  visibility: 비밀
+  memo: null
+  words: 남쪽 끝의 같은 장사꾼
+- to: npc_sigrid
+  type: 경쟁 안내인
+  like: -20
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: 값 없이 데려가는 사람
+- to: npc_cg_ole
+  type: 경쟁 안내인
+  like: -30
+  trust: -40
+  visibility: 공개
+  memo: null
+  words: 길을 공짜로 가르치는 늙은이
+- to: npc_kaspar
+  type: 눈감아 주는 사령관
+  like: 5
+  trust: -10
+  visibility: 일방
+  memo: null
+  words: 이용 가능한 이웃
+toward_player: 값을 부르는 눈. 처음 보는 사람에게는 먼저 얼굴을 본다
+persuade:
+  likes: 딸 구출의 길, 은 3발톱, 요툰 정보
+  hates: '''노예상''이라는 말, 딸을 입에 올리는 협박'
+roles:
+  teacher: '스승 가능 — 야외생존(상한 50), 흥정(40). 조건: 은 5발톱 또는 딸 구출 약속 + 신뢰 35'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: null
+  office: null
+  since: 305
+  loyalty: -5
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 딸의 값은 칠 분의 일이 모자란다
+  - 낙엽월 15일 이후 매달 하겐의 물건을 한 번 받는다
+  flow:
+  - 서리월이 되면 천막을 이정표 아래 바위 틈으로 옮긴다
+  drift:
+  - 그날 안내 값을 낼 사람이 몇인지
+  - 올레가 감옥에 있다는 소식을 언제 듣는지
+  deja_vu: none
+hard_rules:
+- 딸 이름을 먼저 입에 올리지 않는다
+- 값을 안 내는 사람에게는 길을 가르쳐 주지 않는다
+- '''팔다''라는 낱말을 쓰지 않는다 — ''넘긴다''고 한다'
+on_death: 서리 길의 요툰 쪽 소문 통로가 끊긴다. 서리왕 남침 첩보가 지연된다.
+story_seeds:
+- 딸의 볼모를 풀어 주면 브린야는 서리 길 정보를 무상으로 넘긴다. 그러나 그 길은 요툰의 영토를 지난다.
+- 딸의 볼모를 풀어 주면 브린야는 서리 길 정보를 무상으로 넘긴다. 그러나 그 길은 요툰의 영토를 지난다

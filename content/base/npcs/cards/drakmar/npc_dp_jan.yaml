@@ -1,0 +1,150 @@
+# 마구간 노예 얀 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dp_jan
+name: 마구간 노예 얀
+aka:
+- 엄지 뭉개진 얀
+- 말 귀 얀
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 60
+region: 회색여울 변경
+home: 역참 마구간 건초 다락 아래 침상
+job: 역참 마구간 관리
+rank: 역참 소유 노예
+summary: 건초 다락 뒤 한 칸으로 남쪽 가는 사람을 하룻밤 재우는 마구간 노예. 잿빛 실의 한 마디다
+source: docs/world/people/crow_gate.md (npc_dp_jan)
+life:
+- year: 252
+  age: 0
+  event: 용주 역참 노예 막사에서 태어남. 어미는 마구간 청소부
+- year: 270
+  age: 18
+  event: 오른손 엄지가 말발굽에 으깨짐. 그날 이후 말이 더 잘 따랐다
+- year: 290
+  age: 38
+  event: 회색여울 군나르에게서 소식을 처음 받음. 건초 다락 칸을 만듦
+- year: 310
+  age: 58
+  event: 한 해 열한 명을 다락에 재웠다. 매번 새벽에 아무 일 없다는 듯 말을 끌고 나왔다
+appearance:
+- 오른손 엄지가 말발굽에 으깨졌다
+- 눈가에 말 침 얼룩
+- 말에게는 속삭이듯, 사람에게는 말을 아낀다
+smell: 말 땀과 건초, 가죽 기름 냄새
+voice_sound: 낮고 느린 목소리. 사람에게는 말을 아끼고 말에게는 속삭인다
+personality:
+  disposition:
+    용기: 15
+    자비: 25
+    정직: 0
+    신앙: 10
+    탐욕: -10
+    충성: 20
+  temperament:
+  - 과묵
+  - 끈질김
+  - 조용함
+  habits:
+  - 말 귀 뒤를 긁어 주며 사람 이야기를 한다
+  - 손을 먼저 내밀고 말을 건다
+  values: 건초 다락의 비밀. 말이 놀라지 않는 것
+  fears:
+  - 검문 하사의 순찰
+  - 건초 불
+  - 다락이 들키는 것
+  desires:
+    short: 올 겨울 열세 번째 손님을 재우는 것
+    long: 마구간에서 늙어 죽는 것
+voice:
+  register:
+    to_superior: 용인에게는 짧은 존댓말
+    to_equal: 같은 노예에게는 낮은 반말
+    to_inferior: 아이에게는 말 이야기로 푸는 반말
+    to_player_default: 낯선 사람에게는 손부터 보자는 말
+  tics:
+  - '''천천히.'''
+  use:
+  - 말
+  - 손
+  - 건초
+  - 발굽
+  - 길
+  avoid:
+  - 다락(그는 '위층'이라 한다)
+  - 탈주
+  length: 짧고 느리다
+  samples:
+  - situation: 첫 만남
+    line: 말이 놀란다. 천천히. 손을 먼저 내밀고. 말도 사람도 마찬가지다.
+  - situation: 호의
+    line: 말은 거짓말을 못 한다. 사람은 못 하는 척하지.
+  - situation: 거래
+    line: 당근 한 개면 말이 믿는다. 사람은 두 개쯤.
+  - situation: 비밀 누설
+    line: 위층에 두 사람 누울 칸이 있다. 아무도 오지 않은 겨울은 없었다.
+schedule:
+  아침: 말 먹이
+  낮: 편자와 안장
+  저녁: 마구간 청소
+  밤: 건초 다락 아래 침상
+places:
+- 역참 마구간
+- 건초 다락
+- 노예 막사
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_post_stable_hideout
+  reveal_when: 신뢰 50 이상이고 군나르나 엘사의 표식을 보였을 때
+  cover: '''위층은 건초 창고''라 한다'
+relations:
+- to: npc_gunnar
+  type: 옛 마구간 동료
+  like: 30
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: 회색여울의 같은 일
+- to: npc_dp_orbek
+  type: 검문 하사
+  like: -10
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: 순찰이 가까운 날은 쉬게 한다
+- to: npc_elsa
+  type: 연락의 한끝
+  like: 20
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 잿빛 실
+toward_player: 손을 먼저 본다. 말에게 가까운 사람은 믿는다
+persuade:
+  likes: 말을 아끼는 사람, 잿빛 표식
+  hates: 말에게 채찍을 쓰는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grey_thread
+  rank: rank_knot
+  office: null
+  since: 290
+  loyalty: 60
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 건초 다락에는 두 칸이 비어 있다
+  deja_vu: none
+hard_rules:
+- 다락 이야기를 먼저 꺼내지 않는다
+on_death: 역참 쪽 잿빛 실 매듭이 사라져 남행 호송 사이 쉴 곳이 없어진다.
+story_seeds:
+- 얀의 다락은 회색여울에서 바알카르로 가는 길의 중간 쉼터다. 호송대가 서는 밤은 비워야 한다.

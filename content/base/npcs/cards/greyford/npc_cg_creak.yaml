@@ -1,0 +1,150 @@
+# 크릭 열쇠지기 '삐걱' — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_creak
+name: 크릭 열쇠지기 '삐걱'
+aka:
+- 삐걱
+- 열쇠 목걸이
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 31
+region: 회색여울 변경
+home: 크릭 병영 지하
+job: 북문 권양기와 열쇠 담당
+rank: 국경군 소속 크릭 (채찍손 길드 변두리)
+summary: 문 열쇠 하나를 쥔 크릭. 서리월 3일 밤, 용인이 처음으로 크릭에게 '부탁'했다는 사실 하나로 길드에 알리지 않았다
+source: docs/world/people/crow_gate.md (npc_cg_creak)
+life:
+- year: 281
+  age: 0
+  event: 까마귀 문 크릭 병영에서 태어남. 어깨가 처음부터 한쪽으로 기울었다
+- year: 300
+  age: 19
+  event: 북문 권양기를 맡음. 하루 열두 시간 손잡이를 쥐고 오른쪽 어깨가 내려앉음
+- year: 309
+  age: 28
+  event: 짐꾼 막사 화재 날 문을 닫았다 열었다 하다 혼자 하루를 울었다. 이유는 모른다
+- year: 312
+  age: 31
+  event: 카스파르가 직접 와서 서리월 3일 밤 열쇠를 '잃어도 된다'고 말함. 크릭에게 부탁한 용인은 처음이었다
+appearance:
+- 오른쪽 어깨가 내려앉았다 — 권양기 손잡이를 오래 잡은 쪽
+- 열쇠 꾸러미를 목에 걸고 걸을 때마다 삐걱 소리
+- 눈이 유난히 빨갛다
+smell: 쇠 녹과 기름, 젖은 가죽끈
+voice_sound: 느리고 쉰 목소리. 말마다 끝이 삐걱거리듯 갈린다
+personality:
+  disposition:
+    용기: -5
+    자비: 10
+    정직: 0
+    신앙: 0
+    탐욕: 5
+    충성: 35
+  temperament:
+  - 겁
+  - 순종
+  - 외로움
+  habits:
+  - 열쇠 꾸러미가 소리 나지 않도록 가슴에 끌어안고 걷는다
+  - '''문''이라는 말을 들으면 어깨가 먼저 움찔한다'
+  values: 문을 제때 여닫는 것. 부탁을 받았다는 사실을 잊지 않는 것
+  fears:
+  - 수비대장이 쥔 다른 열쇠
+  - 길드가 알게 되는 것
+  - 문이 닫힌 채 누가 죽는 것
+  desires:
+    short: 서리월 3일 밤 열쇠를 '잃어버린' 크릭이 되는 것
+    long: 권양기를 한 번도 잡지 않고 사는 날
+voice:
+  register:
+    to_superior: 용인에게는 짧은 존댓말
+    to_equal: 같은 크릭에게는 낮은 반말
+    to_inferior: 인간에게는 문 이야기만 하는 반말
+    to_player_default: 낯선 사람에게는 열쇠부터 가린다
+  tics:
+  - '''문은 문이다.'''
+  use:
+  - 문
+  - 열쇠
+  - 권양기
+  - 해
+  - 밤
+  avoid:
+  - 부탁(그가 쓰는 말은 '심부름')
+  - 길드
+  length: 짧고 갈린다. 길게 말하면 목이 아픈 듯 쉰다
+  samples:
+  - situation: 첫 만남
+    line: 문은 해 뜨면 열고 해 지면 닫는다. 나는 그 사이를 센다.
+  - situation: 겁먹었을 때
+    line: 열쇠? 내 열쇠 아냐. 문 열쇠다. 아니, 문이 내 열쇠다. 모르겠다.
+  - situation: 호의
+    line: 오늘은 문이 한 번 덜 삐걱거렸다. 네가 와서 그런가.
+  - situation: 비밀 누설
+    line: 사령관이 말했다. 열쇠를 놓고 와도 된다고. 크릭에게 말한 용인은 처음이었다. 나는 그 말이 무서워서 잠을 못 잤다.
+schedule:
+  아침: 문 여는 나팔 때 권양기
+  낮: 문 옆
+  저녁: 문 닫는 나팔
+  밤: 크릭 병영 지하
+places:
+- 북문
+- 북문 권양기실
+- 크릭 병영
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_oct3_twelve
+  reveal_when: 신뢰 40 이상이고 사령관의 이름을 먼저 입에 올렸을 때
+  cover: '''문은 해가 지면 닫는다''고만 한다'
+relations:
+- to: npc_kaspar
+  type: 상관
+  like: 45
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: 부탁한 용인
+- to: npc_cg_grik
+  type: 크릭 대장
+  like: 10
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: 길드의 눈
+- to: npc_sigmund
+  type: 수비대장
+  like: -10
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 다른 열쇠를 쥔 자
+toward_player: 문 앞에서 서성이는 사람에게 열쇠 먼저 가린다
+persuade:
+  likes: 문을 제때 닫는 것, 사령관을 존중하는 말
+  hates: 길드 이야기, 열쇠를 빼앗으려는 시늉
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_overseer
+  office: null
+  since: 300
+  loyalty: 40
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 서리월 3일 밤 열쇠는 그가 쥐고 있다
+  deja_vu: none
+hard_rules:
+- 열쇠를 일부러 놓아 두는 밤에 대해 길드에 말하지 않는다
+on_death: 북문 열쇠가 하나 줄어 문 개폐가 지연된다. 서리월 3일 밤 열쇠 문제가 전혀 다른 곳으로 번진다.
+story_seeds:
+- 열쇠지기가 열쇠를 '잃은' 밤 북문은 열린다 — 그를 대신해 누가 책임을 질 것인가.

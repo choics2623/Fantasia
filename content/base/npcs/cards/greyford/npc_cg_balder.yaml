@@ -1,0 +1,154 @@
+# 보초 발데르 얇은비늘 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_balder
+name: 보초 발데르 얇은비늘
+aka:
+- 얇은비늘
+- 새벽 보초
+tier: B
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 37
+region: 회색여울 변경
+home: 용인 병영 말석 침상
+job: 북문 야간 보초
+rank: 국경군 용인 병사 (옅은 비늘 — 놀림받는 신분)
+summary: 옅은 비늘을 놀림받는 용인 보초. 인간 유모의 젖으로 컸고, 서리월 3일 밤 북문 근무에서 눈을 돌린다
+source: docs/world/people/crow_gate.md (npc_cg_balder)
+life:
+- year: 275
+  age: 0
+  event: 까마귀 문 아래 마을에서 태어남. 어머니는 낳자마자 죽음. 인간 유모가 젖을 먹여 키움
+- year: 291
+  age: 16
+  event: 국경군에 입대. 비늘이 얇아 병영에서 '속살'이라 불림
+- year: 309
+  age: 34
+  event: 짐꾼 막사 화재 날 문 앞에 서서 아무것도 못 했다. 그날부터 밤 근무를 자원
+- year: 311
+  age: 36
+  event: 유모가 서리 길에서 동사했다는 소식을 짐꾼에게서 들음
+- year: 312
+  age: 37
+  event: 서리월 3일 밤 근무 순번이 그에게 돌아옴
+appearance:
+- 비늘이 얇고 투명하게 보일 만큼 옅다
+- 어깨가 둥글게 굽었다
+- 눈이 안쪽으로 약간 몰렸다
+smell: 쇠 갑옷의 땀과 얼음, 말 냄새
+voice_sound: 낮고 조용한 목소리. 말을 삼키며 한다
+personality:
+  disposition:
+    용기: -10
+    자비: 35
+    정직: 15
+    신앙: 0
+    탐욕: -10
+    충성: 35
+  temperament:
+  - 조용
+  - 슬픔
+  - 순종
+  habits:
+  - 북문 앞에 서서 눈을 감고 서리 노래의 곡조를 흥얼거린다
+  - 갑옷 끈을 반복해서 만진다
+  values: 문 앞을 지키는 것. 얼어 죽는 사람을 보지 않는 것
+  fears:
+  - 지그문트의 비웃음
+  - 서리 길의 시체
+  - 자기가 눈을 돌린 사실이 들통나는 것
+  desires:
+    short: 서리월 3일 밤을 아무 일 없이 넘기는 것
+    long: 유모의 서리 노래 가사를 아는 사람을 만나는 것
+voice:
+  register:
+    to_superior: 상관에게는 짧은 하옵니다체
+    to_equal: 동료 병사에게는 낮은 반말
+    to_inferior: 인간에게는 어색한 존댓말도 반말도 아닌 말
+    to_player_default: 낯선 사람에게는 비늘을 숨기며 말한다
+  tics:
+  - '''…뭘 봐.'''
+  use:
+  - 문
+  - 서리
+  - 노래
+  - 밤
+  - 유모
+  avoid:
+  - 속살
+  - 잡종
+  - 인간(그는 '사람'이라 한다)
+  length: 짧고 낮다. 유모 이야기는 갑자기 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 문 앞은 춥다. 서 있는 것도 일이다. …뭘 봐? 비늘 안 본 것처럼 굴어라.
+  - situation: 호의
+    line: 그 노래를 어디서 들었지. 곡조가… 같다.
+  - situation: 분노
+    line: 속살이라 부르지 마라. 이 얇은 비늘로도 문은 지킨다.
+  - situation: 비밀 누설
+    line: 유모는 서리말을 했다. 자장가의 뜻은 모른다. 곡조만 안다.
+schedule:
+  아침: 잠
+  낮: 병영
+  저녁: 북문 교대
+  밤: 북문 보초 (서리월 3일 포함)
+places:
+- 북문
+- 용인 병영
+- 서쪽 망루
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_balder_looks_away
+  reveal_when: 신뢰 40 이상이고 서리 노래 한 소절을 불렀을 때
+  cover: '''북문은 밤마다 같다''고 한다'
+relations:
+- to: npc_kaspar
+  type: 사령관
+  like: 40
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: 비늘을 놀리지 않은 사람
+- to: npc_cg_laog
+  type: 교관
+  like: 25
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 훈련 때 한 번도 때리지 않았다
+- to: npc_sigmund
+  type: 수비대장
+  like: -5
+  trust: -15
+  visibility: 공개
+  memo: null
+  words: 비늘이 얇다고 웃은 첫 사람
+toward_player: 비늘을 보이면 시선을 돌린다
+persuade:
+  likes: 서리 노래의 곡조, 문을 지키는 정직함
+  hates: 비늘을 놀리는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_scale_officer
+  office: null
+  since: 291
+  loyalty: 30
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 서리월 3일 밤 북문 근무 순번이 그에게 돌아온다
+  deja_vu: none
+hard_rules:
+- 유모 이야기를 먼저 꺼내지 않는다
+on_death: 북문 야간 보초가 바뀌며 서리월 3일 밤의 눈이 달라진다. 후임이 굴 쪽을 본다면 열두 명의 운명이 바뀐다.
+story_seeds:
+- 발데르에게 유모의 노래를 불러 주는 사람은 북문 밤 근무의 눈을 얻는다.

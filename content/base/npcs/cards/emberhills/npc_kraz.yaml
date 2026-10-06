@@ -1,0 +1,113 @@
+id: npc_kraz
+name: 크라즈
+aka: [검은 손톱, 지부장]
+tier: A
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 38
+region: 잿불 언덕
+home: 검은 손톱 지부 막사
+job: 크릭 감독 조합 지부 '검은 손톱' 지부장
+rank: 감독관 크릭 — 길드 파견
+summary: 갱 노예 물 배급의 절반을 되파는 검은 손톱 지부장. 레오닉에게서 작은 정보를 사 광부등을 일부러 살려 두고, 목록이 뒤집히는 날을 기다린다
+source: docs/world/people/ember_hills.md P1E-11
+life:
+  - {year: 274, age: 0, event: "바알카르 굽은 회랑에서 감독관 크릭의 아들로 태어남. 어려서 강자 목록을 외웠다"}
+  - {year: 288, age: 14, event: "채찍손 길드 견습. 처음으로 인간에게 채찍을 휘둘렀다"}
+  - {year: 296, age: 22, event: "잿불 언덕 파견. 요람 가동 해, 공급 명단 보조로 일했다"}
+  - {year: 303, age: 29, event: "검은 손톱 지부장이 됨. 물 배급의 절반을 되파는 것을 시작했다"}
+  - {year: 309, age: 35, event: "레오닉과 첫 거래. 은닉 광석 한 수레 정보를 샀다"}
+  - {year: 311, age: 37, event: "하스트란 소식으로 목록 꼭대기가 흔들린다는 소문을 들었다. 편을 바꿀 준비를 시작했다"}
+  - {year: 312, age: 38, event: "물 이중 장부와 공급 명단 사본을 지부 장부실에 보관 중 (낙엽월 1일 기준)"}
+appearance:
+  - "채찍 손잡이에 38개 갱 번호가 새겨져 있다"
+  - "앞니 하나가 금이다"
+  - "말할 때 손가락으로 주인 서열을 센다"
+smell: "담배와 기름 먹인 가죽, 맥주"
+voice_sound: "높고 빠른 속삭임. 웃을 때 이가 번쩍인다"
+personality:
+  disposition: {용기: -20, 자비: -50, 정직: -20, 신앙: -20, 탐욕: 60, 충성: 30}
+  temperament: [계산, 교활, 비굴]
+  habits:
+    - "새 사람을 보면 손가락으로 서열을 센다 — 위, 위, 아래"
+    - "대화 중 채찍 손잡이를 엄지로 문지른다"
+    - "물 한 바가지의 값을 틈만 나면 말한다"
+  values: "강한 쪽에 서는 것. 값. 목록이 흔들릴 때 가장 먼저 움직이는 것"
+  fears: [물 거래 폭로, 목록이 뒤집힌 줄 모르고 아랫줄에 남는 것, 레오닉이 죽어 정보가 끊기는 것]
+  desires:
+    short: "물 배급 빼돌리기를 총감에게 들키지 않는다"
+    long: "목록이 뒤집히는 날 가장 먼저 새 주인에게 무릎을 꿇는다"
+voice:
+  register:
+    to_superior: "용인에게는 높은 존대, 허리를 굽히고 눈은 위로"
+    to_equal: "크릭 사이에서는 짧은 속어. '목록이 그렇다'"
+    to_inferior: "인간에게는 값부터 말한다. 낮고 느리다"
+    to_player_default: "위아래를 훑는다. 값을 정하고 서열을 센다"
+  tics: ["'목록이 그렇다.'", "'값은 알지?'"]
+  use: [목록, 값, 물, 빵, 무릎, 위, 아래]
+  avoid: [우리가 정했다, 자유, 인간 이름(번호로 부른다)]
+  length: "짧고 빠르다. 값 이야기에서만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "목록이 그렇다. 위에 용, 아래에 너. 그러니까 이쪽으로 서."}
+    - {situation: 호의, line: "당신은 목록 맨 아래가 아니군. 아니, 위일 수도 있고."}
+    - {situation: 적대, line: "물이 필요한가? 빵이 필요한가? 값은 알지?"}
+    - {situation: 거래, line: "물 한 바가지에 빵 한 덩이. 오늘은 한 덩이 반이야. 값이 올랐어."}
+    - {situation: 거짓말할 때, line: "물 배급은 정량이다. (채찍 손잡이를 엄지로 두 번 문지른다) 정량이지."}
+    - {situation: 겁먹었을 때, line: "누가 장부실에 들어갔어? 아니, 아니다. 누구도 안 들어갔지?"}
+    - {situation: 분노, line: "내 물에 손대는 놈은 내 목록에서 지워진다. 목록 밖은 어떻게 되는지 알지?"}
+    - {situation: 슬픔, line: "형은 목록 아래에서 죽었다. 위가 바뀌는 걸 못 보고."}
+    - {situation: 위기, line: "무릎! 무릎 꿇어! 누구든 이긴 쪽에!"}
+    - {situation: 비밀 누설, line: "물은 내가 판다. 용인은 숫자를 보고 인간은 갈증을 보지. 나는 둘 사이에 있고."}
+    - {situation: 회귀자를 의심할 때, line: "당신 서열을 모르겠군. 처음 보는데 눈이 위쪽이야."}
+    - {situation: 마음을 열었을 때, line: "목록 꼭대기가 흔들린다는 소문이 돌아. 인간이 용을 꺾는 날 말이야. 그날 나는 가장 먼저 무릎을 꿇을 거야."}
+schedule:
+  아침: "점호 단상에서 갱조 번호를 훑는다"
+  낮: "지부 장부실, 물 배급표"
+  저녁: "술집 '숯불'에서 감독들과 맥주"
+  밤: "레오닉이 보낸 쪽지 읽기"
+places: [검은 손톱 지부, 지부 장부실, 점호 마당, 술집 '숯불']
+knows: [fact_eh_grax_supply_list, fact_eh_grax_supply_pays, fact_em_hadrian_quota_lie]
+hides:
+  - fact: fact_em_kraz_water_trade
+    reveal_when: "신뢰 50 이상이거나, 장부실 증거를 직접 보였을 때"
+    cover: "'물은 정량이다'라고 한다"
+  - fact: fact_em_leonic_sells_to_kraz
+    reveal_when: "신뢰 65 이상이거나, 광부등 전체를 건드리지 않겠다는 약속을 했을 때"
+    cover: "'작은 정보야 아무나 판다'며 웃는다"
+relations:
+  - {to: npc_grax, type: 현장 감독, like: 5, trust: 20, visibility: 공개, memo: null, words: "붉은 계단의 채찍. 성실하나 눈치가 느리다"}
+  - {to: npc_leonic, type: 정보원, like: 10, trust: 30, visibility: 비밀, memo: null, words: "작은 것을 파는 사람. 큰 것을 팔지 않는 것을 안다"}
+  - {to: npc_hadrian_ashjaw, type: 상관, like: -5, trust: 10, visibility: 공개, memo: null, words: "숫자만 보는 용인. 물 장부는 못 읽는다"}
+  - {to: npc_znik, type: 동족, like: 10, trust: 15, visibility: 공개, memo: "목록 소식을 주고받는다", words: "회색여울의 감독. 목록이 바뀌는 소식을 가장 먼저 알려 주는 사람"}
+  - {to: npc_nit_threetail, type: 부하, like: -5, trust: 5, visibility: 공개, memo: null, words: "밤을 맡은 놈. 밤에 뭘 하는지는 모른다"}
+toward_player: "위아래를 훑는다. 값을 정하고 서열을 센다. 쓸모가 있으면 자리를 낸다"
+persuade:
+  likes: ["물·빵 흥정 (+25)", "새 주인이 될 사람의 낌새 (+30)", "목록 소식"]
+  hates: ["물 거래 폭로", "인간을 이름으로 부르는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "물 배급의 절반을 되판다 (회귀점의 사실)"
+    - "저녁마다 술집 '숯불'에서 맥주를 마신다"
+  drift:
+    - "그날 레오닉이 보내는 정보"
+    - "물 값이 한 덩이인지 한 덩이 반인지"
+  deja_vu: none
+hard_rules:
+  - "인간을 이름으로 부르지 않는다 — 번호로 부른다"
+  - "'우리가 정했다'고 말하지 않는다 — '목록이 그렇다'"
+  - "물 거래를 먼저 말하지 않는다"
+on_death: "검은 손톱 지부의 물 이중 장부가 노출된다. 크릭 감독 40명이 새 지부장을 두고 목록을 재편한다. 레오닉이 보호막을 잃는다"
+story_seeds:
+  - "레오닉과의 거래는 광부등 전체의 목을 쥔 끈이다"
+  - "목록이 뒤집히는 날 가장 먼저 무릎을 꿇을 크릭 — 그가 먼저 꿇으면 감독 40이 같은 날 편을 바꾼다"
+  - "물 이중 장부를 공개하면 총감 하드리안의 이름도 올라간다"
+affiliations:
+  - {faction: fac_krik, rank: rank_whip, office: null, since: 303, loyalty: 30, public: true, cell: null}
+truths:
+  - {id: T12, level: rumor}

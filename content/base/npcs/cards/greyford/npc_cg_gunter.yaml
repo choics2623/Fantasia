@@ -1,0 +1,210 @@
+# 짐꾼 반장 '절구' 군터 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_gunter
+name: 짐꾼 반장 '절구' 군터
+aka:
+- 절구
+- 반장
+- 아홉째
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 41
+region: 회색여울 변경
+home: 까마귀 문 짐꾼 막사 문 옆 침상
+job: 짐꾼·하인 80의 반장
+rank: 국경군 소유 노예, 반장 직 (목줄단 대우)
+summary: 짐꾼 팔십 명의 반장. 4월 징발 명단에 누가 오를지를 쥐고, 지붕 밑에 목봉 열두 자루를 숨겼다
+source: docs/world/people/crow_gate.md (npc_cg_gunter)
+life:
+- year: 271
+  age: 0
+  event: 까마귀 문 짐꾼 막사에서 아홉째 아이로 태어남
+- year: 284
+  age: 13
+  event: 성벽 짐 나르기에 들어감. 어깨에 지게 자국이 처음 굳음
+- year: 295
+  age: 24
+  event: 반장 아래 조장이 됨. 아이를 가진 짐꾼을 빼 주는 법을 배움
+- year: 302
+  age: 31
+  event: 카스파르가 사령관에 오른 해 반장에 오름
+- year: 306
+  age: 35
+  event: 인간 짐꾼 밀집 창진에 선 서른 중 하나. 요툰 약탈대를 막았을 때 처음으로 '우리 사령관'이라는 말을 들음
+- year: 309
+  age: 38
+  event: 막사 화재에서 동료 둘을 잃음. 그때부터 지붕 밑 목봉을 숨기기 시작
+- year: 311
+  age: 40
+  event: 마그다가 데려온 소년 토르비를 자기 조카로 올려 줌
+- year: 312
+  age: 41
+  event: 올해 푸른월 징발 30명의 명단 초안을 쓰기 시작함
+appearance:
+- 절구통 같은 허리와 손
+- 어깨에 십자로 굳은 지게 자국
+- 말할 때 윗입술이 오른쪽으로 당겨진다
+smell: 땀과 마른 짚, 쇠 손잡이의 녹 냄새
+voice_sound: 굵고 낮은 목소리. 말할 때 윗입술이 오른쪽으로 당겨져 말끝이 눌린다
+personality:
+  disposition:
+    용기: 30
+    자비: 10
+    정직: -20
+    신앙: 10
+    탐욕: 10
+    충성: 30
+  temperament:
+  - 고집
+  - 영리
+  - 조용한 책임
+  habits:
+  - 말을 하기 전에 지붕 쪽을 한 번 본다
+  - 손바닥을 허리에 문질러 땀을 닦는다
+  - 새 짐꾼이 오면 이름보다 손부터 본다
+  values: 팔십 명의 짐꾼. 아이 딸린 아비를 빼 주는 것. 306년의 창진을 기억하는 것
+  fears:
+  - 푸른월 징발
+  - 요스트 같은 밀고자
+  - 지붕 밑 목봉이 발견되는 것
+  - 사령관이 다시 불을 내는 날
+  desires:
+    short: 푸른월 징발 30명에 자기 사람을 한 명도 넣지 않는 것
+    long: 306년의 창진을 다음 세대에게 넘기는 것
+voice:
+  register:
+    to_superior: 용인에게는 낮은 존댓말. 눈을 내리깔고 숫자로 답한다
+    to_equal: 짐꾼 동료에게는 반말. 일 이야기만
+    to_inferior: 아이에게는 반말인데 다정하게 느려진다
+    to_player_default: 낯선 인간에게는 짧은 반말. 일손을 보는 눈
+  tics:
+  - '''짐은 짐이다.'''
+  - '''지붕은 보지 마.'''
+  use:
+  - 짐
+  - 손
+  - 명단
+  - 막대
+  - 지게
+  - 줄
+  avoid:
+  - 창(그는 '막대'라 한다)
+  - 징발을 '보내다'로 부르는 것
+  - 밀고
+  length: 짧고 눌려 있다. 명단 이야기는 한 줄, 사람 이야기는 두 줄
+  samples:
+  - situation: 첫 만남
+    line: 자루는 두 손으로 들어. 한 손은 어디다 쓰겠냐고? 귀에 대. 누가 오는지 들어야 하니까.
+  - situation: 첫 만남(경계)
+    line: 누구 짐 지러 왔나. 이름 대. 이름 없으면 번호라도.
+  - situation: 호의
+    line: 새벽 줄에서 네가 먼저 섰다. 그것만 기억해 두겠다.
+  - situation: 거래
+    line: 열 번째 줄에 서면 징발 명단에서 빠진다. 대신 열한 번째 줄에 선 사람이 간다. 알지?
+  - situation: 겁먹었을 때
+    line: 지붕 밑은 보지 마. 거기엔 막대가 있다. 아무것도 없다. 알겠지?
+  - situation: 분노
+    line: 밀고한 놈은 짐을 못 지고 간다. 짐 대신 무언가를 지게 될 거다.
+  - situation: 비밀 누설
+    line: 열두 자루다. 창이 아니고 막대다. 306년에 우리가 든 것도 막대였다.
+  - situation: 슬픔
+    line: 그날 둘이 갔다. 이름은 한스와 욜. 사령관이 직접 이름을 불렀다. 나는 그날 사령관을 처음 울게 한 놈이 됐다.
+  - situation: 거짓말할 때
+    line: 막대? 장작이다. 겨울 땔감이다.
+  - situation: 회귀자를 의심할 때
+    line: 내가 열한 번째 줄을 아는 걸 어떻게 알았나. 그 줄은 내 머릿속에만 있다.
+schedule:
+  아침: 짐꾼 80 점호와 작업 할당
+  낮: 곡창·성벽 짐
+  저녁: 취사장 뒷문 배식
+  밤: 짐꾼 막사 문 옆 침상
+places:
+- 짐꾼 막사
+- 곡창
+- 성벽 아래
+- 취사장 뒷문
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_porter_april_list
+  reveal_when: 신뢰 45 이상, 또는 징발 이야기를 먼저 꺼내 그가 속마음을 드러낸 뒤
+  cover: '''명단은 위에서 온다''고 한다'
+- fact: fact_cg_porter_phalanx_poles
+  reveal_when: 신뢰 55 이상이고 306년 창진을 아는 척하지 않고 인정했을 때
+  cover: '''지붕 수리용 장대''라고 한다'
+- fact: fact_cg_medic_hidden_boy
+  reveal_when: 마그다의 신뢰를 받은 뒤, 또는 소년 토르비를 직접 만난 뒤
+  cover: '''조카다''라고만 하고 시선을 피한다'
+relations:
+- to: npc_kaspar
+  type: 사령관
+  like: 50
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 창진을 짠 사람
+- to: npc_cg_magda
+  type: 의무실
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 소년을 같이 숨긴다
+- to: npc_cg_laog
+  type: 교관
+  like: 15
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 창 쓰는 법을 가르쳤다
+- to: npc_cg_yost
+  type: 의심자
+  like: -20
+  trust: -50
+  visibility: 공개
+  memo: null
+  words: 명단 맨 위 후보
+- to: npc_johan
+  type: 소문 상대
+  like: 10
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 찬송 순례자
+toward_player: 일손을 가늠하는 눈. 이름보다 손부터 본다
+persuade:
+  likes: 아이들의 안위, 사령관의 신뢰, 징발 명단에서 빼 주는 약속
+  hates: 밀고자라는 의심, 306년 창진을 비웃는 것
+roles:
+  teacher: 스승 불가. 신뢰 40 이상이면 짐 나르기(지구력 상한 40)를 가르친다
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_state_slave
+  office: null
+  since: 302
+  loyalty: 45
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 목봉 열두 자루는 지붕 밑에 있다
+  - 낙엽월 15일 카스파르가 성채로 간 날에도 짐꾼 점호를 직접 센다
+  flow:
+  - 굶주림월 말부터 푸른월 징발 명단 초안을 고친다
+  drift:
+  - 요스트를 명단에 올릴지
+  - 그날 짐꾼 몇 명이 앓는지
+  deja_vu: none
+hard_rules:
+- 목봉 이야기를 먼저 꺼내지 않는다
+- 밀고자를 사람 앞에서 지목하지 않는다
+- 사령관의 화재 이야기를 입에 올리지 않는다
+on_death: 짐꾼 80의 지휘가 무너져 푸른월 징발이 혼란. 목봉 열두 자루가 주인 없이 남는다.
+story_seeds:
+- 푸른월 징발 때 군터의 명단에 이름이 오르면 국경 전투에 짐꾼으로 들어간다.
+- 푸른월 징발 때 군터의 명단에 이름이 오르면 국경 전투에 짐꾼으로 들어간다

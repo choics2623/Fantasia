@@ -1,0 +1,54 @@
+# 까마귀 문·용주 역참 사건 달력 — AS 312 낙엽월 1일 ~ AS 313 수확월 (24 §3.2). 원천: REGIONS §2.14, §2.10, 월드 클락(WORLD_BIBLE §10).
+# 날짜 일정이 일과보다 우선한다. 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다.
+# repeat: monthly + day / date: "AS-월-일" (월: 9 낙엽월, 10 서리월, 11 긴밤월, 12 굶주림월, 1 해빙월, 4 푸른월, 7 수확월).
+# if: 월드 플래그 — 조건부 사건.
+
+# ── 서리월 1일: 북문 봉쇄 ──
+- {id: ev_cg_gate_closed, date: "312-10-01", npcs: [npc_kaspar, npc_sigmund, npc_cg_creak], from: "06:00", to: "07:30", at: cg_north_gate, doing: "서리월 1일 — 북문 봉쇄. 권양기 열쇠를 사령관이 직접 걸어 잠그고 서리 길이 닫힌다"}
+- {id: ev_cg_gate_closed_lea, date: "312-10-01", npcs: [npc_lea], from: "06:00", to: "07:30", at: cg_wall_walk, doing: 성벽 위에서 봉쇄를 지켜본다 — 봉쇄 문서 사본을 챙긴다}
+# ── 서리월 3일 밤: 물빼기 굴의 열두 명 (조건부: 카스파르 방관) ──
+- {id: ev_cg_oct3_balder, date: "312-10-03", npcs: [npc_cg_balder], from: "22:00", to: "05:00", at: cg_north_gate, doing: 북문 밤 보초 — 굴 쪽을 보지 않는다, condition: "카스파르 방관"}
+- {id: ev_cg_oct3_creak, date: "312-10-03", npcs: [npc_cg_creak], from: "21:30", to: "05:00", at: cg_crick_barracks, doing: 열쇠를 권양기실에 일부러 두고 잔다, condition: "카스파르 방관"}
+- {id: ev_cg_oct3_kaspar, date: "312-10-03", npcs: [npc_kaspar], from: "22:30", to: "04:00", at: cg_commander_study, doing: "북문 망루에 아무도 세우지 않은 밤 — 불을 끄고 창가에 앉는다", condition: "카스파르 방관"}
+- {id: ev_cg_oct3_brynja, date: "312-10-03", npcs: [npc_cg_brynja], from: "21:00", to: "04:00", at: crow_gate__drain_mouth, doing: 굴 입구에서 열둘이 나오기를 기다린다 — 값을 부를 준비를 한다, condition: "카스파르 방관"}
+- {id: ev_cg_oct3_magda, date: "312-10-04", npcs: [npc_cg_magda], from: "03:00", to: "09:00", at: cg_infirmary, doing: "굴에서 나온 열둘 가운데 얼어붙은 이들을 몰래 데운다 — 넷은 이미 늦었다", condition: "카스파르 방관"}
+- {id: ev_cg_oct3_edda, date: "312-10-04", npcs: [npc_cg_edda], from: "23:00", to: "03:00", at: cg_graves, doing: 동사한 넷을 이름 없는 돌무더기로 묻는다, condition: "카스파르 방관"}
+- {id: ev_cg_oct4_ole, date: "312-10-04", npcs: [npc_cg_ole], from: "10:00", to: "12:00", at: cg_interrogation, doing: 새로 들어온 열둘의 안내인으로 불려 나와 심문받는다 — 일부러 서리 길의 거짓 이름을 댄다, condition: "카스파르 방관"}
+# ── 서리월 9일 · 굶주림월 3일: 매각 호송이 용주 역참에서 하룻밤 선다 (바알카르 사슬 부두로 가는 길) ──
+- {id: ev_dp_convoy1_beta, date: "312-10-09", npcs: [npc_dp_beta], from: "20:00", to: "22:30", at: dp_cookhouse, doing: 호송대 식사 — 마흔 그릇을 푼다. 열 살 아래 아이가 둘이다}
+- {id: ev_dp_convoy1_jan, date: "312-10-09", npcs: [npc_dp_jan], from: "21:00", to: "23:00", at: dp_stable, doing: 호송 말을 바꾸고 건초 다락은 비워 둔다}
+- {id: ev_dp_convoy1_check, date: "312-10-09", npcs: [npc_dp_orbek, npc_seraph_targul], from: "22:00", to: "24:00", at: dp_checkpoint, doing: "1차 매각 호송 마흔 명의 명부를 맞춘다"}
+- {id: ev_dp_convoy1_leave, date: "312-10-10", npcs: [npc_dp_orbek, npc_seraph_targul, npc_dp_jan], from: "05:00", to: "06:30", at: dp_caravan_yard, doing: 호송대가 바알카르 쪽으로 떠난다 — 차단봉이 올라간다}
+- {id: ev_dp_convoy2_beta, date: "312-12-03", npcs: [npc_dp_beta], from: "20:00", to: "22:30", at: dp_cookhouse, doing: 호송대 식사 — 서른한 그릇. 성채 하녀 사라의 이름이 명부에 있다}
+- {id: ev_dp_convoy2_jan, date: "312-12-03", npcs: [npc_dp_jan], from: "21:00", to: "23:00", at: dp_stable, doing: 호송 말을 바꾼다. 이번에는 다락에 손님을 두지 못한다}
+- {id: ev_dp_convoy2_check, date: "312-12-03", npcs: [npc_dp_orbek, npc_seraph_targul], from: "22:00", to: "24:00", at: dp_checkpoint, doing: "2차 매각 호송 서른한 명의 명부를 맞춘다 — 세베로의 수송대와 함께"}
+- {id: ev_dp_convoy2_leave, date: "312-12-04", npcs: [npc_dp_orbek, npc_seraph_targul, npc_dp_jan], from: "05:00", to: "06:30", at: dp_caravan_yard, doing: 호송대가 바알카르 사슬 부두 쪽으로 떠난다}
+# ── 우편함: 서리월 25일 (회색여울 사건 10.25) ──
+- {id: ev_dp_lea_report_oct, date: "312-10-25", npcs: [npc_lea], from: "12:00", to: "14:00", at: dp_mailbox, doing: "'카스파르가 탈주자를 방관한다'는 보고서를 우편함에 넣는다", travel_from: cg_adjutant_room, return_to: cg_adjutant_room, mounted: true}
+- {id: ev_dp_ismel_oct, date: "312-10-26", npcs: [npc_dp_ismel], from: "04:30", to: "06:00", at: dp_mailbox, doing: 방관 보고서가 든 우편함을 비운다}
+# ── 요한의 순회 (REGIONS 9.12: 까마귀 문 → 용주 역참) ──
+- {id: ev_johan_crow_gate, date: "312-09-13", npcs: [npc_johan], from: "18:00", to: "02:00", at: cg_kitchens, doing: 짐꾼 막사 뒷문 앞에서 찬송과 소문을 팔고 밤늦게 떠난다, travel_from: gf_pilgrim_barn}
+- {id: ev_johan_post, date: "312-09-15", npcs: [npc_johan], from: "06:00", to: "18:00", at: dp_cookhouse, doing: 역참 취사장 곁에서 찬송과 소문 — 호송대와 상인에게 전갈을 판다, travel_from: cg_kitchens}
+# ── 굶주림월 1일: 병사 식사 한 솥 줄임 ──
+- {id: ev_cg_hunger_month, date: "312-12-01", npcs: [npc_cg_erwin], from: "06:00", to: "08:00", at: cg_kitchens, doing: 병사 식탁의 솥 하나를 줄인다 — 아무도 눈을 마주치지 않는다}
+# ── 313 해빙월 10일: 북문 재개방 ──
+- {id: ev_cg_jan10_marker, date: "313-01-10", npcs: [npc_kaspar], from: "03:30", to: "04:30", at: crow_gate__frost_road_head, doing: 이정표까지 혼자 말을 달려 갔다 온다 — 돌무더기 앞에 선다, travel_from: cg_north_gate, return_to: cg_north_gate, mounted: true}
+- {id: ev_cg_jan10_reopen, date: "313-01-10", npcs: [npc_kaspar, npc_sigmund, npc_cg_creak], from: "05:30", to: "07:00", at: cg_north_gate, doing: "해빙월 10일 — 북문 재개방. 권양기가 돌고 서리 길이 열린다"}
+- {id: ev_cg_jan10_brynja, date: "313-01-10", npcs: [npc_cg_brynja], from: "07:00", to: "17:00", at: crow_gate__frost_road_head, doing: 길이 열린 첫날 이정표에서 첫 손님을 맞는다}
+# ── 313 봄·여름 ──
+- {id: ev_dp_pilgrims, date: "313-03-14", npcs: [npc_johan], from: "20:00", to: "23:00", at: dp_cookhouse, doing: 루멘 순례단을 이끌고 용주 역참에서 하룻밤 — 허가증 석 장을 검문대에 보인다, travel_from: gf_pilgrim_barn}
+- {id: ev_cg_conscription_list, date: "313-04-03", npcs: [npc_cg_gunter], from: "06:00", to: "09:00", at: cg_porter_barracks, doing: 푸른월 짐꾼 징발 서른 명의 명단을 읽는다 — 이름마다 막사가 조용해진다}
+- {id: ev_cg_conscription_drill, date: "313-04-03", npcs: [npc_kaspar, npc_cg_laog], from: "09:00", to: "17:00", at: cg_drill_yard, doing: 징발된 짐꾼 서른에게 창진 훈련을 시작한다 — 306년의 대형}
+- {id: ev_cg_jotun_march_kaspar, date: "313-04-20", npcs: [npc_kaspar, npc_cg_laog, npc_cg_balder], from: "04:00", to: "23:00", at: cg_wall_walk, doing: 서리왕 남침 — 까마귀 문 전투. 성벽 위 창진과 짐꾼들, if: jotun_march}
+- {id: ev_cg_jotun_march_gate, date: "313-04-20", npcs: [npc_sigmund, npc_cg_grik, npc_cg_creak], from: "04:00", to: "23:00", at: cg_north_gate, doing: 북문 수비 — 문을 잡고 있다, if: jotun_march}
+- {id: ev_dp_auditor, date: "313-07-01", npcs: [npc_seraph_targul, npc_dp_orbek], from: "06:00", to: "12:00", at: dp_checkpoint, doing: 수확월 인두세 — 바알카르 감사관 호송을 검문한다. 회색여울로 가는 길}
+# ── 매달 반복: 까마귀 문 ──
+- {id: ev_cg_sigmund_holds, repeat: monthly, day: 15, npcs: [npc_sigmund], from: "10:00", to: "18:00", at: cg_north_gate, doing: 사령관이 보급 회의로 자리를 비운 날 혼자 문을 맡는다}
+- {id: ev_cg_laog_holds, repeat: monthly, day: 15, npcs: [npc_cg_laog], from: "08:00", to: "17:00", at: cg_drill_yard, doing: 사령관 없이 훈련 마당을 혼자 맡는다 — 북쪽 성벽을 자꾸 본다}
+- {id: ev_cg_oats_wagon, repeat: monthly, day: 20, npcs: [npc_cg_erwin, npc_cg_gunter], from: "10:00", to: "14:00", at: cg_granary, doing: "남작령 귀리 마차 입고 입회 — 장부 육백에 사백이십이 쌓인다"}
+- {id: ev_cg_payday, repeat: monthly, day: 28, npcs: [npc_cg_erwin], from: "10:00", to: "12:00", at: cg_commander_study, doing: "월말 급료 장부를 사령관에게 올린다 — 올해 칸은 비어 있다"}
+# ── 매달 반복: 용주 역참 (월 25일 보고서 → 26일 전령, 12일 귀리 마차, 30일 봉인 수 장부) ──
+- {id: ev_dp_lea_report, repeat: monthly, day: 25, npcs: [npc_lea], from: "12:00", to: "14:00", at: dp_mailbox, doing: 우편함에 용언 보고서를 넣는다 — 은밀랍 봉인, travel_from: cg_adjutant_room, return_to: cg_adjutant_room, mounted: true}
+- {id: ev_dp_ismel_collect, repeat: monthly, day: 26, npcs: [npc_dp_ismel], from: "04:30", to: "06:00", at: dp_mailbox, doing: 전령이 우편함을 비우고 바알카르로 떠날 채비를 한다}
+- {id: ev_dp_dorvan_oats, repeat: monthly, day: 12, npcs: [npc_dorvan, npc_dp_paul], from: "09:00", to: "12:00", at: dp_store, doing: "헨릭이 보낸 귀리 마차가 도착한다 — 영수에 인장이 찍힌다"}
+- {id: ev_dp_wax_count, repeat: monthly, day: 30, npcs: [npc_seraph_targul], from: "10:00", to: "12:00", at: dp_postmaster_study, doing: 월말 봉인 수와 밀랍 색을 장부에 적어 재상에게 올린다}

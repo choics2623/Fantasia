@@ -1,0 +1,284 @@
+# 까마귀 문·용주 역참 NPC 일과 (24 §3). 원천: 카스파르·레아·지그문트·고름 카드, docs/world/people/crow_gate.md.
+# 장소 id는 settlements/crow_gate.yaml (cg_*, crow_gate__*)과 settlements/dragon_pillar_post.yaml (dp_*).
+# 주의: greyford.yaml에도 npc_kaspar·npc_lea 한 줄짜리 항목이 있다. build_content.py는 파일 이름순으로 합치므로 greyford.yaml이 이 파일의 두 항목을 덮어쓴다.
+#       greyford.yaml의 npc_kaspar, npc_lea 항목을 지우면 아래 정본 일과가 살아난다.
+# days: all | workday | sabbath | odd | even | weekday:[1..6] | monthday:[..] — 쉼표가 든 값은 큰따옴표로.
+npc_kaspar:
+  home: cg_commander_chamber
+  blocks:
+    - {days: all, from: "23:30", to: "04:30", at: cg_commander_chamber, doing: 잔다}
+    - {days: all, from: "04:30", to: "06:30", at: cg_east_tower, doing: "동쪽 망루에서 혼자 서리 길을 내려다본다 — 비늘 없는 오른쪽 얼굴이 북쪽을 향한다", outdoor: true, rain: {at: cg_commander_study, doing: 창가에서 서리 길 쪽을 본다}, fixed: true}
+    - {days: all, from: "06:30", to: "07:30", at: cg_kitchens, doing: 선 채로 죽을 먹는다}
+    - {days: workday, from: "07:30", to: "09:30", at: cg_drill_yard, doing: "병사 훈련을 감독하고 직접 검술을 지도한다", alt: {p: 0.3, at: cg_commander_study, doing: 보급 문서를 읽는다}}
+    - {days: workday, from: "09:30", to: "12:00", at: cg_north_gate, doing: 북문 순시, outdoor: true, rain: {at: cg_war_room, doing: 작전실에서 서리 길 모형을 본다}}
+    - {days: workday, from: "12:00", to: "13:00", at: cg_commander_study, doing: 점심을 들며 보고를 듣는다}
+    - {days: workday, from: "13:00", to: "15:00", at: cg_interrogation, doing: "탈주자 심문 — 어디서 왔나, 누가 길을 열었나, 몇이나 더 오나", alt: {p: 0.4, at: cg_war_room, doing: 장교들과 순찰 배치를 정한다}}
+    - {days: workday, from: "15:00", to: "17:30", at: cg_commander_study, doing: 집무}
+    - {days: all, from: "17:30", to: "19:00", at: cg_wall_walk, doing: 성벽을 한 바퀴 돈다, outdoor: true, rain: {at: cg_commander_study, doing: 집무}}
+    - {days: all, from: "19:00", to: "21:30", at: cg_commander_study, doing: 레아와 체스를 둔다, alt: {p: 0.25, at: cg_commander_study, doing: 혼자 집무}}
+    - {days: all, from: "21:30", to: "23:30", at: cg_commander_study, doing: 늦은 집무 — 책상 셋째 서랍을 한 번 열었다 닫는다}
+    - {days: "weekday:[3,6]", from: "19:00", to: "21:30", at: cg_commander_study, doing: 혼자 집무하며 가슴께의 성표 자리를 누른다}
+    - {days: sabbath, from: "08:00", to: "09:30", at: cg_graves, doing: 국경 묘역 이름 없는 돌무더기 앞에 혼자 선다, outdoor: true}
+npc_lea:
+  home: cg_adjutant_room
+  blocks:
+    - {days: all, from: "23:30", to: "05:30", at: cg_adjutant_room, doing: 잔다}
+    - {days: all, from: "05:30", to: "07:00", at: cg_adjutant_room, doing: 전날 보고서를 정리하고 라벤더 기름을 바른다}
+    - {days: workday, from: "07:00", to: "09:00", at: cg_commander_study, doing: 사령관 서신과 보급 장부를 보좌한다}
+    - {days: workday, from: "09:00", to: "12:00", at: cg_wall_walk, doing: 성벽 순시와 보급 점검, outdoor: true, rain: {at: cg_clerk_room, doing: 서기실에서 문서를 훑는다}}
+    - {days: workday, from: "12:00", to: "14:00", at: cg_clerk_room, doing: 보급 장부를 대조하고 서기에게 문서를 가져오게 한다}
+    - {days: workday, from: "14:00", to: "17:00", at: cg_adjutant_room, doing: 보고서 정리 — 용언 초안은 쓰지 않는다}
+    - {days: all, from: "17:00", to: "19:00", at: cg_raven_loft, doing: 까마귀 사육장 아래를 지나 비둘기장 모이를 살핀다, alt: {p: 0.4, at: cg_adjutant_room, doing: 문서 정리}}
+    - {days: "weekday:[1,2,4,5]", from: "19:00", to: "21:30", at: cg_commander_study, doing: 카스파르와 체스를 둔다 — 그의 손 움직임을 본다}
+    - {days: all, from: "21:30", to: "23:00", at: cg_adjutant_room, doing: 용언 보고서 초안을 쓴다 — 오웬의 편지 사본 곁에서}
+    - {days: "monthday:[3,13,23]", from: "23:00", to: "00:00", at: cg_pigeon_cote, doing: 잿불 언덕행 전서구를 날린다, fixed: true}
+npc_sigmund:
+  home: cg_captain_room
+  blocks:
+    - {days: all, from: "22:30", to: "05:00", at: cg_captain_room, doing: 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: cg_north_gate, doing: 문 여는 나팔 전 열쇠와 보초를 점검한다, fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: cg_wall_walk, doing: 성벽 순시 — 보초 교대를 확인한다, outdoor: true, rain: {at: cg_captain_room, doing: 순찰 명부를 정리한다}}
+    - {days: workday, from: "12:00", to: "13:00", at: cg_kitchens, doing: 장교 식탁에서 점심}
+    - {days: workday, from: "13:00", to: "17:30", at: cg_captain_room, doing: 수비대 문서와 보초 명부를 쓴다, alt: {p: 0.3, at: cg_drill_yard, doing: 신병 훈련을 지켜본다}}
+    - {days: all, from: "17:30", to: "18:30", at: cg_north_gate, doing: 문 닫는 나팔과 함께 북문을 닫는다, fixed: true}
+    - {days: all, from: "19:00", to: "22:00", at: cg_officers_quarters, doing: 가문 서신을 읽고 쓰다가 화로에 넣는다}
+    - {days: sabbath, from: "08:00", to: "12:00", at: cg_fire_shrine, doing: 불의 감실에서 비늘 한 조각을 올린다}
+npc_gorm:
+  home: cg_wyvern_stable
+  blocks:
+    - {days: all, from: "17:30", to: "07:00", at: cg_wyvern_stable, doing: 잠든다}
+    - {days: all, from: "07:00", to: "08:30", at: hungry_hill, doing: 굶주린 언덕 상공 첫 순찰, outdoor: true, rain: {at: cg_wyvern_stable, doing: 비 오는 날은 마구간에서 쉰다}}
+    - {days: all, from: "08:30", to: "16:00", at: cg_wyvern_stable, doing: 먹이를 기다리며 존다}
+    - {days: all, from: "16:00", to: "17:30", at: hungry_hill, doing: 해 지기 전 두 번째 순찰, outdoor: true, rain: {at: cg_wyvern_stable, doing: 마구간에서 쉰다}}
+npc_cg_erwin:
+  home: cg_officers_quarters
+  blocks:
+    - {days: all, from: "22:30", to: "05:30", at: cg_officers_quarters, doing: 잔다}
+    - {days: all, from: "05:30", to: "07:00", at: cg_granary, doing: 곡창 반출 입회와 솥 수 점검, fixed: true}
+    - {days: workday, from: "07:00", to: "12:00", at: cg_granary, doing: 곡물 입출고 장부를 쓴다}
+    - {days: workday, from: "12:00", to: "13:00", at: cg_kitchens, doing: 병사 식탁의 솥 수를 센다}
+    - {days: workday, from: "13:00", to: "17:00", at: cg_clerk_room, doing: 서기와 장부를 대조한다}
+    - {days: all, from: "17:00", to: "19:30", at: cg_kitchens, doing: 병사 몫을 눈으로 센다}
+    - {days: all, from: "19:30", to: "22:30", at: cg_clerk_room, doing: 숫자를 다시 센다}
+    - {days: sabbath, from: "08:00", to: "18:00", at: cg_clerk_room, doing: 쉬지 않고 장부를 정리한다}
+npc_cg_creak:
+  home: cg_crick_barracks
+  blocks:
+    - {days: all, from: "21:30", to: "05:00", at: cg_crick_barracks, doing: 지하 병영에서 잔다}
+    - {days: all, from: "05:30", to: "06:00", at: cg_north_windlass, doing: 권양기를 점검하고 열쇠를 걸어 둔다, fixed: true}
+    - {days: all, from: "06:00", to: "18:00", at: cg_north_gate, doing: 문 옆에서 문 여닫이를 센다}
+    - {days: all, from: "18:00", to: "18:30", at: cg_north_windlass, doing: 권양기로 문을 닫는다, fixed: true}
+    - {days: all, from: "18:30", to: "21:30", at: cg_kitchens, doing: 크릭 식탁에서 죽을 먹는다}
+npc_cg_bern:
+  home: cg_prison
+  blocks:
+    - {days: all, from: "21:30", to: "05:00", at: cg_prison, doing: 감옥 입구 방에서 잔다}
+    - {days: all, from: "05:00", to: "07:00", at: cg_cells, doing: 칸 점호와 죽 배식}
+    - {days: workday, from: "07:00", to: "12:00", at: cg_interrogation, doing: 심문 입회와 서류 정리}
+    - {days: all, from: "12:00", to: "13:00", at: cg_kitchens, doing: 감옥 죽을 받아 온다}
+    - {days: workday, from: "13:00", to: "18:00", at: cg_prison, doing: 수용자 명단과 소지품 목록을 쓴다}
+    - {days: all, from: "18:00", to: "19:00", at: cg_cells, doing: 저녁 배식}
+    - {days: all, from: "19:00", to: "21:30", at: cg_prison, doing: 입구 방에서 쪽지를 쓰고 고친다}
+    - {days: "monthday:[2,12,22]", from: "23:00", to: "23:40", at: cg_prison, doing: 뒷문에서 송곳니 초소 심부름꾼에게 쪽지를 넘긴다, fixed: true}
+npc_cg_edda:
+  home: cg_raven_loft
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: cg_raven_loft, doing: 사육장 쪽방에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: cg_raven_loft, doing: 까마귀에게 모이를 준다, fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: cg_raven_loft, doing: 전령 까마귀 다리끈을 간다}
+    - {days: all, from: "12:00", to: "13:00", at: cg_kitchens, doing: 부엌에서 고기 껍질을 얻는다}
+    - {days: workday, from: "13:00", to: "17:00", at: cg_raven_loft, doing: 날개 짓는 소리를 듣고 새를 살핀다}
+    - {days: all, from: "17:00", to: "18:30", at: cg_kitchens, doing: 저녁 고기 껍질과 뼈를 받는다}
+    - {days: all, from: "18:30", to: "21:00", at: cg_raven_loft, doing: 새를 재운다}
+    - {days: "weekday:[3]", from: "23:00", to: "03:00", at: crow_gate__frost_road_head, doing: 밤 수레로 얼어붙은 시신을 끌어온다, alt: {p: 0.5, at: cg_graves, doing: 묘역에서 이름 없는 돌무더기를 쌓는다}}
+npc_cg_magda:
+  home: cg_infirmary
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: cg_infirmary, doing: 의무실 구석 침상에서 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: cg_infirmary, doing: 동상 환자의 손발을 문지른다}
+    - {days: workday, from: "12:00", to: "14:00", at: cg_infirmary, doing: 약초를 달인다}
+    - {days: all, from: "14:00", to: "17:00", at: cg_infirmary, doing: 환자 곁을 지킨다}
+    - {days: all, from: "17:00", to: "18:30", at: cg_cells, doing: 간수와 함께 수용 칸을 돌며 병든 사람을 살핀다}
+    - {days: all, from: "19:00", to: "20:00", at: cg_porter_barracks, doing: 짐꾼 막사의 소년에게 죽을 가져다준다}
+    - {days: "weekday:[3]", from: "23:00", to: "03:00", at: cg_graves, doing: 에다를 도와 이름 없는 시신을 묻는다}
+npc_cg_laog:
+  home: cg_officers_quarters
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: cg_officers_quarters, doing: 잔다}
+    - {days: workday, from: "06:00", to: "12:00", at: cg_drill_yard, doing: 신병 훈련 — 창은 발로 든다, fixed: true}
+    - {days: workday, from: "12:00", to: "13:00", at: cg_kitchens, doing: 장교 식탁에서 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: cg_drill_yard, doing: 마당을 돌며 틀린 자세를 고친다, alt: {p: 0.2, at: cg_armory, doing: 칼날과 창끝을 점검한다}}
+    - {days: all, from: "17:00", to: "18:30", at: cg_armory, doing: 칼날 점검}
+    - {days: all, from: "18:30", to: "22:00", at: cg_officers_quarters, doing: 무릎 헝겊을 갈고 쉰다}
+    - {days: sabbath, from: "08:00", to: "12:00", at: cg_armory, doing: 쉬는 날에도 창대를 닦는다}
+npc_cg_balder:
+  home: cg_dragonkin_barracks
+  blocks:
+    - {days: all, from: "06:00", to: "17:00", at: cg_dragonkin_barracks, doing: 낮에 잔다}
+    - {days: all, from: "12:00", to: "13:00", at: cg_kitchens, doing: 깬 김에 점심}
+    - {days: all, from: "17:30", to: "18:00", at: cg_north_gate, doing: 교대를 받는다, fixed: true}
+    - {days: all, from: "18:00", to: "05:00", at: cg_north_gate, doing: 북문 야간 보초 — 서리 노래 곡조를 흥얼거린다, outdoor: true, rain: {at: cg_north_windlass, doing: 권양기실 처마 밑에서 보초}}
+    - {days: all, from: "05:00", to: "06:00", at: cg_kitchens, doing: 아침 죽}
+npc_cg_grik:
+  home: cg_crick_barracks
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: cg_crick_barracks, doing: 잔다}
+    - {days: all, from: "04:30", to: "06:00", at: cg_crick_barracks, doing: 크릭 병영 점호, fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: cg_wall_walk, doing: 성벽 아래와 위를 도는 크릭 순찰을 감독한다, outdoor: true, rain: {at: cg_crick_barracks, doing: 병영에서 순찰 명부를 센다}}
+    - {days: all, from: "12:00", to: "13:00", at: cg_kitchens, doing: 크릭 식탁에서 점심}
+    - {days: workday, from: "13:00", to: "17:30", at: cg_south_gate, doing: 남문에서 짐꾼과 상인을 센다}
+    - {days: all, from: "17:30", to: "21:30", at: cg_kitchens, doing: 크릭 식탁에서 길드 소식을 나눈다}
+npc_cg_gunter:
+  home: cg_porter_barracks
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: cg_porter_barracks, doing: 막사 문 옆 침상에서 잔다}
+    - {days: all, from: "04:30", to: "06:00", at: cg_porter_barracks, doing: 짐꾼 80 점호와 작업 할당, fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: cg_granary, doing: 곡창 반출과 짐 할당}
+    - {days: workday, from: "12:00", to: "13:00", at: cg_kitchens, doing: 뒷문 널판에서 점심}
+    - {days: workday, from: "13:00", to: "18:00", at: cg_wall_walk, doing: 성벽 위로 짐을 올리는 일을 감독한다, outdoor: true, rain: {at: cg_porter_barracks, doing: 막사에서 지붕 밑 막대를 확인한다}}
+    - {days: all, from: "18:00", to: "19:30", at: cg_kitchens, doing: 뒷문 배식 줄을 세운다}
+    - {days: all, from: "19:30", to: "22:00", at: cg_porter_barracks, doing: 막사에서 명단을 고친다}
+    - {days: sabbath, from: "07:00", to: "12:00", at: cg_porter_barracks, doing: 쉬는 날 지붕을 손본다}
+npc_cg_ole:
+  home: cg_cells
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: cg_cells, doing: 수용 칸에서 눈을 감고 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: cg_cells, doing: 죽 한 사발. 칸 구석에서 허공에 길을 그린다}
+    - {days: workday, from: "09:00", to: "11:00", at: cg_interrogation, doing: 심문 — 일부러 거짓 길을 댄다, alt: {p: 0.4, at: cg_cells, doing: 칸 구석에서 눈을 감고 있다}}
+    - {days: all, from: "14:00", to: "15:30", at: cg_infirmary, doing: 간수 허락으로 순나와 일다 곁에 앉는다}
+    - {days: all, from: "15:30", to: "20:00", at: cg_cells, doing: 수용 칸}
+npc_cg_sunna:
+  home: cg_cells
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: cg_cells, doing: 수용 칸에서 일다를 안고 서리 자장가를 부른다}
+    - {days: all, from: "05:00", to: "18:00", at: cg_infirmary, doing: 의무실에서 열병 든 일다 곁을 지킨다}
+    - {days: all, from: "18:00", to: "22:00", at: cg_cells, doing: 수용 칸}
+npc_cg_yost:
+  home: cg_cells
+  blocks:
+    - {days: all, from: "21:00", to: "06:00", at: cg_cells, doing: 수용 칸}
+    - {days: all, from: "06:00", to: "09:00", at: cg_cells, doing: 수용 칸에서 같은 칸 사람의 말을 엿듣는다}
+    - {days: workday, from: "09:00", to: "12:00", at: cg_prison, doing: 간수 심부름과 밀고}
+    - {days: all, from: "12:00", to: "21:00", at: cg_cells, doing: 수용 칸}
+npc_cg_shrik:
+  home: cg_clerk_room
+  blocks:
+    - {days: all, from: "00:00", to: "05:30", at: cg_clerk_room, doing: 서기실 구석 침상에서 잔다}
+    - {days: workday, from: "06:00", to: "12:00", at: cg_clerk_room, doing: 문서를 분류하고 필사한다}
+    - {days: workday, from: "13:00", to: "17:00", at: cg_commander_study, doing: 사령관 서류를 정리하고 결재를 기다린다}
+    - {days: all, from: "17:00", to: "20:00", at: cg_clerk_room, doing: 에르빈과 숫자를 맞춘다}
+    - {days: all, from: "20:00", to: "24:00", at: cg_clerk_room, doing: 서랍 이중바닥 밑에 사본을 한 장 더 만든다}
+npc_cg_brynja:
+  home: crow_gate__frost_road_head
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: crow_gate__frost_road_head, doing: 이정표 곁 천막에서 불을 피운다, outdoor: true}
+    - {days: all, from: "07:00", to: "17:00", at: crow_gate__frost_road_head, doing: 이정표에서 길손을 기다린다, alt: {p: 0.25, at: crow_gate__drain_mouth, doing: 물빼기 굴 북쪽 입구를 살핀다}, outdoor: true}
+    - {days: all, from: "17:00", to: "20:00", at: crow_gate__drain_mouth, doing: 해 질 무렵 굴 입구에서 오가는 이를 본다, outdoor: true}
+    - {days: all, from: "20:00", to: "05:00", at: crow_gate__frost_road_head, doing: 바위 틈 천막에서 잔다}
+npc_seraph_targul:
+  home: dp_postmaster_study
+  blocks:
+    - {days: all, from: "22:30", to: "04:30", at: dp_postmaster_study, doing: 위층 관사에서 잔다}
+    - {days: all, from: "04:30", to: "06:00", at: dp_stable, doing: 말 교대와 전령 말을 점검한다, fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: dp_postmaster_study, doing: 서재에서 서류와 통행증 장부를 쓴다}
+    - {days: workday, from: "12:00", to: "14:00", at: dp_checkpoint, doing: 검문 입회와 호송 명부 확인}
+    - {days: workday, from: "14:00", to: "17:30", at: dp_post_hall, doing: 본관에서 우편 분류를 지켜본다}
+    - {days: all, from: "17:30", to: "20:30", at: dp_merchant_lodge, doing: 상인 숙소 식탁에서 손님을 맞는다}
+    - {days: all, from: "20:30", to: "22:30", at: dp_postmaster_study, doing: 월말 봉인 수 장부를 맞춘다}
+    - {days: "monthday:[25]", from: "14:00", to: "14:30", at: dp_mailbox, doing: 우편함 앞을 지나간다 — 열지 않는다, fixed: true}
+npc_dorvan:
+  home: dp_dorvan_room
+  presence:
+    - {from: "312-09-01", to: "312-09-20"}
+    - {from: "312-10-02", to: "312-10-25"}
+    - {from: "312-11-04", to: "312-11-26"}
+    - {from: "312-12-05", to: "312-12-28"}
+    - {from: "313-01-06", to: "313-01-28"}
+    - {from: "313-02-08", to: "313-02-28"}
+    - {from: "313-03-05", to: "313-03-25"}
+    - {from: "313-04-05", to: "313-04-25"}
+    - {from: "313-05-05", to: "313-05-25"}
+    - {from: "313-06-05", to: "313-06-25"}
+    - {from: "313-07-05", to: "313-07-25"}
+  away: {at: baalkar, doing: 바알카르 시장에서 귀리를 판다}
+  blocks:
+    - {days: all, from: "21:00", to: "06:30", at: dp_dorvan_room, doing: 방에서 잔다}
+    - {days: all, from: "06:30", to: "08:00", at: dp_caravan_yard, doing: 마차 먼지를 닦으며 점검한다}
+    - {days: workday, from: "08:00", to: "12:00", at: dp_store, doing: 창고 곡물을 확인한다}
+    - {days: all, from: "12:00", to: "13:30", at: dp_merchant_lodge, doing: 점심을 들며 흥정한다}
+    - {days: workday, from: "13:30", to: "17:00", at: dp_caravan_yard, doing: 호송대·상인과 거래한다}
+    - {days: all, from: "17:00", to: "21:00", at: dp_merchant_lodge, doing: 상인 숙소 식탁에서 장부와 술}
+npc_dp_jan:
+  home: dp_slave_shed
+  blocks:
+    - {days: all, from: "22:00", to: "04:30", at: dp_slave_shed, doing: 노예 막사에서 잔다}
+    - {days: all, from: "04:30", to: "12:00", at: dp_stable, doing: 말 먹이와 편자 갈이, fixed: true}
+    - {days: all, from: "12:00", to: "13:00", at: dp_cookhouse, doing: 뒷문에서 점심}
+    - {days: workday, from: "13:00", to: "19:00", at: dp_stable, doing: 안장과 마구간 청소}
+    - {days: all, from: "19:00", to: "22:00", at: dp_stable, doing: 말 곁에서 쉰다}
+    - {days: "weekday:[2,5]", from: "21:00", to: "22:00", at: dp_hayloft, doing: 건초 다락의 손님에게 죽을 가져다준다}
+npc_dp_brick:
+  home: dp_crick_quarters
+  blocks:
+    - {days: all, from: "22:00", to: "05:30", at: dp_crick_quarters, doing: 크릭 숙소에서 잔다}
+    - {days: workday, from: "06:00", to: "12:00", at: dp_mail_room, doing: 우편 분류}
+    - {days: all, from: "12:00", to: "13:00", at: dp_cookhouse, doing: 점심}
+    - {days: workday, from: "13:00", to: "18:00", at: dp_mail_room, doing: 마차 서류와 우편을 맞춘다}
+    - {days: all, from: "18:00", to: "22:00", at: dp_crick_quarters, doing: 크릭 숙소}
+    - {days: "monthday:[25]", from: "23:00", to: "01:00", at: dp_mail_room, doing: 증기로 봉인 밑을 데워 열고 용언 모양을 베낀다, fixed: true}
+npc_dp_orbek:
+  home: dp_dragonkin_quarters
+  blocks:
+    - {days: all, from: "22:15", to: "04:00", at: dp_dragonkin_quarters, doing: 잔다}
+    - {days: all, from: "04:30", to: "05:30", at: dp_checkpoint, doing: 차단봉을 올린다, fixed: true}
+    - {days: all, from: "05:30", to: "12:00", at: dp_checkpoint, doing: 통행증 검사 — 풀뿌리를 씹으며}
+    - {days: all, from: "12:00", to: "13:00", at: dp_cookhouse, doing: 점심}
+    - {days: all, from: "13:00", to: "21:45", at: dp_checkpoint, doing: 통행증 검사와 호송 명부 확인}
+    - {days: all, from: "21:45", to: "22:15", at: dp_checkpoint, doing: 차단봉을 내린다, fixed: true}
+npc_dp_ismel:
+  home: dp_merchant_lodge
+  presence:
+    - {from: "312-09-25", to: "312-09-26"}
+    - {from: "312-10-25", to: "312-10-26"}
+    - {from: "312-11-25", to: "312-11-26"}
+    - {from: "312-12-25", to: "312-12-26"}
+    - {from: "313-01-25", to: "313-01-26"}
+    - {from: "313-02-25", to: "313-02-26"}
+    - {from: "313-03-25", to: "313-03-26"}
+    - {from: "313-04-25", to: "313-04-26"}
+    - {from: "313-05-25", to: "313-05-26"}
+    - {from: "313-06-25", to: "313-06-26"}
+    - {from: "313-07-25", to: "313-07-26"}
+  away: {at: baalkar, doing: 바알카르 비늘 언덕 전령소}
+  blocks:
+    - {days: all, from: "18:00", to: "04:30", at: dp_merchant_lodge, doing: 상인 숙소에서 쉰다}
+    - {days: all, from: "04:30", to: "06:00", at: dp_mailbox, doing: 우편함을 열쇠로 열어 보고서를 비운다, fixed: true}
+    - {days: all, from: "06:00", to: "08:00", at: dp_stable, doing: 말에 안장을 얹고 길을 떠날 채비를 한다}
+    - {days: all, from: "08:00", to: "18:00", at: dp_stable, doing: 말을 쉬게 한다}
+npc_dp_beta:
+  home: dp_slave_shed
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: dp_slave_shed, doing: 노예 막사에서 잔다}
+    - {days: all, from: "04:00", to: "21:30", at: dp_cookhouse, doing: 솥 앞에서 손님과 호송대 말을 듣는다, fixed: true}
+    - {days: all, from: "21:30", to: "22:00", at: dp_cookhouse, doing: 뒷문 설거지}
+npc_dp_paul:
+  home: dp_caravan_yard
+  presence:
+    - {from: "312-09-01", to: "312-09-20"}
+    - {from: "312-10-02", to: "312-10-25"}
+    - {from: "312-11-04", to: "312-11-26"}
+    - {from: "312-12-05", to: "312-12-28"}
+    - {from: "313-01-06", to: "313-01-28"}
+    - {from: "313-02-08", to: "313-02-28"}
+    - {from: "313-03-05", to: "313-03-25"}
+    - {from: "313-04-05", to: "313-04-25"}
+    - {from: "313-05-05", to: "313-05-25"}
+    - {from: "313-06-05", to: "313-06-25"}
+    - {from: "313-07-05", to: "313-07-25"}
+  away: {at: baalkar, doing: 바알카르 시장에서 도르반의 장부를 쓴다}
+  blocks:
+    - {days: all, from: "21:30", to: "05:30", at: dp_caravan_yard, doing: 마차 바닥 판 밑 한 칸에서 잔다}
+    - {days: workday, from: "06:00", to: "12:00", at: dp_dorvan_room, doing: 도르반의 장부를 쓴다}
+    - {days: all, from: "12:00", to: "13:00", at: dp_cookhouse, doing: 뒷문에서 점심}
+    - {days: workday, from: "13:00", to: "17:00", at: dp_store, doing: 창고 곡물 수를 센다}
+    - {days: all, from: "17:00", to: "21:30", at: dp_caravan_yard, doing: 마차를 닦는다}

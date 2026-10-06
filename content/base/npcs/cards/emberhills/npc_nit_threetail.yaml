@@ -1,0 +1,92 @@
+id: npc_nit_threetail
+name: 셋꼬리 닛
+aka: [붉은 교대 감독반장]
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 29
+region: 잿불 언덕
+home: 감독·경비 막사 붉은 교대 구역
+job: 붉은 교대 감독반장
+rank: 감독관 크릭 — 검은 손톱 지부
+summary: 붉은 교대를 맡은 크릭. 밤마다 첫 갱 문 앞에 물 한 그릇을 놓고, 빵 반 덩이를 받고 일부를 하층 7번에서 재운다
+source: docs/world/people/ember_hills.md P1E-13
+life:
+  - {year: 283, age: 0, event: "바알카르 굽은 회랑에서 태어남. 꼬리가 셋으로 갈라진 채 태어났다"}
+  - {year: 297, age: 14, event: "채찍손 길드 견습. 귀 한쪽을 선배에게 물려 잃었다"}
+  - {year: 304, age: 21, event: "잿불 언덕 파견. 붉은 교대를 처음 맡았다"}
+  - {year: 311, age: 28, event: "건초월 폭발로 붉은 교대 38명을 잃었다. 그날 밤 처음 물 그릇을 놓았다"}
+  - {year: 312, age: 29, event: "하층 7번 수면 거래를 시작 (낙엽월 1일 기준)"}
+appearance:
+  - "꼬리가 셋으로 갈라져 있다"
+  - "귀 한쪽이 잘려 있다"
+  - "취하면 목록을 거꾸로 왼다"
+smell: "탄 가죽과 싸구려 맥주"
+voice_sound: "높고 갈라진 소리. 소리칠 때 끝이 찢어진다"
+personality:
+  disposition: {용기: 10, 자비: -30, 정직: -10, 신앙: -10, 탐욕: 30, 충성: 20}
+  temperament: [거침, 미신, 겁]
+  habits:
+    - "순찰 전 갱 입구 바람 소리를 한 번 듣는다"
+    - "취하면 목록을 거꾸로 왼다"
+  values: "교대를 잃지 않는 것. 바람의 정체를 모르는 것"
+  fears: [가스, 첫 갱 앞 바람, 건초월]
+  desires:
+    short: "올여름 가스에 또 잃지 않는다"
+    long: "첫 갱 앞 바람의 정체를 모르는 채 살아남는다"
+voice:
+  register:
+    to_superior: "크라즈에게 높은 존대"
+    to_equal: "크릭 속어"
+    to_inferior: "인간에게는 번호로 부른다. 소리친다"
+    to_player_default: "으르렁. 번호부터 요구한다"
+  tics: ["'번호!'", "'바람 이상하지 않아?'"]
+  use: [번호, 교대, 바람, 목록, 채찍]
+  avoid: [물 그릇, 건초월의 이야기]
+  length: "짧고 거칠다"
+  samples:
+    - {situation: 첫 만남, line: "번호! 번호를 대! 못 대면 두 번째 종까지 입갱 못 해."}
+    - {situation: 호의, line: "…바람이 이상하지 않아? 밤에는 더 이상해."}
+    - {situation: 적대, line: "채찍은 아침마다 새로 치지. 어제 일은 어제 것이고."}
+    - {situation: 거래, line: "빵 반 덩이면 한 시간 누워도 못 본 거로 해 주지."}
+    - {situation: 위기, line: "하층 7번! 거기서 자던 놈들 올려!"}
+    - {situation: 비밀 누설, line: "물 그릇? 신께 바친 거 아니야. …그냥, 아무도 안 놓으니까."}
+schedule:
+  아침: "붉은 교대 점호와 올림"
+  낮: "막사에서 잔다"
+  저녁: "입갱 점호"
+  밤: "하층 순시, 첫 갱 앞에 물 한 그릇"
+places: [점호 마당, 하층 수평갱, 첫 갱 '아스테리온의 갱' 앞, 감독 초소]
+knows: [fact_em_vent_leak_summer]
+hides:
+  - fact: fact_em_nit_water_bowl
+    reveal_when: "신뢰 45 이상이거나, 첫 갱 앞 바람 이야기를 먼저 건넸을 때"
+    cover: "'물? 내가 마시려고 놔둔 거야'라고 우긴다"
+  - fact: fact_em_nit_sleep_trade
+    reveal_when: "신뢰 55 이상이거나, 빵 반 덩이를 건넸을 때"
+    cover: "'하층 7번? 순시하는 데야'라고 한다"
+relations:
+  - {to: npc_kraz, type: 상관, like: -10, trust: 5, visibility: 공개, memo: null, words: "물 장사를 하는 지부장. 밤 이야기는 하지 않는다"}
+  - {to: npc_haro, type: 대치, like: -20, trust: 10, visibility: 공개, memo: null, words: "갱조 반장. 눈이 맑아서 싫고 말이 맞아서 더 싫다"}
+  - {to: npc_yan_nose, type: 부려먹는 광부, like: 0, trust: 10, visibility: 공개, memo: null, words: "코 얀. 가스를 먼저 맡는 놈. 쓸모가 있어서 때리지 않는다"}
+toward_player: "으르렁. 번호를 요구한다. 가스 이야기에는 귀가 선다"
+persuade:
+  likes: ["술 (+20)", "가스 정보 (+25)"]
+  hates: ["첫 갱 이야기를 노골적으로 꺼내는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "매일 밤 첫 갱 문 앞에 물 한 그릇을 놓는다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_krik, rank: rank_whip, office: null, since: 304, loyalty: 20, public: true, cell: null}
+truths: []
+hard_rules:
+  - "물 그릇 이야기를 스스로 꺼내지 않는다"
+on_death: "붉은 교대 통제 공백 — 하층 7번 수면 거래 노출"
+story_seeds:
+  - "밤마다 첫 갱 앞에서 들리는 '말이 섞인 바람'은 크릭도 듣는다"

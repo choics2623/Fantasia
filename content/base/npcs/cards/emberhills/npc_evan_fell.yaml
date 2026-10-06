@@ -1,0 +1,94 @@
+id: npc_evan_fell
+name: 에반 펠
+aka: [망루의 측량자]
+tier: B
+type: living
+race: 용인
+subrace: 순혈
+sex: 남
+age: 130
+region: 잿불 언덕
+home: 재 경계 망루
+job: 잿빛 탑 관측자 (재 경계 측량)
+rank: 순혈 학자 — 탑 소속
+summary: 재 경계 망루에서 측량 말뚝을 기록하는 탑 관측자. 말뚝이 석 달 연속 가속하고 있고, 하드리안이 보고를 낮추라고 누른다. 진짜 수치는 방패 속 가죽 밑에 적는다
+source: docs/world/people/ember_hills.md P1E-09
+life:
+  - {year: 182, age: 0, event: "바알카르 서고 집안에서 태어남"}
+  - {year: 250, age: 68, event: "잿빛 탑에 입문. 측량과 시간 잔상 기록을 배웠다"}
+  - {year: 300, age: 118, event: "황무지 가장자리 관측자로 첫 파견. 재의 움직임을 처음 눈으로 보았다"}
+  - {year: 311, age: 129, event: "AS 311 경계 확장. 잿불 망루로 전속되어 말뚝 줄을 새로 세웠다"}
+  - {year: 312, age: 130, event: "최근 석 달 말뚝 31, 44, 58미터. 하드리안이 보고를 낮추라고 누르는 중 (낙엽월 1일 기준)"}
+appearance:
+  - "눈동자에 재 먼지 같은 잿빛 얼룩이 있다"
+  - "측량 끈을 허리에 감고 다닌다"
+  - "말을 잘 끊는다"
+smell: "재 먼지와 젖은 가죽"
+voice_sound: "빠르고 건조한 평어. 숫자에서 목소리가 올라간다"
+personality:
+  disposition: {용기: 20, 자비: 0, 정직: 50, 신앙: -20, 탐욕: -10, 충성: 30}
+  temperament: [정확함, 고집, 외로움]
+  habits:
+    - "아침마다 말뚝 줄을 끝에서 끝까지 걷는다"
+    - "말하다 말고 서쪽 지평선을 본다"
+  values: "정확한 수치. 탑에 진실을 보내는 것"
+  fears: [하드리안의 압박, 재가 한 번에 넘치는 것, 자신의 기록이 지워지는 것]
+  desires:
+    short: "진짜 수치를 탑에 안전하게 전달한다"
+    long: "잿불 언덕이 황무지를 막는 선인지 먹히는 선인지 알린다"
+voice:
+  register:
+    to_superior: "하드리안에게는 짧은 존대. 숫자만"
+    to_equal: "빠른 평어"
+    to_inferior: "경비에게는 명령조"
+    to_player_default: "말을 끊고 측량 이야기부터 한다"
+  tics: ["'말뚝이 또 움직였습니다.'"]
+  use: [말뚝, 미터, 재, 경계, 기록, 서쪽]
+  avoid: [압박(→ '요청'), 하드리안 이름(스스로)]
+  length: "짧고 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "서쪽으로 가지 마십시오. 말뚝이 오늘 또 움직였습니다."}
+    - {situation: 호의, line: "당신은 숫자를 줄이라 하지 않는군요."}
+    - {situation: 적대, line: "기록은 탑으로 갑니다. 총감께는 사본이 갈 뿐입니다."}
+    - {situation: 거래, line: "경계 사본을 탑으로 운반해 주시면 오늘 수치를 알려 드리지요."}
+    - {situation: 거짓말할 때, line: "공식 기록은 40미터입니다. (방패를 한 번 만진다) 공식이라고 했습니다."}
+    - {situation: 위기, line: "경보 뿔나팔! 재가— 재가 선을 넘었다!"}
+    - {situation: 비밀 누설, line: "58미터입니다. 한 달에. 총감은 40이라고 쓰라 하셨죠."}
+schedule:
+  아침: "측량 말뚝 줄"
+  낮: "기록 정리"
+  저녁: "방패 속 가죽 밑에 진짜 수치"
+  밤: "경보 뿔나팔 곁 당직"
+places: [재 경계 망루, 측량 말뚝 줄, 황무지 가장자리 길]
+knows: [fact_em_mel_ash_stakes]
+hides:
+  - fact: fact_em_evan_true_rate
+    reveal_when: "신뢰 45 이상이거나, 정확한 수치를 직접 요구하는 논거를 냈을 때"
+    cover: "'공식 기록은 40미터입니다'라고만 한다"
+  - fact: fact_em_evan_double_book
+    reveal_when: "신뢰 65 이상이거나, 하드리안의 압박을 막아 주겠다고 했을 때"
+    cover: "'기록은 하나입니다'라고 한다"
+relations:
+  - {to: npc_hadrian_ashjaw, type: 압박자, like: -20, trust: -20, visibility: 비밀, memo: null, words: "숫자를 낮추라 하는 총감. 낮춰진 숫자 뒤의 재는 낮춰지지 않는다"}
+  - {to: npc_melisande, type: 영주, like: 0, trust: 10, visibility: 공개, memo: null, words: "자신의 서신으로도 따로 받는 영주. 숫자를 낮추라 하지 않은 유일한 분"}
+  - {to: npc_isol, type: 같은 탑, like: 5, trust: -5, visibility: 일방, memo: null, words: "탑에서 오는 눈. 존재만 안다"}
+toward_player: "말을 끊고 측량부터 말한다. 정확한 수치를 요구하면 눈이 열린다"
+persuade:
+  likes: ["정확한 수치를 요구하는 것 (+25)", "탑에 기록을 전하는 것"]
+  hates: ["기록을 낮추라는 압박"]
+roles:
+  teacher: "가능 — 야외생존(상한 55), 학식(60)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "말뚝은 최근 석 달 31, 44, 58미터이다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_scholar, office: null, since: 250, loyalty: 30, public: true, cell: null}
+truths:
+  - {id: T06, level: fragment}
+hard_rules:
+  - "공식 수치와 진짜 수치를 다르게 말해야 할 때 거짓말을 숨기지 않는다"
+on_death: "황무지 확장 정보의 한 통로 소멸 — 월드 클락 #4 대응 지연"
+story_seeds:
+  - "측량 기록을 바꾸면 탑의 대응이 늦어진다. 좋은 일인가?"

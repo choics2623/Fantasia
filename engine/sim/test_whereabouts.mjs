@@ -20,7 +20,7 @@ w = at("npc_kaspar", 312, 9, 15, 7); check("9/15 07:00 카스파르 이동 중",
 w = at("npc_kaspar", 312, 9, 15, 13); check("9/15 13:00 카스파르 성채 회의", w.at === "gf_keep_hall", w.doing);
 w = at("npc_kaspar", 312, 9, 15, 17, 15); check("9/15 17:15 카스파르 돌 고리", w.at === "old_stone_ring", w.doing);
 w = at("npc_kaspar", 312, 9, 15, 18); check("9/15 18:00 카스파르 귀로", w.kind === "travel", w.doing);
-w = at("npc_kaspar", 312, 9, 16, 12); check("9/16 카스파르는 까마귀 문", w.at === "crow_gate", w.doing);
+w = at("npc_kaspar", 312, 9, 16, 12); check("9/16 카스파르는 까마귀 문", w.node === "crow_gate", `${w.place} · ${w.doing}`);
 // 4. 요한은 9/12까지 있고 9/20엔 순례 중
 check("9/5 요한 체류", at("npc_johan", 312, 9, 5, 12).kind !== "away");
 check("9/20 요한 부재", at("npc_johan", 312, 9, 20, 12).kind === "away");

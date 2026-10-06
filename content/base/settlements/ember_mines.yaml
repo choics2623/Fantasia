@@ -1,0 +1,84 @@
+# 잿불 본갱 배치 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §3.3~3.13, CHARACTERS 지역 #3, fac_vermion·fac_darason·fac_krik.
+# grid: 광산 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 걷는 속도 80m/분.
+# 지하는 깊이를 평면으로 눌러 놓았다 — 승강 바구니를 타는 시간이 거리로 환산된다 (상층 → 하층 약 6분).
+# 은비늘 요람은 지도 노드로는 `silver_cradle`(지하 갱도 6h)이나, 이 파일에서는 둥지 아래 승강기 축으로 직결된 구역(em_cradle*)으로 둔다.
+#   (REGIONS의 6h 간선은 '지하 갱도로 걸어가는 일반 경로', 승강기는 둥지 시종과 요람 직원만 쓰는 지름길로 해석)
+# 두 교대: 검은 교대 06~18시(점호 05:30), 붉은 교대 18~06시(점호 17:30). 굴 마을은 교대마다 잠긴다.
+id: ember_mines
+name: 잿불 본갱
+node: ember_mines
+kind: mine
+grid: {w: 1500, h: 1100}
+curfew: {from: "22:00", to: "05:00", note: "굴 마을 쇠문 잠김. 인간이 점호 마당 밖에 있으면 감독 순찰 판정. 갱 안은 교대 시간표가 곧 통금"}
+bells:
+  - {at: "05:30", name: 아침 점호 종 (붉은 교대 올림, 검은 교대 점호)}
+  - {at: "06:00", name: 검은 교대 입갱 종}
+  - {at: "17:30", name: 검은 교대 올림·저녁 점호 종}
+  - {at: "18:00", name: 붉은 교대 입갱 종}
+  - {at: "21:30", name: 굴 마을 쇠문 종}
+patrols: ["20:00", "23:30", "03:00"]
+locations:
+  # ── 위: 둥지와 사무소 ──
+  - {id: em_nest, name: 은비늘 둥지, xy: [760, 80], kind: lair, access: owner, hours: "멜리산드 체류 시에만 불이 켜진다", rooms: [em_nest_terrace, em_nest_servants, em_nest_lift], note: "본갱 위 바위 테라스. 바닥에 은빛 비늘 조각이 깔려 있다. 시종 60"}
+  - {id: em_nest_terrace, name: 둥지 테라스, parent: em_nest, access: owner, note: "용 형상으로 앉는 자리. 갱 마을이 내려다보인다"}
+  - {id: em_nest_servants, name: 시종 숙소, parent: em_nest, access: staff}
+  - {id: em_nest_lift, name: 공물 승강기, parent: em_nest, access: locked, locked: "요람 직원 외 출입 금지", hidden: "승강기 축 아래 400m가 은비늘 요람 — 축 벽 쇠사다리가 비상용으로 남아 있다"}
+  - {id: em_vermion_lodge, name: 베르미온 관사, xy: [560, 150], kind: residence, access: owner, hours: "07:00-23:00", rooms: [em_vermion_study, em_vermion_hall], note: "검은 바탕에 갱도 입구와 은빛 비늘 하나의 문장. 백작이 이곳에서 월말 낙반 보고를 쓴다"}
+  - {id: em_vermion_study, name: 총감독 서재, parent: em_vermion_lodge, access: owner, hidden: "서재 벽장의 갱도 설계도 전체와, 독가스 장치 위치를 적은 구리판 — 총열쇠는 드루스의 목에 걸려 있다"}
+  - {id: em_vermion_hall, name: 관사 홀, parent: em_vermion_lodge, access: owner}
+  - {id: em_office, name: "광산 사무소 '숫자의 집'", xy: [640, 260], kind: office, access: staff, hours: "07:00-17:00", rooms: [em_office_ledger, em_office_chief], note: "채굴량·사고 보고의 집. 낙반 3, 열병 7"}
+  - {id: em_office_chief, name: 광산 총감실, parent: em_office, access: staff}
+  - {id: em_office_ledger, name: 사고 기록실, parent: em_office, access: staff, hidden: "대들보 속 빈 곳에 둘째 장부 — 공식 장부에서 지운 이름이 남아 있다"}
+  - {id: em_guard_barracks, name: 용인 갱 경비 막사, xy: [600, 330], kind: barracks, access: staff, hours: "상시", note: "경비 약 6~12 교대. 재 경계 망루와 붉은 길 파견이 이곳에서 나간다"}
+  # ── 위: 은비늘 요람 (둥지 아래, 지하 400m) ──
+  - {id: em_cradle, name: 은비늘 요람, xy: [840, 200], kind: secret, access: locked, locked: "멜리산드 직속 각인 외 즉결", hours: "상시", rooms: [em_cradle_gate, em_cradle_admin, em_cradle_ward, em_cradle_surgery, em_cradle_well, em_cradle_records, em_cradle_incinerator, em_cradle_porters, em_cradle_vessel], note: "지하 3~4층. 용인 학자 12, 경비 40, 피험자 약 60. 기록상 3,214명, 생존 0"}
+  - {id: em_cradle_gate, name: 요람 경비 초소, parent: em_cradle, access: locked}
+  - {id: em_cradle_admin, name: 요람 행정실, parent: em_cradle, access: staff, note: "백작부인 오렐리아의 방. 이식 순번 명부와 '낙반' 기록용 서식"}
+  - {id: em_cradle_ward, name: 대기 감방 (피험자 우리), parent: em_cradle, access: locked, hidden: "감방 37번과 14번은 같은 벽을 쓴다 — 벽 틈으로 서로의 이름을 부른다"}
+  - {id: em_cradle_surgery, name: 시술실, parent: em_cradle, access: locked, note: "아드리안의 구역. 하루 4~6명 선별, 시술"}
+  - {id: em_cradle_well, name: 냉각 우물, parent: em_cradle, access: locked}
+  - {id: em_cradle_records, name: 기록실 (용언), parent: em_cradle, access: locked, hidden: "'드래곤 하트' 제조 기록과, 멜리산드가 표시한 문장 '그릇은 하나다. 그것은 돌아온다.' 잔향 징후 보고 목록"}
+  - {id: em_cradle_incinerator, name: 소각로와 연통, parent: em_cradle, access: staff, hidden: "연통은 지상으로 이어진다. 철 사다리 간격이 좁고 마지막 칸 쇠창살 하나가 녹슬었다 — 연기가 많이 나가는 쪽이 출구"}
+  - {id: em_cradle_porters, name: 운반 노예 우리, parent: em_cradle, access: staff}
+  - {id: em_cradle_vessel, name: 그릇의 방 (지하 4층), parent: em_cradle, access: locked, hidden: "멜리산드가 밤마다 시술을 직접 보는 자리. 담요와 은제 계측 바늘이 놓여 있다"}
+  # ── 가운데: 점호 마당과 굴 마을 ──
+  - {id: em_roll_yard, name: 점호 마당, xy: [520, 520], kind: square, access: public, hours: "교대 종마다", note: "처벌 기둥(태형 10)과 점호 단상. 멜리산드가 체류하는 밤에 한 번 이곳을 걷는다는 소문"}
+  - {id: em_post, name: 감독 초소 (점호 마당), xy: [560, 470], kind: post, access: staff, hours: "상시", note: "크릭 감독 둘과 용인 경비 하나. 점호 명단과 물 배급표를 쥔다"}
+  - {id: em_water_tank, name: 공용 물탱크, xy: [470, 560], kind: well, access: serf, hours: "05:30-06:30, 17:30-18:30 배급", note: "물 한 바가지 = 검은 빵 한 덩이. 배급량 절반은 빼돌려 판다는 소문"}
+  - {id: em_ration, name: "배급소 '검은 빵 창구'", xy: [500, 600], kind: canteen, access: public, hours: "03:30-21:00", note: "귀리죽 두 그릇, 톱밥 섞인 검은 빵 반 덩이, 물 두 바가지. 가마가 밤새 꺼지지 않는다"}
+  - {id: em_burrow_black, name: "굴 마을 '숯막' — 검은 교대 구역", xy: [330, 640], kind: pens, access: serf, locked: "19:00-05:00", hours: "검은 교대 취침 19:00-05:00", rooms: [em_burrow_312], note: "슬래그 비탈에 판 굴 거처 7백여 개. 굴마다 구리 목걸이 번호가 문패다"}
+  - {id: em_burrow_312, name: 굴 312호, parent: em_burrow_black, access: serf, hidden: "광부등 세포장 늙은 레오닉의 굴 — 23년째 같은 굴. 벽 뒤 틈에 세포 네 개의 접선 매듭이 걸려 있다"}
+  - {id: em_burrow_red, name: "굴 마을 '숯막' — 붉은 교대 구역", xy: [320, 780], kind: pens, access: serf, locked: "07:00-16:30", hours: "붉은 교대 취침 07:00-16:30", note: "굴 태생 4천 명 가운데 많은 수가 이쪽 비탈에서 태어났다"}
+  - {id: em_chapel, name: 사슬등불 예배당, xy: [330, 500], kind: chapel, access: public, hours: "안식일 07:00-09:00, 그 밖에는 기도실만", note: "순종의 빛 사제 하나. 사슬 모양 등불이 걸려 있다"}
+  - {id: em_infirmary, name: "병동 '검은 폐 막사'", xy: [440, 760], kind: infirmary, access: serf, hours: "상시", rooms: [em_infirmary_dead], note: "갱 노예 열 중 여섯이 검은 폐. 침상보다 환자가 많다"}
+  - {id: em_infirmary_dead, name: 시체 창고, parent: em_infirmary, access: serf, hidden: "열병으로 적힌 시체 수레가 해 지기 전 슬래그 비탈로 나간다 — 수레 밑판은 이중이다"}
+  - {id: em_graveyard, name: 번호 없는 구덩이, xy: [150, 830], kind: graveyard, access: public, note: "바람 아래 슬래그 구덩이. 낙반 사망자를 묻는다. 말뚝은 없다"}
+  # ── 가운데: 수직갱과 층 ──
+  - {id: em_main_shaft, name: 제1수직갱 권양탑, xy: [780, 480], kind: shaft, access: staff, hours: "교대 종마다 승강. 바구니 하나에 서른 명", rooms: [em_lift_cage], note: "수직갱 여섯 중 가장 크다. 승강 바구니의 쇠줄이 굴 마을까지 소리를 보낸다"}
+  - {id: em_lift_cage, name: 승강 바구니, parent: em_main_shaft, access: staff}
+  - {id: em_lvl_upper, name: 상층 수평갱 (1~3번), xy: [840, 560], kind: drift, access: serf, hours: "두 교대", note: "깊이 100m. 가장 오래된 갱. 봄 해빙수가 가장 먼저 찬다"}
+  - {id: em_lvl_mid, name: 중층 수평갱 (4~6번), xy: [900, 640], kind: drift, access: serf, hours: "두 교대", rooms: [em_seventh_face, em_chain_pit], note: "깊이 250m. 철광 줄기가 가장 굵다"}
+  - {id: em_seventh_face, name: 제7갱 막장, parent: em_lvl_mid, access: serf, note: "로크의 갱반이 일하는 막장. 갱반원 40명"}
+  - {id: em_chain_pit, name: 사슬 갱, parent: em_lvl_mid, access: locked, note: "벽에 사슬로 묶어 교대 두 번 동안 물을 주지 않는 처벌 갱. 막힌 갱의 막다른 곳"}
+  - {id: em_lvl_lower, name: 하층 수평갱 (7~9번), xy: [960, 720], kind: drift, access: serf, hours: "두 교대", rooms: [em_drift_7, em_drift_9], note: "깊이 400~600m. 사망률 두 배. 갱 안 40도 이상"}
+  - {id: em_drift_7, name: 하층 7번 수평갱, parent: em_lvl_lower, access: serf, hidden: "가스가 가장 적은 구간 — 붉은 교대 일부가 빵 반 덩이를 내고 몰래 잠을 잔다"}
+  - {id: em_drift_9, name: 하층 9번 수평갱, parent: em_lvl_lower, access: serf, rooms: [em_dara_wall], note: "AS 100 봉기가 시작된 갱. 막장 벽이 손바닥으로 덮여 있다"}
+  - {id: em_dara_wall, name: 다라의 손바닥 벽, parent: em_drift_9, access: secret, hidden: "손자국 212개 — 아기가 태어나면 붉은 진흙에 찍는다. 손자국 사이 한 곳에 진명 한 글자(대지 근원)가 새겨져 있다. 잔향만 읽는다"}
+  - {id: em_first_shaft, name: "첫 갱 '아스테리온의 갱'", xy: [880, 420], kind: sealed, access: locked, locked: "상시 — 쇠 빗장 3중", note: "AS −9 봉기의 시작점. AS 100 이후 돌과 쇠로 봉인", hidden: "봉인 틈에서 따뜻한 바람 — 재의 날엔 말이 섞인다. 안쪽에 '노래하는 광맥'이 있다는 전설"}
+  - {id: em_vent_house, name: "환기탑 '숨 탑'", xy: [940, 520], kind: vent, access: staff, hours: "상시", rooms: [em_vent_valves], note: "환기 수직갱 위의 풀무와 밸브. 여름에 밸브가 샌다"}
+  - {id: em_vent_valves, name: 밸브실, parent: em_vent_house, access: secret, hidden: "밸브실 벽 뒤에 독가스 장치 본통이 묻혀 있다 — 환기구마다 숨긴 41기 중 하나(실은 빈 통이 섞여 있다)"}
+  - {id: em_old_cave, name: "폐갱 '다라의 굴'", xy: [260, 900], kind: abandoned, access: secret, hours: "6일마다 밤 22:00-02:00 모임", note: "지지대가 썩은 버려진 폐갱. 가까이 가면 묻힌다고 소문이 돈다", hidden: "곡괭이 200자루와 용불 기름 12통의 비축. 6일에 한 번 로크의 비밀 모임"}
+  # ── 가운데: 일터 ──
+  - {id: em_ore_yard, name: 광석 마당, xy: [700, 780], kind: work, access: staff, hours: "06:00-18:00", rooms: [em_weigh], note: "수레가 올리는 광석을 부려 놓는 마당. 아이들이 선광 자갈을 고른다"}
+  - {id: em_weigh, name: 계량소, parent: em_ore_yard, access: staff, note: "할당량 판정. 수레 하나를 모자라게 달면 그날 물이 반으로 준다"}
+  - {id: em_smithy, name: 갱 대장간, xy: [770, 700], kind: work, access: staff, hours: "06:00-19:00", note: "곡괭이 날 세우기와 사슬. 두르강 공구가 이곳으로 온다"}
+  - {id: em_works, name: "두르강 기술 고문 공방 '쇠줄 방'", xy: [860, 620], kind: work, access: staff, hours: "07:00-22:00", note: "계약 기술자 120명. 지지대·환기 설계. 문가에 계약석 사본이 걸려 있다", hidden: "쓰레기 더미로 나가는 '분실' 환기 지도 — 매해 한 장"}
+  - {id: em_red_stair, name: "노천 철광 '붉은 계단'", xy: [1150, 420], kind: open_pit, access: serf, hours: "06:00-18:00", note: "노천 계단식 철광. 인간 노예 약 6천. 잿비가 오는 날 일이 멈춘다"}
+  - {id: em_krik_hall, name: "검은 손톱 지부 (붉은 계단 감독 막사)", xy: [1000, 330], kind: office, access: staff, hours: "상시", rooms: [em_krik_ledger], note: "크릭 감독 약 40의 막사와 지부장실. 채찍 손잡이마다 갱 번호"}
+  - {id: em_krik_ledger, name: 지부 장부실, parent: em_krik_hall, access: staff, hidden: "공급 명단 사본과 물 배급 이중 장부 — 팔린 물과 빵의 수"}
+  - {id: em_ash_watch, name: 재 경계 망루, xy: [1350, 980], kind: watch, access: staff, hours: "상시", rooms: [em_ash_stakes], note: "AS 311 경계 확장 뒤 세운 감시탑. 용인 6, 잿빛 탑 관측자 둘. 경보 뿔나팔"}
+  - {id: em_ash_stakes, name: 측량 말뚝 줄, parent: em_ash_watch, access: staff, hidden: "말뚝이 매달 안쪽으로 옮겨진다. 최근 석 달은 31, 44, 58미터"}
+outer:
+  - {id: em_out_slag_slope, name: 슬래그 비탈, hours: 0.3}
+  - {id: em_out_ash_edge, name: 재의 황무지 가장자리 길, hours: 2.0}
+  - {id: em_out_gate_road, name: 잿문 가는 대로, hours: 8.5, node: ember_gate}

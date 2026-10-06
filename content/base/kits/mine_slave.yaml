@@ -1,0 +1,113 @@
+# 지역 생성 키트 — 광산 노예 숙영지 (25_REGION_KITS.md). 잿불 언덕의 갱 마을·제련 노예 우리, 두르강 계약 광산 바깥 갱에도 쓴다.
+# 12시간 2교대: 검은 교대(06~18시, 점호 05:30) / 붉은 교대(18~06시, 점호 17:30). 갱 안에는 낮이 없다 — 교대 사이 1시간이 배급과 점호다.
+# 법·처벌·관습은 키트에 다시 쓰지 않고 세력 데이터를 가리킨다: fac_vermion(갱조, 연좌, 낙반 보고), fac_krik(감독, 목록), fac_darason(손 벽), fac_collar(목줄장).
+id: kit_mine_slave
+applies_to: [잿불 언덕 본갱·굴 마을, 잿문 제련 노예 우리, 두르강 계약 광산 바깥 갱]
+names:
+  인간:
+    # 인간은 성이 없다. 갱에서는 갱조 번호(구리 목걸이)와 갱이 붙인 별명, 어머니만 아는 진짜 이름이 따로 있다.
+    male: [칼렙, 하로, 레오닉, 로크, 얀, 마테, 쿠르트, 베른, 오토, 도넬, 헤르만, 타이스, 에드, 브란, 닐스, 울리, 라스, 아르네, 볼프, 하인]
+    female: [도르테, 야나, 웨나, 이다, 한나, 마리, 에다, 일제, 그레테, 루트, 베타, 클라라, 헬가, 우테, 프리다, 엘케, 잉에, 소피, 안나, 리스베트]
+    given_by_mine: ["{갱}번 {조}조", "코", "절름", "곰보", "숯", "벙어리", "외귀", "먼지", "여덟째", "꼬마", "휘파람(금기 별명 — 벌 받은 자)", "손바닥"]
+    epithet_rule: "갱조 번호(감독이 부르는 이름) + 갱 별명(몸의 흉터·냄새·버릇) + 진짜 이름(어머니와 벽의 손자국만)"
+  크릭:
+    # 크릭은 수명이 40년 안팎이다. 이름은 짧고 소리 나는 것이며, 감독관은 몸의 특징을 붙인다.
+    male: [닛, 볼트, 크라즈, 그락스, 퀴프, 쥐, 틱, 소르크, 핀, 짹, 드릭, 쿠즈]
+    female: [치르, 핍, 소프, 니아, 미크, 제카]
+    epithet: [셋꼬리, 외눈, 마른이빨, 빨강귀, 넷째, 긴코, 절름, 잿손]
+  용인:
+    male: [하드리안, 티베리온, 바르토, 드루스, 카시안, 에반, 소렐, 카셀, 로엔, 가르스, 오르딘, 마르쿠스]
+    female: [오렐리아, 아멜리, 소르가, 이르샤, 베라, 카트라, 엘로이]
+    surname_rule: "순혈과 비늘혈은 성(가문 이름)을 가진다. 광산 직위의 용인은 가문 이름 뒤에 몸의 별명(숯턱·연기쇠·잉크)이 붙는다"
+  두르강:
+    male: [오린, 발람, 토르크, 케른, 도린]
+    female: [브룬, 헬가, 오달]
+    surname_rule: "별명은 쇠붙이 이름 — 쇳줄, 재송곳, 깨진모루. 계약 기술자는 계약석의 번호를 가슴에 새긴다"
+classes:            # 광산 인구의 신분 비율 (잿불 본갱 기준)
+  갱 노예: 0.72
+  제련·운반 노예: 0.12
+  숙련 노예: 0.05     # 지지대 목수, 대장간, 병동, 취사
+  목줄단: 0.02
+  크릭 감독: 0.04
+  용인 관리·경비: 0.04
+  두르강 기술자: 0.001
+jobs:
+  - {id: miner_black, name: 채굴 광부 (검은 교대), class: 갱 노예, weight: 26, schedule: sch_miner_black}
+  - {id: miner_red, name: 채굴 광부 (붉은 교대), class: 갱 노예, weight: 26, schedule: sch_miner_red}
+  - {id: cart_hauler, name: 광석 수레꾼, class: 갱 노예, weight: 12, schedule: sch_hauler}
+  - {id: prop_carpenter, name: 지지대 목수, class: 숙련 노예, weight: 4, schedule: sch_prop}
+  - {id: water_carrier, name: 물 긷는 이, class: 갱 노예, weight: 5, schedule: sch_water}
+  - {id: gas_nose, name: 가스 코 (냄새꾼), class: 갱 노예, weight: 2, schedule: sch_nose}
+  - {id: red_stair_digger, name: 붉은 계단 노천 광부, class: 갱 노예, weight: 14, schedule: sch_pit}
+  - {id: smelter_hand, name: 제련 노예, class: 제련·운반 노예, weight: 9, schedule: sch_smelter}
+  - {id: burrow_mother, name: 굴 마을 어머니, class: 갱 노예, sex: female, age: [30, 55], weight: 7, schedule: sch_burrow}
+  - {id: child_picker, name: 아이 (선광 자갈 고르기), class: 갱 노예, age: [6, 13], weight: 9, schedule: sch_child}
+  - {id: elder_rope, name: 노인 (밧줄 꼬기), class: 갱 노예, age: [45, 62], weight: 4, schedule: sch_elder}
+  - {id: kitchen_baker, name: 배급소 빵 굽는 이, class: 숙련 노예, weight: 3, schedule: sch_kitchen}
+  - {id: ward_helper, name: 병동 보조, class: 숙련 노예, weight: 2, schedule: sch_ward}
+  - {id: collar_foreman, name: 목줄단 반장, class: 목줄단, weight: 2, schedule: sch_collar}
+  - {id: krik_overseer_black, name: 크릭 감독 (검은 교대), class: 크릭 감독, race: 크릭, weight: 5, schedule: sch_overseer_black}
+  - {id: krik_overseer_red, name: 크릭 감독 (붉은 교대), class: 크릭 감독, race: 크릭, weight: 5, schedule: sch_overseer_red}
+  - {id: dragonkin_guard, name: 용인 갱 경비, class: 용인 관리·경비, race: 용인, weight: 5, schedule: sch_guard}
+  - {id: dragonkin_clerk, name: 용인 서기, class: 용인 관리·경비, race: 용인, weight: 2, schedule: sch_clerk}
+  - {id: durgan_engineer, name: 두르강 계약 기술자, class: 두르강 기술자, race: 두르강, weight: 1, schedule: sch_engineer}
+schedules:          # 직업 일과 틀 — at은 정착지 틀의 역할(role) 이름
+  # 검은 교대: 05:30 점호, 06:00 입갱, 17:30 올림·점호·배급, 18:00~ 굴에서 잠. 붉은 교대는 거울이다.
+  sch_miner_black: [{days: all, from: "05:30", to: "06:00", at: roll_yard, doing: 갱조 점호 — 번호를 대고 입갱, fixed: true}, {days: workday, from: "06:00", to: "17:30", at: drift, doing: 채굴 — 할당량 하루 30수레}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 점호와 배급 — 죽 두 그릇과 검은 빵 반 덩이, fixed: true}, {days: all, from: "19:00", to: "05:00", at: burrow_black, doing: 굴에서 잔다}, {days: sabbath, from: "07:00", to: "09:00", at: chapel, doing: 예배 — 안식일엔 입갱이 반으로 준다}]
+  sch_miner_red:   [{days: all, from: "17:30", to: "18:00", at: roll_yard, doing: 갱조 점호 — 번호를 대고 입갱, fixed: true}, {days: workday, from: "18:00", to: "05:30", at: drift, doing: 채굴 — 갱 안엔 낮이 없다}, {days: all, from: "05:30", to: "06:30", at: canteen, doing: 점호와 배급, fixed: true}, {days: all, from: "07:00", to: "16:30", at: burrow_red, doing: 굴에서 잔다}]
+  sch_hauler:      [{days: all, from: "05:30", to: "06:00", at: roll_yard, doing: 점호, fixed: true}, {days: workday, from: "06:00", to: "17:30", at: ore_yard, doing: 수레로 광석을 계량소에 나른다}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "19:00", to: "05:00", at: burrow_black, doing: 잔다}]
+  sch_prop:        [{days: workday, from: "06:00", to: "17:30", at: drift, doing: 지지대를 세우고 썩은 버팀목을 간다}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "19:00", to: "05:00", at: burrow_black, doing: 잔다}]
+  sch_water:       [{days: all, from: "04:30", to: "06:00", at: water_tank, doing: 물탱크에서 양동이를 채운다}, {days: workday, from: "06:00", to: "17:00", at: drift, doing: 갱 안에 물 바가지를 나른다}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "19:00", to: "04:00", at: burrow_black, doing: 잔다}]
+  sch_nose:        [{days: workday, from: "06:00", to: "17:30", at: drift, doing: 막장 앞에서 가스 냄새를 맡는다 — 코가 곧 경보}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "19:00", to: "05:00", at: burrow_black, doing: 잔다}]
+  sch_pit:         [{days: all, from: "05:30", to: "06:00", at: roll_yard, doing: 점호}, {days: workday, from: "06:00", to: "17:30", at: open_pit, doing: 노천 계단을 곡괭이로 깎는다, outdoor: true, rain: {at: drift, doing: 잿비를 피해 얕은 갱으로 들어간다}}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "19:00", to: "05:00", at: burrow_black, doing: 잔다}]
+  sch_smelter:     [{days: workday, from: "06:00", to: "18:00", at: smelter, doing: 용광로 풀무질과 주형, outdoor: false}, {days: all, from: "18:30", to: "19:30", at: canteen, doing: 배급}, {days: all, from: "20:00", to: "05:00", at: burrow_black, doing: 잔다}]
+  sch_burrow:      [{days: all, from: "05:00", to: "07:00", at: canteen, doing: 교대 배급을 거든다}, {days: workday, from: "08:00", to: "16:00", at: burrow_black, doing: 굴 마을 살림 — 빨래와 아이들}, {days: all, from: "17:00", to: "19:00", at: canteen, doing: 저녁 배급 줄}, {days: all, from: "19:00", to: "04:30", at: burrow_black, doing: 굴}]
+  sch_child:       [{days: workday, from: "06:00", to: "12:00", at: ore_yard, doing: 선광 자갈 고르기}, {days: workday, from: "12:00", to: "17:00", at: water_tank, doing: 물 긷기}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "19:00", to: "05:00", at: burrow_black, doing: 잔다}]
+  sch_elder:       [{days: all, from: "08:00", to: "17:00", at: burrow_black, doing: 밧줄을 꼬고 매듭끈을 만진다}, {days: all, from: "17:30", to: "18:30", at: canteen, doing: 배급}, {days: all, from: "18:30", to: "08:00", at: burrow_black, doing: 굴}]
+  sch_kitchen:     [{days: all, from: "03:30", to: "20:30", at: canteen, doing: 검은 빵 반죽과 죽 솥}, {days: all, from: "21:00", to: "03:30", at: canteen, doing: 부엌 구석에서 잔다}]
+  sch_ward:        [{days: all, from: "06:00", to: "20:00", at: infirmary, doing: 검은 폐 환자를 돌본다}, {days: all, from: "20:00", to: "06:00", at: infirmary, doing: 야간 기침 소리를 센다}]
+  sch_collar:      [{days: all, from: "05:30", to: "06:30", at: roll_yard, doing: 점호 곁에서 이름을 센다}, {days: workday, from: "07:00", to: "17:00", at: burrow_black, doing: 굴을 돌며 귀를 연다}, {days: all, from: "19:00", to: "21:00", at: post, doing: 감독에게 보고}, {days: all, from: "22:00", to: "05:00", at: barracks_staff, doing: 막사 문 옆 침상}]
+  sch_overseer_black: [{days: all, from: "05:30", to: "06:00", at: roll_yard, doing: 점호 — 번호를 못 대면 입갱 지연, fixed: true}, {days: workday, from: "06:00", to: "17:30", at: drift, doing: 채찍을 쥐고 갱을 돈다}, {days: all, from: "17:30", to: "18:30", at: roll_yard, doing: 저녁 점호, fixed: true}, {days: all, from: "19:00", to: "23:00", at: post, doing: 초소 — 명단과 맥주}, {days: all, from: "23:00", to: "05:00", at: barracks_staff, doing: 잔다}]
+  sch_overseer_red:   [{days: all, from: "17:30", to: "18:00", at: roll_yard, doing: 점호, fixed: true}, {days: workday, from: "18:00", to: "05:30", at: drift, doing: 채찍을 쥐고 야간 갱을 돈다}, {days: all, from: "05:30", to: "06:30", at: roll_yard, doing: 아침 점호, fixed: true}, {days: all, from: "07:00", to: "16:00", at: barracks_staff, doing: 잔다}]
+  sch_guard:       [{days: all, from: "06:00", to: "18:00", at: post, doing: 초소·갱 어귀 경비}, {days: all, from: "18:00", to: "22:00", at: barracks_staff, doing: 막사}, {days: all, from: "22:00", to: "06:00", at: barracks_staff, doing: 잔다}]
+  sch_clerk:       [{days: workday, from: "07:00", to: "17:00", at: office, doing: 장부 — 낙반 3, 열병 7}, {days: all, from: "18:00", to: "22:00", at: barracks_staff, doing: 숙소}]
+  sch_engineer:    [{days: workday, from: "07:00", to: "18:00", at: works, doing: 지지대·환기 설계와 지도 정리}, {days: all, from: "19:00", to: "22:00", at: works, doing: 맹세의 문구를 다시 읽는다}]
+voices:             # 말투 원형 — 즉석 생성 인물이 하나를 받아 변주한다 (22 §1.1)
+  - {id: v_tapper, name: 벽을 두드리는 자, register: "반말, 입을 거의 열지 않는다. 손가락으로 벽이나 허벅지를 두드려 말을 대신한다", tics: ["'…(두 번 두드린다)'"], use: [갱, 소리, 버팀목, 둘, 셋], avoid: [이름, 노래], sample: "(손가락 두 번) …여긴 귀가 있어. 입 닫아."}
+  - {id: v_counter, name: 숫자로 말하는 자, register: "반말, 모든 것을 수로 말한다", tics: ["'…몇 수레야?'"], use: [수레, 바가지, 번, 조, 교대], avoid: [내일], sample: "물 두 바가지에 빵 반 덩이. 어제 셈이 틀렸으면 오늘 두 번째야."}
+  - {id: v_cough, name: 기침 섞인 자, register: "존댓말과 반말이 섞인다. 말끝마다 기침", tics: ["'콜록… 괜찮아.'"], use: [검은 폐, 숨, 먼지, 물], avoid: [오래], sample: "콜록… 괜찮아요. 남들 숨보다 반 걸음 늦을 뿐이지."}
+  - {id: v_hum, name: 흥얼거리는 자, register: "반말, 숨으로 장단을 맞춘다. 갱 안에서는 휘파람 대신 숨", tics: ["'(숨으로 박자)'"], use: [여덟 해, 손바닥, 벽], avoid: [휘파람], sample: "(숨으로 박자) 여덟 해야… 나는 일곱 해째고."}
+  - {id: v_haggler, name: 물을 흥정하는 자, register: "반말, 은근히 낮다. 값부터 말한다", tics: ["'값은 알지?'"], use: [바가지, 빵, 값, 하나], avoid: [공짜], sample: "값은 알지? 물 한 바가지에 빵 한 덩이. 오늘은 더 올랐어."}
+  - {id: v_bitter_mine, name: 앙심 품은 자, register: "반말, 비꼼", tics: ["'언젠가.'"], use: [위에 있는 것, 숯, 언젠가], avoid: [희망], sample: "위에 있는 것들은 숨 쉴 때마다 우리 이름을 센대. 언젠가."}
+  - {id: v_numbers_dragonkin, name: 숫자 보고체 (용인 관리), register: "높임과 평어가 섞인 보고체. 죽음을 건조하게 낭독", tics: ["'깊이는?'"], use: [낙반, 열병, 갱, 번호], avoid: [죽음, 이름], sample: "낙반 3, 열병 7. 갱 번호와 갱조 번호로 보고합니다."}
+  - {id: v_krik_list, name: 목록을 외는 크릭, register: "짧은 반말. 주인 이름을 먼저 대고 말한다", tics: ["'목록이 그렇다.'"], use: [목록, 위, 아래, 무릎], avoid: [우리가 정했다], sample: "목록이 그렇다. 위에 용, 아래에 너. 나는 중간이다."}
+  - {id: v_pious_mine, name: 기도하는 자, register: "공손, 말끝마다 빛", tics: ["'빛이 보시기를.'"], use: [빛, 순종, 은혜, 교대], avoid: [주인 욕], sample: "빛이 보시기를. 오늘도 입갱했으니 은혜지요."}
+  - {id: v_mother_mine, name: 어머니 같은 자, register: "반말, 다정하고 명령형", tics: ["'먹어.'"], use: [먹어, 아가, 따뜻하게, 빵], avoid: [], sample: "먹어. 오늘은 반 덩이가 아니라 반 덩이와 한 조각이다."}
+  - {id: v_stone_oath, name: 맹세 문구를 따지는 두르강, register: "존댓말과 평어가 섞인 느린 말. 문구를 인용한다", tics: ["'계약서에는…'"], use: [문구, 맹세, 계약, 돌], avoid: [동정], sample: "계약서에는 '지원 금지'라 적혀 있지요. '분실'은 적혀 있지 않고요."}
+temperaments: [과묵, 수다, 의심, 순종, 앙심, 다정, 겁, 고집, 비굴, 체념, 영리, 무딤, 계산, 미신]
+settlement_templates:
+  - id: tpl_mine_slave_camp
+    name: 광산 노예 숙영지
+    grid: {w: 1200, h: 900}
+    roles:          # role: [개수 범위, 배치 규칙, 장소 속성]
+      office:        {count: [1, 1], place: "북쪽, 갱구와 숙영지 사이", access: staff, name: "{주인} 광산 사무소"}
+      post:          {count: [1, 2], place: "점호 마당 옆과 갱구 앞", access: staff, name: 감독 초소}
+      roll_yard:     {count: [1, 1], place: 가운데, access: public, name: 점호 마당}
+      canteen:       {count: [1, 1], place: "점호 마당 남쪽", access: public, name: "배급소 '검은 빵 창구'"}
+      water_tank:    {count: [1, 1], place: "배급소 곁", access: serf, name: 공용 물탱크}
+      burrow_black:  {count: [1, 2], place: "서쪽 슬래그 비탈", access: serf, name: "굴 마을 — 검은 교대 구역", locked: "19:00-05:00"}
+      burrow_red:    {count: [1, 2], place: "남서쪽 슬래그 비탈", access: serf, name: "굴 마을 — 붉은 교대 구역", locked: "07:00-16:30"}
+      barracks_staff: {count: [1, 2], place: "초소 뒤, 동쪽", access: staff, name: 감독·경비 막사}
+      shaft_head:    {count: [1, 3], place: "동쪽 언덕 위", access: staff, name: 수직갱 권양탑}
+      drift:         {count: [3, 9], place: "갱구 아래 층층 (깊이로 나눈다)", access: serf, name: 수평갱, hours: "교대 종마다 승강"}
+      ore_yard:      {count: [1, 1], place: "갱구 남쪽", access: staff, name: 광석 마당과 계량소}
+      open_pit:      {count: [0, 1], place: "동쪽 끝", access: serf, name: 노천 광부 계단}
+      smelter:       {count: [0, 1], place: "바람 아래 서쪽", access: staff, name: 제련소}
+      infirmary:     {count: [1, 1], place: "굴 마을 남쪽", access: serf, name: "병동 '검은 폐 막사'"}
+      chapel:        {count: [0, 1], place: "굴 마을 북쪽", access: public, name: 사슬등불 예배당}
+      works:         {count: [0, 1], place: "권양탑 곁", access: staff, name: 기술 고문 공방}
+      graveyard:     {count: [1, 1], place: "슬래그 비탈 아래 바람 아래", access: public, name: 번호 없는 구덩이}
+    outer:
+      slag_slope:    {hours: [0.2, 0.5], name: 슬래그 비탈}
+      ash_edge:      {hours: [1.5, 3.0], name: 재의 황무지 가장자리 길}
+calendar_ref: "content/base/events/ember_hills_312.yaml — 교대 맞바꿈, 월말 낙반 보고, 경고의 날 등"

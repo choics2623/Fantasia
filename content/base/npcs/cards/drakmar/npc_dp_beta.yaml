@@ -1,0 +1,147 @@
+# 취사장 베타 '국자' — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dp_beta
+name: 취사장 베타 '국자'
+aka:
+- 국자 베타
+- 큰 귀
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 49
+region: 회색여울 변경
+home: 역참 노예 막사
+job: 역참 취사장 관리
+rank: 역참 소유 노예
+summary: 호송대와 상인의 말을 다 듣는 취사장 아낙. 솥 한 개와 귀 두 개로 길 위의 소문을 모은다
+source: docs/world/people/crow_gate.md (npc_dp_beta)
+life:
+- year: 263
+  age: 0
+  event: 용주 역참 노예 막사에서 태어남
+- year: 279
+  age: 16
+  event: 취사장에서 솥 앞에 서기 시작함
+- year: 298
+  age: 35
+  event: 호송대 접대를 맡음. 처음으로 사람 이름 마흔 개를 외움
+- year: 311
+  age: 48
+  event: 회색여울 호송대 소문을 처음 들음. 이후 아이 이야기만 따로 적어 둠
+appearance:
+- 국자를 잡은 손목이 붓고 굵다
+- 귀가 크다
+- 말을 아끼지만 눈이 많이 말한다
+smell: 죽 탄내와 소금, 마른 허브 냄새
+voice_sound: 굵고 낮은 목소리. 말끝을 짧게 끊는다
+personality:
+  disposition:
+    용기: 10
+    자비: 30
+    정직: -5
+    신앙: 15
+    탐욕: -10
+    충성: 20
+  temperament:
+  - 귀 밝음
+  - 다정
+  - 과묵
+  habits:
+  - 국자로 솥 가장자리를 두 번 친다
+  - 남의 말이 나오면 귀 쪽 머리카락을 올린다
+  values: 모든 소문의 값. 아이가 굶지 않는 것
+  fears:
+  - 호송대가 아이를 데려오는 날
+  - 말 많은 손님이 입을 다무는 날
+  desires:
+    short: 아이 둘이 있는 호송 명부를 누구에게든 전하는 것
+    long: 취사장을 떠나 손녀 곁에서 죽을 끓이는 것
+voice:
+  register:
+    to_superior: 용인에게는 짧은 존댓말
+    to_equal: 같은 노예에게는 낮은 반말
+    to_inferior: 아이에게는 다정한 반말
+    to_player_default: 낯선 사람에게는 죽 한 그릇부터
+  tics:
+  - '''덤은 값이 없다.'''
+  use:
+  - 죽
+  - 국자
+  - 소금
+  - 귀
+  - 덤
+  avoid:
+  - 소문(그녀는 '들은 말'이라 한다)
+  length: 짧고 낮다. 아이 이야기는 길어진다
+  samples:
+  - situation: 첫 만남
+    line: 죽 한 그릇이다. 말 한 마디는 덤. 덤은 값이 없다.
+  - situation: 호의
+    line: 오늘은 소금을 더 쳤다. 네 얼굴이 싱거워서.
+  - situation: 거래
+    line: 들은 말 하나. 대신 먹은 그릇은 설거지해라.
+  - situation: 비밀 누설
+    line: 호송 명부 마흔 중 열 살 아래가 둘이라고 호송병이 말했다.
+schedule:
+  아침: 솥 불
+  낮: 손님 식사
+  저녁: 호송대 접대
+  밤: 뒷문 설거지
+places:
+- 역참 취사장
+- 노예 막사
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_cook_hears_caravans
+  reveal_when: 신뢰 35 이상이고 아이 이야기에 반응했을 때
+  cover: '''호송대는 입이 더럽다''고만 한다'
+relations:
+- to: npc_bram
+  type: 같은 솥 일
+  like: 15
+  trust: 10
+  visibility: 일방
+  memo: null
+  words: 이름만 들은 선배
+- to: npc_dp_jan
+  type: 마구간 노예
+  like: 25
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 같은 노예 막사
+- to: npc_dp_paul
+  type: 계산 노예
+  like: 15
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 말이 많은 사람
+toward_player: 먼저 죽을 건넨다
+persuade:
+  likes: 아이를 아끼는 마음, 설거지
+  hates: 아이를 이름 대신 번호로 부르는 말
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_state_slave
+  office: null
+  since: 279
+  loyalty: 10
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 호송대 명부 소식을 들은 뒤다
+  deja_vu: none
+hard_rules:
+- 들은 말을 사람에게 먼저 건네지 않는다
+on_death: 역참 취사장의 소문 허브가 사라진다. 호송대 구성 정보가 끊긴다.
+story_seeds:
+- 베타에게서 매각 호송대의 구성을 알면 호송 습격 계획이 달라진다.

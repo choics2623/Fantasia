@@ -1,0 +1,217 @@
+# 역참장 세라프 타르굴 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_seraph_targul
+name: 역참장 세라프 타르굴
+aka:
+- 이마 닳은 역참장
+- 열지 않는 손
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 112
+region: 회색여울 변경
+home: 용주 역참 본관 위층 관사
+job: 용주 역참장
+rank: 용인 관리 (타르굴 가 방계), 재상 세베린의 후견
+summary: 우편함에 레아의 보고서가 들어오는 것을 알면서 한 번도 열지 않은 역참장. 열지 않는 것이 그의 보험이다
+source: docs/world/people/crow_gate.md (npc_seraph_targul)
+life:
+- year: 200
+  age: 0
+  event: 하스트란 변경 마을에서 타르굴 가 방계의 막내로 태어남
+- year: 230
+  age: 30
+  event: 바알카르 역참망 서기로 입사. 첫 임무는 용언 봉인 밀랍의 색을 분류하는 일이었다
+- year: 262
+  age: 62
+  event: 용의 대로 두 번째 역참 부역참장. 말 서른 마리의 이름을 외움
+- year: 290
+  age: 90
+  event: 용주 역참장에 오름. 재상 세베린이 후견했다 — 타르굴 가의 눈이라는 뜻
+- year: 300
+  age: 100
+  event: 우편함에 처음 은밀랍 봉인이 들어옴. 레아의 첫 보고서. 열지 않기로 한 날
+- year: 306
+  age: 106
+  event: 도르반에게서 말 열두 마리를 빌려 역참 말을 채움. 그 값을 아직 갚지 못함
+- year: 311
+  age: 111
+  event: 검문 하사 오르벡의 위조 통행증 장사를 알아챔. 하사의 월급이 석 달 밀려 있음을 이유로 눈감음
+- year: 312
+  age: 112
+  event: 월말 장부에 봉인 수와 밀랍 색만 적어 재상에게 올림. 기록은 이미 열두 해를 채웠다
+appearance:
+- 이마 비늘이 반들반들 닳았다 — 손으로 자주 문지르는 버릇
+- 눈 밑이 처졌다
+- 모든 서류를 두 손가락으로 집는다
+smell: 가죽 문서와 밀랍, 마른 말똥과 먼지 냄새
+voice_sound: 낮고 건조한 목소리. 문장이 서류처럼 끝나고 질문은 항상 세 번째에 나온다
+personality:
+  disposition:
+    용기: -15
+    자비: 5
+    정직: 10
+    신앙: 0
+    탐욕: 15
+    충성: 35
+  temperament:
+  - 신중
+  - 소심
+  - 계산
+  habits:
+  - 이마 비늘을 엄지로 문지르며 생각한다
+  - 서류는 두 손가락으로만 집는다
+  - 우편함 쪽으로 걸을 때마다 걸음이 한 박자 늦어진다
+  values: 변명이 되는 장부. 역참이 멈추지 않는 것. 책임을 지는 자리에서 한 걸음 물러나 있는 것
+  fears:
+  - 우편함의 봉인이 터지는 것
+  - 재상 세베린의 감사
+  - 레아가 사라진 뒤의 책임
+  - 도르반의 빚 독촉
+  desires:
+    short: 우편함의 비밀이 터지기 전에 역참장 자리에서 물러나는 것
+    long: 타르굴 가 본가의 문서 담당으로 돌아가는 것
+voice:
+  register:
+    to_superior: 재상 쪽 사람에게는 하옵니다체. 장부 이야기만
+    to_equal: 상인·장교에게는 정중한 하오체. 서류를 먼저 본다
+    to_inferior: 역참 노예·크릭에게는 해라체. 말은 줄이고 눈은 서류에
+    to_player_default: 인간 낯선 이에게는 사무적인 반말. 통행증부터 본다
+  tics:
+  - '''순서가 있다.'''
+  - '''기록에 남는다.'''
+  use:
+  - 통행증
+  - 봉인
+  - 밀랍
+  - 장부
+  - 말
+  - 순서
+  avoid:
+  - 우편함(그는 '상자'라 한다)
+  - 읽다
+  - 열다
+  length: 짧고 서류적이다. 우편함 이야기가 나오면 더 짧아진다
+  samples:
+  - situation: 첫 만남
+    line: 통행증. 이름, 목적, 도착지. 이 순서다. 순서가 틀리면 사람이 틀린 것이다.
+  - situation: 첫 만남(경계)
+    line: 어디서 왔소. 어디로 가오. 길 위의 사람은 둘 중 하나는 거짓이오.
+  - situation: 호의
+    line: 오늘 말이 교대가 빨랐소. 손이 좋은 사람이 있었나 보오.
+  - situation: 거래
+    line: 봉인 하나에 은밀랍, 둘이면 이야기가 길어진다. 나는 길게 쓰지 않는다.
+  - situation: 겁먹었을 때
+    line: 열었소? …아니, 열지 않았지. 내가 열지 않았다는 건 장부가 안다.
+  - situation: 분노
+    line: 상자 이야기는 하지 마시오. 그건 내 일이 아니라 상자의 일이오.
+  - situation: 비밀 누설
+    line: 열면 읽게 된다. 읽으면 알게 된다. 알면… 말하게 된다. 그래서 열지 않는다.
+  - situation: 슬픔
+    line: 열두 해. 열두 해 동안 장부에 숫자만 적었소. 숫자는 위로가 안 되오.
+  - situation: 거짓말할 때
+    line: 우편함? 말 열 마리 값을 하는 쇠 상자요. 안에 든 것은 모르오.
+  - situation: 회귀자를 의심할 때
+    line: 내 장부에 없는 이름을 안다니. 이름은 장부 밖에서 오면 위험한 것이오.
+schedule:
+  아침: 말 교대 점검
+  낮: 본관 서재, 검문 입회
+  저녁: 상인 숙소 식당
+  밤: 서재 장부, 월 25일 낮 전령 우편함 앞을 지나간다
+places:
+- 역참 본관
+- 역참장 서재
+- 검문대
+- 상인 숙소
+knows:
+- fact_gf_henrik_granary_skim
+- fact_gf_lea_melisande_spy
+hides:
+- fact: fact_cg_seraph_wax_count
+  reveal_when: 신뢰 45 이상이고 재상의 지시서나 감사를 내밀었을 때, 또는 장부를 직접 보여 달라는 요청이 정당할 때
+  cover: '''월말 보고를 올린다''고만 한다'
+- fact: fact_cg_seraph_debt_dorvan
+  reveal_when: 호감 35 이상이고 빚 변제를 도왔을 때
+  cover: '''말은 역참 소유''라고만 한다'
+- fact: fact_cg_checkpoint_forged_passes
+  reveal_when: 신뢰 50 이상, 또는 오르벡의 월급 문제를 해결한 뒤
+  cover: '''하사는 성실하다''고 한다'
+relations:
+- to: npc_lea
+  type: 우편함 사용자
+  like: -5
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 열지 않는 편지의 필자
+- to: npc_dorvan
+  type: 채권자
+  like: -20
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: 말 열두 마리의 빚
+- to: npc_dp_ismel
+  type: 전령
+  like: -10
+  trust: -15
+  visibility: 공개
+  memo: null
+  words: 멜리산드의 눈
+- to: npc_dp_brick
+  type: 서기
+  like: 5
+  trust: -35
+  visibility: 공개
+  memo: null
+  words: 봉인에 손대는 것 같다
+- to: npc_dp_orbek
+  type: 검문 하사
+  like: 10
+  trust: -20
+  visibility: 비밀
+  memo: null
+  words: 통행증 장사를 눈감는다
+- to: npc_henrik
+  type: 거래 연결
+  like: -10
+  trust: -25
+  visibility: 일방
+  memo: null
+  words: 귀리가 흘러가는 곳
+toward_player: 서류부터 본다. 서류가 없으면 신분을 묻는다
+persuade:
+  likes: 재상 세베린의 지시서, 빚 변제, 책임 면제 약속
+  hates: '''문지기''라는 말, 우편함 이야기를 먼저 꺼내는 것'
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_scale_officer
+  office: off_road_post
+  since: 290
+  loyalty: 45
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 우편함에는 아직 이번 달 봉인이 없다
+  - 매월 25일 낮 2시에 우편함 앞을 지난다
+  flow:
+  - 월말에 봉인 수를 장부에 적어 재상에게 올린다
+  drift:
+  - 25일 낮 2시에 우편함 곁에 누가 서성이는지
+  - 오르벡이 밀린 월급 얘기를 꺼내는 날
+  deja_vu: none
+hard_rules:
+- 우편함을 열지 않는다
+- 레아의 이름을 입에 올리지 않는다
+- 읽었다는 말을 하지 않는다
+on_death: 우편함 감시자가 사라져 레아의 보고서에 접근할 길이 열린다. 재상 쪽 역참망 정보도 일시 끊긴다.
+story_seeds:
+- 세라프의 장부에 레아 봉인의 수와 밀랍 색이 있다. 이것으로 레아의 정체를 증명할 수 있지만, 세라프도 함께 위험해진다.
+- 세라프의 장부에는 레아 봉인의 수와 밀랍 색이 있다. 이것으로 레아의 정체를 증명할 수 있지만 세라프도 함께 위험해진다

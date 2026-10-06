@@ -1,0 +1,133 @@
+# 바알카르 — 드라크마르 용제국의 수도 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §1.3~§1.9, HOUSES §1.7·§2, fac_drakmar_empire, CHARACTERS 지역 #1.
+# grid: 도시 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 걷는 속도 80m/분.
+# 도시는 북서쪽 용좌봉(12km)을 향해 계단식으로 오른다 — 일곱 층계구역. 북서쪽 꼭대기가 7층 불꽃 홀, 남쪽 은빛 강가가 1층 사슬 부두·재받이.
+# 구역(district)이 location이고, 주요 건물은 그 구역의 rooms(parent)다. 구역 안 건물 사이 이동은 같은 건물(2분)로 계산된다 — 구역이 크면 엔진의 근사치.
+# 용좌봉 '재의 둥지'·잿날개 둥지·서리 요람은 도시 밖(outer, 노드 dragon_throne_peak). 공물 계단으로 걸어 5시간 안팎 (map.json의 산길 13h는 짐 행렬 기준).
+id: baalkar
+name: 바알카르
+node: baalkar
+kind: capital
+grid: {w: 3000, h: 2400}
+curfew: {from: "19:30", to: "05:00", note: "일몰 점호 1시간 뒤 통금. 인간은 막사·소유주 저택 밖이면 태형 10과 밤새 사슬 기둥. 층계 검문소는 통금 동안 닫힌다(용인·와이번·바르그는 통과)"}
+bells:
+  - {at: "05:00", name: 새벽종}
+  - {at: "12:00", name: 정오 귀리죽 종}
+  - {at: "18:30", name: 일몰 점호 종}
+  - {at: "19:30", name: 통금 종}
+  - {at: "00:00", name: 불꽃 홀 자정 북 (근위 교대)}
+patrols: ["20:00", "22:00", "00:00", "02:00", "04:00"]
+locations:
+  # ── 7층: 불꽃 홀 (제국 궁정·행정) ──
+  - {id: bk_flame_hall, name: "불꽃 홀 (7층 궁정 구역)", xy: [620, 300], kind: palace, access: owner, hours: "층계 검문 06:00-20:00", rooms: [bk_hall_five_chairs, bk_hall_oath_dais, bk_hall_steward, bk_hall_third_drawer, bk_hall_grey_ledger, bk_hall_court, bk_hall_red_hall, bk_hall_perch_gallery, bk_hall_seal_room, bk_hall_seren_room, bk_hall_archive, bk_hall_chancellery, bk_hall_treasury, bk_hall_ceremony, bk_hall_slave_hall, bk_hall_lamp_store, bk_hall_first_nest], note: "칼다란 대공가의 행정 구역. 용황은 여기 없다 — 재의 둥지(용좌봉)에 누워 있다"}
+  - {id: bk_hall_five_chairs, name: 다섯 의자의 방, parent: bk_flame_hall, access: owner, note: "섭정 회의. 매 주 4일째 정오. 이졸데의 의자는 늘 비어 있다. 벽의 등잔 열두 개 — 기름을 채우는 노예는 회의 중에도 들어온다"}
+  - {id: bk_hall_oath_dais, name: 서약 단상 홀, parent: bk_flame_hall, access: locked, note: "불꽃 홀의 확인(비늘 서약)이 열리는 곳. 단상은 칼다란 집사만 연다"}
+  - {id: bk_hall_steward, name: 용좌 집사 집무실, parent: bk_flame_hall, access: owner}
+  - {id: bk_hall_third_drawer, name: "셋째 서랍 (원본 족보 금고)", parent: bk_flame_hall, access: secret, hidden: "칼다르 시조의 원본 족보 — 어머니가 인간 노예였다는 기록. 열쇠는 세베리안의 목에, 자물쇠 셋째 홈은 의전 등잔 받침과 같은 모양 (지식:셋째_서랍)", locked: "언제나"}
+  - {id: bk_hall_grey_ledger, name: 회색 장부실, parent: bk_flame_hall, access: staff, hours: "07:00-19:00", note: "국유 노예 약 4만의 번호. 서기 용인·크릭 스물. 이름을 지우는 펜은 아르덴만 든다"}
+  - {id: bk_hall_court, name: 불꽃 홀 법정, parent: bk_flame_hall, access: owner, note: "용인 가문 간 분쟁. 인간은 소송 당사자가 될 수 없다"}
+  - {id: bk_hall_red_hall, name: "붉은 홀 (궁 동익 — 아우락스)", parent: bk_flame_hall, access: owner, note: "아우락스의 접견실과 연회장. 저녁마다 노예 경기. 동쪽 창으로 붉은 첨탑의 불빛이 보인다"}
+  - {id: bk_hall_perch_gallery, name: "홰의 회랑 (불꽃 홀 아래층 — 비늘 원로회)", parent: bk_flame_hall, access: owner, note: "원로석 아홉의 홰. 높은홰 장부실이 회랑 끝에 있다 — 인두세 장부가 칼다란 장부와 매년 3,000명 어긋난다"}
+  - {id: bk_hall_seal_room, name: "인장실 (칙령 서기실)", parent: bk_flame_hall, access: owner, note: "카이도르가 용황의 인장을 찍는 방. 크릭 서기 셋. '흰 알 + 섭정' 초안이 인장을 기다린다"}
+  - {id: bk_hall_seren_room, name: 세렌 사절 접견실, parent: bk_flame_hall, access: owner}
+  - {id: bk_hall_archive, name: 궁 서고, parent: bk_flame_hall, access: owner, hours: "밤에는 잠긴다(세라크는 열쇠 없이 들어온다)", hidden: "대붕괴 기록 서가 넷째 칸 뒤 — 세라크가 숨긴 아스테리아 교본 한 장"}
+  - {id: bk_hall_chancellery, name: 재상청, parent: bk_flame_hall, access: owner, note: "세베린 타르굴의 집무실. 비늘 시장 운영 장부의 정본이 여기 있다"}
+  - {id: bk_hall_treasury, name: "재무청 (세렌 대출 창구)", parent: bk_flame_hall, access: owner, note: "오렐리아 베스페린. 세렌 두카트 약 2만의 차용증"}
+  - {id: bk_hall_ceremony, name: 의전관실, parent: bk_flame_hall, access: owner, note: "리비아 칼다란. 좌석표 — 곧 권력의 지도"}
+  - {id: bk_hall_slave_hall, name: 궁정 시종 노예 숙소, parent: bk_flame_hall, access: staff, locked: "19:30-05:00", note: "불꽃 홀의 인간 시종 약 90. 바닥에 짚, 등잔 없음"}
+  - {id: bk_hall_lamp_store, name: 등잔 기름 창고, parent: bk_flame_hall, access: staff, hidden: "기름 항아리 밑 재받이 판 — 재 글씨 연습판 (등잔 궁정 세포)", note: "다섯 의자의 방 뒤 벽과 붙어 있다. 벽 틈으로 회의가 들린다"}
+  - {id: bk_hall_first_nest, name: "첫 둥지 (불꽃 홀 지하)", parent: bk_flame_hall, access: locked, note: "아그라몬의 해골. 용황 즉위 때만 연다"}
+  - {id: bk_tribute_stair, name: "공물 계단 (용좌봉 산길 들머리)", xy: [220, 110], kind: checkpoint, access: staff, hours: "03:00-18:00", note: "인간은 공물 운반자 표찰이 있어야 오른다. 근위 넷 상주. 용좌봉 증기 독 — 위로 갈수록 체질 판정"}
+  - {id: bk_perch_towers, name: "홰탑 (왕관 와이번 둥지 가문들)", xy: [330, 560], kind: perch, access: owner, rooms: [bk_perch_highperch, bk_perch_longshadow, bk_perch_ashwing, bk_perch_whitethroat], note: "인간은 홰 아래 땅에서만 말한다"}
+  - {id: bk_perch_highperch, name: 높은홰 탑, parent: bk_perch_towers, access: owner}
+  - {id: bk_perch_longshadow, name: 긴그림자 홰, parent: bk_perch_towers, access: owner, note: "목줄단 수석 목줄장이 한 달에 두 번 이 홰 아래에서 보고한다"}
+  - {id: bk_perch_ashwing, name: 재날개 홰, parent: bk_perch_towers, access: owner}
+  - {id: bk_perch_whitethroat, name: 흰목 홰, parent: bk_perch_towers, access: owner}
+  # ── 6층: 비늘 언덕 (순혈·대가문 저택) ──
+  - {id: bk_scale_hill, name: "비늘 언덕 (6층 저택가)", xy: [1080, 460], kind: district, access: owner, hours: "층계 검문 06:00-20:00", rooms: [bk_sh_kaldaran, bk_sh_targul, bk_sh_flamegate, bk_sh_flamegate_laundry, bk_sh_hastran, bk_sh_vesperin, bk_sh_servant_passage]}
+  - {id: bk_sh_kaldaran, name: 칼다란 관저, parent: bk_scale_hill, access: owner}
+  - {id: bk_sh_targul, name: "타르굴 관사 (재상 관사)", parent: bk_scale_hill, access: owner}
+  - {id: bk_sh_flamegate, name: 화염문 저택, parent: bk_scale_hill, access: owner, note: "발레리우스 화염문. 노예 210"}
+  - {id: bk_sh_flamegate_laundry, name: 화염문 저택 세탁장, parent: bk_scale_hill, access: staff, note: "그레타의 세탁장. 하인 통로와 이어진다"}
+  - {id: bk_sh_hastran, name: 하스트란 저택, parent: bk_scale_hill, access: owner, note: "후작이 낙엽월~굶주림월 궁정 철에 머무는 집. 밤에는 불을 모두 끈다"}
+  - {id: bk_sh_vesperin, name: 베스페린 저택, parent: bk_scale_hill, access: owner}
+  - {id: bk_sh_servant_passage, name: 비늘 언덕 하인 통로, parent: bk_scale_hill, access: staff, hidden: "저택 아홉의 뒷마당을 잇는 좁은 통로 — 귀족 하인 동선 (지식:비늘언덕_하인통로)"}
+  # ── 5층: 근위 구역 / 잉크 거리 / 하급 궁정인 셋방 ──
+  - {id: bk_guard_ward, name: "근위 구역 (5층 병영)", xy: [760, 880], kind: barracks, access: staff, rooms: [bk_gw_barracks, bk_gw_captain, bk_gw_cells, bk_gw_knights_post]}
+  - {id: bk_gw_barracks, name: 비늘 근위 막사, parent: bk_guard_ward, access: staff, note: "근위 1,200 중 시내 상주 400"}
+  - {id: bk_gw_captain, name: 근위대장 집무실, parent: bk_guard_ward, access: owner}
+  - {id: bk_gw_cells, name: 근위 감옥, parent: bk_guard_ward, access: locked, note: "용언 발음·글자 소지 혐의자. 혀를 자르는 방이 맨 안쪽에 있다"}
+  - {id: bk_gw_knights_post, name: 재송곳 기사단 바알카르 분소, parent: bk_guard_ward, access: staff, note: "징후자 색출 명단. 잡혀 온 아이들이 하룻밤 머무는 우리"}
+  - {id: bk_ink_street, name: "잉크 거리 (5층 학자 구역)", xy: [1560, 660], kind: district, access: owner, rooms: [bk_ink_bold, bk_ink_scriptorium, bk_ink_fire_school, bk_ink_signing]}
+  - {id: bk_ink_bold, name: 볼드 저택, parent: bk_ink_street, access: owner}
+  - {id: bk_ink_scriptorium, name: "볼드 서기실 (서기 노예 열둘)", parent: bk_ink_street, access: staff, hours: "06:00-20:00", hidden: "필사 책상 셋째 서랍 밑판 — 이삭이 외워 쓴 볼드 사본 한 구절", note: "글을 아는 인간이 합법처럼 앉아 있는 유일한 방"}
+  - {id: bk_ink_fire_school, name: 불의 학당, parent: bk_ink_street, access: owner}
+  - {id: bk_ink_signing, name: "서명실 (용언 서명 공증)", parent: bk_ink_street, access: owner}
+  - {id: bk_lower_court, name: "하급 궁정인 셋방 거리", xy: [1240, 960], kind: lodging, access: public, rooms: [bk_lc_raven_room], note: "가문은 있으나 관저가 없는 비늘혈 궁정인들의 셋방"}
+  - {id: bk_lc_raven_room, name: 레이번 셋방, parent: bk_lower_court, access: owner, note: "바렌 레이번. 방 둘, 크릭 하인 하나. 벽에 회색여울 여울강 지도"}
+  - {id: bk_scale_tavern, name: "비늘혈 선술집 '반쪽 비늘'", xy: [1420, 1180], kind: tavern, access: public, hours: "16:00-02:00", note: "인간 출입 금지(시중 노예 제외). 하급 관리·경비·기사들이 돈을 잃는 곳"}
+  # ── 4층: 재 마당 / 층계 검문 ──
+  - {id: bk_pyre_yard, name: "재 마당 (화형장)", xy: [1120, 1180], kind: square, access: public, note: "징후자 화형과 불의 처형. 바닥이 검게 유리처럼 녹았다. 드라반이 내려앉는 날은 4층 전체가 문을 닫는다"}
+  - {id: bk_stair_gate, name: "셋째 층계 검문소 (3층↔4층)", xy: [1330, 1330], kind: checkpoint, access: public, locked: "19:30-05:00", note: "사슬 표찰과 통행증 검사. 위로는 소유주의 일이 있어야 오른다"}
+  # ── 3층: 시장 구역 ──
+  - {id: baalkar__scale_market, name: "비늘 시장 (상시 노예 시장)", xy: [1920, 1450], kind: market, access: public, hours: "06:00-18:00", rooms: [bk_sm_block, bk_sm_pens, bk_sm_ledger, bk_sm_collar_office, bk_sm_laundry, bk_sm_trough], note: "타르굴 가 운영. 상시 노예 2,000. 노예는 가격 목판을 목에 걸고 선다"}
+  - {id: bk_sm_block, name: 비늘 시장 경매대, parent: baalkar__scale_market, access: public}
+  - {id: bk_sm_pens, name: 진열 우리, parent: baalkar__scale_market, access: locked, note: "밤에 매물이 갇히는 우리 마흔. 열쇠 고리는 빅스의 허리에"}
+  - {id: bk_sm_ledger, name: "거래 장부실 (용언 장부)", parent: baalkar__scale_market, access: staff, hidden: "312 낙엽월 장부 — 회색여울 농노 40명 '선매 기록'. 헨릭의 인두세 보고(352명)와 숫자가 맞지 않는다", hours: "06:00-19:00"}
+  - {id: bk_sm_collar_office, name: "목줄장 사무실 (경매대 뒤)", parent: baalkar__scale_market, access: staff, note: "롤프의 방. 목줄단 바알카르 지부의 명단이 오가는 곳"}
+  - {id: bk_sm_laundry, name: 시장 세탁장, parent: baalkar__scale_market, access: staff, note: "매물의 옷을 빨아 '깨끗하게' 보이게 한다. 두더지 안셀마의 자리 — 벽 하나 너머가 장부실이다"}
+  - {id: bk_sm_trough, name: 시장 물통, parent: baalkar__scale_market, access: public, note: "매물에게 물을 먹이는 긴 구유. 노예말 소문이 가장 빨리 도는 곳"}
+  - {id: bk_chain_square, name: "쇠사슬 광장 (사르코스 대시장)", xy: [2320, 1660], kind: market, access: public, hours: "대시장 철(파종월)에만 장이 선다. 평소엔 등급 낙인장", rooms: [bk_cs_block, bk_cs_sarkos, bk_cs_sorting, bk_cs_brand]}
+  - {id: bk_cs_block, name: 대시장 경매대, parent: bk_chain_square, access: public, note: "파종월 대시장. 용인 가문이 경매 패를 들고 겨룬다"}
+  - {id: bk_cs_sarkos, name: 사르코스 상관, parent: bk_chain_square, access: owner}
+  - {id: bk_cs_sorting, name: "분류실 (징후자 비밀 분류)", parent: bk_chain_square, access: secret, hidden: "징후 의심 노예를 따로 재우는 방 — 잿빛 탑·멜리산드행 명단. AS 290 이후 212건"}
+  - {id: bk_cs_brand, name: 등급 낙인장, parent: bk_chain_square, access: staff, note: "왼쪽 손등에 1~7등급"}
+  - {id: bk_seren_house, name: "세렌 상관 '물방' (몬달리·졸라크 대금 창구)", xy: [2060, 1230], kind: office, access: public, hours: "08:00-18:00", note: "나가 대금업자. 물 채운 바닥방. 인간 계약민 서기 둘"}
+  - {id: baalkar__fang_hall, name: "송곳니 회관 (바르그 노예사냥 조합 본부)", xy: [930, 1720], kind: guildhall, access: staff, rooms: [bk_fang_board, bk_fang_jars, bk_fang_kennels, bk_fang_den], note: "도시 서쪽 '사냥꾼 막사' 안. 바르그 60 상주"}
+  - {id: bk_fang_board, name: 현상 수배판 홀, parent: baalkar__fang_hall, access: public, note: "벽 하나를 덮은 현상 수배판. 잔향 포획 현상금 500비늘 — 맨 위 칸은 늘 비어 있다"}
+  - {id: bk_fang_jars, name: 냄새 단지 선반, parent: baalkar__fang_hall, access: locked, hidden: "탈주자 옷 조각 단지 — 셋째 선반에 시그리드 무리의 옷 조각 3개. 태우면 그 냄새는 추적에서 사라진다"}
+  - {id: bk_fang_kennels, name: 사냥개 우리, parent: baalkar__fang_hall, access: staff}
+  - {id: bk_fang_den, name: 루가의 굴, parent: baalkar__fang_hall, access: owner}
+  - {id: bk_bent_back_hall, name: "굽은 등 조합 회관 (국유 노예 감독관)", xy: [1620, 1860], kind: guildhall, access: staff, note: "스킥의 회관. 태형 집행표와 감독관 배정표. 채찍손 길드의 바알카르 지부와 같은 건물을 쓴다"}
+  - {id: bk_state_pens, name: "국유 노예 우리 '쇠 울'", xy: [2480, 1960], kind: pens, access: locked, note: "회색 장부 번호를 받기 전의 노예, 배당 대기 노예. 오른쪽 어깨 낙인은 여기서"}
+  - {id: bk_north_gate, name: "북문 (용의 대로 검문)", xy: [2250, 160], kind: checkpoint, access: public, hours: "05:00-19:30", note: "회색여울·용주 역참에서 오는 호송이 들어오는 문. 들어온 호송은 도시를 반 바퀴 돌아 1층으로 내려간다"}
+  - {id: bk_south_gate, name: "남문 (하스트란 수비)", xy: [1900, 2360], kind: checkpoint, access: public, hours: "05:00-19:30", note: "은빛 강 다리와 하스트 요새로 가는 길. 마리엘 하스트란의 수비대"}
+  # ── 2층: 인간 막사 구역 ──
+  - {id: bk_human_quarter, name: "인간 막사 구역 (2층)", xy: [1980, 2020], kind: barracks, access: serf, locked: "19:30-05:00", rooms: [bk_hq_barracks, bk_hq_canteen, bk_hq_chain_post, bk_hq_well]}
+  - {id: bk_hq_barracks, name: "국유 노예 막사 열두 동", parent: bk_human_quarter, access: serf, locked: "19:30-05:00"}
+  - {id: bk_hq_canteen, name: "배급소 '긴 솥'", parent: bk_human_quarter, access: public, hours: "05:00-13:00, 17:00-19:00"}
+  - {id: bk_hq_chain_post, name: 사슬 기둥 광장, parent: bk_human_quarter, access: public, note: "통금 위반자가 밤새 묶이는 기둥 여덟. 태형은 굽은 등이 집행하고 용인이 참관한다"}
+  - {id: bk_hq_well, name: 열넷째 우물, parent: bk_human_quarter, access: public}
+  - {id: bk_iron_door, name: "쇠문 막사 (수석 목줄장 처소)", xy: [1760, 1960], kind: office, access: staff, hours: "목줄장 보고 19:00-21:00", note: "에베르트의 처소이자 목줄단 바알카르 지부. 인간이 사는 곳 중 유일하게 쇠문이 달렸다"}
+  - {id: bk_chapel, name: 사슬등불 예배당 (바알카르), xy: [2180, 1900], kind: chapel, access: public, hours: "안식일 07:00-09:00 예배", note: "순종의 빛. 정화청 출신 사제가 머릿수를 센다"}
+  # ── 1층: 은빛 강가 ──
+  - {id: baalkar__chain_dock, name: "사슬 부두 (은빛 강 강항)", xy: [1420, 2250], kind: dock, access: public, hours: "04:30-19:30", rooms: [bk_dock_quay, bk_dock_hold, bk_dock_office, bk_dock_tavern, bk_dock_barracks, bk_dock_collar_post], note: "하역 노예 1,800. 노예선 '바닥 짐칸'이 매일 새벽 출항"}
+  - {id: bk_dock_quay, name: "하역장·크레인", parent: baalkar__chain_dock, access: public, note: "하역 노예 수신호 — 출항 시각·짐칸 수·물 유무 (지식:노예말_수신호)"}
+  - {id: bk_dock_hold, name: 노예선 바닥 짐칸, parent: baalkar__chain_dock, access: locked, note: "오르셀 함대와 세렌 수송대의 배. 짐칸 질식이 흔하다"}
+  - {id: bk_dock_office, name: 부두장 사무소, parent: baalkar__chain_dock, access: owner, note: "카델 하스크. 출항 명부와 하역 할당"}
+  - {id: bk_dock_tavern, name: "부두 선술집 '녹슨 닻'", parent: baalkar__chain_dock, access: public, hours: "17:00-01:00", note: "용인 집사·선원·바르그. 인간은 시중과 롤프 같은 목줄장만"}
+  - {id: bk_dock_barracks, name: 하역 노예 막사, parent: baalkar__chain_dock, access: serf, locked: "19:30-04:30"}
+  - {id: bk_dock_collar_post, name: 하역 목줄 초소, parent: baalkar__chain_dock, access: staff, note: "갈고리 오스발트의 초소. 하역 할당 막대와 밀고 쪽지"}
+  - {id: bk_ashcatch, name: "재받이 (1층 인간 빈민가)", xy: [2660, 2250], kind: slum, access: public, rooms: [bk_ash_alley, bk_ash_huts, bk_ash_hearth], note: "가장 낮은 강변. 겨울 동사자 하루 평균 12명. 회색 기침"}
+  - {id: bk_ash_alley, name: 재 골목, parent: bk_ashcatch, access: public, note: "치크의 지붕들. 쓰레기 더미"}
+  - {id: bk_ash_huts, name: 재받이 움막, parent: bk_ashcatch, access: public}
+  - {id: bk_ash_hearth, name: "베노의 아궁이 움막", parent: bk_ashcatch, access: public, hidden: "아궁이 재 — 손가락으로 쓰고 바로 지우는 재 글씨 (등잔 하수도 세포의 교실)"}
+  - {id: bk_sewer, name: 바알카르 하수도, xy: [2520, 2340], kind: sewer, access: secret, rooms: [bk_sewer_third, bk_sewer_crown, bk_sewer_forge], hidden: "재받이 하수구 입구 셋. 쥐 그림을 그려 두면 사흘 안에 꼬리가 찾아온다"}
+  - {id: bk_sewer_third, name: 재받이 제3 하수 분기점, parent: bk_sewer, access: secret, hidden: "'등잔' 세포의 회합 장소 (지식:등잔_암호). 벽의 재 글씨 연습판 — 소문의 '아스테리아 석판'은 이것이다"}
+  - {id: bk_sewer_crown, name: "왕관 방 (쥐들의 왕관)", parent: bk_sewer, access: secret}
+  - {id: bk_sewer_forge, name: 하랄의 위조 방, parent: bk_sewer, access: secret, note: "쇠 패 통행증 틀과 용언 인장 본. 통행증 1/3은 잿빛 실로 간다"}
+# 도시 밖 — 지역 지도 노드 또는 하위 장소. hours = 도시에서 걷는 시간 (같은 노드끼리는 차이 + 0.5).
+# 갈대 나루·숯막·용주 역참·회색여울은 지도 노드 그대로 쓴다 (다른 정착지와 겹치지 않게 여기 적지 않는다).
+outer:
+  - {id: dragon_throne_peak, name: "용좌봉 (공물 계단 꼭대기)", hours: 5, node: dragon_throne_peak}
+  - {id: dragon_throne_peak__ash_nest, name: "재의 둥지 최상층 화산 동굴", hours: 5.5, node: dragon_throne_peak}
+  - {id: dragon_throne_peak__outer_stair, name: 재의 둥지 바깥 계단, hours: 5.3, node: dragon_throne_peak}
+  - {id: dragon_throne_peak__palace_slaves, name: "잿날개 둥지 궁 노예 숙소", hours: 5, node: dragon_throne_peak}
+  - {id: dragon_throne_peak__sound_room, name: "잿날개 둥지 지하 배관층 '소리 방'", hours: 5, node: dragon_throne_peak}
+  - {id: dragon_throne_peak__ash_pits, name: "궁 남쪽 재구덩이", hours: 4.6, node: dragon_throne_peak}
+  - {id: dragon_throne_peak__scale_heap, name: "공물 계단 위 비늘 더미 창고", hours: 4.8, node: dragon_throne_peak}
+  - {id: baalkar__frost_cradle, name: "서리 요람 (용좌봉 서쪽 사면 얼음 동굴)", hours: 6, node: dragon_throne_peak}
+  - {id: baalkar__frost_tower, name: "서리 탑 알 보관실", hours: 6.2, node: dragon_throne_peak}
+  - {id: baalkar__frost_tower_maids, name: 서리 탑 시녀 숙소, hours: 6.2, node: dragon_throne_peak}
+  - {id: crown_farms, name: 이삭 우리 국유농장, hours: 15, node: crown_farms}
+  - {id: crown_farms__granary_seven, name: "이삭 우리 곡창 7동", hours: 15.3, node: crown_farms}
+  - {id: red_spire, name: 붉은 첨탑, hours: 14, node: red_spire}

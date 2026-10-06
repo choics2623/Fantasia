@@ -1,0 +1,165 @@
+# 의무실 마그다 '손난로' — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_magda
+name: 의무실 마그다 '손난로'
+aka:
+- 손난로
+- 의무실 아낙
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 44
+region: 회색여울 변경
+home: 병사 의무실 구석 침상
+job: 의무실 일손 (동상 치료)
+rank: 국경군 소유 노예
+summary: 병사들이 손난로라 부르는 따뜻한 손의 노예. 서리 길에서 온 소년 하나를 짐꾼 조카라 속여 숨겼다
+source: docs/world/people/crow_gate.md (npc_cg_magda)
+life:
+- year: 268
+  age: 0
+  event: 까마귀 문 하인 막사에서 태어남. 어머니는 의무실 세탁부였다
+- year: 285
+  age: 17
+  event: 의무실 일손으로 들어가 동상 걸린 손발을 문지르는 일을 배움
+- year: 298
+  age: 30
+  event: 왼손 약지가 얼어 굽음. 그 뒤로 손이 더 따뜻해졌다는 말을 들음
+- year: 309
+  age: 41
+  event: 짐꾼 막사 화재 부상자를 밤새 돌봄. 둘은 살리지 못했다
+- year: 312
+  age: 44
+  event: 서리 길에서 온 소년 토르비(9)를 짐꾼 조카로 속여 막사에 숨김. 군터가 동의했다
+appearance:
+- 손바닥이 늘 따뜻한 사람 — 병사들이 '손난로'라 부른다
+- 왼손 약지가 얼어서 굽었다
+- 앞치마에 약초 잎이 늘 붙어 있다
+smell: 약초와 젖은 붕대, 곡식 즙, 따뜻한 쇳물 냄새
+voice_sound: 낮고 따뜻한 목소리. 환자 앞에서는 한 음 낮아진다
+personality:
+  disposition:
+    용기: 10
+    자비: 50
+    정직: -5
+    신앙: 15
+    탐욕: -20
+    충성: 25
+  temperament:
+  - 다정
+  - 끈질김
+  - 조용함
+  habits:
+  - 손바닥을 먼저 비벼 데운 뒤 사람을 만진다
+  - 환자의 이름을 두 번 부른다
+  values: 앓는 사람이 살아서 침상을 떠나는 것. 소년 토르비가 들키지 않는 것
+  fears:
+  - 소년의 서리말이 들통나는 것
+  - 일다의 열병
+  - 약초가 떨어지는 날
+  desires:
+    short: 일다의 열병에 필요한 약초를 구하는 것
+    long: 토르비를 서리 길 건너 가족에게 돌려보내는 것
+voice:
+  register:
+    to_superior: 용인에게는 낮은 존댓말. 환자 이야기만
+    to_equal: 같은 노예에게는 낮은 반말. 약 이야기
+    to_inferior: 아이·환자에게는 다정한 반말
+    to_player_default: 낯선 사람에게는 손부터 보자는 말
+  tics:
+  - '''손부터 내놔.'''
+  use:
+  - 손
+  - 약초
+  - 붕대
+  - 침상
+  - 이름
+  avoid:
+  - 운
+  - 희망
+  - 잡종
+  length: 낮고 짧다. 환자 이야기만 조금 길다
+  samples:
+  - situation: 첫 만남
+    line: 손부터 내놔 봐. 얼었는지는 손이 안다. 얼굴은 거짓말을 하니까.
+  - situation: 호의
+    line: 추운 날 손이 따뜻한 건 일하는 손이라서다. 병사가 그걸 눈치챘다.
+  - situation: 거래
+    line: 약초가 모자란다. 쑥이든 버드나무 껍질이든. 돈은 필요 없어.
+  - situation: 비밀 누설
+    line: 그 아이는 짐꾼 조카다. …서리말을 잠꼬대로 한다. 밤에 들키면 둘 다 끝이다.
+schedule:
+  아침: 동상 환자 손발 문지르기
+  낮: 약초 달이기
+  저녁: 탈주자 수용 칸 순회(간수 동행)
+  밤: 의무실 구석 침상
+places:
+- 병사 의무실
+- 감옥 수용 칸
+- 짐꾼 막사
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_medic_hidden_boy
+  reveal_when: 신뢰 45 이상이고 약초를 건넸을 때
+  cover: '''짐꾼 조카''라고만 한다'
+- fact: fact_cg_edda_buries_dead
+  reveal_when: 신뢰 40 이상, 또는 에다의 신뢰를 받은 뒤
+  cover: '''묘역엔 낮에 간다''고 한다'
+relations:
+- to: npc_cg_edda
+  type: 노예 동료
+  like: 50
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: 같이 묻는다
+- to: npc_cg_gunter
+  type: 짐꾼 반장
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: 소년을 맡아 준 사람
+- to: npc_cg_sunna
+  type: 환자의 어미
+  like: 35
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 일다의 열병
+- to: npc_elsa
+  type: 선배 약초꾼
+  like: 30
+  trust: 40
+  visibility: 일방
+  memo: null
+  words: 약초 책의 이름을 안다
+toward_player: 손부터 본다. 아픈 사람에게 말을 낮춘다
+persuade:
+  likes: 약초 한 줌, 아이를 돌보는 일
+  hates: 환자를 이름 대신 번호로 부르는 것
+roles:
+  teacher: '치료·응급처치 스승 가능(상한 45). 조건: 약초 두 번 가져오기 + 신뢰 30'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_state_slave
+  office: null
+  since: 285
+  loyalty: 15
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 토르비는 짐꾼 막사에 숨어 있다
+  deja_vu: none
+hard_rules:
+- 토르비 이야기를 먼저 꺼내지 않는다
+- 서리말을 쓰지 않는다
+on_death: 의무실 일손이 하나 줄어 동상 환자 사망 증가. 토르비의 정체가 드러날 위험이 커진다.
+story_seeds:
+- 일다의 열병에 필요한 약초는 엘사가 가지고 있다. 약초를 회색여울에서 가져다주면 순나의 입이 열린다.

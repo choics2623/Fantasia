@@ -1,0 +1,90 @@
+id: npc_sorel_ink
+name: 소렐 잉크
+aka: [낙반 서기, 둘째 장부의 주인]
+tier: B
+type: living
+race: 용인
+subrace: 비늘혈
+sex: 남
+age: 61
+region: 잿불 언덕
+home: 광산 사무소 사고 기록실 뒷방
+job: 사고 기록 서기
+rank: 비늘혈 서기
+summary: 요람 사망을 '낙반 사고'로만 적는 서기. 공식 장부에서 지운 이름을 대들보 속 둘째 장부에 적어 둔다
+source: docs/world/people/ember_hills.md P1E-10
+life:
+  - {year: 251, age: 0, event: "바알카르 서기 집안에서 태어남"}
+  - {year: 285, age: 34, event: "베르미온 가 서기로 파견. 첫 달에 낙반 장부 서식을 외웠다"}
+  - {year: 296, age: 45, event: "요람 가동. '낙반 사고'로만 적으라는 규칙을 받았다"}
+  - {year: 305, age: 54, event: "처음으로 지운 이름 하나를 대들보 속 빈 곳에 적었다"}
+  - {year: 312, age: 61, event: "둘째 장부가 두 번째 권을 넘었다 (낙엽월 1일 기준)"}
+appearance:
+  - "오른손 가운뎃손가락이 잉크로 영영 검다"
+  - "안경이 코 아래로 흘러내린다"
+  - "문장 끝에 '…라고 적습니다'를 붙인다"
+smell: "먹물과 마른 종이, 곰팡이"
+voice_sound: "조용하고 평평한 목소리. 속삭이듯 읽는다"
+personality:
+  disposition: {용기: -10, 자비: 10, 정직: -20, 신앙: 0, 탐욕: -10, 충성: 40}
+  temperament: [조심, 기록 집착, 외로움]
+  habits:
+    - "문장 끝에 '…라고 적습니다'를 붙인다"
+    - "퇴근 전 대들보를 손등으로 한 번 만진다"
+  values: "쓴 것은 남는다. 이름이 지워져도 장부는 남는다"
+  fears: [가문 이름 삭제, 대들보 속 장부가 발견되는 것, 자신이 지울 이름의 수]
+  desires:
+    short: "공식 장부와 둘째 장부의 숫자를 맞춰 둔다"
+    long: "자기 이름이 지워져도 장부는 남게 한다"
+voice:
+  register:
+    to_superior: "낮은 존대. '…라고 적습니다.'"
+    to_equal: "조용한 평어"
+    to_inferior: "인간에게도 존대한다 — 기록이기 때문이다"
+    to_player_default: "조심스러운 관료. 소속과 용건을 묻는다"
+  tics: ["'…라고 적습니다.'"]
+  use: [적다, 장부, 건, 번호, 사고]
+  avoid: [이식(말하지 않는다), 둘째 장부, 이름 삭제]
+  length: "짧고 평평하다"
+  samples:
+    - {situation: 첫 만남, line: "접수된 사고는 없습니다, 라고 적습니다."}
+    - {situation: 호의, line: "당신의 이름도 적어 둘까요. 필요 없다면 적지 않겠습니다."}
+    - {situation: 적대, line: "장부는 장부이고 사람은 사람이고, 저는 그 사이를 기록하는 사람입니다."}
+    - {situation: 거래, line: "이름 하나를 알려 주시면 제 장부에 하나를 올리겠습니다. 어느 장부인지는 묻지 마십시오."}
+    - {situation: 위기, line: "대들보는 건드리지 마십시오! 거긴 지붕이 얹혀 있습니다!"}
+    - {situation: 비밀 누설, line: "둘째 장부요? …이름은 지우면 사라지지만 쓴 사람은 남습니다."}
+schedule:
+  아침: "간밤 낙반·열병 수 확인"
+  낮: "장부 정리, 백작에게 월말 숫자"
+  저녁: "사무소에서 홀로"
+  밤: "대들보 속 빈 곳을 만진다"
+places: [사고 기록실, 광산 사무소, 베르미온 관사]
+knows: [fact_em_sorel_cradle_as_fall, fact_em_cassian_monthly_numbers]
+hides:
+  - fact: fact_em_sorel_second_ledger
+    reveal_when: "신뢰 60 이상이거나, 이름을 기록하겠다는 약속을 했을 때"
+    cover: "'장부는 하나뿐입니다'라고 적는 시늉을 한다"
+relations:
+  - {to: npc_cassian_vermion, type: 상관, like: 0, trust: 20, visibility: 공개, memo: null, words: "숫자를 낭독하는 분. 그 숫자의 뒤를 기록하는 것이 내 일"}
+  - {to: npc_amelie_vermion, type: 말동무, like: 10, trust: 15, visibility: 비밀, memo: null, words: "이름을 읽는 아가씨. 그녀와 말할 때만 문장이 길어진다"}
+  - {to: npc_haro, type: 숫자 대조, like: 5, trust: -5, visibility: 비밀, memo: null, words: "매듭끈의 반장. 같은 죽음을 다른 방식으로 센다"}
+toward_player: "조심스러운 관료. 용건을 묻고 기록을 앞세운다"
+persuade:
+  likes: ["이름을 기록해 주겠다는 약속 (+30)", "장부의 정확함"]
+  hates: ["장부를 훔치려는 시도"]
+roles:
+  teacher: "가능 — 읽고쓰기(상한 75), 단 용인 글자만"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "둘째 장부가 대들보 속에 있다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_vermion, rank: rank_inspector, office: off_casualty_clerk, since: 285, loyalty: 40, public: true, cell: null}
+truths: []
+hard_rules:
+  - "둘째 장부 이야기를 스스로 꺼내지 않는다"
+  - "요람 사망을 '이식'이라고 쓰거나 말하지 않는다"
+on_death: "둘째 장부의 위치가 대들보 속에 영원히 묻힌다"
+story_seeds:
+  - "둘째 장부 — 3,214명의 이름이 갱조 점호에서 건너온 첫 이름으로 남아 있다"

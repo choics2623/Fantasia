@@ -1,0 +1,255 @@
+# 잿불 언덕 1차 확장 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3). 기존 emberhills.yaml(fact_eh_*)은 고치지 않는다.
+# id 규칙: fact_em_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 광산 관리: 숫자와 거짓 ──
+- id: fact_em_hadrian_quota_lie
+  text: "하드리안 숯턱은 AS 311에 동쪽 갱도 4곳이 재에 묻힌 뒤 채굴량이 1할 2푼 줄었다는 것을 바알카르에 숨기고, 창고 비축 광석을 섞어 장부를 맞춘다. 검열이 오면 그는 목이 날아간다"
+  truth: true
+  danger: 4
+  names: [하드리안, 바알카르]
+- id: fact_em_hadrian_hastran_cadet
+  text: "하드리안 숯턱의 집안은 하스트란 가문의 방계다. 그의 증조부가 AS 100 붉은 길의 처형을 감독했고, 다라의 오른손을 잘라 하스트란 요새로 보낸 것도 그 집안의 일이다"
+  truth: true
+  danger: 3
+  names: [하드리안, 하스트란, 다라]
+- id: fact_em_hadrian_afraid_cradle
+  text: "하드리안은 은비늘 요람에 한 번도 내려가지 않았다. 그는 요람의 명부가 자기 장부와 맞지 않는다는 것을 알면서 묻지 않는다. 묻지 않는 것이 그의 방어다"
+  truth: true
+  danger: 2
+  names: [하드리안, 은비늘 요람]
+- id: fact_em_cassian_monthly_numbers
+  text: "백작 카시안 베르미온이 월말에 낭독하는 '낙반 3, 열병 7'은 실제 사망의 한 줌이다. 갱조 반장들의 매듭끈을 모아 읽으면 한 달에 낙반만 60 안팎이다"
+  truth: true
+  danger: 3
+  names: [카시안, 베르미온]
+- id: fact_em_corvin_forgery
+  text: "AS 100 베르미온 가주 코르빈은 '용감한 전사'로 죽지 않았다. 광부들에게 산 채로 묻혔다. 가문은 그 기록을 위조했고 해마다 그를 기리는 척한다"
+  truth: true
+  danger: 3
+  names: [코르빈, 베르미온]
+- id: fact_em_sorel_second_ledger
+  text: "낙반 기록 서기 소렐 잉크는 공식 장부와 별개로, 갱조 점호 명단의 첫 이름을 베낀 둘째 장부를 대들보 속 빈 곳에 숨겨 두었다. 공식 장부에서 지운 이름이 그 장부에 남아 있다"
+  truth: true
+  danger: 4
+  names: [소렐, 낙반]
+- id: fact_em_sorel_cradle_as_fall
+  text: "요람에서 죽은 피험자는 장부에 반드시 '낙반 사고'로만 적힌다. 서기가 '이식'이라고 쓰면 그의 가문 이름이 지워진다"
+  truth: true
+  danger: 3
+  names: [소렐, 낙반, 요람]
+# ── 독가스 장치 ──
+- id: fact_em_druss_gas_devices
+  text: "드루스 베르미온은 다라의 반란이 되풀이되리라 믿고 갱도마다 독가스 장치를 숨겼다. 열쇠 하나로 한 번에 열 수 있고, 광부 전원이 질식한다. 열쇠는 그가 목에 건다"
+  truth: true
+  danger: 5
+  names: [드루스, 독가스 장치]
+- id: fact_em_druss_key_neck
+  text: "독가스 장치의 총열쇠는 구리 열쇠 하나이고 드루스가 잘 때도 벗지 않는다. 사본은 없다. 드루스가 죽으면 열쇠는 그의 아들이 아니라 카셀에게 간다고 유언장에 적혀 있다"
+  truth: true
+  danger: 4
+  names: [드루스, 카셀]
+- id: fact_em_cassel_dummies
+  text: "카셀 연기쇠가 만든 독가스 장치는 41기가 아니라 38기다. 구리값을 빼돌리느라 세 곳은 빈 통만 묻었다. 그 세 곳은 서쪽 5·6번 갱과 하층 9번 수평갱 곁이다"
+  truth: true
+  danger: 4
+  names: [카셀, 독가스 장치]
+- id: fact_em_cassel_sleepless
+  text: "카셀은 AS 308 열네 명의 지원 노예로 장치를 시험한 뒤 잠을 이루지 못한다. 그는 시험 때 센 숫자(열한 번째 숨)를 지금도 입속으로 센다"
+  truth: true
+  danger: 2
+  names: [카셀]
+- id: fact_em_yan_knows_vents
+  text: "광부 코 얀은 카셀에게 돈을 받고 환기 갱의 가스 냄새를 알려 주는 '카나리아'다. 그래서 장치가 묻힌 갱도 여섯 곳의 위치를 냄새로 안다"
+  truth: true
+  danger: 4
+  names: [얀, 카셀]
+- id: fact_em_vent_leak_summer
+  text: "환기탑 '숨 탑'의 밸브가 낡아 여름이면 갱 안 가스가 두 배로 샌다. 작년 건초월 폭발로 붉은 교대 38명이 죽었고 장부에는 '낙반'으로 적혔다"
+  truth: true
+  danger: 3
+  names: [숨 탑, 가스]
+# ── 요람 ──
+- id: fact_em_tiberion_reports_tower
+  text: "티베리온 소른은 멜리산드에게 올리는 보고서와 같은 내용을 한 부 더 써서 잿빛 탑으로 보낸다. 전달은 밀사 이졸의 길이 아니라 탑 서기 노예 편이다"
+  truth: true
+  danger: 4
+  names: [티베리온, 잿빛 탑]
+- id: fact_em_tiberion_delays_fourteen
+  text: "티베리온은 피험자 열넷의 이식을 세 번 미뤘다. 자비가 아니라 그녀의 내성 곡선이 이상해서다. 그는 그것이 '징후'일지 모른다고 의심하며 아직 멜리산드에게 말하지 않았다"
+  truth: true
+  danger: 4
+  names: [티베리온, 열넷, 멜리산드]
+- id: fact_em_tiberion_no_vessel_theory
+  text: "티베리온은 '그릇'이 요람 대기 감방 안에서는 나오지 않으리라 결론지었다. 그릇은 징후를 숨기며 바깥에서 자라는 사람이라는 것이다. 그는 이 결론을 멜리산드에게 말하지 못한다"
+  truth: true
+  danger: 4
+  names: [티베리온, 그릇]
+- id: fact_em_aurelia_selection_rule
+  text: "오렐리아 베르미온은 요람 피험자를 갱조 반장이 지키는 사람이 아니라 갱조 없는 굴 태생 고아와 병든 자에서 먼저 뽑는다. 연좌 소동을 막기 위해서다. 야나는 목줄장 크롬의 밀고 때문에 이 규칙의 예외가 되었다"
+  truth: true
+  danger: 3
+  names: [오렐리아, 야나, 크롬]
+- id: fact_em_aurelia_empty_cells
+  text: "오렐리아는 대기 감방이 빈 날을 가장 두려워한다. 멜리산드가 돌아와 빈 감방을 보면 '가문이 쓸모없다'고 여길 것이기 때문이다. 그래서 한 명이 죽으면 이틀 안에 두 명을 채운다"
+  truth: true
+  danger: 3
+  names: [오렐리아, 멜리산드]
+- id: fact_em_amelie_list_copy
+  text: "아멜리 베르미온은 실바라와 함께 요람 기록실에서 피험자 명단 사본을 본 적이 있고, 외우지는 못했으나 마지막 쪽의 이름 열일곱을 기억한다"
+  truth: true
+  danger: 3
+  names: [아멜리, 실바라]
+- id: fact_em_fourteen_escape_plan
+  text: "피험자 열넷(한나)은 소각로 비우는 날(9일째 새벽)에 연통을 타고 나갈 계획을 세웠다. 이브가 비운 연통의 철 사다리 간격을 알려 주었고, 마지막 칸 쇠창살 하나가 녹슬어 있다"
+  truth: true
+  danger: 4
+  names: [열넷, 한나, 이브]
+- id: fact_em_fourteen_reads_numbers
+  text: "열넷은 글자는 모르지만 숫자는 읽는다. 세렌 상회의 노예 장부 심부름을 하며 익혔다. 그녀는 자기 서류에 적힌 내성 수치와 순번을 읽었다"
+  truth: true
+  danger: 3
+  names: [열넷, 세렌]
+- id: fact_em_yana_slot_37
+  text: "칼렙의 딸 야나는 이식 순번 37번이다. 약 두 달 뒤에 시술대에 오른다. 열넷과 같은 감방에서 서로의 이름을 부르며 버틴다"
+  truth: true
+  danger: 3
+  names: [야나, 칼렙, 열넷]
+# ── 크릭과 목줄 ──
+- id: fact_em_kraz_water_trade
+  text: "크라즈의 검은 손톱 지부는 갱 노예 물 배급의 절반을 빼내 '빵 한 덩이, 물 한 바가지'에 되판다. 그 수입은 지부 몫이 아니라 크라즈 개인의 주머니로 들어간다"
+  truth: true
+  danger: 3
+  names: [크라즈, 검은 손톱]
+- id: fact_em_leonic_sells_to_kraz
+  text: "늙은 레오닉은 광부등을 지키려고 크라즈에게 작은 것을 판다. 은닉한 광석 몇 수레, 병든 자의 이름 같은 것이다. 그래서 23년 동안 사슬 갱에 묶이지 않았다"
+  truth: true
+  danger: 4
+  names: [레오닉, 크라즈]
+- id: fact_em_bolt_blade_molds
+  text: "제련감 볼트는 칼날 모양 주형 세 개를 '불량 주형'으로 위장해 주형 창고에 두었다. 그는 누가 이길지 몰라 양쪽에 빚을 두는 크릭의 본능을 따른다. 주형이 필요한 사람이 오면 값을 받고 내준다"
+  truth: true
+  danger: 4
+  names: [볼트, 주형]
+- id: fact_em_nit_water_bowl
+  text: "붉은 교대 감독반장 닛은 매일 밤 봉인된 첫 갱 문 앞에 물 한 그릇을 놓는다. 붉은 교대가 밤에 '말이 섞인 바람'을 듣는다는 것을 그도 들었기 때문이다"
+  truth: true
+  danger: 2
+  names: [닛, 첫 갱]
+- id: fact_em_nit_sleep_trade
+  text: "닛은 빵 반 덩이를 받고 붉은 교대 일부를 하층 7번 수평갱에서 몰래 재워 준다. 그 시간에 가스가 가장 적다는 것을 그는 얼마 전에 알았다"
+  truth: true
+  danger: 2
+  names: [닛]
+- id: fact_em_krom_yana
+  text: "목줄장 쇠눈 크롬이 칼렙의 딸 야나를 요람 '자원자' 명단에 올렸다. 칼렙이 갱 모임의 시간을 말하지 않았기 때문이다. 크롬은 칼렙이 다라손이라는 것을 안다"
+  truth: true
+  danger: 4
+  names: [크롬, 야나, 칼렙]
+- id: fact_em_krom_volk_deal
+  text: "크롬은 볼크 회색송곳니가 잡은 탈주자 중 '배우는 속도가 이상한' 자를 요람 공급 명단으로 돌려받는 거래를 한다. 회색여울 북부에서 올라온 자가 두 명 있었다"
+  truth: true
+  danger: 4
+  names: [크롬, 볼크, 회색여울]
+# ── 광부와 다라손 ──
+- id: fact_em_caleb_wall_rule
+  text: "칼렙의 규칙은 하나다. 다라의 오른손 미라가 9번 갱 벽에 다시 찍히기 전에는 아무도 곡괭이를 들지 않는다. 그가 '기다려라'를 지키는 이유는 이름 없는 자들의 명령 때문만이 아니라, 딸을 구하러 가면 손 벽이 무너질까 두려워서다"
+  truth: true
+  danger: 4
+  names: [칼렙, 다라]
+- id: fact_em_caleb_pit_water_hand
+  text: "9번 갱 물웅덩이 아래에 다라의 곡괭이 머리가 있고, 그 위치를 아는 사람은 칼렙과 그가 지명한 한 사람뿐이다. 지금 지명된 사람은 도르테다"
+  truth: true
+  danger: 3
+  names: [칼렙, 도르테, 다라]
+- id: fact_em_dara_handprint_wall
+  text: "9번 갱 막장 벽의 손자국은 212개다. 아기가 태어나면 붉은 진흙에 찍는 것이다. 손자국이 가장 오래된 것은 다라 시대의 것이 아니라 AS 140 무렵이다. 다라의 손자국은 벽에 없다"
+  truth: true
+  danger: 2
+  names: [손자국, 다라]
+- id: fact_em_dorte_cook_route
+  text: "도르테는 취사장 그릇 밑바닥에 매듭 하나를 새기는 방식으로 갱 사이의 소식을 나른다. 매듭의 수는 그날 다른 갱에 전할 일의 수다"
+  truth: true
+  danger: 3
+  names: [도르테]
+- id: fact_em_haro_knotcords
+  text: "반장 하로는 갱조 매듭끈을 지금도 이어 간다. 매듭 하나가 낙반으로 사라진 사람 하나이고, 그의 갱조에서만 올해 매듭이 41개 늘었다. 이 끈을 읽으면 공식 숫자가 거짓이라는 증거가 된다"
+  truth: true
+  danger: 3
+  names: [하로, 매듭끈]
+- id: fact_em_song_gap
+  text: "노래 「붉은 길」 일곱째 절 끝에는 일곱 박자의 빈 자리가 있다. 아무도 가사를 모른다. 마테는 그 빈 자리를 입 모양 없이 센다. 광부들은 그 자리가 '다라가 돌아와 부를 몫'이라고 믿는다"
+  truth: true
+  danger: 3
+  names: [마테, 붉은 길]
+- id: fact_em_leonic_cell_names
+  text: "레오닉은 광부등 세포 네 개의 세포장 이름만 안다. 세포마다 서로를 모르며, 그가 크라즈에게 판 것은 이 이름이 아니라 '곁다리' 정보뿐이다. 그는 이름은 한 번도 팔지 않았다"
+  truth: true
+  danger: 4
+  names: [레오닉, 광부등]
+- id: fact_em_wenna_false_deaths
+  text: "병동 치유자 웨나는 열병으로 죽은 것처럼 적은 사람 열두 명을 시체 수레에 실어 슬래그 비탈로 내보냈다. 비탈에서는 이브와 숯막의 손이 기다린다. 열 명이 살았다"
+  truth: true
+  danger: 4
+  names: [웨나, 이브]
+- id: fact_em_ida_hidden_child
+  text: "배급 빵을 굽는 이다는 장부에 '사망'으로 적힌 굴 태생 소녀 하나를 빵 반죽 통 아래 방에 숨기고 있다. 소녀는 아홉 살이고 지상의 해를 본 적이 없다"
+  truth: true
+  danger: 3
+  names: [이다]
+- id: fact_em_erhard_abel_last
+  text: "예배당 사제 에르하르트는 피험체 2,871번 아벨이 죽기 전날 밤 임종 기도를 올렸다. 아벨은 '누이가 아직 수레를 끈다'고 말했고 '머리를 같은 쪽으로 밀지 말라고 전해 달라'고 했다"
+  truth: true
+  danger: 2
+  names: [에르하르트, 아벨, 이브]
+- id: fact_em_erhard_osric_classmate
+  text: "에르하르트는 루멘 신학원에서 오스릭과 한 방을 쓴 동기다. 잿불의 이 예배당은 그가 '순종의 빛' 안에서 쓴 소리를 했다가 좌천된 자리다"
+  truth: true
+  danger: 2
+  names: [에르하르트, 오스릭, 루멘]
+# ── 잿문 ──
+- id: fact_em_barto_sells_passes
+  text: "잿문 시장관 바르토 하스크는 '광산 구역 표찰'을 위조해 판다. 한 장에 1발톱이고, 구매자의 절반은 크릭 상인, 나머지는 광부 가족을 찾아 온 외부 인간이다"
+  truth: true
+  danger: 3
+  names: [바르토, 하스크, 표찰]
+- id: fact_em_sorga_blind_eye
+  text: "술집 '숯불' 주인 소르가는 뒷마당 물탱크에 담기는 매듭 끈을 알면서 보지 않는다. 몇 해 전 그 끈의 경고 덕에 그녀의 술집 지하 가스 누출을 피했기 때문이다"
+  truth: true
+  danger: 3
+  names: [소르가, 숯불]
+- id: fact_em_nils_courier
+  text: "술집 심부름꾼 닐스는 뒷마당 물탱크의 매듭 끈을 수레 바퀴 속에 숨겨 갱 마을로 나른다. 그는 끈 안의 뜻은 모르고 매듭의 수만 센다. 열네 살이다"
+  truth: true
+  danger: 3
+  names: [닐스, 숯불]
+# ── 황무지 경계와 두르강 ──
+- id: fact_em_evan_true_rate
+  text: "재 경계 망루의 측량 말뚝은 최근 석 달 동안 31, 44, 58미터씩 안쪽으로 옮겨졌다. 평균 40미터가 아니라 가속 중이다. 하드리안이 보고를 낮추라고 압박하고 있다"
+  truth: true
+  danger: 4
+  names: [에반 펠, 하드리안, 재 경계 망루]
+- id: fact_em_evan_double_book
+  text: "에반 펠은 진짜 수치를 방패 속 두꺼운 가죽 아래에 따로 적어 둔다. 공식 기록은 낮춰 쓰되 탑에 가는 사본에는 진짜를 넣는다"
+  truth: true
+  danger: 3
+  names: [에반 펠, 잿빛 탑]
+- id: fact_em_orin_loophole
+  text: "두르강 오린 쇳줄의 계약에는 '인간 노동에 대한 지원 금지'가 있으나 '지도 분실'은 금지하지 않는다. 그는 해마다 환기 지도 한 장을 '분실'하며, 분실물은 늘 갱 마을 쪽 쓰레기 더미에서 나온다"
+  truth: true
+  danger: 3
+  names: [오린, 쇳줄]
+- id: fact_em_orin_ventilation_map
+  text: "환기 지도는 독가스 장치가 묻힌 환기 갱 여섯 곳을 직접 가리키지 않는다. 그러나 오린은 지도의 공기 흐름이 어디서 한곳으로 모이는지로 장치의 위치를 짐작해 왔다"
+  truth: true
+  danger: 4
+  names: [오린, 독가스 장치]
+# ── 멜리산드와 베르미온 ──
+- id: fact_em_mel_burrow_walk
+  text: "멜리산드는 체류하는 날 밤 한 번은 인간 형상으로 굴 마을의 점호 마당을 걷는다. 누구에게도 말을 걸지 않고 사람들의 걸음걸이를 본다. 그날 밤 갱도 감독들은 마당에 나오지 않는다"
+  truth: true
+  danger: 3
+  names: [멜리산드, 굴 마을]
+- id: fact_em_mel_ash_stakes
+  text: "멜리산드는 재 경계 망루 기록을 에반 펠이 아니라 자신의 서신으로도 따로 받는다. 황무지가 잿불석 광맥에 닿으면 가장 먼저 그것을 잃는다는 것을 알기 때문이다"
+  truth: true
+  danger: 2
+  names: [멜리산드, 에반 펠]

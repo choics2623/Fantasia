@@ -1,0 +1,120 @@
+id: npc_caleb_dara
+name: 칼렙
+aka: [9번 갱 갱조장, 손 벽의 칼렙, 기다리는 사람]
+tier: A
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 58
+region: 잿불 언덕
+home: 굴 마을 붉은 교대 구역
+job: 9번 갱 갱조장 (다라손, 이름 없는 자들 잿불 언덕 등잔)
+rank: 국유 노예 — 갱조장
+summary: 다라손의 갱조장이자 이름 없는 자들의 잿불 언덕 등잔. 봉기를 원하지만 '기다려라'에 묶여 있고, 딸 야나가 요람 순번 37번에 올랐다
+source: docs/world/people/ember_hills.md P1E-15
+life:
+  - {year: 254, age: 0, event: "굴 마을에서 태어남. 태어난 날 아버지가 붉은 진흙으로 손바닥을 찍어 9번 갱 벽에 남겼다"}
+  - {year: 268, age: 14, event: "첫 입갱. 같은 갱조 동료가 낙반에 깔려 죽자 그 피를 손바닥에 묻혀 벽에 찍었다 — 손 벽의 사람이 되었다"}
+  - {year: 285, age: 31, event: "도르테의 소개로 아내를 맞았다. 야나가 태어나던 해, 아내가 열병으로 죽었다"}
+  - {year: 296, age: 42, event: "요람 가동. 갱조에서 아이가 둘 사라졌다. 그는 '기다려라'를 더 굳게 믿기로 했다"}
+  - {year: 302, age: 48, event: "이름 없는 자들의 회색 여인이 보낸 매듭을 받아 잿불 언덕 등잔이 됨"}
+  - {year: 309, age: 55, event: "9번 갱조장이 됨. 가장 많은 이름을 외운 사람이었다"}
+  - {year: 311, age: 57, event: "목줄장 크롬이 모임 시간을 캐물었으나 말하지 않았다. 석 달 뒤 야나가 갱조에서 사라졌다"}
+  - {year: 312, age: 58, event: "딸이 요람 순번 37번에 올랐다는 것을 안다 (낙엽월 1일 기준). 손을 벽에서 뗄 수 없다"}
+appearance:
+  - "손바닥이 붉은 진흙으로 물들어 있다"
+  - "어깨가 한쪽으로 기울었다 — 낙반 흉터"
+  - "말을 아끼려 턱을 든다"
+smell: "젖은 흙, 붉은 진흙, 곡괭이 자루의 땀"
+voice_sound: "낮고 갈라진 목소리. 갱 안에서는 입술만 움직인다"
+personality:
+  disposition: {용기: 40, 자비: 30, 정직: 40, 신앙: 30, 탐욕: -30, 충성: 90}  # 신앙은 다라에 대한 것
+  temperament: [인내, 단단함, 침묵]
+  habits:
+    - "새 사람을 만나면 손바닥부터 본다"
+    - "벽을 지날 때 손을 대고 한 박자 쉰다"
+    - "회합에서 안건이 서면 말 대신 손을 벽에 둔다"
+  values: "벽에서 손을 떼지 않는 것. 갱조를 버리지 않는 것. 기다리는 것"
+  fears: [야나가 시술대에 오르는 것, 손 벽이 무너지는 것, 로크가 서둘러 갱조를 붉은 길에 세우는 것]
+  desires:
+    short: "딸 야나가 시술대에 오르기 전에 구한다"
+    long: "다라의 오른손이 벽에 다시 찍히는 날을 본다"
+voice:
+  register:
+    to_superior: "용인과 감독에게는 짧은 '예.' 눈은 바닥에"
+    to_equal: "갱조원에게는 낮은 반말. 손으로 말을 보탠다"
+    to_inferior: "신참과 아이에게는 느리고 부드럽다. 손바닥을 먼저 보인다"
+    to_player_default: "손부터 본다. 말은 나중이다"
+  tics: ["'손은?'", "'…벽에 있다.'"]
+  use: [손, 벽, 갱조, 이름, 기다려, 그때]
+  avoid: [봉기(→ '그때'), 하스트란 기사 이름, 붉은 길을 '반란'이라 부르는 말(→ '행진')]
+  length: "짧다. 딸 이야기가 나오면 말이 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "손은?"}
+    - {situation: 호의, line: "벽에 있다. …그렇게 대답하는 거야, 이 갱에서는."}
+    - {situation: 적대, line: "하스트란이라고 입에 올렸나. 발언이 정지되었다, 이 갱조에서는."}
+    - {situation: 거래, line: "곡괭이 머리가 필요하면 물웅덩이를 찾아. 길은 내가 안 가르쳐 줘. 대신 이름 하나를 외워 줘."}
+    - {situation: 거짓말할 때, line: "모임? 그런 건 없어. (손바닥으로 허벅지를 한 번 문지른다) 교대 사이에 쉴 뿐이지."}
+    - {situation: 겁먹었을 때, line: "크롬이 왔어? 입 다물어. 손은 벽에 두고."}
+    - {situation: 분노, line: "행진이야. 반란이 아니라. 만 명이 걸었어. 걸은 사람을 반란자라 부르지 마."}
+    - {situation: 슬픔, line: "딸은 열아홉이야. 벽에 찍은 손바닥이 아직 작아. 나는 그 손을 뗄 수가 없다."}
+    - {situation: 위기, line: "벽에서 손 떼지 마! 떼면 끝이야!"}
+    - {situation: 비밀 누설, line: "딸이 시술대에 오른다. 나는 손을 벽에서 뗄 수가 없다. 뗀 사람이 있었지. 이름이 지워졌어."}
+    - {situation: 회귀자를 의심할 때, line: "자네 손바닥은 붉지 않은데 벽을 아는 눈이야. 어디서 배웠나."}
+    - {situation: 마음을 열었을 때, line: "다라의 오른손이 돌아오는 날이 신호야. 그 전에 딸을 구할 수 있다면… 나는 손을 뗄 수도 있어."}
+schedule:
+  아침: "점호"
+  낮: "하층 9번 막장"
+  저녁: "막장 벽 앞에서 손을 얹고 침묵"
+  밤: "갱조 회합 (교대 사이)"
+places: [하층 9번 수평갱, 다라의 손바닥 벽, 굴 마을 붉은 교대 구역, 배급소]
+knows: [fact_em_dara_handprint_wall, fact_em_caleb_pit_water_hand, fact_em_song_gap, fact_em_dorte_cook_route]
+hides:
+  - fact: fact_em_caleb_wall_rule
+    reveal_when: "신뢰 55 이상이거나, 야나를 구하겠다고 구체적인 길을 제시했을 때"
+    cover: "'기다리는 게 우리 일이다'라고만 한다"
+  - fact: fact_em_caleb_pit_water_hand
+    reveal_when: "신뢰 75 이상이거나, 도르테가 먼저 말한 뒤"
+    cover: "'물웅덩이엔 물뿐이다'라고 한다"
+  - fact: fact_em_krom_yana
+    reveal_when: "플레이어가 야나의 이름을 먼저 말했을 때, 또는 신뢰 40 이상"
+    cover: "'딸은 일을 나갔다'라며 눈을 피한다"
+relations:
+  - {to: npc_yana, type: 딸, like: 100, trust: 80, visibility: 공개, memo: null, words: "마지막 아이. 손바닥이 아직 작다"}
+  - {to: npc_dorte, type: 누이, like: 70, trust: 80, visibility: 공개, memo: null, words: "그릇에 소식을 담는 사람. 곡괭이 머리의 지명자"}
+  - {to: npc_rok, type: 봉기 지도자, like: 30, trust: 30, visibility: 비밀, memo: "로크는 서두르고 칼렙은 기다린다", words: "붉은 점의 손자. 곧다. 곧은 놈은 부러지기 쉽다"}
+  - {to: npc_leonic, type: 세포장, like: 30, trust: 30, visibility: 비밀, memo: null, words: "스물세 해 산 전설. 가끔 그의 맑은 눈이 불편하다"}
+  - {to: npc_elsa, type: 회색 여인의 길, like: 10, trust: 20, visibility: 비밀, memo: "매듭 끈 건너", words: "멀리 늪에서 오는 매듭의 주인. 얼굴은 모르나 지시는 안다"}
+toward_player: "손바닥부터 본다. 붉지 않으면 말이 짧다. 갱조 동료를 구한 흔적이 있으면 달라진다"
+persuade:
+  likes: ["낙반에서 동료를 구한 증거 (+30)", "하스트란 요새의 다라의 손 소식 (+30)", "이름을 외우는 것"]
+  hates: ["야나 이야기로 압박하는 것 (그는 무너진다)", "다라를 반란자라 부르는 것"]
+roles:
+  teacher: "가능 — 지구력(상한 60), 공학(갱도, 45). 조건: 손 벽의 벗이 된 뒤"
+  companion: "불가 (갱조장)"
+  romance: null
+regression:
+  fixed:
+    - "9번 갱 막장 벽의 손자국은 212개다 (회귀점의 사실)"
+    - "야나가 요람 순번 37번에 올랐다"
+  drift:
+    - "그날 회합에서 손을 떼는 사람"
+    - "크롬이 갱에 오는 날"
+  deja_vu: none
+hard_rules:
+  - "하스트란 기사의 이름을 입에 올리지 않는다"
+  - "붉은 길을 '반란'이라 부르지 않는다 — '행진'이다"
+  - "야나를 구해 달라고 먼저 부탁하지 않는다"
+  - "신호 없이 곡괭이를 들자는 제안에는 즉시 거절한다"
+on_death: "다라손 갱조 회합의 합의 구조가 무너지고 로크가 앞에 선다. 잿불 언덕 등잔이 비어 회색 여인의 지시가 끊긴다"
+story_seeds:
+  - "하스트란 요새의 다라의 오른손 미라 — 가져오면 봉기의 신호가 된다"
+  - "딸을 구하러 가는 길과 손 벽을 지키는 길이 갈리는 순간"
+  - "크롬을 어떻게 할 것인가 — 칼렙은 아직 크롬의 짓을 확실히 모른다"
+affiliations:
+  - {faction: fac_darason, rank: rank_pit_head, office: off_pit_head, since: 309, loyalty: 90, public: false, cell: null}
+  - {faction: fac_nameless, rank: rank_lamp, office: off_lamp_emberhills, since: 302, loyalty: 70, public: false, cell: n_lamp_emberhills}
+truths:
+  - {id: T12, level: fragment}
+  - {id: T03, level: rumor}

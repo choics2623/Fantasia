@@ -158,14 +158,6 @@ npc_isol:
     - {days: all, from: "21:00", to: "05:00", at: gf_pilgrim_barn, doing: 헛간, alt: {p: 0.2, at: old_stone_ring, doing: 밤에 사라짐 — 옛 돌 고리}}
     - {days: workday, from: "07:00", to: "18:00", at: gf_south_barracks, doing: 막사 순회 — 아이들에게 꿈 이야기를 묻는다}
     - {days: sabbath, from: "07:00", to: "09:00", at: gf_chapel, doing: 예배 맨 앞줄}
-npc_kaspar:
-  home: crow_gate
-  blocks:
-    - {days: all, from: "00:00", to: "24:00", at: crow_gate, doing: "북문 순시, 탈주자 심문"}
-npc_lea:
-  home: crow_gate
-  blocks:
-    - {days: all, from: "00:00", to: "24:00", at: crow_gate, doing: 사령관 보좌}
 npc_volk:
   home: hungry_hill__fang_fire
   presence:

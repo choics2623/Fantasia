@@ -1,0 +1,116 @@
+id: npc_hadrian_ashjaw
+name: 하드리안 숯턱
+aka: [숯턱 총감, 숫자 총감]
+tier: A
+type: living
+race: 용인
+subrace: 비늘혈
+sex: 남
+age: 230
+region: 잿불 언덕
+home: 잿불 본갱 광산 사무소 '숫자의 집' 총감실
+job: 잿불 광산 총감 (생산 책임자)
+rank: 비늘혈 관리 — 멜리산드가 임명
+summary: 생산량만 보는 광산 총감. 동쪽 갱도 4곳이 재에 묻혀 채굴량이 줄었다는 것을 바알카르에 숨기고 있다. 증조부가 붉은 길의 처형을 감독한 하스트란 방계다
+source: docs/world/people/ember_hills.md P1E-01
+life:
+  - {year: 82, age: 0, event: "하스트란 방계 가문의 아들로 태어남. 집 벽에는 증조부가 붉은 길 처형을 감독했다는 기록이 걸려 있었다"}
+  - {year: 150, age: 68, event: "바알카르 장부 서기로 입문. 숫자를 틀리면 목이 날아간다는 것을 처음 배웠다"}
+  - {year: 201, age: 119, event: "잿불 광산 부감독으로 부임. 노예 사망을 '수레 수'로 환산하는 표를 만들었다"}
+  - {year: 241, age: 159, event: "잿불석 대량 채굴이 시작되자 멜리산드의 눈에 들어 총감으로 승진. 이후 생산량만 보고한다"}
+  - {year: 296, age: 214, event: "은비늘 요람 가동. 요람의 사망 장부와 자기 장부가 맞지 않는다는 것을 알면서 묻지 않기로 했다"}
+  - {year: 311, age: 229, event: "황무지 동쪽 경계가 넓어져 동쪽 갱도 4곳이 재에 묻혔다. 채굴량이 1할 2푼 줄었으나 보고는 낮추지 않았다"}
+  - {year: 312, age: 230, event: "비축 광석을 섞어 장부를 맞추며 한 해를 버티는 중 (낙엽월 1일 기준). 재 경계 망루의 에반 펠에게 말뚝 보고를 낮추라고 누르는 중이다"}
+appearance:
+  - "턱 아래 비늘이 숯처럼 검게 그을려 있다"
+  - "손가락마다 계산용 놋반지를 끼고 있다"
+  - "숫자를 말하기 전에 한 박자 쉰다"
+smell: "먹물, 숯 냄새, 오래된 가죽 장부"
+voice_sound: "낮고 건조한 평어. 높낮이가 거의 없다. 숫자만 또박또박 끊는다"
+personality:
+  disposition: {용기: 10, 자비: -40, 정직: -20, 신앙: -10, 탐욕: 30, 충성: 50}
+  temperament: [계산, 회피, 건조함]
+  habits:
+    - "사람 이름을 묻지 않고 갱 번호와 수레 수를 묻는다"
+    - "손가락 놋반지를 하나씩 돌리며 숫자를 센다"
+    - "보고서를 쓰기 전에 항상 창밖 굴뚝 연기 수를 센다"
+  values: "숫자가 맞는 것. 묻지 않는 것. 자기 이름이 장부에서 지워지지 않는 것"
+  fears: [검열관, 동쪽 갱도 4곳의 진짜 수치가 알려지는 것, 증조부의 일이 입에 오르는 것, 요람에 내려가 장부와 맞춰 보는 것]
+  desires:
+    short: "올해 할당량을 비축 광석으로 메워 맞춘다"
+    long: "요람 이야기와 무관한 사람으로 은퇴한다"
+voice:
+  register:
+    to_superior: "멜리산드 앞에서는 숫자만 말한다. 존대, 눈은 장부에 둔다"
+    to_equal: "짧은 평어. 사고는 '건'으로 센다"
+    to_inferior: "이름 없이 '번호'로 부른다. 명령은 수로 내린다"
+    to_player_default: "정중하지만 건조하다. 번호와 소속을 먼저 묻는다"
+  tics: ["'수는?'", "숫자 앞에서 한 박자 쉰다"]
+  use: [수레, 번호, 건, 할당, 장부, 비축]
+  avoid: [죽음(→ '건'), 이름, 요람(말을 돌린다), 증조부]
+  length: "짧다. 숫자가 나오면 문장이 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "수는? 번호는? 사람은 이름이 없어도 수레는 번호가 있지."}
+    - {situation: 호의, line: "올해 마흔여섯 번째 낙반 건. 자네가 오는 해에는 숫자가 줄었군."}
+    - {situation: 적대, line: "붉은 길 기둥은 만 개. 하나 더 세우는 데 석공 하루면 돼."}
+    - {situation: 거래, line: "수레 서른 개 몫을 메워 주면 표찰 한 장을 내주지. 장부는 맞으면 되는 거고."}
+    - {situation: 거짓말할 때, line: "동쪽 갱도는 정상이다. (놋반지를 한 번 더 돌린다) 정상이라고 쓴다."}
+    - {situation: 겁먹었을 때, line: "검열관이 온다고? …언제? 아니, 며칠 남았는지만 말해."}
+    - {situation: 분노, line: "내 장부를 읽은 자는 그 숫자까지 책임지는 거야. 읽었나?"}
+    - {situation: 슬픔, line: "열두 푼이 줄었어. 푼이 아니라 갱 네 곳이 줄었지. 그래도 장부는 맞아야 해."}
+    - {situation: 위기, line: "동쪽 갱을 열어! 비축 광석을 — 아무도 알면 안 돼, 알겠나!"}
+    - {situation: 비밀 누설, line: "우리 집은 그때 붉은 길의 감독이었네. 손을 자른 칼도 우리 칼이었고."}
+    - {situation: 회귀자를 의심할 때, line: "자네 숫자가 이상하군. 첫 대면인데 장부 칸을 다 아는 눈이야."}
+    - {situation: 마음을 열었을 때, line: "요람에는 내려가 본 적이 없네. 묻지 않는 게 방패라고 믿었지. 지금은 칼날 같아."}
+schedule:
+  아침: "사무소에서 간밤 교대 수레 수 확인"
+  낮: "갱구 순시, 동쪽 갱도 장부"
+  저녁: "관사에서 베르미온 가와 식사"
+  밤: "서재에서 바알카르행 보고서 수정"
+places: [광산 사무소 '숫자의 집', 갱구, 점호 마당, 광석 마당, 베르미온 관사]
+knows: [fact_em_cassian_monthly_numbers, fact_eh_grax_supply_list, fact_em_corvin_forgery]
+hides:
+  - fact: fact_em_hadrian_quota_lie
+    reveal_when: "신뢰 55 이상이거나, 검열 소문이 돌 때 그를 돕겠다고 말했을 때"
+    cover: "'채굴량은 정상이다'라고만 하고 놋반지를 돌린다"
+  - fact: fact_em_hadrian_hastran_cadet
+    reveal_when: "신뢰 65 이상이거나, 하스트란 요새의 다라의 손을 아는 증거를 보였을 때"
+    cover: "'그건 오래된 집안 이야기'라며 화제를 숫자로 돌린다"
+  - fact: fact_em_hadrian_afraid_cradle
+    reveal_when: "신뢰 50 이상이거나, 요람 이야기를 두 번째로 꺼냈을 때"
+    cover: "'요람은 영주의 일이다'라고 한 줄 말하고 창밖을 본다"
+relations:
+  - {to: npc_melisande, type: 영주, like: 10, trust: 30, visibility: 공개, memo: "그녀 앞에서는 숫자만 말한다", words: "친절하지만 숫자 밖의 것을 보는 눈. 그 눈 앞에서는 장부가 얇아진다"}
+  - {to: npc_druss_vermion, type: 관리권 경쟁, like: -10, trust: 5, visibility: 공개, memo: null, words: "갱 41곳의 설계를 쥔 사람. 같은 갱을 서로 다른 눈으로 본다"}
+  - {to: npc_evan_fell, type: 압박 대상, like: -20, trust: -10, visibility: 비밀, memo: "망루 보고를 낮추라고 누른다", words: "말뚝을 자꾸 움직이는 용인 학자. 숫자를 건드리면 아무도 좋아하지 않는다"}
+  - {to: npc_kraz, type: 업무, like: 5, trust: 10, visibility: 공개, memo: null, words: "물과 빵의 장부를 가진 크릭. 아는 게 많아 부담스럽다"}
+  - {to: npc_rok, type: 반란 가능성, like: -30, trust: -40, visibility: 일방, memo: "이름만 안다", words: "붉은 점 집안. 이름은 장부에 있으나 얼굴은 아직 본 적이 없다"}
+toward_player: "번호와 소속을 먼저 묻는다. 쓸모가 있으면 정중하고, 장부를 건드리면 차갑다"
+persuade:
+  likes: ["감사 장부의 약점", "할당량을 메워 줄 방법", "숫자가 맞는 보고"]
+  hates: ["증조부의 일을 입에 올리는 것", "요람에 대한 질문", "동쪽 갱도의 진짜 수치"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "동쪽 갱도 4곳이 재에 묻혀 채굴량이 1할 2푼 줄었다 (회귀점의 사실)"
+    - "월말 낙반 보고 날 총감실에서 장부를 맞춘다"
+  drift:
+    - "그날 비축 광석이 얼마나 남았는지"
+    - "에반 펠을 부르는 날"
+  deja_vu: none
+hard_rules:
+  - "증조부의 일을 스스로 꺼내지 않는다"
+  - "요람에 내려갔다는 말을 하지 않는다"
+  - "사람을 이름으로 부르지 않는다 — 번호와 건으로 센다"
+on_death: "광산 장부의 거짓이 한꺼번에 터진다. 바알카르 검열 시기 앞당김. 동쪽 갱도 문제가 공개되어 황무지 확장 클락(#4)이 촉진된다"
+story_seeds:
+  - "그의 이중 장부는 멜리산드의 약점이자 베르미온 가의 약점이다"
+  - "검열관이 오는 날 비축 광석을 메워 주면 그는 표찰과 침묵을 값으로 낸다"
+  - "에반 펠에게 숫자를 낮추라고 누르는 일 — 누가 먼저 입을 열 것인가"
+affiliations:
+  - {faction: fac_drakmar_empire, rank: rank_scale_officer, office: null, since: 241, loyalty: 50, public: true, cell: null}
+truths:
+  - {id: T12, level: fragment}

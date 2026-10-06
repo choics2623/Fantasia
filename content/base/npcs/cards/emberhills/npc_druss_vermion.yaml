@@ -1,0 +1,114 @@
+id: npc_druss_vermion
+name: 드루스 베르미온
+aka: [총감독, 열쇠의 아들]
+tier: A
+type: living
+race: 용인
+subrace: 순혈
+sex: 남
+age: 112
+region: 잿불 언덕
+home: 베르미온 관사 총감독 서재
+job: 갱도 총감독 (베르미온 백작의 장남)
+rank: 순혈 직계 — 가문 갱도 일상 관리
+summary: 다라의 반란이 되풀이되리라 믿고 갱도마다 독가스 장치를 숨긴 베르미온 가의 장남. 총열쇠 하나를 목에 걸고 산다
+source: docs/world/people/ember_hills.md P1E-05
+life:
+  - {year: 200, age: 0, event: "베르미온 백작가의 장남으로 태어남. 다라의 반란 이야기를 어른들의 낮은 목소리로 들으며 자랐다"}
+  - {year: 245, age: 45, event: "갱도 감독 수습. 처음으로 갱조 하나가 낙반으로 사라지는 것을 보았다"}
+  - {year: 270, age: 70, event: "갱도 총감독 후보로 지명. 가문의 갱도 설계도 전체를 물려받았다"}
+  - {year: 290, age: 90, event: "독가스 장치 구상 시작. 갱도마다 환기구에 붙일 구리관 설계를 직접 그렸다"}
+  - {year: 296, age: 96, event: "요람 가동 해에 오렐리아와 갱조 모집선 분리 협상. 가문 안에 지휘선이 둘이 되었다"}
+  - {year: 308, age: 108, event: "카셀이 열네 명의 지원 노예로 장치를 시험했다. 그는 시험 장면 앞에서 눈을 감지 않았다"}
+  - {year: 311, age: 111, event: "황무지 경계 확장으로 동쪽 갱도 4곳이 재에 묻혔다. 장치 41기 중 몇 곳이 묻혔는지 직접 점검하지 못했다"}
+  - {year: 312, age: 112, event: "독가스 장치 점검 순회 중 (낙엽월 1일 기준). 총열쇠를 목에 걸고 유언장에 카셀을 지명해 두었다"}
+appearance:
+  - "목에 구리 열쇠 하나를 건다 — 잘 때도 벗지 않는다"
+  - "손바닥에 갱도 설계 선이 굳은살로 그어져 있다"
+  - "말없이 고개를 한쪽으로 기울이는 버릇이 있다"
+smell: "구리 녹, 젖은 쇠, 갱도 먼지"
+voice_sound: "낮고 느린 목소리. 말을 아끼다 한 번에 길게 한다"
+personality:
+  disposition: {용기: 30, 자비: -60, 정직: 10, 신앙: -10, 탐욕: 10, 충성: 60}
+  temperament: [침착, 의심, 끈질김]
+  habits:
+    - "말을 듣다 고개를 한쪽으로 기울인다"
+    - "목의 구리 열쇠를 손으로 한 번 누르고 대답한다"
+    - "갱도 입구를 지날 때마다 환기구 소리를 듣는다"
+  values: "대비하는 것. 한 번에 끝내는 것. 아버지 세대가 못 한 일을 하는 것"
+  fears: [다라의 반란이 돌아오는 것, 열쇠가 다른 손에 가는 것, 코르빈의 마지막이 알려지는 것]
+  desires:
+    short: "독가스 장치 41기의 점검을 끝낸다"
+    long: "다라의 반란이 되풀이될 때 한 번에 끝낸다"
+voice:
+  register:
+    to_superior: "아버지와 멜리산드에게는 짧은 존대. 보고는 숫자로"
+    to_equal: "평어. 말을 길게 하지 않는다"
+    to_inferior: "침묵과 시선으로 명령한다. 말은 나중이다"
+    to_player_default: "고개를 기울이고 먼저 듣는다. 갱 번호와 소속을 묻는다"
+  tics: ["고개를 기울인다", "'…어느 갱이지?'"]
+  use: [갱, 설계, 환기, 열쇠, 대비, 한 번에]
+  avoid: [독가스(→ '대비'), 학살, 다라(이름을 입에 올리지 않는다)]
+  length: "짧고 느리다. 대비 이야기에서만 길다"
+  samples:
+    - {situation: 첫 만남, line: "…(고개를 기울인다) 어느 갱에서 왔지?"}
+    - {situation: 호의, line: "갱 하나를 지키는 건 쉽네. 41개를 한 번에 지키는 게 일이지."}
+    - {situation: 적대, line: "다라가 돌아온다고? 그럼 나는 갱 41개를 한 번에 닫으면 되네."}
+    - {situation: 거래, line: "환기탑 밸브를 새로 갈아 주게. 그러면 설계도 한 장을 보여 주지. 한 장만."}
+    - {situation: 거짓말할 때, line: "장치? 그런 건 없네. (열쇠를 한 번 누른다) 환기 설비일 뿐이야."}
+    - {situation: 겁먹었을 때, line: "열쇠가… 아니, 목에 있군. 있어. 늘 있었어."}
+    - {situation: 분노, line: "코르빈 이야기는 이 집에서 끝났네. 끝난 이야기를 연 자는 문 밖이야."}
+    - {situation: 슬픔, line: "시험 때 열네 명이었어. 나는 눈을 감지 않았네. 그게 내 일이니까."}
+    - {situation: 위기, line: "열쇠! 열쇠를 — 아니, 내 목에 있다. 내 목에서 뗄 수 없어!"}
+    - {situation: 비밀 누설, line: "열쇠는 하나다. 하나를 가진 자가 이긴다. 나는 이 집이 가진 가장 정직한 보험이네."}
+    - {situation: 회귀자를 의심할 때, line: "자네는 갱 이야기를 너무 일찍 아는군. 다라의 낌새가 나."}
+    - {situation: 마음을 열었을 때, line: "내가 죽으면 열쇠는 카셀에게 가네. 아들이 아니라. 아들은 쓰지 못할 걸세."}
+schedule:
+  아침: "갱도 편성표 점검"
+  낮: "갱구 순시, 환기탑 점검"
+  저녁: "서재에서 갱도 설계도"
+  밤: "서재 벽장의 구리판을 닦는다"
+places: [베르미온 관사 서재, 환기탑 '숨 탑', 제1수직갱 권양탑, 갱 대장간]
+knows: [fact_em_corvin_forgery, fact_em_cassian_monthly_numbers, fact_em_vent_leak_summer]
+hides:
+  - fact: fact_em_druss_gas_devices
+    reveal_when: "신뢰 70 이상이거나, 다라의 반란이 곧 온다는 증거를 보였을 때"
+    cover: "'갱도마다 환기 설비가 있다'라고만 한다"
+  - fact: fact_em_druss_key_neck
+    reveal_when: "신뢰 80 이상이거나, 그가 큰 위기를 맞았을 때"
+    cover: "열쇠를 손으로 가리며 '가문의 문장'이라 한다"
+relations:
+  - {to: npc_cassian_vermion, type: 아버지, like: 20, trust: 10, visibility: 공개, memo: null, words: "숫자로 죽음을 말하는 사람. 그 숫자를 믿지 않는다"}
+  - {to: npc_cassel_smokeiron, type: 가신, like: 10, trust: 40, visibility: 비밀, memo: "장치의 반쪽", words: "장치를 만든 손. 열쇠를 맡길 만한 단 하나의 사람"}
+  - {to: npc_hadrian_ashjaw, type: 관리권 경쟁, like: -10, trust: 5, visibility: 공개, memo: null, words: "생산량만 보는 숫자쟁이. 대비는 모른다"}
+  - {to: npc_grax, type: 부하, like: 5, trust: 20, visibility: 공개, memo: null, words: "붉은 계단의 채찍. 말이 짧아서 쓸 만하다"}
+  - {to: npc_rok, type: 의심 대상, like: -40, trust: -30, visibility: 일방, memo: null, words: "붉은 점 집안. 이름만 알고 얼굴은 모른다. 그러나 그들의 집에 닿는 길은 안다"}
+toward_player: "고개를 기울이고 듣는다. 갱 번호가 없으면 의심하고, 있으면 시험한다"
+persuade:
+  likes: ["갱도 사고 방지책", "광부 반란 첩보 (+30)", "환기 설비 개선"]
+  hates: ["코르빈 이야기", "독가스 장치를 직접 묻는 것", "아들을 약하다고 하는 것"]
+roles:
+  teacher: "가능(함정) — 공학(상한 70). 조건: 갱도 설계 보조 30일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "독가스 장치 41기가 갱도마다 숨겨져 있다 (회귀점의 사실)"
+    - "총열쇠는 구리 열쇠 하나, 사본이 없다"
+  drift:
+    - "그날 점검하는 갱도"
+    - "카셀을 부르는 날"
+  deja_vu: none
+hard_rules:
+  - "독가스 장치를 직접 입에 올리지 않는다 — '대비'라고 한다"
+  - "다라의 이름을 부르지 않는다"
+  - "열쇠가 목에 있음을 스스로 보여 주지 않는다"
+on_death: "열쇠가 카셀에게 간다 — 장치는 가문의 손을 떠난다. 갱도 총감독 자리가 비어 하드리안의 권한이 커진다"
+story_seeds:
+  - "독가스 장치 무력화는 잿불 봉기 전에 반드시 해야 할 일. 드루스를 매수하거나 설계도를 훔치거나 열쇠를 노린다"
+  - "열쇠를 카셀에게 넘기려는 유언 — 카셀이 거절하면 누가 갖는가"
+  - "시험 열네 명의 이름 — 카셀은 기억하고 드루스는 기억하지 않는다"
+affiliations:
+  - {faction: fac_vermion, rank: rank_kin, office: off_chief_miner, since: 270, loyalty: 60, public: true, cell: null}
+truths:
+  - {id: T12, level: rumor}

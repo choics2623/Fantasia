@@ -34,7 +34,7 @@ offices:
     holder: npc_aeric   # 신설 은자 (docs/world/SECRETS_AND_HERMITS.md H-02) — fac_eldar off_silent_brother와 같은 사람
     reports_to: null
     powers: ["영구한 '모든 음 빼기' — 결사의 기준", "숨 수정의 기억을 가진 유일한 결사원(쌍둥이로서 세릴의 직계)", "그물 짜기에 손을 보탤 권리(새벽가지)"]
-    chosen_by: "AS 300 영혼 정원 첫 실험 날 스스로 침묵을 서약했을 때 열하나가 그를 머리로 쳤다"
+    chosen_by: "AS 300 영혼 정원 첫 공식 실험 날 스스로 침묵을 서약했고, AS 305 열하나가 그를 머리로 쳤다"
     perks: ["침묵의 그루터기 — 정원지기도 엘다르도 다가오지 않는다"]
   - id: off_dreamer
     title: 꿈꾸는 자

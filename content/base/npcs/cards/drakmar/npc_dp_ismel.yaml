@@ -1,0 +1,149 @@
+# 전령 이스멜 은띠 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dp_ismel
+name: 전령 이스멜 은띠
+aka:
+- 은띠
+- 26일의 사람
+tier: B
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 41
+region: 회색여울 변경
+home: 바알카르 비늘 언덕 멜리산드 저택 부속 전령소
+job: 멜리산드의 전령
+rank: 멜리산드 직속 전령
+summary: 매달 26일 새벽 우편함을 비우는 전령. 은띠는 오른팔에 둘렀다
+source: docs/world/people/crow_gate.md (npc_dp_ismel)
+life:
+- year: 271
+  age: 0
+  event: 바알카르 비늘 언덕 근교 마을에서 태어남
+- year: 293
+  age: 22
+  event: 멜리산드의 전령으로 뽑힘. 오른팔에 은띠를 받음
+- year: 300
+  age: 29
+  event: 레아가 첩자로 심어진 해, 첫 우편을 용주 역참에서 받음
+- year: 312
+  age: 41
+  event: 매달 26일 새벽 우편함을 비우는 일을 열두 해째 하고 있음
+appearance:
+- 은띠 — 허리가 아니라 오른팔에 두른다
+- 말을 쓰다듬는 법이 부드럽다
+- 눈빛이 일부러 멍하다
+smell: 말과 은, 새벽 서리 냄새
+voice_sound: 부드럽고 느린 목소리. 일부러 멍하게 말한다
+personality:
+  disposition:
+    용기: 10
+    자비: 0
+    정직: 0
+    신앙: 0
+    탐욕: 10
+    충성: 40
+  temperament:
+  - 신중
+  - 멍함
+  - 충성
+  habits:
+  - 오른팔 은띠를 만진다
+  - 말 목을 쓰다듬고 우편물 가방을 안 놓는다
+  values: 봉인이 멀쩡한 채로 바알카르까지 가는 것
+  fears:
+  - 봉인이 열려 있는 것
+  - 길가 잡목숲 매복
+  desires:
+    short: 봉인이 훼손되지 않은 채 저택에 도착하는 것
+    long: 전령 일을 그만두고 은띠를 버리는 것
+voice:
+  register:
+    to_superior: 상관에게는 하옵니다체
+    to_equal: 같은 용인에게는 하오체
+    to_inferior: 인간에게는 무관심한 반말
+    to_player_default: 낯선 사람에게는 눈을 흐린다
+  tics:
+  - '''나는 지나가는 사람이다.'''
+  use:
+  - 길
+  - 새벽
+  - 봉인
+  - 은띠
+  - 저택
+  avoid:
+  - 우편함
+  - 보고서
+  length: 짧고 흐리다
+  samples:
+  - situation: 첫 만남
+    line: 나는 길을 지나가는 사람이다. 오늘은 여기, 내일은 저기. 기억할 필요 없다.
+  - situation: 호의
+    line: 오늘은 서리가 늦다. 말이 편하다.
+  - situation: 거래
+    line: 길 위에서는 나도 모른다. 어디서 멈추느냐에 따라 달라진다.
+  - situation: 비밀 누설
+    line: 봉인은 열지 않는다. 다만 멀쩡한지 한 번 본다. 길가 잡목숲에서.
+schedule:
+  아침: '#2 용주 역참 우편함 (매월 26일 새벽) / 평소 바알카르 비늘 언덕 / 월 25일 저녁 역참 도착'
+  낮: '#2 용주 역참 우편함 (매월 26일 새벽) / 평소 바알카르 비늘 언덕 / 월 25일 저녁 역참 도착'
+  저녁: '#2 용주 역참 우편함 (매월 26일 새벽) / 평소 바알카르 비늘 언덕 / 월 25일 저녁 역참 도착'
+  밤: '#2 용주 역참 우편함 (매월 26일 새벽) / 평소 바알카르 비늘 언덕 / 월 25일 저녁 역참 도착'
+places:
+- 용주 역참 우편함
+- 길가 잡목숲
+- 바알카르 방면 길
+knows:
+- fact_gf_lea_melisande_spy
+hides:
+- fact: fact_cg_courier_schedule
+  reveal_when: 신뢰 40 이상이고 멜리산드에게 직접 도움이 되는 정보를 내밀었을 때
+  cover: '''나는 지나가는 사람''이라 한다'
+relations:
+- to: npc_lea
+  type: 서신 상대
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: 달에 한 번 얼굴 없는 만남
+- to: npc_melisande
+  type: 주인
+  like: 30
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: 은 두카트의 주인
+- to: npc_seraph_targul
+  type: 역참장
+  like: -5
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: 열지 않는 눈
+toward_player: 눈을 흐리고 관심 없는 척한다
+persuade:
+  likes: 봉인이 멀쩡하다는 확인, 멜리산드 소식
+  hates: 우편물에 손을 대는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_scale_officer
+  office: null
+  since: 293
+  loyalty: 60
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 26일 새벽 우편함을 비운다
+  deja_vu: none
+hard_rules:
+- 보고서 내용을 입에 올리지 않는다
+on_death: 레아의 보고서가 멜리산드에게 닿는 날짜가 바뀐다. 전령이 바뀌면 봉인 검사가 더 엄해진다.
+story_seeds:
+- 26일 새벽의 틈 — 우편함을 먼저 열면 보고서를 바꿔치거나 가져갈 수 있다. 이스멜의 길가 잡목숲이 매복 지점이다.

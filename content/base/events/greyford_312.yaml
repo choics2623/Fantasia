@@ -4,7 +4,6 @@
 - {id: ev_kaspar_stone_ring, npcs: [npc_kaspar], repeat: monthly, day: 15, from: "17:10", to: "17:20", at: old_stone_ring, doing: 혼자 옛 돌 고리를 지난다 — 돌 틈 전갈, travel_from: gf_keep_hall, return_to: crow_gate, mounted: true}
 - {id: ev_kaspar_supply_meeting, npcs: [npc_kaspar], repeat: monthly, day: 15, from: "10:00", to: "16:00", at: gf_keep_hall, doing: 성채 보급 회의, travel_from: crow_gate, mounted: true}
 - {id: ev_lea_supply_meeting, npcs: [npc_lea], repeat: monthly, day: 15, from: "10:00", to: "16:00", at: gf_keep_hall, doing: 사령관을 보좌해 보급 회의, travel_from: crow_gate, return_to: crow_gate, mounted: true}
-- {id: ev_lea_post, npcs: [npc_lea], repeat: monthly, day: 25, from: "12:00", to: "14:00", at: dragon_pillar_post, doing: 우편함에 보고서를 넣는다, travel_from: crow_gate, return_to: crow_gate, mounted: true}
 - {id: ev_owen_crow_gate, npcs: [npc_owen_raven], repeat: monthly, day: 1, from: "14:00", to: "16:00", at: crow_gate, doing: 까마귀 문 왕래, travel_from: gf_keep, return_to: gf_keep, mounted: true}
 - {id: ev_severo_envoy, date: "312-09-03", npcs: [npc_godric_raven], from: "10:00", to: "13:00", at: gf_keep_hall, doing: 세렌 중개인의 사자와 매각 계약}
 - {id: ev_sara_overhears, date: "312-09-03", npcs: [npc_sara], from: "10:00", to: "13:00", at: gf_keep_hall, doing: 응접실 밖에서 엿듣는다}

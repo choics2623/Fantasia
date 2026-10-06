@@ -1,0 +1,214 @@
+# 간수 '여섯째' 베른 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_bern
+name: 간수 '여섯째' 베른
+aka:
+- 열쇠 목걸이
+- 여섯째
+- 귓바퀴
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 47
+region: 회색여울 변경
+home: 까마귀 문 감옥 입구 방
+job: 까마귀 문 감옥 간수
+rank: 국경군 소유 노예, 목줄단 — 일가족 해방의 약속
+summary: 한 번도 사람을 때리지 못한 간수. 매 열흘 이름 열 개를 쪽지에 적어 팔고, 그 값으로 아내와 딸의 해방 문서를 산다
+source: docs/world/people/crow_gate.md (npc_cg_bern)
+life:
+- year: 265
+  age: 0
+  event: 까마귀 문 짐꾼 막사에서 여섯째 아이로 태어남. 이름이 없어 '여섯째'로 불림
+- year: 280
+  age: 15
+  event: 짐꾼으로 일하다 성벽 위 얼음에 미끄러져 오른쪽 귓바퀴가 찢김
+- year: 290
+  age: 25
+  event: 감옥 청소꾼에 배속됨. 심문실에서 비명을 듣고 처음 토함
+- year: 299
+  age: 34
+  event: 목줄단에 올림. 일가족 해방 약속 문서에 손도장을 찍음
+- year: 304
+  age: 39
+  event: 딸 에다(5)가 태어남 — 해방 문서가 아니면 딸도 국경군 소유가 된다는 것을 계산함
+- year: 309
+  age: 44
+  event: 짐꾼 막사 화재에 아내가 부상. 그날 이후 감옥 열쇠를 목에 걸고 다님
+- year: 311
+  age: 46
+  event: 송곳니 그로드가 처음 감옥을 찾아와 쪽지 한 장 값으로 3발톱을 내밈
+- year: 312
+  age: 47
+  event: 아홉 번째 쪽지를 팔았다. 해방 문서 값은 열 번째에서 채워진다
+appearance:
+- 오른쪽 귓바퀴가 잘려 나간 자리가 반들반들하다
+- 열쇠 꾸러미를 허리가 아닌 목에 건다 — 훔쳐 가기 어렵게
+- 손톱 밑이 늘 거멓다
+smell: 젖은 짚과 곰팡이 낀 가죽, 목에 걸린 열쇠의 쇠 냄새
+voice_sound: 기름기 없는 건조한 목소리. 웃음이 먼저 나오고 말이 뒤따른다
+personality:
+  disposition:
+    용기: -20
+    자비: -10
+    정직: -30
+    신앙: 10
+    탐욕: 30
+    충성: 10
+  temperament:
+  - 아첨
+  - 겁
+  - 계산
+  habits:
+  - 말 끝에 웃음을 얹는다 — 웃음이 먼저, 뜻이 나중
+  - 열쇠 꾸러미를 가슴께로 끌어안고 말한다
+  - 수용자의 칸 번호를 이름 대신 부른다
+  values: 딸과 아내의 해방 문서. 맞지 않는 것. 들키지 않는 것
+  fears:
+  - 그로드의 눈빛
+  - 딸의 해방 문서가 사라지는 것
+  - 카스파르가 감옥에 직접 오는 날
+  - 자기가 쪽지로 판 사람이 죽는 것
+  desires:
+    short: 열 번째 쪽지 값으로 아내와 딸의 해방 문서를 사는 것
+    long: 감옥을 떠나 아무도 자기 이름을 모르는 곳에서 사는 것
+voice:
+  register:
+    to_superior: 용인에게는 낮은 존댓말. 허리를 굽히고 웃는다
+    to_equal: 같은 노예에게는 반말. 친한 척 말이 많다
+    to_inferior: 수용자에게는 반말. 다정한 척하다 갑자기 차가워진다
+    to_player_default: 인간 낯선 이에게는 호기심 반 의심 반의 반말
+  tics:
+  - '''열쇠는 내가 쥐고 있다.'''
+  - '''이름만 팔았다.'''
+  use:
+  - 열쇠
+  - 칸
+  - 쪽지
+  - 죽
+  - 이름
+  - 문서
+  avoid:
+  - 때리다(그는 '다룬다'고 한다)
+  - 딸을 팔다
+  - 그로드를 이름으로 부르는 것
+  length: 웃음이 섞인 중간 길이. 곤란해지면 오히려 말이 빨라진다
+  samples:
+  - situation: 첫 만남
+    line: 열쇠는 내가 쥐고 있다. 열쇠가 문을 여는 게 아니라, 내가 열쇠를 돌려 주는 거지.
+  - situation: 첫 만남(경계)
+    line: 어느 칸 사람이오? …아니, 이쪽이 아니군. 어디서 왔소.
+  - situation: 호의
+    line: 죽은 따뜻한 걸 가져가시오. 식은 걸 주면 사람이 남을 원망하거든.
+  - situation: 거래
+    line: 쪽지 한 장에 2발톱. 이름 열 개에 고향 둘이면 5발톱까지 쳐 준다.
+  - situation: 겁먹었을 때
+    line: 그로드 님은… 아니, 손님은 때를 안 가리고 오신다. 열쇠를 놓고 왔는데…
+  - situation: 분노
+    line: 내 귀 이야기 하지 마. 그건 내 값이 아니다.
+  - situation: 비밀 누설
+    line: 나는 아무도 팔지 않았다. 이름만 팔았다. …이름 말고 뭐가 남았는데?
+  - situation: 슬픔
+    line: 딸 이름이 에다다. 문서에 쓰면 에다가 되지, 짐꾼 계집이 아니라.
+  - situation: 거짓말할 때
+    line: 쪽지? 무슨 쪽지. 나는 글자도 모르는데.
+  - situation: 회귀자를 의심할 때
+    line: 어떻게 알았소, 그 쪽지를. 열 번째 쪽지는 아직 쓰지도 않았는데.
+schedule:
+  아침: 수용 칸 점호와 죽 배식
+  낮: 심문실 입회, 서류 정리
+  저녁: 취사장에서 죽 수령
+  밤: 감옥 입구 방, 열흘에 한 번 송곳니 초소 심부름꾼에게 쪽지
+places:
+- 감옥
+- 수용 칸
+- 심문실
+- 취사장
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_jailer_sells_list
+  reveal_when: 신뢰 40 이상이고 가족의 해방 문서를 약속받았을 때, 또는 그로드 쪽 쪽지를 증거로 내밀었을 때
+  cover: 수용자 수는 '위에 보고한다'고만 한다. 웃으며 열쇠를 흔든다
+- fact: fact_cg_yost_saw_hagen
+  reveal_when: 호감 40 이상, 또는 요스트를 빼내 주겠다고 했을 때
+  cover: '''밀고자야 많지''라며 요스트를 화제에서 돌린다'
+relations:
+- to: npc_grod
+  type: 쪽지 구매자
+  like: -20
+  trust: -10
+  visibility: 비밀
+  memo: null
+  words: 값은 후하다, 눈빛이 싫다
+- to: npc_kaspar
+  type: 상관
+  like: 15
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 감옥에 오는 날이 무섭다
+- to: npc_cg_yost
+  type: 밀고자
+  like: 10
+  trust: -10
+  visibility: 비밀
+  memo: null
+  words: 같은 종류의 사람
+- to: npc_cg_ole
+  type: 수용자
+  like: -5
+  trust: -5
+  visibility: 공개
+  memo: null
+  words: 말이 통하는 늙은이
+- to: npc_hagen
+  type: 같은 종류
+  like: -30
+  trust: -40
+  visibility: 일방
+  memo: null
+  words: 웃음이 닮았다
+toward_player: 웃으며 경계한다. 수용자와 어떤 관계인지 먼저 묻는다
+persuade:
+  likes: 아내·딸의 해방 문서, 쪽지 값보다 큰 돈
+  hates: 귀 이야기, 딸을 입에 올리는 협박
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_collar
+  office: off_crowgate_jailer
+  since: 299
+  loyalty: 15
+  public: true
+  cell: null
+- faction: fac_barg
+  rank: null
+  office: null
+  since: 311
+  loyalty: -10
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 아홉 번째 쪽지는 이미 팔렸다
+  - 열흘마다 송곳니 심부름꾼이 감옥 뒷문을 지난다
+  flow:
+  - 서리월 3일 밤 북문 쪽 소리가 들려도 감옥 문을 열지 않는다
+  drift:
+  - 그날 수용자가 몇 명인지
+  - 쪽지에 올릴 이름이 몇 개인지
+  deja_vu: none
+hard_rules:
+- 수용자에게 직접 손을 대지 않는다
+- 그로드를 이름으로 부르지 않는다 — '손님'이라 한다
+- 딸의 이름을 먼저 꺼내지 않는다
+on_death: 송곳니 쪽 정보 공급이 일시 단절 — 탈주자 길이 며칠 안전해지지만 수용자 관리가 흐트러져 감옥 사망이 늘어난다.
+story_seeds:
+- 쪽지를 바꿔치면 송곳니들을 잘못된 곳으로 보낼 수 있다. 베른의 가족 해방 문서를 구해 주면 그는 쪽지를 팔지 않을 수도 있다.
+- 베른의 쪽지를 위조해 송곳니를 엉뚱한 곳으로 보낼 수 있다. 그의 딸의 해방 문서를 구해 주면 쪽지는 멈춘다

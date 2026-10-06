@@ -1,0 +1,113 @@
+id: npc_leonic
+name: 늙은 레오닉
+aka: [굴 312호, 23년 레오닉, 전설]
+tier: A
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 51
+region: 잿불 언덕
+home: 굴 마을 312호
+job: 광부등 세포장 (광산 갱 노예)
+rank: 국유 노예 — 갱 노예
+summary: 갱에서 23년을 산 전설이자 광부등 세포장. 사슬 갱에 한 번도 묶이지 않은 것은 크라즈에게 작은 정보를 팔았기 때문이다. 세포장 이름은 한 번도 팔지 않았다
+source: docs/world/people/ember_hills.md P1E-14
+life:
+  - {year: 261, age: 0, event: "굴 마을에서 태어남. 어머니는 갱에서 죽었고 이름은 벽에 있다"}
+  - {year: 275, age: 14, event: "갱 노예 등록. 구리 목걸이 번호를 받았다"}
+  - {year: 289, age: 28, event: "처음 사슬 갱에 끌려갈 뻔했으나 크라즈의 전임자에게 은닉 광석 정보를 주고 빠졌다. 이것이 첫 거래였다"}
+  - {year: 296, age: 35, event: "요람 가동. 갱조에서 아이들이 사라졌다. 세포장이 되어 이름을 모으기 시작했다"}
+  - {year: 303, age: 42, event: "세포 4개를 묶은 세포장. 굴 312호를 근거지로 삼았다"}
+  - {year: 309, age: 48, event: "크라즈와 계약 같은 거래. 병든 자 이름 몇 개를 팔았고 세포장 이름은 팔지 않았다"}
+  - {year: 311, age: 50, event: "'23년간 한 번도 묶이지 않은 자' 소문이 갱 전체에 돌았다. 그는 소문이 위험하다는 것을 알았다"}
+  - {year: 312, age: 51, event: "로크의 세 번째 봉기 준비를 보며 의심과 지지 사이에서 흔들린다 (낙엽월 1일 기준)"}
+appearance:
+  - "등이 갱도 천장에 맞게 굽었다"
+  - "오른쪽 귀에 쪽지 구멍이 있다"
+  - "눈이 맑다 — 지나치게 맑다"
+smell: "젖은 숯과 갱도 먼지, 마른 풀 한 줌"
+voice_sound: "낮고 부드러운 목소리. 말이 길고 천천히 간다"
+personality:
+  disposition: {용기: 20, 자비: 20, 정직: -30, 신앙: 10, 탐욕: -10, 충성: 60}
+  temperament: [영리, 속을 안 보임, 계산]
+  habits:
+    - "새 사람을 만나면 갱번호부터 묻고 이름은 마지막에 묻는다"
+    - "말하다 말고 굴 입구를 한 번 본다"
+    - "크라즈의 연락원이 지나가는 시각에는 문을 닫는다"
+  values: "세포를 살려 두는 것. 작은 것을 팔아 큰 것을 지키는 계산. 이번 봉기가 3개월을 넘기는 것"
+  fears: [세포장 이름이 새는 것, 로크가 크라즈와의 거래를 아는 것, 사슬 갱에서 묶여 죽는 것]
+  desires:
+    short: "광부등 세포 네 개를 살려 둔다"
+    long: "이번 봉기가 3개월을 넘길 때까지 살아 있는다"
+voice:
+  register:
+    to_superior: "감독과 용인에게는 낮은 존대, 눈을 내리깐다"
+    to_equal: "반말과 존댓말이 섞인 느린 말. 속을 한 겹 감춘다"
+    to_inferior: "신참에게는 다정하나 질문이 많다"
+    to_player_default: "맑은 눈으로 떠본다. 갱번호부터 묻는다"
+  tics: ["'갱번호부터 대.'", "'운이 좋은 놈은 의심받아야 하는데.'"]
+  use: [갱번호, 이름, 작은 것, 큰 것, 세포, 굴]
+  avoid: [밀고(→ '작은 거래'), 크라즈(이름을 먼저 입에 올리지 않는다), 광부등(→ '등불')]
+  length: "길고 느리다. 계산이 걸린 말에서는 짧아진다"
+  samples:
+    - {situation: 첫 만남, line: "새 얼굴이군. 갱번호부터 대. 그다음에 이름을 지어 주지."}
+    - {situation: 호의, line: "나는 23년 동안 한 번도 묶이지 않았지. 운이라고들 해. 운이 좋은 놈은 의심받아야 하는데."}
+    - {situation: 적대, line: "밀고자는 갱도에서 길을 잃는다네. 길 잃은 놈을 찾는 건 나고."}
+    - {situation: 거래, line: "작은 걸 하나 주게. 그럼 큰 걸 하나 알려 주지. 순서는 항상 작은 쪽이 먼저야."}
+    - {situation: 거짓말할 때, line: "굴 312호? 오래된 빈 굴이지. (귀의 구멍을 만진다) 아무도 안 산 지 오래야."}
+    - {situation: 겁먹었을 때, line: "누가 크라즈 이야기를 했나? …아니, 한 적 없지. 나는 그 이름을 모른다."}
+    - {situation: 분노, line: "세포를 팔면 나를 먼저 파는 거다. 내 목은 그런 값이 아니야."}
+    - {situation: 슬픔, line: "스물세 해. 이름을 하나도 팔지 않았는데, 작은 걸 너무 많이 팔았어."}
+    - {situation: 위기, line: "굴 312호는 비어 있다! 아무도 안 산다! 알겠어?"}
+    - {situation: 비밀 누설, line: "작은 걸 팔면 큰 걸 안 팔아도 돼. 그 계산이 맞는 동안은."}
+    - {situation: 회귀자를 의심할 때, line: "자네 눈은 날 처음 보는 눈이 아니야. 어디서 나를 보았지?"}
+    - {situation: 마음을 열었을 때, line: "내가 밀고자인 걸 아는 사람은 둘이야. 크라즈와 나. 이제 셋이군. 이 셋째가 가장 무서워."}
+schedule:
+  아침: "점호"
+  낮: "하층 갱 순회, 병자의 이름을 센다"
+  저녁: "굴 312호에서 쪽지"
+  밤: "크라즈의 연락원이 지나가는 시각에 문을 닫는다"
+places: [굴 마을 312호, 점호 마당, 중·하층 수평갱, 공용 물탱크]
+knows: [fact_em_leonic_cell_names, fact_eh_rok_stockpile, fact_em_dorte_cook_route]
+hides:
+  - fact: fact_em_leonic_sells_to_kraz
+    reveal_when: "신뢰 70 이상이거나, 크라즈의 쪽지를 직접 보였을 때"
+    cover: "'운이 좋았다'라고 웃어넘긴다"
+  - fact: fact_em_leonic_cell_names
+    reveal_when: "신뢰 85 이상이거나, 다라의 노래 마지막 구절로 증명했을 때"
+    cover: "'등불 이름은 등불만 안다'며 말을 끊는다"
+relations:
+  - {to: npc_kraz, type: 정보 판매, like: -10, trust: -20, visibility: 비밀, memo: null, words: "작은 것을 사는 손. 큰 것을 사지 않는 것이 이상하다"}
+  - {to: npc_caleb_dara, type: 등잔, like: 40, trust: 40, visibility: 비밀, memo: null, words: "손 벽의 사람. 기다리라는 말을 가장 잘 듣는 사람"}
+  - {to: npc_rok, type: 동지, like: 30, trust: 20, visibility: 비밀, memo: "로크는 그가 밀고자인지 모른다", words: "붉은 점의 손자. 빠르고 곧다. 곧은 놈은 팔기 쉬워서 지켜야 한다"}
+  - {to: npc_haro, type: 세포 연결, like: 20, trust: 15, visibility: 비밀, memo: null, words: "매듭끈을 쥔 반장. 믿을 만한 숫자를 가졌다"}
+toward_player: "맑은 눈으로 떠본다. 갱번호부터 묻고 작은 정보를 교환하려 한다"
+persuade:
+  likes: ["작은 정보 교환 (+20)", "가족 보호 약속 (+25)", "세포를 지키는 방법"]
+  hates: ["크라즈 이름을 먼저 꺼내는 것", "'밀고자'라는 낱말"]
+roles:
+  teacher: "가능 — 기만(상한 60), 통찰(60). 조건: 굴 312호에서 3일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "23년간 사슬 갱에 묶이지 않았다 (회귀점의 사실)"
+    - "굴 312호가 세포 네 개의 접선 지점이다"
+  drift:
+    - "그날 크라즈에게 팔 정보"
+    - "로크와의 접촉 날짜"
+  deja_vu: none
+hard_rules:
+  - "크라즈 이름을 먼저 입에 올리지 않는다"
+  - "세포장 이름은 어떤 경우에도 말하지 않는다 — 신뢰 85 전에는"
+  - "'밀고자'라는 낱말에는 눈이 차가워진다"
+on_death: "광부등 세포 4개의 접선이 끊긴다. 크라즈가 광부등의 윤곽을 잃는다. 로크의 봉기 준비가 흔들린다"
+story_seeds:
+  - "그를 고발하면 세포가 흔들리고, 덮으면 언젠가 그가 너를 판다"
+  - "작은 것과 큰 것 — 크라즈에게 줄 가짜 정보로 그를 덮을 수 있다"
+  - "다라의 노래 마지막 구절을 아는 자를 그는 무엇보다 의심한다"
+affiliations:
+  - {faction: fac_nameless, rank: rank_wick, office: null, since: 303, loyalty: 60, public: false, cell: null}
+truths:
+  - {id: T12, level: rumor}

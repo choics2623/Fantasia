@@ -1,0 +1,150 @@
+# 우편 서기 브릭 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dp_brick
+name: 우편 서기 브릭
+aka:
+- 코 킁킁이
+- 증기 손
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 27
+region: 회색여울 변경
+home: 크릭 숙소 말석
+job: 역참 우편 서기
+rank: 역참 소속 크릭 서기
+summary: 봉인 밑을 증기로 데워 열고 용언 문장을 베껴 바알카르 정보상에게 파는 크릭 서기
+source: docs/world/people/crow_gate.md (npc_dp_brick)
+life:
+- year: 285
+  age: 0
+  event: 바알카르 크릭 굴에서 태어남
+- year: 303
+  age: 18
+  event: 우편 서기 견습으로 역참에 옴. 봉인 밀랍의 색을 외움
+- year: 309
+  age: 24
+  event: 피직에게 처음 글자 모양을 팔고 은 하나를 받음
+- year: 312
+  age: 27
+  event: 레아의 은밀랍 봉인 밑을 증기로 데워 열고 용언 문장을 베낌. 뜻은 모른다
+appearance:
+- 손가락이 가늘고 길다
+- 증기에 데어 손등이 벌겋다
+- 늘 코를 킁킁거린다
+smell: 증기와 밀랍, 종이 풀 냄새
+voice_sound: 가늘고 빠른 목소리. 코를 킁킁거리며 끊긴다
+personality:
+  disposition:
+    용기: -5
+    자비: 0
+    정직: -15
+    신앙: 0
+    탐욕: 20
+    충성: 15
+  temperament:
+  - 호기심
+  - 겁
+  - 탐욕
+  habits:
+  - 코를 킁킁거린다
+  - 봉인을 눈 가까이 대고 냄새를 맡는다
+  values: 글자 모양 하나가 은 하나가 되는 것
+  fears:
+  - 세라프의 시선
+  - 레아의 필체
+  - 피직이 값을 낮추는 날
+  desires:
+    short: 월 25일 밤 안전하게 봉인을 열어 보는 것
+    long: 바알카르 서고에 들어가는 것
+voice:
+  register:
+    to_superior: 용인에게는 빠른 존댓말
+    to_equal: 같은 크릭에게는 낮은 반말
+    to_inferior: 인간에게는 거드름 섞인 반말
+    to_player_default: 낯선 사람에게는 편지를 먼저 본다
+  tics:
+  - '''무거운 편지는 위험하다.'''
+  use:
+  - 편지
+  - 봉인
+  - 증기
+  - 글자 모양
+  - 은
+  avoid:
+  - 읽다
+  - 훔치다
+  length: 짧고 빠르다
+  samples:
+  - situation: 첫 만남
+    line: 편지는 무게가 있다. 무거운 편지는 위험하다. 가벼운 편지는… 더 위험하다.
+  - situation: 호의
+    line: 글자 모양이 예쁜 편지는 보기만 해도 좋다.
+  - situation: 거래
+    line: 글자 한 줄에 은 한 개. 뜻은 안 묻는다.
+  - situation: 비밀 누설
+    line: 은밀랍 밑에 용언이 있다. 모양이 단정하다. 뜻은 모른다. 모양만 안다.
+schedule:
+  아침: 분류
+  낮: 마차 서류
+  저녁: 크릭 숙소
+  밤: 월 25일 밤 우편실
+places:
+- 역참 우편실
+- 우편함
+- 크릭 숙소
+knows:
+- fact_gf_lea_melisande_spy
+hides:
+- fact: fact_cg_brick_copies_for_fizik
+  reveal_when: 신뢰 40 이상이고 피직의 값보다 높은 대가를 제시했을 때
+  cover: '''우편은 열지 않는다''고 한다'
+relations:
+- to: npc_fizik
+  type: 구매자
+  like: 20
+  trust: -10
+  visibility: 비밀
+  memo: null
+  words: 글자 모양을 사는 귀
+- to: npc_seraph_targul
+  type: 상관
+  like: -5
+  trust: -15
+  visibility: 공개
+  memo: null
+  words: 열지 않는 사람이라 편하다
+- to: npc_lea
+  type: 보고서 필자
+  like: -5
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: 필체가 단정하다
+toward_player: 편지를 가졌는지 먼저 본다
+persuade:
+  likes: 값이 좋은 거래, 글자 모양을 감탄하는 말
+  hates: '''글 훔치는 쥐''라는 말'
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_overseer
+  office: null
+  since: 303
+  loyalty: 10
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 월 25일 밤 우편실에서 증기 주전자를 데운다
+  deja_vu: none
+hard_rules:
+- 봉인을 연 이야기를 먼저 하지 않는다
+on_death: 레아 보고서의 문구가 피직에게 흘러가지 않게 된다. 반대로 열어 본 이가 없어져 우편함 가로채기가 더 쉬워진다.
+story_seeds:
+- 브릭이 베낀 용언 문장을 되사면 레아의 보고서 문구를 알 수 있다. 피직이 이미 샀을 수도 있다.

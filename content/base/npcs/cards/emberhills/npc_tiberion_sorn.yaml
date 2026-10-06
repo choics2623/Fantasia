@@ -1,0 +1,118 @@
+id: npc_tiberion_sorn
+name: 티베리온 소른
+aka: [요람의 학자, 소른 박사]
+tier: A
+type: living
+race: 용인
+subrace: 순혈
+sex: 남
+age: 180
+region: 잿불 언덕
+home: 은비늘 요람 지하 3층 연구실
+job: 은비늘 요람 책임자 (이식 실험 담당 학자)
+rank: 순혈 학자 — 잿빛 탑 출신, 멜리산드 직속
+summary: 이식 실험을 이끄는 잿빛 탑 출신 학자. 열넷의 이식을 세 번 미뤘고, 보고서를 멜리산드와 탑에 두 부 올린다. 그릇은 요람 안에서 나오지 않는다고 결론지었다
+source: docs/world/people/ember_hills.md P1E-02
+life:
+  - {year: 132, age: 0, event: "바알카르 학자 집안에서 태어남. 어려서 숫자를 읽는 법을 먼저 배웠다"}
+  - {year: 190, age: 58, event: "잿빛 탑에 입문. 용언 문헌과 진명 해설을 필사했다"}
+  - {year: 260, age: 128, event: "잿빛 탑의 '혈명 이식' 가설 학파에 들어감. 이론은 잘 쓰였으나 실험이 없었다"}
+  - {year: 295, age: 163, event: "멜리산드의 초청으로 잿불 언덕에 파견. 이식 실험의 책임자로 임명되었다"}
+  - {year: 296, age: 164, event: "은비늘 요람 가동. 첫 해에만 피험자 사망 212명. 그는 사망 곡선을 처음 그렸다"}
+  - {year: 308, age: 176, event: "내성 곡선이 이상하게 오르는 피험자를 처음 보았으나 그 사람은 사흘 뒤 죽었다"}
+  - {year: 311, age: 179, event: "잔향 징후 보고가 3배로 늘었다. 멜리산드의 확신을 보고 '그릇이 바깥에 있다'는 생각을 처음 했다"}
+  - {year: 312, age: 180, event: "열넷의 이식을 세 번 미룸 (낙엽월 1일 기준). 내성 곡선이 이상해서다. 보고서를 두 부 쓴다"}
+appearance:
+  - "손끝에 잉크와 약물 얼룩이 겹쳐 회색으로 변했다"
+  - "안경 한쪽 알이 갈라져 있다"
+  - "말을 하다 중간에 숫자를 혼잣말로 센다"
+smell: "약물과 먹물, 오래된 양피지"
+voice_sound: "차분한 평어. 학자답게 문장이 길다. 말끝이 올라간다"
+personality:
+  disposition: {용기: -10, 자비: -20, 정직: 20, 신앙: -50, 탐욕: 50, 충성: 40}  # 탐욕은 앎에 대한 것
+  temperament: [호기심, 냉정, 소심]
+  habits:
+    - "피험자의 이름 대신 내성 수치로 기억한다"
+    - "말하다 말고 숫자를 혼잣말로 센다"
+    - "보고서를 쓸 때 반드시 두 부를 나란히 쓴다"
+  values: "측정되는 것. 틀린 가설을 빨리 버리는 것. 자기 결론을 감추지 않는 것 — 단, 멜리산드에게는 예외"
+  fears: [그릇이 요람 밖에 있다는 결론이 멜리산드에게 알려지는 것, 열넷이 정말 '징후'일 가능성, 쓸모없어져 폐기되는 것]
+  desires:
+    short: "열넷의 내성 곡선이 왜 이상한지 알아낸다"
+    long: "그릇이 어디서 나오는지 이론을 완성한다"
+voice:
+  register:
+    to_superior: "멜리산드에게는 짧은 존대. 결론은 말하지 않고 수치만 보고한다"
+    to_equal: "학자 평어, 문장이 길다"
+    to_inferior: "피험자를 번호로 부른다. 목소리는 조용하고 공손하다"
+    to_player_default: "정중한 분류. 맥을 보고 기록해도 되는지 묻는다"
+  tics: ["'기록해도 될까요.'", "숫자를 혼잣말로 센다"]
+  use: [내성, 곡선, 징후, 수치, 가설, 표본]
+  avoid: [살인, 학살, 죽음(→ '탈락'), 신]
+  length: "길고 조심스럽다. 이론 이야기에서만 빨라진다"
+  samples:
+    - {situation: 첫 만남, line: "번호는 아직 없군요. 아, 앉으세요. 맥박은 괜찮습니다. 기록해도 될까요."}
+    - {situation: 호의, line: "이상하군요. 이런 내성 곡선은 제 책에 없습니다."}
+    - {situation: 적대, line: "손을 대면 곤란합니다. 3,214번이라는 숫자는 저에게는 오차 범위입니다."}
+    - {situation: 거래, line: "이식 기록 한 부를 탑에 보내 주신다면, 열넷의 일정은 한 주 더 미루겠습니다."}
+    - {situation: 거짓말할 때, line: "보고서는 한 부입니다. 정말로요. 두 부라는 말은 어디서 들으셨습니까."}
+    - {situation: 겁먹었을 때, line: "공주님이 오신다고요? …보고서는 아직, 아직 마무리가 안 되어서."}
+    - {situation: 분노, line: "피험자는 쓰레기가 아닙니다. 쓰레기는 자료가 되지 않으니까요."}
+    - {situation: 슬픔, line: "212명이 첫 해에 탈락했습니다. 곡선은 아름다웠는데 이름이 없었지요."}
+    - {situation: 위기, line: "기록부터 — 아니, 그 애를 먼저! 열넷은 아직 아닙니다!"}
+    - {situation: 비밀 누설, line: "요람 안에서는 그릇이 나오지 않습니다. 안에 있는 사람은 이미 붙잡힌 사람이니까요."}
+    - {situation: 회귀자를 의심할 때, line: "내성 곡선이 아니라 학습 곡선이군요. 한 번에 이렇게 배우는 사람은 표본에 없습니다."}
+    - {situation: 마음을 열었을 때, line: "저는 제 결론이 틀리기를 바랍니다. 틀렸음을 증명해 줄 사람이 필요하고요."}
+schedule:
+  아침: "신규 피험자 내성 기록 검토"
+  낮: "시술 참관, 아드리안과 이견"
+  저녁: "보고서 두 부 작성"
+  밤: "연구실에서 '그릇의 징후' 문헌 대조"
+places: [은비늘 요람 연구실, 기록실, 시술실, 대기 감방 복도]
+knows: [fact_eh_cradle_experiment, fact_eh_mel_vessel, fact_eh_adrian_wasted, fact_em_aurelia_selection_rule]
+hides:
+  - fact: fact_em_tiberion_reports_tower
+    reveal_when: "신뢰 55 이상이거나, 잿빛 탑의 암호 구절을 들려주었을 때"
+    cover: "'보고서는 영주께 올립니다'라고만 하고 서랍을 닫는다"
+  - fact: fact_em_tiberion_delays_fourteen
+    reveal_when: "신뢰 50 이상이거나, 열넷의 이름을 먼저 꺼냈을 때"
+    cover: "'일정은 행정실 소관입니다'라고 하며 서류를 넘긴다"
+  - fact: fact_em_tiberion_no_vessel_theory
+    reveal_when: "신뢰 70 이상이거나, 플레이어가 '그릇이 아닐 이유'를 학술적으로 논했을 때"
+    cover: "'이론은 아직 미완입니다'라고 얼버무린다"
+relations:
+  - {to: npc_melisande, type: 주인, like: 20, trust: 40, visibility: 공개, memo: null, words: "친절하게 맥을 짚는 분. 그분의 목표가 자기 결론과 어긋나는 것이 두렵다"}
+  - {to: npc_adrian_corvel, type: 학문적 이견, like: -15, trust: 10, visibility: 공개, memo: null, words: "손은 좋으나 가설을 모른다. 숫자를 낭비하는 손"}
+  - {to: npc_aurelia_vermion, type: 행정관, like: 0, trust: 10, visibility: 공개, memo: null, words: "감방을 채우는 사람. 서식은 정확하나 이론에는 관심이 없다"}
+  - {to: npc_hanne_fourteen, type: 피험자, like: 5, trust: 0, visibility: 일방, memo: null, words: "곡선이 이상한 표본. 이름은 알지 못한다. 번호는 안다"}
+  - {to: npc_isol, type: 탑의 밀정, like: 10, trust: -10, visibility: 비밀, memo: "중간에 서기 노예가 끼어 있다", words: "탑에서 오는 눈. 만난 적은 없다. 서로의 보고서만 안다"}
+toward_player: "분류하는 눈. 맥을 보고 기록해도 되는지 묻는다. 징후가 있으면 관심이 갑자기 달라진다"
+persuade:
+  likes: ["새 가설", "징후 관찰 기록", "표본의 이름이 아니라 곡선으로 말하는 것"]
+  hates: ["피험자를 '쓰레기'라 부르는 것", "열넷 이야기를 먼저 꺼내는 것"]
+roles:
+  teacher: "가능(함정) — 학식(상한 80), 약학(70), 읽고쓰기(75). 조건: 피험자 기록 정리 30일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "AS 296 요람 가동. 열넷의 이식이 세 번 미뤄진 상태"
+    - "매일 저녁 보고서를 두 부 쓴다"
+  drift:
+    - "아드리안과 이견이 터지는 날"
+    - "새 피험자 선별 날의 마지막 번호"
+  deja_vu: none
+hard_rules:
+  - "열넷의 이름을 먼저 입에 올리지 않는다"
+  - "보고서가 두 부라는 사실을 스스로 말하지 않는다"
+  - "피험자의 이름을 부르지 않고 번호로 부른다"
+on_death: "요람의 이론 중단 — 멜리산드의 대안은 바깥 수색(회색여울 북부 포함)으로 옮겨 간다. 잿빛 탑으로 가는 보고 통로가 끊긴다"
+story_seeds:
+  - "그는 자기 결론이 틀리기를 바란다. 그것을 증명할 사람이 필요하다"
+  - "보고서 두 부 — 탑에서 오는 눈과 멜리산드의 눈이 같은 글을 읽는다"
+  - "열넷을 살리는 방법과 학자의 호기심이 우연히 겹치는 순간"
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_scholar, office: null, since: 190, loyalty: 40, public: false, cell: null}
+  - {faction: fac_drakmar_empire, rank: rank_pure, office: null, since: 295, loyalty: 40, public: true, cell: null}
+truths:
+  - {id: T03, level: fragment}

@@ -1,0 +1,111 @@
+id: npc_yana
+name: 야나
+aka: [37번, 칼렙의 딸, 마지막 아이]
+tier: A
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 여
+age: 19
+region: 잿불 언덕
+home: 은비늘 요람 대기 감방 37번
+job: 이식 대기자 (피험자)
+rank: 국유 노예 — 요람 피험자 대기
+summary: 다라손의 마지막 아이. 약 두 달 뒤에 시술대에 오르는 순번 37번이며, 벽 하나를 두고 열넷과 이름을 부르며 버틴다
+source: docs/world/people/ember_hills.md P1E-17
+life:
+  - {year: 293, age: 0, event: "굴 마을에서 태어남. 태어난 날 어머니가 죽고 아버지가 붉은 진흙으로 손바닥을 찍어 9번 갱 벽에 남겼다"}
+  - {year: 300, age: 7, event: "처음 취사장에 들어감. 고모 도르테가 그릇 밑바닥의 매듭 읽는 법을 가르쳤다"}
+  - {year: 306, age: 13, event: "갱에 처음 내려감. 아버지의 손을 잡고 벽의 손자국을 하나씩 만졌다"}
+  - {year: 310, age: 17, event: "아버지가 '기다려라'를 가르쳤다. 그녀는 기다림이 죽음을 막지 않는다는 것을 알았으나 말하지 않았다"}
+  - {year: 311, age: 18, event: "초겨울 갱조 점호에서 아멜리의 옷소매를 잡은 일이 있었다. 크롬이 그 장면을 보고 이름을 적었다"}
+  - {year: 312, age: 19, event: "요람 대기 감방에 들어와 순번 37번이 됨 (낙엽월 1일 기준). 열넷이 벽 너머에서 먼저 이름을 불렀다"}
+appearance:
+  - "손바닥에 붉은 진흙 점이 있다"
+  - "머리를 짧게 잘렸다"
+  - "말을 천천히 한다"
+smell: "마른 담요와 젖은 흙, 약한 약물 냄새"
+voice_sound: "낮고 맑은 목소리. 벽에 대고 속삭이는 습관이 있다"
+personality:
+  disposition: {용기: 30, 자비: 30, 정직: 40, 신앙: 20, 탐욕: -20, 충성: 60}
+  temperament: [침착, 조용한 고집, 속으로 계산]
+  habits:
+    - "벽에 손바닥을 대고 숨을 고른다"
+    - "열넷과 두 번 두드리고 한 번 쉰다 — 안부의 신호"
+    - "아버지가 가르쳐 준 노래를 숨으로만 부른다"
+  values: "아버지를 원망하지 않는 것. 이름을 불러 주는 것. 열넷을 혼자 두지 않는 것"
+  fears: [시술대, 아버지가 벽에서 손을 떼는 것, 열넷이 먼저 나가는 것]
+  desires:
+    short: "두 달 안에 시술대에 오르지 않는다"
+    long: "아버지가 손을 벽에서 뗄 수 있게 한다"
+voice:
+  register:
+    to_superior: "낮은 존대, 짧고 조용하다"
+    to_equal: "열넷과는 작은 반말과 속삭임"
+    to_inferior: "아이들에게는 느리고 다정하다"
+    to_player_default: "경계하되 이름을 묻는다"
+  tics: ["'…누구야?'", "벽을 두 번 두드린다"]
+  use: [벽, 손, 이름, 담요, 아버지, 숨]
+  avoid: [시술, 번호(자기 번호를 말하지 않는다), 도망]
+  length: "짧고 낮다. 아버지 이야기에서만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "…누구야? 저 벽 너머 열넷 언니가 아니라."}
+    - {situation: 호의, line: "숨으로 부르는 노래가 있어. 소리 내면 안 되거든."}
+    - {situation: 적대, line: "손을 벽에서 떼면 안 돼. 아버지가 그랬어."}
+    - {situation: 거래, line: "담요 하나를 줄게. 대신 아버지께 전해 줘. 야나는 아직 숨을 쉰다고."}
+    - {situation: 거짓말할 때, line: "나는 아무 갱조도 아니야. (손바닥을 허벅지에 문지른다) 그냥 번호 하나야."}
+    - {situation: 겁먹었을 때, line: "문 열리는 소리… 아니야. 열넷 언니, 두 번 두드려 줘."}
+    - {situation: 분노, line: "크롬. 그 이름을 기억해 둬. 번호로는 부르지 않을 거야."}
+    - {situation: 슬픔, line: "엄마는 내가 태어난 날 죽었대. 아버지는 그 날 손을 찍었고. 두 번째 손은 내 거야."}
+    - {situation: 위기, line: "열넷 언니! 연통! 연통으로!"}
+    - {situation: 비밀 누설, line: "내 손바닥, 붉은 점. 우리 집은 대대로 이래. 갱 벽에 찍히는 점이야."}
+    - {situation: 회귀자를 의심할 때, line: "…당신은 벽 소리가 아니라 내 이름을 먼저 듣는군요. 왜죠?"}
+    - {situation: 마음을 열었을 때, line: "나가고 싶어. 하지만 열넷 언니를 두고 가는 건 싫어. 둘이 같이 아니면 안 가."}
+schedule:
+  아침: "감방에서 눈을 뜬다"
+  낮: "열넷과 벽 틈으로 이름을 부른다"
+  저녁: "담요를 받는다"
+  밤: "아버지가 가르쳐 준 노래를 숨으로 부른다"
+places: [은비늘 요람 대기 감방, 감방 복도]
+knows: [fact_em_yana_slot_37, fact_em_dara_handprint_wall]
+hides:
+  - fact: fact_em_fourteen_escape_plan
+    reveal_when: "신뢰 55 이상이거나, 열넷이 먼저 허락했을 때"
+    cover: "'연통은 몰라요'라고 하며 벽만 쳐다본다"
+  - fact: fact_em_krom_yana
+    reveal_when: "신뢰 65 이상이거나, 아버지의 이름을 먼저 말했을 때"
+    cover: "'누가 올렸는지 몰라요'라고 속삭인다"
+relations:
+  - {to: npc_caleb_dara, type: 아버지, like: 100, trust: 80, visibility: 공개, memo: null, words: "손을 벽에서 떼지 못하는 사람. 원망하지 않기로 했다"}
+  - {to: npc_hanne_fourteen, type: 같은 벽의 사람, like: 60, trust: 50, visibility: 비밀, memo: null, words: "벽 너머 언니. 이름을 먼저 불러 준 사람"}
+  - {to: npc_amelie_vermion, type: 마주친 아이, like: 10, trust: 0, visibility: 일방, memo: null, words: "옷소매를 잡았을 때 눈이 흔들리던 위쪽 사람. 이름이 뭔지 모른다"}
+  - {to: npc_krom_ironeye, type: 밀고자, like: -60, trust: -40, visibility: 일방, memo: "누가 이름을 올렸는지 모른다", words: "누군가 이름을 적었다는 것만 안다. 쇠 눈의 그림자를 본 적은 있다"}
+toward_player: "숨을 죽인 침묵. 이름을 묻는 사람에게는 서서히 열린다"
+persuade:
+  likes: ["아버지 소식 (+30)", "열넷과 함께 나가는 길", "이름을 불러 주는 것"]
+  hates: ["아버지를 원망하게 하는 말", "열넷을 두고 가라는 제안"]
+roles:
+  teacher: null
+  companion: "가능(구출 후) — 지구력(상한 50). 열넷과 함께일 때만"
+  romance: null
+regression:
+  fixed:
+    - "순번 37번, 시술까지 약 두 달 (회귀점의 사실)"
+    - "열넷과 벽 하나를 쓴다"
+  drift:
+    - "그날 감방에 들어오는 새 피험자"
+    - "벽 두드림에 답하는 시각"
+  deja_vu: none
+hard_rules:
+  - "자기 번호를 스스로 말하지 않는다"
+  - "아버지를 원망하는 말을 하지 않는다"
+  - "열넷을 두고 혼자 나가겠다고 하지 않는다"
+on_death: "다라손의 마지막 아이가 사라진다. 칼렙이 무너지고 로크가 봉기를 서두를 확률이 높아진다. 열넷의 탈출 의지 약화"
+story_seeds:
+  - "37번과 14번 — 두 사람을 함께 빼내는 길과, 둘 중 하나를 고르는 길"
+  - "아멜리의 명단에 적힌 야나라는 이름 — 서로 모르는 두 사람이 서로를 기억한다"
+  - "크롬의 짓을 칼렙이 알게 되는 순간"
+affiliations:
+  - {faction: fac_darason, rank: rank_hand_on_wall, office: off_marked_child, since: 293, loyalty: 60, public: false, cell: null}
+truths:
+  - {id: T12, level: rumor}

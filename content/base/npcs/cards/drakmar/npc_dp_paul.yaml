@@ -1,0 +1,150 @@
+# 계산 노예 파울 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dp_paul
+name: 계산 노예 파울
+aka:
+- 숫자 파울
+- 마차 바닥 판
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 38
+region: 회색여울 변경
+home: 도르반의 마차 바닥 판 밑 한 칸
+job: 도르반의 계산 노예
+rank: 도르반 소유 노예
+summary: 도르반의 이중 장부를 아는 계산 노예. 사본을 마차 바닥 판 밑에 숨겨 두고 자기 값을 치를 날을 기다린다
+source: docs/world/people/crow_gate.md (npc_dp_paul)
+life:
+- year: 274
+  age: 0
+  event: 바알카르 재받이 빈민가에서 태어남. 어미가 글자를 가르쳐 줌
+- year: 296
+  age: 22
+  event: 곡물 시장 서기로 일하다 빚에 팔림. 도르반이 샀다
+- year: 310
+  age: 36
+  event: 도르반의 이중 장부를 처음 맡음
+- year: 312
+  age: 38
+  event: 장부 사본 한 권을 쓰고 마차 바닥 판 밑에 숨김
+appearance:
+- 왼쪽 눈이 약간 감겼다
+- 손가락 끝이 장부 먹으로 검다
+- 걸을 때 언제나 계산하듯 입술이 움직인다
+smell: 종이와 먹, 마차 기름 냄새
+voice_sound: 낮고 조용한 목소리. 숫자를 말할 때만 또렷하다
+personality:
+  disposition:
+    용기: -5
+    자비: 10
+    정직: 25
+    신앙: 0
+    탐욕: 0
+    충성: 15
+  temperament:
+  - 영리
+  - 겁
+  - 끈질김
+  habits:
+  - 숫자를 말하기 전에 입술이 먼저 움직인다
+  - 손가락 끝의 먹을 문질러 지운다
+  values: 자기 값을 치르는 것. 숫자가 맞는 것
+  fears:
+  - 도르반이 사본을 알아채는 것
+  - 헨릭의 인장
+  - 값이 오르는 날
+  desires:
+    short: 자기 값을 치를 길을 찾는 것
+    long: 어머니가 가르쳐 준 글자로 책 한 권을 쓰는 것
+voice:
+  register:
+    to_superior: 주인에게는 낮은 존댓말. 숫자부터
+    to_equal: 같은 노예에게는 반말. 말이 느리다
+    to_inferior: 아이에게는 숫자 이야기를 하는 반말
+    to_player_default: 낯선 사람에게는 먼저 장부를 가린다
+  tics:
+  - '''숫자는 거짓말을 못 한다.'''
+  use:
+  - 숫자
+  - 장부
+  - 값
+  - 먹
+  - 마차
+  avoid:
+  - 글자(그는 '표시'라 한다)
+  - 사본
+  length: 짧고 정확하다
+  samples:
+  - situation: 첫 만남
+    line: 숫자는 거짓말을 못 한다. 거짓말을 하는 건 숫자를 쓰는 손이지.
+  - situation: 호의
+    line: 오늘은 틀린 칸이 없다. 이런 날은 잠이 편하다.
+  - situation: 거래
+    line: 내 값이 얼마인지 알아야 한다. 값을 알면 치를 길이 보인다.
+  - situation: 비밀 누설
+    line: 마차 바닥 판 밑이다. 한 권이다. 손을 닦고 만져라. 먹이 번진다.
+schedule:
+  아침: 장부 정리
+  낮: 창고 곡물 수
+  저녁: 마차 청소
+  밤: 마차 바닥 판 밑 사본
+places:
+- 도르반의 방
+- 짐마차 마당
+- 역참 창고
+knows:
+- fact_gf_henrik_granary_skim
+hides:
+- fact: fact_cg_paul_ledger_copy
+  reveal_when: 신뢰 45 이상이고 그의 값을 치를 길을 제시했을 때
+  cover: '''장부는 주인 것''이라 한다'
+relations:
+- to: npc_dorvan
+  type: 주인
+  like: -10
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 값을 아는 사람
+- to: npc_dp_beta
+  type: 같은 노예
+  like: 15
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: 말이 통한다
+- to: npc_henrik
+  type: 거래 상대의 장부
+  like: -20
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: 인장만 안다
+toward_player: 장부부터 가린다
+persuade:
+  likes: 자기 값을 치를 길, 정직한 숫자
+  hates: 글자를 아는 척 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_serf
+  office: null
+  since: 296
+  loyalty: -5
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 사본은 마차 바닥 판 밑에 있다
+  deja_vu: none
+hard_rules:
+- 사본 이야기를 먼저 꺼내지 않는다
+on_death: 헨릭 몰락의 증거가 하나 사라진다. 도르반은 장부를 새로 쓴다.
+story_seeds:
+- 파울의 사본은 헨릭을 무너뜨릴 수 있는 증거다. 그는 자기 값을 치르는 날까지 그것을 팔지 않으려 한다.

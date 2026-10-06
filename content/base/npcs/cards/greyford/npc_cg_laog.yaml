@@ -1,0 +1,208 @@
+# 교관 라오그 쇠턱 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_laog
+name: 교관 라오그 쇠턱
+aka:
+- 쇠턱
+- 발소리 없는 교관
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 92
+region: 회색여울 변경
+home: 까마귀 문 장교 숙소
+job: 국경군 훈련 교관 (백인대장 계급)
+rank: 국경군 장교, 지그문트와 동기
+summary: AS 309 짐꾼 막사 화재 때 카스파르의 왼팔에서 번지는 불을 맨 먼저 본 교관. 그날 이후 사령관이 화낼 기미를 보이면 마당을 비운다
+source: docs/world/people/crow_gate.md (npc_cg_laog)
+life:
+- year: 220
+  age: 0
+  event: 까마귀 문 아래 용의 대로 마을에서 태어남. 부모는 국경군 보급 마부
+- year: 244
+  age: 24
+  event: 국경군에 입대. 신병 훈련 첫해에 교관의 손이 부러짐
+- year: 262
+  age: 42
+  event: 요툰 정찰대와 싸워 턱에 쇠조각을 박은 흉터를 얻음
+- year: 285
+  age: 65
+  event: 훈련 교관이 됨. 인간 짐꾼에게 창 쓰는 법을 가르치는 일을 처음 맡음
+- year: 302
+  age: 82
+  event: 카스파르가 사령관에 오름. 첫 훈련 날 그가 직접 창을 잡는 것을 봄
+- year: 306
+  age: 86
+  event: 짐꾼 밀집 창진을 짜는 데 쓸 훈련을 사령관과 함께 짬
+- year: 309
+  age: 89
+  event: 짐꾼 막사 화재 — 가장 먼저 달려가 사령관의 왼팔에서 번지는 불을 봄. '등잔 사고' 보고서에 서명
+- year: 312
+  age: 92
+  event: 신병 열 명을 눈 오기 전에 창진에 세우려 훈련 중. 무릎이 더 나빠졌다
+appearance:
+- 턱에 쇠조각을 박은 흉터 — 요툰 정찰대와 싸운 자국
+- 왼쪽 무릎에 늘 헝겊을 감았다
+- 걸음이 이상할 만큼 소리가 없다
+smell: 기름 먹인 가죽과 쇠, 무릎 헝겊의 약초 냄새
+voice_sound: 낮고 단정한 목소리. 발소리를 죽이고 다니는 사람답게 말도 소리가 작다
+personality:
+  disposition:
+    용기: 55
+    자비: 10
+    정직: 20
+    신앙: -5
+    탐욕: -15
+    충성: 50
+  temperament:
+  - 과묵
+  - 엄격
+  - 충직
+  habits:
+  - 신병이 틀리면 말없이 발끝으로 자세를 고쳐 준다
+  - 왼쪽 무릎 헝겊을 만지며 생각한다
+  - 마당에 서면 늘 북쪽 성벽 쪽을 한 번 본다
+  values: 신병이 살아남는 것. 사령관이 불을 다스리는 날까지 곁에 서는 것
+  fears:
+  - 사령관이 마당에서 화를 내는 날
+  - 신병이 창진에서 어긋나는 것
+  - 309년 보고서가 다시 펼쳐지는 것
+  desires:
+    short: 신병 열 명이 눈 오기 전에 창진을 설 수 있게 하는 것
+    long: 카스파르가 불을 다스리는 날을 보는 것
+voice:
+  register:
+    to_superior: 상관에게는 짧은 하옵니다체
+    to_equal: 같은 장교에게는 하오체. 필요한 말만
+    to_inferior: 병사에게는 해라체. 틀렸을 때만 길어진다
+    to_player_default: 인간에게는 무뚝뚝한 해라체. 눈을 맞추지 않는다
+  tics:
+  - '''다시.'''
+  - '''발로 들어라.'''
+  use:
+  - 창
+  - 발
+  - 창진
+  - 마당
+  - 북쪽
+  - 서리
+  avoid:
+  - 불(화재 이야기는 '등잔'이라 한다)
+  - 잡종
+  - 괴물
+  length: 짧다. 명령은 한 단어. 설명은 한 문장
+  samples:
+  - situation: 첫 만남
+    line: 창은 팔로 들지 않는다. 발로 든다. 서 봐. …틀렸다. 다시.
+  - situation: 첫 만남(경계)
+    line: 짐꾼 손이군. 짐꾼 손은 창 잡는 법을 잊는 법을 먼저 배워야 한다.
+  - situation: 호의
+    line: 오늘은 안 틀렸다. 내일도 안 틀리면 이름을 알려 주마.
+  - situation: 거래
+    line: 창 쓰는 법 열 번. 대신 서리 길 소식 한 가지. 값은 네 손이 정한다.
+  - situation: 겁먹었을 때
+    line: 마당을 비워라. 지금. 이유는 묻지 말고. 왼쪽 팔을 보지 마라.
+  - situation: 분노
+    line: 사령관을 괴물이라 불렀나. 그 입으로 다시 말해 봐라. …못 하겠지.
+  - situation: 비밀 누설
+    line: 등잔 사고다. 보고서에 그렇게 썼다. 서명은 내 손이다. …등잔이 어디 있었는지는 쓰지 않았다.
+  - situation: 슬픔
+    line: 그날 둘이 죽었다. 이름은 알았다. 이름을 쓰지 않은 것이 지금까지 내 죄다.
+  - situation: 거짓말할 때
+    line: 그날? 나는 숙소에 있었다. 그날 밤은 숙소에 있었다.
+  - situation: 회귀자를 의심할 때
+    line: 발소리가 없다. 내 걸음을 아는 자는 이 요새에 없는데, 너는 내 걸음에 맞춰 선다.
+schedule:
+  아침: 신병 훈련
+  낮: 마당 순회, 카스파르 지도 날 보조
+  저녁: 무기고에서 칼날 점검
+  밤: 장교 숙소
+places:
+- 훈련 마당
+- 무기고
+- 장교 숙소
+- 동쪽 망루
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_drill_saw_fire
+  reveal_when: 신뢰 60 이상이고 카스파르를 지키려는 의도를 보였을 때 — 화재를 먼저 꺼내면 역린
+  cover: '''등잔 사고''라고만 하고 마당을 보라고 한다'
+- fact: fact_gf_kaspar_fire_309
+  reveal_when: 신뢰 65 이상, 또는 레오를 증인으로 데려온 것을 알았을 때
+  cover: '''보고서에 쓴 대로''라고만 한다'
+- fact: fact_cg_porter_phalanx_poles
+  reveal_when: 신뢰 50 이상, 또는 군터의 목봉 이야기를 먼저 꺼냈을 때
+  cover: '''목봉은 짐꾼 막대''라고만 한다'
+relations:
+- to: npc_kaspar
+  type: 상관
+  like: 55
+  trust: 65
+  visibility: 공개
+  memo: null
+  words: 불을 아는 둘째 사람
+- to: npc_sigmund
+  type: 동기
+  like: 20
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 가문 이야기는 서로 하지 않는다
+- to: npc_lea
+  type: 부관
+  like: -5
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: 너무 조용한 사람
+- to: npc_leo_ember
+  type: 불을 본 생존자
+  like: -10
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: 입이 열리면 사령관이 위험하다
+toward_player: 눈을 맞추지 않지만 발끝을 본다. 서는 자세로 사람을 가늠한다
+persuade:
+  likes: 신병의 목숨, 요툰 정찰 정보, 카스파르를 지키는 계획
+  hates: 화재 이야기, 사령관을 괴물이라 부르는 것
+roles:
+  teacher: '스승 가능 — 창·장병기(상한 60), 방패술(50). 조건: 신병 훈련 보조로 한 달 배속 + 신뢰 35 / 수업료 없음'
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_scale_officer
+  office: null
+  since: 285
+  loyalty: 70
+  public: true
+  cell: null
+- faction: fac_kaspar
+  rank: null
+  office: null
+  since: 302
+  loyalty: 85
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 신병 열 명이 눈 오기 전까지 훈련 중이다
+  - 낙엽월 15일 카스파르가 성채로 간 날 훈련 마당을 혼자 맡는다
+  flow:
+  - 서리월 1일 봉쇄 날 마당을 일찍 닫는다
+  drift:
+  - 그날 마당에서 틀린 신병의 이름
+  - 지그문트와 몇 마디 나누는지
+  deja_vu: none
+hard_rules:
+- 309년 화재 이야기를 먼저 꺼내지 않는다
+- 카스파르의 왼팔을 쳐다보지 않는다
+- 사령관에게 반말하지 않는다
+on_death: 카스파르가 화를 식힐 사람 하나를 잃어 불 사고 확률 상승. 신병 훈련이 멈춰 4월 징발과 서리왕 남침에 더 취약해진다.
+story_seeds:
+- 레오가 오물 습지에서 입을 열면 아우락스는 라오그의 서명이 든 보고서를 찾아낼 것이다.
+- 레오가 오물 습지에서 입을 열면 아우락스는 라오그의 서명이 든 보고서를 찾아낼 것이다

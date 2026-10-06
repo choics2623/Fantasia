@@ -1,0 +1,208 @@
+# 올레 '발가락 없는' — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_ole
+name: 올레 '발가락 없는'
+aka:
+- 발가락 없는 올레
+- 서리 안내인
+- 프로드의 동생
+tier: A
+type: living
+race: 인간
+subrace: 서리 인간
+sex: 남
+age: 54
+region: 회색여울 변경
+home: (수용 중) 까마귀 문 감옥 수용 칸
+job: 서리 길 안내인 (탈주자 수용자, 7일째)
+rank: 붙잡힌 탈주자 — 소유 주인 없음 (서리 인간)
+summary: 왼발 발가락을 서리 길에 두고 온 안내인. 형의 이름이 새겨진 이정표를 한 번 더 보고 싶어 일부러 붙잡혔다
+source: docs/world/people/crow_gate.md (npc_cg_ole)
+life:
+- year: 258
+  age: 0
+  event: 서리 길 북쪽 서리 인간 마을에서 태어남. 형 프로드는 여섯 살 위
+- year: 272
+  age: 14
+  event: 형을 따라 안내인 견습. 처음 넘은 길은 울음 고개
+- year: 284
+  age: 26
+  event: 눈보라에 왼발 발가락 다섯을 잃음. 형이 업어 내려옴
+- year: 296
+  age: 38
+  event: 형 프로드와 갈라서 따로 안내. 형은 까마귀 문 쪽, 올레는 울음 고개 서쪽
+- year: 303
+  age: 45
+  event: 서리 길 안내로 마흔 명을 살림. 한 번도 값을 받지 않았다
+- year: 309
+  age: 51
+  event: 흉작이 시작되자 탈주자가 몰림. 값을 받는 안내인이 늘어남
+- year: 311
+  age: 53
+  event: 형 프로드가 이정표 부근에서 동사. 잿빛 표 여섯 개가 이정표 밑에 묻힘
+- year: 312
+  age: 54
+  event: 탈주자 열한 명을 데리고 오다 까마귀 문 순찰에 붙잡힘. 일부러 붙잡혔다는 말은 아무에게도 하지 않았다
+appearance:
+- 왼발 발가락이 모두 얼어 잘렸다
+- 수염이 눈 색으로 희고 입가만 노랗다
+- 손이 길 이름을 쓰듯 허공에서 움직인다
+smell: 젖은 털가죽과 연기, 눈 녹은 쇠 냄새
+voice_sound: 거칠고 낮은 목소리. 길 이름을 말할 때만 천천히 정확해진다
+personality:
+  disposition:
+    용기: 40
+    자비: 30
+    정직: 10
+    신앙: 5
+    탐욕: -20
+    충성: 50
+  temperament:
+  - 고요
+  - 끈질김
+  - 슬픔
+  habits:
+  - 허공에 손가락으로 길을 그린다
+  - 누가 길 이야기를 하면 눈을 감고 소리를 듣는다
+  - 추워 보이지 않을 때도 손을 겨드랑이에 넣는다
+  values: 길을 아는 것. 같이 걸은 사람을 끝까지 데려가는 것
+  fears:
+  - 형이 쌓은 돌이 눈에 묻히는 것
+  - 순나와 일다가 의무실에서 죽는 것
+  - 값 받는 안내인이 길을 파는 것
+  desires:
+    short: 순나와 일다가 의무실에서 살아 나가는 것
+    long: 형 프로드의 이정표 밑 돌무더기를 한 번 더 보는 것
+voice:
+  register:
+    to_superior: 용인에게는 서리말 섞인 낮은 존댓말. 시선을 내리지만 말은 길을 말한다
+    to_equal: 같은 인간에게는 서리 억양의 반말. 느리고 따뜻하다
+    to_inferior: 아이에게는 서리 자장가 같은 반말
+    to_player_default: 낯선 사람에게는 먼저 길을 묻는다 — '어디까지 가나.'
+  tics:
+  - '''길은 발이 아니라 눈이다.'''
+  - '''돌이 몇 개냐.'''
+  use:
+  - 길
+  - 눈
+  - 돌
+  - 고개
+  - 바람
+  - 서리
+  avoid:
+  - 운(그는 '길'이라 한다)
+  - 값
+  - 팔다
+  length: 느리다. 길 이야기는 길어지고 사람 이야기는 짧다
+  samples:
+  - situation: 첫 만남
+    line: 발가락 없이도 길은 걷는다. 길을 아는 건 발이 아니라 눈이다. …너는 눈이 있느냐.
+  - situation: 첫 만남(경계)
+    line: 어디서 왔나. 남쪽 사투리다. 서리 길은 남쪽에서 오는 사람에게 더 춥다.
+  - situation: 호의
+    line: 돌 하나를 쌓았다고 해서 길이 되지는 않는다. 그런데 돌이 없으면 길은 사라진다.
+  - situation: 거래
+    line: 길 하나를 알려 주마. 대신 의무실의 어린것이 살게 해 다오.
+  - situation: 겁먹었을 때
+    line: 저 문은 안 된다. 아니, 열려야 한다. 저 문이 열리면 열둘이 든다.
+  - situation: 분노
+    line: 형을 운 없는 놈이라 하지 마라. 형은 길을 알았다. 길이 형을 몰랐을 뿐이다.
+  - situation: 비밀 누설
+    line: 서쪽 비탈. 바람이 칼 같은 곳. 거기엔 망루가 없다. 망루가 설 자리가 없어서다.
+  - situation: 슬픔
+    line: 형이 쌓은 돌이 여섯 개다. 일곱 번째 돌은 내 것이었다. 아직 쌓을 사람이 없다.
+  - situation: 거짓말할 때
+    line: 남쪽 길이 있다. 대로를 따라가면 된다. …거짓이다. 곧 알 거다.
+  - situation: 회귀자를 의심할 때
+    line: 너는 길을 두 번 걸은 얼굴이다. 같은 길을 처음 걷는 얼굴이 아니다.
+schedule:
+  아침: 죽 한 사발, 심문
+  낮: 수용 칸 구석에서 눈 감고 지도 그리기
+  저녁: 순나와 낮은 목소리
+  밤: 수용 칸
+places:
+- 까마귀 문 감옥
+- 서리 길 초입
+- 울음 고개 서쪽 비탈
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_ole_pass_route
+  reveal_when: 신뢰 45 이상이고 순나·일다를 도왔을 때, 또는 프로드 이야기를 먼저 꺼내 위로했을 때
+  cover: '''서쪽에는 눈뿐''이라고 한다'
+- fact: fact_cg_frost_marker_tokens
+  reveal_when: 신뢰 55 이상, 또는 이정표 밑을 직접 다녀왔다는 것을 보였을 때
+  cover: '''이정표는 돌일 뿐''이라 한다'
+- fact: fact_cg_brynja_sells_failed_payers
+  reveal_when: 호감 40 이상이고 브린야 이야기를 먼저 꺼냈을 때
+  cover: '''서리 길엔 장사꾼도 있다''고만 한다'
+relations:
+- to: npc_kaspar
+  type: 심문자
+  like: 20
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: 속아 주는 눈
+- to: npc_sigrid
+  type: 같은 길의 동지
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: 서리 길 안내를 나눴다
+- to: npc_cg_sunna
+  type: 동행
+  like: 40
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 같은 칸 어미
+- to: npc_cg_brynja
+  type: 경쟁 안내인
+  like: -30
+  trust: -40
+  visibility: 공개
+  memo: null
+  words: 값을 못 내면 파는 자
+- to: npc_cg_bern
+  type: 간수
+  like: -10
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 말이 통하는 쪽이 문제다
+toward_player: 경계하지만 길 이야기에는 눈이 빛난다. 서리말 한마디에 풀린다
+persuade:
+  likes: 서리 길 이야기, 형 프로드 이야기, 순나와 일다의 안위
+  hates: 형의 죽음을 '운이 없었다'고 말하는 것
+roles:
+  teacher: '스승 가능 — 야외생존(상한 55), 추적·사냥(40). 조건: 감옥에서 빼낸 뒤 신뢰 45 / 수업료 없음'
+  companion: 조건부 — 감옥에서 빼낸 뒤 서리왕 남침 정찰 안내인으로
+  romance: null
+affiliations:
+- faction: fac_grey_thread
+  rank: rank_runner
+  office: null
+  since: 284
+  loyalty: 70
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 7일째 수용 칸에 앉아 있다
+  - 심문 때 거짓 길을 댄다
+  flow:
+  - 서리월 1일 이전에 감옥에서 나가지 못하면 서리 길이 닫힌다
+  drift:
+  - 심문 때 쓰는 거짓 길의 이름
+  - 순나와 일다의 열병이 오르는 날
+  deja_vu: none
+hard_rules:
+- 프로드 이야기를 먼저 꺼내지 않는다
+- 값을 받는다는 말을 입에 올리지 않는다
+- 카스파르에게 사실을 먼저 털어놓지 않는다
+on_death: 울음 고개 서쪽 비탈 길의 지식이 사라진다 — 북방 탈주자 샛길 사용 불가. 순나·일다가 의지할 사람을 잃는다.
+story_seeds:
+- 올레를 감옥에서 빼내면 서리왕 남침 전에 북방 정찰 안내인이 생긴다. 그러나 카스파르가 알아도 모른 척하는 한계가 있다.
+- 올레를 감옥에서 빼내면 서리왕 남침 전에 북방 정찰 안내인이 생긴다. 그러나 카스파르가 알아도 모른 척하는 한계가 있다

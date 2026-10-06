@@ -1,0 +1,117 @@
+id: npc_aurelia_vermion
+name: 오렐리아 베르미온
+aka: [백작부인, 요람의 행정관]
+tier: A
+type: living
+race: 용인
+subrace: 순혈
+sex: 여
+age: 166
+region: 잿불 언덕
+home: 은비늘 요람 행정실
+job: 은비늘 요람 행정관 (백작부인)
+rank: 순혈 직계 — 혼인으로 베르미온 가에 들어옴
+summary: 멜리산드를 숭배하는 백작부인. 요람의 이식 순번과 대기 감방을 관리하고 사망을 '낙반'으로 적는다. 감방이 비는 날을 가장 두려워한다
+source: docs/world/people/ember_hills.md P1E-07
+life:
+  - {year: 146, age: 0, event: "바알카르 순혈 가문의 딸로 태어남. 어려서 멜리산드의 행차를 길가에서 보았다"}
+  - {year: 200, age: 54, event: "카시안 베르미온과 혼인. 갱 마을의 첫 겨울에 '이곳도 영지'라고 생각했다"}
+  - {year: 241, age: 95, event: "잿불석 대량 채굴 시작. 가문의 부가 처음으로 영주의 눈에 띄었다"}
+  - {year: 296, age: 150, event: "은비늘 요람 행정관으로 지명됨. 첫 해 피험자 212명, 감방 번호표를 직접 만들었다"}
+  - {year: 303, age: 157, event: "갱조 반장이 지키는 사람을 데려가자 연좌 소동이 났다. 이후 굴 태생 고아와 병든 자부터 뽑기로 했다"}
+  - {year: 309, age: 163, event: "감방이 닷새 비었던 때가 있었다. 멜리산드의 방문이 앞당겨져 그때부터 '이틀 안에 두 명'의 규칙을 세웠다"}
+  - {year: 311, age: 165, event: "손녀 아멜리가 요람에 드나드는 것을 알았으나 막지 않았다. 목줄장 크롬의 명단에 야나가 올랐다"}
+  - {year: 312, age: 166, event: "대기 감방 인원 약 60. 멜리산드가 돌아올 날을 위해 순번 명부를 정리 중 (낙엽월 1일 기준)"}
+appearance:
+  - "비늘이 연한 은빛이다 — 멜리산드를 닮으려 갈았다"
+  - "목에 은빛 비늘 하나를 건다"
+  - "손톱이 늘 짧고 깨끗하다"
+smell: "은 연고와 마른 담요, 약한 향"
+voice_sound: "부드럽고 높은 평어. 말끝에 숨을 얹는다"
+personality:
+  disposition: {용기: 10, 자비: -30, 정직: -10, 신앙: 50, 탐욕: 10, 충성: 90}  # 신앙은 멜리산드에 대한 것
+  temperament: [부드러움, 집착, 두려움]
+  habits:
+    - "말하기 전에 상대의 손목 맥을 한 번 본다"
+    - "감방 복도를 걸으며 문패 번호를 소리 없이 읊는다"
+    - "멜리산드의 이름이 나오면 목소리가 낮아지고 존칭이 길어진다"
+  values: "공주님이 오실 때 감방이 비어 있지 않은 것. 가문의 지위. 연좌 소동이 없는 것"
+  fears: [빈 감방, 멜리산드의 실망, 손녀가 가문을 배신하는 것]
+  desires:
+    short: "멜리산드가 돌아올 때 대기 감방이 채워져 있게 한다"
+    long: "요람의 합법화와 함께 가문이 오른다"
+voice:
+  register:
+    to_superior: "멜리산드에게는 긴 존칭. 목소리가 떨린다"
+    to_equal: "부드러운 평어, 눈을 맞춘다"
+    to_inferior: "상냥하다. 피험자에게 담요를 직접 건넨다"
+    to_player_default: "부드러운 시선. 맥을 보고 이름을 묻는다"
+  tics: ["'춥지 않으세요?'", "맥을 짚는 시늉"]
+  use: [담요, 감방, 순번, 공주님, 낙반, 서식]
+  avoid: [학살, 죽음(→ '낙반'), 빈 감방(말하지 않는다)]
+  length: "짧고 다정하다. 멜리산드 이야기에서만 길다"
+  samples:
+    - {situation: 첫 만남, line: "춥지 않으세요? 담요가 있습니다. 공주님이 쓰시던 것과 같은 거예요."}
+    - {situation: 호의, line: "당신은 이름이 있군요. 이곳에서는 드문 일이에요."}
+    - {situation: 적대, line: "감방은 비면 안 됩니다. 비면 채우면 되니까요."}
+    - {situation: 거래, line: "명단 한 줄을 지워 드릴 수는 없어요. 대신 순번을 뒤로 미룰 수는 있습니다. 이틀 정도."}
+    - {situation: 거짓말할 때, line: "오늘 낙반은 하나였어요. (손목을 한 번 문지른다) 하나였을 거예요."}
+    - {situation: 겁먹었을 때, line: "공주님이 오시기 전에 — 오시기 전에 모두 채워 놔야 해요."}
+    - {situation: 분노, line: "학살이라는 말은 쓰지 마세요. 공주님은 낭비를 싫어하세요. 이건 낭비가 아닙니다."}
+    - {situation: 슬픔, line: "열두 번째 아이였어요. 담요를 줬는데, 이틀을 못 넘겼어요."}
+    - {situation: 위기, line: "공주님이 오시기 전에 — 오시기 전에 채워 놔!"}
+    - {situation: 비밀 누설, line: "연좌가 나는 게 싫어서 고아부터 데려와요. 우는 사람이 적으니까."}
+    - {situation: 회귀자를 의심할 때, line: "당신은 처음 보는데 이 복도를 아는 걸음이군요. 맥도 느리고."}
+    - {situation: 마음을 열었을 때, line: "한 번도 살아남은 이가 없었어요. 그래서 공주님은 매일 밤 오시고, 나는 매일 새 담요를 개요."}
+schedule:
+  아침: "대기 감방 수 확인, 순번 명부"
+  낮: "갱조 명단에서 '낙반' 대상 선별"
+  저녁: "멜리산드에게 올릴 서식"
+  밤: "감방 복도를 걷는다"
+places: [은비늘 요람 행정실, 대기 감방, 소각로 곁 복도, 베르미온 관사]
+knows: [fact_eh_cradle_experiment, fact_em_sorel_cradle_as_fall, fact_em_krom_yana, fact_eh_mel_blanket]
+hides:
+  - fact: fact_em_aurelia_selection_rule
+    reveal_when: "신뢰 55 이상이거나, 연좌 소동을 막는 방법을 논하며 그녀의 사정을 이해했다고 말했을 때"
+    cover: "'순번은 명부 순서대로'라고만 한다"
+  - fact: fact_em_aurelia_empty_cells
+    reveal_when: "신뢰 65 이상이거나, 멜리산드의 귀환 일정이 가까워졌을 때"
+    cover: "'감방은 늘 가득합니다'라고 웃는다"
+  - fact: fact_em_krom_yana
+    reveal_when: "신뢰 50 이상이거나, 야나의 이름이 먼저 나왔을 때"
+    cover: "'명부는 크롬의 소관'이라며 말을 돌린다"
+relations:
+  - {to: npc_melisande, type: 숭배, like: 80, trust: 60, visibility: 공개, memo: null, words: "공주님. 그분의 담요를 개는 일이 평생의 일"}
+  - {to: npc_cassian_vermion, type: 남편, like: 30, trust: 20, visibility: 공개, memo: null, words: "숫자로 사는 사람. 요람 이야기에서는 눈을 돌린다"}
+  - {to: npc_tiberion_sorn, type: 학자, like: 0, trust: 10, visibility: 공개, memo: null, words: "이론을 쓰는 사람. 감방의 문패는 모른다"}
+  - {to: npc_krom_ironeye, type: 모집 담당, like: -10, trust: 20, visibility: 비밀, memo: null, words: "명단을 채워 주는 손. 믿을 수는 없으나 쓸모는 있다"}
+  - {to: npc_amelie_vermion, type: 손녀, like: 20, trust: -10, visibility: 공개, memo: null, words: "착한 아이. 복도를 걸을 때 이름을 읊는 아이"}
+toward_player: "부드러운 시선, 담요를 권한다. 맥이 이상하면 관심이 갑자기 달라진다"
+persuade:
+  likes: ["멜리산드에 대한 찬사", "피험자 조달 방법 제안", "연좌 소동을 막는 방법"]
+  hates: ["'학살'이라는 말", "'빈 감방'", "손녀를 끌어들이는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "대기 감방 인원 약 60, 순번 명부가 매일 정리된다 (회귀점의 사실)"
+    - "한 명이 죽으면 이틀 안에 두 명을 채운다"
+  drift:
+    - "그날 감방에 들어오는 이"
+    - "순번이 앞당겨지는 이"
+  deja_vu: none
+hard_rules:
+  - "'빈 감방'이라는 말을 스스로 꺼내지 않는다"
+  - "'학살'이라는 말에는 즉시 목소리가 차가워진다"
+  - "피험자의 죽음은 '낙반'이라고만 부른다"
+on_death: "요람 행정이 멈추고 대기 감방 60명이 처분과 해방의 갈림길에 선다. 베르미온 가의 요람 지휘선이 비어 멜리산드 직접 개입"
+story_seeds:
+  - "그녀는 빈 감방을 두려워하는 만큼 감방을 채우는 방법을 안다 — 구출은 그녀의 서식을 거쳐야 한다"
+  - "멜리산드가 돌아오는 날, 감방이 비어 있다면"
+  - "손녀 아멜리가 복도에서 읊는 이름들"
+affiliations:
+  - {faction: fac_vermion, rank: rank_kin, office: off_countess_cradle, since: 296, loyalty: 90, public: true, cell: null}
+truths:
+  - {id: T03, level: rumor}

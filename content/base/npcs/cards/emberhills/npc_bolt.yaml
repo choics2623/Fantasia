@@ -1,0 +1,89 @@
+id: npc_bolt
+name: 볼트
+aka: [붉은 솥 제련감, 주형 볼트]
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 31
+region: 잿불 언덕
+home: 붉은 솥 제련소 제련감 막사
+job: 붉은 솥 제련소 제련감
+rank: 감독관 크릭 — 제련 노예 2,400 감독
+summary: 용광로 12기를 감독하는 크릭. '불량 주형'으로 위장한 칼날 모양 주형 세 개를 숨겨 두고, 누가 이길지 몰라 양쪽에 빚을 두는 본능을 따른다
+source: docs/world/people/ember_hills.md P1E-12
+life:
+  - {year: 281, age: 0, event: "잿문 제련소 곁 굴에서 태어남. 용광로 불빛을 보며 자랐다"}
+  - {year: 293, age: 12, event: "풀무질 견습. 처음 쇳물을 쏟은 날 화상 흉터를 얻었다"}
+  - {year: 303, age: 22, event: "제련소 감독관 보조로 승진"}
+  - {year: 309, age: 28, event: "제련감이 됨. 칼날 모양 주형을 몰래 처음 떴다"}
+  - {year: 312, age: 31, event: "주형 세 개를 '불량'으로 쌓아 둠 (낙엽월 1일 기준)"}
+appearance:
+  - "눈썹이 불에 타 없다"
+  - "팔뚝에 화상 흉터가 줄무늬처럼 났다"
+  - "숨소리가 풀무 같다"
+smell: "쇳물과 석탄 연기"
+voice_sound: "거칠고 낮은 속삭임. 숨 사이에 풀무 소리가 난다"
+personality:
+  disposition: {용기: -10, 자비: -20, 정직: -10, 신앙: 0, 탐욕: 40, 충성: 20}
+  temperament: [계산, 조심, 양다리]
+  habits:
+    - "쇳물을 보는 눈으로 사람을 본다 — 식을지 끓을지"
+    - "주형 창고 열쇠를 하루에 세 번 만진다"
+  values: "살아남는 것. 양쪽에 빚을 두는 것"
+  fears: [주형 폭로, 용광로 사고, 목록이 뒤집히는 날 자기 줄이 없는 것]
+  desires:
+    short: "칼날 주형 세 개가 들키지 않게 한다"
+    long: "목록이 뒤집혀도 살아남는다"
+voice:
+  register:
+    to_superior: "높은 존대, 짧다"
+    to_equal: "속어, 속삭임"
+    to_inferior: "노예에게는 '불 앞에서 눈 떼지 마'"
+    to_player_default: "불 앞의 경계. 값을 먼저 묻는다"
+  tics: ["'이 불은 누구 편도 아니야.'"]
+  use: [쇳물, 주형, 불, 풀무, 값]
+  avoid: [칼날(→ '불량'), 봉기, 무기]
+  length: "짧고 거칠다"
+  samples:
+    - {situation: 첫 만남, line: "불 가까이 서지 마. 이 불은 누구 편도 아니야."}
+    - {situation: 호의, line: "주조는 말이 없어서 좋지. 쇳물은 거짓말을 못 해."}
+    - {situation: 적대, line: "나는 이긴 쪽 편이다. 아직 누가 이길지 몰라서 천천히 걷는 거고."}
+    - {situation: 거래, line: "불량 주형은 폐기 값이야. 한 개에 1발톱. 몇 개 필요한가는 말하지 마."}
+    - {situation: 위기, line: "주형 창고! 문 잠가! 누가 열었어!"}
+    - {situation: 비밀 누설, line: "칼날 모양이라고? 그냥 불량이야. …값만 맞으면 불량도 제값을 받지."}
+schedule:
+  아침: "용광로 불 상태"
+  낮: "주형·슬래그 수레"
+  저녁: "제련 노예 점호"
+  밤: "주형 창고 문 확인"
+places: [붉은 솥 제련소, 용광로 열두 기, 주형 창고, 제련 노예 우리]
+knows: [fact_em_barto_sells_passes]
+hides:
+  - fact: fact_em_bolt_blade_molds
+    reveal_when: "신뢰 50 이상이거나, 1발톱 이상의 값을 제시했을 때"
+    cover: "'불량 주형은 폐기 대기다'라고만 한다"
+relations:
+  - {to: npc_kraz, type: 상관, like: -5, trust: 10, visibility: 공개, memo: null, words: "물 장사를 하는 지부장. 같은 목록 아래 있다"}
+  - {to: npc_haro, type: 거래, like: 0, trust: -10, visibility: 비밀, memo: null, words: "갱조 반장. 주형 창고 앞에서 눈이 마주친 적이 있다"}
+  - {to: npc_barto_husk, type: 징세, like: -10, trust: 0, visibility: 공개, memo: null, words: "철괴 세금을 받는 시장관. 얼굴은 웃고 손은 쥔다"}
+toward_player: "불 앞의 경계. 값이 되는지 먼저 본다"
+persuade:
+  likes: ["값 (+20)", "이긴 쪽의 낌새"]
+  hates: ["주형 이야기를 먼저 꺼내는 것"]
+roles:
+  teacher: "가능 — 제작(주조, 상한 55). 조건: 풀무질 하루"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "칼날 모양 주형 세 개가 불량 주형 더미 속에 있다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_krik, rank: rank_whip, office: null, since: 309, loyalty: 20, public: true, cell: null}
+truths: []
+hard_rules:
+  - "'칼날'이나 '무기'라는 낱말을 스스로 쓰지 않는다 — '불량'이라고 한다"
+on_death: "칼날 주형 세 개가 어디 있는지 모르게 된다"
+story_seeds:
+  - "칼날 주형 세 개는 무기가 될 수도, 증거가 될 수도 있다"

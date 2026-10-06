@@ -1,0 +1,149 @@
+# 순나 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_sunna
+name: 순나
+aka:
+- 일다의 어미
+- 서리 어미
+tier: B
+type: living
+race: 인간
+subrace: 서리 인간
+sex: 여
+age: 29
+region: 회색여울 변경
+home: (수용 중) 감옥 수용 칸·의무실
+job: 거인 장원 노예 출신 (탈주자 수용자)
+rank: 붙잡힌 탈주자 — 돌팔 씨족 노예였음
+summary: 거인 장원에서 도망친 어미. 열병 든 딸 일다를 안고 푸른월에 거인들이 내려오리라는 말을 입에 올리지 못한다
+source: docs/world/people/crow_gate.md (npc_cg_sunna)
+life:
+- year: 283
+  age: 0
+  event: 서리 인간 마을에서 태어남. 열두 살에 요툰 장원에 팔림
+- year: 300
+  age: 17
+  event: 돌팔 씨족 장원 부엌 일꾼이 됨. 거인의 식탁에서 노래를 들음
+- year: 308
+  age: 25
+  event: 딸 일다를 낳음. 아비는 같은 장원의 인간 노예였고 겨울에 죽음
+- year: 312
+  age: 29
+  event: 푸른월 남침 이야기를 들은 뒤 딸을 안고 탈주. 서리 길에서 올레를 만나 까마귀 문까지 옴
+appearance:
+- 오른쪽 어깨에 거인의 낙인
+- 눈이 푸르스름할 만큼 지쳤다
+- 머리를 땋아 올릴 때마다 손가락이 떨린다
+smell: 젖은 털가죽과 아이 땀, 약초 즙
+voice_sound: 낮고 갈라진 목소리. 서리말이 섞여 억양이 높낮이를 탄다
+personality:
+  disposition:
+    용기: 10
+    자비: 45
+    정직: 0
+    신앙: 15
+    탐욕: -10
+    충성: 20
+  temperament:
+  - 겁
+  - 다정
+  - 끈질김
+  habits:
+  - 아이 이마에 손등을 대고 속삭인다
+  - 머리를 땋을 때 손가락이 떤다
+  values: 일다가 살아서 눈을 뜨는 것
+  fears:
+  - 거인들이 내려오는 날
+  - 일다의 열병
+  - 들켜 장원으로 되돌려지는 것
+  desires:
+    short: 일다의 열병이 내리는 것
+    long: 남쪽 어딘가에서 딸이 집 안에서 자는 것
+voice:
+  register:
+    to_superior: 용인에게는 서리 억양의 낮은 존댓말
+    to_equal: 같은 인간에게는 낮은 반말. 서리 노래가 섞인다
+    to_inferior: 아이에게는 서리 자장가
+    to_player_default: 낯선 사람에게는 묻지 말라는 눈빛
+  tics:
+  - '''묻지 마세요.'''
+  use:
+  - 일다
+  - 서리
+  - 노래
+  - 열
+  - 손
+  avoid:
+  - 거인(그녀는 '큰 분들'이라 한다)
+  - 도망
+  length: 낮고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 묻지 마세요. 일다가 자요. 깨우면 기침이 시작돼요.
+  - situation: 호의
+    line: 이 노래를 아세요? 우리 마을 자장가예요. 가사는 못 외웠어요.
+  - situation: 겁먹었을 때
+    line: 큰 분들이 와요. 아니, 안 와요. 아직은요. 아직은.
+  - situation: 비밀 누설
+    line: 그들은 돌을 던지는 연습을 했어요. 성벽 높이만큼 쌓은 흙벽을요.
+schedule:
+  아침: 일다 곁
+  낮: 의무실
+  저녁: 수용 칸
+  밤: 일다를 안고 서리 노래
+places:
+- 감옥 수용 칸
+- 병사 의무실
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_sunna_heard_march
+  reveal_when: 신뢰 45 이상이고 일다의 열병이 내렸을 때
+  cover: '''큰 분들 일은 모른다''고 한다'
+relations:
+- to: npc_cg_ole
+  type: 동행 안내인
+  like: 40
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: 같은 칸
+- to: npc_cg_magda
+  type: 치료자
+  like: 35
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: 딸의 열병을 쥔 손
+- to: npc_sigrid
+  type: 먼 동족
+  like: 10
+  trust: 15
+  visibility: 일방
+  memo: null
+  words: 이름만 들었다
+toward_player: 경계심 가득. 먼저 아이를 감싼다
+persuade:
+  likes: 일다를 살리는 일, 서리 노래
+  hates: 일다를 위협하는 말
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_jotun
+  rank: null
+  office: null
+  since: 300
+  loyalty: -40
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 일다는 열병 중이다
+  deja_vu: none
+hard_rules:
+- 돌팔 장원 이야기를 먼저 꺼내지 않는다
+on_death: 서리왕 남침의 첫 증언이 사라진다. 일다도 같은 날 숨이 끊길 가능성이 높다.
+story_seeds:
+- 순나의 증언은 서리왕 남침의 첫 증거다. 그녀를 카스파르에게 데려가면 푸른월이 앞당겨진다.

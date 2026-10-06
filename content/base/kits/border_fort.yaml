@@ -1,0 +1,130 @@
+# 지역 생성 키트 — 국경 요새와 역참 (25_REGION_KITS.md). 까마귀 문, 용주 역참, 용의 대로 검문 초소가 이것으로 태어난다.
+# 인간 짐꾼·하인은 kit_human_serf의 이름과 말투 원형을 함께 쓸 수 있다. 여기서는 군(軍)과 역참 사람, 서리 길의 사람만 새로 둔다.
+# 제국의 군 구조: 국경군 약 2,000(휘하 날개대·보급 포함) 가운데 까마귀 문 본대 = 용인 120·크릭 60·인간 짐꾼 80 (fac_drakmar_empire off_northern_army 이하).
+# 법·관습의 결(통행증, 서리 길 폐쇄, 탈주자 처리)은 세력 데이터를 가리킨다 — 여기에 다시 쓰지 않는다.
+id: kit_border_fort
+applies_to: [까마귀 문, 용주 역참, 용의 대로 검문 초소, 북방 국경]
+names:
+  용인:
+    # 용인은 성(姓) 대신 가문명이나 별칭을 붙인다. 비늘혈 병사는 가문명이 없고, 별칭이 곧 이름이 된다 (레아 '가문명 없음').
+    male: [에르빈, 라오그, 발데르, 토르벤, 하크, 오르벡, 지그, 마그누스, 베른하르트, 크라우, 에이릭, 로덴, 헥토르, 아다, 니클]
+    female: [레아, 이졸, 엘가, 브리타, 하다, 시그네, 마라, 올가, 렌, 이다]
+    given_by_master: ["쇠턱", "얇은비늘", "잿자루", "재줄", "외뿔", "돌손", "긴 그림자", "속살(놀림)"]
+    epithet_rule: "이름 + 몸의 특징·무기·고향 별칭 (쇠턱, 얇은비늘, 잿자루, 재줄) — 가문 없는 비늘혈은 별칭이 성이다"
+  크릭:
+    male: [삐걱, 먹물, 그릭, 브릭, 슬릭, 틱틱, 핍, 스니, 고르, 찍찍, 딸깍, 킁킁]
+    female: [찍, 삭삭, 짹, 뽀, 팔랑]
+    given_by_master: ["이빨 하나", "먹물", "코 킁킁", "삐걱", "찍찍", "긴 코"]
+    epithet_rule: "소리·버릇 이름 + 길드 고리(채찍손·굽은 등). 서기 크릭은 '먹물'·'잉크손'처럼 일을 이름으로 쓴다"
+  인간:
+    male: [군터, 칼레, 올레, 요스트, 얀, 파울, 베른, 한스, 욜, 프로드, 라그나, 토르비, 하랄드, 에길]
+    female: [에다, 마그다, 순나, 브린야, 일다, 베타, 한나, 이다, 우테, 토라, 아스트리드, 잉에]
+    given_by_master: ["{n}번", "여섯째", "아홉째", "절구", "절름발이", "짧은 다리", "까치", "손난로", "국자", "숫자"]
+    epithet_rule: "국경군 소유 노예: 소유 번호·별명 + 일 이름 + 진짜 이름. 서리 인간은 이름만 가지고 번호를 거부한다"
+classes:            # 정착지 인구에서의 비율 (까마귀 문 기준. 용주 역참은 요새형 값을 줄여서 쓴다)
+  용인 장교: 0.05
+  용인 병사: 0.38
+  크릭 보조병: 0.20
+  인간 짐꾼·하인: 0.28
+  수용자: 0.05
+  전령·상인: 0.04
+ranks:              # 국경군 계급 (fac_drakmar_empire ranks와 짝). 사령관 아래에서 위로 읽는다
+  - {id: rank_commander, name: 사령관, who: "카스파르 반비늘 (반용)", note: "용좌 직속. 남작이 명령하지 못한다"}
+  - {id: rank_deputy, name: 부관, who: "레아 (백인대장 계급)", note: "서신·보급 실무, 용언 보고서"}
+  - {id: rank_captain, name: 백인대장, who: "수비대장 지그문트, 교관 라오그", note: "문 개폐, 요새 수비 120, 신병 훈련"}
+  - {id: rank_officer, name: 보급관·서기, who: "보급관 에르빈, 서기 크릭 슈릭", note: "장부와 문서. 병사보다 위, 장교보다 아래"}
+  - {id: rank_soldier, name: 용인 병사, who: "120", note: "난로 열 개의 병영. 옅은 비늘은 '속살'이라 놀림받는다"}
+  - {id: rank_auxiliary, name: 크릭 보조병, who: "60, 대장 그릭", note: "채찍손 길드 소속. 지하 병영. 불에 약하다"}
+  - {id: rank_porter, name: 짐꾼·하인, who: "80, 반장 군터", note: "국경군 소유 노예. 306년 밀집 창진이 이들로 짜였다"}
+  - {id: rank_prisoner, name: 수용자, who: "탈주자 임시 수용 30칸, 간수 베른", note: "서리 길에서 붙잡힌 사람. 심문 세 가지 질문"}
+jobs:
+  - {id: dragonkin_guard, name: 용인 보초, class: 용인 병사, race: 용인, weight: 16, schedule: sch_fort_guard}
+  - {id: dragonkin_drill, name: 용인 병사 (훈련 조), class: 용인 병사, race: 용인, weight: 14, schedule: sch_fort_drill}
+  - {id: dragonkin_officer, name: 용인 장교, class: 용인 장교, race: 용인, age: [60, 120], weight: 5, schedule: sch_fort_officer}
+  - {id: crick_aux, name: 크릭 보조병, class: 크릭 보조병, race: 크릭, age: [18, 38], weight: 20, schedule: sch_fort_crick}
+  - {id: crick_clerk, name: 서기 크릭, class: 크릭 보조병, race: 크릭, age: [22, 38], weight: 3, schedule: sch_fort_clerk}
+  - {id: porter, name: 짐꾼, class: 인간 짐꾼·하인, weight: 14, schedule: sch_fort_porter}
+  - {id: laundress, name: 빨래터 아낙, class: 인간 짐꾼·하인, sex: female, weight: 5, schedule: sch_fort_laundry}
+  - {id: cook_hand, name: 취사장 일손, class: 인간 짐꾼·하인, weight: 5, schedule: sch_fort_kitchen}
+  - {id: stable_hand, name: 마구간 노예, class: 인간 짐꾼·하인, sex: male, weight: 3, schedule: sch_fort_stable}
+  - {id: prisoner, name: 수용자 (탈주자), class: 수용자, weight: 5, schedule: sch_fort_prisoner}
+  - {id: post_clerk, name: 역참 우편 서기, class: 전령·상인, race: 크릭, age: [22, 35], weight: 2, schedule: sch_post_clerk}
+  - {id: post_stable, name: 역참 마구간지기, class: 인간 짐꾼·하인, weight: 3, schedule: sch_post_stable}
+  - {id: caravan_hand, name: 상단 마부, class: 전령·상인, weight: 3, schedule: sch_caravan}
+schedules:          # 직업 일과 틀 — at은 정착지 틀의 역할(role) 이름. 요새의 하루는 나팔 다섯 번 (05:00 기상 / 06:00 문 / 12:00 교대 / 18:00 문 닫음 / 22:00 소등)
+  sch_fort_guard:  [{days: all, from: "05:00", to: "06:00", at: mess, doing: 아침 죽}, {days: all, from: "06:00", to: "18:00", at: wall, doing: 성벽 보초, outdoor: true}, {days: all, from: "18:00", to: "20:00", at: mess, doing: 저녁 식사와 교대}, {days: all, from: "22:00", to: "05:00", at: barracks, doing: 잔다}]
+  sch_fort_drill:  [{days: all, from: "05:00", to: "06:00", at: mess, doing: 아침 죽}, {days: workday, from: "06:00", to: "12:00", at: yard, doing: 훈련 마당에서 창진 연습}, {days: workday, from: "13:00", to: "17:00", at: yard, doing: 오후 훈련과 무기 손질}, {days: all, from: "18:00", to: "20:00", at: mess, doing: 저녁 식사}, {days: all, from: "22:00", to: "05:00", at: barracks, doing: 잔다}]
+  sch_fort_officer: [{days: all, from: "05:00", to: "06:00", at: gate, doing: 문 여는 나팔 전 점검, fixed: true}, {days: workday, from: "06:00", to: "17:00", at: command, doing: 지휘실·병영 순회}, {days: all, from: "18:00", to: "18:30", at: gate, doing: 문 닫는 나팔, fixed: true}, {days: all, from: "19:00", to: "22:30", at: quarters, doing: 장교 숙소}, {days: all, from: "22:30", to: "05:00", at: quarters, doing: 잔다}]
+  sch_fort_crick:  [{days: all, from: "04:30", to: "05:30", at: crick_barracks, doing: 크릭 점호, fixed: true}, {days: workday, from: "06:00", to: "18:00", at: wall, doing: 성벽 아래·남문 보조 순찰, outdoor: true}, {days: all, from: "18:00", to: "21:30", at: mess, doing: 크릭 식탁에서 소문}, {days: all, from: "21:30", to: "04:30", at: crick_barracks, doing: 잔다}]
+  sch_fort_clerk:  [{days: workday, from: "06:00", to: "17:00", at: clerk_room, doing: 문서 분류와 필사}, {days: all, from: "18:00", to: "22:00", at: clerk_room, doing: 사본}, {days: all, from: "22:00", to: "05:30", at: clerk_room, doing: 서기실 구석에서 잔다}]
+  sch_fort_porter: [{days: all, from: "04:30", to: "06:00", at: porter_barracks, doing: 점호와 작업 할당, fixed: true}, {days: workday, from: "06:00", to: "18:00", at: store, doing: 곡창과 성벽 사이를 짐 지고 오간다}, {days: all, from: "18:00", to: "19:30", at: mess, doing: 뒷문 배식 줄}, {days: all, from: "22:00", to: "04:30", at: porter_barracks, doing: 잔다}]
+  sch_fort_laundry: [{days: workday, from: "06:00", to: "17:00", at: laundry, doing: 빨래터에서 빨래}, {days: all, from: "18:00", to: "19:30", at: mess, doing: 뒷문 배식 줄}, {days: all, from: "22:00", to: "05:00", at: porter_barracks, doing: 잔다}]
+  sch_fort_kitchen: [{days: all, from: "04:00", to: "21:00", at: mess, doing: 솥 앞에서 일한다}, {days: all, from: "22:00", to: "04:00", at: porter_barracks, doing: 잔다}]
+  sch_fort_stable: [{days: all, from: "04:30", to: "19:00", at: stable, doing: 말 먹이와 편자 갈이}, {days: all, from: "22:00", to: "04:30", at: porter_barracks, doing: 잔다}]
+  sch_fort_prisoner: [{days: all, from: "05:00", to: "09:00", at: cells, doing: 수용 칸에서 죽 한 사발}, {days: workday, from: "09:00", to: "12:00", at: interrogation, doing: 심문, alt: {p: 0.5, at: cells, doing: 칸에서 순서를 기다린다}}, {days: all, from: "12:00", to: "22:00", at: cells, doing: 수용 칸}]
+  sch_post_clerk:  [{days: workday, from: "06:00", to: "18:00", at: mail_room, doing: 우편 분류와 마차 서류}, {days: all, from: "18:00", to: "22:00", at: crick_quarters, doing: 크릭 숙소}, {days: all, from: "22:00", to: "05:30", at: crick_quarters, doing: 잔다}]
+  sch_post_stable: [{days: all, from: "04:30", to: "19:00", at: post_stable, doing: 말 교대와 편자}, {days: all, from: "22:00", to: "04:30", at: slave_shed, doing: 잔다}]
+  sch_caravan:     [{days: all, from: "06:00", to: "08:00", at: caravan_yard, doing: 마차 점검}, {days: workday, from: "08:00", to: "17:00", at: caravan_yard, doing: 짐 싣고 내리기}, {days: all, from: "17:00", to: "21:00", at: lodge, doing: 숙소 식탁}, {days: all, from: "21:00", to: "05:00", at: lodge, doing: 잔다}]
+fort_routine:       # 요새 하루 틀 — 사건·일과가 이것을 깨면 이야기가 된다
+  bells: ["05:00 기상 나팔", "06:00 문 여는 나팔", "12:00 정오 교대", "18:00 문 닫는 나팔", "22:00 소등 나팔"]
+  patrols: ["22:00", "00:00", "03:00"]
+  weekly: "6일 주 — 노동 5일, 안식일 1일(병사 훈련 쉼, 인간 짐꾼은 예배 대신 지붕과 장비를 손본다). 사령관 체스는 주 4회, 안식일엔 묘역"
+  monthly: ["15일 사령관·부관 보급 회의(회색여울 성채) — 수비대장이 혼자 문을 맡는다", "20일 남작령 귀리 마차 입고", "25일 부관이 용주 역참 우편함에 보고서", "26일 새벽 전령이 우편함을 비운다", "28일 월말 급료 장부"]
+  seasonal: ["서리월 1일 북문 봉쇄 → 해빙월 10일 재개방(서리 길)", "굶주림월: 솥 하나를 줄인다", "푸른월: 짐꾼 30명 징발, 전쟁 시즌"]
+voices:             # 말투 원형 — 즉석 생성 인물이 하나를 받아 변주한다 (22 §1.1)
+  - {id: v_drill, name: 짧게 끊는 교관, register: "해라체, 한 단어 명령", tics: ["'다시.'"], use: [발, 창, 줄, 마당], avoid: [이유, 감정], sample: "다시. 발로 들어라. 팔은 아무것도 모른다."}
+  - {id: v_ledger, name: 숫자로 말하는 자, register: "하오체 또는 짧은 존댓말", tics: ["'장부에 없다.'"], use: [섬, 칸, 날짜, 솥], avoid: [약속, 공짜], sample: "육백이라 적었소. 곳간엔 사백이십이오."}
+  - {id: v_gatekeeper, name: 문을 지키는 자, register: "해라체, 문 이야기만", tics: ["'해 뜨면 열고 해 지면 닫는다.'"], use: [문, 열쇠, 해, 서리], avoid: [사연], sample: "해 뜨면 열고 해 지면 닫는다. 그 사이엔 내 일이 아니다."}
+  - {id: v_crick_guild, name: 길드의 눈을 단 크릭, register: "빠르고 코맹맹이, 존대와 반말이 섞인다", tics: ["'다 안다.'"], use: [길드, 줄, 냄새, 짐], avoid: [사령관 이름], sample: "인간은 줄 서라. 줄 못 서면 짐이다. 다 안다."}
+  - {id: v_porter_low, name: 눈 내리까는 짐꾼, register: "낮은 존댓말과 반말, 숫자로 답한다", tics: ["'짐은 짐이다.'"], use: [짐, 손, 막대, 줄], avoid: [창, 불], sample: "짐은 짐이다. 시키는 대로 옮긴다."}
+  - {id: v_frost_tongue, name: 서리말 섞는 자, register: "느리고 낮은 반말, 서리 억양", tics: ["'어디까지 가나.'"], use: [길, 눈, 돌, 고개, 서리], avoid: [값(안내인 중 일부)], sample: "어디까지 가나. 길은 발이 아니라 눈이 안다."}
+  - {id: v_sealed, name: 열지 않는 자, register: "정중한 하옵니다체, 서류처럼 끝난다", tics: ["'순서가 있다.'"], use: [통행증, 봉인, 밀랍, 순서], avoid: [읽다, 열다], sample: "통행증. 이름, 목적, 도착지. 순서가 틀리면 사람이 틀린 것이다."}
+  - {id: v_merchant_sleek, name: 먼지 없는 상인, register: "화려한 하옵니다체, 값을 돌려 말한다", tics: ["'먼지는 거짓말을 숨긴다.'"], use: [값, 귀리, 신용, 마차], avoid: [장사치], sample: "먼지 한 점 없는 마차에서만 좋은 귀리를 판다."}
+temperaments: [과묵, 엄격, 겁, 영리, 비굴, 충직, 탐욕, 냉소, 다정, 끈질김, 호기심, 무딤]
+settlement_templates:
+  - id: tpl_border_fort
+    name: 국경 요새
+    grid: {w: 320, h: 270}
+    roles:          # role: [개수 범위, 배치 규칙, 장소 속성]
+      gate:     {count: [2, 2], place: "북쪽 끝과 남쪽 끝 한 곳씩 (북문은 적의 쪽)", access: staff, name: 성문}
+      wall:     {count: [1, 1], place: "북쪽 벽 위", access: staff, name: 성벽 길}
+      command:  {count: [1, 1], place: 가운데, access: owner, name: 사령관 집무실}
+      clerk_room: {count: [1, 1], place: "가운데에서 동쪽", access: staff, name: 서기실}
+      quarters: {count: [1, 1], place: "동쪽", access: staff, name: 장교 숙소}
+      barracks: {count: [1, 1], place: "서쪽", access: staff, name: 용인 병영}
+      crick_barracks: {count: [1, 1], place: "남서쪽", access: staff, name: 크릭 병영}
+      porter_barracks: {count: [1, 1], place: "남동쪽", access: serf, name: 짐꾼 막사, locked: "22:00-05:00"}
+      mess:     {count: [1, 1], place: "가운데 남쪽", access: staff, name: 취사장과 식당}
+      yard:     {count: [1, 1], place: 가운데, access: staff, name: 훈련 마당}
+      store:    {count: [1, 1], place: "남동쪽", access: locked, name: 보급 창고와 곡창}
+      stable:   {count: [1, 1], place: 동쪽, access: staff, name: 말 마구간}
+      cells:    {count: [1, 1], place: "북서쪽 벽 아래 반지하", access: staff, name: 감옥, locked: "24시"}
+      interrogation: {count: [1, 1], place: "북서쪽 벽 아래 반지하", access: staff, name: 심문실}
+      laundry:  {count: [1, 1], place: 남쪽, access: serf, name: 빨래터}
+      raven_loft: {count: [0, 1], place: "북동쪽", access: staff, name: 까마귀 사육장}
+      infirmary: {count: [1, 1], place: 서쪽, access: staff, name: 병사 의무실}
+      graveyard: {count: [1, 1], place: "남서쪽 모서리", access: staff, name: 국경 묘역}
+    outer:
+      frost_road: {hours: [2.0, 3.0], name: "서리 길 초입"}
+      culvert_mouth: {hours: [0.3, 0.6], name: 배수로 입구}
+      ravine_road: {hours: [0.3, 0.8], name: 협곡 대로}
+  - id: tpl_road_post
+    name: 용의 대로 역참
+    grid: {w: 220, h: 170}
+    roles:
+      checkpoint: {count: [1, 1], place: "북쪽 끝 (대로 위)", access: public, name: 검문대}
+      post_hall: {count: [1, 1], place: "가운데에서 동쪽", access: public, name: 역참 본관}
+      mail_room: {count: [1, 1], place: 동쪽, access: staff, name: 우편실}
+      post_stable: {count: [1, 1], place: "가운데에서 서쪽", access: staff, name: 마구간·말 교대장}
+      lodge:    {count: [1, 1], place: "남동쪽", access: public, name: 상인 숙소}
+      caravan_yard: {count: [1, 1], place: 가운데 남쪽, access: public, name: 짐마차 마당}
+      store:    {count: [1, 1], place: 남쪽, access: locked, name: 역참 창고}
+      mess:     {count: [1, 1], place: "북서쪽", access: public, name: 취사장}
+      quarters: {count: [1, 1], place: "북동쪽", access: staff, name: 용인 숙소}
+      crick_quarters: {count: [1, 1], place: "북서쪽", access: staff, name: 크릭 숙소}
+      slave_shed: {count: [1, 1], place: "남서쪽", access: serf, name: 노예 막사, locked: "22:00-04:30"}
+      wall:     {count: [0, 1], place: 가운데, access: public, name: 용주 (이정 기둥)}
+    outer:
+      copse:  {hours: [0.5, 1.5], name: 길가 잡목숲}
+      ford:   {hours: [0.4, 1.0], name: 개울 여울}
+calendar_ref: "content/base/events/crow_gate_312.yaml — 까마귀 문·용주 역참 사건 달력 (REGIONS §2.10, §2.14)"

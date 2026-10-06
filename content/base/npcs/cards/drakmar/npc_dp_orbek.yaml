@@ -1,0 +1,151 @@
+# 검문 하사 오르벡 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_dp_orbek
+name: 검문 하사 오르벡
+aka:
+- 풀뿌리 오르벡
+- 튕기는 하사
+tier: B
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 58
+region: 회색여울 변경
+home: 용인 숙소 하사 방
+job: 용주 검문대 하사
+rank: 역참 소속 용인 하사
+summary: 위조 통행증을 한 장에 2발톱에 되파는 검문 하사. 월급 석 달이 밀렸다는 말로 모든 것을 설명한다
+source: docs/world/people/crow_gate.md (npc_dp_orbek)
+life:
+- year: 254
+  age: 0
+  event: 용의 대로 마을 마부의 아들로 태어남
+- year: 274
+  age: 20
+  event: 국경군에서 용주 검문대로 전속
+- year: 296
+  age: 42
+  event: 하사 계급에 오름. 통행증 서식 열 가지를 외움
+- year: 309
+  age: 55
+  event: 봉급이 처음으로 한 달 밀림
+- year: 312
+  age: 58
+  event: 바알카르에서 흘러온 위조 통행증을 되팔기 시작함. 세라프는 보고도 말이 없었다
+appearance:
+- 한쪽 눈썹이 흉터로 갈라졌다
+- 통행증을 손가락으로 튕기는 버릇
+- 늘 마른 풀뿌리를 질겅질겅 씹는다
+smell: 마른 풀뿌리와 가죽, 말똥 냄새
+voice_sound: 낮고 느린 목소리. 문장 끝을 질질 끈다
+personality:
+  disposition:
+    용기: 0
+    자비: 0
+    정직: -30
+    신앙: 0
+    탐욕: 35
+    충성: 10
+  temperament:
+  - 느긋
+  - 탐욕
+  - 냉소
+  habits:
+  - 통행증을 손가락으로 튕긴다
+  - 풀뿌리를 질겅질겅 씹으며 말한다
+  values: 밀린 월급. 통행증 한 장에 붙는 2발톱
+  fears:
+  - 근위대의 눈
+  - 세라프가 모른 척을 그만두는 것
+  desires:
+    short: 밀린 월급을 받는 것
+    long: 퇴역하고 바알카르 근교에 땅 한 뙈기 사는 것
+voice:
+  register:
+    to_superior: 상관에게는 비굴한 하옵니다체
+    to_equal: 같은 용인에게는 하오체
+    to_inferior: 인간에게는 거드름의 해라체
+    to_player_default: 낯선 사람에게는 먼저 통행증을 뒤집어 본다
+  tics:
+  - '''맞다고 해 주지.'''
+  use:
+  - 통행증
+  - 발톱
+  - 도장
+  - 순서
+  - 월급
+  avoid:
+  - 위조
+  - 돈
+  length: 짧고 느리다
+  samples:
+  - situation: 첫 만남
+    line: 통행증. 이름 틀렸군. 아니, 맞는군. …2발톱이면 맞다고 해 주지.
+  - situation: 호의
+    line: 오늘은 조용히 지나가라. 어제 손님보다 낫다.
+  - situation: 거래
+    line: 새 통행증은 2발톱. 낡은 건 1발톱. 인장이 번진 건 3발톱이다.
+  - situation: 비밀 누설
+    line: 인장 틀은 바알카르 근위대 쪽에서 왔다. 어디서 났는지는 묻지 마라.
+schedule:
+  아침: 차단봉 올림
+  낮: 통행증 검사
+  저녁: 호송대 명부 확인
+  밤: 차단봉 내림
+places:
+- 용주 검문대
+- 용인 숙소
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_checkpoint_forged_passes
+  reveal_when: 신뢰 40 이상이고 밀린 월급을 해결해 주었을 때
+  cover: '''통행증은 정상이다''라고만 한다'
+relations:
+- to: npc_seraph_targul
+  type: 상관
+  like: 10
+  trust: -10
+  visibility: 비밀
+  memo: null
+  words: 눈감아 주는 사람
+- to: npc_dp_jan
+  type: 마구간 노예
+  like: -5
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 가끔 순찰을 늦춘다
+- to: npc_kaspar
+  type: 국경 사령관
+  like: 0
+  trust: -10
+  visibility: 일방
+  memo: null
+  words: 문서를 믿지 않는 눈
+toward_player: 통행증부터 뒤집는다
+persuade:
+  likes: 밀린 월급을 갚는 일, 은 2발톱
+  hates: 위조라고 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_scale_officer
+  office: off_road_post_checkpoint
+  since: 296
+  loyalty: 10
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 위조 통행증 장사는 이어지고 있다
+  deja_vu: none
+hard_rules:
+- 위조라는 말을 쓰지 않는다
+on_death: 위조 통행증 공급이 끊겨 인간 통과가 어려워진다. 근위대가 후임을 보낸다.
+story_seeds:
+- 위조 통행증이 있으면 인간도 용주를 통과할 수 있다. 오르벡의 장사를 뒤집으면 근위대의 눈을 끌 위험도 있다.

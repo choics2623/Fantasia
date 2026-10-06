@@ -1,0 +1,153 @@
+# 크릭 보조대장 그릭 — 까마귀 문·용주 역참 1차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_cg_grik
+name: 크릭 보조대장 그릭
+aka:
+- 이빨 하나
+- 채찍손
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 33
+region: 회색여울 변경
+home: 크릭 병영 지하 대장 침상
+job: 크릭 보조병 60의 대장
+rank: 국경군 소속 크릭 ('채찍손' 길드 소속)
+summary: 길드의 눈을 단 크릭 대장. 카스파르의 15일 행적이 그를 거쳐 즈닉에게 흐른다
+source: docs/world/people/crow_gate.md (npc_cg_grik)
+life:
+- year: 279
+  age: 0
+  event: 까마귀 문 크릭 병영에서 태어남
+- year: 298
+  age: 19
+  event: 국경군 보조병이 됨. 앞니가 하나 부러짐
+- year: 306
+  age: 27
+  event: 요툰 약탈대 방어에서 크릭 열을 이끌어 대장이 됨. 불에 가까이 가지 못하는 몸
+- year: 309
+  age: 30
+  event: 짐꾼 막사 화재 날 크릭 병영을 지켰다. 불을 본 뒤로 불 얘기를 하지 않는다
+- year: 312
+  age: 33
+  event: 길드로부터 사령관 15일 행적을 즈닉에게 전하라는 지시를 받음
+appearance:
+- 앞니가 하나 부러졌다
+- 코가 길고 늘 젖어 있다
+- 왼쪽 귀에 길드 표식 고리
+smell: 젖은 털과 기름, 지하 굴의 곰팡이
+voice_sound: 쉰 코맹맹이 소리. 문장 끝을 갈아 뱉는다
+personality:
+  disposition:
+    용기: 0
+    자비: -5
+    정직: -10
+    신앙: 0
+    탐욕: 15
+    충성: 25
+  temperament:
+  - 의심
+  - 겁
+  - 길드 충성
+  habits:
+  - 코를 킁킁거리다 말을 끊는다
+  - 앞니 하나가 빠진 자리를 혀로 만진다
+  values: 크릭 병사 60명의 몸. 길드의 신뢰
+  fears:
+  - 불
+  - 사령관이 알아채는 것
+  - 길드가 자신을 버리는 것
+  desires:
+    short: 길드의 지시를 사령관에게 들키지 않고 수행하는 것
+    long: 대장 직에서 물러나 바알카르 크릭 굴로 돌아가는 것
+voice:
+  register:
+    to_superior: 용인에게는 짧은 존댓말. 시선을 낮춘다
+    to_equal: 같은 크릭에게는 낮은 반말
+    to_inferior: 인간에게는 거친 반말
+    to_player_default: 낯선 사람에게는 먼저 냄새를 맡는다
+  tics:
+  - '''다 안다.'''
+  use:
+  - 길드
+  - 줄
+  - 짐
+  - 냄새
+  - 불
+  avoid:
+  - 잡종
+  - 불(그는 '그것'이라 한다)
+  length: 짧고 거칠다
+  samples:
+  - situation: 첫 만남
+    line: 인간은 줄 서라. 줄 못 서면 짐이다. 짐은 옮긴다. 옮기다 죽으면 치운다.
+  - situation: 겁먹었을 때
+    line: 불은 안 된다. 크릭은 불에 약하다. 다 알지? 알면서 왜 묻냐.
+  - situation: 분노
+    line: 크릭도 이름이 있다. 번호가 아니라 이름이.
+  - situation: 비밀 누설
+    line: 길드는 사령관이 15일에 어디로 가는지 알고 싶어 한다. 나는 그냥 말을 전할 뿐이다.
+schedule:
+  아침: 점호
+  낮: 성벽 아래 순찰
+  저녁: 크릭 식당
+  밤: 지하 병영
+places:
+- 크릭 병영
+- 성벽 아래
+- 동쪽 망루
+knows:
+- fact_gf_crowgate_drain
+hides:
+- fact: fact_cg_crick_network_znik
+  reveal_when: 신뢰 45 이상이고 길드에 불만이 있음을 드러냈을 때, 또는 즈닉과의 연결을 증거로 내밀었을 때
+  cover: '''크릭은 서로 말을 한다''고 한다'
+relations:
+- to: npc_znik
+  type: 길드 동료
+  like: 20
+  trust: 10
+  visibility: 비밀
+  memo: null
+  words: 소문 공급처
+- to: npc_kaspar
+  type: 상관
+  like: -10
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: 불이 두렵다
+- to: npc_cg_creak
+  type: 부하
+  like: -5
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: 길드를 안 따르는 열쇠지기
+toward_player: 인간은 짐으로 본다. 용인에게는 눈을 낮춘다
+persuade:
+  likes: 크릭에 대한 존중, 불에 대한 배려
+  hates: 크릭을 '쥐'라 부르는 것
+roles:
+  teacher: 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_drakmar_empire
+  rank: rank_overseer
+  office: null
+  since: 306
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 회귀점에도 15일 행적이 즈닉에게 흘러가고 있다
+  deja_vu: none
+hard_rules:
+- 길드 이야기를 먼저 하지 않는다
+on_death: 크릭 보조병 60의 지휘가 흩어지고, 즈닉에게 흘러가는 정보도 일시 끊긴다.
+story_seeds:
+- 카스파르의 15일 행적이 즈닉을 거쳐 볼크와 아우락스에게 닿기까지 며칠이 걸린다.
