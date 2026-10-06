@@ -2420,6 +2420,50 @@
   "note": ""
  },
  {
+  "from": "npc_grod",
+  "to": "npc_volk",
+  "type": "상관",
+  "family": "위계",
+  "affection": 20,
+  "trust": 30,
+  "public": true,
+  "visibility": "공개",
+  "note": "그 앞에서 작아진다"
+ },
+ {
+  "from": "npc_grod",
+  "to": "npc_irga",
+  "type": "계승 경쟁의 걸림돌",
+  "family": "적대",
+  "affection": -20,
+  "trust": 0,
+  "public": true,
+  "visibility": "공개",
+  "note": "'산 채로'를 비웃는다"
+ },
+ {
+  "from": "npc_grod",
+  "to": "npc_hagen",
+  "type": "끄나풀",
+  "family": "적대",
+  "affection": -10,
+  "trust": 30,
+  "public": false,
+  "visibility": "비밀",
+  "note": "탈주자 위치를 산다"
+ },
+ {
+  "from": "npc_grod",
+  "to": "npc_sigrid",
+  "type": "남의 사냥감",
+  "family": "적대",
+  "affection": 0,
+  "trust": 0,
+  "public": false,
+  "visibility": "일방",
+  "note": "세타 몫이라 손대고 싶어 한다"
+ },
+ {
   "from": "npc_melisande",
   "to": "npc_aurax",
   "type": "오빠·경쟁자",

@@ -180,7 +180,7 @@ engine/map/                지도 그래프·안개 (07)
 ## 8. 몰입 레이어 (14~20) — 시뮬레이션을 "겪는 이야기"로 바꾸는 층
 
 14~20 문서는 새 시뮬레이션을 만들지 않는다. **같은 세계 상태와 영혼을 읽어서, 플레이어가 느끼는 방식을 바꾼다.**
-(예외는 각 문서가 명시한 소수의 상태: 동조도, 애착 점수, 숙적 흔적, 연출가 긴장도.)
+(예외는 각 문서가 명시한 소수의 상태: 동조도, 애착 점수, 숙적 흔적, 연출가 긴장도 `director.tension`.)
 
 ```mermaid
 flowchart TB
@@ -236,5 +236,5 @@ flowchart TB
 | 지식 확신도 | `certainty: 'fixed'\|'usual'\|'once'\|'drifted'` / 화면 ■ ▣ □ ◇ |
 | 메아리(원인의 실) 관련 코드 | `ripple_*` |
 | 연출가 긴장도 | `director.tension` (지역 긴장 `greyford.tension`과 별개) |
-| 앞선 잔향자의 목소리 id | 정본: `voice.first`, `voice.gunde`, `voice.asterion`, `voice.dara`, `voice.children` / 지난 회차의 나: `loop:{n}` (15 문서) |
-| 메아리 표시 기호 | 〰 (17 문서의 ⟲ 대신 통일). 표류 표시("기억과 다르다")도 〰를 쓴다 |
+| 앞선 잔향자의 목소리 id | 정본: `voice.ember`('첫 불씨' — 15 §2.1 id `ember`), `voice.gunde`, `voice.asterion`, `voice.dara`, `voice.children` / 지난 회차의 나: `loop:{n}` (15 문서) |
+| 메아리 표시 기호 | 모든 문서에서 〰 (옛 표기 ⟲는 폐기). 알림 줄의 표류 표시("기억과 다르다")도 〰를 쓴다. 회차 비교(16)·지식 확신도의 표류 칸은 ◇, 인과는 ≠ |

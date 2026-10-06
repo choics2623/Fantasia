@@ -223,7 +223,7 @@
 | 기억: 언어·단어 사전 | 언어 스킬 수치 + 낱말 카드 | 용언 낱말 "하르벡 = 담보", 노예말 신호 12개 |
 | 기억: 진명 | 낱말 카드(뼈판) | (첫 시간들에선 대개 없음) |
 | 기술 | 스킬 수치 — 몸 관련 스킬은 **몸의 상한**에 묶인다 (06) | 은신 8→14 기억, 몸이 따라오기 전까지 상한 8+α |
-| 재능 | 영혼에 깨어난 천부 재능 (06) | 「잔향의 눈」이 깨어났다면 그대로 |
+| 재능 | 영혼에 깨어난 천부 재능 (06) | 「그림자 걸음」 수재였다면 그대로 (「잔향의 눈」은 재능이 아니라 몸의 특질 — 같은 몸으로 돌아오므로 역시 그대로, 06 §7) |
 | 죽음의 기억 | 스트레스 일부 + 죽음의 흔적 (§4.4) | 「물의 기억」 |
 | 메타 | 해금(`meta.unlocked`), 회차 수 `loop.count`, 회차 기록 보관함 | — |
 
@@ -325,7 +325,7 @@
 | 0:50~0:56 | 4~6일 | 어머니의 기침. 엘사의 약은 옛 돌 고리의 이끼를 요구한다. **첫 마을 밖**. 둔덕 위에서 마을을 내려다본다 | 지도 (지역) | `gerda_cough`, `stone_ring_moss` |
 | 0:56~1:00 | 7일 | 내 소문이 왜곡되어 돌아온다: "강변 움막 애가 밤에 땅에 주술을 그린대" 또는 "키트네 큰애가 헨릭 나리한테 대들었대" | 평판 (시선·말) | `rumor_returns_distorted` |
 | 1:00~1:04 | 8~12일 | 하겐의 "북쪽 길" 제안 / 시그리드의 세 질문 / 요한이 떠나며 노래를 남김 / 사라가 "하르벡"의 뜻을 말해 준다 (신뢰 20+, 오웬에게 물어봤다) | 영역 (첫 은닉 시) | `hagen_northern_road`, `sigrid_three_questions`, `johan_leaves`, `sara_word_harbek` |
-| 1:04~1:08 | 14일 | 볼크 도착. 냄새를 맡는다 (공포 판정 D45) | 숙적 표식 (17) | `volk_sniff` · **B창 열림** |
+| 1:04~1:08 | 14일 | 볼크 도착. 냄새를 맡는다 (공포 판정 D45). 해 질 녘 사냥개 우리 뒤, 우그의 자루 — **첫 이름 붙이기** (20 장면 1) | 숙적 표식 (17) · 이름 붙이기 (20) | `volk_sniff` · **B창 열림** |
 | 1:08~1:10 | 18일 | 이졸 도착. 3초의 눈 | — | `isol_blessing` |
 | 1:10~1:16 | 21~22일 | **C창**: 「북쪽 길」 | 전투 (합) — 들어섰다면 | `death_c_northern_road` |
 | 1:14~1:24 | 25일 | **B창**: 대수색 | — | `death_b1_lure`, `death_b2_guide` |
@@ -1144,7 +1144,7 @@ interface LoopState {                              // 잔향에 실린다
   seed: number;                                    // loop.seed — 표류 난수 (sim 스트림의 회차 시드)
   origin: { at: 'AS312-09-01T18:00'; place: 'greyford.limping_rooster.ration_line'; snapshot: SnapshotRef };
   furthest: GameTime;                              // 이 시대에 가장 멀리 간 날
-  lastDeath?: { at: GameTime; route?: LethalRoute; trace?: DeathTraceId; cause: CauseLink[] };
+  lastDeath?: { at: GameTime; route?: LethalRoute; trace?: DeathTraceId; causes: CauseRef[]; roots: RootRef[] };   // 16 §6.1 타입
   records: LoopRecordRef[];                        // 회차 기록 보관함
 }
 interface MemoryCard {                             // 지식·비밀·날짜·낱말·지도 공통 꼬리표
@@ -1164,14 +1164,14 @@ interface LethalSetup {
   targetDeathRate: { firstLoop: number; remembered: number };   // 플레이테스트 목표 (런타임 미사용)
   deathTrace: DeathTraceId;
 }
-interface CauseLink { event: EventId; choiceId?: string; at: GameTime; loop: number }   // 회차 기록·16 메아리 공용
+// 사망의 원인·뿌리는 16 §6.1의 `CauseRef`(같은 회차 안의 직접 원인)와 `RootRef`(플레이어 뿌리 — `loop` 필드 포함)를 쓴다. 회차 기록·16 메아리 공용 (옛 `CauseLink`는 폐기)
 interface DeathTrace {                             // §4.4
   id: DeathTraceId; name: string;                  // 세계 안의 말: "물이 차다"
   triggers: Criterion[]; effects: Effect[]; overcome: Criterion[];
   haptic: HapticPatternId; stage: 1 | 2 | 3;
 }
 interface RegressionEvent {                        // 사건 `loop.regressed`
-  fromLoop: number; died: { at: GameTime; route?: LethalRoute; cause: CauseLink[] };
+  fromLoop: number; died: { at: GameTime; route?: LethalRoute; causes: CauseRef[]; roots: RootRef[] };
   carry: { memory: MemoryCard[]; skills: Record<SkillId, number>; talents: TalentId[];
            stress: number; traces: DeathTraceId[]; oaths: OathId[] };   // 오스 = 16 기억 속 맹세
   record: LoopRecord;
@@ -1286,11 +1286,11 @@ interface DriftRule { id: string; target: string; grade: DriftGrade; variants?: 
 | 12 연애·가족 | 관계 단계, 자녀 | 해금 시점. 회차 기록의 "다시 태어나지 않는다" 줄 |
 | 13 어둠의 길 | 배신·협력자 경로 | B2·마르타 경로의 진입점 |
 | 15 내면의 목소리 | 15 해금 순서, `voice_silence`, 앞선 잔향자 명단 | 첫 죽음 시퀀스는 목소리 없음. 회차 2 첫 화면은 빵 냄새(침묵) 다음 박자에 ⟨첫 회차의 나⟩ — 기억 잉크(┊)와 겹치지 않게 잉크가 먼저. ◈ 습관화 때 ⟨아스테리온⟩ |
-| 16 메아리·맹세 | 메아리 형식, 맹세 UI, §5.3 제안 계기, 회차 비교 | 맹세 해금 시점, `CauseLink`(회차 번호 포함), 기억 카드 출처(회차를 넘는 메아리의 뿌리) |
+| 16 메아리·맹세 | 메아리 형식, 맹세 UI, §5.3 제안 계기, 회차 비교 | 맹세 해금 시점, 사망 원인 `CauseRef`·`RootRef`(16 §6.1 — `RootRef.loop`에 회차 번호), 기억 카드 출처(회차를 넘는 메아리의 뿌리) |
 | 17 숙적 | 냄새 기억 등록, `loop.count`에 따른 알아봄 | `volk_sniff` 등록 요청, 젖은 재 표기 단계(§4.1 ⑦ 첫 줄의 덧붙임), 이졸 기시감 |
 | 18 연출가 | 화자·막 체계 | `first_loop` 프로파일 값(§3.3), 종료 사건 `director.unlock`, ◈ 우선순위 요청, 「기억대로 보낸다」 해금 시점 |
 | 19 연출 | 화면 효과·소리·햅틱 구현 | 죽음 시퀀스의 글·순서·입력 잠금 4.5초 + 짧은 회차 기록 자동 4.5초, 햅틱 악보 H1~H5, 기시감 렌더링, ┊·◈·◇ 표기 |
-| 20 애착과 상실 | 키트(첫 애착), 재회 장면 | 「나를 처음 보는 사람」 첫 사례 셋(페인·사라·게르다), 회차 기록 "두고 온 것" |
+| 20 애착과 상실 | 키트(첫 애착), 재회 장면 | 「나를 처음 보는 사람」 첫 사례 셋(페인·사라·게르다), 회차 기록 "두고 온 것". **첫 이름 붙이기는 첫 2시간 안**: 14일 해 질 녘 사냥개 우리 뒤 「물에 넣을 강아지」(20 장면 1, §5.2 1:04~1:08 비트). 첫 90분 깊은 상실 금지 (20 §6.4) |
 | SCENARIOS O-01 | 첫 장면·각성·첫 1~3시간 흐름·추천 조합 | **첫 장면을 배급 줄(1일 저녁)로 옮김**, `ration_line_*`·`martha_price_night` 등 신규 스토리렛 (§13) |
 | REGIONS §2 · CHARACTERS R02 | 사건 일정, 건물, NPC 일정·대사 (하겐 저녁 줄에서 탈주자를 고름, 페인 저녁 수탉 지붕, 저녁 배식) | 사건 날짜를 그대로 사용. 표류 등급 태깅만 추가 |
 
@@ -1359,7 +1359,7 @@ interface DriftRule { id: string; target: string; grade: DriftGrade; variants?: 
 | 05 | 신규 개념 `과하게_앎`. **같은 세계 상태 → 같은 대사** 결정성 요구(§7.3) — 런타임 LLM 다듬기가 첫 화면·핵심 대사의 글자를 바꾸면 안 된다 |
 | 08 | 인물 수첩 두 겹(지난 회차 잉크)·"처음 보는 얼굴" 표지. 기억 태그 `stranger_warned_me` 류 (회차 안에서만) |
 | 15 | 첫 죽음 시퀀스에 목소리 없음. 회차 2 첫 화면: 빵 냄새는 `voice_silence`, 다음 박자 ⟨첫 회차의 나⟩ (15 §11 장면 3). 「다라의 아홉 새벽」 꿈(§3.4). ◈ 습관화 때 ⟨아스테리온⟩(회차 5+). 이전의 "직전 생애의 목소리"는 폐기. 목소리는 15가 정한 대로 **앞선 잔향자들**(첫 불씨·군데·아스테리온·다라·아이들)과 **이 시대의 지난 회차의 나**뿐이며, **이전 시대는 목소리가 되지 않는다.** 14의 기억 잉크(┊)는 목소리가 아니라 주인공 자신의 기억 서술이다 — 같은 화면에서는 잉크가 먼저, 목소리가 다음 박자 |
-| 16 | 맹세 해금 = 16 §5.3 계기 중 먼저 오는 것, 또는 회차 2의 기억 속 맹세. 첫 메아리 M1(9.25) 시점 수용. `CauseLink`에 `loop` 필드. 기억 카드 출처가 회차를 넘는 메아리의 뿌리. 회차 비교 해금 시점(#24) |
+| 16 | 맹세 해금 = 16 §5.3 계기 중 먼저 오는 것, 또는 회차 2의 기억 속 맹세. 첫 메아리 M1(9.25) 시점 수용. 사망 원인 타입은 16의 `CauseRef`/`RootRef`로 통일 (`RootRef.loop`가 회차 번호). 기억 카드 출처가 회차를 넘는 메아리의 뿌리. 회차 비교 해금 시점(#24) |
 | 17 | `volk_sniff` 흔적 등록. 젖은 재 냄새 단계(`loop.count` 2·4·6·12)와 죽음 시퀀스 ⑦ 첫 줄의 덧붙임을 맞춘다. 이졸 기시감 수치(§7.4)는 17·SCENARIOS가 최종 소유 |
 | 18 | `first_life` → **`first_loop`**. 첫 죽음 뒤 순서는 죽음 시퀀스 → 첫 화면 → 첫 잠자리 회차 기록 → 18 §6.3 재진입 「되감김」. ◈ 우선순위·「기억대로 보낸다」 해금은 18이 실행 |
 | 19 | 죽음 시퀀스(§4.1)의 글·순서·입력 잠금 4.5초 + 짧은 회차 기록 자동 4.5초, 햅틱 악보 H1~H5(§4.2, ±20% 조정 허용), 되감기 틱을 "시간이 몸을 지나가는 감각"으로 진동 원칙의 예외로 인정, 기시감 렌더링 0.3초, ┊·◈·◇ 서체 |
