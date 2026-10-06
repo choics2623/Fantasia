@@ -43,28 +43,28 @@ offices:
     perks: ["99승 검 — 마구간 다락 들보 위"]
   - id: off_sword_disciple_og
     title: 칼 제자 (현역 숙소의 어른)
-    holder: "unnamed:오그 (47, 78승 — 투사 조합장)"
+    holder: npc_gm_og
     reports_to: off_sword_disciple_elder
     powers: ["쇠우리 7번 숙소의 어른", "투사 조합(fac_arena_guild) 조합장 — 백승가의 눈"]
     chosen_by: "칼 제자가 칼을 가르친 사람"
     perks: []
   - id: off_blood_granddaughter
     title: 카렐의 손녀 (현역 투사)
-    holder: "unnamed:미아 (22, 41승) — 쇠우리 7번 숙소"
+    holder: npc_gm_mia
     reports_to: off_sword_disciple_og
     powers: ["백승가의 다음 세대", "그날의 일(군나르·카렐)을 모른다"]
     chosen_by: "혈통"
     perks: []
   - id: off_young_tal
     title: 증조부의 이름을 받은 아이
-    holder: "unnamed:탈 (9) — 원형장 숙소에서 자란다"
+    holder: npc_gm_ytal
     reports_to: off_blood_granddaughter
     powers: ["없음 — 이름의 상속"]
     chosen_by: "미아의 동생 — 증조부의 이름을 받았다"
     perks: []
   - id: off_chain_keeper
     title: 탈의 잘린 목줄 보관자 (재울음 무리 — 그롬)
-    holder: "unnamed:노파 우르크 (그롬 주술사) — 외부 / 그롬이다"
+    holder: npc_gm_urk
     reports_to: off_ancestor_tal
     powers: ["탈의 잘린 목줄과 유품 보관", "100승자에게 '혈명 없는 혈명'을 주는 의식"]
     chosen_by: "재울음 무리 — 백승가의 일원은 아니나 유품이 있다"

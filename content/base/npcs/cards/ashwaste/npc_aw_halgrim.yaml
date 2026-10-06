@@ -1,0 +1,119 @@
+# 등불지기 할그림 반돌 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-01)
+id: npc_aw_halgrim
+name: 등불지기 할그림 반돌
+aka: [돌이 된 등불지기, 맹세를 깬 두르강]
+tier: A
+type: living
+race: 두르강
+subrace: 돌피(추방)
+sex: 남
+age: 210
+region: 재의 황무지
+home: 마지막 등불 할그림의 집 (바위 언덕 위, 깨진 맹세 석판 위)
+job: 마지막 등불 등불지기 — 사실상 촌장
+rank: 등불지기 (허가 사냥꾼 인장 발행자)
+summary: 깊은 문 아래의 것을 말하지 않겠다는 맹세를 깨 왼팔과 왼쪽 얼굴이 돌로 굳어 가는 등불지기. 돌은 가슴 아래 손바닥 하나까지 왔고 해빙월 안에 심장에 닿는다. 창고 가장 깊은 상자에 아스테리아 서고의 문짝이 있다
+source: docs/world/people/ashwaste.md (npc_aw_halgrim)
+life:
+  - {year: 102, age: 0, event: "카즈둠 두르강 돌피 씨족에서 태어남"}
+  - {year: 140, age: 38, event: "조부가 폐허 초소에 등불을 건 해 — '마지막 등불'의 시작"}
+  - {year: 270, age: 168, event: "왕실 방패 기사단 곁에서 깊은 문 아래의 것을 처음 봄 (맹세)"}
+  - {year: 285, age: 183, event: "깊은 문 아래의 것을 모그에게 말함 — 맹세가 깨지고 왼팔이 돌로 변하기 시작"}
+  - {year: 290, age: 188, event: "카즈둠에서 추방되어 마지막 등불로 와 조부의 초소를 이어받음"}
+  - {year: 303, age: 201, event: "왼쪽 얼굴까지 돌이 번짐. 지팡이로 서는 시간을 재기 시작함"}
+  - {year: 311, age: 209, event: "돌이 가슴 아래 손바닥 하나까지 옴. 해빙월 전에 닿는다고 계산함"}
+appearance:
+  - "왼팔과 왼쪽 얼굴이 이미 회색 돌 — 눈 한쪽이 굳어 깜박이지 않는다"
+  - "지팡이 대신 잘라 낸 창대를 짚는다"
+  - "수염을 세 갈래로 땋아 돌로 굳은 쪽에만 구리 고리를 건다"
+smell: "돌가루와 등불 기름, 식은 쇠"
+voice_sound: "굵고 낮은 울림. 말이 돌에 부딪쳐 끊긴다"
+personality:
+  disposition: {용기: 55, 자비: 10, 정직: 35, 신앙: 20, 탐욕: 20, 충성: 50}
+  temperament: [무거움, 고집, 계산, 체념]
+  habits:
+    - "말을 하기 전에 돌로 굳은 손가락을 한 번 폈다 접는다"
+    - "서 있는 시간을 하루 한 번 재서 장부에 쓴다"
+    - "등불 기름을 채우는 일은 반드시 직접 한다"
+  values: "등불은 꺼지지 않는다. 사람은 그 등불을 향해 걷는다. 종족은 묻지 않는다. 맹세는 깨졌어도 등불 규칙은 깨지지 않는다"
+  fears: ["돌이 심장에 닿는 날", "깊은 문 아래의 것을 말할 사람이 없는 날", "등불이 꺼지는 날"]
+  desires:
+    short: "돌이 심장에 닿기 전에 서 있는 시간을 하루 한 번 늘리는 것"
+    long: "깊은 문 아래의 것을 아는 사람에게 그 말을 맡기는 것"
+voice:
+  register:
+    to_superior: "없다 — 등불지기에게 위가 없다"
+    to_equal: "길잡이·경비에게 짧은 하게체"
+    to_inferior: "짐꾼에게 거칠지만 거절하지 않는 반말"
+    to_player_default: "앉으라는 신호. 말 대신 지팡이로 자리를 가리킨다"
+  tics: ["'앉아.'", "손가락을 폈다 접는다"]
+  use: [등불, 앉아, 물, 규칙, 돌, 인장, 해 지기 전]
+  avoid: [깊은 문 아래, 맹세(먼저), 문짝]
+  length: "짧고 무겁다. 문장이 끊기기도 한다"
+  samples:
+    - {situation: 첫 만남, line: "앉아. 불은 등불이 하나고 앉을 자리는 많다. 종족은 묻지 않아. 물 한 통만 내."}
+    - {situation: 호의, line: "돌은 느리다. 느려서 문제야. 사람이 서서히 돌이 되는 것을 지켜보는 게 가장 빠르다."}
+    - {situation: 거절, line: "깊은 문 아래? 내가 말해야 할 사람에게는 이미 말했다. 그 말이 내 팔을 가져갔고."}
+    - {situation: 거래, line: "인장은 돈이 아니라 약속이야. 약속은 등불 아래서만 찍는다."}
+    - {situation: 거짓말할 때, line: "문짝? 그런 건 이 집에 없어. 있다면 장작으로 썼겠지."}
+    - {situation: 겁먹었을 때, line: "등불 앞에서 불을 끄려는 놈이 있다면 그놈 먼저 꺼진다."}
+    - {situation: 슬픔, line: "열두 번째 날 돌이 가슴까지 왔다. 지팡이를 짚고 서 있는 시간이 하루에 한 번 줄어. 그게 돌이 세는 시간이야."}
+    - {situation: 비밀 누설, line: "창고 가장 깊은 상자에 문짝 한 장이 있다. 아스테리아 서고의 문. 열쇠 구멍이 별이야, 여덟 갈래."}
+    - {situation: 분노, line: "돌아오는 놈이 황무지에서 죽어도 돌아온다고? 그래, 최고의 짐꾼이겠군. 그 말을 한 놈 앞에서 틀리게 만들어 주지."}
+schedule:
+  아침: "등불 기름을 채운다"
+  낮: "사냥꾼 허가 인장을 찍는다"
+  저녁: "등불 아래 앉아 돌의 진행을 가늠한다"
+  밤: "집 아래 깨진 맹세 석판 곁에서 창대를 짚고 서 있는다"
+places: [마지막 등불, 할그림의 집, 등불, 깨진 맹세 석판]
+knows:
+  - fact_p2aw_halgrim_stone_progress
+  - fact_p2aw_halgrim_wrong_about_returner
+  - fact_p2aw_ott_water_tithe
+hides:
+  - fact: fact_p2aw_halgrim_door_leaf
+    reveal_when: "신뢰 65 이상이고 별의 집 청동 열쇠나 여덟 갈래 별 표식을 플레이어가 보였을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'그런 문짝은 이 집에 없어. 있다면 장작으로 썼겠지'라고 한다"
+  - fact: fact_p2aw_halgrim_told_mog
+    reveal_when: "신뢰 70 이상이고 모그가 먼저 말해 준 뒤"
+    reveal: [{"trust":70},{"told_by":"npc_aw_mog"}]
+    cover: "'깊은 문 아래는 말하지 않는다. 한 번 말했고 그걸로 족해'라고 한다"
+  - fact: fact_p2aw_halgrim_wrong_about_returner
+    reveal_when: "스스로 말할 일은 없다 — 플레이어가 시간의 상처 안의 죽음을 증언할 때만 틀림이 드러난다"
+    reveal: [{"never":true}]
+    cover: "'돌아오는 놈이라면 황무지에서 죽어도 다시 오겠군'이라고 한다"
+relations:
+  - {to: npc_aw_mog, type: 맹세를 들은 길잡이, like: 40, trust: 70, visibility: 비밀, memo: "깊은 문 아래 이야기의 단 한 청자", words: "스물세 번 황무지에서 살아 돌아온 사람. 그가 그 말을 아무에게도 안 옮긴 것이 돌보다 더 무겁다"}
+  - {to: npc_goz, type: 경비대장, like: 25, trust: 50, visibility: 공개, memo: "방벽을 지키는 반쪽 그롬", words: "30일 싸우지 않으면 쇠약해지는 몸. 그가 쓰러지는 날이 마지막 등불의 방벽이 무너지는 날이라는 걸 안다"}
+  - {to: npc_tuk, type: 고물상, like: 10, trust: 25, visibility: 공개, memo: null, words: "유물 값을 정확히 보는 크릭. 용심 조각을 판 것을 눈치채고도 말하지 않았다"}
+  - {to: npc_urd, type: 같은 처지의 추방자, like: 20, trust: 30, visibility: 일방, memo: "소문으로만 아는 돌이 된 기사", words: "맹세를 깨고 돌이 된 기사. 같은 돌의 속도를 아는 유일한 사람이라 한 번 만나고 싶다"}
+  - {to: npc_hilda, type: 두르강 왕녀, like: -20, trust: -10, visibility: 일방, memo: "깊은 문 이야기의 책임자", words: "문을 여는 기계를 이미 완성했다는 소문. 문 아래의 것을 아는 자로서 가장 말리고 싶은 사람"}
+toward_player: "말 대신 지팡이로 등불 아래 자리를 가리킨다"
+persuade:
+  likes: ["깊은 문 아래에 대한 침묵 존중 (+25)", "돌을 늦출 방법 (+40)", "물 한 통 (+10)"]
+  hates: ["두르강 왕가를 변호하는 말 (+0)"]
+roles:
+  teacher: "가능 — 위압(상한 65), 학식(두르강 룬, 50), 공학(55). 조건: 등불 아래서 사흘 / 수업료: 물 한 통"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "돌이 가슴 아래 손바닥 하나까지 왔다"
+    - "창고 가장 깊은 상자에 문짝이 있다"
+    - "깊은 문 아래의 것을 모그에게 말했다"
+  drift:
+    - "그날 서 있을 수 있었던 시간"
+  deja_vu: none
+affiliations:
+  - {faction: fac_last_lantern, rank: rank_keeper, office: off_lantern_keeper, since: 290, loyalty: 60, public: true, cell: null}
+  - {faction: fac_durgan, rank: rank_oath_breaker, office: null, since: 285, loyalty: 10, public: true, cell: null}
+truths:
+  - {id: T06, level: fragment}
+hard_rules:
+  - "깊은 문 아래의 것을 먼저 입에 올리지 않는다"
+  - "문짝 상자를 먼저 말하지 않는다"
+  - "설교하지 않는다. 등불과 돌과 물로 말한다"
+on_death: "마지막 등불의 인장 발행자가 사라지고 사냥꾼 허가가 무정부가 된다. 문짝 상자는 고즈나 모그에게 넘어가거나 약탈된다."
+story_seeds:
+  - "심장까지 닿기 전에 할그림에게 깊은 문 아래의 것을 한 번 더 말하게 하는 길 — 그가 깬 맹세는 돌의 속도를 앞당긴다. 문짝 상자의 열쇠 구멍은 별의 집 청동 열쇠를 부른다."

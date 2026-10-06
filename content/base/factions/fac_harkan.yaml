@@ -36,14 +36,14 @@ offices:
     perks: ["칸의 천막 지도(그롬마르와 용제국 동부를 모두 정복하는 계획)", "정착병이 시작됐다(통일 후 정착 왕국은 그를 병들게 한다)"]
   - id: off_consort_strategist
     title: 칸의 반려·전략가
-    holder: "unnamed:보르테 흰갈기 (RACES 신규)"
+    holder: npc_hk_borte
     reports_to: off_khan
     powers: ["작전 구상", "오르두 이동 설계"]
     chosen_by: "칸의 선택"
     perks: []
   - id: off_khan_heir_batu
     title: 칸의 아들 (HOUSES 후계 후보)
-    holder: "unnamed:바투 (30)"
+    holder: npc_hk_batu
     reports_to: off_khan
     powers: ["부족 일부의 지지"]
     chosen_by: "혈통 — 그러나 칸위는 결투로"
@@ -64,42 +64,42 @@ offices:
     perks: []
   - id: off_bek_redmane
     title: 붉은갈기 부족장 (칸의 장인)
-    holder: "unnamed:에젤 (58)"
+    holder: npc_hk_ezel
     reports_to: off_bek_council
     powers: ["초원 남부, 그롬마르 경계", "투사 공급 — 원형장의 1/3을 인간 노예로"]
     chosen_by: "부족"
     perks: []
   - id: off_bek_sevenwells
     title: 일곱샘 여족장
-    holder: "unnamed:일라 (71)"
+    holder: npc_hk_ila
     reports_to: off_bek_council
     powers: ["초원 동부 샘 지대 — 탈주자에게 물을 판다(물값은 노래 한 곡)"]
     chosen_by: "부족 — 마지못해 복속"
     perks: ["늪 마녀 갈대 계보와 노래 교환"]
   - id: off_bek_blackwind
     title: 검은바람 부족장 (반란 준비)
-    holder: "unnamed:오르두 (45)"
+    holder: npc_hk_orduk
     reports_to: off_bek_council
     powers: ["초원 북부, 카즈둠 경계", "인간 노예를 해방해 기수로 쓴다(금기 위반)", "돌피 씨족과 비밀 동맹"]
     chosen_by: "부족"
     perks: ["인간이 말을 탈 수 있는 유일한 부족 — 승마 스승 확보 가능"]
   - id: off_bek_lasthoof
     title: 마지막발굽 부족장 (전쟁 중)
-    holder: "unnamed:보로 (80, 테무르의 숙적)"
+    holder: npc_hk_boro
     reports_to: off_bek_council
     powers: ["초원 서쪽 끝, 황무지 경계 — 패배 직전"]
     chosen_by: "부족 — 칸에게 복속하지 않았다"
     perks: ["패배하면 부족 전체가 노예가 된다"]
   - id: off_old_wind_head
     title: 옛 바람파 수장
-    holder: "unnamed:예순 늙은굽 (71, 떠나지 않은 늙은이)"
+    holder: npc_hk_yesun
     reports_to: off_bek_council
     powers: ["칸 없는 초원을 주장 — 9부족"]
     chosen_by: "옛 바람파의 추대"
     perks: []
   - id: off_khan_halfbrother
     title: 칸의 이복형제
-    holder: "unnamed:카사르 붉은발굽 — 인간 짐꾼들에게 활을 가르쳤다는 소문"
+    holder: npc_hk_kasar
     reports_to: off_khan
     powers: ["짐꾼 궁술(소문)"]
     chosen_by: "혈통"
@@ -120,7 +120,7 @@ offices:
     perks: ["서서 버티는 창술"]
   - id: off_whip_rider
     title: 채찍 기수
-    holder: "unnamed:채찍 기수들 — 짐꾼 감독 하르칸"
+    holder: npc_hk_hulun
     reports_to: off_khan
     powers: ["행렬 낙오 버림, 채찍 20, 도주 사냥"]
     chosen_by: "칸·벡의 지명"
@@ -134,7 +134,7 @@ offices:
     perks: ["초원어 스승, 승마 스승"]
   - id: off_wind_reader
     title: 바람 읽는 자
-    holder: "unnamed:날씨·냄새·먼 소리를 읽는 하르칸"
+    holder: npc_hk_altan
     reports_to: off_khan
     powers: ["이동 방향 예보", "서풍의 날 경고"]
     chosen_by: "부족 추천"
@@ -147,6 +147,22 @@ offices:
     chosen_by: "아무도 뽑지 않는다 — 그나르라 경멸받으나 쓸모가 있다"
     perks: ["쓰러진 짐꾼들의 유품 목록을 머릿속에 지닌다"]
 
+  - id: off_outcast_village_elder
+    title: "rank_outcast_village"
+    holder: npc_hk_nesta
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_race_judge
+    title: "rank_galloper"
+    holder: npc_hk_ile
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_khan, title: "칸", duties: "추종 부족을 이끌어 달린다", privileges: "칸의 오르두", open_to_player: false}
   - {id: rank_bek, title: "부족장 (벡)", duties: "부족 이동과 맹세 유지", privileges: "회합 발언, 이탈권", open_to_player: false}

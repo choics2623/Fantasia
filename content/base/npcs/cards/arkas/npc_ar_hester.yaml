@@ -106,7 +106,7 @@ regression:
     - "그날 필사대에서 구멍이 한 문장 늘어나는 서기"
   deja_vu: none
 affiliations:
-  - {faction: fac_nameless, rank: rank_lamp, office: off_lamp_arkas, since: 300, loyalty: 80, public: false, cell: n_lamp_arkas}
+  - {faction: fac_nameless, rank: rank_lamp, office: off_lamp_arkas, since: 300, loyalty: 80, public: false, cell: null}
   - {faction: fac_ashen_tower, rank: rank_clerk, office: off_scribe_chief, since: 290, loyalty: 20, public: true, cell: null}
 truths: []
 hard_rules:

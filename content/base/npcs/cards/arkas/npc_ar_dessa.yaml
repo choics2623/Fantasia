@@ -1,0 +1,94 @@
+# 약사 데사 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-16)
+id: npc_ar_dessa
+name: 약사 데사
+aka: [쑥 데사, 열일곱의 약사]
+tier: B
+type: living
+race: 인간
+subrace: 인간(약사 노예)
+sex: 여
+age: 41
+region: 아르카스 탑섬
+home: 번호 회랑 의무실 곁 방
+job: 회랑 약사 노예 (자극 후유증 담당)
+rank: 약사 노예
+summary: "'자극' 후유증으로 시간 감각을 잃은 피험자 열일곱을 따로 돌보고 쑥과 소금물로 회랑 결핵을 가라앉히는 약사. 어머니는 모르바 늪 출신이다"
+source: docs/world/people/arkas.md (npc_ar_dessa)
+life:
+  - {year: 271, age: 0, event: "세렌 항구 약재 노예 집안에서 태어남. 어머니는 모르바 늪 출신 약초꾼"}
+  - {year: 290, age: 19, event: "빚으로 아르카스에 팔려 옴. 의무실 조수가 됨"}
+  - {year: 298, age: 27, event: "약사 노예가 되어 회랑 순회를 맡음"}
+  - {year: 308, age: 37, event: "'자극' 후유증 환자 열일곱을 따로 돌보기 시작함"}
+appearance:
+  - "손이 쑥 즙으로 누렇다"
+  - "목에 쑥 줄기 매듭 하나"
+  - "눈이 다정하고 피로하다"
+smell: "쑥과 소금물, 약 달이는 김"
+voice_sound: "부드럽고 낮다. 환자와는 한 박자 느리게 말한다"
+personality:
+  disposition: {용기: 20, 자비: 65, 정직: 30, 신앙: 20, 탐욕: -30, 충성: 45}
+  temperament: [다정, 인내, 피로, 단호]
+  habits:
+    - "사람을 만나면 먼저 이마에 손을 얹고 열을 짚는다"
+    - "환자의 이름을 하루에 한 번씩 조용히 불러 준다"
+  values: "어제와 비교하는 것이 의술이다. 어제를 잃은 사람은 오늘을 두 번 산다"
+  fears: ["열일곱이 돌봄을 잃는 일", "쑥 약초법이 탑에 알려지는 일", "회랑 결핵이 번지는 일"]
+  desires:
+    short: "겨울 결핵이 회랑에 번지지 않게 하는 것"
+    long: "열일곱이 어제와 내일을 구분하는 날"
+voice:
+  register:
+    to_superior: "탑 학자에게 낮은 존대"
+    to_equal: "약사 동료에게 부드러운 평어"
+    to_inferior: "환자에게 천천히 하는 반말. 이름을 부른다"
+    to_player_default: "손을 보고 열부터 짚는다. 부드러운 평어"
+  tics: ["'어제는 어땠어요?'", "이마에 손을 얹는다"]
+  use: [열, 어제, 쑥, 소금물, 이름, 오늘]
+  avoid: [실패한 사례, 자극, 늪]
+  length: "짧고 부드럽다"
+  samples:
+    - {situation: 첫 만남, line: "열은 몇 도죠? 어제도 이만큼이었어요? 어제와 비교하는 건 중요해요."}
+    - {situation: 호의, line: "쑥은 늪에서 왔어요. 어머니가 가르쳐 줬고요. 어머니의 어머니도."}
+    - {situation: 거절, line: "열일곱 말이에요? 그들은 어제도 오늘이에요. 내일도 오늘일 거예요."}
+    - {situation: 비밀 누설, line: "열일곱 명이에요. '자극'을 받은 뒤 어제와 내일을 구분하지 못해요. 탑은 실패한 사례라고 부르고요."}
+    - {situation: 슬픔, line: "열일곱 가운데 한 사람이 어제 내 이름을 처음으로 정확히 불렀어요. 그 사람은 오늘 다시 잊었고요."}
+schedule:
+  아침: "의무실 약초를 말린다"
+  낮: "회랑 순회 — 열병과 결핵을 돌본다"
+  저녁: "'자극' 후유증 피험자 열일곱을 돌본다"
+  밤: "쑥 달인 물을 식힌다"
+places: [번호 회랑 의무실, 번호 회랑, 약초 건조 방]
+knows:
+  - fact_p2ar_dessa_stimulus_aftermath
+  - fact_p2ar_dessa_fever_cure
+hides:
+  - fact: fact_p2ar_dessa_stimulus_aftermath
+    reveal_when: "신뢰 50 이상이고 피험자를 존중하는 말을 먼저 했을 때"
+    reveal: [{"trust":50}]
+    cover: "'후유증은 시간이 지나면 가라앉아요'라고 한다"
+relations:
+  - {to: npc_halla, type: 13층 독방, like: 30, trust: 35, visibility: 비밀, memo: "약 대신 책을 한 권 전해 준다", words: "책을 읽는 소리로 약보다 먼저 가라앉는 사람. 오틸리의 책 한 권을 약 상자에 섞어 건넨다"}
+  - {to: npc_ottilie, type: 두르강 학자, like: 20, trust: 30, visibility: 비밀, memo: "약초 부탁", words: "손이 돌이 되어 가는 학자. 쑥 즙을 한 병씩 몰래 건넨다"}
+  - {to: npc_ar_nere, type: 열병의 소녀, like: 35, trust: 40, visibility: 비밀, memo: "열 내리는 약을 몰래 더 준다", words: "열 때문에 징후가 된 아이. 열을 내려도 징후는 내리지 않는다는 것이 늘 마음에 걸린다"}
+toward_player: "손을 보고 열부터 짚는다"
+persuade:
+  likes: ["쑥·약초 (+25)", "피험자 돌봄 (+30)"]
+  hates: ["열일곱을 '실패'라 부르는 것 (+0)"]
+roles:
+  teacher: "가능 — 약학(상한 55), 응급처치(60). 조건: 의무실 일 사흘 / 수업료: 쑥 한 줌"
+  companion: "구출 이후 가능 — 약학·응급처치 지원"
+  romance: null
+regression:
+  fixed:
+    - "열일곱을 따로 돌본다"
+  drift:
+    - "그날 회랑에서 열이 오른 사람"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "'실패한 사례'라는 낱말을 쓰지 않는다 (열일곱 사람이라 한다)"
+  - "설교하지 않는다. 열과 쑥과 어제로 말한다"
+on_death: "열일곱이 돌봄을 잃고 회랑 결핵이 번진다. 쑥 약초법이 끊긴다."
+story_seeds:
+  - "데사의 어머니는 모르바 늪 출신이다 — 늪의 약초 판로와 탑의 의무실이 닿는다. 열일곱을 섬 밖으로 보낼 방법은 쑥 약초를 구해 오는 길에 있다."

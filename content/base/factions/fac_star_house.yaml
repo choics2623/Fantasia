@@ -41,7 +41,7 @@ offices:
     perks: []
   - id: off_key_second
     title: 둘째 열쇠 지킴이 (세렌 갈래)
-    holder: "unnamed:리스 (24, 세렌 계약민 서기 — 조상의 이름을 받았다)"
+    holder: npc_sr_lis
     reports_to: null
     powers: ["두 번째 열쇠", "세렌 오필 상가의 서기로서 글을 숫자 이상으로 읽는다(합법의 틈)"]
     chosen_by: "조상의 이름을 받음 — 노래로"

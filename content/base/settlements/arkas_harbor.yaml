@@ -1,0 +1,21 @@
+# 아르카스 부두 — 탑섬 북쪽 유일한 부두 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §10.9(arkas_harbor), docs/world/people/arkas.md, facts/phase2_arkas.yaml.
+# grid: 부두 평면 (m). 세렌에서 소금 바닷길 14시간, 그롬마르 항 19시간, 서약섬 26시간. 탑까지 6시간. 굶주림월 폭풍철에는 운항 중지 — 섬이 고립된다.
+id: arkas_harbor
+name: 아르카스 부두
+node: arkas_harbor
+kind: harbor
+grid: {w: 500, h: 360}
+curfew: {from: "21:00", to: "05:00", note: "밤 부두는 경비 순찰 구역. 하선장 사람은 우리 안에서 잔다"}
+bells:
+  - {at: "05:00", name: 부두 열기}
+  - {at: "12:00", name: 정오 휴식}
+  - {at: "20:00", name: 입항 마감}
+patrols: ["21:00", "01:00"]
+locations:
+  - {id: ar_pier, name: 부두, xy: [250, 60], kind: quay, access: staff, hours: "05:00-20:00", note: "섬 북쪽 유일한 부두. 세렌·그롬마르·서약섬 배가 닿는다"}
+  - {id: ar_harbor_office, name: 부두장 사무소, xy: [200, 140], kind: office, access: staff, hours: "06:00-21:00", note: "부두장 이쉬의 방. 열쇠 꾸러미 열둘과 입항 장부가 걸렸다"}
+  - {id: ar_warehouse, name: 화물 창고, xy: [320, 150], kind: store, access: staff, hours: "06:00-20:00", note: "탑에 들어오는 화물을 쌓는 창고. 책 상자와 귀리 마대가 같이 쌓인다", hidden: "빈 물통 한 줄 — AS 297 피험자가 탈출에 썼다 (1회 성공). 창고 뒤 비밀 식량 창고에 귀리 서른 자루"}
+  - {id: ar_landing_pens, name: 하선 우리, xy: [130, 180], kind: pens, access: staff, hours: "24시", locked: "점호 외에는 닫힘", note: "배에서 내린 피험자가 점호 전까지 묶이는 우리. 번호 팔찌를 차는 곳"}
+  - {id: ar_boat_shed, name: 보트 창고, xy: [380, 90], kind: shed, access: staff, hours: "06:00-19:00", note: "탑의 배와 작은 보트를 보관한다. 등대 바위로 건너는 작은 배도 여기 있다"}
+  - {id: ar_tower_road, name: 탑 가는 길 입구, xy: [250, 300], kind: path, access: staff, hours: "24시", note: "부두에서 탑까지 6시간 걸리는 석조 길. 길가에 경비 초소가 셋"}
+outer: []

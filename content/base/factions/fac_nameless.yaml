@@ -73,21 +73,21 @@ offices:
     perks: []
   - id: off_lamp_seren
     title: 세렌 등잔
-    holder: "unnamed:세렌 등잔 — 계약민 '셈 모임'과 닿는 자"
+    holder: npc_sr_oscar
     reports_to: off_grey_woman
     powers: ["세렌 위조 통행증", "계약민 연락"]
     chosen_by: "회색 여인의 지명"
     perks: []
   - id: off_lamp_morva
     title: 모르바 등잔
-    holder: "unnamed:레나 (인간, 31) — 탈주자 마을 '물안개 둑' 책임자"
+    holder: npc_mv_rena
     reports_to: off_grey_woman
     powers: ["늪 수령지", "자유민 마을 연락"]
     chosen_by: "회색 여인의 지명"
     perks: ["늪 마녀 회합과의 공식 창구"]
   - id: off_lamp_arkas
     title: 아르카스 등잔 — 공석
-    holder: null
+    holder: npc_ar_hester
     reports_to: off_grey_woman
     powers: ["잿빛 탑 서기 노예 세포"]
     chosen_by: "공석. 후보는 볼드 가문 수석 서기 노예 이삭(unnamed, 39) — 볼드 사본을 필사한 적이 있다"
@@ -108,7 +108,7 @@ offices:
     perks: []
   - id: off_lamp_ash
     title: 재의 황무지 등잔 (마지막 등불)
-    holder: "unnamed:재의 황무지 등잔 — 사냥꾼 모임 '주춧돌'의 하나"
+    holder: npc_aw_merita
     reports_to: off_grey_woman
     powers: ["아스테리아 글자 석판 조각 수집", "미끼(이안)의 보급"]
     chosen_by: "회색 여인의 지명"
@@ -156,6 +156,14 @@ offices:
     chosen_by: "은빛 강 등잔의 지명"
     perks: []
 
+  - id: off_wick_seren_numbers
+    title: "rank_contact"
+    holder: npc_sr_catarina
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_grey_woman, title: "회색 여인", duties: "지시와 희생의 결정", privileges: "얼굴 없음", open_to_player: false}
   - {id: rank_lamp, title: "등잔 (지역 책임자, 12)", duties: "지역 세포 운영, 한 달에 한 줄의 요청", privileges: "회색 여인에게 가는 경로 하나", open_to_player: true}

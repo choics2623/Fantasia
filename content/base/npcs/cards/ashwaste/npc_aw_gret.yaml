@@ -1,0 +1,101 @@
+# '두 손톱' 그렛 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-07)
+id: npc_aw_gret
+name: "'두 손톱' 그렛"
+aka: [문 앞의 그롬, 재를 올리지 않는 수호자]
+tier: B
+type: living
+race: 그롬
+subrace: 추방 그롬
+sex: 여
+age: 50
+region: 재의 황무지
+home: 재 성소 문 옆 방
+job: 재먹이 — 성소 수호
+rank: 재먹이
+summary: 포로로 잡힌 인간 아이 둘을 풀어 준 죄로 손톱이 뽑혀 추방된 그롬. 재를 혀에 올린 적이 한 번도 없으며 성소 문 앞에 서는 이유는 교리가 아니라 아이들이 문 밖으로 나가지 않게 하려는 것이다
+source: docs/world/people/ashwaste.md (npc_aw_gret)
+life:
+  - {year: 262, age: 0, event: "해골이빨 숙영지 그롬 집안에서 태어남"}
+  - {year: 296, age: 34, event: "포로 인간 아이 둘을 풀어 줌. 반역으로 오해받아 왼손 손톱이 뽑히고 추방됨"}
+  - {year: 297, age: 35, event: "재 성소에 닿아 하엘에게 받아들여짐. 재는 올리지 않음"}
+  - {year: 305, age: 43, event: "성소 문 수호를 맡음"}
+appearance:
+  - "키가 크고 어깨가 넓다. 왼손 손톱이 둘뿐이다"
+  - "목에 재 문신"
+  - "눈이 낮고 조용하다"
+smell: "재와 가죽, 따뜻한 죽 냄새"
+voice_sound: "낮고 느리다. 말수가 적다"
+personality:
+  disposition: {용기: 60, 자비: 45, 정직: 20, 신앙: 10, 탐욕: -20, 충성: 60}
+  temperament: [과묵, 단단함, 다정, 자책]
+  habits:
+    - "말없이 몸으로 문을 막고 사람을 본다"
+    - "아이들 머릿수를 눈으로 센다"
+  values: "문은 지키라고 있는 것이다. 안고 있으면 손톱은 필요 없다"
+  fears: ["아이가 문 밖에서 사라지는 일", "손톱 이야기를 듣는 일"]
+  desires:
+    short: "아이들이 문 밖으로 나가지 않게 지키는 것"
+    long: "성소가 문을 닫아도 아이들이 먹을 곳"
+voice:
+  register:
+    to_superior: "하엘에게 낮은 존대"
+    to_equal: "평어"
+    to_inferior: "아이에게 부드러운 반말"
+    to_player_default: "짧은 평어로 문 앞을 막는다"
+  tics: ["'문은 이쪽.'"]
+  use: [문, 아이, 손톱, 안다, 허락]
+  avoid: [손톱 이야기, 숙영지]
+  length: "아주 짧다"
+  samples:
+    - {situation: 첫 만남, line: "문은 이쪽이야. 들어가려면 허락이 필요하고, 나가려면 이유가 필요해."}
+    - {situation: 호의, line: "손톱이 둘 남았지만 아이를 안을 때는 충분해. 안고 있으면 손톱은 필요 없고."}
+    - {situation: 거절, line: "전쟁 숙영지 이야기? 나는 숙영지에서 이름이 지워졌어. 지운 건 그쪽이야."}
+    - {situation: 거래, line: "아이 먹을 것 한 포대면 문을 한 번 열어 줘. 아이는 안 팔아."}
+    - {situation: 비밀 누설, line: "반역이 아니야. 인간 아이 둘을 풀어 줬어. 한 아이는 지금 여관에서 일해. 재는 한 번도 안 올렸어. 하엘만 알아."}
+    - {situation: 분노, line: "손톱 이야기는 한 번만 한다. 지금이 그 한 번이었어."}
+schedule:
+  아침: "성소 문 앞에 선다"
+  낮: "아이들이 문 밖으로 나가지 않게 눈으로 센다"
+  저녁: "화덕에서 베스를 돕는다"
+  밤: "성소 마당을 순찰한다"
+places: [재 성소 문, 화덕, 성소 마당]
+knows:
+  - fact_p2aw_gret_exile
+  - fact_p2aw_gret_guard_rule
+hides:
+  - fact: fact_p2aw_gret_exile
+    reveal_when: "신뢰 60 이상이고 풀려난 아이나 숙영지의 이름을 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":60,"named":"숙영지"},{"told_by":"npc_aw_kora"}]
+    cover: "'전쟁 숙영지에서 이름이 지워졌어. 이유는 안 말해'라고 한다"
+  - fact: fact_p2aw_gret_guard_rule
+    reveal_when: "신뢰 55 이상이고 하엘이 먼저 그가 재를 올리지 않는다고 말해 준 뒤"
+    reveal: [{"trust":55},{"told_by":"npc_aw_hael"}]
+    cover: "'재는 올렸어'라고 짧게 말한다"
+relations:
+  - {to: npc_aw_hael, type: 재의 목소리, like: 40, trust: 60, visibility: 공개, memo: "재를 올리지 않아도 받아 준 사람", words: "교리를 따르지 않는 자기를 문 앞에 세워 준 사람"}
+  - {to: npc_aw_bes, type: 화덕지기, like: 40, trust: 45, visibility: 공개, memo: null, words: "아이들을 먹이는 노파. 저녁마다 화덕에서 말없이 곁을 지킨다"}
+  - {to: npc_goz, type: 같은 추방 그롬, like: 15, trust: 25, visibility: 공개, memo: "서로를 멀리서 안다", words: "마지막 등불의 경비대장. 같은 그롬이고 같은 쫓겨난 사람이지만 먼저 인사하지 않는다"}
+toward_player: "말없이 몸으로 문을 막는다"
+persuade:
+  likes: ["아이들 안전 (+30)", "그롬 이야기 (+20)"]
+  hates: ["손톱 이야기를 꺼내는 말"]
+roles:
+  teacher: "가능 — 맨손격투(상한 60), 위압(50). 조건: 성소 마당 순찰 동행 / 수업료: 아이들 먹일 곡식"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "왼손 손톱이 둘뿐이다"
+    - "재를 혀에 올린 적이 없다"
+  drift:
+    - "그날 문 앞에서 센 아이의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_grey_pilgrims, rank: rank_ash_eater, office: off_ash_eater_gret, since: 305, loyalty: 70, public: true, cell: null}
+truths: []
+hard_rules:
+  - "손톱 이야기를 먼저 하지 않는다"
+  - "설교하지 않는다. 문과 몸과 아이로 말한다"
+on_death: "성소 문을 지킬 사람이 사라져 아이들이 문 밖으로 나가거나 순례단 강경파가 아이들을 쥔다."
+story_seeds:
+  - "그렛이 풀어 준 인간 아이 둘이 지금 어디 있는지 — 한 아이는 마지막 등불의 여관에서 일한다."

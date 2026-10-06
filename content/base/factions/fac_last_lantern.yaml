@@ -23,7 +23,7 @@ succession: "등불지기는 등불을 처음 건 두르강 추방자의 핏줄�
 offices:
   - id: off_lantern_keeper
     title: 등불지기
-    holder: "unnamed:할그림 반돌 (두르강) — 깊은 문 아래의 것을 말하지 않겠다는 맹세를 깨 왼팔과 왼쪽 얼굴이 돌."
+    holder: npc_aw_halgrim
     reports_to: null
     powers: ["등불 규칙", "추방", "등불 인장 발급", "유물 창고"]
     chosen_by: "등불을 건 핏줄 (AS 140)"
@@ -37,7 +37,7 @@ offices:
     perks: ["매일 싸울 상대 — 그의 혈명은 싸우지 않으면 쇠약해진다"]
   - id: off_chief_guide
     title: 수석 길잡이
-    holder: "unnamed:모그 (인간, 44) — 황무지에 23번 들어갔다 나온 유일한 인간. 바엘리스의 굳은 그림자 옆에서 '너는 또 왔구나'를 들었다"
+    holder: npc_aw_mog
     reports_to: off_lantern_keeper
     powers: ["원정 경로", "잔상 주기"]
     chosen_by: "살아 돌아온 횟수"
@@ -58,14 +58,14 @@ offices:
     perks: ["교본 상자의 위치 — 아무에게도 말하지 않았다"]
   - id: off_hunter_glass_eye
     title: 허가 사냥꾼 — '유리눈'
-    holder: "unnamed:'유리눈' 데스 (용인 몰락 기사, 81) — 시간 잔상을 보는 의안"
+    holder: npc_aw_des
     reports_to: off_lantern_keeper
     powers: ["잔상 감정"]
     chosen_by: "등불 인장"
     perks: []
   - id: off_ash_guide
     title: 길잡이 — 재굴 크릭
-    holder: "unnamed:치륵 (크릭, 37) — 재굴 무리, 잔상을 냄새로 맡는다"
+    holder: npc_aw_chirk
     reports_to: off_chief_guide
     powers: ["길 안내"]
     chosen_by: "재굴 무리의 거래"

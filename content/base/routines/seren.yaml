@@ -135,7 +135,7 @@ npc_sr_run:
   blocks:
     - {days: all, from: "00:00", to: "06:00", at: sr_contract_market, doing: 경매대 뒤 방에서 잔다}
     - {days: all, from: "06:00", to: "09:00", at: sr_auction_stage, doing: 로트 번호를 붙인다}
-    - {days: all, from: "09:00", to: "17:00", at: sr_auction_stage, doing: 경매 진행 — 열 발톱 하나, 열 발톱 둘, fixed: true}
+    - {days: all, from: "09:00", to: "17:00", at: sr_auction_stage, doing: "경매 진행 — 열 발톱 하나, 열 발톱 둘", fixed: true}
     - {days: all, from: "17:00", to: "21:00", at: sr_conversion_desk, doing: 낙찰 서류를 정산한다}
     - {days: all, from: "21:00", to: "24:00", at: sr_contract_market, doing: 담합한 입찰자의 이름을 장부에 한 줄 쓴다}
 npc_sr_olaf:

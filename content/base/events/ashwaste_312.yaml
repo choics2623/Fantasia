@@ -1,0 +1,61 @@
+# 재의 황무지 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §11(등불 규칙·재의 날·시간 잔상·두 번째 등불·시간의 상처), WORLD_BIBLE §8(달력)·§10(클락 2 맹약회의 313, 클락 3 북방 대탈주, 클락 4 황무지 확장), fac_last_lantern, fac_grey_pilgrims(잿불석 매장), docs/world/people/ashwaste.md, facts/phase2_ashwaste.yaml.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림 13 재의 날(5일). 황무지에는 눈이 오지 않고 재가 온다 — 겨울에는 재 폭풍이 연다.
+# 다른 지역과의 연결: 312-09-01 18:00 회귀점의 측정 바늘이 탑(귀 기울이는 방)에서만이 아니라 재눈 초소에서도 튄다 / 312-11-03·12-20 회색여울 매각 40·31 소식(세렌 소금 나루 10/20·12/14 도착)이 그롬마르행 상인을 통해 튀크에게 닿는다 / 312-09-18·12-18·313-03-18·06-18 해골이빨 전쟁 숙영지의 전언 / 313-03-15 흰 알이 깬 날 재눈 초소의 곡선이 먼저 튀고 열흘 뒤 소문이 닿는다 / 313-05-01 맹약회의 313(서약섬 5/1~11) 개막일 경계 말뚝이 한 번 더 뛴다 — 5/12 이후 소식이 전파된다 / 북방 대탈주 탈주자는 겨울마다 마지막 등불의 판잣집 골목으로 흘러든다.
+# 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다. 쉼표가 든 값은 큰따옴표로. 시간 잔상은 하루 한두 번 — 재의 날에는 시간당 서너 번.
+
+# ── 낙엽월 (9) ──
+- {id: ev_aw_sep1_needle, date: "312-09-01", npcs: [npc_aw_serena], from: "17:30", to: "19:00", at: ll__ash_eye_records, doing: "회귀점의 저녁 6시 — 기록함의 측정 바늘이 같은 자리에서 튄다. 세레나가 곡선 옆에 시각을 쓰고 '원인 미상'이라고 적으려다 펜을 멈춘다", fixed: true}
+- {id: ev_aw_sep18_camp_message, date: "312-09-18", npcs: [npc_aw_uma], from: "14:00", to: "16:00", at: ll_straggler_camp, doing: "해골이빨 전쟁 숙영지의 전령이 접힌 전언을 건넨다 — '탈영한 고즈를 돌려 달라'. 우마가 한 번 더 접어 궤짝에 넣는다 (아홉째 장)", fixed: true}
+- {id: ev_aw_sep20_rail, date: "312-09-20", npcs: [npc_aw_serena], from: "10:00", to: "14:00", at: ll__ash_eye, doing: "시간 측정관 라일이 분기 방문차 와서 지난 분기와 같은 말을 한다 — '이 곡선은 측정 오차일 수 있습니다'. 세레나는 같은 대답을 하면서 대화가 되풀이되고 있다는 것을 혼자 안다", fixed: true}
+- {id: ev_aw_sep28_dagan_q, date: "312-09-28", npcs: [npc_aw_kora, npc_aw_dagan], from: "22:00", to: "24:00", at: ll_inn, doing: "탑 밀정이 묵은 밤 — 다간이 3호 방에 든 날 코라가 막대 끝을 한 번 꺾는다 (열두째 꺾은 막대). 다간은 문틈 불빛이 길게 든다는 것을 모른 척한다"}
+# ── 서리월 (10) ──
+- {id: ev_aw_oct_gate_news, date: "312-10-12", npcs: [npc_aw_til, npc_echo_wall_girl], from: "06:00", to: "10:00", at: ast_ninth_gate, doing: "아홉째 문 성벽의 잔상이 평소보다 이르게 일어난다 — 틸이 가장자리에서 눈을 감고 목소리가 도착하는 박자를 센다. 9분이 8분 40초로 줄었다"}
+# ── 긴밤월 (11) ──
+- {id: ev_aw_nov_tuk_greyford, date: "312-11-03", npcs: [npc_tuk], from: "18:00", to: "22:00", at: ll_tuk_stall, doing: "그롬마르행 상인이 '회색여울 매각 마흔이 세렌 소금 나루에 닿았다'는 말을 가져온다 — 튀크가 숫자만 끈 매듭에 옮기고 값은 매기지 않는다"}
+- {id: ev_aw_nov_box_run, date: "312-11-10", npcs: [npc_kyle_sandeye, npc_aw_dagan, npc_aw_mog], from: "06:00", to: "20:00", at: ast_school_site, doing: "교본 상자 원정 — 카일이 상자가 있던 학교터에 모래눈 패를 세우고 다간이 오른쪽에 선다. 잔상 속 아이들이 글자를 따라 읽는 소리가 들리고 다간이 장갑을 쥔다", travel_from: ll_hunters_yard, return_to: ll_hunters_yard, if: kyle_box_run}
+- {id: ev_aw_nov_serena_acc, date: "312-11-21", npcs: [npc_aw_serena, npc_aw_silene], from: "06:00", to: "11:00", at: ll__ash_edge, doing: "잿불석을 묻는 날과 곡선이 튀는 날이 사흘 어긋난다 — 세레나가 말뚝 곁의 새로 묻힌 자리를 지도에 점선으로 옮기고 실레네가 하녀장의 걸음으로 먼 쪽에서 비켜 간다"}
+# ── 굶주림월 (12) ──
+- {id: ev_aw_dec_camp_message, date: "312-12-18", npcs: [npc_aw_uma], from: "14:00", to: "16:00", at: ll_straggler_camp, doing: "해골이빨 전쟁 숙영지의 전령이 두 번째 전언을 건넨다 — 우마가 읽지 않고 접는다 (열째 장). 고즈의 쇠약이 석 달 전보다 한 걸음 가까워졌다", fixed: true}
+- {id: ev_aw_dec_goz_hears, date: "312-12-19", npcs: [npc_goz, npc_aw_uma], from: "21:00", to: "23:00", at: ll_guard_post, doing: "우마가 접어 둔 전언을 고즈 앞에 내려놓는다 — 고즈는 한참 읽지 않고 방벽 말뚝만 본다", if: goz_gets_message}
+- {id: ev_aw_dec_tuk_second31, date: "312-12-20", npcs: [npc_tuk, npc_aw_ott], from: "18:00", to: "22:00", at: ll_tuk_stall, doing: "그롬마르행 상인이 '서른한 명이 소금 바늘호에서 내렸다'는 소식을 가져온다 — 튀크가 숫자를 매듭에 옮기고 오트가 물값 흥정을 하다 말고 그 매듭을 본다"}
+- {id: ev_aw_dec_dagan_12th, date: "312-12-28", npcs: [npc_aw_dagan], from: "22:00", to: "24:00", at: ll_inn_room3, doing: "열두 번째 보고서를 쓰는 밤 — 다간이 교본 상자의 위치를 쓰고 지우고 다시 쓴다. 종이에 먹이 번진다", fixed: true}
+# ── 재의 날 (13) — 등불 밤 ──
+- {id: ev_aw_ash_day_1, date: "312-13-01", npcs: [npc_aw_halgrim, npc_goz, npc_aw_mog, npc_aw_kora, npc_aw_ott, npc_tuk, npc_aw_uma, npc_aw_des, npc_aw_chirk, npc_aw_jena], from: "18:00", to: "24:00", at: ll_lantern, doing: "재의 날 첫 밤 — 마을 전원이 등불 아래 모여 밤새 잔상을 지켜본다. 시간당 서너 번 잔상이 일어나고 사람들은 아무도 말을 걸지 않는다. 할그림이 등불 기름을 한 번 더 채운다", fixed: true}
+- {id: ev_aw_ash_day_2, date: "312-13-02", npcs: [npc_aw_hael, npc_aw_gret, npc_aw_bes, npc_aw_receiver], from: "18:00", to: "24:00", at: ll__sanct_circle, doing: "재의 날 순례자 행렬 — 순례자 이천이 재의 원을 돈다. 하엘이 설교를 멈추고 아이들이 먹는 것을 본다. 그렛은 재를 올리지 않은 채 문 앞에 선다", fixed: true}
+- {id: ev_aw_ash_day_2_embers, date: "312-13-02", npcs: [npc_aw_silene], from: "20:00", to: "24:00", at: ll__ash_edge, doing: "재의 날 잿불석 매장 — 실레네가 붉은 말뚝 한 걸음 앞에 열쇠 본으로 열었던 창고의 마지막 잿불석 한 줌을 묻는다. 손바닥의 열쇠 흉터가 따갑다", travel_from: ll__sanct_ember_room, return_to: ll__sanct_ember_room}
+- {id: ev_aw_ash_day_3, date: "312-13-03", npcs: [npc_aw_jena, npc_aw_des, npc_aw_chirk], from: "19:00", to: "24:00", at: ll_edge, doing: "재의 날 사흘째 — 인간 사냥꾼들이 아스테리아의 하늘에 떠오르는 '말하는 자'의 그림자를 본다. 제나가 여든 걸음을 걷고 유리눈이 여든 얼굴을 센다. 치륵이 아홉 분 전부터 빵 냄새를 맡는다", fixed: true}
+- {id: ev_aw_ash_day_3_jena, date: "312-13-04", npcs: [npc_aw_jena, npc_aw_des], from: "19:00", to: "22:00", at: ll_edge, doing: "제나가 여든한 번째 걸음을 걷는다 — 잔상 속 어머니의 목소리에 처음 대답한다. 유리눈이 손을 마주 흔들지 못한 채 서 있다", if: jena_answers}
+- {id: ev_aw_ash_day_til, date: "312-13-03", npcs: [npc_aw_til], from: "10:00", to: "18:00", at: ast_square_edge, doing: "재의 날 광장 — 원이 한 걸음 가까워졌다고 느낀다. 틸이 눈을 감지 않고 원을 오래 쳐다본다", fixed: true}
+- {id: ev_aw_ash_day_4, date: "312-13-04", npcs: [npc_aw_serena], from: "00:00", to: "24:00", at: ll__ash_eye_stakes, doing: "재의 날 경계 시간당 네 뼘 — 세레나가 하루 종일 말뚝 곁에서 곡선을 잰다. 잠은 한 시간도 못 잔다", fixed: true}
+- {id: ev_aw_ash_day_5, date: "312-13-05", npcs: [npc_aw_merita, npc_ian_ash], from: "22:00", to: "24:00", at: ll__hermitage, doing: "재의 날 마지막 밤 접선 — 메리타가 '징후 아이들'의 위치 대신 석판 조각 하나가 시간의 상처 가장자리에 있다는 소문을 건넨다. 이안이 암자 문 앞에서 '나는 돌아왔다'를 낮게 말한다", travel_from: ll_cornerstone_cellar, return_to: ll_shacks}
+# ── 313 해빙월 (1) ──
+- {id: ev_aw_jan_stone, date: "313-01-28", npcs: [npc_aw_halgrim, npc_aw_mog], from: "22:00", to: "24:00", at: ll_oath_cellar, doing: "돌이 가슴 아래 손바닥 하나 위까지 올라왔다 — 심장에 닿는 날이 곧이다. 할그림이 깨진 석판 곁에서 창대를 짚고 모그를 불러 '말한 적 있는 사람'만 곁에 서게 한다", fixed: true}
+- {id: ev_aw_jan_stone_speaks, date: "313-01-29", npcs: [npc_aw_halgrim], from: "20:00", to: "23:00", at: ll_oath_cellar, doing: "돌이 심장에 닿기 전 할그림이 깊은 문 아래의 것을 한 번 더 말한다 — 말하는 순간 왼쪽 얼굴이 눈 밑까지 굳는다", if: halgrim_speaks}
+# ── 313 파종월 (2) ──
+- {id: ev_aw_feb_til_tablet, date: "313-02-12", npcs: [npc_aw_til], from: "10:00", to: "18:00", at: ast_square_edge, doing: "겨울 재 폭풍 뒤 광장 가장자리 — 틸이 폭풍에도 쌓이지 않은 원 둘레를 한 바퀴 돌고 눈을 감은 채 한 걸음 안쪽으로 발을 내민다", fixed: true}
+# ── 313 꽃월 (3) — 흰 알 ──
+- {id: ev_aw_mar_egg_needle, date: "313-03-15", npcs: [npc_aw_serena], from: "03:00", to: "07:00", at: ll__ash_eye_records, doing: "새벽 바늘이 한 번 크게 튄다 — 흰 알이 깬 날. 소문은 열흘 뒤에 오지만 곡선은 하루 먼저 한 뼘 더 가파르다. 세레나가 곡선 옆에 '원인 미상' 대신 '북쪽?'이라고 쓴다", fixed: true}
+- {id: ev_aw_mar_camp_message, date: "313-03-18", npcs: [npc_aw_uma], from: "14:00", to: "16:00", at: ll_straggler_camp, doing: "해골이빨 전쟁 숙영지의 전령이 세 번째 전언을 건넨다 — 우마가 접은 종이가 열한 장이 된다", fixed: true}
+- {id: ev_aw_mar_rail, date: "313-03-20", npcs: [npc_aw_serena], from: "10:00", to: "14:00", at: ll__ash_eye, doing: "시간 측정관 라일이 분기 방문차 와서 같은 말을 되풀이한다 — 세레나가 흰 알과 곡선 이야기를 꺼내려다 '측정 오차'라는 말에 입을 닫는다", fixed: true}
+- {id: ev_aw_mar_egg_news, date: "313-03-25", npcs: [npc_tuk, npc_goz, npc_aw_mog], from: "18:00", to: "22:00", at: ll_tuk_stall, doing: "그롬마르행 상인이 루멘에서 흰 알이 깼다는 소문을 가져온다 — 튀크가 소문에 값을 매기고 고즈가 오래 아무 말도 하지 않는다. 모그가 지도 위 북쪽을 손가락으로 만진다"}
+# ── 313 푸른월 (4) ──
+- {id: ev_aw_apr_refugees, date: "313-04-15", npcs: [npc_goz, npc_aw_kora, npc_aw_uma], from: "16:00", to: "20:00", at: ll_square, doing: "북방 대탈주의 탈주자 한 줄이 마지막 등불에 닿는다 — 열둘 가운데 둘은 아이다. 고즈가 해 지기 전 호각에 맞춰 들이고 우마의 낙오자들이 방벽 곁에서 길을 열어 준다. 코라가 방 값을 묻지 않고 죽을 푼다", fixed: true}
+# ── 313 태양월 (5) — 맹약회의 313 ──
+- {id: ev_aw_may_eve_embers, date: "313-04-30", npcs: [npc_aw_silene, npc_aw_receiver], from: "20:00", to: "24:00", at: ll__ash_edge, doing: "맹약회의 전야 잿불석 매장 — 실레네가 가장 많이 묻는 밤. 받아들임지기가 재 사발을 든 채 곁에서 숫자를 센다. 경계가 하룻밤에 두 뼘이 될 밤이다", travel_from: ll__sanct_ember_room, return_to: ll__sanct_ember_room}
+- {id: ev_aw_may_stake_jump, date: "313-05-01", npcs: [npc_aw_serena], from: "04:00", to: "09:00", at: ll__ash_eye_stakes, doing: "맹약회의 313 개막일 — 말뚝이 하룻밤에 한 뼘이 아니라 두 뼘 뛴다. 세레나가 곡선에서 가속이 맹약회의 날짜에 맞춰 일어난다는 계산을 세 번 확인하고 보고서에는 쓰지 않는다", fixed: true}
+- {id: ev_aw_may_hael_circle, date: "313-05-01", npcs: [npc_aw_hael], from: "20:00", to: "24:00", at: ll__sanct_circle, doing: "맹약회의 개막 밤 — 하엘이 재의 원에서 시간의 상처 쪽을 평소보다 오래 본다. 설교는 한 마디도 하지 않는다", fixed: true}
+- {id: ev_aw_may_covenant_tuk, date: "313-05-16", npcs: [npc_tuk, npc_goz, npc_aw_halgrim], from: "18:00", to: "22:00", at: ll_tuk_stall, doing: "서약섬 소식 — 맹약회의 313(5월 1~11일)에서 '인간 증언'이 처음 안건에 올랐다는 말이 12일 이후 그롬마르 상인을 통해 닿는다. 튀크가 값을 매기지 못하고 할그림이 지팡이 대신 창대를 짚고 일어선다"}
+- {id: ev_aw_may_serena_curve, date: "313-05-18", npcs: [npc_aw_serena], from: "20:00", to: "24:00", at: ll__ash_eye_records, doing: "맹약회의 열하루 동안 말뚝이 매일 두 뼘씩 뛰었음을 곡선 위에 확인한다 — 회의가 끝난 날 곡선이 평평해졌다는 것을 세레나만 눈치챈다", fixed: true}
+- {id: ev_aw_may_covenant_hael, date: "313-05-20", npcs: [npc_aw_hael, npc_aw_gret, npc_aw_bes], from: "19:00", to: "23:00", at: ll__sanct_hearth, doing: "맹약회의 소식이 성소에 닿는다 — 하엘이 '인간 증언'이라는 말을 듣고 설교를 하루 쉰다. 베스가 죽을 한 그릇 더 푸고 그렛이 문 쪽을 한 번 돌아본다"}
+# ── 313 건초월 (6) ──
+- {id: ev_aw_jun_camp_message, date: "313-06-18", npcs: [npc_aw_uma], from: "14:00", to: "16:00", at: ll_straggler_camp, doing: "해골이빨 전쟁 숙영지의 전령이 네 번째 전언을 건넨다 — 이번에는 '고즈의 이름을 돌려 달라'는 말이 한 줄 더 붙었다. 우마가 종이를 접지 못하고 한참 들고 있는다", fixed: true}
+# ── 313 수확월 (7) ──
+- {id: ev_aw_jul_ash_storm, date: "313-07-10", npcs: [npc_aw_ott, npc_aw_kora, npc_aw_halgrim], from: "06:00", to: "18:00", at: ll_water_store, doing: "여름 재 폭풍 — 시야 0. 오트가 물 저장고 뚜껑을 덮고 코라가 여관 문을 막대로 건다. 할그림은 등불 곁에서 돌이 어디까지 왔는지 손가락 마디로 센다"}
+# ── 매달 반복 ──
+- {id: ev_aw_monthly_water, npcs: [npc_aw_ott, npc_aw_halgrim], repeat: monthly, day: 10, from: "10:00", to: "14:00", at: ll_water_store, doing: "월 물 배급 — 인장 소지 사냥꾼 예순에게 물 두 통씩 배급한다. 할그림이 인장을 확인하고 오트가 구리 말로 되어 준다. 한 못은 장부에 오르지 않는다", fixed: true}
+- {id: ev_aw_monthly_embers, npcs: [npc_aw_silene], repeat: monthly, day: 6, from: "06:00", to: "11:00", at: ll__ash_edge, doing: "잿불석 매장일 — 실레네가 순례자에게 붉은 말뚝 한 걸음 앞 묻는 자리를 가르친다. 열쇠 본은 손바닥에 올려 둔 채", travel_from: ll__sanct_ember_room, return_to: ll__sanct_ember_room}
+- {id: ev_aw_monthly_serena_jump, npcs: [npc_aw_serena], repeat: monthly, day: 7, from: "04:00", to: "08:00", at: ll__ash_eye_stakes, doing: "잿불석 매장 다음 날 새벽 — 말뚝이 반 뼘 더 뛴다. 세레나가 곡선 위에 점을 찍고 이번 달 점이 지난달 점보다 위에 있는지 확인한다"}
+- {id: ev_aw_monthly_serena_report, npcs: [npc_aw_serena], repeat: monthly, day: 8, from: "20:00", to: "24:00", at: ll__ash_eye_records, doing: "탑에 올리는 월간 보고 — 세레나가 곡선을 옮겨 쓰고 원인 칸에 '원인 미상'이라고 적는다. 봉인 편지는 다음 날 새벽 배달부가 가져간다", fixed: true}
+- {id: ev_aw_monthly_merita, npcs: [npc_aw_merita], repeat: monthly, day: 12, from: "06:00", to: "20:00", at: ll__tablet_sites, doing: "석판 묻은 자리 한 곳을 확인한다 — 세 곳 가운데 달마다 다른 곳. 손바닥의 가루가 흙에 닿으면 털어 낸다", travel_from: ll_shacks, return_to: ll_shacks}
+- {id: ev_aw_monthly_kora_sticks, npcs: [npc_aw_kora], repeat: monthly, day: 25, from: "10:00", to: "11:30", at: ll_inn, doing: "꺾인 막대 세기 — 문 옆 통에서 꺾은 막대를 꺼내 날짜를 센다. 탑 밀정이 묵는 간격이 석 달에 가까워진다", fixed: true}

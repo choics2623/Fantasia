@@ -1,0 +1,101 @@
+# 받아들임지기 오렐 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-10)
+id: npc_aw_receiver
+name: 받아들임지기 오렐
+aka: [마지막 불을 끈 하인, 재 사발지기]
+tier: B
+type: living
+race: 용인
+subrace: 몰락 용인(하인)
+sex: 남
+age: 118
+region: 재의 황무지
+home: 재 성소 받아들임의 방
+job: 받아들임지기 (새로 온 이에게 재를 올린다)
+rank: 재먹이
+summary: 새로 온 순례자의 혀에 재를 올리는 하인 출신 용인. 그 재가 시간의 상처 가장자리에서 퍼 온 것이고 퍼 오는 길은 그만 안다. 몰락한 가문의 마지막 불을 끈 사람이다
+source: docs/world/people/ashwaste.md (npc_aw_receiver)
+life:
+  - {year: 194, age: 0, event: "용제국 가신 가문 하인 집안에서 태어남"}
+  - {year: 288, age: 94, event: "가문이 사라진 날 마지막 남은 불을 끔"}
+  - {year: 290, age: 96, event: "재 성소로 들어와 하엘에게 받아들여짐"}
+  - {year: 298, age: 104, event: "받아들임지기가 됨. 재를 퍼 오는 길을 혼자 익힘"}
+appearance:
+  - "등이 굽고 비늘이 닳았다"
+  - "오른손 엄지와 검지가 재에 검다"
+  - "눈이 맑고 느리다"
+smell: "재와 씻은 사발, 오래된 불 냄새"
+voice_sound: "느리고 낮다. 말끝마다 숨을 고른다"
+personality:
+  disposition: {용기: 15, 자비: 45, 정직: 20, 신앙: 40, 탐욕: -30, 충성: 60}
+  temperament: [온순, 느림, 죄책, 헌신]
+  habits:
+    - "사발을 두 손으로 받쳐 들고 조용히 기다린다"
+    - "밤마다 불을 끄는 연습을 한다"
+  values: "재는 쓰지 않다. 쓴 것은 그 뒤에 오는 기억이다. 받아들이는 사람은 보내는 사람이 아니다"
+  fears: ["재의 근원이 알려지는 일", "새로 온 사람이 석 달을 못 넘기는 일"]
+  desires:
+    short: "올해 새로 온 사람 서른이 석 달을 넘기는 것"
+    long: "가문 불 끈 날의 기억이 가시는 것"
+voice:
+  register:
+    to_superior: "하엘에게 공손한 존대"
+    to_equal: "느린 존댓말"
+    to_inferior: "새 순례자에게 부드러운 존댓말"
+    to_player_default: "혀를 내밀라고 권하는 느린 존댓말"
+  tics: ["'혀를 내밀어요.'"]
+  use: [재, 사발, 혀, 불, 받아들이다]
+  avoid: [재의 근원, 위험]
+  length: "짧고 느리다"
+  samples:
+    - {situation: 첫 만남, line: "혀를 내밀어요. 재는 쓰지 않아요. 쓴 건 그 뒤에 오는 기억이고요."}
+    - {situation: 호의, line: "저는 불을 끈 사람이에요. 마지막 불을요. 그래서 재가 저와 가장 가까워요."}
+    - {situation: 거절, line: "재의 근원이요? 말하면 가는 사람이 생겨요. 저는 받아들이는 사람이지 보내는 사람이 아니에요."}
+    - {situation: 거래, line: "사발 하나를 씻어 주면 방 하나를 보여 드릴게요. 재 이야기는 값에 안 넣어요."}
+    - {situation: 비밀 누설, line: "퍼 오는 곳은 말뚝 쪽이에요. 시간의 상처 가장자리요. 올린 사람은 석 달 안에 잔상이 보여요."}
+    - {situation: 분노, line: "재가 위험하다고 하지 마세요. 위험한 건 재가 아니라 그 뒤에 보이는 것이에요."}
+schedule:
+  아침: "재를 한 사발 퍼 온다"
+  낮: "새 사람의 혀에 재를 올린다"
+  저녁: "재 사발을 씻는다"
+  밤: "불을 끄는 연습을 한다"
+places: [재 성소 받아들임의 방, 재를 퍼 오는 길]
+knows:
+  - fact_p2aw_receiver_ash_source
+  - fact_p2aw_receiver_former_servant
+hides:
+  - fact: fact_p2aw_receiver_ash_source
+    reveal_when: "신뢰 70 이상이고 재를 올린 사람들에게 잔상이 보이는 것을 플레이어가 먼저 말했을 때"
+    reveal: [{"trust":70},{"tier":"대성공","trust":55}]
+    cover: "'재는 성소 마당에서 퍼 와요'라고 한다"
+  - fact: fact_p2aw_receiver_former_servant
+    reveal_when: "호감 40 이상이고 가문이나 불 이야기를 플레이어가 들어 주었을 때"
+    reveal: [{"like":40,"named":"가문"},{"trust":50}]
+    cover: "'하인은 어느 집에나 있어요. 이름 없는 사람들이요'라고 한다"
+relations:
+  - {to: npc_aw_hael, type: 재의 목소리, like: 30, trust: 50, visibility: 공개, memo: null, words: "재를 받아들이는 일을 맡긴 사람. 그가 설교를 멈출 때 같이 눈을 감는다"}
+  - {to: npc_aw_silene, type: 같은 몰락 용인, like: 20, trust: 30, visibility: 공개, memo: null, words: "같은 몰락의 하인과 하녀장. 서로 가문 이야기를 하지 않는다"}
+  - {to: npc_aw_serena, type: 재눈 초소의 용인, like: -5, trust: 5, visibility: 공개, memo: "같은 종족의 다른 길", words: "경계를 재는 용인. 같은 재를 다른 눈으로 보는 사람"}
+toward_player: "사발을 받쳐 들고 조용히 기다린다"
+persuade:
+  likes: ["새로 온 사람을 돌보는 일 (+25)", "가문 이야기를 들어 주는 것 (+30)"]
+  hates: ["재가 위험하다는 말"]
+roles:
+  teacher: "가능 — 의지(상한 60), 제작(재 사발, 35). 조건: 성소에서 사흘 / 수업료: 재 사발 하나 씻기"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "혀에 올리는 재는 시간의 상처 가장자리에서 퍼 온다"
+    - "몰락한 가문의 마지막 불을 껐다"
+  drift:
+    - "그날 새로 받아들인 사람의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_grey_pilgrims, rank: rank_ash_eater, office: off_receiver, since: 298, loyalty: 75, public: true, cell: null}
+truths: []
+hard_rules:
+  - "재의 근원을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 사발과 혀와 불로 말한다"
+on_death: "재를 퍼 오는 길을 아는 사람이 사라지고 새 순례자의 받아들임이 멈춘다."
+story_seeds:
+  - "재를 퍼 오는 길을 따라가면 시간의 상처 가장자리에 닿는다 — 길의 끝에 붉은 말뚝이 있다."

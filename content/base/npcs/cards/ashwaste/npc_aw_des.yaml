@@ -1,0 +1,101 @@
+# '유리눈' 데스 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-03)
+id: npc_aw_des
+name: "'유리눈' 데스"
+aka: [유리눈, 여든 얼굴을 세는 기사]
+tier: B
+type: living
+race: 용인
+subrace: 몰락 기사
+sex: 남
+age: 81
+region: 재의 황무지
+home: 마지막 등불 사냥꾼 마당 곁 천막
+job: 허가 사냥꾼
+rank: 허가 사냥꾼 (등불 인장)
+summary: 오른눈 대신 잿빛 탑 장인이 만든 시간 렌즈를 박은 용제국 몰락 기사. 해 질 녘 잔상 속 두 번째 등불 주민 여든의 얼굴을 하나씩 센다
+source: docs/world/people/ashwaste.md (npc_aw_des)
+life:
+  - {year: 231, age: 0, event: "용제국 기사 가문에서 태어남"}
+  - {year: 290, age: 59, event: "용제국 몰락 뒤 기사단이 흩어져 마지막 등불에 닿음"}
+  - {year: 300, age: 69, event: "잿빛 탑 장인에게 오른눈을 내주고 시간 렌즈를 받음. 분기마다 본 것을 한 번 듣겠다는 조건이 붙음"}
+  - {year: 311, age: 80, event: "두 번째 등불이 재가 된 날 이후 해 질 녘마다 여든 얼굴을 센다"}
+appearance:
+  - "오른쪽 눈이 유리 렌즈이고 안에 모래 알 같은 빛이 돈다"
+  - "비늘이 거의 벗겨져 목덜미에만 남았다"
+  - "낡은 기사 갑옷 흉갑만 입는다"
+smell: "검 기름과 재, 마른 술 냄새"
+voice_sound: "낮고 느리다. 해 질 녘에는 더 낮아진다"
+personality:
+  disposition: {용기: 40, 자비: 15, 정직: 25, 신앙: -10, 탐욕: 10, 충성: 30}
+  temperament: [무뚝뚝, 기억, 미련, 단정]
+  habits:
+    - "사람을 만나면 유리눈을 정면으로 보이며 반응을 본다"
+    - "해 질 녘 잔상 지대 가장자리에서 얼굴을 한 번씩 센다"
+  values: "살은 거짓말을 하고 유리는 기억한다. 기억하는 것이 기사의 마지막 일이다"
+  fears: ["얼굴 하나를 놓치는 일", "렌즈를 회수하러 탑 사람이 오는 일"]
+  desires:
+    short: "해 질 녘 여든 얼굴을 한 번씩 세는 것"
+    long: "손을 흔드는 한 사람에게 손을 마주 흔드는 것"
+voice:
+  register:
+    to_superior: "기사식 짧은 존대"
+    to_equal: "평어"
+    to_inferior: "신입에게 낮은 반말"
+    to_player_default: "유리눈을 보이며 낮은 평어"
+  tics: ["'어느 쪽에 말할 거지?'"]
+  use: [유리, 살, 여든, 해 질 녘, 얼굴, 렌즈]
+  avoid: [장식, 탑에 보고]
+  length: "짧고 느리다"
+  samples:
+    - {situation: 첫 만남, line: "눈 하나는 유리고 하나는 살이야. 살은 거짓말을 하고 유리는 기억해. 어느 쪽에 말할 거지?"}
+    - {situation: 호의, line: "해 질 녘엔 여든이 나와. 한 사람은 손을 흔들어. 나는 아직 그 손을 마주 흔들지 못했어."}
+    - {situation: 거절, line: "탑? 렌즈를 준 건 탑이야. 렌즈로 본 건 내 거고."}
+    - {situation: 거래, line: "잔상 시각 하나에 술 한 잔. 얼굴 하나는 값이 안 돼."}
+    - {situation: 비밀 누설, line: "조건이 하나 붙었어. 분기마다 본 걸 한 번 듣겠다고. 한 번도 안 보냈어. 이 렌즈가 본 건 탑 몫이 아니야."}
+    - {situation: 분노, line: "유리눈을 장식이라 부르지 마. 장식은 안 세."}
+schedule:
+  아침: "사냥꾼 마당에서 검을 닦는다"
+  낮: "짐꾼 신입을 지도한다"
+  저녁: "해 질 녘 잔상 지대 가장자리에서 여든 얼굴을 센다"
+  밤: "등불 아래서 술 한 잔"
+places: [사냥꾼 마당, 잔상 지대 가장자리, 마지막 등불]
+knows:
+  - fact_p2aw_des_knows_faces
+  - fact_p2aw_des_eye_cost
+hides:
+  - fact: fact_p2aw_des_eye_cost
+    reveal_when: "신뢰 55 이상이고 렌즈의 출처나 탑과의 조건을 플레이어가 물었을 때"
+    reveal: [{"trust":55,"named":"렌즈"}]
+    cover: "'렌즈는 렌즈야. 살 대신 박았을 뿐이고'라고 한다"
+  - fact: fact_p2aw_des_knows_faces
+    reveal_when: "호감 45 이상이고 제나나 두 번째 등불 이야기를 먼저 꺼냈을 때"
+    reveal: [{"like":45,"named":"제나"},{"told_by":"npc_aw_jena"}]
+    cover: "'잔상 속 얼굴? 해 질 녘에 나오는 건 바람이야'라고 한다"
+relations:
+  - {to: npc_aw_jena, type: 생존 소녀, like: 40, trust: 35, visibility: 공개, memo: "같은 시각에 같은 쪽을 보는 사이", words: "해 질 녘 같은 쪽을 보는 아이. 그 아이 어머니의 얼굴을 안다는 말을 아직 못 했다"}
+  - {to: npc_irene_bold, type: 렌즈의 대가를 요구한 탑주, like: -15, trust: 10, visibility: 일방, memo: null, words: "렌즈에 조건을 단 쪽. 지키지 않은 조건이 마음에 걸린다"}
+  - {to: npc_aw_serena, type: 재눈 초소 관측장, like: 15, trust: 20, visibility: 공개, memo: "같은 렌즈 계열", words: "같은 장인의 렌즈를 쓰는 학자. 말뚝과 얼굴이 다르지만 보는 법은 같다"}
+toward_player: "유리눈을 보이며 반응을 본다"
+persuade:
+  likes: ["잔상 정보 (+25)", "두 번째 등불 이야기 (+30)"]
+  hates: ["유리눈을 장식이라 부르는 말"]
+roles:
+  teacher: "가능 — 검술(상한 65), 학식(잔상, 40). 조건: 해 질 녘 가장자리 동행 / 수업료: 술 한 병"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "오른눈은 탑의 시간 렌즈다"
+    - "두 번째 등불 주민 여든의 얼굴을 안다"
+  drift:
+    - "그날 센 얼굴의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_last_lantern, rank: rank_licensed, office: off_hunter_glass_eye, since: 290, loyalty: 55, public: true, cell: null}
+truths: []
+hard_rules:
+  - "렌즈 조건을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 눈과 얼굴과 해 질 녘으로 말한다"
+on_death: "두 번째 등불 잔상 80명의 얼굴 기록이 사라진다. 탑이 렌즈를 회수하러 사람을 보낸다."
+story_seeds:
+  - "여든 얼굴 가운데 한 사람이 제나의 어머니다 — 데스가 그 얼굴을 제나에게 알려 줄 수 있다."

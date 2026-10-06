@@ -56,7 +56,7 @@ offices:
     perks: []
   - id: off_elder_record
     title: 원로 — 기록학파 수장
-    holder: "unnamed:오필 시라 (나가, 450) — 세렌 오필 상가 의석주 겸임"
+    holder: npc_ar_opil
     reports_to: off_tower_master
     powers: ["일곱 의자 한 표", "서기 노예 관리", "역사·족보·맹약 문서"]
     chosen_by: "일곱 의자 넷"
@@ -70,21 +70,21 @@ offices:
     perks: ["수정 동굴 연구소 — 잔향을 '초대'하려는 유일한 원로"]
   - id: off_elder_wind
     title: 원로 — 균열학파 (바람이 거꾸로 부는 지점)
-    holder: "unnamed:보르테 바람실 (하르칸, 70) — 정착병을 무릅쓰고 머무는 추방 학자"
+    holder: npc_ar_borte
     reports_to: off_tower_master
     powers: ["일곱 의자 한 표"]
     chosen_by: "일곱 의자 넷"
     perks: ["시간 잔상 속 역풍 지도"]
   - id: off_elder_count
     title: 원로 — 기록학파 (숫자)
-    holder: "unnamed:틱 셈쟁이 (크릭, 33) — 크릭 최초의 원로"
+    holder: npc_ar_tik
     reports_to: off_tower_master
     powers: ["일곱 의자 한 표", "탑의 모든 숫자"]
     chosen_by: "일곱 의자 넷 — 숫자가 틀린 적이 없어서"
     perks: ["화형 기록 금고"]
   - id: off_grey_eye_captain
     title: 잿빛 눈 대장 (잔향 사냥꾼 12)
-    holder: "unnamed:카르바 (용인, 77)"
+    holder: npc_ar_karba
     reports_to: off_tower_master
     powers: ["사냥꾼 파견", "산 채로 포획"]
     chosen_by: "탑주의 지명"
@@ -98,14 +98,14 @@ offices:
     perks: ["잿빛 고리 렌즈, 탑의 봉인 편지", "50명이면 '해방 증서' — 효력 없음. 지금 38명"]
   - id: off_time_measurer
     title: 시간 측정관 (둘째 칼 '정오'의 소지자)
-    holder: "unnamed:시간 측정관 — 징후 보고가 몰리는 곳으로 옮겨 다니는 균열학파 학자"
+    holder: npc_ar_rail
     reports_to: off_elder_rift
     powers: ["시간 잔상의 떨림 측정", "둘째 칼 '정오'(AS 268)"]
     chosen_by: "탑주와 균열학파 수장의 합의"
     perks: ["회차가 쌓이면 회귀점 무렵의 떨림을 쫓아 회색여울로 온다"]
   - id: off_ash_eye_post
     title: 재눈 초소 관측장 (재의 황무지)
-    holder: "unnamed:세레나 펠 (용인)"
+    holder: npc_aw_serena
     reports_to: off_elder_rift
     powers: ["황무지 경계 측정", "기록함 — '경계 확장이 맹약회의 날짜에 맞춰 가속된다'"]
     chosen_by: "균열학파"
@@ -126,7 +126,7 @@ offices:
     perks: []
   - id: off_vault
     title: 금고지기 (첫째 칼 '첫 침묵')
-    holder: "unnamed:금고지기 — 탑주 직속 용인"
+    holder: npc_ar_orvel
     reports_to: off_tower_master
     powers: ["첫째 칼 '첫 침묵'(AS 214 — 이름 없는 아이들에게 여러 번 쓰였다)", "봉인 서가 열쇠(일곱째 칸 제외)"]
     chosen_by: "탑주의 지명"
@@ -146,6 +146,38 @@ offices:
     chosen_by: "볼드 가문 경유 매입"
     perks: ["셋째 시험 사망자 14명의 명단을 외웠다"]
 
+  - id: off_corridor_jailer
+    title: "rank_scholar"
+    holder: npc_ar_brick
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_ear_chief
+    title: "rank_full_scholar"
+    holder: npc_ar_mathis
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_control_subject
+    title: "rank_cooperative_subject"
+    holder: npc_ar_old0213
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_scribe_chief
+    title: "rank_clerk"
+    holder: npc_ar_hester
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_master, title: "탑주", duties: "봉인권", privileges: "셋째 칼", open_to_player: false}
   - {id: rank_elder, title: "원로 (일곱 의자)", duties: "탑의 일 결정, 학파 수장", privileges: "한 표, 바깥 주인에게 보고", open_to_player: false}

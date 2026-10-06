@@ -44,7 +44,7 @@ offices:
     perks: []
   - id: off_end_square
     title: 끝지기 — 멈춘 광장의 끝 (아스테리온)
-    holder: "unnamed:광장의 끝지기 — 마지막 등불 '주춧돌'의 하나(이름 숨김)"
+    holder: npc_aw_til
     reports_to: off_road_head
     powers: ["멈춘 광장까지의 길", "아스테리아 아이의 신발 한 짝"]
     chosen_by: "바퀴"
@@ -58,7 +58,7 @@ offices:
     perks: []
   - id: off_end_silence
     title: 끝지기 — 첫 침묵의 바위 (이름 없는 아이들)
-    holder: "unnamed:바위 끝지기 — 아르카스 맞은편 바위섬의 늙은 어부(전 서기 노예)"
+    holder: npc_ar_fisher
     reports_to: off_road_head
     powers: ["첫 침묵에 끝난 아이들의 이름 매듭", "탑 안의 줍는 자들과의 연락"]
     chosen_by: "AS 214 이후 끊긴 적 없는 자리"

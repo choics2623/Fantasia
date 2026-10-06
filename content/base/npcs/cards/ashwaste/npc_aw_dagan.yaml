@@ -1,0 +1,110 @@
+# 다간 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-11)
+id: npc_aw_dagan
+name: 다간
+aka: [넷째 손, 모래눈 패의 넷째]
+tier: A
+type: living
+race: 인간
+subrace: 인간(탈주 사냥꾼)
+sex: 남
+age: 28
+region: 재의 황무지
+home: 마지막 등불 여관 3호 방 (모래눈 패 숙소)
+job: 모래눈 패 패원 — 잿빛 눈 열둘의 하나
+rank: 허가 사냥꾼 패원 (탑 밀정)
+summary: 카일의 패에 심어진 잿빛 눈 사냥꾼. 분기마다 카르바에게 서면 보고를 보내지만 교본 상자의 위치는 카일보다 먼저 알았음에도 보고하지 않았고, 아이들이 글자를 따라 읽는 잔상을 본 뒤 보고서의 한 줄을 지웠다
+source: docs/world/people/ashwaste.md (npc_aw_dagan)
+life:
+  - {year: 284, age: 0, event: "루멘 서쪽 농장 노예 집안에서 태어남"}
+  - {year: 300, age: 16, event: "탈주해 마지막 등불에 닿음. 짐꾼이 됨"}
+  - {year: 306, age: 22, event: "잿빛 탑 수집관에게 잡혀 협조 계약 — 사냥꾼 12의 하나로 편입됨"}
+  - {year: 307, age: 23, event: "모래눈 패 패원으로 잠입함"}
+  - {year: 310, age: 26, event: "교본 상자 근처 잔상에서 아이들의 읽는 소리를 처음 들음"}
+  - {year: 311, age: 27, event: "열한 번째 보고서에서 상자 위치를 한 줄 지움"}
+appearance:
+  - "몸이 마르고 눈이 크고 민첩하다"
+  - "왼쪽 귀에 작은 은 고리"
+  - "손가락에 먹물 자국을 숨기려 장갑을 낀다"
+smell: "재 먼지와 숨긴 먹물, 가죽 장갑"
+voice_sound: "밝고 가볍다. 거짓말할 때 목소리가 약간 높아진다"
+personality:
+  disposition: {용기: 35, 자비: 30, 정직: -10, 신앙: -20, 탐욕: 20, 충성: 10}
+  temperament: [쾌활, 흔들림, 죄책감, 눈치]
+  habits:
+    - "사람을 만나면 손과 장갑부터 본다"
+    - "서면 보고를 쓰다가 한 줄을 지웠다 다시 쓴다"
+    - "카일의 오른쪽에 서는 것을 좋아한다 — 가장 잘 보이고 가장 안 보여서"
+  values: "탑은 먼 데 있고 등불은 가까운 데 있다. 가까운 데 있는 것을 먼저 지켜야 먼 데 일도 하게 된다"
+  fears: ["카르바의 현상금 깎음", "카일에게 정체가 드러나는 일", "교본 상자의 위치가 보고되는 일"]
+  desires:
+    short: "열두 번째 보고서에서 교본 상자의 위치를 영영 빼는 것"
+    long: "탑에서 은퇴해 아이들이 읽는 소리가 들리는 곳에서 사는 것"
+voice:
+  register:
+    to_superior: "카일에게 가벼운 존댓말"
+    to_equal: "패원에게 친근한 반말"
+    to_inferior: "짐꾼에게 부드러운 반말"
+    to_player_default: "가볍게 인사하고 눈은 손을 본다. 친근한 평어"
+  tics: ["'넷째예요.'", "장갑을 만진다"]
+  use: [넷째 손, 두목 오른쪽, 장갑, 잔상, 아이들, 읽는 소리]
+  avoid: [보고서, 탑, 잿빛 눈]
+  length: "짧고 가볍다. 거짓말은 길다"
+  samples:
+    - {situation: 첫 만남, line: "모래눈 패 넷째예요. 넷째 손은 늘 두목 오른쪽에 있어서 가장 잘 보이고 가장 안 보여요."}
+    - {situation: 호의, line: "잔상 속에서 아이들이 글자를 읽어요. 읽는 소리가 나요. 그 소리가 이쪽 귀에만 들려요."}
+    - {situation: 거절, line: "탑? 탑은 먼 데 있죠. 이쪽은 재고 이쪽은 등불이고."}
+    - {situation: 거래, line: "정보 하나에 정보 하나. 값은 서로가 아는 만큼으로."}
+    - {situation: 거짓말할 때, line: "저요? 저는 짐꾼으로 시작해서 사냥꾼이 됐어요. 거기까지가 전부예요. 정말로요!"}
+    - {situation: 겁먹었을 때, line: "누가 제 장갑을 벗기려 해요? 손에 화상이 있어서요. 화상은 보기 흉해서요."}
+    - {situation: 슬픔, line: "탑에 가면 열한 살의 이졸 같은 아이가 있다고 들었어요. 거기에 제가 가지 않으려고 도망쳤는데 결국 탑 사람이 됐어요."}
+    - {situation: 비밀 누설, line: "저는 잿빛 눈이에요. 열둘 가운데 하나. 분기마다 카르바에게 서면으로 보고하고요. 상자 위치는 안 썼어요."}
+    - {situation: 분노, line: "아이들이 읽는 소리를 보고서에 쓰라고요? 그건 쓸 수 있는 문장이 아니에요."}
+schedule:
+  아침: "모래눈 패와 장비를 점검한다"
+  낮: "잔상 지대에 패와 함께 들어간다"
+  저녁: "튀크에게 유물을 판다"
+  밤: "서면 보고를 쓰다가 한 줄을 지운다"
+places: [마지막 등불 사냥꾼 마당, 여관, 잔상 지대 가장자리, 고물상 등잔 밑]
+knows:
+  - fact_aw_kyle_found_box
+  - fact_aw_school_echo
+  - fact_aw_kyle_tower_spy
+  - fact_p2aw_dagan_reports
+hides:
+  - fact: fact_p2aw_dagan_reports
+    reveal_when: "신뢰 65 이상이고 은퇴나 탑에서 벗어날 길을 제안했을 때"
+    reveal: [{"trust":65,"player_offer":"은퇴"},{"tier":"대성공","trust":45}]
+    cover: "'저는 짐꾼으로 시작해서 사냥꾼이 됐어요. 거기까지가 전부예요'라고 한다"
+  - fact: fact_p2aw_dagan_wavers
+    reveal_when: "신뢰 70 이상이고 잔상 속 아이들의 읽는 소리 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":70,"named":"아이들"}]
+    cover: "'잔상은 잔상이에요. 소리가 들린다 해도 그건 바람이고요'라고 한다"
+relations:
+  - {to: npc_kyle_sandeye, type: 패 두목, like: 25, trust: 30, visibility: 공개, memo: "모르고 믿어 주는 사람", words: "자기를 믿어 주는 두목. 정체가 드러나는 날 그가 어떤 얼굴을 할지 매일 생각한다"}
+  - {to: npc_ar_karba, type: 잿빛 눈 대장, like: -5, trust: 20, visibility: 비밀, memo: "분기 보고를 받는 사람", words: "얼굴을 한 번도 보지 못한 상관. 서면의 글씨체가 단정해서 더 무섭다"}
+  - {to: npc_tuk, type: 고물상, like: 10, trust: 15, visibility: 공개, memo: null, words: "유물을 사는 크릭. 거래 장부를 숫자 매듭으로만 쓰는 것이 마음에 든다"}
+toward_player: "가볍게 인사하고 눈은 손을 본다"
+persuade:
+  likes: ["은퇴를 돕는 말 (+40)", "아이들이 읽는 소리에 대한 이야기 (+30)", "새 숙소 (+15)"]
+  hates: ["탑 이야기를 꺼내는 것 (+0)"]
+roles:
+  teacher: "가능 — 은신(상한 55), 기만(45). 조건: 패 원정 하루 동행 / 수업료: 정보 하나"
+  companion: "조건부 — 정체가 드러난 뒤 '탑 밖의 사냥꾼'으로 1회 동행"
+  romance: null
+regression:
+  fixed:
+    - "잿빛 눈 열둘 가운데 하나다"
+    - "교본 상자의 위치를 보고하지 않았다"
+  drift:
+    - "그날 보고서에서 지운 줄"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_grey_eye, office: null, since: 306, loyalty: 15, public: false, cell: null}
+  - {faction: fac_last_lantern, rank: rank_licensed, office: null, since: 307, loyalty: 40, public: true, cell: null}
+truths: []
+hard_rules:
+  - "잿빛 눈이라는 낱말을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 장갑과 손과 소리로 말한다"
+on_death: "카일의 패에서 탑 첩자가 사라지거나 카르바가 새 첩자를 보낸다. 교본 상자의 위치 비밀이 한 명 줄어든다."
+story_seeds:
+  - "다간의 열두 번째 보고서에는 상자의 위치가 빠져 있다 — 카르바가 눈치채는 날 모래눈 패 전체가 위험해진다."

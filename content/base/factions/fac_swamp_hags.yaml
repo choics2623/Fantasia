@@ -90,12 +90,20 @@ offices:
     perks: []
   - id: off_blood_keeper
     title: 빌린 피 저장고지기 (딸 중 하나)
-    holder: "unnamed:저장고지기 딸 — 쑥 계보"
+    holder: npc_mv_sunni
     reports_to: off_hag_first
     powers: ["병 수 장부(매듭)", "독꼬리 와이번 피 3병을 겨울 전에 들여야 한다"]
     chosen_by: "첫째의 지명"
     perks: []
 
+  - id: off_guest_disciple
+    title: "rank_guest"
+    holder: npc_mv_garr
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_crone, title: "노파 (계보의 장, 7)", duties: "근원 하나를 지키고 피를 배분한다", privileges: "한 표, 빌린 피", open_to_player: false}
   - {id: rank_daughter, title: "딸 (정식 제자)", duties: "낱말 외우기, 약초, 산파", privileges: "계보의 낱말 — 시전할수록 늙는다", open_to_player: false}

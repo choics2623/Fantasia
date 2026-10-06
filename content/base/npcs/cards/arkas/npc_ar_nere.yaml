@@ -1,0 +1,97 @@
+# 네레 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-12)
+id: npc_ar_nere
+name: 네레
+aka: [0307호, 벽에 길을 그리는 아이]
+tier: B
+type: living
+race: 인간
+subrace: 인간(열병 징후자)
+sex: 여
+age: 14
+region: 아르카스 탑섬
+home: 번호 회랑 0307호
+job: 피험자 (번호 0307)
+rank: 피험자 — 셋째 시험 다음 후보
+summary: 열병이 만든 징후로 끌려온 열네 살. 셋째 시험의 다음 후보 두 명 가운데 하나이고, 열병 속에서 보는 길을 벽에 숯으로 그린다 — 회색여울 이정표와 닮았다
+source: docs/world/people/arkas.md (npc_ar_nere)
+life:
+  - {year: 298, age: 0, event: "루멘 강변 마을에서 태어남"}
+  - {year: 309, age: 11, event: "여름 열병을 앓은 뒤 꿈 이야기를 이웃에게 해서 징후자로 고발됨"}
+  - {year: 310, age: 12, event: "순회 심문 끝에 잿빛 탑 수집 대상이 됨. 아르카스에 닿음"}
+  - {year: 311, age: 13, event: "벽에 첫 숯 그림을 그림. 0213호 노인과 벽 너머로 이야기하기 시작함"}
+appearance:
+  - "키가 작고 볼이 열 때문에 늘 붉다"
+  - "손톱 밑에 숯"
+  - "눈이 크고 늘 졸려 보인다"
+smell: "숯과 젖은 돌, 열 난 이마의 땀"
+voice_sound: "작고 갈라졌다. 이름을 말할 때 한 번 더 또렷해진다"
+personality:
+  disposition: {용기: 35, 자비: 45, 정직: 40, 신앙: 15, 탐욕: -15, 충성: 40}
+  temperament: [순함, 고집, 꿈, 겁]
+  habits:
+    - "문 구멍 너머로 사람을 한참 쳐다본다"
+    - "열이 오르는 밤에 벽에 숯으로 길을 그린다"
+  values: "이름이 먼저고 번호는 나중이다. 꿈은 지우면 안 되는 길이다"
+  fears: ["숯이 떨어지는 일", "셋째 시험", "노인의 목소리가 끊기는 일"]
+  desires:
+    short: "열병이 가라앉는 날까지 벽 그림을 이어 그리는 것"
+    long: "이 섬 밖으로 나가 열병이 없는 땅의 꿈을 꾸는 것"
+voice:
+  register:
+    to_superior: "탑 사람에게 작은 존댓말"
+    to_equal: "벽 너머 피험자에게 다정한 반말"
+    to_inferior: "없다"
+    to_player_default: "조심스러운 존댓말. 이름을 먼저 말한다"
+  tics: ["'이름이 먼저예요.'", "숯 묻은 손을 소매에 문지른다"]
+  use: [이름, 번호, 숯, 길, 꿈, 노인]
+  avoid: [시험, 열병이 거짓, 징후]
+  length: "짧고 작다"
+  samples:
+    - {situation: 첫 만남, line: "네레예요. 번호는 0307이고요. 이름이 먼저예요. 노인이 이름이 먼저라고 했어요."}
+    - {situation: 호의, line: "벽에 그린 길 보세요? 꿈에서 본 길이에요. 열이 날 때만 보여요."}
+    - {situation: 거절, line: "셋째 시험이요? 모르는 척하라고 했어요. 하지만 방 앞 발소리가 달라졌어요."}
+    - {situation: 비밀 누설, line: "제 징후는 열병이 만든 거예요. 탑주님도 아세요. 그래도 후보 두 명에 들어요. 정원이 차야 한대요."}
+    - {situation: 슬픔, line: "엄마한테 꿈 이야기를 하지 말라고 배웠는데 이웃 할머니한테 해 버렸어요. 그 이웃이 신고했고요."}
+schedule:
+  아침: "측정을 받는다"
+  낮: "식당에서 귀리죽"
+  저녁: "0213호 문 앞에서 이야기를 듣는다"
+  밤: "열병 속에서 보는 꿈을 벽에 숯으로 그린다"
+places: [번호 회랑 0307호, 피험자 식당, 0213호 문 앞]
+knows:
+  - fact_ar_third_test_dead14
+  - fact_p2ar_nere_dream_map
+hides:
+  - fact: fact_p2ar_nere_third_test_candidate
+    reveal_when: "신뢰 50 이상이고 셋째 시험이 무엇인지 플레이어가 정직하게 설명해 주었을 때"
+    reveal: [{"trust":50}]
+    cover: "'시험은 몰라요. 질문에 대답만 하면 된다고 했어요'라고 한다"
+relations:
+  - {to: npc_ar_old0213, type: 벽 너머 노인, like: 30, trust: 30, visibility: 공개, memo: "이야기를 해 주는 사람", words: "벽 너머에서 바다 이야기를 해 주는 할아버지. 숨소리가 가장 믿음직한 사람"}
+  - {to: npc_milo, type: 서기 이웃, like: 35, trust: 40, visibility: 비밀, memo: "그림을 보고 가는 사람", words: "벽의 그림을 보고 지나가며 이름을 불러 주는 서기 오빠"}
+  - {to: npc_ar_brick, type: 간수, like: 20, trust: 20, visibility: 비밀, memo: "숯을 몰래 주는 사람", words: "열쇠 소리가 큰 용인 아저씨. 숯이 떨어지면 슬쩍 한 조각을 넣는다"}
+  - {to: npc_irene_bold, type: 탑주, like: -20, trust: -30, visibility: 일방, memo: "질문을 묻는 눈", words: "밤에 복도를 걸으며 질문하는 사람. 꿈 이야기를 묻는 눈이 무섭다"}
+toward_player: "문 구멍 너머로 한참 쳐다보다 조그맣게 이름을 말한다"
+persuade:
+  likes: ["열을 내리는 약 (+25)", "바깥 이야기 (+30)", "숯 한 자루 (+15)"]
+  hates: ["열병이 거짓이라는 말 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "구출 이후 — 불가 (몸이 약함)"
+  romance: null
+regression:
+  fixed:
+    - "셋째 시험의 다음 후보 둘 가운데 하나다"
+    - "벽 그림의 길이 회색여울 이정표와 닮았다"
+  drift:
+    - "그날 벽에 새로 그린 선"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_cooperative_subject, office: null, since: 310, loyalty: 5, public: true, cell: null}
+truths: []
+hard_rules:
+  - "셋째 시험이라는 낱말을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 숯과 벽과 이름으로 말한다"
+on_death: "셋째 시험 후보가 한 명 줄어 탑주가 새 후보를 정한다. 벽 그림이 지워진다."
+story_seeds:
+  - "네레를 섬 밖으로 빼내는 것이 후보를 줄이는 길이다 — 대신 열다섯째 후보가 정해진다. 벽 그림의 길은 회색여울 이정표와 닮았다."

@@ -92,14 +92,14 @@ offices:
     perks: []
   - id: off_daughter_hedwig
     title: 버들 계보의 딸 (늪 밖의 연락)
-    holder: "unnamed:헤드비가 (SCENARIOS O-10) — 버들 계보의 '딸'"
+    holder: npc_mv_hedwiga
     reports_to: off_line_willow
     powers: ["늪 밖의 약초·소식 통로"]
     chosen_by: "버들 노파의 딸"
     perks: []
   - id: off_knot_keeper
     title: 쑥 줄기 매듭 지킴이 (약초 진명 목록 300)
-    holder: "unnamed:저장고지기 딸 — 쑥 계보"
+    holder: npc_mv_sunni
     reports_to: off_line_mugwort
     powers: ["쑥 줄기를 엮은 매듭 300개 — 약초 진명 목록", "빌린 피 병 수 장부"]
     chosen_by: "첫째의 지명"

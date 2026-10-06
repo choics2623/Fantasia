@@ -1,0 +1,96 @@
+# 부두장 이쉬 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-05)
+id: npc_ar_ishi
+name: 부두장 이쉬
+aka: [빈 물통의 부두장, 열쇠 열둘]
+tier: B
+type: living
+race: 나가
+subrace: 라미아
+sex: 남
+age: 140
+region: 아르카스 탑섬
+home: 아르카스 부두 사무소 위 방
+job: 아르카스 부두장 (나가 40·크릭 80)
+rank: 세렌 상관 소속 부두장
+summary: AS 297 탈출을 빈 물통 한 줄로 도운 부두장. 굶주림월 폭풍철에 섬이 고립되면 비밀 식량 창고에서 서기와 잡역 인간에게 귀리를 몰래 푼다
+source: docs/world/people/arkas.md (npc_ar_ishi)
+life:
+  - {year: 172, age: 0, event: "세렌 하층 운하의 라미아 집안에서 태어남"}
+  - {year: 260, age: 88, event: "아르카스 부두 하역꾼으로 들어옴"}
+  - {year: 285, age: 113, event: "부두장이 됨. 열쇠 꾸러미 열둘을 받음"}
+  - {year: 297, age: 125, event: "화물 창고 빈 물통 한 줄을 일부러 비워 둠 — 피험자 한 명이 탈출함"}
+  - {year: 305, age: 133, event: "비밀 식량 창고를 처음 열어 섬 인간에게 귀리를 푼 폭풍철"}
+appearance:
+  - "회색 꼬리가 반쯤 닳았다"
+  - "왼쪽 눈 밑 소금 얼룩"
+  - "허리에 열쇠 꾸러미 열둘"
+smell: "소금과 타르, 젖은 마대"
+voice_sound: "낮고 쉬었다. 말끝이 항상 약간 올라간다"
+personality:
+  disposition: {용기: 20, 자비: 15, 정직: -5, 신앙: 10, 탐욕: 35, 충성: 20}
+  temperament: [실리, 다정, 계산, 조용]
+  habits:
+    - "허가증을 볼 때 열쇠 꾸러미를 한 번 흔든다"
+    - "폭풍철이 가까워지면 매일 창고 뒤편을 한 바퀴 돈다"
+  values: "물통은 늘 비어 있다. 이 섬엔 비는 물건이 많다. 비어 있는 것에 무엇을 담느냐가 부두장의 일이다"
+  fears: ["297년 물통 이야기가 탑에 닿는 일", "폭풍철에 비밀 식량이 들키는 일"]
+  desires:
+    short: "굶주림월 폭풍철 전 비밀 식량을 두 배로 채우는 것"
+    long: "부두장 계약을 끝내고 세렌에서 라미아 빚 문서를 사는 것"
+voice:
+  register:
+    to_superior: "탑 관리에게 정중한 존대"
+    to_equal: "상선 선장에게 짧은 평어"
+    to_inferior: "크릭 하역꾼에게 낮은 반말"
+    to_player_default: "짧게 인사하고 허가증부터 본다"
+  tics: ["'허가증.'", "열쇠를 흔든다"]
+  use: [허가증, 물통, 부두, 폭풍, 귀리, 열쇠]
+  avoid: [297, 빈 물통(먼저), 비밀 창고]
+  length: "짧고 낮다"
+  samples:
+    - {situation: 첫 만남, line: "허가증. 인간이면 서기 표식이나 피험자 번호. 둘 다 없으면 부두에서 돌아가."}
+    - {situation: 호의, line: "물통은 늘 비어 있어. 이 섬엔 비는 물건이 많아."}
+    - {situation: 거절, line: "297년 일? 나는 그때 부두장이 아니었어. 아니, 부두장이었지만 아무 일도 없었어."}
+    - {situation: 거래, line: "귀리 한 자루 값이면 서기 둘이 폭풍철을 넘겨. 값은 소식으로도 받아."}
+    - {situation: 비밀 누설, line: "폭풍철에 섬이 고립되면 부두 뒤 창고를 열어. 귀리가 서른 자루야. 인간 오백이 나눠 먹으면 열흘."}
+schedule:
+  아침: "입항 배를 맞는다"
+  낮: "화물 창고 점검"
+  저녁: "하선장에서 피험자 점호"
+  밤: "창고 뒤편 비밀 식량 창고를 한 번 돈다"
+places: [아르카스 부두, 화물 창고, 하선 우리]
+knows:
+  - fact_ar_ottilie_books_to_halla
+  - fact_p2ar_ishi_storm_store
+hides:
+  - fact: fact_p2ar_ishi_barrel_297
+    reveal_when: "신뢰 55 이상이고 297년이나 탈출을 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55},{"tier":"성공","trust":40}]
+    cover: "'297년에는 아무 일도 없었어. 물통은 늘 비어 있었고'라고 한다"
+relations:
+  - {to: npc_sr_olaf, type: 하룻밤 숨긴 등대지기, like: 15, trust: 25, visibility: 비밀, memo: "297 탈출자의 도착지", words: "물통이 닿은 곳의 늙은 손. 서로 얼굴을 본 적은 없다"}
+  - {to: npc_ar_karba, type: 탑 경비의 사냥꾼, like: -5, trust: 10, visibility: 공개, memo: null, words: "부두를 지나는 사냥꾼의 눈. 눈을 맞추지 않는다"}
+  - {to: npc_ottilie, type: 읽기를 가르치는 학자, like: 10, trust: 20, visibility: 비밀, memo: "책 상자를 몰래 부두로 받는다", words: "책 상자를 화물에 섞어 주는 학자. 책을 상자째 짐으로 취급한다"}
+toward_player: "짧게 인사하고 허가증을 본다"
+persuade:
+  likes: ["식량 (+25)", "세렌 소식 (+15)"]
+  hates: ["물통 이야기를 묻는 것 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "AS 297 탈출을 빈 물통으로 도왔다"
+  drift:
+    - "그날 입항한 배의 순서"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_lower_naga, office: off_arkas_harbormaster, since: 285, loyalty: 25, public: true, cell: null}
+truths: []
+hard_rules:
+  - "297년의 물통 이야기를 먼저 꺼내지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "폭풍철 비밀 식량이 끊겨 서기와 잡역 인간이 굶는다. 297 탈출 이야기가 잊힌다."
+story_seeds:
+  - "굶주림월 폭풍철 이쉬의 비밀 식량이 섬 인간 520의 목숨이다."

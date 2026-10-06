@@ -1,0 +1,24 @@
+# 아스테리아 폐허 — 재에 반쯤 묻힌 인간 도시, 인간이 이름을 가졌던 9년 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §11.9(asteria_ruins·멈춘 광장·회색 바다), WORLD_BIBLE 대붕괴, fac_trace_keepers, docs/world/people/ashwaste.md, facts/phase2_ashwaste.yaml.
+# grid: 폐허 평면 (m), 원점 = 북서쪽 모서리. x 동쪽, y 남쪽. 성벽 일부와 탑 셋이 서 있고 집터 곳곳에 문패(성과 이름)가 있다. 걷는 속도 80m/분이되 재 두께 때문에 실제로는 더 느리다 (엔진은 직선 거리).
+# 법이 없다. 마지막 등불에서 56시간 — 이곳에 매일 사는 사람은 끝지기 틸과 성벽 위의 잔상뿐이다. 시간의 상처(time_rift)는 다른 노드(27시간)라 노드 id 그대로 쓴다.
+# 멈춘 광장은 재가 쌓이지 않고 아스테리온의 의식 때 불꽃이 공중에 정지해 있다. 원 중앙에 서면 잔향자만 '그날'의 일부를 기억한다 — 광장은 시간의 상처 가장자리라 한 걸음 더 들어가면 돌아오지 못한다.
+id: asteria_ruins
+name: 아스테리아 폐허
+node: asteria_ruins
+kind: ruin
+grid: {w: 800, h: 600}
+curfew: {from: "해 질 녘", to: "해 뜰 녘", note: "해가 지면 잔상이 가장 강하다. 재 폭풍이 오면 시야 0 — 문패 집터 안에서 기다린다. 재의 날에는 경로가 바뀐다"}
+bells: []
+patrols: []
+locations:
+  - {id: ast_ninth_gate, name: 아홉째 문 성벽, xy: [110, 90], kind: wall, access: public, hours: "24시", note: "무너진 성벽 아홉째 문 위. 9분마다 한 소녀의 잔상이 같은 장면을 되풀이한다", hidden: "성벽 위 소녀의 시선이 향하는 방향으로 연필처럼 가는 재 길이 나 있다"}
+  - {id: ast_plaque_houses, name: 문패 집터, xy: [260, 200], kind: ruin, access: public, hours: "24시", note: "재에 반쯤 묻힌 집터. 문턱마다 인간의 성과 이름을 새긴 문패가 있다 — 노예가 성을 가졌던 9년의 증거", hidden: "문패 하나가 지워지지 않은 먹으로 칠해져 있다 — 집주인 이름 옆에 '글자 선생'이라고 적혀 있다"}
+  - {id: ast_well, name: 우물 (마른 우물), xy: [320, 320], kind: well, access: public, hours: "24시", note: "마른 우물. 밑에서 재가 소리 없이 흐른다"}
+  - {id: ast_towers, name: 서 있는 탑 셋, xy: [500, 120], kind: tower, access: public, hours: "24시", note: "성벽 곁에 남은 탑 셋. 가장 높은 탑 꼭대기에서 회색 바다와 시간의 상처 쪽 하늘이 보인다"}
+  - {id: ast_stopped_square, name: 멈춘 광장, xy: [420, 280], kind: square, access: public, hours: "24시", rooms: [ast_square_circle], note: "아스테리온의 의식이 열린 광장. 재가 쌓이지 않고 모든 것이 멈춰 있다. 광장 바닥에 둥근 원이 새겨져 있고 바르스카르의 불이 공중에 멈춰 있다", hidden: "공중에 멈춘 불꽃 아래서 소리가 반 박자 늦게 들린다"}
+  - {id: ast_square_circle, name: 광장 바닥의 원 (원 중앙), parent: ast_stopped_square, access: secret, hours: "24시", note: "원 중앙에 서면 잔향만 '그날'의 일부를 기억한다. 보통 사람은 아무것도 느끼지 못한다. 한 걸음 더 들어가면 돌아오지 못한다", hidden: "백 번 넘게 돌아와 여기 선 사람의 목소리 — 진실 조각 (아스테리온은 다른 사람이었다)"}
+  - {id: ast_square_edge, name: 멈춘 광장 가장자리 (끝지기의 자리), xy: [380, 330], kind: edge, access: public, hours: "해 있을 때", note: "원 바깥 한 걸음. 틸이 매일 앉는 자리. 여기서는 시간이 보이고 안에서는 시간이 사람을 본다"}
+  - {id: ast_end_hut, name: 끝지기 움막, xy: [340, 380], kind: hut, access: owner, hours: "24시", note: "흙벽과 재 먼지 낀 널로 지은 한 칸 움막. 광장이 보이는 쪽에 창이 없다"}
+  - {id: ast_school_site, name: 진흙판 학교터, xy: [230, 440], kind: ruin, access: public, hours: "24시", note: "집터 한쪽의 낮은 돌 터. 해 질 녘 잔상 속에서 아이들이 글자를 따라 읽는 소리가 들린다 — 사냥꾼 카일이 교본 상자를 찾은 자리와 가깝다", hidden: "돌 틈의 상자 — 아스테리아 글자 교본과 석판 조각 곁 자리"}
+  - {id: ast_grey_sea, name: 회색 바다 (재 사구), xy: [620, 470], kind: dunes, access: public, hours: "해 있을 때", note: "움직이는 재 언덕들. 길이 매일 바뀐다", hidden: "사구 아래 아스테리아 서고의 지붕 — 재가 걷히는 날 보인다"}
+outer: []

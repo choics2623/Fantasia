@@ -1,0 +1,48 @@
+# 잿빛 탑 — 아르카스 학회 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §10.9(잿빛 탑·번호 회랑·재의 서고·귀 기울이는 방·조수 무덤·등대 바위), HOUSES §5.8, fac_ashen_tower, docs/world/people/arkas.md, facts/arkas.yaml·phase2_arkas.yaml.
+# grid: 탑섬 평면 (m), 원점 = 북서쪽 모서리. x 동쪽, y 남쪽. 북쪽(y=0)이 부두 쪽 길, 남쪽(y=520)이 절벽과 조수 무덤. 탑 자체가 높이 120m 17층이라 수직 이동은 방 전환(rooms, 2분)으로 둔다 — 층 사이 계단은 한 칸 5분을 벗어나지 않는다.
+# 둘레 9km의 화강암 섬. 부두(arkas_harbor)에서 탑까지 6시간 — 부두는 다른 노드라 arkas_harbor.yaml이다. 탑섬 안 거리는 80m/분.
+# 탑의 법: 서기는 의미를 읽지 않고 모양만 베낀다. 서기가 내용을 읽으면 피험자로 옮겨진다. 외부인 무단 상륙은 체포(인간이면 피험자). 피험자 탈출 시도 = 독방 30일.
+id: grey_tower
+name: 잿빛 탑 (아르카스 학회)
+node: grey_tower
+kind: scholar_tower
+grid: {w: 700, h: 560}
+curfew: {from: "22:00", to: "05:00", note: "피험자와 서기는 방과 숙소 밖에 있으면 안 된다. 학자는 층을 오가도 되나 회랑과 서고 출입은 간수가 기록한다. 굶주림월 폭풍철에는 탑 마당에 나가는 것이 금지된다"}
+bells:
+  - {at: "06:00", name: 새벽 측정 종 (피험자 맥박·잔상 반응 측정 시작)}
+  - {at: "12:00", name: 정오 귀리죽}
+  - {at: "18:00", name: 저녁 점호}
+  - {at: "22:00", name: 소등 종}
+patrols: ["20:00", "00:00", "03:00"]
+locations:
+  # ── 탑 안팎 ──
+  - {id: gt_gate, name: 탑 정문, xy: [350, 60], kind: gate, access: staff, hours: "05:00-21:00", note: "부두에서 온 길이 닿는 석문. 인간은 서기·피험자 표식, 외부인은 허가가 있어야 들어간다"}
+  - {id: gt_courtyard, name: 탑 마당, xy: [350, 150], kind: yard, access: staff, hours: "06:00-21:00", note: "관측의 밤에 피험자 전원이 서는 마당. 바람이 거꾸로 부는 지점이 마당 서쪽에 있다"}
+  - {id: gt_tower, name: 잿빛 탑 (17층), xy: [350, 260], kind: tower, access: staff, hours: "24시", rooms: [gt_hall, gt_lecture_hall, gt_round_table, gt_master_room, gt_listening_room, gt_grey_eye_office, gt_scholar_rooms], note: "높이 120m. 아래층은 접견홀과 학자실, 중간 층은 조용한 층, 위층은 강당과 탑주실. 지하는 수집실"}
+  - {id: gt_hall, name: 1층 접견홀, parent: gt_tower, access: staff, hours: "08:00-20:00", note: "탑주 접견 전 대기하는 석조 홀. 벽에 역대 탑주의 초상이 걸렸다"}
+  - {id: gt_lecture_hall, name: 7층 강당 (낭독 논문), parent: gt_tower, access: staff, hours: "계절 첫날 09:00-18:00", note: "해빙월·푸른월·포도월·긴밤월 첫날 낭독 논문이 발표되는 강당. 같은 학파 정학자 셋의 봉인 도장을 받는다"}
+  - {id: gt_scholar_rooms, name: 학자실 (8~10층), parent: gt_tower, access: staff, hours: "24시", note: "용인·엘다르·나가·두르강·크릭 학자들의 방. 균열학파 서재와 기록학파 서재가 이 층에 있다"}
+  - {id: gt_round_table, name: 16층 원탁 (일곱 의자), parent: gt_tower, access: staff, hours: "매달 그믐 18:00-24:00", note: "일곱 원로가 앉는 원탁. 넷이면 안건이 통과한다. 의자 하나가 비면 의자 아래 놓인 이름표가 뒤집힌다"}
+  - {id: gt_master_room, name: 17층 탑주실, parent: gt_tower, access: owner, hours: "24시", note: "탑주 이레네의 서재와 서신 책상. 창이 북쪽 바다를 향한다. 볼드 사본 원본이 금고에 있다", hidden: "책상 서랍 장부 — 매 회차 같은 줄 '설명되지 않는 기시감. 북쪽.'"}
+  - {id: gt_listening_room, name: 귀 기울이는 방 (꼭대기), parent: gt_tower, access: staff, hours: "24시", note: "잿빛 고리 렌즈로 잔향의 흔들림을 측정하는 관측소. 대륙 지도와 측정 수정이 놓였다. 학자 6", hidden: "지도의 AS 311 이후 흔들림 표시가 회색여울 근방에 몰려 있고 낙엽월 1일 저녁 6시마다 측정 바늘이 같은 자리에서 튄다"}
+  - {id: gt_grey_eye_office, name: 잿빛 눈 사무실, parent: gt_tower, access: staff, hours: "08:00-22:00", note: "사냥꾼 부서 '귀'의 방. 밀정의 서신과 현상금 장부가 쌓였다. 부서장 마티스의 지도 서랍이 있다"}
+  - {id: gt_collection_room, name: 지하 수집실, xy: [350, 330], kind: cellar, access: secret, hours: "잔향학파만", note: "잔향학파의 징후자 수집실. 꿈 기록과 수면 박탈 실험이 이루어진다"}
+  - {id: gt_vault, name: 탑 금고, xy: [300, 330], kind: vault, access: locked, hours: "금고지기만", locked: "열쇠 열둘", note: "시간 유리 칼 첫째 '첫 침묵'과 AS 214 실험자 일지가 있는 금고", hidden: "칼은 계절마다 서랍을 옮긴다 — 지금 계절은 남쪽 서랍"}
+  - {id: gt_sealed_stacks, name: 봉인 서가 (일곱 칸), xy: [400, 330], kind: stacks, access: secret, hours: "탑주만", note: "일곱 칸으로 나뉜 봉인 서가. 넷째 칸이 '필사 첫 임무'의 목록 칸. 일곱째 칸은 볼드 사본 열람 칸", hidden: "일곱째 칸 자물쇠가 청동 열쇠(여덟 갈래 별)와 같은 장인의 솜씨라는 서기 증언"}
+  # ── 서고와 서기 ──
+  - {id: gt_ash_archive, name: 재의 서고 (먼지 서고), xy: [450, 220], kind: archive, access: staff, hours: "06:00-21:00", rooms: [gt_dust_desk, gt_hole_hidden], note: "대붕괴 관련 문서 4만 권. 서기 노예 180이 필사한다. 아스테리온·다라 징후 비교 문서가 있다"}
+  - {id: gt_dust_desk, name: 필사대, parent: gt_ash_archive, access: staff, hours: "06:00-19:00", note: "서기 일흔이 나란히 앉는 긴 필사대. 소리 내어 읽으면 서기실장의 헛기침이 먼저 온다"}
+  - {id: gt_hole_hidden, name: 서기 숙소 판자 틈 (구멍 글 은닉처), parent: gt_ash_archive, access: secret, hours: "24시", hidden: "구멍 글 사본 서른한 권 — 서기 70의 공동 문장"}
+  - {id: gt_scribe_dorm, name: 서기 숙소, xy: [480, 280], kind: barracks, access: serf, hours: "19:00-06:00", locked: "22:00-05:00", note: "서기 노예 180이 자는 층층 침상. 판자 벽에 쥐가 산다"}
+  - {id: gt_mess, name: 피험자 식당, xy: [250, 270], kind: canteen, access: serf, hours: "05:00-21:00 (굶주림월 배급 절반)", note: "귀리죽 솥 둘. 피험자는 관찰 조건에 따라 다르게 먹는다"}
+  # ── 회랑과 의무 ──
+  - {id: gt_corridor, name: 번호 회랑, xy: [240, 360], kind: prison, access: staff, hours: "24시", rooms: [gt_cell_0213, gt_cell_0307, gt_cell_13f], note: "번호가 붙은 방 400개가 늘어선 회랑. 식사 구멍과 관찰 창이 달린 문"}
+  - {id: gt_cell_0213, name: 0213호, parent: gt_corridor, access: locked, hours: "24시", locked: "간수 열쇠", note: "AS 213부터 쓰인 방. 99세 노인의 방. 창이 막혀 있다", hidden: "벽에 숯으로 새긴 사선 99줄 — 해를 센 흔적"}
+  - {id: gt_cell_0307, name: 0307호, parent: gt_corridor, access: locked, hours: "24시", locked: "간수 열쇠", note: "열네 살 네레의 방. 벽에 숯으로 그린 길이 가득하다", hidden: "벽 그림 속 길 — 회색여울 이정표와 닮았다"}
+  - {id: gt_cell_13f, name: 13층 독방 (기준체 1호), parent: gt_corridor, access: locked, hours: "24시", locked: "간수 열쇠", note: "조용한 층의 독방. 할라가 30년을 산 방. 벽이 진명어 문장으로 빼곡하다"}
+  - {id: gt_infirmary, name: 의무실, xy: [210, 330], kind: clinic, access: staff, hours: "24시", note: "약사 노예가 쑥과 소금물로 열병·결핵을 다룬다. '자극' 후유증 환자 열일곱이 구석 침상에 있다"}
+  - {id: gt_guard_barracks, name: 경비 막사, xy: [530, 160], kind: barracks, access: staff, hours: "24시", note: "용인 경비가 교대하는 막사. 대장 방은 안쪽이다"}
+  # ── 절벽과 바위 ──
+  - {id: gt_tide_graves, name: 조수 무덤 (남쪽 절벽 아래), xy: [370, 520], kind: graves, access: secret, hours: "썰물 두 시간", locked: "밀물에 잠긴다", note: "밀물에 잠기는 피험자 무덤. 돌무덤과 밧줄", hidden: "썰물 두 시간 동안만 절벽 아래로 바다 동굴이 열린다 — 보트 한 척이 들어간다"}
+  - {id: gt_lighthouse_rock, name: 등대 바위 (동쪽 400m), xy: [640, 280], kind: rock, access: public, hours: "썰물에 걸어서", note: "옛 봉화대와 돌무더기가 있는 바위섬. 썰물에 걸어서 건넌다. 어부 조개의 움막이 봉화대 곁에", hidden: "봉화대에 불을 피우면 그롬마르 항 밀수선이 본다. 돌무더기 서른둘 — 한 해에 하나"}
+outer: []

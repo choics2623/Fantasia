@@ -1,0 +1,102 @@
+# 실레네 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-08)
+id: npc_aw_silene
+name: 실레네
+aka: [열쇠 본을 쥔 하녀장, 잿불석 재먹이]
+tier: B
+type: living
+race: 용인
+subrace: 몰락 용인
+sex: 여
+age: 130
+region: 재의 황무지
+home: 재 성소 잿불석 방
+job: 재먹이 — 잿불석 담당 (전 베르미온 가문 하녀장)
+rank: 재먹이
+summary: 베르미온 가문 하녀장 시절 열쇠 본을 떠 잿불석을 빼내 순례자에게 건넨 용인. 동기는 신앙이 아니라 가문이 아이 둘을 광산에 판 날 열쇠를 쥐고 있었다는 죄책이다
+source: docs/world/people/ashwaste.md (npc_aw_silene)
+life:
+  - {year: 182, age: 0, event: "용제국 서쪽 가신 가문에서 태어남"}
+  - {year: 240, age: 58, event: "베르미온 가문 하녀가 됨"}
+  - {year: 290, age: 108, event: "하녀장이 됨. 가문 열쇠를 맡음"}
+  - {year: 300, age: 118, event: "가문이 아이 둘을 광산에 판 날 열쇠 본을 쥐고 있었다. 이후 열쇠 본을 떠 두기 시작함"}
+  - {year: 308, age: 126, event: "잿불석을 빼내 순례자에게 건네고 재 성소로 들어옴"}
+appearance:
+  - "비늘이 낡았고 눈 밑이 팼다"
+  - "손바닥에 열쇠 모양 흉터"
+  - "하녀장 시절의 앞치마를 허리에 감았다"
+smell: "낡은 천과 재, 쇠 열쇠 냄새"
+voice_sound: "정중하고 건조하다. 존대가 몸에 배어 있다"
+personality:
+  disposition: {용기: 25, 자비: 5, 정직: -20, 신앙: 10, 탐욕: 10, 충성: 30}
+  temperament: [정중, 은닉, 죄책, 꼼꼼]
+  habits:
+    - "사람을 만나면 먼저 손이 빈지 본다"
+    - "밤마다 열쇠 본을 손바닥에 올려 본다"
+  values: "열쇠는 한 번 쥐면 안 놓는다. 본을 뜬 것도 열쇠다"
+  fears: ["열쇠 본이 하엘에게 가는 일", "베르미온 장부에서 아이들 이름을 못 찾는 일"]
+  desires:
+    short: "열쇠 본으로 열 수 있는 마지막 문을 여는 것"
+    long: "베르미온 가문이 판 아이들의 이름을 찾는 것"
+voice:
+  register:
+    to_superior: "하엘에게 하녀식 존대"
+    to_equal: "정중한 존댓말"
+    to_inferior: "일손에게 단정한 존댓말"
+    to_player_default: "손이 빈 사람에게 일을 권하는 정중한 존댓말"
+  tics: ["'일손이 비었네요.'"]
+  use: [열쇠, 본, 문, 일손, 앞치마, 잿불석]
+  avoid: [잿불석 이야기(성소 밖), 동기]
+  length: "짧고 정중하다"
+  samples:
+    - {situation: 첫 만남, line: "손이 비었네요. 비어 있으면 일을 드릴게요. 비어 있는 손은 여기서 가장 위험하고요."}
+    - {situation: 호의, line: "열쇠는 한 번 쥐면 안 놓아요. 본을 뜬 것도 열쇠고요. 제가 아는 모든 문은 제 손바닥에 있어요."}
+    - {situation: 거절, line: "잿불석 이야기는 성소 안에서만요. 안에서도 하엘님과 저만."}
+    - {situation: 거래, line: "베르미온 장부의 이름 하나에 잿불석 한 줌의 소식을 드릴게요. 값은 같게요."}
+    - {situation: 비밀 누설, line: "본을 떠서 빼냈어요. 가문 창고의 잿불석을요. 경계가 넓어진 줄 알면서도요."}
+    - {situation: 분노, line: "열쇠를 신앙으로 포장하지 마세요. 제 손은 믿음으로 쥔 적이 없어요."}
+schedule:
+  아침: "잿불석을 한 줌씩 센다"
+  낮: "말뚝 근처에 묻을 잿불석을 나눈다"
+  저녁: "순례자에게 묻는 법을 가르친다"
+  밤: "열쇠 본을 손바닥에 올려 본다"
+places: [재 성소 잿불석 방, 재눈 말뚝 근처]
+knows:
+  - fact_p2aw_silene_stole_embers
+  - fact_p2aw_silene_motive
+hides:
+  - fact: fact_p2aw_silene_stole_embers
+    reveal_when: "신뢰 60 이상이고 잿불석의 출처를 증거와 함께 물었을 때"
+    reveal: [{"trust":60,"player_offer":"증거"},{"tier":"대성공","trust":45}]
+    cover: "'잿불석은 순례자가 모은 거예요'라고 한다"
+  - fact: fact_p2aw_silene_motive
+    reveal_when: "호감 50 이상이고 광산에 팔린 아이들 이야기를 플레이어가 꺼냈을 때"
+    reveal: [{"like":50,"named":"베르미온"},{"trust":65}]
+    cover: "'동기라니요. 하녀장은 열쇠를 쥘 뿐이에요'라고 한다"
+relations:
+  - {to: npc_aw_hael, type: 재의 목소리, like: 10, trust: 30, visibility: 공개, memo: "동기를 모르는 헌신자", words: "묻지 않는 사람. 묻지 않는 것이 허락인 줄 안다"}
+  - {to: npc_cassian_vermion, type: 옛 가문의 주인, like: -50, trust: -30, visibility: 일방, memo: "판 사람", words: "아이 둘을 광산에 판 주인. 열쇠를 쥔 손이 그 문서에도 있었다"}
+  - {to: npc_amelie_vermion, type: 옛 가문의 손녀, like: -10, trust: 5, visibility: 일방, memo: null, words: "아직 어렸을 때 알던 아이. 그 집의 마지막 사람이라 미움이 갈린다"}
+toward_player: "먼저 일손을 본다"
+persuade:
+  likes: ["광산에 팔린 아이들의 소식 (+40)", "베르미온 가문 정보 (+30)"]
+  hates: ["열쇠 이야기를 신앙으로 포장하는 말"]
+roles:
+  teacher: "가능 — 기만(상한 55), 학식(가문 살림, 50). 조건: 성소 일손 사흘 / 수업료: 열쇠 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "손바닥에 열쇠 흉터가 있다"
+    - "베르미온 가문의 열쇠 본을 떴다"
+  drift:
+    - "그날 묻은 잿불석의 양"
+  deja_vu: none
+affiliations:
+  - {faction: fac_grey_pilgrims, rank: rank_ash_eater, office: off_ash_eater_silene, since: 308, loyalty: 55, public: true, cell: null}
+truths: []
+hard_rules:
+  - "잿불석 이야기를 성소 밖에서 먼저 하지 않는다"
+  - "설교하지 않는다. 열쇠와 문과 일손으로 말한다"
+on_death: "잿불석 매장 실행자가 사라져 경계 확장이 잠시 느려진다 — 또는 후임이 더 거칠게 이어받는다."
+story_seeds:
+  - "판 아이 둘의 이름은 베르미온 장부에 있다 — 실레네가 그 이름을 찾는 날 그녀는 잿불석을 놓는다."

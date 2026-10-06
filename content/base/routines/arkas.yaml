@@ -1,0 +1,195 @@
+# 아르카스 탑섬 NPC 일과 (24 §3). 원천: REGIONS §10, docs/world/people/arkas.md, 카드 schedule. 장소 id는 settlements/grey_tower.yaml(gt_*), arkas_harbor.yaml(ar_*).
+# 탑의 하루: 06:00 새벽 측정 종 · 12:00 정오 귀리죽 · 18:00 저녁 점호 · 22:00 소등 종. 안식일은 쉬지 않는다 — days는 all. 굶주림월 폭풍철에는 섬이 고립되어 부두 일과가 마른다.
+# 계절 첫날 낭독 논문, 그믐 일곱 의자 원탁, 재의 날 관측의 밤은 events/arkas_312.yaml. 맹약회의 313(서약섬 5/1~11)에는 이레네·오필이 탑의 배(26시간)로 다녀온다 — 일과의 presence. 쉼표가 든 값은 큰따옴표로.
+# ── 탑주와 학자들 ──
+npc_irene_bold:
+  home: gt_master_room
+  presence:   # 맹약회의 313 — 4월 29일 저녁 탑의 배로 출발, 5월 1일 서약섬 도착(26시간), 12일 이후 귀로, 5월 14일 귀환
+    - {from: "312-09-01", to: "313-04-28"}
+    - {from: "313-05-14", to: "313-07-30"}
+  away: {at: oath_isle, doing: "맹약회의 313 — 서약섬에서 탑의 학술 의견을 제출한다. 허리의 셋째 칼 '마지막 금'을 칼집째 쥐고 앉는다"}
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_master_room, doing: 잔다 — 허리의 칼집을 풀지 않는다}
+    - {days: all, from: "05:00", to: "09:00", at: gt_master_room, doing: 피험 보고 검토 — 북부 보고서를 먼저 집는다}
+    - {days: all, from: "09:00", to: "12:00", at: gt_round_table, doing: 시험 설계와 학자 회의}
+    - {days: all, from: "12:00", to: "13:00", at: gt_master_room, doing: 점심 — 서재에서 선 채로 귀리죽, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: gt_master_room, doing: 멜리산드·아에린·마테우스·이졸에게 서신을 쓴다}
+    - {days: all, from: "18:00", to: "21:00", at: gt_listening_room, doing: 귀 기울이는 방에서 바늘이 튀는 저녁 기록을 본다}
+    - {days: all, from: "21:00", to: "24:00", at: gt_corridor, doing: 조용한 층 순회 — 피험자에게 직접 질문한다}
+npc_ottilie:
+  home: gt_scholar_rooms
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_scholar_rooms, doing: 잔다 — 오른손이 돌처럼 차다}
+    - {days: all, from: "05:00", to: "08:00", at: gt_ash_archive, doing: 서기 노예 마흔의 업무를 배정한다}
+    - {days: all, from: "08:00", to: "13:00", at: gt_ash_archive, doing: 고문헌 정리 — 쇠테 안경 둘을 번갈아 쓴다}
+    - {days: all, from: "13:00", to: "18:00", at: gt_dust_desk, doing: 필사대를 순회한다 — 소리 내어 읽는 서기가 없는지 본다}
+    - {days: all, from: "18:00", to: "21:00", at: gt_ash_archive, doing: 서기용 숫자 교육 — 합법의 한도 안에서}
+    - {days: all, from: "21:00", to: "24:00", at: gt_ash_archive, doing: 서고 안쪽에서 서기 셋에게 '읽기' 수업을 한다 — 쓰기는 가르치지 않는다}
+npc_halla:
+  home: gt_cell_13f
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_cell_13f, doing: 오틸리가 넣어 준 책을 읽다 잠든다}
+    - {days: all, from: "06:00", to: "09:00", at: gt_cell_13f, doing: 새벽 측정 — 맥박과 잔상 반응을 재고 간다}
+    - {days: all, from: "09:00", to: "13:00", at: gt_cell_13f, doing: 고문헌 필사 — 탑의 허가를 받은 정신 안정용 일}
+    - {days: all, from: "13:00", to: "18:00", at: gt_cell_13f, doing: 이웃 방 피험자들에게 문 너머로 이야기를 들려준다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_cell_13f, doing: 바다 이야기를 기억해 낸다 — 독방엔 창이 없다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_cell_13f, doing: 오틸리의 책을 읽는다}
+npc_milo:
+  home: gt_scribe_dorm
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_scribe_dorm, doing: 서기 숙소에서 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: gt_scribe_dorm, doing: 열네 명의 이름을 입 모양으로만 외운다}
+    - {days: all, from: "06:00", to: "19:00", at: gt_dust_desk, doing: 먼지 서고에서 탑 장부를 필사한다 — 사망자 열넷의 이름이 적히는 칸을 지나친다, fixed: true}
+    - {days: all, from: "19:00", to: "22:00", at: gt_cell_13f, doing: 잉크 방울을 건네러 13층 방 앞에 선다 — 할라의 이야기를 듣는다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_scribe_dorm, doing: 판자 틈 곁에서 숨을 죽인다}
+npc_corvina:
+  home: gt_listening_room
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_listening_room, doing: 하늘 기록을 쓴다 — 역행하는 별이 머리 위를 지난다}
+    - {days: all, from: "05:00", to: "09:00", at: gt_listening_room, doing: 잠깐 눈을 붙이고 아침 별을 센다}
+    - {days: all, from: "09:00", to: "13:00", at: gt_listening_room, doing: 어젯밤 기록을 해석한다}
+    - {days: all, from: "13:00", to: "18:00", at: gt_scholar_rooms, doing: 탑에 올릴 해석서를 쓴다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_listening_room, doing: 저녁 별을 기록한다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_listening_room, doing: 키리에에게 보낼 사본을 따로 쓴다}
+# ── 원로와 사냥꾼 부서 ──
+npc_ar_opil:
+  home: gt_scholar_rooms
+  presence:   # 맹약회의 313 — 이레네와 같은 탑의 배
+    - {from: "312-09-01", to: "313-04-28"}
+    - {from: "313-05-14", to: "313-07-30"}
+  away: {at: oath_isle, doing: "맹약회의 313 — 서약섬에서 오필 상가의 기록을 맡는다. 두 곳의 기록을 한 줄씩 나눠 쓴다"}
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_scholar_rooms, doing: 서재 뒤 방에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: gt_ash_archive, doing: 기록학파 서고에서 사본을 정리한다}
+    - {days: all, from: "09:00", to: "13:00", at: gt_dust_desk, doing: 서기실장과 필사 일정을 짠다}
+    - {days: all, from: "13:00", to: "18:00", at: gt_scholar_rooms, doing: 세렌 오필 상가에 보낼 보고를 쓴다 — 열흘 먼저 보내는 쪽부터}
+    - {days: all, from: "18:00", to: "22:00", at: gt_round_table, doing: 원탁 의자에 앉아 다음 달 낭독 논문 안건을 본다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_scholar_rooms, doing: 꼬리의 두루마리 끈을 풀었다 묶으며 값을 센다}
+npc_ar_mathis:
+  home: gt_grey_eye_office
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_grey_eye_office, doing: 사무실 곁 방에서 잔다}
+    - {days: all, from: "06:00", to: "10:00", at: gt_listening_room, doing: 흔들림 지도의 바늘을 본다}
+    - {days: all, from: "10:00", to: "14:00", at: gt_grey_eye_office, doing: 밀정의 서신을 읽는다}
+    - {days: all, from: "14:00", to: "18:00", at: gt_dust_desk, doing: 서기실에서 징후자 목록을 보는 척한다 — 대조는 하지 않는다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_grey_eye_office, doing: 이졸이 보낸 숫자를 서랍에 넣는다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_listening_room, doing: 지도 앞에서 회색여울 근방의 표시를 센다}
+npc_ar_karba:
+  home: gt_guard_barracks
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_guard_barracks, doing: 대장 방에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: gt_grey_eye_office, doing: 사냥꾼 보고를 서면으로 받는다}
+    - {days: all, from: "09:00", to: "13:00", at: gt_grey_eye_office, doing: 현상금 장부를 쓴다}
+    - {days: all, from: "13:00", to: "18:00", at: gt_guard_barracks, doing: 경비 훈련과 교대 점검}
+    - {days: all, from: "18:00", to: "21:00", at: gt_corridor, doing: 회랑 순찰}
+    - {days: all, from: "21:00", to: "24:00", at: gt_grey_eye_office, doing: 열두 신분의 명단을 지운다}
+npc_ar_rail:
+  home: gt_scholar_rooms
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_scholar_rooms, doing: 잔다 — 칼은 몸에서 떼지 않는다}
+    - {days: all, from: "06:00", to: "09:00", at: gt_listening_room, doing: 측정 바늘을 재 본다}
+    - {days: all, from: "09:00", to: "13:00", at: gt_scholar_rooms, doing: 균열학파 서재에서 징후 보고서를 대조한다}
+    - {days: all, from: "13:00", to: "17:00", at: gt_listening_room, doing: 측정 수정을 다시 닦는다}
+    - {days: all, from: "17:00", to: "19:00", at: gt_listening_room, doing: "둘째 칼 '정오'를 손바닥에 올려 온도를 본다 — 낙엽월 1일 저녁 6시에 차가워진다", fixed: true}
+    - {days: all, from: "19:00", to: "24:00", at: gt_scholar_rooms, doing: 장부에 '측정 오차'를 적는다}
+npc_ar_borte:
+  home: gt_scholar_rooms
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_scholar_rooms, doing: 기침을 삼키며 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: gt_courtyard, doing: 마당에서 바람이 부는 방향을 손가락에 침을 묻혀 잰다, outdoor: true, rain: {at: gt_scholar_rooms, doing: 창가에서 바람 방향을 잰다}}
+    - {days: all, from: "09:00", to: "14:00", at: gt_scholar_rooms, doing: 시간 잔상 속 바람 지도를 그린다}
+    - {days: all, from: "14:00", to: "18:00", at: gt_listening_room, doing: 코르비나와 별과 바람의 박자를 맞춰 본다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_round_table, doing: 원탁 안건을 본다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_courtyard, doing: 하늘을 보며 기침을 삼킨다, outdoor: true, rain: {at: gt_scholar_rooms, doing: 창가에서 하늘을 본다}}
+npc_ar_tik:
+  home: gt_ash_archive
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_ash_archive, doing: 기록학파 서재 구석 짚자리에서 잔다}
+    - {days: all, from: "06:00", to: "10:00", at: gt_ash_archive, doing: 화형 기록의 숫자를 다시 센다}
+    - {days: all, from: "10:00", to: "14:00", at: gt_scholar_rooms, doing: 기록학파 보고서를 점검한다}
+    - {days: all, from: "14:00", to: "18:00", at: gt_dust_desk, doing: 서기 숫자 교육을 돕는다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_round_table, doing: 원탁 안건에 숫자를 붙인다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_ash_archive, doing: 크릭 손가락 매듭으로 숫자를 센다}
+npc_ar_orvel:
+  home: gt_vault
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_vault, doing: 금고 문 앞에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: gt_vault, doing: 자물쇠 열둘을 하나씩 돌린다}
+    - {days: all, from: "08:00", to: "17:00", at: gt_vault, doing: 금고 안 서류를 점검한다, fixed: true}
+    - {days: all, from: "17:00", to: "20:00", at: gt_vault, doing: 칼 곁 일지를 한 줄 쓴다}
+    - {days: all, from: "20:00", to: "24:00", at: gt_vault, doing: 장갑을 낀 채 문 앞을 지킨다}
+# ── 서기와 피험자 ──
+npc_ar_hester:
+  home: gt_ash_archive
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_ash_archive, doing: 서기실 안쪽 방에서 잔다}
+    - {days: all, from: "05:00", to: "07:00", at: gt_dust_desk, doing: 서기 일흔을 필사대에 앉힌다, fixed: true}
+    - {days: all, from: "07:00", to: "18:00", at: gt_dust_desk, doing: 필사 감독 — 소리 내어 읽는 서기가 없는지 보며 헛기침을 한다}
+    - {days: all, from: "18:00", to: "21:00", at: gt_scribe_dorm, doing: 서기 숙소를 순회한다}
+    - {days: all, from: "21:00", to: "24:00", at: gt_ash_archive, doing: 구멍 글 한 장을 바늘로 쓴다}
+npc_ar_yona:
+  home: gt_scribe_dorm
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_scribe_dorm, doing: 판자 곁에서 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: gt_scribe_dorm, doing: 판자 틈을 한 번 쓰다듬는다}
+    - {days: all, from: "06:00", to: "19:00", at: gt_dust_desk, doing: 필사하며 여백에 바늘 구멍을 낸다, fixed: true}
+    - {days: all, from: "19:00", to: "22:00", at: gt_hole_hidden, doing: 숙소 판자 틈에 사본을 넣는다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_scribe_dorm, doing: 서른한 권을 한 번씩 만져 본다}
+npc_ar_brick:
+  home: gt_corridor
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_corridor, doing: 간수실에서 조는 듯 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: gt_corridor, doing: 방문을 하나씩 두드려 숫자를 센다}
+    - {days: all, from: "08:00", to: "13:00", at: gt_mess, doing: 식사 구멍으로 배식을 감독한다}
+    - {days: all, from: "13:00", to: "18:00", at: gt_corridor, doing: 회랑 복도를 돈다}
+    - {days: all, from: "18:00", to: "21:00", at: gt_corridor, doing: 저녁 점호, fixed: true}
+    - {days: all, from: "21:00", to: "24:00", at: gt_cell_0213, doing: 0213호 식사 구멍으로 빵 한 조각을 넣는다}
+npc_ar_old0213:
+  home: gt_cell_0213
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: gt_cell_0213, doing: 창 없는 방에서 서기들이 방 앞에서 읽는 소리를 듣고 외운 기록을 입 속으로 되뇐다 — 걸음 소리로 시각을 안다}
+npc_ar_nere:
+  home: gt_cell_0307
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: gt_cell_0307, doing: 열이 오르면 벽에 숯으로 길을 그린다}
+    - {days: all, from: "06:00", to: "09:00", at: gt_cell_0307, doing: 새벽 측정을 받는다}
+    - {days: all, from: "09:00", to: "13:00", at: gt_mess, doing: 식당에서 귀리죽 — 마르가가 한 그릇을 더 담아 준다}
+    - {days: all, from: "13:00", to: "18:00", at: gt_cell_0307, doing: 방에서 쉰다 — 질문을 기다린다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_cell_0213, doing: 0213호 문 앞에서 노인의 이야기를 듣는다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_cell_0307, doing: 벽에 숯으로 길을 이어 그린다}
+npc_ar_marga:
+  home: gt_mess
+  blocks:
+    - {days: all, from: "00:00", to: "04:00", at: gt_mess, doing: 부엌 방에서 잔다}
+    - {days: all, from: "04:00", to: "09:00", at: gt_mess, doing: 귀리죽을 끓인다}
+    - {days: all, from: "09:00", to: "14:00", at: gt_mess, doing: 식당에서 배식 — 번호를 부른다, fixed: true}
+    - {days: all, from: "14:00", to: "18:00", at: gt_mess, doing: 솥을 닦는다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_mess, doing: 남은 그릇의 수를 센다}
+    - {days: all, from: "22:00", to: "24:00", at: gt_mess, doing: 그릇 장부에 숫자를 쓴다}
+npc_ar_dessa:
+  home: gt_infirmary
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_infirmary, doing: 의무실 곁 방에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: gt_infirmary, doing: 의무실 약초를 말린다}
+    - {days: all, from: "09:00", to: "14:00", at: gt_corridor, doing: 회랑 순회 — 열병과 결핵을 돌본다}
+    - {days: all, from: "14:00", to: "18:00", at: gt_infirmary, doing: 약을 달인다}
+    - {days: all, from: "18:00", to: "22:00", at: gt_infirmary, doing: "'자극' 후유증으로 시간 감각을 잃은 열일곱을 돌본다"}
+    - {days: all, from: "22:00", to: "24:00", at: gt_infirmary, doing: 쑥 달인 물을 식힌다}
+npc_ar_fisher:
+  home: gt_lighthouse_rock
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_lighthouse_rock, doing: 움막에서 잔다}
+    - {days: all, from: "05:00", to: "11:00", at: gt_lighthouse_rock, doing: 썰물에 맞춰 그물을 던진다, outdoor: true, rain: {at: gt_lighthouse_rock, doing: 움막 처마 아래서 그물을 손본다}}
+    - {days: all, from: "11:00", to: "17:00", at: gt_lighthouse_rock, doing: 갯바위에서 조개를 줍는다, outdoor: true, rain: {at: gt_lighthouse_rock, doing: 움막에서 쉰다}}
+    - {days: all, from: "17:00", to: "21:00", at: gt_lighthouse_rock, doing: 봉화대 곁 돌무더기에 앉는다}
+    - {days: all, from: "21:00", to: "24:00", at: gt_lighthouse_rock, doing: 불을 피우지 않고 바다를 본다}
+# ── 부두 ──
+npc_ar_ishi:
+  home: ar_harbor_office
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: ar_harbor_office, doing: 사무소 위 방에서 잔다}
+    - {days: all, from: "05:00", to: "10:00", at: ar_pier, doing: 입항 배를 맞는다 — 허가증을 본다}
+    - {days: all, from: "10:00", to: "14:00", at: ar_warehouse, doing: 화물 창고 점검 — 책 상자와 귀리 마대를 센다}
+    - {days: all, from: "14:00", to: "18:00", at: ar_harbor_office, doing: 입항 장부를 쓴다}
+    - {days: all, from: "18:00", to: "21:00", at: ar_landing_pens, doing: 하선장에서 피험자 점호}
+    - {days: all, from: "21:00", to: "24:00", at: ar_warehouse, doing: 창고 뒤편 비밀 식량 창고를 한 번 돈다}

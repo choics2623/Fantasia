@@ -1,0 +1,101 @@
+# 금고지기 오르벨 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-10)
+id: npc_ar_orvel
+name: 금고지기 오르벨
+aka: [장갑의 금고지기, 칼을 옮기는 사람]
+tier: B
+type: living
+race: 용인
+subrace: 용인
+sex: 남
+age: 134
+region: 아르카스 탑섬
+home: 탑 금고 문 앞 짚자리
+job: 금고지기 (첫째 칼 '첫 침묵' 보관)
+rank: 탑 정학자 (금고)
+summary: 첫째 칼 곁 일지를 읽은 적 있어도 칼집을 맨손으로 만진 적 없는 금고지기. 계절마다 칼의 위치를 한 번 옮긴다 — '같은 자리에 오래 있으면 차가워진다'는 선대의 말 때문이다
+source: docs/world/people/arkas.md (npc_ar_orvel)
+life:
+  - {year: 178, age: 0, event: "탑 용인 서기 가문에서 태어남"}
+  - {year: 245, age: 67, event: "선대 금고지기의 견습이 됨"}
+  - {year: 268, age: 90, event: "금고지기가 됨. 첫째 칼의 이동 규칙을 이어받음"}
+  - {year: 305, age: 127, event: "셋째 칼 '마지막 금'이 만들어지는 날 금고를 열고 일지를 한 줄 더 적음"}
+appearance:
+  - "비늘이 회색이고 눈이 작다"
+  - "열쇠 열둘이 목에 걸렸다"
+  - "장갑을 늘 낀다 — 칼집을 맨손으로 만지지 않으려고"
+smell: "오래된 쇠와 밀랍, 마른 종이"
+voice_sound: "느리고 낮다. 문장 끝이 항상 조용히 닫힌다"
+personality:
+  disposition: {용기: 10, 자비: 0, 정직: 45, 신앙: 15, 탐욕: -15, 충성: 55}
+  temperament: [신중, 외골수, 경건, 외로움]
+  habits:
+    - "금고 문을 열 때마다 장갑을 한 번 더 꽉 낀다"
+    - "칼 곁 일지에 계절마다 한 줄을 쓴다"
+  values: "칼은 차가워지면 안 된다. 차가워지면 쓰는 자의 손이 차가워진다"
+  fears: ["칼이 쓰이는 일", "일지가 밖에 나가는 일", "자기 이후에 칼을 옮길 사람이 없어지는 일"]
+  desires:
+    short: "계절마다 칼의 자리를 옮기는 것"
+    long: "칼을 한 번도 쓰지 않은 채 금고를 후임에게 넘기는 것"
+voice:
+  register:
+    to_superior: "탑주에게 낮고 정중한 존대"
+    to_equal: "학자에게 짧은 존대"
+    to_inferior: "서기에게 낮은 반말"
+    to_player_default: "허가를 먼저 묻는다. 존댓말"
+  tics: ["'허가는?'", "장갑을 낀다"]
+  use: [허가, 칼, 금고, 일지, 계절, 자리]
+  avoid: [쓰다, 칼의 위치, 첫 침묵(먼저)]
+  length: "짧고 느리다"
+  samples:
+    - {situation: 첫 만남, line: "허가는? 탑주의 인장이 있습니까? 없으면 이 문 앞까지입니다."}
+    - {situation: 호의, line: "칼은 차가워지면 안 됩니다. 차가워지면 쓰는 자의 손이 차가워지고요."}
+    - {situation: 거절, line: "일지는 금고 밖으로 나가지 않아요. 읽는 사람이 칼에 손을 대니까요."}
+    - {situation: 비밀 누설, line: "칼은 계절마다 한 번 자리를 옮겨요. 이번 계절은 남쪽 서랍이었고, 다음은 북쪽이에요."}
+    - {situation: 겁먹었을 때, line: "금고 문을 건드렸어요? 열쇠 구멍이 열두 개예요. 열 개째에서 소리가 나요."}
+schedule:
+  아침: "금고 문 자물쇠 열둘을 하나씩 돌린다"
+  낮: "금고 안 서류 점검"
+  저녁: "칼 곁 일지를 한 줄 쓴다"
+  밤: "금고 문 앞에서 잔다"
+places: [탑 금고, 금고 문 앞]
+knows:
+  - fact_ar_glass_blades
+  - fact_p2ar_orvel_first_silence
+  - fact_p2ar_orvel_moves_blade
+hides:
+  - fact: fact_p2ar_orvel_first_silence
+    reveal_when: "신뢰 70 이상이고 AS 214 실험이나 첫 침묵의 일지를 플레이어가 구체적으로 물었을 때"
+    reveal: [{"trust":70},{"tier":"대성공","trust":50}]
+    cover: "'일지는 금고 밖으로 나가지 않아요'라고 한다"
+  - fact: fact_p2ar_orvel_moves_blade
+    reveal_when: "신뢰 55 이상이고 칼의 위치를 플레이어가 물었을 때"
+    reveal: [{"trust":55,"player_offer":"칼"}]
+    cover: "'칼은 금고 안에 있어요. 어느 자리인지는 열쇠 가진 사람의 몫이고요'라고 한다"
+relations:
+  - {to: npc_irene_bold, type: 탑주, like: 10, trust: 40, visibility: 공개, memo: "금고의 윗사람", words: "셋째 칼을 몸에 지닌 사람. 첫째 칼을 맡긴 사람이라 말없이 존중한다"}
+  - {to: npc_ar_rail, type: 둘째 칼 소지자, like: 0, trust: 20, visibility: 공개, memo: "같은 칼의 자매", words: "둘째 칼을 허리에 숨긴 측정관. 칼이 차가워지는 이야기를 하고 싶지만 하지 못한다"}
+toward_player: "장갑 낀 손을 가슴에 모으고 허락 없이는 열쇠를 보이지 않는다"
+persuade:
+  likes: ["칼에 관한 새 정보 (+20)", "일지의 사본 (+30)"]
+  hates: ["칼을 쓰자는 말 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "첫째 칼은 금고에 있다"
+    - "계절마다 칼의 위치를 한 번 옮긴다"
+  drift:
+    - "그 계절의 칼의 서랍"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_full_scholar, office: off_vault, since: 268, loyalty: 55, public: true, cell: null}
+truths:
+  - {id: T05, level: fragment}
+hard_rules:
+  - "칼의 현재 위치를 먼저 말하지 않는다"
+  - "설교하지 않는다. 허가와 장갑과 일지로 말한다"
+on_death: "금고 열쇠 열둘이 탑주에게 되돌아가고 첫째 칼의 위치가 한 사람의 기억으로 옮겨진다."
+story_seeds:
+  - "칼의 위치는 오르벨이 계절마다 바꾼다. 다음 계절의 위치를 아는 자가 칼에 닿는다."

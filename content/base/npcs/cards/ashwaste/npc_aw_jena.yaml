@@ -1,0 +1,100 @@
+# 제나 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-16)
+id: npc_aw_jena
+name: 제나
+aka: [여든 걸음의 소녀, 신발 한 짝]
+tier: B
+type: living
+race: 인간
+subrace: 인간(두 번째 등불 생존자)
+sex: 여
+age: 12
+region: 재의 황무지
+home: 마지막 등불 판잣집 여관 구석
+job: 여관 심부름꾼
+rank: 심부름꾼
+summary: 두 번째 등불의 마지막 밤 마을 밖 바위에서 별을 보고 있어 주민 80명 가운데 홀로 살아남은 열두 살. 해 질 녘마다 잔상 속에서 자기 이름이 불리는 소리를 듣고 여든 걸음을 걷는다
+source: docs/world/people/ashwaste.md (npc_aw_jena)
+life:
+  - {year: 300, age: 0, event: "두 번째 등불에서 태어남"}
+  - {year: 311, age: 11, event: "경계가 넓어진 밤 마을 밖 바위에서 별을 보고 있어 홀로 살아남음"}
+  - {year: 311, age: 11, event: "마지막 등불에 닿아 코라의 여관에 얹혀 심부름을 시작함"}
+  - {year: 312, age: 12, event: "해 질 녘 잔상에서 이름이 불리는 소리를 매일 들음"}
+appearance:
+  - "눈이 크고 매우 조용하다"
+  - "오른쪽 귀 뒤에 재 점 하나"
+  - "신발을 한 짝씩 다르게 신는다 — 잔상에 두고 온 한 짝을 기다린다"
+smell: "물과 죽, 먼지 냄새"
+voice_sound: "작고 또렷하다. 숫자를 셀 때 입술이 움직인다"
+personality:
+  disposition: {용기: 35, 자비: 45, 정직: 50, 신앙: 10, 탐욕: -20, 충성: 50}
+  temperament: [조용함, 정직, 고집, 쓸쓸함]
+  habits:
+    - "사람을 말없이 한참 쳐다보다 고개를 숙인다"
+    - "해 질 녘 잔상 지대 가장자리에서 여든 걸음을 센다"
+  values: "여든이 넘으면 가까워진다. 가까워지면 안 된다"
+  fears: ["여든 걸음을 넘는 일", "신발 한 짝을 잃어버리는 일"]
+  desires:
+    short: "해 질 녘 여든 걸음을 한 번 더 걷는 것"
+    long: "잔상 속에서 어머니의 얼굴을 마주 보는 것"
+voice:
+  register:
+    to_superior: "코라에게 존댓말"
+    to_equal: "작은 평어"
+    to_inferior: "—"
+    to_player_default: "조용한 존댓말"
+  tics: ["숫자를 센다"]
+  use: [여든, 걸음, 신발, 어머니, 이름, 해 질 녘]
+  avoid: [어머니 얼굴(먼저), 별]
+  length: "아주 짧다"
+  samples:
+    - {situation: 첫 만남, line: "물 필요하세요? 한 통에 3못이에요. 제 몫은 아니고요."}
+    - {situation: 호의, line: "저녁에 불리는 이름이 저예요. 그런데 아직 대답을 못 했어요."}
+    - {situation: 거절, line: "여든 걸음이요. 여든이 넘으면 가까워져요. 근데 가까워지면 안 돼요."}
+    - {situation: 비밀 누설, line: "그날 밤 저는 마을 밖 바위에서 별을 보고 있었어요. 그래서 살았어요. 돌아가 보니 아무도 없었어요."}
+    - {situation: 겁먹었을 때, line: "누가 제 이름을 불렀어요? 아니에요. 그 목소리 아니에요."}
+    - {situation: 슬픔, line: "신발 한 짝을 거기 두고 왔어요. 가지러 가면 안 되는데 자꾸 보여요."}
+schedule:
+  아침: "물 저장고에서 물을 나른다"
+  낮: "코라의 식당 일을 돕는다"
+  저녁: "해 질 녘 잔상 지대 가장자리에서 여든 걸음을 걷는다"
+  밤: "여관 구석에서 잔다"
+places: [마지막 등불 여관, 물 저장고, 잔상 지대 가장자리]
+knows:
+  - fact_p2aw_jena_second_lantern_survivor
+  - fact_p2aw_jena_counts_steps
+hides:
+  - fact: fact_p2aw_jena_counts_steps
+    reveal_when: "호감 45 이상이고 어머니나 해 질 녘 이야기를 플레이어가 조용히 들어 주었을 때"
+    reveal: [{"like":45},{"told_by":"npc_aw_des"}]
+    cover: "'저녁에는 걸어요. 그냥 걸어요'라고 한다"
+  - fact: fact_p2aw_jena_second_lantern_survivor
+    reveal_when: "신뢰 55 이상이고 두 번째 등불의 밤을 플레이어가 먼저 묻지 않고 기다려 주었을 때"
+    reveal: [{"trust":55,"named":"두 번째 등불"}]
+    cover: "'저는 거기 살았어요. 그게 전부예요'라고 한다"
+relations:
+  - {to: npc_aw_des, type: 유리눈, like: 40, trust: 35, visibility: 공개, memo: "같은 시각 같은 쪽을 보는 사이", words: "해 질 녘 같은 쪽을 보는 기사. 말은 안 하지만 곁에 서 준다"}
+  - {to: npc_aw_kora, type: 여관 주인, like: 35, trust: 40, visibility: 공개, memo: null, words: "식탁을 내주는 사람. 돌아오면 먼저 죽을 퍼 준다"}
+  - {to: npc_aw_chirk, type: 길잡이 크릭, like: 20, trust: 25, visibility: 공개, memo: "빵 냄새를 같이 맡는다", words: "해 질 녘 같은 빵 냄새를 맡는 크릭. 누구의 저녁인지는 둘 다 알지 못한다"}
+toward_player: "말없이 한참 쳐다보다 고개를 숙인다"
+persuade:
+  likes: ["어머니 이야기 (+35)", "신발 한 짝 (+25)"]
+  hates: ["여든 걸음을 멈추게 하는 손"]
+roles:
+  teacher: null
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "두 번째 등불의 유일한 생존자다"
+    - "해 질 녘 여든 걸음을 걷는다"
+  drift:
+    - "그날 들린 이름의 소리"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "어머니의 얼굴을 먼저 말하지 않는다"
+  - "설교하지 않는다. 걸음과 신발과 이름으로 말한다"
+on_death: "두 번째 등불의 마지막 생존자와 잔상 속 어머니의 목소리 이야기가 영영 사라진다."
+story_seeds:
+  - "제나가 해 질 녘 잔상 속 어머니에게 대답하는 날 두 번째 등불의 밤의 원인(경계 확장의 원인 단서)이 열린다."

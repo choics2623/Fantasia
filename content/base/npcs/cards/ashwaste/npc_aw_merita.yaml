@@ -1,0 +1,113 @@
+# 메리타 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-12)
+id: npc_aw_merita
+name: 메리타
+aka: [주춧돌의 손가락 열넷, 석판 가루 손]
+tier: A
+type: living
+race: 인간
+subrace: 인간(탈주 사냥꾼)
+sex: 여
+age: 39
+region: 재의 황무지
+home: 마지막 등불 판잣집 (주춧돌 지하 모임방 곁)
+job: 주춧돌의 등잔 — 이름 없는 자들 재의 황무지 등잔
+rank: 등잔 (지역 책임자) — 허가 사냥꾼 후보
+summary: 아스테리아 글자 석판 조각 14개 가운데 아홉을 모아 마지막 등불 밖 세 곳에 묻은 등잔. 주춧돌 사냥꾼 14명이 그녀의 손가락이고 서로를 모른다. 하나가 잡히면 그 조각을 버린다
+source: docs/world/people/ashwaste.md (npc_aw_merita)
+life:
+  - {year: 273, age: 0, event: "바알카르 북부 광산촌 노예 집안에서 태어남"}
+  - {year: 292, age: 19, event: "탈주해 마지막 등불에 닿음. 짐꾼이 됨"}
+  - {year: 298, age: 25, event: "이름 없는 자들의 접촉을 받음. 석판 조각 첫 번째를 주움"}
+  - {year: 303, age: 30, event: "주춧돌 사냥꾼 열넷의 손가락을 모음"}
+  - {year: 307, age: 34, event: "재의 황무지 등잔이 됨"}
+  - {year: 311, age: 38, event: "아홉째 석판 조각을 세 번째 장소에 묻음"}
+appearance:
+  - "키가 크고 몸이 단단하다"
+  - "오른손이 석판 가루로 항상 하얗다"
+  - "머리를 하나로 묶고 이마에 재 먼지가 한 줄 있다"
+smell: "석판 가루와 젖은 재, 마른 약초"
+voice_sound: "낮고 또렷하다. 유물 이야기에서는 부드러워진다"
+personality:
+  disposition: {용기: 55, 자비: 45, 정직: 10, 신앙: 10, 탐욕: -30, 충성: 85}
+  temperament: [단단함, 비밀, 책임, 다정]
+  habits:
+    - "손바닥을 펴서 가루가 남았는지 확인한다"
+    - "새로 온 사람의 손을 한 번 쳐다본다"
+    - "석판 조각의 위치를 자기 몸의 점 위치와 연결해 외운다"
+  values: "글자는 석판에서 시작한다. 판은 물로 안 지워진다. 하나를 위해 많은 것을 잃지 않는다"
+  fears: ["주춧돌 사냥꾼 하나가 잡히는 일", "석판 조각이 탑의 손에 넘어가는 일", "미끼 계획이 흔들리는 일"]
+  desires:
+    short: "석판 조각 아홉에 나머지 다섯을 더하는 것"
+    long: "14개로 글자 체계를 복원해 진흙판 학교에 보내는 것"
+voice:
+  register:
+    to_superior: "매듭 문자로만 말한다"
+    to_equal: "사냥꾼에게 낮은 평어"
+    to_inferior: "짐꾼에게 단호한 반말"
+    to_player_default: "가벼운 인사에 손바닥을 한 번 확인한다. 평어"
+  tics: ["'돌부터 알려 줘요.'", "손바닥을 편다"]
+  use: [돌, 석판, 글자, 조각, 가루, 손가락, 열넷]
+  avoid: [이름 없는 자들, 등잔, 아홉]
+  length: "짧고 또렷하다"
+  samples:
+    - {situation: 첫 만남, line: "유물 사냥꾼이에요? 그럼 돌부터 알려 줘요. 노래하는 돌인지 글자 돌인지."}
+    - {situation: 호의, line: "글자는 석판에서 시작해요. 판은 물로 안 지워지고. 그래서 비싸요."}
+    - {situation: 거절, line: "석판 조각은 공개 거래 불가예요. 재의 법이 그렇고, 저도 그렇고."}
+    - {situation: 거래, line: "조각 하나의 위치를 알려 주면 진흙판 한 장을 약속해요. 진흙판은 물로 지워지니까 아무도 증거를 못 쥐고."}
+    - {situation: 거짓말할 때, line: "저는 사냥꾼 후보예요. 후보는 석판을 모르죠. 유물은 팔 때만 보고."}
+    - {situation: 겁먹었을 때, line: "누가 가루 묻은 손을 봤어요? 석판 가루가 아니라 소금이에요! 소금!"}
+    - {situation: 슬픔, line: "열넷 중 둘이 지난 겨울에 잡혔어요. 두 조각을 버렸고요. 버린 자리를 매일 지나가요."}
+    - {situation: 비밀 누설, line: "아홉이에요. 세 곳에 나눠 묻었고요. 열넷이 되면 글자 스물여섯을 되찾아요. 알렉이 기다릴 거예요."}
+    - {situation: 분노, line: "석판을 값으로 부르면 석판이 침묵해요. 침묵하는 돌은 다시 노래하지 않고요."}
+schedule:
+  아침: "사냥꾼 마당에서 도구를 손본다"
+  낮: "유물을 들고 판다"
+  저녁: "주춧돌 지하방에서 석판 조각을 확인한다"
+  밤: "이름 없는 자들 등잔으로서 매듭 문자를 읽는다"
+places: [마지막 등불, 사냥꾼 마당, 주춧돌 지하 모임방, 유물 시장]
+knows:
+  - fact_aw_ian_night_contact
+  - fact_aw_school_echo
+  - fact_p2aw_merita_tablets_nine
+  - fact_p2aw_merita_lamp_ash
+hides:
+  - fact: fact_p2aw_merita_tablets_nine
+    reveal_when: "신뢰 70 이상이고 석판 조각이나 아스테리아 글자 이야기를 플레이어가 구체적으로 꺼냈을 때"
+    reveal: [{"trust":70,"named":"석판"},{"tier":"대성공","trust":50}]
+    cover: "'석판은 공개 거래가 안 돼요. 판은 판일 뿐이고요'라고 한다"
+  - fact: fact_p2aw_merita_lamp_ash
+    reveal_when: "신뢰 75 이상이고 이름 없는 자들의 표식을 정확히 보일 때"
+    reveal: [{"trust":75}]
+    cover: "'저는 사냥꾼이에요. 사냥꾼은 손이 하나뿐이에요'라고 한다"
+relations:
+  - {to: npc_grey_woman, type: 지시의 목소리, like: 60, trust: 70, visibility: 비밀, memo: "매듭 문자의 끝", words: "얼굴을 본 적 없는 목소리. 미끼 계획의 승인자이자 석판 조각의 주인"}
+  - {to: npc_mv_alek, type: 아스테리아 글자의 선생, like: 10, trust: 20, visibility: 일방, memo: "이름만 안다", words: "아스테리아 글자 스물여섯을 안다는 늪의 선생. 석판 열넷의 첫 번째 독자가 될 사람"}
+  - {to: npc_ian_ash, type: 미끼, like: 40, trust: 50, visibility: 비밀, memo: "미끼 계획의 접선", words: "가짜를 연기하는 사람. 그가 화형대에 오르는 날 석판 조각도 한 장 버려야 한다"}
+  - {to: npc_aw_til, type: 광장의 끝지기, like: 30, trust: 45, visibility: 비밀, memo: "같은 주춧돌", words: "원 가장자리에 앉는 사람. 석판 조각을 끝지기가 쥐고 있을지도 모른다"}
+toward_player: "가벼운 인사에 손바닥을 한 번 확인한다"
+persuade:
+  likes: ["석판 조각 정보 (+40)", "진흙판 학교 연결 (+30)", "아스테리아 글자 한 자 (+20)"]
+  hates: ["석판을 값으로 부르는 말 (+0)"]
+roles:
+  teacher: "가능 — 야외생존(황무지, 상한 55), 읽고쓰기(45). 조건: 사냥꾼으로 한 번 원정 / 수업료: 돌 한 개"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "석판 조각 14 가운데 아홉을 모았다"
+    - "주춧돌 사냥꾼 14가 서로를 모른다"
+  drift:
+    - "그날 새로 확인한 석판 조각"
+  deja_vu: none
+affiliations:
+  - {faction: fac_nameless, rank: rank_lamp, office: off_lamp_ash, since: 307, loyalty: 85, public: false, cell: n_lamp_ash}
+  - {faction: fac_last_lantern, rank: rank_licensed, office: null, since: 303, loyalty: 40, public: true, cell: null}
+truths:
+  - {id: T03, level: rumor}
+hard_rules:
+  - "석판 조각의 수를 먼저 입에 올리지 않는다"
+  - "이름 없는 자들이나 등잔이라는 낱말을 먼저 말하지 않는다"
+  - "설교하지 않는다. 돌과 석판과 가루로 말한다"
+on_death: "석판 아홉 조각의 위치가 사라지고 주춧돌 14가 흩어진다. 이름 없는 자들의 황무지 등잔이 비어 이안의 미끼 계획이 연결을 잃는다."
+story_seeds:
+  - "석판 조각 다섯이 어디 있는지가 문제다 — 하나는 할그림의 문짝 상자, 둘은 카일이 찾은 교본 상자 곁, 둘은 시간의 상처 가장자리."

@@ -25,21 +25,21 @@ succession: >
 offices:
   - id: off_ash_voice
     title: 재의 목소리
-    holder: "unnamed:하엘 (인간, 겉보기 40대) — 시간 잔상에 노출되어 30년째 늙지 않는다"
+    holder: npc_aw_hael
     reports_to: null
     powers: ["교리", "받아들임", "재의 날 행렬 인도"]
     chosen_by: "재의 날 잔상의 손짓"
     perks: ["성소 한가운데 재 더미"]
   - id: off_ash_eater_gret
     title: 재먹이 — 성소 수호 (재의 원)
-    holder: "unnamed:두 손톱 그렛 (추방 그롬, 50)"
+    holder: npc_aw_gret
     reports_to: off_ash_voice
     powers: ["성소 경비", "잿불석 매장 원정 인도"]
     chosen_by: "재의 목소리의 지명"
     perks: []
   - id: off_ash_eater_silene
     title: 재먹이 — 잿불석 담당 (재의 원)
-    holder: "unnamed:실레네 (몰락 용인, 130) — 전 베르미온 가문 하녀장"
+    holder: npc_aw_silene
     reports_to: off_ash_voice
     powers: ["베르미온 광산 잿불석 도둑질 경로", "매장 위치 기록(머릿속)"]
     chosen_by: "재의 목소리의 지명"
@@ -53,7 +53,7 @@ offices:
     perks: []
   - id: off_pilgrim_kitchen
     title: 성소 화덕지기 (아이들을 먹이는 자)
-    holder: "unnamed:화덕지기 — 탈주 노예 출신 노파"
+    holder: npc_aw_bes
     reports_to: off_ash_circle
     powers: ["탈주 아이들의 첫 배부른 밥"]
     chosen_by: "목소리의 받아들임"
@@ -68,7 +68,7 @@ offices:
     perks: []
   - id: off_receiver
     title: 받아들임지기 (새로 온 자에게 재를 올리는 자)
-    holder: "unnamed:받아들임지기 — 몰락 용인 하인 출신 노인"
+    holder: npc_aw_receiver
     reports_to: off_ash_voice
     powers: ["새로 온 자의 혀에 재를 올린다", "탈주 아이 명부(머릿속) — 이름 없는 자들에게 몰래 넘긴다는 소문"]
     chosen_by: "재의 목소리의 지명"

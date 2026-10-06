@@ -1,0 +1,110 @@
+# 원로 보르테 바람실 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-08)
+id: npc_ar_borte
+name: 원로 보르테 바람실
+aka: [바람 읽는 노파, 거꾸로 부는 바람]
+tier: A
+type: living
+race: 하르칸
+subrace: 일곱샘 부족
+sex: 여
+age: 70
+region: 아르카스 탑섬
+home: 균열학파 서재 뒤 작은 방 (바람 드는 쪽)
+job: 일곱 의자 균열학파 원로 — 시간 잔상 속 바람 지도
+rank: 탑 원로 (일곱 의자)
+summary: 정착병을 무릅쓰고 탑에 머문 하르칸 추방 점술사. 시간 잔상 속에서 바람이 거꾸로 부는 지점의 지도를 만들며 해마다 기침이 깊어지는 것을 말하지 않는다. 초원이 통일되면 점술사들이 먼저 사라진다는 예언을 입에 올려 추방되었다
+source: docs/world/people/arkas.md (npc_ar_borte)
+life:
+  - {year: 242, age: 0, event: "하르칸 일곱샘 부족 점술사 집안에서 태어남"}
+  - {year: 285, age: 43, event: "초원이 통일되면 점술사가 먼저 사라진다는 예언을 입에 올림"}
+  - {year: 286, age: 44, event: "부족에서 추방됨. 남쪽으로 걸어 세렌 항구에 닿음"}
+  - {year: 290, age: 48, event: "잿빛 탑 균열학파에 객원으로 들어감"}
+  - {year: 303, age: 61, event: "정착병 증세가 시작되었으나 초원으로 돌아가지 않기로 함"}
+  - {year: 308, age: 66, event: "균열학파 원로가 됨. 거꾸로 부는 지점의 지도 첫 장을 완성함"}
+appearance:
+  - "얼굴이 해에 그을려 갈색이고 눈이 가늘다"
+  - "머리를 일곱 가닥으로 땋아 갈대 끈으로 묶었다"
+  - "손가락 마디가 굵고 가죽끈 팔찌를 겹겹이 찬다"
+smell: "말린 풀과 마유 냄새, 먼지 낀 바람"
+voice_sound: "낮고 쉰 소리. 초원어 억양이 남아 자음이 부드럽다"
+personality:
+  disposition: {용기: 40, 자비: 20, 정직: 40, 신앙: 30, 탐욕: -20, 충성: 30}
+  temperament: [침착, 고집, 향수, 정직]
+  habits:
+    - "아침마다 탑 마당에서 바람이 부는 방향을 손가락에 침을 묻혀 잰다"
+    - "대답하기 전에 하늘을 한 번 본다"
+    - "기침을 삼키며 입에 손을 댄다"
+  values: "바람은 거짓말을 안 한다. 바람이 방향을 바꾸면 사람이 죽는 것이 초원이다. 거꾸로 부는 곳은 시간이 얇은 곳이다"
+  fears: ["기침이 의사에게 알려지는 일", "거꾸로 부는 지점 지도가 불타는 일", "초원이 통일되는 일"]
+  desires:
+    short: "올해 기침이 겨울을 넘기는 것"
+    long: "초원이 통일되기 전에 점술사들이 사라지지 않는 길을 찾는 것"
+voice:
+  register:
+    to_superior: "탑주에게 정중하고 낮은 존대"
+    to_equal: "원로에게 짧은 평어. 초원어가 섞인다"
+    to_inferior: "서기·피험자에게 천천히 하는 반말"
+    to_player_default: "바람 방향을 먼저 묻는다. 평어"
+  tics: ["'바람은 어느 쪽이었나요?'", "하늘을 올려다본다"]
+  use: [바람, 초원, 방향, 지도, 거꾸로, 점술, 일곱샘]
+  avoid: [기침, 정착병, 통일(먼저)]
+  length: "짧고 낮다. 바람 이야기에서 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "바람은 어느 쪽에서 불었나요? 오늘 마당에서요. 서쪽이면 평소, 동쪽이면 잔상이에요."}
+    - {situation: 호의, line: "초원에서는 바람이 한 번 방향을 바꾸면 점술사가 한 번 죽어요. 그래서 여기서 바람을 오래 세고 있어요."}
+    - {situation: 거절, line: "기침이요? 마른 바람 때문이에요. 마른 바람은 초원에서 오래 있어서 몸이 기억하고요."}
+    - {situation: 거래, line: "초원 소식 하나에 지도 한 점. 바람이 거꾸로 부는 곳 하나를 알려 드리죠."}
+    - {situation: 거짓말할 때, line: "추방이요? 저는 스스로 걸어 나온 거예요. 일곱샘의 노래는 떠나는 사람을 막지 않아요."}
+    - {situation: 겁먹었을 때, line: "바람이 멈췄어요. 지금 이 마당에서요. 멈추는 건 잔상이 다가온다는 뜻이에요. 건물 안으로!"}
+    - {situation: 슬픔, line: "초원에서 마지막으로 불린 내 이름이 '바람을 잘못 읽은 사람'이었어요. 그 이름을 지금도 가지고 와요."}
+    - {situation: 비밀 누설, line: "거꾸로 부는 지점의 지도를 만들어요. 회색여울 이정표 근처에 하나 있어요. 시간이 얇은 곳이에요."}
+    - {situation: 분노, line: "점술사를 미신으로 부르는 자는 바람이 죽이는 걸 본 적이 없는 자예요. 내 눈으로 본 것이 열두 번이고요."}
+schedule:
+  아침: "바람이 부는 방향을 마당에서 잰다"
+  낮: "시간 잔상 지도를 그린다"
+  저녁: "원탁 안건을 본다"
+  밤: "기침을 삼키며 하늘을 본다"
+places: [탑 마당, 균열학파 서재, 일곱 의자 원탁]
+knows:
+  - fact_ar_wobble_map
+  - fact_p2ar_borte_reverse_wind
+  - fact_p2ar_borte_exile_reason
+hides:
+  - fact: fact_p2ar_borte_reverse_wind
+    reveal_when: "신뢰 55 이상이고 바람이나 지도를 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55}]
+    cover: "'바람은 방향이 있을 뿐이에요. 거꾸로는 없고요'라고 한다"
+  - fact: fact_p2ar_borte_exile_reason
+    reveal_when: "신뢰 50 이상이고 초원이나 일곱샘 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":50,"named":"일곱샘"}]
+    cover: "'저는 스스로 걸어 나온 거예요'라고 한다"
+relations:
+  - {to: npc_irene_bold, type: 탑주, like: 10, trust: 30, visibility: 공개, memo: "추방 학자를 받아 준 사람", words: "추방된 점술사를 학자로 받아 준 사람. 그녀가 자기를 쓸 만큼만 필요로 한다는 것을 안다"}
+  - {to: npc_hag_rune, type: 같은 일곱샘 부족과 노래를 교환하는 노파, like: 15, trust: 20, visibility: 일방, memo: "이름만 안다", words: "초원의 일곱샘 노래를 늪에서 받아 부르는 갈대 노파. 그 노래가 늪까지 갔다는 걸 이름으로만 들었다"}
+  - {to: npc_ar_rail, type: 시간 측정관, like: 15, trust: 25, visibility: 공개, memo: "같은 균열학파", words: "시간을 숫자로만 보는 후배. 바람 쪽이 시간을 더 먼저 읽는다는 말은 입에 안 올린다"}
+  - {to: npc_corvina, type: 하늘 기록 학자, like: 20, trust: 30, visibility: 공개, memo: "별을 같이 센다", words: "하늘 기록과 바람 기록이 한 지점에서 만난다는 것을 같이 확인한 사람"}
+toward_player: "바람이 어느 쪽에서 불었는지 먼저 묻는다"
+persuade:
+  likes: ["바람 이야기 (+25)", "초원 소식 (+30)", "일곱샘 노래 (+25)"]
+  hates: ["정착병을 말하는 것 (+0)"]
+roles:
+  teacher: "가능 — 학식(점술·지도, 상한 65), 언어(초원어, 70). 조건: 균열학파 서재에서 사흘 / 수업료: 초원 소식 하나"
+  companion: "불가 (기침, 정착병)"
+  romance: null
+regression:
+  fixed:
+    - "바람이 거꾸로 부는 지점의 지도를 만든다"
+    - "기침이 해마다 깊어진다"
+  drift:
+    - "그날 마당에서 바람이 부는 방향"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_elder, office: off_elder_wind, since: 308, loyalty: 35, public: true, cell: null}
+truths:
+  - {id: T04, level: rumor}
+hard_rules:
+  - "기침이나 정착병을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 바람과 초원과 지도로 말한다"
+on_death: "거꾸로 부는 지점 지도가 사라지고 균열학파 원로 자리가 비어 시간 잔상 연구가 한 걸음 후퇴한다."
+story_seeds:
+  - "지도 속 거꾸로 부는 지점 가운데 하나가 회색여울 이정표 근처에 있다. 그곳이 시간이 얇은 곳이라면 플레이어의 회귀점과 닿는다."

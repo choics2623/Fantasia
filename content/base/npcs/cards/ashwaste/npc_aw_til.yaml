@@ -1,0 +1,97 @@
+# 끝지기 틸 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-13)
+id: npc_aw_til
+name: 끝지기 틸
+aka: [원 가장자리에 앉는 사람, 멈춘 광장의 끝지기]
+tier: B
+type: living
+race: 인간
+subrace: 인간(탈주 사냥꾼)
+sex: 남
+age: 58
+region: 재의 황무지
+home: 아스테리아 폐허 멈춘 광장 곁 끝지기 움막
+job: 멈춘 광장의 끝지기 (아스테리온 의식 현장 수호)
+rank: 끝지기
+summary: 멈춘 광장 원 가장자리에 하루 한 번 앉는 사람. 원 안에 들어간 적 없다고 말하지만 사실은 두 번 들어갔다 나왔고, 두 번째에는 시간이 한 걸음 멀어지는 느낌을 얻었다
+source: docs/world/people/ashwaste.md (npc_aw_til)
+life:
+  - {year: 254, age: 0, event: "루멘 동쪽 농장 노예 집안에서 태어남"}
+  - {year: 276, age: 22, event: "탈주해 마지막 등불에 닿음. 사냥꾼이 됨"}
+  - {year: 300, age: 46, event: "멈춘 광장 가장자리에서 첫 번째로 원 안에 들어갔다 나옴"}
+  - {year: 308, age: 54, event: "끝지기가 되어 매일 원 가장자리에 앉기 시작함. 두 번째로 원에 들어갔다 나옴"}
+appearance:
+  - "몸이 말랐고 어깨가 둥글다"
+  - "손바닥이 재로 항상 회색"
+  - "눈을 오래 감고 있는 버릇"
+smell: "재 먼지와 마른 흙"
+voice_sound: "가볍고 조용하다. 눈을 감고 말한다"
+personality:
+  disposition: {용기: 20, 자비: 40, 정직: 10, 신앙: 20, 탐욕: -30, 충성: 60}
+  temperament: [조용함, 기다림, 은닉, 다정]
+  habits:
+    - "눈을 감은 채 목소리를 듣는다"
+    - "매일 같은 자리에 앉아 원을 본다"
+  values: "원 가장자리에서는 시간이 보인다. 안에서는 시간이 사람을 본다"
+  fears: ["원 안에 세 번째로 들어가는 일", "누군가 원 안에서 걸어 나오지 못하는 일"]
+  desires:
+    short: "원 안에 들어가지 않고 매일 앉는 것"
+    long: "누군가 원 안에서 걸어 나오는 모습을 보는 것"
+voice:
+  register:
+    to_superior: "메리타에게 짧은 존대"
+    to_equal: "조용한 평어"
+    to_inferior: "신입에게 낮은 평어"
+    to_player_default: "눈을 감고 천천히 말하는 평어"
+  tics: ["눈을 감는다"]
+  use: [원, 가장자리, 시간, 광장, 앉다]
+  avoid: [원 안, 두 번]
+  length: "짧고 느리다"
+  samples:
+    - {situation: 첫 만남, line: "멈춘 광장은 멈춰 있어요. 사람은 멈추지 않아서 그 안에서 늙어요."}
+    - {situation: 호의, line: "원 가장자리에서는 시간이 보여요. 안에서는 시간이 사람을 봐요."}
+    - {situation: 거절, line: "원 안에 들어간 적은 없어요. …두 번은 아니에요."}
+    - {situation: 거래, line: "광장 안전한 길 하나에 가장자리 앉는 자리 하나를 내줄게요."}
+    - {situation: 비밀 누설, line: "두 번 들어갔어요. 두 번째는 시간이 한 걸음 멀어졌고요. 한 걸음 멀어진 채로 걸어 나왔어요."}
+    - {situation: 분노, line: "원 안에서 뭘 봤느냐고 묻지 마요. 본 것은 눈이 아니라 발바닥이 알아요."}
+schedule:
+  아침: "움막에서 짐을 정리한다"
+  낮: "멈춘 광장 원 가장자리에 앉는다"
+  저녁: "움막으로 돌아와 쉰다"
+  밤: "원을 떠올리며 잔다"
+places: [멈춘 광장, 끝지기 움막, 마지막 등불 (한 달에 한 번 소식)]
+knows:
+  - fact_p2aw_til_square_end
+hides:
+  - fact: fact_p2aw_til_square_end
+    reveal_when: "신뢰 60 이상이고 메리타에게서 소개받았거나 원 안에서의 기억 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":60},{"told_by":"npc_aw_merita"},{"tier":"대성공","trust":45}]
+    cover: "'원 안에 들어간 적은 없어요. 두 번은 아니에요'라고 한다"
+relations:
+  - {to: npc_aw_merita, type: 주춧돌의 등잔, like: 30, trust: 45, visibility: 비밀, memo: "같은 주춧돌", words: "석판 조각을 모으는 등잔. 가장자리에서 본 것을 그에게만 전한다"}
+  - {to: npc_echo_wall_girl, type: 성벽 위 소녀, like: 10, trust: 15, visibility: 일방, memo: "아홉째 문의 잔상", words: "아홉째 문 성벽 위의 잔상. 광장에서도 그 소녀가 보일 때가 있다"}
+  - {to: npc_aw_mog, type: 길잡이, like: 15, trust: 25, visibility: 공개, memo: null, words: "같은 길을 아는 사람. 스물네 번째를 같이 걱정한다"}
+toward_player: "눈을 감은 채 목소리를 듣는다"
+persuade:
+  likes: ["광장 이야기 (+25)", "안전 지도 (+20)"]
+  hates: ["원 안에서 무엇을 봤느냐는 말"]
+roles:
+  teacher: "가능 — 야외생존(황무지, 상한 50), 의지(55). 조건: 가장자리에서 하루 앉기 / 수업료: 재 한 줌"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "원 안에 두 번 들어갔다 나왔다"
+    - "매일 원 가장자리에 앉는다"
+  drift:
+    - "그날 원에서 본 것"
+  deja_vu: none
+affiliations:
+  - {faction: fac_trace_keepers, rank: rank_end_keeper, office: off_end_square, since: 308, loyalty: 60, public: false, cell: null}
+  - {faction: fac_last_lantern, rank: rank_licensed, office: null, since: 276, loyalty: 40, public: true, cell: null}
+truths: []
+hard_rules:
+  - "원 안에 두 번 들어갔다고 먼저 말하지 않는다"
+  - "설교하지 않는다. 원과 가장자리와 시간으로 말한다"
+on_death: "끝지기가 사라져 광장 원을 지킬 이가 없고 이름 없는 자들과 흔적 지킴이의 연결이 끊긴다."
+story_seeds:
+  - "두 번 들어갔다 나온 사람 — 시간이 한 걸음 멀어진 틸의 기억은 플레이어의 '그날의 기억 조각'과 맞닿는다."

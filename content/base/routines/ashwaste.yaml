@@ -1,0 +1,178 @@
+# 재의 황무지 NPC 일과 (24 §3). 원천: REGIONS §11, docs/world/people/ashwaste.md, 카드 schedule. 장소 id는 settlements/last_lantern.yaml(ll_*·ll__*), asteria_ruins.yaml(ast_*).
+# 하루: 06:00 등불 기름 · 12:00 물 저장고 정오 되질 · 17:30 해 지기 전 호각 (고즈가 마지막 사냥꾼을 들인다) — 해 진 뒤 밖에 있는 자는 구조하지 않는다. 안식일도 쉬지 않는다.
+# 마지막 등불에서 재 성소 5.5시간, 재눈 초소 3시간, 재의 암자 3.5시간, 붉은 말뚝 선 6.5시간. 아스테리아 폐허는 56시간 — 끝지기 틸과 성벽 위 잔상만 매일 그곳에 있다.
+# 재의 날·맹약회의 313·석판 모으는 날·잿불석 매장일·상자 원정은 events/ashwaste_312.yaml. 쉼표나 따옴표가 든 값은 큰따옴표로.
+npc_aw_halgrim:
+  home: ll_halgrim_house
+  blocks:
+    - {days: all, from: "06:00", to: "08:00", at: ll_lantern, doing: "등불 기름을 채운다 — 왼손은 호주머니에 넣은 채", outdoor: true}
+    - {days: all, from: "08:00", to: "17:00", at: ll_halgrim_house, doing: "사냥꾼 허가 인장을 찍는다 — 문턱 서랍에서 인장을 꺼낸다"}
+    - {days: all, from: "17:00", to: "22:00", at: ll_lantern, doing: "등불 아래 앉아 돌의 진행을 손가락 마디로 가늠한다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_oath_cellar, doing: "집 아래 깨진 맹세 석판 곁에서 창대를 짚고 선다"}
+npc_aw_mog:
+  home: ll_guide_hut
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_guide_hut, doing: "길 지도를 펼친다 — 지운 점과 남긴 점을 세어 본다"}
+    - {days: all, from: "09:00", to: "17:00", at: ll_hunters_yard, doing: "짐꾼과 신입 사냥꾼에게 규칙 셋부터 가르친다"}
+    - {days: all, from: "17:00", to: "22:00", at: ll_lantern, doing: "등불 아래서 규칙 셋을 소리 없이 외운다 — 오른쪽을 먼저 본다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_guide_hut, doing: "오두막에서 지도의 점을 하나 지운다 — 스물네 번째 자리는 건드리지 않는다"}
+npc_aw_des:
+  home: ll_hunters_yard
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_hunters_yard, doing: "사냥꾼 마당에서 검을 닦는다 — 유리눈을 소매로 훔친다"}
+    - {days: all, from: "09:00", to: "16:30", at: ll_hunters_yard, doing: "짐꾼 신입을 지도한다"}
+    - {days: all, from: "16:30", to: "18:30", at: ll_edge, doing: "해 질 녘 잔상 지대 가장자리에서 유리눈으로 여든 얼굴을 센다 — 손 흔드는 얼굴 앞에서 멈춘다", outdoor: true}
+    - {days: all, from: "18:30", to: "22:00", at: ll_lantern, doing: "등불 아래서 술 한 잔 — 센 얼굴의 수를 속으로 되짚는다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_hunters_yard, doing: "마당 곁 천막에서 잔다 — 흉갑을 벗지 않는다"}
+npc_aw_chirk:
+  home: ll_guide_hut
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_edge, doing: "재 냄새로 잔상 주기를 가늠한다 — 코끝이 쉬지 않는다", outdoor: true}
+    - {days: all, from: "09:00", to: "16:30", at: ll_edge, doing: "짐꾼과 황무지 가장자리를 오간다", outdoor: true}
+    - {days: all, from: "16:30", to: "18:30", at: ll_edge, doing: "잔상 지대 가장자리에서 아홉 분 전 젖은 빵 냄새를 맡는다", outdoor: true}
+    - {days: all, from: "18:30", to: "22:00", at: ll_guide_hut, doing: "오두막에서 냄새표를 새로 쓴다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_guide_hut, doing: "재굴 노래를 낮게 부르다 잔다"}
+npc_aw_serena:
+  home: ll__ash_eye
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll__ash_eye_stakes, doing: "측정 말뚝 열둘의 위치를 잰다 — 발걸음 수를 소리 없이 센다", outdoor: true}
+    - {days: all, from: "09:00", to: "17:00", at: ll__ash_eye, doing: "망원경으로 경계를 본다 — 관측자 용인 여덟에게 일을 나눈다"}
+    - {days: all, from: "17:00", to: "21:00", at: ll__ash_eye_records, doing: "기록함의 곡선을 확인한다 — 열기 전에 손을 씻는다"}
+    - {days: all, from: "21:00", to: "23:00", at: ll__ash_eye_stakes, doing: "달 아래서 말뚝 사이를 한 바퀴 돈다", outdoor: true}
+    - {days: all, from: "23:00", to: "06:00", at: ll__ash_eye, doing: "초소에서 잔다 — 측정 바늘은 머리맡에"}
+npc_aw_hael:
+  home: ll__sanct_voice_room
+  blocks:
+    - {days: all, from: "05:00", to: "08:00", at: ll__sanct_yard, doing: "성소 마당에서 재를 한 줌 쥐고 손가락 사이로 흘린다"}
+    - {days: all, from: "08:00", to: "12:00", at: ll__sanct_circle, doing: "재의 원 곁에서 순례자에게 설교한다 — 중심 이야기는 하지 않는다"}
+    - {days: all, from: "12:00", to: "13:00", at: ll__sanct_hearth, doing: "아이들이 먹는 동안 설교를 멈추고 눈을 감는다", fixed: true}
+    - {days: all, from: "13:00", to: "16:00", at: ll__sanct_circle, doing: "순례자에게 설교한다"}
+    - {days: all, from: "16:00", to: "18:30", at: ll__sanct_hearth, doing: "화덕 곁에서 아이들이 먹는 것을 본다 — 이름 서른을 입속으로 외운다", fixed: true}
+    - {days: all, from: "18:30", to: "21:00", at: ll__sanct_voice_room, doing: "목소리의 방에서 내일 설교의 마지막 구절을 고친다"}
+    - {days: all, from: "21:00", to: "24:00", at: ll__sanct_circle, doing: "재의 원에 서서 시간의 상처 쪽을 본다", outdoor: true}
+    - {days: all, from: "24:00", to: "05:00", at: ll__sanct_voice_room, doing: "잔다 — 손가락 끝의 재가 이불에 회색 자국을 남긴다"}
+npc_aw_gret:
+  home: ll__sanct_gate
+  blocks:
+    - {days: all, from: "06:00", to: "17:00", at: ll__sanct_gate, doing: "성소 문 앞에 선다 — 아이들이 문 밖으로 나가지 않게 눈으로 센다"}
+    - {days: all, from: "17:00", to: "21:00", at: ll__sanct_hearth, doing: "화덕에서 베스를 돕는다 — 솥을 들어 준다"}
+    - {days: all, from: "21:00", to: "24:00", at: ll__sanct_yard, doing: "성소 마당을 순찰한다"}
+    - {days: all, from: "24:00", to: "06:00", at: ll__sanct_gate, doing: "문 곁에 등을 대고 잔다 — 반쯤 눈을 뜬 채"}
+npc_aw_silene:
+  home: ll__sanct_ember_room
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll__sanct_ember_room, doing: "잿불석을 한 줌씩 센다"}
+    - {days: all, from: "09:00", to: "15:00", at: ll__sanct_yard, doing: "말뚝 근처에 묻을 잿불석을 순례자에게 나눈다"}
+    - {days: all, from: "15:00", to: "20:00", at: ll__sanct_circle, doing: "순례자에게 묻는 법을 가르친다 — 하녀장 말씨 그대로"}
+    - {days: all, from: "20:00", to: "24:00", at: ll__sanct_ember_room, doing: "열쇠 본을 손바닥에 올려 본다"}
+    - {days: all, from: "24:00", to: "06:00", at: ll__sanct_ember_room, doing: "잔다 — 앞치마를 허리에 감은 채"}
+npc_aw_bes:
+  home: ll__sanct_hearth
+  blocks:
+    - {days: all, from: "05:00", to: "08:00", at: ll__sanct_hearth, doing: "화덕에 불을 올린다 — 앞치마 주머니의 마른 과일을 센다"}
+    - {days: all, from: "08:00", to: "12:00", at: ll__sanct_hearth, doing: "죽을 쑨다 — 곡식 자루의 바닥을 가늠한다"}
+    - {days: all, from: "12:00", to: "13:00", at: ll__sanct_hearth, doing: "아이 열둘에게 죽을 먹인다", fixed: true}
+    - {days: all, from: "13:00", to: "17:00", at: ll__sanct_hearth, doing: "설거지와 약초 말리기"}
+    - {days: all, from: "17:00", to: "21:00", at: ll__sanct_children, doing: "아이들이 이름 바꾸는 놀이를 하는 곁에 앉는다 — 새 이름을 하나 보탠다"}
+    - {days: all, from: "21:00", to: "05:00", at: ll__sanct_children, doing: "아이들 곁에서 순번으로 잔다"}
+npc_aw_receiver:
+  home: ll__sanct_receiving
+  # 재를 퍼 오는 길은 성소에서 한 시간 반 — 새벽 세 시 반에 나선다
+  blocks:
+    - {days: all, from: "05:00", to: "08:00", at: ll__ash_edge, doing: "재를 한 사발 퍼 온다 — 붉은 말뚝 한 걸음 앞에서 멈춘다", outdoor: true}
+    - {days: all, from: "08:00", to: "16:00", at: ll__sanct_receiving, doing: "새로 온 사람의 혀에 재를 올린다 — 사발을 두 손으로 받친다"}
+    - {days: all, from: "16:00", to: "21:00", at: ll__sanct_receiving, doing: "재 사발을 씻는다"}
+    - {days: all, from: "21:00", to: "24:00", at: ll__sanct_yard, doing: "마당에서 촛불을 끄는 연습을 한다 — 마지막 불을 떠올린다"}
+    - {days: all, from: "24:00", to: "05:00", at: ll__sanct_receiving, doing: "잔다"}
+npc_aw_dagan:
+  home: ll_inn_room3
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_hunters_yard, doing: "모래눈 패와 장비를 점검한다 — 장갑은 벗지 않는다"}
+    - {days: all, from: "09:00", to: "17:00", at: ll_edge, doing: "패와 함께 잔상 지대 가장자리에 들어간다 — 두목의 오른쪽에 선다", outdoor: true}
+    - {days: all, from: "17:00", to: "19:00", at: ll_tuk_stall, doing: "튀크에게 유물을 판다"}
+    - {days: all, from: "19:00", to: "21:00", at: ll_inn_kitchen, doing: "죽과 술 — 코라의 눈이 장갑에 머무는 것을 안다"}
+    - {days: all, from: "21:00", to: "06:00", at: ll_inn_room3, doing: "서면 보고를 쓰다가 한 줄을 지운다"}
+npc_aw_merita:
+  home: ll_shacks
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_hunters_yard, doing: "사냥꾼 마당에서 도구를 손본다 — 손바닥의 가루를 확인한다"}
+    - {days: all, from: "09:00", to: "17:00", at: ll_market, doing: "유물을 들고 판다 — 글자 돌 쪽지를 매일 다른 가판에 붙인다"}
+    - {days: all, from: "17:00", to: "19:00", at: ll_square, doing: "해 지기 전 호각에 인원을 센다"}
+    - {days: all, from: "19:00", to: "24:00", at: ll_cornerstone_cellar, doing: "주춧돌 지하방에서 석판 조각을 확인하고 매듭 문자를 읽는다"}
+    - {days: all, from: "24:00", to: "06:00", at: ll_shacks, doing: "판잣집에서 잔다"}
+npc_aw_til:
+  home: ast_end_hut
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ast_end_hut, doing: "움막에서 짐을 정리한다"}
+    - {days: all, from: "09:00", to: "16:30", at: ast_square_edge, doing: "멈춘 광장 원 가장자리에 앉는다 — 눈을 감고 소리를 듣는다", outdoor: true}
+    - {days: all, from: "16:30", to: "22:00", at: ast_end_hut, doing: "움막으로 돌아와 쉰다"}
+    - {days: all, from: "22:00", to: "06:00", at: ast_end_hut, doing: "원을 떠올리며 잔다"}
+npc_aw_ott:
+  home: ll_water_store
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: ll_water_store, doing: "물 통을 센다 — 구리 말을 들어 첫 손님에게 보인다"}
+    - {days: all, from: "12:00", to: "13:00", at: ll_water_store, doing: "정오 되질 — 구리 말 소리", fixed: true}
+    - {days: all, from: "13:00", to: "19:00", at: ll_water_store, doing: "물을 판다 — 한 통에 3못"}
+    - {days: "monthday:[1]", from: "21:00", to: "22:00", at: ll_halgrim_house, doing: "약 상자를 할그림의 집 문 앞에 놓고 노크하지 않는다"}
+    - {days: all, from: "19:00", to: "22:00", at: ll_water_store, doing: "장부에 쓰지 않는 한 못을 센다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_water_store, doing: "저장고 곁 방에서 잔다"}
+npc_aw_kora:
+  home: ll_inn
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: ll_inn, doing: "막대 눈금을 정리한다"}
+    - {days: all, from: "09:00", to: "12:00", at: ll_water_store, doing: "물 저장고에서 물을 사 온다"}
+    - {days: all, from: "12:00", to: "17:00", at: ll_inn_kitchen, doing: "죽 솥을 본다 — 소녀가 돌아오면 먼저 퍼 준다"}
+    - {days: all, from: "17:00", to: "23:00", at: ll_inn_kitchen, doing: "사냥꾼들에게 죽과 술을 판다 — 손님의 손바닥을 본다"}
+    - {days: all, from: "23:00", to: "05:00", at: ll_inn, doing: "손바닥 흉터로 손님을 기억하고 막대 끝을 꺾는다"}
+npc_aw_jena:
+  home: ll_inn
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_water_store, doing: "물 저장고에서 물을 나른다 — 신발이 한 짝씩 다르다"}
+    - {days: all, from: "09:00", to: "16:30", at: ll_inn_kitchen, doing: "코라의 식당 일을 돕는다"}
+    - {days: all, from: "16:30", to: "18:30", at: ll_edge, doing: "해 질 녘 잔상 지대 가장자리에서 여든 걸음을 걷는다 — 여든에서 돌아선다", outdoor: true}
+    - {days: all, from: "18:30", to: "21:00", at: ll_inn_kitchen, doing: "코라가 퍼 준 죽을 먹는다"}
+    - {days: all, from: "21:00", to: "06:00", at: ll_inn, doing: "여관 구석에서 잔다"}
+npc_aw_uma:
+  home: ll_straggler_camp
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_straggler_camp, doing: "낙오자 서른을 훈련한다"}
+    - {days: all, from: "09:00", to: "17:30", at: ll_barrier, doing: "경비 보조로 방벽 말뚝선에 선다", outdoor: true}
+    - {days: all, from: "17:30", to: "21:00", at: ll_straggler_camp, doing: "숙영지에서 식사한다 — 서른을 센다"}
+    - {days: all, from: "21:00", to: "24:00", at: ll_straggler_camp, doing: "전쟁 숙영지의 전언을 한 번 더 접는다"}
+    - {days: all, from: "24:00", to: "06:00", at: ll_straggler_camp, doing: "잔다 — 한쪽 귀로"}
+npc_ian_ash:
+  home: ll__hermitage
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: ll__hermitage, doing: "암자 앞 설교 — '나는 돌아왔다'"}
+    - {days: all, from: "12:00", to: "18:00", at: ll__hermitage, doing: "잔상 지대 가장자리 명상 — 일부러 사람들 눈에 띄게", outdoor: true}
+    - {days: all, from: "18:00", to: "22:00", at: ll__hermitage, doing: "추종자들에게 글자 교육"}
+    - {days: all, from: "22:00", to: "06:00", at: ll__hermitage, doing: "이름 없는 자들과 접선 — 징후 아이들의 위치를 받는다"}
+npc_kyle_sandeye:
+  home: ll_shacks
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: ll_hunters_yard, doing: "모래눈 패의 장비를 점검한다"}
+    - {days: all, from: "09:00", to: "17:00", at: ll_edge, doing: "잔상 지대 진입 — 잔상 주기표를 외운다", outdoor: true}
+    - {days: all, from: "17:00", to: "19:00", at: ll_tuk_stall, doing: "튀크에게 유물을 판다"}
+    - {days: all, from: "19:00", to: "22:00", at: ll_inn_kitchen, doing: "패원들과 죽과 술"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_shacks, doing: "다음 원정 지도를 만든다"}
+npc_tuk:
+  home: ll_tuk_stall
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: ll_tuk_stall, doing: "유물 감정"}
+    - {days: all, from: "12:00", to: "18:00", at: ll_market, doing: "장사"}
+    - {days: all, from: "18:00", to: "22:00", at: ll_tuk_stall, doing: "그롬마르행 상인을 접대한다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_tuk_stall, doing: "정보를 정리한다 — 장부 대신 끈 매듭으로"}
+npc_goz:
+  home: ll_guard_post
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: ll_barrier, doing: "방벽 말뚝을 점검하고 마물을 정찰한다", outdoor: true}
+    - {days: all, from: "12:00", to: "17:30", at: ll_edge, doing: "잔상 마물과 교전한다", outdoor: true}
+    - {days: all, from: "17:30", to: "22:00", at: ll_square, doing: "등불 앞에서 사냥꾼들을 받는다 — 해 지기 전에 들여보낸다"}
+    - {days: all, from: "22:00", to: "06:00", at: ll_lantern, doing: "등불 곁에서 선 채로 쉰다 (눕지 않는다)"}
+npc_echo_wall_girl:
+  home: ast_ninth_gate
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: ast_ninth_gate, doing: "9분마다 같은 장면을 되풀이한다"}
+    - {days: all, from: "12:00", to: "18:00", at: ast_ninth_gate, doing: "같음. 해가 높을수록 장면이 선명하다"}
+    - {days: all, from: "18:00", to: "22:00", at: ast_ninth_gate, doing: "같음. 해가 질 무렵 소리가 더 늦게 도착한다"}
+    - {days: all, from: "22:00", to: "06:00", at: ast_ninth_gate, doing: "잔상 지대가 가장 위험한 때 — 장면 주위가 일그러진다"}

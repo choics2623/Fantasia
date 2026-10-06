@@ -1,0 +1,105 @@
+# 어부 '조개' — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-13)
+id: npc_ar_fisher
+name: "어부 '조개'"
+aka: [등대 바위의 노인, 돌 하나씩]
+tier: B
+type: living
+race: 인간
+subrace: 인간(전 서기 노예)
+sex: 남
+age: 70
+region: 아르카스 탑섬
+home: 등대 바위 옛 봉화대 곁 움막
+job: 등대 바위 어부 — 이름 없는 아이들의 끝지기
+rank: 끝지기 (이름 없는 자들의 길꾼 계열)
+summary: 첫째 칼 '첫 침묵'이 쓰인 아이들의 수를 매년 서리월 첫 썰물에 돌 하나씩으로 쌓는 전 서기 노예. 한 해에 한 번 봉화대에 불을 피워 그롬마르 밀수선에 탈주자가 있다는 신호를 보낸다
+source: docs/world/people/arkas.md (npc_ar_fisher)
+life:
+  - {year: 242, age: 0, event: "루멘 강변 어촌에서 태어남"}
+  - {year: 258, age: 16, event: "잿빛 탑 서기 노예로 팔려 옴. 필사대에서 할라와 같은 줄에 앉음"}
+  - {year: 278, age: 36, event: "필사 손이 굳어 서기에서 면직됨. 등대 바위로 옮겨 어부가 됨"}
+  - {year: 280, age: 38, event: "첫 침묵의 돌 쌓기를 시작함 — 첫 돌은 이름 없는 아이 하나를 위한 것"}
+  - {year: 297, age: 55, event: "탈주 피험자 한 명이 밀물에 떠밀려 오자 봉화대에 불을 피움"}
+appearance:
+  - "얼굴이 바람에 갈라진 가죽 같다"
+  - "오른손 엄지가 서기 시절 필사로 휘었다"
+  - "허리에 돌멩이 주머니"
+smell: "소금과 생선, 젖은 돌"
+voice_sound: "낮고 느리다. 파도 소리 사이에 말을 끼운다"
+personality:
+  disposition: {용기: 40, 자비: 50, 정직: 20, 신앙: 10, 탐욕: -40, 충성: 60}
+  temperament: [고요, 완고, 다정, 기억]
+  habits:
+    - "말하다가 돌 하나를 주머니에서 꺼내 손바닥에 올린다"
+    - "썰물 시각을 말할 때 목소리가 작아진다"
+  values: "돌은 한 해에 하나씩이다. 하나가 아이 하나. 숫자를 잊지 않는 것이 끝지기의 일이다"
+  fears: ["돌무더기가 어느 폭풍에 무너지는 일", "불을 피우는 날 탑 경비가 건너오는 일"]
+  desires:
+    short: "서리월 첫 썰물에 돌 하나를 더 놓는 것"
+    long: "첫 침묵에 쓰인 아이들의 수가 더 늘지 않는 것"
+voice:
+  register:
+    to_superior: "탑 사람에게 낮은 존대"
+    to_equal: "어부에게 느린 평어"
+    to_inferior: "아이에게 천천히 하는 반말"
+    to_player_default: "그물을 든 채 조용히 바라보고 느린 평어"
+  tics: ["'썰물 때가 낫지.'", "돌 하나를 꺼내 본다"]
+  use: [썰물, 돌, 그물, 봉화대, 아이, 조수 동굴]
+  avoid: [끝지기, 불(먼저), 첫 침묵]
+  length: "짧고 느리다"
+  samples:
+    - {situation: 첫 만남, line: "물고기는 썰물 때가 낫고, 사람은 썰물 때가 위험해. 조수 동굴이 열리니까."}
+    - {situation: 호의, line: "돌은 한 해에 하나씩이야. 하나가 아이 하나. 이제 서른둘."}
+    - {situation: 거절, line: "봉화대? 낡았어. 불이 붙을 리가 없지."}
+    - {situation: 비밀 누설, line: "한 해에 한 번 불을 피워. 탑이 하선시키는 밤에. 그롬마르 사람들이 보고 배를 하나 보내 줄 때도 있고."}
+    - {situation: 슬픔, line: "할라와 나란히 필사대에 앉았어. 내 손은 굳었고 그녀는 아직 쓰고. 편지 한 줄을 그녀 쪽으로 매달 보내."}
+schedule:
+  아침: "썰물에 맞춰 그물을 던진다"
+  낮: "갯바위에서 조개를 줍는다"
+  저녁: "봉화대 곁 돌무더기에 앉는다"
+  밤: "불을 피우지 않고 바다를 본다"
+places: [등대 바위, 옛 봉화대, 돌무더기, 조수 무덤]
+knows:
+  - fact_ar_dead14_families_told
+  - fact_ar_glass_blades
+  - fact_p2ar_fisher_end_keeper
+  - fact_p2ar_fisher_beacon
+hides:
+  - fact: fact_p2ar_fisher_end_keeper
+    reveal_when: "신뢰 55 이상이고 돌무더기나 첫 침묵의 아이들을 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55}]
+    cover: "'돌무더기는 파도가 모은 거야'라고 한다"
+  - fact: fact_p2ar_fisher_beacon
+    reveal_when: "신뢰 65 이상이고 그롬마르 밀수선이나 봉화대 이야기를 플레이어가 구체적으로 물었을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'봉화대는 낡았어. 불이 붙을 리가 없지'라고 한다"
+relations:
+  - {to: npc_halla, type: 서기 시절 필사 동료, like: 40, trust: 45, visibility: 비밀, memo: "편지 한 줄을 건네는 사람", words: "같은 필사대에 앉았던 사람. 그녀의 편지가 이 바위 어부에게 돌아오는 유일한 길"}
+  - {to: npc_milo, type: 서기 후배, like: 30, trust: 35, visibility: 비밀, memo: "소식을 전하는 어부", words: "열넷 명단을 외운 후배. 가끔 썰물 때 건너와 이름을 한 번 더 말한다"}
+  - {to: npc_ar_ishi, type: 부두장, like: 10, trust: 20, visibility: 공개, memo: "물고기와 소식을 바꾼다", words: "봉화대 이야기를 모르는 척하는 부두장. 서로 아는 척하지 않는 것이 서로의 규칙"}
+toward_player: "그물을 손에 든 채 조용히 바라본다"
+persuade:
+  likes: ["서기 시절의 이야기 (+25)", "아이들의 이름 (+40)", "물고기와 소금 (+10)"]
+  hates: ["불 이야기를 묻는 것 (+0)"]
+roles:
+  teacher: "가능 — 야외생존(바다, 상한 60), 제작(그물, 55). 조건: 썰물 때 사흘 동행 / 수업료: 이름 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "서리월 첫 썰물에 돌 하나를 놓는다"
+    - "봉화대에 한 해에 한 번 불을 피운다"
+  drift:
+    - "그날 건져 올린 조개의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_trace_keepers, rank: rank_end_keeper, office: off_end_silence, since: 280, loyalty: 65, public: false, cell: null}
+truths:
+  - {id: T05, level: rumor}
+hard_rules:
+  - "끝지기라는 낱말을 먼저 입에 올리지 않는다"
+  - "봉화대에 불을 피운다고 먼저 말하지 않는다"
+  - "설교하지 않는다. 썰물과 돌과 그물로 말한다"
+on_death: "첫 침묵의 돌무더기 수가 잊히고 그롬마르 밀수선 신호가 끊긴다."
+story_seeds:
+  - "조수 동굴 썰물 두 시간에 피험자 몇 명을 데려갈 수 있는지는 조개가 정한다 — 봉화대의 불이 신호다."

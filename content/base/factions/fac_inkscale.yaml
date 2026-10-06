@@ -22,7 +22,7 @@ succession: "조합장은 인장 과반으로 뽑는다 — 사실상 몬달리�
 offices:
   - id: off_guild_head
     title: 조합장
-    holder: "unnamed:도나 벨렌 (나가, 230) — 인장 9개"
+    holder: npc_sr_dona
     reports_to: null
     powers: ["계약서 양식 확정", "인장 회의 주재", "'죽음으로 끝나지 않는 계약서' 양식 연구 지시"]
     chosen_by: "인장 과반 — 몬달리의 뜻"
@@ -36,21 +36,21 @@ offices:
     perks: ["노예선 소금 나루 하역권"]
   - id: off_field_broker
     title: 현장 중개인 — 회색여울 담당
-    holder: "unnamed:세보 리크 (나가, 88) — 고드릭에게서 농노 37명을 사들인 자 (HOUSES §5.10. CONTINUITY #5는 세베로를 중개인으로 확정 — 같은 일의 실무자로 둔다)"
+    holder: npc_sr_sebo
     reports_to: off_seal_broker_greyford
     powers: ["농노 인도 서류", "남작의 인장 받기"]
     chosen_by: "인장 중개인의 고용"
     perks: []
   - id: off_appraiser
     title: 계약 감정사 ('반쪽 혀')
-    holder: "unnamed:'반쪽 혀' 오스카 (인간 계약민, 51) — 계약서의 숫자를 읽는다"
+    holder: npc_sr_oscar
     reports_to: off_guild_head
     powers: ["상환 공식 계산", "계약서 감정"]
     chosen_by: "조합장의 고용 — 숫자를 읽는 인간은 쓸모 있다"
     perks: ["상환 공식의 함정을 숫자로 증명할 수 있다 — 그래서 위험하다"]
   - id: off_registry
     title: 계약 등록소 '푸른 장부관' (오랄 가) — 계약민 전환 등록
-    holder: "unnamed:시르 오랄 — 계약민 전환 등록 실무"
+    holder: npc_sr_oral
     reports_to: off_guild_head
     powers: ["계약 등록", "저당 계약 보관"]
     chosen_by: "오랄 가 세습"

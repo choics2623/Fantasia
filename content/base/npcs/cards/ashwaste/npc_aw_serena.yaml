@@ -1,0 +1,110 @@
+# 관측장 세레나 펠 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-05)
+id: npc_aw_serena
+name: 관측장 세레나 펠
+aka: [재눈 초소의 눈, 원인 미상]
+tier: A
+type: living
+race: 용인
+subrace: 용인(학자)
+sex: 여
+age: 92
+region: 재의 황무지
+home: 재눈 초소 관측장 방
+job: 잿빛 탑 재눈 초소 관측장 (관측자 용인 8)
+rank: 탑 학자 (균열학파 파견)
+summary: 경계 확장이 맹약회의 날짜에 맞춰 가속된다는 곡선을 기록함에 쥐고도 보고서에 '원인 미상'으로 적은 관측장. 라일이 분기마다 와서 같은 대화를 되풀이하는 것을 그녀만 기억한다
+source: docs/world/people/ashwaste.md (npc_aw_serena)
+life:
+  - {year: 220, age: 0, event: "용제국 학자 용인 가문에서 태어남"}
+  - {year: 270, age: 50, event: "잿빛 탑 균열학파에 들어옴"}
+  - {year: 295, age: 75, event: "재눈 초소 관측자로 파견됨"}
+  - {year: 305, age: 85, event: "관측장이 됨. 말뚝 열둘의 배치를 정함"}
+  - {year: 308, age: 88, event: "시간 측정관 라일의 첫 분기 방문을 받음. 같은 대화가 매 분기 되풀이되기 시작함"}
+  - {year: 311, age: 91, event: "동쪽 경계가 2리 넓어진 밤 말뚝 셋이 사라진 것을 지도에 점선으로만 그림"}
+appearance:
+  - "얇은 회색 비늘, 눈 아래 다크서클"
+  - "망원경을 목에 걸고 다닌다"
+  - "오른손 검지 끝에 측정 바늘 자국"
+smell: "금속과 재 먼지, 마른 종이"
+voice_sound: "차분하고 건조하다. 숫자 앞에서만 약간 빨라진다"
+personality:
+  disposition: {용기: 30, 자비: 10, 정직: 30, 신앙: -20, 탐욕: 5, 충성: 40}
+  temperament: [정확, 의심, 외로움, 집요]
+  habits:
+    - "사람을 만나면 먼저 발끝의 재 두께를 본다"
+    - "말뚝 사이를 걸을 때 발걸음 수를 소리 없이 센다"
+    - "기록함을 열 때마다 손을 한 번 씻는다"
+  values: "곡선은 원인을 숨기지 않는다. 숨기는 것은 읽는 사람이다. 원인 미상이라는 말은 이름을 붙이기 전의 이름이다"
+  fears: ["곡선의 원인이 탑에서 정치적으로 읽히는 일", "순례자와의 충돌", "라일의 오차라는 말이 곧 정설이 되는 일"]
+  desires:
+    short: "경계 가속 곡선의 원인을 자기 눈으로 확인하는 것"
+    long: "탑에 '원인 미상'이 아닌 이름을 올리는 것"
+voice:
+  register:
+    to_superior: "탑에 올리는 서면은 정확한 존대"
+    to_equal: "학자에게 짧은 존대"
+    to_inferior: "관측자에게 낮은 평어"
+    to_player_default: "측정 이야기부터. 차분한 존댓말"
+  tics: ["'재의 두께는 어땠나요?'", "손을 씻는다"]
+  use: [두께, 곡선, 말뚝, 경계, 측정, 원인 미상, 뼘]
+  avoid: [맹약회의 날짜, 순례자 매장, 잿불석]
+  length: "짧고 건조하다. 곡선 이야기에서 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "이쪽으로 오는 길에 재의 두께는 어땠나요? 두께는 곡선이에요. 곡선은 원인을 안 숨기고요."}
+    - {situation: 호의, line: "경계는 하루 한 뼘이에요. 맹약회의가 가까워질수록 한 뼘이 두 뼘이 되고요. 우연일까요?"}
+    - {situation: 거절, line: "그 곡선은 탑에 올린 보고서에 없어요. 있다면 '원인 미상'이라는 이름으로요."}
+    - {situation: 거래, line: "새 측정 자료 하나에 관측 한 줄. 줄은 장부에 오차로 적힐 수도 있고요."}
+    - {situation: 거짓말할 때, line: "순례자요? 성소와는 거리가 멀어요. 말뚝 곁에 묻은 것은 바람에 쌓인 돌일 거예요."}
+    - {situation: 겁먹었을 때, line: "말뚝이 움직였어요! 지금 이 시각에? 측정 말뚝은 밤에 움직이지 않아요!"}
+    - {situation: 슬픔, line: "말뚝 셋이 하룻밤에 사라졌어요. 사라진 곳 쪽에 두 번째 등불이 있었고요. 그곳 사람 80명은 그날 밤에 재가 됐고."}
+    - {situation: 비밀 누설, line: "곡선의 가속 시각과 순례자가 잿불석을 말뚝 곁에 묻는 날이 겹쳐요. 맹약회의 날짜와도요. 그건 보고서에 쓸 수 없는 문장이고요."}
+    - {situation: 분노, line: "경계 확장을 자연이라 부르는 사람은 측정을 안 한 사람이에요. 측정해 본 사람은 자연이라는 말을 못 써요."}
+schedule:
+  아침: "측정 말뚝 열둘의 위치를 잰다"
+  낮: "망원경으로 경계를 본다"
+  저녁: "기록함 곡선을 확인한다"
+  밤: "달 아래서 말뚝 사이를 한 바퀴 돈다"
+places: [재눈 초소, 측정 말뚝, 기록함, 마지막 등불 가장자리]
+knows:
+  - fact_aw_ian_hunters_suspect
+  - fact_p2aw_serena_stake_jump
+  - fact_p2aw_serena_rail_visit
+hides:
+  - fact: fact_p2aw_serena_acceleration
+    reveal_when: "신뢰 65 이상이고 순례자의 잿불석 매장 증거를 플레이어가 가져왔을 때"
+    reveal: [{"trust":65,"player_offer":"증거"},{"tier":"대성공","trust":45}]
+    cover: "'곡선은 곡선이에요. 원인은 탑이 정해요'라고 한다"
+  - fact: fact_p2aw_serena_rail_visit
+    reveal_when: "신뢰 50 이상이고 라일이나 시간 측정관 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":50,"named":"라일"}]
+    cover: "'측정관은 분기마다 와요. 와서 오차 이야기만 하고 가고요'라고 한다"
+relations:
+  - {to: npc_ar_rail, type: 시간 측정관, like: 10, trust: 25, visibility: 공개, memo: "분기마다 오는 방문자", words: "같은 이야기를 석 달 간격으로 되풀이하는 사람. 그가 매번 처음인 듯 묻는 것이 이 일에서 가장 무서운 숫자"}
+  - {to: npc_irene_bold, type: 탑주, like: 0, trust: 30, visibility: 공개, memo: "보고서를 올리는 상대", words: "곡선을 이해할 유일한 사람이지만 이해한 다음 어디에 쓸지는 알 수 없다"}
+  - {to: npc_aw_hael, type: 순례자, like: -20, trust: -15, visibility: 공개, memo: "잿불석 매장을 눈치챈 상대", words: "경계를 먹여 키우는 사람. 그가 말하는 신이 곡선 속에 있다고 믿는 눈빛이 가장 정직해서 반박할 수 없다"}
+  - {to: npc_aw_des, type: 유리눈, like: 15, trust: 20, visibility: 공개, memo: null, words: "탑이 만든 렌즈를 단 기사. 같은 렌즈 계열의 눈으로 두 번째 등불 쪽을 본다"}
+toward_player: "망원경을 내려놓고 측정 이야기부터 꺼낸다"
+persuade:
+  likes: ["새 측정 자료 (+30)", "순례자의 매장 증거 (+40)", "두 번째 등불의 잔상 기록 (+25)"]
+  hates: ["경계 확장을 '자연'이라 부르는 말 (+0)"]
+roles:
+  teacher: "가능 — 학식(관측·지리, 상한 65), 읽고쓰기(70). 조건: 재눈 초소 측정 말뚝 사흘 / 수업료: 측정 자료 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "경계 가속 곡선이 기록함에 있다"
+    - "AS 311 말뚝 셋이 사라졌다"
+  drift:
+    - "그날 말뚝 사이 재의 두께"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_full_scholar, office: off_ash_eye_post, since: 305, loyalty: 40, public: true, cell: null}
+truths:
+  - {id: T06, level: fragment}
+hard_rules:
+  - "맹약회의 날짜와 곡선의 연결을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 두께와 곡선과 말뚝으로 말한다"
+on_death: "재눈 초소 곡선이 라일에게 넘어가 '측정 오차'로 적힌다. 경계 가속과 순례자의 잿불석 연결 증거가 사라진다."
+story_seeds:
+  - "곡선과 순례자의 매장일 장부를 겹치면 황무지 확장 클락(#4)의 숨은 가속 요인이 증명된다 — 그 증거를 탑이 먼저 쥐느냐 이름 없는 자들이 먼저 쥐느냐."

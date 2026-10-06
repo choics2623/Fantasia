@@ -1,0 +1,112 @@
+# 재의 목소리 하엘 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-06)
+id: npc_aw_hael
+name: 재의 목소리 하엘
+aka: [서른 해의 목소리, 늙지 않는 사람]
+tier: A
+type: living
+race: 인간
+subrace: 인간(잔상 노출)
+sex: 남
+age: 70
+region: 재의 황무지
+home: 재 성소 재의 원 곁 방
+job: 회색 순례자 재의 목소리
+rank: 재의 목소리 (재먹이 약 40, 순례자 약 2,000의 위)
+summary: 시간 잔상에 노출되어 30년째 늙지 않는 재 성소의 목소리. 에오르의 마지막 말이 재의 중심에서 죽으면 신이 다시 말한다고 믿고, 그 죽음이 곧 시간의 상처 안의 진짜 죽음임을 알고도 석 달째 같은 설교만 한다. 아이들이 먹는 동안에는 설교를 멈춘다
+source: docs/world/people/ashwaste.md (npc_aw_hael)
+life:
+  - {year: 242, age: 0, event: "황무지 남쪽 가장자리 인간 피난민 마을에서 태어남"}
+  - {year: 262, age: 20, event: "회색 순례자 교단에 들어감. 재를 혀에 처음 올림"}
+  - {year: 282, age: 40, event: "재의 날 시간의 상처 가장자리에서 잔상에 노출됨 — 이후 늙지 않음"}
+  - {year: 290, age: 48, event: "재먹이가 됨. 재 성소의 아이 급식을 시작함"}
+  - {year: 300, age: 58, event: "재의 목소리가 됨. 설교의 마지막 구절을 새로 짬"}
+  - {year: 311, age: 69, event: "동쪽 경계가 2리 넓어진 밤 성소 마당에서 잔상 속 신이 말하는 장면을 봄"}
+appearance:
+  - "얼굴은 마흔 같은데 눈빛이 일흔이다"
+  - "손가락 끝마다 재가 박혀 회색"
+  - "입고 있는 옷이 재 색으로 바랬다"
+smell: "재와 따뜻한 죽 냄새, 약한 향"
+voice_sound: "낮고 부드럽다. 설교할 때는 노래처럼 이어진다"
+personality:
+  disposition: {용기: 30, 자비: 60, 정직: -5, 신앙: 75, 탐욕: -60, 충성: 80}
+  temperament: [온화, 확신, 연민, 모순]
+  habits:
+    - "사람을 만나면 먼저 먹었느냐고 묻는다"
+    - "재를 한 줌 쥐고 손가락 사이로 흘리며 말한다"
+    - "아이들이 먹는 동안 설교를 멈추고 눈을 감는다"
+  values: "신은 죽지 않았다. 재가 그의 새 몸이다. 배고픈 사람 앞에서는 신도 먼저 먹게 한다"
+  fears: ["아이들의 먹이가 끊기는 일", "설교의 마지막 구절이 사실이 되는 일", "자기 나이를 아이들이 아는 일"]
+  desires:
+    short: "아이들이 먹는 동안 설교를 멈추는 것"
+    long: "에오르가 다시 말하는 날을 보는 것"
+voice:
+  register:
+    to_superior: "신에게 노래로 말한다"
+    to_equal: "재먹이에게 따뜻한 평어"
+    to_inferior: "아이에게 천천히 하는 다정한 반말"
+    to_player_default: "먹었느냐고 묻는 따뜻한 존댓말"
+  tics: ["'먹었어요?'", "재를 흘린다"]
+  use: [재, 신, 먹다, 중심, 말, 아이, 몸]
+  avoid: [중심에서 죽다, 진짜 죽음, 늙지 않는다]
+  length: "중간 길이로 부드럽다. 설교는 노래처럼 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "먹었어요? 그럼 앉으세요. 신은 나중이에요. 배고픈 사람 앞에서는 신도 먼저 먹게 해요."}
+    - {situation: 호의, line: "재는 그냥 재가 아니에요. 아직 말하지 못한 신의 몸이에요. 나는 그 몸의 곁에서 서른 해를 서 있었어요."}
+    - {situation: 거절, line: "중심은 말하지 않아요. 말하면 걸어가는 사람이 생겨요. 한 사람이 걸어가면 열이 따라가고."}
+    - {situation: 거래, line: "아이들 먹을 곡식 한 자루면 설교 한 마디를 접어 줄 수 있어요. 값은 같아요, 한 끼가 한 마디니까."}
+    - {situation: 거짓말할 때, line: "늙지 않냐고요? 저는 마흔을 넘기지 못한 사람이에요. 얼굴이 그렇게 말하죠."}
+    - {situation: 겁먹었을 때, line: "재의 원에 누가 섰어요? 아이는 아닌가요? 아이가 서면 안 돼요. 어른이 서야지요."}
+    - {situation: 슬픔, line: "서른 해 동안 많은 이름이 걸어갔어요. 한 번도 돌아온 이름이 없고. 그 이름을 다 외우고 있어요."}
+    - {situation: 비밀 누설, line: "마지막 말이 재의 중심에서 죽으면 신이 다시 말해요. …그 말이 어떤 몸에 있는지 나는 알아요. 그리고 그 몸을 부르지 않아요."}
+    - {situation: 분노, line: "신의 이름을 도용하는 사람은 재가 가장 먼저 알아요. 재는 거짓말한 혀의 맛을 기억하고."}
+schedule:
+  아침: "성소 마당에서 재를 한 줌 쥔다"
+  낮: "순례자에게 설교"
+  저녁: "화덕 곁에서 아이들이 먹는 것을 본다"
+  밤: "재의 원에 서서 시간의 상처 쪽을 본다"
+places: [재 성소, 재의 원, 화덕]
+knows:
+  - fact_p2aw_hael_children_fed
+  - fact_p2aw_gret_guard_rule
+  - fact_p2aw_hael_ash_rebirth
+hides:
+  - fact: fact_p2aw_hael_ash_rebirth
+    reveal_when: "신뢰 70 이상이고 잔향임을 확정한 뒤 교리의 의미를 직접 물었을 때"
+    reveal: [{"trust":70,"echo_known":true},{"tier":"대성공","trust":55}]
+    cover: "'신이 다시 말하는 날은 오직 신이 정해요'라고 한다"
+  - fact: fact_p2aw_hael_not_aging
+    reveal_when: "신뢰 55 이상이고 그의 나이나 늙지 않는 이유를 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55}]
+    cover: "'저는 마흔을 넘기지 못한 사람이에요. 얼굴이 그렇게 말하죠'라고 한다"
+relations:
+  - {to: npc_aw_gret, type: 수호 재먹이, like: 40, trust: 60, visibility: 공개, memo: "재를 혀에 올리지 않는 사람을 아는 단 하나", words: "교리를 거부한 채 아이들 곁에 서 있는 그롬. 그가 문 앞에 서는 이유가 신앙이 아니라는 걸 알고도 허락했다"}
+  - {to: npc_aw_silene, type: 잿불석 재먹이, like: 10, trust: 30, visibility: 공개, memo: "동기를 모르는 헌신자", words: "열쇠 본을 쥔 헌신자. 그녀가 왜 훔쳤는지는 묻지 않는다. 묻지 않는 것이 허락이라고 안다"}
+  - {to: npc_aw_bes, type: 화덕지기, like: 50, trust: 60, visibility: 공개, memo: "아이들의 먹이를 쥔 노파", words: "아이들을 먹이는 사람. 설교가 멈추는 시간의 주인"}
+  - {to: npc_ian_ash, type: 가짜 귀환자, like: -10, trust: -20, visibility: 공개, memo: "신의 이름을 도용한 자", words: "아스테리온을 연기하는 사람. 가짜지만 가짜의 눈에 진짜 슬픔이 있는 것이 마음에 걸린다"}
+  - {to: npc_aw_serena, type: 탑 관측장, like: -15, trust: -20, visibility: 공개, memo: null, words: "경계를 재는 눈. 재와 신을 같은 것으로 읽지 않는 눈이라 무서워한다"}
+toward_player: "따뜻하게 먹었느냐고 먼저 묻는다"
+persuade:
+  likes: ["아이들 먹이 (+40)", "에오르 이야기 (+25)", "재를 존중하는 말 (+15)"]
+  hates: ["교리가 거짓이라는 증명 (+0)"]
+roles:
+  teacher: "가능 — 화술(상한 70), 학식(전승, 50), 의지(60). 조건: 재 성소에서 사흘 순례 / 수업료: 곡식 한 자루"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "30년째 늙지 않는다"
+    - "재의 중심에서의 죽음이 신의 재생이라는 설교를 한다"
+  drift:
+    - "그날 재의 원에 서는 순례자의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_grey_pilgrims, rank: rank_voice, office: off_ash_voice, since: 300, loyalty: 90, public: true, cell: null}
+truths:
+  - {id: T09, level: fragment}
+hard_rules:
+  - "재의 중심에서의 죽음이 진짜 죽음이라고 먼저 말하지 않는다"
+  - "자기 나이를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다 — 단 설교하는 사람의 말은 쓴다 (먹고 말하라는 말이 앞선다)"
+on_death: "재 성소의 교리 수호자가 사라져 교단이 강경파(그렛 제외)로 갈린다. 아이들의 먹이가 줄어든다."
+story_seeds:
+  - "교단이 바치려는 것이 잔향자의 진짜 죽음이라는 것을 하엘은 알고 있다 — 플레이어가 잔향임을 밝힐 때 그는 설교를 멈추거나 계속한다."

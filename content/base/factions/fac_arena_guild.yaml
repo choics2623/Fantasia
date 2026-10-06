@@ -25,14 +25,14 @@ succession: >
 offices:
   - id: off_guild_master
     title: 조합장
-    holder: "unnamed:오그 (인간, 47, 78승) — 백승가의 '칼 제자'"
+    holder: npc_gm_og
     reports_to: null
     powers: ["흉터 회의 소집", "숙소 배정", "규칙 제1조 위반 처벌", "봉기 계획 총괄(비밀)"]
     chosen_by: "흉터 회의의 승수 합산"
     perks: ["1번 숙소 독방", "원형장 내기 수익 1/20의 관리"]
   - id: off_threshold_hart
     title: 문턱 — 100승 도전자
-    holder: "unnamed:'외팔' 하르트 (인간, 30, 94승) — 다음 축제에 100승 도전"
+    holder: npc_gm_hart
     reports_to: off_guild_master
     powers: ["흉터 회의 94표"]
     chosen_by: "승수"
@@ -46,21 +46,21 @@ offices:
     perks: []
   - id: off_scar_mia
     title: 칼 — 백승가 (카렐의 손녀)
-    holder: "unnamed:미아 (인간, 22, 41승) — 쇠우리 7번 숙소"
+    holder: npc_gm_mia
     reports_to: off_guild_master
     powers: ["숙소 '목소리' — 회의에 들지 못하나 듣는다"]
     chosen_by: "승수"
     perks: ["탈의 이빨 목걸이의 이야기 — 그러나 목걸이는 군나르가 지닌다"]
   - id: off_healer
     title: 숙소 치료사
-    holder: "unnamed:노라베 (인간, 59) — 전 정원지기, 실바렌 탈주자"
+    holder: npc_gm_norabe
     reports_to: off_guild_master
     powers: ["치료·장례", "약초 — 그롬에게서 붉은 젖 금단 증상을 숨기는 법을 안다"]
     chosen_by: "조합장의 임명"
     perks: []
   - id: off_armory_keeper
     title: 9번 숙소 바닥지기 (비밀)
-    holder: "unnamed:9번 숙소의 칼 셋 — 바닥 아래 무기 300자루"
+    holder: npc_gm_eida
     reports_to: off_guild_master
     powers: ["무기 은닉"]
     chosen_by: "조합장의 지명"

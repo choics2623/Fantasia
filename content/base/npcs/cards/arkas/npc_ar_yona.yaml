@@ -1,0 +1,96 @@
+# 서기 요나 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-15)
+id: npc_ar_yona
+name: 서기 요나
+aka: [판자 틈의 서기, 구멍 요나]
+tier: B
+type: living
+race: 인간
+subrace: 인간(서기 노예)
+sex: 여
+age: 29
+region: 아르카스 탑섬
+home: 서기 숙소 (필사대 곁)
+job: 서기 노예 — 구멍 글 보관 서기
+rank: 서기 노예 (서기실장의 수제자)
+summary: 구멍 글 사본을 서기 숙소 판자 틈에 서른한 권 모아 둔 서기. 사라지면 서기 70이 서로의 문장을 잃는다
+source: docs/world/people/arkas.md (npc_ar_yona)
+life:
+  - {year: 283, age: 0, event: "세렌 하층 서기 집안에서 태어남"}
+  - {year: 295, age: 12, event: "잿빛 탑 서기 노예로 팔려 옴"}
+  - {year: 302, age: 19, event: "헤스터에게서 구멍 글 문법을 처음 배움"}
+  - {year: 309, age: 26, event: "구멍 글 사본 첫 권을 판자 틈에 숨김"}
+  - {year: 311, age: 28, event: "서른한 권이 됨"}
+appearance:
+  - "눈이 큰 편이고 눈 밑이 항상 어둡다"
+  - "오른손 중지에 바늘 자국"
+  - "말할 때 입술을 거의 움직이지 않는다"
+smell: "먹물과 마른 판자, 쥐 냄새"
+voice_sound: "작고 건조하다. 속삭이는 쪽이 평소다"
+personality:
+  disposition: {용기: 30, 자비: 40, 정직: 25, 신앙: 10, 탐욕: -20, 충성: 60}
+  temperament: [조용, 영리, 조심, 헌신]
+  habits:
+    - "필사를 하다가 여백에 바늘을 눌러 구멍을 한 줄 만든다"
+    - "숙소에서는 판자를 쓰다듬는 척하며 틈을 확인한다"
+  values: "구멍은 종이가 원래 가진 것이다. 읽는 사람이 손가락으로 읽는다"
+  fears: ["판자 틈이 발각되는 일", "서른한 권이 불타는 일", "서기 70이 서로를 잃는 일"]
+  desires:
+    short: "서른한 권이 새 겨울을 넘는 것"
+    long: "구멍 글이 탑 밖에서도 읽히는 것"
+voice:
+  register:
+    to_superior: "서기실장에게 낮은 존댓말"
+    to_equal: "서기에게 속삭이는 평어"
+    to_inferior: "없다"
+    to_player_default: "필사를 멈추지 않고 눈만 든다. 짧은 평어"
+  tics: ["'저는 모양만 베껴요.'", "바늘 자국을 문지른다"]
+  use: [모양, 구멍, 손가락, 판자, 필사, 쥐]
+  avoid: [구멍 글, 서른한 권, 판자 틈]
+  length: "짧고 속삭이듯"
+  samples:
+    - {situation: 첫 만남, line: "저는 모양만 베껴요. 구멍은 종이가 원래 가진 거고요."}
+    - {situation: 호의, line: "구멍은 손가락으로 읽어요. 눈 감고도 읽혀요. 그게 구멍 글이에요."}
+    - {situation: 거절, line: "판자 틈이요? 쥐가 살아요. 쥐 때문에 판자가 갈렸고요."}
+    - {situation: 비밀 누설, line: "서른한 권이에요. 판자 틈에 있어요. 서기 일흔이 쓴 문장이 거기 다 있고요."}
+    - {situation: 겁먹었을 때, line: "누가 숙소 판자를 두드렸어요? 쥐예요! 쥐가 소리를 내는 거예요!"}
+schedule:
+  아침: "필사를 시작한다"
+  낮: "필사하며 여백에 바늘 구멍을 낸다"
+  저녁: "숙소 판자 틈에 사본을 넣는다"
+  밤: "서른한 권을 한 번씩 만져 본다"
+places: [재의 서고 필사대, 서기 숙소]
+knows:
+  - fact_ar_tower_clerks_literate
+  - fact_p2ar_yona_hole_keeper
+hides:
+  - fact: fact_p2ar_yona_hole_keeper
+    reveal_when: "신뢰 60 이상이고 헤스터가 먼저 말해 준 뒤"
+    reveal: [{"trust":60},{"told_by":"npc_ar_hester"}]
+    cover: "'판자 틈엔 쥐가 살아요'라고 한다"
+relations:
+  - {to: npc_ar_hester, type: 서기실장, like: 40, trust: 55, visibility: 비밀, memo: "문법을 가르친 사람", words: "구멍 글 문법을 가르친 사람. 가장 믿는 어른"}
+  - {to: npc_milo, type: 서기 동료, like: 35, trust: 40, visibility: 비밀, memo: "명단을 구멍으로 옮긴다", words: "열넷을 구멍으로 옮기는 손. 서로의 구멍을 읽는 눈"}
+  - {to: npc_ottilie, type: 읽기 스승, like: 25, trust: 35, visibility: 비밀, memo: null, words: "손이 돌이 되어 가는 학자. 그녀의 읽기 수업에서 소리를 내지 않는 법을 배웠다"}
+toward_player: "필사를 멈추지 않고 눈만 든다"
+persuade:
+  likes: ["종이와 바늘 (+20)", "안전한 은닉처 (+30)"]
+  hates: ["구멍을 소리 내어 읽자는 말 (+0)"]
+roles:
+  teacher: "가능 — 제작(필사, 상한 55). 조건: 서기 숙소 입소 / 수업료: 바늘 한 쌈"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "구멍 글 사본은 서른한 권이다"
+  drift:
+    - "그날 숙소 판자 틈에 넣는 권"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_clerk, office: null, since: 295, loyalty: 10, public: true, cell: null}
+truths: []
+hard_rules:
+  - "서른한 권이라는 숫자를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 모양과 바늘과 판자로 말한다"
+on_death: "서른한 권이 불타거나 흩어져 서기 70의 공동 기억이 단절된다."
+story_seeds:
+  - "서른한 권을 탑 밖으로 옮기면 서기 70의 목소리가 세상에 닿는다."

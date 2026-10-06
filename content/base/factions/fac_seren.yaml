@@ -43,7 +43,7 @@ offices:
     perks: ["계약민 4,000"]
   - id: off_seat_02_kassalon
     title: 제2의석 — 카셀론 (해운·노예 운송)
-    holder: "unnamed:루치오 카셀론 (480)"
+    holder: npc_sr_lucio
     reports_to: off_chair
     powers: ["비늘 표 1 + 의석 표 1", "노예선 운항"]
     chosen_by: "의석 세습·매매"
@@ -64,7 +64,7 @@ offices:
     perks: ["계약민 3,200 — 평균 상환 31년, 세렌 최악"]
   - id: off_seat_05_ophil
     title: 제5의석 — 오필 (정보·필경·지도)
-    holder: "unnamed:오필 시라 (450, 잿빛 탑 원로 겸임)"
+    holder: npc_ar_opil
     reports_to: off_chair
     powers: ["비늘 표 1 + 의석 표 1", "계약민 서기에게 숫자 이상의 글을 가르침(서기 효율)"]
     chosen_by: "의석 세습·매매"
@@ -78,28 +78,28 @@ offices:
     perks: ["계약민 경비 500에게 칼날 한 뼘 이상의 무기를 몰래 지급(법 위반)"]
   - id: off_seat_07_sirenna
     title: 제7의석 — 시렌나 (깊은 바다 사원·제사)
-    holder: "unnamed:대사제 시렌나 우델 (약 300, 최고령 왕관 나가)"
+    holder: npc_sr_sirenna
     reports_to: off_chair
     powers: ["비늘 표 1 + 의석 표 1", "깊은 바다 사원 지하 — 도둑맞은 알 '보관료'"]
     chosen_by: "의석 세습"
     perks: ["계약민 0"]
   - id: off_seat_08_mardi
     title: 제8의석 — 마르디 (향신료·약재)
-    holder: "unnamed:마르디 카예 (290)"
+    holder: npc_sr_mardi
     reports_to: off_chair
     powers: ["비늘 표 1 + 의석 표 1", "늪 마녀 회합에서 약초를 사들이는 유일한 상가"]
     chosen_by: "의석 세습·매매"
     perks: ["계약민 1,100"]
   - id: off_seat_09_zolak
     title: 제9의석 — 졸라크 (금고·장부 보관·첩보)
-    holder: "unnamed:졸라크 니에바 (410)"
+    holder: npc_sr_zolak
     reports_to: off_chair
     powers: ["비늘 표 1 + 의석 표 1", "양쪽 장부 보관 — 사르코스 징후자 판매 장부 사본, 쥐들의 왕관 실제 장부"]
     chosen_by: "의석 세습·매매"
     perks: ["계약민 200"]
   - id: off_seat_10_pescar
     title: 제10의석 — 페스카르 (어업·조선)
-    holder: "unnamed:페스카르 오스윈 (360)"
+    holder: npc_sr_pescar
     reports_to: off_chair
     powers: ["의석 표 1"]
     chosen_by: "의석 세습·매매"
@@ -113,7 +113,7 @@ offices:
     perks: ["계약민 1,500"]
   - id: off_seat_12_norval
     title: 제12의석 — 노르발 (외교·통역·맹약회의 대표)
-    holder: "unnamed:노르발 세스 (540)"
+    holder: npc_sr_norval
     reports_to: off_chair
     powers: ["의석 표 1", "맹약회의 313에서 세렌의 표 관리 — '계약민 시민권' 의제와 맞바꿀 준비"]
     chosen_by: "의석 세습"
@@ -168,6 +168,62 @@ offices:
     chosen_by: "의장 지명"
     perks: []
 
+  - id: off_arkas_harbormaster
+    title: "rank_lower_naga"
+    holder: npc_ar_ishi
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_tersa_agent
+    title: "rank_lower_naga"
+    holder: npc_gm_seira
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_iron_market_naga
+    title: "rank_house"
+    holder: npc_gm_kes
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_blind_lighthouse
+    title: "rank_contractee"
+    holder: npc_sr_olaf
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_quarry_overseer
+    title: "rank_house"
+    holder: npc_sr_sepa
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_auctioneer
+    title: "rank_house"
+    holder: npc_sr_run
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_harbormaster_estuary
+    title: "rank_house"
+    holder: npc_sr_dominic
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_seat_holder, title: "의석주", duties: "표결, 자기 상가 장부", privileges: "표 1~2, 의석 매매권", open_to_player: false}
   - {id: rank_house, title: "상가(商家) 가족·장부지기·선장", duties: "상가 사업, 평생 장부 기록", privileges: "상가 보호", open_to_player: false}

@@ -100,7 +100,7 @@ offices:
     perks: []
   - id: off_harbor_foreman
     title: 세렌 하역꾼 우두머리
-    holder: "unnamed:스크레 — 계약민과 몰래 거래하는 하역 장부"
+    holder: npc_sr_skre
     reports_to: off_guild_board
     powers: ["세렌 하역꾼 약 180,000의 대표"]
     chosen_by: "하역꾼들의 목록 서열"
@@ -114,7 +114,7 @@ offices:
     perks: []
   - id: off_swamp_gur
     title: 늪 크릭 우두머리 (일곱 노파의 심부름꾼 무리)
-    holder: "unnamed:구르 (17)"
+    holder: npc_mv_gur
     reports_to: null
     powers: ["모르바 정착지 경계 파수 — 늪의 목록 꼭대기는 일곱 노파"]
     chosen_by: "늪에서 가장 강한 자를 따른다 — 지금은 마녀"
@@ -141,6 +141,30 @@ offices:
     chosen_by: "굴의 구전"
     perks: ["'재 속에서 일어난 인간'에 대한 무서운 옛이야기"]
 
+  - id: off_khan_ledger
+    title: "rank_club"
+    holder: npc_hk_ssok
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_salt_lake_overseer
+    title: "rank_whip"
+    holder: npc_hk_jax
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_betting_ledger
+    title: "rank_club"
+    holder: npc_gm_tick
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_whip, title: "채찍을 쥔 자 (감독관)", duties: "노동 할당, 채찍, 배급 분배, 밀고", privileges: "연봉 4~8 비늘, 세습", open_to_player: false}
   - {id: rank_club, title: "몽둥이", duties: "감독 보조", privileges: "굴 안에서 우대", open_to_player: false}

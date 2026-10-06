@@ -71,7 +71,7 @@ offices:
     perks: []
   - id: off_ledger_owner
     title: 진짜 장부 — 세렌 졸라크 상가 (조직 밖의 주인)
-    holder: "unnamed:졸라크 니에바 (나가, 410) — 세렌 9의석"
+    holder: npc_sr_zolak
     reports_to: null
     powers: ["쥐들의 왕관 실제 장부 보관", "큰일의 지시(매듭 편지)"]
     chosen_by: "—"

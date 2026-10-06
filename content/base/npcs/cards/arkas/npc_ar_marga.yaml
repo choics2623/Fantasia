@@ -1,0 +1,94 @@
+# 급식 노파 마르가 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-14)
+id: npc_ar_marga
+name: 급식 노파 마르가
+aka: [국자 마르가, 남은 그릇]
+tier: B
+type: living
+race: 인간
+subrace: 인간(잡역)
+sex: 여
+age: 58
+region: 아르카스 탑섬
+home: 피험자 식당 뒤 부엌 방
+job: 피험자 식당 급식 노예
+rank: 잡역 노예
+summary: 남은 그릇의 수로 사라진 피험자를 세는 급식 노파. 마일로의 명단 열넷과 그릇 장부 열넷이 정확히 같고, 몰래 한 그릇을 더 담아 네레에게 준다
+source: docs/world/people/arkas.md (npc_ar_marga)
+life:
+  - {year: 254, age: 0, event: "세렌 하층 어촌에서 태어남"}
+  - {year: 285, age: 31, event: "빚 때문에 아르카스 잡역으로 팔려 옴"}
+  - {year: 296, age: 42, event: "피험자 식당 급식 노예가 됨"}
+  - {year: 305, age: 51, event: "남은 그릇의 수로 사라진 피험자를 세기 시작함"}
+appearance:
+  - "앞치마에 죽 얼룩"
+  - "손바닥이 솥 열기로 굳었다"
+  - "눈이 작고 상냥하다"
+smell: "귀리죽과 생선 기름, 젖은 앞치마"
+voice_sound: "낮고 따뜻하다. 번호를 부를 때만 약간 높아진다"
+personality:
+  disposition: {용기: 15, 자비: 60, 정직: 30, 신앙: 20, 탐욕: -40, 충성: 45}
+  temperament: [다정, 눈치, 조용, 속정]
+  habits:
+    - "배식 때 번호를 부르며 국자를 사람 눈 높이로 들어 올린다"
+    - "하루가 끝나면 남은 그릇을 한 줄로 세워 센다"
+  values: "먼저 먹고 말은 나중에. 그릇이 하나 남는 날은 식당이 조용하다"
+  fears: ["그릇 장부를 서기가 보는 일", "네레에게 가는 한 그릇이 들키는 일"]
+  desires:
+    short: "굶주림월 배급 절반에도 한 사람을 더 먹이는 것"
+    long: "그릇 장부의 숫자가 늘지 않는 것"
+voice:
+  register:
+    to_superior: "탑 사람에게 낮은 존대"
+    to_equal: "잡역에게 다정한 반말"
+    to_inferior: "피험자에게 다정하지만 단호한 반말. 번호로 부른다"
+    to_player_default: "국자를 쥔 채 번호부터 묻는다. 반말"
+  tics: ["'번호? 먼저 먹고 말해.'", "국자를 든다"]
+  use: [그릇, 국자, 번호, 귀리죽, 먹고]
+  avoid: [그릇 장부, 사라진, 열넷]
+  length: "짧고 따뜻하다"
+  samples:
+    - {situation: 첫 만남, line: "번호? 먼저 먹고 말해. 번호는 배부른 다음에 대도 늦지 않아."}
+    - {situation: 호의, line: "그릇이 하나 남는 날이 있어. 그날은 이 식당이 조용해."}
+    - {situation: 거절, line: "그릇 장부는 식당 장부일 뿐이야. 사람 장부는 서기가 쓰고."}
+    - {situation: 비밀 누설, line: "열네 개. 남은 그릇이 열네 번 있었어. 마일로 서기가 외운 숫자랑 똑같아."}
+    - {situation: 겁먹었을 때, line: "누가 부엌 방에 들어갔어? 그릇 줄에 손대지 마!"}
+schedule:
+  아침: "귀리죽을 끓인다"
+  낮: "식당에서 배식"
+  저녁: "남은 그릇의 수를 센다"
+  밤: "그릇 장부에 숫자를 쓴다"
+places: [피험자 식당, 부엌 방]
+knows:
+  - fact_ar_dead14_families_told
+  - fact_p2ar_marga_bowls
+hides:
+  - fact: fact_p2ar_marga_bowls
+    reveal_when: "신뢰 50 이상이고 마일로나 14명의 명단 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":50,"named":"마일로"}]
+    cover: "'그릇은 그릇이야. 남으면 설거지하고'라고 한다"
+relations:
+  - {to: npc_milo, type: 서기, like: 30, trust: 40, visibility: 비밀, memo: "명단과 그릇의 일치", words: "열넷을 외운 서기. 그릇으로 센 열넷과 같은 숫자를 서로 한 번 확인했다"}
+  - {to: npc_ar_nere, type: 열병의 소녀, like: 40, trust: 35, visibility: 비밀, memo: "한 그릇 더", words: "열 때문에 입맛이 없는 아이. 죽에 소금을 한 줌 더 넣는다"}
+  - {to: npc_ar_brick, type: 간수, like: 20, trust: 30, visibility: 공개, memo: "노인의 빵을 같이 챙긴다", words: "빵 한 조각을 더 넣는 용인. 같은 자루에서 빵 한 조각을 덜어 준다"}
+toward_player: "국자를 쥔 채 번호부터 묻는다"
+persuade:
+  likes: ["식량 (+25)", "피험자를 아끼는 일 (+30)"]
+  hates: ["그릇 장부를 보자는 말 (+0)"]
+roles:
+  teacher: "가능 — 제작(요리, 상한 50). 조건: 식당 일 하루 / 수업료: 소금 한 줌"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "남은 그릇의 수와 명단 열넷이 같다"
+  drift:
+    - "그날 남은 그릇의 수"
+  deja_vu: none
+affiliations: []
+truths: []
+hard_rules:
+  - "그릇 장부 이야기를 먼저 꺼내지 않는다"
+  - "설교하지 않는다. 그릇과 국자와 죽으로 말한다"
+on_death: "그릇 장부의 열넷 일치가 사라지고 네레에게 가던 한 그릇이 끊긴다."
+story_seeds:
+  - "그릇 장부와 마일로의 명단은 같은 열넷이다 — 둘을 합치면 가족들에게 '루멘 순례'가 거짓이라는 증거가 된다."

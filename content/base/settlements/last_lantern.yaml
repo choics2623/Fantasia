@@ -1,0 +1,56 @@
+# 마지막 등불 — 재 평원 동쪽 가장자리 바위 언덕의 판잣집 마을 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §11(11.7 등불 규칙·11.8 문화·11.9 정착지), HOUSES §5.12·§5.13, fac_last_lantern, fac_grey_pilgrims, docs/world/people/ashwaste.md, facts/phase2_ashwaste.yaml.
+# grid: 마을 평면 (m), 원점 = 북서쪽 모서리. x 동쪽(황무지 쪽), y 남쪽. 바위 언덕 위 판잣집 600명. 걷는 속도 80m/분.
+# 법은 하나 — 등불 규칙: 해 지기 전에 돌아온다 / 붉은 말뚝을 넘지 않는다 / 남의 유물을 빼앗지 않는다 / 등불을 끄지 않는다 / 종족을 묻지 않는다. 통금은 없고 해 지는 시각이 통금이다 (해 진 뒤 밖에 있는 자는 구조하지 않는다).
+# 같은 노드에서 걷는 거리는 outer의 hours 차이 + 30분이다. 재눈 초소·재 성소·두 번째 등불·재의 암자·붉은 말뚝 선은 마을에서 걷는 시간(outer). 방(parent)은 2분. 아스테리아 폐허(asteria_ruins)와 시간의 상처(time_rift)는 다른 노드다 — asteria_ruins.yaml, 시간의 상처는 노드 id 그대로.
+id: last_lantern
+name: 마지막 등불
+node: last_lantern
+kind: outpost_village
+grid: {w: 700, h: 520}
+curfew: {from: "해 질 녘", to: "해 뜰 녘", note: "통금이 아니라 해 지기 전 귀환 규칙이다. 해 진 뒤 밖에 있는 자는 구조하지 않는다. 등불을 끄는 자는 추방. 재의 날 밤에는 마을 전원이 등불 아래 모인다"}
+bells:
+  - {at: "06:00", name: 등불 기름 채우는 소리 (할그림의 첫 일)}
+  - {at: "12:00", name: 물 저장고 구리 말 소리 (물지기 오트의 정오 되질)}
+  - {at: "17:30", name: 해 지기 전 호각 (경비대장 고즈가 마지막 사냥꾼을 들인다)}
+patrols: ["19:00", "23:00", "03:00"]
+locations:
+  # ── 등불 둘레 ──
+  - {id: ll_lantern, name: 등불 (꺼지지 않는 등불), xy: [350, 260], kind: lantern, access: public, hours: "24시", note: "마을 한가운데 꺼지지 않는 등불. 길 잃은 자는 이 불을 향해 걸으라고 한다. 대붕괴 이후 첫 생존자가 피웠다는 전설. 등불 아래서 거짓말하는 것은 금기"}
+  - {id: ll_square, name: 등불 앞 광장, xy: [350, 305], kind: square, access: public, hours: "24시", note: "사냥꾼이 해 지기 전 돌아와 인원을 세는 맨땅. 재의 날 밤에는 마을 전원이 여기 모인다"}
+  - {id: ll_market, name: 유물 시장, xy: [290, 325], kind: market, access: public, hours: "06:00-20:00", note: "유물과 물이 오가는 가판 시장. 물 한 통 3못, 유물은 흥정. 재의 법에 따라 남의 유물은 빼앗지 않는다", hidden: "시장 한쪽 끝에 '글자 돌'을 사겠다는 쪽지가 매일 다른 가판에 붙는다 — 주춧돌의 신호"}
+  - {id: ll_tuk_stall, name: 고물상 '등잔 밑', xy: [255, 345], kind: shop, access: public, hours: "07:00-22:00", note: "크릭 튀크의 낮은 가게. 장부 대신 끈 매듭. 물건 밑이 늘 한 뼘 깊다", hidden: "가게 바닥 아래 마른 구멍 — 매듭 장부와 유물 한두 개"}
+  - {id: ll_water_store, name: 물 저장고, xy: [450, 300], kind: cistern, access: public, hours: "06:00-20:00", note: "바위를 파낸 석조 물탱크 둘. 물지기 오트가 구리 말로 되어 판다. 한 통 3못. 겨울 재 폭풍 전에 채워 두는 것이 연중 가장 큰 일", hidden: "저장고 뒤 작은 상자 선반 — 약 상자가 매달 한 번 비었다가 문 앞에서 다시 찬다"}
+  # ── 집과 숙소 ──
+  - {id: ll_halgrim_house, name: 할그림의 집, xy: [380, 195], kind: house, access: owner, hours: "24시", rooms: [ll_oath_cellar], note: "등불에서 스무 걸음 위 바위턱의 집. 사냥꾼 허가 인장이 문턱 서랍에 있다. 집주인의 왼팔이 이미 돌이다"}
+  - {id: ll_oath_cellar, name: 깨진 맹세 석판 (집 아래), parent: ll_halgrim_house, access: secret, hours: "24시", locked: "석판 틈 열쇠 — 할그림만", note: "집 아래 지하 방. 두르강 룬이 새겨진 석판이 둘로 깨져 있다", hidden: "깨진 석판 곁 가장 깊은 상자 — 아스테리아 서고의 문짝 한 장. 열쇠 구멍이 여덟 갈래 별 모양이다. 석판의 갈라진 틈이 반 뼘씩 가슴 쪽으로 번진다"}
+  - {id: ll_inn, name: 판잣집 여관, xy: [320, 385], kind: inn, access: public, hours: "24시", rooms: [ll_inn_room3, ll_inn_kitchen], note: "방 열둘. 방값은 물 한 통에 하루. 숙박부는 막대 눈금뿐이고 꺾인 막대 끝이 문 옆 통에 꽂혀 있다", hidden: "문 옆 통의 꺾인 막대 열한 개 — 모두 탑 밀정이 묵은 날"}
+  - {id: ll_inn_room3, name: 여관 3호 방 (모래눈 패 숙소), parent: ll_inn, access: staff, hours: "24시", note: "모래눈 패 둘이 쓰는 방. 침대 밑에 접힌 서면 종이가 한 장"}
+  - {id: ll_inn_kitchen, name: 여관 식당 (죽 솥), parent: ll_inn, access: public, hours: "05:00-23:00", note: "코라와 소녀가 일하는 죽 솥 곁. 해 질 녘 사냥꾼들이 몰린다"}
+  - {id: ll_shacks, name: 판잣집 골목, xy: [250, 410], kind: slum, access: public, hours: "24시", note: "탈주 인간 180이 사는 낮은 판잣집들. 문마다 손바닥 모양 숯 자국이 있다 — 종족을 묻지 않는 마을의 표지"}
+  - {id: ll_straggler_camp, name: 낙오자 숙영지, xy: [480, 405], kind: camp, access: staff, hours: "24시", note: "그롬 낙오자 서른의 천막과 모닥불. 방벽 가까운 쪽 언덕 사면에 있다", hidden: "우마의 천막 안 궤짝 — 석 달에 한 번 접힌 전언이 한 장씩 쌓인다 (아홉 장)"}
+  # ── 사냥꾼과 길 ──
+  - {id: ll_hunters_yard, name: 사냥꾼 마당, xy: [410, 355], kind: yard, access: public, hours: "05:00-21:00", note: "원정 전에 장비를 꾸리고 후에 유물을 푸는 맨 마당. 인장 소지 사냥꾼 60이 쓴다. 해 지기 전 호각이 불면 이 마당이 가장 붐빈다"}
+  - {id: ll_guide_hut, name: 길잡이 오두막, xy: [455, 225], kind: hut, access: staff, hours: "24시", note: "벽 전체가 황무지 길 지도다. 지운 점과 남긴 점이 구분된다. 냄새표가 천장에서 마른 솔잎처럼 매달린다", hidden: "지도 한쪽 끝의 지워진 점 스물세 개 — 모그가 살아 나온 길. 스물네 번째 점은 연필로 자리만 잡혀 있다"}
+  - {id: ll_guard_post, name: 방벽 경비소, xy: [560, 300], kind: guardhouse, access: staff, hours: "24시", note: "고즈가 지키는 방벽 곁 보초막. 낮은 돌벽 위로 경비가 선다"}
+  - {id: ll_barrier, name: 방벽 말뚝선, xy: [610, 330], kind: wall, access: public, hours: "해 있을 때", note: "황무지 쪽을 가르는 낮은 말뚝 방벽. 말뚝마다 깨진 사슬이 매달렸다 — 마물과 잔상의 경계", hidden: "말뚝 일곱째 아래 파묻힌 그롬 방패 하나 — 고즈가 처음 이 마을에 왔을 때 지고 온 것"}
+  - {id: ll_edge, name: 잔상 지대 가장자리, xy: [630, 445], kind: edge, access: public, hours: "해 있을 때", note: "해 질 녘 하루 한두 번 잔상이 일어나는 재 평원 가장자리. 제나와 유리눈이 같은 쪽을 보고 서는 자리. 재의 날에는 시간당 서너 번", hidden: "해 질 녘 아홉 분 전 젖은 빵 냄새 — 두 번째 등불의 마지막 저녁 식탁"}
+  # ── 숨은 줄 ──
+  - {id: ll_cornerstone_cellar, name: 주춧돌 지하 모임방, xy: [300, 440], kind: cellar, access: secret, hours: "저녁부터 새벽", locked: "판잣집 마룻장 — 손으로 두 번 두드리는 신호", note: "판잣집 바닥 아래 마른 방. 사냥꾼 모임 '주춧돌'이 석판 조각 이야기를 한다", hidden: "나무 상자 속 글자 석판 조각 하나 — 아스테리아 글자 스물여섯 가운데 둘이 새겨졌다"}
+outer:
+  # 같은 노드, 마을에서 걷는 시간. 자식은 parent로 이어 2분.
+  - {id: ll__second_lantern, name: 두 번째 등불 (소멸한 마을), hours: 4.0, node: last_lantern, note: "AS 311 경계 확장 때 하룻밤에 재가 된 사냥꾼 마을 80명. 재에 묻힌 지붕과 녹은 등불. 매일 그날 밤의 잔상이 반복된다"}
+  - {id: ll__ash_eye, name: 재눈 초소 (잿빛 탑 관측소), hours: 3.0, node: last_lantern}
+  - {id: ll__ash_eye_stakes, name: 측정 말뚝 열둘 (재눈 초소 둘레), hours: 3.0, node: last_lantern, parent: ll__ash_eye}
+  - {id: ll__ash_eye_records, name: 기록함 (재눈 초소), hours: 3.0, node: last_lantern, parent: ll__ash_eye}
+  - {id: ll__sanctuary, name: 재 성소 (회색 순례자), hours: 5.5, node: last_lantern}
+  - {id: ll__sanct_gate, name: 재 성소 문, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_yard, name: 재 성소 마당, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_hearth, name: 재 성소 화덕, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_circle, name: 재의 원, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_receiving, name: 받아들임의 방, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_ember_room, name: 잿불석 방, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_children, name: 아이들 방 (재의 아이들), hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__sanct_voice_room, name: 재의 목소리의 방, hours: 5.5, node: last_lantern, parent: ll__sanctuary}
+  - {id: ll__hermitage, name: 재의 암자 (이안), hours: 3.5, node: last_lantern}
+  - {id: ll__ash_edge, name: 재를 퍼 오는 길 (붉은 말뚝 선), hours: 6.5, node: last_lantern, note: "시간의 상처 쪽 붉은 말뚝 바로 앞. 이 선을 넘으면 추방이고 안은 진짜 죽음이다"}
+  - {id: ll__tablet_sites, name: 마지막 등불 밖 석판 묻은 자리, hours: 9.0, node: last_lantern, note: "메리타가 아스테리아 석판 조각 아홉을 나눠 묻은 세 곳. 위치는 그녀만 안다"}

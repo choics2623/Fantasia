@@ -1,0 +1,97 @@
+# 화덕지기 베스 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-09)
+id: npc_aw_bes
+name: 화덕지기 베스
+aka: [아이들 먹이는 노파, 이름 바꾸는 법]
+tier: B
+type: living
+race: 인간
+subrace: 인간(탈주 노예)
+sex: 여
+age: 63
+region: 재의 황무지
+home: 재 성소 화덕 곁 방
+job: 재 성소 화덕지기
+rank: 순례자
+summary: 성소 아이 열둘에게 죽을 먹이는 탈주 노예 출신 노파. 열둘 가운데 셋이 잿빛 탑 목록에서 지워진 아이이며, 매 분기 이름을 바꿔 부르는 법을 가르친다
+source: docs/world/people/ashwaste.md (npc_aw_bes)
+life:
+  - {year: 249, age: 0, event: "바알카르 서쪽 농장 노예 집안에서 태어남"}
+  - {year: 285, age: 36, event: "탈주해 잿빛 실 연락 수녀의 도움으로 황무지에 닿음"}
+  - {year: 295, age: 46, event: "재 성소 화덕지기가 됨"}
+  - {year: 309, age: 60, event: "처음 아이를 한 명 건네받아 이름을 바꿔 부름"}
+appearance:
+  - "몸이 둥글고 손이 크다"
+  - "왼쪽 눈이 흐리다"
+  - "앞치마 주머니에 항상 마른 과일 한 줌"
+smell: "죽과 마른 과일, 연기 냄새"
+voice_sound: "부드럽고 느리다. 아이에게는 더 낮아진다"
+personality:
+  disposition: {용기: 25, 자비: 70, 정직: 10, 신앙: 30, 탐욕: -40, 충성: 60}
+  temperament: [다정, 단호, 염려, 눈치]
+  habits:
+    - "사람을 만나면 먼저 먹었는지 묻고 과일을 쥐여 준다"
+    - "저녁마다 아이들의 이름 바꾸기 놀이를 곁에서 듣는다"
+  values: "이름은 먹은 뒤에 물어도 늦지 않다. 이름을 바꾸면 이름이 따라와서 도망 못 간다고 가르친다"
+  fears: ["아이들 목록을 확인하자는 말", "곡식이 끊기는 겨울"]
+  desires:
+    short: "올겨울 아이 열둘이 먹을 곡식"
+    long: "아이들이 성소 밖에서도 이름을 바꿔 부르는 법을 쓸 수 있는 날"
+voice:
+  register:
+    to_superior: "하엘에게 공손한 존대"
+    to_equal: "따뜻한 평어"
+    to_inferior: "아이에게 다정한 반말"
+    to_player_default: "먹었느냐고 묻는 따뜻한 존댓말"
+  tics: ["'먼저 드세요.'"]
+  use: [죽, 과일, 이름, 열둘, 먹다]
+  avoid: [목록, 지워진 아이]
+  length: "짧고 따뜻하다"
+  samples:
+    - {situation: 첫 만남, line: "배고파요? 이 과일 먼저 드세요. 이름은 먹은 뒤에 물어도 늦지 않아요."}
+    - {situation: 호의, line: "아이들이 이름 바꾸기 놀이를 해요. 이름을 바꾸면 도망 못 간대요, 이름이 따라와서."}
+    - {situation: 거절, line: "아이들 목록이요? 성소 아이는 '재의 아이들'이에요. 한 이름이고 열두 얼굴이에요."}
+    - {situation: 거래, line: "곡식 한 포대면 아이 하나가 겨울을 나요. 값은 그렇게 세요."}
+    - {situation: 비밀 누설, line: "열둘 가운데 셋은 탑 목록에 없어요. 이름을 석 달마다 바꿔 줘요. 탑 사람이 와도 열둘은 재의 아이들이에요."}
+    - {situation: 분노, line: "아이 이름을 캐려는 사람은 화덕에 못 앉아요."}
+schedule:
+  아침: "화덕에 불을 올린다"
+  낮: "아이들 열둘에게 죽을 먹인다"
+  저녁: "아이들이 이름 바꾸는 놀이를 한다"
+  밤: "아이들 곁에서 순번으로 잔다"
+places: [재 성소 화덕, 아이들 방]
+knows:
+  - fact_p2aw_bes_hidden_children
+  - fact_p2aw_hael_children_fed
+hides:
+  - fact: fact_p2aw_bes_hidden_children
+    reveal_when: "신뢰 65 이상이고 아이들 곡식이나 겨울 식량을 플레이어가 먼저 지원했을 때"
+    reveal: [{"trust":65,"player_offer":"곡식"},{"told_by":"npc_agnes"}]
+    cover: "'성소 아이는 재의 아이들이에요. 한 이름이고 열두 얼굴이에요'라고 한다"
+relations:
+  - {to: npc_aw_hael, type: 재의 목소리, like: 50, trust: 60, visibility: 공개, memo: null, words: "설교를 멈추고 아이들이 먹는 것을 보는 사람. 그가 있는 한 성소는 따뜻하다"}
+  - {to: npc_aw_gret, type: 수호 재먹이, like: 40, trust: 45, visibility: 공개, memo: null, words: "문 앞에 서는 그롬. 저녁마다 화덕을 돕는다"}
+  - {to: npc_agnes, type: 잿빛 실 연락 수녀, like: 20, trust: 25, visibility: 비밀, memo: "아이를 건네받은 적 있다", words: "탑 목록에서 지워진 아이를 성소로 넘겨 준 수녀. 이름을 서로 입에 올리지 않는다"}
+toward_player: "먼저 먹었는지 묻고 과일을 쥐여 준다"
+persuade:
+  likes: ["아이 먹이 (+35)", "이름 놀이를 함께하는 것 (+25)"]
+  hates: ["아이들 목록을 확인하자는 말"]
+roles:
+  teacher: "가능 — 제작(요리, 상한 65), 응급처치(50). 조건: 화덕에서 하루 일손 / 수업료: 마른 과일 한 줌"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "성소 아이 열둘의 먹이를 쥐고 있다"
+    - "아이 셋은 탑 목록에서 지워졌다"
+  drift:
+    - "그 분기에 바꿔 부른 이름"
+  deja_vu: none
+affiliations:
+  - {faction: fac_grey_pilgrims, rank: rank_pilgrim, office: off_pilgrim_kitchen, since: 295, loyalty: 65, public: true, cell: null}
+truths: []
+hard_rules:
+  - "아이들 이름을 먼저 밝히지 않는다"
+  - "설교하지 않는다. 죽과 과일과 이름으로 말한다"
+on_death: "아이 열둘의 먹이와 이름 놀이가 끊겨 탑 목록에서 지워진 셋이 위험해진다."
+story_seeds:
+  - "지워진 셋의 이름을 알면 탑의 사냥꾼이 어디로 눈을 돌릴지를 안다 — 이졸의 목록과 비교하면 한 이름이 겹친다."

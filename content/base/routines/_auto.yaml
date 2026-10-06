@@ -72,174 +72,6 @@ npc_ashdust:
     from: '22:00'
     to: 06:00
   home: rv__sunken_belfry
-npc_batar:
-  auto: 장소 이름
-  blocks:
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 창 손질 — 샘물로 창끝을 씻는다
-    from: 06:00
-    to: '12:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 말뼈 샘 곁에 서 있다 — 하르칸이 한곳에 머물면 병드는데, 그는 9년째 머문다
-    from: '12:00'
-    to: '18:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 소란의 몰래 수업
-    from: '18:00'
-    to: '22:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 기침
-    from: '22:00'
-    to: 06:00
-  home: khan_ordu__horsebone_spring
-npc_beatrix:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 몬달리 은행 장부 — 두 진영 채권의 이자표를 대조한다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 아홉 비늘 의회 — 의제 순서와 표 계산
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 각국 사절 만찬 (인간 계약민 악사 연주)
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 몬달리 저택 지하 수조에서 탈피 준비 — 3년째 이어지는 헛 준비
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_bern:
-  auto: 장소 이름
-  blocks:
-  - at: sh_hut_willow
-    days: all
-    doing: 둑 보수 감독 — 말뚝을 하나씩 세며 걷는다
-    from: 06:00
-    to: '12:00'
-  - at: rv__mud_lantern_hall
-    days: all
-    doing: 새 도착자 심사 (목줄단 첩자 가려내기). 세 가지 질문과 손바닥 검사
-    from: '12:00'
-    to: '18:00'
-  - at: rv__mud_lantern_hall
-    days: all
-    doing: 회관 회의 — 식량 장부와 공물 문제
-    from: '18:00'
-    to: '22:00'
-  - at: rv__mud_lantern_hall
-    days: all
-    doing: 경계 순찰. 돌아와 장부 끝에 사망을 적는다
-    from: '22:00'
-    to: 06:00
-  home: rv__mud_lantern_hall
-npc_corvina:
-  auto: 지역 노드
-  blocks:
-  - at: grey_tower
-    days: all
-    doing: 탑 꼭대기 귀 기울이는 방에서 밤새의 별 기록을 정리해 보고서로 옮긴다
-    from: 06:00
-    to: '12:00'
-  - at: grey_tower
-    days: all
-    doing: 열린 관측대에서 깃털 매듭을 정리하고 바람을 마신다
-    from: '12:00'
-    to: '18:00'
-  - at: grey_tower
-    days: all
-    doing: 탑 평의회에 보고한다 — 해석 일부만 전한다
-    from: '18:00'
-    to: '22:00'
-  - at: grey_tower
-    days: all
-    doing: 거꾸로 가는 별을 관측한다. 키리에에게 보낼 깃(매듭 기록)을 묶는다
-    from: '22:00'
-    to: 06:00
-  home: grey_tower
-npc_deep_naga:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 해구 곁에서 도둑질의 노래를 한 번 부른다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 신전 제단 아래 동굴에서 위의 물결을 읽는다
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 그믐 가까우면 공물 계단 쪽 소리를 듣는다
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 해구 위 어둠에서 녹테른 피 냄새를 가린다
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_dua:
-  auto: 장소 이름
-  blocks:
-  - at: hk_porter_camp
-    days: all
-    doing: 짐 분배 — 짐꾼 한 명 한 명의 짐을 확인한다
-    from: 06:00
-    to: '12:00'
-  - at: hk_porter_camp
-    days: all
-    doing: 이동 — 짐꾼은 하르칸 속도를 따라 하루 40리
-    from: '12:00'
-    to: '18:00'
-  - at: hk_horse_pens
-    days: all
-    doing: 말 돌보기(하르칸은 '가축 말'도 기른다 — 그 일은 인간 몫)
-    from: '18:00'
-    to: '22:00'
-  - at: hk_porter_camp
-    days: all
-    doing: 쓰러진 짐꾼을 센다
-    from: '22:00'
-    to: 06:00
-  home: hk_porter_camp
-npc_echo_wall_girl:
-  auto: 지역 노드
-  blocks:
-  - at: asteria_ruins
-    days: all
-    doing: 9분마다 같은 장면을 되풀이한다
-    from: 06:00
-    to: '12:00'
-  - at: asteria_ruins
-    days: all
-    doing: 같음. 해가 높을수록 장면이 선명하다
-    from: '12:00'
-    to: '18:00'
-  - at: asteria_ruins
-    days: all
-    doing: 같음. 해가 질 무렵 소리가 더 늦게 도착한다
-    from: '18:00'
-    to: '22:00'
-  - at: asteria_ruins
-    days: all
-    doing: 잔상 지대가 가장 위험한 때 — 장면 주위가 일그러진다
-    from: '22:00'
-    to: 06:00
-  home: asteria_ruins
 npc_egil:
   auto: 장소 이름
   blocks:
@@ -288,54 +120,6 @@ npc_emyn:
     from: '22:00'
     to: 06:00
   home: seven_hags_circle
-npc_gorba:
-  auto: 지역 노드
-  blocks:
-  - at: blood_arena
-    days: all
-    doing: 쇠사슬 우리에서 투사 훈련 감독 — 마라와 신참들의 몸을 눌러 본다
-    from: 06:00
-    to: '12:00'
-  - at: blood_arena
-    days: all
-    doing: 대진표 돌판 앞과 투사 매매 마당에서 흥정, 판돈 정리
-    from: '12:00'
-    to: '18:00'
-  - at: blood_arena
-    days: all
-    doing: 경기 뒤 투사 값 정산, 우르가쉬의 전리품 분배에 참석
-    from: '18:00'
-    to: '22:00'
-  - at: blood_arena
-    days: all
-    doing: 튀크에게서 받은 유물을 헤아리거나, 이빨 꿰미를 닦으며 판돈 계산
-    from: '22:00'
-    to: 06:00
-  home: blood_arena
-npc_goz:
-  auto: 지역 노드
-  blocks:
-  - at: asteria_ruins
-    days: all
-    doing: 방벽 말뚝을 점검하고 마물을 정찰한다
-    from: 06:00
-    to: '12:00'
-  - at: asteria_ruins
-    days: all
-    doing: 잔상 마물과 교전한다
-    from: '12:00'
-    to: '18:00'
-  - at: asteria_ruins
-    days: all
-    doing: 등불 앞에서 사냥꾼들을 받는다 — 해 지기 전에 들여보낸다
-    from: '18:00'
-    to: '22:00'
-  - at: asteria_ruins
-    days: all
-    doing: 등불 곁에서 선 채로 쉰다 (눕지 않는다)
-    from: '22:00'
-    to: 06:00
-  home: asteria_ruins
 npc_grod:
   auto: 장소 이름
   blocks:
@@ -363,195 +147,27 @@ npc_grod:
 npc_gromak:
   auto: 지역 노드
   blocks:
-  - at: asteria_ruins
+  - at: last_lantern
     days: all
     doing: (그에게는 AS 0 전날 아침) 둥지 위를 한 바퀴 돈다 — 남쪽 진지 순찰의 몸짓
     from: 06:00
     to: '12:00'
-  - at: asteria_ruins
+  - at: last_lantern
     days: all
     doing: 아스테리아 쪽을 보며 수집물을 닦는다
     from: '12:00'
     to: '18:00'
-  - at: asteria_ruins
+  - at: last_lantern
     days: all
     doing: 해 질 녘 사절을 기다린다. 해가 지면 눈을 감는다
     from: '18:00'
     to: '22:00'
-  - at: asteria_ruins
+  - at: last_lantern
     days: all
     doing: 포위 회의에서 할 말을 되뇐다
     from: '22:00'
     to: 06:00
-  home: asteria_ruins
-npc_hag_brita:
-  auto: 장소 이름
-  blocks:
-  - at: sh_hut_bonenedle
-    days: all
-    doing: 제자들과 돌·쇠에 낱말을 꿰매는 연습 (소리 내지 않는다)
-    from: 06:00
-    to: '12:00'
-  - at: sh_hut_bonenedle
-    days: all
-    doing: 북방 출신 제자들을 먹이고 가르친다
-    from: '12:00'
-    to: '18:00'
-  - at: sh_hut_bonenedle
-    days: all
-    doing: 회합 보름 모임 전에는 첫째를 찾아 의견을 조율한다
-    from: '18:00'
-    to: '22:00'
-  - at: sh_hut_bonenedle
-    days: all
-    doing: 오두막 문틀 앞에 앉아 늪 쪽 소리를 듣는다
-    from: '22:00'
-    to: 06:00
-  home: sh_hut_bonenedle
-npc_hag_elsbet:
-  auto: 장소 이름
-  blocks:
-  - at: sh_hut_mist
-    days: all
-    doing: 안개 오두막에서 지난밤 도착자들의 꿈을 정리한다
-    from: 06:00
-    to: '12:00'
-  - at: sh_hut_mist
-    days: all
-    doing: 베른의 심사 곁에서 새 도착자들과 가볍게 이야기한다
-    from: '12:00'
-    to: '18:00'
-  - at: sh_hut_mist
-    days: all
-    doing: 의심스러운 도착자의 꿈 심문 — 잠이 든 뒤 곁에 앉는다
-    from: '18:00'
-    to: '22:00'
-  - at: sh_hut_mist
-    days: all
-    doing: 이끼판을 닦고 안개 속에서 잿가루를 기다린다
-    from: '22:00'
-    to: 06:00
-  home: sh_hut_mist
-npc_hag_hana:
-  auto: 장소 이름
-  blocks:
-  - at: sh_herb_racks
-    days: all
-    doing: 물그릇에 비친 꿈을 적어 둔다
-    from: 06:00
-    to: '12:00'
-  - at: sh_herb_racks
-    days: all
-    doing: 약초 건조대와 마르디 상가 거래 장부
-    from: '12:00'
-    to: '18:00'
-  - at: sh_herb_racks
-    days: all
-    doing: 버들가지 점술 막대로 회합 안건의 방향을 본다
-    from: '18:00'
-    to: '22:00'
-  - at: sh_herb_racks
-    days: all
-    doing: 물가에서 잠깐 눈을 감고 꿈 속 물길을 걷는다
-    from: '22:00'
-    to: 06:00
-  home: sh_herb_racks
-npc_hag_jorda:
-  auto: 지역 노드
-  blocks:
-  - at: seven_hags_circle
-    days: all
-    doing: 거머리 단지에 먹이를 주고 용인 피 재고를 센다
-    from: 06:00
-    to: '12:00'
-  - at: seven_hags_circle
-    days: all
-    doing: 병자 치료를 도우며 감독관과 병자의 피를 구하는 길을 정리한다
-    from: '12:00'
-    to: '18:00'
-  - at: seven_hags_circle
-    days: all
-    doing: 저주 의식에 쓸 재와 피를 모은다
-    from: '18:00'
-    to: '22:00'
-  - at: seven_hags_circle
-    days: all
-    doing: 오두막 굴뚝 앞에서 재를 태우며 요람 쪽 방향을 향해 앉는다
-    from: '22:00'
-    to: 06:00
-  home: seven_hags_circle
-npc_hag_mag:
-  auto: 장소 이름
-  blocks:
-  - at: rv__red_reed_line
-    days: all
-    doing: 매듭 문자 전수 — 연락원에게 줄 새 매듭을 묶는다
-    from: 06:00
-    to: '12:00'
-  - at: sh_hut_reed
-    days: all
-    doing: 루네에게 바람 낱말의 숨 쉬는 법(휘파람)을 가르친다
-    from: '12:00'
-    to: '18:00'
-  - at: rv__red_reed_line
-    days: all
-    doing: 녹테른에서 오는 피 병과 장미 꽃잎을 맞을 준비
-    from: '18:00'
-    to: '22:00'
-  - at: rv__red_reed_line
-    days: all
-    doing: 붉은 갈대 선 근처에서 핍스의 신호를 기다린다
-    from: '22:00'
-    to: 06:00
-  home: rv__red_reed_line
-npc_hag_rune:
-  auto: 장소 이름
-  blocks:
-  - at: sh_hut_ash
-    days: all
-    doing: 마그에게 휘파람과 바람 숨 쉬는 법을 배운다
-    from: 06:00
-    to: '12:00'
-  - at: sh_overturned_boat
-    days: all
-    doing: 갈대를 엮고 피리를 만든다. 아이들에게 노래를 가르친다
-    from: '12:00'
-    to: '18:00'
-  - at: sh_overturned_boat
-    days: all
-    doing: 오다의 오두막에서 손바닥에 낱말을 받는다
-    from: '18:00'
-    to: '22:00'
-  - at: sh_overturned_boat
-    days: all
-    doing: 오두막 문 앞에서 피리를 불지 않고 구멍만 만지며 바람 소리를 듣는다
-    from: '22:00'
-    to: 06:00
-  home: sh_overturned_boat
-npc_halla:
-  auto: 지역 노드
-  blocks:
-  - at: grey_tower
-    days: all
-    doing: 측정 — 맥박과 잔상 반응
-    from: 06:00
-    to: '12:00'
-  - at: grey_tower
-    days: all
-    doing: 고문헌 필사 (탑의 허가 — 피험자 정신 안정용)
-    from: '12:00'
-    to: '18:00'
-  - at: grey_tower
-    days: all
-    doing: 이웃 피험자들에게 '이야기'를 들려준다
-    from: '18:00'
-    to: '22:00'
-  - at: grey_tower
-    days: all
-    doing: 오틸리가 넣어 준 책을 읽는다
-    from: '22:00'
-    to: 06:00
-  home: grey_tower
+  home: last_lantern
 npc_heinz:
   auto: 장소 이름
   blocks:
@@ -576,78 +192,6 @@ npc_heinz:
     from: '22:00'
     to: 06:00
   home: gf_chapel
-npc_hiak:
-  auto: 장소 이름
-  blocks:
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 샘가에서 전날 원정 길 쪽 소식을 수집
-    from: 06:00
-    to: '12:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 유품을 분류하고 이름 줄을 헝겊에 쓴다
-    from: '12:00'
-    to: '18:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 행렬 후미를 따라 걷는다 — 쓰러진 자가 있나 살핀다
-    from: '18:00'
-    to: '22:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 무리 노래를 낮게 읊으며 천막 뒤 헝겊을 센다
-    from: '22:00'
-    to: 06:00
-  home: khan_ordu__horsebone_spring
-npc_ian_ash:
-  auto: 지역 노드
-  blocks:
-  - at: asteria_ruins
-    days: all
-    doing: 암자 앞 설교 — '나는 돌아왔다'
-    from: 06:00
-    to: '12:00'
-  - at: asteria_ruins
-    days: all
-    doing: 잔상 지대 가장자리 명상 — 일부러 사람들 눈에 띄게
-    from: '12:00'
-    to: '18:00'
-  - at: asteria_ruins
-    days: all
-    doing: 추종자들에게 글자 교육
-    from: '18:00'
-    to: '22:00'
-  - at: asteria_ruins
-    days: all
-    doing: 이름 없는 자들과 접선 — 징후 아이들의 위치를 받는다
-    from: '22:00'
-    to: 06:00
-  home: asteria_ruins
-npc_irene_bold:
-  auto: 지역 노드
-  blocks:
-  - at: grey_tower
-    days: all
-    doing: 피험 보고 검토
-    from: 06:00
-    to: '12:00'
-  - at: grey_tower
-    days: all
-    doing: 시험 설계, 학자 회의
-    from: '12:00'
-    to: '18:00'
-  - at: grey_tower
-    days: all
-    doing: 서신 — 멜리산드·아에린·마테우스·이졸
-    from: '18:00'
-    to: '22:00'
-  - at: grey_tower
-    days: all
-    doing: 조용한 층을 순회하며 피험자에게 직접 질문한다
-    from: '22:00'
-    to: 06:00
-  home: grey_tower
 npc_irga:
   auto: 장소 이름
   blocks:
@@ -672,30 +216,6 @@ npc_irga:
     from: '22:00'
     to: 06:00
   home: baalkar__fang_hall
-npc_jan:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 작업장 문을 열고 널빤지 결을 본다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 빚진 골목 숙소 수리와 가구 제작
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 작업장 문턱을 밟아 삐걱 소리를 확인한다. 변장한 그녀가 오는 날은 일찍 연장을 치운다
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 혼자 남아 대패를 간다
-    from: '22:00'
-    to: 06:00
-  home: seren
 npc_kit:
   auto: 장소 이름
   blocks:
@@ -720,30 +240,6 @@ npc_kit:
     from: '22:00'
     to: 06:00
   home: gf_river_huts
-npc_kyle_sandeye:
-  auto: 지역 노드
-  blocks:
-  - at: asteria_ruins
-    days: all
-    doing: 장비 점검
-    from: 06:00
-    to: '12:00'
-  - at: asteria_ruins
-    days: all
-    doing: 잔상 지대 진입 (잔상 주기표를 외운다)
-    from: '12:00'
-    to: '18:00'
-  - at: asteria_ruins
-    days: all
-    doing: 튀크에게 유물을 판다
-    from: '18:00'
-    to: '22:00'
-  - at: asteria_ruins
-    days: all
-    doing: 다음 원정 지도를 만든다
-    from: '22:00'
-    to: 06:00
-  home: asteria_ruins
 npc_leo_ember:
   auto: 장소 이름
   blocks:
@@ -768,102 +264,6 @@ npc_leo_ember:
     from: '22:00'
     to: 06:00
   home: filth_marsh__dead_willow
-npc_lupo:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 빚진 골목에서 계약민 상담 — 숫자 하나를 대가로 받는다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 계약민 등록소 '숫자의 집'에서 서류 열람
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 몬달리 저택 서재에서 오필리아와 초안 작업
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 계약서 '오류' 찾기 — 오류 하나면 빚 하나가 무효
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_mara:
-  auto: 지역 노드
-  blocks:
-  - at: blood_arena
-    days: all
-    doing: 훈련 — 그롬 조련사 고르바 감독
-    from: 06:00
-    to: '12:00'
-  - at: blood_arena
-    days: all
-    doing: 경기. 6일에 한 번 모래에 선다(정식 대진은 한 달 남짓에 한 번, 나머지는 신참 상대의 시범 경기와 연습
-    from: '12:00'
-    to: '18:00'
-  - at: blood_arena
-    days: all
-    doing: 쇠사슬 우리에서 막사 신참들에게 살아남는 법을 말한다
-    from: '18:00'
-    to: '22:00'
-  - at: blood_arena
-    days: all
-    doing: 철창에 기대 '100'을 센다
-    from: '22:00'
-    to: 06:00
-  home: blood_arena
-npc_miko:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 부두 하역
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 노예선·상선 갑판 노동 (은빛 강 왕복 18일)
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 빚진 골목 선술집 '굽은 닻'
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 배 밑창에서 숫자 계산 — 매일 빚을 다시 센다
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_milo:
-  auto: 지역 노드
-  blocks:
-  - at: grey_tower
-    days: all
-    doing: 먼지 서고에서 탑 장부를 베낀다
-    from: 06:00
-    to: '12:00'
-  - at: grey_tower
-    days: all
-    doing: 필사 계속 — 같은 줄을 두 번 베낀다 (실수가 아니라 외우기)
-    from: '12:00'
-    to: '18:00'
-  - at: grey_tower
-    days: all
-    doing: 오틸리의 숫자 교육에 앉는다
-    from: '18:00'
-    to: '22:00'
-  - at: grey_tower
-    days: all
-    doing: 열네 개의 이름을 순서대로 외우고, 복도 끝 13층 쪽 벽을 한 번 두드린다
-    from: '22:00'
-    to: 06:00
-  home: grey_tower
 npc_mina:
   auto: 장소 이름
   blocks:
@@ -889,149 +289,29 @@ npc_mina:
     to: 06:00
   home: gf_mill
 npc_morana:
-  auto: 지역 노드
+  auto: 장소 이름
   blocks:
-  - at: seren
+  - at: sr_deep_gate
     days: all
     doing: 썰물 — 바위 웅덩이에 몸을 담근다
     from: 06:00
     to: '12:00'
-  - at: seren
+  - at: sr_deep_gate
     days: all
     doing: 잠수 노예들이 내려가는 줄을 바위에서 지켜본다
     from: '12:00'
     to: '18:00'
-  - at: seren
+  - at: sr_deep_gate
     days: all
     doing: 허물 일곱을 바람에 말리며 말을 건다
     from: '18:00'
     to: '22:00'
-  - at: seren
+  - at: sr_deep_gate
     days: all
     doing: 바다 쪽으로 머리를 두고 해구의 노래를 듣는다. 보름 썰물엔 위로 옮긴다
     from: '22:00'
     to: 06:00
-  home: seren
-npc_murk:
-  auto: 지역 노드
-  blocks:
-  - at: blood_arena
-    days: all
-    doing: 경기장 피를 닦는다
-    from: 06:00
-    to: '12:00'
-  - at: blood_arena
-    days: all
-    doing: 투사 시체를 운반한다 — 그롬 투사는 그롬이, 인간 투사는 인간 일꾼이 맡지만 그는 양쪽을 맡는다
-    from: '12:00'
-    to: '18:00'
-  - at: blood_arena
-    days: all
-    doing: 배수로 입구에서 인간 신참에게 맨손 낙법을 가르친다
-    from: '18:00'
-    to: '22:00'
-  - at: blood_arena
-    days: all
-    doing: 떨리는 손을 붙잡고 앉아 있다. 가끔 벽 너머 쇠사슬 소리를 듣는다
-    from: '22:00'
-    to: 06:00
-  home: blood_arena
-npc_nadia:
-  auto: 장소 이름
-  blocks:
-  - at: rv__hissing_marsh
-    days: all
-    doing: 사냥 — 물새와 늪사슴
-    from: 06:00
-    to: '12:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 젊은이들에게 활 훈련
-    from: '12:00'
-    to: '18:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 활 제작 오두막에서 주목 가지를 깎는다
-    from: '18:00'
-    to: '22:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 와이번 둥지 쪽 감시 (쉿소리 늪 경계)
-    from: '22:00'
-    to: 06:00
-  home: rv__hissing_marsh
-npc_oda:
-  auto: 장소 이름
-  blocks:
-  - at: sh_overturned_boat
-    days: all
-    doing: 일곱 노파 회합 — 빌린 피를 배분하고 병 일곱 개를 헤아린다
-    from: 06:00
-    to: '12:00'
-  - at: sh_overturned_boat
-    days: all
-    doing: 자유촌 병자 치료, 산파 일. 열병과 상처에는 약초를 먼저 쓴다
-    from: '12:00'
-    to: '18:00'
-  - at: sh_hut_reed
-    days: all
-    doing: 막내 루네에게 낱말 전수 — 손바닥에 쓸어 쓴다
-    from: '18:00'
-    to: '22:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 달마다 한 번 독꼬리 와이번 사스카와 거래 (쉿소리 늪 경계)
-    from: '22:00'
-    to: 06:00
-  home: sh_overturned_boat
-npc_oktai:
-  auto: 장소 이름
-  blocks:
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 수레 끈을 점검하고 야영지 무거운발굽의 멍에를 확인한다
-    from: 06:00
-    to: '12:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 짐을 끌고 샘가 길을 오간다
-    from: '12:00'
-    to: '18:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 쓰러진 짐꾼이 있으면 등에 실어 야영지로 옮긴다 — 아무도 보지 않을 때만
-    from: '18:00'
-    to: '22:00'
-  - at: khan_ordu__horsebone_spring
-    days: all
-    doing: 샘가에서 혼자 걷는다. 바타르 곁을 지나가며 한마디 건넨다
-    from: '22:00'
-    to: 06:00
-  home: khan_ordu__horsebone_spring
-npc_ophelia:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 계약민 등록소 시찰 — 숫자의 집에서 상환 기록을 본다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 의회 견습 — 표결 준비와 의원들 면담
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 빚진 골목에 변장해 나간다 (얀을 만난다)
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 서재에서 초안 작성 — 루포와 조항을 맞춘다
-    from: '22:00'
-    to: 06:00
-  home: seren
+  home: sr_deep_gate
 npc_orso:
   auto: 지역 노드
   blocks:
@@ -1056,30 +336,6 @@ npc_orso:
     from: '22:00'
     to: 06:00
   home: ember_mines
-npc_ottilie:
-  auto: 지역 노드
-  blocks:
-  - at: grey_tower
-    days: all
-    doing: 서기 노예 40명의 업무를 배정한다
-    from: 06:00
-    to: '12:00'
-  - at: grey_tower
-    days: all
-    doing: 고문헌 정리
-    from: '12:00'
-    to: '18:00'
-  - at: grey_tower
-    days: all
-    doing: '''숫자 교육'' (서기용 — 합법)'
-    from: '18:00'
-    to: '22:00'
-  - at: grey_tower
-    days: all
-    doing: 서고 안쪽에서 서기 노예 셋에게 '읽기' 수업
-    from: '22:00'
-    to: 06:00
-  home: grey_tower
 npc_owellis:
   auto: 장소 이름
   blocks:
@@ -1104,78 +360,6 @@ npc_owellis:
     from: '22:00'
     to: 06:00
   home: lumen__reed_flats
-npc_reni:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 선술집 문을 열고 어젯밤 들은 소문을 정리한다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 세베로 상관·하겐·루포 쪽 심부름꾼에게 소문을 판다
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 굽은 닻 단골 선원과 계약민에게서 소식을 모은다
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 방에서 소문을 '가공'한다 — 사실에 거짓을 한 방울
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_sahar:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 경비 배치표를 다시 쓴다. 계약민 경호원 서른의 훈련 점검
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 의회당 정문과 의장실 동선 점검
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 몬달리 저택 정문 곁 초소에서 야간 근무 교대
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 오필리아의 변장 외출 날에는 뒷길의 불을 하나씩 끈다
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_saska:
-  auto: 장소 이름
-  blocks:
-  - at: rv__hissing_marsh
-    days: all
-    doing: 일광욕 — 늪 둔덕 위에서 몸을 데운다
-    from: 06:00
-    to: '12:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 사냥. 늪사슴과 장어를 부족과 함께 잡는다
-    from: '12:00'
-    to: '18:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 둥지 순회 — 알 열네 개를 굴려 덮는다
-    from: '18:00'
-    to: '22:00'
-  - at: rv__hissing_marsh
-    days: all
-    doing: 달마다 한 번 늪 마녀(오다)와 피 거래 (쉿소리 늪 경계)
-    from: '22:00'
-    to: 06:00
-  home: rv__hissing_marsh
 npc_serak:
   auto: 장소 이름
   blocks:
@@ -1200,171 +384,3 @@ npc_serak:
     from: '22:00'
     to: 06:00
   home: bk_hall_red_hall
-npc_severo:
-  auto: 지역 노드
-  blocks:
-  - at: seren
-    days: all
-    doing: 노예선 화물 점검 — 선창에서 이빨과 건강 상태를 훑는다
-    from: 06:00
-    to: '12:00'
-  - at: seren
-    days: all
-    doing: 계약서 작성 — 전환 서류와 저당 계약
-    from: '12:00'
-    to: '18:00'
-  - at: seren
-    days: all
-    doing: 용제국 귀족 서신 (고드릭 포함 영주 9명)
-    from: '18:00'
-    to: '22:00'
-  - at: seren
-    days: all
-    doing: 사설 경매
-    from: '22:00'
-    to: 06:00
-  home: seren
-npc_soran:
-  auto: 장소 이름
-  blocks:
-  - at: hk_porter_camp
-    days: all
-    doing: 기마 궁수대 훈련
-    from: 06:00
-    to: '12:00'
-  - at: hk_tent_blackwind
-    days: all
-    doing: 정찰 — 오르두 주변 반나절 거리를 돈다
-    from: '12:00'
-    to: '18:00'
-  - at: hk_porter_camp
-    days: all
-    doing: 짐꾼 막사 — 두아와 초원어·인간어를 교환
-    from: '18:00'
-    to: '22:00'
-  - at: hk_porter_camp
-    days: all
-    doing: 별을 보며 질주
-    from: '22:00'
-    to: 06:00
-  home: hk_porter_camp
-npc_tal:
-  auto: 지역 노드
-  blocks:
-  - at: blood_arena
-    days: all
-    doing: 어둠 속 — 울브가 넣어 주는 빵과 물을 받는다
-    from: 06:00
-    to: '12:00'
-  - at: blood_arena
-    days: all
-    doing: 어둠 속. 사슬 마디를 훑고 소리를 듣는다. 잠을 잔다
-    from: '12:00'
-    to: '18:00'
-  - at: blood_arena
-    days: all
-    doing: 붉은 젖 한 잔을 받는다(그롬 사제의 손으로)
-    from: '18:00'
-    to: '22:00'
-  - at: blood_arena
-    days: all
-    doing: 우르가쉬와 대련 — 매일
-    from: '22:00'
-    to: 06:00
-  home: blood_arena
-npc_temur:
-  auto: 장소 이름
-  blocks:
-  - at: hk_horse_pens
-    days: all
-    doing: 전령 보고 — 하루 20기가 들어온다
-    from: 06:00
-    to: '12:00'
-  - at: hk_horse_pens
-    days: all
-    doing: 이동 — 하르칸은 한곳에 머물면 병든다
-    from: '12:00'
-    to: '18:00'
-  - at: hk_horse_pens
-    days: all
-    doing: 부족장 연회
-    from: '18:00'
-    to: '22:00'
-  - at: hk_horse_pens
-    days: all
-    doing: 혼자 질주 — 잠은 말처럼 서서
-    from: '22:00'
-    to: 06:00
-  home: hk_horse_pens
-npc_tuk:
-  auto: 지역 노드
-  blocks:
-  - at: asteria_ruins
-    days: all
-    doing: 유물 감정
-    from: 06:00
-    to: '12:00'
-  - at: asteria_ruins
-    days: all
-    doing: 장사
-    from: '12:00'
-    to: '18:00'
-  - at: asteria_ruins
-    days: all
-    doing: 그롬마르행 상인을 접대한다
-    from: '18:00'
-    to: '22:00'
-  - at: asteria_ruins
-    days: all
-    doing: 정보를 정리한다 — 장부 대신 끈 매듭으로
-    from: '22:00'
-    to: 06:00
-  home: asteria_ruins
-npc_ulb:
-  auto: 지역 노드
-  blocks:
-  - at: blood_arena
-    days: all
-    doing: 지하 계단 아래 초소에서 감방에 빵과 물을 넣는다
-    from: 06:00
-    to: '12:00'
-  - at: blood_arena
-    days: all
-    doing: 원형장 문 앞에 선다 — 마라가 나오는 날이면 가장 먼저 자리를 잡는다
-    from: '12:00'
-    to: '18:00'
-  - at: blood_arena
-    days: all
-    doing: 경기를 문틈으로 본다. 끝나면 초소로 돌아온다
-    from: '18:00'
-    to: '22:00'
-  - at: blood_arena
-    days: all
-    doing: 초소에서 열쇠를 쥐고 앉아 있다. 군주가 내려오면 문을 열고 말없이 서 있다
-    from: '22:00'
-    to: 06:00
-  home: blood_arena
-npc_urgash:
-  auto: 지역 노드
-  blocks:
-  - at: blood_arena
-    days: all
-    doing: 직접 싸운다 — 매일. 상대는 그롬 전사 또는 인간 투사. 싸우지 않으면 쇠약해진다
-    from: 06:00
-    to: '12:00'
-  - at: blood_arena
-    days: all
-    doing: 원형장 관람석 맨 위에서 경기를 본다
-    from: '12:00'
-    to: '18:00'
-  - at: blood_arena
-    days: all
-    doing: 전리품 분배, 대진표 돌판 확인
-    from: '18:00'
-    to: '22:00'
-  - at: blood_arena
-    days: all
-    doing: 뼈의 전당 지하 — 쇠사슬에 묶인 백승의 탈과 대련
-    from: '22:00'
-    to: 06:00
-  home: blood_arena

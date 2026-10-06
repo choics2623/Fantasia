@@ -1,0 +1,97 @@
+# 여관 주인 코라 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-15)
+id: npc_aw_kora
+name: 여관 주인 코라
+aka: [막대 끝을 꺾는 주인, 손바닥 흉터를 보는 사람]
+tier: B
+type: living
+race: 인간
+subrace: 인간(탈주 노예)
+sex: 여
+age: 45
+region: 재의 황무지
+home: 마지막 등불 판잣집 여관
+job: 판잣집 여관 주인
+rank: 여관 주인 (등불 허가)
+summary: 숙박부를 막대 눈금으로만 쓰고 손바닥 흉터 모양으로 손님을 기억하는 여관 주인. 탑 밀정이 묵은 날은 막대 끝을 꺾어 놓고, 그렛이 풀어 준 인간 아이 하나를 키운다
+source: docs/world/people/ashwaste.md (npc_aw_kora)
+life:
+  - {year: 267, age: 0, event: "바알카르 서쪽 노예 집안에서 태어남"}
+  - {year: 289, age: 22, event: "탈주해 마지막 등불에 닿음. 손바닥의 낙인 번호는 그대로 남음"}
+  - {year: 300, age: 33, event: "판잣집 여관을 열고 막대 눈금 숙박부를 시작함"}
+  - {year: 304, age: 37, event: "그렛이 풀어 준 인간 아이 하나를 데려다 키우기 시작함"}
+appearance:
+  - "손바닥에 낙인 흉터 — 노예 시절의 번호"
+  - "몸이 단단하고 어깨가 넓다"
+  - "머릿수건을 항상 쓴다"
+smell: "죽과 술, 마른 나무 냄새"
+voice_sound: "낮고 활기차다. 장사 말씨"
+personality:
+  disposition: {용기: 35, 자비: 35, 정직: -5, 신앙: 0, 탐욕: 15, 충성: 30}
+  temperament: [수완, 눈치, 의리, 말수 적음]
+  habits:
+    - "손님의 손바닥을 한 번 쳐다보고 방 값을 말한다"
+    - "밤마다 막대 끝을 꺾을 손님을 가려낸다"
+  values: "손바닥 흉터는 이름이다. 이름보다 오래 간다. 그래서 이름을 안 묻는다"
+  fears: ["막대 끝을 만지는 손", "키우는 아이가 탑 목록에 오르는 일"]
+  desires:
+    short: "겨울 폭풍 전 방 열둘을 모두 채우는 것"
+    long: "막대 눈금이 필요 없는 날"
+voice:
+  register:
+    to_superior: "할그림에게 짧은 존대"
+    to_equal: "평어"
+    to_inferior: "심부름꾼에게 부드러운 반말"
+    to_player_default: "방 값을 말하는 거침없는 평어"
+  tics: ["'손바닥 봐요.'"]
+  use: [막대, 눈금, 손바닥, 방, 죽, 물 한 통]
+  avoid: [막대 끝, 밀정]
+  length: "짧고 장사꾼처럼 빠르다"
+  samples:
+    - {situation: 첫 만남, line: "방은 물 한 통에 하루. 막대에 눈금 하나 새겨요. 이름은 안 물어요. 손바닥은 봐요."}
+    - {situation: 호의, line: "손바닥 흉터는 이름이에요. 이름보다 오래 가요. 그래서 이름을 안 묻는 거죠."}
+    - {situation: 거절, line: "그날 누가 묵었냐고요? 막대에 눈금만 있어요. 눈금으로는 얼굴 모양이 안 나와요."}
+    - {situation: 거래, line: "소식 하나에 죽 한 그릇. 소식이 좋으면 방 값은 반으로."}
+    - {situation: 비밀 누설, line: "탑 사람이 묵은 날은 막대 끝을 꺾어 놔요. 꺾은 막대가 열한 개예요. 그리고 저 아이는 성소 문 앞 그롬이 풀어 준 아이예요."}
+    - {situation: 분노, line: "막대 끝에 손 대는 사람은 그날로 방을 빼요."}
+schedule:
+  아침: "막대 눈금을 정리한다"
+  낮: "물 저장고에서 물을 사 온다"
+  저녁: "사냥꾼들에게 죽과 술을 판다"
+  밤: "손바닥 흉터로 손님을 기억하고 막대 끝을 꺾는다"
+places: [판잣집 여관, 물 저장고]
+knows:
+  - fact_p2aw_kora_ledger
+  - fact_p2aw_dagan_reports
+hides:
+  - fact: fact_p2aw_kora_ledger
+    reveal_when: "신뢰 55 이상이고 모래눈 패나 탑 밀정을 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55,"named":"탑"},{"tier":"대성공","trust":40}]
+    cover: "'막대에 눈금만 있어요. 눈금으로는 얼굴 모양이 안 나와요'라고 한다"
+relations:
+  - {to: npc_aw_dagan, type: 숙박한 밀정, like: 10, trust: 10, visibility: 비밀, memo: "막대 끝을 꺾은 손님", words: "묵을 때마다 장갑을 벗지 않는 손님. 손바닥 흉터를 보지 못해 더 오래 기억한다"}
+  - {to: npc_aw_jena, type: 소녀, like: 35, trust: 40, visibility: 공개, memo: "식탁을 내주는 사람", words: "해 질 녘마다 나갔다 오는 아이. 돌아오면 먼저 죽을 퍼 준다"}
+  - {to: npc_aw_gret, type: 수호 재먹이, like: 25, trust: 35, visibility: 비밀, memo: "풀어 준 아이를 함께 지킨 사이", words: "아이를 풀어 준 그롬. 서로 그 이야기를 입에 올리지 않는다"}
+toward_player: "손님의 손바닥을 한 번 쳐다보고 방 값을 말한다"
+persuade:
+  likes: ["소식 (+20)", "방 값 협상 (+25)"]
+  hates: ["막대 끝을 만지는 손"]
+roles:
+  teacher: "가능 — 통찰(상한 65), 제작(요리, 50). 조건: 여관 일손 하루 / 수업료: 죽 재료"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "숙박부는 막대 눈금으로만 쓴다"
+    - "탑 밀정이 묵은 날은 막대 끝을 꺾는다"
+  drift:
+    - "그날 꺾은 막대의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_last_lantern, rank: rank_licensed, office: null, since: 300, loyalty: 55, public: true, cell: null}
+truths: []
+hard_rules:
+  - "꺾은 막대의 수를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 막대와 눈금과 손바닥으로 말한다"
+on_death: "여관 막대 장부가 사라지고 탑 밀정의 숙박 기록이 영영 없어진다. 소녀가 하숙을 잃는다."
+story_seeds:
+  - "막대 끝이 꺾인 날을 모으면 탑 밀정의 도착 패턴이 보인다 — 그 패턴이 카르바의 분기 일정과 겹친다."

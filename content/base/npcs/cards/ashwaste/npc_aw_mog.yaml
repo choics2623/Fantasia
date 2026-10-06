@@ -1,0 +1,111 @@
+# 수석 길잡이 모그 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-02)
+id: npc_aw_mog
+name: 수석 길잡이 모그
+aka: [스물세 번의 사람, 규칙 셋]
+tier: A
+type: living
+race: 인간
+subrace: 인간(탈주 사냥꾼)
+sex: 남
+age: 44
+region: 재의 황무지
+home: 마지막 등불 길잡이 오두막
+job: 수석 길잡이 — 황무지에 23번 들어갔다 살아 나온 유일한 인간
+rank: 등불 인장 소지 길잡이
+summary: 황무지 스물세 번의 규칙을 셋으로 줄여 외운 수석 길잡이. 굳은 그림자 곁에서 '너는 또 왔구나'를 들었고 할그림이 깬 맹세의 유일한 청자다. 스물네 번째를 석 달째 미루고 있다
+source: docs/world/people/ashwaste.md (npc_aw_mog)
+life:
+  - {year: 268, age: 0, event: "바알카르 서쪽 농장 노예 집안에서 태어남"}
+  - {year: 288, age: 20, event: "탈주해 마지막 등불에 닿음. 짐꾼으로 첫 황무지행"}
+  - {year: 296, age: 28, event: "허가 사냥꾼 인장을 받음. 열 번째 황무지행"}
+  - {year: 303, age: 35, event: "스무 번째 황무지행에서 바엘리스 흑요비늘의 굳은 그림자 곁을 지남"}
+  - {year: 305, age: 37, event: "수석 길잡이가 됨. 규칙을 셋으로 줄여 외우기 시작함"}
+  - {year: 309, age: 41, event: "스물세 번째 황무지행을 살아 나옴. 이후 입산을 석 달씩 미룸"}
+appearance:
+  - "얼굴 반쪽이 재에 그을려 짙다"
+  - "오른쪽 장딴지에 잔상에 데인 흉터"
+  - "눈을 맞출 때 오른쪽을 먼저 본다"
+smell: "재 먼지와 마른 가죽, 약한 쑥"
+voice_sound: "낮고 마른 목소리. 규칙을 말할 때만 또렷하다"
+personality:
+  disposition: {용기: 60, 자비: 20, 정직: 40, 신앙: -20, 탐욕: 10, 충성: 60}
+  temperament: [침착, 조심, 고독, 책임]
+  habits:
+    - "사람을 만나면 오른쪽 어깨 너머를 한 번 본다"
+    - "황무지로 나가기 전에 규칙 셋을 소리 내어 한 번 말한다"
+    - "지도에 점을 찍지 않고 점을 하나 지운다"
+  values: "살아 돌아오는 게 길잡이의 일이다. 잔상은 사람이 아니다. 사람이라고 믿는 순간 거기 서 있게 된다"
+  fears: ["스물네 번째 황무지행", "그림자가 다시 말을 거는 일", "규칙을 못 지키는 짐꾼이 따라나서는 일"]
+  desires:
+    short: "스물네 번째 황무지행을 석 달 더 미루는 것"
+    long: "규칙 셋을 가르칠 후계 길잡이"
+voice:
+  register:
+    to_superior: "등불지기에게 낮은 하게체"
+    to_equal: "길잡이·경비에게 짧은 평어"
+    to_inferior: "짐꾼에게 규칙을 먼저 말하는 단호한 반말"
+    to_player_default: "고개를 끄덕이고 규칙 셋부터 말한다. 평어"
+  tics: ["'해 지기 전에.'", "오른쪽 어깨 너머를 본다"]
+  use: [규칙, 해 지기 전, 아홉 분, 붉은 말뚝, 잔상, 길, 점]
+  avoid: [스물네 번째, 그림자(먼저), 너는 또 왔구나]
+  length: "짧고 마르다"
+  samples:
+    - {situation: 첫 만남, line: "해 지기 전에 돌아온다. 아홉 분을 세지 않는다. 붉은 말뚝을 눈에 담지 않는다. 이 셋을 못 지키면 길잡이 안 해."}
+    - {situation: 호의, line: "잔상은 사람이 아니야. 사람이라고 믿는 순간 거기 서 있게 돼. 나는 스물세 번 서 있지 않았어."}
+    - {situation: 거절, line: "그림자 곁에서 들은 말? …내 얼굴이 아니라 내 뒤 얼굴한테 한 말이야. 뒤를 돌아본 적 없어."}
+    - {situation: 거래, line: "길잡이 값은 하루 한 비늘. 규칙 어기면 값이 두 배로 돌아오고, 값을 못 치르면 길이 안 열려."}
+    - {situation: 거짓말할 때, line: "스물세 번이 아니라 열 번이야. 소문은 늘 숫자를 부풀려."}
+    - {situation: 겁먹었을 때, line: "아홉 분이 지났어. 지금 돌아봐? 돌아보지 마. 규칙 둘째."}
+    - {situation: 슬픔, line: "같이 나간 놈 열한 명을 데려오지 못했어. 열두 번째에 내가 서 있었고."}
+    - {situation: 비밀 누설, line: "할그림이 내게 말했어. 깊은 문 아래의 박동. 인간의 노래에 맞춰 뛰는 것. 나는 그걸 아무한테도 옮기지 않았고."}
+    - {situation: 분노, line: "스물네 번째라고 재촉하는 놈은 스물세 번째 곁에 서 본 적 없는 놈이야. 가서 한 번 서 봐."}
+schedule:
+  아침: "길 지도를 펼친다"
+  낮: "짐꾼과 신입 사냥꾼을 훈련한다"
+  저녁: "등불 아래서 규칙 셋을 외운다"
+  밤: "오두막에서 지도에 점을 하나 지운다"
+places: [마지막 등불, 길잡이 오두막, 잔상 지대 가장자리]
+knows:
+  - fact_p2aw_mog_route_rules
+  - fact_p2aw_halgrim_told_mog
+  - fact_p2aw_mog_24th_entry
+hides:
+  - fact: fact_p2aw_mog_shadow_voice
+    reveal_when: "신뢰 65 이상이고 바엘리스나 굳은 그림자를 플레이어가 먼저 입에 올렸을 때"
+    reveal: [{"trust":65,"named":"바엘리스"},{"tier":"대성공","trust":45}]
+    cover: "'황무지에서 들은 말은 말이 아니야. 바람이야'라고 한다"
+  - fact: fact_p2aw_halgrim_told_mog
+    reveal_when: "신뢰 75 이상이고 깊은 문 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":75,"named":"깊은 문"}]
+    cover: "'할그림이 무슨 말을 했는지는 몰라. 나는 규칙만 들었어'라고 한다"
+relations:
+  - {to: npc_aw_halgrim, type: 등불지기, like: 40, trust: 70, visibility: 비밀, memo: "맹세를 들은 사람", words: "그가 깬 맹세의 한 조각을 쥔 사람. 그 조각을 무덤까지 가져가겠다고 이미 정했다"}
+  - {to: npc_aw_chirk, type: 재굴 길잡이, like: 35, trust: 50, visibility: 공개, memo: "냄새를 신뢰하는 후임", words: "자기 코가 모르는 것을 맡는 작은 크릭. 후계가 될 수 있다는 생각을 아직 입에 못 올린다"}
+  - {to: npc_goz, type: 경비대장, like: 20, trust: 40, visibility: 공개, memo: null, words: "방벽의 반쪽. 싸우지 않으면 쓰러지는 몸을 지켜보며 잔상 앞에서는 같은 쪽에 선다"}
+  - {to: npc_kyle_sandeye, type: 경쟁 사냥꾼, like: 10, trust: 20, visibility: 공개, memo: "잔상 주기표를 서로 안다", words: "같은 지도를 다른 눈으로 보는 사람. 교본 상자 이야기를 모른 척한다"}
+toward_player: "고개를 끄덕이고 규칙 셋부터 말한다"
+persuade:
+  likes: ["길 정보 (+25)", "잔상 경험담 (+30)", "후계로 쓸 사람을 데려오는 일 (+25)"]
+  hates: ["스물네 번째를 재촉하는 말 (+0)"]
+roles:
+  teacher: "가능 — 야외생존(황무지, 상한 80), 지구력(60), 추적·사냥(60). 조건: 규칙 셋을 소리 내어 지키며 황무지 가장자리 사흘 / 수업료: 길잡이 값 반"
+  companion: "조건부 — 스물네 번째 황무지행에서 동행 (신뢰 60 이상, 등불지기의 허락)"
+  romance: null
+regression:
+  fixed:
+    - "황무지에 23번 들어갔다 나왔다"
+    - "굳은 그림자가 '너는 또 왔구나'라고 했다"
+  drift:
+    - "그날 지도에서 지우는 점"
+  deja_vu: none
+affiliations:
+  - {faction: fac_last_lantern, rank: rank_guide, office: off_chief_guide, since: 305, loyalty: 65, public: true, cell: null}
+truths:
+  - {id: T04, level: rumor}
+hard_rules:
+  - "'너는 또 왔구나'를 먼저 입에 올리지 않는다"
+  - "스물네 번째라는 낱말을 먼저 꺼내지 않는다"
+  - "설교하지 않는다. 규칙과 길과 점으로 말한다"
+on_death: "황무지 길 지식이 치륵 하나로 줄어 사냥꾼 사망이 늘고 마지막 등불 유물 시장이 흔들린다. '너는 또 왔구나'의 청자가 사라진다."
+story_seeds:
+  - "모그의 스물네 번째 황무지행은 플레이어와 함께일 수 있다 — 굳은 그림자 곁에서 두 번째 목소리가 누구를 가리키는지 드러난다."

@@ -41,21 +41,21 @@ offices:
     perks: []
   - id: off_camp_commander
     title: 전쟁 숙영지 사령
-    holder: "unnamed:크로그 쇳주먹"
+    holder: npc_gm_krog
     reports_to: off_great_warlord
     powers: ["원정 병력 지휘", "비겁 판정 — 소모품 강등 또는 결투"]
     chosen_by: "대전쟁군주의 지명 (도전으로 대체 가능)"
     perks: []
   - id: off_arena_overseer
     title: 피의 감독 (원형장 관리)
-    holder: "unnamed:얄라 붉은손톱 (그롬 여성)"
+    holder: npc_gm_yala
     reports_to: off_great_warlord
     powers: ["투사 계약·대진표", "경기 거부 시 소모품 강등"]
     chosen_by: "대전쟁군주의 지명"
     perks: []
   - id: off_arena_judge
     title: 원형장 심판 (은퇴하지 않는 자)
-    holder: "unnamed:크롤 백상처 — 백승의 탈과 싸웠던 마지막 생존자"
+    holder: npc_gm_kroll
     reports_to: off_arena_overseer
     powers: ["경기 판정 — 도전의 성립·승패"]
     chosen_by: "종신 — 은퇴하지 않는다"
@@ -69,21 +69,21 @@ offices:
     perks: ["투사 1,200"]
   - id: off_bloodaxe_clan
     title: 피도끼 씨족장 (차기 후보)
-    holder: "unnamed:그라샤 피도끼 (38) — 이번 태양월 대축제에서 우르가쉬에게 도전할 예정"
+    holder: npc_gm_gracha
     reports_to: off_warlords
     powers: ["그롬마르 북부", "인간 투사를 '도끼날 훈련용'으로 소모"]
     chosen_by: "SK 2,700 창건 씨족 — 도전"
     perks: ["아우락스 지지"]
   - id: off_irongjaw_clan
     title: 쇠턱 씨족장 (세렌 용병)
-    holder: "unnamed:보르그 쇠턱 (52)"
+    holder: npc_gm_borg
     reports_to: off_warlords
     powers: ["그롬마르 항 — 노예선 경비, 세렌 테르사 상가와 용병 계약"]
     chosen_by: "AS 120 창건 씨족 — 도전"
     perks: ["멜리산드 지지(용병 고용)"]
   - id: off_ashhowl_shaman
     title: 재울음 주술사 (혈명 없는 혈명 의식 담당)
-    holder: "unnamed:노파 우르크 (74)"
+    holder: npc_gm_urk
     reports_to: off_warlords
     powers: ["100승자의 '혈명 없는 혈명' 의식(붉은 젖 — 분노샘의 짠 즙)", "탈의 잘린 목줄 보관"]
     chosen_by: "AS 40 잿빛 겨울에 세운 씨족의 주술사"
@@ -111,7 +111,7 @@ offices:
     perks: ["지하 배수로에서 탈의 대련 소리를 듣는다"]
   - id: off_battle_tongue_teacher
     title: 전투어 교사 (비공식)
-    holder: "unnamed:쉬라 피웃음 — 인간 투사에게 몰래 전투어를 가르치는 여전사"
+    holder: npc_gm_shira
     reports_to: off_arena_overseer
     powers: ["투사 훈련 보조"]
     chosen_by: "관리자의 묵인"
@@ -145,6 +145,14 @@ offices:
     chosen_by: "투사들의 신뢰"
     perks: []
 
+  - id: off_expendable_elder
+    title: "rank_expendable"
+    holder: npc_gm_kurt
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_great_warlord, title: "대전쟁군주", duties: "원형장의 주인, 도전을 받는다", privileges: "뼈의 전당", open_to_player: false}
   - {id: rank_warlord, title: "전쟁군주 (씨족장)", duties: "씨족 요새와 전사 지휘", privileges: "피의 소집 참석", open_to_player: false}

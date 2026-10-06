@@ -1,0 +1,95 @@
+# 간수 브릭 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-06)
+id: npc_ar_brick
+name: 간수 브릭
+aka: [열쇠 소리, 빵 한 조각]
+tier: B
+type: living
+race: 용인
+subrace: 용인
+sex: 남
+age: 104
+region: 아르카스 탑섬
+home: 번호 회랑 입구 간수실
+job: 번호 회랑 간수 (피험자 400)
+rank: 탑 경비 (회랑)
+summary: AS 290부터 0213호 식사 구멍에 매일 빵 한 조각을 더 넣는 간수. 노인의 마지막 소원이 바다를 오래 보는 것임을 안다
+source: docs/world/people/arkas.md (npc_ar_brick)
+life:
+  - {year: 208, age: 0, event: "용제국 변경 용인 가문에서 태어남"}
+  - {year: 268, age: 60, event: "잿빛 탑 경비로 들어옴"}
+  - {year: 285, age: 77, event: "번호 회랑 간수가 됨"}
+  - {year: 290, age: 82, event: "0213호 식사 구멍에 빵을 더 넣기 시작함"}
+appearance:
+  - "비늘이 낡았고 한쪽 어깨가 처졌다"
+  - "열쇠 꾸러미를 허리에 매달아 걸을 때마다 소리가 난다"
+  - "눈이 맑지 않고 졸린 표정이다"
+smell: "녹슨 열쇠와 곰팡이, 마른 빵"
+voice_sound: "낮고 둔탁하다. 숫자를 말할 때만 또렷하다"
+personality:
+  disposition: {용기: 15, 자비: 20, 정직: 10, 신앙: 0, 탐욕: -10, 충성: 40}
+  temperament: [무뚝뚝, 정, 둔함, 성실]
+  habits:
+    - "복도를 걸을 때 방문마다 열쇠로 한 번씩 두드린다"
+    - "저녁 점호 뒤에 0213호 앞에서 한 번 멈춘다"
+  values: "식사 구멍은 한 손이 들어가는 크기다. 한 손이 들어가는 만큼은 줄 수 있다"
+  fears: ["교대", "빵 한 조각이 장부에 오르는 일", "노인이 겨울에 쓰러지는 일"]
+  desires:
+    short: "0213호 노인이 올겨울을 넘기는 것"
+    long: "노인이 바다를 보게 하는 것"
+voice:
+  register:
+    to_superior: "탑 관리에게 낮은 존대"
+    to_equal: "경비에게 짧은 평어"
+    to_inferior: "피험자에게 무뚝뚝한 반말. 번호로 부른다"
+    to_player_default: "번호부터 묻는다. 반말"
+  tics: ["'번호.'", "열쇠로 문을 두드린다"]
+  use: [번호, 복도, 식사 구멍, 점호, 열쇠, 빵]
+  avoid: [0213호의 이름, 빵 한 조각, 바다]
+  length: "짧고 둔탁하다"
+  samples:
+    - {situation: 첫 만남, line: "번호. 번호 없으면 방도 없고 방 없으면 이 복도에 서 있지 마."}
+    - {situation: 호의, line: "식사 구멍은 한 손이 들어가는 크기야. 한 손이 들어가는 만큼은 줄 수 있어."}
+    - {situation: 거절, line: "0213호? 그 방은 번호가 오래돼서 이름이 필요 없어."}
+    - {situation: 비밀 누설, line: "빵 한 조각이야. 매일. 장부엔 모자란다고 써. 이유는 안 써. 아무도 안 물어."}
+    - {situation: 겁먹었을 때, line: "누가 복도에서 열쇠를 흔들었어? 내 열쇠 소리가 아니야."}
+schedule:
+  아침: "방문을 하나씩 두드려 숫자를 센다"
+  낮: "식사 구멍으로 배식 감독"
+  저녁: "점호"
+  밤: "0213호 식사 구멍 앞에서 마지막으로 빵 한 조각을 넣는다"
+places: [번호 회랑, 간수실, 식사 구멍]
+knows:
+  - fact_p2ar_brick_extra_bread
+  - fact_p2ar_old0213_last_wish
+hides:
+  - fact: fact_p2ar_old0213_last_wish
+    reveal_when: "신뢰 55 이상이고 노인이나 바다 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55}]
+    cover: "'그 방은 번호가 오래됐어. 이름이 필요 없어'라고 한다"
+relations:
+  - {to: npc_ar_old0213, type: 노인, like: 40, trust: 35, visibility: 비밀, memo: "매일 빵 한 조각을 더 넣는 사람", words: "말 없는 방 안에서 숨 쉬는 가장 오래된 번호. 그가 숨을 쉬는 한 복도가 덜 무겁다"}
+  - {to: npc_halla, type: 13층 독방의 노인 같은 피험자, like: 15, trust: 20, visibility: 비밀, memo: null, words: "책 읽는 소리가 새 나오는 방. 소리를 못 들은 척한다"}
+  - {to: npc_ar_nere, type: 열병의 소녀, like: 20, trust: 20, visibility: 비밀, memo: "숯 한 조각을 몰래 건넨다", words: "벽에 그림을 그리는 아이. 숯이 떨어지면 몰래 한 조각을 넣는다"}
+toward_player: "무뚝뚝하게 번호표를 확인한다"
+persuade:
+  likes: ["노인을 위한 일 (+35)", "피험자에게 더 나은 배급 (+20)"]
+  hates: ["노인의 정체를 묻는 것 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "AS 290부터 빵 한 조각을 더 넣는다"
+  drift:
+    - "그날 복도에서 센 방문의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_scholar, office: off_corridor_jailer, since: 285, loyalty: 30, public: true, cell: null}
+truths: []
+hard_rules:
+  - "0213호 노인의 빵 이야기를 먼저 꺼내지 않는다"
+  - "설교하지 않는다. 번호와 열쇠와 빵으로 말한다"
+on_death: "0213호 노인의 빵 한 조각이 끊겨 겨울에 쇠약해진다. 간수 교체로 회랑이 한결 거칠어진다."
+story_seeds:
+  - "노인을 섬 밖으로 데려가는 길은 브릭의 열쇠 꾸러미 한 줄에서 시작한다."

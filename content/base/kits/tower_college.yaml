@@ -1,0 +1,114 @@
+# 지역 생성 키트 — 학회 탑섬 (25_REGION_KITS.md). 아르카스 잿빛 탑과 그 부두, 재눈 초소, 그리고 학회가 사냥꾼·서기를 풀어 놓는 곳.
+# 원천: REGIONS §10(10.3 지배 구조·10.5 인간의 삶·10.7 법·10.8 문화), HOUSES §5.8(학파·일곱 원로), fac_ashen_tower, docs/world/people/arkas.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_ashen_tower.decision / forbidden_topics / law 를 본다. 여기에는 '탑에만 있는 재료'(번호 회랑, 구멍 글, 낭독 논문, 시간 민감한 자의 같은 줄, 관측의 밤)를 더한다.
+# 핵심: 가장 친절한 감옥이다. 학자는 이해하려 하고 사냥꾼은 잡아 오고 서기는 모양을 베낀다 — 인간은 피험자이거나 서기이거나 잡역이다. 시간에 민감한 자(탑주·측정관)는 회차가 쌓일수록 같은 줄을 장부에 쓴다.
+id: kit_tower_college
+applies_to: [아르카스 잿빛 탑, 아르카스 부두, 재눈 초소(재의 황무지), 세렌 오필 상가 필경소(서기 부분), 학회 수집관 숙소]
+reuses: []
+faction_refs: [fac_ashen_tower, fac_bold, fac_seren, fac_trace_keepers, fac_nameless]
+names:
+  용인:
+    male: [이레네, 마티스, 카르바, 라일, 오르벨, 브릭, 도미닉, 세레나, 오렐, 바르텐, 에이크]
+    female: [이레네, 세레나, 브란, 엘다]
+    epithet_rule: "이름 + 직무(금고지기 오르벨·시간 측정관 라일). 학파 수장은 '○○ 원로'. 볼드 가문 소속은 성 볼드를 붙인다"
+    age_rule: "용인은 100~300세. 학자는 나이가 곧 논문 수. 탑주 이레네 170세(비늘이 거의 없는 비늘혈) — 자신을 '용인보다 학자'라 부른다"
+  나가:
+    male: [오필, 이쉬, 세렌 출신 이름]
+    note: "탑 안 나가 40 — 부두·보급. 오필 시라는 세렌 의석주 겸임. 라미아 부두장 이쉬는 세렌 상관 소속"
+  하르칸·크릭·두르강·엘다르·녹테른:
+    note: "학자 일곱 의자 — 엘다르 나엘리스(은이슬), 녹테른 발타사르(흑수정), 두르강 해그(룬새김), 하르칸 보르테(바람실), 크릭 틱(셈쟁이). 각자 바깥 주인에게 먼저 보고한다"
+  인간:
+    # 서기 노예와 피험자는 번호와 별명으로 불린다. 이름은 구멍 글 안에서만. 전 서기는 필사 손이 굳으면 바위로 쫓겨난다.
+    male: [마일로, 요나, 하든, 에반, 조개, 틸]
+    female: [헤스터, 마르가, 데사, 네레, 요나, 할라, 브리타]
+    contract_id: "서기: 번호 대신 '필사대 줄 + 자리'(예: 셋째 줄 열둘째). 피험자: 방 번호(0213·0307). 이름은 아는 사람끼리 입 모양으로만"
+    epithet_rule: "서기 별명은 몸과 일에서(먹물 할멈·잉크·판자 틈). 피험자는 방 번호가 이름이다 — 네레는 '이름이 먼저'라고 우긴다"
+classes:            # 잿빛 탑 기준 (섬 인구 약 1,600). 계급은 일곱 의자와 번호 회랑으로 갈라진다
+  원로·정학자: 0.02
+  학자·측정관·사냥꾼: 0.17
+  경비(용인): 0.05
+  크릭 잡역: 0.12
+  나가 부두·보급: 0.03
+  인간 서기 노예: 0.11
+  인간 피험자: 0.25
+  인간 잡역(식당·의무·청소): 0.25
+jobs:
+  - {id: scholar_naga_dragon, name: 학자 (용인·나가 — 학파 소속), class: 학자·측정관·사냥꾼, race: 용인, weight: 12, schedule: sch_scholar}
+  - {id: measurer, name: 측정관·균열학파 학자, class: 학자·측정관·사냥꾼, race: 용인, weight: 3, schedule: sch_measurer}
+  - {id: grey_eye_hunter, name: 잿빛 눈 사냥꾼 (섬에 있는 대기조), class: 학자·측정관·사냥꾼, race: 인간, weight: 2, schedule: sch_hunter_tower}
+  - {id: guard_dragonkin, name: 탑 경비 (용인), class: 경비(용인), race: 용인, weight: 5, schedule: sch_guard_tower}
+  - {id: jailer, name: 번호 회랑 간수, class: 경비(용인), race: 용인, weight: 2, schedule: sch_jailer}
+  - {id: clerk_slave, name: 서기 노예 (필사대), class: 인간 서기 노예, race: 인간, weight: 11, schedule: sch_clerk}
+  - {id: clerk_hole, name: 구멍 글 서기, class: 인간 서기 노예, race: 인간, weight: 3, schedule: sch_clerk_hole}
+  - {id: subject, name: 피험자 (번호 회랑), class: 인간 피험자, race: 인간, weight: 22, schedule: sch_subject}
+  - {id: subject_cooperative, name: 협조 피험자, class: 인간 피험자, race: 인간, weight: 3, schedule: sch_subject_coop}
+  - {id: mess_slave, name: 식당 급식 노예, class: 인간 잡역(식당·의무·청소), race: 인간, weight: 6, schedule: sch_mess}
+  - {id: medic_slave, name: 약사·간병 노예, class: 인간 잡역(식당·의무·청소), race: 인간, weight: 3, schedule: sch_medic}
+  - {id: cleaner, name: 청소·짐 잡역 (인간), class: 인간 잡역(식당·의무·청소), race: 인간, weight: 9, schedule: sch_cleaner}
+  - {id: krik_porter, name: 크릭 잡역 (짐·하역), class: 크릭 잡역, race: 크릭, weight: 10, schedule: sch_krik_tower}
+  - {id: dock_naga, name: 부두 나가 (보급·입항), class: 나가 부두·보급, race: 나가, weight: 3, schedule: sch_dock_naga}
+schedules:          # at = 정착지 틀의 역할. 새벽 측정 06:00, 정오 귀리죽, 저녁 점호 18:00, 소등 22:00
+  sch_scholar:   [{days: all, from: "06:00", to: "09:00", at: scholar_rooms, doing: 서재에서 논문을 쓴다}, {days: all, from: "09:00", to: "12:00", at: archive, doing: 서고에서 자료를 뒤진다}, {days: all, from: "12:00", to: "13:00", at: mess, doing: 정오 귀리죽, fixed: true}, {days: all, from: "13:00", to: "18:00", at: scholar_rooms, doing: 학파 회의와 실험 보고}, {days: all, from: "18:00", to: "22:00", at: scholar_rooms, doing: 저녁 점호와 서신}, {days: all, from: "22:00", to: "06:00", at: scholar_rooms, doing: 잔다}]
+  sch_measurer:  [{days: all, from: "06:00", to: "09:00", at: listening_room, doing: 측정 바늘을 재 본다}, {days: all, from: "09:00", to: "13:00", at: scholar_rooms, doing: 징후 보고서를 대조한다}, {days: all, from: "13:00", to: "18:00", at: listening_room, doing: 측정 수정을 닦는다}, {days: all, from: "18:00", to: "24:00", at: scholar_rooms, doing: 장부에 '측정 오차'를 적는다}]
+  sch_hunter_tower: [{days: all, from: "06:00", to: "12:00", at: grey_eye_office, doing: 보고서를 서면으로 쓴다}, {days: all, from: "12:00", to: "18:00", at: guard_barracks, doing: 훈련과 대기}, {days: all, from: "18:00", to: "24:00", at: grey_eye_office, doing: 현상금 장부를 본다}]
+  sch_guard_tower: [{days: all, from: "06:00", to: "14:00", at: gate, doing: 정문과 마당을 순찰한다}, {days: all, from: "14:00", to: "22:00", at: guard_barracks, doing: 막사에서 교대·훈련}, {days: all, from: "22:00", to: "06:00", at: guard_barracks, doing: 야간 대기}]
+  sch_jailer:    [{days: all, from: "05:00", to: "08:00", at: corridor, doing: 방문을 두드려 숫자를 센다}, {days: all, from: "08:00", to: "13:00", at: mess, doing: 식사 구멍으로 배식을 감독한다}, {days: all, from: "13:00", to: "18:00", at: corridor, doing: 복도 순찰}, {days: all, from: "18:00", to: "22:00", at: corridor, doing: 저녁 점호, fixed: true}, {days: all, from: "22:00", to: "05:00", at: corridor, doing: 간수실에서 야간 대기}]
+  sch_clerk:     [{days: all, from: "05:00", to: "06:00", at: scribe_dorm, doing: 기상 점호}, {days: all, from: "06:00", to: "12:00", at: dust_desk, doing: 필사대 — 모양만 베낀다, fixed: true}, {days: all, from: "12:00", to: "13:00", at: mess, doing: 정오 귀리죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: dust_desk, doing: 오후 필사}, {days: all, from: "19:00", to: "22:00", at: scribe_dorm, doing: 숙소에서 쉰다}, {days: all, from: "22:00", to: "05:00", at: scribe_dorm, doing: 잔다}]
+  sch_clerk_hole: [{days: all, from: "06:00", to: "19:00", at: dust_desk, doing: 필사하며 여백에 바늘 구멍을 낸다, fixed: true}, {days: all, from: "19:00", to: "22:00", at: hole_hidden, doing: 숙소 판자 틈에 사본을 넣는다}, {days: all, from: "22:00", to: "06:00", at: scribe_dorm, doing: 판자 곁에서 잔다}]
+  sch_subject:   [{days: all, from: "06:00", to: "09:00", at: cell, doing: 새벽 측정 — 맥박과 잔상 반응}, {days: all, from: "09:00", to: "12:00", at: cell, doing: 질문과 꿈 기록}, {days: all, from: "12:00", to: "13:00", at: mess, doing: 정오 귀리죽, fixed: true}, {days: all, from: "13:00", to: "18:00", at: cell, doing: "'자극' 시간 또는 방에서 쉰다"}, {days: all, from: "18:00", to: "22:00", at: cell, doing: 저녁 점호와 벽 너머 이웃과 이야기}, {days: all, from: "22:00", to: "06:00", at: cell, doing: 잔다 — 방문은 밖에서 잠긴다}]
+  sch_subject_coop: [{days: all, from: "06:00", to: "09:00", at: cell, doing: 측정에 자원한다}, {days: all, from: "09:00", to: "13:00", at: scholar_rooms, doing: 학자에게 불려 질문에 답한다}, {days: all, from: "13:00", to: "18:00", at: mess, doing: 더 나은 급식을 받는다}, {days: all, from: "18:00", to: "06:00", at: cell, doing: 방}]
+  sch_mess:      [{days: all, from: "04:00", to: "09:00", at: mess, doing: 귀리죽을 끓인다}, {days: all, from: "09:00", to: "14:00", at: mess, doing: 배식 — 번호를 부른다, fixed: true}, {days: all, from: "14:00", to: "22:00", at: mess, doing: 솥을 닦고 남은 그릇을 센다}, {days: all, from: "22:00", to: "04:00", at: mess, doing: 부엌 방에서 잔다}]
+  sch_medic:     [{days: all, from: "05:00", to: "09:00", at: infirmary, doing: 약초를 말린다}, {days: all, from: "09:00", to: "14:00", at: corridor, doing: 회랑 순회 — 열병과 결핵}, {days: all, from: "14:00", to: "22:00", at: infirmary, doing: 약을 달이고 후유증 환자를 돌본다}, {days: all, from: "22:00", to: "05:00", at: infirmary, doing: 의무실 곁 방에서 잔다}]
+  sch_cleaner:   [{days: all, from: "05:00", to: "12:00", at: courtyard, doing: 마당·계단 청소, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: mess, doing: 정오 귀리죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: tower, doing: 층계와 학자실 청소}, {days: all, from: "19:00", to: "05:00", at: scribe_dorm, doing: 잡역 숙소}]
+  sch_krik_tower: [{days: all, from: "05:00", to: "18:00", at: gate, doing: 짐과 마대를 나른다}, {days: all, from: "18:00", to: "05:00", at: guard_barracks, doing: 막사 곁 크릭 숙소}]
+  sch_dock_naga: [{days: all, from: "05:00", to: "10:00", at: pier, doing: 입항 배를 맞는다}, {days: all, from: "10:00", to: "18:00", at: warehouse, doing: 화물 창고 점검}, {days: all, from: "18:00", to: "05:00", at: harbor_office, doing: 부두 사무소}]
+voices:             # 말투 원형 — 학자는 조용히 정확하고 서기는 숨기고 피험자는 번호로 말한다
+  - {id: v_tower_scholar, name: 학자, register: "질문하듯 말한다. 논문 문장이 섞인다. 상대의 학습 곡선·꿈·언어 수를 묻는다. 인간은 '피험자' 또는 '서기'로 부른다", tics: ["'질문은 셋.'", "'측정 오차'"], use: [측정, 오차, 학파, 논문, 시험, 곡선], avoid: [윤리, 아이, 사람(먼저)], sample: "앉아요. 질문은 셋. 꿈을 꿉니까? 몇 개 언어를 압니까? 처음 가는 길을 안 적이 있습니까?"}
+  - {id: v_tower_clerk, name: 서기 노예, register: "낮고 소리 죽인 말. 눈은 문서. 모양과 숫자만 말하고 의미는 입에 올리지 않는다", tics: ["'저는 모양만 베껴요.'"], use: [모양, 필사, 숫자, 구멍, 바늘], avoid: [읽다, 뜻, 이름], sample: "저는 모양만 베껴요. 구멍은 종이가 원래 가진 거고요."}
+  - {id: v_tower_subject, name: 피험자, register: "번호로 소개한다. 짧고 조용한 말. 벽 너머 이웃과는 다정한 반말. 학자에게는 작은 존댓말", tics: ["'번호는…'", "'이름이 먼저예요.'"], use: [번호, 방, 측정, 꿈, 벽], avoid: [징후(스스로), 시험], sample: "네레예요. 번호는 0307이고요. 이름이 먼저예요."}
+  - {id: v_tower_hunter, name: 잿빛 눈 사냥꾼, register: "짧은 반말. 이름 없이 어디서 걸어왔는지 묻는다. 서면으로 말하는 것을 좋아한다", tics: ["'어디서 걸어왔나.'"], use: [걸음, 사냥꾼, 열둘, 현상금, 서면], avoid: [가짜 징후, 얼굴], sample: "이름은 필요 없다. 어디서 걸어왔는지만 말해라."}
+  - {id: v_tower_guard, name: 경비·간수, register: "무뚝뚝한 반말. 번호부터 묻는다. 열쇠 소리로 대답하기도 한다", tics: ["'번호.'"], use: [번호, 복도, 점호, 열쇠], avoid: [이름, 바다], sample: "번호. 번호 없으면 방도 없고 방 없으면 이 복도에 서 있지 마."}
+  - {id: v_tower_harbor, name: 부두 사람, register: "짧은 인사와 허가증. 세렌 상인어 섞인 말. 값을 은근히 센다", tics: ["'허가증.'"], use: [허가증, 입항, 귀리, 폭풍, 열쇠], avoid: [297, 물통], sample: "허가증. 인간이면 서기 표식이나 피험자 번호."}
+temperaments: [정확, 냉정, 호기심, 겁, 헌신, 은밀, 고독, 집요, 인내, 건조, 다정, 속정, 의심, 체념, 고집]
+tower_customs:      # 탑에서만 있는 것 — 법·금기 본문은 fac_ashen_tower.decision / forbidden_topics, REGIONS §10.7·§10.8
+  - "서기는 모양만 베낀다 — 의미를 읽는 것이 들키면 피험자로 옮겨진다. 소리 내어 읽는 것은 금기. 서기들은 바늘 구멍 '구멍 글'로 서로만 읽는다"
+  - "계절 첫날(해빙·푸른·포도·긴밤월) 7층 강당에서 낭독 논문. 같은 학파 정학자 셋의 봉인 도장을 받으면 탑의 지식이 된다"
+  - "매달 그믐 일곱 의자 원탁 — 일곱 원로 중 넷이면 통과. 탑주는 봉인 서가·시간 유리 칼·수집실의 거부권"
+  - "관측의 밤(재의 날 5일째) — 피험자 전원이 탑 마당에 선다. 누가 '반응'하는지 본다"
+  - "피험자는 방 번호로 불린다. 이름이 있는 사람은 벽 너머 이웃뿐이다. 서기는 '필사대 줄과 자리'"
+  - "굶주림월 폭풍철에는 섬이 고립되고 피험자 배급이 절반이 된다. 부두장의 비밀 식량이 서기·잡역 인간을 먹인다"
+  - "섬 안에는 시장이 없다. 서기 노예들끼리 '잉크 방울'(몰래 모은 잉크)을 화폐처럼 쓴다"
+  - "시간에 민감한 자(탑주·측정관)는 낙엽월 1일 저녁 6시 칼이 한 번 차가워지는 것을 매 회차 적는다 — 기억하지 못한 채"
+settlement_templates:
+  - id: tpl_tower_college
+    name: 학회 탑섬 (잿빛 탑형)
+    grid: {w: 700, h: 560}
+    roles:
+      gate:            {count: [1, 1], place: "북쪽", access: staff, name: 탑 정문}
+      courtyard:       {count: [1, 1], place: "정문 안쪽", access: staff, name: 탑 마당}
+      tower:           {count: [1, 1], place: "가운데", access: staff, name: 탑 (열일곱 층)}
+      scholar_rooms:   {count: [1, 2], place: "탑 아래층", access: staff, name: 학자실}
+      listening_room:  {count: [0, 1], place: "탑 꼭대기", access: staff, name: 귀 기울이는 방}
+      grey_eye_office: {count: [0, 1], place: "탑 아래층", access: staff, name: 잿빛 눈 사무실}
+      archive:         {count: [1, 1], place: "동쪽 별관", access: staff, name: 재의 서고}
+      dust_desk:       {count: [1, 1], place: "서고 안", access: staff, name: 필사대}
+      hole_hidden:     {count: [0, 1], place: "서고 뒤", access: secret, name: 숙소 판자 틈}
+      scribe_dorm:     {count: [1, 1], place: "서고 곁", access: serf, name: 서기 숙소, locked: "22:00-05:00"}
+      mess:            {count: [1, 1], place: "서쪽", access: serf, name: 피험자 식당}
+      corridor:        {count: [1, 1], place: "남쪽 아래", access: staff, name: 번호 회랑}
+      cell:            {count: [20, 400], place: "회랑 안", access: locked, name: 번호 방}
+      infirmary:       {count: [1, 1], place: "회랑 곁", access: staff, name: 의무실}
+      guard_barracks:  {count: [1, 1], place: "동쪽", access: staff, name: 경비 막사}
+      vault:           {count: [0, 1], place: "탑 지하", access: locked, name: 탑 금고}
+    outer:
+      harbor:   {hours: [6.0, 6.0], name: 아르카스 부두}
+      rock:     {hours: [0.1, 0.1], name: 등대 바위 (썰물에 걸어서)}
+  - id: tpl_tower_harbor
+    name: 학회 부두 (아르카스 부두형)
+    grid: {w: 500, h: 360}
+    roles:
+      pier:           {count: [1, 1], place: "북쪽", access: staff, name: 부두}
+      harbor_office:  {count: [1, 1], place: "부두 곁", access: staff, name: 부두장 사무소}
+      warehouse:      {count: [1, 2], place: "동쪽", access: staff, name: 화물 창고}
+      pens:           {count: [1, 1], place: "서쪽", access: staff, name: 하선 우리, locked: "점호 외에는 닫힘"}
+calendar_ref: "content/base/events/arkas_312.yaml — 아르카스 탑섬 사건 달력"

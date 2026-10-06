@@ -1,0 +1,47 @@
+# 아르카스 탑섬 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §10(관측의 밤·폭풍철·조수 동굴), WORLD_BIBLE §8·§10(클락 2 맹약회의 313: 서약섬 태양월 1~11일, 클락 4 황무지 확장), fac_ashen_tower(계절 첫날 낭독 논문·그믐 일곱 의자), facts/arkas.yaml·phase2_arkas.yaml, docs/world/people/arkas.md.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림 13 재의 날(5일). 굶주림월 폭풍철에는 소금 바닷길 운항이 중지되어 섬이 고립된다.
+# 다른 지역과의 연결: 312-09-01 저녁 6시(회귀점) 귀 기울이는 방 바늘 / 312-11-09 피험자 하선(그롬마르 봉화) / 312-13-05 관측의 밤 / 313-03-15 흰 알 부화 — 코르비나의 하늘 기록과 세렌 시렌나의 알 / 313-04-29 탑의 배(이레네·오필)가 서약섬으로(맹약회의 5/1~11), 5/14 귀환, 5/20 '인간 증언' 소식이 서기실에 닿는다 / 매달 1일 오필이 세렌 의회 정기 회기에 오르내린다.
+# 시간 민감: 이레네·라일의 기시감 단계는 카드의 deja_vu_steps. 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에. 쉼표가 든 값은 큰따옴표로.
+
+# ── 낙엽월 (9) — 회귀점의 저녁 ──
+- {id: ev_ar_sep1_needle, date: "312-09-01", npcs: [npc_irene_bold, npc_ar_rail, npc_ar_mathis, npc_corvina], from: "17:30", to: "19:00", at: gt_listening_room, doing: "회귀점의 저녁 6시 — 측정 바늘이 같은 자리에서 튄다. 라일의 손바닥 위에서 둘째 칼이 한 번 차가워지고 이레네가 장부에 '설명되지 않는 기시감. 북쪽.'을 쓴다", fixed: true}
+- {id: ev_ar_sep_fisher_stone, date: "312-10-01", npcs: [npc_ar_fisher], from: "05:00", to: "08:00", at: gt_tide_graves, doing: "서리월 첫 썰물 — 서른둘째 돌을 놓는다. 이름 없는 아이 하나에게. 조수 무덤 동굴이 두 시간만 열린다", travel_from: gt_lighthouse_rock, return_to: gt_lighthouse_rock, fixed: true}
+# ── 서리월 (10) ──
+- {id: ev_ar_oct_grey_wobble, date: "312-10-09", npcs: [npc_ar_mathis, npc_ar_rail], from: "20:00", to: "23:00", at: gt_listening_room, doing: "회색여울 쪽 표시가 한 칸 더 튄다 — 마티스가 이졸의 목록과 대조하지 않은 채 지도에 손을 얹고, 라일은 장부에 '측정 오차'를 한 줄 더 쓴다"}
+- {id: ev_ar_oct_opil_seren_report, date: "312-10-21", npcs: [npc_ar_opil, npc_sr_lis], from: "10:00", to: "16:00", at: sr_opil_house, doing: "탑 연구 보고의 사본이 세렌 필경소에 열흘 먼저 닿는다 — 오필이 리스가 베낀 한 장을 자기 서랍에 넣는다", travel_from: gt_scholar_rooms, return_to: gt_scholar_rooms}
+# ── 긴밤월 (11) ──
+- {id: ev_ar_nov_reading_1, date: "312-11-01", npcs: [npc_ar_opil, npc_ar_borte, npc_ar_tik, npc_ar_rail, npc_irene_bold, npc_ottilie], from: "09:00", to: "18:00", at: gt_lecture_hall, doing: "긴밤월 첫날 낭독 논문 — 일곱 층 강당에서 학자가 논문을 읽고 같은 학파 정학자 셋의 봉인 도장을 받는다. 틱은 숫자가 든 논문 한 장을 읽지 않고 내려온다", fixed: true}
+- {id: ev_ar_nov_landing, date: "312-11-09", npcs: [npc_ar_ishi], from: "17:00", to: "21:00", at: ar_landing_pens, doing: "탑이 피험자 열둘을 하선시키는 날 — 이쉬가 번호 팔찌를 채우고 점호한다. 열쇠 꾸러미를 한 번 더 흔든다", travel_from: ar_harbor_office, fixed: true}
+- {id: ev_ar_nov_beacon, date: "312-11-09", npcs: [npc_ar_fisher], from: "23:00", to: "24:00", at: gt_lighthouse_rock, doing: "한 해에 한 번의 봉화 — 하선의 밤 조개가 옛 봉화대에 불을 피운다. 그롬마르 쪽 수평선 너머에 작은 불이 한 번 응답한다"}
+- {id: ev_ar_nov_third_test, date: "312-11-20", npcs: [npc_irene_bold, npc_ar_nere, npc_ar_brick, npc_ar_dessa], from: "21:00", to: "24:00", at: gt_collection_room, doing: "셋째 시험 열다섯째 — 후보 하나가 수집실로 내려간다. 진룡 비늘 조직 미량 이식. 네레의 문 앞에서 발소리가 멈춘다", if: third_test_15, fixed: true}
+# ── 굶주림월 (12) — 폭풍철 ──
+- {id: ev_ar_dec_storm_start, date: "312-12-01", npcs: [npc_ar_ishi], from: "05:00", to: "10:00", at: ar_pier, doing: "굶주림월 폭풍철 — 마지막 배가 떠난다. 섬이 고립되고 피험자 배급이 절반으로 줄어든다. 이쉬가 부두 문을 닫고 열쇠를 한 번 더 흔든다", fixed: true}
+- {id: ev_ar_dec_secret_store, date: "312-12-15", npcs: [npc_ar_ishi, npc_ar_marga], from: "22:00", to: "24:00", at: ar_warehouse, doing: "비밀 식량 창고를 연다 — 귀리 서른 자루 가운데 열을 서기와 잡역 인간 몫으로 푼다. 마르가가 한 마대를 식당 쪽으로 옮긴다"}
+- {id: ev_ar_dec_old_cough, date: "312-12-20", npcs: [npc_ar_brick, npc_ar_old0213, npc_ar_dessa], from: "21:00", to: "24:00", at: gt_cell_0213, doing: "노인이 굶주림월 첫 기침을 한다 — 브릭이 식사 구멍에 빵을 한 조각 더 넣고 데사가 쑥 달인 물을 한 병 밀어 넣는다"}
+# ── 재의 날 (13) — 관측의 밤 ──
+- {id: ev_ar_ash_day_obs, date: "312-13-05", npcs: [npc_irene_bold, npc_ar_mathis, npc_ar_rail, npc_corvina, npc_ar_karba, npc_ar_nere, npc_ar_brick], from: "20:00", to: "24:00", at: gt_courtyard, doing: "재의 날 5일째 관측의 밤 — 피험자 전원이 탑 마당에 선다. 누가 '반응'하는지 보려는 밤. 코르비나가 하늘 기록에 두 번째 별을 적고 라일은 칼을 쥔 손을 소매에 감춘다", fixed: true}
+- {id: ev_ar_ash_day_hole, date: "312-13-03", npcs: [npc_ar_hester, npc_ar_yona, npc_milo], from: "22:00", to: "24:00", at: gt_hole_hidden, doing: "재의 날 — 불이 없는 밤 서기들이 판자 틈 곁에서 구멍 글 한 장을 손가락으로만 읽는다. 아스테리온의 이름이 구멍 하나로 쓰인다"}
+# ── 313 해빙월 (1) ──
+- {id: ev_ar_jan_reading_2, date: "313-01-01", npcs: [npc_ar_opil, npc_ar_borte, npc_ar_tik, npc_ar_rail, npc_irene_bold, npc_ottilie], from: "09:00", to: "18:00", at: gt_lecture_hall, doing: "해빙월 첫날 낭독 논문 — 보르테가 바람 지도 첫 장을 읽는다. 일곱 의자의 넷이 봉인 도장을 찍는다", fixed: true}
+# ── 313 꽃월 (3) — 흰 알 ──
+- {id: ev_ar_mar_second_star, date: "313-03-15", npcs: [npc_corvina, npc_ar_borte], from: "21:00", to: "24:00", at: gt_listening_room, doing: "흰 알이 깨지는 밤 — 코르비나가 하늘 기록에 두 번째 별을 적고 첫 별만 탑에 올릴 문서에 옮긴다. 보르테가 같은 시각 마당의 바람이 거꾸로 부는 것을 느낀다", fixed: true}
+# ── 313 푸른월 (4) ──
+- {id: ev_ar_apr_reading_3, date: "313-04-01", npcs: [npc_ar_borte, npc_ar_tik, npc_ar_rail, npc_ottilie, npc_irene_bold], from: "09:00", to: "18:00", at: gt_lecture_hall, doing: "푸른월 첫날 낭독 논문 — 맹약회의 313에 올릴 탑의 학술 의견 초안이 읽힌다. 틱이 숫자 이야기가 빠진 것을 보고 입술을 떤다", fixed: true}
+- {id: ev_ar_apr_delegation, date: "313-04-29", npcs: [npc_irene_bold, npc_ar_opil], from: "18:00", to: "22:00", at: ar_pier, doing: "탑의 배가 서약섬으로 출발한다 — 이레네가 허리의 셋째 칼을 칼집째 쥐고 오른다. 오필이 두 곳의 기록 보따리를 나눠 든다. 바닷길 26시간", travel_from: gt_master_room, fixed: true}
+# ── 313 태양월 (5) — 맹약회의 313 ──
+- {id: ev_ar_may1_oath_arrive, date: "313-05-01", npcs: [npc_irene_bold, npc_ar_opil], from: "00:00", to: "24:00", at: oath_isle, doing: "서약섬 도착 — 탑의 천막이 선다. 이레네가 '진짜는 하나'라는 학술 의견을 한 줄 고쳐 쓴다. 오필이 세렌 천막과 탑 천막 사이를 오간다", fixed: true}
+- {id: ev_ar_may_oath_mid, date: "313-05-06", npcs: [npc_irene_bold, npc_ar_opil], from: "09:00", to: "18:00", at: oath_isle, doing: "서약섬의 열하루 한가운데 — 인간 증언 안건에 탑의 학술 의견이 요구된다. 이레네는 '연구 대상'이라는 말을 쓰지 않는다"}
+- {id: ev_ar_may14_return, date: "313-05-14", npcs: [npc_irene_bold, npc_ar_opil], from: "04:00", to: "10:00", at: ar_pier, doing: "탑의 배가 돌아온다 — 이레네는 아무 말 없이 탑 길로 오르고 오필은 세렌 쪽 보고를 먼저 쓴다", fixed: true}
+- {id: ev_ar_may20_news, date: "313-05-20", npcs: [npc_ar_hester, npc_milo, npc_ar_yona, npc_ottilie], from: "21:00", to: "24:00", at: gt_dust_desk, doing: "맹약회의 소식이 서기실에 닿는다 — '인간 증언'이라는 말이 서기들의 구멍 글에 첫 줄로 올라간다. 헤스터가 '아직 소리 내지 마'라고만 한다"}
+# ── 313 건초월·수확월 ──
+- {id: ev_ar_jun_borte_cough, date: "313-06-12", npcs: [npc_ar_borte, npc_ar_dessa], from: "20:00", to: "23:00", at: gt_infirmary, doing: "여름 마른 바람 — 보르테의 기침이 깊어져 데사가 쑥 달인 물을 건넨다. 보르테가 처음으로 기침의 이유를 말하지 않고 약만 받는다"}
+- {id: ev_ar_jul_tik_count, date: "313-07-18", npcs: [npc_ar_tik, npc_ar_opil], from: "10:00", to: "14:00", at: gt_ash_archive, doing: "틱이 아홉 번째 셈을 마친다 — 숫자가 또 한 자리 바뀌었다. 오필이 '숫자는 팔 때 값이 정해진다'고 말하고 틱은 매듭만 쥔다"}
+# ── 매달 반복 ──
+- {id: ev_ar_monthly_round, npcs: [npc_ar_opil, npc_ar_borte, npc_ar_tik, npc_irene_bold], repeat: monthly, day: 30, from: "18:00", to: "24:00", at: gt_round_table, doing: "그믐 일곱 의자 원탁 — 나머지 원로(실바렌·녹테른·카즈둠)는 대리 서한으로 참석한다. 넷이면 안건이 통과한다", fixed: true}
+- {id: ev_ar_monthly_opil_council, npcs: [npc_ar_opil], repeat: monthly, day: 1, from: "09:00", to: "17:00", at: sr_chamber, doing: "세렌 의회 정기 회기 — 제5의석 의석주로 앉는다. 탑의 새 보고를 의석주들의 계약안에 끼워 올린다", travel_from: gt_scholar_rooms, return_to: gt_scholar_rooms}
+- {id: ev_ar_monthly_irene_letters, npcs: [npc_irene_bold], repeat: monthly, day: 5, from: "13:00", to: "18:00", at: gt_master_room, doing: "서신 네 통 — 멜리산드·아에린·마테우스·이졸. 이졸에게는 '이번 분기 숫자는?'이라고만 쓴다"}
+- {id: ev_ar_monthly_corvina_kirie, npcs: [npc_corvina], repeat: monthly, day: 15, from: "22:00", to: "24:00", at: gt_listening_room, doing: "하늘 기록의 두 번째 사본을 바람의 여왕 키리에에게만 보낼 서한으로 옮긴다. 탑에 올릴 사본에서는 한 줄이 빠진다"}
+- {id: ev_ar_monthly_ottilie_book, npcs: [npc_ottilie, npc_ar_dessa], repeat: monthly, day: 9, from: "21:00", to: "22:30", at: gt_cell_13f, doing: "오틸리가 책 한 권을 데사의 약 상자에 섞어 13층 독방 문 아래로 밀어 넣는다. 할라가 문 안에서 책 모서리를 두 번 두드린다"}
+- {id: ev_ar_monthly_ash_eye_report, npcs: [npc_ar_rail, npc_ar_mathis, npc_ar_borte], repeat: monthly, day: 12, from: "09:00", to: "13:00", at: gt_listening_room, doing: "재눈 초소의 황무지 경계 보고가 닿는다 — 이번 달도 말뚝이 한 걸음 더 밀렸다. 보르테가 거꾸로 부는 지점이 그쪽으로 옮겨 가는 것을 지도에 점으로 찍는다"}
+- {id: ev_ar_monthly_fisher_milo, npcs: [npc_milo, npc_ar_fisher], repeat: monthly, day: 6, from: "03:00", to: "05:00", at: gt_lighthouse_rock, doing: "썰물에 서기 하나가 몰래 바위를 건넌다 — 마일로가 조개에게 이달 필사 중 새로 본 이름을 전하고 할라의 편지 한 줄을 받는다", travel_from: gt_scribe_dorm, return_to: gt_scribe_dorm}

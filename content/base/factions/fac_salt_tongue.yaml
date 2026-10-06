@@ -53,7 +53,7 @@ offices:
     perks: ["세렌 의회도 그 앞에선 고개를 숙인다"]
   - id: off_temple_keeper
     title: 물 위의 사원지기 (일곱째 의석 — 깊은 바다 사원)
-    holder: "unnamed:대사제 시렌나 우델 (나가) — 사원 지하에 도둑맞은 알"
+    holder: npc_sr_sirenna
     reports_to: off_envoy
     powers: ["깊은 바다 사원 — 해구로 내려가는 나가의 장례", "도둑맞은 알 보관"]
     chosen_by: "사절의 지명 — 세렌 의석은 덮개다"
