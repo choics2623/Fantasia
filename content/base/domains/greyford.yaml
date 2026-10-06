@@ -1,0 +1,32 @@
+# 영역 (09): 회색여울에서 세울 수 있는 곳과 관리자 후보.
+# 열흘마다 보고 (첫 시대의 회차는 짧다 — 문서의 '계절'을 열흘로 줄였다).
+sites:
+  hungry_hill__wolf_den:
+    name: 굶주린 언덕 늑대굴
+    needs: ["pknows fact_gf_wolf_den", "rel_trust npc_sigrid >= 20"]
+    pop_var: sigrid_group        # 이 자리의 머릿수는 세계 변수와 같다 (볼크의 대수색이 줄인다)
+    steward: npc_sigrid
+    conceal: 20                  # 가시덤불 입구
+    defense: 10
+    morale: 45
+    food_days: 40
+  gf_rooster_cellar:
+    name: 수탉 지하 은신방
+    needs: ["pknows fact_gf_egil_family_in_cellar", "rel_trust npc_bram >= 20", "var egil_hidden == true"]
+    pop: 5
+    steward: npc_bram
+    conceal: 25
+    defense: 0
+    morale: 35
+    food_days: 15
+stewards:
+  npc_sigrid: {skill: 55, loyalty: 30, belief: 생존, ambition: 40, principle: 신중함, secret: "서리 길에서 낙오자 셋을 버렸다 — 남동생 에이나르"}
+  npc_bram:   {skill: 60, loyalty: 40, belief: 가족, ambition: 10, principle: 신중함, secret: "에길 일가를 숨기려고 헨릭에게 입막음 값을 낸다"}
+  npc_elsa:   {skill: 45, loyalty: 50, belief: 해방, ambition: 5, principle: 대담함, secret: "이름 없는 자들의 연락책"}
+  npc_martha: {skill: 75, loyalty: -10, belief: 가족, ambition: 50, principle: 냉혹, secret: "딸 리즈를 지키려고 명단을 고쳤다"}
+facilities:
+  hidden_gate: {name: 위장 입구, conceal: 10, exposure: -5, food: -2, text: "가시덤불을 엮어 입구를 하나 더 숨긴다"}
+  school:      {name: 비밀 학교, morale: 5, literacy: 5, exposure: 3, food: 0, text: "흙바닥에 글자를 — 오스릭이 몰래 가르치겠다고 한다", when: ["alive npc_osric"]}
+  herbs:       {name: 약초밭, morale: 2, exposure: 1, food: 0, text: "엘사의 씨앗으로 쑥과 버드나무 껍질을"}
+  watch:       {name: 망루와 봉화, defense: 5, exposure: 4, food: 0, text: "언덕 꼭대기에 망을 세운다"}
+  memory_wall: {name: 기억의 벽, morale: 8, exposure: 3, food: 0, text: "죽은 이들의 이름을 동굴 벽에 — 시그리드의 룬 옆에"}
