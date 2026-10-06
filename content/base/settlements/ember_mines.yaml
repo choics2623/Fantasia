@@ -69,6 +69,8 @@ locations:
   - {id: em_vent_valves, name: 밸브실, parent: em_vent_house, access: secret, hidden: "밸브실 벽 뒤에 독가스 장치 본통이 묻혀 있다 — 환기구마다 숨긴 41기 중 하나(실은 빈 통이 섞여 있다)"}
   - {id: em_old_cave, name: "폐갱 '다라의 굴'", xy: [260, 900], kind: abandoned, access: secret, hours: "6일마다 밤 22:00-02:00 모임", note: "지지대가 썩은 버려진 폐갱. 가까이 가면 묻힌다고 소문이 돈다", hidden: "곡괭이 200자루와 용불 기름 12통의 비축. 6일에 한 번 로크의 비밀 모임"}
   # ── 가운데: 일터 ──
+  - {id: em_gas_shop, name: 구리관 작업실, xy: [900, 570], kind: work, access: staff, hours: "상시", note: "카셀의 작업실. 구리통과 밸브가 천장에 매달려 있다. 뒷문이 쓰레기 더미 쪽으로 난다"}
+  - {id: em_collar_hut, name: 목줄장 오두막, xy: [250, 440], kind: residence, access: staff, hours: "상시", note: "굴 마을 밖 슬래그 비탈 위의 오두막. 가장 많은 동족을 넘긴 자가 산다"}
   - {id: em_ore_yard, name: 광석 마당, xy: [700, 780], kind: work, access: staff, hours: "06:00-18:00", rooms: [em_weigh], note: "수레가 올리는 광석을 부려 놓는 마당. 아이들이 선광 자갈을 고른다"}
   - {id: em_weigh, name: 계량소, parent: em_ore_yard, access: staff, note: "할당량 판정. 수레 하나를 모자라게 달면 그날 물이 반으로 준다"}
   - {id: em_smithy, name: 갱 대장간, xy: [770, 700], kind: work, access: staff, hours: "06:00-19:00", note: "곡괭이 날 세우기와 사슬. 두르강 공구가 이곳으로 온다"}

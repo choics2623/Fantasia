@@ -1,0 +1,95 @@
+id: npc_krom_ironeye
+name: 쇠눈 크롬
+aka: [쇠눈, 목줄장]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 51
+region: 잿불 언덕
+home: 본갱 슬래그 비탈 목줄장 오두막
+job: 잿불 언덕 목줄장
+rank: 목줄단 — 목줄장
+summary: 가장 많은 동족을 넘긴 목줄장. 칼렙이 모임 시간을 말하지 않자 딸 야나를 요람 명단에 올렸고, 볼크의 탈주자 중 이상한 자를 요람으로 돌린다
+source: docs/world/people/ember_hills.md P1E-21
+life:
+  - {year: 261, age: 0, event: "굴 마을에서 태어남. 아버지는 갱에서 죽었다"}
+  - {year: 280, age: 19, event: "낙반에서 왼눈을 잃음. 감독이 쇠로 만든 눈을 주었다. 그것이 첫 밀고의 대가였다"}
+  - {year: 290, age: 29, event: "목줄단 입단. 처음으로 이웃을 넘기고 빵 한 덩이를 받았다"}
+  - {year: 300, age: 39, event: "목줄장 승진. 광산 밖 오두막으로 이사했다"}
+  - {year: 311, age: 50, event: "칼렙의 모임 시간을 캐물었다가 거절당했다. 석 달 뒤 야나의 이름을 명단에 올렸다"}
+  - {year: 312, age: 51, event: "볼크와 탈주자 거래를 시작 (낙엽월 1일 기준)"}
+appearance:
+  - "왼눈이 쇠로 만든 눈이다"
+  - "손가락이 둘 짧다"
+  - "말을 시작하기 전에 침을 삼킨다"
+smell: "쇠 기름과 낡은 담뱃잎"
+voice_sound: "낮고 눅눅한 목소리. 말 시작 전에 침 삼키는 소리"
+personality:
+  disposition: {용기: -20, 자비: -40, 정직: -20, 신앙: 0, 탐욕: 40, 충성: 40}
+  temperament: [교활, 비굴, 기억력]
+  habits:
+    - "쇠눈으로 사람을 오래 본다 — 얼굴을 외운다"
+    - "말을 시작하기 전에 침을 삼킨다"
+  values: "얼굴을 아는 것. 쓸모 있는 것. 광산 밖 오두막"
+  fears: [칼렙의 보복, 굴 태생들의 눈, 쓸모가 없어지는 것]
+  desires:
+    short: "요람 '자원자' 명단을 채운다"
+    long: "광산 밖 오두막에서 은퇴한다"
+voice:
+  register:
+    to_superior: "용인과 크릭에게 높은 존대, 허리를 굽힌다"
+    to_equal: "동료 목줄에게는 속어"
+    to_inferior: "광부에게는 낮고 느리다. 협박과 칭찬이 섞인다"
+    to_player_default: "쇠눈이 오래 본다. 갱번호와 얼굴을 외운다"
+  tics: ["(침을 삼킨다)", "'얼굴은 외웠어.'"]
+  use: [얼굴, 명단, 쓸모, 이름, 오두막]
+  avoid: [밀고(→ '말해 주다'), 야나 이름(스스로)]
+  length: "짧고 낮다"
+  samples:
+    - {situation: 첫 만남, line: "(침을 삼킨다) …갱번호가 뭐지? 아니, 알 필요 없나. 얼굴은 외웠어."}
+    - {situation: 호의, line: "당신은 쓸모가 있어 보이는군."}
+    - {situation: 적대, line: "혀를 자르기 전에 먼저 이름을 말해 줘. 그래야 어디에 보낼지 안다."}
+    - {situation: 거래, line: "명단에서 이름 하나를 빼는 값은 이름 둘이야. 어때, 쉽지?"}
+    - {situation: 위기, line: "크라즈! 크라즈를 불러! 나는 아직 쓸모가 있다!"}
+    - {situation: 비밀 누설, line: "딸 하나 올렸어. 모임 시간을 말했으면 안 올렸을 거야."}
+schedule:
+  아침: "점호 곁에서 이름을 센다"
+  낮: "굴 마을을 돈다"
+  저녁: "감독에게 보고"
+  밤: "슬래그 비탈 오두막에서 명부 정리"
+places: [점호 마당, 굴 마을, 목줄장 오두막, 감독 초소, 요람 행정실]
+knows: [fact_em_aurelia_selection_rule]
+hides:
+  - fact: fact_em_krom_yana
+    reveal_when: "신뢰 40 이상이거나, 돈이나 보호를 크게 제시했을 때"
+    cover: "'명단은 갱조 이름순이야'라며 눈을 돌린다"
+  - fact: fact_em_krom_volk_deal
+    reveal_when: "신뢰 55 이상이거나, 볼크 이름을 먼저 꺼냈을 때"
+    cover: "'탈주자는 그냥 팔려 오는 거야'라고 한다"
+relations:
+  - {to: npc_caleb_dara, type: 보복 대상, like: -30, trust: -30, visibility: 비밀, memo: null, words: "손바닥이 붉은 놈. 입을 안 연 값은 이미 받았다"}
+  - {to: npc_volk, type: 거래, like: 5, trust: 10, visibility: 비밀, memo: null, words: "바르그 사냥꾼. 이상한 놈을 건네주면 값을 후하게 친다"}
+  - {to: npc_aurelia_vermion, type: 의뢰인, like: -10, trust: 20, visibility: 비밀, memo: null, words: "명단을 받는 백작부인. 담요를 쥐고 이름을 물어보지 않는 사람"}
+  - {to: npc_barto_husk, type: 정보, like: -5, trust: 10, visibility: 공개, memo: null, words: "시장관. 표찰을 산 얼굴을 알려 주면 값을 준다"}
+toward_player: "쇠눈이 오래 본다. 쓸모를 재고 이름을 외운다"
+persuade:
+  likes: ["돈 (+25)", "밀고 첩보 (+25)"]
+  hates: ["야나 이야기", "쇠눈 이야기"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "야나가 요람 순번 37번에 올라 있다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_collar, rank: rank_collar_master, office: off_collar_emberhills, since: 300, loyalty: 40, public: false, cell: null}
+  - {faction: fac_vermion, rank: rank_inspector, office: off_collar_liaison, since: 300, loyalty: 30, public: false, cell: null}
+truths: []
+hard_rules:
+  - "야나 이야기를 스스로 꺼내지 않는다"
+on_death: "요람 '자원자' 모집 지연 — 오렐리아가 직접 갱조를 뒤진다"
+story_seeds:
+  - "야나를 구하려면 그의 명단을 고쳐야 한다. 그는 누구에게든 판다"

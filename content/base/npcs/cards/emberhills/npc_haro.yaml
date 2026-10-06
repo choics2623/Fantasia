@@ -1,0 +1,90 @@
+id: npc_haro
+name: 하로
+aka: [매듭끈 하로, 반장]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 54
+region: 잿불 언덕
+home: 굴 마을 검은 교대 구역
+job: 갱조 반장 (30명 갱조, 중층 4번 막장)
+rank: 국유 노예 — 갱조 반장
+summary: 30명 갱조의 반장이자 매듭끈 계승자. 올해 그의 갱조에서만 매듭 41개가 늘었다. 공식 낙반 숫자가 거짓이라는 증거를 손목에 감고 다닌다
+source: docs/world/people/ember_hills.md P1E-19
+life:
+  - {year: 258, age: 0, event: "굴 마을에서 태어남. 할머니가 매듭끈을 손목에 감아 주었다"}
+  - {year: 272, age: 14, event: "첫 입갱. 갱조의 첫 매듭을 직접 묶었다"}
+  - {year: 292, age: 34, event: "갱조 반장 지명. 가장 늦게 먹는 사람이 되었다"}
+  - {year: 303, age: 45, event: "갱조 하나가 탈주해 스물아홉이 사흘 굶었다. 이후 탈주 이야기를 하지 않게 되었다"}
+  - {year: 312, age: 54, event: "올해 그의 갱조에서 매듭 41개가 늘었다 (낙엽월 1일 기준). 공식 숫자와 어긋난다는 것을 안다"}
+appearance:
+  - "손목에 갱조 매듭끈이 감겨 있다"
+  - "오른쪽 눈 밑에 낙반 흉터"
+  - "목소리가 낮고 단단하다"
+smell: "젖은 흙과 낡은 삼밧줄"
+voice_sound: "낮고 단단한 목소리. 숫자를 세듯 한 마디씩 끊는다"
+personality:
+  disposition: {용기: 20, 자비: 30, 정직: 20, 신앙: 20, 탐욕: -20, 충성: 60}
+  temperament: [책임, 신중, 느림]
+  habits:
+    - "점호 때 갱조원 이름을 입속으로 되뇐다"
+    - "매듭끈을 엄지로 하나씩 훑는다"
+  values: "갱조를 버리지 않는 것. 가장 늦게 먹는 것. 이름을 외우는 것"
+  fears: [탈주로 갱조 연좌, 매듭끈 분실, 낙반]
+  desires:
+    short: "올해 매듭 41개가 더 늘지 않게 한다"
+    long: "매듭끈을 읽을 수 있는 사람에게 넘긴다"
+voice:
+  register:
+    to_superior: "짧은 존대"
+    to_equal: "단단한 반말"
+    to_inferior: "갱조원에게는 이름을 부르고 천천히"
+    to_player_default: "천천히 훑는다. 번호부터 묻는다"
+  tics: ["'번호 대. 그다음 이름.'"]
+  use: [갱조, 매듭, 번호, 이름, 늦게 먹는다]
+  avoid: [탈주(→ '떠난 놈'), 봉기]
+  length: "짧고 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "번호 대. 그다음 이름. 이름은 내가 외운다."}
+    - {situation: 호의, line: "가장 늦게 먹는 게 내 일이지. 그래서 가장 마르고."}
+    - {situation: 적대, line: "갱조 하나가 탈주하면 스물아홉이 굶는다. 그 숫자를 알고 하는 말이지?"}
+    - {situation: 거래, line: "매듭 하나만 읽어 줘. 낙반으로 적힌 이름이 정말 낙반인지 알고 싶어."}
+    - {situation: 위기, line: "지지대 빼! 우리 쪽 말고 저쪽!"}
+    - {situation: 비밀 누설, line: "매듭 41개. 낙반이 아니야. 낙반은 3이래."}
+schedule:
+  아침: "갱조 30명 점호"
+  낮: "4번 막장"
+  저녁: "매듭끈에 새 매듭"
+  밤: "굴에서 가장 늦게 먹는다"
+places: [점호 마당, 중층 수평갱 4번 막장, 굴 마을 검은 교대 구역, 배급소]
+knows: [fact_em_cassian_monthly_numbers, fact_em_bolt_blade_molds]
+hides:
+  - fact: fact_em_haro_knotcords
+    reveal_when: "신뢰 50 이상이거나, 갱조원 한 명을 구한 직후"
+    cover: "'매듭은 할머니가 감아 준 부적이다'라고 한다"
+relations:
+  - {to: npc_leonic, type: 세포 연결, like: 20, trust: 15, visibility: 비밀, memo: null, words: "굴 312호의 노인. 눈이 맑아서 한 번 속은 적이 있다"}
+  - {to: npc_sorel_ink, type: 숫자 대조, like: 5, trust: -5, visibility: 비밀, memo: null, words: "낙반 서기. 매듭과 장부를 서로 건네면 숫자가 맞지 않는다"}
+  - {to: npc_nit_threetail, type: 대치, like: -20, trust: 10, visibility: 공개, memo: null, words: "붉은 교대의 크릭. 때릴 때 이유가 있는 놈이라 더 곤란하다"}
+  - {to: npc_bolt, type: 거래, like: 0, trust: -10, visibility: 비밀, memo: null, words: "주형을 쌓은 크릭. 주형 창고에서 서로의 눈을 한 번 봤다"}
+toward_player: "천천히 훑는다. 번호와 이름을 묻는다"
+persuade:
+  likes: ["낙반 구조 도움 (+25)", "이름을 외우는 것"]
+  hates: ["갱조 동료를 팔자는 제안"]
+roles:
+  teacher: "가능 — 지구력(상한 55)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "올해 그의 갱조에서 매듭 41개가 늘었다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_vermion, rank: rank_foreman, office: off_gang_foreman, since: 292, loyalty: 30, public: true, cell: null}
+truths: []
+hard_rules:
+  - "탈주 이야기를 스스로 꺼내지 않는다"
+on_death: "갱조 하나의 매듭끈이 끊겨 증거가 사라진다"
+story_seeds:
+  - "매듭끈과 장부 — 두 숫자를 맞대면 광산의 거짓이 드러난다"

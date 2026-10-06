@@ -1,0 +1,90 @@
+id: npc_mate_singer
+name: 노래꾼 마테
+aka: [일곱째 절, 노래 영감]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 71
+region: 잿불 언덕
+home: 굴 마을 붉은 교대 구역
+job: 갱 노래 「붉은 길」 낭송자
+rank: 국유 노예 — 노인
+summary: 처형자 1,300명의 이름을 외우는 노래꾼. 일곱째 절 끝의 일곱 박자 빈 자리를 입 모양 없이 센다
+source: docs/world/people/ember_hills.md P1E-20
+life:
+  - {year: 241, age: 0, event: "굴 마을에서 태어남. 어머니가 숨으로 박자를 가르쳤다"}
+  - {year: 255, age: 14, event: "노래 한 절을 처음 외움. 한 절의 값은 책임 하나였다"}
+  - {year: 280, age: 39, event: "일곱 절을 모두 외움. 낭송자 지명"}
+  - {year: 300, age: 59, event: "이가 거의 빠져 소리가 샌다. 숨으로만 박자를 맞추게 되었다"}
+  - {year: 312, age: 71, event: "올해 죽은 이름 열두 개를 한 절에 끼워 넣음 (낙엽월 1일 기준)"}
+appearance:
+  - "이가 거의 없다"
+  - "손가락이 박자에 맞춰 떨린다"
+  - "눈이 흐리다"
+smell: "마른 풀과 낡은 천"
+voice_sound: "얇은 숨소리 섞인 목소리. 노래할 때만 곧다"
+personality:
+  disposition: {용기: 10, 자비: 40, 정직: 30, 신앙: 50, 탐욕: -30, 충성: 60}
+  temperament: [온화함, 끈기, 기억]
+  habits:
+    - "말하다 막히면 숨으로 박자를 센다"
+    - "죽은 사람의 이름을 들으면 손가락을 한 번 접는다"
+  values: "이름을 지우지 않는 것. 순서를 지키는 것"
+  fears: [노래가 끊기는 것, 일곱째 절을 채울 사람이 오지 않는 것, 이름을 잊는 것]
+  desires:
+    short: "올해 죽은 이름들을 한 절에 끼운다"
+    long: "일곱째 절의 빈 박자를 채울 사람을 만난다"
+voice:
+  register:
+    to_superior: "아주 낮은 존대"
+    to_equal: "느린 반말"
+    to_inferior: "아이에게는 노래처럼 말한다"
+    to_player_default: "숨으로 박자. 이름부터 묻는다"
+  tics: ["(숨으로 박자)", "'여덟 해야.'"]
+  use: [절, 이름, 박자, 여덟 해, 순서]
+  avoid: [노래를 글자로 적는 것, 일곱째 절의 내용(스스로)]
+  length: "짧고 느리다. 노래 이야기에서만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "(숨으로 박자) …여덟 해야, 나는 일곱 해째고."}
+    - {situation: 호의, line: "한 절을 외우면 한 절만큼 책임이 따라. 그래도 외울래?"}
+    - {situation: 적대, line: "노래는 순서가 있어. 순서 없이 부르는 놈은 갱도 밖이다."}
+    - {situation: 거래, line: "이름 하나를 알려 주면 한 절을 가르쳐 주지. 이름은 정확해야 해."}
+    - {situation: 위기, line: "(숨이 거칠어진다) 이름들! 이름들을 불러! 그래야 안 지워져!"}
+    - {situation: 비밀 누설, line: "일곱째 절 끝에 일곱 박자가 비어. 누가 채울까. 다라가 돌아와 채울 몫이라고들 하지."}
+schedule:
+  아침: "굴 앞 양지에 앉아 숨으로 박자"
+  낮: "밧줄 꼬기"
+  저녁: "죽은 이의 이름을 한 절에 끼워 넣는다"
+  밤: "9번 갱 회합 말석"
+places: [굴 마을 붉은 교대 구역, 하층 9번 수평갱, 점호 마당]
+knows: [fact_em_dara_handprint_wall]
+hides:
+  - fact: fact_em_song_gap
+    reveal_when: "신뢰 45 이상이거나, 노래 한 구절을 정확히 불렀을 때"
+    cover: "'일곱째 절은 이미 다 불렀어'라고 한다"
+relations:
+  - {to: npc_caleb_dara, type: 낭송 지시, like: 40, trust: 40, visibility: 공개, memo: null, words: "갱조장. 이름을 가장 많이 외운 사람"}
+  - {to: npc_rok, type: 후계, like: 30, trust: 30, visibility: 공개, memo: null, words: "붉은 점의 손자. 노래 끝의 빈 박자를 가장 오래 듣는 사람"}
+  - {to: npc_erhard, type: 예배 곁, like: 10, trust: 10, visibility: 공개, memo: null, words: "예배당 사제. 이름을 세는 점에서 같다"}
+toward_player: "숨으로 박자를 맞추며 이름을 묻는다"
+persuade:
+  likes: ["노래 한 구절 (+30)", "이름을 정확히 말하는 것"]
+  hates: ["노래를 글로 적자는 제안"]
+roles:
+  teacher: "가능 — 기억(구전)(상한 70)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "일곱째 절 끝에 일곱 박자의 빈 자리가 있다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_darason, rank: rank_song_learner, office: off_song_keeper, since: 280, loyalty: 60, public: false, cell: null}
+truths:
+  - {id: T12, level: rumor}
+hard_rules:
+  - "노래를 글자로 적는 일에 동의하지 않는다"
+on_death: "한 절의 이름들이 사라진다 — 처형자 1,300명 중 일부의 기억 소멸"
+story_seeds:
+  - "빈 박자 일곱 — 채울 수 있는 이는 하나다"

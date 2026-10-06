@@ -32,7 +32,6 @@ locations:
   - {id: eg_overseer_lodge, name: 감독관 숙소, xy: [250, 520], kind: barracks, access: staff, hours: "상시", note: "크릭 감독과 용인 광부 감독의 숙소"}
   - {id: eg_slave_market, name: 노예 시장 분소, xy: [520, 560], kind: market, access: public, hours: "08:00-16:00 (주 이틀)", note: "비늘 시장에서 온 노예를 요람과 갱으로 나눈다"}
   - {id: eg_guard_barracks, name: 문 경비 막사, xy: [140, 400], kind: barracks, access: staff, hours: "상시"}
-  - {id: eg_collar_hut, name: 목줄장 오두막, xy: [820, 580], kind: residence, access: staff, hours: "상시", note: "광산 밖 오두막. 가장 많은 동족을 넘긴 자가 산다"}
 outer:
   - {id: eg_out_waste_road, name: 잿불 길 (본갱 쪽), hours: 3.0}
   - {id: eg_out_slag_field, name: 슬래그 들판, hours: 0.4}

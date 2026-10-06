@@ -59,6 +59,21 @@ offices:
     chosen_by: "목소리의 받아들임"
     perks: []
 
+  - id: off_ash_road_guide
+    title: 재의 날 길잡이 (잔상 주기를 몸으로 아는 순례자)
+    holder: "unnamed:길잡이 셋 — 재의 날을 다섯 번 넘게 살아 돌아온 순례자(인간 둘, 크릭 하나)"
+    reports_to: off_ash_eater_gret
+    powers: ["재의 날 행렬의 길", "멈춘 광장 가장자리까지의 길"]
+    chosen_by: "살아 돌아온 횟수"
+    perks: []
+  - id: off_receiver
+    title: 받아들임지기 (새로 온 자에게 재를 올리는 자)
+    holder: "unnamed:받아들임지기 — 몰락 용인 하인 출신 노인"
+    reports_to: off_ash_voice
+    powers: ["새로 온 자의 혀에 재를 올린다", "탈주 아이 명부(머릿속) — 이름 없는 자들에게 몰래 넘긴다는 소문"]
+    chosen_by: "재의 목소리의 지명"
+    perks: []
+
 ranks:
   - {id: rank_voice, title: "재의 목소리", duties: "듣고 말한다", privileges: "늙지 않는다(잔상)", open_to_player: false}
   - {id: rank_ash_eater, title: "재먹이 (사제)", duties: "재의 원, 의식", privileges: "황무지 안쪽 길", open_to_player: true}

@@ -1,0 +1,88 @@
+id: npc_wenna_ward
+name: 웨나
+aka: [병동 웨나, 검은 폐 아줌마]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 여
+age: 47
+region: 잿불 언덕
+home: 병동 '검은 폐 막사' 뒷방
+job: 병동 치유자
+rank: 국유 노예 — 숙련 노예 (병동)
+summary: 검은 폐 병동의 치유자. 열병으로 적은 사람 열두 명을 시체 수레에 실어 슬래그 비탈로 내보냈고, 열 명이 살았다
+source: docs/world/people/ember_hills.md P1E-25
+life:
+  - {year: 265, age: 0, event: "굴 마을에서 태어남. 어머니가 병동에서 일했다"}
+  - {year: 282, age: 17, event: "병동 보조. 처음으로 시체 수레를 밀었다"}
+  - {year: 296, age: 31, event: "요람 가동. 병동에서 '자원자'로 끌려가는 환자가 늘었다"}
+  - {year: 308, age: 43, event: "처음으로 죽은 것처럼 적은 환자를 수레에 실었다"}
+  - {year: 312, age: 47, event: "지금까지 열둘을 내보냈다 (낙엽월 1일 기준). 이마에 검은 얼룩이 생겼다"}
+appearance:
+  - "손이 늘 젖어 있다"
+  - "이마에 검은 얼룩 — 검은 폐 초기"
+  - "말끝이 낮다"
+smell: "쑥 달인 물과 곰팡이, 약한 석탄 냄새"
+voice_sound: "낮고 차분한 목소리. 환자 앞에서는 속삭인다"
+personality:
+  disposition: {용기: 30, 자비: 60, 정직: -10, 신앙: 20, 탐욕: -30, 충성: 50}
+  temperament: [차분함, 단단한 연민, 비밀]
+  habits:
+    - "환자 숨소리를 세어 하루 첫 인사를 한다"
+    - "기록을 쓸 때 펜을 한 번 멈춘다"
+  values: "숨 쉬는 사람. 죽음을 쓰는 방법. 수레 밑판의 비밀"
+  fears: [수레 밑판이 발각되는 것, 자기 폐, 열넷째로 내보낸 사람이 잡히는 것]
+  desires:
+    short: "올해 열 명을 더 살린다"
+    long: "검은 폐 막사에 환자가 줄어든다"
+voice:
+  register:
+    to_superior: "낮은 존대"
+    to_equal: "차분한 반말"
+    to_inferior: "환자에게는 부드럽다"
+    to_player_default: "손부터 본다. 숨을 쉬어 보라고 한다"
+  tics: ["'숨 쉬어 봐.'"]
+  use: [숨, 폐, 기침, 이불, 수레]
+  avoid: [탈출, 수레 밑판, 열둘]
+  length: "짧고 부드럽다"
+  samples:
+    - {situation: 첫 만남, line: "숨 쉬어 봐. 검은 폐는 소리로 알아."}
+    - {situation: 호의, line: "당신은 아직 이른 편이야. 이른 건 좋은 거지."}
+    - {situation: 적대, line: "죽었다고 적으면 죽은 거야. 이 병동에선."}
+    - {situation: 거래, line: "쑥 한 줌이면 오늘 밤 기침이 줄어. 값은 이름 하나로 해."}
+    - {situation: 위기, line: "수레 비켜! 밑판이 — 밑판 얘기는 하지 마!"}
+    - {situation: 비밀 누설, line: "열둘 내보냈어. 열이 살았지. 둘은 이름이 있었는데, 지금은 이름이 없어."}
+schedule:
+  아침: "새벽 기침 소리 헤아리기"
+  낮: "환자 돌봄"
+  저녁: "사망 기록"
+  밤: "시체 창고"
+places: [병동 '검은 폐 막사', 시체 창고, 슬래그 비탈]
+knows: [fact_em_sorel_cradle_as_fall]
+hides:
+  - fact: fact_em_wenna_false_deaths
+    reveal_when: "신뢰 60 이상이거나, 환자 한 명을 구하는 일에 도움을 주었을 때"
+    cover: "'수레는 비어 있어'라고 한다"
+relations:
+  - {to: npc_eve, type: 비탈의 손, like: 20, trust: 25, visibility: 비밀, memo: null, words: "슬래그 비탈에서 수레를 받는 아이. 이름은 한 번도 입 밖에 내지 않았다"}
+  - {to: npc_ida_bread, type: 같은 가마, like: 30, trust: 20, visibility: 공개, memo: null, words: "빵 굽는 동무. 병동에 빵 한 조각을 몰래 보낸다"}
+  - {to: npc_adrian_corvel, type: 의사, like: -20, trust: -10, visibility: 공개, memo: null, words: "요람 의사. 병동에서 '쓸 만한 숨'을 고르러 오는 사람"}
+toward_player: "손부터 본다. 숨을 쉬어 보라고 한다"
+persuade:
+  likes: ["약초 (+25)", "환자를 돕는 것"]
+  hates: ["수레 이야기를 먼저 꺼내는 것"]
+roles:
+  teacher: "가능 — 응급처치(상한 65)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "시체 수레 밑판이 이중이다 (회귀점의 사실)"
+affiliations: []
+truths: []
+hard_rules:
+  - "수레 밑판 이야기를 스스로 꺼내지 않는다"
+on_death: "시체 수레 탈출로 소멸"
+story_seeds:
+  - "시체 수레 밑판 — 누군가를 실어야 할 때"

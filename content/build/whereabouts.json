@@ -1882,18 +1882,6 @@
      "kind": "barracks",
      "access": "staff",
      "hours": "상시"
-    },
-    {
-     "id": "eg_collar_hut",
-     "name": "목줄장 오두막",
-     "xy": [
-      820,
-      580
-     ],
-     "kind": "residence",
-     "access": "staff",
-     "hours": "상시",
-     "note": "광산 밖 오두막. 가장 많은 동족을 넘긴 자가 산다"
     }
    ],
    "outer": [
@@ -2423,6 +2411,30 @@
      "hours": "6일마다 밤 22:00-02:00 모임",
      "note": "지지대가 썩은 버려진 폐갱. 가까이 가면 묻힌다고 소문이 돈다",
      "hidden": "곡괭이 200자루와 용불 기름 12통의 비축. 6일에 한 번 로크의 비밀 모임"
+    },
+    {
+     "id": "em_gas_shop",
+     "name": "구리관 작업실",
+     "xy": [
+      900,
+      570
+     ],
+     "kind": "work",
+     "access": "staff",
+     "hours": "상시",
+     "note": "카셀의 작업실. 구리통과 밸브가 천장에 매달려 있다. 뒷문이 쓰레기 더미 쪽으로 난다"
+    },
+    {
+     "id": "em_collar_hut",
+     "name": "목줄장 오두막",
+     "xy": [
+      250,
+      440
+     ],
+     "kind": "residence",
+     "access": "staff",
+     "hours": "상시",
+     "note": "굴 마을 밖 슬래그 비탈 위의 오두막. 가장 많은 동족을 넘긴 자가 산다"
     },
     {
      "id": "em_ore_yard",
@@ -4535,6 +4547,1420 @@
     }
    ]
   },
+  "npc_melisande": {
+   "home": "em_nest",
+   "presence": [
+    {
+     "from": "312-09-01",
+     "to": "312-09-10"
+    },
+    {
+     "from": "312-10-24",
+     "to": "312-12-12"
+    },
+    {
+     "from": "313-01-06",
+     "to": "313-02-25"
+    },
+    {
+     "from": "313-04-20",
+     "to": "313-05-03"
+    },
+    {
+     "from": "313-06-10",
+     "to": "313-07-30"
+    }
+   ],
+   "away": {
+    "at": "baalkar",
+    "doing": "바알카르 궁정 정치 — 계승 국면, 세렌 사절과 잿빛 탑 서신"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "11:00",
+     "at": "em_cradle_records",
+     "doing": "인간 형상으로 아드리안의 실험 기록을 검토한다"
+    },
+    {
+     "days": "all",
+     "from": "11:00",
+     "to": "18:00",
+     "at": "em_nest_terrace",
+     "doing": "세렌 사절과 잿빛 탑 서신을 처리한다",
+     "alt": {
+      "p": 0.3,
+      "at": "em_cradle_admin",
+      "doing": "오렐리아의 순번 명부를 본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "em_nest",
+     "doing": "둥지에서 식사 없이 앉아 갱 마을을 내려다본다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:30",
+     "at": "em_cradle_vessel",
+     "doing": "그릇의 방에서 이식 시술을 직접 본다 — 피험자에게 담요를 주고 맥을 짚는다"
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "23:30",
+     "to": "00:30",
+     "at": "em_roll_yard",
+     "doing": "인간 형상으로 점호 마당을 걷는다 — 누구에게도 말을 걸지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "23:30",
+     "to": "07:00",
+     "at": "em_nest",
+     "doing": "둥지에서 쉰다"
+    }
+   ]
+  },
+  "npc_adrian_corvel": {
+   "home": "em_cradle_records",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:30",
+     "to": "12:00",
+     "at": "em_cradle_ward",
+     "doing": "신규 피험자 4~6명을 선별한다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "em_cradle_surgery",
+     "doing": "시술"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "em_cradle_records",
+     "doing": "사망 기록부를 쓴다 — 번호 뒤에 씨를 붙여 읽는다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "02:00",
+     "at": "em_cradle_records",
+     "doing": "아편 파이프를 물고 자기 비늘을 뜯는다"
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "07:30",
+     "at": "em_cradle_records",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_eve": {
+   "home": "em_cradle_porters",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "em_cradle_porters",
+     "doing": "소각로 옆 운반 노예 우리에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "em_cradle_incinerator",
+     "doing": "소각로 재를 치운다"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "17:30",
+     "at": "em_cradle_surgery",
+     "doing": "시술실에서 소각로까지 수레를 끈다 — 하루 평균 네 구"
+    },
+    {
+     "days": "all",
+     "from": "18:30",
+     "to": "20:30",
+     "at": "em_burrow_black",
+     "doing": "로크의 갱반과 몰래 접촉한다",
+     "alt": {
+      "p": 0.3,
+      "at": "em_out_slag_slope",
+      "doing": "슬래그 비탈에서 숯막 사람들을 만난다"
+     }
+    },
+    {
+     "days": "weekday:[2]",
+     "from": "23:00",
+     "to": "01:00",
+     "at": "em_out_slag_slope",
+     "doing": "비탈에서 시체 수레의 사람을 받는다"
+    }
+   ]
+  },
+  "npc_rok": {
+   "home": "em_burrow_black",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "05:00",
+     "at": "em_burrow_black",
+     "doing": "굴에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "em_roll_yard",
+     "doing": "제7갱반 점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "em_seventh_face",
+     "doing": "갱반 40명과 채굴 — 할당량 하루 30수레"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_ration",
+     "doing": "점호와 배급 — 갱반 식사와 다라의 노래",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "22:00",
+     "to": "02:00",
+     "at": "em_old_cave",
+     "doing": "폐갱 다라의 굴에서 비밀 모임"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "em_chapel",
+     "doing": "예배 곁에서 갱반원을 센다"
+    }
+   ]
+  },
+  "npc_grax": {
+   "home": "em_krik_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "em_krik_hall",
+     "doing": "감독 막사에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "em_roll_yard",
+     "doing": "붉은 계단 점호, 크릭 감독 배치",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:30",
+     "to": "17:00",
+     "at": "em_lvl_mid",
+     "doing": "갱도 순찰과 할당량 확인",
+     "alt": {
+      "p": 0.3,
+      "at": "em_red_stair",
+      "doing": "붉은 계단 노천 순찰"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_roll_yard",
+     "doing": "저녁 점호와 공급 명단 후보를 고른다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "22:00",
+     "at": "em_krik_hall",
+     "doing": "감독 막사에서 명단을 정리하고 담배를 문다"
+    },
+    {
+     "days": "weekday:[2]",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "em_cradle_gate",
+     "doing": "요람에서 온 사자에게 공급 명단을 인계한다"
+    }
+   ]
+  },
+  "npc_hadrian_ashjaw": {
+   "home": "em_office_chief",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "06:30",
+     "at": "em_office_chief",
+     "doing": "총감실 안쪽 방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:30",
+     "to": "12:00",
+     "at": "em_office_chief",
+     "doing": "간밤 교대 수레 수와 비축 광석 장부를 맞춘다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "em_main_shaft",
+     "doing": "갱구 순시",
+     "outdoor": true
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "18:00",
+     "at": "em_office_chief",
+     "doing": "동쪽 갱도 장부를 맞춘다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "em_vermion_hall",
+     "doing": "관사에서 베르미온 가와 식사"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "01:00",
+     "at": "em_office_chief",
+     "doing": "바알카르행 보고서를 고쳐 쓴다"
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "18:00",
+     "at": "em_office_chief",
+     "doing": "안식일에도 장부를 본다"
+    }
+   ]
+  },
+  "npc_tiberion_sorn": {
+   "home": "em_cradle_records",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "07:00",
+     "at": "em_cradle_records",
+     "doing": "연구실 곁방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "10:00",
+     "at": "em_cradle_ward",
+     "doing": "신규 피험자 내성 기록을 검토한다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "em_cradle_surgery",
+     "doing": "시술을 참관하며 아드리안과 이견을 나눈다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "19:00",
+     "at": "em_cradle_records",
+     "doing": "내성 곡선을 그린다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "em_cradle_records",
+     "doing": "보고서를 두 부 나란히 쓴다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_barto_husk": {
+   "home": "eg_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "07:00",
+     "at": "eg_hall",
+     "doing": "청사 2층에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "eg_hall",
+     "doing": "징세와 광석 세금 장부"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "16:00",
+     "at": "eg_gate_pass",
+     "doing": "표찰 발급소를 감독한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "eg_tavern",
+     "doing": "술집 숯불에서 외상으로 마신다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "eg_hall_study",
+     "doing": "하스크 가에 보낼 이중 장부를 쓴다"
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "17:00",
+     "at": "eg_tavern",
+     "doing": "안식일에는 숯불 안쪽 자리에 앉는다"
+    }
+   ]
+  },
+  "npc_cassian_vermion": {
+   "home": "em_vermion_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "08:00",
+     "at": "em_vermion_lodge",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "em_vermion_hall",
+     "doing": "간밤 사고 숫자를 듣는다"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "em_office_chief",
+     "doing": "갱도 감독들의 보고를 청취한다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "em_vermion_hall",
+     "doing": "멜리산드에게 올릴 서신을 쓴다"
+    }
+   ]
+  },
+  "npc_druss_vermion": {
+   "home": "em_vermion_study",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "06:00",
+     "at": "em_vermion_lodge",
+     "doing": "잔다 — 목의 구리 열쇠를 쥐고"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "em_office_chief",
+     "doing": "갱도 편성표를 점검한다"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "14:00",
+     "at": "em_vent_house",
+     "doing": "환기탑과 밸브를 점검한다",
+     "alt": {
+      "p": 0.4,
+      "at": "em_main_shaft",
+      "doing": "권양탑 쇠줄을 점검한다"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "em_main_shaft",
+     "doing": "갱구를 돌며 편성을 확인한다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "em_vermion_study",
+     "doing": "서재에서 갱도 설계도를 편다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "01:00",
+     "at": "em_vermion_study",
+     "doing": "벽장의 구리판을 닦는다"
+    }
+   ]
+  },
+  "npc_cassel_smokeiron": {
+   "home": "em_gas_shop",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "em_gas_shop",
+     "doing": "잠들지 못하고 숨을 센다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "em_vent_house",
+     "doing": "환기탑 밸브를 점검한다"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "15:00",
+     "at": "em_lvl_mid",
+     "doing": "지하 장치 점검을 돈다",
+     "alt": {
+      "p": 0.4,
+      "at": "em_lvl_lower",
+      "doing": "하층 환기구 점검"
+     }
+    },
+    {
+     "days": "all",
+     "from": "15:00",
+     "to": "23:00",
+     "at": "em_gas_shop",
+     "doing": "구리관을 가공한다"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "em_gas_shop",
+     "doing": "뒷문으로 오는 코 얀에게 냄새를 듣는다"
+    }
+   ]
+  },
+  "npc_aurelia_vermion": {
+   "home": "em_cradle_admin",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:30",
+     "to": "07:00",
+     "at": "em_vermion_lodge",
+     "doing": "관사에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "em_cradle_ward",
+     "doing": "대기 감방 수를 확인한다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "14:00",
+     "at": "em_cradle_admin",
+     "doing": "이식 순번 명부를 정리한다"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "17:00",
+     "at": "em_office_ledger",
+     "doing": "갱조 명단에서 '낙반' 대상을 고른다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "em_cradle_admin",
+     "doing": "멜리산드에게 올릴 서식을 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:30",
+     "at": "em_cradle_ward",
+     "doing": "감방 복도를 걷는다 — 문패 번호를 소리 없이 읊는다"
+    }
+   ]
+  },
+  "npc_amelie_vermion": {
+   "home": "em_vermion_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "em_vermion_lodge",
+     "doing": "서재 구석에서 외운 이름을 중얼거린다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "em_vermion_lodge",
+     "doing": "옥상에서 갱 마을을 내려다본다"
+    },
+    {
+     "days": "all",
+     "from": "09:30",
+     "to": "16:00",
+     "at": "em_cradle_records",
+     "doing": "실바라의 초대로 요람 기록실에 앉는다",
+     "alt": {
+      "p": 0.4,
+      "at": "em_vermion_hall",
+      "doing": "관사 홀에서 책을 편다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "20:00",
+     "at": "em_vermion_hall",
+     "doing": "관사에서 식사"
+    },
+    {
+     "days": "weekday:[5]",
+     "from": "14:00",
+     "to": "15:30",
+     "at": "em_office_ledger",
+     "doing": "소렐과 이름 이야기를 나눈다"
+    }
+   ]
+  },
+  "npc_evan_fell": {
+   "home": "em_ash_watch",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "em_ash_watch",
+     "doing": "경보 뿔나팔 곁 당직"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "em_ash_stakes",
+     "doing": "측량 말뚝 줄을 끝에서 끝까지 걷는다",
+     "outdoor": true,
+     "rain": {
+      "at": "em_ash_watch",
+      "doing": "망루 안에서 말뚝 기록을 정리한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "16:00",
+     "at": "em_ash_watch",
+     "doing": "기록을 정리한다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "20:00",
+     "at": "em_ash_watch",
+     "doing": "방패 속 가죽 밑에 진짜 수치를 적는다"
+    }
+   ]
+  },
+  "npc_sorel_ink": {
+   "home": "em_office_ledger",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "07:00",
+     "at": "em_office_ledger",
+     "doing": "기록실 뒷방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "em_office_ledger",
+     "doing": "간밤 낙반·열병 수를 장부에 적는다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "em_office_ledger",
+     "doing": "장부를 정리한다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "22:00",
+     "at": "em_office_ledger",
+     "doing": "대들보 속 둘째 장부에 이름을 베낀다"
+    }
+   ]
+  },
+  "npc_kraz": {
+   "home": "em_krik_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:30",
+     "to": "05:00",
+     "at": "em_krik_hall",
+     "doing": "지부 막사에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "em_roll_yard",
+     "doing": "점호 단상에서 갱조 번호를 훑는다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "em_krik_ledger",
+     "doing": "지부 장부실에서 물 배급표를 맞춘다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "em_krik_ledger",
+     "doing": "공급 명단 사본과 물 이중 장부",
+     "alt": {
+      "p": 0.3,
+      "at": "em_roll_yard",
+      "doing": "점호 마당을 돌며 물 값을 흥정한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_roll_yard",
+     "doing": "저녁 점호",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:30",
+     "at": "em_krik_hall",
+     "doing": "감독들과 맥주를 마시며 레오닉이 보낸 쪽지를 읽는다"
+    }
+   ]
+  },
+  "npc_bolt": {
+   "home": "eg_smelter",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "eg_smelter",
+     "doing": "제련감 막사에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "eg_furnace_row",
+     "doing": "용광로 불 상태를 본다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "eg_smelter",
+     "doing": "주형과 슬래그 수레를 챙긴다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "19:00",
+     "at": "eg_slave_pens",
+     "doing": "제련 노예 점호"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "22:00",
+     "at": "eg_smelter",
+     "doing": "쇳물 식는 것을 지켜본다"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "00:00",
+     "to": "01:00",
+     "at": "eg_mold_store",
+     "doing": "주형 창고 문을 확인한다"
+    }
+   ]
+  },
+  "npc_nit_threetail": {
+   "home": "em_guard_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "16:00",
+     "at": "em_guard_barracks",
+     "doing": "막사에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "17:30",
+     "at": "em_post",
+     "doing": "초소에서 점호 명단을 훑는다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:00",
+     "at": "em_roll_yard",
+     "doing": "붉은 교대 점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "01:00",
+     "at": "em_lvl_lower",
+     "doing": "채찍을 쥐고 하층을 돈다"
+    },
+    {
+     "days": "all",
+     "from": "01:30",
+     "to": "02:00",
+     "at": "em_first_shaft",
+     "doing": "봉인된 첫 갱 문 앞에 물 한 그릇을 놓는다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "02:00",
+     "to": "05:30",
+     "at": "em_drift_7",
+     "doing": "하층 7번 수평갱을 돌며 빵 반 덩이를 받고 눈감아 준다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "em_roll_yard",
+     "doing": "아침 점호",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_leonic": {
+   "home": "em_burrow_312",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "em_burrow_312",
+     "doing": "굴 312호에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "em_roll_yard",
+     "doing": "점호 — 갱번호를 대고 입갱",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "em_lvl_mid",
+     "doing": "하층 갱을 돌며 병든 자의 이름을 센다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_ration",
+     "doing": "점호와 배급",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "em_burrow_312",
+     "doing": "굴에서 쪽지를 쓰고 매듭을 만진다"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "21:00",
+     "to": "21:30",
+     "at": "em_burrow_312",
+     "doing": "크라즈의 연락원이 지나가는 시각에 문을 닫는다"
+    }
+   ]
+  },
+  "npc_caleb_dara": {
+   "home": "em_burrow_black",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "05:00",
+     "at": "em_burrow_black",
+     "doing": "굴에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "em_roll_yard",
+     "doing": "9번 갱 점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "em_drift_9",
+     "doing": "하층 9번 막장에서 채굴"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_ration",
+     "doing": "배급",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[1,3,5]",
+     "from": "18:30",
+     "to": "19:30",
+     "at": "em_dara_wall",
+     "doing": "막장 벽의 손자국에 손을 얹고 말없이 합의를 본다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "em_chapel",
+     "doing": "예배 곁에서 딸 이름을 입속으로 부른다"
+    }
+   ]
+  },
+  "npc_dorte": {
+   "home": "em_burrow_red",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "03:30",
+     "at": "em_burrow_red",
+     "doing": "굴에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "03:30",
+     "to": "20:30",
+     "at": "em_ration",
+     "doing": "취사장 솥일 — 그릇 밑바닥에 매듭을 새긴다"
+    },
+    {
+     "days": "weekday:[1]",
+     "from": "21:30",
+     "to": "23:00",
+     "at": "em_dara_wall",
+     "doing": "9번 갱 회합에 참석한다"
+    }
+   ]
+  },
+  "npc_yana": {
+   "home": "em_cradle_ward",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "em_cradle_ward",
+     "doing": "감방에서 잔다 — 열넷과 벽을 두 번 두드린다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "22:00",
+     "at": "em_cradle_ward",
+     "doing": "대기 감방 37번에서 열넷과 벽 틈으로 이름을 부른다"
+    }
+   ]
+  },
+  "npc_hanne_fourteen": {
+   "home": "em_cradle_ward",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "06:00",
+     "at": "em_cradle_ward",
+     "doing": "감방에서 눈을 감고 연통 사다리의 간격을 외운다"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "22:00",
+     "at": "em_cradle_ward",
+     "doing": "식기 소리로 경비 교대를 세고 야나와 이름을 부른다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "01:00",
+     "at": "em_cradle_ward",
+     "doing": "담요를 받는다 — 멜리산드의 맥 짚기를 기다린다"
+    }
+   ]
+  },
+  "npc_haro": {
+   "home": "em_burrow_black",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "em_burrow_black",
+     "doing": "굴에서 매듭끈을 쥐고 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "em_roll_yard",
+     "doing": "갱조 30명 점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "em_lvl_mid",
+     "doing": "중층 4번 막장에서 갱조를 이끈다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_ration",
+     "doing": "점호와 배급 — 가장 늦게 먹는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "18:30",
+     "to": "20:00",
+     "at": "em_burrow_black",
+     "doing": "매듭끈에 새 매듭을 묶는다"
+    }
+   ]
+  },
+  "npc_mate_singer": {
+   "home": "em_burrow_red",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "08:00",
+     "at": "em_burrow_red",
+     "doing": "굴"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "17:00",
+     "at": "em_burrow_red",
+     "doing": "굴 앞 양지에서 밧줄을 꼬며 숨으로 박자를 맞춘다"
+    },
+    {
+     "days": "weekday:[1]",
+     "from": "21:30",
+     "to": "23:00",
+     "at": "em_dara_wall",
+     "doing": "9번 갱 회합 말석에서 죽은 이름을 한 절에 끼운다"
+    }
+   ]
+  },
+  "npc_krom_ironeye": {
+   "home": "em_collar_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "05:00",
+     "at": "em_collar_hut",
+     "doing": "오두막에서 명부를 정리한다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "em_roll_yard",
+     "doing": "점호 곁에서 이름을 센다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "em_burrow_black",
+     "doing": "굴 마을을 돌며 귀를 연다",
+     "alt": {
+      "p": 0.3,
+      "at": "em_burrow_red",
+      "doing": "붉은 교대 굴을 돈다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "em_post",
+     "doing": "감독에게 보고한다"
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "14:00",
+     "to": "15:00",
+     "at": "em_cradle_admin",
+     "doing": "오렐리아에게 자원자 명단을 넘긴다"
+    }
+   ]
+  },
+  "npc_sorga": {
+   "home": "eg_tavern",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "07:00",
+     "at": "eg_tavern",
+     "doing": "2층에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "15:00",
+     "at": "eg_tavern",
+     "doing": "술통 정리와 외상 장부"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "02:00",
+     "at": "eg_tavern",
+     "doing": "숯불을 열고 감독들을 접대한다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "23:30",
+     "at": "eg_tavern_yard",
+     "doing": "뒷마당을 한 번 돈다 — 물탱크는 보지 않는다"
+    }
+   ]
+  },
+  "npc_nils_cinder": {
+   "home": "eg_tavern",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "05:00",
+     "at": "eg_tavern",
+     "doing": "부엌 구석에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "eg_tavern_yard",
+     "doing": "술집 물을 긷는다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "11:00",
+     "at": "eg_ore_depot",
+     "doing": "광석 창고 곁에서 잔심부름"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "eg_ore_depot",
+     "doing": "광석 수레 바퀴 속에 끈을 숨긴다"
+    },
+    {
+     "days": "all",
+     "from": "11:00",
+     "to": "23:00",
+     "at": "eg_tavern",
+     "doing": "술을 나른다"
+    },
+    {
+     "days": "all",
+     "from": "23:30",
+     "to": "00:30",
+     "at": "eg_tavern_yard",
+     "doing": "물탱크에서 매듭 끈을 건져 매듭 수를 센다"
+    }
+   ]
+  },
+  "npc_orin_ironwire": {
+   "home": "em_works",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "07:00",
+     "at": "em_works",
+     "doing": "안쪽 방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "em_works",
+     "doing": "갱도 지지대 설계를 점검한다"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "16:00",
+     "at": "em_works",
+     "doing": "환기 계산을 한다"
+    },
+    {
+     "days": "weekday:[2]",
+     "from": "14:00",
+     "to": "16:00",
+     "at": "em_vent_house",
+     "doing": "환기탑을 점검한다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "22:00",
+     "at": "em_works",
+     "doing": "계약석 문구를 낭독한다"
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "em_out_slag_slope",
+     "doing": "쓰레기 더미에서 '분실'된 지도가 사라졌는지 확인한다"
+    }
+   ]
+  },
+  "npc_wenna_ward": {
+   "home": "em_infirmary",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "05:00",
+     "at": "em_infirmary",
+     "doing": "뒷방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "20:00",
+     "at": "em_infirmary",
+     "doing": "새벽 기침 소리를 세고 환자를 돌본다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:30",
+     "at": "em_infirmary",
+     "doing": "사망 기록을 쓴다"
+    },
+    {
+     "days": "weekday:[2]",
+     "from": "22:30",
+     "to": "01:00",
+     "at": "em_infirmary_dead",
+     "doing": "시체 수레의 이중 밑판을 점검한다"
+    }
+   ]
+  },
+  "npc_erhard": {
+   "home": "em_chapel",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "em_chapel",
+     "doing": "뒷방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "em_chapel",
+     "doing": "기도실에서 새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "em_infirmary",
+     "doing": "병동에서 임종 기도를 올린다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "19:00",
+     "at": "em_burrow_red",
+     "doing": "굴 마을에서 빵을 나눈다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "em_chapel",
+     "doing": "기도실에서 번호를 센다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "em_chapel",
+     "doing": "예배를 집전한다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_yan_nose": {
+   "home": "em_burrow_black",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "em_burrow_black",
+     "doing": "굴에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "em_roll_yard",
+     "doing": "점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "em_lvl_mid",
+     "doing": "막장 앞에서 가스 냄새를 맡는다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "em_ration",
+     "doing": "배급",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "em_gas_shop",
+     "doing": "카셀의 작업실 뒷문에서 냄새를 알려 준다"
+    }
+   ]
+  },
+  "npc_ida_bread": {
+   "home": "em_ration",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "03:30",
+     "at": "em_ration",
+     "doing": "가마 곁 뒷방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "03:30",
+     "to": "20:30",
+     "at": "em_ration",
+     "doing": "검은 빵 반죽과 가마 불",
+     "fixed": true
+    }
+   ]
+  },
   "npc_godric_raven": {
    "home": "gf_keep",
    "blocks": [
@@ -5938,6 +7364,322 @@
    "to": "12:00",
    "at": "dp_postmaster_study",
    "doing": "월말 봉인 수와 밀랍 색을 장부에 적어 재상에게 올린다"
+  },
+  {
+   "id": "ev_em_shift_swap",
+   "npcs": [
+    "npc_kraz",
+    "npc_grax",
+    "npc_nit_threetail",
+    "npc_haro",
+    "npc_leonic",
+    "npc_caleb_dara",
+    "npc_yan_nose"
+   ],
+   "repeat": "monthly",
+   "day": 1,
+   "from": "17:30",
+   "to": "19:00",
+   "at": "em_roll_yard",
+   "doing": "달 첫날 점호 — 검은 교대와 붉은 교대가 한 달씩 맞바뀐다. 갱조 번호가 낭독된다"
+  },
+  {
+   "id": "ev_em_iron_convoy",
+   "npcs": [
+    "npc_barto_husk",
+    "npc_bolt"
+   ],
+   "repeat": "monthly",
+   "day": 13,
+   "from": "06:00",
+   "to": "10:00",
+   "at": "eg_ore_depot",
+   "doing": "철괴 호송대가 바알카르로 떠난다 — 까마귀 문 보급분 철괴가 섞여 있다"
+  },
+  {
+   "id": "ev_em_greyford_reports",
+   "npcs": [
+    "npc_tiberion_sorn",
+    "npc_aurelia_vermion"
+   ],
+   "repeat": "monthly",
+   "day": 28,
+   "from": "10:00",
+   "to": "13:00",
+   "at": "em_cradle_records",
+   "doing": "회색여울에서 올라온 징후 보고를 대조한다 — 레아의 우편과 헨릭의 장부가 같은 이름을 가리키는지 본다"
+  },
+  {
+   "id": "ev_em_stake_survey",
+   "npcs": [
+    "npc_evan_fell"
+   ],
+   "repeat": "monthly",
+   "day": 29,
+   "from": "07:00",
+   "to": "11:00",
+   "at": "em_ash_stakes",
+   "doing": "월 측량 — 말뚝이 얼마나 안쪽으로 옮겨졌는지 잰다"
+  },
+  {
+   "id": "ev_em_hadrian_pressure",
+   "npcs": [
+    "npc_hadrian_ashjaw"
+   ],
+   "repeat": "monthly",
+   "day": 30,
+   "from": "10:00",
+   "to": "12:00",
+   "at": "em_ash_watch",
+   "doing": "에반 펠에게 측량 보고를 낮추라고 누른다",
+   "travel_from": "em_office_chief",
+   "return_to": "em_office_chief",
+   "mounted": true
+  },
+  {
+   "id": "ev_em_month_end_report",
+   "npcs": [
+    "npc_cassian_vermion",
+    "npc_sorel_ink",
+    "npc_druss_vermion"
+   ],
+   "repeat": "monthly",
+   "day": 30,
+   "from": "14:00",
+   "to": "15:30",
+   "at": "em_vermion_hall",
+   "doing": "월말 낙반 보고 — 백작이 '낙반 3, 열병 7'을 낭독한다. 서기가 그 숫자를 장부에 옮긴다"
+  },
+  {
+   "id": "ev_em_ash_rain",
+   "date": "312-09-20",
+   "npcs": [
+    "npc_evan_fell"
+   ],
+   "from": "18:00",
+   "to": "23:00",
+   "at": "em_ash_stakes",
+   "doing": "잿비가 온다 — 황무지 가장자리에서 시간 잔상이 보인다. 말뚝 줄을 따라 걸으며 기록한다"
+  },
+  {
+   "id": "ev_em_lot_inspection_1",
+   "date": "312-10-14",
+   "npcs": [
+    "npc_aurelia_vermion",
+    "npc_krom_ironeye"
+   ],
+   "from": "10:00",
+   "to": "14:00",
+   "at": "baalkar",
+   "doing": "바알카르 비늘 시장에서 회색여울 매각 호송대(10.9 출발)의 노예 가운데 '징후' 후보와 요람 보충분을 고른다",
+   "travel_from": "em_cradle_admin",
+   "return_to": "em_cradle_admin",
+   "mounted": true
+  },
+  {
+   "id": "ev_em_quota_check",
+   "date": "312-10-31",
+   "npcs": [
+    "npc_hadrian_ashjaw",
+    "npc_kraz"
+   ],
+   "from": "08:00",
+   "to": "12:00",
+   "at": "em_ore_yard",
+   "doing": "분기 할당량 점검 — 비축 광석으로 채운 수레 수를 센다. 총감은 숫자가 맞는다고 쓴다"
+  },
+  {
+   "id": "ev_em_famine_ration",
+   "date": "312-12-15",
+   "npcs": [
+    "npc_ida_bread",
+    "npc_dorte",
+    "npc_kraz"
+   ],
+   "from": "05:30",
+   "to": "07:00",
+   "at": "em_ration",
+   "doing": "굶주림월 배급 줄임 — 바알카르 곡물이 늦어 검은 빵이 3분의 1로 준다. 물 값이 한 덩이 반으로 오른다"
+  },
+  {
+   "id": "ev_em_lot_inspection_2",
+   "date": "312-12-08",
+   "npcs": [
+    "npc_aurelia_vermion",
+    "npc_krom_ironeye"
+   ],
+   "from": "10:00",
+   "to": "14:00",
+   "at": "baalkar",
+   "doing": "회색여울 2차 매각 호송대(12.3 출발)의 노예를 점검한다 — 요람 대기 감방의 빈자리를 채울 사람을 고른다",
+   "travel_from": "em_cradle_admin",
+   "return_to": "em_cradle_admin",
+   "mounted": true
+  },
+  {
+   "id": "ev_em_ash_days_seal",
+   "date": "312-13-01",
+   "npcs": [
+    "npc_druss_vermion",
+    "npc_cassian_vermion",
+    "npc_hadrian_ashjaw"
+   ],
+   "from": "06:00",
+   "to": "09:00",
+   "at": "em_main_shaft",
+   "doing": "재의 날 갱도 봉인 — 불을 피우지 않는다. 갱도 입구를 걸어 잠그고 시간 잔상이 가장 많은 서쪽 갱도 문을 쇠사슬로 묶는다"
+  },
+  {
+   "id": "ev_em_ash_first_shaft",
+   "date": "312-13-02",
+   "npcs": [
+    "npc_nit_threetail"
+   ],
+   "from": "22:00",
+   "to": "23:30",
+   "at": "em_first_shaft",
+   "doing": "재의 날 — 봉인 틈에서 말이 섞인 바람이 분다. 그릇의 물이 줄어 있다"
+  },
+  {
+   "id": "ev_em_thaw_flood",
+   "date": "313-01-18",
+   "npcs": [
+    "npc_orin_ironwire",
+    "npc_druss_vermion",
+    "npc_haro",
+    "npc_caleb_dara"
+   ],
+   "from": "06:00",
+   "to": "14:00",
+   "at": "em_lvl_lower",
+   "doing": "해빙수 침수 — 하층 7~9번 수평갱이 차올라 폐쇄된다. 두르강 기술자가 배수 계산을 하고 갱조는 중층으로 옮겨진다"
+  },
+  {
+   "id": "ev_em_slave_market",
+   "date": "313-02-14",
+   "npcs": [
+    "npc_aurelia_vermion",
+    "npc_krom_ironeye"
+   ],
+   "from": "09:00",
+   "to": "16:00",
+   "at": "baalkar",
+   "doing": "파종월 대시장 — 요람 보충분을 사들이고 목줄장은 '자원자'를 고른다",
+   "travel_from": "em_cradle_admin",
+   "return_to": "em_cradle_admin",
+   "mounted": true
+  },
+  {
+   "id": "ev_em_egg_hatch",
+   "date": "313-03-15",
+   "npcs": [
+    "npc_melisande"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "baalkar",
+   "doing": "흰 알 부화를 지켜본다 — 알을 탐내는 이졸데와 계승을 노리는 아우락스 사이에서 개량파의 표를 센다 (부화 날짜는 임시)"
+  },
+  {
+   "id": "ev_em_warning_day_guards",
+   "date": "313-05-12",
+   "npcs": [
+    "npc_hadrian_ashjaw",
+    "npc_kraz",
+    "npc_grax"
+   ],
+   "from": "06:00",
+   "to": "17:00",
+   "at": "red_road",
+   "doing": "경고의 날(AS 100 진압 212주년) — 용인 경비가 붉은 길을 메우고 노예 전원을 기둥 사이에 세워 '경고'한다",
+   "travel_from": "em_guard_barracks",
+   "return_to": "em_guard_barracks",
+   "mounted": true
+  },
+  {
+   "id": "ev_em_warning_day_slaves",
+   "date": "313-05-12",
+   "npcs": [
+    "npc_rok",
+    "npc_haro",
+    "npc_leonic",
+    "npc_yan_nose",
+    "npc_caleb_dara"
+   ],
+   "from": "06:00",
+   "to": "16:00",
+   "at": "red_road",
+   "doing": "붉은 길에 세워진다 — 기둥 7,341번 앞에서 아무 말 없이 서 있는다. 로크의 세 번째 봉기 후보일"
+  },
+  {
+   "id": "ev_em_warning_day_hands",
+   "date": "313-05-12",
+   "npcs": [
+    "npc_caleb_dara",
+    "npc_rok",
+    "npc_leonic",
+    "npc_haro",
+    "npc_dorte",
+    "npc_mate_singer"
+   ],
+   "from": "20:00",
+   "to": "22:30",
+   "at": "em_dara_wall",
+   "doing": "경고의 날 밤 — 9번 갱 막장에서 손바닥 자국에 손을 겹친다. 안건이 서면 아무도 손을 떼지 않는다"
+  },
+  {
+   "id": "ev_em_covenant_council",
+   "date": "313-05-20",
+   "npcs": [
+    "npc_melisande"
+   ],
+   "from": "09:00",
+   "to": "18:00",
+   "at": "baalkar",
+   "doing": "맹약회의 313 — 잔향 대숙청이냐 현상 유지냐. 멜리산드는 개량파의 표를 세고 '그릇'에 대한 징후 보고를 책상 아래에 둔다 (회의 장소·날짜는 임시)"
+  },
+  {
+   "id": "ev_em_summer_gas",
+   "date": "313-06-20",
+   "npcs": [
+    "npc_cassel_smokeiron",
+    "npc_yan_nose",
+    "npc_druss_vermion",
+    "npc_orin_ironwire",
+    "npc_nit_threetail"
+   ],
+   "from": "05:00",
+   "to": "11:00",
+   "at": "em_vent_house",
+   "doing": "여름 환기탑 점검 — 밸브가 샌다. 작년 건초월 폭발로 붉은 교대 38명이 낙반으로 기록된 날이 다시 온다"
+  },
+  {
+   "id": "ev_em_corvin_rite",
+   "date": "313-07-10",
+   "npcs": [
+    "npc_cassian_vermion",
+    "npc_druss_vermion",
+    "npc_sorel_ink"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "em_vermion_hall",
+   "doing": "코르빈 추모 — '용감한 전사'를 기리는 공식 의례. 광부들은 이날 말하지 않는다 (날짜 미정 — 임시)"
+  },
+  {
+   "id": "ev_em_fall_day",
+   "date": "313-07-19",
+   "npcs": [
+    "npc_caleb_dara",
+    "npc_dorte",
+    "npc_mate_singer",
+    "npc_rok",
+    "npc_haro"
+   ],
+   "from": "20:00",
+   "to": "23:30",
+   "at": "em_dara_wall",
+   "doing": "낙반의 날 — 9번 갱 막장에서 「붉은 길」 일곱 절을 한 절씩 낭송하고 기억되는 이름 1,300을 부른다 (수확월 중 임시 날짜)"
   },
   {
    "id": "ev_kaspar_stone_ring",

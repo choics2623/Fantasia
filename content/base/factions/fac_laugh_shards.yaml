@@ -64,6 +64,21 @@ offices:
     chosen_by: "결사가 골랐다 — 그녀는 '혹시'의 심부름으로만 안다"
     perks: []
 
+  - id: off_name_page
+    title: 궁정 안의 조각 — 이름 수집가의 시동
+    holder: "unnamed:이름 수집가의 시동 — 빼앗은 이름 보관소의 문지기"
+    reports_to: off_mirror_maybe
+    powers: ["여왕이 빼앗은 이름들의 보관소 출입 — 바꿔치기된 아이들의 인간 이름도 거기 있다"]
+    chosen_by: "상자를 열었다"
+    perks: []
+  - id: off_fallen_two
+    title: 떨어진 조각 둘
+    holder: "unnamed:떨어진 페이 둘 — 하나는 하르칸 일곱샘 부족 곁, 하나는 루멘 순례자 거리의 거지로 산다"
+    reports_to: off_fallen_mouth
+    powers: ["진실을 말해도 묶이지 않는다", "숲 밖의 소문"]
+    chosen_by: "상자를 열었다 — 그리고 떨어졌다"
+    perks: []
+
 ranks:
   - {id: rank_shard, title: "조각 (상자를 연 페이)", duties: "진실 한 조각을 지킨다", privileges: "웃지 못한다 — 그것이 증표다", open_to_player: false}
   - {id: rank_fallen, title: "떨어진 입", duties: "결사 대신 진실을 말한다", privileges: "묶이지 않는다", open_to_player: false}

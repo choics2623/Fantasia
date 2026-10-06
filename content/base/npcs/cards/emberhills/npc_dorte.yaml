@@ -1,0 +1,92 @@
+id: npc_dorte
+name: 도르테
+aka: [취사장 누이, 그릇의 도르테]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 여
+age: 55
+region: 잿불 언덕
+home: 굴 마을 붉은 교대 구역
+job: 갱 취사 노예 (칼렙의 누이)
+rank: 국유 노예 — 숙련 노예 (취사)
+summary: 칼렙의 누이로 취사장에서 그릇 밑바닥 매듭으로 갱 사이 소식을 나른다. 다라의 곡괭이 머리 위치의 지명자다
+source: docs/world/people/ember_hills.md P1E-16
+life:
+  - {year: 257, age: 0, event: "굴 마을에서 태어남. 오빠 칼렙보다 세 살 아래였다"}
+  - {year: 272, age: 15, event: "취사장에 배속됨. 죽 솥 앞에서 그릇의 매듭을 처음 읽었다"}
+  - {year: 285, age: 28, event: "조카 야나가 태어난 날 새언니가 죽었다. 야나를 안고 밤새 솥 곁에 앉았다"}
+  - {year: 302, age: 45, event: "이름 없는 자들의 매듭이 닿자 그릇 밑바닥 소식 통로를 열었다"}
+  - {year: 312, age: 55, event: "곡괭이 머리 위치의 지명자가 됨. 야나가 요람에 들어가 매듭 하나가 끊겼다 (낙엽월 1일 기준)"}
+appearance:
+  - "손가락 마디마다 화상 자국"
+  - "앞치마에 갱 번호가 수 놓여 있다"
+  - "말보다 먼저 그릇을 건넨다"
+smell: "귀리죽과 탄 장작, 젖은 천"
+voice_sound: "낮고 따뜻한 목소리. 명령형으로 다정하다"
+personality:
+  disposition: {용기: 20, 자비: 50, 정직: 10, 신앙: 20, 탐욕: -20, 충성: 80}
+  temperament: [다정, 단단함, 조용한 분노]
+  habits:
+    - "그릇 밑바닥을 엄지로 한 번 문질러 매듭을 확인한다"
+    - "건네기 전에 그릇을 국자 뒷면으로 한 번 친다"
+  values: "먹이는 것. 소식을 끊지 않는 것. 가족을 버리지 않는 것"
+  fears: [야나가 시술대에 오르는 것, 오빠가 무너지는 것, 그릇이 엎어지는 것]
+  desires:
+    short: "조카 야나에게 매듭 한 줄 보내기"
+    long: "오빠가 손을 벽에서 뗄 수 있는 날을 만든다"
+voice:
+  register:
+    to_superior: "짧은 존대, 눈은 그릇에"
+    to_equal: "다정한 반말"
+    to_inferior: "아이에게는 명령처럼 다정하다"
+    to_player_default: "그릇을 먼저 건넨다"
+  tics: ["'먹어.'", "그릇을 국자로 한 번 친다"]
+  use: [먹어, 그릇, 매듭, 아가, 따뜻하게]
+  avoid: [곡괭이 머리(스스로), 봉기]
+  length: "짧고 다정하다"
+  samples:
+    - {situation: 첫 만남, line: "먹어. 말은 먹고 나서 해."}
+    - {situation: 호의, line: "그릇 밑을 봐. 매듭 둘이야. 오늘 둘이 전하는 거지."}
+    - {situation: 적대, line: "이 죽 안에서는 그 말 하지 마. 가마도 귀가 있어."}
+    - {situation: 거래, line: "그릇 하나를 옮겨 줘. 가는 길에 아무것도 열지 말고."}
+    - {situation: 위기, line: "솥 엎어! 연기로 가려!"}
+    - {situation: 비밀 누설, line: "곡괭이 머리? 물웅덩이 아래에 있어. 내가 아는 건 그것뿐이야. 오빠가 나를 지명했으니까."}
+schedule:
+  아침: "새벽 죽 솥"
+  낮: "그릇 매듭 새기기"
+  저녁: "저녁 배급"
+  밤: "9번 갱 회합 참석"
+places: [배급소 '검은 빵 창구', 굴 마을 붉은 교대 구역, 하층 9번 수평갱]
+knows: [fact_em_dara_handprint_wall, fact_em_song_gap]
+hides:
+  - fact: fact_em_dorte_cook_route
+    reveal_when: "신뢰 50 이상이거나, 굶은 아이에게 음식을 나눈 장면 직후"
+    cover: "'그릇은 그릇일 뿐이야'라며 국자로 솥을 한 번 친다"
+  - fact: fact_em_caleb_pit_water_hand
+    reveal_when: "신뢰 75 이상이거나, 칼렙이 먼저 허락했을 때"
+    cover: "'물웅덩이엔 물뿐이야'라고 한다"
+relations:
+  - {to: npc_caleb_dara, type: 오빠, like: 70, trust: 80, visibility: 공개, memo: null, words: "손을 벽에서 못 떼는 오빠. 손을 대신 쥐어 주고 싶다"}
+  - {to: npc_yana, type: 조카, like: 80, trust: 60, visibility: 공개, memo: null, words: "내가 키운 아이. 지금은 매듭 하나 보낼 길이 없다"}
+  - {to: npc_ida_bread, type: 같은 가마, like: 40, trust: 30, visibility: 공개, memo: null, words: "빵을 굽는 동무. 서로의 손이 닿는 거리"}
+toward_player: "그릇부터 건넨다. 굶은 얼굴에는 약하다"
+persuade:
+  likes: ["굶은 아이 이야기 (+25)", "야나 소식"]
+  hates: ["야나를 이식 명단에 보냈다고 말하는 것"]
+roles:
+  teacher: "가능 — 제작(요리, 상한 55)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "그릇 밑바닥 매듭으로 소식을 나른다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_darason, rank: rank_hand_on_wall, office: off_cook_aunt, since: 302, loyalty: 80, public: false, cell: null}
+truths: []
+hard_rules:
+  - "곡괭이 머리 위치를 스스로 말하지 않는다"
+on_death: "갱 사이 소식 통로 끊김. 곡괭이 머리 위치를 아는 마지막 사람 소멸"
+story_seeds:
+  - "매듭 둘 — 그릇 밑바닥의 소식이 누구에게 닿는가"

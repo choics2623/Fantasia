@@ -8,7 +8,7 @@ subrace: 광산 인간
 sex: 남
 age: 58
 region: 잿불 언덕
-home: 굴 마을 붉은 교대 구역
+home: 굴 마을 검은 교대 구역
 job: 9번 갱 갱조장 (다라손, 이름 없는 자들 잿불 언덕 등잔)
 rank: 국유 노예 — 갱조장
 summary: 다라손의 갱조장이자 이름 없는 자들의 잿불 언덕 등잔. 봉기를 원하지만 '기다려라'에 묶여 있고, 딸 야나가 요람 순번 37번에 올랐다
@@ -68,7 +68,7 @@ schedule:
   낮: "하층 9번 막장"
   저녁: "막장 벽 앞에서 손을 얹고 침묵"
   밤: "갱조 회합 (교대 사이)"
-places: [하층 9번 수평갱, 다라의 손바닥 벽, 굴 마을 붉은 교대 구역, 배급소]
+places: [하층 9번 수평갱, 다라의 손바닥 벽, 굴 마을 검은 교대 구역, 배급소]
 knows: [fact_em_dara_handprint_wall, fact_em_caleb_pit_water_hand, fact_em_song_gap, fact_em_dorte_cook_route]
 hides:
   - fact: fact_em_caleb_wall_rule

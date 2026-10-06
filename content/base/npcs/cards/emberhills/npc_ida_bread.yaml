@@ -1,0 +1,88 @@
+id: npc_ida_bread
+name: 빵 이다
+aka: [검은 빵 이다, 가마 이다]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 여
+age: 45
+region: 잿불 언덕
+home: 배급소 가마 곁 뒷방
+job: 배급소 빵 굽는 이
+rank: 국유 노예 — 숙련 노예 (취사)
+summary: 톱밥 섞인 검은 빵을 굽는 이. '사망'으로 적힌 아홉 살 굴 태생 소녀를 반죽 통 아래 방에 숨기고 있다
+source: docs/world/people/ember_hills.md P1E-28
+life:
+  - {year: 267, age: 0, event: "굴 마을에서 태어남. 어머니가 가마 곁에서 일했다"}
+  - {year: 282, age: 15, event: "가마 보조. 톱밥과 밀가루의 비율을 처음 익혔다"}
+  - {year: 300, age: 33, event: "빵 굽는 이가 됨. 배급 줄 맨 앞에 서는 사람이 되었다"}
+  - {year: 311, age: 44, event: "'사망'으로 적힌 아기를 가마 곁에서 건져 키우기 시작함"}
+  - {year: 312, age: 45, event: "소녀는 아홉 살이 되었다. 반죽 통 아래 방에서 지낸다 (낙엽월 1일 기준)"}
+appearance:
+  - "팔뚝이 밀가루와 톱밥으로 하얗다"
+  - "앞치마 주머니에 늘 빵 한 조각"
+  - "말은 짧고 손은 빠르다"
+smell: "탄 빵 껍질과 톱밥, 효모"
+voice_sound: "낮고 따뜻한 목소리. 명령형으로 다정하다"
+personality:
+  disposition: {용기: 20, 자비: 60, 정직: -10, 신앙: 10, 탐욕: -20, 충성: 50}
+  temperament: [다정, 단호, 비밀]
+  habits:
+    - "손을 닦기 전에 빵 한 조각을 건넨다"
+    - "가마 문을 열 때 반죽 통 쪽을 한 번 본다"
+  values: "굶지 않는 것. 한 아이를 해 아래로 올려 보내는 것"
+  fears: [반죽 통 아래 방의 발각, 소녀가 기침하는 날, 검열]
+  desires:
+    short: "반죽 통 아래 방의 소녀를 들키지 않는다"
+    long: "소녀가 지상의 해를 본다"
+voice:
+  register:
+    to_superior: "짧은 존대"
+    to_equal: "다정한 반말"
+    to_inferior: "아이에게는 명령처럼 다정하다"
+    to_player_default: "빵부터 건넨다"
+  tics: ["'먹어.'", "빵 한 조각"]
+  use: [먹어, 빵, 가마, 톱밥, 따뜻하게]
+  avoid: [반죽 통, 소녀, 숨김]
+  length: "짧고 다정하다"
+  samples:
+    - {situation: 첫 만남, line: "먹어. 오늘은 반 덩이가 아니라 반 덩이와 한 조각이다."}
+    - {situation: 호의, line: "당신은 손이 따뜻하군. 이 갱에서는 드문데."}
+    - {situation: 적대, line: "빵 값은 안 깎아. 깎으면 누가 더 굶을 뿐이야."}
+    - {situation: 거래, line: "톱밥 한 자루를 구해 주면 빵 한 덩이를 더 줄게. 아무한테도 말하지 말고."}
+    - {situation: 위기, line: "반죽 통 건드리지 마! 거기 밀가루가— 밀가루만 있어!"}
+    - {situation: 비밀 누설, line: "아홉 살이야. 해를 한 번도 못 봤어. 해가 뭐냐고 묻더라, 그래서 가마 불을 보여 줬지."}
+schedule:
+  아침: "새벽 가마 불"
+  낮: "반죽"
+  저녁: "저녁 배급"
+  밤: "반죽 통 아래 방"
+places: [배급소 '검은 빵 창구', 가마, 반죽 통 아래 방]
+knows: [fact_em_dorte_cook_route]
+hides:
+  - fact: fact_em_ida_hidden_child
+    reveal_when: "신뢰 55 이상이거나, 소녀를 위해 음식과 안전을 약속했을 때"
+    cover: "'반죽 통엔 밀가루뿐이야'라고 한다"
+relations:
+  - {to: npc_dorte, type: 같은 가마, like: 40, trust: 30, visibility: 공개, memo: null, words: "취사장의 동무. 서로의 가마를 열어 보지 않는다"}
+  - {to: npc_wenna_ward, type: 병동, like: 30, trust: 20, visibility: 공개, memo: null, words: "병동의 손. 기침 심한 날 빵 한 조각을 몰래 보낸다"}
+  - {to: npc_leonic, type: 소문, like: 10, trust: 0, visibility: 공개, memo: null, words: "굴 312호의 노인. 빵을 받으며 이야기를 한 줌 흘려 간다"}
+toward_player: "빵부터 건넨다. 굶은 얼굴에는 약하다"
+persuade:
+  likes: ["굶은 아이 (+30)", "해 이야기"]
+  hates: ["반죽 통 이야기"]
+roles:
+  teacher: "가능 — 제작(요리, 상한 60)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "반죽 통 아래 방에 소녀가 있다 (회귀점의 사실)"
+affiliations: []
+truths: []
+hard_rules:
+  - "반죽 통과 소녀 이야기를 스스로 꺼내지 않는다"
+on_death: "반죽 통 아래 소녀가 숨을 곳을 잃는다"
+story_seeds:
+  - "소녀를 지상으로 올려 보낼 방법 — 시체 수레, 연통, 광석 수레"

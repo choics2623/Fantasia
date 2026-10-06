@@ -1,0 +1,35 @@
+# 잿불 언덕 날짜 일정 (AS 312 낙엽월 1일 ~ AS 313 수확월). 일과보다 우선한다 (24 §3.2). 원천: REGIONS §3.8·3.13, WORLD_BIBLE §8·§10, fac_darason·fac_vermion·fac_nameless, 회색여울 사건 달력.
+# 날짜 표기 "년-월-일" (월 9=낙엽월 … 12=굶주림월, 13=재의 날, 1=해빙월 … 7=수확월). 쉼표가 든 값은 따옴표로.
+# 회색여울 연결: 매달 25일 레아의 우편(레아→멜리산드) → 28일 요람 대조 / 10.9 · 12.3 매각 호송 → 바알카르 비늘 시장 점검 / 9.15 카스파르의 보급 회의 → 13일 철괴 호송대.
+# 월드 클락: #1 용황의 죽음(멜리산드는 계승 국면 때문에 바알카르에 머문다 — 일과의 presence), #2 맹약회의 313(태양월), #4 황무지 확장(말뚝 가속).
+
+# ── 매달 반복 ──
+- {id: ev_em_shift_swap, npcs: [npc_kraz, npc_grax, npc_nit_threetail, npc_haro, npc_leonic, npc_caleb_dara, npc_yan_nose], repeat: monthly, day: 1, from: "17:30", to: "19:00", at: em_roll_yard, doing: "달 첫날 점호 — 검은 교대와 붉은 교대가 한 달씩 맞바뀐다. 갱조 번호가 낭독된다"}
+- {id: ev_em_iron_convoy, npcs: [npc_barto_husk, npc_bolt], repeat: monthly, day: 13, from: "06:00", to: "10:00", at: eg_ore_depot, doing: "철괴 호송대가 바알카르로 떠난다 — 까마귀 문 보급분 철괴가 섞여 있다"}
+- {id: ev_em_greyford_reports, npcs: [npc_tiberion_sorn, npc_aurelia_vermion], repeat: monthly, day: 28, from: "10:00", to: "13:00", at: em_cradle_records, doing: "회색여울에서 올라온 징후 보고를 대조한다 — 레아의 우편과 헨릭의 장부가 같은 이름을 가리키는지 본다"}
+- {id: ev_em_stake_survey, npcs: [npc_evan_fell], repeat: monthly, day: 29, from: "07:00", to: "11:00", at: em_ash_stakes, doing: "월 측량 — 말뚝이 얼마나 안쪽으로 옮겨졌는지 잰다"}
+- {id: ev_em_hadrian_pressure, npcs: [npc_hadrian_ashjaw], repeat: monthly, day: 30, from: "10:00", to: "12:00", at: em_ash_watch, doing: "에반 펠에게 측량 보고를 낮추라고 누른다", travel_from: em_office_chief, return_to: em_office_chief, mounted: true}
+- {id: ev_em_month_end_report, npcs: [npc_cassian_vermion, npc_sorel_ink, npc_druss_vermion], repeat: monthly, day: 30, from: "14:00", to: "15:30", at: em_vermion_hall, doing: "월말 낙반 보고 — 백작이 '낙반 3, 열병 7'을 낭독한다. 서기가 그 숫자를 장부에 옮긴다"}
+
+# ── AS 312 가을·겨울 ──
+- {id: ev_em_ash_rain, date: "312-09-20", npcs: [npc_evan_fell], from: "18:00", to: "23:00", at: em_ash_stakes, doing: "잿비가 온다 — 황무지 가장자리에서 시간 잔상이 보인다. 말뚝 줄을 따라 걸으며 기록한다"}
+- {id: ev_em_lot_inspection_1, date: "312-10-14", npcs: [npc_aurelia_vermion, npc_krom_ironeye], from: "10:00", to: "14:00", at: baalkar, doing: "바알카르 비늘 시장에서 회색여울 매각 호송대(10.9 출발)의 노예 가운데 '징후' 후보와 요람 보충분을 고른다", travel_from: em_cradle_admin, return_to: em_cradle_admin, mounted: true}
+- {id: ev_em_quota_check, date: "312-10-31", npcs: [npc_hadrian_ashjaw, npc_kraz], from: "08:00", to: "12:00", at: em_ore_yard, doing: "분기 할당량 점검 — 비축 광석으로 채운 수레 수를 센다. 총감은 숫자가 맞는다고 쓴다"}
+- {id: ev_em_famine_ration, date: "312-12-15", npcs: [npc_ida_bread, npc_dorte, npc_kraz], from: "05:30", to: "07:00", at: em_ration, doing: "굶주림월 배급 줄임 — 바알카르 곡물이 늦어 검은 빵이 3분의 1로 준다. 물 값이 한 덩이 반으로 오른다"}
+- {id: ev_em_lot_inspection_2, date: "312-12-08", npcs: [npc_aurelia_vermion, npc_krom_ironeye], from: "10:00", to: "14:00", at: baalkar, doing: "회색여울 2차 매각 호송대(12.3 출발)의 노예를 점검한다 — 요람 대기 감방의 빈자리를 채울 사람을 고른다", travel_from: em_cradle_admin, return_to: em_cradle_admin, mounted: true}
+- {id: ev_em_ash_days_seal, date: "312-13-01", npcs: [npc_druss_vermion, npc_cassian_vermion, npc_hadrian_ashjaw], from: "06:00", to: "09:00", at: em_main_shaft, doing: "재의 날 갱도 봉인 — 불을 피우지 않는다. 갱도 입구를 걸어 잠그고 시간 잔상이 가장 많은 서쪽 갱도 문을 쇠사슬로 묶는다"}
+- {id: ev_em_ash_first_shaft, date: "312-13-02", npcs: [npc_nit_threetail], from: "22:00", to: "23:30", at: em_first_shaft, doing: "재의 날 — 봉인 틈에서 말이 섞인 바람이 분다. 그릇의 물이 줄어 있다"}
+
+# ── AS 313 봄 ──
+- {id: ev_em_thaw_flood, date: "313-01-18", npcs: [npc_orin_ironwire, npc_druss_vermion, npc_haro, npc_caleb_dara], from: "06:00", to: "14:00", at: em_lvl_lower, doing: "해빙수 침수 — 하층 7~9번 수평갱이 차올라 폐쇄된다. 두르강 기술자가 배수 계산을 하고 갱조는 중층으로 옮겨진다"}
+- {id: ev_em_slave_market, date: "313-02-14", npcs: [npc_aurelia_vermion, npc_krom_ironeye], from: "09:00", to: "16:00", at: baalkar, doing: "파종월 대시장 — 요람 보충분을 사들이고 목줄장은 '자원자'를 고른다", travel_from: em_cradle_admin, return_to: em_cradle_admin, mounted: true}
+- {id: ev_em_egg_hatch, date: "313-03-15", npcs: [npc_melisande], from: "08:00", to: "20:00", at: baalkar, doing: "흰 알 부화를 지켜본다 — 알을 탐내는 이졸데와 계승을 노리는 아우락스 사이에서 개량파의 표를 센다 (부화 날짜는 임시)"}
+- {id: ev_em_warning_day_guards, date: "313-05-12", npcs: [npc_hadrian_ashjaw, npc_kraz, npc_grax], from: "06:00", to: "17:00", at: red_road, doing: "경고의 날(AS 100 진압 212주년) — 용인 경비가 붉은 길을 메우고 노예 전원을 기둥 사이에 세워 '경고'한다", travel_from: em_guard_barracks, return_to: em_guard_barracks, mounted: true}
+- {id: ev_em_warning_day_slaves, date: "313-05-12", npcs: [npc_rok, npc_haro, npc_leonic, npc_yan_nose, npc_caleb_dara], from: "06:00", to: "16:00", at: red_road, doing: "붉은 길에 세워진다 — 기둥 7,341번 앞에서 아무 말 없이 서 있는다. 로크의 세 번째 봉기 후보일"}
+- {id: ev_em_warning_day_hands, date: "313-05-12", npcs: [npc_caleb_dara, npc_rok, npc_leonic, npc_haro, npc_dorte, npc_mate_singer], from: "20:00", to: "22:30", at: em_dara_wall, doing: "경고의 날 밤 — 9번 갱 막장에서 손바닥 자국에 손을 겹친다. 안건이 서면 아무도 손을 떼지 않는다"}
+- {id: ev_em_covenant_council, date: "313-05-20", npcs: [npc_melisande], from: "09:00", to: "18:00", at: baalkar, doing: "맹약회의 313 — 잔향 대숙청이냐 현상 유지냐. 멜리산드는 개량파의 표를 세고 '그릇'에 대한 징후 보고를 책상 아래에 둔다 (회의 장소·날짜는 임시)"}
+
+# ── AS 313 여름 ──
+- {id: ev_em_summer_gas, date: "313-06-20", npcs: [npc_cassel_smokeiron, npc_yan_nose, npc_druss_vermion, npc_orin_ironwire, npc_nit_threetail], from: "05:00", to: "11:00", at: em_vent_house, doing: "여름 환기탑 점검 — 밸브가 샌다. 작년 건초월 폭발로 붉은 교대 38명이 낙반으로 기록된 날이 다시 온다"}
+- {id: ev_em_corvin_rite, date: "313-07-10", npcs: [npc_cassian_vermion, npc_druss_vermion, npc_sorel_ink], from: "10:00", to: "12:00", at: em_vermion_hall, doing: "코르빈 추모 — '용감한 전사'를 기리는 공식 의례. 광부들은 이날 말하지 않는다 (날짜 미정 — 임시)"}
+- {id: ev_em_fall_day, date: "313-07-19", npcs: [npc_caleb_dara, npc_dorte, npc_mate_singer, npc_rok, npc_haro], from: "20:00", to: "23:30", at: em_dara_wall, doing: "낙반의 날 — 9번 갱 막장에서 「붉은 길」 일곱 절을 한 절씩 낭송하고 기억되는 이름 1,300을 부른다 (수확월 중 임시 날짜)"}

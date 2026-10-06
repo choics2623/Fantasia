@@ -1,0 +1,89 @@
+id: npc_nils_cinder
+name: 꼬마 닐스
+aka: [재투성이 닐스, 바퀴 닐스]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 14
+region: 잿불 언덕
+home: 술집 '숯불' 부엌 구석
+job: 술집 심부름꾼 (매듭 끈 운반자)
+rank: 사유 노예 — 소르가의 심부름꾼
+summary: 술집 뒷마당 물탱크의 매듭 끈을 수레 바퀴에 숨겨 갱 마을로 나르는 열네 살 소년. 매듭의 뜻은 모르고 수만 센다
+source: docs/world/people/ember_hills.md P1E-23
+life:
+  - {year: 298, age: 0, event: "잿문 제련 노예 우리에서 태어남. 아버지는 용광로 사고로 죽었다"}
+  - {year: 306, age: 8, event: "소르가의 술집에 심부름꾼으로 팔림"}
+  - {year: 309, age: 11, event: "뒷마당 물탱크에서 처음 끈을 건졌다. 누가 시켰는지 모른다"}
+  - {year: 311, age: 13, event: "수레 바퀴에 끈을 숨기는 법을 스스로 터득했다"}
+  - {year: 312, age: 14, event: "매듭 수를 세는 습관이 몸에 배었다 (낙엽월 1일 기준)"}
+appearance:
+  - "재투성이 얼굴"
+  - "신발이 짝짝이"
+  - "바퀴를 자주 만진다"
+smell: "재와 맥주, 마른 빵"
+voice_sound: "작고 빠른 목소리. 흥분하면 끝이 갈라진다"
+personality:
+  disposition: {용기: 20, 자비: 30, 정직: 10, 신앙: 0, 탐욕: -10, 충성: 30}
+  temperament: [겁, 눈치, 호기심]
+  habits:
+    - "물 길을 때마다 매듭의 수를 입속으로 센다"
+    - "수레 바퀴를 손바닥으로 한 번 쓸고 지나간다"
+  values: "매듭 수를 틀리지 않는 것. 소르가에게 맞지 않는 것"
+  fears: [감독, 매듭 수를 틀리는 것, 바퀴 속 끈이 발각되는 것]
+  desires:
+    short: "오늘 끈의 매듭 수를 틀리지 않고 센다"
+    long: "해가 지는 잿문 밖을 걸어 본다"
+voice:
+  register:
+    to_superior: "아주 낮은 존대, 눈을 피한다"
+    to_equal: "작은 반말"
+    to_inferior: "없다"
+    to_player_default: "눈을 피하고 도망 칠 곳을 본다"
+  tics: ["'…네, 네.'", "바퀴를 만진다"]
+  use: [매듭, 바퀴, 술, 2못, 심부름]
+  avoid: [끈, 광부등, 뜻]
+  length: "짧고 빠르다"
+  samples:
+    - {situation: 첫 만남, line: "…술이요? 네, 한 잔요. 2못이에요."}
+    - {situation: 호의, line: "바퀴요? 아, 그냥 굴러가요. 그냥요."}
+    - {situation: 적대, line: "나는 몰라요! 아무것도 안 날랐어요!"}
+    - {situation: 거래, line: "빵 반 조각이면… 오늘 매듭 수만 알려 드릴게요. 뜻은 몰라요."}
+    - {situation: 위기, line: "도망쳐요! 감독 와요! 나는 먼저 갈게요!"}
+    - {situation: 비밀 누설, line: "끈에 매듭이 몇 개인지만 알아요. 뭔지는 몰라요. 정말로."}
+schedule:
+  아침: "술집 물 긷기"
+  낮: "광석 창고 곁 잔심부름"
+  저녁: "술 나르기"
+  밤: "뒷마당 물탱크에서 끈 건지기"
+places: [술집 '숯불', 숯불 뒷마당, 광석 창고, 굴 마을 입구]
+knows: [fact_em_sorga_blind_eye]
+hides:
+  - fact: fact_em_nils_courier
+    reveal_when: "신뢰 45 이상이거나, 빵이나 안전을 약속했을 때"
+    cover: "'물만 길어요'라며 바퀴를 만진다"
+relations:
+  - {to: npc_sorga, type: 주인, like: 30, trust: 20, visibility: 공개, memo: null, words: "무섭게 굴지만 밤마다 빵을 남겨 놓는 분"}
+  - {to: npc_dorte, type: 받는 사람, like: 20, trust: 20, visibility: 비밀, memo: null, words: "끈을 받는 취사장 아줌마. 그릇을 한 번 얻어먹었다"}
+  - {to: npc_leonic, type: 접선, like: 10, trust: 10, visibility: 비밀, memo: null, words: "굴 312호 할아버지. 눈이 너무 맑아서 무섭다"}
+toward_player: "눈을 피하고 도망칠 곳을 본다. 빵을 주면 한 걸음 가까워진다"
+persuade:
+  likes: ["빵 (+30)", "해 지는 이야기"]
+  hates: ["끈 이야기를 먼저 꺼내는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "밤마다 뒷마당 물탱크에서 끈을 건진다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_nameless, rank: rank_contact, office: null, since: 309, loyalty: 30, public: false, cell: null}
+truths: []
+hard_rules:
+  - "끈 이야기를 먼저 꺼내지 않는다"
+on_death: "광부등의 운반 한 줄이 끊긴다"
+story_seeds:
+  - "열네 살의 매듭 수 — 몰라서 안전하고, 몰라서 위험하다"

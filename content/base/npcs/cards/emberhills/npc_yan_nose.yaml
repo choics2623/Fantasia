@@ -1,0 +1,88 @@
+id: npc_yan_nose
+name: 코 얀
+aka: [가스 코, 냄새꾼 얀]
+tier: B
+type: living
+race: 인간
+subrace: 광산 인간
+sex: 남
+age: 34
+region: 잿불 언덕
+home: 굴 마을 검은 교대 구역
+job: 가스 코 (냄새꾼)
+rank: 국유 노예 — 갱 노예
+summary: 막장 앞에서 가스 냄새를 맡는 광부. 카셀에게 돈을 받고 환기 갱의 냄새를 알려 주며, 장치가 묻힌 갱도 여섯 곳을 냄새로 안다
+source: docs/world/people/ember_hills.md P1E-27
+life:
+  - {year: 278, age: 0, event: "굴 마을에서 태어남"}
+  - {year: 292, age: 14, event: "첫 입갱. 갱도 천장이 내려앉기 직전의 냄새를 처음 맡았다"}
+  - {year: 303, age: 25, event: "가스 폭발에서 코를 다쳤으나 후각이 오히려 날카로워졌다"}
+  - {year: 311, age: 33, event: "카셀이 돈으로 그를 샀다. 작업실 뒷문으로 드나든다"}
+  - {year: 312, age: 34, event: "건초월 폭발의 기억 때문에 여름 전 환기탑 곁을 떠나려 한다 (낙엽월 1일 기준)"}
+appearance:
+  - "코가 부러졌다 아문 형태다"
+  - "항상 코를 훌쩍인다"
+  - "입으로 숨을 쉬지 않는다"
+smell: "젖은 흙과 구리 녹, 퀴퀴한 땀"
+voice_sound: "코맹맹이 소리. 문장마다 훌쩍임"
+personality:
+  disposition: {용기: 10, 자비: 10, 정직: 0, 신앙: 0, 탐욕: 10, 충성: 20}
+  temperament: [예민함, 퉁명, 겁]
+  habits:
+    - "새 사람 앞에서 코를 한 번 훌쩍인다 — 냄새를 읽는다"
+    - "갱 입구에서 숨을 반쯤 들이쉬고 멈춘다"
+  values: "살아남는 것. 코. 빵 한 덩이"
+  fears: [가스, 코를 잃는 것, 카셀에게 팔린 것이 알려지는 것]
+  desires:
+    short: "올여름 가스 폭발에서 살아남는다"
+    long: "코가 무뎌지기 전에 갱 밖으로 나간다"
+voice:
+  register:
+    to_superior: "짧은 존대"
+    to_equal: "퉁명한 반말"
+    to_inferior: "신참에게는 '냄새 맡아 봐'"
+    to_player_default: "훌쩍이며 피한다"
+  tics: ["(훌쩍)", "'…달아.'"]
+  use: [냄새, 달다, 쓴, 구리, 숨]
+  avoid: [카셀, 장치, 돈]
+  length: "짧고 퉁명하다"
+  samples:
+    - {situation: 첫 만남, line: "(훌쩍) …오늘 갱은 달아. 달면 좋지 않은 거야."}
+    - {situation: 호의, line: "당신은 냄새가 안 나. 이상하지."}
+    - {situation: 적대, line: "나를 팔면 갱이 한 명 줄어. 갱은 그걸 모르고 줄어."}
+    - {situation: 거래, line: "물 한 바가지면 어느 갱이 지금 쓴지 알려 줄게."}
+    - {situation: 위기, line: "나가! 단 냄새야! 숨 쉬지 마!"}
+    - {situation: 비밀 누설, line: "장치 냄새? 구리 녹 냄새가 갱 여섯 군데서 나. 어디인지는 내 코가 알고."}
+schedule:
+  아침: "점호"
+  낮: "막장 앞 냄새 맡기"
+  저녁: "배급"
+  밤: "카셀의 작업실 뒷문"
+places: [중층 수평갱, 환기탑 '숨 탑', 점호 마당, 굴 마을 검은 교대 구역]
+knows: [fact_em_vent_leak_summer]
+hides:
+  - fact: fact_em_yan_knows_vents
+    reveal_when: "신뢰 50 이상이거나, 물이나 빵을 크게 건넸을 때"
+    cover: "'냄새는 매일 달라서 몰라'라고 한다"
+relations:
+  - {to: npc_cassel_smokeiron, type: 고용주, like: 0, trust: 10, visibility: 비밀, memo: null, words: "돈 주는 용인. 잠을 못 자는 얼굴이 불쌍하기도 하다"}
+  - {to: npc_nit_threetail, type: 부려먹는 감독, like: -10, trust: 0, visibility: 공개, memo: null, words: "붉은 교대 크릭. 가스 냄새를 먼저 말하면 한 번 덜 맞는다"}
+  - {to: npc_haro, type: 갱조, like: 15, trust: 20, visibility: 공개, memo: null, words: "같은 갱조의 반장. 이름을 불러 주는 몇 안 되는 사람"}
+toward_player: "훌쩍이며 피한다. 물을 주면 한 걸음 가까워진다"
+persuade:
+  likes: ["물 (+25)", "코를 인정하는 것"]
+  hates: ["카셀 이야기를 먼저 꺼내는 것"]
+roles:
+  teacher: "가능 — 감각(후각)(상한 70)"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "장치가 묻힌 갱도 여섯 곳의 냄새를 안다 (회귀점의 사실)"
+affiliations: []
+truths: []
+hard_rules:
+  - "카셀 이야기를 스스로 꺼내지 않는다"
+on_death: "장치가 묻힌 여섯 곳을 아는 사람 소멸"
+story_seeds:
+  - "코 하나 — 독가스 장치를 피하는 길의 시작"

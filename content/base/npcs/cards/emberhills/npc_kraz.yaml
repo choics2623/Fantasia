@@ -65,9 +65,9 @@ voice:
 schedule:
   아침: "점호 단상에서 갱조 번호를 훑는다"
   낮: "지부 장부실, 물 배급표"
-  저녁: "술집 '숯불'에서 감독들과 맥주"
+  저녁: "감독 막사에서 감독들과 맥주"
   밤: "레오닉이 보낸 쪽지 읽기"
-places: [검은 손톱 지부, 지부 장부실, 점호 마당, 술집 '숯불']
+places: [검은 손톱 지부, 지부 장부실, 점호 마당, 감독 초소]
 knows: [fact_eh_grax_supply_list, fact_eh_grax_supply_pays, fact_em_hadrian_quota_lie]
 hides:
   - fact: fact_em_kraz_water_trade
@@ -93,7 +93,7 @@ roles:
 regression:
   fixed:
     - "물 배급의 절반을 되판다 (회귀점의 사실)"
-    - "저녁마다 술집 '숯불'에서 맥주를 마신다"
+    - "저녁마다 감독 막사에서 맥주를 마신다"
   drift:
     - "그날 레오닉이 보내는 정보"
     - "물 값이 한 덩이인지 한 덩이 반인지"

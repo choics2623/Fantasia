@@ -1,0 +1,121 @@
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-10.
+id: npc_korak
+name: 코라크
+aka: [종 틀의 까마귀, 털갈이 못 한 늙은이, 별 세는 자]
+tier: A
+type: living
+race: 아에리
+subrace: 까마귀 아에리
+sex: 남
+age: 238
+region: 바람첨탑
+home: 바람첨탑 가장 높은 기둥(900m) 꼭대기, 바람 종 틀
+job: 은퇴한 하늘 기록관 — 역행하는 별을 센다
+rank: 까마귀 아에리 기록 가문의 노장. 깃털 의회에 자리는 없다
+summary: AS 311부터 하늘을 거꾸로 걷는 별을 세는 늙은 까마귀. 자기 기록에 같은 밤을 두 번 적은 자리가 있다는 것을 안다
+source: "docs/world/SECRETS_AND_HERMITS.md H-10 (신설 — facts fact_ws_retrograde_star·fact_ar_retrograde_star에서)"
+life:
+  - {year: 74, age: 0, event: "바람첨탑 서쪽 기둥의 까마귀 아에리 기록 가문에서 부화"}
+  - {year: 120, age: 46, event: "스승에게서 '하늘에도 상처가 있다' — 대붕괴 때 시간의 균열이 위로도 찢어졌다는 기록을 물려받음"}
+  - {year: 200, age: 126, event: "하늘 기록관. 날씨 예언을 두르강과 하르칸에 파는 일을 맡음"}
+  - {year: 268, age: 194, event: "제자 코르비나를 받음 — 그녀는 뒤에 잿빛 탑의 잔상 관측 담당이 된다"}
+  - {year: 290, age: 216, event: "털갈이가 멎음. 기록관에서 물러나 꼭대기 종 틀로 올라감"}
+  - {year: 311, age: 237, event: "역행하는 별 발견 — 잔향의 각성과 함께 나타났다는 해석을 처음 냄. 키리에가 그것을 비밀에 부쳤다"}
+  - {year: 312, age: 238, event: "자기 기록에 같은 밤을 두 번 적은 듯한 자리가 있다는 것을 알아챔 — 늙어서 그런 줄 안다"}
+appearance:
+  - "깃털이 듬성듬성 빠졌다 — 털갈이를 못 한 지 22년"
+  - "부리 끝이 닳아 뭉툭하다(나무에 새기느라)"
+  - "왼쪽 날개에 매듭 끈 — 땅의 이야기마다 하나"
+smell: "바람과 차가운 쇠(종), 마른 깃털"
+voice_sound: "거칠고 높은 까마귀 목소리. 숫자를 셀 때는 딱딱 끊긴다"
+personality:
+  disposition: {용기: 20, 자비: 30, 정직: 60, 신앙: 40, 탐욕: 20, 충성: 30}
+  temperament: [괴팍함, 집요함, 숨긴 호기심]
+  habits:
+    - "낮에 찾아온 자에게 투덜거린다 — 낮은 자는 시간이다"
+    - "별 하나를 셀 때마다 부리로 종 틀을 한 번 쫀다"
+    - "땅의 이야기를 들으면 날개의 매듭 끈에 매듭을 하나 더한다"
+  values: "기록은 거짓말하지 않는다는 것. 하늘은 아래를 보지 않는다는 것 — 그런데 별이 아래 때문에 움직인다는 것"
+  fears: [기록이 틀린 것, 갇히는 것(아에리), 땅에 한 번도 내려가 보지 못하고 죽는 것]
+  desires:
+    short: "역행하는 별이 313 여름 전에 몇 칸 물러나는지 세는 것"
+    long: "기록이 끝나는 날 땅에 한 번 내려가 보는 것"
+voice:
+  register:
+    to_superior: "여왕 키리에에게는 짧은 정형구"
+    to_equal: "다른 까마귀에게는 숫자로"
+    to_inferior: "인간에게는 투덜거리는 반말"
+    to_player_default: "귀찮아한다 — 그러나 땅의 이야기에 약하다"
+  tics: ["'낮이다.'", "'한 칸.'"]
+  use: [별, 칸, 기록, 밤, 바람, 땅의 이야기]
+  avoid: [줄로 묶다, 새장, 지붕]
+  length: "짧고 툭툭. 별 이야기에서만 길다"
+  samples:
+    - {situation: 첫 만남, line: "낮이다. 낮에 오는 것들은 꼭 날개가 없지. …바구니로 올라왔나? 용감하거나 멍청하거나."}
+    - {situation: 호의, line: "저 별, 거꾸로 간다. 작년 이맘때부터. 한 칸, 또 한 칸. 땅에서 누가 일어난 거야."}
+    - {situation: 적대, line: "줄을 치우게. 이 종 틀에 줄을 감는 자는 바람이 떨어뜨린다."}
+    - {situation: 거래, line: "땅의 이야기 하나에 별 하나. 내 기록을 까마귀 문의 반용에게 가져가 주면 — 셋."}
+    - {situation: 위기, line: "폭풍깃이 사냥을 나왔다 — 종 밑으로, 납작하게!"}
+    - {situation: 슬픔, line: "털갈이가 멎었어. 날개가 무거워. 땅까지 한 번은 날 수 있을까."}
+    - {situation: 회귀자를 의심할 때, line: "네가 올라온 밤, 별이 한 칸 물러났다. 우연이겠지. 근데 내 기록엔 그 칸이 두 번 적혀 있어."}
+    - {situation: 비밀 누설, line: "내 기록이 이상해. 같은 밤을 두 번 적은 자리가 있어. 나는 늙어서 그런 줄 알았지. 근데 별이 물러난 칸과 맞아."}
+    - {situation: 마음을 열었을 때, line: "내려가는 줄을 땋는 인간들 말이야. 그 줄은 가두는 걸까, 길일까. …나는 길이라고 적어 두겠어."}
+schedule:
+  아침: "바람 종의 줄을 고친다"
+  낮: "잠 — 지붕 없는 종 틀에 매달려"
+  저녁: "별 기록을 종 틀 나무에 새긴다"
+  밤: "역행하는 별을 센다"
+places: [바람 종 틀, 바람첨탑 꼭대기, 깃털 의회(드물게)]
+knows: [fact_ws_kyrie_saw_waste_grow, fact_ws_caged_aeri_die, fact_ws_descent_rope, fact_ar_corvina_reports_kirie]
+hides:
+  - fact: fact_ws_retrograde_star
+    reveal_when: "은자 시험(밤새 별 세기 + 새벽의 질문에 답하기) 통과 후"
+    cover: "'하늘 일은 여왕의 일'이라며 날개를 접는다"
+  - fact: fact_hm_korak_double_night   # TODO-FACT: 코라크의 하늘 기록에는 같은 밤을 두 번 적은 듯한 자리가 있고, 그것이 역행하는 별이 물러난 칸과 맞는다 (회귀의 흔적)
+    reveal_when: "신뢰 50 이상"
+    cover: "'늙어서 그래'"
+relations:
+  - {to: npc_kyrie, type: 기록을 비밀에 부친 여왕, like: 30, trust: 20, visibility: 공개, memo: null, words: "아래를 내려다보기 시작한 여왕. 내 해석을 덮었다"}
+  - {to: npc_corvina, type: 탑의 까마귀 — 옛 제자, like: 40, trust: 30, visibility: 비밀, memo: null, words: "탑에 간 제자. 그녀의 기록은 내 종 틀을 거쳐 여왕에게 간다"}
+  - {to: npc_orn, type: 땅의 이야기꾼, like: 30, trust: 20, visibility: 공개, memo: null, words: "10년을 첨탑에서 산 인간. 땅의 이야기를 가장 많이 준 자"}
+  - {to: npc_eiros, type: 땅에 내려가고 싶은 왕자, like: 10, trust: 10, visibility: 공개, memo: null, words: "날개 밑에 인간 글자를 단 아이"}
+  - {to: npc_tyla, type: 잘린 깃, like: 20, trust: 20, visibility: 공개, memo: null, words: "날개 없이 활공하는 매. 아무도 모르는 줄 안다"}
+toward_player: "귀찮아한다. 땅의 이야기를 가져온 자, 밤새 함께 센 자에게 별을 보여 준다"
+persuade:
+  likes: ["땅의 이야기 (+25)", "밤새 함께 별 세기 (+20)"]
+  hates: ["종 틀을 줄로 감싸기(가두는 것처럼 보인다)", "낮에 오래 머물기"]
+roles:
+  teacher: "학식(하늘·점술, 상한 55). 조건: 밤 셋"
+  companion: "불가 — 기록을 떠나지 않는다"
+  romance: null
+regression:
+  fixed:
+    - "역행하는 별(AS 311~), 그의 해석은 여왕이 덮었다"
+    - "털갈이가 멎었다"
+  drift:
+    - "그날 밤 별이 물러난 칸 수 — 회차가 쌓일수록 기록의 '두 번 적은 자리'가 늘어난다"
+    - "폭풍깃 사냥대가 나는 날"
+  deja_vu: weak
+hard_rules:
+  - "지붕 아래·줄로 묶인 자리에 머물지 않는다(아에리)"
+  - "낮에는 투덜거린다"
+  - "별 이야기에서 숫자를 정확히 말한다"
+on_death: "역행하는 별의 하늘 기록이 끊긴다. 탑과 여왕 사이의 기록 경로가 하나 줄어든다"
+story_seeds:
+  - "바람 정원의 '내려가는 줄' — 그는 그것을 길로 적을까"
+  - "코라크의 기록 한 장을 카스파르에게 — 깃털 의회의 '아래 보는 자들'이 카스파르 지원을 논의 중이다"
+affiliations: []
+truths:
+  - {id: T04, level: fragment}
+  - {id: T13, level: fragment}
+  - {id: T06, level: rumor}
+hermit:
+  hidden_location:
+    rumor: "줄내림 장터의 두르강 상인들: '꼭대기 종에 미친 까마귀가 산다'"
+    clue: "바구니에 몰래 타면 기둥 위로 오를 수 있다(손재주·은신) — 마지막 구간은 바람 종의 줄"
+    place: "900m 기둥 꼭대기 바람 종 틀"
+  test: "밤새 함께 별을 세고, 새벽에 그가 묻는 '별이 몇 칸 물러났나?'에 답할 것(회차를 거친 자만 지난 칸을 안다)"
+  truths: [{id: T04, level: fragment}, {id: T13, level: fragment}, {id: T06, level: rumor}]
+  price: "약속 — 그의 기록 한 장을 땅의 카스파르에게 전할 것"
+  lies: "별이 다 물러나는 날 시간은 대붕괴 이전으로 거꾸로 흐른다 — 313 여름이다 (소문을 확신)"
+  deja_vu: "약 — 아에리는 시간에 민감하지 않다. 그의 기록이 민감하다(같은 밤을 두 번 적은 자리)"

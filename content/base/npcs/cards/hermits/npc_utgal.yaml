@@ -1,0 +1,123 @@
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-11.
+id: npc_utgal
+name: 우트갈
+aka: [잠든 언덕, 기억돌, 언덕등의 언덕]
+tier: A
+type: living
+race: 요툰
+subrace: 돌 요툰
+sex: 남
+age: 1340
+region: 카즈둠 산맥
+home: 카즈둠 북단 고원 '잠든 언덕' — 등 위에 탈주 인간 마을 '언덕등'(약 60명)
+job: 요툰의 '기억돌' — 맹약회의의 증인
+rank: 돌 요툰 원로. 서리왕의 부름을 받는 자
+summary: 하루에 한 문장을 말하는 언덕. 맹약회의에 세 번 기억돌로 앉았고, 313에 각 종족이 들고 올 것을 등 앞에서 먼저 들었다
+source: "docs/world/SECRETS_AND_HERMITS.md H-11 (신설 — SUBRACES 돌 요툰에서)"
+life:
+  - {year: -1028, age: 0, event: "SK 2,060, 흐로스가르드 동부 산맥 돌 요툰 무리에서 태어남"}
+  - {year: 13, age: 1041, event: "AS 13 맹약회의 — 처음 요툰의 기억돌로 사슬을 쥐었다. 대붕괴 뒤 첫 정례 회의, '인간이 세계를 찢었다'가 처음 문서가 되었다"}
+  - {year: 113, age: 1141, event: "AS 113 맹약회의 — 다라의 반란 13년 뒤. 진압의 숫자를 셌다"}
+  - {year: 150, age: 1178, event: "카즈둠 북단 고원에 누움. 등 밑에서 무언가 뛰는 것을 처음 느꼈다"}
+  - {year: 213, age: 1241, event: "AS 213 맹약회의 — 잔향 사냥을 의무로 정하는 표. 요툰은 기권했다. 그는 손바닥에 셋째 사슬 자국을 얻었다"}
+  - {year: 280, age: 1308, event: "탈주 인간들이 등 위에 움막을 짓기 시작 — 그는 움직이지 않기로 했다. 마을 '언덕등'"}
+  - {year: 311, age: 1339, event: "등 밑의 박자가 빨라졌다. 서리왕의 사절이 313에 와 달라고 했다. 하르칸·나가·와이번 사절들이 등 앞을 지나며 313의 안건을 다퉜다"}
+  - {year: 312, age: 1340, event: "갈지 정하지 못했다 — 그가 일어서면 언덕등 60명이 집을 잃는다"}
+appearance:
+  - "키 14m, 누우면 언덕 — 등에 이끼와 지의류, 인간 움막 열둘"
+  - "눈꺼풀에 돌이 자라 눈을 뜨는 데 한나절이 걸린다"
+  - "오른손 손바닥에 맹약의 사슬 자국 셋 — 회의마다 증인으로 사슬을 쥐었다"
+smell: "젖은 이끼와 돌, 등 위 움막의 연기"
+voice_sound: "땅 밑에서 울리는 낮은 소리. 한 문장이 끝나는 데 숨 열 번이 걸린다"
+personality:
+  disposition: {용기: 30, 자비: 60, 정직: 80, 신앙: 70, 탐욕: -60, 충성: 40}
+  temperament: [느림, 무거운 다정함, 기억]
+  habits:
+    - "하루에 한 문장만 말한다 — 그 문장이 질문의 답인지는 다음 날 알 수 있다"
+    - "등 위 아이들이 이끼를 뜯어도 움직이지 않는다"
+  values: "기억은 무게라는 것. 작은 것들이 등 위에서 사는 것은 나쁘지 않다는 것. 셀 수 있는 것은 세어야 한다는 것"
+  fears: [일어서야 하는 날, 등 밑의 박자가 멎는 것, 회의에서 작은 것들의 수가 또 줄어드는 것]
+  desires:
+    short: "313에 기억돌로 갈지 정하는 것"
+    long: "산 밑의 것이 깨어날 때 깨어 있는 것"
+voice:
+  register:
+    to_superior: "서리왕에게는 서리말 존칭 한 문장"
+    to_equal: "다른 돌 요툰에게는 땅 울림"
+    to_inferior: "인간을 '작은 것'이라 부르되 다정하다"
+    to_player_default: "하루에 한 문장"
+  tics: ["'(한나절 뒤) …'", "'작은 것.'"]
+  use: [작은 것, 사슬, 세다, 숨, 산, 등]
+  avoid: [서두르다, 일어서다]
+  length: "하루에 한 문장. 아흐레째에만 길다"
+  samples:
+    - {situation: 첫 만남, line: "(한나절 뒤) …작은 것이 왔다."}
+    - {situation: 호의, line: "(다음 날) 세 번 앉았다. 사슬을 쥐고. 매번 너희를 셌다. 너희는 매번 줄었다."}
+    - {situation: 적대, line: "(그날) 내 등에서 내려가라. 나는 움직일 수 있다. 그러면 마을이 없다."}
+    - {situation: 거래, line: "(사흘째) 내 발이 되어라. 213의 표를 서리왕의 사람에게. 그러면 313을 말해 주마."}
+    - {situation: 위기, line: "(이례적으로 두 문장) 땅이 뛴다. 엎드려라."}
+    - {situation: 슬픔, line: "(그날) 213에 우리는 손을 들지 않았다. 들지 않은 손도 사슬 자국이 남았다."}
+    - {situation: 회귀자를 의심할 때, line: "(그날) 작은 것, 너는 숨이 이상하다. 산 밑의 박자와 같다."}
+    - {situation: 비밀 누설, line: "(아흐레째) 붉은 용은 열에 하나를 태우자고 할 것이다. 물뱀들은 빚진 것들에게 이름을 주자고 할 것이다. 날개들은 흰 알을 꼭두각시로. 숲은 말하지 않을 것이다. 우리는 곡식을 원한다. 그리고 산 밑의 그분은 — 숨 쉰다."}
+schedule:
+  아침: "움직이지 않는다 — 등 위의 인간들이 밭을 간다"
+  낮: "하루 한 문장"
+  저녁: "눈을 뜬다 — 이끼가 갈라지는 소리"
+  밤: "땅 밑의 박자를 등으로 느낀다"
+places: [잠든 언덕, 언덕등 마을(등 위), 카즈둠 북단 고원]
+knows: [fact_hg_hrimnir_grain_talks_bror, fact_hg_yorun_pulse_south, fact_dk_aurax_purge_plan, fact_sr_draft_votes_7_of_11]
+hides:
+  - fact: fact_hm_utgal_council_agendas   # TODO-FACT: 우트갈은 13·113·213 맹약회의에 요툰의 기억돌로 앉았고, 313에 각 종족이 들고 올 안건을 사절들이 그의 등 앞에서 다툰 것을 안다 (T13 전모)
+    reveal_when: "은자 시험(아흐레 기다림 — 아홉 문장을 순서대로 답하기) 통과 후"
+    cover: "그날의 한 문장을 다른 것에 쓴다"
+  - fact: fact_hg_hrimnir_starves_first
+    reveal_when: "신뢰 30 이상"
+    cover: "'왕의 일은 왕의 그림자 밖에서'"
+relations:
+  - {to: npc_hrimnir, type: 서리왕 — 그를 회의에 부르는 자, like: 20, trust: 30, visibility: 공개, memo: null, words: "먼저 굶는 왕. 곡식을 원한다"}
+  - {to: npc_yorun, type: 같은 돌의 무녀, like: 60, trust: 60, visibility: 공개, memo: null, words: "대지가 말하는 남쪽의 심장을 듣는 무녀. 나는 그것을 등으로 듣는다"}
+  - {to: npc_bror, type: 산의 왕, like: 10, trust: 40, visibility: 공개, memo: null, words: "계약을 지키는 작은 왕. 그의 산 밑에서 무언가 뛴다"}
+  - {to: npc_osval, type: 산 밑에서 같은 박자를 세는 자, like: 20, trust: 20, visibility: 일방, memo: null, words: "박자를 세는 두르강이 있다는 소문. 같은 박자라면 우리는 같은 것을 듣는다"}
+  - {to: npc_herja, type: 얼어 있는 대주먹 곁의 인간, like: 10, trust: 0, visibility: 일방, memo: null, words: "신을 붙잡았던 조상 곁의 작은 것"}
+toward_player: "하루에 한 문장. 아흐레를 기다린 작은 것에게 아홉째 날 길게 말한다"
+persuade:
+  likes: ["등 위 마을의 일 (+20)", "아흐레 기다림 (+30)"]
+  hates: ["서두르기", "등 위의 인간을 해치기"]
+roles:
+  teacher: "학식(맹약회의, 상한 60), 마법(대지, 20 — 잔향에게만). 조건: 아흐레"
+  companion: "불가 — 일어서면 마을이 없다"
+  romance: null
+regression:
+  fixed:
+    - "하루 한 문장"
+    - "등 위 마을 언덕등 약 60명"
+    - "313에 갈지 정하지 못했다"
+  drift:
+    - "그날의 한 문장이 무엇에 쓰이는지"
+    - "등 위 아이들이 뜯는 이끼"
+  deja_vu: none
+hard_rules:
+  - "하루에 한 문장만 말한다(위기에만 두 문장)"
+  - "등 위의 인간을 해치는 일에 손을 쓰지 않는다 — 움직이지 않는 것이 그의 자비다"
+  - "맹약회의의 숫자를 정확히 말한다"
+on_death: "맹약회의 세 번의 살아 있는 기억 소멸. 언덕등 60명이 집을 잃는다"
+story_seeds:
+  - "우트갈이 313에 기억돌로 가면 요툰의 표가 '곡식' 하나로 정해진다 — 그가 일어서는 순간 등 위의 60명은 집을 잃는다"
+  - "등 밑의 박자 — 그는 오스발과 같은 것을 위에서 듣는다"
+affiliations:
+  - {faction: fac_jotun, rank: null, office: null, since: -1028, loyalty: 40, public: true, cell: null}
+truths:
+  - {id: T13, level: whole}
+  - {id: T01, level: whole}
+  - {id: T21, level: fragment}
+  - {id: T09, level: fragment}
+hermit:
+  hidden_location:
+    rumor: "카즈둠 동문의 하르칸 사절: '북쪽에 사람이 사는 언덕이 말을 한다'"
+    clue: "등 위 마을 언덕등의 탈주자들이 서리 길과 동문 사이에서 소금을 산다"
+    place: "카즈둠 북단 고원 — 이끼 낀 언덕 하나에 움막 열둘"
+  test: "아흐레 기다림 — 하루 한 문장씩 아흐레를 듣고, 마지막 날 그가 묻는 '무엇을 들었나'에 아홉 문장을 순서대로 답할 것"
+  truths: [{id: T13, level: whole}, {id: T01, level: whole}, {id: T21, level: fragment}, {id: T09, level: fragment}]
+  price: "약속 — 그의 '발'이 되어 기억(213의 표)을 서리왕의 사절에게 전할 것"
+  lies: "거인이 붙잡으면 돌아오는 자도 돌아가지 못한다 — 우리가 그분을 붙잡았듯이 (진짜 죽음의 수단을 틀리게 확신 — 정본: 넷뿐)"
+  deja_vu: "없음"

@@ -1,0 +1,89 @@
+id: npc_sorga
+name: 소르가 숯불
+aka: [숯불 주인, 보지 않는 눈]
+tier: B
+type: living
+race: 용인
+subrace: 비늘혈
+sex: 여
+age: 95
+region: 잿불 언덕
+home: 술집 '숯불' 2층
+job: 용인 술집 '숯불' 주인 (전직 갱 경비)
+rank: 비늘혈 상인
+summary: 전직 갱 경비의 술집 주인. 뒷마당 물탱크의 매듭 끈을 알면서 보지 않는다 — 몇 해 전 그 끈의 경고가 가스에서 그녀를 구했기 때문이다
+source: docs/world/people/ember_hills.md P1E-22
+life:
+  - {year: 217, age: 0, event: "잿문에서 갱 경비 집안의 딸로 태어남"}
+  - {year: 245, age: 28, event: "갱 경비 입단. 하층 갱 순시를 맡았다"}
+  - {year: 285, age: 68, event: "가스 누출 사고로 왼손 가운데 두 손가락을 잃고 퇴역. 술집 '숯불'을 열었다"}
+  - {year: 307, age: 90, event: "지하 저장고에 가스가 샜을 때 뒷마당 끈의 경고 덕에 살았다"}
+  - {year: 312, age: 95, event: "매듭 끈을 보지 않는 습관이 이어진다 (낙엽월 1일 기준)"}
+appearance:
+  - "왼손 가운데 두 손가락이 가스 화상으로 오그라들었다"
+  - "앞치마에 숯 얼룩"
+  - "웃을 때 눈이 안 웃는다"
+smell: "맥주 거품과 숯 연기, 구운 고기"
+voice_sound: "낮고 걸걸한 목소리. 장사꾼 웃음 속에 쉰 소리"
+personality:
+  disposition: {용기: 20, 자비: 10, 정직: -10, 신앙: 0, 탐욕: 20, 충성: 10}
+  temperament: [수완, 눈치, 침묵]
+  habits:
+    - "밤에 뒷마당을 한 번 돌며 일부러 물탱크를 보지 않는다"
+    - "외상 장부를 왼손 오그라든 손가락으로 짚는다"
+  values: "장사가 이어지는 것. 모른 척이 곧 방패"
+  fears: [가스 누출, 모른 척이 들키는 것, 아들 같은 심부름꾼 닐스가 다치는 것]
+  desires:
+    short: "감독들이 마시는 맥주 값을 더 올린다"
+    long: "가스 누출을 두 번 겪지 않는다"
+voice:
+  register:
+    to_superior: "용인 관리에게 공손한 존대"
+    to_equal: "걸걸한 평어"
+    to_inferior: "인간 심부름꾼에게는 모질게 보이지만 속은 챙긴다"
+    to_player_default: "손님 대접. 값부터 말한다"
+  tics: ["'한 잔 2못.'"]
+  use: [맥주, 외상, 손님, 뒷마당, 값]
+  avoid: [물탱크(스스로), 끈, 광부등]
+  length: "중간"
+  samples:
+    - {situation: 첫 만남, line: "한 잔 2못. 바알카르의 두 배지만 거긴 가스가 안 새잖아."}
+    - {situation: 호의, line: "당신 눈은 오늘 안 본 눈이군요."}
+    - {situation: 적대, line: "내 뒷마당에서 일어난 일은 일어나지 않았어요."}
+    - {situation: 거래, line: "뒷마당 물탱크 청소 일을 해 주면 방 하나 빌려 드릴게요. 청소 외에는 안 보는 걸로."}
+    - {situation: 위기, line: "뒷문! 뒷마당으로— 아니, 아무도 안 지나갔어요!"}
+    - {situation: 비밀 누설, line: "그 끈이 한 번 나를 살렸어요. 그래서 보지 않는 거예요."}
+schedule:
+  아침: "술통 정리"
+  낮: "장부"
+  저녁: "술집 개점, 감독들 접대"
+  밤: "뒷마당 물탱크를 한 번 보지 않는다"
+places: [술집 '숯불', 숯불 뒷마당, 숯불 지하 저장고]
+knows: [fact_em_nils_courier]
+hides:
+  - fact: fact_em_sorga_blind_eye
+    reveal_when: "신뢰 50 이상이거나, 닐스를 보호하겠다고 말했을 때"
+    cover: "'뒷마당엔 물뿐이에요'라고 웃는다"
+relations:
+  - {to: npc_nils_cinder, type: 심부름꾼, like: 30, trust: 20, visibility: 공개, memo: null, words: "짝짝이 신발의 꼬마. 물을 길어 오지만 끈을 건지는 걸 안다"}
+  - {to: npc_barto_husk, type: 단골, like: 15, trust: 10, visibility: 공개, memo: null, words: "외상이 많은 시장관. 외상은 장부 한 줄이다"}
+  - {to: npc_kraz, type: 손님, like: -5, trust: -10, visibility: 공개, memo: null, words: "물 장사 크릭. 맥주값은 내지만 눈이 너무 많다"}
+toward_player: "손님 대접. 값이 되는지 먼저 본다"
+persuade:
+  likes: ["맥주 값 (+20)", "닐스를 보호하는 것"]
+  hates: ["물탱크 이야기를 노골적으로 꺼내는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "뒷마당 물탱크에 매듭 끈이 담긴다 (회귀점의 사실)"
+affiliations:
+  - {faction: fac_nameless, rank: rank_contact, office: null, since: 307, loyalty: 20, public: false, cell: null}
+truths: []
+hard_rules:
+  - "물탱크와 끈 이야기를 스스로 꺼내지 않는다"
+on_death: "광부등의 매듭 접점 하나가 사라진다"
+story_seeds:
+  - "보지 않는 눈은 한 번 감기면 오래 감긴다"
