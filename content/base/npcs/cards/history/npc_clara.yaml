@@ -1,51 +1,77 @@
 id: npc_clara
 name: 클라라
-aka: []
+aka: [마테우스의 누이, 머리핀의 주인]
 tier: B
 type: historical
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 15
 region: 역사·고인
-home: null
+home: 은빛 강 연안의 작은 마을 (루멘 하류)
 job: 마테우스의 누이. 결막 질환을 징후로 고발당해 화형
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+rank: 마을 노예 집안의 딸 — 오빠가 신학원에 들어간 뒤 홀로 남은 아이
+summary: AS 290, 열다섯 살에 눈의 얼룩이 잔향 징후로 읽혀 오빠 마테우스의 고발장으로 화형당한 소녀. 그 얼룩은 결막 질환이었다. 글을 읽지 못해 자기 이름이 적힌 종이의 내용을 끝내 몰랐다. 향년 15세
+source: docs/world/CHARACTERS.md H-07 (색인) + R04-03 마테우스 — 생애 연표는 마테우스의 비밀 ①과 맞춰 새로 씀
+life:
+  - {year: 275, age: 0, event: "은빛 강 연안 마을 노예 집안에서 태어남. 일곱 살 위의 오빠 마테우스가 아기를 가장 먼저 안았다"}
+  - {year: 280, age: 5, event: "눈에 잿빛 얼룩이 처음 번짐. 어머니가 쑥과 강물 약초 물로 매일 씻겼다. 얼룩은 커졌다 작아졌다를 되풀이했다"}
+  - {year: 283, age: 8, event: "열다섯 살 오빠가 루멘 신학원에 들어가 마을을 떠남. 이후 강둑에서 혼자 오빠를 기다리는 아이가 됨"}
+  - {year: 288, age: 13, event: "견습 서기가 된 오빠가 첫 급료로 쇠 머리핀을 사 보냄. 비 오면 녹슬었지만 한 번도 뺀 적이 없다"}
+  - {year: 289, age: 14, event: "겨울 순회 심문이 마을에 옴. 눈의 얼룩이 징후로 의심되어 마을 사제가 보고함"}
+  - {year: 290, age: 15, event: "루멘으로 끌려가 정화의 뜰에서 화형당함. 고발장에 쓴 이름은 오빠의 글씨였다. 그녀는 글을 몰라 그 사실을 끝내 알지 못했다 — 또는 알았다"}
+appearance:
+  - "눈 한쪽에 잿빛 얼룩이 번져 있다 — 자주 눈을 비빈다"
+  - "쇠 머리핀이 앞머리를 눌러 꽂혀 있다. 녹이 슬어 가장자리가 갈색이다"
+  - "강둑 풀물이 든 치맛자락, 빨갛게 튼 손"
+smell: "강물과 쑥, 마른 풀, 비 맞은 쇠"
+voice_sound: "맑고 높은 아이 목소리. 말을 빨리 하다가 끝에서 목이 가라앉는다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: 50, 정직: 40, 신앙: 30, 탐욕: -30, 충성: 60}
+  temperament: [명랑, 겁 많음, 오빠를 믿음]
+  habits:
+    - "눈을 자주 비빈다. 불편하냐고 물으면 '눈이 따가워서 그래'라고 한다"
+    - "머리핀을 옷자락에 문질러 녹을 닦는다"
+    - "강물 소리를 따라 흥얼거린다"
+  values: "오빠가 돌아오는 것. 강. 빵 한 조각을 나누는 것"
+  fears: [어른들이 눈을 큰일처럼 말하는 것, 종이에 적힌 자기 이름, 연기, 오빠가 오지 않는 것]
   desires:
-    short: null
-    long: null
+    short: "오빠가 오는 날 강둑에서 먼저 보는 것"
+    long: "오빠처럼 글을 아는 사람이 되는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "사제와 어른에게는 해요체. 눈을 내리고 '예'를 두 번 붙인다"
+    to_equal: "또래에게는 편한 반말. 장난기가 섞인다"
+    to_inferior: "아이에게는 반말. 손을 잡고 말한다"
+    to_player_default: "해요체. 밝게 웃으며 눈 이야기를 먼저 꺼내 상대의 시선을 풀어 준다"
+  tics: ["'오빠.' 하고 먼저 부르고 말을 시작한다", "'눈이 따가워서 그래.'"]
+  use: [오빠, 핀, 눈, 강, 얼룩, 약초, 빵, 종이]
+  avoid: [징후, 마녀, 고발, 잿빛(자기 눈은 '얼룩'이라 한다), 죽음]
+  length: "짧고 빠르다. 한두 문장. 불 앞에서는 한 줄. 오빠 이야기에서만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "안녕하세요. 눈 때문에 쳐다보는 거 알아요. 그냥 얼룩이에요. 약초 물로 씻으면 괜찮아져요."}
+    - {situation: 호의(오빠에게), line: "오빠가 사 준 핀, 아직 머리에 꽂고 있어. 쇠라서 비 오면 녹슬어. 그래도 꽂고 있어."}
+    - {situation: 거짓말(괜찮다고), line: "안 아파. 얼룩이 좀 번졌을 뿐이야. 어른들이 큰일처럼 말해서 그래."}
+    - {situation: 겁먹었을 때, line: "오빠, 그 종이에 뭐라고 썼어? …읽어 줘. 나 글 몰라서 그래."}
+    - {situation: 어린 시절, line: "강물 소리 들으면 눈이 덜 아파. 오빠, 강 가자."}
+    - {situation: 분노(억울할 때), line: "난 아무것도 못 봤어요! 못 본 걸로 태워요? 못 본 거라고요!"}
+    - {situation: 화형대, line: "연기가 눈에 들어가요. 오빠, 고개 숙이지 마. 나 보고 있어."}
+    - {situation: 마지막 말(오빠에게), line: "오빠 탓 아니야. …아니, 오빠 탓이야. 그래도 핀은 오빠가 가져. 가져가서 손에 껴."}
+    - {situation: 마음을 열었을 때, line: "눈 얼룩 본다고 무서워하지 않아 줘서 고마워요. 오빠도 처음엔 그랬어요. 그다음엔 달라졌지만."}
 schedule:
   아침: null
   낮: null
   저녁: null
   밤: null
-places: []
-knows: []
+places: [은빛 강 연안 마을, 강둑, 루멘 정화의 뜰, 마테우스의 손가락(머리핀)]
+knows: [fact_hi_clara_false_accusation, fact_hi_clara_hairpin]
 hides: []
-relations: []
-toward_player: null
+relations:
+  - {to: npc_mateus, type: 오빠, like: 70, trust: 20, visibility: 일방, memo: null, words: "핀을 사 준 사람. 종이에 이름을 쓴 사람. 둘 다 오빠다. 미워하지 못하고 용서도 정하지 못했다"}
+toward_player: "밝게 웃으며 눈 이야기를 먼저 꺼내 시선을 풀어 준다. 종이를 내밀면 말이 줄어든다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["눈 얼룩을 무서워하지 않는 것", "오빠 이야기를 들어 주는 것", "강가에 같이 앉는 것"]
+  hates: ["종이를 읽어 주지 않는 것", "얼룩을 '징후'라 부르는 것", "연기와 불 이야기"]
 roles:
   teacher: null
   companion: null
@@ -55,6 +81,12 @@ regression:
   flow: []
   drift: []
   deja_vu: none
-hard_rules: []
+hard_rules:
+  - "글을 읽지 못한다. 종이에 적힌 것을 스스로 읽지 못한다"
+  - "자기 눈의 얼룩을 '징후'나 '잿빛 고리'라 부르지 않는다. 얼룩이라 한다"
+  - "오빠를 원망하는 말을 먼저 꺼내지 않는다 — 말하면 한 줄로 끝낸다"
 on_death: null
-story_seeds: []
+story_seeds:
+  - "마테우스의 머리핀 — 클라라의 것. 그가 구부려 약지에 끼고 있다"
+  - "클라라의 이름을 입에 올리면 마테우스는 무너지거나 더 잔혹해진다"
+  - "은빛 강 마을의 강둑에는 아직도 한 아이가 오빠를 기다린다는 이야기가 있다"

@@ -1,0 +1,38 @@
+# 무소속·이동 인물의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_wd_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+- id: fact_wd_grey_woman_faceless
+  text: "이름 없는 자들의 세포장들은 회색 여인의 얼굴을 본 적이 없다. 접촉은 늘 벽·커튼·우물 너머의 목소리로만 이루어진다. 목소리는 낮고 쉰 소리이며 서리말 억양이 아주 약하게 섞였다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_wd_grey_woman_identity_by_seed
+  # 작가 전용 — 시대 시드마다 엔진이 아래 넷 중 하나로 확정하고 이 text를 덮어쓴다. 확정 전에는 어떤 NPC도 이 사실의 내용을 알지 못한다
+  text: "회색 여인의 정체는 이 시대 시드가 정한다: ⓐ 바알카르 세포장 노라 ⓑ 루멘 지부장 수녀 아그네스 ⓒ 늪 마녀 '실뜨기' 마그 ⓓ 실체 없는 공유 가명 — 각 세포장이 돌아가며 그 목소리를 연기한다"
+  truth: true
+  danger: 5
+  names: [노라, 아그네스, 마그]
+- id: fact_wd_grey_woman_creed
+  text: "회색 여인의 교리는 이것이다: '기다려라, 돌아오는 이를. 그 전까지 징후가 있는 아이를 숨기고, 글을 가르치고, 살아 있어라'"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_wd_grey_woman_approved_decoy
+  text: "회색 여인은 이안의 '돌아온 아스테리온' 미끼 계획을 승인했다. 이안의 추종자 약 60명이 사냥당할 것을 알면서도"
+  truth: true
+  danger: 5
+  names: [이안]
+- id: fact_wd_grey_woman_would_sacrifice_echo
+  text: "회색 여인은 잔향을 지키려는 것이 아니라 잔향이 일으킬 사람들을 지킨다. 필요하면 잔향을 희생해서라도 조직을 지키며, 잔향이 조직의 통제를 벗어나면 그녀가 가장 먼저 밀고할 수도 있다"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_wd_knot_script_by_mag
+  text: "잿빛 표 뒷면에 오는 회색 여인의 지시는 실 매듭 문자로 적히며, 그 문자 체계를 만든 것은 늪 마녀 '실뜨기' 마그다"
+  truth: true
+  danger: 2
+  names: [마그]
+- id: fact_wd_grey_woman_kaspar_contact
+  text: "회색 여인은 엘사를 통해 까마귀 문 사령관 카스파르 반비늘과 접촉 중이다. 그가 무엇을 원하는지 그녀도 확신하지 못한다"
+  truth: true
+  danger: 4
+  names: [카스파르, 엘사]

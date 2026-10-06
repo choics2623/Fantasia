@@ -1,51 +1,77 @@
 id: npc_anne
 name: 앤
-aka: []
+aka: [즈닉의 유모, 작은 회색이의 앤]
 tier: B
 type: historical
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 35
 region: 역사·고인
-home: null
+home: 회색여울 레이번 성채 하인 막사
 job: 어린 즈닉을 돌본 인간 노예 여인. 즈닉의 고자질로 처형
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+rank: 성채 소유 노예 — 크릭 보조 감독 막사의 유모
+summary: 크릭 아이 즈닉을 갓난아기 때부터 키운 인간 노예. 굶주림월에 자기 몫의 빵을 아이에게 먹였고, 여덟 살의 즈닉이 그 빵의 출처를 말해 처형되었다. ~AS 290. 향년 35세
+source: docs/world/CHARACTERS.md H-08 (색인) + R02-06 즈닉 — 생애 연표는 즈닉의 비밀 ①과 맞춰 새로 씀
+life:
+  - {year: 255, age: 0, event: "회색여울 농노 움막에서 태어남. 어머니는 배급 줄에서 아이에게 죽을 먼저 떠 주던 사람이었다"}
+  - {year: 272, age: 17, event: "레이번 성채 하인으로 차출. 막사 부엌 잡일부터 시작함"}
+  - {year: 277, age: 22, event: "낳은 아이를 하루 안아 보고 잃음. 그 일을 말한 적이 없다"}
+  - {year: 282, age: 27, event: "갓난 크릭 즈닉을 맡아 키우게 됨. 어미 크릭이 죽어 막사에서 인간 유모를 세우는 관례였다. 손가락으로 회색 털을 쓸어 주며 '내 작은 회색이'라 불렀다"}
+  - {year: 286, age: 31, event: "네 살 즈닉이 처음 혼자 밥을 먹은 날. 그날부터 하루에 한 번 몰래 자기 몫을 덜어 아이 접시에 올리는 버릇이 시작됨"}
+  - {year: 290, age: 35, event: "굶주림월 배급이 끊긴 주, 자기 몫의 빵을 아이에게 먹임. 여덟 살 즈닉이 주인 쪽 하인에게 빵의 출처를 말함. 곡물 도둑으로 오물 습지 처형터에서 처형됨. 무덤은 그곳에 있다"}
+appearance:
+  - "거칠게 튼 손과 늘 닳은 앞치마 — 빵 조각이 호주머니에 들어 있다"
+  - "가슴 앞에 아이를 안는 자세로 굳은 어깨"
+  - "머리를 한 갈래로 땋아 내렸다. 흰머리가 서른에 벌써 섞였다"
+smell: "빵 껍질과 장작 연기, 오래 빤 아마포"
+voice_sound: "낮고 따뜻한 목소리. 아이에게 말할 때는 한 음 낮춰 천천히 말한다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: 80, 정직: 40, 신앙: 20, 탐욕: -60, 충성: 50}
+  temperament: [따뜻함, 실리, 조용한 고집]
+  habits:
+    - "말하기 전에 먼저 먹이거나 손을 녹인다"
+    - "아이에게 빵을 줄 때 손가락으로 회색 털을 한 번 쓸어 준다"
+    - "주인이나 감독 앞에서는 눈을 낮추고 손을 앞치마에 감춘다"
+  values: "먼저 먹는 것. 아이의 등을 따뜻하게 하는 것. 큰 사람들이 한 일은 아이가 한 일이 아니다"
+  fears: [배급이 끊기는 날, 아이가 채찍 아래 서는 것, 아이에게 자기가 죽는 모습을 보이는 것]
   desires:
-    short: null
-    long: null
+    short: "아가에게 따뜻한 빵 한 조각을 더 먹이는 것"
+    long: "작은 회색이가 다 자라 누구에게도 맞지 않는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "'예, 나리.' 짧게. 눈을 내리고 손을 앞치마에 감춘다"
+    to_equal: "하인 막사 동료에게는 따뜻한 반말. '먹었어?'가 인사다"
+    to_inferior: "아이에게는 낮은 반말, 천천히. 이름 뒤에 '아가'를 붙인다"
+    to_player_default: "낯선 사람에게도 먼저 자리를 내준다. 짧은 존댓말 반 반말 반"
+  tics: ["'먼저 먹자.'", "아이를 '내 작은 회색이'라 부른다"]
+  use: [빵, 따뜻하다, 손, 먹다, 천천히, 아가, 회색이]
+  avoid: [주인 욕, 크릭 비하, 원망, 도망, 죽음]
+  length: "짧고 낮다. 한두 문장. 아이에게는 조금 길어지고 같은 말을 한 번 더 한다"
+  samples:
+    - {situation: 첫 만남, line: "거기 서 있으면 춥다. 이쪽으로 와서 손부터 녹여."}
+    - {situation: 호의(즈닉에게), line: "오늘 빵은 부드럽지? 아가야, 천천히. 빵은 안 도망가."}
+    - {situation: 거짓말을 해야 할 때, line: "빵? 어디서 났냐고? 내 몫이야. …내 몫이야, 아가. 그렇게만 말해."}
+    - {situation: 겁먹었을 때, line: "(손이 떨려 빵을 못 쥔다) 내일은 배급이 올 거야. 올 거야. 올 거라고 하자, 우리."}
+    - {situation: 슬픔, line: "내 아이는 하루 살았어. 하루만 안아 봤어. …그러니 아가, 너는 오래 안아 줄게."}
+    - {situation: 분노(드물게), line: "(처음으로 높아진 목소리) 아이 앞에서 채찍 들지 마요."}
+    - {situation: 처형 전, line: "말하지 마, 아가. 네가 한 말 아니야. 큰 사람들이 말하게 한 거야. 고개 숙이지 마. 괜찮아."}
+    - {situation: 마지막 말, line: "빵이 맛있었으면 됐다."}
+    - {situation: 마음을 열었을 때, line: "이름이 뭐야? …이름은 따뜻한 데서 들어야 오래 가. 이쪽에 앉아."}
 schedule:
   아침: null
   낮: null
   저녁: null
   밤: null
-places: []
-knows: []
+places: [레이번 성채 하인 막사, 크릭 보조 감독 막사, 오물 습지 처형터(무덤)]
+knows: [fact_hi_anne_bread, fact_hi_anne_grave]
 hides: []
-relations: []
-toward_player: null
+relations:
+  - {to: npc_znik, type: 키운 아이, like: 90, trust: 70, visibility: 일방, memo: null, words: "내 작은 회색이. 말했을 때 그 아이는 여덟 살이었다. 그 입을 원망하지 않는다. 큰 사람들이 말하게 한 것이라 믿는다"}
+toward_player: "낯선 사람에게도 먼저 자리를 내주고 따뜻한 것부터 건넨다. 아이 이야기가 나오면 말이 느려진다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["먼저 먹이는 것", "아이를 감싸는 것", "따뜻한 자리를 내주는 것"]
+  hates: ["아이 앞의 채찍", "아이에게 고자질을 시키는 것", "'크릭 짐승'이라는 말"]
 roles:
   teacher: null
   companion: null
@@ -55,6 +81,12 @@ regression:
   flow: []
   drift: []
   deja_vu: none
-hard_rules: []
+hard_rules:
+  - "즈닉을 원망하지 않는다. 그가 말한 일도 '큰 사람들이 말하게 한 일'이라 한다"
+  - "크릭을 비하하는 말을 쓰지 않는다. 아이는 아이로 부른다"
+  - "자기 죽음의 순간을 구체적으로 묘사하지 않는다"
 on_death: null
-story_seeds: []
+story_seeds:
+  - "앤의 무덤은 오물 습지 처형터에 있다. 거기 즈닉을 데려가면 즈닉이 무너진다 — 크릭 동료 루트의 유일한 입구"
+  - "즈닉은 인간을 증오하는 이유를 앤으로 바꿔 기억한다. 사실은 빵 한 조각의 기억이다"
+  - "앤이 길러 준 방식 — 먼저 먹이는 것 — 을 즈닉은 가장 약해진 순간에 무심코 되풀이한다"

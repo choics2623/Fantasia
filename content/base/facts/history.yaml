@@ -1,0 +1,144 @@
+# 역사·고인의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_hi_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# truth: false는 세계에 퍼진 거짓 소문이다.
+
+# --- '첫 불씨' (SK ~400) ---
+- id: fact_hi_ember_garden_teacher
+  text: "'첫 불씨'는 SK ~400 실바렌 엘다르 정원의 이름 지워진 인간 노예였다. 정원지기 아이들에게 글자를 가르쳤다"
+  truth: true
+  danger: 2
+  names: [첫 불씨]
+- id: fact_hi_ember_net_burning
+  text: "'첫 불씨'는 앞선 잔향자였다. 엘다르가 처음으로 '시간의 그물'을 짜 그녀의 회귀를 붙잡았고, 영원 여왕 엘라스트리엘의 명으로 정원째 불탔다. 회귀는 거기서 끊겼다"
+  truth: true
+  danger: 4
+  names: [첫 불씨, 엘라스트리엘]
+- id: fact_hi_ember_garden_game
+  text: "정원지기 아이들이 3,000년째 하는 손가락 놀이의 모양은 '첫 불씨'가 가르친 글자의 모양이다. 뜻은 잊혔다"
+  truth: true
+  danger: 1
+  names: [첫 불씨]
+- id: fact_hi_ember_record_halla
+  text: "'첫 불씨'의 마지막 말이 적힌 엘다르 기록 한 장을 할라가 필사해 가지고 있다. 탑은 그 가치를 모른다"
+  truth: true
+  danger: 2
+  names: [할라, 첫 불씨]
+
+# --- 군데 (SK ~2,350) ---
+- id: fact_hi_gunde_shield_line
+  text: "군데는 SK ~2,350 거인 전쟁에서 요툰 군대의 방패줄에 세워진 인간 노예였고, 같은 새벽 같은 줄로 수십 번 돌아온 앞선 잔향자였다"
+  truth: true
+  danger: 3
+  names: [군데]
+- id: fact_hi_gunde_hungry_child
+  text: "'거인은 배고픈 짐승이 아니라 배고픈 아이다'라는 말을 처음 한 사람은 군데다. 서리손 집안이 이 말을 대대로 전한다"
+  truth: true
+  danger: 1
+  names: [군데, 서리손]
+- id: fact_hi_gunde_vanished
+  text: "군데는 전쟁터에서 사라졌다. 회귀를 스스로 멈췄다는 이야기가 전해지나 어떻게 사라졌는지는 알려지지 않았다"
+  truth: true
+  danger: 2
+  names: [군데]
+
+# --- 아스테리온 (AS −9~0) ---
+- id: fact_hi_asterion_hundred_returns
+  text: "아스테리온은 백 번 넘게 죽고 돌아오며 진명을 낱말씩 모았다. 잔향자는 그가 처음이 아니다"
+  truth: true
+  danger: 4
+  names: [아스테리온]
+- id: fact_hi_asterion_ritual_nearly_done
+  text: "AS 0 아스테리온의 마지막 의식은 성공 직전이었다. 회귀를 한 사람이 아닌 모든 인간에게 돌려주려는 의식이었고, 용황 바르스카르의 불이 먼저 와 그의 회귀를 끊으면서 시간이 찢어졌다(대붕괴)"
+  truth: true
+  danger: 5
+  names: [아스테리온, 바르스카르]
+- id: fact_hi_asterion_name_lost
+  text: "'아스테리온'은 그가 스스로 지은 이름이다. 어머니가 지어 준 처음의 이름은 백 번의 회차 어딘가에서 잃었고, 그것을 아는 사람은 남아 있지 않다"
+  truth: true
+  danger: 2
+  names: [아스테리온]
+- id: fact_hi_asterion_first_law
+  text: "아스테리아의 첫 법은 「이름은 스스로 짓는다」이다"
+  truth: true
+  danger: 1
+  names: [아스테리아]
+
+# --- 붉은 손 다라 (AS 100) ---
+- id: fact_hi_dara_nine_uprisings
+  text: "붉은 손 다라는 AS 100 잿불 광산 봉기를 아홉 번 되풀이한 앞선 잔향자였다. 아홉 번째에 진명으로 족쇄를 열었고, 엘다르의 그물에 걸려 붉은 길에서 진짜로 죽었다"
+  truth: true
+  danger: 4
+  names: [다라]
+- id: fact_hi_dara_last_words
+  text: "다라의 마지막 말은 '나는 전에도 왔고 또 올 것이다'였다. 그녀에게 그것은 사실이었으나, 아홉 번째에는 아니었다"
+  truth: true
+  danger: 2
+  names: [다라]
+- id: fact_hi_dara_last_knot
+  text: "다라의 매듭끈 마지막 매듭에는 '다음의 나야. 아이들을 태우게 두지 마라'는 글과, 그녀 때문에 탄 아이들의 이름이 묶여 있다"
+  truth: true
+  danger: 3
+  names: [다라]
+- id: fact_hi_dara_chain_names_false
+  text: "다라의 사슬 마디마다 1만 명의 이름이 새겨져 있다"
+  truth: false
+  danger: 1
+  names: [다라]
+
+# --- 성 마렌 (AS 87) ---
+- id: fact_hi_maren_signed_only
+  text: "순종의 빛 교리의 셋째 장을 쓴 것은 엘다르 위원회의 세레니엘이고, 성 마렌은 서명만 했다는 기록이 루멘 서고에 있다"
+  truth: true
+  danger: 3
+  names: [마렌, 세레니엘]
+- id: fact_hi_maren_second_sermon
+  text: "성 마렌은 죽기 전 자기 딸에게만 '두 번째 설교'를 입으로 남겼다: '사슬을 감은 것은 등불이 아니라 손이다. 손은 풀 수 있다.' 등잔지기가 이를 대대로 외운다"
+  truth: true
+  danger: 3
+  names: [마렌]
+
+# --- 엘레나 (~AS 291 사망) ---
+- id: fact_hi_elena_song
+  text: "엘레나는 노래 때문에 용황 바르스카르에게 선택되었다. 3,400년 된 가락을 글자 없이 이었으며, 그 노래를 아는 사람은 이제 노라뿐이다"
+  truth: true
+  danger: 3
+  names: [엘레나, 노라]
+- id: fact_hi_elena_last_words
+  text: "엘레나가 죽기 전 남긴 말은 '너는 끝나지 않을 것이다'였다"
+  truth: true
+  danger: 3
+  names: [엘레나]
+- id: fact_hi_elena_grave
+  text: "엘레나는 AS ~291 바알카르 용황궁에서 죽어 궁 남쪽 재구덩이 셋째 줄에 묻혔다. 무덤의 위치를 아는 사람은 노라뿐이다"
+  truth: true
+  danger: 4
+  names: [엘레나, 노라]
+- id: fact_hi_elena_alive_rumor
+  text: "엘레나는 아직 살아 있다"
+  truth: false
+  danger: 2
+  names: [엘레나]
+
+# --- 클라라 (AS 290 사망) ---
+- id: fact_hi_clara_false_accusation
+  text: "AS 290 마테우스는 열다섯 살 누이 클라라를 잔향 징후자로 고발했다. 눈의 잿빛 얼룩은 결막 질환이었고, 클라라는 화형당했다"
+  truth: true
+  danger: 4
+  names: [클라라, 마테우스]
+- id: fact_hi_clara_hairpin
+  text: "마테우스가 약지에 끼고 있는 구부린 머리핀은 클라라의 것이다"
+  truth: true
+  danger: 3
+  names: [클라라, 마테우스]
+
+# --- 앤 (~AS 290 사망) ---
+- id: fact_hi_anne_bread
+  text: "인간 노예 앤은 굶주림월에 자기 몫의 빵을 어린 즈닉에게 몰래 먹였다. 즈닉이 주인 쪽에 빵의 출처를 말했고 앤은 처형되었다"
+  truth: true
+  danger: 3
+  names: [앤, 즈닉]
+- id: fact_hi_anne_grave
+  text: "앤의 무덤은 오물 습지 처형터에 있다"
+  truth: true
+  danger: 2
+  names: [앤]
