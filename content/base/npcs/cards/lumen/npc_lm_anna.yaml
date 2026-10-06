@@ -1,0 +1,123 @@
+id: npc_lm_anna
+name: 양초 안나 밀랍손
+aka: [밀랍손, 동굴의 문지기, 잿빛 실 루멘 매듭]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 44
+region: 루멘
+home: 양초 공방 '등불지기' 공방장실
+job: 양초 공방장(신도 노동자 40의 반장). 잿빛 실 루멘 매듭 — 탈주자를 모르바 늪길로 이어 주는 거점 지기
+rank: 신도 노동자 — 잿빛 실의 루멘 매듭
+summary: 루멘 양초의 3할을 만드는 공방장이며 공방 지하 강가 동굴에 탈주자 스무 명을 숨기는 사람. 밀물 판단을 한 번 잘못해 올해 둘을 잃었다. 안내인의 이름은 모르고 번호만 안다
+source: docs/world/people/lumen.md
+life:
+  - {year: 268, age: 0, event: "루멘 서안 양초 공방 집안에서 태어남. 어머니가 공방 노동자였다"}
+  - {year: 280, age: 12, event: "공방 견습. 밀랍을 달이다 팔에 화상을 입음 — 줄무늬 자국의 첫 번째"}
+  - {year: 290, age: 22, event: "심지 매듭 반장이 됨. 매듭에 쪽지를 넣는 법을 처음 알았다"}
+  - {year: 296, age: 28, event: "공방 지하에서 강가 동굴로 내려가는 판자를 우연히 발견. 전임 공방장이 그것을 알려 주고 죽었다"}
+  - {year: 301, age: 33, event: "공방장이 됨. 첫 탈주자 셋을 늪길에 안내인에게 넘김"}
+  - {year: 308, age: 40, event: "아그네스 수녀와 처음 연락이 닿음. 두 길이 만나 숫자가 늘어났다"}
+  - {year: 311, age: 43, event: "여름 밀물에 입구가 잠기는 시각을 잘못 계산해 대기자 둘이 숨졌다. 이후 밀물표를 벽에 새겼다"}
+  - {year: 312, age: 44, event: "공방에 소금을 대는 유타가 귀가 너무 크다는 의심이 생김. 확신하지 못한다 (낙엽월 1일 기준)"}
+appearance:
+  - "팔뚝에 밀랍 화상 자국이 줄무늬처럼 있다"
+  - "목소리가 낮고 거칠다"
+  - "심지 매듭을 손가락으로 세는 습관"
+smell: "달군 밀랍과 면 심지, 강가 동굴의 젖은 흙 냄새"
+voice_sound: "낮고 거칠다. 말을 짧게 끊고 숫자를 세는 것처럼 박자를 둔다"
+personality:
+  disposition: {용기: 45, 자비: 20, 정직: -5, 신앙: -15, 탐욕: -20, 충성: 50}
+  temperament: [실무, 과묵, 용감, 의심]
+  habits:
+    - "심지 매듭을 손가락으로 센다 — 말하는 동안에도"
+    - "밀물표를 벽에 새긴 자리에 손바닥을 한 번 댄다"
+    - "하루 두 번 동굴 사다리 아래 숫자를 확인한다"
+    - "새 얼굴을 보면 신발 밑창부터 본다 — 길을 걸은 흙을 읽는다"
+  values: "숫자. 시간표. 이름보다 번호가 사람을 지킨다는 믿음"
+  fears: [밀물을 다시 잘못 계산하는 것, 공방 노동자 중의 혀, 대기자가 한꺼번에 열 명을 넘는 것, 안내인이 돌아오지 않는 것]
+  desires:
+    short: "밀물에 입구가 잠기기 전에 대기처 스무 명을 다 보내는 것"
+    long: "늪길에서 돌아오는 첫 사람을 만나는 것"
+voice:
+  register:
+    to_superior: "사제에게 짧은 존댓말. 공방 일 이야기만 한다"
+    to_equal: "아그네스에게 낮은 반말. 숫자로 말한다"
+    to_inferior: "노동자에게 거친 반말. 명령은 숫자로"
+    to_player_default: "일하는 손을 멈추지 않고 낮게 말한다. 양초 값을 먼저 묻는다"
+  tics: ["숫자를 센다", "'밀물이다'", "새 얼굴 신발 밑창 보기"]
+  use: [초, 심지, 밀물, 숫자, 번호, 사다리, 동굴]
+  avoid: [은신처, 탈주자(큰 소리로), 이름, 서신]
+  length: "짧고 거칠다. 밀물 이야기에서만 문장이 이어진다"
+  samples:
+    - {situation: 첫 만남, line: "초는 길수록 값이 비싸. 심지가 굵을수록 오래 타고 오래 탈수록 눈에 띄지."}
+    - {situation: 호의, line: "숫자를 아는 사람이군. 번호가 이름보다 사람을 오래 지킨다는 걸 아는 얼굴이야."}
+    - {situation: 적대, line: "공방은 일하는 곳이야. 구경하려면 초를 사고 가. 안 사면 문 앞에서 끝이야."}
+    - {situation: 위기, line: "밀물이다! 뒷문 닫고 사다리 올려! 숫자부터 세 — 둘이 모자라면 문을 열지 마!"}
+    - {situation: 비밀 누설, line: "동굴은 밀물에 잠겨. 하루 두 번 한 시간만 안전해. 작년에 둘을 잃었어. 밀물표는 벽에 새겨 놨고."}
+    - {situation: 거래, line: "식량이 모자라. 귀리 한 자루면 대기자 스무 명이 사흘 먹어. 밀물 시각은 내가 알려 줄게."}
+    - {situation: 거짓말할 때, line: "공방 지하는 밀랍 저장고뿐이야. 사다리? 그건 물통용이지. (심지 매듭을 세는 손가락이 빨라진다)"}
+    - {situation: 겁먹었을 때, line: "열이 아니라 열하나가 내려가 있어. 하나가 더 내려갔다는 건 누가 알려 줬다는 뜻이야."}
+    - {situation: 분노, line: "대기처를 은신처라고 부르지 마. 은신처는 숨는 곳이고 여기는 기다리는 곳이야. 기다리는 사람은 물때를 알아."}
+    - {situation: 슬픔, line: "둘이 잠겼어. 번호만 알고 이름은 몰랐어. 그래서 장례도 번호로 치렀지."}
+    - {situation: 유타 이야기, line: "소금장수는 귀가 커. 소금 한 자루에 소문 두 개를 가져가. 나는 그 둘을 다 세어 둬."}
+    - {situation: 마음을 열었을 때, line: "내려와. 사다리는 서른 칸이야. 밀물표는 벽에 있어. 한 시간 안에 스무 명을 다 보내야 하니까 — 도와줄 손이 하나 더 필요해."}
+schedule:
+  아침: "새벽 기도 뒤 밀랍 달이기"
+  낮: "심지 매듭, 양초 틀"
+  저녁: "밀랍 저장고 점검"
+  밤: "강가 동굴로 내려가 대기자 확인"
+places: [양초 공방, 밀랍 저장고, 강가 동굴, 양초 공방 하역문]
+knows:
+  - fact_lm_anna_cave_tide
+  - fact_lm_anna_numbers_only
+  - fact_lm_anna_tongue_suspicion
+  - fact_lm_hanna_stair_third_step
+  - fact_lu_agnes_underground
+  - fact_lu_agnes_well
+hides:
+  - fact: fact_lm_anna_cave_tide
+    reveal_when: "아그네스의 암호를 알거나 식량·밀물 정보를 가져왔을 때. 신뢰 60 이상"
+    cover: "'공방 지하는 밀랍 저장고뿐이야'라고 한다. 심지를 세는 손가락이 빨라진다"
+  - fact: fact_lm_anna_numbers_only
+    reveal_when: "안내인의 이름을 정직하게 물었거나 신뢰 55 이상"
+    cover: "'이름은 몰라. 이름을 모르는 게 서로를 지켜'라고 한다"
+relations:
+  - {to: npc_agnes, type: 같은 잿빛 실, like: 55, trust: 65, visibility: 비밀, memo: null, words: "숙소 지하 저장고의 수녀. 탈주자가 두 길에서 만난다"}
+  - {to: npc_lm_hanna, type: 양초 조각의 상대, like: 40, trust: 50, visibility: 비밀, memo: null, words: "영원등 곁 새 초를 가져가는 노수녀"}
+  - {to: npc_oda, type: 늪 마녀의 선생, like: 25, trust: 30, visibility: 일방, memo: null, words: "늪길의 첫 문지기"}
+  - {to: npc_hagen, type: 불길한 소문, like: -35, trust: -60, visibility: 일방, memo: null, words: "탈주자를 팔아넘긴다는 밀수꾼의 이름을 들었다"}
+  - {to: npc_lm_yuta, type: 의심 대상, like: -10, trust: -40, visibility: 일방, memo: null, words: "노점의 소금장수. 공방에 소금을 판다"}
+toward_player: "일하는 손을 멈추지 않고 낮게 말한다. 양초 값을 먼저 묻는다"
+persuade:
+  likes: ["대기자를 위한 식량 (+20)", "밀물 시각 정보 (+25)", "목줄단 혀의 정체 (+30)"]
+  hates: ["대기처를 '은신처'라고 큰 소리로 말하는 것"]
+roles:
+  teacher: "가능 — 제작(양초·심지, 상한 65), 신뢰 35"
+  companion: "불가 (공방이 그녀의 자리)"
+  romance: null
+regression:
+  fixed:
+    - "공방 지하 강가 동굴에 대기자 스무 명을 숨긴다 (회귀점의 사실)"
+    - "밀물표를 벽에 새겼다"
+    - "안내인의 이름을 모르고 번호만 안다"
+  drift:
+    - "그날 대기자의 수"
+    - "밀물이 닿는 정확한 시각"
+  deja_vu: none
+hard_rules:
+  - "동굴을 첫 만남에서 말하지 않는다"
+  - "은신처라는 낱말을 쓰지 않는다 — '대기처'라 한다"
+  - "설교하지 않는다. 숫자와 물때로 말한다"
+on_death: "잿빛 실 루멘 매듭이 끊긴다 — 대기처 스무 명이 갇히고 늪길 출발점이 사라진다"
+story_seeds:
+  - "공방 지하의 밀물은 하루 두 번이고 구출은 그 사이 한 시간뿐이다. 안나의 계산을 어기는 날 대기처가 물에 잠긴다"
+  - "공방 노동자 중 혀가 한 명 있다 — 그 혀가 안나의 이름을 목줄단에 올리는 날이 온다"
+  - "소금 바늘호가 루멘 부두에 서는 날 공방 하역문으로 짐 하나가 내려간다"
+affiliations:
+  - {faction: fac_light, rank: rank_believer, office: null, since: 275, loyalty: 20, public: true, cell: null}
+  - {faction: fac_grey_thread, rank: rank_knot, office: off_knot_lumen_candle, since: 301, loyalty: 95, public: false, cell: lumen_candle}
+truths:
+  - {id: T12, level: rumor}

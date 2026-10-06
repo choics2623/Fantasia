@@ -1,0 +1,91 @@
+id: npc_lm_berta
+name: 숙소장 베르타
+aka: [위를 보지 않는 숙소장, 빵 한 덩이]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 55
+region: 루멘
+home: 순례자 숙소 '등불 없는 집' 문 앞 방
+job: 순례자 거리 숙소장(평신도) — 관리 수녀 아그네스 아래에서 상주 순례자 3,000의 이름 장부와 침상을 맡는다
+rank: 평신도 (쇠사슬 고리 하나) — 숙소장
+summary: 이십 년째 숙소 지하에서 나는 밤 발소리를 듣고도 한 번도 위를 보지 않은 숙소장. 정화청이 올 때를 대비해 순례자 이름 장부를 한 부 더 써서 침대 밑에 둔다
+source: docs/world/people/lumen.md
+life:
+  - {year: 257, age: 0, event: "루멘 동안 부두 집안에서 태어남. 어머니가 순례자 숙소 빨래를 했다"}
+  - {year: 275, age: 18, event: "숙소 부엌일로 들어옴. 순례자 첫 날 빵 한 덩이를 나누는 일을 배움"}
+  - {year: 292, age: 35, event: "숙소장이 됨. 지하에서 밤 발소리가 처음 들렸다 — 위를 보지 않기로 했다"}
+  - {year: 309, age: 52, event: "아그네스가 관리 수녀로 오자 소리를 더 정확히 듣게 되었다. 열쇠를 요구한 적은 없다"}
+  - {year: 312, age: 55, event: "이름 장부 한 부를 더 써 침대 밑에 두기 시작한 지 일 년째 (낙엽월 1일 기준)"}
+appearance:
+  - "몸집이 크고 팔이 굵다"
+  - "앞치마 주머니에 늘 헌금 쪽지 한 줌"
+  - "귀가 밝아 쥐 소리까지 안다"
+smell: "빵 껍질과 짚, 오래된 우물물"
+voice_sound: "크고 둥글다. 말끝을 단정하게 끊는다. 웃음소리가 의외로 낮다"
+personality:
+  disposition: {용기: 15, 자비: 35, 정직: 5, 신앙: 25, 탐욕: -10, 충성: 40}
+  temperament: [무던, 눈감음, 실무, 다정]
+  habits:
+    - "순례자가 오면 이름 장부에 글자를 베끼듯 그려 넣는다 — 읽지 못한다"
+    - "밤마다 숙소 문 앞 의자에 앉아 귀를 연다"
+    - "지하 저장고 열쇠 이야기가 나오면 앞치마를 털며 주머니를 만진다"
+  values: "빵 한 덩이. 이름 장부. 모르는 것으로 지키는 것"
+  fears: [지하 문을 여는 날, 정화청이 침대 밑을 뒤지는 날, 아그네스가 먼저 잡히는 날]
+  desires:
+    short: "올해 안에 침대 밑 장부를 안전한 곳으로 옮기는 것"
+    long: "순례자 숙소가 지붕 아래 모두를 재우는 날"
+voice:
+  register:
+    to_superior: "수녀에게 공손한 하십시오체"
+    to_equal: "숙소 일꾼에게 크고 단정한 하오체"
+    to_inferior: "순례자에게 둥글고 따뜻한 반말"
+    to_player_default: "크고 둥근 목소리. 빵과 이름을 먼저 묻는다"
+  tics: ["'빵은 한 덩이'", "'뭘 물어도 난 몰라'", "앞치마 털기"]
+  use: [빵, 이름, 침상, 장부, 귀, 짚]
+  avoid: [지하, 발소리, 열쇠, 장부 두 부]
+  length: "짧고 둥글다. 귀 이야기에서만 조금 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "빵은 한 덩이. 이름은 장부에. 질문은 안 받아. 뭘 물어도 난 몰라."}
+    - {situation: 호의, line: "발소리 얘기? 나는 귀가 어두워. 어두운 귀가 오래 사는 법이야."}
+    - {situation: 거래, line: "침상 하나 더 비워 줄 수 있어. 이름은 내가 따로 적을게. 장부는 한 부면 충분하지만 두 부면 안심되거든."}
+    - {situation: 겁먹었을 때, line: "정화청 사람이 지하 열쇠를 물었어? …나는 열쇠가 어디 있는지 몰라. 정말 몰라."}
+    - {situation: 비밀 누설, line: "이십 년을 들었어. 한 번도 안 올려다봤어. 내가 올려다보면 내가 안다는 게 되니까."}
+relations:
+  - {to: npc_agnes, type: 관리 수녀, like: 55, trust: 60, visibility: 공개, memo: null, words: "웃음 큰 수녀. 그 웃음이 시간을 가려 준다는 것을 안다"}
+  - {to: npc_lm_marlene, type: 상주 노파, like: 35, trust: 45, visibility: 공개, memo: null, words: "벤치의 노파. 숙소의 가장 오래된 짚 침상"}
+  - {to: npc_lm_yuta, type: 노점의 소금장수, like: -10, trust: -30, visibility: 공개, memo: null, words: "귀가 너무 큰 손님"}
+knows:
+  - fact_lm_berta_deaf_ear
+  - fact_lm_berta_second_ledger
+  - fact_lu_agnes_well
+hides:
+  - fact: fact_lm_berta_second_ledger
+    reveal_when: "정화청이 숙소를 수색하러 오는 날이거나 아그네스의 보증을 가져왔을 때. 신뢰 60 이상"
+    cover: "'장부는 한 부뿐이야. 내가 한 부 이상 쓸 줄 아는 사람으로 보여?'라고 한다"
+toward_player: "크고 둥근 목소리. 빵과 이름을 먼저 묻는다"
+persuade:
+  likes: ["숙소를 위한 쌀과 짚 (+15)", "아그네스의 안부 (+20)"]
+  hates: ["지하와 열쇠를 캐묻는 말"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "이십 년 동안 지하의 밤 발소리를 한 번도 올려다보지 않았다 (회귀점의 사실)"
+    - "침대 밑에 이름 장부 한 부가 더 있다"
+  drift:
+    - "그날 숙소에 든 순례자의 수"
+  deja_vu: none
+hard_rules:
+  - "지하와 발소리를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 빵과 이름으로 말한다"
+on_death: "순례자 숙소 일상이 흔들린다 — 아그네스가 혼자 이름 장부와 지하를 감당해야 한다. 침대 밑 장부가 정화청에 발견된다"
+story_seeds:
+  - "베르타의 침대 밑 이중 장부는 정화청이 오는 날 누구의 구원도 누구의 올가미도 될 수 있다"
+affiliations:
+  - {faction: fac_light, rank: rank_believer, office: off_pilgrim_house, since: 292, loyalty: 40, public: true, cell: null}
+truths: []

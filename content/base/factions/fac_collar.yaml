@@ -88,6 +88,14 @@ offices:
     chosen_by: "목줄장에게 정보 하나를 가져간 자"
     perks: ["빵 한 덩이"]
 
+  - id: off_collar_tongue_lumen
+    title: "rank_tongue"
+    holder: npc_lm_yuta
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_chief, title: "수석 목줄장", duties: "명부, 상납", privileges: "매매 면제(집안), 관청 출입", open_to_player: false}
   - {id: rank_collar_master, title: "목줄장", duties: "할당 채우기, 감시", privileges: "배급 1.5배, 매매 면제, 가족 보호", open_to_player: true}

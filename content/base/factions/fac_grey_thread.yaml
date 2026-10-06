@@ -51,7 +51,7 @@ offices:
     perks: []
   - id: off_knot_lumen_candle
     title: 루멘 매듭 (양초 공방 '등불지기' 밀랍 저장고)
-    holder: "unnamed:안나 밀랍손 (인간, 44) — 공방장"
+    holder: npc_lm_anna
     reports_to: off_spool_north
     powers: ["강가 동굴 대기처(최대 20명)", "늪길 출발점", "양초 심지 매듭으로 연락"]
     chosen_by: "실타래의 매듭"

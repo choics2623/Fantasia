@@ -40,7 +40,7 @@ offices:
     perks: ["『빛의 말씀』 엘다르어 원본('관리 지침서') 보관", "후견인의 정원 — 루멘 안의 엘다르 땅"]
   - id: off_doctrine_auditor
     title: 교리 감수관 (외부)
-    holder: "unnamed:레아넬 (엘다르, 1,100)"
+    holder: npc_lm_leanel
     reports_to: off_light_patron
     powers: ["회의 결정에 금실 표시 또는 보류", "낭독문 목록 확정", "이단 판정 자문"]
     chosen_by: "후견인의 지명"
@@ -90,7 +90,7 @@ offices:
     perks: []
   - id: off_lamp_north_deputy
     title: 북부 등불관 대리 (수녀)
-    holder: "unnamed:아델 (인간, 44) — 끊어진 고리의 '일곱째 고리'"
+    holder: npc_lm_adel
     reports_to: off_lamp_north
     powers: ["북부 순례자 관리", "순례 허가증 발급(북부)", "투표권 없음"]
     chosen_by: "대사제의 임시 지명"
@@ -104,7 +104,7 @@ offices:
     perks: []
   - id: off_lamp_silver_river
     title: 은빛 강 등불관 (대성당 상주)
-    holder: "unnamed:마티아스 회색손 (인간, 61) — 개혁파, 차기 대사제 후보"
+    holder: npc_lm_matthias
     reports_to: off_high_priest
     powers: ["은빛 강 교구", "등불 회의 한 표", "대성당 서고 관리"]
     chosen_by: "대사제의 지명"
@@ -133,21 +133,21 @@ offices:
     perks: ["검은 사슬", "등불 심문소 본거지", "모든 고해실의 보고를 받는다"]
   - id: off_inquisitor
     title: 심문 사제 (집합 자리, 약 40)
-    holder: "unnamed:심문 사제 40 — 정화청장이 직접 고른 사슬사제"
+    holder: npc_lm_aegidius
     reports_to: off_purifier
     powers: ["순회 심문 — 마을 단위 징후 조사", "세 질문(어디서 왔나, 누구에게 배웠나, 꿈을 꾸는가) 집행", "구금"]
     chosen_by: "정화청장의 지명"
     perks: ["순례 허가 없이 어디든 간다", "검은 끈을 단 성표"]
   - id: off_ash_scale
     title: 잿빛 저울 (징후 판별관)
-    holder: "unnamed:잿빛 저울 — 눈의 잿빛 얼룩을 '재는' 사제 셋. 저울 셋 중 둘이 '무겁다'고 하면 화형"
+    holder: npc_lm_hartmund
     reports_to: off_purifier
     powers: ["징후 판별(눈의 회색 얼룩, 꿈, 이상한 학습 속도)", "잿빛 탑 인계 여부 결정"]
     chosen_by: "정화청장의 지명"
     perks: []
   - id: off_informant_desk
     title: 밀고 접수관 (루멘 고리지기)
-    holder: "unnamed:토비아스 (인간, 35) — 한 해 접수 412건, 그중 화형 31건"
+    holder: npc_lm_tobias
     reports_to: off_inquisitor
     powers: ["밀고 함 관리", "목줄단 '혀'의 보고 수령", "밀고자 보상(배급 쪽지) 지급"]
     chosen_by: "심문 사제의 지명"
@@ -168,7 +168,7 @@ offices:
     perks: ["매수 불가로 알려짐 — 아픈 아내의 약만이 예외"]
   - id: off_pyre_keeper
     title: 정화의 뜰 장작지기
-    holder: "unnamed:장작지기 — 크릭 잡역 넷을 부리는 고리지기"
+    holder: npc_lm_corad
     reports_to: off_purifier
     powers: ["화형대 준비(이번 가을에만 장작 네 번)", "재 수거 — 재는 강에 버린다"]
     chosen_by: "정화청장의 지명"
@@ -176,7 +176,7 @@ offices:
   # ── 대성당·순례
   - id: off_candle_keeper
     title: 대성당 촛불지기
-    holder: "unnamed:한나 (인간, 58) — 등잔지기, 알베릭의 누이"
+    holder: npc_lm_hanna
     reports_to: off_lamp_silver_river
     powers: ["영원등 곁 초 관리", "제단 출입"]
     chosen_by: "대성당 관리 사제의 임명"
@@ -210,6 +210,14 @@ offices:
     chosen_by: "등불관의 순례 허가증"
     perks: ["통행 허가증 — 인간에게 가장 넓은 합법 이동권"]
 
+  - id: off_token_tally
+    title: "rank_ring_keeper"
+    holder: npc_lm_kale
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_high_priest, title: "빛의 대사제", duties: "교단 총괄, 축일 설교, 의견서 낭독", privileges: "흰 사슬 일곱 겹, 금실 등불 아래 서는 유일한 인간", open_to_player: false}
   - {id: rank_lamp, title: "등불관 (대교구장)", duties: "대교구 통치, 회의 표결, 사슬사제 서품", privileges: "흰 사슬 세 겹, 회의 한 표, 영주 저택 출입", open_to_player: false}

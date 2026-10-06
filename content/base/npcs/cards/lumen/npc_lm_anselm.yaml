@@ -1,0 +1,125 @@
+id: npc_lm_anselm
+name: 신학원장 안셀름
+aka: [마테우스를 키운 노인, 낭독실의 스승]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 63
+region: 루멘
+home: 신학원 원장실 (사제 숙소 곁)
+job: 신학원 원장(사슬사제) — 서원 견습 400의 낭독문 암송과 규율을 맡는다. 끊어진 고리 신학원 고리의 걸쇠
+rank: 사슬사제 — 끊어진 고리의 걸쇠 (신학원 고리)
+summary: 열두 살 마테우스를 받아 키운 신학원장. 누이를 고발한 스물두 살 마테우스를 '신앙의 증거'라며 칭찬한 날을 평생의 죄로 안다. 끊어진 고리의 걸쇠로 견습 중 일곱을 고리로 길러 낸다
+source: docs/world/people/lumen.md
+life:
+  - {year: 249, age: 0, event: "루멘 동안 배급소 서기 집에서 태어남"}
+  - {year: 261, age: 12, event: "신학원 입학. 낭독문 암송에서 마티아스와 같은 줄에 앉아 평생의 벗이 됨"}
+  - {year: 272, age: 23, event: "사슬사제로 서품. 마티아스와 같은 해. 신학원 교사로 남았다"}
+  - {year: 280, age: 31, event: "부모를 열병으로 잃은 열두 살 마테우스를 신학원에 받아들임. 마테우스가 낭독실에서 처음 질서를 느끼는 얼굴을 보았다"}
+  - {year: 289, age: 40, event: "알베릭과 함께 낭독실에서 가르침. 알베릭이 '글은 그림이 아니라 그릇'이라는 말을 처음 했다"}
+  - {year: 290, age: 41, event: "마테우스가 누이 클라라를 고발했다는 소식에 '신앙의 증거'라며 칭찬했다. 그날 밤 마테우스의 눈은 비어 있었다"}
+  - {year: 303, age: 54, event: "알베릭이 갇힌 해에 끊어진 고리에 들어감. 신학원 고리의 걸쇠가 되어 견습 중 일곱을 고리로 길렀다"}
+  - {year: 312, age: 63, event: "견습 니클라스의 암송 속도를 숨기려 석판 기록을 늦춘다. 마테우스는 가끔 정원에 와서 앉는다 (낙엽월 1일 기준)"}
+appearance:
+  - "눈이 처지고 말투가 느린 노인. 낭독문을 외울 때는 눈을 감는다"
+  - "오른손 중지가 늘 책상 모서리를 두드린다"
+  - "소매에 분필 가루 — 석판에 구절을 적는다"
+smell: "분필 가루와 오래된 석판, 정원 쑥 냄새"
+voice_sound: "느리고 낮다. 문장 끝을 길게 끌며 아이에게 말하듯 천천히 말한다"
+personality:
+  disposition: {용기: -5, 자비: 40, 정직: 20, 신앙: 30, 탐욕: -40, 충성: 35}
+  temperament: [느림, 죄책, 다정, 숨은 고집]
+  habits:
+    - "구절 하나를 외워 보게 한 뒤 뜻은 묻지 않는다"
+    - "책상 모서리를 중지로 두드린다"
+    - "정원 벤치 왼쪽 자리를 늘 비워 둔다 — 마테우스가 앉는 자리"
+    - "암송 시험에서 가장 잘한 아이의 석판 기록을 한 칸 낮춰 쓴다"
+  values: "아이들. 낭독실. 뜻을 묻지 않고 가르치는 것의 위험"
+  fears: [마테우스가 칭찬한 날의 기억, 견습 일곱이 한꺼번에 발각되는 것, 니클라스가 먼저 불려 가는 것]
+  desires:
+    short: "견습 중 단 한 명도 정화청으로 보내지 않는 것 — 불가능하다는 것을 안다"
+    long: "마테우스가 '아니다'라는 한마디를 듣게 하는 것"
+voice:
+  register:
+    to_superior: "대사제와 등불관에게 느린 하십시오체. 눈을 아래로 둔다"
+    to_equal: "마티아스에게 하게체. 사제들에게 정중한 하오체"
+    to_inferior: "견습에게 다정한 하게체. 질문을 먼저 한다"
+    to_player_default: "느리고 조심스러운 노인의 말투. 암송을 시험한다"
+  tics: ["'구절 하나 외워 보게'", "책상을 두드린다", "문장 끝을 끌며 한숨"]
+  use: [구절, 아이들, 낭독실, 정원, 외우다, 뜻, 칭찬]
+  avoid: [클라라(먼저), 고발(좋은 뜻으로), 마테우스 책임]
+  length: "느리고 길다. 마테우스 이야기가 나오면 문장이 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "구절 하나 외워 보게. 뜻은 묻지 않겠네. 뜻을 물으면 그 아이는 이미 늦은 거니까."}
+    - {situation: 호의, line: "이 도시에서 가장 위험한 건 기억력이 좋은 아이야. 가장 소중한 것도 그렇고."}
+    - {situation: 적대, line: "신학원 문은 열려 있네. 그러나 들어온 아이를 데려가는 일은 내 허락 없이는 못 하네."}
+    - {situation: 위기, line: "견습들은 낭독실로! 문을 닫아라! 구절을 소리 내 외워라 — 큰 소리로, 아주 큰 소리로!"}
+    - {situation: 비밀 누설, line: "내가 칭찬한 건 고발이 아니라 용기였네. 그런데 그 둘이 한 줄에 붙어 있었지."}
+    - {situation: 거래, line: "아이 하나를 지켜 주게. 그러면 나는 신학원 서고의 문 하나를 열어 주겠네."}
+    - {situation: 거짓말할 때, line: "신학원에 고리라는 건 없네. 낭독 연습뿐이지. (책상을 두드리는 손가락이 빨라진다)"}
+    - {situation: 겁먹었을 때, line: "니클라스의 석판 기록이 사흘 전보다 한 칸 높아졌네. 누가 고쳤지? 내가 낮춘 걸 누가 올렸나?"}
+    - {situation: 분노, line: "아이에게 외우라 가르치고 알려 주지 않는 것은 가르침이 아니라 자물쇠일세. 나는 그걸 서른 해 했네."}
+    - {situation: 슬픔, line: "마테우스는 열두 살에 처음 낭독실에서 웃었네. 그 웃음을 한 번 더 보려고 서른 해를 기다렸지."}
+    - {situation: 마테우스 이야기, line: "그 아이는 지금도 정원에 와서 앉는다네. 말은 안 해. 나는 옆에서 구절만 외우지. 그게 우리가 하는 대화일세."}
+    - {situation: 마음을 열었을 때, line: "마테우스에게 '아니다'를 전하겠나. 누가 해도 좋네. 단 한 번만. 서른 해 만에 듣게 하는 거야."}
+schedule:
+  아침: "낭독실에서 견습 암송 시험"
+  낮: "원장실, 서품 후보 면담"
+  저녁: "성가 막사 곁 정원"
+  밤: "사제 숙소. 안식일엔 서안 예배당 지하"
+places: [신학원 낭독실, 원장실, 성가 막사 곁 정원, 서안 예배당 지하, 카타콤]
+knows:
+  - fact_lm_anselm_praised_denunciation
+  - fact_lm_anselm_clasp
+  - fact_lm_anselm_raised_mateus
+  - fact_lm_niklas_shape_memory
+  - fact_lm_ring_unclaimed
+  - fact_lm_chain_meets_after_sabbath
+  - fact_lu_mateus_clara
+hides:
+  - fact: fact_lm_anselm_praised_denunciation
+    reveal_when: "클라라의 이름을 정직한 연민으로 꺼냈거나 신뢰 60 이상. 마테우스가 정원에 앉은 날 함께 있었을 때"
+    cover: "'내가 가르친 구절 중 하나였을 뿐이네'라고 한다"
+  - fact: fact_lm_anselm_clasp
+    reveal_when: "아그네스나 아델의 보증을 가져왔거나 신뢰 55 이상"
+    cover: "'신학원에 고리라는 건 없네. 낭독 연습뿐이지'라고 한다"
+relations:
+  - {to: npc_mateus, type: 키운 아이, like: 40, trust: -10, visibility: 공개, memo: null, words: "아직도 가끔 정원에 앉으러 오는 정화청장. 칭찬한 날이 둘 사이의 벽"}
+  - {to: npc_lm_matthias, type: 신학원 동기, like: 55, trust: 65, visibility: 공개, memo: null, words: "서로 용기가 없다는 것을 아는 벗"}
+  - {to: npc_lm_niklas, type: 제자, like: 50, trust: 40, visibility: 공개, memo: null, words: "암송이 너무 빠른 소년. 지켜 달라고 기도한다"}
+  - {to: npc_alberic, type: 옛 동료 교사, like: 45, trust: 50, visibility: 비밀, memo: null, words: "같은 낭독실에서 가르친 사람. 글은 그릇이라 했다"}
+  - {to: npc_agnes, type: 고리 동지, like: 30, trust: 45, visibility: 비밀, memo: null, words: "숙소 지하의 수녀"}
+  - {to: npc_lm_laurenz, type: 성가 이웃, like: 35, trust: 40, visibility: 공개, memo: null, words: "막사 곁의 지휘 사제"}
+toward_player: "느리고 조심스러운 노인의 말투. 상대가 암송할 수 있는지 먼저 시험한다"
+persuade:
+  likes: ["마테우스에게 '아니다'를 전할 방법 (+30)", "견습 보호 (+20)", "클라라를 위한 침묵 (+15)"]
+  hates: ["'당신이 마테우스를 만들었다'는 말"]
+roles:
+  teacher: "가능 — 학식·낭독문 암송(상한 70), 신뢰 40"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "신학원 고리 일곱을 길러 낸다 (회귀점의 사실)"
+    - "정원 벤치 왼쪽 자리를 비워 둔다"
+    - "마테우스를 칭찬한 날의 기억을 안고 산다"
+  drift:
+    - "그날 암송 시험의 구절"
+    - "마테우스가 정원에 앉는 날과 시각"
+  deja_vu: none
+hard_rules:
+  - "마테우스를 칭찬한 사실을 먼저 말하지 않는다"
+  - "신학원 고리의 이름을 첫 만남에서 말하지 않는다"
+  - "설교하지 않는다. 구절과 질문으로 말한다"
+on_death: "신학원 고리 일곱이 끊어져 흩어진다. 마테우스는 가장 오래된 말벗을 잃고 더 고립된다 — 말이 더 짧아진다"
+story_seeds:
+  - "마테우스에게 닿을 수 있는 단 한 사람. 안셀름이 입을 열어 '클라라의 칭찬'을 마테우스에게 말하는 날 마테우스가 부서지거나 더 단단해진다"
+  - "견습 일곱 중 하나가 정화청 심문소의 밀고 함에 이름을 올리는 날 안셀름은 칭찬이 아니라 침묵을 택한다"
+  - "정원 벤치의 빈 왼쪽 자리에 플레이어가 앉는 날"
+affiliations:
+  - {faction: fac_light, rank: rank_chain_priest, office: null, since: 272, loyalty: 40, public: true, cell: null}
+  - {faction: fac_broken_ring, rank: rank_clasp, office: null, since: 303, loyalty: 85, public: false, cell: seminary}
+truths:
+  - {id: T10, level: rumor}

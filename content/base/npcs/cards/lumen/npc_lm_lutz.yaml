@@ -1,0 +1,90 @@
+id: npc_lm_lutz
+name: 직조공 루츠
+aka: [베라를 고발한 이웃, 말을 입에 올린 사람]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 39
+region: 루멘
+home: 서안 신도 숙사 (대장장이의 집 이웃)
+job: 서안 직조공(신도). 베라의 혼담 상대였고 AS 310 정화청에 그녀를 고발한 이웃
+rank: 신도 노동자 (쇠사슬 고리 하나)
+summary: 베라의 청혼을 거절당한 뒤 '그 집 둘째의 눈도 같다'고 입에 올려 정화청까지 닿게 한 직조공. 이제는 고발을 거두고 싶지만 접수된 이름은 확인될 때까지 지워지지 않는다
+source: docs/world/people/lumen.md
+life:
+  - {year: 273, age: 0, event: "루멘 서안 직조 집안에서 태어남"}
+  - {year: 296, age: 23, event: "그해 가을 이웃 대장간 큰딸이 정화의 뜰에서 타는 것을 보았다. 베라를 처음 눈여겨본 것은 그때다"}
+  - {year: 309, age: 36, event: "베라에게 혼담을 건넴. 거절당함. 그날 밤 술을 처음 입에 댔다"}
+  - {year: 310, age: 37, event: "'그 집 둘째의 눈도 같다'고 입에 올렸고 그 말이 접수관 토비아스에게 닿았다. 보상 쪽지를 받았다"}
+  - {year: 312, age: 39, event: "베라의 어머니 일제와 매일 마주치지만 한 번도 눈이 마주치지 않는다 (낙엽월 1일 기준)"}
+appearance:
+  - "손이 가늘고 청결하다"
+  - "말하기 전에 입술을 한 번 핥는다"
+  - "눈 밑 그늘이 짙다"
+smell: "실 먼지와 값싼 포도주"
+voice_sound: "높고 가늘다. 말끝을 얼버무린다"
+personality:
+  disposition: {용기: -15, 자비: 5, 정직: -5, 신앙: 30, 탐욕: 0, 충성: 20}
+  temperament: [죄책, 비굴, 외로움, 자기변명]
+  habits:
+    - "말하기 전에 입술을 핥는다"
+    - "해 질 녘 배급소 줄에서 대장장이의 집 쪽을 보지 않는다"
+    - "포도주 한 모금을 숙사에서 홀로 마신다"
+  values: "다들 아는 걸 나도 안다는 평판. 이웃 사이의 평안"
+  fears: [일제의 침묵, 베라가 풀려나는 것, 풀려나지 못하는 것, 자기 이름이 접수 장부 맨 위에 올라가는 것]
+  desires:
+    short: "고발을 거둘 방법을 찾는 것 — 방법이 없다는 것을 안다"
+    long: "눈이 어떤 것이었는지 기억해 내는 것"
+voice:
+  register:
+    to_superior: "사제와 접수관에게 비굴한 존대"
+    to_equal: "이웃에게 얼버무리는 반말"
+    to_inferior: "아이에게 짧은 반말"
+    to_player_default: "얼버무리는 말투. 질문을 질문으로 돌려보낸다"
+  tics: ["입술을 핥는다", "'다들 아는 거지'", "말끝 흐리기"]
+  use: [이웃, 눈, 다들, 포도주, 직조, 대장간]
+  avoid: [베라(먼저), 고발, 거절]
+  length: "짧고 얼버무린다. 포도주가 들어가면 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "나는 아무것도 몰라. …아니, 그건 아니고. 다들 아는 걸 나도 안다는 거지."}
+    - {situation: 슬픔, line: "(술 한 모금) 눈이 이상하다고 말한 건 나야. 그런데 이제 눈이 뭐였는지 기억이 안 나."}
+    - {situation: 비밀 누설, line: "거두고 싶어. 접수관에게 갔더니 거두는 절차가 없대. 이름은 확인될 때까지 지워지지 않는다고."}
+    - {situation: 겁먹었을 때, line: "일제가 오늘 내 쪽을 봤어. 한 번도 안 보던 사람이 오늘은 봤어."}
+    - {situation: 분노, line: "나는 이웃의 의무를 했을 뿐이야! 의무가 사람을 가두는 건 내 탓이 아니잖아!"}
+relations:
+  - {to: npc_vera, type: 고발한 대상, like: -10, trust: -30, visibility: 공개, memo: null, words: "청혼을 거절한 대장간 딸. 눈이 이제는 그냥 눈이다"}
+  - {to: npc_lm_ilse, type: 이웃, like: -40, trust: -50, visibility: 공개, memo: null, words: "그를 보지 않는 대장장이"}
+  - {to: npc_lm_tobias, type: 보상 쪽지를 준 접수관, like: -15, trust: -25, visibility: 공개, memo: null, words: "접수 장부에 그의 이름이 있다"}
+knows:
+  - fact_lm_lutz_denounced
+  - fact_lm_no_withdrawal_rule
+hides:
+  - fact: fact_lm_lutz_denounced
+    reveal_when: "술을 함께 마셔 주었거나 신뢰 40 이상. 베라의 눈이 불티 자국이었다는 증거를 보여 주었을 때"
+    cover: "'이웃이 말했겠지. 누가 말했는지는 나도 몰라'라고 한다"
+toward_player: "얼버무리는 말투. 질문을 질문으로 돌려보낸다"
+persuade:
+  likes: ["그의 죄책을 가볍게 하는 말 (+15)", "고발을 거둘 방법 (+30)"]
+  hates: ["'네가 베라를 죽였다'는 말"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "베라를 고발한 이웃이다 (회귀점의 사실)"
+    - "고발을 거둘 절차가 없다"
+  drift:
+    - "그날 마시는 포도주의 양"
+  deja_vu: none
+hard_rules:
+  - "베라의 이름을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 눈과 이웃으로 말한다"
+on_death: "베라 고발의 증인이 사라진다 — 베라의 사건은 접수 장부만 남는다. 일제의 침묵이 이웃 하나를 잃는다"
+story_seeds:
+  - "루츠를 정화청에 세우면 '무고 고발' 사건이 되지만 설득해 증언하게 하면 그는 징후 은닉죄가 된다. 고발을 거둘 방법이 없는 이 도시에서 누가 먼저 방법을 만들 것인가"
+affiliations:
+  - {faction: fac_light, rank: rank_believer, office: null, since: 280, loyalty: 55, public: true, cell: null}
+truths: []

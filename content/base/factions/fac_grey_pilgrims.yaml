@@ -74,6 +74,14 @@ offices:
     chosen_by: "재의 목소리의 지명"
     perks: []
 
+  - id: off_ash_courier_lumen
+    title: "rank_pilgrim"
+    holder: npc_lm_byuk
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_voice, title: "재의 목소리", duties: "듣고 말한다", privileges: "늙지 않는다(잔상)", open_to_player: false}
   - {id: rank_ash_eater, title: "재먹이 (사제)", duties: "재의 원, 의식", privileges: "황무지 안쪽 길", open_to_player: true}

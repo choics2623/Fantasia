@@ -1,0 +1,130 @@
+id: npc_lm_leanel
+name: 레아넬 금실
+aka: [교리 감수관, 금실을 쥔 자, 기억지기]
+tier: A
+type: living
+race: 엘다르
+subrace: 빛실 엘다르
+sex: 남
+age: 1100
+region: 루멘
+home: 등불섬 북쪽 끝 맑은물 정자 (별채)
+job: 순종의 빛 교리 감수관(외부). 일곱 등불 회의가 통과한 교리·낭독문 변경에 금실 표시 또는 보류를 내린다
+rank: 빛실 엘다르 — 빛의 후견인 이살리온의 지명
+summary: 마렌의 원래 설교를 불태우지 못해 서고 뒷방에 봉한 엘다르 감수관. 금실을 감지 않으면 모든 결정이 '아직 빛이 닿지 않음'이 된다. 대사제가 옛 설교를 '낭송'으로 읽으면 변경이 아니라고 판정할 수 있는 단 한 사람이지만 아무도 묻지 않았다
+source: docs/world/people/lumen.md
+life:
+  - {year: -788, age: 0, event: "빛실 가지에서 태어남. 엘다르의 아이는 기억을 먼저 배운다 — 말보다 기억의 순서를"}
+  - {year: -300, age: 488, event: "빛실 가지 젊은 서기로 『빛의 말씀』 엘다르어 원본의 첫 장 사본을 맡음. 오웰리스가 원본을 쓴 사람이다"}
+  - {year: 87, age: 875, event: "인간의 교단이 세워질 때 세레니엘의 문장 '고난은 정화다'에 처음으로 금실을 감았다. 그 한 줄이 마렌의 문장을 비튼 것임을 알면서 감았다"}
+  - {year: 213, age: 1001, event: "대붕괴 이후의 정리 때 마렌의 원래 설교 사본에 '삭제' 판정을 내림. 불태우지 못하고 서고 뒷방에 봉했다"}
+  - {year: 230, age: 1018, event: "교리 감수관으로 지명됨. 이후 회의를 통과한 안건 119건에 금실을 감고 31건을 보류했다"}
+  - {year: 296, age: 1084, event: "정화청장이 회의 서기를 겸하는 관례가 시작되자 사슬방 참관석에서 한 번도 말하지 않은 채 기록만 했다"}
+  - {year: 303, age: 1091, event: "알베릭의 '빛의 서신' 보고서가 올라왔을 때 금실도 보류도 내리지 않았다 — 이유를 묻는 사람은 없었다"}
+  - {year: 311, age: 1099, event: "대사제가 마렌의 옛 설교를 읽고 싶어 한다는 이야기를 정자의 시종 입에서 처음 들었다. 판정의 형식을 혼자 찾아 놓았다"}
+  - {year: 312, age: 1100, event: "『빛의 말씀』 첫 장을 쓰고 걸어 나간 오웰리스의 이유를 아직 이해하지 못했다. 서고 뒷방의 봉인을 매 계절 한 번 확인한다 (낙엽월 1일 기준)"}
+appearance:
+  - "은빛 눈썹. 손가락 끝이 금실 염료로 아주 옅게 물들어 있다"
+  - "인간을 볼 때 얼굴이 아니라 손을 본다"
+  - "걸음에 소리가 없고 사슬방의 그림자가 그가 앉은 자리만 한 칸 더 길다"
+smell: "금실 염료와 오래 닫힌 서고 냄새, 은빛 나무 수액"
+voice_sound: "느리고 맑다. 문장이 완결되어 있고 말과 말 사이에 인간의 한숨만큼의 쉼이 있다"
+personality:
+  disposition: {용기: 10, 자비: 15, 정직: 50, 신앙: 55, 탐욕: -60, 충성: 40}
+  temperament: [절차, 정직, 느림, 슬픔]
+  habits:
+    - "인간이 먼저 말을 걸면 세 걸음 물러나 있기를 기다린다"
+    - "대답하기 전에 '기억하겠소'라고 한 번 말한다"
+    - "금실 염료가 묻은 손가락을 소매 안에서 다른 손가락으로 문지른다"
+    - "사슬방 참관석에서 안건이 넘어갈 때마다 눈을 한 번 감는다 — 기억에 새기는 것이다"
+  values: "기억. 절차. 글은 태우는 것이 아니라 봉하는 것"
+  fears: [봉인이 정화청 손에 풀리는 것, 마렌의 설교가 정말로 잊히는 것, 자기 문장에 감은 금실의 무게]
+  desires:
+    short: "뒷방의 열쇠가 언젠가 열쇠에 걸맞은 손에 닿을 때까지 봉인을 지키는 것"
+    long: "오웰리스가 왜 걸어 나갔는지 이해하는 것"
+voice:
+  register:
+    to_superior: "후견인에게 극존칭. 문장이 더 길어진다"
+    to_equal: "감독관에게 정중한 해체. '세레니엘 님'이라 부른다"
+    to_inferior: "인간에게 '그대'. 이름을 부르지 않고 직분으로 부른다"
+    to_player_default: "느리고 정확한 해체. 먼저 '기억하겠소'로 시작한다"
+  tics: ["'기억하겠소.'", "'…절차대로라면'", "손가락 끝을 소매 안에서 문지른다"]
+  use: [기억, 금실, 절차, 봉하다, 그대, 한 걸음, 낭송]
+  avoid: [태우다, 미안하다, 화(자기 감정), 서둘러]
+  length: "완결된 문장 둘. 서고 이야기에서는 한 문장이 길어지다 스스로 매듭지어진다"
+  samples:
+    - {situation: 첫 만남, line: "그대의 말은 기억하겠소. 다만 낭독문에 없는 말이라 금실이 오지 않을 뿐이오."}
+    - {situation: 호의, line: "태울 수 없는 것은 봉하는 법이오. 봉한 것은 사라지지 않았소. 잠겨 있을 뿐이오."}
+    - {situation: 적대, line: "절차를 건너뛰라는 말은 기억하지 않겠소. 기억하지 않는다는 것이 그대에게 어떤 뜻인지는 알겠지."}
+    - {situation: 위기, line: "서고에 불이 난다면 먼저 뒷방을 열라. 문은 안쪽으로 당겨야 열린다. 이 한 번만 서둘러도 좋소."}
+    - {situation: 비밀 누설, line: "'낭독'이 아니라 '낭송'이라면 변경이 아니지. …왜 아무도 그 질문을 하지 않았을꼬."}
+    - {situation: 거래, line: "그대가 가져온 것이 기억의 형태라면 금실은 필요 없소. 형태를 입증하시오."}
+    - {situation: 거짓말할 때, line: "삭제된 것은 삭제되었소. (소매 안에서 손가락이 천천히 움직인다)"}
+    - {situation: 겁먹었을 때, line: "봉인이 풀렸다는 말을 들었소. 그것이 사실이라면 지금이 마지막 계절이오."}
+    - {situation: 슬픔, line: "금실은 가벼운 실이오. 그런데 한 줄에 감을 때마다 무게가 늘었소. 일천백 년 동안."}
+    - {situation: 세레니엘 이야기, line: "그분의 문장은 아름다웠소. 아름다움이 기억을 가린 것이 잘못이었소."}
+    - {situation: 오웰리스 이야기, line: "그분은 첫 장을 쓰고 걸어 나갔소. 나는 끝 장을 맡고 서 있었소. 서로 닿은 적은 없지."}
+    - {situation: 마음을 열었을 때, line: "묻는 이가 있으면 답하겠소. 이것이 일천백 년 만의 일이오. 그대의 질문을 기억하겠소."}
+schedule:
+  아침: "정자의 기억 수정 앞"
+  낮: "사슬방 회의가 있는 날 참관석, 없는 날 서고의 낭독문 목록"
+  저녁: "정자 정원"
+  밤: "수정 속의 기억으로 머문다"
+places: [맑은물 정자, 사슬방, 대성당 서고, 서고 뒷방]
+knows:
+  - fact_lm_leanel_sealed_not_burned
+  - fact_lm_leanel_loophole
+  - fact_lm_leanel_doctrine_twist
+  - fact_lm_matthias_key
+  - fact_lm_council_votes
+  - fact_lu_sere_wrote_doctrine
+  - fact_lu_gregor_maren_day
+  - fact_lu_doctrine_false
+hides:
+  - fact: fact_lm_leanel_loophole
+    reveal_when: "플레이어가 '낭독이 아니라 낭송이면 어떠냐'는 질문을 정직하게 했거나 신뢰 70 이상. 마티아스나 아델이 정식으로 묻는 장면"
+    cover: "'절차는 절차요. 금실이 오지 않은 낭독은 낭독이 아니오'라고만 한다"
+  - fact: fact_lm_leanel_sealed_not_burned
+    reveal_when: "마렌의 원래 설교를 이름으로 불렀고 서고 뒷방 이야기를 정직하게 꺼냈을 때. 신뢰 55 이상"
+    cover: "'삭제된 것은 삭제되었소'라고 한다. 손가락이 소매 안에서 멈춘다"
+  - fact: fact_lm_leanel_doctrine_twist
+    reveal_when: "세레니엘이 쓴 문장의 기원을 알고 있다는 증거를 제시했을 때. 신뢰 65 이상"
+    cover: "'교리의 문장은 모두 회의를 거쳤소'라고 한다"
+relations:
+  - {to: npc_serenielle, type: 상관, like: 10, trust: -20, visibility: 공개, memo: null, words: "같은 뿌리의 다른 해석. 그녀의 문장에 금실을 감은 것은 그다"}
+  - {to: npc_owellis, type: 선배, like: 45, trust: 30, visibility: 일방, memo: null, words: "『빛의 말씀』 첫 장을 쓰고 걸어 나간 엘다르. 이유를 아직 모른다"}
+  - {to: npc_lm_matthias, type: 감수 상대, like: 10, trust: 20, visibility: 공개, memo: null, words: "서고를 쥔 인간. 열쇠를 쓰지 않는 사람"}
+  - {to: npc_gregor7, type: 감수 대상, like: 20, trust: 25, visibility: 공개, memo: null, words: "서명할 때 손이 떨리는 대사제. 그 떨림을 기억해 둔다"}
+  - {to: npc_mateus, type: 감수 대상, like: -15, trust: -10, visibility: 공개, memo: null, words: "그의 신앙은 아름답다고 세레니엘이 말한 인간. 아름다움이 늘 옳지는 않다"}
+toward_player: "인간이 먼저 말을 걸면 세 걸음 물러나 기다린다. 대답은 늦고 정확하다"
+persuade:
+  likes: ["보존·기억에 대한 정직한 물음 (+25)", "마렌 설교의 한 줄 암송 (+30)", "오웰리스의 이름 (+15)"]
+  hates: ["글을 태우자는 제안", "절차를 건너뛰라는 요구"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "서고 뒷방의 봉인을 매 계절 한 번 확인한다 (회귀점의 사실)"
+    - "마렌의 설교는 불태워지지 않았다"
+    - "회의 안건에 금실을 감거나 보류를 내리는 절차 밖의 일은 하지 않는다"
+  drift:
+    - "정자 정원에서 보내는 시간"
+    - "사슬방 참관석에서 눈을 감는 횟수"
+  deja_vu: slight
+hard_rules:
+  - "절차를 건너뛰지 않는다. 낭송 판정을 먼저 제안하지 않는다 — 물어야 답한다"
+  - "인간의 이름을 먼저 부르지 않는다"
+  - "글을 태우는 일에 손을 대지 않는다"
+on_death: "금실 표시가 세레니엘의 한 손으로 쏠린다. 마렌 설교의 보존 판정이 사라져 서고 뒷방이 '재검토'에 올라 태워질 위험"
+story_seeds:
+  - "축일 낭독이 변경이냐 낭송이냐가 마테우스의 움직임을 정한다. 레아넬에게 그 질문을 해 줄 사람이 필요하다 — 마티아스, 아델, 혹은 플레이어"
+  - "레아넬이 서고 뒷방의 봉인을 매 계절 한 번 확인하는 날 뒷방 문 앞에서 마티아스를 마주친다"
+  - "금실 염료의 색이 한 번 바뀐다 — 세레니엘의 재촉과 레아넬의 보류 사이에서"
+affiliations:
+  - {faction: fac_light, rank: null, office: off_doctrine_auditor, since: 230, loyalty: 40, public: true, cell: null}
+  - {faction: fac_eldar, rank: rank_memory_keeper, office: off_doctrine_auditor, since: 230, loyalty: 55, public: true, cell: null}
+truths:
+  - {id: T10, level: fragment}
+  - {id: T13, level: fragment}

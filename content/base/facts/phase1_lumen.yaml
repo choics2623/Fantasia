@@ -1,0 +1,397 @@
+# 루멘(순종의 빛 성지) 1차 확장의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3). 인물: docs/world/people/lumen.md
+# id 규칙: fact_lm_<주제>. 기존 fact_lu_*(facts/lumen.yaml)는 고치지 않는다. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# truth: false는 세계에 퍼진 거짓 소문이다.
+# ── 승계 경쟁과 회의 ──
+- id: fact_lm_council_votes
+  text: "일곱 등불 회의는 북부 등불관이 3년째 비어 여섯 표다. 마테우스는 루멘·바알카르·서부 평원 세 표를, 마티아스는 은빛 강·세렌 두 표를 쥐고, 잿불 언덕 한 표가 흔들린다. 북부가 채워지면 표가 일곱이 되어 동수가 날 수 있다"
+  truth: true
+  danger: 4
+  names: [마테우스, 마티아스, 일곱 등불, 북부 등불관, 잿불 언덕]
+- id: fact_lm_adel_cannot_be_warden
+  text: "수녀 아델은 북부 등불관 대리일 뿐 등불관이 될 수 없다 — 등불관은 사슬사제 중에서 뽑는다. 그레고르 7세가 그녀를 사슬사제로 올리는 예외를 노리지만 마테우스가 상정권으로 막는다"
+  truth: true
+  danger: 3
+  names: [아델, 그레고르 7세, 마테우스, 북부 등불관]
+- id: fact_lm_gregor_asks_matthias
+  text: "그레고르 7세는 마티아스에게 '내가 낭독하지 못하게 되면 네가 읽어라'고 청했다. 마티아스는 대답하지 못했다"
+  truth: true
+  danger: 4
+  names: [그레고르 7세, 마티아스]
+- id: fact_lm_leanel_loophole
+  text: "대사제가 마렌의 옛 설교를 '낭독'이 아니라 '기억의 낭송'으로 읽는다면 교리 변경이 아니므로 금실이 필요 없다. 그렇게 판정할 수 있는 사람은 교리 감수관 레아넬 하나이고, 아무도 그에게 묻지 않았다"
+  truth: true
+  danger: 5
+  names: [레아넬, 금실, 마렌, 그레고르 7세]
+- id: fact_lm_leanel_sealed_not_burned
+  text: "엘다르가 '삭제'한 마렌의 원래 설교 사본은 불태워진 것이 아니라 서고 뒷방에 봉해져 있다. 레아넬이 엘다르는 글을 태울 수 없어서 '삭제'라는 이름으로 보존했다"
+  truth: true
+  danger: 5
+  names: [레아넬, 마렌, 서고 뒷방]
+- id: fact_lm_leanel_doctrine_twist
+  text: "'고난은 정화다'는 마렌의 원래 설교 '고난은 기억이다'를 세레니엘이 비튼 문장이다. 레아넬은 그 한 줄에 금실을 감은 사람이며 그것을 슬퍼한다"
+  truth: true
+  danger: 4
+  names: [레아넬, 세레니엘, 마렌]
+# ── 마티아스 ──
+- id: fact_lm_matthias_key
+  text: "마티아스는 서고 뒷방 열쇠를 쥐고 있고 삭제된 마렌의 설교를 읽은 적이 있다. 문을 연 것은 4년 전 단 한 번이다"
+  truth: true
+  danger: 4
+  names: [마티아스, 서고 뒷방, 마렌]
+- id: fact_lm_matthias_burnt_page
+  text: "마티아스의 회색 손은 40년 전 정화의 뜰 장작더미에서 반쯤 탄 낭독문 한 장을 맨손으로 꺼내다 데어서 생긴 흉터다. 그는 그 탄 종이를 소매 안쪽에 지금도 넣고 다닌다"
+  truth: true
+  danger: 3
+  names: [마티아스, 정화의 뜰]
+- id: fact_lm_rumor_matthias_schools
+  text: "마티아스 회색손이 대사제가 되면 루멘의 아이들이 글을 배운다"
+  truth: false
+  danger: 1
+  names: [마티아스 회색손]
+# ── 아델과 허가증 ──
+- id: fact_lm_adel_seal
+  text: "북부 사제관의 순례 허가증 인장은 두 개다. 하나는 북부 등불관 직인이고, 하나는 그레고르 7세가 백지 서명을 박아 건넨 도장이다 — 그 도장으로 찍은 허가증은 마테우스의 눈에도 '진짜'다"
+  truth: true
+  danger: 4
+  names: [아델, 그레고르 7세, 북부 사제관]
+- id: fact_lm_adel_second_letter_twelve
+  text: "아델은 알베릭의 '두 번째 서신' 첫 열두 낱말을 외우고 있고, 북부로 가는 요한에게 조각을 흘리듯 먹인다"
+  truth: true
+  danger: 5
+  names: [아델, 알베릭, 요한]
+- id: fact_lm_adel_greyford_permits
+  text: "AS 313 꽃월 성 마렌 축일 순례를 위한 회색여울 순례단 목패 열두 장은 오스릭의 청원으로 아델이 발급한다. 이 청원이 아델의 장부에 정식으로 남는다"
+  truth: true
+  danger: 3
+  names: [아델, 오스릭, 요한, 회색여울]
+- id: fact_lm_ring_unclaimed
+  text: "카타콤 '일곱 고리의 방' 벽의 일곱 못 가운데 하나에는 아직 주인이 없다. 걸쇠를 건네 줄 날을 기다리는 자리다"
+  truth: true
+  danger: 3
+  names: [카타콤, 일곱 고리]
+- id: fact_lm_chain_meets_after_sabbath
+  text: "끊어진 고리 루멘 사슬은 안식일 예배가 끝난 뒤 서안 예배당 지하실에서 '낭독 연습'을 핑계로 카타콤에 모인다"
+  truth: true
+  danger: 4
+  names: [끊어진 고리, 서안 예배당, 카타콤]
+# ── 이반과 수비대 ──
+- id: fact_lm_ivan_crowd_math
+  text: "이반 타르굴은 축일 군중 3만 대 병력 300의 계산표를 갖고 있다. 군중이 한 방향으로 쏠리면 다리를 사슬로 끊는 절차가 쓰여 있고, 끊으면 섬에 갇힌 수천이 물에 빠진다"
+  truth: true
+  danger: 4
+  names: [이반 타르굴, 다리, 축일]
+- id: fact_lm_ivan_sealed_order
+  text: "이반 타르굴은 바알카르에서 '대사제가 죽으면 대성당과 사슬방 열쇠를 질서 유지의 명목으로 접수하라'는 봉인 명령을 받았다. 발신인 이름이 없고 필체는 아우락스 쪽이다"
+  truth: true
+  danger: 5
+  names: [이반 타르굴, 바알카르, 아우락스]
+- id: fact_lm_ivan_asks_names
+  text: "이반 타르굴은 화형에 불을 붙이는 병사에게 직접 한 사람씩 이름을 묻는다. 잊은 척하지 않기 위해서다"
+  truth: true
+  danger: 1
+  names: [이반 타르굴]
+# ── 정화청: 토비아스·하르트문트·에기디우스 ──
+- id: fact_lm_tobias_marta_report
+  text: "회색여울 마르타의 오스릭 관련 보고는 셋째 밀고 함 맨 아래에 있다. 접수관 토비아스는 이것을 아직 심문 사제에게 올리지 않았고 더 큰 건과 묶어 올릴 생각이다"
+  truth: true
+  danger: 5
+  names: [토비아스, 마르타, 오스릭, 밀고 함]
+- id: fact_lm_tobias_no_contract
+  text: "마르타가 믿는 '밀고 100건이면 딸 리즈를 자유민 대우 하녀로'라는 약속은 정화청 기록에 없다. 전임 접수관의 입에서만 나온 말이다"
+  truth: true
+  danger: 4
+  names: [토비아스, 마르타, 리즈]
+- id: fact_lm_tobias_spite_ledger
+  text: "토비아스는 접수된 이름마다 동기를 따로 적은 장부를 갖고 있다. 한 해 412건 중 이웃 원한이 압도적이며, 베라를 고발한 루츠의 동기도 거기 적혀 있다"
+  truth: true
+  danger: 4
+  names: [토비아스, 루츠, 베라]
+- id: fact_lm_hartmund_light_vote
+  text: "베라의 잿빛 저울 석판에는 '가볍다' 한 표가 새겨져 있다. 하르트문트가 쓴 표이고 나머지 둘이 '무겁다'를 써서 효력이 없을 뿐이다"
+  truth: true
+  danger: 4
+  names: [하르트문트, 베라, 잿빛 저울]
+- id: fact_lm_hartmund_ring_not_stain
+  text: "옛 징후서는 잔향의 눈을 '얼룩'이 아니라 '고리'라고 쓴다. 하르트문트는 1,900번의 눈을 쟀지만 고리를 본 적이 없고 이를 마테우스에게 보고하지 않았다"
+  truth: true
+  danger: 5
+  names: [하르트문트, 징후서, 잿빛 고리]
+- id: fact_lm_hartmund_stain_causes
+  text: "눈의 잿빛 얼룩의 대부분은 결막 질환·불티·백내장이다. 하르트문트는 병자의 집에서 같은 눈을 수백 번 보았다"
+  truth: true
+  danger: 3
+  names: [하르트문트, 병자의 집]
+- id: fact_lm_aegidius_dream_book
+  text: "심문 사제 에기디우스는 심문에서 들은 꿈을 한 글자도 빼지 않고 적은 책을 갖고 있다. 오지 않은 일을 꿈꾼 기록이 일곱 건 있고 마테우스에게도 보고하지 않았다"
+  truth: true
+  danger: 5
+  names: [에기디우스, 꿈의 책]
+- id: fact_lm_aegidius_fear_spiral
+  text: "에기디우스는 계산으로 안다 — 화형이 늘수록 두려운 신도가 이웃을 더 밀고한다. 그는 이 악순환을 '정화의 효과'로 적는다"
+  truth: true
+  danger: 3
+  names: [에기디우스, 밀고]
+- id: fact_lm_aegidius_dispatch
+  text: "313년 해빙월 에기디우스가 북부 순회 심문관으로 회색여울에 간다. 마르타의 오스릭 보고가 그의 가방에 들어간다"
+  truth: true
+  danger: 4
+  names: [에기디우스, 회색여울, 오스릭, 마르타]
+# ── 정화의 뜰 ──
+- id: fact_lm_corad_jar
+  text: "장작 창고 선반의 항아리에는 타다 남은 단추·치아·핀 212개가 이름 없이 들어 있다. 마테우스가 센 숫자와 같다. 장작지기 코라드가 한 개씩 집게로 집어 모았다"
+  truth: true
+  danger: 4
+  names: [코라드, 항아리, 212]
+- id: fact_lm_corad_no_names
+  text: "코라드는 정화의 뜰에서 한 번도 이름을 부르지 않았다. 이름을 부르는 날 장작을 쌓을 수 없게 될 것을 안다"
+  truth: true
+  danger: 2
+  names: [코라드]
+- id: fact_lm_byuk_ash_to_pilgrims
+  text: "정화의 뜰 재의 일부가 크릭 잡역 뷕을 통해 회색 순례자에게 넘어간다. 그들은 그 재를 황무지 잿불석 곁에 묻는다. 장작지기 코라드는 알면서 묵인한다"
+  truth: true
+  danger: 3
+  names: [뷕, 코라드, 회색 순례자]
+- id: fact_lm_marlene_son
+  text: "순례 노파 마를렌의 아들은 AS 304 정화의 뜰에서 탔다. 징후자가 아니라 꿈을 꾸었다는 말만 했다"
+  truth: true
+  danger: 2
+  names: [마를렌, 정화의 뜰]
+- id: fact_lm_marlene_counts_logs
+  text: "마를렌은 정화일 아침마다 정화의 뜰 곁 벤치에서 장작의 개수를 세고, 밤에는 강으로 흘러가는 재를 따라 강둑을 걷는다. 아그네스에게 밀고 함 홀의 출입자를 전하는 눈이기도 하다"
+  truth: true
+  danger: 3
+  names: [마를렌, 아그네스]
+- id: fact_lm_rumor_pyre_chooses
+  text: "정화의 뜰 장작은 하늘의 뜻이 정한 날짜에만 쌓인다"
+  truth: false
+  danger: 1
+  names: [정화의 뜰]
+# ── 신학원·성가·필사 ──
+- id: fact_lm_anselm_praised_denunciation
+  text: "신학원장 안셀름은 AS 290년 마테우스의 누이 고발을 '신앙의 증거'라며 칭찬했다. 그 칭찬이 마테우스를 정화청으로 이끌었다"
+  truth: true
+  danger: 4
+  names: [안셀름, 마테우스, 클라라]
+- id: fact_lm_anselm_clasp
+  text: "신학원장 안셀름은 끊어진 고리 신학원 고리의 걸쇠다. 서원 견습 중 일곱을 '고리'로 길러 내고 있다"
+  truth: true
+  danger: 4
+  names: [안셀름, 끊어진 고리, 신학원]
+- id: fact_lm_anselm_raised_mateus
+  text: "안셀름은 열두 살 마테우스를 신학원에 받아 키운 사람이다. 마테우스는 지금도 가끔 신학원 정원에 와서 앉는다"
+  truth: true
+  danger: 2
+  names: [안셀름, 마테우스, 신학원]
+- id: fact_lm_niklas_shape_memory
+  text: "견습 니클라스는 낭독문 구절을 소리가 아니라 모양으로 외운다. 머릿속에 구절의 글자 모양이 한 장씩 그림으로 쌓여 있다 — 들키면 '글자 소지'다"
+  truth: true
+  danger: 4
+  names: [니클라스, 낭독문]
+- id: fact_lm_niklas_not_echo
+  text: "니클라스는 잔향이 아니다. 평범한 기억력이다. 그러나 세레니엘의 '설명되지 않는 학습 속도' 보고서에 이름이 올라 있다"
+  truth: true
+  danger: 4
+  names: [니클라스, 세레니엘]
+- id: fact_lm_niklas_three_watchers
+  text: "니클라스를 이졸(잿빛 탑), 세레니엘(영혼 정원), 에기디우스(정화청)가 서로 모르게 지켜본다"
+  truth: true
+  danger: 4
+  names: [니클라스, 이졸, 세레니엘, 에기디우스]
+- id: fact_lm_laurenz_hymn_code
+  text: "찬송 일곱 곡의 첫 음절을 이으면 '사슬을 감은 것은 등불이 아니라 손이다'가 된다. 선율을 쓴 라우렌츠만 안다. 오스릭도 요한도 전체는 모른다"
+  truth: true
+  danger: 4
+  names: [라우렌츠, 찬송, 오스릭, 요한]
+- id: fact_lm_laurenz_watched_choir
+  text: "꽃월 축일 합창단 선발에는 정화청의 의자가 한 자리 앉는다. 라우렌츠는 그 자리부터 확인한다"
+  truth: true
+  danger: 2
+  names: [라우렌츠, 합창단, 정화청]
+- id: fact_lm_otilie_copies
+  text: "'빛의 서신' 모사 열일곱 부 가운데 넷은 글을 읽지 못하는 필사 수사 오틸리에의 손으로 만들어졌다. 읽지 못하는 사람은 고문에서도 내용을 말할 수 없어서 끊어진 고리가 일부러 골랐다"
+  truth: true
+  danger: 5
+  names: [오틸리에, 빛의 서신, 끊어진 고리]
+- id: fact_lm_otilie_flawed_first_line
+  text: "오틸리에의 모사에는 틀린 모양이 하나 있다. 첫 문장 한 곳이다. 알베릭이 보낸 사본과 다르게 읽힌다"
+  truth: true
+  danger: 3
+  names: [오틸리에, 알베릭]
+- id: fact_lm_otilie_reads
+  text: "오틸리에는 어느 날부터 모양들이 소리가 되는 것을 안다. 읽을 줄 안다는 것은 공식적으로 화형이다. 그녀는 아무에게도 말하지 않았다"
+  truth: true
+  danger: 5
+  names: [오틸리에]
+# ── 서기·공물 ──
+- id: fact_lm_jonas_list_rule
+  text: "녹테른 공물 40명은 제비뽑기가 아니다. 정화청의 '불순한 자' 목록, 성표 값 3못 미납자, 교단에 쓸모없는 노인 순으로 채워진다"
+  truth: true
+  danger: 4
+  names: [공물 명단, 정화청, 녹테른]
+- id: fact_lm_jonas_swapped
+  text: "공물 서기 요나스는 2년 전 명단에서 이름 하나를 지웠는데 그 자리에 다른 이름이 들어갔다. 그 뒤로 그는 지우지 못한다"
+  truth: true
+  danger: 3
+  names: [요나스, 공물 명단]
+- id: fact_lm_jonas_copy
+  text: "요나스는 매년 공물 명단 사본을 한 부 몰래 만든다. 호송 전날 레이디 세실 그림자장미의 사람들에게만 보일 수 있다"
+  truth: true
+  danger: 4
+  names: [요나스, 세실 그림자장미]
+- id: fact_lm_rumor_tribute_lottery
+  text: "녹테른 공물 명단은 제비뽑기다"
+  truth: false
+  danger: 1
+  names: [녹테른 공물]
+# ── 촛불지기와 등잔지기 ──
+- id: fact_lm_hanna_stair_third_step
+  text: "한나는 양초 심지 매듭에 쪽지를 짜 넣어 감옥 층계 세 번째 단 밑에 둔다. 간수 야코프가 그 단을 밟지 않고 지나간다"
+  truth: true
+  danger: 3
+  names: [한나, 감옥 층계, 야코프]
+- id: fact_lm_hanna_lineage
+  text: "한나도 성 마렌의 후손이다. 마렌의 첫 성표 조각은 우물지기 베아테만 안다"
+  truth: true
+  danger: 4
+  names: [한나, 마렌, 베아테]
+- id: fact_lm_hanna_candle_oath
+  text: "성 마렌 축일에 촛불 한 줄을 켜는 의식의 암호('사슬을 감은 것은?')는 낭송자가 아니라 한나가 정한다"
+  truth: true
+  danger: 3
+  names: [한나, 촛불 한 줄]
+- id: fact_lm_eli_memorizing
+  text: "엘리는 알베릭이 벽을 두드려 전한 두 번째 설교를 어머니에게서 받아 외우고 있다. 알베릭이 죽으면 낭송자는 그다"
+  truth: true
+  danger: 5
+  names: [엘리, 알베릭, 두 번째 설교]
+- id: fact_lm_eli_key_box
+  text: "엘리는 토비아스의 조수라서 밀고 함 홀에 합법적으로 드나든다. 셋째 함 열쇠가 그의 허리에 있지만 토비아스가 한 번도 자리를 비우지 않는다"
+  truth: true
+  danger: 4
+  names: [엘리, 토비아스, 밀고 함]
+# ── 침묵의 우물 ──
+- id: fact_lm_jakob_culvert_oil
+  text: "침묵의 우물 지하 수로 쇠창살 한 짝은 간수 야코프가 기름칠해 두어 소리 없이 열린다"
+  truth: true
+  danger: 5
+  names: [야코프, 침묵의 우물, 쇠창살]
+- id: fact_lm_jakob_failed_exam
+  text: "야코프는 사슬사제 낭독 시험에 세 번 떨어져 간수가 되었다"
+  truth: true
+  danger: 1
+  names: [야코프]
+- id: fact_lm_jakob_otto_watch
+  text: "오토는 야코프와 시몬이 쪽지를 교환하는 것을 본 적이 있다. 보고하지 않았다. 아내의 약값 때문인지 다른 이유인지는 오토만 안다"
+  truth: true
+  danger: 4
+  names: [오토, 야코프, 시몬]
+- id: fact_lm_simon_second_jailer
+  text: "침묵의 우물의 간수 야코프와 시몬은 끊어진 고리다. 아그네스가 말한 '매수한 간수 둘'이 이들이다"
+  truth: true
+  danger: 5
+  names: [시몬, 야코프, 아그네스]
+# ── 잿빛 실 · 숙소 · 쉼터 ──
+- id: fact_lm_anna_cave_tide
+  text: "양초 공방 강가 동굴 대기처는 밀물 때 입구가 잠긴다. 올해 판단을 한 번 잘못해 둘이 죽었다. 하루 두 번의 밀물 사이 한 시간만 안전하다"
+  truth: true
+  danger: 5
+  names: [안나, 강가 동굴, 양초 공방]
+- id: fact_lm_anna_numbers_only
+  text: "안나 밀랍손은 잿빛 실 안내인의 이름을 모르고 번호만 안다. 안내인도 그녀의 이름을 모른다"
+  truth: true
+  danger: 3
+  names: [안나 밀랍손, 잿빛 실]
+- id: fact_lm_anna_tongue_suspicion
+  text: "양초 공방 노동자 중 목줄단 '혀'가 섞여 있다는 의심을 안나는 확신하지 못한다. 공방에 소금을 대는 소금장수 유타가 의심 대상이다"
+  truth: true
+  danger: 3
+  names: [안나 밀랍손, 유타, 목줄단]
+- id: fact_lm_berta_deaf_ear
+  text: "숙소장 베르타는 이십 년째 숙소 지하에서 나는 밤 발소리를 들었다. 한 번도 위를 보지 않았고 저장고 열쇠를 요구한 적도 없다"
+  truth: true
+  danger: 3
+  names: [베르타, 순례자 숙소]
+- id: fact_lm_berta_second_ledger
+  text: "베르타는 순례자 이름 장부를 한 부 더 써서 침대 밑에 둔다. 정화청이 올 때 누구는 '왔다 갔다'고 말할 수 있도록"
+  truth: true
+  danger: 3
+  names: [베르타, 이름 장부]
+- id: fact_lm_hero_oven_ash
+  text: "세 번째 고리 쉼터 화덕 밑 재 속에 잿빛 표 두 개가 있다. 쉼터지기 헤로는 모른다"
+  truth: true
+  danger: 4
+  names: [헤로, 화덕, 잿빛 표]
+- id: fact_lm_hero_ledger_dots
+  text: "쉼터 순례자 명부의 이름 옆 점 하나는 '루멘에서 확인한 허가증', 점 둘은 '확인되지 않은 허가증'이다. 점 둘이 열 명을 넘으면 정화청에 보고하게 되어 있다"
+  truth: true
+  danger: 3
+  names: [헤로, 명부, 허가증]
+- id: fact_lm_hero_extra_bread
+  text: "헤로는 찬송 순례자 요한이 지나갈 때마다 빵 한 덩이를 더 얹어 준다. 노래를 들어서다"
+  truth: true
+  danger: 1
+  names: [헤로, 요한]
+# ── 성 마렌의 우물 ──
+- id: fact_lm_beate_inscription
+  text: "성 마렌의 우물 벽 수면 아래 2m에는 고대 진명어 각문이 있다. 낮 열한 시 해가 수면 가운데 꽂힐 때 글자 윤곽이 보인다. 마렌은 여기서 진명을 '들었다'"
+  truth: true
+  danger: 5
+  names: [성 마렌의 우물, 진명어, 마렌]
+- id: fact_lm_beate_wax_plates
+  text: "우물지기 베아테는 50년 동안 매년 장대 끝 밀랍 판으로 각문을 눌러 떠 왔다. 상자 속 밀랍 판이 쉰한 장이다. 한 번도 소리 내 읽은 적이 없다"
+  truth: true
+  danger: 4
+  names: [베아테, 밀랍 판, 각문]
+- id: fact_lm_beate_first_token
+  text: "마렌의 첫 성표 조각은 봉헌 상자 밑바닥 이중판 칸에 있다. 지킴이는 우물지기 베아테이며 후손에게 건넬 때를 기다린다"
+  truth: true
+  danger: 4
+  names: [마렌, 첫 성표, 베아테, 봉헌 상자]
+# ── 베라의 집 ──
+- id: fact_lm_ilse_knows_neighbor
+  text: "베라의 어머니 일제는 딸을 고발한 사람이 이웃 직조공 루츠임을 안다. 말하지 않는 것은 말하는 순간 '가족'으로 다시 정화청에 불려 가기 때문이다"
+  truth: true
+  danger: 3
+  names: [일제, 루츠, 베라]
+- id: fact_lm_ilse_sister_pin
+  text: "일제는 큰딸의 화형 날 장작 곁에서 주운 불티 핀 하나를 풀무 밑 철함에 넣어 두었다"
+  truth: true
+  danger: 2
+  names: [일제, 큰딸]
+- id: fact_lm_ilse_never_met_eyes
+  text: "일제는 베라의 눈을 열 살 이후 한 번도 정면으로 본 적이 없다"
+  truth: true
+  danger: 2
+  names: [일제, 베라]
+- id: fact_lm_lutz_denounced
+  text: "직조공 루츠는 베라의 청혼 거절 뒤 '그 집 둘째의 눈도 같다'고 입에 올렸고 그 말이 정화청에 접수되었다. 처음엔 진심으로 이상하다고 보았다"
+  truth: true
+  danger: 3
+  names: [루츠, 베라, 정화청]
+- id: fact_lm_no_withdrawal_rule
+  text: "접수된 밀고는 확인될 때까지 지워지지 않는다. 고발을 거두는 절차가 없다. 마테우스의 말로는 '이름이 올라오는 순간 무고하지 않다'"
+  truth: true
+  danger: 3
+  names: [밀고, 마테우스]
+# ── 마르타의 보고 · 부두 ──
+- id: fact_lm_yuta_marta_channel
+  text: "마르타의 밀고는 찬송 순례자 요한의 짐 속 헌금 쪽지 꾸러미에 끼워져 루멘의 노점 소금장수 유타에게 닿는다. 요한은 모른다. 유타는 쪽지를 토비아스에게 건넨다"
+  truth: true
+  danger: 5
+  names: [마르타, 요한, 유타, 토비아스]
+- id: fact_lm_kale_612
+  text: "부두 성표 계수소 장부에는 올해만 팔려 간 신도가 612명 적혀 있다. 한 개가 팔릴 때마다 교단이 고리값 1못을 환수한다"
+  truth: true
+  danger: 3
+  names: [칼레, 성표 계수소]
+- id: fact_lm_kale_greyford_tokens
+  text: "회색여울 매각 호송의 성표 번호는 '회색여울 각인'이다. 계수소 칼레가 알아본다. 12월 명단에는 성채 하녀 사라의 번호가 있다"
+  truth: true
+  danger: 4
+  names: [칼레, 회색여울, 사라]
+- id: fact_lm_kale_double_check
+  text: "선적 인원이 장부보다 적은 날 칼레는 숫자를 맞추지 않고 '두 번 확인'이라고만 쓴다"
+  truth: true
+  danger: 3
+  names: [칼레]

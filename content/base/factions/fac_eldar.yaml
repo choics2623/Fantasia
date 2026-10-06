@@ -103,7 +103,7 @@ offices:
     perks: ["『빛의 말씀』 엘다르어 원본 보관"]
   - id: off_doctrine_auditor
     title: 교리 감수관
-    holder: "unnamed:레아넬 (1,100)"
+    holder: npc_lm_leanel
     reports_to: off_light_guardian
     powers: ["대사제의 교리 변경 승인·거부"]
     chosen_by: "빛의 후견인의 지명"

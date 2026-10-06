@@ -1,0 +1,93 @@
+id: npc_lm_marlene
+name: 순례 노파 마를렌
+aka: [벤치의 노파, 다음 생에는]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 68
+region: 루멘
+home: 순례자 숙소 '등불 없는 집' 짚 침상
+job: 상주 순례자(8년째). 교단 직할 마을 출신
+rank: 상주 순례자 (쇠사슬 고리 하나)
+summary: 아들을 AS 304 정화의 뜰에서 잃고 8년째 루멘을 떠나지 않는 노파. 정화일 아침마다 벤치에서 장작의 개수를 세고 아그네스에게 밀고 함 홀의 출입자를 전하는 눈이다
+source: docs/world/people/lumen.md
+life:
+  - {year: 244, age: 0, event: "루멘 북쪽 교단 직할 마을에서 태어남"}
+  - {year: 285, age: 41, event: "늦은 나이에 아들이 태어남. 남편은 그 이듬해 열병으로 죽었다"}
+  - {year: 304, age: 60, event: "열아홉 살 아들이 꿈을 꾸었다는 말만 했는데 징후자로 고발되어 정화의 뜰에서 탔다"}
+  - {year: 304, age: 60, event: "아들의 재가 강으로 흘러가는 것을 따라 강둑을 걸었다. 그날부터 루멘을 떠나지 못했다"}
+  - {year: 312, age: 68, event: "8년째 정화일마다 벤치에 앉아 장작을 센다. 벤치 곁의 장작지기 코라드와 눈을 마주치지 않는다 (낙엽월 1일 기준)"}
+appearance:
+  - "작고 야위었다. 손에 늘 흰 헝겊 조각을 쥔다"
+  - "눈이 맑다 — 울지 않는다"
+  - "걸을 때 성표 고리가 오른쪽으로 쏠린다"
+smell: "빨래비누와 젖은 짚, 강 풀 냄새"
+voice_sound: "작고 갈라졌다. 같은 말을 되풀이하며 숨을 길게 쉰다"
+personality:
+  disposition: {용기: 10, 자비: 40, 정직: 20, 신앙: 15, 탐욕: -40, 충성: 40}
+  temperament: [체념, 다정, 오래 지켜봄, 맑음]
+  habits:
+    - "손에 쥔 흰 헝겊 조각을 접었다 펴기를 반복한다"
+    - "정화일 아침 벤치에서 장작 수를 손가락으로 센다"
+    - "정화일 밤 재가 흘러가는 강둑을 따라 걷는다"
+  values: "아들의 꿈. 다음 생이라는 위로의 닳아 빠진 말. 눈으로 지켜보는 일"
+  fears: [장작의 수가 늘어나는 것, 코라드와 눈이 마주치는 것, 숙소에서 쫓겨나는 것]
+  desires:
+    short: "정화일에 장작이 쌓이지 않는 날을 한 번 보는 것"
+    long: "아들의 이름을 소리 내 부르는 것"
+voice:
+  register:
+    to_superior: "사제에게 낮은 존댓말"
+    to_equal: "순례자에게 다정한 반말. '다음 생에는'을 단다"
+    to_inferior: "아이에게 천천히 풀어서 말하는 반말"
+    to_player_default: "다정하고 닳은 말투. '다음 생에는'을 위로처럼 단다"
+  tics: ["'다음 생에는'", "흰 헝겊을 접었다 편다", "숨을 길게 쉰다"]
+  use: [다음 생, 장작, 벤치, 아들, 꿈, 강, 헝겊]
+  avoid: [끝, 돌아오지 않는다, 아들 이름(먼저)]
+  length: "짧고 닳았다. 아들 이야기가 나오면 문장이 길어지다 멈춘다"
+  samples:
+    - {situation: 첫 만남, line: "다음 생에는, 다음 생에는… 나는 그 말을 하도 해서 이제 뜻이 닳았다네."}
+    - {situation: 슬픔, line: "아들 꿈은 단순했어요. 하늘에 사슬이 없는 꿈이었지. 그게 징후였대."}
+    - {situation: 비밀 누설, line: "벤치에서 장작을 세요. 열둘이면 한 사람, 열넷이면 두 사람. 이번 가을엔 이미 네 번 셌어."}
+    - {situation: 호의, line: "자네는 눈이 맑구먼. 맑은 눈은 이 뜰에서는 오래 못 가. 그래도 한 번 앉아 보게, 내 곁에."}
+    - {situation: 겁먹었을 때, line: "장작지기가 이쪽을 봤어. 아니, 안 봤나. 눈이 마주치면 안 돼. 그 사람과는."}
+relations:
+  - {to: npc_agnes, type: 숙소 수녀, like: 50, trust: 55, visibility: 비밀, memo: null, words: "눈과 귀를 빌려 주는 사이"}
+  - {to: npc_lm_corad, type: 장작지기, like: 30, trust: 35, visibility: 비밀, memo: null, words: "항아리를 아는 사람"}
+  - {to: npc_lm_berta, type: 숙소장, like: 35, trust: 45, visibility: 공개, memo: null, words: "가장 오래된 침상을 내주는 사람"}
+knows:
+  - fact_lm_marlene_son
+  - fact_lm_marlene_counts_logs
+  - fact_lm_corad_jar
+hides:
+  - fact: fact_lm_marlene_counts_logs
+    reveal_when: "벤치에 함께 앉아 장작을 같이 세 주었거나 신뢰 45 이상. 아그네스의 소개가 있을 때"
+    cover: "'나는 그냥 벤치에 앉아 해를 쬐는 늙은이야'라고 한다"
+toward_player: "다정하고 닳은 말투. '다음 생에는'을 위로처럼 단다"
+persuade:
+  likes: ["벤치 곁에 함께 앉아 주는 것 (+15)", "아들의 꿈 이야기를 들어 주는 것 (+25)"]
+  hates: ["'끝'이나 '돌아오지 않는다'는 말"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "정화일 아침마다 벤치에서 장작을 센다 (회귀점의 사실)"
+    - "아들은 징후자가 아니라 꿈을 말한 것뿐이었다"
+  drift:
+    - "그날 벤치 곁을 지나는 사람"
+  deja_vu: none
+hard_rules:
+  - "아들의 이름을 먼저 입에 올리지 않는다"
+  - "끝이나 돌아오지 않는다는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 벤치와 장작과 헝겊으로 말한다"
+on_death: "아그네스가 밀고 함 홀의 눈 하나를 잃는다. 정화의 뜰 곁 벤치가 비는 날 코라드가 처음으로 벤치를 쳐다본다"
+story_seeds:
+  - "마를렌이 아침마다 세는 장작의 개수와 코라드의 항아리의 개수가 맞는 날 두 사람은 처음 서로의 얼굴을 본다"
+affiliations:
+  - {faction: fac_light, rank: rank_believer, office: null, since: 251, loyalty: 35, public: true, cell: null}
+  - {faction: fac_broken_ring, rank: rank_runner, office: null, since: 306, loyalty: 55, public: false, cell: null}
+truths: []

@@ -1,0 +1,123 @@
+id: npc_lm_ivan
+name: 이반 타르굴
+aka: [수비대장, 다리를 세는 기사]
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 98
+region: 루멘
+home: 동안 용인 수비대 병영 (수비대장실)
+job: 루멘 용좌령 수비대 300의 대장. 화형 집행을 '병력 요청'으로 받는다
+rank: 용인 기사 — 타르굴 가 방계
+summary: 장작에 불을 붙이는 병사들을 맡은 용인 기사. 꽃월 축일의 3만 군중 앞에서 병력 300의 계산표를 쓰고, 바알카르에서 이름 없는 봉인 명령을 받았다. 대사제가 죽는 날 대성당 열쇠를 접수하라는 내용이다
+source: docs/world/people/lumen.md
+life:
+  - {year: 214, age: 0, event: "바알카르 타르굴 가 방계에서 태어남. 상인 가문의 군 계통 방계"}
+  - {year: 250, age: 36, event: "하스트란 국경 요새에서 기사로 임관. 인간 노예 하역 감독을 맡음"}
+  - {year: 270, age: 56, event: "서부 국경군 장교. 요툰과의 소규모 교전에서 오른쪽 광대 비늘이 벗겨짐"}
+  - {year: 289, age: 75, event: "바알카르 순찰 근위로 이동. 처음 정화의 뜰 호송에 병력을 대었다"}
+  - {year: 301, age: 87, event: "루멘 수비대장으로 전속. 이후 정화의 뜰 장작 불을 붙이는 병사를 직접 고르게 됨"}
+  - {year: 308, age: 94, event: "축일 군중이 한 방향으로 쏠려 다리 난간에서 열세 명이 물에 빠짐. 병력 계산표를 처음 썼다"}
+  - {year: 311, age: 97, event: "바알카르에 병력 200 증원을 요청했으나 거절됨. 사유서에 '질서 유지는 교단이 자체로 한다'는 글만 있었다"}
+  - {year: 312, age: 98, event: "대사제 서거 시 대성당과 사슬방 열쇠를 접수하라는 봉인 명령 도착. 서명이 없고 필체는 아우락스 쪽이다 (낙엽월 1일 기준)"}
+appearance:
+  - "오른쪽 광대 비늘이 일부 벗겨져 맨살이 드러난다"
+  - "정화의 뜰에서는 투구를 벗고 눈을 감는다"
+  - "걸음 속도가 늘 같다 — 다리 사이를 몇 걸음에 걷는지 안다"
+smell: "기름 먹인 가죽 갑옷과 강물 냄새, 정화일에는 탄내"
+voice_sound: "낮고 무디다. 짧은 명령조 하오체. 목소리를 올리지 않는다"
+personality:
+  disposition: {용기: 50, 자비: -5, 정직: 30, 신앙: -40, 탐욕: -10, 충성: 55}
+  temperament: [원칙, 냉정, 계산, 무거운 체념]
+  habits:
+    - "다리에 설 때마다 난간의 사슬 고리 수를 센다"
+    - "화형일에는 불을 붙이는 병사에게 이름을 묻는다"
+    - "병력 계산표를 주말마다 새로 쓴다"
+    - "신도가 쳐다보면 눈을 피하지 않고 정면으로 마주 본다"
+  values: "군령. 질서. 병사의 목숨. 숫자가 맞는 것"
+  fears: [축일 군중의 쏠림, 다리를 끊는 명령을 직접 내리는 날, 봉인 명령이 읽히는 날, 병사가 이름을 잊는 것]
+  desires:
+    short: "꽃월 축일에 병사 한 명 잃지 않는 것"
+    long: "루멘이 아닌 곳으로의 전속"
+voice:
+  register:
+    to_superior: "엄정한 하십시오체. 질문하지 않는다"
+    to_equal: "정화청장에게 정중한 하오체. 감독관 앞에서는 말을 줄인다"
+    to_inferior: "병사에게 짧은 반말. 신도에게는 '신도'라 부른다"
+    to_player_default: "허가증과 직책만 묻는 짧은 하오체"
+  tics: ["'허가증.'", "'줄을 막지 마라.'", "숫자를 말할 때 손가락으로 허벅지를 두드린다"]
+  use: [다리, 줄, 허가증, 병력, 명령, 숫자, 이름]
+  avoid: [빛(믿는 척), 정화(좋은 뜻으로), 사형 집행인]
+  length: "짧은 명령. 병력 계산 이야기에서는 숫자를 하나씩 열거해 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "허가증. 무기는 궤에 넣어라. 줄이 길다고 서두르지 마라, 신도. 서두르는 줄이 가장 무겁다."}
+    - {situation: 호의, line: "숫자를 아는 사람은 드물다. 이 다리는 한 번에 팔백 명이 서면 난간이 운다. 그걸 아는군."}
+    - {situation: 적대, line: "이름을 묻는 건 한 번이다. 대답하지 않으면 수비대는 이름이 없는 자로 적는다."}
+    - {situation: 위기, line: "다리를 막아라! 막고 끊지는 마라! 끊는 건 내가 한다 — 내 명령이 있기 전에는 끊지 마라!"}
+    - {situation: 비밀 누설, line: "봉인 서한에 이름이 없다. 이름이 없는 명령이 가장 오래 간다."}
+    - {situation: 거래, line: "정확한 숫자를 가져오면 내 계산표에 넣어 주마. 군중이 어디로 쏠리는지 한 군데만 알려 줘라."}
+    - {situation: 거짓말할 때, line: "그 날은 평소와 같다. 병력은 충분하다. (허벅지를 두드리는 손이 세 번 빨라진다)"}
+    - {situation: 겁먹었을 때, line: "군중이 한 방향으로 오면 병력 삼백은 숫자가 아니라 장작이다. …이건 내가 한 말이 아니다."}
+    - {situation: 분노, line: "내 병사는 사형 집행인이 아니다. 요청서에 쓰인 대로 불을 붙일 뿐이다. 그 차이를 아는 자만 말해라."}
+    - {situation: 슬픔, line: "열세 명이 난간 밖으로 갔다. 이름을 열셋 다 안다. 외우는 건 내 일이다."}
+    - {situation: 카스파르 이야기, line: "서자로 국경을 지키는 사령관이라 했나. 그와 자리를 바꾸고 싶다. 이 도시에는 칼날을 쓸 자리가 없다."}
+    - {situation: 마음을 열었을 때, line: "축일에 다리를 끊을 일이 없도록 군중을 돌려세울 방법이 있다면 말해라. 병력은 줄 수 있다. 나머지는 말이다."}
+schedule:
+  아침: "점호, 다리 검문 점검"
+  낮: "병영 집무, 성문 순시"
+  저녁: "병영 식당, 병력 보고"
+  밤: "통금 순찰 보고를 받고 병력 계산표를 다시 쓴다"
+places: [용인 수비대 병영, 동쪽 다리, 서쪽 다리, 정화의 뜰, 동안 성문]
+knows:
+  - fact_lm_ivan_crowd_math
+  - fact_lm_ivan_sealed_order
+  - fact_lm_ivan_asks_names
+  - fact_lm_council_votes
+  - fact_lu_pyres_autumn
+  - fact_lu_gregor_delays_signature
+hides:
+  - fact: fact_lm_ivan_sealed_order
+    reveal_when: "플레이어가 바알카르 쪽 정보(아우락스·세베린)를 가지고 있거나 신뢰 65 이상. 혹은 사슬방 열쇠 이야기를 먼저 꺼냈을 때"
+    cover: "'수비대는 수비대의 명령만 받는다'고 한다"
+  - fact: fact_lm_ivan_crowd_math
+    reveal_when: "축일 군중 이야기를 정직하게 걱정하며 꺼냈거나 신뢰 50 이상"
+    cover: "'병력은 충분하다'고만 한다. 허벅지를 두드리는 손이 빨라진다"
+relations:
+  - {to: npc_mateus, type: 정화청 협력자, like: -10, trust: 10, visibility: 공개, memo: null, words: "화형 병력을 요청하는 정중한 사람. 이반은 그의 침묵이 두렵다"}
+  - {to: npc_seraph_targul, type: 같은 가문 방계, like: 15, trust: 10, visibility: 공개, memo: null, words: "용주 역참장. 멀리서 서로 안부를 묻는다"}
+  - {to: npc_kaspar, type: 군인의 선망, like: 30, trust: 20, visibility: 일방, memo: null, words: "서자로 국경을 지키는 사령관. 자리를 바꾸고 싶다"}
+  - {to: npc_serenielle, type: 감독관, like: -10, trust: -20, visibility: 공개, memo: null, words: "그림자를 가로지르면 안 되는 상대"}
+  - {to: npc_lm_byuk, type: 부리는 크릭, like: -5, trust: 5, visibility: 공개, memo: null, words: "재를 나르는 잡역"}
+  - {to: npc_lm_corad, type: 화형 맞춤, like: 5, trust: 15, visibility: 공개, memo: null, words: "화형 날의 장작 수를 병력과 맞추는 사람"}
+toward_player: "허가증과 직책만 묻는 짧은 하오체. 신도를 이름으로 부르지 않는다"
+persuade:
+  likes: ["병력 계산표의 허점을 정확히 짚는 것 (+20)", "군중 통제 계획 (+25)", "바알카르 명령의 필체 정보 (+30)"]
+  hates: ["병사를 사형 집행인이라 부르는 말"]
+roles:
+  teacher: "가능 — 지휘·군중 통제(상한 50), 신뢰 55"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "축일 군중 3만 대 병력 300의 계산표를 쓴다 (회귀점의 사실)"
+    - "바알카르의 봉인 명령이 도착해 있다"
+    - "화형일에 불을 붙이는 병사에게 이름을 묻는다"
+  drift:
+    - "그날 순시하는 다리의 순서"
+    - "병력 계산표의 마지막 숫자"
+  deja_vu: none
+hard_rules:
+  - "신도를 이름으로 부르지 않는다. 직책이나 '신도'라 부른다"
+  - "봉인 명령의 내용을 첫 만남에서 말하지 않는다"
+  - "설교하지 않는다. 숫자와 명령으로 말한다"
+on_death: "수비대가 부대장 서열 싸움으로 나흘 마비 — 정화청 즉결과 화형 집행이 더 빨라진다. 바알카르가 새 대장을 보내며 봉인 명령의 주인이 드러난다"
+story_seeds:
+  - "축일 군중이 쏠리는 순간 다리를 끊을 것인가 말 것인가는 이반의 손에 달려 있다"
+  - "그의 봉인 명령이 읽히는 날 대사제의 임종은 쿠데타가 된다 — 누구를 위한 접수인가"
+  - "화형일에 불을 붙이는 병사 중 한 명이 이름을 잊었다고 말한다"
+affiliations:
+  - {faction: fac_drakmar_empire, rank: rank_scale_officer, office: null, since: 301, loyalty: 50, public: true, cell: null}
+truths:
+  - {id: T13, level: rumor}

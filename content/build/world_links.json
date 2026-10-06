@@ -390,6 +390,18 @@
     "title": "두 번째 설교 낭송자"
    }
   ],
+  "npc_lm_adel": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_seventh_ring_chair",
+    "title": "일곱째 고리 — '벌어진 고리' (지도부 의장격)"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_lamp_north_deputy",
+    "title": "북부 등불관 대리 (수녀)"
+   }
+  ],
   "npc_agnes": [
    {
     "faction": "fac_broken_ring",
@@ -407,6 +419,30 @@
     "title": "순례자 숙소 관리 수녀"
    }
   ],
+  "npc_lm_hanna": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_seventh_ring_candle",
+    "title": "일곱째 고리 — 대성당 (촛불지기)"
+   },
+   {
+    "faction": "fac_lampkeepers",
+    "office": "off_candle_keeper",
+    "title": "촛불지기 (대성당 양초 공방)"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_candle_keeper",
+    "title": "대성당 촛불지기"
+   }
+  ],
+  "npc_lm_simon": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_seventh_ring_well",
+    "title": "일곱째 고리 — 침묵의 우물 (간수)"
+   }
+  ],
   "npc_osric": [
    {
     "faction": "fac_broken_ring",
@@ -422,6 +458,13 @@
     "faction": "fac_raven_house",
     "office": "off_chaplain",
     "title": "영내 사제 (징후 확인·증언)"
+   }
+  ],
+  "npc_lm_otilie": [
+   {
+    "faction": "fac_broken_ring",
+    "office": "off_ring_copyist",
+    "title": "rank_runner"
    }
   ],
   "npc_martha": [
@@ -475,6 +518,13 @@
     "faction": "fac_nocturne",
     "office": "off_pen_overseer_rose",
     "title": "장미 우리 감독 (목줄장)"
+   }
+  ],
+  "npc_lm_yuta": [
+   {
+    "faction": "fac_collar",
+    "office": "off_collar_tongue_lumen",
+    "title": "rank_tongue"
    }
   ],
   "npc_ebert": [
@@ -870,6 +920,18 @@
     "title": "고목 가지 수장 (순혈파)"
    }
   ],
+  "npc_lm_leanel": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_doctrine_auditor",
+    "title": "교리 감수관"
+   },
+   {
+    "faction": "fac_light",
+    "office": "off_doctrine_auditor",
+    "title": "교리 감수관 (외부)"
+   }
+  ],
   "npc_serenielle": [
    {
     "faction": "fac_eldar",
@@ -965,6 +1027,13 @@
     "title": "남은 동생 (후계 후보 — 숨겨진 자)"
    }
   ],
+  "npc_lm_byuk": [
+   {
+    "faction": "fac_grey_pilgrims",
+    "office": "off_ash_courier_lumen",
+    "title": "rank_pilgrim"
+   }
+  ],
   "npc_cecile": [
    {
     "faction": "fac_grey_thread",
@@ -987,6 +1056,13 @@
     "faction": "fac_raven_house",
     "office": "off_ration_keeper",
     "title": "배급 막사 '절름발이 수탉' 관리인"
+   }
+  ],
+  "npc_lm_anna": [
+   {
+    "faction": "fac_grey_thread",
+    "office": "off_knot_lumen_candle",
+    "title": "루멘 매듭 (양초 공방 '등불지기' 밀랍 저장고)"
    }
   ],
   "npc_bern": [
@@ -1327,11 +1403,25 @@
     "title": "고물상 '등잔 밑'"
    }
   ],
+  "npc_lm_eli": [
+   {
+    "faction": "fac_lampkeepers",
+    "office": "off_ring_keeper",
+    "title": "고리지기 (연락과 운반)"
+   }
+  ],
   "npc_vera": [
    {
     "faction": "fac_lampkeepers",
     "office": "off_tap_student",
     "title": "벽 두드림 제자 (듣고 쓰는 자)"
+   }
+  ],
+  "npc_lm_beate": [
+   {
+    "faction": "fac_lampkeepers",
+    "office": "off_first_token",
+    "title": "마렌의 첫 성표 지킴이"
    }
   ],
   "npc_gregor7": [
@@ -1384,6 +1474,34 @@
     "title": "정화청장 (대심문관)"
    }
   ],
+  "npc_lm_matthias": [
+   {
+    "faction": "fac_light",
+    "office": "off_lamp_silver_river",
+    "title": "은빛 강 등불관 (대성당 상주)"
+   }
+  ],
+  "npc_lm_aegidius": [
+   {
+    "faction": "fac_light",
+    "office": "off_inquisitor",
+    "title": "심문 사제 (집합 자리, 약 40)"
+   }
+  ],
+  "npc_lm_hartmund": [
+   {
+    "faction": "fac_light",
+    "office": "off_ash_scale",
+    "title": "잿빛 저울 (징후 판별관)"
+   }
+  ],
+  "npc_lm_tobias": [
+   {
+    "faction": "fac_light",
+    "office": "off_informant_desk",
+    "title": "밀고 접수관 (루멘 고리지기)"
+   }
+  ],
   "npc_felix": [
    {
     "faction": "fac_light",
@@ -1396,6 +1514,13 @@
     "faction": "fac_light",
     "office": "off_warden",
     "title": "침묵의 우물 간수장"
+   }
+  ],
+  "npc_lm_corad": [
+   {
+    "faction": "fac_light",
+    "office": "off_pyre_keeper",
+    "title": "정화의 뜰 장작지기"
    }
   ],
   "npc_heinz": [
@@ -1415,6 +1540,13 @@
     "faction": "fac_light",
     "office": "off_hymn_pilgrim",
     "title": "찬송 순례자 (집합 자리, 약 600)"
+   }
+  ],
+  "npc_lm_kale": [
+   {
+    "faction": "fac_light",
+    "office": "off_token_tally",
+    "title": "rank_ring_keeper"
    }
   ],
   "npc_aurelia_vermion": [
@@ -2036,10 +2168,10 @@
  },
  "stats": {
   "factions": 57,
-  "offices": 659,
-  "filled": 275,
-  "npcs": 249,
-  "npcs_with_office": 174,
+  "offices": 663,
+  "filled": 295,
+  "npcs": 276,
+  "npcs_with_office": 190,
   "truth_holders": 62
  }
 }

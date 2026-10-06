@@ -1,0 +1,94 @@
+id: npc_lm_eli
+name: 고리지기 엘리
+aka: [밀고 접수관의 조수, 두 번째 설교를 외우는 청년]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 26
+region: 루멘
+home: 고리지기 숙사 (수도자 숙사 곁)
+job: 고리지기(성직 말단) — 밀고 접수관 토비아스의 조수. 등잔지기의 연락과 운반을 맡는다
+rank: 고리지기 (고리 둘) — 등잔지기 후계 후보
+summary: 한나의 아들이자 알베릭의 조카. 외삼촌이 벽을 두드려 전한 두 번째 설교를 어머니에게서 받아 외우고 있다. 밀고 함 홀에 합법적으로 드나드는 성실한 조수
+source: docs/world/people/lumen.md
+life:
+  - {year: 286, age: 0, event: "루멘에서 태어남. 아버지는 공개하지 않는다. 열한 살에 신도 서원"}
+  - {year: 298, age: 12, event: "고리지기 견습. 어머니에게서 양초 심지 매듭을 배움"}
+  - {year: 308, age: 22, event: "고리지기가 됨. 밀고 접수 보조로 배치 — 정화청의 한복판에서 일하게 되었다"}
+  - {year: 311, age: 25, event: "어머니에게서 알베릭의 두 번째 설교 첫 줄을 처음 들음. 이후 한 줄씩 외웠다"}
+  - {year: 312, age: 26, event: "토비아스가 셋째 함 열쇠를 건네고도 자리를 떠나지 않는다. 마르타의 오스릭 보고가 그 함에 있음을 알아챔 (낙엽월 1일 기준)"}
+appearance:
+  - "어머니와 같은 눈매"
+  - "걷는 속도가 늘 일정하다"
+  - "손가락 끝에 밀랍이 박혔다"
+smell: "먹물과 밀랍, 접수 홀의 눅눅한 나무 냄새"
+voice_sound: "조용하고 규칙적이다. 말하는 속도가 일정해서 외우는 사람 같다"
+personality:
+  disposition: {용기: 20, 자비: 35, 정직: 10, 신앙: 15, 탐욕: -30, 충성: 55}
+  temperament: [성실, 신중, 외로움, 외우는 사람]
+  habits:
+    - "걸음을 늘 같은 속도로 걷는다"
+    - "혼자 있을 때 외삼촌의 문장을 입술로만 외운다"
+    - "접수 쪽지를 받을 때 이름을 두 번 확인하는 토비아스의 버릇을 흉내 낸다"
+  values: "어머니. 외삼촌의 문장. 성실하다는 평판"
+  fears: [토비아스가 자리를 비우는 날, 어머니가 먼저 가는 날, 외삼촌이 먼저 죽는 날]
+  desires:
+    short: "셋째 함에서 마르타의 종이를 꺼낼 단 한 번의 틈"
+    long: "외삼촌의 두 번째 서신을 소리 내어 말해도 되는 날"
+voice:
+  register:
+    to_superior: "토비아스에게 공손한 하십시오체"
+    to_equal: "고리지기에게 정중한 하오체"
+    to_inferior: "밀고자에게 사무적 해요체"
+    to_player_default: "정중한 접수 말투. 이름은 두 번 묻는다"
+  tics: ["'이름을 두 번'", "일정한 말 속도", "'접수는 저쪽 함입니다'"]
+  use: [접수, 함, 이름, 어머니, 쪽지, 두 번]
+  avoid: [외삼촌, 서신, 설교, 알베릭]
+  length: "짧고 일정하다. 어머니 이야기에서만 속도가 흔들린다"
+  samples:
+    - {situation: 첫 만남, line: "접수는 저쪽 함입니다. 이름은 두 번 말씀하셔야 하고 저는 받아 적기만 합니다."}
+    - {situation: 호의, line: "성실하다는 말은 자주 듣습니다. 성실한 사람은 의심받지 않으니까요. 그게 제 쓸모입니다."}
+    - {situation: 겁먹었을 때, line: "셋째 함 열쇠는 제 허리에 있습니다. 하지만 접수관님이 한 번도 자리를 비우지 않으십니다."}
+    - {situation: 비밀 누설, line: "외삼촌이 두드린 문장이 있어요. 한 번도 소리 내 읽은 적은 없고 입으로 외우기만 했어요."}
+    - {situation: 슬픔, line: "어머니는 제게 외삼촌 얼굴을 설명해 주실 때 매번 다르게 말씀하세요. 기억이 닳는 거래요."}
+relations:
+  - {to: npc_lm_hanna, type: 어머니, like: 95, trust: 80, visibility: 공개, memo: null, words: "쪽지의 길 위에 선 사람"}
+  - {to: npc_lm_tobias, type: 상관, like: 15, trust: 10, visibility: 공개, memo: null, words: "장부를 쥔 접수관"}
+  - {to: npc_alberic, type: 외삼촌, like: 60, trust: 50, visibility: 비밀, memo: null, words: "얼굴을 본 적 없는 외삼촌의 문장을 외운다"}
+knows:
+  - fact_lm_eli_memorizing
+  - fact_lm_eli_key_box
+  - fact_lm_tobias_marta_report
+  - fact_lu_alberic_hanna
+hides:
+  - fact: fact_lm_eli_memorizing
+    reveal_when: "한나의 소개가 있거나 신뢰 65 이상. 알베릭의 이름을 정직하게 꺼냈을 때"
+    cover: "'외삼촌은 잘 모릅니다. 어머니의 오빠일 뿐입니다'라고 한다"
+toward_player: "정중한 접수 말투. 이름은 두 번 묻는다"
+persuade:
+  likes: ["외삼촌의 소식 (+25)", "토비아스를 잠시 자리에서 떼어 놓는 계획 (+30)"]
+  hates: ["어머니를 위협하는 말"]
+roles:
+  teacher: "불가"
+  companion: "가능 — 충성 아크: 0 소식 → 40 밀고 함 열쇠 → 70 '두 번째 설교를 외웁니다' (등잔지기 후계 루트)"
+  romance: null
+regression:
+  fixed:
+    - "토비아스의 조수로 밀고 함 홀에 드나든다 (회귀점의 사실)"
+    - "알베릭의 두 번째 설교를 한 줄씩 외우고 있다"
+  drift:
+    - "그날 접수되는 밀고의 수"
+  deja_vu: none
+hard_rules:
+  - "외삼촌과 설교를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 접수와 숫자로 말한다"
+on_death: "등잔지기의 후계가 끊긴다 — 알베릭이 죽으면 두 번째 설교를 잇는 사람이 없다. 토비아스가 조수를 잃어 밀고 접수가 사흘 늦어진다"
+story_seeds:
+  - "토비아스가 자리를 비우는 단 한 순간이 오면 엘리가 셋째 함을 연다. 그러나 열면 그는 사슬사제가 될 수 없다"
+  - "엘리가 외삼촌의 문장을 외워 아델에게 처음으로 읽어 주는 날"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: null, since: 308, loyalty: 30, public: true, cell: null}
+  - {faction: fac_lampkeepers, rank: rank_candle, office: off_ring_keeper, since: 311, loyalty: 95, public: false, cell: null}
+truths: []

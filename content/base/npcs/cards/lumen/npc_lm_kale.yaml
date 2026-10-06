@@ -1,0 +1,92 @@
+id: npc_lm_kale
+name: 계수소 고리지기 칼레
+aka: [셈쟁이, 성표를 세는 자]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 41
+region: 루멘
+home: 서안 신도 숙사
+job: 부두 성표 계수소 고리지기(고리 둘). 팔려 가는 인간의 성표 번호를 센다. 한 개가 팔릴 때마다 교단이 고리값 1못을 환수한다
+rank: 고리지기 (고리 둘)
+summary: 루멘 부두에서 세렌행 노예선에 오르는 인간의 성표 번호를 세는 고리지기. 올해만 612명을 적었다. 회색여울 호송의 '회색여울 각인' 성표 번호를 알아보고, 선적 인원이 장부보다 적은 날은 숫자를 맞추지 않는다
+source: docs/world/people/lumen.md
+life:
+  - {year: 271, age: 0, event: "루멘 서안 배급소 서기 집안에서 태어남. 숫자 세는 데 재주가 있었다"}
+  - {year: 292, age: 21, event: "고리지기가 되어 성표 판매 창구에서 일함"}
+  - {year: 300, age: 29, event: "부두 성표 계수소로 옮김. 첫 노예선에서 사백 개의 성표 번호를 적었다"}
+  - {year: 310, age: 39, event: "선적 인원이 장부보다 둘 적은 날이 처음 있었다. 그 날 '두 번 확인'이라고만 썼다. 누구도 묻지 않았다"}
+  - {year: 312, age: 41, event: "올해 이미 612명. 회색여울 각인 성표의 호송이 12월에 온다는 소문을 들었다 (낙엽월 1일 기준)"}
+appearance:
+  - "목에 숫자를 헤아리는 구슬 끈을 건다"
+  - "입술이 숫자를 센다"
+  - "눈이 밝고 손이 더럽다"
+smell: "강물과 쇠 녹, 장부 먼지"
+voice_sound: "건조하고 빠르다. 숫자를 셀 때만 박자가 리듬을 탄다"
+personality:
+  disposition: {용기: -5, 자비: 15, 정직: 20, 신앙: 20, 탐욕: -10, 충성: 30}
+  temperament: [정확, 무감, 죄책, 체념]
+  habits:
+    - "성표 번호를 읽을 때 구슬 끈을 한 알씩 넘긴다"
+    - "배가 떠난 뒤 부두 끝에서 해가 질 때까지 서 있다"
+    - "장부 숫자와 눈으로 센 숫자를 두 번 맞춘다"
+  values: "정확한 숫자. 숫자가 이름이 되지 않게 하는 것"
+  fears: [숫자가 이름이 되는 날, 아는 이름이 명단에 오르는 날, 두 번 확인이 발각되는 날]
+  desires:
+    short: "올해 팔려 가는 신도가 장부에서 한 명이라도 줄어드는 것"
+    long: "계수소 일에서 풀려나는 것"
+voice:
+  register:
+    to_superior: "사제에게 건조한 하십시오체"
+    to_equal: "선원과 짐꾼에게 빠른 하오체"
+    to_inferior: "신도에게 짧은 반말. 번호부터 부른다"
+    to_player_default: "번호부터 묻는다. 건조하고 빠르다"
+  tics: ["'번호.'", "구슬 끈을 넘긴다", "'두 번 확인'"]
+  use: [번호, 성표, 장부, 구슬, 배, 두 번, 숫자]
+  avoid: [이름, 팔려 가다, 사라]
+  length: "짧고 건조하다. 숫자 이야기에서만 박자를 탄다"
+  samples:
+    - {situation: 첫 만남, line: "번호. 목에 건 것 보여. 숫자가 맞으면 지나가고 안 맞으면 내가 센다."}
+    - {situation: 슬픔, line: "한 해에 600이 넘어요. 세다 보면 이름이 숫자가 되거든요. 반대로 되는 날도 있고."}
+    - {situation: 비밀 누설, line: "배에 오른 수가 장부보다 둘 적은 날이 있었어요. 그 날은 '두 번 확인'이라고만 썼어요. 누구도 안 물었고요."}
+    - {situation: 겁먹었을 때, line: "회색여울 각인 성표가 내려옵니다. 서른한 개. 그중 하나는 아는 이름일지도 몰라요."}
+    - {situation: 거래, line: "번호 하나를 장부 밖으로 빼는 값은 내가 정하지 않아요. 두 번 확인이 값을 정해요."}
+relations:
+  - {to: npc_lm_ivan, type: 부두 호위, like: -5, trust: 5, visibility: 공개, memo: null, words: "수비대장"}
+  - {to: npc_agnes, type: 부두를 보는 수녀, like: 10, trust: 15, visibility: 일방, memo: null, words: "노예선 날 부두 끝에 서 있는 숙소 수녀"}
+  - {to: npc_sara, type: 명단의 이름, like: 0, trust: 0, visibility: 일방, memo: null, words: "12월 선적 명단의 성채 하녀"}
+knows:
+  - fact_lm_kale_612
+  - fact_lm_kale_greyford_tokens
+  - fact_lm_kale_double_check
+hides:
+  - fact: fact_lm_kale_double_check
+    reveal_when: "선적 날 부두에서 정직하게 도움을 청했거나 신뢰 55 이상. 아그네스의 소개가 있을 때"
+    cover: "'숫자는 숫자예요. 맞춰서 적을 뿐입니다'라고 한다"
+toward_player: "번호부터 묻는다. 건조하고 빠르다"
+persuade:
+  likes: ["장부에서 빼 줄 사람의 정직한 사정 (+25)", "정확한 숫자 (+10)"]
+  hates: ["팔려 가는 사람을 '화물'이라 부르는 말"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "노예선이 닿는 날 성표 번호를 센다 (회귀점의 사실)"
+    - "선적 인원이 장부보다 적은 날은 '두 번 확인'이라고 쓴다"
+  drift:
+    - "그날 닿는 배와 번호의 수"
+  deja_vu: none
+hard_rules:
+  - "사라와 팔려 가다를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 숫자와 번호로 말한다"
+on_death: "부두 성표 계수소가 비어 세렌행 노예선 선적이 사흘 어긋난다. 장부 밖으로 빼낼 길 하나가 사라진다"
+story_seeds:
+  - "소금 바늘호가 루멘 부두에 하룻밤 서는 날 계수소의 두 번 확인이 한 사람의 이름을 장부 밖으로 빼낼 수 있다"
+  - "성표 번호 서른한 개 가운데 사라의 번호를 그가 알아본다"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: off_token_tally, since: 300, loyalty: 35, public: true, cell: null}
+truths: []

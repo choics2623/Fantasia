@@ -1,0 +1,98 @@
+# 루멘 사건 달력 — AS 312 낙엽월 1일 ~ AS 313 수확월 (24 §3.2). 원천: REGIONS §4.8·§4.12·§4.13, fac_light(의례·승계), 월드 클락 #8(WORLD_BIBLE §10), 회색여울 사건(9.12 요한 출발·10.9·12.3 매각 호송).
+# 날짜가 정해진 일정이 일과보다 우선한다. 목록에서 먼저 맞는 일정이 이긴다 — 같은 사람의 겹치는 일정은 앞에 적은 것이 이긴다.
+# date: "AS-월-일" (월: 9 낙엽월, 10 서리월, 11 긴밤월, 12 굶주림월, 13 재의 날, 1 해빙월, 2 파종월, 3 꽃월, 4 푸른월, 7 수확월). 1주 = 6일, 6일째가 안식일.
+#   AS 312의 안식일은 매달 6·12·18·24·30일, AS 313의 안식일은 매달 1·7·13·19·25일이다 (재의 날 5일이 한 주를 밀어낸다).
+# if: 월드 플래그 — 플래그가 서야 일어나는 사건. condition: 사람이 읽는 조건 메모(엔진은 읽지 않는다).
+# 장소 id: lm_* (루멘) · ps_* (쉼터) · mw_* (성 마렌의 우물) · gf_* / dragon_pillar_post / lumen__* 는 해당 settlements 파일.
+# ── 정화의 뜰: 이번 가을 장작 네 번 (0~3일 어긋난다 — 날짜는 한 회차의 표본) ──
+- {id: ev_lm_pyre_1, date: "312-09-17", npcs: [npc_mateus, npc_lm_corad, npc_lm_byuk, npc_lm_ivan, npc_lm_aegidius], from: "10:00", to: "13:00", at: lm_pyre_court, doing: "정화 — 첫 번째 장작. 신도가 '그의 고난이 그를 정화하기를'을 외친다. 이반이 불을 붙일 병사에게 이름을 묻는다"}
+- {id: ev_lm_pyre_1_bench, date: "312-09-17", npcs: [npc_lm_marlene], from: "09:00", to: "14:00", at: lm_pyre_court, doing: "벤치에서 장작의 개수를 센다 — 열둘"}
+- {id: ev_lm_pyre_1_ash, date: "312-09-17", npcs: [npc_lm_corad, npc_lm_byuk, npc_lm_marlene], from: "21:00", to: "23:30", at: lm_festival_bank, doing: "재를 강에 흘려보낸다 — 노파가 강둑을 따라 걷고 크릭이 자루 하나를 따로 묶어 둔다"}
+- {id: ev_lm_pyre_2, date: "312-10-08", npcs: [npc_mateus, npc_lm_corad, npc_lm_byuk, npc_lm_ivan, npc_lm_aegidius], from: "10:00", to: "13:00", at: lm_pyre_court, doing: "정화 — 두 번째 장작. 마테우스가 앉을 때 숨을 멈춘다"}
+- {id: ev_lm_pyre_2_bench, date: "312-10-08", npcs: [npc_lm_marlene], from: "09:00", to: "14:00", at: lm_pyre_court, doing: "벤치에서 장작의 개수를 센다 — 열넷"}
+- {id: ev_lm_pyre_3, date: "312-11-05", npcs: [npc_mateus, npc_lm_corad, npc_lm_byuk, npc_lm_ivan, npc_lm_aegidius], from: "10:00", to: "13:00", at: lm_pyre_court, doing: "정화 — 세 번째 장작. 이번 가을 가장 많은 이름이 올랐다"}
+- {id: ev_lm_pyre_3_bench, date: "312-11-05", npcs: [npc_lm_marlene], from: "09:00", to: "14:00", at: lm_pyre_court, doing: "벤치에서 장작의 개수를 센다 — 열여섯"}
+- {id: ev_lm_pyre_4, date: "312-12-12", npcs: [npc_mateus, npc_lm_corad, npc_lm_byuk, npc_lm_ivan, npc_lm_aegidius], from: "10:00", to: "13:00", at: lm_pyre_court, doing: "정화 — 네 번째 장작. 대사제가 나오지 않는다"}
+- {id: ev_lm_pyre_4_bench, date: "312-12-12", npcs: [npc_lm_marlene], from: "09:00", to: "14:00", at: lm_pyre_court, doing: "벤치에서 장작의 개수를 센다 — 열여덟"}
+# ── 요한의 낙엽월 순례: 회색여울(9.12) → 까마귀 문(9.13) → 용주 역참(9.15) → 바알카르(며칠) → 루멘(9.21) ──
+# (회색여울 검사가 9.20 정오 요한을 '부재'로 요구하므로 도착은 9.21 오후로 하고, 도착 전 이동은 '순례 중' 체류 규칙에 맡긴다)
+- {id: ev_lm_johan_arrives, date: "312-09-21", npcs: [npc_johan], from: "17:00", to: "22:00", at: lm_pilgrim_house, doing: "순례자 숙소 맨 앞줄에 선다 — 필사본 3부를 품고, 짐 속에 헌금 쪽지 꾸러미"}
+- {id: ev_lm_johan_cellar, date: "312-09-21", npcs: [npc_johan, npc_agnes], from: "22:00", to: "24:00", at: lm_pilgrim_cellar, doing: "오스릭의 '안부' — 필사본 3부가 아그네스의 손으로 넘어간다"}
+- {id: ev_lm_johan_sleep1, date: "312-09-22", npcs: [npc_johan], from: "00:00", to: "07:00", at: lm_pilgrim_house, doing: "짚 침상에서 잔다"}
+- {id: ev_lm_johan_confession, date: "312-09-22", npcs: [npc_johan, npc_felix], from: "07:00", to: "10:30", at: lm_cath_confessionals, doing: "고해 사제 펠릭스에게 길에서 들은 것을 빠짐없이 말한다 — 말하지 않는 것이 둘 있다"}
+- {id: ev_lm_johan_stalls, date: "312-09-22", npcs: [npc_johan, npc_lm_yuta], from: "10:30", to: "14:00", at: lm_token_stalls, doing: "성표 노점 곁에서 찬송과 소문 — 소금장수가 헌금 쪽지 꾸러미를 한 줌 덜어 간다"}
+- {id: ev_lm_johan_chant, date: "312-09-22", npcs: [npc_johan, npc_lm_laurenz], from: "14:00", to: "22:00", at: lm_sem_chant, doing: "스승 라우렌츠와 일곱 곡을 처음부터 다시 맞춘다 — 꽃월 합창단 이야기"}
+- {id: ev_lm_johan_sleep2, date: "312-09-22", npcs: [npc_johan], from: "22:00", to: "06:00", at: lm_pilgrim_house, doing: "짚 침상에서 잔다"}
+- {id: ev_lm_johan_leaves, date: "312-09-23", npcs: [npc_johan], from: "06:00", to: "07:00", at: lm_bridge_south, doing: "남쪽 다리를 건너 순례길로 — 회색여울로 돌아가는 길", return_to: dragon_pillar_post}
+- {id: ev_lm_tobias_receives, date: "312-09-22", npcs: [npc_lm_tobias], from: "19:00", to: "20:00", at: lm_inq_hall, doing: "유타가 건넨 쪽지를 받아 셋째 함 맨 아래 종이 위에 포갠다 — 마르타의 다음 보고"}
+# ── 수확 공물 행렬 ──
+- {id: ev_lm_harvest_tribute_312, date: "312-09-26", npcs: [npc_lm_ivan, npc_lm_byuk], from: "08:00", to: "14:00", at: lm_east_gate, doing: "수확 공물 수레 행렬 — 성지 농원과 영지의 곡물 수레가 동안 성문으로 들어온다. 수레 밑을 크릭이 뒤진다", outdoor: true}
+# ── 서리월 1일: 서고 뒷방의 봉인 확인 (매 계절 한 번) ──
+- {id: ev_lm_seal_check_1, date: "312-10-01", npcs: [npc_lm_leanel], from: "03:00", to: "04:00", at: lm_cath_library_back, doing: "서고 뒷방의 봉인을 확인한다 — 이 계절에도 열린 흔적이 없다"}
+# ── 첫 호송 배: 회색여울 마흔 명이 바알카르에서 세렌행 노예선에 실려 루멘 부두를 지난다 (바알카르 10.15 선매 인도 → 하류 27시간. 배 출항 날짜는 추정) ──
+- {id: ev_lm_convoy1_dock, date: "312-10-17", npcs: [npc_lm_kale, npc_lm_ivan], from: "13:00", to: "19:00", at: lm_dock, doing: "회색여울 각인 성표 마흔 개의 번호를 센다 — 노예선이 하룻밤 서고 수비대가 부두를 막는다", mounted: false}
+- {id: ev_lm_convoy1_agnes, date: "312-10-17", npcs: [npc_agnes], from: "15:00", to: "18:00", at: lm_dock, doing: "부두 끝에 서서 짐칸의 얼굴을 센다 — 회색여울 마흔 명"}
+# ── 긴밤월: 녹테른 공물 40명 (호송은 12일 새벽 출발, 15일 '갈증의 밤'에 붉은 우리 도착) ──
+- {id: ev_lm_tribute_begin, date: "312-11-01", npcs: [npc_lm_jonas], from: "20:00", to: "24:00", at: lm_cath_library, doing: "공물 명단 첫 장 — 지운 자국을 일부러 남기며 연습한다"}
+- {id: ev_lm_tribute_list, date: "312-11-03", npcs: [npc_mateus, npc_lm_tobias, npc_lm_jonas], from: "14:00", to: "17:00", at: lm_inq_records, doing: "정화청장이 '불순한 자' 목록을 서기에게 건넨다 — 이름을 읽지 않은 채"}
+- {id: ev_lm_tribute_final, date: "312-11-05", npcs: [npc_lm_jonas], from: "20:00", to: "24:00", at: lm_cath_library, doing: "공물 명단 최종 40명 — 열두 살 소녀의 이름이 올해도 있다"}
+- {id: ev_lm_tribute_copy, date: "312-11-11", npcs: [npc_lm_jonas], from: "22:00", to: "24:00", at: lm_cath_library, doing: "호송 전날 밤 — 명단 사본을 한 부 더 쓴다. 보여 줄 사람이 서기실 창가에 온다"}
+- {id: ev_lm_tribute_depart, date: "312-11-12", npcs: [npc_lm_jonas, npc_lm_ivan, npc_lm_byuk], from: "05:00", to: "09:00", at: lm_tribute_yard, doing: "녹테른 공물 40명 호송 출발 — 서기가 마지막으로 명단을 읽고 이반의 병사가 공물 길 첫 구간을 호위한다"}
+- {id: ev_lm_tribute_mateus, date: "312-11-12", npcs: [npc_mateus], from: "06:00", to: "07:30", at: lm_tribute_yard, doing: "호송 출발을 지켜본다 — 이름을 읽지 않는다"}
+# ── 굶주림월: 소금 바늘호 — 회색여울 31명(성채 하녀 사라 포함)이 바알카르에서 12.10 출항해 하류로 ──
+- {id: ev_lm_convoy2_dock, date: "312-12-11", npcs: [npc_lm_kale, npc_lm_ivan], from: "11:00", to: "22:00", at: lm_dock, doing: "'소금 바늘'호가 닿는다 — 회색여울 서른한 개의 성표 번호. 곡물 자루 밑 짐칸을 수비대가 확인한다"}
+- {id: ev_lm_convoy2_agnes, date: "312-12-11", npcs: [npc_agnes], from: "13:00", to: "20:00", at: lm_dock, doing: "부두에서 서른한 명의 얼굴을 센다 — 사라의 얼굴을 찾는다"}
+- {id: ev_lm_convoy2_anna, if: lm_sara_rescue_attempt, date: "312-12-11", npcs: [npc_lm_anna], from: "22:00", to: "24:00", at: lm_candle_works, doing: "공방 강쪽 하역문으로 짐 하나를 내린다 — 곡물 자루 속의 사람"}
+# ── 굶주림월 14일: 대사제가 크게 쓰러진다 (fac_light regression.flow) ──
+- {id: ev_lm_gregor_collapse, date: "312-12-14", npcs: [npc_gregor7], from: "06:00", to: "24:00", at: lm_cath_prayer_room, doing: "종탑 밑 기도실에서 크게 쓰러졌다 — 의식이 없다"}
+- {id: ev_lm_emergency_council, date: "312-12-14", npcs: [npc_mateus, npc_lm_matthias, npc_lm_leanel], from: "14:00", to: "18:00", at: lm_cath_chain_hall, doing: "임시 회의 — 정화청장이 회의 서기로서 의장 자리에 앉는다. 마티아스가 처음으로 서기 의자 곁에 서고 레아넬이 참관석에서 눈을 감는다"}
+- {id: ev_lm_collapse_sere, date: "312-12-14", npcs: [npc_serenielle], from: "16:00", to: "17:30", at: lm_cath_prayer_room, doing: "침상에서 세 걸음 밖에 선다 — 백합 향 손수건. 인간들이 길을 비킨다"}
+# ── 재의 날 (연말 5일): 모든 불을 끄고 영원등만 탄다 ──
+- {id: ev_lm_ash_day_lamp, date: "312-13-03", npcs: [npc_lm_hanna], from: "17:00", to: "24:00", at: lm_cath_eternal_lamp, doing: "재의 날 — 모든 불이 꺼진 대성당. 영원등 곁에서 새 초 하나를 켜지 않고 쥐고만 있다"}
+- {id: ev_lm_ash_day_mateus, date: "312-13-03", npcs: [npc_mateus], from: "17:00", to: "24:00", at: lm_cath_nave, doing: "재의 날 금식 — '우리 피가 세계를 찢었다'를 낮게 외운다. 불이 없는 밤"}
+- {id: ev_lm_ash_day_ring, date: "312-13-03", npcs: [npc_lm_adel, npc_agnes, npc_lm_jakob], from: "19:00", to: "21:00", at: lm_pilgrim_street, doing: "불 꺼진 순례자 거리 — 군중 속에서 일곱째 고리의 몇이 서로를 순례자로 만난다"}
+# ── 해빙월·파종월: 북부 순회 심문, 성표 서약 ──
+- {id: ev_lm_seal_check_2, date: "313-01-01", npcs: [npc_lm_leanel], from: "03:00", to: "04:00", at: lm_cath_library_back, doing: "서고 뒷방의 봉인을 확인한다"}
+- {id: ev_lm_johan_petition, date: "313-01-05", npcs: [npc_johan, npc_lm_adel], from: "14:00", to: "16:00", at: lm_north_house, doing: "오스릭의 꽃월 순례 청원서와 회색여울 순례단 열두 명의 명단을 올린다 — 아델이 목패 열두 장의 이름을 하나씩 읽는다", travel_from: gf_pilgrim_barn, return_to: dragon_pillar_post}
+- {id: ev_lm_tobias_dispatch, date: "313-01-12", npcs: [npc_lm_tobias, npc_lm_aegidius], from: "09:00", to: "10:00", at: lm_inq_hall, doing: "토비아스가 셋째 함 맨 아래 종이를 처음으로 올린다 — 에기디우스의 가방에 마르타의 보고가 들어간다", condition: "마르타의 오스릭 보고가 회수되지 않음"}
+- {id: ev_lm_aegidius_greyford, date: "313-01-17", npcs: [npc_lm_aegidius], from: "10:00", to: "17:00", at: gf_chapel, doing: "북부 순회 심문 — 회색여울 예배당에서 세 가지 질문. 오스릭의 이름이 처음으로 정화청 종이에 오른다", travel_from: lm_inq_hall, condition: "마르타의 오스릭 보고가 회수되지 않음"}
+- {id: ev_lm_aegidius_osric, date: "313-01-17", npcs: [npc_osric], from: "10:00", to: "17:00", at: gf_chapel_priest, doing: "심문 사제의 세 가지 질문을 받는다 — 필사본은 이미 루멘에 갔다", condition: "마르타의 오스릭 보고가 회수되지 않음"}
+- {id: ev_lm_sworn_tokens, date: "313-02-10", npcs: [npc_lm_matthias, npc_lm_laurenz], from: "10:00", to: "13:00", at: lm_cath_nave, doing: "파종월 성표 서약 — 일곱 살이 된 아이마다 목에 쇠사슬 고리 하나. 고리 값 3못은 주인이 낸다. 성가대가 첫 곡을 연다"}
+# ── 꽃월 12일 성 마렌 축일 (AS 313) 준비 ──
+- {id: ev_lm_hero_prep, date: "313-03-10", npcs: [npc_lm_hero], from: "04:00", to: "22:00", at: ps_oven, doing: "순례자 삼백이 몰려드는 날 — 빵 서른 판. 화덕이 하루 종일 꺼지지 않는다"}
+- {id: ev_lm_ivan_prep, date: "313-03-10", npcs: [npc_lm_ivan], from: "06:00", to: "12:00", at: lm_garrison_commander, doing: "축일 병력 배치 — 삼천 대 삼백의 계산표를 다시 쓴다"}
+- {id: ev_lm_johan_arrives_feast, date: "313-03-11", npcs: [npc_johan], from: "12:00", to: "16:00", at: lm_pilgrim_house, doing: "회색여울 순례단 열두 명을 이끌고 숙소에 닿는다 — 아델이 발급한 목패 열두 장", travel_from: gf_pilgrim_barn}
+- {id: ev_lm_chant_audition, date: "313-03-11", npcs: [npc_johan, npc_lm_laurenz], from: "16:00", to: "18:30", at: lm_sem_chant, doing: "꽃월 합창단 선발 — 일곱 곡을 처음으로 이어 부른다. 정화청 쪽 의자가 한 칸 앞에 와 있다"}
+- {id: ev_lm_chant_mateus, date: "313-03-11", npcs: [npc_mateus], from: "16:30", to: "17:30", at: lm_sem_chant, doing: "합창단 선발에 앉아서 한 곡을 끝까지 듣는다 — 약지의 머리핀이 한 번 돈다"}
+- {id: ev_lm_johan_sleep_feast, date: "313-03-11", npcs: [npc_johan], from: "18:30", to: "06:00", at: lm_pilgrim_house, doing: "짚 침상에서 잔다 — 축일 새벽까지"}
+# ── 3.12 성 마렌 축일: 강변에 순례자 3만 ──
+- {id: ev_lm_feast_bridge, date: "313-03-12", npcs: [npc_lm_ivan], from: "04:00", to: "24:00", at: lm_bridge_east, doing: "축일 종일 동쪽 다리 — 난간 사슬 고리를 세고 군중의 쏠림을 본다. 끊는 명령은 아직 내리지 않았다", outdoor: true}
+- {id: ev_lm_feast_well, date: "313-03-12", npcs: [npc_lm_beate], from: "06:00", to: "18:00", at: mw_well, doing: "축일 하루만 우물이 열린다 — 순례자 앞에서 돌 둘레를 닦는다. 해가 수면에 꽂히는 열한 시에 숨을 멈춘다"}
+- {id: ev_lm_feast_stalls, date: "313-03-12", npcs: [npc_lm_yuta], from: "08:00", to: "20:00", at: lm_token_stalls, doing: "축일 대목 — 소금과 소문. 누가 어디에 서는지 센다"}
+- {id: ev_lm_feast_inquisitor, date: "313-03-12", npcs: [npc_lm_aegidius, npc_lm_hartmund], from: "12:00", to: "22:00", at: lm_festival_bank, doing: "군중 속 단속 두 배 — 눈이 이상한 순례자를 가려낸다. 저울사제가 눈꺼풀을 뒤집지 않으려 애쓴다"}
+- {id: ev_lm_feast_seminary, date: "313-03-12", npcs: [npc_lm_anselm, npc_lm_niklas], from: "16:00", to: "21:00", at: lm_festival_bank, doing: "견습 대열에 서서 낭독문을 한목소리로 외운다 — 소년은 일부러 한 구절을 틀린다"}
+- {id: ev_lm_feast_choir, date: "313-03-12", npcs: [npc_lm_laurenz, npc_johan], from: "16:30", to: "19:30", at: lm_festival_bank, doing: "합창단 — 일곱 곡의 첫 음절이 처음으로 한꺼번에 불린다. 아무도 뜻을 모른 채"}
+- {id: ev_lm_feast_sermon, date: "313-03-12", npcs: [npc_gregor7, npc_lm_matthias, npc_mateus], from: "17:00", to: "20:00", at: lm_festival_bank, doing: "축일 설교 — 대사제가 마렌의 두 번째 설교를 낭독할지가 걸려 있다. 마티아스가 곁에 서고 마테우스가 앞줄에서 선다"}
+- {id: ev_lm_feast_auditor, date: "313-03-12", npcs: [npc_lm_leanel], from: "17:00", to: "20:00", at: lm_festival_bank, doing: "대사제 곁 참관석 — 낭독인지 낭송인지의 판정을 기다린다. 아무도 묻지 않았다"}
+- {id: ev_lm_feast_candles, date: "313-03-12", npcs: [npc_lm_hanna, npc_lm_eli, npc_agnes, npc_lm_adel, npc_lm_marlene], from: "18:30", to: "22:00", at: lm_festival_bank, doing: "촛불 한 줄 — 암호('사슬을 감은 것은?')에 답하는 얼굴들. 일곱째 고리의 몇이 군중 속에서 서로를 순례자로 만난다"}
+- {id: ev_lm_feast_johan_night, date: "313-03-12", npcs: [npc_johan], from: "19:30", to: "06:00", at: lm_pilgrim_house, doing: "합창을 마치고 숙소로 — 짚 침상, 떨리는 목"}
+- {id: ev_lm_feast_after_mateus, if: lm_gregor_reads_second_sermon, date: "313-03-12", npcs: [npc_mateus], from: "20:30", to: "22:30", at: lm_cath_prayer_room, doing: "낭독이 끝난 밤 — 대사제의 방으로 올라가 알베릭의 처형 서명을 요구한다"}
+- {id: ev_lm_feast_after_undercroft, if: lm_gregor_reads_second_sermon, date: "313-03-12", npcs: [npc_mateus, npc_otto, npc_lm_jakob, npc_lm_simon], from: "22:30", to: "24:00", at: lm_undercroft, doing: "그날 밤 마테우스가 움직인다 — 처형 서명 문서를 쥐고 침묵의 우물로 내려간다. 오토가 열쇠 꾸러미를 쥔다"}
+- {id: ev_lm_feast_after_ivan, if: lm_gregor_reads_second_sermon, date: "313-03-12", npcs: [npc_lm_ivan], from: "21:00", to: "24:00", at: lm_cathedral, doing: "봉인 서한을 열지 않은 채 대성당 문 앞에 병사를 세운다 — 누구를 위해 서는지 아직 모른다"}
+- {id: ev_lm_johan_leaves_feast, date: "313-03-13", npcs: [npc_johan], from: "06:00", to: "07:00", at: lm_bridge_south, doing: "회색여울 순례단과 남쪽 다리를 건넌다 — 돌아가는 길", return_to: gf_pilgrim_barn}
+- {id: ev_lm_hero_dysentery, date: "313-03-13", npcs: [npc_lm_hero], from: "04:00", to: "22:00", at: ps_house_sick, doing: "축일 직후 이질 — 병자 돌집이 가득 찬다. 우물물을 끓인다"}
+# ── 봄·여름: 서고 봉인, 수확 ──
+- {id: ev_lm_seal_check_3, date: "313-04-01", npcs: [npc_lm_leanel, npc_lm_matthias], from: "03:00", to: "04:00", at: lm_cath_library_back, doing: "서고 뒷방 문 앞 — 봉인을 확인하러 온 감수관과 열쇠를 쥔 등불관이 마주친다. 둘 다 말하지 않는다"}
+- {id: ev_lm_seal_check_4, date: "313-07-01", npcs: [npc_lm_leanel], from: "03:00", to: "04:00", at: lm_cath_library_back, doing: "서고 뒷방의 봉인을 확인한다"}
+- {id: ev_lm_harvest_tribute_313, date: "313-07-20", npcs: [npc_lm_ivan, npc_lm_byuk], from: "08:00", to: "14:00", at: lm_east_gate, doing: "수확월 공물 수레 행렬 — 성지 농원의 곡물과 영지의 인두세 곡식", outdoor: true}
+# ── 끊어진 고리: 안식일 예배 뒤 카타콤의 '낭독 연습' (한 달에 한 번) ──
+- {id: ev_lm_ring_meet_0918, date: "312-09-18", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습을 핑계로 서안 예배당 지하에 모인다 — 벌어진 고리, 오므린 고리"}
+- {id: ev_lm_ring_meet_1018, date: "312-10-18", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습 — 성표를 벌린 한 사람이 안건을 다음 달로 미룬다"}
+- {id: ev_lm_ring_meet_1118, date: "312-11-18", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습 — 공물 명단과 사라의 배 이야기"}
+- {id: ev_lm_ring_meet_1218, date: "312-12-18", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습 — 대사제가 쓰러진 뒤의 낭독을 두고 벌어진 고리가 둘이다"}
+- {id: ev_lm_ring_meet_0119, date: "313-01-19", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습 — 북부 순회 심문관이 회색여울에 갔다는 소식"}
+- {id: ev_lm_ring_meet_0219, date: "313-02-19", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습 — 축일 촛불 한 줄의 자리"}
+- {id: ev_lm_ring_meet_0419, date: "313-04-19", npcs: [npc_lm_anselm, npc_agnes, npc_lm_hanna, npc_lm_otilie, npc_lm_simon], from: "10:00", to: "12:00", at: lm_cata_hall, doing: "낭독 연습 — 축일 이후의 사슬"}
+# ── 매달 반복 ──
+- {id: ev_lm_council_monthly, repeat: monthly, day: 10, npcs: [npc_mateus, npc_lm_matthias, npc_lm_leanel], from: "14:00", to: "17:30", at: lm_cath_chain_hall, doing: "일곱 등불 회의 — 흰 사슬과 검은 사슬이 그릇에 던져진다. 마테우스가 안건 순서를 쥐고 레아넬은 참관석에서 말하지 않는다"}
+- {id: ev_lm_alberic_wall_plaster, repeat: monthly, day: 5, npcs: [npc_otto], from: "08:00", to: "11:00", at: lm_uc_cell_9, doing: "회칠 — 매달 알베릭의 벽 글을 지운다. 지운 자리에 벌써 손톱 자국이 있다"}

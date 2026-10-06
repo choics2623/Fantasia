@@ -36,7 +36,7 @@
 - {id: ev_cg_jan10_reopen, date: "313-01-10", npcs: [npc_kaspar, npc_sigmund, npc_cg_creak], from: "05:30", to: "07:00", at: cg_north_gate, doing: "해빙월 10일 — 북문 재개방. 권양기가 돌고 서리 길이 열린다"}
 - {id: ev_cg_jan10_brynja, date: "313-01-10", npcs: [npc_cg_brynja], from: "07:00", to: "17:00", at: crow_gate__frost_road_head, doing: 길이 열린 첫날 이정표에서 첫 손님을 맞는다}
 # ── 313 봄·여름 ──
-- {id: ev_dp_pilgrims, date: "313-03-14", npcs: [npc_johan], from: "20:00", to: "23:00", at: dp_cookhouse, doing: 루멘 순례단을 이끌고 용주 역참에서 하룻밤 — 허가증 석 장을 검문대에 보인다, travel_from: gf_pilgrim_barn}
+- {id: ev_dp_pilgrims, date: "313-03-08", npcs: [npc_johan], from: "20:00", to: "23:00", at: dp_cookhouse, doing: 루멘 순례단을 이끌고 용주 역참에서 하룻밤 — 허가증 석 장을 검문대에 보인다, travel_from: gf_pilgrim_barn}
 - {id: ev_cg_conscription_list, date: "313-04-03", npcs: [npc_cg_gunter], from: "06:00", to: "09:00", at: cg_porter_barracks, doing: 푸른월 짐꾼 징발 서른 명의 명단을 읽는다 — 이름마다 막사가 조용해진다}
 - {id: ev_cg_conscription_drill, date: "313-04-03", npcs: [npc_kaspar, npc_cg_laog], from: "09:00", to: "17:00", at: cg_drill_yard, doing: 징발된 짐꾼 서른에게 창진 훈련을 시작한다 — 306년의 대형}
 - {id: ev_cg_jotun_march_kaspar, date: "313-04-20", npcs: [npc_kaspar, npc_cg_laog, npc_cg_balder], from: "04:00", to: "23:00", at: cg_wall_walk, doing: 서리왕 남침 — 까마귀 문 전투. 성벽 위 창진과 짐꾼들, if: jotun_march}

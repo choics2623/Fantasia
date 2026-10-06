@@ -55,10 +55,11 @@ locations:
   - {id: lm_pyre_store, name: 장작 창고·재 항아리 방, xy: [960, 640], kind: store, access: staff, hidden: "선반의 항아리 — 타다 남은 단추·치아·핀 212개가 이름 쪽지 없이 들어 있다 (fact_lm_corad_jar)"}
   - {id: lm_confession_square, name: 고해 광장, xy: [1100, 820], kind: square, access: public, note: "공개 고해가 열리는 대성당 남쪽 문 앞. 줄이 해 뜨기 전부터 선다"}
   # ── 섬 동쪽: 신학원·필사실·사제 숙소 ──
-  - {id: lm_seminary, name: 신학원, xy: [1260, 560], kind: school, access: staff, rooms: [lm_sem_hall, lm_sem_dorm, lm_sem_chant], note: "서원 견습 400. 낭독문은 '소리로만' 외운다"}
+  - {id: lm_seminary, name: 신학원, xy: [1260, 560], kind: school, access: staff, rooms: [lm_sem_hall, lm_sem_dorm, lm_sem_chant, lm_sem_garden], note: "서원 견습 400. 낭독문은 '소리로만' 외운다"}
   - {id: lm_sem_hall, name: 낭독실, parent: lm_seminary, access: staff}
   - {id: lm_sem_dorm, name: 견습 기숙사, parent: lm_seminary, access: staff, hidden: "마지막 침상 널 아래 — 열여섯 살 견습이 몰래 베낀 낭독문 한 줄의 '모양'"}
   - {id: lm_sem_chant, name: 성가 막사, parent: lm_seminary, access: staff, hours: "성가대 연습 15:00-18:00", note: "대성당 뒤. 성가대와 찬송 순례자 후보가 자란다. 요한이 열한 살부터 자란 곳"}
+  - {id: lm_sem_garden, name: 신학원 정원, parent: lm_seminary, access: staff, note: "벤치 왼쪽 자리는 늘 비어 있다 — 마테우스가 가끔 와서 앉는 자리 (fact_lm_anselm_raised_mateus)"}
   - {id: lm_scriptorium, name: 필사실, xy: [1270, 700], kind: scriptorium, access: staff, hours: "05:00-18:00", rooms: [lm_scr_hall, lm_scr_master], note: "필사 수사 서른. 모두 글을 읽지 못한다 — 승인된 낭독문을 모양으로만 베낀다"}
   - {id: lm_scr_hall, name: 필사 홀, parent: lm_scriptorium, access: staff, note: "긴 책상 열두 개. 말소리 금지. 창을 북쪽으로 낸 이유는 그림자 때문"}
   - {id: lm_scr_master, name: 필사장실, parent: lm_scriptorium, access: staff, hidden: "문 뒤 못에 걸린 '빛의 서신' 모사 한 장 — 오탈자 있는 열일곱 부 중 하나 (fact_lm_otilie_copies)"}
@@ -77,6 +78,7 @@ locations:
   - {id: lm_pilgrim_house, name: "순례자 숙소 '등불 없는 집'", xy: [1060, 1440], kind: lodging, access: public, hours: "숙박 18:00-07:00", rooms: [lm_pilgrim_cellar, lm_dry_well], note: "빵 한 덩이와 짚 침상과 이름 장부. 아그네스 수녀가 관리하고 베르타가 일상을 맡는다"}
   - {id: lm_pilgrim_cellar, name: 지하 저장고, parent: lm_pilgrim_house, access: staff, hidden: "순례 허가증 위조용 동판과 빈 목패 열두 장 — 아델이 발급한 것이라는 뜻"}
   - {id: lm_dry_well, name: 물 없는 우물, parent: lm_pilgrim_house, access: secret, hidden: "저장고 바닥 우물에서 이어지는 지하 수로 → 잿빛 실 입구. 지금까지 214명이 지났다 (fact_lu_agnes_well)"}
+  - {id: lm_pilgrim_chapel, name: 순례자 거리 예배당, xy: [1080, 1480], kind: chapel, access: public, hours: "04:00-23:00", note: "순례자 거리와 숙소의 새벽·저녁 기도. 구역 예배당의 하나"}
   - {id: lm_token_stalls, name: 성표 노점 거리, xy: [1100, 1350], kind: market, access: public, hours: "06:00-19:00", note: "성표 고리, 순례 지팡이, 헌금 쪽지 환전. 목줄단 '혀'가 노점 곁에 선다"}
   - {id: lm_pilgrim_post, name: 게시 기둥, xy: [1120, 1420], kind: outdoor, access: public, note: "허가증 검사 일정과 정화 날짜가 붙는다"}
   - {id: lm_north_house, name: 북부 사제관, xy: [1150, 1380], kind: lodging, access: staff, hours: "04:00-22:00", note: "북부 등불관 공석 3년 — 대리 수녀 아델이 쓴다. 북부 순례자와 허가증 발급", hidden: "서랍 안 순례 허가증 인장 — 도장 두 개. 하나는 북부, 하나는 아델의 것이 아니다 (fact_lm_adel_seal)"}
@@ -118,4 +120,5 @@ locations:
 outer:
   - {id: lumen__farm, name: 성지 농원, hours: 1.0}
   - {id: lumen__reed_flats, name: 갈대 평야, hours: 2.0}
+  - {id: lumen__river_villages, name: 은빛 강 연안 마을들, hours: 4}
   - {id: lumen__sandbar, name: 등불섬 남쪽 모래톱, hours: 0.5}

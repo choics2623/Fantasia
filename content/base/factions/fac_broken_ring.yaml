@@ -33,7 +33,7 @@ offices:
     perks: ["침묵의 우물 9번 방 — 벽에 손톱으로 새긴 서신 2장", "벽 두드림 문자"]
   - id: off_seventh_ring_chair
     title: 일곱째 고리 — '벌어진 고리' (지도부 의장격)
-    holder: "unnamed:아델 (인간, 44) — 수녀, 북부 등불관 대리"
+    holder: npc_lm_adel
     reports_to: off_letter
     powers: ["일곱째 고리 소집(축일·재의 날)", "북부 순례 허가증", "교구 간 연락"]
     chosen_by: "일곱째 고리 여섯의 고리 건넴 (AS 305)"
@@ -47,14 +47,14 @@ offices:
     perks: ["물 없는 우물"]
   - id: off_seventh_ring_candle
     title: 일곱째 고리 — 대성당 (촛불지기)
-    holder: "unnamed:한나 (인간, 58) — 알베릭의 누이, 등잔지기"
+    holder: npc_lm_hanna
     reports_to: off_seventh_ring_chair
     powers: ["알베릭과의 연락(양초 조각)", "영원등 곁 — 대사제의 기분을 안다"]
     chosen_by: "고리 건넴"
     perks: ["제단 아래 마렌의 관 — 첫 성표(고리 하나가 벌어진 쇠사슬)가 거기 있다고 전해진다"]
   - id: off_seventh_ring_well
     title: 일곱째 고리 — 침묵의 우물 (간수)
-    holder: "unnamed:수도자 야코프 — 간수"
+    holder: npc_lm_simon
     reports_to: off_seventh_ring_chair
     powers: ["감방 문", "알베릭·베라 소식"]
     chosen_by: "고리 건넴"
@@ -81,6 +81,14 @@ offices:
     chosen_by: "첫 임무로 구절 하나를 틀리지 않고 나른 자"
     perks: []
 
+  - id: off_ring_copyist
+    title: "rank_runner"
+    holder: npc_lm_otilie
+    reports_to: null
+    powers: []
+    chosen_by: null
+    perks: []
+    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
   - {id: rank_letter, title: "서신", duties: "쓴다 — 갇혀서도", privileges: "없다", open_to_player: false}
   - {id: rank_seventh_ring, title: "일곱째 고리", duties: "교구를 넘는 결정", privileges: "축일 군중 속의 만남", open_to_player: false}

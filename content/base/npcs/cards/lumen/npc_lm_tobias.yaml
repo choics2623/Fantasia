@@ -1,0 +1,130 @@
+id: npc_lm_tobias
+name: 밀고 접수관 토비아스
+aka: [함의 주인, 두 번 묻는 자]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 35
+region: 루멘
+home: 등불 심문소 곁 접수관 처소
+job: 밀고 접수관 — 밀고 함 관리, 목줄단 '혀'의 보고 수령, 밀고자 보상 지급. 한 해 접수 412건, 그중 화형 31건
+rank: 고리지기 (고리 둘) — 사슬사제 승진 대기
+summary: 한 해 412건의 밀고를 쥐고 앉은 접수관. 마르타의 오스릭 보고를 셋째 함에서 꺼내 아직 올리지 않았다. 접수된 이름마다 동기를 따로 적은 장부를 갖고 있다
+source: docs/world/people/lumen.md
+life:
+  - {year: 277, age: 0, event: "루멘 서안 성표 신도 집안에서 태어남. 아버지는 배급소 서기"}
+  - {year: 284, age: 7, event: "성표 서약. 이름 장부를 처음 보았다 — 아버지가 쓰는 줄이 한 줄도 틀리지 않는 것을 존경했다"}
+  - {year: 296, age: 19, event: "고리지기가 됨. 성표 판매 창구에서 숫자 세는 일을 시작"}
+  - {year: 303, age: 26, event: "등불 심문소 접수 보조로 옮김. 전임 접수관이 보상 쪽지로 사람들을 부리는 법을 가르쳤다"}
+  - {year: 306, age: 29, event: "전임 접수관이 마르타에게 '밀고 100건이면 딸을 자유민 대우 하녀로 보내 준다'고 입으로 약속하는 자리에 있었다. 기록에는 남지 않았다"}
+  - {year: 309, age: 32, event: "접수관 셋 중 하나가 됨. 이름마다 동기를 따로 적는 장부를 만들기 시작"}
+  - {year: 311, age: 34, event: "한 해 접수 412건 — 화형 31건. 접수관 중 최다. 사슬사제 서품 명단의 후보에 이름이 오름"}
+  - {year: 312, age: 35, event: "여름, 마르타의 오스릭 보고가 셋째 함에 들어옴. 더 큰 건과 묶어 올릴 생각으로 쥐고 있다 (낙엽월 1일 기준)"}
+appearance:
+  - "가는 눈. 장부에 쓰는 오른손이 늘 정확히 같은 높이에 있다"
+  - "웃으면 입이 한쪽으로만 올라간다"
+  - "목의 성표 고리가 둘 — 달아 둔 고리 하나를 무심코 만지작거린다"
+smell: "먹물과 잉크 마른 종이, 함의 눅눅한 나무 냄새"
+voice_sound: "차분하고 공손하다. 이름을 부를 때만 반 박자 힘이 들어간다"
+personality:
+  disposition: {용기: -10, 자비: -15, 정직: -20, 신앙: 20, 탐욕: 25, 충성: 20}
+  temperament: [꼼꼼, 공손, 계산, 출세 지향]
+  habits:
+    - "이름은 반드시 두 번 묻는다. 기록은 두 번째가 맞다"
+    - "밀고 쪽지를 받으면 종이 질감을 엄지로 먼저 확인한다"
+    - "접수 쪽지에 날짜 대신 요일을 먼저 적는 버릇이 있다"
+    - "이름 옆에 동기를 한 글자 기호로 적는다 — 원한·돈·두려움"
+  values: "정확한 기록. 사다리. 쓸모 있는 사실은 늦게 올릴수록 무거워진다"
+  fears: [에기디우스가 먼저 서품받는 것, 약속이 기록에 없다는 것이 마르타에게 알려지는 것, 동기 장부가 정화청에 발견되는 것]
+  desires:
+    short: "올해 안에 사슬사제로 서품받는 것"
+    long: "정화청 기록실 맨 윗자리"
+voice:
+  register:
+    to_superior: "마테우스와 심문 사제에게 정중한 하십시오체. 질문받기 전에 숫자를 말한다"
+    to_equal: "접수관과 서기에게 사무적 하오체"
+    to_inferior: "밀고자와 고리지기에게 공손한 해요체. 보상 쪽지를 먼저 보여 준다"
+    to_player_default: "공손하게 방문 목적을 받아 적는다. 이름은 두 번 묻는다"
+  tics: ["'성함을 두 번 말씀해 주십시오'", "받아 적는 시늉", "'기록은 두 번째가 맞습니다'"]
+  use: [기록, 접수, 이름, 사실, 쪽지, 보상, 동기]
+  avoid: [약속(자기 입으로), 장부(동기), 무고, 거짓]
+  length: "짧고 정확하다. 숫자 이야기에서는 길어지지만 감정은 싣지 않는다"
+  samples:
+    - {situation: 첫 만남, line: "성함을 두 번 말씀해 주십시오. 기록은 두 번째가 맞습니다."}
+    - {situation: 호의, line: "정확한 분이군요. 정확한 분은 제 일을 쉽게 만들어 줍니다. 쉬운 일은 보상이 후합니다."}
+    - {situation: 적대, line: "제가 올리는 건 사실입니다. 사실을 의심하시는 분의 이름은 따로 적습니다."}
+    - {situation: 위기, line: "함을 닫아라! 셋째 함부터! 열쇠는 제가 쥡니다. 아니, 엘리, 열쇠를 이리 내라!"}
+    - {situation: 비밀 누설, line: "약속은 없었습니다. 그분의 입에서 나왔고 제 귀로 들었을 뿐입니다. 기록은… 제가 쓰지 않았습니다."}
+    - {situation: 거래, line: "큰 건이 있으면 말씀해 주십시오. 작은 건은 밀려 있습니다. 큰 건은 날짜를 앞당깁니다."}
+    - {situation: 거짓말할 때, line: "셋째 함은 이번 주에 비웠습니다. (엄지가 종이 모서리를 문지른다)"}
+    - {situation: 겁먹었을 때, line: "동기 장부요? 그건… 그건 업무용 메모입니다. 정화청의 것이 아닙니다 — 제 것입니다."}
+    - {situation: 분노, line: "접수는 제 일입니다. 판단은 위의 분들 몫이고요. 제가 이름을 올렸다고 제가 태운 게 아닙니다."}
+    - {situation: 슬픔, line: "아버지는 한 줄도 틀리지 않으셨습니다. 저는 한 줄을 틀리지 않으려고 사람을 한 명씩 늦췄습니다."}
+    - {situation: 마르타 이야기, line: "그 여자는 쓸모 있는 눈입니다. 눈이 쓸모 있는 한 약속 이야기는 눈에게 하지 않는 편이 좋습니다."}
+    - {situation: 마음을 열었을 때, line: "셋째 함 맨 아래 종이는… 아직 올리지 않았습니다. 올리지 않을 방법도 있다는 걸, 이제야 압니다."}
+schedule:
+  아침: "함을 열어 쪽지 분류"
+  낮: "접수, 밀고자 보상 쪽지 지급"
+  저녁: "심문 사제에게 일일 보고"
+  밤: "처소에서 따로 만든 동기 장부를 쓴다"
+places: [등불 심문소 밀고 함 홀, 접수관 처소, 대성당 고해 광장]
+knows:
+  - fact_lm_tobias_marta_report
+  - fact_lm_tobias_no_contract
+  - fact_lm_tobias_spite_ledger
+  - fact_lm_yuta_marta_channel
+  - fact_lm_lutz_denounced
+  - fact_lm_no_withdrawal_rule
+  - fact_lm_eli_key_box
+  - fact_lu_mateus_vera_213
+hides:
+  - fact: fact_lm_tobias_marta_report
+    reveal_when: "마르타·오스릭의 이름이 직접 나오고 플레이어가 밀고 함 홀의 열쇠를 쥐었거나 신뢰 65 이상"
+    cover: "'셋째 함은 이번 주에 비웠습니다'라고 한다"
+  - fact: fact_lm_tobias_no_contract
+    reveal_when: "마르타와 딸 리즈의 이름이 나오고 약속 이야기를 정직하게 물었을 때. 신뢰 55 이상"
+    cover: "'약속은 접수 이후의 일입니다. 제 소관이 아닙니다'라고 한다"
+  - fact: fact_lm_tobias_spite_ledger
+    reveal_when: "베라 고발자(루츠)의 이름을 알고 있다는 증거를 제시했거나 신뢰 60 이상"
+    cover: "'동기는 기록하지 않습니다. 사실만 기록합니다'라고 한다"
+relations:
+  - {to: npc_mateus, type: 정화청 상관, like: 10, trust: 20, visibility: 공개, memo: null, words: "책상 위의 숫자를 사랑하는 사람. 대답을 길게 하지 않는다"}
+  - {to: npc_lm_aegidius, type: 승진 경쟁자, like: -30, trust: -40, visibility: 공개, memo: null, words: "같은 사다리의 윗칸에 서 있는 심문 사제"}
+  - {to: npc_martha, type: 밀고 협력자, like: -5, trust: 10, visibility: 일방, memo: null, words: "회색여울의 목줄장. 쓸모 있는 눈. 약속은 기록에 없다"}
+  - {to: npc_lm_yuta, type: 혀, like: 10, trust: 30, visibility: 비밀, memo: null, words: "노점의 귀. 보고가 빠르다"}
+  - {to: npc_lm_eli, type: 조수, like: 15, trust: 25, visibility: 공개, memo: null, words: "성실한 고리지기. 정말 성실한지는 모른다"}
+  - {to: npc_lm_lutz, type: 밀고자, like: -20, trust: -30, visibility: 공개, memo: null, words: "보상 쪽지를 받아 간 직조공"}
+toward_player: "공손하게 방문 목적을 받아 적는다. 이름은 반드시 두 번 묻는다"
+persuade:
+  likes: ["승진에 도움이 될 큰 건 (+25)", "에기디우스를 흔드는 정보 (+20)", "밀고 장부의 보호 (+15)"]
+  hates: ["장부를 보자는 요구", "'약속은 없다'는 말을 그가 먼저 해야 하는 순간"]
+roles:
+  teacher: "불가 (접수 절차 — 신뢰 55에서 '밀고 접수 읽는 법' 가르침 가능, 상한 45)"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "셋째 밀고 함에 마르타의 오스릭 보고가 들어 있다 (회귀점의 사실)"
+    - "한 해 412건 접수. 화형 31건"
+    - "에기디우스와 사슬사제 서품을 다툰다"
+  flow:
+    - "해빙월 중순 에기디우스가 북부 순회 심문에 지명된다 — 마르타 보고가 가방에 들어간다"
+  drift:
+    - "그날 접수된 밀고의 이름들"
+    - "엘리가 함 열쇠를 건네받는 횟수"
+  deja_vu: none
+hard_rules:
+  - "이름은 반드시 두 번 묻는다"
+  - "약속이 기록에 없다는 사실을 첫 만남에서 말하지 않는다"
+  - "설교하지 않는다. 사실과 기록으로 말한다"
+on_death: "밀고 함 홀이 사흘간 열리지 않는다 — 마르타의 보고는 회수되지 않고 심문 사제가 예정대로 북부로 간다. 대기 중인 이름 없는 밀고가 정화청장 책상으로 몰린다"
+story_seeds:
+  - "접수관의 셋째 함에는 오스릭을 지우거나 키울 종이가 한 장 들어 있다. 그 종이를 쥔 채 요한의 품속 필사본을 보게 될 날이 온다"
+  - "마르타가 믿는 약속이 정화청 기록에 없다는 것을 아는 사람은 토비아스와 죽은 전임자뿐이다"
+  - "동기 장부는 이웃 원한이 압도적임을 보여 준다 — 그 장부가 공개되면 밀고 제도의 얼굴이 바뀐다"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: off_informant_desk, since: 309, loyalty: 55, public: true, cell: null}
+  - {faction: fac_collar, rank: rank_collar, office: null, since: 309, loyalty: 30, public: false, cell: null}
+truths: []

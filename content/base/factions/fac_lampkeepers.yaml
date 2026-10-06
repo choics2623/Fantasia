@@ -34,14 +34,14 @@ offices:
     perks: ["침묵의 우물 감방(9년째)"]
   - id: off_candle_keeper
     title: 촛불지기 (대성당 양초 공방)
-    holder: "unnamed:한나 (58, 알베릭의 누이)"
+    holder: npc_lm_hanna
     reports_to: off_reciter
     powers: ["알베릭에게 소식과 양초 조각을 몰래 전한다", "후계 순서의 다음"]
     chosen_by: "혈통 — 같은 해에 태어난 쌍둥이 누이"
     perks: ["대성당 출입 — 양초 공방의 합법적 자리"]
   - id: off_ring_keeper
     title: 고리지기 (연락과 운반)
-    holder: "unnamed:엘리 (26, 한나의 아들)"
+    holder: npc_lm_eli
     reports_to: off_candle_keeper
     powers: ["끊어진 고리의 연락", "설교를 외우는 후계 후보"]
     chosen_by: "한나의 아들"
@@ -55,7 +55,7 @@ offices:
     perks: []
   - id: off_first_token
     title: 마렌의 첫 성표 지킴이
-    holder: null
+    holder: npc_lm_beate
     reports_to: off_reciter
     powers: ["일곱 고리 중 하나가 벌어진 쇠사슬 고리 — '끊어진 고리' 신도회 이름의 기원"]
     chosen_by: "공석 — 대성당 제단 아래 마렌의 관 안에 있다고 '전해진다'. 누구도 확인하지 못했다"

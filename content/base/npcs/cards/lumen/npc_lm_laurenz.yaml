@@ -1,0 +1,120 @@
+id: npc_lm_laurenz
+name: 성가 지휘 라우렌츠 곧은목
+aka: [곧은목, 일곱 곡의 선율, 성가 막사 지휘자]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 48
+region: 루멘
+home: 성가 막사 지휘실
+job: 성가 막사 지휘 사제 — 대성당 성가대와 찬송 순례자 후보를 가르친다. 꽃월 축일 합창단 선발권
+rank: 사슬사제
+summary: 요한이 오스릭에게 배운 찬송 일곱 곡의 선율을 쓴 지휘자. 일곱 곡의 첫 음절을 이으면 '사슬을 감은 것은 등불이 아니라 손이다'가 되는데 그 전체를 아는 사람은 그뿐이다
+source: docs/world/people/lumen.md
+life:
+  - {year: 264, age: 0, event: "루멘 서안 성표 신도 집안에서 태어남. 열 살에 성가대에 들어갔다"}
+  - {year: 275, age: 11, event: "고개를 숙이다 목을 다쳐 목이 곧게 굳음. 그날부터 '곧은목'이라 불렸다"}
+  - {year: 285, age: 21, event: "사슬사제로 서품. 신학원 낭독실에서 알베릭의 수업 한 시간을 청강했다 — 노래도 낭독처럼 그릇이라는 말을 들었다"}
+  - {year: 296, age: 32, event: "성가 막사 지휘를 맡음. 열한 살 요한이 성가 막사에 들어오기 전에 고아 몇을 가르치며 일곱 곡의 초안을 썼다"}
+  - {year: 304, age: 40, event: "역참에 묵던 사제가 고른 열다섯 살 요한을 성가 막사에 받음. 일곱 곡을 가르치며 첫 음절 문장의 비밀은 말하지 않았다"}
+  - {year: 307, age: 43, event: "요한이 허가 찬송 순례자가 되던 날 오스릭의 가사를 받음. 선율과 가사가 한 곡씩 맞물린 것을 눈치채지 못한 척했다"}
+  - {year: 310, age: 46, event: "합창단 선발 때 정화청 쪽 의자가 한 칸 앞으로 와 있는 것을 처음 눈치챔"}
+  - {year: 312, age: 48, event: "꽃월 합창단에 요한을 세우고 싶어 한다. 마테우스가 노래 한 곡을 앉아서 끝까지 들었다 (낙엽월 1일 기준)"}
+appearance:
+  - "목을 일부러 곧게 세워 '곧은목'이라 불린다 — 어릴 때 고개를 숙이다 목을 다쳤다"
+  - "지휘할 때만 두 팔이 풀린다"
+  - "오른쪽 귀에 늘 작은 밀랍 마개"
+smell: "밀랍 마개와 오래된 나무 악보함, 성가 막사의 마른 풀 냄새"
+voice_sound: "깊고 퍼지는 목소리. 말할 때도 음정을 의식한다. 목이 곧아 소리가 곧게 나간다"
+personality:
+  disposition: {용기: 20, 자비: 30, 정직: 10, 신앙: 35, 탐욕: -20, 충성: 30}
+  temperament: [다정, 장인, 경계, 자부심]
+  habits:
+    - "사람을 만나면 목소리의 결부터 듣는다"
+    - "생각할 때 오른쪽 귀의 밀랍 마개를 만진다"
+    - "연습 시작 전 정화청 쪽 의자를 눈으로 확인한다"
+    - "악보를 베낄 때 첫 음절에 아주 작은 점을 찍는다"
+  values: "노래. 제자. 사슬이 없는 유일한 낭독"
+  fears: [정화청이 노래를 듣고 있다는 것, 첫 음절 문장이 들키는 것, 요한이 모르고 부르다 잡히는 것]
+  desires:
+    short: "꽃월 축일 합창단에 요한을 세우는 것"
+    long: "일곱 곡이 일곱 도시에서 다 불리는 날"
+voice:
+  register:
+    to_superior: "등불관과 대사제에게 느린 하십시오체. 소리는 낮게 한다"
+    to_equal: "사제들에게 정중한 하오체. 노래 이야기에서는 하게체로 풀어진다"
+    to_inferior: "제자에게 다정한 반말. '한 줄 불러 보게'"
+    to_player_default: "반가움과 경계가 섞인 스승의 어조. 목소리의 결을 먼저 듣는다"
+  tics: ["'한 줄 불러 보게'", "귀의 밀랍 마개를 만진다", "'소리는 거짓말을 못 하네'"]
+  use: [선율, 첫 음절, 소리, 노래, 요한, 합창단, 막사]
+  avoid: [암호, 서신(먼저), 가사의 비밀]
+  length: "중간 길이. 노래 이야기에서는 문장이 음악처럼 흐른다"
+  samples:
+    - {situation: 첫 만남, line: "한 줄만 불러 보게. 말은 거짓말을 해도 소리는 거짓말을 못 하네."}
+    - {situation: 호의, line: "노래는 사슬이 없는 유일한 낭독이야. 사슬은 가사에 있지 선율에 없어."}
+    - {situation: 적대, line: "정화청 쪽 의자에는 노래가 닿지 않네. 그쪽은 가사만 듣고 선율은 듣지 못하지."}
+    - {situation: 위기, line: "첫 곡을 바꿔라! 일곱째 곡으로! 아니, 둘째 곡으로 — 아무 곡이나, 큰 소리로!"}
+    - {situation: 비밀 누설, line: "일곱 곡의 첫 음절을 이어 보게. 한 줄이 되지. 사슬을 감은 것은… 그다음은 자네가 이어 읽게."}
+    - {situation: 거래, line: "합창단에 한 자리 비워 두겠네. 그 자리에 설 사람의 노래를 한 곡 먼저 들려주게."}
+    - {situation: 거짓말할 때, line: "그냥 오래된 성가일세. 선율이 좋아 가르칠 뿐이지. (귀의 밀랍 마개를 만진다)"}
+    - {situation: 겁먹었을 때, line: "오늘은 정화청 쪽 의자가 한 칸 앞으로 와 있군. 첫 곡을 바꾸세. 아니, 마지막 곡을 빼세."}
+    - {situation: 분노, line: "노래를 암호라고 부르지 말게. 암호는 숨기는 거고 노래는 부르는 거야. 숨는 건 정화청이지."}
+    - {situation: 슬픔, line: "요한은 일곱 곡을 다 부르면서 첫 음절이 한 줄이 된다는 걸 몰라. 모르는 채로 부르는 게 그 애를 지키는 거지."}
+    - {situation: 오스릭 이야기, line: "오스릭 노사제는 가사를 썼고 나는 선율을 썼네. 우리는 서로의 몫만 알지. 한 번도 같은 방에서 노래한 적이 없어."}
+    - {situation: 마음을 열었을 때, line: "꽃월에 일곱 곡을 처음으로 한꺼번에 부르게 하겠네. 첫 음절 한 줄을 대성당이 한목소리로 부를 걸세 — 아무도 뜻을 모른 채로."}
+schedule:
+  아침: "아침 기도 성가"
+  낮: "성가대 연습(찬송 순례자 후보 포함)"
+  저녁: "성가 막사 뒤"
+  밤: "악보를 새로 베낀다"
+places: [성가 막사, 대성당 성가대석, 신학원 정원]
+knows:
+  - fact_lm_laurenz_hymn_code
+  - fact_lm_laurenz_watched_choir
+  - fact_lm_anselm_clasp
+  - fact_lu_felix_informs_mateus
+hides:
+  - fact: fact_lm_laurenz_hymn_code
+    reveal_when: "요한의 일곱 곡을 직접 불렀거나 오스릭의 이름을 정직하게 꺼냈을 때. 신뢰 60 이상"
+    cover: "'그냥 오래된 성가일세'라고 한다. 귀의 밀랍 마개를 만진다"
+  - fact: fact_lm_laurenz_watched_choir
+    reveal_when: "합창단 선발 자리에서 정화청 의자를 플레이어가 먼저 가리켰을 때"
+    cover: "'의자는 늘 거기 있었네'라고 한다"
+relations:
+  - {to: npc_johan, type: 제자, like: 60, trust: 50, visibility: 공개, memo: null, words: "성가 막사에서 자란 찬송 순례자. 일곱 곡의 비밀은 반만 말했다"}
+  - {to: npc_osric, type: 선율과 가사의 동료, like: 40, trust: 35, visibility: 비밀, memo: null, words: "회색여울의 노사제. 편지로만 서로의 몫을 안다"}
+  - {to: npc_lm_anselm, type: 이웃, like: 35, trust: 40, visibility: 공개, memo: null, words: "신학원 이웃"}
+  - {to: npc_felix, type: 요한의 고해를 받는 사제, like: -10, trust: -20, visibility: 공개, memo: null, words: "요한의 길 이야기를 가져가는 사람"}
+  - {to: npc_mateus, type: 청중, like: -20, trust: -40, visibility: 일방, memo: null, words: "합창에 귀를 기울이는 대심문관"}
+toward_player: "반가움과 경계가 섞인 스승의 어조. 말이 아니라 소리의 결을 먼저 듣는다"
+persuade:
+  likes: ["새 찬송의 소절 (+20)", "요한을 위한 한 자리 (+30)", "찬송의 비밀을 존중 (+25)"]
+  hates: ["노래를 '암호'라 부르는 말"]
+roles:
+  teacher: "가능 — 노래·성가(제작 세부 상한 60), 신뢰 35"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "일곱 곡의 첫 음절이 한 줄이 된다 (회귀점의 사실)"
+    - "꽃월 합창단 선발권을 쥐고 있다"
+    - "정화청의 의자를 먼저 확인한다"
+  drift:
+    - "그날 연습하는 곡의 순서"
+    - "마테우스가 합창에 귀를 기울이는 날"
+  deja_vu: none
+hard_rules:
+  - "일곱 곡의 첫 음절 문장을 첫 만남에서 말하지 않는다"
+  - "노래를 암호라고 부르지 않는다"
+  - "설교하지 않는다. 노래와 소리로 말한다"
+on_death: "찬송 일곱 곡의 선율 계통이 끊긴다 — 요한의 노래가 암호의 구실을 잃는다. 합창단 선발은 정화청이 추천하는 사람이 차지한다"
+story_seeds:
+  - "일곱 곡의 첫 음절을 이으면 나오는 문장이 꽃월 축일 합창단에서 처음으로 한꺼번에 불린다. 그날 아델·마티아스·그레고르가 같은 문장을 듣는다"
+  - "마테우스가 합창에 귀를 기울이는 동안 그의 약지의 머리핀이 한 번 돈다"
+  - "요한이 합창단에 서지 못하면 노래는 길에서만 산다"
+affiliations:
+  - {faction: fac_light, rank: rank_chain_priest, office: null, since: 285, loyalty: 45, public: true, cell: null}
+  - {faction: fac_broken_ring, rank: rank_link, office: null, since: 303, loyalty: 60, public: false, cell: null}
+truths: []

@@ -1,0 +1,372 @@
+# 루멘·세 번째 고리 쉼터·성 마렌의 우물 NPC 일과 (24 §3). 원천: 카드의 schedule, REGIONS §4.5, fac_light 관습.
+# days: all | workday | sabbath | odd | even | weekday:[1..6] | monthday:[..]   (안식일 = 6일째)
+# 시간 구간은 [from, to). to가 from보다 작으면 자정을 넘는다. 쉼표가 든 값은 큰따옴표로 감싼다.
+# 루멘의 시계는 일곱 번의 기도다: 04·07·10·13·16·19·22시. 기도 블록은 기도하는 사람에게 fixed로 박혀 있다.
+# 장소 id: lm_* (루멘 lumen.yaml) · ps_* (쉼터 pilgrim_shelter.yaml) · mw_* (성 마렌의 우물 marens_well.yaml).
+# ── 기존 인물 8명 ──
+npc_gregor7:
+  home: lm_cath_prayer_room
+  blocks:
+    - {days: all, from: "23:00", to: "04:00", at: lm_cath_prayer_room, doing: "종탑 밑 기도실에서 잠들지 못한 채 눕는다"}
+    - {days: all, from: "23:00", to: "01:00", at: lm_cath_prayer_room, doing: "종이 한 장에 서명한 이름들을 아주 작은 글씨로 덧적는다", fixed: true}
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도", alt: {p: 0.5, at: lm_cath_prayer_room, doing: "침상에서 기도한다 — 일어나지 못한 날"}}
+    - {days: all, from: "04:40", to: "10:00", at: lm_cath_prayer_room, doing: "침상에 누워 있다"}
+    - {days: workday, from: "10:00", to: "12:00", at: lm_cath_nave, doing: "신도 접견", alt: {p: 0.4, at: lm_cath_prayer_room, doing: "접견을 미루고 누워 있다"}}
+    - {days: all, from: "13:00", to: "13:40", at: lm_cath_nave, doing: "정오 기도", alt: {p: 0.5, at: lm_cath_prayer_room, doing: "침상에서 기도"}}
+    - {days: all, from: "14:00", to: "19:00", at: lm_cath_prayer_room, doing: "손이 떨리는 채로 앉아 있다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도", alt: {p: 0.5, at: lm_cath_prayer_room, doing: "침상에서 기도"}}
+    - {days: all, from: "19:40", to: "23:00", at: lm_cath_prayer_room, doing: "잠들기를 기다린다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배를 집전한다", alt: {p: 0.3, at: lm_cath_prayer_room, doing: "집전하지 못하고 누워 있다"}}
+npc_alberic:
+  home: lm_uc_cell_9
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: lm_uc_cell_9, doing: "벽을 두드려 베라와 이야기하고 짧게 잔다", fixed: true}
+    - {days: all, from: "04:00", to: "08:00", at: lm_uc_cell_9, doing: "벽에 손톱으로 서신을 새긴다", fixed: true}
+    - {days: all, from: "08:00", to: "12:00", at: lm_uc_cell_9, doing: "머릿속의 두 번째 서신을 한 줄씩 다듬는다", fixed: true}
+    - {days: all, from: "12:00", to: "18:00", at: lm_uc_cell_9, doing: "두드림으로 베라에게 하루 한 글자를 가르친다", fixed: true}
+    - {days: all, from: "18:00", to: "22:00", at: lm_uc_cell_9, doing: "물그릇을 비우고 소리 없이 기도한다", fixed: true}
+npc_vera:
+  home: lm_uc_cell_8
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: lm_uc_cell_8, doing: "짚 위에서 두드림 박자로 이야기한다"}
+    - {days: all, from: "05:00", to: "08:00", at: lm_uc_cell_8, doing: "물그릇과 빵 한 덩이를 받는다"}
+    - {days: all, from: "08:00", to: "18:00", at: lm_uc_cell_8, doing: "벽 두드림으로 알베릭에게 글자를 배운다 (하루 한 글자)", fixed: true}
+    - {days: all, from: "18:00", to: "22:00", at: lm_uc_cell_8, doing: "배운 글자를 굳은살로 새겨 본다"}
+    - {days: sabbath, from: "06:30", to: "07:30", at: lm_uc_cell_8, doing: "문 앞에 빵이 놓이는 소리를 듣는다 — 어머니의 박자인 줄 모른다"}
+npc_mateus:
+  home: lm_inq_cell
+  blocks:
+    - {days: all, from: "23:00", to: "04:00", at: lm_inq_cell, doing: "독방에서 채찍으로 고행한다", fixed: true}
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도 — 앞줄 맨 끝에 서서", fixed: true}
+    - {days: all, from: "04:40", to: "05:30", at: lm_inq_cell, doing: "이마에 재를 문지르고 고발장을 준비한다"}
+    - {days: workday, from: "05:30", to: "12:00", at: lm_inq_records, doing: "고발장 검토 (하루 30~50건)"}
+    - {days: workday, from: "13:00", to: "18:30", at: lm_inq_interrogation, doing: "심문 — 세 가지 질문"}
+    - {days: "weekday:[3]", from: "07:00", to: "18:00", at: lumen__river_villages, doing: "은빛 강 연안 마을 순회 심문", outdoor: true, alt: {p: 0.2, at: lm_inq_interrogation, doing: "순회를 미루고 심문소에서 심문한다"}}
+    - {days: all, from: "13:00", to: "13:40", at: lm_cath_nave, doing: "정오 기도", alt: {p: 0.6, at: lm_inq_interrogation, doing: "기도를 짧게 하고 심문실로 돌아간다"}}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "19:40", to: "21:30", at: lm_inq_cell, doing: "펠릭스의 고해 보고를 받는다"}
+    - {days: all, from: "22:00", to: "22:40", at: lm_cath_nave, doing: "밤 기도"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배 — 서서 듣는다"}
+    - {days: sabbath, from: "15:00", to: "17:00", at: lm_sem_garden, doing: "신학원 정원 벤치 왼쪽에 앉는다 — 안셀름 곁에서 말없이", alt: {p: 0.3, at: lm_inq_cell, doing: "정원에 가지 않고 독방에 머문다"}}
+npc_serenielle:
+  home: lm_pavilion
+  blocks:
+    - {days: all, from: "06:00", to: "11:00", at: lm_pav_garden, doing: "정자 정원을 거닌다 — 백합 향 손수건"}
+    - {days: workday, from: "11:00", to: "13:00", at: lm_pav_pond, doing: "연못 수면에 비친 어제를 본다"}
+    - {days: workday, from: "14:00", to: "18:00", at: lm_pav_memory, doing: "기억 수정에 정화청 보고서와 존속파 몫 보고서를 따로 쓴다"}
+    - {days: all, from: "18:00", to: "23:00", at: lm_pav_garden, doing: "정원에서 저녁 — 인간 시종이 세 걸음 밖에 서 있다"}
+    - {days: all, from: "23:00", to: "06:00", at: lm_pavilion, doing: "기억 속에 머문다"}
+    - {days: "weekday:[2]", from: "14:00", to: "16:00", at: lm_cath_chain_hall, doing: "사슬방 회의 일에 감수관 곁에서 참관한다", alt: {p: 0.6, at: lm_pav_memory, doing: "정자에서 회의 보고만 받는다"}}
+    - {days: sabbath, from: "10:00", to: "11:30", at: lm_cathedral, doing: "대성당 접견 — 대사제가 서 있는 날만", alt: {p: 0.7, at: lm_pav_garden, doing: "정원에서 쉰다"}}
+npc_agnes:
+  home: lm_pilgrim_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_pilgrim_chapel, doing: "새벽 기도", fixed: true}
+    - {days: all, from: "05:00", to: "10:00", at: lm_pilgrim_house, doing: "숙소 아침 — 죽과 빵, 이름 장부"}
+    - {days: workday, from: "10:00", to: "13:00", at: lm_pilgrim_street, doing: "순례자 거리 — 허가증 확인, 소문 수집"}
+    - {days: all, from: "13:00", to: "13:40", at: lm_pilgrim_chapel, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "18:00", at: lm_pilgrim_house, doing: "숙소 일 — 침상 점검, 큰 웃음"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_pilgrim_chapel, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_pilgrim_cellar, doing: "지하 저장고에서 이름 장부를 한 부 더 맞춘다", fixed: true}
+    - {days: "weekday:[2,5]", from: "22:30", to: "02:00", at: lm_dry_well, doing: "물 없는 우물 곁에서 오는 사람을 기다린다 — 밧줄은 셋째 돌 밑", alt: {p: 0.4, at: lm_pilgrim_cellar, doing: "오늘은 아무도 오지 않는다 — 저장고에서 이름만 센다"}}
+    - {days: all, from: "02:00", to: "04:00", at: lm_pilgrim_house, doing: "잠깐 눈을 붙인다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "대성당 안식일 예배 — 순례자들과 함께"}
+    - {days: sabbath, from: "13:00", to: "17:00", at: lm_pilgrim_street, doing: "순례자 거리에서 장부를 맞추고 마를렌 곁에 앉는다", alt: {p: 0.25, at: mw_gate, doing: "성 마렌의 우물까지 걸어 베아테를 찾는다"}}
+npc_felix:
+  home: lm_priest_quarters
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도", fixed: true}
+    - {days: workday, from: "07:00", to: "13:00", at: lm_cath_confessionals, doing: "고해실에서 순례자의 고해를 받는다", fixed: true}
+    - {days: all, from: "13:00", to: "13:40", at: lm_cath_nave, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "19:00", at: lm_cath_confessionals, doing: "고해실 — 오후 줄", fixed: true}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "19:40", to: "21:30", at: lm_inq_cell, doing: "마테우스에게 오늘의 고해 보고를 올린다"}
+    - {days: all, from: "21:30", to: "22:00", at: lm_priest_quarters, doing: "고해 장부를 쓴다"}
+    - {days: all, from: "22:00", to: "22:40", at: lm_cath_nave, doing: "밤 기도"}
+    - {days: all, from: "23:00", to: "04:00", at: lm_priest_quarters, doing: "잔다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_confessionals, doing: "안식일 예배 뒤의 긴 줄"}
+npc_otto:
+  home: lm_uc_guardroom
+  blocks:
+    - {days: all, from: "22:00", to: "02:00", at: lm_undercroft, doing: "밤 순찰 — 방 앞마다 세 호흡 서 있는다", fixed: true}
+    - {days: all, from: "02:00", to: "05:00", at: lm_uc_guardroom, doing: "숙소에서 눈을 붙인다"}
+    - {days: all, from: "05:00", to: "12:00", at: lm_uc_gate, doing: "간수장 초소 — 교대 점검, 열쇠 확인", fixed: true}
+    - {days: "weekday:[2,5]", from: "12:30", to: "14:30", at: lm_apothecary, doing: "순례길 약방에서 아내의 약을 사 온다"}
+    - {days: all, from: "14:30", to: "19:00", at: lm_undercroft, doing: "감방 층 점검, 물그릇 확인"}
+    - {days: all, from: "19:00", to: "22:00", at: lm_uc_guardroom, doing: "숙소 — 아내의 기침을 떠올린다"}
+    - {days: sabbath, from: "06:30", to: "07:00", at: lm_uc_gate, doing: "문 앞에 놓인 빵 한 덩이를 안으로 들인다 — 누가 놓았는지 묻지 않는다", fixed: true}
+# ── 새 인물: 교단 위계 ──
+npc_lm_matthias:
+  home: lm_silver_lamp_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도", fixed: true}
+    - {days: workday, from: "08:00", to: "13:00", at: lm_cath_library, doing: "서고에서 낭독문 사본을 감독한다 — 뒷방 쪽을 보지 않는다"}
+    - {days: all, from: "13:00", to: "13:40", at: lm_cath_nave, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "18:00", at: lm_cath_library, doing: "서고 — 사본 열람 기록을 확인한다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_lamp_study, doing: "처소 서재에서 소매 속 탄 종이를 편다 — 표를 센다", fixed: true}
+    - {days: all, from: "22:00", to: "22:40", at: lm_cath_nave, doing: "밤 기도"}
+    - {days: all, from: "23:00", to: "04:00", at: lm_silver_lamp_house, doing: "잠들지 못한다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배 — 대사제 곁에 선다"}
+npc_lm_adel:
+  home: lm_north_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_pilgrim_chapel, doing: "새벽 기도", fixed: true}
+    - {days: workday, from: "07:00", to: "12:30", at: lm_north_house, doing: "북부 순례자 접견, 허가증 서류"}
+    - {days: all, from: "13:00", to: "13:40", at: lm_pilgrim_chapel, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "18:30", at: lm_pilgrim_street, doing: "순례 명단 확인 — 숙소와 사제관 사이를 오간다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_pilgrim_chapel, doing: "저녁 기도"}
+    - {days: "weekday:[2,5]", from: "20:00", to: "22:00", at: lm_pilgrim_cellar, doing: "아그네스와 이름 장부를 맞춘다"}
+    - {days: all, from: "22:00", to: "22:40", at: lm_pilgrim_chapel, doing: "밤 기도"}
+    - {days: all, from: "23:00", to: "04:00", at: lm_north_house, doing: "문을 닫고 도장 두 개를 나란히 놓았다가 다시 넣는다", fixed: true}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "대성당 안식일 예배"}
+npc_lm_leanel:
+  home: lm_pavilion
+  blocks:
+    - {days: all, from: "06:00", to: "11:00", at: lm_pav_memory, doing: "기억 수정 앞에서 어제를 정리한다"}
+    - {days: workday, from: "11:00", to: "13:00", at: lm_cath_library, doing: "낭독문 목록을 확정한다", alt: {p: 0.4, at: lm_pav_garden, doing: "정자 정원에 머문다"}}
+    - {days: all, from: "13:00", to: "23:00", at: lm_pav_garden, doing: "정자 정원 — 금실 염료 손가락을 소매 안에서 문지른다"}
+    - {days: all, from: "23:00", to: "06:00", at: lm_pav_memory, doing: "수정 속의 기억으로 머문다", fixed: true}
+npc_lm_ivan:
+  home: lm_garrison_commander
+  blocks:
+    - {days: all, from: "05:00", to: "06:00", at: lm_garrison, doing: "점호", fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: lm_bridge_east, doing: "동쪽 다리 검문 점검 — 난간의 사슬 고리를 센다", outdoor: true, alt: {p: 0.5, at: lm_bridge_west, doing: "서쪽 다리 검문 점검"}}
+    - {days: all, from: "12:00", to: "14:00", at: lm_garrison_commander, doing: "병영 집무"}
+    - {days: workday, from: "14:00", to: "18:00", at: lm_east_gate, doing: "성문 순시", outdoor: true}
+    - {days: all, from: "18:00", to: "21:00", at: lm_garrison, doing: "병영 식당 — 병력 보고"}
+    - {days: all, from: "23:30", to: "02:00", at: lm_garrison_commander, doing: "병력 계산표를 다시 쓴다", fixed: true}
+    - {days: all, from: "02:00", to: "05:00", at: lm_garrison_commander, doing: "잔다"}
+    - {days: sabbath, from: "07:00", to: "18:00", at: lm_garrison, doing: "병영에 머문다 — 안식일 순찰 교대를 확인한다"}
+npc_lm_tobias:
+  home: lm_inquisition
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "07:00", at: lm_inq_hall, doing: "함을 열어 쪽지를 분류한다"}
+    - {days: workday, from: "07:00", to: "13:00", at: lm_inq_hall, doing: "밀고 접수 — 이름은 두 번 묻는다", fixed: true}
+    - {days: all, from: "13:00", to: "13:40", at: lm_cath_nave, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "18:00", at: lm_inq_hall, doing: "접수, 밀고자 보상 쪽지 지급"}
+    - {days: workday, from: "18:00", to: "19:00", at: lm_inq_interrogation, doing: "심문 사제에게 일일 보고"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "23:00", at: lm_inquisition, doing: "처소에서 따로 만든 동기 장부를 쓴다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배"}
+    - {days: sabbath, from: "10:00", to: "12:00", at: lm_confession_square, doing: "공개 고해 줄을 구경한다 — 이름을 외운다"}
+npc_lm_hartmund:
+  home: lm_hospice
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: all, from: "07:00", to: "12:30", at: lm_hospice, doing: "병자의 집에서 눈병 환자를 본다 — 눈꺼풀을 뒤집는다"}
+    - {days: workday, from: "13:00", to: "17:30", at: lm_inq_scales, doing: "잿빛 저울실 — 징후자의 눈을 잰다"}
+    - {days: "weekday:[2,5]", from: "17:30", to: "19:00", at: lm_inq_scales, doing: "저울 셋의 표결 석판 앞 — 가볍다를 쓸 자리를 본다", fixed: true}
+    - {days: all, from: "20:00", to: "23:00", at: lm_hospice, doing: "처소에서 옛 징후서를 읽는다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배"}
+npc_lm_aegidius:
+  home: lm_inquisition
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: workday, from: "05:30", to: "12:00", at: lm_inq_records, doing: "고발장 정리, 마테우스 보고"}
+    - {days: workday, from: "13:00", to: "18:00", at: lm_inq_interrogation, doing: "심문 — 세 가지 질문, 꿈을 받아 적는다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_inquisition, doing: "꿈의 책을 쓴다"}
+    - {days: all, from: "22:00", to: "22:40", at: lm_cath_nave, doing: "밤 기도"}
+    - {days: all, from: "23:00", to: "02:00", at: lm_inquisition, doing: "독방에서 확률표를 만든다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배 — 마테우스 반 보 뒤"}
+npc_lm_corad:
+  home: lm_pyre_store
+  blocks:
+    - {days: all, from: "05:00", to: "06:00", at: lm_pyre_court, doing: "크릭 잡역 점호 입회, 장작 수 확인"}
+    - {days: workday, from: "06:00", to: "17:00", at: lm_pyre_court, doing: "장작을 쌓고 재를 쓸어 모은다", outdoor: true, rain: {at: lm_pyre_store, doing: "비 오는 날 창고에서 항아리를 닦는다"}}
+    - {days: all, from: "17:00", to: "19:00", at: lm_pyre_store, doing: "재 항아리 방에서 하루 정리 — 집게로 집은 것을 넣는다", fixed: true}
+    - {days: all, from: "20:30", to: "21:30", at: lm_festival_bank, doing: "강둑에서 재를 흘려보낸다"}
+    - {days: all, from: "23:00", to: "05:00", at: lm_pyre_store, doing: "창고 곁 방에서 잔다"}
+    - {days: sabbath, from: "08:00", to: "12:00", at: lm_pyre_store, doing: "항아리를 닦고 숫자를 센다"}
+npc_lm_byuk:
+  home: lm_garrison
+  blocks:
+    - {days: all, from: "05:00", to: "06:00", at: lm_garrison, doing: "크릭 병영 점호", fixed: true}
+    - {days: workday, from: "06:00", to: "17:00", at: lm_pyre_court, doing: "장작 나르기, 재 쓸기", outdoor: true}
+    - {days: workday, from: "17:00", to: "18:30", at: lm_festival_bank, doing: "강둑에서 재를 거둔다", outdoor: true, alt: {p: 0.2, at: lm_pyre_court, doing: "재 한 자루를 따로 묶어 강둑에 둔다"}}
+    - {days: all, from: "18:30", to: "05:00", at: lm_garrison, doing: "크릭 병영 구석"}
+npc_lm_anselm:
+  home: lm_priest_quarters
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "10:00", at: lm_sem_hall, doing: "견습 암송 시험 — 구절 하나를 외워 보게 한다", fixed: true}
+    - {days: workday, from: "11:00", to: "15:30", at: lm_seminary, doing: "원장실 — 서품 후보 면담"}
+    - {days: workday, from: "16:00", to: "18:30", at: lm_sem_garden, doing: "정원 벤치에 앉아 구절을 외운다 — 왼쪽 자리를 비워 둔다", alt: {p: 0.3, at: lm_seminary, doing: "원장실에서 석판 기록을 고친다"}}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_priest_quarters, doing: "숙소에서 구절을 낮게 읊는다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_chapel_west, doing: "서안 예배당 안식일 예배"}
+    - {days: sabbath, from: "10:00", to: "12:00", at: lm_seminary, doing: "원장실에서 쉰다", alt: {p: 0.2, at: lm_cata_hall, doing: "서안 예배당 지하에서 '낭독 연습' — 카타콤의 사슬 모임"}}
+npc_lm_niklas:
+  home: lm_sem_dorm
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도", fixed: true}
+    - {days: workday, from: "05:00", to: "10:00", at: lm_sem_hall, doing: "낭독문 암송 — 구절의 모양을 눈앞에 그린다"}
+    - {days: workday, from: "11:00", to: "15:00", at: lm_sem_hall, doing: "고해 실습, 규율"}
+    - {days: workday, from: "15:00", to: "18:00", at: lumen__farm, doing: "농원 노역", outdoor: true, alt: {p: 0.3, at: lm_sem_chant, doing: "성가 막사 뒤 담벼락에서 모양을 복습한다"}}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_sem_dorm, doing: "기숙사 마지막 침상에서 허공에 모양을 그린다"}
+    - {days: all, from: "23:00", to: "03:30", at: lm_sem_dorm, doing: "잔다"}
+npc_lm_laurenz:
+  home: lm_sem_chant
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도 성가를 이끈다", fixed: true}
+    - {days: all, from: "07:00", to: "07:40", at: lm_cath_nave, doing: "아침 기도 성가"}
+    - {days: workday, from: "10:00", to: "14:00", at: lm_sem_chant, doing: "찬송 순례자 후보를 가르친다"}
+    - {days: workday, from: "15:00", to: "18:00", at: lm_sem_chant, doing: "성가대 연습 — 정화청 쪽 의자를 먼저 본다", fixed: true}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도 성가"}
+    - {days: all, from: "20:00", to: "23:00", at: lm_sem_chant, doing: "악보를 새로 베낀다 — 첫 음절에 작은 점"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 성가대를 이끈다"}
+npc_lm_jonas:
+  home: lm_priest_quarters
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: workday, from: "08:00", to: "13:00", at: lm_cath_library, doing: "서고 곁 서기실에서 사슬 장부 정리"}
+    - {days: "weekday:[2]", from: "14:00", to: "17:00", at: lm_inq_records, doing: "심문소에서 '불순한 자' 목록을 받아 온다"}
+    - {days: workday, from: "14:00", to: "18:30", at: lm_cath_library, doing: "서기실 — 명단 연습, 지운 자국을 일부러 남긴다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_cath_library, doing: "서기실에서 깃펜 끝을 다듬는다"}
+    - {days: all, from: "23:00", to: "04:00", at: lm_priest_quarters, doing: "잔다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배"}
+npc_lm_otilie:
+  home: lm_nunnery
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "10:00", at: lm_scr_hall, doing: "낭독문을 '그림'으로 베낀다 — 모양을 눈으로 따라 그린다", fixed: true}
+    - {days: workday, from: "11:00", to: "18:00", at: lm_scr_hall, doing: "필사 — 먹물 그릇을 손등에 대어 온도를 본다"}
+    - {days: all, from: "18:00", to: "19:00", at: lm_nunnery, doing: "수녀원 뒤 우물가에서 먹 묻은 손을 씻는다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_nunnery, doing: "기숙 방 구석에서 눈을 감고 모양을 떠올린다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배"}
+npc_lm_hanna:
+  home: lm_nunnery
+  blocks:
+    - {days: all, from: "04:00", to: "07:00", at: lm_cath_eternal_lamp, doing: "새벽 기도 — 영원등 곁 새 초를 간다", fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: lm_cath_eternal_lamp, doing: "제단 초 갈기"}
+    - {days: workday, from: "12:30", to: "14:30", at: lm_candle_works, doing: "양초 공방에서 새 초를 받아 온다 — 심지 매듭을 살핀다"}
+    - {days: workday, from: "15:00", to: "17:00", at: lm_cath_eternal_lamp, doing: "영원등 곁 초 정리"}
+    - {days: all, from: "17:30", to: "18:30", at: lm_cath_candle_stair, doing: "감옥 층계 세 번째 단 밑에 양초 조각을 놓는다 — 발소리를 같게", fixed: true}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_nunnery, doing: "수녀원 문 옆방에서 심지를 꼰다"}
+    - {days: all, from: "22:00", to: "22:40", at: lm_cath_nave, doing: "밤 기도"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배 — 영원등 곁에 선다"}
+npc_lm_eli:
+  home: lm_monastery
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "07:00", at: lm_inq_hall, doing: "함 열기 보조"}
+    - {days: workday, from: "07:00", to: "18:00", at: lm_inq_hall, doing: "접수 보조 — 이름을 두 번 확인하는 척한다"}
+    - {days: workday, from: "18:00", to: "19:00", at: lm_nunnery, doing: "어머니와 식사", alt: {p: 0.3, at: lm_monastery, doing: "숙사에서 혼자 먹는다"}}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_monastery, doing: "숙사에서 두 번째 설교를 입술로 외운다", fixed: true}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배"}
+    - {days: sabbath, from: "11:00", to: "13:00", at: lm_nunnery, doing: "어머니 곁에서 심지를 꼰다"}
+npc_lm_jakob:
+  home: lm_uc_guardroom
+  blocks:
+    - {days: all, from: "06:00", to: "14:00", at: lm_uc_guardroom, doing: "교대 뒤 숙소에서 잔다"}
+    - {days: all, from: "14:00", to: "18:00", at: lm_uc_upper_cells, doing: "감방 문 점검, 물그릇 — 바닥을 손바닥으로 감싸 놓는다"}
+    - {days: all, from: "18:00", to: "02:00", at: lm_undercroft, doing: "교대 근무 — 감방 층 순회", fixed: true}
+    - {days: "weekday:[2,5]", from: "02:00", to: "04:00", at: lm_uc_culvert, doing: "지하 수로 쇠창살 한 짝에 기름을 먹인다", fixed: true}
+    - {days: all, from: "02:00", to: "06:00", at: lm_uc_gate, doing: "초소에서 새벽 근무"}
+npc_lm_simon:
+  home: lm_uc_guardroom
+  blocks:
+    - {days: all, from: "06:00", to: "14:00", at: lm_uc_upper_cells, doing: "상층 감방 배식 — 열쇠를 천천히 돌린다"}
+    - {days: all, from: "14:00", to: "18:00", at: lm_uc_guardroom, doing: "간수 숙소에서 쉰다"}
+    - {days: all, from: "18:00", to: "06:00", at: lm_uc_guardroom, doing: "잠든다 — 교대 시각은 야코프가 정한다"}
+npc_lm_anna:
+  home: lm_candle_works
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_pilgrim_chapel, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "12:30", at: lm_candle_floor, doing: "밀랍 달이기, 심지 매듭 — 매듭을 손가락으로 센다"}
+    - {days: all, from: "13:00", to: "13:40", at: lm_pilgrim_chapel, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "18:30", at: lm_candle_floor, doing: "양초 틀 작업"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_pilgrim_chapel, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_candle_cellar, doing: "밀랍 저장고 점검 — 밀물표 앞에 선다"}
+    - {days: all, from: "22:30", to: "00:30", at: lm_candle_cave, doing: "강가 동굴로 내려가 대기자 숫자를 센다", fixed: true}
+    - {days: all, from: "00:30", to: "04:00", at: lm_candle_works, doing: "공방 곁방에서 잔다"}
+npc_lm_berta:
+  home: lm_pilgrim_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_pilgrim_chapel, doing: "새벽 기도"}
+    - {days: all, from: "05:00", to: "10:00", at: lm_pilgrim_house, doing: "숙소 아침 — 빵과 죽을 푼다"}
+    - {days: all, from: "10:00", to: "18:00", at: lm_pilgrim_house, doing: "이름 장부, 침상 점검"}
+    - {days: all, from: "18:30", to: "21:30", at: lm_pilgrim_house, doing: "숙소 저녁"}
+    - {days: all, from: "22:00", to: "24:00", at: lm_pilgrim_house, doing: "문 앞 의자에 앉아 귀를 연다 — 아래에서 올라오는 소리를 올려다보지 않는다", fixed: true}
+    - {days: all, from: "00:00", to: "04:00", at: lm_pilgrim_house, doing: "잔다"}
+# ── 새 인물: 쉼터와 성소 ──
+npc_lm_hero:
+  home: ps_keeper_house
+  blocks:
+    - {days: all, from: "04:00", to: "05:00", at: ps_oven, doing: "새벽 종, 화덕 불을 지핀다", fixed: true}
+    - {days: all, from: "05:00", to: "12:00", at: ps_oven, doing: "빵 굽기 — 노래를 흥얼거린다"}
+    - {days: all, from: "12:00", to: "14:00", at: ps_ledger_room, doing: "순례자 명부 — 이름 옆에 점을 찍는다"}
+    - {days: all, from: "14:00", to: "17:00", at: ps_house_stores, doing: "곡식 창고 점검"}
+    - {days: all, from: "17:00", to: "19:00", at: ps_oven, doing: "저녁 빵"}
+    - {days: all, from: "19:00", to: "21:30", at: ps_well, doing: "점호와 우물 — 두레박 줄 확인", fixed: true}
+    - {days: all, from: "21:30", to: "04:00", at: ps_keeper_house, doing: "쉼터지기 집에서 잔다"}
+    - {days: sabbath, from: "07:00", to: "09:00", at: ps_ring_stone, doing: "고리 표석 앞 안식일 예배"}
+npc_lm_beate:
+  home: mw_cell_beate
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: mw_well, doing: "새벽 기도 손종", fixed: true}
+    - {days: workday, from: "05:00", to: "11:00", at: mw_cell_beate, doing: "수녀 방에서 기도 — 순례자는 문 밖에서 기다린다"}
+    - {days: workday, from: "11:00", to: "12:30", at: mw_well, doing: "해가 우물 가운데 꽂히는 시각 — 장대 끝 밀랍 판을 눌러 뜬다", fixed: true}
+    - {days: all, from: "13:00", to: "13:40", at: mw_altar, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "17:00", at: mw_garden, doing: "약초밭과 빨래터"}
+    - {days: all, from: "17:00", to: "19:00", at: mw_cell_beate, doing: "장대와 밀랍 판을 손질한다"}
+    - {days: all, from: "19:00", to: "19:40", at: mw_altar, doing: "저녁 기도"}
+    - {days: all, from: "21:00", to: "04:00", at: mw_cell_beate, doing: "우물 소리를 들으며 잔다"}
+    - {days: sabbath, from: "05:30", to: "06:00", at: mw_gate, doing: "울타리 문을 연다", fixed: true}
+    - {days: sabbath, from: "06:00", to: "18:00", at: mw_well, doing: "순례자 앞에서 우물 돌 둘레를 닦는다", fixed: true}
+# ── 새 인물: 서안의 사람들 ──
+npc_lm_ilse:
+  home: lm_smith_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_chapel_west, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "12:30", at: lm_forge, doing: "성표 고리를 두들겨 잇는다"}
+    - {days: all, from: "13:00", to: "13:40", at: lm_chapel_west, doing: "정오 기도"}
+    - {days: workday, from: "14:00", to: "18:30", at: lm_forge, doing: "풀무질, 각인"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_chapel_west, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "22:00", at: lm_smith_house, doing: "집에서 빵 한 덩이를 천에 싼다"}
+    - {days: all, from: "22:30", to: "04:00", at: lm_smith_house, doing: "풀무 밑 철함을 열었다 닫고 잔다"}
+    - {days: sabbath, from: "06:30", to: "07:00", at: lm_uc_gate, doing: "침묵의 우물 문 앞에 빵 한 덩이를 놓고 돌아선다 — 안쪽을 보지 않는다", fixed: true}
+    - {days: sabbath, from: "07:30", to: "09:30", at: lm_chapel_west, doing: "안식일 예배"}
+npc_lm_lutz:
+  home: lm_lutz_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_chapel_west, doing: "새벽 기도"}
+    - {days: workday, from: "05:00", to: "18:30", at: lm_lutz_house, doing: "직조 — 입술을 핥는다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_chapel_west, doing: "저녁 기도"}
+    - {days: all, from: "19:40", to: "21:30", at: lm_ration_west, doing: "배급소 줄 — 대장장이의 집 쪽을 보지 않는다"}
+    - {days: all, from: "21:30", to: "23:00", at: lm_lutz_house, doing: "포도주 한 모금을 홀로 마신다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_chapel_west, doing: "안식일 예배"}
+npc_lm_yuta:
+  home: lm_tenement_west
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: lm_confession_square, doing: "고해 줄에 선다 — 줄의 소문"}
+    - {days: workday, from: "07:00", to: "18:00", at: lm_token_stalls, doing: "성표 노점 — 소금 자루를 두 개 놓고 귀를 연다"}
+    - {days: all, from: "19:00", to: "20:00", at: lm_inq_hall, doing: "밀고 함에 쪽지를 넣는다 — 토비아스에게 건넨다"}
+    - {days: all, from: "22:00", to: "04:00", at: lm_tenement_west, doing: "잔다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_chapel_west, doing: "안식일 예배"}
+    - {days: sabbath, from: "10:00", to: "16:00", at: lm_token_stalls, doing: "안식일 순례자 대목 — 소금과 소문"}
+npc_lm_kale:
+  home: lm_tenement_west
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_chapel_west, doing: "새벽 기도"}
+    - {days: workday, from: "06:00", to: "18:00", at: lm_dock, doing: "성표 계수소 — 선적 명단 대조, 번호를 센다"}
+    - {days: workday, from: "18:00", to: "19:00", at: lm_dock, doing: "배가 떠난 뒤 부두 끝에 서 있다"}
+    - {days: all, from: "19:30", to: "21:30", at: lm_ration_west, doing: "배급소 줄"}
+    - {days: all, from: "22:00", to: "04:00", at: lm_tenement_west, doing: "잔다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_chapel_west, doing: "안식일 예배"}
+npc_lm_marlene:
+  home: lm_pilgrim_house
+  blocks:
+    - {days: all, from: "04:00", to: "04:40", at: lm_pilgrim_chapel, doing: "새벽 기도"}
+    - {days: workday, from: "07:00", to: "17:00", at: lm_pyre_court, doing: "정화의 뜰 곁 벤치에 앉아 흰 헝겊을 접었다 편다", alt: {p: 0.4, at: lm_inq_hall, doing: "밀고 함 홀 앞 의자에 앉아 드나드는 얼굴을 센다"}}
+    - {days: all, from: "17:30", to: "19:00", at: lm_pilgrim_house, doing: "숙소 — 짚 침상에 앉는다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_pilgrim_chapel, doing: "저녁 기도"}
+    - {days: all, from: "20:00", to: "04:00", at: lm_pilgrim_house, doing: "짚 침상"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "대성당 안식일 예배"}

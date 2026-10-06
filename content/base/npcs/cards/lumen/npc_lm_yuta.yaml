@@ -1,0 +1,93 @@
+id: npc_lm_yuta
+name: 소금장수 유타
+aka: [노점의 귀, 혀]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 44
+region: 루멘
+home: 서안 신도 숙사
+job: 소금과 성표 줄 노점을 하는 신도 상인. 목줄단 '혀' — 루멘 정보원 약 200 중 하나. 회색여울 마르타가 보내는 보고의 루멘 쪽 수신자
+rank: 신도 노동자 — 목줄 (혀)
+summary: 순례자 거리 성표 노점의 소금장수이자 목줄단 혀. 마르타의 밀고를 찬송 순례자 요한의 짐 속에서 꺼내 토비아스에게 건넨다. 요한은 모른다
+source: docs/world/people/lumen.md
+life:
+  - {year: 268, age: 0, event: "루멘 서안 소금 장수 집안에서 태어남"}
+  - {year: 295, age: 27, event: "남편이 징후 은닉죄로 끌려갔다. 목줄단 혀가 되면 풀어 준다고 해서 승낙했다. 남편은 풀려나지 않았다"}
+  - {year: 301, age: 33, event: "성표 노점을 열고 소금 자루를 두 개씩 놓기 시작. 하나는 늘 비어 있다 — 쪽지 숨기는 용도"}
+  - {year: 308, age: 40, event: "회색여울 마르타와 처음 연락선이 닿음. 서로 얼굴을 모른다"}
+  - {year: 312, age: 44, event: "공방 안나가 자기를 의심하는 눈빛을 눈치챔 — 소금 대는 일을 줄이지 않았다 (낙엽월 1일 기준)"}
+appearance:
+  - "웃을 때 입가가 넓게 올라간다"
+  - "소금 자루를 늘 두 개씩 놓고 하나는 비어 있다"
+  - "손목에 구리 팔찌"
+smell: "소금과 마른 생선, 구리 팔찌의 쇠 냄새"
+voice_sound: "밝고 시끄럽다. 장사꾼의 목소리인데 낮은 말은 아주 작다"
+personality:
+  disposition: {용기: -10, 자비: 0, 정직: -25, 신앙: 10, 탐욕: 10, 충성: 20}
+  temperament: [밝음, 계산, 상처, 겉웃음]
+  habits:
+    - "소금 자루를 두 개씩 놓고 하나만 연다"
+    - "손님이 소문을 말하면 맞장구를 치며 속으로 센다"
+    - "해 질 녘 밀고 함 홀로 가는 길에 구리 팔찌를 한 번 돌린다"
+  values: "소문. 남편의 이름. 쓸모 있는 귀"
+  fears: [혀가 들통나는 것, 안나의 눈빛, 남편이 어디 있는지 영영 모르는 것]
+  desires:
+    short: "올해 안에 남편의 행방을 정화청에서 듣는 것"
+    long: "혀 노릇에서 풀려나는 것"
+voice:
+  register:
+    to_superior: "토비아스에게 상냥한 존대"
+    to_equal: "상인에게 시끄럽고 다정한 반말"
+    to_inferior: "순례자에게 장사꾼의 해요체"
+    to_player_default: "밝고 시끄러운 장사 말투. 소문을 먼저 묻는다"
+  tics: ["'소금 사요?'", "소문은 소금처럼 판다", "구리 팔찌 돌리기"]
+  use: [소금, 소문, 성표 줄, 짠, 순례자, 노점]
+  avoid: [혀, 밀고, 남편(먼저)]
+  length: "짧고 밝다. 남편 이야기가 나오면 갑자기 조용해진다"
+  samples:
+    - {situation: 첫 만남, line: "소금 사요? 성표 줄도 갈아 줄까. 줄이 닳으면 목이 가렵거든."}
+    - {situation: 호의, line: "소문은 소금처럼 팔려요. 짠 소문이 오래 가고."}
+    - {situation: 거래, line: "소문 하나에 소금 한 줌. 대신 당신이 듣고 싶은 소문은 먼저 값을 말해야지."}
+    - {situation: 겁먹었을 때, line: "양초 공방에서 저를 본 눈이 있어요. 누가 보내서 오는 거 아니죠?"}
+    - {situation: 슬픔, line: "남편은 말이 없었어요. 말이 없는 사람이라 먼저 끌려갔대요. 말이 없으면 숨기는 게 있다고."}
+relations:
+  - {to: npc_martha, type: 회색여울 목줄장, like: 5, trust: 20, visibility: 비밀, memo: null, words: "서로 얼굴을 모르는 보고의 반대편"}
+  - {to: npc_johan, type: 모르고 운반하는 순례자, like: 15, trust: 10, visibility: 일방, memo: null, words: "짐에 쪽지가 낀다는 것을 모르는 청년"}
+  - {to: npc_lm_tobias, type: 보고 수령, like: 10, trust: 30, visibility: 비밀, memo: null, words: "노점의 귀를 쓰는 접수관"}
+  - {to: npc_lm_anna, type: 소금을 파는 상대, like: 5, trust: 10, visibility: 공개, memo: null, words: "공방에 소금을 대는 단골"}
+knows:
+  - fact_lm_yuta_marta_channel
+  - fact_lm_anna_tongue_suspicion
+hides:
+  - fact: fact_lm_yuta_marta_channel
+    reveal_when: "남편의 행방 정보를 가져왔거나 신뢰 60 이상. 요한의 짐 이야기를 정직하게 꺼냈을 때"
+    cover: "'소금 팔 뿐이에요. 쪽지는 모릅니다'라고 한다"
+toward_player: "밝고 시끄러운 장사 말투. 소문을 먼저 묻는다"
+persuade:
+  likes: ["남편의 소식 (+30)", "혀 노릇에서 빼 주겠다는 제안 (+20)"]
+  hates: ["'혀'라는 말을 큰 소리로 하는 것"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "요한의 짐에서 마르타의 쪽지를 꺼내 토비아스에게 건넨다 (회귀점의 사실)"
+    - "소금 자루를 두 개씩 놓고 하나는 비어 있다"
+  drift:
+    - "그날 노점에 오는 순례자의 수"
+  deja_vu: none
+hard_rules:
+  - "혀라는 낱말을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 소금과 소문으로 말한다"
+on_death: "마르타의 보고가 루멘에 닿는 길이 끊긴다. 토비아스가 새 혀를 찾는 동안 오스릭의 보고는 셋째 함에 남는다"
+story_seeds:
+  - "요한의 짐을 바꿔 치우면 마르타의 다음 보고가 루멘에 닿지 못한다. 요한은 평생 모른 채 지나간다"
+  - "유타의 남편이 아직 침묵의 우물에 있다는 소문이 있다"
+affiliations:
+  - {faction: fac_collar, rank: rank_tongue, office: off_collar_tongue_lumen, since: 295, loyalty: 35, public: false, cell: null}
+  - {faction: fac_light, rank: rank_believer, office: null, since: 275, loyalty: 40, public: true, cell: null}
+truths: []

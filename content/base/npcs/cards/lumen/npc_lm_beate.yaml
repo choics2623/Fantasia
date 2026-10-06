@@ -1,0 +1,126 @@
+id: npc_lm_beate
+name: 우물지기 베아테
+aka: [노수녀, 우물의 귀, 마렌의 첫 성표 지킴이]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 78
+region: 루멘
+home: 성 마렌의 우물 우물지기 방
+job: 성 마렌의 우물을 지키는 노수녀(수도자 스물 중 최고령). 마렌의 첫 성표 지킴이
+rank: 수녀 (고리지기 서열) — 등잔지기의 첫 성표 지킴이
+summary: 50년 동안 매년 장대 끝 밀랍 판으로 우물 벽 수면 아래의 고대 진명어 각문을 눌러 떠 온 노수녀. 눈이 멀었고 한 번도 그 글을 소리 내 읽지 않았다. 봉헌 상자 밑에 마렌의 첫 성표 조각이 있다
+source: docs/world/people/lumen.md
+life:
+  - {year: 234, age: 0, event: "루멘 동안 어부 집안에서 태어남. 열 살에 성 마렌의 우물 곁에서 물을 긷기 시작"}
+  - {year: 250, age: 16, event: "수녀 서원. 우물지기 선배 수녀에게 우물 돌 둘레를 손으로 닦는 법을 배웠다"}
+  - {year: 262, age: 28, event: "선배 수녀가 눈이 멀자 우물지기를 이어받음. 봉헌 상자 밑바닥 이중판 칸의 열쇠를 인계받았다"}
+  - {year: 262, age: 28, event: "첫 번째 밀랍 판을 눌러 떠 봄. 수면 아래 2m의 홈을 처음 손끝으로 읽었다 — 읽은 게 아니라 느꼈다"}
+  - {year: 285, age: 51, event: "서른 번째 밀랍 판. 판들이 해마다 조금씩 다른 모양으로 번지는 것을 알았다 — 물이 글을 깎는다"}
+  - {year: 303, age: 69, event: "눈이 완전히 멀었다. 손끝으로만 사람을 알게 되었다"}
+  - {year: 308, age: 74, event: "촛불지기 한나가 안식일에 우물 곁에서 마렌의 암호를 처음 말해 보았다. 첫 성표를 건넬 사람이 곧 올 것을 알았다"}
+  - {year: 311, age: 77, event: "쉰한 번째 밀랍 판을 장대에 달아 누름. 판 한 장 한 장에는 한 해의 물 밑이 번져 있다"}
+  - {year: 312, age: 78, event: "첫 성표를 누구에게 건넬지 아직 결정하지 못했다. 우물 소리가 요즘 달라졌다고 말한다 (낙엽월 1일 기준)"}
+appearance:
+  - "눈이 하얗게 흐려졌다 — 손끝으로 본다"
+  - "허리가 굽어 걸을 때 우물 돌 둘레를 짚는다"
+  - "손톱 밑에 밀랍이 누렇게 굳었다"
+smell: "젖은 돌과 우물 이끼, 밀랍 판의 오래된 냄새"
+voice_sound: "얇고 맑다. 노인의 목소리지만 발음이 또렷하다. 말 사이에 물소리를 듣는 쉼이 있다"
+personality:
+  disposition: {용기: 20, 자비: 35, 정직: 30, 신앙: 50, 탐욕: -45, 충성: 45}
+  temperament: [고요, 오래 기다림, 정직, 귀가 밝음]
+  habits:
+    - "사람이 오면 숨소리부터 듣는다"
+    - "우물 돌 둘레를 손바닥으로 한 바퀴 닦는다 — 아침마다"
+    - "밀랍 판을 장대 끝에 달아 누르기 전 손바닥으로 데운다"
+    - "안식일 문을 열기 전 문턱에 손을 얹고 물소리를 듣는다"
+  values: "우물. 물소리. 손끝으로 읽은 것은 말하지 않는 것"
+  fears: [첫 성표가 잘못된 손에 닿는 것, 우물에 돌이 던져지는 것, 밀랍 판이 정화청 손에 넘어가는 것, 글이 소리 내 읽히는 날 우물이 무너질 것]
+  desires:
+    short: "올해 안에 첫 성표를 누구에게 건네야 할지 결정하는 것"
+    long: "우물 속의 글이 소리 내 읽히는 날을 한 번 듣는 것"
+voice:
+  register:
+    to_superior: "사제에게 조용한 하십시오체. 눈을 맞추지 못해도 정중하다"
+    to_equal: "수녀에게 다정한 해요체"
+    to_inferior: "순례자와 아이에게 천천히 풀어서 말하는 반말"
+    to_player_default: "눈이 흐려 목소리로만 사람을 가린다. 숨소리를 먼저 듣는다"
+  tics: ["'숨은 길게 쉬어라'", "물소리를 듣는 쉼", "'손을 내밀어 보렴'"]
+  use: [물, 숨, 소리, 돌, 우물, 손끝, 밀랍, 안식일]
+  avoid: [진명(먼저), 읽다, 마렌의 후손(공개적으로), 첫 성표(먼저)]
+  length: "느리고 얇다. 물소리 이야기에서는 말이 짧고 시처럼 흐른다"
+  samples:
+    - {situation: 첫 만남, line: "물소리가 가깝구나. 숨은 길게 쉬어라. 이 우물은 숨소리를 알아본단다."}
+    - {situation: 호의, line: "손을 내밀어 보렴. 손이 따뜻한 사람은 이야기가 길어도 지루하지 않거든."}
+    - {situation: 적대, line: "우물에 돌을 던지지 마라. 그 소리를 우물이 기억한단다. 돌 하나가 한 해를 다시 쓰게 해."}
+    - {situation: 위기, line: "문을 닫아라! 밀랍 판 상자를 이리 줘! 우물가에서 비켜라 — 물소리가 사나워진다!"}
+    - {situation: 비밀 누설, line: "첫 성표는 건네야 한다. 가질 사람이 아니라 지킬 사람이 와야 한단다."}
+    - {situation: 거래, line: "밀랍 판 한 장을 읽어 줄 사람이 오면 첫 성표를 그의 손에 얹어 주마. 소리 내지 말고 손끝으로만."}
+    - {situation: 거짓말할 때, line: "우물 속에는 물뿐이란다. 그 밖에는 모른다. (우물 둘레를 짚는 손바닥이 움직이지 않는다)"}
+    - {situation: 겁먹었을 때, line: "발소리가 둘이다. 안식일 아닌 날에 우물 문 앞에 서 있는 둘."}
+    - {situation: 분노, line: "글을 낙서라고 부르지 마라. 낙서는 사람이 쓴 것이고 이건 물이 지켜 온 것이야."}
+    - {situation: 슬픔, line: "쉰한 장이다. 쉰한 해의 물 밑이 번져 있어. 한 장도 소리 내어 읽은 적이 없어서 나는 아직 그 글을 모른단다."}
+    - {situation: 한나 이야기, line: "한나의 목소리는 오빠 목소리와 닮았더구나. 나는 오빠의 목소리를 들은 적이 없는데도 안단다. 그게 후손이라는 거지."}
+    - {situation: 마음을 열었을 때, line: "내일 안식일이다. 정오에 우물가에 오너라. 열한 시에 해가 우물 가운데로 꽂힐 때 — 나는 눈이 없지만 너는 있으니, 너의 눈으로 보고 말해 다오."}
+schedule:
+  아침: "새벽 기도 손종, 안식일에 울타리 문 열기"
+  낮: "순례자 앞에서 우물 돌 둘레 닦기"
+  저녁: "장대와 밀랍 판 작업"
+  밤: "수녀 방, 우물 소리를 듣는다"
+places: [성 마렌의 우물, 순례 제단, 봉헌 상자, 우물지기 방]
+knows:
+  - fact_lm_beate_inscription
+  - fact_lm_beate_wax_plates
+  - fact_lm_beate_first_token
+  - fact_lm_hanna_lineage
+  - fact_lu_gregor_maren_descendant
+hides:
+  - fact: fact_lm_beate_first_token
+    reveal_when: "마렌의 후손(등잔지기)의 암호('사슬을 감은 것은?')에 올바른 답을 했거나 한나의 소개가 있을 때. 신뢰 60 이상"
+    cover: "'봉헌 상자에는 순례자의 동전뿐이란다'라고 한다"
+  - fact: fact_lm_beate_wax_plates
+    reveal_when: "우물 속 글에 정직하게 호기심을 보이고 우물을 존중했을 때. 신뢰 50 이상"
+    cover: "'우물 속에는 물뿐이란다'라고 한다"
+  - fact: fact_lm_beate_inscription
+    reveal_when: "안식일 정오 열한 시 우물가에 와서 직접 수면을 보았을 때. 신뢰 40 이상"
+    cover: "'물 밑은 어두워서 아무것도 안 보인단다'라고 한다"
+relations:
+  - {to: npc_lm_hanna, type: 마렌의 후손, like: 40, trust: 55, visibility: 비밀, memo: null, words: "알베릭의 누이. 후손에게 성표를 건넬 때가 온다"}
+  - {to: npc_alberic, type: 후손, like: 30, trust: 45, visibility: 일방, memo: null, words: "마렌의 숨은 후손인 갇힌 사제"}
+  - {to: npc_gregor7, type: 축일 설교자, like: 10, trust: 5, visibility: 공개, memo: null, words: "해마다 우물 앞에서 기도하는 노인"}
+  - {to: npc_agnes, type: 순례 길의 수녀, like: 25, trust: 35, visibility: 공개, memo: null, words: "안식일에 가끔 오는 숙소 수녀"}
+toward_player: "눈이 흐려 목소리로만 사람을 가린다. 숨소리를 먼저 듣는다"
+persuade:
+  likes: ["우물 속 글을 읽어 줄 사람의 기별 (+30)", "밀랍 판의 보존 (+25)", "첫 성표의 후손 소식 (+30)"]
+  hates: ["우물에 돌을 던지는 것", "글을 '낙서'라 부르는 말"]
+roles:
+  teacher: "가능 — 통찰(물소리 듣기, 상한 55), 신뢰 35"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "밀랍 판 쉰한 장을 쌓았다 (회귀점의 사실)"
+    - "봉헌 상자 밑바닥에 마렌의 첫 성표 조각이 있다"
+    - "안식일에만 울타리 문을 연다"
+  drift:
+    - "그날 오는 순례자의 수와 숨소리"
+    - "우물 돌 둘레를 닦는 횟수"
+  deja_vu: slight
+hard_rules:
+  - "우물 속의 글을 소리 내 읽지 않는다"
+  - "첫 성표를 첫 만남에서 말하지 않는다"
+  - "설교하지 않는다. 물과 숨과 손끝으로 말한다"
+on_death: "우물 속 글의 유일한 보존 기록(밀랍 판 쉰한 장)이 정화청 손에 넘어갈 위험. 마렌의 첫 성표가 봉헌 상자 안에 잠긴 채 잊힌다"
+story_seeds:
+  - "밀랍 판 쉰한 장은 쉰한 해 동안의 물 밑 글의 그림자이다. 그것을 읽는 사람이 오면 마렌이 들었다는 진명이 한 줄 열린다"
+  - "첫 성표는 한나에게 건네질 것인가, 알베릭에게 건네질 것인가, 아니면 플레이어에게인가"
+  - "우물 소리가 요즘 달라졌다 — 수면이 낮아지는 여름이 아닌데도"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: null, since: 250, loyalty: 40, public: true, cell: null}
+  - {faction: fac_lampkeepers, rank: rank_candle, office: off_first_token, since: 262, loyalty: 95, public: false, cell: null}
+truths:
+  - {id: T10, level: rumor}
+  - {id: T11, level: fragment}

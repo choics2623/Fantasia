@@ -1,0 +1,85 @@
+id: npc_lm_byuk
+name: 재삽 뷕
+aka: [재삽, 정화의 뜰 크릭]
+tier: B
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 33
+region: 루멘
+home: 동안 용인 수비대 병영 크릭 구석
+job: 수비대 크릭 잡역 400 중 정화의 뜰 담당 넷의 반장
+rank: 잡역 크릭 반장
+summary: 재와 장작을 나르는 크릭. 정화의 뜰 재 한 자루를 몰래 회색 순례자에게 넘겨 크릭 길드 상납을 조금 줄였다. 재가 어디로 가는지는 모른다
+source: docs/world/people/lumen.md
+life:
+  - {year: 279, age: 0, event: "바알카르 크릭 굴뚝 골목에서 태어남. 짧은 꼬리가 셋"}
+  - {year: 300, age: 21, event: "루멘 수비대 잡역으로 보내짐. 첫 정화의 뜰 장작을 나르며 사람 냄새가 타는 것을 처음 맡았다"}
+  - {year: 309, age: 30, event: "반장이 됨. 재를 쓸어 모으는 자루를 처음 거래에 쓰기 시작 — 회색 순례자 길잡이가 재 한 자루에 상납액을 대신 치러 주었다"}
+  - {year: 312, age: 33, event: "장작지기 코라드가 알고도 말리지 않는 것을 안다. 그 이유는 묻지 않는다 (낙엽월 1일 기준)"}
+appearance:
+  - "손바닥이 회색으로 닳았다"
+  - "재삽 자루를 목에 끈으로 걸고 다닌다"
+  - "눈이 늘 젖어 있다 — 재 때문이다"
+smell: "재와 땀과 크릭 병영의 기름 냄새"
+voice_sound: "코로 새는 높은 목소리. 혀 차는 소리가 문장마다 섞인다"
+personality:
+  disposition: {용기: 5, 자비: 5, 정직: -10, 신앙: -10, 탐욕: 20, 충성: 15}
+  temperament: [비굴, 실리, 눈치, 순종]
+  habits:
+    - "재삽을 목에 걸고 걸을 때 자루 소리를 가볍게 낸다"
+    - "용인 앞에서는 한 걸음 뒤에서 몸을 낮춘다"
+    - "재 한 자루를 따로 묶어 강둑 쪽에 두는 날은 해가 지고 나서다"
+  values: "상납을 덜 내는 것. 눈에 띄지 않는 것"
+  fears: [용인 수비대장의 눈, 크릭 길드의 장부, 순례자가 잡히는 날]
+  desires:
+    short: "올해 상납을 한 번 덜 내는 것"
+    long: "장작이 아닌 것을 나르는 일"
+voice:
+  register:
+    to_superior: "강한 자에게 끝없는 존대. '강하신 분께서…'"
+    to_equal: "크릭에게 혀 차는 반말"
+    to_inferior: "인간 신도에게 짧은 명령형"
+    to_player_default: "강해 보이면 존대, 약해 보이면 반말. 눈을 맞추지 않는다"
+  tics: ["'흐흥.'", "'강하신 분께서'", "혀 차는 소리"]
+  use: [재, 자루, 장작, 강하신 분, 상납, 병영]
+  avoid: [순례자, 회색, 이름]
+  length: "짧고 비굴하다. 재 이야기에서만 조금 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "흐흥. 재 밟지 마라, 인간. 밟으면 내일 또 쓸어야 한다."}
+    - {situation: 호의, line: "강하신 분께서 재를 쓸어 주신다니 고맙습죠. 자루는 이쪽입니다."}
+    - {situation: 거래, line: "재 한 자루. 순례자들이 값을 주고 가져가는 건 쓰레기가 아니라서겠지."}
+    - {situation: 겁먹었을 때, line: "수비대장 어른께서 오셨습죠! 자루는 없습니다! 재는 강에 버렸습니다!"}
+    - {situation: 비밀 누설, line: "…자루 하나는 강둑에 두고 갑니다. 누가 가져가는지는 못 봤습니다. 정말입니다."}
+relations:
+  - {to: npc_lm_corad, type: 상관, like: 25, trust: 20, visibility: 공개, memo: null, words: "재를 쓸어 모으는 일을 같이 하는 사람"}
+  - {to: npc_lm_ivan, type: 수비대장, like: -5, trust: 5, visibility: 공개, memo: null, words: "병영의 용인"}
+knows:
+  - fact_lm_byuk_ash_to_pilgrims
+  - fact_lm_corad_jar
+toward_player: "강해 보이면 존대, 약해 보이면 반말. 눈을 맞추지 않는다"
+persuade:
+  likes: ["재 한 자루 값 (+15)", "상납을 줄여 주는 제안 (+20)"]
+  hates: ["재를 '쓰레기'라 부르는 것"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "정화일 밤 재 한 자루를 강둑에 둔다 (회귀점의 사실)"
+    - "재삽을 목에 걸고 다닌다"
+  drift:
+    - "그날 쓸어 모으는 재의 양"
+  deja_vu: none
+hard_rules:
+  - "순례자와 회색을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 재와 자루로 말한다"
+on_death: "재 운반이 끊긴다 — 회색 순례자 쪽 재 공급 중단. 장작지기 코라드가 혼자 재를 지게 된다"
+story_seeds:
+  - "재의 일부가 황무지로 가는 길을 따라가면 회색 순례자의 통로 하나가 열린다"
+affiliations:
+  - {faction: fac_drakmar_empire, rank: rank_overseer, office: null, since: 300, loyalty: 20, public: true, cell: null}
+  - {faction: fac_grey_pilgrims, rank: rank_pilgrim, office: off_ash_courier_lumen, since: 309, loyalty: 25, public: false, cell: null}
+truths: []

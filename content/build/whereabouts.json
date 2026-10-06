@@ -3378,7 +3378,8 @@
      "rooms": [
       "lm_sem_hall",
       "lm_sem_dorm",
-      "lm_sem_chant"
+      "lm_sem_chant",
+      "lm_sem_garden"
      ],
      "note": "서원 견습 400. 낭독문은 '소리로만' 외운다"
     },
@@ -3402,6 +3403,13 @@
      "access": "staff",
      "hours": "성가대 연습 15:00-18:00",
      "note": "대성당 뒤. 성가대와 찬송 순례자 후보가 자란다. 요한이 열한 살부터 자란 곳"
+    },
+    {
+     "id": "lm_sem_garden",
+     "name": "신학원 정원",
+     "parent": "lm_seminary",
+     "access": "staff",
+     "note": "벤치 왼쪽 자리는 늘 비어 있다 — 마테우스가 가끔 와서 앉는 자리 (fact_lm_anselm_raised_mateus)"
     },
     {
      "id": "lm_scriptorium",
@@ -3577,6 +3585,18 @@
      "parent": "lm_pilgrim_house",
      "access": "secret",
      "hidden": "저장고 바닥 우물에서 이어지는 지하 수로 → 잿빛 실 입구. 지금까지 214명이 지났다 (fact_lu_agnes_well)"
+    },
+    {
+     "id": "lm_pilgrim_chapel",
+     "name": "순례자 거리 예배당",
+     "xy": [
+      1080,
+      1480
+     ],
+     "kind": "chapel",
+     "access": "public",
+     "hours": "04:00-23:00",
+     "note": "순례자 거리와 숙소의 새벽·저녁 기도. 구역 예배당의 하나"
     },
     {
      "id": "lm_token_stalls",
@@ -3959,6 +3979,11 @@
      "id": "lumen__reed_flats",
      "name": "갈대 평야",
      "hours": 2.0
+    },
+    {
+     "id": "lumen__river_villages",
+     "name": "은빛 강 연안 마을들",
+     "hours": 4
     },
     {
      "id": "lumen__sandbar",
@@ -9876,6 +9901,2145 @@
      "doing": "예배"
     }
    ]
+  },
+  "npc_gregor7": {
+   "home": "lm_cath_prayer_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "lm_cath_prayer_room",
+     "doing": "종탑 밑 기도실에서 잠들지 못한 채 눕는다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "01:00",
+     "at": "lm_cath_prayer_room",
+     "doing": "종이 한 장에 서명한 이름들을 아주 작은 글씨로 덧적는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도",
+     "alt": {
+      "p": 0.5,
+      "at": "lm_cath_prayer_room",
+      "doing": "침상에서 기도한다 — 일어나지 못한 날"
+     }
+    },
+    {
+     "days": "all",
+     "from": "04:40",
+     "to": "10:00",
+     "at": "lm_cath_prayer_room",
+     "doing": "침상에 누워 있다"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "12:00",
+     "at": "lm_cath_nave",
+     "doing": "신도 접견",
+     "alt": {
+      "p": 0.4,
+      "at": "lm_cath_prayer_room",
+      "doing": "접견을 미루고 누워 있다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_cath_nave",
+     "doing": "정오 기도",
+     "alt": {
+      "p": 0.5,
+      "at": "lm_cath_prayer_room",
+      "doing": "침상에서 기도"
+     }
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "19:00",
+     "at": "lm_cath_prayer_room",
+     "doing": "손이 떨리는 채로 앉아 있다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도",
+     "alt": {
+      "p": 0.5,
+      "at": "lm_cath_prayer_room",
+      "doing": "침상에서 기도"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:40",
+     "to": "23:00",
+     "at": "lm_cath_prayer_room",
+     "doing": "잠들기를 기다린다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배를 집전한다",
+     "alt": {
+      "p": 0.3,
+      "at": "lm_cath_prayer_room",
+      "doing": "집전하지 못하고 누워 있다"
+     }
+    }
+   ]
+  },
+  "npc_alberic": {
+   "home": "lm_uc_cell_9",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:00",
+     "at": "lm_uc_cell_9",
+     "doing": "벽을 두드려 베라와 이야기하고 짧게 잔다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "08:00",
+     "at": "lm_uc_cell_9",
+     "doing": "벽에 손톱으로 서신을 새긴다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "lm_uc_cell_9",
+     "doing": "머릿속의 두 번째 서신을 한 줄씩 다듬는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "lm_uc_cell_9",
+     "doing": "두드림으로 베라에게 하루 한 글자를 가르친다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "lm_uc_cell_9",
+     "doing": "물그릇을 비우고 소리 없이 기도한다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_vera": {
+   "home": "lm_uc_cell_8",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "lm_uc_cell_8",
+     "doing": "짚 위에서 두드림 박자로 이야기한다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "lm_uc_cell_8",
+     "doing": "물그릇과 빵 한 덩이를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "18:00",
+     "at": "lm_uc_cell_8",
+     "doing": "벽 두드림으로 알베릭에게 글자를 배운다 (하루 한 글자)",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "lm_uc_cell_8",
+     "doing": "배운 글자를 굳은살로 새겨 본다"
+    },
+    {
+     "days": "sabbath",
+     "from": "06:30",
+     "to": "07:30",
+     "at": "lm_uc_cell_8",
+     "doing": "문 앞에 빵이 놓이는 소리를 듣는다 — 어머니의 박자인 줄 모른다"
+    }
+   ]
+  },
+  "npc_mateus": {
+   "home": "lm_inq_cell",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "lm_inq_cell",
+     "doing": "독방에서 채찍으로 고행한다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도 — 앞줄 맨 끝에 서서",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "04:40",
+     "to": "05:30",
+     "at": "lm_inq_cell",
+     "doing": "이마에 재를 문지르고 고발장을 준비한다"
+    },
+    {
+     "days": "workday",
+     "from": "05:30",
+     "to": "12:00",
+     "at": "lm_inq_records",
+     "doing": "고발장 검토 (하루 30~50건)"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:30",
+     "at": "lm_inq_interrogation",
+     "doing": "심문 — 세 가지 질문"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "lumen__river_villages",
+     "doing": "은빛 강 연안 마을 순회 심문",
+     "outdoor": true,
+     "alt": {
+      "p": 0.2,
+      "at": "lm_inq_interrogation",
+      "doing": "순회를 미루고 심문소에서 심문한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_cath_nave",
+     "doing": "정오 기도",
+     "alt": {
+      "p": 0.6,
+      "at": "lm_inq_interrogation",
+      "doing": "기도를 짧게 하고 심문실로 돌아간다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "19:40",
+     "to": "21:30",
+     "at": "lm_inq_cell",
+     "doing": "펠릭스의 고해 보고를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "lm_cath_nave",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배 — 서서 듣는다"
+    },
+    {
+     "days": "sabbath",
+     "from": "15:00",
+     "to": "17:00",
+     "at": "lm_sem_garden",
+     "doing": "신학원 정원 벤치 왼쪽에 앉는다 — 안셀름 곁에서 말없이",
+     "alt": {
+      "p": 0.3,
+      "at": "lm_inq_cell",
+      "doing": "정원에 가지 않고 독방에 머문다"
+     }
+    }
+   ]
+  },
+  "npc_serenielle": {
+   "home": "lm_pavilion",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "11:00",
+     "at": "lm_pav_garden",
+     "doing": "정자 정원을 거닌다 — 백합 향 손수건"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "13:00",
+     "at": "lm_pav_pond",
+     "doing": "연못 수면에 비친 어제를 본다"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_pav_memory",
+     "doing": "기억 수정에 정화청 보고서와 존속파 몫 보고서를 따로 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "lm_pav_garden",
+     "doing": "정원에서 저녁 — 인간 시종이 세 걸음 밖에 서 있다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "lm_pavilion",
+     "doing": "기억 속에 머문다"
+    },
+    {
+     "days": "weekday:[2]",
+     "from": "14:00",
+     "to": "16:00",
+     "at": "lm_cath_chain_hall",
+     "doing": "사슬방 회의 일에 감수관 곁에서 참관한다",
+     "alt": {
+      "p": 0.6,
+      "at": "lm_pav_memory",
+      "doing": "정자에서 회의 보고만 받는다"
+     }
+    },
+    {
+     "days": "sabbath",
+     "from": "10:00",
+     "to": "11:30",
+     "at": "lm_cathedral",
+     "doing": "대성당 접견 — 대사제가 서 있는 날만",
+     "alt": {
+      "p": 0.7,
+      "at": "lm_pav_garden",
+      "doing": "정원에서 쉰다"
+     }
+    }
+   ]
+  },
+  "npc_agnes": {
+   "home": "lm_pilgrim_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "lm_pilgrim_house",
+     "doing": "숙소 아침 — 죽과 빵, 이름 장부"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "13:00",
+     "at": "lm_pilgrim_street",
+     "doing": "순례자 거리 — 허가증 확인, 소문 수집"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_pilgrim_house",
+     "doing": "숙소 일 — 침상 점검, 큰 웃음"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_pilgrim_cellar",
+     "doing": "지하 저장고에서 이름 장부를 한 부 더 맞춘다",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "22:30",
+     "to": "02:00",
+     "at": "lm_dry_well",
+     "doing": "물 없는 우물 곁에서 오는 사람을 기다린다 — 밧줄은 셋째 돌 밑",
+     "alt": {
+      "p": 0.4,
+      "at": "lm_pilgrim_cellar",
+      "doing": "오늘은 아무도 오지 않는다 — 저장고에서 이름만 센다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "04:00",
+     "at": "lm_pilgrim_house",
+     "doing": "잠깐 눈을 붙인다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "대성당 안식일 예배 — 순례자들과 함께"
+    },
+    {
+     "days": "sabbath",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "lm_pilgrim_street",
+     "doing": "순례자 거리에서 장부를 맞추고 마를렌 곁에 앉는다",
+     "alt": {
+      "p": 0.25,
+      "at": "mw_gate",
+      "doing": "성 마렌의 우물까지 걸어 베아테를 찾는다"
+     }
+    }
+   ]
+  },
+  "npc_felix": {
+   "home": "lm_priest_quarters",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "13:00",
+     "at": "lm_cath_confessionals",
+     "doing": "고해실에서 순례자의 고해를 받는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_cath_nave",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "19:00",
+     "at": "lm_cath_confessionals",
+     "doing": "고해실 — 오후 줄",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "19:40",
+     "to": "21:30",
+     "at": "lm_inq_cell",
+     "doing": "마테우스에게 오늘의 고해 보고를 올린다"
+    },
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "22:00",
+     "at": "lm_priest_quarters",
+     "doing": "고해 장부를 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "lm_cath_nave",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "lm_priest_quarters",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_confessionals",
+     "doing": "안식일 예배 뒤의 긴 줄"
+    }
+   ]
+  },
+  "npc_otto": {
+   "home": "lm_uc_guardroom",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "02:00",
+     "at": "lm_undercroft",
+     "doing": "밤 순찰 — 방 앞마다 세 호흡 서 있는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "05:00",
+     "at": "lm_uc_guardroom",
+     "doing": "숙소에서 눈을 붙인다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "lm_uc_gate",
+     "doing": "간수장 초소 — 교대 점검, 열쇠 확인",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "12:30",
+     "to": "14:30",
+     "at": "lm_apothecary",
+     "doing": "순례길 약방에서 아내의 약을 사 온다"
+    },
+    {
+     "days": "all",
+     "from": "14:30",
+     "to": "19:00",
+     "at": "lm_undercroft",
+     "doing": "감방 층 점검, 물그릇 확인"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "22:00",
+     "at": "lm_uc_guardroom",
+     "doing": "숙소 — 아내의 기침을 떠올린다"
+    },
+    {
+     "days": "sabbath",
+     "from": "06:30",
+     "to": "07:00",
+     "at": "lm_uc_gate",
+     "doing": "문 앞에 놓인 빵 한 덩이를 안으로 들인다 — 누가 놓았는지 묻지 않는다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_lm_matthias": {
+   "home": "lm_silver_lamp_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "lm_cath_library",
+     "doing": "서고에서 낭독문 사본을 감독한다 — 뒷방 쪽을 보지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_cath_nave",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_cath_library",
+     "doing": "서고 — 사본 열람 기록을 확인한다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_lamp_study",
+     "doing": "처소 서재에서 소매 속 탄 종이를 편다 — 표를 센다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "lm_cath_nave",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "lm_silver_lamp_house",
+     "doing": "잠들지 못한다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배 — 대사제 곁에 선다"
+    }
+   ]
+  },
+  "npc_lm_adel": {
+   "home": "lm_north_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:30",
+     "at": "lm_north_house",
+     "doing": "북부 순례자 접견, 허가증 서류"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "lm_pilgrim_street",
+     "doing": "순례 명단 확인 — 숙소와 사제관 사이를 오간다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_pilgrim_cellar",
+     "doing": "아그네스와 이름 장부를 맞춘다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "lm_north_house",
+     "doing": "문을 닫고 도장 두 개를 나란히 놓았다가 다시 넣는다",
+     "fixed": true
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "대성당 안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_leanel": {
+   "home": "lm_pavilion",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "11:00",
+     "at": "lm_pav_memory",
+     "doing": "기억 수정 앞에서 어제를 정리한다"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "13:00",
+     "at": "lm_cath_library",
+     "doing": "낭독문 목록을 확정한다",
+     "alt": {
+      "p": 0.4,
+      "at": "lm_pav_garden",
+      "doing": "정자 정원에 머문다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "23:00",
+     "at": "lm_pav_garden",
+     "doing": "정자 정원 — 금실 염료 손가락을 소매 안에서 문지른다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "lm_pav_memory",
+     "doing": "수정 속의 기억으로 머문다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_lm_ivan": {
+   "home": "lm_garrison_commander",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "lm_garrison",
+     "doing": "점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "lm_bridge_east",
+     "doing": "동쪽 다리 검문 점검 — 난간의 사슬 고리를 센다",
+     "outdoor": true,
+     "alt": {
+      "p": 0.5,
+      "at": "lm_bridge_west",
+      "doing": "서쪽 다리 검문 점검"
+     }
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "lm_garrison_commander",
+     "doing": "병영 집무"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_east_gate",
+     "doing": "성문 순시",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "lm_garrison",
+     "doing": "병영 식당 — 병력 보고"
+    },
+    {
+     "days": "all",
+     "from": "23:30",
+     "to": "02:00",
+     "at": "lm_garrison_commander",
+     "doing": "병력 계산표를 다시 쓴다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "05:00",
+     "at": "lm_garrison_commander",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "lm_garrison",
+     "doing": "병영에 머문다 — 안식일 순찰 교대를 확인한다"
+    }
+   ]
+  },
+  "npc_lm_tobias": {
+   "home": "lm_inquisition",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "lm_inq_hall",
+     "doing": "함을 열어 쪽지를 분류한다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "13:00",
+     "at": "lm_inq_hall",
+     "doing": "밀고 접수 — 이름은 두 번 묻는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_cath_nave",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_inq_hall",
+     "doing": "접수, 밀고자 보상 쪽지 지급"
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "lm_inq_interrogation",
+     "doing": "심문 사제에게 일일 보고"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "lm_inquisition",
+     "doing": "처소에서 따로 만든 동기 장부를 쓴다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "10:00",
+     "to": "12:00",
+     "at": "lm_confession_square",
+     "doing": "공개 고해 줄을 구경한다 — 이름을 외운다"
+    }
+   ]
+  },
+  "npc_lm_hartmund": {
+   "home": "lm_hospice",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "12:30",
+     "at": "lm_hospice",
+     "doing": "병자의 집에서 눈병 환자를 본다 — 눈꺼풀을 뒤집는다"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "17:30",
+     "at": "lm_inq_scales",
+     "doing": "잿빛 저울실 — 징후자의 눈을 잰다"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "17:30",
+     "to": "19:00",
+     "at": "lm_inq_scales",
+     "doing": "저울 셋의 표결 석판 앞 — 가볍다를 쓸 자리를 본다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "lm_hospice",
+     "doing": "처소에서 옛 징후서를 읽는다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_aegidius": {
+   "home": "lm_inquisition",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:30",
+     "to": "12:00",
+     "at": "lm_inq_records",
+     "doing": "고발장 정리, 마테우스 보고"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "lm_inq_interrogation",
+     "doing": "심문 — 세 가지 질문, 꿈을 받아 적는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_inquisition",
+     "doing": "꿈의 책을 쓴다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "lm_cath_nave",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "02:00",
+     "at": "lm_inquisition",
+     "doing": "독방에서 확률표를 만든다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배 — 마테우스 반 보 뒤"
+    }
+   ]
+  },
+  "npc_lm_corad": {
+   "home": "lm_pyre_store",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "lm_pyre_court",
+     "doing": "크릭 잡역 점호 입회, 장작 수 확인"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "lm_pyre_court",
+     "doing": "장작을 쌓고 재를 쓸어 모은다",
+     "outdoor": true,
+     "rain": {
+      "at": "lm_pyre_store",
+      "doing": "비 오는 날 창고에서 항아리를 닦는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "lm_pyre_store",
+     "doing": "재 항아리 방에서 하루 정리 — 집게로 집은 것을 넣는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:30",
+     "to": "21:30",
+     "at": "lm_festival_bank",
+     "doing": "강둑에서 재를 흘려보낸다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "lm_pyre_store",
+     "doing": "창고 곁 방에서 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "lm_pyre_store",
+     "doing": "항아리를 닦고 숫자를 센다"
+    }
+   ]
+  },
+  "npc_lm_byuk": {
+   "home": "lm_garrison",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "lm_garrison",
+     "doing": "크릭 병영 점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "lm_pyre_court",
+     "doing": "장작 나르기, 재 쓸기",
+     "outdoor": true
+    },
+    {
+     "days": "workday",
+     "from": "17:00",
+     "to": "18:30",
+     "at": "lm_festival_bank",
+     "doing": "강둑에서 재를 거둔다",
+     "outdoor": true,
+     "alt": {
+      "p": 0.2,
+      "at": "lm_pyre_court",
+      "doing": "재 한 자루를 따로 묶어 강둑에 둔다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:30",
+     "to": "05:00",
+     "at": "lm_garrison",
+     "doing": "크릭 병영 구석"
+    }
+   ]
+  },
+  "npc_lm_anselm": {
+   "home": "lm_priest_quarters",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "lm_sem_hall",
+     "doing": "견습 암송 시험 — 구절 하나를 외워 보게 한다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "15:30",
+     "at": "lm_seminary",
+     "doing": "원장실 — 서품 후보 면담"
+    },
+    {
+     "days": "workday",
+     "from": "16:00",
+     "to": "18:30",
+     "at": "lm_sem_garden",
+     "doing": "정원 벤치에 앉아 구절을 외운다 — 왼쪽 자리를 비워 둔다",
+     "alt": {
+      "p": 0.3,
+      "at": "lm_seminary",
+      "doing": "원장실에서 석판 기록을 고친다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_priest_quarters",
+     "doing": "숙소에서 구절을 낮게 읊는다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_chapel_west",
+     "doing": "서안 예배당 안식일 예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "10:00",
+     "to": "12:00",
+     "at": "lm_seminary",
+     "doing": "원장실에서 쉰다",
+     "alt": {
+      "p": 0.2,
+      "at": "lm_cata_hall",
+      "doing": "서안 예배당 지하에서 '낭독 연습' — 카타콤의 사슬 모임"
+     }
+    }
+   ]
+  },
+  "npc_lm_niklas": {
+   "home": "lm_sem_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "lm_sem_hall",
+     "doing": "낭독문 암송 — 구절의 모양을 눈앞에 그린다"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "15:00",
+     "at": "lm_sem_hall",
+     "doing": "고해 실습, 규율"
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "18:00",
+     "at": "lumen__farm",
+     "doing": "농원 노역",
+     "outdoor": true,
+     "alt": {
+      "p": 0.3,
+      "at": "lm_sem_chant",
+      "doing": "성가 막사 뒤 담벼락에서 모양을 복습한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_sem_dorm",
+     "doing": "기숙사 마지막 침상에서 허공에 모양을 그린다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "lm_sem_dorm",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_lm_laurenz": {
+   "home": "lm_sem_chant",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도 성가를 이끈다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "07:40",
+     "at": "lm_cath_nave",
+     "doing": "아침 기도 성가"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "14:00",
+     "at": "lm_sem_chant",
+     "doing": "찬송 순례자 후보를 가르친다"
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "18:00",
+     "at": "lm_sem_chant",
+     "doing": "성가대 연습 — 정화청 쪽 의자를 먼저 본다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도 성가"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "lm_sem_chant",
+     "doing": "악보를 새로 베낀다 — 첫 음절에 작은 점"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 성가대를 이끈다"
+    }
+   ]
+  },
+  "npc_lm_jonas": {
+   "home": "lm_priest_quarters",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "lm_cath_library",
+     "doing": "서고 곁 서기실에서 사슬 장부 정리"
+    },
+    {
+     "days": "weekday:[2]",
+     "from": "14:00",
+     "to": "17:00",
+     "at": "lm_inq_records",
+     "doing": "심문소에서 '불순한 자' 목록을 받아 온다"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "lm_cath_library",
+     "doing": "서기실 — 명단 연습, 지운 자국을 일부러 남긴다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_cath_library",
+     "doing": "서기실에서 깃펜 끝을 다듬는다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "lm_priest_quarters",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_otilie": {
+   "home": "lm_nunnery",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "lm_scr_hall",
+     "doing": "낭독문을 '그림'으로 베낀다 — 모양을 눈으로 따라 그린다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "18:00",
+     "at": "lm_scr_hall",
+     "doing": "필사 — 먹물 그릇을 손등에 대어 온도를 본다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "lm_nunnery",
+     "doing": "수녀원 뒤 우물가에서 먹 묻은 손을 씻는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_nunnery",
+     "doing": "기숙 방 구석에서 눈을 감고 모양을 떠올린다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_hanna": {
+   "home": "lm_nunnery",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "07:00",
+     "at": "lm_cath_eternal_lamp",
+     "doing": "새벽 기도 — 영원등 곁 새 초를 간다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "lm_cath_eternal_lamp",
+     "doing": "제단 초 갈기"
+    },
+    {
+     "days": "workday",
+     "from": "12:30",
+     "to": "14:30",
+     "at": "lm_candle_works",
+     "doing": "양초 공방에서 새 초를 받아 온다 — 심지 매듭을 살핀다"
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "17:00",
+     "at": "lm_cath_eternal_lamp",
+     "doing": "영원등 곁 초 정리"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "lm_cath_candle_stair",
+     "doing": "감옥 층계 세 번째 단 밑에 양초 조각을 놓는다 — 발소리를 같게",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_nunnery",
+     "doing": "수녀원 문 옆방에서 심지를 꼰다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "lm_cath_nave",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배 — 영원등 곁에 선다"
+    }
+   ]
+  },
+  "npc_lm_eli": {
+   "home": "lm_monastery",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_cath_nave",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "lm_inq_hall",
+     "doing": "함 열기 보조"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "lm_inq_hall",
+     "doing": "접수 보조 — 이름을 두 번 확인하는 척한다"
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "lm_nunnery",
+     "doing": "어머니와 식사",
+     "alt": {
+      "p": 0.3,
+      "at": "lm_monastery",
+      "doing": "숙사에서 혼자 먹는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_cath_nave",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_monastery",
+     "doing": "숙사에서 두 번째 설교를 입술로 외운다",
+     "fixed": true
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "안식일 예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "11:00",
+     "to": "13:00",
+     "at": "lm_nunnery",
+     "doing": "어머니 곁에서 심지를 꼰다"
+    }
+   ]
+  },
+  "npc_lm_jakob": {
+   "home": "lm_uc_guardroom",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "14:00",
+     "at": "lm_uc_guardroom",
+     "doing": "교대 뒤 숙소에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_uc_upper_cells",
+     "doing": "감방 문 점검, 물그릇 — 바닥을 손바닥으로 감싸 놓는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "02:00",
+     "at": "lm_undercroft",
+     "doing": "교대 근무 — 감방 층 순회",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "02:00",
+     "to": "04:00",
+     "at": "lm_uc_culvert",
+     "doing": "지하 수로 쇠창살 한 짝에 기름을 먹인다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "06:00",
+     "at": "lm_uc_gate",
+     "doing": "초소에서 새벽 근무"
+    }
+   ]
+  },
+  "npc_lm_simon": {
+   "home": "lm_uc_guardroom",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "14:00",
+     "at": "lm_uc_upper_cells",
+     "doing": "상층 감방 배식 — 열쇠를 천천히 돌린다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "lm_uc_guardroom",
+     "doing": "간수 숙소에서 쉰다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "06:00",
+     "at": "lm_uc_guardroom",
+     "doing": "잠든다 — 교대 시각은 야코프가 정한다"
+    }
+   ]
+  },
+  "npc_lm_anna": {
+   "home": "lm_candle_works",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "lm_candle_floor",
+     "doing": "밀랍 달이기, 심지 매듭 — 매듭을 손가락으로 센다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "lm_candle_floor",
+     "doing": "양초 틀 작업"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_candle_cellar",
+     "doing": "밀랍 저장고 점검 — 밀물표 앞에 선다"
+    },
+    {
+     "days": "all",
+     "from": "22:30",
+     "to": "00:30",
+     "at": "lm_candle_cave",
+     "doing": "강가 동굴로 내려가 대기자 숫자를 센다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "00:30",
+     "to": "04:00",
+     "at": "lm_candle_works",
+     "doing": "공방 곁방에서 잔다"
+    }
+   ]
+  },
+  "npc_lm_berta": {
+   "home": "lm_pilgrim_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "lm_pilgrim_house",
+     "doing": "숙소 아침 — 빵과 죽을 푼다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "18:00",
+     "at": "lm_pilgrim_house",
+     "doing": "이름 장부, 침상 점검"
+    },
+    {
+     "days": "all",
+     "from": "18:30",
+     "to": "21:30",
+     "at": "lm_pilgrim_house",
+     "doing": "숙소 저녁"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "24:00",
+     "at": "lm_pilgrim_house",
+     "doing": "문 앞 의자에 앉아 귀를 연다 — 아래에서 올라오는 소리를 올려다보지 않는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "04:00",
+     "at": "lm_pilgrim_house",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_lm_hero": {
+   "home": "ps_keeper_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "05:00",
+     "at": "ps_oven",
+     "doing": "새벽 종, 화덕 불을 지핀다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "ps_oven",
+     "doing": "빵 굽기 — 노래를 흥얼거린다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "14:00",
+     "at": "ps_ledger_room",
+     "doing": "순례자 명부 — 이름 옆에 점을 찍는다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "17:00",
+     "at": "ps_house_stores",
+     "doing": "곡식 창고 점검"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "ps_oven",
+     "doing": "저녁 빵"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:30",
+     "at": "ps_well",
+     "doing": "점호와 우물 — 두레박 줄 확인",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "04:00",
+     "at": "ps_keeper_house",
+     "doing": "쉼터지기 집에서 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "ps_ring_stone",
+     "doing": "고리 표석 앞 안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_beate": {
+   "home": "mw_cell_beate",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_well",
+     "doing": "새벽 기도 손종",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "11:00",
+     "at": "mw_cell_beate",
+     "doing": "수녀 방에서 기도 — 순례자는 문 밖에서 기다린다"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "12:30",
+     "at": "mw_well",
+     "doing": "해가 우물 가운데 꽂히는 시각 — 장대 끝 밀랍 판을 눌러 뜬다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "mw_altar",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "17:00",
+     "at": "mw_garden",
+     "doing": "약초밭과 빨래터"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "mw_cell_beate",
+     "doing": "장대와 밀랍 판을 손질한다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "mw_cell_beate",
+     "doing": "우물 소리를 들으며 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "mw_gate",
+     "doing": "울타리 문을 연다",
+     "fixed": true
+    },
+    {
+     "days": "sabbath",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "mw_well",
+     "doing": "순례자 앞에서 우물 돌 둘레를 닦는다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_lm_ilse": {
+   "home": "lm_smith_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_chapel_west",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "lm_forge",
+     "doing": "성표 고리를 두들겨 잇는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "lm_chapel_west",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "lm_forge",
+     "doing": "풀무질, 각인"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_chapel_west",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "lm_smith_house",
+     "doing": "집에서 빵 한 덩이를 천에 싼다"
+    },
+    {
+     "days": "all",
+     "from": "22:30",
+     "to": "04:00",
+     "at": "lm_smith_house",
+     "doing": "풀무 밑 철함을 열었다 닫고 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "06:30",
+     "to": "07:00",
+     "at": "lm_uc_gate",
+     "doing": "침묵의 우물 문 앞에 빵 한 덩이를 놓고 돌아선다 — 안쪽을 보지 않는다",
+     "fixed": true
+    },
+    {
+     "days": "sabbath",
+     "from": "07:30",
+     "to": "09:30",
+     "at": "lm_chapel_west",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_lutz": {
+   "home": "lm_lutz_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_chapel_west",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "18:30",
+     "at": "lm_lutz_house",
+     "doing": "직조 — 입술을 핥는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_chapel_west",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "19:40",
+     "to": "21:30",
+     "at": "lm_ration_west",
+     "doing": "배급소 줄 — 대장장이의 집 쪽을 보지 않는다"
+    },
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "23:00",
+     "at": "lm_lutz_house",
+     "doing": "포도주 한 모금을 홀로 마신다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_chapel_west",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_yuta": {
+   "home": "lm_tenement_west",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "lm_confession_square",
+     "doing": "고해 줄에 선다 — 줄의 소문"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "lm_token_stalls",
+     "doing": "성표 노점 — 소금 자루를 두 개 놓고 귀를 연다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "20:00",
+     "at": "lm_inq_hall",
+     "doing": "밀고 함에 쪽지를 넣는다 — 토비아스에게 건넨다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:00",
+     "at": "lm_tenement_west",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_chapel_west",
+     "doing": "안식일 예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "lm_token_stalls",
+     "doing": "안식일 순례자 대목 — 소금과 소문"
+    }
+   ]
+  },
+  "npc_lm_kale": {
+   "home": "lm_tenement_west",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_chapel_west",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "lm_dock",
+     "doing": "성표 계수소 — 선적 명단 대조, 번호를 센다"
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "lm_dock",
+     "doing": "배가 떠난 뒤 부두 끝에 서 있다"
+    },
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "21:30",
+     "at": "lm_ration_west",
+     "doing": "배급소 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:00",
+     "at": "lm_tenement_west",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_chapel_west",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "npc_lm_marlene": {
+   "home": "lm_pilgrim_house",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "lm_pyre_court",
+     "doing": "정화의 뜰 곁 벤치에 앉아 흰 헝겊을 접었다 편다",
+     "alt": {
+      "p": 0.4,
+      "at": "lm_inq_hall",
+      "doing": "밀고 함 홀 앞 의자에 앉아 드나드는 얼굴을 센다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "19:00",
+     "at": "lm_pilgrim_house",
+     "doing": "숙소 — 짚 침상에 앉는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "lm_pilgrim_chapel",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "lm_pilgrim_house",
+     "doing": "짚 침상"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "lm_cath_nave",
+     "doing": "대성당 안식일 예배"
+    }
+   ]
   }
  },
  "events": [
@@ -11034,7 +13198,7 @@
   },
   {
    "id": "ev_dp_pilgrims",
-   "date": "313-03-14",
+   "date": "313-03-08",
    "npcs": [
     "npc_johan"
    ],
@@ -11696,6 +13860,942 @@
    "to": "19:40",
    "at": "gf_rooster",
    "doing": "수탉 지하의 냄새를 알아챈다"
+  },
+  {
+   "id": "ev_lm_pyre_1",
+   "date": "312-09-17",
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_corad",
+    "npc_lm_byuk",
+    "npc_lm_ivan",
+    "npc_lm_aegidius"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "lm_pyre_court",
+   "doing": "정화 — 첫 번째 장작. 신도가 '그의 고난이 그를 정화하기를'을 외친다. 이반이 불을 붙일 병사에게 이름을 묻는다"
+  },
+  {
+   "id": "ev_lm_pyre_1_bench",
+   "date": "312-09-17",
+   "npcs": [
+    "npc_lm_marlene"
+   ],
+   "from": "09:00",
+   "to": "14:00",
+   "at": "lm_pyre_court",
+   "doing": "벤치에서 장작의 개수를 센다 — 열둘"
+  },
+  {
+   "id": "ev_lm_pyre_1_ash",
+   "date": "312-09-17",
+   "npcs": [
+    "npc_lm_corad",
+    "npc_lm_byuk",
+    "npc_lm_marlene"
+   ],
+   "from": "21:00",
+   "to": "23:30",
+   "at": "lm_festival_bank",
+   "doing": "재를 강에 흘려보낸다 — 노파가 강둑을 따라 걷고 크릭이 자루 하나를 따로 묶어 둔다"
+  },
+  {
+   "id": "ev_lm_pyre_2",
+   "date": "312-10-08",
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_corad",
+    "npc_lm_byuk",
+    "npc_lm_ivan",
+    "npc_lm_aegidius"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "lm_pyre_court",
+   "doing": "정화 — 두 번째 장작. 마테우스가 앉을 때 숨을 멈춘다"
+  },
+  {
+   "id": "ev_lm_pyre_2_bench",
+   "date": "312-10-08",
+   "npcs": [
+    "npc_lm_marlene"
+   ],
+   "from": "09:00",
+   "to": "14:00",
+   "at": "lm_pyre_court",
+   "doing": "벤치에서 장작의 개수를 센다 — 열넷"
+  },
+  {
+   "id": "ev_lm_pyre_3",
+   "date": "312-11-05",
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_corad",
+    "npc_lm_byuk",
+    "npc_lm_ivan",
+    "npc_lm_aegidius"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "lm_pyre_court",
+   "doing": "정화 — 세 번째 장작. 이번 가을 가장 많은 이름이 올랐다"
+  },
+  {
+   "id": "ev_lm_pyre_3_bench",
+   "date": "312-11-05",
+   "npcs": [
+    "npc_lm_marlene"
+   ],
+   "from": "09:00",
+   "to": "14:00",
+   "at": "lm_pyre_court",
+   "doing": "벤치에서 장작의 개수를 센다 — 열여섯"
+  },
+  {
+   "id": "ev_lm_pyre_4",
+   "date": "312-12-12",
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_corad",
+    "npc_lm_byuk",
+    "npc_lm_ivan",
+    "npc_lm_aegidius"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "lm_pyre_court",
+   "doing": "정화 — 네 번째 장작. 대사제가 나오지 않는다"
+  },
+  {
+   "id": "ev_lm_pyre_4_bench",
+   "date": "312-12-12",
+   "npcs": [
+    "npc_lm_marlene"
+   ],
+   "from": "09:00",
+   "to": "14:00",
+   "at": "lm_pyre_court",
+   "doing": "벤치에서 장작의 개수를 센다 — 열여덟"
+  },
+  {
+   "id": "ev_lm_johan_arrives",
+   "date": "312-09-21",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "17:00",
+   "to": "22:00",
+   "at": "lm_pilgrim_house",
+   "doing": "순례자 숙소 맨 앞줄에 선다 — 필사본 3부를 품고, 짐 속에 헌금 쪽지 꾸러미"
+  },
+  {
+   "id": "ev_lm_johan_cellar",
+   "date": "312-09-21",
+   "npcs": [
+    "npc_johan",
+    "npc_agnes"
+   ],
+   "from": "22:00",
+   "to": "24:00",
+   "at": "lm_pilgrim_cellar",
+   "doing": "오스릭의 '안부' — 필사본 3부가 아그네스의 손으로 넘어간다"
+  },
+  {
+   "id": "ev_lm_johan_sleep1",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "00:00",
+   "to": "07:00",
+   "at": "lm_pilgrim_house",
+   "doing": "짚 침상에서 잔다"
+  },
+  {
+   "id": "ev_lm_johan_confession",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_johan",
+    "npc_felix"
+   ],
+   "from": "07:00",
+   "to": "10:30",
+   "at": "lm_cath_confessionals",
+   "doing": "고해 사제 펠릭스에게 길에서 들은 것을 빠짐없이 말한다 — 말하지 않는 것이 둘 있다"
+  },
+  {
+   "id": "ev_lm_johan_stalls",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_johan",
+    "npc_lm_yuta"
+   ],
+   "from": "10:30",
+   "to": "14:00",
+   "at": "lm_token_stalls",
+   "doing": "성표 노점 곁에서 찬송과 소문 — 소금장수가 헌금 쪽지 꾸러미를 한 줌 덜어 간다"
+  },
+  {
+   "id": "ev_lm_johan_chant",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_johan",
+    "npc_lm_laurenz"
+   ],
+   "from": "14:00",
+   "to": "22:00",
+   "at": "lm_sem_chant",
+   "doing": "스승 라우렌츠와 일곱 곡을 처음부터 다시 맞춘다 — 꽃월 합창단 이야기"
+  },
+  {
+   "id": "ev_lm_johan_sleep2",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "22:00",
+   "to": "06:00",
+   "at": "lm_pilgrim_house",
+   "doing": "짚 침상에서 잔다"
+  },
+  {
+   "id": "ev_lm_johan_leaves",
+   "date": "312-09-23",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "06:00",
+   "to": "07:00",
+   "at": "lm_bridge_south",
+   "doing": "남쪽 다리를 건너 순례길로 — 회색여울로 돌아가는 길",
+   "return_to": "dragon_pillar_post"
+  },
+  {
+   "id": "ev_lm_tobias_receives",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_lm_tobias"
+   ],
+   "from": "19:00",
+   "to": "20:00",
+   "at": "lm_inq_hall",
+   "doing": "유타가 건넨 쪽지를 받아 셋째 함 맨 아래 종이 위에 포갠다 — 마르타의 다음 보고"
+  },
+  {
+   "id": "ev_lm_harvest_tribute_312",
+   "date": "312-09-26",
+   "npcs": [
+    "npc_lm_ivan",
+    "npc_lm_byuk"
+   ],
+   "from": "08:00",
+   "to": "14:00",
+   "at": "lm_east_gate",
+   "doing": "수확 공물 수레 행렬 — 성지 농원과 영지의 곡물 수레가 동안 성문으로 들어온다. 수레 밑을 크릭이 뒤진다",
+   "outdoor": true
+  },
+  {
+   "id": "ev_lm_seal_check_1",
+   "date": "312-10-01",
+   "npcs": [
+    "npc_lm_leanel"
+   ],
+   "from": "03:00",
+   "to": "04:00",
+   "at": "lm_cath_library_back",
+   "doing": "서고 뒷방의 봉인을 확인한다 — 이 계절에도 열린 흔적이 없다"
+  },
+  {
+   "id": "ev_lm_convoy1_dock",
+   "date": "312-10-17",
+   "npcs": [
+    "npc_lm_kale",
+    "npc_lm_ivan"
+   ],
+   "from": "13:00",
+   "to": "19:00",
+   "at": "lm_dock",
+   "doing": "회색여울 각인 성표 마흔 개의 번호를 센다 — 노예선이 하룻밤 서고 수비대가 부두를 막는다",
+   "mounted": false
+  },
+  {
+   "id": "ev_lm_convoy1_agnes",
+   "date": "312-10-17",
+   "npcs": [
+    "npc_agnes"
+   ],
+   "from": "15:00",
+   "to": "18:00",
+   "at": "lm_dock",
+   "doing": "부두 끝에 서서 짐칸의 얼굴을 센다 — 회색여울 마흔 명"
+  },
+  {
+   "id": "ev_lm_tribute_begin",
+   "date": "312-11-01",
+   "npcs": [
+    "npc_lm_jonas"
+   ],
+   "from": "20:00",
+   "to": "24:00",
+   "at": "lm_cath_library",
+   "doing": "공물 명단 첫 장 — 지운 자국을 일부러 남기며 연습한다"
+  },
+  {
+   "id": "ev_lm_tribute_list",
+   "date": "312-11-03",
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_tobias",
+    "npc_lm_jonas"
+   ],
+   "from": "14:00",
+   "to": "17:00",
+   "at": "lm_inq_records",
+   "doing": "정화청장이 '불순한 자' 목록을 서기에게 건넨다 — 이름을 읽지 않은 채"
+  },
+  {
+   "id": "ev_lm_tribute_final",
+   "date": "312-11-05",
+   "npcs": [
+    "npc_lm_jonas"
+   ],
+   "from": "20:00",
+   "to": "24:00",
+   "at": "lm_cath_library",
+   "doing": "공물 명단 최종 40명 — 열두 살 소녀의 이름이 올해도 있다"
+  },
+  {
+   "id": "ev_lm_tribute_copy",
+   "date": "312-11-11",
+   "npcs": [
+    "npc_lm_jonas"
+   ],
+   "from": "22:00",
+   "to": "24:00",
+   "at": "lm_cath_library",
+   "doing": "호송 전날 밤 — 명단 사본을 한 부 더 쓴다. 보여 줄 사람이 서기실 창가에 온다"
+  },
+  {
+   "id": "ev_lm_tribute_depart",
+   "date": "312-11-12",
+   "npcs": [
+    "npc_lm_jonas",
+    "npc_lm_ivan",
+    "npc_lm_byuk"
+   ],
+   "from": "05:00",
+   "to": "09:00",
+   "at": "lm_tribute_yard",
+   "doing": "녹테른 공물 40명 호송 출발 — 서기가 마지막으로 명단을 읽고 이반의 병사가 공물 길 첫 구간을 호위한다"
+  },
+  {
+   "id": "ev_lm_tribute_mateus",
+   "date": "312-11-12",
+   "npcs": [
+    "npc_mateus"
+   ],
+   "from": "06:00",
+   "to": "07:30",
+   "at": "lm_tribute_yard",
+   "doing": "호송 출발을 지켜본다 — 이름을 읽지 않는다"
+  },
+  {
+   "id": "ev_lm_convoy2_dock",
+   "date": "312-12-11",
+   "npcs": [
+    "npc_lm_kale",
+    "npc_lm_ivan"
+   ],
+   "from": "11:00",
+   "to": "22:00",
+   "at": "lm_dock",
+   "doing": "'소금 바늘'호가 닿는다 — 회색여울 서른한 개의 성표 번호. 곡물 자루 밑 짐칸을 수비대가 확인한다"
+  },
+  {
+   "id": "ev_lm_convoy2_agnes",
+   "date": "312-12-11",
+   "npcs": [
+    "npc_agnes"
+   ],
+   "from": "13:00",
+   "to": "20:00",
+   "at": "lm_dock",
+   "doing": "부두에서 서른한 명의 얼굴을 센다 — 사라의 얼굴을 찾는다"
+  },
+  {
+   "id": "ev_lm_convoy2_anna",
+   "if": "lm_sara_rescue_attempt",
+   "date": "312-12-11",
+   "npcs": [
+    "npc_lm_anna"
+   ],
+   "from": "22:00",
+   "to": "24:00",
+   "at": "lm_candle_works",
+   "doing": "공방 강쪽 하역문으로 짐 하나를 내린다 — 곡물 자루 속의 사람"
+  },
+  {
+   "id": "ev_lm_gregor_collapse",
+   "date": "312-12-14",
+   "npcs": [
+    "npc_gregor7"
+   ],
+   "from": "06:00",
+   "to": "24:00",
+   "at": "lm_cath_prayer_room",
+   "doing": "종탑 밑 기도실에서 크게 쓰러졌다 — 의식이 없다"
+  },
+  {
+   "id": "ev_lm_emergency_council",
+   "date": "312-12-14",
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_matthias",
+    "npc_lm_leanel"
+   ],
+   "from": "14:00",
+   "to": "18:00",
+   "at": "lm_cath_chain_hall",
+   "doing": "임시 회의 — 정화청장이 회의 서기로서 의장 자리에 앉는다. 마티아스가 처음으로 서기 의자 곁에 서고 레아넬이 참관석에서 눈을 감는다"
+  },
+  {
+   "id": "ev_lm_collapse_sere",
+   "date": "312-12-14",
+   "npcs": [
+    "npc_serenielle"
+   ],
+   "from": "16:00",
+   "to": "17:30",
+   "at": "lm_cath_prayer_room",
+   "doing": "침상에서 세 걸음 밖에 선다 — 백합 향 손수건. 인간들이 길을 비킨다"
+  },
+  {
+   "id": "ev_lm_ash_day_lamp",
+   "date": "312-13-03",
+   "npcs": [
+    "npc_lm_hanna"
+   ],
+   "from": "17:00",
+   "to": "24:00",
+   "at": "lm_cath_eternal_lamp",
+   "doing": "재의 날 — 모든 불이 꺼진 대성당. 영원등 곁에서 새 초 하나를 켜지 않고 쥐고만 있다"
+  },
+  {
+   "id": "ev_lm_ash_day_mateus",
+   "date": "312-13-03",
+   "npcs": [
+    "npc_mateus"
+   ],
+   "from": "17:00",
+   "to": "24:00",
+   "at": "lm_cath_nave",
+   "doing": "재의 날 금식 — '우리 피가 세계를 찢었다'를 낮게 외운다. 불이 없는 밤"
+  },
+  {
+   "id": "ev_lm_ash_day_ring",
+   "date": "312-13-03",
+   "npcs": [
+    "npc_lm_adel",
+    "npc_agnes",
+    "npc_lm_jakob"
+   ],
+   "from": "19:00",
+   "to": "21:00",
+   "at": "lm_pilgrim_street",
+   "doing": "불 꺼진 순례자 거리 — 군중 속에서 일곱째 고리의 몇이 서로를 순례자로 만난다"
+  },
+  {
+   "id": "ev_lm_seal_check_2",
+   "date": "313-01-01",
+   "npcs": [
+    "npc_lm_leanel"
+   ],
+   "from": "03:00",
+   "to": "04:00",
+   "at": "lm_cath_library_back",
+   "doing": "서고 뒷방의 봉인을 확인한다"
+  },
+  {
+   "id": "ev_lm_johan_petition",
+   "date": "313-01-05",
+   "npcs": [
+    "npc_johan",
+    "npc_lm_adel"
+   ],
+   "from": "14:00",
+   "to": "16:00",
+   "at": "lm_north_house",
+   "doing": "오스릭의 꽃월 순례 청원서와 회색여울 순례단 열두 명의 명단을 올린다 — 아델이 목패 열두 장의 이름을 하나씩 읽는다",
+   "travel_from": "gf_pilgrim_barn",
+   "return_to": "dragon_pillar_post"
+  },
+  {
+   "id": "ev_lm_tobias_dispatch",
+   "date": "313-01-12",
+   "npcs": [
+    "npc_lm_tobias",
+    "npc_lm_aegidius"
+   ],
+   "from": "09:00",
+   "to": "10:00",
+   "at": "lm_inq_hall",
+   "doing": "토비아스가 셋째 함 맨 아래 종이를 처음으로 올린다 — 에기디우스의 가방에 마르타의 보고가 들어간다",
+   "condition": "마르타의 오스릭 보고가 회수되지 않음"
+  },
+  {
+   "id": "ev_lm_aegidius_greyford",
+   "date": "313-01-17",
+   "npcs": [
+    "npc_lm_aegidius"
+   ],
+   "from": "10:00",
+   "to": "17:00",
+   "at": "gf_chapel",
+   "doing": "북부 순회 심문 — 회색여울 예배당에서 세 가지 질문. 오스릭의 이름이 처음으로 정화청 종이에 오른다",
+   "travel_from": "lm_inq_hall",
+   "condition": "마르타의 오스릭 보고가 회수되지 않음"
+  },
+  {
+   "id": "ev_lm_aegidius_osric",
+   "date": "313-01-17",
+   "npcs": [
+    "npc_osric"
+   ],
+   "from": "10:00",
+   "to": "17:00",
+   "at": "gf_chapel_priest",
+   "doing": "심문 사제의 세 가지 질문을 받는다 — 필사본은 이미 루멘에 갔다",
+   "condition": "마르타의 오스릭 보고가 회수되지 않음"
+  },
+  {
+   "id": "ev_lm_sworn_tokens",
+   "date": "313-02-10",
+   "npcs": [
+    "npc_lm_matthias",
+    "npc_lm_laurenz"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "lm_cath_nave",
+   "doing": "파종월 성표 서약 — 일곱 살이 된 아이마다 목에 쇠사슬 고리 하나. 고리 값 3못은 주인이 낸다. 성가대가 첫 곡을 연다"
+  },
+  {
+   "id": "ev_lm_hero_prep",
+   "date": "313-03-10",
+   "npcs": [
+    "npc_lm_hero"
+   ],
+   "from": "04:00",
+   "to": "22:00",
+   "at": "ps_oven",
+   "doing": "순례자 삼백이 몰려드는 날 — 빵 서른 판. 화덕이 하루 종일 꺼지지 않는다"
+  },
+  {
+   "id": "ev_lm_ivan_prep",
+   "date": "313-03-10",
+   "npcs": [
+    "npc_lm_ivan"
+   ],
+   "from": "06:00",
+   "to": "12:00",
+   "at": "lm_garrison_commander",
+   "doing": "축일 병력 배치 — 삼천 대 삼백의 계산표를 다시 쓴다"
+  },
+  {
+   "id": "ev_lm_johan_arrives_feast",
+   "date": "313-03-11",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "12:00",
+   "to": "16:00",
+   "at": "lm_pilgrim_house",
+   "doing": "회색여울 순례단 열두 명을 이끌고 숙소에 닿는다 — 아델이 발급한 목패 열두 장",
+   "travel_from": "gf_pilgrim_barn"
+  },
+  {
+   "id": "ev_lm_chant_audition",
+   "date": "313-03-11",
+   "npcs": [
+    "npc_johan",
+    "npc_lm_laurenz"
+   ],
+   "from": "16:00",
+   "to": "18:30",
+   "at": "lm_sem_chant",
+   "doing": "꽃월 합창단 선발 — 일곱 곡을 처음으로 이어 부른다. 정화청 쪽 의자가 한 칸 앞에 와 있다"
+  },
+  {
+   "id": "ev_lm_chant_mateus",
+   "date": "313-03-11",
+   "npcs": [
+    "npc_mateus"
+   ],
+   "from": "16:30",
+   "to": "17:30",
+   "at": "lm_sem_chant",
+   "doing": "합창단 선발에 앉아서 한 곡을 끝까지 듣는다 — 약지의 머리핀이 한 번 돈다"
+  },
+  {
+   "id": "ev_lm_johan_sleep_feast",
+   "date": "313-03-11",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "18:30",
+   "to": "06:00",
+   "at": "lm_pilgrim_house",
+   "doing": "짚 침상에서 잔다 — 축일 새벽까지"
+  },
+  {
+   "id": "ev_lm_feast_bridge",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_ivan"
+   ],
+   "from": "04:00",
+   "to": "24:00",
+   "at": "lm_bridge_east",
+   "doing": "축일 종일 동쪽 다리 — 난간 사슬 고리를 세고 군중의 쏠림을 본다. 끊는 명령은 아직 내리지 않았다",
+   "outdoor": true
+  },
+  {
+   "id": "ev_lm_feast_well",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_beate"
+   ],
+   "from": "06:00",
+   "to": "18:00",
+   "at": "mw_well",
+   "doing": "축일 하루만 우물이 열린다 — 순례자 앞에서 돌 둘레를 닦는다. 해가 수면에 꽂히는 열한 시에 숨을 멈춘다"
+  },
+  {
+   "id": "ev_lm_feast_stalls",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_yuta"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "lm_token_stalls",
+   "doing": "축일 대목 — 소금과 소문. 누가 어디에 서는지 센다"
+  },
+  {
+   "id": "ev_lm_feast_inquisitor",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_aegidius",
+    "npc_lm_hartmund"
+   ],
+   "from": "12:00",
+   "to": "22:00",
+   "at": "lm_festival_bank",
+   "doing": "군중 속 단속 두 배 — 눈이 이상한 순례자를 가려낸다. 저울사제가 눈꺼풀을 뒤집지 않으려 애쓴다"
+  },
+  {
+   "id": "ev_lm_feast_seminary",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_lm_niklas"
+   ],
+   "from": "16:00",
+   "to": "21:00",
+   "at": "lm_festival_bank",
+   "doing": "견습 대열에 서서 낭독문을 한목소리로 외운다 — 소년은 일부러 한 구절을 틀린다"
+  },
+  {
+   "id": "ev_lm_feast_choir",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_laurenz",
+    "npc_johan"
+   ],
+   "from": "16:30",
+   "to": "19:30",
+   "at": "lm_festival_bank",
+   "doing": "합창단 — 일곱 곡의 첫 음절이 처음으로 한꺼번에 불린다. 아무도 뜻을 모른 채"
+  },
+  {
+   "id": "ev_lm_feast_sermon",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_gregor7",
+    "npc_lm_matthias",
+    "npc_mateus"
+   ],
+   "from": "17:00",
+   "to": "20:00",
+   "at": "lm_festival_bank",
+   "doing": "축일 설교 — 대사제가 마렌의 두 번째 설교를 낭독할지가 걸려 있다. 마티아스가 곁에 서고 마테우스가 앞줄에서 선다"
+  },
+  {
+   "id": "ev_lm_feast_auditor",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_leanel"
+   ],
+   "from": "17:00",
+   "to": "20:00",
+   "at": "lm_festival_bank",
+   "doing": "대사제 곁 참관석 — 낭독인지 낭송인지의 판정을 기다린다. 아무도 묻지 않았다"
+  },
+  {
+   "id": "ev_lm_feast_candles",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_hanna",
+    "npc_lm_eli",
+    "npc_agnes",
+    "npc_lm_adel",
+    "npc_lm_marlene"
+   ],
+   "from": "18:30",
+   "to": "22:00",
+   "at": "lm_festival_bank",
+   "doing": "촛불 한 줄 — 암호('사슬을 감은 것은?')에 답하는 얼굴들. 일곱째 고리의 몇이 군중 속에서 서로를 순례자로 만난다"
+  },
+  {
+   "id": "ev_lm_feast_johan_night",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "19:30",
+   "to": "06:00",
+   "at": "lm_pilgrim_house",
+   "doing": "합창을 마치고 숙소로 — 짚 침상, 떨리는 목"
+  },
+  {
+   "id": "ev_lm_feast_after_mateus",
+   "if": "lm_gregor_reads_second_sermon",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_mateus"
+   ],
+   "from": "20:30",
+   "to": "22:30",
+   "at": "lm_cath_prayer_room",
+   "doing": "낭독이 끝난 밤 — 대사제의 방으로 올라가 알베릭의 처형 서명을 요구한다"
+  },
+  {
+   "id": "ev_lm_feast_after_undercroft",
+   "if": "lm_gregor_reads_second_sermon",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_mateus",
+    "npc_otto",
+    "npc_lm_jakob",
+    "npc_lm_simon"
+   ],
+   "from": "22:30",
+   "to": "24:00",
+   "at": "lm_undercroft",
+   "doing": "그날 밤 마테우스가 움직인다 — 처형 서명 문서를 쥐고 침묵의 우물로 내려간다. 오토가 열쇠 꾸러미를 쥔다"
+  },
+  {
+   "id": "ev_lm_feast_after_ivan",
+   "if": "lm_gregor_reads_second_sermon",
+   "date": "313-03-12",
+   "npcs": [
+    "npc_lm_ivan"
+   ],
+   "from": "21:00",
+   "to": "24:00",
+   "at": "lm_cathedral",
+   "doing": "봉인 서한을 열지 않은 채 대성당 문 앞에 병사를 세운다 — 누구를 위해 서는지 아직 모른다"
+  },
+  {
+   "id": "ev_lm_johan_leaves_feast",
+   "date": "313-03-13",
+   "npcs": [
+    "npc_johan"
+   ],
+   "from": "06:00",
+   "to": "07:00",
+   "at": "lm_bridge_south",
+   "doing": "회색여울 순례단과 남쪽 다리를 건넌다 — 돌아가는 길",
+   "return_to": "gf_pilgrim_barn"
+  },
+  {
+   "id": "ev_lm_hero_dysentery",
+   "date": "313-03-13",
+   "npcs": [
+    "npc_lm_hero"
+   ],
+   "from": "04:00",
+   "to": "22:00",
+   "at": "ps_house_sick",
+   "doing": "축일 직후 이질 — 병자 돌집이 가득 찬다. 우물물을 끓인다"
+  },
+  {
+   "id": "ev_lm_seal_check_3",
+   "date": "313-04-01",
+   "npcs": [
+    "npc_lm_leanel",
+    "npc_lm_matthias"
+   ],
+   "from": "03:00",
+   "to": "04:00",
+   "at": "lm_cath_library_back",
+   "doing": "서고 뒷방 문 앞 — 봉인을 확인하러 온 감수관과 열쇠를 쥔 등불관이 마주친다. 둘 다 말하지 않는다"
+  },
+  {
+   "id": "ev_lm_seal_check_4",
+   "date": "313-07-01",
+   "npcs": [
+    "npc_lm_leanel"
+   ],
+   "from": "03:00",
+   "to": "04:00",
+   "at": "lm_cath_library_back",
+   "doing": "서고 뒷방의 봉인을 확인한다"
+  },
+  {
+   "id": "ev_lm_harvest_tribute_313",
+   "date": "313-07-20",
+   "npcs": [
+    "npc_lm_ivan",
+    "npc_lm_byuk"
+   ],
+   "from": "08:00",
+   "to": "14:00",
+   "at": "lm_east_gate",
+   "doing": "수확월 공물 수레 행렬 — 성지 농원의 곡물과 영지의 인두세 곡식",
+   "outdoor": true
+  },
+  {
+   "id": "ev_lm_ring_meet_0918",
+   "date": "312-09-18",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습을 핑계로 서안 예배당 지하에 모인다 — 벌어진 고리, 오므린 고리"
+  },
+  {
+   "id": "ev_lm_ring_meet_1018",
+   "date": "312-10-18",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습 — 성표를 벌린 한 사람이 안건을 다음 달로 미룬다"
+  },
+  {
+   "id": "ev_lm_ring_meet_1118",
+   "date": "312-11-18",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습 — 공물 명단과 사라의 배 이야기"
+  },
+  {
+   "id": "ev_lm_ring_meet_1218",
+   "date": "312-12-18",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습 — 대사제가 쓰러진 뒤의 낭독을 두고 벌어진 고리가 둘이다"
+  },
+  {
+   "id": "ev_lm_ring_meet_0119",
+   "date": "313-01-19",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습 — 북부 순회 심문관이 회색여울에 갔다는 소식"
+  },
+  {
+   "id": "ev_lm_ring_meet_0219",
+   "date": "313-02-19",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습 — 축일 촛불 한 줄의 자리"
+  },
+  {
+   "id": "ev_lm_ring_meet_0419",
+   "date": "313-04-19",
+   "npcs": [
+    "npc_lm_anselm",
+    "npc_agnes",
+    "npc_lm_hanna",
+    "npc_lm_otilie",
+    "npc_lm_simon"
+   ],
+   "from": "10:00",
+   "to": "12:00",
+   "at": "lm_cata_hall",
+   "doing": "낭독 연습 — 축일 이후의 사슬"
+  },
+  {
+   "id": "ev_lm_council_monthly",
+   "repeat": "monthly",
+   "day": 10,
+   "npcs": [
+    "npc_mateus",
+    "npc_lm_matthias",
+    "npc_lm_leanel"
+   ],
+   "from": "14:00",
+   "to": "17:30",
+   "at": "lm_cath_chain_hall",
+   "doing": "일곱 등불 회의 — 흰 사슬과 검은 사슬이 그릇에 던져진다. 마테우스가 안건 순서를 쥐고 레아넬은 참관석에서 말하지 않는다"
+  },
+  {
+   "id": "ev_lm_alberic_wall_plaster",
+   "repeat": "monthly",
+   "day": 5,
+   "npcs": [
+    "npc_otto"
+   ],
+   "from": "08:00",
+   "to": "11:00",
+   "at": "lm_uc_cell_9",
+   "doing": "회칠 — 매달 알베릭의 벽 글을 지운다. 지운 자리에 벌써 손톱 자국이 있다"
   }
  ],
  "map": {

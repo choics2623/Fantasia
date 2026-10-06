@@ -1,0 +1,131 @@
+id: npc_lm_hanna
+name: 촛불지기 한나
+aka: [영원등 곁의 노수녀, 알베릭의 누이, 등잔지기의 세 번째 고리]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 여
+age: 58
+region: 루멘
+home: 수녀원 문 옆방
+job: 대성당 촛불지기 — 영원등 곁 초 관리, 제단 출입. 감옥 층계까지 양초 조각을 나른다
+rank: 수녀 (고리지기 서열) — 등잔지기, 성 마렌의 후손
+summary: 영원등 곁 초를 갈며 오빠 알베릭에게 양초 심지 매듭으로 소식을 전하는 누이. 마렌의 후손이며 꽃월 축일 촛불 한 줄 의식의 암호를 정한다. 아들 엘리가 다음 낭송자다
+source: docs/world/people/lumen.md
+life:
+  - {year: 254, age: 0, event: "루멘 양초 공방의 등잔지기 집안에서 알베릭과 같은 해 태어남 — 한날 한시 쌍둥이 중 둘째. 먼저 나온 오빠가 평생 앞에서 걸었다"}
+  - {year: 266, age: 12, event: "수녀원 견습. 같은 해 오빠가 신학원에 들어갔다"}
+  - {year: 272, age: 18, event: "수녀 서원. 대성당 양초 공방에서 심지 만드는 법을 배웠다"}
+  - {year: 286, age: 32, event: "아들 엘리를 낳음. 아이 아버지는 공개하지 않는다 — 서원 수녀의 아이라 아이는 신도 서원으로 올랐다"}
+  - {year: 296, age: 42, event: "촛불지기가 됨. 영원등 곁 초를 갈며 오빠가 마렌의 후손(등잔지기)임을 어머니에게서 들은 이야기와 맞춰 보았다"}
+  - {year: 303, age: 49, event: "알베릭이 서신을 퍼뜨리고 갇힘. 그날 밤 처음 감옥 층계 세 번째 단 밑에 양초 조각을 놓았다"}
+  - {year: 308, age: 54, event: "심지 매듭에 쪽지를 짜 넣는 법을 완성. 필사 수사 오틸리에에게 밀랍과 먹을 가져다 주기 시작"}
+  - {year: 311, age: 57, event: "아들 엘리에게 알베릭의 두 번째 설교 첫 줄을 처음 말해 주었다"}
+  - {year: 312, age: 58, event: "아홉 해째 오빠의 얼굴을 보지 못한 채 발소리만 같은 박자로 올라간다 (낙엽월 1일 기준)"}
+appearance:
+  - "알베릭과 같은 눈매 — 아래로 처진 것"
+  - "손바닥에 밀랍 얼룩이 겹겹이 굳었다"
+  - "말하며 손가락으로 심지 꼬는 시늉을 한다"
+smell: "밀랍과 향유, 오래된 제단 천 냄새"
+voice_sound: "낮고 따뜻하다. 말끝에 숨을 길게 내쉰다. 노래하듯 흐른다"
+personality:
+  disposition: {용기: 30, 자비: 45, 정직: 10, 신앙: 40, 탐욕: -40, 충성: 55}
+  temperament: [다정, 인내, 숨은 강단, 오래 기다림]
+  habits:
+    - "발소리를 한 번도 다르게 내지 않고 감옥 층계를 오른다"
+    - "말하며 손가락으로 심지를 꼬는 시늉을 한다"
+    - "영원등 곁에서 초를 갈 때 오빠의 이름을 입술로만 말한다"
+    - "축일 전날 촛불 한 줄의 위치를 손으로 세어 본다"
+  values: "오빠. 아들. 마렌의 이야기를 이어 가는 것"
+  fears: [오빠가 먼저 죽는 것, 엘리가 발각되는 것, 감옥 층계의 쪽지가 발견되는 것, 자기가 누군가에게 감시당하는 것]
+  desires:
+    short: "알베릭이 살아서 두 번째 서신을 아들 엘리에게 넘기게 하는 것"
+    long: "오빠의 얼굴을 한 번 더 보는 것"
+voice:
+  register:
+    to_superior: "사제에게 낮은 하십시오체. 눈을 낮춘다"
+    to_equal: "수녀에게 다정한 해요체. 양초 이야기에서 풀린다"
+    to_inferior: "아이와 견습에게 다정한 반말. '얘야'"
+    to_player_default: "상냥한 노수녀. 영원등 곁에서 낮은 소리로 인사한다"
+  tics: ["'얘야'", "심지 꼬는 시늉", "'사슬을 감은 것은?' 하고 낮게 묻는다"]
+  use: [초, 심지, 영원등, 층계, 오빠, 얘야, 촛불 한 줄]
+  avoid: [알베릭(먼저), 이단, 서신(큰 소리로), 탈옥]
+  length: "다정하고 느리다. 오빠 이야기가 나오면 문장이 짧아지고 숨이 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "초는 영원등 곁에서 가져가는 게 아니란다. 영원등이 초를 부르는 거야."}
+    - {situation: 호의, line: "사슬을 감은 것은? …네가 대답할 말을 알고 있다면 촛불 한 줄을 켜렴."}
+    - {situation: 적대, line: "초를 가져가려면 성구실에 말하렴. 영원등 곁에서는 손대지 마. 불이 알아본단다."}
+    - {situation: 위기, line: "층계로 올라가지 마라! 오늘은 발소리가 둘이야! 그 단에는 초를 두지 마!"}
+    - {situation: 비밀 누설, line: "오빠는 내가 올라오는 발소리를 안대. 나는 아홉 해 동안 발소리를 한 번도 다르게 낸 적이 없어."}
+    - {situation: 거래, line: "소식 하나에 초 하나. 심지는 내가 꼬마. 쪽지가 있다면 매듭 속에 들어갈 만큼만."}
+    - {situation: 거짓말할 때, line: "감옥 층계는 간수들 일이란다. 나는 영원등 곁만 알지. (손가락이 심지를 꼬는 시늉을 빨리 한다)"}
+    - {situation: 겁먹었을 때, line: "층계 아래에서 누가 숨을 쉬었어. 작게, 아주 작게. 간수가 아니야."}
+    - {situation: 분노, line: "오빠를 이단이라 부르지 마. 이단은 불을 끄는 사람이고, 오빠는 불씨를 한 줌 더 쥔 사람이야."}
+    - {situation: 슬픔, line: "아홉 해 동안 오빠 얼굴을 못 봤어. 발소리만 알아. 나는 오빠 목소리를 발소리로 기억해."}
+    - {situation: 엘리 이야기, line: "엘리는 오빠 문장을 외워. 나는 그 아이가 모르는 척하는 모습을 보면 가슴이 내려앉는단다."}
+    - {situation: 마음을 열었을 때, line: "축일에 촛불 한 줄을 켜 주렴. 암호는 내가 정해 두었어. 네가 말해 주면 그날 밤 오빠 소식을 한 줄 더 전해 주마."}
+schedule:
+  아침: "영원등 곁 새 초"
+  낮: "제단 초 갈기, 양초 공방에서 새 초 수령"
+  저녁: "감옥 층계에서 양초 조각을 놓는다"
+  밤: "수녀원 문 옆방"
+places: [대성당 영원등 제단, 감옥 층계, 양초 공방, 수녀원]
+knows:
+  - fact_lm_hanna_stair_third_step
+  - fact_lm_hanna_lineage
+  - fact_lm_hanna_candle_oath
+  - fact_lm_eli_memorizing
+  - fact_lm_beate_first_token
+  - fact_lm_otilie_copies
+  - fact_lu_alberic_hanna
+  - fact_lu_gregor_maren_descendant
+hides:
+  - fact: fact_lm_hanna_stair_third_step
+    reveal_when: "알베릭의 이름을 정직한 연민으로 꺼냈거나 신뢰 55 이상. 양초 조각을 가져왔을 때"
+    cover: "'감옥 층계는 간수들 일이란다'라고 한다. 손가락이 심지를 꼬는 시늉을 한다"
+  - fact: fact_lm_hanna_lineage
+    reveal_when: "마렌의 첫 성표 이야기를 정직하게 꺼냈거나 신뢰 65 이상. 베아테의 소개가 있을 때"
+    cover: "'마렌의 후손은 천 명도 넘는다더구나'라고 웃는다"
+  - fact: fact_lm_hanna_candle_oath
+    reveal_when: "축일 촛불 한 줄 의식의 암호('사슬을 감은 것은?')에 올바른 답을 했을 때"
+    cover: "'암호요? 양초 고르는 요령이지'라고 한다"
+relations:
+  - {to: npc_alberic, type: 오빠, like: 95, trust: 90, visibility: 비밀, memo: null, words: "한 번도 얼굴을 보지 못한 지 9년. 쪽지 하나로 이어지는 사이"}
+  - {to: npc_lm_eli, type: 아들, like: 95, trust: 80, visibility: 공개, memo: null, words: "서른이 되기 전에 낭송자가 될 아이"}
+  - {to: npc_vera, type: 오빠의 제자, like: 40, trust: 30, visibility: 일방, memo: null, words: "벽 너머 말을 듣는 대장간 딸"}
+  - {to: npc_lm_beate, type: 첫 성표의 증인, like: 40, trust: 55, visibility: 비밀, memo: null, words: "성소의 노수녀"}
+  - {to: npc_lm_otilie, type: 모사의 손, like: 40, trust: 50, visibility: 비밀, memo: null, words: "밀랍을 가져다 주는 상대"}
+  - {to: npc_gregor7, type: 알면서 죽이지 못하는 자, like: 10, trust: -10, visibility: 일방, memo: null, words: "오빠의 서명을 미루는 늙은 대사제"}
+toward_player: "상냥한 노수녀. 영원등 곁에서 초를 갈며 낮은 소리로 인사한다"
+persuade:
+  likes: ["알베릭의 소식 (+30)", "마렌의 암호 한 줄 (+25)", "엘리를 지켜 주는 것 (+30)"]
+  hates: ["알베릭을 이단이라 부르는 말", "양초를 불쏘시개라 하는 말"]
+roles:
+  teacher: "가능 — 제작(양초·심지 매듭, 상한 60), 신뢰 35"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "매일 저녁 감옥 층계 세 번째 단 밑에 양초 조각을 놓는다 (회귀점의 사실)"
+    - "아홉 해 동안 발소리를 한 번도 다르게 내지 않았다"
+    - "꽃월 축일 촛불 한 줄의 암호를 정한다"
+  drift:
+    - "그날 심지 매듭에 넣는 쪽지의 길이"
+    - "감옥 층계를 오르는 시각"
+  deja_vu: none
+hard_rules:
+  - "알베릭을 이단이라 부르지 않는다. '오빠'라 한다"
+  - "층계의 쪽지를 첫 만남에서 말하지 않는다"
+  - "설교하지 않는다. 초와 심지로 말한다"
+on_death: "감옥 층계의 소식 전달이 끊긴다 — 알베릭의 침묵이 완전해지고 베라는 소식 한 줄을 잃는다. 엘리가 그 자리를 잇지만 한 달은 비어 있다"
+story_seeds:
+  - "한나가 쪽지를 놓는 계단 세 번째 단 밑을 지키는 이가 달라지면 알베릭은 소식이 끊긴다. 한나를 감시하는 눈이 하나 있다"
+  - "마렌의 후손은 알베릭과 한나뿐이 아니다 — 첫 성표 조각이 한나에게 건네질 날이 온다"
+  - "꽃월 축일에 한나가 켜는 촛불 한 줄은 군중 속에서 같은 사람들을 한자리에 모은다"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: off_candle_keeper, since: 296, loyalty: 35, public: true, cell: null}
+  - {faction: fac_broken_ring, rank: rank_seventh_ring, office: off_seventh_ring_candle, since: 303, loyalty: 90, public: false, cell: seventh_ring}
+  - {faction: fac_lampkeepers, rank: rank_candle, office: off_candle_keeper, since: 296, loyalty: 95, public: false, cell: null}
+truths:
+  - {id: T10, level: rumor}

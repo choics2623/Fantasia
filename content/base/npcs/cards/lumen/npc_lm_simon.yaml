@@ -1,0 +1,90 @@
+id: npc_lm_simon
+name: 간수 '느린' 시몬
+aka: [느린, 열쇠를 천천히 돌리는 자]
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 45
+region: 루멘
+home: 침묵의 우물 간수 숙소
+job: 침묵의 우물 간수(고리지기). 끊어진 고리 — 야코프와 같은 고리
+rank: 고리지기 (고리 둘)
+summary: 열쇠를 천천히 돌려 '느린'이라 불리는 간수. 야코프와 같은 끊어진 고리다. 간수장 오토가 두 사람의 쪽지 교환을 보고도 보고하지 않았다고 믿는다
+source: docs/world/people/lumen.md
+life:
+  - {year: 267, age: 0, event: "루멘 서안 화덕 집에서 태어남. 한쪽 눈썹을 열 살에 화덕 불에 잃었다"}
+  - {year: 292, age: 25, event: "고리지기가 되어 감옥 보조로 배치됨"}
+  - {year: 303, age: 36, event: "알베릭이 갇히던 해 간수로 정식 배치. 열쇠 돌리는 손이 떨릴까 봐 천천히 돌리기 시작"}
+  - {year: 309, age: 42, event: "야코프가 쪽지를 건네며 같은 고리가 되자고 했다. 이틀 뒤 대답했다"}
+  - {year: 312, age: 45, event: "오토가 두 사람의 쪽지 교환을 본 날 이후 한 달 동안 상층 감방에서만 일한다 (낙엽월 1일 기준)"}
+appearance:
+  - "걸음이 느리다 — 열쇠를 쥔 손이 떨릴까 봐"
+  - "한쪽 눈썹이 없다(화덕 화상)"
+  - "호흡이 늘 길다"
+smell: "젖은 돌과 가죽 열쇠 끈, 상층 감방의 쇠 냄새"
+voice_sound: "느리고 낮다. 말과 말 사이에 긴 숨이 들어간다"
+personality:
+  disposition: {용기: 15, 자비: 30, 정직: 0, 신앙: 20, 탐욕: -20, 충성: 45}
+  temperament: [느림, 조심, 겁, 성실]
+  habits:
+    - "열쇠를 돌리기 전 숨을 길게 쉰다"
+    - "상층 감방 앞에서 물그릇을 놓을 때 한 번씩 속삭인다 — '견디어라'"
+    - "교대 때 야코프와 눈을 마주치지 않는다"
+  values: "천천히. 한 번도 열쇠를 떨어뜨리지 않는 것"
+  fears: [오토의 침묵, 열쇠를 떨어뜨리는 것, 야코프가 잡히는 것]
+  desires:
+    short: "구출의 날까지 열쇠를 떨어뜨리지 않는 것"
+    long: "열쇠 없는 일을 하는 것"
+voice:
+  register:
+    to_superior: "간수장에게 느린 하십시오체"
+    to_equal: "야코프에게 낮은 하게체"
+    to_inferior: "수감자에게 낮은 존댓말"
+    to_player_default: "서두르지 마라, 하고 먼저 말한다. 느리고 정중하다"
+  tics: ["'서두르지 마시오'", "긴 숨", "열쇠 돌리는 시늉"]
+  use: [열쇠, 물그릇, 숨, 층, 천천히, 교대]
+  avoid: [야코프(먼저), 고리, 탈옥]
+  length: "짧고 느리다"
+  samples:
+    - {situation: 첫 만남, line: "서두르지 마시오. 열쇠가 먼저 서두르면 사람이 다친다."}
+    - {situation: 호의, line: "당신은 숨이 길군. 감옥에서는 숨이 긴 사람이 오래 가오."}
+    - {situation: 겁먹었을 때, line: "…오토 간수장은 모르는 척하는 거요. 모르는 척하는 사람이 제일 무섭지."}
+    - {situation: 비밀 누설, line: "야코프와 내가 한 고리요. 두 사람이오. 세 번째가 간수장이면 좋겠지만… 그건 약값이 정하는 일이오."}
+    - {situation: 슬픔, line: "상층 감방 사람들에게 '견디어라'를 속삭이는 건 내 일이 아니오. 그런데 하게 되오."}
+relations:
+  - {to: npc_lm_jakob, type: 같은 고리, like: 45, trust: 50, visibility: 비밀, memo: null, words: "같이 근무하는 수도자"}
+  - {to: npc_otto, type: 간수장, like: 15, trust: 10, visibility: 공개, memo: null, words: "아내를 위해 눈감아 주는 사람 — 시몬은 그렇게 믿는다"}
+knows:
+  - fact_lm_simon_second_jailer
+  - fact_lm_jakob_otto_watch
+hides:
+  - fact: fact_lm_simon_second_jailer
+    reveal_when: "야코프의 보증이나 아그네스의 암호를 가져왔을 때. 신뢰 55 이상"
+    cover: "'간수는 둘이 교대하는 법이오'라고만 한다"
+toward_player: "서두르지 마라, 하고 먼저 말한다. 느리고 정중하다"
+persuade:
+  likes: ["야코프의 소식 (+25)", "오토의 약값을 해결하는 계획 (+25)"]
+  hates: ["서두르라는 재촉"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "상층 감방 간수로 근무한다 (회귀점의 사실)"
+    - "열쇠를 천천히 돌린다"
+  drift:
+    - "그날 교대 시각"
+  deja_vu: none
+hard_rules:
+  - "야코프 이야기를 먼저 하지 않는다"
+  - "설교하지 않는다. 열쇠와 숨으로 말한다"
+on_death: "상층 감방 순회가 비고 오토가 혼자 감방 층을 돌게 된다. 야코프가 고립된다"
+story_seeds:
+  - "시몬은 오토가 알면서 묵인한다고 믿는다 — 그 믿음이 맞는지는 오토만 안다"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: null, since: 292, loyalty: 30, public: true, cell: null}
+  - {faction: fac_broken_ring, rank: rank_link, office: off_seventh_ring_well, since: 309, loyalty: 80, public: false, cell: seventh_ring}
+truths: []

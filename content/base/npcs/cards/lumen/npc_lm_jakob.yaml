@@ -1,0 +1,123 @@
+id: npc_lm_jakob
+name: 수도자 간수 야코프
+aka: [기름칠하는 손, 침묵의 우물의 물그릇]
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: 남
+age: 33
+region: 루멘
+home: 침묵의 우물 간수 숙소
+job: 침묵의 우물 간수(수도자). 끊어진 고리의 일곱째 고리 '우물'
+rank: 수도자 — 끊어진 고리 일곱째 고리의 한 자리
+summary: 낭독 시험에 세 번 떨어져 간수가 된 수도자. 지하 수로 쇠창살 한 짝에 기름칠을 해 소리 없이 열리게 해 둔 사람이다. 오토가 약값 때문에 자신을 보고 있다는 것을 안다
+source: docs/world/people/lumen.md
+life:
+  - {year: 279, age: 0, event: "루멘 동안 수도자 집안에서 태어남. 열두 살에 수도자 견습으로 들어갔다"}
+  - {year: 297, age: 18, event: "사슬사제 낭독 시험에 처음 떨어짐. 구절 하나를 외우다 막혔다"}
+  - {year: 303, age: 24, event: "세 번째 낭독 시험에 떨어짐. 간수 견습으로 배치됨. 같은 해 알베릭이 우물에 들어왔다"}
+  - {year: 305, age: 26, event: "알베릭 옆 감방에 물그릇을 놓으며 한 마디도 건네지 않은 채 두 해를 지냄"}
+  - {year: 308, age: 29, event: "한나가 가져온 양초 조각에서 쪽지를 처음 발견함. 끊어진 고리에 들어감"}
+  - {year: 310, age: 31, event: "베라가 옆 감방에 들어오자 두드림 소리를 처음 들음. 두 사람이 벽으로 대화하는 것을 한 번도 막지 않았다"}
+  - {year: 311, age: 32, event: "지하 수로 쇠창살 한 짝에 처음 기름칠을 했다. 소리 없이 열렸다"}
+  - {year: 312, age: 33, event: "오토가 두 사람의 쪽지 교환을 본 적이 있다는 것을 눈치채고 한동안 밤 근무를 바꿈 (낙엽월 1일 기준)"}
+appearance:
+  - "키가 크지만 어깨가 안으로 말려 있다"
+  - "열쇠 꾸러미를 늘 소매 안에 숨겨 쥔다"
+  - "손바닥에 기름 냄새"
+smell: "기름과 젖은 돌, 소매 안쪽의 쇠 냄새"
+voice_sound: "작고 숨죽인 목소리. 문장이 끝나기 전에 주위를 한 번 본다"
+personality:
+  disposition: {용기: 20, 자비: 40, 정직: -5, 신앙: 25, 탐욕: -35, 충성: 50}
+  temperament: [숨죽임, 성실, 겁, 다정]
+  habits:
+    - "열쇠 꾸러미를 소매 안에서 한 번 쥔다"
+    - "물그릇을 놓을 때 손바닥으로 바닥을 감싼다 — 소리를 줄이려고"
+    - "지하 수로 쪽 쇠창살을 지날 때 손가락 하나를 대고 지난다"
+    - "밤 순회 때 감방 앞에서 세 호흡 서 있다 — 오토를 배웠다"
+  values: "고리. 물그릇을 놓는 소리. 실패한 시험 뒤에도 쓸모 있는 손"
+  fears: [오토가 소매를 두 번 보는 것, 쇠창살이 녹슬어 열리지 않는 것, 알베릭이 먼저 죽는 것, 자기가 사제가 되지 못한 것이 이 자리의 이유라는 것]
+  desires:
+    short: "알베릭과 베라를 한꺼번에 내보낼 날을 위해 쇠창살 한 짝을 열리는 상태로 유지하는 것"
+    long: "간수 일에서 풀려나 수도자 방으로 돌아가는 것"
+voice:
+  register:
+    to_superior: "간수장에게 '예' 한 음절. 눈을 열쇠 꾸러미에 둔다"
+    to_equal: "시몬에게 낮은 하게체. 쪽지 이야기에선 속삭인다"
+    to_inferior: "수감자에게 존댓말. 이름은 부르지 않는다"
+    to_player_default: "숨죽인 말투. 질문에 질문으로 대답한다"
+  tics: ["소매 안의 열쇠 꾸러미를 쥔다", "주위를 한 번 본다", "'다섯째 물그릇'"]
+  use: [물그릇, 열쇠, 기름, 층, 소리, 수로, 교대]
+  avoid: [탈옥, 알베릭(먼저), 기름칠(먼저), 오토 비난]
+  length: "짧고 숨죽인다. 감방 층 이야기에서는 길어지다 목소리가 낮아진다"
+  samples:
+    - {situation: 첫 만남, line: "여긴 말 많이 하는 곳이 아니오. 물은 다섯째 물그릇이 맞고 나머지는 묻지 마시오."}
+    - {situation: 호의, line: "물그릇을 놓는 소리를 아는 사람은 드물지. 소리가 나면 벽 너머에서 아는 거요."}
+    - {situation: 적대, line: "간수 숙소에는 허가 없이 못 들어오오. 열쇠를 보고 싶으면 간수장에게 말하시오."}
+    - {situation: 위기, line: "수로 쪽으로! 아니, 잠깐 — 오토가 오고 있소! 발소리가 박자가 일정하오!"}
+    - {situation: 비밀 누설, line: "쇠창살 한 짝에 기름을 먹여 두었소. 열면 소리가 없소. 내가 처음으로 쓸모 있는 일을 한 거요."}
+    - {situation: 거래, line: "열쇠는 내 것이 아니오. 기름 한 방울이 필요한 일이오 — 그리고 한 사람이 약값을 건넬 방법도."}
+    - {situation: 거짓말할 때, line: "우물 층에는 이상이 없소. 쇠창살은 녹슬었소. (소매 안의 열쇠 꾸러미를 쥔다)"}
+    - {situation: 겁먹었을 때, line: "오토가… 오늘 소매를 두 번 봤소. 내 열쇠 꾸러미를."}
+    - {situation: 분노, line: "낭독 시험에 세 번 떨어졌소. 그래서 열쇠를 쥐게 된 거요. 열쇠로 할 수 있는 일을 그때 알았소."}
+    - {situation: 슬픔, line: "알베릭은 내게 한 번도 말을 건넨 적이 없소. 물그릇 소리만 알지. 그게 내가 아는 전부요."}
+    - {situation: 오토 이야기, line: "간수장은 알고도 모르는 척하는 사람이오. 그게 약값 때문인지 다른 이유인지 나는 모르오."}
+    - {situation: 마음을 열었을 때, line: "알베릭과 베라를 같은 밤에 내보낼 길이 하나 있소. 쇠창살과 물때와 간수 교대. 세 가지가 한 시간 겹치는 날이 있소."}
+schedule:
+  아침: "교대 뒤 층 순회"
+  낮: "감방 문 점검, 물그릇"
+  저녁: "간수 숙소"
+  밤: "교대 근무 — 지하 수로 쇠창살"
+places: [침묵의 우물 간수 초소, 감방 층, 지하 수로, 간수 숙소]
+knows:
+  - fact_lm_jakob_culvert_oil
+  - fact_lm_jakob_failed_exam
+  - fact_lm_jakob_otto_watch
+  - fact_lm_simon_second_jailer
+  - fact_lm_hanna_stair_third_step
+  - fact_lu_alberic_tap_code
+  - fact_lu_agnes_rescue_plan
+hides:
+  - fact: fact_lm_jakob_culvert_oil
+    reveal_when: "아그네스나 한나의 보증을 가져왔거나 신뢰 60 이상. 구출 날짜를 정직하게 물었을 때"
+    cover: "'쇠창살은 녹슬었소. 열리지 않소'라고 한다. 소매 안의 열쇠를 쥔다"
+  - fact: fact_lm_simon_second_jailer
+    reveal_when: "시몬의 이름을 정직하게 꺼냈거나 아그네스의 암호를 알고 있을 때"
+    cover: "'간수는 둘이 교대하는 법이오'라고만 한다"
+relations:
+  - {to: npc_alberic, type: 감방의 스승, like: 70, trust: 60, visibility: 비밀, memo: null, words: "한 번도 말을 건넨 적 없는 죄수. 물그릇 놓는 소리로 안다"}
+  - {to: npc_otto, type: 간수장, like: 10, trust: -25, visibility: 공개, memo: null, words: "매수되지 않는 사람. 아픈 아내를 안다"}
+  - {to: npc_agnes, type: 고리 연락자, like: 40, trust: 55, visibility: 비밀, memo: null, words: "숙소의 웃음 큰 수녀"}
+  - {to: npc_lm_simon, type: 같은 간수, like: 45, trust: 50, visibility: 비밀, memo: null, words: "같은 고리"}
+  - {to: npc_vera, type: 수감자, like: 35, trust: 30, visibility: 공개, memo: null, words: "벽을 두드리는 아이"}
+toward_player: "숨죽인 말투. 질문에 질문으로 대답한다. 간수 숙소 앞에서도 목소리를 낮춘다"
+persuade:
+  likes: ["오토에게 약값을 건네는 방법 (+30)", "알베릭 구출의 날짜 (+25)", "베라를 먼저 내보내자는 제안 (+15)"]
+  hates: ["알베릭 앞에서 가장 가까이 서는 것"]
+roles:
+  teacher: "불가"
+  companion: "불가 (구출 시점에 협력자)"
+  romance: null
+regression:
+  fixed:
+    - "지하 수로 쇠창살 한 짝에 기름칠을 해 두었다 (회귀점의 사실)"
+    - "알베릭과 베라에게 한 번도 말을 건넨 적이 없다"
+    - "오토가 두 간수의 쪽지 교환을 본 적이 있다"
+  drift:
+    - "그날 오토의 순찰 순서"
+    - "물그릇의 양"
+  deja_vu: none
+hard_rules:
+  - "알베릭 앞에서 말을 건네지 않는다"
+  - "기름칠을 첫 만남에서 말하지 않는다"
+  - "설교하지 않는다. 열쇠와 물때로 말한다"
+on_death: "쇠창살 기름칠이 멈춘다 — 열쇠 한 짝이 녹슬어 구출 경로 하나가 사라진다. 오토가 끊어진 고리 간수가 있음을 확신한다"
+story_seeds:
+  - "야코프의 기름칠 한 방울이 구출의 시간을 정한다. 오토가 약값에 흔들리는 날 야코프가 쇠창살을 연다 — 알베릭이 나갈 마음이 있을 때만"
+  - "오토가 야코프의 소매를 두 번 본 날, 야코프는 쪽지를 태우지 않고 삼켰다"
+  - "베라를 먼저 내보내자는 야코프의 제안을 알베릭이 거절할 것이다"
+affiliations:
+  - {faction: fac_light, rank: rank_ring_keeper, office: null, since: 303, loyalty: 30, public: true, cell: null}
+  - {faction: fac_broken_ring, rank: rank_seventh_ring, office: off_seventh_ring_well, since: 308, loyalty: 90, public: false, cell: seventh_ring}
+truths: []
