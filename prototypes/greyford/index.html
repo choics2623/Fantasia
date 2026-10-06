@@ -42,6 +42,16 @@ body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bot
 /* 기억 잉크 (14 §6.5): 지난 회차의 일 — 흐린 회색 기울임, 가는 점선 막대 */
 .story .ink { color: var(--ink-faint); font-style: italic; border-left: 1px dashed var(--ink-faint); padding-left: 10px; }
 .story .ink.drift { color: var(--frost); }
+/* 목소리 (15 §19 서체): 머릿속의 다른 사람 — 이름표를 달고, 다른 서체로 */
+.story .voice { font-family: var(--ui); font-size: .9rem; color: #b9a6d6; padding-left: 10px; border-left: 2px solid #5d4c78; }
+.story .voice .who { display: block; font-size: .68rem; letter-spacing: .08em; color: #7d6d96; }
+.story .echo { font-family: var(--ui); font-size: .84rem; color: var(--frost); }
+.story .recap { font-family: var(--ui); font-size: .84rem; color: var(--ink-soft); background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; }
+.story .dayend { margin-top: 18px; padding: 14px 0 4px; border-top: 1px dashed var(--line); font-style: italic; color: var(--ink-soft); }
+.story .dayend .card { display: block; font-style: normal; font-family: var(--ui); font-size: .72rem; color: var(--ink-faint); margin-top: 8px; letter-spacing: .03em; }
+.pane .book { margin: 4px 0 2px; font-size: .82rem; color: var(--ink-soft); }
+.pane .book .lk { color: var(--frost); }
+.pane .memo { width: 100%; margin-top: 4px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 4px 6px; font-family: var(--ui); font-size: .78rem; }
 .story .grow { font-family: var(--ui); font-size: .76rem; color: var(--gold); letter-spacing: .03em; }
 .story .inner { font-family: var(--ui); font-style: italic; color: var(--ink-soft); font-size: .92em; }
 .story .cut::after { content: ""; }
@@ -134,6 +144,7 @@ button.ui:hover { border-color: var(--gold); }
 <div class="drawer" id="drawer" hidden><div class="pane">
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
   <h2 data-sec="secNotes">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
+  <h2 id="oathH" hidden>맹세</h2><ul id="oaths" hidden></ul>
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
   <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
   <h2>몸과 손</h2><ul id="skills"></ul>
@@ -201,7 +212,12 @@ function addBeats(d) {
     else if (d.engineOnly && !d.view?.story) p.className = "eng";
     p.textContent = b; t.appendChild(p);
   }
-  for (const k of d.ink || []) { const p = document.createElement("p"); p.className = k.kind === "grow" ? "grow" : "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]); }
+  for (const k of d.ink || []) {
+    if (k.kind === "voice") { const p = document.createElement("p"); p.className = "voice"; p.innerHTML = `<span class="who">⟨${esc(k.who)}⟩</span>${esc(k.text)}`; t.appendChild(p); continue; }
+    if (k.kind === "dayend") { const p = document.createElement("p"); p.className = "dayend"; p.innerHTML = `${esc(k.text)}${k.card ? `<span class="card">${esc(k.card)}</span>` : ""}`; t.appendChild(p); continue; }
+    if (k.kind === "echo" || k.kind === "recap") { const p = document.createElement("p"); p.className = k.kind; p.textContent = k.text; if (k.kind === "recap") t.insertBefore(p, t.firstChild); else t.appendChild(p); continue; }
+    const p = document.createElement("p"); p.className = k.kind === "grow" ? "grow" : "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]);
+  }
   // 죽음: 마지막 문장이 문장 중간에서 끊긴다 (14 §4.1 ①)
   if (d.view?.ended?.kind === "dead" && d.beats?.length) { const ps = t.querySelectorAll("p:not(.player)"); const last = ps[ps.length - 1]; if (last) { const w = last.textContent; const cut = w.lastIndexOf(" ", Math.floor(w.length * 0.6)); last.textContent = w.slice(0, cut > 10 ? cut : Math.floor(w.length * 0.6)).replace(/[.,!?…"']+$/, ""); } }
   currentTurn = null;
@@ -223,7 +239,10 @@ function render(d, loading = false) {
     $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
     $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
-    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}</li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
+    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
+    const OA = [...(v.oaths || []).map((o) => `<li>"${esc(o.line)}" — ${o.state === "held" ? "품고 있다" : o.state === "kept" ? "지켜졌다" : "깨졌다"}${o.witnesses.length ? ` <span style="color:var(--ink-faint)">(증인: ${esc(o.witnesses.join(", "))})</span>` : ""}</li>`), ...(v.pastOaths || []).map((l) => `<li class="past">┊ "${esc(l)}" — 증인은 잊었다. 너는 기억한다</li>`)];
+    $("oaths").innerHTML = OA.join(""); $("oaths").hidden = $("oathH").hidden = !OA.length;
+    $("whom").querySelectorAll(".memo").forEach((m) => (m.onchange = () => fetch("/api/memo", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ npc: m.dataset.npc, text: m.value }) })));
     const R = v.reputation || {};
     $("rep").innerHTML = (R.news || []).map((n) => `<li>${esc(n.scopeName)}: ${esc(n.label)}${n.place ? ` (${esc(n.place)})` : ""}${n.distortion ? ` — 소문이 ${esc(n.distortion)}` : ""}${n.identified ? "" : " — 누가 했는지는 모른다"}</li>`).join("")
       + (R.titles?.length ? `<li>사람들이 부르는 이름: ${esc(R.titles.join(", "))}</li>` : "")

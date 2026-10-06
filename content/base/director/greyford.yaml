@@ -1,0 +1,63 @@
+# 하루의 끝 (18 §5.3): 갈고리 — 아직 끝나지 않은 일 중 가장 무거운 것 한 줄. 없으면 고요한 마감 문장.
+# beats: 주인공이 '아는' 다가오는 일. when이 참이어야 쓸 수 있다 (갈고리의 다섯 금지 — 모르는 사실은 쓰지 않는다).
+#   danger 1~5, at: 그 일의 시각. near: 하루 안이면 쓰는 문장, far: 그보다 멀 때 (없으면 쓰지 않는다)
+beats:
+  - id: convoy1
+    at: "312-10-09 05:00"
+    danger: 5
+    involved: 1
+    when: ["var goal_kit_known == true", "var kit_on_list == true"]
+    near: "내일 해가 뜨면, 채찍 기둥 광장에서 키트의 이름이 불린다. 너는 아직 아무것도 정하지 않았다."
+    far: "서리월 9일, 마흔 명이 사슬에 묶인다. 스물여섯째 줄은 아직 지워지지 않았다."
+  - id: convoy1_toby
+    at: "312-10-09 05:00"
+    danger: 3
+    involved: 0.6
+    when: ["var toby_on_list == true"]
+    near: "내일 해가 뜨면 토비의 이름이 불린다. 키트의 자리에 적힌 이름이다."
+  - id: convoy2
+    at: "312-12-03 05:00"
+    danger: 5
+    involved: 1
+    when: ["var goal_sara_known == true", "var sara_on_list == true"]
+    near: "내일 새벽, 서른하나가 사슬에 묶인다. 앞에서 일곱째 자리에 사라가 선다."
+    far: "굶주림월 3일, 둘째 호송. 사라의 이름은 아직 거기 있다."
+  - id: volk_comes
+    at: "312-09-14 05:00"
+    danger: 3
+    involved: 0.6
+    when: ["trace teeth"]
+    near: "내일 아침, 바르그의 사냥대가 마을에 들어온다. 너는 그것을 안다."
+  - id: sweep
+    at: "312-09-25 12:00"
+    danger: 4
+    involved: 0.6
+    when: ["date >= 312-09-14"]
+    near: "내일 바르그가 굶주린 언덕으로 올라간다. 송곳니 불 쪽에서 개들이 밤새 울었다."
+  - id: boat
+    at: "312-09-21 22:00"
+    danger: 4
+    involved: 1
+    when: ["var hagen_offer_accepted == true"]
+    near: "내일 밤 열 시, 하겐의 나루 헛간. 북쪽 길."
+    far: "스무하루 밤, 하겐의 배. 아직 날이 남았다."
+  - id: well_noon
+    at: "312-09-02 12:00"
+    danger: 2
+    involved: 1
+    when: ["var sara_well_noon == true"]
+    near: "내일 정오, 우물. 사라가 기다린다."
+  - id: martha_deadline
+    at: "312-09-03 19:40"
+    danger: 3
+    involved: 1
+    when: ["var informant_assigned != true", "var martha_deal != true", "var kit_on_list == true", "date >= 312-09-02"]
+    near: "내일 이 시간까지, 마르타가 기다린다."
+quiet:
+  - 오늘은 아무도 죽지 않았다. 회색여울에서 그것은 적은 일이 아니다.
+  - 키트가 이를 간다. 배고픈 아이들은 자면서도 먹는다.
+  - 지붕 위로 까마귀바람이 지나간다. 막사 안의 마흔 명이 같은 순간에 몸을 웅크린다.
+  - 어머니가 기침을 참는 소리. 참는 소리가 더 크다.
+  - 별이 보이는 밤은 춥다. 오늘은 별이 많다.
+  - 강물 소리가 막사 벽을 타고 들어온다. 물은 아무것도 기억하지 않는다.
+  - 누군가 어둠 속에서 머릿수를 센다. 셋째까지 세다 멈춘다.

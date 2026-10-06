@@ -142,6 +142,7 @@ storylets:
             헨릭의 손가락이 키트의 정수리에서 떨어진다. 처음으로 그가 너를 숫자 이외의 것으로 본다. "…말보다 싼 것이 그 말을 어디서 주워들었지?"
 
             그는 대답을 듣지 않는다. 명부를 펴고, 스물여섯째 줄을 긋고, 그 아래에 다른 이름을 쓴다. 토비. 강변 움막 아홉 호의 아이. 동화 한 닢이 네 부츠에서 그의 손으로 간다.
+          echo: {when: "var toby_sold == true", text: "〰 너는 헨릭에게 담보를 말했다. 헨릭이 명부의 줄을 고쳤고, 오늘 아침 토비가 사슬에 묶였다."}
           effects: ["coin -1", "var kit_on_list = false", "var toby_on_list = true", "note 키트 대신 토비 — 헨릭이 명단을 고쳤다. 토비가 서리월 9일에 간다", "rel npc_henrik trust -5"]
         failure:
           text: |
@@ -260,5 +261,5 @@ storylets:
     choices:
       - id: count
         label: 센다 ▸
-        text: "{record_full}"
+        text: "{record_full}\n\n{again_card}"
 

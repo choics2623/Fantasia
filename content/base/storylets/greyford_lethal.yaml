@@ -41,6 +41,7 @@ storylets:
           너는 말한다. 다섯. 가짜 벽. 자정 무렵 브람이 내려간다. 마르타는 고개만 한 번 끄덕인다. 털모자를 쓰다듬던 손이 멈추지 않는다.
 
           "키트는 빠진다." 그녀가 돌아선다. 지붕 위에서 기왓장 하나가 미끄러지는 소리. 너는 올려다보지 않는다. 페인이 거기 있었다는 것을, 너는 나중에 안다.
+        echo: {when: "var egil_hidden == false", text: "〰 너는 마르타에게 수탉 지하를 말했다. 마르타가 즈닉에게 그것을 넘겼고, 오늘 새벽 지하실 벽이 부서졌다."}
         effects: ["var kit_on_list = false", "var toby_on_list = true", "var martha_deal = true", "agenda learn npc_znik fact_gf_egil_family_in_cellar", "rel npc_martha trust 30", "rel npc_fayne trust -40", "memory npc_fayne 위험함 셋째가 수탉 지하를 마르타에게 팔았다", "deed inform", "note 마르타에게 수탉 지하를 팔았다 — 키트가 명단에서 빠졌다. 토비가 대신 간다"]
       - id: dont_know
         label: '"모릅니다."'

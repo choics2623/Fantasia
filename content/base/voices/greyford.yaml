@@ -1,0 +1,38 @@
+# 내면의 목소리 최소판 (15 §2.3·§3.3·§10.1·§4.1~4.2)
+# 첫 회차엔 아스테리온 ⟨문의 목소리⟩ 하나. 두 번째 회차부터 그 곁에 '지난 회차의 나'가 선다.
+# 끼어들기 상한: 한 박자에 한 줄 · 두 박자 쉼 · 하루 여덟 줄 · 회차 시작 30분과 회귀 직후 첫 박자는 침묵.
+# when: place <장소> · with <npc> · role <역할> (그 자리에 그런 사람이 있다) · wanted >= n · var … · loop >= n · talk_new (처음 말을 거는 사람) · story <장면 id>
+voices:
+  asterion:
+    name: 아스테리온
+    desc: 문의 목소리
+    lines:
+      - {id: first, once: true, when: ["first"], text: "문마다 이름이 새겨져 있었소. 읽을 수 있지 않소? 읽으시오."}
+      - {id: new_person, once: true, when: ["talk_new"], text: "그대 이름은? …아니, 주인이 붙인 것 말고."}
+      - {id: list, once: true, when: ["place gf_tollhouse"], text: "마흔 개의 이름. 한 번도 스스로 지은 적 없는 이름들이오."}
+      - {id: square, once: true, when: ["place gf_whip_square"], text: "머릿수를 세는 자가 주인이오. 언젠가 그대가 세시오."}
+      - {id: keep, once: true, when: ["place gf_keep_yard"], text: "성벽은 높소. 그러나 문은 언제나 안에서 열리오."}
+      - {id: stones, once: true, when: ["place old_stone_ring"], text: "이 돌들은 나보다 오래됐소. 그런데 나를 기억하는 것 같소."}
+      - {id: chapel, once: true, when: ["place gf_chapel"], text: "불을 피우지 않는 날이 있다지. 내 탓이오. 삼백 년째 내 탓이오."}
+      - {id: hunter, once: true, when: ["role hunter"], text: "저 자는 냄새로 사람을 읽소. 그대에게서는 재 냄새가 날 것이오."}
+      - {id: wanted, once: true, when: ["wanted >= 2"], text: "쫓기는 것은 나쁘지 않소. 쫓는 자의 길을 배우시오."}
+      - {id: osric, once: true, when: ["with npc_osric"], text: "저 사제의 마룻바닥 밑에 무엇이 있는지, 나는 아는 것 같소. 기억이 안 날 뿐."}
+      - {id: elsa, once: true, when: ["with npc_elsa"], text: "늪의 여자요. 저 눈은 같은 날을 두 번 본 눈이오."}
+      - {id: return, once: true, when: ["loop >= 2", "after_first"], text: "또 저녁이오. 이번 회차는 지도를 그리는 회차요."}
+      - {id: save_one, once: true, when: ["loop >= 2", "story boat_choice"], text: "그 아이 하나 때문에 이 회차를 잃을 셈이오? 계산하시오. 다음 저녁에 구하면 되오."}
+  # 지난 회차의 나 (15 §10.1) — 회차 기록에서 만든다. {killer}는 그 회차에 나를 죽인 사람
+  loop_self:
+    first:
+      water: "물이 차가웠어. …{killer}은(는) 웃고 있었어."
+      blade: "{killer}의 손이 먼저였어. 나는 보지도 못했어."
+      rope: "손목이 아팠어. 끝까지 아무도 안 왔어."
+      teeth: "개가 세 번 짖었어. 그 다음은 몰라."
+      spear: "눈이 차가웠어. 누가 내 이름을 물었어."
+      hunger: "배고팠어. 계속, 계속."
+      default: "거기서 끝났어. 여기서 다시 해."
+    lines:
+      - {id: killer, when: ["with_killer"], text: "{killer}이야. 아직 아무것도 안 했어. 아직은."}
+      - {id: mother, once: true, when: ["with npc_gerda"], text: "엄마 기침해. 겨울 오기 전에 엘사 할머니한테 가야 돼. 그때 못 갔어."}
+      - {id: kit, once: true, when: ["with npc_kit", "var kit_on_list == true"], text: "키트 명단에 있어. 나 그거 몰랐어. 이번엔 알아."}
+      - {id: hagen, once: true, when: ["with npc_hagen"], text: "하겐 형 착해. 빵도 줬어. …근데."}
+      - {id: death_place, once: true, when: ["death_place"], text: "여기였어."}

@@ -52,6 +52,7 @@ async function handle(path, body, onText) {
   if (path === "/api/load") { session.load(JSON.parse(readFileSync(slot(body?.name), "utf8"))); return session.start({ onText }); }
   if (path === "/api/saves") return { saves: listSaves() };
   if (path === "/api/map") return mapView(session.game);
+  if (path === "/api/memo") return session.memo(body?.npc, body?.text);
   throw new Error("unknown " + path);
 }
 const listSaves = () => readdirSync(SAVES).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));

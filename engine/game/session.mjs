@@ -9,12 +9,12 @@ import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInte
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 
-const INK = new Set(["ink", "drift", "grow"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
+const INK = new Set(["ink", "drift", "grow", "voice", "dayend", "echo", "recap"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
 // provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
 export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());
   let transcript = g.run.transcript || [];
-  const save = () => { g.run.transcript = transcript.slice(-40); onSave?.(g.run); };
+  const save = () => { g.run.transcript = transcript.slice(-40); g.run.lastPlayedAt = Date.now(); onSave?.(g.run); };
   // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
   const jobs = [], pending = [];
   let busy = false, working = null, recDebug = [];
@@ -162,12 +162,20 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       // 화면엔 체감 등급(01 §4.2 — 서툴수록 과신하고 틀린다)과 캐릭터가 아는 근거(▲▼?)만. 진짜 확률은 엔진 기록에만
       return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, more: c.more || false, memory: c.memory || null };
     });
-    const ink = (res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null }));
+    const ink = [...(n?.recap || []).map((text) => ({ kind: "recap", text })), ...(res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null, who: f.who || null, card: f.card || null }))];
     return { view: v, beats: n?.beats || [], ink, choices, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
   }
 
   return {
-    start: (o) => turn(null, o),
+    // 다시 열었을 때: 얼마나 비웠는지에 따라 지난 이야기 (18 §5.4)
+    async start(o) {
+      const gap = g.run.lastPlayedAt ? (Date.now() - g.run.lastPlayedAt) / 3600e3 : 0;
+      const out = await turn(null, o);
+      const rc = G.recap(g, gap);
+      if (rc.length && !out.broken) out.ink = [...rc.map((text) => ({ kind: "recap", text })), ...(out.ink || [])];
+      return out;
+    },
+    memo(npc, text) { g.run.memos = { ...(g.run.memos || {}), [npc]: String(text || "").slice(0, 200) }; save(); return { ok: true }; },
     act: (input, o) => turn(input, o),
     async regress(o) { g = G.boot(content, G.regressRun(g)); transcript = []; save(); return turn(null, o); },
     async newGame(seed, o) { g = G.boot(content, G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) })); transcript = []; save(); return turn(null, o); },
