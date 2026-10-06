@@ -32,7 +32,7 @@
 - {id: ev_rp_egg_hatch, npcs: [npc_vesper, npc_eloise], date: "313-03-15", from: "19:00", to: "23:00", at: first_thirst_castle__throne, doing: "바알카르에서 흰 알이 부화한 소식이 박쥐날개 전령의 날개로 닿는다. 시종이 군주에게 전하고 군주는 우물 곁 소절을 그날 한 번 멈추지 않는다"}
 # ── 푸른월 ~ 태양월: 맑은 날 시즌, 맹약회의 313 ──
 - {id: ev_rp_spring_clear, npcs: [npc_tessa, npc_pips, npc_orphe, npc_zrag], date: "313-04-02", from: "06:00", to: "18:00", at: nocturne__marsh_edge, doing: "봄 첫 맑은 날 — 녹테른 순찰이 없는 날 호송이 열둘로 늘어난다. 붉은 갈대 선을 넘는 줄이 낮에 길게 이어진다"}
-- {id: ev_rp_covenant_basilisa, npcs: [npc_basilisa], date: "313-05-20", from: "09:00", to: "18:00", at: baalkar, doing: "맹약회의 313 — 녹테른 대표로 '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낸다", travel_from: first_thirst_castle__cup_hall, return_to: first_thirst_castle__cup_hall}
+- {id: ev_rp_covenant_basilisa, npcs: [npc_basilisa], date: "313-05-01", from: "09:00", to: "18:00", at: oath_isle, doing: "맹약회의 313 — 녹테른 대표로 '잔향 징후자는 처형하지 말고 녹테른 사냥꾼에게 인도하라'는 안을 낸다", travel_from: first_thirst_castle__cup_hall, return_to: first_thirst_castle__cup_hall}
 # ── 건초월 ~ 수확월 ──
 - {id: ev_rp_silas_revisit, npcs: [npc_silas_bell, npc_ninth_hunter], date: "313-06-10", from: "21:00", to: "24:00", at: nocturne__silentbell_pen, doing: "사일라스가 의뢰 목록의 첫 줄을 다시 쓸어 읽는다. 아홉째가 낮게 대답을 보류한다"}
 - {id: ev_rp_vintage_313, npcs: [npc_zrag, npc_hedwig], date: "313-07-10", from: "06:00", to: "18:00", at: rp_vineyard, doing: "수확월 — 두 번째 혈포도 수확. 쑥은 한 자루 더 불었다"}

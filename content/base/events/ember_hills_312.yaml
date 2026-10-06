@@ -27,7 +27,7 @@
 - {id: ev_em_warning_day_guards, date: "313-05-12", npcs: [npc_hadrian_ashjaw, npc_kraz, npc_grax], from: "06:00", to: "17:00", at: red_road, doing: "경고의 날(AS 100 진압 212주년) — 용인 경비가 붉은 길을 메우고 노예 전원을 기둥 사이에 세워 '경고'한다", travel_from: em_guard_barracks, return_to: em_guard_barracks, mounted: true}
 - {id: ev_em_warning_day_slaves, date: "313-05-12", npcs: [npc_rok, npc_haro, npc_leonic, npc_yan_nose, npc_caleb_dara], from: "06:00", to: "16:00", at: red_road, doing: "붉은 길에 세워진다 — 기둥 7,341번 앞에서 아무 말 없이 서 있는다. 로크의 세 번째 봉기 후보일"}
 - {id: ev_em_warning_day_hands, date: "313-05-12", npcs: [npc_caleb_dara, npc_rok, npc_leonic, npc_haro, npc_dorte, npc_mate_singer], from: "20:00", to: "22:30", at: em_dara_wall, doing: "경고의 날 밤 — 9번 갱 막장에서 손바닥 자국에 손을 겹친다. 안건이 서면 아무도 손을 떼지 않는다"}
-- {id: ev_em_covenant_council, date: "313-05-20", npcs: [npc_melisande], from: "09:00", to: "18:00", at: baalkar, doing: "맹약회의 313 — 잔향 대숙청이냐 현상 유지냐. 멜리산드는 개량파의 표를 세고 '그릇'에 대한 징후 보고를 책상 아래에 둔다 (회의 장소·날짜는 임시)"}
+- {id: ev_em_covenant_council, date: "313-05-01", npcs: [npc_melisande], from: "09:00", to: "18:00", at: oath_isle, doing: "맹약회의 313 — 잔향 대숙청이냐 현상 유지냐. 멜리산드는 개량파의 표를 세고 '그릇'에 대한 징후 보고를 책상 아래에 둔다 (회의 장소·날짜는 임시)"}
 
 # ── AS 313 여름 ──
 - {id: ev_em_summer_gas, date: "313-06-20", npcs: [npc_cassel_smokeiron, npc_yan_nose, npc_druss_vermion, npc_orin_ironwire, npc_nit_threetail], from: "05:00", to: "11:00", at: em_vent_house, doing: "여름 환기탑 점검 — 밸브가 샌다. 작년 건초월 폭발로 붉은 교대 38명이 낙반으로 기록된 날이 다시 온다"}

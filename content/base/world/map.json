@@ -690,6 +690,17 @@
    "kind": "항구",
    "type": "port",
    "desc": "쇠 시장 뒷골목 — 아르카스 탈출 피험자(AS 297)가 투사가 되기 전 숨었던 곳"
+  },
+  {
+   "id": "oath_isle",
+   "name": "서약섬",
+   "region": 9,
+   "x": 430,
+   "y": 745,
+   "kind": "성소",
+   "type": "island",
+   "major": true,
+   "desc": "남해의 바위섬. 열한 종족이 고리의 이름으로 맹세한 곳 — 100년마다 맹약회의가 열한 날 열린다 (313 태양월 1~11일). 섬에는 회의장과 종족별 천막터, 인간 짐꾼의 우리뿐"
   }
  ],
  "edges": [
@@ -1304,6 +1315,33 @@
    "roadName": "숲길",
    "danger": 4,
    "cond": "망각의 길. 엘다르·녹테른 옛길, 공식 폐쇄"
+  },
+  {
+   "from": "seren",
+   "to": "oath_isle",
+   "hours": 30.0,
+   "road": "sea",
+   "roadName": "바닷길",
+   "danger": 2,
+   "cond": "세렌 배. 맹약회의 기간에는 사절단 배만"
+  },
+  {
+   "from": "arkas_harbor",
+   "to": "oath_isle",
+   "hours": 26.0,
+   "road": "sea",
+   "roadName": "바닷길",
+   "danger": 2,
+   "cond": "탑의 배"
+  },
+  {
+   "from": "grommar_port",
+   "to": "oath_isle",
+   "hours": 40.0,
+   "road": "sea",
+   "roadName": "바닷길",
+   "danger": 3,
+   "cond": "그롬 약탈선 — 맹약회의 휴전 깃발"
   }
  ],
  "terrain": {

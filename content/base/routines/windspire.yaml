@@ -17,7 +17,7 @@ npc_eiros:
   presence:   # 맹약회의 313 아에리 대표 — 4월 20일 첨탑을 떠나 6월 24일 돌아온다
     - {from: "312-09-01", to: "313-04-19"}
     - {from: "313-06-25", to: "313-07-30"}
-  away: {at: baalkar, doing: "맹약회의 313 길 — 아에리 대표로 서약섬으로 가는 사절단과 함께, 걷는 연습을 한 번이라도 더 하려 한다"}
+  away: {at: oath_isle, doing: "맹약회의 313 길 — 아에리 대표로 서약섬으로 가는 사절단과 함께, 걷는 연습을 한 번이라도 더 하려 한다"}
   blocks:
     - {days: all, from: "23:00", to: "05:00", at: ws_prince_nest, doing: 잔다 — 목에 건 흙 주머니를 쥐고}
     - {days: all, from: "05:00", to: "08:00", at: ws_prince_nest, doing: 비행 훈련 — 새벽 바람 속에서 다리 근육을 쓰는 연습을 몰래 한다}

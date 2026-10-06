@@ -27,6 +27,6 @@
 # ── 꽃월: 흰 알 부화 ──
 - {id: ev_tc_egg_hatch, npcs: [npc_thorn_queen, npc_mirror_yesterday, npc_mirror_perhaps], date: "313-03-15", from: "09:00", to: "18:00", at: tc_throne_room, doing: "바알카르에서 흰 알이 부화한 소식이 안개 장터에서 먼저 돈다 — 여왕은 웃고, 거울 시녀 '어제'는 '어제는 알이 깨지지 않았어'라 하고 '혹시'는 여왕의 웃음을 거꾸로 전한다"}
 # ── 푸른월 ~ 태양월: 맹약회의 313 ──
-- {id: ev_tc_covenant_day, npcs: [npc_thorn_queen, npc_mirror_perhaps, npc_backwards_walker], date: "313-05-20", from: "09:00", to: "18:00", at: tc_mirror_chamber, doing: "맹약회의 313 — 숲은 사절을 보내지 않고 거울 시녀 '혹시'가 회의의 결과를 거꾸로 전한다. 거꾸로 걷는 이는 그날 한 번도 앞을 보지 않는다"}
+- {id: ev_tc_covenant_day, npcs: [npc_thorn_queen, npc_mirror_perhaps, npc_backwards_walker], date: "313-05-01", from: "09:00", to: "18:00", at: tc_mirror_chamber, doing: "맹약회의 313 — 숲은 사절을 보내지 않고 거울 시녀 '혹시'가 회의의 결과를 거꾸로 전한다. 거꾸로 걷는 이는 그날 한 번도 앞을 보지 않는다"}
 # ── 수확월 ──
 - {id: ev_tc_season_skew, npcs: [npc_nibble, npc_elin, npc_granny_nina], date: "313-07-12", from: "06:00", to: "18:00", at: tc_court_hall, doing: "수확월 — 숲 안은 서리가 내린다. 니블이 계절을 속이고 엘린은 바깥 해가 몇 번 졌는지 센다. 니나의 돌은 열일곱 개 모자라다"}

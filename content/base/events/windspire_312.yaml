@@ -40,7 +40,7 @@
 - {id: ev_ws_apr20_depart, date: "313-04-20", npcs: [npc_kyrie, npc_eiros], from: "05:00", to: "09:00", at: ws_high_nest, doing: "여왕이 아들을 맹약회의 313 아에리 대표로 보낸다 — 은빛 깃털 한 장을 목에 걸어 준다. 아에리가 처음으로 대표를 보낸다", fixed: true}
 - {id: ev_ws_apr20_celes_oppose, date: "313-04-20", npcs: [npc_ws_celes, npc_ws_aela], from: "05:00", to: "09:00", at: ws_looking_up_nest, doing: "출발을 지켜보지 않고 높은 둥지에서 등을 돌린다 — 아엘라가 줄 거둠 표를 한 번 더 센다"}
 # ── 313 태양월 (5) — 맹약회의 ──
-- {id: ev_ws_may12_wait, date: "313-05-12", npcs: [npc_kyrie], from: "19:00", to: "23:00", at: ws_queen_perch, doing: "아들이 서약섬에서 첫 발언을 하는 날 — 아래의 불빛 대신 남쪽 바다를 오래 바라본다"}
+- {id: ev_ws_may12_wait, date: "313-05-02", npcs: [npc_kyrie], from: "19:00", to: "23:00", at: ws_queen_perch, doing: "아들이 서약섬에서 첫 발언을 하는 날 — 아래의 불빛 대신 남쪽 바다를 오래 바라본다"}
 - {id: ev_ws_may_rope_done, date: "313-05-20", npcs: [npc_ws_marco, npc_ws_ulla, npc_ws_anskar], from: "20:00", to: "23:00", at: ws_water_jars, doing: "줄이 삼백사십 미터가 된다 — 안스가르가 확인한 숫자와 맞는다. 한 번에 열 명만 버틴다는 것도 확인된다, if: rope_340"}
 # ── 313 수확월 (7) ──
 - {id: ev_ws_jun_return, date: "313-06-25", npcs: [npc_kyrie, npc_eiros], from: "05:00", to: "09:00", at: ws_high_nest, doing: "대표가 맹약회의에서 돌아온다 — 키리에는 아들에게 무엇을 말했는지 묻지 않는다"}

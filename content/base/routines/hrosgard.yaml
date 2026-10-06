@@ -7,7 +7,7 @@ npc_hrimnir:
   presence:   # 맹약회의 313 요툰 대표 — 4월 22일 곡창 열쇠를 왕비에게 맡기고 떠나 6월 18일 돌아온다
     - {from: "312-09-01", to: "313-04-21"}
     - {from: "313-06-19", to: "313-07-30"}
-  away: {at: baalkar, doing: "맹약회의 313 길 — 서약섬으로 가는 요툰 사절단과 함께, 굶주린 왕이 전당을 오래 비운다"}
+  away: {at: oath_isle, doing: "맹약회의 313 길 — 서약섬으로 가는 요툰 사절단과 함께, 굶주린 왕이 전당을 오래 비운다"}
   blocks:
     - {days: all, from: "00:00", to: "05:00", at: hh_king_chamber, doing: 잔다 — 갈비뼈가 드러난 몸을 가죽 한 장으로 덮고}
     - {days: all, from: "05:00", to: "07:00", at: hh_king_seat, doing: 왕의 자리에 앉아 해가 뜨기를 기다린다 — 아직 아무것도 먹지 않았다}

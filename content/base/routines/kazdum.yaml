@@ -7,7 +7,7 @@ npc_bror:
   presence:   # 맹약회의 313 길 — 4월 15일 서명 대행 조항을 발동하고 떠나 6월 19일 돌아온다
     - {from: "312-09-01", to: "313-04-14"}
     - {from: "313-06-20", to: "313-07-30"}
-  away: {at: baalkar, doing: "맹약회의 313 길 — 서약섬으로 가는 사절단과 함께, 왕의 서명 대행은 하그린이 맡는다"}
+  away: {at: oath_isle, doing: "맹약회의 313 길 — 서약섬으로 가는 사절단과 함께, 왕의 서명 대행은 하그린이 맡는다"}
   blocks:
     - {days: all, from: "00:30", to: "04:30", at: dh_king_chamber, doing: 잔다 — 베개 맡 돌벽에 오늘의 금을 새기고 눕는다}
     - {days: all, from: "04:30", to: "06:00", at: dh_ancestor_shrine, doing: 조상의 망치 앞에서 기도 — 오른쪽 귀를 손으로 가린다, fixed: true}
