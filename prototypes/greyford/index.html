@@ -42,6 +42,7 @@ body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bot
 /* 기억 잉크 (14 §6.5): 지난 회차의 일 — 흐린 회색 기울임, 가는 점선 막대 */
 .story .ink { color: var(--ink-faint); font-style: italic; border-left: 1px dashed var(--ink-faint); padding-left: 10px; }
 .story .ink.drift { color: var(--frost); }
+.story .grow { font-family: var(--ui); font-size: .76rem; color: var(--gold); letter-spacing: .03em; }
 .story .inner { font-family: var(--ui); font-style: italic; color: var(--ink-soft); font-size: .92em; }
 .story .cut::after { content: ""; }
 /* 죽음에서 회귀까지 (14 §4.1) */
@@ -134,7 +135,8 @@ button.ui:hover { border-color: var(--gold); }
   <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
   <h2 data-sec="secNotes">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
-  <h2 data-sec="secItems">소지품</h2><ul id="items" data-sec="secItems"></ul>
+  <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
+  <h2>몸과 손</h2><ul id="skills"></ul>
   <h2 data-sec="secRep">평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep" data-sec="secRep"></ul>
   <h2>저장</h2>
   <div class="row-btns"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="ui" id="saveBtn">저장</button></div>
@@ -199,7 +201,7 @@ function addBeats(d) {
     else if (d.engineOnly && !d.view?.story) p.className = "eng";
     p.textContent = b; t.appendChild(p);
   }
-  for (const k of d.ink || []) { const p = document.createElement("p"); p.className = "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]); }
+  for (const k of d.ink || []) { const p = document.createElement("p"); p.className = k.kind === "grow" ? "grow" : "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]); }
   // 죽음: 마지막 문장이 문장 중간에서 끊긴다 (14 §4.1 ①)
   if (d.view?.ended?.kind === "dead" && d.beats?.length) { const ps = t.querySelectorAll("p:not(.player)"); const last = ps[ps.length - 1]; if (last) { const w = last.textContent; const cut = w.lastIndexOf(" ", Math.floor(w.length * 0.6)); last.textContent = w.slice(0, cut > 10 ? cut : Math.floor(w.length * 0.6)).replace(/[.,!?…"']+$/, ""); } }
   currentTurn = null;
@@ -226,7 +228,8 @@ function render(d, loading = false) {
     $("rep").innerHTML = (R.news || []).map((n) => `<li>${esc(n.scopeName)}: ${esc(n.label)}${n.place ? ` (${esc(n.place)})` : ""}${n.distortion ? ` — 소문이 ${esc(n.distortion)}` : ""}${n.identified ? "" : " — 누가 했는지는 모른다"}</li>`).join("")
       + (R.titles?.length ? `<li>사람들이 부르는 이름: ${esc(R.titles.join(", "))}</li>` : "")
       + (Object.keys(R.views || {}).length ? `<li>${Object.entries(R.views).map(([k, x]) => `${esc(k)} ${x > 0 ? "+" : ""}${x}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
-    $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)}</li>`).join("") || "<li>부츠 속 동전뿐</li>";
+    $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
+    $("skills").innerHTML = (v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span style="color:var(--ink-faint)">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("");
   }
   $("debug").textContent = JSON.stringify({ debug: d.debug, usage: d.usage, provider: d.provider }, null, 1);
   const panel = $("panel");

@@ -100,7 +100,7 @@ function outcomeLines(g, res) {
   if (res.rumor) L.push(`${who}이(가) 소문 하나를 흘린다: ${res.rumor}`);
   if (res.futureUsed?.length) L.push(`${who}은(는) 셋째가 그걸 어떻게 아는지 섬뜩해한다 (아직 아무도 모르는 일이다)`);
   for (const n of res.notes || []) L.push(`엔진 메모: ${n}`);
-  for (const f of res.feed || []) if (f.kind !== "ink" && f.kind !== "drift") L.push(`그사이 주인공 주변에서: ${f.text}`);
+  for (const f of res.feed || []) if (!["ink", "drift", "grow"].includes(f.kind)) L.push(`그사이 주인공 주변에서: ${f.text}`);
   const ink = (res.feed || []).filter((f) => f.kind === "ink" || f.kind === "drift");
   if (ink.length) L.push(`주인공의 기억이 스친다 (화면이 이 줄을 따로 보여 준다 — 서술에 옮겨 쓰지 말고, 어긋나게 쓰지도 말 것): ${ink.map((f) => f.text).join(" / ")}`);
   if (res.ending) L.push("이 박자로 대화를 닫는다.");
@@ -126,6 +126,7 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
     `[이 자리에 있는 사람]\n${v.people.map(personLine).join("\n") || "- 아무도 없다"}`,
     v.goals?.length ? `[주인공이 지키려는 사람 — 서술이 이 무게를 잊지 않게]\n${v.goals.map((x) => `- ${x.who}: ${x.what}${x.days != null ? ` (${x.days}일 남음)` : ""}`).join("\n")}` : "",
     v.bodies.length ? `[시체] ${v.bodies.join(", ")}` : "",
+    (() => { const seen = v.player.items.filter((i) => i.seen).map((i) => `${i.slot}에 ${i.name}`); const b = v.player.bloody ? ["옷에 핏자국"] : []; return seen.length || b.length ? `[주인공의 겉모습 — 남들 눈에 보인다] ${[...seen, ...b].join(", ")}` : ""; })(),
   ].filter(Boolean).join("\n");
   const convoNpc = g.convo?.npc || res?.convoEnded?.npc;
   const card = convoNpc ? `[대화 상대 카드]\n${convoCard(g, convoNpc, res)}` : "";

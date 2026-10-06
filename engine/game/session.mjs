@@ -9,7 +9,7 @@ import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInte
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 
-const INK = new Set(["ink", "drift"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
+const INK = new Set(["ink", "drift", "grow"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
 // provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
 export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());

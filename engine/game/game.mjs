@@ -25,8 +25,9 @@ export const prob = (S, D) => clamp(1 / (1 + Math.exp(-(S - D) / 8)), 0.03, 0.97
 // 체감 등급 6단 (01 §4.1) — 숫자 대신 캐릭터의 판단
 export function band(p) { return p >= 0.9 ? "식은 죽 먹기" : p >= 0.75 ? "확실해 보인다" : p >= 0.55 ? "해볼 만하다" : p >= 0.4 ? "반반이다" : p >= 0.2 ? "운이 따라야 한다" : "무모하다"; }
 // 체감 확률 (01 §4.2): 실제 P + 과신 편향 + 오차. 서툰 사람일수록 자기를 믿고, 틀린다. 실력이 늘면 세계가 투명해진다
+const skillFn = (g, sk) => skill(g, sk);
 export function perceived(g, P, skill, key) {
-  const sk = g.P.skills[skill] || 10, sense = 10 + g.P.mods.감각 * 2;
+  const sk = skillFn(g, skill), sense = 10 + g.P.mods.감각 * 2;
   const bias = 0.15 * Math.max(0, 1 - sk / 50);
   const sd = 0.2 * Math.max(0, 1 - (sk + sense * 2) / 140);
   const u1 = Math.max(1e-6, hash(g.seed, "feel", key, Math.floor(g.t / 1440))), u2 = hash(g.seed, "feel2", key);
@@ -47,11 +48,44 @@ export const START = toMinutes(312, 9, 1, 18, 0);   // 회귀점: 낙엽월 1일
 const SETTLEMENT = "greyford";            // 주인공이 매인 곳 (회귀점). 지금 있는 곳은 g.P.settlement
 const HOME = "gf_river_huts";                         // 강변 움막 12호 — 어머니 게르다, 동생 키트와 함께 (14 §6.2)
 const ROLLCALL = "gf_whip_square";
+// ── 스킬 (01 §5 성장, 03 §3 수련 상한, 06 §4 몸의 상한) ──
+// 머리의 스킬(화술·기만·위압·통찰)은 회귀해도 그대로. 몸의 스킬(싸움·은신·손재주)은 수치를 기억하지만 몸의 상한에 묶인다.
+const BODY_STAT = { 싸움: (s) => (s.근력 + s.체질) / 2, 은신: (s) => s.민첩, 손재주: (s) => s.민첩 };
+// 어머니가 기억하는 너 (14 §6.2) — 재능: 깨어날 때 한 번 얹히고, 그 스킬은 1.25배 빨리 자라며 상한이 5 높다 (06 §3)
+const TALENT = { voice: { skills: { 화술: 6, 기만: 3 }, grow: ["화술", "기만"] }, shadow: { skills: { 은신: 8, 손재주: 3 }, grow: ["은신", "손재주"] }, gunnar: { skills: { 싸움: 8, 손재주: 2 }, grow: ["싸움"] } };
+const statsOf = (g) => ({ 근력: 9 + g.P.mods.근력 * 2, 민첩: 9 + g.P.mods.민첩 * 2, 체질: 9, 지능: 9 + g.P.mods.지능 * 2, 감각: 9 + g.P.mods.감각 * 2 });
+const talentGrows = (g, sk) => !!TALENT[g.P.talent]?.grow?.includes(sk);
+export function bodyCap(g, sk) { return BODY_STAT[sk] ? 15 + (BODY_STAT[sk](statsOf(g)) - 9) * 5 + g.P.train + (talentGrows(g, sk) ? 5 : 0) : Infinity; }
+const rawSkill = (g, sk) => (g.P.skills[sk] || 10) + (g.P.gain?.[sk] || 0);
+// 실제 쓰는 스킬 = 상한까지는 그대로, 넘는 만큼은 1/4 ("기술이 몸을 이끈다")
+export function skill(g, sk) {
+  let v = rawSkill(g, sk) + (TALENT[g.P.talent]?.skills?.[sk] || 0);
+  const cap = bodyCap(g, sk);
+  if (v > cap) v = cap + (v - cap) * 0.25;
+  return v;
+}
+export const skillWord = (v) => (v < 12 ? "서툴다" : v < 20 ? "어설프다" : v < 30 ? "쓸 만하다" : v < 42 ? "제법이다" : v < 55 ? "능숙하다" : v < 70 ? "뛰어나다" : "경지에 닿았다");
+// 판정 하나가 남기는 것: 난이도 × 위험 × (실패면 1.2) × 재능 × (1 − 스킬/상한)². 너무 쉬운 판정(D < 스킬−20)은 아무것도 가르치지 않는다
+const PRACTICE = { attack: { risk: 2, cap: 100 }, small_talk: { risk: 0.6, cap: 40 }, search: { risk: 0.3, cap: 25 } };
+function growSkill(g, sk, od, tier, verb) {
+  if (!sk || !od) return;
+  const { risk, cap } = PRACTICE[verb] || { risk: 1, cap: 100 };
+  const cur = rawSkill(g, sk), capT = cap + (talentGrows(g, sk) ? 5 : 0);
+  if (od.D < cur - 20 || cur >= capT) return;
+  const before = skillWord(skill(g, sk));
+  const d = 0.12 * (Math.max(10, od.D) / 10) * risk * (OK(tier) ? 1 : 1.2) * (talentGrows(g, sk) ? 1.25 : 1) * (1 - cur / capT) ** 2;
+  (g.P.gain ??= {})[sk] = (g.P.gain[sk] || 0) + d;
+  // 몸의 스킬을 쓰면 몸도 단련된다. 지난 회차들의 최고치까지는 세 배 (근육 기억)
+  if (BODY_STAT[sk]) g.P.train = Math.min(60, g.P.train + 0.12 * risk * (g.P.train < (soul(g).trainPeak || 0) ? 3 : 1));
+  const after = skillWord(skill(g, sk));
+  if (after !== before) g.feed.push({ kind: "grow", text: `${sk} — ${after}`, skill: sk });
+}
 const NEW_PLAYER = () => ({
   name: "셋째", age: 17,
   skills: { 화술: 22, 기만: 15, 위압: 8, 통찰: 18, 손재주: 12, 은신: 16, 싸움: 12 },
   mods: { 근력: -0.5, 민첩: 0.5, 지능: 0.5, 감각: 1, 의지: 0 },
   status: { hunger: 2, pain: 30 },
+  gain: {}, train: 5,        // 단련도: 들일로 굳은 몸 (06 §4.2) — 회귀하면 여기로
 });
 
 // ── 콘텐츠 ── (content/build/*.json + cards.json)
@@ -118,6 +152,8 @@ function build(content, run) {
     offices: createOffices(game.factions || {}),
     seenDead: new Set(),
   };
+  // 영혼이 기억하는 스킬 (머리는 그대로, 몸은 상한에 묶여서 — skill()이 처리한다)
+  for (const [sk, v] of Object.entries((run.carry.soul || {}).skills || {})) g.P.skills[sk] = Math.max(g.P.skills[sk] || 0, v);
   S.heirs = {};       // 죽은 사람 → 그 일을 이은 사람 (반응 층의 '윗선' 찾기가 쓴다)
   return g;
 }
@@ -169,6 +205,13 @@ function asleep(w, t) {
 }
 function bodiesHere(g) { return g.L.bodies.filter((b) => b.at === g.at && !b.removed); }
 function worn(g, n) { return [...g.L.items.values()].filter((i) => i.owner === n && i.worn); }
+const hasTag = (g, t) => mine(g).some((i) => i.tags?.includes(t));
+// 몸의 자리 (02 §2): 손·허리는 보이고, 부츠·소매는 한 칸씩 숨기고, 품은 옷 안
+const SLOTS = { 손: { seen: true }, 허리: { seen: true }, 품: { seen: false }, 부츠: { seen: false, one: true, hide: true }, 소매: { seen: false, one: true, hide: true } };
+// NPC 인벤토리의 자리 이름(허리띠·목·손가락…)도 받아 다섯 자리로 접는다
+const SLOT_ALIAS = { 허리띠: "허리", 등: "허리", 목: "품", 손가락: "품", 주머니: "품", 몸: "품", 머리: "품", 발: "부츠" };
+const slotOf = (it) => SLOTS[it.slot] ? it.slot : SLOT_ALIAS[it.slot] || (it.tags?.includes("무기") && !it.tags?.includes("숨길수있음") ? "허리" : "품");
+const visibleMine = (g) => mine(g).filter((i) => SLOTS[slotOf(i)]?.seen);
 function mine(g) { return [...g.L.items.values()].filter((i) => i.owner === "player" && !i.stashed); }
 const hasWeapon = (g) => mine(g).some((i) => i.tags?.includes("무기"));
 
@@ -215,8 +258,12 @@ function exits(g) {
     let a = locAccess(g, id, g.t);
     if (g.W.placeState(id, g.t)) continue;           // 닫힘·통제·불탐 (24 §3.7)
     if (a === "secret" && !g.P.knowsPlaces.has(id)) continue;
+    const ac = g.content.game.access?.[id] || {};
+    if (ac.climb && !ac.climb.every((t) => hasTag(g, t))) continue;      // 오를 것이 없다
+    let via = null;
+    if (ac.breach && ac.breach.tools.every((t) => hasTag(g, t)) && ["locked", "owner", "closed", "staff"].includes(a)) { via = ac.breach.how; if (a === "locked") a = "closed"; }
     if (a === "locked") continue;
-    out.push({ id, name: l.name, access: a, minutes: g.W.travelMinutes(g.at, id) });
+    out.push({ id, name: l.name, access: a, via, minutes: g.W.travelMinutes(g.at, id) + (via ? 10 : 0) });
   }
   return out.sort((x, y) => x.minutes - y.minutes);
 }
@@ -246,6 +293,7 @@ function rawOptions(g) {
       if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f, memory: isFuture(g, f) ? memMark(g, `press:${f}`, { fact: f, loop: soul(g).knowledge[f]?.last || g.run.loop - 1 }) : null });
     }
     if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
+    for (const it of mine(g)) if (it.eat) o.push({ id: `give:${it.id}`, kind: "talk", label: `${it.name}을(를) 나눈다` });   // 빵 나누기 (20 §5.2)
     for (const it of mine(g)) {
       if (it.eat || it.use || it.coin) continue;                 // 먹을 것·약은 보이거나 팔 물건이 아니다
       o.push({ id: `show:${it.id}`, kind: "talk", label: `${it.name}을(를) 꺼내 보인다`, risk: "물건을 알아볼 수 있다" });
@@ -279,10 +327,22 @@ function rawOptions(g) {
   for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && (it.owner !== "player" || it.stashed) && g.P.found.has(it.id)) o.push({ id: `take:${it.id}`, kind: "scene", label: `${it.name}을(를) 챙긴다` });
   // 숨기기: 몸에 지니면 점호 몸수색에 걸린다 — 어딘가에 묻어 두고 다닌다
   for (const it of mine(g)) if (!it.stashed) o.push({ id: `stash:${it.id}`, kind: "scene", more: true, label: `${it.name}을(를) 이곳에 숨긴다` });
+  // 몸의 어디에 지니는가 — 점호 몸수색과 남의 눈이 달라진다
+  for (const it of mine(g)) {
+    const cur = slotOf(it);
+    for (const [sl, def] of Object.entries(SLOTS)) {
+      if (sl === cur || it.coin) continue;
+      if (def.hide && !it.tags?.includes("숨길수있음")) continue;
+      if (def.one && mine(g).some((x) => x !== it && slotOf(x) === sl)) continue;
+      if (sl === "손" && !it.tags?.includes("무기") && !it.tags?.includes("광원")) continue;
+      o.push({ id: `wear:${it.id}:${sl}`, kind: "scene", more: true, label: `${it.name}을(를) ${sl === "손" ? "손에 쥔다" : sl === "허리" ? "허리에 찬다" : `${sl}에 넣는다`}` });
+    }
+  }
+  if (g.P.bloody && WATER.has(g.at)) o.push({ id: "wash", kind: "scene", label: "옷의 피를 물에 빤다" });
   if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", more: true, label: `동전 ${g.S.purse.player - 3}못을 이곳에 숨긴다 (부츠 속 3못만 남기고)` });
   for (const e of exits(g)) {
     const sneak = ["owner", "staff", "closed", "secret", "home_locked"].includes(e.access) && !(e.id === HOME);
-    o.push({ id: `go:${e.id}`, kind: "move", label: `${e.name}(으)로 간다${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id });
+    o.push({ id: `go:${e.id}`, kind: "move", label: `${e.via ? `${e.via} ` : ""}${e.name}(으)로 ${e.via ? "넘어 들어간다" : "간다"}${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id, via: e.via });
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
@@ -321,8 +381,9 @@ export function odds(g, opt) {
   const m = n ? mind(g, n) : { fear: 0, anger: 0 };
   const r = n ? relOf(g, n) : { like: 0, trust: 0 };
   const knowsHim = n && (p.met.has(n) || soulPerson(g, n));
-  let S = p.skills[opt.skill] || 10, D = 10;
   const parts = [];
+  let S = skill(g, opt.skill), D = 10;
+  if (BODY_STAT[opt.skill] && rawSkill(g, opt.skill) + (TALENT[p.talent]?.skills?.[opt.skill] || 0) > bodyCap(g, opt.skill)) parts.push({ sign: "▼", text: "손은 기억하는데 몸이 아직 따라오지 않는다" });
   const why = (sign, text) => parts.push({ sign, text: josa(text) });
   const statMod = opt.skill === "싸움" ? (p.mods.근력 + p.mods.민첩) * 2 : opt.skill === "위압" ? (p.mods.의지 + p.mods.근력) * 2 : opt.skill === "은신" ? p.mods.민첩 * 2 : (p.mods.지능 + p.mods.감각) * 2;
   S += statMod;
@@ -347,10 +408,17 @@ export function odds(g, opt) {
     else if (pr.nerve >= 65) why("▼", "쉽게 흔들리는 사람이 아니다");
     else if (pr.nerve <= 35) why("▲", "겁이 많은 사람이다");
   }
-  if (opt.skill === "통찰") { D += 18; why("?", "무엇이 있을지 모른다"); }
+  if (opt.skill === "통찰") {
+    D += 18; why("?", "무엇이 있을지 모른다");
+    const dark = g.content.game.access?.[g.at]?.dark || isNight(g.t);
+    if (dark) { if (hasTag(g, "광원")) { S += 6; why("▲", "양초가 있다"); } else { S -= 10; why("▼", "어둡다 — 손으로 더듬어야 한다"); } }
+  }
   if (opt.skill === "은신") {
     const watchers = g.W.whoIsAt(opt.to, g.t + (opt.minutes || 0), g.W.npcs()).filter((w) => w.kind === "at").length;
     D += 10 + watchers * 6 + (isNight(g.t) ? -6 : 4);
+    if (opt.via) { S += 10; why("▲", "갈고리와 밧줄이 있다"); }
+    if (g.content.game.access?.[opt.to]?.dark && !hasTag(g, "광원")) { S -= 10; why("▼", "그 아래는 캄캄하다 — 불이 없다"); }
+    if (g.P.bloody) { S -= 4; why("▼", "옷에 피가 묻어 있다"); }
     why(isNight(g.t) ? "▲" : "▼", isNight(g.t) ? "어둡다" : "아직 밝다");
     if (knowsPlace(g, opt.to)) why(watchers ? "▼" : "▲", watchers ? `이 시각엔 그곳에 사람이 있다 (${watchers})` : "이 시각엔 그곳이 빈다");
     else why("?", "그곳에 지금 누가 있는지 모른다");
@@ -388,6 +456,7 @@ export function apply(g, e, { replay = false } = {}) {
   const [verb, arg] = e.id.split(/:(.*)/s);
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
+  if (od && opt.skill) growSkill(g, opt.skill, od, tier, verb);
   successions(g);
   for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
   g.P.been.add(g.at);
@@ -399,8 +468,24 @@ export function apply(g, e, { replay = false } = {}) {
   if (!replay) res.feed = g.feed.map((f) => ({ ...f, text: josa(f.text) }));
   return res;
 }
+const WATER = new Set(["gf_willow_bank", "gf_well_square", "gf_iron_bridge", "gf_hagen_shed"]);
 const TRIVIAL = /^(wait|sleep|leave|small_talk|story:next|story_name)\b/;
 
+// 보이는 것이 반응을 바꾼다 (02 §3 ③): 허리·손의 칼, 피 묻은 옷 — 들어선 자리의 사람들이 본다
+function seenCarrying(g, res) {
+  const here = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
+  if (!here.length) return;
+  for (const it of visibleMine(g)) {
+    if (!(it.tags?.includes("무기") || it.illegal || it.tags?.includes("금서"))) continue;
+    const seen = g.L.player.show(g.t, it.id, g.at);
+    if (seen.some((x) => profOf(g, x).role === "authority")) { deed(g, "weapon", null); const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 1; w.since ??= g.t; w.reasons.push(`${it.name}을(를) 드러내고 다녔다`); }
+    if (seen.length) res.notes.push(`${seen.map((x) => displayName(g, x)).join(", ")}의 눈이 네 ${it.name}에 머문다`);
+  }
+  if (g.P.bloody) {
+    for (const n of here) { bumpRel(g, n, -2, -4); if (profOf(g, n).role === "authority") { const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 1; w.since ??= g.t; w.by.add(n); w.reasons.push("피 묻은 옷"); } }
+    res.notes.push("네 옷의 핏자국을 보는 눈들이 있다");
+  }
+}
 // ── 기억 표지 (14 §7.5): ┊ 지난 회차에 일어났던 일 · ◇ 기억과 어긋남 ──
 // 엔진이 고른 줄을 그대로 화면에 (LLM이 쓰지 않는다). 회차 안에서 같은 방아쇠에 한 번, 한 박자에 둘까지.
 function memoryInk(g) {
@@ -483,7 +568,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     // 통금 순찰 (21:00·23:00·02:00): 막사 밖에 있는 인간은 걸린다 — 은신 판정
     if (!g.P.traveling && g.P.settlement !== SETTLEMENT && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08);
     if (g.P.settlement === SETTLEMENT && !g.P.traveling && ["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && g.at !== HOME && !g.W.loc.get(g.at)?.outer && !g.ended) {
-      const P = prob(g.P.skills.은신 + g.P.mods.민첩 * 2 + 6, 22);
+      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6, 22);
       if (hash(g.seed, "patrol", next) >= P) {
         g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100);
         g.feed.push({ kind: "rule", text: "통금 순찰에 걸렸다. 크릭 감독의 몽둥이 — 그리고 막사로 끌려간다." });
@@ -546,7 +631,7 @@ function checkpoint(g, res, p) {
   const known = rep.news.some((n) => n.identified && n.scope !== "village");
   let ok = false, text;
   if (pass) {
-    const P2 = prob(g.P.skills.기만 + g.P.mods.지능 * 2 + (pass.tags.includes("위조") ? 0 : 20) - (known ? 10 : 0), 22);
+    const P2 = prob(skill(g, "기만") + g.P.mods.지능 * 2 + (pass.tags.includes("위조") ? 0 : 20) - (known ? 10 : 0), 22);
     ok = hash(g.seed, "check-pass", g.t) < P2;
     text = ok ? "경비가 통행증을 오래 들여다보다가 돌려준다." : "경비가 통행증의 인장을 손톱으로 긁는다. 위조다.";
   } else text = "경비가 묻는다. 누구의 것이냐, 통행증은. 대답할 것이 없다.";
@@ -654,7 +739,7 @@ export function optionOdds(g, o) { return o.check ? storyOdds(g, o.check) : odds
 function storyOdds(g, ck) {
   const p = g.P, mod = ck.skill === "은신" || ck.skill === "손재주" ? p.mods.민첩 * 2 : (p.mods.지능 + p.mods.감각) * 2;
   const status = -(p.status.hunger >= 2 ? 5 : 0) - (p.status.pain >= 30 ? 3 : 0);
-  const S = (p.skills[ck.skill] || 10) + mod + status;
+  const S = skill(g, ck.skill) + mod + status;
   return { P: prob(S, ck.D), S, D: ck.D, parts: [] };
 }
 function storyEffect(g, e, res) {
@@ -666,7 +751,7 @@ function storyEffect(g, e, res) {
   else if (k === "hunger") g.P.status.hunger = clamp(g.P.status.hunger + Number(parts[1]), 0, 4);
   else if (k === "pain") g.P.status.pain = clamp(g.P.status.pain + Number(parts[1]), 0, 100);
   else if (k === "item") { const good = g.content.game.economy.goods[parts[1]]; if (good) g.L.give("player", { ...good, id: `it_${parts[1]}_${g.run.journal.length}_${Math.floor(g.t % 1440)}`, gid: parts[1] }); }
-  else if (k === "talent") { if (g.P.talent) return; g.P.talent = parts[1]; const T = { voice: { 화술: 6, 기만: 3 }, shadow: { 은신: 8, 손재주: 3 }, gunnar: { 싸움: 8, 손재주: 2 } }[parts[1]] || {}; for (const [sk, v] of Object.entries(T)) g.P.skills[sk] = (g.P.skills[sk] || 0) + v; }
+  else if (k === "talent") { if (!g.P.talent) g.P.talent = parts[1]; }   // 재능의 값은 skill()이 얹는다 (영혼의 스킬과 겹치지 않게)
   else if (k === "note") g.P.notebook.push(fill(g, rest));
   else if (k === "memory") { const [, n, tag] = parts; addMemory(g, n, { kind: "impression", tag, delta: 0, text: parts.slice(3).join(" "), salience: 4, source: "engine" }); }
   else if (k === "goto") g.at = parts[1];
@@ -732,6 +817,7 @@ const DO = {
       res.notes.push(seen.length ? `들어가다 ${seen.map((n) => nameOf(g, n)).join(", ")}의 눈에 띄었다` : "발소리가 났지만 아무도 보지 못한 듯하다");
     }
     g.at = to;
+    seenCarrying(g, res);
     checkDanger(g);
   },
   wait(g, m) { pass(g, Number(m) || 60); },
@@ -804,6 +890,7 @@ const DO = {
     if (OK(res.tier)) {
       const seen = g.L.player.kill(g.t, n, { at: g.at, stealth: res.tier === "대성공" ? 60 : 20 });
       deed(g, "kill", n);
+      g.P.bloody = true;
       res.notes.push(`${nameOf(g, n)}이(가) 쓰러졌다. 움직이지 않는다`);
       if (seen.length) res.notes.push(`누군가 보았다: ${seen.map((x) => nameOf(g, x)).join(", ")}`);
     } else {
@@ -815,7 +902,14 @@ const DO = {
     }
     checkDanger(g);
   },
-  loot(g, n, res) { pass(g, 5); const got = g.L.player.loot(g.t, n); res.notes.push(got.length ? `가져왔다: ${got.join(", ")}` : "남은 것이 없다"); },
+  wear(g, arg, res) {
+    const [id, sl] = arg.split(":"); const it = g.L.items.get(id);
+    it.slot = sl; it.visibility = SLOTS[sl].seen ? "보임" : "숨김"; pass(g, 2);
+    res.notes.push(`${it.name}을(를) ${sl}에 지녔다`);
+    if (SLOTS[sl].seen) seenCarrying(g, res);
+  },
+  wash(g, _, res) { pass(g, 20); g.P.bloody = false; res.notes.push("찬물에 옷을 비벼 빤다. 핏물이 흐려진다"); },
+  loot(g, n, res) { pass(g, 5); g.P.bloody = true; const got = g.L.player.loot(g.t, n); res.notes.push(got.length ? `가져왔다: ${got.join(", ")}` : "남은 것이 없다"); },
   hide_body(g, n, res) { pass(g, 20); g.L.player.hideBody(g.t, n); res.notes.push("시체를 짚더미 밑에 밀어 넣었다"); },
   // ── 대화 ──
   small_talk(g, _, res) {
@@ -853,6 +947,14 @@ const DO = {
   },
   give(g, what, res) {
     const n = g.convo.npc;
+    if (what !== "coin") {   // 먹을 것을 나눈다 — 판정 없이, 마음이 움직인다 (굶주린 마을에서 빵은 돈보다 무겁다)
+      const it = g.L.items.get(what); g.L.items.delete(what);
+      const hungry = (cardOf(g, n).rank || "").match(/노예|농노|고아/) || profOf(g, n).role === "serf";
+      bumpRel(g, n, hungry ? 8 : 4, hungry ? 4 : 1); g.convo.turns++;
+      addMemory(g, n, { kind: "emotion", tag: "다정함", text: `셋째가 ${it.name}을(를) 나눠 주었다`, salience: hungry ? 4 : 2, source: "engine" });
+      res.notes.push(`${it.name}을(를) 나눴다`);
+      return;
+    }
     g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12;
     talkTurn(g, res, { 대성공: [10, 5], 성공: [8, 3], "부분 성공": [4, 1], 실패: [1, 0], 대실패: [-2, 0] });
     addMemory(g, n, { kind: "debt", tag: "빚", text: "셋째가 돈을 쥐여 주었다", salience: 3, source: "engine" });
@@ -1058,6 +1160,9 @@ function settleSoul(g, record) {
     const tr = g.ended.trace, old = (S.traces ||= []).find((x) => x.id === tr.id && (x.npc || null) === (tr.npc || null));
     if (old) old.level = Math.min(3, (old.level || 1) + 1); else S.traces.push({ id: tr.id, npc: tr.npc || null, name: TRACE_TEXT[tr.id]?.name || tr.id, level: 1, loop });
   }
+  S.skills ||= {};
+  for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
+  S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
   S.memUsed ||= {};
   for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);
@@ -1154,13 +1259,14 @@ function rollcallSearch(g, day) {
   if (!searched) return;
   const found = [];
   for (const it of mine(g)) {
-    const hideable = it.tags?.includes("숨길수있음") || it.visibility === "숨김";
-    const P = hideable ? prob(g.P.skills.손재주 + g.P.mods.민첩 * 2 + 8, 20) : 0.05;
+    // 자리마다 다르다: 손·허리는 그대로 드러나고, 품은 더듬으면 나오고, 부츠·소매는 손재주로 숨긴다 (02 §2)
+    const sl = slotOf(it), hideable = it.tags?.includes("숨길수있음");
+    const P = SLOTS[sl].seen ? 0 : sl === "품" ? (hideable ? prob(skill(g, "손재주") + g.P.mods.민첩 * 2, 24) : 0.05) : prob(skill(g, "손재주") + g.P.mods.민첩 * 2 + 8, 20);
     if (hash(g.seed, "frisk", day, it.id) >= P) found.push(it);
   }
   const coin = g.S.purse.player;
   let text = "크릭 감독이 당신의 옷과 부츠를 뒤진다.";
-  if (coin >= 12 && hash(g.seed, "frisk-coin", day) >= prob(g.P.skills.손재주 + 8, 18)) {
+  if (coin >= 12 && hash(g.seed, "frisk-coin", day) >= prob(skill(g, "손재주") + 8, 18)) {
     g.S.purse.player = 0; g.S.purse[overseer(g)] = (g.S.purse[overseer(g)] || 0) + coin;
     text += ` 동전 ${coin}못이 나왔다 — 인간이 은화를? 즈닉이 가져가고 채찍 다섯.`;
     g.P.status.pain = clamp(g.P.status.pain + 10, 0, 100);
@@ -1280,7 +1386,8 @@ export function view(g) {
     place: { id: g.at, name: placeName(g, g.at) }, people,
     bodies: bodiesHere(g).map((b) => nameOf(g, b.npc)),
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
-    player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name })), wanted: g.S.wanted?.player?.heat || 0 },
+    skills: Object.keys(g.P.skills).map((sk) => { const v = skill(g, sk); return { name: sk, word: skillWord(v), body: !!BODY_STAT[sk], lagging: !!BODY_STAT[sk] && rawSkill(g, sk) + (TALENT[g.P.talent]?.skills?.[sk] || 0) > bodyCap(g, sk) }; }),
+    player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen })), bloody: !!g.P.bloody, wanted: g.S.wanted?.player?.heat || 0 },
     notebook: [...g.run.carry.notebook, ...g.P.notebook],
     ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,
     story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),

@@ -1,0 +1,10 @@
+# 도구가 여는 길 (02 §3 ① 태그가 선택지를 연다) — 장소마다 무엇이 있어야 하는가.
+#   dark: 늘 어둡다 — 광원(양초) 없이는 은신·뒤지기 −10, 있으면 뒤지기 +6
+#   climb: [태그…] — 이것이 다 있어야 오를 수 있다 (없으면 길이 보이지 않는다)
+#   breach: {tools: [태그…], how: 문장} — 잠긴 곳·주인 있는 곳을 이 도구로 넘는다 (몰래, 은신 +10)
+gf_rooster_cellar: {dark: true}
+gf_chapel_ossuary: {dark: true}
+gf_mill_loft: {climb: [밧줄]}
+gf_granary: {breach: {tools: [갈고리, 밧줄], how: 지붕 환기창에 갈고리를 걸고}}
+gf_keep: {breach: {tools: [갈고리, 밧줄], how: 북쪽 담에 갈고리를 걸고}}
+gf_keep_store: {dark: true}

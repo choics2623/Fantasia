@@ -22,6 +22,7 @@ node engine/game/test_game.mjs           # 진행 루프: 장면·시간·저장
 node engine/game/test_session.mjs        # LLM 붙인 한 판 (가짜 LLM)
 node engine/game/test_opening.mjs        # 회귀점의 대본 장면 (14 §6)
 node engine/game/test_soul.mjs           # 영혼: 회귀를 건너는 것·근거 미리보기·해금 (03·01·14)
+node engine/game/test_body.mjs           # 스킬 성장·몸의 상한·소지품의 자리·도구 (01·06·02)
 node engine/gen/test_gen.mjs             # 정착지·즉석 인물 생성 (25)
 python3 tools/validate_npc_cards.py && node tools/validate_agendas.mjs && python3 tools/link_world.py
 ```

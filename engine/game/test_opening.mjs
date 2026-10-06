@@ -29,9 +29,9 @@ const h = G.boot(C, G.newRun({ seed: 7 })); G.act(h, { id: "story_name", text: "
 G.act(h, { id: "go:gf_river_huts" });
 while (!G.view(h).story && G.view(h).hm < "23:00") G.act(h, { id: G.options(h).some((o) => o.id === "sleep") ? "sleep" : "wait:60" });
 check("21:30 움막에서 어머니가 기억하는 너 — 카드 셋", G.view(h).story?.id === "serf_mother_memory" && G.options(h).length === 3, G.view(h).hm);
-const skill0 = h.P.skills.은신;
+const skill0 = G.skill(h, "은신");
 G.act(h, { id: "story:talent_shadow" });
-check("고른 카드가 재능이 된다 (은신 +8)", h.P.skills.은신 === skill0 + 8 && h.P.talent === "shadow");
+check("고른 카드가 재능이 된다 (은신 +8)", G.skill(h, "은신") === skill0 + 8 && h.P.talent === "shadow");
 G.act(h, { id: "sleep" });
 check("자다가 01:40 첫 밤에 깬다 — 바닥의 글자", G.view(h).story?.id === "first_night_letter" && G.view(h).hm === "01:40", G.view(h).hm);
 r = G.act(h, { id: "story:leave_it" });
