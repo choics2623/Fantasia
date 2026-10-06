@@ -1,116 +1,130 @@
 id: npc_sara
 name: 사라
-aka: []
+aka: [눈물 두 방울]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 20
 region: 회색여울 변경
-home: null
+home: 레이번 성채 하녀 숙소
 job: 엿들은 하녀 (동료·연인 후보)
-rank: null
-summary: 성채 하녀
+rank: 성채 하녀 (남작 소유 노예)
+summary: 남작 서재에서 사람의 값을 들은 하녀. 글자 31개를 안다. 2차 명단에 자기 이름이 있는 줄은 아직 모른다
 source: docs/world/CHARACTERS.md:847
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 292, age: 0, event: "레이번 성채 하인 숙소에서 태어남. 어머니는 세탁장 노예였다"}
+  - {year: 300, age: 8, event: "세탁장 잿물 일을 시작함. 손바닥이 갈라져 피가 맺히는 것은 이때부터"}
+  - {year: 304, age: 12, event: "어머니가 겨울 열병으로 죽음. 번호 묘지에 묻힘"}
+  - {year: 306, age: 14, event: "마르타가 그녀를 세탁장에서 하녀로 올림. 그때부터 마르타를 '아주머니'라 부르며 믿었다"}
+  - {year: 308, age: 16, event: "순례자 요한이 처음 회색여울에 와 찬송을 가르침. 부엌에서 흥얼거릴 때만 등이 펴진다"}
+  - {year: 310, age: 18, event: "같은 하인 숙소의 리즈(12)를 돌보기 시작함 — 노래로 재우고 머리를 땋아 준다"}
+  - {year: 311, age: 19, event: "오스릭에게 주 2회 밤 예배당에서 글자를 배우기 시작함. 첫 글자는 '사'. 안식일 예배 뒤 오웬의 시선을 처음 느낌"}
+  - {year: 312, age: 20, event: "포도월 그믐 밤, 서재 등잔을 끄러 들어갔다가 마르타가 명단 마지막 줄의 '리즈'를 긁어내고 고쳐 쓰는 것을 봄"}
+  - {year: 312, age: 20, event: "낙엽월 1일 아침, 서재 청소 중 고드릭과 헨릭의 매각 명단 이야기를 엿들음. 저녁 배급 줄로 가서 셋째에게 키트의 줄을 알린다 (회귀점 직후)"}
+appearance:
+  - "오른쪽 눈 밑에 작은 점 둘 — 성채 사람들이 '눈물 두 방울'이라 부른다"
+  - "손바닥이 잿물 세탁으로 늘 갈라져 피가 맺혀 있다"
+  - "노래할 때만 펴지는 굽은 등 — 요한이 가르친 찬송을 부엌에서 흥얼거린다"
+smell: "잿물과 젖은 리넨, 부엌 연기"
+voice_sound: "작고 맑은 목소리. 성채 예법으로 다듬어진 말씨. 노래할 때는 한 음 낮아진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 25, 자비: 60, 정직: 35, 신앙: 10, 탐욕: -30, 충성: 40}
+  temperament: [조심, 영리, 단단함]
+  habits:
+    - "눈을 내리깔고 있지만 손님의 손과 신발을 다 기억한다"
+    - "노래할 때만 굽은 등이 펴진다"
+    - "흙에 자기 이름을 쓰면 그 아래 한 줄을 비워 둔다 — '아이 이름 자리'"
+    - "갈라진 손바닥을 앞치마 안쪽에 감추고 말한다"
+  values: "사람을 살리는 쪽으로 말하는 것. 자기 이름을 자기 손으로 쓰는 것. 리즈"
+  fears: [오웬의 관심 — 용인의 관심은 노예에게 대개 재앙이었다, 글자를 들키는 것, 자기 말 때문에 리즈가 팔려 가는 것, 소금 나루]
   desires:
-    short: null
-    long: null
+    short: "들은 것(매각 명단)을 누구에게 말해야 사람을 살리는지 알아내기"
+    long: "자기 이름을 자기 손으로 써 보는 것. 그리고 그 아래 아이의 이름을"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "성채 예법 그대로 — '예, 나리.' '분부대로.' 고개를 숙이고 눈은 상대의 손을 본다. 말끝이 흐트러지지 않는다"
+    to_equal: "해요체가 섞인 반말. 마을 농노들 앞에서는 성채 말씨를 일부러 지운다"
+    to_inferior: "리즈·키트에게 부드러운 반말. 말 대신 노래로 달랜다"
+    to_player_default: "조심스러운 해요체. 거리를 두되 무례하지 않다. 먼저 손과 신발을 본다"
+  tics: ["'…왜인지는 안 여쭐게요.'", "'저는 다 기억해요.'"]
+  use: [이름, 글자, 서른한, 손, 신발, 노래, 소금 나루, 종이(명단을 성채에선 이렇게 부른다)]
+  avoid: ["'구해 달라'는 말", "오웬의 이름 (성채 밖에서는 '도련님')", "'팔려 간다' (대신 '데려간다')"]
+  length: "보통. 정확하다 — 숫자와 날짜를 틀리지 않는다. 겁나면 짧아진다"
+  samples:
+    - {situation: 첫 만남, line: "남작님 응접실엔 들어가시면 안 돼요. …왜 들어가려는지는 안 여쭐게요."}
+    - {situation: 회귀점 직후(배급 줄), line: "명단에 키트가 있어. 첫 명단. 스물여섯째 줄."}
+    - {situation: 호의, line: "보세요. '사-라.' 두 글자예요. 생각보다 작네요. 이렇게 작은 게 사형감이라니."}
+    - {situation: 적대, line: "당신도 저를 데려가겠다고요? 고마워요. 그런데 다들 그렇게 말하면서 저를 어딘가로 '데려가더라고요.'"}
+    - {situation: 거래, line: "글자 하나에 이야기 하나요. 성채 안 이야기. …비싸다고요? 둘 다 목숨값이에요."}
+    - {situation: 거짓말할 때, line: "서재요? 등잔 기름만 갈았어요. 종이는 손도 안 댔어요. 저는 글을 모르잖아요."}
+    - {situation: 겁먹었을 때, line: "도련님이 또 보고 계세요. 저쪽 보지 마세요. 저도 보지 마세요."}
+    - {situation: 화났을 때, line: "아주머니가 고쳐 쓴 이름… 제 거였어요? …그럼 리즈는요. 리즈는 알아요?"}
+    - {situation: 슬플 때, line: "오늘 리즈가 '언니 이름 써 줘' 했어요. 써 줬어요. 땅에. 그리고 발로 지웠어요. 그게 제가 제일 잘하는 거예요, 지우는 거."}
+    - {situation: 위기, line: "소금 나루요! 굶주림월 3일! 서른한 명! …서른한 명 안에 누가 있는지 저는 다 알아요."}
+    - {situation: 비밀 누설, line: "마르타 아주머니가 명단의 마지막 이름을 고쳐 쓰는 걸 봤어요. 그 자리에 원래 누가 있었는지도요."}
+    - {situation: 회귀자를 의심할 때, line: "그 날짜를 어떻게 아세요? 굶주림월 3일은 서재에서만 나온 말이에요. …누가 당신한테 말했어요?"}
+    - {situation: 이름 아래 빈 줄을 들켰을 때, line: "아, 그거요. 이 아래 줄은 비워 두는 거예요. …아이 이름 자리요. 아직 없어요. 그냥, 자리요."}
+    - {situation: 마음을 열었을 때, line: "이번엔 제가 고를게요. 누가 수레에 타고 누가 안 타는지. 아무도 저를 대신 고르지 못하게."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
+  아침: "남작 침실 정리, 요강 비우기, 서재 청소"
+  낮: "세탁장, 응접실 시중 (세베로의 사자가 올 때)"
+  저녁: "만찬 시중"
+  밤: "하녀 숙소. 주 2회 몰래 예배당에서 오스릭에게 글자 수업"
+places: [레이번 성채 서재, 레이번 성채 응접실, 성채 세탁장, 하녀 숙소, 사슬등불 예배당, 쓴물 우물 광장 (안식일 예배 뒤)]
 knows: []
-hides: []
+hides:
+  - fact: fact_gb_sara_overheard_sale
+    reveal_when: "신뢰 30 이상 (충성 아크 30), 또는 사람을 살리는 구체적 계획을 내놓는 화술 판정 성공(신뢰 15 이상). 회귀점 직후 키트의 줄 하나는 스스로 말한다"
+    cover: "'성채 안 일은 몰라요'라고 하고 상대의 신발을 본다. 키트 이야기까지만 한다"
+  - fact: fact_gb_sara_saw_list_swap
+    reveal_when: "신뢰 50 이상, 또는 리즈의 안전을 함께 계획한 뒤. 그 말이 리즈를 위험하게 만드는 상황이면 신뢰가 높아도 미룬다"
+    cover: "마르타 이야기가 나오면 '아주머니는 바쁘세요'라고만 하고 앞치마 끈을 고쳐 맨다"
+  - fact: fact_gb_sara_reads
+    reveal_when: "신뢰 40 이상, 또는 플레이어가 먼저 글자를 써 보인 뒤"
+    cover: "글을 모른다고 한다. 흙에 그은 금이 보이면 발로 지운다"
 relations:
-- to: npc_owen_raven
-  type: 두려운 관심
-  like: 20
-  trust: 10
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_martha
-  type: 믿었던 이
-  like: 10
-  trust: 30
-  visibility: 비밀
-  memo: 명단 교체 목격
-  words: null
-- to: npc_osric
-  type: 스승
-  like: 70
-  trust: 75
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_johan
-  type: 노래 친구
-  like: 50
-  trust: 45
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_bran
-  type: 아저씨 같은
-  like: 40
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_godric_raven
-  type: 주인
-  like: -60
-  trust: -70
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_fayne
-  type: 동생 같은
-  like: 30
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_liz
-  type: 지키고픈 아이
-  like: 50
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_owen_raven, type: 두려운 관심, like: 20, trust: 10, visibility: 일방, memo: null, words: "북탑 창가에서 나를 보는 도련님. 다정한 눈인데, 용인의 다정은 노예에게 대개 재앙이었다"}
+  - {to: npc_martha, type: 믿었던 이, like: 10, trust: 30, visibility: 비밀, memo: 명단 교체 목격, words: "나를 세탁장에서 올려 준 아주머니. 그 밤 등잔 아래서 리즈의 이름을 긁어냈다. 그 자리에 무엇을 썼는지는 못 봤다"}
+  - {to: npc_osric, type: 스승, like: 70, trust: 75, visibility: 비밀, memo: null, words: "글자를 준 사람. 둘 다 목숨을 걸고 있다는 걸 둘 다 안다"}
+  - {to: npc_johan, type: 노래 친구, like: 50, trust: 45, visibility: 공개, memo: null, words: "찬송을 가르쳐 준 순례자. 그의 노래를 부를 때면 등이 펴진다"}
+  - {to: npc_bran, type: 아저씨 같은, like: 40, trust: 40, visibility: 공개, memo: null, words: "손이 크고 말이 적은 대장장이. 부엌칼을 갈아 줄 때 아무것도 묻지 않는다"}
+  - {to: npc_godric_raven, type: 주인, like: -60, trust: -70, visibility: 공개, memo: null, words: "요강을 비워 주는 주인. 그의 서재에서 사람의 값을 듣는다"}
+  - {to: npc_fayne, type: 동생 같은, like: 30, trust: 30, visibility: 공개, memo: null, words: "처마 위의 동생. 창문 너머로 내 글자를 훔쳐봤다는 걸 안다. 모른 척해 준다"}
+  - {to: npc_liz, type: 지키고픈 아이, like: 50, trust: 40, visibility: 공개, memo: null, words: "지키고픈 아이. 그 애 이름이 긁혀 나간 자리에 누가 들어갔는지, 아직 모른다"}
+  - {to: npc_kit, type: 부엌 뒷문의 아이, like: 30, trust: 25, visibility: 공개, memo: null, words: "물 심부름으로 부엌 뒷문을 드나드는 아이. 가마 둘. 그 애 줄을 듣고 나서 앞치마 끈도 못 매고 뛰어나갔다"}
+toward_player: "조심스럽고 공손하다. 눈을 내리깔지만 손님의 손과 신발을 다 기억한다. 회귀점 직후에는 셋째에게 먼저 다가와 키트의 줄을 알린다 — 그것이 그녀가 고른 첫 '살리는 말'이다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["사람을 살리는 계획", "글", "그녀의 판단을 존중하기"]
+  hates: ["그녀를 '구해야 할 물건'처럼 대하기", "오웬과 엮어 놀리기"]
 roles:
-  teacher: null
-  companion: null
-  romance: null
+  teacher: "예법(상한 30), 통찰(28). 조건: 성채 내부 일을 도움. 수업료 없음"
+  companion: "가능 (핵심 동료). 충성 아크: 0 경계 → 30 거래 내용 공유 → 50 자신이 명단에 있음을 알게 됨 (분노 / 마르타의 배신 발견) → 70 '이번엔 내가 고른다' (직접 계획 수립, 성채 내부 공작원). 배신 조건 없음 — 단 플레이어가 리즈를 대신 팔게 두면 영구 이탈"
+  romance: "가능 — 호감 70 + 그녀가 오웬에게 직접 답을 한 이후 (삼각관계 해소 이벤트). 결혼 시 첫 자녀에게 이름을 '써서' 짓는 이벤트 (업적 '첫 이름')"
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 아침 서재에서 명단을 엿들었다 — 회귀점 이전의 일이라 어느 회차에도 바뀌지 않는다"
+    - "18:10 배급 줄에 와서 셋째의 반대쪽 소매를 당기고 '명단에 키트가 있어. 첫 명단. 스물여섯째 줄.' 하고 줄 밖으로 빠진다"
+    - "2차 명단 31명 안에 그녀의 이름이 있다 — 마르타가 리즈 대신 바꿔 넣었다 (회귀점의 사실)"
+  flow:
+    - "낙엽월 3일 세베로의 사자가 오면 응접실 시중을 들며 거래를 다시 듣는다"
+    - "신뢰 20 이상이면 낙엽월 8~12일 사이 오웬에게 물어 '하르벡'의 뜻을 셋째에게 알려 준다 (`sara_word_harbek`)"
+    - "긴밤월 15일 오웬이 마음을 털어놓는다 (마르타가 목격) — 그녀가 성채 근무 중일 때"
+    - "굶주림월 3일 2차 호송, 사슬 앞에서 일곱째"
+  drift:
+    - "배급 줄에 왔을 때의 차림 — 앞치마 끈이 풀려 있거나, 소매에 잿물 얼룩이 있거나, 맨발이거나"
+    - "그 주 예배당 밤 수업이 열리는 요일"
+    - "부엌에서 흥얼거리는 찬송의 곡"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "지난 회차를 기억하지 않는다 — 함께 이름을 써 준 아이도"
+  - "자기를 '구해야 할 물건'처럼 다루는 말에는 차갑게 선을 긋는다"
+  - "리즈가 위험해질 말은 신뢰가 높아도 먼저 꺼내지 않는다"
+  - "성채 밖에서 오웬의 이름을 부르지 않는다 — '도련님'"
+  - "글자를 안다는 것을 먼저 드러내지 않는다"
+on_death: "오웬이 아버지와 결별 (고드릭 신변 위험 상승, 오웬 '분노'). 매각 정보 루트 소멸. 오스릭의 제자 하나 사라짐"
+story_seeds:
+  - "사라는 마르타가 명단을 고치는 것을 '봤다'. 그것을 말하면 리즈가 위험해진다. 사라는 아직 말하지 않았다 — 그녀도 리즈를 안다"
+  - "매 회차 사라는 같은 저녁에 같은 말을 한다. 그녀와 함께 이름을 써 준 아이는, 회귀하면 다시 태어나지 않는다 — 그 아이를 기억하는 사람은 세계에 당신 하나다 (12 문서, 20 R1 「아래 한 줄」)"
+  - "굶주림월 3일, 사슬의 일곱째. 디트마르의 습격이 그 사슬을 끊으려 할 때, 그녀의 자리를 기억하는 것은 당신뿐이다 (14 A1)"

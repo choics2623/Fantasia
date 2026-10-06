@@ -1,102 +1,125 @@
 id: npc_henrik
 name: 헨릭
-aka: []
+aka: [셈집 나리, 열한 열쇠, 장부의 쥐(뒤에서)]
 tier: A
 type: living
 race: 용인
 subrace: 용인(비늘혈)
-sex: null
-age: null
+sex: 남
+age: 90
 region: 회색여울 변경
-home: null
+home: 징세소 '셈집' 2층
 job: 장부의 쥐
-rank: null
-summary: 남작령 징세관, 인두세·곡물세 담당
+rank: 남작령 징세관 (인두세·곡물세·쇠다리 통행세), 레이번 가 가신. 가문명 없음
+summary: 사람을 숫자로 세고, 그 숫자를 둘로 세는 징세관. 남작도, 브람도, 레아도 그의 장부 한 칸씩이다
 source: docs/world/CHARACTERS.md:433
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 222, age: 0, event: "바알카르 아래 도시의 가문 없는 용인 서기 집안에서 태어남. 비늘이 일찍 회색으로 바랬다"}
+  - {year: 260, age: 38, event: "원로회 재날개 둥지 아래 노예 배당 명부실의 견습 서기. 사람 머릿수를 세는 일을 처음 배움"}
+  - {year: 281, age: 59, event: "레이번 가 징세관으로 회색여울에 부임. 첫해에 쇠다리 통행세 상자의 셈을 두 번 맞추었다"}
+  - {year: 298, age: 76, event: "남작의 빚이 시작되자 곡창의 국경군 납품분 일부를 용주 역참 상인 도르반에게 빼돌리기 시작"}
+  - {year: 311, age: 89, event: "수확월, 남작과 짜고 인두세 머릿수를 352로 신고. 차액 48명분을 '반씩' 나누며 실제로는 3분의 2를 챙김. 장부가 두 권이 됨"}
+  - {year: 312, age: 90, event: "여름, 장부가 안 맞는 '유령 머릿수'를 쫓다 브람이 사람을 숨긴 것을 눈치챔. 매주 2발톱씩 입막음 값을 받기 시작. 포도월, 남작의 빚 상황을 레아에게 팜"}
+  - {year: 312, age: 90, event: "수확월 말~낙엽월 1일 아침, 1차 매각 명단을 작성. 스물여섯째 줄 게르다 가구의 아이 키트를 '하르벡'으로 적음"}
+appearance:
+  - "오른쪽 눈에 금테 외알 안경, 렌즈에 금이 갔다"
+  - "손가락 끝마다 잉크 얼룩. 비늘은 회색으로 바래 멀리서는 인간처럼 보인다"
+  - "허리에 열쇠 열한 개 꾸러미 — 걸을 때마다 짤랑거려 멀리서도 들린다"
+smell: "쇠 잉크와 양피지 먼지, 열쇠 꾸러미의 녹"
+voice_sound: "가늘고 상냥한 목소리. 숫자를 말할 때만 또박또박 끊어서 높아진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: -40, 자비: -15, 정직: -70, 신앙: 0, 탐욕: 70, 충성: -30}
+  temperament: [계산, 비굴, 앙심]
+  habits:
+    - "사람 정수리를 손가락으로 짚으며 머릿수를 센다 — 손가락이 멈춘 자리가 그 사람의 값이다"
+    - "'도둑' 소리를 들으면 웃으며 외알 안경을 닦는다. 그리고 다음 인두세 때 그 사람의 칸을 고친다"
+    - "열쇠 꾸러미를 손바닥으로 눌러 소리를 죽이고 걷는 날은 뒷거래가 있는 날이다"
+  values: "셈이 맞는 것 — 자기 쪽으로. 은퇴할 포도밭"
+  fears: [바알카르 감사관, 장부를 남이 만지는 것, 남작이 셈을 배우는 날, 볼크의 코]
   desires:
-    short: null
-    long: null
+    short: "올해 착복분 42비늘을 세렌 비밀 계좌로 보내는 것"
+    long: "루멘 근처 포도밭을 사서 은퇴하는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "남작·용인 상관에게는 비굴할 만큼 공손한 하옵니다체. '숫자는 맞습니다'를 되풀이한다"
+    to_equal: "즈닉·경비대장에게는 빈정대는 하게체. 상대의 셈 실수를 꼭 짚는다"
+    to_inferior: "인간에게는 상냥한 반말 — 그러나 이름을 부르지 않고 숫자로 부른다"
+    to_player_default: "숫자로 본다. '머릿수 하나.' 이용 가치가 보이면 즉시 흥정으로 넘어간다"
+  tics: ["'숫자는 숫자다.'", "(외알 안경을 들어 올리며) '흠, 흠.'"]
+  use: [칸, 줄, 머릿수, 잉크, 셈, 이자, 하르벡, 장부, 옮기다]
+  avoid: [도둑, 훔치다(그는 '옮기다'라 한다), 인간의 이름(번호로 부른다), 미안]
+  length: "중간. 상냥한 군말이 붙지만 요점은 숫자 하나로 끝난다"
+  samples:
+    - {situation: 첫 만남, line: "이름? 아, 너희는 이름이 없지. 그럼 숫자로 하자. 너는 삼백… 십칠."}
+    - {situation: 배급 줄(회귀점), line: "(정수리에서 손가락이 멈춘다) 하르벡."}
+    - {situation: 호의, line: "너는 셈이 빠르구나. 빠른 셈은 빠른 죽음과 친하지. 그러니 나랑 친해 두거라."}
+    - {situation: 적대, line: "장부는 내가 쓴다. 다음 장에 네 이름이 '도주' 칸으로 옮겨가는 건 잉크 한 방울이면 돼."}
+    - {situation: 거래, line: "발톱 하나에 줄 하나. 셋이면 스물여섯째 줄이 깨끗해지지. 대신 하나 채워야지. 숫자는 숫자다."}
+    - {situation: 거짓말할 때, line: "곡창이 비었다고? 쥐가 많은 해다. 쥐는 장부를 안 읽거든."}
+    - {situation: 겁먹었을 때, line: "감사관? 수확월에나 온다고… 올해 일찍 온다고? 누가 그래. 숫자로 말해, 숫자로!"}
+    - {situation: 위기, line: "기, 기다려! 금고 번호를 알려주마. 세렌 계좌도! 나만 살려준다면—"}
+    - {situation: 비밀 누설, line: "남작은 자기가 반을 받는 줄 알지. 계산을 할 줄 모르는 귀족이란, 신의 선물이야."}
+    - {situation: 회귀자를 의심할 때, line: "하르벡을 아는 농노라. 흠, 흠. 그 낱말은 셈집 밖으로 나간 적이 없는데. 너는 어느 칸에서 새어 나온 숫자냐?"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "8시부터 징세소에서 장부 정리 (크릭 서기 1)"
+  낮: "15시 마을 순회 — 집집마다 머릿수 확인(수확월~낙엽월 집중). 4일째마다 남작과 결산"
+  저녁: "주 1회 절름발이 수탉 뒷문에서 브람에게 '보호비' 수금. 21시 이후 뒷문 뇌물 수수(주 2회)"
+  밤: "징세소 다락에서 이중 장부 작업. 2층 창의 불빛이 늦게까지 켜져 있다"
+places: [징세소 '셈집', 절름발이 수탉 뒷문, 영주 곡창, 레이번 성채 서재, 배급 줄]
+knows: [fact_gf_godric_henrik_headcount, fact_gf_godric_debt, fact_gf_serf_sale_contract, fact_gf_godric_sold_37, fact_gf_sara_on_sale_list, fact_gb_kit_on_first_list]
+hides:
+  - fact: fact_gf_henrik_skims_baron
+    reveal_when: "목숨이 걸린 위기 장면(위압 대성공), 또는 플레이어가 다락의 실제 장부를 손에 넣은 뒤 흥정"
+    cover: "'남작님과 나는 셈이 같다'고 웃는다"
+  - fact: fact_gf_bram_pays_henrik
+    reveal_when: "플레이어가 브람의 공범임을 보였을 때 흥정 성공 — 그는 이것을 '보험'으로 팔려 든다"
+    cover: "수탉 뒷문에 간 이유를 '배급 셈'이라 한다"
+  - fact: fact_gf_henrik_sold_debt_info
+    reveal_when: "신뢰 40 이상이고 뇌물 3발톱 이상, 또는 레아가 실각한 뒤"
+    cover: "까마귀 문 사람과는 '보급 셈'만 한다고 한다"
+  - fact: fact_gf_henrik_granary_skim
+    reveal_when: "곡물 수색(서리월 20일) 뒤 즈닉과 대질, 또는 도르반의 증언을 플레이어가 쥐었을 때"
+    cover: "부족분을 농노의 도둑질과 쥐 탓으로 돌린다"
+  - fact: fact_gf_henrik_seren_account
+    reveal_when: "위기 장면에서 목숨을 살려 주는 대가로"
+    cover: "포도밭 이야기는 '늙은이의 꿈'이라며 웃어넘긴다"
 relations:
-- to: npc_godric_raven
-  type: 주인·공범
-  like: 5
-  trust: 10
-  visibility: 비밀
-  memo: 이중 착복
-  words: null
-- to: npc_bram
-  type: 갈취 대상
-  like: -10
-  trust: 30
-  visibility: 비밀
-  memo: 주 2 발톱
-  words: null
-- to: npc_lea
-  type: 정보 고객
-  like: 20
-  trust: 25
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_znik
-  type: 경쟁자
-  like: -20
-  trust: -10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_severo
-  type: 송금 창구
-  like: 30
-  trust: 15
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_martha
-  type: 경계
-  like: -15
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_godric_raven, type: 주인·공범, like: 5, trust: 10, visibility: 비밀, memo: 이중 착복, words: "셈 못 하는 주인. 그래서 좋은 주인"}
+  - {to: npc_bram, type: 갈취 대상, like: -10, trust: 30, visibility: 비밀, memo: 주 2 발톱, words: "매주 꼬박꼬박 내는 절름발이. 낼 수 있는 만큼보다 조금 더 받는 것이 요령이다"}
+  - {to: npc_lea, type: 정보 고객, like: 20, trust: 25, visibility: 비밀, memo: null, words: "값을 깎지 않는 고객. 그녀가 누구에게 보고하는지는 셈에 넣지 않기로 했다"}
+  - {to: npc_znik, type: 경쟁자, like: -20, trust: -10, visibility: 공개, memo: null, words: "글을 못 읽는 채찍. 곡물이 빌 때 탓을 돌리기 좋은 등"}
+  - {to: npc_severo, type: 송금 창구, like: 30, trust: 15, visibility: 비밀, memo: null, words: "포도밭으로 가는 다리. 그 뱀도 나를 셈하고 있다는 것을 안다"}
+  - {to: npc_martha, type: 경계, like: -15, trust: 20, visibility: 공개, memo: null, words: "숫자를 머리로 세는 여자. 장부 없이 셈하는 자가 제일 무섭다"}
+  - {to: npc_kit, type: 하르벡, like: 0, trust: 0, visibility: 일방, memo: 체납 4발톱의 담보, words: "스물여섯째 줄. 정수리에 가마가 둘인 머릿수 하나"}
+toward_player: "숫자로 본다. '머릿수 하나.' 셈을 할 줄 아는 기미가 보이면 즉시 흥정 상대로 올린다 — 그리고 언젠가 팔 보험으로 적어 둔다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["뇌물(1발톱당 +3, 최대 +25) — 은화로만", "자기 착복을 덮어 줄 증거"]
+  hates: ["장부를 만지는 것", "'도둑'이라는 말 — 웃으며 기억해 두었다가 다음 인두세 때 보복"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "읽고쓰기(상한 65), 학식(42), 흥정(45). 조건: 그가 시키는 '숫자 맞추기'(장부 위조 공범) 3번. 수업료: 하루 3못 또는 숨긴 곡물 1자루. 가르친 제자는 언젠가 팔아넘길 보험으로 쓴다"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 18시 10분, 배급 줄을 따라 머리를 하나씩 짚다가 키트의 정수리에서 멈추고 '하르벡'이라 한다"
+    - "회귀점의 사실: 두 권의 장부, 브람에게서 받는 입막음 값, 레아에게 판 빚 정보, 키트의 하르벡"
+    - "낙엽월 10일 352명 결산 장부를 바알카르로 보낸다"
+    - "서리월 20일 즈닉의 곡물 수색에서 부족분을 농노 탓으로 돌린다"
+  flow:
+    - "브람에게서 받는 값을 올리는 날 — 대개 낙엽월 8일 (다음 주 3발톱)"
+    - "낙엽월 중순 세베로의 사람에게 42비늘 송금을 맡긴다"
+  drift:
+    - "15시 순회에서 어느 막사부터 세는지"
+    - "어느 저녁 수탉 뒷문에 오는지 (주 2회, 요일이 흔들린다)"
+    - "누구의 '도둑' 소리를 기억해 두는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "인간을 이름으로 부르지 않는다 — 숫자나 '머릿수'로 부른다"
+  - "장부를 남에게 보여 주지 않는다"
+  - "'훔쳤다'고 말하지 않는다 — '옮겼다'고 한다"
+  - "용인에게 반말하지 않는다 (즈닉 같은 크릭은 예외)"
+on_death: "장부 대혼란 — 다음 인두세에서 실제 머릿수가 드러나 '유령 48명' 수색 → 브람 지하실 발각 확률 크게 상승. 남작은 징세관을 잃어 세렌 이자 지불 지연"
+story_seeds:
+  - "이중 장부는 징세소 다락 마루 밑에 있다. 카스파르에게 넘기면 고드릭을 무너뜨릴 수 있지만, 브람의 비밀도 함께 드러난다"
+  - "'하르벡'은 담보라는 뜻이다. 키트는 체납 4발톱의 담보로 명단에 올랐다 — 그 낱말을 아는 회차부터 흥정이 달라진다"
+  - "AS 313 수확월 1일 바알카르 감사관이 온다. 그날 헨릭은 누군가의 목을 내밀어야 한다"

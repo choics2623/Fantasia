@@ -1,123 +1,136 @@
 id: npc_osric
 name: 오스릭
-aka: []
+aka: [사제님, 사슬사제, 흰눈 사제(아이들이)]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 67
 region: 회색여울 변경
-home: null
+home: 사슬등불 예배당 사제실
 job: 글을 아는 사제, 끊어진 고리
-rank: null
-summary: 순종의 빛 사제(루멘 서품), 마을 유일의 합법 문해자 — 경전 낭독만 허가
+rank: 순종의 빛 사제(루멘 서품). 마을 유일의 합법 문해자 — 경전 낭독만 허가. 형식상 교단 소유
+summary: 고난을 견디라고 설교하고, 밤에는 고난을 세는 글자를 아이들에게 가르치는 늙은 사제. 마흔 번 베낀 문장 하나 때문에 손이 떨린다
 source: docs/world/CHARACTERS.md:604
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 245, age: 0, event: "루멘 교단 소유 농노 마을에서 태어남"}
+  - {year: 257, age: 12, event: "목소리가 좋아 교단 성가 아이로 뽑힘. 뜻도 모르는 경전을 소리로 외웠다"}
+  - {year: 275, age: 30, event: "늦은 나이에 루멘 신학원 인간 사제 과정에 들어감. 스물한 살의 알베릭과 같은 해 동기가 됨"}
+  - {year: 279, age: 34, event: "사제 서품. 성표 고리 둘을 더 받음 — 그중 하나는 알베릭이 자기 고리를 풀어 준 것"}
+  - {year: 282, age: 37, event: "회색여울 사슬등불 예배당에 부임. 그해 첫 여울 축복에서 강에 던져진 조약돌 수를 셌다 — 마흔하나"}
+  - {year: 303, age: 58, event: "알베릭이 빛의 서신을 퍼뜨리고 루멘 지하 감옥에 갇힘. 순례자 편에 서신 조각이 왔다. 그 밤 처음으로 경전이 아닌 글자를 베꼈다 — 끊어진 고리 회색여울 고리의 시작"}
+  - {year: 305, age: 60, event: "오른쪽 눈에 백내장이 앉음. 손가락 관절이 휘어 펜을 실로 감아 쥐기 시작"}
+  - {year: 307, age: 62, event: "열여덟 살 요한을 찬송 순례자로 추천하고 찬송 일곱 곡을 가르침 — 가사 속에 무엇을 넣었는지는 반만 말해 주었다"}
+  - {year: 309, age: 64, event: "방앗간 토마스의 딸 미나(9)가 교리 문답을 핑계로 찾아옴. 흙바닥에 첫 글자를 그려 주었다"}
+  - {year: 311, age: 66, event: "성채 하녀 사라가 주 2회 밤 예배당에 오기 시작. 그녀가 처음 배운 글자는 자기 이름의 첫 자 '사'"}
+  - {year: 311, age: 66, event: "성 마렌 축일, 목줄장 마르타가 고해석에서 말했다 — '나는 죽인 사람을 셀 수 있습니다.' 그는 그 고해를 지금도 지킨다"}
+  - {year: 312, age: 67, event: "필사본 3부를 요한 편에 루멘의 아그네스에게 보내려 준비 중. 밀랍이 모자란다. 사라는 글자 31개, 미나는 27개를 안다"}
+appearance:
+  - "오른쪽 눈이 백내장으로 하얗게 흐려, 촛불 아래서 고개를 비스듬히 한다"
+  - "목의 성표 고리가 보통보다 두 개 많다 — 루멘 서품의 표시, 그중 하나는 알베릭의 것"
+  - "손가락 관절이 휘어 펜을 잡을 때 실을 감아 고정한다. 손끝에 늘 그을음과 밀랍"
+smell: "밀랍과 촛농, 오래된 양피지, 납골실의 서늘한 흙"
+voice_sound: "설교로 단련된 부드럽고 둥근 목소리. 글자를 소리 내 읽을 때만 가늘게 떨린다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: -10, 자비: 60, 정직: 20, 신앙: 40, 탐욕: -50, 충성: 30}
+  temperament: [온화, 시험하는, 떨리는 용기]
+  habits:
+    - "처음 보는 이에게 교리 문답 한두 마디를 던져 '어느 쪽'인지 떠본다"
+    - "촛불 아래서 고개를 비스듬히 하고 흰 눈 쪽을 손으로 가린다"
+    - "밀랍 한 방울도 버리지 않는다 — 촛농을 손톱으로 긁어 모은다"
+    - "고해 이야기가 나오면 성표 고리 중 알베릭의 것을 쥔다"
+  values: "아이들의 안전. 고해의 문. 그리고 '나'라는 글자를 쓰는 인간 다섯 명"
+  fears: [심문관 마테우스, 아이 몸에서 글자가 발견되는 것, 고해를 지키지 못하는 것, 이졸이 촛농을 세는 것]
   desires:
-    short: null
-    long: null
+    short: "빛의 서신 필사본 3부를 요한 편에 루멘의 아그네스에게 보내기"
+    long: "죽기 전에 인간 다섯 명에게 글을 가르치는 것 (현재 둘 — 사라와 미나)"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·교단 상급자·심문관에게는 흠잡을 데 없는 하옵니다체. 경전 구절로 대답해 아무것도 말하지 않는다"
+    to_equal: "사제·순례자에게는 하오체. 질문으로 대답한다"
+    to_inferior: "농노에게는 '그대'라 부르는 부드러운 하게체. 아이에게는 낮은 반말 — 글자를 가르칠 때는 속삭인다"
+    to_player_default: "사제다운 온화함과 시험. 교리 문답 몇 마디로 상대가 '어느 쪽'인지 떠본다"
+  tics: ["'아우렐의 빛이 그대에게.'", "'…그대는 어느 쪽인가?'"]
+  use: [그대, 빛, 고난, 문, 글자, 그분(사적으로 — 에오르를 가리킬 때), 촛불, 이름]
+  avoid: [신(그는 '그분' 또는 공식적으로 '아우렐'이라 한다), 에오르(그 이름을 소리 내지 않는다), 고해의 내용, 이단]
+  length: "중간. 설교처럼 둥글게 돌아가는 문장. 겁이 나면 짧아지고, 글자를 가르칠 때는 한 낱말씩 끊는다"
+  samples:
+    - {situation: 첫 만남, line: "아우렐의 빛이 그대에게. …그대는 고난을 견디는 쪽인가, 고난을 세는 쪽인가?"}
+    - {situation: 첫 만남(배급 줄 뒤 저녁 기도), line: "기도에 왔구나. 배식을 놓치면서까지. 그대 이름을 묻지는 않겠다. 대신 이것을 — 품에 넣어라. 들키면 그대가 죽는 물건이다."}
+    - {situation: 호의, line: "이것은 '물'이다. 이것은 '빵'. 그리고 이것— 이것은 '나'라는 글자다. 가장 위험한 글자지."}
+    - {situation: 적대, line: "고해의 문은 닫혀 있다. 그대가 그 문을 부수면, 나는 아우렐이 아니라 그대 앞에서 죽겠다."}
+    - {situation: 거래, line: "밀랍 세 자루. 그것이 수업료다. 훔쳐 오지는 마라 — 훔친 밀랍은 냄새가 난다고 이졸 그자가 말하더군."}
+    - {situation: 거짓말할 때(심문관 앞에서), line: "저 아이는 경전 구절을 소리로 외울 뿐입니다, 나리. 글자의 모양은 저도 겨우 읽습니다. 눈이 이러하니."}
+    - {situation: 겁먹었을 때, line: "루멘에서 사람이 온다고? 이름이… 마테우스가 아니라면 괜찮다. 마테우스가 아니라면."}
+    - {situation: 분노, line: "알베릭을 이단이라 부르는 입으로 빛을 말하지 마라. 그대의 빛은 사슬에 감긴 등불이다. 그분의 빛은 아니다."}
+    - {situation: 위기, line: "필사본을 불에 넣어라. 아니, 아이에게 줘. 아이의 몸은 수색하지 않는다— 제발, 아직은."}
+    - {situation: 비밀 누설, line: "알베릭은 썼다. '에오르는 우리를 노예로 만들지 않았다.' 나는 그 문장을 마흔 번 베꼈다. 손이 떨리지 않은 적이 한 번도 없었다."}
+    - {situation: 슬픔, line: "여울 축복 날 강에 던지는 조약돌을 서른 해 동안 셌다. 이름은 부르지 못하고, 숫자만. 숫자만 세는 사제가 되었다."}
+    - {situation: 마르타의 고해를 물을 때, line: "그 문 안의 일은 나와 함께 묻힌다. 그대가 열 번 물으면 열 번, 같은 대답을 듣게 될 것이다."}
+    - {situation: 마음을 열었을 때, line: "다섯이다. 죽기 전에 다섯. 사라, 미나… 그대가 셋째가 되어 주겠나? 이름을 쓸 수 있는 셋째."}
+    - {situation: 회귀자를 의심할 때, line: "그대는 그 구절을 어디서 들었나. 그것은 납골실 밖에서 소리로 난 적이 없는 문장이다. …그대, 꿈을 꾸는가?"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "4시 반 첫 종. 새벽 기도 인도, 7~12시 예배당"
+  낮: "오후 병자 방문, 순종의 빛 교리 문답"
+  저녁: "20시 저녁 기도 — 출석을 기억한다. 안식일 전날은 설교 준비"
+  밤: "예배당 제단 밑 공간에서 빛의 서신 필사(촛불 한 자루). 주 2회 사라의 글자 수업. 안식일 22시 납골실에서 끊어진 고리"
+places: [사슬등불 예배당, 사제실, 납골실, 남 막사(병자 방문), 여울강(여울 축복)]
+knows: [fact_gb_mina_letters, fact_gb_sara_reads, fact_gf_johan_hymn_cipher, fact_gf_elsa_nameless]
+hides:
+  - fact: fact_gf_osric_broken_ring
+    reveal_when: "신앙의 균열을 보이는 문답에 성공하고 신뢰 40 이상, 또는 알베릭 소식을 전한 뒤"
+    cover: "납골실은 '죽은 이를 위한 기도'를 드리는 곳이라 한다"
+  - fact: fact_gf_osric_teaches_letters
+    reveal_when: "신뢰 50 이상, 또는 '말 없는 형제'로 맹세한 뒤. 아이들 안전을 약속하면 조건 −10"
+    cover: "사라는 '고해하러' 오는 것이라고 한다"
+  - fact: fact_gf_osric_letter_copies
+    reveal_when: "끊어진 고리에 맹세하고 밀랍 3자루를 조달한 뒤"
+    cover: "제단 밑 이야기가 나오면 '성표 상자'를 열어 보인다"
+  - fact: fact_gf_martha_confession
+    reveal_when: "공개하지 않는다 — 고문으로도 확률 10%. 마르타 스스로 플레이어에게 말한 뒤에도 그는 확인해 주지 않는다"
+    cover: "'고해의 문은 닫혀 있다'고 한다. 몇 번을 물어도 같은 말"
 relations:
-- to: npc_alberic
-  type: 동기·벗
-  like: 90
-  trust: 95
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_gregor7
-  type: 교단 수장
-  like: 20
-  trust: -10
-  visibility: 공개
-  memo: 연민
-  words: null
-- to: npc_martha
-  type: 고해자
-  like: 30
-  trust: 40
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_johan
-  type: 운반자
-  like: 50
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_sara
-  type: 제자
-  like: 60
-  trust: 55
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_mina
-  type: 제자
-  like: 70
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_isol
-  type: 의심
-  like: -10
-  trust: -30
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_mateus
-  type: 두려움
-  like: -50
-  trust: -60
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_agnes
-  type: 끊어진 고리 동지
-  like: 60
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_alberic, type: 동기·벗, like: 90, trust: 95, visibility: 비밀, memo: null, words: "고리 하나를 풀어 준 벗. 우물 속에서 아직 살아 있기를, 그분께 — 이름 없이 — 빈다"}
+  - {to: npc_gregor7, type: 교단 수장, like: 20, trust: -10, visibility: 공개, memo: 연민, words: "사슬에 감긴 등불을 든 늙은이. 그도 무엇을 아는 눈이었다"}
+  - {to: npc_martha, type: 고해자, like: 30, trust: 40, visibility: 비밀, memo: null, words: "스물셋을 세는 여자. 그 숫자를 듣는 것이 그의 몫이 되었다"}
+  - {to: npc_johan, type: 운반자, like: 50, trust: 60, visibility: 비밀, memo: null, words: "노래를 나르는 아이. 무엇을 나르는지 반만 알려 주었다 — 반만 알아야 덜 위험하다고 믿었다"}
+  - {to: npc_sara, type: 제자, like: 60, trust: 55, visibility: 비밀, memo: null, words: "'사-라' 두 글자를 처음 쓴 날 울지 않았던 아이. 그 아래 한 줄을 비워 두는 것을 그는 안다"}
+  - {to: npc_mina, type: 제자, like: 70, trust: 60, visibility: 비밀, memo: null, words: "흙바닥의 글자를 자꾸 잊고 안 지우는 아이. 가장 빨리 배우고 가장 위험하다"}
+  - {to: npc_isol, type: 의심, like: -10, trust: -30, visibility: 일방, memo: null, words: "맨 앞줄에서 가장 열심히 기도하는 순례자. 촛농을 세는 눈"}
+  - {to: npc_mateus, type: 두려움, like: -50, trust: -60, visibility: 공개, memo: null, words: "누이를 태운 심문관. 그 이름만 들어도 손이 떨린다"}
+  - {to: npc_agnes, type: 끊어진 고리 동지, like: 60, trust: 70, visibility: 비밀, memo: null, words: "루멘의 웃음 큰 수녀. 필사본이 닿아야 할 곳"}
+  - {to: npc_gerda, type: 세례를 준 어머니, like: 35, trust: 40, visibility: 공개, memo: null, words: "두 아이에게 세례를 준 여자. 기침이 깊어진다. 기도 말고 줄 것이 없어 부끄럽다"}
+toward_player: "사제다운 온화함과 시험. 교리 문답 몇 마디로 상대가 '어느 쪽'인지 떠본다. 고난을 '세는' 쪽이면 다음 기도에 이름을 부른다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["신앙의 균열을 보여주기", "알베릭 소식 (+35)", "아이들 안전"]
+  hates: ["고해 내용을 묻는 것", "알베릭을 이단이라 부르는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "읽고쓰기(상한 45), 학식(40), 화술(50). 조건: 끊어진 고리의 '말 없는 형제'로 맹세 + 필사용 밀랍 3자루 조달. 수업료: 밀랍. 위험: 수업 1회마다 목격 판정(이졸이 마을에 있는 동안 D −10)"
+  companion: "불가 (마을을 떠나면 의심받는다). 단 '탈주 시 동행'은 가능 — 체력 약함"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 끊어진 고리 11명, 납골실의 필사본, 사라 31자·미나 27자, 마르타의 고해"
+    - "낙엽월 1일 20시 저녁 기도. 배식을 놓치고 온 셋째에게 기도 뒤 이름을 부르고 빛의 서신 조각을 맡긴다"
+    - "안식일마다 22시 납골실"
+    - "재의 날 셋째 밤, 옛 돌 고리 아스테리온 추모에 엘사와 함께 간다"
+  flow:
+    - "낙엽월 18일 이졸이 오고 나서 며칠 안에 촛농 셈이 시작된다 — 대개 첫 안식일 예배 맨 앞줄에서"
+    - "긴밤월 25일 남 막사 겨울 열병 — 남들 앞에서는 '기도만' 처방하고, 밤에 엘사의 약을 몰래 나른다"
+    - "요한이 떠나는 낙엽월 12일 전에 필사본을 맡길지 망설인다 — 대개 이번 순례는 넘긴다"
+  drift:
+    - "안식일 납골실에 열한 명 중 몇이 오는지"
+    - "그 주에 밀랍이 몇 자루 남았는지"
+    - "어느 아이가 흙바닥에 글자를 남겨 두는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "고해의 내용을 누구에게도 말하지 않는다"
+  - "'에오르'라는 이름을 소리 내 말하지 않는다 — 알베릭의 문장을 인용할 때만 예외"
+  - "남들 앞에서는 순종의 빛 교리대로만 말한다"
+  - "아이를 위험에 내세우는 계획에 먼저 동의하지 않는다 (위기 대사의 순간만 예외)"
+on_death: "회색여울 문해 학습 루트 단절('글' 단계 진행 −). 끊어진 고리 북부망 연락 두절 1~2달. 루멘에서 후임 사제 파견 — 확률 50%로 마테우스의 사람"
+story_seeds:
+  - "이졸이 예배당 촛농을 세고 있다 — 밀랍 사용량이 교단 배급의 세 배다"
+  - "필사본 3부는 다음 순례에 요한의 품으로 간다. 까마귀 문 검문, 바알카르 수색, 루멘 고해 — 세 관문"
+  - "그는 잔향 징후를 '확인'하는 사람이다(오스릭 확인 → 남작). 그가 셋째의 징후를 보았을 때 무엇을 말하는가가 셋째의 목숨이다"

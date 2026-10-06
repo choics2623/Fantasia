@@ -1,60 +1,96 @@
 id: npc_liz
 name: 리즈
-aka: []
+aka: [마르타네 애]
 tier: B
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 14
 region: 회색여울 변경
-home: null
+home: 레이번 성채 하인 숙소 구석방 (어머니와 같은 방)
 job: 성채 하인 숙소, 부엌 심부름
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+rank: 성채 소유 노예, 목줄장 마르타의 딸
+summary: 마르타의 딸. 어머니가 무엇을 하는지 반쯤 알고 모르는 척한다. 매각 명단 '마지막 자리'의 원래 주인 — 그 사실은 모른다
+source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다 (R02-23)
+life:
+  - {year: 298, age: 0, event: "레이번 성채 하인 숙소에서 태어남. 아버지를 모른다 — 마르타는 묻지 못하게 한다"}
+  - {year: 303, age: 5, event: "마르타가 리즈의 아기 털모자를 성채 열쇠 꾸러미에 매달고 다니기 시작함"}
+  - {year: 310, age: 12, event: "부엌 심부름을 시작함. 같은 숙소의 사라가 머리를 땋아 주고 노래로 재워 주기 시작함"}
+  - {year: 311, age: 13, event: "어머니가 한 달에 한 번 밤에 성채 지하로 내려갔다 온 날엔 보리빵을 먹지 않는다는 것을 알아챔. 묻지 않기로 했다"}
+  - {year: 312, age: 14, event: "포도월 그믐 밤, 2차 명단 마지막 줄에서 그녀의 이름이 긁혀 나감. 그녀는 모른다. 그 자리에 들어간 이름도"}
+appearance:
+  - "어머니를 닮은 좁은 턱. 그러나 웃으면 눈도 같이 웃는다 — 어머니와 다른 점"
+  - "사라가 땋아 준 머리를 풀지 않으려고 잘 때 땋은 끝을 손에 쥐고 잔다"
+  - "손목 안쪽에 부엌 화덕에 덴 작은 자국 셋"
+smell: "부엌 연기와 양파, 소매 속 말린 들꽃"
+voice_sound: "높고 빠른 목소리. 어머니 이야기가 나오면 갑자기 작아진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 10, 자비: 50, 정직: 20, 신앙: 20, 탐욕: 0, 충성: 70}
+  temperament: [명랑, 눈치, 외로움]
+  habits:
+    - "어머니가 밤에 나가면 잠든 척하고 문소리를 센다"
+    - "사라의 찬송을 따라 흥얼거린다 — 가사는 늘 한 군데 틀린다"
+  values: "엄마와 사라 언니. 성채에서 쫓겨나지 않는 것"
+  fears: [어머니가 하는 일이 무엇인지 확실히 알게 되는 것, 명단이라는 말, 사라 언니가 떠나는 것]
   desires:
-    short: null
-    long: null
+    short: "사라 언니가 밤에 어디 가는지 — 묻지 않고 기다리는 것"
+    long: "어머니가 말하는 대로 루멘 교단의 하녀가 되는 것. 엄마가 그 이야기를 할 때만 웃으니까"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "성채 예법 — '예, 나리.' 어머니에게 배운 대로 눈을 들지 않는다"
+    to_equal: "하인 아이들과 반말, 수다"
+    to_inferior: "성채에서 그녀보다 아래는 없다. 부엌 개에게 말을 건다"
+    to_player_default: "해요체. 호기심이 많고 빨리 말한다. 어머니 눈을 늘 의식한다"
+  tics: ["'엄마한테는 말하지 마요.'"]
+  use: [언니, 엄마, 부엌, 노래, 루멘, 열쇠]
+  avoid: [목줄단, 밀고, 명단]
+  length: "수다스럽다. 어머니 이야기에서는 짧아진다"
+  samples:
+    - {situation: 첫 만남, line: "부엌 뒷문으로 오면 안 돼요. 엄마가 보면… 아니, 엄마는 지금 위에 있어요. 빨리 말해요."}
+    - {situation: 호의, line: "사라 언니가 그러는데요, 노래는 성채 그림자 밖에서 불러야 한대요. 그래서 여기 나와서 불러요."}
+    - {situation: 거짓말할 때, line: "엄마요? 엄마는 열쇠만 세요. 그게 다예요."}
+    - {situation: 겁먹었을 때, line: "엄마가 또 지하에 갔어요. 돌아오면 빵을 안 먹을 거예요. 왜 안 먹는지 저는 안 물어봐요."}
+    - {situation: 비밀 누설, line: "엄마 귀는 열여섯 살에 잘렸대요. 상으로요. 무슨 상인지는… 알아요. 모르는 척하는 거예요."}
+    - {situation: 회귀자를 의심할 때, line: "제 이름을 어떻게 알아요? 성채 밖에선 다들 '마르타네 애'라고만 하는데."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
+  아침: "6시 하인 기상, 부엌 물 긷기"
+  낮: "부엌 심부름. 틈나면 세탁장 사라 곁"
+  저녁: "만찬 뒤 부엌 설거지"
+  밤: "하인 숙소 구석방, 어머니와 같은 방. 안식일 오전엔 어머니와 예배"
+places: [레이번 성채 부엌, 하인 숙소 구석방, 성채 세탁장, 사슬등불 예배당]
 knows: []
-hides: []
-relations: []
-toward_player: null
+hides:
+  - fact: fact_gb_liz_knows_mother
+    reveal_when: "호감 30 이상이고 마르타가 없는 자리, 또는 사라가 곁에 있을 때"
+    cover: "'엄마는 열쇠만 세요'라고 하고 노래를 흥얼거린다"
+relations:
+  - {to: npc_martha, type: 어머니, like: 90, trust: 60, visibility: 공개, memo: 모르는 척한다, words: "엄마. 열쇠 꾸러미에 내 아기 모자를 매달고 다닌다. 한 달에 한 번, 빵을 안 먹는 밤이 있다"}
+  - {to: npc_sara, type: 언니 같은, like: 70, trust: 70, visibility: 공개, memo: null, words: "언니. 머리를 땋아 주고 노래로 재워 준다. 밤에 어딘가 가는 걸 안다 — 안 묻는다"}
+  - {to: npc_bram, type: 누룽지를 주는 아저씨, like: 30, trust: 20, visibility: 공개, memo: null, words: "수탉 아저씨. 왜인지 나한테만 누룽지를 준다. 엄마는 그 사람 이야기가 나오면 입을 다문다"}
+toward_player: "호기심. 어머니 눈이 없는 곳에서는 말이 많아진다. '마르타네 애'가 아니라 이름으로 불러 주면 경계를 푼다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["이름으로 불러 주기", "사라 언니 이야기", "노래"]
+  hates: ["어머니를 '밀고자'라 부르는 것", "어머니에게 이른다는 협박"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점에 그녀의 이름은 이미 2차 명단에서 긁혀 나갔다. 그녀는 모른다 (회귀점의 사실)"
+    - "매일 밤 어머니와 같은 방에서 잔다"
+  flow:
+    - "굶주림월 10일 마르타가 수탉 지하의 냄새를 알아챈 뒤, 그녀의 자리는 어머니의 선택에 걸린다 — 밀고하면 성채 하인으로 남고, 하지 않으면 다음 명단에 오른다 (REGIONS §2.19-3)"
+  drift:
+    - "그날 사라에게 배우는 노래 한 소절, 틀리는 자리"
+    - "브람의 누룽지를 받으러 수탉에 들르는 저녁"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "어머니가 무엇을 하는지 아는 티를 먼저 내지 않는다"
+  - "사라의 밤 외출을 남에게 말하지 않는다"
+  - "지난 회차를 기억하지 않는다"
+on_death: "마르타의 유일한 닻이 사라진다 — 그녀는 원인으로 보이는 자를 반드시 밀고하거나 스스로 무너진다. 사라가 무너진다 (충성 아크 정지)"
+story_seeds:
+  - "매각 명단 '마지막 자리'의 원래 주인. 사라가 그 자리를 대신 채웠다는 것을 리즈가 알게 되는 회차 — 그녀는 어머니와 언니 중 누구를 볼까"
+  - "브람이 리즈에게만 누룽지를 준다 — 그는 그 나이 무렵의 마르타를 기억한다. 배가 고팠던 아이를"

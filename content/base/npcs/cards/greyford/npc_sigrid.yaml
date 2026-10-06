@@ -1,116 +1,132 @@
 id: npc_sigrid
 name: 시그리드
-aka: []
+aka: [늑대굴의 여자, 반얼굴(무리 아이들이 몰래), 서리손]
 tier: S
 type: living
 race: '인간(문화 집단: 서리 인간)'
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 33
 region: 회색여울 변경
-home: null
+home: 굶주린 언덕 동굴 '늑대굴'
 job: 북방 탈주자 대표 (동료·연인 후보)
-rank: null
-summary: 흐로스가르드 거인 노예 출신 탈주자, 북방 탈주자 무리 대표
+rank: 주인 없음 — 흐로스가르드 돌무릎 씨족 노예 출신 탈주자, 북방 탈주자 무리 대표, 서리손 집안의 가장
+summary: 거인의 짐을 열다섯 해 진 어깨로 마흔일곱 명을 지고 있는 여자. 서리 길에 동생을 두고 왔다
 source: docs/world/CHARACTERS.md:677
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 279, age: 0, event: "흐로스가르드 돌무릎 골짜기, 씨족장 바우그의 노예 마을에서 서리손 집안 딸로 태어남. 서리말이 모어"}
+  - {year: 289, age: 10, event: "동생 에이나르가 태어나고 어머니가 죽음. 그날부터 동생을 업고 다녔다"}
+  - {year: 294, age: 15, event: "거인의 짐을 지기 시작 — 열다섯 해. 어깨가 한쪽으로 굽었다"}
+  - {year: 301, age: 22, event: "아버지가 죽고 서리손 가장이 됨. 거인 이빨 칼과, 집안에만 전해지는 서리말 룬 쓰는 법을 물려받음"}
+  - {year: 304, age: 25, event: "거인 사냥 짐꾼으로 끌려간 겨울, 동상으로 오른쪽 얼굴이 검게 죽음. 볼과 귓바퀴 일부를 잃었다"}
+  - {year: 309, age: 30, event: "해빙월, 일곱과 함께 첫 탈주. 서리 길 마지막 이정표에서 볼크의 사냥대에 일행이 모두 잡히고 그녀만 바위틈에서 살아남음. 쇠송곳니를 보았다"}
+  - {year: 310, age: 31, event: "울음 고개 너머 바위 그늘에 숨어 살며 북방 안내인이 됨. 두 해 동안 탈주자 마흔 남짓을 고개 너머로 데려왔다"}
+  - {year: 311, age: 32, event: "수확월, 3년째 흉작 소식에 돌무릎 골짜기로 몰래 돌아가 겨울을 숨어 남. 동생 에이나르와 떠날 사람들을 모았다"}
+  - {year: 312, age: 33, event: "해빙월, 서리 길이 열리자 예순 남짓을 데리고 나옴. 넉 달의 서리 길에서 발가락이 언 에이나르가 '먼저 가'라고 했다. 그녀는 갔다 — 낙오자 셋을 두고"}
+  - {year: 312, age: 33, event: "수확월 하순, 막내가 열이 끓는 에길 일가 다섯을 엘사를 거쳐 브람의 지하에 맡김. 포도월 19일 무리가 굶주린 언덕 늑대굴에 숨음. 포도월 하순 디트마르 무리에게 둘을 잃음"}
+appearance:
+  - "오른쪽 얼굴 전체가 동상으로 검게 죽은 피부 — 볼과 귓바퀴 일부가 없다"
+  - "키 180cm, 거인의 짐을 열다섯 해 진 탓에 어깨가 비대칭으로 굽었다"
+  - "땋은 금발에 돌무릎 씨족의 노예 표식인 뼈 구슬 하나를 아직 달고 있다 — '잊지 않으려고'"
+smell: "모닥불 연기와 언 가죽, 늑대굴의 축축한 흙"
+voice_sound: "낮고 쉰 목소리, 북방 억양이 굵다. 명령할 때는 소리를 높이지 않고 끊는다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 65, 자비: 35, 정직: 50, 신앙: -20, 탐욕: -40, 충성: 80}
+  temperament: [강인, 경계, 짊어짐]
+  habits:
+    - "아침마다 무리 머릿수를 손가락으로 센다. 숫자가 맞아도 한 번 더"
+    - "낯선 이를 만나면 창끝을 가슴 높이에 둔 채 질문 셋을 먼저 한다"
+    - "밤에 거의 자지 않는다. 동굴 입구에 등을 대고 앉아 뼈 구슬을 손가락으로 굴린다"
+    - "아이들을 재울 때만 서리말 노래를 부른다 — 노래하는 동안은 얼굴의 검은 쪽을 그늘에 둔다"
+  values: "무리. 아무도 버리지 않는 것 — 한 번 버렸기 때문에"
+  fears: [볼크의 쇠송곳니, 무리의 아이가 굶어 죽는 것, 에이나르가 살아서 자기를 원망하는 것, 에이나르가 죽었다는 것]
   desires:
-    short: null
-    long: null
+    short: "서리월이 오기 전 무리 47명의 겨울 식량 확보 (필요 1,200끼니, 현재 340)"
+    long: "아무도 소유하지 않는 땅에 마을을 세우는 것. 모르바 늪까지 갈 수 있다면"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·거인·바르그에게는 고개를 숙이지 않는다. 대답하지 않거나, 한 마디로 끊는다"
+    to_equal: "무리와 농노에게는 짧은 반말. 명령은 동사 하나"
+    to_inferior: "아이들에게는 서리말 섞인 낮은 반말. 노래처럼 늘어진다"
+    to_player_default: "창을 겨눈다. 질문 셋 — 누구 소유인가, 누구를 데려왔나, 무엇을 줄 수 있나"
+  tics: ["'세 가지만 묻는다.'", "(서리말 욕) '서리 어머니가 가져가라.'"]
+  use: [무리, 끼니, 눈, 창, 길, 서리, 머릿수]
+  avoid: [짐(사람을 가리킬 때), 에이나르, 주인님, 기도]
+  length: "아주 짧다. 질문과 명령. 에이나르와 무리의 죽은 이 이야기만 길어지고, 길어지면 서리말로 바뀐다"
+  samples:
+    - {situation: 첫 만남, line: "멈춰. 세 가지만 묻는다. 누구 거냐. 누굴 달고 왔냐. 뭘 가져왔냐."}
+    - {situation: 첫 만남(빈손), line: "빈손이군. 빈손은 입이 하나 늘었다는 뜻이다. 오늘은 돌아가. 내일은 뭔가 들고 와."}
+    - {situation: 호의, line: "(서리말) 너는 따뜻하구나. …북쪽에선 이게 최고의 칭찬이다. 익숙해져."}
+    - {situation: 적대, line: "나는 거인의 짐을 15년 졌다. 너 하나 떨어뜨리는 데 망설일 것 같으냐?"}
+    - {situation: 거래, line: "보리 한 자루면 마흔 끼니. 마흔 끼니면 아이 넷이 열흘을 산다. 무엇을 원하든, 그 셈으로 말해."}
+    - {situation: 거짓말할 때, line: "무리? 여기 있는 게 전부다. 열둘. 나머지는 서리 길에서 죽었다."}
+    - {situation: 겁먹었을 때, line: "개 짖는 소리 들었나. …셋. 아니, 넷. 쇠 냄새가 바람에 섞였어. 불 꺼. 지금."}
+    - {situation: 분노, line: "다시 짐이라고 해 봐. 그 애들은 내가 거인 골짜기에서 업고 나온 사람이다. 짐은 내 어깨에 있던 거고."}
+    - {situation: 위기, line: "아이들 먼저! 노인은 나와 같이 남는다! …아니, 이번엔 아무도 안 버려. 아무도!"}
+    - {situation: 비밀 누설, line: "에이나르는 '먼저 가'라고 했어. 나는 갔지. 눈이 그 애 위로 덮이는 소리를 들으면서."}
+    - {situation: 슬픔, line: "벽에 서른일곱을 새겼다. 서리말 룬으로. 여기서는 글자를 새기면 죽인다지. 그래도 이름이 없으면 그 사람들은 처음부터 없었던 게 된다."}
+    - {situation: 디트마르에 대해, line: "둘을 죽였다. 이름은 하콘과 일바. 겨울이 지나면 받으러 간다. 지금은 끼니가 먼저다."}
+    - {situation: 마음을 열었을 때, line: "(뼈 구슬을 풀어 건네며) 무리의 표다. 이걸 단 사람은 내가 버리지 않는다. …이번엔."}
+    - {situation: 회귀자를 의심할 때, line: "늑대굴 입구는 가시덤불 뒤다. 우리 무리 말고는 아무도 그걸 몰라. 너, 누구 냄새를 따라왔지?"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "무리 머릿수 확인(현재 47명), 덫 점검"
+  낮: "정찰·사냥, 열매 채집 조 편성"
+  저녁: "서리말 노래로 아이들 재우기"
+  밤: "동굴 입구에서 불침번 — 거의 자지 않는다"
+places: [늑대굴, 굶주린 언덕 동굴들, 세 소나무 근처 정찰로, 울음 고개 샛길, 옛 수로 출구(버드나무 둑)]
+knows: [fact_gf_sigrid_volk_escape, fact_gf_sigrid_defers_revenge, fact_gb_dietmar_killed_sigrid_two, fact_hg_baug_owns_stonekneed_slaves, fact_gf_greyash_route]
+hides:
+  - fact: fact_gf_wolf_den
+    reveal_when: "신뢰 30 이상 — 무리의 일원으로 인정(뼈 구슬)한 뒤. 식량을 다섯 번 날라 왔다면 조건 −10"
+    cover: "무리는 열둘뿐이고 나머지는 서리 길에서 죽었다고 한다"
+  - fact: fact_gf_egil_family_in_cellar
+    reveal_when: "신뢰 40 이상, 또는 브람이 먼저 말한 뒤"
+    cover: "에길 이야기가 나오면 '서리 길에서 떨어졌다'고 한다"
+  - fact: fact_gf_sigrid_einar
+    reveal_when: "충성 아크 50 — 그녀가 스스로 말한다. 플레이어가 에이나르를 먼저 꺼내면 역린"
+    cover: "동생 이야기가 나오면 '북쪽엔 아무도 안 남았다'고 하고 창을 다시 쥔다"
+  - fact: fact_gf_sigrid_runes
+    reveal_when: "신뢰 50 이상이고 늑대굴 안쪽에 들어온 뒤 — 사망자 이름을 함께 세는 장면"
+    cover: "동굴 벽의 긁힌 자국을 '거인 사냥꾼들 흔적'이라 한다"
 relations:
-- to: npc_bram
-  type: 동지
-  like: 55
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_elsa
-  type: 동지
-  like: 45
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_dietmar
-  type: 원수
-  like: -55
-  trust: -70
-  visibility: 공개
-  memo: 무리원 2명 살해
-  words: null
-- to: npc_hagen
-  type: 불신
-  like: -30
-  trust: -60
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_egil
-  type: 무리원
-  like: 60
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_asta
-  type: 북방의 옛 동료
-  like: 80
-  trust: 85
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_baug
-  type: 옛 주인
-  like: -100
-  trust: -100
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_einar
-  type: 버린 동생(생사 불명)
-  like: 100
-  trust: 100
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_bram, type: 동지, like: 55, trust: 60, visibility: 비밀, memo: null, words: "에길 일가를 맡긴 절름발이. 그 집 지하가 이 마을에서 유일하게 지붕 있는 곳이다"}
+  - {to: npc_elsa, type: 동지, like: 45, trust: 50, visibility: 비밀, memo: null, words: "늪에서 온 노파. 물총새 말뚝과 갈대배. 아이들을 남쪽으로 보낼 길"}
+  - {to: npc_dietmar, type: 원수, like: -55, trust: -70, visibility: 공개, memo: 무리원 2명 살해, words: "하콘과 일바를 죽인 자. 겨울이 지나면 받으러 간다"}
+  - {to: npc_hagen, type: 불신, like: -30, trust: -60, visibility: 공개, memo: null, words: "빵을 들고 웃는 나룻배 사내. 웃는 얼굴로 길을 아는 자는 서리 길에도 있었다 — 그들은 모두 바르그 편이었다"}
+  - {to: npc_egil, type: 무리원, like: 60, trust: 70, visibility: 비밀, memo: null, words: "기침하는 사내와 아이 셋. 겨울 전에 남쪽으로 보내야 할 첫 다섯"}
+  - {to: npc_asta, type: 북방의 옛 동료, like: 80, trust: 85, visibility: 비밀, memo: null, words: "골짜기에 남은 사촌. 남은 노예들의 장로. 그녀가 있어 돌아갈 곳이 아직 있다"}
+  - {to: npc_baug, type: 옛 주인, like: -100, trust: -100, visibility: 공개, memo: null, words: "열다섯 해의 짐. 뼈 구슬을 준 손"}
+  - {to: npc_einar, type: 버린 동생(생사 불명), like: 100, trust: 100, visibility: 비밀, memo: null, words: "'먼저 가'라고 한 아이. 그 목소리를 매일 밤 입구에서 듣는다"}
+  - {to: npc_volk, type: 놓친 사냥꾼, like: -80, trust: 0, visibility: 일방, memo: 쇠송곳니를 기억, words: "서리 길 마지막 이정표에서 일곱을 물어 간 늙은 늑대. 그가 이 언덕에 오는 날을 센다"}
+toward_player: "창을 겨눈다. 질문 셋 — 누구 거냐, 누굴 달고 왔냐, 뭘 가져왔냐. 대답보다 들고 온 것을 본다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["식량 (끼니 50개당 +5)", "무리 아이들 안전 (+25)", "서리말로 말하기 (+15)"]
+  hates: ["무리원을 '짐'이라 부르는 것", "에이나르 이야기 (먼저 꺼낼 때)"]
 roles:
-  teacher: null
-  companion: null
-  romance: null
+  teacher: "야외생존(상한 58), 지구력(62), 서리말(70), 추적·사냥(50). 조건: 무리를 위해 사냥 또는 식량 운반 5회. 수업료: 식량"
+  companion: "가능(핵심 동료). 충성 아크: 0 경계 → 30 무리의 일원 인정(뼈 구슬 하나) → 50 에이나르 고백, 서리 길 귀환 퀘스트 → 70 '무리를 네게 맡긴다'(지휘권 공유, 계승 가능). 배신: 플레이어가 무리를 위험에 버리면 즉시 이탈, 회복 불가"
+  romance: "가능 — 호감 75 + 에이나르 퀘스트 완료. 결혼은 모르바 또는 자유촌에서만 (제국 안에선 주인 허가가 필요한데, 그녀에겐 주인이 없다)"
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 무리 47명, 굶주린 언덕에 숨은 지 12일째, 버린 에이나르, 디트마르에게 잃은 둘, 겨울 식량 340끼니"
+    - "낙엽월 25일 볼크의 대수색이 굶주린 언덕에 온다"
+    - "처음 만나는 셋째에게 같은 세 질문을 같은 순서로 한다"
+  flow:
+    - "낙엽월 8~12일 사이 셋째와 처음 마주친다 — 대개 언덕 남사면 덫 근처에서"
+    - "서리월 3일 마지막 탈주자 열둘이 물빼기 굴로 들어올 때 마중을 나간다 — 넷이 얼어 죽는다"
+    - "서리월 초 무리가 90명 가까이 불어난다 — 끼니 셈이 무너진다"
+  drift:
+    - "그날 어느 동굴에서 불침번을 서는지"
+    - "덫에 무엇이 걸리는지"
+    - "아이들에게 어느 노래를 부르는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "무리원을 '짐'이라 부르지 않는다"
+  - "에이나르 이야기를 스스로 먼저 꺼내지 않는다 (아크 50 이전)"
+  - "용인·거인 앞에서 고개를 숙이지 않는다"
+  - "늑대굴 위치를 신뢰하지 않는 자에게 말하지 않는다"
+on_death: "북방 탈주자 무리 지휘 붕괴 → 디트마르가 흡수(폭력화) 또는 산개(아사). 북방 대탈주 클락 '학살' 쪽 +1. 아스타가 소식을 들으면 흐로스가르드 노예 봉기 결심"
+story_seeds:
+  - "1,200끼니. 토마스의 숨긴 곡물이면 600끼니가 된다 — 그러나 그것은 브람의 입막음 값이기도 하다"
+  - "에이나르는 살아서 돌무릎 골짜기에 돌아가 있다 (fact_hg_einar_alive). 그녀는 모른다 — 서리 길 귀환 퀘스트의 끝"
+  - "그녀는 서리말 룬을 쓸 줄 안다 — 이 마을에서 오스릭 말고 글자를 쓰는 또 한 사람이다"

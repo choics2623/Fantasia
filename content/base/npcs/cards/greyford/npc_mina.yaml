@@ -1,60 +1,96 @@
 id: npc_mina
 name: 미나
-aka: []
+aka: [방앗간 꼬마, 작은 유령]
 tier: B
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 12
 region: 회색여울 변경
-home: null
-job: 방앗간
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+home: 물레방아간 (아버지 토마스와)
+job: 방앗간 — 토마스의 딸, 오스릭의 몰래 제자
+rank: 레이번가 노예의 아이
+summary: 오스릭에게 글자 27개를 배운 방앗간 아이. 흙바닥에 쓴 글자를 지우는 걸 자주 잊는다
+source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다 (R02-25)
+life:
+  - {year: 300, age: 0, event: "물레방아간에서 태어남"}
+  - {year: 305, age: 5, event: "어머니가 겨울 열병으로 죽음. 그 뒤로 아버지와 단둘"}
+  - {year: 309, age: 9, event: "교리 문답을 핑계로 예배당에 다니다 오스릭에게 글자를 배우기 시작함"}
+  - {year: 311, age: 11, event: "글자 스무 개. 아버지가 밤에 맷돌 받침 아래로 자루를 내리는 것을 봤다. 묻지 않았다"}
+  - {year: 312, age: 12, event: "글자 스물일곱 개. 서른 개가 되면 아버지 이름을 써 주기로 혼자 정했다"}
+appearance:
+  - "머리카락에 늘 밀가루 — 아버지처럼 하얗다"
+  - "손가락 끝이 흙에 닳아 거칠다 — 바닥에 글자를 쓰는 손"
+  - "앞치마 주머니에 끝이 뾰족한 나뭇가지 하나"
+smell: "밀가루, 물레바퀴의 젖은 이끼"
+voice_sound: "맑고 또박또박한 목소리. 낱말을 소리마다 끊어 말해 보는 버릇이 있다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 25, 자비: 50, 정직: 30, 신앙: 15, 탐욕: 0, 충성: 60}
+  temperament: [호기심, 영리, 덜렁]
+  habits:
+    - "손가락으로 아무 데나 글자를 쓴다 — 흙바닥, 밀가루, 김 서린 물통"
+    - "쓴 글자를 지우는 것을 자주 잊는다"
+    - "낱말을 소리마다 끊어 발음해 본다 — '빠-앙'"
+  values: "글자. 아버지"
+  fears: [아버지가 밤마다 깨는 것, 즈닉의 계량 검사, 글자가 사형감이라는 것 — 머리로는 안다]
   desires:
-    short: null
-    long: null
+    short: "글자 서른 개를 채우는 것"
+    long: "아버지 이름을 써 주는 것. 아버지는 자기 이름이 어떻게 생겼는지 모른다"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·크릭 앞에서는 입을 꼭 다문다 — 아버지가 그렇게 시켰다"
+    to_equal: "반말. 질문이 끝이 없다"
+    to_inferior: "더 어린아이들에게 누나처럼 반말. 바닥에 그림을 그려 준다"
+    to_player_default: "해요체. 호기심 — 글자를 아는 사람인지 떠본다"
+  tics: ["낱말을 소리마다 끊어 말한다 — '빠-앙.'"]
+  use: [글자, 소리, 빵, 물, 아빠, 맷돌]
+  avoid: ["오스릭의 이름 (밖에서는 '사제님')", 두 번째 바닥]
+  length: "보통. 신나면 길다. 겁나면 한 낱말"
+  samples:
+    - {situation: 첫 만남, line: "밀가루 묻어요. …발밑 조심해요. 거기 밟지 마요. 아무것도 아니에요. 그냥 금이에요."}
+    - {situation: 호의, line: "이거 봐요. '빵'. 소리가 세 개예요. 빠, 아, 앙. 빵을 쓸 수 있으면 배가 조금 덜 고파요."}
+    - {situation: 겁먹었을 때, line: "즈닉이 와요! 바닥— 바닥 문질러요, 빨리!"}
+    - {situation: 거짓말할 때, line: "그거요? 쥐 발자국이에요. 방앗간엔 쥐가 많아요."}
+    - {situation: 비밀 누설, line: "스물일곱 개 알아요. 서른 개가 되면 아빠 이름을 써 줄 거예요. 아빠는 자기 이름이 어떻게 생겼는지 몰라요."}
+    - {situation: 회귀자를 의심할 때, line: "그 글자 어떻게 알아요? 이건 사제님이랑 나만 아는 건데."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
+  아침: "방앗간 청소, 곡물 자루 꿰매기"
+  낮: "아버지 곁. 즈닉의 계량 검사 때는 다락으로 올라간다"
+  저녁: "아버지와 식사"
+  밤: "주 1~2회 교리 문답을 핑계로 예배당에서 글자 수업"
+places: [물레방아간, 방앗간 다락, 사슬등불 예배당]
 knows: []
-hides: []
-relations: []
-toward_player: null
+# TODO-FACT: 토마스의 '두 번째 바닥'(맷돌 받침 아래 보리 14섬) — 미나도 안다. 토마스 작가의 사실 id가 생기면 hides로 연결 (cover: "다락으로 올라가 버린다")
+hides:
+  - fact: fact_gb_mina_letters
+    reveal_when: "호감 30 이상, 또는 플레이어가 먼저 글자를 써 보인 뒤 — 아이라서 금방 자랑한다"
+    cover: "바닥의 금은 '쥐 발자국'이라 한다"
+relations:
+  - {to: npc_thomas, type: 아버지, like: 95, trust: 85, visibility: 공개, memo: null, words: "밀가루 유령 아빠. 밤마다 깨서 맷돌 쪽을 본다. 내 글자 때문인 것도 안다"}
+  - {to: npc_osric, type: 글자 스승, like: 80, trust: 75, visibility: 비밀, memo: null, words: "사제님. 글자를 하나 줄 때마다 손이 떨린다. 나는 안 떨린다"}
+  - {to: npc_fayne, type: 다락의 오빠, like: 40, trust: 30, visibility: 공개, memo: null, words: "다락에 사는 오빠. 내 흙바닥 글자를 몰래 본다. 모른 척해 준다"}
+toward_player: "호기심. 밀가루를 털어 주며 말을 건다. 글자를 아는 낌새가 보이면 눈이 반짝인다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["글자 하나", "아버지를 지켜 주겠다는 말", "빵"]
+  hates: ["글공부를 입에 올려 아버지를 겁주는 것", "바닥 금을 남 앞에서 가리키는 것"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점에 글자 27개를 안다 (회귀점의 사실). 다른 회차에 서른한 개를 배웠어도 다시 스물일곱이다"
+    - "서리월 20일 즈닉의 곡물 수색 — 방앗간이 첫 대상이고, 그날 그녀는 다락에 있다"
+  drift:
+    - "그날 바닥에 남기고 잊는 낱말 — 빵, 물, 아빠"
+    - "즈닉의 계량 검사 날 바닥에 '빵'이 남아 있는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "용인·크릭 앞에서 글자를 안다는 것을 드러내지 않으려 한다 — 그러나 아이라서 실수한다"
+  - "지난 회차를 기억하지 않는다"
+  - "두 번째 바닥 이야기를 먼저 꺼내지 않는다"
+on_death: "토마스가 무너진다 — 숨긴 곡물을 지킬 이유를 잃는다. 오스릭의 제자 하나가 사라진다 ('글' 단계 진행 −)"
+story_seeds:
+  - "즈닉의 계량 검사 날, 방앗간 바닥에 '빵'이라는 글자가 남아 있다. 즈닉은 글을 모른다 — 그러나 금은 본다"
+  - "긴 회차에 셋째에게 글자 서른한 개를 배운 미나. 회귀하면 다시 스물일곱이다 — 회차 기록 「그 회차에 세운 것」에만 남는다 (14 §6.6)"

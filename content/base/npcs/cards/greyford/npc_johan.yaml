@@ -1,102 +1,114 @@
 id: npc_johan
 name: 요한
-aka: []
+aka: [노래하는 요한, 목패 순례자]
 tier: A
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 23
 region: 회색여울 변경
-home: null
+home: 순례자 헛간 (회색여울 체류 시) — 회색여울 → 바알카르 → 루멘을 40일 주기로 돈다
 job: 노래하는 순례자 (소문 운반자)
-rank: null
-summary: 순종의 빛 허가 찬송 순례자(통행 허가 목패 소지 — 인간에게 드문 이동권)
+rank: 순종의 빛 허가 찬송 순례자 (통행 허가 목패 소지 — 인간에게 드문 이동권), 형식상 루멘 교단 소유
+summary: 길 위에서 소문과 찬송을 나르는 수다스러운 청년. 자기가 나르는 노래 속에 무엇이 들었는지, 누구에게 보고하는지 반만 안다
 source: docs/world/CHARACTERS.md:774
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 289, age: 0, event: "용주 역참 마구간 노예의 아들로 태어남"}
+  - {year: 296, age: 7, event: "열병을 앓고 왼쪽 귀가 들리지 않게 됨. 그 뒤로 고개를 오른쪽으로 기울이고 산다"}
+  - {year: 304, age: 15, event: "역참에 묵던 교단 사제가 그의 노래를 듣고 루멘 교단에 사들임. 대성당 뒤 성가 막사에서 자람"}
+  - {year: 307, age: 18, event: "허가 찬송 순례자로 뽑혀 목패를 받음. 길: 회색여울 → 바알카르 → 루멘. 고해 사제 펠릭스가 '길에서 들은 것을 빠짐없이 말하라'고 일렀다"}
+  - {year: 308, age: 19, event: "첫 순례로 회색여울에 옴. 사슬등불 예배당의 오스릭 사제가 그를 붙잡고 찬송 일곱 곡을 새로 가르침 — '셋째 줄을 틀리지 마라'"}
+  - {year: 309, age: 20, event: "루멘 순례자 숙소 '등불 없는 집'의 아그네스 수녀에게 오스릭의 '안부'를 처음 전함"}
+  - {year: 311, age: 22, event: "성채 부엌에서 하녀 사라에게 노래를 가르치다 마음을 품음. 그녀가 노래할 때 등이 펴지는 것을 보았다"}
+  - {year: 312, age: 23, event: "여름, 바알카르 순례길에서 순례자 이졸을 만나 루멘까지 함께 걸음. 낙엽월 1일 현재 회색여울 체류 중 — 12일에 떠난다"}
+appearance:
+  - "맑은 고음. 노래할 때 목의 핏줄이 푸르게 선다"
+  - "허가 목패를 가죽끈으로 손목에 묶어 잘 때도 풀지 않는다"
+  - "한쪽 귀가 들리지 않아 늘 고개를 오른쪽으로 기울인다"
+smell: "길먼지와 젖은 양모 망토, 순례자 헛간의 짚"
+voice_sound: "밝고 높은 목소리. 말할 때도 반쯤 노래하듯 끝을 올린다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 5, 자비: 40, 정직: 45, 신앙: 55, 탐욕: -20, 충성: 35}
+  temperament: [수다, 순진, 독실]
+  habits:
+    - "말 사이사이 찬송 한 소절을 흥얼거린다 — 대개 셋째 줄에서 멈춘다"
+    - "말을 걸어온 사람의 오른쪽으로 돌아 선다 — 들리는 귀 쪽으로"
+    - "손목의 목패를 엄지로 문지른다. 검문 앞에서는 더 자주"
+  values: "노래. 길. 신이 듣는 노래가 있다는 믿음"
+  fears: [목패를 잃는 것, 노래가 거짓말이 되는 것, 사라가 어딘가로 '데려가지는' 것]
   desires:
-    short: null
-    long: null
+    short: "루멘 성 마렌 축일(꽃월) 합창단에 뽑히기"
+    long: "'진짜로 신이 듣는 노래'를 부르는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·사제에게는 공손한 하옵니다체 — 그러나 금방 신이 나서 말이 길어진다"
+    to_equal: "농노·순례자에게도 해요체. 인간에게 반말하지 않는 몇 안 되는 인간"
+    to_inferior: "아이들에게도 해요체를 섞은 다정한 말. 노래로 가르친다"
+    to_player_default: "개방적이고 수다스럽다(호감 +10). 묻지 않은 소식부터 늘어놓는다"
+  tics: ["'들었어요?'", "(흥얼) '…열이틀째 등불 셋 아래…'"]
+  use: [노래, 길, 소식, 빛, 줄(가사의 줄), 목패, 다리]
+  avoid: [욕, 거짓말(그는 거짓말을 잘 못한다 — 하면 노래로 돌린다), 펠릭스에 대한 의심(아직 모른다)]
+  length: "길다. 소식 하나에 소식 셋이 따라온다. 겁먹으면 노래로 말한다"
+  samples:
+    - {situation: 첫 만남, line: "길 위에선 다들 친구죠! 바알카르 소식 들었어요? 용황께서 기침을 하시면 강물이 끓는대요."}
+    - {situation: 호의, line: "이 노래 셋째 줄, 이상하지 않아요? '열이틀째 등불 셋 아래' — 늘 궁금했어요."}
+    - {situation: 적대, line: "당신은 노래를 모르는군요. 노래는 거짓말을 못 해요. 사람이 하죠."}
+    - {situation: 거래, line: "까마귀 문까지 뭘 전해 달라고요? 목패가 있으면 다리 하나는 건너요. 근데… 저 그거 펠릭스 사제님께 말씀드려야 하는 건가요? 다 말씀드리는 게 순례자 일이라서요."}
+    - {situation: 거짓말할 때, line: "품에 든 거요? 그, 그냥 찬송 적은… 아니, 저는 글을 모르죠. 그러니까 이건 찬송이 아니고… (흥얼거린다)"}
+    - {situation: 겁먹었을 때, line: "검문에서 목패를 두 번 봤어요. 두 번이요. 처음엔 한 번만 보거든요. 제 얼굴이 뭐가 달라졌을까요?"}
+    - {situation: 위기, line: "목패를 가져가세요! 순례 목패면 다리 하나는 건널 수 있어요! 저는… 노래하면서 버틸게요."}
+    - {situation: 비밀 누설, line: "펠릭스 사제님께 다 말씀드렸어요. 늘 그래 왔는데… 그게 무슨 뜻이었는지 이제야 알겠어요."}
+    - {situation: 사라 이야기가 나왔을 때, line: "사라 누나는 노래할 때 등이 펴져요. 그거 알아요? 그 순간에만요. 그래서 저는 노래를 자꾸 가르쳐요."}
+    - {situation: 떠나는 날, line: "열이틀이에요. 떠나는 날이요. 노래 하나 두고 갈게요 — 애들이 따라 부르면 돼요. 뜻은 몰라도 돼요."}
+    - {situation: 회귀자를 의심할 때, line: "그 줄을 어떻게 알아요? 그건 오스릭 사제님이 저한테만… 아, 아니에요. 노래는 원래 다들 아는 거죠. 그렇죠?"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "예배당에서 찬송 (회색여울 체류 시)"
+  낮: "들판을 돌며 찬송 — 노동요 겸. 막사 순회"
+  저녁: "절름발이 수탉에서 '다른 마을 이야기'"
+  밤: "순례자 헛간에서 잠. 오스릭의 예배당에 늦게까지 남기도 한다"
+places: [순례자 헛간, 사슬등불 예배당, 절름발이 수탉, 들판, 성채 부엌, 순례길(까마귀 문·용주 역참·바알카르·루멘)]
+knows: [fact_gf_johan_reports_felix]
+hides:
+  - fact: fact_gf_johan_hymn_cipher
+    reveal_when: "충성 아크 30 — 암호 찬송의 의미를 함께 해독하는 장면. 그는 반만 알고, 나머지 반은 플레이어와 함께 알아낸다"
+    cover: "셋째 줄이 이상하다는 이야기를 스스럼없이 하고, 뜻은 정말로 모른다고 한다"
+  - fact: fact_gf_osric_letter_copies
+    reveal_when: "신뢰 50 이상, 또는 오스릭이 플레이어를 '말 없는 형제'로 받아들인 뒤"
+    cover: "오스릭 사제님이 맡긴 '루멘 수녀님께 드릴 안부'라고만 한다 — 그 안부가 무엇인지 그도 다 알지는 못한다"
 relations:
-- to: npc_osric
-  type: 스승
-  like: 60
-  trust: 65
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_agnes
-  type: 루멘 쉼터
-  like: 50
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_felix
-  type: 고해 사제
-  like: 20
-  trust: 40
-  visibility: 공개
-  memo: 밀고자인 줄 모름
-  words: null
-- to: npc_sara
-  type: 연정
-  like: 55
-  trust: 30
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_owen_raven
-  type: 모르는 연적
-  like: 0
-  trust: 0
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_isol
-  type: 길동무
-  like: 15
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_osric, type: 스승, like: 60, trust: 65, visibility: 공개, memo: null, words: "셋째 줄을 틀리지 말라던 사제. 왜 셋째 줄인지 묻지 않았다 — 물으면 대답해 줄 사람이라서 더 못 물었다"}
+  - {to: npc_agnes, type: 루멘 쉼터, like: 50, trust: 50, visibility: 비밀, memo: null, words: "웃음 큰 수녀. 오스릭의 안부를 받으면 그날 밤 지하 저장고에 오래 내려가 있다"}
+  - {to: npc_felix, type: 고해 사제, like: 20, trust: 40, visibility: 공개, memo: 밀고자인 줄 모름, words: "길에서 들은 것을 다 말하라던 사제. 말하면 마음이 가벼워진다 — 그래서 다 말한다"}
+  - {to: npc_sara, type: 연정, like: 55, trust: 30, visibility: 일방, memo: null, words: "노래할 때만 등이 펴지는 사람. 그녀에게 노래를 가르치는 동안은 길이 짧다"}
+  - {to: npc_owen_raven, type: 모르는 연적, like: 0, trust: 0, visibility: 일방, memo: null, words: "성채의 도련님. 이름만 안다"}
+  - {to: npc_isol, type: 길동무, like: 15, trust: 20, visibility: 공개, memo: null, words: "여름 순례길의 동무. 기도를 아주 열심히 한다 — 그리고 아이들 눈을 오래 본다. 축복이라고 했다"}
+toward_player: "개방적이고 수다스럽다. 처음 본 사람에게 바깥 소식부터 늘어놓는다. 들은 것은 — 악의 없이 — 다음 고해에서 다 말한다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["노래·신앙 이야기", "바깥 세상 소식"]
+  hates: ["찬송을 조롱하는 것"]
 roles:
-  teacher: null
-  companion: null
-  romance: null
+  teacher: "화술(상한 40), 지구력(35), 학식(지리, 15). 조건: 함께 걷기. 수업료 없음"
+  companion: "가능(순례 동행). 충성 아크: 0 수다 → 30 암호 찬송의 의미를 함께 해독 → 50 펠릭스의 밀고를 알고 충격 → 70 '진짜 노래' — 이름 없는 자들의 찬가를 부르기로 결심. 배신: 무지한 상태에서의 정보 누출(아크 50 전까지 자동)"
+  romance: "가능 — 호감 70, 신앙 성향 차이 40 이하"
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일부터 12일까지 회색여울에 있다. 12일 아침 까마귀 문 → 용주 역참 순회로 떠나며 노래 하나를 남긴다"
+    - "서리월 20일~긴밤월 10일, 굶주림월 20일~재의 날에 다시 회색여울에 머문다"
+    - "회귀점의 사실: 찬송 일곱 곡의 암호, 펠릭스에게 해 온 보고, 사라에 대한 마음"
+  drift:
+    - "수탉 저녁에 어느 마을 이야기를 하는지"
+    - "떠나는 날 남기는 노래가 일곱 곡 중 어느 것인지"
+    - "들판에서 어느 조와 함께 찬송하는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "인간에게도 반말하지 않는다 (해요체)"
+  - "거짓말을 잘 못한다 — 거짓말을 해야 할 때 말이 꼬이고 노래로 돌린다"
+  - "아크 50 전까지 펠릭스를 의심하지 않는다"
+  - "목패를 손목에서 풀지 않는다"
+on_death: "회색여울↔루멘 끊어진 고리 연락선 단절(40일). 그의 노래는 마을에 남는다 — 아이들이 암호인 줄 모르고 부른다"
+story_seeds:
+  - "다음 순례에 필사본 3부를 품고 간다. 까마귀 문 검문, 바알카르 수색, 루멘 고해 — 세 관문"
+  - "그가 펠릭스에게 '다 말한' 것 속에 오스릭의 이름이 있다면 — 마테우스의 사람이 회색여울로 온다"
+  - "그는 이졸을 좋은 길동무라 믿는다. 그가 이졸에게 한 수다는 탑의 장부로 간다"
+  # TODO-FACT: 펠릭스가 루멘 정화청 밀고자라는 사실 (루멘 작가 소관)

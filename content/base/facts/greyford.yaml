@@ -25,3 +25,331 @@
   truth: true
   danger: 2
   names: [하겐, 볼크]
+
+# ── 이하 카드 작가 A (영주·성채·국경·조합·마을 핵심 16인) 추가분 ──
+
+# 고드릭 레이번
+- id: fact_gf_godric_debt
+  text: "고드릭 레이번은 세렌 몬달리 은행에 오르셀가를 거쳐 1,840 두카트를 빚졌다. 채권 대리인은 세베로 칼레스, 영지 전체가 담보이고 만기는 AS 313 포도월 30일이다"
+  truth: true
+  danger: 3
+  names: [세베로, 몬달리, 오르셀]
+- id: fact_gf_serf_sale_contract
+  text: "고드릭은 세베로 칼레스에게 농노를 판다. 1차 40명은 서리월 9일, 2차 31명은 굶주림월 3일 용의 대로로 호송된다(바알카르 사슬 부두를 거쳐 세렌 소금 나루). 성인 1명 3비늘, 숙련자 6비늘"
+  truth: true
+  danger: 3
+  names: [세베로]
+- id: fact_gf_godric_sold_37
+  text: "고드릭은 AS 311 겨울부터 이미 농노 37명을 기록 없이 세렌 쪽에 팔았다. 국유 노예 배당분의 무단 매각은 영지 몰수 사유다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_sara_on_sale_list
+  text: "2차 매각 명단 31명 안에 성채 하녀 사라가 있다. 세베로가 '젊고 글자 모르는 깨끗한 여자'를 지정했다"
+  truth: true
+  danger: 4
+  names: [사라, 세베로]
+- id: fact_gf_godric_henrik_headcount
+  text: "고드릭은 헨릭과 짜고 인두세 머릿수를 400이 아니라 352로 바알카르에 신고하고, 차액 48명분을 반씩 나눈다고 믿는다"
+  truth: true
+  danger: 3
+  names: [헨릭]
+- id: fact_gf_keep_strongbox
+  text: "레이번 성채 서재 금고(열쇠는 고드릭의 목걸이)에 매각 명단, 빚 증서, 세베로와의 계약서가 있다. 증서를 태워도 세렌에 사본이 있다"
+  truth: true
+  danger: 3
+  names: [세베로]
+
+# 오웬 레이번
+- id: fact_gf_owen_poems
+  text: "오웬은 사라에게 쓴 용언 연애시 14편을 성채 북탑 침대 밑 상자에 숨겨 두었다. 사라는 그 글자를 읽지 못한다"
+  truth: true
+  danger: 2
+  names: [사라]
+- id: fact_gf_owen_letter_kaspar
+  text: "오웬이 카스파르에게 '인간도 이름을 가질 수 있느냐'고 편지를 보냈고, 카스파르의 답장은 레아가 가로채 보관하고 있다"
+  truth: true
+  danger: 3
+  names: [카스파르, 레아]
+
+- id: fact_gf_owen_suspects_debt
+  text: "오웬은 세렌 사자가 성채 회랑에서 '담보'라고 말하는 것을 엿들었다. 아버지의 빚을 어렴풋이 알지만 액수는 모른다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_gf_owen_wrote_kaspar
+  text: "오웬은 레아 편에 카스파르에게 '인간도 이름을 가질 수 있느냐'고 묻는 편지를 보냈다. 답장은 오지 않았다"
+  truth: true
+  danger: 3
+  names: [카스파르]
+# 헨릭
+- id: fact_gf_henrik_skims_baron
+  text: "헨릭은 머릿수 차액 48명분을 남작과 반씩 나누는 척하며 실제로는 3분의 2를 챙긴다. 실제 장부(400명)는 징세소 다락 마루 밑에 있다"
+  truth: true
+  danger: 4
+  names: [고드릭]
+- id: fact_gf_henrik_granary_skim
+  text: "영주 곡창의 실제 저장량은 장부의 70%다. 헨릭이 국경군 납품분 일부를 용주 역참의 용인 상인 도르반에게 팔았다"
+  truth: true
+  danger: 3
+  names: [도르반]
+- id: fact_gf_henrik_sold_debt_info
+  text: "헨릭은 남작의 빚 상황을 레아에게 팔았고, 그 정보는 멜리산드 쪽으로 흘러갔다"
+  truth: true
+  danger: 3
+  names: [레아, 멜리산드]
+- id: fact_gf_henrik_seren_account
+  text: "헨릭은 올해 착복분 42비늘을 세베로를 창구로 세렌 은행 비밀 계좌에 보내고 있다. 루멘 근처 포도밭을 사서 은퇴할 생각이다"
+  truth: true
+  danger: 3
+  names: [세베로]
+
+# 레아
+- id: fact_gf_lea_melisande_spy
+  text: "레아는 AS 300부터 멜리산드의 첩자다. 잃은 오른손 검지와 중지는 카스파르를 지키다 잃은 것이 아니라 멜리산드에게 바친 충성 증표다"
+  truth: true
+  danger: 5
+  names: [멜리산드]
+- id: fact_gf_lea_report_route
+  text: "레아는 까마귀 문 비둘기장에서 열흘에 한 번 잿불 언덕으로 전서구를 날리고, 매월 25일 용주 역참 우편함에 용언 보고서를 남긴다"
+  truth: true
+  danger: 4
+  names: []
+
+# 카스파르
+- id: fact_gf_kaspar_nameless_contact
+  text: "카스파르는 엘사를 통해 2년째 이름 없는 자들과 접촉하며 탈주자 수송을 세 번 눈감아 주었다. 매월 15일 보급 회의 귀로에 옛 돌 고리 3번 돌 틈에서 전갈을 주고받는다"
+  truth: true
+  danger: 5
+  names: [엘사]
+- id: fact_gf_kaspar_fire_309
+  text: "AS 309 까마귀 문 짐꾼 막사 화재는 분노한 카스파르의 왼팔에서 번진 불이었다. 두 명이 죽었고 '등잔 사고'로 처리되었다"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_gf_kaspar_mother_words
+  text: "카스파르의 어머니 엘레나는 죽기 전 아들에게 '너는 끝나지 않을 것이다'라고 말했다. 카스파르는 그것이 금기의 문구임을 안다"
+  truth: true
+  danger: 4
+  names: [엘레나]
+- id: fact_gf_kaspar_slave_tongue
+  text: "카스파르는 어머니에게서 노예말을 배워 알아듣고 말할 줄 안다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_gf_crowgate_drain
+  text: "까마귀 문 북문 옆 물빼기 굴(폭 0.8m)로 사람이 드나들 수 있다. 카스파르는 알면서 막지 않는다"
+  truth: true
+  danger: 4
+  names: []
+
+# 즈닉
+- id: fact_gf_znik_anne
+  text: "어린 즈닉을 돌본 인간 노예 여인 앤은 즈닉이 '빵을 어디서 났는지' 주인에게 말한 탓에 처형되어 오물 습지 처형터에 묻혔다. 즈닉은 그 일을 인간을 증오하는 이유로 바꿔 기억한다"
+  truth: true
+  danger: 2
+  names: [앤]
+- id: fact_gf_znik_wet_himself
+  text: "즈닉은 고드릭 앞에서 겁에 질려 오줌을 지린 적이 있다. 마르타가 그것을 보았다"
+  truth: true
+  danger: 2
+  names: [마르타]
+- id: fact_gf_znik_sells_to_hagen
+  text: "즈닉은 하겐에게 탈주자 위치를 1명당 2발톱에 판다"
+  truth: true
+  danger: 3
+  names: [하겐]
+
+# 볼크
+- id: fact_gf_volk_human_mother
+  text: "볼크는 어릴 때 첫 무리를 잃고 인간 노예 여인에게 길러졌다. 그 여인은 탈주하다 다른 바르그에게 잡혀 죽었다. 그래서 그는 잔향만은 산 채로 잡으려 하고, 해마다 아이 하나를 '놓친' 것으로 보고한다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_gf_volk_sweep_contract
+  text: "볼크는 고드릭과 북방 탈주자 일괄 소탕 계약(1명당 1비늘, 총 60비늘)을 맺으려 한다"
+  truth: true
+  danger: 2
+  names: [고드릭]
+
+# 브란
+- id: fact_gf_bran_spearheads
+  text: "브란은 대장간 슬래그 더미 아래 기름 먹인 자루 셋에 쟁기날로 위장한 창날 23개와 단검 4자루를 숨겼다. 쇠 무게 검사를 속이려고 낫마다 0.5돈씩 쇠를 깎아 모은다"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_gf_bran_greta_taken
+  text: "브란의 아내 그레타는 AS 305 고드릭의 손님인 용인 귀족에게 '빌려간다'며 마차에 실려 간 뒤 돌아오지 않았다"
+  truth: true
+  danger: 1
+  names: [그레타]
+# 오스릭
+- id: fact_gf_osric_broken_ring
+  text: "오스릭은 지하 신도회 끊어진 고리의 회색여울 책임자다. 회원 11명이 안식일 밤 22시 예배당 납골실에서 빛의 서신 구절을 외운다"
+  truth: true
+  danger: 5
+  names: [알베릭]
+- id: fact_gf_osric_teaches_letters
+  text: "오스릭은 성채 하녀 사라와 토마스의 딸 미나에게 글자를 가르쳤다(사라 31자). 그것만으로 셋 다 사형감이다"
+  truth: true
+  danger: 5
+  names: [사라, 미나]
+- id: fact_gf_osric_letter_copies
+  text: "예배당 납골실 벽감에 오스릭의 글씨로 쓴 빛의 서신 필사본이 있다. 그는 필사본 3부를 요한 편에 루멘의 아그네스에게 보내려 한다"
+  truth: true
+  danger: 5
+  names: [요한, 아그네스]
+- id: fact_gf_martha_confession
+  text: "성 마렌 축일(AS 311)에 마르타가 오스릭에게 '나는 죽인 사람을 셀 수 있습니다'라고 고해했다"
+  truth: true
+  danger: 3
+  names: [마르타]
+
+# 마르타
+- id: fact_gf_martha_swapped_list
+  text: "2차 매각 명단 초안의 마지막 줄에는 원래 마르타의 딸 리즈가 있었다. 포도월 그믐 밤 마르타가 서재에서 그 이름을 긁어내고, 하인 명부에서 본 '사라' 두 글자의 모양을 베껴 넣었다. 마르타는 글을 읽지 못한다 — 모양만 옮겼다"
+  truth: true
+  danger: 5
+  names: [리즈, 사라]
+- id: fact_gf_martha_23
+  text: "마르타의 밀고로 처형된 인간은 23명이다. 그녀는 그 이름을 전부, 순서대로 외운다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_gf_martha_pact
+  text: "고드릭은 마르타가 밀고 100건을 채우면 리즈를 '자유민 대우' 하녀로 루멘 교단에 보내기로 약속했다. 회귀점 현재 87건이다"
+  truth: true
+  danger: 3
+  names: [리즈]
+- id: fact_gf_martha_ring_house
+  text: "마르타는 목줄장을 7대째 낸 고리집 사람이며 바알카르 수석 목줄장 에베르트의 조카딸이다. 집안 규약 셋째 조 '한 해에 하나를 놓아준다'를 올해 아직 쓰지 않았다"
+  truth: true
+  danger: 2
+  names: [에베르트]
+- id: fact_gf_martha_elsa_deals
+  text: "마르타는 에베르트 몰래 엘사와 두 번 거래한 적이 있다"
+  truth: true
+  danger: 4
+  names: [엘사, 에베르트]
+
+# 하겐
+- id: fact_gf_hagen_killed_ulf
+  text: "AS 310 하겐은 거래 현장을 본 양치기 울프의 목을 졸라 여울강에 던지고 '탈주자 짓'으로 소문냈다. 그날 은니 씌우개 한 귀퉁이가 깨져 나갔다. 페인이 갈대숲에서 보았다"
+  truth: true
+  danger: 5
+  names: [울프, 페인, 이르마]
+- id: fact_gf_hagen_sells_runaways
+  text: "하겐은 탈주자 '안내인'을 가장해 지금까지 19명을 바르그에게 팔았다. 세 소나무 그루터기에 매듭 끈으로 수와 위치를 남기고, 송곳니 불이나 굶주린 언덕 동쪽 계곡에서 넘긴다"
+  truth: true
+  danger: 4
+  names: [볼크]
+- id: fact_gf_hagen_hut_cache
+  text: "하겐의 나루 헛간 마루 밑 상자에 은화 19발톱과 비늘 1개, 바르그 조합의 송곳니 표식 패(밀고자 증표)가 있다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_hagen_sigrid_price
+  text: "하겐은 시그리드 무리의 위치를 통째로 볼크에게 넘기면 15비늘을 받기로 했다. 아직 늑대굴 입구를 찾지 못했다"
+  truth: true
+  danger: 4
+  names: [시그리드, 볼크]
+
+# 시그리드
+- id: fact_gf_wolf_den
+  text: "시그리드 무리는 굶주린 언덕 늑대굴(입구를 가시덤불로 막은 가장 깊은 동굴)과 동굴 세 곳에 숨어 있다. 회귀점에 47명, 숨은 지 12일째"
+  truth: true
+  danger: 5
+  names: [시그리드]
+- id: fact_gf_sigrid_einar
+  text: "시그리드는 서리 길을 넘다 낙오자 셋을 버렸다. 그중 하나가 남동생 에이나르다. 생사는 모른다"
+  truth: true
+  danger: 2
+  names: [에이나르]
+- id: fact_gf_sigrid_runes
+  text: "늑대굴 벽에 시그리드가 서리말 룬으로 새긴 사망자 명단 37명이 있다. 그녀는 룬을 쓸 줄 안다(재의 법 위반)"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_sigrid_volk_escape
+  text: "AS 309 해빙월, 볼크가 서리 길에서 시그리드 일행을 쫓아 다른 이들을 잡고 그녀만 놓쳤다. 그녀는 그의 쇠송곳니를 기억한다"
+  truth: true
+  danger: 1
+  names: [볼크]
+- id: fact_gf_sigrid_defers_revenge
+  text: "디트마르 무리가 식량을 빼앗다 시그리드 무리원 둘을 죽였다. 시그리드는 무리가 겨울을 넘길 때까지 복수를 미루고 있다"
+  truth: true
+  danger: 2
+  names: [디트마르]
+
+# 엘사
+- id: fact_gf_elsa_nameless
+  text: "엘사는 이름 없는 자들의 회색여울 연락책(심지)이다. 오두막 뒤 파란 깃털 물총새 말뚝이 잿빛 실 회색여울 매듭의 입구다"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_gf_greyash_route
+  text: "잿빛 실 회색여울 매듭: 물총새 말뚝에서 암호('여울은 얕은가?' / '얕아도 차갑다.') 또는 잿빛 표 → 밤에 수탉 지하 은신방 → 옛 수로 230m를 기어 버드나무 둑 → 엘사의 갈대배로 오물 습지 → 검은 굴뚝 숯막. 약 6~8일"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_gf_elsa_swamp_witch
+  text: "엘사는 모르바 늪 마녀 회합 쑥 계보 출신으로 여덟째 자리에 오를 예정이었으나, AS 270 당시 첫째 노파와 다툰 끝에 늪을 떠났다. 빌린 혈명 주술을 42년간 세 번만 썼다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_elsa_burned_children
+  text: "AS 261 바알카르에서 엘사가 재열병 자국 때문에 잔향 징후자로 몰려 늪으로 달아난 해, 그녀 대신 징후자 아이 셋이 불탔다. 그녀는 그 이름을 외운다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_gf_elsa_midwife_kaspar
+  text: "AS 277 바알카르 궁에서 노예 엘레나가 카스파르를 낳을 때 아이를 받은 산파가 엘사다"
+  truth: true
+  danger: 4
+  names: [카스파르, 엘레나]
+- id: fact_gf_elsa_marks_children
+  text: "엘사는 꿈 이야기를 하거나 처음 보는 길을 아는 아이의 문설주에 숯으로 작은 원을 긋는다 — '이 아이 앞에선 꿈 이야기를 하지 말라'. AS 312 현재 네 아이"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_elsa_name_words
+  text: "엘사는 고대 진명 낱말 140개를 외운다. 오두막 솥 밑 흙 속에 진명 조각 셋을 새긴 뼈판을 묻어 두었다"
+  truth: true
+  danger: 5
+  names: []
+
+# 페인
+- id: fact_gf_fayne_seven_names
+  text: "페인은 하겐이 판 탈주자 19명 중 7명의 이름과 날짜를 기억한다"
+  truth: true
+  danger: 4
+  names: [하겐]
+- id: fact_gf_fayne_letters
+  text: "페인은 오스릭이 사라에게 글을 가르치는 것을 창문 너머로 보고 혼자 글자 넷을 익혔다. 방앗간 다락 흙바닥에 몰래 쓴다"
+  truth: true
+  danger: 4
+  names: [오스릭, 사라]
+
+# 토마스
+- id: fact_gf_thomas_hollow_weight
+  text: "토마스는 방앗간 계량추 하나를 속을 파낸 가짜로 바꿔 4년째 매일 3%씩 곡물을 빼돌린다. 진짜 추는 물레바퀴 밑에 있다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_thomas_second_floor
+  text: "물레방아간 맷돌 받침 아래 두 번째 바닥에 보리 14섬(약 1,520근)이 숨겨져 있다"
+  truth: true
+  danger: 4
+  names: [토마스]
+
+# 요한
+- id: fact_gf_johan_hymn_cipher
+  text: "요한이 외워 부르는 찬송 7곡의 가사에 끊어진 고리의 암호(장소·날짜)가 숨어 있다. 요한은 그것을 반쯤만 안다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_gf_johan_reports_felix
+  text: "요한은 순례 중 들은 소문을 루멘 고해 사제 펠릭스에게 빠짐없이 보고한다. 그는 그것을 순례자의 평범한 의무로 여긴다"
+  truth: true
+  danger: 3
+  names: [펠릭스]

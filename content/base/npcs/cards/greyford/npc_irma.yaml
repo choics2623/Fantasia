@@ -1,102 +1,113 @@
 id: npc_irma
 name: 이르마
-aka: []
+aka: [양치기 과부, 붉은 이르마]
 tier: A
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 35
 region: 회색여울 변경
-home: null
+home: 마을 북쪽 이르마 오두막·양 우리
 job: 복수를 잘못 겨눈 과부
-rank: null
-summary: 양치기 노예, 과부
+rank: 양치기 노예, 과부 (양치기 표찰 — 굶주린 언덕 합법 출입)
+summary: 남편 울프를 죽인 것이 탈주자라고 믿고 늑대굴을 찾아낸 과부. 진짜 원수가 가져다준 고기로 겨울을 넘겼다
 source: docs/world/CHARACTERS.md:799
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 277, age: 0, event: "회색여울 강변 움막에서 태어남"}
+  - {year: 289, age: 12, event: "남작의 양 떼를 맡은 늙은 양치기 밑으로 들어감. 왼쪽 손등의 반달 흉터는 그해 숫양에게 물린 것"}
+  - {year: 296, age: 19, event: "양치기 울프와 남작의 허가를 받아 짝을 맺음. 아이는 없었다 — 울프는 양 떼를 '우리 애들'이라 불렀다"}
+  - {year: 310, age: 33, event: "포도월, 울프가 여울강 물굽이에서 떠오름. '탈주자 짓'이라는 소문이 돌았다. 붉은 머리를 짧게 자르고(장례 풍습) 번호 묘지 147번에 묻음"}
+  - {year: 310, age: 33, event: "울프의 양치기 지팡이와 표찰을 이어받음. 지팡이 끝에 첫 칼자국을 그음"}
+  - {year: 311, age: 34, event: "서리월 어느 밤, 언덕에서 내려온 탈주자 아이를 양 우리에 재움. 아이는 새벽에 사라졌다"}
+  - {year: 311, age: 34, event: "굶주림월, 하겐이 몰래 가져다준 양고기와 장어로 겨울을 넘김"}
+  - {year: 312, age: 35, event: "포도월, 북쪽 무리가 굶주린 언덕에 든 뒤 짝수 날마다 늑대굴 길목을 찾음. 낙엽월 1일 현재 지팡이 칼자국 일곱"}
+appearance:
+  - "남편 울프의 양치기 지팡이를 늘 들고 다닌다 — 끝에 칼자국 7개 (복수 다짐 횟수)"
+  - "거친 붉은 머리를 짧게 잘랐다 — 장례 풍습"
+  - "왼쪽 손등에 양에게 물린 반달 흉터"
+smell: "젖은 양털과 양기름, 언덕의 쑥"
+voice_sound: "바람에 깎인 굵은 목소리. 양을 부를 때의 휘파람이 말끝에 섞인다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: -20, 정직: 40, 신앙: 35, 탐욕: 0, 충성: 20}
+  temperament: [강퍅, 슬픔, 곧음]
+  habits:
+    - "지팡이 끝 칼자국을 엄지로 하나씩 센다"
+    - "낯선 사람의 냄새부터 맡는다 — 양치기의 버릇이자 사냥꾼의 버릇"
+    - "안식일 예배 뒤 번호 묘지 147번에 조약돌을 하나 놓는다"
+  values: "울프. 양. 빚은 갚는다 — 은혜도 원수도. 탈주자에게 자비는 없다 (자비 −60)"
+  fears: [울프의 얼굴을 잊는 것, 양을 잃는 것, 아이를 재운 그 밤의 자기 자신]
   desires:
-    short: null
-    long: null
+    short: "굶주린 언덕의 탈주자 은신처를 찾아 즈닉에게 신고하기 (남편의 원수)"
+    long: "울프를 죽인 자를 자기 손으로"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "짧은 존대. '예.' 시선은 피하지 않는다 — 양치기는 땅보다 멀리 본다"
+    to_equal: "반말, 퉁명하다. 곤란하면 양 이야기로 돌린다"
+    to_inferior: "아이에게 반말. 말은 거칠고 손은 부드럽다"
+    to_player_default: "경계하는 반말. 냄새부터 맡는다 — 탈주자 냄새가 나면 적대"
+  tics: ["'양은 거짓말을 안 해.'", "'대답 잘해.'"]
+  use: [양, 냄새, 지팡이, 언덕, 울프, 빵, 강]
+  avoid: ["탈주자를 '사람'이라 부르는 것 ('그놈들')", 하겐 욕]
+  length: "짧다. 울프 이야기만 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "언덕에서 왔어? 그 냄새… 탈주자 냄새야. 대답 잘해."}
+    - {situation: 호의, line: "양은 거짓말을 안 해. 배고프면 울고, 무서우면 뭉치지. 사람보다 낫지."}
+    - {situation: 적대, line: "울프는 그놈들한테 빵을 나눠 줬어. 그리고 강에서 떠올랐지. 너도 그놈들 편이지?"}
+    - {situation: 거래(가르침), line: "양 몰기 이레. 그러면 언덕 길을 가르쳐 주지. 이레를 못 버티면 언덕도 못 버텨."}
+    - {situation: 거짓말할 때, line: "언덕엔 왜 가냐고? 양이 가니까 가지. 다른 거 없어."}
+    - {situation: 하겐 이야기가 나오면, line: "하겐은 굶주림월에 고기를 갖다 줬어. 이 마을에 그런 놈이 몇이나 돼? 그 사람 욕하지 마."}
+    - {situation: 슬플 때, line: "울프는 지팡이로 양 엉덩이를 한 번도 안 때렸어. 그 사람 손엔 늘 빵이 있었지. 그래서 죽었고."}
+    - {situation: 위기, line: "양들을 우리로! 아니, 놔둬! 사람 먼저!"}
+    - {situation: 비밀 누설, line: "그 아이를 우리에 재웠어. 탈주자 꼬마였어. 아침에 보니 양 사이에서 웃고 있더라. 내가 미친 거지?"}
+    - {situation: 회귀자를 의심할 때, line: "147번을 어떻게 알아. 그 번호는 나만 세. …누가 너한테 울프 얘기 했어?"}
+    - {situation: 진실이 새어 들 때, line: "…은니. 울프 주먹 안에 은 부스러기가 있었어. 나는 그게 그놈들 장물인 줄 알았어."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "5시 남작 소유 양 140마리 방목 출발 (홀수 날 서쪽 목초지, 짝수 날 굶주린 언덕 남사면)"
+  낮: "목초지. 짝수 날은 굶주린 언덕 기슭 — 탈주자 은신처 근처에서 길목을 찾는다"
+  저녁: "18시 귀환, 양털 손질"
+  밤: "남편의 지팡이를 안고 잔다"
+places: [이르마 오두막·양 우리, 서쪽 목초지, 굶주린 언덕 남사면, 번호 묘지 147번, 사슬등불 예배당]
+knows: [fact_gb_irma_hagen_meat]
+hides:
+  - fact: fact_gb_irma_wolfden_marks
+    reveal_when: "신뢰 40 이상이고 플레이어를 탈주자 편이 아니라고 믿을 때, 또는 지팡이 칼자국을 읽는 통찰 판정 대성공"
+    cover: "칼자국은 '울프한테 한 맹세'라고만 한다"
+  - fact: fact_gb_irma_sheltered_child
+    reveal_when: "호감 50 이상이고 울프의 진짜 사인을 안 뒤, 또는 그녀가 흔들리는 밤 장면"
+    cover: "탈주자 이야기가 나오면 더 거칠게 욕한다"
 relations:
-- to: npc_hagen
-  type: 은인으로 믿음
-  like: 50
-  trust: 60
-  visibility: 공개
-  memo: 실은 원수
-  words: null
-- to: npc_fayne
-  type: 이웃 아이
-  like: 20
-  trust: 10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_sigrid
-  type: 원수로 오인
-  like: -60
-  trust: -40
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_znik
-  type: 신고 창구
-  like: -10
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_osric
-  type: 사제
-  like: 30
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_ulf
-  type: 남편(고인)
-  like: 100
-  trust: 100
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_hagen, type: 은인으로 믿음, like: 50, trust: 60, visibility: 공개, memo: 실은 원수, words: "굶주림월에 고기를 갖다 준 은인. 이 마을에서 울프 이야기를 끝까지 들어 준 유일한 남자"}
+  - {to: npc_fayne, type: 이웃 아이, like: 20, trust: 10, visibility: 공개, memo: null, words: "하겐 심부름꾼 아이. 요즘 내 눈을 피한다 — 왜인지 모른다"}
+  - {to: npc_sigrid, type: 원수로 오인, like: -60, trust: -40, visibility: 일방, memo: null, words: "언덕의 북쪽 여자 두목. 그 무리가 울프를 강에 넣었다 — 그렇게 들었다"}
+  - {to: npc_znik, type: 신고 창구, like: -10, trust: 20, visibility: 공개, memo: null, words: "신고할 곳. 쥐 같은 놈이지만 쥐는 구멍을 안다"}
+  - {to: npc_osric, type: 사제, like: 30, trust: 40, visibility: 공개, memo: null, words: "147번 앞에서 기도해 준 사제. 그에게는 화를 내지 않는다"}
+  - {to: npc_ulf, type: 남편(고인), like: 100, trust: 100, visibility: 공개, memo: null, words: "남편. 지팡이와 허리띠만 남았다. 칼자국이 하나 늘 때마다 그 사람에게 가까워진다"}
+toward_player: "낯선 자가 탈주자 같으면 적대(−30). 냄새부터 맡는다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["울프의 진짜 사인 증거 (+60 — 판을 뒤집는다)", "양 돌보기"]
+  hates: ["울프를 모욕하는 것", "탈주자 편들기 (초기)"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "야외생존(상한 35), 추적·사냥(30). 조건: 양 몰기 7일. 수업료 없음"
+  companion: "조건부 — 하겐의 진실을 안 뒤. 복수 완수 시 동료 가입 (충성 +40)"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점에 지팡이 칼자국 7개 — 늑대굴 위치를 거의 찾았다 (회귀점의 사실)"
+    - "낙엽월 24일 안식일, 즈닉에게 늑대굴을 신고한다 (표류 등급 '단단함' — 막지 않으면 거의 모든 회차)"
+    - "매일 18시 귀환. 안식일 예배 뒤 번호 묘지 147번에 조약돌"
+  drift:
+    - "그날 양이 몇 마리 흩어지는지, 개가 무엇을 쫓는지"
+    - "짝수 날 언덕에서 길목을 하나 더 찾는지 못 찾는지"
+    - "하겐이 고기를 들고 오는 날"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "울프를 모욕하는 말에는 지팡이를 든다"
+  - "하겐을 스스로 의심하지 않는다 — 증거(은니 조각, 147번의 매듭 끈, 페인의 증언)가 있어야 흔들린다"
+  - "처음부터 탈주자 편을 들지 않는다"
+  - "양 우리에 아이를 재운 밤을 먼저 말하지 않는다"
+on_death: "굶주린 언덕 위치 발각 위험 소멸 (그녀가 신고 직전이었다면 +). 양 140마리 관리 공백"
+story_seeds:
+  - "다음 안식일(낙엽월 24일), 그녀는 즈닉에게 늑대굴을 신고한다. 그 전에 하겐의 진실을 전할 수 있을까 — 증인은 페인뿐이다"
+  - "번호 묘지 147번의 매듭 끈은 '하겐'이라고 말한다. 이르마가 알게 되면 그녀는 하겐을 죽이려 하고, 하겐이 죽으면 페인은 갈 곳이 없다 (REGIONS §2.19-2)"
+  - "그녀가 양 우리에 재운 아이가 남쪽에 닿았는지 그녀는 모른다. 잿빛 실의 누군가는 안다 — 그 밤 양 우리 문을 열어 둔 것이 그녀였다는 것도"

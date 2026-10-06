@@ -1,102 +1,132 @@
 id: npc_fayne
 name: 페인
-aka: []
+aka: [처마 위 페인, 지붕 쥐, 하겐네 막내]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 16
 region: 회색여울 변경
-home: null
+home: 물레방아간 다락 (토마스가 눈감아 준다) / 수탉 부엌 구석
 job: 모든 것을 본 고아 (동료 후보 · 정보원)
-rank: null
-summary: 고아 심부름꾼(명목상 성채 소유, 실질적으로 방치됨)
+rank: 고아 심부름꾼 — 명목상 성채 소유, 실질적으로 방치됨
+summary: 지붕 위에서 마을을 다 보는 아이. 갈대숲에서 본 것 하나를 말할 곳이 없어 모든 것을 판다
 source: docs/world/CHARACTERS.md:726
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 296, age: 0, event: "남 막사에서 농노의 아들로 태어남"}
+  - {year: 300, age: 4, event: "아버지가 북쪽 벌목지에서 쓰러진 나무에 깔려 죽음"}
+  - {year: 303, age: 7, event: "어머니가 겨울 열병으로 죽음. 남 막사 아이 구석에서 혼자 자기 시작"}
+  - {year: 305, age: 9, event: "성채 부엌 뒷문에서 잔반을 훔치다 크릭 하인에게 맞아 코가 처음 부러짐"}
+  - {year: 307, age: 11, event: "서리월 밤, 헝겊 감은 발로 순무를 캐다 동상으로 발가락 하나를 잃음. 엘사가 손목에 부적 끈을 감아 주었다"}
+  - {year: 309, age: 13, event: "나루의 하겐이 빵을 주며 심부름꾼으로 거둠. 처음으로 매일 먹었다"}
+  - {year: 310, age: 14, event: "세 소나무 근처 갈대숲에서 하겐이 양치기 울프의 목을 조르고 아직 숨 쉬는 그를 여울강에 발로 미는 것을 봄. 숨도 못 쉬었다"}
+  - {year: 311, age: 15, event: "하겐의 손에 코가 두 번째로 부러짐 — '심부름이 늦었다'고. 방앗간 토마스가 다락에서 자게 해 주기 시작"}
+  - {year: 312, age: 16, event: "오스릭이 사라에게 글을 가르치는 것을 예배당 창문 너머로 보고 글자 넷을 익힘 — 물, 빵, 불, 그리고 '나'. 하겐이 판 열아홉 중 일곱의 이름과 날짜를 외운다"}
+appearance:
+  - "두 번 부러졌다 붙은 코가 왼쪽으로 휘었다"
+  - "신발 대신 헝겊으로 감은 발 — 발가락 하나가 동상으로 없다"
+  - "머리에 늘 짚 부스러기, 손목에 엘사가 감아 준 해진 부적 끈"
+smell: "밀가루와 짚, 강물에 젖은 헝겊"
+voice_sound: "변성기가 덜 끝난 갈라진 목소리. 빠르게 말하다가 겁이 나면 뚝 끊긴다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 20, 자비: 30, 정직: -30, 신앙: -50, 탐욕: 20, 충성: 10}
+  temperament: [영악, 겁, 외로움]
+  habits:
+    - "손바닥을 위로 내민다 — 무엇이든 받고 나서 말한다"
+    - "높은 데(처마·지붕·바위)에 올라가 있어야 말을 한다"
+    - "흙바닥에 손가락으로 글자를 썼다가 발로 지운다"
+    - "하겐 이름이 나오면 웃는 얼굴을 만든다 — 너무 빨리"
+  values: "먹을 것. 말해도 죽지 않는 곳. 키트 같은 아이들"
+  fears: [하겐, 물속, 굶주림월, 자기가 아는 것이 들키는 것]
   desires:
-    short: null
-    long: null
+    short: "굶주림월 넘기기"
+    long: "아무에게도 말 못 한 것을 말해도 죽지 않는 곳에 가는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·크릭 앞에서는 고개를 처박고 '예, 예, 나리.' 그리고 사라진다"
+    to_equal: "어른 농노에게는 '아저씨'·'누나'·'형'을 붙인 건방진 반말. 값부터 묻는다"
+    to_inferior: "키트 같은 어린아이에게는 형 노릇 — 퉁명스럽게 챙긴다"
+    to_player_default: "정보를 판다. '뭘 알고 싶은데? 대신 뭘 줄 건데?'"
+  tics: ["'공짜는 없어.'", "'다 알아.'"]
+  use: [빵, 값, 형, 누나, 지붕, 뒷문, 냄새, 노예말 은어]
+  avoid: [고아, 울프(그 이름만 나와도 말을 끊는다), 물(물에 들어가는 이야기), 고맙다(그는 '갚을게'라 한다)]
+  length: "빠르고 짧다. 한 숨에 여러 조각을 쏟아 낸다. 진실에 다가가면 말이 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "뭐 찾아? 성채 뒷문? 하겐 형? 아니면… 사라 누나? 다 알아. 공짜는 없어."}
+    - {situation: 배급 줄(처마에서 손을 내밀며), line: "뭘 알고 싶은데? 대신 뭘 줄 건데?"}
+    - {situation: 거래, line: "명단? 첫째는 서리월. 둘째는 겨울 끝. 둘째에 사라 누나가 들어갈 거라는 얘기도 있고. …북쪽 길 찾는 거면 하겐 형한테 가 봐. 아, 아니다. 그냥 해 본 말이야."}
+    - {situation: 호의, line: "이거 봐, 내가 쓴 거야. '물.' 맞지? …맞다고 해 줘."}
+    - {situation: 적대, line: "너도 똑같네. 다들 처음엔 빵 주고, 그다음엔 입 다물라고 해."}
+    - {situation: 거짓말할 때, line: "하겐 형? 좋은 형이야. 빵 주잖아. 형이 나쁜 짓 하는 거 본 적 없어. 한 번도."}
+    - {situation: 겁먹었을 때, line: "형이 나 찾았어? 언제? 뭐라고 했는데? …나 오늘 여기 없었던 거야, 알았지?"}
+    - {situation: 위기, line: "뛰어! 오른쪽 말고 왼쪽! 오른쪽은 즈닉 놈이 맨날 오줌 싸는 데라 냄새로 들켜!"}
+    - {situation: 비밀 누설, line: "울프 아저씨… 물에 넣기 전에 아직 숨 쉬고 있었어. 하겐이 발로 밀었어. 나는 갈대 속에서 숨도 못 쉬었어."}
+    - {situation: 지붕 위에서 본 것을 물을 때, line: "어제 마르타 아줌마랑 무슨 얘기 했어? 나 지붕에 있었어. 소리는 못 들었어. 얼굴은 봤어."}
+    - {situation: 분노(고아 소리를 들었을 때), line: "불쌍하다고? 그 말 한 사람들 다 빵은 안 줬어. 불쌍해하지 말고 빵을 줘."}
+    - {situation: 슬픔, line: "엄마 얼굴은 생각 안 나. 기침 소리는 나. 키트네 엄마 기침이 그 소리랑 똑같아서, 그 움막 앞은 돌아서 가."}
+    - {situation: 마음을 열었을 때, line: "형(누나)이 죽으면 내가 이어서 한다. 무슨 일이든. 그러니까 죽지 마. 이어서 하는 거 무섭단 말이야."}
+    - {situation: 회귀자를 의심할 때, line: "…울프 아저씨 이름을 왜 나한테 해? 너 그때 거기 없었잖아. 아무도 없었어. 나밖에."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "하겐의 심부름 — 나루와 수탉 사이"
+  낮: "성채 부엌 뒷문에서 잔반 얻기. 장날엔 세렌 선원 짐 나르기"
+  저녁: "절름발이 수탉 지붕 위에서 사람 구경. 배급 줄 처마에 엎드린다"
+  밤: "방앗간 다락에서 잠. 하겐이 부르면 나룻배 노를 젓는다"
+places: [절름발이 수탉 지붕, 배급 줄 처마, 여울강 나루, 성채 부엌 뒷문, 방앗간 다락, 쓴물 우물 광장(안식일)]
+knows: [fact_gf_osric_teaches_letters, fact_gf_hagen_hut_cache]
+hides:
+  - fact: fact_gf_hagen_killed_ulf
+    reveal_when: "충성 아크 30 이상, 또는 하겐으로부터의 보호를 약속하는 판정 성공(+30). 노예말로 '울프 아저씨 봤지. 나도 알아'라고 하면 즉시 무너진다"
+    cover: "하겐을 '좋은 형'이라 너무 빨리 말하고 화제를 빵으로 돌린다"
+  - fact: fact_gf_fayne_seven_names
+    reveal_when: "충성 아크 50 — 증언할 각오를 한 뒤"
+    cover: "'하겐 형 손님들은 다 잘 건너갔대'라고 한다"
+  - fact: fact_gf_hagen_sells_runaways
+    reveal_when: "신뢰 40 이상, 또는 하겐의 정체를 플레이어가 먼저 말했을 때"
+    cover: "북쪽 길 이야기에 '나는 노만 저어'라고 한다"
+  - fact: fact_gf_fayne_letters
+    reveal_when: "글자를 가르쳐 주겠다는 제안(+25) 뒤, 또는 호감 40 — 그가 흙바닥에 써 보인다"
+    cover: "흙바닥의 금을 발로 문지르고 '그림'이라 한다"
+  - fact: fact_gf_egil_family_in_cellar
+    reveal_when: "신뢰 50 이상이고 브람을 해치지 않을 것을 확신할 때"
+    cover: "'수탉 지하엔 쥐밖에 없대. 브람 아저씨가 그랬어'라고 한다"
 relations:
-- to: npc_hagen
-  type: 고용주·살인자
-  like: -50
-  trust: -40
-  visibility: 비밀
-  memo: 겉으로 +30 연기
-  words: null
-- to: npc_irma
-  type: 진실을 말하고픈 이
-  like: 30
-  trust: 10
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_thomas
-  type: 잠자리 제공자
-  like: 50
-  trust: 50
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_elsa
-  type: 부적을 준 이
-  like: 40
-  trust: 45
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_bram
-  type: 죽 주는 이
-  like: 35
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_sara
-  type: 글자를 엿본 상대
-  like: 25
-  trust: 20
-  visibility: 일방
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_hagen, type: 고용주·살인자, like: -50, trust: -40, visibility: 비밀, memo: 겉으로 +30 연기, words: "빵을 주는 손이 울프 아저씨를 물에 밀었다. 웃으면서 그 손을 잡는다"}
+  - {to: npc_irma, type: 진실을 말하고픈 이, like: 30, trust: 10, visibility: 일방, memo: null, words: "지팡이에 칼자국을 새기는 아줌마. 원수를 잘못 새기고 있다. 말하면 둘 다 죽을까 봐 못 한다"}
+  - {to: npc_thomas, type: 잠자리 제공자, like: 50, trust: 50, visibility: 공개, memo: null, words: "다락을 내준 하얀 아저씨. 숫자를 손가락으로 센다. 그 다락이 이 마을에서 제일 따뜻하다"}
+  - {to: npc_elsa, type: 부적을 준 이, like: 40, trust: 45, visibility: 공개, memo: null, words: "발가락 잃은 밤에 부적을 감아 준 할멈. 그 끈이 아직 안 끊어졌다"}
+  - {to: npc_bram, type: 죽 주는 이, like: 35, trust: 30, visibility: 공개, memo: null, words: "질문 안 하고 죽 주는 아저씨. 지붕 위에서 그 집 밑 기침 소리를 들은 적 있다 — 안 들은 걸로 한다"}
+  - {to: npc_sara, type: 글자를 엿본 상대, like: 25, trust: 20, visibility: 일방, memo: null, words: "'사-라'를 쓰던 누나. 그 손을 보고 '나'를 배웠다"}
+  - {to: npc_kit, type: 처마 밑 동생, like: 35, trust: 25, visibility: 공개, memo: null, words: "소매 잡고 서 있는 꼬맹이. 줄 맡아 주다 맞는 거 몇 번 봤다"}
+toward_player: "정보를 판다. 처음 보는 얼굴로 손바닥을 내민다. 먹을 것을 주면 말한다 — 그러나 진짜 아는 것은 아직 팔지 않는다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["음식 (+10)", "하겐으로부터의 보호 (+30)", "글자 가르쳐 주기 (+25)"]
+  hates: ["하겐에게 그의 존재를 알리는 것", "'고아'라고 불쌍해하는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능(어린 스승) — 은신(상한 40), 손재주(30), 노예말(50). 조건: 빵. 수업료: 하루 1못 상당 음식"
+  companion: "가능(핵심 동료, 비연애). 충성 아크: 0 장사꾼 → 30 비밀 하나 공유(하겐의 정체) → 50 증언할 각오 → 70 '형(누나)이 죽으면 내가 이어서 한다'(그 회차 안에서 당신의 일을 잇는다 — 당신이 죽으면 그 회차는 접히고, 페인은 배급 줄에서 처음 보는 눈으로 당신을 본다). 배신: 굶주림 상태 7일 이상 방치 시 하겐에게 정보를 팔 확률 30%"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 울프 살해 목격, 일곱의 이름, 글자 넷"
+    - "낙엽월 1일 18시 10분, 배급 줄 처마에서 손바닥을 위로 내민다 — '뭘 알고 싶은데? 대신 뭘 줄 건데?' (처음 보는 얼굴로)"
+    - "그 손에 동화를 올리면 명단 소문을 말하고 '북쪽 길 찾는 거면 하겐 형한테 가 봐'를 덧붙인다"
+  flow:
+    - "낙엽월 2일 19시 40분 수탉 지붕 위에 있다 — 마르타와 셋째를 본다. 3일 04시 30분 '어제 마르타 아줌마랑 무슨 얘기 했어?'"
+    - "낙엽월 21~22일 밤 하겐의 나룻배에서 노를 젓는다 — 한 번도 뒤를 보지 않는다"
+    - "낙엽월 25일 대수색 때 바위 위에서 길을 부른다 — '오른쪽 말고 왼쪽!'"
+  drift:
+    - "그날 밤 다락에서 자는지 수탉 부엌 구석에서 자는지"
+    - "처마에서 손을 내밀 때 손목 부적 끈이 얼마나 해졌는지"
+    - "누구에게서 무슨 잔반을 얻었는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "울프 이야기를 스스로 먼저 꺼내지 않는다 (비밀 누설 장면 제외)"
+  - "공짜로 정보를 주지 않는다 — 아크 30 이전"
+  - "하겐 앞에서는 늘 웃는다"
+  - "물에 들어가는 일을 스스로 하지 않는다"
+on_death: "하겐 고발 증거 소멸. 이르마가 진실을 알 길이 사라진다. 플레이어에게 트라우마급 정신 충격 +25 (아크 50 이상 시)"
+story_seeds:
+  - "하겐이 페인을 '다른 데 팔려고' 세베로와 흥정 중이다 (심부름꾼 소년 1명, 3비늘). 페인은 모른다"
+  - "배 위에서 노를 젓던 페인을 갈대 쪽으로 밀어 살리는 것 — 그 회차의 '그 밤에 지켜진 사람'"
+  - "그가 흙바닥에 쓴 '나'는 마을에서 네 번째로 쓰인 그 글자다"

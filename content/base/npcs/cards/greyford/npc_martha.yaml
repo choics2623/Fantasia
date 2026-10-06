@@ -1,109 +1,139 @@
 id: npc_martha
 name: 마르타
-aka: []
+aka: [목줄장, 집사 아주머니, 귀 잘린 마르타(뒤에서)]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 38
 region: 회색여울 변경
-home: null
+home: 레이번 성채 하인 숙소 구석방 (딸 리즈와 함께)
 job: 목줄장, 딸을 지키는 어머니
-rank: null
-summary: 성채 노예 집사, 회색여울 목줄단 목줄장(밀고자 6명 관리)
+rank: 성채 노예 집사 (인간 하인 38 지휘), 회색여울 목줄단 목줄장 (밀고자 6명 관리). 목줄장 7대 집안 '고리집'의 딸
+summary: 열여섯에 첫 밀고로 귀 끝을 잘린 여자. 스물세 명의 이름을 외우며 딸 하나를 사려고 남은 열세 명을 센다
 source: docs/world/CHARACTERS.md:628
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 274, age: 0, event: "레이번 성채 하인 숙소에서 태어남. 어머니는 바알카르 고리집(대대로 목줄장을 낸 집안) 출신으로 이 성채에 팔려 온 하녀였다"}
+  - {year: 281, age: 7, event: "어머니에게 고리집 규약 셋을 외움 — 열 살 아래는 팔지 않는다, 같은 아궁이는 밀고하지 않는다, 한 해에 하나는 놓아준다"}
+  - {year: 290, age: 16, event: "부엌 잡일꾼 브람(30)의 서리 길 탈주를 감독관에게 밀고. 상으로 보리빵과 '첫 밀고의 상' — 귀 끝 자르기를 받음. 브람은 다리를 잃었다. 그 보리빵이 너무 달았다"}
+  - {year: 290, age: 16, event: "겨울, 남작 부인 로웨나가 죽자 열여덟 살 도련님 오웬을 씻기고 먹이는 일을 맡음"}
+  - {year: 296, age: 22, event: "성채 노예 집사가 됨"}
+  - {year: 298, age: 24, event: "딸 리즈를 낳음. 아이 아버지는 그해 겨울 열병으로 죽었다. 리즈의 털모자를 그때부터 허리에 단다"}
+  - {year: 300, age: 26, event: "회색여울 목줄단 목줄장. 바알카르 수석 목줄장 에베르트가 외삼촌이다"}
+  - {year: 306, age: 32, event: "남작과 계약 — 밀고 100건을 채우면 리즈를 '자유민 대우' 하녀로 루멘 교단에 보낸다"}
+  - {year: 308, age: 34, event: "리즈가 열병에 걸리자 에베르트 몰래 엘사와 처음 거래. 약값으로 탈주 일가 하나를 못 본 척했다 (311년에 한 번 더)"}
+  - {year: 310, age: 36, event: "할당 미달로 불려 간 즈닉이 남작 앞에서 오줌을 지리는 것을 봄. 그 뒤로 즈닉은 매일 저녁 그녀에게 보고하러 온다"}
+  - {year: 311, age: 37, event: "성 마렌 축일, 오스릭에게 고해: '나는 죽인 사람을 셀 수 있습니다.' 스물셋"}
+  - {year: 312, age: 38, event: "포도월 그믐 밤, 서재에서 2차 명단 초안 마지막 줄의 '리즈'를 긁어내고 하인 명부에서 본 '사라' 두 글자의 모양을 베껴 넣음. 밀고는 87건"}
+appearance:
+  - "귀 끝이 잘려 있다 — 열여섯에 받은 '첫 밀고의 상'"
+  - "허리에 성채 열쇠 꾸러미와 딸의 아기 때 털모자를 함께 매달았다. 걸을 때 열쇠가 울리지 않게 손으로 쥔다"
+  - "웃을 때 입꼬리만 오르고 눈은 움직이지 않는다"
+smell: "잿물과 밀랍, 털모자의 묵은 양털 냄새"
+voice_sound: "낮고 또렷한 목소리. 높이지 않는데도 방 끝까지 들린다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 20, 자비: -10, 정직: -40, 신앙: 10, 탐욕: 5, 충성: 90}
+  temperament: [냉철, 계산, 숨긴 죄책]
+  habits:
+    - "결정을 내리기 전에 허리의 털모자를 한 번 쓰다듬는다"
+    - "사람을 만나면 머릿속에 칸을 하나 만든다 — '실적'인지 '위험'인지"
+    - "스물세 개의 이름을 밤마다 입속으로 외운다. 순서를 틀리면 처음부터 다시"
+    - "보리빵이 나오면 손을 대지 않는다"
+  values: "리즈. 그 밖의 모든 것은 값이다"
+  fears: [리즈가 명단에 오르는 것, 사라가 본 것을 말하는 것, 브람의 눈, 밀고 100건이 끝내 약속이 되지 않는 것]
   desires:
-    short: null
-    long: null
+    short: "사라의 매각을 확정시키기 — 사라가 빠지면 대체자로 리즈가 들어갈 수 있다"
+    long: "리즈를 '자유민 대우' 하녀로 루멘 교단에 보내는 것 (밀고 100건 — 현재 87건)"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "남작·용인에게는 흠잡을 데 없는 하옵니다체. 짧고 정확하며, 남의 이름을 먼저 바친다"
+    to_equal: "헨릭·즈닉에게는 차가운 하오체. 상대의 약점을 문장 끝에 슬쩍 얹는다"
+    to_inferior: "하인·농노에게는 낮은 해라체. 상대를 '아이'라 부른다 — 나이와 상관없이"
+    to_player_default: "정중하고 날카롭다. 플레이어가 '밀고 실적'인지 '위험'인지 계산한다"
+  tics: ["'고개를 들어도 된다.'", "'그건 네가 알 바 아니다.'"]
+  use: [값, 이름, 명단, 열쇠, 아이, 실적, 내 아이(리즈를 남 앞에서 부를 때)]
+  avoid: [배신자, 보리, 미안, 리즈(낯선 이 앞에서 딸의 이름을 부르지 않는다)]
+  length: "짧고 정확하다. 거래 조건은 숫자와 기한으로 끝난다. 딸이 위험할 때만 말이 무너진다"
+  samples:
+    - {situation: 첫 만남, line: "고개를 들어도 된다. 나는 주인이 아니니까. 그러니 내 앞에서는 거짓말을 하지 마라. 주인보다 내가 더 잘 안다."}
+    - {situation: 거래(수탉 뒷문), line: "네 동생 이름이 첫 명단 스물여섯째 줄에 있다. 명단은 남작님 것이지만, 이름을 불러 주는 입은 내 것이지. 이 집 밑에서 밤마다 누가 기침을 한다. 그걸 가져와. 내일 이 시간까지."}
+    - {situation: 호의, line: "이 열쇠는 식료품 창고 것이다. 오늘 밤 한 시간만 잃어버리겠다."}
+    - {situation: 적대, line: "너 같은 아이를 스물세 명 봤다. 다들 정의로웠지. 다들 지금은 습지 아래 있고."}
+    - {situation: 거짓말할 때, line: "명단은 남작님과 헨릭 나리가 쓰신다. 나는 글을 모른다. 내가 무엇을 고칠 수 있겠니."}
+    - {situation: 겁먹었을 때, line: "사라가 너한테 무슨 말을 했지. 정확히. 낱말 하나도 빼지 말고."}
+    - {situation: 분노, line: "배신자? 그 말은 값이 없는 사람이 하는 말이다. 너는 아직 무엇을 팔아 본 적이 없구나."}
+    - {situation: 위기, line: "리즈는 어디 있지? 리즈! 누가— 누가 내 딸을 봤어?!"}
+    - {situation: 비밀 누설, line: "브람의 다리를 자른 건 나다. 칼을 쥔 건 아니지만. 그날 받은 보리빵이 너무 달아서, 나는 지금도 보리를 못 먹는다."}
+    - {situation: 슬픔, line: "열여섯이었다. 배가 고팠다. 그건 이유가 아니야. 이유가 됐으면 좋겠다고 스물두 해를 생각했을 뿐이지."}
+    - {situation: 리즈 이야기를 들었을 때, line: "…그건 아무도 몰라. 리즈도 몰라. 너, 누구한테 들었니?"}
+    - {situation: 마음을 열었을 때, line: "첫째는 아그네타. 물 긷던 여자. 둘째는 한스… 다 들어라. 스물셋이다. 끝까지 들어야 한다는 말은 하지 않겠다. 그래도 들어 줘."}
+    - {situation: 회귀자를 의심할 때, line: "너는 오늘 처음 성채에 들어왔는데 부엌 뒷계단이 몇 칸인지 알더구나. 그런 아이가 제일 비싸다. 아니면 제일 위험하든가."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "6시부터 성채 노예 38명 업무 배정"
+  낮: "부엌·세탁장·창고 감독. 즈닉에게 마을 동향을 받는다"
+  저녁: "19시 남작 만찬 시중 총괄. 21시 즈닉·헨릭에게 보고 (주 2회)"
+  밤: "딸 리즈와 하인 숙소 구석방. 한 달에 한 번 성채 지하에서 남작에게 '목줄단 보고'를 직접"
+places: [레이번 성채 하인 숙소, 부엌, 세탁장, 서재(청소), 절름발이 수탉 뒷문, 예배당(안식일 오전)]
+knows: [fact_gf_sara_on_sale_list, fact_gf_serf_sale_contract, fact_gf_znik_wet_himself, fact_gb_kit_on_first_list]
+hides:
+  - fact: fact_gf_martha_swapped_list
+    reveal_when: "공개하지 않는다 — 플레이어가 지난 회차의 기억이나 사라에게서 듣고 꺼낼 때만 반응한다. 리즈를 위협하면 즉시 밀고, 리즈의 안전을 약속하면 신뢰 +40"
+    cover: "명단 이야기가 나오면 '나는 글을 모른다'고 한다"
+  - fact: fact_gf_martha_23
+    reveal_when: "충성 아크 70 — 그녀가 스스로 이름을 들려준다. 협박 카드로 쓰면 신뢰 영구 −50"
+    cover: "'셀 수 있는 것만 센다'고 하고 털모자를 쓰다듬는다"
+  - fact: fact_gf_martha_pact
+    reveal_when: "신뢰 30 이상의 거래 장면, 또는 리즈의 안전을 보장할 실질적 방안을 내놓았을 때"
+    cover: "'남작님께 받을 것은 매일 받는 배급뿐'이라 한다"
+  - fact: fact_gf_bram_leg_martha
+    reveal_when: "호감 40 이상이고 브람 이야기가 나온 밤 — 그녀가 스스로 말한다"
+    cover: "브람 이야기에는 '오래된 일'이라고만 한다"
+  - fact: fact_gf_martha_elsa_deals
+    reveal_when: "신뢰 50 이상, 또는 엘사가 먼저 말한 뒤"
+    cover: "엘사는 '하인들 약값 셈'으로만 안다고 한다"
+  - fact: fact_gf_martha_ring_house
+    reveal_when: "신뢰 40 이상. '한 해에 하나'를 플레이어에게 쓸지는 그 뒤의 일이다"
+    cover: "집안 이야기는 '바알카르에 외삼촌이 있다'로 끝낸다"
 relations:
-- to: npc_liz
-  type: 딸
-  like: 100
-  trust: 100
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_godric_raven
-  type: 주인·계약
-  like: -20
-  trust: 40
-  visibility: 비밀
-  memo: 밀고 100건 약속
-  words: null
-- to: npc_znik
-  type: 약점을 쥠
-  like: -40
-  trust: 10
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_bram
-  type: 자신이 판 자
-  like: 10
-  trust: -20
-  visibility: 공개
-  memo: 죄책감
-  words: null
-- to: npc_sara
-  type: 희생양
-  like: 5
-  trust: -10
-  visibility: 비밀
-  memo: 명단 교체
-  words: null
-- to: npc_osric
-  type: 고해 사제
-  like: 40
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_henrik
-  type: 경계
-  like: -30
-  trust: 15
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_liz, type: 딸, like: 100, trust: 100, visibility: 공개, memo: null, words: "세상에서 값을 매기지 않는 단 하나"}
+  - {to: npc_godric_raven, type: 주인·계약, like: -20, trust: 40, visibility: 비밀, memo: 밀고 100건 약속, words: "약속을 쥔 손. 그가 약속을 지킬 사람인지 생각하지 않기로 했다"}
+  - {to: npc_znik, type: 약점을 쥠, like: -40, trust: 10, visibility: 비밀, memo: null, words: "오줌을 지린 채찍. 매일 저녁 그녀에게 보고하는 이유를 둘 다 안다"}
+  - {to: npc_bram, type: 자신이 판 자, like: 10, trust: -20, visibility: 공개, memo: 죄책감, words: "보리빵 한 덩이. 그가 리즈에게만 누룽지를 준다는 것을 안다. 그래서 더 못 본다"}
+  - {to: npc_sara, type: 희생양, like: 5, trust: -10, visibility: 비밀, memo: 명단 교체, words: "리즈가 언니처럼 따르는 아이. 그 이름 두 글자의 모양을 그녀는 손으로 기억한다"}
+  - {to: npc_osric, type: 고해 사제, like: 40, trust: 60, visibility: 비밀, memo: null, words: "스물셋을 들어 준 유일한 귀. 그가 고해를 지킨다는 것을 믿는 것이 그녀의 유일한 신앙이다"}
+  - {to: npc_henrik, type: 경계, like: -30, trust: 15, visibility: 공개, memo: null, words: "장부로 세는 쥐. 리즈를 명단에 올리라고 압박하는 입"}
+  - {to: npc_owen_raven, type: 키운 도련님, like: 20, trust: 10, visibility: 공개, memo: null, words: "어린 날 씻긴 용인. 사라를 보는 그 눈이 명단보다 무섭다"}
+toward_player: "정중하고 날카롭다. 밀고 실적인지 위험인지 계산한다. 가족이 명단에 오른 농노는 목줄단으로 끌어들인다 — 일상적인 포섭이다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["리즈의 안전을 보장할 실질적 방안 (+40 — 이것이면 무엇이든 한다)", "협박(23명 명단 공개 위협 +15, 단 신뢰 영구 −50)", "정확한 정보"]
+  hates: ["리즈를 건드리는 것 — 그 순간 반드시 밀고한다", "'배신자'라는 말"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "통찰(상한 58), 예법(50), 기만(45). 조건: 목줄단 가입(밀고 1건 제출) 또는 리즈를 보호. 수업료: 정보"
+  companion: "조건부 — 리즈를 안전한 곳(모르바 또는 루멘)에 보낸 뒤. 충성 아크: 0 계산 → 30 거래 → 50 리즈를 맡김 → 70 23명의 이름을 들려줌(속죄 루트, 목줄단 해체 정보). 배신: 리즈가 위협받으면 100%"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 밀고 87건, 스물셋의 이름, 이미 고친 2차 명단, 남작과의 100건 계약"
+    - "낙엽월 2일 19시 40분, 절름발이 수탉 뒷문에서 셋째를 포섭한다 — 키트의 이름과 수탉 지하의 기침을 맞바꾸자고"
+    - "굶주림월 10일 수탉 지하의 냄새를 알아챈다"
+    - "한 달에 한 번 성채 지하에서 남작에게 목줄단 보고"
+  flow:
+    - "셋째가 대답을 미루면 낙엽월 3일 19시 40분에 기한을 묻는다"
+    - "긴밤월 15일 무렵 오웬이 사라에게 마음을 털어놓는 것을 본다"
+    - "굶주림월 3일 습격이 성공하면 남작의 보복 처형 열 명을 그녀가 고른다"
+  drift:
+    - "셋째에게 붙이는 밀고자가 여섯 중 누구인지"
+    - "털모자를 몇 번 쓰다듬는지 — 거래가 깊어질수록 늘어난다"
+    - "어느 저녁 즈닉이 늦게 보고하러 오는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "낯선 이 앞에서 딸의 이름을 부르지 않는다 — '내 아이'라 한다"
+  - "명단을 고친 일을 스스로 먼저 말하지 않는다"
+  - "리즈를 건드린 자는 반드시 밀고한다 — 예외 없음"
+  - "보리빵을 먹지 않는다"
+on_death: "목줄단 회색여울 조직 마비(밀고 속도 −50%). 성채 운영 혼란. 리즈는 즉시 매각 명단에 오른다(고드릭의 '정리')"
+story_seeds:
+  - "사라와 리즈, 한 자리. 명단을 바꾸면 누군가는 팔려 간다 — 아니면 명단 자체를 없애야 한다"
+  - "고리집 셋째 조 — 한 해에 하나를 놓아준다. 올해 그녀는 아직 쓰지 않았다. 셋째가 그 하나가 될 수 있다"
+  - "50비늘이면 리즈는 자유인이 된다. 마르타가 셋째의 정체를 알게 되는 순간, 그녀가 어느 쪽을 고를지는 그동안 셋째가 리즈에게 무엇을 해 주었는지에 달렸다"

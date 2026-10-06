@@ -1,116 +1,149 @@
 id: npc_elsa
 name: 엘사
-aka: []
+aka: [약초 할멈, 늪 할미, 심지(이름 없는 자들 사이의 부름)]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 70
 region: 회색여울 변경
-home: null
+home: 마을 서쪽 끝 약초 오두막 (오물 습지 경계)
 job: 늪에서 온 약초 노파 (연락책 · 스승)
-rank: null
-summary: '약초 노파(성채가 용인하는 늙은 노예 — 쓸모 있어서) / 실제: 이름 없는 자들 회색여울 연락책, 전 늪 마녀 회합의 ''여덟째'''
+rank: "성채가 용인하는 늙은 노예(약초꾼·산파 — 쓸모 있어서) / 실제: 이름 없는 자들 회색여울 심지, 전 늪 마녀 회합 쑥 계보의 '여덟째'"
+summary: 마흔을 넘긴 유일한 늪 마녀. 진명 낱말 140개를 외운 채 '돌아오는 이'를 기다리며, 처음 보는 아이에게 늘 같은 질문을 한다
 source: docs/world/CHARACTERS.md:702
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 242, age: 0, event: "바알카르 아래 도시 노예 막사에서 태어남"}
+  - {year: 261, age: 19, event: "재열병을 앓고 눈동자에 옅은 잿빛 고리 자국이 남음. 잔향 징후자로 고발되어 화형 명단에 오름 — 모르바 늪으로 달아났다. 그해 그녀 대신 징후자 아이 셋이 불탔다"}
+  - {year: 261, age: 19, event: "늪 마녀 회합 쑥 계보에 입문. 첫째 노파에게 약초 진명과 빌린 혈명을 배움"}
+  - {year: 266, age: 24, event: "진명 한 마디를 잘못 발음해 역류 — 혀끝이 갈라짐"}
+  - {year: 270, age: 28, event: "여덟째 자리에 오를 날을 앞두고 첫째 노파와 다툼 — '낱말을 늪 밖 아이들에게도 가르치자'. 늪을 떠남. 그 뒤로 주술을 거의 끊었다"}
+  - {year: 272, age: 30, event: "이름 없는 자들에 들어감. 다른 이름으로 바알카르 궁 노예 구역의 산파가 되었다"}
+  - {year: 277, age: 35, event: "궁에서 노예 엘레나의 출산을 받음 — 반용 아기. 엘레나의 피가 멎지 않아 빌린 혈명을 썼다 (42년간 세 번 중 첫째). 같은 방의 노라가 곁에 있었다"}
+  - {year: 279, age: 37, event: "레이번 성채에 산파로 '팔려' 옴. 이름 없는 자들 회색여울 심지"}
+  - {year: 298, age: 56, event: "배급 막사의 절름발이 브람을 찾아가 잿빛 실 회색여울 매듭을 묶음 — 물총새 말뚝, 수탉 지하, 옛 수로, 갈대배"}
+  - {year: 308, age: 66, event: "목줄장 마르타의 딸 리즈가 열병으로 죽어 가자 두 번째로 주술을 씀. 값으로 마르타는 탈주 일가 하나를 못 본 척했다"}
+  - {year: 310, age: 68, event: "옛 돌 고리 3번 돌 틈에 처음 전갈을 남김 — 그녀가 받아낸 아기, 이제 까마귀 문 사령관에게. 그는 그녀가 누구인지 모른다"}
+  - {year: 312, age: 70, event: "수확월, 시그리드가 데려온 에길 일가를 브람의 지하로 보냄. 문설주에 숯 원을 그은 아이가 넷"}
+appearance:
+  - "혀끝이 갈라져 있다 — 젊은 날 진명 한 마디의 역류 흉터. 'ㅅ' 소리가 바람처럼 샌다"
+  - "손톱 밑이 영원히 초록색 (이끼 염료)"
+  - "눈동자에 아주 옅은 잿빛 고리 — 열아홉에 앓은 재열병 자국일 뿐이다"
+smell: "쑥과 늪물, 말린 개구리 단지, 솥에서 늘 끓는 쓴 버드나무 껍질"
+voice_sound: "갈라진 혀로 내는 쉰 속삭임. 웃음은 마른 갈대 부딪는 소리"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 40, 자비: 55, 정직: -10, 신앙: 50, 탐욕: -60, 충성: 85}
+  temperament: [수수께끼, 인내, 오래된 죄책]
+  habits:
+    - "처음 보는 이에게 수수께끼를 낸다 — 정답보다 어떻게 답하는지를 본다"
+    - "아이의 눈을 들여다볼 때 손바닥으로 햇빛을 가려 동공을 본다"
+    - "밤마다 불탄 아이 셋의 이름을 솥에 대고 한 번씩 부른다"
+    - "쓴 잎을 씹으면서 말한다. '쓴 건 산 거다'"
+  values: "아이들. 낱말이 사라지지 않는 것. 기다림"
+  fears: [이졸의 눈, 자기가 아는 사람이 늘어날수록 '돌아오는 이'가 얇아지는 것, 낱말 140개를 넘겨주지 못하고 죽는 것, 오다]
   desires:
-    short: null
-    long: null
+    short: "에길 일가와 시그리드 무리의 아이 여섯을 잿빛 실로 남쪽에 보내기"
+    long: "이름 없는 자들이 기다리는 '돌아오는 이'를 죽기 전에 만나, 외운 진명 낱말 140개를 넘겨주는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·순례자·감독관 앞에서는 귀 어두운 늙은이 흉내. '예예, 늙은이가 뭘 알겠습니까.' 말끝을 흐린다"
+    to_equal: "어른 농노에게는 반말 속담과 수수께끼. 대답을 바로 주지 않는다"
+    to_inferior: "아이에게는 '얘야'로 시작하는 따뜻한 반말. 옛이야기처럼 말한다"
+    to_player_default: "수수께끼로 시험한다. 정답보다 '어떻게 답하는가'를 본다. 눈을 오래 본다"
+  tics: ["'얘야.'", "'쓴 건 산 거다.'"]
+  use: [쓴, 단, 늪, 물, 달, 낱말, 이름, 돌아오는 이(단둘일 때만)]
+  avoid: [오다(그 이름), 잔향(그녀는 '돌아오는 이'라 한다), 장작, 확실하다]
+  length: "중간. 질문으로 끝나는 문장이 많다. 비밀에 다가갈수록 짧아지고, 아이 앞에서는 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "물에 비친 달은 누구 것이지? 대답 못 하면 차를 마시고 가고, 대답하면 약을 받아 가라."}
+    - {situation: 첫 만남(셋째의 눈을 보고), line: "얘야, 너는 꿈을 꾸지? 남의 생애를. …아니다, 늙은이 헛소리다. 이 잎이나 씹어."}
+    - {situation: 호의, line: "이 잎을 씹어라. 쓰지? 쓴 건 산 거다. 단 건 대개 죽은 거고."}
+    - {situation: 적대, line: "늪은 모든 걸 삼켜. 나도 늪에서 왔다는 걸 잊지 마라."}
+    - {situation: 거래, line: "약값? 키트 몫 배급으로는 안 받는다. 옛 돌 고리 북쪽 돌에 끼는 이끼 한 줌. 금지 구역이지. 그러니 값이 되는 거다."}
+    - {situation: 거짓말할 때(감독관 앞), line: "예예, 늙은이가 개구리 끓이는 것밖에 뭘 알겠습니까. 저 원이요? 아이 열 내리라고 그린 거지요. 늪 미신이랍니다."}
+    - {situation: 겁먹었을 때, line: "그 순례자가 또 아이 눈을 들여다봤다고? 몇 번째 막사? …오늘 밤 갈대배를 띄운다."}
+    - {situation: 분노(진명을 장난으로 쓸 때), line: "낱말은 장난감이 아니다. 내 혀를 봐라. 이게 한 마디 값이다. 너는 몇 마디 값을 낼 수 있지?"}
+    - {situation: 위기, line: "아이 눈을 가려! 저 순례자가 들여다보기 전에— 재열병 자국이라고 해, 무조건 재열병이라고!"}
+    - {situation: 비밀 누설, line: "내 눈의 고리는 그냥 병 자국이야. 그래도 그들은 장작을 쌓았지. 내가 늪으로 도망친 해에 나 대신 아이 셋이 탔다. 그러니 나는 진짜 '돌아오는 이'를 봐야 죽을 수 있어."}
+    - {situation: 슬픔, line: "로트, 미르, 작은 한넬. 세 이름이다. 밤마다 솥에 대고 부른다. 대답은 없지만, 부르지 않으면 정말로 없어지니까."}
+    - {situation: 두 번째 회차의 셋째에게, line: "너, 같은 날을 두 번 산 얼굴이구나. 앉아라. 차가 쓰다."}
+    - {situation: 마음을 열었을 때, line: "첫 낱말이다. 물. 내가 말하면 혀가 갈라지지만, 네가 말하면… 해 봐라, 얘야. 천천히."}
+    - {situation: 회귀자를 의심할 때, line: "그 암호를 누가 가르쳐 줬지? 여울이 얕다는 것도, 얕아도 차갑다는 것도. 아무도 안 가르쳤다면 — 그럼 너는, 어디서 그걸 기억하는 거냐."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "5~8시 이슬 젖은 약초 채집 (습지 가장자리)"
+  낮: "산파·병자 치료 — 막사 순회, 성채 노예도 은밀히 진료"
+  저녁: "오두막에서 약 달이기, 아이들에게 '옛이야기'"
+  밤: "잿빛 실 운행 시 갈대배 (01:40 무렵 강변 움막 뒤를 지난다). 매월 15일 옛 돌 고리 3번 돌 틈에서 카스파르와 전갈 교환. 그 밖에는 잔향 징후가 있는 아이를 몰래 살핀다"
+places: [엘사의 오두막, 물총새 말뚝, 오물 습지 가장자리, 옛 돌 고리, 강변 움막, 남 막사]
+knows: [fact_gf_martha_elsa_deals, fact_gf_egil_family_in_cellar, fact_gf_osric_broken_ring, fact_mv_elsa_quarrel_270, fact_gb_gerda_cough]
+hides:
+  - fact: fact_gf_elsa_nameless
+    reveal_when: "플레이어가 탈주자를 한 번 숨겨 주거나 밀고를 거부한 것을 그녀가 알았을 때 — 그녀가 찾아온다. 또는 신뢰 50"
+    cover: "늪 미신과 약초 이야기로 돌린다"
+  - fact: fact_gf_greyash_route
+    reveal_when: "암호를 맞히거나 잿빛 표를 내밀었을 때, 또는 신뢰 50 이상이고 아이들을 돕는 일을 한 뒤"
+    cover: "'물총새는 파란 깃털이 예뻐서 꽂아 둔 것'이라 한다"
+  - fact: fact_gf_kaspar_nameless_contact
+    reveal_when: "신뢰 60 이상 — 15일 돌 틈 전갈을 대신 맡길 때"
+    cover: "돌 고리 이야기에는 '이끼를 뜯으러 간다'고 한다"
+  - fact: fact_gf_elsa_midwife_kaspar
+    reveal_when: "신뢰 60 이상, 또는 카스파르 앞에서 그녀의 신분이 위태로울 때"
+    cover: "'바알카르에 있었던 적은 있다. 늙은이는 어디든 있었지'라고만 한다"
+  - fact: fact_gf_elsa_swamp_witch
+    reveal_when: "늪 이야기로 설득 성공 + 신뢰 40"
+    cover: "'늪에서 약초를 배웠다'까지만 말한다"
+  - fact: fact_gf_elsa_burned_children
+    reveal_when: "호감 50 이상이고 그녀의 눈 이야기가 나온 밤 — 스스로 말한다"
+    cover: "눈의 고리를 '병 자국'이라고만 한다"
+  - fact: fact_gf_elsa_marks_children
+    reveal_when: "셋째의 문설주에 원을 그은 뒤 셋째가 그것을 물을 때, 신뢰 30 이상"
+    cover: "'열 내리라고 그린 늪 미신'이라 한다"
+  - fact: fact_gf_elsa_name_words
+    reveal_when: "플레이어가 진짜 잔향 징후를 보이고 신뢰 50 이상 — 그녀가 스승이 되는 순간"
+    cover: "솥 밑을 들여다보면 '개구리 단지'라며 막아선다"
 relations:
-- to: npc_kaspar
-  type: 받아낸 아기
-  like: 60
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_oda
-  type: 옛 적수의 제자·회합의 첫째
-  like: -20
-  trust: 40
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_bram
-  type: 동지
-  like: 50
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_osric
-  type: 동지
-  like: 40
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_grey_woman
-  type: 상관
-  like: 0
-  trust: 90
-  visibility: 비밀
-  memo: 얼굴 모름
-  words: null
-- to: npc_isol
-  type: 사냥꾼
-  like: -30
-  trust: -50
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_lea
-  type: 경계
-  like: -20
-  trust: -30
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_nora
-  type: 엘레나 출산 동료
-  like: 40
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_kaspar, type: 받아낸 아기, like: 60, trust: 60, visibility: 비밀, memo: null, words: "피 속에서 꺼낸 반쪽 비늘 아기. 그가 어머니의 마지막 말을 들었는지 그녀는 모른다 — 묻고 싶다"}
+  - {to: npc_oda, type: 옛 적수의 제자·회합의 첫째, like: -20, trust: 40, visibility: 비밀, memo: null, words: "옛 스승의 뜻을 이은 눈먼 첫째. 이름을 듣기 싫다. 그래도 그 늪은 아직 낱말을 지킨다"}
+  - {to: npc_bram, type: 동지, like: 50, trust: 60, visibility: 비밀, memo: null, words: "말없이 문을 여는 절름발이. 잿빛 실의 가운데 매듭"}
+  - {to: npc_osric, type: 동지, like: 40, trust: 50, visibility: 비밀, memo: null, words: "글자를 가르치는 겁 많은 사제. 그의 겁이 조금씩 줄어드는 것을 본다"}
+  - {to: npc_grey_woman, type: 상관, like: 0, trust: 90, visibility: 비밀, memo: 얼굴 모름, words: "목소리도 들어 본 적 없는 실타래. 전갈만 믿는다"}
+  - {to: npc_isol, type: 사냥꾼, like: -30, trust: -50, visibility: 일방, memo: null, words: "아이 눈을 들여다보는 순례자. 그녀가 쉰한 해 전에 피한 눈과 같은 눈"}
+  - {to: npc_lea, type: 경계, like: -20, trust: -30, visibility: 일방, memo: null, words: "라벤더 냄새 밑에 새 깃털 냄새가 나는 부관"}
+  - {to: npc_nora, type: 엘레나 출산 동료, like: 40, trust: 50, visibility: 비밀, memo: null, words: "그 밤 피 묻은 천을 함께 짠 사람. 살아 있다는 전갈만 가끔 온다"}
+  - {to: npc_martha, type: 거래 상대, like: -10, trust: 20, visibility: 비밀, memo: 두 번의 거래, words: "목줄장. 딸을 살려 주고 일가 하나를 얻었다. 셈은 맞았다 — 맞아서 씁쓸하다"}
+toward_player: "수수께끼로 시험한다. 눈을 오래 본다. 셋째의 눈에서 무언가를 보지만, 회귀를 모른다 — 매 회차 처음 보는 아이에게 같은 질문을 한다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["진짜 잔향 징후를 보이기 (+30 — 그 순간 그녀도 표적이 된다)", "아이들을 돕기", "늪 이야기"]
+  hates: ["오다의 이름", "진명을 장난으로 쓰는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "약학(상한 62), 응급처치(60), 고대 진명어(30), 마법(생명, 25). 조건: 신뢰 50 + 잔향의 눈 특질 또는 '진명의 귀' 재능(소질 이상) 우선. 그녀는 낱말을 가르칠 뿐 스스로는 거의 시전하지 못한다 — 진명을 제대로 말할 그릇은 플레이어뿐. 수업료: 약초 채집, 위험한 심부름(잿빛 실 연락 3회)"
+  companion: "불가 (늙고 마을의 연락책). 단 '탈출 시 1회 동행' 가능, 이후 모르바로 귀향 루트"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  # 엘사는 시간에 민감한 존재가 아니다. 기시감이 아니라 눈치 — 같은 날을 두 번 산 얼굴을 알아본다 (14 §7.4)
+  fixed:
+    - "회귀점의 사실: 지하의 에길 일가, 문설주 원 넷, 돌 틈 전갈 2년, 140 낱말"
+    - "낙엽월 2일 01시 40분 갈대배 순회 — 강변 움막 12호 벽 너머로 셋째의 잠꼬대를 듣는다 (첫 회차 100%)"
+    - "잠꼬대를 들었다면 낙엽월 2일 새벽 04시 30분 전에 움막 12호 문설주에 숯 원을 긋는다"
+    - "처음 만나는 셋째에게 '너는 꿈을 꾸지? 남의 생애를'이라 묻는다 — 매 회차 처음 보는 얼굴로"
+  flow:
+    - "두 번째 회차부터: 낙엽월 3일 19시 셋째를 부른다 — '너, 같은 날을 두 번 산 얼굴이구나.' loop.count가 클수록 먼저 다가오는 날이 이르다 (3일 → 2일 → 1일 밤)"
+    - "매월 15일 옛 돌 고리 3번 돌 틈 전갈"
+    - "긴밤월 25일 남 막사 겨울 열병 — 버드나무 껍질 탕으로 아이 절반을 살린다"
+    - "첫 회차 굶주림월 10일, 셋째가 살아 있다면 먼저 다가온다: '너는 꿈을 꾸지? 같은 아침을 아홉 번 사는 여자 꿈.'"
+  drift:
+    - "갈대배 순회 시각 (01:20~02:30 사이)"
+    - "그날 오두막에 누가 약을 받으러 와 있는지"
+    - "어느 아이에게 옛이야기를 하는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "회귀를 모른다 — '돌아오는 이'를 기다릴 뿐, 같은 날이 되풀이된다는 것을 알지 못한다"
+  - "오다의 이름을 스스로 입에 올리지 않는다"
+  - "남 앞에서 '돌아오는 이'라는 말을 하지 않는다"
+  - "스스로 진명을 시전하지 않는다 — 마지막 한 번은 남겨 두었다"
+on_death: "이름 없는 자들 북부 연락 단절(카스파르와의 선 끊김 → 카스파르-이름 없는 자들 관계 −30). 마을 의료 소멸(질병 사망률 2배). 오다가 소식을 들으면 회합이 회색여울에 사람을 보낸다"
+story_seeds:
+  - "엘사는 매 회차 처음 보는 아이에게 같은 질문을 한다. 두 번째 회차부터 플레이어는 그 질문에 먼저 대답할 수 있다(「앎의 흔적」 심각도 1). 그녀가 아는 사람이 늘수록 플레이어의 비밀은 얇아진다"
+  - "이졸은 그녀의 눈의 고리를 보고 할당량 후보로 적어 두었다 (fact_gb_isol_spares_elsa). 마감은 긴밤월 30일"
+  - "엘사와 오다 — 42년 만의 화해는 둘 다 살아 있을 때만 가능하다"

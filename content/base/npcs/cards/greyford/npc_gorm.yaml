@@ -1,60 +1,92 @@
 id: npc_gorm
 name: '''회색배'' 고름'
-aka: []
+aka: [회색배, 고름]
 tier: B
 type: living
 race: 와이번(잿빛 와이번)
 subrace: ''
-sex: null
-age: null
+sex: 수
+age: 70
 region: 회색여울 변경
-home: null
-job: 용의 대로 회색여울 구간 순찰
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+home: 까마귀 문 와이번 마구간
+job: 용의 대로 회색여울 구간 순찰 (지그문트 휘하 공중 순찰)
+rank: 수송청 장부의 번호 날개 — 늙어 짐 운반에서 순찰로 돌려졌다
+summary: 하루 두 번 굶주린 언덕 위를 나는 늙은 잿빛 와이번. 늘 배가 고프고, 양 한 마리면 한 바퀴를 비운다
+source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다 (R02-29)
+life:
+  - {year: 242, age: 0, event: "바알카르 수송청 짐 둥지에서 깨어남. 이름 대신 번호로 장부에 올랐다. 동족끼리는 몰래 한 음절로 '름'이라 부른다"}
+  - {year: 260, age: 18, event: "곡물선 짐을 지기 시작함. 등의 짐 안장 굳은살은 이때부터"}
+  - {year: 290, age: 48, event: "까마귀 문 국경 보급 운반으로 배치됨"}
+  - {year: 305, age: 63, event: "날개 관절이 늙어 짐 대신 공중 순찰로 돌려짐 — 백인대장 지그문트 휘하. 기사 와이번들이 배가 땅에 닿을 듯 낮게 난다며 '회색배'라 부르기 시작"}
+  - {year: 311, age: 69, event: "수송청 둥지에 늙은 날개 도태 명단 소문이 돎. 그 뒤로 기사 와이번 앞에서 목을 더 낮춘다"}
+  - {year: 312, age: 70, event: "하루 두 번 굶주린 언덕 상공 순찰. 배급 고기는 늘 모자란다"}
+appearance:
+  - "칙칙한 회갈색 비늘 — 배 쪽은 늘 진흙에 쓸려 더 잿빛이다 ('회색배')"
+  - "순찰 안장 아래로 짐 안장 굳은살이 아직 비어져 나와 있다"
+  - "왼쪽 날개막에 기운 자국 셋"
+smell: "그을음 섞인 숨, 썩은 고기, 젖은 가죽"
+voice_sound: "쇳소리 섞인 낮은 울음. 공용어를 더듬는다 — 낱말과 낱말 사이에 숨이 걸린다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 10, 자비: -10, 정직: 10, 신앙: 30, 탐욕: 50, 충성: 20}
+  temperament: [굶주림, 불만, 비굴]
+  habits:
+    - "내려앉으면 먼저 고기 냄새를 찾아 고개를 돌린다"
+    - "기사 와이번이 지나가면 목을 땅까지 낮추고, 지나간 뒤 그을음 섞인 침을 뱉는다"
+  values: "먹는 것. 도태되지 않는 것"
+  fears: [도태 명단, 기사 와이번의 발톱, 빈 배로 맞는 겨울]
   desires:
-    short: null
-    long: null
+    short: "배불리 한 번 먹는 것"
+    long: "도태되지 않고 늙는 것. 아니면 — 번호가 없다는 북쪽"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "기사 와이번·용인에게 목을 땅까지 — '예… 예, 나리. 고름, 날아요.'"
+    to_equal: "잿빛 동족에게 한 음절 이름, 투덜거림"
+    to_inferior: "인간에게 위압 — 그을음을 내뿜으며 하대. 인간은 '작은 것'"
+    to_player_default: "하대, 더듬는 공용어. 먹을 것을 가진 인간에게만 목소리가 누그러진다"
+  tics: ["'고기. …고기 있어?'"]
+  use: [고기, 날개, 순찰, 배고파, 작은 것, 그림자]
+  avoid: [자기 번호 (남이 부르면 이를 드러낸다)]
+  length: "짧고 끊긴다. 더듬는 공용어. 배부르면 말이 많아진다"
+  samples:
+    - {situation: 첫 만남, line: "작은 것. 언덕… 표찰 없어? 없으면… 고름이 본다. 지그문트한테 말한다."}
+    - {situation: 거래, line: "양. 한 마리. 통째로. …그러면 고름, 다음 바퀴, 북쪽으로 돈다. 남쪽은… 안 본다."}
+    - {situation: 적대, line: "고름 배 회색이라고? 너 배는 빨개진다. 불… 조금은 아직 있다."}
+    - {situation: 겁먹었을 때, line: "도태… 명단에 늙은 거 올린대. 고름 일흔. 일흔은 늙은 거야? …말하지 마."}
+    - {situation: 비밀 누설(배부를 때), line: "기사들은 고름 위로 난다. 고름 그림자 위로. 그래서 고름은 땅만 본다. 땅은… 다 보인다. 발자국, 연기, 다."}
+    - {situation: 회귀자를 의심할 때, line: "어떻게 알아, 고름이 언제 나는지. 지그문트만 아는데."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
+  아침: "7시 무렵 굶주린 언덕 상공 첫 순찰"
+  낮: "까마귀 문 와이번 마구간 — 잠, 먹이 기다림"
+  저녁: "오후 4시 무렵 두 번째 순찰, 해 지기 전 귀환"
+  밤: "와이번 마구간"
+places: [까마귀 문 와이번 마구간, 굶주린 언덕 상공, 용의 대로 회색여울 구간]
 knows: []
-hides: []
-relations: []
-toward_player: null
+hides:
+  - fact: fact_gb_gorm_patrol
+    reveal_when: "양 한 마리 (뇌물), 또는 고기를 세 번 건넨 뒤 신뢰 20"
+    cover: "'고름은 지그문트가 말하는 대로 난다'고만 한다"
+relations:
+  - {to: npc_sigmund, type: 상관, like: 10, trust: 20, visibility: 공개, memo: null, words: "용인 백인대장. 고기를 더 안 준다. 그래도 때리진 않는다"}
+toward_player: "하대와 위압. 먹을 것을 든 손이 보이면 고개를 그쪽으로 돌린다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["고기 — 특히 양 한 마리 통째로", "기사 와이번 흉보기"]
+  hates: ["번호로 부르는 것", "기사 와이번 앞에서 그를 깎아내리는 것"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점에 굶주린 언덕 순찰 하루 두 번 — 아침 7시 무렵, 오후 4시 무렵 (회귀점의 사실)"
+  drift:
+    - "그날 순찰 시각이 반 시진쯤 앞뒤로 흔들린다"
+    - "배고픈 날은 언덕을 더 낮게, 더 느리게 돈다"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "공용어를 더듬는다 — 매끄러운 긴 문장을 말하지 않는다"
+  - "기사 와이번이 보는 앞에서는 거래하지 않는다"
+  - "지난 회차를 기억하지 않는다"
+on_death: "굶주린 언덕 공중 순찰이 며칠 빈다 (탈주 성공률 상승). 이후 기사 와이번이 대신 날고, 뇌물은 통하지 않는다"
+story_seeds:
+  - "그의 순찰 시간표가 탈주의 성패를 가른다. 양 한 마리면 남사면이 한 바퀴 빈다"
+  - "도태 명단에 그의 번호가 오르면 — 늙은 잿빛 와이번 하나가 굶주린 언덕의 탈주자들과 같은 동굴에 숨을지도 모른다 (SUBRACES §3.5 이야기 씨앗)"

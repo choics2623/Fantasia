@@ -1,102 +1,129 @@
 id: npc_dietmar
 name: 디트마르
-aka: []
+aka: [두 낙인, 습지 두목]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 31
 region: 회색여울 변경
-home: null
+home: 오물 습지 '죽은 버드나무 섬'
 job: 절망의 두목 (위험한 동료 후보)
-rank: null
-summary: 습지 탈주 노예 무리 두목. 현상금 1 비늘 10 발톱
+rank: 습지 탈주 노예 무리 두목. 현상금 1 비늘 10 발톱
+summary: 형을 제 손으로 채찍질한 뒤로 '다음 해'를 믿지 않는 탈주자 두목. 굶주림월 3일 수송대를 칠 생각이다
 source: docs/world/CHARACTERS.md:823
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 281, age: 0, event: "바알카르 근교 비늘혈 가문 포도원의 노예 막사에서 태어남. 네 살 위 형 오토가 있었다"}
+  - {year: 290, age: 9, event: "포도 따기에 나감. 형이 그를 대신해 앞에 서서 맞는 날이 많았다"}
+  - {year: 296, age: 15, event: "형 오토가 포도주를 훔쳤다는 혐의. 주인이 디트마르의 손에 채찍을 쥐여 줬다 — '네 형이니까 네가 해라.' 서른 대를 세면서 쳤다. 형은 열하루 뒤 죽었다"}
+  - {year: 297, age: 16, event: "잿불 언덕 광산으로 팔림. 오른쪽 볼에 첫 매각 낙인"}
+  - {year: 303, age: 22, event: "용주 역참 짐꾼으로 다시 팔림. 같은 볼에 두 번째 낙인"}
+  - {year: 306, age: 25, event: "역참 경비를 돌로 쳐 쓰러뜨리고 흉갑을 벗겨 입고 달아남. 갈비뼈가 드러난 몸에 지금도 그 녹슨 흉갑"}
+  - {year: 307, age: 26, event: "오물 습지 죽은 버드나무 섬에 자리 잡음. 달아난 노예들이 하나둘 모임"}
+  - {year: 309, age: 28, event: "까마귀 문에서 물빼기 굴로 도망친 짐꾼 레오를 받아들임. 왜 도망쳤는지는 묻지 않았다"}
+  - {year: 311, age: 30, event: "브란과 거래 시작 — 습지의 쇠붙이와 장물을 주고 쟁기날로 위장한 창날을 받는다. 현상금 1 비늘 10 발톱이 붙음"}
+  - {year: 312, age: 31, event: "건초월, 잿빛 실 통과자 소녀 프리다(15)를 '통행세'로 붙잡아 둠"}
+  - {year: 312, age: 31, event: "포도월 하순, 식량 다툼 끝에 시그리드 무리원 둘을 죽임 (하나는 직접). 세렌 선원 소문으로 굶주림월 3일 수송대 이야기를 들음"}
+appearance:
+  - "오른쪽 볼에 이중 노예 낙인 — 두 번 팔렸다는 뜻"
+  - "갈비뼈가 드러난 마른 몸에 용인 병사에게서 빼앗은 녹슨 흉갑"
+  - "손톱을 모두 짧게 물어뜯었다. 누가 말하면 그 사람의 입이 아니라 손을 본다"
+smell: "습지 진흙과 훔친 술, 녹슨 쇠"
+voice_sound: "쉬고 거친 목소리. 웃음이 기침처럼 끊긴다. 화나면 오히려 낮아진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 55, 자비: -45, 정직: 10, 신앙: -80, 탐욕: 30, 충성: 35}
+  temperament: [절망, 폭력, 거친 의리]
+  habits:
+    - "손톱을 물어뜯는다 — 말이 끊길 때마다"
+    - "상대가 말할 때 입이 아니라 손을 본다 — 칼을 쥘 손인가"
+    - "술을 마실 때 첫 모금은 땅에 붓는다. 이유를 묻는 놈에게는 대답하지 않는다"
+    - "때릴 때 소리 내어 센다"
+  values: "오늘. 무리 — 그것도 불안정하게. 아무도 다시 그의 손에 채찍을 쥐여 주지 못하게 하는 것"
+  fears: [채찍을 쥔 자기 손, 무리가 그를 버리는 것, 희망 — 생기면 잃을 것이 생긴다, 쇠사슬 끄는 소리]
   desires:
-    short: null
-    long: null
+    short: "굶주림월 3일 세베로의 노예 수송대(31명)를 습격해 '해방'하고 짐을 빼앗는다"
+    long: "없다. '다음 해는 없다'가 그의 철학"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·크릭에게 존대하지 않는다. 침을 뱉거나 침묵. 잡혔을 때만 이를 악문 '예' 하나"
+    to_equal: "반말. 욕이 섞인 명령조"
+    to_inferior: "무리원에게 반말과 명령. 겁에 질린 아이 앞에서는 이상하게 말이 짧고 낮아진다"
+    to_player_default: "강도의 반말. 시험하듯 위협한다"
+  tics: ["'내일은 없다.'", "'주머니 뒤집어.'"]
+  use: [주머니, 술, 오늘, 사슬, 창, 배(腹), 무리, 값]
+  avoid: ["'희망' (조롱으로만 쓴다)", "형 (스스로 꺼내지 않는다)", 기도]
+  length: "짧고 거칠다. 취하면 길어지고, 길어지면 형 이야기 근처로 간다"
+  samples:
+    - {situation: 첫 만남, line: "주머니 뒤집어. 안 뒤집으면 내가 뒤집는다. 네 배를."}
+    - {situation: 호의, line: "…술 남았다. 마셔. 내일은 없으니까 오늘 마셔."}
+    - {situation: 적대, line: "희망? 희망은 주인들이 우리 목에 거는 두 번째 목줄이야."}
+    - {situation: 거래(통행세), line: "잿빛 실이든 뭐든 내 섬을 지나면 값을 내. 사흘치 식량. 없으면 사람."}
+    - {situation: 거짓말할 때, line: "그 계집애? 자기가 남겠다던데. 여기가 남쪽보다 낫대."}
+    - {situation: 겁먹었을 때, line: "…저 소리. 쇠 끄는 소리. 듣지 마. 듣지 말라고!"}
+    - {situation: 화났을 때, line: "형 얘기 꺼낸 놈은 혀부터 센다. 하나, 둘—"}
+    - {situation: 슬플 때(취해서), line: "형은 나보다 네 살 많았어. 맞을 땐 늘 나보다 먼저 앞에 섰지. 마지막엔 내가 앞에 섰어. 채찍 들고."}
+    - {situation: 하겐의 배신을 들었을 때, line: "하겐이? 그 웃는 놈이? …술은 걔가 줬지. 술값이 사람이었구나."}
+    - {situation: 위기, line: "다 뛰어! 나 두고 뛰어! 이번엔— 이번엔 내가 남는다, 형."}
+    - {situation: 비밀 누설, line: "주인이 채찍을 내 손에 쥐여 줬어. '네 형이니까 네가 해라.' 서른 대. 나는 세면서 쳤어."}
+    - {situation: 회귀자를 의심할 때, line: "굶주림월 사흘을 네가 어떻게 알아. 그건 내 머릿속에만 있는 날짜다. …누가 팔았어?"}
+    - {situation: 마음을 열었을 때, line: "…다음 해. 다음 해엔 말이야. 아니, 됐다. 그냥 — 다음 해에도 술 남겨 둘게."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "무리(성인 남자 14명) 깨워 사냥·도적질 분배"
+  낮: "용의 대로 감시 — 소규모 수송대 습격 기회를 노림"
+  저녁: "훔친 술"
+  밤: "망루. 주 1회 대장간 뒤 숲에서 브란에게 창날을 받는다"
+places: [죽은 버드나무 섬, 오물 습지 갈대숲, 용의 대로 습지 굽이, 대장간 뒤 숲]
+knows: [fact_gb_dietmar_killed_sigrid_two]
+hides:
+  - fact: fact_gb_dietmar_raid_plan
+    reveal_when: "충성 아크 30 (술친구), 또는 습격 1회 동행 뒤, 또는 굶주림월 1일 이후 사람을 모을 때 그가 먼저 꺼낸다 (`dietmar_raid_plan`)"
+    cover: "'겨울엔 다들 굶는다. 우리도 먹을 데를 찾을 뿐'이라 한다"
+  - fact: fact_gb_dietmar_holds_frida
+    reveal_when: "섬의 갈대 오두막을 뒤지는 판정 성공, 또는 신뢰 40 이상"
+    cover: "'그 계집애는 자기가 남겠다고 했다'고 한다"
+  - fact: fact_gb_dietmar_bran_blades
+    reveal_when: "신뢰 50 이상, 또는 브란이 먼저 플레이어를 보증한 뒤"
+    cover: "창날은 '역참 놈들한테서 뺏었다'고 한다"
+  - fact: fact_gb_dietmar_brother
+    reveal_when: "충성 아크 50 — 술자리에서 그가 스스로 꺼낸다. 플레이어가 먼저 묻는 것은 역린"
+    cover: "형 이야기 근처로 가면 술잔을 엎고 일어난다"
 relations:
-- to: npc_bran
-  type: 무기 공급자
-  like: 40
-  trust: 30
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_sigrid
-  type: 경쟁 두목
-  like: -40
-  trust: -50
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_hagen
-  type: 술 공급원
-  like: -10
-  trust: 20
-  visibility: 공개
-  memo: 배신을 모름
-  words: null
-- to: npc_kaspar
-  type: 증오
-  like: -70
-  trust: -80
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_znik
-  type: 증오
-  like: -90
-  trust: -90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_leo_ember
-  type: 무리원
-  like: 20
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_bran, type: 무기 공급자, like: 40, trust: 30, visibility: 비밀, memo: null, words: "창날을 대 주는 대장장이. 말이 없어서 좋다. 저 사람도 뭔가를 기다린다"}
+  - {to: npc_sigrid, type: 경쟁 두목, like: -40, trust: -50, visibility: 공개, memo: null, words: "북쪽 여자 두목. 그 무리 둘을 죽였다. 그 여자 눈이 아직 그 숫자를 세고 있다"}
+  - {to: npc_hagen, type: 술 공급원, like: -10, trust: 20, visibility: 공개, memo: 배신을 모름, words: "술 주는 웃는 놈. 쓸모 있다. 웃음이 너무 많은 게 흠"}
+  - {to: npc_kaspar, type: 증오, like: -70, trust: -80, visibility: 공개, memo: null, words: "까마귀 문의 잡종 사령관. 탈주자를 봐준다고? 사슬 열쇠를 쥔 놈의 자비는 사슬보다 무겁다"}
+  - {to: npc_znik, type: 증오, like: -90, trust: -90, visibility: 공개, memo: null, words: "채찍 든 쥐. 언젠가 그 채찍으로 그 등을 세어 준다"}
+  - {to: npc_leo_ember, type: 무리원, like: 20, trust: 30, visibility: 공개, memo: null, words: "팔 덴 놈. 말이 없고 불을 무서워한다. 쓸모는 모르겠다"}
+toward_player: "강탈 시도 또는 시험 (위압 판정 D 40 — 실패 시 소지품을 빼앗긴다)"
 persuade:
-  likes: []
-  hates: []
+  likes: ["싸움의 명분", "하겐의 배신 증거 (그의 분노가 하겐에게로 향한다)", "술"]
+  hates: ["형 이야기", "'희망'이라는 말 (조롱으로 받아들인다)"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "창·장병기(상한 35), 위압(40), 은신(35). 조건: 습격 1회 동행. 수업료: 약탈품 나눠 갖기"
+  companion: "가능 (위험). 충성 아크: 0 강탈자 → 30 술친구 → 50 형 이야기, 처음으로 '다음 해'를 말함 → 70 무리를 시그리드와 합치는 것에 동의 (화해 이벤트 — 무리원 살해에 대한 대가 필요). 배신 조건: 스트레스 70 이상에서 무리가 위협받으면 폭주 (아군 공격 가능)"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점에 죽은 버드나무 섬, 무리 26명 (성인 남자 14). 프리다가 섬에 붙잡혀 있다 (회귀점의 사실)"
+    - "첫 만남은 강도 장면 — '주머니 뒤집어.'"
+    - "시그리드 무리원 둘을 죽인 뒤다 — 두 무리는 원수로 시작한다"
+  flow:
+    - "주 1회 밤 대장간 뒤 숲에서 브란에게 창날 — 요일은 순찰에 따라 바뀐다"
+    - "굶주림월 1~2일 습격 계획을 세우고 3일 아침 쇠다리 남쪽 굽이에서 수송대를 친다 — 살아 있고 창이 9자루 이상이면 대개 나선다 (A창)"
+    - "엘사의 갈대배가 지나가는 밤 잿빛 실 통과자에게 통행세를 받는다"
+  drift:
+    - "그날 훔친 술의 양과 취하는 시각"
+    - "용의 대로에서 그날 노리는 작은 수송대"
+    - "누가 그날 망루를 지키는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "'희망'이라는 말을 진심으로 쓰지 않는다 — 조롱으로만"
+  - "형 이야기는 그가 스스로 꺼낼 때만 한다 (충성 아크 50)"
+  - "스트레스 70 이상에서 무리가 위협받으면 폭주한다 — 아군도 친다"
+  - "용인에게 존대하지 않는다 (잡혔을 때의 '예' 하나만 예외)"
+on_death: "습지 무리 와해 (일부 시그리드 합류, 일부 바르그에게 잡힘). 세베로 수송대 습격 이벤트 소멸 → 31명 그대로 세렌행"
+story_seeds:
+  - "수송대 습격이 성공하면 31명이 '해방'되지만, 고드릭은 보복으로 마을에서 10명을 처형한다 (재의 법 집단 처벌). 그 10명을 누가 고르나 — 마르타"
+  - "그의 무리에 '숯불 레오'가 있다 — 카스파르의 불을 본 유일한 생존자. 디트마르는 그 값을 모른다. 아우락스는 안다"
+  - "섬의 프리다(15). 잿빛 실은 그녀가 남쪽에 닿은 줄 안다. 엘사가 알면 습지의 '통행세'는 끝난다 — 아니면 잿빛 실이 끊긴다"

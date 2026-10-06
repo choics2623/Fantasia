@@ -1,102 +1,116 @@
 id: npc_thomas
 name: 토마스
-aka: []
+aka: [유령 토마스, 방앗간 토마스]
 tier: A
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 41
 region: 회색여울 변경
-home: null
+home: 여울강 물레방아간 (딸 미나와 함께)
 job: 곡물을 숨기는 방앗간지기
-rank: null
-summary: 방앗간 노예
+rank: 방앗간 노예 (성채 소유)
+summary: 겁 많은 방앗간지기. 속 빈 추 하나로 4년째 하루 세 푼씩 빼돌려 누군가의 겨울을 만든다 — 그게 누구의 겨울인지는 모른다
 source: docs/world/CHARACTERS.md:750
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 271, age: 0, event: "여울강 물레방아간 노예 집안에서 태어남"}
+  - {year: 287, age: 16, event: "물레 톱니에 왼손이 끼어 손가락 마디마다 흉터가 남음. 그 뒤로 숫자를 손가락으로 센다 — 손가락이 아직 있는지 확인하듯"}
+  - {year: 296, age: 25, event: "아버지가 죽고 방앗간을 맡음"}
+  - {year: 299, age: 28, event: "세탁장 하녀 헬레와 혼인. 이듬해 딸 미나가 태어남"}
+  - {year: 305, age: 34, event: "헬레가 겨울 열병으로 죽음. 그해 겨울 배급이 아홉 날 끊겼다"}
+  - {year: 308, age: 37, event: "계량추 하나를 속 빈 가짜로 바꿈. 하루 3%. 진짜 추는 물레바퀴 밑에 숨겼다"}
+  - {year: 309, age: 38, event: "절름발이 브람과 손잡음. 숨긴 곡물 절반을 브람에게 넘김 — 탈주자들을 먹이는 데 쓰인다고 믿는다"}
+  - {year: 309, age: 38, event: "딸 미나가 교리 문답을 핑계로 오스릭 사제에게 글자를 배우기 시작. 그날부터 밤마다 깬다"}
+  - {year: 312, age: 41, event: "맷돌 받침 아래 두 번째 바닥에 보리 14섬(약 1,520근). 목표는 겨울 전 1,800근. 고아 페인이 다락에서 잔다"}
+appearance:
+  - "온몸이 늘 밀가루로 하얘 '유령 토마스'라 불린다"
+  - "왼손 손가락 마디마다 물레 톱니에 낀 흉터"
+  - "말할 때 숫자를 손가락으로 센다"
+smell: "갓 빻은 보리 가루와 젖은 나무 물레"
+voice_sound: "작고 떨리는 목소리. 숫자를 셀 때만 또렷해진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: -15, 자비: 45, 정직: 5, 신앙: 15, 탐욕: 10, 충성: 40}
+  temperament: [소심, 다정, 셈 많은]
+  habits:
+    - "숫자를 말할 때마다 왼손 손가락을 하나씩 접는다"
+    - "즈닉이 다가오면 말을 멈추고 저울을 닦는다"
+    - "밤에 깨면 미나가 흙바닥에 쓴 글자가 남았는지 확인하고 손바닥으로 지운다"
+  values: "미나. 굶는 사람이 줄어드는 것. 들키지 않는 것"
+  fears: [즈닉의 계량 검사, 미나의 글자가 발견되는 것, 헨릭, 곡물 수색]
   desires:
-    short: null
-    long: null
+    short: "겨울 대비 숨긴 곡물 1,800근 (현재 1,520)"
+    long: "미나를 글 아는 어른으로 키우는 것 — 오스릭에게 맡겼다"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "즈닉·헨릭·용인에게는 '예, 예' — 숫자만 대답한다. 눈은 저울에 둔다"
+    to_equal: "농노에게는 조심스러운 반말. 같은 말을 두 번 한다"
+    to_inferior: "미나와 페인에게는 부드럽고 길어진다 — 잔소리처럼"
+    to_player_default: "소심하고 친절하다. 즈닉이 근처에 있으면 말을 아낀다"
+  tics: ["'한 줌이다. 한 줌만.'", "(손가락을 접으며) '하나, 둘…'"]
+  use: [근, 섬, 푼, 추, 맷돌, 한 줌, 겨울]
+  avoid: [글자(미나 일로 그 낱말을 피한다), 헨릭, 훔치다(그는 '덜어 둔다'고 한다)]
+  length: "짧다. 숫자가 들어가면 길어진다. 겁먹으면 같은 숫자를 되풀이한다"
+  samples:
+    - {situation: 첫 만남, line: "밀가루 묻어. 저리 비켜 서. …배고파? 한 줌이다. 한 줌만."}
+    - {situation: 호의, line: "추 하나에 세 푼. 하루 세 번이면 아홉 푼. 4년이면… 사람 몇이 겨울을 넘기지."}
+    - {situation: 적대, line: "나는 겁쟁이야. 겁쟁이는 겁을 주면 뭐든 해. 정말 뭐든. 그러니 나 겁주지 마."}
+    - {situation: 거래, line: "보리 한 자루. 마흔 근. 마흔 근이면… (손가락을 접는다) 아니, 줄 수 있어. 대신 누구한테 가는지만 말해 줘. 정말 굶는 사람이야?"}
+    - {situation: 거짓말할 때(즈닉 앞), line: "추는 바꾼 적 없습니다. 예. 예. 오늘 아침도 맞았습니다. 맞았습니다."}
+    - {situation: 겁먹었을 때, line: "수색? 곡물 수색? 언제. 며칠. 스무날? 스무날이면… 열아홉 날 남았다. 열아홉."}
+    - {situation: 위기, line: "추를 바꿔! 진짜 추는 바퀴 밑에— 미나, 방에 들어가 있어라!"}
+    - {situation: 비밀 누설, line: "그 곡식이 헨릭 주머니로 간다고? …그럼 4년 동안 나는 누굴 먹인 거지?"}
+    - {situation: 미나 이야기가 나왔을 때, line: "미나는 맷돌 돌리는 것밖에 몰라. 아무것도 몰라. 아무것도. 그 애 이야기는 하지 마."}
+    - {situation: 회귀자를 의심할 때, line: "두 번째 바닥을… 어떻게 알아? 그건 나랑 브람밖에… 미나도 몰라. 미나도."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "성채 곡물 계량 수령"
+  낮: "6~18시 제분 (수확기엔 22시까지). 즈닉의 계량 검사 하루 2회"
+  저녁: "딸 미나와 식사"
+  밤: "주 2회 맷돌 받침 아래 '두 번째 바닥'에 보리 포대를 숨긴다. 밤마다 깨서 미나의 흙글자를 지운다"
+places: [물레방아간, 맷돌 받침 아래, 영주 곡창, 예배당(안식일)]
+knows: [fact_gf_osric_teaches_letters]
+hides:
+  - fact: fact_gf_thomas_hollow_weight
+    reveal_when: "신뢰 40 이상이고 곡물이 정말 굶는 이에게 간다는 확신(+20)을 주었을 때"
+    cover: "추 이야기에 저울을 닦으며 '오늘 아침도 맞았다'고 한다"
+  - fact: fact_gf_thomas_second_floor
+    reveal_when: "신뢰 50 이상, 또는 브람이 먼저 말한 뒤. 곡물 수색 전 은폐를 도와준 뒤라면 바로"
+    cover: "'방앗간 바닥은 하나뿐이다. 맷돌이 무거워서'라고 한다"
+  - fact: fact_gb_mina_letters
+    reveal_when: "미나의 안전을 보장할 방안(+30)을 내놓고 신뢰 60 이상. 그 전에 꺼내면 역린"
+    cover: "미나는 '맷돌 돌리는 것밖에 모른다'고 되풀이한다"
 relations:
-- to: npc_mina
-  type: 딸
-  like: 100
-  trust: 90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_bram
-  type: 공범
-  like: 60
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_znik
-  type: 감시자
-  like: -50
-  trust: -30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_osric
-  type: 딸의 스승
-  like: 50
-  trust: 40
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_fayne
-  type: 돌보는 아이
-  like: 40
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_henrik
-  type: 두려움
-  like: -20
-  trust: -40
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_mina, type: 딸, like: 100, trust: 90, visibility: 공개, memo: null, words: "헬레가 남긴 하나. 그 애가 글자를 안다는 것이 자랑스럽고 무섭다 — 같은 크기로"}
+  - {to: npc_bram, type: 공범, like: 60, trust: 70, visibility: 비밀, memo: null, words: "곡물을 넘기는 절름발이. 언덕의 굶는 사람들에게 간다고 믿는다"}
+  - {to: npc_znik, type: 감시자, like: -50, trust: -30, visibility: 공개, memo: null, words: "하루 두 번 저울을 드는 크릭. 그의 발소리를 숫자로 센다"}
+  - {to: npc_osric, type: 딸의 스승, like: 50, trust: 40, visibility: 비밀, memo: null, words: "미나에게 글자를 주는 사제. 고맙고, 밤마다 원망한다"}
+  - {to: npc_fayne, type: 돌보는 아이, like: 40, trust: 30, visibility: 공개, memo: null, words: "다락의 고아. 미나에게 오빠 같은 아이. 그 애가 무엇을 아는지는 묻지 않는다"}
+  - {to: npc_henrik, type: 두려움, like: -20, trust: -40, visibility: 공개, memo: null, words: "곡물을 장부로 세는 용인. 그의 손가락이 방앗간을 가리키는 날이 온다"}
+toward_player: "소심하고 친절하다. 배고픈 얼굴에 한 줌을 준다. 즈닉이 근처에 있으면 말을 아낀다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["미나의 안전 (+30)", "곡물이 정말 굶는 이에게 간다는 확신 (+20)"]
+  hates: ["미나의 글공부를 입에 올리는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "제작(목공·제분, 상한 40), 공학(25). 조건: 방앗간 일 10일. 수업료 없음"
+  companion: "불가 (딸)"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 속 빈 추 4년, 두 번째 바닥의 보리 14섬, 미나의 글자 27개"
+    - "즈닉의 계량 검사 하루 두 번"
+    - "서리월 20일 즈닉의 곡물 수색 — 방앗간이 첫 대상"
+    - "굶주림월 1일 아침 죽 폐지"
+  drift:
+    - "그날 추로 덜어 둔 양이 몇 푼인지"
+    - "계량 검사 날 바닥에 미나의 글자가 남아 있는지"
+    - "주 2회 은닉이 어느 밤인지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "미나의 글공부를 스스로 입에 올리지 않는다"
+  - "즈닉 앞에서 숫자 말고는 말하지 않는다"
+  - "곡물이 헨릭에게 간다는 것을 모른다 — 알게 되기 전까지 브람을 의심하지 않는다"
+on_death: "숨긴 곡물 1,520근 위치를 아는 자 소멸(미나와 브람 제외). 미나가 고아가 되어 오스릭에게 의탁"
+story_seeds:
+  - "곡물 1,520근 — 시그리드 무리의 겨울(600끼니 상당), 브람의 입막음 값, 디트마르의 약탈 표적. 하나만 고를 수 있다"
+  - "그가 곡물이 헨릭의 주머니로 간다는 것을 알게 되면, 4년의 셈이 무너진다 — 브람과의 사이도"
+  - "마르타의 값 — 두 번째 바닥을 팔면 키트가 명단에서 빠지고, 수색이 4일로 당겨진다. 아무도 누가 팔았는지 모른다"

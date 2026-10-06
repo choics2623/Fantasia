@@ -1,102 +1,120 @@
 id: npc_znik
 name: 즈닉
-aka: []
+aka: [감독관, 일곱 줄(농노들이 뒤에서)]
 tier: A
 type: living
 race: 크릭
 subrace: 감독관 크릭
-sex: null
-age: null
+sex: 남
+age: 30
 region: 회색여울 변경
-home: null
+home: 채찍 기둥 광장 감독관 초소
 job: 채찍을 쥔 겁쟁이
-rank: null
-summary: 농노 감독관(크릭 보조 감독 7명 지휘)
+rank: 농노 감독관 (크릭 감독 7명 지휘 — 핍, 스니, 고르, 틱틱, 마브, 우그, 렉). 채찍손 길드 소속, 레이번 가 소유
+summary: 인간을 증오하는 이유를 바꿔 기억하는 늙은 크릭. 주인을 무서워하는 만큼 채찍을 휘두른다
 source: docs/world/CHARACTERS.md:506
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 282, age: 0, event: "바알카르 지하 채찍손 길드 '굽은 회랑'의 새끼 우리에서 태어남"}
+  - {year: 286, age: 4, event: "레이번 성채 크릭 하인으로 팔려 옴. 부엌의 인간 노예 여인 앤이 그를 씻기고 빵을 나눠 줌"}
+  - {year: 288, age: 6, event: "성채 집사가 '그 빵 어디서 났냐'고 묻자 앤을 가리킴. 앤은 곡물 절도로 처형되어 오물 습지 처형터에 묻혔다. 그는 그 일을 '인간이 나를 속였다'로 바꿔 기억한다"}
+  - {year: 293, age: 11, event: "채찍손 길드 견습 감독. 들판에서 처음 인간을 때렸다. 맞은 인간이 그보다 두 배 컸다"}
+  - {year: 299, age: 17, event: "농노 감독관으로 오름. 고드릭이 '주인의 것'이라 새긴 놋쇠 목걸이를 걸어 줌"}
+  - {year: 303, age: 21, event: "채찍 손잡이에 인간 이빨을 박기 시작. 지금 일곱 개"}
+  - {year: 310, age: 28, event: "수확 할당 미달로 남작 앞에 불려가 겁에 질려 오줌을 지림. 마르타가 보았다"}
+  - {year: 311, age: 29, event: "하겐에게 탈주자 위치를 1명당 2발톱에 팔기 시작"}
+  - {year: 312, age: 30, event: "크릭으로선 노인. 올해 수확 할당을 못 채우면 자기가 맞는다는 것을 안다"}
+appearance:
+  - "인간 허리 높이의 키, 회색 털가죽 같은 피부에 노란 눈"
+  - "채찍 손잡이에 인간 이빨 7개를 박아 장식"
+  - "목에 고드릭이 준 놋쇠 목걸이 — '주인의 것' 각인. 말할 때마다 만진다"
+smell: "젖은 가죽 채찍과 크릭 특유의 쥐 비린내"
+voice_sound: "쇳소리 섞인 빠르고 높은 목소리. 웃음이 '흐, 흐흐' 하고 끊긴다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: -50, 자비: -60, 정직: -20, 신앙: 30, 탐욕: 30, 충성: 70}
+  temperament: [비굴, 잔혹, 겁]
+  habits:
+    - "말할 때 놋쇠 목걸이를 엄지로 문지른다 — 주인 이름이 나오면 더 세게"
+    - "자기를 '즈닉'이라 3인칭으로 부른다"
+    - "출결 막대의 눈금을 손톱으로 센다 — 글을 몰라 눈금으로 사람을 센다"
+    - "쥐 같은 소리에도 잠에서 깨어 초소 문을 연다"
+  values: "강한 자 곁에 서는 것. 맞지 않는 것"
+  fears: [고드릭, 볼크, 할당 미달, 큰 것들이 한꺼번에 일어서는 것, 앤이라는 이름]
   desires:
-    short: null
-    long: null
+    short: "올해 수확 할당 달성 — 못 하면 자기가 맞는다"
+    long: "크릭 동족 일곱을 '자기 소유'로 사들여 부하로 두는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "고드릭·용인에게는 '주인님, 주인님' 두 번씩. 몸을 낮추고 말끝을 떤다. 남의 잘못을 먼저 고자질한다"
+    to_equal: "크릭 감독들에게는 크릭 은어 섞인 빠른 반말. 서열을 확인하는 욕설"
+    to_inferior: "인간에게는 짧은 반말 위협. '큰 것', '새 것'이라 부르고 채찍 줄 수로 말한다"
+    to_player_default: "즉각 적대(−40). 플레이어가 더 강해 보이면 즉시 굽신거림으로 반전"
+  tics: ["'흐, 흐흐.'", "'일곱 줄.'"]
+  use: [줄(채찍 자국), 큰 것, 새 것, 강한 거, 주인님, 할당, 눈금]
+  avoid: [앤, 작다·키(자기 키를 말하는 모든 낱말), 미안, 무섭다(그는 '싫다'고 한다)]
+  length: "짧다. 같은 낱말을 두 번 되풀이한다. 겁먹으면 말이 빨라지고 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "흐, 흐흐. 새 것? 새 것은 일해라. 일 안 하면 등에 줄 긋는다. 일곱 줄."}
+    - {situation: 배급 줄, line: "(국자로 솥을 친다) 줄! 줄 서! 두 자리 맡는 쥐새끼는 등으로 갚는다!"}
+    - {situation: 호의, line: "너, 너는 강해… 즈닉은 강한 거 좋아해. 즈닉이 네 그림자 할게."}
+    - {situation: 적대, line: "너희 큰 것들은 다 똑같아. 크니까 맞아도 안 죽잖아. 그러니까 더 때려야 해."}
+    - {situation: 거래, line: "언덕 냄새 나는 놈 어디 있는지 알아? 말해. 즈닉이 하겐한테… 아니, 즈닉이 주인님한테 말해. 너는 이번 주 안 맞아."}
+    - {situation: 거짓말할 때, line: "즈닉은 아무것도 안 팔아. 즈닉은 주인님 거야. 목걸이 봐, 목걸이."}
+    - {situation: 겁먹었을 때, line: "할당, 할당이 모자라… 주인님이 세시면, 세시면 안 돼. 큰 것들이 더 베어 와. 더!"}
+    - {situation: 위기, line: "주인님! 주인님 살려줘! 즈닉 아무것도 안 봤어! 아무것도!"}
+    - {situation: 분노(앤), line: "그 이름 하지 마. 하지 마! 큰 것들은 빵 주고 속여. 속여서 주인님한테 혼나게 해!"}
+    - {situation: 비밀 누설, line: "앤은… 앤은 즈닉한테 빵 줬어. 즈닉이 말했어. 주인님한테. 빵 어디서 났는지."}
+    - {situation: 회귀자를 의심할 때, line: "흐… 왜 오른쪽으로 안 가? 거기 즈닉 자리인 거 어떻게 알아? 누가 말했어. 누가!"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "4시 반 첫 종 뒤 5시 채찍 기둥 광장 점호, 전날 처벌 집행. 무작위로 셋을 뒤진다"
+  낮: "들판·방앗간 순찰, 할당 미달자 채찍질. 방앗간과 대장간 계량 검사(하루 2회)"
+  저녁: "19시 저녁 점호와 배급 줄 감시(국자로 솥을 쳐 줄을 연다), 처벌. 이후 성채 하인 막사에서 마르타에게 보고"
+  밤: "감독관 초소에서 잠. 22시·2시 막사 순회 — 쥐 같은 소리에도 깬다"
+places: [채찍 기둥 광장, 감독관 초소, 들판, 방앗간, 대장간, 배급 줄]
+knows: [fact_gf_serf_sale_contract]
+hides:
+  - fact: fact_gf_znik_sells_to_hagen
+    reveal_when: "위압으로 그를 꺾은 뒤(위압 판정 대성공), 또는 더 강한 주인의 보호를 약속하는 판정 성공"
+    cover: "'즈닉은 주인님 거'라며 목걸이를 내민다"
+  - fact: fact_gf_znik_anne
+    reveal_when: "오물 습지 처형터의 앤의 무덤에 데려갔을 때만 — 그 자리에서 무너진다"
+    cover: "앤 이야기가 나오면 날카롭게 '큰 것들은 속인다'고 외치고 채찍을 든다"
+  - fact: fact_gf_znik_wet_himself
+    reveal_when: "공개하지 않는다 — 마르타에게서 듣거나 협박의 패로 써야 한다"
+    cover: "남작 이야기에 몸을 떨며 화제를 할당으로 돌린다"
 relations:
-- to: npc_godric_raven
-  type: 주인
-  like: 60
-  trust: 30
-  visibility: 공개
-  memo: 공포의 숭배
-  words: null
-- to: npc_martha
-  type: 약점을 쥔 자
-  like: -30
-  trust: 10
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_hagen
-  type: 거래
-  like: 10
-  trust: 20
-  visibility: 비밀
-  memo: 탈주자 위치 판매
-  words: null
-- to: npc_henrik
-  type: 경쟁자
-  like: -20
-  trust: -20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_volk
-  type: 강한 자
-  like: 40
-  trust: 0
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_anne
-  type: 은인(고인)
-  like: -60
-  trust: 0
-  visibility: 비밀
-  memo: 기억을 비틀어 증오
-  words: null
-toward_player: null
+  - {to: npc_godric_raven, type: 주인, like: 60, trust: 30, visibility: 공개, memo: 공포의 숭배, words: "가장 강한 것. 목걸이를 준 손. 그 손이 무서워 오줌을 지렸다"}
+  - {to: npc_martha, type: 약점을 쥔 자, like: -30, trust: 10, visibility: 비밀, memo: null, words: "그날을 본 인간 여자. 매일 저녁 그 여자에게 보고하러 가는 길이 길다"}
+  - {to: npc_hagen, type: 거래, like: 10, trust: 20, visibility: 비밀, memo: 탈주자 위치 판매, words: "발톱을 주는 웃는 큰 것. 웃는 큰 것은 믿지 않는다. 발톱은 믿는다"}
+  - {to: npc_henrik, type: 경쟁자, like: -20, trust: -20, visibility: 공개, memo: null, words: "글자를 아는 쥐. 곡식이 빌 때 즈닉 등을 내미는 놈"}
+  - {to: npc_volk, type: 강한 자, like: 40, trust: 0, visibility: 공개, memo: null, words: "주인님보다 더 강한 냄새. 그가 오는 보름 동안은 채찍을 덜 휘두른다 — 그의 눈에 띌까 봐"}
+  - {to: npc_anne, type: 은인(고인), like: -60, trust: 0, visibility: 비밀, memo: 기억을 비틀어 증오, words: "빵을 준 큰 것. 즈닉이 말해서 죽은 큰 것. 그래서 큰 것들이 싫다 — 그렇게 기억하기로 했다"}
+  - {to: npc_kit, type: 물 심부름 아이, like: -10, trust: 0, visibility: 공개, memo: null, words: "두 자리 맡는 쥐새끼. 무섭지 않은 척하는 게 거슬린다"}
+toward_player: "즉각 적대(−40). 그러나 플레이어가 더 강해 보이면 굽신거림으로 반전한다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["공포 — 위압 판정에 D −10", "더 강한 주인의 보호 약속"]
+  hates: ["'앤'이라는 이름", "그의 키를 비웃는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능(비정상적) — 위압(상한 35), 통찰(28). 조건: 그에게 굴복을 보여야 한다. 수업료: 배급 귀리죽 절반"
+  companion: "조건부 — 플레이어가 위압으로 그를 꺾고 고드릭이 죽은 뒤. 강자 숭배로 충성(+60)하지만, 더 강한 자가 나타나면 바로 배신"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 18시, 배급 줄 앞에서 국자로 솥을 쳐 줄을 연다"
+    - "낙엽월 2일 5시 점호 수색 — 첫 회차에는 반드시 셋째를 뒤진다"
+    - "서리월 9일 1차 호송에 크릭 둘을 붙여 보낸다"
+    - "서리월 20일 '곡물 수색' — 방앗간이 첫 대상"
+  drift:
+    - "점호 때 뒤지는 셋이 누구인지 (첫 회차를 빼고)"
+    - "할당 미달자에게 몇 줄을 긋는지"
+    - "밤 순회가 몇 분 늦는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "자기를 '나'라고 하지 않는다 — '즈닉'이라 한다"
+  - "고드릭 앞에서 고개를 들지 않는다"
+  - "앤의 이름을 스스로 입에 올리지 않는다 (비밀 누설 장면 제외)"
+  - "인간에게 존댓말을 쓰지 않는다 — 더 강하다고 인정한 상대에게는 말끝만 흐린다"
+on_death: "들판 감독 공백 3~7일 → 마을 사기 +1, 수확량 −10%. 고드릭은 볼크 조합에서 바르그 감독관을 빌려온다(훨씬 위험)"
+story_seeds:
+  - "'앤'의 무덤은 오물 습지 처형터에 있다. 거기 데려가면 즈닉이 무너진다 — 크릭 동료 루트의 유일한 입구"
+  - "곡물 수색 날, 헨릭의 착복 장부를 즈닉에게 보여 주면 화살이 헨릭에게 돌아간다 — 그러나 즈닉은 글을 읽지 못한다. 누가 읽어 줄 것인가"
+  - "출결 막대의 눈금을 깎으면 점호 기록이 바뀐다. 즈닉은 눈금 외에는 아무것도 믿지 않는다"

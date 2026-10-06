@@ -1,102 +1,124 @@
 id: npc_kit
 name: 키트
-aka: []
+aka: [가마 둘, 거위 꼬마]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 10
 region: 회색여울 변경
-home: null
+home: 강변 움막 12호
 job: 스물여섯째 줄의 동생 (회귀점의 고정 인물)
-rank: null
-summary: 레이번가 농노의 아이. **1차 매각 명단 스물여섯째 줄** — 헨릭이 "하르벡(담보)"으로 적었다. 호송 서리월 9일 (회귀점에서 38일)
+rank: 레이번가 농노의 아이. 1차 매각 명단 스물여섯째 줄 — 헨릭이 "하르벡(담보)"으로 적었다. 호송 서리월 9일 (회귀점에서 38일)
+summary: 셋째의 소매를 잡고 있는 열 살 동생. 매 회차 명단에 있고, 자기가 몇 번 구해졌는지 모른다
 source: docs/world/CHARACTERS.md:945
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 302, age: 0, event: "강변 움막 12호에서 태어남. 정수리에 가마가 둘 — 게르다는 '복이 둘'이라 했다. 오스릭이 이마에 물을 부어 세례를 줌"}
+  - {year: 305, age: 3, event: "셋째 등에 업혀 들판에 나가기 시작함. 지금도 잘 때 셋째 등에 이마를 댄다"}
+  - {year: 307, age: 5, event: "거위 우리 일을 받음. 즈닉의 출결 막대에 처음 그의 눈금이 새겨짐"}
+  - {year: 309, age: 7, event: "이삭줍기 중 보리 이삭을 소매에 숨겼다가 들킴. 태형 3. 그날 밤 울지 않았다고 지금도 자랑한다"}
+  - {year: 310, age: 8, event: "앞니 둘이 빠졌는데 새 이가 덜 남. 웃으면 혀가 보인다"}
+  - {year: 311, age: 9, event: "굶주림월, 아버지 우도가 방앗간 수문에 끼여 죽음. 번호 묘지에 조약돌 셋을 놓았다"}
+  - {year: 312, age: 10, event: "수확월, 즈닉의 물 심부름을 맡아 성채 부엌 뒷문을 드나들기 시작함"}
+  - {year: 312, age: 10, event: "포도월 그믐 저녁, 성채 부엌 뒤에서 '가마 둘인 강변 꼬마'가 명단에 들었다는 말을 들음. 아무에게도 말하지 않았다"}
+  - {year: 312, age: 10, event: "낙엽월 1일 18:00, 셋째의 소매를 잡고 배급 줄에 서 있다 (회귀점)"}
+appearance:
+  - "덜 난 앞니 — 웃을 때 혀가 보인다"
+  - "셋째가 입던 누더기를 두 번 접어 입는다"
+  - "정수리의 가마가 둘 — 헨릭의 손가락이 거기서 멈춘다"
+smell: "거위 깃털, 여울강 물, 마른 보리 이삭"
+voice_sound: "높고 조금 쉰 아이 목소리. 앞니 사이로 'ㅅ' 소리에 바람이 샌다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: 40, 정직: -10, 신앙: 10, 탐욕: 0, 충성: 90}
+  temperament: [씩씩, 눈치, 고집]
+  habits:
+    - "셋째의 소매를 잡는다 — 줄에서도, 어둠에서도, 무서울 때는 더 세게"
+    - "무서우면 휘파람을 불려다 앞니 사이로 바람만 샌다"
+    - "빵을 받으면 반으로 갈라 큰 쪽을 내민다"
+    - "자는 척을 잘한다 — 숨을 일부러 길게 쉬고 눈꺼풀을 떨지 않는다"
+  values: "형/누나 옆에 있는 것. 엄마가 웃는 것. 거위를 하나도 잃지 않는 것"
+  fears: [즈닉의 출결 막대 (무섭지 않은 척한다), 헨릭의 차가운 손가락, 혼자 남는 것, 엄마의 기침이 멎지 않는 밤]
   desires:
-    short: null
-    long: null
+    short: "형/누나의 자리를 맡아 주는 것. 맞지 않는 것"
+    long: "어른 되면 거위 말고 말을 키울 거야"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·크릭 앞에서는 입을 다문다. 물으면 '예.' 하나. 눈은 땅"
+    to_equal: "아이들끼리 반말. 허풍이 섞인다 — '나 태형 세 대 맞고도 안 울었어'"
+    to_inferior: "그에게 '아래'는 거위뿐이다. 거위에게 이름을 붙여 부르고 꾸짖는다"
+    to_player_default: "{player.형누나}에게 반말. 졸졸 따라다니며 묻는다. 거짓말은 형/누나를 위해서만 한다"
+  tics: ["'{player.형누나},'로 말을 시작한다", "'내가 맡아 둘게.'"]
+  use: [빵, 거위, 말(馬), 엄마, 냄새, 맡아 둔다, 큰 쪽]
+  avoid: ["명단 (그 낱말을 입에 올리지 않는다 — '거기', '그거')", "운다 (대신 '안 울어')", 어른 말투]
+  length: "짧다. 질문이 많다. 신이 나면 숨도 안 쉬고 길게 말한다"
+  samples:
+    - {situation: 회귀점, line: "(소매를 잡고) {player.형누나}, 빵 냄새 난다."}
+    - {situation: 줄을 벗어날 때, line: "내가 맡아 둘게."}
+    - {situation: 밤(흙바닥의 글자를 보고), line: "{player.형누나}, 그거 뭐야?"}
+    - {situation: 회귀 직후 셋째의 얼굴을 보고, line: "{player.형누나}, 왜 그래? 체했어?"}
+    - {situation: 위기, line: "안 울어. 안 울 거야. …{player.형누나}, 나 어디 가?"}
+    - {situation: 호의, line: "큰 쪽 가져. 나는 작은 거 좋아. 진짜야. 작은 게 더 빨리 먹어져."}
+    - {situation: 거짓말(즈닉에게 형/누나를 감쌀 때), line: "우리 {player.형누나}는 배가 아파서 갔어요. 금방 와요. 자리 맡아 놨어요. 보세요, 여기."}
+    - {situation: 겁먹었을 때, line: "안 무서워. 막대기는 그냥 나무야. …근데 오늘 눈금 몇 개 그었어?"}
+    - {situation: 화났을 때, line: "왜 엄마 빵을 가져가! 엄마 거야! …때려. 나 때려. 엄마 말고."}
+    - {situation: 슬플 때, line: "아빠는 물레바퀴 소리가 좋다고 했어. 이제 방앗간 지나가면 귀 막아."}
+    - {situation: 비밀 누설, line: "…나 알아. 거기 내 이름 있는 거. 부엌 뒤에서 들었어. 말하면 {player.형누나}가 또 그 얼굴 할까 봐."}
+    - {situation: 마음을 열었을 때, line: "어른 되면 거위 말고 말 키울 거야. 말은 겁나면 겁난 티를 낸대. 나처럼. 그러니까 말이 좋아."}
+    - {situation: 회귀자를 의심할 때, line: "{player.형누나}, 어떻게 알았어? 나 아직 말 안 했는데. …또 꿈 꿨어?"}
+    - {situation: 비 오는 날(표류), line: "(지붕 새는 자리에서 흥얼거리다 멈춘다) …몰라. 그냥 나와. 엄마 노래 아니야."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
+  아침: "점호, 거위 우리와 이삭줍기"
+  낮: "들일 보조, 즈닉의 물 심부름 (성채 부엌 뒷문을 지난다)"
+  저녁: "6시 배급 줄, 셋째의 소매를 잡고"
+  밤: "움막 12호, 셋째 옆 — 무릎을 가슴까지 끌어당기고 셋째 등에 이마를 댄다"
+places: [강변 움막 12호, 거위 우리, 들판, 성채 부엌 뒷문, 절름발이 수탉 배급 줄]
 knows: []
-hides: []
+hides:
+  - fact: fact_gb_kit_heard_first
+    reveal_when: "셋째가 명단 이야기를 먼저 꺼낸 뒤의 밤 장면, 또는 '비밀 지켜 주기'(설득 +15)를 한 번 받은 뒤"
+    cover: "그 이야기가 나오면 거위 이야기를 한다. 너무 밝게 웃는다"
+  - fact: fact_gb_kit_rain_song
+    reveal_when: "비 오는 날 움막 12호 (표류 전용 `rain_on_hut12`) — 플레이어가 그 노래를 묻는다"
+    cover: "'그냥 나와'라고 하고 입을 다문다"
 relations:
-- to: npc_gerda
-  type: 어머니
-  like: 95
-  trust: 90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_znik
-  type: 무서운 감독
-  like: -40
-  trust: -30
-  visibility: 공개
-  memo: 무섭지 않은 척
-  words: null
-- to: npc_bram
-  type: 누룽지를 주는 아저씨
-  like: 40
-  trust: 35
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_fayne
-  type: 처마 위의 형
-  like: 30
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_henrik
-  type: 정수리를 짚은 손
-  like: -30
-  trust: -20
-  visibility: 일방
-  memo: 이유를 모른다
-  words: null
-- to: npc_sara
-  type: 성채 누나
-  like: 35
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_gerda, type: 어머니, like: 95, trust: 90, visibility: 공개, memo: null, words: "엄마. 기침 소리로 엄마가 어디 있는지 안다. 엄마 빵은 엄마가 먹어야 한다"}
+  - {to: npc_znik, type: 무서운 감독, like: -40, trust: -30, visibility: 공개, memo: 무섭지 않은 척, words: "막대기에 눈금 긋는 크릭. 안 무서운 척한다. 진짜 안 무섭다. …조금 무섭다"}
+  - {to: npc_bram, type: 누룽지를 주는 아저씨, like: 40, trust: 35, visibility: 공개, memo: null, words: "누룽지 주는 아저씨. 다리에서 '똑' 소리가 나서 오는 걸 미리 안다"}
+  - {to: npc_fayne, type: 처마 위의 형, like: 30, trust: 20, visibility: 공개, memo: null, words: "처마 위의 형. 뭐든 안다. 근데 공짜는 없대"}
+  - {to: npc_henrik, type: 정수리를 짚은 손, like: -30, trust: -20, visibility: 일방, memo: 이유를 모른다, words: "정수리를 짚은 손. 왜 거기서 멈췄는지 모른다. 손가락이 차가웠다"}
+  - {to: npc_sara, type: 성채 누나, like: 35, trust: 30, visibility: 공개, memo: null, words: "성채 누나. 부엌에서 노래를 흥얼거린다. 줄에 설 사람이 아닌데 왔다"}
+toward_player: "첫 만남이 없다. 회귀점에 그는 이미 셋째의 소매를 잡고 있다. 형/누나는 알지만, 자기를 몇 번 구했는지는 모른다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["같이 있어 주기", "빵 반쪽", "비밀 지켜 주기"]
+  hates: ["두고 가는 것 — 그는 따라온다"]
 roles:
   teacher: null
-  companion: null
+  companion: "조건부 — 도주 시 동행 (은신 판정에 아이 보정 −10, 대신 '잠든 척' 대성공 시 검문 무시)"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점에 이미 셋째의 소매를 잡고 있다: '{player.형누나}, 빵 냄새 난다.'"
+    - "매 회차 1차 명단 스물여섯째 줄에 있다 — 서리월 9일 호송까지 38일 (회귀점의 사실). 인물 수첩의 매듭 38개가 다시 묶인다"
+    - "셋째가 줄을 벗어나면 '내가 맡아 둘게' 하고 자리를 지킨다. 15분 안에 돌아오지 않으면 즈닉의 태형 3 (`kit_covered_for_you`)"
+  flow:
+    - "첫 밤 01:40 무렵 깨어 흙바닥의 금을 보고 묻는다 — 그 시각은 스니의 순회와 함께 조금 흔들린다"
+    - "낙엽월 3일 여울강 나루, 세베로의 사자가 머릿수를 세는 줄에 선다"
+    - "첫 비 오는 날(대개 낙엽월 6~11일) 지붕 새는 자리에서 옛 노래를 흥얼거린다"
+  drift:
+    - "그날 거위가 한 마리 없어지는지"
+    - "즈닉이 그날 키트의 눈금을 몇 번 짚는지"
+    - "셋째 등에 이마를 대고 자는지, 등을 돌리고 자는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "지난 회차를 기억하지 않는다. 자기를 몇 번 구했는지 모른다"
+  - "'명단'이라는 낱말을 스스로 입에 올리지 않는다"
+  - "셋째를 두고 가면 따라온다 — 말려도 따라온다"
+  - "{player.형누나} 호칭은 엔진이 채운다"
+  - "열 살의 말, 열 살의 셈으로 말한다. 어른의 체념을 말하지 않는다"
+on_death: "셋째에게 가장 깊은 상실 후보 (20 §4). 게르다 건강 −20. 매각되면 세렌 '소금 나루' 행 — SCENARIOS O-05 「밀수선의 짐칸」에 그가 있을 수 있다. 회귀하면 그는 다시 소매를 잡고 있다"
+story_seeds:
+  - "헨릭의 '하르벡'은 담보라는 뜻이다 — 키트는 체납금 4발톱의 담보로 명단에 올랐다. 그 낱말을 아는 회차부터 흥정이 달라진다 (14 §6.5)"
+  - "그를 열두 살까지 살린 회차는 업적 `ACH-37 키트에게로`가 된다 — 다른 갈래에서는 잔향이 그를 고를지도 모른다 (SCENARIOS §6.5)"
+  - "「익숙한 길」로 빼낸 회차의 키트는 맷돌 밑에서 웃는다. 그 웃음을 몇 번 봤는지는 당신만 안다 (20 §10.2)"
+  - "숙적 그로드가 셋째의 약점을 찾는 회차, 목줄단 '혀'가 그에게 키트의 이름을 판다 (17 §2.2 「키트의 목줄」)"

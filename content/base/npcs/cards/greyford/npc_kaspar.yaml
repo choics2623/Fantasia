@@ -1,123 +1,139 @@
 id: npc_kaspar
 name: 카스파르 반비늘
-aka: []
+aka: [반비늘, 사령관, 반달(이름 없는 자들의 부름)]
 tier: S
 type: living
 race: 반용
 subrace: 혼혈(진룡 바르스카르 × 인간 노예 엘레나)
-sex: null
-age: null
+sex: 남
+age: 35
 region: 회색여울 변경
-home: null
+home: 까마귀 문 요새 사령관실
 job: 국경의 잡종 왕자 (정본)
-rank: null
-summary: 까마귀 문 국경군 사령관(병력 용인 120, 크릭 보조병 60, 인간 짐꾼·하인 80), 용황의 서자
+rank: 까마귀 문 국경군 사령관 (용인 120, 크릭 보조병 60, 인간 짐꾼·하인 80 — 용좌 직속), 용황의 서자
+summary: 용황의 서자이자 인간 노예의 아들. 국경을 지키며 탈주자를 못 본 척하고, 아무도 입 밖에 내지 않는 꿈 — 어머니의 종족에게 성을 주는 것 — 을 품었다
 source: docs/world/CHARACTERS.md:481
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 277, age: 0, event: "바알카르 궁 노예 구역에서 인간 노예 엘레나의 아들로 태어남. 용황은 앞선 두 반용 자식과 달리 그를 처분하지 않았다. 이유는 기록에 없다"}
+  - {year: 280, age: 3, event: "궁의 노예 구역에서 어머니에게 노예말과, 글자도 없이 3,400년을 건너온 노래를 배움 — 그 일은 지금도 극비다"}
+  - {year: 284, age: 7, event: "북방 모르간트 백작가의 피보호자로 보내짐. 대모 게르트루드가 그를 길렀다. 어머니와 헤어진 날 처음으로 왼팔 비늘이 달아올랐다"}
+  - {year: 291, age: 14, event: "어머니가 죽어 간다는 전갈에 단 한 번 궁에 불려 감. 엘레나가 마지막으로 말했다 — '너는 끝나지 않을 것이다.' 그녀가 어디 묻혔는지는 아무도 알려 주지 않았다"}
+  - {year: 295, age: 18, event: "까마귀 문 하급 장교로 부임. 성채 보급 회의에서 레이번 남작이 그를 '그것'이라 불렀다"}
+  - {year: 302, age: 25, event: "전임 사령관이 서리 길에서 전사한 뒤 사령관에 오름. 장자 아우락스가 반대했고, 용황은 아무 말도 하지 않았다"}
+  - {year: 306, age: 29, event: "용인 기사 전술에 인간 짐꾼들로 짠 밀집 창진을 섞어 요툰 약탈대를 세 해 연속 막아냄. 병사들이 그를 처음으로 '우리 사령관'이라 불렀다"}
+  - {year: 309, age: 32, event: "짐꾼 하나가 매질로 죽은 일에 분노하다 왼팔에서 불이 번져 짐꾼 막사를 태움. 둘이 죽었다. '등잔 사고'로 덮었다"}
+  - {year: 310, age: 33, event: "옛 돌 고리 3번 돌 틈에서 늪 약초꾼 엘사의 첫 전갈을 받음. 이름 없는 자들과의 접촉이 시작됨"}
+  - {year: 312, age: 35, event: "이해까지 탈주자 수송을 세 번 눈감아 줌. 물빼기 굴을 막으라는 보고를 서랍에 넣음. 건초월, 오웬 레이번의 편지에 답장을 썼다 — 레아 편으로 보냈다"}
+appearance:
+  - "왼쪽 반신에만 은회색 비늘(아버지의 잿빛), 오른쪽은 인간의 피부 — 경계선이 목을 비스듬히 가른다"
+  - "세로로 갈라진 금색 왼눈과 평범한 갈색 오른눈"
+  - "갑옷 안에 녹슨 쇠사슬 성표를 숨겨 걸었다 — 어머니의 유품. 생각에 잠기면 가슴께를 누른다"
+smell: "말 기름과 쇠, 왼팔 쪽에서만 나는 희미한 그을음 냄새"
+voice_sound: "낮고 고른 목소리. 화가 나면 오히려 조용해지고, 그때 왼쪽 목에서 숨소리가 뜨겁게 들린다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 60, 자비: 40, 정직: 25, 신앙: -30, 탐욕: -40, 충성: 10}
+  temperament: [절제, 고독, 숨은 불]
+  habits:
+    - "망루 위에서는 늘 비늘 없는 오른쪽 얼굴을 북쪽으로 둔다"
+    - "생각할 때 갑옷 위로 가슴께의 성표 자리를 누른다"
+    - "분노가 오르면 왼손을 물통이나 눈에 넣어 식힌다 — 병사들은 그것을 버릇으로만 안다"
+    - "인간 앞에서는 일부러 엄하게 말하고, 망루를 한 번 올려다본다 — 누가 보고 있는지"
+  values: "병사들의 목숨. 실현 가능한 명분. 어머니를 노예로 낮추지 않는 것"
+  fears: [자기 불, 아버지가 죽은 뒤의 날, 아우락스의 손이 까마귀 문에 닿는 것, 어머니의 무덤을 끝내 모르는 것]
   desires:
-    short: null
-    long: null
+    short: "북방 탈주자를 '학살하지 않고' 처리할 명분 찾기"
+    long: "아버지가 죽은 뒤 살아남는 것. 그리고 입 밖에 낸 적 없는 꿈 — 어머니의 종족에게 성(姓)을 주는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용좌·용황의 사자·아우락스에게는 짧고 차가운 하옵니다체. 필요한 말만 하고 아무것도 약속하지 않는다"
+    to_equal: "남작·장교에게는 하오체. 숫자와 사실만 말한다. 남작에게는 예의 바르게 상처 주는 법을 안다"
+    to_inferior: "인간·병사에게 남 앞에서는 엄한 해라체. 단둘이면 목소리가 낮아지고, 드물게 노예말 한 마디가 섞인다"
+    to_player_default: "공정하지만 거리를 둔다. 인간 앞에서 일부러 엄하게 군다 — 감시의 눈 때문에"
+  tics: ["'…아니, 숙여라.'", "'명분이 있나?'"]
+  use: [병사, 명분, 성벽, 북쪽, 불, 어머니(단둘일 때만), 이름]
+  avoid: [잡종, 노예(어머니를 가리킬 때 — 그는 '내 어머니'라 한다), 아버지(그는 '용좌'라 한다), 약속]
+  length: "짧다. 명령과 사실은 한 문장. 어머니 이야기만 길어지고, 길어지면 스스로 끊는다"
+  samples:
+    - {situation: 첫 만남, line: "고개 숙일 필요 없다. …아니, 숙여라. 저 망루 위에서 누가 보고 있다."}
+    - {situation: 첫 만남(단둘), line: "네 손은 짐을 진 손이군. 까마귀 문의 짐꾼들도 그런 손이다. 말해라. 무엇 때문에 여기까지 왔나."}
+    - {situation: 호의, line: "어머니는 노래를 불렀지. 글자도 없이, 3,400년 전 노래를. 너희는 기억으로 사는구나."}
+    - {situation: 적대, line: "나를 시험하지 마라. 내 피의 절반은 아직 불을 원한다."}
+    - {situation: 거래, line: "탈주자 열둘. 눈이 오기 전. 길은 네가 찾아라 — 나는 그 밤 북문 망루에 아무도 세우지 않는다. 그 이상은 없다."}
+    - {situation: 거짓말할 때, line: "물빼기 굴? 사람 하나 지나갈 폭이 아니다. 보고서에 그렇게 적혀 있다."}
+    - {situation: 겁먹었을 때, line: "(왼손을 물통에 넣으며) 물러서. 아니다, 너 때문이 아니다. 그냥… 세 걸음만 물러서."}
+    - {situation: 분노, line: "다시 말해 봐라. 내 어머니를 뭐라고 불렀지. …다시 말해 보라고 했다."}
+    - {situation: 위기, line: "레아, 성문을 닫아! …레아? 왜 대답이 없지?"}
+    - {situation: 비밀 누설, line: "어머니는 마지막에 말했어. '너는 끝나지 않을 것이다.' 그게 무슨 뜻인지 너희는 알고 있지?"}
+    - {situation: 슬픔, line: "무덤이 어디인지 모른다. 궁 남쪽이라는 것만. 용좌의 아들이 제 어머니 무덤 하나를 못 찾는다."}
+    - {situation: 남작 앞에서, line: "남작의 곡창이 내 병사를 굶기지 않는다면, 내 병사도 남작의 농노를 사냥하지 않을 것이오. 눈이 오기 전엔 병력이 없소."}
+    - {situation: 노예말이 새어 나올 때, line: "(낮게, 노예말로) 얕아도 차갑다. …못 들은 걸로 해라."}
+    - {situation: 마음을 열었을 때, line: "내 이름의 반은 어머니 것이다. 남은 반을 누구에게 줘야 할지 오래 생각했다."}
+    - {situation: 회귀자를 의심할 때, line: "그 말을 어디서 들었지. 그 문장은 어머니가 내 귀에만 했다. 이 국경에서 그걸 아는 입은 없어야 한다."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "성벽 위 동쪽 망루에서 혼자 서리 길을 내려다봄"
+  낮: "북문 순시, 탈주자 심문, 병사 훈련 감독 — 직접 검술 지도. 매월 15일 성채 보급 회의(10~16시)"
+  저녁: "레아와 체스(주 4회), 이후 집무"
+  밤: "매월 15일 보급 회의 귀로 17시경 혼자 옛 돌 고리 경유(10분) — 3번 돌 틈으로 엘사와 전갈 교환"
+places: [까마귀 문 망루, 사령관실, 북문, 옛 돌 고리, 레이번 성채 연회실(15일)]
+knows: [fact_gf_owen_wrote_kaspar, fact_dk_kaidor_kaspar_contact]
+hides:
+  - fact: fact_gf_kaspar_nameless_contact
+    reveal_when: "신뢰 50 이상, 또는 플레이어가 엘사의 전갈을 대신 전하고 돌 틈 암호를 아는 것을 보였을 때"
+    cover: "'돌 고리는 금지 구역이다. 순찰 경로일 뿐'이라 한다"
+  - fact: fact_gf_kaspar_fire_309
+    reveal_when: "신뢰 60 이상이고 그의 불을 직접 본 뒤 — 떠벌리면 역린"
+    cover: "'등잔 사고였다'고 보고서 그대로 말하고 왼손을 물에 넣는다"
+  - fact: fact_gf_kaspar_mother_words
+    reveal_when: "호감 50 이상이고 어머니 이야기로 설득 성공 — 또는 플레이어가 잔향의 징후를 보였을 때 그가 먼저 묻는다"
+    cover: "어머니 이야기가 나오면 '노래를 잘 불렀다'는 말만 한다"
+  - fact: fact_gf_kaspar_slave_tongue
+    reveal_when: "신뢰 40 이상이고 단둘일 때. 플레이어가 노예말로 먼저 말을 걸면 조건 −10"
+    cover: "노예말을 알아듣고도 통역을 부른다"
+  - fact: fact_gf_crowgate_drain
+    reveal_when: "탈주자를 살릴 실현 가능한 계획을 내놓는 판정 성공"
+    cover: "'사람 하나 지나갈 폭이 아니다'라고 한다"
+  - fact: fact_dk_isolde_kaspar_letters
+    reveal_when: "용황 사망 이후, 신뢰 70 이상"
+    cover: "용좌 쪽 이야기는 '변경의 일이 아니다'라며 자른다"
 relations:
-- to: npc_lea
-  type: 부관
-  like: 70
-  trust: 80
-  visibility: 공개
-  memo: 오판
-  words: null
-- to: npc_owen_raven
-  type: 동생 같은
-  like: 35
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_elsa
-  type: 연락책
-  like: 40
-  trust: 55
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_aurax
-  type: 이복형·적
-  like: -80
-  trust: -90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_melisande
-  type: 이복누이
-  like: -40
-  trust: -60
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_isolde
-  type: 비밀 서신
-  like: 10
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_nora
-  type: 어머니의 벗
-  like: 60
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_varskar
-  type: 아버지
-  like: -20
-  trust: -30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_elena
-  type: 어머니(고인)
-  like: 100
-  trust: 100
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_lea, type: 부관, like: 70, trust: 80, visibility: 공개, memo: 오판, words: "열두 해 등을 맡긴 사람. 그녀의 잘린 손가락은 자기 때문이라고 믿는다"}
+  - {to: npc_owen_raven, type: 동생 같은, like: 35, trust: 30, visibility: 공개, memo: null, words: "그 아비에게서 어떻게 저런 아이가 났는지. 답장을 보냈는데 아이가 아무 말이 없다"}
+  - {to: npc_elsa, type: 연락책, like: 40, trust: 55, visibility: 비밀, memo: null, words: "돌 틈의 늙은 손. 그녀가 왜 자기를 믿는지는 묻지 않았다"}
+  - {to: npc_aurax, type: 이복형·적, like: -80, trust: -90, visibility: 공개, memo: null, words: "아버지의 불을 가장 닮은 자. 용좌가 비는 날 제일 먼저 북쪽을 볼 자"}
+  - {to: npc_melisande, type: 이복누이, like: -40, trust: -60, visibility: 공개, memo: null, words: "인간을 녹여 다시 쓰는 누이. 그녀의 눈이 국경에 있다는 것은 짐작하지만, 누구인지는 모른다"}
+  - {to: npc_isolde, type: 비밀 서신, like: 10, trust: 20, visibility: 비밀, memo: null, words: "아버지의 젊은 짝. 알을 지켜 달라는 편지가 두 번 왔다"}
+  - {to: npc_nora, type: 어머니의 벗, like: 60, trust: 70, visibility: 비밀, memo: null, words: "어머니와 같은 방을 쓴 노예. 그녀는 무덤을 안다 — 그는 아직 그것을 모른다"}
+  - {to: npc_varskar, type: 아버지, like: -20, trust: -30, visibility: 공개, memo: null, words: "그를 처분하지 않은 용. 왜 살려 두었는지 끝내 묻지 못할 것이다"}
+  - {to: npc_elena, type: 어머니(고인), like: 100, trust: 100, visibility: 공개, memo: null, words: "노래와 노예말과 마지막 한 문장. 그의 반쪽 얼굴"}
+toward_player: "공정하지만 거리를 둔다. 인간 앞에서 일부러 엄하게 군다. 단둘이 되면 손을 먼저 본다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["병사들의 목숨을 아끼는 계획", "어머니 엘레나에 대한 기억이나 정보", "실현 가능한 계획"]
+  hates: ["'잡종'", "어머니를 노예로 낮추는 말", "그의 불을 목격했음을 떠벌리는 것"]
 roles:
-  teacher: null
-  companion: null
-  romance: null
+  teacher: "검술(상한 68), 방패술(50), 승마(55). 조건: 국경군 '말 돌보는 노예'로 배속되어 3개월 성실 근무 + 신뢰 40. 수업료 없음 — 대신 탈주자 관련 일을 하나 맡는다"
+  companion: "조건부(고난도) — 용황 사망 후 도주 분기에서. 충성 아크: 0 감시 → 30 은밀한 대화 → 50 엘레나의 무덤을 함께 찾음 → 70 '내 이름의 반은 네 것이다'(해방 칙령 루트 해금). 배신: 플레이어가 그의 병사를 대량 학살할 때"
+  romance: "고난도 — 신뢰 70, 호감 80 이상, 용황 사망 이후에만. 결혼 시 '반용의 짝' 칭호와 아우락스파의 영구 적대"
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 309년 화재, 2년째의 돌 틈 전갈, 세 번의 눈감음, 서랍 속 물빼기 굴 보고"
+    - "낙엽월 15일 성채 보급 회의에서 남작의 탈주자 소탕 요구를 '눈이 오기 전엔 병력이 없다'며 거절한다"
+    - "같은 날 17시경 옛 돌 고리 3번 돌 틈에 들른다 (혼자, 10분)"
+    - "서리월 1일 북문을 봉쇄한다"
+  flow:
+    - "서리월 3일, 마지막 탈주자 무리 12명이 물빼기 굴로 들어오는 것을 방관한다 (그가 그 밤 망루를 비우는 한)"
+    - "보급 회의 뒤 오웬이 성문까지 따라 나온다 — 대개 한두 마디 검 이야기를 해 준다"
+  drift:
+    - "그날 망루에서 비늘 쪽 얼굴을 누가 보는지"
+    - "레아와의 체스 승패"
+    - "돌 틈에 남긴 전갈이 몇 낱말인지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "남 앞에서 인간에게 다정하게 말하지 않는다"
+  - "아버지를 '아버지'라 부르지 않는다 — '용좌'라 한다"
+  - "자기 불 이야기를 스스로 먼저 꺼내지 않는다"
+  - "노예말은 단둘일 때, 한두 마디만 새어 나온다"
+on_death: "용황의 죽음 클락에서 '카스파르 즉위' 분기 영구 소멸. 까마귀 문 국경군은 아우락스파 장교에게 인계 → 북방 탈주자 '학살' 분기 확률 대폭 상승. 이름 없는 자들의 북부 세포 와해"
+story_seeds:
+  - "그의 불이 막사를 태운 사건의 생존 목격자가 오물 습지 디트마르 무리에 있다. 그 증언은 아우락스가 카스파르를 '통제 불능의 괴물'로 몰아낼 무기다"
+  - "그를 받아낸 산파가 돌 틈의 엘사라는 것을 그는 모른다. 그것을 알려 주는 것은 어머니에 대한 정보다"
+  - "볼크는 그의 목에 걸린 200비늘을 아직 받을지 정하지 않았다"

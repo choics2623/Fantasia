@@ -1,109 +1,130 @@
 id: npc_bran
 name: 브란
-aka: []
+aka: [눈썹 없는 브란, 대장장이]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 45
 region: 회색여울 변경
-home: null
+home: 성채 바깥 대장간 뒷방
 job: 쇠를 숨기는 대장장이
-rank: null
-summary: 성채 소유 대장간 노예(숙련 장인 — 시장가 14 비늘)
+rank: 성채 소유 대장간 노예 (숙련 장인 — 시장가 14비늘)
+summary: 낫을 두드리며 낫마다 쇠를 반 돈씩 깎아 창날을 벼리는 사내. 아내를 빌려간 성채에 불을 지를 날을 센다
 source: docs/world/CHARACTERS.md:579
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 267, age: 0, event: "바알카르 대장간 노예 구역에서 대장장이 욘의 아들로 태어남. 아스테리아 대장장이의 피를 잇는 '망치아래' 집안"}
+  - {year: 279, age: 12, event: "아버지에게 망치질 횟수와 담금질 시간을 노래 박자로 외우는 법을 배움 — 별강철의 박자. 마지막 단계는 아버지도 몰랐다"}
+  - {year: 285, age: 18, event: "레이번 가에 숙련 대장장이로 팔려 옴. 아버지는 두르강 잿모루 씨족에 '임대'되어 갔다"}
+  - {year: 290, age: 23, event: "봄, 성채 세탁 하녀 그레타와 혼인. 남작 부인 로웨나가 몰래 허락해 준 마지막 혼례였다. 그해 겨울 부인은 재열병으로 죽었다"}
+  - {year: 296, age: 29, event: "화로 사고로 눈썹과 속눈썹이 모두 탐. 다시 나지 않았다"}
+  - {year: 301, age: 34, event: "아버지 욘이 잿모루 씨족 갱도에서 죽었다는 전갈. 시신은 돌아오지 않았다"}
+  - {year: 305, age: 38, event: "그레타가 '고드릭의 손님'인 용인 귀족의 마차에 실려 감. '빌려간다'고 했다. 그 밤 그는 그녀의 머리카락을 꼬아 목에 감았다"}
+  - {year: 306, age: 39, event: "마구간의 늙은 군나르와 저녁마다 '말 이야기'를 시작 — 실은 말채찍으로 하는 검술 교습"}
+  - {year: 308, age: 41, event: "즈닉의 쇠 무게 검사를 속이는 법을 찾음 — 낫마다 0.5돈. 그해 첫 창날을 벼림"}
+  - {year: 311, age: 44, event: "습지의 디트마르에게 주 1회 창날을 넘기기 시작. 군나르와 봉기의 날을 재의 날 둘째 날로 정함"}
+  - {year: 312, age: 45, event: "창날 23개 — 목표 40. 검술은 아직 18. 싸울 사람이 디트마르 무리밖에 없다는 것을 안다"}
+appearance:
+  - "오른팔이 왼팔보다 한 뼘 굵은 짝짝이 근육"
+  - "눈썹과 속눈썹이 모두 불에 타 없다 — 눈이 늘 놀란 것처럼 보인다"
+  - "목에 아내의 머리카락을 꼬아 만든 끈을 감았다"
+smell: "숯과 쇠 비린내, 담금질 물의 쉰내"
+voice_sound: "쇳가루에 긁힌 낮은 목소리. 모루 소리에 맞춰 말을 끊는다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 45, 자비: 20, 정직: 40, 신앙: -40, 탐욕: -10, 충성: 50}
+  temperament: [무뚝뚝, 끈질김, 타는 분노]
+  habits:
+    - "처음 보는 사람의 손부터 본다 — 굳은살이 있으면 말을 한 마디 더 한다"
+    - "말을 고를 때 목의 머리카락 끈을 손가락에 감는다"
+    - "망치질 횟수를 입속으로 센다. 노래처럼"
+    - "즈닉이 쇠 무게를 잴 때 절대 저울을 보지 않는다 — 대신 화로를 본다"
+  values: "말보다 손. 약속한 날. 그레타"
+  fears: [창날이 발견되는 것, 군나르가 봉기 전에 죽는 것, 그레타가 죽었다는 확인]
   desires:
-    short: null
-    long: null
+    short: "창날 40개 완성 (현재 23개, 슬래그 더미 아래)"
+    long: "봉기의 날 그 창이 쓰이는 것을 보는 것. 그리고 아내를 빌려간 성채에 불을 지르는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용인·크릭에게는 '예.' 한 마디. 눈은 맞추지 않고 손을 멈추지 않는다"
+    to_equal: "농노에게는 짧은 반말. 쇠와 불에 빗대어 말한다"
+    to_inferior: "아이(풀무 소년 칼레)에게는 무뚝뚝하지만 한 번 더 설명해 준다"
+    to_player_default: "무뚝뚝(호감 0). 손을 보고 판단한다 — 굳은살이 있으면 +10"
+  tics: ["'손 보여 봐.'", "'쇠는 거짓말 안 해.'"]
+  use: [쇠, 불, 손, 무게, 날, 망치, 담금질, 빌려가다(그레타를 말할 때)]
+  avoid: [신, 기도, 도망간 여자, 희망, 장난감]
+  length: "아주 짧다. 한두 마디. 그레타 이야기와 봉기 이야기만 세 문장을 넘는다"
+  samples:
+    - {situation: 첫 만남, line: "손 보여 봐. …흙손이군. 쇠는 흙보다 무겁다. 그래도 들 수는 있지."}
+    - {situation: 첫 만남(굳은살 없는 손), line: "손이 깨끗하군. 깨끗한 손은 대장간에 볼일이 없다. 가라."}
+    - {situation: 호의, line: "이건 너 주려고 두드렸다. 칼날 한 뼘. 세렌에서라면 합법이지. 여기선 목이 날아가고."}
+    - {situation: 적대, line: "화로에 손 넣어 본 적 있나? 나는 매일 넣는다. 너 하나 집어넣는 건 일도 아니야."}
+    - {situation: 거래, line: "잿빛 표 셋. 아니면 엘사가 보증하든가. 쇠는 공짜로 안 식어."}
+    - {situation: 거짓말할 때, line: "쟁기날이다. 봄에 쓸 거. 즈닉한테 물어봐라, 무게 다 쟀다."}
+    - {situation: 겁먹었을 때, line: "즈닉이 오늘 세 번째 저울을 들고 왔다. 세 번째. …칼레, 슬래그 쪽으로 가지 마라. 오늘은."}
+    - {situation: 분노, line: "도망간 여자? 다시 말해 봐. 그 혀를 모루에 올려놓고 다시 말해 봐."}
+    - {situation: 위기, line: "슬래그 더미로 가! 창은 스물셋이다! 스물셋이면… 스물셋 명은 맨손이 아니다."}
+    - {situation: 비밀 누설, line: "그레타는 귀족 손님의 마차에 실렸어. '빌려간다'고 했지. 7년째 돌려주지 않는구나."}
+    - {situation: 슬픔, line: "아버지는 박자를 노래로 가르쳐 줬다. 마지막 소절은 아무도 몰라. 그 소절을 모르는 칼은 용 비늘을 못 벤다더군."}
+    - {situation: 봉기를 말할 때, line: "스물셋으로는 경비 열넷도 못 이긴다. 알아. 그래도 두드린다. 마흔이 되면 마흔한 번째를 두드리겠지."}
+    - {situation: 마음을 열었을 때, line: "네 무기는 내가 만든다. 네 손에 맞춰서. 그게 내가 할 수 있는 말 중에 제일 긴 말이다."}
+    - {situation: 회귀자를 의심할 때, line: "스물셋을 어떻게 알지. 나는 그 숫자를 군나르한테도 안 말했다. …누가 슬래그를 팠나?"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "6시부터 농기구·말굽 수리 할당 — 하루 낫 12자루"
+  낮: "화로 작업. 즈닉이 하루 두 번 쇠 무게를 잰다. 매주 4일째 경비 무기 손질"
+  저녁: "군나르와 마구간에서 '말 이야기' — 말채찍 검술"
+  밤: "23시 이후 주 1회, 달 없는 밤에만 화로 재 속에서 창날을 벼린다. 주 1회 대장간 뒤 숲에서 디트마르에게 넘긴다"
+places: [대장간, 슬래그 더미, 마구간 뒤, 대장간 뒤 숲]
+knows: [fact_gf_bran_greta_taken, fact_gf_elsa_nameless]
+hides:
+  - fact: fact_gf_bran_spearheads
+    reveal_when: "신뢰 30 이상 — 숨긴 창날 운반을 도운 뒤. 플레이어가 창날을 '장난감'이라 부르면 영구 봉인"
+    cover: "'쟁기날'이라 하고, 슬래그 더미 쪽으로 가는 사람의 길을 막아선다"
+  - fact: fact_gb_dietmar_bran_blades
+    reveal_when: "신뢰 40 이상, 또는 디트마르가 플레이어를 무리에 받아들인 뒤"
+    cover: "디트마르 이야기가 나오면 '습지 놈들은 쇠 볼 줄 모른다'고만 한다"
+  - fact: fact_gb_gunnar_uprising_day
+    reveal_when: "신뢰 50 이상이고 봉기에 대한 현실적 계획을 내놓는 판정 성공. 군나르가 먼저 말했다면 바로"
+    cover: "'재의 날엔 불을 안 피운다. 대장장이는 쉬는 날이지'라고만 한다"
+  - fact: fact_gb_gunnar_teaches_bran
+    reveal_when: "군나르가 플레이어를 제자로 받은 뒤"
+    cover: "'늙은이 말 이야기 들어 주는 거다'라고 한다"
 relations:
-- to: npc_gunnar
-  type: 스승·형님
-  like: 75
-  trust: 80
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_dietmar
-  type: 창의 고객
-  like: 30
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_znik
-  type: 감시자
-  like: -70
-  trust: -10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_godric_raven
-  type: 원수
-  like: -90
-  trust: -50
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_sara
-  type: 그레타를 닮음
-  like: 40
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_elsa
-  type: 동지
-  like: 30
-  trust: 45
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_greta
-  type: 아내(생사 모름)
-  like: 100
-  trust: 100
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_gunnar, type: 스승·형님, like: 75, trust: 80, visibility: 비밀, memo: null, words: "등의 새김을 본 몇 안 되는 사람. 그의 말채찍 아래서 처음으로 칼이 쇠 말고 다른 것이라는 걸 배웠다"}
+  - {to: npc_dietmar, type: 창의 고객, like: 30, trust: 20, visibility: 비밀, memo: null, words: "창을 받아 가는 유일한 손. 그 손이 무엇을 찌를지는 묻지 않는다 — 묻고 싶지 않다"}
+  - {to: npc_znik, type: 감시자, like: -70, trust: -10, visibility: 공개, memo: null, words: "하루 두 번 저울을 드는 쥐. 그 저울이 반 돈을 못 잡는 한 살려 둔다"}
+  - {to: npc_godric_raven, type: 원수, like: -90, trust: -50, visibility: 공개, memo: null, words: "아내를 빌려준 자. 성채에 불을 지르는 날 연회실부터"}
+  - {to: npc_sara, type: 그레타를 닮음, like: 40, trust: 40, visibility: 공개, memo: null, words: "세탁장에서 손이 갈라진 하녀. 웃을 때 그레타처럼 입을 가린다"}
+  - {to: npc_elsa, type: 동지, like: 30, trust: 45, visibility: 비밀, memo: null, words: "무기를 맡길 사람을 보증해 주는 노파. 그녀가 고개를 끄덕이면 쇠를 내준다"}
+  - {to: npc_greta, type: 아내(생사 모름), like: 100, trust: 100, visibility: 공개, memo: null, words: "목에 감은 머리카락. 7년째 돌려받지 못한 사람"}
+toward_player: "무뚝뚝하다. 손을 보고 판단한다. 말보다 일 — 숯을 날라 주면 다음 날 말이 조금 길어진다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["봉기에 대한 현실적 계획", "고드릭에 대한 복수", "아내의 행방 정보 (+40)"]
+  hates: ["아내를 '도망간 여자'라 부르는 것", "창날을 '장난감'이라 하는 것"]
 roles:
-  teacher: null
-  companion: null
-  romance: null
+  teacher: "제작(대장, 상한 58), 둔기(30), 지구력(40). 조건: 숨긴 창날 운반을 도움. 수업료: 쇠 부스러기, 숯"
+  companion: "가능 — 봉기 분기 또는 탈주 시. 충성 아크: 0 무뚝뚝 → 30 대장간 비밀 공유 → 50 그레타 이야기, 행방 수색 의뢰 → 70 '네 무기는 내가 만든다'(전용 무기 제작). 배신 없음. 단, 고드릭을 죽일 기회가 오면 명령을 무시하고 돌진(통제 판정 D45)"
+  romance: "가능(느리게) — 그레타의 생사가 확인된 이후에만. 호감 70"
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "회귀점의 사실: 슬래그 더미 아래 창날 23개와 단검 4자루, 군나르와 정한 봉기의 날"
+    - "하루 낫 12자루, 즈닉의 쇠 무게 검사 하루 두 번"
+    - "저녁마다 군나르와 마구간 뒤 '말 이야기'"
+  flow:
+    - "달 없는 밤 주 1회 화로 재 속에서 창날 하나를 더 벼린다 — 대개 낙엽월에 둘, 서리월에 셋"
+    - "주 1회 디트마르에게 창날을 넘긴다. 굶주림월 3일 습격에서 그 창날이 막대에 묶인 창 아홉이 된다"
+  drift:
+    - "어느 밤이 달 없는 밤인지 (구름과 날씨)"
+    - "즈닉의 저울이 그날 반 돈을 잡을 뻔하는지"
+    - "칼레가 슬래그 더미 쪽으로 심부름을 가는 날"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "그레타를 '도망갔다'고 말하지 않는다 — '빌려갔다'고 한다"
+  - "창날 수를 남에게 먼저 말하지 않는다"
+  - "용인에게 '예' 이상의 말을 하지 않는다"
+  - "신에게 비는 말을 하지 않는다"
+on_death: "봉기 무기 공급 중단 — 회색여울 봉기 성공률 −20%. 군나르가 칼을 다시 잡는 계기(군나르 '분노' 상태)"
+story_seeds:
+  - "그레타는 살아 있다 — 바알카르 발레리우스 화염문 저택의 세탁 노예로. 브란은 아직 모른다 (fact_dk_greta_is_brans_wife)"
+  - "별강철의 마지막 단계에는 대지의 진명 한 마디를 쇠에 말해 넣어야 한다. 브란이 하면 죽는다. 잔향이라면 대가 없이 할 수 있다"
+  - "창날 23개로는 용인 경비 14명도 이기기 어렵다 — 봉기의 첫 준비이자 학살의 씨앗"
