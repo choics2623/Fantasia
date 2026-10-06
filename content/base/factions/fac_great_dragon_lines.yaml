@@ -57,7 +57,7 @@ offices:
     note: "도둑맞은 알 사건이 공개되면 세렌과 반목한다 (HOUSES §6.3)"
   - id: off_gromak
     title: 검댕 혈통의 가장 오래된 용 — 그로마크
-    holder: "unnamed:그로마크 검댕 — 2,900세"   # TODO-NPC
+    holder: npc_gromak   # 그로마크 검댕 — 2,900세 (은자 X-01)
     reports_to: off_no_assembly
     powers: ["검은 유리 둥지 — 지금은 같은 하루를 반복해서 산다", "계승 입장 없음"]
     chosen_by: "혈통상 가장 오래된 용 — 그러나 그의 혈통은 사실상 그 혼자다"

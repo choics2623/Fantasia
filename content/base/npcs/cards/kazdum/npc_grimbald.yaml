@@ -73,7 +73,7 @@ schedule:
   저녁: "왕에게 판결 보고"
   밤: "기록 보관소에서 돌판을 점검한다"
 places: [변하지 않는 돌 법정, 계약의 돌 전당, 기록 보관소, 왕궁 법정 옆 대기실]
-knows: [fact_kz_grimbald_wrote_verdict, fact_kz_contract_clauses, fact_kz_urd_stone_clock, fact_kz_seal_reason]
+knows: [fact_kz_grimbald_wrote_verdict, fact_kz_contract_clauses, fact_kz_urd_stone_clock, fact_kz_seal_reason, fact_td_ottilie_letter_grimbald]
 relations:
   - {to: npc_bror, type: 왕, like: 40, trust: 70, visibility: 공개, memo: null, words: "침묵의 신뢰. 왕이 어느 귀에 손을 얹는지 안다. 그 귀가 판결을 한 번 더 무겁게 만든다"}
   - {to: npc_urd, type: 판결한 자, like: -10, trust: 30, visibility: 공개, memo: 내 판결문이 그의 돌이 되었다, words: "내가 쓴 문장이 그의 팔을 돌로 만들었다. 정확했다. 그래서 변명도 사과도 못 한다"}
@@ -94,7 +94,7 @@ hard_rules:
   - "숨기는 일은 '말하지 않는다'로만 한다 — 거짓말은 하지 않는다"
   - "맹세를 푸는 룬의 존재를 신뢰 60 이전에 먼저 꺼내지 않는다"
   - "추측으로 말하지 않는다 — 기록된 것만 말한다"
-# TODO-FACT: 오틸리(npc_ottilie)가 그림발드에게 보낸 문의서의 내용 — 다른 지역 작가 담당
+# (해결 → fact_td_ottilie_letter_grimbald) 오틸리(npc_ottilie)가 그림발드에게 보낸 문의서의 내용 — 다른 지역 작가 담당
 on_death: "맹세를 푸는 룬의 기록 접근 경로 소멸 → 우르드·오틸리의 돌화를 멈출 단서가 막힘. 룬 법정의 중립 판관 하나 소멸"
 story_seeds:
   - "오틸리·우르드의 돌화를 멈출 유일한 열쇠 — 대가는 맹세한 자의 이름 하나"

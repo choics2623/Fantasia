@@ -224,116 +224,117 @@
 ## 3. 열린 모순 — NPC 카드·세력·1차 확장 작업에서 보고됨 (2026-10)
 
 > 작가들은 카드·데이터 안에서 임시로 맞춰 두었고 원 문서는 고치지 않았다. 결정 후 원 문서(CHARACTERS·REGIONS·HOUSES·RACES 등)를 고친다.
+> **4차 패스(2026-10)**: 아래 각 줄 끝 '→ [해결]'에 고친 곳을 적었다. 3.x 결정과 우선순위 규칙을 따랐고, 카드에서 이미 합리적으로 푼 것은 원 문서로 옮겼다. 새 사실은 `content/base/facts/todo_resolved.yaml`(fact_td_*).
 
 ### 그롬마르·무소속·역사 (15)
-1. 브리프 오류: "다라 존댓말, 첫 불씨 반말" — 15는 반대(다라 반말, 첫 불씨 해요체). 15를 따름.
-2. 탈 AS258에 44세 vs 우르가쉬(61) 당시 7세, "30년 눈 없이 이김" vs 258 잠적 → 선대 군주가 묶고 우르가쉬가 물려받음, 실명 AS282.
-3. 마라 87승 vs 6일 1경기 → 정식 대진/시범 경기로 나눔.
-4. 투사 막사: CHARACTERS 쇠사슬 우리 1,500 vs REGIONS 백 개의 문 2,400.
-5. 회색 여인 정체: CHARACTERS 시드 선택 ⓐ~ⓓ vs HOUSES §5.2 소문 3종. 바알카르 세포장 노라 vs 두더지 안셀마.
-6. 외팔 로크(47) 할아버지가 AS100 붉은 길 생존자 — 세대 안 맞음.
-7. 성 마렌 성별 미정 → 여성. HOUSES(엘다르가 불러 준 경전 낭독) vs ITEMS(펜) → "글을 숨겼다".
-8. 우르가쉬(251)·무르크(260) 같은 어미 형제인데 아종 다름.
-TODO-FACT: 고즈 탈영 그롬(재의 황무지), 레아가 엘레나의 자장가 구슬(회색여울), 로크 집안의 다라 전승(잿불).
+1. 브리프 오류: "다라 존댓말, 첫 불씨 반말" — 15는 반대(다라 반말, 첫 불씨 해요체). 15를 따름. → **[해결]** 원 문서 수정 불필요 — 15 §2·§18과 카드가 이미 같다(다라 반말, 첫 불씨 해요체).
+2. 탈 AS258에 44세 vs 우르가쉬(61) 당시 7세, "30년 눈 없이 이김" vs 258 잠적 → 선대 군주가 묶고 우르가쉬가 물려받음, 실명 AS282. → **[해결]** CHARACTERS R16-02 비밀에 'AS 258 선대 군주가 묶음 → AS 268 우르가쉬가 물려받음 → AS 282 실명' 추가. 탈 카드 AS 241→243(HOUSES §4.4 아들 카렐과 함께 팔려 옴).
+3. 마라 87승 vs 6일 1경기 → 정식 대진/시범 경기로 나눔. → **[해결]** CHARACTERS R16-03 일정: 정식 대진은 한 달 남짓에 한 번, 나머지는 시범 경기.
+4. 투사 막사: CHARACTERS 쇠사슬 우리 1,500 vs REGIONS 백 개의 문 2,400. → **[해결]** CHARACTERS #16 장소: 쇠사슬 우리 = REGIONS '백 개의 문', 투사 약 2,400(봉기에 따를 이 약 1,500).
+5. 회색 여인 정체: CHARACTERS 시드 선택 ⓐ~ⓓ vs HOUSES §5.2 소문 3종. 바알카르 세포장 노라 vs 두더지 안셀마. → **[해결]** HOUSES §5.2: 소문 ①~③은 세상 안의 소문, 정체는 CHARACTERS 시드 선택 ⓐ~ⓓ. 노라 = 바알카르 등잔, 안셀마 = 그 아래 심지(HOUSES 요원표·CHARACTERS R00-01·facts·wanderers 카드).
+6. 외팔 로크(47) 할아버지가 AS100 붉은 길 생존자 — 세대 안 맞음. → **[해결]** '할아버지' → 6대조(AS 100), '300년째' → 이백 년 넘게, '3대째 낙인' → 대물림 (CHARACTERS R03-04, 로크·다라 카드, emberhills 사실, fac_darason).
+7. 성 마렌 성별 미정 → 여성. HOUSES(엘다르가 불러 준 경전 낭독) vs ITEMS(펜) → "글을 숨겼다". → **[해결]** CHARACTERS H-05 '여사제', HOUSES §4.6 '글을 알았으나 평생 숨김 — 깃펜을 몰래 간직'.
+8. 우르가쉬(251)·무르크(260) 같은 어미 형제인데 아종 다름. → **[해결]** SUBRACES §11.2: 붉은 그롬 어미에게서 전쟁 그롬이 나기도 한다(우르가쉬·무르크는 같은 어미).
+TODO-FACT: 고즈 탈영 그롬(재의 황무지), 레아가 엘레나의 자장가 구슬(회색여울), 로크 집안의 다라 전승(잿불). → **[해결]** 고즈 → fact_aw_goz_deserter(무르크 knows), 구슬 → 새 fact_td_lea_elena_beads(레아 knows), 다라 전승 → fact_eh_rok_dara_words. 카드 주석 '해결 →'으로 바꿈.
 ### 회색여울 A (16)
-- 시그리드 출신 씨족: HOUSES 바위배 vs CHARACTERS·흐로스가르드 사실 돌무릎(바우그) → 돌무릎.
-- 리즈 나이: HOUSES 13 vs CHARACTERS 14.
-- 헨릭 수금: CHARACTERS 주 1회 vs REGIONS 주 2회.
-- 즈닉 감독관: REGIONS "8명" 이라 하고 7명만 나열.
-- 알베릭(58)이 오스릭(67)의 동기 → 오스릭 늦깎이 신학교 입학.
-- 엘사 AS261 바알카르 도주 vs 277 카스파르 출산을 받음 → 가명.
-- 마르타 문맹인데 명단을 "고쳐 씀" → 글자 모양을 베낌.
-TODO-FACT: 재날개 둥지 장로들이 고드릭의 불법 매각 37건을 앎 / 멜리산드가 레아에게 회색여울 영지를 약속 / 펠릭스는 루멘 정화청 밀고자.
+- 시그리드 출신 씨족: HOUSES 바위배 vs CHARACTERS·흐로스가르드 사실 돌무릎(바우그) → 돌무릎. → **[해결]** HOUSES §3.5에 돌무릎 씨족 행 추가, 바위배 비밀·토르 출신 수정, REGIONS §13.3에 돌무릎 추가, fac_frosthand·fac_jotun 수정.
+- 리즈 나이: HOUSES 13 vs CHARACTERS 14. → **[해결]** HOUSES §4.5·fac_collar_house → 리즈(14).
+- 헨릭 수금: CHARACTERS 주 1회 vs REGIONS 주 2회. → **[해결]** CHARACTERS R02-03 '보호비 주 1회 — 뒷문 뇌물까지 주 2회', REGIONS §2.11 '주 2회 중 한 번이 보호비'.
+- 즈닉 감독관: REGIONS "8명" 이라 하고 7명만 나열. → **[해결]** REGIONS §2.3 '크릭 감독 7명 지휘 — 즈닉까지 8명'.
+- 알베릭(58)이 오스릭(67)의 동기 → 오스릭 늦깎이 신학교 입학. → **[해결]** CHARACTERS R02-10 비밀 ①에 '서른 늦깎이, AS 275 동기' 추가.
+- 엘사 AS261 바알카르 도주 vs 277 카스파르 출산을 받음 → 가명. → **[해결]** CHARACTERS R02-14 비밀 ③에 'AS 272부터 다른 이름으로 궁 산파' 추가.
+- 마르타 문맹인데 명단을 "고쳐 씀" → 글자 모양을 베낌. → **[해결]** CHARACTERS R02-11 비밀 ②에 '글자 모양을 베껴 넣음', 16 §(사라 이름) 문구 보강.
+TODO-FACT: 재날개 둥지 장로들이 고드릭의 불법 매각 37건을 앎 / 멜리산드가 레아에게 회색여울 영지를 약속 / 펠릭스는 루멘 정화청 밀고자. → **[해결]** 재날개 → fact_bk_morna_raven_leash(기존), 멜리산드 약속 → 새 fact_td_melisande_promised_lea(레아·멜리산드 knows), 펠릭스 → fact_lu_felix_informs_mateus(기존).
 ### 회색여울 B (16)
-- 사라가 엿들은 날: 14는 9.1 아침, REGIONS §2.14는 9.3 → 카드에서 두 번으로.
-- 셋째 나이: SCENARIOS·17 17세 vs 20 R6 '열여섯 해'.
-- 키트 호송일: CHARACTERS 서리월 9일 vs 20 §10.1 굶주림월 3일.
-- 20 R2 '서리월 11일 볼크 사냥대' vs REGIONS 볼크 9.30 출발.
-- 종지기: CHARACTERS 하인츠 vs REGIONS #7 베드로(70).
-- 그로드 "이름이 뭐냐"(17) vs 바르그 이름 묻기 금기.
-- (고침) 브람 카드: 리즈 14 vs 마르타 당시 16 → "두 살 어리다".
-- 에길 37일째 은신 vs 시그리드 무리 12일째 → 에길 일가는 선발대.
-TODO-FACT: 지그문트 가문 이름.
+- 사라가 엿들은 날: 14는 9.1 아침, REGIONS §2.14는 9.3 → 카드에서 두 번으로. → **[해결]** REGIONS §2.14 9.3 행: '다시 엿듣는다(처음은 9.1 아침 서재)'.
+- 셋째 나이: SCENARIOS·17 17세 vs 20 R6 '열여섯 해'. → **[해결]** 20 §(재회) '열일곱 해', 14 §0 '17세 농노', 15 §1·§9 '열일곱' (3.x-5).
+- 키트 호송일: CHARACTERS 서리월 9일 vs 20 §10.1 굶주림월 3일. → **[해결]** 20 §10.1 장부 예시·§11 한 줄 예시 → 서리월 9일 1차 호송.
+- 20 R2 '서리월 11일 볼크 사냥대' vs REGIONS 볼크 9.30 출발. → **[해결]** 20 R2 → 낙엽월 25일 볼크의 굶주린 언덕 대수색(REGIONS 9.25). 에길 카드 같이.
+- 종지기: CHARACTERS 하인츠 vs REGIONS #7 베드로(70). → **[해결]** REGIONS §2.9 #7 → 종지기 하인츠(63) (CHARACTERS 우선).
+- 그로드 "이름이 뭐냐"(17) vs 바르그 이름 묻기 금기. → **[해결]** 17 §2.1 장면에 '금기를 망신에 이성을 잃고 깬다' 한 줄 (그로드 카드 풀이 반영).
+- (고침) 브람 카드: 리즈 14 vs 마르타 당시 16 → "두 살 어리다". → **[해결]** 이미 카드에서 고침 — 원 문서와 충돌 없음.
+- 에길 37일째 은신 vs 시그리드 무리 12일째 → 에길 일가는 선발대. → **[해결]** CHARACTERS R02-24·REGIONS 9.1 행에 '에길 일가 = 선발대(37일째)' 명시.
+TODO-FACT: 지그문트 가문 이름. → **[해결]** 지그문트 = 하스크 가 방계(HOUSES §2.0 새 '바알카르 도시 가문' 단락, CHARACTERS R02-26, 카드).
 ### 북방·산맥·첨탑·초원 (26)
-- 키리에 210세 '210년 전 하강'(CHARACTERS) vs HOUSES '대붕괴 때 소녀' → 카드 'AS 132 젊은 날'.
-- 셀른 2,800세인데 '신살 전 에오르의 목소리를 들은 생존자' → '기억 노래를 물려받음'.
-- 바타르 9년째 정착 vs 결투 AS 290 → 13년 이동 후 9년 전 정착.
-- 오른: 본문 '아이' vs 색인 20세 → 20세.
-- 스카디르 남침: CHARACTERS '서리월 전' vs REGIONS '313 푸른월'. HOUSES 흐림니르 장자 '보른(400)'.
-- 바우그 씨족: CHARACTERS 돌무릎 vs REGIONS 돌팔 (HOUSES는 바위배 — 회색여울 A 보고).
-- 하르바(150)와 SUBRACES 흐로아 얼음깃(310) 관계 불명.
-- 하르칸 부족 수: CHARACTERS 19/17, REGIONS 14/11, RACES 40/31.
-- 계약 기간: RACES 7년, REGIONS 7~15년, HOUSES 10년, 페타르 40년 → 조항 연장.
-- 깊은 문(AS 311) 연 자: SUBRACES 오드 vs HOUSES 크라그.
-- 우르드: SUBRACES 새 맹세 불가 vs CHARACTERS 아크 70 새 맹세 → 돌화가 빨라지는 맹세.
-TODO-FACT 15건 (그라넥 곡물 거절, 카스파르 사신 수용, 스카디르 AS300 용인 기사, 시그리드 무리 현황, 서리손의 군데 구전, 볼크의 산장 지목, 위법 계약서 3장, 오틸리 문의서, 코르비나의 역행 별, 비스페르 이적, 오른의 회색여울 가족, 아래 정원, 정착병 약초, 보르테 흰갈기·소란의 어머니, 노예 시장 시세).
+- 키리에 210세 '210년 전 하강'(CHARACTERS) vs HOUSES '대붕괴 때 소녀' → 카드 'AS 132 젊은 날'. → **[해결]** 키리에 AS 102년생: CHARACTERS '210년 전' → 'AS 132', HOUSES §3.8·SUBRACES의 '대붕괴 때 본 소녀' 삭제 → 'AS 311에 하늘의 균열을 봄'. fac_aeri TODO 정리.
+- 셀른 2,800세인데 '신살 전 에오르의 목소리를 들은 생존자' → '기억 노래를 물려받음'. → **[해결]** CHARACTERS R12-07 → '기억 노래로 물려받음', '추방된 일족의 후손'.
+- 바타르 9년째 정착 vs 결투 AS 290 → 13년 이동 후 9년 전 정착. → **[해결]** CHARACTERS R15-03 일정에 '13년 떠돌다 AS 303 정착' 추가.
+- 오른: 본문 '아이' vs 색인 20세 → 20세. → **[해결]** CHARACTERS R14-03(타일라) 비밀 '인간 아이' → '스무 살 청년'.
+- 스카디르 남침: CHARACTERS '서리월 전' vs REGIONS '313 푸른월'. HOUSES 흐림니르 장자 '보른(400)'. → **[해결]** CHARACTERS R13-02 목표에 '실제 계획은 313 푸른월' 추가. HOUSES 흐림 씨족 '장자 보른(400)' → 왕자 스카디르(190).
+- 바우그 씨족: CHARACTERS 돌무릎 vs REGIONS 돌팔 (HOUSES는 바위배 — 회색여울 A 보고). → **[해결]** 돌무릎으로 통일(위 회색여울 A와 같음). 돌팔은 REGIONS의 별개 씨족.
+- 하르바(150)와 SUBRACES 흐로아 얼음깃(310) 관계 불명. → **[해결]** SUBRACES 서리 와이번 대표 인물에 하르바 추가(흐로아 아래 구역장), CHARACTERS R13-08 보강, 하르바 카드 TODO 정리.
+- 하르칸 부족 수: CHARACTERS 19/17, REGIONS 14/11, RACES 40/31. → **[해결]** 19개 중 17 복속으로 통일: RACES §11(19/17, 작은 무리까지 약 40), SUBRACES, REGIONS §15.3, fac_harkan.
+- 계약 기간: RACES 7년, REGIONS 7~15년, HOUSES 10년, 페타르 40년 → 조항 연장. → **[해결]** 기본 7년 + 연장 조항: HOUSES §3.3(보통 10년 남짓), REGIONS §12.4(드물게 40년), CHARACTERS 페타르 행.
+- 깊은 문(AS 311) 연 자: SUBRACES 오드 vs HOUSES 크라그. → **[해결]** SUBRACES: 오드가 열게 했고 빗장은 크라그가 들었다.
+- 우르드: SUBRACES 새 맹세 불가 vs CHARACTERS 아크 70 새 맹세 → 돌화가 빨라지는 맹세. → **[해결]** CHARACTERS R12-03 아크 70에 '돌화가 빨라지는 것을 알고 하는 맹세' 명시.
+TODO-FACT 15건 (그라넥 곡물 거절, 카스파르 사신 수용, 스카디르 AS300 용인 기사, 시그리드 무리 현황, 서리손의 군데 구전, 볼크의 산장 지목, 위법 계약서 3장, 오틸리 문의서, 코르비나의 역행 별, 비스페르 이적, 오른의 회색여울 가족, 아래 정원, 정착병 약초, 보르테 흰갈기·소란의 어머니, 노예 시장 시세). → **[해결]** 풂: 카스파르 사신 → fact_hg_hrimnir_envoy_kaspar, 서리손 군데 → fact_hi_gunde_hungry_child(아스타 knows), 볼크 산장 → fact_hg_volk_marked_lodge(마투쉬 knows), 오틸리 문의서 → 새 fact_td_ottilie_letter_grimbald, 코르비나 → fact_ar_retrograde_star, 비스페르 → 새 fact_td_vesper_left_windspire, 보르테 → 새 fact_td_soran_mother_borte, 에이나르 → fact_gf_sigrid_einar. 남김(있으면 좋은 것): 그라넥 거절, 스카디르의 기사, 시그리드 무리 현황, 위법 계약서 3장, 오른의 가족, 아래 정원, 정착병 약초, 노예 시장 시세.
 ### 모르바·세렌·녹테른 (26)
-1. 세실: 1,100세 vs 'SK~180에 마심'·'여섯 살'·'3,000년 기다림'. 코르사주 41송이(410명) vs REGIONS 311명·장미 311그루.
-2. 오다: CHARACTERS '8근원 전부' vs HOUSES §4.3 시간 금지 → 일곱 근원.
-3. 모르바 대표: REGIONS 알렉(뿌리마을) vs CHARACTERS 베른(진흙등불 340). 바위 외운 3,400년 vs 계보 300년. HOUSES 베른의 며느리 이다(45).
-4. 베아트릭스: 7년 탈피 vs RACES 30~40년. 채권 각 12만 vs 합계 9만. 의원 9명 vs 21명.
-5. 심해 사절 '수천 세' vs 수명 600~900 → 모라나 일곱허물. 붉은 해구 인간 금기 vs '말할 수 있는 인간' 요구.
-6. 사스카 공물과 SUBRACES 25년 '젖은 휴전' 공존 처리.
-TODO-FACT 다수 (엘사 진명 140, 아그네스 서신, 별강철, 은비늘 요람, 볼크 무리 학살 AS298, 회색 여인, 채무 규모, 타일라·키리에, 바울피 굴, 세렌 의원 표 성향 등).
+1. 세실: 1,100세 vs 'SK~180에 마심'·'여섯 살'·'3,000년 기다림'. 코르사주 41송이(410명) vs REGIONS 311명·장미 311그루. → **[해결]** CHARACTERS R07-02: SK 2,306 여섯 살 '피의 전수'로 마심, '천 년 넘게 기다림'. 410명으로 통일 — REGIONS §7 장미 410그루·명단 410.
+2. 오다: CHARACTERS '8근원 전부' vs HOUSES §4.3 시간 금지 → 일곱 근원. → **[해결]** CHARACTERS R08-01 → '시간을 뺀 일곱 근원'.
+3. 모르바 대표: REGIONS 알렉(뿌리마을) vs CHARACTERS 베른(진흙등불 340). 바위 외운 3,400년 vs 계보 300년. HOUSES 베른의 며느리 이다(45). → **[해결]** REGIONS §8.3에 진흙등불·베른 추가(대표 없음 — 사안마다 알렉 또는 베른). 이끼 바위 '3,400년' → 각문은 신살 무렵, 외운 것은 300년. HOUSES 이다 → '에베르트의 며느리'.
+4. 베아트릭스: 7년 탈피 vs RACES 30~40년. 채권 각 12만 vs 합계 9만. 의원 9명 vs 21명. → **[해결]** CHARACTERS R09-01 '일곱째 탈피 3년 지연'. 채권 각 12만(CHARACTERS 기준): REGIONS §9·HOUSES §3.4·§6.3·fac_seren·사실 수정. 의회 표 21 = 12의석 + 옛 아홉 비늘 표, 과반 11: HOUSES §3.4·REGIONS §9.3·RACES §10·CHARACTERS R09-03.
+5. 심해 사절 '수천 세' vs 수명 600~900 → 모라나 일곱허물. 붉은 해구 인간 금기 vs '말할 수 있는 인간' 요구. → **[해결]** 사절 = 약 400(우르텔의 사절, 모라나와 다른 나가): CHARACTERS R09-09, 카드. RACES 나가 금기 ④에 '심해가 요구한 인간 하나' 예외.
+6. 사스카 공물과 SUBRACES 25년 '젖은 휴전' 공존 처리. → **[해결]** SUBRACES 늪 와이번: 갈대 매듭 휴전과 진흙등불 공물 6명은 별개 계약.
+TODO-FACT 다수 (엘사 진명 140, 아그네스 서신, 별강철, 은비늘 요람, 볼크 무리 학살 AS298, 회색 여인, 채무 규모, 타일라·키리에, 바울피 굴, 세렌 의원 표 성향 등). → **[해결]** 풂: 엘사 140 → fact_gf_elsa_name_words, 아그네스 서신 → fact_mv_bern_agnes_link, 은비늘 요람 → fact_eh_cradle_experiment, 볼크 무리 → fact_nc_mordecai_volk_pack, 회색 여인 → fact_wd_grey_woman_identity_by_seed, 채무 → fact_sr_beatrix_both_sides(12만), 타일라 → fact_ws_tyla_wings_orn, 의원 표 → fact_sr_draft_votes_7_of_11(구조). 남김: 별강철, 바울피 굴, 의원별 성향.
 ### 실바렌·가시안개·아르카스·재의 황무지 (23)
-- 엘라스트리엘 예언: RACES 이실도르가 첫 예언자 vs CHARACTERS "그녀가 처음 봄" → "그녀가 보고 아버지가 말했다".
-- 오도 71세인데 AS241에 서른으로 입숲 → 101세.
-- 데인(AS286생)이 이세(AS287 사망) 임종 말을 들음 → 전해 들음.
-- 니블 900세 vs 픽시 수명 1~30년.
-- 잿빛 탑 17층 vs 7층. 이레네 170세 vs REGIONS 소문 210세.
-- 정원지기 2,000 vs 3,100. 피험 140 vs 70. 장난감 정원 70 vs 700. 마지막 등불 150 vs 600.
-- 엘린 "유일한 시간 알림이" vs 돌 세는 자들.
-- 스키마 밖 키 regression.deja_vu_steps 추가 (시간 민감 9명) → 22 문서에 정식 필드로.
-TODO-FACT: 엘린의 대역 페이 아이, 오틸리 맹세 푸는 법, 튀크 용심 조각·멜리산드, 성벽 소녀가 부르는 이름.
+- 엘라스트리엘 예언: RACES 이실도르가 첫 예언자 vs CHARACTERS "그녀가 처음 봄" → "그녀가 보고 아버지가 말했다". → **[해결]** 3.x-1 반영: CHARACTERS R05-01 비밀 ①, HOUSES §3.1.1·§3.1.4, RACES 유명 인물(SK 412 돌이 됨), fac_eldar·fac_seril_silence·truths_extra.
+- 오도 71세인데 AS241에 서른으로 입숲 → 101세. → **[해결]** CHARACTERS R06-04 → 101세(외모 30).
+- 데인(AS286생)이 이세(AS287 사망) 임종 말을 들음 → 전해 들음. → **[해결]** CHARACTERS R05-04 대사·데인 카드·silvaren 사실 → 이슬 우리 어른에게서 전해 들음.
+- 니블 900세 vs 픽시 수명 1~30년. → **[해결]** SUBRACES 픽시 수명에 니블 예외 명시.
+- 잿빛 탑 17층 vs 7층. 이레네 170세 vs REGIONS 소문 210세. → **[해결]** 17층으로 통일(REGIONS §10·HOUSES §5.8·fac_ashen_tower). REGIONS 소문 '210세' → 170세.
+- 정원지기 2,000 vs 3,100. 피험 140 vs 70. 장난감 정원 70 vs 700. 마지막 등불 150 vs 600. → **[해결]** 정원지기 3,100(CHARACTERS·HOUSES 수정), 피험 140(REGIONS §5 수정), 장난감 정원 70 ⊂ 가시안개 인간 700(REGIONS 표), 마지막 등불 600(CHARACTERS 수정).
+- 엘린 "유일한 시간 알림이" vs 돌 세는 자들. → **[해결]** CHARACTERS R06-03 일정 '시간 알림이 — 돌 세는 자들도 있다', thornmist 사실 수정.
+- 스키마 밖 키 regression.deja_vu_steps 추가 (시간 민감 9명) → 22 문서에 정식 필드로. → **[해결]** 22 §1에 이미 정식 필드(`deja_vu_steps`)로 있다.
+TODO-FACT: 엘린의 대역 페이 아이, 오틸리 맹세 푸는 법, 튀크 용심 조각·멜리산드, 성벽 소녀가 부르는 이름. → **[해결]** 오틸리 맹세 → fact_kz_oath_release_rune + 새 fact_td_ottilie_letter_grimbald. 남김: 엘린의 대역, 튀크 용심의 연결, 성벽 소녀의 이름(설계 결정 필요).
 ### 드라크마르·잿불·루멘 (28)
-1. 사망 3,214명 vs 아드리안 "다음 번호 2,872" — 번호 체계 불일치.
-2. 로크(AS265생) 할아버지가 AS100 붉은 길 생존자 불가, "300년째"도 안 맞음 (그롬마르 보고와 같은 건).
-3. 알베릭 수염 매듭 1,100개 "하루 하나" → 9년이면 사흘에 하나. HOUSES "탈옥 가능하나 안 한다" vs CHARACTERS 구출 작전.
-4. 아우락스 직접 처형 vs RACES 금기 ④. 카이도르 "원로 41석" vs HOUSES 원로석 9.
-5. 엘레나 사망: ~AS291(H-06) vs HOUSES "AS278 이후 기록 없음".
-6. 발레리우스 화염문(310)과 발레리우스 하스트란(334) 동명이인.
-- 스키마 밖 키 regression.deja_vu_notes (실바렌 묶음은 deja_vu_steps) → deja_vu_steps로 통일.
+1. 사망 3,214명 vs 아드리안 "다음 번호 2,872" — 번호 체계 불일치. → **[해결]** 아드리안 대사 '2,872' → '3,275'(대기 60 다음 번호): CHARACTERS R03-02, 카드.
+2. 로크(AS265생) 할아버지가 AS100 붉은 길 생존자 불가, "300년째"도 안 맞음 (그롬마르 보고와 같은 건). → **[해결]** 그롬마르 6번과 같은 수정.
+3. 알베릭 수염 매듭 1,100개 "하루 하나" → 9년이면 사흘에 하나. HOUSES "탈옥 가능하나 안 한다" vs CHARACTERS 구출 작전. → **[해결]** CHARACTERS R04-02 '사흘에 하나', R04-05 목표·HOUSES §5.3 '탈옥 가능하나 베라·낭독을 기다림 → 구출은 설득부터'.
+4. 아우락스 직접 처형 vs RACES 금기 ④. 카이도르 "원로 41석" vs HOUSES 원로석 9. → **[해결]** CHARACTERS R01-04 '금기 ④를 일부러 어긴다', R01-07 카이도르 → '원로석 9 아래 수석 행정관, 홰의 회랑(불꽃 홀 아래)'.
+5. 엘레나 사망: ~AS291(H-06) vs HOUSES "AS278 이후 기록 없음". → **[해결]** HOUSES §1.3 → 'AS 281 이후 공식 기록 없음 — ~291 사망'.
+6. 발레리우스 화염문(310)과 발레리우스 하스트란(334) 동명이인. → **[해결]** CHARACTERS R01-10·HOUSES §2.2에 동명이인 주석.
+- 스키마 밖 키 regression.deja_vu_notes (실바렌 묶음은 deja_vu_steps) → deja_vu_steps로 통일. → **[해결]** varskar 카드 주석 → deja_vu_steps (키는 이미 통일).
 ### 세력: 용족·용인 (14 세력)
-- 재상: REGIONS 세베린 타르굴 vs HOUSES 집사 세베리안 칼다란 → 별개 자리로.
-- 비늘 원로회 수장: RACES 세라핀 vs HOUSES 볼가스.
-- 파종월 대시장 운영: REGIONS 타르굴 vs HOUSES 사르코스.
-- 오렐리아 베스페린 vs 오렐리아 베르미온 동명.
-- 게르트루데가 엘레나를 앎 vs fact_hi_elena_grave(노라만 앎).
-- id 없는 이름 있는 수장: 세베리안, 발레리우스 둘, 드레크 반칼, 이삭 → 1차 확장에서 인물로.
+- 재상: REGIONS 세베린 타르굴 vs HOUSES 집사 세베리안 칼다란 → 별개 자리로. → **[해결]** 별개 자리 — HOUSES §2.0 새 단락, people/baalkar.md 주의.
+- 비늘 원로회 수장: RACES 세라핀 vs HOUSES 볼가스. → **[해결]** RACES §2 계승표: 원로회 수장 = 볼가스, 세라핀 = 순혈 첫 가문 수장.
+- 파종월 대시장 운영: REGIONS 타르굴 vs HOUSES 사르코스. → **[해결]** 대시장(쇠사슬 광장) = 사르코스, 상설 비늘 시장 = 타르굴: REGIONS §1.8·HOUSES §2.0.
+- 오렐리아 베스페린 vs 오렐리아 베르미온 동명. → **[해결]** people/baalkar.md 주의에 동명이인 명시.
+- 게르트루데가 엘레나를 앎 vs fact_hi_elena_grave(노라만 앎). → **[해결]** HOUSES §2.9: 게르트루드는 엘레나의 삶을 알지만 무덤은 모른다. fac_morgant 주석 정리.
+- id 없는 이름 있는 수장: 세베리안, 발레리우스 둘, 드레크 반칼, 이삭 → 1차 확장에서 인물로. → **[해결]** 세베리안·발레리우스 둘은 id 있음(fac_kaldaran 셋째 서랍 → npc_severian_kaldaran). 이삭 = npc_isaac. 드레크 반칼만 id 없음 — 남김(새 인물은 이 패스에서 만들지 않음).
 ### 세력: 다른 종족 + 인간 혈통 (21)
-- 엘다르 예언자: 아엘베린 vs 이실도르.
-- 두르강: 베라(누이) vs 힐다(딸), 돌 석상 412 vs 1,312.
-- 세렌: 열두 의석 / 아홉 비늘 / 21명 혼재 → 12+9=21표, 과반 11로 정리.
-- 요툰: 보른 vs 스카디르, 씨족 이름.
-- 키리에 210세 vs 대붕괴 312년 전.
-- 녹테른 혈목장주 이름 3종. 하르칸 부족 수 5/14/40.
-- 미정 세력 id: fac_aurax, fac_melisande, fac_kaspar (계승 진영) 파일 없음. fac_laugh_shards vs fac_fae.
-- 카드 소속 반영: hilda→fac_durgan, skadir→fac_jotun 왕자, rok→fac_darason 제7갱반장, greta→fac_underhammer, vera/gregor7→fac_lampkeepers, hiak/sahar 중복 소속.
-### 까마귀 문·용주 역참: 레아 전서구 CHARACTERS 비둘기장 vs REGIONS 까마귀 사육장 → 사육장 안 비둘기장. 신설 자리 제안: off_crowgate_quartermaster/jailer/clerk, off_road_post_checkpoint.
+- 엘다르 예언자: 아엘베린 vs 이실도르. → **[해결]** 이실도르로 통일(위).
+- 두르강: 베라(누이) vs 힐다(딸), 돌 석상 412 vs 1,312. → **[해결]** HOUSES §3.3: 힐다(88) = 깊은 문 조사 책임자, 베라 = 앞선 책임자. 석상 412(맹세 회랑) ⊂ 1,312(돌의 숲): RACES·SUBRACES·fac_durgan.
+- 세렌: 열두 의석 / 아홉 비늘 / 21명 혼재 → 12+9=21표, 과반 11로 정리. → **[해결]** 위 모르바 4번과 같은 수정.
+- 요툰: 보른 vs 스카디르, 씨족 이름. → **[해결]** 스카디르로 통일, 씨족은 위 돌무릎 수정.
+- 키리에 210세 vs 대붕괴 312년 전. → **[해결]** 위 북방 1번과 같은 수정.
+- 녹테른 혈목장주 이름 3종. 하르칸 부족 수 5/14/40. → **[해결]** 붉은 달 가문 가주 = 바실리사 붉은달(RACES·SUBRACES '바일란 붉은잔' 통일), 아드리엘 = 그 아래 붉은 우리 영주, 알라리크 = 검은성배 우리(REGIONS §7.3). 하르칸은 위.
+- 미정 세력 id: fac_aurax, fac_melisande, fac_kaspar (계승 진영) 파일 없음. fac_laugh_shards vs fac_fae. → **[해결]** 세력 파일 셋은 이미 있다. fac_laugh_shards(망명 결사)와 fac_fae(궁정) 참조를 모두 확인 — 뜻에 맞게 쓰였다. 잿가루는 fac_fae off_fallen(궁정 밖 자리)·fac_laugh_shards 양쪽.
+- 카드 소속 반영: hilda→fac_durgan, skadir→fac_jotun 왕자, rok→fac_darason 제7갱반장, greta→fac_underhammer, vera/gregor7→fac_lampkeepers, hiak/sahar 중복 소속. → **[해결]** 세력 파일에 반영됨. HOUSES §4.2(로크)·§4.6(베라)·§4.9(그레타) 구성원 줄에 추가.
+### 까마귀 문·용주 역참: 레아 전서구 CHARACTERS 비둘기장 vs REGIONS 까마귀 사육장 → 사육장 안 비둘기장. 신설 자리 제안: off_crowgate_quartermaster/jailer/clerk, off_road_post_checkpoint. → **[해결]** CHARACTERS R02-04·REGIONS 까마귀 문 → '사육장 안 비둘기장'. 제안 자리 4개를 fac_drakmar_empire에 정식 자리로(보급관 에르빈·서기 쉬릭·간수 베른·검문 하사 오르벡).
 ### 비밀 결사·은자 (13 조직 + 6 신설 결사 + 13 은자, T20~T23)
-- 여왕의 아버지 아엘베린 vs 이실도르 (반복). 등잔지기 하그로스 vs 할그림. 하겐 매각 11 vs 19. 계약 상환 4% vs 1.8%. 시렌나 1,100세 > 나가 수명. 문서 접두사 H- 가 CHARACTERS H-01~08과 겹침. 계승 진영 세력 파일 없음.
-- 은자 aeric/gromak/ashdust → fac_eldar/fac_great_dragon_lines/fac_fae 빈자리 후보.
+- 여왕의 아버지 아엘베린 vs 이실도르 (반복). 등잔지기 하그로스 vs 할그림. 하겐 매각 11 vs 19. 계약 상환 4% vs 1.8%. 시렌나 1,100세 > 나가 수명. 문서 접두사 H- 가 CHARACTERS H-01~08과 겹침. 계승 진영 세력 파일 없음. → **[해결]** 이실도르 통일. 할그림 반돌로 통일(HOUSES §5.13, fac_last_lantern). 하겐 19명(HOUSES §5.5, fac_grey_thread). 상환율 1.8%(공식 6%)(HOUSES §5.10, fac_inkscale). 시렌나 우델 약 300세(HOUSES §3.4, fac_seren). SECRETS_AND_HERMITS 색인 H- → X-01~X-13(카드·holders_secrets·세력 주석 포함). 계승 진영 파일 있음.
+- 은자 aeric/gromak/ashdust → fac_eldar/fac_great_dragon_lines/fac_fae 빈자리 후보. → **[해결]** fac_eldar off_silent_brother → npc_aeric, fac_great_dragon_lines off_gromak → npc_gromak, fac_fae off_fallen → npc_ashdust (카드 affiliation office도).
 ### 잿불 언덕 1차 (28명)
-- 갱도 REGIONS 140 vs 베르미온 41. 총감 REGIONS 하드리안 vs 베르미온 드루스. 크라즈·그락스 둘 다 38세 크릭 우두머리.
-- 경고의 날 태양월 12일 vs 다라손 '낙반의 날' 수확월. 은비늘 요람 승강기 직결 vs 지도 6h. 진룡 실바라 은재 npc 없음.
-- 자리 채움: off_chief_miner→druss_vermion, off_countess_cradle→aurelia_vermion, off_count→cassian_vermion, off_granddaughter→amelie_vermion, off_casualty_clerk→sorel_ink, off_gang_foreman→haro, off_collar_*→krom_ironeye, off_pit_head/lamp→caleb_dara, off_cook_aunt→dorte, off_marked_child→yana, off_song_keeper→mate_singer. 신설 제안: mine_marshal, gas_smith, black_nail_head, wick_embers.
+- 갱도 REGIONS 140 vs 베르미온 41. 총감 REGIONS 하드리안 vs 베르미온 드루스. 크라즈·그락스 둘 다 38세 크릭 우두머리. → **[해결]** 번호 갱 41 ⊂ 수평갱 140(REGIONS §3·HOUSES §2.6). 하드리안 = 멜리산드의 광산 총감(off_mine_marshal 신설), 드루스 = 베르미온 갱도 총감독 — 별개. 크라즈 = 지부장(off_black_nail_head 신설), 그락스 = 현장 총감독관(REGIONS §3.3).
+- 경고의 날 태양월 12일 vs 다라손 '낙반의 날' 수확월. 은비늘 요람 승강기 직결 vs 지도 6h. 진룡 실바라 은재 npc 없음. → **[해결]** REGIONS §3.8: 봉기 시작 = 수확월(낙반의 날), 경고의 날 = 이듬해 태양월 12일 마지막 기둥. 요람 6h는 바깥 갱도, 승강기 축은 직결(REGIONS §17 표 주석). 실바라 은재 npc 없음 — 남김(새 인물은 만들지 않음).
+- 자리 채움: off_chief_miner→druss_vermion, off_countess_cradle→aurelia_vermion, off_count→cassian_vermion, off_granddaughter→amelie_vermion, off_casualty_clerk→sorel_ink, off_gang_foreman→haro, off_collar_*→krom_ironeye, off_pit_head/lamp→caleb_dara, off_cook_aunt→dorte, off_marked_child→yana, off_song_keeper→mate_singer. 신설 제안: mine_marshal, gas_smith, black_nail_head, wick_embers. → **[해결]** 세력 파일에 이미 반영됨 확인. 신설 제안: off_mine_marshal·off_gas_smith·off_black_nail_head 정식 자리로, n_wick_embers(레오닉) 세포 마디 추가.
 ### 바알카르 1차 (35명, 81 사건, 계승 진영 3)
-1. 궁전 위치: CHARACTERS 잿날개 둥지(용좌봉) vs 세력 불꽃 홀(도시). 카이도르 원로 회랑 vs HOUSES 홰의 회랑 → 홀=도시 꼭대기, 둥지=봉우리. 봉우리 길 지도 13h(12km) vs 도보 약 5h.
-2. 대시장: REGIONS 타르굴 비늘 시장 vs HOUSES 사르코스 쇠사슬 광장 → 상설/대시장 분리.
-3. 크릭 감독 조합 둘: 굽은 등(스킥) vs 채찍손(니브) 관계 미정.
-4. 하스크·타르굴·베스페린·모르칸 가문이 REGIONS에만, HOUSES 열 가문엔 없음.
-5. 바렌 레이번 vs 바렌 하스크 동명. npc_oda 충돌 → npc_tilde.
-6. 새 정본: 에베르트가 AS271 누이(마르타의 어머니)를 밀고해 레이번 성채로 팔리게 함.
-- 자리 없는 인물: vix, cadel_hask, varen_hask, oswald, benno, noeul. 제안 자리: fac_nameless off_wick_baalkar_palace(tilde).
+1. 궁전 위치: CHARACTERS 잿날개 둥지(용좌봉) vs 세력 불꽃 홀(도시). 카이도르 원로 회랑 vs HOUSES 홰의 회랑 → 홀=도시 꼭대기, 둥지=봉우리. 봉우리 길 지도 13h(12km) vs 도보 약 5h. → **[해결]** 3.x-2 반영: CHARACTERS #1 장소·R01-07, REGIONS §1.10·§17 '13h는 짐 행렬, 걸어서 약 5h'.
+2. 대시장: REGIONS 타르굴 비늘 시장 vs HOUSES 사르코스 쇠사슬 광장 → 상설/대시장 분리. → **[해결]** 위 용족 세력 3번과 같은 수정.
+3. 크릭 감독 조합 둘: 굽은 등(스킥) vs 채찍손(니브) 관계 미정. → **[해결]** REGIONS §1.3·HOUSES §3.11: 굽은 등 = 바알카르 국유 노예 조합, 채찍손 = 대륙 길드 — 경쟁자.
+4. 하스크·타르굴·베스페린·모르칸 가문이 REGIONS에만, HOUSES 열 가문엔 없음. → **[해결]** HOUSES §2.0에 '바알카르 도시 가문' 단락 추가.
+5. 바렌 레이번 vs 바렌 하스크 동명. npc_oda 충돌 → npc_tilde. → **[해결]** people/baalkar.md 주의에 이미 있음. npc_tilde로 이미 고침.
+6. 새 정본: 에베르트가 AS271 누이(마르타의 어머니)를 밀고해 레이번 성채로 팔리게 함. → **[해결]** HOUSES §4.5 구성원·people/baalkar.md 에베르트 비밀 ④.
+- 자리 없는 인물: vix, cadel_hask, varen_hask, oswald, benno, noeul. 제안 자리: fac_nameless off_wick_baalkar_palace(tilde). → **[해결]** 자리 없는 인물은 문제 아님(소속은 rank로). 제안 자리 fac_nameless off_wick_baalkar_palace(틸데) 신설 + 세포 마디 n_wick_palace.
 ### 루멘 1차 (27명, 76 사건)
-1. (고침) 역참 순례단 3.14 → 3.8 (역참→루멘 55h, 3.11 도착에 맞춤).
-2. 요한 카드 40일 주기 vs presence 창 불일치.
-3. 숙소장 REGIONS 베르타 vs fac_light 아그네스 → 베르타는 실무자.
-4. 성 마렌 우물 안식일만 개방 vs 3.12 축일 개방.
-5. 장작 네 번 9.17/10.8/11.5/12.12로 확정.
-6. 루멘 부두 도착 10.17, 12.11 추정 (바알카르 12.10 출항까지만).
-7. 마르타의 '밀고 100건 → 리즈 하녀' 약속이 정화청 기록에 없다는 새 설정 vs 마르타 카드 '남작과 계약'.
-8. 알베릭·한나 쌍둥이 (새 정본).
+1. (고침) 역참 순례단 3.14 → 3.8 (역참→루멘 55h, 3.11 도착에 맞춤). → **[해결]** 이미 고침(데이터).
+2. 요한 카드 40일 주기 vs presence 창 불일치. → **[해결]** 요한 카드: '열흘 남짓 머물고 40일 안팎 떠남(한 바퀴 약 50일)' — presence 창과 맞음.
+3. 숙소장 REGIONS 베르타 vs fac_light 아그네스 → 베르타는 실무자. → **[해결]** REGIONS §4: 베르타는 실무자, 관할은 아그네스. fac_light에 off_pilgrim_house_steward(베르타) 신설, 카드 자리 수정.
+4. 성 마렌 우물 안식일만 개방 vs 3.12 축일 개방. → **[해결]** REGIONS §4 성 마렌 우물 '안식일과 축일(꽃월 12일)'.
+5. 장작 네 번 9.17/10.8/11.5/12.12로 확정. → **[해결]** CHARACTERS #4 정세·people/lumen.md 장작지기에 날짜 명시.
+6. 루멘 부두 도착 10.17, 12.11 추정 (바알카르 12.10 출항까지만). → **[해결]** REGIONS §2.14 10.9·12.3 행에 바알카르 출항·루멘 부두 날짜 추가.
+7. 마르타의 '밀고 100건 → 리즈 하녀' 약속이 정화청 기록에 없다는 새 설정 vs 마르타 카드 '남작과 계약'. → **[해결]** CHARACTERS R02-11 목표·관계 '구두 약속 — 기록 없음', 마르타 카드 3곳.
+8. 알베릭·한나 쌍둥이 (새 정본). → **[해결]** HOUSES §4.6 '쌍둥이 누이 한나', CHARACTERS R04-02 신분 줄.
 
 ### 3.x 결정 (2026-10, 사용자가 추천안 승인)
 1. 엘다르 첫 예언자 = **이실도르** (엘라스트리엘의 아버지). "엘라스트리엘이 보고, 아버지 이실도르가 말했다." '아엘베린'은 이실도르로 통일한다.

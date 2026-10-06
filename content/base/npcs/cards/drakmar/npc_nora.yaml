@@ -81,6 +81,7 @@ knows:
   - fact_dk_nora_court_gossip
   - fact_dk_egg_hatch
   - fact_dk_succession_split
+  - fact_td_elsa_midwife_277
 hides:
   - fact: fact_dk_collapse_truth
     reveal_when: "신뢰 70 이상 (충성 아크 70 — 용황의 고백 전문을 들려준다). 용황이 직접 허락한 밤에만"
@@ -139,5 +140,5 @@ story_seeds:
   - "카스파르는 어머니의 무덤을 모른다. 노라는 안다. 그 정보는 카스파르에게 무엇보다 값지다 — 그리고 아우락스에게는 카스파르를 궁으로 끌어낼 미끼다"
   - "노라는 용황의 임종 고백을 들은 마지막 비(非)용족이다 — 아우락스가 그 입을 막으려 한다"
   - "피직이 소리 방에서 절반쯤 엿들은 임종 고백을 노라는 모른다 — 그 절반이 새어 나가면 노라가 먼저 죽는다"
-# TODO-FACT: 엘사(회색여울)가 AS 277 엘레나의 출산을 같은 방에서 도왔다 — 회색여울/무소속 작가의 사실 (엘사 카드)
-# TODO-FACT: 이름 없는 자들 '회색 여인'의 정체 — 무소속(wd) 작가의 사실
+# (해결 → fact_td_elsa_midwife_277) 엘사(회색여울)가 AS 277 엘레나의 출산을 같은 방에서 도왔다 — 회색여울/무소속 작가의 사실 (엘사 카드)
+# (해결 → fact_wd_grey_woman_identity_by_seed) 이름 없는 자들 '회색 여인'의 정체 — 무소속(wd) 작가의 사실

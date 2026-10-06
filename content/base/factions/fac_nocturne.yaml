@@ -71,7 +71,7 @@ offices:
     perks: ["공물 장부 열람"]
   - id: off_house_redmoon
     title: 붉은 달 가문 가주 (최대 혈목장, 11곳)
-    holder: "unnamed:바실리사 붉은달 (약 2,900) — 문서에 따라 바일란 붉은잔/아드리엘 핏빛유리로 적힘"
+    holder: "unnamed:바실리사 붉은달 (약 2,900) — 붉은 우리 영주 아드리엘 핏빛유리는 그녀 아래 (RACES·SUBRACES의 '바일란 붉은잔'은 바실리사로 통일)"
     reports_to: off_cup_conclave
     powers: ["녹테른 영지 서부 평원 혈목장 11곳, 인간 약 1만 4천", "아우락스 지지"]
     chosen_by: "SK 410 창건, 세습"

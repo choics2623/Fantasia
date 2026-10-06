@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-05. SUBRACES 심해 나가 대표 인물 '모라나 일곱허물'.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-05. SUBRACES 심해 나가 대표 인물 '모라나 일곱허물'.
 id: npc_morana
 name: 모라나 일곱허물
 aka: [허물 바위의 뱀, 올라온 자, 노래를 멈추는 뱀]
@@ -13,7 +13,7 @@ home: 남해 바깥 섬 '허물 바위' — 소금기억 섬 남쪽 암초, 진�
 job: 결사 '소금 혀'의 오르내리는 자 — 해구의 노래를 위로 나른다
 rank: 심해 나가 — 해구에서 반쯤 버려짐
 summary: 올라가 본 유일한 심해 나가. 해구에 고인 신의 피가 무슨 말을 하는지 들었고, 그 말에 '답'하는 것을 보고 싶어 한다
-source: "docs/world/SECRETS_AND_HERMITS.md H-05 (SUBRACES §6 심해 나가)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-05 (SUBRACES §6 심해 나가)"
 life:
   - {year: -88, age: 0, event: "SK 3,000 무렵, 끓는 해구 수심 1리 아래에서 부화. 첫 허물은 해구에 남겼다"}
   - {year: -9, age: 79, event: "해구의 노래가 빨라짐 — 원로들이 위의 인간 도시 이야기를 처음 노래에 넣었다"}
@@ -81,7 +81,7 @@ hides:
   - fact: fact_sr_deep_naga_wants_speaker
     reveal_when: "신뢰 50 이상 — 그녀는 원로들의 뜻에 반대하므로 반쯤은 말하고 싶다"
     cover: "'아래의 일은 아래의 노래로만 말해'"
-  - fact: fact_hm_morana_saw_egg   # TODO-FACT: 모라나는 AS 140 도둑맞은 알이 시렌나 상가 창고에서 깊은 바다 사원 지하로 옮겨지던 날을 보았다 (SUBRACES 심해 나가)
+  - fact: fact_hm_morana_saw_egg   # 사실: 모라나는 AS 140 도둑맞은 알이 시렌나 상가 창고에서 깊은 바다 사원 지하로 옮겨지던 날을 보았다 (SUBRACES 심해 나가)
     reveal_when: "호감 40 이상, 용족 혈통 이야기가 나올 때"
     cover: "허물 하나에 대고 '넷째야, 그날 일은 말하지 마'"
 relations:

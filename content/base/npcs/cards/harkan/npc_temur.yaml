@@ -75,7 +75,7 @@ schedule:
   저녁: "부족장 연회"
   밤: "혼자 질주 — 잠은 말처럼 서서"
 places: [바람 천막(이동), 칸의 말 우리, 짐꾼 행렬 선두, 서 있는 돌(바람 무녀 아일라의 성소), 질주 평원]
-knows: [fact_hk_west_wind_broken, fact_hk_dua_loss_rate, fact_hk_oktai_helps_fallen]
+knows: [fact_hk_west_wind_broken, fact_hk_dua_loss_rate, fact_hk_oktai_helps_fallen, fact_td_soran_mother_borte]
 hides:
   - fact: fact_hk_temur_broke_leg
     reveal_when: "신뢰 55 이상이고 바타르에 대한 정직한 직언을 한 뒤, 또는 바타르가 먼저 말한 뒤"
@@ -119,7 +119,7 @@ hard_rules:
   - "다리를 묶는 말에는 즉시 분노한다"
   - "서진 결정은 대화로 번복하지 않는다 (엔진이 정한다)"
 # TODO-FACT: 용제국 노예 시장의 짐꾼 시세와 그롬마르 정세 — 드라크마르·그롬마르 작가 담당
-# TODO-FACT: 칸의 반려 보르테 흰갈기(RACES 유명 인물)와 소란의 어머니 관계 — 미정
+# (해결 → fact_td_soran_mother_borte) 칸의 반려 보르테 흰갈기(RACES 유명 인물)와 소란의 어머니 관계 — 미정
 on_death: "초원 통일 클락 붕괴 — 17부족 분열, 서진 소멸. 소란 승계 시 서진 대신 교역 분기"
 story_seeds:
   - "4,000명의 노예 사냥 — 그 사냥터는 카즈둠 바깥 갱과 그롬마르 경계다"

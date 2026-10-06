@@ -188,6 +188,13 @@ offices:
     powers: ["순례자 숙소 운영", "순례 허가증 확인"]
     chosen_by: "루멘 등불관의 임명 — 마테우스는 그녀를 '쓸모 있는 할멈'으로 본다"
     perks: ["지하 저장고 '물 없는 우물' — 잿빛 실 입구 (fact_lu_agnes_well)"]
+  - id: off_pilgrim_house_steward
+    title: 순례자 숙소장 (실무)
+    holder: npc_lm_berta
+    reports_to: off_pilgrim_house
+    powers: ["숙소 침상 배정·장부", "순례자 거리 숙소 실무"]
+    chosen_by: "관리 수녀 아그네스의 지명 — 위를 보지 않는 사람이라서"
+    perks: []
   - id: off_parish_greyford
     title: 회색여울 교구 사슬사제
     holder: npc_osric

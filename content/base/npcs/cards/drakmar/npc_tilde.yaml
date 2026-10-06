@@ -83,5 +83,5 @@ story_seeds:
   - "맹약회의 수석 대표 안건이 다섯 의자에 오르는 날, 틸데는 벽 너머에 있다"
 affiliations:
   - {faction: "fac_drakmar_empire", rank: "rank_palace_slave", office: null, since: 300, loyalty: -30, public: true, cell: null}
-  - {faction: "fac_nameless", rank: null, office: null, since: 310, loyalty: 70, public: false, cell: "bk_cell_palace"}
+  - {faction: "fac_nameless", rank: null, office: off_wick_baalkar_palace, since: 310, loyalty: 70, public: false, cell: n_wick_palace}
 truths: []

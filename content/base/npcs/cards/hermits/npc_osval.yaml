@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-04. 결사 fac_beat_ledger의 장부지기.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-04. 결사 fac_beat_ledger의 장부지기.
 id: npc_osval
 name: 오스발 박자셈
 aka: [장부지기, 박자 방 영감, 넷-쉼]
@@ -13,7 +13,7 @@ home: 고동 갱도 아래 버려진 환기 갱 끝 '박자 방'
 job: 고동 장부의 장부지기 — 140년째 산의 박자를 센다
 rank: 박자지기(비밀 서약). 왕실 기록에는 AS 172 '갱도 사고로 실종'
 summary: 3,400년 이어진 '고동 장부'를 지키는 첫 박자지기. 산이 누구에게 맞춰 뛰는지 안다고 믿지만, 맹세 때문에 말하지 못한다
-source: "docs/world/SECRETS_AND_HERMITS.md H-04 (신설 — HOUSES §3.3·REGIONS §12에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-04 (신설 — HOUSES §3.3·REGIONS §12에서)"
 life:
   - {year: -100, age: 0, event: "깊은망치 왕도 돌바닥 씨족의 갱 맏이 집안에서 태어남"}
   - {year: -9, age: 91, event: "귀(견습)로 처음 박자 방에 내려감. 그해부터 고동이 빨라지는 것을 장부에서 봄 — 지상에서는 인간들이 성을 쌓고 있었다"}
@@ -79,7 +79,7 @@ hides:
   - fact: fact_kz_seln_eor_voice
     reveal_when: "신뢰 40 이상, 또는 플레이어가 셀른의 기억 노래를 먼저 꺼낼 때"
     cover: "'박자는 박자다. 누구 목소리인지는 장부가 말하지 않는다'"
-  - fact: fact_hm_beat_ledger_pattern   # TODO-FACT: 고동 장부 — 고동은 아스테리온의 아홉 해와 다라의 석 달에 빨라졌다가 그들이 끊긴 날 느려졌고 AS 311에 다시 빨라졌다 (T21)
+  - fact: fact_hm_beat_ledger_pattern   # 사실: 고동 장부 — 고동은 아스테리온의 아홉 해와 다라의 석 달에 빨라졌다가 그들이 끊긴 날 느려졌고 AS 311에 다시 빨라졌다 (T21)
     reveal_when: "은자 시험(하루 세기 — 거짓 없이) 통과 + 값(고동에게 노래 한 곡)을 치른 뒤. 또는 그림발드의 룬으로 맹세를 풀어 준 뒤"
     cover: "'센다. 말하지 않는다.' 수염의 매듭을 하나씩 만진다"
   - fact: fact_kz_hilda_gate_machine

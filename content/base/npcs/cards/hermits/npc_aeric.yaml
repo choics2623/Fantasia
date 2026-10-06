@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-02. fac_eldar의 off_silent_brother(unnamed:아에릭)와 같은 사람.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-02. fac_eldar의 off_silent_brother(unnamed:아에릭)와 같은 사람.
 id: npc_aeric
 name: 아에릭 새벽가지
 aka: [침묵, 모든 음을 뺀 자, 그루터기의 엘다르]
@@ -13,7 +13,7 @@ home: 흰 울타리 북문 밖, 마른 숲 가장자리 '침묵의 그루터기'
 job: 침묵 서약자 — 결사 '세릴의 침묵'의 머리
 rank: 새벽가지 직계(아에린의 쌍둥이 동생). 공식 자리는 '침묵 서약자' — 권한 없음
 summary: AS 300부터 한 마디도 하지 않는 엘다르. 예언의 뒷부분이 위협이 아니라 약속이라 믿고, 형이 짜는 그물에 매듭 하나를 느슨하게 둔다
-source: "docs/world/SECRETS_AND_HERMITS.md H-02 (HOUSES §3.1.2 아에릭)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-02 (HOUSES §3.1.2 아에릭)"
 life:
   - {year: -1888, age: 0, event: "SK ~1,200, 새벽가지 직계 쌍둥이로 태어남. 형 아에린보다 한 박자 늦게 울었다고 기억된다"}
   - {year: -1588, age: 300, event: "첫 '받은 기억' 전수 — 시조 세릴의 숨 수정을 만지는 직계의 의식. 그분의 마지막 숨이 어느 쪽으로 나갔는지 보았다"}
@@ -83,7 +83,7 @@ hides:
   - fact: fact_sv_elastriel_name_loss_doubt
     reveal_when: "은자 시험(하루의 침묵 + 배운 것 하나) 통과 후 신뢰 50 이상"
     cover: "흙에 원을 그렸다가 지운다 — 그 이상은 보여 주지 않는다"
-  - fact: fact_hm_seril_breath_crystal   # TODO-FACT: 새벽가지 금고에 시조 세릴이 신살 때 기록한 에오르의 마지막 숨(숨 수정)이 있고, 숨은 인간 쪽으로 나갔다
+  - fact: fact_hm_seril_breath_crystal   # 사실: 새벽가지 금고에 시조 세릴이 신살 때 기록한 에오르의 마지막 숨(숨 수정)이 있고, 숨은 인간 쪽으로 나갔다
     reveal_when: "비밀 누설 장면 — 평생 단 한 번의 말. 신뢰 70 이상이고 플레이어가 잔향임을 보인 뒤"
     cover: "숨을 한 박자 늦게 쉬고, 입술에 손가락을 댄다"
 relations:
@@ -126,7 +126,7 @@ story_seeds:
   - "리안델의 나뭇잎 — 그녀가 배운 노래 세 곡 중 하나가 「물푸레 아래」(정원 지도 노래)라면"
   - "단 한 번의 말을 언제 쓰게 하는가 — 그 뒤 그는 그 회차에서 다시 말하지 않는다"
 affiliations:
-  - {faction: fac_eldar, rank: rank_first_morning, office: null, since: -1888, loyalty: -10, public: true, cell: null}
+  - {faction: fac_eldar, rank: rank_first_morning, office: off_silent_brother, since: -1888, loyalty: -10, public: true, cell: null}
   - {faction: fac_seril_silence, rank: rank_silence, office: off_silent_head, since: 305, loyalty: 90, public: false, cell: n_aeric}
 truths:
   - {id: T20, level: whole}

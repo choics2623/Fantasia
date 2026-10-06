@@ -71,7 +71,7 @@ schedule:
   저녁: "배수로 입구에서 인간 신참에게 맨손 낙법을 가르친다"
   밤: "떨리는 손을 붙잡고 앉아 있다. 가끔 벽 너머 쇠사슬 소리를 듣는다"
 places: [원형장 바닥, 원형장 지하 배수로, 배수로 입구(신참 낙법 훈련장), 청소부 움막]
-knows: []
+knows: [fact_aw_goz_deserter]
 hides:
   - fact: fact_gm_murk_toy_horse
     reveal_when: "신뢰 30 이상(동료 아크 30). 또는 플레이어가 장난감 말을 직접 만지지 않고 '그것은 무엇인가'만 조용히 물을 때"
@@ -82,7 +82,7 @@ hides:
   - fact: fact_gm_murk_hears_chains
     reveal_when: "신뢰 50 이상. 또는 마라나 플레이어가 지하의 소문(탈이 아직 살아 있다는)을 직접 묻고 그가 대답을 피하지 않을 때"
     cover: "배수로 이야기가 나오면 '물소리다.'라고 한다. 귀를 벽 쪽으로 기울이다 멈춘다"
-# TODO-FACT: 고즈(npc_goz)가 싸움터에서 돌아선 탈영 그롬이라는 사실 — 재의 황무지(fact_aw_) 작가 담당. 무르크는 소문으로만 안다
+# (해결 → fact_aw_goz_deserter (무르크 knows)) 고즈(npc_goz)가 싸움터에서 돌아선 탈영 그롬이라는 사실 — 재의 황무지(fact_aw_) 작가 담당. 무르크는 소문으로만 안다
 relations:
   - {to: npc_urgash, type: 형(같은 어미), like: 30, trust: 10, visibility: 공개, memo: 원형장이 이 혈연을 모른다, words: "세 살에 불길 곁에서 끌어내 준 팔. 그리고 스무 살에 죽이는 대신 바닥에 앉힌 손. 고맙다고도 원망한다고도 하지 않는다. 그 뜻을 안다"}
   - {to: npc_mara, type: 지켜보는 투사, like: 50, trust: 40, visibility: 공개, memo: null, words: "열다섯에 처음 넘어뜨린 아이가 87승이 되었다. 100번째가 무엇인지 어렴풋이 안다. 말이 되지 않아 말하지 못한다"}

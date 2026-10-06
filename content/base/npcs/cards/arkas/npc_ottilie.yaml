@@ -78,7 +78,7 @@ schedule:
   저녁: "'숫자 교육' (서기용 — 합법)"
   밤: "서고 안쪽에서 서기 노예 셋에게 '읽기' 수업"
 places: [먼지 서고, 서고 안쪽 방, 서기 노예 숙소, 13층 식사 구멍]
-knows: [fact_ar_tower_clerks_literate, fact_ar_halla_three_accusations, fact_ar_first_second_tests_flawed]
+knows: [fact_ar_tower_clerks_literate, fact_ar_halla_three_accusations, fact_ar_first_second_tests_flawed, fact_td_ottilie_letter_grimbald]
 hides:
   - fact: fact_ar_ottilie_vow_gap
     reveal_when: "호감 50 이상이거나, 플레이어가 '읽기'와 '쓰기'의 차이를 정확히 짚었을 때"
@@ -127,4 +127,4 @@ on_death: "서기 노예 문해 교육 중단. '글' 단계(인간 30명 문해)
 story_seeds:
   - "그녀가 완전히 돌이 되기 전에 맹세를 '풀' 방법이 카즈둠에 있다는 소문 — 룬판관 그림발드만 안다"
   - "서고 밤 수업의 서기 셋 가운데 하나가 탑의 눈이라면 — 그녀는 어느 쪽을 먼저 지키는가"
-# TODO-FACT: 오틸리의 맹세를 풀 방법이 카즈둠 룬판관 그림발드에게 있다는 소문의 진위 (카즈둠 작가)
+# (해결 → fact_kz_oath_release_rune · fact_td_ottilie_letter_grimbald) 오틸리의 맹세를 풀 방법이 카즈둠 룬판관 그림발드에게 있다는 소문의 진위 (카즈둠 작가)

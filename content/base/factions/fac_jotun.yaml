@@ -1,7 +1,6 @@
 # 요툰 서리 씨족 — 서리와 대지('거대')의 굴레(느린 사고, 굶주림)가 만든 식탁의 씨족 연합.
 # 근거: HOUSES §3.5, RACES §8, REGIONS §13, facts/hrosgard.yaml.
-# 조정: HOUSES(흐림·바위배·눈늑대가죽·깊은우물) · REGIONS(돌팔·서리눈·잿턱) · facts(돌무릎 바우그)의 씨족명이 다르다.
-#       여기서는 HOUSES를 중심 4씨족으로, REGIONS·facts의 씨족을 '그 외 씨족'으로 넣었다 (보고).
+# 씨족: HOUSES §3.5(흐림·바위배·눈늑대가죽·깊은우물·돌무릎) + REGIONS §13.3(돌팔·서리눈·잿턱·돌무릎). 시그리드 무리 = 돌무릎 (CONTINUITY_LOG 3.x-3).
 id: fac_jotun
 name: 요툰 서리 씨족 연합 (얼음 탁자)
 kind: polity
@@ -70,7 +69,7 @@ offices:
     reports_to: off_ice_table
     powers: ["즉시 남침 주장", "노예를 겨울 식량 비축으로 본다"]
     chosen_by: "씨족"
-    perks: ["북방 대탈주의 직접 원인 — 시그리드의 탈출 씨족"]
+    perks: ["북방 대탈주를 부른 씨족 중 하나 (시그리드의 탈출 씨족은 돌무릎)"]
   - id: off_clan_snowwolf
     title: 눈늑대가죽 씨족장
     holder: "unnamed:헬다 얼음턱 (700)"
@@ -228,7 +227,6 @@ secrets:
   - {truth: T09, level: rumor, holders: [npc_yorun]}
   # TODO-FACT: 노래 거인 헤임라의 '거인 전쟁의 진짜 노래'에는 그롬이 아니라 용이 나눔 식사 배신을 꾸몄다는 구절이 있다 (RACES §8 씨앗 4)
   # TODO-FACT: 흐림니르는 그라넥의 곡물 거절(HOUSES §2.4)을 알지 못한다 — 증거를 넘기면 칼끝이 아우락스에게 향한다 (HOUSES §3.5)
-  # TODO-FACT: 바위배 씨족은 북방 대탈주의 직접 원인이며, 시그리드가 탈출한 씨족이다 (HOUSES §3.5)
 
 relations:
   - {to: fac_aurax, stance: -70, note: "HOUSES §6.1 행렬 — 요툰. 용황 사망 시 남진, 남침 시 아우락스의 군권 강화(+3), 그라넥 문서를 받으면 −3"}

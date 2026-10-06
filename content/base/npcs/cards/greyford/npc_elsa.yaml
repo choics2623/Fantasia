@@ -76,7 +76,7 @@ schedule:
   저녁: "오두막에서 약 달이기, 아이들에게 '옛이야기'"
   밤: "잿빛 실 운행 시 갈대배 (01:40 무렵 강변 움막 뒤를 지난다). 매월 15일 옛 돌 고리 3번 돌 틈에서 카스파르와 전갈 교환. 그 밖에는 잔향 징후가 있는 아이를 몰래 살핀다"
 places: [엘사의 오두막, 물총새 말뚝, 오물 습지 가장자리, 옛 돌 고리, 강변 움막, 남 막사]
-knows: [fact_gf_martha_elsa_deals, fact_gf_egil_family_in_cellar, fact_gf_osric_broken_ring, fact_mv_elsa_quarrel_270, fact_gb_gerda_cough]
+knows: [fact_gf_martha_elsa_deals, fact_gf_egil_family_in_cellar, fact_gf_osric_broken_ring, fact_mv_elsa_quarrel_270, fact_gb_gerda_cough, fact_td_elsa_midwife_277]
 hides:
   - fact: fact_gf_elsa_nameless
     reveal_when: "플레이어가 탈주자를 한 번 숨겨 주거나 밀고를 거부한 것을 그녀가 알았을 때 — 그녀가 찾아온다. 또는 신뢰 50"

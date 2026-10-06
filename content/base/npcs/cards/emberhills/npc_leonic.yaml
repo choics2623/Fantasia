@@ -108,6 +108,6 @@ story_seeds:
   - "작은 것과 큰 것 — 크라즈에게 줄 가짜 정보로 그를 덮을 수 있다"
   - "다라의 노래 마지막 구절을 아는 자를 그는 무엇보다 의심한다"
 affiliations:
-  - {faction: fac_nameless, rank: rank_wick, office: null, since: 303, loyalty: 60, public: false, cell: null}
+  - {faction: fac_nameless, rank: rank_wick, office: null, since: 303, loyalty: 60, public: false, cell: n_wick_embers}
 truths:
   - {id: T12, level: rumor}

@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-12. SUBRACES §5.3 굶주린 자들의 대표 인물 '이세르다 열한째밤'.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-12. SUBRACES §5.3 굶주린 자들의 대표 인물 '이세르다 열한째밤'.
 id: npc_iserda
 name: 이세르다 열한째밤
 aka: [돌아온 자, 서 있는 굶주린 자, 가시 숲의 여자]
@@ -13,7 +13,7 @@ home: 녹테른 영지 경계 '가시 숲' — 뿌리 굴
 job: 없음 — 굶주린 자들 사이를 걷는 자
 rank: 무소속. 녹테른 족보에서 '떨어진 자'로 지워졌다가 지워진 채로 남음
 summary: 90일 굶주림 끝에 이성을 되찾은 유일한 녹테른. 자기 피 속에서 '너희는 끝나지 않을 것이다'를 들었고, 잊었던 이름 하나로 답해 돌아왔다
-source: "docs/world/SECRETS_AND_HERMITS.md H-12 (SUBRACES §5.3, RACES 녹테른)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-12 (SUBRACES §5.3, RACES 녹테른)"
 life:
   - {year: -1588, age: 0, event: "엘다르 '열한째밤' 가지에서 태어남(SK 1,500)"}
   - {year: -1388, age: 200, event: "갈증 망명 — 퇴색 대신 녹테른의 피를 택했다. 첫 갈증 가문에 '피로 입양'"}
@@ -71,7 +71,7 @@ hides:
   - fact: fact_nc_gods_last_word
     reveal_when: "은자 시험(가시 숲의 밤 — 달아나지 않기) 통과 후"
     cover: "손목에 귀를 대고 아무 말도 하지 않는다"
-  - fact: fact_hm_iserda_return_name   # TODO-FACT: 이세르다는 90일째 밤 피 속의 목소리에 잊었던 이름 하나로 답해 굶주림에서 돌아왔다 — 그 이름이 무엇인지는 그녀만 안다
+  - fact: fact_hm_iserda_return_name   # 사실: 이세르다는 90일째 밤 피 속의 목소리에 잊었던 이름 하나로 답해 굶주림에서 돌아왔다 — 그 이름이 무엇인지는 그녀만 안다
     reveal_when: "공개하지 않는다 — 단, 값(잔향의 피 한 잔)을 치르면 '돌아오는 길'의 절차를 세실에게 전할 수 있다"
     cover: "'이름. 그건 안 알려 줘.'"
 relations:

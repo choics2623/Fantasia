@@ -86,6 +86,11 @@
     "faction": "fac_ash_witnesses",
     "office": "off_living_original",
     "title": "살아 있는 원본 (증인이 아닌 증인)"
+   },
+   {
+    "faction": "fac_great_dragon_lines",
+    "office": "off_gromak",
+    "title": "검댕 혈통의 가장 오래된 용 — 그로마크"
    }
   ],
   "npc_irene_bold": [
@@ -654,6 +659,11 @@
     "faction": "fac_kaldaran",
     "office": "off_duke",
     "title": "대공 — 용좌 집사"
+   },
+   {
+    "faction": "fac_kaldaran",
+    "office": "off_vault",
+    "title": "셋째 서랍 지기"
    }
   ],
   "npc_arden_kaldaran": [
@@ -836,25 +846,39 @@
     "title": "용주 역참장"
    }
   ],
+  "npc_cg_erwin": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_crowgate_quartermaster",
+    "title": "까마귀 문 보급관"
+   }
+  ],
   "npc_cg_shrik": [
    {
     "faction": "fac_drakmar_empire",
     "office": "off_crowgate_clerk",
-    "title": "rank_overseer"
+    "title": "까마귀 문 서기 (크릭)"
    }
   ],
   "npc_cg_bern": [
    {
     "faction": "fac_drakmar_empire",
     "office": "off_crowgate_jailer",
-    "title": "rank_collar"
+    "title": "까마귀 문 간수 (목줄단 출신 노예)"
    }
   ],
   "npc_dp_orbek": [
    {
     "faction": "fac_drakmar_empire",
     "office": "off_road_post_checkpoint",
-    "title": "rank_scale_officer"
+    "title": "용주 역참 검문 하사"
+   }
+  ],
+  "npc_hadrian_ashjaw": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_mine_marshal",
+    "title": "잿불 언덕 광산 총감 (생산)"
    }
   ],
   "npc_bror": [
@@ -944,6 +968,18 @@
     "title": "루멘 수석 감독관 (외부 — 실질 인사권)"
    }
   ],
+  "npc_aeric": [
+   {
+    "faction": "fac_eldar",
+    "office": "off_silent_brother",
+    "title": "침묵 서약자 (새벽가지)"
+   },
+   {
+    "faction": "fac_seril_silence",
+    "office": "off_silent_head",
+    "title": "침묵 (머리)"
+   }
+  ],
   "npc_fern": [
    {
     "faction": "fac_eldar",
@@ -970,6 +1006,18 @@
     "faction": "fac_fae",
     "office": "off_red_cap",
     "title": "붉은모자 (남쪽 경계 사냥)"
+   }
+  ],
+  "npc_ashdust": [
+   {
+    "faction": "fac_fae",
+    "office": "off_fallen",
+    "title": "떨어진 자들 (궁정 밖 — 진실을 말하게 된 페이)"
+   },
+   {
+    "faction": "fac_laugh_shards",
+    "office": "off_fallen_mouth",
+    "title": "떨어진 입 — 결사가 진실을 말하게 하는 자"
    }
   ],
   "npc_odo": [
@@ -1372,6 +1420,13 @@
     "title": "붉은 계단 총감독관 (크릭 감독 총괄)"
    }
   ],
+  "npc_kraz": [
+   {
+    "faction": "fac_krik",
+    "office": "off_black_nail_head",
+    "title": "검은 손톱 지부장 (잿불 언덕 크릭 감독 조합)"
+   }
+  ],
   "npc_soom": [
    {
     "faction": "fac_krik",
@@ -1450,13 +1505,6 @@
     "title": "허가 사냥꾼 — '모래눈' 패 (6)"
    }
   ],
-  "npc_ashdust": [
-   {
-    "faction": "fac_laugh_shards",
-    "office": "off_fallen_mouth",
-    "title": "떨어진 입 — 결사가 진실을 말하게 하는 자"
-   }
-  ],
   "npc_mateus": [
    {
     "faction": "fac_light",
@@ -1521,6 +1569,13 @@
     "faction": "fac_light",
     "office": "off_pyre_keeper",
     "title": "정화의 뜰 장작지기"
+   }
+  ],
+  "npc_lm_berta": [
+   {
+    "faction": "fac_light",
+    "office": "off_pilgrim_house_steward",
+    "title": "순례자 숙소장 (실무)"
    }
   ],
   "npc_heinz": [
@@ -1602,6 +1657,13 @@
     "faction": "fac_nameless",
     "office": "off_wick_baalkar_market",
     "title": "바알카르 심지 (노예시장)"
+   }
+  ],
+  "npc_tilde": [
+   {
+    "faction": "fac_nameless",
+    "office": "off_wick_baalkar_palace",
+    "title": "바알카르 심지 (궁정 — 불꽃 홀)"
    }
   ],
   "npc_harald": [
@@ -1771,13 +1833,6 @@
     "title": "몬달리 상속녀 (시민권 초안 발의자)"
    }
   ],
-  "npc_aeric": [
-   {
-    "faction": "fac_seril_silence",
-    "office": "off_silent_head",
-    "title": "침묵 (머리)"
-   }
-  ],
   "npc_dane": [
    {
     "faction": "fac_seril_silence",
@@ -1846,6 +1901,13 @@
     "faction": "fac_vermion",
     "office": "off_gang_foreman",
     "title": "갱조 반장 (인간)"
+   }
+  ],
+  "npc_cassel_smokeiron": [
+   {
+    "faction": "fac_vermion",
+    "office": "off_gas_smith",
+    "title": "독가스 장치 기술자"
    }
   ],
   "npc_sorel_ink": [
@@ -2168,10 +2230,10 @@
  },
  "stats": {
   "factions": 57,
-  "offices": 663,
-  "filled": 295,
+  "offices": 669,
+  "filled": 305,
   "npcs": 276,
-  "npcs_with_office": 190,
+  "npcs_with_office": 196,
   "truth_holders": 62
  }
 }

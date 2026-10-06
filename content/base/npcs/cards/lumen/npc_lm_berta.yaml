@@ -87,5 +87,5 @@ on_death: "순례자 숙소 일상이 흔들린다 — 아그네스가 혼자 �
 story_seeds:
   - "베르타의 침대 밑 이중 장부는 정화청이 오는 날 누구의 구원도 누구의 올가미도 될 수 있다"
 affiliations:
-  - {faction: fac_light, rank: rank_believer, office: off_pilgrim_house, since: 292, loyalty: 40, public: true, cell: null}
+  - {faction: fac_light, rank: rank_believer, office: off_pilgrim_house_steward, since: 292, loyalty: 40, public: true, cell: null}
 truths: []

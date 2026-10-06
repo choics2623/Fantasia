@@ -210,7 +210,7 @@ secrets:
   - {truth: T06, level: fragment, holders: [npc_kyrie]}
   - {truth: T03, level: rumor, holders: [npc_kyrie]}
   - {truth: T13, level: fragment, holders: [npc_kyrie]}
-  # TODO-FACT: 키리에는 대붕괴 때 하늘에서 시간의 균열이 위로도 찢어진 것을 본 마지막 생존 아에리다(당시 소녀) — 그러나 키리에는 210세, 대붕괴는 312년 전이라 산술이 맞지 않는다 (HOUSES §3.8 / 보고)
+  # (해결) 키리에는 AS 102년생 — 대붕괴를 보지 않았다. 하늘의 균열은 AS 311에 처음 보았다 (HOUSES §3.8, CONTINUITY_LOG §3)
   # TODO-FACT: 폭풍깃 절벽 둥지에 납치된 인간 7명이 산다 — 내려가는 법을 모른다 (HOUSES §3.8)
 
 relations:

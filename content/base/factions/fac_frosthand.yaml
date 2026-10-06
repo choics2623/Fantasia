@@ -34,10 +34,10 @@ offices:
     chosen_by: "아버지의 죽음(AS 301) — 칼과 룬 쓰는 법의 전수"
     perks: ["늑대굴 벽의 사망자 명단 37명"]
   - id: off_uncle_thor
-    title: 가장의 삼촌 (바위배 씨족에서 탈주)
+    title: 가장의 삼촌 (돌무릎 씨족에서 탈주)
     holder: "unnamed:토르 (50, 한쪽 다리를 잃음)"
     reports_to: off_head_sigrid
-    powers: ["바위배 씨족의 내부를 안다", "북방 대탈주의 직접 원인을 아는 증언"]
+    powers: ["돌무릎 씨족의 내부를 안다", "북방 대탈주의 직접 원인을 아는 증언"]
     chosen_by: "혈통 — 어른의 증언"
     perks: []
   - id: off_elder_asta
@@ -142,7 +142,7 @@ secrets:
   # TODO-FACT: 아스타는 깊은우물 씨족 브리미르와 인간 사이의 유일한 통역이다 — 요툰 남침을 막는 협상(북방 대탈주 클락)은 서리손을 거쳐야 한다 (HOUSES §4.8 — fact_hg_brimir_dream에 일부)
 
 relations:
-  - {to: fac_jotun, stance: 40, note: "행렬 밖 — 브리미르 +40 (서리 어머니의 꿈). 집안은 거인을 배고픈 아이로 본다. 바위배 씨족과는 −(시그리드가 탈출한 씨족)"}
+  - {to: fac_jotun, stance: 40, note: "행렬 밖 — 브리미르 +40 (서리 어머니의 꿈). 집안은 거인을 배고픈 아이로 본다. 돌무릎 씨족과는 −(시그리드가 탈출한 씨족)"}
   - {to: fac_nameless, stance: 20, note: "행렬 밖 — 북방 탈주자 무리와 이름 없는 자들의 연결"}
   - {to: fac_barg, stance: -60, note: "행렬 밖 — 볼크가 서리 길에서 시그리드 일행을 쫓았다. 이르가는 시그리드 무리를 산 채로 잡으려 한다"}
   - {to: fac_raven_house, stance: -40, note: "행렬 밖 — 레이번 영지 근처의 늑대굴. 볼크와 고드릭의 일괄 소탕 계약"}

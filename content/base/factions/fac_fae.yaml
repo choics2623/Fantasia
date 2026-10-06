@@ -135,7 +135,7 @@ offices:
     perks: []
   - id: off_fallen
     title: 떨어진 자들 (궁정 밖 — 진실을 말하게 된 페이)
-    holder: "unnamed:잿가루 — 모르바 늪 마녀들의 오랜 친구. 바꿔치기 아이를 숲에서 되찾는 법을 안다"
+    holder: npc_ashdust   # 잿가루 — 모르바 늪 마녀들의 오랜 친구. 바꿔치기 아이를 숲에서 되찾는 법을 안다 (은자 X-06)
     reports_to: off_queen
     powers: ["진실을 말하게 된 추방자 — 대가: 가장 아끼는 기억 하나"]
     chosen_by: "추방 — 인간과 너무 오래 놀았다"

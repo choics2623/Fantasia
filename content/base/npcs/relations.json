@@ -1388,13 +1388,13 @@
  {
   "from": "npc_martha",
   "to": "npc_godric_raven",
-  "type": "주인·계약",
-  "family": "거래",
+  "type": "주인·구두 약속",
+  "family": "위계",
   "affection": -20,
   "trust": 40,
   "public": false,
   "visibility": "비밀",
-  "note": "밀고 100건 약속"
+  "note": "밀고 100건 약속 — 기록 없음"
  },
  {
   "from": "npc_martha",
@@ -5370,8 +5370,8 @@
  {
   "from": "npc_grey_woman",
   "to": "npc_nora",
-  "type": "바알카르 세포장",
-  "family": "조직",
+  "type": "바알카르 등잔",
+  "family": "감정",
   "affection": 50,
   "trust": 85,
   "public": false,

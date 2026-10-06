@@ -77,7 +77,7 @@ schedule:
 places: [잿불 언덕 광산, 붉은 길(1만 처형 기념비), 다라의 굴(폐갱), 실바렌 외곽 매복지]
 knows: [fact_hi_dara_nine_uprisings, fact_hi_dara_last_words, fact_hi_dara_last_knot]
 hides: []
-# TODO-FACT: 외팔 로크 집안에 전해지는 다라의 말과 다라의 노래 마지막 구절 — 잿불 언덕(fact_eh_) 작가 담당
+# (해결 → fact_eh_rok_dara_words) 외팔 로크 집안에 전해지는 다라의 말과 다라의 노래 마지막 구절 — 잿불 언덕(fact_eh_) 작가 담당
 relations:
   - {to: npc_martha, type: 목줄(밀고자의 얼굴), like: -60, trust: -80, visibility: 일방, memo: null, words: "귀 끝이 잘린 목줄장. 첫 밀고에 받는 상이다. 그 손에 매듭이 스물셋은 묶였을 것이라 센다. 한 번 판 놈은 또 판다 — 이번엔 틀릴 수도 있다는 것은 모르는 척한다"}
   - {to: npc_asterion, type: 다툼(같은 목소리), like: -10, trust: -20, visibility: 일방, memo: null, words: "같은 잿불 광산. '넌 12만을 걸고 계획대로 다 태웠잖아.' 계획으로 쌓은 도시의 끝을 그녀는 속도로 갚으려 했다"}

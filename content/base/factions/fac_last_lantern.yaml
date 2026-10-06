@@ -1,6 +1,6 @@
 # 마지막 등불 유물 사냥꾼들 — 재의 황무지 가장자리 판잣집 마을. 등불 아래서는 거짓말을 하지 않는다. 종족을 묻지 않는다.
 # 근거: HOUSES §5.13·§4.1(청동 열쇠), REGIONS §11(last_lantern·등불 규칙), CHARACTERS R11, facts/ashwaste.yaml.
-# 이름 충돌: 등불지기는 HOUSES §5.13 '하그로스(두르강 돌피 출신, 210)' / REGIONS §11.3 '할그림 반돌(두르강, 맹세를 깨 돌로 굳어감)'. 같은 자리로 보고 REGIONS 이름을 쓴다 — 미해결.
+# 이름 충돌: 등불지기는 HOUSES §5.13 '하그로스(두르강 돌피 출신, 210)' / REGIONS §11.3 '할그림 반돌(두르강, 맹세를 깨 돌로 굳어감)'. 같은 자리 — HOUSES도 할그림 반돌로 통일했다 (CONTINUITY_LOG §3).
 id: fac_last_lantern
 name: 마지막 등불 유물 사냥꾼들
 kind: org
@@ -23,7 +23,7 @@ succession: "등불지기는 등불을 처음 건 두르강 추방자의 핏줄�
 offices:
   - id: off_lantern_keeper
     title: 등불지기
-    holder: "unnamed:할그림 반돌 (두르강) — 깊은 문 아래의 것을 말하지 않겠다는 맹세를 깨 왼팔과 왼쪽 얼굴이 돌. HOUSES의 '하그로스'와 같은 자리"
+    holder: "unnamed:할그림 반돌 (두르강) — 깊은 문 아래의 것을 말하지 않겠다는 맹세를 깨 왼팔과 왼쪽 얼굴이 돌."
     reports_to: null
     powers: ["등불 규칙", "추방", "등불 인장 발급", "유물 창고"]
     chosen_by: "등불을 건 핏줄 (AS 140)"

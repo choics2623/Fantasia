@@ -67,7 +67,7 @@ schedule:
   저녁: "카스파르와 체스(주 4회), 이후 집무 보좌"
   밤: "요새 비둘기장 — 잿불 언덕행 전서구 (열흘에 한 번)"
 places: [까마귀 문 사령관 집무실, 비둘기장, 성벽, 용주 역참, 레이번 성채(15일)]
-knows: [fact_gf_godric_debt, fact_gf_owen_wrote_kaspar, fact_gf_crowgate_drain]
+knows: [fact_gf_godric_debt, fact_gf_owen_wrote_kaspar, fact_gf_crowgate_drain, fact_td_lea_elena_beads, fact_td_melisande_promised_lea]
 hides:
   - fact: fact_gf_lea_melisande_spy
     reveal_when: "멜리산드의 배신 가능성 증거를 보이는 판정 성공 + 신뢰 40, 또는 비둘기장 전서구를 플레이어가 가로챈 뒤 협박(충성 이동 확률 40%)"
@@ -119,5 +119,5 @@ on_death: "멜리산드의 회색여울 정보망 단절(멜리산드 세력 −
 story_seeds:
   - "비둘기장에서 전서구를 가로채면 레아의 정체가 드러난다. 카스파르에게 알릴지, 레아를 협박해 역첩자로 쓸지 — 살 길을 주면 넘어온다(충성 이동 확률 40%)"
   - "서랍 속 카스파르의 답장 — 그 한 장이 오웬을 움직이고, 레아의 누락을 증명한다"
-  # TODO-FACT: 멜리산드가 레아에게 회색여울 영지를 약속했다는 사실 (잿불 언덕 작가 소관)
+  # (해결 → fact_td_melisande_promised_lea) 멜리산드가 레아에게 회색여울 영지를 약속했다는 사실 (잿불 언덕 작가 소관)
   - "긴그림자 둥지의 원로 이르마스는 레아가 첩자라는 것을 이미 안다 — 아직 쓰지 않았다"

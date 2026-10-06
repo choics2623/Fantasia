@@ -123,7 +123,7 @@ secrets:
   - {fact: fact_sr_cell_meeting_1100, known_by_rank: rank_seal}
   # TODO-FACT: 몬달리 상가가 조합 인장 48개 중 14개를 비밀리에 쥐고 있다 (이 파일 신설 — 확정 필요)
   # TODO-FACT: 조합장 도나 벨렌은 '죽음으로 끝나지 않는 계약서' 양식을 연구시켰다 (HOUSES §5.10)
-  # 모순 메모: 상환 성공률 — HOUSES §5.10 '등록자의 4%' / CONTINUITY #46·facts '공식 6%, 실제 약 1.8%'. 사실 id를 따른다.
+  # (해결) 상환 성공률 — 공식 6%, 실제 약 1.8%로 통일 (HOUSES §5.10 수정).
   - {truth: T03, level: rumor, holders: [npc_severo]}
 
 relations:

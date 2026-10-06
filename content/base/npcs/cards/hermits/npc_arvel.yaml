@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-07. 결사 fac_ash_witnesses의 첫 조각.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-07. 결사 fac_ash_witnesses의 첫 조각.
 id: npc_arvel
 name: 아르벨 잿목
 aka: [잿목, 불의 전령, 봉화대 영감]
@@ -13,7 +13,7 @@ home: 잿불 언덕 동쪽, 황무지 가장자리 길 위 '말라붙은 봉화�
 job: 봉화대 물장수 — 전 용황 직속 '불의 전령'
 rank: 순혈 용인 — 가문 이름을 버렸다. 궁정 기록에는 'AS 3 은퇴'
 summary: 대붕괴의 날 의식의 원 바깥 열 걸음에 서 있던 용인 전령. 그 노예가 '너희'라고 외치는 것을 들었고, 불이 먼저 오는 것을 보았다
-source: "docs/world/SECRETS_AND_HERMITS.md H-07 (신설 — HOUSES §1·§2.8·§6.3에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-07 (신설 — HOUSES §1·§2.8·§6.3에서)"
 life:
   - {year: -378, age: 0, event: "바알카르 불꽃 홀 아래 순혈 용인 전령 가문에서 태어남. 첫 불의 잔을 받은 해에 목소리가 '홀을 채운다'는 말을 들었다"}
   - {year: -200, age: 178, event: "용황 직속 '불의 전령'으로 서임. 용황의 칙령을 용언으로 외쳐 전하는 일"}
@@ -84,7 +84,7 @@ hides:
   - fact: fact_hi_asterion_ritual_nearly_done
     reveal_when: "위와 같다 — 같은 장면"
     cover: "'원 이야기는 원을 본 자와만 한다'"
-  - fact: fact_hm_ash_witnesses_oath   # TODO-FACT: 포위군 생존 증인들은 '용황의 불이 살아 있는 동안' 침묵하기로 서약했고, 증인 여섯이 조각을 나눠 가졌다
+  - fact: fact_hm_ash_witnesses_oath   # 사실: 포위군 생존 증인들은 '용황의 불이 살아 있는 동안' 침묵하기로 서약했고, 증인 여섯이 조각을 나눠 가졌다
     reveal_when: "신뢰 60 이상, 또는 바르스카르가 죽은 뒤(서약이 풀린다)"
     cover: "봉화 장작을 고쳐 쌓는다 — 말없이"
 relations:

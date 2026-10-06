@@ -1,0 +1,32 @@
+# 카드의 TODO-FACT 주석을 정리하며 새로 만든 사실 (CONTINUITY_LOG §3, 2026-10).
+# id 규칙: fact_td_<주제>. 카드의 knows/hides가 쓰는 것만 만들었다 — 이미 있는 사실로 풀린 TODO는 그 id를 카드 주석에 적었다.
+- id: fact_td_lea_elena_beads
+  text: "레아는 AS 310 바알카르 노예 시장 잡화상에게서 엘레나의 자장가 구슬 목걸이(가락을 새긴 나무 구슬 일곱)를 사들여 까마귀 문 숙소 함에 넣어 두었다. '적절한 순간'에 카스파르에게 건네 그의 신뢰를 사려 한다"
+  truth: true
+  danger: 3
+  names: [레아, 엘레나, 카스파르]
+- id: fact_td_melisande_promised_lea
+  text: "멜리산드는 레아에게, 고드릭 레이번이 무너지면 회색여울 영지를 그녀에게 주겠다고 약속했다. 레아의 충성의 값이다"
+  truth: true
+  danger: 4
+  names: [멜리산드, 레아, 고드릭]
+- id: fact_td_elsa_midwife_277
+  text: "AS 277 바알카르 궁에서 엘레나의 출산을 받은 산파는 다른 이름으로 궁 노예 구역에 숨어 지내던 엘사였다. 피가 멎지 않아 엘사가 빌린 혈명을 썼고, 같은 방의 노라가 곁에 있었다"
+  truth: true
+  danger: 4
+  names: [엘사, 엘레나, 노라, 카스파르]
+- id: fact_td_ottilie_letter_grimbald
+  text: "오틸리는 카즈둠 룬판관 그림발드에게 돌화를 늦추거나 맹세를 푸는 법을 묻는 문의서를 보냈다. 그림발드는 아직 답하지 않았다 — 맹세를 푸는 룬의 값이 맹세한 자의 이름 하나라는 것을 어떻게 적을지 정하지 못했다"
+  truth: true
+  danger: 2
+  names: [오틸리, 그림발드]
+- id: fact_td_vesper_left_windspire
+  text: "베스퍼는 박쥐날개 혈통이라 바람첨탑 낮은 둥지에서 쫓겨났고(AS 284), 녹테른 쪽으로 내려가 흑성 아르네스의 밤 전령이 되었다(AS 290). 첨탑은 그것을 배신이라 부르지만 그를 먼저 받아 주지 않은 것은 첨탑이었다"
+  truth: true
+  danger: 1
+  names: [베스퍼]
+- id: fact_td_soran_mother_borte
+  text: "소란의 어머니는 칸의 반려이자 전략가 보르테 흰갈기다. 소란이 바타르에게 몰래 창을 배우는 것을 보르테는 눈감아 준다"
+  truth: true
+  danger: 1
+  names: [소란, 보르테, 테무르, 바타르]

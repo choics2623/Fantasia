@@ -76,6 +76,13 @@ offices:
     powers: ["광산 노예 감시, 다라손(광부 혈통) 감시, 은비늘 요람 '자원자' 모집"]
     chosen_by: "멜리산드 영지 감독관의 임명 (fac_collar 소속)"
     perks: []
+  - id: off_gas_smith
+    title: 독가스 장치 기술자
+    holder: npc_cassel_smokeiron
+    reports_to: off_chief_miner
+    powers: ["갱도마다 숨긴 독가스 장치의 설계·점검"]
+    chosen_by: "갱도 총감독 드루스의 고용"
+    perks: []
   - id: off_casualty_clerk
     title: 사고 기록 서기
     holder: npc_sorel_ink

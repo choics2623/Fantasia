@@ -1,6 +1,6 @@
 # 세릴의 침묵 — 엘다르 안의 비밀 결사. 예언의 '뒷부분'이 위협이 아니라 약속이라고 믿는 자들.
 # [신설 결사 — HOUSES에 없음] 세계가 함의하는 것: 새벽가지 시조 세릴이 신살 때 에오르의 마지막 숨을 '기록'했다(HOUSES §3.1.2),
-# 아엘베린/이실도르의 예언 뒷부분 "…그리고 처음으로 이름을 얻으리라"(HOUSES §3.1.1), 여왕의 의심(fact_sv_elastriel_name_loss_doubt),
+# 이실도르의 예언 뒷부분 "…그리고 처음으로 이름을 얻으리라"(HOUSES §3.1.1), 여왕의 의심(fact_sv_elastriel_name_loss_doubt),
 # 침묵의 해(AS 268), 아에릭의 침묵 서약(HOUSES §3.1.2), 피오나엘의 꿈(AS 311~), 리안델의 '배움'(fact_sv_liandel_learned_songs), 드라우르 에뮌(SUBRACES §4.3).
 # 왜 지금(AS 312): 아에린이 맹약회의 313 전에 시간의 그물을 다시 짜고 리안델을 '돌아옴의 그릇'으로 보며(fact_sv_aerin_vessel_liandel),
 # 잔향이 깨어났다(징후 3배, 피오나엘의 꿈). 그물이 이번 잔향을 붙잡으면 '이름을 얻는 날'은 다시 수백 년 뒤로 간다.
@@ -31,7 +31,7 @@ succession: "머리(아에릭)가 퇴색하면 숨 수정을 만질 수 있는 �
 offices:
   - id: off_silent_head
     title: 침묵 (머리)
-    holder: npc_aeric   # 신설 은자 (docs/world/SECRETS_AND_HERMITS.md H-02) — fac_eldar off_silent_brother와 같은 사람
+    holder: npc_aeric   # 신설 은자 (docs/world/SECRETS_AND_HERMITS.md X-02) — fac_eldar off_silent_brother와 같은 사람
     reports_to: null
     powers: ["영구한 '모든 음 빼기' — 결사의 기준", "숨 수정의 기억을 가진 유일한 결사원(쌍둥이로서 세릴의 직계)", "그물 짜기에 손을 보탤 권리(새벽가지)"]
     chosen_by: "AS 300 영혼 정원 첫 공식 실험 날 스스로 침묵을 서약했고, AS 305 열하나가 그를 머리로 쳤다"
@@ -73,7 +73,7 @@ offices:
     perks: []
   - id: off_outside_witness
     title: 바깥 증인 (드라우르)
-    holder: npc_emyn   # 신설 은자 H-03
+    holder: npc_emyn   # 신설 은자 X-03
     reports_to: null
     powers: ["신살의 마지막 장면을 잊지 않은 자 — 결사의 기억이 어긋날 때 대조할 유일한 바깥 기억"]
     chosen_by: "결사원이 아니다. 동맹이다"
@@ -134,7 +134,7 @@ secrets:
   - {fact: fact_sv_prophecy_first_seen, known_by_rank: rank_silence}
   # TODO-FACT: 새벽가지 시조 세릴이 신살 때 기록한 '숨 수정'이 새벽가지 금고에 있다 — 마지막 숨이 누구를 향했는지 담겼다 (이 파일 신설, HOUSES §3.1.2 '마지막 숨을 기록한 서기'에서)
   # TODO-FACT: 첫 아침의 노래에서 음을 빼는 '빈 음'은 시간 민감한 엘다르만 듣는다 (이 파일 신설)
-  # TODO-FACT: 아엘베린(이실도르)의 돌 입술이 반복하는 예언의 뒷부분 — '…그리고 처음으로 이름을 얻으리라' (HOUSES §3.1.1)
+  # TODO-FACT: 이실도르의 돌 입술이 반복하는 예언의 뒷부분 — '…그리고 처음으로 이름을 얻으리라' (HOUSES §3.1.1)
   - {truth: T20, level: whole, holders: [npc_aeric]}
   - {truth: T20, level: fragment, holders: [npc_emyn]}
   - {truth: T02, level: whole, holders: [npc_aeric, npc_emyn]}

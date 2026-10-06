@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-13.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-13.
 id: npc_owellis
 name: 오웰리스 빛실
 aka: [갈대 엘다르, 첫 장의 손, 물 주는 이]
@@ -13,7 +13,7 @@ home: 루멘 남쪽 갈대 평야, 늪길 입구 가까운 '갈대 수도원 터
 job: 없음 — 화형된 자의 이름마다 갈대 하나를 꺾는다
 rank: 빛실 가지 출신. 스스로 떠났다 — 이름은 깎이지 않았고, 빛실은 그를 '긴 순례 중'이라 적는다
 summary: AS 87 『빛의 말씀』 첫 장 「무혈자를 다루는 법」을 쓴 엘다르. AS 213 첫 '정화'를 보고 걸어 나가 갈대밭에서 이름을 센다
-source: "docs/world/SECRETS_AND_HERMITS.md H-13 (신설 — HOUSES §3.1.5·§5.1, facts fact_lu_sere_wrote_doctrine·fact_hi_maren_signed_only에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-13 (신설 — HOUSES §3.1.5·§5.1, facts fact_lu_sere_wrote_doctrine·fact_hi_maren_signed_only에서)"
 life:
   - {year: -1988, age: 0, event: "SK 1,100 무렵 빛실 가지에서 태어남"}
   - {year: 87, age: 2075, event: "이살 빛실의 교리 위원회. 첫 장 「무혈자를 다루는 법」을 썼다 — 셋째 장 '고난은 정화다'는 세레니엘의 문장. 인간 사제 마렌이 서명했다"}
@@ -72,7 +72,7 @@ hides:
   - fact: fact_hi_maren_signed_only
     reveal_when: "신뢰 30 이상 — 그는 그것을 자기 죄를 나누는 증거로 쓴다"
     cover: "'서명은 서명이오'"
-  - fact: fact_hm_owellis_first_chapter   # TODO-FACT: 『빛의 말씀』 첫 장 「무혈자를 다루는 법」은 빛실 가지의 오웰리스가 썼고, 그 초안 한 장이 갈대 수도원 터 제단 돌 밑에 있다 (T10 전모의 증거)
+  - fact: fact_hm_owellis_first_chapter   # 사실: 『빛의 말씀』 첫 장 「무혈자를 다루는 법」은 빛실 가지의 오웰리스가 썼고, 그 초안 한 장이 갈대 수도원 터 제단 돌 밑에 있다 (T10 전모의 증거)
     reveal_when: "은자 시험(고해를 판단 없이 듣기) 통과 + 값(그가 모르는 화형된 자의 이름 셋)을 치른 뒤"
     cover: "'첫 장 이야기는 이름을 가져온 자와만 하오'"
 relations:

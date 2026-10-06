@@ -132,7 +132,7 @@ cell_graph:
   lines:
     - name: 북부 실
       knots: ["까마귀 문 배수구(국경군 내통 — fact_gf_crowgate_drain)", "회색여울 '절름발이 수탉' 지하 (npc_bram)", "굶주린 언덕 셋째 동굴", "용의 대로 우회 숲길", "오르셀 노예선 '검은 물떼새' 호 (내통 선원 2)", "루멘 양초 공방 강가 동굴 (안나 밀랍손) / 순례자 숙소 물 없는 우물 (npc_agnes)", "늪길 — 늪 어귀 망꾼", "모르바 진흙등불 (npc_bern)"]
-      weak_knot: "하겐 — 북부 실을 아는 '안내인'을 가장한 판매자. 지난 2년 탈주자 19명(HOUSES는 11명)을 바르그에 팔았고 매듭 두 곳이 노출되었다"
+      weak_knot: "하겐 — 북부 실을 아는 '안내인'을 가장한 판매자. 지난 2년 탈주자 19명을 바르그에 팔았고 매듭 두 곳이 노출되었다"
     - name: 장미 실
       knots: ["그림자장미 혈목장 채혈 헛간 기록판('병사')", "장미원 셋째 덤불 아래 지하 통로 (npc_cecile가 직접 연다)", "온실 바닥 수로", "붉은 갈대 선 (npc_tessa 호송, 이틀)", "모르바 진흙등불 (npc_bern)"]
       weak_knot: "퀸트 — 알라리크가 회유 중. 그가 돌아서면 장미 실 전체와 세실이 함께 드러난다"
@@ -198,7 +198,7 @@ secrets:
   - {fact: fact_sr_blind_lighthouse_signal, known_by_rank: rank_runner}
   # TODO-FACT: AS 311 이후 북방 탈주자 때문에 1,300명이 대기 중이다 (HOUSES §5.5)
   # TODO-FACT: 하겐의 판매로 북부 실 매듭 두 곳이 노출되었고, 실타래 '늙은 여울'은 하겐이 페인을 데리고 있어 처리를 결정하지 못했다 (HOUSES §5.5)
-  # 모순 메모: 하겐이 판 탈주자 수 — HOUSES §5.5 '2년간 11명' / facts fact_gf_hagen_sells_runaways '19명'. 이 파일은 사실 id를 따른다.
+  # (해결) 하겐이 판 탈주자 수 — 19명으로 통일 (HOUSES §5.5 수정).
 
 relations:
   - {to: fac_nameless, stance: 90, note: "행렬 밖 — 상위 조직"}

@@ -3195,7 +3195,7 @@
     {
      "faction": "fac_light",
      "rank": "rank_believer",
-     "office": "off_pilgrim_house",
+     "office": "off_pilgrim_house_steward",
      "since": 292,
      "loyalty": 40,
      "public": true,
@@ -9953,7 +9953,7 @@
     {
      "year": 300,
      "age": 2088,
-     "event": "루멘 수석 감독관으로 부임. 같은 해 영혼 정원 피험자 보고 체계가 시작됨 (AS 300~312 피험자 84명)"
+     "event": "루멘 수석 감독관으로 부임. 같은 해 영혼 정원 피험자 보고 체계가 시작됨 (AS 300~312 피험자 140명)"
     },
     {
      "year": 303,
@@ -11050,7 +11050,7 @@
      },
      {
       "situation": "비밀 누설",
-      "line": "어머니가 죽기 전에 그랬어요. '네 아버지는 매일 밤 별을 센단다.' 이 정원에서 별을 세는 분은 한 분뿐이에요."
+      "line": "어머니가 죽기 전에 남긴 말이래요 — 이슬 우리 어른이 전해 줬어요. 저는 그때 한 살이었으니까. '네 아버지는 매일 밤 별을 센단다.' 이 정원에서 별을 세는 분은 한 분뿐이에요."
      },
      {
       "situation": "거래(수업)",
@@ -13997,7 +13997,7 @@
    "on_death": null,
    "story_seeds": [
     "그녀의 매듭끈 마지막 매듭에 '다음의 나야' — 해독하면 AS 100~213 사이 징후로 처형된 이름들이 나온다",
-    "외팔 로크의 집안이 300년째 이 말을 기다린다. 주인공이 다라의 노래 마지막 구절을 흥얼거리면 로크는 무릎을 꿇는다",
+    "외팔 로크의 집안이 이백 년 넘게 이 말을 기다린다. 주인공이 다라의 노래 마지막 구절을 흥얼거리면 로크는 무릎을 꿇는다",
     "지난 회차의 나가 잔인해질수록 이 목소리와 한편이 된다 — 가장 흔한 잠식 경로"
    ]
   },
@@ -16543,7 +16543,8 @@
    "knows": [
     "fact_ar_tower_clerks_literate",
     "fact_ar_halla_three_accusations",
-    "fact_ar_first_second_tests_flawed"
+    "fact_ar_first_second_tests_flawed",
+    "fact_td_ottilie_letter_grimbald"
    ],
    "hides": [
     {
@@ -16677,7 +16678,7 @@
    "job": "침묵 서약자 — 결사 '세릴의 침묵'의 머리",
    "rank": "새벽가지 직계(아에린의 쌍둥이 동생). 공식 자리는 '침묵 서약자' — 권한 없음",
    "summary": "AS 300부터 한 마디도 하지 않는 엘다르. 예언의 뒷부분이 위협이 아니라 약속이라 믿고, 형이 짜는 그물에 매듭 하나를 느슨하게 둔다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-02 (HOUSES §3.1.2 아에릭)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-02 (HOUSES §3.1.2 아에릭)",
    "life": [
     {
      "year": -1888,
@@ -17007,7 +17008,7 @@
     {
      "faction": "fac_eldar",
      "rank": "rank_first_morning",
-     "office": null,
+     "office": "off_silent_brother",
      "since": -1888,
      "loyalty": -10,
      "public": true,
@@ -17094,7 +17095,7 @@
    "job": "봉화대 물장수 — 전 용황 직속 '불의 전령'",
    "rank": "순혈 용인 — 가문 이름을 버렸다. 궁정 기록에는 'AS 3 은퇴'",
    "summary": "대붕괴의 날 의식의 원 바깥 열 걸음에 서 있던 용인 전령. 그 노예가 '너희'라고 외치는 것을 들었고, 불이 먼저 오는 것을 보았다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-07 (신설 — HOUSES §1·§2.8·§6.3에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-07 (신설 — HOUSES §1·§2.8·§6.3에서)",
    "life": [
     {
      "year": -378,
@@ -17500,7 +17501,7 @@
    "job": "떨어진 페이 — 바꿔치기 아이를 되찾는 법을 아는 자, 결사 '웃음 조각'의 떨어진 입",
    "rank": "궁정 밖(추방). 페이 서열 없음",
    "summary": "웃음의 상자를 한 번 열어 진실 한 조각을 얻고 웃음을 잃은 페이. 진실만 말한다 — 그래서 그녀는 무섭다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-06 (HOUSES §3.9)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-06 (HOUSES §3.9)",
    "life": [
     {
      "year": -3100,
@@ -17815,7 +17816,7 @@
     {
      "faction": "fac_fae",
      "rank": null,
-     "office": null,
+     "office": "off_fallen",
      "since": 3,
      "loyalty": -10,
      "public": true,
@@ -17902,7 +17903,7 @@
    "job": "추방된 가지 '마지막빛'의 수장 — 회랑의 탈주자를 숨기고 이야기를 받는다",
    "rank": "드라우르 수장. 별빛 엘다르 족보에서 '흙 속에 묻힌 이름'",
    "summary": "신살에 반대했다가 사슬에 묶여 그 장면을 끝까지 '보게' 된 엘다르. 3,400년 동안 망각 의식에 한 번도 참여하지 않았다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-03 (SUBRACES §4.3)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-03 (SUBRACES §4.3)",
    "life": [
     {
      "year": -3188,
@@ -18299,7 +18300,7 @@
    "job": "검댕 혈통의 가장 오래된 용 — 아스테리아 잔해 수집가",
    "rank": "진룡, 용제국 밖 은거룡(용좌에 서약하지 않음)",
    "summary": "시간의 상처에 스쳐 312년째 대붕괴 전날을 사는 용. 둥지에 오는 인간을 모두 '오지 않은 사절'로 맞아 살려 보낸다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-01 (HOUSES §1.5 검댕 혈통에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-01 (HOUSES §1.5 검댕 혈통에서)",
    "life": [
     {
      "year": -2588,
@@ -18617,7 +18618,7 @@
     {
      "faction": "fac_great_dragon_lines",
      "rank": null,
-     "office": null,
+     "office": "off_gromak",
      "since": -2588,
      "loyalty": 10,
      "public": true,
@@ -18692,7 +18693,7 @@
    "job": "사당의 얼음을 쓰는 인간 — 흔적지기 방패줄의 끝지기",
    "rank": "돌팔 씨족 소유 노예였다가 사당에 '바쳐진' 인간. 요툰 사제가 쓸모 있어 두었다",
    "summary": "귀가 얼어 들리지 않는 서리손 노파. 신을 붙잡았던 거인이 얼어 있는 굴에서 군데의 노래를 지키며, 그 거인의 눈이 남쪽으로 돌아가는 것을 본다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-09 (신설 — HOUSES §4.8 서리손·REGIONS §13.9에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-09 (신설 — HOUSES §4.8 서리손·REGIONS §13.9에서)",
    "life": [
     {
      "year": 254,
@@ -19021,7 +19022,7 @@
    "job": "없음 — 굶주린 자들 사이를 걷는 자",
    "rank": "무소속. 녹테른 족보에서 '떨어진 자'로 지워졌다가 지워진 채로 남음",
    "summary": "90일 굶주림 끝에 이성을 되찾은 유일한 녹테른. 자기 피 속에서 '너희는 끝나지 않을 것이다'를 들었고, 잊었던 이름 하나로 답해 돌아왔다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-12 (SUBRACES §5.3, RACES 녹테른)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-12 (SUBRACES §5.3, RACES 녹테른)",
    "life": [
     {
      "year": -1588,
@@ -19333,7 +19334,7 @@
    "job": "은퇴한 하늘 기록관 — 역행하는 별을 센다",
    "rank": "까마귀 아에리 기록 가문의 노장. 깃털 의회에 자리는 없다",
    "summary": "AS 311부터 하늘을 거꾸로 걷는 별을 세는 늙은 까마귀. 자기 기록에 같은 밤을 두 번 적은 자리가 있다는 것을 안다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-10 (신설 — facts fact_ws_retrograde_star·fact_ar_retrograde_star에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-10 (신설 — facts fact_ws_retrograde_star·fact_ar_retrograde_star에서)",
    "life": [
     {
      "year": 74,
@@ -19645,7 +19646,7 @@
    "job": "결사 '소금 혀'의 오르내리는 자 — 해구의 노래를 위로 나른다",
    "rank": "심해 나가 — 해구에서 반쯤 버려짐",
    "summary": "올라가 본 유일한 심해 나가. 해구에 고인 신의 피가 무슨 말을 하는지 들었고, 그 말에 '답'하는 것을 보고 싶어 한다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-05 (SUBRACES §6 심해 나가)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-05 (SUBRACES §6 심해 나가)",
    "life": [
     {
      "year": -88,
@@ -20029,7 +20030,7 @@
    "job": "흔적지기의 길머리 — 붉은 길의 끝지기",
    "rank": "탈주 서기 노예(AS 280 아르카스 탈출). 법적으로 어느 주인의 장부에도 없다",
    "summary": "앞선 잔향자들이 끝난 다섯 자리를 일곱 바퀴 걸은 노인. 흔적을 탑보다 먼저 잔향의 손에 쥐여 주려 한다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-08 (신설)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-08 (신설)",
    "life": [
     {
      "year": 246,
@@ -20391,7 +20392,7 @@
    "job": "고동 장부의 장부지기 — 140년째 산의 박자를 센다",
    "rank": "박자지기(비밀 서약). 왕실 기록에는 AS 172 '갱도 사고로 실종'",
    "summary": "3,400년 이어진 '고동 장부'를 지키는 첫 박자지기. 산이 누구에게 맞춰 뛰는지 안다고 믿지만, 맹세 때문에 말하지 못한다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-04 (신설 — HOUSES §3.3·REGIONS §12에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-04 (신설 — HOUSES §3.3·REGIONS §12에서)",
    "life": [
     {
      "year": -100,
@@ -20806,7 +20807,7 @@
    "job": "없음 — 화형된 자의 이름마다 갈대 하나를 꺾는다",
    "rank": "빛실 가지 출신. 스스로 떠났다 — 이름은 깎이지 않았고, 빛실은 그를 '긴 순례 중'이라 적는다",
    "summary": "AS 87 『빛의 말씀』 첫 장 「무혈자를 다루는 법」을 쓴 엘다르. AS 213 첫 '정화'를 보고 걸어 나가 갈대밭에서 이름을 센다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-13 (신설 — HOUSES §3.1.5·§5.1, facts fact_lu_sere_wrote_doctrine·fact_hi_maren_signed_only에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-13 (신설 — HOUSES §3.1.5·§5.1, facts fact_lu_sere_wrote_doctrine·fact_hi_maren_signed_only에서)",
    "life": [
     {
      "year": -1988,
@@ -21134,7 +21135,7 @@
    "job": "요툰의 '기억돌' — 맹약회의의 증인",
    "rank": "돌 요툰 원로. 서리왕의 부름을 받는 자",
    "summary": "하루에 한 문장을 말하는 언덕. 맹약회의에 세 번 기억돌로 앉았고, 313에 각 종족이 들고 올 것을 등 앞에서 먼저 들었다",
-   "source": "docs/world/SECRETS_AND_HERMITS.md H-11 (신설 — SUBRACES 돌 요툰에서)",
+   "source": "docs/world/SECRETS_AND_HERMITS.md X-11 (신설 — SUBRACES 돌 요툰에서)",
    "life": [
     {
      "year": -1028,
@@ -21696,7 +21697,7 @@
     },
     {
      "to": "npc_nora",
-     "type": "바알카르 세포장",
+     "type": "바알카르 등잔",
      "like": 50,
      "trust": 85,
      "visibility": "비밀",
@@ -29446,7 +29447,7 @@
     ],
     "drift": [
      "그 회차에 일가 중 하나가 지하가 아니라 다른 곳(마구간 등)에 숨어 있는지 (20 §8.5)",
-     "서리월 11일 사냥대에 죽는 회차가 있다 — 시그리드의 벽에 서른여덟 번째 이름으로 (20 R2)"
+     "낙엽월 25일 볼크의 대수색에 죽는 회차가 있다 — 시그리드의 벽에 서른여덟 번째 이름으로 (20 R2)"
     ],
     "deja_vu": "none"
    },
@@ -29689,7 +29690,8 @@
     "fact_gf_egil_family_in_cellar",
     "fact_gf_osric_broken_ring",
     "fact_mv_elsa_quarrel_270",
-    "fact_gb_gerda_cough"
+    "fact_gb_gerda_cough",
+    "fact_td_elsa_midwife_277"
    ],
    "hides": [
     {
@@ -33400,7 +33402,7 @@
    "sex": "남",
    "age": 23,
    "region": "회색여울 변경",
-   "home": "순례자 헛간 (회색여울 체류 시) — 회색여울 → 바알카르 → 루멘을 40일 주기로 돈다",
+   "home": "순례자 헛간 (회색여울 체류 시) — 회색여울 → 바알카르 → 루멘을 돈다 — 회색여울에 열흘 남짓 머물고 40일 안팎 떠나 있다(한 바퀴 약 50일)",
    "job": "노래하는 순례자 (소문 운반자)",
    "rank": "순종의 빛 허가 찬송 순례자 (통행 허가 목패 소지 — 인간에게 드문 이동권), 형식상 루멘 교단 소유",
    "summary": "길 위에서 소문과 찬송을 나르는 수다스러운 청년. 자기가 나르는 노래 속에 무엇이 들었는지, 누구에게 보고하는지 반만 안다",
@@ -34570,7 +34572,9 @@
    "knows": [
     "fact_gf_godric_debt",
     "fact_gf_owen_wrote_kaspar",
-    "fact_gf_crowgate_drain"
+    "fact_gf_crowgate_drain",
+    "fact_td_lea_elena_beads",
+    "fact_td_melisande_promised_lea"
    ],
    "hides": [
     {
@@ -35197,7 +35201,7 @@
     {
      "year": 306,
      "age": 32,
-     "event": "남작과 계약 — 밀고 100건을 채우면 리즈를 '자유민 대우' 하녀로 루멘 교단에 보낸다"
+     "event": "남작의 구두 약속 — 밀고 100건을 채우면 리즈를 '자유민 대우' 하녀로 루멘 교단에 보낸다"
     },
     {
      "year": 308,
@@ -35405,7 +35409,7 @@
     },
     {
      "to": "npc_godric_raven",
-     "type": "주인·계약",
+     "type": "주인·구두 약속",
      "like": -20,
      "trust": 40,
      "visibility": "비밀",
@@ -35486,7 +35490,7 @@
    },
    "regression": {
     "fixed": [
-     "회귀점의 사실: 밀고 87건, 스물셋의 이름, 이미 고친 2차 명단, 남작과의 100건 계약",
+     "회귀점의 사실: 밀고 87건, 스물셋의 이름, 이미 고친 2차 명단, 남작과의 100건 구두 약속(기록 없음)",
      "낙엽월 2일 19시 40분, 절름발이 수탉 뒷문에서 셋째를 포섭한다 — 키트의 이름과 수탉 지하의 기침을 맞바꾸자고",
      "굶주림월 10일 수탉 지하의 냄새를 알아챈다",
      "한 달에 한 번 성채 지하에서 남작에게 목줄단 보고"
@@ -36834,14 +36838,14 @@
    "region": "회색여울 변경",
    "home": "까마귀 문 장교 숙소",
    "job": "까마귀 문 수비대장 (백인대장)",
-   "rank": "북방 국경군 백인대장. 아우락스파 비늘혈 가문의 셋째 아들",
+   "rank": "북방 국경군 백인대장. 아우락스파 비늘혈 하스크 가 방계의 셋째 아들",
    "summary": "카스파르에게 충성하는 아우락스파 가문의 아들. 가문은 그를 '사령관이 넘어지면 문을 잡을 사람'으로 점찍어 두었다",
    "source": "docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다 (R02-26)",
    "life": [
     {
      "year": 192,
      "age": 0,
-     "event": "바알카르 '비늘 언덕', 아우락스파 비늘혈 가문의 셋째 아들로 태어남"
+     "event": "바알카르 '비늘 언덕', 아우락스파 비늘혈 하스크 가 방계의 셋째 아들로 태어남"
     },
     {
      "year": 232,
@@ -39413,7 +39417,8 @@
     "fact_kz_grimbald_wrote_verdict",
     "fact_kz_contract_clauses",
     "fact_kz_urd_stone_clock",
-    "fact_kz_seal_reason"
+    "fact_kz_seal_reason",
+    "fact_td_ottilie_letter_grimbald"
    ],
    "relations": [
     {
@@ -40828,7 +40833,8 @@
     "fact_hg_baug_blind_eye",
     "fact_hg_brimir_dream",
     "fact_hg_matusz_lodge_runaways",
-    "fact_hg_ogre_larder_cave"
+    "fact_hg_ogre_larder_cave",
+    "fact_hi_gunde_hungry_child"
    ],
    "hides": [
     {
@@ -42201,7 +42207,8 @@
    ],
    "knows": [
     "fact_hg_frost_road_closes",
-    "fact_hg_ogre_larder_cave"
+    "fact_hg_ogre_larder_cave",
+    "fact_hg_volk_marked_lodge"
    ],
    "relations": [
     {
@@ -43435,7 +43442,7 @@
     "samples": [
      {
       "situation": "첫 만남",
-      "line": "2,872씨? 아, 아니군요. 아직 번호가 없으시네."
+      "line": "3,275씨? 아, 아니군요. 아직 번호가 없으시네."
      },
      {
       "situation": "호의",
@@ -48992,7 +48999,7 @@
      "since": 303,
      "loyalty": 60,
      "public": false,
-     "cell": null
+     "cell": "n_wick_embers"
     }
    ],
    "truths": [
@@ -49444,7 +49451,8 @@
     "fact_eh_adrian_nine_days",
     "fact_dk_varskar_time_wound",
     "fact_dk_egg_hunters",
-    "fact_dk_succession_split"
+    "fact_dk_succession_split",
+    "fact_td_melisande_promised_lea"
    ],
    "hides": [
     {
@@ -50382,7 +50390,7 @@
     {
      "year": 265,
      "age": 0,
-     "event": "숯막 굴 마을에서 태어남. 붉은 길 생존자 집안의 아들이라 붉은 점 낙인 처벌이 3대째 이어졌다"
+     "event": "숯막 굴 마을에서 태어남. 붉은 길 생존자 집안의 아들이라 붉은 점 낙인 처벌이 대대로 이어졌다"
     },
     {
      "year": 273,
@@ -50427,7 +50435,7 @@
    ],
    "appearance": [
     "오른팔이 팔꿈치 아래로 없다 — 낙반 사고. 왼팔 하나로 곡괭이를 휘두른다",
-    "등에 붉은 길 처형 생존자 집안의 '붉은 점' 낙인이 있다 (3대째 대물림 처벌)",
+    "등에 붉은 길 처형 생존자 집안의 '붉은 점' 낙인이 있다 (대대로 대물림되는 처벌)",
     "목소리가 갱도 먼지로 쇳소리가 난다. 말 중간에 기침을 한 번 섞는다"
    ],
    "smell": "땀과 철가루, 젖은 쇠, 석탄 그을음",
@@ -50500,7 +50508,7 @@
      },
      {
       "situation": "호의",
-      "line": "다라는 말했다. '전에도 왔고 또 온다.' 우리 집은 300년째 그 말을 기다린다."
+      "line": "다라는 말했다. '전에도 왔고 또 온다.' 우리 집은 이백 년 넘게 그 말을 기다린다."
      },
      {
       "situation": "적대",
@@ -50512,7 +50520,7 @@
      },
      {
       "situation": "비밀 누설",
-      "line": "할아버지는 붉은 길 일곱 번째 생존자였다. 처형대가 모자라 살았지. 나는 그 모자람의 손자다."
+      "line": "6대조 할아버지가 붉은 길 일곱 번째 생존자였다. 처형대가 모자라 살았지. 우리 집은 그 모자람의 자손이다."
      },
      {
       "situation": "거래",
@@ -50627,7 +50635,7 @@
      "trust": 100,
      "visibility": "공개",
      "memo": null,
-     "words": "'전에도 왔고 또 올 것이다'라고 말한 사람. 집안은 300년째 그 말을 기다린다. 그러나 로크가 기다리는 것은 날짜가 아니라 이름이다"
+     "words": "'전에도 왔고 또 올 것이다'라고 말한 사람. 집안은 이백 년 넘게 그 말을 기다린다. 그러나 로크가 기다리는 것은 날짜가 아니라 이름이다"
     }
    ],
    "toward_player": "시험이 먼저다. 곡괭이를 쥐여 주고 하루 일을 시킨다. 하루를 버티면 이름을 묻는다",
@@ -55576,7 +55584,8 @@
    "knows": [
     "fact_nc_thirst_night_tribute",
     "fact_nc_ledger_mismatch",
-    "fact_nc_starved_follow_breath"
+    "fact_nc_starved_follow_breath",
+    "fact_td_vesper_left_windspire"
    ],
    "hides": [
     {
@@ -56166,7 +56175,8 @@
     "fact_ws_kyrie_saw_waste_grow",
     "fact_ws_caged_aeri_die",
     "fact_ws_celes_rival",
-    "fact_ws_tyla_wings_orn"
+    "fact_ws_tyla_wings_orn",
+    "fact_td_vesper_left_windspire"
    ],
    "hides": [
     {
@@ -59785,7 +59795,8 @@
    "knows": [
     "fact_hk_west_wind_broken",
     "fact_hk_dua_loss_rate",
-    "fact_hk_oktai_helps_fallen"
+    "fact_hk_oktai_helps_fallen",
+    "fact_td_soran_mother_borte"
    ],
    "hides": [
     {
@@ -60706,7 +60717,9 @@
     "배수로 입구(신참 낙법 훈련장)",
     "청소부 움막"
    ],
-   "knows": [],
+   "knows": [
+    "fact_aw_goz_deserter"
+   ],
    "hides": [
     {
      "fact": "fact_gm_murk_toy_horse",
@@ -60837,9 +60850,9 @@
      "event": "그롬마르 외곽 소모품 병사 막사에서 인간 아이로 태어남. 어머니가 불러 주던 이름이 따로 있었으나 지금은 그 이름을 입에 올리지 않는다"
     },
     {
-     "year": 241,
-     "age": 27,
-     "event": "피의 원형장 개장 첫해, 투사로 팔려 옴. 첫 경기에서 그롬 전사의 도살도를 보고 칼날의 소리를 외우기 시작함"
+     "year": 243,
+     "age": 29,
+     "event": "일곱 살 아들 카렐과 함께 피의 원형장 투사로 팔려 옴(HOUSES §4.4). 첫 경기에서 그롬 전사의 도살도를 보고 칼날의 소리를 외우기 시작함"
     },
     {
      "year": 250,
@@ -71624,7 +71637,8 @@
     "fact_dk_varskar_scales_stolen",
     "fact_dk_nora_court_gossip",
     "fact_dk_egg_hatch",
-    "fact_dk_succession_split"
+    "fact_dk_succession_split",
+    "fact_td_elsa_midwife_277"
    ],
    "hides": [
     {
@@ -74940,11 +74954,11 @@
     {
      "faction": "fac_nameless",
      "rank": null,
-     "office": null,
+     "office": "off_wick_baalkar_palace",
      "since": 310,
      "loyalty": 70,
      "public": false,
-     "cell": "bk_cell_palace"
+     "cell": "n_wick_palace"
     }
    ],
    "truths": []
@@ -77542,7 +77556,7 @@
    "race": "나가(심해 나가)",
    "subrace": "",
    "sex": "여",
-   "age": "약 400 (SUBRACES의 '올라가 본 적 있는 유일한 심해 나가' 모라나 일곱허물로 본다 — CHARACTERS '수천 세'와 어긋남, 보고)",
+   "age": "약 400 (해구 수장 우르텔 깊은눈의 사절. 세렌에서 부르는 '수천 세'는 소문 — 위로 올라가 본 모라나 일곱허물(npc_morana)과는 다른 나가)",
    "region": "세렌 해안 동맹",
    "home": "세렌 만 바닥 '고인 피의 문' — 해구 위 신전 제단 아래 동굴이 닿는 곳",
    "job": "세렌 만 바닥 '고인 피의 문'의 사절",
@@ -77563,7 +77577,7 @@
     {
      "year": 229,
      "age": 317,
-     "event": "심해 나가 중 유일하게 수심 열 길 위까지 올라가 세렌 신전의 공물 계단을 봄. 그때 위에서 던져진 '값비싼 물건'의 소리가 아직 귀에 남아 있다"
+     "event": "우르텔 깊은눈의 사절로 뽑혀 세렌 만 바닥 '고인 피의 문'까지 오르내리기 시작함 — 그 위(수심 열 길)는 모라나만 가 보았다. 문 너머로 세렌 신전의 공물 계단 소리를 들음. 그때 위에서 던져진 '값비싼 물건'의 소리가 아직 귀에 남아 있다"
     },
     {
      "year": 311,
@@ -80398,7 +80412,7 @@
   },
   "fact_dk_nora_grey_cell": {
    "id": "fact_dk_nora_grey_cell",
-   "text": "노라는 이름 없는 자들의 바알카르 세포장이며, 회색 여인과 직접 접촉한 몇 안 되는 사람이다 (얼굴은 모르고 목소리만 안다)",
+   "text": "노라는 이름 없는 자들의 바알카르 등잔(지역 책임자)이며, 회색 여인과 직접 접촉한 몇 안 되는 사람이다 (얼굴은 모르고 목소리만 안다)",
    "truth": true,
    "danger": 5,
    "names": [
@@ -80869,7 +80883,7 @@
   },
   "fact_eh_rok_grandfather": {
    "id": "fact_eh_rok_grandfather",
-   "text": "로크의 할아버지는 붉은 길에서 살아남은 7명 중 하나다. 처형대가 모자라 살았다. 로크는 3대째 '붉은 점' 낙인을 받았다",
+   "text": "로크의 6대조 할아버지(AS 100)는 붉은 길에서 살아남은 7명 중 하나다. 처형대가 모자라 살았다. 그 집안은 대대로 '붉은 점' 낙인을 받는다",
    "truth": true,
    "danger": 1,
    "names": [
@@ -86138,7 +86152,7 @@
   },
   "fact_sr_beatrix_both_sides": {
    "id": "fact_sr_beatrix_both_sides",
-   "text": "몬달리 은행은 아우락스와 멜리산드 양쪽에 거액을 빌려주었고, 베아트릭스는 용제국 내전이 길고 비싸게 끝나도록 조율한다",
+   "text": "몬달리 은행은 아우락스와 멜리산드 양쪽에 각 12만 두카트를 빌려주었고, 베아트릭스는 용제국 내전이 길고 비싸게 끝나도록 조율한다",
    "truth": true,
    "danger": 4,
    "names": [
@@ -86189,7 +86203,7 @@
   },
   "fact_sr_draft_votes_7_of_11": {
    "id": "fact_sr_draft_votes_7_of_11",
-   "text": "시민권 초안의 표결에는 의원 21명 중 11표가 필요하고, 지금 확보한 표는 7표다",
+   "text": "시민권 초안의 표결에는 의회 표 21개(열두 의석 + 옛 아홉 비늘의 비늘 표) 중 11표가 필요하고, 지금 확보한 표는 7표다",
    "truth": true,
    "danger": 2,
    "names": []
@@ -86495,7 +86509,7 @@
   },
   "fact_sv_ise_last_words": {
    "id": "fact_sv_ise_last_words",
-   "text": "이세는 죽기 전 아들 데인에게 '네 아버지는 매일 밤 별을 센단다'라고 말했다",
+   "text": "이세는 죽기 전 갓난 아들 데인에게 전해 달라며 이슬 우리 어른에게 '네 아버지는 매일 밤 별을 센단다'라고 남겼다(데인은 AS 303에 전해 들었다)",
    "truth": true,
    "danger": 3,
    "names": [
@@ -86691,7 +86705,7 @@
   },
   "fact_tm_elin_time_keeper": {
    "id": "fact_tm_elin_time_keeper",
-   "text": "엘린은 장난감 정원의 인간들에게 바깥 시간이 얼마나 흘렀는지 알려 주는 유일한 사람이다",
+   "text": "엘린은 장난감 정원의 인간 70명에게 바깥 시간이 얼마나 흘렀는지 알려 주는 단 한 사람이다(숲의 다른 곳에서는 '돌 세는 자들'이 조약돌로 몰래 센다)",
    "truth": true,
    "danger": 1,
    "names": [
@@ -86725,6 +86739,71 @@
     "그릭"
    ]
   },
+  "fact_td_lea_elena_beads": {
+   "id": "fact_td_lea_elena_beads",
+   "text": "레아는 AS 310 바알카르 노예 시장 잡화상에게서 엘레나의 자장가 구슬 목걸이(가락을 새긴 나무 구슬 일곱)를 사들여 까마귀 문 숙소 함에 넣어 두었다. '적절한 순간'에 카스파르에게 건네 그의 신뢰를 사려 한다",
+   "truth": true,
+   "danger": 3,
+   "names": [
+    "레아",
+    "엘레나",
+    "카스파르"
+   ]
+  },
+  "fact_td_melisande_promised_lea": {
+   "id": "fact_td_melisande_promised_lea",
+   "text": "멜리산드는 레아에게, 고드릭 레이번이 무너지면 회색여울 영지를 그녀에게 주겠다고 약속했다. 레아의 충성의 값이다",
+   "truth": true,
+   "danger": 4,
+   "names": [
+    "멜리산드",
+    "레아",
+    "고드릭"
+   ]
+  },
+  "fact_td_elsa_midwife_277": {
+   "id": "fact_td_elsa_midwife_277",
+   "text": "AS 277 바알카르 궁에서 엘레나의 출산을 받은 산파는 다른 이름으로 궁 노예 구역에 숨어 지내던 엘사였다. 피가 멎지 않아 엘사가 빌린 혈명을 썼고, 같은 방의 노라가 곁에 있었다",
+   "truth": true,
+   "danger": 4,
+   "names": [
+    "엘사",
+    "엘레나",
+    "노라",
+    "카스파르"
+   ]
+  },
+  "fact_td_ottilie_letter_grimbald": {
+   "id": "fact_td_ottilie_letter_grimbald",
+   "text": "오틸리는 카즈둠 룬판관 그림발드에게 돌화를 늦추거나 맹세를 푸는 법을 묻는 문의서를 보냈다. 그림발드는 아직 답하지 않았다 — 맹세를 푸는 룬의 값이 맹세한 자의 이름 하나라는 것을 어떻게 적을지 정하지 못했다",
+   "truth": true,
+   "danger": 2,
+   "names": [
+    "오틸리",
+    "그림발드"
+   ]
+  },
+  "fact_td_vesper_left_windspire": {
+   "id": "fact_td_vesper_left_windspire",
+   "text": "베스퍼는 박쥐날개 혈통이라 바람첨탑 낮은 둥지에서 쫓겨났고(AS 284), 녹테른 쪽으로 내려가 흑성 아르네스의 밤 전령이 되었다(AS 290). 첨탑은 그것을 배신이라 부르지만 그를 먼저 받아 주지 않은 것은 첨탑이었다",
+   "truth": true,
+   "danger": 1,
+   "names": [
+    "베스퍼"
+   ]
+  },
+  "fact_td_soran_mother_borte": {
+   "id": "fact_td_soran_mother_borte",
+   "text": "소란의 어머니는 칸의 반려이자 전략가 보르테 흰갈기다. 소란이 바타르에게 몰래 창을 배우는 것을 보르테는 눈감아 준다",
+   "truth": true,
+   "danger": 1,
+   "names": [
+    "소란",
+    "보르테",
+    "테무르",
+    "바타르"
+   ]
+  },
   "fact_wd_grey_woman_faceless": {
    "id": "fact_wd_grey_woman_faceless",
    "text": "이름 없는 자들의 세포장들은 회색 여인의 얼굴을 본 적이 없다. 접촉은 늘 벽·커튼·우물 너머의 목소리로만 이루어진다. 목소리는 낮고 쉰 소리이며 서리말 억양이 아주 약하게 섞였다",
@@ -86734,7 +86813,7 @@
   },
   "fact_wd_grey_woman_identity_by_seed": {
    "id": "fact_wd_grey_woman_identity_by_seed",
-   "text": "회색 여인의 정체는 이 시대 시드가 정한다: ⓐ 바알카르 세포장 노라 ⓑ 루멘 지부장 수녀 아그네스 ⓒ 늪 마녀 '실뜨기' 마그 ⓓ 실체 없는 공유 가명 — 각 세포장이 돌아가며 그 목소리를 연기한다",
+   "text": "회색 여인의 정체는 이 시대 시드가 정한다: ⓐ 바알카르 등잔 노라 ⓑ 루멘 지부장 수녀 아그네스 ⓒ 늪 마녀 '실뜨기' 마그 ⓓ 실체 없는 공유 가명 — 각 세포장이 돌아가며 그 목소리를 연기한다",
    "truth": true,
    "danger": 5,
    "names": [

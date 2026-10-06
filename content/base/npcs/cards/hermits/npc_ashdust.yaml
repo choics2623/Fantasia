@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-06. HOUSES §3.9 '떨어진 자들'의 잿가루 — fac_fae 해당 자리와 같은 자.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-06. HOUSES §3.9 '떨어진 자들'의 잿가루 — fac_fae 해당 자리와 같은 자.
 id: npc_ashdust
 name: 잿가루
 aka: [떨어진 입, 종탑의 페이, 웃지 않는 이]
@@ -13,7 +13,7 @@ home: 모르바 늪 깊은 곳 '가라앉은 종탑'
 job: 떨어진 페이 — 바꿔치기 아이를 되찾는 법을 아는 자, 결사 '웃음 조각'의 떨어진 입
 rank: 궁정 밖(추방). 페이 서열 없음
 summary: 웃음의 상자를 한 번 열어 진실 한 조각을 얻고 웃음을 잃은 페이. 진실만 말한다 — 그래서 그녀는 무섭다
-source: "docs/world/SECRETS_AND_HERMITS.md H-06 (HOUSES §3.9)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-06 (HOUSES §3.9)"
 life:
   - {year: -3100, age: 0, event: "(페이의 나이는 셈하기 어렵다) 신살 무렵 가시 궁정의 아이 페이로 '피어났다'"}
   - {year: -3088, age: 12, event: "신살. 여왕이 웃자 궁정의 아이들도 따라 웃었다 — 왜인지 모르고"}
@@ -123,7 +123,7 @@ story_seeds:
   - "엘린의 자리에 사는 바꿔치기 아이 — 둘 다 돌아갈 곳이 필요하다"
   - "모든 이름의 순서 — 잿가루와 엉겅퀴 공은 여왕의 이름을 어디에 둘지 다툰다"
 affiliations:
-  - {faction: fac_fae, rank: null, office: null, since: 3, loyalty: -10, public: true, cell: null}
+  - {faction: fac_fae, rank: null, office: off_fallen, since: 3, loyalty: -10, public: true, cell: null}
   - {faction: fac_laugh_shards, rank: rank_fallen, office: off_fallen_mouth, since: 2, loyalty: 80, public: false, cell: n_ashdust}
 truths:
   - {id: T23, level: whole}

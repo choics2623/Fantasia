@@ -131,7 +131,7 @@ offices:
     perks: ["새벽 온실 출입"]
   - id: off_silent_brother
     title: 침묵 서약자 (새벽가지)
-    holder: "unnamed:아에릭 (약 2,200) — 아에린의 쌍둥이 동생, 실험에 반대해 스스로 침묵"
+    holder: npc_aeric   # 아에린의 쌍둥이 동생, 실험에 반대해 스스로 침묵 (은자 X-02)
     reports_to: off_dawn_head
     powers: ["없음. 침묵 자체가 항의다"]
     chosen_by: "스스로"
@@ -257,7 +257,7 @@ secrets:
   - {truth: T05, level: fragment, holders: [npc_aerin]}
   - {truth: T10, level: whole, holders: [npc_elastriel]}
   - {truth: T12, level: whole, holders: [npc_elastriel]}
-  # TODO-FACT: 첫 아침 가지의 돌이 된 아엘베린의 입술이 3,000년간 반복하는 말은 예언의 뒷부분이다 — "…그리고 처음으로 이름을 얻으리라." 여왕만 안다 (HOUSES §3.1.1)
+  # TODO-FACT: 첫 아침 가지의 돌이 된 이실도르의 입술이 3,000년간 반복하는 말은 예언의 뒷부분이다 — "…그리고 처음으로 이름을 얻으리라." 여왕만 안다 (HOUSES §3.1.1)
   # TODO-FACT: 흰 알 예언 원문은 "깨어나리라"인지 "끊어지리라"인지 이슬 두루마리 손상으로 불분명하다 (HOUSES §3.1.4)
   # TODO-FACT: 『빛의 말씀』 원본은 엘다르어 '관리 지침서'이고 첫 장 제목이 "무혈자를 다루는 법"이다 (HOUSES §3.1.5)
   # TODO-FACT: 갈증 망명자 — 매년 몇 명의 젊은 가지가 망각의 길로 녹테른에 간다 (RACES §5 내부 파벌)

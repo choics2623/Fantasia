@@ -90,7 +90,7 @@ hides:
     cover: "'용혈과 접촉은 없다. 있었다 해도 이쪽은 모른다.'라고 한다"
 relations:
   - {to: npc_elsa, type: 북부 연락책, like: 40, trust: 80, visibility: 비밀, memo: null, words: "늪에서 올라온 노파. 북쪽 아이들의 길을 쥔 올. 한 번도 틀린 적이 없어서 가장 먼저 의심해야 할 사람이라고 스스로 일러 둔다"}
-  - {to: npc_nora, type: 바알카르 세포장, like: 50, trust: 85, visibility: 비밀, memo: null, words: "궁 안에서 열둘째로 듣고 살아남은 귀. 그녀가 입을 닫으면 대붕괴의 인간 쪽 증언이 사라진다는 것을 안다. 그래서 지켜야 한다"}
+  - {to: npc_nora, type: 바알카르 등잔, like: 50, trust: 85, visibility: 비밀, memo: null, words: "궁 안에서 열둘째로 듣고 살아남은 귀. 그녀가 입을 닫으면 대붕괴의 인간 쪽 증언이 사라진다는 것을 안다. 그래서 지켜야 한다"}
   - {to: npc_agnes, type: 루멘 지부장, like: 40, trust: 70, visibility: 비밀, memo: null, words: "빛의 옷을 입고 실을 잇는 올. 사제들 사이에서 가장 오래 버틴 사람이다. 버틴 만큼 닳은 것도 안다"}
   - {to: npc_cecile, type: 서신 동맹(녹테른), like: 20, trust: 40, visibility: 비밀, memo: null, words: "밤의 장미. 편지만 오간다. 기대하지 않고 값을 따져 가며 잇는다"}
   - {to: npc_ian_ash, type: 미끼, like: 30, trust: 80, visibility: 비밀, memo: null, words: "스스로 불 앞에 선 사람. 승인한 것은 이쪽이다. 그가 불에 오르는 날 이름을 하나 더 외울 것이다"}

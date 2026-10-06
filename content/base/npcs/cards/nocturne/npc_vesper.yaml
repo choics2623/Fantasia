@@ -62,7 +62,7 @@ schedule:
   저녁: "알라리크와 모르데카이의 전령 임무"
   밤: "하늘에서 영지를 돌며 탈주 행렬과 공물 행렬을 감시"
 places: [흑성 아르네스 탑, 영지 상공, 그림자장미 저택 지붕, 이빨 골짜기 상공]
-knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_starved_follow_breath]
+knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_starved_follow_breath, fact_td_vesper_left_windspire]
 hides:
   - fact: fact_nc_vesper_unreported_convoy
     reveal_when: "신뢰 55 이상이고 플레이어가 탈주자를 도운 행적이 있거나, 하늘에서 같은 행렬을 마주친 뒤"
@@ -101,4 +101,4 @@ story_seeds:
   - "그가 보고하지 않은 탈주 행렬 하나 — 이유는?"
   - "녹타가 피 없이 멀쩡하다는 사실이 퍼지면 박쥐날개 2,500이 녹테른의 목줄에서 풀린다 — 베스퍼가 그것을 처음으로 확인하러 간다"
   - "타일라가 땅에서 올려다볼 때, 베스퍼가 하늘에서 내려다본다"
-# TODO-FACT: 타일라의 날개 절단과 추방 경위, 키리에의 박쥐날개 거절 — 바람첨탑 작가
+# (해결 → fact_ws_tyla_wings_orn · fact_td_vesper_left_windspire) 타일라의 날개 절단과 추방 경위, 키리에의 박쥐날개 거절 — 바람첨탑 작가

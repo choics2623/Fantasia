@@ -72,7 +72,7 @@ schedule:
   저녁: "탈주자가 오면 꿀과 따뜻한 죽을 내준다"
   밤: "달이 뜨면 문 앞에 앉는다. 달이 없으면 불을 낮춘다"
 places: [서리 길 마지막 산장, 산장 헛간 마루 밑 방, 높은 바위 전망대]
-knows: [fact_hg_frost_road_closes, fact_hg_ogre_larder_cave]
+knows: [fact_hg_frost_road_closes, fact_hg_ogre_larder_cave, fact_hg_volk_marked_lodge]
 relations:
   - {to: npc_yorun, type: 서리 길의 곰 친구, like: 30, trust: 40, visibility: 공개, memo: null, words: "말이 느린 돌 노파. 서두르지 않아서 같이 앉아 있기 편하다"}
   - {to: npc_asta, type: 호송 협력자, like: 50, trust: 60, visibility: 비밀, memo: null, words: "얼음손 여자. 늘 사람 수를 세어서 온다. 한 명이라도 모자라면 눈을 감는다"}
@@ -93,7 +93,7 @@ hard_rules:
   - "'탈주'라는 낱말을 쓰지 않는다 — '겨울 손님'이라 한다"
   - "달 없는 밤에는 사냥하지 않는다"
   - "손님의 아이 입을 막지 못하게 한다 — 안으라고 한다"
-# TODO-FACT: 볼크가 산장을 '탈주자 소굴'로 지목한 경위 — 회색여울(볼크 관련 fact_gf_*) 작가 담당
+# (해결 → fact_hg_volk_marked_lodge) 볼크가 산장을 '탈주자 소굴'로 지목한 경위 — 회색여울(볼크 관련 fact_gf_*) 작가 담당
 on_death: "생명 진명 스승 소멸. 호송대의 첫 밤 쉼터 소멸 — 서리 길 탈주 성공률 하락"
 story_seeds:
   - "볼크가 산장을 '탈주자 소굴'로 지목했다. 사냥 조합이 서리월 전에 산장을 덮친다"

@@ -134,6 +134,13 @@ offices:
     powers: ["매매 명단 수집", "시장 손 넷"]
     chosen_by: "바알카르 등잔의 지명"
     perks: []
+  - id: off_wick_baalkar_palace
+    title: 바알카르 심지 (궁정 — 불꽃 홀)
+    holder: npc_tilde
+    reports_to: off_lamp_baalkar
+    powers: ["다섯 의자의 방 등잔 열둘 — 궁정 말소리", "궁정 세포(n_wick_palace)"]
+    chosen_by: "바알카르 등잔의 지명 (AS 310)"
+    perks: []
   - id: off_wick_baalkar_sewer
     title: 바알카르 심지 (하수도 — 쥐들의 왕관 안)
     holder: npc_harald
@@ -173,18 +180,25 @@ cell_graph:
       who: npc_nora
       rank: rank_lamp
       knows_up: "n_grey_woman — 궁 남쪽 세탁장 셋째 물통 바닥의 매듭. 목소리는 두 번, 커튼 너머로"
-      knows_members: [n_wick_market, n_wick_sewer]
+      knows_members: [n_wick_market, n_wick_sewer, n_wick_palace]
       medium: "세탁물"
       if_captured: "심지 둘(안셀마·하랄)의 암호명과 세탁장 물통 — 회색 여인까지 '물통 하나'만 드러난다. 노라는 용황의 진실(T06)도 쥐고 있어 아우락스가 먼저 그녀를 원한다"
     - id: n_wick_market
-      who: "unnamed:두더지 안셀마"
+      who: npc_anselma
       rank: rank_wick
       knows_up: "n_lamp_baalkar — 암호명 '빨래'. 얼굴은 모른다"
       knows_members: ["unnamed:시장 손 넷 (손가락 12)"]
       medium: "노예시장 빨랫줄의 매듭"
       if_captured: "시장 손 넷이 무너진다(손가락 12). 등잔으로는 '빨래'라는 이름과 빨랫줄만"
+    - id: n_wick_palace
+      who: npc_tilde
+      rank: rank_wick
+      knows_up: "n_lamp_baalkar — 같은 궁의 등잔 기름 창고"
+      knows_members: ["unnamed:궁정 손 둘"]
+      medium: "다섯 의자의 방 등잔 기름병"
+      if_captured: "불꽃 홀의 말소리 길이 끊긴다 — 등잔으로는 노라의 기름 배급표 한 장"
     - id: n_wick_sewer
-      who: "unnamed:하랄"
+      who: npc_harald
       rank: rank_wick
       knows_up: "n_lamp_baalkar — 같은 세탁장"
       knows_members: ["unnamed:하수도 손 둘", n_thread_crown]
@@ -268,12 +282,19 @@ cell_graph:
       medium: "옛 돌 고리 3번 돌 틈 전갈 (월 1회, 15일 보급 회의 귀로)"
       if_captured: "카스파르가 잡히면 조직은 아무것도 잃지 않는다 — 그는 엘사 하나만 안다. 그러나 엘사가 잡히면 카스파르가 끝난다"
     - id: n_lamp_emberhills
-      who: "unnamed:칼렙"
+      who: npc_caleb_dara
       rank: rank_lamp
       knows_up: "n_grey_woman — 9번 갱 막장 벽의 손자국 사이"
-      knows_members: ["unnamed:다라손 손 넷"]
+      knows_members: ["unnamed:다라손 손 넷", n_wick_embers]
       medium: "갱도 벽 붉은 진흙"
       if_captured: "9번 갱 봉기 준비와 다라손 40명"
+    - id: n_wick_embers
+      who: npc_leonic
+      rank: rank_wick
+      knows_up: "n_lamp_emberhills — 갱도 벽 손자국 사이의 쪽지"
+      knows_members: ["unnamed:광부등 세포 넷의 세포장"]
+      medium: "광부등 기름 심지에 감은 실"
+      if_captured: "광부등 세포장 넷의 이름 — 그는 크라즈에게 곁다리만 팔았고 이름은 한 번도 팔지 않았다"
     - id: n_lamp_silver
       who: "unnamed:은빛 강 등잔"
       rank: rank_lamp

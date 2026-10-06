@@ -56,6 +56,13 @@ offices:
     powers: ["잿불 언덕 크릭 감독 40 지휘", "멜리산드 실험장의 인간 선별 보조"]
     chosen_by: "길드 파견 — 멜리산드의 크릭"
     perks: ["즈닉의 사촌"]
+  - id: off_black_nail_head
+    title: 검은 손톱 지부장 (잿불 언덕 크릭 감독 조합)
+    holder: npc_kraz
+    reports_to: off_whip_guild_head
+    powers: ["감독관 배정·물 배급표", "지부 장부"]
+    chosen_by: "길드 지부 회합 — 현장 총감독관은 그락스"
+    perks: []
   - id: off_palace_ear
     title: 궁의 귀 (정보상 — 감독관 크릭)
     holder: npc_fizik

@@ -1,6 +1,6 @@
 # 하르칸 초원 부족 — 바람 혈명('질주')의 굴레(정착 불가)가 만든 '달리는 합의'.
 # 근거: HOUSES §3.6, RACES §11, REGIONS §15, facts/harkan.yaml.
-# 조정: HOUSES(5부족) · RACES(부족 약 40, 31 복속) · REGIONS(씨족 14, 11 복속)의 부족 수가 어긋난다 — 이 파일은 HOUSES의 5부족을 중심에 두고 나머지는 '그 외 부족'으로 처리했다 (보고).
+# 부족 수: 19개 중 17 복속(CHARACTERS 기준으로 RACES·REGIONS 통일, CONTINUITY_LOG §3). 이 파일은 HOUSES의 이름 있는 5부족을 중심에 두고 나머지는 '그 외 부족'으로 처리했다 (보고).
 id: fac_harkan
 name: 하르칸 초원 통일 칸국 (칸의 오르두)
 kind: polity
@@ -32,7 +32,7 @@ offices:
     holder: npc_temur
     reports_to: null
     powers: ["오르두 이동 방향", "벡들과의 바람 맹세", "서진 결정 — 서풍의 날 진군", "노예 사냥 계획"]
-    chosen_by: "추종하는 부족 수 + 칸위 결투. 40부족 중 31(RACES) / 14씨족 중 11(REGIONS) 복속"
+    chosen_by: "추종하는 부족 수 + 칸위 결투. 19부족 중 17 복속"
     perks: ["칸의 천막 지도(그롬마르와 용제국 동부를 모두 정복하는 계획)", "정착병이 시작됐다(통일 후 정착 왕국은 그를 병들게 한다)"]
   - id: off_consort_strategist
     title: 칸의 반려·전략가

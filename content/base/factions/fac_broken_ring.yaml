@@ -100,10 +100,10 @@ ranks:
 cell_graph:
   rule: "고리 일곱은 서로의 얼굴을 안다(같은 성당). 다른 고리는 모른다 — 걸쇠만 사슬을 안다. 사슬은 일곱째 고리 하나만 안다. 그래서 고리 하나가 잡히면 일곱이 한꺼번에 무너지지만 위로는 걸쇠 한 칸뿐이다"
   nodes:
-    - {id: n_alberic, who: npc_alberic, knows_up: null, knows_members: ["npc_vera (벽 두드림)", "unnamed:한나 (양초)", "unnamed:야코프"], if_captured: "이미 갇혀 있다. 그를 죽이면 순교자, 빼내면 도망자 — 클락 #8의 핵심"}
+    - {id: n_alberic, who: npc_alberic, knows_up: null, knows_members: ["npc_vera (벽 두드림)", "npc_lm_hanna (양초)", "unnamed:야코프"], if_captured: "이미 갇혀 있다. 그를 죽이면 순교자, 빼내면 도망자 — 클락 #8의 핵심"}
     - {id: n_adel, who: "unnamed:아델", knows_up: "n_alberic — 서신의 구절로만", knows_members: [n_agnes, n_hanna, n_jakob, "unnamed:교구 걸쇠 셋"], if_captured: "일곱째 고리 전부의 얼굴과 축일 만남 장소 — 결사 전체가 한 번에 드러나는 유일한 마디"}
     - {id: n_agnes, who: npc_agnes, knows_up: "n_adel", knows_members: ["루멘 사슬 걸쇠들", "npc_osric (구절로만, 만난 적 없다)", "npc_bern (모르바)", "npc_johan (운반자)"], if_captured: "루멘 사슬과 잿빛 실 루멘 거점이 함께 무너진다 — 이름 없는 자들과 겹치는 마디"}
-    - {id: n_hanna, who: "unnamed:한나", knows_up: "n_adel", knows_members: [n_alberic], if_captured: "알베릭과의 연락이 끊기고, 마렌의 후손 둘이 같은 우물에 갇힌다"}
+    - {id: n_hanna, who: npc_lm_hanna, knows_up: "n_adel", knows_members: [n_alberic], if_captured: "알베릭과의 연락이 끊기고, 마렌의 후손 둘이 같은 우물에 갇힌다"}
     - {id: n_jakob, who: "unnamed:수도자 야코프", knows_up: "n_adel", knows_members: [n_alberic, "unnamed:매수된 간수 하나"], if_captured: "탈옥 경로 — 오토가 문을 바꾼다"}
     - {id: n_osric, who: npc_osric, knows_up: "n_adel — 북부 순례 때 한 번", knows_members: ["회색여울 고리 여섯", "npc_elsa (이름 없는 자들 — 동지)"], if_captured: "글자 모양을 본 아이들의 이름 — 회색여울의 아이들이 정화청으로 간다"}
     - {id: n_johan, who: npc_johan, knows_up: "n_agnes — 운반자", knows_members: ["npc_felix (그는 정화청 쪽 보고도 나른다)"], if_captured: "그는 양쪽 말을 다 나른다 — 잡히면 어느 쪽 비밀을 내놓을지 그 자신도 모른다"}

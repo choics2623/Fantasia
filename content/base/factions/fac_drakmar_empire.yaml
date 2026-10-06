@@ -248,30 +248,42 @@ offices:
     chosen_by: "다섯 불의 의자 합의 — 서약 전에 정해야 하는데 진영 다툼으로 미정"
     perks: ["100년에 한 번의 자리"]
 
+  # ── 1차 확장에서 채운 자리 (people/crow_gate.md · ember_hills.md 제안 반영, CONTINUITY_LOG §3) ──
+  - id: off_crowgate_quartermaster
+    title: 까마귀 문 보급관
+    holder: npc_cg_erwin
+    reports_to: off_northern_army
+    powers: ["요새 보급 장부", "병사 급료·귀리 입고"]
+    chosen_by: "북방군 사령관의 임명"
+    perks: []
   - id: off_crowgate_clerk
-    title: "rank_overseer"
+    title: 까마귀 문 서기 (크릭)
     holder: npc_cg_shrik
-    reports_to: null
-    powers: []
-    chosen_by: null
+    reports_to: off_crowgate_quartermaster
+    powers: ["통행·수용 서류 정리"]
+    chosen_by: "북방군 사령관의 임명"
     perks: []
-    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
   - id: off_crowgate_jailer
-    title: "rank_collar"
+    title: 까마귀 문 간수 (목줄단 출신 노예)
     holder: npc_cg_bern
-    reports_to: null
-    powers: []
-    chosen_by: null
+    reports_to: off_crowgate_captain
+    powers: ["탈주자 임시 수용 30칸", "점호·배식"]
+    chosen_by: "수비대장의 지명"
     perks: []
-    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
   - id: off_road_post_checkpoint
-    title: "rank_scale_officer"
+    title: 용주 역참 검문 하사
     holder: npc_dp_orbek
-    reports_to: null
-    powers: []
-    chosen_by: null
+    reports_to: off_road_post
+    powers: ["용의 대로 검문 — 통행증 확인"]
+    chosen_by: "역참장의 지명"
     perks: []
-    note: "1차 확장 작가가 제안한 자리 — 검수 필요"
+  - id: off_mine_marshal
+    title: 잿불 언덕 광산 총감 (생산)
+    holder: npc_hadrian_ashjaw
+    reports_to: off_lord_emberhills
+    powers: ["채굴 할당·생산 보고", "탈주·봉기 모의 처벌 집행"]
+    chosen_by: "멜리산드의 임명 — 베르미온 가의 갱도 총감독(드루스)과는 다른 자리"
+    perks: []
 ranks:
   - {id: rank_emperor, title: "용황", duties: "모든 것의 소유자", privileges: "역린 이외 모든 것", open_to_player: false}
   - {id: rank_true_dragon, title: "진룡 (화주)", duties: "영지를 보고로 삼아 지킨다", privileges: "영지 안의 모든 생명과 재물, 공중 결투", open_to_player: false}

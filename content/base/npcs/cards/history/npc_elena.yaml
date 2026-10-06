@@ -71,7 +71,7 @@ schedule:
 places: [용황궁 시중 노예의 방, 궁 남쪽 재구덩이 셋째 줄, 자장가 구슬 목걸이(회색여울 까마귀 문 요새의 레아의 함)]
 knows: [fact_hi_elena_song, fact_hi_elena_last_words]
 hides: []
-# TODO-FACT: 엘레나의 자장가 구슬 목걸이를 레아가 소지(까마귀 문 요새, ITEMS L26) — 회색여울(fact_gf_) 작가 담당
+# (해결 → fact_td_lea_elena_beads) 엘레나의 자장가 구슬 목걸이를 레아가 소지(까마귀 문 요새, ITEMS L26) — 회색여울(fact_gf_) 작가 담당
 relations:
   - {to: npc_kaspar, type: 아들, like: 100, trust: 30, visibility: 공개, memo: null, words: "이름을 짓지 못한 아가. 갓난아기 때의 숨소리만 안다. 어떤 사람이 되었는지 알 수 없다. 그래서 노래를 맡긴다"}
   - {to: npc_nora, type: 같은 방 동료, like: 85, trust: 90, visibility: 비밀, memo: null, words: "문 닫고 노래하라고 가르쳐 준 사람. 마지막 곁을 지킨 손. 셋째 줄을 아는 이"}

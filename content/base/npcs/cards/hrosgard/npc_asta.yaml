@@ -73,7 +73,7 @@ schedule:
   저녁: "서리말 노래로 죽은 자를 센다"
   밤: "서리 길로 떠날 사람을 고른다. 에이나르 곁에서 마지막으로 이름을 확인한다"
 places: [돌무릎 골짜기 노예 움막, 돌무릎 씨족 장원, 불 오두막, 서리 길 호송 집결지]
-knows: [fact_hg_asta_counts_800, fact_hg_baug_owns_stonekneed_slaves, fact_hg_frost_road_closes, fact_hg_baug_blind_eye, fact_hg_brimir_dream, fact_hg_matusz_lodge_runaways, fact_hg_ogre_larder_cave]
+knows: [fact_hg_asta_counts_800, fact_hg_baug_owns_stonekneed_slaves, fact_hg_frost_road_closes, fact_hg_baug_blind_eye, fact_hg_brimir_dream, fact_hg_matusz_lodge_runaways, fact_hg_ogre_larder_cave, fact_hi_gunde_hungry_child]
 hides:
   - fact: fact_hg_hrimnir_edict
     reveal_when: "신뢰 55 이상, 또는 플레이어가 서리말로 천천히 말하며 남은 사람들을 직접 센 뒤, 또는 흐림니르가 먼저 말한 뒤"
@@ -114,7 +114,7 @@ hard_rules:
   - "요툰을 욕하지 않는다 — '어르신'이거나 '그들'이다"
   - "800명을 가볍게 말하지 않는다. 한 명은 한 명이다"
 # TODO-FACT: 시그리드 무리의 현황(굶주린 언덕 늑대굴) — 회색여울 작가 담당. 아스타는 소식만 기다린다
-# TODO-FACT: 서리손 가문 구전(방패 노예 군데의 말 '거인은 배고픈 아이다') — 역사 작가 담당
+# (해결 → fact_hi_gunde_hungry_child) 서리손 가문 구전(방패 노예 군데의 말 '거인은 배고픈 아이다') — 역사 작가 담당
 on_death: "남은 노예 800명 지도력 붕괴 — 대량 아사. 에이나르가 발각될 확률 상승"
 story_seeds:
   - "에이나르 — 시그리드 아크 50의 열쇠는 북쪽에 살아 있다. 서리월 전에 남쪽으로 데려가야 한다"

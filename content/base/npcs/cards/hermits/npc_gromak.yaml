@@ -1,4 +1,4 @@
-# 은자 카드 (22_NPC_PERSONA.md + 23 §4.2 hermit 묶음). 원본: docs/world/SECRETS_AND_HERMITS.md H-01
+# 은자 카드 (22_NPC_PERSONA.md + 23 §4.2 hermit 묶음). 원본: docs/world/SECRETS_AND_HERMITS.md X-01
 # npcs.json에는 아직 없다 — tools/extract_characters.py는 CHARACTERS.md만 읽는다. 은자 문서를 추출 대상에 넣어야 검증을 통과한다.
 id: npc_gromak
 name: 그로마크 검댕
@@ -14,7 +14,7 @@ home: 재의 황무지 남쪽 가장자리 '검은 유리 둥지'
 job: 검댕 혈통의 가장 오래된 용 — 아스테리아 잔해 수집가
 rank: 진룡, 용제국 밖 은거룡(용좌에 서약하지 않음)
 summary: 시간의 상처에 스쳐 312년째 대붕괴 전날을 사는 용. 둥지에 오는 인간을 모두 '오지 않은 사절'로 맞아 살려 보낸다
-source: "docs/world/SECRETS_AND_HERMITS.md H-01 (HOUSES §1.5 검댕 혈통에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-01 (HOUSES §1.5 검댕 혈통에서)"
 life:
   - {year: -2588, age: 0, event: "SK 500, 남쪽 사막 가장자리 검댕 혈통 둥지에서 부화. 신을 태운 세대의 자식"}
   - {year: -2486, age: 102, event: "드라크마르 건국(SK 602). 용좌에 서약하지 않았다 — '서약은 가진 것을 남에게 맡기는 일'"}
@@ -83,7 +83,7 @@ hides:
   - fact: fact_dk_collapse_truth
     reveal_when: "은자 시험 통과 — 해 질 녘 시간이 얇아지는 틈에 '내일은 오지 않는다. 312년이 지났다'를 말하고, 그가 그것을 들은 뒤(신뢰 30 이상). 또는 '내일은 대붕괴의 날'이라고 설득하는 판정 대성공"
     cover: "'회의의 일은 회의에서 말하오'라며 서고 이야기로 돌린다"
-  - fact: fact_hm_gromak_envoy_bargain   # TODO-FACT: 대붕괴 전날 밤 그로마크는 아스테리아의 인간 사절과 '서고를 태우지 않고 그에게 — 대가로 남문을 하루 늦게' 거래했고 사절은 돌아오지 않았다
+  - fact: fact_hm_gromak_envoy_bargain   # 사실: 대붕괴 전날 밤 그로마크는 아스테리아의 인간 사절과 '서고를 태우지 않고 그에게 — 대가로 남문을 하루 늦게' 거래했고 사절은 돌아오지 않았다
     reveal_when: "호감 40 이상이고 플레이어가 아스테리아 서고 이야기를 먼저 꺼낼 때"
     cover: "'그건 사절과 나 사이의 일이오. 너는 그 사절이 아닌가?'"
 relations:
@@ -124,7 +124,7 @@ story_seeds:
   - "312년이 지났다는 것을 받아들이면 그는 처음으로 '내일'을 산다 — 그리고 사절을 기다리지 않는 용은 둥지의 인간을 더는 살려 보내지 않는다"
   - "아스테리아 서고의 문짝(마지막 등불 창고)과 청동 열쇠 — 서고를 '갖고' 싶은 용에게 문짝을 가져가면 무엇이 되는가"
 affiliations:
-  - {faction: fac_great_dragon_lines, rank: null, office: null, since: -2588, loyalty: 10, public: true, cell: null}
+  - {faction: fac_great_dragon_lines, rank: null, office: off_gromak, since: -2588, loyalty: 10, public: true, cell: null}
   - {faction: fac_ash_witnesses, rank: null, office: off_living_original, since: 0, loyalty: 0, public: false, cell: n_gromak}
 truths:
   - {id: T06, level: fragment}

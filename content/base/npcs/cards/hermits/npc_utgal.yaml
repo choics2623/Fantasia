@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-11.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-11.
 id: npc_utgal
 name: 우트갈
 aka: [잠든 언덕, 기억돌, 언덕등의 언덕]
@@ -13,7 +13,7 @@ home: 카즈둠 북단 고원 '잠든 언덕' — 등 위에 탈주 인간 마�
 job: 요툰의 '기억돌' — 맹약회의의 증인
 rank: 돌 요툰 원로. 서리왕의 부름을 받는 자
 summary: 하루에 한 문장을 말하는 언덕. 맹약회의에 세 번 기억돌로 앉았고, 313에 각 종족이 들고 올 것을 등 앞에서 먼저 들었다
-source: "docs/world/SECRETS_AND_HERMITS.md H-11 (신설 — SUBRACES 돌 요툰에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-11 (신설 — SUBRACES 돌 요툰에서)"
 life:
   - {year: -1028, age: 0, event: "SK 2,060, 흐로스가르드 동부 산맥 돌 요툰 무리에서 태어남"}
   - {year: 13, age: 1041, event: "AS 13 맹약회의 — 처음 요툰의 기억돌로 사슬을 쥐었다. 대붕괴 뒤 첫 정례 회의, '인간이 세계를 찢었다'가 처음 문서가 되었다"}
@@ -67,7 +67,7 @@ schedule:
 places: [잠든 언덕, 언덕등 마을(등 위), 카즈둠 북단 고원]
 knows: [fact_hg_hrimnir_grain_talks_bror, fact_hg_yorun_pulse_south, fact_dk_aurax_purge_plan, fact_sr_draft_votes_7_of_11]
 hides:
-  - fact: fact_hm_utgal_council_agendas   # TODO-FACT: 우트갈은 13·113·213 맹약회의에 요툰의 기억돌로 앉았고, 313에 각 종족이 들고 올 안건을 사절들이 그의 등 앞에서 다툰 것을 안다 (T13 전모)
+  - fact: fact_hm_utgal_council_agendas   # 사실: 우트갈은 13·113·213 맹약회의에 요툰의 기억돌로 앉았고, 313에 각 종족이 들고 올 안건을 사절들이 그의 등 앞에서 다툰 것을 안다 (T13 전모)
     reveal_when: "은자 시험(아흐레 기다림 — 아홉 문장을 순서대로 답하기) 통과 후"
     cover: "그날의 한 문장을 다른 것에 쓴다"
   - fact: fact_hg_hrimnir_starves_first

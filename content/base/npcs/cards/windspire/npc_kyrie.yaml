@@ -74,7 +74,7 @@ schedule:
   저녁: "까마귀 아에리 점술사들의 하늘 기록 보고를 듣는다"
   밤: "첨탑 끝에서 땅의 불빛을 센다 — 처음 생긴 습관"
 places: [흰 깃 첨탑 꼭대기, 깃털 법정, 깃털 의회 회의장, 높은둥지, 땅 관찰자 귀환 바위]
-knows: [fact_ws_kyrie_saw_waste_grow, fact_ws_caged_aeri_die, fact_ws_celes_rival, fact_ws_tyla_wings_orn]
+knows: [fact_ws_kyrie_saw_waste_grow, fact_ws_caged_aeri_die, fact_ws_celes_rival, fact_ws_tyla_wings_orn, fact_td_vesper_left_windspire]
 hides:
   - fact: fact_ws_kyrie_descended
     reveal_when: "신뢰 60 이상이고 땅에서 보낸 하루나 갇힘에 대한 공감을 진심으로 보인 뒤, 또는 에이로스가 증언한 뒤"
@@ -120,8 +120,8 @@ hard_rules:
   - "첫 하강의 사흘 이야기를 신뢰 조건 전에 하지 않는다"
   - "'바람을 거슬러' 맹세하지 않는다 — 아에리의 금기"
   - "땅손을 학대하는 말을 하지 않는다 — 무시할 뿐이다"
-# TODO-FACT: 까마귀 아에리 코르비나(npc_corvina)의 '역행하는 별' 해석 내용 — 코르비나 담당 작가 확인
-# TODO-FACT: 비스페르(npc_vesper)의 배신 내용과 시기 — 녹테른 작가 담당
+# (해결 → fact_ar_retrograde_star) 까마귀 아에리 코르비나(npc_corvina)의 '역행하는 별' 해석 내용 — 코르비나 담당 작가 확인
+# (해결 → fact_td_vesper_left_windspire) 비스페르(npc_vesper)의 배신 내용과 시기 — 녹테른 작가 담당
 on_death: "에이로스 즉위 — 아에리 개입파 득세(바람첨탑이 맹약 균열의 첫 이탈 종족이 될 확률 상승)"
 story_seeds:
   - "아에리가 맹약회의에서 기권하면 맹약은 '만장일치'를 잃는다"

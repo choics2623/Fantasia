@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-09. 흔적지기의 방패줄 끝지기, 서리손.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-09. 흔적지기의 방패줄 끝지기, 서리손.
 id: npc_herja
 name: 헤르야
 aka: [얼음 귀, 사당의 서리손, 얼음 쓰는 할멈]
@@ -13,7 +13,7 @@ home: 서리 어머니 빙하 사당 아래 얼음굴 — 얼어 있는 거인 �
 job: 사당의 얼음을 쓰는 인간 — 흔적지기 방패줄의 끝지기
 rank: 돌팔 씨족 소유 노예였다가 사당에 '바쳐진' 인간. 요툰 사제가 쓸모 있어 두었다
 summary: 귀가 얼어 들리지 않는 서리손 노파. 신을 붙잡았던 거인이 얼어 있는 굴에서 군데의 노래를 지키며, 그 거인의 눈이 남쪽으로 돌아가는 것을 본다
-source: "docs/world/SECRETS_AND_HERMITS.md H-09 (신설 — HOUSES §4.8 서리손·REGIONS §13.9에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-09 (신설 — HOUSES §4.8 서리손·REGIONS §13.9에서)"
 life:
   - {year: 254, age: 0, event: "흐로스가르드 뼈울타리에서 서리손 집안에 태어남. 어머니에게 「서리 어머니의 자장가」와 '방패 노예의 노래'를 배움"}
   - {year: 270, age: 16, event: "흉년의 겨울 사당에 '바쳐짐' — 요툰 사제 할그리드가 죽이지 않고 얼음 쓰는 일을 맡겼다"}
@@ -72,7 +72,7 @@ hides:
   - fact: fact_hi_gunde_vanished
     reveal_when: "은자 시험(불 없는 한겨울 밤 + 노래 따라 부르기) 통과 후"
     cover: "'노래는 노래로만'이라며 입술을 다문다"
-  - fact: fact_hm_frozen_giant_eye_turns   # TODO-FACT: 빙하 사당에 얼어 있는 거인(에오르를 붙잡았던 흐림 대주먹)의 눈이 AS 311부터 남쪽(카즈둠)으로 조금씩 돌아간다
+  - fact: fact_hm_frozen_giant_eye_turns   # 사실: 빙하 사당에 얼어 있는 거인(에오르를 붙잡았던 흐림 대주먹)의 눈이 AS 311부터 남쪽(카즈둠)으로 조금씩 돌아간다
     reveal_when: "신뢰 50 이상, 또는 플레이어가 고동·카즈둠 이야기를 꺼낼 때"
     cover: "거인 쪽을 보지 않으려 한다"
 relations:

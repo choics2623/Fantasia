@@ -55,7 +55,7 @@ offices:
     perks: ["셋째 서랍의 존재를 우연히 알았다 — 아직 열지 못했다"]
   - id: off_vault
     title: 셋째 서랍 지기
-    holder: "unnamed:세베리안 칼다란 (겸임 — 열 수 있는 유일한 사람)"
+    holder: npc_severian_kaldaran   # 겸임 — 열 수 있는 유일한 사람
     reports_to: off_duke
     powers: ["시조 칼다르의 원본 족보 — 어머니가 인간 노예였다는 사실이 적혀 있다. 불꽃 홀 금고 '셋째 서랍'"]
     chosen_by: "대공만 연다"

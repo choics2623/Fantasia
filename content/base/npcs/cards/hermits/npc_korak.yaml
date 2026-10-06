@@ -1,4 +1,4 @@
-# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md H-10.
+# 은자 카드 — docs/world/SECRETS_AND_HERMITS.md X-10.
 id: npc_korak
 name: 코라크
 aka: [종 틀의 까마귀, 털갈이 못 한 늙은이, 별 세는 자]
@@ -13,7 +13,7 @@ home: 바람첨탑 가장 높은 기둥(900m) 꼭대기, 바람 종 틀
 job: 은퇴한 하늘 기록관 — 역행하는 별을 센다
 rank: 까마귀 아에리 기록 가문의 노장. 깃털 의회에 자리는 없다
 summary: AS 311부터 하늘을 거꾸로 걷는 별을 세는 늙은 까마귀. 자기 기록에 같은 밤을 두 번 적은 자리가 있다는 것을 안다
-source: "docs/world/SECRETS_AND_HERMITS.md H-10 (신설 — facts fact_ws_retrograde_star·fact_ar_retrograde_star에서)"
+source: "docs/world/SECRETS_AND_HERMITS.md X-10 (신설 — facts fact_ws_retrograde_star·fact_ar_retrograde_star에서)"
 life:
   - {year: 74, age: 0, event: "바람첨탑 서쪽 기둥의 까마귀 아에리 기록 가문에서 부화"}
   - {year: 120, age: 46, event: "스승에게서 '하늘에도 상처가 있다' — 대붕괴 때 시간의 균열이 위로도 찢어졌다는 기록을 물려받음"}
@@ -71,7 +71,7 @@ hides:
   - fact: fact_ws_retrograde_star
     reveal_when: "은자 시험(밤새 별 세기 + 새벽의 질문에 답하기) 통과 후"
     cover: "'하늘 일은 여왕의 일'이라며 날개를 접는다"
-  - fact: fact_hm_korak_double_night   # TODO-FACT: 코라크의 하늘 기록에는 같은 밤을 두 번 적은 듯한 자리가 있고, 그것이 역행하는 별이 물러난 칸과 맞는다 (회귀의 흔적)
+  - fact: fact_hm_korak_double_night   # 사실: 코라크의 하늘 기록에는 같은 밤을 두 번 적은 듯한 자리가 있고, 그것이 역행하는 별이 물러난 칸과 맞는다 (회귀의 흔적)
     reveal_when: "신뢰 50 이상"
     cover: "'늙어서 그래'"
 relations:
