@@ -38,6 +38,24 @@ body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bot
 .story .player .tier { color: var(--ink-faint); font-size: .74rem; letter-spacing: .04em; }
 .story .eng { color: var(--ink-soft); font-size: .94rem; font-style: italic; }
 .story .live { white-space: pre-wrap; }
+.story p { white-space: pre-line; }
+/* 기억 잉크 (14 §6.5): 지난 회차의 일 — 흐린 회색 기울임, 가는 점선 막대 */
+.story .ink { color: var(--ink-faint); font-style: italic; border-left: 1px dashed var(--ink-faint); padding-left: 10px; }
+.story .ink.drift { color: var(--frost); }
+.story .inner { font-family: var(--ui); font-style: italic; color: var(--ink-soft); font-size: .92em; }
+.story .cut::after { content: ""; }
+/* 죽음에서 회귀까지 (14 §4.1) */
+.veil { position: fixed; inset: 0; z-index: 30; background: #000; color: #8d8577; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; text-align: center; font-family: var(--body); cursor: pointer; }
+.veil .rec { max-width: 420px; text-align: left; font-size: .98rem; line-height: 1.8; color: #8d8577; transition: opacity .6s, filter .6s; }
+.veil .rec p { margin: 0 0 .9em; white-space: pre-line; }
+.veil .rec.ash, .veil .fold.ash { opacity: 0; filter: blur(6px); }
+.veil .fold { height: 40vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; font-family: var(--ui); font-size: .9rem; color: #b7ae9f; letter-spacing: .04em; mask-image: linear-gradient(transparent, #000 40%); -webkit-mask-image: linear-gradient(transparent, #000 40%); }
+.veil .fold div::after { content: ""; display: block; height: 1px; margin: 6px auto 0; width: 60%; border-top: 1px dotted #3a352e; }
+.veil .god { position: absolute; bottom: calc(14vh + env(safe-area-inset-bottom, 0px)); font-size: .78rem; color: #6d665b; letter-spacing: .06em; }
+.veil .smell p { margin: 0 0 14px; font-size: 1.3rem; color: #d9cfbd; }
+.veil .smell .inner { font-family: var(--ui); font-style: italic; font-size: .95rem; color: #8d8577; }
+.veil .hint { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); font-family: var(--ui); font-size: .7rem; color: #4a453d; }
+body.ashing .story, body.ashing #panel, body.ashing .people { transition: opacity 2.4s, filter 2.4s, letter-spacing 2.4s; opacity: 0; filter: blur(4px); letter-spacing: .3em; }
 @media (min-width: 700px) { .story { font-size: 1.1rem; } }
 .story hr { border: 0; border-top: 1px dashed var(--line); margin: 16px 0; }
 .people { max-width: 640px; margin-left: auto; margin-right: auto; display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.78rem; margin: 6px 0 14px; }
@@ -124,6 +142,7 @@ button.ui:hover { border-color: var(--gold); }
   <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 (새 시드)</button></div>
   <h2 data-dbg>엔진 기록 (판정·검증)</h2><pre id="debug" data-dbg>—</pre>
 </div></div>
+<div class="veil" id="veil" hidden></div>
 <div class="drawer" id="mapDrawer" hidden><div class="pane map">
   <div class="row-btns"><button class="ui" id="closeMap">닫기</button></div>
   <div class="tabs"><button class="ui" id="tabTown" aria-pressed="true">이 고장</button><button class="ui" id="tabWorld" aria-pressed="false">대륙</button></div>
@@ -173,11 +192,21 @@ function addBeats(d) {
   const t = currentTurn || newTurn();
   const pl = t.querySelector(".player");
   if (pl && d.result && d.result.skill) { const tg = document.createElement("span"); tg.className = "tier"; tg.textContent = `${d.result.skill} — ${d.result.tier}`; pl.appendChild(tg); }
-  for (const b of d.beats || []) { const p = document.createElement("p"); if (d.engineOnly) p.className = "eng"; p.textContent = b; t.appendChild(p); }
+  for (const b of d.beats || []) {
+    const p = document.createElement("p");
+    if (b.startsWith("┊")) p.className = "ink";
+    else if (/^\*[^*]+\*$/.test(b)) { p.className = "inner"; p.textContent = b.slice(1, -1); t.appendChild(p); continue; }
+    else if (d.engineOnly && !d.view?.story) p.className = "eng";
+    p.textContent = b; t.appendChild(p);
+  }
+  for (const k of d.ink || []) { const p = document.createElement("p"); p.className = "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]); }
+  // 죽음: 마지막 문장이 문장 중간에서 끊긴다 (14 §4.1 ①)
+  if (d.view?.ended?.kind === "dead" && d.beats?.length) { const ps = t.querySelectorAll("p:not(.player)"); const last = ps[ps.length - 1]; if (last) { const w = last.textContent; const cut = w.lastIndexOf(" ", Math.floor(w.length * 0.6)); last.textContent = w.slice(0, cut > 10 ? cut : Math.floor(w.length * 0.6)).replace(/[.,!?…"']+$/, ""); } }
   currentTurn = null;
 }
 function say(text) { const t = newTurn(); const p = document.createElement("p"); p.className = "player"; const sp = document.createElement("span"); sp.textContent = text; p.appendChild(sp); t.appendChild(p); }
 
+let fresh = false, deathRunning = false;
 function render(d, loading = false) {
   $("busy").textContent = loading ? "잿빛 실이 이어지는 중" : "";
   if (!d) return;
@@ -208,8 +237,9 @@ function render(d, loading = false) {
     return;
   }
   if (v?.ended) {
-    panel.innerHTML = `<div class="ended"><p>${esc(v.ended.why)}</p><div class="sub">세계는 처음으로 돌아간다. 당신이 알게 된 것과 수첩만 남는다.</div><button class="ui" id="reg">눈을 감는다 — 낙엽월 1일 저녁으로</button></div>`;
-    $("reg").onclick = async () => { $("story").innerHTML = ""; currentTurn = null; currentTurn = null; show(await call("/api/regress")); };
+    panel.innerHTML = `<button class="ui" id="reg" aria-label="계속">…</button>`;
+    $("reg").onclick = () => deathSequence(v.ended);
+    if (!deathRunning && fresh) setTimeout(() => deathSequence(v.ended), 1800);
     return;
   }
   const ch = d.choices || [];
@@ -241,18 +271,53 @@ function render(d, loading = false) {
   panel.querySelectorAll(".q").forEach((q) => (q.onclick = () => { const w = q.parentElement.nextElementSibling; w.hidden = !w.hidden; q.setAttribute("aria-expanded", !w.hidden); }));
   const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
 }
-function show(d) {
-  last = d;
+function show(d, isFresh = false) {
+  last = d; fresh = isFresh;
   if (!d.broken) addBeats(d); else currentTurn = null;
   render(d);
 }
 async function act(input, retry = false, label) {
   if (busy) return;
   if (!retry) say(label || input.free || input.text || input.id);
-  show(await call("/api/act", input));
+  show(await call("/api/act", input), true);
 }
 async function start() { show(await call("/api/state")); }
 
+// ── 진동 (14 §4.2) — 몸의 감각만. 기기가 못 하면 아무 일 없다 ──
+const HAPTIC = { H1: [450], H1water: [180, 120, 140, 160, 100], H1teeth: [90, 60, 90], H1blade: [260], H1rope: [450], H2: [25], H3: [60, 140, 80], H4: [70], H5: [40] };
+function buzz(p) { try { if (p && navigator.vibrate) navigator.vibrate(p); } catch {} }
+const nap = (ms) => new Promise((r) => setTimeout(r, ms));
+const tapOr = (veil, ms) => new Promise((r) => { const done = () => { veil.onclick = null; clearTimeout(t); r(); }; const t = ms ? setTimeout(done, ms) : null; veil.onclick = done; });
+// 죽음 → 재 → 회차 기록 → 시간이 접힌다 → 정적 → (시대의 첫 죽음에만) 말 → 빵 냄새. '사망'·'회귀'라는 말은 쓰지 않는다
+async function deathSequence(E) {
+  if (deathRunning) return; deathRunning = true;
+  const veil = $("veil");
+  buzz(HAPTIC["H1" + (E.trace?.id || "")] || HAPTIC.H1);
+  document.body.classList.add("ashing");
+  const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
+  await nap(2500);
+  veil.innerHTML = ""; veil.hidden = false;
+  const rec = document.createElement("div"); rec.className = "rec";
+  const lines = E.loop === 1 ? E.record.short : E.record.full;
+  rec.innerHTML = lines.map((x) => `<p>${esc(x)}</p>`).join(""); veil.appendChild(rec);
+  if (E.loop === 1) await tapOr(veil, 4500); else { await nap(2000); const h = document.createElement("div"); h.className = "hint"; h.textContent = "닫는다"; veil.appendChild(h); await tapOr(veil); h.remove(); }
+  rec.classList.add("ash"); await nap(650); rec.remove();
+  const fold = document.createElement("div"); fold.className = "fold"; veil.appendChild(fold);
+  let gap = E.loop === 1 ? 220 : 120;
+  for (const dt of E.record.rewind) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); while (fold.children.length > 9) fold.firstChild.remove(); buzz(HAPTIC.H2); await nap(gap); gap = Math.max(40, gap * 0.86); }
+  await nap(500); fold.classList.add("ash"); await nap(400); fold.remove();
+  await nap(1500);
+  let god = null;
+  if (E.firstDeath) { god = document.createElement("div"); god.className = "god"; god.textContent = "너희는 끝나지 않을 것이다."; veil.appendChild(god); await nap(2500); }
+  const n = E.loop + 1;
+  const sm = document.createElement("div"); sm.className = "smell";
+  sm.innerHTML = `<p>${n >= 12 ? "젖은 재. 그 위에, 빵 냄새." : n >= 4 ? "빵 냄새. 그 밑에, 젖은 재." : "빵 냄새."}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3);
+  await nap(800); sm.insertAdjacentHTML("beforeend", `<p class="inner">나는 — 이 냄새를 안다.</p>`);
+  if (god) setTimeout(() => god.remove(), 1000);
+  const d = await next; await tapOr(veil);
+  veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false;
+  $("story").innerHTML = ""; currentTurn = null; show(d);
+}
 $("menuBtn").onclick = async () => { $("drawer").hidden = false; const r = await fetch("/api/saves", { method: "POST" }).then((x) => x.json()); $("slots").innerHTML = r.saves.map((s) => `<button class="ui" data-s="${esc(s)}">불러오기: ${esc(s)}</button>`).join(""); $("slots").querySelectorAll("button").forEach((b) => (b.onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; currentTurn = null; show(await call("/api/load", { name: b.dataset.s })); })); };
 $("closeDrawer").onclick = () => ($("drawer").hidden = true);
 $("drawer").onclick = (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; };

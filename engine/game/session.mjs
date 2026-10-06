@@ -9,6 +9,7 @@ import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInte
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 
+const INK = new Set(["ink", "drift"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
 // provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
 export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());
@@ -57,7 +58,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     if (res.storyText != null || g.story) return false;
     if (g.convo || res.convoEnded) return true;
     if (res.id.startsWith("attack:") || res.id.startsWith("loot:")) return true;
-    if (res.feed?.length) return true;
+    if (res.feed?.some((f) => !INK.has(f.kind))) return true;
     if (g.ended) return true;
     if (res.kind === "move" && G.view(g).people.length) return true;
     if (res.id === "routine_day") return true;   // 하루를 건너뛴 뒤의 짧은 몽타주 — 한 번의 호출
@@ -161,7 +162,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       // 화면엔 체감 등급(01 §4.2 — 서툴수록 과신하고 틀린다)과 캐릭터가 아는 근거(▲▼?)만. 진짜 확률은 엔진 기록에만
       return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, more: c.more || false, memory: c.memory || null };
     });
-    return { view: v, beats: n?.beats || [], choices, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
+    const ink = (res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null }));
+    return { view: v, beats: n?.beats || [], ink, choices, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
   }
 
   return {

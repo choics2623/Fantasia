@@ -28,6 +28,18 @@ storylets:
 
       줄 뒤에서 누가 부른다. 낮게. 아무도 못 듣게.
     input: true_name
+    # 두 번째 회차부터 (14 §6.5): 첫 줄 아래 속마음 한 줄 + 죽음의 흔적이 깨어나는 새 줄 + 기억 잉크 (┊)
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "빵 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 빵 냄새."}   # 회차가 쌓이면 첫 줄이 바뀐다 (§7.4)
+    trace_lines:
+      water: 기침이 터진다. 목 안에 물이 있다. 없다. 젖은 데가 없다. 머리카락도, 옷도.
+      teeth: 목덜미가 가렵다. 긁으면 손톱 밑에 아무것도 없다.
+      spear: 옆구리가 시리다. 손을 대 보면 따뜻하다.
+      blade: 목이 뜨겁다. 손을 대 보면 아무것도 없다.
+      rope: 손목이 쓸린다. 밧줄 자국은 없다.
+      hunger: 배가 꼬인다. 아니다 — 이 저녁엔 빵이 나온다.
+    return_ink: |
+      ┊ 그 다음엔 사라가 소매를 당겼다. "명단에 키트가 있어." 스물여섯째 줄.
     after_input: |
       "{name}."
 
@@ -110,6 +122,53 @@ storylets:
 
           그는 아무 말 없이 기름종이에 싼 작은 조각을 네 손에 쥐여 준다. 손가락이 차다. "읽지 마라. 지니고만 있어라." 종이 안에 무엇이 있는지 너는 안다. 글자다. 글을 가진 인간은 교수대로 간다.
         effects: ["item light_letter", "memory npc_osric 쓸모 있음 셋째에게 빛의 서신 조각을 맡겼다", "rel npc_osric trust 8"]
+      # ── ◈ 기억 선택지 (14 §6.5·§7.2): 지난 회차에 안 것이 있어야 열린다. 한 화면에 셋까지 ──
+      - id: mem_sara_first
+        needs_memory: loop
+        label: '사라의 소매를 붙잡는다: "스물여섯째 줄이지. 알아."'
+        minutes: 2
+        text: |
+          사라의 입술이 멈춘다. "…어떻게 알아? 나 방금 들었는데. 헨릭이 적는 거."
+
+          그녀가 처음으로 너를 본다. 셈하는 눈이다. 대답을 기다리지 않는다. "내일 정오, 우물." 그리고 줄 밖으로 빠진다.
+        effects: ["rel npc_sara trust 5", "memory npc_sara 이상함 처음 보는 농노가 내가 방금 엿들은 명단을 이미 알고 있었다", "var sara_well_noon = true", "note 사라 — 내일 정오, 우물"]
+      - id: mem_henrik_harbek
+        needs_memory: fact:fact_gf_godric_debt
+        label: '헨릭에게 머리를 숙인다: "남작님의 담보라면, 값을 아시겠지요."'
+        minutes: 5
+        check: {skill: 화술, D: 30}
+        success:
+          text: |
+            헨릭의 손가락이 키트의 정수리에서 떨어진다. 처음으로 그가 너를 숫자 이외의 것으로 본다. "…말보다 싼 것이 그 말을 어디서 주워들었지?"
+
+            그는 대답을 듣지 않는다. 명부를 펴고, 스물여섯째 줄을 긋고, 그 아래에 다른 이름을 쓴다. 토비. 강변 움막 아홉 호의 아이. 동화 한 닢이 네 부츠에서 그의 손으로 간다.
+          effects: ["coin -1", "var kit_on_list = false", "var toby_on_list = true", "note 키트 대신 토비 — 헨릭이 명단을 고쳤다. 토비가 서리월 9일에 간다", "rel npc_henrik trust -5"]
+        failure:
+          text: |
+            헨릭이 웃지 않는다. "담보." 그 말을 혀 위에서 굴린다. "농노가 그 말을 어디서 들었을까." 그의 눈이 줄 밖의 사라에게 간다 — 그 말을 들을 수 있는 하녀는 하나뿐이다.
+          effects: ["rel npc_henrik trust -20", "var henrik_suspects_sara = true", "note 헨릭이 사라를 의심한다 — 내 입 때문에"]
+      - id: mem_fayne_hand
+        needs_memory: fact:fact_gf_hagen_sells_runaways
+        label: '페인의 손을 잡아 처마에서 끌어내린다: "하겐 따라가지 마."'
+        minutes: 3
+        check: {skill: 화술, D: 32}
+        success:
+          text: |
+            페인이 손을 뺀다. "{sibling}이 뭘 알아? 처음 보는데." 그래도 그 아이는 처마로 돌아가지 않는다. 하겐 쪽을 한 번 본다. 오래.
+          effects: ["memory npc_fayne 이상함 처음 보는 농노가 하겐을 따라가지 말라고 했다", "var fayne_warned = true", "rel npc_fayne trust 4"]
+        failure:
+          text: |
+            페인이 손을 뿌리친다. "미쳤어?" 처마 위로 올라가 버린다. 하겐이 그 모습을 보고, 웃는다.
+          effects: ["rel npc_fayne like -3"]
+      - id: mem_bram_wall
+        needs_memory: fact:fact_gf_egil_family_in_cellar
+        label: '브람에게 낮게: "지하실 벽, 오늘 밤 기침 소리가 새요."'
+        minutes: 2
+        text: |
+          브람이 국자를 내려놓는다. 긴 침묵. 줄 뒤의 웅성거림만 남는다.
+
+          "…누가 보냈냐." 대답을 기다리지 않고 그는 다시 국자를 든다. 네 그릇에 죽이 반 국자 더 담긴다. 그날 밤, 수탉 지하의 벽이 다시 발라진다.
+        effects: ["rel npc_bram trust 10", "memory npc_bram 이상함 처음 보는 아이가 지하실 벽을 안다", "var bram_rewalled = true"]
       - id: stay_in_line
         label: 줄에 그대로 서서 빵을 받는다
         minutes: 15
@@ -190,3 +249,16 @@ storylets:
         text: "광장에는 벌써 줄이 서 있다. 즈닉이 출결 막대를 든다."
         effects: ["goto gf_whip_square"]
     once: true
+
+  # 두 번째 회차의 첫 잠자리 (14 §6.5 끝·§6.6): 잠들기 전, 너는 센다 — 지난 회차의 기록이 펼쳐진다
+  - id: count_before_sleep
+    trigger: {first_sleep_loop: 2}
+    text: |
+      키트는 무릎을 가슴까지 끌어당긴 채 네 등에 이마를 대고 잔다. 이마가 따뜻하다.
+
+      잠들기 전, 너는 센다.
+    choices:
+      - id: count
+        label: 센다 ▸
+        text: "{record_full}"
+

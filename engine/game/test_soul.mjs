@@ -45,4 +45,43 @@ check("2회차 장면에 주인공의 기억 한 줄", tp.includes("[주인공�
 // 재생: 영혼은 회차 시작의 고정 입력 — 재생해도 같다
 const again = G.boot(C, JSON.parse(JSON.stringify(g2.run)));
 check("영혼이 있어도 재생하면 같다", JSON.stringify(G.view(again)) === JSON.stringify(G.view(g2)));
+
+// ── 죽음에서 회귀까지 (14 §4·§6.5·§6.6) ──
+const step = (g, pref) => { const ids = G.options(g).map((o) => o.id); const a = pref.map((x) => ids.find((i) => i.startsWith(x))).find(Boolean) || ids.find((x) => x.startsWith("story:")) || "wait:60"; return G.act(g, { id: a }); };
+let dead = null;
+for (let seed = 1; seed < 40 && !dead; seed++) {
+  const d = G.boot(C, G.newRun({ seed }));
+  G.act(d, { id: "story_name", text: "하린|형" }); G.act(d, { id: "story:stay_in_line" });
+  for (let i = 0; i < 40 && !d.ended; i++) step(d, ["attack:npc_znik", "attack:npc_hagen"]);
+  if (d.ended?.kind === "dead") dead = d;
+}
+check("맨손으로 덤비다 죽을 수 있다 (흔적: 목)", !!dead && dead.ended.trace?.id === "blade", dead?.ended?.why);
+const E = G.view(dead).ended;
+check("짧은 회차 기록 세 줄 — 기간·원인 사슬·가져가는 것", E.record.short.length === 3 && E.record.short[0].includes("하루") && E.record.short[1].startsWith("너는 ") && E.record.short[2].startsWith("가져가는 것"), E.record.short.join(" / "));
+check("되감기의 마지막 줄은 낙엽월 1일", E.record.rewind[E.record.rewind.length - 1] === "낙엽월 1일");
+check("시대의 첫 죽음", E.firstDeath === true);
+const n2 = G.boot(C, G.regressRun(dead));
+const intro = G.storyIntro(n2);
+check("두 번째 회차의 첫 화면: 속마음 한 줄과 흔적이 깨운 줄, 기억 잉크", intro.includes("*나는 — 이 냄새를 안다.*") && intro.includes("목이 뜨겁다") && intro.includes("┊ 그 다음엔 사라가"), intro.slice(0, 80));
+G.act(n2, { id: "story:next" });
+const mopts = G.options(n2).filter((o) => o.memory);
+check("◈ 기억 선택지 — 두 번째 회차부터 (사라보다 먼저)", mopts.some((o) => o.id === "story:mem_sara_first"), mopts.map((o) => o.id).join(","));
+check("첫 회차엔 ◈가 없다", !G.options((() => { const x = G.boot(C, G.newRun({ seed: 3 })); G.act(x, { id: "story_name", text: "하|형" }); return x; })()).some((o) => o.memory));
+const killer = dead.ended.trace.npc;
+const r3 = G.act(n2, { id: "story:mem_sara_first" });
+check("죽인 사람을 다시 보면 손이 먼저 기억한다 (┊ + 진동)", r3.feed.some((f) => f.kind === "ink" && f.buzz === "H4"), JSON.stringify(r3.feed));
+check("사라가 멈칫한다 — 정오, 우물", n2.S.vars.sara_well_noon === true);
+const atk = G.options(n2).find((o) => o.id === `attack:${killer}`);
+if (atk) check("근거 미리보기에 흔적 한 줄", G.odds(n2, atk).parts.some((p) => p.text.includes("목이 먼저 기억한다")));
+// 첫 잠자리: 잠들기 전, 너는 센다
+step(n2, ["go:gf_river_huts"]);
+const sl = G.act(n2, { id: "sleep" });
+check("두 번째 회차의 첫 잠자리 — 잠들기 전, 너는 센다", sl.storyText?.includes("잠들기 전, 너는 센다") && G.options(n2)[0].id === "story:count");
+const cnt = G.act(n2, { id: "story:count" });
+check("센다 → 전체 회차 기록", cnt.storyText.includes("첫 번째 저녁부터") && cnt.storyText.includes("── 가져온 것 ──"), cnt.storyText.slice(0, 60));
+// 세 회차 연속 고른 ◈는 표지가 빠진다 (습관)
+const habit = G.boot(C, { ...n2.run, journal: [], loop: 5, carry: { ...n2.run.carry, soul: { ...n2.run.carry.soul, memUsed: { "story:mem_sara_first": [2, 3, 4] } } } });
+G.act(habit, { id: "story:next" });
+const hs = G.options(habit).find((o) => o.id === "story:mem_sara_first");
+check("세 회차 연속 고른 ◈는 습관 — 표지가 빠진다", hs && !hs.memory);
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

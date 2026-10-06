@@ -100,7 +100,9 @@ function outcomeLines(g, res) {
   if (res.rumor) L.push(`${who}이(가) 소문 하나를 흘린다: ${res.rumor}`);
   if (res.futureUsed?.length) L.push(`${who}은(는) 셋째가 그걸 어떻게 아는지 섬뜩해한다 (아직 아무도 모르는 일이다)`);
   for (const n of res.notes || []) L.push(`엔진 메모: ${n}`);
-  for (const f of res.feed || []) L.push(`그사이 주인공 주변에서: ${f.text}`);
+  for (const f of res.feed || []) if (f.kind !== "ink" && f.kind !== "drift") L.push(`그사이 주인공 주변에서: ${f.text}`);
+  const ink = (res.feed || []).filter((f) => f.kind === "ink" || f.kind === "drift");
+  if (ink.length) L.push(`주인공의 기억이 스친다 (화면이 이 줄을 따로 보여 준다 — 서술에 옮겨 쓰지 말고, 어긋나게 쓰지도 말 것): ${ink.map((f) => f.text).join(" / ")}`);
   if (res.ending) L.push("이 박자로 대화를 닫는다.");
   if (res.id === "routine_day") L.push("하루를 건너뛰었다: 배급 줄·막사·잠·점호를 두세 문장의 몽타주로. 그사이 주인공 주변에서 일어난 일만 짚는다. 없으면 같은 하루의 무게만.");
   return L.map(josa);

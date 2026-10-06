@@ -222,7 +222,17 @@ function exits(g) {
 }
 
 // ── 할 수 있는 것 (어포던스) — LLM은 이 목록을 문장으로만 바꾼다 ──
-export function options(g) { return rawOptions(g).map((o) => ({ ...o, label: josa(o.label) })); }
+export function options(g) {
+  // ◈는 한 화면에 셋까지 (14 §7.5) — 나머지는 접힌 줄로
+  let mem = 0;
+  return rawOptions(g).map((o) => ({ ...o, label: josa(o.label), ...(o.memory && ++mem > 3 ? { more: true } : {}) }));
+}
+// ◈ 표지: 지난 회차의 기억이 연 선택지. 세 회차 연속 고르면 표지가 빠진다 — 기억이 아니라 습관 (§7.2)
+function memMark(g, id, source) {
+  const used = soul(g).memUsed?.[id] || [], L = g.run.loop;
+  if ([L - 1, L - 2, L - 3].every((x) => used.includes(x))) return null;
+  return source;
+}
 function rawOptions(g) {
   if (g.story) return storyOptions(g);
   if (g.ended) return [{ id: "regress", kind: "regress", label: "눈을 감는다 — 회귀점으로" }];
@@ -233,7 +243,7 @@ function rawOptions(g) {
     for (const topic of topicsFor(g, n)) o.push({ id: `ask:${topic}`, kind: "talk", label: `${topic}에 대해 묻는다`, skill: "화술", request: 5, topic });
     for (const f of [...g.P.knows, ...g.run.carry.future]) {
       const hid = (g.content.reveals[n] || []).find((r) => r.fact === f);
-      if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f });
+      if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f, memory: isFuture(g, f) ? memMark(g, `press:${f}`, { fact: f, loop: soul(g).knowledge[f]?.last || g.run.loop - 1 }) : null });
     }
     if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
     for (const it of mine(g)) {
@@ -355,6 +365,7 @@ export function odds(g, opt) {
     if (asleep(w, g.t)) { S += 20; why("▲", "자고 있다"); }
     if (p.mods.근력 < 0) why("▼", "굶어서 팔에 힘이 없다");
   }
+  for (const tr of soul(g).traces || []) if (n && tr.npc === n) { S -= 5 * (tr.level || 1); why("▼", TRACE_TEXT[tr.id]?.why || tr.name); }
   const P = prob(S, D);
   return { P, S: Math.round(S), D: Math.round(D), parts };
 }
@@ -380,11 +391,57 @@ export function apply(g, e, { replay = false } = {}) {
   successions(g);
   for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
   g.P.been.add(g.at);
+  if (!TRIVIAL.test(e.id)) g.P.acts = [...(g.P.acts || []), { id: e.id, label: res.label, t: g.t, at: g.at }].slice(-8);
+  if (opt.memory) (g.P.memUsed ??= new Set()).add(e.id);
+  memoryInk(g);
   res.notes = res.notes.map(josa); res.label = josa(res.label);
   if (g.ended) g.ended.why = josa(g.ended.why);
   if (!replay) res.feed = g.feed.map((f) => ({ ...f, text: josa(f.text) }));
   return res;
 }
+const TRIVIAL = /^(wait|sleep|leave|small_talk|story:next|story_name)\b/;
+
+// ── 기억 표지 (14 §7.5): ┊ 지난 회차에 일어났던 일 · ◇ 기억과 어긋남 ──
+// 엔진이 고른 줄을 그대로 화면에 (LLM이 쓰지 않는다). 회차 안에서 같은 방아쇠에 한 번, 한 박자에 둘까지.
+function memoryInk(g) {
+  const day = Math.floor(g.t / 1440), key = `${day}|${Math.floor((g.t % 1440) / 30)}|${g.at}`;
+  const here = present(g).filter((w) => w.kind !== "captive").map((w) => w.npc);
+  const obs = (g.P.obs ??= {});
+  if (!obs[key] && Object.keys(obs).length < 1500) obs[key] = here;
+  if (g.run.loop < 2 || g.story) return;
+  const said = (g.P.inkSaid ??= new Set());
+  let budget = 2;
+  const ink = (id, text, extra = {}) => { if (budget <= 0 || said.has(id)) return; said.add(id); budget--; g.feed.push({ kind: extra.drift ? "drift" : "ink", text, ...extra }); };
+  // 죽음의 흔적: 그 사람을 이번 회차에 처음 볼 때 손이 먼저 기억한다 (H4)
+  for (const tr of soul(g).traces || []) if (tr.npc && here.includes(tr.npc)) ink(`trace:${tr.id}:${tr.npc}`, `┊ ${TRACE_TEXT[tr.id]?.ink || tr.name}`, { buzz: "H4", trace: tr.id });
+  // 지난 회차에 가까웠거나 멀었던 사람을 처음 볼 때 (이 사람은 너를 모른다)
+  for (const n of here) {
+    const sp = soulPerson(g, n); if (!sp?.loops?.length) continue;
+    const x = sp.loops[sp.loops.length - 1], sc = x.like * 0.6 + x.trust * 0.4;
+    const told = (x.told || []).map((f) => shortFact(g, f)).filter(Boolean)[0];
+    const line = x.died ? "┊ 이 사람은 죽었었다. 지금은 숨을 쉰다." : told ? `┊ 이 사람이 너에게 털어놓았었다 — ${told}` : sc >= 40 ? "┊ 이 사람은 너를 깊이 믿었었다." : sc >= 20 ? "┊ 이 사람은 너에게 마음을 열었었다." : sc <= -20 ? "┊ 이 사람은 너를 미워했었다." : null;
+    if (line) ink(`person:${n}`, line);
+  }
+  // ◇ 표류: 지난 회차의 같은 날·같은 30분·같은 자리와 지금이 다르다 (회차마다 처음 3번만 진동, H5)
+  const past = soul(g).obs?.[key];
+  if (past) {
+    const drifted = (g.P.driftCount ??= { n: 0 });
+    const pick = (n, was) => { const nm = displayName(g, n); const id = `drift:${key}:${n}`; if (said.has(id) || budget <= 0) return; ink(id, `┊ 지난번엔 이 시각에 ${nm}${josaPick(nm, "이", "가")} 여기 ${was ? "있었다" : "없었다"}. ◇`, { drift: true, buzz: drifted.n++ < 3 ? "H5" : null }); };
+    for (const n of past) if (!here.includes(n) && (g.P.met.has(n) || soulPerson(g, n))) pick(n, true);
+    for (const n of here) if (!past.includes(n) && soulPerson(g, n)) pick(n, false);
+  }
+}
+const josaPick = (w, a, b) => { const c = String(w).charCodeAt(String(w).length - 1); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 ? a : b; };
+const shortFact = (g, f) => { const t = g.content.facts[f]?.text; if (!t) return null; const cut = t.replace(/\s*\([^)]*\)/g, "").split(/[.,—]/)[0].trim(); return cut.length > 38 ? cut.slice(0, 36) + "…" : cut; };
+// 죽음의 흔적 (14 §4.4): 그 죽음을 다시 만났을 때 손이 떨린다. 판정 −5 × 단계. 근거 미리보기에 한 줄
+const TRACE_TEXT = {
+  blade: { name: "목이 뜨겁다", ink: "목이 뜨겁다. 손을 대 보면 아무것도 없다.", why: "목이 먼저 기억한다. 이 손이다." },
+  rope: { name: "손목이 쓸린다", ink: "손목이 쓸린다. 밧줄 자국은 없다.", why: "손목이 기억한다. 이 사람에게 붙잡혔다." },
+  hunger: { name: "빈 속", ink: "배가 꼬인다. 아니다 — 이 저녁엔 빵이 나온다.", why: "빈 속이 무엇인지 안다." },
+  water: { name: "물이 차다", ink: "물이 차다. 가슴 위의 발.", why: "물이 차다. 너는 그걸 안다." },
+  teeth: { name: "목덜미", ink: "목덜미가 가렵다. 긁으면 손톱 밑에 아무것도 없다.", why: "목덜미가 기억한다." },
+  spear: { name: "옆구리", ink: "옆구리가 시리다. 손을 대 보면 따뜻하다.", why: "옆구리가 기억한다." },
+};
 const TAGS = {
   uses_fact: (g, v) => (knowsFact(g, v) ? Math.min(15, (g.content.facts[v]?.danger || 2) * 3) : 0),
   appeals_interest: () => 6, appeals_fear: () => 6,
@@ -446,7 +503,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     // 굶주림: 이미 바닥(4)이면 몸이 먹힌다 — 아픔 +15, 100이면 죽는다
     if (g.P.status.hunger >= 4) { g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100); g.feed.push({ kind: "rule", text: "사흘째 빈속이다. 손이 떨리고 무릎이 꺾인다." }); }
     g.P.status.hunger = clamp(g.P.status.hunger + 1, 0, 4);
-    if (g.P.status.pain >= 100 && !g.ended) { g.P.alive = false; g.ended = { kind: "dead", why: "굶주림과 상처 — 몸이 더 버티지 못했다", t: d * 1440 }; }
+    if (g.P.status.pain >= 100 && !g.ended) { g.P.alive = false; g.ended = { kind: "dead", why: "굶주림과 상처 — 몸이 더 버티지 못했다", t: d * 1440, trace: { id: "hunger" } }; }
   }
   // 플레이어가 알 수 있는 일: 지금 이 자리에서 일어난 공개 기록, 그리고 자기에 대한 것
   for (const l of g.S.log.slice(logFrom)) {
@@ -494,7 +551,7 @@ function checkpoint(g, res, p) {
     text = ok ? "경비가 통행증을 오래 들여다보다가 돌려준다." : "경비가 통행증의 인장을 손톱으로 긁는다. 위조다.";
   } else text = "경비가 묻는다. 누구의 것이냐, 통행증은. 대답할 것이 없다.";
   if (ok) g.P.clearedUntil = g.t + 1440;
-  if (!ok) { g.ended = { kind: "captured", why: `${text} 탈주 노예로 붙잡혔다 — ${g.content.bundle.settlements[g.P.settlement]?.name}`, t: g.t }; }
+  if (!ok) { g.ended = { kind: "captured", why: `${text} 탈주 노예로 붙잡혔다 — ${g.content.bundle.settlements[g.P.settlement]?.name}`, t: g.t, trace: { id: "rope" } }; }
   (res?.notes || g.feed).push(res ? text : { kind: "rule", text });
 }
 
@@ -511,7 +568,7 @@ function manhunt(g, next) {
   const p = hidden ? 0.08 : g.at === HOME ? 0.7 : day ? 0.45 : 0.15;
   if (hash(g.seed, "hunt", next) < p) {
     const by = [...w.by].find((n) => !g.S.dead.has(n));
-    g.ended = { kind: "captured", why: `${nameOf(g, by)}의 사람들이 당신을 찾아냈다 — ${w.reasons.slice(-1)[0] || ""}`, t: next };
+    g.ended = { kind: "captured", why: `${nameOf(g, by)}의 사람들이 당신을 찾아냈다 — ${w.reasons.slice(-1)[0] || ""}`, t: next, trace: { id: "rope", npc: by } };
     g.feed.push({ kind: "rule", text: g.ended.why });
   }
 }
@@ -524,7 +581,7 @@ function checkDanger(g) {
   const anyGuard = here.find((n) => profOf(g, n).role === "authority" && g.L.knowsAbout(n, "suspect", "player"));
   const who = hunter || anyGuard;
   if (who && w.heat >= 3) {
-    g.ended = { kind: "captured", why: `${nameOf(g, who)}이(가) 당신을 붙잡았다 — ${w.reasons.slice(-1)[0] || ""}`, t: g.t };
+    g.ended = { kind: "captured", why: `${nameOf(g, who)}이(가) 당신을 붙잡았다 — ${w.reasons.slice(-1)[0] || ""}`, t: g.t, trace: { id: "rope", npc: who } };
     g.feed.push({ kind: "rule", text: g.ended.why });
   }
 }
@@ -536,7 +593,7 @@ function openStory(g, st) {
   if (st.once !== false && g.storyDone.has(st.id)) return;
   const needName = st.input === "true_name" && !trueName(g);
   g.story = { id: st.id, phase: needName ? "input" : "choice" };
-  g.feed.push({ kind: "story", text: fill(g, st.text) + (needName ? "" : st.after_input ? "\n\n" + fill(g, st.after_input) : "") });
+  g.feed.push({ kind: "story", text: storyText(g, st, needName) });
   if (!needName) for (const e of st.effects || []) storyEffect(g, e);
 }
 function nextTrigger(g, t, next) {
@@ -549,10 +606,26 @@ function nextTrigger(g, t, next) {
   }
   return null;
 }
+// 장면 글: 두 번째 회차부터 첫 줄 아래 속마음, 죽음의 흔적이 깨운 줄, 기억 잉크가 얹힌다 (14 §6.5)
+function storyText(g, st, needName = false) {
+  let paras = fill(g, st.text).split(/\n\s*\n/);
+  if (g.run.loop >= 2 && st.return_text) {
+    const heavy = Object.entries(st.return_heavy || {}).filter(([k]) => g.run.loop >= Number(k)).pop();
+    if (heavy) paras[0] = heavy[1];
+    const last = g.run.carry.deaths[g.run.carry.deaths.length - 1];
+    const tl = last?.trace && st.trace_lines?.[last.trace.id];
+    paras = [paras[0], `*${st.return_text}*`, ...(tl ? [tl] : []), ...paras.slice(1)];
+  }
+  let out = paras.join("\n\n");
+  if (!needName && st.after_input) out += "\n\n" + fill(g, st.after_input);
+  if (g.run.loop >= 2 && st.return_ink) out += "\n\n" + fill(g, st.return_ink);
+  return out;
+}
 // 이름: 첫 회차에 받은 이름은 이 회차의 상태(P)에, 회귀할 때 carry로 넘어간다 (재생해도 이름 입력은 기록에서 다시 온다)
 const trueName = (g) => g.P.trueName || g.run.carry.trueName || null;
 const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
-const fill = (g, text) => String(text || "").trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g));
+const fill = (g, text) => String(text || "").trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
+  .replace(/\{record_full\}/g, () => { const r = soul(g).records.filter((x) => x.loop === g.run.loop - 1).pop(); return r ? recordCard(r).join("\n\n") : "…셀 것이 없다."; });
 function storyOptions(g) {
   const st = SL(g, g.story.id);
   if (g.story.phase === "input") return [{ id: "story_name", kind: "story", label: "어머니가 부르는 이름", input: "true_name" }];
@@ -561,10 +634,21 @@ function storyOptions(g) {
     // 두 번째 회차부터 어머니의 세 카드 중 고른 것만 진하다 — 다시 고를 수 없다 (14 §6.2)
     if (st.id === "serf_mother_memory" && g.P.talent && c.id !== `talent_${g.P.talent}`) continue;
     if (c.needs) { const [, k, op, v] = /^(\w+)\s*(>=|<=|>|<|==)\s*(\S+)$/.exec(c.needs) || []; if (k === "coin" && !(g.S.purse.player >= Number(v))) continue; }
-    out.push({ id: `story:${c.id}`, kind: "story", label: c.label, skill: c.check?.skill || null, check: c.check || null, minutes: c.minutes || 0 });
+    let memory = null;
+    if (c.needs_memory) { memory = memoryOK(g, c.needs_memory); if (!memory) continue; memory = memMark(g, `story:${c.id}`, memory); }
+    out.push({ id: `story:${c.id}`, kind: "story", label: c.label, skill: c.check?.skill || null, check: c.check || null, minutes: c.minutes || 0, memory });
   }
   if (!out.length) out.push({ id: "story:next", kind: "story", label: "▸" });
   return out;
+}
+// 기억 조건: loop (두 번째 회차부터) · fact:<id> (지난 회차에 안 사실) · trace:<id> (그 죽음을 겪었다)
+function memoryOK(g, need) {
+  if (g.run.loop < 2) return null;
+  const [k, v] = String(need).split(":");
+  if (k === "loop") return { loop: g.run.loop - 1 };
+  if (k === "fact") return soul(g).knowledge[v] || g.run.carry.future.includes(v) ? { fact: v, loop: soul(g).knowledge[v]?.last || g.run.loop - 1 } : null;
+  if (k === "trace") return (soul(g).traces || []).some((t) => t.id === v) ? { trace: v } : null;
+  return null;
 }
 export function optionOdds(g, o) { return o.check ? storyOdds(g, o.check) : odds(g, o); }
 function storyOdds(g, ck) {
@@ -681,6 +765,9 @@ const DO = {
     res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
   },
   sleep(g, _, res) {
+    // 두 번째 회차부터, 첫 잠자리 전에 지난 회차를 센다 (14 §6.6)
+    const cnt = SL(g, "count_before_sleep");
+    if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
     const c = fromMinutes(g.t);
     let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440;
     pass(g, wake - g.t, { sleeping: true });
@@ -724,7 +811,7 @@ const DO = {
       deed(g, "assault", n);
       g.P.status.pain = clamp(g.P.status.pain + (res.tier === "대실패" ? 40 : 20), 0, 100);
       res.notes.push(`${nameOf(g, n)}을(를) 쓰러뜨리지 못했다`);
-      if (res.tier === "대실패" && (profOf(g, n).nerve >= 60 || g.P.status.pain >= 100)) { g.P.alive = false; g.ended = { kind: "dead", why: `${nameOf(g, n)}의 손에 죽었다`, t: g.t }; }
+      if (res.tier === "대실패" && (cardOf(g, n).age ?? 30) >= 14 && (profOf(g, n).nerve >= 60 || worn(g, n).some((i) => i.tags?.includes("무기")) || g.P.status.pain >= 100)) { g.P.alive = false; g.ended = { kind: "dead", why: `${nameOf(g, n)}의 손에 죽었다`, t: g.t, trace: { id: "blade", npc: n } }; }
     }
     checkDanger(g);
   },
@@ -966,6 +1053,13 @@ function settleSoul(g, record) {
     P.loops = [...P.loops.filter((x) => x.loop !== loop), { loop, like: r.like, trust: r.trust, impressions, lines, told, died: g.L.bodies.some((b) => b.npc === n) || !!g.S.dead?.has?.(n) }].slice(-6);
   }
   S.places = [...new Set([...(S.places || []), ...g.P.been])];
+  S.obs = g.P.obs || {};                       // 지난 회차의 같은 날·같은 30분에 누가 어디 있었나 (◇ 표류를 알아본다)
+  if (g.ended?.trace) {                        // 죽음의 흔적: 같은 흔적을 또 얻으면 단계가 오른다
+    const tr = g.ended.trace, old = (S.traces ||= []).find((x) => x.id === tr.id && (x.npc || null) === (tr.npc || null));
+    if (old) old.level = Math.min(3, (old.level || 1) + 1); else S.traces.push({ id: tr.id, npc: tr.npc || null, name: TRACE_TEXT[tr.id]?.name || tr.id, level: 1, loop });
+  }
+  S.memUsed ||= {};
+  for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);
   S.unlocked = [...new Set([...S.unlocked, ...unlockedNow(g)])];
   S.furthest = Math.max(S.furthest || START, g.t);
@@ -978,14 +1072,61 @@ export function loopRecord(g) {
   const moved = [...g.P.met].map((n) => ({ n, r: relOf(g, n) })).filter(({ r }) => Math.abs(r.like) + Math.abs(r.trust) >= 20)
     .sort((a, b) => Math.abs(b.r.like) + Math.abs(b.r.trust) - Math.abs(a.r.like) - Math.abs(a.r.trust)).slice(0, 4)
     .map(({ n, r }) => ({ npc: n, name: nameOf(g, n), how: r.like + r.trust >= 0 ? "가까워졌다" : "멀어졌다" }));
+  const tr = g.ended?.trace;
   return {
     loop: g.run.loop, days, endT: g.t, end: fmt(g.t), at: placeName(g, g.at),
     kind: g.ended?.kind || "alive", why: g.ended?.why || null,
+    chain: causeChain(g), trace: tr ? TRACE_TEXT[tr.id]?.name || tr.id : null, rewind: rewindDates(g.t),
     learned: learned.length, keyFacts: learned.slice(-2).map((f) => g.content.facts[f]?.text).filter(Boolean),
     leftBehind: moved, coin: g.S.purse.player, deeds: g.deeds.map((d) => d.kind).slice(-3),
     goals: goals(g).map((x) => `${x.who}: ${x.what}`),
   };
 }
+// 원인 사슬 (14 §6.6, 16 메아리 형식 — 평가어 없이): 마지막에 한 일부터 거꾸로 셋
+function causeChain(g) {
+  // 같은 행동이 이어지면 하나로 ('— 세 번')
+  const runs = [];
+  for (const x of (g.P.acts || []).slice().reverse()) { const last = runs[runs.length - 1]; if (last && last.label === x.label) last.n++; else runs.push({ label: x.label, n: 1 }); }
+  const acts = runs.slice(0, 3);
+  if (!acts.length) return g.ended?.why ? `${g.ended.why}.` : "";
+  const CNT = ["", "", "두", "세", "네", "다섯", "여섯", "일곱", "여덟"];
+  const [a, b, c] = acts.map((x) => { const p = pastTense(x.label); return x.n > 1 ? `${p.replace(/\.$/, "")} — ${CNT[x.n] || x.n} 번.` : p; });
+  return `너는 ${a}${b ? ` 그 전에 ${b}` : ""}${c ? ` 그 전에 ${c}` : ""}`.replace(/\.\s*그 전에/g, ". 그 전에");
+}
+// 선택지 문장(현재형)을 과거형으로 — 자주 나오는 끝말만. 모르는 끝은 그대로 두고 '했다'를 붙이지 않는다
+const PAST = [["덤벼든다", "덤벼들었다"], ["묻는다", "물었다"], ["걷는다", "걸었다"], ["건다", "걸었다"], ["눕는다", "누웠다"], ["받는다", "받았다"], ["먹는다", "먹었다"], ["숨긴다", "숨겼다"], ["챙긴다", "챙겼다"], ["뒤진다", "뒤졌다"], ["본다", "보았다"], ["보인다", "보였다"], ["기다린다", "기다렸다"], ["보낸다", "보냈다"], ["떠난다", "떠났다"], ["건넨다", "건넸다"], ["붙인다", "붙였다"], ["끝낸다", "끝냈다"], ["쫓아간다", "쫓아갔다"], ["간다", "갔다"], ["온다", "왔다"], ["잔다", "잤다"], ["산다", "샀다"], ["쓴다", "썼다"], ["선다", "섰다"], ["판다", "팔았다"], ["잡는다", "잡았다"], ["한다", "했다"], ["대답한다", "대답했다"], ["준다", "주었다"], ["올린다", "올렸다"], ["끌어내린다", "끌어내렸다"], ["조아린다", "조아렸다"], ["내려간다", "내려갔다"], ["말한다", "말했다"], ["든다", "들었다"]];
+function pastTense(label) {
+  let t = String(label || "").replace(/\s*\([^)]*\)/g, "").replace(/\s*—.*$/, "").trim();
+  for (const [a, b] of PAST.sort((x, y) => y[0].length - x[0].length)) if (t.endsWith(a)) return t.slice(0, -a.length) + b + ".";
+  return t.endsWith(".") ? t : `${t}.`;
+}
+// 되감기 날짜 (14 §4.1 ④): 60일 이하는 날, 그보다 길면 달. 마지막 줄은 언제나 낙엽월 1일
+function rewindDates(t) {
+  const out = [], days = Math.floor((t - START) / 1440);
+  if (days <= 60) for (let d = days; d >= 0; d--) { const c = fromMinutes(START + d * 1440); out.push(`${MONTHS[c.m - 1]} ${c.d}일`); }
+  else { const seen = new Set(); for (let d = days; d >= 0; d -= 5) { const c = fromMinutes(START + d * 1440); const k = `${MONTHS[c.m - 1]}`; if (!seen.has(k)) { seen.add(k); out.push(k); } } out.push("낙엽월 1일"); }
+  return out;
+}
+const DAYS_KO = ["", "하루", "이틀", "사흘", "나흘", "닷새", "엿새", "이레", "여드레", "아흐레"];
+const TENS_KO = ["", "열", "스무", "서른", "마흔", "쉰", "예순", "일흔", "여든", "아흔"];
+export function koDays(n) { if (n >= 100) return `${n}일`; const t = Math.floor(n / 10), u = n % 10; if (!u) return t === 1 ? "열흘" : `${TENS_KO[t]}날`; return `${TENS_KO[t]}${DAYS_KO[u]}`; }
+const ORD_KO = ["", "첫", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉", "열"];
+export const koOrdinal = (n) => (n <= 10 ? `${ORD_KO[n]} 번째` : `${TENS_KO[Math.floor(n / 10)]}${["", "한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉"][n % 10]} 번째`);
+// 회차 기록 카드 (14 §6.6) — 문단 = 한 박자. short: 첫 죽음의 세 줄
+export function recordCard(r, { short = false } = {}) {
+  const end = r.end.split(" ").slice(2, 4).join(" ");
+  const head = `낙엽월 1일 저녁부터 ${koDays(r.days + 1)}.`;
+  const cut = (x, n) => { const t = x.replace(/\s*\([^)]*\)/g, "").split(/[.,—]/)[0].trim(); return t.length > n ? t.slice(0, n - 1) + "…" : t; };
+  const carry = [r.trace, ...(r.keyFacts || []).map((x) => cut(x, 30))].filter(Boolean);
+  if (short) return [head, r.chain || r.why || "", carry.length ? `가져가는 것 — ${carry.slice(0, 2).join(". ")}.` : ""].filter(Boolean);
+  const lines = [`${koOrdinal(r.loop)} 저녁부터\n낙엽월 1일 — ${end} (${koDays(r.days + 1)})`];
+  if (r.chain) lines.push(`"${r.chain}"`);
+  lines.push(`── 가져온 것 ──\n기억 ${r.learned}${r.keyFacts?.length ? ` (${r.keyFacts.map((x) => cut(x, 24)).join(" · ")})` : ""}${r.trace ? `\n죽음 — ${r.trace}` : ""}`);
+  const left = (r.leftBehind || []).map((x) => `${x.name} — ${x.how === "가까워졌다" ? "너와 가까워졌다. 기억하지 못한다." : "너를 멀리했다. 그것도 잊었다."}`);
+  lines.push(`── 두고 온 것 ──\n${[...left, `너 — 동화 ${r.coin}못${r.deeds?.length ? ", 손에 남았던 것들" : ""}. 그 밤은 이제 없다.`].join("\n")}`);
+  return lines;
+}
+
 // 해금 (14 §8): 처음 15분엔 다섯 개만. 이번 회차에 일어난 일 + 영혼에 남은 해금
 function unlockedNow(g) {
   const u = new Set(soul(g).unlocked);
@@ -1119,7 +1260,7 @@ const G_options_ids = (g) => (g.story || g.convo || g.ended ? [] : rawOptions(g)
 export function storyIntro(g) {
   if (!g.story) return null;
   const st = SL(g, g.story.id);
-  return fill(g, st.text) + (g.story.phase === "choice" && st.after_input ? "\n\n" + fill(g, st.after_input) : "");
+  return storyText(g, st, g.story.phase !== "choice");
 }
 
 export function view(g) {
@@ -1140,7 +1281,8 @@ export function view(g) {
     bodies: bodiesHere(g).map((b) => nameOf(g, b.npc)),
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name })), wanted: g.S.wanted?.player?.heat || 0 },
-    notebook: [...g.run.carry.notebook, ...g.P.notebook], ended: g.ended,
+    notebook: [...g.run.carry.notebook, ...g.P.notebook],
+    ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,
     story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),
     people_known: [...new Set([...g.P.met, ...Object.keys(soul(g).people)])].map((n) => ({
       id: n, name: nameOf(g, n), who: whoIs(g, n), thisLoop: g.P.met.has(n),
