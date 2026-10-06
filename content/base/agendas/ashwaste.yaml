@@ -1,0 +1,130 @@
+# 재의 황무지 (마지막 등불) — 클락 4 황무지 확장(WORLD_BIBLE §10 #4: 봉인 / 잿불 언덕 함락 / 시간 잔상의 범람)의 사슬. 클락 2 맹약회의 313(5.1 말뚝 두 뼘)과 클락 3 북방 대탈주(4.15 탈주자)에 걸린다 (26_AGENDAS.md).
+# 정본 일정(events/ashwaste_312.yaml)의 9.1 바늘 · 매달 잿불석 매장(6일)과 말뚝(7일)과 월간 보고(8일) · 11.3·12.20 회색여울 매각 소식 · 12.18 해골이빨 전언 · 1.28 돌 · 3.15 · 4.15 탈주자 · 4.30~5.1 맹약회의 전야와 개막 · 5.18 곡선 · 5.20 이
+# 원인과 결과로 이어지게 한다. 실레네가 잿불석을 묻으면 이튿날 새벽 말뚝이 반 뼘 뛰고, 세레나는 그 곡선을 '원인 미상'으로 탑에 올린다 — 탑(arkas)의 재눈 초소 보고(ar_stakes)와 같은 곡선이다.
+# 플레이어가 끊을 수 있는 고리: 실레네가 잿불석을 묻지 못하게 한다(aw_embers_stopped), 세레나가 원인(맹약회의 날짜와 잿불석)을 보고서에 쓰게 한다(aw_cause_reported), 우마가 접어 둔 전언을 고즈에게 전한다(aw_goz_told).
+vars:
+  aw_wobble: 0                 # 재눈 초소 기록함의 측정 바늘이 튄 횟수
+  aw_embers: 0                 # 실레네가 말뚝 앞에 묻은 잿불석 (매장 횟수)
+  aw_embers_pending: false     # 방금 묻은 잿불석이 있다 (이튿날 새벽 말뚝이 뛴다)
+  aw_embers_stopped: false     # 플레이어가 실레네의 매장을 막았다
+  aw_stake: 0                  # 말뚝이 밀린 거리 (반 뼘 단위 — 맹약회의 날 한꺼번에 네 반 뼘)
+  aw_reports: 0                # 세레나가 탑에 올린 월간 보고 (원인 칸은 '원인 미상')
+  aw_cause_reported: false     # 세레나가 보고서 원인 칸에 맹약회의 날짜와 잿불석을 쓰게 했다 (플레이어가 끌어낸다)
+  aw_tuk_knots: 0              # 튀크가 끈 매듭에 옮긴 회색여울 숫자
+  aw_goz_weak: 0               # 고즈의 쇠약 (해골이빨 전언이 올 때마다 한 걸음)
+  aw_goz_told: false           # 우마가 접어 둔 전언을 고즈에게 전했다
+  aw_messages: 0               # 우마가 접어 둔 전쟁 숙영지의 전언
+  aw_refugees: 0               # 마지막 등불에 닿은 북방 탈주자
+  aw_stone_palms: 4            # 할그림의 돌이 심장에 닿기까지 남은 손바닥 (정본 1.28에 하나)
+  aw_echo_early: false         # 아홉째 문 성벽의 잔상이 평소보다 이르게 일어난다
+  aw_testimony_news: false     # '인간 증언' 소식이 성소에 닿았다
+agendas:
+  - id: ag_aw_needle
+    npc: npc_aw_serena
+    goal: 9.1 회귀점의 저녁 6시 (정본) — 기록함의 측정 바늘이 같은 자리에서 튄다. '원인 미상'이라고 적으려다 펜을 멈춘다
+    every: once
+    when: ["alive npc_aw_serena", "date >= 312-09-01"]
+    at: {place: ll__ash_eye_records, from: "17:30", to: "19:00", doing: 기록함의 측정 바늘이 같은 자리에서 튄다 — 곡선 옆에 시각을 쓴다}
+    effects: ["var aw_wobble += 1", "log 재눈 초소의 측정 바늘이 같은 자리에서 튀었다 — 세레나가 곡선 옆에 시각을 썼다"]
+  - id: ag_aw_til_circle
+    npc: npc_aw_til
+    goal: 10.12 아홉째 문 성벽의 잔상이 평소보다 이르게 일어난다 (정본) — 눈을 감고 목소리가 도착하는 박자를 센다. 9분이 8분 40초로
+    every: once
+    when: ["alive npc_aw_til", "date >= 312-10-12"]
+    at: {place: ast_ninth_gate, from: "06:00", to: "10:00", doing: 가장자리에서 눈을 감고 목소리가 도착하는 박자를 센다}
+    effects: ["var aw_echo_early = true", "log 아홉째 문 성벽의 잔상이 평소보다 이르게 일어났다 — 9분이 8분 40초로 줄었다"]
+  - id: ag_aw_embers
+    npc: npc_aw_silene
+    goal: 달마다 잿불석 매장일 (정본) — 붉은 말뚝 한 걸음 앞 새로 묻는 자리에 열쇠 본으로 열었던 창고의 잿불석을 묻는다
+    every: "every:30"
+    when: ["alive npc_aw_silene", "var aw_embers_stopped == false", "date >= 312-09-01"]
+    at: {place: ll__ash_edge, from: "06:00", to: "11:00", doing: 순례자에게 묻는 자리를 가르치며 잿불석 한 줌을 묻는다}
+    effects: ["var aw_embers += 1", "var aw_embers_pending = true", "log 실레네가 말뚝 앞에 잿불석을 묻었다 ({aw_embers}번째)"]
+  - id: ag_aw_stake_after_embers
+    npc: npc_aw_serena
+    goal: 잿불석을 묻은 이튿날 새벽 말뚝이 반 뼘 더 뛴다 (정본) — 곡선 위에 점을 찍는다
+    every: daily
+    when: ["alive npc_aw_serena", "var aw_embers_pending == true"]
+    at: {place: ll__ash_eye_stakes, from: "04:00", to: "05:30", doing: 새벽 말뚝 곁에서 반 뼘 더 뛴 자리를 잰다 — 곡선 위에 점을 찍는다}
+    effects: ["var aw_stake += 1", "var aw_embers_pending = false", "log 잿불석을 묻은 이튿날 새벽 말뚝이 반 뼘 더 뛰었다 (모두 {aw_stake}반 뼘)"]
+  - id: ag_aw_monthly_report
+    npc: npc_aw_serena
+    goal: 탑에 올리는 월간 보고 (정본) — 곡선을 옮겨 쓰고 원인 칸에 '원인 미상'이라고 적는다
+    every: "every:30"
+    when: ["alive npc_aw_serena", "date >= 312-09-08"]
+    at: {place: ll__ash_eye_records, from: "20:00", to: "23:59", doing: 곡선을 옮겨 쓰고 봉인 편지를 다음 날 새벽 배달부 몫으로 둔다}
+    effects: ["var aw_reports += 1", "if var aw_cause_reported == true: log 세레나가 월간 보고의 원인 칸에 잿불석을 묻은 날과 맹약회의 날짜를 적었다 (말뚝 {aw_stake}반 뼘, 탑의 기록 {ar_stakes}걸음)",
+              "else: log 세레나가 월간 보고의 원인 칸에 '원인 미상'이라 적었다 (말뚝 {aw_stake}반 뼘, 탑의 기록 {ar_stakes}걸음)"]
+  - id: ag_aw_tuk_forty
+    npc: npc_tuk
+    goal: 11.3 그롬마르행 상인이 '회색여울 매각 마흔이 세렌 소금 나루에 닿았다'는 말을 가져온다 (정본) — 숫자만 끈 매듭에 옮기고 값은 매기지 않는다
+    every: once
+    when: ["alive npc_tuk", "date >= 312-11-03"]
+    at: {place: ll_tuk_stall, from: "18:00", to: "22:00", doing: 상인이 가져온 숫자를 끈 매듭에 옮긴다 — 값은 매기지 않는다}
+    effects: ["var aw_tuk_knots += 40", "log 튀크가 회색여울 마흔의 소식을 끈 매듭에 옮겼다 (소금 나루에 닿은 회색여울 사람 {sr_arrived}명 가운데 첫 매듭)"]
+  - id: ag_aw_tuk_thirty_one
+    npc: npc_tuk
+    goal: 12.20 '소금 바늘호에서 서른한 명이 내렸다'는 소식 (정본) — 오트가 물값 흥정을 하다 말고 그 매듭을 본다
+    every: once
+    when: ["alive npc_tuk", "date >= 312-12-20"]
+    at: {place: ll_tuk_stall, from: "18:00", to: "22:00", doing: 상인이 가져온 서른한 명의 숫자를 매듭에 옮긴다}
+    effects: ["var aw_tuk_knots += 31", "log 튀크가 서른한 명의 소식을 매듭에 옮겼다 (회색여울 숫자 매듭 모두 {aw_tuk_knots})"]
+  - id: ag_aw_uma_folds
+    npc: npc_aw_uma
+    goal: 석 달에 한 번 해골이빨 전쟁 숙영지의 전언이 온다 (정본 9.18·12.18·3.18·6.18) — 고즈에게 전하지 않고 접어 궤짝에 넣는다. 전하지 않는 동안 고즈의 쇠약은 한 걸음 가까워진다
+    every: "every:90"
+    when: ["alive npc_aw_uma", "var aw_goz_told == false", "date >= 312-09-01"]
+    at: {place: ll_straggler_camp, from: "14:00", to: "16:00", doing: 전쟁 숙영지의 전령에게 접힌 전언을 받아 한 번 더 접어 궤짝에 넣는다}
+    effects: ["var aw_messages += 1", "var aw_goz_weak += 1", "log 우마가 해골이빨 숙영지의 전언을 고즈에게 전하지 않고 접어 두었다 ({aw_messages}장째, 고즈의 쇠약 {aw_goz_weak})"]
+  - id: ag_aw_halgrim_stone
+    npc: npc_aw_halgrim
+    goal: 1.28 돌이 가슴 아래 손바닥 하나 위까지 올라왔다 (정본) — 심장에 닿는 날이 곧이다. '말한 적 있는 사람'만 곁에 서게 한다
+    every: once
+    when: ["alive npc_aw_halgrim", "date >= 313-01-28"]
+    at: {place: ll_oath_cellar, from: "22:00", to: "23:59", doing: 깨진 석판 곁에서 창대를 짚고 모그를 부른다}
+    effects: ["var aw_stone_palms = 1", "log 할그림의 돌이 가슴 아래 손바닥 하나 위까지 올라왔다 — 심장에 닿는 날이 곧이다"]
+  - id: ag_aw_egg_needle
+    npc: npc_aw_serena
+    goal: 3.15 새벽 바늘이 한 번 크게 튄다 (정본) — 흰 알이 깬 날. 소문은 열흘 뒤에 오지만 곡선은 하루 먼저 가파르다
+    every: once
+    when: ["alive npc_aw_serena", "date >= 313-03-15"]
+    at: {place: ll__ash_eye_records, from: "03:00", to: "07:00", doing: "새벽 바늘이 한 번 크게 튄다 — 곡선 옆에 '북쪽?'이라고 쓴다"}
+    effects: ["var aw_wobble += 1", "var aw_stake += 1", "log 새벽 바늘이 크게 튀었다 — 흰 알이 깬 날이다. 세레나가 곡선 옆에 '원인 미상' 대신 '북쪽?'이라 썼다"]
+  - id: ag_aw_refugees
+    npc: npc_goz
+    goal: 4.15 북방 대탈주의 탈주자 한 줄이 마지막 등불에 닿는다 (정본, 클락 3) — 열둘 가운데 둘은 아이. 해 지기 전 호각에 맞춰 들인다
+    every: once
+    when: ["alive npc_goz", "date >= 313-04-15"]
+    at: {place: ll_square, from: "16:00", to: "20:00", doing: 해 지기 전 호각에 맞춰 탈주자 한 줄을 들인다}
+    effects: ["var aw_refugees += 12", "if var aw_goz_weak >= 3: log 탈주자 열둘이 마지막 등불에 닿았다 — 고즈가 호각을 오래 불지 못해 우마의 낙오자들이 방벽 곁에서 길을 열었다 (고즈의 쇠약 {aw_goz_weak})",
+              "else: log 탈주자 열둘이 마지막 등불에 닿았다 — 고즈가 해 지기 전 호각을 불어 방벽 안으로 들였다"]
+  - id: ag_aw_embers_eve
+    npc: npc_aw_silene
+    goal: 4.30 맹약회의 전야 잿불석 매장 (정본) — 가장 많이 묻는 밤. 경계가 하룻밤에 두 뼘이 될 밤이다
+    every: once
+    when: ["alive npc_aw_silene", "var aw_embers_stopped == false", "date >= 313-04-30"]
+    at: {place: ll__ash_edge, from: "20:00", to: "23:59", doing: 받아들임지기가 재 사발을 든 채 곁에서 숫자를 센다 — 잿불석을 가장 많이 묻는다}
+    effects: ["var aw_embers += 3", "var aw_embers_pending = true", "log 맹약회의 전야에 실레네가 잿불석을 가장 많이 묻었다 ({aw_embers}번째 매장까지)"]
+  - id: ag_aw_stake_jump
+    npc: npc_aw_serena
+    goal: 5.1 맹약회의 313 개막일 (정본, 클락 2) — 말뚝이 하룻밤에 두 뼘 뛴다. 가속이 맹약회의 날짜에 맞춰 일어난다는 계산을 세 번 확인한다
+    every: once
+    when: ["alive npc_aw_serena", "date >= 313-05-01"]
+    at: {place: ll__ash_eye_stakes, from: "03:30", to: "06:00", doing: 말뚝이 한 뼘이 아니라 두 뼘 뛴 자리를 잰다}
+    effects: ["var aw_stake += 4", "var aw_embers_pending = false", "log 맹약회의 개막일 말뚝이 하룻밤에 두 뼘 뛰었다 (모두 {aw_stake}반 뼘)",
+              "if var bk_purge_motion == true: log 회의 안건에 잔향 대숙청이 올라 있다는 소식과 같은 날의 곡선이다"]
+  - id: ag_aw_serena_curve
+    npc: npc_aw_serena
+    goal: 5.18 맹약회의 열하루 동안 말뚝이 매일 두 뼘씩 뛰었음을 곡선 위에 확인한다 (정본) — 회의가 끝난 날 곡선이 평평해졌다
+    every: once
+    when: ["alive npc_aw_serena", "date >= 313-05-18"]
+    at: {place: ll__ash_eye_records, from: "20:00", to: "23:59", doing: 열하루의 곡선을 확인한다 — 회의가 끝난 날 곡선이 평평해졌다}
+    effects: ["if var aw_cause_reported == true: log 세레나가 맹약회의 열하루와 말뚝의 가속이 일치함을 탑에 보고했다",
+              "else: log 세레나가 맹약회의 열하루와 말뚝의 가속이 일치함을 확인했지만 보고서에는 쓰지 않았다"]
+  - id: ag_aw_hael_news
+    npc: npc_aw_hael
+    goal: 5.20 맹약회의 소식이 성소에 닿는다 (정본) — '인간 증언'이라는 말을 듣고 설교를 하루 쉰다
+    every: once
+    when: ["alive npc_aw_hael", "date >= 313-05-20"]
+    at: {place: ll__sanct_hearth, from: "19:00", to: "23:00", doing: 성소 화덕 곁에서 소식을 듣고 설교를 쉰다}
+    effects: ["var aw_testimony_news = true", "log 맹약회의 소식이 재 성소에 닿았다 — 하엘이 '인간 증언'이라는 말을 듣고 설교를 하루 쉬었다"]
