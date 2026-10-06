@@ -1,0 +1,101 @@
+# 세보 리크 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-03)
+id: npc_sr_sebo
+name: 세보 리크
+aka: [서른일곱의 중개인, 지운 줄]
+tier: B
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 88
+region: 세렌 해안
+home: 먹물 회관 현장 중개인 숙소
+job: 회색여울 담당 현장 중개인
+rank: 현장 중개인
+summary: AS 310~311 고드릭에게서 농노 서른일곱을 사들인 현장 중개인. 세베로의 인수 서류에서 한 줄을 지워 고드릭의 이자를 자기 몫으로 돌린다
+source: docs/world/people/seren.md (npc_sr_sebo)
+life:
+  - {year: 224, age: 0, event: "세렌 하위 인장 가문에서 태어남"}
+  - {year: 290, age: 66, event: "현장 중개인이 되어 회색여울 담당을 받음"}
+  - {year: 310, age: 86, event: "고드릭의 농노 열여덟을 첫 인수"}
+  - {year: 311, age: 87, event: "나머지 열아홉을 인수해 합계 서른일곱"}
+appearance:
+  - "황갈색 비늘, 아직 윤이 난다 — 나가로서는 청년"
+  - "서류 가방을 꼬리 끝으로 감아 든다"
+  - "눈을 맞추지 않고 서류만 본다"
+smell: "새 서류와 인장 밀랍"
+voice_sound: "빠르고 높다. 숫자 앞에서 목소리가 올라간다"
+personality:
+  disposition: {용기: 10, 자비: -35, 정직: -20, 신앙: 10, 탐욕: 70, 충성: 10}
+  temperament: [교활, 야망, 불안, 부지런]
+  habits:
+    - "서류를 넘길 때 한 장을 항상 한 번 더 넘겨 본다"
+    - "서명을 요구할 때 엄지로 서명하는 쪽을 먼저 권한다"
+  values: "서류가 맞으면 사람은 맞는다. 지운 줄은 보이지 않는 이득이다"
+  fears: ["세베로가 서류의 빈 줄을 발견하는 일", "서른일곱의 이름이 알려지는 일"]
+  desires:
+    short: "세베로의 서류에서 지운 줄을 들키지 않는 것"
+    long: "인장 중개인(48) 자리"
+voice:
+  register:
+    to_superior: "상위 중개인에게 낮은 존대, 서류 쪽을 본다"
+    to_equal: "중개인에게 빠른 평어"
+    to_inferior: "계약민에게 정중하지만 이름을 부르지 않는 존대"
+    to_player_default: "서류를 먼저 내밀고 서명을 바란다"
+  tics: ["'서명은 엄지로도.'", "서류를 한 번 더 넘긴다"]
+  use: [서류, 서명, 인수, 정산, 줄, 값]
+  avoid: [서른일곱, 지운 줄, 고드릭의 숫자]
+  length: "빠르고 짧다"
+  samples:
+    - {situation: 첫 만남, line: "서명은 엄지로도 됩니다. 어느 쪽이 편하십니까? 어느 쪽이든 값은 같아요."}
+    - {situation: 호의, line: "세베로 어르신은 너그러우세요. 숫자 한 줄 지워져도 모르시니."}
+    - {situation: 거절, line: "회색여울 건은 이미 정산이 끝났습니다. 정산이 끝난 건 말하지 않는 것이 상례예요."}
+    - {situation: 거짓말할 때, line: "빈 줄이요? 서류 용지에 원래 있는 여백입니다."}
+    - {situation: 비밀 누설, line: "서른일곱이에요. 고드릭 남작이 몰래 판 사람 수. 나는 그 서른일곱의 이름을 다 외우고 있어요."}
+schedule:
+  아침: "인수 서류 점검"
+  낮: "소금 나루에서 노예선 도착 확인"
+  저녁: "세베로와 서류 대조"
+  밤: "자기 장부에 지운 줄을 한 줄 더 쓴다"
+places: [먹물 회관, 소금 나루, 푸른 장부관]
+knows:
+  - fact_sr_godric_debt_designed
+  - fact_sr_severo_greyford_batches
+  - fact_p2sr_sebo_37_names
+hides:
+  - fact: fact_p2sr_sebo_skims_severo
+    reveal_when: "신뢰 55 이상이고 세베로의 서류에 대해 구체적으로 물었을 때"
+    reveal: [{"trust":55}]
+    cover: "'세베로 어르신의 서류는 정확해요. 정확해서 빈 줄이 없고요'라고 한다"
+  - fact: fact_p2sr_sebo_37_names
+    reveal_when: "신뢰 50 이상이고 고드릭의 불법 매각 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":50,"named":"고드릭"}]
+    cover: "'정산이 끝난 건은 말하지 않는 것이 상례예요'라고 한다"
+relations:
+  - {to: npc_severo, type: 상위 중개인, like: -15, trust: 10, visibility: 공개, memo: "서류를 속이는 상대", words: "가마를 타는 거만한 사람. 서류를 읽는 눈이 흐려져 있어 편하다"}
+  - {to: npc_godric_raven, type: 거래 상대, like: 5, trust: 20, visibility: 비밀, memo: "서른일곱의 상대", words: "회색여울 남작. 서류에는 서명했지만 서른일곱이라는 숫자는 한 번도 세어 본 적이 없는 사람"}
+  - {to: npc_sr_dona, type: 조합장, like: 10, trust: 25, visibility: 공개, memo: null, words: "인장 자리를 바라는 윗사람. 그의 공식이 자기 지운 줄과 닮았다고 생각한다"}
+  - {to: npc_sr_oral, type: 등록소 서기, like: 15, trust: 30, visibility: 공개, memo: null, words: "서류를 같이 올리는 사이. 번진 인장을 덮는 이유를 서로 말하지 않는다"}
+toward_player: "서류를 먼저 내밀고 서명을 바란다"
+persuade:
+  likes: ["이득 (+25)", "조합 내부 정보 (+20)"]
+  hates: ["서른일곱의 숫자를 입에 올리는 것 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "서른일곱을 AS 310~311에 사들였다"
+  drift:
+    - "그날 서류에서 지운 줄의 번호"
+  deja_vu: none
+affiliations:
+  - {faction: fac_inkscale, rank: rank_field, office: off_field_broker, since: 290, loyalty: 25, public: true, cell: null}
+truths: []
+hard_rules:
+  - "서른일곱이라는 숫자를 먼저 입에 올리지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "고드릭의 불법 매각 37건의 상대방이 사라져 고드릭이 한 번 더 숨을 쉰다. 세베로가 서류의 빈 줄을 발견한다."
+story_seeds:
+  - "세보가 지운 줄은 세베로의 서류에서 가장 작은 틈이다. 틈이 열리면 회색여울 저당의 이자 총액이 달라진다."

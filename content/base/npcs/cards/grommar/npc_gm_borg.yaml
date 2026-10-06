@@ -1,0 +1,189 @@
+# 보르그 쇠턱 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_borg
+name: 보르그 쇠턱
+aka:
+- 쇠턱
+- 돈 세는 그롬
+- 항구의 이빨
+tier: "B"
+type: "living"
+race: "그롬"
+subrace: "전쟁 그롬"
+sex: "남"
+age: 52
+region: "그롬마르 붉은 황야"
+home: "쇠턱 씨족 회관 (항구)"
+job: "쇠턱 씨족장 — 그롬마르 항, 노예선 경비, 세렌 테르사 상가와 용병 계약, 맹약회의 313 그롬 대표"
+rank: "전쟁군주 회합 구성원. 우르가쉬가 맹약회의 대표로 지명"
+summary: "항구를 쥔 쇠턱 씨족장. 그롬이 경멸하는 돈을 세는 사람이라 돌 방에 앉아 있을 수 있어 우르가쉬가 맹약회의 대표로 지명했다. 멜리산드의 봉인 서신을 서약섬에 가져가면서 뜻을 모르는 척한다"
+source: "docs/world/people/grommar.md (npc_gm_borg)"
+life:
+- year: 260
+  age: 0
+  event: "쇠턱 씨족에서 태어남"
+- year: 270
+  age: 10
+  event: "첫 싸움 — 턱뼈가 부서짐"
+- year: 273
+  age: 13
+  event: "쇠 아래턱을 덧댐. 별칭 '쇠턱'"
+- year: 290
+  age: 30
+  event: "항구의 부장이 됨. 첫 노예선 경비"
+- year: 300
+  age: 40
+  event: "쇠턱 씨족장이 됨"
+- year: 310
+  age: 50
+  event: "테르사 상가와 용병 계약을 갱신함"
+appearance:
+- 아래턱 전체가 쇠로 덧대여 말할 때마다 쇠 소리가 난다
+- 허리에 이빨 목걸이 — 값을 치르고 받은 이빨 일흔
+- 손이 크고 손가락이 유난히 정확하다
+smell: "바닷바람과 쇠 기름, 소금 낀 가죽"
+voice_sound: "쇠 소리가 섞인 낮은 목소리. 계산할 때 느려진다"
+personality:
+  disposition:
+    용기: 45
+    자비: 0
+    정직: 35
+    신앙: 10
+    탐욕: 50
+    충성: 40
+  temperament:
+  - 계산
+  - 냉정
+  - 영리
+  habits:
+  - 말하기 전에 쇠 턱을 한 번 두드린다
+  - 이빨 목걸이의 이빨을 하나씩 굴리며 값을 센다
+  values: 말보다 이빨이다. 이빨 값은 시장이 정한다
+  fears:
+  - 우르가쉬가 죽고 도전자가 항구를 가져가는 것
+  - 멜리산드의 서신이 그롬 전사들에게 알려지는 것
+  desires:
+    short: 맹약회의에서 돌아와 대축제 마지막 날 이전에 항구의 지지 비율을 정리하는 것
+    long: 쇠턱이 대전쟁군주가 아니라 항구의 주인으로 남는 것
+voice:
+  register:
+    to_superior: 군주에게는 짧은 보고, 계산을 섞는다
+    to_equal: 씨족장에게는 느린 전투어
+    to_inferior: 부하에게는 값으로 말하는 명령
+    to_player_default: 낯선 사람에게는 먼저 값을 묻는다 — 이빨 몇 개냐
+  tics:
+  - 쇠 턱을 두드린다
+  - '''이빨 몇 개냐.'''
+  use:
+  - 이빨
+  - 값
+  - 계약
+  - 항구
+  - 서신
+  - 비율
+  avoid:
+  - 도전(스스로)
+  - 조작
+  - 멜리산드(공개 자리에서)
+  length: 느리다. 값 이야기는 길다
+  samples:
+  - situation: 첫 만남
+    line: 이빨 몇 개냐. 값을 치를 이빨이 없으면 쇠 부스러기도 좋다.
+  - situation: 호의
+    line: 값을 아는 인간이군. 그롬 중에도 값을 모르는 자가 많다.
+  - situation: 거절
+    line: 그건 장부 밖이다. 항구의 장부 밖은 파도다.
+  - situation: 분노
+    line: 돈을 경멸하는 그롬의 앞에서 돈을 센다고 비웃지 마라. 그 입에서 쇠 소리가 날 것이다.
+  - situation: 비밀 누설
+    line: 서신은 멜리산드의 것이다. 뜻은 모르는 척한다. 알아도 이득이 없다.
+  - situation: 거래
+    line: 이빨 열을 치르면 서약섬 천막터의 자리 하나를 보장하겠다.
+schedule:
+  아침: 씨족 회관에서 노예선 입항 장부와 이빨 셈을 본다
+  낮: 부두에서 세렌 노예선 경비 배치를 점검한다
+  저녁: 회관에서 테르사 상가 대리인과 계약 항목을 읽는다
+  밤: 쇠 아래턱을 손으로 만지며 장부를 덮는다
+places:
+- 쇠턱 씨족 회관
+- 노예 하선장·부두
+- 테르사 상가 출장소
+- 서약섬
+knows:
+- fact_gm_red_milk_ritual
+hides:
+- fact: fact_p2gm_borg_melisande_letter
+  reveal_when: "신뢰 65 이상, 또는 세이라가 먼저 말한 뒤"
+  reveal: [{"trust":65},{"told_by":"npc_gm_seira"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "서신 이야기가 나오면 '그롬은 서신을 읽지 않는다'고 한다"
+- fact: fact_p2gm_borg_counts_coin
+  reveal_when: "신뢰 50 이상이고 항구의 이빨 셈을 직접 본 뒤"
+  reveal: [{"trust":50,"scene":"항구 장부"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "돈 이야기가 나오면 쇠 턱을 두드리고 입을 닫는다"
+relations:
+- to: npc_urgash
+  type: "군주"
+  like: 20
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "대표로 지명해 준 군주"
+- to: npc_melisande
+  type: "서신의 상대"
+  like: 25
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "용병을 사 주는 개량자"
+- to: npc_gm_seira
+  type: "테르사 상가 대리인"
+  like: 25
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "계약 항목을 읽어 주는 나가"
+- to: npc_gm_gracha
+  type: "도전자"
+  like: -25
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: "군주가 되면 항구를 가져갈 씨족장"
+- to: npc_gm_kes
+  type: "쇠 시장 상인"
+  like: 10
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "항구 아래 시장의 나가"
+toward_player: "값부터 묻는다. 이빨이 있는 사람과 말한다"
+persuade:
+  likes: 계약을 지키는 정직(+25)
+  hates: 돈을 경멸하는 그롬의 법을 비웃는 말
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_warlord
+  office: off_irongjaw_clan
+  since: 300
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 쇠턱은 세렌과 용병 계약을 맺고 있다
+  - 보르그는 맹약회의 대표다
+  drift:
+  - 그날 센 이빨의 수
+  - 노예선이 들어온 수
+  deja_vu: none
+hard_rules:
+- 멜리산드의 서신을 공개 자리에서 말하지 않는다
+- 도전이라는 말을 스스로 꺼내지 않는다
+on_death: "그롬마르 항 쇠턱의 계약이 흔들리고 세렌 테르사 상가가 다른 씨족을 찾는다. 맹약회의의 그롬 대표가 비어 군주가 직접 가야 한다."
+story_seeds:
+- 서신을 서약섬에서 가로채면 멜리산드의 잔향 징후자 개량 계획이 맹약회의에 닿기 전에 드러난다.
+- 보르그의 이빨 셈을 베아트릭스 장부와 맞춰 보면 그롬 전쟁무리 지지 비율이 보인다.

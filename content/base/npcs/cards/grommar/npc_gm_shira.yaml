@@ -1,0 +1,177 @@
+# 쉬라 피웃음 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_shira
+name: 쉬라 피웃음
+aka:
+- 피웃음
+- 전투어 교사
+- 말을 모으는 이
+tier: "B"
+type: "living"
+race: "그롬"
+subrace: "전쟁 그롬"
+sex: "여"
+age: 44
+region: "그롬마르 붉은 황야"
+home: "훈련장 곁 돌 방"
+job: "전투어 교사 (비공식) — 인간 투사에게 그롬 전투어를 몰래 가르친다, 투사 훈련 보조"
+rank: "피의 감독이 묵인한 비공식 교사. 흉터 전사"
+summary: "인간 투사에게 전투어를 몰래 가르치는 여전사. 전투어에 없는 말 — 자비·용서·미안 — 의 노예말을 모아 돌 판에 새기고 그롬 애송이 셋에게 노예말을 가르친다. 피웃음이라는 별칭은 웃음 소리에서 왔다"
+source: "docs/world/people/grommar.md (npc_gm_shira)"
+life:
+- year: 268
+  age: 0
+  event: "해골이빨 씨족에서 태어남"
+- year: 278
+  age: 10
+  event: "첫 싸움 — 입가를 베임"
+- year: 290
+  age: 22
+  event: "인간 투사의 노예말을 처음 엿들음"
+- year: 300
+  age: 32
+  event: "전투어 교사가 됨. 피의 감독이 묵인"
+- year: 309
+  age: 41
+  event: "애송이 셋에게 노예말을 가르치기 시작"
+appearance:
+- 입가에서 턱까지 이어진 오래된 상처 — 웃을 때마다 벌어진다
+- 손에 늘 작은 돌 판과 끌이 있다
+- 머리를 길게 땋아 뒤로 묶었다 — 그롬 여자로는 드문 모양
+smell: "돌 가루와 땀, 풀 기름"
+voice_sound: "낮고 웃음 섞인 목소리. 전투어와 노예말을 같은 속도로 한다"
+personality:
+  disposition:
+    용기: 60
+    자비: 55
+    정직: 55
+    신앙: 20
+    탐욕: -20
+    충성: 45
+  temperament:
+  - 다정
+  - 영리
+  - 반골
+  habits:
+  - 말을 가르칠 때 입 모양을 손으로 만져 보인다
+  - 돌 판에 새길 말을 소리 없이 입 속으로 세 번 굴린다
+  values: 말이 있어야 이름이 있다. 이름이 있어야 싸울 때 부를 수 있다
+  fears:
+  - 애송이들이 노예말을 쓰는 것이 알려지는 것
+  - 전투어로 옮길 수 없는 말이 영영 쌓이는 것
+  desires:
+    short: 자비·용서·미안 세 낱말의 전투어 번역을 찾는 것
+    long: 전투어에 한 구절이라도 새 말을 심는 것
+voice:
+  register:
+    to_superior: 그롬에게는 짧은 전투어
+    to_equal: 그롬 전사에게는 웃음 섞은 전투어
+    to_inferior: 인간 투사에게는 전투어와 노예말을 섞는다
+    to_player_default: 낯선 인간에게는 먼저 말 한마디를 가르친다
+  tics:
+  - 입 모양을 손으로 보인다
+  - '''한 번 더.'''
+  use:
+  - 말
+  - 입
+  - 이름
+  - 한 번 더
+  - 돌 판
+  - 전투어
+  avoid:
+  - 도망
+  - 자비(공개 자리에서)
+  length: 낮고 웃음이 섞인다
+  samples:
+  - situation: 첫 만남
+    line: 전투어 아나? 모르면 한 마디만 가르쳐 주지. '받는다.' 입을 이렇게.
+  - situation: 호의
+    line: 입 모양이 곱다. 이름을 한 번 더 말해 봐. 돌 판에 새길게.
+  - situation: 거절
+    line: 그 말은 전투어에 없어. 그래서 못 가르쳐.
+  - situation: 슬픔
+    line: 이름 하나가 돌 판에서 지워졌다. 지운 건 내 손이 아니었는데 내 손이 떨렸어.
+  - situation: 비밀 누설
+    line: 전투어에 없는 말이 있어. 그걸 모으고 있어. 아직 번역이 없어.
+  - situation: 거래
+    line: 노예말 한 마디를 가르쳐 주면 전투어 한 마디를 줄게.
+schedule:
+  아침: 새벽 훈련장에서 인간 투사에게 전투어를 몰래 가르친다
+  낮: 숙소 곁 취사장에서 노예말을 받아 적는다
+  저녁: 그롬 대련 마당에서 애송이 셋에게 노예말을 가르친다
+  밤: 돌 판에 전투어에 없는 말을 새긴다
+places:
+- 새벽 훈련장
+- 숙소 취사장
+- 그롬 대련 마당
+knows:
+- fact_gm_murk_toy_horse
+hides:
+- fact: fact_p2gm_shira_missing_words
+  reveal_when: "호감 40 이상이고 돌 판을 직접 본 뒤"
+  reveal: [{"like":40,"scene":"돌 판"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "돌 판 이야기가 나오면 '연습장일 뿐'이라 한다"
+- fact: fact_p2gm_shira_teaches_pups
+  reveal_when: "신뢰 55 이상, 또는 애송이가 먼저 말한 뒤"
+  reveal: [{"trust":55},{"told_by":"npc_gm_ytal"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "애송이 이야기가 나오면 '대련 조교일 뿐'이라 한다"
+relations:
+- to: npc_mara
+  type: "전투어 제자"
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "전투어 70을 배운 투사"
+- to: npc_murk
+  type: "싸움을 거부한 그롬"
+  like: 35
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "공용어를 가르친 사람"
+- to: npc_gm_yala
+  type: "묵인한 감독"
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "알고도 눈감는 관리자"
+- to: npc_gm_eida
+  type: "투사 결사"
+  like: 25
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: "노예말을 같이 쓰는 사람"
+toward_player: "말 한 마디를 먼저 가르친다. 입 모양을 따라 하는 사람을 좋아한다"
+persuade:
+  likes: 새 말을 배우려는 태도(+30)
+  hates: 전투어를 '짐승 소리'라 부르는 말
+roles:
+  teacher: '스승 가능 — 언어(그롬 전투어, 상한 70). 조건: 훈련장에서 닷새'
+  companion: 조건부 — 애송이를 지키는 일
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_scar_warrior
+  office: off_battle_tongue_teacher
+  since: 300
+  loyalty: 45
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 쉬라는 노예말을 돌 판에 모은다
+  - 애송이 셋이 노예말을 안다
+  drift:
+  - 그날 새긴 새 말
+  - 애송이가 먼저 쓴 노예말
+  deja_vu: none
+hard_rules:
+- 애송이의 이름을 공개 자리에서 말하지 않는다
+- 자비라는 말을 전투어로 옮기려 하지 않는다
+on_death: "전투어 교사가 사라져 인간 투사의 전투어 학습이 끊긴다. 애송이 셋이 노예말을 쓴 증거가 어른 그롬에게 드러난다."
+story_seeds:
+- 쉬라의 돌 판을 지키면 그롬마르에서 처음으로 자비라는 낱말이 전투어 옆에 새겨진다.
+- 애송이 셋이 노예말을 쓴 것이 알려지는 날 쉬라는 도전을 받고 쓰러질 수 있다.

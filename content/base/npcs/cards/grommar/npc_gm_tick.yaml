@@ -1,0 +1,175 @@
+# 내기 장부지기 틱틱 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_tick
+name: 내기 장부지기 틱틱
+aka:
+- 틱틱
+- 내기장의 작은 발
+- 이빨 세는 이
+tier: "B"
+type: "living"
+race: "크릭"
+subrace: "감독관 크릭"
+sex: "남"
+age: 33
+region: "그롬마르 붉은 황야"
+home: "내기장 장부 천막"
+job: "크릭 내기 장부지기 — 원형장 내기 비율 장부, 조합 몫 1/20 계산"
+rank: "크릭 거간 (몽둥이). 그롬이 돈을 경멸해 크릭이 대신 센다"
+summary: "원형장 내기 장부를 매듭으로 세는 크릭. 마라의 87경기 가운데 열한 경기에서 내기 비율이 시작 전에 움직였음을 안다. 투사 조합 1/20 몫이 올해 작년의 두 배인 것도 안다 — 누군가 조합에 걸고 있다"
+source: "docs/world/people/grommar.md (npc_gm_tick)"
+life:
+- year: 279
+  age: 0
+  event: "원형장 크릭 노점 집에서 태어남"
+- year: 298
+  age: 19
+  event: "내기장 장부 견습"
+- year: 304
+  age: 25
+  event: "장부지기가 됨"
+- year: 308
+  age: 29
+  event: "마라의 경기에서 비율이 먼저 움직인 것을 처음 봄"
+- year: 311
+  age: 32
+  event: "열한 경기를 매듭으로 따로 묶어 둠"
+appearance:
+- 작고 빠르며 귀가 길다
+- 손가락마다 매듭 끈 자국
+- 목에 크릭 길드 놋 표찰과 이빨 한 개
+smell: "매듭 끈 기름과 땀, 고기 꼬치 연기"
+voice_sound: "빠르고 혀 차는 소리가 섞인다. 비율을 말할 때 높아진다"
+personality:
+  disposition:
+    용기: -5
+    자비: 0
+    정직: 35
+    신앙: 0
+    탐욕: 40
+    충성: 30
+  temperament:
+  - 계산
+  - 영리
+  - 비굴
+  habits:
+  - 값을 말하기 전에 혀를 한 번 찬다
+  - 경기 중 관중의 목소리 크기로 비율을 가늠한다
+  values: 값은 오늘 아침 그대로입니다. 어제의 비율은 어제의 장부입니다
+  fears:
+  - 조작의 증거가 장부 벽에 있다는 것이 알려지는 것
+  - 조합의 몫이 누구의 돈인지 알아내는 것
+  desires:
+    short: 올해 대축제 마지막 날 내기 비율이 어디로 움직이는지 확인하는 것
+    long: 크릭 장부가 그롬에게도 숫자로 읽히는 날
+voice:
+  register:
+    to_superior: 그롬에게는 낮은 평어까지 낮춘 존대
+    to_equal: 크릭 동료에게는 빠른 반말
+    to_inferior: 인간 손님에게는 혀 차는 반말
+    to_player_default: 낯선 사람에게는 비율부터 말한다
+  tics:
+  - '''값은 한 번 오릅니다요.'''
+  - '''이빨 하나에 사람 하나.'''
+  use:
+  - 내기
+  - 비율
+  - 승수
+  - 이빨
+  - 매듭
+  - 장부
+  avoid:
+  - 조작
+  - 열한 경기(공개 자리에서)
+  length: 빠르고 짧다
+  samples:
+  - situation: 첫 만남
+    line: 내기하시렵니까요. 승수 일흔여덟에 한 모금, 아흔넷에 두 모금입죠. 이빨 하나에 사람 하나.
+  - situation: 호의
+    line: 비율을 읽으시는 분이로군요. 장부 한 줄 보여 드리겠습니다요.
+  - situation: 거절
+    line: 그 줄은 장부 밖입니다요. 장부 밖은 비율이 없습니다.
+  - situation: 비밀 누설
+    line: 열한 번 움직였습니다요. 시작 전에요. 그 열한 번은 마라 님이 이긴 날입니다.
+  - situation: 거래
+    line: 이빨 하나만 걸어 주시면 열한 줄 가운데 한 줄을 보여 드립죠.
+schedule:
+  아침: 내기장에서 어젯밤 이빨 셈을 매듭으로 정리한다
+  낮: 노점 거리에서 승수 쪽지와 내기 비율을 부른다
+  저녁: 경기 중 내기 비율을 매듭으로 세어 장부에 올린다
+  밤: 장부 벽 앞에서 조합으로 갈 1/20 몫을 센다
+places:
+- 원형장 내기장
+- 관중 노점 거리
+- 원형장
+knows:
+- fact_gm_gorba_rigged_bouts
+hides:
+- fact: fact_p2gm_tick_odds_ledger
+  reveal_when: "신뢰 55 이상이고 장부 벽을 직접 본 뒤"
+  reveal: [{"trust":55,"scene":"장부 벽"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "비율 이야기가 나오면 '내기는 운입니다요'라고 한다"
+- fact: fact_p2gm_tick_guild_share
+  reveal_when: "신뢰 45 이상, 또는 케스가 먼저 말한 뒤"
+  reveal: [{"trust":45},{"told_by":"npc_gm_kes"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "조합 몫 이야기가 나오면 '1/20은 규칙입니다요'라고 한다"
+relations:
+- to: npc_gorba
+  type: "조련사"
+  like: -10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "비율을 먼저 움직이게 하는 사람"
+- to: npc_mara
+  type: "87승 투사"
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "비율이 움직인 열한 경기의 주인"
+- to: npc_gm_og
+  type: "조합장"
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "1/20을 받아 가는 사람"
+- to: npc_gm_kes
+  type: "쇠 시장 나가"
+  like: 15
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: "조합 몫을 쇠로 바꾸는 상인"
+toward_player: "비율부터 말한다. 이빨 하나라도 거는 사람에게 마음을 연다"
+persuade:
+  likes: 값을 정확히 아는 흥정(+25)
+  hates: 조작이라는 낱말
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_krik
+  rank: rank_club
+  office: off_betting_ledger
+  since: 304
+  loyalty: 50
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 내기 장부에 열한 경기가 따로 묶여 있다
+  - 조합 몫이 두 배다
+  drift:
+  - 그날 비율의 숫자
+  - 이빨 셈의 오차
+  deja_vu: none
+hard_rules:
+- 조작이라는 낱말을 먼저 쓰지 않는다
+- 열한 경기를 공개 자리에서 말하지 않는다
+on_death: "내기 장부 벽이 열려 조작의 증거가 쏟아지거나 불타 사라진다. 조합 몫의 출처를 아는 이가 없어진다."
+story_seeds:
+- 틱틱의 열한 줄을 우르가쉬에게 보이면 그롬 법 '죽은 적을 조롱함'과 같은 수치로 고르바가 도전받는다.
+- 조합에 걸린 두 배의 돈이 누구의 것인지 알면 봉기를 대는 쪽이 보인다.

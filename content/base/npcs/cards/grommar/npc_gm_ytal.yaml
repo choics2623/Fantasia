@@ -1,0 +1,179 @@
+# 어린 탈 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_ytal
+name: 어린 탈
+aka:
+- 어린 탈
+- 배수로의 아이
+- 증조부의 이름
+tier: "B"
+type: "living"
+race: "인간"
+subrace: "인간(투사 혈통)"
+sex: "남"
+age: 9
+region: "그롬마르 붉은 황야"
+home: "쇠우리 7번 숙소"
+job: "아이 — 7번 숙소에서 자란다. 어린 이름을 상속한 백승가의 마지막 이름"
+rank: "인간 투사 후보가 아닌 아이. 쇠우리 7번 숙소 소속"
+summary: "아홉 살. 증조부 백승의 탈의 이름을 받았다. 배수로 벽에 대고 자기 이름을 부르면 벽 너머에서 눈먼 노인이 '탈?' 하고 대답한다. 아이는 누구에게도 말하지 않았다. 무르크가 그 소리를 듣는다"
+source: "docs/world/people/grommar.md (npc_gm_ytal)"
+life:
+- year: 303
+  age: 0
+  event: "7번 숙소에서 태어남 — 미아의 동생. 아버지 브로는 이미 투사로 있었다"
+- year: 306
+  age: 3
+  event: "아버지가 경기 중 사망"
+- year: 309
+  age: 6
+  event: "누나가 '탈'이라는 이름을 지어 줌 — 증조부의 이름"
+- year: 311
+  age: 8
+  event: "배수로에 처음 내려감 — 무르크가 장난감 말을 줌"
+- year: 312
+  age: 9
+  event: "벽 너머의 목소리를 처음 들음"
+appearance:
+- 야윈 몸에 큰 눈, 누나를 닮은 단단한 턱
+- 손에 늘 나무로 깎은 작은 칼
+- 목에 나무 장난감 말 하나 — 무르크가 준 것
+smell: "흙과 무기 기름, 국 냄새"
+voice_sound: "작고 높다. 이름을 부를 때만 낮아진다"
+personality:
+  disposition:
+    용기: 50
+    자비: 60
+    정직: 70
+    신앙: 20
+    탐욕: -20
+    충성: 70
+  temperament:
+  - 다정
+  - 영리
+  - 겁
+  habits:
+  - 배수로에 들어가기 전에 이름을 한 번 입 속으로 굴린다
+  - 누나의 경기를 볼 때 손으로 눈을 가린다
+  values: 이름은 불러 주면 대답한다
+  fears:
+  - 누나가 모래에서 돌아오지 않는 것
+  - 벽 너머 목소리가 사라지는 것
+  desires:
+    short: 벽 너머 노인에게 한 번 더 이름을 불러 대답을 듣는 것
+    long: 누나 곁에서 쇠우리 밖으로 걸어 나가는 것
+voice:
+  register:
+    to_superior: 그롬에게는 작은 소리로 존대
+    to_equal: 또래에게는 빠른 반말
+    to_inferior: 없음
+    to_player_default: 낯선 사람에게는 누나 이름을 먼저 댄다
+  tics:
+  - 손으로 눈을 가린다
+  - '''누나가 말했어요.'''
+  use:
+  - 이름
+  - 누나
+  - 벽
+  - 배수로
+  - 장난감 말
+  - 국
+  avoid:
+  - 벽 너머
+  - 노인
+  length: 작고 짧다
+  samples:
+  - situation: 첫 만남
+    line: …누나가 말했어요. 낯선 사람 앞에서는 이름을 먼저 말하지 말라고. 탈이에요. 말해 버렸다.
+  - situation: 호의
+    line: 손이 따뜻해요. 장난감 말 만져 볼래요?
+  - situation: 거절
+    line: 그건 누나가 못 말하게 했어요. 아니, 누나는 모르는데…
+  - situation: 위기
+    line: 누나! 누나 어디 있어요! 불러도 대답이 안 와요!
+  - situation: 비밀 누설
+    line: 벽에 대고 탈이라고 부르면 누가 대답해요. 눈이 안 보이는 할아버지 목소리예요.
+schedule:
+  아침: 7번 숙소에서 누나 미아 곁에서 새벽 훈련을 구경한다
+  낮: 숙소 취사장에서 에이다 곁에 앉아 국을 얻어먹는다
+  저녁: 누나의 경기를 관중석 맨 위에서 본다
+  밤: 배수로 벽에 대고 자기 이름을 부른다
+places:
+- 쇠우리 7번 숙소
+- 지하 배수로
+- 숙소 취사장
+- 관중석 맨 위
+knows:
+- fact_gm_murk_toy_horse
+hides:
+- fact: fact_p2gm_ytal_hears_name
+  reveal_when: "호감 45 이상이고 배수로에서 같이 벽에 이름을 부른 뒤"
+  reveal: [{"like":45,"scene":"배수로 벽"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "배수로 이야기가 나오면 장난감 말을 쥔다"
+relations:
+- to: npc_gm_mia
+  type: "누나"
+  like: 85
+  trust: 90
+  visibility: 공개
+  memo: null
+  words: "이름을 지어 준 누나"
+- to: npc_murk
+  type: "장난감 말을 준 그롬"
+  like: 55
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "배수로의 조용한 아저씨"
+- to: npc_tal
+  type: "벽 너머의 목소리"
+  like: 30
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: "이름을 부르면 대답하는 눈먼 노인"
+- to: npc_gm_eida
+  type: "취사장 할머니"
+  like: 55
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "국을 주는 사람"
+- to: npc_gm_og
+  type: "숙소 어른"
+  like: 35
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "칼을 가르치는 아저씨"
+toward_player: "누나 이름을 먼저 댄다. 장난감 말을 만지는 사람에게 마음을 연다"
+persuade:
+  likes: 이름을 불러 주는 말(+30)
+  hates: 벽 너머 이야기를 먼저 묻는 것
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_hundred_wins
+  rank: rank_blood_kin
+  office: off_young_tal
+  since: 309
+  loyalty: 75
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 아이의 이름은 탈이다
+  - 벽 너머에서 대답이 온다
+  drift:
+  - 그날 배수로에서 이름을 부른 횟수
+  - 벽 너머의 대답이 온 시각
+  deja_vu: none
+hard_rules:
+- 벽 너머 이야기를 먼저 꺼내지 않는다
+- 누나에게 배수로 이야기를 하지 않는다
+on_death: "백승가의 이름이 7번 숙소에서 끊긴다. 벽 너머 눈먼 노인이 마지막으로 자기 이름에 대답할 기회가 사라진다."
+story_seeds:
+- 아이가 벽에 대고 부르는 이름은 탈이 군나르의 소식 이전에 듣는 마지막 인간 목소리가 될 수 있다.
+- 아이를 배수로로 이끌면 무르크와 탈과 아이가 한 벽에서 만난다.

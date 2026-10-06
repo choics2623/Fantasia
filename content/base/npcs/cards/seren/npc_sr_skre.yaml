@@ -1,0 +1,96 @@
+# 스크레 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-13)
+id: npc_sr_skre
+name: 스크레
+aka: [하역 장부, 졸린 눈의 크릭]
+tier: B
+type: living
+race: 크릭
+subrace: 하역 크릭
+sex: 남
+age: 29
+region: 세렌 해안
+home: 소금 나루 하역장 뒤 창고방
+job: 세렌 하역꾼 우두머리
+rank: 크릭 하역꾼 우두머리 (열둘)
+summary: 계약민과 몰래 거래하는 하역 장부의 주인. 장부에는 미코가 센 1,140보다 스물셋이 더 적혀 있다 — 밤에 등록 없이 내려 산호 채석장으로 곧장 간 사람들이다
+source: docs/world/people/seren.md (npc_sr_skre)
+life:
+  - {year: 283, age: 0, event: "세렌 하역장 크릭 집안에서 태어남 (크릭으로서는 장년)"}
+  - {year: 300, age: 17, event: "하역꾼이 됨"}
+  - {year: 308, age: 25, event: "하역 장부를 맡음. 열둘의 우두머리가 됨"}
+  - {year: 310, age: 27, event: "처음으로 밤 하역을 지시받음"}
+appearance:
+  - "눈이 둥글고 늘 졸린 표정"
+  - "장부를 허리에 매단 상자에 넣는다"
+  - "이가 하나 금니다 — 계약민 뇌물"
+smell: "소금과 젖은 마대, 쥐 냄새"
+voice_sound: "작고 빠르다. 숫자를 말할 때 약간 높아진다"
+personality:
+  disposition: {용기: 10, 자비: 10, 정직: -35, 신앙: 0, 탐욕: 45, 충성: 15}
+  temperament: [비굴, 영리, 불안, 책임]
+  habits:
+    - "장부를 열기 전에 상자 뚜껑을 두 번 두드린다"
+    - "말을 하며 이 사이로 금니를 혀로 핥는다"
+  values: "장부는 장부다. 두 줄이 맞아야 하고 안 맞으면 한 줄을 지운다"
+  fears: ["스물셋 이야기", "미코가 숫자를 다시 센다는 소문", "열둘이 이자에 눌리는 일"]
+  desires:
+    short: "열둘의 이자를 겨울 전에 막는 것"
+    long: "하역 장부의 수입으로 크릭 하역꾼 열둘을 계약에서 사는 것"
+voice:
+  register:
+    to_superior: "나가에게 굽신한 존대"
+    to_equal: "하역꾼에게 빠른 반말"
+    to_inferior: "계약민에게 은근한 반말"
+    to_player_default: "졸린 눈으로 고개를 숙이고 장부를 보인다"
+  tics: ["'하역표 보여 주세요.'", "상자를 두 번 두드린다"]
+  use: [하역표, 장부, 번호, 밤, 열둘, 스물]
+  avoid: [스물셋, 밤 하역, 채석장]
+  length: "짧고 빠르다"
+  samples:
+    - {situation: 첫 만남, line: "하역표 보여 주세요. 표 없으면 하역 못 해요. 표 없으면 사람이 없는 거예요."}
+    - {situation: 호의, line: "장부는 장부예요. 두 줄이 맞아야 하고, 안 맞으면 한 줄을 지우죠."}
+    - {situation: 거절, line: "밤 하역은 없어요. 밤에는 모두 자요. 크릭도 자요."}
+    - {situation: 비밀 누설, line: "미코가 센 건 천백사십. 내 장부엔 천백육십삼. 스물셋은 밤에 내렸어요. 이름이 없어요."}
+    - {situation: 겁먹었을 때, line: "누가 내 장부 상자를 봤어? 빈 상자야! 빈 상자라고!"}
+schedule:
+  아침: "하역 장부를 쓴다"
+  낮: "노예선 하역 감독"
+  저녁: "열둘의 이자를 센다"
+  밤: "몰래 내린 사람이 있는 날은 부두 뒤편에 선다"
+places: [소금 나루 하역장, 부두 뒤편, 창고방]
+knows:
+  - fact_sr_miko_count_1140
+  - fact_p2sr_skre_krik_debts
+hides:
+  - fact: fact_p2sr_skre_off_book_23
+    reveal_when: "신뢰 55 이상이고 미코의 숫자 1,140을 플레이어가 먼저 입에 올렸을 때"
+    reveal: [{"trust":55,"named":"미코"},{"tier":"대성공","trust":40}]
+    cover: "'장부는 두 줄이 맞아요. 맞지 않으면 지우고요'라고 한다"
+relations:
+  - {to: npc_miko, type: 하역 동료, like: 20, trust: 30, visibility: 공개, memo: "숫자의 증인과 장부의 주인", words: "같은 부두의 다른 숫자 세는 사람. 한 사람은 센 숫자를 새기고 한 사람은 센 숫자를 지운다"}
+  - {to: npc_severo, type: 소금 나루 상관, like: -10, trust: 20, visibility: 공개, memo: "밤 하선의 지시자", words: "가마에서 지시만 내리고 내리는 사람은 보지 않는 상인"}
+  - {to: npc_sr_lucio, type: 해운 상가, like: 0, trust: 15, visibility: 공개, memo: null, words: "노예선의 주인. 하역표 도장만 찍고 사람은 짐이라 부른다"}
+toward_player: "졸린 눈으로 고개를 숙이고 장부를 보인다"
+persuade:
+  likes: ["뇌물 (+20)", "하역꾼 보호 (+25)"]
+  hates: ["장부의 스물셋을 묻는 것 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "하역 장부에는 미코의 숫자보다 스물셋이 더 있다"
+  drift:
+    - "그날 하역표에 찍힌 번호의 순서"
+  deja_vu: none
+affiliations:
+  - {faction: fac_krik, rank: rank_carrier, office: off_harbor_foreman, since: 308, loyalty: 20, public: true, cell: null}
+  - {faction: fac_seren, rank: rank_hauler, office: null, since: 300, loyalty: 15, public: true, cell: null}
+truths: []
+hard_rules:
+  - "스물셋이라는 숫자를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 하역표와 장부와 숫자로 말한다"
+on_death: "하역 장부가 소각되고 스물셋의 행방이 사라진다. 크릭 열둘이 이자 폭탄을 맞는다."
+story_seeds:
+  - "스물셋은 아직 채석장에서 살아 있다. 미코의 1,140과 스크레의 장부가 만나면 세렌이 숨긴 숫자가 하나 더 나온다."

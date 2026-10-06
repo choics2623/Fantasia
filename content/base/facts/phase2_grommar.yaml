@@ -1,0 +1,211 @@
+# 그롬마르 붉은 황야 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). id 접두사 fact_p2gm_. 기존 fact_gm_*(facts/grommar.yaml)·fact_gb_*는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 피의 감독 얄라 ──
+- id: fact_p2gm_yala_cracked_hundredth
+  text: "AS 258 이후 100승 도전 경기마다 피의 감독이 상대 그롬의 칼에 미리 금을 넣는다. 인간이 이겨야 붉은 젖을 먹일 수 있기 때문이다. 점검 대장에 그 표시가 남아 있다"
+  truth: true
+  danger: 5
+  names: [얄라, 붉은 젖, 백승]
+- id: fact_p2gm_yala_fears_gracha
+  text: "얄라는 그라샤 피도끼가 원형장을 도끼날 학살장으로 바꿀 것을 두려워해, 대진표를 늦추고 도전의 성립을 어렵게 만들 방법을 찾는다. 대전쟁군주 자리가 바뀌면 자기 자리도 없어진다"
+  truth: true
+  danger: 3
+  names: [얄라, 그라샤]
+# ── 전쟁 숙영지 사령 크로그 ──
+- id: fact_p2gm_krog_rust_heap_fear
+  text: "크로그는 뼈 행렬 막사의 인간 4,000이 녹슨 무기를 쥐고 있다는 것을 걱정한다. 첫 열이 뒤돌아서면 막을 그롬 수가 모자란다. 그러나 철 대장간이 없어 무기를 회수하지 못한다"
+  truth: true
+  danger: 4
+  names: [크로그, 뼈 행렬]
+- id: fact_p2gm_krog_supply_empty
+  text: "해골이빨 전쟁 숙영지의 보급은 비어 있다. 원정파가 말뼈 여울을 치자고 하나 크로그는 가을 전에는 치지 못한다고 속으로 안다"
+  truth: true
+  danger: 3
+  names: [크로그, 말뼈 여울]
+# ── 원형장 심판 크롤 ──
+- id: fact_p2gm_kroll_tal_hundredth
+  text: "크롤은 AS 258 탈의 100번째 상대였다. 그의 칼날에는 금이 가 있었고 그는 그것을 알면서 모래에 섰다. 칼 조각을 심판석 밑 돌 틈에 간직한다"
+  truth: true
+  danger: 5
+  names: [크롤, 탈]
+- id: fact_p2gm_kroll_chant_order
+  text: "크롤은 쓰러졌다 일어서는 인간의 이름 연호 순서를 심판석에서 바꿀 수 있다. 연호가 누구에게 먼저 가느냐가 마지막 경기의 승패를 가른 적이 있다"
+  truth: true
+  danger: 3
+  names: [크롤]
+# ── 피도끼 그라샤 ──
+- id: fact_p2gm_gracha_aurax_letter
+  text: "그라샤는 아우락스의 봉인된 서신을 갖고 있다. 그녀가 대전쟁군주가 되면 붉은 턱의 군대에 그롬 두 전쟁무리를 판다는 약속이다. 서신에는 아우락스가 용황이 되는 날을 가리키는 구절이 있다"
+  truth: true
+  danger: 5
+  names: [그라샤, 아우락스]
+- id: fact_p2gm_gracha_axe_training
+  text: "피도끼 씨족은 인간 투사를 도끼날 훈련용으로 쓴다. 한 해 약 사백이 죽는다. 그라샤는 그것을 군주가 되면 두 배로 하겠다고 한다"
+  truth: true
+  danger: 3
+  names: [그라샤, 피도끼]
+- id: fact_p2gm_gracha_challenge_dusk
+  text: "그라샤는 태양월 마지막 날 해 질 녘에 도전하기로 정했다. 하루 종일 싸우고 마지막 대련까지 끝낸 우르가쉬를 쓰러뜨리려는 것이다"
+  truth: true
+  danger: 4
+  names: [그라샤, 우르가쉬]
+# ── 재울음 노파 우르크 ──
+- id: fact_p2gm_urk_knows_uprising
+  text: "재울음 노파 우르크는 투사 조합의 봉기 계획을 안다. 9번 숙소의 무기도 안다. 그롬 가운데 아는 이는 그녀 하나다. 그녀는 아무에게도 말하지 않았다 — 이유는 아직 아무도 모른다"
+  truth: true
+  danger: 5
+  names: [우르크, 투사 조합]
+- id: fact_p2gm_urk_halves_milk
+  text: "우르크는 탈의 붉은 젖을 해마다 조금씩 줄여 왔다. 탈의 정신이 맑아져 군나르에게 '도망쳐라, 99에서 멈춰라'고 말한 것도 그녀의 계산이었다. 새 백승자의 잔은 줄이지 않기로 했다"
+  truth: true
+  danger: 4
+  names: [우르크, 탈, 군나르]
+# ── 전투어 교사 쉬라 ──
+- id: fact_p2gm_shira_missing_words
+  text: "쉬라는 그롬 전투어에 없는 말 — 자비·용서·미안 — 의 노예말을 모아 적고 있다. 그 말들을 그롬 전투어로 옮길 수 없다는 것을 아는 유일한 그롬이다"
+  truth: true
+  danger: 2
+  names: [쉬라]
+- id: fact_p2gm_shira_teaches_pups
+  text: "쉬라는 그롬 애송이 셋에게 인간 투사의 노예말을 가르친다. 그 애들은 인간이 '이름'과 '아직'이라는 말로 서로를 지킨다는 것을 안다"
+  truth: true
+  danger: 3
+  names: [쉬라]
+# ── 피 사제 고르마크 ──
+- id: fact_p2gm_gormak_iron_spring
+  text: "피의 샘이 붉은 것은 물에 철이 녹았기 때문이다. 고르마크는 그것을 알고도 기도처의 말을 지킨다. 그롬은 믿지 않는다"
+  truth: true
+  danger: 2
+  names: [고르마크, 피의 샘]
+- id: fact_p2gm_gormak_cups_spent
+  text: "'혈명 없는 혈명' 의식 잔은 셋이 있고 셋 다 쓰였다. 새 잔은 아직 없다. 다음 백승자를 위해 쇠 시장에서 새 잔을 맞춰야 한다"
+  truth: true
+  danger: 3
+  names: [고르마크, 붉은 젖]
+# ── 조합장 오그 ──
+- id: fact_p2gm_og_first_mission
+  text: "조합장 오그가 새 투사에게 맡기는 첫 임무 — '하르트의 100승 경기에서 상대의 무기에 금이 가 있게 하라' — 의 진짜 뜻은 이중 금이다. 피의 감독이 넣은 금 위에 하나 더 넣어 칼이 첫 합에 부서지게 하고, 조작이 3만 관중 앞에서 드러나게 하려는 것이다"
+  truth: true
+  danger: 5
+  names: [오그, 하르트]
+- id: fact_p2gm_og_uprising_signal
+  text: "봉기 신호는 하르트의 100승 직후 우르크가 이마에 피를 바르는 순간이다. 9번 숙소 바닥 아래 무기 300자루가 올라온다. 계획을 아는 그롬은 우르크 하나다"
+  truth: true
+  danger: 5
+  names: [오그, 우르크, 하르트]
+- id: fact_p2gm_og_knows_milk
+  text: "오그는 100승의 붉은 젖이 해방이 아니라 목줄이라는 것을 안다. 하르트에게는 말하지 않았다. 봉기로 하르트를 의식의 잔 앞에서 빼내려 한다"
+  truth: true
+  danger: 5
+  names: [오그, 하르트, 붉은 젖]
+# ── 문턱 하르트 ──
+- id: fact_p2gm_hart_one_arm
+  text: "하르트의 왼팔은 AS 308 피도끼 전사의 도끼날 훈련 상대로 끌려가 잘렸다. 그는 외팔로 94승 중 열한 승을 거뒀다. 도끼를 든 그롬을 이긴 것은 조합에서 그가 처음이다"
+  truth: true
+  danger: 3
+  names: [하르트, 피도끼]
+- id: fact_p2gm_hart_believes_freedom
+  text: "하르트는 100승이 자유라고 믿는다. 오그가 말하지 않았다. 그는 100승 뒤 원형장 밖으로 걸어 나가 북쪽 어딘가의 군나르를 찾으려 한다"
+  truth: true
+  danger: 4
+  names: [하르트, 군나르]
+# ── 미아 ──
+- id: fact_p2gm_mia_karel_blade
+  text: "미아는 7번 숙소 벽 아래에서 이름 한 글자가 남은 부러진 칼날 조각을 찾았다. 카렐의 것이다. 그녀는 AS 274 군나르와 카렐의 일을 모르고, 그 조각이 누구의 것인지도 모른다"
+  truth: true
+  danger: 3
+  names: [미아, 카렐]
+# ── 노라베 ──
+- id: fact_p2gm_norabe_withdrawal
+  text: "노라베는 붉은 젖 금단을 그롬에게서 숨기는 법을 안다 — 소금물과 씨앗 달인 물. 탈에게는 한 번도 쓰지 못했다. 쓰러지는 투사를 몰래 이 약으로 살려 온 것이 열 해다"
+  truth: true
+  danger: 3
+  names: [노라베, 탈]
+- id: fact_p2gm_norabe_garden_runaway
+  text: "노라베는 실바렌 영원 정원 정원지기 출신이다. 가시안개 숲 쪽 탈주 길을 알고 정원에서 쓰이던 문양을 투사 숙소 벽에 남겨 두었다"
+  truth: true
+  danger: 3
+  names: [노라베, 실바렌]
+# ── 이레나 아흔둘 ──
+- id: fact_p2gm_irena_gorba_paper
+  text: "이레나는 92승이다. 문턱 줄에서 조합장보다 먼저 100승 도전에 서도록 고르바가 서류를 밀고 있다. 그녀의 100번째 상대는 인간이다"
+  truth: true
+  danger: 4
+  names: [이레나, 고르바]
+- id: fact_p2gm_irena_refuses_human_bouts
+  text: "이레나는 인간끼리 죽이는 경기를 거부하는 '아흔아홉' 동조자다. 올해 거부하면 소모품으로 강등되고, 그녀가 서 있으면 서른이 따라 선다"
+  truth: true
+  danger: 4
+  names: [이레나, 아흔아홉]
+# ── 쿠르트 ──
+- id: fact_p2gm_kurt_brother_peder
+  text: "쿠르트의 동생 페더는 마라가 쓰러뜨린 같은 막사 동료 세 명 가운데 하나였다. 쿠르트는 마라를 원망하지 않고 그 대진을 짠 고르바를 원망한다"
+  truth: true
+  danger: 3
+  names: [쿠르트, 페더, 마라, 고르바]
+- id: fact_p2gm_kurt_oils_rust
+  text: "쿠르트는 뼈 행렬의 녹슨 무기를 밤마다 기름칠하고 날을 세운다. 4,000자루 가운데 천이 쓸 만하다. 그롬은 그것을 소모품의 습관이라 여긴다"
+  truth: true
+  danger: 4
+  names: [쿠르트, 뼈 행렬]
+# ── 나가 케스 ──
+- id: fact_p2gm_kes_guild_iron
+  text: "투사 조합 9번 숙소의 무기 300은 케스가 투사 표식 없이 팔았다. 값은 이빨이 아니라 조합 내기 수익 1/20의 일부다. 세렌 쪽 장부에도 같은 수가 올라 있다"
+  truth: true
+  danger: 4
+  names: [케스, 투사 조합]
+- id: fact_p2gm_kes_new_cup
+  text: "고르마크가 주문한 의식 잔 하나를 케스가 쇠로 맞추는 중이다. 값은 이빨 열둘이다. 잔은 아직 완성되지 않았고 케스는 완성을 늦추고 있다"
+  truth: true
+  danger: 3
+  names: [케스, 고르마크]
+# ── 내기 크릭 틱틱 ──
+- id: fact_p2gm_tick_odds_ledger
+  text: "틱틱의 내기 장부는 마라의 87경기 가운데 열한 경기에서 시작 전에 내기 비율이 움직였음을 보여 준다. 그 열한 경기는 고르바가 상대를 약하게 만든 경기와 같다"
+  truth: true
+  danger: 4
+  names: [틱틱, 마라, 고르바]
+- id: fact_p2gm_tick_guild_share
+  text: "내기 수익 1/20이 투사 조합으로 가고, 틱틱이 그 몫을 센다. 올해 몫이 작년의 두 배다 — 누군가 조합에 걸고 있다"
+  truth: true
+  danger: 3
+  names: [틱틱, 투사 조합]
+# ── 아흔아홉 에이다 ──
+- id: fact_p2gm_eida_ninety_nine
+  text: "투사 결사 '아흔아홉'은 인간끼리 죽이는 경기를 거부하는 방법을 궁리한다. 거부하면 소모품이 되므로 서른이 같이 거부하는 날을 정하고 있다 — 태양월 대축제 첫날이다"
+  truth: true
+  danger: 5
+  names: [에이다, 아흔아홉]
+- id: fact_p2gm_eida_floor_keeper
+  text: "에이다는 9번 숙소 바닥지기 셋 가운데 하나다. 바닥 돌판 아래 무기 300의 위치를 안다. 숫자는 군나르가 탈주한 날 이후로 세고 있다"
+  truth: true
+  danger: 4
+  names: [에이다, 군나르]
+# ── 어린 탈 ──
+- id: fact_p2gm_ytal_hears_name
+  text: "아홉 살 탈이 배수로 벽에 대고 자기 이름을 부르면 벽 너머에서 눈먼 노인이 '탈?' 하고 대답한다. 아이는 누구에게도 말하지 않았다. 무르크가 그 소리를 듣는다"
+  truth: true
+  danger: 4
+  names: [탈, 무르크]
+# ── 나가 세이라 ──
+- id: fact_p2gm_seira_tersa_contract
+  text: "세렌 테르사 상가는 쇠턱 씨족과 용병 계약을 맺고 있다 — 대가는 그롬마르 항 노예 하선장 우선권. 계약에는 '대전쟁군주 교체 시 재협상' 조항이 있다"
+  truth: true
+  danger: 3
+  names: [세이라, 테르사, 쇠턱]
+- id: fact_p2gm_seira_beatrice_report
+  text: "세이라는 베아트릭스 몬달리의 장부에 그롬 전쟁무리 지지 비율을 매달 보고한다. 이번 달 보고의 비율은 우르가쉬 40, 그라샤 35, 중립 25다"
+  truth: true
+  danger: 3
+  names: [세이라, 베아트릭스]
+# ── 쇠턱 보르그 ──
+- id: fact_p2gm_borg_melisande_letter
+  text: "보르그 쇠턱이 서약섬으로 가져가는 서신은 멜리산드의 것이다. 안건은 잔향 징후자를 처형하지 말고 개량 실험에 보내자는 것이다. 보르그는 서신의 뜻을 모르는 척한다"
+  truth: true
+  danger: 4
+  names: [보르그, 멜리산드]
+- id: fact_p2gm_borg_counts_coin
+  text: "보르그 쇠턱은 돈을 센다. 그롬 전사들이 그것을 알고도 도전하지 않는 이유는 쇠턱이 항구와 노예선과 이빨을 쥐고 있어서다. 우르가쉬가 그를 맹약회의 대표로 지명한 것도 돈을 세는 자라야 돌 방에 앉아 있기 때문이다"
+  truth: true
+  danger: 3
+  names: [보르그, 우르가쉬]

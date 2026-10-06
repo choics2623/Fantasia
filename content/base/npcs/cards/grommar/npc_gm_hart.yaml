@@ -1,0 +1,203 @@
+# 외팔 하르트 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_hart
+name: 외팔 하르트
+aka:
+- 외팔
+- 아흔넷
+- 문턱의 하르트
+tier: "A"
+type: "living"
+race: "인간"
+subrace: "인간(투사 혈통)"
+sex: "남"
+age: 30
+region: "그롬마르 붉은 황야"
+home: "쇠우리 (문턱 숙소)"
+job: "투사 조합 문턱 — 94승, 다음 축제 100승 도전자. 흉터 회의 94표"
+rank: "인간 투사 (문턱 90~99승). 그롬 전사들의 존중을 받는 몇 안 되는 인간"
+summary: "왼팔이 없는 94승의 문턱. AS 308 피도끼 전사의 도끼날 훈련 상대로 끌려가 팔을 잃었으나 외팔로 열한 승을 더 거뒀다. 100승이 자유라고 믿고 그 뒤 북쪽의 군나르를 찾으려 한다"
+source: "docs/world/people/grommar.md (npc_gm_hart)"
+life:
+- year: 282
+  age: 0
+  event: "투사 후보 노예 어미에게서 태어남. 쇠우리 7번 숙소 곁에서 자람"
+- year: 298
+  age: 16
+  event: "첫 승. 새끼 번호를 버리고 이름을 얻음"
+- year: 305
+  age: 23
+  event: "문턱(90승)에 올랐으나 대진표에서 한 해 밀림"
+- year: 308
+  age: 26
+  event: "피도끼 도끼날 훈련에서 왼팔을 잃음"
+- year: 310
+  age: 28
+  event: "외팔로 도끼를 든 그롬 전사를 이김"
+- year: 312
+  age: 30
+  event: "94승 — 다음 축제 100승 도전자로 공표됨"
+appearance:
+- 왼쪽 어깨 아래가 비었다 — 소매를 접어 묶었다
+- 가슴에 칼자국 아흔넷, 어깨 쪽은 칼자국이 겹쳐 하나로 보인다
+- 수염이 짧고 눈이 맑다 — 의식 전날의 아이처럼
+smell: "무기 기름과 땀, 풀 향 약"
+voice_sound: "맑고 낮다. 짧게 끊어 말한다"
+personality:
+  disposition:
+    용기: 85
+    자비: 55
+    정직: 55
+    신앙: -5
+    탐욕: -10
+    충성: 60
+  temperament:
+  - 용맹
+  - 다정
+  - 겸손
+  habits:
+  - '''100''이라는 낱말을 입에 올리지 않으려고 숫자를 건너뛰어 센다'
+  - 신참의 손목을 잡고 팔 힘을 재 준다
+  values: 이름을 부르며 싸우면 지더라도 이름이 남는다
+  fears:
+  - 100승 전날 밤 칼에 금이 가 있지 않을까
+  - 조합이 자기를 신호로만 쓰는 것
+  desires:
+    short: 100승 도전 경기에서 이겨 원형장 밖으로 걸어 나가는 것
+    long: 원형장 밖으로 나가 북쪽의 군나르를 찾아 이름을 대는 것
+voice:
+  register:
+    to_superior: 그롬에게는 짧은 전투어
+    to_equal: 투사에게는 승수로 부르는 평어
+    to_inferior: 새끼에게는 이름을 부르는 부드러운 반말
+    to_player_default: 낯선 사람에게는 손목부터 잡는다
+  tics:
+  - '''아직.'''
+  - 숫자를 건너뛴다
+  use:
+  - 아직
+  - 이름
+  - 숙소
+  - 칼
+  - 손목
+  - 모래
+  avoid:
+  - '100'
+  - 자유(경기 전날)
+  - 도끼날 훈련
+  length: 짧고 맑다
+  samples:
+  - situation: 첫 만남
+    line: 손목 줘 봐. …좋아. 숫자는 묻지 않을게. 이름만 말해.
+  - situation: 호의
+    line: 이름을 불러 주는 사람을 만났다. 오래간만이야. 한 번 더 불러 줘.
+  - situation: 거절
+    line: 그건 다음에. 이긴 뒤에 이야기할게 — 이긴다는 말은 하지 않지만.
+  - situation: 분노
+    line: 도끼날 훈련은 훈련이 아니야. 사람을 자르는 법을 가르치는 거야.
+  - situation: 슬픔
+    line: 팔이 없는 밤에 몸이 가끔 있다고 말해. 그때마다 칼이 떨려.
+  - situation: 위기
+    line: 내 뒤! 한 팔이라도 방패는 있다!
+  - situation: 비밀 누설
+    line: 100을 넘으면 걸어 나갈 거야. 북쪽에. 거기 군나르가 있다고 들었어. 이름을 말하러 가.
+  - situation: 거래
+    line: 내 칼날을 한 번만 봐 줘. 금이 없는지.
+  - situation: 거짓말
+    line: 무섭지 않아. 정말로.
+schedule:
+  아침: 새벽 훈련장에서 외팔로 칼 한 자루를 휘두른다
+  낮: 숙소에서 상처를 닦고 칼을 간다
+  저녁: 경기 또는 시범 경기 — 모래에 선다
+  밤: 숙소 벽에 기대 '100'을 입에 올리지 않고 센다
+places:
+- 쇠우리
+- 새벽 훈련장
+- 피의 원형장
+- 숙소 치료소
+knows:
+- fact_gm_red_milk_ritual
+- fact_gm_gorba_seeks_gunnar_disciple
+hides:
+- fact: fact_p2gm_hart_one_arm
+  reveal_when: "호감 35 이상이고 숙소에서 팔 이야기를 정직하게 물었을 때"
+  reveal: [{"like":35,"named":"팔"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "팔 이야기가 나오면 소매를 만지고 웃는다"
+- fact: fact_p2gm_hart_believes_freedom
+  reveal_when: "신뢰 55 이상이고 100승 이야기를 하르트가 먼저 꺼냈을 때"
+  reveal: [{"trust":55,"self":true}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "100승 이야기가 나오면 숫자를 건너뛴다"
+relations:
+- to: npc_gm_og
+  type: "조합장"
+  like: 55
+  trust: 70
+  visibility: 공개
+  memo: null
+  words: "100승을 봉기 신호로 아는 조합장 — 그건 모른다"
+- to: npc_mara
+  type: "흉터"
+  like: 35
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "같은 막사 동료의 이름을 새긴 사람"
+- to: npc_gunnar
+  type: "소문의 99승"
+  like: 45
+  trust: 10
+  visibility: 일방
+  memo: null
+  words: "찾아가 이름을 대고 싶은 사람"
+- to: npc_gm_gracha
+  type: "팔을 자른 그롬"
+  like: -35
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "도끼날 훈련 때의 그 목소리"
+- to: npc_gm_norabe
+  type: "치료사"
+  like: 40
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "잘린 어깨를 봉합한 노파"
+- to: npc_gm_mia
+  type: "7번 숙소의 후배"
+  like: 30
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "같은 숙소 곁에서 자란 아이"
+toward_player: "손목을 잡아 힘을 재 준다. 숫자를 건너뛰는 사람과는 이름으로 이야기한다"
+persuade:
+  likes: 이름을 불러 주는 태도(+30)
+  hates: 도끼날 훈련 이야기를 먼저 꺼내는 것
+roles:
+  teacher: '스승 가능 — 맨손격투(외팔 균형, 상한 45). 조건: 숙소에서 열흘'
+  companion: 조건부 — 100승 전 대신 싸워 줄 이가 필요할 때
+  romance: null
+affiliations:
+- faction: fac_arena_guild
+  rank: rank_threshold
+  office: off_threshold_hart
+  since: 305
+  loyalty: 70
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 하르트는 94승 외팔이다
+  - 다음 축제에 100승 도전자로 공표되었다
+  drift:
+  - 그해 거둔 승수의 시점
+  - 숫자를 건너뛴 횟수
+  deja_vu: none
+hard_rules:
+- '''100''이라는 낱말을 먼저 입에 올리지 않는다'
+- 팔 이야기를 호감 35 전에 하지 않는다
+on_death: "봉기 신호가 사라져 조합이 계획을 다시 짜야 한다. 문턱이 없어 100승 도전은 이레나 쪽으로 넘어간다."
+story_seeds:
+- 하르트의 100번째 칼날을 점검하는 손이 플레이어라면 금 하나가 승부와 봉기를 정한다.
+- 하르트가 붉은 젖의 진실을 알면 100승을 거부하거나 거부하지 않고 의식 잔 앞으로 걸어갈 수도 있다.

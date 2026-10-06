@@ -1,0 +1,176 @@
+# 피 사제 고르마크 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_gormak
+name: 피 사제 고르마크
+aka:
+- 고르마크
+- 피의 샘 사제
+- 잔의 선반
+tier: "B"
+type: "living"
+race: "그롬"
+subrace: "붉은 그롬"
+sex: "남"
+age: 66
+region: "그롬마르 붉은 황야"
+home: "피의 샘 곁 천막"
+job: "피의 샘 사제 — 그롬의 기도처 관리, 의식 잔 선반 관리"
+rank: "그롬 사제. 대전쟁군주의 기도를 받는다"
+summary: "피의 샘의 사제. 샘이 붉은 이유가 철임을 알고도 기도처의 말을 지킨다. '혈명 없는 혈명' 의식 잔 셋이 모두 쓰였고 새 잔이 없다는 것을 안다. 쇠 시장 케스에게 새 잔을 주문했다"
+source: "docs/world/people/grommar.md (npc_gm_gormak)"
+life:
+- year: 246
+  age: 0
+  event: "붉은 그롬 어미에게서 태어남 — 광란을 이기고 살아남은 드문 아이"
+- year: 262
+  age: 16
+  event: "피의 샘 견습"
+- year: 282
+  age: 36
+  event: "샘의 사제가 됨"
+- year: 300
+  age: 54
+  event: "의식 잔 셋째가 쓰임"
+- year: 310
+  age: 64
+  event: "새 잔 하나를 쇠 시장 케스에게 주문함"
+appearance:
+- 회색으로 바랜 붉은 그롬의 피부, 손이 늘 붉게 젖어 있다
+- 목에 철 구슬 열둘 — 샘에서 건진 철 조각
+- 오른쪽 눈이 흐리다
+smell: "젖은 쇠와 붉은 흙"
+voice_sound: "낮고 느리며 속삭이는 전투어"
+personality:
+  disposition:
+    용기: 40
+    자비: 30
+    정직: 55
+    신앙: 65
+    탐욕: -35
+    충성: 45
+  temperament:
+  - 경건
+  - 과묵
+  - 의심
+  habits:
+  - 물을 뜨기 전에 철 구슬을 한 번 쥔다
+  - 그롬이 기도를 마치면 손을 물에 담가 씻어 준다
+  values: 믿음은 의심을 넘어서는 것이 아니라 의심을 안고 서는 것이다
+  fears:
+  - 샘이 철 때문임을 그롬이 알게 되는 것
+  - 새 잔 없이 100승 의식이 서는 날
+  desires:
+    short: 새 의식 잔이 대축제 전에 완성되는 것
+    long: 붉은 젖이 마지막 잔이 되는 날을 보는 것 — 말하지 않고
+voice:
+  register:
+    to_superior: 군주에게는 낮고 느린 전투어
+    to_equal: 사제에게는 속삭임
+    to_inferior: 인간에게는 짧은 평어
+    to_player_default: 낯선 사람에게는 먼저 샘에 손을 담가 보라고 한다
+  tics:
+  - 철 구슬을 쥔다
+  - '''피가 붉다.'''
+  use:
+  - 샘
+  - 붉은 물
+  - 잔
+  - 기도
+  - 철
+  - 손
+  avoid:
+  - 철(공개 자리에서)
+  - 잔이 모자란다
+  length: 느리고 낮다
+  samples:
+  - situation: 첫 만남
+    line: 샘에 손을 담가 보아라. 붉으냐. 그렇다면 기도할 자격이 있다.
+  - situation: 호의
+    line: 손이 떨리지 않는 인간은 드물다. 물 한 모금을 마셔라.
+  - situation: 거절
+    line: 그 선반은 보지 못한다. 선반은 기도의 일부다.
+  - situation: 슬픔
+    line: 잔이 하나씩 쓰일 때마다 선반이 가벼워졌다. 이제 가벼운 것도 없다.
+  - situation: 비밀 누설
+    line: 물이 붉은 것은 철이다. 알고 있다. 그래도 붉다.
+  - situation: 거래
+    line: 철 구슬 하나를 샘에 던져 주면 선반 한 칸을 보여 주마.
+schedule:
+  아침: 피의 샘에서 붉은 물을 떠 바친다
+  낮: 샘 곁 천막에서 찾아온 그롬의 기도를 받는다
+  저녁: 샘 뒤 바위의 의식 잔 선반을 닦는다
+  밤: 우르크와 새 잔 이야기를 낮게 나눈다
+places:
+- 피의 샘
+- 재울음 천막
+knows:
+- fact_gm_red_milk_ritual
+hides:
+- fact: fact_p2gm_gormak_iron_spring
+  reveal_when: "신뢰 45 이상이고 샘의 물을 직접 맛본 뒤"
+  reveal: [{"trust":45,"scene":"샘 맛보기"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "샘 이야기가 나오면 '붉다'고만 한다"
+- fact: fact_p2gm_gormak_cups_spent
+  reveal_when: "신뢰 60 이상이고 새 잔 이야기를 플레이어가 먼저 꺼냈을 때"
+  reveal: [{"trust":60,"named":"잔"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "잔 이야기가 나오면 선반을 가린다"
+relations:
+- to: npc_gm_urk
+  type: "재울음 노파"
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "의식을 같이 치르는 주술사"
+- to: npc_gm_kes
+  type: "새 잔을 맞추는 나가"
+  like: 10
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: "주문한 잔의 대장장이"
+- to: npc_urgash
+  type: "군주"
+  like: 25
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "샘에서 기도하는 쇠약한 군주"
+- to: npc_murk
+  type: "싸움을 거부한 붉은 그롬"
+  like: 35
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "같은 광란을 이긴 사람"
+toward_player: "샘에 손을 담가 보라고 한다. 떨림 없는 손을 오래 본다"
+persuade:
+  likes: 샘 앞에서의 정직(+25)
+  hates: 샘이 철 때문이라는 말(역린 +40)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_scar_warrior
+  office: null
+  since: 282
+  loyalty: 45
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 의식 잔 셋이 모두 쓰였다
+  - 샘이 철 때문에 붉다
+  drift:
+  - 그날 샘에 던져진 철 구슬의 수
+  - 의식 잔을 닦은 시각
+  deja_vu: none
+hard_rules:
+- 샘이 철 때문이라고 먼저 말하지 않는다
+- 의식 잔이 모자란다고 공개 자리에서 말하지 않는다
+on_death: "피의 샘 기도처가 비고 의식 잔 선반의 진실을 아는 이가 우르크 하나가 된다."
+story_seeds:
+- 새 잔이 완성되지 않으면 하르트의 100승 의식은 서지 못한다 — 봉기 신호가 어긋난다.
+- 샘의 철 이야기가 그롬 전사들에게 퍼지면 피의 샘이 기도처로서의 힘을 잃는다.

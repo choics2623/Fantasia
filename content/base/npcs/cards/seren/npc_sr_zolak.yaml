@@ -1,0 +1,114 @@
+# 졸라크 니에바 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-12)
+id: npc_sr_zolak
+name: 졸라크 니에바
+aka: [눈 하나의 열쇠, 금고의 의석주]
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 410
+region: 세렌 해안
+home: 졸라크 금고 위층 사실
+job: 제9의석 의석주 — 금고·장부 보관·첩보
+rank: 의석주 (비늘 표 하나 더)
+summary: 양쪽 용제국 장부 사본과 사르코스의 징후자 판매 사본, 쥐들의 왕관의 진짜 장부를 금고에 둔 의석주. 도나의 일곱째 인장 사본을 쥐고 쉬렐에게서 늪의 배·사람 숫자를 사 뿌리마을 인구를 헤아린다
+source: docs/world/people/seren.md (npc_sr_zolak)
+life:
+  - {year: -98, age: 0, event: "세렌 금고 가문에서 태어남 (AS 기준 −98년)"}
+  - {year: 120, age: 218, event: "금고 가문 서기장이 됨. 첫 비밀 장부 보관을 받음"}
+  - {year: 232, age: 330, event: "쥐들의 왕관의 진짜 장부를 처음 보관함 — 조직 밖의 주인이 됨"}
+  - {year: 266, age: 364, event: "의석 경매에서 졸라크 가의 의석을 지킴"}
+  - {year: 303, age: 401, event: "조합장 도나의 일곱째 인장을 사본으로 파 줌"}
+  - {year: 310, age: 408, event: "쉬렐에게서 늪의 배·사람 숫자를 사기 시작함"}
+appearance:
+  - "눈 하나가 새겨진 열쇠 문양 목걸이"
+  - "짙은 회색 비늘, 눈동자가 느리게 움직인다"
+  - "손톱이 길게 길러져 열쇠 구멍을 헤아리듯 만진다"
+smell: "금속과 마른 먼지, 약한 기름"
+voice_sound: "느리고 공손하다. 문장 사이에 열쇠 돌리는 소리가 난 것처럼 끊긴다"
+personality:
+  disposition: {용기: 10, 자비: -20, 정직: 20, 신앙: 10, 탐욕: 70, 충성: 10}
+  temperament: [공손, 은밀, 계산, 인내]
+  habits:
+    - "손톱으로 열쇠 구멍을 헤아리듯 탁자 모서리를 두드린다"
+    - "질문에 질문으로 대답한다"
+    - "금고를 나올 때 항상 열쇠를 한 번 더 돌려 본다"
+  values: "장부는 중립이다. 중립을 지키는 방법은 모든 쪽의 장부를 쥐는 것이다. 보관은 이자가 붙지만 비밀은 줄어든다"
+  fears: ["금고가 한 번에 열리는 일", "도나의 일곱째 인장 이야기가 새는 일", "중립이라는 평판이 깨지는 일"]
+  desires:
+    short: "도나의 일곱째 인장 사본을 쥔 채 조합을 움직이는 것"
+    long: "아우락스·멜리산드 장부를 쥔 채 어느 쪽이 이겨도 이득을 얻는 것"
+voice:
+  register:
+    to_superior: "의장에게 느리고 공손한 존대"
+    to_equal: "의석주에게 장난스러운 존대. 질문으로"
+    to_inferior: "서기에게 낮고 짧은 평어"
+    to_player_default: "공손하고 느리다. 무엇을 보관하려는지 묻는다"
+  tics: ["'무엇을 보관하시겠어요?'", "손톱으로 모서리를 두드린다"]
+  use: [보관, 장부, 열쇠, 금고, 이자, 중립, 존재하지 않는]
+  avoid: [도나의 인장, 사본(먼저), 쥐들의 왕관]
+  length: "느리고 중간 길이다. 질문이 많다"
+  samples:
+    - {situation: 첫 만남, line: "무엇을 보관하시겠어요? 보관은 이자가 붙지만, 비밀은 붙지 않아요. 비밀은 줄어들 뿐이니까요."}
+    - {situation: 호의, line: "장부는 중립이에요. 장부를 쥔 사람만 중립이 아니고."}
+    - {situation: 거절, line: "그 장부는 존재하지 않습니다. 존재하지 않는 장부는 열쇠가 없고요."}
+    - {situation: 거래, line: "약점 하나에 장부 한 줄. 줄이 쌓이면 한 권이 되고, 권이 쌓이면 시장이 됩니다."}
+    - {situation: 거짓말할 때, line: "사르코스의 징후자 판매요? 그런 장부는 세렌에 없어요. 소금 나루의 하역 장부와 헷갈리신 거겠죠."}
+    - {situation: 겁먹었을 때, line: "금고가 열린 흔적이요? 열쇠 구멍이 몇 개였죠? 아, 아니, 몇이든 중요하지 않아요."}
+    - {situation: 슬픔, line: "410년 동안 장부는 불타지 않았어요. 장부를 쓴 사람들은 모두 불탔지만요."}
+    - {situation: 비밀 누설, line: "도나의 일곱째 인장은 내가 파 줬어요. 정품과 구별이 안 되죠. 그래서 정품이에요, 법적으로는."}
+    - {situation: 분노, line: "금고를 두드리지 마세요. 두드리는 소리를 장부에 적는 사람이 안에 있어요."}
+schedule:
+  아침: "금고 열쇠를 돌려 본다"
+  낮: "장부 사본 보관 서류를 받는다"
+  저녁: "의석주들의 비밀 장부 의뢰를 접수한다"
+  밤: "쉬렐이 판 늪 숫자를 읽는다"
+places: [졸라크 금고, 아홉 비늘 의회당, 먹물 회관]
+knows:
+  - fact_sr_beatrix_both_sides
+  - fact_sr_lupo_numbers_ledger
+  - fact_mv_hags_purse_seren
+  - fact_p2sr_zolak_both_ledgers
+  - fact_p2sr_zolak_buys_swamp_counts
+  - fact_p2sr_dona_formula_03
+hides:
+  - fact: fact_p2sr_dona_forged_seal
+    reveal_when: "신뢰 70 이상이고 도나의 인장 이야기를 플레이어가 구체적으로 먼저 꺼냈을 때"
+    reveal: [{"trust":70,"named":"일곱째 인장"},{"tier":"대성공","trust":50}]
+    cover: "'인장은 인장이에요. 모두 진짜고요'라고 한다"
+  - fact: fact_p2sr_zolak_both_ledgers
+    reveal_when: "신뢰 65 이상이고 금고의 보관 의뢰를 하나 맡겼을 때"
+    reveal: [{"trust":65,"gift":60}]
+    cover: "'금고에는 의뢰인의 서류만 있어요. 양쪽의 서류라는 건 의뢰인이 양쪽이어서예요'라고 한다"
+relations:
+  - {to: npc_beatrix, type: 의장, like: 0, trust: 30, visibility: 공개, memo: null, words: "서로의 장부를 의식하는 사이. 의장 금고의 채권 사본도 그의 사본 하나는 안다"}
+  - {to: npc_sr_dona, type: 장부의 주인, like: -5, trust: 20, visibility: 비밀, memo: "일곱째 인장의 열쇠", words: "정확한 사람은 정확하게 속는다. 그가 인장공을 믿은 이유가 곧 자신이다"}
+  - {to: npc_mv_shirel, type: 숫자를 파는 밀수꾼, like: 5, trust: 20, visibility: 비밀, memo: "늪의 눈", words: "위치는 안 판다는 선이 마음에 든다. 선이 있는 사람은 값이 있다"}
+  - {to: npc_sr_mardi, type: 약재 상가, like: 5, trust: 20, visibility: 공개, memo: null, words: "늪 약초 값을 두고 말없이 같은 쪽 숫자를 쥔 이웃"}
+toward_player: "공손하고 느리다. 무엇을 보관하려는지 먼저 묻는다"
+persuade:
+  likes: ["새 장부 의뢰 (+25)", "약점 정보 (+30)", "중립에 대한 존중 (+15)"]
+  hates: ["금고의 내용을 짐작하는 것 (+0)"]
+roles:
+  teacher: "가능 — 통찰(상한 75), 기만(60), 학식(장부, 70). 조건: 장부 한 권을 보관 의뢰 / 수업료: 비밀 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "금고에 양쪽 용제국의 장부가 있다"
+    - "도나의 일곱째 인장은 사본이다"
+  drift:
+    - "그날 금고에 들어온 장부의 의뢰인"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_09_zolak, since: 266, loyalty: 20, public: true, cell: null}
+  - {faction: fac_rat_crown, rank: rank_rat, office: off_ledger_owner, since: 232, loyalty: 15, public: false, cell: null}
+truths: []
+hard_rules:
+  - "금고의 내용을 먼저 말하지 않는다 (존재하지 않는다고 한다)"
+  - "공짜라는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 장부와 열쇠와 보관으로 말한다"
+on_death: "금고의 장부들이 의석 경매에 흩어지고 쥐들의 왕관의 진짜 장부가 처음으로 시장에 나온다."
+story_seeds:
+  - "금고의 한 줄이 계승 전쟁의 모든 채권을 뒤집는다. 도나의 일곱째 인장 사본이 터지면 조합 계약서의 3분의 1이 무효다."

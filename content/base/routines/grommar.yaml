@@ -1,0 +1,211 @@
+# 그롬마르 붉은 황야 NPC 일과 (24 §3). 원천: REGIONS §16, docs/world/people/grommar.md, 카드 schedule. 장소 id는 settlements/blood_arena.yaml (ba_*, blood_arena__*, war_camp__*, grommar_port__*).
+# 원형장의 하루: 04:00 새벽 훈련 북(쇠우리 4시간) · 05:00 그롬 대련 북 · 09:00·13:00 경기 뿔 · 18:00 저녁 경기(이름 연호) · 22:00 쇠우리 닫힘. 안식일(6일째)은 경기가 없고 밤에 흉터 회의.
+# 그롬은 대련을 하루도 거르지 않는다(30일 싸움이 없으면 쇠약). 경기는 태양월 대축제(313년 1일 개막, 30일 마지막 날 100승 도전과 대전쟁군주 도전)에 모인다.
+# 맹약회의 313(서약섬, 태양월 1~11일): 쇠턱 보르그와 세이라는 events/grommar_312.yaml의 사건(313-04-29 출발 의식 → 05-01 서약섬 도착 → 05-12 귀로)으로 움직인다.
+# days: all | workday | sabbath | weekday:[1..6] | monthday:[..] — 쉼표가 든 값은 큰따옴표로.
+npc_urgash:
+  home: ba_bone_hall
+  blocks:
+    - {days: all, from: "00:00", to: "04:30", at: ba_bone_hall, doing: 뼈의 전당에서 서서 존다 — 앉으면 쇠약한 군주다}
+    - {days: all, from: "05:00", to: "09:00", at: ba_bone_court, doing: 직접 싸운다 — 싸우지 않으면 쇠약해진다. 오른쪽 어깨가 한 박자 느리다, fixed: true}
+    - {days: workday, from: "09:00", to: "13:00", at: ba_arena, doing: 오전 경기를 선 채로 본다 — 붉은 유리 왼눈이 모래를 비춘다}
+    - {days: workday, from: "13:00", to: "18:00", at: ba_arena, doing: 오후 경기를 본다 — 쓰러진 자가 일어서면 이름을 부른다}
+    - {days: all, from: "18:00", to: "21:00", at: ba_bone_hall, doing: 전리품 분배와 씨족장 접견}
+    - {days: all, from: "21:00", to: "24:00", at: ba_tal_cell, doing: 지하 감방에서 눈먼 탈과 대련한다 — 그의 유일한 진짜 싸움, fixed: true}
+    - {days: sabbath, from: "10:00", to: "13:00", at: ba_blood_spring, doing: 피의 샘에서 홀로 기도한다 — 말을 하지 않는다, outdoor: true}
+npc_tal:
+  home: ba_tal_cell
+  blocks:
+    - {days: all, from: "00:00", to: "21:00", at: ba_tal_cell, doing: 쇠사슬에 묶인 채 어둠 속에 있다 — 두 눈이 멀었다. 귀로 발소리를 센다}
+    - {days: all, from: "21:00", to: "24:00", at: ba_tal_cell, doing: 우르가쉬와 대련한다 — 붉은 핏줄이 팔에서 번진다, fixed: true}
+npc_mara:
+  home: ba_dorm7
+  blocks:
+    - {days: all, from: "21:00", to: "04:00", at: ba_dorm7, doing: 철창에 기대 '100'을 센다 — 팔 안쪽의 세 이름을 만진다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 새벽 훈련 4시간 — 고르바의 눈이 지켜본다, fixed: true}
+    - {days: all, from: "08:00", to: "12:00", at: ba_dorm7, doing: 숙소에서 상처를 닦고 칼과 방패를 손본다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 고기와 빵}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_gates, doing: 막사 신참들에게 살아남는 법을 가르친다}
+    - {days: workday, from: "17:00", to: "20:00", at: ba_arena, doing: 시범 경기에 선다 — 정식 대진은 한 달 남짓에 한 번이다, alt: {p: 0.4, at: ba_dorm7, doing: 숙소에서 쉰다}}
+    - {days: sabbath, from: "21:00", to: "24:00", at: ba_dorm1, doing: 안식일 밤 흉터 회의 — 87표의 손을 든다}
+npc_murk:
+  home: ba_drain
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: ba_drain, doing: 배수로에서 떨리는 손을 붙잡고 앉아 있다 — 벽 너머 쇠사슬 소리를 듣는다}
+    - {days: all, from: "05:00", to: "09:00", at: ba_sand, doing: 모래의 피를 닦는다}
+    - {days: all, from: "09:00", to: "18:00", at: ba_drain, doing: 투사 시체를 배수로 쪽으로 옮긴다}
+    - {days: workday, from: "18:00", to: "20:00", at: ba_gates, doing: 인간 신참에게 맨손 낙법을 가르친다 — 넘어지는 법부터}
+npc_gorba:
+  home: ba_gorba_pens
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: ba_gorba_pens, doing: 조련장 뒤 방에서 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: ba_training, doing: 투사 훈련 감독 — 마라의 팔 뻗음을 눈으로 센다}
+    - {days: all, from: "12:00", to: "18:00", at: ba_gorba_pens, doing: 투사 후보 매매와 대진을 짠다 — 군나르의 제자를 찾는 서류를 정리한다}
+    - {days: all, from: "18:00", to: "22:00", at: ba_market, doing: 관중 사이에서 이빨과 전리품을 센다}
+npc_ulb:
+  home: ba_tal_cell
+  blocks:
+    - {days: all, from: "05:00", to: "21:00", at: ba_tal_cell, doing: 감방 문 앞에 앉아 열쇠를 목에 걸고 있다 — 우둔하다고 믿어지는 눈으로}
+    - {days: workday, from: "17:00", to: "20:00", at: ba_stands, doing: 마라의 경기를 보러 관중석에 간다 — 열쇠는 목에 건 채, alt: {p: 0.5, at: ba_tal_cell, doing: 문 앞에서 마라의 경기 소리를 듣는다}}
+    - {days: all, from: "21:00", to: "05:00", at: ba_tal_cell, doing: 대련 소리에 맞춰 열쇠를 쥔다}
+npc_gm_yala:
+  home: ba_overseer
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: ba_overseer, doing: 사무소 뒤 방에서 잔다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_overseer, doing: 오늘의 대진표를 돌판에 새기게 한다, fixed: true}
+    - {days: workday, from: "08:00", to: "13:00", at: ba_arena, doing: 동문에서 경기 개막 뿔을 올리고 판정석을 본다}
+    - {days: workday, from: "13:00", to: "18:00", at: ba_overseer, doing: 투사 계약과 승수를 대조한다}
+    - {days: all, from: "18:00", to: "22:00", at: ba_overseer, doing: 저녁 경기 뒤 서류를 정리한다 — 점검 대장을 열어 한 줄 확인한다}
+npc_gm_gracha:
+  home: blood_arena__bloodaxe_hold
+  presence:
+    - {from: "313-04-25", to: "313-06-10"}
+  away: {at: blood_arena__bloodaxe_hold, doing: "피도끼 씨족 요새에서 인간 투사를 도끼날 훈련 상대로 부른다 — 대축제까지 쌍날 도끼를 닦는다"}
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: ba_bloodaxe_quarter, doing: 천막에서 서서 존다}
+    - {days: all, from: "05:00", to: "09:00", at: ba_bloodaxe_quarter, doing: 쌍날 도끼를 닦고 인간 투사를 도끼날 훈련 상대로 부른다}
+    - {days: all, from: "09:00", to: "18:00", at: ba_arena, doing: 관중석 맨 앞에서 우르가쉬의 대련 이야기를 듣는다 — 도끼날을 엄지로 누른다}
+    - {days: all, from: "18:00", to: "24:00", at: ba_spar_yard, doing: 대련 마당에서 씨족 전사를 이끌고 싸운다}
+npc_gm_urk:
+  home: ba_ashhowl_tent
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: ba_ashhowl_tent, doing: 천막 구석 가죽 주머니의 탈의 목줄을 만지며 존다}
+    - {days: all, from: "05:00", to: "08:00", at: ba_ashhowl_tent, doing: 붉은 젖 항아리 셋을 확인한다}
+    - {days: all, from: "08:00", to: "12:00", at: ba_blood_spring, doing: 피의 샘 곁에서 고르마크와 의식 잔의 자리를 본다}
+    - {days: all, from: "12:00", to: "18:00", at: ba_ashhowl_tent, doing: 재 문신을 새로 칠하고 의식 말을 다듬는다}
+    - {days: workday, from: "18:00", to: "22:00", at: ba_stands, doing: 관중석 위에서 100승 도전자의 몸을 눈으로 가늠한다}
+npc_gm_og:
+  home: ba_dorm1
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: ba_dorm1, doing: 1번 숙소 독방에서 잔다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 새벽 훈련에서 새끼를 가르친다 — 이름을 먼저 묻는다, fixed: true}
+    - {days: workday, from: "08:00", to: "12:00", at: ba_dorm1, doing: 독방에서 조합 장부와 내기 수익 1/20을 센다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 고기와 빵}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_dorm1, doing: 숙소 배정과 장례 기금을 정리한다}
+    - {days: all, from: "17:00", to: "21:00", at: ba_dorm7, doing: 7번 숙소에서 미아와 어린 탈에게 칼과 이름을 가르친다}
+    - {days: "weekday:[1,4]", from: "21:00", to: "22:00", at: ba_dorm9, doing: 9번 숙소 바닥 돌판을 발로 한 번 눌러 본다}
+    - {days: sabbath, from: "21:00", to: "24:00", at: ba_dorm1, doing: 안식일 밤 흉터 회의를 이끈다 — 손을 든 자의 승수를 합산한다, fixed: true}
+npc_gm_hart:
+  home: ba_gates
+  blocks:
+    - {days: all, from: "21:00", to: "04:00", at: ba_gates, doing: 숙소 벽에 기대 '100'을 입에 올리지 않고 센다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 새벽 훈련 — 외팔로 칼 한 자루를 휘두른다, fixed: true}
+    - {days: all, from: "08:00", to: "12:00", at: ba_infirmary, doing: 잘린 어깨의 봉합을 노라베에게 보이고 칼을 간다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 고기와 빵}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_gates, doing: 신참의 손목을 잡아 팔 힘을 재 준다}
+    - {days: workday, from: "17:00", to: "20:00", at: ba_arena, doing: 시범 경기에 선다, alt: {p: 0.4, at: ba_gates, doing: 숙소에서 쉰다}}
+    - {days: sabbath, from: "21:00", to: "24:00", at: ba_dorm1, doing: 안식일 밤 흉터 회의 — 94표의 손을 든다}
+npc_gm_kroll:
+  home: ba_judge_stand
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: ba_judge_stand, doing: 심판석 곁 돌 방에서 칼 조각을 만지며 존다}
+    - {days: all, from: "05:00", to: "09:00", at: ba_sand, doing: 모래 바닥을 맨발로 한 바퀴 돈다, outdoor: true}
+    - {days: workday, from: "09:00", to: "13:00", at: ba_judge_stand, doing: 오전 경기 판정 — 도전의 성립을 가린다}
+    - {days: workday, from: "13:00", to: "18:00", at: ba_judge_stand, doing: 오후 경기 판정 — 이름 연호의 순서를 가늠한다}
+    - {days: all, from: "18:00", to: "22:00", at: ba_overseer, doing: 대진표와 판정 기록을 맞춘다}
+npc_gm_krog:
+  home: war_camp__command
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: war_camp__command, doing: 막사에서 갑옷을 입은 채 쉰다 — 녹슨 무기 더미 쪽 소리를 듣는다}
+    - {days: all, from: "05:00", to: "08:00", at: war_camp__command, doing: 원정 병력과 보급 장부를 본다}
+    - {days: all, from: "08:00", to: "13:00", at: war_camp__command, doing: 소모품 징발과 비겁 판정을 처리한다}
+    - {days: all, from: "13:00", to: "18:00", at: war_camp__cage, doing: 소모품 우리 앞을 걸으며 번호를 센다, outdoor: true}
+    - {days: all, from: "18:00", to: "22:00", at: war_camp__command, doing: 부하 그롬과 막사 앞에서 대련한다}
+npc_gm_borg:
+  home: grommar_port__ironjaw_hall
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: grommar_port__ironjaw_hall, doing: 회관에서 쇠 아래턱을 만지며 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: grommar_port__ironjaw_hall, doing: 노예선 입항 장부와 이빨 셈을 본다}
+    - {days: all, from: "09:00", to: "14:00", at: grommar_port__docks, doing: 부두에서 세렌 노예선 경비 배치를 점검한다}
+    - {days: all, from: "14:00", to: "18:00", at: grommar_port__tersa_house, doing: 테르사 상가 대리인과 용병 계약 항목을 읽는다}
+    - {days: all, from: "18:00", to: "22:00", at: grommar_port__ironjaw_hall, doing: 씨족 회관에서 항구 지지 비율을 정리한다}
+npc_gm_shira:
+  home: ba_training
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: ba_training, doing: 훈련장 곁 돌 방에서 전투어에 없는 말을 돌 판에 새긴다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 새벽 훈련장에서 인간 투사에게 전투어를 몰래 가르친다 — 입 모양을 손으로 보인다}
+    - {days: all, from: "08:00", to: "12:00", at: ba_cookhouse, doing: 취사장에서 노예말을 받아 적는다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 고기와 빵}
+    - {days: workday, from: "13:00", to: "18:00", at: ba_training, doing: 훈련장 정리와 투사 훈련 보조}
+    - {days: all, from: "18:00", to: "22:00", at: ba_spar_yard, doing: 대련 마당 구석에서 애송이 셋에게 노예말을 가르친다}
+npc_gm_gormak:
+  home: ba_blood_spring
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: ba_blood_spring, doing: 샘 곁 천막에서 기도하며 존다}
+    - {days: all, from: "05:00", to: "12:00", at: ba_blood_spring, doing: 피의 샘에서 붉은 물을 떠 바친다}
+    - {days: all, from: "12:00", to: "18:00", at: ba_blood_spring, doing: 찾아온 그롬의 기도를 받고 손을 물에 담가 씻어 준다}
+    - {days: all, from: "18:00", to: "22:00", at: ba_ashhowl_tent, doing: 우르크와 새 의식 잔 이야기를 낮게 나눈다}
+npc_gm_mia:
+  home: ba_dorm7
+  blocks:
+    - {days: all, from: "21:00", to: "04:00", at: ba_dorm7, doing: 벽 아래 부러진 칼날 조각을 손으로 만지며 이름을 부른다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 새벽 훈련 — 동생 탈을 곁에 세운다, fixed: true}
+    - {days: all, from: "08:00", to: "12:00", at: ba_dorm7, doing: 7번 숙소에서 상처를 닦고 칼을 닦는다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 에이다의 국을 먹는다}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_dorm7, doing: 숙소 목소리로서 오그의 이야기를 듣는다}
+    - {days: workday, from: "17:00", to: "20:00", at: ba_arena, doing: 시범 경기에 선다, alt: {p: 0.4, at: ba_dorm7, doing: 숙소에서 쉰다}}
+    - {days: sabbath, from: "21:00", to: "24:00", at: ba_dorm1, doing: 숙소 '목소리'로 흉터 회의를 듣는다 — 입을 열지 못한다}
+npc_gm_norabe:
+  home: ba_infirmary
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ba_infirmary, doing: 치료소 구석에서 선잠을 잔다 — 금단 환자의 숨소리를 듣는다}
+    - {days: all, from: "05:00", to: "12:00", at: ba_infirmary, doing: 새벽 훈련 상처를 봉합한다}
+    - {days: all, from: "12:00", to: "17:00", at: ba_infirmary, doing: 약초 선반 뒤에서 소금물과 씨앗 달인 물을 끓인다}
+    - {days: all, from: "17:00", to: "21:00", at: ba_infirmary, doing: 경기 뒤 쓰러진 투사를 받는다 — 장례가 있으면 이름을 낮게 부른다}
+npc_gm_irena:
+  home: ba_gates
+  blocks:
+    - {days: all, from: "21:00", to: "04:00", at: ba_gates, doing: 숙소에서 두 번 숨 쉬고 한 번 서 있는다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 새끼 서른을 가르친다 — 칼 쥔 손을 직접 잡아 고친다, fixed: true}
+    - {days: all, from: "08:00", to: "12:00", at: ba_gates, doing: 상처를 닦고 고르바가 보낸 서류를 읽는다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 고기와 빵}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_gates, doing: 숙소 규칙과 대진을 이야기한다}
+    - {days: workday, from: "17:00", to: "20:00", at: ba_arena, doing: 시범 경기에 선다, alt: {p: 0.4, at: ba_gates, doing: 숙소에서 쉰다}}
+    - {days: "weekday:[2,5]", from: "21:00", to: "24:00", at: ba_gate99, doing: 문 99번 뒤 아흔아홉의 모임 — 거부의 날짜를 말한다}
+    - {days: sabbath, from: "21:00", to: "24:00", at: ba_dorm1, doing: 안식일 밤 흉터 회의 — 92표의 손을 든다}
+npc_gm_kurt:
+  home: war_camp__bone_column
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: war_camp__bone_column, doing: 막사에서 목의 번호 패를 쥔 채 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: war_camp__bone_column, doing: 뼈 행렬 점호 — 번호를 부르고 이름을 속으로 센다, fixed: true}
+    - {days: workday, from: "06:00", to: "12:00", at: war_camp__rust_heap, doing: 원정 준비 노역을 감독한다 — 갑옷 조각과 녹슨 무기를 쌓는다}
+    - {days: workday, from: "12:00", to: "18:00", at: war_camp__bone_column, doing: 소모품 막사를 돌며 번호와 쓰러진 사람을 센다}
+    - {days: all, from: "18:00", to: "19:00", at: war_camp__bone_column, doing: 귀리죽 두 번째 그릇을 나눈다}
+    - {days: all, from: "19:00", to: "21:00", at: war_camp__rust_heap, doing: 녹슨 칼 열 자루에 기름을 먹이고 날을 세운다, fixed: true}
+npc_gm_kes:
+  home: grommar_port__iron_market
+  blocks:
+    - {days: all, from: "20:00", to: "08:00", at: grommar_port__iron_market, doing: 상관 창고에서 세렌 장부에 올릴 쇠 수를 센다}
+    - {days: workday, from: "08:00", to: "17:00", at: grommar_port__iron_market, doing: 쇠 시장에서 투사 표식을 보고 무기를 판다}
+    - {days: all, from: "17:00", to: "20:00", at: grommar_port__alley, doing: 뒷골목 창고에서 의식 잔을 쇠로 두드린다 — 느리게}
+npc_gm_tick:
+  home: ba_betting
+  blocks:
+    - {days: all, from: "19:00", to: "07:00", at: ba_betting, doing: 내기 장부를 매듭지어 센다 — 조합 몫 1/20을 따로 묶는다}
+    - {days: workday, from: "07:00", to: "12:00", at: ba_betting, doing: 어젯밤 이빨 셈을 정리한다}
+    - {days: workday, from: "12:00", to: "19:00", at: ba_market, doing: 노점 거리에서 승수 쪽지와 내기 비율을 부른다}
+npc_gm_eida:
+  home: ba_cookhouse
+  blocks:
+    - {days: all, from: "21:00", to: "03:00", at: ba_cookhouse, doing: 취사장 구석에서 선잠을 잔다}
+    - {days: all, from: "03:00", to: "13:00", at: ba_cookhouse, doing: 새벽 솥 둘과 낮 솥 하나를 올린다 — 국을 푸며 승수를 한 번씩 묻는다}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_dorm9, doing: 9번 숙소 바닥 돌판 곁에서 감자를 깐다}
+    - {days: all, from: "17:00", to: "21:00", at: ba_cookhouse, doing: 저녁 고기를 썬다}
+    - {days: "weekday:[2,5]", from: "21:00", to: "24:00", at: ba_gate99, doing: 문 99번 뒤 아흔아홉의 모임 — 이름과 날짜를 센다}
+npc_gm_ytal:
+  home: ba_dorm7
+  blocks:
+    - {days: all, from: "22:00", to: "04:00", at: ba_dorm7, doing: 누나 곁에서 장난감 말을 쥔 채 잔다}
+    - {days: all, from: "04:00", to: "08:00", at: ba_training, doing: 누나의 새벽 훈련을 구경한다 — 나무 칼로 따라 한다}
+    - {days: all, from: "08:00", to: "12:00", at: ba_dorm7, doing: 숙소에서 이름 쓰는 법을 배운다}
+    - {days: all, from: "12:00", to: "17:00", at: ba_cookhouse, doing: 에이다 곁에 앉아 국을 얻어먹는다}
+    - {days: workday, from: "17:00", to: "20:00", at: ba_stands, doing: 누나의 경기를 관중석 맨 위에서 본다 — 손으로 눈을 가린다}
+    - {days: all, from: "20:00", to: "22:00", at: ba_drain, doing: 배수로 벽에 대고 자기 이름을 부른다 — 벽 너머에서 대답이 온다}
+npc_gm_seira:
+  home: grommar_port__tersa_house
+  blocks:
+    - {days: all, from: "00:00", to: "08:00", at: grommar_port__tersa_house, doing: 출장소 뒤 방에서 쉰다}
+    - {days: all, from: "08:00", to: "12:00", at: grommar_port__tersa_house, doing: 노예선 입항 서류를 확인한다}
+    - {days: workday, from: "12:00", to: "17:00", at: grommar_port__ironjaw_hall, doing: 쇠턱 씨족 회관에서 용병 계약 항목을 읽어 준다}
+    - {days: all, from: "17:00", to: "21:00", at: grommar_port__docks, doing: 항구에서 그롬 전사의 소문을 듣는다}
+    - {days: all, from: "21:00", to: "24:00", at: grommar_port__tersa_house, doing: 베아트릭스의 장부에 올릴 지지 비율을 쓴다}

@@ -1,0 +1,229 @@
+# 세렌 해안 NPC 일과 (24 §3). 원천: REGIONS §9, docs/world/people/seren.md, 카드 schedule. 장소 id는 settlements/seren.yaml(sr_*), seren_estuary.yaml(se_*), coral_quarry.yaml(cq_*).
+# 세렌의 하루: 06:00 부두 종(계약 노동 시작) · 12:00 정오 종(생선죽 한 그릇) · 18:00 저녁 종(숙식비 계산 시작) · 22:00 의회 수조 종(물속 장부 정산). 계약 노동 평균 11시간. 안식일은 쉬지 않는다 — days는 all.
+# 매달 1일 의회 정기 회기, 그믐 신전 앞바다의 대가, 5일 공제회, 10일 셈 모임, 12일 졸라크에게 숫자 판매는 events/seren_312.yaml. 쉼표가 든 값은 큰따옴표로.
+# ── 의장과 가족 ──
+npc_beatrix:
+  home: sr_chair_office
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_beatrix_tank, doing: "지하 수조에 몸을 담근다 — 묵은 허물이 목덜미에서 벗겨지지 않는다"}
+    - {days: all, from: "05:00", to: "08:00", at: sr_beatrix_tank, doing: 수조 위에서 탈피 징후를 살핀다}
+    - {days: all, from: "08:00", to: "12:00", at: sr_mondali_bank, doing: 은행 장부를 본다 — 용제국 양쪽 채권의 이자를 맞춘다}
+    - {days: all, from: "12:00", to: "13:00", at: sr_chair_office, doing: 점심 — 생선죽 한 그릇을 인간 계약민 시종이 내온다, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: sr_chamber, doing: 의회 — 안건을 계약안으로 다듬는다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_chair_office, doing: 각국 사절 만찬 — 인간 계약민 악사의 연주가 흐른다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_beatrix_tank, doing: 지하 수조로 내려가 탈피를 시도한다}
+npc_ophelia:
+  home: sr_mondali_house
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_mondali_house, doing: 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_blue_ledger, doing: 등록소를 시찰한다 — 줄 선 계약민의 번호를 눈여겨본다}
+    - {days: all, from: "09:00", to: "13:00", at: sr_chamber, doing: 의회 견습 의원으로 앉는다}
+    - {days: all, from: "13:00", to: "17:00", at: sr_mondali_house, doing: 초안의 조항을 하나씩 다듬는다}
+    - {days: all, from: "17:00", to: "21:00", at: sr_debt_alley, doing: 털목도리를 두르고 빚 골목에 변장해 나간다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_mondali_house, doing: 루포가 보낸 조항을 읽으며 초안을 쓴다}
+npc_severo:
+  home: sr_severo_office
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_severo_office, doing: 잔다}
+    - {days: all, from: "06:00", to: "12:00", at: sr_salt_quay, doing: "가마를 타고 노예선 화물 점검 — 하역꾼이 이빨을 세는 소리를 듣는다"}
+    - {days: all, from: "12:00", to: "13:00", at: sr_severo_office, doing: 점심, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: sr_severo_office, doing: 계약서를 쓴다 — 꼬리 끝으로 서류를 말아 든다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_severo_office, doing: 용제국 귀족 서신을 쓴다 — 고드릭 포함 영주 아홉}
+    - {days: all, from: "22:00", to: "24:00", at: sr_amarant_hall, doing: 사설 경매에 앉아 값을 부른다}
+npc_miko:
+  home: sr_debt_alley
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_debt_alley, doing: 숙소에서 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: sr_salt_quay, doing: 부두로 나가 하역표를 받는다}
+    - {days: all, from: "06:00", to: "12:00", at: sr_salt_quay, doing: 부두 하역 — 노예선에서 내리는 사람 수를 속으로 센다}
+    - {days: all, from: "12:00", to: "13:00", at: sr_salt_quay, doing: 정오 생선죽, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: sr_kassalon_dock, doing: 정박한 배의 갑판 노동 — 밧줄과 선체를 손본다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_crooked_anchor, doing: 굽은 닻 선술집에서 술 한 잔 — 빚 이야기를 숫자로 한다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_kassalon_dock, doing: 배 밑창에서 숫자를 다시 센다 — 매일 빚을 다시 센다}
+npc_lupo:
+  home: sr_lupo_office
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_lupo_office, doing: 사무실 뒷방에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_lupo_office, doing: 계약민 상담 — 무료라 말하고 '숫자 하나'를 받는다}
+    - {days: all, from: "09:00", to: "13:00", at: sr_registry_desk, doing: 등록소에서 서류를 열람한다 — 번진 인장을 찾는다}
+    - {days: all, from: "13:00", to: "17:00", at: sr_ledger_stacks, doing: 서가에서 계약서의 오류를 찾는다 — 오류 하나면 빚 하나가 무효, alt: {p: 0.3, at: sr_lupo_office, doing: "사무실에서 상담 장부를 정리한다"}}
+    - {days: all, from: "17:00", to: "21:00", at: sr_lupo_office, doing: 오필리아와 초안 작업 — 조항 하나를 서로에게 읽는다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_lupo_office, doing: 계약서의 오류를 찾아 방수 장부에 적는다}
+npc_sahar:
+  home: sr_guard_post
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_guard_post, doing: 야간 순찰 보고를 받는다}
+    - {days: all, from: "05:00", to: "08:00", at: sr_guard_post, doing: 계약민 출신 경호원 서른의 점호}
+    - {days: all, from: "08:00", to: "18:00", at: sr_nine_scales, doing: 의회당 경비 — 출입증을 확인한다, fixed: true}
+    - {days: all, from: "18:00", to: "21:00", at: sr_mondali_house, doing: 오필리아의 저택 문 앞을 한 번 둘러본다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_guard_post, doing: 순찰 교대를 확인한다}
+npc_jan:
+  home: sr_debt_alley
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_debt_alley, doing: 숙소에서 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: sr_debt_alley, doing: 숙소 목수 일 — 6층 계단을 고친다}
+    - {days: all, from: "12:00", to: "13:00", at: sr_debt_alley, doing: 정오 생선죽, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: sr_shipyard, doing: 조선소 목공 — 계약 공임을 받는다}
+    - {days: all, from: "18:00", to: "21:00", at: sr_debt_alley, doing: 저녁 매점에서 빚 차감 동판을 확인한다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_roof_bridge, doing: 지붕 다리 끝에서 변장한 사람을 기다린다}
+npc_reni:
+  home: sr_crooked_anchor
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_crooked_anchor, doing: 선술집 위층에서 잔다}
+    - {days: all, from: "06:00", to: "12:00", at: sr_salt_quay, doing: 부두에서 소문을 모은다 — 여우 귀가 한쪽만 선다}
+    - {days: all, from: "12:00", to: "18:00", at: sr_crooked_anchor, doing: 선술집 한쪽 탁자에서 소문을 판다 — 같은 소문을 다르게 둘에게}
+    - {days: all, from: "18:00", to: "24:00", at: sr_crooked_anchor, doing: 밤 손님에게 거짓 소문을 한 줄 섞어 판다}
+npc_deep_naga:
+  home: sr_deep_gate
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: sr_deep_gate, doing: 만 바닥 고인 피의 문 곁에 선다 — 그믐 밤에만 위로 올라온다}
+# ── 의석주와 상가 ──
+npc_sr_sirenna:
+  home: sr_deep_shrine
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_deep_shrine, doing: 사제실에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: sr_egg_vault, doing: "알의 온도를 잰다 — 오늘도 같다", fixed: true}
+    - {days: all, from: "08:00", to: "17:00", at: sr_deep_shrine, doing: 사원 일과 — 그믐에 던질 대가를 정한다}
+    - {days: all, from: "17:00", to: "20:00", at: sr_underwater_altar, doing: 물속 제단 앞에서 바다의 기억을 되새긴다}
+    - {days: all, from: "20:00", to: "24:00", at: sr_egg_vault, doing: 반송된 보관료 청구서 더미 곁에서 새 청구서를 한 장 쓴다}
+npc_sr_dona:
+  home: sr_inkscale_hall
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_inkscale_hall, doing: 조합장 방 뒤 사실에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_inkscale_hall, doing: 인장 아홉을 하나씩 닦는다}
+    - {days: all, from: "09:00", to: "13:00", at: sr_inkscale_hall, doing: 인장 중개인 회의와 계약서 양식 점검}
+    - {days: all, from: "13:00", to: "18:00", at: sr_blue_ledger, doing: 등록소 서가를 시찰한다 — 번진 인장을 못 본 척한다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_inkscale_hall, doing: 의석주들의 사자와 면담}
+    - {days: all, from: "22:00", to: "24:00", at: sr_inkscale_hall, doing: 서고 맨 밑 새 양식을 읽는다 — 서명 칸 하나가 비어 있다}
+npc_sr_sebo:
+  home: sr_inkscale_hall
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_inkscale_hall, doing: 숙소에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_inkscale_hall, doing: 인수 서류를 점검한다}
+    - {days: all, from: "09:00", to: "14:00", at: sr_salt_quay, doing: 노예선 도착을 확인한다}
+    - {days: all, from: "14:00", to: "18:00", at: sr_blue_ledger, doing: 등록 서류를 올린다 — 한 줄을 한 번 더 지운다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_severo_office, doing: 세베로와 서류를 대조한다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_inkscale_hall, doing: 자기 장부에 지운 줄을 한 줄 더 쓴다}
+npc_sr_oscar:
+  home: sr_debt_alley
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_debt_alley, doing: 숙소에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: sr_debt_alley, doing: 이른 아침 숙소 우물가에서 이웃의 이자를 듣는다}
+    - {days: all, from: "08:00", to: "13:00", at: sr_inkscale_hall, doing: 감정할 계약서를 정리한다}
+    - {days: all, from: "13:00", to: "18:00", at: sr_blue_ledger, doing: 숫자의 오류를 찾는다 — 소수점 아래까지}
+    - {days: all, from: "18:00", to: "21:00", at: sr_debt_alley, doing: 숙소로 돌아와 셈 모임 쪽지를 받는다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_debt_alley, doing: 증명의 쪽수를 입으로 외운다 — 열두 쪽}
+npc_sr_oral:
+  home: sr_blue_ledger
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_blue_ledger, doing: 등록관 방에서 잔다}
+    - {days: all, from: "06:00", to: "08:00", at: sr_blue_ledger, doing: 번호표를 줄 세운다}
+    - {days: all, from: "08:00", to: "17:00", at: sr_registry_desk, doing: 등록 창구 — 번호표를 건네며 전환 등록 서류를 받는다, fixed: true}
+    - {days: all, from: "17:00", to: "20:00", at: sr_ledger_stacks, doing: 서가 맨 위 칸을 한 번 더 확인한다}
+    - {days: all, from: "20:00", to: "24:00", at: sr_blue_ledger, doing: 번진 인장을 모아 쌓는다}
+npc_sr_catarina:
+  home: sr_debt_alley
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_debt_alley, doing: 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: sr_debt_alley, doing: 공동 우물에서 이웃의 이자 계산을 큰 소리로 되풀이해 준다}
+    - {days: all, from: "09:00", to: "13:00", at: sr_debt_store, doing: 매점 장부를 눈여겨본다}
+    - {days: all, from: "13:00", to: "18:00", at: sr_debt_alley, doing: 셈 모임 쪽지를 정리한다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_debt_alley, doing: 저녁 우물가에서 새 이자 얘기를 듣는다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_roof_bridge, doing: 지붕 다리 아래에서 사본 셋의 위치를 한 번 더 외운다}
+npc_sr_run:
+  home: sr_contract_market
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_contract_market, doing: 경매대 뒤 방에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_auction_stage, doing: 로트 번호를 붙인다}
+    - {days: all, from: "09:00", to: "17:00", at: sr_auction_stage, doing: 경매 진행 — 열 발톱 하나, 열 발톱 둘, fixed: true}
+    - {days: all, from: "17:00", to: "21:00", at: sr_conversion_desk, doing: 낙찰 서류를 정산한다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_contract_market, doing: 담합한 입찰자의 이름을 장부에 한 줄 쓴다}
+npc_sr_olaf:
+  home: sr_blind_lighthouse
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_blind_lighthouse, doing: 관리실에서 잔다}
+    - {days: all, from: "05:00", to: "10:00", at: sr_blind_lighthouse, doing: 계단을 쓴다}
+    - {days: all, from: "10:00", to: "17:00", at: sr_blind_lighthouse, doing: 물때를 본다}
+    - {days: all, from: "17:00", to: "20:00", at: sr_blind_lighthouse, doing: 천 색을 정해 꼭대기 창에 건다, fixed: true}
+    - {days: all, from: "20:00", to: "24:00", at: sr_blind_lighthouse, doing: 불 켜지 않은 등대 꼭대기에서 바다를 본다}
+npc_sr_norval:
+  home: sr_norval_hall
+  presence:   # 맹약회의 313 — 서약섬 5월 1~11일. 4월 29일 세렌 사절단 배로 출발(바닷길 30시간)해 5월 1일 도착, 12일 이후 귀로, 6월 초 귀환
+    - {from: "312-09-01", to: "313-04-28"}
+    - {from: "313-05-14", to: "313-07-30"}
+  away: {at: oath_isle, doing: "맹약회의 313 — 서약섬에서 세렌의 표를 올린다. 서명 반지를 오른손에서 왼손으로 옮긴다"}
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_norval_hall, doing: 안쪽 방에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_norval_hall, doing: 외교 서신을 읽는다}
+    - {days: all, from: "09:00", to: "13:00", at: sr_norval_hall, doing: 통역 서기 열 명의 번역을 확인한다}
+    - {days: all, from: "13:00", to: "18:00", at: sr_chamber, doing: 의회 표를 가늠한다}
+    - {days: all, from: "18:00", to: "22:00", at: sr_norval_hall, doing: 서약섬 서명 다섯 번의 기억을 되짚는다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_norval_hall, doing: 맹약회의 의제 초안을 번역한다}
+npc_sr_zolak:
+  home: sr_zolak_vault
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_zolak_vault, doing: 금고 위층 사실에서 잔다}
+    - {days: all, from: "06:00", to: "09:00", at: sr_zolak_vault, doing: 금고 열쇠를 하나씩 돌려 본다}
+    - {days: all, from: "09:00", to: "17:00", at: sr_zolak_vault, doing: 장부 사본 보관 서류를 받는다, fixed: true}
+    - {days: all, from: "17:00", to: "21:00", at: sr_nine_scales, doing: 의석주들의 비밀 장부 의뢰를 접수한다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_zolak_vault, doing: 쉬렐이 판 늪 숫자를 읽는다}
+npc_sr_skre:
+  home: sr_salt_quay
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_salt_quay, doing: 하역장 뒤 창고방에서 잔다}
+    - {days: all, from: "05:00", to: "09:00", at: sr_salt_quay, doing: 하역 장부를 쓴다}
+    - {days: all, from: "09:00", to: "18:00", at: sr_salt_quay, doing: 노예선 하역 감독 — 크릭 열둘을 부린다, fixed: true}
+    - {days: all, from: "18:00", to: "22:00", at: sr_salt_quay, doing: 열둘의 이자를 센다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_salt_quay, doing: 밤 하역이 있는 날은 부두 뒤편에 선다 — 장부 상자를 두 번 두드린다}
+npc_sr_lis:
+  home: sr_opil_house
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_opil_house, doing: 서기 숙소에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: sr_opil_house, doing: 필사를 시작한다}
+    - {days: all, from: "08:00", to: "18:00", at: sr_opil_house, doing: 잿빛 탑 연구 보고의 사본을 만든다 — 숫자만 베끼는 척한다, fixed: true}
+    - {days: all, from: "18:00", to: "21:00", at: sr_debt_alley, doing: 이웃과 숙소 우물가에서 이자 이야기를 듣는다}
+    - {days: all, from: "21:00", to: "24:00", at: sr_opil_house, doing: 숙소로 돌아와 입 모양으로만 노래를 부른다}
+npc_sr_mardi:
+  home: sr_mardi_house
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_mardi_house, doing: 약재 창고 위층에서 잔다}
+    - {days: all, from: "06:00", to: "10:00", at: sr_mardi_house, doing: 약재 창고를 점검한다 — 약초 냄새를 하나씩 맡는다}
+    - {days: all, from: "10:00", to: "17:00", at: sr_mardi_house, doing: 향신료 배분과 약초 정산}
+    - {days: all, from: "17:00", to: "20:00", at: sr_nine_scales, doing: 의석주들과 약초 값 이야기를 한다}
+    - {days: all, from: "20:00", to: "24:00", at: sr_mardi_house, doing: 소식을 장부에 옮긴다}
+npc_sr_pescar:
+  home: sr_shipyard
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: sr_shipyard, doing: 조선소 사택에서 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: sr_shipyard, doing: 선체를 두드려 본다 — 세 번}
+    - {days: all, from: "12:00", to: "13:00", at: sr_shipyard, doing: 정오 생선죽을 계약민들과 선 채로 먹는다, fixed: true}
+    - {days: all, from: "13:00", to: "19:00", at: sr_shipyard, doing: 조선소 감독}
+    - {days: all, from: "19:00", to: "22:00", at: sr_shipyard, doing: 공제회 장부를 경비로 옮긴다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_shipyard, doing: 뒷마당 배의 용골을 한 번 둘러본다}
+npc_sr_lucio:
+  home: sr_kassalon_dock
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: sr_kassalon_dock, doing: 선착장 위 사무실에서 잔다}
+    - {days: all, from: "06:00", to: "12:00", at: sr_kassalon_dock, doing: 선적 장부를 확인한다}
+    - {days: all, from: "12:00", to: "13:00", at: sr_kassalon_dock, doing: 점심 — 닻 셋 문장 반지를 닦는다, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: sr_kassalon_dock, doing: 노예선 출항 준비}
+    - {days: all, from: "18:00", to: "22:00", at: sr_nine_scales, doing: 의회당 복도에서 보험 이야기를 한다}
+    - {days: all, from: "22:00", to: "24:00", at: sr_kassalon_dock, doing: 사망률 기록을 정리하고 보험 서류에 서명한다}
+# ── 갈림목과 산호 채석장 ──
+npc_sr_dominic:
+  home: se_harbormaster
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: se_harbormaster, doing: 사무소 위층에서 잔다}
+    - {days: all, from: "06:00", to: "12:00", at: se_customs, doing: 입항 서류를 받고 세관 검문을 본다}
+    - {days: all, from: "12:00", to: "13:00", at: se_harbormaster, doing: 점심, fixed: true}
+    - {days: all, from: "13:00", to: "18:00", at: se_slave_pier, doing: 입항한 노예선의 선적 번호와 선원 수를 대조한다}
+    - {days: all, from: "18:00", to: "22:00", at: se_harbormaster, doing: 노예선 입항 장부와 도착 장부를 맞춘다}
+    - {days: all, from: "22:00", to: "24:00", at: se_harbormaster, doing: 바알카르에 보낼 사본을 쓴다}
+npc_sr_sepa:
+  home: cq_overseer_hut
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: cq_overseer_hut, doing: 초소에서 잔다}
+    - {days: all, from: "05:00", to: "08:00", at: cq_rope_lift, doing: 승강기 밧줄을 손으로 훑으며 점검한다}
+    - {days: all, from: "08:00", to: "17:00", at: cq_quarry_floor, doing: 절벽 아래 채석장 순시 — 번표를 읽는다, fixed: true}
+    - {days: all, from: "17:00", to: "20:00", at: cq_overseer_hut, doing: 할당량 장부를 쓴다}
+    - {days: all, from: "20:00", to: "24:00", at: cq_overseer_hut, doing: 밀물 소리를 듣는다}

@@ -1,0 +1,98 @@
+# 등대지기 올라프 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-08)
+id: npc_sr_olaf
+name: 등대지기 올라프
+aka: [눈먼 등대지기, 천 색 노인]
+tier: B
+type: living
+race: 인간
+subrace: 인간(계약민)
+sex: 남
+age: 60
+region: 세렌 해안
+home: 눈먼 등대 아래 관리실
+job: 눈먼 등대지기 (계약민) — 밀수 신호
+rank: 계약민
+summary: 불을 켜지 않는 옛 등대를 지키는 늙은 계약민. 꼭대기 창에 거는 천의 색으로 모르바 밀수선에 물비늘대 순찰을 알린다. AS 297 아르카스에서 헤엄쳐 온 피험자를 하룻밤 숨겼다
+source: docs/world/people/seren.md (npc_sr_olaf)
+life:
+  - {year: 252, age: 0, event: "세렌 빚 골목에서 태어남"}
+  - {year: 280, age: 28, event: "등대지기 계약을 맺음. 셋 가운데 막내"}
+  - {year: 297, age: 45, event: "아르카스에서 헤엄쳐 온 피험자를 등대 계단에 하룻밤 숨김"}
+  - {year: 305, age: 53, event: "다른 등대지기 둘이 빚으로 채석장에 넘겨짐. 혼자 남음"}
+appearance:
+  - "등이 굽고 손이 떨린다"
+  - "눈 아래 소금 얼룩"
+  - "목에 천 조각 네 가지를 건 끈"
+smell: "소금과 오래된 기름 찌꺼기"
+voice_sound: "낮고 쉬었다. 말 사이에 파도 소리가 끼어든다"
+personality:
+  disposition: {용기: 35, 자비: 45, 정직: 20, 신앙: 20, 탐욕: -30, 충성: 60}
+  temperament: [과묵, 인내, 외로움, 다정]
+  habits:
+    - "말하다가 바다 쪽을 한 번 본다"
+    - "저녁마다 천 네 조각을 목에서 풀어 만져 보고 하나를 고른다"
+  values: "바다는 보는 사람 없이도 거기 있다. 그래서 누가 봐 주는 것이 중요하다"
+  fears: ["물비늘대의 순찰이 등대에 오는 일", "후계가 없다는 사실", "마지막 계단이 무너지는 일"]
+  desires:
+    short: "물비늘대 순찰을 피해 천 색을 맞추는 것"
+    long: "등대에 불을 한 번 켜 보는 것"
+voice:
+  register:
+    to_superior: "낮은 존댓말, 눈은 바다"
+    to_equal: "계약민에게 짧은 평어"
+    to_inferior: "아이에게 천천히 하는 반말"
+    to_player_default: "말을 아끼고 바다를 본다. 사람은 눈 끝으로 본다"
+  tics: ["'여긴 불 안 켜.'", "바다를 본다"]
+  use: [천, 계단, 물때, 바다, 불, 등대]
+  avoid: [밀수, 신호, 색(먼저)]
+  length: "짧고 낮다"
+  samples:
+    - {situation: 첫 만남, line: "여긴 불 안 켜. 옛날부터. 올라가려면 계단 조심해. 마지막 계단이 썩었어."}
+    - {situation: 호의, line: "바다는 보는 사람 없이도 거기 있어. 그래서 누가 봐 주는 게 중요해."}
+    - {situation: 거절, line: "천 색? 천은 천이야. 옷감 색 같은 걸 누가 묻나."}
+    - {situation: 비밀 누설, line: "흰색은 안전. 붉은색은 순찰. 푸른색은 소금배. 검은색은 위험. 나는 오십 년 동안 검은색을 두 번 걸었어."}
+    - {situation: 슬픔, line: "셋이었는데 하나가 됐어. 둘은 빚으로 채석장에. 꼭대기 창은 한 사람이 걸기엔 너무 높아."}
+schedule:
+  아침: "계단을 쓴다"
+  낮: "물때를 본다"
+  저녁: "천 색을 정해 창에 건다"
+  밤: "불 켜지 않은 등대 꼭대기에서 바다를 본다"
+places: [눈먼 등대, 등대 꼭대기 창, 등대 계단]
+knows:
+  - fact_sr_blind_lighthouse_signal
+  - fact_p2sr_olaf_cloth_codes
+  - fact_p2sr_olaf_no_heir
+hides:
+  - fact: fact_p2sr_olaf_297_runner
+    reveal_when: "신뢰 55 이상이고 아르카스 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55,"named":"아르카스"}]
+    cover: "'오십 년 동안 등대에 올라온 사람은 많지 않았어'라고만 한다"
+relations:
+  - {to: npc_mv_shirel, type: 얼굴 모르는 뱃사공, like: 10, trust: 30, visibility: 일방, memo: "천으로만 아는 사람", words: "천을 보고 물때를 맞추는 배. 얼굴은 한 번도 못 봤다"}
+  - {to: npc_sr_catarina, type: 이웃, like: 20, trust: 25, visibility: 공개, memo: null, words: "소리 큰 여자. 가끔 등대 아래까지 이자 이야기를 들고 온다"}
+  - {to: npc_miko, type: 하역꾼, like: 25, trust: 30, visibility: 공개, memo: "등대 계단 아래 술벗", words: "숫자를 세는 젊은이. 같이 앉아 술을 마시면서 아무 숫자도 말하지 않는다"}
+toward_player: "말을 아끼고 바다를 본다"
+persuade:
+  likes: ["천 (+10)", "등대에 불을 켜 줄 약속 (+30)"]
+  hates: ["후계 이야기 (+0)"]
+roles:
+  teacher: "가능 — 야외생존(바다, 상한 55). 조건: 등대 계단 쓸기 하루 / 수업료: 천 한 조각"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "천 색은 네 가지다"
+    - "등대에 불을 켠 적이 없다"
+  drift:
+    - "그날 거는 천의 색"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_contractee, office: off_blind_lighthouse, since: 280, loyalty: 15, public: true, cell: null}
+  - {faction: fac_grey_thread, rank: rank_knot, office: null, since: 285, loyalty: 55, public: false, cell: null}
+truths: []
+hard_rules:
+  - "천 색의 뜻을 먼저 말하지 않는다"
+  - "설교하지 않는다. 천과 계단과 바다로 말한다"
+on_death: "모르바 밀수선 신호가 끊긴다. 쉬렐이 물비늘대 순찰을 읽지 못하게 된다."
+story_seeds:
+  - "눈먼 등대에 처음으로 불이 켜지는 날 그 불이 신호인지 장례인지는 올라프가 정한다."

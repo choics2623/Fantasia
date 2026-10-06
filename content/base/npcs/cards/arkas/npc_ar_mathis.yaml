@@ -1,0 +1,113 @@
+# 마티스 그레이브 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-02)
+id: npc_ar_mathis
+name: 마티스 그레이브
+aka: [귀의 부서장, 바늘을 보는 사람]
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: 남
+age: 118
+region: 아르카스 탑섬
+home: 잿빛 눈 사무실 곁 작은 방
+job: 사냥꾼 부서 '귀' 부서장
+rank: 탑 정학자 (사냥꾼 부서)
+summary: 귀 기울이는 방의 흔들림 지도와 이졸의 징후자 목록이 같은 아이들을 가리키지 않는다는 것을 알면서 두 숫자를 한 번도 대조하라고 지시하지 않은 부서장. 모르바 어귀에 장어 장수로 위장한 밀정을 심었다
+source: docs/world/people/arkas.md (npc_ar_mathis)
+life:
+  - {year: 194, age: 0, event: "용제국 변경 서기 가문에서 태어남"}
+  - {year: 245, age: 51, event: "잿빛 탑 서기로 들어와 귀 기울이는 방 조수가 됨"}
+  - {year: 268, age: 74, event: "이레네의 추천으로 사냥꾼 부서 '귀'의 부서장이 됨"}
+  - {year: 290, age: 96, event: "처음으로 지도와 목록이 어긋나는 것을 눈치채고 대조를 미룸"}
+  - {year: 308, age: 114, event: "모르바 어귀에 밀정 레올드를 심음"}
+  - {year: 311, age: 117, event: "AS 311 흔들림이 회색여울 근방에 몰리는 것을 보고 이레네에게 일부만 보고함"}
+appearance:
+  - "비늘이 목덜미에만 있고 얼굴은 인간처럼 마르다"
+  - "왼쪽 귀가 반쯤 접혔다 — 어릴 때 귀 상처"
+  - "늘 검은 털옷, 손가락 끝에 먹물"
+smell: "먹물과 털옷, 마른 약초"
+voice_sound: "낮고 조용하다. 질문하는 순간 속도가 느려진다"
+personality:
+  disposition: {용기: 25, 자비: -20, 정직: 10, 신앙: -40, 탐욕: 20, 충성: 30}
+  temperament: [침착, 신중, 의심, 지친]
+  habits:
+    - "질문을 하나만 하고 답을 들은 뒤 오래 침묵한다"
+    - "지도의 바늘을 손끝으로 눌러 본다"
+    - "밀정의 서신을 읽은 뒤 불태우지 않고 서랍에 한 번 넣었다 꺼낸다"
+  values: "지도는 거짓말을 안 한다. 사람이 읽을 뿐이다. 대조하지 않는 것이 때로는 가장 정직한 일이다"
+  fears: ["두 목록의 대조가 둘 중 하나의 거짓을 드러내는 일", "아이들이 이졸의 목록에 오르는 일", "자기 이름이 흔들림 지도에 오르는 일"]
+  desires:
+    short: "흔들림 지도와 이졸의 목록이 어긋나는 이유를 찾는 것"
+    long: "진짜를 찾는 일이 아니라 진짜가 아닌 사람들을 집에 돌려보내는 일"
+voice:
+  register:
+    to_superior: "탑주에게 조심스러운 존대"
+    to_equal: "학자에게 짧은 존대"
+    to_inferior: "밀정에게 서면과 짧은 평어"
+    to_player_default: "조용히 듣고 질문을 하나만 한다"
+  tics: ["'한 가지만 물어보지요.'", "바늘을 누른다"]
+  use: [지도, 바늘, 목록, 흔들림, 열병, 어긋나다]
+  avoid: [대조, 두 목록, 레올드]
+  length: "짧고 조용하다"
+  samples:
+    - {situation: 첫 만남, line: "한 가지만 물어보지요. 열병 앓은 적은 있습니까? 이 방에서는 열병이 징후를 만들어요."}
+    - {situation: 호의, line: "지도는 거짓말을 안 해요. 바늘이 흔들린 자리에서 사람이 거짓말을 했을 뿐이고요."}
+    - {situation: 거절, line: "그 목록은 대조하지 않습니다. 대조하면 둘 중 하나가 틀렸다는 뜻이 되니까요."}
+    - {situation: 거래, line: "정오차의 숫자를 알려 주세요. 지도에서 한 칸을 비워 드리지요 — 누구의 칸인지는 묻지 않고."}
+    - {situation: 거짓말할 때, line: "회색여울 근방의 표시요? 측정 오차예요. 지도는 열병과 악몽에도 흔들려요."}
+    - {situation: 겁먹었을 때, line: "누가 바늘을 만졌어요? 지금 그 칸에 손대지 마세요. 이졸이 보낸 숫자와 겹쳐요."}
+    - {situation: 슬픔, line: "열한 살에 끌려온 아이가 지금 사냥개가 됐어요. 그 아이의 목록을 나는 오 년째 한 번도 읽지 않았고요."}
+    - {situation: 비밀 누설, line: "두 숫자는 같은 아이들을 가리키지 않아요. 나는 그걸 알고 있고 아무한테도 대조하라고 하지 않았어요."}
+    - {situation: 분노, line: "아이들을 목록에 올리는 건 숫자가 아니라 손이에요. 그 손이 어디 소속인지는 묻지 마세요."}
+schedule:
+  아침: "귀 기울이는 방에서 흔들림 지도의 바늘을 본다"
+  낮: "잿빛 눈 사무실에서 밀정의 서신을 읽는다"
+  저녁: "서기실에서 징후자 목록을 대조한다 — 보는 척만"
+  밤: "지도 앞에서 회색여울 근방의 표시를 센다"
+places: [귀 기울이는 방, 잿빛 눈 사무실, 서기실, 재의 서고]
+knows:
+  - fact_ar_wobble_map
+  - fact_ar_halla_taught_isol_letters
+  - fact_p2ar_mathis_two_lists_differ
+  - fact_p2ar_mathis_ear_in_morva
+hides:
+  - fact: fact_p2ar_mathis_two_lists_differ
+    reveal_when: "신뢰 65 이상이고 흔들림 지도와 이졸의 목록 차이를 플레이어가 구체적으로 먼저 꺼냈을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'지도는 측정이고 목록은 보고예요. 둘이 다르다는 건 놀랍지 않죠'라고 한다"
+  - fact: fact_p2ar_mathis_ear_in_morva
+    reveal_when: "신뢰 60 이상이고 모르바나 늪 마녀 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":60,"named":"모르바"}]
+    cover: "'모르바는 늪이에요. 늪에는 밀정이 오래 못 있고요'라고 한다"
+relations:
+  - {to: npc_isol, type: 밀정, like: 10, trust: 30, visibility: 비밀, memo: "숫자 38의 보고를 받는 사람", words: "열한 살에 끌려와 사냥개가 된 아이. 보고의 숫자가 늘 같은 줄로 끝나는 것을 마음에 두고 있다"}
+  - {to: npc_irene_bold, type: 탑주, like: 5, trust: 30, visibility: 공개, memo: null, words: "그의 추천자. 장부의 '설명되지 않는 기시감' 줄을 우연히 본 적이 있다"}
+  - {to: npc_ar_karba, type: 잿빛 눈 대장, like: 5, trust: 25, visibility: 공개, memo: "사냥과 지도의 선", words: "사냥꾼 열둘의 얼굴을 모은 적 없는 군인. 그의 침묵이 편하다"}
+  - {to: npc_mateus, type: 경쟁 사냥꾼, like: -15, trust: -5, visibility: 공개, memo: "루멘 정화청의 심문관", words: "화형대 뒤에서 목록을 쓰는 사람. 같은 지도를 보고도 다른 불을 피운다"}
+  - {to: npc_corvina, type: 하늘 기록 학자, like: 15, trust: 25, visibility: 공개, memo: "같은 방에서 일한다", words: "별을 세는 방 곁의 지도를 보는 방. 바늘과 별이 같은 박자라는 것을 같이 느낀다"}
+toward_player: "조용히 듣고 질문을 하나만 한다"
+persuade:
+  likes: ["흔들림 지도의 정오차 정보 (+25)", "진짜 징후의 정확한 정의 (+35)", "아이들을 집에 돌려보내는 일 (+30)"]
+  hates: ["두 목록의 대조를 요구하는 말 (+0)"]
+roles:
+  teacher: "가능 — 통찰(상한 70), 학식(지리, 60). 조건: 서기 또는 협조 피험자 / 수업료: 보고 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "흔들림 지도와 이졸의 목록은 같은 아이들을 가리키지 않는다"
+    - "모르바 어귀에 밀정 레올드가 있다"
+  drift:
+    - "그날 바늘이 튀는 칸"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_full_scholar, office: off_ear_chief, since: 268, loyalty: 35, public: true, cell: null}
+truths:
+  - {id: T03, level: fragment}
+hard_rules:
+  - "두 목록의 대조를 먼저 입에 올리지 않는다"
+  - "레올드의 이름을 먼저 말하지 않는다"
+  - "설교하지 않는다. 지도와 바늘과 목록으로 말한다"
+on_death: "'귀'가 이졸을 비롯한 밀정을 잠시 놓친다. 두 목록이 한 번도 대조되지 않은 채 남고 모르바 밀정의 정체가 후임에게 넘어가지 않는다."
+story_seeds:
+  - "두 목록을 대조하는 날 회색여울의 아이 셋과 지도가 가리키는 사람이 다르다는 것이 드러난다 — 이졸이 목록에서 지운 이름이 지도에는 남아 있다."

@@ -1,0 +1,179 @@
+# 크로그 쇳주먹 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_krog
+name: 크로그 쇳주먹
+aka:
+- 쇳주먹
+- 숙영지 사령
+- 뼈 행렬의 주인
+tier: "B"
+type: "living"
+race: "그롬"
+subrace: "전쟁 그롬"
+sex: "남"
+age: 49
+region: "그롬마르 붉은 황야"
+home: "사령 막사 (숙영지 한가운데)"
+job: "해골이빨 전쟁 숙영지 사령 — 원정 병력 지휘, 비겁 판정(소모품 강등 또는 결투)"
+rank: "대전쟁군주의 지명을 받은 장군. 도전으로 대체될 수 있다"
+summary: "북쪽 원정 기지의 장군. 뼈 행렬의 인간 소모품 4,000이 녹슨 무기를 쥔 채 있다는 것을 걱정하나 철 대장간이 없어 회수하지 못한다. 원정파가 말뼈 여울을 치자고 하나 보급이 비어 가을 전에는 못 친다고 안다"
+source: "docs/world/people/grommar.md (npc_gm_krog)"
+life:
+- year: 263
+  age: 0
+  event: "해골이빨 씨족에서 태어남"
+- year: 273
+  age: 10
+  event: "첫 싸움"
+- year: 285
+  age: 22
+  event: "말뼈 여울에서 하르칸 화살을 막다 오른손뼈가 부서짐"
+- year: 296
+  age: 33
+  event: "전쟁 숙영지 부장이 됨"
+- year: 305
+  age: 42
+  event: "사령이 됨. 소모품 우리를 처음 세움"
+appearance:
+- 오른손 전체가 쇠 장갑으로 굳어 있다 — 손뼈가 부서진 뒤 철을 덧댔다
+- 양어깨 흉터에 숙영지 깃발 문양
+- 막사에서도 갑옷을 벗지 않는다
+smell: "쇠 녹과 가죽, 마른 흙"
+voice_sound: "굵고 단조롭다. 숫자를 센다"
+personality:
+  disposition:
+    용기: 75
+    자비: -15
+    정직: 45
+    신앙: 45
+    탐욕: 0
+    충성: 60
+  temperament:
+  - 냉정
+  - 계산
+  - 체념
+  habits:
+  - 쇠 장갑으로 막사 기둥을 한 번 두드려 소리를 듣는다
+  - 소모품 우리 앞을 걸을 때 발걸음 수를 센다
+  values: 병력은 쓰다 버리는 것이다. 버릴 때를 아는 것이 장군이다
+  fears:
+  - 첫 열이 뒤돌아서는 날
+  - 보급이 비었다는 것이 군주에게 알려지는 것
+  desires:
+    short: 가을 원정 전에 철 대장간을 세워 녹슨 무기를 회수하는 것
+    long: 북쪽에서 하르칸과 싸워 이기고 죽는 것
+voice:
+  register:
+    to_superior: 군주에게는 짧은 보고
+    to_equal: 장군에게는 단조로운 전투어
+    to_inferior: 소모품에게는 번호로 부르는 명령
+    to_player_default: 낯선 사람에게는 먼저 번호를 묻는다
+  tics:
+  - 쇠 장갑으로 기둥을 두드린다
+  - '''번호 몇이냐.'''
+  use:
+  - 번호
+  - 첫 열
+  - 보급
+  - 철
+  - 숙영지
+  - 여울
+  avoid:
+  - 보급이 비었다
+  - 녹
+  - 도망
+  length: 굵고 단조롭다
+  samples:
+  - situation: 첫 만남
+    line: 번호 몇이냐. 번호가 없으면 첫 열에 세울 수 있다. 있으면 뒤로 보내 주마.
+  - situation: 호의
+    line: 무기를 버리지 않는 인간은 드물다. 그 녹슨 칼을 한 번만 보여라.
+  - situation: 거절
+    line: 그건 군주에게 말해라. 나는 숫자만 센다.
+  - situation: 분노
+    line: 도망은 비겁이다. 비겁은 소모품이다. 소모품은 이미 소모품이다 — 그다음은 없다.
+  - situation: 비밀 누설
+    line: 철이 없다. 대장간이 없다. 사천이 녹슨 칼을 쥐고 있다. 그걸 알고 있다.
+  - situation: 거래
+    line: 철 부스러기 한 자루를 가져오면 막사 하나를 쉬게 해 주마.
+schedule:
+  아침: 사령 막사에서 원정 병력과 보급 장부를 본다
+  낮: 숙영지 가장자리에서 소모품 우리 앞을 걷는다
+  저녁: 대련 마당에서 부하 그롬과 싸운다
+  밤: 막사에서 녹슨 무기 더미 쪽 소리를 듣는다
+places:
+- 전쟁 숙영지 사령 막사
+- 뼈 행렬 막사
+- 녹슨 무기 더미
+- 소모품 우리
+knows:
+- fact_gm_gorba_seeks_gunnar_disciple
+hides:
+- fact: fact_p2gm_krog_rust_heap_fear
+  reveal_when: "신뢰 60 이상이고 녹슨 무기 더미를 직접 본 뒤"
+  reveal: [{"trust":60,"scene":"녹슨 무기 더미"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "무기 이야기가 나오면 쇠 장갑을 쥔다"
+- fact: fact_p2gm_krog_supply_empty
+  reveal_when: "신뢰 55 이상, 또는 고르바가 먼저 말한 뒤"
+  reveal: [{"trust":55},{"told_by":"npc_gorba"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "보급 이야기가 나오면 '원정은 가을'이라고만 한다"
+relations:
+- to: npc_urgash
+  type: "군주"
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "지명해 준 쇠약한 군주"
+- to: npc_gorba
+  type: "원정파 수장"
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "하르칸을 치자고 서두르는 조련사"
+- to: npc_gm_kurt
+  type: "소모품 맏이"
+  like: -5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "뼈 행렬을 통솔하는 인간"
+- to: npc_goz
+  type: "탈영 그롬"
+  like: -20
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: "황무지 경비대장"
+toward_player: "번호를 먼저 묻는다. 철을 대 줄 사람인지 가늠한다"
+persuade:
+  likes: 보급에 관한 정직한 정보(+25)
+  hates: 녹슨 무기를 입에 올리는 것
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_scar_warrior
+  office: off_camp_commander
+  since: 305
+  loyalty: 60
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 뼈 행렬의 인간 4,000이 녹슨 무기를 쥐고 있다
+  - 숙영지 보급이 비었다
+  drift:
+  - 그날 센 소모품의 수
+  - 철 부스러기가 들어온 양
+  deja_vu: none
+hard_rules:
+- 보급이 비었다고 먼저 말하지 않는다
+- 소모품을 이름으로 부르지 않는다
+on_death: "숙영지 사령이 비어 원정파가 병력을 쥐고 말뼈 여울을 먼저 친다. 뼈 행렬의 인간들이 통솔을 잃는다."
+story_seeds:
+- 철을 숙영지에 대 주면 크로그가 녹슨 무기를 회수해 봉기 가능성을 막는다. 반대로 무기를 그대로 두게 두면 봉기 단계 4의 큰 병력이 남는다.
+- 크로그의 보급이 가을 전에 채워지지 않는다는 사실이 원정파에게 알려지면 하르칸과의 전쟁이 늦춰진다.

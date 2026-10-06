@@ -1,0 +1,68 @@
+# 그롬마르 붉은 황야 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §16(태양월 대축제·가을 원정·항구 폭풍철), WORLD_BIBLE §8·§10(클락 2 맹약회의 313, 클락 7 초원 통일, 클락 1 흰 알), fac_grom(피의 소집·도전제·태양월 도전), fac_arena_guild(흉터 회의·봉기), fac_hundred_wins(99의 밤), facts/grommar.yaml·phase2_grommar.yaml, docs/world/people/grommar.md.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림. 안식일은 6일째(경기 없음, 밤에 흉터 회의 — 일과의 sabbath 블록).
+# 다른 지역과의 연결: 313-03-14 흰 알 부화 소식(바알카르 → 원형장, 아우락스 후원의 그라샤), 313-04-09 서풍의 날 하르칸 서진(말뼈 여울 건너편의 소식),
+#   313-05-01~11 맹약회의 313 서약섬(oath_isle): 쇠턱의 보르그와 세이라가 313-04-29 출발 의식 → 05-01 서약섬 도착(그롬마르 항 → 서약섬 40h, '그롬 약탈선 — 맹약회의 휴전 깃발') → 05-12 귀로.
+#   우르가쉬는 군주라 모래를 비울 수 없어 가지 않는다 (fac_grom off_great_warlord '맹약회의 313 그롬 대표' 위임 — 보고 참조),
+#   313-05-30 태양월 대축제 마지막 날: 하르트의 100승 도전 → 우르크의 의식 → 마라의 공표된 시합 → 해 질 녘 그라샤의 도전 → (조건부) 투사 조합 봉기.
+# 100승 경기와 도전의 승수는 이 달력에 숫자로 적지 않는다 — 대진표가 정한다. 목록에서 먼저 맞는 일정이 이긴다.
+
+# ── 낙엽월 (9) — 가을 원정 ──
+- {id: ev_gm_sep_conscription, date: "312-09-20", npcs: [npc_gm_krog, npc_gm_kurt], from: "06:00", to: "18:00", at: war_camp__bone_column, doing: "가을 원정 소모품 징발 — 뼈 행렬 막사에 새 소모품 이천이 들어온다. 쿠르트가 번호를 새로 부르고 크로그가 우리 앞에서 수를 센다", fixed: true}
+- {id: ev_gm_sep_gorba_papers, date: "312-09-28", npcs: [npc_gorba], from: "12:00", to: "18:00", at: ba_gorba_pens, doing: "군나르의 제자를 찾는 서류를 감독 사무소에 낼 문구를 다듬는다 — 마라의 100승 상대 후보 명단"}
+# ── 서리월 (10) ──
+- {id: ev_gm_oct_tal_night, date: "312-10-11", npcs: [npc_urgash, npc_tal, npc_ulb], from: "21:00", to: "24:00", at: ba_tal_cell, doing: "밤 대련이 평소보다 한 시간 길게 이어진다 — 우르가쉬의 오른쪽 어깨가 한 박자 느리다. 울브가 문 앞에서 열쇠를 쥔다"}
+- {id: ev_gm_oct_og_first_mission, date: "312-10-20", npcs: [npc_gm_og, npc_gm_eida], from: "19:00", to: "22:00", at: ba_dorm1, doing: "새 투사에게 첫 임무를 말한다 — '하르트의 100승 경기에서 상대의 무기에 금이 가 있게 하라'. 에이다가 국그릇을 내려놓고 문 앞에 선다"}
+- {id: ev_gm_oct_ytal_wall, date: "312-10-26", npcs: [npc_gm_ytal, npc_murk], from: "20:00", to: "22:00", at: ba_drain, doing: "어린 탈이 벽에 대고 자기 이름을 부른다 — 벽 너머에서 '탈?' 하는 대답이 온다. 무르크가 모래 닦는 손을 멈춘다"}
+# ── 긴밤월 (11) ──
+- {id: ev_gm_nov_tick_ledger, date: "312-11-12", npcs: [npc_gm_tick, npc_gm_kes], from: "19:00", to: "23:00", at: ba_betting, doing: "내기 장부 벽에서 열한 줄의 매듭을 다시 묶는다 — 케스가 조합 몫의 수를 세렌 장부와 맞춘다"}
+- {id: ev_gm_nov_kurt_oils, date: "312-11-25", npcs: [npc_gm_kurt], from: "19:00", to: "24:00", at: war_camp__rust_heap, doing: "서리 낀 밤에 녹슨 무기 백 자루에 기름을 먹인다 — 그롬 순찰이 소모품의 습관이라 여기고 지나간다"}
+# ── 굶주림월 (12) — 폭풍철 ──
+- {id: ev_gm_dec_port_closed, date: "312-12-01", npcs: [npc_gm_borg, npc_gm_seira, npc_gm_kes], from: "08:00", to: "16:00", at: grommar_port__docks, doing: "폭풍철 — 바닷길이 끊긴다. 노예선이 들어오지 않고 쇠 시장 노점이 반으로 줄어든다", fixed: true}
+- {id: ev_gm_dec_hart_bout, date: "312-12-18", npcs: [npc_gm_hart, npc_gm_kroll, npc_gm_yala], from: "13:00", to: "16:00", at: ba_arena, doing: "문턱의 정식 대진 — 외팔 하르트가 도끼를 든 그롬 전사와 선다. 승수가 한 칸 오른다. 크롤이 심판석에서 깃발을 올린다"}
+- {id: ev_gm_dec_yala_postpone, date: "312-12-25", npcs: [npc_gm_yala, npc_gm_kroll], from: "19:00", to: "23:00", at: ba_overseer, doing: "대진표를 하루 늦춘다 — 도전의 성립 문구를 얄라가 다시 읽고 크롤이 말없이 의자를 두드린다"}
+# ── 313 해빙월 (1) ──
+- {id: ev_gm_jan_gracha_visit, date: "313-01-15", npcs: [npc_gm_gracha, npc_gorba], from: "12:00", to: "18:00", at: ba_gorba_pens, doing: "피도끼의 사자 그라샤가 조련장을 찾아와 원정 이야기를 꺼낸다 — 도끼날 훈련용 투사 백을 값에 얹는다", travel_from: blood_arena__bloodaxe_hold, return_to: blood_arena__bloodaxe_hold}
+# ── 313 파종월 (2) ──
+- {id: ev_gm_feb_gorba_hunters, date: "313-02-10", npcs: [npc_gorba], from: "05:00", to: "09:00", at: ba_north_gate, doing: "군나르의 제자를 쫓는 추적대를 북쪽 길로 보낸다 — 회색여울로 가는 첫 발자국", if: gorba_learns_gunnar}
+- {id: ev_gm_feb_irena_paper, date: "313-02-18", npcs: [npc_gm_irena, npc_gorba, npc_gm_yala], from: "10:00", to: "14:00", at: ba_overseer, doing: "고르바가 이레나의 100승 순번 서류를 감독에게 민다 — 이레나는 서류를 읽고 한 번 두 숨을 쉰다"}
+# ── 313 꽃월 (3) ──
+- {id: ev_gm_mar_trials, date: "313-03-02", npcs: [npc_gm_yala, npc_gm_kroll, npc_gorba], from: "08:00", to: "18:00", at: ba_arena, doing: "봄 예선 개막 — 투사 후보 선발. 모래에서 살아남은 이만 쇠우리로 내려간다", fixed: true}
+- {id: ev_gm_mar_egg_news, date: "313-03-20", npcs: [npc_urgash, npc_gm_yala, npc_gorba], from: "10:00", to: "14:00", at: ba_bone_hall, doing: "흰 알 부화 소식 — 용황의 뒤가 이어진다. 아우락스가 전쟁을 줄 쪽이라는 말이 원형장에 돈다. 우르가쉬는 서서 듣는다"}
+- {id: ev_gm_mar_blood_council, date: "313-03-25", npcs: [npc_urgash, npc_gm_krog, npc_gm_borg, npc_gorba, npc_gm_gracha, npc_gm_urk], from: "08:00", to: "20:00", at: ba_bone_hall, doing: "피의 소집 — 푸른월 전 원정 안건. 원정파가 말뼈 여울을 치자 하나 크로그가 보급을 말하지 못한다. 모래에서 도전의 말이 오가고 안건은 대축제 뒤로 넘어간다", fixed: true, travel_from: grommar_port__ironjaw_hall}
+# ── 313 푸른월 (4) ──
+- {id: ev_gm_apr_ford_flood, date: "313-04-18", npcs: [npc_gm_krog], from: "05:00", to: "18:00", at: khan_ordu__ford_crossing, doing: "우기 말뼈 여울이 범람한다 — 그롬 정찰대가 건널목에서 하르칸 정찰대와 마주친다. 크로그는 활을 내리게 한다", travel_from: war_camp__command, return_to: war_camp__command, if: ford_scout}
+- {id: ev_gm_apr_aurax_envoy, date: "313-04-28", npcs: [npc_gm_gracha, npc_gm_urk], from: "20:00", to: "23:00", at: ba_bloodaxe_quarter, doing: "아우락스의 사자가 서신을 다시 확인한다 — 우르크가 천막 밖에서 이마의 재를 턴다", if: aurax_envoy}
+# ── 313 태양월 (5) — 맹약회의와 대축제 ──
+- {id: ev_gm_apr29_envoy_leave, date: "313-04-29", npcs: [npc_gm_borg, npc_gm_seira], from: "06:00", to: "12:00", at: grommar_port__ironjaw_hall, doing: "맹약회의 사절단 출발 의식 — 보르그가 대전쟁군주의 위임을 받아 휴전 깃발을 올린다. 세이라가 계약 문구와 서신 상자를 점검한다. 쇠턱의 배가 서약섬으로 간다", fixed: true}
+- {id: ev_gm_may01_arrive, date: "313-05-01", npcs: [npc_gm_borg, npc_gm_seira], from: "06:00", to: "24:00", at: oath_isle, doing: "서약섬 도착 — 맹약회의 313의 열하루가 시작된다. 그롬 천막터는 섬 남쪽 바위 곁이다. 돈 세는 그롬이 돌 방에 앉는다", travel_from: grommar_port__ironjaw_hall, fixed: true}
+- {id: ev_gm_may02_oath_isle, date: "313-05-02", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 이틀째 — 보르그가 그롬 대표로 첫 발언을 한다. 말은 짧고 쇠 턱 소리가 돌 방에 울린다"}
+- {id: ev_gm_may03_oath_isle, date: "313-05-03", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 사흘째 — 세이라가 쇠턱과 테르사 계약의 문구를 확인한다. 하르칸 사절의 이빨 목걸이가 문턱에서 눈에 띈다"}
+- {id: ev_gm_may04_oath_isle, date: "313-05-04", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 나흘째 — 짐꾼 우리 곁에서 그롬 사절 짐꾼이 갑옷 조각을 맞춘다. 보르그가 한 번도 세지 않던 수를 센다"}
+- {id: ev_gm_may05_oath_isle, date: "313-05-05", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 닷새째 — 잔향 대숙청안 낭독. 그롬 천막터는 '받는다'고만 말한다"}
+- {id: ev_gm_may06_oath_isle, date: "313-05-06", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 엿새째 — 보르그가 멜리산드의 봉인 서신을 안건 바깥에서 한 번 만진다"}
+- {id: ev_gm_may07_oath_isle, date: "313-05-07", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 이레째 — 두르강·아에리 사절과 그롬 사절이 같은 해변에서 길을 묻는다"}
+- {id: ev_gm_may08_oath_isle, date: "313-05-08", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 여드레째 — 하르칸 사절 에젤이 투사 값 셈을 보르그에게 건넨다"}
+- {id: ev_gm_may09_oath_isle, date: "313-05-09", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 아흐레째 — 인간 증언 요청이 의제에 오른다. 세이라가 반지를 돌리며 듣는다"}
+- {id: ev_gm_may10_oath_isle, date: "313-05-10", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 열흘째 — 표결 전야. 보르그는 서약섬에서 항구 장부를 한 번 더 정리한다"}
+- {id: ev_gm_may11_oath_isle, date: "313-05-11", npcs: [npc_gm_borg, npc_gm_seira], from: "00:00", to: "24:00", at: oath_isle, doing: "회의 열하루째 — 표결. 그롬은 손을 들지 않고 '받는다'고 말한다"}
+- {id: ev_gm_may12_return, date: "313-05-12", npcs: [npc_gm_borg], from: "05:00", to: "09:00", at: oath_isle, doing: "서약섬을 떠난다 — 쇠턱의 배가 항구로 돌아간다. 휴전 깃발을 내린다", return_to: grommar_port__ironjaw_hall}
+- {id: ev_gm_may12_return_seira, date: "313-05-12", npcs: [npc_gm_seira], from: "05:00", to: "09:00", at: oath_isle, doing: "회의 결과를 베아트릭스 장부에 올릴 문구로 정리하며 배에 오른다", return_to: grommar_port__tersa_house}
+- {id: ev_gm_may01_festival_open, date: "313-05-01", npcs: [npc_urgash, npc_gm_yala, npc_gm_kroll, npc_mara, npc_gm_hart, npc_gorba, npc_gm_gracha, npc_gm_urk], from: "09:00", to: "22:00", at: ba_arena, doing: "피의 원형장 대축제 개막 — 한 달 경기가 시작된다. 맹약회의 313과 같은 달이다. 쇠우리의 문 백 개가 차례로 올라간다", fixed: true}
+- {id: ev_gm_may01_refusal, date: "313-05-01", npcs: [npc_gm_irena, npc_gm_eida], from: "09:00", to: "13:00", at: ba_gate_tunnel, doing: "거부의 날 — 인간끼리 죽이는 첫 대진 앞에서 서른이 같이 선다. 아무도 모래로 나가지 않는다", if: refusal_day}
+- {id: ev_gm_may29_ninety_nine, date: "313-05-29", npcs: [npc_gm_og, npc_gm_mia, npc_gm_eida, npc_gm_ytal, npc_gm_hart], from: "20:00", to: "24:00", at: ba_dorm7, doing: "99의 밤 — 대축제 전날 7번 숙소에서 군나르의 99승을 기려 칼을 닦으며 이름을 하나씩 부른다. 어린 탈이 목소리를 낮춘다", fixed: true}
+- {id: ev_gm_may29_weapon_check, date: "313-05-29", npcs: [npc_gm_yala, npc_gm_kroll], from: "18:00", to: "24:00", at: ba_weapon_room, doing: "100승 도전 경기 전날 밤 상대의 칼 점검 — 대장에 한 줄이 적힌다. 크롤이 문 밖에서 의자를 두드린다", fixed: true}
+- {id: ev_gm_may30_hart_bout, date: "313-05-30", npcs: [npc_gm_hart, npc_gm_kroll, npc_gm_yala, npc_gm_og], from: "09:00", to: "12:00", at: ba_arena, doing: "하르트의 100승 도전 경기 — 심판석 크롤, 상대는 그롬. 3만이 숨을 멈춘다", fixed: true}
+- {id: ev_gm_may30_ritual, date: "313-05-30", npcs: [npc_gm_urk, npc_gm_gormak, npc_gm_hart], from: "12:00", to: "13:30", at: ba_sand, doing: "혈명 없는 혈명 — 우르크가 이마에 피를 바른다. 의식 잔을 들 고르마크의 손이 한 번 멈춘다", fixed: true}
+- {id: ev_gm_may30_mara_bout, date: "313-05-30", npcs: [npc_mara, npc_gorba, npc_gm_kroll, npc_gm_kurt], from: "13:30", to: "16:00", at: ba_arena, doing: "마라의 공표된 100승 시합 — 고르바가 짠 상대가 모래에 선다. 쿠르트는 숙영지 쪽 하늘의 연기를 본다", fixed: true, travel_from: war_camp__bone_column}
+- {id: ev_gm_may30_challenge, date: "313-05-30", npcs: [npc_gm_gracha, npc_urgash, npc_gm_kroll, npc_gm_yala], from: "17:00", to: "19:30", at: ba_arena, doing: "그라샤의 도전 — 해 질 녘. 하루 종일 싸운 우르가쉬가 한 번 더 서서 도전을 받는다. 심판 크롤이 깃발을 올린다", fixed: true}
+- {id: ev_gm_may30_uprising, date: "313-05-30", npcs: [npc_gm_og, npc_gm_eida, npc_gm_irena, npc_gm_mia, npc_gm_norabe], from: "12:00", to: "24:00", at: ba_arena, doing: "9번 숙소 바닥이 열린다 — 투사 조합의 봉기. 무기 300이 모래로 올라오고 3만이 처음으로 인간의 손을 본다", if: arena_uprising}
+- {id: ev_gm_may30_tal_silent, date: "313-05-30", npcs: [npc_murk, npc_ulb, npc_gm_ytal], from: "21:00", to: "24:00", at: ba_drain, doing: "그날 밤 벽 너머에서 대련 소리가 없다 — 무르크가 손을 벽에 올리고 어린 탈이 이름을 부른다", if: urgash_falls}
+# ── 건초월~수확월 ──
+- {id: ev_gm_jun_new_warlord, date: "313-06-05", npcs: [npc_gm_gracha, npc_gm_yala, npc_gm_kroll], from: "10:00", to: "14:00", at: ba_bone_hall, doing: "새 대전쟁군주의 즉위 — 얄라가 대진표를 새 군주에게 올린다. 크롤은 의자를 두드리지 않는다", if: gracha_wins}
+- {id: ev_gm_jul_conscription, date: "313-07-20", npcs: [npc_gm_krog, npc_gm_kurt], from: "06:00", to: "18:00", at: war_camp__bone_column, doing: "수확월 가을 원정 소집 — 소모품 징발 명단이 다시 읽힌다. 쿠르트의 천 자루가 첫 열 뒤로 기름 냄새를 풍긴다", fixed: true}
+# ── 매달 반복 ──
+- {id: ev_gm_monthly_milk_day, repeat: monthly, day: 14, npcs: [npc_gm_urk, npc_gm_gormak], from: "10:00", to: "14:00", at: ba_bone_hall, doing: "붉은 젖 한 달 몫을 뼈의 전당 지하로 보낸다 — 우르크가 항아리를 반만 채운다", travel_from: ba_ashhowl_tent, return_to: ba_ashhowl_tent}
+- {id: ev_gm_monthly_formal_bouts, repeat: monthly, day: 20, npcs: [npc_gm_yala, npc_gm_kroll, npc_mara, npc_gm_hart, npc_gm_irena, npc_gorba], from: "09:00", to: "18:00", at: ba_arena, doing: "정식 대진의 날 — 문턱과 흉터의 대진이 모래에 선다. 승수는 정식 대진만 센다"}
+- {id: ev_gm_monthly_tick_share, repeat: monthly, day: 28, npcs: [npc_gm_tick, npc_gm_og], from: "19:00", to: "22:00", at: ba_betting, doing: "조합 몫 1/20을 센다 — 틱틱이 이번 달 몫이 두 배인 것을 한 번 더 확인한다"}
+- {id: ev_gm_monthly_ford_watch, repeat: monthly, day: 9, npcs: [npc_gm_krog], from: "06:00", to: "12:00", at: war_camp__cage, doing: "소모품 우리 점검 — 다음 원정 방패의 수를 센다"}

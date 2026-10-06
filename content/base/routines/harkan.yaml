@@ -63,7 +63,7 @@ npc_hiak:
   home: khan_ordu__horsebone_spring
   blocks:
     - {days: all, from: "17:00", to: "05:00", at: khan_ordu__horsebone_spring, doing: 천막 뒤 수레 곁에서 잔다}
-    - {days: all, from: "05:00", to: "11:00", at: hk_cairn_line, doing: 행렬 뒤 길을 훑는다 — 쓰러진 자의 소지품, 돌무더기 자리는 건드리지 않는다, outdoor: true}
+    - {days: all, from: "05:00", to: "11:00", at: hk_cairn_line, doing: "행렬 뒤 길을 훑는다 — 쓰러진 자의 소지품, 돌무더기 자리는 건드리지 않는다", outdoor: true}
     - {days: all, from: "11:00", to: "17:00", at: khan_ordu__horsebone_spring, doing: 거둔 물건을 고물로 판다 — 누가 어디서 죽었는지 물건이 말한다}
     - {days: "monthday:[5,15,25]", from: "10:00", to: "16:00", at: hk_trade_tents, doing: 교역 천막에서 잭스 쪽 물건과 그롬마르 손님 소식을 맞바꾼다}
 npc_hk_borte:
@@ -87,7 +87,7 @@ npc_hk_batu:
   blocks:
     - {days: all, from: "22:00", to: "05:00", at: hk_tent_arslan, doing: 서서 잔다}
     - {days: all, from: "05:00", to: "07:00", at: hk_council_track, doing: 새벽 질주 — 아버지보다 반 걸음 늦게, outdoor: true, rain: {at: hk_tent_arslan, doing: 천막 안에서 갈기를 빗는다}}
-    - {days: workday, from: "07:00", to: "12:00", at: hk_tent_arslan, doing: 짐꾼 3,000의 호명을 듣고 장부를 본다 — 채찍 20을 열 대로 고친다, alt: {p: 0.3, at: hk_porter_camp, doing: 짐꾼 막사를 돌며 쓰러진 사람의 이름을 묻는다}}
+    - {days: workday, from: "07:00", to: "12:00", at: hk_tent_arslan, doing: "짐꾼 3,000의 호명을 듣고 장부를 본다 — 채찍 20을 열 대로 고친다", alt: {p: 0.3, at: hk_porter_camp, doing: 짐꾼 막사를 돌며 쓰러진 사람의 이름을 묻는다}}
     - {days: all, from: "12:00", to: "13:00", at: hk_feast_tent, doing: 서서 말젖과 말린 고기}
     - {days: workday, from: "13:00", to: "18:00", at: hk_council_track, doing: 아르슬란 기병대를 이끌고 오르두 둘레를 돈다, outdoor: true}
     - {days: all, from: "18:00", to: "22:00", at: hk_feast_tent, doing: 아버지 곁 한 걸음 뒤에 선다 — 갈기 가닥을 만지며 듣는다, fixed: true}
@@ -121,7 +121,7 @@ npc_hk_sorin:
   blocks:
     - {days: all, from: "22:00", to: "04:30", at: khan_ordu__broken_banner, doing: 꺾인 깃발 아래에서 서서 존다}
     - {days: all, from: "04:30", to: "08:00", at: khan_ordu__broken_banner, doing: 진영 가장자리에서 오르두 쪽 바람을 본다, outdoor: true, rain: {at: khan_ordu__broken_banner, doing: 펠트 천막 아래에서 상처 고약을 바른다}}
-    - {days: all, from: "08:00", to: "13:00", at: khan_ordu__broken_banner, doing: 하르칸 800과 인간 1,500의 천막을 돌며 수를 센다}
+    - {days: all, from: "08:00", to: "13:00", at: khan_ordu__broken_banner, doing: "하르칸 800과 인간 1,500의 천막을 돌며 수를 센다"}
     - {days: all, from: "13:00", to: "18:00", at: khan_ordu__broken_banner, doing: 인간 막사 앞에서 걸음을 늦추고 이름을 하나씩 센다}
     - {days: all, from: "18:00", to: "22:00", at: khan_ordu__broken_banner, doing: 인간 열두 명의 이름을 외운다 — 약속의 말을 다듬는다}
 npc_hk_ezel:

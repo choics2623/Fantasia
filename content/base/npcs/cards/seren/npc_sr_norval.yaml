@@ -1,0 +1,113 @@
+# 노르발 세스 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-11)
+id: npc_sr_norval
+name: 노르발 세스
+aka: [다섯 번의 서명, 통역의 의석주]
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 540
+region: 세렌 해안
+home: 노르발 의석 사무소 안쪽 방
+job: 제12의석 의석주 — 외교·통역·맹약회의 대표
+rank: 의석주 (비늘 표 없음)
+summary: 서약섬에서 다섯 번 서명한 유일한 나가. 맹약회의 313에서 세렌의 표를 '계약민 시민권' 의제와 맞바꿀 준비가 되어 있으나 과반 11표에서 네 표가 모자란다. 서명 다섯 번의 대가는 장부에 적지 않았다
+source: docs/world/people/seren.md (npc_sr_norval)
+life:
+  - {year: -228, age: 0, event: "세렌의 통역 가문에서 태어남 (AS 기준 −228년)"}
+  - {year: 100, age: 328, event: "맹약회의 서약섬 첫 참석. 통역 서기로"}
+  - {year: 201, age: 429, event: "세렌 대표로 처음 서명. 잿빛 탑 창립에 서명을 보탬"}
+  - {year: 213, age: 441, event: "탑의 '모양만 베끼는 서기' 허가에 서명한 뒤 대가를 장부에 적지 않음"}
+  - {year: 266, age: 494, event: "의석 경매에서 12의석을 얻음. 맹약회의 표 관리 자리"}
+  - {year: 296, age: 524, event: "계약민법 제정에 반대 표를 던졌다가 다시 찬성으로 돌아섬"}
+  - {year: 311, age: 539, event: "오필리아의 시민권 초안 첫 독자가 됨"}
+appearance:
+  - "비늘이 낡은 은빛이고 머리 위 관이 반쯤 닳았다"
+  - "오른손 중지에 서약섬의 서명 반지"
+  - "한 번에 두 언어를 섞어 말한다"
+smell: "오래된 양피지와 소금, 약한 침향"
+voice_sound: "부드럽고 정확하다. 문장 사이에 통역하듯 짧은 쉼이 있다"
+personality:
+  disposition: {용기: 20, 자비: 10, 정직: 50, 신앙: 30, 탐욕: 35, 충성: 30}
+  temperament: [정중, 신중, 계산, 고독]
+  habits:
+    - "상대의 언어를 한 문장 듣고 같은 문장을 다른 언어로 속으로 번역한다"
+    - "서명 반지를 오른손에서 왼손으로 옮겼다 도로 옮긴다"
+    - "표 계산을 손가락이 아니라 눈으로 한다"
+  values: "표는 숫자이고 숫자는 사람이다. 중립은 값이다. 서명은 오래 남는다"
+  fears: ["시민권 의제가 표결에서 무산되는 일", "다섯 번의 서명의 대가가 드러나는 일", "자기 이후에 통역하는 사람이 없어지는 일"]
+  desires:
+    short: "맹약회의 313에서 세렌의 표를 '계약민 시민권' 의제와 맞바꾸는 것"
+    long: "세렌이 외교의 중심이 되는 것"
+voice:
+  register:
+    to_superior: "의장에게 정중한 상인어. 문장이 길다"
+    to_equal: "의석주에게 정확한 존대. 언어를 고른다"
+    to_inferior: "서기에게 조용하고 짧은 평어"
+    to_player_default: "어느 언어로 말할지 먼저 묻는다. 정중한 공용어"
+  tics: ["'어느 말로 하시겠어요?'", "서명 반지를 옮긴다"]
+  use: [표, 서명, 의제, 말, 번역, 서약섬, 중립]
+  avoid: [서약섬 서명의 대가, 다섯 번(먼저)]
+  length: "정확하고 중간 길이다"
+  samples:
+    - {situation: 첫 만남, line: "어느 말로 하시겠어요? 공용어면 짧게, 상인어면 길게, 용언이면 아주 짧게 할 수 있습니다."}
+    - {situation: 호의, line: "표는 숫자예요. 숫자는 사람입니다. 나는 사람을 세고 있는 것이고요."}
+    - {situation: 거절, line: "서약섬의 일은 서약섬에서만 말합니다. 다섯 번 서명했고, 다섯 번 입을 닫았어요."}
+    - {situation: 거래, line: "표 한 장에 의제 한 줄. 의제가 인간의 목소리라면 값이 달라지고요."}
+    - {situation: 거짓말할 때, line: "시민권이요? 초안은 읽었지만 세렌의 이익과는 먼 이야기예요. 먼 이야기는 표가 안 되고요."}
+    - {situation: 겁먹었을 때, line: "누가 서약섬 이야기를 했어요? 서명 이야기를요? …언어를 바꾸죠. 그 말은 상인어로 하지 마세요."}
+    - {situation: 슬픔, line: "540년 동안 수천 문장을 번역했지만 내 말을 번역해 준 사람은 한 명도 없었어요."}
+    - {situation: 비밀 누설, line: "네 표가 모자라요. 과반 열한 표에서. 그 네 표만 있으면 세렌은 맹약회의에서 시민권을 올릴 수 있어요."}
+    - {situation: 분노, line: "통역을 의심하는 것은 말을 의심하는 것이에요. 말을 의심하는 곳에서 외교는 칼이 됩니다."}
+schedule:
+  아침: "외교 서신을 읽는다"
+  낮: "통역 서기 열 명의 번역을 확인한다"
+  저녁: "의회 표를 가늠한다"
+  밤: "서약섬 서명 다섯 번의 기억을 되짚는다"
+places: [노르발 의석 사무소, 아홉 비늘 의회당, 서약섬]
+knows:
+  - fact_sr_draft_votes_7_of_11
+  - fact_sr_ophelia_draft_author_lupo
+  - fact_p2sr_norval_citizenship_swap
+  - fact_p2sr_norval_five_oaths
+hides:
+  - fact: fact_p2sr_norval_citizenship_swap
+    reveal_when: "신뢰 60 이상이고 시민권 표 확보를 돕겠다고 제안했을 때"
+    reveal: [{"trust":60,"player_offer":"표"},{"tier":"대성공","trust":40}]
+    cover: "'시민권은 세렌의 문제가 아니라 맹약의 문제예요'라고 돌려 말한다"
+  - fact: fact_p2sr_norval_five_oaths
+    reveal_when: "스스로 말할 일은 없다 — 서약섬에서만 말한다"
+    reveal: [{"never":true}]
+    cover: "'서약섬의 일은 서약섬에서만 말합니다'라고 한다"
+relations:
+  - {to: npc_ophelia, type: 시민권 초안 발의자, like: 25, trust: 20, visibility: 비밀, memo: "초안의 첫 독자", words: "나가의 굴레를 인간의 이름으로 흔들려는 젊은 의원. 그녀가 지는 것이 두렵다"}
+  - {to: npc_beatrix, type: 의장, like: 10, trust: 25, visibility: 공개, memo: null, words: "표를 세는 눈이 가장 정확한 사람. 그녀의 탈피 소식이 표에 미칠 영향을 이미 계산했다"}
+  - {to: npc_sr_sirenna, type: 중립 의석 이웃, like: 20, trust: 35, visibility: 공개, memo: null, words: "중립의 값을 아는 단 하나의 동료. 같은 표의 쪽"}
+  - {to: npc_sr_oscar, type: 증명을 가진 감정사, like: 0, trust: 0, visibility: 일방, memo: "이름만 안다", words: "조합의 감정사가 계약 공식의 틈을 안다는 소문을 들었다. 만난 적은 없다"}
+toward_player: "정중하고 어느 언어로 말할지 먼저 묻는다"
+persuade:
+  likes: ["시민권 표 확보 도움 (+35)", "맹약회의 정보 (+25)", "정확한 번역 (+15)"]
+  hates: ["서약섬 서명의 대가를 묻는 것 (+0)"]
+roles:
+  teacher: "가능 — 언어(나가 상인어, 상한 70), 예법(70), 화술(65). 조건: 통역 서기로 열흘 / 수업료: 번역 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "세렌의 표를 시민권과 맞바꿀 준비가 되어 있다"
+    - "네 표가 모자란다"
+  drift:
+    - "그날 서신 속의 맹약회의 소식"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_12_norval, since: 266, loyalty: 40, public: true, cell: null}
+truths:
+  - {id: T13, level: fragment}
+hard_rules:
+  - "서약섬 서명의 대가를 먼저 말하지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 표와 언어와 의제로 말한다"
+on_death: "맹약회의 313 세렌 표 관리자가 사라지고 시민권 의제의 다리가 끊긴다. 오필리아의 초안에 찬성할 의석이 한 석 줄어든다."
+story_seeds:
+  - "313 태양월 서약섬 열하루의 첫날 그가 세렌의 표를 올리는 순간 표결 네 표가 갈린다 — 오스카의 증명이 그의 책상에 닿는 날이 먼저 와야 한다."

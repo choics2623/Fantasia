@@ -1,0 +1,217 @@
+# 오그 일흔여덟 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_og
+name: 오그 일흔여덟
+aka:
+- 일흔여덟
+- 조합장
+- 칼 제자 오그
+tier: "A"
+type: "living"
+race: "인간"
+subrace: "인간(투사 혈통)"
+sex: "남"
+age: 47
+region: "그롬마르 붉은 황야"
+home: "쇠우리 1번 숙소 독방"
+job: "투사 조합장 — 흉터 회의 소집, 숙소 배정, 규칙 제1조 위반 처벌, 봉기 계획 총괄(비밀). 백승가의 칼 제자"
+rank: "흉터 회의가 승수 합산으로 뽑은 조합장. 78승 — 78표의 손"
+summary: "투사 조합장이자 백승가의 칼 제자. 78승. 하르트의 100승 경기를 봉기 신호로 삼고 있다. 새 투사에게 '상대의 무기에 금이 가 있게 하라'는 첫 임무를 준다 — 실은 이중 금으로 조작을 드러내려는 것이다"
+source: "docs/world/people/grommar.md (npc_gm_og)"
+life:
+- year: 265
+  age: 0
+  event: "쇠우리에서 태어남. 어머니는 투사"
+- year: 275
+  age: 10
+  event: "카렐과 같은 숙소에서 첫 칼을 쥠"
+- year: 282
+  age: 17
+  event: "첫 승. 가슴에 첫 칼자국"
+- year: 298
+  age: 33
+  event: "문턱(90승대)에 올랐으나 100승 도전을 포기함 — 이유는 아무에게도 말하지 않음"
+- year: 306
+  age: 41
+  event: "브로의 죽음 뒤 7번 숙소의 어른이 됨"
+- year: 311
+  age: 46
+  event: "조합장이 됨. 봉기 계획을 처음 입 밖에 냄"
+appearance:
+- 어깨가 좁고 키가 큰 중년 — 가슴에 칼자국 일흔여덟이 가지런하다
+- 오른손 중지가 짧다 — 문턱 시절 방패에 잘렸다
+- 쇠목줄 자국 위에 승수 흉터를 겹쳐 새겼다
+smell: "무기 기름과 땀, 오래된 가죽"
+voice_sound: "낮고 천천히 말한다. 말끝에 반드시 이름을 붙인다"
+personality:
+  disposition:
+    용기: 65
+    자비: 35
+    정직: 45
+    신앙: -20
+    탐욕: 0
+    충성: 70
+  temperament:
+  - 신중
+  - 냉정
+  - 다정
+  habits:
+  - 말을 마칠 때마다 상대의 승수나 이름을 한 번 부른다
+  - 9번 숙소 앞을 지날 때 발소리를 줄인다
+  values: 칼 형제는 베지 않는다. 베어야 하면 이름을 먼저 부른다
+  fears:
+  - 봉기 신호 전에 하르트가 죽는 것
+  - 하르트가 붉은 젖 앞에서 무너지는 것
+  - 그롬이 9번 숙소 바닥을 먼저 파는 것
+  desires:
+    short: 대축제 마지막 날 하르트의 100승 순간에 봉기를 시작하고 하르트를 의식 잔 앞에서 빼내는 것
+    long: 인간 투사가 원형장에서 자기 이름으로 서는 것 — 붉은 젖 없이
+voice:
+  register:
+    to_superior: 그롬에게는 짧은 전투어와 승수
+    to_equal: 투사에게는 승수로 부르는 평어
+    to_inferior: 새끼에게는 이름을 먼저 묻는 부드러운 반말
+    to_player_default: 낯선 사람에게는 먼저 '몇 승?'을 묻는다 — 없으면 이름을 묻는다
+  tics:
+  - '''아직?'' — ''아직.'''
+  - 이름을 먼저 부른다
+  use:
+  - 승수
+  - 이름
+  - 숙소
+  - 칼
+  - 아직
+  - 문턱
+  avoid:
+  - 자유
+  - 100승(문턱 앞에서)
+  - 해방
+  length: 낮고 천천히. 이름 부를 때만 짧다
+  samples:
+  - situation: 첫 만남
+    line: 몇 승. 없으면 이름. 이름도 없으면 아직이다 — 아직 모래 위에 서지 않았으니.
+  - situation: 호의
+    line: 이름을 외우는 손은 칼을 오래 쥔다. 7번 숙소에 자리 하나 있다.
+  - situation: 거절
+    line: 그건 1번 숙소 바닥에서 하는 말이다. 안식일 밤에 오라.
+  - situation: 분노
+    line: 규칙 제1조를 어기면 무기 없이 모래에 선다. 이름을 부른 뒤에.
+  - situation: 슬픔
+    line: 카렐의 이름은 칼 형제가 한 번씩 부른다. 나는 부를 때마다 칼날을 닦는다.
+  - situation: 위기
+    line: 9번 숙소! 바닥을 열어라! 이름은 나중에 부른다!
+  - situation: 비밀 누설
+    line: 금을 하나 더 넣어라. 그래야 칼이 첫 합에 부서진다. 그래야 3만이 본다. 그래야 신호가 선다.
+  - situation: 거래
+    line: 하르트의 칼날을 점검할 손이 필요하다. 해 주면 7번 숙소의 이름 하나를 알려 주마.
+  - situation: 거짓말
+    line: 봉기라는 말은 조합 규칙에 없다. 흉터 회의는 훈련과 장례만 정한다.
+schedule:
+  아침: 새벽 훈련에서 새끼를 가르친다
+  낮: 1번 숙소 독방에서 조합 장부와 내기 수익 1/20을 센다
+  저녁: 7번 숙소에서 미아와 어린 탈에게 칼과 이름을 가르친다
+  밤: 안식일 밤 흉터 회의를 이끌고 9번 숙소 바닥을 확인한다
+places:
+- 쇠우리 1번 숙소
+- 쇠우리 7번 숙소
+- 쇠우리 9번 숙소
+- 새벽 훈련장
+knows:
+- fact_gm_tal_alive_chained
+- fact_gm_red_milk_ritual
+- fact_gb_gunnar_tal_truth
+- fact_gm_gorba_rigged_bouts
+hides:
+- fact: fact_p2gm_og_first_mission
+  reveal_when: "신뢰 60 이상이고 첫 임무를 수락한 뒤"
+  reveal: [{"trust":60,"player_offer":"금을 하나 더 넣겠다는"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "임무 이야기가 나오면 '금 하나'라고만 한다"
+- fact: fact_p2gm_og_uprising_signal
+  reveal_when: "신뢰 75 이상, 또는 에이다가 먼저 말한 뒤"
+  reveal: [{"trust":75},{"told_by":"npc_gm_eida"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "봉기 이야기가 나오면 '조합은 훈련과 장례만 한다'고 말한다"
+- fact: fact_p2gm_og_knows_milk
+  reveal_when: "신뢰 70 이상이고 붉은 젖의 진실을 플레이어가 먼저 말했을 때"
+  reveal: [{"trust":70,"named":"붉은 젖"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "붉은 젖 이야기가 나오면 '명예의 잔'이라고만 한다"
+relations:
+- to: npc_gm_hart
+  type: "문턱"
+  like: 55
+  trust: 65
+  visibility: 공개
+  memo: null
+  words: "100승 앞의 후배 — 봉기의 신호"
+- to: npc_gm_mia
+  type: "백승가의 손녀"
+  like: 50
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "같은 숙소에서 키운 아이"
+- to: npc_gunnar
+  type: "칼 제자의 윗사람"
+  like: 40
+  trust: 45
+  visibility: 일방
+  memo: null
+  words: "도망친 99승의 이름"
+- to: npc_mara
+  type: "흉터"
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "87표의 손"
+- to: npc_gm_urk
+  type: "붉은 젖의 노파"
+  like: -10
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: "봉기를 아는 그롬"
+- to: npc_gm_eida
+  type: "바닥지기"
+  like: 40
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "9번 숙소의 칼 하나"
+toward_player: "'몇 승?'부터 묻는다. 이름을 부르는 사람에게 문을 연다"
+persuade:
+  likes: 이름을 존중하는 태도(+30)
+  hates: 100승을 자유라 부르는 말(역린 +35)
+roles:
+  teacher: '스승 가능 — 검술(방패와 함께 서는 법, 상한 60). 조건: 7번 숙소에서 칼 닦기 3일 + 이름 부르기 규칙 수락'
+  companion: 조건부 — 봉기 당일 협력자
+  romance: null
+affiliations:
+- faction: fac_arena_guild
+  rank: rank_scar
+  office: off_guild_master
+  since: 311
+  loyalty: 65
+  public: true
+  cell: null
+- faction: fac_hundred_wins
+  rank: rank_sword_disciple
+  office: off_sword_disciple_og
+  since: 306
+  loyalty: 70
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 오그는 78승이다
+  - 9번 숙소 바닥 아래 무기 300자루
+  drift:
+  - 그날 흉터 회의에서 든 손의 수
+  - 하르트와 이야기한 시각
+  deja_vu: none
+hard_rules:
+- 봉기를 먼저 꺼내지 않는다
+- 하르트에게 붉은 젖의 뜻을 말하지 않는다
+on_death: "투사 조합이 지도자를 잃어 봉기파와 백승파가 갈라지고 9번 숙소 무기가 비밀 열쇠 없이 남는다. 하르트의 100승이 신호가 아니라 그냥 의식이 된다."
+story_seeds:
+- 첫 임무를 받으면 플레이어는 하르트의 100번째 칼에 금을 넣는 손이 된다 — 얄라의 금과 겹치면 원형장이 뒤집힌다.
+- 오그가 하르트에게 진실을 말하는 날 봉기의 신호가 하르트의 선택으로 바뀐다.

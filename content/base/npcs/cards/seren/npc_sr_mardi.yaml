@@ -1,0 +1,96 @@
+# 마르디 카예 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-15)
+id: npc_sr_mardi
+name: 마르디 카예
+aka: [약재의 의석주, 소식을 값으로 치는 사람]
+tier: B
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 여
+age: 290
+region: 세렌 해안
+home: 마르디 상가 약재 창고 위층
+job: 제8의석 의석주 — 향신료·약재
+rank: 의석주 (비늘 표 하나 더)
+summary: 늪 마녀 회합에서 약초를 사들이는 유일한 상가의 의석주. 약초 값 대신 소식을 요구하며 최근에는 잿빛 탑 사냥꾼 부서의 모르바 밀정 이름을 원한다. 늪 약초를 시장에서 세 배로 되판다
+source: docs/world/people/seren.md (npc_sr_mardi)
+life:
+  - {year: 22, age: 0, event: "세렌 약재 가문에서 태어남"}
+  - {year: 180, age: 158, event: "마르디 상가의 약초 검수자가 됨"}
+  - {year: 266, age: 244, event: "의석 경매에서 마르디 가 의석을 지킴"}
+  - {year: 285, age: 263, event: "늪 마녀 회합과 약초 거래를 처음 맺음. 회합의 돈줄이 됨"}
+  - {year: 311, age: 289, event: "약초 값 대신 소식을 요구하기 시작함"}
+appearance:
+  - "연노랑 비늘에 향신료 얼룩이 번졌다"
+  - "코가 유난히 예민해 입을 가리고 다닌다"
+  - "손목에 약초 잎 세 장 문장"
+smell: "계피와 쑥, 말린 약초 냄새"
+voice_sound: "코맹맹이처럼 부드럽다. 숫자 앞에서 또렷해진다"
+personality:
+  disposition: {용기: 15, 자비: 10, 정직: 15, 신앙: 20, 탐욕: 55, 충성: 20}
+  temperament: [예민, 영리, 호의적, 이윤]
+  habits:
+    - "약초 자루를 열면 코를 먼저 대고 눈을 감는다"
+    - "소식을 들으면 약초 한 줌을 값으로 가늠해 손바닥에 올린다"
+  values: "냄새는 값이다. 냄새를 속이는 사람은 값을 속인다. 소식도 약이다"
+  fears: ["약초 거래가 졸라크 쪽으로 넘어가는 일", "늪 마녀가 약초를 끊는 일"]
+  desires:
+    short: "잿빛 탑 사냥꾼 부서의 밀정 이름을 약초 값 대신 받는 것"
+    long: "늪 약초의 독점"
+voice:
+  register:
+    to_superior: "의장에게 부드러운 존대"
+    to_equal: "의석주에게 코맹맹이 평어"
+    to_inferior: "약재 서기에게 짧은 반말"
+    to_player_default: "코를 막은 채 약초를 코로 먼저 확인한다. 부드러운 존대"
+  tics: ["'냄새가 어때요?'", "눈을 감고 코를 댄다"]
+  use: [냄새, 약초, 값, 소식, 자루, 약, 향신료]
+  avoid: [탑 밀정, 소식 값, 되팔다]
+  length: "짧고 부드럽다"
+  samples:
+    - {situation: 첫 만남, line: "냄새가 어때요? 약초 냄새는 값이에요. 냄새를 속이는 사람은 값을 속이고요."}
+    - {situation: 호의, line: "소식도 약이에요. 효과가 있으면 값이 있고, 없으면 독이고요."}
+    - {situation: 거절, line: "그 약초는 지금 값이 없어요. 값이 없다는 건 값을 정하지 못했다는 뜻이에요."}
+    - {situation: 비밀 누설, line: "늪 약초는 세 배에 팔려요. 늪 마녀들이 받는 값은 그 삼 분의 일이고요. 그래서 소식을 한 줄 더 청하는 거예요."}
+    - {situation: 거짓말할 때, line: "탑 밀정이요? 저는 약초만 보는 사람이에요. 밀정 이름은 향이 없어서 모르겠네요."}
+schedule:
+  아침: "약재 창고 점검"
+  낮: "향신료 배분"
+  저녁: "소식을 장부에 옮긴다"
+  밤: "약초 맛을 보며 하루의 값을 센다"
+places: [마르디 상가, 약재 창고, 아홉 비늘 의회당]
+knows:
+  - fact_mv_hags_purse_seren
+  - fact_p2sr_mardi_pays_hags_double
+hides:
+  - fact: fact_p2sr_mardi_asks_news
+    reveal_when: "신뢰 55 이상이고 늪 마녀나 헤드비가의 이름을 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55,"named":"헤드비가"}]
+    cover: "'약초 값 이야기만 해요. 소식은 덤으로 얻는 약이고요'라고 한다"
+relations:
+  - {to: npc_mv_hedwiga, type: 약초 판매자, like: 15, trust: 25, visibility: 비밀, memo: "소식을 요구하는 상대", words: "물에 불은 손으로 약초 자루를 가져오는 늪의 딸. 자루 바닥에 쪽지가 있는 것은 모른다"}
+  - {to: npc_sr_zolak, type: 장부의 주인, like: 5, trust: 20, visibility: 공개, memo: "늪 숫자를 사 가는 이웃", words: "늪 약초 값 카드를 같이 쥐고 있는 이웃. 서로의 카드를 모른다"}
+  - {to: npc_hag_hana, type: 약초 거래의 노파, like: 10, trust: 20, visibility: 비밀, memo: "직접 보지는 못했다", words: "버들 계보 셋째 노파. 약초 값 협상의 진짜 상대"}
+toward_player: "코를 막은 채 약초를 코로 먼저 확인한다"
+persuade:
+  likes: ["새 약초 (+25)", "탑 소식 (+30)"]
+  hates: ["약초 값을 깎자는 말 (+0)"]
+roles:
+  teacher: "가능 — 약학(상한 65), 흥정(60). 조건: 약재 창고에서 사흘 / 수업료: 약초 한 줌"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "늪 약초는 세 배로 되팔린다"
+  drift:
+    - "그날 들어온 약초의 종류"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_08_mardi, since: 266, loyalty: 20, public: true, cell: null}
+truths: []
+hard_rules:
+  - "탑 밀정의 이름을 먼저 입에 올리지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "늪 약초 거래가 졸라크 쪽으로 옮겨 회합의 돈줄이 흔들린다."
+story_seeds:
+  - "탑 밀정의 이름을 마르디에게 넘기는 값은 늪의 노파 한 사람의 목숨일 수 있다."

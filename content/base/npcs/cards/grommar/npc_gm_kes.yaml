@@ -1,0 +1,180 @@
+# 나가 상인 케스 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_kes
+name: 나가 상인 케스
+aka:
+- 케스
+- 쇠 시장의 나가
+- 표식 보는 이
+tier: "B"
+type: "living"
+race: "나가"
+subrace: "왕관 나가(하위 상가 가족)"
+sex: "남"
+age: 120
+region: "그롬마르 붉은 황야"
+home: "쇠 시장 상관 창고 (항구)"
+job: "쇠 시장 상인 — 인간 투사 표식을 보고 무기를 판다, 투사 조합 9번 숙소 무기 공급, 의식 잔 주문 제작"
+rank: "나가 상가의 하위 가족. 그롬마르 항 나가 상관 소속"
+summary: "대륙에서 유일하게 인간이 무기를 살 수 있는 시장을 펼치는 나가. 투사 표식 없이 조합 9번 숙소에 무기 300을 팔았고 값은 조합 내기 수익 1/20의 일부다. 고르마크의 의식 잔 주문을 쇠로 두드리면서 완성을 늦춘다"
+source: "docs/world/people/grommar.md (npc_gm_kes)"
+life:
+- year: 192
+  age: 0
+  event: "세렌 하위 상가 가족에서 태어남"
+- year: 240
+  age: 48
+  event: "그롬마르 항 상관에 배속됨"
+- year: 270
+  age: 78
+  event: "쇠 시장 노점을 펼침"
+- year: 298
+  age: 106
+  event: "인간 투사 표식 제도를 처음 이용해 투사에게 칼을 팖"
+- year: 310
+  age: 118
+  event: "조합 9번 숙소에 무기 300을 팔기 시작"
+- year: 312
+  age: 120
+  event: "고르마크의 의식 잔 주문을 받음"
+appearance:
+- 꼬리가 짧고 굵고 쇠 비늘 같은 회청색 비늘
+- 손이 크고 손가락이 쇠 만지는 손이다
+- 목에 상관 놋 표찰과 이빨 목걸이
+smell: "쇠 기름과 바닷바람, 소금 낀 비늘"
+voice_sound: "부드럽고 느린 상인어. 값 이야기에서 높낮이가 없다"
+personality:
+  disposition:
+    용기: 30
+    자비: 15
+    정직: 40
+    신앙: 20
+    탐욕: 40
+    충성: 30
+  temperament:
+  - 계산
+  - 영리
+  - 냉정
+  habits:
+  - 표식을 확인하기 전에 손님의 손을 먼저 본다
+  - 쇠를 팔 때마다 쇠 값을 한 번 소리 내어 부른다
+  values: 쇠는 서명하지 않는다. 표식은 그롬이 만든 규칙이다
+  fears:
+  - 세렌 장부와 조합 내기 수익의 수가 맞춰지는 것
+  - 의식 잔이 완성되어 100승이 붉은 젖에 묶이는 것
+  desires:
+    short: 세렌 장부에 올릴 쇠 수를 줄이는 것
+    long: 의식 잔이 영영 완성되지 않아 100승이 한 번도 붉은 젖에 묶이지 않는 것
+voice:
+  register:
+    to_superior: 그롬에게는 형식을 지키는 존대
+    to_equal: 상인에게는 느린 평어
+    to_inferior: 인간 손님에게는 값을 말하는 존댓말과 반말 사이
+    to_player_default: 낯선 사람에게는 먼저 표식을 보여 달라고 한다
+  tics:
+  - 손부터 본다
+  - '''표식을 보여 주시지요.'''
+  use:
+  - 표식
+  - 쇠
+  - 이빨
+  - 값
+  - 잔
+  - 허락
+  avoid:
+  - 조합(공개 자리에서)
+  - 9번
+  length: 부드럽고 느리다
+  samples:
+  - situation: 첫 만남
+    line: 표식을 보여 주시지요. 투사 표식이 있으면 칼을 팔고, 없으면 쇠 부스러기를 팝니다.
+  - situation: 호의
+    line: 손이 쇠를 아시는군요. 값을 한 번 깎아 드리지요.
+  - situation: 거절
+    line: 그건 장부 밖입니다. 장부 밖의 쇠는 파도에 줍니다.
+  - situation: 분노
+    line: 표식 없이 무기를 팔았다고 하셨습니까? 그 입을 한 번 닫아 주시지요.
+  - situation: 비밀 누설
+    line: 삼백입니다. 표식 없이요. 세렌 장부에도 같은 삼백이 있습니다.
+  - situation: 거래
+    line: 이빨 열둘을 한 번에 치르시면 잔 하나를 일찍 드리지요 — 완성은 늦추겠지만.
+schedule:
+  아침: 쇠 시장에서 무기 노점을 펼치고 투사 표식을 확인한다
+  낮: 그롬 손님에게 이빨과 쇠를 맞바꾼다
+  저녁: 뒷골목 창고에서 의식 잔 주문을 쇠로 두드린다
+  밤: 상관 창고에서 세렌 장부에 올릴 수를 센다
+places:
+- 쇠 시장
+- 쇠 시장 뒷골목
+- 그롬마르 항 부두
+knows:
+- fact_gm_gorba_buys_relics
+hides:
+- fact: fact_p2gm_kes_guild_iron
+  reveal_when: "신뢰 55 이상, 또는 틱틱이 먼저 말한 뒤"
+  reveal: [{"trust":55},{"told_by":"npc_gm_tick"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "9번 숙소 이야기가 나오면 '표식 있는 손님만 받는다'고 한다"
+- fact: fact_p2gm_kes_new_cup
+  reveal_when: "신뢰 50 이상이고 고르마크의 이름을 정직하게 댔을 때"
+  reveal: [{"trust":50,"named":"고르마크"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "잔 이야기가 나오면 '쇠 일은 느립니다'고만 한다"
+relations:
+- to: npc_gm_gormak
+  type: "잔을 주문한 사제"
+  like: 10
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: "의식 잔의 주문자"
+- to: npc_gm_seira
+  type: "상관 동료"
+  like: 30
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "테르사 상가 대리인"
+- to: npc_gm_borg
+  type: "항구의 씨족장"
+  like: 5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "쇠를 사는 그롬"
+- to: npc_gm_og
+  type: "조합장"
+  like: 15
+  trust: 35
+  visibility: 비밀
+  memo: null
+  words: "값을 내기로 치른 고객"
+toward_player: "표식부터 본다. 손이 쇠를 아는 사람에게 값을 깎아 준다"
+persuade:
+  likes: 값을 정직하게 치르는 태도(+25)
+  hates: 9번 숙소의 무기를 입에 올리는 말
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_seren
+  rank: rank_house
+  office: off_iron_market_naga
+  since: 270
+  loyalty: 40
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 쇠 시장에서 인간이 투사 표식으로 무기를 산다
+  - 9번 숙소 무기 300이 케스에게서 나왔다
+  drift:
+  - 그날 판 칼의 수
+  - 잔을 두드린 시각
+  deja_vu: none
+hard_rules:
+- 9번 숙소를 공개 자리에서 말하지 않는다
+- 의식 잔 이야기를 먼저 꺼내지 않는다
+on_death: "쇠 시장의 나가 상인이 사라져 투사 조합의 무기 길이 끊긴다. 의식 잔 주문이 다른 대장장이에게 넘어가 잔이 곧 완성된다."
+story_seeds:
+- 케스가 잔의 완성을 늦추는 이유를 알면 100승 의식을 지연시킬 수 있다.
+- 세렌 장부와 조합 내기 수익의 수를 맞춰 보면 9번 숙소 무기 300의 출처가 드러난다.

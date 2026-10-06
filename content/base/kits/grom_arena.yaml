@@ -1,0 +1,115 @@
+# 지역 생성 키트 — 그롬마르 붉은 황야 (25_REGION_KITS.md). 피의 원형장 도시, 쇠우리(백 개의 문), 해골이빨 전쟁 숙영지와 뼈 행렬 막사, 그롬마르 항과 쇠 시장.
+# 원천: REGIONS §16, RACES §13, SUBRACES(그롬), HOUSES §3.7(그롬 전쟁무리)·§4.4(백승가)·§5.7(투사 조합), fac_grom·fac_arena_guild·fac_hundred_wins(힘의 서열·도전제·승수 사다리·붉은 젖).
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_grom.customs / law / decision, fac_arena_guild.customs 를 본다.
+# 핵심: 그롬에게 서열은 결투가 정하고 도전은 거절할 수 없다. 싸움이 30일 없으면 쇠약해지므로 대련은 하루도 거르지 않는다. 인간은 투사 아니면 소모품이다 —
+#       투사는 승수가 계급이고(10승 이름·25승 천막·50승 제자·100승 '혈명 없는 혈명'), 그롬마르에서만 인간이 합법적으로 무기를 든다. 100승의 보상은 붉은 젖의 목줄이다.
+id: kit_grom_arena
+applies_to: [피의 원형장, 뼈의 전당, 쇠우리(백 개의 문), 피의 샘, 해골이빨 전쟁 숙영지, 뼈 행렬 막사, 그롬마르 항, 쇠 시장, 그롬 씨족 요새]
+reuses: [kit_human_serf]       # 소모품의 노동 틀은 농노 키트를 쓰되 '원정 첫 열'과 '귀리죽 2'로 바꾼다
+faction_refs: [fac_grom, fac_arena_guild, fac_hundred_wins, fac_seren, fac_krik]
+seasonal_calendar:   # REGIONS §16.2
+  봄 (해빙월~꽃월): "원형장 예선 — 투사 후보 선발. 푸른월 전 '피의 소집'(전쟁군주 회합)"
+  여름 (푸른월~건초월): "전쟁 시즌. 태양월 피의 원형장 대축제 — 한 달 경기, 마지막 날 100승 도전 경기와 대전쟁군주 도전. 대륙 최대 군중"
+  가을 (수확월~낙엽월): "원정(하르칸 분쟁) — 소모품 병사 징발, 해골이빨 전쟁 숙영지 출정"
+  겨울 (서리월~굶주림월): "항구 폭풍철 — 굶주림월 바닷길 단절"
+names:
+  그롬:
+    # 짧고 거센 음절. 씨족명은 문장(해골이빨·피도끼·쇠턱·재울음). 별칭은 흉터·무기·몸이다. 이름이 곧 서열이 아니다 — 서열은 흉터 수와 눈의 높이다.
+    male: [우르가쉬, 크로그, 크롤, 보르그, 고르바, 울브, 무르크, 바그, 도라크, 슈카, 흐락, 모르그, 투그, 카자크, 레그]
+    female: [얄라, 쉬라, 그라샤, 우르크, 도카, 크레샤, 샤르카, 막, 브라나]
+    clans: [해골이빨, 피도끼, 쇠턱, 재울음]
+    epithet_rule: "이름 + 몸·무기·흉터 별칭(붉은손톱·백상처·쇳주먹·피웃음·일곱흉터) + 씨족명. 흉터는 앞은 자랑이고 등은 덮지 않는다. 이름을 불러 주는 것이 최고의 인정이다"
+    size_note: "전쟁 그롬 2.5~3m, 붉은 그롬은 단명(대개 25~30에 광란), 오그림은 3m 넘는 거구 공성 계급, 잿빛 그롬은 변방. 평균 수명 40~55 (전사하지 않으면 70~80)"
+  인간:
+    # 투사는 승수로 불린다 ('일흔여덟', '아흔넷'). 10승부터 투사명이 허락된다. 그 전에는 번호나 몸의 별명이다. 소모품은 이름이 없고 '뼈 행렬 N번'이다.
+    male: [오그, 하르트, 쿠르트, 카렐, 브로, 에르크, 얀, 마르텐, 도리안, 레프, 브란, 올레]
+    female: [마라, 미아, 이레나, 에이다, 노라베, 헬가, 리사, 세냐, 우나, 이바]
+    given_by_wins: ["{n}번 새끼", "일곱째 문", "외팔", "철턱", "아직", "문턱", "이빨 없는", "아흔아홉"]
+    epithet_rule: "투사 후보는 번호나 몸의 별명 → 10승에 투사명(철턱·외팔·아흔둘) → 승수가 이름 뒤에 붙는다. 소모품은 이름이 없고 뼈 행렬 번호로 불린다. 전투어 섞인 짧은 노예말을 쓴다"
+  크릭:
+    male: [틱틱, 딸깍, 슬릭, 브릭, 핍, 스니]
+    female: [찍, 삐야, 치크]
+    note: "그롬마르 크릭 약 4,000 — 관중 노점, 내기장 장부, 무기 수리, 항구 하역. 그롬은 돈을 경멸하므로 크릭이 내기를 대신 센다"
+  나가:
+    male: [케스, 오스모]
+    female: [세이라, 이르사]
+    note: "그롬마르 항 나가 약 300 — 상관, 노예 중개, 쇠 시장. 세렌 테르사 상가가 쇠턱 씨족과 용병 계약을 맺는다"
+classes:            # 피의 원형장 도시 기준 (그롬 약 30,000 가운데 도시 인구, 인간 투사 약 2,400, 소모품·노역 일부)
+  그롬 전사 (흉터 전사): 0.30
+  그롬 애송이 (10세 첫 싸움 이후): 0.08
+  그롬 관리·심판·사제·조련사: 0.04
+  인간 투사 (새끼·칼·흉터·문턱): 0.08
+  인간 시중·취사·치료·청소 일손: 0.05
+  인간 소모품·노역: 0.30
+  크릭 노점·내기: 0.10
+  기타 (나가·상인·외지 손님): 0.05
+jobs:
+  - {id: grom_scar_warrior, name: 그롬 흉터 전사, class: 그롬 전사 (흉터 전사), race: 그롬, age: [16, 55], weight: 14, schedule: sch_grom_warrior}
+  - {id: grom_pup, name: 그롬 애송이 (첫 싸움 뒤), class: 그롬 애송이 (10세 첫 싸움 이후), race: 그롬, age: [10, 15], weight: 5, schedule: sch_grom_pup}
+  - {id: grom_judge, name: 원형장 심판·관리, class: 그롬 관리·심판·사제·조련사, race: 그롬, age: [40, 80], weight: 2, schedule: sch_grom_judge}
+  - {id: grom_trainer, name: 투사 조련사, class: 그롬 관리·심판·사제·조련사, race: 그롬, age: [35, 65], weight: 2, schedule: sch_trainer}
+  - {id: grom_priest, name: 피의 샘 사제, class: 그롬 관리·심판·사제·조련사, race: 그롬, age: [40, 80], weight: 1, schedule: sch_blood_priest}
+  - {id: human_pup_fighter, name: 인간 투사 (새끼 0~9승), class: 인간 투사 (새끼·칼·흉터·문턱), race: 인간, age: [16, 30], weight: 12, schedule: sch_fighter}
+  - {id: human_blade_fighter, name: 인간 투사 (칼 10~49승), class: 인간 투사 (새끼·칼·흉터·문턱), race: 인간, age: [18, 38], weight: 7, schedule: sch_fighter}
+  - {id: human_scar_fighter, name: 인간 투사 (흉터 50~89승), class: 인간 투사 (새끼·칼·흉터·문턱), race: 인간, age: [24, 48], weight: 2, schedule: sch_fighter_scar}
+  - {id: dorm_cook, name: 숙소 취사 일손, class: 인간 시중·취사·치료·청소 일손, race: 인간, weight: 4, schedule: sch_dorm_cook}
+  - {id: arms_polisher, name: 무기 닦는 일손, class: 인간 시중·취사·치료·청소 일손, race: 인간, weight: 3, schedule: sch_polisher}
+  - {id: floor_cleaner, name: 모래 바닥 청소·시체 운반, class: 인간 시중·취사·치료·청소 일손, race: 인간, weight: 3, schedule: sch_cleaner}
+  - {id: dorm_healer, name: 숙소 치료 일손, class: 인간 시중·취사·치료·청소 일손, race: 인간, weight: 1, schedule: sch_healer}
+  - {id: expendable, name: 소모품 병사 (뼈 행렬), class: 인간 소모품·노역, race: 인간, weight: 18, schedule: sch_expendable}
+  - {id: krik_stall, name: 크릭 노점·내기꾼, class: 크릭 노점·내기, race: 크릭, weight: 8, schedule: sch_krik_stall}
+  - {id: naga_trader, name: 나가 쇠 시장 상인, class: 기타 (나가·상인·외지 손님), race: 나가, weight: 2, schedule: sch_naga_trader}
+schedules:          # at = 정착지 틀의 역할(role). 투사의 하루: 새벽 훈련 4시간, 낮 휴식, 저녁 경기 또는 훈련. 그롬은 매일 대련 (30일 싸움이 없으면 쇠약)
+  sch_grom_warrior: [{days: all, from: "05:00", to: "09:00", at: spar_yard, doing: 매일 대련 — 쓰러지는 이가 있을 때까지, fixed: true}, {days: all, from: "09:00", to: "12:00", at: arena, doing: 관중석 맨 앞에서 오전 경기를 본다}, {days: all, from: "12:00", to: "13:00", at: market, doing: 날고기와 말린 고기를 선 채로 먹는다}, {days: all, from: "13:00", to: "18:00", at: arena, doing: 오후 경기 — 이름을 연호한다}, {days: all, from: "18:00", to: "24:00", at: spar_yard, doing: 저녁 대련과 흉터 자랑}]
+  sch_grom_pup:     [{days: all, from: "06:00", to: "10:00", at: spar_yard, doing: 어른 곁에서 대련 — 처음 맞아 보는 법}, {days: all, from: "10:00", to: "18:00", at: arena, doing: 관중석 계단에서 투사를 본다}, {days: all, from: "18:00", to: "22:00", at: spar_yard, doing: 애송이끼리 싸운다}]
+  sch_grom_judge:   [{days: all, from: "08:00", to: "18:00", at: arena, doing: 경기 판정과 도전의 성립을 가린다}, {days: all, from: "18:00", to: "22:00", at: overseer, doing: 대진표와 계약 서류를 맞춘다}]
+  sch_trainer:      [{days: all, from: "05:00", to: "12:00", at: gates, doing: 투사 훈련 감독 — 새벽 4시간}, {days: all, from: "12:00", to: "18:00", at: pens, doing: 투사 후보 매매와 대진 짜기}, {days: all, from: "18:00", to: "22:00", at: market, doing: 관중 사이에서 이빨과 전리품을 센다}]
+  sch_blood_priest: [{days: all, from: "05:00", to: "19:00", at: spring, doing: 피의 샘 곁에서 붉은 물을 떠 바친다}, {days: all, from: "19:00", to: "24:00", at: spring, doing: 샘 곁 천막에서 기도}]
+  sch_fighter:      [{days: all, from: "04:00", to: "08:00", at: gates, doing: 새벽 훈련 4시간, fixed: true}, {days: all, from: "08:00", to: "12:00", at: gates, doing: 숙소에서 상처를 닦고 무기를 간다}, {days: all, from: "12:00", to: "13:00", at: cookhouse, doing: 고기와 빵 — 투사는 잘 먹는다}, {days: workday, from: "13:00", to: "17:00", at: gates, doing: 낮 휴식과 신참 가르치기}, {days: workday, from: "17:00", to: "20:00", at: arena, doing: 저녁 경기 또는 시범 경기}, {days: all, from: "21:00", to: "04:00", at: gates, doing: 숙소 — 승수 흉터를 센다}, {days: sabbath, from: "21:00", to: "24:00", at: gates, doing: 안식일 밤 숙소 목소리가 흉터 회의를 듣는다}]
+  sch_fighter_scar: [{days: all, from: "04:00", to: "08:00", at: gates, doing: 새벽 훈련 — 새끼를 가르친다, fixed: true}, {days: all, from: "08:00", to: "12:00", at: infirmary, doing: 상처를 치료하고 동료의 장례를 챙긴다}, {days: all, from: "12:00", to: "13:00", at: cookhouse, doing: 고기와 빵}, {days: workday, from: "13:00", to: "17:00", at: gates, doing: 숙소 규칙과 대진을 이야기한다}, {days: workday, from: "17:00", to: "20:00", at: arena, doing: 경기 또는 시범 경기}, {days: sabbath, from: "21:00", to: "24:00", at: gates, doing: 안식일 밤 흉터 회의 — 승수 순서로 말하고 손을 든다, fixed: true}]
+  sch_dorm_cook:    [{days: all, from: "03:00", to: "13:00", at: cookhouse, doing: 투사 숙소 취사 — 새벽 솥 둘과 낮 솥 하나}, {days: all, from: "17:00", to: "21:00", at: cookhouse, doing: 저녁 고기 썰기}, {days: all, from: "21:00", to: "03:00", at: gates, doing: 숙소 구석}]
+  sch_polisher:     [{days: all, from: "06:00", to: "18:00", at: gates, doing: 투사 무기를 갈고 기름칠한다 — 승수 흉터가 새겨진 칼}, {days: all, from: "21:00", to: "06:00", at: gates, doing: 숙소 구석}]
+  sch_cleaner:      [{days: all, from: "05:00", to: "09:00", at: arena, doing: 모래 바닥의 피를 닦는다}, {days: all, from: "09:00", to: "18:00", at: drain, doing: 투사 시체를 배수로 쪽으로 옮긴다}, {days: all, from: "21:00", to: "05:00", at: drain, doing: 지하 배수로 구석에서 잔다}]
+  sch_healer:       [{days: all, from: "05:00", to: "21:00", at: infirmary, doing: 상처 봉합과 장례 — 약초 한 줌}, {days: all, from: "21:00", to: "05:00", at: infirmary, doing: 치료소 구석}]
+  sch_expendable:   [{days: all, from: "05:00", to: "06:00", at: bone_column, doing: 뼈 행렬 점호 — 번호를 부른다, fixed: true}, {days: workday, from: "06:00", to: "18:00", at: war_camp, doing: 원정 준비 노역 — 녹슨 무기와 갑옷 조각을 쌓는다}, {days: all, from: "18:00", to: "19:00", at: bone_column, doing: 귀리죽 두 번째 그릇}, {days: all, from: "21:00", to: "05:00", at: bone_column, doing: 막사}]
+  sch_krik_stall:   [{days: workday, from: "07:00", to: "19:00", at: market, doing: 관중 노점 — 고기 꼬치와 내기 쪽지}, {days: all, from: "19:00", to: "07:00", at: betting, doing: 내기 장부를 매듭지어 센다}]
+  sch_naga_trader:  [{days: workday, from: "08:00", to: "17:00", at: iron_market, doing: 쇠 시장 — 인간 투사 표식을 보고 무기를 판다}, {days: all, from: "17:00", to: "08:00", at: iron_market, doing: 상관 창고}]
+voices:             # 말투 원형 — 그롬은 짧고 거친 전투어, 서열은 호칭이 아니라 흉터 수와 눈의 높이
+  - {id: v_grom_warrior, name: 그롬 전사, register: "짧은 명령형. 존칭이 없다. 완곡어는 약함이다 — 거절은 '싸우자', 동의는 '받는다'. 인간 투사에게도 같은 전투어로 말한다", tics: ["'몇 개냐?' (흉터)", "'받는다.'"], use: [피, 흉터, 받는다, 싸우자, 이름, 모래], avoid: [미안, 제발, 늙었다(스스로), 도망], sample: "몇 개냐. 앞의 흉터는 인정한다. 등의 흉터는 묻지 않겠다. 싸울 거면 받는다 — 아니면 비켜라."}
+  - {id: v_grom_elder, name: 늙은 그롬 (심판·사제), register: "느리고 낮은 전투어. 한 문장마다 피를 말한다. 인간을 '승수'로 부른다. 과거를 말하는 것이 그롬에게는 치욕이라 선례로 돌려 말한다", tics: ["'피가 말한다.'"], use: [피, 선례, 모래, 도전, 판정, 숫자(승수)], avoid: [미래(내일), 자비], sample: "피가 말한다. 모래에 쓰러진 자가 일어나면 이름을 부른다. 일어나지 못하면 숫자로 남는다."}
+  - {id: v_human_fighter, name: 인간 투사, register: "그롬 전투어가 섞인 짧은 노예말. 숫자(승수)로 사람을 부른다. 미래형을 쓰지 않는다 — '내일 이긴다'가 아니라 '내일 싸운다'. 감정은 새김과 칼로 말한다", tics: ["'아직?' — '아직.'", "'몇 승?'"], use: [아직, 승수, 숙소, 칼, 이름, 흉터], avoid: [자유, 해방(경기 전날 밤), 미래형, 100승(문턱 앞에서)], sample: "몇 승. 나는 일흔여덟. 내일은 싸운다. 이긴다는 말은 하지 않는다 — 이름은 이긴 뒤에 부른다."}
+  - {id: v_expendable, name: 소모품 병사, register: "낮고 짧은 평어. 번호와 갑옷 조각으로 서로를 안다. 무기를 버리지 않는 것이 유일한 자존이다", tics: ["'버리지 마.'", "'번호 몇이야.'"], use: [번호, 갑옷 조각, 첫 열, 귀리죽, 녹, 버린], avoid: [투사(부러움), 원정(두려움)], sample: "번호 몇이야. 갑옷 조각은 한 번 입으면 벗지 마 — 벗기면 그롬이 가져가. 무기는 버리지 마. 녹슬어도 쥐고 있어."}
+  - {id: v_krik_bettor, name: 크릭 내기꾼, register: "혀 차는 소리와 빠른 존대. 그롬 앞에서는 낮은 평어까지 낮춘다. 내기 비율을 숨 쉬듯 말한다", tics: ["'값은 한 번 오릅니다요.'", "'이빨 하나에 사람 하나.'"], use: [내기, 값, 승수, 이빨, 비율, 모래], avoid: [패배(투사 앞에서), 조작], sample: "값은 한 번 오릅니다요. 승수 일흔여덟에 한 모금, 아흔넷에 두 모금입죠. 이빨 하나에 사람 하나."}
+  - {id: v_naga_trader, name: 나가 상인, register: "부드럽고 느린 상인어. 그롬에게는 거래의 형식을 지키는 척한다. 값은 이빨과 쇠로만 말한다", tics: ["'표식을 보여 주시지요.'"], use: [표식, 쇠, 이빨, 값, 계약, 허락], avoid: [그롬 경멸(드러내지 않는다)], sample: "표식을 보여 주시지요. 투사 표식이 있으면 칼을 팔고, 없으면 쇠 부스러기를 팝니다. 값은 이빨 한 개부터."}
+temperaments: [용맹, 과묵, 자존, 완고, 계산, 겸손, 의심, 체념, 반골, 광기, 다정, 경건, 앙심, 영리, 냉정]
+grom_customs:       # 그롬마르에서만 있는 것 — 법·관습 본문은 fac_grom.law/customs, fac_arena_guild.customs
+  - "인사는 '몇 개냐?' — 흉터 수와 위치로 서열을 읽는다. 앞의 상처는 인정하고 등의 상처는 말하지 않는다. 도전의 말('받는다')이 가장 정중하다"
+  - "투사끼리는 오른 주먹으로 상대 가슴의 승수 흉터를 한 번 친다. 낮은 쪽이 먼저. '아직?' — '아직.'"
+  - "승수 긋기 — 이긴 밤 동료가 가슴에 칼자국 하나를 긋는다. 같은 막사 동료를 이기면 이름을 팔 안쪽에 새긴다 (마라의 87승 가운데 셋)"
+  - "침대에서 죽는 것, 늙어 죽는 것은 수치다. 늙은 그롬은 도전에 나서 죽는다"
+  - "경기 전날 밤 상대의 이름을 부르지 않는다 (투사 조합). 백승가만 이름 부르기로 서로를 베어도 된다고 한다"
+  - "원형장 밖에서 투사를 해치면 모든 씨족의 사냥감이 된다. 투사는 원형장의 것이다"
+  - "붉은 젖 — 100승 인간에게 그롬 분노샘의 짠 즙을 먹이는 '혈명 없는 혈명'. 그롬은 그것을 명예라 믿는다. 끊으면 인간 몸은 금단으로 무너진다"
+settlement_templates:
+  - id: tpl_blood_arena
+    name: 피의 원형장 도시 (원형장 중심 — 뼈의 전당·쇠우리·피의 샘)
+    grid: {w: 1500, h: 1300}
+    roles:
+      arena:        {count: [1, 1], place: "가운데 — 모래 바닥 지름 300m", access: public, name: 피의 원형장 (관중석 3만)}
+      bone_hall:    {count: [1, 1], place: "원형장 북쪽 맞붙은 돌 전당", access: owner, name: 뼈의 전당}
+      gates:        {count: [1, 1], place: "원형장 아래 지하 — 문 백 개", access: staff, name: 쇠우리 (백 개의 문)}
+      infirmary:    {count: [1, 1], place: "쇠우리 동쪽 끝", access: staff, name: 숙소 치료소}
+      cookhouse:    {count: [1, 2], place: "쇠우리 입구 곁", access: staff, name: 숙소 취사장}
+      overseer:     {count: [1, 1], place: "원형장 동문 곁", access: staff, name: 피의 감독 사무소와 대진표 돌판}
+      pens:         {count: [1, 2], place: "원형장 남문 곁", access: staff, name: 투사 후보 매매장}
+      spar_yard:    {count: [1, 3], place: "뼈의 전당 서쪽", access: staff, name: 그롬 대련 마당}
+      spring:       {count: [1, 1], place: "도시 서쪽 바위 곁", access: public, name: 피의 샘}
+      market:       {count: [1, 1], place: "남문 거리", access: public, name: 관중 노점 거리}
+      betting:      {count: [1, 1], place: "시장 뒤 지하", access: public, name: 내기장}
+      drain:        {count: [1, 1], place: "원형장 아래 — 뼈의 전당 지하와 벽을 맞댐", access: staff, name: 지하 배수로}
+      tomb:         {count: [0, 1], place: "원형장 동쪽 바깥", access: public, name: 탈의 빈 무덤}
+    outer:
+      war_camp:     {hours: [18.0, 22.0], name: 해골이빨 전쟁 숙영지}
+      port:         {hours: [28.0, 32.0], name: 그롬마르 항}
+      bloodaxe:     {hours: [16.0, 20.0], name: 피도끼 씨족 요새}
+calendar_ref: "content/base/events/grommar_312.yaml — 그롬마르 붉은 황야 사건 달력"

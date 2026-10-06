@@ -1,0 +1,117 @@
+# 원로 오필 시라 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-01)
+id: npc_ar_opil
+name: 원로 오필 시라
+aka: [두루마리의 의석주, 먼저 파는 원로]
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 450
+region: 아르카스 탑섬
+home: 먼지 서고 위 기록학파 서재 (세렌에서는 오필 상가 필경소 위층)
+job: 일곱 의자 기록학파 수장 — 세렌 제5의석 의석주 겸임
+rank: 탑 원로 (일곱 의자)
+summary: 탑의 연구 결과를 세렌 의회보다 먼저 파는 원로. 필경소 서기 리스의 숨은 글 읽기를 알면서 눈감고 대신 매달 필사 한 장을 자기 서랍에 넣으며, 순종의 빛의 기원을 세렌에 먼저 팔 볼드 사본의 사본을 노린다
+source: docs/world/people/arkas.md (npc_ar_opil)
+life:
+  - {year: -138, age: 0, event: "세렌 오필 상가 필경 집안에서 태어남 (AS 기준 −138년)"}
+  - {year: 201, age: 339, event: "잿빛 탑 공동 창립자로 서명함. 오필 상가의 몫을 맡음"}
+  - {year: 213, age: 351, event: "맹약회의에서 서기 노예 '모양만 베끼는' 허가를 받아 내는 데 앞장섬"}
+  - {year: 266, age: 404, event: "의석 경매에서 오필 가 의석을 지킴. 세렌과 탑 사이를 오가기 시작함"}
+  - {year: 296, age: 434, event: "계약민법 제정 때 필경소에 계약민 서기 열을 들임"}
+  - {year: 308, age: 446, event: "필경소 서기 리스의 숨은 글 읽기를 눈치채고 눈감기로 함"}
+  - {year: 311, age: 449, event: "볼드 사본 관련 문서가 탑에서 도는 것을 확인하고 '순종의 빛의 기원' 거래를 꿈꾸기 시작함"}
+appearance:
+  - "연회색 비늘에 얇은 두루마리 문양 목걸이"
+  - "눈이 긴 타원이고 눈꺼풀이 느리게 내려온다"
+  - "꼬리 끝에 두루마리 끈을 매듭지어 늘 말아 쥔다"
+smell: "새 양피지와 향유, 소금"
+voice_sound: "낮고 부드럽다. 값을 말할 때 문장이 짧아진다"
+personality:
+  disposition: {용기: 10, 자비: 5, 정직: -10, 신앙: 5, 탐욕: 60, 충성: 10}
+  temperament: [영리, 느긋, 계산, 두 얼굴]
+  habits:
+    - "서류를 받으면 먼저 어디가 값이 되는지 가늠하고 나서 읽는다"
+    - "꼬리 끝의 두루마리 끈을 풀었다 묶었다 한다"
+    - "세렌과 탑 두 곳의 이름을 말할 때 순서를 바꾼다"
+  values: "기록은 두 번째로 읽히는 순간부터 값이 오른다. 순서가 값이다. 탑도 세렌도 먼저 읽는 쪽이 이긴다"
+  fears: ["탑주가 순서를 막는 일", "리스의 필사가 오필 가 밖으로 새는 일", "볼드 사본의 사본을 가진 자가 먼저 파는 일"]
+  desires:
+    short: "탑의 새 연구 보고를 세렌에 가장 먼저 파는 값을 올리는 것"
+    long: "'순종의 빛의 기원'을 세렌에 먼저 팔 수 있는 볼드 사본의 사본"
+voice:
+  register:
+    to_superior: "탑주에게 정중하고 느린 존대"
+    to_equal: "원로에게 부드러운 존대. 두 곳을 번갈아 말한다"
+    to_inferior: "서기에게 낮은 평어"
+    to_player_default: "정중하게 값을 먼저 가늠한다"
+  tics: ["'어느 값으로 읽으시겠어요?'", "두루마리 끈을 푼다"]
+  use: [기록, 사본, 값, 순서, 두 번째, 세렌, 탑]
+  avoid: [볼드 사본(먼저), 순종의 빛의 기원, 팔다]
+  length: "짧고 부드럽다. 값 이야기에서만 느려진다"
+  samples:
+    - {situation: 첫 만남, line: "탑과 세렌은 같은 숫자를 서로 다른 값으로 읽어요. 어느 값으로 읽으시겠어요?"}
+    - {situation: 호의, line: "기록은 한 번 쓰이면 값이 오르지 않아요. 두 번째로 읽히는 순간부터 오르죠."}
+    - {situation: 거절, line: "그 문서는 아직 탑의 것이에요. 세렌의 것이 되려면 열흘이 필요하고요."}
+    - {situation: 거래, line: "사본 한 장에 값 하나. 두 번째 사본이라면 값이 두 배고요."}
+    - {situation: 거짓말할 때, line: "세렌에 먼저 간다고요? 탑이 먼저예요. 열흘 늦는 건 필경소의 서기들 솜씨 탓이고요."}
+    - {situation: 겁먹었을 때, line: "누가 볼드 사본이라 했어요? 그 말은 이 방에서 한 적이 없어요."}
+    - {situation: 슬픔, line: "450년 동안 기록을 팔았는데 팔지 못한 기록이 하나 있어요. 처음 쓴 기록이요."}
+    - {situation: 비밀 누설, line: "순종의 빛의 기원을 세렌에 먼저 팔 생각이에요. 팔려면 사본이 필요하고, 사본은 서기 한 사람이면 되고요."}
+    - {situation: 분노, line: "순서를 막으면 둘 다 잃어요. 탑도 세렌도. 나는 그 둘이 모두 필요한 사람이고요."}
+schedule:
+  아침: "기록학파 서고에서 사본을 정리한다"
+  낮: "서기실장과 필사 일정을 짠다"
+  저녁: "세렌 오필 상가에 보낼 보고를 쓴다"
+  밤: "원탁 의자에 앉아 다음 달 낭독 논문 안건을 본다"
+places: [먼지 서고, 기록학파 서재, 일곱 의자 원탁, 세렌 오필 상가]
+knows:
+  - fact_ar_tower_clerks_literate
+  - fact_p2ar_opil_sells_first
+  - fact_sr_lupo_numbers_ledger
+hides:
+  - fact: fact_p2ar_opil_sells_first
+    reveal_when: "신뢰 55 이상이고 세렌과 탑의 순서를 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55}]
+    cover: "'탑이 먼저예요. 열흘 늦는 건 필경소의 서기들 솜씨 탓이고요'라고 한다"
+  - fact: fact_p2ar_opil_light_origin_for_sale
+    reveal_when: "신뢰 70 이상이고 순종의 빛의 기원이나 볼드 사본의 사본을 플레이어가 구체적으로 먼저 꺼냈을 때"
+    reveal: [{"trust":70,"named":"볼드 사본"},{"tier":"대성공","trust":50}]
+    cover: "'볼드 사본이요? 그런 말은 이 방에서 한 적이 없어요'라고 한다"
+  - fact: fact_p2ar_opil_lis_blind_eye
+    reveal_when: "스스로 말할 일은 없다 — 리스 쪽에서 증거가 나올 때만 드러난다"
+    reveal: [{"never":true}]
+    cover: "'필경소 서기는 모두 숫자만 베껴요'라고 한다"
+relations:
+  - {to: npc_irene_bold, type: 탑주, like: 5, trust: 30, visibility: 공개, memo: "순서를 알고 눈감는 사이", words: "탑주가 순서를 알면서 눈감는 이유가 자신이 쥔 세렌의 후원이라는 것을 알고 있다. 서로 값을 치르는 사이"}
+  - {to: npc_sr_lis, type: 필경소 서기, like: 10, trust: 20, visibility: 일방, memo: "눈감는 값을 받는 서기", words: "숫자 이상을 읽는 눈. 값으로 장 한 장씩 받아 둔다. 그녀가 별의 집 열쇠를 가진 줄은 모른다"}
+  - {to: npc_beatrix, type: 의장, like: 5, trust: 30, visibility: 공개, memo: "세렌 의회 선배", words: "탈피가 늦어지는 의장. 그가 쓰러지는 날 의석 경매가 뜨거워질 것을 계산 중"}
+  - {to: npc_ottilie, type: 같은 기록학파 정학자, like: -5, trust: 15, visibility: 공개, memo: "맹세의 틈을 아는 동료", words: "맹세의 틈으로 서기 열일곱을 읽게 만든 학자. 그 틈이 값이 된다고는 아직 생각하지 못했다"}
+  - {to: npc_ar_tik, type: 크릭 원로, like: 10, trust: 25, visibility: 공개, memo: "숫자를 아는 후배", words: "숫자만 말하는 젊은 크릭. 한 숫자를 말하지 않는 이유를 짐작하고 있다"}
+toward_player: "정중하고 값을 먼저 가늠한다"
+persuade:
+  likes: ["세렌에 먼저 팔 새 자료 (+30)", "볼드 사본 관련 정보 (+35)", "새 필경 서기 (+15)"]
+  hates: ["탑의 순서를 비난하는 것 (+0)"]
+roles:
+  teacher: "가능 — 학식(역사, 상한 70), 읽고쓰기(75), 흥정(65). 조건: 필경소 서기로 계약 / 수업료: 사본 한 장"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "탑의 연구 결과는 세렌에 먼저 간다"
+    - "그믐 일곱 의자 원탁에 앉는다"
+  drift:
+    - "그날 세렌에 보낼 사본의 장수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_elder, office: off_elder_record, since: 201, loyalty: 30, public: true, cell: null}
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_05_ophil, since: 266, loyalty: 35, public: true, cell: null}
+truths: []
+hard_rules:
+  - "볼드 사본이나 순종의 빛의 기원을 먼저 입에 올리지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다 (나가의 굴레)"
+  - "설교하지 않는다. 기록과 값과 순서로 말한다"
+on_death: "세렌 오필 상가 필경소가 탑의 보고를 끊고 세렌 제5의석이 공석이 되어 의석 경매가 열린다. 기록학파 수장은 오틸리와 틱 사이에서 갈린다."
+story_seeds:
+  - "오필이 '순종의 빛의 기원'을 파는 날 엘다르 은이슬·빛실 후원이 탑을 떠난다 — 그 전에 볼드 사본의 사본이 필경소로 흘러야 한다. 리스가 그 사본을 쥔 서기가 될 수 있다."

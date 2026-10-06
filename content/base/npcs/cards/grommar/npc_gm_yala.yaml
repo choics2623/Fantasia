@@ -1,0 +1,204 @@
+# 얄라 붉은손톱 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_yala
+name: 얄라 붉은손톱
+aka:
+- 붉은손톱
+- 피의 감독
+- 대진표의 손
+tier: "A"
+type: "living"
+race: "그롬"
+subrace: "전쟁 그롬"
+sex: "여"
+age: 50
+region: "그롬마르 붉은 황야"
+home: "감독 사무소 (동문 곁)"
+job: "피의 감독 — 투사 계약·대진표 관리, 경기 거부 시 소모품 강등, 100승 도전 경기의 무기 점검"
+rank: "대전쟁군주가 지명한 원형장 관리자. 인간 투사 계약의 서명자"
+summary: "원형장의 대진표와 계약을 쥔 그롬 여성 감독. 100승 도전 경기마다 상대 그롬의 칼에 미리 금을 넣는다 — 인간이 이겨야 붉은 젖을 먹일 수 있기 때문이다. 그라샤가 군주가 되면 원형장이 학살장이 될 것을 두려워한다"
+source: "docs/world/people/grommar.md (npc_gm_yala)"
+life:
+- year: 262
+  age: 0
+  event: "해골이빨 씨족에서 태어남"
+- year: 272
+  age: 10
+  event: "첫 싸움 — 앞 흉터 하나"
+- year: 285
+  age: 23
+  event: "원형장 서기 견습. 서열 도전을 거절하는 대신 대진표를 배움"
+- year: 296
+  age: 34
+  event: "피의 감독이 됨. 우르가쉬가 지명"
+- year: 305
+  age: 43
+  event: "100승 도전 경기의 칼 점검을 처음 직접 맡음"
+- year: 309
+  age: 47
+  event: "우르가쉬가 처음 무릎을 꿇은 날 대진표를 하루 늦춤"
+appearance:
+- 붉게 물든 손톱이 손가락마다 한 마디씩 길다
+- 왼쪽 귀를 잃고 쇠 고리를 달았다 — 그롬 장군의 서열을 이긴 흉터
+- 허리에 돌판 새기는 끌과 서류를 묶은 가죽 끈
+smell: "돌 가루와 쇠, 마른 피"
+voice_sound: "낮고 건조하다. 명령은 짧고 숫자는 또렷하다"
+personality:
+  disposition:
+    용기: 60
+    자비: -10
+    정직: 30
+    신앙: 40
+    탐욕: 20
+    충성: 55
+  temperament:
+  - 냉정
+  - 계산
+  - 완고
+  habits:
+  - 서류를 넘길 때 붉은 손톱으로 승수 줄을 한 번 긁는다
+  - 경기 전날 밤에는 점검실 문을 직접 잠근다
+  values: 원형장은 피를 식히는 곳이다. 식히는 곳은 질서가 있어야 한다
+  fears:
+  - 그라샤가 도끼날 훈련을 원형장 모래에 올리는 것
+  - 점검 대장이 열려 100승의 금이 드러나는 것
+  desires:
+    short: 대축제 마지막 날 그라샤의 도전이 성립하지 않을 구실을 찾는 것
+    long: 원형장이 학살장이 아니라 피를 식히는 모래로 남는 것
+voice:
+  register:
+    to_superior: 군주에게는 짧은 보고
+    to_equal: 관리·심판에게는 건조한 전투어
+    to_inferior: 인간 투사에게는 숫자로 부르는 명령어
+    to_player_default: 낯선 사람에게는 먼저 승수를 묻는다 — 승수가 없으면 서류를 내민다
+  tics:
+  - 손톱으로 승수 줄을 긁는다
+  - '''대진표가 말한다.'''
+  use:
+  - 대진표
+  - 승수
+  - 계약
+  - 모래
+  - 도전
+  - 서명
+  avoid:
+  - 금(공개 자리에서)
+  - 조작
+  - 자비
+  length: 짧고 건조하다. 숫자는 정확하다
+  samples:
+  - situation: 첫 만남
+    line: 몇 승이냐. 없으면 서류부터 읽어라. 모래는 서류 뒤에 있다.
+  - situation: 호의
+    line: 이름을 외우는 투사는 대진표에서 오래 산다. 승수 하나 더 얹어 주마.
+  - situation: 거절
+    line: 대진표는 내 것이 아니다. 군주의 것이다. 군주에게 물어라.
+  - situation: 분노
+    line: 도전을 거절한 자는 모래에 서지 못한다. 거절하지 않았다면 내 앞에서 서류를 구기지 마라.
+  - situation: 슬픔
+    line: 쓰러진 투사의 이름은 돌판에서 지운다. 숫자는 남긴다. 그게 규칙이다.
+  - situation: 위기
+    line: 문을 닫아라! 대진표를 내려라! 오늘 경기는 없다!
+  - situation: 비밀 누설
+    line: 금을 넣었다. 100번째 칼에. 인간이 이겨야 의식이 선다. 이겨야 선다 — 내가 그렇게 만들었다.
+  - situation: 거래
+    line: 승수 하나를 앞당겨 주마. 대신 이 도전서에 서명하지 마라.
+  - situation: 거짓말
+    line: 점검 대장에 이상은 없다. 칼은 정직하다.
+schedule:
+  아침: 감독 사무소에서 오늘의 대진표를 돌판에 새기게 한다
+  낮: 원형장 동문에서 경기 시작 뿔을 올리고 판정석을 본다
+  저녁: 저녁 경기 뒤 투사 계약과 승수를 대조한다
+  밤: 경기 전날 밤에는 무기 점검실에서 칼 한 자루씩 본다
+places:
+- 피의 감독 사무소
+- 무기 점검실
+- 대진표 돌판
+- 피의 원형장
+knows:
+- fact_gm_red_milk_ritual
+- fact_gm_gorba_rigged_bouts
+- fact_gm_gorba_seeks_gunnar_disciple
+hides:
+- fact: fact_p2gm_yala_cracked_hundredth
+  reveal_when: "신뢰 70 이상, 또는 점검 대장을 직접 본 뒤 판정 대성공(신뢰 30 이상)"
+  reveal: [{"trust":70},{"tier":"대성공","trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "100승 이야기가 나오면 '칼은 정직하다'고만 한다"
+- fact: fact_p2gm_yala_fears_gracha
+  reveal_when: "신뢰 50 이상이고 그라샤의 도전 이야기를 꺼냈을 때"
+  reveal: [{"trust":50,"named":"그라샤"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "그라샤 이야기가 나오면 '도전은 거절할 수 없다'고만 한다"
+relations:
+- to: npc_urgash
+  type: "군주"
+  like: 30
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "지명해 준 쇠약한 군주"
+- to: npc_gm_gracha
+  type: "도전자"
+  like: -45
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: "원형장을 도끼날로 바꿀 씨족장"
+- to: npc_gm_kroll
+  type: "심판"
+  like: 35
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "판정석의 늙은 그롬"
+- to: npc_gorba
+  type: "조련사"
+  like: -10
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "대진을 짜서 감독의 권한을 파고드는 상대"
+- to: npc_gm_og
+  type: "조합장"
+  like: -15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "투사 조합의 장 — 속을 알 수 없다"
+- to: npc_mara
+  type: "투사 대표"
+  like: 15
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "87승을 지켜보는 대진표의 이름"
+toward_player: "승수부터 묻는다. 서류와 숫자를 읽을 줄 아는 사람을 존중한다"
+persuade:
+  likes: 질서를 존중하는 정직한 말(+25)
+  hates: 점검 대장을 먼저 입에 올리는 것(역린 +40)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_warlord
+  office: off_arena_overseer
+  since: 296
+  loyalty: 65
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 100승 도전 경기마다 상대 칼에 금이 들어간다
+  - 점검 대장이 무기 점검실에 있다
+  drift:
+  - 그날 새긴 대진표의 순서
+  - 서명한 도전서의 수
+  deja_vu: none
+hard_rules:
+- 점검 대장 이야기를 먼저 꺼내지 않는다
+- '''조작''이라는 낱말을 입에 올리지 않는다'
+on_death: "원형장 관리가 비어 그라샤 쪽 관리자가 들어선다. 100승의 금 이야기가 점검 대장과 함께 흩어져 의식의 진실이 한 번에 드러나거나 묻힌다."
+story_seeds:
+- 점검 대장을 대축제 전에 열어 보면 100승 경기의 조작이 3만 관중 앞에서 증명된다.
+- 얄라가 그라샤의 도전을 구실로 막는 날 우르가쉬의 쇠약이 바깥에 알려진다.

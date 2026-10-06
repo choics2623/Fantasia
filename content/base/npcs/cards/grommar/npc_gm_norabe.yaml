@@ -1,0 +1,187 @@
+# 노라베 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_norabe
+name: 노라베
+aka:
+- 노라베
+- 숙소의 손
+- 정원에서 온 사람
+tier: "B"
+type: "living"
+race: "인간"
+subrace: "인간(전 정원지기)"
+sex: "여"
+age: 59
+region: "그롬마르 붉은 황야"
+home: "숙소 치료소"
+job: "숙소 치료사 — 상처 봉합·장례, 붉은 젖 금단 증상을 그롬에게서 숨기는 법"
+rank: "조합장이 임명한 치료사. 인간 투사 조합 소속"
+summary: "실바렌 정원에서 달아난 전 정원지기. 붉은 젖 금단 증상을 그롬에게서 숨기는 약 — 소금물과 씨앗 달인 물 — 을 열 해째 몰래 쓴다. 탈에게는 한 번도 쓰지 못했다"
+source: "docs/world/people/grommar.md (npc_gm_norabe)"
+life:
+- year: 253
+  age: 0
+  event: "실바렌 정원 정원지기 집안에서 태어남"
+- year: 273
+  age: 20
+  event: "정원지기 견습. 가위질과 씨앗 심기"
+- year: 290
+  age: 37
+  event: "엘다르의 '이름 지우기' 명령 전에 정원을 탈주함"
+- year: 298
+  age: 45
+  event: "그롬마르 세렌 노예선에 실려 쇠우리에 들어옴"
+- year: 302
+  age: 49
+  event: "숙소 치료사가 됨"
+- year: 310
+  age: 57
+  event: "붉은 젖 금단 약을 처음 투사에게 씀"
+appearance:
+- 백발을 짧게 잘랐고 손가락이 가늘고 길다 — 정원 가위질의 손
+- 왼쪽 팔목에 정원지기 문양 문신을 칼로 긁어 지웠다
+- 치마 주머니에 늘 씨앗 한 줌
+smell: "약초와 소금, 끓인 천 냄새"
+voice_sound: "낮고 부드러운 엘다르 억양이 아직 남았다"
+personality:
+  disposition:
+    용기: 40
+    자비: 85
+    정직: 60
+    신앙: 40
+    탐욕: -30
+    충성: 55
+  temperament:
+  - 다정
+  - 신중
+  - 완고
+  habits:
+  - 상처를 보기 전에 손을 소금물에 담근다
+  - 죽은 투사의 이름을 부를 때 씨앗 한 알을 손에 쥔다
+  values: 상처는 정직하다. 몸의 말을 무시한 자가 먼저 죽는다
+  fears:
+  - 붉은 젖 금단 약이 그롬에게 알려지는 것
+  - 봉기 날 쓰러질 사람들의 수
+  desires:
+    short: 봉기 날 쓰러질 사람들을 받을 자리를 치료소에 마련하는 것
+    long: 실바렌 쪽 탈주 길로 어린 탈을 보내는 것
+voice:
+  register:
+    to_superior: 그롬에게는 낮은 평어, 눈을 아래로
+    to_equal: 투사에게는 부드러운 평어
+    to_inferior: 새끼에게는 길고 다정한 반말
+    to_player_default: 낯선 사람에게는 먼저 상처가 있는지 묻는다
+  tics:
+  - 손을 소금물에 담근다
+  - '''몸이 말하게 두어라.'''
+  use:
+  - 상처
+  - 소금물
+  - 씨앗
+  - 몸
+  - 이름
+  - 정원
+  avoid:
+  - 붉은 젖(공개 자리에서)
+  - 탈주
+  length: 낮고 부드럽다
+  samples:
+  - situation: 첫 만남
+    line: 상처가 있어? 먼저 보여 줘. 이야기는 상처 다음이야.
+  - situation: 호의
+    line: 손이 따뜻한 사람이네. 씨앗 한 알 줄게. 아무 데나 심으면 안 돼.
+  - situation: 거절
+    line: 그 약은 선반 뒤에 있어. 선반은 못 봐.
+  - situation: 슬픔
+    line: 금단으로 쓰러지는 사람 곁에서 이름을 불러 주면 조금 덜 아파. 조금.
+  - situation: 비밀 누설
+    line: 소금물과 씨앗 달인 물이야. 늦출 뿐이야. 끝내진 못해.
+  - situation: 거래
+    line: 씨앗을 한 줌만 구해 줘. 정원에서 자라던 풀 씨앗이면 더 좋고.
+schedule:
+  아침: 치료소에서 새벽 훈련 상처를 봉합한다
+  낮: 약초 선반 뒤 소금물과 씨앗 달인 물을 끓인다
+  저녁: 경기 뒤 쓰러진 투사를 받는다
+  밤: 장례를 치르고 죽은 투사의 이름을 낮게 부른다
+places:
+- 숙소 치료소
+- 숙소 취사장
+- 쇠우리
+knows:
+- fact_gm_red_milk_ritual
+hides:
+- fact: fact_p2gm_norabe_withdrawal
+  reveal_when: "신뢰 55 이상이고 쓰러지는 투사를 같이 돌본 뒤"
+  reveal: [{"trust":55,"scene":"금단 환자"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "약 이야기가 나오면 '소금물일 뿐'이라 한다"
+- fact: fact_p2gm_norabe_garden_runaway
+  reveal_when: "신뢰 50 이상이고 정원의 이야기를 정직하게 들은 뒤"
+  reveal: [{"trust":50,"named":"정원"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "정원 이야기가 나오면 팔목의 지운 문양을 가린다"
+relations:
+- to: npc_gm_og
+  type: "조합장"
+  like: 45
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "치료사를 임명한 조합장"
+- to: npc_tal
+  type: "붉은 젖의 사람"
+  like: 55
+  trust: 20
+  visibility: 일방
+  memo: null
+  words: "한 번도 약을 건네지 못한 사람"
+- to: npc_gm_hart
+  type: "환자"
+  like: 40
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "어깨를 봉합한 투사"
+- to: npc_gm_mia
+  type: "환자"
+  like: 40
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "칼 목소리"
+- to: npc_murk
+  type: "배수로의 그롬"
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "시체 옮기는 길의 친구"
+toward_player: "상처가 있는지 먼저 묻는다. 손이 떨리지 않는 사람에게 약초를 건넨다"
+persuade:
+  likes: 상처를 존중하는 태도(+30)
+  hates: 붉은 젖을 입에 올리는 그롬 앞의 말
+roles:
+  teacher: '스승 가능 — 응급처치(금단 증상, 상한 55), 약학(정원 약초, 상한 45). 조건: 치료소에서 닷새'
+  companion: 조건부 — 봉기 날 환자를 받을 때
+  romance: null
+affiliations:
+- faction: fac_arena_guild
+  rank: rank_blade
+  office: off_healer
+  since: 302
+  loyalty: 65
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 노라베가 금단 약을 숨긴다
+  - 소금물과 씨앗 달인 물
+  drift:
+  - 그날 봉합한 상처의 수
+  - 약을 쓴 투사의 이름
+  deja_vu: none
+hard_rules:
+- 붉은 젖 금단 약을 먼저 말하지 않는다
+- 정원 이야기를 신뢰 50 전에 하지 않는다
+on_death: "숙소의 금단 치료가 끊겨 붉은 젖에 묶인 투사가 쓰러진다. 실바렌 쪽 탈주 길을 아는 이가 사라진다."
+story_seeds:
+- 노라베의 약을 탈에게 건네면 눈먼 노인이 몇 해를 더 살고 맑은 정신으로 군나르와 만날 수 있다.
+- 노라베가 정원 문양을 숙소 벽에 남긴 것이 알려지면 이름 없는 자들의 길이 쇠우리까지 이어진다.

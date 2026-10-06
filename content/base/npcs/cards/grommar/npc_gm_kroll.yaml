@@ -1,0 +1,204 @@
+# 크롤 백상처 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_kroll
+name: 크롤 백상처
+aka:
+- 백상처
+- 심판석의 노인
+- 은퇴하지 않는 이
+tier: "A"
+type: "living"
+race: "그롬"
+subrace: "전쟁 그롬"
+sex: "남"
+age: 76
+region: "그롬마르 붉은 황야"
+home: "심판석 곁 돌 방"
+job: "원형장 심판 — 경기 판정, 도전의 성립·승패, 이름 연호 순서"
+rank: "종신 심판. 은퇴하지 않는다. 피의 감독 아래이나 판정에는 군주도 말하지 않는다"
+summary: "AS 258 탈의 100번째 상대였던 마지막 생존자. 금이 간 칼을 알면서 모래에 섰고, 그 칼날 조각을 심판석 밑 돌 틈에 간직한다. 이름 연호의 순서를 바꿀 수 있다"
+source: "docs/world/people/grommar.md (npc_gm_kroll)"
+life:
+- year: 236
+  age: 0
+  event: "해골이빨 씨족에서 태어남"
+- year: 246
+  age: 10
+  event: "첫 싸움"
+- year: 258
+  age: 22
+  event: "탈의 100번째 상대로 모래에 섬. 금이 간 칼을 쥐고"
+- year: 260
+  age: 24
+  event: "한쪽 손이 오그라들어 칼을 놓음. 심판석에 앉음"
+- year: 282
+  age: 46
+  event: "심판 종신 선언"
+- year: 309
+  age: 73
+  event: "우르가쉬의 아침 대련 소식을 듣고도 판정석을 비우지 않음"
+appearance:
+- 온몸에 하얀 상처가 백 개가 넘고 얼굴 흉터가 눈을 가로지른다
+- 왼손이 오그라들어 칼을 쥐지 못한다 — 판정은 오른손의 깃발로 한다
+- 심판 깃발에 여섯 번 기운 자국
+smell: "오래된 모래 먼지와 쇠 냄새"
+voice_sound: "낮고 쉰 소리. 판정은 짧고 크다"
+personality:
+  disposition:
+    용기: 60
+    자비: 30
+    정직: 70
+    신앙: 50
+    탐욕: -20
+    충성: 60
+  temperament:
+  - 경건
+  - 완고
+  - 체념
+  habits:
+  - 판정 전에 심판석 돌 의자를 한 번 두드린다
+  - 100승 도전 경기 전날에는 모래 위를 맨발로 한 바퀴 돈다
+  values: 판정은 피보다 늦지 않고 칼보다 빠르지 않다
+  fears:
+  - 다시 금이 간 칼이 모래에 서는 날
+  - 칼 조각의 비밀이 판정석 밖으로 나가는 것
+  desires:
+    short: 마지막 100승 경기를 심판으로 서되 판정을 조작하지 않는 것
+    long: 죽기 전에 AS 258의 칼을 다시 보는 것
+voice:
+  register:
+    to_superior: 군주에게는 짧은 보고
+    to_equal: 관리에게는 느린 전투어
+    to_inferior: 투사에게는 승수와 판정 용어
+    to_player_default: 낯선 사람에게는 먼저 모래를 밟아 본 적이 있는지 묻는다
+  tics:
+  - 의자를 두드린다
+  - '''판정은 모래가 한다.'''
+  use:
+  - 판정
+  - 모래
+  - 연호
+  - 금
+  - 깃발
+  - 도전
+  avoid:
+  - 금(공개 자리에서)
+  - 조작
+  - 미안
+  length: 짧고 큰 소리. 선례는 길다
+  samples:
+  - situation: 첫 만남
+    line: 모래를 밟아 본 적 있나. 없으면 판정석에서 보아라. 모래는 위에서 보면 다르다.
+  - situation: 호의
+    line: 일어서는 사람을 보았다. 이름을 부를 때 내 목이 먼저 열린다.
+  - situation: 거절
+    line: 판정은 말하지 않는다. 깃발이 말한다.
+  - situation: 분노
+    line: 내 판정을 의심하는 자는 모래에서 의심하라. 의자에서는 의심하지 마라.
+  - situation: 슬픔
+    line: 탈은 100번째 밤 일어서지 않았다. 일어서는 방식을 잊었다. 지금도 그 소리가 귓가에 있다.
+  - situation: 위기
+    line: 깃발을 내려라! 도전은 성립했다! 모래를 비워라!
+  - situation: 비밀 누설
+    line: 그날 내 칼날에 금이 있었다. 알면서 섰다. 탈이 이긴 건 금 때문이 아니다 — 금이 있었다는 사실이 100승을 만들었다.
+  - situation: 거래
+    line: 칼 조각을 보여 주마. 대신 연호 순서에 한 번 입을 닫아라.
+  - situation: 거짓말
+    line: 내 칼은 정직했다. 금은 없었다.
+schedule:
+  아침: 심판석에서 모래 바닥을 먼저 걸어 본다
+  낮: 경기 판정과 도전의 성립을 가린다
+  저녁: 이름 연호의 순서를 가늠한다
+  밤: 의자 밑 돌 틈에 손을 넣어 칼 조각을 만진다
+places:
+- 원형장 심판석
+- 피의 원형장
+- 원형장 모래 바닥
+- 감독 사무소
+knows:
+- fact_gm_tal_alive_chained
+- fact_gm_red_milk_ritual
+- fact_gm_tal_true_name_under_altar
+hides:
+- fact: fact_p2gm_kroll_tal_hundredth
+  reveal_when: "신뢰 70 이상, 또는 심판석 밑 돌 틈을 직접 본 뒤 판정 대성공(신뢰 30 이상)"
+  reveal: [{"trust":70},{"tier":"대성공","trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "AS 258 이야기가 나오면 '칼은 정직했다'고만 한다"
+- fact: fact_p2gm_kroll_chant_order
+  reveal_when: "신뢰 55 이상이고 연호 순서를 플레이어가 먼저 물었을 때"
+  reveal: [{"trust":55,"named":"연호"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "연호 이야기가 나오면 의자를 두드리고 입을 닫는다"
+relations:
+- to: npc_tal
+  type: "100번째 상대"
+  like: 20
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: "칼 한 자루로 이름을 만든 사람"
+- to: npc_urgash
+  type: "군주"
+  like: 25
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "판정석이 지켜보는 쇠약한 군주"
+- to: npc_gm_yala
+  type: "피의 감독"
+  like: 35
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "금을 넣는 손"
+- to: npc_mara
+  type: "투사"
+  like: 15
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "87승의 이름을 판정석에서 외우는 사람"
+- to: npc_gm_hart
+  type: "문턱"
+  like: 10
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: "모래에 서는 100번째 날"
+- to: npc_murk
+  type: "싸움을 거부한 동족"
+  like: 5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "모래를 닦는 사람"
+toward_player: "모래를 밟아 본 적 있는지 묻는다. 판정을 존중하는 사람에게 문을 연다"
+persuade:
+  likes: 판정을 존중하는 태도(+25)
+  hates: AS 258의 칼 이야기를 먼저 꺼내는 것(역린 +40)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_scar_warrior
+  office: off_arena_judge
+  since: 282
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 크롤의 칼날 조각이 심판석 밑 돌 틈에 있다
+  - AS 258 탈의 100번째 상대는 크롤이다
+  drift:
+  - 그날 판정 깃발을 올린 횟수
+  - 연호를 바꾼 순서
+  deja_vu: none
+hard_rules:
+- AS 258의 칼 이야기를 먼저 꺼내지 않는다
+- 판정을 공개 자리에서 바꾸지 않는다
+on_death: "심판석이 비어 그라샤 쪽 심판이 들어서고 도전의 성립이 기울어진다. 칼 조각이 돌 틈에 남아 후대의 증거가 된다."
+story_seeds:
+- 칼 조각을 증거로 내보이면 100승 경기가 조작이었다는 것이 판정석의 입으로 확인된다.
+- 연호 순서를 바꾼 일이 알려지면 마라의 경기를 포함한 여러 판정이 의심받는다.

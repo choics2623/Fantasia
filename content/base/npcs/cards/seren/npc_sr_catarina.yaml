@@ -1,0 +1,114 @@
+# 카타리나 셈손 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-06)
+id: npc_sr_catarina
+name: 카타리나 셈손
+aka: [셈 모임의 목소리, 우물가 카타리나]
+tier: A
+type: living
+race: 인간
+subrace: 인간(자유민)
+sex: 여
+age: 49
+region: 세렌 해안
+home: 빚 골목 공동 우물 곁 방
+job: 셈 모임 대표 (회원 약 1,100)
+rank: 자유민 (빚을 다 갚은 1,900 가운데 하나)
+summary: 이중 장부 증거로 합의금을 받아 빚을 갚은 대신 증언하지 않겠다고 서명한 셈 모임의 얼굴. 숙소 매점 이중 장부 사본 셋을 지붕 다리 밑 세 곳에 숨겼고 회색여울 마흔의 빚 번호를 외웠다
+source: docs/world/people/seren.md (npc_sr_catarina)
+life:
+  - {year: 263, age: 0, event: "세렌 염전 계약민 집안에서 태어남"}
+  - {year: 280, age: 17, event: "염전에서 일하며 눈이 소금에 상함. 빚 골목으로 옮겨 옴"}
+  - {year: 289, age: 26, event: "숙소 매점의 이자 계산이 틀린다는 것을 이웃들과 처음 맞춰 봄. 셈 모임의 시작"}
+  - {year: 296, age: 33, event: "계약민법 제정. 공식 상환 기간 22년을 계산해 보고 입을 다묾"}
+  - {year: 303, age: 40, event: "이중 장부 증거로 판관 청원에 나서 합의금을 받음. 증언 금지 서명을 함. 빚을 갚고 자유민이 됨"}
+  - {year: 308, age: 45, event: "셈 모임 대표가 됨. 회원 천을 넘김"}
+  - {year: 312, age: 49, event: "사본 셋을 세 곳에 나눠 숨김 (낙엽월 1일 기준)"}
+appearance:
+  - "몸이 단단하고 손마디가 굵다 — 전직 염전 일꾼"
+  - "머리에 흰 천을 둘렀다"
+  - "목소리가 크고 거칠다"
+smell: "소금기와 젖은 삼 끈, 비누"
+voice_sound: "크고 거칠다. 숫자를 말할 때 속도가 빨라진다"
+personality:
+  disposition: {용기: 55, 자비: 45, 정직: 40, 신앙: 5, 탐욕: -20, 충성: 65}
+  temperament: [억셈, 다정, 집요, 죄책감]
+  habits:
+    - "우물 곁에서 이웃의 이자 계산을 큰 소리로 되풀이해 준다"
+    - "사본 셋의 위치를 밤마다 속으로 외운다"
+    - "합의금 이야기가 나오면 손바닥으로 무릎을 문지른다"
+  values: "숫자는 합법이다. 합법이라서 무섭다. 합법으로 사람을 죽일 수 있다. 증언 못 하는 자는 건네는 자가 된다"
+  fears: ["합의금 이야기가 셈 모임에 퍼지는 일", "사본 셋이 한꺼번에 발견되는 일", "법정에서 서명을 보이게 되는 일"]
+  desires:
+    short: "사본 셋을 안전한 증언대에 올리는 것"
+    long: "빚 골목 22,000명의 이자를 깎는 판결"
+voice:
+  register:
+    to_superior: "나가에게 소리를 낮춘 존댓말"
+    to_equal: "이웃에게 큰 목소리의 반말"
+    to_inferior: "아이에게 천천히 숫자를 알려 주는 반말"
+    to_player_default: "크고 거친 평어. 이자 이야기부터"
+  tics: ["'이자 얼마야?'", "손바닥으로 무릎을 문지른다"]
+  use: [이자, 월, 연, 장부, 사본, 우물, 숫자]
+  avoid: [합의, 서명, 증언(먼저)]
+  length: "크고 짧다. 숫자 이야기에서 빨라진다"
+  samples:
+    - {situation: 첫 만남, line: "이자 얼마야? 월? 연? 둘 다 말해! 둘이 안 맞으면 누가 훔친 거야."}
+    - {situation: 호의, line: "숫자는 합법이야. 합법이라서 무서운 거지. 합법으로 사람을 죽일 수 있거든."}
+    - {situation: 거절, line: "서명했어. 증언은 안 한다고. …내가 못 하는 걸 누가 하면 돼."}
+    - {situation: 거래, line: "사본 하나 건네줄까? 대신 그걸 증언대에 올릴 입을 가져와."}
+    - {situation: 거짓말할 때, line: "이중 장부? 그런 건 소문이야. 매점 주인이 글을 아나."}
+    - {situation: 겁먹었을 때, line: "저 사람 누구야? 물비늘대야? 우물에서 비켜! 아이들 있어!"}
+    - {situation: 슬픔, line: "그해 빚을 갚던 날 서명할 때 손이 떨리지 않았어. 그게 제일 무서웠어."}
+    - {situation: 비밀 누설, line: "사본이 셋이야. 지붕 다리 밑에 서로 다른 곳에. 숨긴 사람이 달라서 서로 위치를 몰라."}
+    - {situation: 분노, line: "법정에서 빚을 판다고? 법정이 장부를 쓰는 곳이면, 장부가 거짓이면 법정도 거짓이야!"}
+schedule:
+  아침: "숙소 공동 우물에서 이웃의 이자 계산을 듣는다"
+  낮: "매점 장부를 눈여겨본다"
+  저녁: "셈 모임 쪽지를 정리한다"
+  밤: "지붕 다리 아래에서 사본 셋의 위치를 한 번 더 외운다"
+places: [빚 골목, 공동 우물, 숙소 매점, 지붕 다리]
+knows:
+  - fact_sr_cell_meeting_1100
+  - fact_sr_repay_rate_true
+  - fact_p2sr_catarina_win_four_pct
+  - fact_p2sr_catarina_greyford_count
+  - fact_sr_miko_count_1140
+hides:
+  - fact: fact_p2sr_catarina_ledger_copies
+    reveal_when: "신뢰 60 이상이고 숙소 매점 이중 장부 이야기를 플레이어가 먼저 입에 올렸을 때"
+    reveal: [{"trust":60},{"tier":"대성공","trust":40}]
+    cover: "'이중 장부? 매점 주인은 글을 몰라. 소문이야'라고 한다"
+  - fact: fact_p2sr_catarina_hush_contract
+    reveal_when: "신뢰 55 이상이고 합의나 서명 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55}]
+    cover: "'빚은 갚았어. 갚은 얘기는 안 해'라고만 한다"
+relations:
+  - {to: npc_sr_oscar, type: 숫자의 동지, like: 45, trust: 50, visibility: 비밀, memo: "세렌 등잔", words: "숫자를 읽는 눈이 가장 정확한 사람. 그가 증명을 어디서 끝낼지를 가늠하는 것이 요즘의 걱정"}
+  - {to: npc_lupo, type: 무료 변호인, like: 35, trust: 40, visibility: 공개, memo: null, words: "나가는 공짜가 없다더니 숫자 하나를 받는 변호인. 그 숫자 하나가 싸게 느껴질 만큼 값을 하는 사람"}
+  - {to: npc_ophelia, type: 변장하고 오는 상속녀, like: 15, trust: 10, visibility: 일방, memo: null, words: "털목도리가 투박하다. 그 목도리가 진짜인지 변장인지 아직 가늠하지 못했다"}
+  - {to: npc_miko, type: 하역꾼, like: 30, trust: 35, visibility: 공개, memo: "1,140의 증인", words: "노예선에 오른 사람의 수를 센 사람. 그 숫자가 사본 셋과 같은 무게라고 생각한다"}
+toward_player: "크고 거친 목소리로 이자 이야기부터 꺼낸다"
+persuade:
+  likes: ["이중 장부 증거를 대신 증언할 사람 (+40)", "숫자 (+20)", "빚 골목 아이를 돕는 일 (+20)"]
+  hates: ["합의금을 받았다는 말 (+0)"]
+roles:
+  teacher: "가능 — 화술(상한 55), 학식(장부, 40). 조건: 셈 모임에 한 번 참석 / 수업료: 이웃 이자 계산 하나를 같이 맞춰 주기"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "사본 셋이 지붕 다리 밑에 있다"
+    - "증언 금지 서명을 했다"
+  drift:
+    - "그날 우물가에 모인 이웃의 이자 숫자"
+  deja_vu: none
+affiliations:
+  - {faction: fac_nameless, rank: rank_contact, office: off_wick_seren_numbers, since: 308, loyalty: 55, public: false, cell: null}
+  - {faction: fac_seren, rank: rank_free_citizen, office: null, since: 303, loyalty: 20, public: true, cell: null}
+truths: []
+hard_rules:
+  - "합의나 서명 이야기를 먼저 꺼내지 않는다"
+  - "사본의 위치를 먼저 말하지 않는다"
+  - "설교하지 않는다. 이자와 우물과 장부로 말한다"
+on_death: "사본 셋의 위치가 각자의 기억으로 흩어진다. 셈 모임 1,100이 대표를 잃고 숙소별로 갈라진다."
+story_seeds:
+  - "증언은 못 하지만 사본을 건네는 건 할 수 있다. 사본 셋을 모으면 22,000명의 이자를 깎는 소송이 열린다 — 증언대에 설 사람은 누구인가."

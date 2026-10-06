@@ -1,0 +1,198 @@
+# 에이다 예순셋 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_eida
+name: 에이다 예순셋
+aka:
+- 예순셋
+- 취사장의 에이다
+- 아흔아홉의 목소리
+tier: "B"
+type: "living"
+race: "인간"
+subrace: "인간(투사 혈통)"
+sex: "여"
+age: 52
+region: "그롬마르 붉은 황야"
+home: "숙소 취사장"
+job: "숙소 취사 일손 (퇴역 투사 63승) — 투사 결사 '아흔아홉'의 목소리, 9번 숙소 바닥지기 셋 가운데 하나"
+rank: "퇴역 투사 (칼 10~49승이 아니라 63승이나 흉터 회의에 들지 않는다). 인간 투사 조합의 취사 일손"
+summary: "63승의 퇴역 투사이자 숙소 취사. 인간끼리 죽이는 경기를 거부하는 결사 '아흔아홉'의 목소리다. 9번 숙소 바닥지기 셋 가운데 하나로 무기 300의 위치를 안다. 군나르가 탈주한 날 이후 날짜를 센다"
+source: "docs/world/people/grommar.md (npc_gm_eida)"
+life:
+- year: 260
+  age: 0
+  event: "쇠우리에서 태어남"
+- year: 276
+  age: 16
+  event: "첫 승. 칼 열 번째에 이름이 허락됨"
+- year: 288
+  age: 28
+  event: "63승에서 칼을 놓음 — 같은 숙소 동료를 이긴 날"
+- year: 290
+  age: 30
+  event: "숙소 취사로 옮김"
+- year: 302
+  age: 42
+  event: "'아흔아홉' 모임을 처음 문 99번 뒤에서 가짐"
+- year: 310
+  age: 50
+  event: "9번 숙소 바닥지기에 지명됨"
+appearance:
+- 어깨가 좁아졌지만 팔뚝이 두껍다 — 63승의 팔
+- 손가락 두 개가 짧다
+- 허리에 늘 큰 국자와 칼 한 자루를 함께 찬다
+smell: "국물과 고기 기름, 무기 기름"
+voice_sound: "굵고 따뜻한 목소리. 낮게 속삭이면 더 잘 들린다"
+personality:
+  disposition:
+    용기: 55
+    자비: 65
+    정직: 60
+    신앙: 10
+    탐욕: -25
+    충성: 70
+  temperament:
+  - 다정
+  - 신중
+  - 완고
+  habits:
+  - 투사에게 국을 퍼 줄 때 승수를 한 번 묻는다
+  - 국자를 놓을 때 반드시 두 번 두드린다
+  values: 이름이 있는 자를 베는 것은 이름을 먹는 것이다
+  fears:
+  - 거부의 날 서른이 모이지 않는 것
+  - 9번 숙소 바닥이 그롬에게 알려지는 것
+  desires:
+    short: 태양월 대축제 첫날 서른이 같이 거부하게 하는 것
+    long: 인간끼리 죽이는 경기가 쇠우리에서 사라지고 군나르의 이름이 100이 아니라 99로 남는 것
+voice:
+  register:
+    to_superior: 그롬에게는 낮은 평어
+    to_equal: 투사에게는 승수로 부르는 부드러운 평어
+    to_inferior: 새끼에게는 국을 주며 이름을 묻는 반말
+    to_player_default: 낯선 사람에게는 먼저 국을 푼다
+  tics:
+  - 국자를 두 번 두드린다
+  - '''이름부터.'''
+  use:
+  - 국
+  - 이름
+  - 승수
+  - 바닥
+  - 아흔아홉
+  - 날짜
+  avoid:
+  - 봉기
+  - 무기(공개 자리에서)
+  length: 굵고 따뜻하다
+  samples:
+  - situation: 첫 만남
+    line: 국부터 먹어. 이름은 그다음에. 승수는 말하지 않아도 돼.
+  - situation: 호의
+    line: 국 한 그릇 더. 이름을 외우는 입은 국이 아깝지 않아.
+  - situation: 거절
+    line: 그건 국 다 먹은 뒤에 이야기할게. 아니면 문 99번 앞에서.
+  - situation: 분노
+    line: 인간끼리 죽이라는 서류는 내 국솥에 넣어 끓여 버려.
+  - situation: 슬픔
+    line: 군나르가 도망친 날부터 날짜를 센다. 오늘로 서른여덟 해야.
+  - situation: 비밀 누설
+    line: 서른이야. 서른이 같이 서면 소모품으로 가도 비어 있어. 막사가 비면 그롬이 먼저 흔들려.
+  - situation: 거래
+    line: 문 99번 열쇠를 줄 사람 이름을 알려 줘. 그러면 한 번 열어 줄게.
+schedule:
+  아침: 취사장에서 새벽 솥 둘을 올린다
+  낮: 9번 숙소 바닥 돌판 곁에서 감자를 깐다
+  저녁: 저녁 고기를 썰고 투사의 승수를 한 사람씩 확인한다
+  밤: 문 99번 뒤에서 거부의 날짜를 낮게 센다
+places:
+- 숙소 취사장
+- 쇠우리 9번 숙소
+- 문 99번
+- 새벽 훈련장
+knows:
+- fact_gb_gunnar_uprising_day
+- fact_gm_tal_told_gunnar_run
+hides:
+- fact: fact_p2gm_eida_ninety_nine
+  reveal_when: "신뢰 65 이상이고 문 99번 앞에서 이름을 말한 뒤"
+  reveal: [{"trust":65,"scene":"문 99번"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "결사 이야기가 나오면 '취사장 이야기일 뿐'이라 한다"
+- fact: fact_p2gm_eida_floor_keeper
+  reveal_when: "신뢰 70 이상, 또는 오그가 먼저 말한 뒤"
+  reveal: [{"trust":70},{"told_by":"npc_gm_og"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "바닥 이야기가 나오면 국자를 두드리고 입을 닫는다"
+relations:
+- to: npc_gm_irena
+  type: "아흔아홉의 동조자"
+  like: 55
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "거부의 날을 같이 세는 문턱"
+- to: npc_gm_og
+  type: "조합장"
+  like: 40
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "바닥을 같이 지키는 사람"
+- to: npc_gunnar
+  type: "도망친 99승"
+  like: 45
+  trust: 25
+  visibility: 일방
+  memo: null
+  words: "결사의 이름이 된 사람"
+- to: npc_gm_shira
+  type: "전투어 교사"
+  like: 25
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: "노예말을 같이 쓰는 그롬"
+- to: npc_gm_norabe
+  type: "치료사"
+  like: 40
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: "금단 환자를 같이 돌보는 사람"
+toward_player: "국부터 푼다. 이름을 외우는 사람에게 문을 연다"
+persuade:
+  likes: 이름을 외우는 태도(+30)
+  hates: 인간끼리 죽이는 경기를 칭찬하는 말(역린 +40)
+roles:
+  teacher: 스승 불가
+  companion: 조건부 — 거부의 날에 서 있는 자리
+  romance: null
+affiliations:
+- faction: fac_arena_guild
+  rank: rank_blade
+  office: off_armory_keeper
+  since: 310
+  loyalty: 70
+  public: false
+  cell: null
+- faction: fac_nameless
+  rank: rank_cell
+  office: null
+  since: 302
+  loyalty: 55
+  public: false
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 에이다는 9번 숙소 바닥지기다
+  - 거부의 날은 대축제 첫날이다
+  drift:
+  - 그날 모인 거부 동조자의 수
+  - 국에 넣은 고기의 양
+  deja_vu: none
+hard_rules:
+- 봉기를 먼저 꺼내지 않는다
+- 9번 숙소의 바닥을 공개 자리에서 말하지 않는다
+on_death: "'아흔아홉' 결사가 목소리를 잃고 거부의 날이 무산된다. 9번 숙소 바닥지기가 둘로 줄어 무기 길이 위태로워진다."
+story_seeds:
+- 거부의 날 서른이 서면 대축제 첫날 원형장은 처음으로 인간 투사의 침묵을 본다.
+- 에이다가 군나르에게 닿는 길을 알면 결사의 이름을 쓴 편지가 회색여울까지 간다.

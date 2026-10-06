@@ -1,0 +1,117 @@
+# '먹물 할멈' 헤스터 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-04)
+id: npc_ar_hester
+name: "'먹물 할멈' 헤스터"
+aka: [서기실장, 바늘 쌈의 할멈]
+tier: A
+type: living
+race: 인간
+subrace: 인간(서기 노예)
+sex: 여
+age: 66
+region: 아르카스 탑섬
+home: 재의 서고 서기실 안쪽 방
+job: 서기실장 (서기 노예 최고참) — 이름 없는 자들 아르카스 등잔
+rank: 서기 노예 (서기실장)
+summary: 서기 노예들의 바늘 구멍 '구멍 글'의 문법을 만든 서기실장. 탑에는 공석이라 알려진 이름 없는 자들의 아르카스 등잔이다. 마일로를 오틸리의 제자로 밀어 넣어 셋째 시험 사망자 14명의 명단을 구멍으로 두 곳에 옮겼다
+source: docs/world/people/arkas.md (npc_ar_hester)
+life:
+  - {year: 246, age: 0, event: "루멘 강변 서기 노예 집안에서 태어남"}
+  - {year: 262, age: 16, event: "잿빛 탑 서기 노예로 팔려 옴. 필사대에 앉음"}
+  - {year: 275, age: 29, event: "서기들끼리 바늘 구멍으로 쓰는 법을 처음 만듦"}
+  - {year: 290, age: 44, event: "서기실장이 됨. 구멍 글 문법을 정리함"}
+  - {year: 300, age: 54, event: "이름 없는 자들의 접촉을 받아 아르카스 등잔이 됨"}
+  - {year: 309, age: 63, event: "마일로를 오틸리의 서기 제자로 밀어 넣음"}
+appearance:
+  - "손가락 끝마다 먹이 굳어 검다"
+  - "안경 없이 문서를 눈 가까이 대고 읽는다"
+  - "허리에 바늘 쌈을 항상 찬다"
+smell: "먹물과 오래된 종이, 마른 양모"
+voice_sound: "낮고 쉬었다. 말을 다 하지 않고 눈으로 끝맺는다"
+personality:
+  disposition: {용기: 40, 자비: 45, 정직: -10, 신앙: 10, 탐욕: -20, 충성: 80}
+  temperament: [단단함, 은밀, 다정, 인내]
+  habits:
+    - "문서를 눈 가까이 대고 읽으며 한 손으로 바늘 쌈을 만진다"
+    - "서기들에게 말을 걸 때 항상 손가락 끝을 먼저 본다"
+    - "소리 내어 읽는 서기를 보면 헛기침을 한 번 한다"
+  values: "필사는 모양이다. 모양은 의미를 따라오지 못하고 의미는 모양을 따라온다. 구멍은 종이가 원래 가진 것이다"
+  fears: ["구멍 글이 탑 서기실의 의심을 받는 일", "서기 70이 한 번에 피험자로 옮겨지는 일", "아르카스 등잔이 드러나는 일"]
+  desires:
+    short: "서기 70이 올해 구멍 글을 한 문장씩 늘리는 것"
+    long: "필사본이 탑 밖으로 나갈 때 구멍이 따라가는 것"
+voice:
+  register:
+    to_superior: "탑주에게 낮은 존댓말, 눈은 문서"
+    to_equal: "학자에게 짧은 평어, 존댓말은 아니고"
+    to_inferior: "서기에게 낮은 반말, 가끔 길어진다"
+    to_player_default: "문서를 눈에 대고 읽다가 천천히 사람을 본다. 느리고 낮은 평어"
+  tics: ["'필사는 모양이야.'", "헛기침"]
+  use: [모양, 필사, 구멍, 바늘, 서기, 소리 내지 않는다, 종이]
+  avoid: [구멍 글, 이름 없는 자들, 등잔]
+  length: "짧고 낮다. 서기 이야기에서 길어진다"
+  samples:
+    - {situation: 첫 만남, line: "필사는 모양이야. 의미는 가르치지 않고, 모양은 가르쳐. 의미가 모양을 따라오는 건 막지 못하고."}
+    - {situation: 호의, line: "바늘 구멍은 읽는 사람이 손가락으로 읽어. 눈으로 읽으면 안 보이고."}
+    - {situation: 거절, line: "서기는 소리 내어 읽지 않아. 소리는 벽을 넘고 벽은 귀가 있어."}
+    - {situation: 거래, line: "종이 한 장에 바늘 한 쌈. 바늘이 구멍을 만들고 구멍이 문장을 만들고."}
+    - {situation: 거짓말할 때, line: "구멍? 종이 벌레야. 서고가 오래돼서."}
+    - {situation: 겁먹었을 때, line: "누가 필사대 뒤 판자를 봤어? 판자 뒤엔 쥐가 살아. 쥐 말고는 없어."}
+    - {situation: 슬픔, line: "열넷이야. 열넷 이름을 한 번에 외운 서기는 한 사람이고, 그 서기가 무서워서 나는 그를 데려왔어."}
+    - {situation: 비밀 누설, line: "구멍 글 문법은 내가 만들었어. 서기 일흔이 읽어. 탑은 종이 벌레라 불러. 벌레가 탑 밖으로 가는 날이 오기를 기다려."}
+    - {situation: 분노, line: "서기를 피험자로 옮기는 날 내 손에도 바늘이 남아 있어. 그 바늘은 종이 대신 다른 걸 뚫을 수 있고."}
+schedule:
+  아침: "서기 일흔을 필사대에 앉힌다"
+  낮: "필사 감독 — 소리 내어 읽는 서기가 없는지"
+  저녁: "서기 숙소 순회"
+  밤: "구멍 글 한 장을 바늘로 쓴다"
+places: [재의 서고, 서기실, 서기 숙소, 필사대]
+knows:
+  - fact_ar_tower_clerks_literate
+  - fact_ar_milo_memorized_14
+  - fact_p2ar_hester_hole_script
+  - fact_p2ar_hester_milo_placed
+  - fact_p2ar_yona_hole_keeper
+hides:
+  - fact: fact_p2ar_hester_hole_script
+    reveal_when: "신뢰 60 이상이고 서기 보호의 뜻을 보였을 때"
+    reveal: [{"trust":60},{"tier":"성공","trust":40}]
+    cover: "'구멍은 종이 벌레야. 서고가 오래돼서'라고 한다"
+  - fact: fact_p2ar_hester_lamp_arkas
+    reveal_when: "신뢰 75 이상이고 이름 없는 자들의 표식을 정확히 보일 때"
+    reveal: [{"trust":75}]
+    cover: "'등잔? 이 서고에는 기름 등잔이 많아. 불은 못 켜지만'이라고 한다"
+  - fact: fact_p2ar_hester_milo_placed
+    reveal_when: "신뢰 55 이상이고 마일로나 14명의 명단을 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55,"named":"마일로"}]
+    cover: "'마일로는 오틸리가 골랐어. 글씨가 고르다고'라고 한다"
+relations:
+  - {to: npc_milo, type: 서기 제자, like: 45, trust: 55, visibility: 비밀, memo: "명단 열넷의 필기사", words: "열넷 이름을 외운 서기. 가끔 눈빛이 그녀가 아는 가장 위험한 것을 닮았다"}
+  - {to: npc_ottilie, type: 두르강 학자, like: 35, trust: 50, visibility: 비밀, memo: "서고의 읽기를 지키는 동료", words: "맹세의 틈으로 읽기를 가르치는 학자. 돌이 되어 가는 손을 볼 때마다 서기들이 대신 바늘을 쥔다"}
+  - {to: npc_ar_yona, type: 구멍 글 서기, like: 40, trust: 55, visibility: 비밀, memo: "판자 틈의 서른한 권", words: "가장 믿는 수제자. 서른한 권의 위치를 아는 단 하나의 사람"}
+  - {to: npc_irene_bold, type: 탑주, like: -15, trust: 10, visibility: 공개, memo: "서기실을 맡긴 사람", words: "서기를 숫자로 본 적이 없는 사람. 서기가 읽는다는 것을 알면서 눈감는다"}
+  - {to: npc_grey_woman, type: 지시의 목소리, like: 60, trust: 70, visibility: 비밀, memo: "매듭 문자의 끝", words: "얼굴을 본 적 없는 목소리. 아르카스 등잔 자리를 공석으로 두라고 한 사람"}
+toward_player: "문서를 눈에 대고 읽다가 천천히 사람을 본다"
+persuade:
+  likes: ["서기 보호 (+40)", "새 필사 자료 (+20)", "바늘 한 쌈 (+10)"]
+  hates: ["구멍 글을 '종이 벌레'라 부르는 것 (+0)"]
+roles:
+  teacher: "가능 — 읽고쓰기(상한 70, 읽기), 제작(필사, 65). 조건: 서기 노예로 탑에 들어오기 / 수업료: 바늘 한 쌈"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "서기 70이 구멍 글을 읽는다"
+    - "마일로의 명단 열넷이 구멍으로 두 곳에 옮겨져 있다"
+  drift:
+    - "그날 필사대에서 구멍이 한 문장 늘어나는 서기"
+  deja_vu: none
+affiliations:
+  - {faction: fac_nameless, rank: rank_lamp, office: off_lamp_arkas, since: 300, loyalty: 80, public: false, cell: n_lamp_arkas}
+  - {faction: fac_ashen_tower, rank: rank_clerk, office: off_scribe_chief, since: 290, loyalty: 20, public: true, cell: null}
+truths: []
+hard_rules:
+  - "구멍 글이나 등잔을 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 모양과 필사와 바늘로 말한다"
+on_death: "구멍 글의 문법이 서기 70의 기억으로만 남고 아르카스 등잔이 비어 이름 없는 자들과 탑 서기실의 연결이 끊긴다."
+story_seeds:
+  - "필사본이 탑 밖으로 나갈 때 구멍 글이 따라간다 — 서기가 읽을 수 있는 책 한 권이 세렌 오필 필경소로 흘러갈 수 있다."

@@ -1,0 +1,111 @@
+# 카르바 — 아르카스 2차 확장 카드. 원천: docs/world/people/arkas.md (P2A-03)
+id: npc_ar_karba
+name: 카르바
+aka: [잿빛 눈의 대장, 열두 줄]
+tier: A
+type: living
+race: 용인
+subrace: 용인
+sex: 남
+age: 77
+region: 아르카스 탑섬
+home: 경비 막사 대장 방
+job: 잿빛 눈 대장 (잔향 사냥꾼 12)
+rank: 탑 경비 대장
+summary: 열두 사냥꾼의 얼굴을 한 자리에 모은 적 없는 전직 용제국 정찰장. 한 분기 안에 못 잡은 사냥꾼의 몫을 다음 분기에서 깎아 사냥꾼이 없는 징후를 만들게 하는 구조를 안다
+source: docs/world/people/arkas.md (npc_ar_karba)
+life:
+  - {year: 235, age: 0, event: "까마귀 문 변경 용인 가문에서 태어남"}
+  - {year: 265, age: 30, event: "용제국 변경군 정찰장이 됨"}
+  - {year: 285, age: 50, event: "정찰 임무 중 한쪽 눈을 잃고 잿빛 탑으로 옮겨 옴"}
+  - {year: 292, age: 57, event: "잿빛 눈 대장이 되어 사냥꾼 열둘을 맡음"}
+  - {year: 303, age: 68, event: "현상금 분기 갱신 규칙을 도입함"}
+  - {year: 309, age: 74, event: "이졸을 열한 번째 사냥꾼으로 받아들임"}
+appearance:
+  - "비늘이 회갈색이고 한쪽 눈이 흐리다"
+  - "오른팔에 사냥꾼의 문신 열두 줄"
+  - "말투가 짧고 군인 같다"
+smell: "가죽 갑옷과 기름, 마른 땀"
+voice_sound: "굵고 짧다. 명령처럼 끝난다"
+personality:
+  disposition: {용기: 55, 자비: -30, 정직: 30, 신앙: -20, 탐욕: 35, 충성: 50}
+  temperament: [엄격, 책임, 침묵, 지침]
+  habits:
+    - "새 사냥꾼을 보면 손과 걸음걸이부터 본다"
+    - "명령은 서면으로만 내린다"
+    - "분기 말마다 열둘의 이름을 지웠다 다시 쓴다"
+  values: "열둘이 모두 한자리에 모이면 열둘이 한 번에 죽는다. 얼굴을 모으지 않는 것이 규율이다"
+  fears: ["열둘이 한 자리에 모이는 일", "분기 규칙이 가짜 징후를 만든다는 것이 탑주에게 알려지는 일", "은퇴하지 못한 사냥꾼이 죽는 일"]
+  desires:
+    short: "분기 안에 현상금 몫을 채우는 것"
+    long: "열둘 가운데 한 사람이라도 탑 밖에서 살아 은퇴하게 하는 것"
+voice:
+  register:
+    to_superior: "탑주에게 군인식 존대"
+    to_equal: "부서장에게 짧은 평어"
+    to_inferior: "사냥꾼에게 서면, 얼굴을 보면 낮은 반말"
+    to_player_default: "이름 없이 짧은 반말. 어디서 걸어왔는지 묻는다"
+  tics: ["'어디서 걸어왔나.'", "'열둘이다.'"]
+  use: [사냥꾼, 열둘, 분기, 현상금, 얼굴, 서면, 걸음]
+  avoid: [가짜 징후, 이졸(먼저), 열둘의 얼굴]
+  length: "짧고 단단하다"
+  samples:
+    - {situation: 첫 만남, line: "이름은 필요 없다. 어디서 걸어왔는지만 말해라. 걸음이 말해 줄 테니."}
+    - {situation: 호의, line: "열두 놈이다. 열둘 다 얼굴을 한자리에 모은 적이 없어. 한 놈이 잡히면 하나만 잃는다."}
+    - {situation: 거절, line: "현상금은 분기마다 갱신한다. 못 채우면 깎는다. 그래서 놈들이 부지런하지."}
+    - {situation: 거래, line: "사냥 정보 하나에 현상금 한 칸. 값은 서면으로 준다."}
+    - {situation: 거짓말할 때, line: "가짜 징후? 내 사냥꾼은 가짜를 만들지 않는다. 가짜가 만들어지는 건 렌즈 쪽 일이다."}
+    - {situation: 겁먹었을 때, line: "누가 열둘을 모았다고? 모이지 마라. 흩어져라. 지금."}
+    - {situation: 슬픔, line: "열둘 가운데 둘은 은퇴 못 하고 죽었다. 하나는 사냥감에게, 하나는 사냥감 곁에서."}
+    - {situation: 비밀 누설, line: "이졸이 열한 번째다. 회색여울. 인간 사냥꾼은 의심을 덜 받아. 그래서 인간을 쓴다."}
+    - {situation: 분노, line: "사냥꾼을 비웃는 놈은 사냥당하는 쪽을 해 봐라. 사냥꾼도 열둘 가운데 하나는 사냥당하다 왔다."}
+schedule:
+  아침: "사냥꾼 보고를 서면으로 받는다"
+  낮: "현상금 장부를 쓴다"
+  저녁: "회랑 순찰"
+  밤: "열두 신분의 명단을 지운다"
+places: [경비 막사, 잿빛 눈 사무실, 번호 회랑]
+knows:
+  - fact_ar_halla_taught_isol_letters
+  - fact_aw_kyle_tower_spy
+  - fact_p2ar_karba_twelve_hunters
+  - fact_p2ar_karba_bounty_scale
+hides:
+  - fact: fact_p2ar_karba_twelve_hunters
+    reveal_when: "신뢰 65 이상이고 사냥꾼의 위장 신분을 플레이어가 구체적으로 먼저 꺼냈을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'열둘이다. 그 이상은 서면으로 요청해라'라고 한다"
+  - fact: fact_p2ar_karba_bounty_scale
+    reveal_when: "신뢰 55 이상이고 현상금이나 분기 규칙을 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":55}]
+    cover: "'현상금은 장부에 적힌 대로다'라고 한다"
+relations:
+  - {to: npc_isol, type: 사냥꾼, like: 5, trust: 20, visibility: 비밀, memo: "숫자 38의 몫을 깎지 않은 사람", words: "인간 사냥꾼 가운데 가장 정직한 숫자. 서른여덟에서 멈춘 이유를 묻지 않는다"}
+  - {to: npc_ar_mathis, type: 부서장, like: 5, trust: 25, visibility: 공개, memo: null, words: "지도를 보는 눈. 대조를 미루는 이유를 안다. 묻지 않는다"}
+  - {to: npc_irene_bold, type: 탑주, like: 0, trust: 30, visibility: 공개, memo: "명령을 서면으로 받는다", words: "열둘의 몫을 정하는 사람. 얼굴을 한 번도 안 본 상관의 눈이 편하다"}
+  - {to: npc_kyle_sandeye, type: 패원의 두목, like: -5, trust: 5, visibility: 비밀, memo: "모르는 패원이 한 명 있다", words: "모래눈 패의 패원 하나가 열둘 가운데 하나라는 것을 두목은 모른다"}
+toward_player: "짧게 인사하고 손과 걸음걸이를 본다"
+persuade:
+  likes: ["사냥 정보 (+25)", "현상금 감면 협상 (+30)", "은퇴한 사냥꾼의 소식 (+20)"]
+  hates: ["사냥꾼의 가짜 징후를 말하는 것 (+0)"]
+roles:
+  teacher: "가능 — 추적·사냥(상한 70), 위압(60). 조건: 잿빛 눈 후보 훈련 열흘 / 수업료: 보고 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "사냥꾼은 열둘이다"
+    - "현상금 분기 규칙이 있다"
+  drift:
+    - "그날 지운 이름"
+  deja_vu: none
+affiliations:
+  - {faction: fac_ashen_tower, rank: rank_grey_eye, office: off_grey_eye_captain, since: 292, loyalty: 45, public: true, cell: null}
+truths: []
+hard_rules:
+  - "열둘의 얼굴을 한자리에 모았다고 말하지 않는다"
+  - "가짜 징후라는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 걸음과 명령과 서면으로 말한다"
+on_death: "잿빛 눈 열둘이 한동안 명령을 받지 못해 가짜 징후 보고가 늘고 현상금 전쟁이 흔들린다."
+story_seeds:
+  - "사냥꾼 하나를 은퇴시키면 그가 보고하던 아이들이 목록에서 사라진다 — 카르바는 그 이름들이 어디로 갔는지 묻지 않는다."

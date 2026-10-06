@@ -1,0 +1,99 @@
+# 경매관 룬 카이르 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-07)
+id: npc_sr_run
+name: 경매관 룬 카이르
+aka: [상아 망치, 호가의 노래]
+tier: B
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 195
+region: 세렌 해안
+home: 계약 시장 경매대 뒤 방
+job: 계약 시장 경매관
+rank: 카이르 가 경매관
+summary: 용제국 노예를 사 계약민으로 '전환'하는 계약 시장의 경매관. 회색여울 마흔의 로트를 이미 장부에 올렸고 입찰자 둘의 담합을 알면서 수수료 1%를 받는다
+source: docs/world/people/seren.md (npc_sr_run)
+life:
+  - {year: 117, age: 0, event: "세렌 카이르 가 경매 집안에서 태어남"}
+  - {year: 296, age: 179, event: "계약민법 제정과 함께 전환 경매가 정식이 되어 경매관이 됨"}
+  - {year: 305, age: 188, event: "호가를 노래처럼 부르는 경매로 이름을 얻음"}
+  - {year: 311, age: 194, event: "담합하는 입찰자 둘을 처음 알아챔"}
+appearance:
+  - "붉은 비늘 줄무늬"
+  - "손에 상아 망치"
+  - "목소리가 크고 호가를 노래처럼 부른다"
+smell: "향유와 새 나무 단상"
+voice_sound: "크고 둥글고 노래처럼 이어진다"
+personality:
+  disposition: {용기: 15, 자비: -25, 정직: 10, 신앙: 10, 탐욕: 60, 충성: 25}
+  temperament: [쾌활, 계산, 무심, 허영]
+  habits:
+    - "호가를 부르며 망치를 오른손에서 왼손으로 옮긴다"
+    - "경매 전날 로트 번호를 손바닥에 적어 둔다"
+  values: "값은 사람이 매기는 게 아니라 사람들 사이에서 태어난다"
+  fears: ["담합 이야기가 판관에게 닿는 일", "로트 하나가 지정으로 빠지는 이유를 묻는 사람"]
+  desires:
+    short: "10월 30일 회색여울 마흔의 경매에서 수수료를 올리는 것"
+    long: "아마란트 상가의 전속 경매관"
+voice:
+  register:
+    to_superior: "의석주에게 쾌활한 존대"
+    to_equal: "중개인에게 큰 목소리의 평어"
+    to_inferior: "계약민에게 호가의 말투로"
+    to_player_default: "큰 목소리로 인사하고 호가를 먼저 던진다"
+  tics: ["'열 발톱 하나, 열 발톱 둘!'", "망치를 옮긴다"]
+  use: [로트, 호가, 낙찰, 발톱, 값, 전환, 이빨]
+  avoid: [담합, 지정(먼저), 심해]
+  length: "크고 노래처럼 길다"
+  samples:
+    - {situation: 첫 만남, line: "오늘의 로트, 서른둘! 이빨 보여 주고! 열 발톱부터! 열 발톱 하나, 열 발톱 둘…"}
+    - {situation: 호의, line: "값은 사람이 매기는 게 아니에요. 값은 사람들 사이에서 태어나는 거예요."}
+    - {situation: 거절, line: "그 로트는 이미 지정되었어요. 지정된 건 경매에 올리지 않습니다."}
+    - {situation: 거짓말할 때, line: "담합이요? 우리 경매는 투명한 장부를 써요. 장부에 안 적힌 목소리는 목소리가 아니고요."}
+    - {situation: 비밀 누설, line: "회색여울 마흔의 로트 번호가 이미 장부에 있어요. 서른하나는 서른이 되고요. 하나는 지정으로 빠져요."}
+schedule:
+  아침: "로트 번호를 붙인다"
+  낮: "경매 진행"
+  저녁: "낙찰 서류 정산"
+  밤: "담합한 입찰자의 이름을 장부에 한 줄 쓴다"
+places: [계약 시장, 경매대, 전환 서류 창구]
+knows:
+  - fact_sr_severo_greyford_batches
+  - fact_p2sr_run_bid_ring
+hides:
+  - fact: fact_p2sr_run_greyford_lots
+    reveal_when: "신뢰 55 이상이고 회색여울 마흔 중 한 사람의 이름을 플레이어가 언급했을 때"
+    reveal: [{"trust":55}]
+    cover: "'로트 순서는 경매 직전에 정해져요. 지금은 아무것도 몰라요'라고 한다"
+  - fact: fact_p2sr_run_bid_ring
+    reveal_when: "신뢰 60 이상이고 뇌물 3발톱 이상을 건넸을 때"
+    reveal: [{"trust":60,"gift":36}]
+    cover: "'경매는 투명해요. 호가는 소리 높이로 정해질 뿐이고요'라고 한다"
+relations:
+  - {to: npc_severo, type: 위탁자, like: 10, trust: 30, visibility: 공개, memo: "경매 순서를 맞춘다", words: "가마를 타는 위탁 상인. 로트 하나를 빼 달라고 한 날 처음으로 그가 긴장한 것을 봤다"}
+  - {to: npc_sr_sebo, type: 중개인, like: 10, trust: 25, visibility: 공개, memo: null, words: "로트 서류를 가져오는 젊은 나가. 서류를 한 장 더 넘기는 버릇이 마음에 걸린다"}
+  - {to: npc_sr_oral, type: 등록소, like: 10, trust: 30, visibility: 공개, memo: null, words: "번호표를 먼저 주는 사람. 번호가 붙으면 경매도 편하다"}
+toward_player: "큰 목소리로 인사하고 호가를 먼저 던진다"
+persuade:
+  likes: ["수수료 (+25)", "경매 순서 변경 제안 (+30)"]
+  hates: ["담합을 입에 올리는 것 (+0)"]
+roles:
+  teacher: "가능 — 화술(상한 60), 흥정(60). 조건: 경매 하루 참관 / 수업료: 수수료 1%"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "회색여울 마흔의 경매는 서리월 30일이다"
+  drift:
+    - "그날 경매에 오르는 로트의 순서"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_house, office: off_auctioneer, since: 296, loyalty: 25, public: true, cell: null}
+truths: []
+hard_rules:
+  - "담합을 입에 올리지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "경매 장부가 아마란트 상가로 넘어가고 회색여울 로트의 순서가 바뀐다."
+story_seeds:
+  - "10월 30일 경매대에 올라선 마흔 가운데 누구를 사들일 수 있는지는 경매관의 호가 사이에 있다."

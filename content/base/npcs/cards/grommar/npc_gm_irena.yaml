@@ -1,0 +1,192 @@
+# 이레나 아흔둘 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_irena
+name: 이레나 아흔둘
+aka:
+- 아흔둘
+- 백 개의 문의 대표
+- 서 있는 이레나
+tier: "B"
+type: "living"
+race: "인간"
+subrace: "인간(투사 혈통)"
+sex: "여"
+age: 31
+region: "그롬마르 붉은 황야"
+home: "쇠우리 (문턱 숙소)"
+job: "인간 투사 대표 (백 개의 문) — 92승 문턱, 흉터 회의 92표, 아흔아홉 동조자"
+rank: "인간 투사 (문턱 90~99승). 100승 도전 순번을 두고 고르바가 서류를 미는 대상"
+summary: "백 개의 문의 투사 대표. 92승. 고르바가 서류를 밀어 문턱 줄에서 조합장보다 먼저 100승 도전에 세우려 하고, 100번째 상대는 인간이다. 그녀는 인간끼리 죽이는 경기를 거부하는 '아흔아홉'의 동조자다"
+source: "docs/world/people/grommar.md (npc_gm_irena)"
+life:
+- year: 281
+  age: 0
+  event: "쇠우리에서 태어남"
+- year: 297
+  age: 16
+  event: "첫 승. 가슴에 첫 칼자국"
+- year: 305
+  age: 24
+  event: "문턱 90승에 올랐으나 같은 숙소 동료를 이긴 날 거부를 처음 입에 올림"
+- year: 308
+  age: 27
+  event: "투사 대표(백 개의 문)가 됨"
+- year: 311
+  age: 30
+  event: "아흔아홉 모임에 처음 나감"
+- year: 312
+  age: 31
+  event: "92승 — 고르바가 서류를 밀기 시작"
+appearance:
+- 키가 크고 어깨가 곧은 여자, 가슴 칼자국 아흔둘
+- 오른쪽 귀가 반쯤 없다
+- 눈이 오래 굶은 사람처럼 날카롭다
+smell: "무기 기름과 땀, 오래된 가죽"
+voice_sound: "낮고 곧다. 말이 짧고 단호하다"
+personality:
+  disposition:
+    용기: 75
+    자비: 45
+    정직: 70
+    신앙: 0
+    탐욕: -15
+    충성: 70
+  temperament:
+  - 신중
+  - 완고
+  - 용맹
+  habits:
+  - 말하기 전에 두 번 숨을 쉬고 한 번 서 있는다
+  - 새끼의 칼 쥔 손을 직접 잡아 고쳐 준다
+  values: 서 있는 자가 먼저 쓰러진다. 그래도 서 있는 것이 이름이다
+  fears:
+  - 거부했다가 서른이 소모품으로 가는 것
+  - 100번째 상대가 같은 숙소 사람이 되는 것
+  desires:
+    short: 올해 인간끼리 죽이는 경기를 거부하는 서른의 날짜를 정하는 것
+    long: 인간끼리 죽이는 경기가 쇠우리에서 사라지는 것
+voice:
+  register:
+    to_superior: 그롬에게는 짧은 전투어
+    to_equal: 투사에게는 승수로 부르는 평어
+    to_inferior: 새끼에게는 이름을 부르는 반말
+    to_player_default: 낯선 사람에게는 서 있는 법부터 묻는다
+  tics:
+  - 두 번 숨 쉰다
+  - '''아직 서 있다.'''
+  use:
+  - 승수
+  - 서 있다
+  - 거부
+  - 이름
+  - 숙소
+  - 아직
+  avoid:
+  - '100'
+  - 자유
+  - 소모품
+  length: 낮고 단호하다
+  samples:
+  - situation: 첫 만남
+    line: 몇 승이냐. 나는 아흔둘. 서 있는 법부터 보여 줘.
+  - situation: 호의
+    line: 서 있을 줄 아는 사람이다. 문 99번 앞으로 오라 — 아직 열지는 않겠다.
+  - situation: 거절
+    line: 그건 서 있는 자리에서 말하겠다. 지금은 앉아 있다.
+  - situation: 분노
+    line: 인간끼리 죽이라는 서류가 오면 나는 서류를 찢는다. 소모품이 되어도.
+  - situation: 슬픔
+    line: 같은 숙소 동료를 이긴 날 팔 안쪽에 이름을 새겼다. 아직 아물지 않았다.
+  - situation: 비밀 누설
+    line: 서른이 같이 서면 소모품도 아니다. 서른이면 막사가 비어 그롬이 먼저 흔들린다.
+  - situation: 거래
+    line: 고르바의 서류에서 내 이름을 한 번만 늦춰 줘. 그러면 서른이 하루 더 산다.
+schedule:
+  아침: 새벽 훈련에서 새끼 서른을 가르친다
+  낮: 숙소에서 상처를 닦고 고르바가 보낸 서류를 읽는다
+  저녁: 경기 또는 시범 경기 — 모래에 선다
+  밤: 문 99번 뒤 아흔아홉의 모임에서 거부의 날짜를 말한다
+places:
+- 쇠우리
+- 새벽 훈련장
+- 문 99번
+- 피의 원형장
+knows:
+- fact_gm_gorba_rigged_bouts
+- fact_gm_mara_three_names
+hides:
+- fact: fact_p2gm_irena_gorba_paper
+  reveal_when: "신뢰 55 이상이고 고르바의 서류를 플레이어가 먼저 언급했을 때"
+  reveal: [{"trust":55,"named":"서류"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "서류 이야기가 나오면 '대진표는 감독의 것'이라고만 한다"
+- fact: fact_p2gm_irena_refuses_human_bouts
+  reveal_when: "신뢰 65 이상, 또는 에이다가 먼저 말한 뒤"
+  reveal: [{"trust":65},{"told_by":"npc_gm_eida"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "거부 이야기가 나오면 서 있다가 말을 돌린다"
+relations:
+- to: npc_gm_eida
+  type: "아흔아홉의 목소리"
+  like: 55
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: "거부의 날짜를 같이 정하는 사람"
+- to: npc_gm_og
+  type: "조합장"
+  like: 20
+  trust: 35
+  visibility: 공개
+  memo: null
+  words: "속을 모르는 조합장"
+- to: npc_gorba
+  type: "서류를 미는 조련사"
+  like: -35
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: "100번째 상대를 인간으로 짜는 그롬"
+- to: npc_mara
+  type: "흉터"
+  like: 30
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "87표의 선배"
+- to: npc_gm_hart
+  type: "문턱"
+  like: 30
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: "94승의 후배"
+toward_player: "서 있는 법부터 묻는다. 승수가 없는 사람에게도 이름을 묻는다"
+persuade:
+  likes: 서 있는 태도를 존중하는 말(+30)
+  hates: 100승 이야기를 문턱 앞에서 하는 것
+roles:
+  teacher: '스승 가능 — 방패술(서 있는 법, 상한 55). 조건: 새끼 훈련 참관'
+  companion: 조건부 — 거부의 날에 서 있는 자리
+  romance: null
+affiliations:
+- faction: fac_arena_guild
+  rank: rank_threshold
+  office: null
+  since: 305
+  loyalty: 55
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 이레나는 92승이다
+  - 고르바가 서류를 밀고 있다
+  drift:
+  - 그날 새끼 훈련의 수
+  - 거부의 날짜 후보
+  deja_vu: none
+hard_rules:
+- 100승을 먼저 입에 올리지 않는다
+- 거부의 날짜를 신뢰 65 전에 말하지 않는다
+on_death: "아흔아홉 동조자가 서른에서 열로 줄어 거부의 날이 무산된다. 100승 도전 순번이 고르바의 뜻대로 정해진다."
+story_seeds:
+- 이레나가 서 있는 날 서른이 따라 서면 그롬이 인간 투사 사이의 경기 거부를 처음 마주한다.
+- 고르바의 서류를 늦추면 이레나의 100번째 상대가 바뀐다.

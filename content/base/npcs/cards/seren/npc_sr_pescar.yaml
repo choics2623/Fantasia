@@ -1,0 +1,96 @@
+# 페스카르 오스윈 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-16)
+id: npc_sr_pescar
+name: 페스카르 오스윈
+aka: [그물의 의석주, 뒷마당의 배]
+tier: B
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 360
+region: 세렌 해안
+home: 페스카르 조선소 감독 사택
+job: 제10의석 의석주 — 어업·조선
+rank: 의석주 (중립)
+summary: 조선소 계약민 300의 공제회 '빚 갚는 배'를 알면서 장부를 경비로 처리해 주는 중립 의석주. 조선소 뒷마당에서 장부 없는 배 한 척이 조용히 지어지고 있다
+source: docs/world/people/seren.md (npc_sr_pescar)
+life:
+  - {year: -48, age: 0, event: "세렌 조선 가문에서 태어남 (AS 기준 −48년)"}
+  - {year: 150, age: 198, event: "조선소 감독이 됨"}
+  - {year: 266, age: 314, event: "의석 경매에서 페스카르 가 의석을 지킴"}
+  - {year: 300, age: 348, event: "조선소 계약민이 처음으로 공제회를 만듦. 모른 척하기로 함"}
+  - {year: 310, age: 358, event: "뒷마당에 장부 없는 배의 용골을 놓음"}
+appearance:
+  - "그물 무늬 문신"
+  - "어깨가 넓고 꼬리가 짧고 굵다"
+  - "손바닥이 물에 닳아 하얗다"
+smell: "송진과 타르, 마른 물고기"
+voice_sound: "굵고 느리다. 망치 소리처럼 단정하게 끝난다"
+personality:
+  disposition: {용기: 30, 자비: 20, 정직: 20, 신앙: 20, 탐욕: 30, 충성: 30}
+  temperament: [묵묵, 고집, 실리, 속정]
+  habits:
+    - "새 선체를 보면 손바닥으로 세 번 두드려 소리를 듣는다"
+    - "조선소를 나올 때 뒷마당을 한 번 돌아본다"
+  values: "물에 뜨는 건 이유가 있고 가라앉는 것도 이유가 있다. 배는 사람이 가라앉지 않게 하려고 짓는 것이다"
+  fears: ["공제회가 의회에서 불법으로 판정되는 일", "뒷마당 배가 장부에 오르는 일"]
+  desires:
+    short: "공제회 장부를 경비로 계속 처리하는 것"
+    long: "뒷마당 배 한 척의 완성"
+voice:
+  register:
+    to_superior: "의장에게 정중한 존대"
+    to_equal: "의석주에게 느린 평어"
+    to_inferior: "계약민에게 거친 반말이지만 이름을 부른다"
+    to_player_default: "선체를 두드리며 짧게 인사한다"
+  tics: ["'뜨는 데에는 이유가 있어.'", "세 번 두드린다"]
+  use: [배, 용골, 물, 뜨다, 가라앉다, 서른 해, 조선소]
+  avoid: [공제회, 뒷마당, 도주]
+  length: "짧고 굵다"
+  samples:
+    - {situation: 첫 만남, line: "이 배는 서른 해 걸려. 너는 몇 해 걸릴 것 같아? 빚 말고, 배 말야."}
+    - {situation: 호의, line: "물에 뜨는 건 이유가 있어. 가라앉는 것도 이유가 있고."}
+    - {situation: 거절, line: "뒷마당? 거긴 아무것도 없어. 장부에 없으니까."}
+    - {situation: 비밀 누설, line: "매달 닷새에 모은 몇 못이 누구 빚을 갚아. 나는 그 장부를 경비라고 쓰지. 배를 짓는 경비라고."}
+    - {situation: 겁먹었을 때, line: "누가 뒷마당에 갔어? 용골을 봤어? …불 끄고 돌아가."}
+schedule:
+  아침: "선체를 두드려 본다"
+  낮: "조선소 감독"
+  저녁: "공제회 장부를 경비로 옮긴다"
+  밤: "뒷마당 배를 한 번 둘러본다"
+places: [페스카르 조선소, 뒷마당, 아홉 비늘 의회당]
+knows:
+  - fact_p2sr_pescar_debt_boat
+hides:
+  - fact: fact_p2sr_pescar_ship_for_exit
+    reveal_when: "신뢰 60 이상이고 도주선이나 뒷마당 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":60},{"tier":"대성공","trust":40}]
+    cover: "'조선소 뒷마당에는 폐목재뿐이에요'라고 한다"
+relations:
+  - {to: npc_sr_catarina, type: 셈 모임, like: 15, trust: 20, visibility: 비밀, memo: "같은 숫자의 다른 쪽", words: "같은 이자를 다르게 세는 사람들. 공제회와 셈 모임이 서로의 얼굴을 모르는 것이 낫다고 본다"}
+  - {to: npc_sr_lucio, type: 해운 이웃, like: 0, trust: 20, visibility: 공개, memo: "배를 사 가는 상가", words: "소금 바늘을 만든 조선소의 주인. 배는 배고 짐은 짐이라는 말에 속이 쓰리다"}
+  - {to: npc_miko, type: 선원, like: 10, trust: 20, visibility: 공개, memo: "갑판 수리 때 일하는 계약민", words: "숫자를 세는 젊은 선원. 이 사람이 도주선의 첫 승선자가 될 것 같다"}
+toward_player: "선체를 두드리며 짧게 인사한다"
+persuade:
+  likes: ["일손 (+20)", "배의 새 설계 (+25)"]
+  hates: ["공제회를 불법이라 부르는 것 (+0)"]
+roles:
+  teacher: "가능 — 공학(조선, 상한 65). 조건: 조선소 일 일주일 / 수업료: 목재 한 짐"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "공제회 '빚 갚는 배'는 매달 5일에 모인다"
+    - "뒷마당에 장부 없는 배가 있다"
+  drift:
+    - "그날 뒷마당 배의 용골 길이"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_10_pescar, since: 266, loyalty: 35, public: true, cell: null}
+truths: []
+hard_rules:
+  - "공제회나 뒷마당 배를 먼저 입에 올리지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "공제회 장부의 비호가 사라지고 장부 없는 배가 해체된다."
+story_seeds:
+  - "공제회 회원이 빚을 못 갚은 채 도망쳐야 할 때를 위한 배가 완성되는 날 세렌에 처음으로 계약민 도주선이 생긴다."

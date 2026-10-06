@@ -1,0 +1,98 @@
+# 시르 오랄 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-05)
+id: npc_sr_oral
+name: 시르 오랄
+aka: [푸른 장부관의 열쇠, 번호표 오랄]
+tier: B
+type: living
+race: 나가
+subrace: 왕관 나가(오랄 가)
+sex: 여
+age: 160
+region: 세렌 해안
+home: 푸른 장부관 위층 등록관 방
+job: 푸른 장부관 등록소 실무
+rank: 오랄 가 서기장
+summary: 푸른 장부관 서가 맨 위 칸의 회색여울 저당 원본 열쇠를 목에 건 등록관. 1차 40명을 열흘 검역 뒤 경매로 보내고, 번진 인장 7%를 덮어 둔 것이 루포의 무효 212건을 만들었다
+source: docs/world/people/seren.md (npc_sr_oral)
+life:
+  - {year: 152, age: 0, event: "오랄 가 서기 가문에서 태어남"}
+  - {year: 262, age: 110, event: "푸른 장부관 서기가 됨"}
+  - {year: 296, age: 144, event: "계약민법 제정과 함께 등록소 실무를 맡음"}
+  - {year: 310, age: 158, event: "서가 맨 위 칸의 열쇠를 도나에게서 받음"}
+appearance:
+  - "연푸른 비늘"
+  - "목에 서가 열쇠를 건 쇠 사슬"
+  - "서류를 넘길 때 꼬리 끝이 책상 아래서 규칙적으로 움직인다"
+smell: "마른 종이와 밀랍, 소금"
+voice_sound: "차분하고 단조롭다"
+personality:
+  disposition: {용기: 10, 자비: -5, 정직: 45, 신앙: 20, 탐욕: 25, 충성: 40}
+  temperament: [정확, 수동, 체념, 성실]
+  habits:
+    - "번호표를 건네며 항상 같은 말을 한다"
+    - "저녁마다 서가 맨 위 칸 앞에서 열쇠를 한 번 만진다"
+  values: "번호가 있어야 이름이 있다. 서류의 완결이 곧 정의다"
+  fears: ["맨 위 칸 열쇠를 잃는 일", "번진 인장 이야기가 위로 올라가는 일"]
+  desires:
+    short: "313 포도월 30일까지 회색여울 저당 서류를 흠 없이 보관하는 것"
+    long: "서가의 번진 인장 7%를 모두 정리하는 것"
+voice:
+  register:
+    to_superior: "조합장에게 낮은 존대"
+    to_equal: "중개인에게 단정한 평어"
+    to_inferior: "계약민에게 번호로 부르는 정중한 존대"
+    to_player_default: "번호표를 먼저 건넨다. 차분한 존대"
+  tics: ["'번호표 받으세요.'", "열쇠를 만진다"]
+  use: [번호, 등록, 서가, 인장, 번짐, 보류, 검역]
+  avoid: [맨 위 칸, 열쇠(먼저), 번진 인장]
+  length: "짧고 단조롭다"
+  samples:
+    - {situation: 첫 만남, line: "번호표 받으세요. 이름은 번호 다음이에요. 번호가 있어야 이름이 있어요."}
+    - {situation: 호의, line: "인장이 번지는 건 잉크 탓이에요. 잉크 탓이라고 쓰면 책임이 번지지 않아요."}
+    - {situation: 거절, line: "맨 위 칸은 열쇠 있는 사람만요. 열쇠는 제가 가졌고, 저는 열지 않아요."}
+    - {situation: 비밀 누설, line: "회색여울 저당 원본이요. 맨 위 칸이에요. 기한은 포도월 30일. 그 칸의 열쇠를 지키는 일이 제 일이에요."}
+    - {situation: 거짓말할 때, line: "번진 인장이요? 저희 서가엔 번진 인장이 없어요. 있다면 그건 번진 게 아니라 흘려 찍은 거예요."}
+schedule:
+  아침: "등록 창구를 연다"
+  낮: "전환 등록 서류를 받는다"
+  저녁: "서가 맨 위 칸을 한 번 더 확인한다"
+  밤: "번진 인장을 모아 쌓는다"
+places: [푸른 장부관, 등록 창구, 서가]
+knows:
+  - fact_sr_godric_debt_designed
+  - fact_p2sr_oral_hold_forty
+  - fact_p2sr_oral_smudged_seals
+hides:
+  - fact: fact_p2sr_oral_greyford_mortgage
+    reveal_when: "신뢰 60 이상이고 저당 기한이나 서가 맨 위 칸을 플레이어가 먼저 물었을 때"
+    reveal: [{"trust":60},{"tier":"대성공","trust":40}]
+    cover: "'저당 서류는 서가의 정해진 칸에 있어요. 어느 칸인지는 열쇠 가진 이만 알고요'라고 한다"
+relations:
+  - {to: npc_sr_sebo, type: 현장 중개인, like: 15, trust: 30, visibility: 공개, memo: null, words: "서류를 같이 올리는 사이. 한 줄 비는 서류를 한 번 의심했지만 접수했다"}
+  - {to: npc_lupo, type: 서류 열람자, like: 5, trust: 10, visibility: 일방, memo: "번진 인장을 찾는 변호인", words: "서가에서 번진 인장만 찾는 변호인. 쫓아내지 않는 이유를 스스로도 설명하지 못한다"}
+  - {to: npc_sr_oscar, type: 감정사, like: 15, trust: 30, visibility: 공개, memo: null, words: "같은 숫자를 다르게 읽는 사이"}
+  - {to: npc_severo, type: 상관, like: -5, trust: 20, visibility: 공개, memo: null, words: "서류를 가져다주는 사람. 가마 소리가 시끄럽다"}
+toward_player: "번호표를 먼저 건넨다. 차분하다"
+persuade:
+  likes: ["서류의 완결성 (+20)", "번진 인장 정리 일손 (+25)"]
+  hates: ["서가 맨 위 칸을 묻는 것 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "맨 위 칸에 회색여울 저당 원본이 있다"
+  drift:
+    - "그날 등록 창구에 오는 번호의 순서"
+  deja_vu: none
+affiliations:
+  - {faction: fac_inkscale, rank: rank_seal, office: off_registry, since: 296, loyalty: 40, public: true, cell: null}
+  - {faction: fac_seren, rank: rank_house, office: null, since: 262, loyalty: 40, public: true, cell: null}
+truths: []
+hard_rules:
+  - "맨 위 칸의 위치를 먼저 말하지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "맨 위 칸 열쇠가 도나의 서기에게 넘어가고 회색여울 저당 원본의 위치가 바뀐다."
+story_seeds:
+  - "313 포도월 30일 저당 기한에 맨 위 칸을 연 자가 남작의 운명을 쥔다. 열쇠는 한 사람의 목에 걸려 있다."

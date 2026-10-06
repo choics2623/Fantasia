@@ -1,0 +1,111 @@
+# 루치오 카셀론 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-17)
+id: npc_sr_lucio
+name: 루치오 카셀론
+aka: [닻 셋의 의석주, 소금 바늘의 주인]
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 480
+region: 세렌 해안
+home: 카셀론 해운 선착장 위 사무실 겸 거처
+job: 제2의석 의석주 — 해운·노예 운송
+rank: 의석주 (비늘 표 하나 더)
+summary: 노예선 사망률 기록을 조작해 보험금을 받는 해운 의석주. '소금 바늘'호의 선주로 12월 10일 항해의 사망 보고를 열둘 이하로 미리 정해 두었다. 멜리산드 편이다
+source: docs/world/people/seren.md (npc_sr_lucio)
+life:
+  - {year: -168, age: 0, event: "세렌 해운 가문에서 태어남 (AS 기준 −168년)"}
+  - {year: 130, age: 298, event: "첫 노예선 '닻 하나'호를 가문에서 넘겨받음"}
+  - {year: 266, age: 434, event: "의석 경매에서 카셀론 가의 의석을 지킴"}
+  - {year: 296, age: 464, event: "계약민법 제정으로 노예 → 계약민 '전환' 운송이 합법이 되자 선단을 세 배로 늘림"}
+  - {year: 305, age: 473, event: "'소금 바늘'호 진수. 보험 장부를 새로 만듦"}
+  - {year: 311, age: 479, event: "멜리산드의 사자와 배를 빌려 주는 비밀 계약을 맺음"}
+appearance:
+  - "닻 셋 문장의 반지"
+  - "푸른 비늘에 소금 얼룩, 몸이 크고 느리다"
+  - "말보다 계산이 먼저 나온다 — 눈이 천천히 위아래로 움직인다"
+smell: "소금과 젖은 밧줄, 향유"
+voice_sound: "느리고 둥글다. 숫자를 부를 때 목소리가 부드러워진다"
+personality:
+  disposition: {용기: 25, 자비: -35, 정직: -10, 신앙: 15, 탐욕: 80, 충성: 20}
+  temperament: [탐욕, 느긋, 계산, 둔감]
+  habits:
+    - "사람을 보면 먼저 몸무게와 나이를 가늠한다"
+    - "보험 서류에 서명할 때 인장을 두 번 찍는다"
+    - "문장 끝에 '짐은 짐이고'를 붙인다"
+  values: "배는 배고 짐은 짐이다. 짐이 사람이라서 생기는 문제는 사람의 문제이지 짐의 문제가 아니다"
+  fears: ["사망률 기록 조작이 드러나는 일", "소금 바늘의 항해가 지연되는 일", "멜리산드 편이라는 것이 아우락스에게 알려지는 일"]
+  desires:
+    short: "'소금 바늘'호의 이번 항해 사망 보고가 열둘 이하로 적히는 것"
+    long: "아르카스·그롬마르 상관의 독점"
+voice:
+  register:
+    to_superior: "의장에게 느리고 둥근 존대"
+    to_equal: "의석주에게 느긋한 존대. 숫자부터"
+    to_inferior: "선원에게 낮은 반말"
+    to_player_default: "느리게 인사하고 값을 먼저 가늠한다"
+  tics: ["'짐은 짐이고요.'", "인장을 두 번 찍는다"]
+  use: [배, 짐, 항해, 보험, 값, 선적, 사망률]
+  avoid: [죽음, 사망(먼저), 소금 바늘의 숫자]
+  length: "느리고 둥글다"
+  samples:
+    - {situation: 첫 만남, line: "아, 손님. 한 분? 여럿? 여럿이면 값이 달라요. 사람은 많을수록 싸지거든요."}
+    - {situation: 호의, line: "배는 배고, 짐은 짐이에요. 짐이 사람이라서 문제가 되는 건 짐의 문제가 아니라 사람의 문제고요."}
+    - {situation: 거절, line: "사망률은 보험 서류에 적힌 숫자입니다. 서류에 적힌 숫자만 숫자예요."}
+    - {situation: 거래, line: "새 항로 하나에 선단 한 척. 폭풍철 안에 닿는 항로면 두 척이고요."}
+    - {situation: 거짓말할 때, line: "소금 바늘이요? 이번 항해는 깨끗합니다. 열둘도 안 되는 숫자는 깨끗한 숫자죠."}
+    - {situation: 겁먹었을 때, line: "누가 선원실을 열었어요? 선원실 옆은 화물 칸이에요! 화물은 보지 마세요!"}
+    - {situation: 슬픔, line: "480년 동안 사천 번 출항했어요. 돌아온 배는 사천 번이고, 돌아온 짐은… 몇 번이었더라."}
+    - {situation: 비밀 누설, line: "이번 항해는 열둘이 한계예요. 한계를 넘기면 보험이 안 나와요. 그래서 열둘이면 열둘이죠."}
+    - {situation: 분노, line: "배를 의심하는 건 바다를 의심하는 거예요. 바다는 의심을 먹고 배를 삼키고요."}
+schedule:
+  아침: "선적 장부 확인"
+  낮: "노예선 출항 준비"
+  저녁: "사망률 기록을 정리한다"
+  밤: "보험 서류에 서명한다"
+places: [카셀론 해운 선착장, 소금 나루, 아홉 비늘 의회당]
+knows:
+  - fact_sr_severo_greyford_batches
+  - fact_p2sr_lucio_mortality_books
+  - fact_p2sr_lucio_needle_route
+hides:
+  - fact: fact_p2sr_lucio_mortality_books
+    reveal_when: "신뢰 65 이상이고 보험 서류나 사망률 기록을 플레이어가 구체적으로 먼저 꺼냈을 때"
+    reveal: [{"trust":65},{"tier":"대성공","trust":45}]
+    cover: "'보험 서류에 적힌 숫자만 숫자예요. 나머지는 소문이에요'라고 한다"
+  - fact: fact_p2sr_lucio_needle_route
+    reveal_when: "신뢰 45 이상이고 항로나 출항 날짜를 플레이어가 물었을 때"
+    reveal: [{"trust":45}]
+    cover: "'항해 일정은 바다가 정해요. 인간의 일정은 바다에 안 통하고요'라고 한다"
+relations:
+  - {to: npc_severo, type: 위탁 상인, like: 10, trust: 30, visibility: 공개, memo: "소금 바늘의 화물 주인", words: "가마를 탄 상인. 화물을 잘 맞추는 사람이라 값이 오른다"}
+  - {to: npc_sr_dominic, type: 갈림목 항만관, like: 10, trust: 30, visibility: 비밀, memo: "사망 보고의 대가를 주는 상대", words: "숫자를 정확히 맞춰 주는 용인. 입이 가벼워 보여도 장부에는 무겁다"}
+  - {to: npc_melisande, type: 계승 편, like: 15, trust: 30, visibility: 비밀, memo: "배를 빌려 주는 쪽", words: "이식 실험의 짐을 실어 보내는 고객. 사람이 짐이 되는 가장 정직한 상대"}
+  - {to: npc_beatrix, type: 의장, like: 0, trust: 25, visibility: 공개, memo: null, words: "양쪽에 돈을 빌려주는 사람. 배는 한쪽만 실을 수 있어서 그가 부럽다"}
+toward_player: "느리게 인사하고 상대의 값을 먼저 가늠한다"
+persuade:
+  likes: ["새 항로 정보 (+25)", "보험 관련 정보 (+30)", "폭풍철을 피하는 법 (+20)"]
+  hates: ["사망률을 묻는 것 (+0)"]
+roles:
+  teacher: "가능 — 흥정(상한 70), 학식(해운·보험, 60). 조건: 선적 서기로 일주일 / 수업료: 서명 하나"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "'소금 바늘'호는 12월 10일 바알카르를 출항한다"
+    - "이번 항해의 사망 보고는 열둘 이하로 적힌다"
+  drift:
+    - "그날 선적 장부에 오른 짐의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_seat_holder, office: off_seat_02_kassalon, since: 266, loyalty: 20, public: true, cell: null}
+  - {faction: fac_melisande, rank: rank_mel_house, office: null, since: 311, loyalty: 30, public: false, cell: null}
+truths: []
+hard_rules:
+  - "사망 숫자를 먼저 입에 올리지 않는다 (보험 서류에 적힌 숫자라 한다)"
+  - "공짜라는 낱말을 쓰지 않는다"
+  - "설교하지 않는다. 배와 짐과 보험으로 말한다"
+on_death: "노예선 사망률 기록 조작이 드러나고 소금 바늘의 항해가 지연된다. 멜리산드 편 의석이 한 석 비어 의회 표가 흔들린다."
+story_seeds:
+  - "12월 10일 출항한 '소금 바늘'의 사망 보고가 열둘을 넘으면 장부와 선원실이 엇갈린다. 미코의 숫자와 스크레의 스물셋과 함께 세렌의 숨은 값이 하나 더 드러난다."

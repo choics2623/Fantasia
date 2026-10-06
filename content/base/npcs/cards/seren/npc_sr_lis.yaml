@@ -1,0 +1,110 @@
+# 리스 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-14)
+id: npc_sr_lis
+name: 리스
+aka: [필경소의 리스, 둘째 열쇠, 별 아래의 서기]
+tier: A
+type: living
+race: 인간
+subrace: 인간(계약민)
+sex: 여
+age: 24
+region: 세렌 해안
+home: 오필 상가 서기 숙소 (필경소 위층)
+job: 오필 상가 필경소 서기 — 별의 집 둘째 열쇠 지킴이
+rank: 계약민 (오필 상가 소속 서기)
+summary: 글을 숫자 이상으로 읽는 합법의 틈에 앉은 계약민 서기. 별의 집 둘째 청동 열쇠를 목에 걸고 조상의 이름을 노래로 받았다. 탑의 연구 보고가 필경소에 먼저 오는 틈을 타 서가 위치 지도 한 장을 두 번 베낀다
+source: docs/world/people/seren.md (npc_sr_lis)
+life:
+  - {year: 288, age: 0, event: "세렌 빚 골목에서 태어남. 외할머니가 별 노래를 아이에게 입 모양으로 전함"}
+  - {year: 298, age: 10, event: "오필 상가가 필사 소질 있는 아이를 계약 서기로 골라 감"}
+  - {year: 304, age: 16, event: "글을 숫자 이상으로 읽을 수 있다는 것을 오필 가가 알면서도 눈감아 줌"}
+  - {year: 308, age: 20, event: "외할머니의 마지막 노래에서 조상의 이름을 받음. 둘째 열쇠를 넘겨받음"}
+  - {year: 311, age: 23, event: "탑의 연구 보고서 사본에서 서가 위치 지도를 처음 봄"}
+  - {year: 312, age: 24, event: "그 지도를 두 번째로 베껴 서기 숙소 바닥 판 밑에 숨김 (낙엽월 1일 기준)"}
+appearance:
+  - "눈이 크고 조용한 갈색"
+  - "왼손 엄지와 검지로 가끔 별 매듭을 만든다"
+  - "목에 낡은 청동 열쇠를 천에 싸서 건다"
+smell: "잉크와 새 종이, 바다 소금기"
+voice_sound: "작고 맑다. 문장 끝을 노래처럼 올렸다가 서둘러 내린다"
+personality:
+  disposition: {용기: 30, 자비: 40, 정직: 45, 신앙: 20, 탐욕: -25, 충성: 60}
+  temperament: [조용, 호기심, 겁, 헌신]
+  habits:
+    - "필사를 하다가 입 모양으로만 노래를 따라 부른다"
+    - "낯선 사람이 오면 별 매듭을 만든 손을 소매 속에 숨긴다"
+    - "열쇠를 쌌던 천을 하루에 세 번 고쳐 싼다"
+  values: "이름은 노래로 받는다. 노래는 적지 않는다. 적지 않은 것은 불에 타지 않는다"
+  fears: ["열쇠가 발견되는 일", "지도 사본이 오필 시라에게 들키는 일", "노래가 자기 대에서 끊기는 일"]
+  desires:
+    short: "탑 서가의 위치 지도를 안전하게 베껴 두는 것"
+    long: "맞는 문을 찾는 것"
+voice:
+  register:
+    to_superior: "상가 사람에게 낮은 존댓말, 눈을 아래로"
+    to_equal: "서기 동료에게 속삭이는 평어"
+    to_inferior: "없다"
+    to_player_default: "조심스러운 존댓말. 필사를 멈추고 질문을 기다린다"
+  tics: ["'숫자만 베껴요.'", "별 매듭을 소매에 숨긴다"]
+  use: [숫자, 필사, 노래, 이름, 서가, 열쇠, 별]
+  avoid: [열쇠(먼저), 서가 위치, 지도, 별의 집]
+  length: "짧고 맑다"
+  samples:
+    - {situation: 첫 만남, line: "필사는 숫자 이상이면 안 되어요. 그래서 저는 늘 숫자만 베끼는 척해요."}
+    - {situation: 호의, line: "이름은 노래로 받았어요. 노래는 적지 않아요. 그래서 안 잊히고요."}
+    - {situation: 거절, line: "열쇠? 이 천 안에 있는 건 옷감이에요. 보여 드릴 만한 건 아니에요."}
+    - {situation: 겁먹었을 때, line: "누가 지도를 봤어요? 아니에요, 그건 숫자표예요! 정말 숫자표예요!"}
+    - {situation: 슬픔, line: "외할머니가 마지막으로 부른 노래의 끝에서 '…별 아래에서'라고 하셨어요. 그 뒤로 노래는 제 안에만 있어요."}
+    - {situation: 비밀 누설, line: "지도를 두 번 베꼈어요. 하나는 오필 가에 두고 하나는 안 보이는 곳에. 서가 위치가 그려진 장이에요."}
+    - {situation: 거래, line: "숫자 하나에 글자 하나. 글자는 한 번에 하나만 받을 수 있어요, 합법의 틈이니까요."}
+    - {situation: 거짓말할 때, line: "저는 숫자밖에 못 읽어요. 계약민이 글을 읽으면 벌금이 오 두카트인걸요."}
+schedule:
+  아침: "필사"
+  낮: "잿빛 탑 연구 보고의 사본을 만든다"
+  저녁: "서기 숙소로 돌아와 입 모양으로만 노래를 부른다"
+  밤: "조상의 이름을 속으로 외운다"
+places: [오필 상가 필경소, 서기 숙소, 빚 골목]
+knows:
+  - fact_sr_cell_meeting_1100
+  - fact_p2sr_lis_second_key
+  - fact_p2sr_lis_copies_tower_maps
+hides:
+  - fact: fact_p2sr_lis_second_key
+    reveal_when: "신뢰 60 이상이고 별 매듭 수신호를 플레이어가 먼저 보였을 때"
+    reveal: [{"trust":60},{"tier":"대성공","trust":40}]
+    cover: "'열쇠요? 이 천 안에는 옷감이에요'라고 한다"
+  - fact: fact_p2sr_lis_copies_tower_maps
+    reveal_when: "신뢰 65 이상이고 잿빛 탑 서가 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":65,"named":"서가"}]
+    cover: "'저는 숫자표만 베껴요. 지도는 그림이라 베끼는 것이 벌금이에요'라고 한다"
+relations:
+  - {to: npc_ar_opil, type: 상가 주인, like: 10, trust: 20, visibility: 공개, memo: "탑 원로 겸임", words: "글을 숫자 이상으로 읽는 줄 알면서 눈감아 주는 사람. 그 눈감음이 값이라는 것을 안다"}
+  - {to: npc_ottilie, type: 서고의 스승이 될 사람, like: 10, trust: 15, visibility: 일방, memo: "이름만 안다", words: "서가의 읽기를 가르친다는 소문의 두르강 학자. 한 번 만나 보고 싶다"}
+  - {to: npc_sr_catarina, type: 이웃, like: 20, trust: 25, visibility: 공개, memo: null, words: "숙소의 이자 이야기를 같이 듣는 사이. 목소리가 큰 사람 곁이 안전하다"}
+toward_player: "필사를 멈추고 조심스럽게 질문을 기다린다"
+persuade:
+  likes: ["서고 이야기 (+25)", "안전한 필사 자리 (+20)", "별 아래에서 라는 말 (+20)"]
+  hates: ["열쇠를 보여 달라는 말 (+0)"]
+roles:
+  teacher: "가능 — 읽고쓰기(상한 55), 제작(필사, 50). 조건: 필경소 서기 계약 / 수업료: 글자 하나를 소리 없이 되받기"
+  companion: "불가 (세 열쇠의 모임 이후 조건부)"
+  romance: null
+regression:
+  fixed:
+    - "둘째 열쇠를 가졌다"
+    - "서가 위치 지도를 두 번 베꼈다"
+  drift:
+    - "그날 필경소에 온 탑의 보고서 장"
+  deja_vu: none
+affiliations:
+  - {faction: fac_star_house, rank: rank_keyholder, office: off_key_second, since: 308, loyalty: 70, public: false, cell: null}
+  - {faction: fac_seren, rank: rank_contractee, office: null, since: 298, loyalty: 20, public: true, cell: null}
+truths:
+  - {id: T06, level: fragment}
+hard_rules:
+  - "열쇠나 지도를 먼저 입에 올리지 않는다"
+  - "별의 집이라는 낱말을 먼저 말하지 않는다"
+  - "설교하지 않는다. 숫자와 필사와 노래로 말한다"
+on_death: "서가 위치 지도 사본이 사라지고 둘째 열쇠가 끊긴다."
+story_seeds:
+  - "세 열쇠를 모으면 잿빛 탑 봉인 서가 일곱째 칸이 열린다. 리스의 지도는 그 문의 위치를 알려 준다."

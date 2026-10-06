@@ -1,0 +1,185 @@
+# 아르카스 탑섬 2차 확장의 사실 (22_NPC_PERSONA.md §1.2). 인물: docs/world/people/arkas.md (P2A-). id 접두사 fact_p2ar_. 기존 fact_ar_*(facts/arkas.yaml)는 고치지 않는다.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. truth: false는 세계에 퍼진 거짓 소문이다.
+# 탑 사람들은 시간에 민감한 자(이레네·라일)를 빼면 회귀를 기억하지 못한다 — 기시감은 카드의 regression.deja_vu_steps에 있다.
+# ── 오필 시라와 기록학파 ──
+- id: fact_p2ar_opil_sells_first
+  text: "오필 시라는 탑의 연구 결과를 세렌 의회보다 늦게가 아니라 먼저 판다. 오필 상가 필경소에 먼저 사본이 가고 탑 서기실에는 열흘 늦게 정서가 간다. 탑주 이레네는 이 순서를 알고 눈감는다"
+  truth: true
+  danger: 4
+  names: [오필 시라, 이레네]
+- id: fact_p2ar_opil_light_origin_for_sale
+  text: "오필 시라는 '순종의 빛의 기원'을 세렌에 먼저 팔 생각을 한다. 팔려면 볼드 사본의 사본이 필요하고, 그는 그 사본을 필경소 서기 한 사람에게 맡길 기회를 엿본다"
+  truth: true
+  danger: 5
+  names: [오필 시라, 볼드 사본, 순종의 빛]
+- id: fact_p2ar_opil_lis_blind_eye
+  text: "오필 시라는 필경소 서기 리스가 글을 숫자 이상으로 읽는다는 것을 알고 눈감는다. 눈감는 값으로 그는 그녀의 필사 가운데 한 장을 매달 자기 서랍에 넣는다"
+  truth: true
+  danger: 4
+  names: [오필 시라, 리스]
+# ── 사냥꾼 부서 ──
+- id: fact_p2ar_mathis_two_lists_differ
+  text: "사냥꾼 부서 '귀'의 부서장 마티스 그레이브는 귀 기울이는 방의 흔들림 지도와 이졸의 징후자 목록이 같은 아이들을 가리키지 않는다는 것을 안다. 그는 두 숫자를 한 번도 대조하라고 지시한 적이 없다"
+  truth: true
+  danger: 5
+  names: [마티스 그레이브, 이졸]
+- id: fact_p2ar_mathis_ear_in_morva
+  text: "'귀'는 모르바 늪 어귀를 드나드는 루멘 장어 장수 '레올드'(인간)를 밀정으로 심었다. 레올드는 뿌리마을의 위치를 모르고 뱀장어 길 쪽 입구만 알며, 늪 마녀 포획 현상금 30 비늘을 목표로 한다"
+  truth: true
+  danger: 4
+  names: [귀, 레올드, 모르바]
+- id: fact_p2ar_karba_twelve_hunters
+  text: "잿빛 눈 사냥꾼 12명은 모두 위장 신분이다 — 회색여울의 이졸, 루멘 순례단의 인간, 마지막 등불 모래눈 패의 패원 하나가 그 안에 있다. 카르바는 열둘의 얼굴을 한 자리에 모은 적이 없다"
+  truth: true
+  danger: 5
+  names: [카르바, 잿빛 눈, 이졸, 모래눈]
+- id: fact_p2ar_karba_bounty_scale
+  text: "잔향 의심자 한 명의 현상금은 5발톱에서 2비늘이다. 카르바는 한 분기 안에 잡아 오지 못한 사냥꾼의 몫을 다음 분기 현상금에서 깎는다 — 그래서 사냥꾼은 없는 징후를 만든다"
+  truth: true
+  danger: 3
+  names: [카르바]
+# ── 서기실과 구멍 글 ──
+- id: fact_p2ar_hester_hole_script
+  text: "서기들은 필사본 여백에 바늘 구멍으로 서로만 읽는 '구멍 글'을 남긴다. 헤스터는 서기실장으로서 구멍 글의 문법을 만든 사람이고 70명이 그것을 읽는다. 탑은 그 구멍을 '종이 벌레'라 부른다"
+  truth: true
+  danger: 4
+  names: [헤스터, 구멍 글]
+- id: fact_p2ar_hester_lamp_arkas
+  text: "헤스터는 이름 없는 자들의 아르카스 등잔이다. 아르카스 등잔 자리는 공식으로 공석이고 그 공석이 탑의 눈을 피하는 방법이다"
+  truth: true
+  danger: 5
+  names: [헤스터, 아르카스 등잔]
+- id: fact_p2ar_hester_milo_placed
+  text: "마일로를 오틸리의 서기 제자로 밀어 넣은 사람이 헤스터다. 그가 외운 셋째 시험 사망자 14명의 명단이 서기실 구멍 글로 두 군데 옮겨졌다"
+  truth: true
+  danger: 4
+  names: [헤스터, 마일로]
+- id: fact_p2ar_yona_hole_keeper
+  text: "서기 요나는 구멍 글 사본을 서기 숙소 판자 틈에 모아 둔다. 서른한 권 분량이고 사라지면 서기 70이 서로의 문장을 잃는다"
+  truth: true
+  danger: 3
+  names: [요나, 구멍 글]
+# ── 회랑과 노인 ──
+- id: fact_p2ar_old0213_born_in_tower
+  text: "0213호의 이름 없는 노인은 탑에서 태어났다. 어머니는 AS 213 첫 피험자였고 그는 열 살에 대조군이 되어 방에서 한 번도 나가지 않았다. 99세 가운데 바다를 본 것은 서른 해 전 창이 하나 열린 날의 사흘이다"
+  truth: true
+  danger: 3
+  names: [0213호, 노인]
+- id: fact_p2ar_old0213_memorized_records
+  text: "0213호의 노인은 재의 서고 서기들이 방 앞에서 읽는 소리를 70년 들으며 아스테리온과 다라의 징후 기록을 모두 외웠다. '두 사람은 같은 꿈을 꾸었다'는 비교 문서의 마지막 줄까지 안다"
+  truth: true
+  danger: 5
+  names: [0213호, 아스테리온, 다라]
+- id: fact_p2ar_old0213_not_echo
+  text: "0213호의 노인은 잔향이 아니다. 탑도 그것을 안다. 그를 대조군으로 두는 것은 잔향이 아닌 사람의 징후 기록이 어떻게 보이는지 재는 기준이다"
+  truth: true
+  danger: 3
+  names: [0213호]
+- id: fact_p2ar_old0213_last_wish
+  text: "노인의 마지막 소원은 바다를 한 번 오래 보고 죽는 것이다. 브릭이 매일 식사 구멍으로 빵을 더 넣는 것은 그 소원을 아는 유일한 사람이어서다"
+  truth: true
+  danger: 2
+  names: [0213호, 브릭]
+- id: fact_p2ar_brick_extra_bread
+  text: "간수 브릭은 AS 290부터 0213호 식사 구멍으로 빵 한 조각을 더 넣는다. 탑은 급식량이 한 조각 모자라다는 것을 기록하지만 이유를 묻지 않았다"
+  truth: true
+  danger: 2
+  names: [브릭]
+- id: fact_p2ar_nere_third_test_candidate
+  text: "열네 살 피험자 네레는 셋째 시험의 다음 후보 두 명 가운데 하나다. 징후는 열병이 만든 것이고 탑주도 그것을 안다. 그러나 후보 둘 가운데 하나여야 시험 정원이 찬다"
+  truth: true
+  danger: 5
+  names: [네레, 셋째 시험]
+- id: fact_p2ar_nere_dream_map
+  text: "네레는 열병 속에서 보는 꿈을 벽에 숯으로 그린다. 그림 속 길이 회색여울 근방의 이정표와 닮았다고 마일로가 말했다"
+  truth: true
+  danger: 3
+  names: [네레, 마일로, 회색여울]
+- id: fact_p2ar_marga_bowls
+  text: "급식 노예 마르가는 남은 그릇의 수로 사라진 피험자를 센다. 마일로의 명단 열넷과 그녀의 그릇 장부 열넷이 정확히 같다"
+  truth: true
+  danger: 3
+  names: [마르가, 마일로]
+- id: fact_p2ar_dessa_stimulus_aftermath
+  text: "약사 노예 데사는 '자극' 후유증으로 시간 감각을 잃은 피험자 열일곱을 따로 돌본다. 그들은 어제와 내일을 구분하지 못해 탑이 '실패한 사례'로 분류한다"
+  truth: true
+  danger: 3
+  names: [데사, 자극]
+- id: fact_p2ar_dessa_fever_cure
+  text: "회랑 결핵은 데사가 쑥과 소금물로 가라앉힌다. 모르바 늪 마녀의 약초라는 사실을 그녀는 어머니에게서 배웠다 — 어머니는 늪 마을 출신이다"
+  truth: true
+  danger: 2
+  names: [데사, 모르바]
+# ── 항구와 바위 ──
+- id: fact_p2ar_ishi_barrel_297
+  text: "AS 297 피험자 탈출은 부두장 이쉬가 화물 창고의 빈 물통 한 줄을 일부러 비워 둔 덕이었다. 그 사람은 물통에 몸을 싣고 세렌 쪽으로 떠내려가 올라프에게 닿았다"
+  truth: true
+  danger: 4
+  names: [이쉬, 올라프]
+- id: fact_p2ar_ishi_storm_store
+  text: "굶주림월 폭풍철에 섬이 고립되면 부두장 이쉬는 비밀 식량 창고에서 서기와 잡역 인간에게 몰래 귀리를 푼다. 피험자 배급이 절반으로 줄어드는 달의 일이다"
+  truth: true
+  danger: 3
+  names: [이쉬]
+- id: fact_p2ar_fisher_end_keeper
+  text: "등대 바위의 늙은 어부 '조개'는 전 서기 노예이고 이름 없는 아이들의 끝지기다. 첫째 칼 '첫 침묵'이 쓰인 아이들의 수를 매년 서리월 첫 썰물에 돌 하나씩으로 쌓는다"
+  truth: true
+  danger: 4
+  names: [조개, 첫 침묵]
+- id: fact_p2ar_fisher_beacon
+  text: "등대 바위 옛 봉화대에 불을 피우면 그롬마르 항 밀수선이 본다. 조개는 한 해에 한 번, 탑이 피험자를 하선시키는 날 밤에 불을 피워 그롬마르에 탈주자가 있다는 신호를 보낸다"
+  truth: true
+  danger: 4
+  names: [조개, 그롬마르]
+# ── 원로들과 시간 ──
+- id: fact_p2ar_borte_reverse_wind
+  text: "원로 보르테 바람실은 시간 잔상 속에서 바람이 거꾸로 부는 지점의 지도를 만든다. 정착병을 무릅쓰고 탑에 머문 탓에 해마다 기침이 깊어지고, 그는 의사에게 말하지 않았다"
+  truth: true
+  danger: 3
+  names: [보르테 바람실]
+- id: fact_p2ar_borte_exile_reason
+  text: "보르테 바람실은 하르칸 일곱샘 부족의 점술사로 추방되었다. 초원이 통일되면 점술사들이 먼저 사라진다는 예언을 입에 올렸기 때문이다"
+  truth: true
+  danger: 3
+  names: [보르테 바람실]
+- id: fact_p2ar_tik_counts_6100
+  text: "크릭 원로 틱 셈쟁이는 AS 213 이래 화형 기록을 모두 셈했다 — 징후자 6,100명 가운데 진짜 잔향은 0. 그는 숫자를 장부에 쓰지 않고 크릭 손가락 매듭으로만 가졌다"
+  truth: true
+  danger: 5
+  names: [틱 셈쟁이]
+- id: fact_p2ar_tik_why_silent
+  text: "틱이 6,100이라는 숫자를 말하지 않는 것은 숫자가 맞는지 확신이 없어서다. 그는 한 번 더 셀 때마다 숫자가 하나씩 바뀐다 — 진짜가 있었을 수 있다는 가능성이 남아서다"
+  truth: true
+  danger: 4
+  names: [틱 셈쟁이]
+- id: fact_p2ar_orvel_first_silence
+  text: "첫째 칼 '첫 침묵'은 탑 금고에 있고 금고지기 오르벨이 칼집째 만져 본 적이 없다. 칼 곁에는 AS 214 실험자 넷이 잔상이 된 날 쓰인 일지가 있다"
+  truth: true
+  danger: 5
+  names: [오르벨, 첫 침묵]
+- id: fact_p2ar_orvel_moves_blade
+  text: "금고지기 오르벨은 계절마다 칼의 위치를 한 번 옮긴다. 이유는 탑주의 지시가 아니라 '칼이 같은 자리에 오래 있으면 차가워진다'는 선대의 말 때문이다"
+  truth: true
+  danger: 3
+  names: [오르벨]
+- id: fact_p2ar_rail_noon_blade
+  text: "시간 측정관 라일은 둘째 칼 '정오'를 몸에 지니고 징후 보고가 몰리는 곳으로 옮겨 다닌다. 지금 그의 측정 바늘은 회색여울 쪽으로 기운다. 라일은 그것을 '측정 오차'라 기록한다"
+  truth: true
+  danger: 5
+  names: [라일, 정오]
+- id: fact_p2ar_rail_blade_cold
+  text: "라일의 둘째 칼은 낙엽월 1일 저녁 6시에 손바닥 위에서 한 번 차가워진다. 그는 그 시각을 매 회차 기록하지만 기억하지는 못한다"
+  truth: true
+  danger: 5
+  names: [라일, 정오, 낙엽월]
+- id: fact_p2ar_corvina_second_star
+  text: "탑의 하늘 기록에는 '역행하는 별' 외에 두 번째 별이 하나 더 있다. 코르비나는 첫 별만 탑에 보고하고 둘째 별은 키리에에게만 보낸다"
+  truth: true
+  danger: 4
+  names: [코르비나, 키리에]
+# ── 거짓 소문 ──
+- id: fact_p2ar_rumor_tower_found_echo
+  text: "잿빛 탑은 이미 진짜 잔향자를 찾아 가둬 두었다"
+  truth: false
+  danger: 3
+  names: [잿빛 탑]

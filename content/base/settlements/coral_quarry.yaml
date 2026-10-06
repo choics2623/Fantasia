@@ -1,0 +1,22 @@
+# 산호 채석장 — 가장 빚이 많은 계약민이 가는 노역장 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §9.9(coral_quarry), docs/world/people/seren.md, facts/phase2_seren.yaml.
+# grid: 해안 절벽 채석장 평면 (m). 절벽 위 감독 초소와 숙영지, 절벽 아래 채석장. 세렌에서 15시간.
+id: coral_quarry
+name: 산호 채석장
+node: coral_quarry
+kind: quarry
+grid: {w: 600, h: 500}
+curfew: {from: "20:00", to: "05:00", note: "밤에는 절벽 사다리가 올려진다. 밀물이 오르는 시각에는 채석장 아래로 내려갈 수 없다"}
+bells:
+  - {at: "05:00", name: 새벽 점호와 사다리 내리기}
+  - {at: "12:00", name: 정오 물 한 통}
+  - {at: "19:00", name: 밀물 종 (채석장 철수)}
+patrols: ["21:00", "01:00"]
+locations:
+  - {id: cq_overseer_hut, name: 감독 초소, xy: [280, 80], kind: post, access: staff, hours: "24시", note: "절벽 위 낮은 석조 초소. 채석감 세파의 장부와 번표 상자가 있다"}
+  - {id: cq_dorm, name: 계약민 숙영지, xy: [200, 120], kind: barracks, access: serf, hours: "20:00-05:00", locked: "20:00-05:00", note: "3,400이 자는 층층 침상. 하루 숙식비 4못이 빚에 쌓인다"}
+  - {id: cq_cliff_ladder, name: 절벽 사다리, xy: [350, 180], kind: ladder, access: serf, hours: "05:00-19:00", note: "절벽을 따라 내려가는 밧줄 사다리. 낙사자가 한 해 열 남짓"}
+  - {id: cq_rope_lift, name: 밧줄 승강기, xy: [400, 150], kind: lift, access: staff, hours: "05:00-19:00", note: "산호 덩이를 올리는 승강기. 사람은 타지 못한다"}
+  - {id: cq_quarry_floor, name: 절벽 아래 채석장, xy: [380, 330], kind: work, access: serf, hours: "05:00-19:00", note: "산호석을 쪼개 승강기에 싣는 곳. 소금물이 눈을 쓰라리게 한다"}
+  - {id: cq_water, name: 물 저장고, xy: [180, 200], kind: store, access: staff, hours: "정오 배급", note: "물 한 통이 3못. 정오에 한 통씩 나눈다"}
+  - {id: cq_tide_cave, name: 밀물 동굴 (절벽 아래), xy: [450, 400], kind: cave, access: secret, hours: "썰물 두 시간", locked: "밀물에 잠긴다", note: "밀물 때만 닫히는 절벽 아래 동굴", hidden: "썰물 두 시간 동안만 열리는 은신처 — 밤에 내려 등록 없는 사람 스물셋이 곧장 이 동굴을 거쳐 숙영지로 올려졌다"}
+outer: []

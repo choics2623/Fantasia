@@ -1,0 +1,61 @@
+# 세렌 — 나가 상인 의회의 항구 도시 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §9.9(세렌·의회당·푸른 장부관·빚 골목·계약 시장·깊은 바다 신전·눈먼 등대), HOUSES §3.4·§5.10, fac_seren, fac_inkscale, fac_salt_tongue, docs/world/people/seren.md.
+# grid: 도시 평면 (m), 원점 = 북서쪽 모서리. x 동쪽, y 남쪽. 북쪽(y=0)이 은빛 강 하구와 소금 나루, 남쪽(y=700)이 깊은 바다와 신전·눈먼 등대. 섬 구역 14개가 운하와 다리로 이어졌다.
+# 걷는 속도 80m/분이되 다리와 운하 곤돌라가 섞여 직선은 아니다 (엔진은 직선). 갈림목(seren_estuary)과 산호 채석장(coral_quarry)은 다른 노드라 각자의 배치도를 가진다 — 세렌에서 16시간·15시간.
+# 세렌의 법: 계약에 적힌 노동 외 시간은 자유 — 대신 숙식비가 빚에 붙는다. 한 뼘 넘는 칼날 압수, 글자(숫자 외) 벌금 5 두카트. 통금은 없지만 그믐 밤 바다에 침 뱉기는 금기다.
+id: seren
+name: 세렌
+node: seren
+kind: harbor_city
+grid: {w: 1000, h: 720}
+curfew: {from: "23:00", to: "04:00", note: "통금은 없다. 그러나 계약민은 계약서에 적힌 숙소 밖에서 밤 열한 시 이후 보이면 숙식비 두 배가 빚에 붙는다. 그믐 밤 해안 절벽 아래는 아무도 가지 않는다"}
+bells:
+  - {at: "06:00", name: 부두 종 (계약 노동 시작)}
+  - {at: "12:00", name: 정오 종 (생선죽 한 그릇)}
+  - {at: "18:00", name: 저녁 종 (계약 노동 끝 — 숙식비 계산 시작)}
+  - {at: "22:00", name: 의회 수조 종 (의회당의 물속 장부 정산)}
+patrols: ["20:00", "00:00", "03:00"]
+locations:
+  # ── 아홉 비늘 의회당과 의장 ──
+  - {id: sr_nine_scales, name: 아홉 비늘 의회당, xy: [480, 300], kind: council, access: staff, hours: "08:00-20:00 (정기 회기 매달 1일)", rooms: [sr_chamber, sr_ledger_pool, sr_chair_vault, sr_chair_office, sr_beatrix_tank], note: "산호석 돔. 열두 의석과 기록 수조. 포도월 대시장 기간에는 임시 회기가 매일 열린다"}
+  - {id: sr_chamber, name: 의사당 (열두 의석), parent: sr_nine_scales, access: staff, hours: "정기 회기 09:00-17:00", note: "물이 차오르는 둥근 홀. 의석주는 의자에 앉고 비늘 표는 발치의 구슬로 던진다. 안건은 '계약안'이어야 접수된다"}
+  - {id: sr_ledger_pool, name: 기록 수조 (물속 장부), parent: sr_nine_scales, access: staff, hours: "24시", note: "표의 값이 물속 장부에 적힌다. 장부지기는 물 속에서 숨을 오래 참는 나가", hidden: "수조 바닥 석판에 지난 30년의 표 값 — 의석 경매 가격과 같은 줄에 적힌 비밀 거래"}
+  - {id: sr_chair_vault, name: 의장 금고, parent: sr_nine_scales, access: secret, hours: "의장만", hidden: "아우락스·멜리산드 양쪽 채권 각 12만 두카트, 합계 24만. 카스파르에게 보낸 비밀 대출 제안서 사본"}
+  - {id: sr_chair_office, name: 의장실 (물결 계단), parent: sr_nine_scales, access: staff, hours: "08:00-19:00", note: "물결 모양 계단 위의 방. 의장이 은행 장부와 각국 사절 서신을 본다"}
+  - {id: sr_beatrix_tank, name: 지하 수조 (탈피), parent: sr_nine_scales, access: owner, hours: "24시", hidden: "탈피 실패 징후 — 목덜미에 붙은 묵은 허물. 일곱째 탈피가 3년째 지연됨"}
+  - {id: sr_mondali_bank, name: 몬달리 은행, xy: [430, 330], kind: bank, access: public, hours: "08:00-18:00", note: "금빛 저울 위의 뱀. 용제국 양쪽 채권과 레이번·오르셀 채권을 둔 은행. 인간 계약민 창구가 따로 있다"}
+  - {id: sr_mondali_house, name: 몬달리 저택, xy: [560, 270], kind: manor, access: owner, hours: "24시", note: "의장 일가의 저택. 오필리아가 여기서 초안을 쓴다. 지붕에 해초 정원이 있다"}
+  - {id: sr_norval_hall, name: 노르발 의석 사무소 (외교·통역), xy: [520, 360], kind: office, access: staff, hours: "08:00-19:00", note: "통역 서기 열 명이 앉은 방. 맹약회의 313의 서신이 쌓여 있다"}
+  # ── 조합과 등록, 장부 ──
+  - {id: sr_inkscale_hall, name: 먹물 회관 (먹물비늘 조합), xy: [350, 250], kind: guild, access: staff, hours: "08:00-19:00", note: "계약 중개인 조합 본부. 계약서 양식 서고와 인장 중개인 48의 방. 조합장 방 안쪽에 인장 아홉이 걸린다", hidden: "서고 맨 밑 '죽음으로 끝나지 않는 계약서' 양식 — 서명 칸이 비어 있다"}
+  - {id: sr_blue_ledger, name: 푸른 장부관 (계약 등록소), xy: [330, 300], kind: registry, access: public, hours: "08:00-17:00", rooms: [sr_registry_desk, sr_ledger_stacks], note: "오랄 가의 '푸른 장부 상회'. 모든 계약민의 빚이 기록된다. 서기(크릭) 80이 번호표를 쥔다"}
+  - {id: sr_registry_desk, name: 등록 창구, parent: sr_blue_ledger, access: public, hours: "08:00-17:00", note: "전환 등록과 빚 열람. 번호표를 받아야 앉는다"}
+  - {id: sr_ledger_stacks, name: 장부 서가, parent: sr_blue_ledger, access: staff, hours: "08:00-17:00", hidden: "맨 위 칸 — 회색여울 저당 계약서 원본(기한 313 포도월 30일). 서가 계약서의 7%는 원본 인장이 번졌다"}
+  - {id: sr_zolak_vault, name: 졸라크 금고, xy: [600, 330], kind: vault, access: staff, hours: "09:00-17:00", note: "눈 하나 달린 열쇠 문장의 금고. 의석주들의 비밀 장부를 보관한다. 열쇠 구멍이 헤아릴 수 없다", hidden: "아우락스·멜리산드 양쪽 장부 사본, 사르코스의 징후자 판매 사본, 쥐들의 왕관의 진짜 장부"}
+  - {id: sr_opil_house, name: 오필 상가 필경소, xy: [380, 380], kind: scriptorium, access: staff, hours: "07:00-18:00", note: "펼친 두루마리와 뱀의 문장. 지도·필경·정보를 다룬다. 계약민 서기가 위층 숙소에서 산다", hidden: "서기 숙소 바닥 판 밑 — 잿빛 탑 서가 위치 지도의 두 번째 사본 (리스가 숨김)"}
+  - {id: sr_mardi_house, name: 마르디 상가 (약재 창고), xy: [260, 330], kind: store, access: public, hours: "07:00-18:00", note: "향신료 잎 셋의 문장. 늪 약초 자루가 쌓이는 창고. 약초 냄새가 거리 끝까지 난다"}
+  # ── 부두와 시장 ──
+  - {id: sr_salt_quay, name: 소금 나루 (노예선 부두), xy: [440, 90], kind: quay, access: public, hours: "05:00-22:00", note: "은빛 강 하구에서 내려온 노예선이 닿는 큰 부두. 하역꾼 크릭이 사슬을 푼다. 세베로의 상관이 부두 끝에 선다"}
+  - {id: sr_severo_office, name: 세베로 상관 (칼레스 상관), parent: sr_salt_quay, access: staff, hours: "07:00-20:00", note: "금박 문신 '칼레스 상관'이 붙은 큰 방. 세베로의 가마가 문 앞에 놓인다. 계약서를 꼬리로 말아 두는 책상"}
+  - {id: sr_kassalon_dock, name: 카셀론 해운 선착장 ('소금 바늘'호 정박), xy: [380, 130], kind: dock, access: staff, hours: "05:00-22:00", note: "닻 셋 문장의 선착장. 12월 14일 아침 '소금 바늘'호가 닿는다. 사무실이 선착장 위층"}
+  - {id: sr_contract_market, name: 계약 시장 (노예 거래소), xy: [500, 150], kind: market, access: public, hours: "08:00-18:00 (경매 날)", rooms: [sr_auction_stage, sr_conversion_desk], note: "용제국 노예를 사 계약민으로 '전환'하는 시장. 상시 1,000명이 선다"}
+  - {id: sr_auction_stage, name: 경매대, parent: sr_contract_market, access: public, hours: "경매 날 09:00-17:00", note: "상아 망치가 울리는 단상. 로트 번호가 걸린다"}
+  - {id: sr_conversion_desk, name: 전환 서류 창구, parent: sr_contract_market, access: staff, hours: "08:00-18:00", note: "낙찰 뒤 계약민 등록을 접수하는 창구. 엄지 도장을 찍는다"}
+  - {id: sr_grand_market, name: 대시장 운하, xy: [530, 220], kind: canal, access: public, hours: "24시 (포도월 한 달 배로 메워진다)", note: "포도월 대시장 때 운하가 배로 메워진다. 빚 채권 증서가 오간다"}
+  - {id: sr_amarant_hall, name: 아마란트 경매관, xy: [640, 240], kind: hall, access: public, hours: "10:00-24:00", note: "붉은 꽃 문장의 사치품·유흥·경매관. 대시장 경매를 운영한다"}
+  - {id: sr_shipyard, name: 페스카르 조선소, xy: [260, 480], kind: shipyard, access: staff, hours: "05:00-19:00", note: "그물에 걸린 물고기 문장. 조선소 계약민 2,900. 용골 선반이 줄지어 섰다", hidden: "뒷마당 천막 아래 장부 없는 배 한 척의 용골 — 공제회의 도주선"}
+  - {id: sr_salt_works, name: 바드라 염전, xy: [180, 560], kind: work, access: serf, hours: "05:00-19:00", note: "소금 결정 문장의 염전. 계약민 3,200이 일한다. 평균 상환 31년 — 세렌 최악. 소금물에 눈이 먼다"}
+  # ── 빚 골목과 계약민 ──
+  - {id: sr_debt_alley, name: 빚 골목 (계약민 숙소 구역), xy: [330, 460], kind: tenement, access: public, hours: "24시", rooms: [sr_debt_store, sr_roof_bridge, sr_lupo_office], note: "6층 목조 숙소가 빽빽하다. 인간 계약민 약 22,000. 공동 우물 하나에 줄이 늘 서 있다"}
+  - {id: sr_debt_store, name: 숙소 매점, parent: sr_debt_alley, access: public, hours: "06:00-22:00", note: "계약민은 숙소 매점에서만 살 수 있다 — 같은 빵이 2못", hidden: "매점 장부 이중 기록 — 이자 착복 증거. 사본 셋이 지붕 다리 밑에 흩어져 있다"}
+  - {id: sr_roof_bridge, name: 지붕 다리 (셈 모임), parent: sr_debt_alley, access: secret, hours: "매달 10일 22:00", note: "숙소 지붕을 잇는 판자 다리. 셈 모임이 서로의 이자 계산을 맞춰 본다. 회원 약 1,100"}
+  - {id: sr_lupo_office, name: "'빈 장부' 사무실 (루포)", parent: sr_debt_alley, access: public, hours: "07:00-20:00", note: "계약민 무료 상담 — 대가로 '숫자 하나'를 받는다. 방수 장부 서랍이 가득하다"}
+  - {id: sr_crooked_anchor, name: 굽은 닻 선술집, xy: [380, 500], kind: tavern, access: public, hours: "12:00-04:00", note: "부두 일꾼과 계약민 선원이 모이는 선술집. 여우눈 레니가 한쪽 탁자에서 소문을 판다"}
+  # ── 깊은 바다와 신전 ──
+  - {id: sr_deep_shrine, name: 깊은 바다 신전, xy: [520, 640], kind: temple, access: public, hours: "06:00-20:00", rooms: [sr_underwater_altar, sr_egg_vault], note: "해안 절벽 아래 반쯤 잠긴 신전. 매달 그믐 사제들이 앞바다에 '대가'를 던진다. 사제 40"}
+  - {id: sr_underwater_altar, name: 물속 제단, parent: sr_deep_shrine, access: staff, hours: "24시", hidden: "제단 아래 붉게 물든 해저 동굴 — 신의 피가 고였다는 곳"}
+  - {id: sr_egg_vault, name: 알의 수조 (신전 지하), parent: sr_deep_shrine, access: secret, hours: "시렌나만", hidden: "도둑맞은 알 한 개와 반송된 보관료 청구서 더미 3,000장 넘게. 알은 한 번도 따뜻해진 적이 없다"}
+  - {id: sr_deep_gate, name: 고인 피의 문 (만 바닥), xy: [540, 700], kind: seabed, access: secret, hours: "그믐 밤만", locked: "그믐 외에는 닫힌다", note: "세렌 만 바닥. 심해 나가의 사절이 서는 곳. 물 위의 혀 70이 위쪽에서 기다린다"}
+  - {id: sr_blind_lighthouse, name: 눈먼 등대, xy: [740, 120], kind: lighthouse, access: public, hours: "계단 24시", note: "불을 켜지 않는 옛 등대. 꼭대기 창에 거는 천 색이 밀수선 신호다", hidden: "꼭대기 창 틀 안의 천 네 가지 — 흰색 안전, 붉은색 순찰, 푸른색 소금배, 검은색 위험"}
+  # ── 경비와 시내 ──
+  - {id: sr_guard_post, name: 물비늘대 본부, xy: [450, 400], kind: post, access: staff, hours: "24시", note: "나가 300·용인 용병 200이 교대하는 본부. 의회 경호대장 사하르의 집무실이 있다"}
+outer: []

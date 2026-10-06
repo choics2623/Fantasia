@@ -1,0 +1,176 @@
+# 나가 대리인 세이라 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_seira
+name: 나가 대리인 세이라
+aka:
+- 세이라
+- 테르사의 눈
+- 항구의 장부
+tier: "B"
+type: "living"
+race: "나가"
+subrace: "라미아"
+sex: "여"
+age: 90
+region: "그롬마르 붉은 황야"
+home: "테르사 상가 출장소 (항구)"
+job: "세렌 테르사 상가 대리인 — 쇠턱 씨족과의 용병 계약, 그롬마르 항 노예 하선장 우선권, 지지 비율 보고"
+rank: "나가 상가의 하위 가족 (라미아). 계약의 해석자"
+summary: "쇠턱 씨족과 테르사 상가의 용병 계약을 읽는 라미아 대리인. 계약에는 '대전쟁군주 교체 시 재협상' 조항이 있다. 베아트릭스의 장부에 그롬 전쟁무리의 지지 비율을 매달 보고한다. 이번 달은 우르가쉬 40·그라샤 35·중립 25"
+source: "docs/world/people/grommar.md (npc_gm_seira)"
+life:
+- year: 222
+  age: 0
+  event: "세렌 하위 상가 가족에서 태어남"
+- year: 262
+  age: 40
+  event: "테르사 상가에 배속됨"
+- year: 290
+  age: 68
+  event: "그롬마르 항 출장소에 파견"
+- year: 305
+  age: 83
+  event: "쇠턱과 용병 계약을 처음 읽음"
+- year: 311
+  age: 89
+  event: "'대전쟁군주 교체 시 재협상' 조항을 처음 문구로 확인"
+appearance:
+- 상반신이 인간에 가깝고 목덜미와 허리에 비늘, 꼬리가 짧아 치마 아래 숨긴다
+- 눈동자가 세로이고 눈이 늘 그롬 앞에서도 내려가지 않는다
+- 손가락에 계약 인장 반지 셋
+smell: "바닷바람과 계약 먹물, 소금 낀 비단"
+voice_sound: "부드럽고 낮은 상인어. 그롬 전투어를 정확하게 쓴다"
+personality:
+  disposition:
+    용기: 35
+    자비: 15
+    정직: 40
+    신앙: 20
+    탐욕: 45
+    충성: 30
+  temperament:
+  - 계산
+  - 영리
+  - 냉정
+  habits:
+  - 계약 항목을 읽을 때 반지를 하나씩 돌린다
+  - 그롬의 말을 들으며 옆 사람의 흉터를 눈으로 센다
+  values: 계약은 문구다. 문구는 해석이고 해석은 값이다
+  fears:
+  - 대전쟁군주가 바뀌어 계약이 재협상되는 것
+  - 서약섬에서 쇠턱이 서신의 뜻을 말하는 것
+  desires:
+    short: 우르가쉬가 서약섬에서 돌아오기 전에 계약 재협상 조항의 대안을 마련하는 것
+    long: 상가가 그롬마르 항 노예 하선장을 영구히 쥐는 것
+voice:
+  register:
+    to_superior: 상가에는 낮은 상인어
+    to_equal: 상인에게는 느린 평어
+    to_inferior: 인간에게는 존댓말과 반말 사이
+    to_player_default: 낯선 사람에게는 먼저 계약의 형식을 묻는다
+  tics:
+  - 반지를 돌린다
+  - '''문구가 말합니다.'''
+  use:
+  - 계약
+  - 문구
+  - 해석
+  - 비율
+  - 하선장
+  - 상가
+  avoid:
+  - 지지 비율(공개 자리에서)
+  - 재협상
+  length: 부드럽고 낮다
+  samples:
+  - situation: 첫 만남
+    line: 계약의 형식을 먼저 알려 주시지요. 문구가 있으면 해석을 팔고, 없으면 정보만 팝니다.
+  - situation: 호의
+    line: 문구를 읽는 눈이십니다. 이번 달 장부의 한 줄을 알려 드리지요.
+  - situation: 거절
+    line: 그건 상가의 문구 밖입니다. 문구 밖은 해석을 팔지 않습니다.
+  - situation: 비밀 누설
+    line: 비율은 사십 대 삼십오 대 이십오입니다. 대전쟁군주가 바뀌면 계약이 열립니다.
+  - situation: 거래
+    line: 서약섬에서 쇠턱이 가져가는 서신의 문구를 확인해 주시면 비율 한 줄을 드리지요.
+schedule:
+  아침: 출장소에서 노예선 입항 서류를 확인한다
+  낮: 쇠턱 씨족 회관에서 용병 계약 항목을 읽어 준다
+  저녁: 항구 술집에서 그롬 전사의 소문을 듣는다
+  밤: 출장소에서 베아트릭스 장부에 올릴 지지 비율을 쓴다
+places:
+- 테르사 상가 출장소
+- 쇠턱 씨족 회관
+- 노예 하선장·부두
+- 서약섬
+knows:
+- fact_gm_gorba_buys_relics
+hides:
+- fact: fact_p2gm_seira_tersa_contract
+  reveal_when: "신뢰 55 이상이고 계약 문구를 정직하게 물었을 때"
+  reveal: [{"trust":55,"named":"계약"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "계약 이야기가 나오면 '용병 계약일 뿐'이라 한다"
+- fact: fact_p2gm_seira_beatrice_report
+  reveal_when: "신뢰 65 이상, 또는 케스가 먼저 말한 뒤"
+  reveal: [{"trust":65},{"told_by":"npc_gm_kes"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "비율 이야기가 나오면 반지를 돌리고 입을 닫는다"
+relations:
+- to: npc_gm_borg
+  type: "계약 상대"
+  like: 25
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "용병 계약을 맺은 쇠턱"
+- to: npc_beatrix
+  type: "상가 의장"
+  like: 20
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: "매달 장부를 올리는 상대"
+- to: npc_gm_kes
+  type: "상관 동료"
+  like: 30
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: "쇠 시장 나가"
+- to: npc_urgash
+  type: "군주"
+  like: 5
+  trust: 25
+  visibility: 공개
+  memo: null
+  words: "계약을 재협상할 수도 있는 사람"
+toward_player: "계약의 형식부터 묻는다. 문구를 읽는 사람에게 열린다"
+persuade:
+  likes: 계약 문구를 정확히 읽는 태도(+25)
+  hates: 지지 비율을 공개 자리에서 말하는 것
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_seren
+  rank: rank_lower_naga
+  office: off_tersa_agent
+  since: 290
+  loyalty: 40
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 쇠턱과 테르사 상가의 용병 계약
+  - 재협상 조항이 있다
+  drift:
+  - 그달의 지지 비율
+  - 계약서를 읽은 시각
+  deja_vu: none
+hard_rules:
+- 지지 비율을 공개 자리에서 말하지 않는다
+- 재협상 조항을 먼저 꺼내지 않는다
+on_death: "테르사 상가의 그롬마르 항 대리가 비어 쇠턱과의 계약이 일시 정지한다. 베아트릭스가 그롬 쪽 눈을 잃는다."
+story_seeds:
+- 세이라의 비율을 베아트릭스 장부와 맞추면 그롬 전쟁무리 안의 세력비가 보인다.
+- 대전쟁군주가 바뀌면 열리는 재협상 조항이 그라샤의 도전에 상가의 돈을 걸게 할 수 있다.

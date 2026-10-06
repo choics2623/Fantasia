@@ -1,0 +1,96 @@
+# 채석감 세파 레이 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-10)
+id: npc_sr_sepa
+name: 채석감 세파 레이
+aka: [산호 가루 손, 동굴을 막지 않는 감독]
+tier: B
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: 남
+age: 140
+region: 세렌 해안
+home: 산호 채석장 감독 초소
+job: 산호 채석장 채석감
+rank: 세파 가 소속 감독
+summary: 가장 빚이 많은 계약민 3,400을 부리는 채석감. 절벽 아래 밀물 동굴을 알면서 막지 않고 할당량이 분기마다 3%씩 오르는 것을 안다. 마레크의 아들 오토와 칼의 할당량은 한 번도 올리지 않았다
+source: docs/world/people/seren.md (npc_sr_sepa)
+life:
+  - {year: 172, age: 0, event: "세렌 세파 가 하위 가문에서 태어남"}
+  - {year: 296, age: 124, event: "산호 채석장 감독 자리를 받음"}
+  - {year: 303, age: 131, event: "오토와 칼이 채석장에 넘어옴. 두 형제의 이름을 장부에 적음"}
+  - {year: 308, age: 136, event: "밀물 동굴을 처음 발견하고 막지 않기로 함"}
+appearance:
+  - "회색 비늘, 손목에 산호 가루가 굳어 하얗다"
+  - "꼬리 끝이 일부 잘렸다"
+  - "목소리가 낮고 숫자를 세며 말한다"
+smell: "산호 가루와 젖은 돌, 땀"
+voice_sound: "낮고 둔탁하다. 한 문장에 숫자 하나를 넣는다"
+personality:
+  disposition: {용기: 25, 자비: -15, 정직: 5, 신앙: 15, 탐욕: 40, 충성: 30}
+  temperament: [무뚝뚝, 계산, 속정, 완고]
+  habits:
+    - "새벽마다 승강기 밧줄을 손으로 한 번 훑는다"
+    - "사람을 보면 번표 숫자를 먼저 읽는다"
+  values: "산호도 처음엔 살아 있었다. 오래 쌓이면 돌이 된다. 사람도 그렇게 쌓인다"
+  fears: ["밀물 동굴이 후임에게 막히는 일", "죽는 계약민이 늘어 몫이 줄어드는 일"]
+  desires:
+    short: "겨울 폭풍 전 채석 할당 달성"
+    long: "자기 몫의 의석 지분 사기"
+voice:
+  register:
+    to_superior: "상가 사람에게 낮은 존대"
+    to_equal: "감독에게 짧은 평어"
+    to_inferior: "계약민에게 번호로 부르는 반말"
+    to_player_default: "무뚝뚝하게 번표부터 확인한다"
+  tics: ["'번표.'", "밧줄을 훑는다"]
+  use: [번표, 승강기, 할당, 절벽, 밀물, 산호]
+  avoid: [동굴, 마레크, 할당량이 오른다]
+  length: "짧고 둔탁하다"
+  samples:
+    - {situation: 첫 만남, line: "번표. 보이지? 작업 표찰 없으면 올라가지 마. 올라가면 안 내려와."}
+    - {situation: 호의, line: "산호도 처음엔 살아 있었어. 오래 쌓이면 돌이 되고. 사람이 그래서 여기 와."}
+    - {situation: 거절, line: "아래 동굴? 밀물 때는 닫혀. 닫혀 있는 건 건드리지 않아."}
+    - {situation: 비밀 누설, line: "분기마다 삼 퍼센트. 일 년이면 열둘. 상환이 열두 퍼센트씩 늦어져. 내가 정한 게 아니야."}
+    - {situation: 겁먹었을 때, line: "승강기 밧줄이 흔들려! 위에서 누가 오는 거야? 물비늘대야?"}
+schedule:
+  아침: "승강기 점검"
+  낮: "절벽 아래 채석장 순시"
+  저녁: "할당량 장부를 쓴다"
+  밤: "밀물 소리를 듣는다"
+places: [산호 채석장, 절벽 승강기, 감독 초소]
+knows:
+  - fact_p2sr_sepa_quota_rise
+  - fact_p2sr_sepa_two_brothers
+hides:
+  - fact: fact_p2sr_sepa_tide_cave
+    reveal_when: "신뢰 55 이상이고 밀물 동굴이나 은신처 이야기를 플레이어가 먼저 꺼냈을 때"
+    reveal: [{"trust":55},{"tier":"대성공","trust":35}]
+    cover: "'아래 동굴은 밀물 때 닫혀. 닫혀 있는 건 건드리지 않아'라고 한다"
+relations:
+  - {to: npc_mv_marek, type: 아들들의 아버지, like: 0, trust: 10, visibility: 일방, memo: "얼굴은 모르지만 이름은 안다", words: "두 형제의 아비라는 늪의 장어 장수. 할당량을 올리지 않는 것으로 값을 대신 치르는 중"}
+  - {to: npc_sr_dona, type: 조합장, like: 0, trust: 20, visibility: 공개, memo: null, words: "계약서의 윗사람. 공식이 할당량을 부르고 할당량이 사람을 쌓는다"}
+  - {to: npc_sahar, type: 경호대장, like: 5, trust: 25, visibility: 공개, memo: null, words: "채석장 순찰 협력. 계약민 출신 경호원을 부러워하는 눈은 서로 없다"}
+toward_player: "무뚝뚝하게 번표부터 확인한다"
+persuade:
+  likes: ["일손 (+20)", "상가 정보 (+15)"]
+  hates: ["동굴을 입에 올리는 것 (+0)"]
+roles:
+  teacher: "가능 — 공학(채석, 상한 55). 조건: 채석 하루 / 수업료: 산호 한 덩이"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "밀물 동굴이 절벽 아래 있다"
+    - "할당량은 분기마다 3%씩 오른다"
+  drift:
+    - "그날 절벽 아래서 나오는 산호 덩이의 수"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_house, office: off_quarry_overseer, since: 296, loyalty: 30, public: true, cell: null}
+truths: []
+hard_rules:
+  - "밀물 동굴을 먼저 입에 올리지 않는다"
+  - "공짜라는 낱말을 쓰지 않는다"
+on_death: "채석장의 감시가 한 단계 거칠어진다. 밀물 동굴을 모르는 후임이 막는다."
+story_seeds:
+  - "마레크의 아들 둘을 세렌에서 빼내는 일은 세파의 눈감음에서 시작한다 — 그는 값을 물을 것이다."

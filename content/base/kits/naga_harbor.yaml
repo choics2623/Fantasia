@@ -1,0 +1,124 @@
+# 지역 생성 키트 — 나가 항구 (25_REGION_KITS.md). 세렌 항구·갈림목·산호 채석장·아르카스 부두, 그리고 나가 상선이 닿는 모든 항구.
+# 원천: REGIONS §9(9.5 인간의 삶·9.6 경제·9.7 법·9.8 문화), HOUSES §3.4(열두 의석)·§5.10(먹물비늘 조합), fac_seren, fac_inkscale, fac_salt_tongue, docs/world/people/seren.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_seren.law / customs / decision 을 본다. 여기에는 '나가 항구에만 있는 재료'(계약민의 하루, 빚 문서, 물속 장부, 상가 문장, 그믐의 대가)를 더한다.
+# 핵심: '공짜'는 모욕이다. 나가는 대가 없이 아무것도 줄 수 없고 인간 계약민은 시간을 이자로 낸다. 인간 농노 키트의 반대: 매질이 아니라 계산이 가둔다.
+id: kit_naga_harbor
+applies_to: [세렌, 갈림목, 산호 채석장, 아르카스 부두, 그롬마르 항 세렌 상관, 소금 나루]
+reuses: []
+faction_refs: [fac_seren, fac_inkscale, fac_salt_tongue, fac_krik, fac_beastkin]
+names:
+  나가:
+    # 왕관 나가: 이름 + 상가 이름. 이름은 부드러운 ㅅ·ㄹ·ㅁ이 많고 두세 음절. 상가 문장이 곧 성이다.
+    male: [루치오, 졸라크, 노르발, 페스카르, 고르도, 세보, 룬, 시르, 도나, 오필, 세베로, 테르사]
+    female: [베아트릭스, 오필리아, 시렌나, 마르디, 아다, 아마란트, 도나, 시르]
+    house: [몬달리, 카셀론, 루첸티, 바드라, 오필, 테르사, 시렌나, 마르디, 졸라크, 페스카르, 아마란트, 노르발, 오랄, 카이르, 세파, 벨렌, 리크, 칼레스]
+    epithet_rule: "이름 + 상가 이름(베아트릭스 몬달리). 의석주는 '의석주 ○○', 중개인은 '인장 중개인 ○○'. 나이가 곧 신용이라 나이를 묻는 것은 예의다(몇 탈피냐)"
+    age_rule: "왕관 나가는 600~900세, 탈피 1회 약 30~40년. 세렌 의석주는 200~540. 탈피가 늦어지는 것은 노화의 징후 — 말하지 않는다"
+  라미아:
+    male: [루포, 쉬렐, 미끌, 탄]
+    female: [사바, 이나]
+    note: "하위 나가. 상반신 인간형, 하반신 짧은 뱀 꼬리. 의회 변론권이 없고 하인·중개인·밀수꾼으로 산다. 별명은 몸에서 온다('미끄럼' '빈 장부')"
+  인간:
+    # 계약민은 이름 대신 번호와 빚으로 소개한다. 번호는 계약 시장이 매긴다 — 이름은 마음속에만. 자유민은 이름 + 성 한 글자.
+    male: [미코, 얀, 오스카, 올라프, 스튜, 하비, 도르, 칼, 니크, 보르, 렌]
+    female: [카타리나, 리스, 아냐, 마야, 에리카, 로사, 테티, 올가]
+    contract_id: "S-{번호} (예: S-11847). 소개는 '서른하나, 스물두 해 남았지' — 빚 두카트와 남은 상환 해로"
+    epithet_rule: "하는 일 + 빚 숫자(스물두 해 미코). 자유민은 '셈손' '장부'처럼 하는 일에서 성을 짓는다"
+  크릭:
+    male: [스크레, 쏙, 핍, 틱틱, 찍]
+    female: [치크, 삐야]
+    note: "세렌 크릭 약 5,000 — 하역·장부 보조. 하역꾼 우두머리가 열둘을 쥔다. 크릭도 빚이 있다"
+  용인:
+    male: [도미닉, 마틴, 베르톨드]
+    note: "세렌 용인 약 1,200 — 상관·용병·재무청 파견. 나가는 용인을 '불꽃의 하인'이라 부르고 용인은 나가를 '비늘 빌려 쓰는 상인'이라 부른다"
+  수인족:
+    note: "타이란(범) 사하르 등 소수 — 의회 경호. 바울피(여우) 레니 같은 정보상"
+classes:            # 세렌 기준 (인구 약 98,000). 계급은 신분이 아니라 채권의 방향이다
+  의석주·상가 가족: 0.03
+  인장 중개인·감독·서기(나가·크릭): 0.07
+  하위 나가·라미아: 0.04
+  용인 상관·용병: 0.01
+  크릭 하역꾼: 0.05
+  인간 계약민 (항만·염전·채석·가사): 0.77
+  인간 자유민 (빚을 갚은 자): 0.02
+  기타 (선원·수인·두르강 상인): 0.01
+jobs:
+  - {id: dock_hauler, name: 부두 하역꾼 (계약민), class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 18, schedule: sch_hauler}
+  - {id: salt_worker, name: 염전 일꾼 (계약민), class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 14, schedule: sch_salt}
+  - {id: quarry_worker, name: 산호 채석 일꾼, class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 8, schedule: sch_quarry}
+  - {id: shipwright, name: 조선소 목공 (계약민), class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 8, schedule: sch_shipwright}
+  - {id: house_servant, name: 상가 가사 (계약민), class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 12, schedule: sch_servant_naga}
+  - {id: scribe_contractee, name: 상가 서기 (계약민 — 숫자만 합법), class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 4, schedule: sch_scribe}
+  - {id: sailor, name: 계약민 선원, class: 인간 계약민 (항만·염전·채석·가사), race: 인간, weight: 6, schedule: sch_sailor}
+  - {id: krik_hauler, name: 크릭 하역꾼, class: 크릭 하역꾼, race: 크릭, weight: 8, schedule: sch_krik_hauler}
+  - {id: krik_clerk, name: 크릭 장부 보조, class: 인장 중개인·감독·서기(나가·크릭), race: 크릭, weight: 3, schedule: sch_krik_clerk}
+  - {id: broker, name: 현장 중개인 (나가), class: 인장 중개인·감독·서기(나가·크릭), race: 나가, weight: 3, schedule: sch_broker}
+  - {id: overseer_naga, name: 계약민 감독 (나가), class: 인장 중개인·감독·서기(나가·크릭), race: 나가, weight: 3, schedule: sch_overseer}
+  - {id: lamia_servant, name: 하위 라미아 (하인·밀수·중개), class: 하위 나가·라미아, race: 나가, weight: 4, schedule: sch_lamia}
+  - {id: seat_family, name: 상가 가족·장부지기 (나가), class: 의석주·상가 가족, race: 나가, weight: 2, schedule: sch_seat_family}
+  - {id: dragonkin_factor, name: 용인 상관·용병, class: 용인 상관·용병, race: 용인, weight: 1, schedule: sch_dragonkin_harbor}
+schedules:          # at = 정착지 틀의 역할. 계약 노동 평균 11시간. 계약 외 시간은 자유 — 대신 숙식비 4못이 빚에 쌓인다
+  sch_hauler:    [{days: all, from: "05:00", to: "06:00", at: quay, doing: 하역표를 받는다, fixed: true}, {days: all, from: "06:00", to: "12:00", at: quay, doing: 노예선·상선 하역 — 사슬과 마대}, {days: all, from: "12:00", to: "13:00", at: quay, doing: 정오 생선죽 한 그릇, fixed: true}, {days: all, from: "13:00", to: "18:00", at: quay, doing: 오후 하역과 창고 정리}, {days: all, from: "18:00", to: "23:00", at: tenement, doing: 숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다}, {days: all, from: "23:00", to: "05:00", at: tenement, doing: 잔다}]
+  sch_salt:      [{days: all, from: "05:00", to: "12:00", at: salt_works, doing: 소금밭 긁기 — 눈이 소금물에 쓰리다, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: salt_works, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: salt_works, doing: 소금 결정을 마대에 담는다, outdoor: true}, {days: all, from: "19:00", to: "05:00", at: tenement, doing: 숙소에서 잔다}]
+  sch_quarry:    [{days: all, from: "05:00", to: "06:00", at: quarry_gate, doing: 번표 점호와 사다리 내리기, fixed: true}, {days: all, from: "06:00", to: "19:00", at: quarry, doing: 산호석 쪼개기·승강기 싣기}, {days: all, from: "19:00", to: "05:00", at: barracks_q, doing: 숙영지에서 잔다}]
+  sch_shipwright: [{days: all, from: "05:00", to: "12:00", at: shipyard, doing: 선체 목공 — 용골과 판자}, {days: all, from: "12:00", to: "13:00", at: shipyard, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: shipyard, doing: 갑판 보수와 도장}, {days: all, from: "19:00", to: "05:00", at: tenement, doing: 숙소에서 잔다}]
+  sch_servant_naga: [{days: all, from: "05:00", to: "12:00", at: manor, doing: 상가 저택 청소와 시중}, {days: all, from: "12:00", to: "13:00", at: manor, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "22:00", at: manor, doing: 상가 만찬과 연주 시중}, {days: all, from: "22:00", to: "05:00", at: tenement, doing: 숙소에서 잔다}]
+  sch_scribe:    [{days: all, from: "06:00", to: "12:00", at: scriptorium, doing: 계약서 필사 — 숫자만 합법}, {days: all, from: "12:00", to: "13:00", at: scriptorium, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: registry, doing: 등록소 심부름과 대조}, {days: all, from: "19:00", to: "06:00", at: tenement, doing: 숙소에서 잔다}]
+  sch_sailor:    [{days: all, from: "05:00", to: "12:00", at: dock_ship, doing: 갑판 노동 — 밧줄과 돛}, {days: all, from: "12:00", to: "13:00", at: dock_ship, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "18:00", at: dock_ship, doing: 선체 수리와 하역 도움}, {days: all, from: "18:00", to: "23:00", at: tavern, doing: 선술집에서 술 한 잔 — 빚 이야기를 숫자로}, {days: all, from: "23:00", to: "05:00", at: tenement, doing: 잔다}]
+  sch_krik_hauler: [{days: all, from: "05:00", to: "18:00", at: quay, doing: 마대와 상자를 나른다 — 장부는 우두머리가 쥔다}, {days: all, from: "18:00", to: "05:00", at: quay, doing: 하역장 뒤 창고방}]
+  sch_krik_clerk: [{days: all, from: "07:00", to: "12:00", at: registry, doing: 등록소 번호표를 줄 세운다}, {days: all, from: "12:00", to: "13:00", at: registry, doing: 정오 휴식, fixed: true}, {days: all, from: "13:00", to: "19:00", at: registry, doing: 장부 서가를 정리한다}, {days: all, from: "19:00", to: "07:00", at: tenement, doing: 숙소}]
+  sch_broker:    [{days: all, from: "06:00", to: "09:00", at: guild_hall, doing: 인수 서류를 점검한다}, {days: all, from: "09:00", to: "14:00", at: quay, doing: 노예선 도착을 확인한다}, {days: all, from: "14:00", to: "18:00", at: registry, doing: 등록 서류를 올린다}, {days: all, from: "18:00", to: "24:00", at: guild_hall, doing: 서류를 대조하고 장부를 쓴다}]
+  sch_overseer:  [{days: all, from: "05:00", to: "08:00", at: tenement, doing: 숙소 점호}, {days: all, from: "08:00", to: "18:00", at: quay, doing: 계약민 노동을 감독한다 — 번호로 부른다}, {days: all, from: "18:00", to: "24:00", at: guild_hall, doing: 당일 숙식비 장부를 정리한다}]
+  sch_lamia:     [{days: all, from: "06:00", to: "12:00", at: manor, doing: 하인 노릇 — 꼬리가 짧은 것은 눈에 띄지 않는다}, {days: all, from: "12:00", to: "18:00", at: quay, doing: 심부름과 밀수 거래}, {days: all, from: "18:00", to: "06:00", at: tavern, doing: 선술집 구석에서 소문과 값을 센다}]
+  sch_seat_family: [{days: all, from: "08:00", to: "13:00", at: council, doing: 의회당 회기와 장부 점검}, {days: all, from: "13:00", to: "18:00", at: bank, doing: 은행·상가 창구를 본다}, {days: all, from: "18:00", to: "22:00", at: manor, doing: 사절 만찬}, {days: all, from: "22:00", to: "08:00", at: manor, doing: 수조에서 잔다}]
+  sch_dragonkin_harbor: [{days: all, from: "06:00", to: "12:00", at: customs, doing: 입항 서류를 받는다}, {days: all, from: "12:00", to: "18:00", at: guard_post, doing: 용병 교대 점검}, {days: all, from: "18:00", to: "06:00", at: tavern, doing: 선술집에서 바알카르 소식을 듣는다}]
+voices:             # 말투 원형 — 나가는 값을 먼저 말하고 계약민은 숫자로 말한다
+  - {id: v_naga_merchant, name: 나가 상인, register: "정중한 존대. 문장 끝에 값이 붙는다. '무엇을 가져오셨나요?'로 시작한다. 공짜라는 말을 쓰지 않는다. 인간은 '손님' 또는 '번호'로 부른다", tics: ["'값은 먼저.'", "'대가가 없다면.'"], use: [값, 대가, 계약, 서명, 정산, 이자, 장부], avoid: [공짜, 선물(대가 없는), 깎다], sample: "서명하지 않으셨군요. 그렇다면 아직 우리 사이에는 말이 있을 뿐이에요."}
+  - {id: v_contractee, name: 계약민, register: "숫자로 소개한다 — 빚 몇 두카트, 몇 해 남았다. 짧은 평어, 나가에게는 낮은 존대. 이름은 마음속에만", tics: ["'몇 해 남았지.'", "'얼마야?'"], use: [빚, 두카트, 이자, 숙식비, 번호, 해], avoid: [자유(먼저), 이름(먼저), 주인], sample: "나는 서른하나. 스물두 해 남았지. 여기선 그게 이름 대신이거든."}
+  - {id: v_lamia, name: 하위 라미아, register: "느리고 조용한 존대. 대가를 입 밖에 먼저 낸다. 꼬리가 짧다는 말에 민감하다", tics: ["'숫자 하나만.'"], use: [숫자, 대가, 상담, 물때], avoid: [꼬리, 하인, 공짜], sample: "상담은 무료입니다. 아, 아니요, 정정하죠. 나가는 무료를 못 해요. 대신 하나만 말해 주세요."}
+  - {id: v_krik_hauler, name: 크릭 하역꾼, register: "빠르고 작은 말. 나가에게는 굽신한 존대, 인간에게는 은근한 반말. 장부 이야기에 눈이 커진다", tics: ["'하역표 보여 주세요.'"], use: [하역표, 번호, 장부, 열둘, 밤], avoid: [스물셋, 밤 하역], sample: "하역표 보여 주세요. 표 없으면 하역 못 해요. 표 없으면 사람이 없는 거예요."}
+  - {id: v_broker, name: 중개인, register: "서류를 먼저 내민다. 서명은 엄지로도. 값은 부르지 않고 서류의 줄로 보인다", tics: ["'서명은 엄지로도.'"], use: [서류, 인수, 정산, 줄, 인장], avoid: [지운 줄, 서른일곱], sample: "서명은 엄지로도 됩니다. 어느 쪽이 편하십니까?"}
+  - {id: v_auctioneer, name: 경매관, register: "크고 노래처럼 이어지는 호가. 사람을 로트 번호로 부른다", tics: ["'열 발톱 하나, 열 발톱 둘!'"], use: [로트, 호가, 낙찰, 이빨, 발톱], avoid: [담합, 이름], sample: "오늘의 로트, 서른둘! 이빨 보여 주고!"}
+temperaments: [계산, 겸손, 탐욕, 인내, 겁, 영리, 냉정, 다정, 비굴, 집요, 체념, 눈치, 속정, 자존, 은밀]
+naga_customs:       # 나가 항구에서만 있는 것 — 법·관습 본문은 fac_seren.law / customs, REGIONS §9.7·§9.8
+  - "'공짜'는 모욕이다. 나가는 대가 없이 아무것도 줄 수 없다 — 대가가 없으면 빚으로 적힌다. 인사는 '무엇을 가져오셨나요?'"
+  - "계약서를 찢으면 신성모독이다. 서명은 엄지로도 유효하다 — 글을 모르는 계약민 때문"
+  - "그믐 밤 신전 앞바다에 '대가'(값비싼 물건)를 던진다. 던진 물건이 곧 그달의 빚 정산이다. 그믐 밤 바다에 침 뱉기는 금기"
+  - "계약민은 빚을 다 갚으면 자유민이 된다 — 실제로 갚은 자는 1.8%. 소개는 번호와 남은 해로 한다"
+  - "계약민은 판관에게 '청원'할 권리가 있다 (대륙에서 유일). 승소율 4%"
+  - "숫자는 합법이다 — 글자(숫자 외)는 벌금 5 두카트. 그래서 숫자로 사기를 증명하는 것은 '합법적 반란'이다"
+  - "의석은 사고판다 (최근 거래 AS 266, 9만 두카트). 표의 값은 의회 기록 수조 — 물속 장부에 적힌다"
+settlement_templates:
+  - id: tpl_naga_harbor
+    name: 나가 항구 (세렌형)
+    grid: {w: 1000, h: 720}
+    roles:
+      council:     {count: [1, 1], place: "가운데", access: staff, name: 아홉 비늘 의회당}
+      bank:        {count: [1, 1], place: "가운데 옆", access: public, name: 몬달리 은행}
+      manor:       {count: [2, 8], place: "가운데 위쪽 섬", access: owner, name: 상가 저택}
+      registry:    {count: [1, 1], place: "의회당 서쪽", access: public, name: 계약 등록소 (푸른 장부관)}
+      guild_hall:  {count: [1, 1], place: "의회당 북서쪽", access: staff, name: 계약 중개인 조합 회관 (먹물 회관)}
+      scriptorium: {count: [0, 2], place: "의회당 남서쪽", access: staff, name: 상가 필경소}
+      quay:        {count: [1, 3], place: "북쪽 강 하구", access: public, name: 부두 (노예선 선착장)}
+      customs:     {count: [0, 1], place: "부두 곁", access: staff, name: 세관}
+      market:      {count: [1, 1], place: "북쪽 가운데", access: public, name: 계약 시장 (경매대)}
+      tenement:    {count: [3, 14], place: "남서쪽 낮은 쪽", access: public, name: 계약민 숙소 (빚 골목), locked: "23:00 이후 밖에 있으면 숙식비 두 배"}
+      tavern:      {count: [1, 3], place: "숙소와 부두 사이", access: public, name: 선술집}
+      shipyard:    {count: [0, 2], place: "서쪽 물가", access: staff, name: 조선소}
+      salt_works:  {count: [0, 2], place: "서남쪽 물가", access: serf, name: 염전}
+      temple:      {count: [1, 1], place: "남쪽 해안 절벽 아래", access: public, name: 깊은 바다 신전}
+      lighthouse:  {count: [0, 1], place: "동쪽 곶", access: public, name: 눈먼 등대}
+      guard_post:  {count: [1, 2], place: "의회당 남쪽", access: staff, name: 물비늘대 본부}
+    outer:
+      estuary:   {hours: [14.0, 18.0], name: 갈림목 (하구 도시)}
+      quarry:    {hours: [14.0, 16.0], name: 산호 채석장}
+  - id: tpl_naga_quarry
+    name: 계약민 노역장 (산호 채석장형)
+    grid: {w: 600, h: 500}
+    roles:
+      overseer:    {count: [1, 1], place: "절벽 위", access: staff, name: 감독 초소}
+      barracks_q:  {count: [1, 2], place: "절벽 위 뒤쪽", access: serf, name: 계약민 숙영지, locked: "20:00-05:00"}
+      quarry_gate: {count: [1, 1], place: "절벽 사다리 위", access: serf, name: 사다리 입구}
+      quarry:      {count: [1, 1], place: "절벽 아래", access: serf, name: 채석장}
+      lift:        {count: [1, 1], place: "절벽 가장자리", access: staff, name: 밧줄 승강기}
+calendar_ref: "content/base/events/seren_312.yaml — 세렌 해안 사건 달력"

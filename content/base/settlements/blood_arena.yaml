@@ -1,0 +1,71 @@
+# 피의 원형장 — 그롬마르 수도 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §16, fac_grom·fac_arena_guild·fac_hundred_wins, 카드(우르가쉬·탈·마라·무르크·고르바·울브), docs/world/people/grommar.md.
+# grid: 도시 평면 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 가운데가 모래 바닥 지름 300m의 원형장(3만 석), 그 북쪽에 맞붙은 돌 전당이 뼈의 전당, 원형장 아래가 쇠우리(백 개의 문).
+#   북문(y=60)은 해골이빨 전쟁 숙영지 가는 길, 남문(y=1260)은 그롬마르 항 가는 길. 서쪽 바위 곁이 피의 샘, 동쪽 바깥이 탈의 빈 무덤. 천장·문은 그롬(2.5~3m)에 맞춰 높다.
+# 그롬은 통금이 없다 — 대련은 날마다 하고 경기는 해 지고도 이어진다. 인간 투사 숙소의 닫힘과 안식일 밤 흉터 회의가 인간 쪽 시간표다. 안식일(6일째)은 경기가 없다.
+# 태양월 대축제(313년): 태양월 1일 개막, 한 달 경기, 30일 마지막 날 100승 도전 경기와 대전쟁군주 도전. 맹약회의 313(서약섬, 태양월 1~11일)과 같은 달이라 대표 쇠턱의 보르그는 바다로 나간다.
+id: blood_arena
+name: 피의 원형장
+node: blood_arena         # 지역 지도(map.json)의 노드
+kind: arena_city
+grid: {w: 1500, h: 1300}
+curfew: {from: "22:00", to: "04:00", note: "그롬에게는 통금이 없다. 인간 투사 숙소(쇠우리)는 22시 문을 닫고, 숙소 밖의 투사는 새벽 훈련 전까지 오래 살지 못한다. 소모품은 도시 안에서 잠들 수 없다 — 뼈 행렬 막사는 숙영지 쪽이다. 안식일(경기 없는 날) 밤 쇠우리 1번 숙소에서 흉터 회의가 열린다"}
+bells:
+  - {at: "04:00", name: 새벽 훈련 북 (쇠우리 — 4시간)}
+  - {at: "05:00", name: 그롬 대련 북 (대련 마당)}
+  - {at: "09:00", name: 오전 경기 개막 뿔}
+  - {at: "13:00", name: 오후 경기 개막 뿔}
+  - {at: "18:00", name: 저녁 경기 개막 (이름 연호)}
+  - {at: "22:00", name: 쇠우리 닫힘}
+patrols: ["22:00", "00:00", "03:00"]
+locations:
+  # ── 원형장 ──
+  - {id: ba_arena, name: 피의 원형장 (관중석 3만), xy: [750, 650], kind: arena, access: public, hours: "09:00-22:00 경기 (안식일 휴장)", rooms: [ba_sand, ba_stands, ba_gate_tunnel, ba_judge_stand], note: "붉은 사암으로 쌓은 3만 석. 관중석 맨 앞은 그롬 흉터 전사의 자리, 위쪽이 인간 하인과 크릭"}
+  - {id: ba_sand, name: 모래 바닥, parent: ba_arena, access: public, note: "지름 300m. 한가운데 에오르를 찌른 첫 상처의 창이 박혀 있다 — 진품은 알 수 없다. 모래는 날마다 피로 붉게 마르고 새벽에 삽으로 뒤집는다"}
+  - {id: ba_stands, name: 관람석, parent: ba_arena, access: public, note: "대축제 때 대륙 최대 군중. 투사가 쓰러졌다 일어서면 관중이 이름을 연호한다"}
+  - {id: ba_gate_tunnel, name: 투사 입장 터널, parent: ba_arena, access: staff, note: "쇠우리에서 모래로 이어지는 돌 터널. 문 100개의 쇠창살이 차례로 올라간다. 벽에 투사의 손자국이 승수만큼 남아 있다"}
+  - {id: ba_judge_stand, name: 심판석, parent: ba_arena, access: staff, hours: "경기 시간", note: "은퇴하지 않는 심판 크롤이 앉는 돌 의자. 도전의 성립과 승패를 가린다. 이름 연호의 순서를 바꿀 수 있는 유일한 자리", hidden: "의자 밑 돌 틈 — AS 258 탈의 100번째 상대 칼날 조각. 날에 금이 간 자국이 있다 (fact_p2gm_kroll_tal_hundredth)"}
+  # ── 뼈의 전당 ──
+  - {id: ba_bone_hall, name: 뼈의 전당 (대전쟁군주의 내전), xy: [750, 400], kind: hall, access: owner, hours: "24시", rooms: [ba_warlord_seat, ba_bone_court, ba_tal_cell], note: "원형장 북쪽에 맞붙은 돌 전당. 벽에 쓰러진 전쟁군주들의 뼈가 박혔다. 지하가 쇠사슬의 방"}
+  - {id: ba_warlord_seat, name: 대전쟁군주의 자리, parent: ba_bone_hall, access: owner, note: "뼈 의자. 군주는 앉아 있지 않고 서서 도전을 받는다 — 앉은 군주는 쇠약해진 군주다"}
+  - {id: ba_bone_court, name: 뼈의 마당 (군주의 대련 마당), parent: ba_bone_hall, access: owner, hours: "05:00-09:00", note: "우르가쉬가 날마다 아침에 직접 싸운다. 싸우지 않으면 쇠약해진다. 한 번 무릎을 꿇은 자리 모래가 다른 곳보다 깊이 파여 있다", hidden: "마당 북쪽 모래 — AS 309 아침 대련에서 처음 한 방을 맞고 무릎을 꿇은 자리 (fact_gm_urgash_first_hit_taken)"}
+  - {id: ba_tal_cell, name: 지하 감방 (쇠사슬의 방), parent: ba_bone_hall, access: secret, locked: "24시 (열쇠는 울브의 목)", hidden: "눈먼 백승의 탈이 쇠사슬에 묶여 있다. 밤마다 우르가쉬와 대련하고 붉은 젖을 받는다. 벽 하나 너머가 배수로 (fact_gm_tal_alive_chained)", note: "문은 쇠창살 셋. 오그림 울브가 문 앞에 앉는다"}
+  - {id: ba_trophy_hall, name: 백 이빨의 방 (전리품관), xy: [900, 450], kind: hall, access: staff, hours: "08:00-20:00", note: "그롬이 모은 전리품. 쓰러진 투사의 칼은 값을 매기지 않는다", hidden: "유리장 — 탈의 칼 '백 번째 이'. 날 한쪽에 인간의 이름이 새겨져 있다 (fact_gm_tal_true_name_under_altar)"}
+  # ── 감독과 판정 ──
+  - {id: ba_overseer, name: 피의 감독 사무소, xy: [1000, 650], kind: office, access: staff, hours: "08:00-22:00", rooms: [ba_bout_stone, ba_weapon_room], note: "동문 곁. 투사 계약과 대진표. 인간 투사가 서명하는 곳은 아니다 — 그롬이 서명하고 투사는 이름을 부른다"}
+  - {id: ba_bout_stone, name: 대진표 돌판, parent: ba_overseer, access: public, note: "그날의 경기가 새겨지는 돌판. 승수는 이긴 밤에 한 줄씩 늘어난다", hidden: "한쪽 모서리 — '군나르 — 99승 — 미룸'이 아직 새겨져 있다 (REGIONS §16.9)"}
+  - {id: ba_weapon_room, name: 무기 점검실, parent: ba_overseer, access: owner, hours: "경기 전날 18:00-24:00", hidden: "점검 대장 — 100승 도전 경기마다 상대 칼에 표시된 '금' 한 줄. AS 258 이후 매번 (fact_p2gm_yala_cracked_hundredth)"}
+  # ── 쇠우리 (백 개의 문) ──
+  - {id: ba_gates, name: 쇠우리 (백 개의 문 — 투사 숙소 지하), xy: [750, 840], kind: barracks, access: staff, locked: "22:00-04:00", rooms: [ba_training, ba_dorm1, ba_dorm7, ba_dorm9, ba_gate99, ba_infirmary, ba_cookhouse], note: "원형장 아래 투사 숙소. 숙소 12곳, 문 100개. 인간 투사 약 2,400 가운데 조합 소속 약 1,200"}
+  - {id: ba_training, name: 새벽 훈련장, parent: ba_gates, access: staff, hours: "04:00-08:00", note: "투사는 새벽에 4시간 훈련한다. 승수 흉터가 낮은 쪽이 먼저 치는 인사가 여기서 매일 오간다"}
+  - {id: ba_dorm1, name: 쇠우리 1번 숙소 (흉터 회의 바닥), parent: ba_gates, access: staff, hours: "안식일 밤 21:00-24:00 회의", note: "흉터(50승) 이상 투사가 안식일 밤 바닥에 원으로 앉는다. 승수 순서로 말하고 손을 든 자의 승수를 합산한다 — 조합장 독방이 이 숙소에 있다"}
+  - {id: ba_dorm7, name: 쇠우리 7번 숙소 (백승가), parent: ba_gates, access: staff, note: "칼로 이어진 아궁이. 오그와 미아, 어린 탈이 같은 숙소를 쓴다. 99의 밤에는 칼을 닦으며 이름을 부른다", hidden: "벽 아래 돌 틈 — 이름 한 글자가 남은 부러진 칼날 조각. 카렐의 것 (fact_p2gm_mia_karel_blade)"}
+  - {id: ba_dorm9, name: 쇠우리 9번 숙소, parent: ba_gates, access: staff, hidden: "바닥 아래 무기 300자루 — 봉기 준비. 바닥지기 칼 셋이 돌판을 지킨다 (fact_p2gm_og_uprising_signal)"}
+  - {id: ba_gate99, name: 문 99번 (아흔아홉의 회합실), parent: ba_gates, access: secret, locked: "24시", hidden: "인간끼리 죽이는 경기를 거부하는 투사 결사 '아흔아홉'의 회합실. 문 99번 뒤. 군나르의 이름을 땄다 (fact_p2gm_eida_ninety_nine)"}
+  - {id: ba_infirmary, name: 숙소 치료소, parent: ba_gates, access: staff, hours: "24시", note: "상처 봉합과 장례. 붉은 젖 금단 증상을 그롬에게서 숨기는 법을 아는 사람이 있다", hidden: "약초 선반 뒤 — 소금물과 씨앗 달인 물. 금단을 늦추는 약 (fact_p2gm_norabe_withdrawal)"}
+  - {id: ba_cookhouse, name: 숙소 취사장, parent: ba_gates, access: staff, hours: "03:00-21:00", note: "투사는 잘 먹는다 — 고기와 빵. 솥 열둘"}
+  # ── 그롬의 자리 ──
+  - {id: ba_spar_yard, name: 그롬 대련 마당, xy: [520, 420], kind: yard, access: staff, hours: "05:00-24:00", note: "그롬 전사의 대련. 30일 싸움이 없으면 근육이 빠지고 열이 나서 대련은 의무다. 쓰러진 자를 아무도 부축하지 않는다"}
+  - {id: ba_bloodaxe_quarter, name: 피도끼 손님 구역, xy: [300, 540], kind: camp, access: staff, hours: "대축제 기간", note: "피도끼 씨족이 대축제와 피의 소집에 오면 세우는 천막 숲. 쌍날 도끼 깃대가 선다. 인간 투사가 도끼날 훈련 상대로 불려 간다"}
+  - {id: ba_ashhowl_tent, name: 재울음 천막 (우르크), xy: [180, 640], kind: tent, access: staff, hours: "24시", note: "재를 뒤집어쓴 늑대 머리 깃대. 노파 주술사가 100승자를 위한 의식을 준비한다", hidden: "천막 구석 가죽 주머니 — 탈의 잘린 목줄과 유품. 붉은 젖 항아리 셋 (fact_p2gm_urk_halves_milk)"}
+  - {id: ba_blood_spring, name: 피의 샘, xy: [150, 720], kind: shrine, access: public, hours: "24시", note: "붉은 물이 솟는 샘. 그롬의 기도처. 철 때문에 붉다 — 그롬은 믿지 않는다", hidden: "샘 뒤 바위 — 의식 잔 셋의 선반. 셋 다 쓰였고 새 잔은 아직 없다 (fact_p2gm_gormak_cups_spent)"}
+  - {id: ba_gorba_pens, name: 이빨장수의 투사 매매장, xy: [850, 1000], kind: market, access: staff, hours: "12:00-18:00", note: "투사 후보를 사고파는 곳. 고르바의 조련장과 대진 짜는 방이 뒤에 있다. 이빨과 투사로 값을 친다"}
+  # ── 시장과 내기 ──
+  - {id: ba_market, name: 관중 노점 거리, xy: [750, 1100], kind: market, access: public, hours: "07:00-22:00", note: "남문 거리. 고기 꼬치, 쇠 부스러기, 승수 쪽지. 크릭이 노점을 연다"}
+  - {id: ba_betting, name: 내기장, xy: [780, 1160], kind: pit, access: public, hours: "12:00-24:00", hidden: "장부 벽 — 승수와 내기 비율이 매듭으로 적혀 있다. 마라의 경기 열한 곳에서 시작 전에 비율이 움직였다 (fact_p2gm_tick_odds_ledger)", note: "그롬은 돈을 경멸해 크릭이 대신 센다. 이빨 하나에 사람 하나의 값"}
+  - {id: ba_drain, name: 지하 배수로, xy: [690, 560], kind: culvert, access: secret, hours: "24시", hidden: "한 구간이 뼈의 전당 지하 감방 벽과 맞닿아 있다 — 쇠사슬과 대련 소리가 들린다. 아이 하나가 그 벽에 대고 자기 이름을 부른다 (fact_gm_murk_hears_chains, fact_p2gm_ytal_hears_name)", note: "투사 시체를 옮기는 길. 무르크의 자리"}
+  - {id: ba_tomb, name: 탈의 빈 무덤, xy: [1150, 700], kind: tomb, access: public, note: "원형장 동쪽 바깥. 그롬이 지나갈 때 고개를 숙인다. 봉헌대에 칼이 꽂혀 있다", hidden: "봉헌대 밑돌 — 탈의 진짜 이름이 새겨져 있다 (fact_gm_tal_true_name_under_altar)"}
+  - {id: ba_north_gate, name: 북문 (전쟁 숙영지 길), xy: [750, 60], kind: gate, access: public, hours: "24시", note: "해골이빨 전쟁 숙영지로 가는 길 20시간. 인간은 투사 표식이 필요하다"}
+  - {id: ba_south_gate, name: 남문 (그롬마르 항 길), xy: [750, 1260], kind: gate, access: public, hours: "24시", note: "그롬마르 항 가는 길 30시간. 투사 후보 노예가 이 문으로 들어온다"}
+# 원형장 밖 — hours = 도시에서 걷는 시간. node 가 다른 곳은 다른 정착지다
+outer:
+  - {id: blood_arena__bloodaxe_hold, name: 피도끼 씨족 요새 (그롬마르 북부), hours: 18.0, node: blood_arena}
+  - {id: blood_arena__ashhowl_hills, name: 재울음 무리 근거지 (황무지 남쪽 가장자리), hours: 48.0, node: blood_arena}
+  - {id: war_camp__command, name: 해골이빨 전쟁 숙영지 사령 막사, hours: 0, node: war_camp}
+  - {id: war_camp__bone_column, name: 뼈 행렬 막사 (소모품), hours: 0, node: war_camp}
+  - {id: war_camp__rust_heap, name: 녹슨 무기 더미, hours: 0, node: war_camp}
+  - {id: war_camp__cage, name: 소모품 우리 (다음 원정의 방패), hours: 0, node: war_camp}
+  - {id: grommar_port__docks, name: 노예 하선장·부두, hours: 0, node: grommar_port}
+  - {id: grommar_port__iron_market, name: 쇠 시장, hours: 0, node: grommar_port}
+  - {id: grommar_port__alley, name: 쇠 시장 뒷골목, hours: 0, node: grommar_port}
+  - {id: grommar_port__ironjaw_hall, name: 쇠턱 씨족 회관 (항구), hours: 0, node: grommar_port}
+  - {id: grommar_port__tersa_house, name: 테르사 상가 출장소, hours: 0, node: grommar_port}

@@ -1,0 +1,21 @@
+# 갈림목 — 은빛 강이 바다로 갈라지는 하구 도시 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §9.9(seren_estuary), docs/world/people/seren.md, facts/phase2_seren.yaml.
+# grid: 하구 도시 평면 (m). 노예선 종점 — 루멘에서 내려온 배가 여기서 입항 검역을 받고 세렌 소금 나루로 이어진다 (세렌까지 16시간).
+id: seren_estuary
+name: 갈림목
+node: seren_estuary
+kind: estuary_town
+grid: {w: 700, h: 500}
+curfew: {from: "22:00", to: "05:00", note: "밤에는 노예선 부두에 접근 금지. 검역 중인 배는 횃불을 켜지 않는다"}
+bells:
+  - {at: "06:00", name: 부두 열기}
+  - {at: "12:00", name: 정오 세관 휴식}
+  - {at: "20:00", name: 입항 마감 종}
+patrols: ["21:00", "01:00"]
+locations:
+  - {id: se_slave_pier, name: 노예선 부두 (검역 부두), xy: [350, 80], kind: quay, access: staff, hours: "05:00-20:00", note: "루멘에서 내려온 노예선이 닿는 부두. 입항 검역으로 하룻밤 묶인다. 사슬은 풀지 않는다"}
+  - {id: se_customs, name: 세관, xy: [300, 150], kind: customs, access: staff, hours: "07:00-19:00", note: "입항 서류를 받는 낮은 석조 건물. 선적 번호와 선원 수를 적는다"}
+  - {id: se_harbormaster, name: 항만관 사무소, xy: [280, 200], kind: office, access: staff, hours: "07:00-19:00", note: "항만관 도미닉의 사무소. 입항·도착 장부 두 권이 책상 위에 나란히 놓였다", hidden: "서랍 안 바알카르로 보낼 상환 일정 사본 — 가장 최근 장"}
+  - {id: se_quarantine_shed, name: 검역 막사, xy: [400, 170], kind: barracks, access: staff, hours: "24시", note: "노예선 사람들이 하룻밤 묶이는 낮은 막사. 사망자는 여기서 숫자로 적힌다"}
+  - {id: se_reed_market, name: 갈대 시장, xy: [200, 280], kind: market, access: public, hours: "06:00-18:00", note: "갈대 지붕 가판이 늘어선 시장. 장어·소금·갈대 바구니가 오간다", hidden: "시장 뒤편 하수 도랑 — 뱀장어 길(모르바 밀수로)의 출발점. 소금 한 자루 값의 인지세가 항만관 장부에서 사라진다"}
+  - {id: se_inn, name: 강바람 여관, xy: [250, 330], kind: inn, access: public, hours: "10:00-02:00", note: "노예선 선원과 상인이 묵는 낮은 여관. 소문이 빠르다"}
+outer: []

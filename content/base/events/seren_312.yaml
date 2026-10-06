@@ -1,0 +1,59 @@
+# 세렌 해안 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §9(포도월 대시장·회색여울 저당 기한 313.8.30·계약 시장 10.30경), §2.14(10.9·12.3 매각 호송), WORLD_BIBLE §8·§10(클락 2 맹약회의 313: 서약섬 태양월 1~11일 — SCENARIOS 「서약섬의 열하루」), HOUSES §3.4·§5.10, docs/world/people/seren.md, facts/phase2_seren.yaml.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림 13 재의 날(5일). 서리월 이후 소금 바닷길은 굶주림월 폭풍철에 운항 중지(은빛 강 수운은 계속).
+# 회색여울 매각 호송 경로: 1차 40명 — 바알카르 10.15 선매 인도 → 루멘 부두 10.17(하룻밤) → 갈림목 검역 10.19 → 세렌 소금 나루 10.20 → 검역·전환 등록 보류 → 계약 시장 경매 10.30.
+#                          2차 31명(사라 포함) — 바알카르 12.9 선적·12.10 '소금 바늘'호 출항 → 루멘 12.11 → 갈림목 12.13 밤 → 소금 나루 12.14 → 12.30 그믐 밤 사라와 심해 사절.
+# 다른 지역과의 연결: 312-10-20·12-14 소금 나루(회색여울 마흔·서른하나) / 312-12-11 미코가 '소금 바늘'호 갑판에서 루멘 부두를 지난다(lumen_312 ev_lm_convoy2_dock) / 313-03-15 흰 알 부화 — 시렌나의 알이 따뜻해진다 / 313-04-29~05-12 노르발과 사절단이 서약섬으로(맹약회의 5/1~11) / 313-05-12 이후 귀로·소식 전파 / 313-07 포도월 대시장 준비와 저당 기한 313.8.30.
+# 목록에서 먼저 맞는 일정이 이긴다 — 날짜가 정해진 것을 위에, 매달 반복을 아래에 적었다. 쉼표가 든 값은 큰따옴표로.
+
+# ── 낙엽월 (9) ──
+- {id: ev_sr_sep_tide_cave, date: "312-09-14", npcs: [npc_sr_sepa], from: "17:00", to: "20:00", at: cq_tide_cave, doing: "썰물 두 시간 — 세파가 절벽 아래 밀물 동굴 입구를 지나간다. 막지 않고 돌아선다", travel_from: cq_overseer_hut, return_to: cq_overseer_hut}
+- {id: ev_sr_sep_lupo_212, date: "312-09-22", npcs: [npc_lupo, npc_sr_oral], from: "13:00", to: "17:00", at: sr_ledger_stacks, doing: "루포가 서가에서 번진 인장 계약서를 찾는다 — 오랄이 못 본 척 번호표를 건넨다. 무효 213번째가 나온다"}
+- {id: ev_sr_sep_severo_greyford_papers, date: "312-09-30", npcs: [npc_severo, npc_sr_sebo], from: "18:00", to: "22:00", at: sr_severo_office, doing: "회색여울 1차 40·2차 31 인수 서류를 맞춘다 — 세보가 한 줄을 지우고 세베로는 보지 못한다"}
+# ── 서리월 (10) ──
+- {id: ev_sr_oct_dominic_estuary, date: "312-10-19", npcs: [npc_sr_dominic, npc_miko], from: "14:00", to: "20:00", at: se_slave_pier, doing: "회색여울 마흔을 실은 노예선이 갈림목에 닿는다 — 입항 검역으로 하룻밤 묶인다. 도미닉이 선원 수와 사람 수를 장부에 두 줄로 적는다", travel_from: sr_salt_quay}
+- {id: ev_sr_oct_arrival_40, date: "312-10-20", npcs: [npc_severo, npc_sr_sebo, npc_sr_skre, npc_miko, npc_sr_catarina], from: "08:00", to: "14:00", at: sr_salt_quay, doing: "회색여울 마흔이 소금 나루에 내린다 — 스크레의 하역표에 마흔 번호가 찍히고 미코가 속으로 센다. 카타리나가 부두 가장자리에서 번호를 외우고 세베로의 가마가 선착장 끝에 선다", fixed: true}
+- {id: ev_sr_oct_quarantine, date: "312-10-25", npcs: [npc_sr_oral, npc_sr_sebo], from: "10:00", to: "16:00", at: sr_registry_desk, doing: "전환 등록 보류 닷새째 — 회색여울 마흔의 번호가 한 줄씩 장부에 오른다. 보류 기간의 숙식비가 먼저 붙는다"}
+- {id: ev_sr_oct_auction_40, date: "312-10-30", npcs: [npc_sr_run, npc_severo, npc_sr_sebo, npc_sr_oral, npc_ophelia], from: "09:00", to: "18:00", at: sr_auction_stage, doing: "계약 시장 경매 — 회색여울 마흔이 로트 번호 아래 선다. 룬의 상아 망치가 열 발톱부터 부른다. 입찰자 둘이 같은 눈짓을 나눈다", fixed: true}
+- {id: ev_sr_oct_mondali_loan, date: "312-10-24", npcs: [npc_beatrix, npc_sr_zolak], from: "18:00", to: "22:00", at: sr_chair_office, doing: "용제국 양쪽 채권의 이자 정산 — 의장이 졸라크에게 사본 한 장을 건넨다. 어느 쪽의 것인지는 말하지 않는다"}
+# ── 긴밤월 (11) ──
+- {id: ev_sr_nov_oscar_proof, date: "312-11-09", npcs: [npc_sr_oscar, npc_lupo], from: "21:00", to: "24:00", at: sr_lupo_office, doing: "오스카가 증명의 일곱째 쪽을 입으로 들려주고 루포가 '숫자 하나'를 대가로 받는다. 쪽지는 한 줄도 쓰이지 않는다", travel_from: sr_debt_alley, return_to: sr_debt_alley}
+- {id: ev_sr_nov_lis_copies, date: "312-11-18", npcs: [npc_sr_lis], from: "10:00", to: "18:00", at: sr_opil_house, doing: "탑의 새 연구 보고 사본이 필경소에 닿는다 — 리스가 서가 위치 지도 장을 두 번째로 베낀다", fixed: true}
+- {id: ev_sr_nov_ophelia_vote_count, date: "312-11-24", npcs: [npc_ophelia, npc_sr_norval, npc_sahar], from: "17:00", to: "21:00", at: sr_norval_hall, doing: "시민권 초안 표 헤아리기 — 21표 중 7표. 노르발이 '네 표가 모자란다'를 처음 입 밖에 낸다"}
+# ── 굶주림월 (12) ──
+- {id: ev_sr_dec_miko_deck, date: "312-12-11", npcs: [npc_miko], from: "11:00", to: "22:00", at: lm_dock, doing: "'소금 바늘'호 갑판 당번 — 루멘 부두에 하룻밤 묶인 배 위에서 짐칸의 서른한 얼굴을 속으로 센다. 당번표 끝에 그의 이름이 있다", travel_from: sr_kassalon_dock, fixed: true}
+- {id: ev_sr_dec_estuary_night, date: "312-12-13", npcs: [npc_sr_dominic, npc_sr_lucio], from: "20:00", to: "24:00", at: se_slave_pier, doing: "'소금 바늘'호가 갈림목에 닿는다 — 회색여울 서른한 명이 하룻밤 검역에 묶인다. 사라는 선원실 옆 별도 칸에서 나오지 않는다", travel_from: sr_kassalon_dock, fixed: true}
+- {id: ev_sr_dec_arrival_31, date: "312-12-14", npcs: [npc_severo, npc_sr_sebo, npc_sr_skre, npc_miko, npc_sr_lucio], from: "09:00", to: "15:00", at: sr_salt_quay, doing: "'소금 바늘'호가 소금 나루에 닿는다 — 회색여울 서른한 명(사라 포함)이 하역된다. 스크레의 하역표에 서른한 번호가 찍히고 미코의 이름이 갑판 당번표 끝에 있다. 사라는 세베로의 가마 곁 별도 문으로 내려진다", fixed: true}
+- {id: ev_sr_dec_night_off_book, date: "312-12-14", npcs: [npc_sr_skre], from: "23:00", to: "24:00", at: sr_salt_quay, doing: "밤 하역 — 등록 없는 사람 몇이 부두 뒤편으로 내려진다. 스크레가 장부 상자를 두 번 두드린다"}
+- {id: ev_sr_dec_dominic_report, date: "312-12-16", npcs: [npc_sr_dominic, npc_sr_lucio], from: "20:00", to: "23:00", at: se_harbormaster, doing: "'소금 바늘'호의 항해 사망 보고를 열둘로 맞춘다 — 입항 장부와 도착 장부의 숫자가 하루 사이에 같아진다", travel_from: sr_kassalon_dock, return_to: sr_kassalon_dock}
+- {id: ev_sr_dec_estuary_news, date: "312-12-18", npcs: [npc_ophelia, npc_sr_catarina, npc_lupo], from: "18:00", to: "22:00", at: sr_debt_alley, doing: "빚 골목 우물가 — 회색여울 서른한 명 가운데 열이 숙소 전환 줄에 서 있다는 소식. 카타리나가 번호를 부르고 오필리아가 털목도리 속에서 그것을 듣는다"}
+- {id: ev_sr_dec_30_new_moon, date: "312-12-30", npcs: [npc_sr_sirenna, npc_deep_naga, npc_severo], from: "22:00", to: "24:00", at: sr_deep_shrine, doing: "그믐 밤 — 세베로가 글자 모르는 젊은 인간 하나를 신전 앞 물가에 세운다. 시렌나가 대가를 던지고 심해 사절이 고인 피의 문 위쪽까지 올라와 '말할 수 있는 입'인지 가려 본다", if: sara_in_seren, fixed: true}
+# ── 재의 날 (13) ──
+- {id: ev_sr_ash_day_roof, date: "312-13-03", npcs: [npc_sr_catarina, npc_sr_oscar, npc_miko], from: "21:00", to: "24:00", at: sr_roof_bridge, doing: "재의 날 — 불이 없는 밤 지붕 다리 위에서 셈 모임이 숫자를 소리 없이 센다. 미코가 1,140에 하나를 더한다. 세렌에서는 아스테리온 이름이 숫자 뒤에 숨는다"}
+# ── 313 해빙월 (1) ──
+- {id: ev_sr_jan_flood, date: "313-01-12", npcs: [npc_sr_dominic], from: "06:00", to: "18:00", at: se_slave_pier, doing: "은빛 강 범람 — 갈림목 저지대가 잠기고 노예선이 지연된다. 도미닉이 입항 지연을 장부에 적지 않을 방법을 찾는다"}
+# ── 313 파종월 (2) ──
+- {id: ev_sr_feb_pescar_boat, date: "313-02-08", npcs: [npc_sr_pescar, npc_miko], from: "20:00", to: "24:00", at: sr_shipyard, doing: "뒷마당 배의 용골에 첫 갈비뼈가 올라간다 — 페스카르가 손바닥으로 세 번 두드린다. 갑판 수리에 불려 온 미코가 그것을 본다"}
+# ── 313 꽃월 (3) — 흰 알 ──
+- {id: ev_sr_mar_egg_warms, date: "313-03-15", npcs: [npc_sr_sirenna], from: "22:00", to: "24:00", at: sr_egg_vault, doing: "흰 알이 깨졌다는 말이 세렌에 닿는 밤 — 도둑맞은 알이 처음으로 따뜻해진다. 시렌나가 손바닥을 떼지 못한다. 알의 수조 물이 소용돌이로 돈다", fixed: true}
+- {id: ev_sr_mar_beatrix_molt, date: "313-03-20", npcs: [npc_beatrix, npc_sr_sirenna], from: "22:00", to: "24:00", at: sr_beatrix_tank, doing: "탈피 지연 3년 반 — 의장이 시렌나를 지하 수조로 불러 '알이 따뜻해졌다는 말이 정말이냐'를 묻는다. 한 줄의 대가가 오간다"}
+# ── 313 푸른월 (4) ──
+- {id: ev_sr_apr_draft_vote, date: "313-04-01", npcs: [npc_ophelia, npc_lupo, npc_sr_norval, npc_beatrix, npc_sr_sirenna, npc_sr_zolak, npc_sr_mardi, npc_sr_pescar, npc_sr_lucio, npc_sahar], from: "09:00", to: "17:00", at: sr_chamber, doing: "정기 회기 — 오필리아가 시민권 초안을 상정한다. 표결은 맹약회의 뒤로 미뤄진다. 사하르가 의회당 문을 누구에게 열고 닫을지 정한다 — 오필리아에게는 열고 졸라크의 서기에게는 닫는다", if: draft_tabled, fixed: true}
+- {id: ev_sr_apr_delegation_depart, date: "313-04-29", npcs: [npc_sr_norval, npc_beatrix, npc_ophelia], from: "04:00", to: "09:00", at: sr_salt_quay, doing: "세렌 사절단이 서약섬으로 출발한다 — 노르발이 서명 반지를 오른손에서 왼손으로 옮긴다. 바닷길 30시간, 5월 1일 도착", fixed: true}
+# ── 313 태양월 (5) — 맹약회의 313 (서약섬 1~11일) ──
+- {id: ev_sr_may1_oath_arrive, date: "313-05-01", npcs: [npc_sr_norval], from: "08:00", to: "20:00", at: oath_isle, doing: "서약섬 도착 — 열한 종족 천막터가 선다. 노르발이 세렌 천막에서 표를 세고 '인간 증언'이라는 낱말을 처음 번역한다", fixed: true}
+- {id: ev_sr_may_oath_days, date: "313-05-06", npcs: [npc_sr_norval], from: "09:00", to: "18:00", at: oath_isle, doing: "서약섬의 열하루 한가운데 — 시민권 의제와 표를 맞바꿀 자리가 열린다. 노르발이 네 표를 얻는지가 오늘 갈린다"}
+- {id: ev_sr_may12_news, date: "313-05-14", npcs: [npc_sr_catarina, npc_sr_oscar, npc_ophelia], from: "18:00", to: "22:00", at: sr_debt_alley, doing: "서약섬 소식이 세렌에 닿는다 — 5월 12일 이후 귀로 배가 전한 말이 빚 골목 우물가에서 숫자처럼 돈다. 카타리나가 '인간 증언'이라는 말을 큰 소리로 되풀이한다"}
+# ── 313 건초월 (6) ──
+- {id: ev_sr_jun_trade_season, date: "313-06-10", npcs: [npc_sr_mardi, npc_mv_hedwiga], from: "10:00", to: "16:00", at: sr_mardi_house, doing: "여름 무역 성수기 — 약초 값이 오른다. 마르디가 헤드비가의 자루에서 약초와 소식을 같이 꺼낸다"}
+# ── 313 수확월 (7) ──
+- {id: ev_sr_jul_oscar_finish, date: "313-07-12", npcs: [npc_sr_oscar, npc_sr_catarina], from: "21:00", to: "24:00", at: sr_roof_bridge, doing: "오스카가 증명의 열두 쪽 가운데 마지막 다섯 쪽을 카타리나 앞에서 입으로만 읽는다 — 서명한 적 없는 증인과 증언할 수 없는 증인이 한 줄로 앉는다", if: oscar_proof_shared}
+- {id: ev_sr_jul_mortgage_prep, date: "313-07-28", npcs: [npc_sr_oral, npc_beatrix, npc_severo], from: "10:00", to: "17:00", at: sr_ledger_stacks, doing: "포도월 대시장과 회색여울 저당 기한(313.8.30)을 앞둔 점검 — 오랄이 맨 위 칸의 열쇠를 의장에게 보인다. 세베로는 경매 순서를 묻는다"}
+# ── 매달 반복 ──
+- {id: ev_sr_monthly_council, npcs: [npc_beatrix, npc_sr_sirenna, npc_sr_norval, npc_sr_zolak, npc_sr_mardi, npc_sr_pescar, npc_sr_lucio, npc_ophelia], repeat: monthly, day: 1, from: "09:00", to: "17:00", at: sr_chamber, doing: "의회 정기 회기 — 그믐 이튿날. 모든 안건은 '계약안'의 형식으로 올라와야 접수된다. 이의가 나오면 정산이 끝날 때까지 안건은 정지한다", fixed: true}
+- {id: ev_sr_monthly_pescar_fund, npcs: [npc_sr_pescar, npc_jan], repeat: monthly, day: 5, from: "19:00", to: "22:00", at: sr_shipyard, doing: "공제회 '빚 갚는 배' — 조선소 계약민 300이 노임에서 몇 못씩 모은다. 가장 급한 이의 빚이 오늘 한 건 지워진다. 페스카르는 장부를 경비로 옮긴다"}
+- {id: ev_sr_monthly_cell, npcs: [npc_sr_catarina, npc_sr_oscar, npc_jan], repeat: monthly, day: 10, from: "22:00", to: "24:00", at: sr_roof_bridge, doing: "셈 모임 — 지붕 다리에서 서로의 이자 계산을 맞춰 본다. 숫자는 합법이다. 카타리나는 사본 셋의 위치를 입에 올리지 않는다"}
+- {id: ev_sr_monthly_dona_seals, npcs: [npc_sr_dona, npc_sr_sebo, npc_sr_oral], repeat: monthly, day: 8, from: "09:00", to: "13:00", at: sr_inkscale_hall, doing: "인장 중개인 회의 — 이번 달 계약서 양식과 이자 조항을 갱신한다. 도나가 인장 아홉을 한 번씩 찍어 본다"}
+- {id: ev_sr_monthly_olaf_cloth, npcs: [npc_sr_olaf], repeat: monthly, day: 14, from: "17:00", to: "19:00", at: sr_blind_lighthouse, doing: "소금배 물때 — 푸른 천을 꼭대기 창에 건다. 물비늘대 순찰이 가까우면 붉은색으로 바꾼다. 모르바 배가 보일 때까지 서 있는다", fixed: true}
+- {id: ev_sr_monthly_new_moon, npcs: [npc_sr_sirenna], repeat: monthly, day: 30, from: "20:00", to: "23:00", at: sr_deep_shrine, doing: "그믐 — 신전 사제들이 앞바다에 '대가'를 던진다. 시렌나가 마지막으로 던진다. 이달의 대가는 알의 청구서 한 장이다", fixed: true}
+- {id: ev_sr_monthly_miko_count, npcs: [npc_miko], repeat: monthly, day: 25, from: "05:00", to: "08:00", at: sr_ledger_stacks, doing: "등록소 서가 벽 아래 — 미코가 이달 하선한 사람 수를 숫자로 새긴다. 벽의 숫자는 1,140에서 한 번에 열둘 남짓씩 늘어난다"}

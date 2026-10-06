@@ -1,0 +1,207 @@
+# 그라샤 피도끼 — 그롬마르 붉은 황야 2차 확장 카드 (22_NPC_PERSONA.md)
+id: npc_gm_gracha
+name: 그라샤 피도끼
+aka:
+- 피도끼
+- 도끼의 그라샤
+- 쌍날 도끼
+tier: "A"
+type: "living"
+race: "그롬"
+subrace: "전쟁 그롬"
+sex: "여"
+age: 38
+region: "그롬마르 붉은 황야"
+home: "피도끼 요새 (북부, 도시 18시간)"
+job: "피도끼 씨족장 — 그롬마르 북부, 도전자. 인간 투사를 도끼날 훈련용으로 소모, 아우락스 지지"
+rank: "전쟁군주 회합 구성원. 이번 태양월 대전쟁군주 도전 예정자"
+summary: "그롬마르 북부 피도끼 씨족장. 태양월 대축제에서 우르가쉬에게 도전할 예정이고, 이기면 아우락스에게 두 전쟁무리를 팔기로 서신을 받았다. 도전을 마지막 날 해 질 녘으로 정했다"
+source: "docs/world/people/grommar.md (npc_gm_gracha)"
+life:
+- year: 274
+  age: 0
+  event: "피도끼 씨족에서 태어남"
+- year: 284
+  age: 10
+  event: "첫 싸움 — 씨족 어른의 도끼날 한 방"
+- year: 287
+  age: 13
+  event: "성년. 흉터 문신을 처음 새김"
+- year: 300
+  age: 26
+  event: "씨족장 도전에서 아버지를 쓰러뜨림"
+- year: 308
+  age: 34
+  event: "하르트의 왼팔을 도끼날 훈련에서 잘라 냄"
+- year: 312
+  age: 38
+  event: "아우락스의 사자를 처음 만나 서신을 받음"
+appearance:
+- 어깨가 넓고 팔에 도끼날 모양 흉터 여섯
+- 쌍날 도끼를 등에 비스듬히 멨다 — 한 날에 아직 피가 마르지 않았다
+- 머리를 한쪽만 밀어 흉터 문신을 드러냈다
+smell: "쇠 기름과 마른 피, 땀"
+voice_sound: "굵고 빠르다. 웃음이 먼저 오고 도전이 뒤따른다"
+personality:
+  disposition:
+    용기: 85
+    자비: -45
+    정직: 20
+    신앙: 70
+    탐욕: 35
+    충성: 40
+  temperament:
+  - 용맹
+  - 광기
+  - 자존
+  habits:
+  - 도끼날을 엄지로 눌러 한 방울 피를 본다
+  - 쓰러진 인간 투사 이름을 한 번도 부르지 않는다
+  values: 피가 곧 기도다. 기도는 약한 자가 대신해 주지 않는다
+  fears:
+  - 도전을 거절당하는 것
+  - 우르가쉬가 대축제 전에 죽어 도전이 성립하지 않는 것
+  desires:
+    short: 대축제 마지막 날 해 질 녘 우르가쉬를 쓰러뜨리는 것
+    long: 대전쟁군주가 되어 아우락스에게 전쟁을 파는 것 — 인간 소모품 2만을 첫 열로
+voice:
+  register:
+    to_superior: 군주에게는 도전의 말('받는다')만
+    to_equal: 씨족장에게는 웃음 섞인 전투어
+    to_inferior: 인간 투사에게는 번호로 부르는 명령
+    to_player_default: 낯선 사람에게는 먼저 흉터를 보자고 한다
+  tics:
+  - 엄지로 도끼날을 누른다
+  - '''받는다.'''
+  use:
+  - 도끼
+  - 피
+  - 도전
+  - 받는다
+  - 모래
+  - 해 질 녘
+  avoid:
+  - 미안
+  - 기다린다
+  - 거절
+  length: 굵고 빠르다. 도전 이야기는 길다
+  samples:
+  - situation: 첫 만남
+    line: 몇 개냐. 흉터를 보자. 앞이 많으면 이야기를 하고 등이 많으면 비켜라.
+  - situation: 호의
+    line: 받는 자는 도망치지 않는다. 이름을 불러 주마 — 아직 이름이 없다면.
+  - situation: 거절
+    line: 거절은 모래 위에서 한다. 여기서는 받는다고 말해라.
+  - situation: 분노
+    line: 도끼날 훈련이 싫다면 도끼를 쥐어라. 쥐지 못하면 입을 닫아라.
+  - situation: 슬픔
+    line: 하르트의 팔이 잘린 날 그가 웃었다. 그 웃음이 지금도 내 귀에 있다.
+  - situation: 위기
+    line: 도끼를 들어라! 오늘이 해 질 녘이다!
+  - situation: 비밀 누설
+    line: 붉은 턱이 봉인한 서신이다. 이기면 군대가 내 것이다. 그 대가는 인간 이만이다.
+  - situation: 거래
+    line: 내 천막에 오는 인간 투사 열을 대신 이기면 도전 일정을 하루 앞당겨 주마.
+  - situation: 거짓말
+    line: 나는 군주가 되어도 원형장을 그대로 둔다.
+schedule:
+  아침: 피도끼 천막에서 쌍날 도끼를 닦고 인간 투사를 도끼날 훈련 상대로 부른다
+  낮: 관중석 맨 앞에서 우르가쉬의 대련 이야기를 듣는다
+  저녁: 대련 마당에서 씨족 전사를 이끌고 싸운다
+  밤: 도끼를 닦으며 서신의 인장을 만진다
+places:
+- 피도끼 손님 구역
+- 그롬 대련 마당
+- 피의 원형장
+- 피도끼 씨족 요새
+knows:
+- fact_gm_urgash_red_glass_eye
+- fact_gm_red_milk_ritual
+hides:
+- fact: fact_p2gm_gracha_aurax_letter
+  reveal_when: "신뢰 65 이상, 또는 서신의 인장을 직접 본 뒤 판정 대성공(신뢰 25 이상)"
+  reveal: [{"trust":65},{"tier":"대성공","trust":25}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "아우락스 이야기가 나오면 '붉은 턱은 전쟁을 아는 자'라고만 한다"
+- fact: fact_p2gm_gracha_axe_training
+  reveal_when: "호감 35 이상이고 피도끼 훈련장에 들른 장면"
+  reveal: [{"like":35,"scene":"도끼 훈련장"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "훈련 이야기가 나오면 '도끼는 쉬지 않는다'고만 한다"
+- fact: fact_p2gm_gracha_challenge_dusk
+  reveal_when: "신뢰 60 이상이고 우르가쉬의 쇠약을 플레이어가 먼저 언급했을 때"
+  reveal: [{"trust":60,"named":"쇠약"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+  cover: "도전 날짜 이야기가 나오면 '마지막 날'이라고만 한다"
+relations:
+- to: npc_urgash
+  type: "도전 상대"
+  like: -20
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: "쓰러뜨릴 대전쟁군주"
+- to: npc_gm_yala
+  type: "대진표의 감독"
+  like: -40
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: "도전의 성립을 막을 수 있는 사람"
+- to: npc_aurax
+  type: "서신의 상대"
+  like: 30
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: "전쟁을 사 줄 붉은 턱"
+- to: npc_gm_hart
+  type: "팔을 자른 투사"
+  like: -5
+  trust: 30
+  visibility: 일방
+  memo: null
+  words: "외팔로 도끼를 이긴 사람"
+- to: npc_gorba
+  type: "원정파 수장"
+  like: 25
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: "같은 전쟁을 원하는 조련사"
+- to: npc_gm_urk
+  type: "재울음 주술사"
+  like: 10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: "도전의 의식을 맡을 노파"
+toward_player: "흉터부터 본다. 도끼를 쥘 수 있는 손이면 말을 건다"
+persuade:
+  likes: 정면 도전의 말(+25)
+  hates: 우르가쉬를 쇠약하다고 입에 올리는 말(+0 — 그러나 도전 날짜를 앞당긴다)
+roles:
+  teacher: 스승 불가
+  companion: 불가
+  romance: null
+affiliations:
+- faction: fac_grom
+  rank: rank_warlord
+  office: off_bloodaxe_clan
+  since: 300
+  loyalty: 60
+  public: true
+  cell: null
+truths: []
+regression:
+  fixed:
+  - 태양월 마지막 날 해 질 녘 도전이다
+  - 아우락스의 서신이 있다
+  drift:
+  - 도끼날 훈련에서 죽은 투사의 수
+  - 그날 서신을 만진 횟수
+  deja_vu: none
+hard_rules:
+- 우르가쉬의 쇠약을 먼저 꺼내지 않는다
+- 아우락스 서신을 공개 자리에서 말하지 않는다
+on_death: "도전이 사라져 우르가쉬가 한 해 더 산다. 아우락스의 그롬 쪽 끈이 끊기고 피도끼 씨족이 후계 다툼으로 갈라진다."
+story_seeds:
+- 그라샤의 서신 인장을 얄라나 오그에게 보이면 도전은 군주 교체가 아니라 아우락스의 전쟁으로 읽힌다.
+- 그라샤의 도전이 해 질 녘에 맞춰진 것을 알면 우르가쉬의 마지막 대련을 앞당길 수 있다.

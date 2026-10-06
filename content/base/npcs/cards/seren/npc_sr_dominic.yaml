@@ -1,0 +1,100 @@
+# 도미닉 베스페린 — 세렌 2차 확장 카드. 원천: docs/world/people/seren.md (P2R-09)
+id: npc_sr_dominic
+name: 도미닉 베스페린
+aka: [갈림목의 문턱, 장부 맞추는 용인]
+tier: B
+type: living
+race: 용인
+subrace: 용인(방계)
+sex: 남
+age: 112
+region: 세렌 해안
+home: 갈림목 항만관 사무소 위층
+job: 갈림목 항만관
+rank: 용인 관리 (재무청 파견)
+summary: 노예선 입항·도착 장부의 숫자를 맞춰 사망 보고를 줄여 주고 카셀론에게서 대가를 받는 항만관. 뱀장어 길 출발점을 알고 눈감으며 상환 일정 사본을 바알카르에 보낸다
+source: docs/world/people/seren.md (npc_sr_dominic)
+life:
+  - {year: 200, age: 0, event: "바알카르 베스페린 방계에서 태어남"}
+  - {year: 270, age: 70, event: "재무청 서기로 들어감"}
+  - {year: 296, age: 96, event: "계약민법 제정으로 갈림목 항만관으로 파견됨"}
+  - {year: 308, age: 108, event: "카셀론의 사망 보고 조정에 처음 응함"}
+appearance:
+  - "비늘이 목덜미에만 남은 늙은 용인"
+  - "황동 인장 반지"
+  - "서류를 볼 때 한 손으로 이마를 짚는다"
+smell: "곰팡이 핀 서류와 소금, 담배 진액"
+voice_sound: "느리고 공손하다. 용언의 억양이 약간 섞인다"
+personality:
+  disposition: {용기: 10, 자비: -10, 정직: -15, 신앙: 10, 탐욕: 55, 충성: 20}
+  temperament: [공손, 소심, 계산, 낙천]
+  habits:
+    - "입항 서류를 받으면 먼저 숫자 합계를 속으로 세고 말한다"
+    - "이마를 짚으며 서류를 한 번 더 넘긴다"
+  values: "숫자는 맞추라고 있다. 사실과는 다른 문제다"
+  fears: ["카셀론이 대가를 끊는 일", "바알카르가 사본 속 빈 줄을 발견하는 일"]
+  desires:
+    short: "겨울 폭풍철 전 입항 지연이 장부에 적히지 않게 하는 것"
+    long: "바알카르 재무청의 정식 자리"
+voice:
+  register:
+    to_superior: "용인 상관에게 굽신한 존대"
+    to_equal: "관리에게 공손한 평어"
+    to_inferior: "나가·크릭 서기에게 낮은 존대"
+    to_player_default: "공손하고 서류를 먼저 본다"
+  tics: ["'숫자가 맞아야 입항이 돼요.'", "이마를 짚는다"]
+  use: [입항, 선적 번호, 선원 수, 장부, 세관, 갈림목]
+  avoid: [사망(먼저), 카셀론, 사본]
+  length: "중간 길이로 공손하다"
+  samples:
+    - {situation: 첫 만남, line: "입항 서류는? 선적 번호는? 선원 수는? …사람은 몇이 내리죠? 숫자가 맞아야 입항이 돼요."}
+    - {situation: 호의, line: "숫자는 맞추라고 있는 거죠. 사실과는 다른 문제고요."}
+    - {situation: 거절, line: "그 건은 이미 소금 나루로 넘어갔어요. 갈림목은 문턱일 뿐이에요."}
+    - {situation: 비밀 누설, line: "입항 때 사망이 스물이면 도착 때 열둘로 적히죠. 숫자가 맞는 건 열둘 쪽이에요."}
+    - {situation: 거짓말할 때, line: "뱀장어 길이요? 갈대 시장 뒤는 하수 도랑이에요. 장어가 많아서 길이라고 부를 뿐이고요."}
+schedule:
+  아침: "입항 신고를 받는다"
+  낮: "세관 검문"
+  저녁: "노예선 입항 장부와 도착 장부를 대조한다"
+  밤: "바알카르에 보낼 사본을 쓴다"
+places: [갈림목 항만관 사무소, 세관, 갈대 시장]
+knows:
+  - fact_sr_severo_greyford_batches
+  - fact_p2sr_dominic_reed_market_eye
+hides:
+  - fact: fact_p2sr_dominic_manifest_gap
+    reveal_when: "신뢰 60 이상이고 입항·도착 장부의 숫자 차이를 플레이어가 먼저 지적했을 때"
+    reveal: [{"trust":60},{"tier":"대성공","trust":40}]
+    cover: "'숫자는 맞추라고 있는 거죠. 사실과는 다른 문제고요'라고 한다"
+  - fact: fact_p2sr_dominic_aurelia_kin
+    reveal_when: "신뢰 50 이상이고 바알카르나 재무청 이야기를 플레이어가 꺼냈을 때"
+    reveal: [{"trust":50,"named":"오렐리아"}]
+    cover: "'베스페린은 흔한 성이에요. 용인 가문이 많아서'라고 한다"
+relations:
+  - {to: npc_sr_lucio, type: 카셀론, like: 10, trust: 30, visibility: 비밀, memo: "사망 보고의 대가를 받는다", words: "숫자를 맞춰 주는 대가를 정확히 보내 주는 사람. 사람이 짐으로 보이는 눈이 편하다"}
+  - {to: npc_aurelia_vesperin, type: 먼 친척, like: 10, trust: 30, visibility: 비밀, memo: "사본을 보내는 윗선", words: "재무청장 먼 친척. 편지 한 장이 자리 한 칸이라는 걸 안다"}
+  - {to: npc_mv_shirel, type: 소금 한 자루 값의 밀수꾼, like: 0, trust: 15, visibility: 비밀, memo: "인지세를 받는다", words: "얼굴을 모르는 사공. 소금 한 자루 값이 갈대 시장 장부에서 사라진다"}
+toward_player: "공손하게 서류를 먼저 본다"
+persuade:
+  likes: ["세금 감면 (+20)", "바알카르 소식 (+25)"]
+  hates: ["장부 숫자를 다시 세자는 것 (+0)"]
+roles:
+  teacher: "불가"
+  companion: "불가"
+  romance: null
+regression:
+  fixed:
+    - "입항 사망 숫자와 도착 숫자가 다르다"
+  drift:
+    - "그날 입항한 배의 순서"
+  deja_vu: none
+affiliations:
+  - {faction: fac_seren, rank: rank_house, office: off_harbormaster_estuary, since: 296, loyalty: 20, public: true, cell: null}
+  - {faction: fac_drakmar_empire, rank: rank_house, office: null, since: 270, loyalty: 35, public: true, cell: null}
+truths: []
+hard_rules:
+  - "카셀론의 대가를 먼저 입에 올리지 않는다"
+  - "설교하지 않는다. 입항과 숫자와 서류로 말한다"
+on_death: "갈림목 장부의 대조자가 사라져 카셀론의 사망 보고가 한 번 더 흔들린다. 바알카르 사본이 끊긴다."
+story_seeds:
+  - "12월 13일 밤 서른한 명의 입항 숫자와 소금 나루의 도착 숫자가 하루 사이에 맞춰진다 — 사라가 별도 칸에 실린 것이 장부에 적히는가."
