@@ -1,0 +1,95 @@
+id: npc_urd
+name: '''반석'' 우르드'
+aka: []
+tier: S
+type: living
+race: 두르강
+subrace: 이름 없는 자(맹세 파기 추방자)
+sex: null
+age: null
+region: 카즈둠 산맥
+home: null
+job: 돌이 되어 가는 맹세 파기자 (동료 후보 · 방패·둔기·대지 스승)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1758
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_bror
+  type: 판결한 왕
+  like: 30
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_hilda
+  type: 옛 제자
+  like: 70
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_petar
+  type: 구해 낸 광부
+  like: 50
+  trust: 40
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_ottilie
+  type: 같은 돌의 길을 걷는 학자
+  like: 20
+  trust: 20
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_grimbald
+  type: 판결문을 쓴 판관
+  like: -20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

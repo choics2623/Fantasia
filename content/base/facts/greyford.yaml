@@ -1,0 +1,27 @@
+# 회색여울 변경의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_gf_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+- id: fact_gf_egil_family_in_cellar
+  text: "브람이 절름발이 수탉 지하 저장고의 가짜 벽 뒤에 북방 탈주자 에길 일가 다섯(에길, 아내 룬, 아이 셋 9·6·3세)을 37일째 숨기고 있다"
+  truth: true
+  danger: 5
+  names: [에길, 룬]
+- id: fact_gf_bram_pays_henrik
+  text: "브람은 헨릭에게 매주 2 발톱씩 입막음 값을 낸다. 헨릭은 '유령 머릿수' 장부 덕에 은신을 눈치챘다"
+  truth: true
+  danger: 4
+  names: [헨릭]
+- id: fact_gf_thomas_grain_route
+  text: "방앗간지기 토마스가 빼돌린 곡물을 브람이 세렌 선원에게 팔아 입막음 값을 마련한다"
+  truth: true
+  danger: 4
+  names: [토마스]
+- id: fact_gf_bram_leg_martha
+  text: "브람은 서른 살(AS 290)에 서리 길에서 탈주하다 잡혀 다리를 잘렸다. 그를 판 사람은 열여섯 살의 마르타였다"
+  truth: true
+  danger: 2
+  names: [마르타]
+- id: fact_gf_hagen_drinks_volk
+  text: "하겐이 사흘에 한 번 절름발이 수탉에서 노예사냥꾼 볼크와 술을 마신다"
+  truth: true
+  danger: 2
+  names: [하겐, 볼크]

@@ -1,0 +1,95 @@
+id: npc_kyrie
+name: 바람의 여왕 키리에
+aka: []
+tier: S
+type: living
+race: 아에리
+subrace: 백조 아에리
+sex: null
+age: null
+region: 바람첨탑
+home: null
+job: 아래를 내려다보기 시작한 여왕 (정본)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1860
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_eiros
+  type: 아들
+  like: 60
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_tyla
+  type: 추방한 전사
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: 처벌은 그녀가 승인
+  words: null
+- to: npc_corvina
+  type: 하늘 기록 학자
+  like: 20
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_orn
+  type: 첨탑의 인간
+  like: 30
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_vesper
+  type: 배신자 박쥐날개
+  like: -60
+  trust: -80
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

@@ -1,0 +1,102 @@
+id: npc_henrik
+name: 헨릭
+aka: []
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 장부의 쥐
+rank: null
+summary: 남작령 징세관, 인두세·곡물세 담당
+source: docs/world/CHARACTERS.md:433
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_godric_raven
+  type: 주인·공범
+  like: 5
+  trust: 10
+  visibility: 비밀
+  memo: 이중 착복
+  words: null
+- to: npc_bram
+  type: 갈취 대상
+  like: -10
+  trust: 30
+  visibility: 비밀
+  memo: 주 2 발톱
+  words: null
+- to: npc_lea
+  type: 정보 고객
+  like: 20
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_znik
+  type: 경쟁자
+  like: -20
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_severo
+  type: 송금 창구
+  like: 30
+  trust: 15
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_martha
+  type: 경계
+  like: -15
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

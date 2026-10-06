@@ -1,0 +1,95 @@
+id: npc_severo
+name: 세베로 칼레스
+aka: []
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가(하위 가문)
+sex: null
+age: null
+region: 세렌 해안
+home: null
+job: 노예 중개인 (악역 · 상인)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1553
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_godric_raven
+  type: 채무자
+  like: -10
+  trust: 10
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_beatrix
+  type: 상위 가문
+  like: 30
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_hagen
+  type: 정보원
+  like: 0
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_henrik
+  type: 송금 고객
+  like: 10
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_ophelia
+  type: 경멸하는 상속녀
+  like: -30
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

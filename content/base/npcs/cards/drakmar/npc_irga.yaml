@@ -1,0 +1,95 @@
+id: npc_irga
+name: 이르가 붉은귀
+aka: []
+tier: A
+type: living
+race: 수인족
+subrace: 바르그(늑대)
+sex: null
+age: null
+region: 드라크마르 용좌령
+home: null
+job: 자비로운 사냥꾼 (노예사냥꾼 · 경쟁자)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:340
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_volk
+  type: 아버지
+  like: 60
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_hagen
+  type: 정보원
+  like: -40
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_sigrid
+  type: 존중하는 사냥감
+  like: 10
+  trust: 0
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_kaspar
+  type: 암살 반대
+  like: 20
+  trust: 10
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_sigmund
+  type: 정보 교환
+  like: 5
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

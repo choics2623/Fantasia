@@ -1,0 +1,109 @@
+id: npc_varskar
+name: 용황 바르스카르 잿날개
+aka: []
+tier: S
+type: living
+race: 용족
+subrace: 진룡(잿빛 용)
+sex: null
+age: null
+region: 드라크마르 용좌령
+home: null
+job: 썩어 가는 불 (정본)
+rank: null
+summary: 드라크마르 용제국 황제, 용족 최고령
+source: docs/world/CHARACTERS.md:188
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_nora
+  type: 시중 노예·고백 상대
+  like: 50
+  trust: 80
+  visibility: 비밀
+  memo: 12번째 청자
+  words: null
+- to: npc_white_egg
+  type: 자식(알)
+  like: 90
+  trust: 0
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_isolde
+  type: 짝(소유)
+  like: 40
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_aurax
+  type: 장자
+  like: 20
+  trust: -30
+  visibility: 공개
+  memo: 너무 나를 닮았다
+  words: null
+- to: npc_melisande
+  type: 차녀
+  like: 30
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_kaspar
+  type: 서자
+  like: 15
+  trust: 0
+  visibility: 공개
+  memo: 엘레나를 떠올림
+  words: null
+- to: npc_asterion
+  type: 숙적(고인)
+  like: -50
+  trust: 0
+  visibility: 비밀
+  memo: 다시 오겠다
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

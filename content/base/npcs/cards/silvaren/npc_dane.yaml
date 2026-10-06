@@ -1,0 +1,95 @@
+id: npc_dane
+name: '''은눈'' 데인'
+aka: []
+tier: S
+type: living
+race: 반엘다르
+subrace: 혼혈(별빛 엘다르 × 정원 인간)
+sex: null
+age: null
+region: 실바렌
+home: null
+job: 아버지를 모르는 반엘다르 (동료·연인 후보)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1268
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_silvanus
+  type: 주인(실은 아버지)
+  like: 30
+  trust: 40
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_liandel
+  type: 몰래 친구
+  like: 60
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_mira
+  type: 정원지기 동료
+  like: 50
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_aerin
+  type: 공포
+  like: -40
+  trust: -50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_fern
+  type: 실반 감시자
+  like: -10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

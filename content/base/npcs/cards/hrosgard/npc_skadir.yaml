@@ -1,0 +1,88 @@
+id: npc_skadir
+name: 스카디르
+aka: []
+tier: A
+type: living
+race: 요툰
+subrace: 서리 요툰
+sex: null
+age: null
+region: 흐로스가르드
+home: null
+job: 남침을 원하는 왕자 (권력자의 자식)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1801
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_hrimnir
+  type: 아버지
+  like: 20
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_baug
+  type: 동맹
+  like: 50
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_harva
+  type: 정찰 동맹
+  like: 30
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_kaspar
+  type: 적장
+  like: -50
+  trust: 0
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

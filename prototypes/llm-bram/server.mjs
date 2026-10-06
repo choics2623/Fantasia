@@ -7,13 +7,19 @@
 import http from "node:http";
 import { spawn } from "node:child_process";
 import { readFile, writeFile, mkdtemp } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { tmpdir, networkInterfaces } from "node:os";
+import { randomBytes } from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as E from "./engine.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT || 5173);
+// 내 폰에서도 쓰기: 같은 와이파이에서 접속할 수 있게 연다. 대신 접속 키가 있어야 한다 (같은 와이파이의 남이 내 구독을 쓰지 못하게).
+const HOST = process.env.LOCAL_ONLY ? "127.0.0.1" : "0.0.0.0";
+const KEY_FILE = join(dirname(fileURLToPath(import.meta.url)), ".access-key");
+const ACCESS_KEY = process.env.ACCESS_KEY || (existsSync(KEY_FILE) ? readFileSync(KEY_FILE, "utf8").trim() : (() => { const k = randomBytes(6).toString("hex"); writeFileSync(KEY_FILE, k); return k; })());
 const PROVIDER = process.env.LLM_PROVIDER || "cli";
 const MODEL = process.env.LLM_MODEL || (PROVIDER === "api" ? "claude-haiku-4-5" : "haiku");
 
@@ -227,16 +233,30 @@ async function endConversation(debug) {
 }
 
 // ───────────────────────── HTTP ─────────────────────────
+function allowed(req, url) {
+  const ip = req.socket.remoteAddress || "";
+  if (ip === "127.0.0.1" || ip === "::1" || ip === "::ffff:127.0.0.1") return true; // 이 PC 자신
+  const cookie = /(?:^|; )fkey=([^;]+)/.exec(req.headers.cookie || "")?.[1];
+  return url.searchParams.get("key") === ACCESS_KEY || cookie === ACCESS_KEY;
+}
+
 const server = http.createServer(async (req, res) => {
   try {
-    if (req.method === "GET" && (req.url === "/" || req.url === "/index.html")) {
-      res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+    const url = new URL(req.url, "http://x");
+    if (!allowed(req, url)) {
+      res.writeHead(403, { "content-type": "text/plain; charset=utf-8" });
+      return res.end("접속 키가 필요합니다. PC의 서버 창에 나온 주소(…?key=…)로 여세요.");
+    }
+    if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/index.html")) {
+      const headers = { "content-type": "text/html; charset=utf-8" };
+      if (url.searchParams.get("key") === ACCESS_KEY) headers["set-cookie"] = `fkey=${ACCESS_KEY}; Path=/; Max-Age=31536000; SameSite=Strict`;
+      res.writeHead(200, headers);
       return res.end(await readFile(join(HERE, "index.html")));
     }
-    if (req.method === "POST" && req.url.startsWith("/api/")) {
+    if (req.method === "POST" && url.pathname.startsWith("/api/")) {
       let body = "";
       for await (const c of req) body += c;
-      const data = await api(req.url, body ? JSON.parse(body) : {});
+      const data = await api(url.pathname, body ? JSON.parse(body) : {});
       res.writeHead(200, { "content-type": "application/json; charset=utf-8" });
       return res.end(JSON.stringify(data));
     }
@@ -246,7 +266,12 @@ const server = http.createServer(async (req, res) => {
     res.end(JSON.stringify({ error: String(e.message || e) }));
   }
 });
-server.listen(PORT, () => {
-  console.log(`브람 실험실 → http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`브람 실험실 → 이 PC: http://localhost:${PORT}`);
+  if (HOST === "0.0.0.0") {
+    const ips = Object.values(networkInterfaces()).flat().filter((i) => i && i.family === "IPv4" && !i.internal).map((i) => i.address);
+    for (const ip of ips) console.log(`            → 폰(같은 와이파이): http://${ip}:${PORT}/?key=${ACCESS_KEY}`);
+    console.log("              (한 번 열면 폰에 기억된다. 키를 바꾸려면 .access-key 파일을 지우고 다시 실행)");
+  }
   console.log(`LLM 공급자: ${PROVIDER}${PROVIDER === "mock" ? " — 테스트 전용 가짜 LLM" : ` (모델 ${MODEL})`}`);
 });

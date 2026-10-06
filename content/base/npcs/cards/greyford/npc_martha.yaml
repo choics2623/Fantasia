@@ -1,0 +1,109 @@
+id: npc_martha
+name: 마르타
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 목줄장, 딸을 지키는 어머니
+rank: null
+summary: 성채 노예 집사, 회색여울 목줄단 목줄장(밀고자 6명 관리)
+source: docs/world/CHARACTERS.md:628
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_liz
+  type: 딸
+  like: 100
+  trust: 100
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_godric_raven
+  type: 주인·계약
+  like: -20
+  trust: 40
+  visibility: 비밀
+  memo: 밀고 100건 약속
+  words: null
+- to: npc_znik
+  type: 약점을 쥠
+  like: -40
+  trust: 10
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_bram
+  type: 자신이 판 자
+  like: 10
+  trust: -20
+  visibility: 공개
+  memo: 죄책감
+  words: null
+- to: npc_sara
+  type: 희생양
+  like: 5
+  trust: -10
+  visibility: 비밀
+  memo: 명단 교체
+  words: null
+- to: npc_osric
+  type: 고해 사제
+  like: 40
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_henrik
+  type: 경계
+  like: -30
+  trust: 15
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

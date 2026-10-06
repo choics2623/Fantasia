@@ -1,0 +1,81 @@
+id: npc_soran
+name: 소란 아르슬란
+aka: []
+tier: A
+type: living
+race: 하르칸
+subrace: 바람발굽
+sex: null
+age: null
+region: 하르칸 초원
+home: null
+job: 칸의 딸 (권력자의 자식)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1930
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_temur
+  type: 아버지
+  like: 60
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_dua
+  type: 신뢰하는 짐꾼
+  like: 60
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_batar
+  type: 몰래 배우는 스승
+  like: 70
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

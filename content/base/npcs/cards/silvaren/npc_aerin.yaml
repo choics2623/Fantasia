@@ -1,0 +1,109 @@
+id: npc_aerin
+name: 아에린 새벽가지
+aka: []
+tier: S
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: null
+age: null
+region: 실바렌
+home: null
+job: 영혼 정원의 정원사 (정본 · 악역)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1236
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_elastriel
+  type: 여왕
+  like: 40
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_silvanus
+  type: 정적
+  like: -50
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_serenielle
+  type: 수족
+  like: 60
+  trust: 80
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_melisande
+  type: 공동 연구
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_irene_bold
+  type: 징후자 공급원
+  like: 0
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_mira
+  type: 피험 정원지기
+  like: 20
+  trust: 0
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_liandel
+  type: 마지막 아이
+  like: 80
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

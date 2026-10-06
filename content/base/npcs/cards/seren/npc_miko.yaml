@@ -1,0 +1,95 @@
+id: npc_miko
+name: '''스물두 해'' 미코'
+aka: []
+tier: S
+type: living
+race: '인간(문화 집단: 해안 인간)'
+subrace: ''
+sex: null
+age: null
+region: 세렌 해안
+home: null
+job: 빚을 세는 선원 (동료·연인 후보)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1568
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_nadia
+  type: 옛 동료
+  like: 55
+  trust: 60
+  visibility: 비밀
+  memo: 도주를 도움
+  words: null
+- to: npc_severo
+  type: 고용주
+  like: -50
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_ophelia
+  type: 등록소의 나가
+  like: 10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_lupo
+  type: 빚 상담
+  like: 30
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_hagen
+  type: 밀수 접선
+  like: -10
+  trust: 10
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

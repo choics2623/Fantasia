@@ -1,0 +1,95 @@
+id: npc_bern
+name: 베른
+aka: []
+tier: A
+type: living
+race: '인간(문화 집단: 투사 혈통)'
+subrace: ''
+sex: null
+age: null
+region: 모르바 늪
+home: null
+job: 진흙등불의 촌장
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1458
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_oda
+  type: 늪 마녀 첫째
+  like: 50
+  trust: 60
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_saska
+  type: 공물 상대
+  like: -50
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_nadia
+  type: 사냥대장
+  like: 60
+  trust: 70
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_agnes
+  type: 잿빛 실 상류
+  like: 40
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_tessa
+  type: 남쪽 안내인
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

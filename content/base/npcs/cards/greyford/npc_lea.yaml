@@ -1,0 +1,102 @@
+id: npc_lea
+name: 레아
+aka: []
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 이중 충성의 부관 (첩자)
+rank: null
+summary: 까마귀 문 국경군 부관(백인대장 계급), 카스파르의 오른팔
+source: docs/world/CHARACTERS.md:457
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_kaspar
+  type: 상관
+  like: 55
+  trust: 5
+  visibility: 공개
+  memo: 감정과 임무의 충돌
+  words: null
+- to: npc_melisande
+  type: 진짜 주인
+  like: 30
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_owen_raven
+  type: 이용 대상
+  like: 10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_henrik
+  type: 정보원
+  like: -10
+  trust: 25
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_elsa
+  type: 의심
+  like: -20
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_sigmund
+  type: 동료 장교
+  like: 20
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

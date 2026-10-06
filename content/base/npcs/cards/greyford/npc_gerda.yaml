@@ -1,0 +1,102 @@
+id: npc_gerda
+name: 게르다
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 줄 뒤에서 이름을 부르는 어머니 (회귀점의 고정 인물)
+rank: null
+summary: 레이번가 농노. 남편 우도(지난 굶주림월 방앗간 사고로 사망)의 인두세 체납 4발톱이 헨릭의 장부에 '게르다 가구'로 올라 있다
+source: docs/world/CHARACTERS.md:921
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_kit
+  type: 아들
+  like: 95
+  trust: 80
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_osric
+  type: 두 아이에게 세례를 준 사제
+  like: 40
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_elsa
+  type: 약을 살 수 없는 약초꾼
+  like: 30
+  trust: 30
+  visibility: 공개
+  memo: 빚지기 싫다
+  words: null
+- to: npc_henrik
+  type: 체납 장부의 주인
+  like: -50
+  trust: -60
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_heinz
+  type: 같은 예배당의 장로
+  like: 20
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_martha
+  type: 명단을 쥔 이웃
+  like: -20
+  trust: -10
+  visibility: 일방
+  memo: 키트 때문에 두렵다
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

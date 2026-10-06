@@ -1,0 +1,95 @@
+id: npc_serak
+name: 세라크 붉은재
+aka: []
+tier: A
+type: living
+race: 용족
+subrace: 진룡(붉은 용)
+sex: null
+age: null
+region: 드라크마르 용좌령
+home: null
+job: 의심하는 손녀 (권력자의 자식)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:294
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_aurax
+  type: 아버지
+  like: 50
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_isolde
+  type: 같은 세대
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_kaspar
+  type: 이복 숙부
+  like: 15
+  trust: 5
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_nora
+  type: 서고 길잡이
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_kaidor
+  type: 자신을 섭정 도구로 노리는 자
+  like: 0
+  trust: -10
+  visibility: 일방
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

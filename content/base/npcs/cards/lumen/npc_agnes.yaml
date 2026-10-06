@@ -1,0 +1,109 @@
+id: npc_agnes
+name: 수녀 아그네스
+aka: []
+tier: A
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 루멘
+home: null
+job: 끊어진 고리의 루멘 지부장 (화술 스승)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1178
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_alberic
+  type: 구출 대상
+  like: 80
+  trust: 85
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_osric
+  type: 동지
+  like: 60
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_johan
+  type: 운반자
+  like: 55
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_felix
+  type: 의심
+  like: 10
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_mateus
+  type: 적
+  like: -70
+  trust: -90
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_bern
+  type: 모르바 연락
+  like: 40
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_grey_woman
+  type: 목소리만 들은 상관
+  like: 80
+  trust: 90
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

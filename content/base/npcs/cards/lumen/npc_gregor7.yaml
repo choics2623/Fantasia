@@ -1,0 +1,102 @@
+id: npc_gregor7
+name: 빛의 대사제 그레고르 7세
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 루멘
+home: null
+job: 후회하는 꼭두각시 (정본)
+rank: null
+summary: 순종의 빛 최고 지도자(신도 추산 30만, 사제 1,200)
+source: docs/world/CHARACTERS.md:1092
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_alberic
+  type: 제자
+  like: 80
+  trust: 60
+  visibility: 공개
+  memo: 처형 서명 지연은 비밀
+  words: null
+- to: npc_mateus
+  type: 후계 후보
+  like: -30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_serenielle
+  type: 감시자
+  like: -20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_elastriel
+  type: 주인
+  like: -10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_osric
+  type: 옛 학생
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_agnes
+  type: 수녀
+  like: 10
+  trust: -10
+  visibility: 일방
+  memo: 정체 모름
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

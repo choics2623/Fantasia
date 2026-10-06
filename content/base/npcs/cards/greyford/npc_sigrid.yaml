@@ -1,0 +1,116 @@
+id: npc_sigrid
+name: 시그리드
+aka: []
+tier: S
+type: living
+race: '인간(문화 집단: 서리 인간)'
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 북방 탈주자 대표 (동료·연인 후보)
+rank: null
+summary: 흐로스가르드 거인 노예 출신 탈주자, 북방 탈주자 무리 대표
+source: docs/world/CHARACTERS.md:677
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_bram
+  type: 동지
+  like: 55
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_elsa
+  type: 동지
+  like: 45
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_dietmar
+  type: 원수
+  like: -55
+  trust: -70
+  visibility: 공개
+  memo: 무리원 2명 살해
+  words: null
+- to: npc_hagen
+  type: 불신
+  like: -30
+  trust: -60
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_egil
+  type: 무리원
+  like: 60
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_asta
+  type: 북방의 옛 동료
+  like: 80
+  trust: 85
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_baug
+  type: 옛 주인
+  like: -100
+  trust: -100
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_einar
+  type: 버린 동생(생사 불명)
+  like: 100
+  trust: 100
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

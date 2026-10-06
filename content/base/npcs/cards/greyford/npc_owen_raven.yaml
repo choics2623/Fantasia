@@ -1,0 +1,102 @@
+id: npc_owen_raven
+name: 오웬 레이번
+aka: []
+tier: S
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 동경하는 아들 (연적·잠재 동맹)
+rank: null
+summary: 남작의 외아들, 상속자. 무관직 없음
+source: docs/world/CHARACTERS.md:409
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_sara
+  type: 짝사랑
+  like: 80
+  trust: 40
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_godric_raven
+  type: 아버지
+  like: 30
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_kaspar
+  type: 동경
+  like: 70
+  trust: 55
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_lea
+  type: 편지 전달자
+  like: 20
+  trust: 30
+  visibility: 비밀
+  memo: 가로챈 줄 모름
+  words: null
+- to: npc_martha
+  type: 유모 같은 이
+  like: 15
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_znik
+  type: 혐오
+  like: -30
+  trust: 0
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

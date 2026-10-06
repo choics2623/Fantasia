@@ -1,0 +1,95 @@
+id: npc_eve
+name: '''불티'' 이브'
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 잿불 언덕
+home: null
+job: 시체를 나르던 쌍둥이 (동료·연인 후보)
+rank: null
+summary: 실험장 운반 노예
+source: docs/world/CHARACTERS.md:1041
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_abel
+  type: 쌍둥이(고인)
+  like: 100
+  trust: 100
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_adrian_corvel
+  type: 원수
+  like: -100
+  trust: -100
+  visibility: 비밀
+  memo: 살해 계획
+  words: null
+- to: npc_melisande
+  type: 증오와 담요
+  like: -80
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_rok
+  type: 동지
+  like: 40
+  trust: 45
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_grax
+  type: 감독관
+  like: -50
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

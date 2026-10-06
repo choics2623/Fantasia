@@ -1,0 +1,123 @@
+id: npc_hagen
+name: 하겐
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 웃는 밀수꾼 (악역)
+rank: null
+summary: '나룻배 노예(성채 소유, 반자율) / 실제: 밀수꾼, 탈주자 ''안내인''을 가장한 노예사냥 조합 끄나풀'
+source: docs/world/CHARACTERS.md:653
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_volk
+  type: 두려운 고용주
+  like: 20
+  trust: 10
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_irga
+  type: 구매자
+  like: -10
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_fayne
+  type: 심부름꾼
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: 목격을 모름
+  words: null
+- to: npc_irma
+  type: 위선적 보살핌
+  like: 10
+  trust: 50
+  visibility: 공개
+  memo: 남편 살해 은폐
+  words: null
+- to: npc_dietmar
+  type: 술 공급 대상
+  like: 15
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_sigrid
+  type: 노리는 사냥감
+  like: -20
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_znik
+  type: 정보 교환
+  like: 5
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_severo
+  type: 정보 판매
+  like: 20
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_ulf
+  type: 살해 피해자(고인)
+  like: -10
+  trust: 0
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

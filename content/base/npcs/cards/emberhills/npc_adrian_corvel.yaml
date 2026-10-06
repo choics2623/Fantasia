@@ -1,0 +1,95 @@
+id: npc_adrian_corvel
+name: 아드리안 코르벨
+aka: []
+tier: A
+type: living
+race: 용인
+subrace: 용인(비늘혈)
+sex: null
+age: null
+region: 잿불 언덕
+home: null
+job: 메스를 든 용인 (악역)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1026
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_melisande
+  type: 주인
+  like: 70
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_eve
+  type: 운반 노예
+  like: 5
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_grax
+  type: 피험자 공급자
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_irene_bold
+  type: 학문적 경쟁
+  like: -10
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_abel
+  type: 피험체(고인)
+  like: 0
+  trust: 0
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

@@ -1,0 +1,60 @@
+id: npc_otto
+name: 간수 오토
+aka: []
+tier: B
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 루멘
+home: null
+job: 침묵의 우물 간수장
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations: []
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

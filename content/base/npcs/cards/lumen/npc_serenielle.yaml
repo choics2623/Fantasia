@@ -1,0 +1,88 @@
+id: npc_serenielle
+name: 세레니엘 맑은잎
+aka: []
+tier: A
+type: living
+race: 엘다르
+subrace: 별빛 엘다르
+sex: null
+age: null
+region: 루멘
+home: null
+job: 루멘의 엘다르 감독관
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1163
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_aerin
+  type: 파벌 수장
+  like: 70
+  trust: 80
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_gregor7
+  type: 도구
+  like: -10
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_mateus
+  type: 작품
+  like: 40
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_irene_bold
+  type: 경쟁 수집가
+  like: -20
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

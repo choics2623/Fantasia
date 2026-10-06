@@ -4,7 +4,7 @@
 
 // ───────────────────────── 사실 ─────────────────────────
 export const FACTS = {
-  fact_egil_in_cellar: { text: "브람이 지하실에 북방 탈주자 에길(아홉 살)과 그 어머니를 숨기고 있다", weight: 15, secret: true, names: ["에길"] },
+  fact_egil_in_cellar: { text: "브람이 지하 저장고 가짜 벽 뒤에 북방 탈주자 에길 일가 다섯(에길, 아내 룬, 아이 셋)을 숨기고 있다", weight: 15, secret: true, names: ["에길"] },
   fact_hagen_drinks_volk: { text: "하겐이 사흘에 한 번 수탉에서 노예사냥꾼 볼크와 술을 마신다", weight: 8, secret: false, names: ["하겐", "볼크"] },
   fact_ledger_hole: { text: "브람의 배급 장부에는 매주 빵 여섯 덩이만큼 구멍이 있다", weight: 10, secret: true, names: [] },
   fact_volk_dogs: { text: "볼크의 개들은 빗속에서도 냄새를 찾는다. 사흘째 밤에 언덕을 뒤진다", weight: 8, secret: false, names: ["볼크"] },
@@ -115,7 +115,7 @@ const AFF = {
   },
   offer_egil: {
     verb: "제안", skill: "화술", request: 15, risk: "high", fact: "fact_egil_in_cellar", needsFact: true,
-    fallback: "에길 일가를 늪 너머로 빼내 주겠다고 속삭인다",
+    fallback: "에길 일가를 잿빛 실로 남쪽에 빼내 주겠다고 속삭인다",
     fx: { 대성공: { trust: 14, like: 6, reveal: "fact_egil_in_cellar" }, 성공: { trust: 9, reveal: "fact_egil_in_cellar" }, "부분 성공": { trust: 2, fear: 2 }, 실패: { fear: 2, trust: -5 }, 대실패: { fear: 3, trust: -12, anger: 1 } },
   },
   warn_volk: {
@@ -328,7 +328,7 @@ export function bramCard(g, revealNow = null) {
 
 const REVEAL_TEXT = {
   hint_cellar: "브람은 지하실에 '쥐가 아니라 사람'이 있다는 것만, 아주 짧게 흘린다. 누구인지는 말하지 않는다.",
-  fact_egil_in_cellar: "브람은 지하실에 에길과 그 어머니가 있다는 것을 털어놓는다.",
+  fact_egil_in_cellar: "브람은 지하실 가짜 벽 뒤에 에길 일가 다섯이 있다는 것을 털어놓는다.",
   hint_hagen: "브람은 하겐이 '좋지 않은 손님'과 어울린다고만 말한다.",
   fact_hagen_drinks_volk: "브람은 하겐이 사흘에 한 번 볼크와 여기서 술을 마신다고 말한다.",
   hint_ledger: "브람은 배급이 모자라는 건 '위에서 떼어 가서'라고만 말한다.",

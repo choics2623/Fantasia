@@ -1,0 +1,95 @@
+id: npc_nadia
+name: '''갈대'' 나디아'
+aka: []
+tier: A
+type: living
+race: '인간(문화 집단: 해안 인간)'
+subrace: ''
+sex: null
+age: null
+region: 모르바 늪
+home: null
+job: 늪의 궁수 (궁술 스승 · 동료·연인 후보)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1473
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_bern
+  type: 촌장
+  like: 60
+  trust: 65
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_oda
+  type: 늪 마녀
+  like: 40
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_saska
+  type: 적
+  like: -70
+  trust: -50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_tessa
+  type: 남쪽 동료
+  like: 40
+  trust: 55
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_miko
+  type: 세렌 시절 동료 선원
+  like: 30
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

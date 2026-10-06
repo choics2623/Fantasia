@@ -1,0 +1,109 @@
+id: npc_nora
+name: 노라
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 드라크마르 용좌령
+home: null
+job: 임종의 시중 노예 (예법·통찰·용언 스승)
+rank: null
+summary: 국유 노예, 용황 병상 시중장(크릭 4명, 인간 2명 지휘)
+source: docs/world/CHARACTERS.md:270
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_varskar
+  type: 주인·고백자
+  like: 30
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_kaspar
+  type: 엘레나의 아들
+  like: 70
+  trust: 65
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_fizik
+  type: 정보 거래
+  like: 20
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_aurax
+  type: 위협
+  like: -80
+  trust: -90
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_grey_woman
+  type: 세포 상관
+  like: 80
+  trust: 90
+  visibility: 비밀
+  memo: 목소리만 앎
+  words: null
+- to: npc_elsa
+  type: 엘레나 출산 동료
+  like: 30
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_elena
+  type: 옛 방 동료(고인)
+  like: 90
+  trust: 90
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

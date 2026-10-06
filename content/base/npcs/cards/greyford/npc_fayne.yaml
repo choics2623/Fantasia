@@ -1,0 +1,102 @@
+id: npc_fayne
+name: 페인
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 모든 것을 본 고아 (동료 후보 · 정보원)
+rank: null
+summary: 고아 심부름꾼(명목상 성채 소유, 실질적으로 방치됨)
+source: docs/world/CHARACTERS.md:726
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_hagen
+  type: 고용주·살인자
+  like: -50
+  trust: -40
+  visibility: 비밀
+  memo: 겉으로 +30 연기
+  words: null
+- to: npc_irma
+  type: 진실을 말하고픈 이
+  like: 30
+  trust: 10
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_thomas
+  type: 잠자리 제공자
+  like: 50
+  trust: 50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_elsa
+  type: 부적을 준 이
+  like: 40
+  trust: 45
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_bram
+  type: 죽 주는 이
+  like: 35
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_sara
+  type: 글자를 엿본 상대
+  like: 25
+  trust: 20
+  visibility: 일방
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

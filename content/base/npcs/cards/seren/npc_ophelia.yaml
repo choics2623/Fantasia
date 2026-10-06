@@ -1,0 +1,88 @@
+id: npc_ophelia
+name: 오필리아 몬달리
+aka: []
+tier: A
+type: living
+race: 나가
+subrace: 왕관 나가
+sex: null
+age: null
+region: 세렌 해안
+home: null
+job: 시민권 초안을 쓴 상속녀 (권력자의 자식)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1538
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_beatrix
+  type: 어머니
+  like: 40
+  trust: 10
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_lupo
+  type: 초안 공저자
+  like: 60
+  trust: 70
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_miko
+  type: 등록소에서 만난 계약민
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_severo
+  type: 혐오
+  like: -50
+  trust: -40
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

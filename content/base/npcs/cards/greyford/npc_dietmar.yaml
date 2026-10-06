@@ -1,0 +1,102 @@
+id: npc_dietmar
+name: 디트마르
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 절망의 두목 (위험한 동료 후보)
+rank: null
+summary: 습지 탈주 노예 무리 두목. 현상금 1 비늘 10 발톱
+source: docs/world/CHARACTERS.md:823
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_bran
+  type: 무기 공급자
+  like: 40
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_sigrid
+  type: 경쟁 두목
+  like: -40
+  trust: -50
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_hagen
+  type: 술 공급원
+  like: -10
+  trust: 20
+  visibility: 공개
+  memo: 배신을 모름
+  words: null
+- to: npc_kaspar
+  type: 증오
+  like: -70
+  trust: -80
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_znik
+  type: 증오
+  like: -90
+  trust: -90
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_leo_ember
+  type: 무리원
+  like: 20
+  trust: 30
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

@@ -1,0 +1,95 @@
+id: npc_fizik
+name: 피직
+aka: []
+tier: A
+type: living
+race: 크릭
+subrace: 감독관 크릭
+sex: null
+age: null
+region: 드라크마르 용좌령
+home: null
+job: 궁의 귀 (정보상 · 손재주 스승)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:309
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_nora
+  type: 정보 거래
+  like: 30
+  trust: 20
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_volk
+  type: 단골 고객
+  like: 10
+  trust: 30
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_aurax
+  type: 후원 기대
+  like: 40
+  trust: 0
+  visibility: 비밀
+  memo: 서리 탑 경로 판매
+  words: null
+- to: npc_chik
+  type: 도망친 부하
+  like: -40
+  trust: -30
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_soom
+  type: 같은 크릭
+  like: 10
+  trust: 20
+  visibility: 비밀
+  memo: 첩자임을 앎
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

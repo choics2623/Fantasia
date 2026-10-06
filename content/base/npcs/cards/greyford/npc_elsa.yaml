@@ -1,0 +1,116 @@
+id: npc_elsa
+name: 엘사
+aka: []
+tier: S
+type: living
+race: 인간
+subrace: ''
+sex: null
+age: null
+region: 회색여울 변경
+home: null
+job: 늪에서 온 약초 노파 (연락책 · 스승)
+rank: null
+summary: '약초 노파(성채가 용인하는 늙은 노예 — 쓸모 있어서) / 실제: 이름 없는 자들 회색여울 연락책, 전 늪 마녀 회합의 ''여덟째'''
+source: docs/world/CHARACTERS.md:702
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_kaspar
+  type: 받아낸 아기
+  like: 60
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_oda
+  type: 옛 적수의 제자·회합의 첫째
+  like: -20
+  trust: 40
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_bram
+  type: 동지
+  like: 50
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_osric
+  type: 동지
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_grey_woman
+  type: 상관
+  like: 0
+  trust: 90
+  visibility: 비밀
+  memo: 얼굴 모름
+  words: null
+- to: npc_isol
+  type: 사냥꾼
+  like: -30
+  trust: -50
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_lea
+  type: 경계
+  like: -20
+  trust: -30
+  visibility: 일방
+  memo: null
+  words: null
+- to: npc_nora
+  type: 엘레나 출산 동료
+  like: 40
+  trust: 50
+  visibility: 비밀
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []

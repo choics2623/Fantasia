@@ -1,0 +1,102 @@
+id: npc_urgash
+name: 대전쟁군주 우르가쉬 해골이빨
+aka: []
+tier: S
+type: living
+race: 그롬
+subrace: 전쟁 그롬
+sex: null
+age: null
+region: 그롬마르 붉은 황야
+home: null
+job: 피의 원형장의 주인 (정본)
+rank: null
+summary: ''
+source: docs/world/CHARACTERS.md:1986
+life: []
+appearance: []
+smell: null
+voice_sound: null
+personality:
+  disposition: {}
+  temperament: []
+  habits: []
+  values: null
+  fears: []
+  desires:
+    short: null
+    long: null
+voice:
+  register: {}
+  tics: []
+  use: []
+  avoid: []
+  length: null
+  samples: []
+schedule:
+  아침: null
+  낮: null
+  저녁: null
+  밤: null
+places: []
+knows: []
+hides: []
+relations:
+- to: npc_tal
+  type: 묶어 둔 투사왕
+  like: 80
+  trust: 60
+  visibility: 비밀
+  memo: null
+  words: null
+- to: npc_mara
+  type: 100승 후보
+  like: 50
+  trust: 20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_gunnar
+  type: 도망친 99승
+  like: -40
+  trust: -60
+  visibility: 공개
+  memo: 현상금 3 비늘
+  words: null
+- to: npc_murk
+  type: 싸움을 거부한 동족
+  like: -60
+  trust: -20
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_gorba
+  type: 조련사
+  like: 20
+  trust: 40
+  visibility: 공개
+  memo: null
+  words: null
+- to: npc_temur
+  type: 서쪽의 경쟁자
+  like: 30
+  trust: -10
+  visibility: 공개
+  memo: null
+  words: null
+toward_player: null
+persuade:
+  likes: []
+  hates: []
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed: []
+  flow: []
+  drift: []
+  deja_vu: none
+hard_rules: []
+on_death: null
+story_seeds: []
