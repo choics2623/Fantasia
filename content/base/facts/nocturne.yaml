@@ -1,0 +1,157 @@
+# 녹테른 밤의 영지의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_nc_<주제>. 기년: AS 312 = SK 3,400 (WORLD_BIBLE §0). 녹테른의 탄생 SK ~180.
+- id: fact_nc_mordecai_hears_echo
+  text: "신의 피를 마신 모르데카이는 신의 목소리 조각을 몸에 지녔다. 잔향이 피를 흘릴 때마다 그 냄새를 대륙 반대편에서도 '듣는다'. AS 311 이후 그 소리가 점점 커지고 있다"
+  truth: true
+  danger: 5
+  names: [모르데카이]
+- id: fact_nc_mordecai_knows_cecile
+  text: "모르데카이는 세실이 인간을 빼돌리는 것을 알면서 내버려 둔다. 그녀가 결국 잔향을 데려올 것이라 계산하기 때문이다"
+  truth: true
+  danger: 5
+  names: [모르데카이, 세실]
+- id: fact_nc_mordecai_goal_last_word
+  text: "모르데카이의 장기 목표는 신의 피에 남은 '목소리'를 완성하는 것이다 — 마지막 말이 깃든 영혼(잔향)의 피를 마시는 것"
+  truth: true
+  danger: 5
+  names: [모르데카이]
+- id: fact_nc_mordecai_sends_hunters
+  text: "모르데카이는 직접 오지 않고 사냥꾼을 보낸다. 잔향이 중상 이상으로 피를 흘릴 때마다 추적 클락이 한 칸씩 오른다"
+  truth: true
+  danger: 4
+  names: [모르데카이]
+- id: fact_nc_well_blood_remains
+  text: "첫 갈증 성 지하의 마른 우물 바닥에 아직 마르지 않은 신의 피 몇 방울이 남아 있다. 에오르가 완전히 죽지 않았다는 단서다"
+  truth: true
+  danger: 4
+  names: [에오르]
+- id: fact_nc_gods_last_word
+  text: "신의 피는 아직 말한다. 그 말은 '너희는 끝나지 않을 것이다'이다. 모르데카이는 그 '너희'가 녹테른이기를 3,000년 바랐고, 세실은 그 '너희'가 인간이라는 것을 받아들였다"
+  truth: true
+  danger: 5
+  names: [모르데카이, 세실]
+- id: fact_nc_thirst_night_tribute
+  text: "긴밤월 15일 '갈증의 밤'에 공물 인간 300명이 바쳐진다. 모든 녹테른이 첫 갈증 성에 모이고 이날만은 직접 혈목장에 내려온다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_nc_ledger_mismatch
+  text: "혈목장에서 사라지는 인간의 수가 3년째 장부와 맞지 않는다. 탈출자는 채혈 헛간 기록판에 '병사'로 적힌다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_nc_cecile_smuggles
+  text: "세실은 갈증의 밤 공물 명단에서 그림자장미 배당 40명을 '병사(病死)'로 위장해 빼돌린다. 한 달에 한 번 저택 뒤 장미원 아래 지하 통로를 직접 열어 6~12명을 잿빛 실로 보낸다"
+  truth: true
+  danger: 5
+  names: [세실]
+- id: fact_nc_cecile_route
+  text: "세실의 탈출로는 장미원 셋째 덤불 아래 지하 통로와 온실 바닥의 수로를 지나 붉은 갈대 습지로 나간다. 장미 꽃잎이 통행 표식이다"
+  truth: true
+  danger: 5
+  names: [세실, 핍스]
+- id: fact_nc_cecile_beast_blood_212
+  text: "세실은 인간 피를 끊고 짐승 피만 마신 지 212년이다. 몸이 서서히 굶주린 자들처럼 퇴화하고 있고, 그녀는 1~2년 남았다고 본다"
+  truth: true
+  danger: 5
+  names: [세실]
+- id: fact_nc_cecile_waits_echo
+  text: "세실은 신의 마지막 말을 인간에게 남겨진 것으로 받아들인 유일한 녹테른이다. 그녀는 그 '너희'가 이끌어 올 잔향을 기다리고, 징후를 보면 알아본다"
+  truth: true
+  danger: 5
+  names: [세실]
+- id: fact_nc_cecile_grey_woman_letters
+  text: "세실은 이름 없는 자들의 머리 '회색 여인'과 서신을 주고받는다. 서로 얼굴은 모른다"
+  truth: true
+  danger: 4
+  names: [세실, 회색 여인]
+- id: fact_nc_cecile_roses
+  text: "세실의 검은 장미 코르사주는 장미 하나가 빼돌린 인간 열 명을 뜻하며 지금 41송이다"
+  truth: true
+  danger: 2
+  names: [세실]
+- id: fact_nc_cecile_ash_lineage_blood
+  text: "세실은 늪 마녀 재 계보에 녹테른 피를 50년째 공급하고, 녹테른 탈주자의 늪 쪽 수령인 역할을 하는 첫째 노파 오다와 닿아 있다"
+  truth: true
+  danger: 4
+  names: [세실, 오다, 마그]
+- id: fact_nc_tessa_promise_end
+  text: "테사는 세실이 굶주린 자로 변해 가는 때가 오면 자기가 끝을 내 주기로 약속했다"
+  truth: true
+  danger: 4
+  names: [테사, 세실]
+- id: fact_nc_tessa_convoy
+  text: "테사는 녹테른 경계에서 붉은 갈대 선을 넘어 늪까지 이틀 길로 한 번에 6~12명을 호송한다. 늪 쪽 인계는 진흙등불의 베른이 맡는다"
+  truth: true
+  danger: 4
+  names: [테사, 베른]
+- id: fact_nc_tessa_black_cup_born
+  text: "테사는 검은성배 혈목장에서 태어났고 혈통 번호는 C-17이다. 손목에 문신이 있고 목 양쪽에 채혈 흉터가 있다"
+  truth: true
+  danger: 3
+  names: [테사, 검은성배]
+- id: fact_nc_tessa_family_left
+  text: "테사의 어머니와 동생 둘은 검은성배 혈목장에 남아 있다. 그녀는 그들을 빼내려 한다"
+  truth: true
+  danger: 3
+  names: [테사]
+- id: fact_nc_alaric_c17_decoy
+  text: "알라리크의 혈통 장부에는 테사의 가족이 '추적용 미끼'로 표시되어 있다. 가족을 빼내려는 구출 작전 자체가 알라리크의 덫이다. 테사는 모른다"
+  truth: true
+  danger: 5
+  names: [알라리크, 테사]
+- id: fact_nc_alaric_bloodline_from_cecile
+  text: "알라리크의 '최상급 혈통'은 사실 세실이 빼돌린 이들의 친척을 추적해 만든 것이다. 세실의 '병사' 명단과 그의 혈통 장부를 겹치면 사라진 자들의 형제가 모두 나온다"
+  truth: true
+  danger: 4
+  names: [알라리크, 세실]
+- id: fact_nc_alaric_elder_ambition
+  text: "알라리크는 모르데카이에게 '잔향의 피'를 바치면 원로가 될 수 있다고 믿는다"
+  truth: true
+  danger: 4
+  names: [알라리크, 모르데카이]
+- id: fact_nc_alaric_hunts_ledger
+  text: "알라리크의 목표는 세실의 장부 위조 증거를 잡아 그녀의 혈목장을 흡수하는 것이다. 갈증의 밤 집전관 자리와 공물 명단도 그 안에 있다"
+  truth: true
+  danger: 4
+  names: [알라리크, 세실]
+- id: fact_nc_alaric_courts_quint
+  text: "알라리크는 세실에게 매수된 감독 퀸트를 회유하고 있다"
+  truth: true
+  danger: 3
+  names: [알라리크, 퀸트]
+- id: fact_nc_quint_signs_dead_list
+  text: "퀸트는 세실에게 매수되어 '병사' 명단에 서명한다. 서명한 이름이 사실은 탈출한 사람들이라는 것을 안다"
+  truth: true
+  danger: 5
+  names: [퀸트, 세실]
+- id: fact_nc_vesper_unreported_convoy
+  text: "베스퍼는 하늘에서 본 탈주 행렬 하나를 보고하지 않았다. 그 이유는 아직 그 자신도 정리하지 못했다"
+  truth: true
+  danger: 4
+  names: [베스퍼]
+- id: fact_nc_bat_wing_blood_myth
+  text: "박쥐날개 아에리는 3대째부터 7일마다 녹테른의 피 한 방울이 필요하지 않다. 녹테른이 알리지 않을 뿐이고, 그림자장미 소속 녹타가 처음 알아냈다"
+  truth: true
+  danger: 4
+  names: [녹타]
+- id: fact_nc_vesper_saw_nokta
+  text: "베스퍼는 그림자장미 소속 박쥐날개 녹타가 피 없이 이레를 넘기고도 멀쩡한 것을 보았다. 그는 아직 아무에게도 묻지 않았다"
+  truth: true
+  danger: 3
+  names: [베스퍼, 녹타]
+- id: fact_nc_starved_follow_breath
+  text: "굶주린 자들은 숨소리와 맥박 소리를 따라온다. 이빨 골짜기에 약 30개체가 있고, 잿빛 실 남쪽 길이 그 골짜기를 지난다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_nc_starved_future_of_nobles
+  text: "굶주린 자들은 피를 30일 이상 못 마셔 이성을 잃고 90일이면 짐승이 된 녹테른이다. 모든 녹테른이 그들을 자기의 미래로 두려워하며 사냥한다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_nc_mordecai_volk_pack
+  text: "AS 298 녹테른 영지에서 바르그 볼크의 무리(딸 이르가를 뺀 가족)가 몰살되었다"
+  truth: true
+  danger: 3
+  names: [볼크, 이르가]

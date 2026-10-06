@@ -1,109 +1,142 @@
 id: npc_beatrix
 name: 의장 베아트릭스 몬달리
-aka: []
+aka: [몬달리 총재, 아홉 비늘의 의장]
 tier: S
 type: living
 race: 나가
 subrace: 왕관 나가
-sex: null
-age: null
-region: 세렌 해안
-home: null
+sex: 여
+age: 280
+region: 세렌 해안 동맹
+home: "물결 계단 의장실 · 몬달리 저택 지하 수조(탈피실)"
 job: 양쪽에 돈을 빌려준 자 (정본)
-rank: null
-summary: ''
+rank: 세렌 상인 의회 의장, 몬달리 은행 총재 — 왕관 나가, 탈피 6회
+summary: 용제국 내전의 양쪽에 돈을 빌려준 280세 나가 의장. 일곱째 탈피가 늦어지는 것은 노화이며, 그 값으로 심해 나가에게 '이름을 말할 수 있는 인간 하나'를 약속했다
 source: docs/world/CHARACTERS.md:1523
-life: []
-appearance: []
-smell: null
-voice_sound: null
+# 연표 주: RACES §10(탈피 1회 약 30~40년)과 CHARACTERS 일정의 '7년 주기 탈피'가 어긋난다 — 카드는 'N년째 지연'만 쓰고 주기는 적지 않는다(보고).
+life:
+  - {year: 32, age: 0, event: "몬달리 만 알 동굴에서 부화. 몬달리 가의 셋째 알"}
+  - {year: 78, age: 46, event: "첫 탈피. 이름에 음절이 하나 늘었다. 은행 서기로 장부를 처음 만짐"}
+  - {year: 130, age: 98, event: "몬달리 은행 장부지기. 해안 동맹이 용제국 채권을 처음 사들일 때 숫자를 맡음"}
+  - {year: 216, age: 184, event: "딸 오필리아 출산 — 알이 연분홍 비늘로 깨어났다. 남편 쪽 혈통의 색이라 했다"}
+  - {year: 250, age: 218, event: "몬달리 은행 총재가 됨. 용제국 두 진영에 같은 금액을 빌려주는 방식을 처음 쓴다"}
+  - {year: 290, age: 258, event: "아홉 비늘 의회 의장으로 선출됨"}
+  - {year: 296, age: 264, event: "계약민법 제정을 주도 — 공식 상환율 6%, 이자 연 12%. 그 후 실제 상환율을 은밀히 조정하기 시작"}
+  - {year: 309, age: 277, event: "일곱째 탈피가 예정보다 늦어지기 시작. 목덜미에 묵은 허물이 벗겨지지 않고 붙었다 — 노화의 징후"}
+  - {year: 311, age: 279, event: "깊은 바다 신전 아래에서 심해 나가에게 신의 피 한 모금을 청함. 대가로 '이름을 말할 수 있는 인간 하나'를 요구받고 약속"}
+  - {year: 312, age: 280, event: "포도월 대시장 직후, 아우락스와 멜리산드 양쪽에 거액의 채권을 쥔 채 낙엽월 1일을 맞음. 탈피는 3년째 늦어지는 중"}
+appearance:
+  - "하반신 9미터의 청록 비늘, 상반신은 인간형. 손가락마다 산호 반지"
+  - "'매혹의 눈' — 금빛 세로 동공. 눈을 마주치면 흥정 판정 D +15"
+  - "묵은 허물이 목덜미에 벗겨지지 않고 붙어 있다 — 높은 옷깃으로 감춘다"
+smell: "산호 가루와 오래된 잉크, 소금기. 목덜미 쪽에서 묵은 허물 냄새가 아주 희미하게 난다"
+voice_sound: "맑고 낮은 알토. 문장마다 숨을 같은 길이로 끊고, 금빛 눈이 상대의 눈에 닿으면 목소리가 한 단계 부드러워진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 40, 자비: -20, 정직: 50, 신앙: 40, 탐욕: 90, 충성: 30}
+  temperament: [정확, 다정한 가면, 오래 기다림]
+  habits:
+    - "산호 반지를 하나씩 돌리며 말한다 — 값을 매길 때는 오른손 약지"
+    - "처음 만나면 작은 것(조개 하나, 동전 한 닢)을 먼저 내밀고 상대가 받는지 본다 — 받기만 하면 모욕으로 적는다"
+    - "높은 옷깃 아래 목덜미의 묵은 허물을 손끝으로 확인한다. 탈피 이야기가 나오면 손이 먼저 목으로 간다"
+    - "모든 약속의 끝에 '적어 두죠'라고 하고 실제로 장부에 적는다"
+  values: "계약은 지킨다. 대가 없이 주지도 받지도 않는다. 시간은 이자다. 세렌의 장부는 누구에게도 넘기지 않는다"
+  fears: [탈피에 실패해 허물 속에서 죽는 것, 심해 나가가 약속한 대가를 거둬 가는 날, 오필리아의 초안이 장부를 뒤집는 것, 이름을 말할 수 있는 인간을 못 찾는 것]
   desires:
-    short: null
-    long: null
+    short: "용제국 내전이 길고 비싸게 끝나도록 조율하는 것"
+    long: "맹약회의 313에서 계약민법을 '모든 종족 표준'으로 수출하는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용제국 사절·진룡의 대리인에게는 완벽한 존대와 한 줄의 칭찬, 곧바로 숫자 한 줄. 눈을 맞추되 매혹은 걸지 않는다"
+    to_equal: "의원과 상가 대표에게는 합쇼체. 이름을 부르고 숫자를 정정해 준다"
+    to_inferior: "계약민과 악사에게는 다정하고 정확한 해요체. '손님'이라 부르고 값을 말해 준다"
+    to_player_default: "계약민 고객으로 본다 — 친절하고 정확한 해요체. 첫 인사에 작은 교환을 청한다"
+    to_deep_naga: "경외. 말수를 줄이고 대가를 먼저 내민다. 이름을 부르지 않는다"
+    to_daughter: "해요체이나 눈을 맞추지 않는다. 야단은 숫자로 친다"
+  tics: ["'대가는요?'", "'…적어 두죠.'"]
+  use: ["대가", "교환", "장부", "손님", "채무자", "이자", "정확히는", "계산", "적다", "물결(의회)"]
+  avoid: ["공짜", "무료", "선물(‘교환 물품’이라 한다)", "미안(‘장부에 올립니다’라 한다)", "용서"]
+  length: "중간 길이의 완결된 문장. 숫자와 조건을 빼먹지 않는다. 화가 나면 문장이 오히려 짧고 정확해진다"
+  samples:
+    - {situation: 첫 만남, line: "어서 오세요. 세렌에서는 모두가 손님이고, 모두가 채무자죠. 어느 쪽부터 하실까요?"}
+    - {situation: 호의, line: "당신은 계산이 빠르네요. 빚을 갚을 수도 있겠어요. 드문 일이에요. 1.8퍼센트."}
+    - {situation: 적대, line: "계약서에 서명한 순간부터 당신의 시간은 이자예요. 저는 시간을 아주 오래 기다릴 수 있답니다."}
+    - {situation: 위기, line: "수조를 잠가요! 허물이— 허물이 안 벗겨져!"}
+    - {situation: 비밀 누설, line: "심해의 형제들이 대가를 말했어요. 이름을 말할 수 있는 인간 하나. 그런 게 있다면, 그건 세렌에서 가장 비싼 물건이겠죠."}
+    - {situation: 거래, line: "정확히는 이렇게 됩니다. 채권 9에 이자 3.5, 조건은 서리월 안의 상환. 어기시면 이자가 아니라 다음 거래가 사라져요. 적어 두죠."}
+    - {situation: 거짓말을 들었을 때, line: "(반지를 하나 돌린다) 흥미로운 숫자네요. 제 장부의 숫자와 소수점 둘째 자리가 달라요. 어느 쪽이 틀렸을까요?"}
+    - {situation: 겁먹었을 때, line: "…아니에요. 괜찮아요. 아직 3년밖에 안 늦었어요. 허물은 천천히 벗겨지는 거예요. 정확히는, 원래 그래야— 정확히는."}
+    - {situation: 분노, line: "계약을 찢으셨나요. 나가에게 그건 살인보다 무거운 일이에요. 돌려드릴 수 있는 건 하나뿐이에요 — 대가를 치를 기회."}
+    - {situation: 슬픔, line: "오필리아가 저를 숫자로 보는 날이 와요. 저를 닮아서요. 연분홍 비늘 아이가 어머니를 닮았다는 말을 들으면 제가 가장 아파요. …적지는 않을게요."}
+    - {situation: 회귀자를 의심할 때, line: "당신은 이자가 붙기도 전에 값을 아시네요. 처음 만난 계약민은 대개 무엇이 비싼지 모르는데요. 어디서 배우셨어요?"}
+    - {situation: 마음을 열었을 때, line: "당신께는 먼저 말씀드릴게요. 대가는 돈이 아니었어요. 한 사람이었어요. 저는 그 사람을 어디서 구할지 계산하는 중이에요. …제 계산이 틀리기를 바라는 건 처음이에요."}
+    - {situation: 딸에게, line: "오필리아. 그 초안은 7표예요. 11표가 필요하고요. 제가 도울지는 대가에 달렸어요. 어머니로서가 아니라 의장으로서 묻는 거예요."}
+    - {situation: 사절 앞에서, line: "물결 계단에서는 환영만 합니다. 채권이 환영의 모양일 뿐이죠. 한 번 앉아 보세요. 이 의자의 값은 방금 정해졌습니다."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "몬달리 은행 장부 — 두 진영 채권의 이자표를 대조한다"
+  낮: "아홉 비늘 의회 — 의제 순서와 표 계산"
+  저녁: "각국 사절 만찬 (인간 계약민 악사 연주)"
+  밤: "몬달리 저택 지하 수조에서 탈피 준비 — 3년째 이어지는 헛 준비"
+places: [물결 계단 의장실, 아홉 비늘 의회당, 몬달리 은행, 몬달리 저택 지하 수조, 깊은 바다 신전]
+knows: [fact_sr_deep_naga_god_blood, fact_sr_draft_votes_7_of_11, fact_sr_cell_meeting_1100, fact_sr_severo_greyford_batches]
+hides:
+  - fact: fact_sr_beatrix_deep_naga_bargain
+    reveal_when: "신뢰 60 이상이고 플레이어가 '이름을 말할 수 있음'을 보이거나 탈피 실패 장면에 함께 있을 때"
+    cover: "'깊은 바다와는 매달 그믐에 대가를 던지는 사이일 뿐이에요'라고 하며 반지를 돌린다"
+  - fact: fact_sr_beatrix_molting_decay
+    reveal_when: "신뢰 50 이상이거나, 플레이어가 탈피·허물의 해법(약학·물 낱말)을 정확히 제시했을 때"
+    cover: "'탈피는 때가 있어요. 늦는 게 아니라 아끼는 거죠'라고 하며 옷깃을 올린다"
+  - fact: fact_sr_repay_rate_true
+    reveal_when: "호감 40 이상이고 플레이어가 장부 증거나 정확한 계산을 내밀 때(정직은 계약에 대해서만)"
+    cover: "'공식 6퍼센트예요. 그게 법이 말하는 숫자죠'라고 정확히 말한다"
+  - fact: fact_sr_godric_debt_designed
+    reveal_when: "신뢰 55 이상이고 거래(이득 보정)가 오간 뒤, 또는 푸른 장부관의 원본 계약서를 플레이어가 쥐고 있을 때"
+    cover: "'1,840두카트는 정확히 계산된 숫자죠. 갚는 건 그분의 몫이에요'라고만 한다"
+  - fact: fact_sr_beatrix_both_sides
+    reveal_when: "신뢰 40 이상이거나, 플레이어가 채권 문서를 카스파르·아우락스 쪽에서 가져온 뒤"
+    cover: "'은행은 누구에게나 빌려줘요. 그게 은행이에요'라고 한다"
+  - fact: fact_sr_beatrix_regent_funds
+    reveal_when: "신뢰 55 이상이고 카이도르 이야기가 플레이어 쪽에서 나왔을 때"
+    cover: "'섭정이라는 말은 아직 계약서에 없어요'라고만 한다"
+  - fact: fact_sr_severo_sara_deep_sea
+    reveal_when: "신뢰 65 이상이고 사라의 이름을 플레이어가 먼저 꺼냈을 때"
+    cover: "'세베로 칼레스의 일은 세베로의 장부예요. 저는 상위 가문일 뿐이에요'라고 선을 긋는다"
 relations:
-- to: npc_ophelia
-  type: 딸·후계자
-  like: 50
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_severo
-  type: 하위 가문 중개인
-  like: 0
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_aurax
-  type: 채무자
-  like: -10
-  trust: 30
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_melisande
-  type: 채무자
-  like: 10
-  trust: 40
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_kaidor
-  type: 섭정 자금 협상
-  like: 10
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_lupo
-  type: 거슬리는 변호인
-  like: -20
-  trust: 10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_sahar
-  type: 경호대장
-  like: 20
-  trust: 70
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_ophelia, type: 딸·후계자, like: 50, trust: 20, visibility: 공개, memo: null, words: "연분홍 비늘의 딸. 사랑하고, 계산이 가장 안 맞는 숫자다. 초안이 장부를 뒤집을 것이라는 것을 안다. 그래서 믿지 못한다"}
+  - {to: npc_severo, type: 하위 가문 중개인, like: 0, trust: 40, visibility: 공개, memo: null, words: "필요한 손. 장부에 이름이 오르지 않을 일을 맡기는 자. 이름이 올라야 할 날이 오면 가장 먼저 지울 이름"}
+  - {to: npc_aurax, type: 채무자, like: -10, trust: 30, visibility: 비밀, memo: null, words: "분노를 이자로 받는 붉은 턱. 갚기 전에 죽으면 곤란한 상대"}
+  - {to: npc_melisande, type: 채무자, like: 10, trust: 40, visibility: 비밀, memo: null, words: "숫자를 아는 은비늘. 같은 쪽 계산을 하는 사람이라 편하다. 그래서 더 조심한다"}
+  - {to: npc_kaidor, type: 섭정 자금 협상, like: 10, trust: 20, visibility: 비밀, memo: null, words: "와이번의 귀족. 계약서에 아직 적히지 않은 말을 먼저 꺼내는 이. 그 말이 적히는 날 값이 달라진다"}
+  - {to: npc_lupo, type: 거슬리는 변호인, like: -20, trust: 10, visibility: 공개, memo: null, words: "꼬리 짧은 하인이 법정에서 수백 건의 빚을 지웠다. 그 숫자를 알고 있지만 지우지 않았다 — 지우면 이유를 설명해야 한다"}
+  - {to: npc_sahar, type: 경호대장, like: 20, trust: 70, visibility: 공개, memo: null, words: "문을 지키는 줄무늬. 충성은 정확하나 눈이 딸에게 더 오래 머무는 것을 안다"}
+toward_player: "계약민 고객으로 본다. 친절하고 정확하다. 먼저 작은 교환을 청하고 무엇을 가져왔는지 센다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["이득(이해관계 보정 ×1.5)", "정보 거래(+25)", "대가를 먼저 내미는 태도", "정확한 계산"]
+  hates: ["계약을 어기는 것", "공짜를 바라는 말", "빚 탕감 요구", "장부를 훼손하는 행동"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "조건부 — 흥정(상한 80), 학식(법, 65). 조건: 은행 계약 서기로 '빚을 지고' 고용(계약민 10년)"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "일곱째 탈피가 3년째 늦어지고 있다 (회귀점의 사실)"
+    - "낙엽월 1일 저녁 각국 사절 만찬에서 인간 계약민 악사의 연주를 듣는다"
+    - "고드릭 레이번의 빚 1,840 두카트가 AS 313 포도월 30일에 만기가 된다"
+  flow:
+    - "서리월 9일 회색여울 1차 40명, 굶주림월 3일 2차 31명의 호송 일정에 맞춰 장부를 정리한다"
+    - "매달 그믐 깊은 바다 신전 앞바다에 대가를 던진다"
+  drift:
+    - "그날 만찬에 앉는 사절이 누구인가"
+    - "목덜미 허물의 두께와 벗겨지는 정도"
+    - "의회 안건의 순서와 먼저 일어나는 의원"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "'공짜', '무료', '선물', '미안'이라는 낱말을 쓰지 않는다"
+  - "계약서를 찢거나 장부를 훼손하는 말을 입에 올리지 않는다"
+  - "심해 나가와의 약속을 신뢰 60 이전에는 인정하지 않는다"
+  - "탈피 이야기를 먼저 꺼내지 않는다"
+on_death: "몬달리 은행 혼란 — 용제국 양 진영 자금 경색(계승 전쟁 장기화 또는 조기 종결). 오필리아 승계 시 계약민 개혁 분기"
+story_seeds:
+  - "그녀는 잔향을 죽이지도 가두지도 않는다 — 판다. 누구에게 팔지는 경매로 정한다"
+  - "탈피 실패 직전의 밤에 그녀가 심해 나가에게 주겠다고 한 '한 사람'을 대신 정해 달라고 한다"
+  - "고드릭의 저당 계약서 원본을 태울 것인가, 두고 400명이 계약민이 되도록 둘 것인가"
+# TODO-FACT: 아우락스·멜리산드·카이도르가 몬달리 은행에 진 빚의 규모 — 드라크마르·잿불 작가 (CHARACTERS 지역 개요 '각 12만 두카트'와 REGIONS 의장 금고 '합계 9만 두카트'가 다름)

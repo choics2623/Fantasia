@@ -1,0 +1,97 @@
+# 아르카스 탑섬(잿빛 탑)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_ar_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+- id: fact_ar_third_test_dead14
+  text: "셋째 시험(진룡 비늘 조직 미량 이식)은 지금까지 14명에게 시행되어 생존 0이다. 걸러내는 것이 아니라 죽인다"
+  truth: true
+  danger: 5
+  names: [셋째 시험]
+- id: fact_ar_dead14_families_told
+  text: "셋째 시험에서 죽은 14명의 가족은 아직 그들이 '루멘으로 순례를 갔다'고 안다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_ar_first_second_tests_flawed
+  text: "첫째·둘째 시험(잔상 반응, 학습 속도 측정)은 무고한 징후자를 걸러내지 못한다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_ar_halla_reference_body
+  text: "탑주가 할라를 30년간 '기준체'로 살려 둔 것은 그녀가 진짜가 아님을 확신하기 때문이다. 진짜를 재려면 가짜가 하나는 있어야 한다"
+  truth: true
+  danger: 3
+  names: [할라]
+- id: fact_ar_halla_three_accusations
+  text: "할라는 세 번 고발당했다: AS 270 고향 마을(무혐의 방면), AS 276 순회 심문(방면), AS 282 잿빛 탑 수집(기준체로 영구 수용). 이유는 재먼지 각막염 흉터의 회색 얼룩이다"
+  truth: true
+  danger: 1
+  names: [할라]
+- id: fact_ar_halla_taught_isol_letters
+  text: "할라는 이졸에게 글을 가르쳤다. 이졸은 사냥개가 된 뒤에도 그녀에게 편지를 쓰고, 편지마다 '이번 분기 숫자'를 적는다. 할라는 그 숫자를 전부 기억한다(38)"
+  truth: true
+  danger: 4
+  names: [이졸]
+- id: fact_ar_halla_first_ember_page
+  text: "할라가 필사한 고문헌 가운데 '첫 불씨'에 관한 엘다르 기록 한 장이 있다. 탑은 그 가치를 모른다"
+  truth: true
+  danger: 4
+  names: [첫 불씨]
+- id: fact_ar_isol_paper_void
+  text: "탑주 이레네가 이졸에게 약속한 '해방 증서'는 법적 효력이 없다"
+  truth: true
+  danger: 4
+  names: [이졸, 이레네]
+- id: fact_ar_ottilie_vow_gap
+  text: "오틸리는 탑 취임 때 '인간에게 글 쓰는 법을 가르치지 않는다'고 맹세했다. 그녀는 '읽기'만 가르친다 — 맹세의 틈이다. 그러나 오른손이 손목까지 돌로 굳어 가는 것을 보면 돌은 그 틈을 인정하지 않는 듯하다"
+  truth: true
+  danger: 3
+  names: [오틸리]
+- id: fact_ar_ottilie_books_to_halla
+  text: "오틸리는 30년 동안 할라의 독방에 책을 몰래 넣어 주었다"
+  truth: true
+  danger: 3
+  names: [오틸리, 할라]
+- id: fact_ar_tower_clerks_literate
+  text: "서기 노예 약 180명 가운데 실제로 읽을 줄 아는 자는 약 70명이다. 탑은 모르는 척한다. 읽는 것이 들키면 그 서기는 피험자로 옮겨진다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_ar_milo_memorized_14
+  text: "서기 마일로는 탑 장부를 베끼며 셋째 시험 사망자 14명의 명단을 몰래 외웠다"
+  truth: true
+  danger: 4
+  names: [마일로]
+- id: fact_ar_glass_blades
+  text: "시간 유리 칼은 세 자루뿐이다. 첫째 '첫 침묵'(AS 214)은 탑 금고에 있고 이름 없는 아이들에게 여러 번 쓰였다. 둘째 '정오'(AS 268)는 시간 측정관에게 지급되어 징후 보고가 몰리는 곳으로 옮겨진다. 셋째 '마지막 금'(AS 305)은 한 번도 쓰이지 않았고 탑주 이레네가 몸에 지닌다"
+  truth: true
+  danger: 5
+  names: [시간 유리 칼, 첫 침묵, 정오, 마지막 금]
+- id: fact_ar_glass_blade_ends_return
+  text: "시간 유리 칼에 입은 치명상으로 죽은 잔향자는 회귀하지 못한다 — 진짜 죽음이다. 탑은 이것을 안다"
+  truth: true
+  danger: 5
+  names: [시간 유리 칼]
+- id: fact_ar_irene_ledger_deja_vu
+  text: "탑주 이레네의 장부에는 '설명되지 않는 기시감. 북쪽.'이라는 줄이 있다. 그녀는 그것을 '측정 오차'라 부른다"
+  truth: true
+  danger: 3
+  names: [이레네]
+- id: fact_ar_tower_supplies_aerin
+  text: "잿빛 탑이 징후 보유자를 실바렌 영혼 정원의 아에린에게 보낸다. 탑주 이레네는 그를 '징후자 수요처'로 여긴다"
+  truth: true
+  danger: 5
+  names: [아에린, 이레네]
+- id: fact_ar_retrograde_star
+  text: "AS 311부터 하늘 기록에 '역행하는 별' 하나가 있다. 까마귀 아에리 점술가들은 그것이 잔향의 각성과 함께 나타났다고 해석한다. 탑과 바람의 여왕 모두 그 별이 잔향과 연동되는지 알고 싶어 한다"
+  truth: true
+  danger: 4
+  names: [역행하는 별]
+- id: fact_ar_corvina_reports_kirie
+  text: "탑의 '잔상 관측' 담당 코르비나는 하늘 기록의 해석을 탑에 보고하면서, 같은 기록을 바람의 여왕 키리에에게도 몰래 보낸다"
+  truth: true
+  danger: 4
+  names: [코르비나, 키리에]
+- id: fact_ar_wobble_map
+  text: "탑 꼭대기 '귀 기울이는 방'의 지도에는 AS 311 이후 '흔들림' 표시가 회색여울 근방에 몰려 있다. 회차가 쌓이면 낙엽월 초하루 저녁마다 측정 바늘이 같은 자리에서 튄다. 학자들은 기억하지 못하면서도 기록이 낯익다고 느낀다"
+  truth: true
+  danger: 4
+  names: []

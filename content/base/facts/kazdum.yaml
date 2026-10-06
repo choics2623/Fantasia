@@ -1,0 +1,127 @@
+# 카즈둠 산맥(두르강)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_kz_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+
+# ── 깊은 문과 고동 ────────────────────────────────────────────
+- id: fact_kz_seal_reason
+  text: "AS 289 깊은 문을 봉인한 이유는, 문 너머의 '고동'이 신의 심장이라는 두르강 원로들의 판단이었다"
+  truth: true
+  danger: 5
+  names: [깊은 문, 고동]
+- id: fact_kz_pulse_answers_song
+  text: "봉인 전, 계약 광부 하나가 노래하자 고동이 빨라졌다. 고동은 인간의 목소리에 반응한다"
+  truth: true
+  danger: 5
+  names: [고동]
+- id: fact_kz_petar_was_singer
+  text: "고동이 반응한 그 노래를 부른 광부는 페타르다"
+  truth: true
+  danger: 5
+  names: [페타르, 고동]
+- id: fact_kz_41_sealed_inside
+  text: "봉인 때 인간 계약 광부 41명이 문 안쪽에 갇혔다. 그들의 계약은 '살아서 갱을 나갈 때까지' 유효하다 — 23년이 지났다"
+  truth: true
+  danger: 5
+  names: [깊은 문]
+- id: fact_kz_bror_ear_stone
+  text: "브로르의 오른쪽 귀가 돌로 굳은 것은 '41개의 계약을 깬 것인가'를 매일 묻는 반쯤 깬 맹세의 흔적이다"
+  truth: true
+  danger: 3
+  names: [브로르]
+- id: fact_kz_pulse_faster_311
+  text: "고동의 박자가 AS 311부터 빨라졌다. 최하층에서 고동이 들린다는 광부 보고가 한 달에 40건이다"
+  truth: true
+  danger: 2
+  names: [고동]
+- id: fact_kz_gate_reopening
+  text: "깊은 문은 다시 열리는 중이다. 탐사대가 룬 자물쇠를 하나씩 풀고 있다"
+  truth: true
+  danger: 3
+  names: [깊은 문]
+- id: fact_kz_contract_clauses
+  text: "7년 계약이 실제로 7년에 끝나는 경우는 열에 셋뿐이다. '붕괴로 멈춘 날은 일수에서 뺀다', '도구 파손은 1년 연장' 같은 조항이 계약마다 붙는다"
+  truth: true
+  danger: 2
+  names: [계약]
+
+# ── 왕가와 공방 ───────────────────────────────────────────────
+- id: fact_kz_hilda_gate_machine
+  text: "힐다는 깊은 문 개방 기계를 이미 완성했다. 아버지 브로르의 서명만 없다"
+  truth: true
+  danger: 5
+  names: [힐다, 브로르]
+- id: fact_kz_hilda_seeks_singer
+  text: "힐다는 고동을 깨울 노래할 인간을 찾고 있다. 가장 유력한 후보는 페타르다"
+  truth: true
+  danger: 4
+  names: [힐다, 페타르]
+- id: fact_kz_nidar_voice_wakes
+  text: "심층 두르강 사제 니다르가 힐다에게 '고동은 신의 마지막 말이 다가오면 인간의 목소리로 깨어난다'고 말했다"
+  truth: true
+  danger: 4
+  names: [니다르, 힐다]
+- id: fact_kz_nidar_cult_abducts
+  text: "니다르의 신도들이 노래할 인간을 모으려고 계약 광부를 납치하기 시작했다"
+  truth: true
+  danger: 4
+  names: [니다르]
+
+# ── 이름 없는 자 우르드와 룬판관 ──────────────────────────────────
+- id: fact_kz_urd_opened_door
+  text: "AS 289 봉인 당일, 우르드는 '문을 지킨다'는 맹세를 깨고 문을 열어 인간 광부 아홉 명을 빼냈다. 마흔한 명은 문이 다시 닫혀 구하지 못했다"
+  truth: true
+  danger: 4
+  names: [우르드]
+- id: fact_kz_petar_rescued_by_urd
+  text: "페타르는 우르드가 구한 아홉 중 하나다. 그는 은인의 얼굴을 모른다"
+  truth: true
+  danger: 3
+  names: [페타르, 우르드]
+- id: fact_kz_urd_taught_hilda
+  text: "힐다에게 깊은 문의 구조를 가르친 사람은 우르드다"
+  truth: true
+  danger: 3
+  names: [우르드, 힐다]
+- id: fact_kz_urd_stone_clock
+  text: "우르드의 돌화는 3~5년 안에 심장에 닿는다. 계절마다 민첩이 한 점씩 떨어진다"
+  truth: true
+  danger: 2
+  names: [우르드]
+- id: fact_kz_grimbald_wrote_verdict
+  text: "우르드의 판결문을 쓴 사람은 룬판관 그림발드다"
+  truth: true
+  danger: 1
+  names: [그림발드, 우르드]
+- id: fact_kz_oath_release_rune
+  text: "룬판관 그림발드는 '맹세를 푸는 룬'을 안다. 그 대가는 맹세한 자의 이름 하나다"
+  truth: true
+  danger: 5
+  names: [그림발드]
+- id: fact_kz_oath_completion
+  text: "우르드의 맹세는 '문을 지킨다'와 '그 안의 사람을 지킨다' 두 조항이 한 돌판에 있었다. 문을 연 순간 앞 조항은 깨졌고 뒤 조항은 반만 이행되었다. 안의 41명을 꺼내면 뒤 조항이 완성되어 돌화가 멈춘다. 이미 돌이 된 부분은 그대로다"
+  truth: true
+  danger: 5
+  names: [우르드, 그림발드]
+
+# ── 광부 페타르 ───────────────────────────────────────────────
+- id: fact_kz_petar_expiry
+  text: "페타르의 계약은 AS 312 서리월 8일에 만료된다. 7년 계약이 조항으로 연장되고 연장되어 마흔 해를 채운 극소수 중 하나다"
+  truth: true
+  danger: 2
+  names: [페타르]
+
+# ── 드라우르 셀른 ─────────────────────────────────────────────
+- id: fact_kz_seln_exiled
+  text: "셀른은 신살에 반대한 엘다르의 후손으로, 드라우르가 되어 지하로 추방된 일족이다. 인간에게 가장 덜 적대적이다"
+  truth: true
+  danger: 2
+  names: [셀른, 드라우르]
+- id: fact_kz_seln_eor_voice
+  text: "셀른은 신살 전 에오르의 목소리를 들은 자들의 기억 노래를 물려받았다. 고동은 그 목소리와 같은 박자다"
+  truth: true
+  danger: 5
+  names: [셀른, 에오르]
+- id: fact_kz_drau_serve_echo
+  text: "드라우르는 잔향을 '주인님의 마지막 숨'이라 부르며 섬길 수도 있다"
+  truth: true
+  danger: 4
+  names: [드라우르, 잔향]

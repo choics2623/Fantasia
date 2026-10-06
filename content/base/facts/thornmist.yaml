@@ -1,0 +1,77 @@
+# 가시안개 숲의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_tm_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+- id: fact_tm_queen_laugh_reason
+  text: "가시 왕관의 여왕이 신살 때 웃은 것은, 에오르가 죽어 가며 마지막 말을 인간에게 남기는 것을 보고 열한 종족의 공모가 결국 실패할 것을 알았기 때문이다. 그 말을 들은 것은 열한 종족 가운데 그녀뿐이었다"
+  truth: true
+  danger: 4
+  names: [에오르]
+- id: fact_tm_queen_true_name_fate
+  text: "잔향이 '모든 이름'을 말하는 날 여왕의 진명도 불린다. 그것이 그녀의 죽음인지 해방인지는 그녀도 모른다. 그래서 그녀는 잔향을 3,400년간 '구경'해 왔다"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_tm_queen_name_rule
+  text: "여왕의 진명은 시대의 마지막 장에서만 말할 수 있다. 그 전에 그 이름을 추측한 자는 그녀의 것이 된다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_tm_queen_knows_echo
+  text: "여왕은 플레이어에게 깃든 것이 잔향임을 알아본다. AS 311부터 '가장 좋은 장난감이 돌아왔다'며 숲 밖으로 사자를 보내고 있다"
+  truth: true
+  danger: 5
+  names: []
+- id: fact_tm_queen_asterion_spectacle
+  text: "여왕은 살아 있던 아스테리온을 구경거리로 삼아 지켜보았다"
+  truth: true
+  danger: 3
+  names: [아스테리온]
+- id: fact_tm_laugh_box
+  text: "가시 궁정 왕좌 뒤 가시 속에 신살 때의 웃음이 봉인된 '웃음의 상자'가 있다. 열면 진실 한 조각을 얻고, 대가로 연 사람은 웃음을 영원히 잃는다"
+  truth: true
+  danger: 4
+  names: [웃음의 상자]
+- id: fact_tm_nibble_inverse
+  text: "니블은 진실을 말할 수 없어 가르침을 전부 반대말로 한다. 학생이 그것을 뒤집을 줄 알아야 배운다"
+  truth: true
+  danger: 1
+  names: [니블]
+- id: fact_tm_nibble_took_elin
+  text: "니블이 엘린을 바꿔치기 해 온 장본인이며, 그녀를 '자기 작품'으로 아낀다"
+  truth: true
+  danger: 3
+  names: [니블, 엘린]
+- id: fact_tm_elin_village_in_lies
+  text: "엘린의 고향 마을 이름은 니블의 거짓말 속에 숨어 있다. 마을은 회색여울 근처 어딘가다"
+  truth: true
+  danger: 2
+  names: [엘린]
+- id: fact_tm_elin_double
+  text: "엘린의 자리에는 바꿔치기 페이 아이가 '인간 소녀'로 24년째 살고 있다. 지금은 회색여울 근처 마을의 누군가로 살고 있을지도 모른다"
+  truth: true
+  danger: 3
+  names: [엘린]
+- id: fact_tm_elin_nail_words
+  text: "엘린은 페이어를 잊지 않으려 밤마다 손바닥에 손톱으로 낱말을 쓴다. 페이어를 배우면 미친다는 전설은 거짓이 아니다"
+  truth: true
+  danger: 2
+  names: [엘린]
+- id: fact_tm_elin_time_keeper
+  text: "엘린은 장난감 정원의 인간들에게 바깥 시간이 얼마나 흘렀는지 알려 주는 유일한 사람이다"
+  truth: true
+  danger: 1
+  names: [엘린]
+- id: fact_tm_odo_contract
+  text: "오도는 AS 241 서른 살에 숲에 들어온 용병 노예로, 페이 계약 때문에 몸이 서른에서 늙지 않고 매일 같은 춤을 춘다. 계약을 풀면 그는 하룻밤 사이에 숲에서 보낸 71년치를 한꺼번에 산다"
+  truth: true
+  danger: 3
+  names: [오도]
+- id: fact_tm_grik_hat
+  text: "붉은모자 그릭은 피에 적신 모자가 마르면 죽는다. 모자를 빼앗으면 한 시간 안에 죽지만, 그동안 미친 듯 덤빈다"
+  truth: true
+  danger: 3
+  names: [그릭]
+- id: fact_tm_grik_south_border
+  text: "그릭은 숲 남쪽 경계에서 탈주자를 사냥해 모자를 적신다. 여왕도 그를 통제하지 않는다. 잿빛 실의 남쪽 우회로가 그의 사냥터와 겹친다"
+  truth: true
+  danger: 4
+  names: [그릭]

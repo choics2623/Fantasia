@@ -1,60 +1,94 @@
 id: npc_ogre_pack
 name: 썩은이빨 무리
-aka: []
+aka: [썩은이빨 고개의 것들, 굶은 입]
 tier: B
 type: living
 race: 요툰(오우거)
 subrace: ''
-sex: null
-age: null
+sex: 무리
+age: "무리 약 20개체 (우두머리 70세 안팎)"
 region: 흐로스가르드
-home: null
-job: 서리 길 중턱 동굴
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+home: 서리 길 중턱 동굴 ('썩은이빨 고개')
+job: 서리 길 탈주 행렬 후미를 노리는 오우거 무리
+rank: 요툰도 수치로 여겨 사냥하는 무리. 스카디르가 남침 선봉으로 쓰려 한다
+summary: 사람고기를 먹어 말을 잃고 오그라든 퇴화한 요툰 약 20개체. 탈주자들의 마지막 관문이며, 우두머리는 옛 이름 '오그룬'을 반쯤 기억한다
+source: "docs/world/CHARACTERS.md:1848 (색인 한 줄 — 새로 씀)"
+life:
+  - {year: 250, age: 0, event: "우두머리가 서리 요툰 씨족에서 태어남(옛 이름 오그룬). 사냥 거인으로 자람"}
+  - {year: 288, age: 38, event: "잿빛 겨울 끝의 남은 흉년. 씨족이 노예를 '덜어내는' 날 처음으로 노예가 아닌 사람을 먹음. 그 뒤 몸이 뒤틀리기 시작"}
+  - {year: 300, age: 50, event: "말을 잃기 시작. 씨족에서 쫓겨나 서리 길 중턱 동굴로 들어옴. 뒤따라온 같은 처지 거인 여섯과 무리를 이룸"}
+  - {year: 309, age: 59, event: "북방 대탈주가 시작되며 서리 길에 사람이 늘어남. 행렬 후미의 낙오자를 처음으로 동굴로 끌고 들어옴"}
+  - {year: 311, age: 61, event: "무리가 스무 개체로 불어남. 동굴 안쪽에 인간을 걸어 두는 저장고를 팜. 요툰 사냥꾼이 한 번 동굴 앞까지 왔으나 눈보라로 돌아감"}
+  - {year: 312, age: 62, event: "여름. 스카디르의 전사단이 동굴 앞에 고기를 쌓아 놓고 가기 시작. 무리가 처음으로 고기를 주는 큰 것을 따라 움직임"}
+appearance:
+  - "3~5m로 오그라든 몸. 등이 굽고 이빨이 바깥으로 자라 입이 닫히지 않는다"
+  - "잿빛으로 들뜬 피부. 눈이 흐리고 냄새를 먼저 맡는다"
+  - "동굴 바닥이 뼈로 덮여 있다. 우두머리의 목에는 인간의 갈비뼈로 엮은 줄이 걸렸다"
+smell: "썩은 고기와 오래된 피, 젖은 털"
+voice_sound: "낮게 으르렁거리다 토막 난 말이 섞인다. 문장이 아니라 낱말이 먼저 나온다. 숨소리가 거칠다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 50, 자비: -80, 정직: 10, 신앙: 0, 탐욕: 85, 충성: 15}
+  temperament: [굶주림, 야수성, 어렴풋한 기억]
+  habits:
+    - "코를 먼저 들이대고 냄새를 맡은 뒤에야 눈으로 본다"
+    - "잡은 것을 바로 죽이지 않고 저장고 쪽으로 끌고 간다"
+    - "우두머리는 가끔 한 박자 멈추고 자기 이름 비슷한 소리를 중얼거린다"
+  values: "먹는 순서가 곧 서열이다. 겨울을 넘기는 것. 같은 굴에서 가장 먼저 먹는 자가 가장 크다"
+  fears: [불, 요툰 사냥꾼, 옛 이름을 완전히 잃는 것(우두머리만)]
   desires:
-    short: null
-    long: null
+    short: "이번 겨울 저장고를 채우는 것"
+    long: "굶지 않는 것 — 그 이상은 이제 말이 되지 않는다"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "고기를 가져다주는 큰 것(스카디르 전사단)에게는 으르렁을 낮추고 고개를 숙인다"
+    to_equal: "서로 짧게 '먹. 안 먹.'으로 말한다"
+    to_inferior: "무리의 약한 개체에게 이빨을 보이고 먹이를 빼앗는다"
+    to_human: "'고기.' 한 마디. 말을 걸 때는 낱말 하나, 반복"
+    to_player_default: "냄새를 맡고 '고기. 아니. …이름?'이라 물을 때가 있다 — 우두머리의 기억이 아직 남아 있다"
+  tics: ["'…고기.'", "'먹. 안 먹.'"]
+  use: [고기, 냄새, 먹다, 저장고, 불(두려워서), 굴, 큰 것]
+  avoid: [긴 문장, 이름(자기 것을 잃어 가는 중), 약속, 서리 어머니(말하지 못함)]
+  length: "한 낱말에서 세 낱말. 문장이 되지 않는다. 우두머리가 이름을 부르는 순간에만 문장이 하나 나온다"
+  samples:
+    - {situation: 첫 만남, line: "…고기. …냄새. …작은."}
+    - {situation: 적대, line: "먹. 안 먹. …먹."}
+    - {situation: 겁(불), line: "불! 불! …아니. …안 돼. …뜨거워."}
+    - {situation: 호의(스카디르 쪽), line: "…큰 것. …고기 준다. …좋다."}
+    - {situation: 거짓말을 들었을 때, line: "…냄새가 다르다. …다른 냄새. …거짓."}
+    - {situation: 슬픔(우두머리), line: "…오그… 오그룬. …내 이름. …기억났다. …그런데 이제 소용이 없다."}
+    - {situation: 비밀 누설, line: "…큰 것이 고기를 준다. …작은 것들을 데려온다. …겨울에 더 많이 준다고 했다."}
+    - {situation: 회귀자를 의심할 때, line: "…이 냄새. …전에 맡았다. …아니, 처음. …모르겠다."}
+hides:
+  - fact: fact_hg_ogre_leader_old_name
+    reveal_when: "플레이어가 옛 이름(오그룬)을 우연히 알거나 아스타·마투쉬에게서 들은 뒤 그것을 불렀을 때"
+    cover: "그냥 으르렁거리며 '…고기'만 반복한다. 이름이 나오는 순간 한 박자 멈춘다"
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
-relations: []
-toward_player: null
+  아침: "동굴 입구에서 냄새로 서리 길의 움직임을 살핀다"
+  낮: "잠. 대부분 동굴 안에서 웅크린다"
+  저녁: "행렬이 지나갈 시각에 후미를 노린다"
+  밤: "저장고를 확인하고 먹는 순서를 정한다"
+places: [썩은이빨 고개 동굴, 동굴 안쪽 저장고, 서리 길 중턱]
+knows: [fact_hg_ogre_larder_cave, fact_hg_skadir_feeds_ogres]
+relations:
+  - {to: npc_skadir, type: 고기를 주는 큰 것, like: 20, trust: 30, visibility: 비밀, memo: 선봉감, words: "큰 것. 고기를 쌓아 놓고 간다. 따라가면 더 많이 준다고 했다"}
+toward_player: "냄새를 맡고 '고기'로 본다. 우두머리만이 이름을 부르는 자에게 한 박자 멈춘다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["고기를 던져 주는 것", "우두머리의 옛 이름을 부르는 것(오그룬)"]
+  hates: ["불", "요툰 사냥꾼의 냄새", "이름을 모욕하는 소리"]
 roles:
   teacher: null
-  companion: null
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 저녁 서리 길 행렬 후미를 노린다"
+    - "동굴 안쪽에 인간 저장고가 있다 (회귀점의 사실)"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "긴 문장을 말하지 않는다 — 한 낱말에서 세 낱말"
+  - "인간 아이를 대상으로 한 폭력 장면을 직접 묘사하지 않는다 — '저장고'와 '냄새'로만 서술한다"
+  - "우두머리의 옛 이름 외에 이름을 알지 못한다"
+on_death: "서리 길의 마지막 관문 소멸 — 탈주 성공률 상승. 스카디르의 남침 선봉 계획 차질"
+story_seeds:
+  - "서리 길의 마지막 관문 — 탈주자들이 '썩은이빨 고개'라 부르는 곳. 아스타의 마지막 200명이 지나야 한다"
+  - "스카디르가 쌓아 두고 가는 고기. 그 고기가 어디서 왔는지 알면 막사의 열한 명과 이어진다"

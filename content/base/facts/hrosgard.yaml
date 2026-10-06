@@ -1,0 +1,120 @@
+# 흐로스가르드(북방 서리땅)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_hg_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+
+# ── 왕가: 서리왕과 왕자 ─────────────────────────────────────────
+- id: fact_hg_hrimnir_edict
+  text: "서리왕 흐림니르가 AS 311에 비밀 칙령을 내려, 먹일 수 없는 인간 노예를 남쪽으로 '풀어 주게' 했다. 칙령은 노예 장로 아스타를 통해 전해졌고, 씨족장들은 그것을 탈주로 알고 있다"
+  truth: true
+  danger: 5
+  names: [흐림니르, 아스타]
+- id: fact_hg_hrimnir_envoy_kaspar
+  text: "흐림니르는 곡물과 평화를 맞바꾸자는 비밀 사신을 카스파르에게 보낼지 고민 중이다. 사신의 길잡이로 서리말을 아는 인간이 필요하다"
+  truth: true
+  danger: 4
+  names: [흐림니르, 카스파르]
+- id: fact_hg_last_barley_300
+  text: "얼음턱 전당 곡창 바닥에 마지막 보리 300섬이 감춰져 있다. 왕의 '남침 군량'이다"
+  truth: true
+  danger: 4
+  names: [얼음턱 전당]
+- id: fact_hg_hrimnir_grain_talks_bror
+  text: "흐림니르 쪽 협상파가 카즈둠 왕 브로르와 곡물 교역을 비밀리에 타진하고 있다"
+  truth: true
+  danger: 4
+  names: [흐림니르, 브로르]
+- id: fact_hg_hrimnir_starves_first
+  text: "요툰의 법은 왕이 먼저 굶는 것이다. 흐림니르는 3년째 씨족장 누구보다 적게 먹는다"
+  truth: true
+  danger: 1
+  names: [흐림니르]
+- id: fact_hg_skadir_eats_slaves
+  text: "스카디르는 전사단 막사에서 인간 노예를 잡아먹는다 — 지난 겨울에만 열한 명. 전사단원 다수가 같은 고기를 나눴고, 그것이 그들 충성의 실체다"
+  truth: true
+  danger: 5
+  names: [스카디르]
+- id: fact_hg_skadir_usurp_plan
+  text: "스카디르는 아버지의 '노예 해방 칙령'을 알게 되면 그것을 반역으로 몰아 씨족장들 앞에서 왕위를 찬탈할 계획이다"
+  truth: true
+  danger: 5
+  names: [스카디르, 흐림니르]
+- id: fact_hg_skadir_feeds_ogres
+  text: "스카디르는 썩은이빨 무리에게 노예를 먹이로 보내 길들이며, 남침의 선봉으로 쓰려 한다"
+  truth: true
+  danger: 4
+  names: [스카디르, 썩은이빨]
+
+# ── 서리 어머니의 동굴 ─────────────────────────────────────────
+- id: fact_hg_yorun_pulse_south
+  text: "남쪽 산 아래(카즈둠)에서 무언가 심장처럼 뛰고, 그것이 뛸 때마다 북방 밭이 언다고 대지가 3년째 무녀 요룬에게 말한다. 흉작과의 연관은 요룬의 추측이다"
+  truth: true
+  danger: 3
+  names: [요룬, 카즈둠]
+
+# ── 돌무릎 골짜기와 남은 노예들 ─────────────────────────────────
+- id: fact_hg_asta_counts_800
+  text: "아스타는 돌무릎 골짜기에 남은 노예 약 800명을 매일 센다. 서리월 전에 마지막 200명을 서리 길로 보내려 한다"
+  truth: true
+  danger: 3
+  names: [아스타]
+- id: fact_hg_einar_alive
+  text: "시그리드의 동생 에이나르는 살아서 돌무릎 골짜기에 돌아와 있다. 서리 길에서 거인 순찰에 끌려온 것을 아스타가 숨겨 보호한다"
+  truth: true
+  danger: 4
+  names: [에이나르, 시그리드, 아스타]
+- id: fact_hg_einar_chose_to_stay
+  text: "서리 길에서 '먼저 가'라고 한 것은 에이나르 자신이다. 발가락 셋이 얼어 걸을 수 없게 된 그는 누나가 자기 때문에 무리 전체를 잃을까 두려워 스스로 남았다. 그는 시그리드를 원망하지 않는다"
+  truth: true
+  danger: 2
+  names: [에이나르, 시그리드]
+- id: fact_hg_brimir_dream
+  text: "깊은우물 씨족의 노파 브리미르는 서리 어머니의 꿈에서 '작은 자들이 우리를 먹여 살릴 것이다'라는 말을 들었다. 아스타가 브리미르와 인간 사이의 유일한 통역이다"
+  truth: true
+  danger: 3
+  names: [브리미르, 아스타]
+- id: fact_hg_baug_owns_stonekneed_slaves
+  text: "시그리드, 아스타, 에이나르는 모두 돌무릎 씨족장 바우그의 노예였다. 뼈 구슬은 돌무릎 씨족의 노예 표식이다"
+  truth: true
+  danger: 1
+  names: [바우그, 시그리드, 아스타, 에이나르]
+- id: fact_hg_baug_blind_eye
+  text: "바우그는 아스타가 사람을 서리 길로 빼돌리는 것을 알면서도 눈감는다. 먹일 입이 줄기 때문이다. 왕의 칙령이 그 뒤에 있다는 것은 모른다"
+  truth: true
+  danger: 3
+  names: [바우그, 아스타]
+
+# ── 서리 길 ─────────────────────────────────────────────────
+- id: fact_hg_frost_road_closes
+  text: "서리 길은 서리월에 닫힌다. 그 전에 울음 고개를 넘지 못한 자는 겨울을 서리땅에서 나야 한다"
+  truth: true
+  danger: 1
+  names: [서리 길, 울음 고개]
+- id: fact_hg_matusz_lodge_runaways
+  text: "마투쉬는 꿀과 가죽을 받고 탈주자를 서리 길 마지막 산장에 재워 준다. 아스타의 호송대가 첫 밤을 묵는 곳이다"
+  truth: true
+  danger: 4
+  names: [마투쉬, 아스타]
+- id: fact_hg_volk_marked_lodge
+  text: "볼크가 서리 길 마지막 산장을 '탈주자 소굴'로 지목했다"
+  truth: true
+  danger: 4
+  names: [볼크, 마투쉬]
+- id: fact_hg_harva_carried_runaways
+  text: "서리 와이번 하르바는 탈주자를 등에 태워 산을 넘긴 적이 한 번 있다. 삯은 30 비늘이었다"
+  truth: true
+  danger: 3
+  names: [하르바]
+- id: fact_hg_harva_sells_scouting
+  text: "하르바는 스카디르에게 남쪽 정찰을 팔면서, 값만 맞으면 카스파르와도 거래한다"
+  truth: true
+  danger: 4
+  names: [하르바, 스카디르, 카스파르]
+- id: fact_hg_ogre_larder_cave
+  text: "썩은이빨 무리는 서리 길 중턱 동굴('썩은이빨 고개')에서 탈주 행렬의 후미를 노리고, 잡은 인간을 겨울 저장고에 걸어 둔다"
+  truth: true
+  danger: 4
+  names: [썩은이빨]
+- id: fact_hg_ogre_leader_old_name
+  text: "썩은이빨 무리의 우두머리는 옛 이름 '오그룬'을 반쯤 기억한다. 그 이름을 부르면 한 박자 멈춘다"
+  truth: true
+  danger: 2
+  names: [오그룬]

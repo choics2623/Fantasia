@@ -1,0 +1,138 @@
+# 모르바 늪의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_mv_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# 늪 마녀 일곱 계보: HOUSES §4.3 (시간 근원은 대붕괴 이후 금지 — 어느 계보도 지키지 않는다)
+- id: fact_mv_witch_forty_limit
+  text: "늪 마녀는 마흔을 넘기지 못한다. 진명을 맨입으로 말할 수 없어 다른 종족의 피를 '빌린 혈명' 촉매로 쓰고, 주문 하나에 몇 주에서 몇 년의 수명이 든다"
+  truth: true
+  danger: 1
+  names: []
+- id: fact_mv_oda_three_casts_left
+  text: "오다에게 남은 시전은 많아야 세 번이다. 세 번을 쓰고 나면 그녀는 마흔 전에 죽는다"
+  truth: true
+  danger: 3
+  names: [오다]
+- id: fact_mv_vessel_wait_300
+  text: "일곱 노파의 회합은 300년 동안 고대 진명어 낱말 약 400개를 외워 지키며, 그것을 '말할 수 있는 그릇'이 올 때까지 기다려 왔다"
+  truth: true
+  danger: 4
+  names: []
+- id: fact_mv_elsa_quarrel_270
+  text: "AS 270 엘사는 당시 첫째 노파(오다의 스승)와 다투고 늪을 떠났다. 엘사는 '낱말을 늪 밖 아이들에게도 가르치자'고 했고, 첫째 노파는 '그릇이 올 때까지 늪에만'이라 했다. 오다는 엘사가 옳았을지도 모른다고 생각한다"
+  truth: true
+  danger: 2
+  names: [엘사, 오다]
+- id: fact_mv_oda_saska_blood_deal
+  text: "오다는 독꼬리 와이번 사스카의 알 부화를 돕는 대가로 와이번의 피를 받는다. 와이번은 언젠가 그 대가로 마을을 요구할 것이다"
+  truth: true
+  danger: 4
+  names: [오다, 사스카]
+- id: fact_mv_hag_split_4_3
+  text: "회합은 '돌아오는 이(잔향)'를 두고 갈라지기 직전이다. 쑥·버들·재·갈대 계보는 모든 근원을 그에게 주자 하고, 뼈바늘·거머리·안개 계보는 그가 오면 늪이 불탄다(다라 때처럼) — 오면 늪에 가둬 지키자 한다"
+  truth: true
+  danger: 4
+  names: [브리타]
+- id: fact_mv_brita_confine_plan
+  text: "브리타는 '그릇'이 나타나면 늪에 가둬 지키려 한다. 오다가 죽으면 둘째인 그녀가 첫째 자리를 잇고, 그때 회합의 방침이 바뀐다"
+  truth: true
+  danger: 4
+  names: [브리타, 오다]
+- id: fact_mv_time_forbidden
+  text: "진명의 여덟째 근원인 시간은 대붕괴 이후 금지되어 어느 계보도 지키지 않는다. 재 계보는 AS 2 시조가 배운 시간의 낱말 조각을 재에 묻고 그림자로 옮겨 갔다 — 찢어진 시간을 건드리면 시간 잔상에 걸린다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_mv_back_of_rock_unread
+  text: "말하는 이끼 바위의 뒷면은 아무도 읽어 본 적이 없다. 읽으려면 바위를 움직여야 하고, 그러려면 일곱 노파 모두의 동의가 필요하다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_mv_rune_never_cast
+  text: "루네는 한 번도 시전하지 않았다. 오다는 그녀가 영원히 시전하지 않기를 바란다. 루네가 마흔 넘게 사는 늪 마녀가 되려면 빌린 피 없이 낱말을 말할 수 있는 '그릇'이 와야 한다"
+  truth: true
+  danger: 3
+  names: [루네, 오다]
+- id: fact_mv_bern_spy_executions
+  text: "진흙등불 장부의 연간 사망 기록 30여 건 중 7건은 베른이 처형한 목줄단 첩자다"
+  truth: true
+  danger: 3
+  names: [베른]
+- id: fact_mv_elsbet_two_doubtful
+  text: "엘스베트의 꿈 심문으로 첩자로 가려져 처형된 일곱 중 둘은 꿈이 분명하지 않았다. 엘스베트는 그 둘의 이름을 이끼판에 따로 적어 둔다"
+  truth: true
+  danger: 5
+  names: [엘스베트, 베른]
+- id: fact_mv_wyvern_tribute_six
+  text: "진흙등불은 독꼬리 와이번에게 매년 노동력 여섯 명을 공물로 보낸다. 베른은 그들에게 '사냥 원정'이라 말했고, 돌아온 자는 없다"
+  truth: true
+  danger: 4
+  names: [베른, 사스카]
+- id: fact_mv_tribute_alive_26
+  text: "사스카는 공물로 받은 인간을 '갈대 우리'에서 부린다 — 알 보온용 짚 나르기와 둥지 청소. 한 명도 죽이지 않았고 지금 스물여섯이 살아 있다"
+  truth: true
+  danger: 5
+  names: [사스카]
+- id: fact_mv_saska_possession_curse
+  text: "사스카는 와이번이 '소유'로 자신을 증명하려는 용혈의 굴레를 안다. 그것을 싫어하면서 멈추지 못한다"
+  truth: true
+  danger: 2
+  names: [사스카]
+- id: fact_mv_nadia_seren_fugitive
+  text: "나디아는 세렌 계약 파기 도주자다. 현상금 4 두카트, 왼팔의 세렌 계약민 낙인이 증거다"
+  truth: true
+  danger: 3
+  names: [나디아]
+- id: fact_mv_nadia_bren_bow
+  text: "나디아는 공물로 간 브렌의 활을 와이번 둥지 근처에서 주웠다. 활줄이 새것이었다 — 와이번은 줄을 갈지 않으므로 브렌은 살아 있을 것이다"
+  truth: true
+  danger: 3
+  names: [나디아, 브렌]
+- id: fact_mv_nadia_sister_seren
+  text: "나디아의 언니가 세렌에 계약민으로 남아 있다. 빚은 18 두카트"
+  truth: true
+  danger: 2
+  names: [나디아]
+- id: fact_mv_hana_dreamed_grey_ring
+  text: "하나는 꿈에서 말하는 이끼 바위 앞에 선 외지인을 보았다. 눈 가장자리에 잿빛 고리가 있었다. 아직 아무에게도 말하지 않았다"
+  truth: true
+  danger: 4
+  names: [하나]
+- id: fact_mv_hana_claims_elin
+  text: "하나는 가시안개 숲의 인간 시녀 엘린을 꿈에서 보았다고 주장한다. 페이어 낱말 일부를 아는 것은 사실이다"
+  truth: true
+  danger: 2
+  names: [하나, 엘린]
+- id: fact_mv_jorda_curse_ritual
+  text: "요르다는 멜리산드의 이식 실험장을 저주하는 의식을 준비하고 있다. 필요한 것은 실험장에서 나온 용인의 피와 재다"
+  truth: true
+  danger: 4
+  names: [요르다, 멜리산드]
+- id: fact_mv_jorda_burnt_tongue
+  text: "요르다는 불의 낱말을 말하다 혀가 반쯤 탔고, 그 뒤로 아이를 낳을 수 없게 되었다"
+  truth: true
+  danger: 1
+  names: [요르다]
+- id: fact_mv_mag_knot_script
+  text: "마그는 잿빛 실의 '매듭 문자'(실 매듭으로 쓰는 암호)를 만들었다. 매듭 하나가 낱말 하나, 꼬임 방향이 뜻을 바꾼다"
+  truth: true
+  danger: 3
+  names: [마그]
+- id: fact_mv_elsbet_dream_interrogation
+  text: "엘스베트는 목줄단 첩자를 가려내는 '꿈 심문'을 맡는다. 안개 계보의 빌린 피는 페이 이슬이며, 페이의 '떨어진 자' 잿가루와 친구다"
+  truth: true
+  danger: 3
+  names: [엘스베트, 잿가루]
+- id: fact_mv_bern_agnes_link
+  text: "베른은 루멘의 수녀 아그네스와 잿빛 실 상류 연락을 주고받는다"
+  truth: true
+  danger: 3
+  names: [베른, 아그네스]
+- id: fact_mv_hags_purse_seren
+  text: "회합의 돈줄은 세렌 마르디 상가에 파는 약초다. 셋째 계보가 그 거래를 맡고, 마르디 상가는 가끔 약초 값 대신 소식을 요구한다"
+  truth: true
+  danger: 3
+  names: [마르디]
+- id: fact_mv_poison_for_hags
+  text: "독꼬리 와이번은 늪 마녀에게 독침 진액을 판다. 진액 한 병은 탈주자 은신 열흘 값이다. 젖은 휴전의 표시는 사냥터에 맨 갈대 매듭이다"
+  truth: true
+  danger: 2
+  names: []

@@ -1,0 +1,142 @@
+# 세렌 해안 동맹의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_sr_<주제>. 금액 단위: 두카트(금, 1.1 비늘). 계약민 상환율 공식 6%·실제 1.8%
+- id: fact_sr_beatrix_molting_decay
+  text: "베아트릭스의 탈피 지연은 노화다. 일곱째 탈피가 3년째 늦어지고 있고, 묵은 허물이 목덜미에 붙어 벗겨지지 않는다. 그녀는 탈피에 실패하면 허물 속에서 죽는다"
+  truth: true
+  danger: 4
+  names: [베아트릭스]
+- id: fact_sr_beatrix_deep_naga_bargain
+  text: "베아트릭스는 심해 나가에게 신의 피 한 모금을 청했고, 대가로 '이름을 말할 수 있는 인간 하나'를 요구받았다"
+  truth: true
+  danger: 5
+  names: [베아트릭스, 심해 나가]
+- id: fact_sr_repay_rate_true
+  text: "계약민 상환 성공률은 공식 6%이나 실제로는 1.8%다. 몬달리 은행이 이자 조항을 은밀히 갱신해 왔다"
+  truth: true
+  danger: 4
+  names: [몬달리]
+- id: fact_sr_godric_debt_designed
+  text: "고드릭 레이번의 빚 1,840 두카트는 일부러 갚을 수 없게 설계되었다. 회색여울은 북방 진출 거점으로 몬달리가 '사들일' 땅이다"
+  truth: true
+  danger: 5
+  names: [고드릭, 회색여울, 몬달리]
+- id: fact_sr_beatrix_both_sides
+  text: "몬달리 은행은 아우락스와 멜리산드 양쪽에 거액을 빌려주었고, 베아트릭스는 용제국 내전이 길고 비싸게 끝나도록 조율한다"
+  truth: true
+  danger: 4
+  names: [베아트릭스, 아우락스, 멜리산드]
+- id: fact_sr_beatrix_regent_funds
+  text: "베아트릭스는 원로 카이도르와 섭정 자금을 비밀리에 협상하고 있다"
+  truth: true
+  danger: 3
+  names: [베아트릭스, 카이도르]
+- id: fact_sr_ophelia_draft_author_lupo
+  text: "오필리아가 의회에 올릴 '계약민 시민권 초안'(상환자에게 세렌 시민권, 이자 상한 연 4%)의 실무 작성자는 라미아 변호인 루포다. 3년째 쓰고 있다"
+  truth: true
+  danger: 4
+  names: [오필리아, 루포]
+- id: fact_sr_ophelia_jan_lover
+  text: "오필리아는 빚진 골목의 계약민 목수 얀과 만나는 사이다. 나가와 인간의 관계는 세렌에서도 추문이다"
+  truth: true
+  danger: 4
+  names: [오필리아, 얀]
+- id: fact_sr_jan_debt_cannot_be_paid
+  text: "얀의 빚은 22 두카트다. 오필리아가 대신 갚으면 그것은 '구매'가 되어 얀을 소유하게 되므로 갚을 수 없다"
+  truth: true
+  danger: 2
+  names: [얀, 오필리아]
+- id: fact_sr_draft_votes_7_of_11
+  text: "시민권 초안의 표결에는 의원 21명 중 11표가 필요하고, 지금 확보한 표는 7표다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_sr_severo_sara_deep_sea
+  text: "세베로가 하녀 사라를 지정한 이유는 세렌의 '오락의 집'이 아니라 베아트릭스의 심해 대가다 — 글자 모르는 깨끗한 젊은 인간을 심해 나가 사절에게 보여 '이름을 말할 수 있는지' 시험하려는 것이다. 틀리면 계약민으로 되판다"
+  truth: true
+  danger: 5
+  names: [세베로, 사라, 베아트릭스]
+- id: fact_sr_severo_buys_hagen_peyn
+  text: "세베로는 하겐에게 정보를 사고 있고, 고아 페인을 3 비늘에 사는 협상을 하고 있다"
+  truth: true
+  danger: 3
+  names: [세베로, 하겐, 페인]
+- id: fact_sr_severo_greyford_batches
+  text: "세베로는 회색여울 농노 1차 40명(서리월 9일 용의 대로 호송)과 2차 31명(굶주림월 3일 호송, 사라 포함)을 인수해 노예선으로 소금 나루에 들이고, 담보 영지를 경매로 사서 회색여울을 얻으려 한다"
+  truth: true
+  danger: 4
+  names: [세베로, 회색여울]
+- id: fact_sr_severo_henrik_remit
+  text: "징세관 헨릭은 세베로를 통해 몬달리 은행으로 송금한다. 세베로의 고객이다"
+  truth: true
+  danger: 3
+  names: [세베로, 헨릭]
+- id: fact_sr_miko_count_1140
+  text: "미코는 소금 나루에서 노예선에 오른 사람의 수를 3년간 매번 세어 모두 1,140명을 기록했다. 등록소 벽에 숫자로 새겨 두었다"
+  truth: true
+  danger: 4
+  names: [미코]
+- id: fact_sr_miko_nadia_escape
+  text: "미코는 나디아가 배에서 뛰어내릴 때 등불을 꺼 주었다. 그 일로 그의 빚이 5 두카트 늘었다"
+  truth: true
+  danger: 3
+  names: [미코, 나디아]
+- id: fact_sr_miko_duty_roster
+  text: "굶주림월 3일 회색여울 31명을 싣는 노예선의 갑판 당번표에 미코의 이름이 올라 있다"
+  truth: true
+  danger: 2
+  names: [미코]
+- id: fact_sr_blind_lighthouse_signal
+  text: "눈먼 등대 꼭대기 창에 천을 걸면 모르바로 가는 밀수선이 들어온다. 등대지기는 늙은 계약민 올라프다"
+  truth: true
+  danger: 3
+  names: [올라프]
+- id: fact_sr_lupo_numbers_ledger
+  text: "루포는 상담의 '대가'로 계약민에게서 숫자 하나(본 노예선, 들은 가격)를 받아 왔다. 지금까지 약 4,000개 — 세렌이 실제로 사람을 얼마나 파는지 아는 것은 의장이 아니라 그다"
+  truth: true
+  danger: 5
+  names: [루포]
+- id: fact_sr_lupo_lamia_revoke
+  text: "루포는 라미아 출신이라 의회가 언제든 그를 '하인'으로 되돌릴 수 있다. 의회 변론권도 없는 무면허 변호인이다"
+  truth: true
+  danger: 3
+  names: [루포]
+- id: fact_sr_lupo_212_voided
+  text: "루포는 계약서의 오류를 찾아 지금까지 212건의 빚을 무효로 만들었다. 목표는 300건이다"
+  truth: true
+  danger: 2
+  names: [루포]
+- id: fact_sr_lupo_knows_water_name
+  text: "물의 진명은 인간 입에서 나올 수 없다. 루포는 그것을 알고, 물의 이름을 말하는 인간이 있다면 잔향이라 판단한다"
+  truth: true
+  danger: 4
+  names: [루포]
+- id: fact_sr_deep_naga_god_blood
+  text: "심해 나가는 세렌 앞바다 해구에 고인 신의 피를 지킨다. SK ~180 녹테른의 도둑질을 막지 못한 뒤로 위로 올라오지 않고, 3,200년 전의 도둑질을 매일 기억한다. 녹테른 피 냄새가 해구 위에 닿으면 반드시 올라온다"
+  truth: true
+  danger: 3
+  names: [녹테른]
+- id: fact_sr_deep_naga_wants_speaker
+  text: "심해 나가가 요구한 '이름을 말할 수 있는 인간'을 어디에 쓸지는 그들만 안다. 그들의 교환은 하나뿐이다 — 피를 지키는 대가로 바다가 그들을 먹인다"
+  truth: true
+  danger: 5
+  names: [심해 나가]
+- id: fact_sr_reni_sells_to_all
+  text: "레니는 세베로·하겐·루포 모두에게 정보를 판다. 거짓 소문 퍼뜨리기도 맡는다(소문 왜곡 한 단계)"
+  truth: true
+  danger: 2
+  names: [레니, 세베로, 하겐, 루포]
+- id: fact_sr_sahar_loves_ophelia
+  text: "사하르는 베아트릭스에게 충성하지만 오필리아를 더 아낀다. 표결 날 의회당 문을 누구에게 열고 누구에게 닫을지는 그녀가 정한다"
+  truth: true
+  danger: 3
+  names: [사하르, 오필리아, 베아트릭스]
+- id: fact_sr_sahar_armed_contractees
+  text: "사하르는 계약민 출신 경호원 30명을 지휘한다. 인간에게 무장을 허가받은 드문 경우다"
+  truth: true
+  danger: 1
+  names: [사하르]
+- id: fact_sr_cell_meeting_1100
+  text: "계약민들의 비밀 '셈 모임'은 상가가 숨긴 이자 계산을 서로 맞춰 본다. 숫자는 합법이므로 숫자로 사기를 증명하는 것은 합법적 반란이다. 회원은 약 1,100명이다"
+  truth: true
+  danger: 3
+  names: []

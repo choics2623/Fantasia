@@ -1,0 +1,234 @@
+# 회색여울 변경의 사실 — 두 번째 묶음 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# 맡은 카드: 이르마·디트마르·사라·군나르·이졸·리즈·에길·미나·지그문트·숯불 레오·울프·고름·하인츠·게르다·키트·그로드
+# id 규칙: fact_gb_<주제>. greyford.yaml(fact_gf_*)과 같은 지역, 다른 작가. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+
+# ── 이르마 · 울프 ──
+- id: fact_gb_irma_wolfden_marks
+  text: "이르마의 양치기 지팡이 끝 칼자국 7개는 굶주린 언덕에서 확인한 늑대굴 길목 7곳이다. 그녀는 늑대굴 위치를 거의 찾았고, 낙엽월 24일 안식일에 즈닉에게 신고할 생각이다"
+  truth: true
+  danger: 4
+  names: [이르마, 즈닉, 늑대굴]
+- id: fact_gb_irma_hagen_meat
+  text: "이르마는 지난 굶주림월(AS 311)을 하겐이 몰래 가져다준 양고기와 장어로 넘겼다. 그녀는 하겐을 은인으로 믿는다"
+  truth: true
+  danger: 1
+  names: [이르마, 하겐]
+- id: fact_gb_irma_sheltered_child
+  text: "이르마는 AS 311 서리월 어느 밤, 굶주린 언덕에서 내려온 탈주자 아이 하나를 양 우리에 재웠다. 아이는 새벽에 사라졌다. 그녀는 아무에게도 말하지 않았고, 스스로도 그 일을 이해하지 못한다"
+  truth: true
+  danger: 3
+  names: [이르마]
+- id: fact_gb_ulf_guided_runaways
+  text: "울프는 양치기 표찰로 굶주린 언덕을 드나들며 탈주자들에게 빵을 나눠 주고 샛길을 알려 주었다. AS 310 포도월, 그는 굶주린 언덕 동쪽 계곡에서 하겐이 탈주자를 바르그에게 넘기는 것을 봤다"
+  truth: true
+  danger: 3
+  names: [울프, 하겐]
+- id: fact_gb_ulf_grave_evidence
+  text: "번호 묘지 147번 말뚝 아래 울프의 시신은 주먹 안에 은니 씌우개 조각을 쥐고 있었고, 무덤 돌 밑에는 노예말 매듭 끈 — '하겐' — 이 들어 있다. 매듭을 넣은 사람은 아무에게도 이름을 밝히지 않았다"
+  truth: true
+  danger: 4
+  names: [울프, 하겐]
+
+# ── 디트마르 · 숯불 레오 ──
+- id: fact_gb_dietmar_killed_sigrid_two
+  text: "AS 312 포도월 하순, 디트마르 무리는 식량 다툼 끝에 시그리드 무리원 둘을 죽였다. 그중 하나는 디트마르가 직접 창으로 찔렀다"
+  truth: true
+  danger: 3
+  names: [디트마르, 시그리드]
+- id: fact_gb_dietmar_brother
+  text: "디트마르는 AS 296 바알카르 근교 포도원에서 주인의 명령으로 형 오토를 채찍 서른 대로 쳤다. 형은 그 상처가 곪아 열하루 뒤 죽었다. 디트마르는 그날 처음 낙인을 하나 더 받았다"
+  truth: true
+  danger: 1
+  names: [디트마르, 오토]
+- id: fact_gb_dietmar_raid_plan
+  text: "디트마르는 굶주림월 3일 세베로 칼레스의 노예 수송대(31명)가 쇠다리 남쪽, 용의 대로가 오물 습지 가장자리를 스치는 굽이를 지날 때 습격할 계획이다. 브란의 창날이 그 준비다"
+  truth: true
+  danger: 4
+  names: [디트마르, 세베로, 브란]
+- id: fact_gb_dietmar_holds_frida
+  text: "죽은 버드나무 섬에 잿빛 실 통과자였던 소녀 프리다(15)가 석 달째 붙잡혀 있다. 디트마르는 그녀를 '통행세'라 부르며 돌려보내지 않는다"
+  truth: true
+  danger: 3
+  names: [디트마르, 프리다]
+- id: fact_gb_dietmar_bran_blades
+  text: "디트마르는 주 1회 밤, 대장간 뒤 숲에서 브란에게 쟁기날로 위장한 창날을 받는다. 대가는 습지에서 훔친 쇠붙이와 장물이다"
+  truth: true
+  danger: 5
+  names: [디트마르, 브란]
+- id: fact_gb_leo_saw_kaspar_fire
+  text: "숯불 레오는 AS 309 까마귀 문 짐꾼 막사 화재의 생존자다. 그는 카스파르 사령관의 왼팔 비늘이 달아오르고 불이 그 팔에서 번지는 것을 봤다. 두 명이 죽었고 사건은 '등잔 사고'로 처리되었다. 레오는 그 밤 물빼기 굴로 달아났다"
+  truth: true
+  danger: 5
+  names: [레오, 카스파르, 까마귀 문]
+
+# ── 사라 · 리즈 ──
+- id: fact_gb_sara_overheard_sale
+  text: "사라는 낙엽월 1일 아침 남작 서재를 청소하다 고드릭과 헨릭이 세베로의 사자를 맞을 명단을 맞추는 말을 엿들었다: 1차 40명은 서리월 9일 호송(키트가 스물여섯째 줄), 2차 31명은 굶주림월 3일 인도 — 용의 대로와 은빛 강을 거쳐 세렌 '소금 나루'로"
+  truth: true
+  danger: 4
+  names: [사라, 고드릭, 헨릭, 키트, 세베로]
+- id: fact_gb_sara_saw_list_swap
+  text: "사라는 포도월 그믐 밤 서재 등잔을 끄러 들어갔다가, 마르타가 헨릭의 2차 명단 초안 마지막 줄을 긁어내고 고쳐 쓰는 것을 봤다. 긁힌 이름은 '리즈'였다. 새로 쓴 이름은 마르타가 접어 버려 보지 못했다 — 그것이 자기 이름이라는 것을 사라는 모른다"
+  truth: true
+  danger: 4
+  names: [사라, 마르타, 리즈]
+- id: fact_gb_sara_reads
+  text: "사라는 주 2회 밤 예배당에서 오스릭에게 글자를 배워 31개를 안다. 자기 이름 두 글자를 쓸 수 있고, 그 아래 한 줄을 늘 비워 둔다"
+  truth: true
+  danger: 5
+  names: [사라, 오스릭]
+- id: fact_gb_liz_knows_mother
+  text: "리즈는 어머니 마르타가 사람을 밀고한다는 것을 반쯤 안다. 한 달에 한 번 성채 지하로 내려갔다 온 밤, 어머니는 보리빵에 손을 대지 않는다. 리즈는 모르는 척한다"
+  truth: true
+  danger: 2
+  names: [리즈, 마르타]
+
+# ── 군나르 ──
+- id: fact_gb_gunnar_bounty
+  text: "마구간지기 군나르는 피의 원형장의 99승 투사로, AS 274 100승을 앞두고 탈주했다. 그롬은 그의 현상금 3비늘을 아직 취소하지 않았다. 레이번가는 그를 AS 276 바알카르 시장에서 '이름 없는 늙은 말꾼'으로 샀다고만 안다"
+  truth: true
+  danger: 4
+  names: [군나르, 그롬, 우르가쉬]
+- id: fact_gb_gunnar_tal_truth
+  text: "'백승의 탈'은 황무지로 걸어간 것이 아니라 뼈의 전당 지하에 쇠사슬로 묶여 붉은 젖에 중독된 채 싸운다. '혈명 없는 혈명'은 해방이 아니라 영원한 목줄이다. 군나르는 AS 273 그것을 직접 봤고, 탈이 그에게 '도망쳐라'라고 했다"
+  truth: true
+  danger: 4
+  names: [탈, 우르가쉬, 군나르]
+- id: fact_gb_gunnar_uprising_day
+  text: "군나르와 브란은 봉기의 날을 재의 날 둘째 날(불 금지일, 감시가 가장 적은 날)로 정했다"
+  truth: true
+  danger: 5
+  names: [군나르, 브란]
+- id: fact_gb_gunnar_teaches_bran
+  text: "저녁마다 마구간에서 하는 '말 이야기'는 군나르가 브란에게 말채찍으로 검술을 가르치는 시간이다. 브란의 검술은 아직 18이다"
+  truth: true
+  danger: 5
+  names: [군나르, 브란]
+- id: fact_gb_gunnar_arena_sword
+  text: "성채 마구간 다락 들보 위 기름천 속에 군나르의 99승 원형장 검이 숨겨져 있다"
+  truth: true
+  danger: 5
+  names: [군나르]
+
+# ── 이졸 ──
+- id: fact_gb_isol_tower_hound
+  text: "순례자 이졸은 잿빛 탑의 징후 수집관(잿빛 눈 소속, 탑주 이레네 볼드에게 직접 보고)이다. 분기마다 징후자 1명 이상을 탑에 넘겨야 하고, 못 채우면 그 자신이 피험대로 돌아간다. 50명을 넘기면 '해방 증서'를 받기로 했다 — 지금 38명. 루멘의 심문관 마테우스와도 정보를 바꾼다"
+  truth: true
+  danger: 4
+  names: [이졸, 잿빛 탑, 이레네 볼드, 마테우스]
+- id: fact_gb_isol_subject_seven
+  text: "이졸은 열한 살(AS 289)에 재먼지 각막염 얼룩 때문에 징후자로 고발되어 잿빛 탑 피험체 7호로 10년을 살았다. '진짜가 아니다' 판정 뒤 사냥개 계약으로 풀려났다. 오른 손목의 '7' 화상이 그 번호다"
+  truth: true
+  danger: 3
+  names: [이졸, 잿빛 탑]
+- id: fact_gb_isol_38_false
+  text: "이졸이 탑에 바친 38명 중 진짜 잔향은 한 명도 없었다. 그는 그것을 안다 — 탑은 진짜를 찾을 때까지 가짜를 갈아 넣는다"
+  truth: true
+  danger: 3
+  names: [이졸]
+- id: fact_gb_isol_halla
+  text: "이졸은 탑 피험체 할라를 사랑한다. 같은 감방에서 3년을 보냈고, 그녀가 그에게 글을 가르쳤다. 그는 지금도 분기마다 그녀에게 편지를 쓰고, 편지마다 그 분기의 숫자를 적는다"
+  truth: true
+  danger: 3
+  names: [이졸, 할라]
+- id: fact_gb_isol_lens
+  text: "이졸의 짐 속에 잿빛 고리 렌즈(잔향 징후를 본다는 잿빛 탑의 도구)와 탑의 봉인 편지가 있다"
+  truth: true
+  danger: 4
+  names: [이졸, 잿빛 탑]
+- id: fact_gb_isol_sariful
+  text: "이졸의 비정상적으로 큰 동공은 탑이 준 검은 사리풀 즙 때문이다. 그는 그것이 잔상과 '돌아온 자의 꿈'을 보여 준다고 믿지만, 환각제일 뿐이다"
+  truth: true
+  danger: 1
+  names: [이졸]
+- id: fact_gb_isol_spares_elsa
+  text: "이졸은 엘사의 눈의 잿빛 고리를 보고 할당량 후보로 적어 두었지만 아직 보고하지 않았다. 분기 마감은 긴밤월 30일이다"
+  truth: true
+  danger: 4
+  names: [이졸, 엘사]
+
+# ── 게르다 · 키트 ──
+- id: fact_gb_gerda_true_name
+  text: "게르다는 셋째의 속이름(진짜 이름)을 아는 유일한 사람이다. 낳던 밤 첫 울음 뒤 귀에 속삭여 지었다. 그녀는 낙엽월 1일 저녁 6시 배급 줄 뒤에서 그 이름을 낮게 부른다"
+  truth: true
+  danger: 5
+  names: [게르다, 셋째]
+- id: fact_gb_gerda_lullaby_breath
+  text: "게르다는 「끝나지 않는 아이」를 어머니에게 배운 대로 셋째 줄 앞에서 숨을 쉬며 부른다. 그것은 징후를 숨기는 노래의 부르는 방식이다. 그녀는 그 뜻을 모른 채 지킨다"
+  truth: true
+  danger: 2
+  names: [게르다]
+- id: fact_gb_gerda_cough
+  text: "게르다의 기침병은 엘사의 약으로 늦출 수 있다. 약값을 치를 것은 키트 몫 배급뿐이라, 그녀는 약을 청하지 않는다. 이대로면 이 겨울을 넘기지 못한다"
+  truth: true
+  danger: 1
+  names: [게르다, 엘사, 키트]
+- id: fact_gb_kit_on_first_list
+  text: "키트(10)는 1차 매각 명단(40명, 서리월 9일 호송) 스물여섯째 줄에 있다. 헨릭은 '게르다 가구' 인두세 체납 4발톱의 담보라는 뜻으로 '하르벡'이라 적었다"
+  truth: true
+  danger: 3
+  names: [키트, 헨릭, 게르다]
+- id: fact_gb_kit_heard_first
+  text: "키트는 자기가 명단에 있다는 것을 사라보다 먼저 들었다 — 포도월 그믐 저녁, 즈닉의 물 심부름 중 성채 부엌 뒤에서 부엌일 노예들이 '가마 둘인 강변 꼬마'라고 하는 말을. 형/누나가 걱정할까 봐 아무에게도 말하지 않았다"
+  truth: true
+  danger: 1
+  names: [키트, 사라]
+- id: fact_gb_kit_rain_song
+  text: "비 오는 날 움막 12호 지붕 새는 자리에서 키트가 흥얼거리는 옛 노래는 어머니에게 배운 것이 아니다. 키트도 어디서 들었는지 모른다"
+  truth: true
+  danger: 2
+  names: [키트]
+
+# ── 그로드 ──
+- id: fact_gb_grod_volk_shame
+  text: "그로드는 볼크 앞에서 실패하는 것을 무엇보다 두려워한다. 볼크가 보는 앞에서 당한 망신은 그에게 어떤 상처보다 오래 간다"
+  truth: true
+  danger: 2
+  names: [그로드, 볼크]
+- id: fact_gb_grod_buys_hagen
+  text: "그로드는 하겐에게서 탈주자 위치를 산다. 하겐이 세 소나무 그루터기에 매듭 끈을 남기면 그로드의 코가 수거하고, 값은 잡은 머릿수로 치른다"
+  truth: true
+  danger: 4
+  names: [그로드, 하겐]
+- id: fact_gb_grod_irga_rival
+  text: "그로드는 이르가의 '산 채로'를 비웃지만, 그녀가 조합을 물려받으면 자기 자리가 없다는 것을 안다. 그는 송곳니 세타보다 먼저 볼크의 다음 사냥대장이 되려 한다"
+  truth: true
+  danger: 2
+  names: [그로드, 이르가, 세타, 볼크]
+- id: fact_gb_fangfire_cart_nail
+  text: "송곳니 불 야영지 우리 수레의 바닥 판자 못 하나가 헐겁다. 그로드는 그것을 알면서 고치지 않는다"
+  truth: true
+  danger: 3
+  names: [그로드]
+
+# ── 에길 · 미나 · 지그문트 · 고름 · 하인츠 ──
+- id: fact_gb_egil_blood
+  text: "에길은 포도월 말부터 피 섞인 가래를 뱉는다. 아내 룬에게도 숨기고, 피 묻은 헝겊은 맏아들 아르네(9)가 몰래 수로 입구에 버린다"
+  truth: true
+  danger: 2
+  names: [에길, 룬, 아르네]
+- id: fact_gb_mina_letters
+  text: "토마스의 딸 미나(12)는 오스릭에게 글자 27개를 배웠다. 방앗간 흙바닥에 손가락으로 쓴 글자를 지우는 것을 자주 잊는다"
+  truth: true
+  danger: 5
+  names: [미나, 오스릭, 토마스]
+- id: fact_gb_sigmund_aurax_house
+  text: "까마귀 문 백인대장 지그문트는 아우락스파 비늘혈 가문 출신이다. 카스파르가 실각하면 요새를 아우락스파에게 넘길 사람으로 가문이 그를 점찍어 두었다. 그는 아직 카스파르에게 충성하며, 바르그 이르가와 비밀리에 정보를 바꾼다"
+  truth: true
+  danger: 4
+  names: [지그문트, 아우락스, 카스파르, 이르가]
+- id: fact_gb_gorm_patrol
+  text: "잿빛 와이번 고름은 하루 두 번(아침 7시 무렵, 오후 4시 무렵) 굶주린 언덕 상공을 순찰한다. 양 한 마리를 받으면 다음 순찰 한 번을 북사면으로 돌아 남사면을 비운다"
+  truth: true
+  danger: 4
+  names: [고름, 굶주린 언덕]
+- id: fact_gb_heinz_informs
+  text: "하인츠는 목줄단이 아닌데도 보수 없이 탈주 낌새를 성채에 고한다. 봉기가 나면 예배당 종을 쳐서 성채에 알릴 사람이 그다. 마을 노인 다수가 그를 따른다"
+  truth: true
+  danger: 2
+  names: [하인츠]
+- id: fact_gb_heinz_son
+  text: "하인츠는 AS 287 아들 야콥이 두 번째로 서리 길 쪽으로 달아나려는 것을 감독관에게 알렸다. 야콥은 힘줄을 잘렸고 그 겨울에 죽었다. 하인츠는 그것을 아들의 영혼을 구한 일이라 믿는다"
+  truth: true
+  danger: 2
+  names: [하인츠, 야콥]

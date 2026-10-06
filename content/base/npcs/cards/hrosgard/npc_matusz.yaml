@@ -1,60 +1,100 @@
 id: npc_matusz
-name: '''늙은 곰'' 마투쉬'
-aka: []
+name: "'늙은 곰' 마투쉬"
+aka: [겨울지기, 꿀 영감]
 tier: B
 type: living
 race: 수인족(우르사)
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 90
 region: 흐로스가르드
-home: null
-job: 서리 길 마지막 산장
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+home: 서리 길 마지막 산장
+job: 산장지기 — 꿀과 가죽을 받고 탈주자를 재워 주는 은둔자
+rank: 서리 길의 겨울지기. 요툰도 건드리지 않는 곰
+summary: 꿀 열 단지에 겨울을 가르쳐 주는 곰 수인 은둔자. 탈주자 호송대의 첫 밤을 재우며, 볼크가 그 산장을 '소굴'로 지목했다
+source: "docs/world/CHARACTERS.md:1851 (색인 한 줄 — 새로 씀)"
+life:
+  - {year: 222, age: 0, event: "서리 길 북쪽 동면 굴에서 태어남. 우르사 어미는 겨울 동안 인간 겨울지기에게 맡겨 아이를 길렀다"}
+  - {year: 240, age: 18, event: "달밤에 처음으로 인간 아이가 눈 속에 우는 것을 구해 산장으로 데려옴. 우르사는 3,400년 전부터 인간과 겨울을 같이 났다고 배웠다"}
+  - {year: 270, age: 48, event: "서리 길 마지막 산장의 주인이 되어 홀로 정착. 꿀 단지를 땅에 묻어 겨울 식량을 모으기 시작"}
+  - {year: 289, age: 67, event: "돌 요툰 무녀 요룬과 처음으로 마주 앉아 말 없이 차를 마심. 요룬의 말이 느려서 그는 마음에 들었다"}
+  - {year: 309, age: 87, event: "북방 대탈주가 시작되자 산장에 탈주자들이 하나둘 찾아옴. 꿀과 가죽을 받고 한 밤을 재워 줌"}
+  - {year: 311, age: 89, event: "아스타의 호송대가 매주 산장에서 첫 밤을 묵게 됨. 볼크가 산장을 '탈주자 소굴'로 지목하며 사냥 조합이 지켜보기 시작"}
+  - {year: 312, age: 90, event: "늦여름. 겨울 동면 전에 꿀 단지를 세 번 확인함. 올해는 동면이 어렵다는 것을 예감"}
+appearance:
+  - "서 있으면 2m를 넘는 갈색 곰. 털이 군데군데 하얗게 셌다"
+  - "한쪽 귀가 반쯤 잘려 있다 — 오래전 인간 덫에서 풀려난 흔적"
+  - "허리춤에 꿀 단지를 매단 끈. 손이 크고 느리다"
+smell: "꿀과 마른 풀, 젖은 모피"
+voice_sound: "낮고 둥글게 울리는 목소리. 문장 끝에 '음' 하는 숨소리가 붙는다. 달말이 섞이면 목에서 으르렁이 나온다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 55, 자비: 75, 정직: 60, 신앙: 70, 탐욕: 10, 충성: 65}
+  temperament: [느긋함, 다정함, 조용한 경계]
+  habits:
+    - "손님이 들어오면 먼저 꿀 단지를 내밀고 얼굴을 본다"
+    - "달이 뜨면 문 밖에서 한참 앉아 있다 들어온다"
+    - "누가 달려 들어오면 일어서지 않고 앉은 채 코로 냄새를 맡는다"
+  values: "겨울은 같이 나는 것. 먼저 꿀부터 나누는 것. 달이 뜬 밤에 문을 닫지 않는 것"
+  fears: [동면 중에 산장이 습격당하는 것, 볼크의 냄새, 손님의 아이가 눈 속에서 우는 소리]
   desires:
-    short: null
-    long: null
+    short: "올 겨울 산장을 지키며 호송 마지막 묶음을 무사히 재워 보내는 것"
+    long: "겨울을 같이 나는 사람들이 봄에 서리 길을 걸어 내려가는 것을 보는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "서리 어르신에게는 낮게 앉아 '음'으로 답한다. 요룬에게는 말을 아끼고 차를 따라 준다"
+    to_equal: "느리고 편한 반말. 이름 뒤에 '어이'를 붙인다. 같은 우르사에게는 달말 반 공용어 반"
+    to_inferior: "어린 사람에게는 꿀을 먼저 준 뒤 부드러운 반말. 어른에게는 '앉아'만 말한다"
+    to_human: "'작은 겨울 친구'. 반말. 먹었는지부터 묻는다"
+    to_player_default: "먼저 꿀 단지. 냄새를 맡고 나서 이름을 묻는다"
+  tics: ["'음. 꿀부터.'", "'겨울은 길다.'"]
+  use: [꿀, 겨울, 달, 산장, 앉다, 재우다, 단지, 같이]
+  avoid: [달 없는 밤 이야기, 시체 냄새 이야기(그나르를 연상시키는 말), 서두르는 말]
+  length: "느리고 짧은 문장. '음' 뒤에 대답한다. 위험을 알릴 때는 오히려 한 마디로 끝낸다"
+  samples:
+    - {situation: 첫 만남, line: "음. 꿀부터. 앉아라. 먹고 나서 이름을 말해도 늦지 않다."}
+    - {situation: 거래, line: "꿀 열 단지면 겨울 한 철 가르쳐 주마. 가죽이면 두 장. …아니, 꿀이 낫겠다. 가죽은 무겁다."}
+    - {situation: 호의, line: "음. 겨울은 길다. 같이 나면 짧아진다. 앉아서 불 쬐어라."}
+    - {situation: 적대, line: "…내 산장에서 사람을 팔면 곰이 일어선다. 일어서면 사람들이 집에 가고 싶어 한다."}
+    - {situation: 겁, line: "…냄새가 난다. 쇠송곳니 냄새다. 불을 꺼라. 아이들 입을 막지 말고, 안아라."}
+    - {situation: 슬픔, line: "음. 올겨울 눈 속에서 셋을 데려왔다. 둘은 아침에 갔다. …꿀이 모자랐다."}
+    - {situation: 비밀 누설, line: "산장 뒤 헛간 마루 밑에 방이 하나 있다. …아스타가 올 때마다 거기서 잔다. 그 얘기는 한 번만 한다."}
+    - {situation: 회귀자를 의심할 때, line: "음. …네 냄새에서 젖은 재가 난다. 이상하군. 곰은 겨울의 냄새는 알아도 재의 냄새는 모르는데."}
+hides:
+  - fact: fact_hg_matusz_lodge_runaways
+    reveal_when: "신뢰 40 이상이고 꿀 한 단지를 선물하거나 아스타의 이름을 먼저 말한 뒤"
+    cover: "'손님은 누구나 앉는다'고만 하고 산장 안쪽 헛간을 보지 않는다"
+  - fact: fact_hg_volk_marked_lodge
+    reveal_when: "신뢰 50 이상, 또는 볼크가 실제로 산장 근처에 나타났을 때"
+    cover: "'올해 겨울 늑대가 많다'고만 하고 눈길을 피한다"
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
-relations: []
-toward_player: null
+  아침: "산장 주변에서 장작과 꿀 단지를 확인한다"
+  낮: "서리 길을 걷는 사람이 없는지 높은 곳에서 본다"
+  저녁: "탈주자가 오면 꿀과 따뜻한 죽을 내준다"
+  밤: "달이 뜨면 문 앞에 앉는다. 달이 없으면 불을 낮춘다"
+places: [서리 길 마지막 산장, 산장 헛간 마루 밑 방, 높은 바위 전망대]
+knows: [fact_hg_frost_road_closes, fact_hg_ogre_larder_cave]
+relations:
+  - {to: npc_yorun, type: 서리 길의 곰 친구, like: 30, trust: 40, visibility: 공개, memo: null, words: "말이 느린 돌 노파. 서두르지 않아서 같이 앉아 있기 편하다"}
+  - {to: npc_asta, type: 호송 협력자, like: 50, trust: 60, visibility: 비밀, memo: null, words: "얼음손 여자. 늘 사람 수를 세어서 온다. 한 명이라도 모자라면 눈을 감는다"}
+toward_player: "먼저 꿀을 내밀고 냄새를 맡는다. 달이 뜬 밤에 찾아온 손님은 막지 않는다. 사람 냄새가 좋으면 마음을 연다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["꿀(단지 하나가 신뢰 +10)", "겨울을 같이 나는 것", "서리말이나 달말로 인사"]
+  hates: ["사람을 파는 거래", "달 없는 밤에 산장을 찾는 것", "서두르는 사람"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "생명 진명 스승 — 마법(생명, 상한 60), 응급처치(70). 조건: 플레이어가 잔향임을 확인 + 산장에서 겨울나기 / 수업료: 꿀 10단지"
+  companion: "불가 — 산장을 떠나지 않는다"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 저녁 산장 문 앞에서 달을 본다"
+    - "산장 헛간 마루 밑 방에 오늘 밤 묵을 손님이 없다 (회귀점의 사실)"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "'탈주'라는 낱말을 쓰지 않는다 — '겨울 손님'이라 한다"
+  - "달 없는 밤에는 사냥하지 않는다"
+  - "손님의 아이 입을 막지 못하게 한다 — 안으라고 한다"
+# TODO-FACT: 볼크가 산장을 '탈주자 소굴'로 지목한 경위 — 회색여울(볼크 관련 fact_gf_*) 작가 담당
+on_death: "생명 진명 스승 소멸. 호송대의 첫 밤 쉼터 소멸 — 서리 길 탈주 성공률 하락"
+story_seeds:
+  - "볼크가 산장을 '탈주자 소굴'로 지목했다. 사냥 조합이 서리월 전에 산장을 덮친다"
+  - "꿀 단지가 모자란다. 겨울 손님이 늘수록 곰의 동면이 위험해진다"

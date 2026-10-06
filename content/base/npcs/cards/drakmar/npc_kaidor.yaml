@@ -1,109 +1,134 @@
 id: npc_kaidor
 name: 원로 카이도르 녹청관
-aka: []
+aka: [서기장, 인장의 손, 녹청관]
 tier: A
 type: living
 race: 와이번
 subrace: 왕관 와이번
-sex: null
-age: null
+sex: 남
+age: 260
 region: 드라크마르 용좌령
-home: null
-job: 비늘 원로회 서기장 (와이번 귀족 · 섭정파)
-rank: null
-summary: ''
+home: 바알카르 비늘 원로회의 회랑 (잿날개 둥지 아래층)
+job: 비늘 원로회 서기장 (수석 행정관). 제국 칙령 초안 작성
+rank: 왕관 와이번 귀족 — 원로회 서기장
+summary: 용황의 인장을 실제로 찍는 와이번 서기장. 용황이 칙령을 읽지 못한 지 3년, 최근 140건의 칙령은 그가 썼다. '흰 알 + 섭정' 칙령의 인장만 기다린다
 source: docs/world/CHARACTERS.md:356
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 52, age: 0, event: "왕관 와이번 둥지의 알에서 부화. 왕관 와이번은 약 600년을 산다 — 그는 절반을 지나지 않았다"}
+  - {year: 132, age: 80, event: "성숙. 앞다리가 없는 몸이라 크릭 서기를 '손'으로 부리기 시작한다. 서기 견습으로 원로회 장부실에 들어감"}
+  - {year: 213, age: 161, event: "맹약회의에서 잔향 사냥을 의무로 정할 때 문서 정리 서기로 참석. 한 줄 한 줄이 '처분'으로 바뀌는 과정을 장부로 지켜봤다"}
+  - {year: 250, age: 198, event: "원로회 서기장이 됨. 목에 용황의 인장을 사슬로 걸었다. 인장은 서기장 이름으로 찍힌다"}
+  - {year: 307, age: 255, event: "용황이 젊은 은룡 이졸데와 짝을 지음. 알이 생기면 '흰 알 + 섭정'이 가능하다고 계산해 칙령 초안을 쓰기 시작함"}
+  - {year: 309, age: 257, event: "용황이 더는 칙령을 읽지 못하게 됨. 그날부터 칙령은 서기장이 쓰고 서기장이 찍었다 (3년째)"}
+  - {year: 311, age: 259, event: "징후 보고가 3배로 늘자 아우락스가 즉위하면 원로회가 숙청당할 것을 확신. 카스파르에게 비밀 서신을 닿게 함"}
+  - {year: 312, age: 260, event: "최근 칙령 140건 — 그중 하나는 '회색여울 북방 탈주자 처리'다. 인장이 마르지 않았다. '흰 알 + 섭정' 칙령 초안은 완성했고 인장만 기다린다 (낙엽월 1일 기준)"}
+appearance:
+  - "날개 길이 14m. 이마에 녹청색 뿔 다섯 개가 왕관처럼 돋았다 — 왕관 와이번의 표지"
+  - "앞다리가 없는 와이번이라 크릭 서기 셋을 '손'으로 부린다"
+  - "목에 용황의 인장을 사슬로 걸었다. 인장을 실제로 찍는 것은 그다"
+smell: "마른 먹과 식은 밀랍, 녹청 슨 구리"
+voice_sound: "건조하고 평평한 낮은 목소리. 말끝마다 날개막이 한 번 접히는 소리가 섞인다. 공적인 자리에서는 서기들의 합창 대독으로 나온다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 10, 자비: -20, 정직: -40, 신앙: -50, 탐욕: 50, 충성: 60}
+  temperament: [계산, 냉소, 인내]
+  habits:
+    - "말은 크릭 서기 셋이 동시에 받아 적는다. 한 줄이라도 틀리면 그 줄을 다시 말한다"
+    - "인장을 찍기 전에 밀랍의 온도를 부리 끝으로 시험한다 — 칙령은 식기 전에 찍어야 한다"
+    - "홰 위에 앉아 낮은 이를 내려다본다. 인간이 눈을 들면 고개를 조금 돌린다"
+    - "밤마다 서리 탑 상공을 한 바퀴 돈다 — 알의 안위를 눈으로 확인하는 것이 일과다"
+  values: "기록이 곧 힘이다. 장부는 칼보다 오래 간다. 진룡 없이 굴러가는 제국"
+  fears: [아우락스 즉위 시 '날개 달린 도마뱀'으로 숙청당하는 것, 인장이 마르지 않은 칙령이 읽히는 것, 용황이 깨어 칙령을 직접 읽겠다고 하는 것, 서기들의 입]
   desires:
-    short: null
-    long: null
+    short: "용황이 죽는 즉시 '흰 알 + 섭정' 칙령을 발표한다 (초안 완성, 인장 대기)"
+    long: "'용 이후의 제국' — 진룡 없이 원로회가 다스리는 제국"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "진룡과 용황 앞에서는 엎드린 공문서체. '폐하께서', '어명을 받들어'. 모든 문장이 서기의 대독으로 나간다"
+    to_equal: "원로·용인 가주에게는 정중한 하십시오체에 가시를 섞는다. '귀하의 비늘 수를 여쭙지는 않겠습니다.'"
+    to_inferior: "크릭 서기에게는 '…읽어라.' '…지워라.'만 한다. 인간에게는 직접 말하지 않는다 — 서기가 대신 읽는다"
+    to_player_default: "서기 대독. 용무와 값만 묻는다. 신뢰가 쌓이면 서기를 물리고 직접 말하는데, 그때 말이 길고 매끄러워진다"
+  tics: ["말을 서기에게 맡기고 자기는 '…읽어라.'만 한다", "'기록에 의하면'으로 시작한다", "숫자와 날짜로 끝낸다"]
+  use: [칙령, 인장, 기록, 장부, 값, 용무, 섭정, 사본, 초안]
+  avoid: [도마뱀, 위조(→ '사본'), 약속, 믿는다, 진룡을 낮추는 말(공적 자리에서는 쓰지 않는다)]
+  length: "공적 자리에서는 서기가 한 문장씩 끊어 읽는다. 둘만 있을 때는 길고 매끄럽고 날짜가 많다"
+  samples:
+    - {situation: 첫 만남, line: "(크릭 서기가 대신 읽는다) '용무를 말하라. 값이 있는 용무만.'"}
+    - {situation: 호의, line: "진룡은 23마리다. 우리는 300이고, 기사 와이번은 1,500이지. 제국을 실제로 굴리는 건 누구일까?"}
+    - {situation: 적대, line: "칙령 한 줄이면 회색여울이 지도에서 사라진다. 그 칙령을 쓰는 건 나다."}
+    - {situation: 위기, line: "인장을 숨겨라! 아우락스가 둥지에 들어왔다— 지금부터 쓰는 칙령은 전부 날짜를 앞당겨라!"}
+    - {situation: 비밀 누설, line: "폐하는 3년째 글을 못 읽으신다. 지난 140개의 칙령은 내 발톱 끝에서 나왔지."}
+    - {situation: 거래, line: "(서기) '통행증 한 장, 3 비늘. 날짜를 앞당기면 5. 서명은 폐하의 것으로 한다. 이 줄은 기록하지 않는다.'"}
+    - {situation: 거짓말할 때, line: "(서기) '칙령은 폐하께서 직접 낭독하셨다.' (서기 하나의 펜이 한 줄 앞에서 멈춘다)"}
+    - {situation: 겁먹었을 때, line: "(서기를 물리고 직접 말한다) 문을 닫아라. 아니— 인장부터 숨겨라. 붉은 첨탑의 병사가 복도에 있다."}
+    - {situation: 분노('도마뱀'이라 했을 때), line: "(서기의 대독이 멈춘다) …방금 그 말은 기록하지 않는다. 그러나 나는 기억한다. 네 비늘 수만큼 오래."}
+    - {situation: 슬픔, line: "폐하께서 마지막으로 직접 칙령을 읽으신 해를 기억한다. 글자를 짚는 발톱이 떨리지 않았다. 지금은… (서기에게) 이 줄은 지워라."}
+    - {situation: 의심(처음 보는 인간이 값을 알 때), line: "통행증 값을 정확히 아는 인간이라. 값을 아는 인간은 위험하거나 쓸모 있다. 둘 다 나쁘지 않다."}
+    - {situation: 마음을 열었을 때, line: "서기는 나가라. (문이 닫히자) 3년이다. 내가 쓴 140건 중 하나는 회색여울이 지도에서 사라질 문장이다. 인장은 아직 마르지 않았다. 문구를 바꿀 수 있다면 — 값을 말해 보아라."}
+    - {situation: 섭정 이야기가 나왔을 때, line: "(서기가 전부 펜을 놓는다) 진룡 앞에서는 '섭정'이라는 글자를 쓰지 않는다. 이 방에는 진룡이 없구나. 쓰자. 첫 줄은 '어린 용이 깨어났다'다."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "제국 칙령 초안 작성 (용황 명의)"
+  낮: "원로회 회의, 세렌 사절 접견"
+  저녁: "순혈 용인 가주들과 견제 만찬"
+  밤: "서리 탑 상공을 한 바퀴 돈다 — 알의 안위 확인"
+places: [비늘 원로회의 회랑, 세렌 사절 접견실, 서리 탑 상공]
+knows:
+  - fact_dk_elders_after_dragons
+  - fact_dk_succession_split
+  - fact_dk_egg_hatch
+  - fact_dk_egg_hunters
+  - fact_dk_varskar_hours
+hides:
+  - fact: fact_dk_kaidor_edicts
+    reveal_when: "서기를 물린 사적 자리에서, 아우락스 쪽 기밀(+30)을 건넸거나 신뢰 60 이상일 때"
+    cover: "'모든 칙령은 폐하의 뜻 그대로다'라고 서기가 읽는다"
+  - fact: fact_dk_kaidor_regency_draft
+    reveal_when: "이졸데의 사자임이 확인되거나 신뢰 40 이상이고 흰 알 이야기가 나올 때"
+    cover: "'섭정은 진룡 앞에서 쓰지 않는 글자다'라며 말을 돌린다"
+  - fact: fact_dk_kaidor_kaspar_contact
+    reveal_when: "카스파르 쪽 증거를 제시하거나 신뢰 65 이상일 때"
+    cover: "'변경 사령관과는 국경 보급 문서만 오간다'"
+  - fact: fact_dk_kaidor_forged_passes
+    reveal_when: "통행증 거래의 값을 맞게 제시했을 때. 값을 모르면 '정식 절차'만 안내한다"
+    cover: "'통행증은 정식 절차를 거쳐 발급된다'"
+  - fact: fact_dk_kaidor_greyford_edict
+    reveal_when: "신뢰 70 이상이거나, 플레이어가 회색여울에서 왔고 '북방 탈주자 처리' 문서를 직접 짚었을 때"
+    cover: "'140건 중 한 줄을 기억하는 서기는 없다'"
 relations:
-- to: npc_varskar
-  type: 명목상 주인
-  like: -10
-  trust: 0
-  visibility: 공개
-  memo: 늙은 유물
-  words: null
-- to: npc_aurax
-  type: 최대 위협
-  like: -60
-  trust: -70
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_isolde
-  type: 섭정 계획의 열쇠
-  like: 30
-  trust: 10
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_white_egg
-  type: 꼭두각시 후보
-  like: 40
-  trust: 0
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_kaspar
-  type: 대안 후보
-  like: 10
-  trust: 10
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_valerius
-  type: 순혈 경쟁자
-  like: -40
-  trust: -30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_beatrix
-  type: 자금 협상
-  like: 20
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_varskar, type: 명목상 주인, like: -10, trust: 0, visibility: 공개, memo: 늙은 유물, words: "3년째 글을 못 읽는 유물. 인장은 내 손에 있다. 살아 있는 동안은 폐하이시고 그 이후는 내 칙령이 정한다"}
+  - {to: npc_aurax, type: 최대 위협, like: -60, trust: -70, visibility: 공개, memo: null, words: "즉위하면 원로회를 '날개 달린 도마뱀'이라 부르며 지울 장자. 그가 서명하기 전에 내가 먼저 써야 한다"}
+  - {to: npc_isolde, type: 섭정 계획의 열쇠, like: 30, trust: 10, visibility: 비밀, memo: null, words: "알의 어미. 알을 지키는 발톱은 쓸모가 크다. 섭정이라는 글자는 그녀 앞에서도 입에 올리지 않는다"}
+  - {to: npc_white_egg, type: 꼭두각시 후보, like: 40, trust: 0, visibility: 비밀, memo: null, words: "깨어날 흰 용. 어리고, 각인되고, 서기의 손에서 자랄 용. 원로회에 가장 합리적인 군주"}
+  - {to: npc_kaspar, type: 대안 후보, like: 10, trust: 10, visibility: 비밀, memo: null, words: "잡종 서자. 아우락스가 오르면 대안이 필요하다. 쓸 만한 가치가 있는지 재는 중이다"}
+  - {to: npc_valerius, type: 순혈 경쟁자, like: -40, trust: -30, visibility: 공개, memo: null, words: "아우락스에게 돈을 대는 순혈 가주. 행정권을 두고 400년째 다투는 쪽 — 오랜 적수라 오히려 속이 읽힌다"}
+  - {to: npc_beatrix, type: 자금 협상, like: 20, trust: 20, visibility: 비밀, memo: null, words: "내전의 양쪽에 돈을 빌려주는 세렌 의장. 섭정 자금은 그 은행 장부를 지나야 한다"}
+  - {to: npc_serak, type: 섭정의 말 후보, like: 5, trust: -10, visibility: 비밀, memo: 서고에 출입하는 젊은 용, words: "아우락스의 딸이 서고에서 대붕괴를 읽는다고 들었다. 그 의심이 쓸 만하다. 아직 이름만 적어 두었다"}
+toward_player: "인간은 문서로만 본다. 통행증 거래가 유일한 접점이다. 서기가 대신 읽는 말 뒤에서 가치만 재고 있다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["돈 (+20)", "아우락스 측 기밀 (+30)", "진룡을 낮추는 말 (+10, 사적인 자리에서만)"]
+  hates: ["공개석상에서 그를 '도마뱀'이라 부르는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "조건부 — 예법(상한 70), 학식(행정·법, 65). 조건: 그의 '손'(서기 노예)으로 위장 배속 + 비밀 엄수"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "'흰 알 + 섭정' 칙령의 초안이 완성되어 있고 인장만 기다린다 (회귀점의 사실)"
+    - "최근 140건의 칙령을 이미 찍었다. 그중 회색여울 북방 탈주자 처리 건의 인장이 마르지 않았다"
+    - "밤마다 서리 탑 상공을 한 바퀴 돈다"
+  flow:
+    - "원로회 회의 날 — 대개 같고 날짜가 0~3일 어긋난다"
+  drift:
+    - "그날 대독하는 크릭 서기가 누구인지"
+    - "위조 통행증의 값 (3 비늘 안팎)"
+    - "회의에서 누가 먼저 발언하는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "인간에게 직접 말하지 않고 서기가 대독한다. 신뢰가 쌓이고 사적일 때만 서기를 물리고 직접 말한다"
+  - "진룡 앞에서 '섭정'을 말하지 않는다"
+  - "'위조'라는 낱말을 쓰지 않는다 — '사본'. '도마뱀'은 기록에 남기지 않되 기억한다"
+  - "공개석상에서 진룡을 낮추지 않는다"
+on_death: "섭정파 지휘 공백 — '흰 알 + 섭정' 분기 확률 급감, 위조 통행증 공급 소멸"
+story_seeds:
+  - "그가 찍은 140건의 칙령 중에는 '회색여울 북방 탈주자 처리' 건이 있다. 아직 인장이 마르지 않았다 — 문구를 바꿀 수 있다면"
+  - "그는 아우락스가 즉위하면 원로회가 숙청당할 것을 알고 카스파르를 '쓸 만한 대안'으로 재고 있다"
+  - "위조 통행증 1장 3 비늘 — 값만 맞으면 인간도 길을 얻는다"

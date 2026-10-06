@@ -1,0 +1,271 @@
+# 드라크마르 용좌령(바알카르)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_dk_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 용황 바르스카르 ──
+- id: fact_dk_collapse_truth
+  text: "대붕괴 때 아스테리온의 의식은 성공 직전이었고, 바르스카르가 그것을 막으려 의식 한가운데에 불을 뿜었다. 두 힘의 충돌이 시간을 찢었다 (공식 역사 '인간이 세계를 찢었다'는 거짓)"
+  truth: true
+  danger: 5
+  names: [아스테리온, 바르스카르]
+- id: fact_dk_varskar_eleven_slaves
+  text: "바르스카르는 대붕괴 이후 312년간 시중 노예 11명에게 대붕괴의 진실을 털어놓았고, 매번 그 노예를 '처분'했다. 노라가 12번째 청자이며 이번에는 죽이지 않기로 했다"
+  truth: true
+  danger: 5
+  names: [노라, 바르스카르]
+- id: fact_dk_varskar_awaits_return
+  text: "바르스카르는 아스테리온의 마지막 눈빛과 '다시 오겠다'는 말을 기억한다. 죽어도 같은 날로 돌아오는 자가 있음을 알고, 그것이 자신에게 오기를 반쯤 기다린다. 자기 불이 그 돌아옴을 끊는다는 것도 안다"
+  truth: true
+  danger: 5
+  names: [바르스카르, 아스테리온]
+- id: fact_dk_varskar_time_wound
+  text: "용황의 오른쪽 옆구리에는 비늘 없는 구멍 '시간의 상처'가 있다. 가까이 서면 손톱이 자라거나 줄고 촛불이 거꾸로 탄다. 왼눈은 대붕괴의 섬광에 멀어 우윳빛이다"
+  truth: true
+  danger: 2
+  names: [용황]
+- id: fact_dk_varskar_hours
+  text: "용황은 하루 대부분 의식이 없고, 오후 한 시간쯤 깨어 후계자 셋을 교대로 접견한다. 밤에만 맑은 정신이 돌아와 시중장 노라에게만 말한다"
+  truth: true
+  danger: 2
+  names: [노라]
+- id: fact_dk_varskar_scales_stolen
+  text: "용황의 비늘이 하루 한 바구니씩 바래 떨어지고, 노예들이 그것을 몰래 훔쳐 판다 (비늘 한 장 2 비늘). 둥지 바닥의 비늘은 시간 잔상을 품는다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_dk_varskar_dying_blessing
+  text: "노라의 신뢰가 깊어지고 상대가 잔향이면, 용황은 임종 때 '불의 진명 한 마디'를 직접 전수한다. 그 순간 아우락스가 냄새를 맡는다"
+  truth: true
+  danger: 5
+  names: [노라, 아우락스]
+# ── 아우락스 ──
+- id: fact_dk_aurax_saw_collapse
+  text: "아우락스는 대붕괴 당시 아버지 곁에 있었고, 아스테리온의 의식이 성공 직전이었음을 안다"
+  truth: true
+  danger: 5
+  names: [아우락스, 아스테리온]
+- id: fact_dk_aurax_echo_belief
+  text: "아우락스는 잔향이 실재한다고 믿는 몇 안 되는 용이다. 잔향자가 회귀를 깨닫기 전에 찾아내 아버지의 불로 끊으려 한다. 대숙청은 광기가 아니라 계산이다 — '그 하나'를 태우기 위해 무고한 수만 명을 태워도 좋다고 본다"
+  truth: true
+  danger: 5
+  names: [아우락스]
+- id: fact_dk_aurax_purge_plan
+  text: "아우락스는 즉위 후 맹약회의 313에서 '잔향 대숙청' 안건 — 징후가 있든 없든 15~25세 인간 남녀 10명 중 1명 처형 — 을 통과시킬 계획이다"
+  truth: true
+  danger: 4
+  names: [아우락스]
+- id: fact_dk_aurax_kaspar_contract
+  text: "아우락스는 노예사냥 조합장 볼크에게 카스파르 반비늘의 암살을 의뢰 중이다"
+  truth: true
+  danger: 5
+  names: [아우락스, 볼크, 카스파르]
+- id: fact_dk_aurax_wing_record
+  text: "아우락스의 오른쪽 날개막에는 대붕괴 이후 그가 직접 처형한 '잔향 징후자' 약 4,000명의 이름이 긁혀 있다. 그는 진짜가 하나도 없었음을 숨기지 않는다"
+  truth: true
+  danger: 2
+  names: [아우락스]
+- id: fact_dk_aurax_doubts_serak
+  text: "아우락스는 딸 세라크가 자신을 의심하고 있음을 안다. 아직은 딸을 사랑한다"
+  truth: true
+  danger: 3
+  names: [아우락스, 세라크]
+- id: fact_dk_aurax_assassins_tower
+  text: "아우락스가 보낸 용인 자객 3명이 서리 탑에 침입해 흰 알을 노렸다가 이졸데에게 찢겼다. 이졸데의 왼쪽 앞발톱 둘은 그때 부러졌다"
+  truth: true
+  danger: 4
+  names: [아우락스, 이졸데]
+- id: fact_dk_aurax_circuit_days
+  text: "아우락스는 주 2회 용의 대로를 따라 순시 비행하며 회색여울 상공도 난다. 그가 착륙하는 날에는 반드시 누군가 불에 탄다"
+  truth: true
+  danger: 2
+  names: [아우락스, 회색여울]
+# ── 이졸데와 흰 알 ──
+- id: fact_dk_egg_hatch
+  text: "흰 알은 AS 309에 낳았고 AS 313 꽃월에 부화할 예정이다. 사건에 따라 지연되거나 앞당겨질 수 있다"
+  truth: true
+  danger: 1
+  names: [흰 알]
+- id: fact_dk_egg_voice
+  text: "흰 알의 껍질에 귀를 대면 진명어 같은 소리가 들린다. 이졸데는 그 말을 해독하지 못하고 엘다르 학자에게 묻지도 못한다. 잔향이 만지면 껍질의 실금이 빛난다"
+  truth: true
+  danger: 4
+  names: [흰 알, 이졸데]
+- id: fact_dk_isolde_forced_mating
+  text: "AS 307 이졸데와 용황의 짝짓기는 이졸데의 선택이 아니었다. 서리비늘 가문이 그녀를 용황에게 '바쳤다'"
+  truth: true
+  danger: 2
+  names: [이졸데, 서리비늘]
+- id: fact_dk_isolde_kaspar_letters
+  text: "이졸데는 카스파르와 비밀 서신을 두 번 주고받았다. 용황이 죽으면 흰 알을 까마귀 문으로 피신시킬 계획이다"
+  truth: true
+  danger: 5
+  names: [이졸데, 카스파르, 까마귀 문]
+- id: fact_dk_egg_hunters
+  text: "흰 알을 노리는 자는 아우락스(파괴), 멜리산드(연구·이식 재료), 이레네 볼드(관찰), 엘라스트리엘(예언 확인)이다"
+  truth: true
+  danger: 3
+  names: [아우락스, 멜리산드, 이레네 볼드, 엘라스트리엘]
+- id: fact_dk_egg_imprint
+  text: "용족 전승에 따르면 깨어난 흰 용은 처음 보는 얼굴을 '어미'로 각인한다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_dk_soom_melisande_spy
+  text: "서리 탑 알 보관실의 크릭 시녀 '숨'은 멜리산드의 첩자이며 알 껍질 조각을 채취하는 임무를 받았다. 이졸데는 모른다"
+  truth: true
+  danger: 5
+  names: [숨, 멜리산드]
+# ── 노라 ──
+- id: fact_dk_nora_twelfth_listener
+  text: "노라는 대붕괴의 진실을 들은 12번째 노예이며, 앞선 11명이 어떻게 죽었는지 안다. 용황은 이번에 그녀를 죽이지 않았다"
+  truth: true
+  danger: 5
+  names: [노라]
+- id: fact_dk_nora_elena_grave
+  text: "카스파르의 어머니 엘레나는 궁 남쪽 재구덩이 셋째 줄에 묻혔다. 노라는 AS 276~277년 궁에서 엘레나와 같은 방을 썼고 그 무덤의 위치를 안다. 카스파르는 어머니의 무덤을 모른다"
+  truth: true
+  danger: 3
+  names: [엘레나, 노라, 카스파르]
+- id: fact_dk_elena_last_words
+  text: "엘레나의 마지막 말은 '너는 끝나지 않을 것이다'였다. 엘레나는 노래 때문에 용황에게 선택되었고, 그 노래를 아는 사람은 이제 노라뿐이다"
+  truth: true
+  danger: 4
+  names: [엘레나, 노라]
+- id: fact_dk_nora_grey_cell
+  text: "노라는 이름 없는 자들의 바알카르 세포장이며, 회색 여인과 직접 접촉한 몇 안 되는 사람이다 (얼굴은 모르고 목소리만 안다)"
+  truth: true
+  danger: 5
+  names: [노라, 회색 여인, 이름 없는 자들]
+- id: fact_dk_nora_court_gossip
+  text: "노라는 저녁마다 피직과 궁정 소문을 교환한다. 용황의 병상에서 보고 들은 것의 극히 일부만 소문으로 흘린다"
+  truth: true
+  danger: 2
+  names: [노라, 피직]
+# ── 세라크 ──
+- id: fact_dk_serak_reads_archive
+  text: "세라크는 밤마다 궁 서고에서 대붕괴 기록을 몰래 읽는다. 아버지가 숨기는 진실을 확인하려는 것이다"
+  truth: true
+  danger: 3
+  names: [세라크]
+- id: fact_dk_serak_asteria_primer
+  text: "세라크는 서고에서 아스테리온 시대의 아스테리아 학교 교본 한 장을 찾아 숨겼다. 인간이 쓴 문서다"
+  truth: true
+  danger: 4
+  names: [세라크, 아스테리아]
+- id: fact_dk_serak_nurse_betty
+  text: "아우락스의 날개 새김 4,000개 중 하나(서른두째 줄)가 세라크의 유모였던 인간 노예 '베티'다"
+  truth: true
+  danger: 3
+  names: [세라크, 베티, 아우락스]
+# ── 피직과 치크 ──
+- id: fact_dk_fizik_sold_route
+  text: "피직이 아우락스의 용인 자객 3명에게 서리 탑 침입 경로를 2 비늘에 팔았다"
+  truth: true
+  danger: 3
+  names: [피직, 아우락스]
+- id: fact_dk_fizik_sound_room
+  text: "둥지 지하 배관이 모이는 '소리 방'에서는 둥지 최상층의 말이 들린다. 피직은 노라가 용황에게 들은 임종 고백의 절반쯤을 이 방에서 엿들었으나 이해하지 못했다"
+  truth: true
+  danger: 4
+  names: [피직, 노라]
+- id: fact_dk_fizik_sells_all_sides
+  text: "피직은 세 후계자 쪽 모두에 궁의 정보를 판다. 송곳니 회관에도 정보를 팔고 볼크가 단골이다"
+  truth: true
+  danger: 2
+  names: [피직, 볼크]
+- id: fact_dk_fizik_knows_soom
+  text: "피직은 크릭 시녀 숨이 첩자임을 안다"
+  truth: true
+  danger: 3
+  names: [피직, 숨]
+- id: fact_dk_chik_hand_bite
+  text: "치크는 크릭의 굴종 본능을 이기려고 매일 밤 자기 손을 깨문다. 강한 목소리를 들으면 무릎이 꺾이는 것을 혐오한다"
+  truth: true
+  danger: 1
+  names: [치크]
+- id: fact_dk_chik_saw_route_sale
+  text: "치크는 피직이 서리 탑 경로를 파는 장면을 직접 봤다"
+  truth: true
+  danger: 3
+  names: [치크, 피직]
+# ── 이르가 ──
+- id: fact_dk_irga_flute
+  text: "이르가의 목에 걸린 나무 피리는 AS 300에 그녀가 처음 잡은 열한 살 탈주자 소녀의 것이다. 소녀는 볼크 앞에서 처형됐다"
+  truth: true
+  danger: 2
+  names: [이르가, 볼크]
+- id: fact_dk_irga_needs_hagen
+  text: "이르가는 하겐을 경멸하지만 그의 정보 없이는 조합 할당량을 채우지 못한다"
+  truth: true
+  danger: 2
+  names: [이르가, 하겐]
+- id: fact_dk_irga_opposes_hit
+  text: "이르가는 아버지 볼크가 카스파르 암살을 고민 중임을 알고 반대한다"
+  truth: true
+  danger: 4
+  names: [이르가, 볼크, 카스파르]
+- id: fact_dk_irga_hunts_sigrid
+  text: "이르가는 시그리드 무리를 '산 채로' 잡으려 한다. 볼크는 시체도 받는다"
+  truth: true
+  danger: 3
+  names: [이르가, 시그리드, 볼크]
+# ── 카이도르와 비늘 원로회 ──
+- id: fact_dk_kaidor_edicts
+  text: "용황은 3년째 칙령을 읽지 못한다. 최근 칙령 140건은 카이도르가 쓰고 용황의 인장을 찍었다"
+  truth: true
+  danger: 5
+  names: [카이도르, 용황]
+- id: fact_dk_kaidor_regency_draft
+  text: "카이도르는 용황이 죽는 즉시 발표할 '흰 알 + 섭정' 칙령의 초안을 완성했다. 인장만 찍으면 된다"
+  truth: true
+  danger: 4
+  names: [카이도르, 흰 알]
+- id: fact_dk_kaidor_kaspar_contact
+  text: "카이도르는 아우락스가 즉위하면 원로회가 숙청당할 것을 알고, 카스파르를 '쓸 만한 대안'으로 비밀리에 접촉 중이다"
+  truth: true
+  danger: 4
+  names: [카이도르, 아우락스, 카스파르]
+- id: fact_dk_kaidor_forged_passes
+  text: "인간 통행증 발급은 카이도르의 손을 거친다. 값만 맞으면 위조 통행증을 만든다 (1장 3 비늘)"
+  truth: true
+  danger: 3
+  names: [카이도르]
+- id: fact_dk_kaidor_greyford_edict
+  text: "카이도르가 찍은 칙령 140건 중에는 '회색여울 북방 탈주자 처리' 건이 있다. 인장이 아직 마르지 않아 문구를 바꿀 수 있다"
+  truth: true
+  danger: 4
+  names: [카이도르, 회색여울]
+- id: fact_dk_elders_after_dragons
+  text: "비늘 원로회와 순혈 용인 대가문은 겉으로 진룡에게 엎드리지만 속으로는 진룡을 '보물더미 위에서 잠자는 늙은 짐승'으로 보며 '용 이후의 제국'을 준비한다"
+  truth: true
+  danger: 4
+  names: [비늘 원로회]
+- id: fact_dk_succession_split
+  text: "계승 판세는 귀족 지지율로 아우락스 41, 멜리산드 32, 흰 알 18, 카스파르 9이다"
+  truth: true
+  danger: 1
+  names: [아우락스, 멜리산드, 카스파르]
+# ── 발레리우스·그레타·롤프 ──
+- id: fact_dk_valerius_funds_aurax
+  text: "발레리우스 화염문은 아우락스파의 자금줄이다. 비늘 언덕 저택에 노예 210명을 부린다"
+  truth: true
+  danger: 2
+  names: [발레리우스, 아우락스]
+- id: fact_dk_greta_is_brans_wife
+  text: "발레리우스 저택 세탁장의 노예 그레타는 AS 305에 회색여울에서 '빌려온' 브란의 아내다. 남편이 살아 있는지 모른다"
+  truth: true
+  danger: 2
+  names: [그레타, 브란, 발레리우스]
+- id: fact_dk_greta_servant_routes
+  text: "그레타는 비늘 언덕 귀족 저택들의 하인 동선과 문 열리는 시간을 다 안다. 브란과 재회하면 저택 내부 지도를 내놓는다"
+  truth: true
+  danger: 3
+  names: [그레타, 브란]
+- id: fact_dk_rolf_auction_rebels
+  text: "롤프는 반란자를 직접 경매대에 세우는 것을 자랑으로 여기며, 목줄단 바알카르 지부 소속이다. 파종월 대시장에서 사람의 '장점'을 외쳐 값을 올린다"
+  truth: true
+  danger: 2
+  names: [롤프]
+- id: fact_dk_scale_market_ledger
+  text: "비늘 시장 장부에는 회색여울 농노 40명의 '선매 기록'(9월)이 있고, 헨릭의 인두세 보고와 숫자가 맞지 않는다"
+  truth: true
+  danger: 3
+  names: [비늘 시장, 헨릭]

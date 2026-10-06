@@ -1,60 +1,96 @@
 id: npc_ise
 name: 이세 (고인)
-aka: []
+aka: [첫 낭독 정원지기]
 tier: B
-type: living
+type: historical
 race: 인간(정원 인간)
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 22
 region: 실바렌
-home: null
-job: 데인의 어머니
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+home: 흰 울타리 마을 이슬 우리 (생전)
+job: 데인의 어머니. 생전에는 엘다르 시를 낭독하던 정원지기
+rank: 정원지기 (AS 287 사망, 향년 22)
+summary: 데인의 어머니. 아에린의 첫 '옮김 의식' 피험자로 죽어 온실 3동 아래에 묻혔다. 남긴 말은 이슬 우리의 어른을 통해 아들에게 전해졌다
+source: docs/world/CHARACTERS.md:1304
+life:
+  - {year: 265, age: 0, event: "흰 울타리 마을 이슬 우리에서 태어남"}
+  - {year: 270, age: 5, event: "엘다르 시를 귓속말로 외우기 시작한다. 정원지기는 듣기만 허락되었으나 그녀는 한 번 들으면 입술을 움직였다"}
+  - {year: 280, age: 15, event: "목소리가 좋다 하여 낭독 정원지기로 뽑힌다"}
+  - {year: 285, age: 20, event: "순혈파 수장 실바누스의 낭독 시중을 든다. 같은 줄을 한 번 더 읽어 달라는 부탁을 받기 시작한다"}
+  - {year: 286, age: 21, event: "아들 데인을 낳는다. 아이의 눈이 은색이었다. 누구의 아이인지 이슬 우리에서는 아무도 입에 올리지 않았다"}
+  - {year: 287, age: 22, event: "아에린의 첫 '옮김 의식'에 자원 형식으로 불려 가 죽는다. 온실 3동 아래에 묻힌다. 이슬 우리의 어른에게 아이에게 전할 말을 남겼다"}
+appearance:
+  - "가는 손목, 목에 이슬 우리 번호 끈"
+  - "엘다르 시를 읽을 때 입술만 움직이는 습관"
+  - "웃으면 한쪽 볼에만 보조개가 생겼다 (이슬 우리의 사람들이 기억하는 모습)"
+smell: "이슬과 삶은 보리, 낭독용 두루마리의 먼지"
+voice_sound: "낮고 노래 같다. 엘다르어를 읽을 때는 높고 맑다. 아기에게는 허밍이 먼저 나왔다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 35, 자비: 65, 정직: 50, 신앙: 0, 탐욕: -40, 충성: 45}
+  temperament: [다정, 조용한 고집, 말하지 못한 사랑]
+  habits:
+    - "아기를 재울 때 끝나는 노래를 불러 준다 — 끝이 있어야 잘 수 있다고 했다"
+    - "낭독이 끝나면 마지막 줄을 한 번 더 속삭인다"
+  values: "아이가 직접 알게 하는 것. 이슬은 해 뜨기 전에 거두는 것"
+  fears:
+    - "아이의 아버지가 이름 불리는 것"
+    - "아이의 눈 색이 먼저 알려지는 것"
   desires:
-    short: null
-    long: null
+    short: "아이가 이슬 우리에서 무사히 자라는 것"
+    long: "아이가 정원 밖의 하늘을 보는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "엘다르에게는 엘다르어 낭독체, 눈을 내리깐 '네'"
+    to_equal: "이슬 우리 사람들에게는 낮은 노래 같은 해요체"
+    to_inferior: "아기 데인에게는 허밍 섞인 반말"
+    to_player_default: "고인이다. 기억 속 말로만 남는다 — 전하는 이들이 기억하는 그대로"
+  tics: ["'끝나는 노래를 해 줄게'", "'한 번 더… 이번엔 정말 끝'"]
+  use: [이슬, 노래, 끝, 별, 한 번 더, 아가]
+  avoid:
+    - "실바누스의 이름 ('그분')"
+    - "아이 아버지가 누구인지 직접 말하는 낱말"
+  length: "짧고 부드럽다. 아이에게는 노래로 길어진다"
+  samples:
+    - {situation: 이슬 우리의 노파가 기억하는 말, line: "이슬은 해가 뜨기 전에 거둬야 해. 해가 뜨면 이슬이 자기 이름을 잊거든."}
+    - {situation: 아기를 재우며, line: "끝나는 노래를 해 줄게. 끝이 있어야 잘 수 있거든. 자, 한 번 더… 이번엔 정말 끝."}
+    - {situation: 낭독 때(엘다르어로 낮게), line: "이 줄은 아직 끝나지 않았어요. 어르신이 한 번 더 읽으라 하셨으니까요."}
+    - {situation: 불려 가던 날, line: "아픈 곳으로 불려 가는 거예요. 금방 와요. 이슬 거두는 동안만."}
+    - {situation: 마지막 말(어른에게), line: "아이에게 전해 주세요. 네 아버지는 매일 밤 별을 센단다. …그분 이름은 말하지 마세요. 아이가 직접 알아야 하니까요."}
+    - {situation: 그분을 말할 때, line: "그분은 같은 줄을 자꾸 다시 읽으래요. 내가 그 줄에서 숨 쉬는 걸 좋아하시나 봐요."}
+    - {situation: 아이를 생각할 때, line: "세 걸음 밖에서도 같은 별은 볼 수 있잖아요. 그걸로 됐어요."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
+  아침: "생전 — 이슬을 거둔다"
+  낮: "생전 — 엘다르 귀족들 앞에서 시를 낭독한다"
+  저녁: "생전 — 실바누스의 석탑에서 낭독 시중"
+  밤: "생전 — 아기 데인을 재운다"
+places: [온실 3동 아래 (무덤), 이슬 우리, 실바누스의 석탑 (생전)]
+knows: [fact_sv_dane_silvanus_son, fact_sv_ise_last_words]
 hides: []
-relations: []
-toward_player: null
+relations:
+  - {to: npc_dane, type: 아들, like: 95, trust: 80, visibility: 공개, memo: null, words: "아가. 손이 따뜻하게 자라렴. 눈 색은 자랑이야, 숨기지 말고… 그래도 지금은 숨겨"}
+  - {to: npc_silvanus, type: 사랑한 분, like: 85, trust: 70, visibility: 비밀, memo: 이미 죽었다, words: "그분은 별을 세는 분. 세 걸음 밖에서도 나는 그분을 사랑했어요"}
+  - {to: npc_aerin, type: 의식의 주관자, like: 0, trust: -20, visibility: 일방, memo: null, words: "손이 따뜻한 분이 아픈 곳이라고 했어요. 따뜻하면 아프지 않을 줄 알았어요"}
+toward_player: "고인이다. 플레이어는 그녀를 만날 수 없다. 데인, 실바누스, 이슬 우리의 어른들이 기억하는 말로만 만난다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["아들 데인에게 진실을 전하는 것", "끝나는 노래"]
+  hates: ["데인의 눈을 놀리는 것", "'옮김 의식'을 구원이라 부르는 것"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
+  fixed:
+    - "AS 287에 이미 죽었다. 어느 회차에서도 살아 있지 않다"
+    - "온실 3동 아래 무덤은 그 자리에 있다"
   flow: []
   drift: []
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "고인이다 — 현재를 모른다. 말은 기억 속 인용으로만 나온다"
+  - "실바누스의 이름을 입에 올리지 않는다 — '그분'"
+  - "아들을 '아가'라 부른다"
+on_death: "이미 죽었다. 무덤을 찾으면 데인 충성 아크 50의 열쇠가 열린다"
+story_seeds:
+  - "데인 아크 50의 열쇠 — 온실 3동 아래 무덤. 아에린의 첫 옮김 의식이 남긴 기록 한 줄이 함께 묻혀 있다"
+  - "실바누스가 데인에게 시키는 '같은 줄'은 이세가 낭독 때 한 번 더 읽던 줄이다"

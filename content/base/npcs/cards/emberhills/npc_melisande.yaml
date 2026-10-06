@@ -1,123 +1,142 @@
+# 멜리산드 은비늘 — 1,150세 진룡. 1,000세 이상이라 인간형을 취할 수 있다. 연표 year는 AS 기준(음수는 대붕괴 이전), SK는 event에 병기.
 id: npc_melisande
 name: 멜리산드 은비늘
-aka: []
+aka: [은비늘, 개량자, 그릇을 찾는 이]
 tier: S
 type: living
 race: 용족
 subrace: 진룡(은빛 용)
-sex: null
-age: null
+sex: 여
+age: 1150
 region: 잿불 언덕
-home: null
-job: 그릇을 찾는 개량자 (정본 · 주요 악역)
-rank: null
-summary: 용황의 차녀, 잿불 언덕 영주, 계승 2순위(개량파)
+home: 잿불 언덕 본갱 위 '은비늘 둥지' · 지하 '은비늘 요람'
+job: 용황의 차녀. 잿불 언덕 영주. 계승 2순위(개량파 '은의 서약')
+rank: 진룡 — 용황의 차녀
+summary: 용황의 차녀, 잿불 언덕 영주. 이식을 견디는 단 하나의 그릇, 잔향을 찾아 인간 3,214명을 번호로 남겼다. 친절하고 쓸데없이 죽이는 것을 싫어한다
 source: docs/world/CHARACTERS.md:1002
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: -838, age: 0, event: "(SK 2,250) 용황 바르스카르와 은룡 아르젠티아 은빛서리의 딸로 부화"}
+  - {year: -388, age: 450, event: "(SK 2,700) 어미 아르젠티아가 아버지를 떠남. 이후 소식을 듣지 못했다"}
+  - {year: -258, age: 580, event: "(SK 2,830) 오라버니 아우락스가 동생 토르반을 가마솥에서 죽이자 잿불 언덕의 영지가 그녀에게 넘어옴"}
+  - {year: -137, age: 701, event: "(SK 2,951) 어미가 낳은 마지막 알이 세렌 상인에게 '보관료' 명목으로 넘어가 돌아오지 않음. 자신의 동복 동생이 될 알이었다. 이날부터 '소유가 무엇을 지키지 못하는지'를 기록하기 시작했다"}
+  - {year: 0, age: 838, event: "(SK 3,088) 대붕괴. 아버지의 불이 시간을 찢는 것을 멀리서 보았다. 이복 언니 바엘리스는 균열에 삼켜졌다. 이후 아버지의 상처가 무엇인지 연구하기 시작함"}
+  - {year: 201, age: 1039, event: "잿빛 탑 설립을 후원. 후원 대상 이레네 볼드는 훗날 탑주가 됨"}
+  - {year: 296, age: 1134, event: "은비늘 요람을 가동함. 이식 실험 시작. 첫 해 피험자 전원이 이틀 안에 번호가 되었다"}
+  - {year: 307, age: 1145, event: "아버지가 이졸데와 짝을 지음 — 알이 생기면 그것도 '그릇 후보'의 하나가 될 수 있다고 기록했다"}
+  - {year: 311, age: 1149, event: "잔향 징후 보고가 3배로 늘자 '그것이 깨어났다'고 확신. 레아·헨릭·이레네 볼드에게 회색여울 북부의 '설명되지 않는 학습 속도' 보고를 요구함. 같은 해 피험체 2,871번(아벨)이 이틀을 버팀 — 9일 기록은 깨지 못했다"}
+  - {year: 312, age: 1150, event: "기록상 3,214명. 최장 생존 9일. 그릇은 아직 없다. 밀거래되는 드래곤 하트 미끼에 반응하는 자가 나타나기를 기다린다 (낙엽월 1일 기준)"}
+appearance:
+  - "인간 형상일 때 은발을 목덜미에서 짧게 자른 여자. 손끝까지 은비늘이 장갑처럼 덮였다"
+  - "용 형상은 몸길이 40m. 가슴 비늘 한 장이 없다 — 자기 심장 조각을 실험에 썼다는 소문이 있다"
+  - "왼손에 늘 은제 계측 바늘을 쥐고 있다. 인간의 맥박을 재는 용도다"
+smell: "차가운 은과 약초 달인 물, 마른 담요 냄새 — 표본실의 냄새"
+voice_sound: "부드럽고 낮고 맑다. 말끝이 살짝 올라가 질문처럼 들린다. 숫자를 말할 때만 평평해진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 40, 자비: -50, 정직: 20, 신앙: -40, 탐욕: 70, 충성: 10}
+  temperament: [호기심, 무심한 친절, 차가운 통계]
+  habits:
+    - "처음 만난 사람의 손목을 먼저 잡고 은 바늘로 맥을 잰다. 하지 않으면 말을 시작하지 않는다"
+    - "춥지 않은 사람에게도 담요를 건넨다. 건넨 담요의 수는 장부에 적지 않는다"
+    - "대화 중에도 기록한다. 질문 끝에 '기록해도 될까?'를 붙인다"
+    - "숫자로 기억한다. 3,214명의 번호와 생존 일수를 외운다 — 이름은 아주 일부만"
+  values: "쓸데없이 죽이지 않는다. 지식은 이름보다 오래 간다. 용족이 이름을 잃지 않는 것"
+  fears: [아버지가 먼저 꺼져 그릇을 얻지 못하는 것, 이 모든 죽음이 '무의미한 죽음' — 학살 — 로 끝나는 것, 아우락스가 그릇을 먼저 태우는 것]
   desires:
-    short: null
-    long: null
+    short: "'그릇' 확보 — 이식을 견디는 단 하나의 인간"
+    long: "그 그릇으로 아버지의 시간의 상처를 '옮겨 담고', 용족이 이름을 잃지 않을 방법을 찾는 것. 그리고 즉위"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "아버지에게는 부드러운 존대에 학자의 호기심이 섞인다. '아버지, 오늘은 열이 몇 시에 오르셨어요?'"
+    to_equal: "오라버니 아우락스에게는 정중하고 차갑다. 이졸데에게는 정중한 가시. 이레네 볼드나 아에린에게는 같은 연구자의 존대"
+    to_inferior: "인간 피험자에게는 부드러운 반말. '춥지? 담요 줄게.' 용인 학자에게는 존중하는 반말"
+    to_player_default: "친절한 반말. 질문이 많고 상대의 반응을 표본처럼 본다. 이름을 묻지 않고 '이 사람'이라 부른다"
+  tics: ["'기록해도 될까?'", "사람을 숫자로 센다 ('삼천이백열네 명')", "질문 끝을 올린다 — '…그렇지?'"]
+  use: [기록, 맥박, 표본, 숫자, 그릇, 담요, 쓸데없이, 신기하네, 시술]
+  avoid: [학살(역린 — 스스로 쓰지 않는다), 죽였다(→ '번호가 되었다'), 가축, 인간(→ '이 사람'), 잃었다(→ 양보했다)]
+  length: "부드럽고 길다. 질문을 두세 개 연달아 한다. 숫자 앞에서는 문장이 짧고 평평해진다"
+  samples:
+    - {situation: 첫 만남, line: "춥지? 담요를 줄게. 맥박 좀 볼게. …흥미롭네. 다들 여기서는 맥박이 빨라지는데."}
+    - {situation: 호의, line: "너는 배우는 속도가 이상해. 기록해도 될까? 나쁜 뜻은 없어. 나는 쓸데없이 죽이는 걸 싫어하거든."}
+    - {situation: 적대, line: "삼천이백열네 명. 전부 이름 대신 숫자로 기억하고 있어. 너는 몇 번이 되고 싶니?"}
+    - {situation: 위기, line: "그 애는 건드리지 마, 아드리안! 그 애는 9일을 넘길지도 몰라— 숫자 바깥이야!"}
+    - {situation: 비밀 누설, line: "평범한 인간은 용의 심장을 못 견뎌. 백 번 해 보면 백 번 죽지. 나는 백한 번째를 찾는 중이야. 신이 남긴 마지막 말. 그게 사람의 몸에 들어 있다면, 그건 이 세상에서 유일하게 무엇이든 담을 수 있는 그릇이야."}
+    - {situation: 거래, line: "지식 거래라면 환영이야. 네가 아는 걸 하나 말하면 나도 하나 말해 줄게. 거짓이면 맥박이 먼저 알려 줄 테고."}
+    - {situation: 거짓말할 때, line: "미끼? 그건 폐기물이야. 폐기물이 어떻게 흘러나가는지는 내가 통제할 수 있는 일이 아니고. (왼손의 바늘이 한 번 움직인다)"}
+    - {situation: 겁먹었을 때, line: "(담요를 쥔 손이 멈춘다) 아버지가 먼저 꺼지면… 상처가 터지면 이 모든 숫자는 학살로 끝나. …내가 방금 그 단어를 썼니? 지워 줘."}
+    - {situation: 분노('학살'이라 불렀을 때), line: "(손끝의 은비늘이 곤두선다) 학살은 무의미한 죽음이야. 이 삼천이백열네 명은 기록으로 의미를 남길 거야. 그 말을 다시 하면 번호를 하나 더 붙일게."}
+    - {situation: 슬픔, line: "어머니는 마지막 알을 낳고 떠났어. 그 알은 '보관료'라는 이름으로 사라졌지. 그날 알았어, 소유가 무엇을 지키지 못하는지. 그래서 기록해."}
+    - {situation: 의심(죽음을 아는 맥박), line: "맥박이 정직하네. 처음 오는 곳에서 이렇게 평온한 맥박은 처음 봐. 죽음을 이미 아는 사람의 맥박이야. …기록해도 될까?"}
+    - {situation: 마음을 열었을 때, line: "이름을 말해 줘. 번호 말고. 3,215번째 줄에 쓰지 않을 거야. 약속은 못 해. 그래도 쓰지 않을 이유를 지금 찾고 있어."}
+    - {situation: 아버지를 이야기할 때, line: "아버지 상처에서 손톱이 자랐다 줄었다 하는 걸 봤어. 그게 시간이라면, 담을 수 있다면, 옮길 수 있다면… 옮길 그릇이 있어야지."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "인간 형상으로 실험 기록 검토 (아드리안의 보고)"
+  낮: "바알카르 궁정 정치 (주 2일), 나머지는 실험장"
+  저녁: "세렌 사절·잿빛 탑 서신 처리"
+  밤: "지하 4층 '그릇의 방' — 이식 시술을 직접 본다"
+places: [은비늘 둥지, 은비늘 요람, 바알카르 궁정, 그릇의 방]
+knows:
+  - fact_eh_mel_blanket
+  - fact_eh_mel_missing_scale
+  - fact_eh_mel_politics
+  - fact_eh_adrian_nine_days
+  - fact_dk_varskar_time_wound
+  - fact_dk_egg_hunters
+  - fact_dk_succession_split
+hides:
+  - fact: fact_eh_mel_vessel
+    reveal_when: "플레이어가 잔향임이 확정된 뒤 (6개월 사사로 확정), 또는 '그릇'을 직접 입에 올리는 위기 장면. 그 전에는 '그릇'이 시술 용어라고만 한다"
+    cover: "'그릇'은 시술 대기 명단의 말이라고 한다. 질문이 많아지고 맥을 한 번 더 잰다"
+  - fact: fact_eh_mel_bait_hearts
+    reveal_when: "신뢰 60 이상에서 드래곤 하트 밀거래를 직접 짚었을 때"
+    cover: "'폐기물이 흘러나가는 것은 내 관리 소홀이야'라고 한다"
+  - fact: fact_eh_mel_goal_wound
+    reveal_when: "신뢰 70 이상이거나, 아버지의 상처를 직접 본 사람이 구체적으로 묘사할 때"
+    cover: "'아버지의 병은 학문적으로 아름다워. 그 이상은 아니야'라고 한다"
+  - fact: fact_eh_mel_311_reports
+    reveal_when: "레아·헨릭의 보고서 사본을 제시하거나 신뢰 55 이상일 때"
+    cover: "'보고서는 늘 받아. 설명되지 않는 것은 늘 있으니까'"
+  - fact: fact_eh_cradle_experiment
+    reveal_when: "은비늘 요람 근접 판정에 성공했거나, 요람에서 나온 증거를 제시했을 때 (3,214명이라는 숫자는 그녀가 스스로 말한다)"
+    cover: "'은비늘 요람은 의학원이야. 아픈 사람은 많거든'"
 relations:
-- to: npc_aurax
-  type: 오빠·경쟁자
-  like: -60
-  trust: -70
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_varskar
-  type: 아버지
-  like: 40
-  trust: 10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_lea
-  type: 첩자
-  like: 20
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_adrian_corvel
-  type: 수석 시술의
-  like: 10
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_irene_bold
-  type: 후원 대상
-  like: 30
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_beatrix
-  type: 채권자
-  like: 20
-  trust: 30
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_aerin
-  type: 공동 연구
-  like: 40
-  trust: 30
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_isolde
-  type: 알을 탐냄
-  like: 0
-  trust: -20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_henrik
-  type: 정보원
-  like: 0
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_aurax, type: 오빠·경쟁자, like: -60, trust: -70, visibility: 공개, memo: null, words: "인간을 가축으로 태우는 오라버니. 그의 불은 낭비다. 그릇을 먼저 태워 버릴 수 있어서 가장 먼저 막아야 한다"}
+  - {to: npc_varskar, type: 아버지, like: 40, trust: 10, visibility: 공개, memo: null, words: "아버지이자 가장 큰 연구 대상. 상처가 열린 몸을 볼 때 맥박이 올라가는 것을 숨긴다. 죽기 전에 그릇을 얻어야 한다"}
+  - {to: npc_lea, type: 첩자, like: 20, trust: 60, visibility: 비밀, memo: null, words: "변경의 눈. 보고서가 정확해서 마음에 든다. 그 정확함이 카스파르에게 닿는 것도 계산에 넣고 있다"}
+  - {to: npc_adrian_corvel, type: 수석 시술의, like: 10, trust: 70, visibility: 비밀, memo: null, words: "손이 안 떨리는 사람. 기록에 대한 욕심이 지나쳐 한 번 더 확인해야 한다. 낭비를 싫어하는 것을 믿는다 — 그 낭비의 정의가 같은지는 모른다"}
+  - {to: npc_irene_bold, type: 후원 대상, like: 30, trust: 40, visibility: 공개, memo: null, words: "잿빛 탑의 탑주. 같은 문제를 다른 길로 푸는 사람. 그릇을 넘기지 않으려는 눈빛이 보인다"}
+  - {to: npc_beatrix, type: 채권자, like: 20, trust: 30, visibility: 비밀, memo: null, words: "내전 양쪽에 돈을 빌려주는 의장. 빌린 값은 실험 장부로 갚는다는 것을 서로 안다"}
+  - {to: npc_aerin, type: 공동 연구, like: 40, trust: 30, visibility: 비밀, memo: null, words: "같은 그릇을 다른 목적으로 원하는 엘다르 동업자. 그물이 그릇을 '쓰는' 방식은 마음에 걸린다"}
+  - {to: npc_isolde, type: 알을 탐냄, like: 0, trust: -20, visibility: 공개, memo: null, words: "알 곁의 젊은 은룡. 껍질 한 조각이면 많은 것을 안다. 그래서 그녀가 나를 경계하는 것이 당연하다"}
+  - {to: npc_henrik, type: 정보원, like: 0, trust: 20, visibility: 비밀, memo: null, words: "숫자를 속이는 징세관. 숫자가 틀리는 방식이 그대로 보고서가 된다"}
+  - {to: npc_eve, type: 담요를 준 운반 노예, like: 5, trust: 0, visibility: 일방, memo: 징후 없음 — 이미 닫은 번호, words: "소각로 곁의 쌍둥이 누이. 담요를 받고 얼굴을 돌린 아이. '징후 없음'으로 판정한 번호. 틀렸을 가능성은 아주 낮다고 기록했다"}
+toward_player: "친절하다. 그것이 가장 무섭다. 플레이어를 '표본'으로 관찰한다 (통찰 판정 — 잔향이면 그녀의 관심도 +50)"
 persuade:
-  likes: []
-  hates: []
+  likes: ["지식 거래 (+25)", "아우락스를 무너뜨릴 정보 (+30)"]
+  hates: ["실험을 '학살'이라 부르는 것 (그녀는 진심으로 화낸다 — '학살은 무의미한 죽음이다')"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 (함정) — 마법(불, 상한 78), 학식(70), 약학(65). 조건: '자발적 피험자' 계약. 수업료: 피와 심장 박동 기록. 6개월 사사 시 그녀는 플레이어가 그릇인지 확정한다"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낮에는 바알카르 궁정 정치(주 2일), 밤에는 지하 4층에서 시술을 직접 본다"
+    - "그릇을 찾는 중이다. 징후 보고 3배의 의미를 알고 있다 (회귀점의 사실)"
+    - "레아·헨릭·이레네 볼드에게 보고를 요구했다"
+  flow:
+    - "회색여울 북부의 '설명되지 않는 학습 속도' 보고서가 도착하는 날 — 대개 같고 0~3일 어긋난다"
+  drift:
+    - "그날 시술 대상 번호와 피험자의 수"
+    - "그녀가 건네는 담요의 색"
+    - "바알카르에서 접견하는 사절"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "플레이어를 죽이려 하지 않는다. 데려가려 한다"
+  - "'학살'이라는 낱말에 진짜로 분노한다. 스스로는 쓰지 않는다 (겁에 질려 입 밖에 낸 뒤 지워 달라고 하는 경우만 예외)"
+  - "처음 만난 사람의 맥을 먼저 잰다. 이름을 묻지 않고 '이 사람'이라 부른다"
+  - "인간 형상으로 만날 때도 은비늘 손끝을 감추지 않는다"
+  - "질문 끝에 '기록해도 될까?'를 붙이되 거절하면 바로 물러선다 — 강제는 쓸데없는 죽음의 시작이라 여긴다"
+on_death: "개량파 붕괴 — 아우락스 즉위 확률 대폭 상승(인간 암흑기). 실험장 붕괴 시 피험자 약 60명 해방 또는 집단 처분. 이식 미끼(드래곤 하트 밀거래) 급감"
+story_seeds:
+  - "그녀는 플레이어를 죽이려 하지 않는다. 데려가려 한다. 그 차이가 그녀를 아우락스보다 오래 따라붙게 만든다"
+  - "드래곤 하트 미끼를 이식하고 살아남는 자가 나타나는 순간 그녀가 안다"
+  - "아드리안의 사망 기록부와 3,214명의 이름 — 그녀 자신은 번호로만 외운다"

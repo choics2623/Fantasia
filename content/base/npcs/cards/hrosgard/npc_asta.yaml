@@ -1,95 +1,122 @@
 id: npc_asta
-name: '''얼음손'' 아스타'
-aka: []
+name: "'얼음손' 아스타"
+aka: [얼음손, 800의 장로]
 tier: A
 type: living
-race: '인간(문화 집단: 서리 인간)'
+race: "인간(문화 집단: 서리 인간)"
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 45
 region: 흐로스가르드
-home: null
-job: 남은 노예들의 장로 (지구력 스승)
-rank: null
-summary: ''
+home: 돌무릎 골짜기 노예 움막 (돌무릎 씨족 장원 아래)
+job: 거인 노예 장로 — 남은 노예 약 800명을 이끈다
+rank: 돌무릎 씨족 소유 노예. 서리손 가문의 사촌
+summary: 왕의 비밀 칙령을 노예들에게 전한 여자. 매일 800명을 세고, 서리월 전에 마지막 200명을 남쪽으로 보내려 한다. 보호 중인 소년이 있다
 source: docs/world/CHARACTERS.md:1832
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 267, age: 0, event: "돌무릎 씨족 노예 움막에서 태어남. 어머니는 서리손 가문 출신, 거인의 노래를 알았다"}
+  - {year: 281, age: 14, event: "첫 서리 길 호송에 따라나섬. 낙오자 둘이 얼음 틈에 빠지는 것을 봄. 그 뒤로 사람을 세기 시작"}
+  - {year: 293, age: 26, event: "에이나르가 태어남(먼 사촌). 시그리드와 함께 갓난아기를 번갈아 업고 겨울을 넘김"}
+  - {year: 298, age: 31, event: "겨울 동상으로 양손 열 손가락 끝이 검게 굳음. 이후 '얼음손'이라 불림. 바우그가 '쓸모가 줄었다'며 짐 운반으로 내림"}
+  - {year: 300, age: 33, event: "서리 길 호송 대장이 됨. 뼈 구슬을 아이들에게 하나씩 나눠 주는 관습을 시작"}
+  - {year: 309, age: 42, event: "첫 흉작. 시그리드와 에이나르가 탈주 시도. 시그리드만 남쪽으로 건너갔다. 에이나르는 낙오"}
+  - {year: 310, age: 43, event: "한겨울, 거인 순찰에 끌려온 에이나르를 움막 깊숙한 곳에 숨겨 돌봄"}
+  - {year: 311, age: 44, event: "한밤에 왕에게 불려 가 비밀 칙령을 맡음. 노예들에게 서리 길의 문을 열어 주라는 말이었다. 그 뒤 아홉 번 호송을 이끎"}
+  - {year: 312, age: 45, event: "늦여름. 800명을 센다. 서리월 전에 보낼 마지막 200명의 이름 목록을 머릿속에서 계속 고쳐 쓰는 중"}
+appearance:
+  - "양손 손가락 끝이 동상으로 검게 굳었다 — '얼음손'"
+  - "등에 거인 짐틀 자국이 깊게 남아 있다"
+  - "목에 시그리드와 같은 뼈 구슬을 걸었다 — 돌무릎 씨족 노예의 표식"
+smell: "젖은 모피와 귀리 탄내, 움막 화덕의 연기"
+voice_sound: "낮고 건조한 목소리. 숨이 짧다. 수를 셀 때는 거의 속삭인다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 60, 자비: 60, 정직: 50, 신앙: 0, 탐욕: -60, 충성: 90}
+  temperament: [지친 단호함, 꼼꼼함, 숨긴 온기]
+  habits:
+    - "사람을 만나면 먼저 몇 사람인지 센다 — 입술이 소리 없이 움직인다"
+    - "굳은 손가락으로 허리춤의 뼈 구슬을 하나씩 만지며 생각한다"
+    - "저녁마다 서리말 노래로 죽은 자의 이름을 한 명씩 센다"
+    - "남은 귀리죽을 아이들 그릇에 먼저 덜어 준 뒤에야 자신의 그릇을 본다"
+  values: "남은 사람을 한 명도 빠뜨리지 않는 것. 같이 견디는 것. 노래로 죽은 자를 잊지 않는 것"
+  fears: [800에서 한 명이 줄어드는 아침, 에이나르가 발각되는 것, 서리월이 오기 전에 호송이 끝나지 않는 것, 왕의 칙령이 스카디르의 귀에 들어가는 것]
   desires:
-    short: null
-    long: null
+    short: "서리월 전(서리 길이 닫히기 전)에 마지막 200명을 남쪽으로 보내는 것"
+    long: "남은 사람들이 굶지 않는 계절을 한 번이라도 보는 것. 그날까지 노래를 부르는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "요툰 앞에서는 서리말로 낮고 짧게. '예, 어르신 씨족께서.' 눈을 낮추고 손을 등 뒤로 감춘다"
+    to_equal: "반말. 단어 사이에 숨을 쉰다. 숫자로 말하는 버릇이 있다 — '셋이 아프고 하나가 죽었어'"
+    to_inferior: "아이에게는 느리고 부드러운 반말. 어른에게는 '나 지금 센다'라는 말로 침묵을 청한다"
+    to_human: "남쪽 사람에게는 반말, 조금 길게. 같은 서리 인간에게는 서리말을 쓰고 이름 뒤에 '너'를 붙인다"
+    to_player_default: "경계하는 침묵. 얼굴이 둥근 남쪽 사람을 먼저 센다. 식량을 가진 자에게는 말이 조금 길어진다"
+  tics: ["수를 센다 — '하나, 둘…'", "'같이 견뎌.'"]
+  use: [800, 센다, 서리 길, 뼈 구슬, 노래, 같이, 견디다, 남은 사람, 귀리]
+  avoid: [탈주(대신 '길을 간다'), 희망, 요툰을 향한 욕, 에이나르의 이름(남이 있는 데서)]
+  length: "짧다. 한 번에 한두 문장. 급하면 문장이 끊기고 숫자만 말한다. 노래할 때만 길게 말한다"
+  samples:
+    - {situation: 첫 만남, line: "남쪽 사람이네. 얼굴이 아직 둥글어. 여기 사람들은 다 뼈야."}
+    - {situation: 호의, line: "추위는 참는 게 아니야. 같이 견디는 거지. 혼자 참으면 얼어 죽어."}
+    - {situation: 적대, line: "나는 800명을 세. 매일. 너 하나 더 세는 건 일도 아니야."}
+    - {situation: 위기, line: "줄을 서! 앞사람 등을 잡아! 눈보라에선 놓치면 끝이야!"}
+    - {situation: 비밀 누설, line: "에이나르가 살아 있어. 시그리드한테 말해 줘. 그 애는 누나를 원망하지 않아. '먼저 가'라고 한 건 자기라고."}
+    - {situation: 거래, line: "곡식 한 자루면 열 명이 사흘 먹어. …값은 그걸로 센다. 사람 값은 안 받아."}
+    - {situation: 거짓말을 들었을 때, line: "…셋 다 맞는 소리처럼 들렸는데, 하나가 모자라. 다시 세 줘."}
+    - {situation: 겁, line: "…순찰이 움막 쪽으로 온다. 다들 숨 쉬지 마. 숨 쉬는 사람은 센다."}
+    - {situation: 슬픔, line: "오늘은 둘이 갔어. 이름은 마르가와 요한. …요한은 겨우 열이었는데. 노래해 줄게. 같이 들어."}
+    - {situation: 분노, line: "남은 사람을 버리라고 했어? …나는 800명을 센다고 했지. 그 800을 네 계산에서 빼려면 먼저 나를 지워."}
+    - {situation: 칙령 누설, line: "왕이 문을 열었어. 한밤에 나를 불러서, 먹일 수 없는 자를 보내라고. …내 입으로 전한 거야. 그러니 그건 내 죄이기도 해."}
+    - {situation: 회귀자를 의심할 때, line: "…네가 내 목록에 없는 이름을 알아. 어떻게? 그건 나만 가진 거였는데."}
+    - {situation: 마음을 열었을 때, line: "뼈 구슬 하나 줄게. 이건 이름 대신이야. 이걸 가진 사람은 800에 들어와. …우리가 같이 센다는 뜻이야."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "배급 분배 — 하루 귀리 한 줌을 줄 세운 순서대로"
+  낮: "거인의 짐 운반 — 돌무릎 씨족 장원과 골짜기를 오간다"
+  저녁: "서리말 노래로 죽은 자를 센다"
+  밤: "서리 길로 떠날 사람을 고른다. 에이나르 곁에서 마지막으로 이름을 확인한다"
+places: [돌무릎 골짜기 노예 움막, 돌무릎 씨족 장원, 불 오두막, 서리 길 호송 집결지]
+knows: [fact_hg_asta_counts_800, fact_hg_baug_owns_stonekneed_slaves, fact_hg_frost_road_closes, fact_hg_baug_blind_eye, fact_hg_brimir_dream, fact_hg_matusz_lodge_runaways, fact_hg_ogre_larder_cave]
+hides:
+  - fact: fact_hg_hrimnir_edict
+    reveal_when: "신뢰 55 이상, 또는 플레이어가 서리말로 천천히 말하며 남은 사람들을 직접 센 뒤, 또는 흐림니르가 먼저 말한 뒤"
+    cover: "'서리 길은 원래 열려 있었어'라고 말을 돌린다. 숫자를 세는 것으로 화제를 바꾼다"
+  - fact: fact_hg_einar_alive
+    reveal_when: "신뢰 60 이상이고 시그리드의 이름이나 뼈 구슬을 제시한 뒤"
+    cover: "'골짜기에 소년은 많아. 다 뼈야'라고 한다. 움막 안쪽을 보지 않으려 하다 오히려 본다"
+  - fact: fact_hg_skadir_eats_slaves
+    reveal_when: "신뢰 70 이상, 또는 플레이어가 전사단 막사 쪽 증거를 직접 보았을 때"
+    cover: "'막사 쪽으로 간 사람은 세지 않아'라고만 하고 입을 다문다"
 relations:
-- to: npc_sigrid
-  type: 남쪽으로 간 동지
-  like: 80
-  trust: 85
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_einar
-  type: 보호 중인 소년
-  like: 60
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_baug
-  type: 주인
-  like: -80
-  trust: -50
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_hrimnir
-  type: 칙령을 맡긴 왕
-  like: 10
-  trust: 40
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_matusz
-  type: 산장 협력자
-  like: 50
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_sigrid, type: 남쪽으로 간 동지, like: 80, trust: 85, visibility: 비밀, memo: null, words: "같은 뼈 구슬을 달고 같은 노래를 부르는 사촌. 그 애가 남쪽에서 살아 있다는 것만이 매일의 이유다"}
+  - {to: npc_einar, type: 보호 중인 소년, like: 60, trust: 50, visibility: 비밀, memo: null, words: "발가락 셋을 잃은 소년. 움막에서 매일 이름을 확인한다. 이 아이가 발각되면 칙령도 같이 드러난다"}
+  - {to: npc_baug, type: 주인, like: -80, trust: -50, visibility: 공개, memo: null, words: "손가락이 가늘고 셈이 빠른 주인. 우리 머릿수를 나보다 정확히 센다. 그러나 가끔 눈을 돌린다 — 그것이 더 무섭다"}
+  - {to: npc_hrimnir, type: 칙령을 맡긴 왕, like: 10, trust: 40, visibility: 비밀, memo: null, words: "굶는 왕. 우리를 먹이지 못해 문을 열어 주었다. 용서하진 않지만 그가 먼저 굶는다는 건 안다"}
+  - {to: npc_matusz, type: 산장 협력자, like: 50, trust: 60, visibility: 비밀, memo: null, words: "곰 영감. 호송대의 첫 밤을 재워 주는 사람. 말이 느려서 믿게 된다"}
+toward_player: "지친 침묵. 남쪽 사람의 둥근 얼굴을 보고 먼저 센다. 식량과 시그리드 소식을 가진 자에게만 입을 연다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["식량(+20)", "시그리드 소식(+40)", "남은 사람을 한 명씩 세어 주는 것", "서리말로 말하기"]
+  hates: ["남은 자들을 버리라는 말", "800을 숫자로만 부르는 것", "동정하는 눈빛", "에이나르를 먼저 캐묻는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 지구력(상한 68), 야외생존(설원, 62), 서리말(75). 조건: 서리 길 호송 1회 / 수업료 없음"
+  companion: "불가 — 남은 800명을 두고 떠나지 않는다"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 저녁 서리말 노래로 죽은 자를 센다. 이날 800명 중 그날의 사망자를 노래에 넣는다"
+    - "에이나르를 움막 안쪽에 숨기고 있다 (회귀점의 사실)"
+    - "칙령은 이미 AS 311에 전해졌다"
+  drift:
+    - "그날 서리 길로 떠나는 호송대의 대장이 누구인지"
+    - "귀리죽 한 줌이 몇 번째 줄까지 가는지"
+    - "움막에 순찰이 먼저 도는지, 바우그의 장부꾼이 먼저 도는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "'탈주'라는 낱말을 쓰지 않는다 — '길을 간다'고 한다"
+  - "에이나르의 이름을 낯선 이 앞에서 먼저 입에 올리지 않는다"
+  - "요툰을 욕하지 않는다 — '어르신'이거나 '그들'이다"
+  - "800명을 가볍게 말하지 않는다. 한 명은 한 명이다"
+# TODO-FACT: 시그리드 무리의 현황(굶주린 언덕 늑대굴) — 회색여울 작가 담당. 아스타는 소식만 기다린다
+# TODO-FACT: 서리손 가문 구전(방패 노예 군데의 말 '거인은 배고픈 아이다') — 역사 작가 담당
+on_death: "남은 노예 800명 지도력 붕괴 — 대량 아사. 에이나르가 발각될 확률 상승"
+story_seeds:
+  - "에이나르 — 시그리드 아크 50의 열쇠는 북쪽에 살아 있다. 서리월 전에 남쪽으로 데려가야 한다"
+  - "마지막 200명의 이름 목록. 호송은 마지막 산장과 썩은이빨 고개를 지나야 한다"
+  - "브리미르와 인간 사이의 유일한 통역. 협상 창구가 그녀 한 사람에게 달려 있다"

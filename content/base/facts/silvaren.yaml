@@ -1,0 +1,127 @@
+# 실바렌 영원 정원의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_sv_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+- id: fact_sv_prophecy_first_seen
+  text: "엘다르 예언 '마지막 말이 모든 이름을 말하는 날, 먼저 태어난 자들은 이름을 잃으리라'를 처음 본 사람은 아버지 이실도르 첫목소리가 아니라 엘라스트리엘이다. 이실도르는 그것을 대신 입으로 말한 사람이다"
+  truth: true
+  danger: 3
+  names: [이실도르]
+- id: fact_sv_first_ember_burned
+  text: "SK ~400, 엘라스트리엘이 엘다르 정원에서 글자를 가르친 노예 '첫 불씨'를 정원째 불태우라 명했다. 엘다르가 처음 짠 시간의 그물이 그 노예의 회귀를 붙잡은 채였다"
+  truth: true
+  danger: 5
+  names: [첫 불씨]
+- id: fact_sv_elastriel_remembers_ember_voice
+  text: "엘라스트리엘은 첫 불씨의 말투와 손짓(허공에 가로획을 긋는 버릇)을 3,000년 동안 한 번도 잊지 않았다"
+  truth: true
+  danger: 3
+  names: [첫 불씨]
+- id: fact_sv_elastriel_name_loss_doubt
+  text: "엘라스트리엘은 '이름을 잃는다'는 것이 죽음이 아니라 혈명의 굴레(변하지 못함)에서 풀려나는 것일지도 모른다고 의심한다. 엘다르가 처음으로 '배울' 수 있게 되는 일이다. 그녀는 그것을 두려워하고, 조금은 바란다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_sv_elastriel_senses_echo
+  text: "엘라스트리엘은 플레이어에게 깃든 것이 잔향임을 알아본다. 그 사실을 아에린에게 말할지는 그녀 자신도 정하지 못했다"
+  truth: true
+  danger: 5
+  names: [아에린]
+- id: fact_sv_elastriel_neutral_stance
+  text: "엘라스트리엘은 신살 뒤 막지도 돕지도 않기로 결정했고, 맹약회의 313에서 엘다르의 입장을 아직 정하지 않았다"
+  truth: true
+  danger: 1
+  names: []
+- id: fact_sv_time_net_soul_garden
+  text: "영혼 정원 북서쪽 안개 계곡의 수정 기둥 사이에서 영원 여왕과 존속파가 '시간의 그물'을 짠다. 그물 안에서 죽은 잔향자는 회귀점에 닿지 못한다 — 진짜 죽음이다"
+  truth: true
+  danger: 5
+  names: [시간의 그물]
+- id: fact_sv_aerin_87_failures
+  text: "영혼 정원의 피험 정원지기 140명 가운데 징후자는 87명이며 전원이 잔향이 아니다. 아에린은 실패할 줄 알면서 '방법론을 다듬기 위해' 옮김 의식을 계속한다(올해 31명, 성공 0)"
+  truth: true
+  danger: 5
+  names: [아에린]
+- id: fact_sv_aerin_transfer_outcome
+  text: "옮김 의식이 성공하면 잔향은 엘다르 아기 안에서 인간의 기억을 잃은 채 깨어나며 다시는 회귀점으로 돌아가지 못한다. 아에린은 그것을 구원이라 부른다"
+  truth: true
+  danger: 5
+  names: [아에린]
+- id: fact_sv_aerin_wants_change
+  text: "아에린은 엘다르 가운데 처음으로 '변화'를 원한 자다. 그것이 그의 이단이다"
+  truth: true
+  danger: 2
+  names: [아에린]
+- id: fact_sv_aerin_vessel_liandel
+  text: "아에린은 마지막 아이 리안델을 '돌아옴의 그릇' 후보로 본다 — 그가 한 말: '그 아이 안에 넣으면 된다'"
+  truth: true
+  danger: 5
+  names: [아에린, 리안델]
+- id: fact_sv_dane_silvanus_son
+  text: "'은눈' 데인은 순혈파 수장 실바누스와 정원 인간 이세의 아들이다(AS 286생). 데인 자신은 아직 모른다"
+  truth: true
+  danger: 4
+  names: [데인, 실바누스, 이세]
+- id: fact_sv_dane_suspects_father
+  text: "데인은 자기 아버지가 매일 밤 별을 세는 실바누스일지 모른다고 의심만 하고 있다"
+  truth: true
+  danger: 2
+  names: [데인, 실바누스]
+- id: fact_sv_ise_first_ritual
+  text: "이세는 아에린의 첫 '옮김 의식' 피험자였고 AS 287에 죽어 영혼 정원 온실 3동 아래에 묻혔다"
+  truth: true
+  danger: 4
+  names: [이세, 아에린]
+- id: fact_sv_ise_last_words
+  text: "이세는 죽기 전 아들 데인에게 '네 아버지는 매일 밤 별을 센단다'라고 말했다"
+  truth: true
+  danger: 3
+  names: [이세, 데인]
+- id: fact_sv_silvanus_teach_time
+  text: "실바누스는 잔향이 나타나면 시간의 진명을 가르치려 한다. 아스테리온이 하려던 일을 끝내게 하는 것이 엘다르의 '존엄한 마지막 일'이라 믿는다"
+  truth: true
+  danger: 4
+  names: [실바누스, 아스테리온]
+- id: fact_sv_silvanus_evidence
+  text: "실바누스는 영혼 정원을 무너뜨릴 증거를 모으고 있다. 인간에게 '부탁'하는 것조차 그에게는 굴욕이다"
+  truth: true
+  danger: 3
+  names: [실바누스]
+- id: fact_sv_dane_reads_elvish
+  text: "데인은 엘다르 문자를 읽을 줄 안다. 실바누스의 특별 허가는 시 '낭독'까지이고, 글자를 읽는 것이 들키면 정원에서 '잊힘'(숲 추방 — 사실상 사형)이다"
+  truth: true
+  danger: 4
+  names: [데인]
+- id: fact_sv_dane_taught_human_songs
+  text: "데인은 리안델에게 인간의 노래를 가르쳤다. 들키면 그가 아니라 정원지기 마을 전체가 처벌된다"
+  truth: true
+  danger: 5
+  names: [데인, 리안델]
+- id: fact_sv_liandel_learned_songs
+  text: "리안델은 인간 노래 3곡을 '배웠다' — 기억이 아니라 배움이다. 엘다르 교사들이 알면 그녀를 '고쳐야 할 병'으로 볼 것이다"
+  truth: true
+  danger: 4
+  names: [리안델]
+- id: fact_sv_mira_sold_eye
+  text: "미라(31)는 왼눈의 잿빛 얼룩(백내장 초기)으로 루멘에서 '징후자'로 넘겨져 영혼 정원에 90 비늘에 팔렸다. 그녀는 잔향이 아니다"
+  truth: true
+  danger: 2
+  names: [미라]
+- id: fact_sv_mira_fifth_ritual
+  text: "미라의 다섯 번째 옮김 의식은 서리월 9일이다. 지금까지 네 번을 살아남았고 기억이 조금씩 지워지고 있다"
+  truth: true
+  danger: 4
+  names: [미라]
+- id: fact_sv_fern_north_gate_key
+  text: "'이끼손' 페른이 흰 울타리 정원 울타리 북문의 열쇠를 가졌다"
+  truth: true
+  danger: 3
+  names: [페른]
+- id: fact_sv_fern_seed_bribe
+  text: "페른은 '바깥 숲의 씨앗'이면 뇌물을 받는다"
+  truth: true
+  danger: 1
+  names: [페른]
+- id: fact_sv_silvan_children_born
+  text: "침묵의 해(AS 268) 이후에도 실반 아이는 태어난다(연 3~5명). 별빛 엘다르는 이 사실을 정원 밖으로 내지 않는다"
+  truth: true
+  danger: 3
+  names: [실반]

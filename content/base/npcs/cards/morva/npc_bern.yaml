@@ -1,95 +1,129 @@
 id: npc_bern
 name: 베른
-aka: []
+aka: [장부 촌장, 칼 베른]
 tier: A
 type: living
 race: '인간(문화 집단: 투사 혈통)'
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 49
 region: 모르바 늪
-home: null
+home: "진흙등불 회관 옆 장부 오두막"
 job: 진흙등불의 촌장
-rank: null
-summary: ''
+rank: 자유촌 촌장 — 뿌리 모임이 뽑은 대표, 전직 그롬마르 원형장 투사(12승, '칼' 서열)
+summary: 340명의 자유와 매년 여섯 명의 공물 사이에서 장부를 쓰는 전직 투사. 목줄단 첩자 일곱을 처형했고, 와이번에게 보낸 이들에게는 '사냥 원정'이라고 거짓말했다
 source: docs/world/CHARACTERS.md:1458
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 263, age: 0, event: "그롬마르 원형장 지하 숙소 '쇠우리'에서 투사 혈통의 아이로 태어남"}
+  - {year: 270, age: 7, event: "쇠우리에서 '새끼'(0~9승) 훈련을 시작. 그롬 전투어 명령을 먼저 배우고 공용어는 나중에 배움"}
+  - {year: 285, age: 22, event: "12승째 — '칼'(10~49승) 서열. 팔에 승수를 새김. 같은 해 장부 일을 하던 조합 서기의 어깨너머로 숫자와 글자 모양을 훔쳐봄"}
+  - {year: 289, age: 26, event: "쇠우리 탈주. 잿빛 실을 타고 남쪽으로"}
+  - {year: 291, age: 28, event: "모르바 뿌리마을에 도착. 알렉의 진흙판 학교 첫 어른 학생이 되어 석 달 만에 이름을 쓰고 일 년 만에 장부를 읽음"}
+  - {year: 296, age: 33, event: "탈주자 서른한 명과 함께 섬 위에 '진흙등불' 마을을 세움. 첫 등불은 회관 지붕에 걸었다"}
+  - {year: 303, age: 40, event: "독꼬리 와이번과 사냥터 갈대 매듭 문제로 부딪쳐 왼쪽 다리에 독이 닿음 — 무릎 아래 살이 검게 죽음"}
+  - {year: 305, age: 42, event: "새 도착자 '심사'를 시작. 목줄단 첩자를 처음으로 가려내 처형 — 이후 일곱 건"}
+  - {year: 308, age: 45, event: "독꼬리 와이번과 공물 계약 — 매년 노동력 여섯 명. 보내는 이들에게는 '사냥 원정'이라고 말함. 젖은 휴전(갈대 매듭)은 그대로 유지"}
+  - {year: 311, age: 48, event: "마을 인구 340. 매달 스무 명씩 도착해 식량이 모자라기 시작"}
+  - {year: 312, age: 49, event: "겨울 식량(340명분 + 매달 도착 20명)과 공물 재협상을 마을 회의에 올릴 준비를 하며 낙엽월 1일을 맞음"}
+appearance:
+  - "그롬마르 원형장 투사의 '12승' 새김이 팔뚝에 남아 있다"
+  - "왼쪽 다리에 독꼬리 와이번의 독으로 검게 죽은 살 — 걸을 때 끝을 조금 끈다"
+  - "늘 진흙 묻은 장부를 끼고 다닌다 (그는 글을 안다 — 모르바에서는 합법)"
+smell: "젖은 가죽과 진흙, 숯 먹 냄새"
+voice_sound: "낮고 건조하다. 명령할 때는 문장을 끊어 한 박자씩 던진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 55, 자비: 40, 정직: 45, 신앙: -10, 탐욕: -20, 충성: 80}
+  temperament: [엄격, 계산적, 숨긴 죄책감]
+  habits:
+    - "새 도착자의 손바닥을 뒤집어 손톱 밑까지 본다"
+    - "숫자를 입으로 센다 — 둑 말뚝, 도착자, 식량 자루. 틀리면 처음부터"
+    - "공물 이야기가 나오면 왼쪽 다리의 죽은 살을 만지작거린다"
+    - "밤마다 장부 끝에 그날의 사망을 적고 숯으로 가로선을 긋는다"
+  values: "숫자는 거짓말하지 않는다. 마을은 장부로 지킨다. 한 번 뽑은 규칙은 자기부터 지킨다"
+  fears: [공물 여섯 명이 살아 있지 않다는 것을 확인하는 날, 장부에서 일곱 줄을 다시 읽는 것, 겨울 식량이 모자라 내분이 나는 것, 목줄단 첩자를 못 가려내 마을이 팔리는 것]
   desires:
-    short: null
-    long: null
+    short: "겨울 식량 340명분과 매달 도착하는 20명분 확보, 독꼬리 와이번 공물 재협상"
+    long: "자기 장부에 '공물'이라는 줄이 사라진 겨울을 한 번 적어 보는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "노파들에게는 '노파님', 짧은 존댓말('~습니다'). 질문을 받으면 숫자부터 답한다"
+    to_equal: "반말. 이름 대신 '자네'. 일 이야기만 한다"
+    to_inferior: "새 도착자에게는 명령형 반말 — '보여.', '뒤집어.' 아이에게는 한 박자 느려진 반말"
+    to_player_default: "심사 말투 — 명령형 반말. 심사를 통과하면 '자네'. 신뢰가 쌓이면 이름을 장부에 적고 이름으로 부른다"
+  tics: ["'손바닥 보여.'", "'장부에 적는다.'"]
+  use: ["장부", "둑", "말뚝", "뿌리 모임", "심사", "손바닥", "칼·흉터(승수 서열)", "숫자"]
+  avoid: ["어쩔 수 없다", "운명", "주인", "희망"]
+  length: "짧고 끊긴다. 한 번에 한두 문장. 숫자와 명령이 많고 감탄사는 없다. 공물 이야기에서만 오히려 말수가 줄어든다"
+  samples:
+    - {situation: 첫 만남, line: "손바닥 보여. 뒤집어. …목줄 자국은 없군. 일할 수 있나?"}
+    - {situation: 첫 만남(심사), line: "질문은 셋이다. 어디서 왔나. 누가 보냈나. 마지막으로 먹은 게 뭐냐. 거짓말은 손바닥이 먼저 한다."}
+    - {situation: 호의, line: "여기선 글을 써도 안 죽어. 대신 굶어 죽을 수는 있지. 그게 자유야."}
+    - {situation: 적대, line: "목줄단은 늪에 빠져 죽어. 아주 깊은 데."}
+    - {situation: 거래, line: "식량 스무 자루면 둑 사흘. 계산 틀렸으면 말해. 틀린 걸 고치는 게 장부다."}
+    - {situation: 거짓말을 들었을 때, line: "(숯 묻은 손가락으로 장부를 톡 친다) 그 숫자는 안 맞아. 다시."}
+    - {situation: 분노, line: "공물 앞에서 체념하는 소리를 하면 내 장부에서 지워진다. 그걸 고치는 건 내 일이다. 네 일은 입 다무는 거고."}
+    - {situation: 위기, line: "둑이 터진다— 아이들은 회관 다락으로! 둘, 셋, 넷… 다 올라갔나! 다시 센다!"}
+    - {situation: 슬픔, line: "올해 장부에 서른하나. 일곱 줄은 내가 그었다. 남은 스물넷은 열병이나 물이다. …그래도 다 이름이 있다."}
+    - {situation: 비밀 누설, line: "와이번한테 보낸 여섯 명. 매년 여섯. 나는 그들에게 '사냥 원정'이라고 말했다."}
+    - {situation: 회귀자를 의심할 때, line: "심사도 하기 전에 우리 둑 말뚝 번호를 불렀어. 장부에도 안 적은 번호를. 어디서 봤나."}
+    - {situation: 마음을 열었을 때, line: "자네 이름을 장부에 적겠다. 뿌리 모임에서 부를 때 쓰려고. …첫 이름 날은 일 년 뒤다. 살아서 와."}
+    - {situation: 아이에게, line: "둑 위로는 올라가지 마라. 올라가고 싶으면 나랑 같이. 알았지? …좋아. 이름은?"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "둑 보수 감독 — 말뚝을 하나씩 세며 걷는다"
+  낮: "새 도착자 심사 (목줄단 첩자 가려내기). 세 가지 질문과 손바닥 검사"
+  저녁: "회관 회의 — 식량 장부와 공물 문제"
+  밤: "경계 순찰. 돌아와 장부 끝에 사망을 적는다"
+places: [진흙등불 회관, 둑, 장부 오두막, 쉿소리 늪 경계, 일곱 노파의 둥지]
+knows: [fact_mv_witch_forty_limit, fact_mv_poison_for_hags, fact_nc_thirst_night_tribute]
+hides:
+  - fact: fact_mv_bern_spy_executions
+    reveal_when: "신뢰 50 이상, 또는 엘스베트가 먼저 일곱 건을 말한 뒤"
+    cover: "사망 장부 이야기가 나오면 '열병과 물'이라고만 하고 장부를 덮는다"
+  - fact: fact_mv_wyvern_tribute_six
+    reveal_when: "신뢰 60 이상, 또는 플레이어가 공물 인원이 매년 여섯이라는 것을 정확히 말한 뒤"
+    cover: "'공물은 노동력이다'라고만 한다. 어디서 일하느냐고 물으면 장부의 다른 줄을 읽는다"
+  - fact: fact_mv_bern_agnes_link
+    reveal_when: "신뢰 40 이상이고 플레이어가 루멘의 끊어진 고리 쪽 사람이거나 그 표식을 보일 때"
+    cover: "'루멘 소식은 장어 장수들한테서나 듣는다'고 얼버무린다"
+  - fact: fact_nc_tessa_convoy
+    reveal_when: "신뢰 40 이상이고 플레이어가 녹테른 경계(붉은 갈대 선) 이야기를 먼저 꺼낼 때"
+    cover: "'붉은 갈대 선 너머는 돌아오지 못하는 길이다'라고만 한다"
 relations:
-- to: npc_oda
-  type: 늪 마녀 첫째
-  like: 50
-  trust: 60
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_saska
-  type: 공물 상대
-  like: -50
-  trust: -20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_nadia
-  type: 사냥대장
-  like: 60
-  trust: 70
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_agnes
-  type: 잿빛 실 상류
-  like: 40
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_tessa
-  type: 남쪽 안내인
-  like: 40
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_oda, type: 늪 마녀 첫째, like: 50, trust: 60, visibility: 공개, memo: null, words: "자유촌의 병자를 돌보는 눈먼 노파. 그녀의 병이 비어 가는 것을 그는 알고 있다. 존경하고, 그만큼 불편하다"}
+  - {to: npc_saska, type: 공물 상대, like: -50, trust: -20, visibility: 공개, memo: null, words: "다리를 죽인 짐승이자 매년 여섯을 가져가는 거래 상대. 약속은 지킨다. 그 약속이 제일 싫다"}
+  - {to: npc_nadia, type: 사냥대장, like: 60, trust: 70, visibility: 공개, memo: null, words: "가장 믿는 눈. 바람은 읽어도 거짓말은 못 하는 사람. 그 눈이 와이번 쪽을 오래 보는 것이 마음에 걸린다"}
+  - {to: npc_agnes, type: 잿빛 실 상류, like: 40, trust: 60, visibility: 비밀, memo: null, words: "루멘의 수녀. 서신 속 글씨가 단정해서 장부와 함께 보관한다. 만난 적은 없다"}
+  - {to: npc_tessa, type: 남쪽 안내인, like: 40, trust: 50, visibility: 비밀, memo: null, words: "붉은 갈대 선에서 사람을 넘겨주는 아이 같은 호송인. 칼부터 꺼내는 버릇이 마음에 든다 — 심사를 거치지 않아도 되는 유일한 사람"}
+  - {to: npc_hag_elsbet, type: 꿈 심문 담당, like: 20, trust: 55, visibility: 비밀, memo: 처형 7건 연루, words: "첩자를 가려내는 눈 맑은 노파. 같이 일곱 줄을 그은 사이. 서로 그 줄 이야기는 먼저 꺼내지 않는다"}
+toward_player: "심사한다. 세 가지 질문과 손바닥 검사. 목줄 자국이 없으면 일꾼으로 받고, 있으면 더 오래 본다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["노동력·기술 제공(+15)", "와이번 문제 해결안(+30)", "장부를 읽고 쓰는 능력", "숫자로 말하기"]
+  hates: ["'공물은 어쩔 수 없다'는 말", "심사를 건너뛰자는 부탁", "사망 장부를 들춰 보는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 읽고쓰기(상한 35), 검술(40), 화술(45). 조건: 자유촌 거주. 수업료: 둑 보수 하루 노동"
+  companion: "불가 (촌장)"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "공물 여섯 명이 매년 와이번에게 간다 (회귀점의 사실)"
+    - "낙엽월 1일 저녁 회관 회의에서 겨울 식량 장부(340명 + 매달 20명)를 읽는다"
+    - "매일 낮 새 도착자를 심사한다"
+  flow:
+    - "서리월 초 첫 서리 전에 둑 보수를 마친다"
+    - "달 끝에 녹테른 경계에서 탈주자 행렬이 늪에 닿는다"
+  drift:
+    - "그날 도착자 가운데 목줄단 첩자가 섞였는가"
+    - "둑이 물에 닿는 높이와 터지는 말뚝 번호"
+    - "회의에서 강경파와 온건파 중 누가 먼저 일어서는가"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "공물 여섯 명을 '사냥 원정'이라 속였다는 이야기를 스스로 꺼내지 않는다"
+  - "새 도착자 심사를 건너뛰지 않는다 — 누구든 손바닥을 본다"
+  - "'공물은 어쩔 수 없다'는 말을 하지 않는다"
+  - "글을 가르치는 사람을 비웃지 않는다"
+on_death: "자유촌 내분(강경파 대 온건파). '불씨' 단계(탈주자 공동체 1년 유지) 위협. 목줄단 첩자 심사가 멈춘다"
+story_seeds:
+  - "공물 여섯 명의 행방 — 독꼬리 와이번 둥지에 살아 있다면?"
+  - "엘스베트의 일곱 줄 중 둘이 틀렸다는 것을 베른이 알게 되는 날"
+  - "매달 도착하는 스무 명 중 목줄단 첩자가 섞여 있다 — 증거가 반쯤일 때 익사형을 집행할 것인가"
+# TODO-FACT: 아그네스(루멘 끊어진 고리 지부장)가 베른에게 보내는 서신의 내용 — 루멘 작가

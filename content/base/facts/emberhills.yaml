@@ -1,0 +1,132 @@
+# 잿불 언덕(은비늘 요람·붉은 계단)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_eh_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 멜리산드와 은비늘 요람 ──
+- id: fact_eh_cradle_experiment
+  text: "멜리산드의 은비늘 요람에서는 AS 296부터 인간에게 용의 심장 조각을 이식하는 실험이 이어져 왔다. 기록상 사망자 3,214명, 최장 생존 9일, 생존자는 없다"
+  truth: true
+  danger: 5
+  names: [멜리산드, 은비늘 요람]
+- id: fact_eh_mel_vessel
+  text: "멜리산드가 찾는 것은 새 종족이 아니라 이식을 견디는 단 하나의 그릇이다. 그것은 신의 마지막 말을 몸에 품은 잔향이다"
+  truth: true
+  danger: 5
+  names: [멜리산드, 잔향]
+- id: fact_eh_mel_bait_hearts
+  text: "밀거래되는 드래곤 하트 조각의 상당수는 실험 폐기물이 아니라 멜리산드가 일부러 흘린 미끼다. 그것을 이식하고 살아남는 자가 나타나면 찾아내기 위해서다"
+  truth: true
+  danger: 5
+  names: [멜리산드, 드래곤 하트]
+- id: fact_eh_mel_goal_wound
+  text: "멜리산드의 장기 목표는 아버지의 시간의 상처를 그릇에 '옮겨 담아' 용족이 이름을 잃지 않을 방법을 찾는 것이다. 그리고 즉위하는 것이다"
+  truth: true
+  danger: 5
+  names: [멜리산드, 바르스카르]
+- id: fact_eh_mel_311_reports
+  text: "AS 311 잔향 징후 보고가 3배로 늘자 멜리산드는 '그것이 깨어났다'고 확신했다. 레아·헨릭·이레네 볼드에게 회색여울 북부의 '설명되지 않는 학습 속도' 보고를 요구했다"
+  truth: true
+  danger: 4
+  names: [멜리산드, 레아, 헨릭, 이레네 볼드, 회색여울]
+- id: fact_eh_mel_blanket
+  text: "멜리산드는 피험자에게 담요를 주고 직접 맥을 짚는다. 무심한 친절이 그녀의 방식이며, '쓸데없이 죽이는 것'을 싫어한다"
+  truth: true
+  danger: 1
+  names: [멜리산드]
+- id: fact_eh_mel_missing_scale
+  text: "멜리산드의 가슴 비늘 한 장이 없다 — 자기 심장 조각을 실험에 썼다는 소문이 있다. 왼손에 은제 계측 바늘을 늘 쥐고 다닌다"
+  truth: true
+  danger: 2
+  names: [멜리산드]
+- id: fact_eh_mel_politics
+  text: "멜리산드는 계승 2순위(개량파)이며 잿빛 탑, 엘다르 존속파, 세렌 자본이 그녀를 지지한다. 그녀는 1년의 절반을 바알카르에서 보낸다"
+  truth: true
+  danger: 1
+  names: [멜리산드]
+# ── 아드리안 ──
+- id: fact_eh_adrian_wasted
+  text: "아드리안 코르벨은 피험자 일부를 자기 가설을 검증하려는 '무의미한' 이유로 소모했다. 멜리산드가 알면 그를 죽일 것이다"
+  truth: true
+  danger: 4
+  names: [아드리안, 멜리산드]
+- id: fact_eh_adrian_abel
+  text: "이브의 쌍둥이 아벨(피험체 2,871번)을 시술한 것이 아드리안이다. 아벨의 기록 칸에는 그가 남긴 메모 '누이 쪽이 더 튼튼해 보임'이 있다"
+  truth: true
+  danger: 3
+  names: [아드리안, 아벨, 이브]
+- id: fact_eh_adrian_ledger
+  text: "아드리안의 사망 기록부에는 피험자 3,214명의 번호와 원래 이름 일부가 적혀 있다. 이름을 되찾아 주는 것은 '글'의 상징이 될 수 있다"
+  truth: true
+  danger: 3
+  names: [아드리안]
+- id: fact_eh_adrian_nine_days
+  text: "아드리안은 최장 생존 9일 기록을 깨는 것을 자기 이름을 위한 목표로 삼는다. 그는 매일 아침 신규 피험자 4~6명을 선별한다"
+  truth: true
+  danger: 3
+  names: [아드리안]
+# ── 이브와 아벨 ──
+- id: fact_eh_eve_stolen_page
+  text: "이브는 아드리안의 사망 기록부 한 장(2,850~2,900번)을 훔쳐 숯막 갱도 벽 틈에 숨겼다. 이브는 글을 읽지 못한다"
+  truth: true
+  danger: 4
+  names: [이브, 아드리안, 숯막]
+- id: fact_eh_eve_kill_plan
+  text: "이브는 소각로 연통에서 아드리안을 죽일 계획을 세우고 있다"
+  truth: true
+  danger: 4
+  names: [이브, 아드리안]
+- id: fact_eh_eve_volunteered
+  text: "이브는 아벨 대신 자신이 시술대에 오르겠다고 자원했다가 '징후 없음 — 부적합' 판정으로 거절당했다"
+  truth: true
+  danger: 2
+  names: [이브, 아벨]
+- id: fact_eh_flue_exit
+  text: "은비늘 요람의 소각로 연통은 지상으로 이어지는 출구다. 연기가 많이 나가는 쪽이 출구라는 것을 이브는 안다"
+  truth: true
+  danger: 3
+  names: [이브]
+- id: fact_eh_abel_record
+  text: "아벨은 AS 311에 피험체 2,871번으로 시술받고 이틀을 버텼다. 이브의 쌍둥이 남동생이다. 시술 전 머리를 반만 밀렸고, 이브는 그 쪽과 같은 쪽을 민다"
+  truth: true
+  danger: 2
+  names: [아벨, 이브]
+# ── 로크와 갱반 ──
+- id: fact_eh_rok_dara_words
+  text: "로크 가문에 전해지는 붉은 손 다라의 말은 '나는 전에도 왔고 또 올 것이다'이다. 로크는 다라가 아스테리온과 같은 사람이었다고 믿는다"
+  truth: true
+  danger: 3
+  names: [로크, 다라, 아스테리온]
+- id: fact_eh_rok_informers
+  text: "로크의 제7갱반 40명 중 3명이 목줄단 밀고자다. 로크는 그 수만 알고 누구인지는 모른다"
+  truth: true
+  danger: 3
+  names: [로크]
+- id: fact_eh_rok_stockpile
+  text: "로크는 폐갱 '다라의 굴'에 곡괭이 200자루와 용불 기름 12통을 비축하는 중이다. 6일에 한 번 거기서 비밀 모임이 열린다"
+  truth: true
+  danger: 4
+  names: [로크, 다라의 굴]
+- id: fact_eh_rok_grandfather
+  text: "로크의 할아버지는 붉은 길에서 살아남은 7명 중 하나다. 처형대가 모자라 살았다. 로크는 3대째 '붉은 점' 낙인을 받았다"
+  truth: true
+  danger: 1
+  names: [로크]
+- id: fact_eh_rok_uprising_day
+  text: "광부등은 경고의 날(태양월 12일)에 봉기하려 한다. 그날은 용인 경비가 모두 붉은 길에 서 있다"
+  truth: true
+  danger: 4
+  names: [광부등]
+# ── 그락스 ──
+- id: fact_eh_grax_supply_list
+  text: "그락스는 매주 할당량 미달 갱반에서 '공급 명단' 6명을 골라 은비늘 요람에 넘긴다"
+  truth: true
+  danger: 3
+  names: [그락스]
+- id: fact_eh_grax_cousin_znik
+  text: "그락스는 회색여울 감독관 즈닉의 사촌이다. 붉은 계단 크릭 감독 40명을 총괄한다"
+  truth: true
+  danger: 1
+  names: [그락스, 즈닉]
+- id: fact_eh_grax_supply_pays
+  text: "공급 명단에 오르는 인간 한 명당 그락스는 요람에서 2 못을 받는다. 그는 이 돈을 감독관 몫의 담배와 맥주로 쓴다"
+  truth: true
+  danger: 3
+  names: [그락스]

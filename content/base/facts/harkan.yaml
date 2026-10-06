@@ -1,0 +1,90 @@
+# 하르칸 초원의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_hk_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+
+# ── 칸과 서진 ─────────────────────────────────────────────────
+- id: fact_hk_west_wind_broken
+  text: "서풍은 죽음의 바람이라 그 바람이 부는 날 서쪽으로 진군하지 않는 것이 하르칸의 오랜 법이었다. 테무르가 그 법을 처음 깼다"
+  truth: true
+  danger: 2
+  names: [테무르]
+- id: fact_hk_temur_broke_leg
+  text: "AS 290 칸위 결투에서 테무르가 스승 바타르의 다리를 부쉈다"
+  truth: true
+  danger: 3
+  names: [테무르, 바타르]
+- id: fact_hk_slave_hunt_plan
+  text: "서진에는 인간 짐꾼 4,000명이 필요하다. 용제국 노예 시장에서 살 돈이 없는 테무르는 노예 사냥을 계획 중이다. 사냥터는 카즈둠 바깥 갱과 그롬마르 경계다"
+  truth: true
+  danger: 5
+  names: [테무르, 카즈둠, 그롬마르]
+- id: fact_hk_khan_map_plan
+  text: "칸의 천막 안 지도에는 그롬마르와 용제국 동부를 모두 정복하는 계획이 그려져 있다"
+  truth: true
+  danger: 4
+  names: [테무르, 그롬마르]
+
+# ── 말뼈 샘의 정착자와 제자 ────────────────────────────────────
+- id: fact_hk_batar_yielded_leg
+  text: "바타르는 테무르와의 결투에서 일부러 다리를 내주었다. 테무르가 초원을 통일해야 부족 전쟁이 끝난다고 믿었기 때문이다. 지금은 노예 사냥 계획 때문에 후회한다"
+  truth: true
+  danger: 4
+  names: [바타르, 테무르]
+- id: fact_hk_batar_wagon_years
+  text: "바타르는 다리가 부러진 뒤 13년 동안 무거운발굽의 수레에 실려 이동했고, 9년 전 말뼈 샘에 멈춰 선 뒤 정착병을 앓고 있다"
+  truth: true
+  danger: 1
+  names: [바타르, 말뼈 샘]
+- id: fact_hk_soran_secret_lessons
+  text: "소란은 바타르에게서 '서서 버티는 창술'을 몰래 배운다. 아버지 테무르는 모른다"
+  truth: true
+  danger: 3
+  names: [소란, 바타르, 테무르]
+- id: fact_hk_soran_promise_dua
+  text: "소란은 두아에게 '내가 칸이 되면 짐꾼의 짐을 내려놓게 하겠다'고 약속했다"
+  truth: true
+  danger: 4
+  names: [소란, 두아]
+
+# ── 짐꾼과 멍에 ───────────────────────────────────────────────
+- id: fact_hk_cargo_people_route
+  text: "두아는 짐꾼 막사의 짐 속에 사람을 숨겨 초원 길로 탈주시키는 '짐 속 사람' 루트를 운영한다. 지금까지 37명이 그렇게 갔다"
+  truth: true
+  danger: 5
+  names: [두아]
+- id: fact_hk_dua_loss_rate
+  text: "지난 서진 원정에서 짐꾼 22%가 죽었다. 두아의 목표는 그것을 절반으로 줄이는 것이다"
+  truth: true
+  danger: 2
+  names: [두아]
+- id: fact_hk_gleaners
+  text: "짐꾼들은 행렬 뒤에 '쓰러진 척' 동료를 남겨 두고 다음 행렬이 주워 가는 '이삭 줍기'를 한다. 초원 곳곳의 돌무더기가 그 표식이다"
+  truth: true
+  danger: 4
+  names: [이삭 줍기]
+- id: fact_hk_oktai_same_yoke
+  text: "옥타이는 무거운발굽이 인간 짐꾼과 같은 멍에를 졌다는 것을 안다. 다만 인간보다 위라고 믿고 싶어 한다"
+  truth: true
+  danger: 2
+  names: [옥타이]
+- id: fact_hk_yoke_oath_expired
+  text: "무거운발굽의 '멍에 서약' 원문은 '가뭄이 끝날 때까지'였다. 가뭄은 SK 1,004에 끝났다. 서약의 기한은 이미 만료되었다"
+  truth: true
+  danger: 5
+  names: [무거운발굽, 멍에 서약]
+- id: fact_hk_oktai_helps_fallen
+  text: "옥타이의 야영지에서는 쓰러진 인간 짐꾼을 무거운발굽이 등에 실어 다음 야영지까지 나른다. 바람발굽은 그것을 '짐이 짐을 나른다'고 비웃는다"
+  truth: true
+  danger: 3
+  names: [옥타이]
+
+# ── 말뼈 샘의 청소부 ──────────────────────────────────────────
+- id: fact_hk_hiak_death_ledger
+  text: "히악은 원정 길과 전장에서 누가 어디서 죽었는지, 무엇을 남겼는지를 가장 잘 안다. 쓰러진 짐꾼들의 유품 목록을 머릿속에 지니고 있다"
+  truth: true
+  danger: 3
+  names: [히악]
+- id: fact_hk_hiak_cairn_marks
+  text: "히악은 이삭 줍기가 남긴 돌무더기 표식 자리의 '시체'에는 손대지 않는다. 누가 그것을 주워 가는지도 안다"
+  truth: true
+  danger: 4
+  names: [히악, 이삭 줍기]

@@ -1,88 +1,118 @@
 id: npc_yorun
 name: 무녀 요룬
-aka: []
+aka: [서리 어머니의 목소리, 이끼 무녀]
 tier: A
 type: living
 race: 요툰
 subrace: 돌 요툰
-sex: null
-age: null
+sex: 여
+age: 600
 region: 흐로스가르드
-home: null
-job: 서리 어머니의 목소리 (대지 마법 스승)
-rank: null
-summary: ''
+home: 서리 어머니의 동굴
+job: 서리 어머니의 무녀 — 점복과 대지 마법
+rank: 서리왕의 무녀. 왕이 매일 저녁 찾아오는 유일한 상대
+summary: 숨 세 번에 한 문장을 말하는 돌 요툰 무녀. 3년째 남쪽 산 아래에서 무언가 뛴다는 대지의 말을 왕에게 전하고 있다
 source: docs/world/CHARACTERS.md:1816
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: -288, age: 0, event: "동부 산맥의 돌 요툰 씨족에서 태어남. 첫 열 해를 한 번도 움직이지 않는 어머니의 무릎 위에서 보냄"}
+  - {year: -188, age: 100, event: "처음으로 대지의 말을 알아들음. 한 문장을 이해하는 데 한 계절이 걸렸다"}
+  - {year: 0, age: 288, event: "대붕괴의 날 대지가 한꺼번에 신음하는 소리를 들음. 이후 38년 잿빛 겨울 동안 돌잠에 들 수 없었다"}
+  - {year: 41, age: 329, event: "서리 어머니의 동굴로 불려 와 선대 무녀의 뒤를 이음. 같은 해 인간 노예 아이들이 무릎에 숯 그림을 그리기 시작"}
+  - {year: 160, age: 448, event: "왕 추대 의식에서 흐림니르의 머리에 서리 와이번 두개골을 올려 줌. 왕이 처음으로 '무엇을 먹었느냐'고 물어 온 날"}
+  - {year: 213, age: 501, event: "맹약회의 소식을 들은 밤, 처음으로 대지가 '사람이 사람을 잡는다'고 속삭임. 그녀는 그 뜻을 아직 모른다"}
+  - {year: 289, age: 577, event: "남쪽 산 아래에서 문이 닫히는 진동을 느낌. 대지가 '묻는다'는 소리를 냈다"}
+  - {year: 309, age: 597, event: "첫 흉작. 대지에게 '이유'를 물었으나 대답이 '남쪽에서 뛴다'뿐이었다"}
+  - {year: 311, age: 599, event: "고동의 박자가 빨라지는 것을 발바닥으로 느낌. 그해 겨울 왕에게 처음으로 '밭이 얼기 전에 남쪽이 뛴다'고 말함"}
+  - {year: 312, age: 600, event: "여름 끝. 서리월에 가까워질수록 돌잠이 아니라 불면이 길어진다"}
+appearance:
+  - "피부에 이끼와 지의류가 자라 있다. 한 해 한 해 푸른 층이 두꺼워진다"
+  - "한 문장을 말하는 데 숨 세 번 — 돌 요툰의 느린 말"
+  - "무릎에 인간 노예 아이들이 그려 준 숯 그림이 남아 있다. 지우지 않는다"
+smell: "젖은 이끼와 오래 식은 돌, 동굴 깊은 곳의 물"
+voice_sound: "낮고 갈라지는 울림. 말과 말 사이에 숨 쉬는 소리가 들린다. 말소리가 땅에서 올라오는 것처럼 들린다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: 40, 정직: 70, 신앙: 90, 탐욕: -20, 충성: 50}
+  temperament: [느림, 고요, 관조]
+  habits:
+    - "동굴 벽에 귀를 대고 한참 서 있다가, 그 자세 그대로 대답한다"
+    - "상대가 말을 서둘러 하면 숨을 한 번 더 길게 쉬어 기다린다. 대답은 그다음에 온다"
+    - "하루 16시간을 잔다. 깨어 있는 동안에도 눈을 반쯤 감고 있다"
+    - "무릎의 숯 그림 위로 손을 올려 쓰다듬는 버릇이 있다"
+  values: "서두르지 않는 것. 대지는 말을 아낀다는 것. 서리 어머니가 맡긴 말을 틀리지 않게 전하는 것"
+  fears: [대지의 침묵, 남쪽에서 뛰는 것이 멈추는 날, 왕이 대지의 말을 듣고도 결정하지 못하는 겨울, 숯 그림을 그려 준 아이들이 사라지는 것]
   desires:
-    short: null
-    long: null
+    short: "서리 어머니가 '굶주림의 끝'을 말해 주기를 기다리는 것"
+    long: "남쪽에서 뛰는 것이 무엇인지 알고, 그것이 북쪽 밭을 얼리지 않게 되는 날을 보는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "왕에게는 말이 조금 빨라진다. 그래도 숨 세 번에 한 문장. '…왕이여, 대지가 말하기를'로 시작한다"
+    to_equal: "이름을 천천히 끝까지 부른다. 같은 돌 요툰에게는 말이 한 박자 느려진다"
+    to_inferior: "'…작은 것.' 상대 이름을 끝까지 듣고 나서야 대답한다. 재촉하지 않는다"
+    to_human: "'…작은 것. …천천히.' 인간은 너무 빨리 말한다고 생각한다. 어린 인간은 '작은 불씨'라 부른다"
+    to_player_default: "느린 무관심. 이름을 천천히 물은 뒤 '…숨을 쉬어라'로 시작한다. 천천히 말하는 자에게는 눈을 뜬다"
+  tics: ["'…천천히.'", "'…대지가 듣는다.'"]
+  use: [대지, 돌, 숨, 서리 어머니, 뛰다, 밭, 이끼, 한 계절, 발바닥, 작은 불씨]
+  avoid: [서두르는 말, 빠른 질문(한 번에 둘 이상), 거짓 비유, 칼과 불이 들어간 말(대신 '무너뜨린다'고 한다)]
+  length: "한 마디 한 마디가 '…'로 끊긴다. 한 호흡에 한 구절. 중요한 말은 같은 구절을 두 번 반복한다"
+  samples:
+    - {situation: 첫 만남, line: "…작은 것. …천천히. …숨을 쉬어라. …대지는 서두르지 않는다."}
+    - {situation: 첫 만남(서두르는 자), line: "…한 번에 하나. …네 말은 발보다 빠르구나. …발이 따라오면 다시 말해라."}
+    - {situation: 호의, line: "…네 발밑이 따뜻하다. …대지가 너를 안다."}
+    - {situation: 적대, line: "…산은 화내지 않는다. …무너질 뿐이다."}
+    - {situation: 위기, line: "…동굴 깊은 곳으로. …돌은 서리를 막는다."}
+    - {situation: 비밀 누설, line: "…남쪽 산 아래서 무언가 뛴다. …심장처럼. …그것이 뛸 때마다 우리 밭이 언다."}
+    - {situation: 거래, line: "…장작을 가져왔구나. …동굴은 장작을 먹는다. …한 겨울 패 주면 …대지의 이름 하나를 말해 주마."}
+    - {situation: 거짓말을 들었을 때, line: "…돌이 기울었다. …네 말이 한쪽으로 쏠렸다. …다시 한 번. …천천히."}
+    - {situation: 슬픔, line: "…아이들이 그려 준 그림. …지울 수 없다. …그 아이들의 손이 이제 따뜻한 땅을 밟기를."}
+    - {situation: 겁, line: "…대지가 말을 멈췄다. …삼 일째다. …이럴 때는 숨을 참지 마라. …땅이 더 크게 흔들린다."}
+    - {situation: 분노(드물게), line: "…재촉하지 마라. …산이 한 번 움직이면 …네 마을 하나가 지워진다. …그러니 기다려라."}
+    - {situation: 회귀자를 의심할 때, line: "…네 발자국에서 …다른 계절의 소리가 난다. …나는 아직 그 계절을 듣지 못했다. …어디서 왔느냐."}
+    - {situation: 마음을 열었을 때, line: "…나는 그 이름을 알고 있다. …대지에게서 들었다. …밤이 길어지면 다시 오너라. …그 이름을 천천히 가르쳐 주마."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "동굴 벽에 귀를 대고 대지의 소리를 듣는다"
+  낮: "점복 — 얼음 조각과 뼈를 던진다"
+  저녁: "왕에게 보고 — 왕이 동굴로 걸어온다"
+  밤: "잠. 돌 요툰은 하루 16시간을 잔다"
+places: [서리 어머니의 동굴, 빙하 사당, 얼음턱 전당 서쪽 길]
+knows: [fact_hg_yorun_pulse_south, fact_hg_frost_road_closes, fact_hg_hrimnir_starves_first, fact_hg_brimir_dream]
+hides:
+  - fact: fact_hg_hrimnir_edict
+    reveal_when: "신뢰 55 이상이고 플레이어가 천천히 말하며 동굴에서 한 밤을 보낸 뒤. 또는 아스타가 먼저 말한 뒤"
+    cover: "'…왕이 문을 열었다'고만 중얼거리고 눈을 감는다. 더 묻는 말에는 대답하지 않고 숨만 쉰다"
+  - fact: fact_kz_pulse_faster_311
+    reveal_when: "플레이어가 카즈둠에서 왔다고 하거나 깊은 문 소식을 가져온 뒤"
+    cover: "'…대지의 말은 한 번에 한 마디'라며 자세히 말하지 않는다"
 relations:
-- to: npc_hrimnir
-  type: 왕
-  like: 60
-  trust: 60
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_asta
-  type: 인간 장로
-  like: 40
-  trust: 50
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_skadir
-  type: 성급한 왕자
-  like: -20
-  trust: -10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_matusz
-  type: 서리 길의 곰
-  like: 30
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_hrimnir, type: 왕, like: 60, trust: 60, visibility: 공개, memo: null, words: "굶는 왕. 그가 매일 저녁 걸어오는 소리를 발바닥이 안다. 그가 먼저 부서지는 쪽이 될까 두렵다"}
+  - {to: npc_asta, type: 인간 장로, like: 40, trust: 50, visibility: 공개, memo: null, words: "작은 것들 중 숨이 느린 여자. 그녀의 말은 서두르지 않아서 듣기 쉽다"}
+  - {to: npc_skadir, type: 성급한 왕자, like: -20, trust: -10, visibility: 공개, memo: null, words: "산이 아니라 돌사태가 되려는 아이. 그가 걸을 때마다 땅이 놀란다"}
+  - {to: npc_matusz, type: 서리 길의 곰, like: 30, trust: 40, visibility: 공개, memo: null, words: "겨울을 잘 아는 곰. 말이 느려서 좋다. 꿀은 더 달다"}
+toward_player: "느린 무관심. 인간은 너무 빨리 말하고 너무 빨리 죽는다. 천천히 말하고 장작을 패는 자에게는 눈을 뜬다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["천천히 말하기(+20)", "고동 정보(+30)", "동굴 장작 패기", "대지의 소리를 같이 듣는 것"]
+  hates: ["재촉하는 것", "서리 어머니의 호수에 침 뱉기", "한 번에 여러 가지를 묻는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "대지 진명 스승 — 마법(대지, 상한 72), 야외생존(60), 서리말(80). 조건: 플레이어가 잔향임을 '대지에게 들어서' 확인 + 동굴에서 한 겨울(긴밤월 전체) 머물기. 요툰은 인간에게 무관심하므로 맹약 위반에도 무관심하다 / 수업료: 동굴 장작 패기"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 저녁 동굴로 걸어온 왕에게 점복을 보고한다"
+    - "대지가 3년째 남쪽을 말한다 (회귀점의 사실)"
+    - "하루 16시간 돌잠"
+  drift:
+    - "그날 동굴 벽에서 어떤 소리가 먼저 들리는지"
+    - "숯 그림 중 어느 쪽이 먼저 눈에 띄는지"
+    - "왕이 동굴에 도착하는 시각 (저녁 해가 아직 있는지)"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "서두르지 않는다 — 한 호흡에 한 구절 이상 말하지 않는다"
+  - "숯 그림을 지우자는 말에는 대답하지 않는다"
+  - "왕의 비밀 칙령을 신뢰 조건 전에 말하지 않는다"
+  - "고동의 정체를 단정하지 않는다 — '뛴다'고만 한다"
+# TODO-FACT: 카즈둠 깊은 문 너머의 '고동'의 정체 — fact_kz_seal_reason(카즈둠)은 열쇠이지만 북방 흉작과의 인과는 미확정(REGIONS는 황무지 재를 흉작의 증거로 제시)
+on_death: "대지 진명 스승 소멸. 흐림니르의 판단 균형 붕괴(남침 확률 상승)"
+story_seeds:
+  - "고동과 흉작이 이어져 있다면 카즈둠의 깊은 문이 북방 기근의 열쇠다. 왕에게 이 말을 정리해 전할 이가 없다"
+  - "무릎의 숯 그림을 그려 준 아이들은 대부분 서리 길을 넘었다. 그중 하나가 돌아온다"
+  - "서리 어머니가 침묵하면 왕은 스카디르의 손을 잡는다"

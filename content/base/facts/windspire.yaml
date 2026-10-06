@@ -1,0 +1,88 @@
+# 바람첨탑(아에리)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_ws_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+
+# ── 여왕과 첨탑 ───────────────────────────────────────────────
+- id: fact_ws_kyrie_descended
+  text: "키리에는 젊은 날 땅에 내려가 인간 노예 하나와 사흘을 보냈다. 왼쪽 날개 끝 깃털 셋이 검게 변한 것은 그때 '땅의 일'에 마음을 쓴 벌이라고 전해진다"
+  truth: true
+  danger: 4
+  names: [키리에]
+- id: fact_ws_retrograde_star
+  text: "역행하는 별이 잔향의 각성과 함께 나타났다는 까마귀 아에리의 해석을 키리에는 비밀에 부쳤다"
+  truth: true
+  danger: 5
+  names: [키리에, 까마귀 아에리]
+- id: fact_ws_kyrie_saw_waste_grow
+  text: "키리에는 하늘에서 재의 황무지가 자라는 것을 보았고, 시간의 균열이 위로도 뻗는 것을 보았다. 그래서 아래를 보기 시작했다"
+  truth: true
+  danger: 3
+  names: [키리에, 재의 황무지]
+- id: fact_ws_kyrie_watchers
+  text: "키리에는 AS 311부터 '땅 관찰자'를 대륙 곳곳에 보내 잔향 징후가 보고된 마을을 하늘에서 지켜본다. 시룬 매눈이 회색여울 상공을 맴돈다"
+  truth: true
+  danger: 4
+  names: [키리에, 시룬 매눈, 회색여울]
+- id: fact_ws_council_kaspar_debate
+  text: "깃털 의회의 '아래 보는 자들'이 용황이 죽은 뒤 카스파르를 지원할지 논의 중이다"
+  truth: true
+  danger: 4
+  names: [카스파르, 깃털 의회]
+- id: fact_ws_celes_rival
+  text: "'올려다보는 자들'의 수장 셀레스 긴목은 키리에의 하강을 '추락'이라 부르며, 맹약회의 313의 아에리 대표 자리를 빼앗으려 한다"
+  truth: true
+  danger: 3
+  names: [셀레스 긴목, 키리에]
+- id: fact_ws_caged_aeri_die
+  text: "아에리는 가두면 죽는다. 지붕 있는 방에 사흘이면 숨이 막히고 열흘이면 심장이 멎는다. 아에리를 가둔 자는 모든 아에리의 적이다"
+  truth: true
+  danger: 1
+  names: [아에리]
+- id: fact_ws_three_feathers_song
+  text: "바람 정원의 인간들 사이에는 대대로 전해지는 노래 「세 깃의 노래」가 있다. 여왕이 땅에 내려와 노예 하나와 사흘을 보냈다는 이야기다"
+  truth: true
+  danger: 3
+  names: [세 깃의 노래]
+
+# ── 타일라와 에이로스 ─────────────────────────────────────────
+- id: fact_ws_tyla_wings_orn
+  text: "타일라가 날개를 잘린 죄는, AS 302년 첨탑에 납치된 인간 오른을 땅에 돌려보내려다 붙잡힌 것이다. 키리에가 처벌을 승인했다"
+  truth: true
+  danger: 4
+  names: [타일라, 오른, 키리에]
+- id: fact_ws_tyla_glide
+  text: "타일라는 바람의 진명 일부로 날개 없이 짧게 활공할 수 있다. 아에리 법에 없는 일이라 아무에게도 말하지 않았다"
+  truth: true
+  danger: 5
+  names: [타일라]
+- id: fact_ws_eiros_dissent
+  text: "에이로스는 타일라의 날개를 자른 판결에 반대표를 던진 유일한 귀족이다. 그는 저녁마다 몰래 깃털 절벽 아래로 그녀를 찾아간다"
+  truth: true
+  danger: 4
+  names: [에이로스, 타일라]
+- id: fact_ws_eiros_wing_letters
+  text: "에이로스의 날개 아래쪽 깃털에는 오른이 숯으로 그린 인간 글자가 있다. 아에리는 관심이 없어 아무도 모른다"
+  truth: true
+  danger: 3
+  names: [에이로스, 오른]
+- id: fact_ws_eiros_knows_kyrie_secret
+  text: "에이로스는 어머니가 땅에 내려간 적이 있다는 것을 오른에게 들어 알고 있다. 깃털 셋이 그 증거라는 것도"
+  truth: true
+  danger: 4
+  names: [에이로스, 키리에, 오른]
+
+# ── 땅손 오른 ─────────────────────────────────────────────────
+- id: fact_ws_orn_abducted
+  text: "오른은 AS 302년, 스무 살에 회색여울 근처에서 아에리에게 납치되었다. 호기심 수집품이었다"
+  truth: true
+  danger: 2
+  names: [오른, 회색여울]
+- id: fact_ws_orn_spire_knowledge
+  text: "오른은 10년간 흰 깃 첨탑에서 살았다. 첨탑의 구조와 아에리의 비행 경로를 아는 유일한 인간이다"
+  truth: true
+  danger: 5
+  names: [오른]
+- id: fact_ws_descent_rope
+  text: "바람 정원의 땅손들이 몰래 '내려가는 줄'을 땋고 있다. 지금 길이 210m, 필요한 길이는 340m다. 항아리 밑에 숨겨 두었다"
+  truth: true
+  danger: 4
+  names: [바람 정원, 땅손]

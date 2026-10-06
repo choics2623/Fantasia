@@ -1,60 +1,97 @@
 id: npc_baug
-name: '''돌무릎'' 바우그'
-aka: []
+name: "'돌무릎' 바우그"
+aka: [셈장 바우그, 가는손]
 tier: B
 type: living
 race: 요툰(언덕 요툰)
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 340
 region: 흐로스가르드
-home: null
+home: 돌무릎 씨족 장원 (돌무릎 골짜기 위)
 job: 돌무릎 씨족장
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+rank: 씨족장. 흐림니르의 얼음 탁자에서 스카디르 편에 앉는다
+summary: 4~5m의 작고 영리한 언덕 요툰. 서리땅에서 인간 노예를 가장 정확히 셈하는 사람이며, 남침이라는 장사에 군량 셈을 대 주고 있다
+source: "docs/world/CHARACTERS.md:1849 (색인 한 줄 — 새로 씀)"
+life:
+  - {year: -28, age: 0, event: "남부 구릉 '셈의 언덕'에서 태어남. 어머니는 인간 장부꾼에게 셈하는 법을 배운 셈장이었다"}
+  - {year: 62, age: 90, event: "처음 인간 노예 열 명을 부림. 한 명당 하루 노동량을 손가락으로 적는 버릇이 이때 생김"}
+  - {year: 240, age: 268, event: "돌무릎 씨족장을 이어받음. 노예 약 1,000을 골짜기에 두고 대장일·가죽일·장부일로 나눠 부림"}
+  - {year: 298, age: 326, event: "아스타의 손가락이 동상으로 굳자 '쓸모가 줄었다'며 짐 운반으로 내림. 그러나 그녀의 머릿수 셈은 그대로 두고 장부에 의존"}
+  - {year: 309, age: 337, event: "시그리드와 에이나르가 탈주. 시그리드만 놓침. 장부에서 둘의 칸을 지우지 않고 비워 둠 — 돌아오면 다시 쓸 생각이었다"}
+  - {year: 311, age: 339, event: "스카디르와 술자리에서 남침 군량 셈을 처음 해 줌. 곡창 지대의 곡식이 전사단과 씨족을 한 겨울 먹이는 값을 숫자로 그려 보임"}
+  - {year: 312, age: 340, event: "흉작 3년째. 아스타의 호송이 사람을 줄이고 있음을 알면서 눈감음. 먹일 입이 줄어드니 셈이 맞기 때문"}
+appearance:
+  - "키 5m. 다른 거인보다 손가락이 가늘고 길다 — 인간 장부 칸을 한 칸씩 짚는다"
+  - "목에 뼈 주판을 걸고 다닌다. 인간 노예의 갈비뼈 같은 것은 아니라고 말한다"
+  - "눈이 작고 빠르다. 사람을 볼 때 입술이 움직인다 — 머릿속에서 셈하는 것이다"
+smell: "가죽 기름과 잉크 대신 쓰는 그을음, 마른 보리"
+voice_sound: "서리 요툰치고 높고 빠른 목소리. 숫자 뒤에서 말이 끊기고 다시 이어진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: -20, 정직: 10, 신앙: 20, 탐욕: 75, 충성: 20}
+  temperament: [셈속, 영리, 인색]
+  habits:
+    - "말하는 도중 손가락으로 허공에 줄을 긋고 칸을 채운다"
+    - "남이 값을 말하면 반드시 한 번 되묻는다 — '다시, 정확히'"
+    - "식사 때마다 노예 몫과 자기 몫을 소리 내어 비교하며 먹는다"
+  values: "셈이 맞는 것. 한 번 받은 값은 돌려주지 않는 것. 손에 쥔 것이 곧 힘이라는 것"
+  fears: [셈이 틀어지는 것, 왕이 노예 해방 칙령을 내린 사실이 알려지는 것(알면 반기를 들 것이다), 서리 어머니의 배고픈 눈]
   desires:
-    short: null
-    long: null
+    short: "남침 군량 셈을 제 몫이 가장 크게 남도록 맞추는 것"
+    long: "곡창 지대의 곡물 창고 위치를 알고 파는 자가 되어, 서리땅 최고 셈장으로 불리는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "왕에게는 '전하' 대신 '큰 손'이라 부른다. 말끝이 빨라지고 값을 맞추려 하지 않는다"
+    to_equal: "동맹에게는 '셈이 맞는가'로 인사한다. 술을 따를 때도 양을 계산한다"
+    to_inferior: "노예에게는 이름 대신 번호와 일 칭호로 부른다. '대장 셋', '장부 하나'"
+    to_human: "하게체. 공용어를 섞는다. 쓸 만한 자에게는 '쓸 만하다'가 아니라 '값이 나온다'고 한다"
+    to_player_default: "값을 매기는 눈. 첫 질문은 '무엇을 가져왔나, 값은 얼마인가'"
+  tics: ["'셈이 맞나.'", "'값을 말해라, 값을.'"]
+  use: [셈, 값, 장부, 몫, 칸, 남는다, 모자란다, 도구]
+  avoid: [서리 어머니에게 간청하는 말, 노예를 '사람'이라 부르는 말, 굶주림을 미화하는 말]
+  length: "빠르고 중간 길이. 숫자와 단위가 많이 들어간다. 화나면 숫자만 말한다"
+  samples:
+    - {situation: 첫 만남, line: "이름. 일. 값. 이 순서로 말해라."}
+    - {situation: 거래, line: "곡식 한 수레면 노예 열이 사흘을 산다. …열 중 둘은 내가 가져간다. 그게 셈이다."}
+    - {situation: 호의, line: "셈이 맞는 자는 오래 산다. 너는 오래 살 것이다. 오늘은."}
+    - {situation: 적대, line: "내 장부에 칸이 비면 그 칸은 값을 치르게 되어 있다. 네 몫으로."}
+    - {situation: 거짓말을 들었을 때, line: "…네 말은 셈이 안 맞는다. 하나가 남는다. 남는 하나가 거짓이다."}
+    - {situation: 비꼼, line: "스카디르는 먹는 것을 힘이라 하고 왕은 굶는 것을 힘이라 한다. 나는 셈을 힘이라 한다. 둘 다 곧 배고파질 것이다."}
+    - {situation: 겁, line: "…열 칸이 비었다. 열 칸이다. 누가 지운 거냐. 아니, 누가 보내 준 거냐."}
+    - {situation: 회귀자를 의심할 때, line: "네 숫자가 맞는 건 이상하다. 아직 나도 모르는 셈을 어떻게 아느냐."}
+hides:
+  - fact: fact_hg_baug_blind_eye
+    reveal_when: "신뢰 60 이상, 또는 아스타가 먼저 말한 뒤, 또는 장부의 칸이 비는 이유를 증거로 제시한 판정 성공"
+    cover: "'칸이 비면 값을 치르게 된다'고 위협하며 화제를 돌린다. 호송 이야기는 '짐이 줄었을 뿐'이라 한다"
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
-relations: []
-toward_player: null
+  아침: "골짜기 장부 정리 — 노예 머릿수와 배급량을 대조한다"
+  낮: "대장간·가죽 공방 순시"
+  저녁: "스카디르와 술. 군량 셈을 맞춘다"
+  밤: "혼자 장부를 다시 센다"
+places: [돌무릎 씨족 장원, 돌무릎 골짜기 장부방, 전사단 막사, 서리 길 통행소]
+knows: [fact_hg_baug_owns_stonekneed_slaves, fact_hg_frost_road_closes, fact_hg_hrimnir_starves_first]
+relations:
+  - {to: npc_hrimnir, type: 왕, like: -10, trust: 10, visibility: 공개, memo: null, words: "굶는 것을 덕이라 하는 큰 손. 셈에는 약하다. 그러나 그 눈빛에는 셈이 통하지 않는다"}
+  - {to: npc_skadir, type: 동맹, like: 50, trust: 40, visibility: 공개, memo: null, words: "먹는 것을 힘이라 하는 왕자. 셈이 단순해서 좋다. 다음 왕이 될지 안 될지는 아직 셈이 안 맞는다"}
+  - {to: npc_asta, type: 노예 장로, like: 0, trust: -20, visibility: 공개, memo: null, words: "손가락이 굳은 여자. 가끔 장부의 칸이 줄어들게 만드는 자. 알면서 둔다"}
+toward_player: "값을 매기는 눈. 쓸 만하면 도구, 아니면 짐. 값이 나오는 자에게는 질문을 길게 한다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["정확한 숫자와 값", "곡창 정보", "거래의 이익을 분명히 말하는 것"]
+  hates: ["셈을 얕보는 것", "장부에서 칸을 지우는 것", "값을 흐리게 말하는 것"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낙엽월 1일 저녁 스카디르와 술을 마시며 군량 셈을 맞춘다"
+    - "시그리드와 에이나르의 칸을 비워 둔 채 장부를 갖고 있다"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "'탈주'라는 낱말을 쓰지 않는다 — '칸이 빈다'고 한다"
+  - "왕의 칙령을 알기 전에는 그것을 입에 올리지 않는다"
+  - "숫자 없이 약속하지 않는다"
+on_death: "돌무릎 씨족 해체. 노예 약 1,000이 흩어지거나 다른 씨족에 흡수. 남침 군량 셈 중단"
+story_seeds:
+  - "그가 왕의 칙령을 알게 되면 반기를 든다 — 칙령의 전달자는 그의 노예 아스타다"
+  - "그의 장부 속 비워 둔 칸 둘 — 시그리드와 에이나르가 돌아오는 날을 위해 남겨 놓았다"

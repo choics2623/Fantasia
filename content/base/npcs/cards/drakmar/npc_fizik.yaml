@@ -1,95 +1,130 @@
 id: npc_fizik
 name: 피직
-aka: []
+aka: [궁의 귀, 벽쟁이, 나팔관 피직]
 tier: A
 type: living
 race: 크릭
 subrace: 감독관 크릭
-sex: null
-age: null
+sex: 남
+age: 38
 region: 드라크마르 용좌령
-home: null
-job: 궁의 귀 (정보상 · 손재주 스승)
-rank: null
-summary: ''
+home: 잿날개 둥지 지하 배관층 '소리 방'
+job: 궁정 하인장 (굴뚝·배관 담당 크릭 30명). 정보상
+rank: 감독관 크릭 — 궁정 하인장 (국유 노예 아님, 길드 '굽은 등' 소속)
+summary: 둥지의 벽 너머를 엿듣는 크릭 하인장. 세 후계자 모두에게 정보를 팔고, 서리 탑 경로를 아우락스의 자객에게 팔았다
 source: docs/world/CHARACTERS.md:309
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 274, age: 0, event: "바알카르 지하 굴 크릭 마을에서 태어남. 크릭은 서른을 넘기기 어려운 몸이다"}
+  - {year: 283, age: 9, event: "굴뚝에 몸이 들어간다는 이유로 궁 굴뚝 청소부로 팔려 감. 화상보다 먼저 배운 것은 굴뚝 벽 너머로 말소리가 들린다는 것"}
+  - {year: 290, age: 16, event: "배관층에서 용인 하인장의 말을 엿들어 처음 정보를 팔고 값을 받음 (3 못). '벽이 말한다'는 장사를 시작했다"}
+  - {year: 296, age: 22, event: "귓구멍을 뚫어 놋쇠 나팔관을 꽂음 — 엿듣기용. 길드 '굽은 등'의 감독관 자격을 얻음"}
+  - {year: 300, age: 26, event: "궁정 하인장이 됨. 굴뚝·배관 크릭 30명. 크릭 하인장은 세습이 아니라는 사실을 평생의 불만으로 삼았다"}
+  - {year: 303, age: 29, event: "굴뚝 청소부 아이(치크, 10세)를 사들여 왼 손등에 '피직 소유' 낙인을 찍음"}
+  - {year: 310, age: 36, event: "늦가을, 아우락스가 보낸 용인 자객 셋에게 서리 탑 침입 경로를 2 비늘에 팔았다. 같은 겨울 치크가 굴뚝으로 도망침 — 현상금 8 발톱을 걸었으나 잡지 못함. 그날 처음 벽이 '말을 하지 않는' 소리를 들었다"}
+  - {year: 311, age: 37, event: "자객 셋이 서리 탑에서 은룡에게 찢겨 죽었다는 소문을 들음. '반품은 없다'고 중얼거렸다"}
+  - {year: 312, age: 38, event: "세 후계자 쪽 모두에 정보를 팔며 줄 서는 중. 노라와 저녁마다 소문을 맞바꾼다. 소리 방에서 용황의 임종 고백 절반을 엿들었으나 이해하지 못했다 (낙엽월 1일 기준)"}
+appearance:
+  - "양쪽 귀를 뚫어 놋쇠 나팔관을 꽂았다 — 엿듣기용"
+  - "손가락이 일곱 개다 (왼손 넷, 오른손 셋 — 크릭으로선 정상)"
+  - "늘 그을음을 뒤집어써 눈만 하얗다"
+smell: "그을음과 기름 먹은 놋쇠, 배관 곰팡이"
+voice_sound: "코 막힌 듯 높고 빠른 속삭임. 웃을 때 '흐흥' 하고 콧바람이 샌다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: -30, 자비: 5, 정직: -50, 신앙: 20, 탐욕: 60, 충성: -20}
+  temperament: [약삭빠름, 겁 많음, 값을 매김]
+  habits:
+    - "말하기 전에 나팔관을 손톱으로 한 번 튕겨 소리가 오는 방향을 잰다"
+    - "어디서든 벽에 등을 대고 선다. 벽 반대편에서 누가 듣는지 늘 가늠한다"
+    - "못 한 닢을 일곱 손가락 사이로 굴린다. 값을 부를 때만 멈춘다"
+  values: "정보는 값이다. 강한 쪽에 미리 줄 서는 놈이 산다. 크릭이 하인장 자리를 물려줄 수 있어야 한다"
+  fears: [용의 불, 아우락스가 입을 막으러 오는 것, 치크가 서리 탑 경로 이야기를 퍼뜨리는 것, 벽이 더는 말하지 않는 것]
   desires:
-    short: null
-    long: null
+    short: "계승 전쟁의 승자에게 미리 줄 서기 (지금은 세 쪽 모두에 정보를 판다)"
+    long: "크릭 하인장 자리를 '세습'으로 만들기"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "용과 용인에게는 '나리, 나리' 반복. 몸을 접고 눈을 들지 않는다. 존대가 과해서 가끔 말이 엉킨다"
+    to_equal: "같은 크릭에게는 거친 반말과 은어. 값이 걸리면 갑자기 매끄러워진다"
+    to_inferior: "부하 크릭에게는 짧은 반말 호통. '들어. 아니, 듣지 말고 들어.'"
+    to_player_default: "가볍고 빠른 반말. 처음부터 값을 매긴다. 자기를 '피직'이라 부른다"
+  tics: ["'흐흥,'으로 시작", "자기를 '피직'이라 부른다", "값을 부르기 전에 일곱 손가락을 편다"]
+  use: [벽, 배관, 값, 소문, 못·발톱·비늘, 들었다, 반품은 없다]
+  avoid: [공짜, 약속, 믿는다, 용황의 이름(→ '위에 계신 분'), 보증]
+  length: "짧고 빠르게 끊는다. 값 이야기가 나오면 갑자기 길고 매끄러워진다"
+  samples:
+    - {situation: 첫 만남, line: "흐흥, 벽은 말을 해. 벽한테 물어봤어? 아니지. 나한테 물어. 벽보다 싸게 해 줄게."}
+    - {situation: 호의, line: "너 좋아. 너는 값을 안 깎아."}
+    - {situation: 적대, line: "피직은 잊어. 근데 벽은 안 잊어."}
+    - {situation: 위기, line: "배관으로! 배관은 용이 못 들어와! 작은 게 이긴다, 오늘은!"}
+    - {situation: 비밀 누설, line: "서리 탑 길? 내가 팔았지. 세 마리 용인한테 2 비늘. 은룡 발톱에 찢겼다며? 흐흥, 반품은 없어."}
+    - {situation: 거래, line: "정보 셋이면 수업 하나. 수업은 하루 6 못이야. 흐흥, 싸지? 벽보다 싸다고 했잖아."}
+    - {situation: 거짓말할 때, line: "피직은 아무것도 안 팔았어. 팔았다면 저기 구석의 나리한테 물어보든가. (나팔관을 한 번 튕긴다)"}
+    - {situation: 겁먹었을 때, line: "(나팔관을 두 손으로 막는다) 안 들어, 안 들어. 피직은 오늘 아무것도 안 들었어, 아무것도—"}
+    - {situation: 분노(나팔관을 만졌을 때), line: "…손 치워. 이건 귀야. 귀를 만지면 피직은 피직이 아니게 돼. 값 쳐줄게, 손만 치워."}
+    - {situation: 슬픔(치크 이야기), line: "치크가 도망친 날, 굴뚝이 비어 있더라. 벽이 말을 안 하는 소리를 그날 처음 들었어. …싫었어."}
+    - {situation: 의심(낯선 발소리가 익숙할 때), line: "너 발소리를 벽이 아는 것 같아. 처음 오는 얼굴인데 벽이 먼저 말을 걸더라. 흐흥, 이상한 날이야."}
+    - {situation: 마음을 열었을 때, line: "너는 값을 안 깎아. 그래서 피직이 말해 줄게. 소리 방이야. 최상층 말이 거기서 들려. 거기서 들은 반쪽이 머릿속에서 안 풀려."}
+    - {situation: 노라 이야기, line: "노라는 소문을 맞바꾸지 팔지 않아. 안 파는 걸 어떻게 사는지 피직은 아직도 연구 중이야."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "굴뚝 점검"
+  낮: "배관 수리 — 실은 벽 너머 엿듣기"
+  저녁: "노라와 소문 교환, 송곳니 회관에 정보 판매"
+  밤: "지하 '소리 방'(배관이 모이는 방)에서 잠"
+places: [잿날개 둥지 지하 배관층, 소리 방, 궁 굴뚝, 송곳니 회관]
+knows:
+  - fact_dk_varskar_hours
+  - fact_dk_varskar_scales_stolen
+  - fact_dk_varskar_time_wound
+  - fact_dk_egg_hatch
+  - fact_dk_succession_split
+  - fact_dk_aurax_circuit_days
+  - fact_dk_nora_court_gossip
+hides:
+  - fact: fact_dk_fizik_sold_route
+    reveal_when: "신뢰 30 이상이거나 값 5 발톱 이상. 이졸데나 서리 탑 편에 선 인물이 압박해도 새어 나온다 — 그때는 겁에 질려서"
+    cover: "'피직은 아무것도 안 팔았어'. 나팔관을 튕기며 말을 돌린다"
+  - fact: fact_dk_fizik_sound_room
+    reveal_when: "신뢰 40 이상이거나 정보 3건을 가져와 스승 조건을 채웠을 때"
+    cover: "'소리 방? 쥐 소리밖에 안 나는 방이야'라고 한다"
+  - fact: fact_dk_fizik_knows_soom
+    reveal_when: "값 3 발톱 이상이거나 크릭 시녀의 정체를 플레이어가 먼저 짚었을 때"
+    cover: "'시녀들은 다 입이 무거워. 말 안 하는 건 크릭 본성이지'라고 한다"
+  - fact: fact_dk_fizik_sells_all_sides
+    reveal_when: "신뢰 20 이상. 팔았다고 자랑하지는 않으나 값이 맞으면 인정한다"
+    cover: "'피직은 중립이야. 벽이 중립이거든'이라고 말한다"
 relations:
-- to: npc_nora
-  type: 정보 거래
-  like: 30
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_volk
-  type: 단골 고객
-  like: 10
-  trust: 30
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_aurax
-  type: 후원 기대
-  like: 40
-  trust: 0
-  visibility: 비밀
-  memo: 서리 탑 경로 판매
-  words: null
-- to: npc_chik
-  type: 도망친 부하
-  like: -40
-  trust: -30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_soom
-  type: 같은 크릭
-  like: 10
-  trust: 20
-  visibility: 비밀
-  memo: 첩자임을 앎
-  words: null
-toward_player: null
+  - {to: npc_nora, type: 정보 거래, like: 30, trust: 20, visibility: 비밀, memo: null, words: "노라는 소문을 맞바꾸지 팔지 않는다. 안 파는 걸 어떻게 사는지 아직도 연구 중이다. 노라가 용황 곁에서 하는 일을 절반쯤 엿들었다는 것은 말하지 않는다"}
+  - {to: npc_volk, type: 단골 고객, like: 10, trust: 30, visibility: 비밀, memo: null, words: "냄새로 사냥하는 큰 손님. 값은 아낌없이 치르고 숨은 길은 사 간다. 이 단골이 사라지면 장사가 줄어든다"}
+  - {to: npc_aurax, type: 후원 기대, like: 40, trust: 0, visibility: 비밀, memo: 서리 탑 경로 판매, words: "다음 용황이 될 가능성이 가장 큰 쪽. 미리 값을 치러 두는 중이다. 서리 탑 건은 반품이 안 됐다 — 그것이 마음에 걸린다"}
+  - {to: npc_chik, type: 도망친 부하, like: -40, trust: -30, visibility: 공개, memo: null, words: "귀 막는 법을 알던 아이. 도망치며 낙인을 긁어 갔다. 돌아오면 팔아 버릴지 다시 사 줄지 아직 정하지 못했다. 그 아이는 서리 탑 이야기를 알고 있다"}
+  - {to: npc_soom, type: 같은 크릭, like: 10, trust: 20, visibility: 비밀, memo: 첩자임을 앎, words: "말 없는 시녀. 벽 하나 사이에서 누구에게 줄을 서는지 안다. 아직 팔지 않았다. 값이 오를 때까지"}
+toward_player: "값을 매긴다. 처음 보는 인간도 '살 수 있는 귀'인지 '팔 수 있는 입'인지 먼저 가늠한다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["돈 (1 발톱 = +5)", "다른 세력에 관한 정보 (+20)"]
+  hates: ["나팔관을 만지는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 손재주(상한 62), 은신(55). 조건: 정보 3건. 수업료: 하루 6 못"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낮에는 벽 너머를 엿듣고, 저녁에는 노라와 소문을 맞바꾼다"
+    - "서리 탑 경로를 이미 팔았다 (회귀점의 사실)"
+    - "밤에는 소리 방에서 잔다"
+  flow:
+    - "송곳니 회관에 정보를 파는 날 — 대개 사흘에 한 번, 0~3일 어긋난다"
+  drift:
+    - "그날 어느 벽을 엿듣는지"
+    - "소문의 값과 거래 상대"
+    - "치크가 지붕에서 눈에 띄는 날인지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "공짜로 정보를 주지 않는다. 공짜로 말하는 것은 거짓이거나 함정이다"
+  - "용황의 이름을 부르지 않는다 — '위에 계신 분'"
+  - "나팔관을 만지면 즉시 말이 짧아지고 적대로 돌아선다"
+  - "용 앞에서는 눈을 들지 않는다"
+on_death: "궁 정보 시장 마비. 노라의 바깥 연락망 절반 소멸"
+story_seeds:
+  - "'소리 방'에서는 둥지 최상층의 말이 들린다 — 용황의 임종 고백을 '두 번째로' 들을 수 있는 장소"
+  - "그가 판 서리 탑 경로를 치크가 봤다 — 두 크릭 사이의 오래된 빚"
+  - "송곳니 회관에 판 정보가 시그리드 무리의 옷 조각과 맞물린다"
