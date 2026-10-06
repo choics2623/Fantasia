@@ -129,14 +129,14 @@ offices:
     perks: ["진명 낱말 140개 — 조직 안의 유일한 '증명 판정자'"]
   - id: off_wick_baalkar_market
     title: 바알카르 심지 (노예시장)
-    holder: "unnamed:두더지 안셀마 (인간, 40) — 노예시장 세탁부, 사르코스 수용소의 매매 명단을 '듣는다'"
+    holder: npc_anselma
     reports_to: off_lamp_baalkar
     powers: ["매매 명단 수집", "시장 손 넷"]
     chosen_by: "바알카르 등잔의 지명"
     perks: []
   - id: off_wick_baalkar_sewer
     title: 바알카르 심지 (하수도 — 쥐들의 왕관 안)
-    holder: "unnamed:하랄 (인간, 44) — 쥐들의 왕관 이빨(위조). 그의 통행증 1/3이 잿빛 실로 간다"
+    holder: npc_harald
     reports_to: off_lamp_baalkar
     powers: ["위조 통행증", "하수도 통로"]
     chosen_by: "바알카르 등잔의 지명"

@@ -1,0 +1,85 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-20
+id: "npc_grim"
+name: "그림"
+aka: ["수석 감독관", "사르코스의 손"]
+tier: B
+type: living
+race: "크릭"
+subrace: "감독관 크릭"
+sex: "남"
+age: 44
+region: 드라크마르 용좌령
+home: "쇠사슬 광장 등급 낙인장 곁 감독관 방"
+job: "사르코스 가 수석 감독관 (크릭), 채찍손 길드 간부"
+rank: "길드 소속 감독관 — 국유 노예 신분이 아니다"
+summary: "크릭으로서는 고령. 수용소에 노예 30명당 크릭 하나 — 그 비율을 맞추는 것이 그의 일이다"
+source: docs/world/people/baalkar.md:519
+life:
+  - {year: 268, age: 0, event: "울타리 셋 수용소 크릭 감독관의 새끼로 태어남"}
+  - {year: 290, age: 22, event: "채찍손 길드 정식 감독관. 사르코스와 계약"}
+  - {year: 312, age: 44, event: "낙엽월 1일 기준 — 크릭 수명 약 40을 넘겼다. 자신이 다음 대시장을 볼지 모른다"}
+appearance:
+  - "꼬리처럼 땋은 회색 털이 셋"
+  - "등급 낙인 쇠를 허리에 일곱 개"
+  - "손가락 일곱 중 둘이 화상으로 굳었다"
+smell: "탄 살과 쇠"
+voice_sound: "날카롭고 높다. 강한 자 앞에서는 속삭인다"
+personality:
+  disposition: {용기: -30, 자비: -20, 정직: -40, 신앙: 40, 탐욕: 50, 충성: 30}
+  temperament: ["비굴", "탐욕"]
+  habits:
+    - "강한 자의 발소리가 들리면 무릎이 먼저 꺾인다"
+  values: "강한 자 밑에 서면 산다"
+  fears: ["죽음 — 곧 온다"]
+  desires:
+    short: "차액을 모아 마지막 겨울을 따뜻하게"
+    long: "없다"
+voice:
+  register:
+    to_superior: "끝없는 존대 '강하신 분'"
+    to_equal: "혀 차는 반말"
+    to_inferior: "채찍 같은 반말"
+    to_player_default: "등급을 묻는다"
+  tics: ["'흐흥.'"]
+  use: ["등급", "낙인", "강한"]
+  avoid: ["죽음"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "흐흥. 손등 보여. 낙인 없네. 그럼 오늘 생기겠네."}
+    - {situation: "호의", line: "한 등급 낮춰 줄까? 낮으면 가족이랑 묶음으로 가. 값은… 흐흥, 차액만."}
+    - {situation: "적대", line: "7등급 쇠가 제일 뜨거워. 제일 오래 썼으니까."}
+    - {situation: "비밀 누설", line: "마흔넷. 크릭은 마흔이면 죽어. 나는 네 해를 훔쳤지. 훔친 해는 따뜻해야 해."}
+schedule:
+  아침: "등급 낙인장 — 낙인"
+  낮: "낙인장·수용소 감독"
+  저녁: "감독관 방 — 차액 세기"
+  밤: "감독관 방"
+places: ["등급 낙인장", "쇠사슬 광장"]
+knows: []
+hides:
+  - fact: fact_bk_grim_grade_skim
+    reveal_when: "1발톱 이상을 쥐여 주면 스스로 제안한다"
+    cover: "'등급은 쇠가 정해'"
+relations:
+  - {to: "npc_nebra_sarkos", type: "주인·계약자", like: 20, trust: 30, visibility: "공개", memo: null, words: "강하신 분. 차액은 모르신다"}
+  - {to: "npc_skik", type: "길드 원로", like: 10, trust: 10, visibility: "공개", memo: null, words: "늙은 굽은 등. 나보다 먼저 죽을 크릭"}
+toward_player: "등급을 본다"
+persuade:
+  likes: ["돈"]
+  hates: ["강한 자의 이름으로 위협 — 그는 무너지지만 원한을 품는다"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "낙인 차액을 받는다"
+  deja_vu: none
+hard_rules:
+  - "강한 자에게는 엎드린다"
+on_death: "사르코스 낙인장 감독 공백 — 등급 낙인이 정확해진다(묶음 판매 감소)"
+story_seeds:
+  - "한 등급 낮춘 낙인 — 가족을 같은 묶음으로 팔리게 하는 가장 싼 길"
+affiliations:
+  - {faction: "fac_sarkos", rank: null, office: "off_chief_overseer", since: 290, loyalty: 30, public: true, cell: null}
+truths: []

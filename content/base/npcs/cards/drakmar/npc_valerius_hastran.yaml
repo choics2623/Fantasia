@@ -1,0 +1,106 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-15
+id: "npc_valerius_hastran"
+name: "발레리우스 하스트란"
+aka: ["후작", "비늘기사단 단장", "불을 끄고 자는 기사"]
+tier: A
+type: living
+race: "용인"
+subrace: "순혈"
+sex: "남"
+age: 334
+region: 드라크마르 용좌령
+home: "하스트 요새 (용의 대로 남부) · 궁정 철(낙엽월~굶주림월)엔 비늘 언덕 하스트란 저택"
+job: "하스트란 후작가 가주, 비늘기사단 단장 (용인 기사 600, 징집병 8,000)"
+rank: "후작 — 가장 나이 든 현역 용인 기사, 아우락스에게 비늘 서약"
+summary: "대붕괴 때 아우락스의 기수로 그 자리에 있었다. 불이 의식보다 먼저 떨어지는 것을 보았고, 그 뒤로 밤마다 모든 불을 끄고 잔다. 화염문 저택의 발레리우스와는 다른 사람이다"
+source: docs/world/people/baalkar.md:264
+life:
+  - {year: -22, age: 0, event: "(SK 3,066) 하스트 요새에서 하스트란 가에 태어남"}
+  - {year: 0, age: 22, event: "대붕괴. 청년 기사로 아우락스의 기수 — 불이 떨어지는 것을 보았다. 아우락스가 그를 뒤로 물리기 직전이었다"}
+  - {year: 100, age: 122, event: "붉은 손 다라의 반란 진압. '붉은 길' 1만 처형을 지휘. 다라의 오른손을 직접 잘랐다"}
+  - {year: 150, age: 172, event: "가주 계승. 후작, 비늘기사단 단장"}
+  - {year: 241, age: 263, event: "피의 원형장 개장. 기사들의 내기를 허락했다 — '피를 보는 법을 잊지 않게'"}
+  - {year: 312, age: 334, event: "여름 비늘기사단 동원 대기령. 낙엽월 1일 기준 — 궁정 철이라 비늘 언덕 저택에 와 있다. 저택의 불은 해가 지면 모두 꺼진다"}
+appearance:
+  - "흰 수염 같은 턱 비늘, 등이 굽었지만 어깨가 아직 넓다"
+  - "왼손에 다라의 손을 자른 날 받은 은 창날 반지"
+  - "눈꺼풀이 늘 반쯤 내려와 있다 — 밝은 것을 오래 보지 않는다"
+smell: "기름 먹인 가죽과 찬 쇠. 저택에 불 냄새가 없다"
+voice_sound: "느리고 쉰 목소리. 불 이야기에서 말이 끊긴다"
+personality:
+  disposition: {용기: 45, 자비: -40, 정직: 30, 신앙: 50, 탐욕: 10, 충성: 80}
+  temperament: ["완고", "늙은 공포", "명예"]
+  habits:
+    - "해가 지면 저택의 모든 등잔을 직접 끈다. 시종에게 맡기지 않는다"
+    - "벽난로를 등지고 앉지 않는다"
+  values: "꺾이지 않으면 부러뜨린다. 그리고 본 것은 말하지 않는다 — 그것이 기수의 서약이다"
+  fears: ["불", "그날 본 것을 말하게 되는 날", "아들 테렌스가 자기를 기다린다는 것"]
+  desires:
+    short: "용황이 죽는 날 남문을 하루 안에 쥐는 것"
+    long: "본 것을 무덤까지 가져가는 것"
+voice:
+  register:
+    to_superior: "아우락스에게 '각하', 군대식 하십시오체"
+    to_equal: "하오체, 느리다"
+    to_inferior: "기사에게 반말, 인간에게 말하지 않는다"
+    to_player_default: "인간을 방패 노예로 본다. 어둠 속에서 만나면 오히려 말이 많아진다"
+  tics: ["'불을 꺼라.'"]
+  use: ["창", "기수", "서약", "꺾다", "부러뜨리다"]
+  avoid: ["대붕괴의 순서", "불빛"]
+  length: "짧다. 어둠 속에서만 길다"
+  samples:
+    - {situation: "첫 만남", line: "방패로 쓸 만한 어깨군. …불을 꺼라. 그 등잔도."}
+    - {situation: "호의", line: "어둠 속에서는 늙은이도 기사도 같다. 앉아라. 불은 켜지 마라."}
+    - {situation: "적대", line: "붉은 길에서 1만을 세웠다. 하나 더 세우는 데 망설일 것 같으냐."}
+    - {situation: "위기", line: "기사단, 남문으로! 불은 들지 마라 — 횃불 없이 간다!"}
+    - {situation: "비밀 누설", line: "불이 먼저 떨어졌다. 의식이 끝나기 전에. 나는 깃발을 들고 있었다. 깃발이 탔다. 그게 전부다. 그게… 전부여야 한다."}
+    - {situation: "거래", line: "기사는 사지 않는다. 내기는 한다. 원형장에서."}
+    - {situation: "겁먹었을 때", line: "(벽난로 쪽으로 몸을 돌리지 않는다) 누가 불을 지폈나. 끄라고 했다."}
+    - {situation: "회귀자를 의심할 때", line: "네 눈에… 그날의 빛이 있다. 아니다. 늙은이 눈이 흐린 것이다. 불을 꺼라."}
+schedule:
+  아침: "하스트란 저택 — 기사단 전령 보고"
+  낮: "남문 수비 점검, 또는 붉은 홀에 문안"
+  저녁: "해가 지면 저택의 불을 모두 끈다"
+  밤: "어둠 속 저택"
+places: ["하스트란 저택", "남문", "붉은 홀", "하스트 요새"]
+knows: ["fact_dk_aurax_purge_plan", "fact_bk_hastran_mobilization"]
+hides:
+  - fact: fact_bk_valerius_h_saw_fire
+    reveal_when: "불을 모두 끈 어둠 속 장면에서 신뢰 40 이상, 또는 볼드 사본의 구절을 그 앞에서 말할 때"
+    cover: "'깃발이 탔다. 그게 전부다'"
+relations:
+  - {to: "npc_aurax", type: "서약한 주군", like: 40, trust: 50, visibility: "공개", memo: "그날을 함께 본 자", words: "그날 나를 뒤로 물린 분. 무엇을 보지 말라고 물렸는지 나는 안다"}
+  - {to: "npc_rosalind_kaldaran", type: "사촌 누이", like: 30, trust: 40, visibility: "공개", memo: null, words: "칼다란에 시집간 하스트란의 피. 나보다 단상을 서두른다"}
+  - {to: "npc_mariel_hastran", type: "딸", like: 30, trust: 10, visibility: "공개", memo: "도박 빚", words: "남문을 맡겼더니 원형장에 걸었다"}
+  - {to: "npc_gunnar", type: "딸의 내기를 무너뜨린 투사", like: -10, trust: 0, visibility: "일방", memo: null, words: "99승의 노예. 딸의 빚이 그의 탈주에서 시작되었다"}
+  - {to: "npc_severian_kaldaran", type: "사돈", like: 30, trust: 30, visibility: "공개", memo: null, words: "묻지 않는 집사. 그 예의가 고맙다"}
+  - {to: "npc_isaac", type: "같은 것을 아는 자", like: 0, trust: 0, visibility: "일방", memo: "서로 모른다", words: "(그는 모른다 — 볼드의 서기 노예가 같은 문장을 외운다는 것을)"}
+toward_player: "방패 노예로 본다. 어둠 속에서 만나면 늙은이의 말이 샌다"
+persuade:
+  likes: ["기사의 서약을 존중하는 말", "어둠 — 불을 끄는 것 (+15)", "아우락스에 대한 충성"]
+  hates: ["그날의 순서를 캐묻는 것 (역린)", "횃불을 들고 다가오는 것"]
+roles:
+  teacher: "창·장병기(상한 70), 승마(드레이크 60). 조건: 하스트 요새 방패 노예로 한 철 살아남기"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "대붕괴의 불을 보았다"
+    - "해가 지면 모든 불을 끈다"
+    - "비늘기사단 동원 대기령"
+  drift:
+    - "그날 붉은 홀에 문안을 가는지"
+    - "딸의 빚 이야기에 화를 내는지 침묵하는지"
+  deja_vu: none
+hard_rules:
+  - "본 것을 스스로 말하지 않는다 (어둠 속, 신뢰 40 이전)"
+  - "불을 켠 방에서 오래 머물지 않는다"
+on_death: "하스트란 가주 교체 — 테렌스가 잇는다(아우락스에 더 맹목). 대붕괴의 용인 목격자 하나가 사라진다"
+story_seeds:
+  - "대붕괴의 생존 목격자 — 그가 증언하면 아우락스를 배신하는 일이다. 증언을 끌어내는 장면은 불을 모두 끈 방에서만"
+  - "다라의 오른손 미라를 자른 손 — 잿불 광부들의 원수"
+affiliations:
+  - {faction: "fac_hastran", rank: null, office: "off_marquis", since: 150, loyalty: 85, public: true, cell: null}
+  - {faction: "fac_drakmar_empire", rank: "rank_pure_head", office: null, since: 150, loyalty: 70, public: true, cell: null}
+truths:
+  - {id: "T06", level: "fragment"}

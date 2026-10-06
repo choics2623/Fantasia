@@ -1,0 +1,288 @@
+# 바알카르(수도) 1차 확장의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3). 인물: docs/world/people/baalkar.md
+# id 규칙: fact_bk_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 불꽃 홀·칼다란 ──
+- id: fact_bk_severian_third_drawer
+  text: "칼다란 시조 칼다르의 어머니는 인간 노예였다(아그라몬이 인간형으로 얻은 자식). 원본 족보는 불꽃 홀 '셋째 서랍'에 있고, 열쇠는 세베리안 칼다란의 목에 걸려 있다. 자물쇠 셋째 홈은 의전 등잔 받침과 같은 모양이다"
+  truth: true
+  danger: 5
+  names: [칼다르, 세베리안, 셋째 서랍]
+- id: fact_bk_severian_false_will
+  text: "세베리안 칼다란은 AS 309 이후 '폐하의 뜻을 들었다'는 증언 가운데 둘(서리 탑 경비 증원, 회색여울 징세 유예 거절)을 지어냈다. 병상 출입을 혼자 통제하므로 아무도 확인하지 못한다"
+  truth: true
+  danger: 5
+  names: [세베리안]
+- id: fact_bk_severian_halved_signs
+  text: "AS 311 회색 장부의 '잔향 징후' 보고가 3배로 늘자 세베리안 칼다란은 숫자를 절반으로 줄여 올렸다. 원래 숫자는 아르덴 칼다란의 책상 위 회색 장부 원본에 있다"
+  truth: true
+  danger: 4
+  names: [세베리안, 아르덴]
+- id: fact_bk_arden_erasures
+  text: "아르덴 칼다란은 AS 305~312 처형이 예정된 국유 노예 41명을 회색 장부에서 '사망'으로 지워 처형을 피하게 했다. 지워진 이름 일부는 하랄의 위조 통행증에 다시 새겨진다. 하랄 자신도 AS 305에 지워진 셋 중 하나다"
+  truth: true
+  danger: 4
+  names: [아르덴, 하랄]
+- id: fact_bk_arden_ledger_mismatch
+  text: "칼다란의 회색 장부와 원로회 높은홰 인두세 장부는 매년 정확히 3,000명이 어긋난다. 아르덴 칼다란이 그 차이를 정리해 두었으나 아버지에게 아직 올리지 않았다"
+  truth: true
+  danger: 4
+  names: [아르덴, 높은홰]
+- id: fact_bk_livia_opened_door
+  text: "AS 291 엘레나가 죽은 날, 의전 견습이던 리비아 칼다란이 궁 노예 숙소 시신 방의 문을 열어 열네 살 카스파르를 들여보냈다. 모르칸 쇠비늘이 복도를 비웠다. 세베리안은 알고도 묻지 않았다"
+  truth: true
+  danger: 3
+  names: [리비아, 카스파르, 엘레나, 모르칸]
+- id: fact_bk_livia_rite_cancel
+  text: "리비아 칼다란은 AS 313 태양월 1일 비늘 의례를 취소하는 식순 문안을 이미 써서 의전관실 서랍에 두었다 — 계승 위기의 공개 신호가 될 문서"
+  truth: true
+  danger: 2
+  names: [리비아, 비늘 의례]
+- id: fact_bk_cedric_saw_drawer
+  text: "세드릭 칼다란은 곁방 문틈으로 할아버지가 셋째 서랍을 여는 것을 보았고, 열쇠 모양과 셋째 홈을 안다"
+  truth: true
+  danger: 3
+  names: [세드릭, 셋째 서랍]
+- id: fact_bk_rosalind_letters
+  text: "대공비 로잘린드 칼다란은 남편 몰래 아우락스와 서신을 주고받는다. 남편이 서약 단상을 늦추면 아르덴을 앞세워 열겠다고 약속했다. 답장은 드라반이 날라 왔다"
+  truth: true
+  danger: 3
+  names: [로잘린드, 아우락스, 드라반]
+# ── 다섯 불의 의자 ──
+- id: fact_bk_severin_aurax_pact
+  text: "재상 세베린 타르굴은 AS 311 붉은 홀에서 아우락스와 밀약했다 — 즉위 시 재상직 유지와 비늘 시장 독점 연장, 대가로 다섯 의자의 표와 맹약회의 수석 대표 자리(잔향 대숙청 안건)"
+  truth: true
+  danger: 4
+  names: [세베린, 아우락스]
+- id: fact_bk_severin_market_skim
+  text: "비늘 시장 세렌 선매분의 1할이 재상청 정본 장부로 따로 들어간다. 시장 장부(경매관 빅스)와 재상청 정본이 다르며, 두 장부 모두 빅스의 손으로 쓰인다"
+  truth: true
+  danger: 3
+  names: [세베린, 빅스]
+- id: fact_bk_morkan_elena_debt
+  text: "AS 284 용황의 분노로 재의 둥지 동쪽 회랑이 불탔을 때 근위 모르칸 쇠비늘을 젖은 아마포로 덮어 끌어낸 것은 노예 엘레나였고, 그녀는 노래로 용황을 재웠다. '모르칸의 빚'은 카스파르가 아니라 그 어머니에게 진 것이다"
+  truth: true
+  danger: 3
+  names: [모르칸, 엘레나, 카스파르]
+- id: fact_bk_morkan_hairpin
+  text: "모르칸 쇠비늘은 AS 284 엘레나가 '아이에게'라며 맡긴 은 머리핀을 28년째 갑옷 안쪽 끈에 묶어 지니고 있다. 카스파르에게 전하지 못했다"
+  truth: true
+  danger: 2
+  names: [모르칸, 엘레나, 카스파르]
+- id: fact_bk_morkan_stand_still
+  text: "용황이 죽는 밤 근위대 1,200이 막사에 머물면 아우락스는 불꽃 홀을 하루 안에 쥐지 못한다. 모르칸은 이것을 알지만 아직 아무에게도 약속하지 않았다"
+  truth: true
+  danger: 4
+  names: [모르칸, 아우락스]
+- id: fact_bk_branek_purge_list
+  text: "재송곳 기사단 바알카르 분소의 징후자 명단은 AS 312 낙엽월 기준 63명이며 대부분 열 살 아래 아이다. 서리월 중순 재 마당에서 드라반이 태울 예정이다"
+  truth: true
+  danger: 3
+  names: [브라넉, 드라반, 재 마당]
+- id: fact_bk_branek_rain_child
+  text: "브라넉 재송곳은 AS 309 넘긴 징후자 아이가 '내일 비가 온다'고 한 대로 비가 온 날을 잊지 못한다. 그 뒤로 비 오는 날엔 칼을 갈지 않는다"
+  truth: true
+  danger: 2
+  names: [브라넉]
+- id: fact_bk_aurelia_collateral
+  text: "세렌 대출 약 2만 두카트의 사실상 담보 목록에 은빛 강 수운 통행세 10년분과 국유 노예 3,000의 장래 노동이 들어 있다. 오렐리아 베스페린이 용황 인장 없이 서명했다"
+  truth: true
+  danger: 4
+  names: [오렐리아 베스페린, 세렌]
+# ── 재의 둥지·원로회 ──
+- id: fact_bk_edun_scale_skim
+  text: "재의 둥지 시종장 에둔은 떨어진 용황 비늘의 1/3을 세렌 상관 물방에 판다. 장부에는 '노예가 훔침'으로 적고 공물 운반자를 매단다 — AS 312에만 아홉, 진짜 도둑은 없었다"
+  truth: true
+  danger: 3
+  names: [에둔, 물방]
+- id: fact_bk_edun_aging
+  text: "에둔은 재의 둥지 곁에서 일한 AS 309~312 사이 몸이 30년 늙었다 — 용황 옆구리 시간의 상처 때문"
+  truth: true
+  danger: 2
+  names: [에둔]
+- id: fact_bk_volgas_off_ledger
+  text: "원로회 수석 원로 볼가스 높은홰는 인두세 장부와 회색 장부의 차이 3,000명을 '장부 밖' 노예로 빼돌려 와이번 둥지탑 공사에 쓴다"
+  truth: true
+  danger: 4
+  names: [볼가스, 높은홰]
+- id: fact_bk_volgas_regent_copy
+  text: "높은홰 탑 금고에는 흰목 둥지의 섭정안과 다른 별본이 있다 — 섭정 1순위를 볼가스 자신으로 적었다. 이르마스 긴그림자는 이미 그것을 읽었다"
+  truth: true
+  danger: 3
+  names: [볼가스, 이르마스, 흰목]
+- id: fact_bk_irmas_echo_watch
+  text: "이르마스 긴그림자는 AS 311 징후 3배를 보고 수석 목줄장 에베르트에게 회색여울·북부의 잔향 징후 보고를 따로 모으게 했다. 잔향을 죽이지 않고 원로회의 것으로 쓰려 한다"
+  truth: true
+  danger: 4
+  names: [이르마스, 에베르트]
+- id: fact_bk_morna_raven_leash
+  text: "배당관 모르나 재날개는 고드릭 레이번의 37명 무단 매각을 이유로 회색여울 몰수 칙령 초안을 써 두었다. 날짜를 비워 두고, 영지를 오르셀 가(멜리산드파)에 넘길 때를 기다린다"
+  truth: true
+  danger: 3
+  names: [모르나, 고드릭, 오르셀]
+- id: fact_bk_dravan_name_called
+  text: "AS 251 재 마당에서 드라반 붉은발톱이 태운 징후자 하나가 불 속에서 그의 이름을 불렀다. 드라반은 그 인간을 몰랐다. 드라반은 자기 불이 잔향을 끝낸다고 믿으며, 아우락스는 평범한 불로는 잔향이 회귀할 뿐이라는 것을 그에게 숨긴다"
+  truth: true
+  danger: 4
+  names: [드라반, 아우락스]
+- id: fact_bk_hastran_mobilization
+  text: "하스트란 비늘기사단은 AS 312 여름부터 비공개 동원 대기 중이다. 용황이 죽는 날 바알카르 남문과 쇠사슬 광장을 먼저 쥔다"
+  truth: true
+  danger: 4
+  names: [하스트란, 남문]
+- id: fact_bk_valerius_h_saw_fire
+  text: "발레리우스 하스트란은 AS 0 대붕괴 때 아우락스의 기수로 포위에 있었고, 용황의 불이 의식이 끝나기 전에 떨어지는 것을 보았다. 그 뒤로 밤마다 불을 끄고 잔다"
+  truth: true
+  danger: 5
+  names: [발레리우스 하스트란, 아우락스]
+- id: fact_bk_mariel_gate_ledger
+  text: "남문 수비대장 마리엘 하스트란은 원형장 도박 빚 때문에 남문 통행 기록의 빈 줄을 1비늘에 판다. 하랄이 단골이다"
+  truth: true
+  danger: 3
+  names: [마리엘, 하랄, 남문]
+# ── 시장 ──
+- id: fact_bk_vix_dead_names
+  text: "비늘 시장 선매 장부의 회색여울 농노 40명 가운데 넷은 회색 장부에 이미 '사망'으로 적힌 이름이다 — 헨릭이 죽은 자의 이름으로 머릿수를 채웠다. 아는 것은 경매관 빅스(와 벽 너머의 안셀마)"
+  truth: true
+  danger: 3
+  names: [빅스, 헨릭, 회색여울]
+- id: fact_bk_nebra_212_copy
+  text: "사르코스 가의 징후자 비밀 판매 212건(AS 290~) 장부 사본이 세렌 졸라크 상가에 보험으로 맡겨져 있다. 아우락스에게 들어가면 사르코스는 불탄다"
+  truth: true
+  danger: 5
+  names: [사르코스, 졸라크, 네브라]
+- id: fact_bk_isabel_no_true
+  text: "이사벨 사르코스가 분류해 판 징후자 212건 중 진짜 잔향은 하나도 없었다 — 열병 환자, 꿈을 많이 꾸는 아이, 노래를 잘 외우는 아이. 그녀의 질문 일곱 중 넷은 잿빛 탑 이졸의 질문과 같다"
+  truth: true
+  danger: 3
+  names: [이사벨, 이졸]
+- id: fact_bk_otmar_ring
+  text: "경매사 오트마르 사르코스는 낙찰 인장 반지를 밤마다 '반쪽 비늘' 선술집 내기판에 담보로 건다. 아침이면 되찾는다"
+  truth: true
+  danger: 2
+  names: [오트마르, 반쪽 비늘]
+- id: fact_bk_grim_grade_skim
+  text: "사르코스 수석 감독관 그림은 등급 낙인을 한 등급 낮춰 찍어 주고 차액을 받는다 — 노예 가족이 같은 묶음으로 팔리게 된다"
+  truth: true
+  danger: 2
+  names: [그림]
+- id: fact_bk_luga_scent_jars
+  text: "송곳니 회관 냄새 단지 선반 셋째 칸에 시그리드 무리의 옷 조각 3개가 있다. 루가가 이미 회관의 코들에게 맡게 했다. 태우면 그 냄새는 추적에서 사라진다"
+  truth: true
+  danger: 3
+  names: [루가, 시그리드, 송곳니 회관]
+- id: fact_bk_luga_tower_bid
+  text: "이빨잡이 루가는 잔향 포획 현상금 500비늘 입찰을 사르코스·볼크를 거치지 않고 잿빛 탑 이졸에게 직접 넘기려 한다 — 이르가보다 먼저 사냥대장 자리를 쥐려고"
+  truth: true
+  danger: 3
+  names: [루가, 이졸, 볼크]
+- id: fact_bk_skik_trembling
+  text: "굽은 등 조합장 스킥은 1년째 손이 떨려 채찍을 들지 못한다. 태형은 부하가 대신하고, 국유농장 태형 할당을 장부에서만 채우는 날이 있다"
+  truth: true
+  danger: 2
+  names: [스킥]
+# ── 부두·농장 ──
+- id: fact_bk_cadel_water_loss
+  text: "사슬 부두장 카델 하스크는 노예선 짐칸 질식 사망을 출항 명부에 '물 손실'로 적는다 — AS 312에만 61. 하역 목줄장 오스발트의 딸 마야(16)도 AS 309 '물 손실 1'이었다"
+  truth: true
+  danger: 3
+  names: [카델 하스크, 오스발트, 마야]
+- id: fact_bk_hask_granary_seven
+  text: "이삭 우리 국유농장 곡창 7동 바닥 아래에 비밀 창고가 있다 — 감독관 바렌 하스크가 수확기 곡물의 1할을 빼돌린다. 굶주림월에 국유농장 노예 6,200명을 살릴 수 있는 양"
+  truth: true
+  danger: 4
+  names: [바렌 하스크, 곡창 7동]
+- id: fact_bk_hask_grain_ships
+  text: "곡창 7동의 곡물은 카델 하스크가 노예선 바닥 짐칸 밑에 실어 세렌에 판다. 곡물 자루가 짐칸 숨구멍을 막아 질식이 는다"
+  truth: true
+  danger: 4
+  names: [카델 하스크, 바렌 하스크]
+- id: fact_bk_greyford_convoy_dock
+  text: "회색여울 2차 매각분 31명(사라 포함)은 굶주림월 3일 출발해 9일 사슬 부두에 닿고, 세베로 칼레스의 배 '소금 바늘'호 짐칸에 실려 10일 새벽 세렌 소금 나루로 떠난다. 1차 40명은 서리월 15일 비늘 시장 선매 인도"
+  truth: true
+  danger: 2
+  names: [소금 바늘, 세베로, 사라, 사슬 부두]
+- id: fact_bk_oswald_silence
+  text: "하역 목줄장 오스발트는 노예말 수신호를 읽을 줄 알면서 3년째 이름 하나 올리지 않았다. 새벽 출항 종에 등을 돌리는 동안 갈대 나루 올레에게 가는 출항 시각이 그의 초소 앞을 지나간다"
+  truth: true
+  danger: 4
+  names: [오스발트, 올레, 갈대 나루]
+# ── 목줄단·등잔 ──
+- id: fact_bk_ebert_holds_anselma
+  text: "수석 목줄장 에베르트는 AS 309부터 시장 세탁부 안셀마가 '등잔'의 심지라는 것을 안다. 밀고하지 않고 고리집이 무너지는 날의 담보로 쥐고 있다"
+  truth: true
+  danger: 4
+  names: [에베르트, 안셀마]
+- id: fact_bk_ebert_seven_names
+  text: "에베르트는 고리집 밀고 장부 약 2,000 이름 중 일곱을 일부러 낭송에서 뺐다 — 해마다 '놓아준 하나'. 첫째는 AS 296 아내의 오라비. 마르타는 그 일곱을 모른다"
+  truth: true
+  danger: 3
+  names: [에베르트, 마르타]
+- id: fact_bk_ebert_north_signs
+  text: "에베르트가 모으는 북부 잔향 징후 보고는 붉은 홀이 아니라 긴그림자 홰로 간다"
+  truth: true
+  danger: 3
+  names: [에베르트, 긴그림자]
+- id: fact_bk_anselma_lists
+  text: "두더지 안셀마는 비늘 시장 장부실 벽 너머 세탁장에서 매매 명단을 듣고, 쇠사슬 광장 분류실 천을 빨며 '특수 물건' 아이들의 번호를 안다. 세탁장 물통 경로로 노라에게 넘긴다"
+  truth: true
+  danger: 4
+  names: [안셀마, 노라]
+- id: fact_bk_harald_passes
+  text: "쥐들의 왕관 이빨 하랄의 위조 통행증 1/3은 잿빛 실로 간다. 늪의 엘사에게 한 달 둘"
+  truth: true
+  danger: 4
+  names: [하랄, 잿빛 실, 엘사]
+- id: fact_bk_lamp_cells
+  text: "바알카르 '등잔'은 세포 셋, 21명이다 — 시장(심지 안셀마), 하수도(심지 하랄, 베노·이삭), 궁정(틸데). 회합은 재받이 제3 하수 분기점, 열흘에 한 번. 등잔 노라는 목소리로만 지시한다"
+  truth: true
+  danger: 5
+  names: [등잔, 안셀마, 하랄, 틸데, 노라]
+- id: fact_bk_tilde_wall
+  text: "불꽃 홀 등잔 기름 노예 틸데는 기름 창고 벽 틈으로 다섯 의자의 방 회의를 듣는다"
+  truth: true
+  danger: 4
+  names: [틸데, 다섯 의자의 방]
+- id: fact_bk_benno_ash_letters
+  text: "재 쓸이 베노는 재받이 아궁이에서 아이 아홉에게 재 글씨를 가르친다. 하수 분기점 벽의 재 글씨 연습판이 소문의 '아스테리아 석판'이다"
+  truth: true
+  danger: 4
+  names: [베노, 재받이]
+- id: fact_bk_isaac_copy_line
+  text: "볼드 수석 서기 노예 이삭은 AS 295 볼드 사본을 필사하며 첫 구절('용황의 불이 의식이 끝나기 전에 떨어졌다. 의식은 거의 완성되어 있었다')을 외웠고, 잉크 거리 서기실 필사 책상 셋째 서랍 밑판에 적어 숨겼다"
+  truth: true
+  danger: 5
+  names: [이삭, 볼드 사본]
+- id: fact_bk_isaac_teaches_four
+  text: "이삭은 볼드 서기 노예 열둘 중 넷에게 숫자 밖의 글자를 가르친다. 하나는 등잔의 아이다"
+  truth: true
+  danger: 4
+  names: [이삭]
+- id: fact_bk_theo_false_annals
+  text: "볼드가 쓰는 궁정 연대기는 3년째 용황의 하루를 '종일 집무'로 적는다 — 실제로는 오후 한 시간. 칼다란 집사의 요청이며 이삭의 손으로 쓰인다"
+  truth: true
+  danger: 3
+  names: [테오 볼드, 이삭, 세베리안]
+- id: fact_bk_varen_commission
+  text: "바렌 레이번은 형의 채권을 칼다란에 넘기는 중개 수수료로 50비늘을 약속받았다. 그는 회색여울 저당권이 포도월 30일 몬달리로 넘어갈 것을 안다"
+  truth: true
+  danger: 3
+  names: [바렌 레이번, 칼다란, 몬달리]
+- id: fact_bk_varen_sara_silence
+  text: "바렌 레이번은 2차 매각 명단에 사라가 들어간 것을 알면서 오웬에게 알리지 않았다 — 조카가 하녀에게 마음을 둔 것을 끊으려고"
+  truth: true
+  danger: 2
+  names: [바렌 레이번, 사라, 오웬]
+- id: fact_bk_noeul_heard_crack
+  text: "공물 운반자 노을(19)은 AS 312 수확월 그믐 서리 요람 공물 단에서 흰 알 껍질에 금 가는 소리('얼음이 노래하는 소리')를 들었다"
+  truth: true
+  danger: 3
+  names: [노을, 흰 알, 서리 요람]
+- id: fact_bk_noeul_marked
+  text: "이졸데의 크릭 시녀들이 노을을 '정리'하라는 명령을 받았다. 숨(멜리산드의 첩자)이 그 명령을 맡았고 아직 실행하지 않았다"
+  truth: true
+  danger: 3
+  names: [노을, 숨, 이졸데]
+- id: fact_bk_covenant_porters
+  text: "맹약회의(313 태양월) 제국 사절단의 인간 짐꾼 40명은 313 푸른월 20일 비늘 시장에서 뽑는다. 명단은 수석 목줄장이 쓴다"
+  truth: true
+  danger: 1
+  names: [맹약회의, 비늘 시장]

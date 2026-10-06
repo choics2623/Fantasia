@@ -29,7 +29,7 @@ offices:
     perks: ["녹슨 쇠 왕관", "하수도 지도 원본"]
   - id: off_tooth_forger
     title: 이빨 — 위조 (인간)
-    holder: "unnamed:하랄 (인간, 44) — 이름 없는 자들의 심지. 통행증 1/3이 잿빛 실로 간다"
+    holder: npc_harald
     reports_to: off_rat_king
     powers: ["위조 통행증 공방"]
     chosen_by: "쥐왕의 임명"

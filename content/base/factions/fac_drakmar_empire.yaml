@@ -45,28 +45,28 @@ offices:
     seats: [off_chancellor, off_proxy_aurax, off_proxy_melisande, off_guard_captain, off_consort]
   - id: off_chancellor
     title: 재상
-    holder: "unnamed:세베린 타르굴 — 용인 410세, 중립을 가장한 아우락스파. 타르굴 가 수장"   # TODO-NPC npc_severin_targul
+    holder: npc_severin_targul
     reports_to: off_five_fires
     powers: ["섭정 회의 의장", "행정 실무 총괄", "비늘 시장(노예 시장) 운영권을 가문으로 쥔다"]
     chosen_by: "용황의 임명 — 마지막 임명이 AS 280년대. 용황이 직접 임명한 마지막 문관이라는 것이 그의 정당성이다"
     perks: ["비늘 언덕 관사", "용주 역참망(세라프 타르굴 등 방계)에 대한 후견"]
   - id: off_proxy_aurax
     title: 아우락스의 대리
-    holder: "unnamed:브라넉 재송곳 — 용인 기사, 붉은 첨탑 소속"   # TODO-NPC
+    holder: npc_branek
     reports_to: off_five_fires
     powers: ["아우락스의 표 — 서부군과 재송곳 기사단의 이름으로 발언", "잔향 징후자 색출 사무"]
     chosen_by: "후계자 지명 (아우락스)"
     perks: ["재송곳 기사단의 인장"]
   - id: off_proxy_melisande
     title: 멜리산드의 대리
-    holder: "unnamed:오렐리아 베스페린 — 용인 학자, 베스페린 가 수장"   # TODO-NPC (HOUSES §2.6 오렐리아 베르미온과 이름이 같다 — 별개 인물로 둔다)
+    holder: npc_aurelia_vesperin
     reports_to: off_five_fires
     powers: ["멜리산드의 표", "재무와 세렌 대출 창구(재무청 겸임)"]
     chosen_by: "후계자 지명 (멜리산드)"
     perks: ["세렌 상관과의 직통 서신 — 제국 국고에 들어가는 두카트는 이 방을 거친다"]
   - id: off_guard_captain
     title: 근위대장
-    holder: "unnamed:모르칸 쇠비늘 — 용인, 근위대 1,200 지휘. 카스파르에게 빚이 있다"   # TODO-NPC npc_morkan
+    holder: npc_morkan
     reports_to: off_five_fires
     powers: ["비늘 근위대 1,200", "용언 발음·글자 소지 단속(바알카르 시내)", "용좌봉 출입 통제"]
     chosen_by: "용황의 임명. 표면상 중립 — 근위대가 어느 쪽으로도 움직이지 않는다는 것이 균형이다"
@@ -75,21 +75,21 @@ offices:
   # ── 궁정: 집사·서기·시종 ──
   - id: off_flame_steward
     title: 용좌 집사 (불꽃 홀의 집사)
-    holder: "unnamed:세베리안 칼다란 — 대공, 288세"   # TODO-NPC npc_severian_kaldaran. HOUSES §2.1
+    holder: npc_severian_kaldaran
     reports_to: off_emperor
     powers: ["용황 병상 출입 통제 — 용황의 '뜻을 들었다'고 증언하는 유일한 용인", "불꽃 홀의 확인(§succession)의 단상 개방", "회색 장부와 의전 일체"]
     chosen_by: "칼다란 가문 세습 — SK 1,231 '잿날개의 밤' 이후 2,000년간 집사직 세습. 용황이 새로 임명하지 않는다"
     perks: ["셋째 서랍(원본 족보 금고)", "용황 병세의 비밀 — AS 302부터 알았다"]
   - id: off_grey_ledger
     title: 회색 장부 관리관
-    holder: "unnamed:아르덴 칼다란 — 160세, 대공의 장남"   # TODO-NPC
+    holder: npc_arden_kaldaran
     reports_to: off_flame_steward
     powers: ["제국 국유 노예 약 4만(칼다란 직관) — 번호·낙인·인두세 기준 명부 관리", "장부에서 이름을 지운다(= 그 인간은 '없는 사람'이 되어 누가 죽여도 죄가 아니다)", "'잔향 징후' 항목 집계 — AS 311에 3배, 대공이 절반으로 줄여 올렸다"]
     chosen_by: "칼다란 가문 내 지명"
     perks: ["장부 열람권 — 다른 가문의 노예 수까지 본다"]
   - id: off_flame_marshal
     title: 불꽃 홀 의전관
-    holder: "unnamed:리비아 칼다란 — 97세, 대공의 딸"   # TODO-NPC
+    holder: npc_livia_kaldaran
     reports_to: off_flame_steward
     powers: ["비늘 서약·비늘 의례·불의 잔의 식순", "궁정 좌석과 접견 순서(곧 권력의 지도)"]
     chosen_by: "집사 지명"
@@ -111,7 +111,7 @@ offices:
     perks: ["노예이면서 용황의 침실에 드는 유일한 인간", "이번에는 죽이지 않기로 한 청자"]
   - id: off_nest_seneschal
     title: 재의 둥지 시종장
-    holder: "unnamed:에둔 — 용인, 용좌봉 시종 40 지휘"   # TODO-NPC (REGIONS §1.9)
+    holder: npc_edun
     reports_to: off_emperor
     powers: ["용좌봉 둥지의 살림", "인간 공물 운반자 200과 비늘 더미 관리 — 바닥에 떨어진 비늘은 하루 한 바구니씩 노예가 훔쳐 판다"]
     chosen_by: "집사 추천, 용황 묵인"
@@ -126,28 +126,28 @@ offices:
   # ── 재무·인간 관리 ──
   - id: off_treasury
     title: 재무청장 (세렌 대출 창구)
-    holder: "unnamed:오렐리아 베스페린 (겸임)"
+    holder: npc_aurelia_vesperin
     reports_to: off_chancellor
     powers: ["국고 출납", "세렌 몬달리·오랄 상가와의 대출 협상"]
     chosen_by: "재상 임명, 멜리산드 진영의 추천"
     perks: ["세렌 두카트의 '사실상 담보' 목록 열람"]
   - id: off_poll_tax
     title: 인두세 총괄
-    holder: "unnamed:볼가스 높은홰 — 왕관 와이번, 410세 (수석 원로가 겸임)"   # TODO-NPC
+    holder: npc_volgas
     reports_to: off_chancellor
     powers: ["수확월 인두세 징수의 세제 설계(인간 1명당 연 2발톱을 영주가 납부)", "원로회 '높은홰' 장부 — 칼다란의 회색 장부와 이중으로 관리, 매년 3,000명이 어긋난다(장부 밖 노예)"]
     chosen_by: "원로회 의장직에 딸린 자리"
     perks: ["장부 밖 노예 3,000을 와이번 둥지 공사에 쓴다"]
   - id: off_state_slave_assign
     title: 국유 노예 배당관
-    holder: "unnamed:모르나 재날개 — 왕관 와이번, 280세 (재날개 둥지)"   # TODO-NPC
+    holder: npc_morna
     reports_to: off_chancellor
     powers: ["국유 노예를 각 영지에 '배당'한다 — 레이번에 배당된 농노 400의 명부도 이 방에서 나온다", "배당 노예의 무단 매각은 영지 몰수 사유 — 고드릭의 37명을 이미 알고 있다"]
     chosen_by: "원로회 배분"
     perks: ["영주들에게 거는 보이지 않는 끈"]
   - id: off_scale_market
     title: 비늘 시장 운영권자
-    holder: "unnamed:세베린 타르굴 (타르굴 가 겸임)"
+    holder: npc_severin_targul
     reports_to: off_chancellor
     powers: ["바알카르 비늘 시장(상시 노예 2,000)과 파종월 대시장", "경매관 크릭 빅스, 세렌 중개인 상주권 허가"]
     chosen_by: "타르굴 가 세습"
@@ -161,14 +161,14 @@ offices:
     perks: ["용의 대로 검문 통과", "아우락스파의 비공식 후견"]
   - id: off_overseer_guild
     title: 크릭 감독관 조합 '굽은 등' 조합장
-    holder: "unnamed:스킥 — 감독관 크릭, 39세 (크릭으로서는 고령)"   # TODO-NPC
+    holder: npc_skik
     reports_to: off_chancellor
     powers: ["국유 노예 감독 인력 배정", "처벌 집행(태형·사슬 기둥) — 용인이 참관한다"]
     chosen_by: "길드 호선"
     perks: ["조합 소속은 국유 노예 신분이 아니다"]
   - id: off_chief_collar
     title: 수석 목줄장 (바알카르)
-    holder: "unnamed:에베르트 — 인간, 목줄단 바알카르 지부 총괄. 긴그림자 둥지에서 정보 대가로 배급을 받는다"   # TODO-NPC
+    holder: npc_ebert
     reports_to: off_chancellor
     powers: ["목줄단 전체 — 지역 목줄장(마르타 등)의 임명·집안 규약 관할", "밀고 접수와 포상"]
     chosen_by: "7대째 목줄장을 내는 '고리집'의 세습"
@@ -192,7 +192,7 @@ offices:
     perks: ["재송곳 기사단 — 잔향 징후를 보인 인간 색출 전담 (잡히는 자 대부분은 무고한 아이)"]
   - id: off_pyre_executor
     title: 화형 집행관
-    holder: "unnamed:드라반 붉은발톱 — 적룡, 520세. 아우락스의 아들"   # TODO-NPC
+    holder: npc_dravan
     reports_to: off_western_army
     powers: ["AS 213 잔향 사냥 의무화 이후 '징후자 화형'을 직접 수행해 온 집행자 — 그가 태운 수백 명은 모두 평범한 인간이었다"]
     chosen_by: "아우락스의 위임"

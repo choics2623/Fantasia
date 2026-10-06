@@ -64,7 +64,7 @@ offices:
     note: "다른 두 반용 자식(AS 140년대, 230년대)은 출생 직후 '처분'되었다 — 칼다란 가문 기록"
   - id: off_executor
     title: 집행자 (잔향 사냥)
-    holder: "unnamed:드라반 붉은발톱 — 적룡, 520세. 아우락스의 아들"   # TODO-NPC
+    holder: npc_dravan
     reports_to: off_firstborn
     powers: ["AS 213 이후 '징후자 화형'을 직접 수행 — 수백 명이 모두 평범한 인간이었다"]
     chosen_by: "아비의 위임"

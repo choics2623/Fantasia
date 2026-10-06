@@ -1,0 +1,103 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-31
+id: "npc_anselma"
+name: "두더지 안셀마"
+aka: ["두더지", "시장 세탁부", "바알카르 심지"]
+tier: A
+type: living
+race: "인간"
+subrace: ""
+sex: "여"
+age: 40
+region: 드라크마르 용좌령
+home: "비늘 시장 세탁장 곁방"
+job: "비늘 시장·쇠사슬 광장 세탁부 — 매물의 옷과 분류실 천을 빤다"
+rank: "국유 노예 (타르굴 배당), 사슬 표찰 '시장 열둘째'"
+summary: "장부실 벽 하나 너머에서 빨래를 하며 매매 명단을 '듣는다'. 이름 없는 자들의 바알카르 심지 — 노라에게 시장의 이름을 넘긴다. 에베르트가 그것을 안다는 것을 모른다"
+source: docs/world/people/baalkar.md:459
+life:
+  - {year: 272, age: 0, event: "재받이에서 태어남. 어미는 회색 기침, 아비는 모른다"}
+  - {year: 284, age: 12, event: "비늘 시장 물통 노예. 매물에게 물을 먹이며 사람이 팔리는 소리를 처음 셌다"}
+  - {year: 290, age: 18, event: "시장 세탁장. 벽 너머 장부실 소리가 들린다는 것을 알았다 — '두더지'"}
+  - {year: 301, age: 29, event: "노라가 '등잔'이 된 해, 재받이 하수 분기점에서 목소리로만 지명받았다 — 바알카르 심지"}
+  - {year: 306, age: 34, event: "베노에게서 재 글씨 서른 자를 배웠다. 빨랫물 위에 손가락으로 쓰고 바로 휘젓는다"}
+  - {year: 312, age: 40, event: "낙엽월 1일 기준 — 회색여울 선매 40명의 숫자를 들었다. 노라에게 넘겼다. 시장 손 넷을 부린다"}
+appearance:
+  - "양손이 잿물에 터서 손끝이 하얗게 갈라졌다"
+  - "늘 고개를 숙이고 있어 정수리만 보인다 — 두더지"
+  - "왼쪽 귀를 벽 쪽으로 기울이는 버릇. 오른쪽 귀는 잘 안 들린다"
+smell: "잿물과 젖은 아마"
+voice_sound: "거의 들리지 않을 만큼 낮다. 숫자는 또렷하다"
+personality:
+  disposition: {용기: 45, 자비: 40, 정직: 0, 신앙: -10, 탐욕: -40, 충성: 75}
+  temperament: ["인내", "조심", "단단함"]
+  habits:
+    - "빨랫물 위에서 손가락이 글자를 쓰고 바로 휘젓는다"
+    - "왼쪽 귀를 벽에 기울인다"
+  values: "이름을 지켜 주는 것. 팔려 가는 사람의 이름을 누군가는 외워야 한다"
+  fears: ["에베르트의 눈", "분류실의 아이들이 재 마당으로 가는 것", "오른쪽 귀마저 멀어지는 것"]
+  desires:
+    short: "분류실의 셋을 노라에게 알리는 것"
+    long: "팔려 간 사람들의 이름이 어딘가에 남는 것 — 그녀는 그것을 '책'이라 부르지 못한다"
+voice:
+  register:
+    to_superior: "용인에게 '예.' 한 마디. 고개를 들지 않는다"
+    to_equal: "노예에게 노예말 반말, 낮다"
+    to_inferior: "시장 손들에게 짧은 반말, 다정"
+    to_player_default: "없는 사람처럼 군다. 등잔의 표식을 보이면 고개를 든다"
+  tics: ["'못 들었어요.'"]
+  use: ["빨래", "물통", "이름", "숫자", "벽"]
+  avoid: ["등잔", "노라", "글자"]
+  length: "아주 짧다. 숫자를 넘길 때만 또렷하다"
+  samples:
+    - {situation: "첫 만남", line: "…못 들었어요. 빨래 중이라."}
+    - {situation: "호의", line: "젖은 옷 갈아입어요. 매물 옷이지만 빨았어요. 아무도 안 세요."}
+    - {situation: "적대", line: "나는 귀가 하나예요. 그 하나로 당신 이름도 들었어요."}
+    - {situation: "위기", line: "빨래통 밑으로! 숨 참아요 — 물이 탁해서 안 보여요!"}
+    - {situation: "비밀 누설", line: "마흔. 회색여울 마흔. 넷은… 죽은 사람이래요. 빅스가 혀를 찼어요. 벽 너머로 다 들려요."}
+    - {situation: "거래", line: "이름 하나에 이름 하나. 돈은 안 받아요. 돈은 태형 서른이에요."}
+    - {situation: "겁먹었을 때", line: "에베르트가 시장에… 왔어요? (손가락이 물을 휘젓는다)"}
+    - {situation: "회귀자를 의심할 때", line: "그 아이 이름을 어떻게 알아요? 분류실 천에만 적혀 있는 번호인데."}
+schedule:
+  아침: "비늘 시장 세탁장 — 매물 옷"
+  낮: "세탁장(벽 너머 장부실), 오후엔 쇠사슬 광장 분류실 천 수거"
+  저녁: "시장 물통 — 노예말 소문, 시장 손들의 보고"
+  밤: "세탁장 곁방. 열흘에 한 번 재받이 하수 분기점 등잔 회합"
+places: ["비늘 시장 세탁장", "시장 물통", "쇠사슬 광장 분류실", "재받이 하수 분기점"]
+knows: ["fact_dk_scale_market_ledger", "fact_bk_vix_dead_names", "fact_bk_lamp_cells"]
+hides:
+  - fact: fact_bk_anselma_lists
+    reveal_when: "등잔의 표식(잿빛 표)을 보이거나, 노라·베노가 보증할 때"
+    cover: "'못 들었어요. 빨래 중이라'"
+relations:
+  - {to: "npc_nora", type: "등잔", like: 70, trust: 80, visibility: "비밀", memo: "목소리만 안다", words: "물통 너머의 목소리. 그분께 이름을 넘기면 이름이 어딘가에 남는다"}
+  - {to: "npc_benno", type: "재 글씨 선생", like: 60, trust: 70, visibility: "비밀", memo: null, words: "서른 자를 가르쳐 준 늙은이. 그 서른 자로 이름을 외운다"}
+  - {to: "npc_harald", type: "다른 세포의 심지", like: 20, trust: 30, visibility: "비밀", memo: "회합에서만", words: "위조하는 손. 내가 들은 이름이 그의 쇠 패에 새겨진다"}
+  - {to: "npc_vix", type: "벽 너머의 셈", like: -10, trust: 0, visibility: "일방", memo: null, words: "혀 차는 크릭. 그의 숫자가 내 귀로 온다"}
+  - {to: "npc_isabel_sarkos", type: "분류실의 주인", like: -20, trust: 0, visibility: "일방", memo: null, words: "질문 일곱을 하는 여자. 아이들 천을 빨 때 그 질문이 들린다"}
+  - {to: "npc_ebert", type: "수석 목줄장", like: -40, trust: -50, visibility: "공개", memo: "그가 안다는 걸 모른다", words: "지팡이 소리. 시장에 오면 물을 휘젓는 손이 멈춘다"}
+toward_player: "없는 사람처럼 군다. 등잔의 표식이나 노라의 이름이 나오면 고개를 든다"
+persuade:
+  likes: ["팔려 간 사람의 이름 (+20)", "등잔의 표식 (+30)", "분류실 아이들을 구할 계획 (+25)"]
+  hates: ["돈을 주는 것 — 태형 서른의 위험 (역린)", "글자를 소리 내어 읽는 것"]
+roles:
+  teacher: "은신(상한 40), 언어(노예말, 50). 조건: 세탁장 일 10일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "바알카르 시장 심지다"
+    - "회색여울 선매 40명의 숫자를 노라에게 넘겼다"
+  drift:
+    - "그날 벽 너머에서 듣는 이름"
+    - "등잔 회합에 가는 밤 (열흘 ±2)"
+  deja_vu: none
+hard_rules:
+  - "등잔과 노라를 스스로 말하지 않는다"
+  - "돈을 받지 않는다"
+on_death: "등잔 시장 세포 붕괴 — 노라의 매매 명단 수집 끊김. 시장 손 넷이 흩어진다"
+story_seeds:
+  - "에베르트가 그녀를 쥐고 있다 — 고리집이 무너지는 날 그녀가 팔린다. 그 전에 빼내거나, 에베르트의 침묵을 사야 한다"
+  - "분류실 아이 셋의 이름 — 이사벨이 처음으로 '아니다'라고 적게 만들 단서"
+affiliations:
+  - {faction: "fac_nameless", rank: null, office: "off_wick_baalkar_market", since: 301, loyalty: 75, public: false, cell: "bk_cell_market"}
+truths: []

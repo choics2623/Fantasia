@@ -55,7 +55,7 @@ offices:
     perks: []
   - id: off_fang_other
     title: 송곳니 — 나머지 아홉 (지부 7곳·바알카르 본부)
-    holder: "unnamed:송곳니 아홉"
+    holder: npc_luga
     reports_to: off_hunt_chief
     powers: ["지부 사냥"]
     chosen_by: "사냥대장의 지명"

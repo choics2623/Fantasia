@@ -1,0 +1,170 @@
+# 은의 서약 — 멜리산드 계승 진영. 정본: HOUSES §1.4·§2.6~2.8·§6.1·§6.2·§6.3 / WORLD_BIBLE §10 클락 1 / fac_drakmar_empire.internal_factions / fac_varskar_brood.internal_factions
+# 기준: AS 312 낙엽월 1일. 바알카르 쪽 인물: docs/world/people/baalkar.md, 잿불 언덕 쪽: docs/world/people/ember_hills.md.
+id: fac_melisande
+name: 은의 서약 (멜리산드파 — 개량파)
+kind: polity
+race: [용족(진룡), 용인(순혈), 나가(세렌 자본), 엘다르(존속파), 크릭(첩자)]
+governance: 계승 진영
+governance_note: >
+  차녀 멜리산드 은비늘이 잿불 언덕 '은비늘 요람'에서 숫자로 다스리는 진영. 진영의 피는 금이 아니라 두카트다 — 세렌 대출 약 2만이
+  재무청장 오렐리아 베스페린의 서명을 거쳐 국고에 들어온다. 결정은 멜리산드의 '숫자 편지'로 내려오고, 바알카르에서는 오렐리아가
+  다섯 불의 의자에서 표를 든다. 첩자(레아·숨)가 다른 두 진영의 안쪽에 박혀 있다.
+motto: "견디는 그릇 하나."
+seat: silver_cradle    # 잿불 언덕 은비늘 요람. 바알카르에서는 재무청(bk_hall_treasury)·베스페린 저택(bk_sh_vesperin)
+size:
+  members: "진룡 2(멜리산드·실바라 — 실바라는 아직 성체가 아니다) · 청동물결 혈통 살라스트라(대룡 1) · 베르미온·오르셀·볼드 가 · 잿빛 탑 · 엘다르 존속파 · 세렌 의회 일부"
+  territory: "잿불 언덕 광산 지대, 은빛 강 수운(오르셀 나루), 아르카스 탑섬(볼드 서고)"
+  wealth: "세렌 대출 2만 두카트(몬달리), 잿불 언덕 광산(철·은·잿불석), 노예선 수운"
+  force: "광산 감독 크릭(붉은 계단), 오르셀 노예선 함대 23척, 쇠턱 전쟁무리·줄무늬 왕좌 용병, 살라스트라의 해군 — 지상군은 약하다"
+offices:
+  - id: off_melisande_head
+    title: 진영의 머리 — 차녀 멜리산드 은비늘
+    holder: npc_melisande
+    reports_to: null
+    powers: ["진영의 뜻", "은비늘 요람의 이식·육종", "'견디는 그릇'(잔향) 포획 입찰"]
+    chosen_by: "불의 계승 — 차녀. 스스로 쥔다"
+    perks: ["은비늘 요람", "잿불 언덕 화주"]
+  - id: off_melisande_proxy
+    title: 다섯 의자의 대리 — 재무청장
+    holder: npc_aurelia_vesperin
+    reports_to: off_melisande_head
+    powers: ["다섯 불의 의자에서 멜리산드의 표", "세렌 대출 창구"]
+    chosen_by: "멜리산드의 지명 (AS 310)"
+    perks: ["담보 목록 — 인장 없이 서명했다"]
+  - id: off_melisande_cradle
+    title: 요람 행정관
+    holder: npc_aurelia_vermion
+    reports_to: off_melisande_head
+    powers: ["은비늘 요람 행정 — 대기 감방 약 60"]
+    chosen_by: "베르미온 가 — 멜리산드를 숭배한다"
+    perks: []
+  - id: off_melisande_mines
+    title: 광산의 손 — 베르미온 백작
+    holder: npc_cassian_vermion
+    reports_to: off_melisande_head
+    powers: ["갱도 41, 광부 수천", "지지 6"]
+    chosen_by: "베르미온 가의 비늘 서약"
+    perks: []
+  - id: off_melisande_scholar
+    title: 탑의 손 — 볼드 가주 겸 잿빛 탑 탑주
+    holder: npc_irene_bold
+    reports_to: off_melisande_head
+    powers: ["이식 실험 자료 공유", "징후자 연구 — '진짜 하나'"]
+    chosen_by: "자료 공유를 대가로 한 지지 (볼드+탑 지지 5)"
+    perks: []
+    note: "이레네가 잔향을 독점하려 하면 이탈"
+  - id: off_melisande_lender
+    title: 금고 — 세렌 의회 의장
+    holder: npc_beatrix
+    reports_to: off_melisande_head
+    powers: ["대출 2만 두카트", "양다리 — 아우락스에게도 빌려준다"]
+    chosen_by: "계약"
+    perks: []
+  - id: off_melisande_spy_north
+    title: 북쪽 첩자 — 까마귀 문 부관
+    holder: npc_lea
+    reports_to: off_melisande_head
+    powers: ["카스파르 진영 안쪽의 눈", "용주 역참 우편함 매월 25일 보고"]
+    chosen_by: "비밀 포섭"
+    perks: []
+    note: "공개되지 않은 자리. 긴그림자 이르마스가 이미 안다 (fact_gf_lea_melisande_spy)"
+  - id: off_melisande_spy_egg
+    title: 알의 첩자 — 서리 탑 시녀
+    holder: npc_soom
+    reports_to: off_melisande_head
+    powers: ["알 껍질 조각 채취", "노을 '정리' 명령의 실행자"]
+    chosen_by: "비밀 포섭"
+    perks: []
+    note: "공개되지 않은 자리 (fact_dk_soom_melisande_spy)"
+  - id: off_melisande_silver
+    title: 은빛 손녀 (실험 보조)
+    holder: "unnamed:실바라 은재 — 은룡, 190세. 아직 성체 아님"   # TODO-NPC (fac_varskar_brood off_silver_granddaughter와 같은 사람)
+    reports_to: off_melisande_head
+    powers: ["피험자 이름을 외운다 (요람 피험자들 +30 — 행렬 예외)"]
+    chosen_by: "혈족"
+    perks: []
+ranks:
+  - {id: rank_mel_dragon, title: "은빛 피 (진룡)", duties: "개량", privileges: "진영의 결정", open_to_player: false}
+  - {id: rank_mel_house, title: "서약 가문·채권자", duties: "광산·수운·지식·두카트", privileges: "즉위 후의 자리와 담보", open_to_player: false}
+  - {id: rank_mel_scholar, title: "요람의 학자", duties: "이식·기록", privileges: "피험자 열람", open_to_player: false}
+  - {id: rank_mel_eye, title: "눈 (첩자)", duties: "다른 진영 안쪽의 보고", privileges: "없다 — 들키면 끝", open_to_player: true, condition: "멜리산드의 전령(용주 역참 26일)에게 쓸모를 보일 것"}
+  - {id: rank_mel_vessel, title: "그릇 후보 (피험자)", duties: "견딘다", privileges: "번호", open_to_player: true, condition: "포획 — 잔향은 3,000번 실패 끝의 첫 '살아남는 그릇'"}
+decision: "멜리산드가 숫자로 정하고 편지로 내린다. 바알카르에서는 오렐리아의 숫자, 잿불 언덕에서는 요람의 숫자가 곧 명령이다."
+succession: "멜리산드가 죽으면 실바라가 너무 어리다 — 진영은 세렌 채권과 잿빛 탑으로 흩어지고, 오렐리아의 담보 목록이 집행된다."
+law:
+  crimes:
+    - {act: "피험자를 빼돌린다", punishment: "그 자리를 피험자로", note: "은비늘 요람"}
+    - {act: "담보 목록을 누설", punishment: "세렌 쪽 처리 — 사라진다", note: ""}
+customs:
+  greeting: "숫자로 인사한다 — '이번 달 견딘 수'. 은비늘 조각 브로치가 대리의 표."
+  taboos: ["낭비 (그들은 화형을 '낭비'라 부른다)", "실패한 피험자의 이름을 세는 것 (실바라만 한다)"]
+  rites: [{name: "숫자 편지", when: "매주", what: "멜리산드가 요람의 숫자를 대리들에게 보낸다"}]
+  speech: "학자의 하십시오체. 인간은 '자원'. 숫자·이자·그릇·개량."
+membership:
+  join: "계약 또는 숫자 — 쓸모가 증명되면"
+  leave: "담보가 집행되거나 피험자가 된다"
+  signs: ["은비늘 브로치", "세렌 두카트 차용증"]
+internal_factions:
+  - {name: "요람 (실험)", leader: npc_melisande, aim: "견디는 그릇 — 아버지의 시간의 상처를 그릇에 옮긴다", strength: 40}
+  - {name: "금고 (세렌·재무청)", leader: npc_aurelia_vesperin, aim: "즉위 후 제국 장부를 하나로 — 담보가 집행되기 전에", strength: 30}
+  - {name: "탑 (볼드·잿빛 탑)", leader: npc_irene_bold, aim: "진짜 하나 — 이레네는 잔향을 넘기지 않으려 한다. 이탈의 선", strength: 20}
+  - {name: "실바라의 이름들", leader: null, aim: "피험자 이름을 외우는 은룡 손녀 — 진영 안의 균열", strength: 10}
+assets:
+  - "은비늘 요람과 대기 감방 약 60"
+  - "세렌 대출 2만 두카트와 담보 목록 (은빛 강 통행세 10년, 국유 노예 3,000)"
+  - "오르셀 노예선 함대, 잿불 언덕 광산"
+  - "첩자 둘 — 까마귀 문 부관, 서리 탑 시녀"
+secrets:
+  - {fact: fact_eh_mel_vessel, known_by_rank: rank_mel_dragon}
+  - {fact: fact_eh_mel_311_reports, known_by_rank: rank_mel_scholar}
+  - {fact: fact_eh_mel_politics, known_by_rank: rank_mel_house}
+  - {fact: fact_gf_lea_melisande_spy, known_by_rank: rank_mel_dragon}
+  - {fact: fact_dk_soom_melisande_spy, known_by_rank: rank_mel_dragon}
+  - {fact: fact_bk_aurelia_collateral, known_by_rank: rank_mel_house}
+  - {fact: fact_bk_morna_raven_leash, known_by_rank: rank_mel_house}
+  - {fact: fact_bk_noeul_marked, known_by_rank: rank_mel_eye}
+  - {truth: T03, level: fragment, holders: [off_melisande_head]}
+relations:
+  # HOUSES §6.1 행렬 — 멜리산드파 행
+  - {to: fac_aurax, stance: -60, note: "행렬"}
+  - {to: fac_kaspar, stance: -50, note: "행렬 — 첩자 레아를 박아 두었다"}
+  - {to: fac_eldar, stance: 60, note: "행렬 — 존속파(지지 5)"}
+  - {to: fac_nocturne, stance: 0, note: "행렬. 흑수정은 개별 지지(+1)"}
+  - {to: fac_durgan, stance: 20, note: "행렬"}
+  - {to: fac_seren, stance: 60, note: "행렬 — 의회 양다리(지지 6)"}
+  - {to: fac_jotun, stance: -40, note: "행렬"}
+  - {to: fac_grom, stance: 0, note: "행렬. 쇠턱 전쟁무리는 개별 지지(용병)"}
+  - {to: fac_light, stance: 20, note: "행렬"}
+  - {to: fac_nameless, stance: -80, note: "행렬"}
+  - {to: fac_collar, stance: 20, note: "행렬"}
+  - {to: fac_ashen_tower, stance: 70, note: "행렬 — 볼드+탑(지지 5)"}
+  - {to: fac_barg, stance: 10, note: "행렬"}
+  - {to: fac_swamp_hags, stance: -60, note: "행렬"}
+  - {to: fac_scale_council, stance: -10, note: "행렬 밖 — 원로회가 멜리산드파를 보는 값(−10)의 대칭 가정. 재날개 모르나가 동정적"}
+support:
+  # HOUSES §6.3 — 귀족 지지율(%). 합 32
+  - {who: npc_melisande, points: 2}
+  - {who: fac_vermion, points: 6, flips_if: "독가스 장치·피험자 실태 폭로 → 광산 봉기"}
+  - {who: fac_orsel, points: 3, flips_if: "몬달리가 채권을 회수하면 즉시 붕괴"}
+  - {who: fac_bold, points: 5, note: "볼드+잿빛 탑", flips_if: "이레네가 잔향을 독점하려 하면 이탈"}
+  - {who: fac_eldar, points: 5, note: "존속파", flips_if: "영혼 정원 실패·붕괴 시 −3"}
+  - {who: fac_seren, points: 6, note: "몬달리 외 6석 (양다리)", flips_if: "카스파르가 계약민 시민권을 약속하면 노르발이 흔들림"}
+  - {who: fac_great_dragon_lines, points: 3, note: "청동물결 혈통 살라스트라", flips_if: "도둑맞은 알 사건 공개"}
+  - {who: fac_grom, points: 2, note: "쇠턱 전쟁무리 / 줄무늬 왕좌", flips_if: "돈"}
+toward_echo: "포획 후 이식 — 3,000번 실패한 '견디는 그릇'. 죽이면 회귀할 뿐이라는 것은 모르지만, 죽이는 것은 낭비라고 본다. 잔향의 정체가 공개되면 지지 +3(그릇 확보 경쟁)."
+player_paths:
+  - "피험자로 잡히기 — 은비늘 요람. 멜리산드가 처음으로 '살아남는 그릇'을 얻는 길이자, 요람 안에서 봉기를 여는 길"
+  - "담보 목록 — 공개하면 자금줄이 끊기지만 세렌이 국유 노예 3,000을 받으러 온다"
+  - "레아를 카스파르에게 드러내기 (긴그림자 이르마스가 그 값을 정해 두었다)"
+  - "이레네를 이탈시키기 — 탑이 잔향을 독점하려는 순간"
+regression:
+  fixed:
+    - "지지율 32 — 회귀점의 값"
+    - "레아와 숨이 첩자다"
+    - "세렌 대출 2만, 담보 목록에 인장이 없다"
+  flow:
+    - "굶주림월 20일 상환 연장 협상"
+    - "용주 역참 우편함 매월 25~26일"
+  drift:
+    - "숫자 편지의 숫자"
+    - "다섯 의자에서 오렐리아가 먼저 부딪치는 안건"

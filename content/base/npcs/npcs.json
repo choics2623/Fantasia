@@ -2051,6 +2051,470 @@
   "summary": ""
  },
  {
+  "id": "npc_severian_kaldaran",
+  "name": "세베리안 칼다란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "용좌 집사, 병상의 문지기",
+  "tier": "S",
+  "factions": [
+   "카스파르",
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": "용좌 집사 (불꽃 홀의 집사), 칼다란 대공가 가주, 셋째 서랍 지기 — 대공 — 순혈 대가문 가주. 용황의 병상 출입을 통제하는 유일한 용인",
+  "age": 288
+ },
+ {
+  "id": "npc_severin_targul",
+  "name": "세베린 타르굴",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "재상, 다섯 의자의 의장",
+  "tier": "S",
+  "factions": [
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": "재상 — 다섯 불의 의자 의장, 행정 실무 총괄, 비늘 시장 운영권자 (타르굴 가 가주) — 용황이 직접 임명한 마지막 문관. 순혈 상인 가문 타르굴의 가주",
+  "age": 410
+ },
+ {
+  "id": "npc_morkan",
+  "name": "모르칸 쇠비늘",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "근위대장, 움직이지 않는 의자",
+  "tier": "S",
+  "factions": [
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "비늘 근위대장 (근위 1,200), 다섯 불의 의자 한 자리 — 비늘혈 무관 가문 모르칸 가의 가주. 용황이 직접 임명 — 표면상 중립",
+  "age": 196
+ },
+ {
+  "id": "npc_branek",
+  "name": "브라넉 재송곳",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "아우락스의 대리, 재송곳 기사",
+  "tier": "A",
+  "factions": [
+   "잿빛 실",
+   "아우락스"
+  ],
+  "summary": "비늘혈 기사 — 가문 없이 '재송곳'이라는 이름을 아우락스에게서 받았다",
+  "age": 141
+ },
+ {
+  "id": "npc_aurelia_vesperin",
+  "name": "오렐리아 베스페린",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "멜리산드의 대리, 재무청장",
+  "tier": "A",
+  "factions": [
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": "순혈 학자 가문 베스페린의 가주 — 불의 학당 출신 셈학자",
+  "age": 214
+ },
+ {
+  "id": "npc_arden_kaldaran",
+  "name": "아르덴 칼다란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "회색 장부 관리관",
+  "tier": "A",
+  "factions": [],
+  "summary": "칼다란 대공가 장남",
+  "age": 160
+ },
+ {
+  "id": "npc_livia_kaldaran",
+  "name": "리비아 칼다란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "불꽃 홀 의전관",
+  "tier": "A",
+  "factions": [
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "칼다란 대공가 딸 (세베리안과 로잘린드의 첫째)",
+  "age": 97
+ },
+ {
+  "id": "npc_cedric_kaldaran",
+  "name": "세드릭 칼다란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "견습 집사",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_rosalind_kaldaran",
+  "name": "로잘린드 칼다란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "칼다란 대공비",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_edun",
+  "name": "에둔",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "재의 둥지 시종장",
+  "tier": "A",
+  "factions": [],
+  "summary": "비늘혈 관리. 집사 추천, 용황 묵인",
+  "age": 132
+ },
+ {
+  "id": "npc_volgas",
+  "name": "볼가스 높은홰",
+  "race": "와이번",
+  "subrace": "왕관 와이번",
+  "region": "드라크마르 용좌령",
+  "role": "수석 원로, 인두세 총괄",
+  "tier": "A",
+  "factions": [
+   "비늘 원로회",
+   "아우락스"
+  ],
+  "summary": "왕관 와이번 원로 — 원로석 9 중 높은홰 3",
+  "age": 410
+ },
+ {
+  "id": "npc_irmas",
+  "name": "이르마스 긴그림자",
+  "race": "와이번",
+  "subrace": "왕관 와이번",
+  "region": "드라크마르 용좌령",
+  "role": "감찰 원로",
+  "tier": "A",
+  "factions": [
+   "목줄단",
+   "비늘 원로회",
+   "카스파르",
+   "아우락스"
+  ],
+  "summary": "왕관 와이번 원로 — 원로석 9 중 긴그림자 2",
+  "age": 450
+ },
+ {
+  "id": "npc_morna",
+  "name": "모르나 재날개",
+  "race": "와이번",
+  "subrace": "왕관 와이번",
+  "region": "드라크마르 용좌령",
+  "role": "국유 노예 배당관",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_dravan",
+  "name": "드라반 붉은발톱",
+  "race": "용족",
+  "subrace": "진룡(붉은 용)",
+  "region": "드라크마르 용좌령",
+  "role": "화형 집행관",
+  "tier": "A",
+  "factions": [
+   "아우락스"
+  ],
+  "summary": "진룡 — 아우락스의 아들, 세라크의 오빠",
+  "age": 520
+ },
+ {
+  "id": "npc_valerius_hastran",
+  "name": "발레리우스 하스트란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "하스트란 후작, 비늘기사단 단장",
+  "tier": "A",
+  "factions": [
+   "아우락스"
+  ],
+  "summary": "후작 — 가장 나이 든 현역 용인 기사, 아우락스에게 비늘 서약",
+  "age": 334
+ },
+ {
+  "id": "npc_mariel_hastran",
+  "name": "마리엘 하스트란",
+  "race": "용인",
+  "subrace": "순혈",
+  "region": "드라크마르 용좌령",
+  "role": "남문 수비대장",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_nebra_sarkos",
+  "name": "네브라 사르코스",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "사르코스 여백작, 대시장의 주인",
+  "tier": "A",
+  "factions": [
+   "잿빛 탑",
+   "아우락스",
+   "멜리산드"
+  ],
+  "summary": "여백작 — 돈으로 산 작위의 비늘혈",
+  "age": 176
+ },
+ {
+  "id": "npc_otmar_sarkos",
+  "name": "오트마르 사르코스",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "대시장 경매사",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_isabel_sarkos",
+  "name": "이사벨 사르코스",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "징후자 분류관",
+  "tier": "A",
+  "factions": [
+   "잿빛 탑"
+  ],
+  "summary": "사르코스 여백작의 딸",
+  "age": 71
+ },
+ {
+  "id": "npc_grim",
+  "name": "그림",
+  "race": "크릭",
+  "subrace": "감독관 크릭",
+  "region": "드라크마르 용좌령",
+  "role": "사르코스 수석 감독관",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_varen_raven",
+  "name": "바렌 레이번",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "레이번 가 바알카르 궁정 대리",
+  "tier": "A",
+  "factions": [],
+  "summary": "레이번 남작 고드릭의 동생. 관저 없는 비늘혈",
+  "age": 118
+ },
+ {
+  "id": "npc_isaac",
+  "name": "이삭",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "볼드 수석 서기 노예",
+  "tier": "A",
+  "factions": [
+   "이름 없는 자들"
+  ],
+  "summary": "사유 노예 (볼드 가), 사슬 표찰 '볼드 1호'. 아르카스에서 '숫자와 기호만' 배웠다 — 실제로는 글을 안다",
+  "age": 39
+ },
+ {
+  "id": "npc_theo_bold",
+  "name": "테오 볼드",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "궁정 연대기 담당",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_vix",
+  "name": "빅스",
+  "race": "크릭",
+  "subrace": "감독관 크릭",
+  "region": "드라크마르 용좌령",
+  "role": "비늘 시장 경매관",
+  "tier": "A",
+  "factions": [],
+  "summary": "타르굴 가 계약 경매관. 채찍손 길드 소속 — 국유 노예 신분이 아니다",
+  "age": 33
+ },
+ {
+  "id": "npc_skik",
+  "name": "스킥",
+  "race": "크릭",
+  "subrace": "감독관 크릭",
+  "region": "드라크마르 용좌령",
+  "role": "굽은 등 조합장",
+  "tier": "A",
+  "factions": [
+   "아우락스"
+  ],
+  "summary": "길드 소속 — 국유 노예 신분이 아니다. 크릭으로서는 고령",
+  "age": 39
+ },
+ {
+  "id": "npc_ebert",
+  "name": "에베르트",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "바알카르 수석 목줄장, 고리집 가장",
+  "tier": "S",
+  "factions": [
+   "목줄단"
+  ],
+  "summary": "바알카르 수석 목줄장 — 목줄단 바알카르 지부 총괄, 대륙 목줄장 명부. 고리집 7대 가장 — 국유 노예이나 사슬 표찰이 없다 (인간이면서). 긴그림자 둥지에서 정보 대가로 배급을 받는다",
+  "age": 60
+ },
+ {
+  "id": "npc_luga",
+  "name": "이빨잡이 루가",
+  "race": "수인족",
+  "subrace": "바르그(늑대)",
+  "region": "드라크마르 용좌령",
+  "role": "송곳니 회관 상주 대리",
+  "tier": "A",
+  "factions": [
+   "잿빛 탑",
+   "바르그 노예사냥"
+  ],
+  "summary": "송곳니 — 볼크가 사냥 원정 중일 때 회관을 쥔다",
+  "age": 41
+ },
+ {
+  "id": "npc_cadel_hask",
+  "name": "카델 하스크",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "사슬 부두 부두장",
+  "tier": "A",
+  "factions": [],
+  "summary": "하스크 가(국유농장 감독 가문, 일가 7명)의 둘째. 원로회가 준 관직",
+  "age": 104
+ },
+ {
+  "id": "npc_varen_hask",
+  "name": "바렌 하스크",
+  "race": "용인",
+  "subrace": "비늘혈",
+  "region": "드라크마르 용좌령",
+  "role": "이삭 우리 국유농장 감독관",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_oswald",
+  "name": "갈고리 오스발트",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "사슬 부두 하역 목줄장",
+  "tier": "A",
+  "factions": [
+   "잿빛 실"
+  ],
+  "summary": "국유 노예 (회색 장부 번호), 목줄장 — 배급 가산",
+  "age": 50
+ },
+ {
+  "id": "npc_anselma",
+  "name": "두더지 안셀마",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "시장 세탁부, 등잔의 시장 심지",
+  "tier": "A",
+  "factions": [],
+  "summary": "국유 노예 (타르굴 배당), 사슬 표찰 '시장 열둘째'",
+  "age": 40
+ },
+ {
+  "id": "npc_harald",
+  "name": "하랄",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "위조하는 손, 하수도 심지",
+  "tier": "A",
+  "factions": [
+   "이름 없는 자들",
+   "잿빛 실",
+   "쥐들의 왕관"
+  ],
+  "summary": "장부 밖의 사람 — 회색 장부에 '사망'으로 적혀 있다",
+  "age": 44
+ },
+ {
+  "id": "npc_tilde",
+  "name": "틸데",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "불꽃 홀 등잔 기름 노예, 궁정 세포",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_benno",
+  "name": "베노",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "재 글씨 선생, 하수도 세포",
+  "tier": "B",
+  "factions": [],
+  "summary": ""
+ },
+ {
+  "id": "npc_noeul",
+  "name": "노을",
+  "race": "인간",
+  "subrace": "",
+  "region": "드라크마르 용좌령",
+  "role": "공물 운반자, 알 소리를 들은 아이",
+  "tier": "A",
+  "factions": [
+   "멜리산드"
+  ],
+  "summary": "국유 노예, 공물 운반자 표찰",
+  "age": 19
+ },
+ {
   "id": "npc_cg_erwin",
   "name": "보급관 에르빈 잿자루",
   "race": "용인",

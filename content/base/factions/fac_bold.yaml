@@ -29,7 +29,7 @@ offices:
     note: "'진실은 연구 대상이지 무기가 아니다.' 진실을 알면서 쓰지 않는다. 낙엽월 안에 장부에 '설명되지 않는 기시감. 북쪽.'이라 쓴다 (회차가 쌓일수록 더 일찍)"
   - id: off_ink_street
     title: 바알카르 잉크 거리 관리 (궁정 연대기 담당)
-    holder: "unnamed:테오 볼드 — 용인 131세, 이레네의 남동생"   # TODO-NPC
+    holder: npc_theo_bold
     reports_to: off_head
     powers: ["잉크 거리 저택 관리", "형식상의 궁정 연대기 — 용제국 공식 역사('인간 아스테리온이 세계를 찢었다')를 쓴다"]
     chosen_by: "가주 지명"
@@ -43,7 +43,7 @@ offices:
     perks: ["황무지 경계 관측소 출입"]
   - id: off_chief_scribe
     title: 수석 서기 노예
-    holder: "unnamed:이삭 — 인간 39세"   # TODO-NPC
+    holder: npc_isaac
     reports_to: off_head
     powers: ["서기 노예 60의 반장", "문서 정서·필사 — 숫자와 기호만 가르쳤다는 형식"]
     chosen_by: "볼드의 소유 노예. 글을 안다 — 볼드 사본을 필사한 적이 있다"

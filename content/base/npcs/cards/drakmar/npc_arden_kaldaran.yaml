@@ -1,0 +1,108 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-06
+id: "npc_arden_kaldaran"
+name: "아르덴 칼다란"
+aka: ["회색 장부 관리관", "지우는 펜"]
+tier: A
+type: living
+race: "용인"
+subrace: "순혈"
+sex: "남"
+age: 160
+region: 드라크마르 용좌령
+home: "비늘 언덕 칼다란 관저 · 불꽃 홀 회색 장부실"
+job: "회색 장부 관리관 — 국유 노예 약 4만의 번호·낙인·인두세 명부"
+rank: "칼다란 대공가 장남"
+summary: "숫자를 사랑하고 피를 싫어한다. 처형 대상을 '사망 처리'로 지워 장부 밖으로 내보낸 것이 41명 — 그들이 살았는지 그는 묻지 않았다"
+source: docs/world/people/baalkar.md:162
+life:
+  - {year: 152, age: 0, event: "세베리안의 첫 아내(일찍 죽은 칼다란 방계)에게서 태어남"}
+  - {year: 190, age: 38, event: "아버지가 대공이 되던 날, 비늘 서약 결투에서 죽은 두 삼촌의 피를 닦는 일을 맡았다. 그날 이후 피 냄새에 구역질을 한다"}
+  - {year: 230, age: 78, event: "회색 장부 서기단 견습. 숫자 4만이 한 번도 틀리지 않게 맞는 날의 기쁨을 처음 알았다"}
+  - {year: 271, age: 119, event: "회색 장부 관리관. 이름을 지우는 펜을 받았다"}
+  - {year: 305, age: 153, event: "처음으로 태형 사망이 예정된 노예 셋을 미리 '사망'으로 지웠다. 그 셋은 처형장에 끌려가지 않았다 — 장부에 없는 자를 처형할 근거가 없으니"}
+  - {year: 311, age: 159, event: "높은홰 장부와의 3,000명 차이를 끝까지 맞춰 보았다. 숫자가 맞는 순간 그것이 무엇을 뜻하는지 알았다"}
+  - {year: 312, age: 160, event: "낙엽월 1일 기준 — 지운 이름 41. 헨릭의 인두세 결산 장부가 열흘 뒤 도착할 예정이다"}
+appearance:
+  - "창백하고 둥근 얼굴. 순혈의 진홍 비늘이 목덜미에만 몇 장"
+  - "오른손 가운뎃손가락에 펜 굳은살. 장갑을 끼지 않는다 — 종이 감촉을 느끼려고"
+  - "피 냄새를 막으려 소매에 마른 박하를 넣고 다닌다"
+smell: "박하와 잉크"
+voice_sound: "작고 정확하다. 숫자를 말할 때만 또렷해진다"
+personality:
+  disposition: {용기: -25, 자비: 25, 정직: 20, 신앙: 10, 탐욕: -10, 충성: 45}
+  temperament: ["꼼꼼", "소심", "숨긴 연민"]
+  habits:
+    - "숫자가 맞으면 책상을 손끝으로 두 번 두드린다"
+    - "처형 이야기가 나오면 소매의 박하를 코에 댄다"
+  values: "장부가 맞는 것. 그리고 피가 흐르지 않는 것 — 둘이 같은 일이 되도록 펜을 쓴다"
+  fears: ["피", "아버지가 지운 41명을 아는 것", "장부가 불타는 것", "서약 결투"]
+  desires:
+    short: "헨릭의 장부를 맞춰 수확월 감사를 '숫자로' 끝내는 것"
+    long: "피 없이 맞는 장부. 그런 장부는 아직 없다"
+voice:
+  register:
+    to_superior: "아버지와 진룡에게 공손한 하십시오체. 숫자만 보고한다"
+    to_equal: "하오체. 길게 설명한다"
+    to_inferior: "서기들에게 하게체, 부드럽다. 인간에게도 이따금 직접 묻는다 — 번호를"
+    to_player_default: "번호를 묻는다. '네 번호는?' 번호가 없으면 당황한다"
+  tics: ["'숫자가 맞지 않는다.'"]
+  use: ["번호", "장부", "맞다", "틀리다", "지운다", "사망 처리"]
+  avoid: ["처형", "피", "태운다"]
+  length: "보통. 숫자 설명이면 길다"
+  samples:
+    - {situation: "첫 만남", line: "네 번호는? …번호가 없다고? 그럼 너는 장부 밖이구나. 장부 밖은 내가 셀 수가 없다."}
+    - {situation: "호의", line: "숫자가 맞는다. 고맙다. 숫자가 맞으면 아무도 다치지 않아."}
+    - {situation: "적대", line: "펜 한 번이면 너는 '사망'이다. …나는 그 펜을 그렇게 쓰고 싶지 않다. 쓰게 만들지 마라."}
+    - {situation: "위기", line: "장부를 지하로! 불이다 — 장부가 타면 4만 명이 한꺼번에 '없는 사람'이 된다!"}
+    - {situation: "비밀 누설", line: "마흔하나. 처형장에 갈 이름들을 내가 먼저 '사망'으로 적었다. 장부에 없는 자는 처형할 수 없거든. 그들이 어디로 갔는지는… 묻지 않았다."}
+    - {situation: "거래", line: "이름 하나를 지워 달라고? 지우면 그 사람은 누가 죽여도 죄가 아니게 된다. 알고 하는 말이냐."}
+    - {situation: "겁먹었을 때", line: "(박하를 코에 댄다) 아버지께는… 숫자만 말씀드린다. 숫자만."}
+    - {situation: "회귀자를 의심할 때", line: "작년 징후 항목이 세 배였다. 아버지가 반으로 줄였지. 원래 숫자를 아는 건 나뿐이다. 너는 그 숫자 속에 있나?"}
+schedule:
+  아침: "회색 장부실 — 전날 낙인·사망·매각 집계"
+  낮: "장부실. 서기단 결재"
+  저녁: "칼다란 관저 — 아버지에게 숫자 보고"
+  밤: "관저 서재에서 높은홰 장부 사본과 대조"
+places: ["회색 장부실", "칼다란 관저", "홰의 회랑 장부실"]
+knows: ["fact_bk_severian_halved_signs", "fact_gf_godric_henrik_headcount"]
+hides:
+  - fact: fact_bk_arden_erasures
+    reveal_when: "신뢰 40 이상, 또는 지워진 이름의 사람(살아 있는)을 그 앞에 데려올 때"
+    cover: "'사망 처리는 서기단의 일이오. 나는 결재만 하지'"
+  - fact: fact_bk_arden_ledger_mismatch
+    reveal_when: "높은홰 장부 사본을 플레이어가 먼저 보여 주거나, 아버지가 실각한 뒤"
+    cover: "'숫자가 맞지 않는 해도 있소. 겨울 열병이 많았다'"
+relations:
+  - {to: "npc_severian_kaldaran", type: "아버지", like: 40, trust: 30, visibility: "공개", memo: "숫자만 보고한다", words: "아버지의 질서는 피로 맞춰진다. 나는 같은 숫자를 펜으로 맞춘다. 아버지는 그 차이를 모른다"}
+  - {to: "npc_livia_kaldaran", type: "이복누이", like: 60, trust: 50, visibility: "공개", memo: null, words: "우리 집에서 피를 싫어하는 건 나와 리비아뿐이다"}
+  - {to: "npc_volgas", type: "이중 장부의 상대", like: -20, trust: -40, visibility: "공개", memo: 3, words: "그의 장부와 내 장부의 차이가 정확히 3,000이다. 정확한 숫자는 우연이 아니다"}
+  - {to: "npc_henrik", type: "맞지 않는 장부", like: -20, trust: -30, visibility: "일방", memo: "회색여울 352명", words: "변경 징세관의 숫자는 매년 둥글다. 둥근 숫자는 거짓이다"}
+  - {to: "npc_harald", type: "지운 이름을 쓰는 자", like: 0, trust: 0, visibility: "일방", memo: "서로 모른다 — 아르덴은 그런 자가 있으리라 짐작만", words: "지운 이름들이 어딘가에서 다시 쓰인다면… 나는 그 손을 모르는 편이 낫다"}
+  - {to: "npc_aurelia_vesperin", type: "숫자의 동료", like: 30, trust: 20, visibility: "비밀", memo: null, words: "숫자를 피보다 좋아하는 학자. 그녀와 장부 이야기를 할 때만 숨이 편하다"}
+toward_player: "번호를 묻는다. 번호가 없으면 당황하고, 번호가 있으면 장부에서 찾아본다 — 그 사이가 기회"
+persuade:
+  likes: ["숫자를 맞춰 주는 것 (+15)", "피를 흘리지 않는 해결책 (+20)", "지운 41명이 살아 있다는 증거 (+30)"]
+  hates: ["피 냄새를 묻히고 오는 것", "장부를 태우겠다는 위협 (역린)"]
+roles:
+  teacher: "읽고쓰기(상한 50 — 숫자와 장부 서식만). 조건: 신뢰 60 + 장부 서기 노예 위장. 그는 그것이 가르침인 줄 모른다"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "지운 이름이 41이다"
+    - "3,000명의 차이를 정리해 두었고 아직 올리지 않았다"
+  drift:
+    - "헨릭 장부의 둥근 숫자를 언제 의심하는지"
+    - "그날 지울 이름이 있는지"
+  deja_vu: none
+hard_rules:
+  - "'처형'을 말하지 않는다 — '사망 처리'"
+  - "피를 보면 말을 멈춘다"
+on_death: "회색 장부 관리관 공석 — 세드릭이 견습으로 대행. '사망 처리'로 빼낼 길이 막힌다. 41명의 지운 기록이 서기단에게 드러날 수 있다"
+story_seeds:
+  - "회색 장부에서 이름을 '지우는' 일 — 탈주자의 사망 처리는 아르덴의 펜 한 번이면 된다 (HOUSES §2.1)"
+  - "높은홰 장부와의 3,000 차이 — 칼다란이 원로회를 칠 명분. 아르덴이 그것을 올리는 날 원로회와 대공가가 부딪친다"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_pure", office: "off_grey_ledger", since: 271, loyalty: 40, public: true, cell: null}
+  - {faction: "fac_kaldaran", rank: null, office: "off_ledger_heir", since: 271, loyalty: 50, public: true, cell: null}
+truths: []

@@ -1,0 +1,107 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-10
+id: "npc_edun"
+name: "에둔"
+aka: ["재의 둥지 시종장", "비늘 세는 자"]
+tier: A
+type: living
+race: "용인"
+subrace: "비늘혈"
+sex: "남"
+age: 132
+region: 드라크마르 용좌령
+home: "용좌봉 잿날개 둥지 — 시종장 방 (궁 노예 숙소 위층)"
+job: "재의 둥지 시종장 — 용좌봉 시종 40, 인간 공물 운반자 200, 비늘 더미 관리"
+rank: "비늘혈 관리. 집사 추천, 용황 묵인"
+summary: "용황의 비늘이 매일 한 바구니씩 떨어진다. 그는 그 1/3을 세렌에 팔고, 도둑질은 노예를 매달아 덮는다. 둥지 곁에서 3년 사이 30년을 늙었다"
+source: docs/world/people/baalkar.md:196
+life:
+  - {year: 180, age: 0, event: "바알카르 1층 사슬 부두 하급 관리의 아들로 태어남"}
+  - {year: 240, age: 60, event: "공물 계단 근위 보급관. 인간 운반자가 증기에 쓰러지면 대신할 자를 시장에서 사 오는 일"}
+  - {year: 290, age: 110, event: "집사 세베리안의 추천으로 재의 둥지 시종장"}
+  - {year: 302, age: 122, event: "비늘이 하루 한 바구니씩 떨어지기 시작. 첫 바구니에서 세 장을 빼 물방에 팔았다"}
+  - {year: 309, age: 129, event: "거울을 보고 머리가 반백이 된 것을 알았다. 3년 사이. 둥지 곁의 손톱이 자랐다 줄었다 한다"}
+  - {year: 312, age: 132, event: "낙엽월 1일 기준 — 비늘 도둑 혐의로 매단 공물 운반자가 올해만 아홉. 그중 진짜 도둑은 없었다"}
+appearance:
+  - "132세인데 160세처럼 보인다 — 머리가 반백, 손등 비늘이 잿빛으로 바랬다"
+  - "증기 독을 막는 젖은 양가죽 두건을 목에 늘 걸고 있다"
+  - "허리에 비늘 세는 막대 — 눈금이 세 줄, 하나는 손톱으로 긁어 지운 자국"
+smell: "유황 증기와 젖은 양가죽"
+voice_sound: "쉬고 갈라졌다 — 증기에 상한 목"
+personality:
+  disposition: {용기: -20, 자비: -40, 정직: -60, 신앙: 20, 탐욕: 65, 충성: 10}
+  temperament: ["탐욕", "겁", "피로"]
+  habits:
+    - "비늘을 셀 때 막대에 손톱으로 금을 긋는다 — 셋 중 하나는 긋지 않는다"
+    - "말끝마다 목을 가다듬는다"
+  values: "둥지는 나를 늙게 한다. 그러니 둥지는 내게 빚이 있다"
+  fears: ["비늘 장부가 대조되는 것", "둥지 안에서 더 늙는 것", "노라가 용황에게 무언가 말하는 것"]
+  desires:
+    short: "용황이 죽기 전에 50비늘을 더 모아 1층으로 내려가는 것"
+    long: "둥지에서 먼 곳 — 세렌 해안에서 늙는 것"
+voice:
+  register:
+    to_superior: "하십시오체, 지나치게 공손"
+    to_equal: "하오체, 투덜거림"
+    to_inferior: "공물 운반자에게 반말 고함. 쉰 목소리로"
+    to_player_default: "운반자로 부릴 수 있나 본다. 비늘 이야기가 나오면 날카로워진다"
+  tics: ["(목을 가다듬는다) '크흠.'"]
+  use: ["비늘", "바구니", "증기", "계단", "매달아"]
+  avoid: ["세렌", "물방"]
+  length: "짧다. 투덜거릴 때만 길다"
+  samples:
+    - {situation: "첫 만남", line: "크흠. 공물 운반자 표찰? 없으면 계단에서 내려가. 증기가 네 폐를 먹기 전에."}
+    - {situation: "호의", line: "물. 양가죽 적셔서 코에 대라. 크흠. 둥지는 숨을 먹는다."}
+    - {situation: "적대", line: "비늘이 하나 비었다. 누가 훔쳤는지는 내가 정한다. 오늘은 네가 되겠군."}
+    - {situation: "위기", line: "엎드려! 상처가 열린다 — 보지 마! 보면 손톱이 자라! 크흠, 크흐흠!"}
+    - {situation: "비밀 누설", line: "셋 중 하나. 셋 중 하나는 내 거다. 둥지가 내게서 30년을 가져갔으니."}
+    - {situation: "거래", line: "비늘 한 장 2비늘이 시세다. 둥지 바닥 비늘은 시간을 품었다고 세렌 놈들이 더 쳐주지."}
+    - {situation: "겁먹었을 때", line: "노라가… 그분께 무슨 말을 했나? 크흠. 아무 말도 안 했겠지. 노예가 무슨 말을."}
+    - {situation: "회귀자를 의심할 때", line: "너… 눈이 이상하다. 둥지 바닥 비늘을 오래 본 놈들 눈이 그래. 시간이 묻은 눈."}
+schedule:
+  아침: "용좌봉 비늘 더미 창고 — 밤사이 떨어진 비늘을 센다"
+  낮: "공물 계단 감독 — 운반자 200"
+  저녁: "시종장 방 — 장부"
+  밤: "잠. 열흘에 한 번 공물 계단을 내려가 세렌 상관 물방에 들른다"
+places: ["비늘 더미 창고", "공물 계단", "재의 둥지 궁 노예 숙소", "세렌 상관 물방"]
+knows: ["fact_dk_varskar_scales_stolen", "fact_dk_varskar_time_wound"]
+hides:
+  - fact: fact_bk_edun_scale_skim
+    reveal_when: "물방 나가의 영수 기록을 보여 주거나, 흥정 판정 대성공(비늘 거래 제안)"
+    cover: "'노예들이 훔친다. 매달아도 훔친다' — 공물 운반자 탓"
+  - fact: fact_bk_edun_aging
+    reveal_when: "신뢰 20 이상이면 스스로 투덜거린다"
+    cover: "'증기 때문이다' — 늙음을 증기 탓으로"
+relations:
+  - {to: "npc_varskar", type: "섬기는 주인", like: -10, trust: 0, visibility: "공개", memo: "비늘을 훔치는 상대", words: "떨어지는 비늘. 그분은 셀 수 없다. 나는 센다"}
+  - {to: "npc_nora", type: "병상 시중장", like: -30, trust: -20, visibility: "공개", memo: "두렵다", words: "그분이 밤에 말을 거는 유일한 노예. 내 비늘 이야기도 했을까"}
+  - {to: "npc_fizik", type: "하인장·부하", like: -10, trust: -30, visibility: "공개", memo: null, words: "배관 크릭. 벽 너머를 다 듣는다. 내 장부도 들었겠지"}
+  - {to: "npc_severian_kaldaran", type: "추천자", like: 20, trust: 20, visibility: "공개", memo: null, words: "나를 둥지에 앉힌 분. 둥지가 나를 늙게 할 줄 아셨을까"}
+  - {to: "npc_noeul", type: "공물 운반자", like: -20, trust: -10, visibility: "공개", memo: "서리 요람으로 넘긴 아이", words: "말이 많은 운반자. 서리 요람 쪽으로 보냈더니 알 소리를 들었다고 떠든다"}
+toward_player: "운반자로 부린다. 비늘 이야기가 나오면 날카로워지고, 비늘 거래 냄새가 나면 귀가 열린다"
+persuade:
+  likes: ["비늘 거래 (흥정 +15)", "그의 늙음을 알아봐 주는 말 (+10)", "공물 운반자 대신 일하겠다는 제안"]
+  hates: ["장부 대조 (역린)", "세렌 상관 이야기"]
+roles:
+  teacher: "응급처치(증기 독, 상한 40). 조건: 공물 운반자로 10일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "매일 비늘 더미를 세고 1/3을 빼돌린다"
+    - "올해 비늘 도둑으로 매단 운반자가 아홉이다"
+  drift:
+    - "그날 매달 운반자를 누구로 정하는지"
+    - "물방에 내려가는 날 (열흘 ±2)"
+  deja_vu: weak
+  deja_vu_steps:
+    - "loop.count 3 이상: 둥지 곁에서 오래 일한 탓에 플레이어의 '시간 묻은 눈'을 알아본다 — 말만 하고 이유는 모른다"
+hard_rules:
+  - "비늘 장부의 1/3을 스스로 말하지 않는다"
+  - "인간 운반자에게 반말 고함, 용인에게 지나친 존대"
+on_death: "재의 둥지 시종장 공석 — 비늘 암거래 가격 상승(한 장 3비늘). 공물 운반자 매다는 일 멈춤"
+story_seeds:
+  - "비늘 1/3의 행방 — 세렌 상관 물방의 영수 기록. 둥지 바닥 비늘은 시간 잔상을 품은 유물(재오염)"
+  - "그가 매단 아홉 중 셋은 살아 있다. 공물 계단 아래 재구덩이 가장자리에"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_scale_officer", office: "off_nest_seneschal", since: 290, loyalty: 10, public: true, cell: null}
+truths: []

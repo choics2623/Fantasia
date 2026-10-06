@@ -1,0 +1,103 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-19
+id: "npc_isabel_sarkos"
+name: "이사벨 사르코스"
+aka: ["분류관", "징후자 판매 담당"]
+tier: A
+type: living
+race: "용인"
+subrace: "비늘혈"
+sex: "여"
+age: 71
+region: 드라크마르 용좌령
+home: "쇠사슬 광장 사르코스 상관 · 은빛 강 상류 '울타리 셋' (보름마다 오간다)"
+job: "징후자 비밀 판매 담당 — 분류실"
+rank: "사르코스 여백작의 딸"
+summary: "자기가 판 아이들 중 '진짜'가 없었다는 걸 안다. 그래도 판다. 이번 회차에 플레이어가 노예로 잡히면 — 이번만은 그녀의 분류가 맞다"
+source: docs/world/people/baalkar.md:298
+life:
+  - {year: 241, age: 0, event: "네브라의 딸로 태어남"}
+  - {year: 290, age: 49, event: "어머니가 첫 징후자 판매를 할 때 분류를 맡았다. 첫 아이는 열병이었다. 탑에서 돌려보내지 않았다"}
+  - {year: 300, age: 59, event: "분류 질문 일곱을 만들었다. '오지 않은 날짜를 아느냐', '처음 보는 곳에서 길을 아느냐'…"}
+  - {year: 305, age: 64, event: "100건째. 그날 처음으로 분류실 문을 닫고 혼자 앉아 있었다"}
+  - {year: 310, age: 69, event: "잿빛 탑 사람(이졸)과 질문지를 맞춰 보았다. 넷이 같았다"}
+  - {year: 312, age: 71, event: "낙엽월 1일 기준 — 212건. 진짜는 하나도 없었다. 분류실에 이번 달 셋이 기다린다"}
+appearance:
+  - "가늘고 긴 손가락, 손톱을 짧게 자른다 — 아이들 눈꺼풀을 뒤집어 보는 손"
+  - "목까지 단추를 채운 회색 옷. 어머니의 녹색을 입지 않는다"
+  - "분류실에서는 늘 등잔 하나만 켠다 — 그림자를 보려고"
+smell: "식초와 쑥"
+voice_sound: "부드럽고 느리다. 아이에게 말하는 목소리"
+personality:
+  disposition: {용기: 0, 자비: 10, 정직: 30, 신앙: -20, 탐욕: 20, 충성: 50}
+  temperament: ["조용", "체념", "예리"]
+  habits:
+    - "질문 일곱을 늘 같은 순서로, 같은 목소리로 묻는다"
+    - "판 아이의 수를 세지 않는다 — 어머니가 센다"
+  values: "분류는 정확해야 한다. 정확하게 틀린 값을 받는 것도 일이다"
+  fears: ["언젠가 진짜가 오는 것", "브라넉의 의심", "어머니의 장부"]
+  desires:
+    short: "분류실의 셋을 보름 안에 넘기는 것"
+    long: "한 번이라도 '진짜가 아니다'라고 적고 아이를 돌려보내는 것"
+voice:
+  register:
+    to_superior: "하십시오체, 조용"
+    to_equal: "하오체"
+    to_inferior: "인간 아이에게 부드러운 반말 — 질문할 때만"
+    to_player_default: "질문 일곱. 대답을 듣고 등잔 그림자를 본다"
+  tics: ["'첫째 질문.'"]
+  use: ["질문", "분류", "꿈", "날짜", "진짜"]
+  avoid: ["아이(그녀는 '물건'이라 하지도 않는다 — 번호로 부른다)"]
+  length: "짧은 질문, 긴 침묵"
+  samples:
+    - {situation: "첫 만남", line: "첫째 질문. 오늘이 며칠인지 아니? …그럼 내일은 무슨 일이 있는지도 아니?"}
+    - {situation: "호의", line: "너는 아니다. 진짜가 아니야. …다행이지. 진짜는 여기서 오래 못 살아."}
+    - {situation: "적대", line: "분류실 질문은 일곱이다. 일곱을 다 맞히면 너는 60비늘이 된다. 틀리는 법을 배워 두는 게 좋을 거야."}
+    - {situation: "위기", line: "기사단이다. 분류실은 없어 — 너희는 등급 낙인을 기다리는 7등급이야. 그렇게 말해."}
+    - {situation: "비밀 누설", line: "212. 하나도 진짜가 없었어. 열병, 꿈, 노래. 탑은 다 알고 샀어. 나도 알고 팔았고."}
+    - {situation: "거래", line: "한 명을 '아니다'로 적으면 어머니 장부에서 60비늘이 빈다. 그 빈자리를 채울 수 있니?"}
+    - {situation: "겁먹었을 때", line: "(등잔을 낮춘다) …네 그림자가 왜 그렇게 늦게 따라오지?"}
+    - {situation: "회귀자를 의심할 때", line: "일곱째 질문. 처음 보는 곳에서 길을 아니? …알지. 너는 알아. 213번째는… 진짜구나."}
+schedule:
+  아침: "분류실 — 질문"
+  낮: "등급 낙인장, 또는 보름마다 울타리 셋 수용소"
+  저녁: "상관 — 어머니에게 분류 보고"
+  밤: "분류실 곁방"
+places: ["분류실", "등급 낙인장", "울타리 셋 수용소"]
+knows: ["fact_bk_nebra_212_copy"]
+hides:
+  - fact: fact_bk_isabel_no_true
+    reveal_when: "신뢰 30 이상, 또는 그녀가 '아니다'라고 적고 돌려보낸 아이가 살아 있음을 보여 줄 때"
+    cover: "'분류는 정확하다' — 질문지로 돌아간다"
+relations:
+  - {to: "npc_nebra_sarkos", type: "어머니", like: 30, trust: 40, visibility: "공개", memo: null, words: "값을 세는 어머니. 나는 세지 않는다. 그래서 견딘다"}
+  - {to: "npc_isol", type: "질문지를 맞춰 본 탑의 사냥꾼", like: 0, trust: 10, visibility: "비밀", memo: "질문 넷이 같다", words: "같은 질문을 하는 순례자. 그도 진짜를 못 찾았다"}
+  - {to: "npc_irene_bold", type: "최대 고객", like: -10, trust: 10, visibility: "비밀", memo: null, words: "가짜를 알고 사는 탑주. 그녀가 기다리는 것이 오면 나는 그것을 팔 수 있을까"}
+  - {to: "npc_branek", type: "의심하는 기사", like: -30, trust: -40, visibility: "공개", memo: null, words: "명단이 빈다고 사르코스를 노려보는 칼. 그의 명단에서 빠진 아이들이 내 분류실에 있다"}
+  - {to: "npc_anselma", type: "세탁부", like: 10, trust: 0, visibility: "일방", memo: "듣는 줄 모른다", words: "분류실 옷을 빠는 인간 여자. 말이 없어서 좋다"}
+toward_player: "질문 일곱. 대답보다 등잔 그림자를 본다"
+persuade:
+  likes: ["진짜가 아닌 아이를 살릴 방법 (+25)", "정직한 대답", "어머니 장부의 빈자리를 메울 수단"]
+  hates: ["그녀의 분류가 틀렸다는 말 (역린 — 그것이 그녀의 유일한 자존)", "아이를 데리고 거래하는 것"]
+roles:
+  teacher: "통찰(상한 60). 조건: 분류실 시중 노예. 그녀는 질문의 순서를 가르친다"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "212건, 진짜는 없었다"
+    - "질문 일곱을 같은 순서로 묻는다"
+  drift:
+    - "분류실에서 기다리는 아이 수 (둘~넷)"
+    - "울타리 셋에 가는 날"
+  deja_vu: none
+hard_rules:
+  - "질문 일곱을 바꾸지 않는다"
+  - "분류 결과를 거짓으로 말하지 않는다 — 대신 침묵한다"
+on_death: "징후자 분류 중단 — 사르코스의 특수 판매 끊김. 분류실 아이들은 그대로 재 마당으로"
+story_seeds:
+  - "플레이어가 노예로 잡히면 이사벨의 분류를 통과해야 한다 — 이번만은 그녀의 분류가 맞다 (HOUSES §2.3)"
+  - "그녀가 처음으로 '아니다'라고 적고 돌려보내는 아이 — 그 아이를 받을 곳이 있다면"
+affiliations:
+  - {faction: "fac_sarkos", rank: null, office: "off_classifier", since: 290, loyalty: 50, public: true, cell: null}
+truths:
+  - {id: "T03", level: "rumor"}

@@ -3010,9 +3010,2999 @@
      "node": "dragon_pillar_post"
     }
    ]
+  },
+  "lumen": {
+   "id": "lumen",
+   "name": "루멘 성지",
+   "node": "lumen",
+   "kind": "holy_city",
+   "grid": {
+    "w": 2200,
+    "h": 2000
+   },
+   "curfew": {
+    "from": "22:30",
+    "to": "03:30",
+    "note": "신도 숙사 잠김. 밤 기도 뒤 거리에 있는 인간은 수비대가 세워 허가증을 본다. 순례자는 숙소 안에서만"
+   },
+   "bells": [
+    {
+     "at": "04:00",
+     "name": "새벽 기도 종 (일곱 번)"
+    },
+    {
+     "at": "07:00",
+     "name": "아침 기도 종"
+    },
+    {
+     "at": "10:00",
+     "name": "3시경 기도 종"
+    },
+    {
+     "at": "13:00",
+     "name": "정오 기도 종"
+    },
+    {
+     "at": "16:00",
+     "name": "오후 기도 종"
+    },
+    {
+     "at": "19:00",
+     "name": "저녁 기도 종"
+    },
+    {
+     "at": "22:00",
+     "name": "밤 기도 종 (등불을 끈다)"
+    },
+    {
+     "at": "22:30",
+     "name": "통금 종"
+    }
+   ],
+   "patrols": [
+    "22:30",
+    "00:30",
+    "02:30"
+   ],
+   "locations": [
+    {
+     "id": "lm_pavilion",
+     "name": "맑은물 정자 (엘다르 관저)",
+     "xy": [
+      1100,
+      120
+     ],
+     "kind": "manor",
+     "access": "owner",
+     "hours": "인간은 초대 없이 못 들어간다. 정문 앞 세 걸음 밖에서 무릎",
+     "rooms": [
+      "lm_pav_garden",
+      "lm_pav_pond",
+      "lm_pav_memory"
+     ],
+     "note": "은빛 나무 정자. 인간 시종 30. 엘다르의 그림자를 가로지르면 공개 고해"
+    },
+    {
+     "id": "lm_pav_garden",
+     "name": "정원",
+     "parent": "lm_pavilion",
+     "access": "owner"
+    },
+    {
+     "id": "lm_pav_pond",
+     "name": "연못",
+     "parent": "lm_pavilion",
+     "access": "owner",
+     "note": "수면에 낮 동안의 일이 한 번 더 비친다는 소문"
+    },
+    {
+     "id": "lm_pav_memory",
+     "name": "기억 수정의 방",
+     "parent": "lm_pavilion",
+     "access": "secret",
+     "hidden": "정화청 보고서가 이 방의 수정에 '기억'으로 새겨진다. 세레니엘이 마테우스 몫과 존속파 몫 두 벌을 다르게 쓰는 책상이 여기 있다 (fact_lu_sere_double_report)"
+    },
+    {
+     "id": "lm_sunken_stair",
+     "name": "물에 잠긴 옛 계단",
+     "xy": [
+      1100,
+      50
+     ],
+     "kind": "ruin",
+     "access": "secret",
+     "hidden": "섬 북쪽 둑 아래 아스테리아 시대 인간 석공이 쌓은 계단. 수면 아래로 열아홉 단. 강이 낮은 여름에만 일곱 단이 드러난다",
+     "note": "인간이 만든 가장 오래된 건물 — 교단은 이 계단을 지도에서 지웠다"
+    },
+    {
+     "id": "lm_cathedral",
+     "name": "사슬등불 대성당",
+     "xy": [
+      1100,
+      620
+     ],
+     "kind": "cathedral",
+     "access": "public",
+     "hours": "04:00-23:00 (기도 시각 외에는 신랑까지만)",
+     "rooms": [
+      "lm_cath_nave",
+      "lm_cath_eternal_lamp",
+      "lm_cath_belltower",
+      "lm_cath_prayer_room",
+      "lm_cath_confessionals",
+      "lm_cath_chain_hall",
+      "lm_cath_library",
+      "lm_cath_library_back",
+      "lm_cath_vestry",
+      "lm_cath_candle_stair"
+     ],
+     "note": "대륙 최대의 인간 건축물. 흰 석회암. 신도 1,200이 한꺼번에 선다"
+    },
+    {
+     "id": "lm_cath_nave",
+     "name": "신랑 (본당)",
+     "parent": "lm_cathedral",
+     "access": "public"
+    },
+    {
+     "id": "lm_cath_eternal_lamp",
+     "name": "영원등 제단",
+     "parent": "lm_cathedral",
+     "access": "public",
+     "note": "영원등 쪽으로 등을 돌리거나 숨을 세게 쉬면 금기",
+     "hidden": "영원등의 기름은 엘다르가 매년 몰래 새 병을 붙인다 (소문 2 — 사실). 병을 바꾸는 날 새벽 두 시에 제단 뒤 휘장이 열린다"
+    },
+    {
+     "id": "lm_cath_belltower",
+     "name": "종탑",
+     "parent": "lm_cathedral",
+     "access": "staff",
+     "hours": "기도 시각 직전",
+     "note": "종지기가 일곱 번씩 친다. 꼭대기에서 강 양안이 모두 보인다"
+    },
+    {
+     "id": "lm_cath_prayer_room",
+     "name": "대사제의 종탑 밑 기도실",
+     "parent": "lm_cathedral",
+     "access": "owner",
+     "hours": "대사제가 깨어 있는 날만",
+     "hidden": "탁자 위 종이 한 장 — 서명한 화형 승인서 1,107장의 이름이 아주 작은 글씨로 적혀 있다 (fact_lu_gregor_paper). 침상 밑 궤에 알베릭의 처형 서명란이 빈 문서"
+    },
+    {
+     "id": "lm_cath_confessionals",
+     "name": "고해실 (40)",
+     "parent": "lm_cathedral",
+     "access": "public",
+     "hours": "07:00-19:00",
+     "note": "순례자 고해실이 열 칸. 나무 격자 건너편 사제의 귀는 정화청으로 이어진다",
+     "hidden": "스물일곱 번째 고해실 격자 뒤 서랍 — 펠릭스의 '고해 장부' 사본 (fact_lu_felix_ledger)"
+    },
+    {
+     "id": "lm_cath_chain_hall",
+     "name": "사슬방 (일곱 등불 회의장)",
+     "parent": "lm_cathedral",
+     "access": "staff",
+     "locked": "회의 외 시간",
+     "note": "흰 사슬·검은 사슬 그릇이 제단 위에 놓인다. 벽 쪽에 엘다르 참관석 하나 — 말하지 않는다"
+    },
+    {
+     "id": "lm_cath_library",
+     "name": "서고",
+     "parent": "lm_cathedral",
+     "access": "staff",
+     "hours": "08:00-17:00",
+     "note": "승인된 낭독문 사본과 사제만 읽는 '사슬 장부'. 등불관 마티아스가 열쇠를 쥔다"
+    },
+    {
+     "id": "lm_cath_library_back",
+     "name": "서고 뒷방",
+     "parent": "lm_cathedral",
+     "access": "secret",
+     "hidden": "엘다르가 '삭제'한 성 마렌의 원래 설교 사본 — '고난은 정화가 아니라 기억이다'. 불태우지 않고 봉해 둔 것은 엘다르가 글을 태우지 못해서다 (fact_lm_leanel_sealed_not_burned)"
+    },
+    {
+     "id": "lm_cath_vestry",
+     "name": "성구실",
+     "parent": "lm_cathedral",
+     "access": "staff",
+     "note": "흰 사슬, 성표 샘플, 금실 표시가 찍힌 낭독문 보관함"
+    },
+    {
+     "id": "lm_cath_candle_stair",
+     "name": "영원등 곁 계단 (감옥 쪽)",
+     "parent": "lm_cathedral",
+     "access": "staff",
+     "note": "촛불지기 한나가 양초 조각을 들고 감옥 층계까지 다닌다",
+     "hidden": "계단 아래 세 번째 단 밑 — 양초 심지 매듭에 감춘 쪽지 (fact_lu_alberic_hanna)"
+    },
+    {
+     "id": "lm_undercroft",
+     "name": "빛의 지하 감옥 '침묵의 우물'",
+     "xy": [
+      1110,
+      680
+     ],
+     "kind": "prison",
+     "access": "locked",
+     "hours": "간수 교대 06:00·18:00",
+     "rooms": [
+      "lm_uc_gate",
+      "lm_uc_guardroom",
+      "lm_uc_upper_cells",
+      "lm_uc_cell_8",
+      "lm_uc_cell_9",
+      "lm_uc_culvert"
+     ],
+     "note": "대성당 지하 아홉 층, 나선 계단, 수감 80. 이단·잔향 의심자 수용"
+    },
+    {
+     "id": "lm_uc_gate",
+     "name": "간수 초소 (1층)",
+     "parent": "lm_undercroft",
+     "access": "staff"
+    },
+    {
+     "id": "lm_uc_guardroom",
+     "name": "간수 숙소",
+     "parent": "lm_undercroft",
+     "access": "staff",
+     "hidden": "침상 틀 밑 — 오토의 아내가 먹는 약 처방 쪽지와 약값 영수"
+    },
+    {
+     "id": "lm_uc_upper_cells",
+     "name": "상층 감방들",
+     "parent": "lm_undercroft",
+     "access": "locked",
+     "note": "징후 의심자·이단 사제 수십 명. 낮에는 물떨어지는 소리"
+    },
+    {
+     "id": "lm_uc_cell_8",
+     "name": "8번 독방 (베라)",
+     "parent": "lm_undercroft",
+     "access": "locked",
+     "hidden": "벽 아래 굳은살로 새긴 글자 서른다섯 개 — 가장 아래 줄 하나는 언니의 이름"
+    },
+    {
+     "id": "lm_uc_cell_9",
+     "name": "9번 독방 (알베릭)",
+     "parent": "lm_undercroft",
+     "access": "locked",
+     "hidden": "벽에 손톱으로 새긴 '빛의 서신' 두 장 — 오토가 회칠로 지울 때마다 다시 자란다 (fact_lu_alberic_wall_writing)"
+    },
+    {
+     "id": "lm_uc_culvert",
+     "name": "지하 수로 쇠창살",
+     "parent": "lm_undercroft",
+     "access": "secret",
+     "hidden": "아홉 층 아래 강으로 빠지는 수로. 쇠창살 한 짝은 간수 야코프가 기름칠해 두었다 (fact_lm_jakob_culvert_oil)"
+    },
+    {
+     "id": "lm_inquisition",
+     "name": "등불 심문소",
+     "xy": [
+      900,
+      560
+     ],
+     "kind": "office",
+     "access": "staff",
+     "hours": "04:00-24:00",
+     "rooms": [
+      "lm_inq_hall",
+      "lm_inq_interrogation",
+      "lm_inq_records",
+      "lm_inq_scales",
+      "lm_inq_cell"
+     ],
+     "note": "정화청 본거지. 심문 사제 40, 목줄단 정보원 200의 보고가 모인다"
+    },
+    {
+     "id": "lm_inq_hall",
+     "name": "밀고 함 홀",
+     "parent": "lm_inquisition",
+     "access": "public",
+     "hours": "07:00-19:00",
+     "note": "나무 함 열두 개. 밀고 접수관이 앉는다",
+     "hidden": "셋째 함 맨 아래 — 회색여울에서 온 오스릭 관련 보고 (발신자 마르타). 접수관이 정화청장 책상으로 올리지 않은 채 쥐고 있다 (fact_lm_tobias_marta_report)"
+    },
+    {
+     "id": "lm_inq_interrogation",
+     "name": "심문실",
+     "parent": "lm_inquisition",
+     "access": "staff"
+    },
+    {
+     "id": "lm_inq_records",
+     "name": "기록함",
+     "parent": "lm_inquisition",
+     "access": "staff",
+     "note": "사제만 읽는 곳",
+     "hidden": "화형 대기 명단 — 맨 아래 줄 '두 번째 베라, 침묵의 우물'"
+    },
+    {
+     "id": "lm_inq_scales",
+     "name": "잿빛 저울실",
+     "parent": "lm_inquisition",
+     "access": "staff",
+     "hidden": "저울 셋의 표결 석판 — 베라 건에 '가볍다' 한 표가 새겨져 있다 (fact_lm_hartmund_light_vote)"
+    },
+    {
+     "id": "lm_inq_cell",
+     "name": "정화청장의 독방",
+     "parent": "lm_inquisition",
+     "access": "owner",
+     "hidden": "침상 밑 채찍과 구부러진 푸른 머리핀의 빈 상자 (fact_lu_mateus_penance)"
+    },
+    {
+     "id": "lm_pyre_court",
+     "name": "정화의 뜰",
+     "xy": [
+      980,
+      600
+     ],
+     "kind": "square",
+     "access": "public",
+     "hours": "화형일 외 낮 동안 개방",
+     "note": "이번 가을 장작 네 번. 신도는 참석해 '그의 고난이 그를 정화하기를'을 외친다"
+    },
+    {
+     "id": "lm_pyre_store",
+     "name": "장작 창고·재 항아리 방",
+     "xy": [
+      960,
+      640
+     ],
+     "kind": "store",
+     "access": "staff",
+     "hidden": "선반의 항아리 — 타다 남은 단추·치아·핀 212개가 이름 쪽지 없이 들어 있다 (fact_lm_corad_jar)"
+    },
+    {
+     "id": "lm_confession_square",
+     "name": "고해 광장",
+     "xy": [
+      1100,
+      820
+     ],
+     "kind": "square",
+     "access": "public",
+     "note": "공개 고해가 열리는 대성당 남쪽 문 앞. 줄이 해 뜨기 전부터 선다"
+    },
+    {
+     "id": "lm_seminary",
+     "name": "신학원",
+     "xy": [
+      1260,
+      560
+     ],
+     "kind": "school",
+     "access": "staff",
+     "rooms": [
+      "lm_sem_hall",
+      "lm_sem_dorm",
+      "lm_sem_chant"
+     ],
+     "note": "서원 견습 400. 낭독문은 '소리로만' 외운다"
+    },
+    {
+     "id": "lm_sem_hall",
+     "name": "낭독실",
+     "parent": "lm_seminary",
+     "access": "staff"
+    },
+    {
+     "id": "lm_sem_dorm",
+     "name": "견습 기숙사",
+     "parent": "lm_seminary",
+     "access": "staff",
+     "hidden": "마지막 침상 널 아래 — 열여섯 살 견습이 몰래 베낀 낭독문 한 줄의 '모양'"
+    },
+    {
+     "id": "lm_sem_chant",
+     "name": "성가 막사",
+     "parent": "lm_seminary",
+     "access": "staff",
+     "hours": "성가대 연습 15:00-18:00",
+     "note": "대성당 뒤. 성가대와 찬송 순례자 후보가 자란다. 요한이 열한 살부터 자란 곳"
+    },
+    {
+     "id": "lm_scriptorium",
+     "name": "필사실",
+     "xy": [
+      1270,
+      700
+     ],
+     "kind": "scriptorium",
+     "access": "staff",
+     "hours": "05:00-18:00",
+     "rooms": [
+      "lm_scr_hall",
+      "lm_scr_master"
+     ],
+     "note": "필사 수사 서른. 모두 글을 읽지 못한다 — 승인된 낭독문을 모양으로만 베낀다"
+    },
+    {
+     "id": "lm_scr_hall",
+     "name": "필사 홀",
+     "parent": "lm_scriptorium",
+     "access": "staff",
+     "note": "긴 책상 열두 개. 말소리 금지. 창을 북쪽으로 낸 이유는 그림자 때문"
+    },
+    {
+     "id": "lm_scr_master",
+     "name": "필사장실",
+     "parent": "lm_scriptorium",
+     "access": "staff",
+     "hidden": "문 뒤 못에 걸린 '빛의 서신' 모사 한 장 — 오탈자 있는 열일곱 부 중 하나 (fact_lm_otilie_copies)"
+    },
+    {
+     "id": "lm_priest_quarters",
+     "name": "사제 숙소",
+     "xy": [
+      1230,
+      640
+     ],
+     "kind": "lodging",
+     "access": "staff",
+     "hidden": "펠릭스의 방 침상 밑 — 푸른 천에 싼 고해 장부 원본 한 권"
+    },
+    {
+     "id": "lm_silver_lamp_house",
+     "name": "은빛 강 등불관 처소",
+     "xy": [
+      1180,
+      520
+     ],
+     "kind": "home",
+     "access": "owner",
+     "rooms": [
+      "lm_lamp_study"
+     ],
+     "note": "대성당 서고를 맡은 마티아스 회색손의 집"
+    },
+    {
+     "id": "lm_lamp_study",
+     "name": "등불관 서재",
+     "parent": "lm_silver_lamp_house",
+     "access": "owner",
+     "hidden": "열쇠고리에 서고 뒷방 열쇠 — 한 번도 열지 않은 사람의 손때 없는 쇠 (fact_lm_matthias_key)"
+    },
+    {
+     "id": "lm_monastery",
+     "name": "수도자 숙사",
+     "xy": [
+      1000,
+      760
+     ],
+     "kind": "lodging",
+     "access": "staff",
+     "note": "수도자 2,000 중 남자 몫. 고리지기 숙소 겸"
+    },
+    {
+     "id": "lm_nunnery",
+     "name": "수녀원",
+     "xy": [
+      1030,
+      840
+     ],
+     "kind": "lodging",
+     "access": "staff",
+     "note": "수녀와 여자 수도자의 숙사. 촛불지기 한나의 방이 문 옆"
+    },
+    {
+     "id": "lm_hospice",
+     "name": "병자의 집",
+     "xy": [
+      1300,
+      860
+     ],
+     "kind": "infirmary",
+     "access": "public",
+     "hours": "04:00-22:00",
+     "note": "순례자 이질과 강안개 폐렴의 병상. 수도자가 돌본다"
+    },
+    {
+     "id": "lm_candle_works",
+     "name": "양초 공방 '등불지기'",
+     "xy": [
+      960,
+      1100
+     ],
+     "kind": "workshop",
+     "access": "public",
+     "hours": "05:00-19:00",
+     "rooms": [
+      "lm_candle_floor",
+      "lm_candle_cellar",
+      "lm_candle_cave"
+     ],
+     "note": "루멘 양초의 3할. 노동자 40. 심지 매듭에 메시지가 숨는다 (소문 5 — 사실)"
+    },
+    {
+     "id": "lm_candle_floor",
+     "name": "공방 작업장",
+     "parent": "lm_candle_works",
+     "access": "public"
+    },
+    {
+     "id": "lm_candle_cellar",
+     "name": "밀랍 저장고",
+     "parent": "lm_candle_works",
+     "access": "staff",
+     "hidden": "밀랍 통 뒤 판자 — 강가 동굴로 내려가는 사다리 (잿빛 실 루멘 매듭)"
+    },
+    {
+     "id": "lm_candle_cave",
+     "name": "강가 동굴",
+     "parent": "lm_candle_works",
+     "access": "secret",
+     "hidden": "잿빛 실 탈주자 대기처(최대 20명). 늪길 출발점. 밀물 때 입구가 잠긴다 (fact_lm_anna_cave_tide)"
+    },
+    {
+     "id": "lm_pilgrim_street",
+     "name": "순례자 거리",
+     "xy": [
+      1100,
+      1400
+     ],
+     "kind": "street",
+     "access": "public",
+     "hours": "24시 — 순례자가 오가는 길",
+     "note": "상주 순례자 3,000. 성표 노점과 숙소. 대륙의 소문이 모인다 (소문 판정 +10)"
+    },
+    {
+     "id": "lm_pilgrim_house",
+     "name": "순례자 숙소 '등불 없는 집'",
+     "xy": [
+      1060,
+      1440
+     ],
+     "kind": "lodging",
+     "access": "public",
+     "hours": "숙박 18:00-07:00",
+     "rooms": [
+      "lm_pilgrim_cellar",
+      "lm_dry_well"
+     ],
+     "note": "빵 한 덩이와 짚 침상과 이름 장부. 아그네스 수녀가 관리하고 베르타가 일상을 맡는다"
+    },
+    {
+     "id": "lm_pilgrim_cellar",
+     "name": "지하 저장고",
+     "parent": "lm_pilgrim_house",
+     "access": "staff",
+     "hidden": "순례 허가증 위조용 동판과 빈 목패 열두 장 — 아델이 발급한 것이라는 뜻"
+    },
+    {
+     "id": "lm_dry_well",
+     "name": "물 없는 우물",
+     "parent": "lm_pilgrim_house",
+     "access": "secret",
+     "hidden": "저장고 바닥 우물에서 이어지는 지하 수로 → 잿빛 실 입구. 지금까지 214명이 지났다 (fact_lu_agnes_well)"
+    },
+    {
+     "id": "lm_token_stalls",
+     "name": "성표 노점 거리",
+     "xy": [
+      1100,
+      1350
+     ],
+     "kind": "market",
+     "access": "public",
+     "hours": "06:00-19:00",
+     "note": "성표 고리, 순례 지팡이, 헌금 쪽지 환전. 목줄단 '혀'가 노점 곁에 선다"
+    },
+    {
+     "id": "lm_pilgrim_post",
+     "name": "게시 기둥",
+     "xy": [
+      1120,
+      1420
+     ],
+     "kind": "outdoor",
+     "access": "public",
+     "note": "허가증 검사 일정과 정화 날짜가 붙는다"
+    },
+    {
+     "id": "lm_north_house",
+     "name": "북부 사제관",
+     "xy": [
+      1150,
+      1380
+     ],
+     "kind": "lodging",
+     "access": "staff",
+     "hours": "04:00-22:00",
+     "note": "북부 등불관 공석 3년 — 대리 수녀 아델이 쓴다. 북부 순례자와 허가증 발급",
+     "hidden": "서랍 안 순례 허가증 인장 — 도장 두 개. 하나는 북부, 하나는 아델의 것이 아니다 (fact_lm_adel_seal)"
+    },
+    {
+     "id": "lm_apothecary",
+     "name": "순례길 약방",
+     "xy": [
+      1000,
+      1380
+     ],
+     "kind": "shop",
+     "access": "public",
+     "hours": "07:00-18:00",
+     "note": "오토의 아내 약을 짓는 곳. 약값은 헌금 쪽지로"
+    },
+    {
+     "id": "lm_tithe_office",
+     "name": "헌금 쪽지 교환소",
+     "xy": [
+      1180,
+      1320
+     ],
+     "kind": "office",
+     "access": "public",
+     "hours": "08:00-16:00",
+     "note": "동판 쪽지를 발행·교환한다. 순례 허가증(1발톱)도 여기서 판다"
+    },
+    {
+     "id": "lm_dock",
+     "name": "루멘 부두",
+     "xy": [
+      1100,
+      1800
+     ],
+     "kind": "dock",
+     "access": "public",
+     "hours": "새벽-일몰",
+     "note": "노예선 정기편(세렌행)과 강 수운이 선다. 성표 고리를 단 인간이 배에 오르면 성표 계수소가 확인한다",
+     "hidden": "성표 계수소 장부 — 세렌행 선적 인간의 성표 번호. 팔려 간 신도 수가 그대로 적힌다"
+    },
+    {
+     "id": "lm_bridge_west",
+     "name": "서쪽 다리",
+     "xy": [
+      800,
+      700
+     ],
+     "kind": "checkpoint",
+     "access": "public",
+     "note": "허가증과 무기 검사. 용인 수비병 둘"
+    },
+    {
+     "id": "lm_bridge_east",
+     "name": "동쪽 다리",
+     "xy": [
+      1400,
+      700
+     ],
+     "kind": "checkpoint",
+     "access": "public"
+    },
+    {
+     "id": "lm_bridge_south",
+     "name": "남쪽 다리",
+     "xy": [
+      1100,
+      1650
+     ],
+     "kind": "checkpoint",
+     "access": "public",
+     "note": "순례길 쪽에서 오는 순례자가 지난다"
+    },
+    {
+     "id": "lm_west_gate",
+     "name": "서안 성문",
+     "xy": [
+      620,
+      700
+     ],
+     "kind": "gate",
+     "access": "public",
+     "hours": "04:00-22:30"
+    },
+    {
+     "id": "lm_east_gate",
+     "name": "동안 성문",
+     "xy": [
+      1580,
+      700
+     ],
+     "kind": "gate",
+     "access": "public",
+     "hours": "04:00-22:30"
+    },
+    {
+     "id": "lm_garrison",
+     "name": "용인 수비대 병영",
+     "xy": [
+      1650,
+      740
+     ],
+     "kind": "barracks",
+     "access": "staff",
+     "rooms": [
+      "lm_garrison_commander"
+     ],
+     "note": "용인 300, 크릭 잡역 400의 일부"
+    },
+    {
+     "id": "lm_garrison_commander",
+     "name": "수비대장실",
+     "parent": "lm_garrison",
+     "access": "owner",
+     "hidden": "책상 밑 서랍 — 축일 군중 3만 대 용인 300의 병력 계산표 (fact_lm_ivan_crowd_math)"
+    },
+    {
+     "id": "lm_tribute_yard",
+     "name": "공물 수레 마당",
+     "xy": [
+      1640,
+      820
+     ],
+     "kind": "yard",
+     "access": "staff",
+     "note": "긴밤월 녹테른 공물 호송이 서는 곳. 평소에는 비어 있다"
+    },
+    {
+     "id": "lm_forge",
+     "name": "성표 대장간",
+     "xy": [
+      650,
+      1000
+     ],
+     "kind": "work",
+     "access": "public",
+     "hours": "05:00-19:00",
+     "note": "신도마다 걸 성표 고리를 두들겨 잇는다"
+    },
+    {
+     "id": "lm_smith_house",
+     "name": "대장장이 일제의 집",
+     "xy": [
+      640,
+      1040
+     ],
+     "kind": "home",
+     "access": "serf",
+     "note": "대장간 옆 작은 돌집. 문 위에 불티 자국"
+    },
+    {
+     "id": "lm_lutz_house",
+     "name": "직조공 루츠의 집",
+     "xy": [
+      665,
+      1065
+     ],
+     "kind": "home",
+     "access": "serf"
+    },
+    {
+     "id": "lm_chapel_west",
+     "name": "서안 예배당",
+     "xy": [
+      600,
+      850
+     ],
+     "kind": "chapel",
+     "access": "public",
+     "rooms": [
+      "lm_chapel_west_crypt"
+     ],
+     "note": "서안 신도 구역의 새벽·저녁 기도"
+    },
+    {
+     "id": "lm_chapel_west_crypt",
+     "name": "예배당 지하실",
+     "parent": "lm_chapel_west",
+     "access": "secret",
+     "hidden": "제단 계단 밑 문 → 카타콤. 안식일 예배 뒤 '낭독 연습'이 열린다"
+    },
+    {
+     "id": "lm_catacombs",
+     "name": "카타콤",
+     "xy": [
+      560,
+      800
+     ],
+     "kind": "crypt",
+     "access": "secret",
+     "rooms": [
+      "lm_cata_ossuary",
+      "lm_cata_hall"
+     ],
+     "note": "옛 신도의 무덤 방. 끊어진 고리 루멘 사슬의 모임터"
+    },
+    {
+     "id": "lm_cata_ossuary",
+     "name": "납골 방",
+     "parent": "lm_catacombs",
+     "access": "secret"
+    },
+    {
+     "id": "lm_cata_hall",
+     "name": "일곱 고리의 방",
+     "parent": "lm_catacombs",
+     "access": "secret",
+     "hidden": "벽 일곱 못에 걸린 벌어진 성표 고리. 하나는 아직 주인이 없다 (fact_lm_ring_unclaimed)"
+    },
+    {
+     "id": "lm_ration_west",
+     "name": "서안 배급소",
+     "xy": [
+      560,
+      950
+     ],
+     "kind": "canteen",
+     "access": "public",
+     "hours": "19:30-21:30"
+    },
+    {
+     "id": "lm_tenement_west",
+     "name": "서안 신도 숙사",
+     "xy": [
+      500,
+      1100
+     ],
+     "kind": "barracks",
+     "access": "serf",
+     "locked": "22:30-03:30"
+    },
+    {
+     "id": "lm_well_west",
+     "name": "서안 우물",
+     "xy": [
+      580,
+      900
+     ],
+     "kind": "well",
+     "access": "public"
+    },
+    {
+     "id": "lm_cemetery",
+     "name": "신도 묘지",
+     "xy": [
+      400,
+      600
+     ],
+     "kind": "graveyard",
+     "access": "public",
+     "note": "서안 석회암 언덕 위. 정화의 재는 여기 묻지 않고 강에 뿌린다"
+    },
+    {
+     "id": "lm_chapel_east",
+     "name": "동안 예배당",
+     "xy": [
+      1650,
+      900
+     ],
+     "kind": "chapel",
+     "access": "public"
+    },
+    {
+     "id": "lm_ration_east",
+     "name": "동안 배급소",
+     "xy": [
+      1700,
+      950
+     ],
+     "kind": "canteen",
+     "access": "public",
+     "hours": "19:30-21:30",
+     "note": "귀리죽 둘, 빵 하나, 안식일 생선"
+    },
+    {
+     "id": "lm_tenement_east",
+     "name": "동안 신도 숙사",
+     "xy": [
+      1750,
+      1100
+     ],
+     "kind": "barracks",
+     "access": "serf",
+     "locked": "22:30-03:30"
+    },
+    {
+     "id": "lm_well_east",
+     "name": "동안 우물",
+     "xy": [
+      1700,
+      1000
+     ],
+     "kind": "well",
+     "access": "public"
+    },
+    {
+     "id": "lm_market",
+     "name": "강변 시장",
+     "xy": [
+      1600,
+      1250
+     ],
+     "kind": "market",
+     "access": "public",
+     "hours": "06:00-18:00",
+     "note": "생선·갈대 기름·성지 농원 채소"
+    },
+    {
+     "id": "lm_festival_bank",
+     "name": "동안 강변 등불 둑",
+     "xy": [
+      1480,
+      1100
+     ],
+     "kind": "outdoor",
+     "access": "public",
+     "note": "성 마렌 축일에 순례자 3만이 사슬 감긴 등불을 들고 서는 둑. 평소에는 빨래터"
+    },
+    {
+     "id": "lm_well_island",
+     "name": "대성당 우물",
+     "xy": [
+      1100,
+      780
+     ],
+     "kind": "well",
+     "access": "public"
+    },
+    {
+     "id": "lm_well_pilgrim",
+     "name": "순례자 거리 우물",
+     "xy": [
+      1090,
+      1370
+     ],
+     "kind": "well",
+     "access": "public"
+    }
+   ],
+   "outer": [
+    {
+     "id": "lumen__farm",
+     "name": "성지 농원",
+     "hours": 1.0
+    },
+    {
+     "id": "lumen__reed_flats",
+     "name": "갈대 평야",
+     "hours": 2.0
+    },
+    {
+     "id": "lumen__sandbar",
+     "name": "등불섬 남쪽 모래톱",
+     "hours": 0.5
+    }
+   ]
+  },
+  "marens_well": {
+   "id": "marens_well",
+   "name": "성 마렌의 우물",
+   "node": "marens_well",
+   "kind": "shrine",
+   "grid": {
+    "w": 260,
+    "h": 200
+   },
+   "curfew": {
+    "from": "21:00",
+    "to": "04:00",
+    "note": "울타리 문 잠김. 안식일 외에는 해 뜨기 전부터 문 앞에 순례자가 앉아 기다린다"
+   },
+   "bells": [
+    {
+     "at": "04:00",
+     "name": "새벽 기도 손종"
+    },
+    {
+     "at": "13:00",
+     "name": "정오 기도 손종"
+    },
+    {
+     "at": "19:00",
+     "name": "저녁 기도 손종"
+    }
+   ],
+   "patrols": [],
+   "locations": [
+    {
+     "id": "mw_gate",
+     "name": "울타리 문",
+     "xy": [
+      130,
+      190
+     ],
+     "kind": "gate",
+     "access": "public",
+     "hours": "안식일 06:00-18:00 개방",
+     "locked": "안식일 외",
+     "note": "참나무 문에 쇠사슬 고리 하나. 수도자가 안에서 연다"
+    },
+    {
+     "id": "mw_well",
+     "name": "성 마렌의 우물",
+     "xy": [
+      130,
+      100
+     ],
+     "kind": "well",
+     "access": "public",
+     "hours": "안식일 06:00-18:00",
+     "note": "돌 둘레가 마렌의 손자국처럼 움푹하다. 마시면 진명이 들린다는 말이 있다 (소문 4 — 반쯤)",
+     "hidden": "우물 벽 수면 아래 2m에 고대 진명어 각문(물 근원). 마렌은 여기서 진명을 '들었다'. 낮 열한 시 해가 수면 가운데 꽂힐 때 글자 윤곽이 보인다 (fact_lm_beate_inscription)"
+    },
+    {
+     "id": "mw_altar",
+     "name": "순례 제단",
+     "xy": [
+      100,
+      70
+     ],
+     "kind": "altar",
+     "access": "public",
+     "hours": "안식일",
+     "note": "성표를 올리고 가는 낮은 돌 제단. 촛불 한 줄을 켜는 자리"
+    },
+    {
+     "id": "mw_offering_box",
+     "name": "봉헌 상자",
+     "xy": [
+      90,
+      90
+     ],
+     "kind": "box",
+     "access": "public",
+     "hours": "안식일",
+     "hidden": "상자 밑바닥 이중판 — 한 해에 한 번 열리는 칸. 마렌의 첫 성표 조각이 헝겊에 싸여 있다 (fact_lm_beate_first_token)"
+    },
+    {
+     "id": "mw_cell_beate",
+     "name": "우물지기 수녀의 방",
+     "xy": [
+      200,
+      60
+     ],
+     "kind": "home",
+     "access": "staff",
+     "note": "우물 소리가 벽을 통해 들리는 방"
+    },
+    {
+     "id": "mw_cells",
+     "name": "수도자 방들",
+     "xy": [
+      210,
+      110
+     ],
+     "kind": "lodging",
+     "access": "staff",
+     "note": "수도자 스물의 침상. 대부분 늙은 여자"
+    },
+    {
+     "id": "mw_garden",
+     "name": "약초밭과 빨래터",
+     "xy": [
+      190,
+      150
+     ],
+     "kind": "garden",
+     "access": "staff"
+    }
+   ],
+   "outer": [
+    {
+     "id": "mw__road",
+     "name": "루멘으로 가는 길",
+     "hours": 0.3
+    }
+   ]
+  },
+  "pilgrim_shelter": {
+   "id": "pilgrim_shelter",
+   "name": "세 번째 고리 쉼터",
+   "node": "pilgrim_shelter",
+   "kind": "waystation",
+   "grid": {
+    "w": 300,
+    "h": 240
+   },
+   "curfew": {
+    "from": "21:30",
+    "to": "04:00",
+    "note": "쉼터 문은 잠기지 않지만 순례자는 돌집 안에서만. 수도자가 밤 기도 뒤 명부를 한 번 센다"
+   },
+   "bells": [
+    {
+     "at": "04:00",
+     "name": "새벽 종 (손종)"
+    },
+    {
+     "at": "13:00",
+     "name": "정오 종"
+    },
+    {
+     "at": "19:00",
+     "name": "저녁 종"
+    },
+    {
+     "at": "21:30",
+     "name": "점호 종"
+    }
+   ],
+   "patrols": [],
+   "locations": [
+    {
+     "id": "ps_well",
+     "name": "쉼터 우물",
+     "xy": [
+      150,
+      110
+     ],
+     "kind": "well",
+     "access": "public",
+     "note": "돌 두레박. 순례자가 가장 먼저 닿는 곳"
+    },
+    {
+     "id": "ps_oven",
+     "name": "빵 굽는 화덕",
+     "xy": [
+      180,
+      130
+     ],
+     "kind": "work",
+     "access": "public",
+     "hours": "04:00-19:00",
+     "hidden": "화덕 밑 재 속에 잿빛 표 두 개 — 쉼터지기 헤로는 모른다. 순례 중에 화덕 곁에서 졸다 간 누군가가 넣어 둔 것이다 (fact_lm_hero_oven_ash)"
+    },
+    {
+     "id": "ps_keeper_house",
+     "name": "쉼터지기 집",
+     "xy": [
+      120,
+      190
+     ],
+     "kind": "office",
+     "access": "staff",
+     "rooms": [
+      "ps_ledger_room"
+     ],
+     "note": "길 쪽 첫 집. 수도자들이 이름을 적고 빵 표를 나눈다"
+    },
+    {
+     "id": "ps_ledger_room",
+     "name": "순례자 명부방",
+     "parent": "ps_keeper_house",
+     "access": "staff",
+     "hidden": "명부 뒷장 — 날짜와 이름 옆에 아주 작은 점. 점 하나는 '루멘에서 확인한 허가증', 점 둘은 '확인되지 않은 허가증' (fact_lm_hero_ledger_dots)"
+    },
+    {
+     "id": "ps_house_men",
+     "name": "남자 순례자 돌집",
+     "xy": [
+      70,
+      110
+     ],
+     "kind": "lodging",
+     "access": "public",
+     "hours": "숙박 17:00-06:00",
+     "note": "짚 침상 스무 개"
+    },
+    {
+     "id": "ps_house_women",
+     "name": "여자·아이 순례자 돌집",
+     "xy": [
+      70,
+      150
+     ],
+     "kind": "lodging",
+     "access": "public",
+     "hours": "숙박 17:00-06:00"
+    },
+    {
+     "id": "ps_house_sick",
+     "name": "병자 돌집",
+     "xy": [
+      230,
+      90
+     ],
+     "kind": "infirmary",
+     "access": "public",
+     "note": "이질과 발 병. 수도자 한 명이 늘 곁에"
+    },
+    {
+     "id": "ps_house_stores",
+     "name": "곡식 창고 돌집",
+     "xy": [
+      220,
+      160
+     ],
+     "kind": "store",
+     "access": "staff"
+    },
+    {
+     "id": "ps_house_monks",
+     "name": "수도자 숙사 돌집",
+     "xy": [
+      150,
+      60
+     ],
+     "kind": "lodging",
+     "access": "staff",
+     "note": "수도자 여덟의 침상"
+    },
+    {
+     "id": "ps_stable",
+     "name": "짐승 매는 곳",
+     "xy": [
+      250,
+      200
+     ],
+     "kind": "stable",
+     "access": "public"
+    },
+    {
+     "id": "ps_ring_stone",
+     "name": "고리 표석",
+     "xy": [
+      150,
+      20
+     ],
+     "kind": "shrine",
+     "access": "public",
+     "note": "쇠사슬 고리 세 개가 새겨진 길 끝 표석. 세 번째 고리라는 이름의 유래. 순례자가 성표를 문질러 간다"
+    }
+   ],
+   "outer": [
+    {
+     "id": "pilgrim_shelter__road_post",
+     "name": "순례길 이정표",
+     "hours": 0.3
+    },
+    {
+     "id": "pilgrim_shelter__reed_trail",
+     "name": "갈대 나루 오솔길",
+     "hours": 0.5
+    }
+   ]
   }
  },
  "routines": {
+  "npc_varskar": {
+   "home": "dragon_throne_peak__ash_nest",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "거의 의식 없이 누워 있다 — 비늘이 떨어진다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "15:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "오후 한 시간 깨어 후계자를 접견한다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "열이 올라 옛 용언으로 헛소리"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "맑은 시간 — 노라에게만 말한다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_nora": {
+   "home": "dragon_throne_peak__palace_slaves",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "젖은 양가죽을 두르고 상처에 재 연고",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "14:00",
+     "at": "dragon_throne_peak__palace_slaves",
+     "doing": "궁 노예 숙소에서 네 시간 잠"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "15:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "접견 시중 — 바닥의 셋째 판석"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "dragon_throne_peak__sound_room",
+     "doing": "피직과 궁정 소문 교환"
+    },
+    {
+     "days": "monthday:[5,15,25]",
+     "from": "19:00",
+     "to": "20:30",
+     "at": "dragon_throne_peak__ash_pits",
+     "doing": "재구덩이 셋째 줄 곁 — 세탁장 물통으로 등잔의 전갈을 받는다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "용황 곁 — 그가 말하는 것을 듣는다",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_fizik": {
+   "home": "dragon_throne_peak__sound_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "dragon_throne_peak",
+     "doing": "굴뚝 점검"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "dragon_throne_peak__sound_room",
+     "doing": "배관 수리 — 실은 벽 너머 엿듣기"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "dragon_throne_peak__sound_room",
+     "doing": "노라와 소문 교환"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "19:00",
+     "to": "24:00",
+     "at": "dragon_throne_peak__outer_stair",
+     "doing": "공물 계단을 내려갈 채비 — 송곳니 회관에 팔 소문을 고른다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "dragon_throne_peak__sound_room",
+     "doing": "소리 방에서 잔다 — 둥지 최상층의 말이 들린다"
+    }
+   ]
+  },
+  "npc_edun": {
+   "home": "dragon_throne_peak__palace_slaves",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "07:00",
+     "at": "dragon_throne_peak__scale_heap",
+     "doing": "밤사이 떨어진 비늘을 센다 — 셋 중 하나는 막대에 긋지 않는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "16:00",
+     "at": "dragon_throne_peak",
+     "doing": "공물 계단 감독 — 운반자 200",
+     "alt": {
+      "p": 0.1,
+      "at": "bk_seren_house",
+      "doing": "물방에 비늘을 판다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "21:00",
+     "at": "dragon_throne_peak__palace_slaves",
+     "doing": "시종장 방 — 장부"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "dragon_throne_peak__palace_slaves",
+     "doing": "잔다 — 기침"
+    }
+   ]
+  },
+  "npc_noeul": {
+   "home": "dragon_throne_peak__palace_slaves",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "08:00",
+     "at": "dragon_throne_peak",
+     "doing": "공물 지게를 지고 계단을 오른다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "baalkar__frost_cradle",
+     "doing": "서리 요람 공물 단 — 고기와 약초를 내려놓고 알 쪽으로 귀를 기울인다",
+     "alt": {
+      "p": 0.2,
+      "at": "dragon_throne_peak__scale_heap",
+      "doing": "증기가 짙어 비늘 창고 일을 돕는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "dragon_throne_peak",
+     "doing": "계단을 내려온다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "03:00",
+     "at": "dragon_throne_peak__palace_slaves",
+     "doing": "운반자 칸 — 오빠의 표찰을 쥐고 잔다"
+    }
+   ]
+  },
+  "npc_isolde": {
+   "home": "baalkar__frost_tower",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "10:00",
+     "at": "baalkar__frost_tower",
+     "doing": "알을 감싸고 숨으로 데운다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "baalkar__frost_tower",
+     "doing": "탑 꼭대기에서 남쪽 하늘 경계"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "20:00",
+     "at": "baalkar__frost_cradle",
+     "doing": "크릭 시녀들에게 알 주변 정화 지시"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "baalkar__frost_tower",
+     "doing": "잠들지 않는다 — 알 곁"
+    }
+   ]
+  },
+  "npc_white_egg": {
+   "home": "baalkar__frost_tower",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "baalkar__frost_tower",
+     "doing": "서리 속에 놓여 있다 — 껍질 속 소리",
+     "fixed": true
+    }
+   ]
+  },
+  "npc_soom": {
+   "home": "baalkar__frost_tower_maids",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "baalkar__frost_tower",
+     "doing": "알 보관실 바닥 닦기, 서리 걷어 내기"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "baalkar__frost_cradle",
+     "doing": "정화 약초 불 피우기 — 공물 단의 운반자들을 본다"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "20:00",
+     "at": "baalkar__frost_cradle",
+     "doing": "이졸데의 정화 지시를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "baalkar__frost_tower_maids",
+     "doing": "눈을 감고 이졸데의 숨소리를 센다"
+    }
+   ]
+  },
+  "npc_aurax": {
+   "home": "bk_hall_red_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "11:00",
+     "at": "bk_hall_red_hall",
+     "doing": "붉은 홀에서 용인 대가문 가주 접견"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "11:00",
+     "to": "18:00",
+     "at": "red_spire",
+     "doing": "용의 대로 순시 비행 — 붉은 첨탑에 내려앉는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "bk_hall_red_hall",
+     "doing": "붉은 홀 연회 — 노예 경기 관람"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "dragon_throne_peak__outer_stair",
+     "doing": "아버지 둥지 밖에서 숨소리를 듣는다"
+    }
+   ]
+  },
+  "npc_kaidor": {
+   "home": "bk_hall_seal_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "11:00",
+     "at": "bk_hall_seal_room",
+     "doing": "칙령 초안 — 크릭 서기 셋이 대신 쓴다"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "16:00",
+     "at": "bk_hall_perch_gallery",
+     "doing": "원로회 회의"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "13:00",
+     "to": "16:00",
+     "at": "bk_hall_seren_room",
+     "doing": "세렌 사절 접견"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "bk_scale_hill",
+     "doing": "순혈 가주들과 견제 만찬"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "baalkar__frost_cradle",
+     "doing": "서리 탑 상공을 한 바퀴 — 알의 안위 확인"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "bk_hall_seal_room",
+     "doing": "인장실 홰에서 잔다 — 인장은 목에"
+    }
+   ]
+  },
+  "npc_severian_kaldaran": {
+   "home": "bk_sh_kaldaran",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "일어나 목의 열쇠를 확인한다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "bk_hall_steward",
+     "doing": "집사 집무실 — 서약 단상·의전·회색 장부 결재"
+    },
+    {
+     "days": "monthday:[1,6,11,16,21,26]",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "dragon_throne_peak__outer_stair",
+     "doing": "병상 문 앞 — 접견 순서를 정하고 둥지에서 밤을 지새운다"
+    },
+    {
+     "days": "monthday:[1,6,11,16,21,26]",
+     "from": "17:00",
+     "to": "24:00",
+     "at": "dragon_throne_peak__ash_nest",
+     "doing": "병상 곁 — '뜻'을 듣는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "대공비와 만찬 — 단상 날짜를 묻는 말을 듣는다"
+    },
+    {
+     "days": "monthday:[10,20,30]",
+     "from": "22:00",
+     "to": "23:30",
+     "at": "bk_hall_third_drawer",
+     "doing": "셋째 서랍을 연다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "관저에서 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "bk_hall_oath_dais",
+     "doing": "서약 단상 홀에 혼자 앉아 있다"
+    }
+   ]
+  },
+  "npc_severin_targul": {
+   "home": "bk_sh_targul",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "bk_sh_targul",
+     "doing": "세렌 중개인과 시장 대리인의 보고"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "bk_hall_chancellery",
+     "doing": "재상청 결재"
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "bk_hall_five_chairs",
+     "doing": "다섯 불의 의자 회의 주재",
+     "fixed": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "bk_sm_ledger",
+     "doing": "비늘 시장 장부 대조"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "22:00",
+     "at": "bk_sh_targul",
+     "doing": "가주들과 만찬",
+     "alt": {
+      "p": 0.15,
+      "at": "bk_hall_red_hall",
+      "doing": "붉은 홀에 조용히 다녀온다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "bk_sh_targul",
+     "doing": "정본 장부에 1할을 옮겨 적고 잔다"
+    }
+   ]
+  },
+  "npc_morkan": {
+   "home": "bk_gw_captain",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "bk_gw_barracks",
+     "doing": "근위 교대 — 공물 계단·불꽃 홀·층계 검문 배치",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "bk_gw_captain",
+     "doing": "근위대장 집무실"
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "bk_hall_five_chairs",
+     "doing": "다섯 불의 의자 — 침묵"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "bk_gw_cells",
+     "doing": "막사 순시, 감옥 점검"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "00:30",
+     "at": "bk_gw_barracks",
+     "doing": "막사 지붕에서 용좌봉 증기를 센다"
+    },
+    {
+     "days": "all",
+     "from": "00:30",
+     "to": "05:00",
+     "at": "bk_gw_captain",
+     "doing": "갑옷을 입은 채 잔다"
+    }
+   ]
+  },
+  "npc_branek": {
+   "home": "bk_gw_knights_post",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "09:00",
+     "at": "bk_gw_knights_post",
+     "doing": "명단 정리, 밀고 접수"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "16:00",
+     "at": "bk_ashcatch",
+     "doing": "징후자 색출 순찰",
+     "alt": {
+      "p": 0.4,
+      "at": "bk_human_quarter",
+      "doing": "인간 막사 구역 색출"
+     },
+     "rain": {
+      "at": "bk_gw_knights_post",
+      "doing": "비 — 칼을 갈지 않고 명단만 본다"
+     }
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "bk_hall_five_chairs",
+     "doing": "다섯 불의 의자 — 아우락스의 표"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "bk_hall_red_hall",
+     "doing": "붉은 홀에 보고"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:30",
+     "at": "bk_gw_knights_post",
+     "doing": "분소 숙소"
+    }
+   ]
+  },
+  "npc_aurelia_vesperin": {
+   "home": "bk_sh_vesperin",
+   "blocks": [
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "bk_hall_treasury",
+     "doing": "재무청 출납"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "bk_seren_house",
+     "doing": "세렌 상관 물방 — 이자 셈",
+     "alt": {
+      "p": 0.4,
+      "at": "bk_hall_seren_room",
+      "doing": "사절 접견실"
+     }
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "bk_hall_five_chairs",
+     "doing": "다섯 불의 의자 — 멜리산드의 표"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "07:00",
+     "at": "bk_sh_vesperin",
+     "doing": "멜리산드에게 숫자 편지를 쓰고 잔다"
+    }
+   ]
+  },
+  "npc_arden_kaldaran": {
+   "home": "bk_sh_kaldaran",
+   "blocks": [
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "bk_hall_grey_ledger",
+     "doing": "회색 장부 — 낙인·사망·매각 집계"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "아버지에게 숫자 보고"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "23:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "관저 서재 — 높은홰 장부 사본과 대조"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "07:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_livia_kaldaran": {
+   "home": "bk_sh_kaldaran",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "bk_hall_ceremony",
+     "doing": "접견 순서와 좌석표"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "17:00",
+     "at": "bk_flame_hall",
+     "doing": "불꽃 홀 각 방의 의례 준비",
+     "alt": {
+      "p": 0.3,
+      "at": "bk_hall_oath_dais",
+      "doing": "서약 단상 홀 점검"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "칼다란 관저 만찬"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "bk_hall_ceremony",
+     "doing": "식순 문안"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "npc_cedric_kaldaran": {
+   "home": "bk_hall_steward",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "bk_hall_steward",
+     "doing": "할아버지의 서류 정리"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "bk_flame_hall",
+     "doing": "불꽃 홀 심부름"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "관저"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "bk_hall_steward",
+     "doing": "곁방 — 문틈"
+    }
+   ]
+  },
+  "npc_rosalind_kaldaran": {
+   "home": "bk_sh_kaldaran",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "하스트란 서신"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "bk_scale_hill",
+     "doing": "가문 부인들 방문",
+     "alt": {
+      "p": 0.3,
+      "at": "bk_sh_hastran",
+      "doing": "하스트란 저택 — 사촌 오라비"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "07:00",
+     "at": "bk_sh_kaldaran",
+     "doing": "만찬 — 단상 날짜를 묻는다"
+    }
+   ]
+  },
+  "npc_volgas": {
+   "home": "bk_perch_highperch",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "bk_perch_highperch",
+     "doing": "서기들의 장부 보고"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "bk_hall_perch_gallery",
+     "doing": "원로회 회의 — 높은홰 장부실"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "18:00",
+     "at": "bk_perch_towers",
+     "doing": "홰탑 상공을 돈다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "06:00",
+     "at": "bk_perch_highperch",
+     "doing": "금고 곁의 홰"
+    }
+   ]
+  },
+  "npc_irmas": {
+   "home": "bk_perch_longshadow",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "bk_perch_longshadow",
+     "doing": "목줄장·감찰관 보고"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "bk_hall_perch_gallery",
+     "doing": "원로회 — 질문으로 대답한다"
+    },
+    {
+     "days": "monthday:[7,22]",
+     "from": "16:00",
+     "to": "21:00",
+     "at": "bk_perch_longshadow",
+     "doing": "홰 아래에서 에베르트의 보고를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "bk_perch_longshadow",
+     "doing": "홰"
+    }
+   ]
+  },
+  "npc_morna": {
+   "home": "bk_perch_ashwing",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "bk_perch_ashwing",
+     "doing": "배당 명부"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "bk_hall_perch_gallery",
+     "doing": "원로회"
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "06:00",
+     "at": "bk_perch_ashwing",
+     "doing": "홰"
+    }
+   ]
+  },
+  "npc_dravan": {
+   "home": "red_spire",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "red_spire",
+     "doing": "붉은 첨탑 둥지"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "bk_hall_red_hall",
+     "doing": "붉은 홀 연회 — 아버지 곁"
+    }
+   ]
+  },
+  "npc_valerius": {
+   "home": "bk_sh_flamegate",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "11:00",
+     "at": "bk_sh_flamegate",
+     "doing": "분을 바르고 용인 집사들에게 지시"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "17:00",
+     "at": "bk_ink_signing",
+     "doing": "가주들과 장부·서명 협상",
+     "alt": {
+      "p": 0.4,
+      "at": "bk_sh_flamegate",
+      "doing": "저택에서 협상"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "bk_sh_flamegate",
+     "doing": "아우락스 쪽 금 송금 확인, 연회"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "08:00",
+     "at": "bk_sh_flamegate",
+     "doing": "장부를 다시 센다"
+    }
+   ]
+  },
+  "npc_greta": {
+   "home": "bk_sh_flamegate_laundry",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "18:30",
+     "at": "bk_sh_flamegate_laundry",
+     "doing": "불 피우기, 빨래, 다림질",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "18:30",
+     "to": "20:00",
+     "at": "bk_sh_servant_passage",
+     "doing": "세탁물 배달 — 하인 통로"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:30",
+     "at": "bk_sh_flamegate_laundry",
+     "doing": "세탁장 곁방에서 눈을 붙인다"
+    }
+   ]
+  },
+  "npc_valerius_hastran": {
+   "home": "bk_sh_hastran",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "bk_sh_hastran",
+     "doing": "기사단 전령 보고"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "15:00",
+     "at": "bk_south_gate",
+     "doing": "남문 수비 점검",
+     "alt": {
+      "p": 0.3,
+      "at": "bk_hall_red_hall",
+      "doing": "붉은 홀에 문안"
+     }
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "18:00",
+     "at": "bk_sh_hastran",
+     "doing": "해가 지기 전에 등잔을 직접 끈다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "06:00",
+     "at": "bk_sh_hastran",
+     "doing": "불 꺼진 저택 — 어둠 속에 앉아 있다"
+    }
+   ]
+  },
+  "npc_mariel_hastran": {
+   "home": "bk_south_gate",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "17:00",
+     "at": "bk_south_gate",
+     "doing": "남문 수비 — 통행 기록",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "01:00",
+     "at": "bk_scale_tavern",
+     "doing": "반쪽 비늘 내기판"
+    },
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "05:00",
+     "at": "bk_south_gate",
+     "doing": "남문 관사"
+    }
+   ]
+  },
+  "npc_isaac": {
+   "home": "bk_ink_scriptorium",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "12:00",
+     "at": "bk_ink_scriptorium",
+     "doing": "궁정 연대기 필사",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "bk_ink_scriptorium",
+     "doing": "테오 볼드의 받아쓰기"
+    },
+    {
+     "days": "workday",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "bk_ink_scriptorium",
+     "doing": "서기실 정리 — 서기 넷에게 몰래 글자"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:30",
+     "at": "bk_ink_scriptorium",
+     "doing": "서기실 곁 짚방"
+    }
+   ]
+  },
+  "npc_theo_bold": {
+   "home": "bk_ink_bold",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "11:00",
+     "at": "bk_ink_bold",
+     "doing": "볼드 저택 — 누나의 편지를 피한다"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "16:00",
+     "at": "bk_ink_scriptorium",
+     "doing": "연대기 받아쓰기"
+    },
+    {
+     "days": "weekday:[1,3]",
+     "from": "16:00",
+     "to": "18:00",
+     "at": "bk_ink_fire_school",
+     "doing": "불의 학당 강의"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "08:00",
+     "at": "bk_ink_bold",
+     "doing": "저택"
+    }
+   ]
+  },
+  "npc_varen_raven": {
+   "home": "bk_lc_raven_room",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "10:00",
+     "at": "bk_lc_raven_room",
+     "doing": "형에게 편지"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "bk_flame_hall",
+     "doing": "불꽃 홀 회랑 대기 — 칼다란 하급 관리와 면담"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "22:00",
+     "at": "bk_scale_tavern",
+     "doing": "반쪽 비늘에서 빚을 진다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "bk_lc_raven_room",
+     "doing": "여울강 지도의 쇠다리를 문지른다"
+    }
+   ]
+  },
+  "npc_vix": {
+   "home": "bk_sm_ledger",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "bk_sm_pens",
+     "doing": "진열 우리 열기, 물 먹이기 감독",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "bk_sm_block",
+     "doing": "경매대 — 장부"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "bk_sm_ledger",
+     "doing": "두 장부"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "bk_sm_ledger",
+     "doing": "장부실 다락"
+    }
+   ]
+  },
+  "npc_rolf": {
+   "home": "bk_sm_collar_office",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "bk_sm_block",
+     "doing": "경매대 점검, 오늘의 물건 목록 외우기"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "bk_sm_block",
+     "doing": "경매 보조 — 호가를 대신 외친다"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "bk_sm_collar_office",
+     "doing": "목줄단 지부 명단과 값을 맞춘다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "bk_iron_door",
+     "doing": "쇠문 막사 목줄장 보고 — 에베르트의 지팡이를 본다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "01:00",
+     "at": "bk_dock_tavern",
+     "doing": "녹슨 닻에서 용인 집사들에게 소문을 판다"
+    },
+    {
+     "days": "all",
+     "from": "01:00",
+     "to": "05:00",
+     "at": "bk_sm_collar_office",
+     "doing": "경매대 뒤 사무실"
+    }
+   ]
+  },
+  "npc_anselma": {
+   "home": "bk_sm_laundry",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "12:00",
+     "at": "bk_sm_laundry",
+     "doing": "매물 옷 빨래 — 왼쪽 귀를 벽에",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "bk_cs_sorting",
+     "doing": "분류실 천 수거"
+    },
+    {
+     "days": "all",
+     "from": "15:00",
+     "to": "18:00",
+     "at": "bk_sm_laundry",
+     "doing": "빨래 — 장부실 벽 너머"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:30",
+     "at": "bk_sm_trough",
+     "doing": "시장 물통 — 노예말 소문, 시장 손들의 보고"
+    },
+    {
+     "days": "monthday:[3,13,23]",
+     "from": "23:00",
+     "to": "01:00",
+     "at": "bk_sewer_third",
+     "doing": "등잔 회합"
+    },
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "04:30",
+     "at": "bk_sm_laundry",
+     "doing": "세탁장 곁방"
+    }
+   ]
+  },
+  "npc_nebra_sarkos": {
+   "home": "bk_cs_sarkos",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "10:00",
+     "at": "bk_cs_sarkos",
+     "doing": "울타리 셋 전령, 바르그 포획분 보고"
+    },
+    {
+     "days": "workday",
+     "from": "10:00",
+     "to": "16:00",
+     "at": "bk_cs_brand",
+     "doing": "낙인장 감독, 분류실 결재",
+     "alt": {
+      "p": 0.3,
+      "at": "bk_cs_sorting",
+      "doing": "분류실"
+     }
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "07:00",
+     "at": "bk_cs_sarkos",
+     "doing": "상관 위층 — 장부"
+    }
+   ]
+  },
+  "npc_otmar_sarkos": {
+   "home": "bk_cs_sarkos",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "bk_chain_square",
+     "doing": "낙인장 순회"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "bk_cs_sarkos",
+     "doing": "대시장 패 정리"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "02:00",
+     "at": "bk_scale_tavern",
+     "doing": "내기판 — 인장 반지"
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "08:00",
+     "at": "bk_cs_sarkos",
+     "doing": "상관 아래층"
+    }
+   ]
+  },
+  "npc_isabel_sarkos": {
+   "home": "bk_cs_sorting",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "bk_cs_sorting",
+     "doing": "분류실 — 질문 일곱"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "bk_cs_brand",
+     "doing": "등급 낙인장"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:00",
+     "at": "bk_cs_sarkos",
+     "doing": "어머니에게 분류 보고"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "07:00",
+     "at": "bk_cs_sorting",
+     "doing": "분류실 곁방 — 등잔 하나"
+    }
+   ]
+  },
+  "npc_grim": {
+   "home": "bk_cs_brand",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "17:00",
+     "at": "bk_cs_brand",
+     "doing": "등급 낙인"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "05:00",
+     "at": "bk_cs_brand",
+     "doing": "감독관 방 — 차액을 센다"
+    }
+   ]
+  },
+  "npc_skik": {
+   "home": "bk_bent_back_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "07:00",
+     "at": "bk_bent_back_hall",
+     "doing": "감독관 배정표"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "bk_hq_chain_post",
+     "doing": "태형 참관 — 집행은 부하"
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "baalkar__scale_market",
+     "doing": "시장 순회",
+     "alt": {
+      "p": 0.5,
+      "at": "baalkar__chain_dock",
+      "doing": "부두 순회"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "bk_bent_back_hall",
+     "doing": "집행표 기록 — 오른손을 감싼다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:30",
+     "at": "bk_bent_back_hall",
+     "doing": "회관 위층"
+    }
+   ]
+  },
+  "npc_luga": {
+   "home": "bk_fang_den",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "11:00",
+     "at": "bk_fang_board",
+     "doing": "현상 수배판 갱신, 코들의 보고"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "15:00",
+     "at": "bk_cs_sarkos",
+     "doing": "사르코스와 포획분 흥정",
+     "alt": {
+      "p": 0.5,
+      "at": "bk_fang_board",
+      "doing": "회관 흥정"
+     }
+    },
+    {
+     "days": "all",
+     "from": "15:00",
+     "to": "21:00",
+     "at": "baalkar__fang_hall",
+     "doing": "회관"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "22:00",
+     "at": "bk_fang_jars",
+     "doing": "냄새 단지 셋째 칸을 연다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "bk_fang_den",
+     "doing": "굴"
+    }
+   ]
+  },
+  "npc_chik": {
+   "home": "bk_ash_alley",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "11:00",
+     "at": "bk_ash_alley",
+     "doing": "쓰레기 더미 뒤지기"
+    },
+    {
+     "days": "all",
+     "from": "11:00",
+     "to": "17:00",
+     "at": "baalkar__scale_market",
+     "doing": "시장 소매치기",
+     "alt": {
+      "p": 0.3,
+      "at": "bk_ash_hearth",
+      "doing": "베노의 아궁이 재를 훔쳐 먹는다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "23:00",
+     "at": "bk_human_quarter",
+     "doing": "인간 노예 숙소 지붕에서 잠자리 찾기"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "bk_scale_hill",
+     "doing": "굴뚝을 타고 귀족 저택에 침입 — 음식만"
+    }
+   ]
+  },
+  "npc_ebert": {
+   "home": "bk_iron_door",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "bk_iron_door",
+     "doing": "밤사이 목줄들의 이름 보고"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "16:00",
+     "at": "baalkar__scale_market",
+     "doing": "순회 — 지팡이 걸음",
+     "alt": {
+      "p": 0.5,
+      "at": "baalkar__chain_dock",
+      "doing": "부두 순회"
+     }
+    },
+    {
+     "days": "all",
+     "from": "16:00",
+     "to": "19:00",
+     "at": "bk_human_quarter",
+     "doing": "인간 막사 구역 순회"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "bk_iron_door",
+     "doing": "목줄장 보고",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "bk_iron_door",
+     "doing": "안방 — 낭송 연습과 기침"
+    }
+   ]
+  },
+  "npc_oswald": {
+   "home": "bk_dock_collar_post",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "05:00",
+     "at": "bk_dock_collar_post",
+     "doing": "새벽 출항 종 — 강을 보며 등을 돌린다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "19:00",
+     "at": "bk_dock_quay",
+     "doing": "하역장·크레인 — 할당 막대"
+    },
+    {
+     "days": "weekday:[5]",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "bk_iron_door",
+     "doing": "쇠문 막사 보고 — '이름 없음'"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:00",
+     "at": "bk_dock_collar_post",
+     "doing": "초소 — 딸의 빗"
+    }
+   ]
+  },
+  "npc_cadel_hask": {
+   "home": "bk_dock_office",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "06:00",
+     "at": "bk_dock_quay",
+     "doing": "새벽 출항 종 — 출항 명부",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "bk_dock_office",
+     "doing": "크레인 감독과 명부",
+     "alt": {
+      "p": 0.4,
+      "at": "bk_dock_hold",
+      "doing": "짐칸 적재 감독"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "23:00",
+     "at": "bk_dock_tavern",
+     "doing": "녹슨 닻 — 선장들과 짐칸 흥정"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:00",
+     "at": "bk_dock_office",
+     "doing": "위층"
+    }
+   ]
+  },
+  "npc_varen_hask": {
+   "home": "crown_farms",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "crown_farms",
+     "doing": "농장 점호 참관"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "crown_farms",
+     "doing": "드레이크로 농장 순회"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "20:00",
+     "at": "crown_farms__granary_seven",
+     "doing": "곡창 장부"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "crown_farms",
+     "doing": "감독관 관사"
+    }
+   ]
+  },
+  "npc_harald": {
+   "home": "bk_sewer_forge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "bk_sewer_forge",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "bk_sewer_forge",
+     "doing": "쇠 패 각인"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "bk_ashcatch",
+     "doing": "하수구 입구 — 꼬리들의 주문",
+     "alt": {
+      "p": 0.2,
+      "at": "bk_scale_tavern",
+      "doing": "반쪽 비늘 뒷문 — 마리엘에게서 빈 줄을 산다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "bk_sewer_forge",
+     "doing": "각인"
+    },
+    {
+     "days": "monthday:[3,13,23]",
+     "from": "23:00",
+     "to": "01:00",
+     "at": "bk_sewer_third",
+     "doing": "등잔 회합"
+    }
+   ]
+  },
+  "npc_tilde": {
+   "home": "bk_hall_slave_hall",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "bk_hall_lamp_store",
+     "doing": "기름 단지 채우기"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "bk_flame_hall",
+     "doing": "회랑 등잔 채우기"
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "12:00",
+     "to": "15:00",
+     "at": "bk_hall_lamp_store",
+     "doing": "기름 창고 — 벽 틈에 귀를 댄다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "19:30",
+     "at": "bk_hall_lamp_store",
+     "doing": "기름 창고"
+    },
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "05:00",
+     "at": "bk_hall_slave_hall",
+     "doing": "시종 노예 숙소"
+    }
+   ]
+  },
+  "npc_benno": {
+   "home": "bk_ash_hearth",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "15:00",
+     "at": "bk_stair_gate",
+     "doing": "층계의 증기 재를 쓴다",
+     "outdoor": true,
+     "rain": {
+      "at": "bk_ash_huts",
+      "doing": "비 — 재가 진흙이 되어 움막에"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "bk_ash_hearth",
+     "doing": "아궁이 — 아이 아홉에게 재 글씨"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "bk_ash_hearth",
+     "doing": "아궁이 곁에서 잔다"
+    },
+    {
+     "days": "monthday:[3,13,23]",
+     "from": "23:00",
+     "to": "01:00",
+     "at": "bk_sewer_third",
+     "doing": "등잔 회합"
+    }
+   ]
+  },
   "npc_kaspar": {
    "home": "cg_commander_chamber",
    "blocks": [
@@ -6889,6 +9879,859 @@
   }
  },
  "events": [
+  {
+   "id": "ev_bk_lamp_meeting_anselma",
+   "npcs": [
+    "npc_anselma"
+   ],
+   "repeat": "monthly",
+   "day": 13,
+   "from": "23:00",
+   "to": "23:59",
+   "at": "bk_sewer_third",
+   "doing": "등잔 회합 — 시장의 이름을 넘긴다 (일과의 3·13·23일 중 13일은 노라의 전갈이 오는 날)"
+  },
+  {
+   "id": "ev_bk_fizik_fang_sale",
+   "npcs": [
+    "npc_fizik"
+   ],
+   "repeat": "monthly",
+   "day": 10,
+   "from": "12:00",
+   "to": "16:00",
+   "at": "bk_fang_board",
+   "doing": "송곳니 회관에 궁 소문을 판다 — 루가가 산다",
+   "travel_from": "dragon_throne_peak__sound_room",
+   "return_to": "dragon_throne_peak__sound_room"
+  },
+  {
+   "id": "ev_bk_luga_buys_fizik",
+   "npcs": [
+    "npc_luga"
+   ],
+   "repeat": "monthly",
+   "day": 10,
+   "from": "12:00",
+   "to": "16:00",
+   "at": "bk_fang_board",
+   "doing": "피직에게서 궁 소문을 산다"
+  },
+  {
+   "id": "ev_bk_edun_seren",
+   "npcs": [
+    "npc_edun"
+   ],
+   "repeat": "monthly",
+   "day": 20,
+   "from": "10:00",
+   "to": "13:00",
+   "at": "bk_seren_house",
+   "doing": "물방에 비늘을 판다",
+   "travel_from": "dragon_throne_peak__scale_heap",
+   "return_to": "dragon_throne_peak__palace_slaves"
+  },
+  {
+   "id": "ev_bk_kaidor_nest",
+   "npcs": [
+    "npc_kaidor"
+   ],
+   "repeat": "monthly",
+   "day": 1,
+   "from": "14:00",
+   "to": "15:30",
+   "at": "dragon_throne_peak__ash_nest",
+   "doing": "병상에 칙령 초안을 읽어 올린다 — 폐하는 듣지 못한다",
+   "travel_from": "bk_hall_seal_room",
+   "return_to": "bk_hall_seal_room",
+   "mounted": true
+  },
+  {
+   "id": "ev_bk_aurax_audience_1",
+   "date": "312-09-02",
+   "npcs": [
+    "npc_aurax"
+   ],
+   "from": "14:00",
+   "to": "15:00",
+   "at": "dragon_throne_peak__ash_nest",
+   "doing": "아버지의 오후 한 시간 — 장자의 접견",
+   "travel_from": "bk_hall_red_hall",
+   "return_to": "bk_hall_red_hall",
+   "mounted": true
+  },
+  {
+   "id": "ev_bk_varen_hears_contract",
+   "date": "312-09-06",
+   "npcs": [
+    "npc_varen_raven"
+   ],
+   "from": "18:00",
+   "to": "22:00",
+   "at": "bk_scale_tavern",
+   "doing": "형이 세렌 중개인과 매각 계약을 맺었다는 소식을 듣는다 — 사라의 이름도"
+  },
+  {
+   "id": "ev_bk_varskar_fit",
+   "date": "312-09-08",
+   "npcs": [
+    "npc_severian_kaldaran"
+   ],
+   "from": "06:00",
+   "to": "23:59",
+   "at": "dragon_throne_peak__ash_nest",
+   "doing": "용황의 발작 — 병상 문을 사흘 닫는다 (클락 1: 용황 건강 −1)",
+   "travel_from": "bk_sh_kaldaran"
+  },
+  {
+   "id": "ev_bk_varskar_fit_2",
+   "date": "312-09-09",
+   "npcs": [
+    "npc_severian_kaldaran"
+   ],
+   "from": "00:00",
+   "to": "23:59",
+   "at": "dragon_throne_peak__outer_stair",
+   "doing": "닫힌 병상 문 앞 — 아무도 들이지 않는다"
+  },
+  {
+   "id": "ev_bk_aurax_waits",
+   "date": "312-09-09",
+   "npcs": [
+    "npc_aurax"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "dragon_throne_peak__outer_stair",
+   "doing": "닫힌 문 앞에서 숨소리를 듣는다 — 집사와 마주 선다",
+   "travel_from": "bk_hall_red_hall",
+   "return_to": "bk_hall_red_hall",
+   "mounted": true
+  },
+  {
+   "id": "ev_bk_henrik_ledger_arrives",
+   "date": "312-09-13",
+   "npcs": [
+    "npc_volgas"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "bk_hall_perch_gallery",
+   "doing": "회색여울 인두세 결산 장부(352명)를 높은홰 장부실이 먼저 받는다"
+  },
+  {
+   "id": "ev_bk_arden_compares",
+   "date": "312-09-14",
+   "npcs": [
+    "npc_arden_kaldaran"
+   ],
+   "from": "08:00",
+   "to": "18:00",
+   "at": "bk_hall_grey_ledger",
+   "doing": "헨릭의 352를 회색 장부와 대조 — 둥근 숫자"
+  },
+  {
+   "id": "ev_bk_vix_dead_names",
+   "date": "312-09-14",
+   "npcs": [
+    "npc_vix"
+   ],
+   "from": "18:00",
+   "to": "21:00",
+   "at": "bk_sm_ledger",
+   "doing": "선매 40명 중 '사망' 넷을 회색 장부 사본에서 다시 확인한다"
+  },
+  {
+   "id": "ev_bk_anselma_hears_forty",
+   "date": "312-09-14",
+   "npcs": [
+    "npc_anselma"
+   ],
+   "from": "18:00",
+   "to": "21:00",
+   "at": "bk_sm_laundry",
+   "doing": "벽 너머 혀 차는 소리 — '넷이 빈다'를 듣는다"
+  },
+  {
+   "id": "ev_bk_irmas_greyford_flight",
+   "date": "312-09-15",
+   "npcs": [
+    "npc_irmas"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "dragon_pillar_post",
+   "doing": "용주 역참 상공 — 회색여울 보급 회의 날의 하늘을 돈다",
+   "travel_from": "bk_perch_longshadow",
+   "return_to": "bk_perch_longshadow",
+   "mounted": true
+  },
+  {
+   "id": "ev_bk_ebert_irmas_report",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_ebert"
+   ],
+   "from": "16:00",
+   "to": "19:00",
+   "at": "bk_perch_longshadow",
+   "doing": "긴그림자 홰 아래 보고 — 북부 징후 보고 첫 묶음"
+  },
+  {
+   "id": "ev_bk_valerius_h_arrives",
+   "date": "312-09-03",
+   "npcs": [
+    "npc_valerius_hastran"
+   ],
+   "from": "16:00",
+   "to": "18:00",
+   "at": "bk_south_gate",
+   "doing": "궁정 철 — 하스트 요새에서 바알카르로 들어온다"
+  },
+  {
+   "id": "ev_bk_noeul_marked",
+   "date": "312-09-19",
+   "npcs": [
+    "npc_soom",
+    "npc_noeul"
+   ],
+   "from": "09:00",
+   "to": "11:00",
+   "at": "baalkar__frost_cradle",
+   "doing": "숨이 노을에게 물을 건넨다 — 노을은 마시지 않는다"
+  },
+  {
+   "id": "ev_bk_scale_rite_draft",
+   "date": "312-10-01",
+   "npcs": [
+    "npc_livia_kaldaran"
+   ],
+   "from": "21:00",
+   "to": "23:00",
+   "at": "bk_hall_ceremony",
+   "doing": "비늘 의례 취소 문안을 서랍에서 꺼내 다시 읽는다"
+  },
+  {
+   "id": "ev_bk_regency_draft_circulates",
+   "date": "312-10-04",
+   "npcs": [
+    "npc_kaidor",
+    "npc_volgas",
+    "npc_irmas",
+    "npc_morna"
+   ],
+   "from": "11:00",
+   "to": "16:00",
+   "at": "bk_hall_perch_gallery",
+   "doing": "원로회 비공개 회의 — '흰 알 + 섭정' 초안 회람 (클락 1)"
+  },
+  {
+   "id": "ev_bk_branek_sweep",
+   "date": "312-10-08",
+   "npcs": [
+    "npc_branek"
+   ],
+   "from": "05:00",
+   "to": "18:00",
+   "at": "bk_ashcatch",
+   "doing": "재받이 일제 색출 — 명단 63을 채운다",
+   "condition": "명단이 도난·소실되지 않았을 때"
+  },
+  {
+   "id": "ev_bk_morkan_cells_refused",
+   "date": "312-10-09",
+   "npcs": [
+    "npc_morkan",
+    "npc_branek"
+   ],
+   "from": "17:00",
+   "to": "18:00",
+   "at": "bk_gw_cells",
+   "doing": "재송곳 기사단이 근위 감옥을 빌리러 온다 — 감옥은 빌려주고 손은 빌려주지 않는다"
+  },
+  {
+   "id": "ev_bk_pyre_dravan",
+   "date": "312-10-12",
+   "npcs": [
+    "npc_dravan"
+   ],
+   "from": "11:00",
+   "to": "13:00",
+   "at": "bk_pyre_yard",
+   "doing": "재 마당 화형 — 붉은 첨탑 쪽으로 세 번 선회한 뒤 불 (4층 전체가 문을 닫는다)",
+   "travel_from": "red_spire",
+   "return_to": "red_spire",
+   "mounted": true,
+   "condition": "브라넉의 명단이 남아 있을 때"
+  },
+  {
+   "id": "ev_bk_pyre_branek",
+   "date": "312-10-12",
+   "npcs": [
+    "npc_branek"
+   ],
+   "from": "09:00",
+   "to": "14:00",
+   "at": "bk_pyre_yard",
+   "doing": "명단을 읽는다 — 손가락이 한 줄씩"
+  },
+  {
+   "id": "ev_bk_pyre_watch_skik",
+   "date": "312-10-12",
+   "npcs": [
+    "npc_skik"
+   ],
+   "from": "10:00",
+   "to": "14:00",
+   "at": "bk_pyre_yard",
+   "doing": "굽은 등이 재 마당 울타리를 지킨다 — 오른손을 감싼 채"
+  },
+  {
+   "id": "ev_bk_first_convoy_gate",
+   "date": "312-10-14",
+   "npcs": [
+    "npc_ebert"
+   ],
+   "from": "15:00",
+   "to": "17:00",
+   "at": "bk_north_gate",
+   "doing": "회색여울 1차 매각 호송(40명) 북문 도착 — 이름을 세 번씩 되뇐다"
+  },
+  {
+   "id": "ev_bk_first_convoy_market",
+   "date": "312-10-15",
+   "npcs": [
+    "npc_vix",
+    "npc_rolf"
+   ],
+   "from": "07:00",
+   "to": "15:00",
+   "at": "bk_sm_block",
+   "doing": "회색여울 40명 선매 인도 — 세렌 중개인 몫. 롤프가 넷의 이름 앞에서 호가를 멈춘다"
+  },
+  {
+   "id": "ev_bk_first_convoy_severin",
+   "date": "312-10-15",
+   "npcs": [
+    "npc_severin_targul"
+   ],
+   "from": "16:00",
+   "to": "19:00",
+   "at": "bk_sm_ledger",
+   "doing": "선매분의 1할을 확인한다"
+  },
+  {
+   "id": "ev_bk_lea_report_read",
+   "date": "312-10-26",
+   "npcs": [
+    "npc_irmas"
+   ],
+   "from": "21:00",
+   "to": "23:59",
+   "at": "bk_perch_longshadow",
+   "doing": "레아의 보고('카스파르가 탈주자를 방관한다')를 읽고 다시 봉한다"
+  },
+  {
+   "id": "ev_bk_aurax_envoy_morkan",
+   "date": "312-11-06",
+   "npcs": [
+    "npc_morkan"
+   ],
+   "from": "20:00",
+   "to": "21:00",
+   "at": "bk_gw_captain",
+   "doing": "붉은 홀에서 온 네 번째 사람 — '근위대는 막사에 있다'"
+  },
+  {
+   "id": "ev_bk_nightfire_orsel",
+   "date": "312-11-15",
+   "npcs": [
+    "npc_cadel_hask"
+   ],
+   "from": "04:00",
+   "to": "09:00",
+   "at": "bk_dock_hold",
+   "doing": "곡창 7동 곡물 세 배째 — 짐칸 숨구멍이 막힌다"
+  },
+  {
+   "id": "ev_bk_covenant_agenda",
+   "date": "312-11-20",
+   "npcs": [
+    "npc_severin_targul",
+    "npc_branek",
+    "npc_aurelia_vesperin",
+    "npc_morkan"
+   ],
+   "from": "12:00",
+   "to": "17:00",
+   "at": "bk_hall_five_chairs",
+   "doing": "비상 섭정 회의 — 맹약회의 수석 대표 안건('잔향 대숙청'). 3/5 연서 실패 (클락 2)"
+  },
+  {
+   "id": "ev_bk_covenant_agenda_tilde",
+   "date": "312-11-20",
+   "npcs": [
+    "npc_tilde"
+   ],
+   "from": "12:00",
+   "to": "17:00",
+   "at": "bk_hall_lamp_store",
+   "doing": "벽 틈 — 안건을 처음부터 끝까지 듣는다"
+  },
+  {
+   "id": "ev_bk_tilde_to_nora",
+   "date": "312-11-23",
+   "npcs": [
+    "npc_tilde"
+   ],
+   "from": "23:00",
+   "to": "23:59",
+   "at": "bk_sewer_third",
+   "doing": "등잔 회합 — 맹약회의 안건을 넘긴다"
+  },
+  {
+   "id": "ev_bk_second_convoy_gate",
+   "date": "312-12-08",
+   "npcs": [
+    "npc_ebert"
+   ],
+   "from": "16:00",
+   "to": "18:00",
+   "at": "bk_north_gate",
+   "doing": "회색여울 2차 매각 호송(31명) 북문 도착 — 하룻밤 쇠 울"
+  },
+  {
+   "id": "ev_bk_second_convoy_dock",
+   "date": "312-12-09",
+   "npcs": [
+    "npc_cadel_hask",
+    "npc_oswald"
+   ],
+   "from": "06:00",
+   "to": "18:00",
+   "at": "bk_dock_quay",
+   "doing": "회색여울 31명(사라 포함)을 세베로의 '소금 바늘'호 짐칸에 싣는다 — 위에 곡물 자루"
+  },
+  {
+   "id": "ev_bk_second_convoy_dock_vix",
+   "date": "312-12-09",
+   "npcs": [
+    "npc_vix"
+   ],
+   "from": "08:00",
+   "to": "11:00",
+   "at": "bk_dock_quay",
+   "doing": "선적 명단을 선매 장부와 맞춘다"
+  },
+  {
+   "id": "ev_bk_salt_needle_sails",
+   "date": "312-12-10",
+   "npcs": [
+    "npc_cadel_hask"
+   ],
+   "from": "04:00",
+   "to": "06:00",
+   "at": "bk_dock_quay",
+   "doing": "소금 바늘호 새벽 출항 종 — 출항 명부 '물 손실'은 아직 빈칸"
+  },
+  {
+   "id": "ev_bk_salt_needle_oswald",
+   "date": "312-12-10",
+   "npcs": [
+    "npc_oswald"
+   ],
+   "from": "04:00",
+   "to": "05:00",
+   "at": "bk_dock_collar_post",
+   "doing": "출항 종에 등을 돌린다 — 그날 손가락이 '짐칸 셋",
+   "물 없음'을 말한다": null
+  },
+  {
+   "id": "ev_bk_varen_learns_dock",
+   "date": "312-12-09",
+   "npcs": [
+    "npc_varen_raven"
+   ],
+   "from": "18:00",
+   "to": "21:00",
+   "at": "bk_dock_tavern",
+   "doing": "녹슨 닻에서 형의 농노가 배에 실린 것을 듣고 술을 마신다"
+  },
+  {
+   "id": "ev_bk_ebert_falls",
+   "date": "312-12-20",
+   "npcs": [
+    "npc_ebert"
+   ],
+   "from": "00:00",
+   "to": "23:59",
+   "at": "bk_iron_door",
+   "doing": "회색 기침으로 하루를 눕는다 — 낭송이 멈춘다"
+  },
+  {
+   "id": "ev_bk_seren_loan",
+   "date": "312-12-20",
+   "npcs": [
+    "npc_aurelia_vesperin"
+   ],
+   "from": "10:00",
+   "to": "17:00",
+   "at": "bk_hall_seren_room",
+   "doing": "세렌 대출 상환 연장 협상 — 몬달리 사절"
+  },
+  {
+   "id": "ev_bk_hask_granary_hunger",
+   "date": "312-12-15",
+   "npcs": [
+    "npc_varen_hask"
+   ],
+   "from": "17:00",
+   "to": "20:00",
+   "at": "crown_farms__granary_seven",
+   "doing": "굶주림월 — 7동 밑을 세며 배급을 1.5그릇으로 줄이는 명부에 서명"
+  },
+  {
+   "id": "ev_bk_ash_days_lamp",
+   "date": "312-13-03",
+   "npcs": [
+    "npc_anselma",
+    "npc_harald",
+    "npc_benno"
+   ],
+   "from": "22:00",
+   "to": "23:59",
+   "at": "bk_sewer_third",
+   "doing": "재의 날 — 불 없이 아스테리온을 기린다. 벽의 연습판에 손가락으로"
+  },
+  {
+   "id": "ev_bk_ash_days_varskar",
+   "date": "312-13-03",
+   "npcs": [
+    "npc_nora"
+   ],
+   "from": "22:00",
+   "to": "23:59",
+   "at": "dragon_throne_peak__ash_nest",
+   "doing": "재의 날 밤 — 용황이 '또 그 저녁'이라 중얼거린다. 시간 잔상이 가장 짙다"
+  },
+  {
+   "id": "ev_bk_ash_days_valerius",
+   "date": "312-13-01",
+   "npcs": [
+    "npc_valerius_hastran"
+   ],
+   "from": "18:00",
+   "to": "23:59",
+   "at": "bk_sh_hastran",
+   "doing": "불을 피우지 않는 날 — 오히려 처음으로 잠든다"
+  },
+  {
+   "id": "ev_bk_luga_hunters_north",
+   "date": "313-01-05",
+   "npcs": [
+    "npc_luga"
+   ],
+   "from": "06:00",
+   "to": "10:00",
+   "at": "bk_fang_board",
+   "doing": "서리 길 재개 — 코 열둘을 북쪽으로. 냄새 단지 셋째 칸을 들려 보낸다"
+  },
+  {
+   "id": "ev_bk_valerius_h_leaves",
+   "date": "313-01-10",
+   "npcs": [
+    "npc_valerius_hastran"
+   ],
+   "from": "07:00",
+   "to": "09:00",
+   "at": "bk_south_gate",
+   "doing": "궁정 철 끝 — 하스트 요새로 돌아간다"
+  },
+  {
+   "id": "ev_bk_ebert_released_one",
+   "date": "313-01-25",
+   "npcs": [
+    "npc_ebert"
+   ],
+   "from": "19:00",
+   "to": "21:00",
+   "at": "bk_iron_door",
+   "doing": "규약 제3조 — 올해의 '놓아준 하나'를 정한다"
+  },
+  {
+   "id": "ev_bk_ring_house_hearth",
+   "date": "313-02-14",
+   "npcs": [
+    "npc_ebert"
+   ],
+   "from": "21:00",
+   "to": "23:59",
+   "at": "bk_iron_door",
+   "doing": "고리집 '아궁이 회합' — 목줄장 집안 일곱이 모인다. 롤프가 지팡이를 노린다"
+  },
+  {
+   "id": "ev_bk_isabel_sorting",
+   "date": "313-02-13",
+   "npcs": [
+    "npc_isabel_sarkos"
+   ],
+   "from": "07:00",
+   "to": "21:00",
+   "at": "bk_cs_sorting",
+   "doing": "대시장 전 분류 — '특수 물건' 질문 일곱을 하루 종일"
+  },
+  {
+   "id": "ev_bk_great_market_otmar",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_otmar_sarkos"
+   ],
+   "from": "07:00",
+   "to": "18:00",
+   "at": "bk_cs_block",
+   "doing": "파종월 노예 대시장 — 경매사의 목소리 (성인 농노 2비늘까지 떨어진다)"
+  },
+  {
+   "id": "ev_bk_great_market_nebra",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_nebra_sarkos"
+   ],
+   "from": "07:00",
+   "to": "18:00",
+   "at": "bk_cs_sarkos",
+   "doing": "대시장 — 상관 창문에서 낙찰가를 센다"
+  },
+  {
+   "id": "ev_bk_great_market_rolf",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_rolf"
+   ],
+   "from": "07:00",
+   "to": "18:00",
+   "at": "bk_cs_block",
+   "doing": "대시장 경매 보조 — '자!' 반란자를 직접 경매대에 세운다"
+  },
+  {
+   "id": "ev_bk_great_market_grim",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_grim"
+   ],
+   "from": "05:00",
+   "to": "19:00",
+   "at": "bk_cs_brand",
+   "doing": "대시장 낙인 — 한 등급 낮춘 차액이 가장 많은 날"
+  },
+  {
+   "id": "ev_bk_great_market_vix",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_vix"
+   ],
+   "from": "07:00",
+   "to": "18:00",
+   "at": "bk_cs_block",
+   "doing": "쇠사슬 광장 낙찰가를 몰래 적는다 — 재상이 원한다"
+  },
+  {
+   "id": "ev_bk_great_market_severin",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_severin_targul"
+   ],
+   "from": "09:00",
+   "to": "12:00",
+   "at": "bk_chain_square",
+   "doing": "사르코스의 첫 낙찰가를 보러 내려온다"
+  },
+  {
+   "id": "ev_bk_great_market_luga",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_luga"
+   ],
+   "from": "07:00",
+   "to": "18:00",
+   "at": "bk_cs_sarkos",
+   "doing": "겨울 포획분을 사르코스에 넘긴다"
+  },
+  {
+   "id": "ev_bk_great_market_valerius",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_valerius"
+   ],
+   "from": "09:00",
+   "to": "15:00",
+   "at": "bk_cs_block",
+   "doing": "화염문 가 경매 패를 든다"
+  },
+  {
+   "id": "ev_bk_great_market_anselma",
+   "date": "313-02-15",
+   "npcs": [
+    "npc_anselma"
+   ],
+   "from": "07:00",
+   "to": "18:00",
+   "at": "bk_chain_square",
+   "doing": "대시장 빨래 — 낙찰된 이름을 하나도 빼지 않고 외운다"
+  },
+  {
+   "id": "ev_bk_great_market_harald",
+   "date": "313-02-16",
+   "npcs": [
+    "npc_harald"
+   ],
+   "from": "21:00",
+   "to": "23:59",
+   "at": "bk_sewer_forge",
+   "doing": "대시장 다음 날 — 팔려 간 이름으로 쇠 패를 새긴다"
+  },
+  {
+   "id": "ev_bk_egg_hatch_isolde",
+   "date": "313-03-14",
+   "npcs": [
+    "npc_isolde"
+   ],
+   "from": "00:00",
+   "to": "23:59",
+   "at": "baalkar__frost_tower",
+   "doing": "흰 알 부화 (클락 1: 흰 알 지지 ×1.5)",
+   "condition": "흰 알 생존·조기 부화 아님"
+  },
+  {
+   "id": "ev_bk_egg_hatch_noeul",
+   "date": "313-03-14",
+   "npcs": [
+    "npc_noeul"
+   ],
+   "from": "08:00",
+   "to": "13:00",
+   "at": "baalkar__frost_cradle",
+   "doing": "공물 단에서 얼음이 노래하는 소리를 다시 듣는다",
+   "condition": "노을 생존"
+  },
+  {
+   "id": "ev_bk_egg_hatch_council",
+   "date": "313-03-15",
+   "npcs": [
+    "npc_volgas",
+    "npc_kaidor",
+    "npc_irmas"
+   ],
+   "from": "10:00",
+   "to": "18:00",
+   "at": "bk_hall_perch_gallery",
+   "doing": "부화 전령 — 섭정 칙령 별본 다툼 (흰목의 초안 vs 높은홰의 별본)",
+   "condition": "흰 알 부화"
+  },
+  {
+   "id": "ev_bk_egg_hatch_severian",
+   "date": "313-03-15",
+   "npcs": [
+    "npc_severian_kaldaran"
+   ],
+   "from": "08:00",
+   "to": "20:00",
+   "at": "bk_hall_oath_dais",
+   "doing": "서약 단상 홀에 혼자 앉아 있다",
+   "condition": "흰 알 부화"
+  },
+  {
+   "id": "ev_bk_covenant_delegation",
+   "date": "313-04-02",
+   "npcs": [
+    "npc_severin_targul",
+    "npc_branek",
+    "npc_aurelia_vesperin",
+    "npc_morkan"
+   ],
+   "from": "12:00",
+   "to": "17:00",
+   "at": "bk_hall_five_chairs",
+   "doing": "맹약회의 사절단 구성 — 수석 대표 다툼 (클락 2)"
+  },
+  {
+   "id": "ev_bk_covenant_porters_ebert",
+   "date": "313-04-20",
+   "npcs": [
+    "npc_ebert",
+    "npc_rolf"
+   ],
+   "from": "06:00",
+   "to": "16:00",
+   "at": "bk_sm_block",
+   "doing": "맹약회의 인간 짐꾼 40명 선발 — 수석 목줄장이 명단을 쓴다"
+  },
+  {
+   "id": "ev_bk_covenant_porters_vix",
+   "date": "313-04-20",
+   "npcs": [
+    "npc_vix"
+   ],
+   "from": "06:00",
+   "to": "16:00",
+   "at": "bk_sm_block",
+   "doing": "짐꾼 40의 번호를 장부에 올린다"
+  },
+  {
+   "id": "ev_bk_covenant_departs",
+   "date": "313-04-25",
+   "npcs": [
+    "npc_cadel_hask"
+   ],
+   "from": "04:00",
+   "to": "08:00",
+   "at": "bk_dock_quay",
+   "doing": "맹약회의 사절단 배 출항 — 서약섬으로"
+  },
+  {
+   "id": "ev_bk_scale_rite_cancelled",
+   "date": "313-05-01",
+   "npcs": [
+    "npc_livia_kaldaran"
+   ],
+   "from": "06:00",
+   "to": "10:00",
+   "at": "bk_hall_oath_dais",
+   "doing": "비늘 의례 취소 선포 — 용황이 나오지 않는다 (계승 위기의 공개 신호)"
+  },
+  {
+   "id": "ev_bk_scale_rite_cancelled_sev",
+   "date": "313-05-01",
+   "npcs": [
+    "npc_severian_kaldaran"
+   ],
+   "from": "06:00",
+   "to": "10:00",
+   "at": "bk_hall_oath_dais",
+   "doing": "취소 식순 곁에 선다 — 창밖 용좌봉을 본다"
+  },
+  {
+   "id": "ev_bk_auditor_dispatch",
+   "date": "313-06-20",
+   "npcs": [
+    "npc_arden_kaldaran"
+   ],
+   "from": "08:00",
+   "to": "12:00",
+   "at": "bk_hall_grey_ledger",
+   "doing": "수확월 인두세 감사관을 회색여울로 보낸다 — 헨릭의 352와 비늘 시장 '사망' 넷 대조 지시"
+  },
+  {
+   "id": "ev_bk_poll_tax",
+   "date": "313-07-01",
+   "npcs": [
+    "npc_volgas"
+   ],
+   "from": "10:00",
+   "to": "18:00",
+   "at": "bk_hall_perch_gallery",
+   "doing": "수확월 인두세 — 높은홰 장부와 회색 장부의 3,000"
+  },
   {
    "id": "ev_cg_gate_closed",
    "date": "312-10-01",

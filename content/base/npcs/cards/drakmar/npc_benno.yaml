@@ -1,0 +1,87 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-34
+id: "npc_benno"
+name: "베노"
+aka: ["재손 베노", "아궁이 선생"]
+tier: B
+type: living
+race: "인간"
+subrace: ""
+sex: "남"
+age: 58
+region: 드라크마르 용좌령
+home: "재받이 '베노의 아궁이 움막'"
+job: "재 쓸이 노예 (층계의 증기 재를 쓴다) — 밤엔 재받이 아이들에게 재 글씨"
+rank: "국유 노예, 사슬 표찰 '재 쓸이 일흔둘'"
+summary: "아궁이 재 위에 손가락으로 쓰고 바로 지우는 '재 글씨'를 가르친다. 지금 아이 아홉. 하수 분기점 벽의 연습판이 소문의 '아스테리아 석판'이다"
+source: docs/world/people/baalkar.md:523
+life:
+  - {year: 254, age: 0, event: "재받이에서 태어남"}
+  - {year: 290, age: 36, event: "루멘에서 끌려온 늙은 사제에게서 글자 서른 자를 배웠다 — 그 사제는 이듬해 혀를 잃었다"}
+  - {year: 302, age: 48, event: "노라의 목소리 — 재 글씨를 가르치라는 첫 지시. 첫 학생은 안셀마"}
+appearance:
+  - "손끝이 재에 회색으로 물들었다"
+  - "앞니가 다 빠졌다"
+  - "기침을 하지 않으려 늘 물을 머금는다"
+smell: "재와 젖은 숯"
+voice_sound: "이가 없어 새는 발음. 웃음이 많다"
+personality:
+  disposition: {용기: 40, 자비: 60, 정직: 20, 신앙: 10, 탐욕: -50, 충성: 60}
+  temperament: ["다정", "고집"]
+  habits:
+    - "쓰고 나면 손바닥으로 재를 쓸어 바로 지운다 — 습관이 되어 말할 때도 손을 쓴다"
+  values: "지운 글자도 손은 기억한다"
+  fears: ["아이들이 재 마당에 끌려가는 것"]
+  desires:
+    short: "아이 아홉이 서른 자를 다 외우는 것"
+    long: "재가 아니라 종이 위에 한 번"
+voice:
+  register:
+    to_superior: "'예, 나리' — 새는 발음"
+    to_equal: "반말, 웃음"
+    to_inferior: "아이에게 다정한 반말"
+    to_player_default: "아이처럼 대한다"
+  tics: ["'써 봐. 그리고 지워.'"]
+  use: ["재", "손", "지워", "아궁이"]
+  avoid: ["글자(그는 '재 그림'이라 한다)"]
+  length: "보통"
+  samples:
+    - {situation: "첫 만남", line: "추우면 아궁이 옆에 앉아. 재가 따뜻해. …손가락 하나 줘 봐."}
+    - {situation: "호의", line: "이건 '물'. 써 봐. 그리고 지워. 지워도 손은 기억해."}
+    - {situation: "적대", line: "나는 재 쓸이야. 재 위에 뭐가 있었든 쓸면 없어. 너도 쓸 수 있어."}
+    - {situation: "비밀 누설", line: "하수구 아스테리아 석판? 그거 내 연습판이야. 이 빠진 늙은이가 아궁이 재로 문지른 거."}
+schedule:
+  아침: "층계 재 쓸기 (05~15시)"
+  낮: "층계"
+  저녁: "재받이 아궁이 움막 — 아이들"
+  밤: "아궁이 움막. 열흘에 한 번 하수 분기점 회합"
+places: ["베노의 아궁이 움막", "재받이", "재받이 하수 분기점"]
+knows: ["fact_bk_lamp_cells"]
+hides:
+  - fact: fact_bk_benno_ash_letters
+    reveal_when: "아이들 앞에서 신뢰 20, 또는 재 글씨를 플레이어가 먼저 써 보일 때"
+    cover: "'재 그림이야. 아이들 장난'"
+relations:
+  - {to: "npc_nora", type: "등잔", like: 60, trust: 70, visibility: "비밀", memo: null, words: "가르치라고 한 목소리"}
+  - {to: "npc_anselma", type: "첫 학생", like: 60, trust: 60, visibility: "비밀", memo: null, words: "서른 자를 다 외운 두더지"}
+  - {to: "npc_isaac", type: "종이의 선생", like: 50, trust: 50, visibility: "비밀", memo: null, words: "종이에 쓰는 사람. 나는 재에. 같은 글자"}
+  - {to: "npc_chik", type: "지붕 위의 크릭", like: 20, trust: 10, visibility: "공개", memo: null, words: "아궁이 재를 훔쳐 먹는 크릭 아이. 쫓지 않는다"}
+toward_player: "아이처럼 대한다"
+persuade:
+  likes: ["아이들의 안전"]
+  hates: ["재 위의 글자를 지우지 않는 것"]
+roles:
+  teacher: "읽고쓰기(상한 25 — 재 글씨 서른 자). 조건: 아궁이 옆 밤 다섯. 수업료 없음"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "아이 아홉에게 재 글씨를 가르친다"
+  deja_vu: none
+hard_rules:
+  - "쓰고 나면 바로 지운다"
+on_death: "재받이 재 글씨 교실 소멸 — 찬가 2단계(글)의 바알카르 씨앗 하나가 꺼진다"
+story_seeds:
+  - "바알카르 하수구의 '아스테리아 석판' 소문은 베노의 재 글씨 연습판이다 (REGIONS §1.12 소문 6)"
+affiliations:
+  - {faction: "fac_nameless", rank: null, office: null, since: 302, loyalty: 70, public: false, cell: "bk_cell_sewer"}
+truths: []

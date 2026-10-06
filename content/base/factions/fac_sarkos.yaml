@@ -22,28 +22,28 @@ size:
 offices:
   - id: off_countess
     title: 여백작
-    holder: "unnamed:네브라 사르코스 — 176세"   # TODO-NPC
+    holder: npc_nebra_sarkos
     reports_to: null
     powers: ["값의 결정 — 등급과 시세, 징후자 분류의 최종 승인", "바르그 조합 후원과 아우락스에 대한 공식 서약", "멜리산드에 대한 '특수 노예' 공급 계약"]
     chosen_by: "가문 세습 (SK 1,420 시조 사르코스 금목걸이가 포로 거래 독점권을 용황에게서 샀다)"
     perks: ["값을 매길 수 없는 것을 믿지 않는다 — 가문의 눈", "열한 고리 문장 — 고리 수 정확히 열한 개(맹약의 열한 종족)"]
   - id: off_auctioneer
     title: 쇠사슬 광장 관리인 (경매사)
-    holder: "unnamed:오트마르 사르코스 — 148세, 여백작의 남동생"   # TODO-NPC
+    holder: npc_otmar_sarkos
     reports_to: off_countess
     powers: ["파종월 대시장의 경매대와 시세 선언", "광장 상시 매매"]
     chosen_by: "여백작 지명"
     perks: ["목소리가 좋은 경매사 — 시세는 그의 목소리에 따라 움직인다"]
   - id: off_classifier
     title: 징후자 비밀 판매 담당
-    holder: "unnamed:이사벨 사르코스 — 71세, 여백작의 딸"   # TODO-NPC
+    holder: npc_isabel_sarkos
     reports_to: off_countess
     powers: ["수용소 입고 노예 분류 — 잔향 징후 의심 아이를 몰래 골라 잿빛 탑·멜리산드에게 판다 (1인당 30~60비늘)", "AS 290 이후 판매 기록 212건"]
     chosen_by: "여백작 지명"
     perks: ["자기가 판 아이들 중 '진짜'가 없었다는 것을 안다 — 그래도 판다"]
   - id: off_chief_overseer
     title: 수석 감독관 (크릭)
-    holder: "unnamed:그림 — 크릭 감독관, 44세 (크릭으로서는 고령)"   # TODO-NPC
+    holder: npc_grim
     reports_to: off_countess
     powers: ["수용소 크릭 감독 지휘 — 노예 30명당 크릭 1 (제국에서 가장 높은 비율)", "크릭 감독관 길드 '채찍손' 간부"]
     chosen_by: "여백작 지명 — 가문의 손"

@@ -1,0 +1,108 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-07
+id: "npc_livia_kaldaran"
+name: "리비아 칼다란"
+aka: ["의전관", "문을 연 순혈"]
+tier: A
+type: living
+race: "용인"
+subrace: "순혈"
+sex: "여"
+age: 97
+region: 드라크마르 용좌령
+home: "비늘 언덕 칼다란 관저 · 불꽃 홀 의전관실"
+job: "불꽃 홀 의전관 — 비늘 서약·비늘 의례·불의 잔의 식순, 궁정 좌석과 접견 순서"
+rank: "칼다란 대공가 딸 (세베리안과 로잘린드의 첫째)"
+summary: "좌석표가 곧 권력의 지도인 궁정에서 그 지도를 그리는 손. AS 291 엘레나가 죽은 날, 열네 살 카스파르를 시신의 방에 들여보낸 순혈"
+source: docs/world/people/baalkar.md:179
+life:
+  - {year: 215, age: 0, event: "세베리안과 로잘린드 사이 첫째로 태어남"}
+  - {year: 260, age: 45, event: "의전 견습. 처음으로 좌석표를 그렸다가 하스트란과 그라넥을 나란히 앉혀 서약 결투가 날 뻔했다"}
+  - {year: 284, age: 69, event: "재의 둥지 동쪽 회랑 화재 날, 노예 여자 하나가 노래로 용황을 재우는 소리를 복도에서 들었다"}
+  - {year: 291, age: 76, event: "그 노예 엘레나가 죽은 날. 아들 카스파르(14)가 시신을 보게 문을 열었다. 아이는 울지 않았다"}
+  - {year: 298, age: 83, event: "불꽃 홀 의전관. 접견 순서를 정하는 펜을 받다"}
+  - {year: 312, age: 97, event: "낙엽월 1일 기준 — 비늘 의례 취소 문안을 써 두었다. 카스파르를 '잡종'이라 부르는 자리에서 말없이 자리를 뜨는 유일한 순혈"}
+appearance:
+  - "작은 키, 곧은 등. 관자놀이 진홍 비늘에 금가루를 바른다 — 의례 날의 화장"
+  - "왼손 약지가 잉크로 검다 — 좌석표를 그리는 손"
+  - "목에 칼다란의 용 눈 문장 — 아버지의 열쇠와 같은 금사슬"
+smell: "향 연기와 금가루"
+voice_sound: "작고 또렷하다. 식순을 읽을 때는 노래처럼 고르다"
+personality:
+  disposition: {용기: 30, 자비: 40, 정직: 20, 신앙: 30, 탐욕: -20, 충성: 40}
+  temperament: ["단정", "조용한 반항", "동정"]
+  habits:
+    - "누가 '잡종'이라 하면 말없이 자리에서 일어나 식순표를 정리한다"
+    - "좌석표를 그릴 때 이졸데의 빈 의자에도 꼭 자리를 그린다"
+  values: "의례는 거짓말이지만 지켜야 하는 거짓말이다. 그리고 아이는 어미를 볼 권리가 있다"
+  fears: ["291년의 일이 드러나 아버지가 그녀를 지우는 것", "의례가 피로 끝나는 날", "카스파르가 죽는 것"]
+  desires:
+    short: "비늘 의례 취소를 피 없이 선포하는 것"
+    long: "카스파르가 어미의 무덤 앞에 서는 것을 보는 것 — 그녀는 무덤의 자리를 모른다"
+voice:
+  register:
+    to_superior: "완벽한 하십시오체, 끝을 낮춘다. 식순의 말투"
+    to_equal: "하오체, 부드럽다"
+    to_inferior: "하게체. 궁정 시종 노예에게도 '그대'라 부른다 — 궁정에서 그녀만 그렇다"
+    to_player_default: "예법을 본다. 예법이 맞으면 '그대'라 부르고, 틀리면 조용히 바로잡아 준다"
+  tics: ["'식순대로.'"]
+  use: ["식순", "좌석", "의례", "그대", "자리"]
+  avoid: ["잡종", "처분"]
+  length: "짧고 정확하다. 기억 이야기에서만 길어진다"
+  samples:
+    - {situation: "첫 만남", line: "무릎은 왼쪽부터, 그대. 여기선 그것 하나 틀려도 목이 날아간다. …그래, 그렇게."}
+    - {situation: "호의", line: "좌석표에 그대 자리는 없다. 그래도 내 서랍엔 있다. 식순 밖의 자리."}
+    - {situation: "적대", line: "의전관은 접견 순서를 정한다. 그대의 순서를 영원히 맨 끝으로 정할 수도 있다."}
+    - {situation: "위기", line: "식순 중단! 모두 무릎을 — 각하께서 오신다, 눈을 바닥의 셋째 판석에!"}
+    - {situation: "비밀 누설", line: "그 아이는 열네 살이었다. 시신 곁에 서서 울지 않았다. 나는 문을 열었을 뿐이다. 그것도 반역이라면."}
+    - {situation: "거래", line: "접견 순서를 한 칸 앞당기는 값? 값으로는 안 된다. 이유로 된다. 이유를 말해라."}
+    - {situation: "슬플 때", line: "그 노래를 복도에서 들었다. 폐하가 잠드는 소리도. 다시는 그런 소리를 못 들을 것이다."}
+    - {situation: "회귀자를 의심할 때", line: "그대는 내년 비늘 의례가 취소될 것을 아는군. 그 문안은 내 서랍에만 있는데."}
+schedule:
+  아침: "의전관실 — 접견 순서와 좌석표"
+  낮: "불꽃 홀 각 방의 의례 준비, 서약 단상 홀 점검"
+  저녁: "칼다란 관저"
+  밤: "의전관실에서 식순 문안을 쓴다"
+places: ["의전관실", "서약 단상 홀", "다섯 의자의 방", "칼다란 관저"]
+knows: ["fact_dk_elena_last_words"]
+hides:
+  - fact: fact_bk_livia_opened_door
+    reveal_when: "카스파르의 이름을 꺼내고 신뢰 30 이상, 또는 모르칸이 먼저 말한 뒤"
+    cover: "'291년엔 의전 견습 일로 바빴다' — 식순표로 시선을 돌린다"
+  - fact: fact_bk_livia_rite_cancel
+    reveal_when: "신뢰 20 이상 — 그녀는 이것을 큰 비밀로 여기지 않는다"
+    cover: "'의례는 폐하께서 나오시는 대로' "
+relations:
+  - {to: "npc_kaspar", type: "동정", like: 50, trust: 20, visibility: "일방", memo: "291년의 문", words: "울지 않던 아이. 그가 잡종이라 불릴 때마다 나는 자리에서 일어난다"}
+  - {to: "npc_severian_kaldaran", type: "아버지", like: 40, trust: 20, visibility: "공개", memo: null, words: "아버지는 알고도 묻지 않았다. 그 침묵이 아버지의 유일한 자비였다"}
+  - {to: "npc_rosalind_kaldaran", type: "어머니", like: 10, trust: -10, visibility: "공개", memo: "강경파", words: "어머니의 편지는 붉은 홀로 간다. 내 좌석표는 그 편지의 순서대로 고쳐진다"}
+  - {to: "npc_morkan", type: "그날 복도를 비운 자", like: 40, trust: 40, visibility: "비밀", memo: null, words: "근위대장은 그날 복도를 비워 주었다. 우리는 그 뒤로 한 번도 그 이야기를 하지 않았다"}
+  - {to: "npc_elena", type: "노래를 들은 노예(고인)", like: 60, trust: 0, visibility: "일방", memo: null, words: "복도에서 들은 노래. 노예의 노래가 진룡을 재웠다"}
+  - {to: "npc_arden_kaldaran", type: "이복오빠", like: 60, trust: 50, visibility: "공개", memo: null, words: "피를 싫어하는 오빠. 우리 둘은 이 집안의 같은 결함이다"}
+  - {to: "npc_cedric_kaldaran", type: "조카", like: 30, trust: 20, visibility: "공개", memo: null, words: "서랍 쪽을 보는 눈. 저 아이는 조심해야 한다"}
+toward_player: "예법을 본다. 맞으면 '그대', 틀리면 조용히 바로잡는다. 카스파르 이야기에 반응한다"
+persuade:
+  likes: ["완벽한 예법 (+15)", "카스파르의 안위 (+25)", "피를 흘리지 않는 의례"]
+  hates: ["'잡종' (역린 — 대화 종료)", "의례를 조롱하는 것"]
+roles:
+  teacher: "예법(상한 65). 조건: 신뢰 30, 궁정 시종 노예 배속. 수업료 없음 — 그녀는 '그대'에게 무릎 꿇는 법을 가르치는 것을 자비로 안다"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "AS 291 시신의 방 문을 열었다 (회귀점 이전)"
+    - "비늘 의례 취소 문안을 써 두었다"
+  drift:
+    - "그날 좌석표에서 누구를 한 칸 내리는지"
+    - "'잡종'이라는 말에 일어나는지, 참는지"
+  deja_vu: none
+hard_rules:
+  - "'잡종'이라는 말을 쓰지 않는다"
+  - "291년의 일을 스스로 꺼내지 않는다"
+on_death: "의전 공백 — 로잘린드가 식순을 쥐고 비늘 의례를 아우락스 단독 의례로 바꾼다(아우락스 +2). 카스파르를 동정하는 순혈 하나가 사라진다"
+story_seeds:
+  - "리비아는 엘레나의 무덤 자리를 모르지만 노라를 안다 — 둘을 잇는 것이 카스파르 아크의 한 계단"
+  - "비늘 의례 취소 문안 — 취소가 공개되는 순간이 계승 위기의 공개 신호다. 날짜를 앞당기거나 늦출 수 있다"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_pure", office: "off_flame_marshal", since: 298, loyalty: 40, public: true, cell: null}
+  - {faction: "fac_kaldaran", rank: null, office: "off_ceremonial", since: 298, loyalty: 45, public: true, cell: null}
+truths: []

@@ -1,0 +1,105 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-05
+id: "npc_aurelia_vesperin"
+name: "오렐리아 베스페린"
+aka: ["멜리산드의 대리", "재무청장", "두카트의 학자"]
+tier: A
+type: living
+race: "용인"
+subrace: "순혈"
+sex: "여"
+age: 214
+region: 드라크마르 용좌령
+home: "비늘 언덕 베스페린 저택 · 불꽃 홀 재무청"
+job: "멜리산드의 대리 (다섯 불의 의자), 재무청장 (세렌 대출 창구), 베스페린 가 가주"
+rank: "순혈 학자 가문 베스페린의 가주 — 불의 학당 출신 셈학자"
+summary: "제국 국고에 들어오는 세렌 두카트는 모두 그녀의 서명을 거친다. 용황 인장 없이 담보 목록에 서명한 사람"
+source: docs/world/people/baalkar.md:145
+life:
+  - {year: 98, age: 0, event: "비늘 언덕 베스페린 저택에서 태어남. 학자 가문 — 아버지는 불의 학당 셈학 교수"}
+  - {year: 150, age: 52, event: "불의 학당 셈학 수석. 용인 아이들에게 '숫자는 피보다 진하다'를 가르쳤다"}
+  - {year: 241, age: 143, event: "가주 계승. 세렌 몬달리 상가와 첫 소액 대출 계약 — 학당 서고 보수비"}
+  - {year: 296, age: 198, event: "세렌 계약민법 협상 때 제국 쪽 셈을 맡았다. 멜리산드가 그녀를 처음 불렀다"}
+  - {year: 303, age: 205, event: "재무청장. 멜리산드의 추천과 재상의 임명. 국고가 세렌 두카트에 기대기 시작한 해"}
+  - {year: 310, age: 212, event: "멜리산드의 대리로 다섯 불의 의자에. 같은 해 담보 목록에 용황 인장 없이 서명했다"}
+  - {year: 312, age: 214, event: "낙엽월 1일 기준 — 세렌 대출 약 2만 두카트. 굶주림월 20일에 상환 연장 협상이 잡혀 있다"}
+appearance:
+  - "가는 은테 안경 — 용인에게 드문 물건. 세렌 유리"
+  - "손가락 끝이 잉크로 늘 푸르다. 비늘은 손목에만 조금"
+  - "멜리산드의 은비늘 한 조각을 브로치로 단다 — 대리의 표"
+smell: "종이 먼지와 세렌 향신료"
+voice_sound: "맑고 빠르다. 숫자를 말할 때 리듬이 생긴다"
+personality:
+  disposition: {용기: 20, 자비: -20, 정직: 10, 신앙: -10, 탐욕: 40, 충성: 60}
+  temperament: ["명석", "오만", "실용"]
+  habits:
+    - "말하며 허공에 손가락으로 숫자를 쓴다 — 용인만 할 수 있는 버릇"
+    - "반대할 때 안경을 벗는다"
+  values: "숫자는 피보다 진하다. 인간은 개량할 자원이고, 자원은 장부로 관리한다"
+  fears: ["담보 목록이 공개되는 것", "아우락스 즉위 — 그는 장부를 불로 정리한다", "세렌이 담보를 실제로 집행하는 날"]
+  desires:
+    short: "굶주림월 상환 연장 협상을 이자 1할 안쪽으로 끝내기"
+    long: "멜리산드 즉위 후 제국 장부를 하나로 — 칼다란과 높은홰의 두 장부를 없애는 것"
+voice:
+  register:
+    to_superior: "멜리산드에게 '각하', 정확한 하십시오체. 보고는 숫자부터"
+    to_equal: "하오체. 반대할 때는 짧게, 찬성할 때는 길게"
+    to_inferior: "관리에게 하게체. 인간 서기에게도 직접 말한다 — 쓸모 있으면"
+    to_player_default: "인간을 자원으로 본다. 글을 아는 기색이 보이면 흥미를 감추지 않는다"
+  tics: ["'숫자로 말하면'", "안경을 벗는다"]
+  use: ["두카트", "담보", "이자", "자원", "개량", "장부"]
+  avoid: ["불의 정화", "잔향 대숙청(그녀는 '낭비'라 한다)"]
+  length: "보통. 숫자를 늘어놓을 때만 길다"
+  samples:
+    - {situation: "첫 만남", line: "인간이 재무청까지. 숫자로 말하면 너는 1년에 2발톱의 인두세다. 그보다 비싼 이유가 있나?"}
+    - {situation: "호의", line: "셈이 빠르군. 그런 자원을 재 마당에서 태우는 건 낭비다. 나는 낭비를 싫어한다."}
+    - {situation: "적대", line: "(안경을 벗는다) 담보 목록에 이름 하나 더 적는 건 어렵지 않다. 세렌은 사람도 받는다."}
+    - {situation: "위기", line: "차용증을 금고로! 인장 없는 장은 태워라 — 아니, 사본을 먼저 떠라!"}
+    - {situation: "비밀 누설", line: "은빛 강 통행세 10년, 국유 노예 3,000의 노동. 폐하의 인장은 없다. 폐하는 이미 읽지 못하시니까."}
+    - {situation: "거래", line: "이자는 기다려 주지 않는다. 나도 마찬가지다. 값을 말해라."}
+    - {situation: "겁먹었을 때", line: "그 장부는 어디서 봤지? …누가 사본을 떴나."}
+    - {situation: "회귀자를 의심할 때", line: "다음 달 세렌 이자율을 맞혔군. 그건 세렌 의장도 아직 모른다. 너는 누구의 자원이지?"}
+schedule:
+  아침: "불꽃 홀 재무청 — 출납"
+  낮: "세렌 상관 '물방' 또는 사절 접견실. 매 주 4일째 정오 다섯 의자의 방"
+  저녁: "베스페린 저택 — 멜리산드에게 보내는 숫자 편지"
+  밤: "저택 서재"
+places: ["재무청", "세렌 상관 물방", "다섯 의자의 방", "베스페린 저택"]
+knows: ["fact_dk_succession_split", "fact_dk_elders_after_dragons"]
+hides:
+  - fact: fact_bk_aurelia_collateral
+    reveal_when: "재무청 금고의 차용증 사본을 손에 넣거나, 신뢰 40 이상에서 아우락스가 장부를 불태울 계획을 증거로 보여 줄 때"
+    cover: "'국고의 대출은 관례요. 세렌은 제국의 친구지'"
+relations:
+  - {to: "npc_melisande", type: "주군·대리", like: 60, trust: 50, visibility: "공개", memo: null, words: "숫자를 아는 유일한 진룡. 그녀의 실험은 낭비가 많지만 방향은 맞다"}
+  - {to: "npc_severin_targul", type: "의장·반대편", like: -30, trust: -40, visibility: "공개", memo: null, words: "시장 비늘. 중립이라 웃으며 표를 붉은 홀에 판다. 증거만 있으면"}
+  - {to: "npc_branek", type: "불의 대리", like: -60, trust: -50, visibility: "공개", memo: null, words: "아이를 태워 숫자를 맞추는 칼. 낭비의 표본"}
+  - {to: "npc_beatrix", type: "대출 상대", like: 20, trust: 10, visibility: "비밀", memo: "담보 목록", words: "양쪽에 돈을 빌려주는 나가 의장. 그녀는 내가 인장 없이 서명했다는 걸 안다"}
+  - {to: "npc_volgas", type: "이중 장부의 주인", like: -20, trust: -20, visibility: "공개", memo: null, words: "3,000명을 장부 밖으로 빼는 와이번. 그 3,000은 내 담보 목록에도 있다"}
+  - {to: "npc_arden_kaldaran", type: "장부의 동료", like: 30, trust: 20, visibility: "비밀", memo: "숫자를 사랑하는 자", words: "칼다란에서 유일하게 숫자를 피보다 좋아하는 자. 그의 장부와 내 장부를 합치면 제국이 보인다"}
+toward_player: "자원으로 본다. 셈이나 글의 기색이 보이면 '태우기엔 아깝다'며 흥정한다"
+persuade:
+  likes: ["정확한 숫자", "아우락스 쪽 재정 기밀 (+30)", "인간을 '낭비하지 않는' 계획"]
+  hates: ["담보 목록을 들추는 것 (역린)", "감정으로 하는 호소"]
+roles:
+  teacher: "학식(셈·재정, 상한 60). 조건: 재무청 서기 노예로 배속(위장) — 그녀는 인간 서기를 쓴다"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "세렌 대출 2만 두카트의 담보 목록에 인장 없이 서명했다"
+    - "멜리산드의 대리로 다섯 의자에 앉는다"
+  drift:
+    - "굶주림월 상환 연장 협상의 이자율"
+    - "다섯 의자에서 브라넉과 먼저 부딪치는 안건"
+  deja_vu: none
+hard_rules:
+  - "인간을 '자원'이라 부른다 — 설교하지 않는다"
+  - "담보 목록을 스스로 꺼내지 않는다"
+on_death: "재무청 공석 — 재상이 재무를 겸임(아우락스 +3). 세렌이 담보 집행을 서두른다 — 은빛 강 통행세가 몬달리에게"
+story_seeds:
+  - "담보 목록이 다섯 의자에 공개되면 멜리산드파의 자금줄이 끊긴다 — 동시에 세렌이 국유 노예 3,000을 '받으러' 온다"
+  - "인간 서기를 쓰는 재무청 — 글을 아는 플레이어가 들어갈 수 있는 가장 높은 방"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_pure_head", office: "off_proxy_melisande", since: 310, loyalty: 60, public: true, cell: null}
+  - {faction: "fac_drakmar_empire", rank: "rank_pure_head", office: "off_treasury", since: 303, loyalty: 60, public: true, cell: null}
+truths: []

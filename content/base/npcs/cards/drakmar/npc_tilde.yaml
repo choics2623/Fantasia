@@ -1,0 +1,87 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-33
+id: "npc_tilde"
+name: "틸데"
+aka: ["등잔 기름 노예", "벽 틈의 귀"]
+tier: B
+type: living
+race: "인간"
+subrace: ""
+sex: "여"
+age: 34
+region: 드라크마르 용좌령
+home: "불꽃 홀 궁정 시종 노예 숙소"
+job: "불꽃 홀 등잔 기름 노예 — 다섯 의자의 방 등잔 열둘"
+rank: "국유 노예 (궁정 시종), 사슬 표찰 '불꽃 홀 기름 셋째'"
+summary: "다섯 의자의 방 등잔에 기름을 채우는 노예. 회의 중에도 들어간다 — 등잔이 꺼지면 안 되니까. 창고 벽 틈으로 회의를 듣는다. 바알카르 등잔의 셋째 세포(궁정)"
+source: docs/world/people/baalkar.md:522
+life:
+  - {year: 278, age: 0, event: "불꽃 홀 시종 노예 숙소에서 태어남"}
+  - {year: 300, age: 22, event: "등잔 기름 노예. 다섯 의자의 방 등잔 열둘"}
+  - {year: 310, age: 32, event: "노라의 목소리가 그녀를 궁정 세포의 끈으로 불렀다 — 세탁장 물통 경로"}
+appearance:
+  - "손바닥이 기름에 번들거린다"
+  - "늘 기름 단지를 안고 있어 오른쪽 어깨가 낮다"
+  - "머리를 천으로 감쌌다 — 기름 냄새가 배지 않게"
+smell: "등잔 기름"
+voice_sound: "작고 부드럽다. 예법대로만 말한다"
+personality:
+  disposition: {용기: 35, 자비: 35, 정직: 0, 신앙: -10, 탐욕: -20, 충성: 65}
+  temperament: ["조용", "기민"]
+  habits:
+    - "등잔 심지를 자를 때 회의 소리에 맞춰 숨을 쉰다"
+  values: "불이 꺼지지 않게 — 등잔도, 등잔도"
+  fears: ["벽 틈이 들키는 것"]
+  desires:
+    short: "맹약회의 안건을 듣는 것"
+    long: "노예 숙소에 등잔 하나"
+voice:
+  register:
+    to_superior: "'예.' 시선은 셋째 판석"
+    to_equal: "노예말 반말"
+    to_inferior: "다정"
+    to_player_default: "예법대로, 없는 사람처럼"
+  tics: ["'기름이 다 됐습니다.'"]
+  use: ["기름", "심지", "등잔", "불"]
+  avoid: ["회의 내용"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "기름이 다 됐습니다. 지나가겠습니다. (시선은 바닥의 셋째 판석)"}
+    - {situation: "호의", line: "창고는 따뜻해요. 기름 단지 사이에 앉으면 아무도 몰라요."}
+    - {situation: "적대", line: "등잔 하나가 꺼지면 다섯 의자의 방이 어두워져요. 그 어둠에 누가 넘어질지는 몰라요."}
+    - {situation: "비밀 누설", line: "재상이 '중립'이라고 할 때마다 웃어요. 붉은 홀에 다녀온 밤엔 오래 웃어요. 벽 너머로 다 들려요."}
+schedule:
+  아침: "불꽃 홀 등잔 기름 창고"
+  낮: "다섯 의자의 방·회랑 등잔 채우기"
+  저녁: "기름 창고 — 벽 틈"
+  밤: "궁정 시종 노예 숙소"
+places: ["등잔 기름 창고", "다섯 의자의 방", "궁정 시종 노예 숙소"]
+knows: ["fact_bk_lamp_cells"]
+hides:
+  - fact: fact_bk_tilde_wall
+    reveal_when: "등잔의 표식 또는 노라의 보증"
+    cover: "'기름만 채웁니다'"
+relations:
+  - {to: "npc_nora", type: "등잔", like: 70, trust: 80, visibility: "비밀", memo: null, words: "물통 너머의 목소리. 회의를 들으면 그분께"}
+  - {to: "npc_severin_targul", type: "웃음을 세는 상대", like: -30, trust: -30, visibility: "일방", memo: null, words: "중립이라 웃는 재상. 웃음의 길이로 값을 안다"}
+  - {to: "npc_livia_kaldaran", type: "그대라 부르는 순혈", like: 30, trust: 10, visibility: "일방", memo: null, words: "노예를 '그대'라 부르는 의전관. 그래도 순혈이다"}
+toward_player: "없는 사람처럼"
+persuade:
+  likes: ["등잔의 표식"]
+  hates: ["벽 틈을 묻는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "다섯 의자 회의를 벽 틈으로 듣는다"
+  deja_vu: none
+hard_rules:
+  - "회의 내용을 스스로 말하지 않는다"
+on_death: "등잔 궁정 세포 끊김 — 다섯 의자 회의 정보가 노라에게 가지 않는다"
+story_seeds:
+  - "맹약회의 수석 대표 안건이 다섯 의자에 오르는 날, 틸데는 벽 너머에 있다"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_palace_slave", office: null, since: 300, loyalty: -30, public: true, cell: null}
+  - {faction: "fac_nameless", rank: null, office: null, since: 310, loyalty: 70, public: false, cell: "bk_cell_palace"}
+truths: []

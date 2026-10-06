@@ -1,0 +1,159 @@
+# 지역 생성 키트 — 성지 도시 (25_REGION_KITS.md). 루멘과 일곱 대교구의 성당 도시, 순례 쉼터, 성소가 이것으로 태어난다.
+# 원천: REGIONS §4 (루멘), fac_light(관습·법·말투·계급), fac_broken_ring, fac_lampkeepers, fac_grey_pilgrims, docs/world/people/lumen.md.
+# 관습·법·말투의 결은 다시 쓰지 않는다 → fac_light.customs / law / ranks 를 본다. 여기에는 '성지 도시에만 있는 재료'(일곱 번의 기도, 성표 고리 수, 필사실, 순례 숙소)를 더한다.
+# 인간 평신도의 이름·말투 원형은 kit_human_serf 를 재사용한다 (루멘 신도도 성(姓)이 없다).
+id: kit_holy_city
+applies_to: [루멘, 세 번째 고리 쉼터, 성 마렌의 우물, 일곱 대교구의 성당 도시, 순례길의 쉼터]
+reuses: [kit_human_serf]
+faction_refs: [fac_light, fac_broken_ring, fac_lampkeepers, fac_eldar, fac_collar, fac_grey_pilgrims]
+names:
+  인간:
+    # 성직자는 서품 때 '서품명'을 받는다. 서품명 + 출신(마을·별명). 평신도는 kit_human_serf 이름 + 일·생김새 별명.
+    # 대사제는 '이름 + 숫자'(그레고르 7세). 고리지기·수도자는 이름 하나, 사슬사제 이상은 별명이 따라붙는다.
+    ordained_male: [그레고르, 마티아스, 안셀름, 요나스, 에기디우스, 하르트문트, 라우렌츠, 볼프람, 베르나르트, 암브로스, 클레멘스, 도미니쿠스, 게르하르트, 레오폴트, 시몬, 바실리우스]
+    ordained_female: [아델, 아그네스, 베아테, 헬레나, 클라라, 오틸리에, 미카엘라, 루치아, 에르멘가르트, 발부르가, 수잔나, 이레네]
+    lay_male: [군터, 칼레, 오토, 베른, 하인, 루츠, 페터, 울리, 디터, 얀, 볼프, 토비아스, 엘리, 야코프, 베노, 코라드, 니클라스, 한스]
+    lay_female: [한나, 게르트, 마리, 안나, 베르타, 그레테, 일제, 마리아, 우테, 에다, 마를렌, 유타, 리스베트]
+    epithet_rule: "사슬사제 이상: 서품명 + 별명(마티아스 회색손, 라우렌츠 곧은목). 수도자·고리지기: 이름 + 하는 일(양초 안나, 종지기 얀). 평신도: 이름 + 마을이 부르는 별명. 성(姓)은 없다 — 인간은 성을 가질 수 없다(사슬의 맹약 1조)"
+    given_by_church: ["{n}번째 서원", "빛의 {n}째", "견습 {n}"]
+  엘다르:
+    # 엘다르는 '이름 + 가지 이름 또는 한 줄 별칭'. 루멘의 12명은 별빛·빛실 가지. 인간에게는 이름만 허락한다.
+    male: [레아넬, 이살리온, 에룬딜, 아엘리온, 시리엘, 오리엘]
+    female: [세레니엘, 모리엘, 아에린, 엘레스, 이렐리아]
+    epithet_rule: "이름 + 가지(맑은잎·빛실·금실). 인간은 엘다르를 이름으로 부르지 않고 '감독관님' 또는 침묵으로 부른다"
+  용인:
+    # 루멘 수비대의 용인은 바알카르 용좌령의 비늘혈이다. 이름·가문은 kit_dragonkin_city.names.용인 을 쓴다.
+    garrison_rule: "수비대는 이름 + 소가문 (이반 타르굴). 인간에게는 이름을 밝히지 않고 직책으로 불린다"
+  크릭:
+    # 수비대 잡역 약 400. 이름은 kit_dragonkin_city.names.크릭 을 쓴다. 루멘 크릭은 재·장작·공물 수레를 만진다.
+    nickname_rule: "하는 일 + 크릭 이름 (재삽 뷕, 장작 칙)"
+classes:            # 루멘 인구 약 45,700에서의 비율 (REGIONS §4.4)
+  신도 노동자: 0.80
+  수도자: 0.044
+  서원 견습: 0.009
+  사제(사슬사제 이상): 0.0066
+  상주 순례자: 0.065
+  고리지기(성직 말단): 0.03
+  크릭 잡역: 0.009
+  용인 수비대: 0.0066
+  목줄단 정보원: 0.004
+  엘다르: 0.0003
+jobs:
+  - {id: farm_believer, name: 성지 농원 신도, class: 신도 노동자, weight: 18, schedule: sch_farm}
+  - {id: candle_maker, name: 양초 공방 신도, class: 신도 노동자, weight: 10, schedule: sch_candle}
+  - {id: token_smith, name: 성표 대장간 일꾼, class: 신도 노동자, weight: 6, schedule: sch_forge}
+  - {id: dock_porter, name: 강 부두 짐꾼, class: 신도 노동자, weight: 7, schedule: sch_dock_holy}
+  - {id: weaver_believer, name: 직조·바느질 신도, class: 신도 노동자, sex: female, weight: 8, schedule: sch_weave_holy}
+  - {id: stall_keeper, name: 성표 노점·순례 물품 상인, class: 신도 노동자, weight: 5, schedule: sch_stall}
+  - {id: believer_child, name: 신도의 아이, class: 신도 노동자, age: [5, 13], weight: 8, schedule: sch_child_holy}
+  - {id: believer_elder, name: 노인 신도, class: 신도 노동자, age: [55, 75], weight: 5, schedule: sch_elder_holy}
+  - {id: ring_keeper, name: 고리지기 (예배 준비·밀고 접수·성표 판매), class: 고리지기(성직 말단), weight: 6, schedule: sch_ring_keeper}
+  - {id: monk, name: 수도자 (농원·서고·병자의 집), class: 수도자, weight: 6, schedule: sch_monk}
+  - {id: copyist, name: 필사 수사 (글을 읽지 못하는 베끼는 사람), class: 수도자, weight: 2, schedule: sch_copyist}
+  - {id: seminarian, name: 서원 견습·신학생, class: 서원 견습, age: [12, 24], weight: 4, schedule: sch_seminarian}
+  - {id: chain_priest, name: 사슬사제 (교구 사목·낭독·고해), class: 사제(사슬사제 이상), weight: 2, schedule: sch_chain_priest}
+  - {id: inquisitor, name: 심문 사제 (정화청), class: 사제(사슬사제 이상), weight: 1, schedule: sch_inquisitor}
+  - {id: pilgrim_resident, name: 상주 순례자 (숙소에 사는 순례자), class: 상주 순례자, weight: 8, schedule: sch_pilgrim_resident}
+  - {id: hymn_pilgrim, name: 찬송 순례자, class: 상주 순례자, age: [16, 40], weight: 2, schedule: sch_hymn_pilgrim}
+  - {id: collar_tongue, name: 목줄단 혀 (고해실·노점의 귀), class: 목줄단 정보원, weight: 3, schedule: sch_tongue}
+  - {id: krik_ash, name: 재·장작 크릭 잡역, class: 크릭 잡역, race: 크릭, weight: 3, schedule: sch_krik_ash}
+  - {id: garrison_guard, name: 용인 수비병 (성문·다리), class: 용인 수비대, race: 용인, weight: 2, schedule: sch_garrison}
+  - {id: elf_attendant, name: 엘다르 수행원, class: 엘다르, race: 엘다르, weight: 0.3, schedule: sch_elf}
+schedules:          # at = 정착지 틀의 역할(role) 이름. 기도 시각은 fac_light/REGIONS §4.5 (4·7·10·13·16·19·22시)
+  sch_farm:      [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도, fixed: true}, {days: workday, from: "05:00", to: "12:30", at: farm, doing: 성지 농원 일, outdoor: true}, {days: all, from: "13:00", to: "13:40", at: chapel, doing: 정오 기도}, {days: workday, from: "14:00", to: "18:30", at: farm, doing: 농원 일, outdoor: true}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: tenement, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:30", at: chapel, doing: 안식일 예배}]
+  sch_candle:    [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도, fixed: true}, {days: workday, from: "05:00", to: "12:30", at: candle_works, doing: 밀랍 달이기·심지 매듭}, {days: all, from: "13:00", to: "13:40", at: chapel, doing: 정오 기도}, {days: workday, from: "14:00", to: "18:30", at: candle_works, doing: 양초 틀 작업}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: tenement, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:30", at: chapel, doing: 안식일 예배}]
+  sch_forge:     [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도, fixed: true}, {days: workday, from: "05:00", to: "12:30", at: forge, doing: 성표 고리를 두들겨 잇는다}, {days: all, from: "13:00", to: "13:40", at: chapel, doing: 정오 기도}, {days: workday, from: "14:00", to: "18:30", at: forge, doing: 풀무질·성표 각인}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: tenement, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:30", at: chapel, doing: 안식일 예배}]
+  sch_dock_holy: [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도, fixed: true}, {days: workday, from: "05:00", to: "19:00", at: dock, doing: 하역 — 헌금 쪽지 임금, outdoor: true}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: tenement, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:30", at: chapel, doing: 안식일 예배}]
+  sch_weave_holy: [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도, fixed: true}, {days: workday, from: "05:00", to: "18:30", at: tenement, doing: 직조·성표 주머니 바느질}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: tenement, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:30", at: chapel, doing: 안식일 예배}]
+  sch_stall:     [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도}, {days: workday, from: "06:00", to: "19:00", at: pilgrim_street, doing: 성표와 순례 지팡이를 늘어놓는다}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: tenement, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:30", at: chapel, doing: 안식일 예배}]
+  sch_child_holy: [{days: workday, from: "06:00", to: "12:00", at: farm, doing: 낙수 줍기, outdoor: true}, {days: workday, from: "12:00", to: "18:00", at: well, doing: 물 긷기·초 나르기}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: ration_hall, doing: 배급 줄}, {days: all, from: "22:00", to: "05:00", at: tenement, doing: 잔다}]
+  sch_elder_holy: [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도}, {days: all, from: "08:00", to: "17:00", at: tenement, doing: 그물과 성표 줄 깁기}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "04:00", at: tenement, doing: 잔다}]
+  sch_ring_keeper: [{days: all, from: "03:30", to: "04:40", at: chapel, doing: 새벽 기도 준비 — 등불을 켜고 종을 친다, fixed: true}, {days: workday, from: "05:00", to: "12:30", at: chapel, doing: 성표 판매·밀고 접수}, {days: all, from: "13:00", to: "13:40", at: chapel, doing: 정오 기도}, {days: workday, from: "14:00", to: "18:30", at: confession_square, doing: 고해 줄 정리}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도 — 등불을 끈다}, {days: all, from: "23:00", to: "03:00", at: monastery, doing: 잔다}]
+  sch_monk:      [{days: all, from: "04:00", to: "04:40", at: cathedral, doing: 새벽 기도}, {days: all, from: "07:00", to: "07:40", at: cathedral, doing: 아침 기도}, {days: workday, from: "08:00", to: "10:00", at: farm, doing: 농원 일, outdoor: true}, {days: all, from: "10:00", to: "10:40", at: cathedral, doing: 3시경 기도}, {days: workday, from: "11:00", to: "15:30", at: library, doing: 서고 정리·병자 돌봄}, {days: all, from: "16:00", to: "16:40", at: cathedral, doing: 오후 기도}, {days: all, from: "19:00", to: "19:40", at: cathedral, doing: 저녁 기도}, {days: all, from: "22:00", to: "22:40", at: cathedral, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: monastery, doing: 수도자 숙사}]
+  sch_copyist:   [{days: all, from: "04:00", to: "04:40", at: cathedral, doing: 새벽 기도}, {days: workday, from: "05:00", to: "10:00", at: scriptorium, doing: 낭독문을 '그림'으로 베낀다 — 글자 모양을 눈으로 따라 그린다}, {days: all, from: "10:00", to: "10:40", at: cathedral, doing: 3시경 기도}, {days: workday, from: "11:00", to: "18:00", at: scriptorium, doing: 필사}, {days: all, from: "19:00", to: "19:40", at: cathedral, doing: 저녁 기도}, {days: all, from: "22:00", to: "22:40", at: cathedral, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: monastery, doing: 잔다}]
+  sch_seminarian: [{days: all, from: "04:00", to: "04:40", at: cathedral, doing: 새벽 기도}, {days: workday, from: "05:00", to: "10:00", at: seminary, doing: 낭독문 암송 — 구절을 소리로만 외운다}, {days: all, from: "10:00", to: "10:40", at: cathedral, doing: 3시경 기도}, {days: workday, from: "11:00", to: "15:00", at: seminary, doing: 고해 실습·규율}, {days: workday, from: "15:00", to: "18:00", at: farm, doing: 농원 노역, outdoor: true}, {days: all, from: "19:00", to: "19:40", at: cathedral, doing: 저녁 기도}, {days: all, from: "22:00", to: "22:40", at: cathedral, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: seminary, doing: 기숙사}]
+  sch_chain_priest: [{days: all, from: "04:00", to: "04:40", at: cathedral, doing: 새벽 기도}, {days: workday, from: "08:00", to: "12:00", at: chapel, doing: 사목·고해}, {days: workday, from: "14:00", to: "18:00", at: confession_square, doing: 공개 고해 입회}, {days: all, from: "19:00", to: "19:40", at: cathedral, doing: 저녁 기도}, {days: all, from: "22:00", to: "22:40", at: cathedral, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: priest_quarters, doing: 사제 숙소}]
+  sch_inquisitor: [{days: all, from: "04:00", to: "04:40", at: cathedral, doing: 새벽 기도}, {days: workday, from: "07:00", to: "12:00", at: inquisition, doing: 고발장 검토}, {days: workday, from: "13:00", to: "18:00", at: inquisition, doing: 심문}, {days: all, from: "19:00", to: "19:40", at: cathedral, doing: 저녁 기도}, {days: all, from: "22:00", to: "22:40", at: cathedral, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: inquisition, doing: 심문소 숙사}]
+  sch_pilgrim_resident: [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도}, {days: workday, from: "07:00", to: "17:00", at: pilgrim_street, doing: 순례자 거리 — 성표·소문·줄}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "20:00", to: "21:30", at: pilgrim_house, doing: 숙소 저녁}, {days: all, from: "22:00", to: "22:30", at: chapel, doing: 밤 기도}, {days: all, from: "23:00", to: "03:30", at: pilgrim_house, doing: 짚 침상}, {days: sabbath, from: "07:00", to: "09:30", at: cathedral, doing: 대성당 안식일 예배}]
+  sch_hymn_pilgrim: [{days: all, from: "04:00", to: "04:40", at: chapel, doing: 새벽 기도}, {days: workday, from: "07:00", to: "12:00", at: pilgrim_street, doing: 찬송과 소문}, {days: workday, from: "14:00", to: "17:00", at: confession_square, doing: 고해 줄에서 들은 것을 전한다}, {days: all, from: "19:00", to: "19:40", at: chapel, doing: 저녁 기도}, {days: all, from: "22:00", to: "03:30", at: pilgrim_house, doing: 숙소}]
+  sch_tongue:    [{days: all, from: "05:00", to: "07:00", at: confession_square, doing: 줄에 선다 — 고해 줄의 소문}, {days: workday, from: "07:00", to: "18:00", at: pilgrim_street, doing: 노점·우물 곁에서 귀를 연다}, {days: all, from: "19:00", to: "20:00", at: inquisition, doing: 밀고 함에 쪽지를 넣는다}, {days: all, from: "22:00", to: "04:00", at: tenement, doing: 잔다}]
+  sch_krik_ash:  [{days: all, from: "05:00", to: "06:00", at: garrison, doing: 점호, fixed: true}, {days: workday, from: "06:00", to: "17:00", at: pyre_court, doing: 장작 나르기·재 수거, outdoor: true}, {days: all, from: "18:00", to: "20:00", at: garrison, doing: 크릭 병영}, {days: all, from: "20:00", to: "05:00", at: garrison, doing: 병영 구석}]
+  sch_garrison:  [{days: all, from: "06:00", to: "18:00", at: bridge, doing: 성문과 다리 검문, outdoor: true}, {days: all, from: "21:00", to: "02:00", at: bridge, doing: 통금 순찰, outdoor: true}, {days: all, from: "02:00", to: "06:00", at: garrison, doing: 병영}, {days: all, from: "18:00", to: "21:00", at: garrison, doing: 병영 식당}]
+  sch_elf:       [{days: all, from: "06:00", to: "11:00", at: pavilion, doing: 정원과 기억 수정, fixed: false}, {days: workday, from: "11:00", to: "13:00", at: cathedral, doing: 사슬방 참관석}, {days: all, from: "13:00", to: "23:00", at: pavilion, doing: 정자}, {days: all, from: "23:00", to: "06:00", at: pavilion, doing: 기억 속에 머문다}]
+voices:             # 말투 원형 — 즉석 생성 인물이 하나를 받아 변주한다 (22 §1.1). kit_human_serf.voices 에 더해 성지에서만 나는 목소리
+  - {id: v_reciter, name: 낭독문 말씨의 사제, register: "높은 말씨 '~하리라'를 일상에 섞는다. 신도에게 단정한 반말, 윗사람에게 극존칭", tics: ["'견디어라.'"], use: [빛, 사슬, 정화, 견디다, 낭독문], avoid: [죽음, 노예, 신(대신 빛)], sample: "견디어라. 오늘의 낭독은 이러하리라 — 사슬은 등불을 지킬지니."}
+  - {id: v_ring_keeper_nervous, name: 고리지기, register: "손님에게 과하게 공손, 사제 앞에서 목소리가 반 음 올라간다. 성표 고리를 만지작거린다", tics: ["'제 소관은 아니오나'"], use: [성표, 쪽지, 접수, 사제님], avoid: [밀고 숫자], sample: "제 소관은 아니오나, 성표 값은 주인이 내시는 것이라… 접수는 해 드립니다."}
+  - {id: v_next_life, name: 다음 생을 믿는 신도, register: "단정한 반말, 위로처럼 '다음 생에는'을 단다", tics: ["'다음 생에는.'"], use: [견디다, 다음 생, 빛, 고리], avoid: [끝, 돌아오지 않는다], sample: "다음 생에는 배곯지 않겠지. 견디면 되는 거야. 다음 생에는."}
+  - {id: v_triple_inquisitor, name: 세 질문의 심문관, register: "정중한 하십시오체. 질문을 반드시 셋으로 묶는다. 대답을 끝까지 기다린다", tics: ["질문이 셋이다"], use: [확인, 징후, 당신, 고발, 확률], avoid: [무고, 불쌍], sample: "세 가지만 묻겠습니다. 어디서 왔고, 누구에게 배웠고, 꿈을 꿉니까."}
+  - {id: v_copyist_mute, name: 읽지 못하는 필사 수사, register: "말수가 적고 '모양'으로 말한다. 글자를 '그림'이라 부른다", tics: ["'이 모양은…'"], use: [모양, 획, 먹, 줄, 그림], avoid: [읽다, 뜻], sample: "이 모양은 갈고리가 둘, 아래에 점. 뜻은 몰라요. 모양만 같으면 돼요."}
+  - {id: v_hymn_road, name: 길 위의 찬송 순례자, register: "붙임성 있는 해요체, 길 이름과 날짜로 말한다. 소문을 노래 사이에 끼운다", tics: ["'길에서 들은 건데요'"], use: [길, 쉼터, 고리, 찬송, 소문], avoid: [서신], sample: "길에서 들은 건데요, 세 번째 고리 쉼터 화덕이 며칠째 꺼지질 않는대요."}
+  - {id: v_confessor_soft, name: 부드러운 고해 사제, register: "속삭이는 하오체, 상대의 말을 한 번 되풀이한다. 끝에 '그리고?'를 붙인다", tics: ["'…그리고?'"], use: [영혼, 덜다, 말해 보라, 어둠], avoid: [장부, 보고], sample: "무거운 것은 말하면 가벼워지는 법이오. 말해 보시오. …그리고?"}
+  - {id: v_elf_overseer, name: 감독관 엘다르, register: "느린 해체. 인간의 이름을 부르지 않고 '그대'. 문장이 완결되어 있고 서두름이 없다", tics: ["'기억하겠소.'"], use: [기억, 그대, 한 걸음, 절차, 금실], avoid: [미안, 화], sample: "그대의 말은 기억하겠소. 다만 낭독문에 없는 말이라 금실이 오지 않을 뿐이오."}
+  - {id: v_garrison_dragonkin, name: 수비대 용인, register: "짧은 명령조 하오체. 인간에게 이름을 묻지 않고 '신도'라 부른다", tics: ["'표찰.'"], use: [성문, 통행, 허가증, 무기], avoid: [빛(믿는 척 아님)], sample: "허가증. 무기는 성문 앞 궤에. 신도, 줄을 막지 마라."}
+  - {id: v_pilgrim_crowd, name: 군중 속 순례자, register: "사투리 섞인 반말, 큰 소리로 기도하고 작은 소리로 소문을 낸다", tics: ["'빛이 사슬을 비추기를'"], use: [성지, 순례, 허가증, 등불], avoid: [], sample: "빛이 사슬을 비추기를. 나는 북쪽서 열흘 걸었어. 허가증은 품 안에 있으니 걱정 마."}
+temperaments: [경건, 의심, 순종, 결벽, 겁, 고집, 체념, 다정, 영리, 앙심, 과묵, 수다, 냉정, 죄책, 속삭임, 열심]
+city_customs:       # 법·관습 본문은 fac_light.law/customs
+  - "하루는 일곱 번의 기도로 나뉜다 — 4시(새벽)·7시(아침)·10시(3시경)·13시(정오)·16시(오후)·19시(저녁)·22시(밤). 대성당 종탑이 매번 일곱 번을 친다"
+  - "성표 고리 수가 신분이다 — 신도 1, 고리지기 2, 사슬사제는 사슬과 등불, 등불관 흰 사슬 세 겹, 대사제 일곱 겹, 정화청은 검은 사슬·검은 끈"
+  - "성표의 고리를 일부러 벌려 두기는 끊어진 고리의 표식이다. 정화청이 눈여겨본다"
+  - "공개 고해 — 기도 불참 3회 누적이면 고해 광장에서 죄를 외친다. 줄 서는 사람들이 '견디어라'를 세 번 따라 한다"
+  - "헌금 쪽지(교단 발행 동판, 1못 상당) — 루멘에서 인간이 쥘 수 있는 유일한 합법 돈. 순례 허가증은 1발톱"
+  - "인간 필사실의 필사 수사는 글을 읽지 못한다 — 승인된 낭독문을 '모양'으로만 베낀다. 읽는 자는 사제 한 줄로 충분하다는 공식 해석"
+  - "순례 숙소는 빵 한 덩이와 짚 침상, 그리고 이름 장부. 성 마렌 축일에는 순례자 3만이 몰려 숙소 지붕까지 찬다"
+  - "재의 날(연말 5일)에는 모든 불을 끄고 영원등만 탄다"
+settlement_templates:
+  - id: tpl_holy_city
+    name: 성지 도시 (루멘형)
+    grid: {w: 2200, h: 2000}
+    roles:
+      cathedral:      {count: [1, 1], place: "섬 한가운데 가장 높은 석회암 언덕", access: public, name: 대성당}
+      undercroft:     {count: [0, 1], place: "대성당 바로 아래", access: locked, name: 지하 감옥}
+      inquisition:    {count: [0, 1], place: "대성당 서쪽 광장 옆", access: staff, name: 등불 심문소}
+      pyre_court:     {count: [0, 1], place: "심문소와 대성당 사이", access: public, name: 정화의 뜰}
+      confession_square: {count: [1, 1], place: "대성당 남쪽 문 앞", access: public, name: 고해 광장}
+      seminary:       {count: [0, 1], place: "대성당 동쪽", access: staff, name: 신학원}
+      scriptorium:    {count: [0, 1], place: "신학원 옆", access: staff, name: 필사실}
+      library:        {count: [0, 1], place: "대성당 안 또는 옆", access: staff, name: 서고}
+      priest_quarters: {count: [1, 1], place: "대성당 동쪽 담 안", access: staff, name: 사제 숙소}
+      monastery:      {count: [1, 2], place: "섬 가장자리", access: staff, name: 수도자 숙사}
+      pavilion:       {count: [0, 1], place: "섬의 북쪽 끝 (물가)", access: owner, name: 엘다르 관저}
+      candle_works:   {count: [1, 2], place: "남쪽 둑 강변", access: public, name: 양초 공방}
+      forge:          {count: [1, 1], place: "서안 언덕 아래", access: public, name: 성표 대장간}
+      pilgrim_street: {count: [1, 1], place: "남쪽 다리 끝에서 이어지는 거리", access: public, name: 순례자 거리}
+      pilgrim_house:  {count: [1, 3], place: "순례자 거리 안쪽", access: public, name: 순례자 숙소}
+      chapel:         {count: [2, 6], place: "양안 신도 구역마다 하나", access: public, name: 구역 예배당}
+      ration_hall:    {count: [2, 4], place: "양안 신도 구역", access: public, name: 배급소}
+      tenement:       {count: [3, 8], place: "양안 언덕 비탈", access: serf, name: 신도 숙사, locked: "22:30-03:30"}
+      well:           {count: [3, 9], place: "구역마다", access: public, name: 공용 우물}
+      bridge:         {count: [2, 3], place: "섬과 양안 사이", access: public, name: 다리·성문 검문소}
+      garrison:       {count: [1, 1], place: "동안 성문 옆", access: staff, name: 용인 수비대 병영}
+      dock:           {count: [1, 1], place: "남쪽 강변", access: public, name: 부두}
+      catacombs:      {count: [0, 1], place: "서안 언덕 지하", access: secret, name: 카타콤}
+    outer:
+      farm:      {hours: [0.5, 1.5], name: 성지 농원}
+      reed_flats: {hours: [1.0, 2.5], name: 갈대 평야}
+  - id: tpl_pilgrim_waystation
+    name: 순례 쉼터 (고리 쉼터형)
+    grid: {w: 300, h: 240}
+    roles:
+      well:       {count: [1, 1], place: 가운데, access: public, name: 쉼터 우물}
+      oven:       {count: [1, 1], place: "우물 옆", access: public, name: 빵 굽는 화덕}
+      stone_house: {count: [4, 8], place: "우물 둘레 반원", access: public, name: 돌집}
+      keeper_house: {count: [1, 1], place: "길 쪽 첫 집", access: staff, name: 쉼터지기 집}
+      ledger_room: {count: [1, 1], place: "쉼터지기 집 안", access: staff, name: 순례자 명부방}
+      stable:     {count: [0, 1], place: "길 반대쪽", access: public, name: 짐승 매는 곳}
+      shrine:     {count: [0, 1], place: "길 끝", access: public, name: 고리 표석}
+    outer:
+      road_post:  {hours: [0.2, 0.5], name: 순례길 이정표}
+  - id: tpl_holy_spring
+    name: 성소 우물 (성 마렌형)
+    grid: {w: 260, h: 200}
+    roles:
+      well:       {count: [1, 1], place: 가운데, access: public, name: 성소 우물}
+      altar:      {count: [1, 1], place: "우물 곁", access: public, name: 순례 제단}
+      offering_box: {count: [1, 1], place: "제단 앞", access: public, name: 봉헌 상자}
+      keeper_cell: {count: [1, 2], place: "울타리 안쪽", access: staff, name: 수도자 방}
+      gate:       {count: [1, 1], place: "길 쪽", access: public, name: 울타리 문, locked: "안식일 외"}
+    outer:
+      road:       {hours: [0.1, 0.4], name: 성소로 가는 길}
+calendar_ref: "content/base/events/lumen_312.yaml — 루멘 사건 달력"

@@ -21,7 +21,7 @@ size:
 offices:
   - id: off_marquis
     title: 후작 — 비늘기사단 단장
-    holder: "unnamed:발레리우스 하스트란 — 후작, 334세"   # TODO-NPC (npc_valerius 화염문과 다른 인물)
+    holder: npc_valerius_hastran
     reports_to: null
     powers: ["가문의 법과 군 지휘 일체", "비늘기사단 600기·징집병 8,000의 동원", "아우락스에게 올릴 표 6 (지지율)"]
     chosen_by: "장자 상속 — 시조 하스트 굽은창 (SK 640, 아그라몬의 호위대장)"
@@ -36,7 +36,7 @@ offices:
     perks: ["아버지가 죽기를 기다린다. 발레리우스 사망 시 더 강경해진다"]
   - id: off_south_gate
     title: 남문 수비대장 (딸)
-    holder: "unnamed:마리엘 하스트란 — 176세"   # TODO-NPC
+    holder: npc_mariel_hastran
     reports_to: off_marquis
     powers: ["바알카르 남문 수비", "원형장 도박 인맥"]
     chosen_by: "후작 지명"

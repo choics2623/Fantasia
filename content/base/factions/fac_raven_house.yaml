@@ -48,7 +48,7 @@ offices:
     note: "카스파르를 동경, 인간 하녀 사라를 연모. 오웬→카스파르파 +70 (HOUSES §6.1 예외)"
   - id: off_baalkar_agent
     title: 바알카르 궁정 대리
-    holder: "unnamed:바렌 레이번 — 용인, 118세, 남작의 동생. 바알카르 하급 궁정인"   # TODO-NPC
+    holder: npc_varen_raven
     reports_to: off_baron
     powers: ["바알카르에서 가문 이익의 대변 — 비늘 원로회의 관직 줄, 불의 잔 배정 청원", "칼다란에게 가문 채권을 팔자고 형을 설득 중"]
     chosen_by: "가문 지명"

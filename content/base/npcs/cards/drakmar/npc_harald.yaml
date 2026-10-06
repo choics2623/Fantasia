@@ -1,0 +1,106 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-32
+id: "npc_harald"
+name: "하랄"
+aka: ["이빨", "위조하는 손", "하수도 심지"]
+tier: A
+type: living
+race: "인간"
+subrace: ""
+sex: "남"
+age: 44
+region: 드라크마르 용좌령
+home: "바알카르 하수도 '하랄의 위조 방'"
+job: "쥐들의 왕관 '이빨'(위조) — 쇠 패 통행증·사슬 표찰 위조. 이름 없는 자들 바알카르 심지(하수도)"
+rank: "장부 밖의 사람 — 회색 장부에 '사망'으로 적혀 있다"
+summary: "그가 만든 통행증의 1/3은 잿빛 실로 간다. 아르덴이 '사망'으로 지운 이름들을 쇠 패에 새겨 다시 살린다 — 그 자신도 지워진 이름이다"
+source: docs/world/people/baalkar.md:476
+life:
+  - {year: 268, age: 0, event: "바알카르 국유 공방 막사에서 태어남"}
+  - {year: 282, age: 14, event: "국유 각인 공방 — 사슬 표찰에 소유 가문 문장을 새기는 일"}
+  - {year: 300, age: 32, event: "주인 없는 표찰 하나를 몰래 새겨 친구를 내보냈다. 친구는 사흘 만에 잡혔다 — 표찰 뒷면 쇠 결이 달랐다"}
+  - {year: 305, age: 37, event: "태형 사망 예정자로 올라갔다가 회색 장부에 '사망'으로 지워졌다. 처형장에 끌려가지 않았다. 하수도로 내려갔다"}
+  - {year: 306, age: 38, event: "쥐들의 왕관의 '이빨'. 쇠 결까지 맞추는 통행증 — 1장 2비늘"}
+  - {year: 308, age: 40, event: "노라의 목소리가 그를 바알카르 심지로 지명했다. 통행증 셋 중 하나를 잿빛 실로 보내기 시작"}
+  - {year: 312, age: 44, event: "낙엽월 1일 기준 — 아르덴이 지운 이름 서른 남짓을 쇠 패에 다시 새겼다. 누가 그를 지웠는지 모른다 — 짐작만"}
+appearance:
+  - "눈이 가늘고 늘 충혈 — 등잔 하나로 쇠를 들여다본다"
+  - "손가락 끝이 쇳가루에 검다. 오른손 엄지 손톱을 뾰족하게 길렀다 — 각인 끝"
+  - "목에 사슬 표찰이 없다. 표찰 자국만 하얗게 남았다"
+smell: "하수 냄새와 쇳가루, 등잔 기름"
+voice_sound: "빠르고 가볍다. 농담이 많다. 이름 이야기에서만 느려진다"
+personality:
+  disposition: {용기: 35, 자비: 30, 정직: -50, 신앙: -40, 탐욕: 30, 충성: 55}
+  temperament: ["능청", "손재주", "숨긴 상처"]
+  habits:
+    - "쇠 패를 받으면 뒷면부터 엄지 손톱으로 긁어 결을 본다"
+    - "지운 이름을 새기기 전에 그 이름을 소리 내어 한 번 부른다"
+  values: "장부에서 지워진 사람도 쇠에는 남을 수 있다. 쇠는 펜보다 오래 간다"
+  fears: ["쇠 결이 다른 통행증 — 친구의 사흘", "쥐왕이 잿빛 실 몫을 알게 되는 것", "자기 진짜 이름을 잊는 것"]
+  desires:
+    short: "겨울 전에 통행증 스물을 잿빛 실로"
+    long: "자기를 지운 펜이 누구 것인지 알고, 그 손에 고맙다고 말하는 것 — 또는 침을 뱉는 것"
+voice:
+  register:
+    to_superior: "용인 앞에 설 일이 없다. 서면 '예, 나리' 하고 웃는다"
+    to_equal: "능청스러운 반말"
+    to_inferior: "꼬리들에게 반말, 농담"
+    to_player_default: "값을 묻는다. 쇠 패를 보여 주면 뒷면부터 긁는다"
+  tics: ["'쇠는 거짓말 안 해. 내가 하지.'"]
+  use: ["쇠", "결", "패", "이름", "지운다", "하수구"]
+  avoid: ["자기 진짜 이름", "잿빛 실(그는 '실'이라고만)"]
+  length: "보통. 농담이 길다"
+  samples:
+    - {situation: "첫 만남", line: "쥐 그림 보고 왔어? 사흘 걸렸지? 쇠는 거짓말 안 해. 내가 하지. 뭐가 필요해?"}
+    - {situation: "호의", line: "이 패는 공짜야. 아니, 공짜는 아니고 — 다음에 누가 지워지면 그 이름을 나한테 가져와."}
+    - {situation: "적대", line: "통행증에 결 하나만 틀리게 새기면 돼. 넌 사흘 만에 잡혀. 내 친구처럼."}
+    - {situation: "위기", line: "등잔 꺼! 틀은 물에 — 패는 삼켜도 돼, 작으니까!"}
+    - {situation: "비밀 누설", line: "나도 지워졌어. 305년에. 장부엔 '사망'. 그래서 여기 있지. 누가 지웠는지는 모르지만, 그 펜 덕에 처형장엔 안 갔어."}
+    - {situation: "거래", line: "통행증 한 장 2비늘. 사슬 표찰은 1비늘. 남문 기록 빈 줄까지 맞추면 3. 실로 가는 거면… 값은 이름 하나."}
+    - {situation: "겁먹었을 때", line: "쥐왕이 실 몫을 셌어? …농담이지? 농담이라고 해."}
+    - {situation: "회귀자를 의심할 때", line: "그 이름을 어떻게 알아? 그건 아직 내가 안 새긴 이름이야. 다음 주에 새길 거였는데."}
+schedule:
+  아침: "하수도 위조 방 — 잠"
+  낮: "위조 방 — 쇠 패 각인"
+  저녁: "재받이 하수구 입구 — 꼬리들에게서 주문, 닷새에 한 번 '반쪽 비늘' 뒷문에서 마리엘에게 빈 줄을 산다"
+  밤: "위조 방 — 각인. 열흘에 한 번 제3 하수 분기점 등잔 회합"
+places: ["하랄의 위조 방", "왕관 방", "재받이 하수 분기점", "남문"]
+knows: ["fact_bk_arden_erasures", "fact_bk_mariel_gate_ledger", "fact_bk_lamp_cells"]
+hides:
+  - fact: fact_bk_harald_passes
+    reveal_when: "등잔의 표식, 또는 잿빛 실 쪽 사람(엘사·올레)의 보증"
+    cover: "'통행증은 돈 받고 팔아. 누구한테든'"
+relations:
+  - {to: "npc_nora", type: "등잔", like: 60, trust: 70, visibility: "비밀", memo: "목소리만", words: "나를 심지로 부른 목소리. 얼굴은 몰라. 몰라야 하고"}
+  - {to: "npc_anselma", type: "다른 세포의 심지", like: 40, trust: 40, visibility: "비밀", memo: null, words: "두더지. 그녀가 들은 이름을 내가 새긴다"}
+  - {to: "npc_benno", type: "같은 세포", like: 50, trust: 60, visibility: "비밀", memo: null, words: "재 위에 쓰는 늙은이. 그가 가르치고 내가 새긴다"}
+  - {to: "npc_mariel_hastran", type: "빈 줄을 파는 용인", like: 0, trust: 20, visibility: "비밀", memo: "1비늘", words: "도박 빚 진 수비대장. 빚이 있는 동안은 가장 믿을 만한 용인"}
+  - {to: "npc_arden_kaldaran", type: "나를 지운 펜(짐작)", like: 10, trust: 0, visibility: "일방", memo: "확신은 없다", words: "회색 장부의 주인. 그 펜이 나를 살렸는지 죽였는지 아직 모르겠어"}
+  - {to: "npc_oswald", type: "강가에서 등을 돌리는 목줄", like: 30, trust: 30, visibility: "비밀", memo: null, words: "새벽 종에 등을 돌리는 갈고리. 그 등 덕에 실이 이어진다"}
+  - {to: "npc_elsa", type: "실의 다른 끝", like: 30, trust: 40, visibility: "비밀", memo: "회색여울", words: "늪의 노파에게 가는 패가 한 달에 둘. 그 패에 새긴 이름이 북쪽에서 쓰인다"}
+toward_player: "값을 묻는다. 지워진 이름이나 등잔의 표식이 나오면 진지해진다"
+persuade:
+  likes: ["지워진 이름을 가져오는 것 (+20)", "등잔의 표식 (+30)", "농담을 받아치는 것 (+5)"]
+  hates: ["쇠 결이 틀린 패를 들고 오는 것", "그의 진짜 이름을 묻는 것 (역린)"]
+roles:
+  teacher: "손재주(위조·각인, 상한 60), 기만(50). 조건: 꼬리로 하수도 한 철, 또는 등잔의 보증"
+  companion: "조건부 — 쥐들의 왕관이 그를 의심하는 날 하수도를 떠나 1회 동행"
+  romance: null
+regression:
+  fixed:
+    - "통행증의 1/3이 잿빛 실로 간다"
+    - "그 자신이 회색 장부에 '사망'으로 지워져 있다"
+  drift:
+    - "그날 새기는 이름"
+    - "마리엘에게서 빈 줄을 사는 날"
+  deja_vu: none
+hard_rules:
+  - "자기 진짜 이름을 말하지 않는다"
+  - "잿빛 실을 '실'이라고만 부른다"
+on_death: "위조 통행증 공급 1/3 감소(잿빛 실 북부 경로 약화). 지워진 이름들이 쇠에서도 사라진다"
+story_seeds:
+  - "아르덴이 지운 41명 — 하랄이 그 이름들을 쇠에 새겨 다시 쓴다. 지운 펜과 새긴 손이 만나는 장면"
+  - "쥐들의 왕관의 '진짜 장부'는 세렌 졸라크에 있다 — 그것을 훔치면 하수도 전체가 인간 탈주로가 된다"
+affiliations:
+  - {faction: "fac_rat_crown", rank: null, office: "off_tooth_forger", since: 306, loyalty: 30, public: false, cell: null}
+  - {faction: "fac_nameless", rank: null, office: "off_wick_baalkar_sewer", since: 308, loyalty: 70, public: false, cell: "bk_cell_sewer"}
+truths: []

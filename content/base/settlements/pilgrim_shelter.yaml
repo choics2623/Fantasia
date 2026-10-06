@@ -1,0 +1,30 @@
+# 세 번째 고리 쉼터 배치 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §4.9, 4.10, tpl_pilgrim_waystation (kits/holy_city.yaml).
+# 바알카르–루멘 순례길의 세 번째 쉼터. 돌집 6동, 우물, 빵 굽는 화덕. 수도자 8, 순례자 평소 20 · 축일 앞뒤 300.
+# grid: 쉼터 격자 (m), 원점 = 북서쪽 모서리. 길은 남쪽(바알카르 쪽)에서 올라와 북쪽(루멘 쪽)으로 빠진다. 갈대 나루로 가는 오솔길은 동쪽 끝.
+id: pilgrim_shelter
+name: 세 번째 고리 쉼터
+node: pilgrim_shelter
+kind: waystation
+grid: {w: 300, h: 240}
+curfew: {from: "21:30", to: "04:00", note: "쉼터 문은 잠기지 않지만 순례자는 돌집 안에서만. 수도자가 밤 기도 뒤 명부를 한 번 센다"}
+bells:
+  - {at: "04:00", name: 새벽 종 (손종)}
+  - {at: "13:00", name: 정오 종}
+  - {at: "19:00", name: 저녁 종}
+  - {at: "21:30", name: 점호 종}
+patrols: []
+locations:
+  - {id: ps_well, name: 쉼터 우물, xy: [150, 110], kind: well, access: public, note: "돌 두레박. 순례자가 가장 먼저 닿는 곳"}
+  - {id: ps_oven, name: 빵 굽는 화덕, xy: [180, 130], kind: work, access: public, hours: "04:00-19:00", hidden: "화덕 밑 재 속에 잿빛 표 두 개 — 쉼터지기 헤로는 모른다. 순례 중에 화덕 곁에서 졸다 간 누군가가 넣어 둔 것이다 (fact_lm_hero_oven_ash)"}
+  - {id: ps_keeper_house, name: 쉼터지기 집, xy: [120, 190], kind: office, access: staff, rooms: [ps_ledger_room], note: "길 쪽 첫 집. 수도자들이 이름을 적고 빵 표를 나눈다"}
+  - {id: ps_ledger_room, name: 순례자 명부방, parent: ps_keeper_house, access: staff, hidden: "명부 뒷장 — 날짜와 이름 옆에 아주 작은 점. 점 하나는 '루멘에서 확인한 허가증', 점 둘은 '확인되지 않은 허가증' (fact_lm_hero_ledger_dots)"}
+  - {id: ps_house_men, name: 남자 순례자 돌집, xy: [70, 110], kind: lodging, access: public, hours: "숙박 17:00-06:00", note: "짚 침상 스무 개"}
+  - {id: ps_house_women, name: 여자·아이 순례자 돌집, xy: [70, 150], kind: lodging, access: public, hours: "숙박 17:00-06:00"}
+  - {id: ps_house_sick, name: 병자 돌집, xy: [230, 90], kind: infirmary, access: public, note: "이질과 발 병. 수도자 한 명이 늘 곁에"}
+  - {id: ps_house_stores, name: 곡식 창고 돌집, xy: [220, 160], kind: store, access: staff}
+  - {id: ps_house_monks, name: 수도자 숙사 돌집, xy: [150, 60], kind: lodging, access: staff, note: "수도자 여덟의 침상"}
+  - {id: ps_stable, name: 짐승 매는 곳, xy: [250, 200], kind: stable, access: public}
+  - {id: ps_ring_stone, name: 고리 표석, xy: [150, 20], kind: shrine, access: public, note: "쇠사슬 고리 세 개가 새겨진 길 끝 표석. 세 번째 고리라는 이름의 유래. 순례자가 성표를 문질러 간다"}
+outer:
+  - {id: pilgrim_shelter__road_post, name: 순례길 이정표, hours: 0.3}
+  - {id: pilgrim_shelter__reed_trail, name: 갈대 나루 오솔길, hours: 0.5}

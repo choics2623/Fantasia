@@ -1,0 +1,85 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-29
+id: "npc_varen_hask"
+name: "바렌 하스크"
+aka: ["국유농장 감독관"]
+tier: B
+type: living
+race: "용인"
+subrace: "비늘혈"
+sex: "남"
+age: 131
+region: 드라크마르 용좌령
+home: "이삭 우리 국유농장 감독관 관사"
+job: "이삭 우리 국유농장 감독관 (인간 노예 6,200, 크릭 감독 180)"
+rank: "하스크 가 가주의 맏아들. 레이번의 바렌과 이름이 같다 — 궁정에서는 '농장 바렌'이라 부른다"
+summary: "노예를 번호로 부른다. 곡창 7동 바닥 아래 비밀 창고에 수확기 곡물을 빼돌린다 — 굶주림월에 6,200명을 살릴 수 있는 양"
+source: docs/world/people/baalkar.md:521
+life:
+  - {year: 181, age: 0, event: "이삭 우리 감독관 관사에서 하스크 가 맏아들로 태어남"}
+  - {year: 270, age: 89, event: "국유농장 감독관. 노예 이름 대신 번호만 부르게 했다"}
+  - {year: 304, age: 123, event: "곡창 7동 바닥을 파고 비밀 창고를 만들었다. 판 노예 열넷은 그해 겨울 '탈곡 열'로 죽었다"}
+appearance:
+  - "허리에 번호 낙인 쇠"
+  - "드레이크를 타고 농장을 돈다"
+  - "손톱 밑이 늘 흙빛"
+smell: "곡물 먼지와 드레이크"
+voice_sound: "단조롭다. 번호를 부르는 목소리"
+personality:
+  disposition: {용기: 10, 자비: -60, 정직: -40, 신앙: 10, 탐욕: 65, 충성: 40}
+  temperament: ["무심", "탐욕"]
+  habits:
+    - "사람을 번호로만 부른다"
+  values: "번호는 배를 채우지 않는다. 곡물은 채운다 — 내 배를"
+  fears: ["곡창 7동 감사"]
+  desires:
+    short: "수확기 곡물 반출"
+    long: "하스크 가주"
+voice:
+  register:
+    to_superior: "하십시오체"
+    to_equal: "하오체"
+    to_inferior: "번호로"
+    to_player_default: "번호를 묻는다"
+  tics: ["'번호.'"]
+  use: ["번호", "할당", "섬", "곡창"]
+  avoid: ["7동"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "번호."}
+    - {situation: "호의", line: "4,112번. 오늘 할당을 넘겼군. 반 그릇 더."}
+    - {situation: "적대", line: "번호 없는 것은 농장에 없다. 없는 것은 곡창 밑에 묻어도 아무도 모른다."}
+    - {situation: "비밀 누설", line: "7동? 바닥이 두껍지. 두꺼운 바닥 밑에는 두꺼운 겨울이 있어. 내 겨울이."}
+schedule:
+  아침: "농장 점호 참관"
+  낮: "드레이크로 농장 순회"
+  저녁: "곡창 장부"
+  밤: "관사"
+places: ["이삭 우리 국유농장", "곡창 7동"]
+knows: []
+hides:
+  - fact: fact_bk_hask_granary_seven
+    reveal_when: "곡창 7동 바닥을 직접 보거나 카델이 사촌을 팔 때"
+    cover: "'곡창은 아홉 동, 장부대로다'"
+relations:
+  - {to: "npc_cadel_hask", type: "사촌·공범", like: 30, trust: 30, visibility: "비밀", memo: null, words: "부두의 사촌. 내가 빼면 그가 싣는다"}
+  - {to: "npc_skik", type: "감독 조합장", like: 0, trust: 10, visibility: "공개", memo: null, words: "굽은 등. 태형 할당을 숫자로만 채운다는 소문"}
+toward_player: "번호를 묻는다"
+persuade:
+  likes: ["곡물", "돈"]
+  hates: ["7동"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "곡창 7동 비밀 창고"
+  deja_vu: none
+hard_rules:
+  - "사람을 번호로 부른다"
+on_death: "국유농장 감독 공백 — 하스크 가 혼란, 곡창 7동 노출 위험"
+story_seeds:
+  - "곡창 7동의 곡물은 굶주림월에 국유농장 노예 6,200명을 살릴 수 있다. 폭로하면 하스크 가가 무너지고 아우락스파가 약해진다 (REGIONS §1.13 씨앗 3)"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_scale_officer", office: null, since: 270, loyalty: 40, public: true, cell: null}
+truths: []

@@ -1,0 +1,121 @@
+# 루멘 성지 배치 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §4, fac_light, fac_broken_ring, fac_lampkeepers, docs/world/people/lumen.md.
+# grid: 도시 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 은빛 강이 남북으로 굽어 흐르고 한가운데 하중도 '등불섬'(길이 2.4km, 대부분 대성당 구역).
+# 서안 언덕(x<800)·동안(x>1400)은 신도 구역. 섬 북쪽 끝이 엘다르 관저, 남쪽 끝이 순례자 거리와 부두. 걷는 속도 80m/분.
+# 기도 일곱 번(4·7·10·13·16·19·22시)이 도시의 시계다. 이 종은 일과의 `fixed` 블록으로 박혀 있다.
+id: lumen
+name: 루멘 성지
+node: lumen                       # 지역 지도(map.json)의 노드
+kind: holy_city
+grid: {w: 2200, h: 2000}
+curfew: {from: "22:30", to: "03:30", note: "신도 숙사 잠김. 밤 기도 뒤 거리에 있는 인간은 수비대가 세워 허가증을 본다. 순례자는 숙소 안에서만"}
+bells:
+  - {at: "04:00", name: 새벽 기도 종 (일곱 번)}
+  - {at: "07:00", name: 아침 기도 종}
+  - {at: "10:00", name: 3시경 기도 종}
+  - {at: "13:00", name: 정오 기도 종}
+  - {at: "16:00", name: 오후 기도 종}
+  - {at: "19:00", name: 저녁 기도 종}
+  - {at: "22:00", name: 밤 기도 종 (등불을 끈다)}
+  - {at: "22:30", name: 통금 종}
+patrols: ["22:30", "00:30", "02:30"]
+locations:
+  # ── 섬 북쪽: 엘다르 관저 ──
+  - {id: lm_pavilion, name: "맑은물 정자 (엘다르 관저)", xy: [1100, 120], kind: manor, access: owner, hours: "인간은 초대 없이 못 들어간다. 정문 앞 세 걸음 밖에서 무릎", rooms: [lm_pav_garden, lm_pav_pond, lm_pav_memory], note: "은빛 나무 정자. 인간 시종 30. 엘다르의 그림자를 가로지르면 공개 고해"}
+  - {id: lm_pav_garden, name: 정원, parent: lm_pavilion, access: owner}
+  - {id: lm_pav_pond, name: 연못, parent: lm_pavilion, access: owner, note: "수면에 낮 동안의 일이 한 번 더 비친다는 소문"}
+  - {id: lm_pav_memory, name: 기억 수정의 방, parent: lm_pavilion, access: secret, hidden: "정화청 보고서가 이 방의 수정에 '기억'으로 새겨진다. 세레니엘이 마테우스 몫과 존속파 몫 두 벌을 다르게 쓰는 책상이 여기 있다 (fact_lu_sere_double_report)"}
+  - {id: lm_sunken_stair, name: 물에 잠긴 옛 계단, xy: [1100, 50], kind: ruin, access: secret, hidden: "섬 북쪽 둑 아래 아스테리아 시대 인간 석공이 쌓은 계단. 수면 아래로 열아홉 단. 강이 낮은 여름에만 일곱 단이 드러난다", note: "인간이 만든 가장 오래된 건물 — 교단은 이 계단을 지도에서 지웠다"}
+  # ── 섬 한가운데: 대성당 ──
+  - {id: lm_cathedral, name: 사슬등불 대성당, xy: [1100, 620], kind: cathedral, access: public, hours: "04:00-23:00 (기도 시각 외에는 신랑까지만)", rooms: [lm_cath_nave, lm_cath_eternal_lamp, lm_cath_belltower, lm_cath_prayer_room, lm_cath_confessionals, lm_cath_chain_hall, lm_cath_library, lm_cath_library_back, lm_cath_vestry, lm_cath_candle_stair], note: "대륙 최대의 인간 건축물. 흰 석회암. 신도 1,200이 한꺼번에 선다"}
+  - {id: lm_cath_nave, name: 신랑 (본당), parent: lm_cathedral, access: public}
+  - {id: lm_cath_eternal_lamp, name: 영원등 제단, parent: lm_cathedral, access: public, note: "영원등 쪽으로 등을 돌리거나 숨을 세게 쉬면 금기", hidden: "영원등의 기름은 엘다르가 매년 몰래 새 병을 붙인다 (소문 2 — 사실). 병을 바꾸는 날 새벽 두 시에 제단 뒤 휘장이 열린다"}
+  - {id: lm_cath_belltower, name: 종탑, parent: lm_cathedral, access: staff, hours: "기도 시각 직전", note: "종지기가 일곱 번씩 친다. 꼭대기에서 강 양안이 모두 보인다"}
+  - {id: lm_cath_prayer_room, name: 대사제의 종탑 밑 기도실, parent: lm_cathedral, access: owner, hours: "대사제가 깨어 있는 날만", hidden: "탁자 위 종이 한 장 — 서명한 화형 승인서 1,107장의 이름이 아주 작은 글씨로 적혀 있다 (fact_lu_gregor_paper). 침상 밑 궤에 알베릭의 처형 서명란이 빈 문서"}
+  - {id: lm_cath_confessionals, name: 고해실 (40), parent: lm_cathedral, access: public, hours: "07:00-19:00", note: "순례자 고해실이 열 칸. 나무 격자 건너편 사제의 귀는 정화청으로 이어진다", hidden: "스물일곱 번째 고해실 격자 뒤 서랍 — 펠릭스의 '고해 장부' 사본 (fact_lu_felix_ledger)"}
+  - {id: lm_cath_chain_hall, name: 사슬방 (일곱 등불 회의장), parent: lm_cathedral, access: staff, locked: "회의 외 시간", note: "흰 사슬·검은 사슬 그릇이 제단 위에 놓인다. 벽 쪽에 엘다르 참관석 하나 — 말하지 않는다"}
+  - {id: lm_cath_library, name: 서고, parent: lm_cathedral, access: staff, hours: "08:00-17:00", note: "승인된 낭독문 사본과 사제만 읽는 '사슬 장부'. 등불관 마티아스가 열쇠를 쥔다"}
+  - {id: lm_cath_library_back, name: 서고 뒷방, parent: lm_cathedral, access: secret, hidden: "엘다르가 '삭제'한 성 마렌의 원래 설교 사본 — '고난은 정화가 아니라 기억이다'. 불태우지 않고 봉해 둔 것은 엘다르가 글을 태우지 못해서다 (fact_lm_leanel_sealed_not_burned)"}
+  - {id: lm_cath_vestry, name: 성구실, parent: lm_cathedral, access: staff, note: "흰 사슬, 성표 샘플, 금실 표시가 찍힌 낭독문 보관함"}
+  - {id: lm_cath_candle_stair, name: 영원등 곁 계단 (감옥 쪽), parent: lm_cathedral, access: staff, note: "촛불지기 한나가 양초 조각을 들고 감옥 층계까지 다닌다", hidden: "계단 아래 세 번째 단 밑 — 양초 심지 매듭에 감춘 쪽지 (fact_lu_alberic_hanna)"}
+  - {id: lm_undercroft, name: "빛의 지하 감옥 '침묵의 우물'", xy: [1110, 680], kind: prison, access: locked, hours: "간수 교대 06:00·18:00", rooms: [lm_uc_gate, lm_uc_guardroom, lm_uc_upper_cells, lm_uc_cell_8, lm_uc_cell_9, lm_uc_culvert], note: "대성당 지하 아홉 층, 나선 계단, 수감 80. 이단·잔향 의심자 수용"}
+  - {id: lm_uc_gate, name: 간수 초소 (1층), parent: lm_undercroft, access: staff}
+  - {id: lm_uc_guardroom, name: 간수 숙소, parent: lm_undercroft, access: staff, hidden: "침상 틀 밑 — 오토의 아내가 먹는 약 처방 쪽지와 약값 영수"}
+  - {id: lm_uc_upper_cells, name: 상층 감방들, parent: lm_undercroft, access: locked, note: "징후 의심자·이단 사제 수십 명. 낮에는 물떨어지는 소리"}
+  - {id: lm_uc_cell_8, name: 8번 독방 (베라), parent: lm_undercroft, access: locked, hidden: "벽 아래 굳은살로 새긴 글자 서른다섯 개 — 가장 아래 줄 하나는 언니의 이름"}
+  - {id: lm_uc_cell_9, name: 9번 독방 (알베릭), parent: lm_undercroft, access: locked, hidden: "벽에 손톱으로 새긴 '빛의 서신' 두 장 — 오토가 회칠로 지울 때마다 다시 자란다 (fact_lu_alberic_wall_writing)"}
+  - {id: lm_uc_culvert, name: 지하 수로 쇠창살, parent: lm_undercroft, access: secret, hidden: "아홉 층 아래 강으로 빠지는 수로. 쇠창살 한 짝은 간수 야코프가 기름칠해 두었다 (fact_lm_jakob_culvert_oil)"}
+  # ── 섬 서쪽: 정화청 ──
+  - {id: lm_inquisition, name: 등불 심문소, xy: [900, 560], kind: office, access: staff, hours: "04:00-24:00", rooms: [lm_inq_hall, lm_inq_interrogation, lm_inq_records, lm_inq_scales, lm_inq_cell], note: "정화청 본거지. 심문 사제 40, 목줄단 정보원 200의 보고가 모인다"}
+  - {id: lm_inq_hall, name: 밀고 함 홀, parent: lm_inquisition, access: public, hours: "07:00-19:00", note: "나무 함 열두 개. 밀고 접수관이 앉는다", hidden: "셋째 함 맨 아래 — 회색여울에서 온 오스릭 관련 보고 (발신자 마르타). 접수관이 정화청장 책상으로 올리지 않은 채 쥐고 있다 (fact_lm_tobias_marta_report)"}
+  - {id: lm_inq_interrogation, name: 심문실, parent: lm_inquisition, access: staff}
+  - {id: lm_inq_records, name: 기록함, parent: lm_inquisition, access: staff, note: "사제만 읽는 곳", hidden: "화형 대기 명단 — 맨 아래 줄 '두 번째 베라, 침묵의 우물'"}
+  - {id: lm_inq_scales, name: 잿빛 저울실, parent: lm_inquisition, access: staff, hidden: "저울 셋의 표결 석판 — 베라 건에 '가볍다' 한 표가 새겨져 있다 (fact_lm_hartmund_light_vote)"}
+  - {id: lm_inq_cell, name: 정화청장의 독방, parent: lm_inquisition, access: owner, hidden: "침상 밑 채찍과 구부러진 푸른 머리핀의 빈 상자 (fact_lu_mateus_penance)"}
+  - {id: lm_pyre_court, name: 정화의 뜰, xy: [980, 600], kind: square, access: public, hours: "화형일 외 낮 동안 개방", note: "이번 가을 장작 네 번. 신도는 참석해 '그의 고난이 그를 정화하기를'을 외친다"}
+  - {id: lm_pyre_store, name: 장작 창고·재 항아리 방, xy: [960, 640], kind: store, access: staff, hidden: "선반의 항아리 — 타다 남은 단추·치아·핀 212개가 이름 쪽지 없이 들어 있다 (fact_lm_corad_jar)"}
+  - {id: lm_confession_square, name: 고해 광장, xy: [1100, 820], kind: square, access: public, note: "공개 고해가 열리는 대성당 남쪽 문 앞. 줄이 해 뜨기 전부터 선다"}
+  # ── 섬 동쪽: 신학원·필사실·사제 숙소 ──
+  - {id: lm_seminary, name: 신학원, xy: [1260, 560], kind: school, access: staff, rooms: [lm_sem_hall, lm_sem_dorm, lm_sem_chant], note: "서원 견습 400. 낭독문은 '소리로만' 외운다"}
+  - {id: lm_sem_hall, name: 낭독실, parent: lm_seminary, access: staff}
+  - {id: lm_sem_dorm, name: 견습 기숙사, parent: lm_seminary, access: staff, hidden: "마지막 침상 널 아래 — 열여섯 살 견습이 몰래 베낀 낭독문 한 줄의 '모양'"}
+  - {id: lm_sem_chant, name: 성가 막사, parent: lm_seminary, access: staff, hours: "성가대 연습 15:00-18:00", note: "대성당 뒤. 성가대와 찬송 순례자 후보가 자란다. 요한이 열한 살부터 자란 곳"}
+  - {id: lm_scriptorium, name: 필사실, xy: [1270, 700], kind: scriptorium, access: staff, hours: "05:00-18:00", rooms: [lm_scr_hall, lm_scr_master], note: "필사 수사 서른. 모두 글을 읽지 못한다 — 승인된 낭독문을 모양으로만 베낀다"}
+  - {id: lm_scr_hall, name: 필사 홀, parent: lm_scriptorium, access: staff, note: "긴 책상 열두 개. 말소리 금지. 창을 북쪽으로 낸 이유는 그림자 때문"}
+  - {id: lm_scr_master, name: 필사장실, parent: lm_scriptorium, access: staff, hidden: "문 뒤 못에 걸린 '빛의 서신' 모사 한 장 — 오탈자 있는 열일곱 부 중 하나 (fact_lm_otilie_copies)"}
+  - {id: lm_priest_quarters, name: 사제 숙소, xy: [1230, 640], kind: lodging, access: staff, hidden: "펠릭스의 방 침상 밑 — 푸른 천에 싼 고해 장부 원본 한 권"}
+  - {id: lm_silver_lamp_house, name: 은빛 강 등불관 처소, xy: [1180, 520], kind: home, access: owner, rooms: [lm_lamp_study], note: "대성당 서고를 맡은 마티아스 회색손의 집"}
+  - {id: lm_lamp_study, name: 등불관 서재, parent: lm_silver_lamp_house, access: owner, hidden: "열쇠고리에 서고 뒷방 열쇠 — 한 번도 열지 않은 사람의 손때 없는 쇠 (fact_lm_matthias_key)"}
+  - {id: lm_monastery, name: 수도자 숙사, xy: [1000, 760], kind: lodging, access: staff, note: "수도자 2,000 중 남자 몫. 고리지기 숙소 겸"}
+  - {id: lm_nunnery, name: 수녀원, xy: [1030, 840], kind: lodging, access: staff, note: "수녀와 여자 수도자의 숙사. 촛불지기 한나의 방이 문 옆"}
+  - {id: lm_hospice, name: 병자의 집, xy: [1300, 860], kind: infirmary, access: public, hours: "04:00-22:00", note: "순례자 이질과 강안개 폐렴의 병상. 수도자가 돌본다"}
+  # ── 섬 남쪽: 순례자 거리와 양초 공방 ──
+  - {id: lm_candle_works, name: "양초 공방 '등불지기'", xy: [960, 1100], kind: workshop, access: public, hours: "05:00-19:00", rooms: [lm_candle_floor, lm_candle_cellar, lm_candle_cave], note: "루멘 양초의 3할. 노동자 40. 심지 매듭에 메시지가 숨는다 (소문 5 — 사실)"}
+  - {id: lm_candle_floor, name: 공방 작업장, parent: lm_candle_works, access: public}
+  - {id: lm_candle_cellar, name: 밀랍 저장고, parent: lm_candle_works, access: staff, hidden: "밀랍 통 뒤 판자 — 강가 동굴로 내려가는 사다리 (잿빛 실 루멘 매듭)"}
+  - {id: lm_candle_cave, name: 강가 동굴, parent: lm_candle_works, access: secret, hidden: "잿빛 실 탈주자 대기처(최대 20명). 늪길 출발점. 밀물 때 입구가 잠긴다 (fact_lm_anna_cave_tide)"}
+  - {id: lm_pilgrim_street, name: 순례자 거리, xy: [1100, 1400], kind: street, access: public, hours: "24시 — 순례자가 오가는 길", note: "상주 순례자 3,000. 성표 노점과 숙소. 대륙의 소문이 모인다 (소문 판정 +10)"}
+  - {id: lm_pilgrim_house, name: "순례자 숙소 '등불 없는 집'", xy: [1060, 1440], kind: lodging, access: public, hours: "숙박 18:00-07:00", rooms: [lm_pilgrim_cellar, lm_dry_well], note: "빵 한 덩이와 짚 침상과 이름 장부. 아그네스 수녀가 관리하고 베르타가 일상을 맡는다"}
+  - {id: lm_pilgrim_cellar, name: 지하 저장고, parent: lm_pilgrim_house, access: staff, hidden: "순례 허가증 위조용 동판과 빈 목패 열두 장 — 아델이 발급한 것이라는 뜻"}
+  - {id: lm_dry_well, name: 물 없는 우물, parent: lm_pilgrim_house, access: secret, hidden: "저장고 바닥 우물에서 이어지는 지하 수로 → 잿빛 실 입구. 지금까지 214명이 지났다 (fact_lu_agnes_well)"}
+  - {id: lm_token_stalls, name: 성표 노점 거리, xy: [1100, 1350], kind: market, access: public, hours: "06:00-19:00", note: "성표 고리, 순례 지팡이, 헌금 쪽지 환전. 목줄단 '혀'가 노점 곁에 선다"}
+  - {id: lm_pilgrim_post, name: 게시 기둥, xy: [1120, 1420], kind: outdoor, access: public, note: "허가증 검사 일정과 정화 날짜가 붙는다"}
+  - {id: lm_north_house, name: 북부 사제관, xy: [1150, 1380], kind: lodging, access: staff, hours: "04:00-22:00", note: "북부 등불관 공석 3년 — 대리 수녀 아델이 쓴다. 북부 순례자와 허가증 발급", hidden: "서랍 안 순례 허가증 인장 — 도장 두 개. 하나는 북부, 하나는 아델의 것이 아니다 (fact_lm_adel_seal)"}
+  - {id: lm_apothecary, name: 순례길 약방, xy: [1000, 1380], kind: shop, access: public, hours: "07:00-18:00", note: "오토의 아내 약을 짓는 곳. 약값은 헌금 쪽지로"}
+  - {id: lm_tithe_office, name: 헌금 쪽지 교환소, xy: [1180, 1320], kind: office, access: public, hours: "08:00-16:00", note: "동판 쪽지를 발행·교환한다. 순례 허가증(1발톱)도 여기서 판다"}
+  - {id: lm_dock, name: 루멘 부두, xy: [1100, 1800], kind: dock, access: public, hours: "새벽-일몰", note: "노예선 정기편(세렌행)과 강 수운이 선다. 성표 고리를 단 인간이 배에 오르면 성표 계수소가 확인한다", hidden: "성표 계수소 장부 — 세렌행 선적 인간의 성표 번호. 팔려 간 신도 수가 그대로 적힌다"}
+  # ── 다리·성문·수비 ──
+  - {id: lm_bridge_west, name: 서쪽 다리, xy: [800, 700], kind: checkpoint, access: public, note: "허가증과 무기 검사. 용인 수비병 둘"}
+  - {id: lm_bridge_east, name: 동쪽 다리, xy: [1400, 700], kind: checkpoint, access: public}
+  - {id: lm_bridge_south, name: 남쪽 다리, xy: [1100, 1650], kind: checkpoint, access: public, note: "순례길 쪽에서 오는 순례자가 지난다"}
+  - {id: lm_west_gate, name: 서안 성문, xy: [620, 700], kind: gate, access: public, hours: "04:00-22:30"}
+  - {id: lm_east_gate, name: 동안 성문, xy: [1580, 700], kind: gate, access: public, hours: "04:00-22:30"}
+  - {id: lm_garrison, name: 용인 수비대 병영, xy: [1650, 740], kind: barracks, access: staff, rooms: [lm_garrison_commander], note: "용인 300, 크릭 잡역 400의 일부"}
+  - {id: lm_garrison_commander, name: 수비대장실, parent: lm_garrison, access: owner, hidden: "책상 밑 서랍 — 축일 군중 3만 대 용인 300의 병력 계산표 (fact_lm_ivan_crowd_math)"}
+  - {id: lm_tribute_yard, name: 공물 수레 마당, xy: [1640, 820], kind: yard, access: staff, note: "긴밤월 녹테른 공물 호송이 서는 곳. 평소에는 비어 있다"}
+  # ── 서안: 성표 대장간·예배당·카타콤 ──
+  - {id: lm_forge, name: 성표 대장간, xy: [650, 1000], kind: work, access: public, hours: "05:00-19:00", note: "신도마다 걸 성표 고리를 두들겨 잇는다"}
+  - {id: lm_smith_house, name: 대장장이 일제의 집, xy: [640, 1040], kind: home, access: serf, note: "대장간 옆 작은 돌집. 문 위에 불티 자국"}
+  - {id: lm_lutz_house, name: 직조공 루츠의 집, xy: [665, 1065], kind: home, access: serf}
+  - {id: lm_chapel_west, name: 서안 예배당, xy: [600, 850], kind: chapel, access: public, rooms: [lm_chapel_west_crypt], note: "서안 신도 구역의 새벽·저녁 기도"}
+  - {id: lm_chapel_west_crypt, name: 예배당 지하실, parent: lm_chapel_west, access: secret, hidden: "제단 계단 밑 문 → 카타콤. 안식일 예배 뒤 '낭독 연습'이 열린다"}
+  - {id: lm_catacombs, name: 카타콤, xy: [560, 800], kind: crypt, access: secret, rooms: [lm_cata_ossuary, lm_cata_hall], note: "옛 신도의 무덤 방. 끊어진 고리 루멘 사슬의 모임터"}
+  - {id: lm_cata_ossuary, name: 납골 방, parent: lm_catacombs, access: secret}
+  - {id: lm_cata_hall, name: 일곱 고리의 방, parent: lm_catacombs, access: secret, hidden: "벽 일곱 못에 걸린 벌어진 성표 고리. 하나는 아직 주인이 없다 (fact_lm_ring_unclaimed)"}
+  - {id: lm_ration_west, name: 서안 배급소, xy: [560, 950], kind: canteen, access: public, hours: "19:30-21:30"}
+  - {id: lm_tenement_west, name: 서안 신도 숙사, xy: [500, 1100], kind: barracks, access: serf, locked: "22:30-03:30"}
+  - {id: lm_well_west, name: 서안 우물, xy: [580, 900], kind: well, access: public}
+  - {id: lm_cemetery, name: 신도 묘지, xy: [400, 600], kind: graveyard, access: public, note: "서안 석회암 언덕 위. 정화의 재는 여기 묻지 않고 강에 뿌린다"}
+  # ── 동안 ──
+  - {id: lm_chapel_east, name: 동안 예배당, xy: [1650, 900], kind: chapel, access: public}
+  - {id: lm_ration_east, name: 동안 배급소, xy: [1700, 950], kind: canteen, access: public, hours: "19:30-21:30", note: "귀리죽 둘, 빵 하나, 안식일 생선"}
+  - {id: lm_tenement_east, name: 동안 신도 숙사, xy: [1750, 1100], kind: barracks, access: serf, locked: "22:30-03:30"}
+  - {id: lm_well_east, name: 동안 우물, xy: [1700, 1000], kind: well, access: public}
+  - {id: lm_market, name: 강변 시장, xy: [1600, 1250], kind: market, access: public, hours: "06:00-18:00", note: "생선·갈대 기름·성지 농원 채소"}
+  - {id: lm_festival_bank, name: 동안 강변 등불 둑, xy: [1480, 1100], kind: outdoor, access: public, note: "성 마렌 축일에 순례자 3만이 사슬 감긴 등불을 들고 서는 둑. 평소에는 빨래터"}
+  - {id: lm_well_island, name: 대성당 우물, xy: [1100, 780], kind: well, access: public}
+  - {id: lm_well_pilgrim, name: 순례자 거리 우물, xy: [1090, 1370], kind: well, access: public}
+# 마을 밖 — 지역 지도 노드 또는 하위 장소. hours = 도시에서 걷는 시간
+outer:
+  - {id: lumen__farm, name: 성지 농원, hours: 1.0}
+  - {id: lumen__reed_flats, name: 갈대 평야, hours: 2.0}
+  - {id: lumen__sandbar, name: 등불섬 남쪽 모래톱, hours: 0.5}

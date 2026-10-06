@@ -1,0 +1,102 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-25
+id: "npc_skik"
+name: "스킥"
+aka: ["굽은 등 조합장", "늙은 채찍"]
+tier: A
+type: living
+race: "크릭"
+subrace: "감독관 크릭"
+sex: "남"
+age: 39
+region: 드라크마르 용좌령
+home: "바알카르 굽은 등 조합 회관 위층"
+job: "크릭 감독관 조합 '굽은 등' 조합장 — 국유 노예 감독 인력 배정, 처벌 집행"
+rank: "길드 소속 — 국유 노예 신분이 아니다. 크릭으로서는 고령"
+summary: "손이 떨려 채찍을 들지 못한 지 1년. 태형은 부하가 대신하고, 그는 숫자만 적는다. 그 사실이 알려지면 조합에서 쫓겨나 굶어 죽는다"
+source: docs/world/people/baalkar.md:366
+life:
+  - {year: 273, age: 0, event: "바알카르 굽은 회랑 크릭 굴에서 태어남"}
+  - {year: 285, age: 12, event: "이삭 우리 국유농장 채찍 견습"}
+  - {year: 286, age: 13, event: "굽은 회랑 새끼 우리에서 돌보던 네 살배기 즈닉이 레이번 성채로 팔려 갔다. 울지 않고 오줌만 지렸다"}
+  - {year: 303, age: 30, event: "굽은 등 조합장. 채찍손 길드장 니브와 처음 부딪침"}
+  - {year: 311, age: 38, event: "손이 떨리기 시작. 집행표에 이름만 적기 시작했다"}
+  - {year: 312, age: 39, event: "낙엽월 1일 기준 — 크릭 수명 약 40. 후계를 정하지 않았다. 즈닉의 이름을 가끔 생각한다"}
+appearance:
+  - "털이 거의 빠진 회색 머리, 등이 활처럼 굽었다"
+  - "오른손을 늘 왼손으로 감싸 쥔다 — 떨림을 감추려고"
+  - "목에 굽은 등 조합장의 쇠 채찍 손잡이 — 끈은 없다"
+smell: "쓴 약초 연기와 낡은 가죽"
+voice_sound: "쉬고 느리다. 크릭답지 않게 낮다"
+personality:
+  disposition: {용기: -15, 자비: -20, 정직: -25, 신앙: 50, 탐욕: 20, 충성: 40}
+  temperament: ["노회", "두려움", "체념"]
+  habits:
+    - "오른손을 왼손으로 감싼다"
+    - "강한 자의 이름을 들으면 목록 순서대로 중얼거린다 — 크릭의 '강함의 목록'"
+  values: "강한 쪽에 맞춘다. 그것이 크릭이 3,000년 산 법이다"
+  fears: ["떨림이 드러나는 것", "길드에서 쫓겨나 굶는 것", "강함의 목록이 뒤집히는 날"]
+  desires:
+    short: "떨림을 감춘 채 겨울을 넘기는 것"
+    long: "조합장 자리를 '강한 새끼'에게 물려주는 것 — 그런 새끼는 아직 없다"
+voice:
+  register:
+    to_superior: "끝없는 존대, 그러나 느리고 낮다"
+    to_equal: "길드 크릭에게 반말, 혀를 차지 않는다"
+    to_inferior: "인간에게 숫자로 — '태형 스물'"
+    to_player_default: "등을 본다. 매 맞은 등인지"
+  tics: ["'목록대로.'"]
+  use: ["목록", "강한", "태형", "집행표", "배정"]
+  avoid: ["손", "떨림"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "등 돌려. …맞은 등이군. 몇 번? 숫자만 말해."}
+    - {situation: "호의", line: "오늘 집행표에 네 이름은 없다. 목록대로 했을 뿐이야."}
+    - {situation: "적대", line: "태형 서른. 내가 직접 들지는 않아. 직접 드는 놈이 더 세게 친다."}
+    - {situation: "위기", line: "회관 문 닫아! 목록이 흔들린다 — 강한 쪽이 정해질 때까지 아무도 채찍 들지 마!"}
+    - {situation: "비밀 누설", line: "(오른손을 펴 보인다) 봐. 1년째 이렇다. 채찍을 들면 떨어뜨려. 크릭이 채찍을 떨어뜨리면 그날 목록에서 내려가."}
+    - {situation: "거래", line: "배정표에서 한 줄 바꾸는 값? 감독관 하나가 다른 막사로 가는 거. 반 비늘."}
+    - {situation: "겁먹었을 때", line: "누가 봤어? 손을? …목록대로, 목록대로."}
+    - {situation: "즈닉 이야기", line: "회색여울의 즈닉? 겁 많은 새끼였지. 겁 많은 놈이 오래 살아. 나처럼."}
+schedule:
+  아침: "굽은 등 회관 — 감독관 배정표"
+  낮: "사슬 기둥 광장 태형 참관 (집행은 부하), 시장·부두 순회"
+  저녁: "회관 — 집행표 기록"
+  밤: "회관 위층"
+places: ["굽은 등 조합 회관", "사슬 기둥 광장", "비늘 시장", "사슬 부두"]
+knows: ["fact_gf_znik_wet_himself"]
+hides:
+  - fact: fact_bk_skik_trembling
+    reveal_when: "그의 오른손을 직접 보는 판정(감각) 성공, 또는 신뢰 30 — 그가 스스로 손을 편다"
+    cover: "오른손을 감싸 쥐고 '목록대로'만 반복한다"
+relations:
+  - {to: "npc_znik", type: "옛 우리의 새끼", like: 15, trust: 0, visibility: "공개", memo: "후계로 가끔 생각한다", words: "오줌을 지리던 새끼. 겁 많은 놈이 오래 산다 — 그게 크릭의 미덕"}
+  - {to: "npc_grim", type: "길드 동료", like: 0, trust: -10, visibility: "공개", memo: null, words: "사르코스의 손. 나보다 다섯 살 늙고 나보다 손이 멀쩡하다"}
+  - {to: "npc_vix", type: "길드 셈꾼", like: 10, trust: 20, visibility: "공개", memo: null, words: "숫자를 아는 크릭. 내 집행표의 숫자도 맞춰 준다"}
+  - {to: "npc_fizik", type: "궁의 귀", like: -20, trust: -20, visibility: "공개", memo: null, words: "배관 크릭. 내 손 이야기를 이미 들었을지 모른다"}
+  - {to: "npc_chik", type: "엎드리지 않는 크릭의 소문", like: -30, trust: -20, visibility: "일방", memo: null, words: "강한 자 앞에서 무릎을 안 꺾는 크릭이 있다고. 목록이 흔들린다는 첫 소리"}
+toward_player: "등을 본다. 숫자로 말한다"
+persuade:
+  likes: ["강한 쪽에 관한 정보 (+20)", "떨림을 감춰 주는 것 (+30)"]
+  hates: ["손을 보려는 것 (역린)", "목록을 비웃는 것"]
+roles:
+  teacher: "통찰(상한 45). 조건: 그의 떨림을 감춰 주고 30일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "손이 떨려 채찍을 들지 못한다"
+    - "굽은 등 조합장이다"
+  drift:
+    - "그날 장부에서만 채우는 태형 수"
+    - "누구를 후계로 떠올리는지"
+  deja_vu: none
+hard_rules:
+  - "떨림을 스스로 말하지 않는다 (신뢰 30 이전)"
+  - "강한 자에게 엎드린다 — 그러나 크릭치고 느리다"
+on_death: "굽은 등 조합장 공석 — 채찍손 길드장 니브가 흡수(아우락스 쪽으로 기움). 국유농장 태형이 '실제로' 늘어난다"
+story_seeds:
+  - "장부에서만 채운 태형 — 맞지 않은 등이 맞은 것으로 적힌 날들. 스킥이 살아 있는 동안만의 작은 자비"
+  - "치크의 소문이 그의 귀에 닿을 때, 늙은 크릭은 처음으로 목록을 의심한다"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_overseer", office: "off_overseer_guild", since: 303, loyalty: 40, public: true, cell: null}
+truths: []

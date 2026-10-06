@@ -103,6 +103,11 @@
     "faction": "fac_bold",
     "office": "off_codex_keeper",
     "title": "볼드 사본 보관"
+   },
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_scholar",
+    "title": "탑의 손 — 볼드 가주 겸 잿빛 탑 탑주"
    }
   ],
   "npc_isol": [
@@ -143,7 +148,94 @@
     "title": "줍는 자 — 탑 안 (서기)"
    }
   ],
+  "npc_aurax": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_head",
+    "title": "진영의 머리 — 장자 아우락스 붉은턱"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_western_army",
+    "title": "서부군 총사령"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_firstborn",
+    "title": "장자 (전통파 '불의 손')"
+   }
+  ],
+  "npc_branek": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_proxy",
+    "title": "다섯 의자의 대리"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_proxy_aurax",
+    "title": "아우락스의 대리"
+   }
+  ],
+  "npc_dravan": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_executor",
+    "title": "집행자 — 아버지의 불"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_pyre_executor",
+    "title": "화형 집행관"
+   },
+   {
+    "faction": "fac_varskar_brood",
+    "office": "off_executor",
+    "title": "집행자 (잔향 사냥)"
+   }
+  ],
+  "npc_severin_targul": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_hidden_vote",
+    "title": "숨은 표 — 중립의 얼굴을 한 의장"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_chancellor",
+    "title": "재상"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_scale_market",
+    "title": "비늘 시장 운영권자"
+   }
+  ],
+  "npc_valerius_hastran": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_shield",
+    "title": "방패 — 비늘기사단 단장"
+   },
+   {
+    "faction": "fac_hastran",
+    "office": "off_marquis",
+    "title": "후작 — 비늘기사단 단장"
+   }
+  ],
+  "npc_valerius": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_purse",
+    "title": "금고 — 화염문 저택"
+   }
+  ],
   "npc_volk": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_hounds",
+    "title": "사냥개 — 공인 노예사냥 조합"
+   },
    {
     "faction": "fac_barg",
     "office": "off_hunt_chief",
@@ -158,6 +250,18 @@
     "faction": "fac_drakmar_empire",
     "office": "off_hound_licensee",
     "title": "공인 노예사냥 조합장"
+   }
+  ],
+  "npc_rosalind_kaldaran": [
+   {
+    "faction": "fac_aurax",
+    "office": "off_aurax_dais_letter",
+    "title": "단상의 서신 — 칼다란 대공비"
+   },
+   {
+    "faction": "fac_kaldaran",
+    "office": "off_duchess",
+    "title": "대공비"
    }
   ],
   "npc_irga": [
@@ -182,6 +286,13 @@
     "faction": "fac_beastkin",
     "office": "off_grod",
     "title": "회색여울 담당 송곳니"
+   }
+  ],
+  "npc_luga": [
+   {
+    "faction": "fac_barg",
+    "office": "off_fang_other",
+    "title": "송곳니 — 나머지 아홉 (지부 7곳·바알카르 본부)"
    }
   ],
   "npc_sahar": [
@@ -251,6 +362,20 @@
     "faction": "fac_beat_ledger",
     "office": "off_outside_ear",
     "title": "바깥 귀 (드라우르)"
+   }
+  ],
+  "npc_theo_bold": [
+   {
+    "faction": "fac_bold",
+    "office": "off_ink_street",
+    "title": "바알카르 잉크 거리 관리 (궁정 연대기 담당)"
+   }
+  ],
+  "npc_isaac": [
+   {
+    "faction": "fac_bold",
+    "office": "off_chief_scribe",
+    "title": "수석 서기 노예"
    }
   ],
   "npc_alberic": [
@@ -352,6 +477,18 @@
     "title": "장미 우리 감독 (목줄장)"
    }
   ],
+  "npc_ebert": [
+   {
+    "faction": "fac_collar_house",
+    "office": "off_head_ebert",
+    "title": "가장 — 바알카르 수석 목줄장"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_chief_collar",
+    "title": "수석 목줄장 (바알카르)"
+   }
+  ],
   "npc_liz": [
    {
     "faction": "fac_collar_house",
@@ -433,6 +570,66 @@
     "title": "현재의 짝"
    }
   ],
+  "npc_aurelia_vesperin": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_proxy_melisande",
+    "title": "멜리산드의 대리"
+   },
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_treasury",
+    "title": "재무청장 (세렌 대출 창구)"
+   },
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_proxy",
+    "title": "다섯 의자의 대리 — 재무청장"
+   }
+  ],
+  "npc_morkan": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_guard_captain",
+    "title": "근위대장"
+   }
+  ],
+  "npc_severian_kaldaran": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_flame_steward",
+    "title": "용좌 집사 (불꽃 홀의 집사)"
+   },
+   {
+    "faction": "fac_kaldaran",
+    "office": "off_duke",
+    "title": "대공 — 용좌 집사"
+   }
+  ],
+  "npc_arden_kaldaran": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_grey_ledger",
+    "title": "회색 장부 관리관"
+   },
+   {
+    "faction": "fac_kaldaran",
+    "office": "off_ledger_heir",
+    "title": "회색 장부 관리관 (장남)"
+   }
+  ],
+  "npc_livia_kaldaran": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_flame_marshal",
+    "title": "불꽃 홀 의전관"
+   },
+   {
+    "faction": "fac_kaldaran",
+    "office": "off_ceremonial",
+    "title": "불꽃 홀 의전관 (딸)"
+   }
+  ],
   "npc_kaidor": [
    {
     "faction": "fac_drakmar_empire",
@@ -462,6 +659,13 @@
     "title": "바알카르 등잔"
    }
   ],
+  "npc_edun": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_nest_seneschal",
+    "title": "재의 둥지 시종장"
+   }
+  ],
   "npc_fizik": [
    {
     "faction": "fac_drakmar_empire",
@@ -474,16 +678,35 @@
     "title": "궁의 귀 (정보상 — 감독관 크릭)"
    }
   ],
-  "npc_aurax": [
+  "npc_volgas": [
    {
     "faction": "fac_drakmar_empire",
-    "office": "off_western_army",
-    "title": "서부군 총사령"
+    "office": "off_poll_tax",
+    "title": "인두세 총괄"
    },
    {
-    "faction": "fac_varskar_brood",
-    "office": "off_firstborn",
-    "title": "장자 (전통파 '불의 손')"
+    "faction": "fac_scale_council",
+    "office": "off_chair",
+    "title": "수석 원로 (의장) — 높은홰 가주"
+   }
+  ],
+  "npc_morna": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_state_slave_assign",
+    "title": "국유 노예 배당관"
+   },
+   {
+    "faction": "fac_scale_council",
+    "office": "off_ashwing_head",
+    "title": "재날개 둥지 가주 (영지·국유 노예 배분)"
+   }
+  ],
+  "npc_skik": [
+   {
+    "faction": "fac_drakmar_empire",
+    "office": "off_overseer_guild",
+    "title": "크릭 감독관 조합 '굽은 등' 조합장"
    }
   ],
   "npc_melisande": [
@@ -491,6 +714,11 @@
     "faction": "fac_drakmar_empire",
     "office": "off_lord_emberhills",
     "title": "잿불 언덕 화주 (영주 진룡)"
+   },
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_head",
+    "title": "진영의 머리 — 차녀 멜리산드 은비늘"
    },
    {
     "faction": "fac_varskar_brood",
@@ -505,6 +733,11 @@
     "title": "북방 국경군 사령관 (까마귀 문)"
    },
    {
+    "faction": "fac_kaspar",
+    "office": "off_kaspar_head",
+    "title": "진영의 머리 — 서자 카스파르 반비늘"
+   },
+   {
     "faction": "fac_varskar_brood",
     "office": "off_bastard",
     "title": "서자 (비인정)"
@@ -515,12 +748,27 @@
     "faction": "fac_drakmar_empire",
     "office": "off_northern_deputy",
     "title": "까마귀 문 부관"
+   },
+   {
+    "faction": "fac_kaspar",
+    "office": "off_kaspar_deputy",
+    "title": "부관"
+   },
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_spy_north",
+    "title": "북쪽 첩자 — 까마귀 문 부관"
    }
   ],
   "npc_sigmund": [
    {
     "faction": "fac_drakmar_empire",
     "office": "off_crowgate_captain",
+    "title": "까마귀 문 수비대장"
+   },
+   {
+    "faction": "fac_kaspar",
+    "office": "off_kaspar_gate",
     "title": "까마귀 문 수비대장"
    }
   ],
@@ -807,6 +1055,11 @@
     "title": "쑥 계보의 떠난 딸 (회색여울의 약초 노파)"
    },
    {
+    "faction": "fac_kaspar",
+    "office": "off_kaspar_nameless",
+    "title": "이름 없는 자들과의 끈"
+   },
+   {
     "faction": "fac_nameless",
     "office": "off_wick_greyford",
     "title": "회색여울 심지 (세포 셋을 묶는 연락책)"
@@ -924,6 +1177,13 @@
     "title": "짐 맏이 (인간, 계급 밖)"
    }
   ],
+  "npc_mariel_hastran": [
+   {
+    "faction": "fac_hastran",
+    "office": "off_south_gate",
+    "title": "남문 수비대장 (딸)"
+   }
+  ],
   "npc_gunnar": [
    {
     "faction": "fac_hundred_wins",
@@ -988,6 +1248,30 @@
     "title": "서리 와이번 교역 부족장 (외부)"
    }
   ],
+  "npc_cedric_kaldaran": [
+   {
+    "faction": "fac_kaldaran",
+    "office": "off_apprentice",
+    "title": "견습 집사 (손자)"
+   }
+  ],
+  "npc_owen_raven": [
+   {
+    "faction": "fac_kaspar",
+    "office": "off_kaspar_heir_friend",
+    "title": "변경의 동경 — 레이번 후계"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_heir",
+    "title": "후계자 (남작의 아들)"
+   },
+   {
+    "faction": "fac_raven_house",
+    "office": "off_crowgate_liaison",
+    "title": "까마귀 문 보급 연락"
+   }
+  ],
   "npc_znik": [
    {
     "faction": "fac_krik",
@@ -1017,6 +1301,11 @@
     "faction": "fac_krik",
     "office": "off_egg_nurse",
     "title": "알 보관실 시녀 (크릭, 멜리산드의 첩자)"
+   },
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_spy_egg",
+    "title": "알의 첩자 — 서리 탑 시녀"
    }
   ],
   "npc_chik": [
@@ -1128,11 +1417,71 @@
     "title": "찬송 순례자 (집합 자리, 약 600)"
    }
   ],
+  "npc_aurelia_vermion": [
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_cradle",
+    "title": "요람 행정관"
+   },
+   {
+    "faction": "fac_vermion",
+    "office": "off_countess_cradle",
+    "title": "백작부인 — 은비늘 요람 행정관"
+   }
+  ],
+  "npc_cassian_vermion": [
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_mines",
+    "title": "광산의 손 — 베르미온 백작"
+   },
+   {
+    "faction": "fac_vermion",
+    "office": "off_count",
+    "title": "백작"
+   }
+  ],
+  "npc_beatrix": [
+   {
+    "faction": "fac_melisande",
+    "office": "off_melisande_lender",
+    "title": "금고 — 세렌 의회 의장"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_chair",
+    "title": "의장"
+   },
+   {
+    "faction": "fac_seren",
+    "office": "off_seat_01_mondali",
+    "title": "제1의석 — 몬달리 (대부·채권)"
+   }
+  ],
   "npc_grey_woman": [
    {
     "faction": "fac_nameless",
     "office": "off_grey_woman",
     "title": "회색 여인 (최고 지도자)"
+   }
+  ],
+  "npc_anselma": [
+   {
+    "faction": "fac_nameless",
+    "office": "off_wick_baalkar_market",
+    "title": "바알카르 심지 (노예시장)"
+   }
+  ],
+  "npc_harald": [
+   {
+    "faction": "fac_nameless",
+    "office": "off_wick_baalkar_sewer",
+    "title": "바알카르 심지 (하수도 — 쥐들의 왕관 안)"
+   },
+   {
+    "faction": "fac_rat_crown",
+    "office": "off_tooth_forger",
+    "title": "이빨 — 위조 (인간)"
    }
   ],
   "npc_mordecai": [
@@ -1163,16 +1512,11 @@
     "title": "남작"
    }
   ],
-  "npc_owen_raven": [
+  "npc_varen_raven": [
    {
     "faction": "fac_raven_house",
-    "office": "off_heir",
-    "title": "후계자 (남작의 아들)"
-   },
-   {
-    "faction": "fac_raven_house",
-    "office": "off_crowgate_liaison",
-    "title": "까마귀 문 보급 연락"
+    "office": "off_baalkar_agent",
+    "title": "바알카르 궁정 대리"
    }
   ],
   "npc_henrik": [
@@ -1253,16 +1597,39 @@
     "title": "라미아 변호인 (면허 없음)"
    }
   ],
-  "npc_beatrix": [
+  "npc_nebra_sarkos": [
    {
-    "faction": "fac_seren",
-    "office": "off_chair",
-    "title": "의장"
-   },
+    "faction": "fac_sarkos",
+    "office": "off_countess",
+    "title": "여백작"
+   }
+  ],
+  "npc_otmar_sarkos": [
    {
-    "faction": "fac_seren",
-    "office": "off_seat_01_mondali",
-    "title": "제1의석 — 몬달리 (대부·채권)"
+    "faction": "fac_sarkos",
+    "office": "off_auctioneer",
+    "title": "쇠사슬 광장 관리인 (경매사)"
+   }
+  ],
+  "npc_isabel_sarkos": [
+   {
+    "faction": "fac_sarkos",
+    "office": "off_classifier",
+    "title": "징후자 비밀 판매 담당"
+   }
+  ],
+  "npc_grim": [
+   {
+    "faction": "fac_sarkos",
+    "office": "off_chief_overseer",
+    "title": "수석 감독관 (크릭)"
+   }
+  ],
+  "npc_irmas": [
+   {
+    "faction": "fac_scale_council",
+    "office": "off_longshadow_head",
+    "title": "긴그림자 둥지 가주 (감찰·첩보)"
    }
   ],
   "npc_ophelia": [
@@ -1326,20 +1693,6 @@
     "faction": "fac_varskar_brood",
     "office": "off_doubting_granddaughter",
     "title": "의심하는 손녀"
-   }
-  ],
-  "npc_cassian_vermion": [
-   {
-    "faction": "fac_vermion",
-    "office": "off_count",
-    "title": "백작"
-   }
-  ],
-  "npc_aurelia_vermion": [
-   {
-    "faction": "fac_vermion",
-    "office": "off_countess_cradle",
-    "title": "백작부인 — 은비늘 요람 행정관"
    }
   ],
   "npc_druss_vermion": [
@@ -1682,11 +2035,11 @@
   }
  },
  "stats": {
-  "factions": 54,
-  "offices": 635,
-  "filled": 216,
-  "npcs": 214,
-  "npcs_with_office": 145,
+  "factions": 57,
+  "offices": 659,
+  "filled": 275,
+  "npcs": 249,
+  "npcs_with_office": 174,
   "truth_holders": 62
  }
 }

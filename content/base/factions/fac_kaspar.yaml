@@ -1,0 +1,150 @@
+# 서자의 국경 — 카스파르 계승 진영. 정본: HOUSES §1.4·§2.9·§6.1·§6.2·§6.3 / WORLD_BIBLE §10 클락 1 / CHARACTERS R02-05 / fac_drakmar_empire.internal_factions
+# 기준: AS 312 낙엽월 1일. 카스파르 본인은 즉위를 원한다고 말한 적이 없다 — 진영은 그를 '해방 칙령을 할 수 있는 자리'로 보는 자들의 합이다.
+id: fac_kaspar
+name: 서자의 국경 (카스파르파)
+kind: secret
+race: [반용, 용인(비늘혈), 수인족(흰발 무리), 인간(이름 없는 자들), 페이(변덕)]
+governance: 계승 진영
+governance_note: >
+  드러난 진영이 아니다. 반용 서자는 법으로 계승 자격이 없고(반용 출산 금지의 예외로 살려졌을 뿐), 그를 지지한다는 말은 곧 반역이다.
+  그래서 진영은 서로를 다 모르는 끈들의 묶음이다 — 까마귀 문 국경군은 사령관을 따르고, 모르간트는 그를 기른 집이라 숨긴 800을 쥐고,
+  이름 없는 자들은 엘사를 통해 2년째 접촉하고, 원로회 서기장 카이도르는 '쓸 만한 대안'으로 비밀 접촉한다. 카스파르 자신은 결정하지 않는다 —
+  그것이 이 진영의 가장 큰 약점이고, 동시에 아무도 그를 먼저 죽일 명분을 갖지 못한 이유다.
+motto: "내 이름의 반은 네 것이다."   # 카스파르 충성 아크 70의 말
+seat: crow_gate        # 까마귀 문 (북방 국경 요새). 바알카르에는 자리가 없다 — 근위대장 모르칸의 빚과 의전관 리비아의 동정이 있을 뿐
+size:
+  members: "반용 1 · 북방 국경군 약 2,000 · 모르간트 백작가(비밀) · 흰발 무리 · 이름 없는 자들(비밀) · 페이 궁정(변덕)"
+  territory: "까마귀 문, 서리 길 동편 모르간트 탑과 북부 개척지 5곳"
+  wealth: "거의 없다 — 국경군 보급은 용좌 직속, 늘 모자라다(카스파르가 귀리를 사비로 산다)"
+  force: "북방 국경군 약 2,000, 모르간트의 창 400과 은닉 탈주자 800, 흰발 무리 정찰"
+offices:
+  - id: off_kaspar_head
+    title: 진영의 머리 — 서자 카스파르 반비늘
+    holder: npc_kaspar
+    reports_to: null
+    powers: ["북방 국경군", "해방 칙령의 가능성 — 그것만이 진영의 이유"]
+    chosen_by: "아무도 고르지 않았다. 그는 아직 원한다고 말하지 않았다"
+    perks: ["까마귀 문", "물빼기 굴 — 알면서 막지 않는 통로"]
+  - id: off_kaspar_deputy
+    title: 부관
+    holder: npc_lea
+    reports_to: off_kaspar_head
+    powers: ["보급 회의 보좌", "사령관의 일정"]
+    chosen_by: "사령관의 신임"
+    perks: []
+    note: "멜리산드의 첩자 (fac_melisande off_melisande_spy_north). 진영의 가장 깊은 구멍"
+  - id: off_kaspar_gate
+    title: 까마귀 문 수비대장
+    holder: npc_sigmund
+    reports_to: off_kaspar_head
+    powers: ["북문 수비"]
+    chosen_by: "국경군 서열"
+    perks: []
+    note: "아우락스 가문과의 끈이 있다 (fact_gb_sigmund_aurax_house)"
+  - id: off_kaspar_nameless
+    title: 이름 없는 자들과의 끈
+    holder: npc_elsa
+    reports_to: off_kaspar_head
+    powers: ["탈주자 수송을 눈감는 약속", "회색 여인에게 닿는 길"]
+    chosen_by: "엘사가 그를 받아낸 산파다"
+    perks: []
+    note: "공개되지 않은 자리 (fact_gf_kaspar_nameless_contact)"
+  - id: off_kaspar_morgant
+    title: 기른 집 — 모르간트 백작가
+    holder: "unnamed:에드윈 모르간트 — 백작, 122세 / 대모 게르트루드 (290)"   # TODO-NPC (fac_morgant off_count / off_matriarch)
+    reports_to: off_kaspar_head
+    powers: ["은닉 탈주자 800, 창 400", "게르트루드의 증언(엘레나) → 지지 +3"]
+    chosen_by: "카스파르를 기른 집"
+    perks: []
+  - id: off_kaspar_heir_friend
+    title: 변경의 동경 — 레이번 후계
+    holder: npc_owen_raven
+    reports_to: off_kaspar_head
+    powers: ["레이번의 표(1~2) — 고드릭이 죽거나 빚이 풀리면"]
+    chosen_by: "동경 (+70 — 행렬 예외)"
+    perks: []
+  - id: off_kaspar_court_door
+    title: 궁정의 문 (공석)
+    holder: null       # 모르칸 쇠비늘(근위대장)은 엘레나에게 빚이 있으나 편을 들지 않는다. 리비아 칼다란은 동정할 뿐. 카이도르는 '대안'으로 접촉 중. 이 자리가 채워지면 근위대가 계승의 밤 움직이지 않는다
+    reports_to: off_kaspar_head
+    powers: ["계승의 밤 근위대를 막사에 묶는다 (fact_bk_morkan_stand_still)"]
+    chosen_by: "엘레나의 빚 — 머리핀이 전해지는 날"
+    perks: []
+ranks:
+  - {id: rank_kas_officer, title: "국경군 장교", duties: "북문", privileges: "사령관의 식탁", open_to_player: false}
+  - {id: rank_kas_ally, title: "숨은 동맹 (가문·결사)", duties: "표·병력·정보", privileges: "해방 칙령의 약속", open_to_player: false}
+  - {id: rank_kas_porter, title: "국경의 인간 (짐꾼·탈주자)", duties: "견딘다", privileges: "물빼기 굴", open_to_player: true, condition: "까마귀 문 짐꾼 징발(푸른월) 또는 탈주자로 북문에 닿을 것"}
+decision: "결정하는 자가 없다. 카스파르가 움직이지 않는 동안 각 끈이 따로 움직인다 — 그것을 하나로 묶는 것이 주인공이 할 수 있는 일이다."
+succession: "카스파르가 죽으면 진영은 사라진다. 이름 없는 자들은 다른 '자리'를 찾고, 모르간트는 800을 북쪽으로 보낸다."
+law:
+  crimes:
+    - {act: "카스파르를 '잡종'이라 부른다", punishment: "국경군 안에서는 맨주먹", note: "그의 역린"}
+    - {act: "그의 불을 목격했음을 떠벌린다", punishment: "AS 309 막사 화재 — 은폐", note: "fact_gf_kaspar_fire_309"}
+customs:
+  greeting: "국경군식 — 손목을 맞잡는다. 노예말을 아는 사령관(fact_gf_kaspar_slave_tongue)"
+  taboos: ["어머니를 노예로 낮추는 말", "즉위를 그의 앞에서 말하는 것"]
+  rites: []
+  speech: "짧은 군대 말. 인간에게도 직접 말한다 — 제국에서 그만 그렇다."
+membership:
+  join: "끈 하나가 되는 것 — 탈주자 하나를 넘기지 않거나, 엘레나의 이야기를 가져오거나"
+  leave: "배신 (레아처럼)"
+  signs: ["없다 — 표가 있으면 죽는다"]
+internal_factions:
+  - {name: "국경군", leader: npc_kaspar, aim: "병사들의 목숨. 겨울을 넘기는 것", strength: 45}
+  - {name: "기른 집 (모르간트)", leader: null, aim: "800을 지키는 것. 엘레나에 대해 아는 것을 말할 때를 기다린다", strength: 25}
+  - {name: "등잔 (이름 없는 자들)", leader: npc_grey_woman, aim: "해방 칙령의 자리 — 찬가 단계와 함께 지지가 오른다(최대 8)", strength: 20}
+  - {name: "변덕 (페이·흰발)", leader: null, aim: "재미, 또는 국경 정찰", strength: 10}
+assets:
+  - "까마귀 문과 물빼기 굴"
+  - "모르간트의 800과 창 400"
+  - "엘레나의 머리핀 (모르칸의 갑옷 안에) · 엘레나의 무덤 자리 (노라의 기억)"
+  - "이졸데와의 비밀 서신 두 번 · 카이도르의 비밀 접촉"
+secrets:
+  - {fact: fact_gf_kaspar_nameless_contact, known_by_rank: rank_kas_ally}
+  - {fact: fact_gf_kaspar_fire_309, known_by_rank: rank_kas_officer}
+  - {fact: fact_dk_isolde_kaspar_letters, known_by_rank: rank_kas_ally}
+  - {fact: fact_dk_kaidor_kaspar_contact, known_by_rank: rank_kas_ally}
+  - {fact: fact_bk_morkan_elena_debt, known_by_rank: rank_kas_ally}
+  - {fact: fact_bk_morkan_stand_still, known_by_rank: rank_kas_ally}
+  - {fact: fact_bk_livia_opened_door, known_by_rank: rank_kas_ally}
+  - {truth: T03, level: rumor, holders: [off_kaspar_head]}
+relations:
+  # HOUSES §6.1 행렬 — 카스파르파 행
+  - {to: fac_aurax, stance: -80, note: "행렬"}
+  - {to: fac_melisande, stance: -50, note: "행렬"}
+  - {to: fac_eldar, stance: -10, note: "행렬"}
+  - {to: fac_nocturne, stance: -20, note: "행렬"}
+  - {to: fac_durgan, stance: 20, note: "행렬"}
+  - {to: fac_seren, stance: 0, note: "행렬 — 계약민 시민권을 약속하면 의회가 흔들린다"}
+  - {to: fac_jotun, stance: -30, note: "행렬 — 흐림니르의 비밀 사신 구상"}
+  - {to: fac_grom, stance: -10, note: "행렬"}
+  - {to: fac_light, stance: 0, note: "행렬"}
+  - {to: fac_nameless, stance: 40, note: "행렬"}
+  - {to: fac_collar, stance: -40, note: "행렬"}
+  - {to: fac_ashen_tower, stance: -30, note: "행렬"}
+  - {to: fac_barg, stance: -60, note: "행렬"}
+  - {to: fac_swamp_hags, stance: 20, note: "행렬"}
+  - {to: fac_scale_council, stance: -50, note: "행렬 밖 — 원로회가 카스파르파를 보는 값(−50)의 대칭 가정. 서기장 카이도르만 예외(비밀 접촉)"}
+support:
+  # HOUSES §6.3 — 귀족 지지율(%). 합 9
+  - {who: fac_drakmar_empire, points: 4, note: "까마귀 문 북방 국경군 (off_northern_army)", flips_if: "레아의 공작 → −2"}
+  - {who: fac_morgant, points: 2, note: "비밀", flips_if: "게르트루드의 증언(엘레나) → +3"}
+  - {who: fac_beastkin, points: 1, note: "흰발 무리"}
+  - {who: fac_nameless, points: 1, note: "비밀. 최대 8", flips_if: "찬가 3단계 이상 +3, 봉기 성공마다 +2"}
+  - {who: fac_fae, points: 1, note: "'재미있으니까'", flips_if: "여왕이 지루해지면 0"}
+toward_echo: "불명 — 같은 '잡종'으로서의 동질감, 또는 이용. 어머니의 마지막 말 '너는 끝나지 않을 것이다'가 금기의 문구라는 것은 안다. 잔향의 정체가 공개되면 이름 없는 자들을 통해 지지 +4."
+player_paths:
+  - "끈을 묶기 — 국경군·모르간트·이름 없는 자들·원로회 서기장의 접촉을 한 장면으로"
+  - "엘레나 — 노라의 무덤 자리, 모르칸의 머리핀, 게르트루드의 증언. 셋이 모이면 카스파르가 처음으로 '원한다'고 말한다"
+  - "레아를 드러내기 — 진영의 가장 깊은 구멍을 막는다 (−2를 되돌린다)"
+  - "레이번의 표 — 오웬이 가주가 되면"
+regression:
+  fixed:
+    - "지지율 9 — 회귀점의 값"
+    - "레아는 첩자다. 카스파르는 모른다"
+    - "엘레나의 머리핀은 모르칸에게, 무덤 자리는 노라에게"
+  flow:
+    - "매달 15일 회색여울 보급 회의 — 돌 고리의 전갈"
+  drift:
+    - "카이도르의 접촉이 오는 달"
+    - "모르간트가 800 중 몇을 서리 길로 보내는지"

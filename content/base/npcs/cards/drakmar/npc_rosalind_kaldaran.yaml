@@ -1,0 +1,86 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-09
+id: "npc_rosalind_kaldaran"
+name: "로잘린드 칼다란"
+aka: ["대공비", "하스트란의 딸"]
+tier: B
+type: living
+race: "용인"
+subrace: "순혈"
+sex: "여"
+age: 251
+region: 드라크마르 용좌령
+home: "비늘 언덕 칼다란 관저"
+job: "칼다란 대공비"
+rank: "하스트란 후작가 출신 — 칼다란-하스트란 혼인 2대째"
+summary: "남편보다 강경하다. 남편 몰래 아우락스와 직접 서신을 주고받으며 서약 단상 여는 날을 앞당기려 한다"
+source: docs/world/people/baalkar.md:515
+life:
+  - {year: 61, age: 0, event: "하스트 요새에서 하스트란 후작가의 딸로 태어남. 발레리우스의 사촌 누이"}
+  - {year: 252, age: 191, event: "세베리안과 혼인. 칼다란-하스트란 혼인 2대째"}
+  - {year: 311, age: 250, event: "붉은 홀로 첫 서신을 보냈다. 답장은 드라반이 직접 날라 왔다"}
+appearance:
+  - "검은 바탕에 은 창 둘 — 하스트란 문장을 아직 단다"
+  - "턱이 각지고 목소리가 크다"
+  - "손등에 서약 흉터 넷"
+smell: "말 가죽과 철"
+voice_sound: "크고 단호하다. 하스트란 기사의 어투가 남았다"
+personality:
+  disposition: {용기: 50, 자비: -50, 정직: 10, 신앙: 40, 탐욕: 20, 충성: 60}
+  temperament: ["강경", "조급"]
+  habits:
+    - "저녁 식탁에서 남편의 잔이 비기 전에 단상 날짜를 묻는다"
+  values: "꺾이지 않으면 부러뜨린다"
+  fears: ["멜리산드 즉위"]
+  desires:
+    short: "서약 단상을 서리월 안에 아우락스에게 여는 것"
+    long: "하스트란과 칼다란이 붉은 용 아래 하나가 되는 것"
+voice:
+  register:
+    to_superior: "하십시오체, 군대식"
+    to_equal: "하오체, 단호"
+    to_inferior: "명령"
+    to_player_default: "인간을 보지 않는다"
+  tics: ["'언제요?'"]
+  use: ["단상", "날짜", "꺾다"]
+  avoid: ["기다림"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "(시종에게) 저것을 내보내라. 냄새가 난다."}
+    - {situation: "호의", line: "쓸 만하면 하스트 요새로 보내라. 방패 노예는 늘 모자란다."}
+    - {situation: "적대", line: "남편은 기다리는 사람이다. 나는 아니다."}
+    - {situation: "비밀 누설", line: "붉은 홀 답장은 드라반이 날라 왔다. 날개 바람에 정원 나무가 다 쓰러졌지."}
+schedule:
+  아침: "관저 — 하스트란 서신"
+  낮: "비늘 언덕 가문 부인들 방문"
+  저녁: "남편과 만찬 — 단상 날짜를 묻는다"
+  밤: "관저"
+places: ["칼다란 관저", "하스트란 저택"]
+knows: ["fact_dk_aurax_purge_plan"]
+hides:
+  - fact: fact_bk_rosalind_letters
+    reveal_when: "서신을 훔쳐 오거나 세드릭이 일러바칠 때"
+    cover: "'친정에 보내는 편지요'"
+relations:
+  - {to: "npc_severian_kaldaran", type: "남편", like: 0, trust: 10, visibility: "공개", memo: null, words: "기다리는 사람. 기다리다 단상을 빼앗길 사람"}
+  - {to: "npc_aurax", type: "비밀 서신", like: 60, trust: 40, visibility: "비밀", memo: null, words: "부러뜨리는 분. 하스트란의 피가 섬기는 불"}
+  - {to: "npc_valerius_hastran", type: "사촌 오라비", like: 30, trust: 30, visibility: "공개", memo: null, words: "불을 끄고 자는 노인. 하스트란이 왜 그렇게 늙었는지"}
+toward_player: "보지 않는다"
+persuade:
+  likes: ["아우락스를 돕는 일"]
+  hates: ["기다리라는 말"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "아우락스와 비밀 서신을 주고받는다"
+  deja_vu: none
+hard_rules:
+  - "인간에게 직접 말하지 않는다"
+on_death: "칼다란 안의 강경파 약화 — 단상이 늦어진다"
+story_seeds:
+  - "그녀의 서신을 가로채 세베리안에게 보이면 대공이 아우락스에게서 한 걸음 물러선다"
+affiliations:
+  - {faction: "fac_kaldaran", rank: null, office: "off_duchess", since: 252, loyalty: 50, public: true, cell: null}
+truths: []

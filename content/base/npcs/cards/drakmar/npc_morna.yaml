@@ -1,0 +1,87 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-13
+id: "npc_morna"
+name: "모르나 재날개"
+aka: ["배당관", "재날개 원로"]
+tier: B
+type: living
+race: "와이번"
+subrace: "왕관 와이번"
+sex: "암컷"
+age: 280
+region: 드라크마르 용좌령
+home: "바알카르 홰탑 '재날개 홰'"
+job: "국유 노예 배당관, 재날개 둥지 가주 (원로)"
+rank: "왕관 와이번 원로 — 원로석 1"
+summary: "국유 노예를 각 영지에 배당한다. 레이번의 농노 400 명부도 그녀의 방에서 나왔고, 고드릭이 판 37명도 이미 안다"
+source: docs/world/people/baalkar.md:516
+life:
+  - {year: 32, age: 0, event: "재날개 둥지의 알에서 부화"}
+  - {year: 250, age: 218, event: "재날개 가주이자 배당관. 레이번 배당 명부를 이어받았다"}
+  - {year: 312, age: 280, event: "낙엽월 1일 기준 — 고드릭의 37명을 알고 있다. 멜리산드에 동정적"}
+appearance:
+  - "잿빛 날개 한 쌍에 쇠사슬 문장"
+  - "뿔 끝에 작은 쇠고리 다섯 — 배당 영지 다섯의 표"
+  - "말할 때 날개를 반쯤 편다"
+smell: "재와 양피지"
+voice_sound: "건조하고 높다"
+personality:
+  disposition: {용기: 0, 자비: -30, 정직: -20, 신앙: -20, 탐욕: 40, 충성: 40}
+  temperament: ["계산", "인내"]
+  habits:
+    - "배당 명부를 발톱으로 한 장씩 넘기며 '끈'이라고 중얼거린다"
+  values: "배당은 끈이다. 끈을 쥔 자가 영주를 움직인다"
+  fears: ["아우락스가 배당권을 군에 넘기는 것"]
+  desires:
+    short: "회색여울을 오르셀 가에 넘기는 칙령"
+    long: "멜리산드 즉위 후 배당권을 둥지 세습으로"
+voice:
+  register:
+    to_superior: "서기 대독"
+    to_equal: "하오체"
+    to_inferior: "서기를 통해서만"
+    to_player_default: "명부 속 번호로 본다"
+  tics: ["'끈.'"]
+  use: ["끈", "배당", "명부", "몰수"]
+  avoid: ["도마뱀"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "(서기) '기록에 의하면 너는 레이번 배당분이다.' …끈 끝에 매달린 것."}
+    - {situation: "호의", line: "쓸모 있는 명부 하나를 가져왔군. 끈이 하나 늘었다."}
+    - {situation: "적대", line: "영지 하나 몰수하는 데 칙령 한 줄이다. 너 하나는 줄도 필요 없다."}
+    - {situation: "비밀 누설", line: "서른일곱. 남작은 내가 모른다고 믿지. 끈은 당기기 전까지 보이지 않는 법이다."}
+schedule:
+  아침: "재날개 홰 — 배당 명부"
+  낮: "홰의 회랑"
+  저녁: "재날개 홰"
+  밤: "홰"
+places: ["재날개 홰", "홰의 회랑"]
+knows: ["fact_gf_godric_sold_37"]
+hides:
+  - fact: fact_bk_morna_raven_leash
+    reveal_when: "멜리산드파 정보를 대가로 줄 때, 또는 신뢰 30"
+    cover: "'배당 명부는 원로회의 일이다'"
+relations:
+  - {to: "npc_godric_raven", type: "끈에 매단 영주", like: -20, trust: -40, visibility: "일방", memo: "37명", words: "빚진 남작. 당기기만 하면 떨어진다"}
+  - {to: "npc_melisande", type: "동정", like: 30, trust: 20, visibility: "비밀", memo: null, words: "숫자를 아는 은룡. 배당권을 존중할 진룡"}
+  - {to: "npc_volgas", type: "의장", like: 10, trust: 20, visibility: "공개", memo: null, words: "늙은 홰. 내 끈을 자기 장부에 매고 싶어 한다"}
+toward_player: "명부의 번호로 본다"
+persuade:
+  likes: ["멜리산드파 정보", "배당 명부의 오류"]
+  hates: ["'도마뱀'"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "고드릭의 37명을 안다"
+  deja_vu: none
+hard_rules:
+  - "인간에게 서기를 통해서만 말한다"
+on_death: "배당권 다툼 — 고드릭에 대한 끈 하나가 사라진다"
+story_seeds:
+  - "회색여울 몰수 칙령의 초안이 재날개 홰에 있다 — 날짜만 비어 있다"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_crown_elder", office: "off_state_slave_assign", since: 250, loyalty: 40, public: true, cell: null}
+  - {faction: "fac_scale_council", rank: null, office: "off_ashwing_head", since: 250, loyalty: 50, public: true, cell: null}
+truths: []

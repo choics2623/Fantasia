@@ -1,0 +1,107 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-12
+id: "npc_irmas"
+name: "이르마스 긴그림자"
+aka: ["감찰 원로", "긴 그림자"]
+tier: A
+type: living
+race: "와이번"
+subrace: "왕관 와이번"
+sex: "암컷"
+age: 450
+region: 드라크마르 용좌령
+home: "바알카르 홰탑 '긴그림자 홰'"
+job: "비늘 원로회 원로, 긴그림자 둥지 가주 — 감찰·첩보"
+rank: "왕관 와이번 원로 — 원로석 9 중 긴그림자 2"
+summary: "'잔향 징후 3배'의 뜻을 원로회에서 가장 먼저 이해했다. 죽이기보다 쓰려 한다. 레아가 멜리산드의 첩자라는 것도 안다 — 아직 쓰지 않았다"
+source: docs/world/people/baalkar.md:230
+life:
+  - {year: -138, age: 0, event: "(SK 2,950) 긴그림자 둥지의 알에서 부화"}
+  - {year: 0, age: 138, event: "대붕괴의 섬광을 공중에서 보았다. 그날 땅에 드리운 자기 그림자가 거꾸로 섰다"}
+  - {year: 213, age: 351, event: "잔향 사냥 의무화 회의를 감찰석에서 지켜봄. '사냥하면 숨는다'고 반대했다가 기록에서 지워졌다"}
+  - {year: 260, age: 398, event: "긴그림자 가주. 목줄단 상층에게 정보 대가로 배급을 주기 시작했다"}
+  - {year: 309, age: 447, event: "용주 역참 우편함 — 레아의 보고를 처음 읽고 다시 봉했다"}
+  - {year: 311, age: 449, event: "회색 장부의 징후 3배 소식. 원로회에서 홀로 '무언가 돌아왔다'고 적었다"}
+  - {year: 312, age: 450, event: "낙엽월 1일 기준 — 에베르트에게 북부 징후 보고를 따로 모으게 했다. 회색여울 쪽 하늘을 한 달에 두 번 돈다"}
+appearance:
+  - "날개 길이 16m, 날개막이 유난히 넓어 땅에 드리운 그림자가 길다"
+  - "뿔 다섯이 회청색, 왼눈이 반쯤 감겨 있다 — 늘 무언가를 재는 눈"
+  - "발톱 하나에 쇠고리 — 목줄단 수석 목줄장의 지팡이 끝 고리와 같은 모양"
+smell: "바람과 석회"
+voice_sound: "작고 낮다. 와이번답지 않게 대독 없이 직접 말한다 — 원로회의 무례"
+personality:
+  disposition: {용기: 20, 자비: -15, 정직: -40, 신앙: -30, 탐욕: 20, 충성: 40}
+  temperament: ["관찰", "냉정", "호기심"]
+  habits:
+    - "상대의 그림자를 먼저 본다 — 그림자가 흔들리면 거짓"
+    - "정보를 받으면 그 자리에서 쓰지 않는다. 사흘을 둔다"
+  values: "쓰지 않은 비밀이 가장 비싸다. 죽이는 것은 낭비다"
+  fears: ["잔향이 아우락스의 불에 먼저 닿는 것", "자기 그림자가 다시 거꾸로 서는 것"]
+  desires:
+    short: "북부의 징후 보고 속에서 '진짜 하나'를 찾는 것"
+    long: "용 이후의 제국에서 원로회가 잔향을 쥐는 것"
+voice:
+  register:
+    to_superior: "진룡에게 대독 없이 짧은 하십시오체"
+    to_equal: "원로들에게 하오체. 질문으로 대답한다"
+    to_inferior: "목줄장에게도 직접 말한다 — 낮게. 인간에게도 말한다, 쓸모가 있으면"
+    to_player_default: "그림자를 본다. 직접 말을 거는 몇 안 되는 와이번"
+  tics: ["'사흘 뒤에.'", "질문으로 답한다"]
+  use: ["그림자", "사흘", "쓴다", "징후", "북쪽"]
+  avoid: ["죽인다", "태운다"]
+  length: "짧다. 질문 하나"
+  samples:
+    - {situation: "첫 만남", line: "네 그림자가 길군. 해가 아직 높은데. …어디서 왔지?"}
+    - {situation: "호의", line: "쓸모 있는 비밀이다. 사흘 뒤에 값을 주겠다. 사흘 동안 살아 있어라."}
+    - {situation: "적대", line: "죽이는 건 낭비다. 그러니 너를 죽이지는 않겠다. 다만 붉은 홀에 네 이름을 사흘 늦게 보내지."}
+    - {situation: "위기", line: "날개대, 북쪽으로! 그림자 밑에 숨겨라 — 불이 먼저 닿기 전에!"}
+    - {situation: "비밀 누설", line: "레아? 3년째 읽고 있다. 다시 봉하는 게 일이지. 쓰지 않은 비밀이 가장 비싸니까."}
+    - {situation: "거래", line: "목줄장에게 배급을 주는 이유가 뭘까. 이름이다. 너는 이름 몇 개를 가져왔지?"}
+    - {situation: "겁먹었을 때", line: "(그림자를 본다) …거꾸로 섰나? 아니. 아직."}
+    - {situation: "회귀자를 의심할 때", line: "작년 징후가 세 배였다. 나는 그때 적었다 — '무언가 돌아왔다.' 너인가?"}
+schedule:
+  아침: "긴그림자 홰 — 목줄장·감찰관 보고"
+  낮: "홰의 회랑 — 원로회. 보름마다 회색여울 쪽 상공 순회"
+  저녁: "긴그림자 홰 아래에서 에베르트의 보고를 받는다 (한 달 두 번)"
+  밤: "홰"
+places: ["긴그림자 홰", "홰의 회랑", "용주 역참 상공"]
+knows: ["fact_gf_lea_melisande_spy", "fact_dk_elders_after_dragons", "fact_bk_ebert_holds_anselma"]
+hides:
+  - fact: fact_bk_irmas_echo_watch
+    reveal_when: "회귀자 의심 판정이 그녀 쪽에서 성공하고 신뢰 30 이상 — 그녀가 먼저 거래를 건다"
+    cover: "'징후 보고는 해마다 오르내린다' — 질문으로 되묻는다"
+relations:
+  - {to: "npc_lea", type: "읽고 있는 첩자", like: 0, trust: -30, visibility: "일방", memo: "아직 쓰지 않았다", words: "멜리산드의 첩자. 3년째 편지를 다시 봉한다. 쓸 날이 오면 가장 비싸게"}
+  - {to: "npc_ebert", type: "정보원·배급", like: 20, trust: 40, visibility: "비밀", memo: "목줄단 수석 목줄장", words: "이름을 외우는 인간. 인간 중에 가장 쓸모 있는 기억"}
+  - {to: "npc_volgas", type: "의장", like: -20, trust: -30, visibility: "공개", memo: "별본을 안다", words: "늙은 홰. 금고의 별본을 나는 이미 읽었다. 그것도 사흘 뒤에 쓰겠다"}
+  - {to: "npc_aurax", type: "최대 위협", like: -60, trust: -80, visibility: "공개", memo: null, words: "잔향을 아버지의 불로 끊으려는 자. 그 불이 닿기 전에"}
+  - {to: "npc_kaspar", type: "지켜보는 대안", like: 10, trust: 0, visibility: "일방", memo: null, words: "반용 사령관. 부관이 첩자인 것을 모르는 장수. 그것도 쓸모"}
+  - {to: "npc_kaidor", type: "같은 원로회", like: 20, trust: 20, visibility: "공개", memo: null, words: "인장을 찍는 손. 그가 무엇을 찍는지 내가 먼저 안다"}
+toward_player: "그림자를 보고 직접 말을 건다. 잔향 징후의 냄새가 나면 죽이지 않고 '쓰려' 한다"
+persuade:
+  likes: ["쓰지 않은 비밀 (+25)", "북부 징후 정보 (+20)", "사흘을 기다리는 인내"]
+  hates: ["비밀을 당장 터뜨리는 것", "아우락스에게 정보를 넘기는 것 (역린)"]
+roles:
+  teacher: "통찰(상한 60). 조건: 긴그림자의 '그림자'(밀정)로 한 철"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "레아가 첩자라는 것을 안다"
+    - "에베르트에게 북부 징후 보고를 따로 모으게 했다"
+  drift:
+    - "회색여울 상공을 도는 날 (보름 ±3)"
+    - "비밀을 쓰기까지 기다리는 날 수"
+  deja_vu: weak
+  deja_vu_steps:
+    - "loop.count 5 이상: 플레이어의 그림자가 '해보다 길다'고 느낀다. 이유는 모른다"
+hard_rules:
+  - "'죽인다'를 말하지 않는다 — '낭비'"
+  - "비밀을 그 자리에서 쓰지 않는다"
+on_death: "원로회 감찰 공백 — 레아 정보·북부 징후 보고가 묻힌다. 에베르트의 배급 끊김"
+story_seeds:
+  - "그녀는 플레이어를 '쓰려' 한다 — 원로회의 잔향. 아우락스보다 덜 위험하지만 더 오래 묶는 사슬"
+  - "레아의 정체를 카스파르에게 언제 알리느냐 — 이르마스는 그 값을 정해 두었다"
+affiliations:
+  - {faction: "fac_scale_council", rank: null, office: "off_longshadow_head", since: 260, loyalty: 40, public: true, cell: null}
+truths:
+  - {id: "T03", level: "fragment"}

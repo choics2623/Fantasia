@@ -1,0 +1,166 @@
+# 불의 손 — 아우락스 계승 진영. 정본: HOUSES §1.4·§6.1·§6.2·§6.3 / WORLD_BIBLE §10 클락 1 / fac_drakmar_empire.internal_factions / fac_varskar_brood.internal_factions
+# 기준: AS 312 낙엽월 1일. 바알카르 쪽 인물: docs/world/people/baalkar.md. 자리의 holder는 카드의 affiliations와 맞춘다 (tools/link_world.py --sync-from-cards).
+id: fac_aurax
+name: 불의 손 (아우락스파 — 전통파)
+kind: polity
+race: [용족(진룡), 용인(순혈·비늘혈), 바르그(공인 조합), 크릭(채찍손 길드), 그롬(용병)]
+governance: 계승 진영
+governance_note: >
+  진영은 국가가 아니라 '다음 용황'에 거는 판돈이다. 아우락스 한 몸의 뜻이 곧 진영의 뜻이고, 나머지는 그 뜻에 값을 얹은 가문들이다.
+  결정은 붉은 홀(궁 동익)의 아침 접견과 저녁 연회에서 나고, 집행은 서부군(하스트란 비늘기사단)·재송곳 기사단·드라반의 불이 한다.
+  다섯 불의 의자에서는 브라넉 재송곳이 표를 들고, 재상 세베린 타르굴이 '중립'의 얼굴로 두 번째 표를 숨긴다.
+motto: "아버지의 불로."
+seat: baalkar          # 바알카르 불꽃 홀 '붉은 홀'(bk_hall_red_hall) · 거성 붉은 첨탑(red_spire)
+size:
+  members: "진룡 3(아우락스·드라반·세라크 — 세라크는 흔들림) · 녹옥 혈통 베릴라(대룡 1) · 용인 대가문 다수(칼다란·하스트란·그라넥·사르코스·타르비엔)"
+  territory: "붉은 첨탑과 잿불 길, 하스트 요새(용의 대로 남부), 그라넥 평원, 바알카르 동익"
+  wealth: "발레리우스 화염문의 금, 그라넥 곡물, 사르코스 자금, 세렌 의회 일부(+30)"
+  force: "서부군 — 비늘기사단 600 + 징집병 8,000(하스트란), 재송곳 기사단, 바르그 조합 추적대, 그롬 용병(해골이빨·피도끼), 붉은 용 셋"
+offices:
+  - id: off_aurax_head
+    title: 진영의 머리 — 장자 아우락스 붉은턱
+    holder: npc_aurax
+    reports_to: null
+    powers: ["진영의 뜻", "서부군 총사령", "붉은 홀 접견 — 가주들의 표를 받는 자리"]
+    chosen_by: "불의 계승 — 장자. 스스로 쥔다"
+    perks: ["붉은 홀", "붉은 첨탑", "날개 새김 4,000"]
+  - id: off_aurax_proxy
+    title: 다섯 의자의 대리
+    holder: npc_branek
+    reports_to: off_aurax_head
+    powers: ["다섯 불의 의자에서 아우락스의 표", "잔향 징후자 색출 (바알카르 분소)"]
+    chosen_by: "아우락스의 지명"
+    perks: ["재송곳 기사단 인장"]
+  - id: off_aurax_executor
+    title: 집행자 — 아버지의 불
+    holder: npc_dravan
+    reports_to: off_aurax_head
+    powers: ["징후자 화형", "재 마당에 내려앉는다"]
+    chosen_by: "아우락스의 위임 (AS 213)"
+    perks: ["진룡이 직접 불을 뿜는 처형"]
+  - id: off_aurax_hidden_vote
+    title: 숨은 표 — 중립의 얼굴을 한 의장
+    holder: npc_severin_targul
+    reports_to: off_aurax_head
+    powers: ["다섯 의자 의장", "맹약회의 수석 대표 안건 상정", "비늘 시장"]
+    chosen_by: "AS 311 붉은 홀 밀약 (값으로 맺음)"
+    perks: ["즉위 시 재상직 유지, 시장 독점 연장"]
+    note: "공개되지 않은 자리. fact_bk_severin_aurax_pact"
+  - id: off_aurax_shield
+    title: 방패 — 비늘기사단 단장
+    holder: npc_valerius_hastran
+    reports_to: off_aurax_head
+    powers: ["비늘기사단 600, 징집병 8,000", "용황 사망 시 남문·쇠사슬 광장 장악 (동원 대기령)"]
+    chosen_by: "하스트란 가의 대대 비늘 서약"
+    perks: []
+  - id: off_aurax_purse
+    title: 금고 — 화염문 저택
+    holder: npc_valerius
+    reports_to: off_aurax_head
+    powers: ["진영 자금 송금"]
+    chosen_by: "가주의 선택"
+    perks: []
+  - id: off_aurax_hounds
+    title: 사냥개 — 공인 노예사냥 조합
+    holder: npc_volk
+    reports_to: off_aurax_head
+    powers: ["추적·치안", "카스파르 암살 의뢰(비밀)"]
+    chosen_by: "조합의 후원 관계 (사르코스 로비)"
+    perks: ["검문 면제"]
+  - id: off_aurax_dais_letter
+    title: 단상의 서신 — 칼다란 대공비
+    holder: npc_rosalind_kaldaran
+    reports_to: off_aurax_head
+    powers: ["서약 단상을 앞당길 칼다란 안의 목소리"]
+    chosen_by: "비밀 서신 (AS 311~)"
+    perks: []
+ranks:
+  - {id: rank_aurax_dragon, title: "붉은 피 (진룡)", duties: "불", privileges: "진영의 결정", open_to_player: false}
+  - {id: rank_aurax_house, title: "서약 가문 가주", duties: "표·금·병력", privileges: "즉위 후의 자리", open_to_player: false}
+  - {id: rank_aurax_knight, title: "재송곳·비늘 기사", duties: "색출·집행", privileges: "징후자 명단", open_to_player: false}
+  - {id: rank_aurax_hand, title: "손 (밀고자·사냥꾼·용병)", duties: "이름을 가져온다", privileges: "현상금", open_to_player: true, condition: "징후자 하나를 넘길 것 — 주인공에게는 가장 위험한 입문"}
+decision: "아우락스가 붉은 홀에서 정한다. 가주들은 아침 접견에서 표의 값을 말하고, 저녁 연회에서 그 값이 받아들여졌는지 안다."
+succession: "아우락스가 죽으면 진영은 드라반에게 넘어간다 — 정치 판단이 흐려지고 화형은 늘어난다. 세라크가 아버지를 의심하는 정도가 진영의 균열선이다."
+law:
+  crimes:
+    - {act: "징후자를 숨긴다", punishment: "가족 전원 화형", note: "재송곳 기사단"}
+    - {act: "아우락스 앞에서 '도둑'·'역린'·'잃었다'", punishment: "즉사 가능", note: "용족 금기"}
+    - {act: "반용을 '형제'라 부른다", punishment: "가문 강등", note: "카스파르는 표적"}
+customs:
+  greeting: "붉은 홀에서는 무릎을 꿇고 아우락스의 날개 새김 수를 말한다(4,000). 가주는 비늘 서약의 상처를 보인다."
+  taboos: ["세라크의 감은 눈을 말하는 것", "대붕괴의 순서를 묻는 것"]
+  rites: [{name: "붉은 홀 노예 경기", when: "저녁마다", what: "연회 — 인간 노예 경기를 본다"}]
+  speech: "군대식 하십시오체. 불·끊는다·정화. 인간은 '재'라 부른다."
+membership:
+  join: "비늘 서약 또는 붉은 홀 접견에서 표를 내는 것"
+  leave: "불"
+  signs: ["붉은 발톱 문양", "재송곳 단검"]
+internal_factions:
+  - {name: "불꽃 (드라반·브라넉·재송곳 기사단)", leader: npc_dravan, aim: "징후자 화형 — 아버지의 불을 의심하지 않는다", strength: 40}
+  - {name: "질서 (칼다란·타르굴)", leader: npc_severian_kaldaran, aim: "질서 있는 공포. 아우락스를 고르되 칼다란·타르굴의 조건으로", strength: 30}
+  - {name: "기사 (하스트란)", leader: npc_valerius_hastran, aim: "대대의 서약. 그러나 단장은 그날 무엇을 보았는지 안다", strength: 20}
+  - {name: "의심 (세라크)", leader: npc_serak, aim: "아버지가 숨기는 대붕괴의 진실을 확인 — 진영 안의 첫 균열", strength: 10}
+assets:
+  - "붉은 첨탑·붉은 홀, 서부군"
+  - "재송곳 기사단 징후자 명단 (바알카르 63)"
+  - "발레리우스 화염문의 금, 그라넥 곡물"
+  - "세베린 타르굴과의 밀약"
+secrets:
+  - {fact: fact_dk_aurax_purge_plan, known_by_rank: rank_aurax_dragon}
+  - {fact: fact_dk_aurax_kaspar_contract, known_by_rank: rank_aurax_dragon}
+  - {fact: fact_dk_aurax_echo_belief, known_by_rank: rank_aurax_dragon}
+  - {fact: fact_bk_severin_aurax_pact, known_by_rank: rank_aurax_dragon}
+  - {fact: fact_bk_rosalind_letters, known_by_rank: rank_aurax_house}
+  - {fact: fact_bk_hastran_mobilization, known_by_rank: rank_aurax_house}
+  - {fact: fact_bk_branek_purge_list, known_by_rank: rank_aurax_knight}
+  - {fact: fact_bk_dravan_name_called, known_by_rank: rank_aurax_dragon}
+  - {fact: fact_dk_valerius_funds_aurax, known_by_rank: rank_aurax_house}
+  - {truth: T05, level: fragment, holders: [off_aurax_head]}
+  - {truth: T08, level: whole, holders: [off_aurax_head]}
+relations:
+  # HOUSES §6.1 행렬 — 아우락스파 행
+  - {to: fac_melisande, stance: -60, note: "행렬"}
+  - {to: fac_kaspar, stance: -90, note: "행렬 — 표적. 암살 의뢰는 비밀"}
+  - {to: fac_eldar, stance: 10, note: "행렬. 엘다르 순혈파는 아우락스로 기욺(지지 2)"}
+  - {to: fac_nocturne, stance: -20, note: "행렬"}
+  - {to: fac_durgan, stance: 10, note: "행렬"}
+  - {to: fac_seren, stance: 20, note: "행렬"}
+  - {to: fac_jotun, stance: -70, note: "행렬 — 남침 시 군권 강화(+3)"}
+  - {to: fac_grom, stance: 40, note: "행렬 — 해골이빨·피도끼 용병(지지 4)"}
+  - {to: fac_light, stance: 30, note: "행렬 — 정화청(지지 2)"}
+  - {to: fac_nameless, stance: -100, note: "행렬"}
+  - {to: fac_collar, stance: 40, note: "행렬"}
+  - {to: fac_ashen_tower, stance: -30, note: "행렬"}
+  - {to: fac_barg, stance: 70, note: "행렬 — 지지 3"}
+  - {to: fac_swamp_hags, stance: -90, note: "행렬"}
+  - {to: fac_scale_council, stance: -40, note: "행렬 밖 — 원로회가 아우락스파를 보는 값(−40)의 대칭 가정. 즉위하면 '날개 달린 도마뱀' 숙청"}
+support:
+  # HOUSES §6.3 — 귀족 지지율(%). 합 41
+  - {who: npc_aurax, points: 4}
+  - {who: fac_kaldaran, points: 7, flips_if: "셋째 서랍 족보 공개 위협 → 카스파르 또는 중립"}
+  - {who: fac_hastran, points: 6, flips_if: "발레리우스 사망(테렌스, 더 강경) / 대붕괴 증언"}
+  - {who: fac_granek, points: 4, flips_if: "흐림니르 사절 거절 문서 유출"}
+  - {who: fac_sarkos, points: 3, flips_if: "212건 장부가 아우락스 손에 → 숙청, 점수 소멸"}
+  - {who: fac_tarbien, points: 2, flips_if: "노엘 비밀 → 협박"}
+  - {who: fac_great_dragon_lines, points: 4, note: "녹옥 혈통 베릴라", flips_if: "노래꾼 은신처 폭로"}
+  - {who: fac_barg, points: 3, flips_if: "잔향 포획 가격 경쟁 → 멜리산드"}
+  - {who: fac_grom, points: 4, flips_if: "원형장 대축제에서 그라샤 패배 −2"}
+  - {who: fac_eldar, points: 2, note: "순혈파", flips_if: "영혼 정원 파괴 성공 시 중립"}
+  - {who: fac_light, points: 2, note: "정화청", flips_if: "그레고르 7세의 낭독"}
+toward_echo: "화형 → 단절. 평범한 불로는 잔향자가 회귀할 뿐이라는 것을 아우락스는 안다 — 그래서 아버지가 살아 있는 동안 아버지의 불로 끊으려 한다. 드라반은 그것을 모른다. 잔향의 정체가 공개되면 지지 +5(대숙청의 명분). 찬가 단계마다 +1."
+player_paths:
+  - "손으로 들어가기 — 징후자를 넘겨 재송곳 기사단의 손이 된다 (가장 위험한 위장)"
+  - "비밀의 이동 — 칼다란 족보·사르코스 212건·그라넥 문서·볼드 사본이 지지를 3~8점 움직인다"
+  - "세베린의 밀약을 다섯 의자에 드러내면 '숨은 표'가 사라진다"
+  - "드라반에게 아버지의 숨김을 알리면 진영의 불이 처음으로 질문한다"
+regression:
+  fixed:
+    - "지지율 41 — 회귀점의 값"
+    - "세베린 타르굴과의 밀약은 AS 311에 맺어졌다"
+    - "재송곳 기사단 바알카르 명단 63"
+  flow:
+    - "서리월 중순 재 마당 화형"
+    - "긴밤월 20일 비상 회의에서 맹약회의 안건 상정"
+  drift:
+    - "붉은 홀 접견 순서"
+    - "순시 비행의 요일"

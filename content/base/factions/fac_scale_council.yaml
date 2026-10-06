@@ -21,7 +21,7 @@ size:
 offices:
   - id: off_chair
     title: 수석 원로 (의장) — 높은홰 가주
-    holder: "unnamed:볼가스 높은홰 — 왕관 와이번, 410세"   # TODO-NPC npc_volgas
+    holder: npc_volgas
     reports_to: null
     powers: ["원로회 의장 — 동수일 때 결정", "재무·인두세 총괄 (높은홰 장부 — 칼다란의 회색 장부와 이중, 매년 3,000명이 어긋난다)", "섭정 후보 1순위(본인)"]
     chosen_by: "높은홰 둥지 가주가 의장을 겸한다 — 높은홰는 3석이므로 단독으로 과반에 못 미친다"
@@ -38,7 +38,7 @@ offices:
     note: "흰 알 지지이나 아우락스가 우세해지면 가장 먼저 넘어갈 둥지. 기사 와이번을 아우락스에게 넘기는 밀약 초안이 있다"
   - id: off_longshadow_head
     title: 긴그림자 둥지 가주 (감찰·첩보)
-    holder: "unnamed:이르마스 긴그림자 — 원로, 450세"   # TODO-NPC
+    holder: npc_irmas
     reports_to: off_chair
     powers: ["감찰·첩보 — 목줄단 상층(수석 목줄장 에베르트)에게 정보 대가로 배급을 지급한다", "회색여울 감찰 둥지 2의 보고를 받는다"]
     chosen_by: "둥지 세습"
@@ -46,7 +46,7 @@ offices:
     seats: 2
   - id: off_ashwing_head
     title: 재날개 둥지 가주 (영지·국유 노예 배분)
-    holder: "unnamed:모르나 재날개 — 원로, 280세"   # TODO-NPC
+    holder: npc_morna
     reports_to: off_chair
     powers: ["국유 노예를 각 영지에 '배당'한다 — 레이번에 배당된 농노 400의 명부", "배당 노예의 무단 매각 적발 — 고드릭의 37명을 이미 안다 (영지 몰수 사유)"]
     chosen_by: "둥지 세습"

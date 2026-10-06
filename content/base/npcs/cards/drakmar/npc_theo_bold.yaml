@@ -1,0 +1,85 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-23
+id: "npc_theo_bold"
+name: "테오 볼드"
+aka: ["잉크 거리 관리", "궁정 연대기 담당"]
+tier: B
+type: living
+race: "용인"
+subrace: "비늘혈"
+sex: "남"
+age: 131
+region: 드라크마르 용좌령
+home: "바알카르 잉크 거리 볼드 저택"
+job: "잉크 거리 관리, 궁정 연대기 담당"
+rank: "볼드 자작가 — 가주 이레네의 남동생"
+summary: "누나를 두려워한다. 3년째 궁정 연대기에 '용황 종일 집무'라고 적는다 — 이삭의 손으로"
+source: docs/world/people/baalkar.md:520
+life:
+  - {year: 181, age: 0, event: "볼드 가에서 이레네의 남동생으로 태어남"}
+  - {year: 268, age: 87, event: "누나가 탑주가 되자 바알카르 잉크 거리를 맡았다 — 사실상 쫓겨남"}
+  - {year: 309, age: 128, event: "집사의 요청으로 연대기의 '종일 집무'를 쓰기 시작"}
+appearance:
+  - "잉크 묻은 소매"
+  - "누나의 편지가 오면 손이 떨린다"
+  - "늘 이삭을 두 걸음 뒤에 세운다"
+smell: "잉크와 박하사탕"
+voice_sound: "가늘고 빠르다"
+personality:
+  disposition: {용기: -40, 자비: 10, 정직: -30, 신앙: 0, 탐욕: 10, 충성: 40}
+  temperament: ["소심", "꼼꼼"]
+  habits:
+    - "누나 이야기에 박하사탕을 깨문다"
+  values: "기록되지 않은 것은 일어나지 않았다 — 그러니 기록을 조심해야 한다"
+  fears: ["누나", "이삭을 잃는 것(연대기가 멈춘다)"]
+  desires:
+    short: "이삭을 아르카스로 보내지 않는 것"
+    long: "누나 없는 볼드"
+voice:
+  register:
+    to_superior: "과한 하십시오체"
+    to_equal: "하오체"
+    to_inferior: "이삭에게만 하게체, 다른 인간에겐 말하지 않는다"
+    to_player_default: "이삭을 통해 묻는다"
+  tics: ["'기록하게, 이삭.'"]
+  use: ["연대기", "기록", "누님"]
+  avoid: ["종일 집무의 진실"]
+  length: "짧다"
+  samples:
+    - {situation: "첫 만남", line: "이삭, 이건 누구지? 기록에 없는 사람은 서기실에 들일 수 없네."}
+    - {situation: "호의", line: "자네, 누님께는 말하지 말게. 무엇이든."}
+    - {situation: "적대", line: "기록에서 지우는 건 내 일이 아니야. 그러나 누님께 한 줄 쓰는 건 내 일이지."}
+    - {situation: "비밀 누설", line: "종일 집무. 3년째. 폐하는 오후 한 시간… 아니, 기록대로 종일이시네. 기록대로."}
+schedule:
+  아침: "볼드 저택"
+  낮: "서기실 — 연대기 받아쓰기"
+  저녁: "불의 학당 강의"
+  밤: "저택"
+places: ["볼드 저택", "볼드 서기실", "불의 학당"]
+knows: ["fact_dk_varskar_hours"]
+hides:
+  - fact: fact_bk_theo_false_annals
+    reveal_when: "누나에게 일러바치겠다는 위협, 또는 이삭이 먼저 말한 뒤"
+    cover: "'연대기는 집사께서 확인하신다'"
+relations:
+  - {to: "npc_irene_bold", type: "누나·가주", like: -20, trust: 10, visibility: "공개", memo: null, words: "탑주. 그녀의 편지가 오면 일주일이 무너진다"}
+  - {to: "npc_isaac", type: "서기 노예", like: 30, trust: 40, visibility: "공개", memo: null, words: "내 손. 누님이 가져가면 나는 손이 없다"}
+toward_player: "이삭을 통해 묻는다"
+persuade:
+  likes: ["누나를 피할 방법"]
+  hates: ["누나에게 알리겠다는 위협 — 굴복하지만 원한"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "연대기에 '종일 집무'라고 적게 한다"
+  deja_vu: none
+hard_rules:
+  - "인간에게 직접 말하지 않는다 — 이삭을 통해"
+on_death: "잉크 거리 관리 공백 — 이레네가 이삭을 아르카스로 부른다"
+story_seeds:
+  - "3년치 거짓 연대기 — 집사의 '뜻의 증언'을 뒤집는 두 번째 증거"
+affiliations:
+  - {faction: "fac_bold", rank: null, office: "off_ink_street", since: 268, loyalty: 30, public: true, cell: null}
+truths: []

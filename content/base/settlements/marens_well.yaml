@@ -1,0 +1,24 @@
+# 성 마렌의 우물 배치 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §4.9, fac_lampkeepers, 사실 fact_lu_*, tpl_holy_spring (kits/holy_city.yaml).
+# 성 마렌이 첫 설교를 했다는 우물. 안식일에만 울타리 문이 열린다. 수도자 20. 우물 벽 수면 아래 2m에 고대 진명어 각문.
+# grid: 성소 격자 (m), 원점 = 북서쪽 모서리. 루멘 쪽 길이 남쪽에서 들어온다.
+id: marens_well
+name: 성 마렌의 우물
+node: marens_well
+kind: shrine
+grid: {w: 260, h: 200}
+curfew: {from: "21:00", to: "04:00", note: "울타리 문 잠김. 안식일 외에는 해 뜨기 전부터 문 앞에 순례자가 앉아 기다린다"}
+bells:
+  - {at: "04:00", name: 새벽 기도 손종}
+  - {at: "13:00", name: 정오 기도 손종}
+  - {at: "19:00", name: 저녁 기도 손종}
+patrols: []
+locations:
+  - {id: mw_gate, name: 울타리 문, xy: [130, 190], kind: gate, access: public, hours: "안식일 06:00-18:00 개방", locked: "안식일 외", note: "참나무 문에 쇠사슬 고리 하나. 수도자가 안에서 연다"}
+  - {id: mw_well, name: 성 마렌의 우물, xy: [130, 100], kind: well, access: public, hours: "안식일 06:00-18:00", note: "돌 둘레가 마렌의 손자국처럼 움푹하다. 마시면 진명이 들린다는 말이 있다 (소문 4 — 반쯤)", hidden: "우물 벽 수면 아래 2m에 고대 진명어 각문(물 근원). 마렌은 여기서 진명을 '들었다'. 낮 열한 시 해가 수면 가운데 꽂힐 때 글자 윤곽이 보인다 (fact_lm_beate_inscription)"}
+  - {id: mw_altar, name: 순례 제단, xy: [100, 70], kind: altar, access: public, hours: "안식일", note: "성표를 올리고 가는 낮은 돌 제단. 촛불 한 줄을 켜는 자리"}
+  - {id: mw_offering_box, name: 봉헌 상자, xy: [90, 90], kind: box, access: public, hours: "안식일", hidden: "상자 밑바닥 이중판 — 한 해에 한 번 열리는 칸. 마렌의 첫 성표 조각이 헝겊에 싸여 있다 (fact_lm_beate_first_token)"}
+  - {id: mw_cell_beate, name: 우물지기 수녀의 방, xy: [200, 60], kind: home, access: staff, note: "우물 소리가 벽을 통해 들리는 방"}
+  - {id: mw_cells, name: 수도자 방들, xy: [210, 110], kind: lodging, access: staff, note: "수도자 스물의 침상. 대부분 늙은 여자"}
+  - {id: mw_garden, name: 약초밭과 빨래터, xy: [190, 150], kind: garden, access: staff}
+outer:
+  - {id: mw__road, name: 루멘으로 가는 길, hours: 0.3}

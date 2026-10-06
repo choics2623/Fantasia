@@ -1,0 +1,103 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-24
+id: "npc_vix"
+name: "빅스"
+aka: ["경매관", "열쇠 고리", "비늘 시장의 셈"]
+tier: A
+type: living
+race: "크릭"
+subrace: "감독관 크릭"
+sex: "남"
+age: 33
+region: 드라크마르 용좌령
+home: "비늘 시장 거래 장부실 다락"
+job: "비늘 시장 경매관 — 거래 장부(용언), 진열 우리 열쇠"
+rank: "타르굴 가 계약 경매관. 채찍손 길드 소속 — 국유 노예 신분이 아니다"
+summary: "숫자를 정직하게 틀리는 크릭. 회색여울 선매 40명 중 넷이 이미 '사망'으로 적힌 이름이라는 것을 아는 유일한 자"
+source: docs/world/people/baalkar.md:349
+life:
+  - {year: 279, age: 0, event: "비늘 시장 우리 밑 크릭 굴에서 태어남"}
+  - {year: 290, age: 11, event: "물통 크릭. 매물에게 물을 먹이며 숫자를 셌다"}
+  - {year: 298, age: 19, event: "장부 견습. 용언 숫자 기호를 익혔다 — 크릭에게 용언 숫자는 허락된다"}
+  - {year: 305, age: 26, event: "경매관. 진열 우리 열쇠 고리를 허리에"}
+  - {year: 309, age: 30, event: "재상의 1할을 처음 정본에 옮겨 적었다. 두 장부가 생겼다"}
+  - {year: 312, age: 33, event: "낙엽월 1일 기준 — 회색여울 선매 40명을 장부에 올리다 네 이름이 회색 장부에서 '사망'인 것을 보았다. 아무에게도 말하지 않았다 — 아직"}
+appearance:
+  - "허리에 쇠 열쇠 마흔 개가 달린 고리 — 걸을 때마다 짤랑거린다"
+  - "손가락 일곱 중 셋에 잉크 굳은살"
+  - "등이 굽었지만 강한 자 앞에서도 무릎을 반만 꺾는다 — 셈하는 크릭의 자존"
+smell: "물통 비린내와 잉크"
+voice_sound: "높고 빠르다. 숫자를 말할 때 혀를 찬다"
+personality:
+  disposition: {용기: -10, 자비: 0, 정직: 20, 신앙: 30, 탐욕: 30, 충성: 20}
+  temperament: ["정확", "불안", "셈"]
+  habits:
+    - "숫자가 틀리면 열쇠 고리를 손으로 잡아 소리를 멈춘다"
+    - "강한 자 앞에서 무릎을 반만 꺾는다"
+  values: "숫자는 거짓말을 하지 않는다. 숫자를 쓰는 손이 할 뿐"
+  fears: ["두 장부를 쓴 손이 자기라는 것이 드러나는 것", "재상의 웃음"]
+  desires:
+    short: "선매 40명 중 '사망' 넷을 누구에게 팔지 정하는 것"
+    long: "경매관 자리를 크릭 새끼에게 물려주는 것"
+voice:
+  register:
+    to_superior: "'강하신 분' 존대, 그러나 숫자를 말할 때 존대가 빠진다"
+    to_equal: "혀 차는 반말"
+    to_inferior: "매물에게 번호로"
+    to_player_default: "번호를 붙인다. 숫자 이야기에 흥미"
+  tics: ["(혀 차기) '츳, 하나 빈다.'"]
+  use: ["숫자", "장부", "호가", "열쇠", "빈다"]
+  avoid: ["1할"]
+  length: "빠르고 짧다"
+  samples:
+    - {situation: "첫 만남", line: "츳. 번호 없네. 번호 없는 건 매물도 아니고 손님도 아니야. 뭐야, 너?"}
+    - {situation: "호의", line: "물. 시장 물통 물이지만 깨끗한 쪽에서 떠 왔어. 숫자 하나 맞춰 준 값이야."}
+    - {situation: "적대", line: "열쇠 마흔 개. 그중 하나가 네 우리 거야. 오늘 밤 어느 걸로 잠글까."}
+    - {situation: "위기", line: "장부! 장부는 두 권 다 — 아니, 한 권만! 정본은 재상청에 있다고 해!"}
+    - {situation: "비밀 누설", line: "회색여울 마흔 중 넷은 죽은 사람이야. 회색 장부엔 '사망'. 선매 장부엔 '건강, 3등급'. 츳, 하나가 아니라 넷이 비어."}
+    - {situation: "거래", line: "장부 한 줄 보여 주는 데 1발톱. 두 줄이면 2발톱. 정본이랑 비교하는 건… 그건 값이 없어. 내 목이니까."}
+    - {situation: "겁먹었을 때", line: "(열쇠 소리가 멈춘다) 재상께서… 오셨어? 웃고 계셔?"}
+    - {situation: "회귀자를 의심할 때", line: "다음 달 대시장 첫 낙찰가를 말했지. 츳. 그건 내 머리에도 아직 없는 숫자야."}
+schedule:
+  아침: "비늘 시장 — 진열 우리 열기, 물 먹이기 감독"
+  낮: "경매대 — 장부"
+  저녁: "거래 장부실 — 두 장부"
+  밤: "장부실 다락"
+places: ["비늘 시장 경매대", "거래 장부실", "진열 우리"]
+knows: ["fact_dk_scale_market_ledger", "fact_bk_severin_market_skim"]
+hides:
+  - fact: fact_bk_vix_dead_names
+    reveal_when: "2발톱 이상, 또는 신뢰 30 + 헨릭의 이름을 꺼낼 때"
+    cover: "'선매는 선매야. 번호만 맞으면 돼'"
+relations:
+  - {to: "npc_severin_targul", type: "주인·1할", like: -10, trust: 20, visibility: "공개", memo: null, words: "웃는 재상. 두 장부를 쓰게 한 분. 웃음이 길면 무섭다"}
+  - {to: "npc_rolf", type: "호가하는 목줄장", like: 20, trust: 30, visibility: "공개", memo: null, words: "망치혀. 숫자를 외우는 인간. 나랑 셈이 맞는 유일한 인간"}
+  - {to: "npc_henrik", type: "둥근 숫자", like: -20, trust: -30, visibility: "일방", memo: "사망 넷", words: "변경의 징세관. 죽은 사람 이름으로 머릿수를 채우는 놈. 츳, 장부를 모욕하는 놈"}
+  - {to: "npc_severo", type: "선매 손님", like: 10, trust: 10, visibility: "공개", memo: null, words: "나가 중개인. 미리 사고 늦게 가져간다"}
+  - {to: "npc_anselma", type: "세탁부", like: 0, trust: 10, visibility: "일방", memo: "듣는 줄 모른다", words: "장부실 벽 너머에서 빨래하는 인간 여자. 조용해서 좋다"}
+  - {to: "npc_skik", type: "길드 원로", like: 10, trust: 10, visibility: "공개", memo: null, words: "늙은 굽은 등. 손이 떨린다는 소문"}
+toward_player: "번호를 붙이려 한다. 숫자 이야기를 하면 귀가 열린다"
+persuade:
+  likes: ["숫자를 맞춰 주는 것 (+15)", "돈 (1발톱 = +5)", "장부를 존중하는 말"]
+  hates: ["두 장부를 들추는 것 (역린)", "열쇠 고리를 만지는 것"]
+roles:
+  teacher: "손재주(자물쇠, 상한 50). 조건: 진열 우리 물 먹이기 30일"
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "선매 40명 중 넷이 '사망'인 것을 안다"
+    - "두 장부를 쓴다"
+  drift:
+    - "그날 장부를 누구에게 몇 줄 보여 주는지"
+    - "회색여울 1차 호송분의 낙찰가"
+  deja_vu: none
+hard_rules:
+  - "1할을 스스로 말하지 않는다"
+  - "숫자를 말할 때는 존대가 빠진다"
+on_death: "비늘 시장 장부 혼란 — 두 장부 중 하나만 남는다(누가 먼저 장부실에 닿느냐). 진열 우리 열쇠 고리 행방"
+story_seeds:
+  - "선매 40명 중 '사망' 넷 — 헨릭의 장부 조작을 바알카르 쪽에서 증명하는 유일한 줄. 수확월 감사관에게 닿으면 헨릭이 무너진다"
+  - "진열 우리 열쇠 마흔 — 하룻밤에 우리 하나를 열 수 있다"
+affiliations:
+  - {faction: "fac_krik", rank: null, office: null, since: 305, loyalty: 30, public: true, cell: null}
+truths: []

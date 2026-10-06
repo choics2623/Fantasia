@@ -20,35 +20,35 @@ size:
 offices:
   - id: off_duke
     title: 대공 — 용좌 집사
-    holder: "unnamed:세베리안 칼다란 — 대공, 288세"   # TODO-NPC npc_severian_kaldaran. 제국 쪽 자리는 fac_drakmar_empire off_flame_steward
+    holder: npc_severian_kaldaran
     reports_to: null
     powers: ["가문의 법과 서약 — 비늘 서약 단상의 개방", "용황 병상 출입의 통제", "셋째 서랍 개방권 (세베리안만)"]
     chosen_by: "세습 — 집사 자리를 용황이 임명하지 않는다 (SK 604 시조 칼다르의 서임 이후)"
     perks: ["진홍 바탕 금빛 고리 세로 동공의 용 눈 문장 — 눈 아래 검은 띠 세 줄(세 번의 위기를 넘긴 표시)", "불꽃 홀 금고"]
   - id: off_duchess
     title: 대공비
-    holder: "unnamed:로잘린드 칼다란 — 251세, 하스트란 출신"   # TODO-NPC
+    holder: npc_rosalind_kaldaran
     reports_to: off_duke
     powers: ["외부 서신 — 아우락스와 직접 서신을 주고받는다", "하스트란과의 혼인 동맹 유지"]
     chosen_by: "혼인 (2대째 하스트란)"
     perks: ["남편보다 강경한 목소리가 가문의 방향을 당긴다"]
   - id: off_ledger_heir
     title: 회색 장부 관리관 (장남)
-    holder: "unnamed:아르덴 칼다란 — 160세"   # TODO-NPC
+    holder: npc_arden_kaldaran
     reports_to: off_duke
     powers: ["제국 국유 노예 약 4만의 번호 낙인과 인두세 기준 명부", "이름을 지운다 — 펜 한 번으로 탈주자의 사망 처리 (장부에서 빠진 인간은 '없는 사람')", "'잔향 징후' 항목 집계"]
     chosen_by: "장자 상속 예정. 숫자를 사랑하고 피를 싫어한다"
     perks: ["다른 가문의 노예 수까지 본다"]
   - id: off_ceremonial
     title: 불꽃 홀 의전관 (딸)
-    holder: "unnamed:리비아 칼다란 — 97세"   # TODO-NPC
+    holder: npc_livia_kaldaran
     reports_to: off_duke
     powers: ["비늘 서약·비늘 의례·불의 잔의 식순", "궁정 좌석과 접견 순서"]
     chosen_by: "대공 지명"
     perks: ["카스파르와 같은 해 바알카르 궁정에 있었던 사람 — 그를 동정한다"]
   - id: off_apprentice
     title: 견습 집사 (손자)
-    holder: "unnamed:세드릭 칼다란 — 54세"   # TODO-NPC
+    holder: npc_cedric_kaldaran
     reports_to: off_duke
     powers: ["집사 업무의 보조"]
     chosen_by: "대공 지명"

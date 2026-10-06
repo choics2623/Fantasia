@@ -1,0 +1,106 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-28
+id: "npc_cadel_hask"
+name: "카델 하스크"
+aka: ["부두장", "물 손실"]
+tier: A
+type: living
+race: "용인"
+subrace: "비늘혈"
+sex: "남"
+age: 104
+region: 드라크마르 용좌령
+home: "바알카르 사슬 부두 부두장 사무소 (위층)"
+job: "사슬 부두 부두장 — 출항 명부, 하역 노예 1,800 할당"
+rank: "하스크 가(국유농장 감독 가문, 일가 7명)의 둘째. 원로회가 준 관직"
+summary: "짐칸에서 질식해 죽은 노예를 '물 손실'로 적는다. 사촌의 비밀 곡창에서 빼돌린 곡물을 노예선 바닥에 실어 세렌에 판다. 회색여울 2차 매각분이 그의 부두에서 배에 오른다"
+source: docs/world/people/baalkar.md:425
+life:
+  - {year: 208, age: 0, event: "이삭 우리 국유농장 감독관 관사에서 하스크 가에 태어남"}
+  - {year: 250, age: 42, event: "원로회 재날개 둥지의 추천으로 사슬 부두 하급 관리"}
+  - {year: 280, age: 72, event: "부두장. 하역 노예 수신호를 '노예들 손장난'이라 여겨 금지하지 않았다"}
+  - {year: 296, age: 88, event: "세렌 계약민법 — 계약민 운송 담당 나가 서기와 손을 잡고 짐칸 배정을 팔기 시작"}
+  - {year: 305, age: 97, event: "사촌 바렌의 곡물을 처음 노예선 바닥에 실었다. 그 배 짐칸에서 열둘이 죽었다 — 곡물 자루가 숨구멍을 막았다. '물 손실 12'"}
+  - {year: 312, age: 104, event: "낙엽월 1일 기준 — 물 손실 61. 굶주림월 9일 세베로의 '소금 바늘'호가 회색여울 31명을 싣는다"}
+appearance:
+  - "가죽 앞치마를 두른 용인 — 부두장답게 소매를 걷었다. 팔뚝 비늘에 밧줄 자국"
+  - "목에 출항 종 열쇠"
+  - "웃을 때 아랫니가 하나 없다 — 크레인 쇠갈고리에 맞았다"
+smell: "강물, 타르, 곡물 먼지"
+voice_sound: "크고 거칠다. 부두 소음 너머로 외치는 목소리"
+personality:
+  disposition: {용기: 20, 자비: -55, 정직: -45, 신앙: 10, 탐욕: 70, 충성: 35}
+  temperament: ["실리", "무심", "성급"]
+  habits:
+    - "출항 명부의 숫자를 고칠 때 혀를 내민다"
+    - "물때를 손가락에 침을 묻혀 바람으로 잰다"
+  values: "배는 시간 맞춰 떠난다. 무엇이 실렸든"
+  fears: ["곡창 7동이 드러나는 것", "아우락스파 하스크 가가 무너지면 자기도 같이 끌려가는 것"]
+  desires:
+    short: "굶주림월 전에 곡물 세 배를 더 내보내는 것"
+    long: "부두를 하스크 가의 세습으로"
+voice:
+  register:
+    to_superior: "하십시오체, 짧고 거칠다"
+    to_equal: "반말에 가까운 하오체"
+    to_inferior: "하역 노예에게 고함 반말. 숫자로"
+    to_player_default: "짐으로 본다. 몇 섬, 몇 명"
+  tics: ["'물때가 간다!'"]
+  use: ["물때", "짐칸", "출항", "섬", "손실"]
+  avoid: ["곡창", "질식"]
+  length: "짧고 크다"
+  samples:
+    - {situation: "첫 만남", line: "짐이야, 일꾼이야? 짐이면 짐칸, 일꾼이면 크레인. 물때가 간다!"}
+    - {situation: "호의", line: "물 마셔. 강물이지만. 짐칸보단 낫다."}
+    - {situation: "적대", line: "출항 명부에 한 줄 더 적는 거야. '물 손실 하나.' 아무도 안 세."}
+    - {situation: "위기", line: "출항 종! 지금 띄워! 짐칸 문 닫아 — 위에 뭐가 있든 밑에 뭐가 있든!"}
+    - {situation: "비밀 누설", line: "노예 위에 곡물, 곡물 밑에 노예. 세렌 세관은 위만 봐. 숨구멍? 자루가 막지. 그래서 물 손실이라 적는 거야."}
+    - {situation: "거래", line: "짐칸 자리 하나에 2발톱. 갑판 밑이면 5. 갑판 위는 없어. 인간은 갑판 위에 못 타."}
+    - {situation: "겁먹었을 때", line: "곡창 7동? 그건 내 사촌 일이야. 나는 부두장이야. 부두만 알아."}
+    - {situation: "회귀자를 의심할 때", line: "그 배 이름을 어떻게 알아? '소금 바늘'은 아직 강에 들어오지도 않았어."}
+schedule:
+  아침: "사슬 부두 — 새벽 출항 종 (04:30), 출항 명부"
+  낮: "하역장·크레인 감독, 부두장 사무소"
+  저녁: "부두 선술집 '녹슨 닻' — 선장들과 짐칸 흥정"
+  밤: "부두장 사무소 위층"
+places: ["사슬 부두 하역장", "부두장 사무소", "녹슨 닻", "노예선 짐칸"]
+knows: ["fact_bk_greyford_convoy_dock"]
+hides:
+  - fact: fact_bk_cadel_water_loss
+    reveal_when: "출항 명부와 실제 짐칸 사망을 대조해 내밀 때, 또는 오스발트가 증언할 때"
+    cover: "'물 손실은 강의 일이야'"
+  - fact: fact_bk_hask_grain_ships
+    reveal_when: "곡창 7동의 증거를 쥐고 위협할 때 — 그는 사촌을 판다"
+    cover: "'곡물은 원로회 배당분이야. 서류 있어'"
+relations:
+  - {to: "npc_varen_hask", type: "사촌·곡물 공범", like: 30, trust: 40, visibility: "비밀", memo: null, words: "농장의 사촌. 그가 빼고 내가 싣는다. 둘 중 하나가 무너지면 둘 다"}
+  - {to: "npc_oswald", type: "하역 목줄장", like: 10, trust: 30, visibility: "공개", memo: "3년째 밀고가 없다", words: "갈고리. 하역 할당은 정확하다. 이름을 안 올리는 게 이상하지만 할당이 맞으니 됐다"}
+  - {to: "npc_severo", type: "세렌 수송대", like: 30, trust: 30, visibility: "공개", memo: "소금 바늘호", words: "짐칸을 통째로 사는 나가. 값을 깎지 않는다"}
+  - {to: "npc_rolf", type: "녹슨 닻 단골", like: 10, trust: 10, visibility: "공개", memo: null, words: "목청 큰 목줄장. 술값은 내가 낸다 — 소문값이지"}
+  - {to: "npc_morna", type: "관직을 준 원로", like: 20, trust: 20, visibility: "공개", memo: null, words: "재날개. 부두장 자리를 준 끈"}
+toward_player: "짐으로 본다. 짐칸 자리 값을 매긴다"
+persuade:
+  likes: ["돈 (짐칸 흥정)", "물때를 맞추는 일손", "사촌의 곡창이 안전하다는 정보"]
+  hates: ["짐칸 사망을 세는 것 (역린)", "출항을 늦추는 것"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "올해 물 손실 61을 적었다"
+    - "곡창 7동 곡물을 노예선 바닥에 싣는다"
+    - "굶주림월 9일 회색여울 31명을 소금 바늘호에 싣는다"
+  drift:
+    - "그날 출항하는 배 수"
+    - "선술집에서 누구와 짐칸을 흥정하는지"
+  deja_vu: none
+hard_rules:
+  - "짐칸 사망을 '물 손실'이라 부른다"
+  - "곡창 이야기를 사촌 탓으로 돌린다"
+on_death: "부두장 공석 — 원로회가 새 부두장을 앉히기까지 출항 혼란(사흘). 곡창 7동 곡물 반출 중단"
+story_seeds:
+  - "노예선 짐칸 — 숨구멍을 막는 곡물 자루. 자루를 빼면 사람이 산다. 자루를 강에 던지면 곡창 7동의 비밀이 드러난다"
+  - "굶주림월 9일 소금 바늘호 — 사라를 포함한 회색여울 31명이 오르는 배"
+affiliations:
+  - {faction: "fac_drakmar_empire", rank: "rank_scale_officer", office: null, since: 280, loyalty: 30, public: true, cell: null}
+truths: []

@@ -29,7 +29,7 @@ succession: >
 offices:
   - id: off_head_ebert
     title: 가장 — 바알카르 수석 목줄장
-    holder: "unnamed:에베르트 (60) — fac_collar의 목줄단 바알카르 지부 총괄과 같은 사람"
+    holder: npc_ebert
     reports_to: null
     powers: ["밀고 장부 2,000 이름의 보관", "목줄장의 쇠 지팡이", "해빙월 '놓아줌'의 소집"]
     chosen_by: "가장 정확히 외운 자 — 전대 가장의 낭송"

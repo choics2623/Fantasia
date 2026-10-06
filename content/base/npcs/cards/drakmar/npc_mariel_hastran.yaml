@@ -1,0 +1,87 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-16
+id: "npc_mariel_hastran"
+name: "마리엘 하스트란"
+aka: ["남문 수비대장", "원형장 도박꾼"]
+tier: B
+type: living
+race: "용인"
+subrace: "순혈"
+sex: "여"
+age: 176
+region: 드라크마르 용좌령
+home: "바알카르 남문 수비대 관사"
+job: "바알카르 남문 수비대장"
+rank: "하스트란 후작가 딸"
+summary: "투사 시합 최대 도박꾼. 군나르의 99승째를 직접 보았고 100승째에 크게 걸었다 — 군나르가 탈주해 잃었다. 빚을 메우려 남문 통행 기록을 돈 받고 비운다"
+source: docs/world/people/baalkar.md:517
+life:
+  - {year: 136, age: 0, event: "발레리우스의 딸로 하스트 요새에서 태어남"}
+  - {year: 273, age: 137, event: "피의 원형장에서 군나르의 99승째 경기를 보았다. 100승째에 하스트란 장원 하나 값을 걸었다 — 이듬해 그가 사흘 앞두고 사라졌다"}
+  - {year: 312, age: 176, event: "낙엽월 1일 기준 — 군나르 현상금을 자기 돈으로 올려 두었다. 남문 기록 빈 줄이 그녀의 부업"}
+appearance:
+  - "짧게 자른 머리, 관자놀이 비늘에 주사위 문양을 새겼다"
+  - "허리에 원형장 내기 패 꾸러미"
+  - "남문 갑옷이 몸에 비해 크다 — 아버지의 것"
+smell: "포도주와 말"
+voice_sound: "빠르고 높다. 내기 이야기에 웃음이 섞인다"
+personality:
+  disposition: {용기: 30, 자비: -10, 정직: -40, 신앙: 0, 탐욕: 60, 충성: 20}
+  temperament: ["도박", "경솔"]
+  habits:
+    - "무엇이든 내기로 바꾼다 — '걸겠나?'"
+  values: "운은 값을 매길 수 있다"
+  fears: ["아버지가 빚의 크기를 아는 것"]
+  desires:
+    short: "빚을 갚는 것"
+    long: "원형장 패를 하스트란의 이름으로 쥐는 것"
+voice:
+  register:
+    to_superior: "하십시오체, 건성"
+    to_equal: "반말에 가까운 하오체"
+    to_inferior: "반말"
+    to_player_default: "내기 상대인지 본다"
+  tics: ["'걸겠나?'"]
+  use: ["내기", "패", "승", "빚"]
+  avoid: ["아버지의 불"]
+  length: "보통"
+  samples:
+    - {situation: "첫 만남", line: "남문은 통행증. 통행증 없으면 내기. 걸겠나?"}
+    - {situation: "호의", line: "운이 좋은 얼굴이군. 원형장에 서 본 적 있나? 없으면 서지 마라. 운이 아까우니까."}
+    - {situation: "적대", line: "남문 기록에 네 이름이 오늘 날짜로 적혀. 그다음 줄은 송곳니 회관이 적지."}
+    - {situation: "비밀 누설", line: "99승째, 늙은 노예가 창을 떨어뜨리고 웃었다. 그래서 100승째에 걸었지. 그놈은 그 밤에 사라졌다. 내 장원 하나와 함께."}
+schedule:
+  아침: "남문 교대"
+  낮: "남문 수비 — 통행 기록"
+  저녁: "'반쪽 비늘' 선술집에서 내기"
+  밤: "남문 관사"
+places: ["남문", "비늘혈 선술집 반쪽 비늘"]
+knows: ["fact_gb_gunnar_bounty"]
+hides:
+  - fact: fact_bk_mariel_gate_ledger
+    reveal_when: "1비늘 이상을 내기에 걸거나, 하랄을 통해"
+    cover: "'기록은 기록이지'"
+relations:
+  - {to: "npc_gunnar", type: "내기를 무너뜨린 투사", like: -20, trust: -10, visibility: "일방", memo: "현상금을 올렸다", words: "99승의 웃음. 그 웃음에 장원 하나를 잃었다"}
+  - {to: "npc_valerius_hastran", type: "아버지", like: 20, trust: 10, visibility: "공개", memo: null, words: "불을 끄고 자는 노인. 빚 이야기는 어둠 속에서도 못 한다"}
+  - {to: "npc_harald", type: "단골 손님", like: 10, trust: 20, visibility: "비밀", memo: "빈 줄을 산다", words: "쇠 패를 그럴듯하게 만드는 인간. 값을 깎지 않는다"}
+toward_player: "내기 상대인지 본다"
+persuade:
+  likes: ["내기", "원형장 이야기"]
+  hates: ["빚 이야기를 아버지에게 하겠다는 위협"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "군나르의 100승째에 장원 하나를 걸고 잃었다"
+    - "남문 기록 빈 줄을 판다"
+  deja_vu: none
+hard_rules:
+  - "모든 것을 내기로 바꾼다"
+on_death: "남문 수비 공백 — 하스트란 기사단이 남문을 직접 쥔다"
+story_seeds:
+  - "군나르를 남문 앞에 데려오면 그녀는 빚과 내기 사이에서 흔들린다 — 101승째를 걸 수도"
+affiliations:
+  - {faction: "fac_hastran", rank: null, office: "off_south_gate", since: 290, loyalty: 30, public: true, cell: null}
+truths: []

@@ -1,0 +1,102 @@
+# 바알카르 날짜 일정 — 일과보다 우선한다 (24 §3.2). AS 312 낙엽월 1일 ~ AS 313 수확월.
+# 원천: REGIONS §1.8·§1.13·§2.14, WORLD_BIBLE §8·§10(클락 1 용황의 죽음, 클락 2 맹약회의), HOUSES §6.3, docs/world/people/baalkar.md.
+# 달: 1 해빙 2 파종 3 꽃 4 푸른 5 태양 6 건초 7 수확 8 포도 9 낙엽 10 서리 11 긴밤 12 굶주림 13 재의 날(5일).
+# 회색여울과의 연결: 9.10 헨릭 장부 발송 → 9.13 도착, 10.9 1차 매각 호송 → 10.15 비늘 시장, 12.3 2차 매각 호송 → 12.9 사슬 부두 → 12.10 소금 바늘호 출항.
+# 목록에서 먼저 맞는 일정이 이긴다.
+
+# ── 매달 반복 ──
+- {id: ev_bk_lamp_meeting_anselma, npcs: [npc_anselma], repeat: monthly, day: 13, from: "23:00", to: "23:59", at: bk_sewer_third, doing: "등잔 회합 — 시장의 이름을 넘긴다 (일과의 3·13·23일 중 13일은 노라의 전갈이 오는 날)"}
+- {id: ev_bk_fizik_fang_sale, npcs: [npc_fizik], repeat: monthly, day: 10, from: "12:00", to: "16:00", at: bk_fang_board, doing: 송곳니 회관에 궁 소문을 판다 — 루가가 산다, travel_from: dragon_throne_peak__sound_room, return_to: dragon_throne_peak__sound_room}
+- {id: ev_bk_luga_buys_fizik, npcs: [npc_luga], repeat: monthly, day: 10, from: "12:00", to: "16:00", at: bk_fang_board, doing: 피직에게서 궁 소문을 산다}
+- {id: ev_bk_edun_seren, npcs: [npc_edun], repeat: monthly, day: 20, from: "10:00", to: "13:00", at: bk_seren_house, doing: 물방에 비늘을 판다, travel_from: dragon_throne_peak__scale_heap, return_to: dragon_throne_peak__palace_slaves}
+- {id: ev_bk_kaidor_nest, npcs: [npc_kaidor], repeat: monthly, day: 1, from: "14:00", to: "15:30", at: dragon_throne_peak__ash_nest, doing: 병상에 칙령 초안을 읽어 올린다 — 폐하는 듣지 못한다, travel_from: bk_hall_seal_room, return_to: bk_hall_seal_room, mounted: true}
+
+# ── 낙엽월 (9) — 회귀점의 가을 ──
+- {id: ev_bk_aurax_audience_1, date: "312-09-02", npcs: [npc_aurax], from: "14:00", to: "15:00", at: dragon_throne_peak__ash_nest, doing: 아버지의 오후 한 시간 — 장자의 접견, travel_from: bk_hall_red_hall, return_to: bk_hall_red_hall, mounted: true}
+- {id: ev_bk_varen_hears_contract, date: "312-09-06", npcs: [npc_varen_raven], from: "18:00", to: "22:00", at: bk_scale_tavern, doing: 형이 세렌 중개인과 매각 계약을 맺었다는 소식을 듣는다 — 사라의 이름도}
+- {id: ev_bk_varskar_fit, date: "312-09-08", npcs: [npc_severian_kaldaran], from: "06:00", to: "23:59", at: dragon_throne_peak__ash_nest, doing: "용황의 발작 — 병상 문을 사흘 닫는다 (클락 1: 용황 건강 −1)", travel_from: bk_sh_kaldaran}
+- {id: ev_bk_varskar_fit_2, date: "312-09-09", npcs: [npc_severian_kaldaran], from: "00:00", to: "23:59", at: dragon_throne_peak__outer_stair, doing: 닫힌 병상 문 앞 — 아무도 들이지 않는다}
+- {id: ev_bk_aurax_waits, date: "312-09-09", npcs: [npc_aurax], from: "08:00", to: "20:00", at: dragon_throne_peak__outer_stair, doing: 닫힌 문 앞에서 숨소리를 듣는다 — 집사와 마주 선다, travel_from: bk_hall_red_hall, return_to: bk_hall_red_hall, mounted: true}
+- {id: ev_bk_henrik_ledger_arrives, date: "312-09-13", npcs: [npc_volgas], from: "10:00", to: "13:00", at: bk_hall_perch_gallery, doing: "회색여울 인두세 결산 장부(352명)를 높은홰 장부실이 먼저 받는다"}
+- {id: ev_bk_arden_compares, date: "312-09-14", npcs: [npc_arden_kaldaran], from: "08:00", to: "18:00", at: bk_hall_grey_ledger, doing: "헨릭의 352를 회색 장부와 대조 — 둥근 숫자"}
+- {id: ev_bk_vix_dead_names, date: "312-09-14", npcs: [npc_vix], from: "18:00", to: "21:00", at: bk_sm_ledger, doing: "선매 40명 중 '사망' 넷을 회색 장부 사본에서 다시 확인한다"}
+- {id: ev_bk_anselma_hears_forty, date: "312-09-14", npcs: [npc_anselma], from: "18:00", to: "21:00", at: bk_sm_laundry, doing: 벽 너머 혀 차는 소리 — '넷이 빈다'를 듣는다}
+- {id: ev_bk_irmas_greyford_flight, date: "312-09-15", npcs: [npc_irmas], from: "08:00", to: "20:00", at: dragon_pillar_post, doing: "용주 역참 상공 — 회색여울 보급 회의 날의 하늘을 돈다", travel_from: bk_perch_longshadow, return_to: bk_perch_longshadow, mounted: true}
+- {id: ev_bk_ebert_irmas_report, date: "312-09-22", npcs: [npc_ebert], from: "16:00", to: "19:00", at: bk_perch_longshadow, doing: 긴그림자 홰 아래 보고 — 북부 징후 보고 첫 묶음}
+- {id: ev_bk_valerius_h_arrives, date: "312-09-03", npcs: [npc_valerius_hastran], from: "16:00", to: "18:00", at: bk_south_gate, doing: 궁정 철 — 하스트 요새에서 바알카르로 들어온다}
+- {id: ev_bk_noeul_marked, date: "312-09-19", npcs: [npc_soom, npc_noeul], from: "09:00", to: "11:00", at: baalkar__frost_cradle, doing: 숨이 노을에게 물을 건넨다 — 노을은 마시지 않는다}
+
+# ── 서리월 (10) — 첫 호송, 재 마당 ──
+- {id: ev_bk_scale_rite_draft, date: "312-10-01", npcs: [npc_livia_kaldaran], from: "21:00", to: "23:00", at: bk_hall_ceremony, doing: 비늘 의례 취소 문안을 서랍에서 꺼내 다시 읽는다}
+- {id: ev_bk_regency_draft_circulates, date: "312-10-04", npcs: [npc_kaidor, npc_volgas, npc_irmas, npc_morna], from: "11:00", to: "16:00", at: bk_hall_perch_gallery, doing: "원로회 비공개 회의 — '흰 알 + 섭정' 초안 회람 (클락 1)"}
+- {id: ev_bk_branek_sweep, date: "312-10-08", npcs: [npc_branek], from: "05:00", to: "18:00", at: bk_ashcatch, doing: "재받이 일제 색출 — 명단 63을 채운다", condition: "명단이 도난·소실되지 않았을 때"}
+- {id: ev_bk_morkan_cells_refused, date: "312-10-09", npcs: [npc_morkan, npc_branek], from: "17:00", to: "18:00", at: bk_gw_cells, doing: 재송곳 기사단이 근위 감옥을 빌리러 온다 — 감옥은 빌려주고 손은 빌려주지 않는다}
+- {id: ev_bk_pyre_dravan, date: "312-10-12", npcs: [npc_dravan], from: "11:00", to: "13:00", at: bk_pyre_yard, doing: "재 마당 화형 — 붉은 첨탑 쪽으로 세 번 선회한 뒤 불 (4층 전체가 문을 닫는다)", travel_from: red_spire, return_to: red_spire, mounted: true, condition: "브라넉의 명단이 남아 있을 때"}
+- {id: ev_bk_pyre_branek, date: "312-10-12", npcs: [npc_branek], from: "09:00", to: "14:00", at: bk_pyre_yard, doing: 명단을 읽는다 — 손가락이 한 줄씩}
+- {id: ev_bk_pyre_watch_skik, date: "312-10-12", npcs: [npc_skik], from: "10:00", to: "14:00", at: bk_pyre_yard, doing: 굽은 등이 재 마당 울타리를 지킨다 — 오른손을 감싼 채}
+- {id: ev_bk_first_convoy_gate, date: "312-10-14", npcs: [npc_ebert], from: "15:00", to: "17:00", at: bk_north_gate, doing: "회색여울 1차 매각 호송(40명) 북문 도착 — 이름을 세 번씩 되뇐다"}
+- {id: ev_bk_first_convoy_market, date: "312-10-15", npcs: [npc_vix, npc_rolf], from: "07:00", to: "15:00", at: bk_sm_block, doing: "회색여울 40명 선매 인도 — 세렌 중개인 몫. 롤프가 넷의 이름 앞에서 호가를 멈춘다"}
+- {id: ev_bk_first_convoy_severin, date: "312-10-15", npcs: [npc_severin_targul], from: "16:00", to: "19:00", at: bk_sm_ledger, doing: 선매분의 1할을 확인한다}
+- {id: ev_bk_lea_report_read, date: "312-10-26", npcs: [npc_irmas], from: "21:00", to: "23:59", at: bk_perch_longshadow, doing: "레아의 보고('카스파르가 탈주자를 방관한다')를 읽고 다시 봉한다"}
+
+# ── 긴밤월 (11) — 섭정 회의의 겨울 ──
+- {id: ev_bk_aurax_envoy_morkan, date: "312-11-06", npcs: [npc_morkan], from: "20:00", to: "21:00", at: bk_gw_captain, doing: "붉은 홀에서 온 네 번째 사람 — '근위대는 막사에 있다'"}
+- {id: ev_bk_nightfire_orsel, date: "312-11-15", npcs: [npc_cadel_hask], from: "04:00", to: "09:00", at: bk_dock_hold, doing: "곡창 7동 곡물 세 배째 — 짐칸 숨구멍이 막힌다"}
+- {id: ev_bk_covenant_agenda, date: "312-11-20", npcs: [npc_severin_targul, npc_branek, npc_aurelia_vesperin, npc_morkan], from: "12:00", to: "17:00", at: bk_hall_five_chairs, doing: "비상 섭정 회의 — 맹약회의 수석 대표 안건('잔향 대숙청'). 3/5 연서 실패 (클락 2)"}
+- {id: ev_bk_covenant_agenda_tilde, date: "312-11-20", npcs: [npc_tilde], from: "12:00", to: "17:00", at: bk_hall_lamp_store, doing: 벽 틈 — 안건을 처음부터 끝까지 듣는다}
+- {id: ev_bk_tilde_to_nora, date: "312-11-23", npcs: [npc_tilde], from: "23:00", to: "23:59", at: bk_sewer_third, doing: 등잔 회합 — 맹약회의 안건을 넘긴다}
+
+# ── 굶주림월 (12) — 2차 호송 ──
+- {id: ev_bk_second_convoy_gate, date: "312-12-08", npcs: [npc_ebert], from: "16:00", to: "18:00", at: bk_north_gate, doing: "회색여울 2차 매각 호송(31명) 북문 도착 — 하룻밤 쇠 울"}
+- {id: ev_bk_second_convoy_dock, date: "312-12-09", npcs: [npc_cadel_hask, npc_oswald], from: "06:00", to: "18:00", at: bk_dock_quay, doing: "회색여울 31명(사라 포함)을 세베로의 '소금 바늘'호 짐칸에 싣는다 — 위에 곡물 자루"}
+- {id: ev_bk_second_convoy_dock_vix, date: "312-12-09", npcs: [npc_vix], from: "08:00", to: "11:00", at: bk_dock_quay, doing: 선적 명단을 선매 장부와 맞춘다}
+- {id: ev_bk_salt_needle_sails, date: "312-12-10", npcs: [npc_cadel_hask], from: "04:00", to: "06:00", at: bk_dock_quay, doing: "소금 바늘호 새벽 출항 종 — 출항 명부 '물 손실'은 아직 빈칸"}
+- {id: ev_bk_salt_needle_oswald, date: "312-12-10", npcs: [npc_oswald], from: "04:00", to: "05:00", at: bk_dock_collar_post, doing: 출항 종에 등을 돌린다 — 그날 손가락이 '짐칸 셋, 물 없음'을 말한다}
+- {id: ev_bk_varen_learns_dock, date: "312-12-09", npcs: [npc_varen_raven], from: "18:00", to: "21:00", at: bk_dock_tavern, doing: 녹슨 닻에서 형의 농노가 배에 실린 것을 듣고 술을 마신다}
+- {id: ev_bk_ebert_falls, date: "312-12-20", npcs: [npc_ebert], from: "00:00", to: "23:59", at: bk_iron_door, doing: 회색 기침으로 하루를 눕는다 — 낭송이 멈춘다}
+- {id: ev_bk_seren_loan, date: "312-12-20", npcs: [npc_aurelia_vesperin], from: "10:00", to: "17:00", at: bk_hall_seren_room, doing: "세렌 대출 상환 연장 협상 — 몬달리 사절"}
+- {id: ev_bk_hask_granary_hunger, date: "312-12-15", npcs: [npc_varen_hask], from: "17:00", to: "20:00", at: crown_farms__granary_seven, doing: "굶주림월 — 7동 밑을 세며 배급을 1.5그릇으로 줄이는 명부에 서명"}
+
+# ── 재의 날 (13) ──
+- {id: ev_bk_ash_days_lamp, date: "312-13-03", npcs: [npc_anselma, npc_harald, npc_benno], from: "22:00", to: "23:59", at: bk_sewer_third, doing: "재의 날 — 불 없이 아스테리온을 기린다. 벽의 연습판에 손가락으로"}
+- {id: ev_bk_ash_days_varskar, date: "312-13-03", npcs: [npc_nora], from: "22:00", to: "23:59", at: dragon_throne_peak__ash_nest, doing: "재의 날 밤 — 용황이 '또 그 저녁'이라 중얼거린다. 시간 잔상이 가장 짙다"}
+- {id: ev_bk_ash_days_valerius, date: "312-13-01", npcs: [npc_valerius_hastran], from: "18:00", to: "23:59", at: bk_sh_hastran, doing: 불을 피우지 않는 날 — 오히려 처음으로 잠든다}
+
+# ── 해빙월 (1) ──
+- {id: ev_bk_luga_hunters_north, date: "313-01-05", npcs: [npc_luga], from: "06:00", to: "10:00", at: bk_fang_board, doing: "서리 길 재개 — 코 열둘을 북쪽으로. 냄새 단지 셋째 칸을 들려 보낸다"}
+- {id: ev_bk_valerius_h_leaves, date: "313-01-10", npcs: [npc_valerius_hastran], from: "07:00", to: "09:00", at: bk_south_gate, doing: 궁정 철 끝 — 하스트 요새로 돌아간다}
+- {id: ev_bk_ebert_released_one, date: "313-01-25", npcs: [npc_ebert], from: "19:00", to: "21:00", at: bk_iron_door, doing: "규약 제3조 — 올해의 '놓아준 하나'를 정한다"}
+
+# ── 파종월 (2) — 노예 대시장 ──
+- {id: ev_bk_ring_house_hearth, date: "313-02-14", npcs: [npc_ebert], from: "21:00", to: "23:59", at: bk_iron_door, doing: "고리집 '아궁이 회합' — 목줄장 집안 일곱이 모인다. 롤프가 지팡이를 노린다"}
+- {id: ev_bk_isabel_sorting, date: "313-02-13", npcs: [npc_isabel_sarkos], from: "07:00", to: "21:00", at: bk_cs_sorting, doing: "대시장 전 분류 — '특수 물건' 질문 일곱을 하루 종일"}
+- {id: ev_bk_great_market_otmar, date: "313-02-15", npcs: [npc_otmar_sarkos], from: "07:00", to: "18:00", at: bk_cs_block, doing: "파종월 노예 대시장 — 경매사의 목소리 (성인 농노 2비늘까지 떨어진다)"}
+- {id: ev_bk_great_market_nebra, date: "313-02-15", npcs: [npc_nebra_sarkos], from: "07:00", to: "18:00", at: bk_cs_sarkos, doing: 대시장 — 상관 창문에서 낙찰가를 센다}
+- {id: ev_bk_great_market_rolf, date: "313-02-15", npcs: [npc_rolf], from: "07:00", to: "18:00", at: bk_cs_block, doing: "대시장 경매 보조 — '자!' 반란자를 직접 경매대에 세운다"}
+- {id: ev_bk_great_market_grim, date: "313-02-15", npcs: [npc_grim], from: "05:00", to: "19:00", at: bk_cs_brand, doing: 대시장 낙인 — 한 등급 낮춘 차액이 가장 많은 날}
+- {id: ev_bk_great_market_vix, date: "313-02-15", npcs: [npc_vix], from: "07:00", to: "18:00", at: bk_cs_block, doing: 쇠사슬 광장 낙찰가를 몰래 적는다 — 재상이 원한다}
+- {id: ev_bk_great_market_severin, date: "313-02-15", npcs: [npc_severin_targul], from: "09:00", to: "12:00", at: bk_chain_square, doing: 사르코스의 첫 낙찰가를 보러 내려온다}
+- {id: ev_bk_great_market_luga, date: "313-02-15", npcs: [npc_luga], from: "07:00", to: "18:00", at: bk_cs_sarkos, doing: 겨울 포획분을 사르코스에 넘긴다}
+- {id: ev_bk_great_market_valerius, date: "313-02-15", npcs: [npc_valerius], from: "09:00", to: "15:00", at: bk_cs_block, doing: 화염문 가 경매 패를 든다}
+- {id: ev_bk_great_market_anselma, date: "313-02-15", npcs: [npc_anselma], from: "07:00", to: "18:00", at: bk_chain_square, doing: 대시장 빨래 — 낙찰된 이름을 하나도 빼지 않고 외운다}
+- {id: ev_bk_great_market_harald, date: "313-02-16", npcs: [npc_harald], from: "21:00", to: "23:59", at: bk_sewer_forge, doing: "대시장 다음 날 — 팔려 간 이름으로 쇠 패를 새긴다"}
+
+# ── 꽃월 (3) — 흰 알 ──
+- {id: ev_bk_egg_hatch_isolde, date: "313-03-14", npcs: [npc_isolde], from: "00:00", to: "23:59", at: baalkar__frost_tower, doing: "흰 알 부화 (클락 1: 흰 알 지지 ×1.5)", condition: "흰 알 생존·조기 부화 아님"}
+- {id: ev_bk_egg_hatch_noeul, date: "313-03-14", npcs: [npc_noeul], from: "08:00", to: "13:00", at: baalkar__frost_cradle, doing: 공물 단에서 얼음이 노래하는 소리를 다시 듣는다, condition: "노을 생존"}
+- {id: ev_bk_egg_hatch_council, date: "313-03-15", npcs: [npc_volgas, npc_kaidor, npc_irmas], from: "10:00", to: "18:00", at: bk_hall_perch_gallery, doing: "부화 전령 — 섭정 칙령 별본 다툼 (흰목의 초안 vs 높은홰의 별본)", condition: "흰 알 부화"}
+- {id: ev_bk_egg_hatch_severian, date: "313-03-15", npcs: [npc_severian_kaldaran], from: "08:00", to: "20:00", at: bk_hall_oath_dais, doing: 서약 단상 홀에 혼자 앉아 있다, condition: "흰 알 부화"}
+
+# ── 푸른월 (4) — 맹약회의 준비 ──
+- {id: ev_bk_covenant_delegation, date: "313-04-02", npcs: [npc_severin_targul, npc_branek, npc_aurelia_vesperin, npc_morkan], from: "12:00", to: "17:00", at: bk_hall_five_chairs, doing: "맹약회의 사절단 구성 — 수석 대표 다툼 (클락 2)"}
+- {id: ev_bk_covenant_porters_ebert, date: "313-04-20", npcs: [npc_ebert, npc_rolf], from: "06:00", to: "16:00", at: bk_sm_block, doing: 맹약회의 인간 짐꾼 40명 선발 — 수석 목줄장이 명단을 쓴다}
+- {id: ev_bk_covenant_porters_vix, date: "313-04-20", npcs: [npc_vix], from: "06:00", to: "16:00", at: bk_sm_block, doing: 짐꾼 40의 번호를 장부에 올린다}
+- {id: ev_bk_covenant_departs, date: "313-04-25", npcs: [npc_cadel_hask], from: "04:00", to: "08:00", at: bk_dock_quay, doing: 맹약회의 사절단 배 출항 — 서약섬으로}
+
+# ── 태양월 (5) ──
+- {id: ev_bk_scale_rite_cancelled, date: "313-05-01", npcs: [npc_livia_kaldaran], from: "06:00", to: "10:00", at: bk_hall_oath_dais, doing: "비늘 의례 취소 선포 — 용황이 나오지 않는다 (계승 위기의 공개 신호)"}
+- {id: ev_bk_scale_rite_cancelled_sev, date: "313-05-01", npcs: [npc_severian_kaldaran], from: "06:00", to: "10:00", at: bk_hall_oath_dais, doing: 취소 식순 곁에 선다 — 창밖 용좌봉을 본다}
+
+# ── 건초월~수확월 (6~7) ──
+- {id: ev_bk_auditor_dispatch, date: "313-06-20", npcs: [npc_arden_kaldaran], from: "08:00", to: "12:00", at: bk_hall_grey_ledger, doing: "수확월 인두세 감사관을 회색여울로 보낸다 — 헨릭의 352와 비늘 시장 '사망' 넷 대조 지시"}
+- {id: ev_bk_poll_tax, date: "313-07-01", npcs: [npc_volgas], from: "10:00", to: "18:00", at: bk_hall_perch_gallery, doing: "수확월 인두세 — 높은홰 장부와 회색 장부의 3,000"}

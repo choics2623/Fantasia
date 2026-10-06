@@ -1,0 +1,85 @@
+# 바알카르 1차 확장 카드 (22_NPC_PERSONA.md). 인물 문서: docs/world/people/baalkar.md P1-18
+id: "npc_otmar_sarkos"
+name: "오트마르 사르코스"
+aka: ["경매사", "쇠사슬 광장 관리인", "좋은 목소리"]
+tier: B
+type: living
+race: "용인"
+subrace: "비늘혈"
+sex: "남"
+age: 148
+region: 드라크마르 용좌령
+home: "쇠사슬 광장 사르코스 상관 (아래층)"
+job: "쇠사슬 광장 관리인, 대시장 경매사"
+rank: "사르코스 여백작의 남동생"
+summary: "목소리가 좋다. 그것 말고는 없다는 것을 누나가 안다. 낙찰 증서에 찍는 인장 반지를 쥐고 있다"
+source: docs/world/people/baalkar.md:518
+life:
+  - {year: 164, age: 0, event: "사르코스 가에서 태어남"}
+  - {year: 240, age: 76, event: "대시장 첫 경매 — 목소리 하나로 낙찰가를 1할 올렸다"}
+  - {year: 312, age: 148, event: "낙엽월 1일 기준 — 대시장 준비. 인장 반지를 내기판에 건 밤이 이번 달만 넷"}
+appearance:
+  - "가슴이 넓고 목이 굵다"
+  - "오른손 검지에 낙찰 인장 반지"
+  - "늘 꿀물을 들고 다닌다"
+smell: "꿀과 포도주"
+voice_sound: "깊고 울린다 — 광장 끝까지 들린다"
+personality:
+  disposition: {용기: -10, 자비: -30, 정직: -20, 신앙: 0, 탐욕: 50, 충성: 30}
+  temperament: ["허세", "나약"]
+  habits:
+    - "말하기 전에 꿀물로 목을 축인다"
+  values: "목소리가 값을 만든다"
+  fears: ["누나"]
+  desires:
+    short: "대시장 최고가를 자기 목소리로"
+    long: "가주"
+voice:
+  register:
+    to_superior: "하십시오체"
+    to_equal: "하오체, 과장"
+    to_inferior: "경매 호가로"
+    to_player_default: "호가처럼 소개한다"
+  tics: ["'낙찰!'"]
+  use: ["호가", "낙찰", "패", "목소리"]
+  avoid: ["누나의 이름"]
+  length: "길다"
+  samples:
+    - {situation: "첫 만남", line: "자, 이 물건! 말을 한다! 말하는 물건은 첫 호가 다섯 비늘부터!"}
+    - {situation: "호의", line: "꿀물 한 모금? 목소리는 아껴야지. 너도 아껴."}
+    - {situation: "적대", line: "낙찰. 그 한마디면 너는 누구 것이든 된다."}
+    - {situation: "비밀 누설", line: "반지? 반지는… 아침이면 돌아와. 늘 돌아왔어. 누나한테는 말하지 마."}
+schedule:
+  아침: "쇠사슬 광장 낙인장 순회"
+  낮: "상관 아래층 — 대시장 패 정리"
+  저녁: "'반쪽 비늘' 선술집 내기판"
+  밤: "상관 아래층"
+places: ["쇠사슬 광장", "대시장 경매대", "비늘혈 선술집 반쪽 비늘"]
+knows: []
+hides:
+  - fact: fact_bk_otmar_ring
+    reveal_when: "선술집 내기판에서 그를 이기거나 신뢰 20"
+    cover: "'반지는 손가락에 있지 않나'"
+relations:
+  - {to: "npc_nebra_sarkos", type: "누나", like: 20, trust: 10, visibility: "공개", memo: null, words: "값을 매기는 누나. 나는 그 값을 외칠 뿐"}
+  - {to: "npc_rolf", type: "호가 경쟁자", like: -10, trust: 10, visibility: "공개", memo: null, words: "망치혀. 인간 주제에 목청이 나만 하다"}
+toward_player: "호가하듯 소개한다"
+persuade:
+  likes: ["목소리 칭찬", "내기"]
+  hates: ["누나와 비교"]
+roles:
+  teacher: null
+  companion: null
+  romance: null
+regression:
+  fixed:
+    - "인장 반지를 내기판에 건다"
+  deja_vu: none
+hard_rules:
+  - "사람을 호가로 부른다"
+on_death: "대시장 경매사 공백 — 롤프가 대신 외친다"
+story_seeds:
+  - "쥐들의 왕관 첫 임무 — 오트마르의 인장 반지를 가져와라 (fac_rat_crown). 내기판에 걸린 밤이 가장 쉽다"
+affiliations:
+  - {faction: "fac_sarkos", rank: null, office: "off_auctioneer", since: 240, loyalty: 40, public: true, cell: null}
+truths: []

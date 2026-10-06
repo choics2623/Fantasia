@@ -1,0 +1,352 @@
+# 바알카르 NPC 일과 (24 §2). 장소 id = content/base/settlements/baalkar.yaml. 원천: CHARACTERS 지역 #1, docs/world/people/baalkar.md, 카드의 schedule.
+# days: all | workday | sabbath | odd | even | weekday:[1..6] | monthday:[..]. 6일 주 — 4일째 정오가 다섯 불의 의자 회의.
+# 용좌봉(재의 둥지·서리 요람)은 outer — 도시에서 걸어 5~6시간. 날개 있는 자(진룡·와이번)는 일정(events)에서 mounted로 오간다.
+# 쉼표가 든 값은 큰따옴표로.
+
+# ── 용좌봉: 재의 둥지 ──
+npc_varskar:
+  home: dragon_throne_peak__ash_nest
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: dragon_throne_peak__ash_nest, doing: 거의 의식 없이 누워 있다 — 비늘이 떨어진다, fixed: true}
+    - {days: all, from: "14:00", to: "15:00", at: dragon_throne_peak__ash_nest, doing: 오후 한 시간 깨어 후계자를 접견한다, fixed: true}
+    - {days: all, from: "19:00", to: "23:00", at: dragon_throne_peak__ash_nest, doing: 열이 올라 옛 용언으로 헛소리}
+    - {days: all, from: "23:00", to: "03:00", at: dragon_throne_peak__ash_nest, doing: 맑은 시간 — 노라에게만 말한다, fixed: true}
+npc_nora:
+  home: dragon_throne_peak__palace_slaves
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: dragon_throne_peak__ash_nest, doing: "젖은 양가죽을 두르고 상처에 재 연고", fixed: true}
+    - {days: all, from: "10:00", to: "14:00", at: dragon_throne_peak__palace_slaves, doing: 궁 노예 숙소에서 네 시간 잠}
+    - {days: all, from: "14:00", to: "15:00", at: dragon_throne_peak__ash_nest, doing: 접견 시중 — 바닥의 셋째 판석}
+    - {days: all, from: "17:00", to: "19:00", at: dragon_throne_peak__sound_room, doing: 피직과 궁정 소문 교환}
+    - {days: "monthday:[5,15,25]", from: "19:00", to: "20:30", at: dragon_throne_peak__ash_pits, doing: "재구덩이 셋째 줄 곁 — 세탁장 물통으로 등잔의 전갈을 받는다"}
+    - {days: all, from: "22:00", to: "05:00", at: dragon_throne_peak__ash_nest, doing: 용황 곁 — 그가 말하는 것을 듣는다, fixed: true}
+npc_fizik:
+  home: dragon_throne_peak__sound_room
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: dragon_throne_peak, doing: 굴뚝 점검}
+    - {days: all, from: "09:00", to: "17:00", at: dragon_throne_peak__sound_room, doing: 배관 수리 — 실은 벽 너머 엿듣기}
+    - {days: all, from: "17:00", to: "19:00", at: dragon_throne_peak__sound_room, doing: 노라와 소문 교환}
+    - {days: "weekday:[2,5]", from: "19:00", to: "24:00", at: dragon_throne_peak__outer_stair, doing: 공물 계단을 내려갈 채비 — 송곳니 회관에 팔 소문을 고른다}
+    - {days: all, from: "23:00", to: "05:00", at: dragon_throne_peak__sound_room, doing: 소리 방에서 잔다 — 둥지 최상층의 말이 들린다}
+npc_edun:
+  home: dragon_throne_peak__palace_slaves
+  blocks:
+    - {days: all, from: "04:00", to: "07:00", at: dragon_throne_peak__scale_heap, doing: 밤사이 떨어진 비늘을 센다 — 셋 중 하나는 막대에 긋지 않는다, fixed: true}
+    - {days: all, from: "07:00", to: "16:00", at: dragon_throne_peak, doing: 공물 계단 감독 — 운반자 200, alt: {p: 0.1, at: bk_seren_house, doing: 물방에 비늘을 판다}}
+    - {days: all, from: "16:00", to: "21:00", at: dragon_throne_peak__palace_slaves, doing: 시종장 방 — 장부}
+    - {days: all, from: "21:00", to: "04:00", at: dragon_throne_peak__palace_slaves, doing: 잔다 — 기침}
+npc_noeul:
+  home: dragon_throne_peak__palace_slaves
+  blocks:
+    - {days: all, from: "03:00", to: "08:00", at: dragon_throne_peak, doing: 공물 지게를 지고 계단을 오른다, outdoor: true}
+    - {days: all, from: "08:00", to: "13:00", at: baalkar__frost_cradle, doing: 서리 요람 공물 단 — 고기와 약초를 내려놓고 알 쪽으로 귀를 기울인다, alt: {p: 0.2, at: dragon_throne_peak__scale_heap, doing: 증기가 짙어 비늘 창고 일을 돕는다}}
+    - {days: all, from: "13:00", to: "18:00", at: dragon_throne_peak, doing: 계단을 내려온다}
+    - {days: all, from: "18:00", to: "03:00", at: dragon_throne_peak__palace_slaves, doing: 운반자 칸 — 오빠의 표찰을 쥐고 잔다}
+# ── 용좌봉: 서리 요람 ──
+npc_isolde:
+  home: baalkar__frost_tower
+  blocks:
+    - {days: all, from: "04:00", to: "10:00", at: baalkar__frost_tower, doing: 알을 감싸고 숨으로 데운다, fixed: true}
+    - {days: all, from: "10:00", to: "16:00", at: baalkar__frost_tower, doing: 탑 꼭대기에서 남쪽 하늘 경계}
+    - {days: all, from: "16:00", to: "20:00", at: baalkar__frost_cradle, doing: 크릭 시녀들에게 알 주변 정화 지시}
+    - {days: all, from: "20:00", to: "04:00", at: baalkar__frost_tower, doing: 잠들지 않는다 — 알 곁}
+npc_white_egg:
+  home: baalkar__frost_tower
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: baalkar__frost_tower, doing: 서리 속에 놓여 있다 — 껍질 속 소리, fixed: true}
+npc_soom:
+  home: baalkar__frost_tower_maids
+  blocks:
+    - {days: all, from: "05:00", to: "10:00", at: baalkar__frost_tower, doing: "알 보관실 바닥 닦기, 서리 걷어 내기"}
+    - {days: all, from: "10:00", to: "16:00", at: baalkar__frost_cradle, doing: 정화 약초 불 피우기 — 공물 단의 운반자들을 본다}
+    - {days: all, from: "16:00", to: "20:00", at: baalkar__frost_cradle, doing: 이졸데의 정화 지시를 받는다}
+    - {days: all, from: "20:00", to: "05:00", at: baalkar__frost_tower_maids, doing: 눈을 감고 이졸데의 숨소리를 센다}
+# ── 불꽃 홀 ──
+npc_aurax:
+  home: bk_hall_red_hall
+  blocks:
+    - {days: all, from: "07:00", to: "11:00", at: bk_hall_red_hall, doing: 붉은 홀에서 용인 대가문 가주 접견}
+    - {days: "weekday:[2,5]", from: "11:00", to: "18:00", at: red_spire, doing: 용의 대로 순시 비행 — 붉은 첨탑에 내려앉는다}
+    - {days: all, from: "19:00", to: "23:00", at: bk_hall_red_hall, doing: 붉은 홀 연회 — 노예 경기 관람}
+    - {days: all, from: "23:00", to: "05:00", at: dragon_throne_peak__outer_stair, doing: 아버지 둥지 밖에서 숨소리를 듣는다}
+npc_kaidor:
+  home: bk_hall_seal_room
+  blocks:
+    - {days: all, from: "06:00", to: "11:00", at: bk_hall_seal_room, doing: 칙령 초안 — 크릭 서기 셋이 대신 쓴다}
+    - {days: workday, from: "11:00", to: "16:00", at: bk_hall_perch_gallery, doing: 원로회 회의}
+    - {days: "weekday:[3]", from: "13:00", to: "16:00", at: bk_hall_seren_room, doing: 세렌 사절 접견}
+    - {days: all, from: "18:00", to: "21:00", at: bk_scale_hill, doing: 순혈 가주들과 견제 만찬}
+    - {days: all, from: "22:00", to: "23:00", at: baalkar__frost_cradle, doing: 서리 탑 상공을 한 바퀴 — 알의 안위 확인}
+    - {days: all, from: "23:00", to: "06:00", at: bk_hall_seal_room, doing: 인장실 홰에서 잔다 — 인장은 목에}
+npc_severian_kaldaran:
+  home: bk_sh_kaldaran
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: bk_sh_kaldaran, doing: 일어나 목의 열쇠를 확인한다}
+    - {days: workday, from: "07:00", to: "17:00", at: bk_hall_steward, doing: "집사 집무실 — 서약 단상·의전·회색 장부 결재"}
+    - {days: "monthday:[1,6,11,16,21,26]", from: "07:00", to: "17:00", at: dragon_throne_peak__outer_stair, doing: 병상 문 앞 — 접견 순서를 정하고 둥지에서 밤을 지새운다}
+    - {days: "monthday:[1,6,11,16,21,26]", from: "17:00", to: "24:00", at: dragon_throne_peak__ash_nest, doing: 병상 곁 — '뜻'을 듣는다}
+    - {days: all, from: "18:00", to: "21:00", at: bk_sh_kaldaran, doing: 대공비와 만찬 — 단상 날짜를 묻는 말을 듣는다}
+    - {days: "monthday:[10,20,30]", from: "22:00", to: "23:30", at: bk_hall_third_drawer, doing: 셋째 서랍을 연다}
+    - {days: all, from: "21:00", to: "05:00", at: bk_sh_kaldaran, doing: 관저에서 잔다}
+    - {days: sabbath, from: "09:00", to: "17:00", at: bk_hall_oath_dais, doing: 서약 단상 홀에 혼자 앉아 있다}
+npc_severin_targul:
+  home: bk_sh_targul
+  blocks:
+    - {days: all, from: "06:00", to: "09:00", at: bk_sh_targul, doing: 세렌 중개인과 시장 대리인의 보고}
+    - {days: workday, from: "09:00", to: "17:00", at: bk_hall_chancellery, doing: 재상청 결재}
+    - {days: "weekday:[4]", from: "12:00", to: "15:00", at: bk_hall_five_chairs, doing: 다섯 불의 의자 회의 주재, fixed: true}
+    - {days: "weekday:[2,5]", from: "17:00", to: "19:00", at: bk_sm_ledger, doing: 비늘 시장 장부 대조}
+    - {days: all, from: "19:00", to: "22:00", at: bk_sh_targul, doing: 가주들과 만찬, alt: {p: 0.15, at: bk_hall_red_hall, doing: 붉은 홀에 조용히 다녀온다}}
+    - {days: all, from: "22:00", to: "06:00", at: bk_sh_targul, doing: 정본 장부에 1할을 옮겨 적고 잔다}
+npc_morkan:
+  home: bk_gw_captain
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: bk_gw_barracks, doing: 근위 교대 — 공물 계단·불꽃 홀·층계 검문 배치, fixed: true}
+    - {days: workday, from: "07:00", to: "17:00", at: bk_gw_captain, doing: 근위대장 집무실}
+    - {days: "weekday:[4]", from: "12:00", to: "15:00", at: bk_hall_five_chairs, doing: 다섯 불의 의자 — 침묵}
+    - {days: all, from: "17:00", to: "21:00", at: bk_gw_cells, doing: "막사 순시, 감옥 점검"}
+    - {days: all, from: "21:00", to: "00:30", at: bk_gw_barracks, doing: 막사 지붕에서 용좌봉 증기를 센다}
+    - {days: all, from: "00:30", to: "05:00", at: bk_gw_captain, doing: 갑옷을 입은 채 잔다}
+npc_branek:
+  home: bk_gw_knights_post
+  blocks:
+    - {days: all, from: "05:30", to: "09:00", at: bk_gw_knights_post, doing: "명단 정리, 밀고 접수"}
+    - {days: workday, from: "09:00", to: "16:00", at: bk_ashcatch, doing: 징후자 색출 순찰, alt: {p: 0.4, at: bk_human_quarter, doing: 인간 막사 구역 색출}, rain: {at: bk_gw_knights_post, doing: 비 — 칼을 갈지 않고 명단만 본다}}
+    - {days: "weekday:[4]", from: "12:00", to: "15:00", at: bk_hall_five_chairs, doing: 다섯 불의 의자 — 아우락스의 표}
+    - {days: all, from: "17:00", to: "19:00", at: bk_hall_red_hall, doing: 붉은 홀에 보고}
+    - {days: all, from: "20:00", to: "05:30", at: bk_gw_knights_post, doing: 분소 숙소}
+npc_aurelia_vesperin:
+  home: bk_sh_vesperin
+  blocks:
+    - {days: workday, from: "07:00", to: "12:00", at: bk_hall_treasury, doing: 재무청 출납}
+    - {days: workday, from: "13:00", to: "17:00", at: bk_seren_house, doing: 세렌 상관 물방 — 이자 셈, alt: {p: 0.4, at: bk_hall_seren_room, doing: 사절 접견실}}
+    - {days: "weekday:[4]", from: "12:00", to: "15:00", at: bk_hall_five_chairs, doing: 다섯 불의 의자 — 멜리산드의 표}
+    - {days: all, from: "18:00", to: "07:00", at: bk_sh_vesperin, doing: 멜리산드에게 숫자 편지를 쓰고 잔다}
+npc_arden_kaldaran:
+  home: bk_sh_kaldaran
+  blocks:
+    - {days: workday, from: "07:00", to: "18:00", at: bk_hall_grey_ledger, doing: "회색 장부 — 낙인·사망·매각 집계"}
+    - {days: all, from: "18:00", to: "20:00", at: bk_sh_kaldaran, doing: 아버지에게 숫자 보고}
+    - {days: all, from: "20:00", to: "23:00", at: bk_sh_kaldaran, doing: 관저 서재 — 높은홰 장부 사본과 대조}
+    - {days: all, from: "23:00", to: "07:00", at: bk_sh_kaldaran, doing: 잔다}
+npc_livia_kaldaran:
+  home: bk_sh_kaldaran
+  blocks:
+    - {days: all, from: "06:00", to: "10:00", at: bk_hall_ceremony, doing: 접견 순서와 좌석표}
+    - {days: workday, from: "10:00", to: "17:00", at: bk_flame_hall, doing: "불꽃 홀 각 방의 의례 준비", alt: {p: 0.3, at: bk_hall_oath_dais, doing: 서약 단상 홀 점검}}
+    - {days: all, from: "18:00", to: "21:00", at: bk_sh_kaldaran, doing: 칼다란 관저 만찬}
+    - {days: all, from: "21:00", to: "23:00", at: bk_hall_ceremony, doing: 식순 문안}
+    - {days: all, from: "23:00", to: "06:00", at: bk_sh_kaldaran, doing: 잔다}
+npc_cedric_kaldaran:
+  home: bk_hall_steward
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: bk_hall_steward, doing: 할아버지의 서류 정리}
+    - {days: all, from: "12:00", to: "18:00", at: bk_flame_hall, doing: 불꽃 홀 심부름}
+    - {days: all, from: "18:00", to: "22:00", at: bk_sh_kaldaran, doing: 관저}
+    - {days: all, from: "22:00", to: "06:00", at: bk_hall_steward, doing: 곁방 — 문틈}
+npc_rosalind_kaldaran:
+  home: bk_sh_kaldaran
+  blocks:
+    - {days: all, from: "07:00", to: "12:00", at: bk_sh_kaldaran, doing: 하스트란 서신}
+    - {days: all, from: "12:00", to: "17:00", at: bk_scale_hill, doing: 가문 부인들 방문, alt: {p: 0.3, at: bk_sh_hastran, doing: 하스트란 저택 — 사촌 오라비}}
+    - {days: all, from: "18:00", to: "07:00", at: bk_sh_kaldaran, doing: 만찬 — 단상 날짜를 묻는다}
+npc_volgas:
+  home: bk_perch_highperch
+  blocks:
+    - {days: all, from: "06:00", to: "10:00", at: bk_perch_highperch, doing: 서기들의 장부 보고}
+    - {days: workday, from: "10:00", to: "16:00", at: bk_hall_perch_gallery, doing: 원로회 회의 — 높은홰 장부실}
+    - {days: all, from: "16:00", to: "18:00", at: bk_perch_towers, doing: 홰탑 상공을 돈다, outdoor: true}
+    - {days: all, from: "18:00", to: "06:00", at: bk_perch_highperch, doing: 금고 곁의 홰}
+npc_irmas:
+  home: bk_perch_longshadow
+  blocks:
+    - {days: all, from: "05:00", to: "10:00", at: bk_perch_longshadow, doing: "목줄장·감찰관 보고"}
+    - {days: workday, from: "10:00", to: "16:00", at: bk_hall_perch_gallery, doing: 원로회 — 질문으로 대답한다}
+    - {days: "monthday:[7,22]", from: "16:00", to: "21:00", at: bk_perch_longshadow, doing: 홰 아래에서 에베르트의 보고를 받는다}
+    - {days: all, from: "21:00", to: "05:00", at: bk_perch_longshadow, doing: 홰}
+npc_morna:
+  home: bk_perch_ashwing
+  blocks:
+    - {days: all, from: "06:00", to: "10:00", at: bk_perch_ashwing, doing: 배당 명부}
+    - {days: workday, from: "10:00", to: "16:00", at: bk_hall_perch_gallery, doing: 원로회}
+    - {days: all, from: "16:00", to: "06:00", at: bk_perch_ashwing, doing: 홰}
+npc_dravan:
+  home: red_spire
+  blocks:
+    - {days: all, from: "00:00", to: "24:00", at: red_spire, doing: 붉은 첨탑 둥지}
+    - {days: "weekday:[2,5]", from: "19:00", to: "23:00", at: bk_hall_red_hall, doing: 붉은 홀 연회 — 아버지 곁}
+# ── 비늘 언덕·잉크 거리 ──
+npc_valerius:
+  home: bk_sh_flamegate
+  blocks:
+    - {days: all, from: "08:00", to: "11:00", at: bk_sh_flamegate, doing: 분을 바르고 용인 집사들에게 지시}
+    - {days: workday, from: "11:00", to: "17:00", at: bk_ink_signing, doing: "가주들과 장부·서명 협상", alt: {p: 0.4, at: bk_sh_flamegate, doing: 저택에서 협상}}
+    - {days: all, from: "18:00", to: "23:00", at: bk_sh_flamegate, doing: "아우락스 쪽 금 송금 확인, 연회"}
+    - {days: all, from: "23:00", to: "08:00", at: bk_sh_flamegate, doing: 장부를 다시 센다}
+npc_greta:
+  home: bk_sh_flamegate_laundry
+  blocks:
+    - {days: all, from: "04:30", to: "18:30", at: bk_sh_flamegate_laundry, doing: "불 피우기, 빨래, 다림질", fixed: true}
+    - {days: all, from: "18:30", to: "20:00", at: bk_sh_servant_passage, doing: 세탁물 배달 — 하인 통로}
+    - {days: all, from: "20:00", to: "04:30", at: bk_sh_flamegate_laundry, doing: 세탁장 곁방에서 눈을 붙인다}
+npc_valerius_hastran:
+  home: bk_sh_hastran
+  blocks:
+    - {days: all, from: "06:00", to: "10:00", at: bk_sh_hastran, doing: 기사단 전령 보고}
+    - {days: workday, from: "10:00", to: "15:00", at: bk_south_gate, doing: 남문 수비 점검, alt: {p: 0.3, at: bk_hall_red_hall, doing: 붉은 홀에 문안}}
+    - {days: all, from: "16:00", to: "18:00", at: bk_sh_hastran, doing: 해가 지기 전에 등잔을 직접 끈다}
+    - {days: all, from: "18:00", to: "06:00", at: bk_sh_hastran, doing: 불 꺼진 저택 — 어둠 속에 앉아 있다}
+npc_mariel_hastran:
+  home: bk_south_gate
+  blocks:
+    - {days: all, from: "05:00", to: "17:00", at: bk_south_gate, doing: 남문 수비 — 통행 기록, outdoor: true}
+    - {days: all, from: "18:00", to: "01:00", at: bk_scale_tavern, doing: 반쪽 비늘 내기판}
+    - {days: all, from: "01:00", to: "05:00", at: bk_south_gate, doing: 남문 관사}
+npc_isaac:
+  home: bk_ink_scriptorium
+  blocks:
+    - {days: all, from: "05:30", to: "12:00", at: bk_ink_scriptorium, doing: 궁정 연대기 필사, fixed: true}
+    - {days: all, from: "12:00", to: "18:00", at: bk_ink_scriptorium, doing: 테오 볼드의 받아쓰기}
+    - {days: workday, from: "19:00", to: "21:00", at: bk_ink_scriptorium, doing: 서기실 정리 — 서기 넷에게 몰래 글자}
+    - {days: all, from: "21:00", to: "05:30", at: bk_ink_scriptorium, doing: 서기실 곁 짚방}
+npc_theo_bold:
+  home: bk_ink_bold
+  blocks:
+    - {days: all, from: "08:00", to: "11:00", at: bk_ink_bold, doing: 볼드 저택 — 누나의 편지를 피한다}
+    - {days: workday, from: "11:00", to: "16:00", at: bk_ink_scriptorium, doing: 연대기 받아쓰기}
+    - {days: "weekday:[1,3]", from: "16:00", to: "18:00", at: bk_ink_fire_school, doing: 불의 학당 강의}
+    - {days: all, from: "18:00", to: "08:00", at: bk_ink_bold, doing: 저택}
+npc_varen_raven:
+  home: bk_lc_raven_room
+  blocks:
+    - {days: all, from: "06:00", to: "10:00", at: bk_lc_raven_room, doing: 형에게 편지}
+    - {days: workday, from: "10:00", to: "16:00", at: bk_flame_hall, doing: 불꽃 홀 회랑 대기 — 칼다란 하급 관리와 면담}
+    - {days: all, from: "17:00", to: "22:00", at: bk_scale_tavern, doing: 반쪽 비늘에서 빚을 진다}
+    - {days: all, from: "22:00", to: "06:00", at: bk_lc_raven_room, doing: 여울강 지도의 쇠다리를 문지른다}
+# ── 시장·광장·회관 ──
+npc_vix:
+  home: bk_sm_ledger
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: bk_sm_pens, doing: "진열 우리 열기, 물 먹이기 감독", fixed: true}
+    - {days: workday, from: "07:00", to: "17:00", at: bk_sm_block, doing: 경매대 — 장부}
+    - {days: all, from: "17:00", to: "21:00", at: bk_sm_ledger, doing: 두 장부}
+    - {days: all, from: "21:00", to: "05:00", at: bk_sm_ledger, doing: 장부실 다락}
+npc_rolf:
+  home: bk_sm_collar_office
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: bk_sm_block, doing: "경매대 점검, 오늘의 물건 목록 외우기"}
+    - {days: workday, from: "07:00", to: "17:00", at: bk_sm_block, doing: 경매 보조 — 호가를 대신 외친다}
+    - {days: all, from: "17:00", to: "19:00", at: bk_sm_collar_office, doing: 목줄단 지부 명단과 값을 맞춘다}
+    - {days: all, from: "19:00", to: "21:00", at: bk_iron_door, doing: 쇠문 막사 목줄장 보고 — 에베르트의 지팡이를 본다}
+    - {days: all, from: "21:00", to: "01:00", at: bk_dock_tavern, doing: 녹슨 닻에서 용인 집사들에게 소문을 판다}
+    - {days: all, from: "01:00", to: "05:00", at: bk_sm_collar_office, doing: 경매대 뒤 사무실}
+npc_anselma:
+  home: bk_sm_laundry
+  blocks:
+    - {days: all, from: "04:30", to: "12:00", at: bk_sm_laundry, doing: 매물 옷 빨래 — 왼쪽 귀를 벽에, fixed: true}
+    - {days: workday, from: "12:00", to: "15:00", at: bk_cs_sorting, doing: 분류실 천 수거}
+    - {days: all, from: "15:00", to: "18:00", at: bk_sm_laundry, doing: 빨래 — 장부실 벽 너머}
+    - {days: all, from: "18:00", to: "19:30", at: bk_sm_trough, doing: "시장 물통 — 노예말 소문, 시장 손들의 보고"}
+    - {days: "monthday:[3,13,23]", from: "23:00", to: "01:00", at: bk_sewer_third, doing: 등잔 회합}
+    - {days: all, from: "19:30", to: "04:30", at: bk_sm_laundry, doing: 세탁장 곁방}
+npc_nebra_sarkos:
+  home: bk_cs_sarkos
+  blocks:
+    - {days: all, from: "07:00", to: "10:00", at: bk_cs_sarkos, doing: "울타리 셋 전령, 바르그 포획분 보고"}
+    - {days: workday, from: "10:00", to: "16:00", at: bk_cs_brand, doing: "낙인장 감독, 분류실 결재", alt: {p: 0.3, at: bk_cs_sorting, doing: 분류실}}
+    - {days: all, from: "16:00", to: "07:00", at: bk_cs_sarkos, doing: 상관 위층 — 장부}
+npc_otmar_sarkos:
+  home: bk_cs_sarkos
+  blocks:
+    - {days: all, from: "08:00", to: "12:00", at: bk_chain_square, doing: 낙인장 순회}
+    - {days: all, from: "12:00", to: "18:00", at: bk_cs_sarkos, doing: 대시장 패 정리}
+    - {days: all, from: "19:00", to: "02:00", at: bk_scale_tavern, doing: 내기판 — 인장 반지}
+    - {days: all, from: "02:00", to: "08:00", at: bk_cs_sarkos, doing: 상관 아래층}
+npc_isabel_sarkos:
+  home: bk_cs_sorting
+  blocks:
+    - {days: all, from: "07:00", to: "12:00", at: bk_cs_sorting, doing: 분류실 — 질문 일곱}
+    - {days: workday, from: "12:00", to: "17:00", at: bk_cs_brand, doing: 등급 낙인장}
+    - {days: all, from: "17:00", to: "19:00", at: bk_cs_sarkos, doing: 어머니에게 분류 보고}
+    - {days: all, from: "19:00", to: "07:00", at: bk_cs_sorting, doing: 분류실 곁방 — 등잔 하나}
+npc_grim:
+  home: bk_cs_brand
+  blocks:
+    - {days: all, from: "05:00", to: "17:00", at: bk_cs_brand, doing: 등급 낙인}
+    - {days: all, from: "17:00", to: "05:00", at: bk_cs_brand, doing: 감독관 방 — 차액을 센다}
+npc_skik:
+  home: bk_bent_back_hall
+  blocks:
+    - {days: all, from: "04:30", to: "07:00", at: bk_bent_back_hall, doing: 감독관 배정표}
+    - {days: workday, from: "07:00", to: "12:00", at: bk_hq_chain_post, doing: 태형 참관 — 집행은 부하}
+    - {days: workday, from: "12:00", to: "17:00", at: baalkar__scale_market, doing: 시장 순회, alt: {p: 0.5, at: baalkar__chain_dock, doing: 부두 순회}}
+    - {days: all, from: "17:00", to: "20:00", at: bk_bent_back_hall, doing: 집행표 기록 — 오른손을 감싼다}
+    - {days: all, from: "20:00", to: "04:30", at: bk_bent_back_hall, doing: 회관 위층}
+npc_luga:
+  home: bk_fang_den
+  blocks:
+    - {days: all, from: "06:00", to: "11:00", at: bk_fang_board, doing: "현상 수배판 갱신, 코들의 보고"}
+    - {days: workday, from: "11:00", to: "15:00", at: bk_cs_sarkos, doing: 사르코스와 포획분 흥정, alt: {p: 0.5, at: bk_fang_board, doing: 회관 흥정}}
+    - {days: all, from: "15:00", to: "21:00", at: baalkar__fang_hall, doing: 회관}
+    - {days: all, from: "21:00", to: "22:00", at: bk_fang_jars, doing: 냄새 단지 셋째 칸을 연다}
+    - {days: all, from: "22:00", to: "06:00", at: bk_fang_den, doing: 굴}
+npc_chik:
+  home: bk_ash_alley
+  blocks:
+    - {days: all, from: "05:00", to: "11:00", at: bk_ash_alley, doing: 쓰레기 더미 뒤지기}
+    - {days: all, from: "11:00", to: "17:00", at: baalkar__scale_market, doing: 시장 소매치기, alt: {p: 0.3, at: bk_ash_hearth, doing: 베노의 아궁이 재를 훔쳐 먹는다}}
+    - {days: all, from: "17:00", to: "23:00", at: bk_human_quarter, doing: 인간 노예 숙소 지붕에서 잠자리 찾기}
+    - {days: all, from: "23:00", to: "05:00", at: bk_scale_hill, doing: 굴뚝을 타고 귀족 저택에 침입 — 음식만}
+# ── 2층·1층 ──
+npc_ebert:
+  home: bk_iron_door
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: bk_iron_door, doing: 밤사이 목줄들의 이름 보고}
+    - {days: workday, from: "09:00", to: "16:00", at: baalkar__scale_market, doing: 순회 — 지팡이 걸음, alt: {p: 0.5, at: baalkar__chain_dock, doing: 부두 순회}}
+    - {days: all, from: "16:00", to: "19:00", at: bk_human_quarter, doing: 인간 막사 구역 순회}
+    - {days: all, from: "19:00", to: "21:00", at: bk_iron_door, doing: 목줄장 보고, fixed: true}
+    - {days: all, from: "21:00", to: "05:00", at: bk_iron_door, doing: 안방 — 낭송 연습과 기침}
+npc_oswald:
+  home: bk_dock_collar_post
+  blocks:
+    - {days: all, from: "04:00", to: "05:00", at: bk_dock_collar_post, doing: 새벽 출항 종 — 강을 보며 등을 돌린다, fixed: true}
+    - {days: workday, from: "05:00", to: "19:00", at: bk_dock_quay, doing: "하역장·크레인 — 할당 막대"}
+    - {days: "weekday:[5]", from: "19:00", to: "21:00", at: bk_iron_door, doing: 쇠문 막사 보고 — '이름 없음'}
+    - {days: all, from: "21:00", to: "04:00", at: bk_dock_collar_post, doing: 초소 — 딸의 빗}
+npc_cadel_hask:
+  home: bk_dock_office
+  blocks:
+    - {days: all, from: "04:00", to: "06:00", at: bk_dock_quay, doing: 새벽 출항 종 — 출항 명부, fixed: true}
+    - {days: workday, from: "06:00", to: "17:00", at: bk_dock_office, doing: 크레인 감독과 명부, alt: {p: 0.4, at: bk_dock_hold, doing: 짐칸 적재 감독}}
+    - {days: all, from: "17:00", to: "23:00", at: bk_dock_tavern, doing: 녹슨 닻 — 선장들과 짐칸 흥정}
+    - {days: all, from: "23:00", to: "04:00", at: bk_dock_office, doing: 위층}
+npc_varen_hask:
+  home: crown_farms
+  blocks:
+    - {days: all, from: "05:00", to: "07:00", at: crown_farms, doing: 농장 점호 참관}
+    - {days: workday, from: "07:00", to: "17:00", at: crown_farms, doing: 드레이크로 농장 순회}
+    - {days: all, from: "17:00", to: "20:00", at: crown_farms__granary_seven, doing: 곡창 장부}
+    - {days: all, from: "20:00", to: "05:00", at: crown_farms, doing: 감독관 관사}
+npc_harald:
+  home: bk_sewer_forge
+  blocks:
+    - {days: all, from: "06:00", to: "12:00", at: bk_sewer_forge, doing: 잔다}
+    - {days: all, from: "12:00", to: "18:00", at: bk_sewer_forge, doing: 쇠 패 각인}
+    - {days: all, from: "18:00", to: "21:00", at: bk_ashcatch, doing: "하수구 입구 — 꼬리들의 주문", alt: {p: 0.2, at: bk_scale_tavern, doing: 반쪽 비늘 뒷문 — 마리엘에게서 빈 줄을 산다}}
+    - {days: all, from: "21:00", to: "06:00", at: bk_sewer_forge, doing: 각인}
+    - {days: "monthday:[3,13,23]", from: "23:00", to: "01:00", at: bk_sewer_third, doing: 등잔 회합}
+npc_tilde:
+  home: bk_hall_slave_hall
+  blocks:
+    - {days: all, from: "05:00", to: "09:00", at: bk_hall_lamp_store, doing: 기름 단지 채우기}
+    - {days: all, from: "09:00", to: "17:00", at: bk_flame_hall, doing: 회랑 등잔 채우기}
+    - {days: "weekday:[4]", from: "12:00", to: "15:00", at: bk_hall_lamp_store, doing: 기름 창고 — 벽 틈에 귀를 댄다, fixed: true}
+    - {days: all, from: "17:00", to: "19:30", at: bk_hall_lamp_store, doing: 기름 창고}
+    - {days: all, from: "19:30", to: "05:00", at: bk_hall_slave_hall, doing: 시종 노예 숙소}
+npc_benno:
+  home: bk_ash_hearth
+  blocks:
+    - {days: all, from: "05:00", to: "15:00", at: bk_stair_gate, doing: 층계의 증기 재를 쓴다, outdoor: true, rain: {at: bk_ash_huts, doing: 비 — 재가 진흙이 되어 움막에}}
+    - {days: all, from: "17:00", to: "21:00", at: bk_ash_hearth, doing: 아궁이 — 아이 아홉에게 재 글씨}
+    - {days: all, from: "21:00", to: "05:00", at: bk_ash_hearth, doing: 아궁이 곁에서 잔다}
+    - {days: "monthday:[3,13,23]", from: "23:00", to: "01:00", at: bk_sewer_third, doing: 등잔 회합}
