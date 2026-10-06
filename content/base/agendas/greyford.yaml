@@ -13,6 +13,11 @@ vars:                         # 회귀점의 세계 상태
   fugitives_caught: 0
   hagen_known_fugitives: 3    # 하겐이 위치를 아는 탈주자 수
   zero_cellar_raid: false
+  kit_on_list: true           # 키트 — 1차 매각 명단 스물여섯째 줄 (사라가 귓속말한다, 14 §6.1)
+  toby_on_list: false
+  sara_on_list: true          # 사라 — 2차 명단 (fact_gf_sara_on_sale_list)
+  kit_sold: false
+  sara_sold: false
 agendas:
   - id: ag_bram_income
     npc: npc_bram
@@ -105,3 +110,19 @@ agendas:
     at: {place: gf_rooster_cellar, from: "05:30", to: "06:30", doing: 크릭 감독 셋을 데리고 지하실을 뒤진다}
     effects: ["var egil_hidden = false", "var fugitives_caught += 5", "capture npc_egil at gf_whip_square", "punish npc_bram at gf_whip_square for 3",
               "log 즈닉이 수탉 지하를 덮쳤다 — 에길 일가 다섯이 끌려 나갔고, 브람은 채찍 기둥에 묶였다"]
+  - id: ag_convoy_first
+    npc: npc_znik
+    goal: 서리월 9일 1차 매각 호송 — 마흔 명이 용의 대로로 (REGIONS 10.9). 명단에 키트가 남아 있으면 키트도
+    every: once
+    when: ["alive npc_znik", "date >= 312-10-09"]
+    at: {place: gf_whip_square, from: "05:00", to: "07:00", doing: 1차 호송 — 마흔 명을 사슬로 묶는다}
+    effects: ["if var kit_on_list == true: var kit_sold = true ; capture npc_kit at dragon_pillar_post ; log 1차 호송 — 키트가 마흔 명 사슬 속에서 남쪽으로 끌려갔다",
+              "else: log 1차 호송 — 마흔 명이 남쪽으로 끌려갔다. 키트의 자리에는 다른 이름이 있었다"]
+  - id: ag_convoy_second
+    npc: npc_znik
+    goal: 굶주림월 3일 2차 매각 호송 — 서른하나 (사라 포함, REGIONS 12.3)
+    every: once
+    when: ["alive npc_znik", "date >= 312-12-03"]
+    at: {place: gf_whip_square, from: "05:00", to: "07:00", doing: 2차 호송 — 서른하나를 사슬로 묶는다}
+    effects: ["if var sara_on_list == true: var sara_sold = true ; capture npc_sara at dragon_pillar_post ; log 2차 호송 — 사라가 서른하나 사이에서 남쪽으로 끌려갔다",
+              "else: log 2차 호송 — 서른하나가 남쪽으로 끌려갔다"]

@@ -95,7 +95,13 @@ def main():
     economy = {"goods": {}, "shops": {}, "ration": {}}
     for f in load("content/base/economy/*.yaml"):
         for k in economy: (economy[k].update((f or {}).get(k) or {}))
-    game = {"economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
+    storylets = []
+    for f in load("content/base/storylets/*.yaml"):
+        storylets += (f or {}).get("storylets") or []
+    public = {}
+    for f in load("content/base/npcs/public_*.yaml"):
+        public.update(f or {})
+    game = {"storylets": storylets, "public": public, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")

@@ -1,0 +1,192 @@
+# 회귀점의 대본 장면 (14 §6.1~6.2 원고 그대로). 이 장면들은 LLM이 쓰지 않는다 — 손으로 쓴 글이 화면에 그대로 나온다.
+# 세계의 시계는 그대로 흐른다: 장면의 선택은 시간을 쓰고(minutes), 판정을 하고(check), 세계 상태를 바꾼다(effects).
+#
+# trigger: 이 장면이 열리는 때. start = 회차 시작. at_time = 그 시각이 지나갈 때 플레이어가 그 장소에 있으면 (잠도 깬다).
+# text: 장면 글. {name} = 플레이어의 진짜 이름, {sibling} = 키트가 부르는 말(형/누나). 빈 줄 = 문단.
+# input: true_name — 첫 회차에만 이름을 받는다 (20 R6: 어머니만 아는 이름).
+# choices: 없으면 [▸] 하나. check: {skill, D} (D는 엔진의 난이도 — 표시는 확률 띠로).
+# effects (게임 문법): learn <사실> · rel <npc> like|trust <n> · var <이름> = <값> · coin <n> · hunger <n> · pain <n>
+#   · item <물건 id(economy goods)> · talent <id> · note <수첩 한 줄> · memory <npc> <tag> <한 줄> · goto <장소> · next <장면 id>
+#   · miss_ration (그날 배급을 놓친다)
+storylets:
+  - id: ration_line_open
+    trigger: {start: true}
+    stage:   # 장면을 위해 그 시각 그 자리에 세우는 사람들 (위치 엔진 덮어쓰기)
+      - {npc: npc_kit, at: gf_rooster, from: "18:00", to: "19:30", doing: 네 소매를 잡고 줄에 서 있다}
+      - {npc: npc_gerda, at: gf_rooster, from: "18:00", to: "19:30", doing: 줄 뒤에서 기침을 손등으로 막는다}
+      - {npc: npc_znik, at: gf_rooster, from: "18:00", to: "18:40", doing: 줄 앞에서 국자로 솥을 친다}
+      - {npc: npc_henrik, at: gf_rooster, from: "18:08", to: "18:40", doing: 줄을 따라 걸으며 머리를 하나씩 짚는다}
+      - {npc: npc_sara, at: gf_rooster, from: "18:08", to: "18:14", doing: 줄 밖에서 앞치마 끈을 쥐고 서 있다}
+      - {npc: npc_hagen, at: gf_rooster, from: "18:08", to: "19:00", doing: 빵 한 덩이를 들고 줄을 따라 걸어온다}
+      - {npc: npc_fayne, at: gf_rooster, from: "18:00", to: "19:30", doing: 처마 위에서 손을 내밀고 있다}
+    text: |
+      빵 냄새. 탄 보리 껍질, 축축한 재.
+
+      앞사람 등에 코가 닿는다. 손에 이 빠진 나무 그릇. 줄 앞에서 즈닉이 국자로 솥을 친다. 곡창이 열리는 날이라 오늘 저녁엔 보리빵 반 덩이가 나온다.
+
+      키트가 네 소매를 잡고 있다. 열 살, 네 동생.
+
+      줄 뒤에서 누가 부른다. 낮게. 아무도 못 듣게.
+    input: true_name
+    after_input: |
+      "{name}."
+
+      그 이름을 아는 사람은 이 줄에 하나뿐이다. 어머니다. 게르다가 기침을 손등으로 막는다.
+
+      "명단 얘기 들었다. 그래서 부르는 거야. 아무한테도 말하지 마라. 이름을 아는 자가 너를 가진다." 어머니는 네 그릇을 턱으로 가리킨다. "키트 빵까지 받아. 엄마는 안 먹어도 돼."
+    effects: ["var mother_called = true", "note 어머니만 아는 이름 — {name}. 남들은 너를 셋째라 부른다"]
+    next: ration_line_count
+
+  - id: ration_line_count
+    text: |
+      누군가 반대쪽 소매를 당긴다. 사라다 — 성채 하녀. 성채 하녀가 이 줄에 설 일은 없다.
+
+      "명단에 키트가 있어." 입술만 움직인다. "첫 명단. 스물여섯째 줄." 그녀는 줄 밖으로 빠진다. 앞치마 끈이 풀려 있다.
+
+      즈닉 옆에 용인 하나. 징세관 헨릭. 줄을 따라 걸으며 머리를 하나씩 짚는다. 키트의 정수리에서 손가락이 멈춘다. 쇳소리 같은 말. "하르벡."
+
+      줄 끝, 나루 쪽에서 하겐이 걸어온다 — 강 건너 나룻배를 모는 사내. 웃고 있다. 빵 한 덩이를 들고.
+
+      처마에서 손 하나가 내려온다. 손바닥이 위로. 손목에 해진 부적 끈. 페인이다, 마을의 지붕을 타고 다니는 고아. "뭘 알고 싶은데? 대신 뭘 줄 건데?"
+
+      솥 옆 배식대 모서리에 칼자국이 있다. 금이 아니다. 글자다. 레이번. 셋째 해. 너는 글을 모른다. 그런데 읽었다. 눈가로 잿빛 고리가 스치고 사라진다.
+    effects: ["learn fact_gb_kit_on_first_list", "var goal_kit_known = true", "note 사라의 귓속말 — 키트가 첫 매각 명단 스물여섯째 줄에 있다"]
+    choices:
+      - id: ask_sara
+        label: 사라를 쫓아가 명단을 더 묻는다
+        minutes: 15
+        leave_line: true
+        check: {skill: 화술, D: 22}
+        success:
+          text: |
+            사라는 성채 부엌 뒤 물통 곁에서 30초를 준다. 눈은 계속 문 쪽에 가 있다.
+
+            "1차는 서리월 아흐레. 마흔 명. 헨릭 나리가 적는 걸 들었어." 그녀가 앞치마 끈을 다시 묶는다. 손이 떨려서 두 번 만에. "둘째 명단도 있대. 겨울 끝. 거기엔…" 말을 삼킨다. "가. 여기서 말 걸면 안 돼."
+          effects: ["learn fact_gf_serf_sale_contract", "rel npc_sara trust 5", "note 사라 — 1차 매각은 서리월 9일, 마흔 명. 둘째 명단도 있다"]
+        failure:
+          text: |
+            사라는 고개를 젓고 걸음을 빨리한다. 돌아보지도 않는다. "여기서 말 걸지 마." 성채 쪽 모퉁이에서 앞치마 자락이 사라진다.
+          effects: ["rel npc_sara trust -2"]
+      - id: bargain_henrik
+        label: 헨릭 나리에게 동화로 흥정한다 — 키트를 명단에서
+        minutes: 30
+        leave_line: true
+        needs: "coin >= 3"
+        check: {skill: 화술, D: 34}
+        success:
+          text: |
+            헨릭이 걸음을 멈춘다. 네 손바닥의 동화 세 닢을 내려다보다가, 웃지도 않고 집어 간다. 허리춤에서 장부를 꺼내 스물여섯째 줄에 줄을 긋는다.
+
+            "대신 하나 채워야지. 숫자는 숫자다." 그의 손가락이 남 막사 쪽으로 향한다. 거기 아홉 살 토비가 그릇을 들고 서 있다.
+          effects: ["coin -3", "var kit_on_list = false", "var toby_on_list = true", "note 키트 대신 토비가 명단에 들어갔다 — 남 막사의 아홉 살", "memory npc_henrik 쓸모 있음 셋째가 동화로 동생을 샀다"]
+        failure:
+          text: |
+            헨릭은 동화를 집어 간다. 그리고 장부를 펴지 않는다. "농노가 돈을 가지고 다니는구나." 그가 즈닉을 돌아본다. 저녁 점호에서 태형 다섯.
+          effects: ["coin -3", "pain 10", "memory npc_henrik 위험함 셋째가 돈을 숨겨 다닌다"]
+      - id: hagen_bread
+        label: 하겐이 내미는 빵을 받는다
+        minutes: 5
+        text: |
+          하겐이 빵을 네 손에 쥐여 주며 귀에 대고 말한다. 숨에서 강물 냄새가 난다. "얼굴을 보니 명단 얘기 들었구나. 북쪽엔 길이 있어. 서두를 필요는 없다."
+
+          빵은 따뜻하다. 반 덩이가 더 있다 — 키트 몫이다. 하겐은 웃으며 다음 얼굴로 걸어간다.
+        effects: ["item bread", "memory npc_hagen 쓸모 있음 셋째는 북쪽 길을 찾는 얼굴이다", "var hagen_knows_escape_intent = true", "rel npc_hagen trust 10"]
+      - id: fayne_coin
+        label: 페인의 손바닥에 동화 한 닢을 올린다 — "명단에 대해 아는 거."
+        minutes: 5
+        needs: "coin >= 1"
+        text: |
+          페인이 처마에서 내려온다. 동화를 깨물어 보고 주머니에 넣는다.
+
+          "명단? 첫째는 서리월. 둘째는 겨울 끝. 둘째에 사라 누나가 들어갈 거라는 얘기도 있고." 그는 벌써 반쯤 지붕으로 돌아가 있다. "북쪽 길 찾는 거면 하겐 형한테 가 봐."
+        effects: ["coin -1", "rel npc_fayne trust 5", "note 페인의 말 — 둘째 명단(겨울 끝)에 사라가 들어갈 거라는 소문", "var goal_sara_known = true", "var hagen_knows_escape_intent_via_fayne = true"]
+      - id: osric_prayer
+        label: 오스릭 사제의 저녁 기도에 간다 — 배식을 놓친다
+        minutes: 60
+        leave_line: true
+        miss_ration: true
+        text: |
+          사슬등불 예배당은 반쯤 비어 있다. 오스릭 사제가 기도를 마치고 사람들이 흩어질 때, 그가 네 이름 — 셋째 — 를 부른다.
+
+          그는 아무 말 없이 기름종이에 싼 작은 조각을 네 손에 쥐여 준다. 손가락이 차다. "읽지 마라. 지니고만 있어라." 종이 안에 무엇이 있는지 너는 안다. 글자다. 글을 가진 인간은 교수대로 간다.
+        effects: ["item light_letter", "memory npc_osric 쓸모 있음 셋째에게 빛의 서신 조각을 맡겼다", "rel npc_osric trust 8"]
+      - id: stay_in_line
+        label: 줄에 그대로 서서 빵을 받는다
+        minutes: 15
+        text: |
+          줄이 한 발씩 줄어든다. 네 차례에 국자가 솥 바닥까지 내려간다. 빵 반 덩이와 귀리죽 한 국자. 너는 빵을 반으로 나눠 키트 손에 쥐여 준다. 어머니 몫까지 받아 간다.
+
+          브람 — 수탉의 배급 관리인, 다리 하나를 서리 길에 두고 온 사내 — 가 아무 말 없이 키트 그릇에 누룽지 한 조각을 더 얹는다. 눈은 들지 않는다.
+        effects: ["ration", "rel npc_bram like 3"]
+    after_choice:   # 줄을 떠나는 선택이면, 키트가 자리를 맡는다 (15분 넘으면 키트가 맞는다)
+      leave_line_text: '키트가 네 그릇을 받아 든다. "내가 맡아 둘게."'
+      late_effects: ["pain 0", "var kit_covered_for_you = true", "note 키트가 네 자리를 맡다가 즈닉에게 태형 셋 — \"두 자리 맡는 쥐새끼\""]
+
+  - id: serf_mother_memory
+    trigger: {at_time: "312-09-01 21:30", at: gf_river_huts, loop1_only: false}
+    text: |
+      통금 종이 지나고 움막 12호. 어둠 속에서 어머니가 다시 기침한다. 키트는 벌써 잠들었다.
+
+      "너 아기였을 때…" 어머니가 말한다. 목소리가 이불 속에서 나온다. 무엇을 기억하느냐고 묻지도 않았는데, 어머니는 세 가지를 차례로 말한다.
+    choices:
+      - id: talent_voice
+        label: '"말을 먼저 배운 아이였지. 더듬으면서도 끝까지 말했어."'
+        text: '어머니가 웃는다. 기침이 웃음을 자른다. "그래서 걱정이었어. 말을 하는 아이는 들키거든."'
+        effects: ["talent voice"]
+      - id: talent_shadow
+        label: '"발소리가 안 나는 아이였어. 개들도 너를 보면 짖지 않았지."'
+        text: '"남작 나리 개들이 너만 보면 조용해졌다. 이상한 일이었지." 어머니의 손이 어둠 속에서 네 머리를 찾는다.'
+        effects: ["talent shadow"]
+      - id: talent_gunnar
+        label: '"막대기만 쥐면 눈빛이 달라졌어. 그게 늘 무서웠다."'
+        text: '"군나르 영감이 그러더라. 저 아이 손목은 칼을 쥐려고 생긴 거라고." 어머니가 한참 말이 없다. "그 말이 무서웠어."'
+        effects: ["talent gunnar"]
+    once: true
+
+  - id: first_night_letter
+    trigger: {at_time: "312-09-02 01:40", at: gf_river_huts}
+    text: |
+      키트는 무릎을 가슴까지 끌어당긴 채 네 등에 이마를 대고 잔다. 어머니의 기침은 한 시간 전에 멎었다.
+
+      꿈을 꾼다. 문마다 글자가 새겨진 거리. 누군가 네 손목을 잡고 문 하나 앞에 세운다. "읽어 봐." 너는 읽는다. 소리 내어.
+
+      손끝이 아파서 깬다. 흙바닥에 손톱으로 그은 자국이 있다. 선 셋이 한 점에서 만나는 모양.
+
+      "{sibling}, 그거 뭐야?" 키트가 깨어 있다. 그때 움막 틈으로 등불 빛이 기어든다. 크릭 감독 스니의 순회. 발소리가 문 앞에서 멈춘다.
+    choices:
+      - id: wipe
+        label: 손바닥으로 문질러 지운다
+        check: {skill: 손재주, D: 8}
+        success: {text: "흙이 손톱 밑에 낀다. 등불이 지나간다. 키트가 숨을 내쉰다.", effects: []}
+        failure: {text: "지우다 남은 한 획 위로 등불이 멈춘다. 문틈의 눈이 오래 바닥을 본다. 그리고 지나간다.", effects: ["var hut12_marks_seen = true", "learn fact_op_marks_hut12"]}
+      - id: kit_lies
+        label: 키트를 그 위에 눕힌다 — "자는 척해."
+        check: {skill: 기만, D: 26}
+        success: {text: "키트는 진짜로 자는 척을 잘한다. 숨까지 길게 쉰다. 등불이 지나간다. 키트가 어둠 속에서 네 손을 꽉 쥔다.", effects: ["rel npc_kit like 5", "var kit_keeps_secret = true"]}
+        failure: {text: "키트가 웃음을 참지 못한다. 문이 열리고 등불이 바닥을 훑는다. 스니가 혀를 찬다. 내일 점호에서 키트 태형 셋.", effects: ["var hut12_marks_seen = true", "learn fact_op_marks_hut12", "var kit_whipped = true"]}
+      - id: straw
+        label: 짚을 끌어다 덮는다
+        check: {skill: 은신, D: 20}
+        success: {text: "짚 냄새뿐이다. 등불이 지나간다.", effects: []}
+        failure: {text: "짚이 반쯤 덮인 금 위에서 등불이 멈춘다. 그리고 지나간다.", effects: ["var hut12_marks_seen = true", "learn fact_op_marks_hut12"]}
+      - id: leave_it
+        label: 그대로 둔다 — 크릭은 글을 모른다
+        text: "스니는 글을 모른다. 등불이 바닥의 금 위에 잠깐 머물다 지나간다. 그는 아침에 즈닉에게 '이상한 금'을 말할 것이다."
+        effects: ["var hut12_marks_seen = true", "learn fact_op_marks_hut12"]
+    after_all: ["var elsa_heard_sleeptalk = true"]
+    once: true
+
+  - id: doorpost_circle
+    trigger: {at_time: "312-09-02 04:30", at: gf_river_huts}
+    text: |
+      첫 종. 물동이를 들고 나서다 멈춘다.
+
+      문설주에 숯으로 그은 작은 원. 어젯밤엔 없었다. 옆 움막 문설주엔 없다. 그 옆에도.
+    summary: true     # 하루 요약 카드 — 매듭·들은 말·돈·키트의 날짜
+    choices:
+      - id: to_rollcall
+        label: 물동이를 내려놓고 점호 광장으로 간다
+        minutes: 10
+        text: "광장에는 벌써 줄이 서 있다. 즈닉이 출결 막대를 든다."
+        effects: ["goto gf_whip_square"]
+    once: true

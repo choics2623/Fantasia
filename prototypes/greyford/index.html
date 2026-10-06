@@ -61,6 +61,25 @@ button.ui:hover { border-color: var(--gold); }
 .broken, .ended { border: 1px solid #5b3a2c; background: #1f1512; border-radius: 6px; padding: 14px 16px; margin: 14px 0; }
 .broken .sub, .ended .sub { font-family: var(--ui); font-size: 0.78rem; color: var(--ink-soft); margin: 4px 0 10px; }
 [hidden] { display: none !important; }
+.goals { max-width: 760px; margin: 4px auto 0; display: flex; gap: 6px 14px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.74rem; color: var(--ink-soft); }
+.goals b { color: var(--ink); font-weight: 500; }
+.goals .d { color: #e7b6a4; font-variant-numeric: tabular-nums; }
+.people .who { color: var(--ink-faint); }
+.namebox { display: grid; gap: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
+.namebox label { font-family: var(--ui); font-size: 0.78rem; color: var(--ink-soft); }
+.namebox input[type=text] { font-family: var(--body); font-size: 1.1rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; }
+.namebox .sib { display: flex; gap: 14px; font-family: var(--ui); font-size: 0.86rem; }
+.map .tabs { display: flex; gap: 6px; margin: 10px 0; }
+.map .tabs button[aria-pressed=true] { border-color: var(--gold); color: var(--gold); }
+.map svg { width: 100%; height: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; display: block; }
+.map svg text { font-family: var(--ui); fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+.map .loc { cursor: default; }
+.map .loc.go { cursor: pointer; }
+.map .loc.go:hover circle { stroke: var(--gold); }
+.map .legend { font-family: var(--ui); font-size: 0.72rem; color: var(--ink-faint); margin: 6px 0; }
+.map ul.outer li { cursor: default; }
+.map ul.outer li.go { cursor: pointer; color: var(--ink); }
+.map ul.outer li.go:hover { color: var(--gold); }
 .drawer { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: flex; justify-content: flex-end; z-index: 10; }
 .drawer .pane { width: min(420px, 100%); height: 100%; overflow: auto; background: var(--bg-2); border-left: 1px solid var(--line); padding: 16px; padding-top: calc(16px + env(safe-area-inset-top, 0px)); }
 .pane h2 { font-family: var(--ui); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 8px; }
@@ -75,8 +94,9 @@ button.ui:hover { border-color: var(--gold); }
 <div class="top"><div class="row">
   <span class="when" id="when">…</span><span class="where" id="where"></span>
   <span class="chips" id="chips"></span>
+  <button class="ui" id="mapBtn" aria-label="지도">지도</button>
   <button class="ui" id="menuBtn" aria-label="수첩과 저장">수첩</button>
-</div></div>
+</div><div class="goals" id="goals"></div></div>
 <div class="wrap">
   <div class="story" id="story"></div>
   <div class="people" id="people"></div>
@@ -94,6 +114,11 @@ button.ui:hover { border-color: var(--gold); }
   <div class="row-btns" id="slots" style="margin-top:8px"></div>
   <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 (새 시드)</button></div>
   <h2>엔진 기록 (판정·검증)</h2><pre id="debug">—</pre>
+</div></div>
+<div class="drawer" id="mapDrawer" hidden><div class="pane map">
+  <div class="row-btns"><button class="ui" id="closeMap">닫기</button></div>
+  <div class="tabs"><button class="ui" id="tabTown" aria-pressed="true">이 고장</button><button class="ui" id="tabWorld" aria-pressed="false">대륙</button></div>
+  <div id="mapBody"></div>
 </div></div>
 <script>
 const $ = (id) => document.getElementById(id);
@@ -149,9 +174,10 @@ function render(d, loading = false) {
   if (v) {
     $("when").textContent = `${v.month} ${v.time.split(" ")[3]} ${v.hm}${v.night ? " · 밤" : ""}${v.rain ? " · 비" : ""}`;
     $("where").textContent = v.place.name;
+    $("goals").innerHTML = (v.goals || []).map((x) => `<span><b>${esc(x.who)}</b> ${esc(x.what)}${x.days != null ? ` <span class="d">D-${x.days}</span>` : ""}</span>`).join("");
     const p = v.player;
     $("chips").innerHTML = [`${v.loop}회차`, `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, `${p.coin}못`, p.wanted ? `<span class="chip hot">수배 ${p.wanted}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
-    $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b> · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
+    $("people").innerHTML = v.people.map((x) => `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}</span>`).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
     $("notes").innerHTML = v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>";
     $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b> — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}</li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
     const R = v.reputation || {};
@@ -174,11 +200,23 @@ function render(d, loading = false) {
     return;
   }
   const ch = d.choices || [];
-  const main = ch.filter((c) => c.kind !== "move" && c.kind !== "time");
-  const moves = ch.filter((c) => c.kind === "move"), time = ch.filter((c) => c.kind === "time");
+  const nameC = ch.find((c) => c.input === "true_name");
+  if (nameC) {
+    panel.innerHTML = `<form class="namebox" id="nameForm"><label for="tn">${esc(nameC.text)} — 이 이름은 회귀해도 남는다</label>
+      <input type="text" id="tn" maxlength="8" placeholder="이름" autocomplete="off" required>
+      <div class="sib"><span>키트에게 너는</span><label><input type="radio" name="sib" value="형" checked> 형</label><label><input type="radio" name="sib" value="누나"> 누나</label></div>
+      <button class="ui">그 이름으로 대답한다</button></form>`;
+    $("nameForm").onsubmit = (e) => { e.preventDefault(); const n = $("tn").value.trim(); if (!n) return; const sib = panel.querySelector("input[name=sib]:checked").value; act({ id: nameC.id, text: `${n}|${sib}` }, false, `"${n}." — 어머니가 부르는 이름에 대답한다`); };
+    setTimeout(() => $("tn")?.focus(), 50);
+    return;
+  }
+  const more = ch.filter((c) => c.more);
+  const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time");
+  const moves = ch.filter((c) => !c.more && c.kind === "move"), time = ch.filter((c) => !c.more && c.kind === "time");
   const btn = (c) => `<button class="choice" data-id="${esc(c.id)}"><span>${esc(c.text)}</span>${c.band || c.risk ? `<span class="band">${c.skill ? `${esc(c.skill)} · ` : ""}${esc(c.band || "")}${c.risk ? ` <span class="risk">${esc(c.risk)}</span>` : ""}</span>` : ""}</button>`;
   panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
     ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
+    ${more.length ? `<details class="moves"><summary>다른 행동 (${more.length})</summary><div class="choices">${more.map(btn).join("")}</div></details>` : ""}
     ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
     ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;
   panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector("span").textContent })));
@@ -189,9 +227,9 @@ function show(d) {
   if (!d.broken) addBeats(d); else currentTurn = null;
   render(d);
 }
-async function act(input, retry = false) {
+async function act(input, retry = false, label) {
   if (busy) return;
-  if (!retry) say(input.free || input.text || input.id);
+  if (!retry) say(label || input.free || input.text || input.id);
   show(await call("/api/act", input));
 }
 async function start() { show(await call("/api/state")); }
@@ -201,6 +239,51 @@ $("closeDrawer").onclick = () => ($("drawer").hidden = true);
 $("drawer").onclick = (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; };
 $("saveBtn").onclick = async () => { await fetch("/api/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: $("slotName").value }) }); $("menuBtn").onclick(); };
 $("newBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", {})); };
+// ── 지도: 이 고장(건물 배치·아는 사람의 '아마 거기')과 대륙(가 본 곳·들은 곳만 밝게) ──
+let mapTab = "town", mapData = null;
+async function openMap() {
+  $("mapDrawer").hidden = false; $("mapBody").innerHTML = "<p class='legend'>펼치는 중…</p>";
+  try { mapData = await fetch("/api/map", { method: "POST" }).then((x) => x.json()); } catch (e) { $("mapBody").textContent = "지도를 못 불렀다: " + e.message; return; }
+  drawMap();
+}
+function drawMap() {
+  $("tabTown").setAttribute("aria-pressed", mapTab === "town"); $("tabWorld").setAttribute("aria-pressed", mapTab === "world");
+  const m = mapData; if (!m || m.error) { $("mapBody").textContent = m?.error || "—"; return; }
+  const choiceText = (id) => (last?.choices || []).find((c) => c.id === id)?.text;
+  if (mapTab === "town") {
+    const S = m.settlement, W = S.grid?.w || 600, H = S.grid?.h || 450, go = new Set(S.goable);
+    const col = (l) => l.here ? "var(--gold)" : l.access === "public" ? "var(--ink-soft)" : l.access === "secret" ? "var(--frost)" : "var(--ink-faint)";
+    const svg = `<svg viewBox="-30 -20 ${W + 60} ${H + 40}" role="img" aria-label="${esc(S.name)} 지도">
+      ${S.locations.map((l) => `<g class="loc${go.has(l.id) ? " go" : ""}" data-id="${esc(l.id)}">
+        <circle cx="${l.xy[0]}" cy="${l.xy[1]}" r="${l.here ? 11 : 8}" fill="${col(l)}" stroke="var(--line)" stroke-width="2"/>
+        <text x="${l.xy[0]}" y="${l.xy[1] - 15}" text-anchor="middle" font-size="17" ${l.here ? 'style="fill:var(--gold)"' : ""}>${esc(l.name.replace(/\s*'.*'$/, ""))}</text>
+        ${l.people.length ? `<text x="${l.xy[0]}" y="${l.xy[1] + 26}" text-anchor="middle" font-size="15" style="fill:var(--frost)">${esc(l.people.slice(0, 3).join(", "))}${l.people.length > 3 ? ` 외 ${l.people.length - 3}` : ""}</text>` : ""}
+      </g>`).join("")}</svg>`;
+    $("mapBody").innerHTML = `<h2>${esc(S.name)}</h2>${svg}
+      <div class="legend"><span style="color:var(--gold)">●</span> 지금 있는 곳 · <span style="color:var(--frost)">이름</span> 아는 사람이 '늘 이 시각엔' 있는 곳 (추정 — 틀릴 수 있다) · 누르면 그리로 간다</div>
+      <h2>고장 밖 (걸어서)</h2><ul class="outer">${S.outer.map((o) => `<li class="${go.has(o.id) ? "go" : ""}" data-id="${esc(o.id)}">${esc(o.name)} — ${o.hours}시간</li>`).join("")}</ul>`;
+    const goTo = (id) => { if (!go.has(id) || busy) return; $("mapDrawer").hidden = true; act({ id: "go:" + id, text: choiceText("go:" + id) || id }); };
+    $("mapBody").querySelectorAll(".loc.go, li.go").forEach((el) => (el.onclick = () => goTo(el.dataset.id)));
+  } else {
+    const Wd = m.world, xs = Wd.nodes.map((n) => n.x), ys = Wd.nodes.map((n) => n.y);
+    const x0 = Math.min(...xs) - 30, y0 = Math.min(...ys) - 20, w = Math.max(...xs) - x0 + 30, h = Math.max(...ys) - y0 + 20;
+    const N = new Map(Wd.nodes.map((n) => [n.id, n]));
+    const lit = (n) => n.here || n.visited || n.heard;
+    const svg = `<svg viewBox="${x0} ${y0} ${w} ${h}" role="img" aria-label="대륙 지도">
+      ${Wd.edges.map((e) => { const a = N.get(e.from), b = N.get(e.to); if (!a || !b) return ""; const on = lit(a) && lit(b);
+        return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${on ? "var(--ink-soft)" : "var(--line)"}" stroke-width="${e.road === "imperial" ? 2 : 1}" ${e.road === "sea" ? 'stroke-dasharray="4 4"' : ""}/>`; }).join("")}
+      ${Wd.nodes.map((n) => `<g><circle cx="${n.x}" cy="${n.y}" r="${n.here ? 7 : n.major ? 5 : 3}" fill="${n.here ? "var(--gold)" : n.visited ? "var(--ink)" : n.heard ? "var(--frost)" : "var(--ink-faint)"}"/>
+        ${n.here || n.visited || n.heard || n.major ? `<text x="${n.x}" y="${n.y - 9}" text-anchor="middle" font-size="${n.major ? 15 : 12}" ${n.here ? 'style="fill:var(--gold)"' : lit(n) ? "" : 'style="fill:var(--ink-faint)"'}>${esc(n.name)}</text>` : ""}</g>`).join("")}
+    </svg>`;
+    $("mapBody").innerHTML = `<h2>대륙</h2><div style="overflow-x:auto"><div style="min-width:760px">${svg}</div></div>
+      <div class="legend"><span style="color:var(--gold)">●</span> 지금 · <span style="color:var(--ink)">●</span> 가 본 곳 · <span style="color:var(--frost)">●</span> 들어 본 곳 · 흐린 점은 아직 모르는 곳. 굵은 선은 제국 가도, 점선은 뱃길.</div>`;
+  }
+}
+$("mapBtn").onclick = openMap;
+$("closeMap").onclick = () => ($("mapDrawer").hidden = true);
+$("mapDrawer").onclick = (e) => { if (e.target.id === "mapDrawer") $("mapDrawer").hidden = true; };
+$("tabTown").onclick = () => { mapTab = "town"; drawMap(); };
+$("tabWorld").onclick = () => { mapTab = "world"; drawMap(); };
 start();
 </script>
 </body>

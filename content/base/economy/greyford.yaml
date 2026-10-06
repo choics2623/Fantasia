@@ -13,6 +13,7 @@ goods:
   hook:         {name: 쇠갈고리, price: 12, tags: [도구, 갈고리]}
   candle:       {name: 수지 양초, price: 2, tags: [광원]}
   knife:        {name: 녹슨 접이칼, price: 72, tags: [무기, 날붙이, 숨길수있음], illegal: true, visibility: 숨김}
+  light_letter: {name: 빛의 서신 조각, price: 0, tags: [문서, 금서, 숨길수있음], illegal: true, visibility: 숨김}
   forged_pass:  {name: 위조 통행증, price: 120, tags: [문서, 통행증, 위조], illegal: true, visibility: 숨김}
 shops:
   npc_bram:  {sells: [porridge, bread, beer], note: "죽은 배급이지만 한 그릇 더는 값을 받는다 — 지하실 손님들 몫이 모자라서"}
@@ -22,7 +23,7 @@ shops:
   npc_henrik: {sells: [forged_pass], fence: true, note: "통행증은 셈집 서랍에서 나온다"}
 ration:
   at: gf_rooster
-  from: "18:30"
+  from: "18:00"
   to: "20:30"
   food: {hunger: -1}
   note: "하루 한 번 저녁 배급 (굶주림월부터는 아침 죽이 끊긴다 — REGIONS 12.1)"

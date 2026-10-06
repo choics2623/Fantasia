@@ -1,0 +1,33 @@
+# 셋째가 아는 대로의 마을 사람 (플레이어 화면에 이름 옆에 붙는 한 구절). 카드의 job은 설계자용이라 쓰지 않는다.
+# 앞에 '?'가 붙은 사람은 셋째가 이름을 모른다 — 화면과 서술에 이름 대신 이 구절이 나온다 (말을 섞거나 이름을 들으면 안다).
+# 셋째는 회색여울에서 나고 자랐다 — 마을 사람은 이름으로 안다. 바깥사람(이졸·볼크·요한·카스파르…)은 처음엔 겉모습으로만.
+npc_kit: 동생, 열 살
+npc_gerda: 어머니
+npc_sara: 성채 하녀
+npc_bram: 수탉의 배급 관리인, 외다리
+npc_henrik: 징세관 나리 (용인)
+npc_znik: 감독관 (크릭)
+npc_hagen: 나룻배를 모는 사내
+npc_fayne: 지붕을 타는 고아
+npc_osric: 사슬등불 예배당의 사제
+npc_martha: 성채의 목줄장
+npc_liz: 목줄장의 딸, 성채 하녀
+npc_elsa: 늪가의 약초꾼
+npc_thomas: 방앗간지기
+npc_irma: 양치기 노파
+npc_bran: 대장장이
+npc_gunnar: 성채 마구간지기 노인
+npc_godric_raven: 남작 나리
+npc_owen_raven: 남작의 아들
+npc_heinz: 예배당 장로
+npc_mina: 방앗간의 아이
+npc_egil: "? 수탉 지하에 숨은 북쪽 사내"
+npc_sigrid: "? 굶주린 언덕의 북쪽 여자"
+npc_dietmar: "? 오물 습지의 도망자들 우두머리"
+npc_ulf: "? 죽은 나룻배 사공"
+npc_isol: "? 회색 망토의 낯선 여자"
+npc_volk: "? 늑대 머리의 노예사냥꾼"
+npc_johan: 순례 인솔자
+npc_kaspar: 까마귀 문의 사령관 (반비늘)
+npc_lea: 까마귀 문의 서기
+npc_grod: "? 송곳니 초소의 사냥개 몰이꾼"

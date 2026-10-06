@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { loadContent } from "../../engine/game/load.mjs";
 import { createSession } from "../../engine/game/session.mjs";
+import { mapView } from "../../engine/game/game.mjs";
 import { createProvider } from "../../engine/llm/provider.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -50,6 +51,7 @@ async function handle(path, body, onText) {
   if (path === "/api/save") { writeFileSync(slot(body?.name), JSON.stringify(session.run)); return { ok: true, saves: listSaves() }; }
   if (path === "/api/load") { session.load(JSON.parse(readFileSync(slot(body?.name), "utf8"))); return session.start({ onText }); }
   if (path === "/api/saves") return { saves: listSaves() };
+  if (path === "/api/map") return mapView(session.game);
   throw new Error("unknown " + path);
 }
 const listSaves = () => readdirSync(SAVES).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));

@@ -53,7 +53,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
   const peopleKey = () => G.view(g).people.map((p) => p.id).sort().join(",");
 
   function needsLLM(res, beforePeople) {
-    if (!res) return true;
+    if (!res) return !g.story;                       // 대본 장면은 손으로 쓴 글 그대로 — LLM을 부르지 않는다
+    if (res.storyText != null || g.story) return false;
     if (g.convo || res.convoEnded) return true;
     if (res.id.startsWith("attack:") || res.id.startsWith("loot:")) return true;
     if (res.feed?.length) return true;
@@ -64,6 +65,11 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     return false;
   }
   function engineBeats(res) {
+    // 대본 장면: 그 글 그대로 (+ 그 사이 새로 열린 장면의 글)
+    if (res.storyText != null || g.story) {
+      const parts = [res.storyText || "", ...(res.feed || []).filter((f) => f.kind === "story").map((f) => f.text)];
+      return parts.join("\n\n").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
+    }
     const v = G.view(g);
     const b = [josa(`${res.label.replace(/\s*\(\d+분\)|\s*— 몰래/g, "")}. ${v.hm}${v.night ? ", 어둡다" : ""}${v.rain ? ", 비가 온다" : ""}.`)];
     if (!v.people.length) b.push(`${v.place.name}에는 아무도 없다.`);
@@ -75,7 +81,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
   async function narrate(res, opts, { onText, free, memories }) {
     const sceneKey = `${g.at}|${g.convo?.npc || ""}`;
     const sceneNew = !res || lastScene !== sceneKey && !(res.convoEnded && lastScene?.startsWith(g.at)) || res.kind === "move";
-    const prompt = turnPrompt(g, res, opts, { transcript, memories, sceneNew: sceneNew && !g.convo });
+    const introduced = new Set(g.run.introduced || []);
+    const prompt = turnPrompt(g, res, opts, { transcript, memories, sceneNew: sceneNew && !g.convo, introduced });
     lastScene = sceneKey;
     let lastProblems = [];
     for (let attempt = 1; attempt <= 2; attempt++) {
@@ -88,7 +95,12 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       const parsed = parseTurn(text);
       const v = validateTurn(g, parsed, opts, { res, free, prompt });
       lastProblems = v.problems;
-      if (v.ok && !parsed.bad) return { ...v, memories: parsed.memories };
+      if (v.ok && !parsed.bad) {
+        // 이번 서술에 나온 사람은 '소개됐다' — 다음부터는 이름만 (화면용 기록, 재생에 쓰지 않는다)
+        const text = v.beats.join(" ");
+        g.run.introduced = [...new Set([...(g.run.introduced || []), ...G.view(g).people.filter((p) => text.includes(p.name)).map((p) => p.id)])];
+        return { ...v, memories: parsed.memories };
+      }
     }
     throw Object.assign(new Error("쓸 수 있는 서술이 없다"), { problems: lastProblems });
   }
@@ -120,7 +132,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
         opts = G.options(g);
         if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
-      } else opts = G.options(g);
+      } else {
+        opts = G.options(g);
+        if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+      }
       const n = await narrate(res, opts, { onText, free: input?.free, memories: false });
       if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
       transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
@@ -142,8 +157,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
   function payload(res, n, debug, engineOnly = false) {
     const v = G.view(g);
     const choices = (n?.choices || G.options(g).map((o) => ({ ...o, text: o.label }))).map((c) => {
-      const o = G.odds(g, c);
-      return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(o.P) : null, p: o ? Math.round(o.P * 100) : null, risk: c.risk || null };
+      const o = G.optionOdds(g, c);
+      return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(o.P) : null, p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, more: c.more || false };
     });
     return { view: v, beats: n?.beats || [], choices, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
   }

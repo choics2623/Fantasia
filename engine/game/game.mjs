@@ -8,7 +8,7 @@
 import { createWorld } from "../sim/whereabouts.mjs";
 import { createState, createAgenda } from "../sim/agenda.mjs";
 import { createLivingWorld } from "../sim/living.mjs";
-import { fmt, toMinutes, fromMinutes, isSabbath, parseClock, MONTHS } from "../sim/calendar.mjs";
+import { fmt, toMinutes, fromMinutes, isSabbath, parseClock, parseDate, MONTHS } from "../sim/calendar.mjs";
 import { cardReveals, revealOK } from "./reveal.mjs";
 import { josa } from "../sim/text.mjs";
 import { createReputation, classifyDeed } from "../sim/reputation.mjs";
@@ -33,9 +33,9 @@ export function tierOf(P, r) {
 const OK = (t) => t === "성공" || t === "대성공";
 
 // ── 회귀점 (14 첫 시간, WORLD_BIBLE §1.3) ──
-export const START = toMinutes(312, 9, 1, 18, 30);
+export const START = toMinutes(312, 9, 1, 18, 0);   // 회귀점: 낙엽월 1일 저녁 6시, 배급 줄의 빵 냄새 (14 §2)
 const SETTLEMENT = "greyford";            // 주인공이 매인 곳 (회귀점). 지금 있는 곳은 g.P.settlement
-const HOME = "gf_north_barracks";
+const HOME = "gf_river_huts";                         // 강변 움막 12호 — 어머니 게르다, 동생 키트와 함께 (14 §6.2)
 const ROLLCALL = "gf_whip_square";
 const NEW_PLAYER = () => ({
   name: "셋째", age: 17,
@@ -58,14 +58,16 @@ export function prepareContent({ bundle, cards, game }) {
 }
 
 // ── 한 회차 (저장되는 것) ──
-export function newRun({ seed = 7, loop = 1, carry = null } = {}) {
-  return { v: 1, seed, loop, journal: [], carry: carry || { notebook: [], future: [], deaths: [] } };
+export function newRun({ seed = 7, loop = 1, carry = null, opening = true } = {}) {
+  return { v: 1, seed, loop, opening, journal: [], carry: carry || { notebook: [], future: [], deaths: [] } };
 }
 const loopSeed = (run) => Math.floor(hash(run.seed, "loop", run.loop) * 1e9);
 
 // ── 재생: 기록으로 세계를 만든다 ──
 export function boot(content, run) {
   const g = build(content, run);
+  if (run.carry.talent) storyEffect(g, `talent ${run.carry.talent}`);   // 재능은 영혼에 남는다 (06)
+  if (run.opening !== false) startStory(g);   // 회귀점의 대본 장면 (검사는 opening:false로 건너뛸 수 있다)
   for (const e of run.journal) apply(g, e, { replay: true });
   return g;
 }
@@ -79,6 +81,9 @@ function build(content, run) {
   const A = createAgenda(W, S, game.agendas, { loopSeed: seed });
   const L = createLivingWorld({ world: W, state: S, agenda: A, inventories: game.inventories, sim: game.sim, cards, loopSeed: seed, active: [SETTLEMENT], startAt: START });
   S.purse.player = 3;      // 부츠 속 동화 3못 (14)
+  // 대본 장면의 무대: 회차 시작 장면이 세우는 사람들 (모든 회차 같다 — 회귀점의 고정 인물)
+  const day0 = Math.floor(START / 1440) * 1440;
+  for (const st of game.storylets || []) if (st.trigger?.start) for (const x of st.stage || []) W.override({ npc: x.npc, from: day0 + parseClock(x.from), to: day0 + parseClock(x.to), kind: "at", at: x.at, doing: x.doing });
   const g = {
     content, run, W, S, A, L, seed,
     t: START, at: "gf_rooster",
@@ -87,6 +92,8 @@ function build(content, run) {
     convo: null,       // {npc, turns, patience, transcript[]}
     ended: null,       // {kind: dead|captured, why}
     feed: [],          // 이번 턴에 플레이어가 겪은 일 (서술 재료)
+    story: null,       // 지금 펼쳐진 대본 장면 {id, phase: input|choice, done:Set}
+    storyDone: new Set(),
     deeds: [],         // 플레이어의 행적 — 평판은 이것과 '아는 사람들'에서 계산한다 (재생으로 저절로 맞다)
     rep: createReputation(game.reputation || {}, { seed }),
     offices: createOffices(game.factions || {}),
@@ -198,6 +205,7 @@ function exits(g) {
 // ── 할 수 있는 것 (어포던스) — LLM은 이 목록을 문장으로만 바꾼다 ──
 export function options(g) { return rawOptions(g).map((o) => ({ ...o, label: josa(o.label) })); }
 function rawOptions(g) {
+  if (g.story) return storyOptions(g);
   if (g.ended) return [{ id: "regress", kind: "regress", label: "눈을 감는다 — 회귀점으로" }];
   const o = [];
   if (g.convo) {
@@ -224,9 +232,9 @@ function rawOptions(g) {
   }
   for (const w of present(g)) {
     if (w.kind === "captive") continue;
-    o.push({ id: `talk:${w.npc}`, kind: "scene", label: `${nameOf(g, w.npc)}에게 말을 건다${asleep(w, g.t) ? " (자고 있다)" : ""}`, npc: w.npc });
+    o.push({ id: `talk:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 말을 건다${asleep(w, g.t) ? " (자고 있다)" : ""}`, npc: w.npc });
   }
-  for (const w of present(g)) if (w.kind !== "captive") o.push({ id: `attack:${w.npc}`, kind: "scene", label: `${nameOf(g, w.npc)}에게 덤벼든다${hasWeapon(g) ? " (칼이 있다)" : " (맨손)"}`, skill: "싸움", npc: w.npc, risk: "죽을 수 있다" });
+  for (const w of present(g)) if (w.kind !== "captive") o.push({ id: `attack:${w.npc}`, kind: "scene", more: true, label: `${displayName(g, w.npc)}에게 덤벼든다${hasWeapon(g) ? " (칼이 있다)" : " (맨손)"}`, skill: "싸움", npc: w.npc, risk: "죽을 수 있다" });
   for (const b of bodiesHere(g)) {
     const left = (g.S.purse[b.npc] || 0) > 0 || worn(g, b.npc).length;
     if (left) o.push({ id: `loot:${b.npc}`, kind: "scene", label: `${nameOf(g, b.npc)}의 시체를 뒤진다`, npc: b.npc });
@@ -238,11 +246,11 @@ function rawOptions(g) {
     if (m >= parseClock(ra.from) && m < parseClock(ra.to) && present(g).some((w) => w.npc === "npc_bram")) o.push({ id: "ration", kind: "scene", label: "배급 줄에 서서 죽 한 그릇을 받는다" });
   }
   for (const it of mine(g)) if (it.eat || it.use) o.push({ id: `use:${it.id}`, kind: "scene", label: `${it.name}을(를) ${it.eat ? "먹는다" : "쓴다"}` });
-  o.push({ id: "search", kind: "scene", label: "이곳을 뒤져 본다", skill: "통찰" });
+  o.push({ id: "search", kind: "scene", more: true, label: "이곳을 뒤져 본다", skill: "통찰" });
   for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && (it.owner !== "player" || it.stashed) && g.P.found.has(it.id)) o.push({ id: `take:${it.id}`, kind: "scene", label: `${it.name}을(를) 챙긴다` });
   // 숨기기: 몸에 지니면 점호 몸수색에 걸린다 — 어딘가에 묻어 두고 다닌다
-  for (const it of mine(g)) if (!it.stashed) o.push({ id: `stash:${it.id}`, kind: "scene", label: `${it.name}을(를) 이곳에 숨긴다` });
-  if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", label: `동전 ${g.S.purse.player - 3}못을 이곳에 숨긴다 (부츠 속 3못만 남기고)` });
+  for (const it of mine(g)) if (!it.stashed) o.push({ id: `stash:${it.id}`, kind: "scene", more: true, label: `${it.name}을(를) 이곳에 숨긴다` });
+  if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", more: true, label: `동전 ${g.S.purse.player - 3}못을 이곳에 숨긴다 (부츠 속 3못만 남기고)` });
   for (const e of exits(g)) {
     const sneak = ["owner", "staff", "closed", "secret", "home_locked"].includes(e.access) && !(e.id === HOME);
     o.push({ id: `go:${e.id}`, kind: "move", label: `${e.name}(으)로 간다${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id });
@@ -312,7 +320,7 @@ export function apply(g, e, { replay = false } = {}) {
   const opt = options(g).find((o) => o.id === e.id);
   if (!opt) throw new Error(`지금은 할 수 없는 행동: ${e.id}`);
   const roll = hash(g.seed, "roll", e.i);
-  const od = odds(g, { ...opt, tags: e.tags });
+  const od = opt.check ? storyOdds(g, opt.check) : odds(g, { ...opt, tags: e.tags });
   const bonus = Math.min(25, (e.tags || []).reduce((s, t) => s + tagBonus(g, t), 0));
   const P = od ? prob(od.S + bonus, od.D) : 1;
   const tier = od ? tierOf(P, roll) : "성공";
@@ -336,12 +344,16 @@ function tagBonus(g, t) { const [k, v] = String(t).split(":"); return TAGS[k] ? 
 
 // 시간이 흐른다: 세계를 굴리고, 그 사이 플레이어 주변에서 일어난 일을 모은다
 function pass(g, minutes, { sleeping = false } = {}) {
+  if (g.story) return;                 // 대본 장면이 열려 있으면 시간은 그 장면의 선택이 흘린다
   const from = g.t, to = g.t + minutes;
   const logFrom = g.S.log.length;
   // 점호·통금은 시각에 걸리는 일이다 — 지나가는 시각마다 본다
   let t = from;
   while (t < to) {
-    const next = Math.min(to, Math.floor(t / 30) * 30 + 30);
+    let next = Math.min(to, Math.floor(t / 30) * 30 + 30);
+    // 대본 장면의 시각이 이 구간에 있고 플레이어가 그 자리에 있으면 — 거기서 멈추고 장면을 연다 (잠도 깬다)
+    const trig = nextTrigger(g, t, next);
+    if (trig) next = trig.t;
     g.L.advance(next);
     successions(g);
     const c = fromMinutes(next);
@@ -375,8 +387,9 @@ function pass(g, minutes, { sleeping = false } = {}) {
     manhunt(g, next);
     t = next;
     if (g.ended) break;
+    if (trig) { openStory(g, trig.st); break; }
   }
-  g.t = Math.min(to, g.ended?.t ?? to);
+  g.t = Math.min(g.story ? t : to, g.ended?.t ?? to);
   if (sleeping) { g.P.status.pain = clamp(g.P.status.pain - 10, 0, 100); }
   // 하루에 한 번 배가 고파진다 (배급을 받으면 준다)
   for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
@@ -466,11 +479,112 @@ function checkDanger(g) {
   }
 }
 
+// ── 대본 장면 (content/base/storylets — 14 §6) ──
+const SL = (g, id) => (g.content.game.storylets || []).find((x) => x.id === id);
+function startStory(g) { const st = (g.content.game.storylets || []).find((x) => x.trigger?.start); if (st) openStory(g, st); }
+function openStory(g, st) {
+  if (st.once !== false && g.storyDone.has(st.id)) return;
+  const needName = st.input === "true_name" && !trueName(g);
+  g.story = { id: st.id, phase: needName ? "input" : "choice" };
+  g.feed.push({ kind: "story", text: fill(g, st.text) + (needName ? "" : st.after_input ? "\n\n" + fill(g, st.after_input) : "") });
+  if (!needName) for (const e of st.effects || []) storyEffect(g, e);
+}
+function nextTrigger(g, t, next) {
+  if (g.run.opening === false) return null;   // 대본 장면 없이 (검사용)
+  for (const st of g.content.game.storylets || []) {
+    const tr = st.trigger || {}; if (!tr.at_time || g.storyDone.has(st.id) || g.story) continue;
+    const [d, hm] = tr.at_time.split(" "); const { y, m, d: dd } = parseDate(d);
+    const at = toMinutes(y, m, dd) + parseClock(hm);
+    if (at > t && at <= next && (!tr.at || g.at === tr.at)) return { t: at, st };
+  }
+  return null;
+}
+// 이름: 첫 회차에 받은 이름은 이 회차의 상태(P)에, 회귀할 때 carry로 넘어간다 (재생해도 이름 입력은 기록에서 다시 온다)
+const trueName = (g) => g.P.trueName || g.run.carry.trueName || null;
+const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
+const fill = (g, text) => String(text || "").trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g));
+function storyOptions(g) {
+  const st = SL(g, g.story.id);
+  if (g.story.phase === "input") return [{ id: "story_name", kind: "story", label: "어머니가 부르는 이름", input: "true_name" }];
+  const out = [];
+  for (const c of st.choices || []) {
+    // 두 번째 회차부터 어머니의 세 카드 중 고른 것만 진하다 — 다시 고를 수 없다 (14 §6.2)
+    if (st.id === "serf_mother_memory" && g.P.talent && c.id !== `talent_${g.P.talent}`) continue;
+    if (c.needs) { const [, k, op, v] = /^(\w+)\s*(>=|<=|>|<|==)\s*(\S+)$/.exec(c.needs) || []; if (k === "coin" && !(g.S.purse.player >= Number(v))) continue; }
+    out.push({ id: `story:${c.id}`, kind: "story", label: c.label, skill: c.check?.skill || null, check: c.check || null, minutes: c.minutes || 0 });
+  }
+  if (!out.length) out.push({ id: "story:next", kind: "story", label: "▸" });
+  return out;
+}
+export function optionOdds(g, o) { return o.check ? storyOdds(g, o.check) : odds(g, o); }
+function storyOdds(g, ck) {
+  const p = g.P, mod = ck.skill === "은신" || ck.skill === "손재주" ? p.mods.민첩 * 2 : (p.mods.지능 + p.mods.감각) * 2;
+  const status = -(p.status.hunger >= 2 ? 5 : 0) - (p.status.pain >= 30 ? 3 : 0);
+  const S = (p.skills[ck.skill] || 10) + mod + status;
+  return { P: prob(S, ck.D), S, D: ck.D, parts: [] };
+}
+function storyEffect(g, e, res) {
+  const parts = String(e).split(/\s+/), k = parts[0], rest = String(e).slice(k.length + 1);
+  if (k === "learn") learn(g, parts[1], "그 저녁");
+  else if (k === "rel") { const [, n, field, v] = parts; bumpRel(g, n, field === "like" ? Number(v) : 0, field === "trust" ? Number(v) : 0); }
+  else if (k === "var") { const [, name, , v] = parts; g.S.vars[name] = v === "true" ? true : v === "false" ? false : isNaN(Number(v)) ? v : Number(v); }
+  else if (k === "coin") g.S.purse.player = Math.max(0, g.S.purse.player + Number(parts[1]));
+  else if (k === "hunger") g.P.status.hunger = clamp(g.P.status.hunger + Number(parts[1]), 0, 4);
+  else if (k === "pain") g.P.status.pain = clamp(g.P.status.pain + Number(parts[1]), 0, 100);
+  else if (k === "item") { const good = g.content.game.economy.goods[parts[1]]; if (good) g.L.give("player", { ...good, id: `it_${parts[1]}_${g.run.journal.length}_${Math.floor(g.t % 1440)}`, gid: parts[1] }); }
+  else if (k === "talent") { if (g.P.talent) return; g.P.talent = parts[1]; const T = { voice: { 화술: 6, 기만: 3 }, shadow: { 은신: 8, 손재주: 3 }, gunnar: { 싸움: 8, 손재주: 2 } }[parts[1]] || {}; for (const [sk, v] of Object.entries(T)) g.P.skills[sk] = (g.P.skills[sk] || 0) + v; }
+  else if (k === "note") g.P.notebook.push(fill(g, rest));
+  else if (k === "memory") { const [, n, tag] = parts; addMemory(g, n, { kind: "impression", tag, delta: 0, text: parts.slice(3).join(" "), salience: 4, source: "engine" }); }
+  else if (k === "goto") g.at = parts[1];
+  else if (k === "ration") { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); }
+}
+
 const DO = {
+  // 이름: 어머니가 부르는 진짜 이름 (첫 회차에만 받는다 — 회귀해도 같은 이름, 20 R6)
+  story_name(g, _, res, opt, e) {
+    const [name, sibling] = String(e.text || "").split("|");
+    g.P.trueName = (name || "").trim().slice(0, 12) || "…";
+    g.P.sibling = sibling === "누나" ? "누나" : "형";
+    const st = SL(g, g.story.id);
+    g.story.phase = "choice";
+    res.storyText = fill(g, st.after_input);
+    for (const ef of st.effects || []) storyEffect(g, ef, res);
+    if (!(st.choices || []).length && st.next) { g.storyDone.add(st.id); g.story = null; const nx = SL(g, st.next); if (nx) { openStory(g, nx); res.storyText += "\n\n" + g.feed.pop().text; } }
+  },
+  story(g, cid, res) {
+    const st = SL(g, g.story.id);
+    if (cid === "next") {
+      g.storyDone.add(st.id); g.story = null;
+      const nx = st.next && SL(g, st.next);
+      if (nx) { openStory(g, nx); res.storyText = g.feed.pop()?.text; }
+      return;
+    }
+    const c = (st.choices || []).find((x) => x.id === cid);
+    let text = "", effects = [];
+    if (c.check) { const ok = res.tier === "성공" || res.tier === "대성공"; const br = ok ? c.success : c.failure; text = br?.text || ""; effects = br?.effects || []; res.storyCheck = { skill: c.check.skill, tier: res.tier }; }
+    else { text = c.text || ""; effects = c.effects || []; }
+    for (const ef of effects) storyEffect(g, ef, res);
+    for (const ef of st.after_all || []) storyEffect(g, ef, res);
+    // 줄을 떠나는 선택: 키트가 자리를 맡는다. 15분 넘게 비우면 키트가 맞는다 (⏱가 진짜라는 첫 교훈, 14 §6.1)
+    let extra = "";
+    if (c.leave_line && st.after_choice) {
+      extra = "\n\n" + st.after_choice.leave_line_text;
+      if ((c.minutes || 0) > 15) { for (const ef of st.after_choice.late_effects || []) storyEffect(g, ef, res); extra += "\n\n돌아왔을 때 키트의 손등에 붉은 줄이 셋 있다. 즈닉이 출결 막대를 짚고 지나간다. \"두 자리 맡는 쥐새끼.\""; }
+    }
+    if (c.miss_ration) g.P.lastRation = Math.floor(g.t / 1440);   // 배식을 놓쳤다
+    g.storyDone.add(st.id); g.story = null;
+    res.storyText = fill(g, text) + extra;
+    pass(g, c.minutes || 0);
+    if (!g.story && st.next) { const nx = SL(g, st.next); if (nx) openStory(g, nx); }
+    if (st.id === "ration_line_count" && c.id !== "stay_in_line" && !c.miss_ration && g.P.lastRation !== Math.floor(g.t / 1440)) {
+      // 줄로 돌아와 빵을 받는다 (키트가 자리를 맡아 두었다)
+      storyEffect(g, "ration", res);
+    }
+  },
   // ── 장면 ──
   talk(g, n, res) {
     const w = g.W.where(n, g.t);
-    g.P.met.add(n);
+    g.P.met.add(n);                    // 말을 섞으면 이름을 안다 (이름 모르던 사람도 — 대화에서 이름을 듣는다)
     g.convo = { npc: n, turns: 0, patience: 6 + Math.max(0, Math.round(relOf(g, n).like / 10)), transcript: [] };
     if (asleep(w, g.t)) { mind(g, n).anger += 1; res.notes.push(`${nameOf(g, n)}은(는) 자다 깼다`); }
     pass(g, 1);
@@ -494,6 +608,7 @@ const DO = {
     g.P.traveling = false;
     if (g.ended) return;
     g.P.settlement = sid; g.at = entryOf(g, sid); g._local = null;
+    (g.P.visited ??= []).includes(sid) || g.P.visited.push(sid);
     g.L.setActive([sid]);
     res.notes.push(`${g.content.bundle.settlements[sid].name}에 닿았다`);
     if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
@@ -510,8 +625,8 @@ const DO = {
       if (!g.ended && present(g).some((w) => w.npc === "npc_bram")) step(() => { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); pass(g, 15); });
     }
     // 2) 통금 전에 막사로, 자고, 점호
-    if (!g.ended) step(() => { g.at = HOME; const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); });
-    if (!g.ended && !isSabbath(Math.floor(g.t / 1440))) step(() => { pass(g, 5); g.at = ROLLCALL; pass(g, 20); });
+    if (!g.ended && !g.story) step(() => { g.at = HOME; const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); });
+    if (!g.ended && !g.story && !isSabbath(Math.floor(g.t / 1440))) step(() => { pass(g, 5); g.at = ROLLCALL; pass(g, 20); });
     g.feed = feedAll;
     res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
   },
@@ -519,6 +634,7 @@ const DO = {
     const c = fromMinutes(g.t);
     let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440;
     pass(g, wake - g.t, { sleeping: true });
+    if (g.story) return;               // 잠이 장면에 깼다 (첫 밤, 첫 종…)
     // 점호 날이면 막사 사람들과 함께 광장으로 끌려 나간다
     if (!isSabbath(Math.floor(g.t / 1440)) && g.at === HOME) { pass(g, 5); g.at = ROLLCALL; res.notes.push("첫 종. 막사 문이 열리고 모두 광장으로 밀려 나간다 — 점호"); pass(g, 20); }
   },
@@ -782,7 +898,8 @@ export function regressRun(g) {
   const notebook = [...carry.notebook, ...g.P.notebook.map((n) => (n.startsWith("◇") ? n : `◇ ${g.run.loop}회차 — ${n}`))];
   const future = [...new Set([...carry.future, ...g.P.knows])];
   const deaths = [...carry.deaths, ...(g.ended ? [{ loop: g.run.loop, ...g.ended }] : [])];
-  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths } });
+  // 이름과 재능은 영혼의 것 — 회귀해도 남는다 (WORLD_BIBLE §1.3.1, 06)
+  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null } });
 }
 
 // 값: 기본값 × 흥정(호감·신뢰 ±20%) × 흉년(굶주림월 먹을 것 ×3) × 장물(불법 ×2)
@@ -827,6 +944,7 @@ function rollcallSearch(g, day) {
 let ESTIMATOR = null;
 function estimate(g, n) {
   if (!ESTIMATOR || ESTIMATOR.bundle !== g.content.bundle) ESTIMATOR = { bundle: g.content.bundle, W: createWorld(g.content.bundle, { loopSeed: 0 }) };
+  if (!n) return null;
   const w = ESTIMATOR.W.where(n, g.t);
   return w.kind === "away" ? "이 고장에 없을 것" : w.at ? `아마 ${placeName(g, w.at)}` : null;
 }
@@ -861,13 +979,59 @@ function groupOf(g, n) {
 }
 
 // ── 장면 보기 (UI와 LLM이 같은 것을 본다 — 플레이어가 알 수 있는 것만) ──
+// 화면과 서술에 쓰는 이름: 셋째가 이름을 아는 사람은 이름, 모르는 사람은 겉모습 구절 (content/base/npcs/public_*.yaml)
+export function displayName(g, n) {
+  const pub = g.content.game.public?.[n];
+  if (pub && String(pub).startsWith("?") && !g.P.met.has(n) && !knownNames(g).has(nameOf(g, n))) return String(pub).slice(1).trim();
+  return nameOf(g, n);
+}
+export function whoIs(g, n) { const pub = g.content.game.public?.[n]; return pub && !String(pub).startsWith("?") ? String(pub) : null; }
+// 지킬 사람과 시한 (14 §1.1 "첫 1분에 시한과 지킬 사람이 생긴다")
+function goals(g) {
+  const out = [];
+  const daysTo = (y, m, d) => Math.max(0, Math.ceil((toMinutes(y, m, d) - g.t) / 1440));
+  if (g.S.vars.goal_kit_known) out.push({ who: "키트", what: g.S.vars.kit_sold ? "1차 호송에 끌려갔다" : g.S.vars.kit_on_list ? "1차 매각 명단 스물여섯째 줄 — 서리월 9일 호송" : "명단에서 빠졌다", days: g.S.vars.kit_on_list && !g.S.vars.kit_sold ? daysTo(312, 10, 9) : null });
+  if (g.S.vars.goal_sara_known || g.P.knows.has("fact_gf_sara_on_sale_list")) out.push({ who: "사라", what: g.S.vars.sara_sold ? "2차 호송에 끌려갔다" : g.S.vars.sara_on_list ? "2차 매각 명단 — 굶주림월 3일 호송" : "명단에서 빠졌다", days: g.S.vars.sara_on_list && !g.S.vars.sara_sold ? daysTo(312, 12, 3) : null });
+  return out;
+}
+
+// ── 지도 (07): 지금 고장의 건물 배치 + 대륙 지도. 플레이어가 가 본 곳·아는 곳만 밝게 ──
+export function mapView(g) {
+  const st = g.content.bundle.settlements[g.P.settlement];
+  estimate(g, null);   // 추정기 준비
+  // 아는 사람을 '늘 그 시각엔 거기' 자리에 찍는다 (24 §3.6 — 진짜 위치가 아니라 추정, 그래서 가끔 틀린다)
+  const people = [...g.P.met].map((n) => { const w = ESTIMATOR.W.where(n, g.t); return { id: n, name: displayName(g, n), at: w?.kind === "at" ? w.at : null }; });
+  const locs = (st?.locations || []).filter((l) => l.xy).map((l) => {
+    const acc = locAccess(g, l.id, g.t);
+    return { id: l.id, name: l.name, xy: l.xy, kind: l.kind || null, access: acc, here: g.at === l.id || g.W.loc.get(g.at)?.parent === l.id,
+      secret: acc === "secret" && !g.P.knowsPlaces.has(l.id), people: people.filter((p) => p.at === l.id || g.W.loc.get(p.at)?.parent === l.id).map((p) => p.name) };
+  }).filter((l) => !l.secret);
+  const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours }));
+  const visited = new Set([SETTLEMENT, ...(g.P.visited || [])]);
+  const nodeOfS = (sid) => g.content.bundle.settlements[sid]?.node;
+  const visitedNodes = new Set([...visited].map(nodeOfS).filter(Boolean));
+  const heard = new Set(); for (const f of g.P.knows) for (const n of g.content.bundle.map.nodes) if ((g.content.facts[f]?.text || "").includes(n.name)) heard.add(n.id);
+  const nodes = g.content.bundle.map.nodes.map((n) => ({ id: n.id, name: n.name, x: n.x, y: n.y, major: !!n.major, here: n.id === nodeOfS(g.P.settlement), visited: visitedNodes.has(n.id), heard: heard.has(n.id) }));
+  const exits = new Set(G_options_ids(g));
+  return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, locations: locs, outer, goable: [...exits].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
+    world: { nodes, edges: g.content.bundle.map.edges.map((e) => ({ from: e.from, to: e.to, road: e.road })), here: nodeOfS(g.P.settlement) } };
+}
+const G_options_ids = (g) => (g.story || g.convo || g.ended ? [] : rawOptions(g).map((o) => o.id));
+
+// 지금 펼쳐진 대본 장면의 첫 글 (서버가 시작·불러오기 때 LLM 없이 보여 준다)
+export function storyIntro(g) {
+  if (!g.story) return null;
+  const st = SL(g, g.story.id);
+  return fill(g, st.text) + (g.story.phase === "choice" && st.after_input ? "\n\n" + fill(g, st.after_input) : "");
+}
+
 export function view(g) {
   const c = fromMinutes(g.t);
   const people = present(g).map((w) => {
     const n = w.npc, r = relOf(g, n), m = mind(g, n);
     const aboutMe = g.L.beliefs(n).filter((b) => b.subject === "player" || (b.kind === "suspect" && b.subject === "player"));
     return {
-      id: n, name: nameOf(g, n), doing: w.kind === "captive" ? "붙잡혀 있다" : w.doing, asleep: asleep(w, g.t),
+      id: n, name: displayName(g, n), who: whoIs(g, n), doing: w.kind === "captive" ? "붙잡혀 있다" : w.doing, asleep: asleep(w, g.t),
       wears: worn(g, n).filter((i) => i.visibility === "보임").map((i) => i.name),
       mood: moodWords(r, m), aboutPlayer: aboutMe.map((b) => ({ kind: b.kind, choice: b.choice || null, reason: b.reason || null })),
     };
@@ -880,6 +1044,7 @@ export function view(g) {
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name })), wanted: g.S.wanted?.player?.heat || 0 },
     notebook: [...g.run.carry.notebook, ...g.P.notebook], ended: g.ended,
+    story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),
     people_known: [...g.P.met].map((n) => ({ id: n, name: nameOf(g, n), lastSeen: g.P.seen[n] ? `${fmt(g.P.seen[n].t).slice(7)} ${placeName(g, g.P.seen[n].at)}` : null, guess: estimate(g, n), mood: moodWords(relOf(g, n), mind(g, n)) })),
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };

@@ -16,8 +16,12 @@ const mockRecords = (batch) => batch.flatMap((j) => [
 ]);
 const s = createSession(C, prov, { onSave: (r) => (saved = JSON.parse(JSON.stringify(r))), mockRecords });
 const r0 = await s.start();
-check("시작 장면에 서술과 선택지가 있다", r0.beats.length > 0 && r0.choices.length > 3);
-check("선택지에 확률 띠가 붙는다 (판정이 있는 것만)", r0.choices.some((c) => c.band) && r0.choices.some((c) => !c.band));
+check("첫 화면은 손으로 쓴 대본 장면 — LLM을 부르지 않는다", r0.beats.length > 0 && prov.usage.calls === 0 && r0.choices[0].input === "true_name", r0.beats[0]);
+const rn = await s.act({ id: "story_name", text: "하린|형" });
+check("이름을 넣으면 어머니가 부르고, 머릿수 장면의 선택지 여섯", rn.beats.some((b) => b.includes("하린")) && rn.choices.length === 6 && prov.usage.calls === 0);
+check("대본 선택지에도 확률 띠가 붙는다 (판정이 있는 것만)", rn.choices.some((c) => c.band) && rn.choices.some((c) => !c.band));
+await s.act({ id: "story:stay_in_line" });
+check("대본 장면이 끝날 때까지 LLM 호출 0", prov.usage.calls === 0);
 let streamed = "";
 const r1 = await s.act({ id: "talk:npc_bram" }, { onText: (t) => (streamed = t) });
 check("서술이 흘러나온다 (스트리밍)", streamed.length > 0 && !streamed.includes("<선택지>"), streamed.slice(0, 40));

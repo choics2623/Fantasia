@@ -8,7 +8,8 @@ import { josa } from "../sim/text.mjs";
 export const SYSTEM = `너는 한국어 그림다크 판타지 소설을 쓰는 작가다. 이 소설은 독자가 고르는 대로 흘러가고, 무엇이 일어나는지는 규칙 엔진이 이미 정했다. 너는 그 일을 **읽히는 글**로 쓴다.
 
 세계: 신을 죽인 고대 종족들이 인간을 노예로 부리는 대륙. 붕괴력 312년. 주인공이 매인 곳은 회색여울 — 용인 남작 영지의 인간 농노 마을.
-주인공: 셋째라 불리는 열일곱 살 농노. 등에 채찍 자국, 늘 배가 고프다. 한 번 죽었다가 이 가을 첫날 저녁으로 돌아왔다 — 아무도 모른다. 서술에서는 언제나 "당신".
+주인공: 셋째라 불리는 열일곱 살 농노 (진짜 이름은 어머니만 안다). 강변 움막 12호에서 어머니 게르다, 열 살 동생 키트와 산다. 등에 채찍 자국, 늘 배가 고프다. 회귀에 대해서는 장면 자료의 [회차]를 따른다. 서술에서는 언제나 "당신".
+주인공은 이 마을에서 나고 자랐다 — 마을 사람은 이름으로 안다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: "브람 — 수탉의 배급 관리인, 외다리 사내 — 이"). 이름을 모르는 사람은 겉모습으로만 부른다.
 고유명사: '절름발이 수탉'은 배급 막사의 이름이다(닭이 아니다). '수탉'이라고만 하면 그 막사.
 
 어떻게 쓰나:
@@ -83,11 +84,21 @@ function outcomeLines(g, res) {
   return L.map(josa);
 }
 
-export function turnPrompt(g, res, opts, { transcript = [], memories = false, sceneNew = false } = {}) {
+export function turnPrompt(g, res, opts, { transcript = [], memories = false, sceneNew = false, introduced = new Set() } = {}) {
   const v = view(g);
+  const loopLine = v.loop === 1
+    ? "[회차] 첫 회차. 주인공은 아직 한 번도 죽지 않았다 — 회귀를 모른다. 다만 글자를 모르는데 글자가 읽히는 이상한 감각이 막 깨어났다."
+    : `[회차] ${v.loop}회차. 주인공은 ${v.loop - 1}번 죽고 이 저녁으로 돌아왔다. 다음에 무슨 일이 일어나는지 일부를 안다. 아무도 모른다 — 다른 사람들에게 이 저녁은 처음이다.`;
+  const personLine = (p) => {
+    const unknownName = p.name !== (g.content.cards[p.id]?.name);
+    const tag = unknownName ? `${p.name} (이름을 모른다 — 이름을 쓰지 말 것)` : `${p.name}${p.who ? ` (${p.who})` : ""}${introduced.has(p.id) ? "" : " [서술에 처음 나온다 — 누구인지 한 구절로]"}`;
+    return `- ${tag}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${p.wears.length ? ` · 지닌 것: ${p.wears.join(", ")}` : ""} · ${p.mood}`;
+  };
   const scene = [
+    loopLine,
     `[지금] ${v.time}, ${v.place.name}. ${v.night ? "밤." : ""} ${v.rain ? "비." : ""} 배고픔 ${v.player.hunger}/4, 아픔 ${v.player.pain}/100.`,
-    `[이 자리에 있는 사람]\n${v.people.map((p) => `- ${p.name}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${p.wears.length ? ` · 지닌 것: ${p.wears.join(", ")}` : ""} · ${p.mood}`).join("\n") || "- 아무도 없다"}`,
+    `[이 자리에 있는 사람]\n${v.people.map(personLine).join("\n") || "- 아무도 없다"}`,
+    v.goals?.length ? `[주인공이 지키려는 사람 — 서술이 이 무게를 잊지 않게]\n${v.goals.map((x) => `- ${x.who}: ${x.what}${x.days != null ? ` (${x.days}일 남음)` : ""}`).join("\n")}` : "",
     v.bodies.length ? `[시체] ${v.bodies.join(", ")}` : "",
   ].filter(Boolean).join("\n");
   const convoNpc = g.convo?.npc || res?.convoEnded?.npc;
@@ -118,6 +129,8 @@ export function parseTurn(text) {
 // (예: 브람이 숨긴 사실의 '에길'.) 사람 이름 전체로 검사하면 별명이 흔한 낱말('국자'·'하나'·'노을')이라 헛경보가 난다.
 function leakNames(g) {
   const set = new Set();
+  // 이름을 모르는 사람의 진짜 이름 (예: 이졸을 처음 본 날)
+  for (const p of view(g).people) { const real = g.content.cards[p.id]?.name; if (real && real !== p.name) for (const x of real.split(/\s+/)) if (x.length > 1) set.add(x); }
   const people = [...new Set([...(view(g).people.map((p) => p.id)), g.convo?.npc].filter(Boolean))];
   for (const n of people) {
     const c = g.content.cards[n] || {};
