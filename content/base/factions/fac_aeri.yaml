@@ -1,0 +1,235 @@
+# 아에리 둥지 — 하늘 혈명('자유')의 굴레(갇히면 죽는다)가 만든 지붕 없는 의회.
+# 근거: HOUSES §3.8, RACES §14, REGIONS §14, facts/windspire.yaml.
+# 조정: HOUSES(3둥지 — 높은둥지·폭풍깃·매눈) · REGIONS(깃털 의회, 둥지 가문 7)의 수가 다르다 — 7가문 의회 안에 HOUSES 3둥지가 들어 있는 것으로 읽었다 (보고).
+id: fac_aeri
+name: 아에리 둥지 (바람첨탑 깃털 의회)
+kind: polity
+race: [백조 아에리, 매 아에리, 까마귀 아에리, 박쥐날개 아에리(배신자 취급), 인간 땅손(납치)]
+governance: 고도 합의 (깃털 의회)  # 지붕 없는 회의장. 찬성은 오르고 반대는 내린다
+motto: "하늘은 아래를 보지 않는다."
+seat: 바람첨탑 정상 — 깃털 의회 (windspire__feather_council, 지붕 없는 원형 회의장)
+size:
+  members: "아에리 약 6,500(REGIONS)~36,000(RACES), 인간 땅손 약 140~200(납치된 자와 후손)"
+  territory: "바람첨탑 — 바위 기둥 41개(300~900m), 줄다리, 줄내림 장터(기둥 아래 계곡)"
+  wealth: "빈약 — 말린 생선·열매, 매 사육, 줄내림 장터의 두르강 교역. 화폐에 무관심"
+  force: "하늘에서 화살과 돌, 정찰, 고도 4,000m 이상 비행. 직접 전쟁은 거의 없다. 아에리는 용보다 높이 날 수 있다"
+
+decision: >
+  의회는 지붕이 없다 — 아에리는 갇히면 죽으므로 가두는 구조는 회의장도 될 수 없다. 깃털 의회는 둥지 가문 7이 원형 회의장 위 하늘에서 모이는 '날개 모임'이다.
+  안건은 휘파람과 노래로 말해지고, 표결은 고도다. 찬성하는 가문은 안건 위로 오르고, 반대하는 가문은 내려서며(땅에 오래 서 있는 것은 수치), 중립은 같은 높이에서 선다.
+  여왕은 가장 높이 올라 의회 전체를 내려다본다 — 여왕의 높이가 결정의 마침표다. 높이 나는 자가 높은 자라 발언 순서는 날개폭과 최고 비행 고도로 정해진다.
+  거부권은 '바람을 거슬러 떠남'이다. 한 가문이 의회에서 바람을 거슬러 날아 떠나면 그 안건은 '바람 없음'으로 보류된다. 이 의회는 만장일치가 아니라 '떠나는 가문이 없는 것'을 합의로 부른다.
+  정기 회기는 해빙월 바람 축제 때의 대회기(아에리 전원이 하늘을 나는 날)와, 급할 때 바람 종이 울리면 열리는 임시 모임이다. 아에리는 서로를 붙들지 않으므로 합의 후 이행은 각 가문의 자유 — 이행하지 않은 가문은 다음 모임에서 높이를 잃는다.
+  인간(땅손)은 의제가 아니다. 깃털 의회는 땅의 일에 무관심했고, 키리에가 처음으로 '아래 보는 자들'을 만들어 그 무관심을 깨고 있다.
+succession: >
+  바람의 여왕은 백조 아에리(왕족) 가문에서 나온다. 선출이 아니라 '가장 높이 올라 의회가 모두 아래에 있게 되는 자'다 — 여왕이 쇠하면 후계 후보가 바람 축제에서 높이를 겨룬다.
+  키리에는 아들 에이로스를 후계로 키우지만, 올려다보는 자들(셀레스 긴목)이 키리에의 하강을 '추락'이라 부르며 맹약회의 313의 아에리 대표 자리를 빼앗으려 한다.
+  날지 못하는 아에리는 부양하지 않는다 — 스스로 뛰어내린다. 그래서 여왕이 날개를 잃는 날이 곧 계승의 날이다.
+
+offices:
+  - id: off_queen
+    title: 바람의 여왕
+    holder: npc_kyrie
+    reports_to: null
+    powers: ["깃털 의회 주재 — 가장 높은 고도로 결정을 마침", "땅 관찰자 파견", "맹약회의 313 아에리 대표 지명"]
+    chosen_by: "백조 아에리 왕족 중 가장 높이 오른 자"
+    perks: ["높은둥지 — 바람첨탑 정상", "왼쪽 날개 끝 검은 깃털 셋(땅에 내려간 흔적)"]
+  - id: off_prince
+    title: 왕자 (후계 후보)
+    holder: npc_eiros
+    reports_to: off_queen
+    powers: ["아래 보는 자들 지지", "타일라의 날개를 자른 판결에 반대표를 던진 유일한 귀족"]
+    chosen_by: "혈통 — 높이는 바람 축제에서"
+    perks: []
+  - id: off_feather_council
+    title: 깃털 의회 (둥지 가문 7 — 집합 자리)
+    holder: "unnamed:둥지 가문 7곳의 가주"
+    reports_to: off_queen
+    powers: ["고도 투표", "'바람을 거슬러 떠남'으로 거부", "아에리를 가두거나 묶은 자에 대한 사형 판결"]
+    chosen_by: "가문 세습 — 날개폭과 비행 고도로 서열"
+    perks: []
+  - id: off_high_nest_house
+    title: 높은둥지 가문 (여왕의 둥지)
+    holder: npc_kyrie
+    reports_to: off_feather_council
+    powers: ["바람첨탑 정상", "맹약회의 313에 처음으로 대표를 보낸다"]
+    chosen_by: "여왕 가문"
+    perks: ["아래를 처음 내려다본 가문"]
+  - id: off_stormfeather_head
+    title: 폭풍깃 전쟁장 (바람첨탑 동쪽 절벽)
+    holder: "unnamed:전쟁장 카이르 (95)"
+    reports_to: off_feather_council
+    powers: ["땅의 전쟁 개입 반대", "가끔 인간을 납치해 '땅의 기억'을 이야기하게 한다"]
+    chosen_by: "가문 세습"
+    perks: ["절벽 둥지의 납치된 인간 7명(내려가는 법을 모른다)"]
+  - id: off_hawkeye_head
+    title: 매눈 정찰장 (서쪽, 서리 이빨이 보이는 곳)
+    holder: "unnamed:정찰장 레이 (130)"
+    reports_to: off_feather_council
+    powers: ["정보 판매(세렌 오필 상가와 거래)", "서리 요람(이졸데의 흰 둥지) 위치·경비를 그린 지도 보유"]
+    chosen_by: "가문 세습"
+    perks: []
+  - id: off_looking_up_head
+    title: 올려다보는 자들 수장
+    holder: "unnamed:셀레스 긴목 — 키리에의 하강을 '추락'이라 부른다"
+    reports_to: off_feather_council
+    powers: ["하늘만 보는 높은 바람파의 대표", "맹약회의 313 아에리 대표 자리를 노린다"]
+    chosen_by: "높은 바람파의 추대"
+    perks: []
+  - id: off_watcher_chief
+    title: 땅 관찰자 수장
+    holder: "unnamed:시룬 매눈 — 회색여울 상공을 열흘째 맴돈다"
+    reports_to: off_queen
+    powers: ["AS 311부터 대륙 곳곳 잔향 징후 마을 감시"]
+    chosen_by: "키리에의 지명"
+    perks: []
+  - id: off_crow_recorder
+    title: 까마귀 아에리 점술·기록 학자
+    holder: npc_corvina
+    reports_to: off_queen
+    powers: ["하늘의 별 해석 — '역행하는 별'을 키리에에게 보고", "잿빛 탑 기록 열람(파견)"]
+    chosen_by: "까마귀 아에리 — 점술·기록 가문"
+    perks: []
+  - id: off_rope_keeper
+    title: 줄지기 (줄내림 장터 관리)
+    holder: "unnamed:줄지기 세라 (아에리, 줄지기 20)"
+    reports_to: off_feather_council
+    powers: ["바구니 승강 줄 — 줄을 거두면 고립", "두르강 상인 조합과 장터 운영"]
+    chosen_by: "의회 위임"
+    perks: []
+  - id: off_wingless_warrior
+    title: 날개 잘린 전사 (판결의 결과)
+    holder: npc_tyla
+    reports_to: off_feather_council
+    powers: ["없음 — AS 302 오른을 땅에 돌려보내려다 날개를 잘렸다. 키리에가 처벌을 승인"]
+    chosen_by: "깃털 의회의 판결 (에이로스만 반대)"
+    perks: ["바람 진명으로 날개 없는 짧은 활공(아무도 모른다)"]
+  - id: off_hawk_breeder
+    title: 매 사육장 관리 (일곱 손가락)
+    holder: "unnamed:일곱 손가락 둥지 군의 매 사육사"
+    reports_to: off_feather_council
+    powers: ["`매` 획득처", "새장 청소는 땅손의 일"]
+    chosen_by: "가문"
+    perks: []
+  - id: off_ground_elder
+    title: 땅손 원로 (인간)
+    holder: "unnamed:마르코 (61, 9살에 납치됨) — 바람 정원 지도자"
+    reports_to: off_rope_keeper
+    powers: ["땅손 140의 대표 — 줄을 거두는 처벌 대상", "「세 깃의 노래」 전승"]
+    chosen_by: "땅손들의 신뢰"
+    perks: ["'내려가는 줄' 210m / 340m"]
+  - id: off_pet_human
+    title: 흰 깃 첨탑 '애완 인간' (인간)
+    holder: npc_orn
+    reports_to: off_queen
+    powers: ["없음 — 10년간 첨탑의 구조와 아에리 비행 경로를 안다", "에이로스에게 인간 글자를 그려 준다"]
+    chosen_by: "납치 — 호기심 수집품(AS 302)"
+    perks: []
+  - id: off_wounded_nester
+    title: 날지 못하나 뛰어내리지 않은 아에리
+    holder: "unnamed:미르 찢긴깃 — 땅손 마을에서 산다"
+    reports_to: off_rope_keeper
+    powers: ["없음 — 땅손에게 날개 없는 활공 날개를 함께 만들자고 한다"]
+    chosen_by: "스스로 (법의 예외)"
+    perks: []
+  - id: off_sky_funeral
+    title: 하늘 장례 집전자
+    holder: "unnamed:가장 높은 봉우리에서 시신을 바람에 놓아 주는 아에리"
+    reports_to: off_feather_council
+    powers: ["하늘 장례 — 시신을 바람에 놓음. 깃뼈 도굴이 가장 큰 모독"]
+    chosen_by: "가문 지명"
+    perks: []
+
+ranks:
+  - {id: rank_queen, title: "바람의 여왕", duties: "가장 높은 고도에서 의회를 내려다봄", privileges: "높은둥지", open_to_player: false}
+  - {id: rank_wind_house, title: "바람 가문 (날개폭·비행 고도로 서열)", duties: "가문 의회 참석, 둥지", privileges: "고도 투표권", open_to_player: false}
+  - {id: rank_messenger, title: "전령·사냥꾼", duties: "정찰, 사냥, 땅 관찰", privileges: "비행 자유", open_to_player: false}
+  - {id: rank_bat_wing, title: "박쥐날개 (녹테른 하수인 — 배신자 취급)", duties: "야간 전령, 7일마다 피 한 방울(실은 3대째부터 불필요)", privileges: "없음 — 다른 아에리가 배신자로 본다", open_to_player: false}
+  - {id: rank_ground_hand, title: "땅손 (납치된 인간)", duties: "바람 정원 손질, 줄다리 수리, 새장 청소, 대장일·바느질·무거운 운반", privileges: "굶지 않는다 — 말린 생선·열매. 처벌은 없고 줄을 거두면 고립", open_to_player: true, condition: "납치되거나 줄내림 장터 바구니에 몰래 타(손재주·은신) 기둥 위로 오른다. 내려갈 길은 없다"}
+  - {id: rank_freed_ground, title: "은인 (갇힌 아에리를 풀어 준 인간)", duties: "없음", privileges: "평생의 은인 — 아에리가 무관심을 접는다", open_to_player: true, condition: "레이번 성채에 그물에 걸린 아에리를 열흘 안에 풀어 준다"}
+
+law:
+  crimes:
+    - {act: "아에리를 가두거나 묶음(새장·감옥·밧줄·그물)", punishment: "죽음 — 모든 아에리의 적이 된다", note: "인간·타 종족 대상. 집행 깃털 의회. 아에리는 지붕 있는 방에 사흘 갇히면 숨이 막히고 열흘이면 심장이 멎는다"}
+    - {act: "아에리의 깃털을 뽑음 / 깃뼈를 시신에서 주움", punishment: "모든 아에리의 사냥감", note: "인간·타 종족 대상. 깃뼈는 하늘 장례에서 바람에 준 시신에서만 나온다 — 가장 큰 모독"}
+    - {act: "인간 땅손이 허락 없이 기둥을 이동", punishment: "줄을 거둠(고립)", note: "인간 대상. 집행 줄지기. 아에리는 인간을 처벌하지 않고 무시한다"}
+    - {act: "줄을 끊음", punishment: "그 줄에 매달린 자의 운명에 맡긴다", note: "양쪽 모두"}
+    - {act: "땅에 오래 서 있음", punishment: "수치 — 서열 하락", note: "아에리 대상 (금기 ③)"}
+    - {act: "바람을 거슬러 맹세함", punishment: "맹세 무효 — 바람이 말을 되돌린다", note: "아에리 대상 (금기 ④)"}
+    - {act: "날지 못하는 아에리를 부양함", punishment: "치욕 — 날지 못하게 된 아에리는 스스로 뛰어내린다", note: "아에리 대상 (금기 ⑤). 미르 찢긴깃은 법의 예외"}
+    - {act: "땅손(수집품 인간)을 땅으로 돌려보내려 함", punishment: "날개 잘림 — 판결은 깃털 의회, 여왕이 승인", note: "아에리 대상. 타일라가 이 판결을 받았다"}
+    - {act: "지붕 있는 건물에서 회의·거주를 강요함", punishment: "가두기와 같다 — 사형", note: "인간 대상. 열린 집이 법의 전제다"}
+    - {act: "녹테른의 하수인이 됨", punishment: "배신자로 배척 — 다른 아에리가 상대하지 않는다", note: "아에리 대상. 박쥐날개 아에리"}
+
+customs:
+  greeting: "휘파람 두 음 — 첫 음은 바람의 방향을, 둘째는 자기 최고 고도를 알린다. '어디까지 올랐소?'가 인사이고 땅에 서 있는 상대에게는 눈을 위로 둔다. 날개를 만지는 것은 가장 큰 무례다. 땅에서의 만남은 짧게 끝낸다."
+  taboos:
+    - "가두는 것 — 새장·감옥·밧줄·그물·닫힌 문"
+    - "깃털을 뽑는 것, 날개를 만지는 것"
+    - "땅에 오래 서 있는 것(수치), 바람을 거슬러 맹세하는 것"
+    - "날지 못하는 아에리를 부양하는 것"
+    - "새장을 닫아 두는 것, 바람을 향해 저주하는 것"
+  rites:
+    - {name: "바람 축제", when: "해빙월", what: "아에리 전원이 하늘을 난다. 기둥 위에 아무도 없는 하루 — 땅손에게는 유일한 '혼자인 날'. 대회기가 열린다"}
+    - {name: "하늘 장례", when: "죽음", what: "죽은 아에리는 가장 높은 봉우리에서 바람에 놓아준다"}
+    - {name: "첫 비행", when: "8세", what: "첫 비행. 20세에 성년 비행. 알은 첨탑 꼭대기 둥지에서 부화"}
+    - {name: "줄내림", when: "장터 열리는 날", what: "바구니가 줄로 오르내린다. 겨울에는 독수리 계단이 폐쇄되어 교역이 끊긴다"}
+    - {name: "바람 종", when: "급한 일", what: "바람 종이 울리면 날개 모임이 열린다"}
+  speech: "휘파람과 노래에 가까운 하늘말, 공용어는 짧고 높은 음으로. 서열은 칭호가 아니라 '최고 비행 고도'로 말한다 — '구름위', '폭풍넘은'. 땅의 일에는 무관심해 '그건 아래 일이오'로 맺는다. 인간은 '땅손'이라 부르며 질문에 답하지 않는 것이 보통이다. 높은 곳일수록 말이 짧다."
+
+membership:
+  join: "아에리는 태어나 8세에 첫 비행을 한다. 인간은 납치되어 땅손이 되거나 줄내림 장터 바구니에 몰래 올라탄다. 박쥐날개는 녹테른에게 피 한 방울로 묶인다."
+  leave: "날지 못하게 되면 스스로 뛰어내린다. 인간은 내려갈 길이 없다 — 땅손들이 '내려가는 줄'(340m 필요, 지금 210m)을 몰래 땋는다."
+  signs: ["둥지 문장 — 은빛 날개 한 쌍(높은둥지), 번개 모양 깃털(폭풍깃), 눈이 그려진 깃털(매눈)", "깃털 색 — 백·회·적갈·흑", "땅손의 땋은 줄 매듭"]
+
+internal_factions:
+  - {name: "내려다보는 자들 (아래 보는 자들)", leader: npc_kyrie, aim: "땅의 일이 하늘에 닿는다. 맹약회의 313에 처음으로 대표를 보내고 카스파르 지원을 논의한다. 시간의 균열이 위로도 뻗는 것을 보았다", strength: 40}
+  - {name: "올려다보는 자들 (높은 바람파)", leader: null, aim: "무관심 유지. 키리에의 하강을 추락이라 부르며 대표 자리를 빼앗으려 한다. 셀레스 긴목", strength: 40}
+  - {name: "폭풍깃 (땅의 전쟁 개입 반대)", leader: null, aim: "바람은 싸운다 — 그러나 땅의 전쟁에는 끼지 않는다", strength: 10}
+  - {name: "땅손을 돌려보내자 (젊은 아에리)", leader: npc_eiros, aim: "땅손을 땅으로 돌려보낸다. 타일라의 판결에 반대표를 던진 에이로스와 일부 젊은 아에리", strength: 10}
+
+assets:
+  - "바람첨탑 기둥 41개, 줄다리, 줄내림 장터(두르강 교역)"
+  - "깃털 의회와 바람 종, 지붕 없는 원형 회의장"
+  - "땅 관찰자 — AS 311부터 대륙 곳곳 잔향 징후 마을 감시"
+  - "하늘에서 그린 대륙 지도(땅손 탈출자의 머릿속), 서리 요람의 위치·경비 지도(매눈)"
+  - "매 사육장(일곱 손가락) — `매` 획득처"
+  - "고도 4,000m 이상 비행 — 용보다 높이"
+
+secrets:
+  - {fact: fact_ws_kyrie_descended, known_by_rank: rank_wind_house}
+  - {fact: fact_ws_kyrie_saw_waste_grow, known_by_rank: rank_queen}
+  - {fact: fact_ws_retrograde_star, known_by_rank: rank_queen}
+  - {fact: fact_ws_kyrie_watchers, known_by_rank: rank_wind_house}
+  - {fact: fact_ws_council_kaspar_debate, known_by_rank: rank_wind_house}
+  - {fact: fact_ws_celes_rival, known_by_rank: rank_wind_house}
+  - {fact: fact_ws_tyla_wings_orn, known_by_rank: rank_wind_house}
+  - {fact: fact_ws_eiros_dissent, known_by_rank: rank_wind_house}
+  - {fact: fact_ws_descent_rope, known_by_rank: rank_ground_hand}
+  - {fact: fact_ws_caged_aeri_die, known_by_rank: rank_messenger}
+  - {truth: T06, level: fragment, holders: [npc_kyrie]}
+  - {truth: T03, level: rumor, holders: [npc_kyrie]}
+  - {truth: T13, level: fragment, holders: [npc_kyrie]}
+  # TODO-FACT: 키리에는 대붕괴 때 하늘에서 시간의 균열이 위로도 찢어진 것을 본 마지막 생존 아에리다(당시 소녀) — 그러나 키리에는 210세, 대붕괴는 312년 전이라 산술이 맞지 않는다 (HOUSES §3.8 / 보고)
+  # TODO-FACT: 폭풍깃 절벽 둥지에 납치된 인간 7명이 산다 — 내려가는 법을 모른다 (HOUSES §3.8)
+
+relations:
+  # 아에리는 HOUSES §6.1 행렬에 없다 — 아래 값은 서술 근거로 정한 '행렬 밖' 값이다.
+  - {to: fac_kaspar, stance: 10, note: "행렬 밖 — 아래 보는 자들이 용황 사후 카스파르 지원을 논의 중. 계승 지지는 관망(0)"}
+  - {to: fac_aurax, stance: -10, note: "행렬 밖 — 용족과는 하늘을 두고 오래된 긴장"}
+  - {to: fac_melisande, stance: -10, note: "행렬 밖 — 용족과의 긴장"}
+  - {to: fac_nocturne, stance: -20, note: "행렬 밖 — 박쥐날개 아에리를 하수인으로 부려 모든 아에리가 배신자로 본다"}
+  - {to: fac_durgan, stance: 10, note: "행렬 밖 — 줄내림 장터의 두르강 상인 약 200"}
+  - {to: fac_harkan, stance: 0, note: "행렬 밖 — 하르칸 전령이 장터에 수시로 온다"}
+  - {to: fac_seren, stance: 5, note: "행렬 밖 — 매눈이 세렌 오필 상가에 정보를 판다"}
+toward_echo: "기다리기. 키리에는 AS 311부터 땅 관찰자를 보내 잔향 징후 마을을 지켜본다 — 이유는 밝히지 않았다. 역행하는 별을 까마귀 아에리에게서 들었다. 아에리에게 인간은 대체로 무관심의 대상이나, 갇힌 아에리를 풀어 준 인간은 평생의 은인이 된다."
+player_paths:
+  - "은인: 레이번 성채에 그물에 걸린 아에리를 열흘 안에 풀어 준다 — 아에리가 무관심을 접는다"
+  - "침투: 줄내림 장터 바구니에 몰래 타 기둥 위로 오른다(손재주·은신). 시룬 매눈이 회색여울 상공에서 플레이어를 본다"
+  - "연합: 에이로스와 타일라(날개 없는 활공) — 맹약회의 313에서 키리에의 표가 어느 쪽으로 가는지"
+  - "탈출 지원: 땅손의 '내려가는 줄' 210m를 340m로 — 항아리 밑의 줄을 이어 준다"
+  - "무너뜨리기: 셀레스 긴목의 대표 자리 탈취를 돕거나 막는다"
+regression:
+  fixed: ["바람 축제(해빙월)와 날개 모임의 절차", "타일라의 날개 판결과 에이로스의 반대표", "내려가는 줄의 길이(210/340)", "키리에의 검은 깃털 셋"]
+  flow: ["아래 보는 자들 대 올려다보는 자들의 세력비", "땅 관찰자가 감시하는 마을의 수", "맹약회의 313의 아에리 표"]
+  drift: ["시룬 매눈이 맴도는 마을과 날짜", "그물에 걸린 아에리가 걸린 시점", "땅손에게 내려오는 말린 생선의 양"]

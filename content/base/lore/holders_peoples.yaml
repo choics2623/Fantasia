@@ -50,3 +50,12 @@
 # ── 하르칸 (fac_harkan)
 - {truth: T01, who: npc_temur, level: fragment, note: "신살 때 하르칸이 방관해 공범이 된 이야기 — 초원 구전으로 '엘다르가 계획, 용이 앞장'까지 안다"}
 - {truth: T13, who: npc_temur, level: rumor, note: "맹약회의 313이 인간 문제로 열린다는 말을 서진 계획에 넣었다 — 시기는 소문 수준"}
+
+# ── 그롬 (fac_grom)
+- {truth: T01, who: npc_urgash, level: fragment, note: "그롬의 몫은 에오르를 찌른 창 '첫 상처'. 전승으로 '엘다르가 계획, 용이 앞장'까지 안다"}
+- {truth: T13, who: npc_urgash, level: rumor, note: "태양월 대축제가 313 맹약회의와 같은 달이라는 것은 안다. 안건은 소문"}
+
+# ── 아에리 (fac_aeri)
+- {truth: T06, who: npc_kyrie, level: fragment, note: "하늘에서 시간의 균열이 위로도 찢어진 것을 보았다 (HOUSES §3.8 — 210세와 312년 전의 산술 불일치는 보고)"}
+- {truth: T03, who: npc_kyrie, level: rumor, note: "역행하는 별이 잔향의 각성과 함께 나타났다는 까마귀 아에리의 해석을 비밀로 한다 (fact_ws_retrograde_star)"}
+- {truth: T13, who: npc_kyrie, level: fragment, note: "맹약회의 313에 처음으로 대표를 보낸다. 표를 어느 쪽에 던질지는 정하지 못했다"}

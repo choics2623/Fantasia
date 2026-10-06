@@ -1,0 +1,170 @@
+# 하스트란 후작가 — "비늘기사단". 정본: HOUSES §2.2, §6.3 / RACES §3(전쟁 방식) / SUBRACES §3.4(청동발과의 지휘권 다툼)
+# 주의: 카드 npc_valerius는 '발레리우스 화염문'(순혈 310세, 비늘 언덕 저택)으로 이 가문의 발레리우스(334세)와 다른 인물이다.
+# 기준: AS 312 낙엽월 1일. 'unnamed:...' 홀더는 TODO-NPC.
+id: fac_hastran
+name: 하스트란 후작가
+kind: house
+race: [용인(순혈), 드레이크(탈것)]
+governance: 봉건 위계 — 순혈 후작가, 군 지휘선이 곧 가문의 줄
+governance_note: >
+  후작이 가문의 법이자 비늘기사단 단장이다. 가문은 하나의 군대이고 군대는 하나의 가문이다 — 지휘선과 혈연이 같다.
+  대대로 아우락스에게 비늘 서약. 평시에는 하스트 요새와 장원 6곳을 다스리고, 전시에는 비늘기사단 600기와 징집병 8,000을 움직인다.
+  그리고 전시에 인간 노예를 최전열에 세우는 '방패 노예'가 가문의 오래된 전술이다(거인 전쟁에서 배웠다).
+motto: "꺾이지 않으면 부러뜨린다."
+seat: "하스트 요새 (용의 대로 남부) — 바알카르 남문 수비도 겸한다"
+size:
+  members: "순혈 직계 4 + 용인 기사 600(비늘기사단) + 징집병 8,000 + 방패 노예(전시 징발) + 요새 노역 인간"
+  territory: "용의 대로 남부 하스트 요새와 주변 장원 6곳, 바알카르 남문"
+  wealth: "장원 수입, 전리품 홀, 원형장 내기 수익(AS 241 이후 비늘기사들이 인간 투사 시합에 내기를 걸기 시작)"
+  force: "비늘기사단 600기(드레이크 기병) · 징집병 8,000 · 그라넥의 군량 공급 · 아우락스 서부군에 합류. AS 312 여름 동원 대기령(비공개)"
+
+offices:
+  - id: off_marquis
+    title: 후작 — 비늘기사단 단장
+    holder: "unnamed:발레리우스 하스트란 — 후작, 334세"   # TODO-NPC (npc_valerius 화염문과 다른 인물)
+    reports_to: null
+    powers: ["가문의 법과 군 지휘 일체", "비늘기사단 600기·징집병 8,000의 동원", "아우락스에게 올릴 표 6 (지지율)"]
+    chosen_by: "장자 상속 — 시조 하스트 굽은창 (SK 640, 아그라몬의 호위대장)"
+    perks: ["가장 나이 든 현역 용인 기사", "대붕괴의 생존 목격자 — 당시 청년 기사로 아우락스의 기수였다"]
+    note: "밤마다 불을 끄고 잔다. 대붕괴 때 아우락스 곁에서 '무언가'를 보았고 그 뒤로 불을 무서워한다"
+  - id: off_deputy
+    title: 부단장 (장남)
+    holder: "unnamed:테렌스 하스트란 — 201세"   # TODO-NPC
+    reports_to: off_marquis
+    powers: ["부단장 — 기사단의 일상 지휘", "아버지의 사후 단장"]
+    chosen_by: "장자 상속 예정"
+    perks: ["아버지가 죽기를 기다린다. 발레리우스 사망 시 더 강경해진다"]
+  - id: off_south_gate
+    title: 남문 수비대장 (딸)
+    holder: "unnamed:마리엘 하스트란 — 176세"   # TODO-NPC
+    reports_to: off_marquis
+    powers: ["바알카르 남문 수비", "원형장 도박 인맥"]
+    chosen_by: "후작 지명"
+    perks: ["군나르의 99승째 경기를 직접 보았다 — 투사 시합 최대 도박꾼"]
+  - id: off_squire
+    title: 견습 기사 (손자)
+    holder: "unnamed:코넬 하스트란 — 48세"   # TODO-NPC
+    reports_to: off_deputy
+    powers: ["첫 임무 수행 중인 견습"]
+    chosen_by: "가문 관례"
+    perks: ["탈주자 추격 첫 임무에서 인간 아이를 놓아준 적이 있다"]
+  - id: off_keep_warden
+    title: 하스트 요새 관리인
+    holder: "unnamed:하스트 요새 성주대리 — 용인"
+    reports_to: off_marquis
+    powers: ["요새 살림·노역 인간 관리·성벽"]
+    chosen_by: "후작 지명"
+    perks: ["성벽에 매다는 처형 집행의 책임"]
+  - id: off_trophy_hall
+    title: 전리품 홀 지기
+    holder: "unnamed:전리품 홀 관리 용인"
+    reports_to: off_marquis
+    powers: ["요새 전리품 홀 — 붉은 손 다라의 오른손 미라가 유리함에 보관되어 있다"]
+    chosen_by: "후작 지명"
+    perks: []
+  - id: off_shield_master
+    title: 방패 노예 조련관
+    holder: "unnamed:방패 노예 조련 용인 기사"
+    reports_to: off_deputy
+    powers: ["전시 인간 노예 징발과 최전열 배치 (거인 전쟁에서 도입한 방패 노예 전술)", "평시에는 요새 노역"]
+    chosen_by: "부단장 지명"
+    perks: []
+  - id: off_pursuit_liaison
+    title: 탈주자 추격 계약 연락관
+    holder: "unnamed:바르그 조합 연락 용인 기사"
+    reports_to: off_south_gate
+    powers: ["바르그 노예사냥 조합과의 탈주자 추격 계약"]
+    chosen_by: "남문 수비대장 위임"
+    perks: []
+  - id: off_arena_bets
+    title: 원형장 내기 관리인
+    holder: "unnamed:비늘기사 내기 수금 담당"
+    reports_to: off_south_gate
+    powers: ["그롬마르 '피의 원형장' 인간 투사 시합에 건 내기 — AS 241 개장 이후 이어 온 가문 수입"]
+    chosen_by: "마리엘 지명"
+    perks: []
+
+ranks:
+  - {id: rank_marquis, title: "후작 (단장)", duties: "가문과 군의 법", privileges: "서약의 표, 동원령", open_to_player: false}
+  - {id: rank_commander, title: "직계 지휘관", duties: "부단장·남문 수비·견습", privileges: "기사단 지휘선", open_to_player: false}
+  - {id: rank_knight, title: "비늘 기사", duties: "드레이크 기병, 창 돌격 후 장검", privileges: "순혈 직계 외에도 비늘혈 무관이 오른다. 불의 잔 자격은 없다", open_to_player: false}
+  - {id: rank_levy, title: "징집병", duties: "전시 징집된 용인 하급·비늘혈", privileges: "기사단 뒤의 보병", open_to_player: false}
+  - {id: rank_shield_slave, title: "방패 노예", duties: "전시 최전열 — 용인 장교는 '인간 셋을 잃어도 기사 하나는 잃지 마라'를 교리로 배운다", privileges: "없다 — 평시에는 요새 노역", open_to_player: true, condition: "하스트란 소유로 팔리거나 징발될 때 입문. 크릭 감독관이 뒤에서 몬다"}
+  - {id: rank_fort_labor, title: "요새 노역 인간", duties: "하스트 요새 노역", privileges: "탈주자가 성벽에 매달린 것을 보는 것 외에는 없다", open_to_player: true, condition: "국유 노예 배당 또는 사유"}
+
+decision: "후작이 명령하고 부단장이 집행한다. 의논은 기사단 막사의 저녁 식탁에서 이루어지며 토론이라기보다 후작의 침묵이 승인이다. 동원령은 후작의 인장과 아우락스의 서약 사자가 함께 있어야 선다 — 지금 AS 312 여름 동원 대기령은 아직 비공개다."
+succession: "장자 상속. 후작이 죽으면 부단장 테렌스가 단장. 테렌스는 아버지보다 강경하다 — 발레리우스의 죽음 자체가 하스트란을 더 단단한 아우락스 쪽으로 만든다 (지지율 6 유지). 단 발레리우스가 대붕괴 증언을 선택하면 가문이 쪼개진다."
+
+law:
+  crimes:
+    - {act: "탈주자 (하스트란 소유 인간)", punishment: "요새 성벽에 매단다", note: "공개 처형. 도주 추격 중 포획된 외부 탈주자도 같다"}
+    - {act: "전시 방패 노예의 후퇴", punishment: "즉결 — 뒤의 크릭 감독관이 베거나 기사가 드레이크로 짓밟는다", note: "방패 노예는 후퇴가 허용되지 않는다"}
+    - {act: "기사가 인간 셋을 위해 기사 하나를 잃는다 (지휘 실책)", punishment: "단장의 징계 — 비늘 박탈", note: "교리 '인간 셋을 잃어도 기사 하나는 잃지 마라'"}
+    - {act: "비늘기사가 명령 없이 결투한다", punishment: "후작의 판결 — 가문 내 결투는 아버지 앞에서만", note: "혈족 법과 별개"}
+    - {act: "인간 아이를 놓아준다 (탈주자 추격 중)", punishment: "공식 처벌 없음 — 아버지가 알면 훈계, 단장이 알면 '다음 임무에서 보충'", note: "코넬의 선례"}
+    - {act: "전리품 홀의 다라의 손을 건드린다", punishment: "즉결 처형 (가문원은 이름 삭제)", note: "잿불 언덕 광부 전체를 일으킬 상징물"}
+    - {act: "비늘 서약을 아우락스 외 다른 용에게 한다", punishment: "가문 파문 — 대대로 아우락스 서약", note: ""}
+
+customs:
+  greeting: "기사는 오른 주먹을 가슴 비늘에 대고 창을 세운다(문장의 교차한 두 창). 대화는 짧다. 후작 앞에서는 묻지 않고 대답한다."
+  taboos:
+    - "'붉은 길'의 숫자(1만)를 가문 밖에서 입에 올리는 것 — 숫자 뒤에 다라의 이름이 따라 나온다"
+    - "불에 대한 두려움 — 후작이 불을 끄고 자는 것을 지적하지 않는다"
+    - "모르간트를 '겁쟁이'가 아닌 '국경의 사람'이라 부르는 것 (가문은 경멸을 소리 내어 말한다)"
+    - "방패 노예에게 이름을 붙이는 것"
+  rites:
+    - {name: "창 교차 서약", when: "기사 서임 때", what: "두 은빛 창을 교차하고 그 사이에 붉은 발톱을 올려 맹세한다. 아우락스에게 비늘 서약을 새로 한다"}
+    - {name: "푸른월 출정식", when: "푸른월 (전쟁 시즌)", what: "방패 노예 점호 — 번호를 부르고 낙인을 확인"}
+    - {name: "원형장 대축제 관람", when: "태양월", what: "마리엘이 선두에 서서 내기. 군나르의 99승 경기가 마지막 전설"}
+    - {name: "재의 날의 침묵", when: "연말 5일", what: "불을 피우지 않는다. 발레리우스는 평소에도 그렇게 지낸다"}
+  speech: "명령형과 단문. 존칭은 '각하'(후작), 동급에게는 '귀하'. 감정은 묻지 않고, 수치(기·인원·거리)로 말한다. 금지어: 후퇴, 겁, 불(후작 앞)."
+
+membership:
+  join: "출생(순혈). 비늘혈 무관은 비늘 기사로 서임(가문 소속 아님). 인간은 방패 노예로 징발·구매."
+  leave: "죽음, 파문. 기사는 '비늘 박탈'로 가문 없는 기사가 된다."
+  signs: ["검은 바탕 교차한 두 은빛 창, 그 사이 붉은 용 발톱", "비늘기사 갑옷의 붉은 발톱 각인", "방패 노예의 가슴 낙인"]
+
+internal_factions:
+  - {name: "발레리우스 충성파", leader: null, aim: "아우락스 서약 유지. 후작이 대붕괴 일을 입 밖에 내지 않는 것이 가문의 평안", strength: 50}
+  - {name: "테렌스 조급파", leader: null, aim: "아버지가 죽기를 기다린다. 더 강경한 단장 — 아우락스의 전쟁에 먼저 뛰어든다", strength: 30}
+  - {name: "마리엘 원형장파", leader: null, aim: "도박과 인간 투사 시합. 그롬과 통하는 줄", strength: 15}
+  - {name: "코넬의 흔들림", leader: null, aim: "인간 아이를 놓아준 견습. 아직 파벌이 아니다", strength: 5}
+  # leader null = 카드 미작성
+
+assets:
+  - "비늘기사단 600기, 드레이크, 징집병 8,000"
+  - "하스트 요새 전리품 홀 — 붉은 손 다라의 오른손 미라(유리함)"
+  - "'방패 노예' 전술과 인력 풀"
+  - "원형장 내기 네트워크와 그롬 용병 줄"
+  - "바르그 조합 탈주자 추격 계약"
+
+secrets:
+  - {fact: fact_dk_succession_split, known_by_rank: rank_commander}
+  # TODO-FACT: AS 100 '붉은 길' 처형(반란자 1만)을 집행한 것은 하스트란 / 전리품 홀의 다라의 오른손 미라(유리함) / 현 가주는 대붕괴 때 아우락스 곁에서 '무언가'를 보고 불을 무서워한다 / AS 312 여름 비늘기사단 동원 대기령(비공개)
+  - {truth: T06, level: fragment, holders: [off_marquis]}
+  - {truth: T12, level: rumor, holders: [off_marquis]}
+
+relations:
+  # HOUSES §2.2 '관계' 서술에서 환산 (행렬 §6.1 밖)
+  - {to: fac_kaldaran, stance: 60, note: "혼인 동맹 — 2대"}
+  - {to: fac_morgant, stance: -40, note: "경멸 — '국경의 겁쟁이들'"}
+  - {to: fac_varg_guild, stance: 40, note: "탈주자 추격 계약 (id는 바르그 조합 담당 작가 확인)"}
+  - {to: fac_vermion, stance: -40, note: "원한 — 붉은 길 이후 광산 노동력 손실 책임 공방"}
+  - {to: fac_granek, stance: 40, note: "군량 공급"}
+toward_echo: "화형 → 단절. 아우락스 진영의 한 축이다. 발레리우스는 대붕괴의 '무언가'를 본 사람이고, 잔향 사냥이 왜 계속되는지 안다 — 증언을 하느냐 불을 끄고 자느냐가 이 가문의 선택이다."
+player_paths:
+  - "다라의 손 — 전리품 홀의 미라를 훔쳐내면 잿불 언덕 광부 전체를 일으킬 상징이 된다 (붉은 길 이후 베르미온과의 원한도 건드린다)"
+  - "발레리우스의 증언 — 대붕괴의 목격자. 증언은 아우락스를 배신하는 일이다 (지지 6점이 움직인다, 단 발레리우스 사망 시 테렌스가 더 강경)"
+  - "방패 노예 — 징발되어 최전열에서 살아남거나 탈주한다"
+  - "코넬 — 인간 아이를 놓아준 견습 기사. 한 번 더 놓아주게 만들 수 있다"
+  - "마리엘 — 원형장 도박판에서 정보와 줄을 얻는다"
+regression:
+  fixed:
+    - "AS 312 여름 비늘기사단 동원 대기령"
+    - "발레리우스는 밤마다 불을 끈다, 대붕괴의 증언을 한 적 없다"
+    - "다라의 손 미라가 유리함에 있다"
+  flow:
+    - "푸른월 출정 일자, 원형장 대축제 관람 일자"
+  drift:
+    - "그날 요새에서 성벽에 매달린 탈주자가 누구인가"
+    - "코넬이 놓아주는 아이가 누구인가"

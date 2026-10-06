@@ -1,0 +1,68 @@
+# 지역 생성 키트 — 인간 농노 마을 (25_REGION_KITS.md). 회색여울 주변의 이름 없는 마을들이 이것으로 태어난다.
+id: kit_human_serf
+applies_to: [회색여울 변경, 드라크마르 용좌령, 잿불 언덕]
+names:
+  인간:
+    # 인간은 성(姓)을 가질 수 없다 (사슬의 맹약 1조). 주인이 붙인 번호·별명과, 어머니만 아는 진짜 이름이 따로 있다.
+    male: [군터, 칼레, 오토, 베른, 하인, 루츠, 마테, 페터, 울리, 크누트, 디터, 얀, 볼프, 에드, 토비, 라스, 닐스, 아르네, 헤르만, 로타]
+    female: [게르트, 마리, 안나, 리스베트, 한나, 그레테, 에다, 일제, 루트, 마그다, 베타, 클라라, 헬가, 이다, 우테, 프리다, 엘케, 잉에, 레나, 소피]
+    given_by_master: ["{n}번", "셋째", "넷째", "다섯째", "절름발이", "곰보", "빨강머리", "외눈", "벙어리", "꼬마"]
+    epithet_rule: "주인이 부르는 이름(번호·별명) + 마을이 부르는 이름(직업·생김새) + 진짜 이름(어머니만)"
+classes:            # 정착지 인구에서의 비율
+  농노: 0.78
+  숙련 노예: 0.12   # 대장장이, 방앗간지기, 부엌일
+  목줄단: 0.03      # 인간 감독, 밀고자
+  용인 관리: 0.04
+  크릭 감독: 0.03
+jobs:
+  - {id: field_serf, name: 들일 농노, class: 농노, weight: 40, schedule: sch_field}
+  - {id: woodcutter, name: 벌목 농노, class: 농노, weight: 10, schedule: sch_woods}
+  - {id: weaver, name: 직조 여인, class: 농노, sex: female, weight: 12, schedule: sch_weave}
+  - {id: herder, name: 양치기, class: 농노, weight: 4, schedule: sch_herd}
+  - {id: child, name: 아이, class: 농노, age: [5, 13], weight: 14, schedule: sch_child}
+  - {id: elder, name: 노인, class: 농노, age: [50, 70], weight: 6, schedule: sch_elder}
+  - {id: smith_hand, name: 대장간 일꾼, class: 숙련 노예, weight: 3, schedule: sch_smithy}
+  - {id: kitchen, name: 배급소 부엌일, class: 숙련 노예, weight: 4, schedule: sch_kitchen}
+  - {id: collar, name: 목줄단 반장, class: 목줄단, weight: 2, schedule: sch_collar}
+  - {id: krik_overseer, name: 크릭 감독, class: 크릭 감독, race: 크릭, weight: 3, schedule: sch_overseer}
+schedules:          # 직업 일과 틀 — at은 정착지 틀의 역할(role) 이름
+  sch_field:   [{days: workday, from: "06:00", to: "18:30", at: fields, doing: 들일}, {days: all, from: "19:00", to: "20:00", at: canteen, doing: 배급 줄}, {days: all, from: "21:00", to: "04:30", at: barracks, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:00", at: chapel, doing: 예배}]
+  sch_woods:   [{days: workday, from: "06:00", to: "18:00", at: woods, doing: 벌목}, {days: all, from: "19:00", to: "20:00", at: canteen, doing: 배급 줄}, {days: all, from: "21:00", to: "04:30", at: barracks, doing: 잔다}]
+  sch_weave:   [{days: workday, from: "07:00", to: "18:00", at: weaving, doing: 직조}, {days: all, from: "19:00", to: "20:00", at: canteen, doing: 배급 줄}, {days: all, from: "21:00", to: "04:30", at: barracks, doing: 잔다}, {days: sabbath, from: "07:00", to: "09:00", at: chapel, doing: 예배}]
+  sch_herd:    [{days: workday, from: "05:00", to: "18:00", at: pasture, doing: 방목, outdoor: true}, {days: all, from: "18:00", to: "05:00", at: huts, doing: 움막}]
+  sch_child:   [{days: workday, from: "06:00", to: "12:00", at: fields, doing: 이삭 줍기}, {days: workday, from: "12:00", to: "18:00", at: well, doing: 물 긷기}, {days: all, from: "19:00", to: "20:00", at: canteen, doing: 배급 줄}, {days: all, from: "20:00", to: "05:00", at: barracks, doing: 잔다}]
+  sch_elder:   [{days: all, from: "08:00", to: "17:00", at: huts, doing: 그물 깁기}, {days: all, from: "17:00", to: "08:00", at: huts, doing: 움막}]
+  sch_smithy:  [{days: workday, from: "06:00", to: "19:00", at: smithy, doing: 풀무질}, {days: all, from: "21:00", to: "05:30", at: smithy, doing: 뒷방에서 잔다}]
+  sch_kitchen: [{days: all, from: "04:30", to: "20:30", at: canteen, doing: 솥일}, {days: all, from: "21:00", to: "04:30", at: canteen, doing: 부엌 구석에서 잔다}]
+  sch_collar:  [{days: workday, from: "06:00", to: "18:00", at: fields, doing: 감시와 할당}, {days: all, from: "19:00", to: "21:00", at: post, doing: 보고}, {days: all, from: "21:00", to: "05:00", at: barracks, doing: 막사 문 옆 침상}]
+  sch_overseer: [{days: all, from: "05:00", to: "06:00", at: post, doing: 점호, fixed: true}, {days: workday, from: "06:00", to: "18:30", at: fields, doing: 순찰}, {days: all, from: "18:30", to: "20:00", at: post, doing: 저녁 점호}, {days: all, from: "20:00", to: "05:00", at: post, doing: 초소}]
+voices:             # 말투 원형 — 즉석 생성 인물이 하나를 받아 변주한다 (22 §1.1)
+  - {id: v_sullen, name: 퉁명한 자, register: "반말, 단어 하나", tics: ["'됐어.'"], use: [배, 일, 비], avoid: [희망], sample: "됐어. 네 일이나 해."}
+  - {id: v_pious, name: 기도하는 자, register: "공손, 말끝마다 빛", tics: ["'빛이 보시기를.'"], use: [빛, 순종, 은혜], avoid: [주인 욕], sample: "빛이 보시기를. 오늘도 배급이 나왔으니 은혜지요."}
+  - {id: v_gossip, name: 소문쟁이, register: "반말, 길다, 목소리를 낮춘다", tics: ["'너만 알아.'"], use: [들었어, 봤어, 누가], avoid: [], sample: "너만 알아. 어제 징세소 불이 밤새 켜져 있었대."}
+  - {id: v_broken, name: 꺾인 자, register: "존댓말, 끝을 흐린다", tics: ["'…그렇죠.'"], use: [죄송, 괜찮], avoid: [내일], sample: "괜찮아요… 원래 그런 거죠."}
+  - {id: v_bitter, name: 앙심 품은 자, register: "반말, 비꼼", tics: ["'잘났네.'"], use: [용인, 개, 언젠가], avoid: [], sample: "잘났네. 배부른 소리는 성채 가서 해."}
+  - {id: v_mother, name: 어머니 같은 자, register: "반말, 다정, 명령형", tics: ["'먹어.'"], use: [먹어, 아가, 추워], avoid: [], sample: "먹어. 말은 먹고 나서 해."}
+temperaments: [과묵, 수다, 의심, 순종, 앙심, 다정, 겁, 고집, 비굴, 체념, 영리, 무딤]
+settlement_templates:
+  - id: tpl_human_serf_village
+    name: 인간 농노 마을
+    grid: {w: 500, h: 400}
+    roles:          # role: [개수 범위, 배치 규칙, 장소 속성]
+      keep:     {count: [0, 1], place: "가장 높은 곳(북쪽 가장자리)", access: owner, name: "{주인} 성채"}
+      post:     {count: [1, 1], place: "광장 옆", access: public, name: 감독관 초소}
+      square:   {count: [1, 1], place: 가운데, access: public, name: 채찍 기둥 광장}
+      well:     {count: [1, 1], place: "가운데에서 서쪽", access: public, name: 우물 광장}
+      canteen:  {count: [1, 1], place: "광장 남쪽", access: public, name: 배급소}
+      barracks: {count: [1, 3], place: "서쪽 가장자리", access: serf, name: 막사, locked: "21:00-04:30"}
+      huts:     {count: [0, 1], place: "강가 또는 남쪽 끝", access: serf, name: 움막}
+      chapel:   {count: [0, 1], place: "북서쪽", access: public, name: 사슬등불 예배당}
+      smithy:   {count: [0, 1], place: 동쪽, access: public, name: 대장간}
+      granary:  {count: [1, 1], place: "남동쪽", access: locked, name: 영주 곡창}
+      weaving:  {count: [0, 1], place: 남서쪽, access: serf, name: 직조 헛간}
+      graveyard: {count: [1, 1], place: "바람 아래 (북서쪽 모서리)", access: public, name: 번호 묘지}
+    outer:
+      fields:   {hours: [0.3, 1.0], name: 들판}
+      woods:    {hours: [1.0, 3.0], name: 벌목지}
+      pasture:  {hours: [0.5, 1.5], name: 목초지}
+calendar_ref: "content/base/events/ — 지역 사건 달력 (REGIONS §x.14 형식)"

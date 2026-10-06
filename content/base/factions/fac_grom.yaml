@@ -1,0 +1,248 @@
+# 그롬 전쟁무리 — 피 혈명('분노')의 굴레(싸우지 않으면 쇠약)가 만든 힘의 서열.
+# 근거: HOUSES §3.7, §4.4(백승가), RACES §13, REGIONS §16, facts/grommar.yaml.
+id: fac_grom
+name: 그롬 전쟁무리 (피의 원형장)
+kind: polity
+race: [전쟁 그롬, 붉은 그롬, 오그림, 잿빛 그롬(변방), 인간 투사·소모품, 크릭, 나가(항구 상관)]
+governance: 힘의 서열 — 도전제  # 계급은 결투로 바뀌고 도전은 거절할 수 없다
+motto: "피가 곧 기도다."
+seat: 피의 원형장 — 뼈의 전당 (그롬마르 붉은 황야 중심, 원형 도시 약 40,000)
+size:
+  members: "그롬 약 40,000(REGIONS)~210,000(RACES), 인간 투사 약 2,400, 소모품·노역 약 18,000(RACES는 95,000), 크릭 4,000, 나가 300"
+  territory: "그롬마르 붉은 황야 — 씨족 요새 약 60곳, 그롬마르 항(나가 상관), 말뼈 여울(하르칸 분쟁지)"
+  wealth: "화폐 경멸 — 전리품. 원형장 관람 공물, 철 무기, 용병 계약(쇠턱 ↔ 세렌 테르사 상가). 노예·철·곡물 수입"
+  force: "정면 돌격과 광란. 인간 소모품이 첫 열, 투사 출신은 그롬 전사와 같은 열. 하르칸·요툰이 숙적"
+
+decision: >
+  그롬에게 서열은 곧 결정이고, 서열은 결투가 정한다. 누구든 바로 위의 자리에 도전할 수 있고 도전을 거절하는 것은 금기다 — 거절은 곧 패배이자 비겁이다.
+  전쟁군주(씨족장 약 60)의 회합 '피의 소집'은 매년 푸른월(전쟁 시즌) 전에 열려 원정 여부와 소모품 징발을 정한다. 말로 하지 않고, 원형장 모래에서 각자의 도전 의사를 걸어 겨룬 뒤 남은 자들의 뜻이 결정이 된다.
+  대전쟁군주 자리에 대한 도전은 태양월 피의 원형장 대축제에서만 받는다. 이 규칙이 우르가쉬의 약점이자 도전 시점을 조작할 수 있는 틈이다 — 쇠약이 시작된 군주도 대축제까지는 한 번만 이기면 한 해를 더 산다.
+  거부권이라는 개념은 없다. 결정에 반대하는 자는 결정자에게 도전하면 된다. 인간 투사는 의제가 아니라 '경기'의 재료다 — 원형장 관리자(피의 감독)가 대진표와 계약을 정한다.
+  백승의 인간 투사에게는 '혈명 없는 혈명'이 주어지고, 그 순간부터 그는 서열 밖의 '형제'다 — 그 권리를 둘러싼 논쟁(인간이 형제가 되면 원형장은 무엇이 되는가)이 원형장파와 원정파를 가른다.
+succession: >
+  대전쟁군주는 도전으로 바뀐다. 태양월 대축제에서 도전자가 군주를 쓰러뜨리면(죽이거나 무릎 꿇리면) 군주가 된다. 도전이 없으면 현직이 유지된다.
+  현 군주 우르가쉬(61세)는 AS 309 아침 대련에서 처음 한 방을 맞고 무릎을 꿇었다(숨기고 있다). 피도끼의 그라샤(38)는 이번 태양월에 도전할 예정이다.
+  전쟁군주 자리는 씨족 내 도전으로, 흉터 전사는 흉터 수로 서열이 정해진다. 늙어 죽는 것은 수치이므로 늙은 전사는 도전에 나서 죽는다.
+
+offices:
+  - id: off_great_warlord
+    title: 대전쟁군주
+    holder: npc_urgash
+    reports_to: null
+    powers: ["원형장의 주인", "원정 최종 결정", "뼈의 전당 지하 감방과 탈의 열쇠 관리", "맹약회의 313 그롬 대표"]
+    chosen_by: "태양월 대축제에서의 도전 — 쓰러뜨린 자가 군주"
+    perks: ["뼈의 전당", "붉은 유리 왼눈", "탈과의 매일 밤 대련"]
+  - id: off_warlords
+    title: 전쟁군주 회합 (씨족장 약 60 — 집합 자리)
+    holder: "unnamed:60개 씨족 요새의 전쟁군주들"
+    reports_to: off_great_warlord
+    powers: ["피의 소집 — 푸른월 전 원정·징발 결정", "씨족 요새 지배"]
+    chosen_by: "씨족 내 도전"
+    perks: []
+  - id: off_camp_commander
+    title: 전쟁 숙영지 사령
+    holder: "unnamed:크로그 쇳주먹"
+    reports_to: off_great_warlord
+    powers: ["원정 병력 지휘", "비겁 판정 — 소모품 강등 또는 결투"]
+    chosen_by: "대전쟁군주의 지명 (도전으로 대체 가능)"
+    perks: []
+  - id: off_arena_overseer
+    title: 피의 감독 (원형장 관리)
+    holder: "unnamed:얄라 붉은손톱 (그롬 여성)"
+    reports_to: off_great_warlord
+    powers: ["투사 계약·대진표", "경기 거부 시 소모품 강등"]
+    chosen_by: "대전쟁군주의 지명"
+    perks: []
+  - id: off_arena_judge
+    title: 원형장 심판 (은퇴하지 않는 자)
+    holder: "unnamed:크롤 백상처 — 백승의 탈과 싸웠던 마지막 생존자"
+    reports_to: off_arena_overseer
+    powers: ["경기 판정 — 도전의 성립·승패"]
+    chosen_by: "종신 — 은퇴하지 않는다"
+    perks: []
+  - id: off_skullfang_clan
+    title: 해골이빨 씨족장 (원형장 중심 씨족)
+    holder: npc_urgash
+    reports_to: off_warlords
+    powers: ["투사 1,200, 소모품 병사 5,000"]
+    chosen_by: "SK 2,390 거인 전쟁 종전 이후의 씨족, 도전으로 유지"
+    perks: ["투사 1,200"]
+  - id: off_bloodaxe_clan
+    title: 피도끼 씨족장 (차기 후보)
+    holder: "unnamed:그라샤 피도끼 (38) — 이번 태양월 대축제에서 우르가쉬에게 도전할 예정"
+    reports_to: off_warlords
+    powers: ["그롬마르 북부", "인간 투사를 '도끼날 훈련용'으로 소모"]
+    chosen_by: "SK 2,700 창건 씨족 — 도전"
+    perks: ["아우락스 지지"]
+  - id: off_irongjaw_clan
+    title: 쇠턱 씨족장 (세렌 용병)
+    holder: "unnamed:보르그 쇠턱 (52)"
+    reports_to: off_warlords
+    powers: ["그롬마르 항 — 노예선 경비, 세렌 테르사 상가와 용병 계약"]
+    chosen_by: "AS 120 창건 씨족 — 도전"
+    perks: ["멜리산드 지지(용병 고용)"]
+  - id: off_ashhowl_shaman
+    title: 재울음 주술사 (혈명 없는 혈명 의식 담당)
+    holder: "unnamed:노파 우르크 (74)"
+    reports_to: off_warlords
+    powers: ["100승자의 '혈명 없는 혈명' 의식(붉은 젖 — 분노샘의 짠 즙)", "탈의 잘린 목줄 보관"]
+    chosen_by: "AS 40 잿빛 겨울에 세운 씨족의 주술사"
+    perks: ["백승의 탈 유품"]
+  - id: off_expedition_chief
+    title: 원정파 수장 (투사 조련·매매상)
+    holder: npc_gorba
+    reports_to: off_warlords
+    powers: ["하르칸 초원 침공 주장", "투사 조련·매매", "마라의 100승 상대 선별"]
+    chosen_by: "전쟁군주 중 원정 동의자의 추대 (RACES의 '고르바 일곱흉터'와 같은 인물로 본다)"
+    perks: ["마지막 등불 튀크와의 유물 거래"]
+  - id: off_gate_jailer
+    title: 뼈의 전당 감방 경비 (오그림)
+    holder: npc_ulb
+    reports_to: off_great_warlord
+    powers: ["탈이 갇힌 지하 감방의 열쇠를 목에 건다", "공성 계급 경비"]
+    chosen_by: "우둔하다고 믿어져 열쇠를 맡았다"
+    perks: ["마라의 경기를 좋아한다"]
+  - id: off_floor_cleaner
+    title: 원형장 바닥 청소부 (강등된 광전사)
+    holder: npc_murk
+    reports_to: off_arena_overseer
+    powers: ["없음 — 싸움을 거부한 그롬. 우르가쉬의 형"]
+    chosen_by: "강등 (우르가쉬가 죽이지 않은 이유는 혈연 — 원형장은 모른다)"
+    perks: ["지하 배수로에서 탈의 대련 소리를 듣는다"]
+  - id: off_battle_tongue_teacher
+    title: 전투어 교사 (비공식)
+    holder: "unnamed:쉬라 피웃음 — 인간 투사에게 몰래 전투어를 가르치는 여전사"
+    reports_to: off_arena_overseer
+    powers: ["투사 훈련 보조"]
+    chosen_by: "관리자의 묵인"
+    perks: []
+  - id: off_harbor_master
+    title: 그롬마르 항만장
+    holder: "unnamed:그롬 항만장 (나가 상관과 공존)"
+    reports_to: off_great_warlord
+    powers: ["항구 통행·나가 상관 관계"]
+    chosen_by: "대전쟁군주의 지명"
+    perks: []
+  - id: off_chained_legend
+    title: 백승의 탈 (사슬에 묶인 전설)
+    holder: npc_tal
+    reports_to: off_great_warlord
+    powers: ["없음 — 눈이 멀고 쇠사슬에 묶여 뼈의 전당 지하에서 살아 있다"]
+    chosen_by: "AS 258 100승 — 붉은 젖에 중독된 채 갇혔다 (fact_gm_tal_alive_chained)"
+    perks: ["우르가쉬와 매일 밤 대련"]
+  - id: off_fighter_head
+    title: 투사 대표 (인간 — 87승)
+    holder: npc_mara
+    reports_to: off_arena_overseer
+    powers: ["인간 투사 막사의 비공식 대표", "100승 시합 예정"]
+    chosen_by: "승수 — 투사 서열"
+    perks: ["승수 보상: 10승 투사명, 25승 개인 천막, 50승 제자 1명, 100승 형제"]
+  - id: off_fighter_guild_head
+    title: 투사 조합장 (인간)
+    holder: "unnamed:오그 (47, 78승)"
+    reports_to: off_arena_overseer
+    powers: ["투사 조합 — 막사의 노예말 학교 묵인"]
+    chosen_by: "투사들의 신뢰"
+    perks: []
+
+ranks:
+  - {id: rank_great_warlord, title: "대전쟁군주", duties: "원형장의 주인, 도전을 받는다", privileges: "뼈의 전당", open_to_player: false}
+  - {id: rank_warlord, title: "전쟁군주 (씨족장)", duties: "씨족 요새와 전사 지휘", privileges: "피의 소집 참석", open_to_player: false}
+  - {id: rank_scar_warrior, title: "흉터 전사", duties: "전쟁·대련 — 흉터 수로 서열", privileges: "등 흉터는 덮지 않는다", open_to_player: false}
+  - {id: rank_pup, title: "애송이", duties: "10세 첫 싸움, 13세 성년", privileges: "대련 참가", open_to_player: false}
+  - {id: rank_blood_brother, title: "그롬의 형제 (혈명 없는 혈명 — 100승 인간)", duties: "붉은 젖으로 이어지는 의존", privileges: "자유, 무기 소지, 전리품 소유, 그롬 씨족 합류, 그롬이 고개를 숙임 — 실제로는 붉은 젖 중독(fact_gm_red_milk_ritual)", open_to_player: true, condition: "원형장 100승. 지금까지 셋(전설상 백승의 탈 포함). 군나르는 99승에서 탈주했다"}
+  - {id: rank_gladiator, title: "인간 투사", duties: "원형장 경기, 새벽 훈련 4시간", privileges: "잘 먹는다. 무기 소지 허용(그롬마르에서만 합법). 10승 이름·25승 개인 천막·50승 제자 1명", open_to_player: true, condition: "투사 후보 노예(3~6 비늘)로 들어와 예선(봄)에 선발된다. 경기를 거부하면 소모품으로 강등"}
+  - {id: rank_expendable, title: "인간 소모품 (병사·노역)", duties: "원정 첫 열, 귀리죽 2", privileges: "없음 — 생존율이 매우 낮다", open_to_player: true, condition: "원정 징발(가을) 또는 투사 강등"}
+
+law:
+  crimes:
+    - {act: "침대에서 죽음 / 늙어 죽음", punishment: "수치 — 시신에 흉터 문신을 새기지 않는다", note: "그롬 대상 (금기 ①)"}
+    - {act: "도전을 거절함", punishment: "비겁 — 서열 박탈, 결투 강제", note: "그롬 대상 (금기 ②). 거절하지 못하는 약점을 유인에 쓸 수 있다"}
+    - {act: "원형장 밖에서 투사를 해침", punishment: "투사는 원형장의 것 — 모든 씨족의 사냥감", note: "양쪽 모두 (금기 ③)"}
+    - {act: "죽은 적을 조롱함", punishment: "서열 박탈 — 적의 강함이 곧 나의 영광", note: "그롬 대상 (금기 ④)"}
+    - {act: "등 뒤의 상처를 문신으로 덮음", punishment: "도망의 증거를 숨긴 것 — 결투 청구", note: "그롬 대상 (금기 ⑤)"}
+    - {act: "나눔 식사 후 배신", punishment: "그롬은 거인 전쟁의 원인이 자신들이 아니라고 주장 — 언급 자체가 결투 사유", note: "그롬 대상 (금기 ⑥)"}
+    - {act: "경기 거부", punishment: "소모품 강등", note: "인간 투사 대상. 집행 피의 감독"}
+    - {act: "비겁(전장 이탈)", punishment: "소모품 강등 또는 결투", note: "인간 대상. 집행 숙영지 사령"}
+    - {act: "투사의 탈주", punishment: "사냥 — 그롬 누구나. 단 99승 이상의 탈주는 '마지막 경기의 미룸'으로 본다", note: "인간 대상"}
+    - {act: "무기 소지(투사) / 글자 / 마법", punishment: "처벌 없음 — 무관심(마법은 '싸우는 방법')", note: "인간 대상. 그롬마르 밖에서는 적용되지 않는다"}
+
+customs:
+  greeting: "상대의 흉터를 본다. '몇 개냐?' — 흉터 수와 위치로 서열을 읽고, 앞의 상처는 인정하고 등의 상처는 말하지 않는다. 인간에게는 승수를 묻는다. 도전의 말(주먹을 가슴에 대고 '받는다')이 가장 정중한 인사다."
+  taboos:
+    - "침대에서 죽는 것, 늙어 죽는 것"
+    - "도전을 거절하는 것"
+    - "원형장 밖에서 투사를 해치는 것"
+    - "죽은 적을 조롱하는 것"
+    - "등 뒤의 상처를 문신으로 덮는 것"
+    - "비겁, 늙음 조롱, 나눔 식사 배신 이야기"
+  rites:
+    - {name: "피의 원형장 대축제", when: "태양월 (313년은 맹약회의와 같은 달)", what: "그롬 문화의 중심. 100승 도전 경기, 대전쟁군주 도전. 대륙 최대 군중"}
+    - {name: "혈명 없는 혈명", when: "100승 직후", what: "재울음 주술사가 그롬의 피를 이마에 바르고 전투어로 이름을 불러 준다. 붉은 젖(분노샘의 즙)을 먹인다 — 실제로는 중독의 의식"}
+    - {name: "흉터 새김", when: "첫 싸움(10세), 성년(13세)", what: "흉터를 자랑으로 새긴다(흉터 문신). 등의 흉터만은 덮지 않는다"}
+    - {name: "피의 소집", when: "푸른월 전", what: "전쟁군주 회합 — 원정·소모품 징발 결정"}
+    - {name: "이름 연호", when: "경기 중", what: "고통 속에서도 일어나는 인간 투사를 관중이 이름으로 연호한다"}
+    - {name: "매일 대련", when: "매일", what: "30일 싸움이 없으면 근육이 빠지고 열이 난다 — 대련은 의무"}
+  speech: "그롬 전투어 — 짧고 거친 명령형. 존칭이 없다. 서열은 호칭이 아니라 '몇 개의 흉터'와 눈의 높이로 드러난다. 인간 투사에게도 같은 전투어를 쓰며, 이름을 불러 주는 것이 최고의 인정이다('이빨 없는 자'가 아니라 이름으로). 완곡어는 약함이다 — 거절은 '싸우자'가 되고 동의는 '받는다'가 된다."
+
+membership:
+  join: "그롬은 씨족에 태어나 10세 첫 싸움, 13세 성년에 흉터를 받는다. 인간은 투사 후보 노예로 팔려 오거나 소모품으로 징발된다 — 입문 의식은 원형장 예선(봄)이다."
+  leave: "그롬은 나가지 않는다 — 죽거나 도전으로 서열이 바뀐다. 투사는 100승으로 형제가 되나 붉은 젖이 목줄이다. 탈주는 사냥(99승 이상은 '마지막 경기의 미룸')."
+  signs: ["흉터 문신 — 등은 덮지 않음", "씨족 문장 — 해골을 문 송곳니(해골이빨), 피 묻은 쌍날 도끼(피도끼), 쇠로 만든 아래턱(쇠턱), 재를 뒤집어쓴 늑대 머리(재울음)", "투사 쇠목줄, 백승의 탈 이빨 목걸이(7송곳니)"]
+
+internal_factions:
+  - {name: "원형장파", leader: npc_urgash, aim: "원형장이 그롬의 피를 식혀 준다. 원정보다 경기를 지킨다. 우르가쉬의 쇠약을 숨긴다", strength: 40}
+  - {name: "원정파", leader: npc_gorba, aim: "테무르의 통일 전에 하르칸 초원을 친다. 인간 소모품 2만 징발. 백승 투사에게 형제의 권리를 주는 데 반대", strength: 30}
+  - {name: "도전자들 (피도끼)", leader: null, aim: "그라샤가 태양월에 우르가쉬에게 도전한다. 이기면 아우락스에게 전쟁을 판다", strength: 20}
+  - {name: "싸움을 거부한 자들 (무르크)", leader: npc_murk, aim: "뼈의 전당 지하의 쇠사슬 소리를 듣는 소수. 우르가쉬의 형이라는 혈연을 모른 채 싸움을 접었다", strength: 5}
+
+assets:
+  - "피의 원형장 — 첫 상처(에오르를 찌른 창, 진품 불명)가 중앙에 박혀 있다"
+  - "뼈의 전당 지하 감방 — 눈먼 백승의 탈. 열쇠는 오그림 경비 울브의 목에"
+  - "붉은 젖 — 분노샘에서 짠 즙. 100승자를 묶는 목줄"
+  - "투사 1,200(해골이빨), 소모품 병사 5,000, 원정 인간 징발 2만"
+  - "그롬마르 항 — 나가 상관, 쇠턱의 용병 계약"
+  - "재울음 무리의 탈의 잘린 목줄·이빨 목걸이"
+
+secrets:
+  - {fact: fact_gm_red_milk_ritual, known_by_rank: rank_warlord}
+  - {fact: fact_gm_tal_alive_chained, known_by_rank: rank_great_warlord}
+  - {fact: fact_gm_urgash_loves_tal, known_by_rank: rank_great_warlord}
+  - {fact: fact_gm_urgash_first_hit_taken, known_by_rank: rank_great_warlord}
+  - {fact: fact_gm_urgash_red_glass_eye, known_by_rank: rank_warlord}
+  - {fact: fact_gm_murk_urgash_brothers, known_by_rank: rank_great_warlord}
+  - {fact: fact_gm_ulb_holds_cell_key, known_by_rank: rank_warlord}
+  - {fact: fact_gm_gorba_rigged_bouts, known_by_rank: rank_warlord}
+  - {fact: fact_gm_gorba_seeks_gunnar_disciple, known_by_rank: rank_warlord}
+  - {truth: T01, level: fragment, holders: [npc_urgash]}
+  - {truth: T13, level: rumor, holders: [npc_urgash]}
+  # TODO-FACT: 그라샤 피도끼는 태양월 대축제에서 우르가쉬에게 도전할 예정이다 (HOUSES §3.7)
+  # TODO-FACT: 재울음 무리가 백승의 탈에게 혈명 없는 혈명을 주었고 탈의 유품을 보관한다 (HOUSES §3.7, fact_gm_red_milk_ritual 참고)
+
+relations:
+  - {to: fac_aurax, stance: 40, note: "HOUSES §6.1 행렬 — 그롬. 해골이빨·피도끼가 아우락스 지지(전쟁을 줄 쪽). 그라샤가 대축제에서 패하면 −2"}
+  - {to: fac_melisande, stance: 0, note: "행렬. 쇠턱 전쟁무리는 멜리산드 지지(용병)"}
+  - {to: fac_kaspar, stance: -20, note: "행렬"}
+  - {to: fac_eldar, stance: -40, note: "행렬"}
+  - {to: fac_nocturne, stance: 0, note: "행렬"}
+  - {to: fac_durgan, stance: -20, note: "행렬"}
+  - {to: fac_seren, stance: 20, note: "행렬 — 쇠턱의 용병 계약"}
+  - {to: fac_jotun, stance: -50, note: "행렬 — 거인 전쟁의 나눔 식사 배신 원한"}
+  - {to: fac_light, stance: -30, note: "행렬 — 순종의 빛 감찰관은 투사 막사의 노예말 학교를 용납하지 않는다"}
+  - {to: fac_nameless, stance: -20, note: "행렬"}
+  - {to: fac_collar, stance: 0, note: "행렬"}
+  - {to: fac_ashen_tower, stance: -10, note: "행렬"}
+  - {to: fac_barg, stance: 10, note: "행렬"}
+  - {to: fac_swamp_hags, stance: 0, note: "행렬"}
+  - {to: fac_harkan, stance: -55, note: "행렬 밖 — 말뼈 여울, 우르가쉬의 왼눈을 앗은 화살(AS 285). 원정파가 테무르의 통일 전에 치자고 한다"}
+toward_echo: "이용하기 / 존중. 그롬은 싸우는 인간을 존중한다 — 잔향 자체보다 승수와 흉터를 본다. 쓰러져도 일어나는 투사는 이름으로 연호된다. 100승에 이르면 '형제'이나 붉은 젖이 목줄이다. 우르가쉬는 탈을 사랑한다."
+player_paths:
+  - "가입: 투사 후보로 들어가 승수를 쌓는다. 10승 이름, 25승 천막, 50승 제자, 100승 형제(붉은 젖의 대가)"
+  - "침투: 뼈의 전당 지하 — 울브의 열쇠(목에 걸림), 무르크의 배수로 통로로 탈을 만난다"
+  - "구출: 마라의 100승 시합 상대가 군나르의 제자가 되지 않게 / 탈의 쇠사슬을 풀어 군나르의 유산을 이른다"
+  - "이용: 그라샤의 도전을 부추기거나 막아 대축제의 결과를 조작한다. 우르가쉬의 쇠약을 폭로"
+  - "봉기: 태양월 대축제는 313 맹약회의와 같은 달 — 원형장의 봉기가 대륙의 눈앞에서 일어난다. 투사 결사 '아흔아홉'"
+regression:
+  fixed: ["태양월 대축제 날짜와 도전 규칙", "탈이 뼈의 전당 지하에 살아 있다는 사실과 울브의 열쇠", "100승 보상 사다리(10·25·50·100)", "우르가쉬의 AS 309 첫 패배(쇠약)"]
+  flow: ["원정파 대 원형장파의 세력비", "소모품 징발 규모", "그라샤의 도전 성공 가능성"]
+  drift: ["마라의 승수와 시합 상대", "군나르 추적대가 회색여울에 가는 시점", "경기 중 누가 죽는가"]

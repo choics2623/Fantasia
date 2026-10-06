@@ -1,0 +1,169 @@
+# 사르코스 백작가 — "모든 목에는 값이 있다". 정본: HOUSES §2.3, §6.3 / RACES §3
+# 비늘혈, 돈으로 산 작위. 바알카르 '쇠사슬 광장'(파종월 노예 매매 대시장 운영권)과 '울타리 셋' 수용소.
+# 주의(모순 기록): REGIONS §1.3은 비늘 시장 운영권을 타르굴 가에 두고, HOUSES §2.3은 파종월 대시장 운영권을 사르코스(쇠사슬 광장)에 둔다.
+# 이 파일은 둘을 다른 장소로 본다 (비늘 시장 = 타르굴 / 쇠사슬 광장 = 사르코스). 디자이너 확인 필요.
+# 기준: AS 312 낙엽월 1일. 'unnamed:...'는 TODO-NPC.
+id: fac_sarkos
+name: 사르코스 백작가
+kind: house
+race: [용인(비늘혈), 크릭(수석 감독관 그림)]
+governance: 봉건 위계 — 상업 독점권을 쥔 비늘혈 백작가
+governance_note: >
+  가문은 영지가 아니라 독점권으로 서 있다. 여백작이 값을 정하고, 동생이 광장에서 팔고, 딸이 분류하고, 크릭이 채찍으로 지킨다.
+  '모든 목에는 값이 있다'는 가훈은 장사 철학이 아니라 가문의 통치법이다 — 거래되는 모든 것이 가문의 말이 된다.
+motto: "모든 목에는 값이 있다."
+seat: "바알카르 쇠사슬 광장 — 파종월 노예 매매 대시장 운영권. 수용소 '울타리 셋'은 은빛 강 상류"
+size:
+  members: "비늘혈 직계 3 + 크릭 감독관(수용소 노예 30명당 1) + 경매 보조·중개인 + 수용소 인간 노예 수천(등급 판매 대상)"
+  territory: "바알카르 쇠사슬 광장, 은빛 강 상류 노예 수용소 '울타리 셋'"
+  wealth: "거인 전쟁 때 양쪽 군대에 방패 노예를 공급해 최대 부호가 된 이래 대륙 노예 거래의 가장 큰 몫. 징후자 비밀 판매(1인당 30~60비늘)"
+  force: "사병은 적다 — 대신 바르그 노예사냥 조합의 최대 후원자(AS 213 공인 로비 성공), 크릭 감독관 길드 '채찍손' 간부를 쥔다"
+
+offices:
+  - id: off_countess
+    title: 여백작
+    holder: "unnamed:네브라 사르코스 — 176세"   # TODO-NPC
+    reports_to: null
+    powers: ["값의 결정 — 등급과 시세, 징후자 분류의 최종 승인", "바르그 조합 후원과 아우락스에 대한 공식 서약", "멜리산드에 대한 '특수 노예' 공급 계약"]
+    chosen_by: "가문 세습 (SK 1,420 시조 사르코스 금목걸이가 포로 거래 독점권을 용황에게서 샀다)"
+    perks: ["값을 매길 수 없는 것을 믿지 않는다 — 가문의 눈", "열한 고리 문장 — 고리 수 정확히 열한 개(맹약의 열한 종족)"]
+  - id: off_auctioneer
+    title: 쇠사슬 광장 관리인 (경매사)
+    holder: "unnamed:오트마르 사르코스 — 148세, 여백작의 남동생"   # TODO-NPC
+    reports_to: off_countess
+    powers: ["파종월 대시장의 경매대와 시세 선언", "광장 상시 매매"]
+    chosen_by: "여백작 지명"
+    perks: ["목소리가 좋은 경매사 — 시세는 그의 목소리에 따라 움직인다"]
+  - id: off_classifier
+    title: 징후자 비밀 판매 담당
+    holder: "unnamed:이사벨 사르코스 — 71세, 여백작의 딸"   # TODO-NPC
+    reports_to: off_countess
+    powers: ["수용소 입고 노예 분류 — 잔향 징후 의심 아이를 몰래 골라 잿빛 탑·멜리산드에게 판다 (1인당 30~60비늘)", "AS 290 이후 판매 기록 212건"]
+    chosen_by: "여백작 지명"
+    perks: ["자기가 판 아이들 중 '진짜'가 없었다는 것을 안다 — 그래도 판다"]
+  - id: off_chief_overseer
+    title: 수석 감독관 (크릭)
+    holder: "unnamed:그림 — 크릭 감독관, 44세 (크릭으로서는 고령)"   # TODO-NPC
+    reports_to: off_countess
+    powers: ["수용소 크릭 감독 지휘 — 노예 30명당 크릭 1 (제국에서 가장 높은 비율)", "크릭 감독관 길드 '채찍손' 간부"]
+    chosen_by: "여백작 지명 — 가문의 손"
+    perks: ["채찍손 길드의 보호"]
+  - id: off_pen_warden
+    title: "'울타리 셋' 수용소장"
+    holder: "unnamed:울타리 셋 수용소장 — 용인 비늘혈"
+    reports_to: off_chief_overseer
+    powers: ["은빛 강 상류 수용소 — 1~7등급 낙인(왼쪽 손등)과 분류", "7등급(노약자) 묶음 판매"]
+    chosen_by: "수석 감독관 추천"
+    perks: []
+  - id: off_grade_brander
+    title: 등급 낙인관
+    holder: "unnamed:등급 낙인관 — 용인"
+    reports_to: off_pen_warden
+    powers: ["체격·나이·기술·외모로 1~7등급 낙인 (왼쪽 손등)"]
+    chosen_by: "수용소장 지명"
+    perks: []
+  - id: off_varg_patron
+    title: 바르그 조합 후원 연락관
+    holder: "unnamed:바르그 조합 후원 연락 — 용인"
+    reports_to: off_countess
+    powers: ["송곳니 회관과의 후원·정보 교환", "AS 311 북방 탈주자 '포획분'의 독점 매입"]
+    chosen_by: "여백작 지명"
+    perks: []
+  - id: off_ledger_copy
+    title: 장부 사본 보관 (세렌 졸라크 상가 — 보험)
+    holder: "unnamed:세렌 졸라크 상가 장부 보관인 (외부)"
+    reports_to: off_countess
+    powers: ["징후자 판매 212건 장부 사본 — 사르코스가 아우락스에게 팔려도 이 사본이 가문을 지킨다(또는 무너뜨린다)"]
+    chosen_by: "여백작의 계약"
+    perks: []
+  - id: off_special_supply
+    title: 멜리산드 '특수 노예' 공급선
+    holder: "unnamed:멜리산드 실험실 납품 담당 — 용인"
+    reports_to: off_classifier
+    powers: ["실험실에 인간 공급 — 아우락스의 '징후자는 모두 화형' 주장과 정면충돌하는 이중 거래"]
+    chosen_by: "이사벨 위임"
+    perks: []
+
+ranks:
+  - {id: rank_countess, title: "여백작", duties: "값의 결정, 이중 거래", privileges: "독점권, 바르그 조합 후원", open_to_player: false}
+  - {id: rank_kin, title: "직계 (경매사·분류 담당)", duties: "광장·분류", privileges: "독점권의 실무", open_to_player: false}
+  - {id: rank_overseer, title: "감독관 크릭", duties: "수용소·광장 감독", privileges: "'채찍손' 길드의 보호", open_to_player: false}
+  - {id: rank_agent, title: "중개인·경매 보조", duties: "시세를 올리고 계약을 맞춘다", privileges: "수수료", open_to_player: false}
+  - {id: rank_graded_slave, title: "등급 노예 (1~7등급)", duties: "수용소 입고·판매 대기", privileges: "등급이 높을수록 덜 위험한 주인에게 간다", open_to_player: true, condition: "붙잡히거나 팔려 수용소에 입고되면 이사벨의 분류를 통과해야 한다 — 이번만은 그녀의 분류가 맞다(잔향은 징후가 아니라 실제)"}
+  - {id: rank_collar_slave, title: "목줄 경매 보조 (인간)", duties: "경매대에서 사람의 '장점'을 외쳐 값을 올린다 (예: 바알카르 롤프)", privileges: "시장 안에서의 반자율", open_to_player: true, condition: "목줄단 바알카르 지부 소속 — 노예 신분 그대로"}
+
+decision: "여백작이 값과 계약을 정한다. 광장은 오트마르가, 분류는 이사벨이, 수용소는 그림이 집행한다. 의논은 장부 위에서 이루어지고, 결정은 장부에 한 줄이 더해지는 것으로 확정된다. 아우락스에 대한 공식 서약과 멜리산드에게 파는 이중 거래는 한 사람(여백작)의 머릿속에서만 만난다."
+succession: "여백작의 선택 — 장자 원칙이 없다. 가문은 돈으로 산 작위이므로 재능(셈과 값)이 상속을 정한다. 네브라가 죽으면 이사벨과 오트마르의 다툼이 되고, 이사벨이 이기면 징후자 판매가 확대된다."
+
+law:
+  crimes:
+    - {act: "인간의 등급 낙인 훼손·위조", punishment: "즉결 처형 또는 7등급 강등 묶음 판매", note: "왼쪽 손등 낙인. 등급이 곧 매매 이력"}
+    - {act: "수용소 탈주 (울타리 셋)", punishment: "연좌 — 같은 칸의 인간 배급 삭감, 탈주자는 힘줄 절단 후 7등급 묶음 매각", note: "인간에게만"}
+    - {act: "분류된 징후자를 외부에 알린다", punishment: "수용소의 인간은 처형, 용인은 가문 이름 삭제", note: "이사벨의 분류는 비밀 — 아우락스가 알면 하루아침에 불탄다"}
+    - {act: "가격 담합 파괴 (파종월 시세 이탈)", punishment: "가문이 쓰는 값으로 시장에서 퇴출 — 중개인은 허가 취소", note: "용인·나가 중개인에게 적용"}
+    - {act: "장부 사본을 외부에 넘긴다", punishment: "사본 보관처(졸라크 상가)와 계약 위반 — 가문 말소 위험", note: "가문 최대의 보험이자 약점"}
+    - {act: "등급 낙인 없이 노예를 판다", punishment: "벌금 — 낙인 비용의 10배", note: "수용소 밖 거래"}
+
+customs:
+  greeting: "값을 묻지 않는 것이 인사다. '오늘의 시세는?'이 안부의 대신이고 대답은 숫자로 한다. 경매대 위의 인사는 경매사의 목소리 — 한 번에 '하나, 둘'을 부른다."
+  taboos:
+    - "값을 매길 수 없는 것을 입에 올리는 것 (여백작은 믿지 않는다)"
+    - "212건 장부와 '진짜가 하나도 없었다'는 사실"
+    - "'노예'를 사람이라 부르는 것 — '목'이라 부른다"
+    - "열한 고리 중 하나가 빠진 쇠사슬 문장을 그리는 것"
+  rites:
+    - {name: "파종월 대시장", when: "파종월", what: "쇠사슬 광장에서 노예 매매 대시장이 열린다. 오트마르의 개시 선언 — 첫 목의 값이 한 해의 시세를 정한다"}
+    - {name: "세렌 대시장 방문", when: "포도월", what: "졸라크 상가의 장부 사본을 확인하러 간다 — 보험 점검"}
+    - {name: "수용소 입고 점호", when: "낙엽월·수확월", what: "수확기 이후 노예 입고량이 늘어난다. 이사벨의 분류가 이 시기에 가장 바쁘다"}
+  speech: "숫자와 값으로 말한다. 경매사의 낭랑한 목소리. 인간을 '목' 또는 등급 번호('칠 등급 묶음')로 부른다. 존칭은 비늘혈 하급의 습관적 아첨. 금지어: 공짜, 값없는."
+
+membership:
+  join: "출생. 중개인·경매 보조는 수수료 계약."
+  leave: "'장부에서 이름 삭제'. 중개인은 허가 취소로 퇴장."
+  signs: ["짙은 녹색 바탕 쇠사슬 원 — 원 안에 금빛 용 머리, 고리 열한 개", "왼쪽 손등 등급 낙인 도구", "크릭 감독관의 채찍 손잡이 문장"]
+
+internal_factions:
+  - {name: "이중 거래파 (네브라)", leader: null, aim: "공식은 아우락스, 실제로는 멜리산드에게도 판다 — 어느 쪽이 이겨도 가문은 산다", strength: 60}
+  - {name: "광장파 (오트마르)", leader: null, aim: "공개 시장의 확대 — 징후자 판매는 위험하다고 본다", strength: 20}
+  - {name: "분류파 (이사벨)", leader: null, aim: "진짜를 찾는다 — 분류의 정확도가 가문의 몫을 정한다고 믿는다. 이번만은 맞다", strength: 15}
+  - {name: "채찍손 길드 (그림)", leader: null, aim: "감독관 길드의 이익 — 크릭 비율을 지킨다", strength: 5}
+  # leader null = 카드 미작성
+
+assets:
+  - "쇠사슬 광장 파종월 대시장 운영권"
+  - "수용소 '울타리 셋'과 등급 낙인 체계"
+  - "바르그 조합 후원 라인 — 북방 탈주자 포획분 독점"
+  - "징후자 212건 판매 기록 (졸라크 상가 사본)"
+
+secrets:
+  # TODO-FACT: 징후자 비밀 판매 — AS 290 이후 212건(잿빛 탑·멜리산드, 1인당 30~60비늘), 그중 진짜 잔향 하나도 없음, 장부 사본은 세렌 졸라크 상가에 보관 / 사르코스의 '이중 거래'(공식 아우락스, 실험실에 특수 노예 공급) / 북방 탈주자 포획분 독점 매입(AS 311)
+  - {fact: fact_dk_scale_market_ledger, known_by_rank: rank_agent}
+  - {fact: fact_dk_rolf_auction_rebels, known_by_rank: rank_collar_slave}
+  - {truth: T08, level: rumor, holders: [off_classifier]}
+  - {truth: T03, level: rumor, holders: [off_classifier]}
+
+relations:
+  # HOUSES §2.3 '관계' 서술에서 환산 (행렬 §6.1 밖)
+  - {to: fac_varg_guild, stance: 50, note: "공생 — 최대 후원자 (id는 바르그 조합 담당 작가 확인)"}
+  - {to: fac_kaldaran, stance: -20, note: "칼다란이 이용하지만 경멸한다 — 사르코스는 두려움 섞인 거리 두기"}
+  - {to: fac_orsel, stance: 40, note: "노예선 공동 운영"}
+  - {to: fac_seren_broker_guild, stance: 10, note: "세렌 계약 중개인 조합('먹물비늘 조합') — 경쟁 겸 협력 (id는 담당 작가 확인)"}
+  - {to: fac_raven_house, stance: 20, note: "고드릭이 판 농노를 오르셀 경유로 사들인다"}
+  - {to: fac_scale_council, stance: 20, note: "원로회의 비늘혈 후원 관계 (원로회 쪽 값 +20과 같게)"}
+toward_echo: "공식은 아우락스 편 — 징후자는 화형. 실제로는 '값'. 잔향 징후가 있는 아이에게는 30~60비늘을 매긴다. 그러나 이사벨은 지난 212건이 모두 틀렸음을 안다 — 진짜 잔향이 눈앞에 서면 처음으로 값을 매기지 못할 수 있다."
+player_paths:
+  - "수용소 입고 — 노예로 잡혀 이사벨의 분류를 통과한다 (이번만은 그녀의 분류가 맞다). 안에서 등급 낙인과 탈주 경로를 익힌다"
+  - "장부 212건 — 아우락스에게 들어가면 사르코스는 하루아침에 불탄다 (지지 3점 소멸). 졸라크 사본이 쌍날칼"
+  - "노예선 '검은 물떼새' — 오르셀과 공동 운영하는 배의 선원 둘이 잿빛 실과 내통한다"
+  - "롤프 — 목줄단 경매 보조의 줄. 반란자를 직접 경매대에 세우는 일을 자랑으로 삼는다"
+  - "그림 — 크릭 수석 감독관. 협박·뇌물의 문"
+regression:
+  fixed:
+    - "AS 290 이후 판매 기록 212건, 진짜 잔향은 하나도 없다"
+    - "AS 311 북방 탈주자 포획분 독점 매입"
+    - "졸라크 상가의 장부 사본"
+  flow:
+    - "파종월 대시장 시세와 낙찰 순서"
+  drift:
+    - "그날 입고 노예의 얼굴과 이사벨의 분류 결과"
+    - "경매대 순서와 오트마르의 목소리 상태"

@@ -1,0 +1,219 @@
+# 잿빛 실 — 탈주 노예 지하 통로. 이름 없는 자들의 하부 조직. 실은 길이고, 매듭은 사람이다.
+# 근거: HOUSES §5.5·§5.2·§3.2·§4.8, REGIONS §4.9(양초 공방)·§8.9·§13.5('얼음 실'), CHARACTERS R02-08·R04-05·R07-04·R08-02, facts/greyford.yaml·lumen.yaml·nocturne.yaml·hrosgard.yaml.
+id: fac_grey_thread
+name: 잿빛 실 (탈주 노예 지하 통로)
+kind: secret
+race: [인간, (협력) 녹테른 1·우르사 1·서리 와이번 1·늪 마녀]
+governance: 세포 결사 — 길 그래프. 실타래(구간 책임자) 셋이 각자의 실을 쥐고, 매듭(은신처)은 앞뒤 매듭 하나씩만 안다
+motto: "한 번에 한 매듭."
+seat: 없음. 실의 끝은 모르바 늪 — 수령지 진흙등불·물안개 둑
+size:
+  members: "실잡이(길잡이) 약 120, 매듭지기(은신처) 약 60곳, 바늘(위조) 소수, 실타래 3"
+  territory: "북부 실(까마귀 문 → 회색여울 → 굶주린 언덕 → 오르셀 노예선 → 루멘 → 늪길 → 모르바), 장미 실(그림자장미 혈목장 → 장미원 지하 → 붉은 갈대 → 모르바), 광산 실(잿불 언덕 폐갱 → 황무지 가장자리 → 마지막 등불), 북방 갈래 '얼음 실'(뼈울타리·돌무릎 골짜기 → 마지막 불 → 울음 고개 → 까마귀 문)"
+  wealth: "은신처, 위조 통행증(1장 3일), 늪 마녀 냄새 지우기 약(바르그 추적 12시간 무력화), 잿빛 표"
+  force: "없다. 운송량 연 약 400~600명 — AS 311 이후 북방 탈주자로 과부하(1,300명 대기)"
+
+decision: >
+  실타래 셋이 각자의 실을 맡는다. 실 위의 결정(언제, 몇 명, 누구를 먼저)은 실타래가 내린다 — 매듭지기는 '받는다/못 받는다'만 답한다.
+  실타래끼리는 한 해 두 번(해빙월 서리 길이 열릴 때, 서리월 닫힐 때) 루멘 양초 공방 밀랍 저장고에서 심지 매듭으로 '대기 명단의 수'만 교환한다. 얼굴을 보지 않는다.
+  누구를 먼저 보낼지(아이·장인·징후자·병자)는 공식 규칙이 있다 — 징후 표식(재 가로줄)이 있는 아이가 언제나 첫째. 나머지는 실타래의 재량이고, 그것이 이 조직의 가장 무거운 결정이다.
+  배신자 처리는 실타래가 정하지 못한다 — 이름 없는 자들의 매듭(회색 여인)을 기다린다. 북부 실타래 '늙은 여울'은 하겐을 두고 2년째 매듭을 기다리고만 있다.
+succession: "실타래가 잡히면 그 실의 매듭지기 중 가장 오래 버틴 매듭이 잇는다. 매듭이 잡히면 실잡이는 그 매듭을 건너뛰는 새 길을 사흘 안에 찾는다 — 못 찾으면 그 실은 한 계절 끊긴다."
+
+offices:
+  - id: off_spool_north
+    title: 북부 실타래 '늙은 여울'
+    holder: "unnamed:늙은 여울 (이름 숨김) — 하겐 처리를 결정하지 못했다"
+    reports_to: null
+    powers: ["북부 실 운행", "대기 명단 순서", "오르셀 노예선 '검은 물떼새' 호 내통 선원 둘"]
+    chosen_by: "이름 없는 자들 회색 여인의 매듭"
+    perks: []
+  - id: off_spool_rose
+    title: 장미 실타래 (녹테른 경계)
+    holder: npc_cecile
+    reports_to: null
+    powers: ["장미 실 운행 — 달에 한 번 장미원 지하 통로를 직접 연다(6~12명)", "공물 명단의 '병사' 위장"]
+    chosen_by: "스스로. 회색 여인과 서신으로 합의"
+    perks: ["녹테른 영지 안의 유일한 출구"]
+  - id: off_spool_mine
+    title: 광산 실타래 — 가장 위험한 실 (생존율 약 40%)
+    holder: "unnamed:광산 실타래 — 잿불 언덕 폐갱도 출신 (이름 숨김)"
+    reports_to: null
+    powers: ["광산 실 운행"]
+    chosen_by: "회색 여인의 매듭"
+    perks: []
+  - id: off_knot_greyford
+    title: 회색여울 매듭지기 ('절름발이 수탉' 지하)
+    holder: npc_bram
+    reports_to: off_spool_north
+    powers: ["은신(지하 저장고 가짜 벽 — 지금 에길 일가 다섯, 37일째)", "다음 매듭(굶주린 언덕)으로 넘김"]
+    chosen_by: "AS 298 엘사가 늪에서 처음 찾아옴"
+    perks: []
+  - id: off_knot_lumen_candle
+    title: 루멘 매듭 (양초 공방 '등불지기' 밀랍 저장고)
+    holder: "unnamed:안나 밀랍손 (인간, 44) — 공방장"
+    reports_to: off_spool_north
+    powers: ["강가 동굴 대기처(최대 20명)", "늪길 출발점", "양초 심지 매듭으로 연락"]
+    chosen_by: "실타래의 매듭"
+    perks: []
+  - id: off_knot_lumen_well
+    title: 루멘 매듭 (순례자 숙소 '물 없는 우물')
+    holder: npc_agnes
+    reports_to: off_spool_north
+    powers: ["우물 입구 — 밧줄은 셋째 돌 밑", "탈주자 214명이 지났다"]
+    chosen_by: "실타래의 매듭 — 끊어진 고리 일곱째 고리 겸임"
+    perks: []
+  - id: off_knot_morva
+    title: 늪 수령 매듭 (진흙등불)
+    holder: npc_bern
+    reports_to: off_spool_north
+    powers: ["늪 쪽 인계 — 북부 실과 장미 실 모두의 끝", "도착을 알리는 매듭 끈"]
+    chosen_by: "모르바 등잔(레나)의 지명"
+    perks: []
+  - id: off_runner_rose
+    title: 장미 실 실잡이 (붉은 갈대 선 호송)
+    holder: npc_tessa
+    reports_to: off_spool_rose
+    powers: ["녹테른 경계 → 늪 이틀 길 호송(6~12명)"]
+    chosen_by: "세실이 골랐다"
+    perks: []
+  - id: off_knot_rose_steward
+    title: 장미 담장 매듭 (집사)
+    holder: "unnamed:오르페 (인간 출신 하인, 51) — 장부 위조"
+    reports_to: off_spool_rose
+    powers: ["혈목장 장부 위조", "탈출자를 '병사'로 적기"]
+    chosen_by: "세실"
+    perks: []
+  - id: off_knot_quint
+    title: 장미 담장 매수 매듭 (혈목장 감독)
+    holder: npc_quint
+    reports_to: off_knot_rose_steward
+    powers: ["'병사' 명단 서명"]
+    chosen_by: "세실의 돈 — 알라리크가 그를 회유하고 있다"
+    perks: []
+  - id: off_ice_thread_fire
+    title: 얼음 실 — '마지막 불' 안내인 (북방 갈래)
+    holder: "unnamed:잉에 (인간, 28) — 시그리드의 동생"
+    reports_to: off_spool_north
+    powers: ["울음 고개 넘는 날짜(바위 밑 서리말 룬)", "대피 동굴 비상 식량"]
+    chosen_by: "얼음 실 장로들"
+    perks: []
+  - id: off_ice_thread_elder
+    title: 얼음 실 — 돌무릎 골짜기 송출 (노예 장로)
+    holder: npc_asta
+    reports_to: off_ice_thread_fire
+    powers: ["남은 노예 약 800 중 서리월 전 200명 송출", "서리왕의 비밀 칙령을 전하는 입"]
+    chosen_by: "노예들이 장로로 섬김"
+    perks: []
+  - id: off_ice_thread_lodge
+    title: 얼음 실 — 서리 길 마지막 산장 (협력자)
+    holder: npc_matusz
+    reports_to: off_ice_thread_fire
+    powers: ["첫 밤 숙박(꿀과 가죽을 받고)"]
+    chosen_by: "거래"
+    perks: []
+  - id: off_needle
+    title: 바늘 (위조 — 집합 자리)
+    holder: "unnamed:바늘들 — 세렌의 '바늘'(26), 바알카르의 하랄(쥐들의 왕관)"
+    reports_to: off_spool_north
+    powers: ["위조 통행증(1장 3일)"]
+    chosen_by: "이름 없는 자들 경유"
+    perks: []
+
+ranks:
+  - {id: rank_spool, title: "실타래 (구간 책임자, 3)", duties: "실 운행과 순서", privileges: "대기 명단", open_to_player: true}
+  - {id: rank_knot, title: "매듭지기 (은신처 주인)", duties: "받고, 숨기고, 넘긴다", privileges: "잿빛 표", open_to_player: true}
+  - {id: rank_runner, title: "실잡이 (길잡이)", duties: "다음 매듭까지 데려간다", privileges: "냄새 지우기 약", open_to_player: true}
+  - {id: rank_needle, title: "바늘 (위조)", duties: "통행증", privileges: "-", open_to_player: true}
+# 플레이어의 사다리: 탈주자 하나를 숨겨 주면 매듭지기 후보 → 첫 임무 '굶주린 언덕의 세 식구를 다음 보름까지 루멘행 배에 태워라' → 실잡이 → (북부 실타래가 잡히거나 하겐 문제를 끝내면) 실타래.
+
+cell_graph:
+  rule: "매듭은 앞 매듭과 뒤 매듭 하나씩만 안다(사람이 아니라 장소와 신호). 실잡이는 자기 구간 두 매듭을 안다. 실타래만 실 전체를 안다. 매듭 하나가 잡히면 그 앞뒤 구간이 드러나고, 실은 사흘 안에 그 매듭을 건너뛰지 못하면 한 계절 끊긴다"
+  lines:
+    - name: 북부 실
+      knots: ["까마귀 문 배수구(국경군 내통 — fact_gf_crowgate_drain)", "회색여울 '절름발이 수탉' 지하 (npc_bram)", "굶주린 언덕 셋째 동굴", "용의 대로 우회 숲길", "오르셀 노예선 '검은 물떼새' 호 (내통 선원 2)", "루멘 양초 공방 강가 동굴 (안나 밀랍손) / 순례자 숙소 물 없는 우물 (npc_agnes)", "늪길 — 늪 어귀 망꾼", "모르바 진흙등불 (npc_bern)"]
+      weak_knot: "하겐 — 북부 실을 아는 '안내인'을 가장한 판매자. 지난 2년 탈주자 19명(HOUSES는 11명)을 바르그에 팔았고 매듭 두 곳이 노출되었다"
+    - name: 장미 실
+      knots: ["그림자장미 혈목장 채혈 헛간 기록판('병사')", "장미원 셋째 덤불 아래 지하 통로 (npc_cecile가 직접 연다)", "온실 바닥 수로", "붉은 갈대 선 (npc_tessa 호송, 이틀)", "모르바 진흙등불 (npc_bern)"]
+      weak_knot: "퀸트 — 알라리크가 회유 중. 그가 돌아서면 장미 실 전체와 세실이 함께 드러난다"
+    - name: 광산 실
+      knots: ["잿불 언덕 폐갱도", "황무지 가장자리(재 폭풍 속)", "마지막 등불 (주춧돌 사냥꾼의 판잣집)"]
+      weak_knot: "황무지 그 자체 — 생존율 약 40%"
+    - name: 얼음 실 (북방 갈래)
+      knots: ["돌무릎 골짜기 (npc_asta)", "뼈울타리 — 노예 맏이 스벤이 해마다 한 무리를 놓아준다", "서리 길 마지막 산장 (npc_matusz)", "마지막 불 (잉에)", "울음 고개 대피 동굴", "까마귀 문 → 굶주린 언덕 (북부 실과 합류)"]
+      weak_knot: "썩은이빨 고개의 오우거, 그리고 볼크가 산장을 '탈주자 소굴'로 지목했다(fact_hg_volk_marked_lodge)"
+
+infiltration:
+  join_real: "탈주자를 한 명 숨겨 주면 매듭지기 후보. 첫 임무: '굶주린 언덕의 세 식구를 다음 보름까지 루멘행 배에 태워라' — 경비 교대, 바르그 순찰, 하겐의 밀고를 피해야 한다"
+  join_fake: "하겐처럼 '안내인'을 가장해 들어오는 판매자가 가장 큰 구멍이다. 거르는 장치: 실잡이는 같은 길을 두 번 가지 않는다 / 매듭지기는 실잡이의 얼굴이 아니라 신호(물총새 말뚝, 갈대배 바닥 표식)로만 받는다 / 넘긴 사람이 다음 매듭에 닿았다는 '도착 매듭 끈'이 사흘 안에 돌아오지 않으면 그 실잡이는 다시 쓰지 않는다"
+  proof_test: "잔향이라고 말하는 자에게 실타래들은 아무것도 시험하지 않는다 — 꺼린다. '잔향이 있는 구간은 반드시 바르그가 온다.' 그를 실에 태우지 않으려 하고, 실에 태우면 그 구간의 다른 승객을 먼저 보낸다"
+  exposure: "냄새가 실을 드러낸다 — 바르그의 코는 사흘 거리를 쫓는다. 냄새 지우기 약(12시간)이 떨어진 구간, 그리고 회차가 쌓일수록 짙어지는 플레이어의 젖은 재 냄새가 실을 가장 쉽게 드러낸다"
+
+law:
+  crimes:
+    - {act: "승객을 버림 (병자·아이를 길에 두고 감)", punishment: "다시는 실을 잡지 못한다", note: "실잡이 대상 — 실타래의 재량으로 예외(살아 있는 다수를 위해)"}
+    - {act: "탈주자를 팖", punishment: "회색 여인의 매듭이 오면 죽음 — 매듭을 기다린다", note: "하겐"}
+    - {act: "같은 길을 두 번 감", punishment: "그 구간을 한 계절 닫는다", note: "실잡이 대상"}
+    - {act: "탈주 방조 (바깥 법)", punishment: "용제국: 교수형·가족 매각. 녹테른: 공물 명단. 흐로스가르드: 무관심", note: "인간 대상"}
+
+customs:
+  greeting: "실잡이와 매듭지기는 인사하지 않는다. 신호만 — 물총새 말뚝을 기울인다, 갈대배 바닥을 두 번 두드린다, 장미 꽃잎을 놓는다, 양초 심지를 매듭짓는다."
+  taboos: ["승객의 이름을 묻는 것", "'탈주'라는 낱말 — '남쪽으로 간다'고 한다", "실 위에서 불 피우기"]
+  rites:
+    - {name: "도착 매듭", when: "승객이 늪에 닿은 날", what: "진흙등불의 베른이 매듭 끈을 거꾸로 보내 실을 따라 올라오게 한다. 매듭 하나가 한 사람이다. 회색여울의 브람은 그 끈을 받으면 솥 밑바닥 누룽지를 아무에게나 준다"}
+    - {name: "서리 길 첫날", when: "해빙월 서리 길이 열리는 날", what: "마지막 불에서 잉에가 바위 밑 룬을 새로 새긴다 — 첫 무리가 고개를 넘는 날짜"}
+  speech: "날씨와 짐으로 말한다 — '짐이 셋'(사람 셋), '비가 오겠네'(바르그), '물이 불었다'(검문). 실잡이는 거의 말하지 않는다."
+
+membership:
+  join: "위 infiltration.join_real"
+  leave: "매듭지기는 문을 닫으면 나간 것이다. 실잡이는 나갈 수 없다 — 그가 아는 두 매듭이 그의 목에 걸려 있다"
+  signs: ["물총새 말뚝(회색여울 — 엘사)", "갈대배 바닥 표식(늪 어귀 — 매듭 문자)", "장미 꽃잎(장미 실)", "양초 심지 매듭(루멘)", "울음 고개 바위 밑 서리말 룬(얼음 실)", "아이 옷깃 안 재 가로줄 — 첫 순서"]
+
+internal_factions:
+  - {name: "아이 먼저 (규칙파)", leader: npc_bram, aim: "징후 표식 아이가 첫째, 그다음 굶는 순서", strength: 50}
+  - {name: "쓸모 먼저 (늙은 여울의 계산)", leader: null, aim: "장인·글 아는 자·건강한 자를 먼저 — 늪 마을이 살아야 다음 실도 산다. 늙은 여울(unnamed)이 기운다", strength: 30}
+  - {name: "북방 우선 (얼음 실)", leader: npc_asta, aim: "1,300 대기 중 북방 탈주자가 대부분 — 서리월 전에 보내지 못하면 겨울에 죽는다", strength: 20}
+
+assets:
+  - "은신처 약 60곳, 위조 통행증, 늪 마녀 냄새 지우기 약(12시간)"
+  - "오르셀 노예선 내통 선원 둘, 까마귀 문 배수구"
+  - "세실의 장미원 지하 통로 — 녹테른 영지의 유일한 출구"
+  - "도착 매듭 끈 — 실이 살아 있다는 증거"
+
+secrets:
+  - {fact: fact_gf_greyash_route, known_by_rank: rank_runner}
+  - {fact: fact_gf_egil_family_in_cellar, known_by_rank: rank_knot}
+  - {fact: fact_gf_hagen_sells_runaways, known_by_rank: rank_spool}
+  - {fact: fact_gf_crowgate_drain, known_by_rank: rank_runner}
+  - {fact: fact_lu_agnes_well, known_by_rank: rank_knot}
+  - {fact: fact_lu_agnes_underground, known_by_rank: rank_spool}
+  - {fact: fact_nc_cecile_smuggles, known_by_rank: rank_spool}
+  - {fact: fact_nc_cecile_route, known_by_rank: rank_runner}
+  - {fact: fact_nc_tessa_convoy, known_by_rank: rank_runner}
+  - {fact: fact_nc_quint_signs_dead_list, known_by_rank: rank_spool}
+  - {fact: fact_nc_alaric_courts_quint, known_by_rank: rank_spool}
+  - {fact: fact_hg_matusz_lodge_runaways, known_by_rank: rank_runner}
+  - {fact: fact_hg_volk_marked_lodge, known_by_rank: rank_spool}
+  - {fact: fact_hg_hrimnir_edict, known_by_rank: rank_spool}
+  - {fact: fact_sr_blind_lighthouse_signal, known_by_rank: rank_runner}
+  # TODO-FACT: AS 311 이후 북방 탈주자 때문에 1,300명이 대기 중이다 (HOUSES §5.5)
+  # TODO-FACT: 하겐의 판매로 북부 실 매듭 두 곳이 노출되었고, 실타래 '늙은 여울'은 하겐이 페인을 데리고 있어 처리를 결정하지 못했다 (HOUSES §5.5)
+  # 모순 메모: 하겐이 판 탈주자 수 — HOUSES §5.5 '2년간 11명' / facts fact_gf_hagen_sells_runaways '19명'. 이 파일은 사실 id를 따른다.
+
+relations:
+  - {to: fac_nameless, stance: 90, note: "행렬 밖 — 상위 조직"}
+  - {to: fac_barg, stance: -100, note: "행렬 밖 — 이름 없는 자들 행과 같게"}
+  - {to: fac_collar, stance: -70, note: "행렬 밖"}
+  - {to: fac_swamp_hags, stance: 70, note: "행렬 밖 — 냄새 지우기 약"}
+  - {to: fac_broken_ring, stance: 60, note: "행렬 밖 — 루멘 매듭"}
+  - {to: fac_nocturne, stance: -20, note: "행렬 밖 — 세실만 예외"}
+toward_echo: "이름 없는 자들과 같다 — 다만 실타래들은 꺼린다: '잔향이 있는 구간은 반드시 바르그가 온다.' 플레이어가 실 위에 있으면 그 구간의 승객 생존율이 떨어진다(젖은 재 냄새)."
+player_paths:
+  - "가입: 매듭지기(은신처) → 실잡이 → 실타래"
+  - "1,300명: 누구를 먼저 보낼지 정하는 순간 — 아이, 장인, 징후자, 병자"
+  - "하겐: 매듭을 기다리지 않고 끝내기 — 페인을 먼저 빼내야 한다"
+  - "끊기(어두운 길): 하겐처럼 판다. 실은 사흘 안에 그 매듭을 건너뛴다"
+regression:
+  fixed: ["에길 일가 37일째 수탉 지하", "1,300 대기", "세실의 장미원 통로, 달에 한 번"]
+  flow: ["서리 길 서리월 폐쇄", "하겐의 다음 판매 — 세 소나무 그루터기 매듭 끈"]
+  drift: ["그 주에 실 위에 있는 승객의 얼굴", "어느 실잡이가 어느 구간을 맡았는지"]

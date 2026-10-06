@@ -1,0 +1,173 @@
+# 목줄단 — 주인을 대신해 인간을 감독·밀고하는 인간들. "목줄은 차는 자의 목도 조르지만, 쥐는 자의 손은 자유롭다."
+# 근거: HOUSES §5.4·§4.5·§6.1·§6.2, WORLD_BIBLE §4.3, REGIONS §13.3(서리 목줄)·§4.9(등불 심문소 정보원 200), CHARACTERS R02-11·R01-12·R07-05, facts/greyford.yaml.
+id: fac_collar
+name: 목줄단
+kind: org
+race: [인간]
+governance: 위임 위계 (봉건 위계의 아랫단) — 주인 한 명이 목줄장 한 명을 쥔다. 위로 갈수록 '주인'이 바뀔 뿐 동료는 없다
+motto: "목줄을 쥔 손은 자유롭다." (고리집의 말)
+seat: 각 영지 성채·막사. 바알카르 수석 목줄장의 '쇠문 막사'
+size:
+  members: "목줄장 약 700, 목줄 약 4,000, '혀'는 셀 수 없다(아이와 노인)"
+  territory: "용제국 전역의 영지·막사·광산, 루멘(등불 심문소 정보원 약 200), 녹테른 혈목장 감독, 흐로스가르드 '서리 목줄'(별도 조직, 같은 일)"
+  wealth: "배급 1.5배, 매매 면제, 가족 보호 — 돈이 아니라 면제가 재산이다. 잔향 신고 현상금 50비늘 + 일가족 해방"
+  force: "무기 없음. 주인의 채찍과 크릭 감독관의 협조를 빌린다. 진짜 힘은 머릿속 밀고 장부"
+
+decision: >
+  목줄단은 회의를 하지 않는다. 각 목줄장은 자기 주인(영주·감독관·교단)의 명령을 받고, 주인이 주는 할당(한 계절 밀고 몇 건, 탈주 0건)을 채운다.
+  용제국이 AS 120 '목줄장' 직책을 공인한 뒤 바알카르 수석 목줄장이 대륙의 목줄장 명부를 쥐지만, 명령권은 없다 — 그는 '정보를 모아 위로 올리는' 깔때기다.
+  실제 결정은 두 곳에서 난다. ① 목줄장과 그 주인 사이(할당과 보상), ② 고리집 '아궁이 회합' — 7대 목줄장 집안이 파종월 바알카르 노예 대시장에서
+  주인들을 수행하러 모이는 날 밤, 쇠문 막사 부엌에서 열린다. 회합은 집안 규약 세 조를 확인하고, 한 해 '놓아줄 하나'를 각자 정했는지 서로 묻는다.
+  고리집 회합에 거부권은 없다 — 가장(에베르트)이 마지막에 말하면 끝이다.
+succession: >
+  목줄장 자리는 주인이 준다. 목줄장이 죽거나 쓸모없어지면 주인은 그 목줄 중 가장 많이 밀고한 자를 올린다 — 그래서 목줄끼리는 서로를 밀고한다.
+  고리집 안에서는 장자가 아니라 '이름을 가장 많이 외운 자'가 가장이 된다(밀고 장부 약 2,000 이름). 에베르트 다음은 마르타라는 것이 집안의 말이다.
+
+offices:
+  - id: off_chief_collar
+    title: 바알카르 수석 목줄장 (고리집 가장)
+    holder: "unnamed:에베르트 (인간, 60) — fac_drakmar_empire의 '목줄단 바알카르 지부 총괄'과 같은 사람"
+    reports_to: null
+    powers: ["대륙 목줄장 명부", "용제국 관청(긴그림자 둥지)에 정보 상납", "목줄장 추천", "고리집 아궁이 회합 주재"]
+    chosen_by: "용제국 공인(AS 120 이래 고리집이 7대째). 실제 주인은 비늘 원로회 긴그림자 둥지 — 정보 대가로 배급을 받는다"
+    perks: ["쇠문 막사", "목줄장의 쇠 지팡이(끝에 고리)", "자기 집안 매매 면제"]
+  - id: off_collar_greyford
+    title: 회색여울 목줄장 (성채 노예 집사)
+    holder: npc_martha
+    reports_to: off_chief_collar
+    powers: ["회색여울 농노 400 감시", "성채 하인 명부", "정화청 밀고 함 보고"]
+    chosen_by: "고드릭 레이번의 임명 (AS 290 첫 밀고 이후)"
+    perks: ["배급 1.5배", "딸 리즈의 매매 면제", "밀고 100건이면 리즈를 '자유민 대우' 하녀로 루멘에 — 지금 87건"]
+  - id: off_collar_lumen
+    title: 루멘 목줄장 (정화청 정보원장)
+    holder: "unnamed:이다 (인간, 45) — 고리집, 베른의 며느리"
+    reports_to: off_chief_collar
+    powers: ["등불 심문소 정보원 약 200", "순례자 거리 감시"]
+    chosen_by: "정화청장의 요청 + 수석 목줄장 추천"
+    perks: ["헌금 쪽지로 보상"]
+  - id: off_collar_emberhills
+    title: 잿불 언덕 목줄장
+    holder: "unnamed:'쇠눈' 크롬 (인간, 51) — 가장 많은 동족을 넘긴 자"
+    reports_to: off_chief_collar
+    powers: ["광산 노예 감시", "다라손 감시", "은비늘 요람 '자원자' 모집"]
+    chosen_by: "멜리산드 영지 감독관의 임명"
+    perks: ["광산 밖 오두막"]
+  - id: off_collar_market
+    title: 바알카르 노예시장 목줄장 (경매 보조)
+    holder: npc_rolf
+    reports_to: off_chief_collar
+    powers: ["파종월 대시장에서 사람의 '장점'을 외친다", "반란자를 경매대에 세운다"]
+    chosen_by: "사르코스 경매사의 임명"
+    perks: ["경매 수수료의 부스러기"]
+  - id: off_collar_rose_farm
+    title: 그림자장미 혈목장 감독 (녹테른 쪽 목줄장)
+    holder: npc_quint
+    reports_to: off_chief_collar
+    powers: ["혈목장 인간 400 관리", "'병사' 명단 서명"]
+    chosen_by: "그림자장미 가문의 임명"
+    perks: ["혈목장에서 가장 잘 먹는다 — 그리고 세실에게 매수되어 있다"]
+  - id: off_collar_frost
+    title: 서리 목줄 — 뼈울타리 노예 맏이 (흐로스가르드, 별도 조직)
+    holder: "unnamed:스벤 (인간, 40) — 돌팔 씨족 소유. 해마다 해빙월에 딱 한 무리는 놓아준다"
+    reports_to: off_chief_collar
+    powers: ["뼈울타리 노예 6,000 감독"]
+    chosen_by: "돌팔 씨족의 무관심 — 가장 세게 때린 자가 맏이가 된다"
+    perks: []
+  - id: off_collar_line
+    title: 목줄 (감시인 — 집합 자리)
+    holder: "unnamed:목줄 약 4,000"
+    reports_to: off_collar_greyford
+    powers: ["막사 감시", "탈주 낌새 보고"]
+    chosen_by: "목줄장이 고른다"
+    perks: ["배급 1.2배"]
+  - id: off_tongue
+    title: 혀 (정보원 — 집합 자리)
+    holder: "unnamed:혀 — 대개 아이나 노인. 회색여울에서는 하인츠 같은 자원 밀고자도 혀로 센다"
+    reports_to: off_collar_line
+    powers: ["엿듣기"]
+    chosen_by: "목줄장에게 정보 하나를 가져간 자"
+    perks: ["빵 한 덩이"]
+
+ranks:
+  - {id: rank_chief, title: "수석 목줄장", duties: "명부, 상납", privileges: "매매 면제(집안), 관청 출입", open_to_player: false}
+  - {id: rank_collar_master, title: "목줄장", duties: "할당 채우기, 감시", privileges: "배급 1.5배, 매매 면제, 가족 보호", open_to_player: true}
+  - {id: rank_collar, title: "목줄 (감시인)", duties: "막사 감시, 보고", privileges: "배급 1.2배", open_to_player: true}
+  - {id: rank_tongue, title: "혀 (정보원)", duties: "엿듣고 고한다", privileges: "빵", open_to_player: true}
+# 플레이어의 사다리(어두운 길 — 13_DARK_PATHS): 목줄장에게 정보 하나 → 혀(첫 임무: 배급 막사에서 누가 빵을 숨기는지 일주일 보고) → 목줄 → 목줄장.
+# 이중 첩자로 들어가 거짓 정보를 흘리는 길이 함께 열린다(기만 판정).
+
+law:
+  crimes:
+    - {act: "할당 미달 (한 계절 밀고 0건, 탈주 발생)", punishment: "주인이 정한다 — 대개 목줄장 자리 박탈과 가족 매매 면제 취소", note: "목줄장 대상"}
+    - {act: "목줄장이 탈주를 도움", punishment: "주인의 법 — 용제국에서는 교수형, 가족 매각", note: "인간 대상(바깥 법)"}
+    - {act: "같은 아궁이(고리집)를 밀고함", punishment: "집안에서 지운다 — 이름을 장부에서 빼고 아무도 그를 보호하지 않는다", note: "고리집 규약 제2조"}
+    - {act: "열 살 아래 아이를 팖", punishment: "고리집 규약 제1조 위반 — 회합에서 쇠 지팡이로 손등을 친다(가장 낮은 벌, 가장 큰 수치)", note: "고리집 안"}
+    - {act: "한 해 '놓아줄 하나'를 쓰지 않음", punishment: "벌은 없다. 다음 해 회합에서 이름이 불린다 — '빚을 남겼다'", note: "고리집 규약 제3조"}
+    - {act: "이름 없는 자들이 목줄장에게 적용하는 법", punishment: "회색 여인의 매듭이 오면 죽음 — AS 200~312 기록 23건", note: "바깥의 적의 법"}
+
+customs:
+  greeting: "목줄끼리: 눈을 마주치지 않고 '오늘 몇?' — 답은 숫자(오늘 본 수상한 자의 수). 고리집 사이에서는 '아궁이는 따뜻하냐' — 답 '쇠가 식었다'(별일 없음) 또는 '쇠가 달았다'(누군가 위험하다)."
+  taboos:
+    - "자기 밀고로 죽은 자의 이름을 남 앞에서 부르는 것 — 이름은 머릿속에만"
+    - "주인 앞에서 다른 인간을 편드는 말"
+    - "고리집 사람에게 '배신자'라고 부르는 것 — 그들은 '쥐는 손'이라 부른다"
+  rites:
+    - {name: "아궁이 회합", when: "파종월 바알카르 노예 대시장 첫날 밤", what: "고리집 가장들이 쇠문 막사 부엌에서 규약 세 조를 외우고, 한 해 놓아줄 하나를 서로 묻는다. 쇠 지팡이를 화덕에 넣었다 꺼내 식을 때까지 말하지 않는다"}
+    - {name: "이름 외우기", when: "매일 밤", what: "목줄장은 자기 밀고로 죽은 이들의 이름을 순서대로 외운다 — 마르타는 23명. 고리집의 '머릿속 장부'는 이렇게 이어진다"}
+  speech: "주인에게는 '예, 나리' 뒤에 숫자. 같은 노예에게는 다정하게 들리는 반말로 묻고 또 묻는다. '밀고'라는 말을 쓰지 않는다 — '알린다', '전한다'. 숫자와 이름을 정확히 말한다."
+
+membership:
+  join: "목줄장에게 정보 하나를 가져가면 혀가 된다. 목줄은 목줄장이 고른다. 목줄장은 주인이 고른다. 고리집에는 태어나서 들어간다"
+  leave: "나갈 수 없다 — 나가는 순간 보호(매매 면제)가 끝나고, 그가 밀고한 자들의 가족이 그를 찾는다"
+  signs: ["목에 거는 쇠고리 대신 손목의 가죽 끈(목줄장 표식 — 주인이 매어 준다)", "고리집의 쇠 지팡이", "고리집 인사 '아궁이는 따뜻하냐'"]
+
+internal_factions:
+  - {name: "충직한 목줄 (할당을 넘겨 채우는 자들)", leader: npc_rolf, aim: "주인의 신뢰로 가족을 지키고, 잔향 현상금(50비늘 + 일가족 해방)을 꿈꾼다. '쇠눈' 크롬이 실질 우두머리", strength: 55}
+  - {name: "고리집 (규약으로 사는 집)", leader: npc_martha, aim: "열 살 아래는 팔지 않고, 같은 아궁이는 밀고하지 않고, 해마다 하나를 놓아준다. 에베르트(unnamed)가 가장이고 마르타가 다음이다", strength: 30}
+  - {name: "두 얼굴 (이름 없는 자들과 거래하는 목줄장)", leader: npc_quint, aim: "주인에게 숫자를 맞춰 주면서 몰래 판다 — 퀸트는 세실에게, 마르타는 엘사에게, 스벤은 서리 길에", strength: 15}
+
+assets:
+  - "머릿속 밀고 장부 — 고리집 7대 약 2,000 이름(희생자 명부이자 배신자 명부. 이름 없는 자들이 가장 탐낸다)"
+  - "주인의 신뢰, 배급 창고 열쇠, 크릭 감독관과의 협조"
+  - "루멘 등불 심문소 정보원 약 200"
+  - "대륙에서 가장 촘촘한 인간 정보망 — 목줄단이 뒤집히면 이름 없는 자들 전체의 정보망이 된다"
+
+secrets:
+  - {fact: fact_gf_martha_ring_house, known_by_rank: rank_collar_master}
+  - {fact: fact_gf_martha_23, known_by_rank: rank_collar_master}
+  - {fact: fact_gf_martha_pact, known_by_rank: rank_collar_master}
+  - {fact: fact_gf_martha_elsa_deals, known_by_rank: rank_chief}
+  - {fact: fact_gf_martha_swapped_list, known_by_rank: rank_collar_master}
+  - {fact: fact_nc_quint_signs_dead_list, known_by_rank: rank_collar_master}
+  - {fact: fact_dk_rolf_auction_rebels, known_by_rank: rank_collar}
+  - {fact: fact_gb_heinz_informs, known_by_rank: rank_collar}
+  # TODO-FACT: 많은 목줄장이 해마다 몇 명씩 놓아준다 — 고리집 규약 3조 (HOUSES §4.5·§5.4)
+  # TODO-FACT: 흐로스가르드 노예 맏이 스벤은 탈주자를 팔지만 매년 해빙월 한 무리는 일부러 놓아준다 (REGIONS §13.9)
+  # TODO-FACT: 잔향 신고 현상금은 50비늘 + 일가족 해방이다 (HOUSES §5.4)
+  - {truth: T03, level: rumor, holders: [npc_martha]}
+  - {truth: T04, level: rumor, holders: [npc_rolf, npc_martha]}
+
+relations:
+  - {to: fac_aurax, stance: 40, note: "HOUSES §6.1 행렬 (목줄단 행)"}
+  - {to: fac_melisande, stance: 30, note: "행렬"}
+  - {to: fac_kaspar, stance: -20, note: "행렬"}
+  - {to: fac_eldar, stance: 20, note: "행렬"}
+  - {to: fac_nocturne, stance: -10, note: "행렬"}
+  - {to: fac_durgan, stance: 0, note: "행렬"}
+  - {to: fac_seren, stance: 10, note: "행렬"}
+  - {to: fac_jotun, stance: 0, note: "행렬"}
+  - {to: fac_grom, stance: 0, note: "행렬"}
+  - {to: fac_light, stance: 50, note: "행렬"}
+  - {to: fac_nameless, stance: -80, note: "행렬 — 마르타 개인은 -10 (HOUSES §6.1 예외)"}
+  - {to: fac_ashen_tower, stance: 0, note: "행렬"}
+  - {to: fac_barg, stance: 30, note: "행렬"}
+  - {to: fac_swamp_hags, stance: -60, note: "행렬"}
+toward_echo: "신고 — 그러나 예외가 많다. 잔향 신고 현상금 50비늘 + 일가족 해방은 목줄장이 꿈꿀 수 있는 유일한 '자유'다. 플레이어에게 가장 위험한 인간들. 마르타가 플레이어의 정체를 알게 되는 순간 어느 쪽을 고를지는 그동안 플레이어가 그녀에게 무엇을 해 주었는지에 달렸다 — 리즈의 이름이 2차 명단에 다시 오르는가."
+player_paths:
+  - "가입(어두운 길): 혀 → 목줄 → 목줄장. 이중 첩자 루트로 거짓 정보를 흘린다"
+  - "뒤집기: 고리집을 이름 없는 자들 편으로 — 마르타의 '올해 놓아줄 하나'가 플레이어가 될 수 있다. 에베르트의 머릿속 장부 2,000 이름"
+  - "무너뜨리기: 목줄장 암살(이름 없는 자들의 매듭이 필요), 또는 주인 앞에서 목줄장의 '놓아준 하나'를 폭로 — 가장 잔인한 길"
+regression:
+  fixed: ["마르타 밀고 87건(약속 100), 23명의 이름", "고리집 규약 세 조, 마르타는 올해 '하나'를 아직 쓰지 않았다", "잔향 현상금 50비늘 + 일가족 해방"]
+  flow: ["마르타가 2차 명단을 고친 일(포도월 그믐 — 회귀점 이전, 고정)과 그것이 들키는 날"]
+  drift: ["그 주의 '혀'가 누구인지, 목줄이 본 수상한 자의 수"]
