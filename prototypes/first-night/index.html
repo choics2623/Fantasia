@@ -121,6 +121,9 @@ footer.body { position: sticky; bottom: 0; background: var(--bg); border-top: 1p
 .chron h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; }
 .chron .life { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-soft); }
 .chron p { margin: 0; font-size: 0.98rem; }
+.plate { margin: 4px 0 6px; }
+.plate img { display: block; width: 100%; max-width: 440px; margin: 0 auto; aspect-ratio: 4 / 5; border-radius: 2px; box-shadow: 0 6px 30px rgba(0,0,0,0.5); }
+.death .plate-bg { position: absolute; inset: 0; margin: auto; width: min(80vw, 420px); aspect-ratio: 4 / 5; opacity: 0; transition: opacity 1.6s ease; }
 .wake-first { font-family: var(--font-v-self); color: var(--frost); }
 @media (prefers-reduced-motion: reduce) { .tremor { animation: none; } .beat { animation: none; } }
 </style>
@@ -190,6 +193,8 @@ const L = (lang, words, note) => ({ k: "lang", lang, words, note });
 const R = (rows) => ({ k: "read", rows });
 const E = (title, thread) => ({ k: "echo", title, thread });
 const N = (t) => ({ k: "note", t });
+const PLATE = (name, alt) => ({ k: "plate", name, alt });
+const PLATE_DIR = "../../assets/illustrations/";
 const LEX = (word, how) => ({ k: "lex", word, how });
 const VOICE_NAME = { first: "누군가", dara: "낮고 거친 목소리", self: "" };
 const VOICE_CLASS = { first: "first", dara: "dara", self: "self" };
@@ -204,7 +209,7 @@ SC.ration = {
   time: [1, 19], place: "배급 막사 앞 · 비",
   enter() { S.hunger = 2; S.pain = 30; S.painPart = "등"; },
   beats: [
-    ["비가 사흘째 그치지 않는다. 배급 막사 '절름발이 수탉' 앞으로 젖은 줄이 마을 끝까지 늘어서 있다.", "오늘 배급은 귀리죽 한 국자와 검은 빵 반 덩이. 빵 냄새가 빗속에서도 난다."],
+    [PLATE("01_ration_line", "빗속, 배급 막사의 열린 문까지 늘어선 두건 쓴 사람들의 줄"), "비가 사흘째 그치지 않는다. 배급 막사 '절름발이 수탉' 앞으로 젖은 줄이 마을 끝까지 늘어서 있다.", "오늘 배급은 귀리죽 한 국자와 검은 빵 반 덩이. 빵 냄새가 빗속에서도 난다."],
     ["감독관 즈닉이 줄을 따라 걷는다. 회색 피부의 크릭, 키는 당신 허리께. 손에 든 채찍만은 당신 키만 하다.", "오후에 그 채찍이 당신 등을 세 번 갈랐다. 이유는 기억나지 않는다. 즈닉도 기억하지 못할 것이다."],
     [L("용언", ["짐승들,", "줄", "똑바로", "서!"], "즈닉은 용언으로 소리친다. 주인들의 말을 쓰면 자기가 조금 높아진다고 믿는다.")],
     ["빵을 받아 든 순간, 작은 손이 소매를 잡는다. 페인이다. 열여섯, 마을에서 제일 마른 고아.", "오늘 배급을 놓쳤다고 했다. 밀수꾼 하겐의 심부름을 하느라 줄에 서지 못했다고.", "페인은 아무 말도 하지 않는다. 빵만 본다."],
@@ -463,13 +468,13 @@ SC.survived = {
 SC.death_marsh = {
   time: [3, 23], place: "오물 습지 · 폭우",
   enter() { S.f.death = "marsh"; S.f.others_escaped = !!S.f.route_elsa && Math.random() < 0.5; note("오물 습지에서 볼크의 개들에게 붙잡혀 죽었다"); },
-  beats: [["갈대가 당신을 붙잡는다. 아니, 이빨이.", "다리가 땅에서 떨어진다.", "사라의 비명. 멀리."], ["비가 그친다.", "아니, 들리지 않는 것이다."]],
+  beats: [[PLATE("02_marsh", "달 아래 갈대밭, 개 세 마리, 진창 위로 뻗은 손"), "갈대가 당신을 붙잡는다. 아니, 이빨이.", "다리가 땅에서 떨어진다.", "사라의 비명. 멀리."], ["비가 그친다.", "아니, 들리지 않는 것이다."]],
   death: true,
 };
 SC.death_sacrifice = {
   time: [3, 23], place: "오물 습지 · 폭우",
   enter() { S.f.death = "sacrifice"; },
-  beats: [["당신은 일부러 소리를 지르며 반대쪽 갈대를 헤친다. 개들이 따라온다. 볼크도.", "등 뒤에서 사라의 발소리가 멀어진다. 멀어진다. 사라진다."], ["이빨이 종아리를 문다. 당신은 웃는다. 왜 웃는지 모른다.", "볼크의 숨결이 귀에 닿는다. \"…용감한 짐승이군. 아깝다.\""]],
+  beats: [[PLATE("02_marsh", "달 아래 갈대밭, 개 세 마리, 진창 위로 뻗은 손"), "당신은 일부러 소리를 지르며 반대쪽 갈대를 헤친다. 개들이 따라온다. 볼크도.", "등 뒤에서 사라의 발소리가 멀어진다. 멀어진다. 사라진다."], ["이빨이 종아리를 문다. 당신은 웃는다. 왜 웃는지 모른다.", "볼크의 숨결이 귀에 닿는다. \"…용감한 짐승이군. 아깝다.\""]],
   death: true,
 };
 SC.execution = {
@@ -625,6 +630,7 @@ function renderItem(it, ctx) {
     return `<div class="paper" role="img" aria-label="읽을 수 없는 글">${rows}</div>`;
   }
   if (it.k === "echo") return `<details class="echo"><summary>${esc(it.title)}</summary><ol>${it.thread.map((x) => `<li>${esc(x)}</li>`).join("")}</ol></details>`;
+  if (it.k === "plate") return `<figure class="plate"><img src="${PLATE_DIR}${it.name}.svg" alt="${esc(it.alt)}" loading="lazy"></figure>`;
   if (it.k === "note") return `<p class="note">${esc(it.t)}</p>`;
   if (it.k === "lex") { if (S.lex.includes(it.word)) return ""; S.lex.push(it.word); return `<div class="lexnew">새로 알게 된 말 — 「${esc(it.word)}」 (용언, ${esc(it.how)})</div>`; }
   if (it.k === "wake") return `<p class="wake-first" style="font-size:1.15rem">${esc(it.t)}</p>`;
@@ -842,8 +848,9 @@ function renderLoopEnd() {
 }
 function foldTime() {
   const ov = document.createElement("div"); ov.className = "death";
-  ov.innerHTML = `<div class="txt" id="fold" style="font-size:0.95rem;color:#8d8578"></div>`;
+  ov.innerHTML = `<img class="plate-bg" src="${PLATE_DIR}03_time_fold.svg" alt=""><div class="txt" id="fold" style="font-size:0.95rem;color:#e6dcc6;position:relative;text-shadow:0 0 12px #000"></div>`;
   document.body.appendChild(ov);
+  requestAnimationFrame(() => { const im = ov.querySelector(".plate-bg"); if (im) im.style.opacity = "0.55"; });
   const evs = S.events.map((e) => e.text).reverse();
   const steps = evs.concat(["…", "빵 냄새."]);
   steps.forEach((t, i) => setTimeout(() => { $("fold").textContent = t; if (settings.hap && navigator.vibrate) navigator.vibrate(12); }, i * 420));
