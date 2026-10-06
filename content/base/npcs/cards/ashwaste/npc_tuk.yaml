@@ -1,88 +1,123 @@
 id: npc_tuk
 name: 튀크
-aka: []
+aka: [등잔 밑, 흥흥이]
 tier: A
 type: living
 race: 크릭
 subrace: 굴 크릭
-sex: null
-age: null
+sex: 남
+age: 34
 region: 재의 황무지
-home: null
+home: 고물상 '등잔 밑' (마지막 등불 유물 시장 한켠)
 job: 마지막 등불의 고물상 (상인 · 정보원)
-rank: null
-summary: ''
+rank: 굴 크릭 상인 — 굴 크릭 수명 25~35년으로 보면 고령
+summary: 아스테리아 시대 은 의치를 낀 늙은 크릭 고물상. 장부 대신 끈 매듭에 큰 놈들의 이름을 쥐고, 이안이 가짜인 것을 알면서 말하지 않는다
 source: docs/world/CHARACTERS.md:1701
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 278, age: 0, event: "마지막 등불 근처 굴에서 굴 크릭으로 태어남"}
+  - {year: 286, age: 8, event: "성년. '강자 목록'을 다 외우고 첫 짐을 진다. 용황에서 크릭까지, 인간은 맨 아래"}
+  - {year: 296, age: 18, event: "마지막 등불에서 등불 기름 짐꾼을 하다가 손님이 버린 유물을 주워 팔기 시작한다"}
+  - {year: 300, age: 22, event: "고물상 '등잔 밑'을 열고 처음으로 끈 매듭 장부를 만든다. 매듭 크기가 큰 놈일수록 크다"}
+  - {year: 305, age: 27, event: "아스테리아 시대 은 의치를 구해 낀다. 이가 다 빠진 뒤 처음으로 흥정에서 웃음을 얻었다"}
+  - {year: 309, age: 31, event: "AS 309 드래곤 하트(용심) 조각 하나를 판다. 산 사람은 사흘 만에 타 죽었다"}
+  - {year: 310, age: 32, event: "AS 310 두 번째 조각을 판다. 산 사람이 또 사흘 만에 죽었다. 누가 그것을 흘렸는지 묻기 시작한다"}
+  - {year: 311, age: 33, event: "AS 311 이안이 눈에 재를 문지르는 것을 우연히 보고 입을 다물기로 한다 — 제값을 내는 손님이니까"}
+appearance:
+  - "키 90~120cm 굴 크릭. 회색 피부, 큰 노란 눈. 이가 다 빠져 아스테리아 시대 은 의치를 낀다"
+  - "등에 유물 보따리를 늘 지고 있어 등이 굽었다"
+  - "강한 자 앞에서도 무릎을 꿇지 않는다 — 다리가 굳어서라고 주장한다"
+smell: "재 기름과 녹슨 은, 오래된 먼지"
+voice_sound: "쇳소리 섞인 빠른 목소리. 말 사이마다 '흥, 흥' 코를 울린다. 은 의치가 부딪히는 소리가 말에 박자를 만든다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 10, 자비: 20, 정직: -30, 신앙: 0, 탐욕: 65, 충성: 10}
+  temperament: [약삭빠른 장사꾼, 비굴해 보이는 영리함, 큰 놈들 이름의 수집가]
+  habits:
+    - "말하기 전에 '흥, 흥' 하고 코를 두 번 울린다"
+    - "장부 대신 끈 매듭에 이름을 묶는다 — 큰 놈일수록 큰 매듭"
+    - "강자 앞에서는 일부러 한쪽 무릎을 굳혀 선다"
+    - "유물을 이로 물어 은인지 본다 (은 의치로)"
+  values: "큰 놈들의 이름을 쥐는 것. 값이 제대로 치러지는 거래"
+  fears:
+    - "몸이 먼저 무릎을 꿇는 순간"
+    - "강자 목록이 뒤집히는 날"
+    - "끈 매듭이 풀리는 것"
+    - "용심 조각을 산 사람들의 죽음이 자기에게 돌아오는 것"
   desires:
-    short: null
-    long: null
+    short: "용심 조각 두 개의 출처를 알아내는 것 — 값을 치를 만큼 큰 놈이 누군지"
+    long: "죽기 전에 '진짜 신의 뼈 조각'을 한 번 만져 보는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "강자에게는 굽신거리는 존대 '나리'지만 무릎은 안 꿇는다. 말끝에 흥정이 붙는다"
+    to_equal: "크릭·사냥꾼에게는 빠른 반말 흥정"
+    to_inferior: "짐꾼과 어린 크릭에게는 명령 반말"
+    to_player_default: "손님 대접. 첫마디가 '뭘 가져왔어? 뭘 사러 왔어?'"
+  tics: ["'흥, 흥.'", "'값이 얼마냐면…'", "'장부엔 이름이 많지' — 큰 놈 이름을 슬쩍 비춘다"]
+  use: [값, 매듭, 유물, 장부, 큰 놈, 싸게, 조금, 덤]
+  avoid:
+    - "'공짜' (그는 '덤'이라 한다)"
+    - "강자 앞에서 '무릎을 꿇는다'는 말 ('다리가 굳었다')"
+    - "용심 조각의 값 (입에 올리지 않는다)"
+  length: "짧고 빠르다. 흥정은 길어진다. 겁먹으면 같은 말을 되풀이한다"
+  samples:
+    - {situation: 첫 만남, line: "흥, 흥. 뭘 가져왔어? 아니면 뭘 사러 왔어? 둘 다 아니면 등불 기름값이나 내."}
+    - {situation: 호의, line: "이 동전, 아스테리아 거야. 인간이 '자기 얼굴'을 새긴 유일한 돈이지. 비싸. 너한텐 싸게 해 줄게. 조금."}
+    - {situation: 적대, line: "튀크는 작아. 근데 튀크 장부엔 큰 놈들 이름이 많아."}
+    - {situation: 위기, line: "보따리! 보따리 먼저!"}
+    - {situation: 비밀 누설, line: "용심 조각 두 개 팔았어. 산 놈 둘 다 사흘 만에 타 죽었대. 인간은 원래 그걸 못 견딘다며? 그럼 대체 누가 사라고 그걸 흘린 거야?"}
+    - {situation: 거래(흥정), line: "값은 값이야. 깎으면 한 번은 웃어 줄게. 두 번 깎으면 다음엔 안 와. 흥정은 두 번까지만 해."}
+    - {situation: 거짓말할 때, line: "그 유물? 처음 보는데! (은 의치가 딱 부딪힌다) 아니, 처음은 아니고 지난달에도 봤는데 내 건 아니었어!"}
+    - {situation: 겁먹었을 때, line: "무릎이 — 아니야, 안 꿇어. 다리가 굳어서야. 굳은 거야. 굳었어. 굳었다니까."}
+    - {situation: 슬픔, line: "산 놈 둘이 타 죽었다고 들었을 땐 값이 얼마였는지부터 떠올랐어. 그게 싫어서 값을 외우지 않기로 했는데, 외워져 있더라."}
+    - {situation: 분노(정가로 낼 때), line: "그대로 낸다고? 값을 그대로? 나를 뭘로 보는 거야! 흥정 안 하는 손님은 도둑이야, 둘 다 값을 속이는 거니까!"}
+    - {situation: 마음을 열었을 때, line: "너한테만 보여 줄게. 신의 뼈 조각이라고들 하는데 진짜는 아니야. 그래도 만져 봐. 죽기 전에 진짜를 만져 보고 싶은데, 가짜라도 손이 먼저 알거든."}
+    - {situation: 이안을 말할 때, line: "수도자? 제값 내는 손님이지. 눈이 좀 짓무른 거 빼면. 눈이야 누구나 재 들어가는 거고."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "유물 감정"
+  낮: "장사"
+  저녁: "그롬마르행 상인을 접대한다"
+  밤: "정보를 정리한다 — 장부 대신 끈 매듭으로"
+places: [고물상 '등잔 밑', 마지막 등불 유물 시장, 물 저장고 앞]
+knows: [fact_aw_box_bounty, fact_aw_goz_deserter, fact_aw_goz_weakness]
+hides:
+  - fact: fact_aw_tuk_sold_hearts
+    reveal_when: "신뢰 50 이상이거나, 흥정을 두 번 이긴 뒤 용심 조각 이야기를 꺼냈을 때"
+    cover: "'그런 건 취급 안 해'라고 웃으며 보따리를 가린다"
+  - fact: fact_aw_tuk_knows_ian_fake
+    reveal_when: "신뢰 70 이상이거나, 플레이어가 이안의 진짜 사정을 알고 있음을 보였을 때"
+    cover: "'수도자는 제값 내는 손님이야'라고만 한다. 은 의치가 한 번 부딪힌다"
 relations:
-- to: npc_kyle_sandeye
-  type: 납품자
-  like: 15
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_ian_ash
-  type: 비밀을 아는 고객
-  like: 30
-  trust: 30
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_goz
-  type: 경비
-  like: 20
-  trust: 40
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_gorba
-  type: 그롬 바이어
-  like: 0
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_kyle_sandeye, type: 납품자, like: 15, trust: 20, visibility: 공개, memo: null, words: "유물을 끌어다 주는 인간. 몫을 따지는 눈이 마음에 든다. 상자 이야기가 나오면 귀가 서는데 값을 물으면 입을 닫는다"}
+  - {to: npc_ian_ash, type: 비밀을 아는 고객, like: 30, trust: 30, visibility: 일방, memo: null, words: "눈에 재를 바르는 걸 본 손님. 제값을 내서 입을 닫아 준다. 가짜를 팔아서 좋아하는 이를 처음 봤다"}
+  - {to: npc_goz, type: 경비, like: 20, trust: 40, visibility: 공개, memo: null, words: "등불을 지키는 회색 그롬. 지켜 주는 값을 받지 않는다. 그게 제일 이상하다"}
+  - {to: npc_gorba, type: 그롬 바이어, like: 0, trust: 20, visibility: 공개, memo: null, words: "그롬마르에서 오는 조련·매매상. 값은 짜고 지불은 현금이다"}
+toward_player: "손님. 첫마디부터 흥정이다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["돈·유물 (+20)", "흥정을 두 번까지 하는 것", "큰 놈들의 이름 정보", "진짜 신의 뼈 조각 소문"]
+  hates: ["흥정 없이 값을 그대로 내는 것 (모욕으로 받아들인다)", "그를 '쥐'라 부르는 것", "강자 앞에서 무릎을 꿇으라는 말"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 흥정(상한 65), 학식(유물, 55), 손재주(50). 조건: 유물 3점 납품. 수업료: 판매가 10%"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "아침 감정, 낮 장사, 저녁 상인 접대, 밤 끈 매듭 정리"
+    - "용심 조각 둘이 이미 팔렸다 (회귀점의 사실)"
+    - "이안이 가짜인 것을 알고 입을 다문다"
+  flow:
+    - "그롬마르행 상인이 들르는 날 — 대개 엿새마다"
+  drift:
+    - "그날 가장 비싸게 팔릴 유물이 무엇인지"
+    - "누가 먼저 가게 앞에 서 있는지"
+    - "끈 매듭에 새로 묶이는 이름"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "'공짜'를 말하지 않는다 — '덤'"
+  - "강자 앞에서 무릎을 꿇지 않는다 (몸이 먼저 굴해도 '다리가 굳었다'고 한다)"
+  - "정가 그대로 내는 손님에게는 모욕으로 화낸다"
+  - "용심 조각 이야기는 신뢰 50 전에 하지 않는다"
+  - "큰 놈들의 이름은 흥정 카드로만 슬쩍 비춘다. 공개적으로 외치지 않는다"
+on_death: "마지막 등불 유물·정보 거래 마비"
+story_seeds:
+  - "그가 판 용심 조각의 출처를 추적하면 멜리산드의 '미끼 그물'에 닿는다"
+  - "끈 매듭 장부에 큰 놈들의 이름이 있다. 매듭 하나를 풀 수 있는 사람은 그뿐이다"
+# TODO-FACT: 튀크가 판 용심 조각 두 개를 흘린 멜리산드 쪽 연결(누가, 어떻게 마지막 등불에 흘렸나) — 잿불 언덕 작가. fact_aw_hearts_melisande_bait는 '멜리산드의 미끼'까지만 정했다

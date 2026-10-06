@@ -1,0 +1,290 @@
+# 엘다르 가지 — 시간 혈명('영속')의 굴레(변하지 못함, 완벽한 기억)가 만든 통치 형태.
+# 근거: HOUSES §3.1, RACES §5, REGIONS §5, WORLD_BIBLE §1.2/§4.2. 장소 id는 REGIONS §5.9.
+id: fac_eldar
+name: 엘다르 가지 (첫 아침 나무)
+kind: polity
+race: [엘다르(별빛), 실반, 정원지기(인간, 계급 밖)]
+governance: 기억 합의 (고리의 의회)   # 새 형태 — 표결이 아니라 '기억 대조'로 결정한다
+motto: "우리는 처음을 기억한다."
+seat: 실바렌 영원 정원 — 첫 아침의 나무 (eternal_garden__first_tree)
+size:
+  members: "엘다르 약 24,600 (별빛 18,200 + 실반 6,400), 정원지기(인간) 약 3,100 — 최연소 44세, AS 268 이후 별빛 엘다르 출생 0"
+  territory: "실바렌 영원 정원(시간 정체 결계), 루멘 감독관 350, 아르카스 잿빛 탑 객원 약 60, 용제국 궁정 사절 약 40"
+  wealth: "화폐 없음. 은목재, 약초, 기억 수정 — 모두 '선물'로만 움직인다"
+  force: "직접 병력은 적다. 시간 정체 결계, 은목 숲의 '말 없는 사냥꾼'(순혈파 궁수), 예지, 그리고 시간의 그물"
+
+decision: >
+  엘다르는 표를 세지 않는다. 안건이 서면 고리의 의회(첫 아침의 가지 140석)가 '노래 한 바퀴'(9일)마다 모여
+  선례 낭송으로 결정한다. 제안자는 같은 일이 과거에 있었는지 기억을 낭송하고, 의원들이 차례로 자기 기억을 덧댄다.
+  기억이 한 올도 어긋나지 않으면 그것이 결정이다(합의 = 어긋남 없음). 어긋나는 기억을 가진 이가 '한 박자 어긋남'을
+  선언하면 안건은 다음 한 바퀴로 넘어가 두 기억을 대조한다 — 이것이 사실상의 거부권이고, 선언은 취소할 수 없다.
+  두 기억이 끝까지 맞서면 더 오래 기억하는 쪽(나이 = 기억의 양)이 옳다. 신살 이전 기억을 가진 이의 낭송은 한 마디가
+  두 마디의 무게를 가지고, 낭송으로 '받은 기억'(전수)은 절반의 무게를 가진다.
+  한번 정해진 결정은 첫 아침의 노래에 붙어 영원이 된다 — 고칠 수 없고 '다시 기억'(해석 변경)할 수만 있다.
+  그래서 결정은 대개 수십 년이 걸리고, 새로운 안건(침묵의 해 이후의 모든 것)은 선례가 없어 번번이 보류된다.
+  영원 여왕은 의장이 아니다. 그녀는 의회가 '정지'에 빠질 때 오직 한 가지 일을 한다 — 자신의 기억을 낭송한다.
+  아무도 그것에 반하는 기억을 가지지 못해 결정이 사실상 끝난다. 그래서 여왕은 거의 낭송하지 않는다.
+  인간·외부의 일(경매, 감독관 인사, 영혼 정원)은 의회에 올라가지 않고 가지별 관할로 처리된다 — 그 틈이 존속파의 힘이다.
+succession: >
+  선출하지 않는다. 퇴색(몸이 나무가 되어 이름만 남는 것)으로 자리가 비면 가장 오래 기억하는 가지의 증인이 낭송으로 '받은 기억'을
+  채워 후임을 세운다. 여왕 자리는 비어 본 적이 없다 — 엘라스트리엘이 퇴색하면 이실레아(왕녀)가 잇는 것이 선례이나,
+  침묵의 해 이후 '이을 아이'의 부재가 아무도 입에 올리지 못하는 균열이다. 리안델이 유일한 다음 세대다.
+
+offices:
+  - id: off_queen
+    title: 영원 여왕
+    holder: npc_elastriel
+    reports_to: null
+    powers: ["의회가 정지에 빠질 때 낭송으로 결정을 닫는다(거의 쓰지 않음)", "정원 전체의 시간 정체 결계 유지", "맹약회의 313의 엘다르 입장"]
+    chosen_by: "혈통 + 신살을 목격한 기억. 퇴색 시 가장 오래된 첫 아침 가지 직계가 이음"
+    perks: ["첫 아침의 나무 뿌리 거처", "모든 엘다르의 기억에 우선하는 낭송권"]
+  - id: off_ring_council
+    title: 고리의 의회 (첫 아침의 가지 140석 — 집합 자리)
+    holder: "unnamed:신살 이전 기억을 가진 엘다르와 그들에게 기억을 전수받은 가지 증인 약 140명"
+    reports_to: off_queen
+    powers: ["선례 낭송으로 결정", "'한 박자 어긋남' 선언(보류)", "예지 조각 해석", "시간 정체 결계 보수"]
+    chosen_by: "신살 이전 기억 보유 또는 전수 낭송을 받은 가지 증인. 퇴색으로 비면 낭송으로 채운다"
+    perks: ["발언권 — 젊은 가지에게는 없다"]
+  - id: off_first_reciter
+    title: 첫 낭송관 (고리의 의회 사회자)
+    holder: "unnamed:첫 낭송관 — 고리의 의회에서 가장 오래 앉은 자"
+    reports_to: off_ring_council
+    powers: ["안건 순서 정하기", "선례 목록 호명", "어긋남 선언 기록"]
+    chosen_by: "가장 오래 앉은 의원. 이 자리에는 이견이 없다"
+    perks: ["의회 낭송 장부(구전) 보관"]
+  - id: off_princess_deputy
+    title: 여왕의 대리인 (첫 아침 가지 왕녀)
+    holder: "unnamed:이실레아 (왕녀, 1,900) — 맹약회의 대리인 예정"
+    reports_to: off_queen
+    powers: ["맹약회의 313에서 엘다르를 대리", "'흰 알 섭정안' 제출"]
+    chosen_by: "여왕의 지명 — 혈통"
+    perks: ["여왕을 대신한 외부 접촉권"]
+  - id: off_last_child
+    title: 마지막 아이 (왕손)
+    holder: npc_liandel
+    reports_to: off_princess_deputy
+    powers: ["없음 — 상징. 모든 파벌이 그녀를 자기 편의 상징으로 삼으려 한다"]
+    chosen_by: "출생 (AS 268, 침묵의 해 직전)"
+    perks: ["정원 안 어디든 이동", "엘다르 교사 전담"]
+  - id: off_dawn_head
+    title: 새벽가지 수장 (존속파)
+    holder: npc_aerin
+    reports_to: off_ring_council
+    powers: ["영혼 정원 운영", "새벽 온실 관할", "멜리산드와의 이식 기술 공유 협정"]
+    chosen_by: "가지 분리 이후 세습(세릴 새벽가지의 직계). 의회는 영혼 정원을 '가지 관할'로 묵인한다"
+    perks: ["영혼 정원 접목 침대 30개", "여왕과 함께하는 시간의 그물 짜기"]
+  - id: off_old_head
+    title: 고목 가지 수장 (순혈파)
+    holder: npc_silvanus
+    reports_to: off_ring_council
+    powers: ["엘다르 무덤 '잠든 나무' 관리", "조용한 숲의 말 없는 사냥꾼 지휘"]
+    chosen_by: "세습 (오르넨 고목의 직계)"
+    perks: ["조용한 숲 거처", "지지 엘다르 약 4,500"]
+  - id: off_dew_head
+    title: 은이슬 가지 예언 관리자
+    holder: "unnamed:나엘리스 은이슬 (2,200, 잿빛 탑 원로 겸임)"
+    reports_to: off_ring_council
+    powers: ["이슬 두루마리 9,000권 관리", "예지 조각 보고"]
+    chosen_by: "세습 (나엘 은이슬의 직계)"
+    perks: ["이슬 서고 출입권 독점"]
+  - id: off_dew_librarian
+    title: 이슬 서고지기
+    holder: "unnamed:이벨린 (600)"
+    reports_to: off_dew_head
+    powers: ["두루마리 복원 작업 현장 관리"]
+    chosen_by: "나엘리스의 지명"
+    perks: []
+  - id: off_light_guardian
+    title: 빛의 후견인 (빛실 가지 수장)
+    holder: "unnamed:이살리온 빛실 (2,400)"
+    reports_to: off_ring_council
+    powers: ["순종의 빛 교리 설계 관할", "루멘 후견인의 정원 관리", "루멘 감독관 350 임명"]
+    chosen_by: "세습 (이살 빛실의 직계)"
+    perks: ["『빛의 말씀』 엘다르어 원본 보관"]
+  - id: off_doctrine_auditor
+    title: 교리 감수관
+    holder: "unnamed:레아넬 (1,100)"
+    reports_to: off_light_guardian
+    powers: ["대사제의 교리 변경 승인·거부"]
+    chosen_by: "빛의 후견인의 지명"
+    perks: []
+  - id: off_lumen_supervisor
+    title: 루멘 수석 감독관
+    holder: npc_serenielle
+    reports_to: off_light_guardian
+    powers: ["루멘 엘다르 감독관 350 총괄", "대사제 인사 실질 장악"]
+    chosen_by: "빛의 후견인의 지명"
+    perks: ["루멘 후견인의 정원 거처"]
+  - id: off_lumen_deputy
+    title: 루멘 부감독관
+    holder: "unnamed:탈렌디르 별무게 (약 1,400) — 그레고르 7세의 실무 상관"
+    reports_to: off_lumen_supervisor
+    powers: ["대사제와의 일상 접촉", "알베릭의 '빛의 서신' 열람(처분 없음 — 이유 불명)"]
+    chosen_by: "수석 감독관의 지명"
+    perks: []
+  - id: off_soul_researcher
+    title: 영혼 정원 연구자 (잿빛 탑 객원)
+    holder: "unnamed:피오나엘 (980) — AS 311부터 본 적 없는 인간의 기억을 꿈꾼다"
+    reports_to: off_dawn_head
+    powers: ["피험자 상태 기록", "잿빛 탑과의 자료 교환"]
+    chosen_by: "아에린의 지명"
+    perks: ["새벽 온실 출입"]
+  - id: off_silent_brother
+    title: 침묵 서약자 (새벽가지)
+    holder: "unnamed:아에릭 (약 2,200) — 아에린의 쌍둥이 동생, 실험에 반대해 스스로 침묵"
+    reports_to: off_dawn_head
+    powers: ["없음. 침묵 자체가 항의다"]
+    chosen_by: "스스로"
+    perks: []
+  - id: off_grave_chamberlain
+    title: 시종장 (고목 가지, 마른 숲)
+    holder: "unnamed:바렌딜 (2,000)"
+    reports_to: off_old_head
+    powers: ["'잠든 나무' 아래 장례 관리", "무덤지기 인간 약 150 지휘"]
+    chosen_by: "실바누스의 지명"
+    perks: []
+  - id: off_garden_steward
+    title: 정원 관리장
+    holder: "unnamed:미리엘 이슬지기 — 중립"
+    reports_to: off_queen
+    powers: ["정원지기 3,100 관리", "정지 처벌 집행", "꽃 명부(짝짓기) 관리"]
+    chosen_by: "여왕의 지명. 의회를 거치지 않는다"
+    perks: ["이슬 우리 열쇠 — 문은 잠그지 않는다"]
+  - id: off_gate_warden
+    title: 은잎문 수문장
+    holder: "unnamed:카엘론"
+    reports_to: off_queen
+    powers: ["외부 출입 통제", "정원지기 경매(선물 교환) 주관", "'잊힘' 집행"]
+    chosen_by: "여왕의 지명"
+    perks: ["경매 정자 선물 탁자", "시종 인간 로즈비타(대기 우리 열쇠)"]
+  - id: off_white_fence_warden
+    title: 흰 울타리 감시인 (실반)
+    holder: npc_fern
+    reports_to: off_gate_warden
+    powers: ["정원 외곽 울타리 순찰 (북문 열쇠 보유)"]
+    chosen_by: "수문장의 지명. 실반이라 의회 밖"
+    perks: []
+  - id: off_silent_hunter
+    title: 말 없는 사냥꾼 (은목 숲 궁수)
+    holder: "unnamed:순혈파 궁수 — 집합 자리"
+    reports_to: off_old_head
+    powers: ["은목 숲 침입자 사살(경고 없이)", "추방자 추적"]
+    chosen_by: "고목 가지의 궁수 중 수백 년 같은 동작을 반복한 자"
+    perks: ["궁술 90대"]
+  - id: off_memory_keeper
+    title: 기억지기 (노래·법·약초·별 가문)
+    holder: "unnamed:기억지기 전문가 가문들"
+    reports_to: off_ring_council
+    powers: ["한 분야를 통째로 기억 — 의회의 선례 대조에 증인으로 불린다"]
+    chosen_by: "가문 세습"
+    perks: []
+  - id: off_gardener_foreman
+    title: 정원지기 반장 (인간, 계급 밖)
+    holder: "unnamed:로렌 (인간, 52, 이슬 노래 지도자)"
+    reports_to: off_garden_steward
+    powers: ["이슬 우리 운영 보조"]
+    chosen_by: "미리엘의 지명"
+    perks: ["엘다르가 묻기 전에도 말해도 되는 유일한 인간"]
+
+ranks:
+  - {id: rank_first_morning, title: "첫 아침의 가지 (고리 의원)", duties: "의회 낭송, 선례 증언, 결계 보수", privileges: "발언권, 예지 조각 열람, 어긋남 선언", open_to_player: false}
+  - {id: rank_memory_keeper, title: "기억지기", duties: "한 분야를 통째로 기억", privileges: "의회 증인, 가문 보호", open_to_player: false}
+  - {id: rank_young_branch, title: "젊은 가지 (1,000세 미만)", duties: "정원 관리와 노래 합창", privileges: "없음 — 발언권 없음, 지지만 센다", open_to_player: false}
+  - {id: rank_silvan, title: "실반 (숲 엘프)", duties: "정원 외곽, 울타리, 하인의 일", privileges: "정원 안 거주", open_to_player: false}
+  - {id: rank_gardener, title: "정원지기 (인간, 계급 밖)", duties: "이슬 거두기, 정원 손질, 낭송 시중, 서서 듣기", privileges: "하루 3끼, 병 없는 삶, 평균 수명 61세", open_to_player: true}
+
+law:
+  crimes:
+    - {act: "정원지기가 엘다르어로 말함 (듣기만 허용)", punishment: "정지 7일 — 시간 마법으로 몸이 굳고 의식은 깨어 있다", note: "인간 대상. 집행 미리엘"}
+    - {act: "정원지기가 꽃을 꺾음 / 실바렌의 나무를 베거나 가지를 꺾음", punishment: "꽃은 정지 3일, 나무는 손을 자른다", note: "인간 대상"}
+    - {act: "정원 밖으로 나감 / 글자를 씀", punishment: "잊힘 — 번호를 지우고 숲으로 추방한다. 엘다르는 죽이지 않는다, 숲이 죽인다", note: "인간 대상. 집행 카엘론"}
+    - {act: "짝짓기 거부", punishment: "정지 30일, 재차 거부 시 경매로 반환", note: "인간 대상"}
+    - {act: "엘다르 영역에서 에오르의 이름을 말함", punishment: "혀를 뽑는다", note: "인간 대상. 엘다르끼리는 '그분'이라고만 한다"}
+    - {act: "엘다르를 허락 없이 만지거나 세 걸음 안으로 다가섬", punishment: "정지 1~3일", note: "인간 대상 — 세 걸음 규칙"}
+    - {act: "엘다르 앞에서 '죽음'·'끝'·'잊었다'를 말함", punishment: "인간은 정지 1일. 엘다르끼리는 처벌이 아니라 침묵으로 대한다", note: "양쪽 모두에 해당. 존속파 앞에서 침묵의 해를 언급하면 분노"}
+    - {act: "배움 — 새 노래·새 기술·새 낱말을 '배워' 부름 (기억이 아니라 배움)", punishment: "'고쳐야 할 병'으로 간주, 교사가 붙어 되새김 교정", note: "엘다르 대상. 리안델이 걸려 있다. 들키면 가르친 인간 마을이 처벌"}
+    - {act: "엘다르가 엘다르를 해침 (첫 아침의 노래를 끊는 죄)", punishment: "이름 깎기 — 족보에서 이름을 깎고 '잘린 가지'로만 부른다", note: "엘다르 대상. 순혈파가 인간을 실행자로 쓰려는 이유"}
+    - {act: "예언을 끝까지 말함", punishment: "의회에서 낭송권 일시 정지", note: "엘다르 대상. 완성된 예언은 이루어진다고 믿는다"}
+
+customs:
+  greeting: "마주 서서 한 박자 쉬고, 상대의 기억 칭호를 먼저 부른다('새벽 가지를 처음 기억한 분'). 이어 '처음을 기억하소서' — 답은 '기억하며 있소'. 선물에는 '기억할 의무'가 따르므로 인사 끝에 받은 선물을 하나 헤아린다."
+  taboos:
+    - "'잊었다', '망각', '새롭다'를 자랑하는 말 — 엘다르 앞에서는 저주에 가깝다"
+    - "에오르의 이름. '그분'이라고만 한다"
+    - "엘다르 앞에서 '죽음'·'끝', 침묵의 해를 입에 올림 (존속파는 분노, 순혈파는 침묵)"
+    - "정원의 물을 손으로 휘젓기, 첫 아침의 나무를 등지고 서기"
+    - "정원지기를 '노예'라고 부름 — 엘다르는 '보살핌 받는 자'라 한다"
+    - "'지금'을 강조하는 말. 엘다르는 현재를 가리키는 말을 아낀다"
+  rites:
+    - {name: "첫 아침의 노래", when: "매일 새벽 (한 바퀴 9일)", what: "신살 이전의 첫 아침을 엘다르 전원이 낭송한다. 3,400년간 한 음도 바뀌지 않았다. 의회는 한 바퀴가 끝날 때 모인다"}
+    - {name: "빈 요람의 밤", when: "해빙월 (AS 268 마지막 출생 기념 — 날짜는 임시)", what: "빈 요람 전당에 모여 울지 않고 침묵한다. 요람 1,200개"}
+    - {name: "한 박자 돌아봄", when: "재의 날 (연말 5일)", what: "고리의 의회가 '노래가 한 박자 되돌아갔다'는 어긋남을 대조한다. 시간 잔상이 가장 많은 날 — 시간 민감 엘다르는 회차가 쌓일수록 같은 저녁을 먼저 짚는다"}
+    - {name: "선물 갚기", when: "수시", what: "선물은 받은 쪽이 갚을 때까지 줄 쪽이 기억한다. 갚으면 그 기억은 '닫힌다'"}
+    - {name: "잠든 나무 아래 장례", when: "퇴색 시", what: "퇴색한 엘다르는 마른 숲에 서 있고 나무에 이름이 붙는다. 늙은 정원지기는 그 아래 함께 묻힌다(고목 가지)"}
+  speech: "현재형을 아껴 과거 어미('~하였소', '~이었던 바')로 말하고, '모른다' 대신 '아직 기억 속에 없다'고 한다. 윗사람(더 오래 기억하는 자)에게는 문장을 끝맺지 않고 낭송조로 낮추며, 아랫사람에게는 단정한다. 예언은 조각으로만 말한다. 인간에게는 반말이 아니라 '의무를 지우는' 정중함 — 따뜻하되 거리가 있다."
+
+membership:
+  join: "엘다르는 태어나는 것 외에 길이 없다 — 침묵의 해(AS 268) 이후 출생 0. 실반 아이만 연 3~5명 태어나며 별빛 엘다르는 이를 밖에 알리지 않는다. 인간은 바알카르 파종월 시장이나 은잎문 경매 정자에서 '선물 교환'으로 들어와 정원지기가 된다."
+  leave: "퇴색(몸이 나무처럼 굳어 이름만 남음), 이름 깎기(추방, '잘린 가지'), 갈증 망명(녹테른의 피를 택함 — 매년 몇 명이 실바렌에서 사라진다). 정원지기는 나갈 수 없다 — 나가면 '잊힘'이고 숲이 죽인다."
+  signs: ["금실 옷의 정원지기, 꽃 이름", "엘다르끼리 기억 칭호로 서로를 부름", "손바닥에 은목 잎 문양(수문장 선물)", "가시안개로 간 '잊힌 자'들의 머리카락 매듭 — 은잎문 아치 기둥"]
+
+internal_factions:
+  - {name: "순혈파 (존엄한 소멸)", leader: npc_silvanus, aim: "엘다르는 존엄하게 사라진다. 영혼 정원을 부수되 엘다르 손으로는 하지 않는다 — 인간을 실행자로 쓰려 한다", strength: 40}
+  - {name: "존속파 (잔향을 그물로 붙잡기)", leader: npc_aerin, aim: "잔향을 시간의 그물로 붙잡아 '돌아옴'을 엘다르에게 옮긴다. 영혼 정원, 멜리산드와 협력", strength: 30}
+  - {name: "여왕의 중립 (기다리는 자들)", leader: npc_elastriel, aim: "막지도 돕지도 않는다. 맹약회의 313의 입장은 아직 정하지 않았다. 흰 알 섭정안(은이슬·첫 아침 가지)이 여기서 자란다", strength: 25}
+  - {name: "갈증 망명자 (비공개)", leader: null, aim: "퇴색 대신 녹테른의 피를 택하려는 젊은 가지. 망각의 길로 사라진다", strength: 5}
+
+assets:
+  - "시간 정체 결계 — 정원 안 하루가 침입자에게는 사흘, 계절이 거의 바뀌지 않는다"
+  - "시간의 그물 (영혼 정원 수정 기둥 사이) — 진짜 죽음의 네 수단 중 하나. 여기서 죽은 잔향자는 회귀점에 닿지 못한다"
+  - "영혼 정원 (soul_garden): 접목 침대 30개, 피험자 약 70, 존속파 엘다르 40"
+  - "기억 수정 (엘다르의 기억을 담은 수정 — 잿빛 탑이 탐낸다)"
+  - "은목재, 약초 — 수출용 '선물'"
+  - "루멘 엘다르 감독관 350, 순종의 빛 교리 통제"
+  - "정원지기 약 3,100 — 이슬 노래 (은밀한 저항, 회원 약 80)"
+  - "첫 아침 호수 — 비추면 앞선 잔향자의 한 장면이 보인다 (eternal_garden__dawn_lake)"
+
+secrets:
+  - {fact: fact_sv_time_net_soul_garden, known_by_rank: rank_first_morning}
+  - {fact: fact_sv_aerin_87_failures, known_by_rank: rank_first_morning}
+  - {fact: fact_sv_first_ember_burned, known_by_rank: rank_first_morning}
+  - {fact: fact_sv_elastriel_neutral_stance, known_by_rank: rank_first_morning}
+  - {fact: fact_sv_silvanus_evidence, known_by_rank: rank_first_morning}
+  - {fact: fact_sv_silvan_children_born, known_by_rank: rank_first_morning}
+  - {fact: fact_sv_aerin_vessel_liandel, known_by_rank: rank_first_morning}
+  - {truth: T01, level: whole, holders: [npc_elastriel]}
+  - {truth: T02, level: whole, holders: [npc_elastriel]}
+  - {truth: T05, level: fragment, holders: [npc_aerin]}
+  - {truth: T10, level: whole, holders: [npc_elastriel]}
+  - {truth: T12, level: whole, holders: [npc_elastriel]}
+  # TODO-FACT: 첫 아침 가지의 돌이 된 아엘베린의 입술이 3,000년간 반복하는 말은 예언의 뒷부분이다 — "…그리고 처음으로 이름을 얻으리라." 여왕만 안다 (HOUSES §3.1.1)
+  # TODO-FACT: 흰 알 예언 원문은 "깨어나리라"인지 "끊어지리라"인지 이슬 두루마리 손상으로 불분명하다 (HOUSES §3.1.4)
+  # TODO-FACT: 『빛의 말씀』 원본은 엘다르어 '관리 지침서'이고 첫 장 제목이 "무혈자를 다루는 법"이다 (HOUSES §3.1.5)
+  # TODO-FACT: 갈증 망명자 — 매년 몇 명의 젊은 가지가 망각의 길로 녹테른에 간다 (RACES §5 내부 파벌)
+
+relations:
+  - {to: fac_aurax, stance: 0, note: "HOUSES §6.1 행렬 — 엘다르(존속파 기준). 순혈파는 아우락스에 기운다(고목 가지, 지지율 2)"}
+  - {to: fac_melisande, stance: 60, note: "행렬 — 존속파의 이식 기술 공유 협정"}
+  - {to: fac_kaspar, stance: -40, note: "행렬"}
+  - {to: fac_nocturne, stance: -60, note: "행렬 — 잘린 가지. 모르데카이와 엘라스트리엘은 사촌이며 3,200년 만난 적 없다"}
+  - {to: fac_durgan, stance: 0, note: "행렬"}
+  - {to: fac_seren, stance: 30, note: "행렬"}
+  - {to: fac_jotun, stance: -30, note: "행렬"}
+  - {to: fac_grom, stance: -40, note: "행렬"}
+  - {to: fac_light, stance: 70, note: "행렬 — 엘다르가 만든 종교. 루멘 감독관 350"}
+  - {to: fac_nameless, stance: -70, note: "행렬"}
+  - {to: fac_collar, stance: 30, note: "행렬"}
+  - {to: fac_ashen_tower, stance: 50, note: "행렬 — 피오나엘, 나엘리스 객원"}
+  - {to: fac_barg, stance: 0, note: "행렬"}
+  - {to: fac_swamp_hags, stance: -50, note: "행렬"}
+toward_echo: "존속파: 시간의 그물로 붙잡기(영혼 정원 1순위 피험자). 순혈파: 방관·이용 — 영혼 정원 파괴의 손. 여왕: 알아보았으나 말할지 정하지 못했다(fact_sv_elastriel_senses_echo)."
+player_paths:
+  - "잠입: 은잎문 경매 정자에서 정원지기로 팔려 들어가 이슬 노래·영혼 정원에 닿는다 (대기 우리 열쇠는 로즈비타)"
+  - "거래: 실바누스의 부탁 — 영혼 정원 파괴 증거를 맡는 대가로 인간 100명 해방 제안"
+  - "이용: 새 노래·새 기술·인간의 이야기는 엘다르가 아직 기억 속에 갖지 못한 것이다. 선물로 의무를 지우면 화술이 +20"
+  - "무너뜨리기: 영혼 정원 붕괴, 시간의 그물 파괴 — 존속파 붕괴, 멜리산드와의 협정 해소"
+  - "구하기: 리안델과 인간 아이의 우정, 피험자 70, 이슬 노래의 80명"
+regression:
+  fixed: ["엘다르는 변하지 못한다 — 의회의 결정 절차, 노래 한 바퀴 9일", "영혼 정원의 성공 0건, 시간의 그물의 위치", "엘라스트리엘의 중립과 첫 불씨의 기억", "빈 요람 1,200개"]
+  flow: ["존속파·순혈파의 세력비는 큰 사건(플레이어 개입)에만 움직인다", "경매 정자에 팔려 오는 인간의 얼굴"]
+  drift: ["피오나엘의 꿈에 끼는 같은 저녁 — 회차가 쌓일수록 또렷해지는 기시감(엘다르의 '한 박자 돌아봄')", "정원지기 개개인의 짝짓기 결과와 이슬 우리 인원", "퇴색하는 개체와 갈증 망명자의 수"]

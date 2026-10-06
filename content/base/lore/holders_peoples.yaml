@@ -1,0 +1,18 @@
+# 진실의 holders — 종족 정치체(HOUSES §3)와 인간 숨은 혈통(HOUSES §4) 작가 몫.
+# truths.yaml은 고치지 않는다. 형식: {truth, who, level, note}. who는 npc id 또는 fac id.
+
+# ── 엘다르 (fac_eldar)
+- {truth: T01, who: npc_elastriel, level: whole, note: "신살을 계획한 이실도르의 딸. 열한 종족의 몫을 직접 기억한다"}
+- {truth: T02, who: npc_elastriel, level: whole, note: "예언을 처음 본 사람. 잔향이 하나의 영혼임을 신살 뒤에 알았고 3,400년 사냥에 가담했다 (fact_sv_prophecy_first_seen)"}
+- {truth: T03, who: npc_elastriel, level: whole, note: "첫 불씨의 말투와 손짓을 3,000년 잊지 않았다. 플레이어 안의 잔향을 알아본다"}
+- {truth: T04, who: npc_elastriel, level: fragment, note: "회귀는 기억하지 못하나 '한 박자 돌아간' 어긋남으로 감지한다 — 시간 민감"}
+- {truth: T05, who: npc_elastriel, level: whole, note: "시간의 그물을 짠 당사자. 네 수단 중 자기 종족의 몫을 안다"}
+- {truth: T05, who: npc_aerin, level: fragment, note: "그물을 여왕과 함께 짠다. 다른 세 수단의 소유자는 모른다"}
+- {truth: T06, who: npc_elastriel, level: fragment, note: "대붕괴 당일 시간이 한 박자 찢긴 것을 몸으로 안다. 바르스카르의 불이 이유임은 소문 이상으로는 모른다"}
+- {truth: T06, who: npc_silvanus, level: fragment, note: "아스테리온이 하려던 일을 끝내게 하는 것이 엘다르의 '존엄한 마지막 일'이라 믿는다 (fact_sv_silvanus_teach_time)"}
+- {truth: T10, who: npc_elastriel, level: whole, note: "빛실 가지의 순종의 빛 설계를 안다. 『빛의 말씀』은 관리 지침서다"}
+- {truth: T10, who: npc_serenielle, level: whole, note: "루멘 수석 감독관 — 교리의 장치를 운영한다"}
+- {truth: T11, who: npc_elastriel, level: fragment, note: "글자가 이름의 그릇임을 안다. 인간에게 글을 금한 맹약 제2조의 기억"}
+- {truth: T12, who: npc_elastriel, level: whole, note: "첫 불씨를 정원째 불태우라 명했다 (fact_sv_first_ember_burned)"}
+- {truth: T12, who: npc_aerin, level: fragment, note: "첫 불씨와 다라가 그물에 끝났음을 안다"}
+- {truth: T13, who: npc_elastriel, level: fragment, note: "맹약회의 313의 시기를 안다. 입장은 정하지 못했다"}

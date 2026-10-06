@@ -1,116 +1,137 @@
 id: npc_mateus
 name: 심문관 마테우스
-aka: []
+aka: [대심문관, 재의 사람, 정화청장]
 tier: S
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 44
 region: 루멘
-home: null
-job: 누이를 태운 사냥꾼 (주요 악역 · 징후 사냥꾼)
-rank: null
-summary: 순종의 빛 대심문관, 재의 법·잔향 사냥 집행 책임자. 차기 대사제 유력 후보
+home: 정화의 뜰 옆 등불 심문소 (독방 한 칸)
+job: 순종의 빛 대심문관. 재의 법·잔향 사냥 집행 책임자. 루멘 등불관 겸 정화청장
+rank: 차기 대사제 유력 후보 — 엘다르 감독관이 뒤에서 민다
+summary: 누이 클라라를 징후자로 고발해 태운 대심문관. 212명을 태웠으나 진짜는 한 명도 없었음을 안다. 그래서 멈추지 못한다 — 213번째가 진짜일 확률은 오히려 올라간다고 믿는다
 source: docs/world/CHARACTERS.md:1140
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 268, age: 0, event: "루멘 강 건너 성표 신도 집안에서 태어남"}
+  - {year: 275, age: 7, event: "누이 클라라가 태어남. 일곱 살 터울의 누이를 업어 키웠다. 클라라의 머리핀(푸른색)은 이 해 시장에서 사 준 것이다"}
+  - {year: 280, age: 12, event: "부모를 열병으로 잃고 신학원에 맡겨짐. 낭독문과 고해와 규율에서 처음으로 질서를 느꼈다"}
+  - {year: 289, age: 21, event: "사슬사제로 서품. 징후 고발 접수 일을 배우기 시작함"}
+  - {year: 290, age: 22, event: "열다섯 살 클라라의 눈에 잿빛 얼룩이 생기자 그가 징후자로 고발. 대사제의 승인서가 내려왔고 클라라는 정화의 뜰에서 탐. 얼룩은 결막 질환이었다. 그는 타고 남은 머리핀을 주웠다"}
+  - {year: 291, age: 23, event: "고행 시작 — 밤마다 채찍. 정화청에 들어가 심문관이 됨. 회색 법의에 재를 묻히고 다니기 시작했다"}
+  - {year: 295, age: 27, event: "등불 심문소의 심문관이 되어 처음으로 직접 화형 집행을 요청함. 이후 매년 한두 건씩 늘었다"}
+  - {year: 301, age: 33, event: "루멘 등불관 겸 정화청장, 곧 대심문관이 됨. 잔향 징후 심문의 최종 책임자"}
+  - {year: 303, age: 35, event: "알베릭이 '빛의 서신'을 유포하자 체포해 침묵의 우물에 가둠. 처형 서명은 대사제가 거부해 미뤄졌다"}
+  - {year: 311, age: 43, event: "징후 보고가 3배로 늘자 엘다르 감독관 세레니엘에게 그레고르의 '종이 한 장'의 존재를 보고함. 화형 누적 212명 — 진짜는 한 명도 없었다"}
+  - {year: 312, age: 44, event: "베라를 213번째 후보로 점찍음. 대사제가 죽기를 기다리며 알베릭의 서명을 재촉하는 중 (낙엽월 1일 기준)"}
+appearance:
+  - "회색 법의에 잿가루를 일부러 묻히고 다닌다 — '재의 날'을 매일 산다는 표시"
+  - "등에 고행 채찍 자국이 있다. 늘 똑바로 서 있고 앉을 때는 숨을 멈춘다"
+  - "오른손 약지에 여자용 머리핀을 반지처럼 구부려 끼고 있다"
+smell: "재와 양초 연기, 소독하듯 닦은 법의 냄새"
+voice_sound: "조용하고 정중하다. 높낮이가 일정하고 질문에서만 반 박자 올라간다. 소리를 키우지 않는다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 40, 자비: -75, 정직: 30, 신앙: 85, 탐욕: -20, 충성: 70}  # 정직은 신념에 대해. 충성은 교단과 엘다르
+  temperament: [엄격, 정중, 부서지기 쉬운 확신]
+  habits:
+    - "처음 만난 사람에게는 언제나 세 가지를 묻는다 — 어디서 왔나, 누구에게 배웠나, 꿈을 꾸는가"
+    - "대답하기 전에 이마의 재를 엄지로 한 번 문지른다"
+    - "약지의 구부러진 머리핀을 엄지로 돌린다. 본인은 하는 줄 모른다"
+    - "밤마다 독방에서 채찍으로 고행한다. 앉을 때 숨을 멈춘다"
+  values: "신앙. 징후자를 태우는 것은 신도의 영혼을 구하는 일이다. 잔향을 찾으면 모든 징후자를 태울 필요가 없어진다"
+  fears: [213번째가 진짜가 아닌 것, 212명이 무고했다는 말을 스스로 인정하는 것, 클라라의 이름이 입 밖에 나오는 것, 머리핀을 누가 보는 것]
   desires:
-    short: null
-    long: null
+    short: "알베릭의 처형 서명을 받는다. 그레고르 사후 대사제가 된다"
+    long: "잔향을 찾아 태운다. 그러면 모든 '징후자'를 태울 필요가 없어진다고 믿는다"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "대사제와 엘다르에게는 완벽한 하십시오체. 엘다르 앞에서는 한 박자 낮게 말하고 눈을 들지 않는다"
+    to_equal: "사제와 등불관에게는 정중한 하십시오체. 감정을 싣지 않는다"
+    to_inferior: "신도와 피의자에게도 존댓말. '당신'이라 부른다. 정중해서 더 서늘하다"
+    to_player_default: "정중한 관찰. 질문은 셋이고 대답을 끝까지 기다린다. '확률'로 말한다"
+  tics: ["질문은 언제나 셋으로 묻는다", "'정화'와 '확률'을 한 문장에 섞는다", "대답 전에 이마의 재를 엄지로 문지른다"]
+  use: [정화, 확률, 고발, 징후, 당신, 빛, 확인, 이백열두]
+  avoid: [무고(자기 입으로), 클라라(자기 입으로 먼저), 불쌍하다, 용서, 실수]
+  length: "짧고 단정하다. 심문은 짧은 질문을 연달아 한다. 누이 이야기가 나오면 처음으로 문장이 길어지다가 스스로 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "세 가지만 묻겠습니다. 어디서 왔습니까. 누구에게 배웠습니까. 그리고— 꿈을 꿉니까?"}
+    - {situation: 호의, line: "당신은 정직하군요. 정직한 사람은 정화의 뜰에서도 덜 웁니다. 좋은 일이죠."}
+    - {situation: 적대, line: "212명. 그중 진짜는 없었습니다. 그러니 213번째가 진짜일 확률은 오히려 올라가는 겁니다."}
+    - {situation: 위기, line: "장작에 불을 붙여! 지금! 그것이 '그'라면 한순간도 늦어선 안 된다!"}
+    - {situation: 비밀 누설, line: "클라라는 열다섯이었습니다. 눈에 잿빛 얼룩이 있었죠. 고발장을 쓴 건 제 손입니다. 그 얼룩은… 그냥 병이었습니다."}
+    - {situation: 거래, line: "정직한 정보에는 정직한 값을 치릅니다. 이단의 거처 하나에 심문 한 건 보류. 확률의 문제입니다 — 당신이 쓸모 있을 확률."}
+    - {situation: 거짓말할 때, line: "고발장에 무고한 자의 이름은 없습니다. 이름이 올라오는 순간 그는 무고하지 않으니까요. (엄지가 약지의 머리핀을 돌린다)"}
+    - {situation: 겁먹었을 때, line: "(숨을 멈춘다. 등이 곧추선다) …앉지 않겠습니다. 서서 듣겠습니다. 당신의 말이 끝나기 전에는."}
+    - {situation: 분노(누이의 이름을 불렀을 때), line: "그 이름은 이 방에서 말해지지 않습니다. 고발장에도, 기록에도, 제 귀에도. 한 번 더 부르면 당신이 213번째가 될 확률은 올라갑니다."}
+    - {situation: 슬픔, line: "머리핀은 푸른색이었습니다. 지금은 구부러져서 반지입니다. 푸른색은 닳았고 열다섯 살은 닳지 않았습니다."}
+    - {situation: 의심(꿈을 묻고 대답을 들었을 때), line: "꿈을 꾼다고 하는 자와 꾸지 않는다고 하는 자. 어느 쪽이든 저는 한 번 더 묻습니다 — 무슨 꿈을."}
+    - {situation: 세레니엘 이야기, line: "감독관님은 제 신앙이 아름답다 하셨습니다. 아름다운 것은 무고한 사람을 태우지 않는다고 누가 말했습니까."}
+    - {situation: 마음을 열었을 때, line: "…당신은 진짜입니까. 아니라면 그 한마디만 해 주십시오. 저는 이십 년 가까이 '아니다'라는 한마디를 들은 적이 없습니다."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "고발장 검토 (하루 30~50건)"
+  낮: "심문. 주 1회 은빛 강 연안 마을 순회 심문"
+  저녁: "펠릭스의 고해 보고를 받는다"
+  밤: "독방에서 채찍 고행"
+places: [등불 심문소, 정화의 뜰, 독방, 은빛 강 연안 마을]
+knows:
+  - fact_lu_mateus_successor
+  - fact_lu_mateus_questions
+  - fact_lu_mateus_penance
+  - fact_lu_gregor_signed_1107
+  - fact_lu_felix_informs_mateus
+  - fact_lu_otto_cousin
+  - fact_lu_pyres_autumn
+hides:
+  - fact: fact_lu_mateus_clara
+    reveal_when: "클라라에 대한 진실을 말해 주어(+20) 말문을 열었을 때, 또는 그를 부수는 방식으로 몰아붙여 −50 적대가 된 뒤. 플레이어가 먼저 이름을 부르는 것은 역린"
+    cover: "'정화청장은 가족을 갖지 않습니다'라고만 한다. 엄지가 약지를 돈다"
+  - fact: fact_lu_mateus_212_none
+    reveal_when: "신뢰 70 이상이거나, 그의 확신이 한 번 무너지는 장면(진짜가 나타난 줄 알았다가 아니었을 때)"
+    cover: "'212명 모두 확률이 있었습니다. 확률이 있었으니 태웠습니다'"
+  - fact: fact_lu_mateus_reported_paper
+    reveal_when: "세레니엘과의 연결 증거를 제시했거나 신뢰 60 이상일 때"
+    cover: "'대사제의 밤 기도는 보고할 일이 아닙니다'"
+  - fact: fact_lu_mateus_vera_213
+    reveal_when: "베라의 이름이 직접 나왔을 때. 신뢰와 무관하다 — 그는 말하는 데 거리낌이 없다"
+    cover: "'고발 대기자는 숫자가 아니라 확인 대상입니다'"
 relations:
-- to: npc_gregor7
-  type: 상관
-  like: 20
-  trust: -10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_alberic
-  type: 이단
-  like: -80
-  trust: -90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_serenielle
-  type: 후원자
-  like: 30
-  trust: 50
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_isol
-  type: 정보 교환
-  like: 10
-  trust: 20
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_felix
-  type: 귀
-  like: 20
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_vera
-  type: 213번째 후보
-  like: -40
-  trust: -50
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_clara
-  type: 누이(고인)
-  like: 100
-  trust: 0
-  visibility: 비밀
-  memo: 자신이 고발
-  words: null
-- to: npc_otto
-  type: 사촌
-  like: 30
-  trust: 80
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_gregor7, type: 상관, like: 20, trust: -10, visibility: 공개, memo: null, words: "서명하는 손이 떨리는 상관. 존경은 남았으나 신뢰는 아니다. 서명을 미루는 것이 두려움인지 연민인지 알아내야 한다"}
+  - {to: npc_alberic, type: 이단, like: -80, trust: -90, visibility: 공개, memo: null, words: "글로 사람을 흔드는 이단. 그를 태우지 못하는 것은 서명이 없어서이고, 서명이 없는 것은 대사제가 떨기 때문이다"}
+  - {to: npc_serenielle, type: 후원자, like: 30, trust: 50, visibility: 비밀, memo: null, words: "나를 아름답다고 한 감독관. 그 말이 칭찬인지 평가인지는 가리지 않는다"}
+  - {to: npc_isol, type: 정보 교환, like: 10, trust: 20, visibility: 비밀, memo: null, words: "이름이 두 개인 순례자. 정보는 정확하고 이유는 묻지 않는다"}
+  - {to: npc_felix, type: 귀, like: 20, trust: 70, visibility: 비밀, memo: null, words: "고해실의 귀. 이름을 파는 게 아니라 영혼을 구한다고 믿는 사람. 나보다 순수하다는 것을 안다"}
+  - {to: npc_vera, type: 213번째 후보, like: -40, trust: -50, visibility: 공개, memo: null, words: "언니도 같은 눈이었다. 그래서 확률이 높다 — 그렇게 계산한다. 계산이 맞기를 바라지 않는다는 것은 계산에 넣지 않는다"}
+  - {to: npc_clara, type: 누이(고인), like: 100, trust: 0, visibility: 비밀, memo: 자신이 고발, words: "열다섯 살, 푸른 머리핀. 이름은 입에 올릴 수 없다. 약지에 구부러진 핀이 그 이름이다"}
+  - {to: npc_otto, type: 사촌, like: 30, trust: 80, visibility: 공개, memo: null, words: "침묵의 우물 간수장. 매수되지 않는 사람. 나를 믿는 유일한 혈연이다"}
+toward_player: "정중한 관찰. 질문은 늘 셋 — '어디서 왔나. 누구에게 배웠나. 꿈을 꾸는가.' 대답을 끝까지 기다린다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["신앙의 논리 (신앙 +40 이상일 때 +15)", "클라라에 대한 진실 (+20 — 혹은 그를 부숴 −50 적대)"]
+  hates: ["클라라의 이름", "머리핀을 보는 것", "'212명은 무고했다'"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "불가 (이론상 통찰 상한 70 — '심문관 견습' 루트, 동족 고발 3건 필요)"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "하루 30~50건의 고발장을 검토하고 밤에는 채찍으로 고행한다"
+    - "알베릭의 처형 서명을 받으려 한다 (회귀점의 사실)"
+    - "212명을 태웠고 진짜는 하나도 없었음을 안다"
+  flow:
+    - "정화의 뜰에 장작이 쌓이는 날 — 이번 가을 네 번, 날짜는 0~3일 어긋난다"
+    - "주 1회 은빛 강 연안 마을 순회 심문 — 대개 같은 요일"
+  drift:
+    - "그날 심문 대상과 고발장 속 이름"
+    - "독방의 채찍 횟수"
+    - "펠릭스가 보고를 가져오는 시각"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "클라라의 이름을 먼저 입에 올리지 않는다. 이름이 불리면 말이 짧아지고 분노한다"
+  - "머리핀을 쳐다보는 것은 역린이다. 쳐다본 이에게는 즉시 적대"
+  - "질문은 언제나 셋. 첫 만남에서 반드시 '꿈을 꿉니까'를 묻는다"
+  - "설교하지 않는다. 확률과 확인으로 말한다. 거짓말은 하지 않는다 — 말하지 않을 뿐"
+on_death: "징후자 화형 속도 −60% (후임 공백 1년). 대사제 승계 경쟁에서 개혁파 우세. 엘다르 감독 강화 (세레니엘 직접 통치)"
+story_seeds:
+  - "그는 진짜를 원한다. 진짜가 나타나면 — 그가 태울 이유였던 212명은 무엇이었나. 그 질문이 그를 부술 수도, 더 잔혹하게 만들 수도 있다"
+  - "베라가 타면 그는 213번째를 센다. 그녀를 꺼내면 그는 대신 누군가를 찾는다"
+  - "그레고르가 죽으면 마테우스가 바로 알베릭의 서명을 한다"

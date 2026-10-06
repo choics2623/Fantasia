@@ -1,0 +1,2798 @@
+{
+ "settlements": {
+  "greyford": {
+   "id": "greyford",
+   "name": "회색여울 마을",
+   "node": "greyford_village",
+   "kind": "village",
+   "grid": {
+    "w": 600,
+    "h": 450
+   },
+   "curfew": {
+    "from": "21:00",
+    "to": "04:30",
+    "note": "막사 잠김. 인간이 밖에 있으면 순찰 판정"
+   },
+   "bells": [
+    {
+     "at": "04:30",
+     "name": "첫 종"
+    },
+    {
+     "at": "06:00",
+     "name": "노동 종"
+    },
+    {
+     "at": "12:00",
+     "name": "정오 종"
+    },
+    {
+     "at": "18:30",
+     "name": "귀환 종"
+    },
+    {
+     "at": "20:00",
+     "name": "저녁 기도 종"
+    },
+    {
+     "at": "21:00",
+     "name": "통금 종"
+    }
+   ],
+   "patrols": [
+    "21:00",
+    "23:00",
+    "02:00"
+   ],
+   "locations": [
+    {
+     "id": "gf_keep",
+     "name": "레이번 성채",
+     "xy": [
+      420,
+      60
+     ],
+     "kind": "keep",
+     "access": "owner",
+     "hours": "06:00-23:00 성문 열림",
+     "rooms": [
+      "gf_keep_study",
+      "gf_keep_hall",
+      "gf_keep_servants",
+      "gf_keep_north_tower",
+      "gf_keep_store",
+      "gf_keep_guest"
+     ]
+    },
+    {
+     "id": "gf_keep_study",
+     "name": "남작 서재",
+     "parent": "gf_keep",
+     "access": "owner"
+    },
+    {
+     "id": "gf_keep_hall",
+     "name": "연회실",
+     "parent": "gf_keep",
+     "access": "owner"
+    },
+    {
+     "id": "gf_keep_servants",
+     "name": "하인 숙소",
+     "parent": "gf_keep",
+     "access": "owner"
+    },
+    {
+     "id": "gf_keep_north_tower",
+     "name": "북탑",
+     "parent": "gf_keep",
+     "access": "owner"
+    },
+    {
+     "id": "gf_keep_store",
+     "name": "성채 창고",
+     "parent": "gf_keep",
+     "access": "owner",
+     "hidden": "배수용 철창 → 해자 배수구"
+    },
+    {
+     "id": "gf_keep_guest",
+     "name": "성채 객실",
+     "parent": "gf_keep",
+     "access": "owner"
+    },
+    {
+     "id": "gf_keep_yard",
+     "name": "성채 마당",
+     "parent": "gf_keep",
+     "access": "public",
+     "note": "판결이 열리는 날엔 농노도 모인다"
+    },
+    {
+     "id": "gf_stable",
+     "name": "성채 마구간",
+     "xy": [
+      480,
+      110
+     ],
+     "kind": "work",
+     "access": "staff"
+    },
+    {
+     "id": "gf_tollhouse",
+     "name": "징세소 '셈집'",
+     "xy": [
+      360,
+      150
+     ],
+     "kind": "office",
+     "access": "public",
+     "hours": "08:00-17:00"
+    },
+    {
+     "id": "gf_rooster",
+     "name": "배급 막사 '절름발이 수탉'",
+     "xy": [
+      330,
+      290
+     ],
+     "kind": "canteen",
+     "access": "public",
+     "hours": "05:00-21:00",
+     "rooms": [
+      "gf_rooster_cellar"
+     ]
+    },
+    {
+     "id": "gf_rooster_cellar",
+     "name": "수탉 지하 저장고",
+     "parent": "gf_rooster",
+     "access": "secret",
+     "hidden": "가짜 벽 뒤 은신방(최대 8명), 옛 수로 230m → 버드나무 둑"
+    },
+    {
+     "id": "gf_smithy",
+     "name": "대장간",
+     "xy": [
+      460,
+      250
+     ],
+     "kind": "work",
+     "access": "public",
+     "hours": "06:00-19:00"
+    },
+    {
+     "id": "gf_mill",
+     "name": "물레방아간",
+     "xy": [
+      520,
+      380
+     ],
+     "kind": "work",
+     "access": "public",
+     "hours": "06:00-18:00",
+     "rooms": [
+      "gf_mill_loft"
+     ]
+    },
+    {
+     "id": "gf_mill_loft",
+     "name": "방앗간 다락",
+     "parent": "gf_mill",
+     "access": "secret"
+    },
+    {
+     "id": "gf_chapel",
+     "name": "사슬등불 예배당",
+     "xy": [
+      250,
+      160
+     ],
+     "kind": "chapel",
+     "access": "public",
+     "rooms": [
+      "gf_chapel_ossuary",
+      "gf_chapel_priest"
+     ]
+    },
+    {
+     "id": "gf_chapel_priest",
+     "name": "사제실",
+     "parent": "gf_chapel",
+     "access": "owner"
+    },
+    {
+     "id": "gf_chapel_ossuary",
+     "name": "납골실",
+     "parent": "gf_chapel",
+     "access": "secret",
+     "note": "끊어진 고리의 모임터"
+    },
+    {
+     "id": "gf_whip_square",
+     "name": "채찍 기둥 광장·감독관 초소",
+     "xy": [
+      420,
+      200
+     ],
+     "kind": "square",
+     "access": "public"
+    },
+    {
+     "id": "gf_north_barracks",
+     "name": "북 막사",
+     "xy": [
+      150,
+      200
+     ],
+     "kind": "barracks",
+     "access": "serf",
+     "locked": "21:00-04:30"
+    },
+    {
+     "id": "gf_south_barracks",
+     "name": "남 막사",
+     "xy": [
+      170,
+      300
+     ],
+     "kind": "barracks",
+     "access": "serf",
+     "locked": "21:00-04:30"
+    },
+    {
+     "id": "gf_river_huts",
+     "name": "강변 움막",
+     "xy": [
+      80,
+      380
+     ],
+     "kind": "barracks",
+     "access": "serf"
+    },
+    {
+     "id": "gf_granary",
+     "name": "영주 곡창",
+     "xy": [
+      290,
+      320
+     ],
+     "kind": "store",
+     "access": "locked"
+    },
+    {
+     "id": "gf_elsa_hut",
+     "name": "엘사의 오두막",
+     "xy": [
+      40,
+      420
+     ],
+     "kind": "home",
+     "access": "public"
+    },
+    {
+     "id": "gf_irma_hut",
+     "name": "이르마의 오두막·양 우리",
+     "xy": [
+      90,
+      50
+     ],
+     "kind": "home",
+     "access": "owner"
+    },
+    {
+     "id": "gf_pilgrim_barn",
+     "name": "순례자 헛간",
+     "xy": [
+      220,
+      110
+     ],
+     "kind": "lodging",
+     "access": "public"
+    },
+    {
+     "id": "gf_hagen_shed",
+     "name": "하겐의 나루 헛간",
+     "xy": [
+      570,
+      420
+     ],
+     "kind": "home",
+     "access": "owner"
+    },
+    {
+     "id": "gf_well_square",
+     "name": "쓴물 우물 광장",
+     "xy": [
+      260,
+      200
+     ],
+     "kind": "square",
+     "access": "public"
+    },
+    {
+     "id": "gf_graveyard",
+     "name": "번호 묘지",
+     "xy": [
+      30,
+      20
+     ],
+     "kind": "graveyard",
+     "access": "public"
+    },
+    {
+     "id": "gf_tannery",
+     "name": "도살·무두장",
+     "xy": [
+      480,
+      320
+     ],
+     "kind": "work",
+     "access": "staff",
+     "hours": "06:00-17:00"
+    },
+    {
+     "id": "gf_iron_bridge",
+     "name": "쇠다리 검문소",
+     "xy": [
+      400,
+      430
+     ],
+     "kind": "checkpoint",
+     "access": "public",
+     "note": "18시 교대 때 약 10분 경비 1명"
+    },
+    {
+     "id": "gf_guard_barracks",
+     "name": "경비 막사",
+     "xy": [
+      500,
+      60
+     ],
+     "kind": "barracks",
+     "access": "staff"
+    },
+    {
+     "id": "gf_weaving_shed",
+     "name": "직조 헛간",
+     "xy": [
+      210,
+      360
+     ],
+     "kind": "work",
+     "access": "serf",
+     "hours": "07:00-18:00"
+    },
+    {
+     "id": "gf_kennel",
+     "name": "남작의 사냥개 우리",
+     "xy": [
+      540,
+      150
+     ],
+     "kind": "kennel",
+     "access": "staff"
+    },
+    {
+     "id": "gf_willow_bank",
+     "name": "버드나무 둑",
+     "xy": [
+      200,
+      420
+     ],
+     "kind": "outdoor",
+     "access": "public"
+    }
+   ],
+   "outer": [
+    {
+     "id": "greyford__west_pasture",
+     "name": "서쪽 목초지",
+     "hours": 1.5
+    },
+    {
+     "id": "greyford__north_woods",
+     "name": "북쪽 벌목지",
+     "hours": 3
+    },
+    {
+     "id": "filth_marsh",
+     "name": "오물 습지",
+     "hours": 3.5,
+     "node": "filth_marsh"
+    },
+    {
+     "id": "filth_marsh__dead_willow",
+     "name": "죽은 버드나무 섬",
+     "hours": 5,
+     "node": "filth_marsh"
+    },
+    {
+     "id": "old_stone_ring",
+     "name": "옛 돌 고리",
+     "hours": 3.5,
+     "node": "old_stone_ring"
+    },
+    {
+     "id": "hungry_hill",
+     "name": "굶주린 언덕",
+     "hours": 6,
+     "node": "hungry_hill"
+    },
+    {
+     "id": "hungry_hill__wolf_den",
+     "name": "늑대굴",
+     "hours": 6.5,
+     "node": "hungry_hill"
+    },
+    {
+     "id": "hungry_hill__fang_fire",
+     "name": "송곳니 불",
+     "hours": 7,
+     "node": "hungry_hill"
+    },
+    {
+     "id": "hungry_hill__three_pines",
+     "name": "세 소나무",
+     "hours": 9,
+     "node": "hungry_hill"
+    },
+    {
+     "id": "crow_gate",
+     "name": "까마귀 문",
+     "hours": 12,
+     "node": "crow_gate"
+    },
+    {
+     "id": "dragon_pillar_post",
+     "name": "용주 역참",
+     "hours": 16,
+     "node": "dragon_pillar_post"
+    }
+   ]
+  }
+ },
+ "routines": {
+  "npc_godric_raven": {
+   "home": "gf_keep",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "09:00",
+     "at": "gf_keep",
+     "doing": "잔다"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "12:00",
+     "at": "gf_keep_study",
+     "doing": "빚 문서를 뒤적인다"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "gf_keep_yard",
+     "doing": "마당에서 판결을 내린다",
+     "alt": {
+      "p": 0.5,
+      "at": "greyford__north_woods",
+      "doing": "사냥"
+     }
+    },
+    {
+     "days": "weekday:[4]",
+     "from": "13:00",
+     "to": "15:00",
+     "at": "gf_tollhouse",
+     "doing": "헨릭과 결산"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "gf_keep_hall",
+     "doing": "연회실에서 술"
+    },
+    {
+     "days": "sabbath",
+     "from": "09:00",
+     "to": "19:00",
+     "at": "gf_keep",
+     "doing": "성채에 머문다"
+    }
+   ]
+  },
+  "npc_owen_raven": {
+   "home": "gf_keep_north_tower",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "06:30",
+     "at": "gf_keep_north_tower",
+     "doing": "잔다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "11:00",
+     "at": "gf_guard_barracks",
+     "doing": "경비 훈련"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "gf_whip_square",
+     "doing": "순찰 동행",
+     "outdoor": true,
+     "rain": {
+      "at": "gf_guard_barracks",
+      "doing": "막사에서 지도를 본다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "gf_keep_north_tower",
+     "doing": "북탑 창가에서 하녀 숙소 마당을 본다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배당 뒤에서 기도하는 사라를 본다"
+    }
+   ]
+  },
+  "npc_henrik": {
+   "home": "gf_tollhouse",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "07:00",
+     "at": "gf_tollhouse",
+     "doing": "2층에서 이중 장부를 맞춘다"
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "15:00",
+     "at": "gf_tollhouse",
+     "doing": "징세소 업무"
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "17:00",
+     "at": "gf_well_square",
+     "doing": "마을 순회 — 머릿수 확인",
+     "outdoor": true
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "21:00",
+     "to": "22:00",
+     "at": "gf_rooster",
+     "doing": "수탉 뒷문에서 뇌물을 받는다"
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "22:00",
+     "at": "gf_tollhouse",
+     "doing": "징세소"
+    }
+   ]
+  },
+  "npc_znik": {
+   "home": "gf_whip_square",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "02:30",
+     "to": "04:45",
+     "at": "gf_whip_square",
+     "doing": "초소에서 존다"
+    },
+    {
+     "days": "all",
+     "from": "02:00",
+     "to": "02:30",
+     "at": "gf_north_barracks",
+     "doing": "막사 순회"
+    },
+    {
+     "days": "workday",
+     "from": "04:45",
+     "to": "06:00",
+     "at": "gf_whip_square",
+     "doing": "점호와 처벌",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:30",
+     "at": "greyford__north_woods",
+     "doing": "들판·벌목지 순찰",
+     "alt": {
+      "p": 0.35,
+      "at": "gf_weaving_shed",
+      "doing": "직조 헛간 감시"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "18:30",
+     "to": "20:00",
+     "at": "gf_whip_square",
+     "doing": "저녁 점호와 처벌",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "22:00",
+     "at": "gf_whip_square",
+     "doing": "초소에서 밀고를 받는다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "gf_south_barracks",
+     "doing": "막사 순회"
+    },
+    {
+     "days": "all",
+     "from": "22:30",
+     "to": "02:00",
+     "at": "gf_whip_square",
+     "doing": "초소"
+    },
+    {
+     "days": "sabbath",
+     "from": "06:30",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배 감시"
+    },
+    {
+     "days": "sabbath",
+     "from": "09:00",
+     "to": "20:00",
+     "at": "gf_whip_square",
+     "doing": "초소"
+    }
+   ]
+  },
+  "npc_bram": {
+   "home": "gf_rooster",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "04:30",
+     "at": "gf_rooster",
+     "doing": "뒷방에서 잔다"
+    },
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "11:00",
+     "at": "gf_rooster",
+     "doing": "솥 셋에 불을 지피고 아침 배식",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "14:00",
+     "at": "gf_keep_store",
+     "doing": "성채에서 배급 곡물 수령"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "22:00",
+     "at": "gf_rooster",
+     "doing": "장작",
+     "저녁 배식": null,
+     "묽은 맥주와 소문": null,
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "23:00",
+     "at": "gf_rooster_cellar",
+     "doing": "지하로 내려가 숨긴 손님들에게 죽을 준다"
+    }
+   ]
+  },
+  "npc_bran": {
+   "home": "gf_smithy",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:30",
+     "at": "gf_smithy",
+     "doing": "뒷방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "19:00",
+     "at": "gf_smithy",
+     "doing": "대장간 작업"
+    },
+    {
+     "days": "weekday:[3]",
+     "from": "23:00",
+     "to": "01:00",
+     "at": "gf_smithy",
+     "doing": "슬래그 더미 아래 창날을 숨긴다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "gf_smithy",
+     "doing": "대장간 정리"
+    }
+   ]
+  },
+  "npc_osric": {
+   "home": "gf_chapel_priest",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "04:15",
+     "at": "gf_chapel_priest",
+     "doing": "잔다"
+    },
+    {
+     "days": "all",
+     "from": "04:15",
+     "to": "07:00",
+     "at": "gf_chapel",
+     "doing": "첫 종",
+     "기도": null
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "12:00",
+     "at": "gf_chapel",
+     "doing": "예배당"
+    },
+    {
+     "days": "workday",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "gf_south_barracks",
+     "doing": "병자 방문",
+     "alt": {
+      "p": 0.4,
+      "at": "gf_river_huts",
+      "doing": "움막 병자 방문"
+     }
+    },
+    {
+     "days": "all",
+     "from": "19:30",
+     "to": "21:30",
+     "at": "gf_chapel",
+     "doing": "저녁 기도와 통금 종"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "안식일 예배",
+     "fixed": true
+    },
+    {
+     "days": "sabbath",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "gf_chapel",
+     "doing": "고해"
+    },
+    {
+     "days": "sabbath",
+     "from": "22:00",
+     "to": "23:30",
+     "at": "gf_chapel_ossuary",
+     "doing": "끊어진 고리 모임"
+    }
+   ]
+  },
+  "npc_martha": {
+   "home": "gf_keep_servants",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:30",
+     "at": "gf_keep_servants",
+     "doing": "리즈와 같은 방에서 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "21:00",
+     "at": "gf_keep",
+     "doing": "성채 노예 지휘"
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "21:00",
+     "to": "22:00",
+     "at": "gf_whip_square",
+     "doing": "즈닉에게 보고"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "딸과 함께 예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "09:00",
+     "to": "21:00",
+     "at": "gf_keep",
+     "doing": "성채"
+    }
+   ]
+  },
+  "npc_liz": {
+   "home": "gf_keep_servants",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:30",
+     "at": "gf_keep_servants",
+     "doing": "어머니와 잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "21:00",
+     "at": "gf_keep",
+     "doing": "부엌 잡일"
+    },
+    {
+     "days": "workday",
+     "from": "19:00",
+     "to": "19:30",
+     "at": "gf_rooster",
+     "doing": "죽을 받으러 온다",
+     "alt": {
+      "p": 0.5,
+      "at": "gf_keep",
+      "doing": "부엌"
+     }
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "어머니와 예배"
+    }
+   ]
+  },
+  "npc_hagen": {
+   "home": "gf_hagen_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "03:00",
+     "to": "07:00",
+     "at": "gf_hagen_shed",
+     "doing": "잔다"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "gf_hagen_shed",
+     "doing": "장어 덫과 나룻일",
+     "outdoor": true
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "gf_rooster",
+     "doing": "수탉에서 웃는다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "03:00",
+     "at": "gf_hagen_shed",
+     "doing": "헛간",
+     "alt": {
+      "p": 0.45,
+      "at": "hungry_hill__three_pines",
+      "doing": "세 소나무에 다녀온다"
+     }
+    },
+    {
+     "days": "sabbath",
+     "from": "12:00",
+     "to": "21:00",
+     "at": "gf_rooster",
+     "doing": "수탉에서 도박"
+    }
+   ]
+  },
+  "npc_fayne": {
+   "home": "gf_mill_loft",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "gf_mill_loft",
+     "doing": "방앗간 다락에서 잔다",
+     "alt": {
+      "p": 0.3,
+      "at": "gf_rooster",
+      "doing": "수탉 부엌 구석에서 잔다"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "gf_rooster",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "gf_hagen_shed",
+     "doing": "하겐 심부름",
+     "alt": {
+      "p": 0.5,
+      "at": "gf_well_square",
+      "doing": "마을 곳곳 심부름"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "21:00",
+     "at": "gf_rooster",
+     "doing": "수탉"
+    },
+    {
+     "days": "sabbath",
+     "from": "08:00",
+     "to": "18:00",
+     "at": "gf_well_square",
+     "doing": "우물 광장"
+    }
+   ]
+  },
+  "npc_sigrid": {
+   "home": "hungry_hill__wolf_den",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "hungry_hill__wolf_den",
+     "doing": "무리를 지킨다",
+     "alt": {
+      "p": 0.3,
+      "at": "hungry_hill",
+      "doing": "덫 사냥"
+     }
+    }
+   ]
+  },
+  "npc_elsa": {
+   "home": "gf_elsa_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "04:30",
+     "at": "gf_elsa_hut",
+     "doing": "오두막",
+     "alt": {
+      "p": 0.15,
+      "at": "filth_marsh",
+      "doing": "갈대배 — 잿빛 실 운행"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "filth_marsh",
+     "doing": "습지 가장자리 약초 채집",
+     "outdoor": true
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "17:00",
+     "at": "gf_south_barracks",
+     "doing": "막사 순회 — 병자",
+     "alt": {
+      "p": 0.5,
+      "at": "gf_north_barracks",
+      "doing": "북 막사 병자"
+     }
+    },
+    {
+     "days": "sabbath",
+     "from": "06:00",
+     "to": "21:00",
+     "at": "gf_elsa_hut",
+     "doing": "오두막"
+    }
+   ]
+  },
+  "npc_thomas": {
+   "home": "gf_mill",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:30",
+     "at": "gf_mill",
+     "doing": "잔다"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "gf_mill",
+     "doing": "제분"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배"
+    }
+   ]
+  },
+  "npc_irma": {
+   "home": "gf_irma_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "gf_irma_hut",
+     "doing": "오두막"
+    },
+    {
+     "days": "odd",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "greyford__west_pasture",
+     "doing": "서쪽 목초지 방목",
+     "outdoor": true
+    },
+    {
+     "days": "even",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "hungry_hill",
+     "doing": "굶주린 언덕 남사면 방목",
+     "outdoor": true
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "09:00",
+     "to": "10:00",
+     "at": "gf_graveyard",
+     "doing": "147번 말뚝 앞"
+    }
+   ]
+  },
+  "npc_sara": {
+   "home": "gf_keep_servants",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:30",
+     "at": "gf_keep_servants",
+     "doing": "하녀 숙소"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "21:00",
+     "at": "gf_keep_hall",
+     "doing": "연회실·서재 청소",
+     "alt": {
+      "p": 0.4,
+      "at": "gf_keep_study",
+      "doing": "서재 청소"
+     }
+    },
+    {
+     "days": "weekday:[2,5]",
+     "from": "21:30",
+     "to": "22:30",
+     "at": "gf_chapel_priest",
+     "doing": "오스릭에게 글자 수업"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배"
+    },
+    {
+     "days": "sabbath",
+     "from": "09:00",
+     "to": "11:00",
+     "at": "gf_well_square",
+     "doing": "우물 광장"
+    }
+   ]
+  },
+  "npc_gunnar": {
+   "home": "gf_stable",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "05:00",
+     "at": "gf_stable",
+     "doing": "다락 — 잠을 못 잔다"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "21:00",
+     "at": "gf_stable",
+     "doing": "여물과 말 손질"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "gf_stable",
+     "doing": "다락"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "24:00",
+     "at": "gf_stable",
+     "doing": "마구간 뒤 — 검을 든다"
+    }
+   ]
+  },
+  "npc_johan": {
+   "home": "gf_pilgrim_barn",
+   "presence": [
+    {
+     "from": "312-09-01",
+     "to": "312-09-12"
+    },
+    {
+     "from": "312-10-20",
+     "to": "312-11-10"
+    },
+    {
+     "from": "312-12-20",
+     "to": "312-13-05"
+    }
+   ],
+   "away": {
+    "at": "dragon_pillar_post",
+    "doing": "순례 중"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "gf_pilgrim_barn",
+     "doing": "헛간"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "gf_north_barracks",
+     "doing": "찬송",
+     "막사 순회": null,
+     "alt": {
+      "p": 0.5,
+      "at": "gf_south_barracks",
+      "doing": "남 막사 찬송"
+     }
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배 찬송"
+    }
+   ]
+  },
+  "npc_isol": {
+   "home": "gf_pilgrim_barn",
+   "presence": [
+    {
+     "from": "312-09-18",
+     "to": "313-05-30"
+    }
+   ],
+   "away": {
+    "at": "grey_tower",
+    "doing": "잿빛 탑"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "gf_pilgrim_barn",
+     "doing": "헛간",
+     "alt": {
+      "p": 0.2,
+      "at": "old_stone_ring",
+      "doing": "밤에 사라짐 — 옛 돌 고리"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "gf_south_barracks",
+     "doing": "막사 순회 — 아이들에게 꿈 이야기를 묻는다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배 맨 앞줄"
+    }
+   ]
+  },
+  "npc_kaspar": {
+   "home": "crow_gate",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "crow_gate",
+     "doing": "북문 순시",
+     "탈주자 심문": null
+    }
+   ]
+  },
+  "npc_lea": {
+   "home": "crow_gate",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "crow_gate",
+     "doing": "사령관 보좌"
+    }
+   ]
+  },
+  "npc_volk": {
+   "home": "hungry_hill__fang_fire",
+   "presence": [
+    {
+     "from": "312-09-14",
+     "to": "312-09-30"
+    },
+    {
+     "from": "313-01-10",
+     "to": "313-02-05"
+    }
+   ],
+   "away": {
+    "at": "crow_gate",
+    "doing": "사냥 원정 (회색여울 밖)"
+   },
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "hungry_hill__fang_fire",
+     "doing": "송곳니 불 야영"
+    },
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "20:00",
+     "at": "hungry_hill",
+     "doing": "사냥 — 냄새를 쫓는다",
+     "alt": {
+      "p": 0.25,
+      "at": "gf_keep_guest",
+      "doing": "성채 객실에서 남작과 거래"
+     }
+    }
+   ]
+  },
+  "npc_dietmar": {
+   "home": "filth_marsh__dead_willow",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "00:00",
+     "to": "24:00",
+     "at": "filth_marsh__dead_willow",
+     "doing": "망루와 약탈 계획",
+     "alt": {
+      "p": 0.3,
+      "at": "filth_marsh",
+      "doing": "습지 순찰"
+     }
+    }
+   ]
+  },
+  "npc_gerda": {
+   "home": "gf_river_huts",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "gf_river_huts",
+     "doing": "움막 12호 — 기침"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "gf_weaving_shed",
+     "doing": "직조",
+     "alt": {
+      "p": 0.3,
+      "at": "gf_river_huts",
+      "doing": "기침이 심해 움막에 누워 있다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:30",
+     "to": "19:30",
+     "at": "gf_rooster",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "gf_chapel",
+     "doing": "예배"
+    }
+   ]
+  }
+ },
+ "events": [
+  {
+   "id": "ev_kaspar_stone_ring",
+   "npcs": [
+    "npc_kaspar"
+   ],
+   "repeat": "monthly",
+   "day": 15,
+   "from": "17:10",
+   "to": "17:20",
+   "at": "old_stone_ring",
+   "doing": "혼자 옛 돌 고리를 지난다 — 돌 틈 전갈",
+   "travel_from": "gf_keep_hall",
+   "return_to": "crow_gate",
+   "mounted": true
+  },
+  {
+   "id": "ev_kaspar_supply_meeting",
+   "npcs": [
+    "npc_kaspar"
+   ],
+   "repeat": "monthly",
+   "day": 15,
+   "from": "10:00",
+   "to": "16:00",
+   "at": "gf_keep_hall",
+   "doing": "성채 보급 회의",
+   "travel_from": "crow_gate",
+   "mounted": true
+  },
+  {
+   "id": "ev_lea_supply_meeting",
+   "npcs": [
+    "npc_lea"
+   ],
+   "repeat": "monthly",
+   "day": 15,
+   "from": "10:00",
+   "to": "16:00",
+   "at": "gf_keep_hall",
+   "doing": "사령관을 보좌해 보급 회의",
+   "travel_from": "crow_gate",
+   "return_to": "crow_gate",
+   "mounted": true
+  },
+  {
+   "id": "ev_lea_post",
+   "npcs": [
+    "npc_lea"
+   ],
+   "repeat": "monthly",
+   "day": 25,
+   "from": "12:00",
+   "to": "14:00",
+   "at": "dragon_pillar_post",
+   "doing": "우편함에 보고서를 넣는다",
+   "travel_from": "crow_gate",
+   "return_to": "crow_gate",
+   "mounted": true
+  },
+  {
+   "id": "ev_owen_crow_gate",
+   "npcs": [
+    "npc_owen_raven"
+   ],
+   "repeat": "monthly",
+   "day": 1,
+   "from": "14:00",
+   "to": "16:00",
+   "at": "crow_gate",
+   "doing": "까마귀 문 왕래",
+   "travel_from": "gf_keep",
+   "return_to": "gf_keep",
+   "mounted": true
+  },
+  {
+   "id": "ev_severo_envoy",
+   "date": "312-09-03",
+   "npcs": [
+    "npc_godric_raven"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "gf_keep_hall",
+   "doing": "세렌 중개인의 사자와 매각 계약"
+  },
+  {
+   "id": "ev_sara_overhears",
+   "date": "312-09-03",
+   "npcs": [
+    "npc_sara"
+   ],
+   "from": "10:00",
+   "to": "13:00",
+   "at": "gf_keep_hall",
+   "doing": "응접실 밖에서 엿듣는다"
+  },
+  {
+   "id": "ev_hagen_knot",
+   "date": "312-09-05",
+   "npcs": [
+    "npc_hagen"
+   ],
+   "from": "22:00",
+   "to": "03:00",
+   "at": "hungry_hill__three_pines",
+   "doing": "그루터기에 탈주자 위치 매듭을 남긴다"
+  },
+  {
+   "id": "ev_henrik_ledger",
+   "date": "312-09-10",
+   "npcs": [
+    "npc_henrik"
+   ],
+   "from": "08:00",
+   "to": "10:00",
+   "at": "gf_iron_bridge",
+   "doing": "결산 장부를 바알카르로 보낸다"
+  },
+  {
+   "id": "ev_hagen_sells",
+   "date": "312-09-22",
+   "npcs": [
+    "npc_hagen",
+    "npc_volk"
+   ],
+   "from": "22:00",
+   "to": "02:00",
+   "at": "hungry_hill__fang_fire",
+   "doing": "탈주자 셋을 넘긴다",
+   "condition": "하겐 생존·미발각"
+  },
+  {
+   "id": "ev_volk_search",
+   "date": "312-09-25",
+   "npcs": [
+    "npc_volk"
+   ],
+   "from": "04:00",
+   "to": "20:00",
+   "at": "hungry_hill",
+   "doing": "굶주린 언덕 대수색"
+  },
+  {
+   "id": "ev_first_sale_convoy",
+   "date": "312-10-09",
+   "npcs": [
+    "npc_znik"
+   ],
+   "from": "06:00",
+   "to": "12:00",
+   "at": "gf_iron_bridge",
+   "doing": "1차 매각 호송 출발"
+  },
+  {
+   "id": "ev_grain_search",
+   "date": "312-10-20",
+   "npcs": [
+    "npc_znik",
+    "npc_henrik"
+   ],
+   "from": "08:00",
+   "to": "14:00",
+   "at": "gf_mill",
+   "doing": "곡물 수색"
+  },
+  {
+   "id": "ev_second_sale_convoy",
+   "date": "312-12-03",
+   "npcs": [
+    "npc_znik",
+    "npc_godric_raven"
+   ],
+   "from": "06:00",
+   "to": "11:00",
+   "at": "gf_iron_bridge",
+   "doing": "2차 매각 호송 출발"
+  },
+  {
+   "id": "ev_martha_smells",
+   "date": "312-12-10",
+   "npcs": [
+    "npc_martha"
+   ],
+   "from": "19:00",
+   "to": "19:40",
+   "at": "gf_rooster",
+   "doing": "수탉 지하의 냄새를 알아챈다"
+  }
+ ],
+ "map": {
+  "nodes": [
+   {
+    "id": "baalkar",
+    "name": "바알카르",
+    "region": 1,
+    "x": 400,
+    "y": 360,
+    "kind": "수도",
+    "type": "city",
+    "desc": "용좌봉을 향해 계단식으로 오르는 석조 도시. 7개 층계구역, 꼭대기일수록 용인 귀족. 인간 빈민가 '재받이'는 가장 낮은 강변",
+    "major": true
+   },
+   {
+    "id": "dragon_throne_peak",
+    "name": "용좌봉",
+    "region": 1,
+    "x": 388,
+    "y": 346,
+    "kind": "용의 둥지",
+    "type": "wild",
+    "desc": "용황의 둥지. 증기와 썩는 냄새. 시간의 상처 때문에 둥지 근처 물건이 가끔 '늙거나 젊어진다'"
+   },
+   {
+    "id": "crown_farms",
+    "name": "이삭 우리 국유농장",
+    "region": 1,
+    "x": 362,
+    "y": 322,
+    "kind": "농장",
+    "type": "mine",
+    "desc": "곡창 7동 바닥 아래 비어 있는 공간 — 수확기 곡물을 빼돌리는 하스크 가의 비밀 창고"
+   },
+   {
+    "id": "red_spire",
+    "name": "붉은 첨탑",
+    "region": 1,
+    "x": 452,
+    "y": 352,
+    "kind": "성채",
+    "type": "fort",
+    "desc": "지하 감옥 맨 아래칸에 대붕괴를 목격한 늙은 용인 기록관 오르펜(330세)이 혀를 잘린 채 갇혀 있다"
+   },
+   {
+    "id": "reed_ferry",
+    "name": "갈대 나루",
+    "region": 1,
+    "x": 366,
+    "y": 414,
+    "kind": "나루",
+    "type": "port",
+    "desc": "갈대 창고 바닥 밑 물 위 공간 — 잿빛 실 탈주자가 노예선 바닥에 숨어 타는 지점"
+   },
+   {
+    "id": "charcoal_camp",
+    "name": "검은 굴뚝 숯막",
+    "region": 1,
+    "x": 384,
+    "y": 286,
+    "kind": "은신처",
+    "type": "secret",
+    "desc": "구릉 숲 깊은 곳의 숯가마 7기. 연기 때문에 바르그의 코가 잘 듣지 않는다"
+   },
+   {
+    "id": "dragon_pillar_post",
+    "name": "용주 역참",
+    "region": 2,
+    "x": 421,
+    "y": 262,
+    "kind": "역참",
+    "type": "fort",
+    "desc": "우편함 — 레아가 멜리산드 전령에게 매월 보고서를 남긴다(용언). 헨릭이 빼돌린 곡물을 사는 상인 도르반(용인)이 묵는다"
+   },
+   {
+    "id": "greyford_village",
+    "name": "회색여울 마을",
+    "region": 2,
+    "x": 390,
+    "y": 194,
+    "kind": "마을",
+    "type": "village",
+    "desc": "인간 400 + 성채·관리 약 70",
+    "tx": 430,
+    "ty": 205,
+    "label": "left",
+    "major": true
+   },
+   {
+    "id": "raven_keep",
+    "name": "레이번 성채",
+    "region": 2,
+    "x": 432,
+    "y": 171,
+    "kind": "성채",
+    "type": "fort",
+    "desc": "창고 바닥의 배수용 철창 → 성채 밖 해자 배수구로 이어짐 (지식:레이번성채_구조, 근력 판정). 서재 상자 속 세베로 칼레스와의 매각 계약서 (용언과 나가 상인어 병기)",
+    "tx": 431,
+    "ty": 203,
+    "label": "right"
+   },
+   {
+    "id": "crow_gate",
+    "name": "까마귀 문",
+    "region": 2,
+    "x": 436,
+    "y": 160,
+    "kind": "요새",
+    "type": "fort",
+    "desc": "북문 옆 '물빼기 굴'(폭 0.8m) — 카스파르가 알면서 막지 않는 통로 (지식:까마귀문_물빼기)"
+   },
+   {
+    "id": "hungry_hill",
+    "name": "굶주린 언덕",
+    "region": 2,
+    "x": 474,
+    "y": 194,
+    "kind": "은신처",
+    "type": "secret",
+    "desc": "관목·바위 구릉, 동굴 11개. 남사면은 이르마의 방목지",
+    "tx": 441,
+    "ty": 195,
+    "label": "right"
+   },
+   {
+    "id": "filth_marsh",
+    "name": "오물 습지",
+    "region": 2,
+    "x": 406,
+    "y": 232,
+    "kind": "습지",
+    "type": "wild",
+    "desc": "바닥이 단단한 '숨은 둑길'(지식:오물습지_둑길이 있으면 이동시간 ×0.6)",
+    "tx": 423,
+    "ty": 210,
+    "label": "left"
+   },
+   {
+    "id": "old_stone_ring",
+    "name": "옛 돌 고리",
+    "region": 2,
+    "x": 458,
+    "y": 232,
+    "kind": "유적",
+    "type": "ruin",
+    "desc": "3번 돌 틈 = 카스파르와 엘사의 돌 틈 전갈 교환처. 중앙 돌 아래 빈 공간에 고대 진명어 석판 조각(룬석, 바람 근원). 재의 날 밤 시간 잔상 출현",
+    "tx": 436,
+    "ty": 211,
+    "label": "right"
+   },
+   {
+    "id": "ember_gate",
+    "name": "잿문",
+    "region": 3,
+    "x": 560,
+    "y": 338,
+    "kind": "광산 도시",
+    "type": "city",
+    "desc": "술집 '숯불' 뒷마당 물탱크 — 광부등 세포가 쪽지 대신 매듭 끈을 담가 둔다"
+   },
+   {
+    "id": "ember_mines",
+    "name": "잿불 본갱",
+    "region": 3,
+    "x": 594,
+    "y": 360,
+    "kind": "광산",
+    "type": "mine",
+    "desc": "하층 9번 수평갱 막다른 곳의 '다라의 손바닥 벽' — 손자국 사이에 진명 한 글자(대지 근원)가 새겨져 있다",
+    "tx": 590,
+    "ty": 330,
+    "label": "right",
+    "major": true
+   },
+   {
+    "id": "red_road",
+    "name": "붉은 길",
+    "region": 3,
+    "x": 574,
+    "y": 352,
+    "kind": "기념지",
+    "type": "ruin",
+    "desc": "기둥 7,341번에 다라의 이름 대신 '붉은 손' 그림. 그 밑에 재의 날마다 누군가 조약돌을 놓는다"
+   },
+   {
+    "id": "silver_cradle",
+    "name": "은비늘 요람",
+    "region": 3,
+    "x": 594,
+    "y": 292,
+    "kind": "비밀 실험장",
+    "type": "secret",
+    "desc": "다음 이식 대기자 중 피험자 열넷(인간 여성, 26세)이 탈출을 계획 중. 기록실엔 '드래곤 하트' 제조 기록과, 멜리산드가 표시한 문장: \"그릇은 하나다. 그것은 돌아온다.\" — 이식 후보 선별 기준에 '잔향 징후' 보고 목록이 쓰인다",
+    "tx": 598,
+    "ty": 322,
+    "label": "right"
+   },
+   {
+    "id": "lumen",
+    "name": "루멘",
+    "region": 4,
+    "x": 330,
+    "y": 470,
+    "kind": "성도",
+    "type": "city",
+    "desc": "등불섬 북쪽 둑 아래 물에 잠긴 옛 계단(아스테리아 시대 인간 건축)",
+    "major": true
+   },
+   {
+    "id": "pilgrim_shelter",
+    "name": "세 번째 고리 쉼터",
+    "region": 4,
+    "x": 372,
+    "y": 428,
+    "kind": "순례 쉼터",
+    "type": "temple",
+    "desc": "바알카르–루멘 순례길의 세 번째 쉼터. 돌집 6동"
+   },
+   {
+    "id": "marens_well",
+    "name": "성 마렌의 우물",
+    "region": 4,
+    "x": 312,
+    "y": 456,
+    "kind": "성소",
+    "type": "temple",
+    "desc": "우물 벽 수면 아래 2m에 고대 진명어 각문(물 근원). 마렌은 여기서 진명을 '들었다'"
+   },
+   {
+    "id": "silver_leaf_gate",
+    "name": "은잎문",
+    "region": 5,
+    "x": 236,
+    "y": 318,
+    "kind": "관문",
+    "type": "fort",
+    "desc": "정원 길이 숲으로 들어가는 은목 아치. 외부인은 여기서 멈춘다"
+   },
+   {
+    "id": "eternal_garden",
+    "name": "영원 정원",
+    "region": 5,
+    "x": 170,
+    "y": 300,
+    "kind": "엘다르 도시",
+    "type": "city",
+    "desc": "41단 테라스 맨 아래 수로 배수구는 정원 경계 밖으로 이어진다(시간 경계를 넘는 순간 의지 판정)",
+    "major": true
+   },
+   {
+    "id": "soul_garden",
+    "name": "영혼 정원",
+    "region": 5,
+    "x": 152,
+    "y": 282,
+    "kind": "비밀 실험장",
+    "type": "secret",
+    "desc": "지금까지 '성공' 0건 — 보통 인간에게는 옮길 잔향이 없기 때문이다. 아에린은 이를 '방법의 실패'로 여기고 진짜 그릇 하나를 찾는다. 피험자 중 11명은 기억을 잃은 채 살아 있다. 망각의 길 입구"
+   },
+   {
+    "id": "lost_child_stone",
+    "name": "아이 잃은 돌",
+    "region": 6,
+    "x": 146,
+    "y": 196,
+    "kind": "경계석",
+    "type": "temple",
+    "desc": "돌 아래 구멍 — 여기서 이름을 부르면 바꿔치기 아이가 대답한다 (그 아이가 살아 있다면)"
+   },
+   {
+    "id": "thorn_court",
+    "name": "가시 궁정",
+    "region": 6,
+    "x": 110,
+    "y": 140,
+    "kind": "요정 궁정",
+    "type": "temple",
+    "desc": "왕좌 뒤 가시 속에 신살 때의 웃음이 봉인된 '웃음의 상자' — 페이가 신을 비웃은 이유",
+    "major": true
+   },
+   {
+    "id": "red_pens",
+    "name": "붉은 우리",
+    "region": 7,
+    "x": 190,
+    "y": 505,
+    "kind": "혈목장",
+    "type": "mine",
+    "desc": "채혈 헛간 기록판 — 탈출자는 '병사'로 기록된다. 세실이 기록을 고친다"
+   },
+   {
+    "id": "first_thirst_castle",
+    "name": "첫 갈증 성",
+    "region": 7,
+    "x": 160,
+    "y": 530,
+    "kind": "성채",
+    "type": "fort",
+    "desc": "녹테른 300, 크릭 600, 인간 하인 400",
+    "major": true
+   },
+   {
+    "id": "rose_manor",
+    "name": "그림자장미 저택",
+    "region": 7,
+    "x": 208,
+    "y": 556,
+    "kind": "저택",
+    "type": "fort",
+    "desc": "세실의 서재에 빼돌린 인간 명단 — 지금까지 311명. 각 이름 옆에 그 사람이 '무엇을 기억하는지' 적혀 있다"
+   },
+   {
+    "id": "morva_mouth",
+    "name": "늪 어귀",
+    "region": 8,
+    "x": 292,
+    "y": 580,
+    "kind": "늪 입구",
+    "type": "site",
+    "desc": "갈대배 바닥 표식 — 뿌리마을로 가는 물길 지도(매듭 문자, 지식:뿌리마을_표식)"
+   },
+   {
+    "id": "root_village",
+    "name": "뿌리마을",
+    "region": 8,
+    "x": 252,
+    "y": 604,
+    "kind": "숨은 마을",
+    "type": "village",
+    "desc": "회의 섬 아래 '이름 바구니' — 첫 이름 날에 지은 성 412개가 매듭 끈으로 보관"
+   },
+   {
+    "id": "seven_hags_circle",
+    "name": "일곱 노파의 둥지",
+    "region": 8,
+    "x": 270,
+    "y": 625,
+    "kind": "마녀 회합지",
+    "type": "temple",
+    "desc": "늪 한가운데 버섯 섬. 일곱 오두막이 원을 이룬다",
+    "major": true
+   },
+   {
+    "id": "seren_estuary",
+    "name": "갈림목",
+    "region": 9,
+    "x": 418,
+    "y": 598,
+    "kind": "하구 도시",
+    "type": "city",
+    "desc": "은빛 강이 바다로 갈라지는 하구 도시. 노예선 종점"
+   },
+   {
+    "id": "seren",
+    "name": "세렌",
+    "region": 9,
+    "x": 480,
+    "y": 640,
+    "kind": "항구 도시",
+    "type": "city",
+    "desc": "운하 아래 옛 인간 도시의 석조 기초 — 아스테리아 이전 인간 항구",
+    "major": true
+   },
+   {
+    "id": "coral_quarry",
+    "name": "산호 채석장",
+    "region": 9,
+    "x": 512,
+    "y": 668,
+    "kind": "노역장",
+    "type": "mine",
+    "desc": "해안 절벽의 산호석 채석장. 가장 빚이 많은 계약민이 간다"
+   },
+   {
+    "id": "arkas_harbor",
+    "name": "아르카스 부두",
+    "region": 10,
+    "x": 556,
+    "y": 704,
+    "kind": "항구",
+    "type": "port",
+    "desc": "화물 창고의 빈 물통 — 피험자 탈출에 쓰인 적이 있다(1회 성공, AS 297)"
+   },
+   {
+    "id": "grey_tower",
+    "name": "잿빛 탑",
+    "region": 10,
+    "x": 570,
+    "y": 715,
+    "kind": "학회",
+    "type": "site",
+    "desc": "grey_tower",
+    "major": true
+   },
+   {
+    "id": "last_lantern",
+    "name": "마지막 등불",
+    "region": 11,
+    "x": 676,
+    "y": 438,
+    "kind": "전초 마을",
+    "type": "village",
+    "desc": "할그림의 집 아래 깨진 맹세 석판 — 그가 깬 맹세는 \"깊은 문 아래의 것을 말하지 않는다\""
+   },
+   {
+    "id": "asteria_ruins",
+    "name": "아스테리아 폐허",
+    "region": 11,
+    "x": 620,
+    "y": 470,
+    "kind": "폐허",
+    "type": "ruin",
+    "desc": "집터 곳곳에 인간의 문패(성과 이름) — 인간이 이름을 가졌던 9년",
+    "major": true
+   },
+   {
+    "id": "time_rift",
+    "name": "시간의 상처",
+    "region": 11,
+    "x": 640,
+    "y": 494,
+    "kind": "이상 지대",
+    "type": "ruin",
+    "desc": "상처 가장자리에서 용황의 비늘 조각이 발견된다 — 바르스카르가 입은 상처의 '다른 쪽'"
+   },
+   {
+    "id": "hammer_gate",
+    "name": "망치문",
+    "region": 12,
+    "x": 718,
+    "y": 312,
+    "kind": "관문 요새",
+    "type": "fort",
+    "desc": "통행 각인 장부 — 멜리산드의 대리인이 매달 잿불석을 들여온다"
+   },
+   {
+    "id": "deephammer_hall",
+    "name": "깊은망치 왕궁",
+    "region": 12,
+    "x": 770,
+    "y": 300,
+    "kind": "지하 왕도",
+    "type": "city",
+    "desc": "지하 9층의 도시. 기둥 하나하나가 조상의 무덤",
+    "major": true
+   },
+   {
+    "id": "deep_gate",
+    "name": "깊은 문",
+    "region": 12,
+    "x": 786,
+    "y": 318,
+    "kind": "봉인 유적",
+    "type": "ruin",
+    "desc": "AS 289 봉인된 최하층 문. 지금 탐사대가 다시 열고 있다"
+   },
+   {
+    "id": "contract_camp",
+    "name": "굴뚝 숙영지",
+    "region": 12,
+    "x": 730,
+    "y": 334,
+    "kind": "계약 광부촌",
+    "type": "village",
+    "desc": "베른트의 집 지하 — '두 번째 서명' 모임. 계약 룬 읽기 연습 석판"
+   },
+   {
+    "id": "weeping_pass",
+    "name": "울음 고개",
+    "region": 13,
+    "x": 434,
+    "y": 116,
+    "kind": "고개",
+    "type": "wild",
+    "desc": "대피 동굴 3곳 중 1곳에 얼음 실의 비상 식량"
+   },
+   {
+    "id": "bone_pens",
+    "name": "뼈울타리",
+    "region": 13,
+    "x": 396,
+    "y": 84,
+    "kind": "노예 수용지",
+    "type": "mine",
+    "desc": "스벤은 탈주자를 팔지만, 매년 해빙월에 딱 한 무리는 일부러 놓아준다"
+   },
+   {
+    "id": "hrimnir_hall",
+    "name": "얼음턱 전당",
+    "region": 13,
+    "x": 430,
+    "y": 70,
+    "kind": "왕궁",
+    "type": "fort",
+    "desc": "곡물 창고 바닥에 마지막 보리 300섬 — 왕의 '남침 군량'",
+    "major": true
+   },
+   {
+    "id": "windspire",
+    "name": "바람첨탑",
+    "region": 14,
+    "x": 770,
+    "y": 110,
+    "kind": "첨탑 도시",
+    "type": "city",
+    "desc": "가장 높은 기둥(900m)과 주변 기둥 군",
+    "major": true
+   },
+   {
+    "id": "sky_market",
+    "name": "줄내림 장터",
+    "region": 14,
+    "x": 752,
+    "y": 150,
+    "kind": "교역지",
+    "type": "wild",
+    "desc": "바구니에 몰래 타면 기둥 위로 오를 수 있다 (손재주·은신)"
+   },
+   {
+    "id": "wind_well",
+    "name": "바람 우물",
+    "region": 15,
+    "x": 836,
+    "y": 420,
+    "kind": "오아시스",
+    "type": "wild",
+    "desc": "7번 우물 아래 동굴 — 이삭 줍기 짐꾼들의 은신처"
+   },
+   {
+    "id": "khan_ordu",
+    "name": "칸의 오르두",
+    "region": 15,
+    "x": 890,
+    "y": 470,
+    "kind": "이동 수도",
+    "type": "city",
+    "desc": "칸의 천막 안 지도에 그롬마르와 용제국 동부를 모두 정복하는 계획 (클락 7)",
+    "major": true
+   },
+   {
+    "id": "horsebone_ford",
+    "name": "말뼈 여울",
+    "region": 15,
+    "x": 836,
+    "y": 552,
+    "kind": "여울",
+    "type": "wild",
+    "desc": "하르칸–그롬 분쟁지 강 여울. 강바닥에 말뼈가 깔렸다"
+   },
+   {
+    "id": "blood_arena",
+    "name": "피의 원형장",
+    "region": 16,
+    "x": 730,
+    "y": 615,
+    "kind": "원형장 도시",
+    "type": "city",
+    "desc": "대진표 돌판에 '군나르 — 99승 — 미룸'이 아직 새겨져 있다",
+    "major": true
+   },
+   {
+    "id": "war_camp",
+    "name": "해골이빨 전쟁 숙영지",
+    "region": 16,
+    "x": 712,
+    "y": 560,
+    "kind": "군영",
+    "type": "fort",
+    "desc": "소모품 우리의 인간들은 다음 원정(말뼈 여울)의 '방패'"
+   },
+   {
+    "id": "grommar_port",
+    "name": "그롬마르 항",
+    "region": 16,
+    "x": 684,
+    "y": 690,
+    "kind": "항구",
+    "type": "port",
+    "desc": "쇠 시장 뒷골목 — 아르카스 탈출 피험자(AS 297)가 투사가 되기 전 숨었던 곳"
+   }
+  ],
+  "edges": [
+   {
+    "from": "baalkar",
+    "to": "dragon_pillar_post",
+    "hours": 28.0,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 3,
+    "cond": "통행증(인간). 용의 대로 남단 검문"
+   },
+   {
+    "from": "dragon_pillar_post",
+    "to": "greyford_village",
+    "hours": 16.0,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 3,
+    "cond": "통행증(인간). 쇠다리 검문소"
+   },
+   {
+    "from": "greyford_village",
+    "to": "crow_gate",
+    "hours": 12.0,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 3,
+    "cond": "통행증 + 국경군 문서"
+   },
+   {
+    "from": "greyford_village",
+    "to": "raven_keep",
+    "hours": 0.5,
+    "road": "road",
+    "roadName": "마을길",
+    "danger": 1,
+    "cond": "성채 출입은 소속 하인·호출자만"
+   },
+   {
+    "from": "greyford_village",
+    "to": "filth_marsh",
+    "hours": 3.5,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 3,
+    "cond": "없음(낮). 밤엔 통금 위반"
+   },
+   {
+    "from": "greyford_village",
+    "to": "hungry_hill",
+    "hours": 6.0,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 3,
+    "cond": "양치기 허가 표찰 또는 은신"
+   },
+   {
+    "from": "greyford_village",
+    "to": "old_stone_ring",
+    "hours": 3.5,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 4,
+    "cond": "금지 구역. 발각 시 태형"
+   },
+   {
+    "from": "hungry_hill",
+    "to": "crow_gate",
+    "hours": 25.0,
+    "road": "secret",
+    "roadName": "산길",
+    "danger": 3,
+    "cond": "밀수꾼 길. 국경군 순찰 회피 필요"
+   },
+   {
+    "from": "filth_marsh",
+    "to": "charcoal_camp",
+    "hours": 37.0,
+    "road": "secret",
+    "roadName": "비밀 통로",
+    "danger": 4,
+    "cond": "잿빛 실. 암호·잿빛 표 필요"
+   },
+   {
+    "from": "crow_gate",
+    "to": "weeping_pass",
+    "hours": 31.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 4,
+    "cond": "서리 길. 서리월~굶주림월+재의 날 폐쇄"
+   },
+   {
+    "from": "weeping_pass",
+    "to": "hrimnir_hall",
+    "hours": 32.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 5,
+    "cond": "서리 길. 겨울 폐쇄, 요툰 영역"
+   },
+   {
+    "from": "weeping_pass",
+    "to": "bone_pens",
+    "hours": 35.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 4,
+    "cond": "겨울 폐쇄"
+   },
+   {
+    "from": "bone_pens",
+    "to": "hrimnir_hall",
+    "hours": 13.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 4,
+    "cond": "요툰 씨족 영역"
+   },
+   {
+    "from": "hungry_hill",
+    "to": "weeping_pass",
+    "hours": 56.0,
+    "road": "secret",
+    "roadName": "산길",
+    "danger": 4,
+    "cond": "탈주자 샛길. 겨울 폐쇄, 안내인 필요"
+   },
+   {
+    "from": "baalkar",
+    "to": "dragon_throne_peak",
+    "hours": 13.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 3,
+    "cond": "용족 허가. 인간은 공물 운반자만"
+   },
+   {
+    "from": "baalkar",
+    "to": "crown_farms",
+    "hours": 15.0,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 2,
+    "cond": "통행증(인간)"
+   },
+   {
+    "from": "crown_farms",
+    "to": "charcoal_camp",
+    "hours": 18.0,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 3,
+    "cond": "숲 감시인 순찰"
+   },
+   {
+    "from": "charcoal_camp",
+    "to": "reed_ferry",
+    "hours": 56.0,
+    "road": "secret",
+    "roadName": "비밀 통로",
+    "danger": 4,
+    "cond": "잿빛 실. 암호 필요"
+   },
+   {
+    "from": "baalkar",
+    "to": "reed_ferry",
+    "hours": 13.0,
+    "road": "river",
+    "roadName": "강(하류)",
+    "danger": 2,
+    "cond": "은빛 강 수운. 인간은 노예선 화물로만"
+   },
+   {
+    "from": "reed_ferry",
+    "to": "lumen",
+    "hours": 14.0,
+    "road": "river",
+    "roadName": "강(하류)",
+    "danger": 2,
+    "cond": "은빛 강 수운. 순례 허가 시 갑판 승선"
+   },
+   {
+    "from": "baalkar",
+    "to": "red_spire",
+    "hours": 14.0,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 3,
+    "cond": "잿불 길. 통행증(인간)"
+   },
+   {
+    "from": "red_spire",
+    "to": "ember_gate",
+    "hours": 30.0,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 3,
+    "cond": "잿불 길. 광산 호송대 동행"
+   },
+   {
+    "from": "ember_gate",
+    "to": "ember_mines",
+    "hours": 8.5,
+    "road": "imperial",
+    "roadName": "대로",
+    "danger": 3,
+    "cond": "광산 구역 표찰"
+   },
+   {
+    "from": "ember_mines",
+    "to": "hammer_gate",
+    "hours": 44.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 3,
+    "cond": "잿불 길 동단. 두르강 통행 각인"
+   },
+   {
+    "from": "hammer_gate",
+    "to": "deephammer_hall",
+    "hours": 28.0,
+    "road": "road",
+    "roadName": "지하 갱도",
+    "danger": 2,
+    "cond": "계약서 또는 두르강 손님 증표"
+   },
+   {
+    "from": "ember_gate",
+    "to": "red_road",
+    "hours": 7.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 3,
+    "cond": "없음(낮). 재의 날 집회 금지"
+   },
+   {
+    "from": "ember_mines",
+    "to": "silver_cradle",
+    "hours": 6.0,
+    "road": "secret",
+    "roadName": "지하 갱도",
+    "danger": 5,
+    "cond": "멜리산드 직속 각인. 외부인 즉결"
+   },
+   {
+    "from": "ember_mines",
+    "to": "last_lantern",
+    "hours": 58.0,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 4,
+    "cond": "황무지 가장자리 길. 재오염 위험"
+   },
+   {
+    "from": "last_lantern",
+    "to": "war_camp",
+    "hours": 53.0,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 4,
+    "cond": "황무지 가장자리 길. 그롬 정찰대"
+   },
+   {
+    "from": "war_camp",
+    "to": "blood_arena",
+    "hours": 20.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 3,
+    "cond": "그롬 영역. 인간은 투사 표식 필요"
+   },
+   {
+    "from": "last_lantern",
+    "to": "asteria_ruins",
+    "hours": 56.0,
+    "road": "trail",
+    "roadName": "황무지",
+    "danger": 5,
+    "cond": "안내인 권장. 시간 잔상"
+   },
+   {
+    "from": "asteria_ruins",
+    "to": "time_rift",
+    "hours": 27.0,
+    "road": "trail",
+    "roadName": "황무지",
+    "danger": 5,
+    "cond": "재의 날에 경로 변동"
+   },
+   {
+    "from": "last_lantern",
+    "to": "time_rift",
+    "hours": 58.0,
+    "road": "trail",
+    "roadName": "황무지",
+    "danger": 5,
+    "cond": "잿빛 탑 봉쇄선"
+   },
+   {
+    "from": "baalkar",
+    "to": "silver_leaf_gate",
+    "hours": 58.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 2,
+    "cond": "정원 길. 엘다르 허가 문서"
+   },
+   {
+    "from": "silver_leaf_gate",
+    "to": "eternal_garden",
+    "hours": 46.0,
+    "road": "trail",
+    "roadName": "숲길",
+    "danger": 2,
+    "cond": "엘다르 동행 필수"
+   },
+   {
+    "from": "eternal_garden",
+    "to": "soul_garden",
+    "hours": 17.0,
+    "road": "trail",
+    "roadName": "숲길",
+    "danger": 4,
+    "cond": "존속파 각인. 출입 기록 없음"
+   },
+   {
+    "from": "eternal_garden",
+    "to": "lost_child_stone",
+    "hours": 72.0,
+    "road": "trail",
+    "roadName": "숲길",
+    "danger": 4,
+    "cond": "엘다르 옛길. 안개 낀 날 폐쇄"
+   },
+   {
+    "from": "lost_child_stone",
+    "to": "thorn_court",
+    "hours": 45.0,
+    "road": "trail",
+    "roadName": "숲길",
+    "danger": 5,
+    "cond": "초대 필요. 이름 말하기 금지"
+   },
+   {
+    "from": "baalkar",
+    "to": "pilgrim_shelter",
+    "hours": 25.0,
+    "road": "road",
+    "roadName": "순례길",
+    "danger": 2,
+    "cond": "순례 허가 표찰"
+   },
+   {
+    "from": "pilgrim_shelter",
+    "to": "lumen",
+    "hours": 20.0,
+    "road": "road",
+    "roadName": "순례길",
+    "danger": 2,
+    "cond": "순례 허가 표찰"
+   },
+   {
+    "from": "pilgrim_shelter",
+    "to": "reed_ferry",
+    "hours": 6.5,
+    "road": "trail",
+    "roadName": "오솔길",
+    "danger": 2,
+    "cond": "없음"
+   },
+   {
+    "from": "lumen",
+    "to": "marens_well",
+    "hours": 8.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 1,
+    "cond": "안식일 개방"
+   },
+   {
+    "from": "lumen",
+    "to": "seren_estuary",
+    "hours": 32.0,
+    "road": "river",
+    "roadName": "강(하류)",
+    "danger": 2,
+    "cond": "은빛 강 수운. 노예선 정기편"
+   },
+   {
+    "from": "seren_estuary",
+    "to": "seren",
+    "hours": 16.0,
+    "road": "river",
+    "roadName": "강(하류)",
+    "danger": 1,
+    "cond": "세렌 입항 등록"
+   },
+   {
+    "from": "lumen",
+    "to": "morva_mouth",
+    "hours": 50.0,
+    "road": "secret",
+    "roadName": "비밀 통로",
+    "danger": 4,
+    "cond": "늪길(잿빛 실). 암호·안내인"
+   },
+   {
+    "from": "morva_mouth",
+    "to": "root_village",
+    "hours": 44.0,
+    "road": "trail",
+    "roadName": "늪길",
+    "danger": 4,
+    "cond": "뿌리마을 표식 지식 필요"
+   },
+   {
+    "from": "root_village",
+    "to": "seven_hags_circle",
+    "hours": 26.0,
+    "road": "trail",
+    "roadName": "늪길",
+    "danger": 4,
+    "cond": "노파의 초대"
+   },
+   {
+    "from": "root_village",
+    "to": "rose_manor",
+    "hours": 28.0,
+    "road": "secret",
+    "roadName": "비밀 통로",
+    "danger": 4,
+    "cond": "늪길 녹테른 경계. 세실의 표식"
+   },
+   {
+    "from": "rose_manor",
+    "to": "red_pens",
+    "hours": 19.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 4,
+    "cond": "녹테른 영지. 밤 통행 금지(인간)"
+   },
+   {
+    "from": "red_pens",
+    "to": "first_thirst_castle",
+    "hours": 13.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 5,
+    "cond": "녹테른 영지"
+   },
+   {
+    "from": "red_pens",
+    "to": "lumen",
+    "hours": 49.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 3,
+    "cond": "공물 길. 긴밤월 공물 호송만 공식 통행"
+   },
+   {
+    "from": "seven_hags_circle",
+    "to": "seren_estuary",
+    "hours": 70.0,
+    "road": "secret",
+    "roadName": "늪 수로",
+    "danger": 4,
+    "cond": "뱀장어 길. 밀수꾼 안내"
+   },
+   {
+    "from": "seren",
+    "to": "coral_quarry",
+    "hours": 15.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 2,
+    "cond": "계약민 작업 표찰"
+   },
+   {
+    "from": "seren",
+    "to": "arkas_harbor",
+    "hours": 14.0,
+    "road": "sea",
+    "roadName": "바닷길",
+    "danger": 2,
+    "cond": "소금 바닷길. 나가 상선 승선권"
+   },
+   {
+    "from": "arkas_harbor",
+    "to": "grey_tower",
+    "hours": 6.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 3,
+    "cond": "탑 출입 허가. 인간은 피험자·서기 표식"
+   },
+   {
+    "from": "arkas_harbor",
+    "to": "grommar_port",
+    "hours": 19.0,
+    "road": "sea",
+    "roadName": "바닷길",
+    "danger": 3,
+    "cond": "소금 바닷길. 폭풍철(굶주림월) 운항 중지"
+   },
+   {
+    "from": "seren",
+    "to": "grommar_port",
+    "hours": 30.0,
+    "road": "sea",
+    "roadName": "바닷길",
+    "danger": 3,
+    "cond": "소금 바닷길 직항. 폭풍철 운항 중지"
+   },
+   {
+    "from": "grommar_port",
+    "to": "blood_arena",
+    "hours": 30.0,
+    "road": "road",
+    "roadName": "길",
+    "danger": 3,
+    "cond": "그롬 영역"
+   },
+   {
+    "from": "hammer_gate",
+    "to": "contract_camp",
+    "hours": 8.5,
+    "road": "road",
+    "roadName": "길",
+    "danger": 2,
+    "cond": "계약 광부 등록"
+   },
+   {
+    "from": "deephammer_hall",
+    "to": "deep_gate",
+    "hours": 13.0,
+    "road": "road",
+    "roadName": "지하 갱도",
+    "danger": 5,
+    "cond": "봉인. 왕의 각인 필요"
+   },
+   {
+    "from": "deephammer_hall",
+    "to": "wind_well",
+    "hours": 39.0,
+    "road": "road",
+    "roadName": "초원길",
+    "danger": 3,
+    "cond": "초원 길. 카즈둠 동문 통과 각인"
+   },
+   {
+    "from": "wind_well",
+    "to": "khan_ordu",
+    "hours": 21.0,
+    "road": "road",
+    "roadName": "초원길",
+    "danger": 3,
+    "cond": "하르칸 바람 표식(통행 화살)"
+   },
+   {
+    "from": "khan_ordu",
+    "to": "horsebone_ford",
+    "hours": 28.0,
+    "road": "road",
+    "roadName": "초원길",
+    "danger": 3,
+    "cond": "초원 길. 우기(푸른월) 범람"
+   },
+   {
+    "from": "horsebone_ford",
+    "to": "war_camp",
+    "hours": 36.0,
+    "road": "road",
+    "roadName": "초원길",
+    "danger": 4,
+    "cond": "초원 길. 하르칸-그롬 분쟁지"
+   },
+   {
+    "from": "windspire",
+    "to": "sky_market",
+    "hours": 31.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 3,
+    "cond": "아에리가 줄을 내려야 오를 수 있음"
+   },
+   {
+    "from": "sky_market",
+    "to": "deephammer_hall",
+    "hours": 106.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 3,
+    "cond": "독수리 계단. 서리월~해빙월 폐쇄"
+   },
+   {
+    "from": "sky_market",
+    "to": "hrimnir_hall",
+    "hours": 232.0,
+    "road": "trail",
+    "roadName": "산길",
+    "danger": 5,
+    "cond": "북릉길. 겨울 폐쇄, 거의 쓰이지 않음"
+   },
+   {
+    "from": "first_thirst_castle",
+    "to": "soul_garden",
+    "hours": 167.0,
+    "road": "secret",
+    "roadName": "숲길",
+    "danger": 4,
+    "cond": "망각의 길. 엘다르·녹테른 옛길, 공식 폐쇄"
+   }
+  ]
+ }
+}
