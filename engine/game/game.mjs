@@ -210,6 +210,7 @@ function rawOptions(g) {
     }
     if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
     for (const it of mine(g)) {
+      if (it.eat || it.use || it.coin) continue;                 // 먹을 것·약은 보이거나 팔 물건이 아니다
       o.push({ id: `show:${it.id}`, kind: "talk", label: `${it.name}을(를) 꺼내 보인다`, risk: "물건을 알아볼 수 있다" });
       if (profOf(g, n).role === "fence" || (it.value || 0) > 0) o.push({ id: `sell:${it.id}`, kind: "talk", label: `${it.name}을(를) 팔겠다고 한다` });
     }
@@ -747,6 +748,8 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
     if (c.kind === "learned") {
       // 플레이어가 그 NPC에게 말해 준 사실 — 플레이어가 아는 사실이어야 한다
       if (!c.fact || !knowsFact(g, c.fact)) { rejected.push({ ...c, why: ["플레이어가 모르는 사실 ID"] }); continue; }
+      const card = cardOf(g, npc);
+      if ((card.knows || []).includes(c.fact) || (card.hides || []).some((h) => h.fact === c.fact) || g.S.knows.get(c.fact)?.has(npc)) { rejected.push({ ...c, why: ["그 NPC는 이미 아는 사실 — 들은 게 아니다"] }); continue; }
       mem.fact = c.fact;
     }
     accepted.push(mem);

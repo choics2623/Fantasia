@@ -55,7 +55,7 @@ function outcomeLines(g, res) {
   const L = [`주인공의 행동: ${res.text || res.label}`];
   if (res.skill) L.push(`판정: ${res.skill} — ${res.tier}`);
   const who = g.content.cards[(res.convoEnded || g.convo)?.npc]?.name;
-  if (res.reveal) L.push(`결과: ${who || "상대"}이(가) 이것을 털어놓는다 → ${g.content.facts[res.reveal]?.text}`);
+  if (res.reveal) L.push(`결과: ${who || "상대"}이(가) 주인공에게 이 사실을 말해 준다 (말하는 쪽은 ${who || "상대"}, 주인공은 처음 듣는다) → ${g.content.facts[res.reveal]?.text}`);
   else if (res.cover) L.push(`결과: ${who}은(는) 숨긴다. 얼버무림: ${res.cover}`);
   else if (res.tier === "실패" || res.tier === "대실패") L.push("결과: 상대는 넘어오지 않는다. 숨긴 것의 힌트도 주지 않는다.");
   if (res.rumor) L.push(`${who}이(가) 소문 하나를 흘린다: ${res.rumor}`);
@@ -81,7 +81,7 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false } =
     scene, card,
     transcript.length ? `[최근 대화]\n${transcript.slice(-8).map((t) => `${t.who === "player" ? "셋째" : "서술"}: ${t.text}`).join("\n")}` : "",
     `[이번 박자 — 엔진이 정한 결과]\n${outcomeLines(g, res).join("\n")}`,
-    phrased.length ? `[다음 선택지로 쓸 행동 — 각각 이 장면에 맞는 한 문장(50자 이내)으로. 행동을 바꾸지 말 것]\n${JSON.stringify(phrased)}` : "[다음 선택지] 없음",
+    phrased.length ? `[다음 선택지로 쓸 행동]\n각 행동을 **지금 이 장면의 몸짓이나 주인공의 말**로 다시 써라 (50자 이내). 주어진 문장을 베끼지 말 것. 행동의 뜻은 바꾸지 말 것.\n예) "브람에게 이런저런 말을 붙인다" → "그릇을 받으며 '비가 사흘째네요' 하고 말을 흘린다" / "하겐에 대해 묻는다" → "구석에서 웃는 사내 쪽으로 턱을 든다 — '저 사람은 누구예요?'"\n${JSON.stringify(phrased)}` : "[다음 선택지] 없음",
     `출력:\n<서술>\n박자들\n</서술>\n<선택지>\n{"choices": [{"id": "주어진 id 그대로", "text": "선택지 문장"}]${mem}}\n</선택지>`,
   ].filter(Boolean).join("\n\n");
 }
@@ -96,20 +96,36 @@ export function parseTurn(text) {
   return { beats, choices: json.choices || [], memories: json.memories || [], bad: !nar.trim() || json._bad };
 }
 
+// 누설 검사의 대상: **이 장면 사람들이 숨기거나 아는 사실에 걸린 이름** 중 플레이어가 아직 모르는 것.
+// (예: 브람이 숨긴 사실의 '에길'.) 사람 이름 전체로 검사하면 별명이 흔한 낱말('국자'·'하나'·'노을')이라 헛경보가 난다.
+function leakNames(g) {
+  const set = new Set();
+  const people = [...new Set([...(view(g).people.map((p) => p.id)), g.convo?.npc].filter(Boolean))];
+  for (const n of people) {
+    const c = g.content.cards[n] || {};
+    for (const f of [...(c.knows || []), ...(c.hides || []).map((h) => h.fact)]) {
+      if (g.P.knows.has(f)) continue;
+      for (const nm of g.content.facts[f]?.names || []) if (nm.length > 1) set.add(nm);
+    }
+  }
+  return [...set];
+}
 // 이름 누설·확률 누설 검사. 쓸 수 없는 선택지 문장은 엔진의 기본 문장으로 바꾼다
-export function validateTurn(g, parsed, opts, { res, free } = {}) {
+export function validateTurn(g, parsed, opts, { res, free, prompt = "" } = {}) {
   const problems = [];
   const allowed = knownNames(g);
   if (res?.reveal) for (const n of g.content.facts[res.reveal]?.names || []) allowed.add(n);
   if (free) for (const nm of Object.keys(g.content.names)) if (free.includes(nm)) allowed.add(nm);
-  const NAMES = Object.keys(g.content.names).filter((n) => n.length > 1);
+  // 누설 검사는 '비밀이 걸린 이름'(사실 자료의 names)과 이 고장 사람 이름만 본다 — 다른 지역 사람 이름이 흔한 낱말('웃음')이라 생기는 헛경보를 막는다
+  const NAMES = leakNames(g);
   const leak = (s) => NAMES.filter((n) => s.includes(n) && !allowed.has(n) && ![...allowed].some((a) => a.includes(n)));
   const beats = parsed.beats.map((b) => (b.length > 320 ? b.slice(0, 318) + "…" : b));
   for (const b of beats) { const l = leak(b); if (l.length) problems.push(`서술에 아직 모르는 이름: ${l.join(", ")}`); }
   if (/확률|퍼센트|%|호감도|신뢰도/.test(beats.join(""))) problems.push("서술이 수치를 언급");
   const byId = new Map(opts.map((o) => [o.id, o]));
+  const norm = (id) => String(id || "").replace(/[\s_]/g, "");   // LLM이 'ask:요즘_마을_사정'처럼 공백을 바꿔 써도 같은 행동
   const choices = opts.map((o) => {
-    const c = parsed.choices.find((x) => x.id === o.id);
+    const c = parsed.choices.find((x) => norm(x.id) === norm(o.id));
     let text = o.label, phrased = false;
     if (c && typeof c.text === "string" && c.text.trim() && PHRASED(o)) {
       const l = leak(c.text);
@@ -119,7 +135,8 @@ export function validateTurn(g, parsed, opts, { res, free } = {}) {
     }
     return { ...o, text, phrased };
   });
-  for (const c of parsed.choices) if (!byId.has(c.id)) problems.push(`목록에 없는 행동: ${c.id}`);
+  const known = new Set(opts.map((o) => norm(o.id)));
+  for (const c of parsed.choices) if (!known.has(norm(c.id))) problems.push(`목록에 없는 행동: ${c.id}`);
   const ok = beats.length > 0 && !problems.some((p) => p.startsWith("서술"));
   return { ok, beats, choices, problems };
 }

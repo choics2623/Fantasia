@@ -80,7 +80,7 @@ export function createSession(content, provider, { run = null, onSave = null, re
         mock: () => mockTurn(g, res, opts, { memories }),
       });
       const parsed = parseTurn(text);
-      const v = validateTurn(g, parsed, opts, { res, free });
+      const v = validateTurn(g, parsed, opts, { res, free, prompt });
       lastProblems = v.problems;
       if (v.ok && !parsed.bad) return { ...v, memories: parsed.memories };
     }
