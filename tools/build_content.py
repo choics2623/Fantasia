@@ -31,12 +31,34 @@ def check_routines(routines):
     return bad
 
 
+def gen_people(settlements, routines):
+    import subprocess
+    kits = {k["id"]: k for k in load("content/base/kits/*.yaml")}
+    kits["human_serf"] = kits.get("kit_human_serf")
+    loc_s = {l["id"]: sid for sid, st in settlements.items() for l in st.get("locations") or []}
+    counts = {}
+    for n, r in routines.items():
+        sid = loc_s.get((r or {}).get("home"))
+        if sid: counts[sid] = counts.get(sid, 0) + 1
+    try:
+        out = subprocess.run(["node", os.path.join(ROOT, "tools/gen_people.mjs")], input=json.dumps({"settlements": settlements, "kits": kits, "counts": counts}, ensure_ascii=False), capture_output=True, text=True, check=True).stdout
+        g = json.loads(out)
+    except Exception as e:
+        print("즉석 인물 생성 실패 (node 필요):", e); g = {"cards": {}, "routines": {}, "public": {}}
+    json.dump(g, open(os.path.join(OUT, "generated_people.json"), "w", encoding="utf-8"), ensure_ascii=False)
+    print(f"즉석 인물 {len(g['cards'])}명 (사람이 적은 고장 {len(set(c['region'] for c in g['cards'].values()))}곳)")
+    return g
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     settlements = {s["id"]: s for s in load("content/base/settlements/*.yaml")}
     routines = {}
     for r in load("content/base/routines/*.yaml"):
         routines.update(r or {})
+    # 사람이 적은 고장에 즉석 인물 (engine/gen) — 결정적이라 회귀해도 같은 사람들
+    generated = gen_people(settlements, routines)
+    routines.update(generated["routines"])
     bad = check_routines(routines)
     if bad:
         print("\n".join(bad)); raise SystemExit(1)
@@ -119,6 +141,9 @@ def main():
     extra_cards = {}
     for f in load("content/base/npcs/extra_*.yaml"):
         extra_cards.update((f or {}).get("cards") or {})
+    gp = os.path.join(OUT, "generated_people.json")
+    if os.path.exists(gp):
+        gen = json.load(open(gp, encoding="utf-8")); extra_cards.update(gen["cards"]); public.update(gen["public"])
     domains = {"sites": {}, "stewards": {}, "facilities": {}}
     for f in load("content/base/domains/*.yaml"):
         for k in domains: domains[k].update((f or {}).get(k) or {})

@@ -1239,7 +1239,8 @@ function storyText(g, st, needName = false) {
   if (g.run.loop >= 2 && st.return_ink) out += "\n\n" + fill(g, st.return_ink);
   return out;
 }
-const atPlace = (g, at) => !at || [].concat(at).some((x) => g.at === x || g.W.loc.get(g.at)?.parent === x);
+// at: 장소 id, 장소 목록, 또는 "@고장" (그 고장 어디든)
+const atPlace = (g, at) => !at || [].concat(at).some((x) => (x.startsWith("@") ? g.P.settlement === x.slice(1) : g.at === x || g.W.loc.get(g.at)?.parent === x));
 const parseDT = (x) => { const [d, hm = "00:00"] = String(x).split(" "); const { y, m, d: dd } = parseDate(d); return toMinutes(y, m, dd) + parseClock(hm); };
 // 대본 장면의 조건: 목표 행동 문법 + 플레이어 쪽 (pknows 사실 · been 장소 · loop >= n · rel_trust npc >= n · trace 흔적)
 function storyWhen(g, conds, t = g.t) {

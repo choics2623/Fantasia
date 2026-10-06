@@ -4,7 +4,7 @@
 
 ## 지금 해 볼 수 있는 것 — 회색여울 한 판
 ```bash
-python3 tools/build_content.py          # 콘텐츠 묶음 (콘텐츠를 고친 뒤에도)
+python3 tools/build_content.py          # 콘텐츠 묶음 (콘텐츠를 고친 뒤에도 — node가 있어야 즉석 인물이 생긴다)
 node prototypes/greyford/server.mjs     # 내 PC의 Claude Code 로그인(구독)으로 LLM을 부른다
 ```
 PC는 `http://localhost:5174`, 폰은 서버 창에 나오는 `…?key=…` 주소 (같은 와이파이). 자세한 것은 [prototypes/greyford/README.md](prototypes/greyford/README.md).

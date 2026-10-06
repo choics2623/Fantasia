@@ -48,4 +48,14 @@ const b = G.boot(C, { ...G.regressRun(a), opening: false });
 G.act(b, { id: "routine_day" });
 const two = G.view(b).twoDays;
 check("두 겹의 날에 같음/달라짐 표지", two?.marks?.length >= 1 && /^[=≠+−]/.test(two.marks[0]), JSON.stringify(two?.marks));
+
+// 회색여울 밖: 처음 닿는 장면 · 즉석 인물
+{
+  let ok = null;
+  for (let seed = 1; seed < 20 && !ok; seed++) { const x = G.boot(C, { ...G.newRun({ seed, opening: false }), lethal: true }); G.act(x, { id: "travel:dragon_pillar_post" }); if (G.view(x).story) ok = G.view(x).story.id; }
+  check("용주 역참에 처음 닿으면 — 그곳의 장면", ok === "arrive_dragon_pillar", ok);
+  const gen = Object.values(C.cards).filter((c) => c.generated);
+  check("사람이 적은 고장마다 즉석 인물 (결정적)", gen.length >= 50 && new Set(gen.map((c) => c.region)).size >= 8 && C.bundle.routines[gen[0].id], `${gen.length}명`);
+  check("즉석 인물은 이름 대신 겉모습으로", String(C.game.public[gen[0].id]).startsWith("?"));
+}
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

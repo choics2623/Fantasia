@@ -32073,6 +32073,3958 @@
      "doing": "말 곁에서 초원 노래를 낮게 부른다"
     }
    ]
+  },
+  "c_arkas_harbor_0": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "ar_pier",
+     "doing": "의회당 회기와 장부 점검"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "은행·상가 창구를 본다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "ar_pier",
+     "doing": "사절 만찬"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "08:00",
+     "at": "ar_pier",
+     "doing": "수조에서 잔다"
+    }
+   ]
+  },
+  "c_arkas_harbor_1": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "마대와 상자를 나른다 — 장부는 우두머리가 쥔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "하역장 뒤 창고방"
+    }
+   ]
+  },
+  "c_arkas_harbor_2": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "ar_pier",
+     "doing": "번표 점호와 사다리 내리기",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "19:00",
+     "at": "ar_pier",
+     "doing": "산호석 쪼개기·승강기 싣기"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "숙영지에서 잔다"
+    }
+   ]
+  },
+  "c_arkas_harbor_3": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "마대와 상자를 나른다 — 장부는 우두머리가 쥔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "하역장 뒤 창고방"
+    }
+   ]
+  },
+  "c_arkas_harbor_4": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "ar_pier",
+     "doing": "소금밭 긁기 — 눈이 소금물에 쓰리다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "ar_pier",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "ar_pier",
+     "doing": "소금 결정을 마대에 담는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_arkas_harbor_5": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "마대와 상자를 나른다 — 장부는 우두머리가 쥔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "하역장 뒤 창고방"
+    }
+   ]
+  },
+  "c_arkas_harbor_6": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "마대와 상자를 나른다 — 장부는 우두머리가 쥔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "하역장 뒤 창고방"
+    }
+   ]
+  },
+  "c_arkas_harbor_7": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "ar_pier",
+     "doing": "숙소 점호"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "계약민 노동을 감독한다 — 번호로 부른다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "24:00",
+     "at": "ar_pier",
+     "doing": "당일 숙식비 장부를 정리한다"
+    }
+   ]
+  },
+  "c_arkas_harbor_8": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "ar_pier",
+     "doing": "하역표를 받는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "ar_pier",
+     "doing": "노예선·상선 하역 — 사슬과 마대"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "ar_pier",
+     "doing": "정오 생선죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "오후 하역과 창고 정리"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "ar_pier",
+     "doing": "숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_arkas_harbor_9": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "ar_pier",
+     "doing": "계약서 필사 — 숫자만 합법"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "ar_pier",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "ar_pier",
+     "doing": "등록소 심부름과 대조"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "06:00",
+     "at": "ar_pier",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_arkas_harbor_10": {
+   "home": "ar_pier",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "ar_pier",
+     "doing": "하역표를 받는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "ar_pier",
+     "doing": "노예선·상선 하역 — 사슬과 마대"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "ar_pier",
+     "doing": "정오 생선죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "ar_pier",
+     "doing": "오후 하역과 창고 정리"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "ar_pier",
+     "doing": "숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "ar_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_0": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "ast_well",
+     "doing": "물 저장고에서 물을 나른다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "ast_stopped_square",
+     "doing": "죽 솥 곁 심부름"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ast_well",
+     "doing": "판잣집 골목에서 논다 — 해 지기 전 호각이 불면 제일 먼저 뛴다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_1": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "ast_well",
+     "doing": "판잣집 문턱에서 해를 쬔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_2": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "ast_well",
+     "doing": "가판을 펴고 유물을 감정한다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "ast_well",
+     "doing": "장사 — 값은 흥정이다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "ast_well",
+     "doing": "가판 밑 마른 구멍에서 장부 매듭을 맞춘다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_3": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ast_well",
+     "doing": "사냥꾼 곁에서 짐을 진다 — 몫은 십분의 일"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ast_well",
+     "doing": "물 한 통을 몫으로 받으러 줄을 선다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "판잣집 골목에서 잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_4": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "ast_stopped_square",
+     "doing": "방벽 말뚝선에 선다 — 마물과 잔상의 경계를 본다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "22:00",
+     "at": "ast_well",
+     "doing": "해 지기 전 호각에 사냥꾼을 들인다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ast_stopped_square",
+     "doing": "보초막에서 선 채로 쉰다"
+    }
+   ]
+  },
+  "c_asteria_ruins_5": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "ast_well",
+     "doing": "가판을 펴고 유물을 감정한다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "ast_well",
+     "doing": "장사 — 값은 흥정이다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "ast_well",
+     "doing": "가판 밑 마른 구멍에서 장부 매듭을 맞춘다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_6": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ast_well",
+     "doing": "사냥꾼 곁에서 짐을 진다 — 몫은 십분의 일"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ast_stopped_square",
+     "doing": "물 한 통을 몫으로 받으러 줄을 선다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "판잣집 골목에서 잔다"
+    }
+   ]
+  },
+  "c_asteria_ruins_7": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "ast_well",
+     "doing": "방벽 말뚝선에 선다 — 마물과 잔상의 경계를 본다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "22:00",
+     "at": "ast_well",
+     "doing": "해 지기 전 호각에 사냥꾼을 들인다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ast_stopped_square",
+     "doing": "보초막에서 선 채로 쉰다"
+    }
+   ]
+  },
+  "c_asteria_ruins_8": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "ast_stopped_square",
+     "doing": "방벽 말뚝선에 선다 — 마물과 잔상의 경계를 본다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "22:00",
+     "at": "ast_well",
+     "doing": "해 지기 전 호각에 사냥꾼을 들인다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "06:00",
+     "at": "ast_stopped_square",
+     "doing": "보초막에서 선 채로 쉰다"
+    }
+   ]
+  },
+  "c_asteria_ruins_9": {
+   "home": "ast_end_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ast_stopped_square",
+     "doing": "사냥꾼 곁에서 짐을 진다 — 몫은 십분의 일"
+    },
+    {
+     "days": "all",
+     "from": "17:00",
+     "to": "21:00",
+     "at": "ast_stopped_square",
+     "doing": "물 한 통을 몫으로 받으러 줄을 선다"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "06:00",
+     "at": "ast_well",
+     "doing": "판잣집 골목에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_0": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "계약서 필사 — 숫자만 합법"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "등록소 심부름과 대조"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "06:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_1": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "의회당 회기와 장부 점검"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "cq_overseer_hut",
+     "doing": "은행·상가 창구를 본다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "cq_overseer_hut",
+     "doing": "사절 만찬"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "08:00",
+     "at": "cq_overseer_hut",
+     "doing": "수조에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_2": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "cq_overseer_hut",
+     "doing": "하역표를 받는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "노예선·상선 하역 — 사슬과 마대"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "cq_overseer_hut",
+     "doing": "오후 하역과 창고 정리"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_3": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "계약서 필사 — 숫자만 합법"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "등록소 심부름과 대조"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "06:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_4": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "cq_overseer_hut",
+     "doing": "하역표를 받는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "노예선·상선 하역 — 사슬과 마대"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "cq_overseer_hut",
+     "doing": "오후 하역과 창고 정리"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_5": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "선체 목공 — 용골과 판자"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "갑판 보수와 도장"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_6": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "선체 목공 — 용골과 판자"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "갑판 보수와 도장"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_7": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "cq_overseer_hut",
+     "doing": "번표 점호와 사다리 내리기",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "산호석 쪼개기·승강기 싣기"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙영지에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_8": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "cq_overseer_hut",
+     "doing": "번표 점호와 사다리 내리기",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "산호석 쪼개기·승강기 싣기"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙영지에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_9": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "소금밭 긁기 — 눈이 소금물에 쓰리다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "소금 결정을 마대에 담는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_coral_quarry_10": {
+   "home": "cq_dorm",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "cq_overseer_hut",
+     "doing": "선체 목공 — 용골과 판자"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "cq_overseer_hut",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "cq_overseer_hut",
+     "doing": "갑판 보수와 도장"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "cq_overseer_hut",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_dragon_pillar_post_0": {
+   "home": "dp_dragonkin_quarters",
+   "blocks": [
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "dp_well",
+     "doing": "문서 분류와 필사"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "22:00",
+     "at": "dp_well",
+     "doing": "사본"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:30",
+     "at": "dp_well",
+     "doing": "서기실 구석에서 잔다"
+    }
+   ]
+  },
+  "c_dragon_pillar_post_1": {
+   "home": "dp_crick_quarters",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "19:00",
+     "at": "dp_well",
+     "doing": "말 먹이와 편자 갈이"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:30",
+     "at": "dp_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_dragon_pillar_post_2": {
+   "home": "dp_crick_quarters",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "09:00",
+     "at": "dp_well",
+     "doing": "수용 칸에서 죽 한 사발"
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "12:00",
+     "at": "dp_well",
+     "doing": "심문",
+     "alt": {
+      "p": 0.5,
+      "at": "dp_well",
+      "doing": "칸에서 순서를 기다린다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "22:00",
+     "at": "dp_well",
+     "doing": "수용 칸"
+    }
+   ]
+  },
+  "c_dragon_pillar_post_3": {
+   "home": "dp_merchant_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "06:00",
+     "at": "dp_well",
+     "doing": "점호와 작업 할당",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "dp_store",
+     "doing": "곡창과 성벽 사이를 짐 지고 오간다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:30",
+     "at": "dp_well",
+     "doing": "뒷문 배식 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:30",
+     "at": "dp_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_ember_gate_0": {
+   "home": "eg_overseer_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:00",
+     "at": "eg_slave_market",
+     "doing": "갱조 점호 — 번호를 대고 입갱",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "05:30",
+     "at": "eg_slave_market",
+     "doing": "채굴 — 갱 안엔 낮이 없다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "eg_ration",
+     "doing": "점호와 배급",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "16:30",
+     "at": "eg_slave_market",
+     "doing": "굴에서 잔다"
+    }
+   ]
+  },
+  "c_ember_gate_1": {
+   "home": "eg_overseer_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "eg_market",
+     "doing": "점호"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "eg_slave_market",
+     "doing": "노천 계단을 곡괭이로 깎는다",
+     "outdoor": true,
+     "rain": {
+      "at": "eg_slave_market",
+      "doing": "잿비를 피해 얕은 갱으로 들어간다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "eg_tavern",
+     "doing": "배급"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "eg_market",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_ember_gate_2": {
+   "home": "eg_guard_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "eg_market",
+     "doing": "갱조 점호 — 번호를 대고 입갱",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "eg_slave_market",
+     "doing": "채굴 — 할당량 하루 30수레"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "eg_tavern",
+     "doing": "점호와 배급 — 죽 두 그릇과 검은 빵 반 덩이",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "eg_market",
+     "doing": "굴에서 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "eg_slave_market",
+     "doing": "예배 — 안식일엔 입갱이 반으로 준다"
+    }
+   ]
+  },
+  "c_ember_gate_3": {
+   "home": "eg_overseer_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "eg_slave_market",
+     "doing": "갱조 점호 — 번호를 대고 입갱",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "eg_market",
+     "doing": "채굴 — 할당량 하루 30수레"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "eg_tavern",
+     "doing": "점호와 배급 — 죽 두 그릇과 검은 빵 반 덩이",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "eg_slave_market",
+     "doing": "굴에서 잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:00",
+     "at": "eg_market",
+     "doing": "예배 — 안식일엔 입갱이 반으로 준다"
+    }
+   ]
+  },
+  "c_ember_gate_4": {
+   "home": "eg_guard_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "eg_market",
+     "doing": "점호"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "eg_market",
+     "doing": "노천 계단을 곡괭이로 깎는다",
+     "outdoor": true,
+     "rain": {
+      "at": "eg_market",
+      "doing": "잿비를 피해 얕은 갱으로 들어간다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "eg_ration",
+     "doing": "배급"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "eg_slave_market",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_ember_gate_5": {
+   "home": "eg_overseer_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "eg_slave_market",
+     "doing": "점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "eg_slave_market",
+     "doing": "수레로 광석을 계량소에 나른다"
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "eg_ration",
+     "doing": "배급"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "eg_market",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_ember_gate_6": {
+   "home": "eg_guard_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:00",
+     "at": "eg_market",
+     "doing": "점호"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:30",
+     "at": "eg_slave_market",
+     "doing": "노천 계단을 곡괭이로 깎는다",
+     "outdoor": true,
+     "rain": {
+      "at": "eg_slave_market",
+      "doing": "잿비를 피해 얕은 갱으로 들어간다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:30",
+     "at": "eg_ration",
+     "doing": "배급"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "eg_slave_market",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_ember_gate_7": {
+   "home": "eg_overseer_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "17:30",
+     "to": "18:00",
+     "at": "eg_market",
+     "doing": "갱조 점호 — 번호를 대고 입갱",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "18:00",
+     "to": "05:30",
+     "at": "eg_slave_market",
+     "doing": "채굴 — 갱 안엔 낮이 없다"
+    },
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "eg_ration",
+     "doing": "점호와 배급",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "07:00",
+     "to": "16:30",
+     "at": "eg_slave_market",
+     "doing": "굴에서 잔다"
+    }
+   ]
+  },
+  "c_marens_well_0": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "mw_well",
+     "doing": "점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "mw_well",
+     "doing": "장작 나르기·재 수거",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mw_well",
+     "doing": "크릭 병영"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "mw_well",
+     "doing": "병영 구석"
+    }
+   ]
+  },
+  "c_marens_well_1": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_well",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "mw_well",
+     "doing": "낭독문을 '그림'으로 베낀다 — 글자 모양을 눈으로 따라 그린다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "10:40",
+     "at": "mw_well",
+     "doing": "3시경 기도"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "18:00",
+     "at": "mw_well",
+     "doing": "필사"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_well",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "mw_well",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_marens_well_2": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_altar",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "18:30",
+     "at": "mw_well",
+     "doing": "직조·성표 주머니 바느질"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "mw_altar",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "mw_altar",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_marens_well_3": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_altar",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "mw_well",
+     "doing": "밀랍 달이기·심지 매듭"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "mw_altar",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "mw_well",
+     "doing": "양초 틀 작업"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "mw_altar",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "mw_altar",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_marens_well_4": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_altar",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "19:00",
+     "at": "mw_well",
+     "doing": "성표와 순례 지팡이를 늘어놓는다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "mw_altar",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "mw_altar",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_marens_well_5": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_well",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "mw_well",
+     "doing": "낭독문 암송 — 구절을 소리로만 외운다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "10:40",
+     "at": "mw_well",
+     "doing": "3시경 기도"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "15:00",
+     "at": "mw_well",
+     "doing": "고해 실습·규율"
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "18:00",
+     "at": "mw_well",
+     "doing": "농원 노역",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_well",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "mw_well",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "기숙사"
+    }
+   ]
+  },
+  "c_marens_well_6": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_altar",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "mw_well",
+     "doing": "성표 고리를 두들겨 잇는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "mw_altar",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "mw_well",
+     "doing": "풀무질·성표 각인"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "mw_altar",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "mw_altar",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_marens_well_7": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "mw_well",
+     "doing": "낙수 줍기",
+     "outdoor": true
+    },
+    {
+     "days": "workday",
+     "from": "12:00",
+     "to": "18:00",
+     "at": "mw_well",
+     "doing": "물 긷기·초 나르기"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "mw_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_marens_well_8": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_well",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "08:00",
+     "to": "12:00",
+     "at": "mw_altar",
+     "doing": "사목·고해"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "mw_well",
+     "doing": "공개 고해 입회"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_well",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "mw_well",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "사제 숙소"
+    }
+   ]
+  },
+  "c_marens_well_9": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_altar",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "mw_well",
+     "doing": "성지 농원 일",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "mw_altar",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "mw_well",
+     "doing": "농원 일",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "mw_altar",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "mw_altar",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_marens_well_10": {
+   "home": "mw_cells",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "mw_altar",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "19:00",
+     "at": "mw_well",
+     "doing": "하역 — 헌금 쪽지 임금",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "mw_altar",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "mw_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "mw_altar",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "mw_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "mw_altar",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_morva_mouth_0": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "mm_reed_boats",
+     "doing": "뿌리를 캐는 어른 곁에서 심부름한다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_reed_boats",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "mm_rotten_pier",
+     "doing": "반딧불을 잡아 병에 모은다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mm_reed_boats",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "mm_reed_boats",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_morva_mouth_1": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "12:00",
+     "at": "mm_rotten_pier",
+     "doing": "호루라기 줄을 쥐고 물길을 본다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_rotten_pier",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "20:00",
+     "at": "mm_rotten_pier",
+     "doing": "늦은 배를 센다 — 교대표에 적는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "mm_rotten_pier",
+     "doing": "밤 망 — 호루라기로만 말한다"
+    }
+   ]
+  },
+  "c_morva_mouth_2": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "mm_rotten_pier",
+     "doing": "해열·지혈 약초를 딴다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "17:00",
+     "at": "mm_rotten_pier",
+     "doing": "약초를 말리고 병자를 본다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mm_reed_boats",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "mm_rotten_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_morva_mouth_3": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "mm_rotten_pier",
+     "doing": "피 병을 씻는다"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "13:00",
+     "at": "mm_reed_boats",
+     "doing": "약초 건조대 일을 돕는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "mm_reed_boats",
+     "doing": "노파에게서 낱말을 입 모양으로만 배운다"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:00",
+     "at": "mm_reed_boats",
+     "doing": "바위 앞에서 한 줄을 입 모양으로 따라 한다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:00",
+     "at": "mm_rotten_pier",
+     "doing": "견습 숙소에서 잔다"
+    }
+   ]
+  },
+  "c_morva_mouth_4": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "mm_reed_boats",
+     "doing": "갈대를 엮어 바구니·돗자리·지붕을 만든다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_rotten_pier",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "mm_reed_boats",
+     "doing": "지붕 이을 갈대를 단으로 묶는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mm_rotten_pier",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "mm_reed_boats",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_morva_mouth_5": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "mm_rotten_pier",
+     "doing": "갈대를 엮어 바구니·돗자리·지붕을 만든다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_rotten_pier",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "mm_rotten_pier",
+     "doing": "지붕 이을 갈대를 단으로 묶는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mm_rotten_pier",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "mm_rotten_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_morva_mouth_6": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "12:00",
+     "at": "mm_reed_boats",
+     "doing": "호루라기 줄을 쥐고 물길을 본다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_reed_boats",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "20:00",
+     "at": "mm_reed_boats",
+     "doing": "늦은 배를 센다 — 교대표에 적는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "mm_reed_boats",
+     "doing": "밤 망 — 호루라기로만 말한다"
+    }
+   ]
+  },
+  "c_morva_mouth_7": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "mm_reed_boats",
+     "doing": "늪 가장자리에서 뿌리를 캔다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_reed_boats",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "mm_rotten_pier",
+     "doing": "캔 뿌리를 가루로 빻는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mm_reed_boats",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "mm_rotten_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_morva_mouth_8": {
+   "home": "mm_spotters_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "mm_reed_boats",
+     "doing": "뿌리를 캐는 어른 곁에서 심부름한다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "mm_rotten_pier",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "mm_reed_boats",
+     "doing": "반딧불을 잡아 병에 모은다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "mm_rotten_pier",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "mm_rotten_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_0": {
+   "home": "ps_house_monks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "07:00",
+     "at": "ps_well",
+     "doing": "줄에 선다 — 고해 줄의 소문"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "18:00",
+     "at": "ps_well",
+     "doing": "노점·우물 곁에서 귀를 연다"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "20:00",
+     "at": "ps_well",
+     "doing": "밀고 함에 쪽지를 넣는다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:00",
+     "at": "ps_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_1": {
+   "home": "ps_house_monks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "ps_well",
+     "doing": "성표 고리를 두들겨 잇는다"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "ps_ring_stone",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "ps_well",
+     "doing": "풀무질·성표 각인"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "ps_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "ps_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "ps_ring_stone",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_2": {
+   "home": "ps_house_women",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "17:00",
+     "at": "ps_well",
+     "doing": "그물과 성표 줄 깁기"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "ps_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_3": {
+   "home": "ps_house_men",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "03:30",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도 준비 — 등불을 켜고 종을 친다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "ps_ring_stone",
+     "doing": "성표 판매·밀고 접수"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "ps_ring_stone",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "ps_well",
+     "doing": "고해 줄 정리"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도 — 등불을 끈다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "ps_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_4": {
+   "home": "ps_house_women",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "03:30",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도 준비 — 등불을 켜고 종을 친다",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "ps_ring_stone",
+     "doing": "성표 판매·밀고 접수"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "ps_ring_stone",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "ps_well",
+     "doing": "고해 줄 정리"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도 — 등불을 끈다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:00",
+     "at": "ps_well",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_5": {
+   "home": "ps_house_monks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "07:00",
+     "to": "17:00",
+     "at": "ps_well",
+     "doing": "순례자 거리 — 성표·소문·줄"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "ps_well",
+     "doing": "숙소 저녁"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "ps_well",
+     "doing": "짚 침상"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "ps_well",
+     "doing": "대성당 안식일 예배"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_6": {
+   "home": "ps_house_men",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "ps_well",
+     "doing": "밀랍 달이기·심지 매듭"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "ps_ring_stone",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "ps_well",
+     "doing": "양초 틀 작업"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "ps_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "ps_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "ps_ring_stone",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_7": {
+   "home": "ps_house_monks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_well",
+     "doing": "새벽 기도"
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "10:00",
+     "at": "ps_well",
+     "doing": "낭독문 암송 — 구절을 소리로만 외운다"
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "10:40",
+     "at": "ps_well",
+     "doing": "3시경 기도"
+    },
+    {
+     "days": "workday",
+     "from": "11:00",
+     "to": "15:00",
+     "at": "ps_well",
+     "doing": "고해 실습·규율"
+    },
+    {
+     "days": "workday",
+     "from": "15:00",
+     "to": "18:00",
+     "at": "ps_well",
+     "doing": "농원 노역",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_well",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:40",
+     "at": "ps_well",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "ps_well",
+     "doing": "기숙사"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_8": {
+   "home": "ps_house_monks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "ps_well",
+     "doing": "성지 농원 일",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "ps_ring_stone",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "ps_well",
+     "doing": "농원 일",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "ps_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "ps_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "ps_ring_stone",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_9": {
+   "home": "ps_house_monks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "ps_well",
+     "doing": "점호",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "06:00",
+     "to": "17:00",
+     "at": "ps_well",
+     "doing": "장작 나르기·재 수거",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "ps_well",
+     "doing": "크릭 병영"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "ps_well",
+     "doing": "병영 구석"
+    }
+   ]
+  },
+  "c_pilgrim_shelter_10": {
+   "home": "ps_house_women",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "04:40",
+     "at": "ps_ring_stone",
+     "doing": "새벽 기도",
+     "fixed": true
+    },
+    {
+     "days": "workday",
+     "from": "05:00",
+     "to": "12:30",
+     "at": "ps_well",
+     "doing": "밀랍 달이기·심지 매듭"
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "13:40",
+     "at": "ps_ring_stone",
+     "doing": "정오 기도"
+    },
+    {
+     "days": "workday",
+     "from": "14:00",
+     "to": "18:30",
+     "at": "ps_well",
+     "doing": "양초 틀 작업"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "19:40",
+     "at": "ps_ring_stone",
+     "doing": "저녁 기도"
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "21:30",
+     "at": "ps_well",
+     "doing": "배급 줄"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "22:30",
+     "at": "ps_ring_stone",
+     "doing": "밤 기도"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "03:30",
+     "at": "ps_well",
+     "doing": "잔다"
+    },
+    {
+     "days": "sabbath",
+     "from": "07:00",
+     "to": "09:30",
+     "at": "ps_ring_stone",
+     "doing": "안식일 예배"
+    }
+   ]
+  },
+  "c_red_pens_0": {
+   "home": "rp_pen_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:30",
+     "to": "06:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "큰 솥에 붉은 고기와 콩을 올린다"
+    },
+    {
+     "days": "all",
+     "from": "06:30",
+     "to": "20:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "세 끼를 차린다 — 살찌우는 것이 목적이다"
+    },
+    {
+     "days": "all",
+     "from": "20:30",
+     "to": "22:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "우리로 돌아가 잔다"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "04:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_red_pens_1": {
+   "home": "rp_pen_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "아이들의 달리기 놀이",
+     "outdoor": true
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "12:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "포도 줍기",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:30",
+     "to": "13:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "점심"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "우리 마당에서 논다 — 이름 없는 놀이"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "21:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "저녁"
+    },
+    {
+     "days": "all",
+     "from": "21:00",
+     "to": "05:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_red_pens_2": {
+   "home": "rp_pen_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "해 뜰 때 기상 — 점호와 피 표 확인"
+    },
+    {
+     "days": "all",
+     "from": "06:30",
+     "to": "09:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "의무 달리기 — 피를 '좋게' 하는 운동",
+     "outdoor": true,
+     "rain": {
+      "at": "red_pens__tribute_gate",
+      "doing": "배급 홀 처마 밑에서 몸을 푼다"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "12:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "가벼운 포도밭 일 — 붉은 고기와 포도로 몸을 채운다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:30",
+     "to": "13:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "붉은 고기·간·콩 점심"
+    },
+    {
+     "days": "workday",
+     "from": "13:30",
+     "to": "18:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "포도밭 일",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "우리로 귀환 — 문 앞에 목동이 선다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "20:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "저녁 식사"
+    },
+    {
+     "days": "weekday:[1]",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "채혈 순번 — 나무패에 홈 하나"
+    },
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "05:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "잔다 — 촛불은 일찍 끈다"
+    }
+   ]
+  },
+  "c_red_pens_3": {
+   "home": "rp_herders_lodge",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "목동 점호 — 울타리 혀의 지시"
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "18:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "달리기·울타리 순찰 — 채찍과 호루라기",
+     "outdoor": true,
+     "rain": {
+      "at": "red_pens__tribute_gate",
+      "doing": "목동 숙소에서 비를 피한다"
+     }
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "우리 입구에 서서 귀환을 센다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "23:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "채혈 헛간 경비"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "목동 숙소에서 잔다"
+    }
+   ]
+  },
+  "c_red_pens_4": {
+   "home": "rp_pen_barracks",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:30",
+     "to": "06:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "해 뜰 때 기상 — 점호와 피 표 확인"
+    },
+    {
+     "days": "all",
+     "from": "06:30",
+     "to": "09:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "의무 달리기 — 피를 '좋게' 하는 운동",
+     "outdoor": true,
+     "rain": {
+      "at": "red_pens__tribute_gate",
+      "doing": "배급 홀 처마 밑에서 몸을 푼다"
+     }
+    },
+    {
+     "days": "workday",
+     "from": "09:00",
+     "to": "12:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "가벼운 포도밭 일 — 붉은 고기와 포도로 몸을 채운다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:30",
+     "to": "13:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "붉은 고기·간·콩 점심"
+    },
+    {
+     "days": "workday",
+     "from": "13:30",
+     "to": "18:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "포도밭 일",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "19:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "우리로 귀환 — 문 앞에 목동이 선다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "20:30",
+     "at": "red_pens__tribute_gate",
+     "doing": "저녁 식사"
+    },
+    {
+     "days": "weekday:[1]",
+     "from": "21:00",
+     "to": "23:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "채혈 순번 — 나무패에 홈 하나"
+    },
+    {
+     "days": "all",
+     "from": "21:30",
+     "to": "05:00",
+     "at": "red_pens__tribute_gate",
+     "doing": "잔다 — 촛불은 일찍 끈다"
+    }
+   ]
+  },
+  "c_root_village_0": {
+   "home": "rv_arrival_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "09:00",
+     "at": "rv_council_island",
+     "doing": "새벽 장어 덫을 올린다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "12:00",
+     "at": "rv_council_island",
+     "doing": "잡은 장어를 훈제장에 넘긴다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "rv_council_island",
+     "doing": "정오 국자 소리 — 죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "rv_council_island",
+     "doing": "덫을 손보고 새 미끼를 건다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_root_village_1": {
+   "home": "rv_stilt_homes_n",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "09:00",
+     "at": "rv_council_island",
+     "doing": "새벽 장어 덫을 올린다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "12:00",
+     "at": "rv_council_island",
+     "doing": "잡은 장어를 훈제장에 넘긴다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "rv_council_island",
+     "doing": "정오 국자 소리 — 죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "rv_council_island",
+     "doing": "덫을 손보고 새 미끼를 건다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_root_village_2": {
+   "home": "rv_arrival_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "rv_council_island",
+     "doing": "늪 가장자리에서 뿌리를 캔다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "rv_council_island",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "rv_council_island",
+     "doing": "캔 뿌리를 가루로 빻는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_root_village_3": {
+   "home": "rv_stilt_homes_n",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "09:00",
+     "at": "rv_council_island",
+     "doing": "새벽 장어 덫을 올린다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "12:00",
+     "at": "rv_council_island",
+     "doing": "잡은 장어를 훈제장에 넘긴다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "rv_council_island",
+     "doing": "정오 국자 소리 — 죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "rv_council_island",
+     "doing": "덫을 손보고 새 미끼를 건다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_root_village_4": {
+   "home": "rv_arrival_hut",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "rv_council_island",
+     "doing": "약초 오두막 침상에서 쉰다"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "rv_council_island",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "rv_council_island",
+     "doing": "앉은 채 갈대를 가른다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "06:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_root_village_5": {
+   "home": "rv_stilt_homes_s",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "04:00",
+     "to": "10:00",
+     "at": "rv_council_island",
+     "doing": "새벽 사냥 — 물새·늪사슴",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "10:00",
+     "to": "14:00",
+     "at": "rv_council_island",
+     "doing": "젊은이 활 훈련",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "rv_council_island",
+     "doing": "활과 화살촉을 손본다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "04:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_root_village_6": {
+   "home": "rv_stilt_homes_s",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "rv_council_island",
+     "doing": "늪 가장자리에서 뿌리를 캔다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "rv_council_island",
+     "doing": "정오 국자 소리",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "17:00",
+     "at": "rv_council_island",
+     "doing": "캔 뿌리를 가루로 빻는다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "20:00",
+     "at": "rv_council_island",
+     "doing": "저녁 공동 솥",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "20:00",
+     "to": "05:00",
+     "at": "rv_council_island",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_0": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "se_reed_market",
+     "doing": "소금밭 긁기 — 눈이 소금물에 쓰리다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_reed_market",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "se_reed_market",
+     "doing": "소금 결정을 마대에 담는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "se_slave_pier",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_1": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "06:00",
+     "at": "se_slave_pier",
+     "doing": "하역표를 받는다",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "se_slave_pier",
+     "doing": "노예선·상선 하역 — 사슬과 마대"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_slave_pier",
+     "doing": "정오 생선죽 한 그릇",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "se_slave_pier",
+     "doing": "오후 하역과 창고 정리"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "se_slave_pier",
+     "doing": "숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "se_slave_pier",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_2": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "08:00",
+     "at": "se_slave_pier",
+     "doing": "숙소 점호"
+    },
+    {
+     "days": "all",
+     "from": "08:00",
+     "to": "18:00",
+     "at": "se_slave_pier",
+     "doing": "계약민 노동을 감독한다 — 번호로 부른다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "24:00",
+     "at": "se_reed_market",
+     "doing": "당일 숙식비 장부를 정리한다"
+    }
+   ]
+  },
+  "c_seren_estuary_3": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "12:00",
+     "at": "se_reed_market",
+     "doing": "계약서 필사 — 숫자만 합법"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_reed_market",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "se_reed_market",
+     "doing": "등록소 심부름과 대조"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "06:00",
+     "at": "se_reed_market",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_4": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "06:00",
+     "to": "09:00",
+     "at": "se_slave_pier",
+     "doing": "인수 서류를 점검한다"
+    },
+    {
+     "days": "all",
+     "from": "09:00",
+     "to": "14:00",
+     "at": "se_slave_pier",
+     "doing": "노예선 도착을 확인한다"
+    },
+    {
+     "days": "all",
+     "from": "14:00",
+     "to": "18:00",
+     "at": "se_reed_market",
+     "doing": "등록 서류를 올린다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "24:00",
+     "at": "se_slave_pier",
+     "doing": "서류를 대조하고 장부를 쓴다"
+    }
+   ]
+  },
+  "c_seren_estuary_5": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "se_reed_market",
+     "doing": "마대와 상자를 나른다 — 장부는 우두머리가 쥔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "se_reed_market",
+     "doing": "하역장 뒤 창고방"
+    }
+   ]
+  },
+  "c_seren_estuary_6": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "18:00",
+     "at": "se_slave_pier",
+     "doing": "마대와 상자를 나른다 — 장부는 우두머리가 쥔다"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "05:00",
+     "at": "se_slave_pier",
+     "doing": "하역장 뒤 창고방"
+    }
+   ]
+  },
+  "c_seren_estuary_7": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "se_reed_market",
+     "doing": "선체 목공 — 용골과 판자"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_reed_market",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "se_reed_market",
+     "doing": "갑판 보수와 도장"
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "se_slave_pier",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_8": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "se_slave_pier",
+     "doing": "갑판 노동 — 밧줄과 돛"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_slave_pier",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "18:00",
+     "at": "se_slave_pier",
+     "doing": "선체 수리와 하역 도움"
+    },
+    {
+     "days": "all",
+     "from": "18:00",
+     "to": "23:00",
+     "at": "se_inn",
+     "doing": "선술집에서 술 한 잔 — 빚 이야기를 숫자로"
+    },
+    {
+     "days": "all",
+     "from": "23:00",
+     "to": "05:00",
+     "at": "se_reed_market",
+     "doing": "잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_9": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "se_slave_pier",
+     "doing": "소금밭 긁기 — 눈이 소금물에 쓰리다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_slave_pier",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "19:00",
+     "at": "se_slave_pier",
+     "doing": "소금 결정을 마대에 담는다",
+     "outdoor": true
+    },
+    {
+     "days": "all",
+     "from": "19:00",
+     "to": "05:00",
+     "at": "se_slave_pier",
+     "doing": "숙소에서 잔다"
+    }
+   ]
+  },
+  "c_seren_estuary_10": {
+   "home": "se_quarantine_shed",
+   "blocks": [
+    {
+     "days": "all",
+     "from": "05:00",
+     "to": "12:00",
+     "at": "se_slave_pier",
+     "doing": "상가 저택 청소와 시중"
+    },
+    {
+     "days": "all",
+     "from": "12:00",
+     "to": "13:00",
+     "at": "se_slave_pier",
+     "doing": "정오 생선죽",
+     "fixed": true
+    },
+    {
+     "days": "all",
+     "from": "13:00",
+     "to": "22:00",
+     "at": "se_slave_pier",
+     "doing": "상가 만찬과 연주 시중"
+    },
+    {
+     "days": "all",
+     "from": "22:00",
+     "to": "05:00",
+     "at": "se_slave_pier",
+     "doing": "숙소에서 잔다"
+    }
+   ]
   }
  },
  "events": [
