@@ -61,6 +61,8 @@ def main():
                 if not h.get("reveal_when") or not h.get("cover"): P(f"숨긴 사실 {h.get('fact')}의 reveal_when/cover 없음")
             for r in c.get("relations") or []:
                 if r.get("to") not in npcs: P(f"관계 대상 {r.get('to')} 없음")
+                extra = set(r) - {"to", "type", "like", "trust", "visibility", "memo", "words"}
+                if extra: P(f"관계에 모르는 키 {sorted(extra)} — 쉼표가 든 값은 따옴표로")
             for y in (c.get("life") or []):
                 if isinstance(y, dict) and isinstance(y.get("year"), int) and y["year"] > 312: P(f"연표가 회귀점 뒤 ({y['year']})")
             text = json.dumps(voice.get("samples") or [], ensure_ascii=False)

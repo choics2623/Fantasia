@@ -704,9 +704,7 @@
      "from": "14:00",
      "to": "22:00",
      "at": "gf_rooster",
-     "doing": "장작",
-     "저녁 배식": null,
-     "묽은 맥주와 소문": null,
+     "doing": "장작, 저녁 배식, 묽은 맥주와 소문",
      "fixed": true
     },
     {
@@ -766,8 +764,7 @@
      "from": "04:15",
      "to": "07:00",
      "at": "gf_chapel",
-     "doing": "첫 종",
-     "기도": null
+     "doing": "첫 종, 기도"
     },
     {
      "days": "workday",
@@ -1233,8 +1230,7 @@
      "from": "06:00",
      "to": "18:00",
      "at": "gf_north_barracks",
-     "doing": "찬송",
-     "막사 순회": null,
+     "doing": "찬송, 막사 순회",
      "alt": {
       "p": 0.5,
       "at": "gf_south_barracks",
@@ -1299,8 +1295,7 @@
      "from": "00:00",
      "to": "24:00",
      "at": "crow_gate",
-     "doing": "북문 순시",
-     "탈주자 심문": null
+     "doing": "북문 순시, 탈주자 심문"
     }
    ]
   },

@@ -20,12 +20,13 @@
 | **겉모습** | `appearance[]` (보이는 것 3개), `smell`, `voice_sound`(목소리 결) | 서술의 재료. 감정 형용사 대신 몸과 사물 |
 | **성격** | `disposition`(01의 6축), `temperament[]`(세 낱말), `habits[]`(손버릇·말버릇·행동), `values`, `fears[]`, `desires.short/long` | 반응의 방향 |
 | **말투** | `voice.register`(상대 신분별 경어), `voice.tics[]`, `voice.use[]`/`avoid[]`(쓰는 말·안 쓰는 말), `voice.length`(문장 길이), `voice.samples[]`(상황별 견본 대사) | **가장 중요.** 같은 LLM이 수백 명을 연기해도 사람마다 다르게 들리게 한다 |
-| **하루** | `schedule.아침/낮/저녁/밤`, `places[]` | 어디서 만날 수 있나. 엔진의 위치 시뮬레이션 |
+| **하루** | `schedule.아침/낮/저녁/밤`(사람이 읽는 요약), `places[]` — 엔진은 `content/base/routines/`의 **일과**를 쓴다 (24) | 어디서 만날 수 있나 |
 | **지식** | `knows[]`(사실 ID), `hides[]` — `{fact, reveal_when, cover}` | 21 §5.1 "아는 것만 보낸다". 숨긴 사실은 공개 조건이 충족될 때만 카드에 풀린다 |
 | **관계** | `relations[]` — CHARACTERS 튜플 + `words`(그 마음을 말로) | 숫자 대신 말로 LLM에 넘긴다 |
 | **플레이어에 대해** | `toward_player`(첫 만남 태도), `persuade.likes[]`, `persuade.hates[]`(역린) | 판정 보정과 논거 태그(21 §7)의 근거 |
 | **역할** | `roles.teacher`, `roles.companion`, `roles.romance` | 스승·동료·연인 시스템 연결 |
-| **회귀** | `regression.fixed[]`(매 회차 같음), `flow[]`(대개 같음), `drift[]`(회차마다 다름), `deja_vu`(none/weak/strong) | 03 표류 등급. LLM이 "매번 같은 아침에 같은 말"을 지키게 |
+| **회귀** | `regression.fixed[]`(매 회차 같음), `flow[]`(대개 같음), `drift[]`(회차마다 다름), `deja_vu`(none/weak/strong), `deja_vu_steps[]`(시간 민감 존재: loop.count 단계별 행동) | 03 표류 등급. LLM이 "매번 같은 아침에 같은 말"을 지키게 |
+| **소속·진실** | `affiliations[]`(세력·자리·충성·공개 여부), `truths[]`(아는 진실과 단계), 은자는 `hermit:` 묶음 | 23 문서. 자리는 세력 데이터가 정하고 카드는 소속만 갖는다 |
 | **연출 금칙** | `hard_rules[]` | "에길 이야기를 먼저 꺼내지 않는다" 같은 절대 규칙 |
 | **세계 영향** | `on_death`, `story_seeds[]` | 시뮬레이션과 스토리렛 |
 

@@ -1,0 +1,394 @@
+# 드라크마르 용제국 — 정본: WORLD_BIBLE §1.2.1, §4.1, §5 / HOUSES §1·§6 / REGIONS §1.3 / RACES §2~3 / SUBRACES §3.3
+# 기준 시점: AS 312 낙엽월 1일. 이름이 있어도 npcs.json에 id가 없는 자리의 holder는 'unnamed:이름 — 설명'이다 (TODO-NPC: 카드 작성 시 id 부여).
+# 주의(모순 기록): HOUSES §2.1의 '용좌 집사 세베리안 칼다란'과 REGIONS §1.3의 '재상 세베린 타르굴'은 서로 다른 자리로 병존시켰다 (집사 = 병상 출입·서약 단상, 재상 = 섭정 회의 의장·행정).
+id: fac_drakmar_empire
+name: 드라크마르 용제국
+kind: polity
+race: [용족(진룡), 와이번(왕관·기사·잿빛), 용인(순혈·비늘혈), 크릭(감독관), 바르그(공인 조합), 인간(국유·사유 노예, 농노)]
+governance: 제국·전제
+governance_note: >
+  전제는 '한 존재의 뜻'이 결정하는 형태다. 그런데 그 존재가 하루 대부분 의식이 없고 3년째 글을 읽지 못한다.
+  그래서 지금의 드라크마르는 전제의 뼈대만 남은 채 '뜻의 해석권'을 누가 쥐느냐를 두고 다투는 궁정이다.
+  칙령은 용황의 이름으로 나가지만 쓰는 것은 와이번 서기장이고, 뜻을 증언하는 것은 용인 집사이며, 집행은 후계자 셋이 나눠 쥔 군대가 한다.
+motto: "불은 위에서 아래로 흐른다."   # 칼다란 가훈이 제국 공문의 맺음말이 되었다. 용황 자신의 말은 따로 없다 — 용은 가진 것으로 자신을 말한다
+seat: baalkar          # 바알카르 불꽃 홀 (REGIONS §1.9). 용황은 용좌봉 '재의 둥지'(dragon_throne_peak), 이졸데는 서리 요람(baalkar__frost_cradle)
+size:
+  members: "용족 진룡 11(깨어 있는 것은 9에 못 미침) · 와이번 약 6,600(왕관 300·기사 1,500·잿빛 4,000, 독꼬리·서리는 제국 밖 취급) · 용인 약 20,000(순혈 2,000·비늘혈 18,000) · 크릭 감독관·하인 수만 · 드라크마르 용좌령 인간 약 64만(국유 41만·사유 23만)"
+  territory: "대륙 중부 평원 — 용좌령(바알카르), 그라넥 평원, 잿불 언덕, 회색여울 변경(북단), 정원 길 관문, 은빛 강 수운. 진룡 11이 영지를 나눠 소유하고 그 안의 모든 것이 그의 보고다"
+  wealth: "인두세(수확월, 인간 머릿수), 노예 매매(파종월 대시장), 곡물(제국 40%가 그라넥), 잿불 언덕 광산, 세렌 대출(멜리산드 쪽만 약 2만 두카트). 국고는 세렌 두카트에 점점 기댄다"
+  force: "근위대 1,200 · 비늘기사단 600기 + 징집병 8,000(하스트란) · 기사 와이번 1,500 · 북방 국경군 약 2,000(까마귀 문, 용좌 직속) · 드레이크 수만 · 진룡 9(실제 날아오를 수 있는 것)"
+
+offices:
+  # ── 정점: 용황과 그 곁 ──
+  - id: off_emperor
+    title: 용황
+    holder: npc_varskar
+    reports_to: null
+    powers: ["모든 칙령의 원천(실제로 읽지는 못한다)", "진룡 소집", "불의 처형 — 반역 지도자에게만 직접 불을 뿜는 영예", "소유의 낭송 — 제국 전체가 그의 보고 목록이다"]
+    chosen_by: "불의 계승 — 전임자의 사망 또는 불로 굴복시킨 자. 가장 많이 가진 자가 용황이 된다. 2대 바르스카르는 형을 죽이고 아버지를 굴복시켰다"
+    perks: ["재의 둥지(용좌봉) 전용", "두개골 회랑 — 죽은 용의 두개골이 놓이는 곳", "시중 노예 12명 (대붕괴의 진실을 들은 노예는 전부 처분됐다 — 노라가 12번째)"]
+    note: "하루 대부분 무의식, 오후 한 시간쯤 깨어 후계자 셋을 교대로 접견, 밤에만 맑은 정신이 돌아와 시중장 노라에게만 말한다 (fact_dk_varskar_hours)"
+  - id: off_consort
+    title: 용황의 짝 (알의 어미)
+    holder: npc_isolde
+    reports_to: off_emperor
+    powers: ["알의 법 — 알은 어미만 이름을 부를 수 있다. 흰 알에 관한 어떤 결정도 그녀의 동의 없이 집행되지 않는다", "다섯 불의 의자 중 한 자리 (거의 출석하지 않는다)"]
+    chosen_by: "짝지음 — AS 307, 서리비늘 가문이 '바쳤다' (본인의 선택이 아니었다)"
+    perks: ["서리 요람의 서리 탑과 경비 용인 80", "알 보관실 시녀들 (그중 크릭 시녀 '숨'은 멜리산드의 첩자 — 본인은 모른다)"]
+  - id: off_five_fires
+    title: 다섯 불의 의자 (섭정 회의)
+    holder: null          # 합의체 — 개인이 아닌 다섯 자리의 합. 의장은 재상
+    reports_to: off_emperor
+    powers: ["용황이 직접 통치하지 못하는 동안의 상시 행정 합의", "칙령 연서(비상 시 3/5)", "후계자 세 진영의 대리인이 한 방에 앉는 유일한 자리"]
+    chosen_by: "용황의 명 — 처음 구성한 때가 기록에 없다. 의자는 다섯, 앉는 사람은 가문이 아니라 후계자 진영이 보낸다"
+    perks: ["불꽃 홀 '다섯 의자의 방' — 의자 다섯 중 하나(이졸데의 것)는 늘 비어 있다"]
+    seats: [off_chancellor, off_proxy_aurax, off_proxy_melisande, off_guard_captain, off_consort]
+  - id: off_chancellor
+    title: 재상
+    holder: "unnamed:세베린 타르굴 — 용인 410세, 중립을 가장한 아우락스파. 타르굴 가 수장"   # TODO-NPC npc_severin_targul
+    reports_to: off_five_fires
+    powers: ["섭정 회의 의장", "행정 실무 총괄", "비늘 시장(노예 시장) 운영권을 가문으로 쥔다"]
+    chosen_by: "용황의 임명 — 마지막 임명이 AS 280년대. 용황이 직접 임명한 마지막 문관이라는 것이 그의 정당성이다"
+    perks: ["비늘 언덕 관사", "용주 역참망(세라프 타르굴 등 방계)에 대한 후견"]
+  - id: off_proxy_aurax
+    title: 아우락스의 대리
+    holder: "unnamed:브라넉 재송곳 — 용인 기사, 붉은 첨탑 소속"   # TODO-NPC
+    reports_to: off_five_fires
+    powers: ["아우락스의 표 — 서부군과 재송곳 기사단의 이름으로 발언", "잔향 징후자 색출 사무"]
+    chosen_by: "후계자 지명 (아우락스)"
+    perks: ["재송곳 기사단의 인장"]
+  - id: off_proxy_melisande
+    title: 멜리산드의 대리
+    holder: "unnamed:오렐리아 베스페린 — 용인 학자, 베스페린 가 수장"   # TODO-NPC (HOUSES §2.6 오렐리아 베르미온과 이름이 같다 — 별개 인물로 둔다)
+    reports_to: off_five_fires
+    powers: ["멜리산드의 표", "재무와 세렌 대출 창구(재무청 겸임)"]
+    chosen_by: "후계자 지명 (멜리산드)"
+    perks: ["세렌 상관과의 직통 서신 — 제국 국고에 들어가는 두카트는 이 방을 거친다"]
+  - id: off_guard_captain
+    title: 근위대장
+    holder: "unnamed:모르칸 쇠비늘 — 용인, 근위대 1,200 지휘. 카스파르에게 빚이 있다"   # TODO-NPC npc_morkan
+    reports_to: off_five_fires
+    powers: ["비늘 근위대 1,200", "용언 발음·글자 소지 단속(바알카르 시내)", "용좌봉 출입 통제"]
+    chosen_by: "용황의 임명. 표면상 중립 — 근위대가 어느 쪽으로도 움직이지 않는다는 것이 균형이다"
+    perks: ["근위 막사", "다섯 불의 의자 한 자리"]
+    note: "'모르칸의 빚' — 구해준 사람은 실은 카스파르의 어머니 엘레나였다 (REGIONS §1.12 소문 4: 반쯤 사실)"
+  # ── 궁정: 집사·서기·시종 ──
+  - id: off_flame_steward
+    title: 용좌 집사 (불꽃 홀의 집사)
+    holder: "unnamed:세베리안 칼다란 — 대공, 288세"   # TODO-NPC npc_severian_kaldaran. HOUSES §2.1
+    reports_to: off_emperor
+    powers: ["용황 병상 출입 통제 — 용황의 '뜻을 들었다'고 증언하는 유일한 용인", "불꽃 홀의 확인(§succession)의 단상 개방", "회색 장부와 의전 일체"]
+    chosen_by: "칼다란 가문 세습 — SK 1,231 '잿날개의 밤' 이후 2,000년간 집사직 세습. 용황이 새로 임명하지 않는다"
+    perks: ["셋째 서랍(원본 족보 금고)", "용황 병세의 비밀 — AS 302부터 알았다"]
+  - id: off_grey_ledger
+    title: 회색 장부 관리관
+    holder: "unnamed:아르덴 칼다란 — 160세, 대공의 장남"   # TODO-NPC
+    reports_to: off_flame_steward
+    powers: ["제국 국유 노예 약 4만(칼다란 직관) — 번호·낙인·인두세 기준 명부 관리", "장부에서 이름을 지운다(= 그 인간은 '없는 사람'이 되어 누가 죽여도 죄가 아니다)", "'잔향 징후' 항목 집계 — AS 311에 3배, 대공이 절반으로 줄여 올렸다"]
+    chosen_by: "칼다란 가문 내 지명"
+    perks: ["장부 열람권 — 다른 가문의 노예 수까지 본다"]
+  - id: off_flame_marshal
+    title: 불꽃 홀 의전관
+    holder: "unnamed:리비아 칼다란 — 97세, 대공의 딸"   # TODO-NPC
+    reports_to: off_flame_steward
+    powers: ["비늘 서약·비늘 의례·불의 잔의 식순", "궁정 좌석과 접견 순서(곧 권력의 지도)"]
+    chosen_by: "집사 지명"
+    perks: ["카스파르와 같은 해 바알카르 궁정에 있었던 사람 — 그를 동정하는 몇 안 되는 순혈"]
+  - id: off_imperial_seal
+    title: 용황의 인장 (칙령 인장관)
+    holder: npc_kaidor
+    reports_to: off_emperor
+    powers: ["용황의 인장을 사슬에 걸고 칙령에 찍는다", "칙령 초안 — 최근 140건은 모두 그가 썼다", "서기 크릭 셋을 '손'으로 부린다"]
+    chosen_by: "원로회 서기장이 겸한다 (AS 250부터). 인장은 서기장의 이름으로 찍힌다"
+    perks: ["칙령이 식기 전에 찍을 수 있는 유일한 손"]
+    note: "비늘 원로회 쪽 자리는 fac_scale_council의 off_council_scribe. 같은 사람이 두 모자를 쓴다"
+  - id: off_throne_attendant
+    title: 용황 병상 시중장
+    holder: npc_nora
+    reports_to: off_emperor
+    powers: ["밤 시간의 유일한 청자 — 용황이 맑은 정신으로 말하는 상대", "시중 노예(크릭 4, 인간 2) 지휘"]
+    chosen_by: "용황이 직접 곁에 둔다 — 국유 노예 신분 그대로. 앞의 열한 명은 대붕괴의 진실을 듣고 '처분'됐다"
+    perks: ["노예이면서 용황의 침실에 드는 유일한 인간", "이번에는 죽이지 않기로 한 청자"]
+  - id: off_nest_seneschal
+    title: 재의 둥지 시종장
+    holder: "unnamed:에둔 — 용인, 용좌봉 시종 40 지휘"   # TODO-NPC (REGIONS §1.9)
+    reports_to: off_emperor
+    powers: ["용좌봉 둥지의 살림", "인간 공물 운반자 200과 비늘 더미 관리 — 바닥에 떨어진 비늘은 하루 한 바구니씩 노예가 훔쳐 판다"]
+    chosen_by: "집사 추천, 용황 묵인"
+    perks: ["증기 독을 견디는 처방"]
+  - id: off_palace_servants
+    title: 궁정 하인장
+    holder: npc_fizik
+    reports_to: off_nest_seneschal
+    powers: ["굴뚝·배관 담당 크릭 30 — 벽 너머를 엿듣는 귀", "정보를 세 후계자 모두에게 판다"]
+    chosen_by: "크릭 길드 '굽은 등' 추천 — 국유 노예 신분이 아니다"
+    perks: ["지하 배관층 '소리 방'"]
+  # ── 재무·인간 관리 ──
+  - id: off_treasury
+    title: 재무청장 (세렌 대출 창구)
+    holder: "unnamed:오렐리아 베스페린 (겸임)"
+    reports_to: off_chancellor
+    powers: ["국고 출납", "세렌 몬달리·오랄 상가와의 대출 협상"]
+    chosen_by: "재상 임명, 멜리산드 진영의 추천"
+    perks: ["세렌 두카트의 '사실상 담보' 목록 열람"]
+  - id: off_poll_tax
+    title: 인두세 총괄
+    holder: "unnamed:볼가스 높은홰 — 왕관 와이번, 410세 (수석 원로가 겸임)"   # TODO-NPC
+    reports_to: off_chancellor
+    powers: ["수확월 인두세 징수의 세제 설계(인간 1명당 연 2발톱을 영주가 납부)", "원로회 '높은홰' 장부 — 칼다란의 회색 장부와 이중으로 관리, 매년 3,000명이 어긋난다(장부 밖 노예)"]
+    chosen_by: "원로회 의장직에 딸린 자리"
+    perks: ["장부 밖 노예 3,000을 와이번 둥지 공사에 쓴다"]
+  - id: off_state_slave_assign
+    title: 국유 노예 배당관
+    holder: "unnamed:모르나 재날개 — 왕관 와이번, 280세 (재날개 둥지)"   # TODO-NPC
+    reports_to: off_chancellor
+    powers: ["국유 노예를 각 영지에 '배당'한다 — 레이번에 배당된 농노 400의 명부도 이 방에서 나온다", "배당 노예의 무단 매각은 영지 몰수 사유 — 고드릭의 37명을 이미 알고 있다"]
+    chosen_by: "원로회 배분"
+    perks: ["영주들에게 거는 보이지 않는 끈"]
+  - id: off_scale_market
+    title: 비늘 시장 운영권자
+    holder: "unnamed:세베린 타르굴 (타르굴 가 겸임)"
+    reports_to: off_chancellor
+    powers: ["바알카르 비늘 시장(상시 노예 2,000)과 파종월 대시장", "경매관 크릭 빅스, 세렌 중개인 상주권 허가"]
+    chosen_by: "타르굴 가 세습"
+    perks: ["거래 장부(용언) — 회색여울 농노 40명의 '선매 기록'(9월)이 올라 있다"]
+  - id: off_hound_licensee
+    title: 공인 노예사냥 조합장
+    holder: npc_volk
+    reports_to: off_chancellor
+    powers: ["탈주자·징후자 추적 공인 — 송곳니 12, 코 약 900, 목줄꾼 약 300", "현상 수배판(송곳니 회관)", "잔향 포획 현상금 500비늘"]
+    chosen_by: "AS 213 잔향 사냥 의무화 때 조합이 공인(사르코스 가문의 로비). 외부 조합이 제국의 치안을 계약으로 맡는 형식"
+    perks: ["용의 대로 검문 통과", "아우락스파의 비공식 후견"]
+  - id: off_overseer_guild
+    title: 크릭 감독관 조합 '굽은 등' 조합장
+    holder: "unnamed:스킥 — 감독관 크릭, 39세 (크릭으로서는 고령)"   # TODO-NPC
+    reports_to: off_chancellor
+    powers: ["국유 노예 감독 인력 배정", "처벌 집행(태형·사슬 기둥) — 용인이 참관한다"]
+    chosen_by: "길드 호선"
+    perks: ["조합 소속은 국유 노예 신분이 아니다"]
+  - id: off_chief_collar
+    title: 수석 목줄장 (바알카르)
+    holder: "unnamed:에베르트 — 인간, 목줄단 바알카르 지부 총괄. 긴그림자 둥지에서 정보 대가로 배급을 받는다"   # TODO-NPC
+    reports_to: off_chancellor
+    powers: ["목줄단 전체 — 지역 목줄장(마르타 등)의 임명·집안 규약 관할", "밀고 접수와 포상"]
+    chosen_by: "7대째 목줄장을 내는 '고리집'의 세습"
+    perks: ["인간이면서 사슬 표찰이 없다"]
+  # ── 사법 ──
+  - id: off_flame_court
+    title: 불꽃 홀 법정
+    holder: "unnamed:집사가 지명하는 재판관 3인 — 순혈 용인"
+    reports_to: off_flame_steward
+    powers: ["용인 가문 간 분쟁과 영지 몰수·작위 박탈 심리", "인간은 소송 당사자가 될 수 없다 — 인간의 사건은 소유자 가문이 재판한다"]
+    chosen_by: "집사 지명, 용황 사후 추인(추인한 적은 없다)"
+    perks: ["용언 서명권"]
+    note: "상설 법관은 없다. 제국에는 '인간을 위한 법정'이 없고, 영지 안의 영주가 곧 법이다 (봉건 위계의 아래층)"
+  # ── 군·진룡 영주 ──
+  - id: off_western_army
+    title: 서부군 총사령
+    holder: npc_aurax
+    reports_to: off_emperor
+    powers: ["제국 서부군 — 하스트란 비늘기사단과 징집병이 합류하는 지휘선", "붉은 첨탑 화주(火主)"]
+    chosen_by: "용황의 장자로서의 위임 — 제국군 총사령은 따로 없다"
+    perks: ["재송곳 기사단 — 잔향 징후를 보인 인간 색출 전담 (잡히는 자 대부분은 무고한 아이)"]
+  - id: off_pyre_executor
+    title: 화형 집행관
+    holder: "unnamed:드라반 붉은발톱 — 적룡, 520세. 아우락스의 아들"   # TODO-NPC
+    reports_to: off_western_army
+    powers: ["AS 213 잔향 사냥 의무화 이후 '징후자 화형'을 직접 수행해 온 집행자 — 그가 태운 수백 명은 모두 평범한 인간이었다"]
+    chosen_by: "아우락스의 위임"
+    perks: ["용이 직접 불을 뿜는 영예 처형의 집행자"]
+  - id: off_lord_emberhills
+    title: 잿불 언덕 화주 (영주 진룡)
+    holder: npc_melisande
+    reports_to: off_emperor
+    powers: ["광산 지대 전체의 소유(관리는 베르미온), 은비늘 요람", "영지 안의 모든 것이 그의 보고"]
+    chosen_by: "SK 2,830 동생 토르반이 죽은 뒤 영지가 넘어옴"
+    perks: ["잿불석 채굴권", "세렌 자본과 같은 배"]
+  - id: off_northern_army
+    title: 북방 국경군 사령관 (까마귀 문)
+    holder: npc_kaspar
+    reports_to: off_five_fires
+    powers: ["까마귀 문 국경군 — 용인 120, 크릭 60, 인간 짐꾼·하인 80 (본문), 휘하 날개대·보급까지 합하면 약 2,000", "서리 길 폐쇄·개방", "남작령 안에 있지만 남작이 명령할 수 없는 '용좌 직속' 지위"]
+    chosen_by: "AS 295 하급 장교로 부임한 뒤 승진. 용황의 서자라는 사실은 공식 직함에 없다"
+    perks: ["물빼기 굴을 알면서 막지 않는 재량"]
+  - id: off_northern_deputy
+    title: 까마귀 문 부관
+    holder: npc_lea
+    reports_to: off_northern_army
+    powers: ["사령관 서신·보급 실무", "월 1회 용주 역참에서 멜리산드 전령에게 용언 보고서를 남긴다"]
+    chosen_by: "사령관 추천 (AS 300) — 실은 멜리산드가 심은 사람"
+    perks: ["백인대장 계급"]
+  - id: off_crowgate_captain
+    title: 까마귀 문 수비대장
+    holder: npc_sigmund
+    reports_to: off_northern_army
+    powers: ["요새 수비 120", "문 개폐"]
+    chosen_by: "백인대장 임명 — 아우락스파 비늘혈 가문의 셋째 아들. 가문이 '카스파르가 넘어지면 문을 잡을 사람'으로 점찍었다"
+    perks: []
+  - id: off_road_patrol
+    title: 용의 대로 회색여울 구간 순찰
+    holder: npc_gorm
+    reports_to: off_crowgate_captain
+    powers: ["굶주린 언덕 위 하루 두 번의 공중 순찰 — 점으로 보이는 것이 길을 벗어나면 내려온다"]
+    chosen_by: "수송청 장부의 번호 날개 — 늙어 짐 운반에서 순찰로 돌려졌다"
+    perks: ["양 한 마리면 한 바퀴"]
+  - id: off_road_post
+    title: 용주 역참장
+    holder: "unnamed:세라프 타르굴 — 용인, 타르굴 가 방계"   # TODO-NPC (REGIONS §2.10)
+    reports_to: off_chancellor
+    powers: ["용의 대로 세 번째 용주 역참 — 말 교대, 검문, 전령 우편함", "통행증 검사"]
+    chosen_by: "타르굴 가 방계 후견"
+    perks: ["우편함에 레아의 보고서가 들어온다 — 알면서 보지 않는다"]
+  # ── 외교 ──
+  - id: off_covenant_envoy
+    title: 맹약회의 제국 수석 대표 (AS 313 태양월, 서약섬)
+    holder: null       # 공석 — 계승 위기가 채운다. 아우락스는 '잔향 대숙청' 안건을 직접 들고 가려 한다
+    reports_to: off_five_fires
+    powers: ["제국의 표(열한 표 중 하나)", "인간 번식 할당·잔향 대숙청 안건 발의"]
+    chosen_by: "다섯 불의 의자 합의 — 서약 전에 정해야 하는데 진영 다툼으로 미정"
+    perks: ["100년에 한 번의 자리"]
+
+ranks:
+  - {id: rank_emperor, title: "용황", duties: "모든 것의 소유자", privileges: "역린 이외 모든 것", open_to_player: false}
+  - {id: rank_true_dragon, title: "진룡 (화주)", duties: "영지를 보고로 삼아 지킨다", privileges: "영지 안의 모든 생명과 재물, 공중 결투", open_to_player: false}
+  - {id: rank_crown_elder, title: "왕관 와이번 원로", duties: "세제·군수·배당·감찰의 실무", privileges: "원로석, 홰 높이, 진룡 앞 첫 줄", open_to_player: false}
+  - {id: rank_pure_head, title: "순혈 대가문 가주", duties: "비늘 서약, 영지 통치, 불꽃 홀의 확인에 표를 얹는다", privileges: "불의 잔 배정에 참여, 용언 서명권", open_to_player: false}
+  - {id: rank_pure, title: "순혈 용인", duties: "행정직, 화술사, 학자", privileges: "불의 학당, 비늘 분장", open_to_player: false}
+  - {id: rank_knight_wyvern, title: "기사 와이번", duties: "공중 전투, 탈주자 수색", privileges: "깃 서약, 날개대", open_to_player: false}
+  - {id: rank_scale_noble, title: "비늘혈 영주·남작", duties: "변경 통치, 납세, 징집", privileges: "영지 안의 법", open_to_player: false}
+  - {id: rank_scale_officer, title: "비늘혈 관리·비늘 기사", duties: "징세, 경비, 드레이크 기병", privileges: "읽고 쓸 수 있다, 채찍·장갑 사용", open_to_player: false}
+  - {id: rank_grey_wyvern, title: "잿빛 와이번", duties: "수송·노동·순찰", privileges: "장부에 번호가 있는 날개", open_to_player: false}
+  - {id: rank_overseer, title: "감독관 크릭", duties: "노예 감독, 채찍", privileges: "'굽은 등'·'채찍손' 길드 보호", open_to_player: false}
+  - {id: rank_hound, title: "공인 사냥꾼 (바르그)", duties: "탈주자·징후자 추적", privileges: "현상금, 검문 면제", open_to_player: false}
+  - {id: rank_collar, title: "목줄단", duties: "동족을 감시하고 밀고한다", privileges: "배급 가산, 사슬 표찰 면제(상층), 일가족 해방의 약속", open_to_player: true, condition: "이미 지역 목줄장에게 눈에 들 것. 밀고 100건이 일가족 해방의 값 (회색여울 마르타의 기준)"}
+  - {id: rank_palace_slave, title: "궁정 시종 노예", duties: "불꽃 홀·재의 둥지·서리 탑의 시중", privileges: "용인과 같은 층에 들어간다 — 말을 건네지는 못한다", open_to_player: true, condition: "비늘 시장에서 사 오거나 징발될 것. 시중장의 눈에 들면 임종 시중에 오를 수 있다"}
+  - {id: rank_state_slave, title: "국유 노예 (회색 장부 번호)", duties: "국유농장·공방·광산 노동", privileges: "장부에 있다 — 아무도 함부로 죽이지 못한다", open_to_player: true, condition: "붙잡혀 번호를 받는 것이 입문. 오른쪽 어깨에 낙인"}
+  - {id: rank_serf, title: "사유 노예·농노", duties: "영지 노동, 인두세의 머릿수", privileges: "소유주의 표(왼쪽 어깨)는 다른 용에게서의 방패", open_to_player: true, condition: "기본 시작 신분 (회색여울 농노)"}
+  - {id: rank_unregistered, title: "장부 밖의 사람", duties: "없다", privileges: "아무것도 없다 — 누가 죽여도 죄가 아니다", open_to_player: true, condition: "아르덴의 펜으로 지워지거나 모르간트·높은홰의 '장부 밖'에 숨는 것"}
+
+decision: >
+  세 층이 겹친다. ① '뜻' — 용황이 오후 한 시간 깨어 후계자 셋을 교대로 접견할 때와 밤에 노라에게 말할 때. 이 시간 밖의 뜻은
+  용좌 집사가 '들었다'고 증언하는 것으로만 존재한다. ② '글' — 서기장 카이도르가 초안을 쓰고 인장을 찍는다(크릭 서기 셋이 대독).
+  용황이 칙령을 읽지 못한 지 3년, 최근 140건은 전부 서기장의 것이다. ③ '손' — 다섯 불의 의자가 매 주 4일째 정오에 모인다
+  (노동 5일·안식일 1일의 6일 주). 3/5 연서로 비상 칙령, 이졸데는 거의 오지 않으므로 사실상 4석 중 3석이 필요하다. 흰 알 관련 사안은
+  이졸데의 동의가 없으면 집행되지 않는다(알의 법 — 거부권). 서부군·국경군·근위대는 각자의 지휘선이 따로 있고 의자 합의와 무관하게 움직일 수 있다.
+  결국 제국의 결정은 '누가 용황의 병상에 접근하는가'와 '누가 인장을 찍는가'의 두 열쇠로 모인다.
+succession: >
+  불의 계승: 왕위는 상속이 아니라 차지하는 것 — 전임자의 죽음, 또는 전임자를 불로 굴복시킨 자. 건국 이후 용인 귀족이 질서를 원해
+  '불꽃 홀의 확인'이 붙었다. 새 용황은 불꽃 홀에서 용인 대가문 가주들의 비늘 서약(손바닥을 그어 용황의 비늘에 피를 바른다)을 받아야
+  제국 행정을 장악한다. 서약 단상은 칼다란 집사가 연다. 지금 판세는 귀족 지지율 아우락스 41 / 멜리산드 32 / 흰 알 18 / 카스파르 9로
+  어느 쪽도 과반이 아니다 — 그러므로 확인 전에 용 대 용의 결투와 내전(313 태양월 이후 '세 개의 깃발')이 낀다. 용황 사망 시 공석 동안
+  인장은 서기장이, 서약 단상은 집사가 쥔다. 흰 알은 313 꽃월 부화 예정이며 부화하는 순간 흰 알 지지율이 ×1.5가 된다(알이 탈취·파괴되면 분산).
+  세벨린(재의 요람)이 날아오면 '가장 오래된 용'으로 지지율 최대 10이 생긴다.
+
+law:
+  crimes:
+    - {act: "인간의 글자 소지·쓰기 (재의 법)", punishment: "즉결 처형 — 누구든 집행할 수 있다", note: "인간에게만. 용인에게 읽고 쓰기는 귀족의 증표다"}
+    - {act: "인간의 진명·마법 발설", punishment: "화형 (잿빛 탑에 먼저 매각 가능)", note: "어긴 인간은 어느 종족이든 죽일 수 있다 (사슬의 맹약 3조)"}
+    - {act: "인간의 용언 발음", punishment: "혀 절단", note: "근위대가 집행. 용인이 용언을 틀리게 발음하는 것은 조롱거리(법은 아님)"}
+    - {act: "인간이 용의 눈을 똑바로 봄", punishment: "태형 10, 용이 원하면 즉사", note: "현장 판결"}
+    - {act: "통행증 없는 이동 / 기한 지난 통행증", punishment: "태형 20, 재범 낙인", note: "쇠 패에 영지 문장과 날짜. 기한 지난 통행증은 탈주 증거"}
+    - {act: "인간의 돈 소지", punishment: "절도 의심 — 압수 + 태형 30", note: "세렌 계약민만 예외"}
+    - {act: "인간의 탈주", punishment: "1회 태형 40 / 2회 발뒤꿈치 힘줄 절단 / 3회 매각 또는 처형", note: "탈주자 은닉은 은닉자 가족 전원 매각(영지별 가중)"}
+    - {act: "잔향 징후 (오지 않은 일을 말함, 배운 적 없는 날짜·이름, 처음 보는 곳을 앎)", punishment: "감금 후 화형 — 잿빛 탑에 먼저 매각될 수 있다", note: "근위대·바르그 집행. 징후자 보고는 회색 장부에 항목이 있다. 대부분 무고한 아이다"}
+    - {act: "남의 보고(寶庫)를 만진다", punishment: "용인·인간은 즉결 처단, 용이면 결투", note: "용족 금기 ① — 법과 관습이 같다"}
+    - {act: "알을 깨뜨린다", punishment: "용서 없음 — 3,400년간 단 한 번도 용서받지 못했다", note: "금기 ②"}
+    - {act: "배당 국유 노예의 무단 매각", punishment: "영지 몰수", note: "용인·와이번에게 적용. 레이번 고드릭이 이미 37명 — 배당관 재날개 둥지가 알고 있다"}
+    - {act: "인두세 머릿수 허위 신고·장부 밖 은닉", punishment: "영지 몰수·가문 장부 말소 (가문이 '없는 가문'이 된다)", note: "SK 2,512 하길라 반란 때 가문 셋의 장부를 불태운 선례. 모르간트가 지금 800명을 숨겼다"}
+    - {act: "용인-인간의 결합·반용 출산", punishment: "용인은 가문 강등·인간은 죽음, 아이는 출생일에 '처분'", note: "카스파르만 살려진 이유는 기록에 없다"}
+
+customs:
+  greeting: >
+    진룡의 영공에 들 때 세 번 선회한다(생략하면 선전포고). 용인끼리는 손바닥을 펴 비늘 서약의 상처 자리를 보이며 가문명과
+    섬기는 진룡의 이름을 댄다. 와이번은 앉은 높이가 곧 서열이라 낮은 자를 내려다보며 말하고, 인간은 홰 아래 땅에서만 말할 수 있다.
+    인간은 눈을 내리깔고, 바알카르의 노예는 해 질 녘 그림자가 길어질 때 고개를 숙이고 걷는다.
+  taboos:
+    - "용족 앞에서 '잃었다'를 말하지 않는다 (패배는 '양보했다')"
+    - "'도둑', '역린', 시간의 상처, 다른 용과의 비교 — 즉시 관계 파탄 또는 공격"
+    - "진룡 앞에서 '섭정'·'이후'를 말하지 않는다 (용 이후의 제국은 순혈과 원로의 속삭임으로만 존재한다)"
+    - "인간은 용좌봉을 손가락으로 가리키지 않고 바르스카르의 이름을 소리 내어 말하지 않는다"
+    - "용인은 인간과 같은 식탁에 앉지 않고, 맨손으로 인간을 때리지 않는다 (채찍·장갑 — '닿으면 피가 옅어진다')"
+    - "비늘혈이 순혈에게 비늘 수를 묻지 않는다. 잠든 진룡의 수를 세지 않는다 ('셋이 자고 있다'는 원로회 안에서도 금지)"
+    - "용은 자기 노예를 직접 죽이지 않는다 — 용인 집행관이 한다 (자기 소유물을 스스로 파괴하는 것은 금기)"
+  rites:
+    - {name: "비늘 의례", when: "태양월 1일", what: "용인 귀족이 용좌봉 아래에서 용황의 비늘 조각을 받는다. 312년엔 용황이 나오지 않아 취소될 예정 — 계승 위기의 공개 신호"}
+    - {name: "파종월 대시장", when: "파종월", what: "비늘 시장 노예 대시장. 용인 가문이 경매 패를 들고 겨룬다. 성인 농노 시세가 2비늘까지 떨어진다"}
+    - {name: "인두세 수납", when: "수확월", what: "영주가 소유한 인간 머릿수만큼 납부한다. 인간을 숨기는 것은 곧 탈세"}
+    - {name: "불의 잔", when: "비늘혈 가문의 대(代)마다 — 진룡 앞", what: "진룡의 피 한 잔을 무릎 꿇고 마신다. 피가 옅어짐을 늦춘다. 배정은 원로회와 순혈 대가문이 쥔다 — 레이번은 3대째 못 받았다"}
+    - {name: "비늘 서약 (불꽃 홀의 확인)", when: "용황 즉위 때", what: "가주들이 손바닥을 그어 용황의 비늘에 피를 바른다"}
+    - {name: "소유의 낭송", when: "용황 즉위 의식", what: "'모든 것의 목록'을 낭송한다. 바르스카르의 정식 이름을 다 읊는 데 사흘이 걸린다"}
+    - {name: "재의 날", when: "연말 5일", what: "대붕괴 추모. 불을 피우지 않는다. 시간 잔상이 가장 많이 나타난다. 이름 없는 자들은 몰래 아스테리온을 기린다"}
+    - {name: "맹약회의", when: "AS 313 태양월 1~11일", what: "서약섬. 100년에 한 번. 제국은 수석 대표를 아직 못 정했다"}
+  speech: >
+    용언이 귀족어, 공용어가 모어. 문서는 공용어, 서명은 용언 문자. 존칭은 '각하'(진룡·용황 대리), 하십시오체에 문장 끝을 한 박자 낮춘다.
+    와이번은 공식 자리에서 서기의 대독으로 말한다('기록에 의하면'). 용인은 모든 것을 장부의 값으로 환산해 말하고, 인간을 '저것'이라 부르며
+    직접 말을 걸지 않고 집사에게 묻는다. 금지어: 잃었다, 도둑, 역린, 비늘 하인, 반쯤 드레이크, (공개석상에서) 도마뱀.
+
+membership:
+  join: >
+    용족·와이번·용인은 출생이 곧 입적이다(비늘 세기 — 성년식에 몸의 비늘을 세어 족보에 적는다. 비늘이 늘면 서열이 떨어진다). 가문 없는 비늘혈은 '○○의 비늘'로 기사가 된다.
+    인간은 입적이 아니라 등재다 — 붙잡히거나 팔려 회색 장부에 번호를 받고 오른쪽 어깨에 낙인.
+  leave: >
+    용인은 가문에서 쫓겨나거나 장부가 불태워져 '없는 가문'이 된다. 인간은 장부에서 지워지면 '없는 사람'이 되어 법 밖에 놓인다 —
+    자유가 아니라 아무도 책임지지 않는 죽음이다. 탈주와 사망 처리(아르덴의 펜 한 번)는 같은 줄에 적힌다.
+  signs: ["오른쪽 어깨 — 회색 장부 번호 낙인", "왼쪽 어깨 — 소유 용의 표(문장)", "왼쪽 손등 — 사르코스의 등급 낙인(매매 이력)", "바알카르 시내 인간은 목에 사슬 표찰(소유주 각인 쇠판)", "쇠 패 통행증", "용인의 목덜미·관자놀이 비늘과 가문 문장"]
+
+internal_factions:
+  - {name: "불의 손 (전통파)", leader: npc_aurax, aim: "재의 법 강화, 잔향 대숙청, 반용 처단. 용인 대가문 다수·바르그 조합·그롬 용병을 쥔다", strength: 41}
+  - {name: "은의 서약 (개량파)", leader: npc_melisande, aim: "인간은 개량할 자원 — 이식·육종과 '견디는 그릇'. 잿빛 탑·엘다르 존속파·세렌 자본이 받친다", strength: 32}
+  - {name: "알의 수호 + 섭정", leader: npc_isolde, aim: "흰 알을 지킨다. 원로회는 이 알을 꼭두각시로 세워 '용 이후의 제국'을 짜려 한다 — 이졸데는 알이 누구의 것도 아니게 키우려 한다", strength: 18}
+  - {name: "국경 (카스파르)", leader: npc_kaspar, aim: "반용 서자의 즉위가 아니라 해방 칙령을 '할 수 있는 자리'. 까마귀 문 국경군·모르간트·이름 없는 자들(비밀)", strength: 9}
+  # strength = HOUSES §6.3 귀족 지지율(%). 엔진의 클락 세력 점수는 SCENARIOS §2.1 (60/45/25/15)이며 같은 순서다.
+
+assets:
+  - "회색 장부 — 국유 노예 약 4만의 번호·낙인 (칼다란)"
+  - "비늘 장부 — 재무청 국유 노예 명부 (원로회 높은홰와 이중, 3,000명 차이)"
+  - "용황의 인장과 칙령 초안 140건 (카이도르)"
+  - "서리 요람의 흰 알 — 모든 진영의 목표"
+  - "용좌봉 두개골 회랑, 불꽃 홀 지하 '첫 둥지'(아그라몬의 해골)"
+  - "용황의 비늘 — 하루 한 바구니씩 떨어지고 비늘 한 장 2비늘에 암거래된다(시간 잔상을 품는다)"
+  - "세렌 대출 (멜리산드 쪽 2만 두카트)"
+
+secrets:
+  - {fact: fact_dk_varskar_hours, known_by_rank: rank_palace_slave}
+  - {fact: fact_dk_varskar_time_wound, known_by_rank: rank_palace_slave}
+  - {fact: fact_dk_kaidor_edicts, known_by_rank: rank_crown_elder}
+  - {fact: fact_dk_elders_after_dragons, known_by_rank: rank_pure_head}
+  - {fact: fact_dk_succession_split, known_by_rank: rank_pure_head}
+  - {fact: fact_dk_aurax_purge_plan, known_by_rank: rank_true_dragon}
+  - {fact: fact_dk_scale_market_ledger, known_by_rank: rank_scale_officer}
+  - {fact: fact_gf_godric_sold_37, known_by_rank: rank_crown_elder}
+  # TODO-FACT: 칼다란 '셋째 서랍' 족보 (fac_kaldaran 쪽에도 기록) / 원로회 장부 밖 노예 3,000 (fac_scale_council) / 잠의 향 — 둥지탑 진룡 셋을 재우는 향 (fac_scale_council)
+  - {truth: T06, level: whole, holders: [npc_varskar, npc_aurax, npc_nora]}
+  - {truth: T07, level: whole, holders: [npc_varskar, npc_aurax]}
+  - {truth: T08, level: whole, holders: [npc_aurax]}
+  - {truth: T05, level: fragment, holders: [npc_varskar, npc_aurax]}
+
+relations: []
+# 의도적으로 비워 둔다. HOUSES §6.1 행렬에는 '제국 전체' 행이 없고, 행은 후계자 진영(아우락스파·멜리산드파·카스파르파)·원로회로만 있다.
+# 진영별 값(14개 열)은 fac_varskar_brood.internal_factions[].matrix, 원로회 값은 fac_scale_council.relations, 대가문 서술 환산값은 각 가문 파일에 있다.
+
+toward_echo: >
+  공식: 태우기 — AS 213 이래 잔향 사냥은 법이고, 회색 장부에는 '잔향 징후' 항목이 있다. 실제로는 진영마다 다르다.
+  아우락스·드라반: 화형 후 단절(아버지의 불로). 멜리산드: 포획 후 이식. 원로회: 조용히 처리하되 긴그림자는 쓸모를 먼저 계산.
+  카스파르: 불명(같은 '잡종'으로서의 동질감, 이용). 용황 바르스카르: 기시감 — 낙엽월마다 '또 그 저녁'이라 중얼거리고 회색여울 쪽 하늘을 오래 본다.
+player_paths:
+  - "궁정 시종 노예로 편입 — 비늘 시장에서 사 오거나 징발되어 불꽃 홀·재의 둥지·서리 탑에 들고, 시중장 노라의 눈에 들면 임종 시중에 오른다"
+  - "목줄단에서 올라 바알카르 수석 목줄장 에베르트에게 닿는다 — 일가족 해방의 값은 밀고 100건"
+  - "장부 지우기 — 아르덴 칼다란의 펜 한 번으로 이름이 지워진다. 사망 처리와 해방이 같은 줄이다"
+  - "비늘 시장의 장부와 높은홰의 이중 장부, 칼다란의 셋째 서랍, 사르코스의 212건 — 비밀을 옮겨 지지표를 움직인다 (HOUSES §6.3)"
+  - "맹약회의 짐꾼으로 들어가 사절에게 말을 건다 (SCENARIOS §2.2)"
+  - "무너뜨리기: 아우락스의 즉위를 막거나(카스파르·흰 알 지원) 멜리산드의 자금(세렌)을 끊는다"
+regression:
+  fixed:
+    - "용황은 하루 대부분 의식이 없고 오후 한 시간 후계자 셋을 접견한다"
+    - "칙령 140건이 서기장의 손에서 나왔고, '흰 알 + 섭정' 초안이 완성되어 인장을 기다린다"
+    - "지지율 41/32/18/9, 판세는 회귀점마다 AS 312 낙엽월 1일의 값"
+    - "흰 알 부화 예정 313 꽃월, 맹약회의 313 태양월 1~11일, 레이번 포도월 30일 만기"
+  flow:
+    - "다섯 불의 의자 회의 날 — 대개 같고 0~3일 어긋난다"
+    - "비늘 시장 시세와 경매 순서"
+  drift:
+    - "그날 접견 순서(후계자 셋 중 누가 먼저)"
+    - "대독하는 크릭 서기, 근위대 순찰로"
+    - "누가 병상에 먼저 문안 오는가"

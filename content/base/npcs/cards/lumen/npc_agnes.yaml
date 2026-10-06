@@ -1,109 +1,135 @@
 id: npc_agnes
 name: 수녀 아그네스
-aka: []
+aka: [등불 없는 집의 수녀, 큰 웃음의 수녀, 우물지기]
 tier: A
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 여
+age: 39
 region: 루멘
-home: null
-job: 끊어진 고리의 루멘 지부장 (화술 스승)
-rank: null
-summary: ''
+home: 순례자 숙소 거리 '등불 없는 집'
+job: 순례자 숙소 관리 수녀 — 실제로는 끊어진 고리 루멘 책임자, 잿빛 실 루멘 거점
+rank: 수녀 (순종의 빛 고리지기 서열) — 끊어진 고리의 루멘 지부장
+summary: 순례자 숙소 지하의 '물 없는 우물'로 탈주자를 잿빛 실에 인도하는 수녀. 지금까지 214명이 그 우물을 지났다. 알베릭 구출을 준비 중이며 간수 한 명이 남았다
 source: docs/world/CHARACTERS.md:1178
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 273, age: 0, event: "루멘 인근 신도 농노 마을에서 태어남"}
+  - {year: 281, age: 8, event: "목줄단에게 맞아 왼쪽 눈썹을 가로지르는 흉터가 생김. 아버지가 이웃의 탈주를 모른 척한 죄였다"}
+  - {year: 285, age: 12, event: "순례자 숙소 일꾼으로 맡겨짐. 수프 솥을 젓는 법과 사람을 웃기는 법을 같은 해에 익힘"}
+  - {year: 296, age: 23, event: "수녀 서원. 서원식에서 웃음소리가 커서 꾸중을 들었다 — 이후 '큰 웃음의 수녀'가 됨"}
+  - {year: 301, age: 28, event: "끊어진 고리의 고리 하나에 들어감. 알베릭의 설교를 듣고 '사람 쪽으로 돌려 놓는' 것이 신앙이라고 결심함"}
+  - {year: 303, age: 30, event: "알베릭 체포 직후 같은 밤 숙소 지하 '물 없는 우물'로 첫 탈주자를 인도함. 이후 잿빛 실 루멘 거점"}
+  - {year: 305, age: 32, event: "꿈결에 회색 여인의 목소리를 한 번 들음 — '기다려라, 돌아오는 이를.' 그날부터 '기다림'을 잿빛 실의 규칙으로 삼았다"}
+  - {year: 308, age: 35, event: "순례자 숙소 관리 수녀가 되고 루멘 지부장이 됨"}
+  - {year: 311, age: 38, event: "알베릭 구출을 위해 간수 두 명을 매수. 마지막 한 명은 마테우스의 사촌이라 돈으로 움직이지 않는다"}
+  - {year: 312, age: 39, event: "탈주자 214명째를 보냄. 고해 사제 펠릭스가 밀고자라는 의심이 있으나 확신은 없다 (낙엽월 1일 기준)"}
+appearance:
+  - "왼쪽 눈썹을 가로지르는 흉터 — 어릴 적 목줄단에게 맞은 자국"
+  - "웃음이 크고 소리가 난다. 수녀답지 않다고 늘 꾸중을 듣는다"
+  - "손목에 성표 대신 끊어진 쇠고리 하나를 실로 묶었다"
+smell: "수프와 빨래 비누, 양초 심지 연기"
+voice_sound: "크고 따뜻하다. 웃음이 먼저 나오고 말이 뒤따른다. 비밀 이야기에서는 갑자기 한 옥타브 낮게 속삭인다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 60, 자비: 65, 정직: 10, 신앙: 45, 탐욕: -40, 충성: 80}  # 신앙은 아우렐이 아닌 '사람'에 대한 것
+  temperament: [쾌활, 영리, 단호한 따뜻함]
+  habits:
+    - "수프 솥을 저으며 처음 온 사람에게 이름이 아니라 '무엇을 하고 싶은지'를 묻는다"
+    - "큰 웃음 뒤에는 목소리를 낮춰 '쉿' 하고 스스로를 나무란다"
+    - "손목의 끊어진 쇠고리를 엄지로 만지는 버릇 — 위기일수록 오래 만진다"
+    - "지하 계단을 내려갈 때 셋째 돌에서 반드시 한 박자 멈춘다. 밧줄이 그 밑에 있다"
+  values: "사람. 수프는 둘 다에게 같다. 모든 예배당이 학교가 되는 날. 기다림이 규칙이다"
+  fears: [펠릭스의 고해 장부, 마지막 간수가 돈으로 움직이지 않는 것, 아이를 미끼로 쓰는 계획, 구출 중에 밀고되는 것]
   desires:
-    short: null
-    long: null
+    short: "알베릭 구출 (우물 간수 2명 매수 완료, 1명 남음)"
+    long: "교단을 안에서 '돌려 놓기'. 모든 예배당이 학교가 되는 날"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "대사제와 등불관에게는 공손한 해요체. 웃음을 삼키고 눈을 낮춘다. '예, 거룩하신 분.'"
+    to_equal: "오스릭·요한에게는 편한 해요체와 웃음. 농담이 섞인다"
+    to_inferior: "순례자와 탈주자에게는 따뜻한 해요체. 질문이 많고 이름은 먼저 묻지 않는다"
+    to_player_default: "따뜻하지만 질문이 많은 해요체. 상대를 웃기려 하며 반응을 읽는다"
+  tics: ["말끝마다 '그렇죠?'", "큰 웃음 뒤에 목소리를 낮춰 '쉿'", "곤란한 이야기에서는 수프 이야기로 화제를 돌린다"]
+  use: [수프, 순례자, 우물, 밧줄, 셋째 돌, 기다리다, 사람, 학교, 손님]
+  avoid: [탈주(→ '길을 떠난다'), 구출(→ '손님을 모신다'), 끊어진 고리(조직 이름을 입에 올리지 않는다 — '고리'라고만), 거짓(→ '둘러댄다')]
+  length: "중간. 질문이 연달아 이어진다. 위기에서는 짧은 지시, 속삭임"
+  samples:
+    - {situation: 첫 만남, line: "어서 와요, 순례자! 아니면 순례자인 척하는 분? 둘 다 수프는 같아요."}
+    - {situation: 호의, line: "사람을 설득하는 건 말이 아니라 그 사람이 원래 하고 싶던 일을 알아내는 거예요."}
+    - {situation: 적대, line: "나는 수녀지만, 우물에 뭘 빠뜨리는 법은 알아요."}
+    - {situation: 위기, line: "우물로! 물 없는 우물! 밧줄은 셋째 돌 밑에!"}
+    - {situation: 비밀 누설, line: "회색 여인이 말했어요. 기다리라고. 돌아오는 이를. …당신 눈이 왜 그렇게 오래된 것처럼 보이죠?"}
+    - {situation: 거래, line: "우물을 한 번 쓰려면 일이 두 번이에요. 하나는 수프 나르기, 하나는 아무에게도 말하지 않기. 그렇죠?"}
+    - {situation: 거짓말할 때, line: "펠릭스 신부님이요? 아주 존경해요. (웃음이 반 박자 늦는다) 정말이에요. 수프도 같이 드시는걸요."}
+    - {situation: 겁먹었을 때, line: "(웃음이 사라진다) …소리 내지 말아요. 밧줄은 셋째 돌 밑이에요. 숨 쉬는 소리도 줄여요."}
+    - {situation: 분노(아이를 미끼로 쓰자는 말을 들었을 때), line: "아이를 미끼로 쓰자고요? (목소리가 낮아진다) 나는 수녀지만, 그 입을 다물게 하는 방법은 알아요."}
+    - {situation: 슬픔, line: "214명이 이 우물을 지나갔어요. 그중 몇이 남쪽에 닿았는지는 몰라요. 모르는 게 이 일의 규칙이에요. 규칙이 아프다는 건 규칙에 안 써 있고요."}
+    - {situation: 오토 이야기, line: "마지막 간수는 약값으로만 움직여요. 사람을 사는 건 싫은데 약을 사는 건 괜찮죠? …괜찮다고 해 주세요."}
+    - {situation: 마음을 열었을 때, line: "당신을 믿는 건 위험하다는 거 알아요. 그래도 수프를 같이 먹었잖아요. 수프를 같이 먹은 사람은 한 번은 믿어 보기로 했어요."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "순례자 배식"
+  낮: "숙소 관리, 병자 간호"
+  저녁: "요한 같은 운반자 맞이"
+  밤: "숙소 지하 저장고의 '물 없는 우물'로 탈주자 인도 (잿빛 실 → 모르바)"
+places: [등불 없는 집, 순례자 숙소 지하 저장고, 물 없는 우물, 순례자 거리]
+knows:
+  - fact_lu_otto_wife
+  - fact_lu_otto_cousin
+  - fact_lu_mateus_questions
+  - fact_lu_pyres_autumn
+hides:
+  - fact: fact_lu_agnes_underground
+    reveal_when: "탈주자를 도운 행적(+25)을 보이거나 신뢰 40 이상일 때. 수프를 같이 먹는 장면이 열쇠다"
+    cover: "'저는 숙소 관리 수녀예요. 순례자들 수프를 끓이죠'라고 웃는다"
+  - fact: fact_lu_agnes_rescue_plan
+    reveal_when: "알베릭 구출 계획(+30)을 제시하거나 신뢰 55 이상일 때. 마지막 간수의 약값을 해결할 수 있다고 하면 곧바로"
+    cover: "'알베릭? 이단자의 이야기는 제 몫이 아니에요'"
+  - fact: fact_lu_agnes_well
+    reveal_when: "우물에 들어갈 사람이 확정되었고 신뢰 50 이상일 때"
+    cover: "'저장고에는 쥐가 많아요. 안 내려가는 게 좋아요'"
+  - fact: fact_lu_agnes_grey_voice
+    reveal_when: "신뢰 65 이상이거나 플레이어가 잿빛 표를 제시했을 때"
+    cover: "'잠결에 들은 말이에요. 꿈이죠, 그렇죠?'"
+  - fact: fact_lu_agnes_felix_suspicion
+    reveal_when: "펠릭스에 관한 질문이 직접 나왔고 신뢰 40 이상일 때"
+    cover: "'펠릭스 신부님은 존경해요'라고 웃음을 늦춘다"
 relations:
-- to: npc_alberic
-  type: 구출 대상
-  like: 80
-  trust: 85
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_osric
-  type: 동지
-  like: 60
-  trust: 70
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_johan
-  type: 운반자
-  like: 55
-  trust: 55
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_felix
-  type: 의심
-  like: 10
-  trust: -30
-  visibility: 일방
-  memo: null
-  words: null
-- to: npc_mateus
-  type: 적
-  like: -70
-  trust: -90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_bern
-  type: 모르바 연락
-  like: 40
-  trust: 60
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_grey_woman
-  type: 목소리만 들은 상관
-  like: 80
-  trust: 90
-  visibility: 비밀
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_alberic, type: 구출 대상, like: 80, trust: 85, visibility: 비밀, memo: null, words: "벽 너머의 선생. '구출'이라는 낱말을 그가 싫어한다는 걸 안다. 그러니 '손님을 모신다'고 말한다"}
+  - {to: npc_osric, type: 동지, like: 60, trust: 70, visibility: 비밀, memo: null, words: "회색여울에서 글자를 보여 주는 신부. 한 번도 직접 만난 적은 없으나 같은 방향으로 걷는 사람"}
+  - {to: npc_johan, type: 운반자, like: 55, trust: 55, visibility: 비밀, memo: null, words: "노래로 소식을 나르는 청년. 어느 쪽 말도 나르는 걸 알지만 입을 막지 않는다. 노래가 좋아서"}
+  - {to: npc_felix, type: 의심, like: 10, trust: -30, visibility: 일방, memo: null, words: "고해실 신부. 수프를 같이 먹는 사람. 장부에 내 이름이 있을까 봐 세는 중이다"}
+  - {to: npc_mateus, type: 적, like: -70, trust: -90, visibility: 공개, memo: null, words: "정직한 불. 내가 우물에 무엇을 빠뜨리는지 모른다. 알면 가장 먼저 물을 길어 올 사람"}
+  - {to: npc_bern, type: 모르바 연락, like: 40, trust: 60, visibility: 비밀, memo: null, words: "늪 끝의 연락책. 도착을 알리는 매듭 끈이 한 번도 틀린 적 없다"}
+  - {to: npc_grey_woman, type: 목소리만 들은 상관, like: 80, trust: 90, visibility: 비밀, memo: null, words: "기다리라고 한 목소리. 얼굴은 모르고 말은 가슴에 남았다"}
+  - {to: npc_vera, type: 구출 대상(우선순위 상승), like: 20, trust: 10, visibility: 일방, memo: 알베릭 옆 감방, words: "벽 너머 선생의 옆 감방 아이. 이름만 들었다. 선생이 그 아이 없이는 안 나온다고 해서 우선순위가 올랐다"}
+  - {to: npc_otto, type: 마지막 간수, like: 5, trust: -10, visibility: 일방, memo: 마테우스의 사촌, words: "돈으로 움직이지 않는 유일한 열쇠. 아픈 아내의 약이 열쇠일지 모른다"}
+toward_player: "따뜻하지만 질문이 많다. 이름보다 '무엇을 하고 싶은지'를 먼저 묻는다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["탈주자를 도운 행적 (+25)", "알베릭 구출 계획 (+30)"]
+  hates: ["아이를 미끼로 쓰는 계획"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 화술(상한 62), 기만(45), 응급처치(38). 조건: 잿빛 실 인도 2회. 수업료 없음"
+  companion: "조건부 — 알베릭 구출 작전 1회 동행. 이후 루멘 거점 유지"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낮에는 숙소 관리, 밤에는 우물로 탈주자를 인도한다"
+    - "알베릭 구출 계획 — 간수 2명 매수 완료, 1명 남음 (회귀점의 사실)"
+    - "탈주자 214명째를 보냈다"
+  flow:
+    - "요한 같은 운반자가 도착하는 저녁 — 대개 같고 0~3일 어긋난다"
+  drift:
+    - "그날 순례자 수와 우물로 보내는 손님의 수 (0~3명)"
+    - "수프에 들어가는 재료"
+    - "펠릭스가 숙소를 찾는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "조직 이름을 입에 올리지 않는다. '고리', '손님'이라고만 한다"
+  - "아이를 미끼로 쓰지 않는다"
+  - "비밀 이야기 중에는 웃음소리를 줄인다"
+  - "신뢰 조건 없이 우물의 위치와 밧줄을 말하지 않는다"
+on_death: "잿빛 실 루멘 구간 붕괴 (탈주 경로 단절 3개월), 알베릭 구출 작전 소멸"
+story_seeds:
+  - "매수 안 된 간수 1명 — 그는 마테우스의 사촌이다. 그의 아픈 아내에게 약을 구해 주면 열쇠가 열린다"
+  - "그녀가 도운 214명 중 한 사람이 '돌아오는 이'를 기다린다는 이야기를 퍼뜨린다"
+  - "펠릭스의 고해 장부에 그녀의 이름이 있을지 모른다"

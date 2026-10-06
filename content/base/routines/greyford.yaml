@@ -47,7 +47,7 @@ npc_bram:
     - {days: all, from: "23:00", to: "04:30", at: gf_rooster, doing: 뒷방에서 잔다}
     - {days: all, from: "04:30", to: "11:00", at: gf_rooster, doing: 솥 셋에 불을 지피고 아침 배식, fixed: true}
     - {days: workday, from: "11:00", to: "14:00", at: gf_keep_store, doing: 성채에서 배급 곡물 수령}
-    - {days: all, from: "14:00", to: "22:00", at: gf_rooster, doing: 장작, 저녁 배식, 묽은 맥주와 소문, fixed: true}
+    - {days: all, from: "14:00", to: "22:00", at: gf_rooster, doing: "장작, 저녁 배식, 묽은 맥주와 소문", fixed: true}
     - {days: all, from: "22:00", to: "23:00", at: gf_rooster_cellar, doing: 지하로 내려가 숨긴 손님들에게 죽을 준다}
 npc_bran:
   home: gf_smithy
@@ -60,7 +60,7 @@ npc_osric:
   home: gf_chapel_priest
   blocks:
     - {days: all, from: "21:30", to: "04:15", at: gf_chapel_priest, doing: 잔다}
-    - {days: all, from: "04:15", to: "07:00", at: gf_chapel, doing: 첫 종, 기도}
+    - {days: all, from: "04:15", to: "07:00", at: gf_chapel, doing: "첫 종, 기도"}
     - {days: workday, from: "07:00", to: "12:00", at: gf_chapel, doing: 예배당}
     - {days: workday, from: "13:00", to: "18:00", at: gf_south_barracks, doing: 병자 방문, alt: {p: 0.4, at: gf_river_huts, doing: 움막 병자 방문}}
     - {days: all, from: "19:30", to: "21:30", at: gf_chapel, doing: 저녁 기도와 통금 종}
@@ -147,7 +147,7 @@ npc_johan:
   away: {at: dragon_pillar_post, doing: 순례 중}
   blocks:
     - {days: all, from: "21:00", to: "05:00", at: gf_pilgrim_barn, doing: 헛간}
-    - {days: workday, from: "06:00", to: "18:00", at: gf_north_barracks, doing: 찬송, 막사 순회, alt: {p: 0.5, at: gf_south_barracks, doing: 남 막사 찬송}}
+    - {days: workday, from: "06:00", to: "18:00", at: gf_north_barracks, doing: "찬송, 막사 순회", alt: {p: 0.5, at: gf_south_barracks, doing: 남 막사 찬송}}
     - {days: sabbath, from: "07:00", to: "09:00", at: gf_chapel, doing: 예배 찬송}
 npc_isol:
   home: gf_pilgrim_barn
@@ -161,7 +161,7 @@ npc_isol:
 npc_kaspar:
   home: crow_gate
   blocks:
-    - {days: all, from: "00:00", to: "24:00", at: crow_gate, doing: 북문 순시, 탈주자 심문}
+    - {days: all, from: "00:00", to: "24:00", at: crow_gate, doing: "북문 순시, 탈주자 심문"}
 npc_lea:
   home: crow_gate
   blocks:

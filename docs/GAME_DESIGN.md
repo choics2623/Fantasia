@@ -33,6 +33,9 @@
 | [systems/19_PRESENTATION.md](systems/19_PRESENTATION.md) | **글이 몸을 가진다**: 박자, 상태별 문장 변형, 문맹·언어 가림, 소리·진동·삽화 |
 | [systems/20_ATTACHMENT_AND_LOSS.md](systems/20_ATTACHMENT_AND_LOSS.md) | **애착과 상실**: 매듭, 상실의 규칙, 나를 처음 보는 사랑한 사람과의 재회 |
 | [systems/21_LLM_HYBRID.md](systems/21_LLM_HYBRID.md) | **LLM 하이브리드**: LLM은 제안하고 규칙이 판정한다 — 선택지 문장, NPC 대화, 캐릭터 메모리, 소문의 규모(마을→대륙), 구독·API 실행 환경 |
+| [systems/22_NPC_PERSONA.md](systems/22_NPC_PERSONA.md) | **NPC 페르소나 카드**: LLM이 연기할 사람 — 생애 연표, 말투 규칙, 아는 것/숨기는 것, 회귀 메모, 금칙 (151명) |
+| [systems/23_FACTIONS_AND_SECRETS.md](systems/23_FACTIONS_AND_SECRETS.md) | **세력의 몸과 세계의 비밀**: 통치 형태, 조직도(자리와 사람), 법·관습, 비밀 결사의 세포, 은자, 진실 목록과 누가 어디까지 아는가 |
+| [systems/24_PLACES_AND_WHEREABOUTS.md](systems/24_PLACES_AND_WHEREABOUTS.md) | **장소와 행방**: 마을 안 건물 배치, NPC 일과, 실시간 위치 알고리즘(시간의 함수, 표류, 이동, LOD) |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |

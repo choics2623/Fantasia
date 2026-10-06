@@ -16,3 +16,11 @@
 - {truth: T12, who: npc_elastriel, level: whole, note: "첫 불씨를 정원째 불태우라 명했다 (fact_sv_first_ember_burned)"}
 - {truth: T12, who: npc_aerin, level: fragment, note: "첫 불씨와 다라가 그물에 끝났음을 안다"}
 - {truth: T13, who: npc_elastriel, level: fragment, note: "맹약회의 313의 시기를 안다. 입장은 정하지 못했다"}
+
+# ── 녹테른 (fac_nocturne)
+- {truth: T01, who: npc_mordecai, level: fragment, note: "신살 뒤 SK ~180에 나가의 바다에서 신의 피를 길어 마셨다. 신살 자체의 몫은 엘다르 혈통의 기억으로 안다"}
+- {truth: T03, who: npc_mordecai, level: fragment, note: "신의 피 속 목소리 조각으로 잔향이 피 흘릴 때마다 '듣는다' (fact_nc_mordecai_hears_echo). '한 시대에 한 사람'은 몸으로 안다"}
+- {truth: T03, who: npc_cecile, level: fragment, note: "신의 마지막 말을 인간에게 남겨진 것으로 받아들인 유일한 녹테른 (fact_nc_cecile_waits_echo)"}
+- {truth: T09, who: npc_mordecai, level: fragment, note: "마른 우물 바닥의 신의 피 몇 방울 — 에오르가 완전히 죽지 않았다는 단서 (fact_nc_well_blood_remains)"}
+- {truth: T11, who: npc_cecile, level: fragment, note: "신의 피 속 말 '너희는 끝나지 않을 것이다'를 여섯 살에 들었다. 그림자 진명 스승"}
+- {truth: T13, who: npc_mordecai, level: rumor, note: "용제국이 약해지기를 기다린다. 맹약회의 313의 시기는 소문으로"}

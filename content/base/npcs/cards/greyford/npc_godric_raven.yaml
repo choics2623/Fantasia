@@ -93,7 +93,7 @@ relations:
   - {to: npc_owen_raven, type: 아들, like: 40, trust: -10, visibility: 공개, memo: 물러터진 놈, words: "하나뿐인 상속자. 사랑하지만 믿지 않는다. 그 애가 장부를 보는 날이 두렵다"}
   - {to: npc_henrik, type: 징세관, like: 20, trust: 55, visibility: 공개, memo: 착복을 모름, words: "숫자를 아는 쓸모 있는 쥐. 반을 나눈다고 믿는다"}
   - {to: npc_martha, type: 노예 집사·목줄장, like: 10, trust: 60, visibility: 공개, memo: null, words: "성채를 굴리는 손. 딸을 미끼로 쥐고 있으니 믿을 만하다"}
-  - {to: npc_severo, type: 채권 중개인, like: -30, trust: 20, visibility: 비밀, memo: 빚 1,840 두카트, words: "목에 감긴 뱀. 웃으며 대접하고, 편지가 올 때마다 정향을 두 개 씹는다"}
+  - {to: npc_severo, type: 채권 중개인, like: -30, trust: 20, visibility: 비밀, memo: "빚 1,840 두카트", words: "목에 감긴 뱀. 웃으며 대접하고, 편지가 올 때마다 정향을 두 개 씹는다"}
   - {to: npc_kaspar, type: 이웃 사령관, like: -50, trust: -40, visibility: 공개, memo: 잡종 경멸, words: "노예 배에서 나온 것이 용좌의 군대를 쥐고 있다. 그 앞에서는 웃어야 하는 것이 분하다"}
   - {to: npc_znik, type: 감독관, like: 0, trust: 40, visibility: 공개, memo: null, words: "채찍. 이름을 기억할 필요도 없는 도구"}
   - {to: npc_sara, type: 매각 명단의 하녀, like: 0, trust: 0, visibility: 비밀, memo: null, words: "얼굴도 잘 모른다. 세베로가 고른 조건에 맞는 숫자 하나"}

@@ -1,0 +1,260 @@
+# 녹테른 밤의 가문 — 엘다르 시간 혈명 위에 신의 피(첫 갈증)를 덮어쓴 일족. 통치는 '피의 전수 계보'.
+# 근거: HOUSES §3.2, RACES §6, REGIONS §7 (장소 id: REGIONS §7.9).
+id: fac_nocturne
+name: 녹테른 밤의 가문 (첫 갈증의 잔)
+kind: polity
+race: [녹테른(첫 갈증의 원로, 밤의 귀족), 갈증받이(인간), 크릭(목동), 박쥐날개 아에리(전령)]
+governance: 전수 위계 (잔 서약) # 새 형태 — 피를 건넨 자와 받은 자의 사슬이 곧 서열이자 법
+motto: "처음 마신 자가 마지막에 잔다."
+seat: 흑성 아르네스 — 첫 갈증 성 (밤의 궁정)
+size:
+  members: "녹테른 약 1,100~2,900 (문서마다 다름 — 보고), 갈증받이 약 110, 크릭 목동 약 2,500"
+  territory: "녹테른 밤의 영지 서남부 — 혈목장(일곱 우리 / 31곳 문서마다 다름), 안개 늪 경계"
+  wealth: "혈포도주(한 병 2비늘, 세렌 경유), 포도, 양모, 인간 공물, 피 교역(고요물 가문 '밤 부두')"
+  force: "밤에만 싸운다. 갈증받이 사냥꾼, 침묵종 암살자, 크릭·타이란 용병, 안개 늪. 낮의 공성에 극도로 약하다"
+
+decision: >
+  결정은 '피의 사슬'을 따라 내려온다. 모든 녹테른은 자기에게 피를 전수한 자(피의 언니·오라버니)에게 맹세로 묶이고,
+  그 사슬의 맨 위가 모르데카이다. 모르데카이는 3,200년 잠든 적이 없고 그만큼 결정이 일정하다 — 그는 묻지 않고 계산한다.
+  정기 회합은 하나뿐이다: 긴밤월 15일 '갈증의 밤'. 이날 모든 녹테른이 첫 갈증 성에 모여 공물 명단(혈목장별 배당)을 확정하고
+  집전관이 잔을 돌린다. 그 밖의 현안은 첫 잔의 가문들이 밤마다 서신과 사자로 움직이고 모르데카이가 '듣고 나서' 한 마디를 한다.
+  거부권은 없다. 대신 '맹세는 반드시 밤에 한다' — 낮에 한 약속은 거짓으로 쳐서, 합의는 밤마다 다시 확인되어야 한다. 이 틈이 정적과 이단의 시간이다.
+  모르데카이는 직접 움직이지 않고 사냥꾼을 보낸다. 가문 간 분쟁은 장부(혈통·공물·혈목장 인원)가 증거이고, 위조가 드러나면 혈목장이 몰수된다.
+succession: >
+  선출도 상속도 없다. 새 첫 잔의 가문은 '피의 전수'로만 생긴다 — 엘다르는 약 50%가 살아남고 인간은 약 99%가 죽는다.
+  가주가 죽으면(굶주린 자가 되어 사냥당하거나 햇빛·불에 끝나면) 그에게 피를 받은 사슬이 한 칸씩 올라가 자리를 메우고,
+  혈목장은 가문 안 가장 오래된 잔이 잇는다. 모르데카이 자리의 후임은 없다 — 그가 죽는 날 사슬의 꼭대기가 비고,
+  모든 맹세가 누구에게 향해야 하는지 모르게 된다. 그날을 가장 두려워하는 자가 세실이고, 가장 바라는 자가 알라리크다.
+
+offices:
+  - id: off_first_thirst
+    title: 첫 갈증의 군주
+    holder: npc_mordecai
+    reports_to: null
+    powers: ["피의 사슬의 정점 — 모든 맹세의 수령인", "갈증의 밤 소집·사냥꾼 파견", "신의 피 우물 독점", "첫 잔의 가문 승인"]
+    chosen_by: "SK ~180 신의 피를 처음 마신 자. 후임 없음"
+    perks: ["첫 갈증 성 지하 마른 우물", "잠들지 않음(3,200년)", "잔향의 피 냄새를 '듣는다'"]
+  - id: off_attendant
+    title: 군주의 시종
+    holder: "unnamed:엘로이즈 (2,900)"
+    reports_to: off_first_thirst
+    powers: ["군주의 말을 가문에 전한다", "알현 순서"]
+    chosen_by: "군주의 지명"
+    perks: []
+  - id: off_executioner
+    title: 사형 집행인
+    holder: "unnamed:카르논 (1,800)"
+    reports_to: off_first_thirst
+    powers: ["굶주린 자·맹세 파기자의 처형", "공물 명단 집행"]
+    chosen_by: "군주의 지명"
+    perks: []
+  - id: off_hunters
+    title: 군주의 사냥꾼 (추적자)
+    holder: "unnamed:군주가 보내는 사냥꾼들 — 잔향이 중상 이상 피를 흘릴 때마다 추적 클락이 한 칸"
+    reports_to: off_first_thirst
+    powers: ["잔향 추적", "굶주린 자 사냥"]
+    chosen_by: "군주가 그때그때 지명"
+    perks: []
+  - id: off_cup_conclave
+    title: 첫 잔의 가문 회합 (SK 180 생존자 약 90과 직계 전수자)
+    holder: "unnamed:첫 잔의 가문 가주들"
+    reports_to: off_first_thirst
+    powers: ["혈목장 소유", "혈통 등급 '은혈' 독점 배분", "갈증의 밤 공물 협의"]
+    chosen_by: "피의 전수 사슬"
+    perks: ["은혈 혈통"]
+  - id: off_thirst_night_officiant
+    title: 갈증의 밤 집전관
+    holder: "unnamed:현직 집전관 — 알라리크 검은성배가 이 자리와 공물 명단을 노린다"
+    reports_to: off_first_thirst
+    powers: ["갈증의 밤 의례와 공물 명단 확정", "혈목장별 배당 조정"]
+    chosen_by: "군주의 지명 (첫 잔의 가문 중)"
+    perks: ["공물 장부 열람"]
+  - id: off_house_redmoon
+    title: 붉은 달 가문 가주 (최대 혈목장, 11곳)
+    holder: "unnamed:바실리사 붉은달 (약 2,900) — 문서에 따라 바일란 붉은잔/아드리엘 핏빛유리로 적힘"
+    reports_to: off_cup_conclave
+    powers: ["녹테른 영지 서부 평원 혈목장 11곳, 인간 약 1만 4천", "아우락스 지지"]
+    chosen_by: "SK 410 창건, 세습"
+    perks: ["최대 혈목장"]
+  - id: off_house_shadowrose
+    title: 그림자장미 가주 (장미 우리 영주)
+    holder: npc_cecile
+    reports_to: off_cup_conclave
+    powers: ["장미 우리(혈목장 1곳, 인간 약 400) 관할", "'병사' 위장 명부", "붉은 갈대 선 통로"]
+    chosen_by: "SK 220 로잘린의 직계 — 모르데카이에게 첫 입양된 엘다르의 가문"
+    perks: ["검은 장미 코르사주(41송이)", "모르바 늪 경계"]
+  - id: off_house_obsidian
+    title: 흑수정 가문 가주 (잿빛 탑 원로)
+    holder: "unnamed:발타사르 흑수정 (약 2,500)"
+    reports_to: off_cup_conclave
+    powers: ["아르카스 탑섬 근처 '수정 동굴' 연구소", "저주 연구", "멜리산드 지지"]
+    chosen_by: "SK 900 창건, 세습"
+    perks: ["유일하게 잔향을 '초대'하려는 원로"]
+  - id: off_house_silentbell
+    title: 침묵종 가주 (사냥·암살 의뢰)
+    holder: "unnamed:사일라스 침묵종 (약 1,700) / 사냥꾼 '아홉째'(이름 없음, 400)"
+    reports_to: off_cup_conclave
+    powers: ["암살·사냥 의뢰 수행 — 영지 없음"]
+    chosen_by: "SK 1,800 창건. 의뢰주가 곧 지지 대상"
+    perks: ["현재 세렌 졸라크 상가의 의뢰 수행 중"]
+  - id: off_house_stillwater
+    title: 고요물 가주 (밤 부두, 피 교역)
+    holder: "unnamed:마렌디스 고요물 (약 900)"
+    reports_to: off_cup_conclave
+    powers: ["세렌 항구 '밤 부두' 피 교역(병에 담은 인간 피)", "멜리산드 지지"]
+    chosen_by: "SK 2,950 세렌 동맹 결성기에 창건"
+    perks: ["세렌과 같은 배"]
+  - id: off_house_blackchalice
+    title: 검은성배 혈목장 남작
+    holder: npc_alaric
+    reports_to: off_cup_conclave
+    powers: ["혈통 장부 '최상급 혈통' 관리", "세실의 장부 위조 증거 추적", "퀸트 회유"]
+    chosen_by: "나중의 잔 — 모르데카이의 승인"
+    perks: ["혈통 번호 체계(C-17 등)"]
+  - id: off_tribute_keeper
+    title: 공물 담당 (하얀 우리 영주)
+    holder: "unnamed:카시미르 재의 잔 (REGIONS §7.3)"
+    reports_to: off_cup_conclave
+    powers: ["공물 문(red_pens__tribute_gate) 명단 판", "하얀 우리 선별 육종 1,200"]
+    chosen_by: "군주의 지명"
+    perks: []
+  - id: off_pen_head_herder
+    title: 크릭 목동장 '울타리 혀'
+    holder: "unnamed:즈라그 (크릭, 44)"
+    reports_to: off_cup_conclave
+    powers: ["각 우리의 일상 관리", "울타리 넘기 처벌"]
+    chosen_by: "영주들의 합의"
+    perks: []
+  - id: off_pen_overseer_rose
+    title: 장미 우리 감독 (목줄장)
+    holder: npc_quint
+    reports_to: off_house_shadowrose
+    powers: ["'병사' 명단 서명"]
+    chosen_by: "세실의 지명 — 매수됨"
+    perks: []
+  - id: off_rose_steward
+    title: 그림자장미 저택 집사
+    holder: "unnamed:오르페 (인간 출신 하인, 51) — 장부 위조 담당"
+    reports_to: off_house_shadowrose
+    powers: ["혈목장 장부 관리·위조"]
+    chosen_by: "세실의 지명"
+    perks: []
+  - id: off_messenger
+    title: 전령·공중 감시 (박쥐날개 아에리)
+    holder: npc_vesper
+    reports_to: off_cup_conclave
+    powers: ["하늘에서 탈주 행렬 감시·보고", "영지 간 전령"]
+    chosen_by: "녹테른의 하수인 — 7일마다 피 한 방울(실은 3대째부터 불필요)"
+    perks: []
+  - id: off_exile_registrar
+    title: 갈증 망명자 접수관
+    holder: null
+    reports_to: off_first_thirst
+    powers: ["실바렌에서 넘어오는 엘다르의 수용 여부 결정"]
+    chosen_by: "공석 — 받으면 엘다르와 전쟁, 안 받으면 수가 준다. 아무도 이 자리에 앉으려 하지 않는다"
+    perks: []
+
+ranks:
+  - {id: rank_first_thirst, title: "첫 갈증의 군주", duties: "사슬의 정점", privileges: "신의 피 우물", open_to_player: false}
+  - {id: rank_first_cup, title: "첫 잔의 가문 (SK 180 생존자와 직계)", duties: "혈목장 소유, 갈증의 밤 협의", privileges: "은혈 독점, 피의 전수권", open_to_player: false}
+  - {id: rank_later_cup, title: "나중의 잔", duties: "혈목장 운영, 가문 충성", privileges: "혈목장 지분, 햇빛 없는 영지 거주", open_to_player: false}
+  - {id: rank_thirst_bearer, title: "갈증받이 (반쯤 전수된 인간)", duties: "경비·사냥꾼·목장 감독, 7일마다 피", privileges: "주인에게 각인, 근력·민첩 +1, 밤눈 반쪽", open_to_player: true, condition: "피의 전수에서 살아남아야 한다 — 평범한 인간은 99% 죽는다. 잔향(플레이어)만이 대가 없이 견디나 발각되면 순종의 빛이 악마로 취급한다. 충성 성향 +50 고정 옵션은 주인공에게 적용하지 않는다"}
+  - {id: rank_herder, title: "크릭 목동", duties: "혈목장 일상 관리, 채찍", privileges: "혈목장 출입", open_to_player: false}
+  - {id: rank_pen_human, title: "혈목장 인간 (번호·혈통 계보)", duties: "운동, 가벼운 농사, 채혈(10일에 1회 / 문서마다 6주 1회)", privileges: "대륙에서 가장 잘 먹는 노예, 피 표가 많을수록 특식", open_to_player: true, condition: "공물로 끌려가거나 혈목장에 위장 입소. 올라가는 사다리가 아니라 갇힘이다. 이름을 얻으면 마시기 어려워진다"}
+
+law:
+  crimes:
+    - {act: "혈목장 인간이 운동 거부 / 울타리를 넘음", punishment: "채혈 +1회 / 하얀 우리 이송", note: "인간 대상. 집행 크릭 목동·즈라그"}
+    - {act: "녹테른에게 햇빛을 비춤(거울 등)", punishment: "갈증의 밤 명단 등재", note: "인간 대상 — 사실상 사형"}
+    - {act: "탈출 / 글자 / 자해(피를 망침)", punishment: "갈증의 밤 명단 등재 / 구속", note: "인간 대상. 이름 없는 자들 연계는 사냥꾼 파견"}
+    - {act: "혈목장 인간에게 이름을 줌", punishment: "녹테른은 가문 내 치욕과 장부 제외. 인간은 채혈 횟수 급증", note: "금기 ⑤ — 이름을 주면 마시기 어려워진다"}
+    - {act: "인간을 죽을 때까지 마심", punishment: "품위 실추 — 혈목장 배당 삭감, 첫 잔 회합에서 발언 정지", note: "녹테른 대상. 갈증의 밤만 예외"}
+    - {act: "낮에 맹세함 / 낮의 약속을 증거로 삼음", punishment: "맹세 무효 — 거짓으로 친다", note: "녹테른 대상. 모든 계약은 밤에 다시 확인된다"}
+    - {act: "나가의 바다에 들어감", punishment: "피의 빚 — 나가가 계약 없이 죽일 권리를 주장, 가문은 구해 주지 않는다", note: "녹테른 대상"}
+    - {act: "엘다르의 노래를 부름", punishment: "고향을 부른 자로 배척. 부르다 우는 자는 갈증 광기를 의심해 감시", note: "녹테른 대상 — 금기 ④"}
+    - {act: "혈목장 장부 위조(인원·공물)", punishment: "혈목장 몰수, 위조자 사냥꾼에게 인계", note: "녹테른 대상. 세실과 오르페가 정확히 이 죄를 짓고 있다"}
+    - {act: "갈증 광기(30일 이상 굶주림)에 든 자를 숨김", punishment: "숨긴 자도 같은 처분 — 굶주린 자는 모두가 사냥한다", note: "녹테른 대상. 90일이면 짐승이 된다"}
+
+customs:
+  greeting: "손바닥을 잔 모양으로 모아 가슴에 대고 '밤이 깊기를.' 답은 '목마르지 않기를.' 은잔 앞에서는 직접 무는 짓은 짐승의 짓이므로 먼저 잔을 내보인다. 인간은 낮에는 말을 걸지 않는다 — 낮의 대화는 없던 것으로 친다."
+  taboos:
+    - "햇빛 아래 이름을 부르거나 서약함. 은그릇과 흐르는 물을 건너는 맹세"
+    - "나가의 이름, '도둑', '시체', 그들이 엘다르였음을 상기시키는 말"
+    - "혈목장 인간에게 이름을 줌 — 번호와 혈통 계보('붉은 혈통 7대 12번')로만 부른다"
+    - "엘다르의 노래, '배고프다'는 직접 표현(갈증은 '마르다'라 한다)"
+    - "인간을 죽을 때까지 마시는 것 — 갈증의 밤은 예외, 결과로만 말한다"
+  rites:
+    - {name: "갈증의 밤", when: "긴밤월 15일", what: "공물 인간 300명(루멘 40명 + 용좌령 매입 등)이 도착하고 녹테른 전원이 첫 갈증 성에 모인다. 이날만은 직접 혈목장에 내려온다. 집전관이 공물 명단을 확정하고 잔을 돌린다. 인간은 우리 안에서 촛불을 끄고 숨을 죽인다"}
+    - {name: "첫 잔의 맹세", when: "수시 — 반드시 밤", what: "피를 전수한 자 앞에 손목을 걷고 맹세한다. 낮에 한 맹세는 거짓으로 친다"}
+    - {name: "피의 전수", when: "수시 (비공개)", what: "녹테른의 피와 신의 피를 섞어 마신다. 엘다르 약 50% 생존, 인간 약 99% 사망. 갈증받이는 반쯤 전수된 살아남은 극소수"}
+    - {name: "우물 순례", when: "갈증의 밤 전날", what: "첫 갈증 성 지하 마른 우물 가장자리에서 한 방울의 신의 피를 '듣는다' — 말하는 것은 모르데카이뿐"}
+    - {name: "장미 피 주기", when: "수시", what: "검은 장미 정원에 피를 주어 키운다. 세실은 장미 하나를 빼돌린 인간 열 명으로 센다"}
+  speech: "엘다르어 고어에 그림자 은어. 이름 대신 갈증 칭호('열한째밤', '붉은잔')를 쓴다. 경어는 피의 사슬의 순서로 정한다 — 전수해 준 자에게는 '군주시여/언니시여'와 하오체, 같은 사슬 줄기끼리는 정중하되 한 문장마다 가시가 있다. 인간에게는 반말, 짧고 마른 말투. 맥박을 듣고 말하는 습관 — 상대의 거짓을 심장 박자로 지적한다."
+
+membership:
+  join: "피의 전수뿐. 엘다르가 마시면 약 50% 생존, 인간은 약 99% 사망(생존자는 갈증받이). 입문은 '잔의 맹세'를 밤에 하는 것으로 닫힌다."
+  leave: "나갈 수 없다 — 갈증은 평생이다. 다만 첫 잔의 가문에서 '잘리는' 길(혈목장 몰수, 사슬의 단절)이 있고, 끊긴 자는 굶주린 자가 되어 사냥당한다. 갈증받이는 10~20년 안에 안에서부터 무너진다."
+  signs: ["검은 바탕에 붉은 물방울 하나(왕가 문장)", "손목의 채혈 문신·목 양쪽의 채혈 흉터(혈목장 인간)", "은잔과 검은 장미 코르사주", "붉은 동심원 눈, 혀 밑의 가시"]
+
+internal_factions:
+  - {name: "모르데카이 직계 (첫 잔의 가문)", leader: npc_mordecai, aim: "은혈 혈통을 독점하고 신의 피의 '마지막 말'을 완성한다 — 잔향의 피를 마시는 것", strength: 55}
+  - {name: "나중의 잔 (은혈 배분 불만)", leader: npc_alaric, aim: "혈통 장부로 세실을 무너뜨리고 혈목장을 흡수한다. 잔향의 피를 바쳐 원로가 된다", strength: 25}
+  - {name: "세실의 이단 (잿빛 실의 후원자들)", leader: npc_cecile, aim: "혈목장 인간을 '병사'로 위장해 빼돌린다. 마지막 말의 '너희'가 인간임을 받아들인 유일한 녹테른", strength: 10}
+  - {name: "갈증 망명자 수용파 / 반대파", leader: null, aim: "실바렌에서 넘어오는 엘다르를 받아 수를 늘릴 것인가, 엘다르와의 전쟁을 피할 것인가. 접수관 자리가 공석", strength: 10}
+
+assets:
+  - "첫 갈증 성 지하 마른 우물 — 바닥에 신의 피 몇 방울이 남아 있다"
+  - "혈목장 31곳 / 일곱 우리 — 인간 약 25,000~41,000 (문서마다 다름)"
+  - "혈통 장부 — 혈통 번호, 등급 '은혈·적혈·탁혈'"
+  - "갈증받이 사냥꾼 약 110, 박쥐날개 아에리 전령"
+  - "침묵종의 암살 의뢰 수행 능력"
+  - "혈포도주 교역, 세렌 밤 부두의 피 교역"
+  - "굶주린 자 약 30개체의 이빨 골짜기 — 영지 경계의 '낙오 짐승'"
+
+secrets:
+  - {fact: fact_nc_mordecai_hears_echo, known_by_rank: rank_first_thirst}
+  - {fact: fact_nc_mordecai_goal_last_word, known_by_rank: rank_first_thirst}
+  - {fact: fact_nc_mordecai_knows_cecile, known_by_rank: rank_first_thirst}
+  - {fact: fact_nc_mordecai_sends_hunters, known_by_rank: rank_first_cup}
+  - {fact: fact_nc_well_blood_remains, known_by_rank: rank_first_cup}
+  - {fact: fact_nc_gods_last_word, known_by_rank: rank_first_thirst}
+  - {fact: fact_nc_thirst_night_tribute, known_by_rank: rank_later_cup}
+  - {fact: fact_nc_ledger_mismatch, known_by_rank: rank_later_cup}
+  - {fact: fact_nc_cecile_smuggles, known_by_rank: rank_first_thirst}
+  - {fact: fact_nc_alaric_bloodline_from_cecile, known_by_rank: rank_later_cup}
+  - {fact: fact_nc_starved_future_of_nobles, known_by_rank: rank_later_cup}
+  - {fact: fact_nc_bat_wing_blood_myth, known_by_rank: rank_first_cup}
+  - {fact: fact_nc_mordecai_volk_pack, known_by_rank: rank_first_thirst}
+  - {truth: T01, level: fragment, holders: [npc_mordecai]}
+  - {truth: T03, level: fragment, holders: [npc_mordecai, npc_cecile]}
+  - {truth: T09, level: fragment, holders: [npc_mordecai]}
+  # TODO-FACT: 발타사르 흑수정은 녹테른의 저주가 '신의 피 속에 남은 에오르의 말 한 마디' 때문이라 믿고, 그 말을 진명으로 읽을 수 있는 잔향을 '초대'하려 한다 (HOUSES §3.2)
+  # TODO-FACT: 첫 갈증의 군주 모르데카이와 엘라스트리엘은 사촌이며 3,200년 만난 적이 없다 (HOUSES §3.1.6)
+
+relations:
+  - {to: fac_aurax, stance: -30, note: "HOUSES §6.1 행렬 — 녹테른(첫 갈증). 붉은 달은 아우락스를 개별 지지(+1)"}
+  - {to: fac_melisande, stance: 10, note: "행렬. 흑수정·고요물은 멜리산드를 개별 지지(+1)"}
+  - {to: fac_kaspar, stance: 0, note: "행렬"}
+  - {to: fac_eldar, stance: -70, note: "행렬 — 잘린 가지. 첫 갈증 ↔ 첫 아침 가지의 3,200년 침묵"}
+  - {to: fac_durgan, stance: -10, note: "행렬"}
+  - {to: fac_seren, stance: 40, note: "행렬 — 단 나가는 녹테른을 피의 빚으로 본다(비대칭)"}
+  - {to: fac_jotun, stance: -20, note: "행렬"}
+  - {to: fac_grom, stance: 0, note: "행렬"}
+  - {to: fac_light, stance: -20, note: "행렬 — 단 순종의 빛은 혈목장 인간에게 허용된다"}
+  - {to: fac_nameless, stance: -40, note: "행렬. 예외: 세실 +50 (잿빛 실 장미 실)"}
+  - {to: fac_collar, stance: 10, note: "행렬"}
+  - {to: fac_ashen_tower, stance: 20, note: "행렬"}
+  - {to: fac_barg, stance: -20, note: "행렬 — AS 298 볼크의 무리 몰살이 이유"}
+  - {to: fac_swamp_hags, stance: -30, note: "행렬. 예외: 세실 +40 (재 계보와 50년 거래)"}
+toward_echo: "이용하기·잡아 마시기. 모르데카이는 잔향의 피를 마시려 사냥꾼을 보내고, 흑수정은 저주를 읽어 줄 목소리로 '초대'하며, 세실은 알아보고 기다린다. 알라리크는 피를 바쳐 원로가 되려 한다."
+player_paths:
+  - "구출: 갈증의 밤 공물 명단에 낀 잿빛 실 요원을 빼낼지, 세실의 정체를 지킬지"
+  - "협력: 세실의 그림자 진명 스승 — 잿빛 실 남쪽 호송 2회 필요"
+  - "잠입: 혈목장에 공물로 위장 입소, 채혈 헛간 기록판 조작"
+  - "거래: 피를 내어주는 선택지(체질 −2 일시), 갈증의 밤 일정 정보로 귀족에게 접근"
+  - "이용: 갈증받이 의식(잔향 전용) — 모르데카이의 청각에 잡힐 위험"
+  - "폭로: 알라리크의 혈통 장부와 세실의 '병사' 명단을 겹치면 사라진 자들의 형제가 모두 나온다 — 양쪽을 무너뜨릴 수 있다"
+regression:
+  fixed: ["갈증의 밤 긴밤월 15일", "세실의 장미 41송이와 장부 위조 구조", "모르데카이의 불면과 마른 우물", "혈목장 규칙(인간에게 이름을 주지 않음)"]
+  flow: ["세실의 탈출 호송 규모(한 달 6~12명)", "알라리크의 장부 추적 속도", "공물 명단의 배당"]
+  drift: ["공물 명단과 도착 인원의 2~3명 차이", "굶주린 자 개체 수와 남쪽 길 침입", "모르데카이가 '듣는' 잔향의 소리 크기(회차가 쌓일수록 커진다)"]
