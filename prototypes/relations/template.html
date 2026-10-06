@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>에오르달 인물 관계망</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+/* Layout: 수사 게시판 같은 관계망 — 왼쪽 필터, 가운데 그래프, 오른쪽 인물 카드. 좁은 화면은 위→아래로 쌓는다.
+   Palette: 재 섞인 종이 바탕, 철분 잉크, 관계 계열 6색(의미 색), 강조는 녹슨 핏빛 하나. */
+:root {
+  --paper: #e4e0d6; --panel: #ece8df; --ink: #2a2521; --ink-soft: #5d554c; --line: #bdb5a6; --rust: #8b2e22;
+  --kin: #2a2521; --rank: #5b4a8a; --love: #3f7a4a; --hate: #a1342a; --deal: #9a6a1c; --secret: #6b6b6b; --org: #2f6f86;
+  --font-display: "Song Myung", "Nanum Myeongjo", serif;
+  --font-body: "Gowun Batang", "Nanum Myeongjo", serif;
+  --font-ui: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #161716; --panel: #1d1e1c; --ink: #d8d0c2; --ink-soft: #9c9384; --line: #3a3833; --rust: #c75a43;
+    --kin: #d8d0c2; --rank: #9d8ad6; --love: #7cb987; --hate: #e0705f; --deal: #d3a24e; --secret: #a3a3a3; --org: #6db3c9; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #161716; --panel: #1d1e1c; --ink: #d8d0c2; --ink-soft: #9c9384; --line: #3a3833; --rust: #c75a43;
+  --kin: #d8d0c2; --rank: #9d8ad6; --love: #7cb987; --hate: #e0705f; --deal: #d3a24e; --secret: #a3a3a3; --org: #6db3c9; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.app { max-width: 1500px; margin: 0 auto; padding-inline: 16px; padding-block: 12px; display: flex; flex-direction: column; gap: 12px; }
+header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 18px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; margin: 0; letter-spacing: 0.04em; }
+.stats { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.main { display: grid; grid-template-columns: 240px minmax(0, 1fr) 320px; gap: 12px; align-items: start; }
+@media (max-width: 1100px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px; min-width: 0; }
+.eyebrow { font-family: var(--font-ui); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 4px; }
+label { font-family: var(--font-ui); font-size: 0.82rem; display: flex; align-items: center; gap: 6px; }
+input[type=search], select { width: 100%; font-family: var(--font-ui); font-size: 0.88rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 3px; background: var(--paper); color: var(--ink); }
+.filters { display: flex; flex-direction: column; gap: 12px; }
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 8px; }
+.sw { width: 14px; height: 4px; border-radius: 2px; display: inline-block; flex: none; }
+button { font-family: var(--font-ui); font-size: 0.82rem; border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 3px; padding: 6px 10px; cursor: pointer; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+.graph { position: relative; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); min-width: 0; overflow: hidden; }
+.graph svg { display: block; width: 100%; height: 72vh; min-height: 420px; touch-action: none; }
+.hint { position: absolute; left: 10px; bottom: 8px; font-family: var(--font-ui); font-size: 0.75rem; color: var(--ink-soft); pointer-events: none; }
+.node circle { stroke: var(--paper); stroke-width: 1.5; cursor: pointer; }
+.node text { font-family: var(--font-body); font-size: 11px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; pointer-events: none; }
+.node.dim, .link.dim { opacity: 0.08; }
+.node.focus circle { stroke: var(--rust); stroke-width: 3; }
+.link { fill: none; stroke-width: 1.4; }
+.link.secret { stroke-dasharray: 4 3; }
+#person h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; margin: 0; }
+#person .meta { font-family: var(--font-ui); font-size: 0.8rem; color: var(--ink-soft); }
+#person p { margin: 6px 0; }
+#person ul { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 6px; max-height: 52vh; overflow-y: auto; }
+#person li { font-size: 0.88rem; border-left: 3px solid var(--line); padding-left: 8px; }
+#person li .who { font-weight: 700; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line); }
+#person li .tag { font-family: var(--font-ui); font-size: 0.72rem; color: var(--ink-soft); }
+.pill { font-family: var(--font-ui); font-size: 0.7rem; border: 1px solid var(--line); border-radius: 99px; padding: 0 6px; margin-left: 4px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>에오르달 인물 관계망</h1>
+    <div class="stats" id="stats"></div>
+  </header>
+  <div class="main">
+    <section class="card filters" aria-label="필터">
+      <div>
+        <div class="eyebrow">인물 찾기</div>
+        <input type="search" id="q" placeholder="이름, 종족, 역할…" autocomplete="off">
+      </div>
+      <div>
+        <div class="eyebrow">지역</div>
+        <select id="region"><option value="">전체</option></select>
+      </div>
+      <div>
+        <div class="eyebrow">세력</div>
+        <select id="faction"><option value="">전체</option></select>
+      </div>
+      <div>
+        <div class="eyebrow">관계 계열</div>
+        <div class="checks" id="families"></div>
+      </div>
+      <div>
+        <div class="eyebrow">표시</div>
+        <label for="secret"><input type="checkbox" id="secret" checked> 비밀 관계 보기 (작가용)</label>
+        <label for="hop2"><input type="checkbox" id="hop2"> 선택 인물의 2단계 이웃까지</label>
+      </div>
+      <button type="button" id="reset">필터 초기화</button>
+    </section>
+    <section class="graph" aria-label="관계 그래프">
+      <svg id="svg"></svg>
+      <div class="hint">드래그로 이동 · 휠/핀치로 확대 · 인물을 누르면 관계망이 강조된다</div>
+    </section>
+    <section class="card" id="person" aria-live="polite"></section>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+const DATA = /*REL_DATA*/null/*END_REL_DATA*/;
+</script>
+<script>
+(() => {
+  const FAM = { 혈연: "--kin", 위계: "--rank", 감정: "--love", 적대: "--hate", 거래: "--deal", 비밀: "--secret", 조직: "--org" };
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const RACE_GROUP = (r) => {
+    const g = [["용", "#b0563c"], ["와이번", "#b0563c"], ["엘다르", "#6c8a5a"], ["실반", "#6c8a5a"], ["드라우르", "#4d5f7a"], ["녹테른", "#6a3d5c"], ["두르강", "#8a7350"], ["요툰", "#7c94a0"], ["오우거", "#7c94a0"], ["나가", "#3f8a86"], ["라미아", "#3f8a86"], ["하르칸", "#a08a3c"], ["바르그", "#6e6259"], ["타이란", "#6e6259"], ["우르사", "#6e6259"], ["수인", "#6e6259"], ["그롬", "#8f3b2e"], ["아에리", "#8c8fb3"], ["페이", "#9a5aa0"], ["크릭", "#7d7a52"], ["인간", "#c9a66b"]];
+    for (const [k, c] of g) if ((r || "").includes(k)) return c;
+    return "#888";
+  };
+  const people = DATA.npcs, byId = new Map(people.map((p) => [p.id, p]));
+  const rels = DATA.relations.filter((r) => byId.has(r.from) && byId.has(r.to));
+  const famOf = (r) => (FAM[r.family] ? r.family : "감정");
+  const regions = [...new Set(people.map((p) => p.region).filter(Boolean))].sort();
+  const factions = [...new Set(people.flatMap((p) => p.factions || []))].sort();
+  regions.forEach((r) => document.getElementById("region").insertAdjacentHTML("beforeend", `<option>${esc(r)}</option>`));
+  factions.forEach((f) => document.getElementById("faction").insertAdjacentHTML("beforeend", `<option>${esc(f)}</option>`));
+  const famBox = document.getElementById("families");
+  Object.keys(FAM).forEach((f) => famBox.insertAdjacentHTML("beforeend", `<label for="f-${f}"><input type="checkbox" id="f-${f}" data-fam="${f}" checked><i class="sw" style="background:var(${FAM[f]})"></i>${f}</label>`));
+
+  const svg = d3.select("#svg"), root = svg.append("g");
+  const defs = svg.append("defs");
+  Object.entries(FAM).forEach(([f, v]) => defs.append("marker").attr("id", "arr-" + f).attr("viewBox", "0 -4 8 8").attr("refX", 16).attr("refY", 0).attr("markerWidth", 6).attr("markerHeight", 6).attr("orient", "auto").append("path").attr("d", "M0,-4L8,0L0,4").style("fill", `var(${v})`));
+  svg.call(d3.zoom().scaleExtent([0.2, 4]).on("zoom", (e) => root.attr("transform", e.transform)));
+  const linkG = root.append("g"), nodeG = root.append("g");
+  let sim, focus = null;
+
+  function visible() {
+    const q = document.getElementById("q").value.trim(), reg = document.getElementById("region").value, fac = document.getElementById("faction").value;
+    const fams = new Set([...famBox.querySelectorAll("input:checked")].map((i) => i.dataset.fam));
+    const showSecret = document.getElementById("secret").checked;
+    let ns = people.filter((p) => (!reg || p.region === reg) && (!fac || (p.factions || []).includes(fac)));
+    if (q) { const hit = new Set(ns.filter((p) => [p.name, p.race, p.subrace, p.role, p.id].join(" ").includes(q)).map((p) => p.id)); rels.forEach((r) => { if (hit.has(r.from)) hit.add(r.to); if (hit.has(r.to)) hit.add(r.from); }); ns = people.filter((p) => hit.has(p.id)); }
+    const ids = new Set(ns.map((p) => p.id));
+    const es = rels.filter((r) => ids.has(r.from) && ids.has(r.to) && fams.has(famOf(r)) && (showSecret || r.public !== false));
+    return { ns, es };
+  }
+  function draw() {
+    const { ns, es } = visible();
+    const box = document.getElementById("svg").getBoundingClientRect();
+    const nodes = ns.map((p) => ({ ...p })), byN = new Map(nodes.map((n) => [n.id, n]));
+    const links = es.map((r) => ({ ...r, source: byN.get(r.from), target: byN.get(r.to) }));
+    const deg = new Map(); links.forEach((l) => { deg.set(l.from, (deg.get(l.from) || 0) + 1); deg.set(l.to, (deg.get(l.to) || 0) + 1); });
+    linkG.selectAll("*").remove(); nodeG.selectAll("*").remove();
+    const L = linkG.selectAll("path").data(links).join("path").attr("class", (d) => "link" + (d.public === false ? " secret" : "")).style("stroke", (d) => `var(${FAM[famOf(d)]})`).attr("marker-end", (d) => (d.family === "혈연" ? null : `url(#arr-${famOf(d)})`));
+    const N = nodeG.selectAll("g").data(nodes).join("g").attr("class", "node").attr("tabindex", 0);
+    N.append("circle").attr("r", (d) => (d.tier === "S" ? 11 : d.tier === "A" ? 8 : 5.5) + Math.min(6, (deg.get(d.id) || 0) * 0.35)).style("fill", (d) => RACE_GROUP(d.subrace || d.race));
+    N.append("text").attr("x", 12).attr("y", 4).text((d) => d.name);
+    N.on("click", (e, d) => select(d.id)).on("keydown", (e, d) => { if (e.key === "Enter") select(d.id); });
+    N.call(d3.drag().on("start", (e, d) => { if (!e.active) sim.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; }).on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; }).on("end", (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+    if (sim) sim.stop();
+    sim = d3.forceSimulation(nodes).force("link", d3.forceLink(links).distance((l) => (l.family === "혈연" ? 40 : 80)).strength(0.5)).force("charge", d3.forceManyBody().strength(-160)).force("center", d3.forceCenter(box.width / 2, box.height / 2)).force("collide", d3.forceCollide(18))
+      .on("tick", () => {
+        L.attr("d", (d) => { const dx = d.target.x - d.source.x, dy = d.target.y - d.source.y, dr = Math.hypot(dx, dy) * 1.6; return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`; });
+        N.attr("transform", (d) => `translate(${d.x},${d.y})`);
+      });
+    document.getElementById("stats").textContent = `인물 ${nodes.length} / ${people.length} · 관계 ${links.length} / ${rels.length}`;
+    highlight(L, N, links);
+    window.__sel = { L, N, links };
+  }
+  function highlight(L, N, links) {
+    if (!focus) { L.classed("dim", false); N.classed("dim", false).classed("focus", false); return; }
+    const hop2 = document.getElementById("hop2").checked, near = new Set([focus]);
+    const step = () => { const add = []; links.forEach((l) => { if (near.has(l.from)) add.push(l.to); if (near.has(l.to)) add.push(l.from); }); add.forEach((x) => near.add(x)); };
+    step(); if (hop2) step();
+    N.classed("dim", (d) => !near.has(d.id)).classed("focus", (d) => d.id === focus);
+    L.classed("dim", (d) => !(near.has(d.from) && near.has(d.to) && (hop2 || d.from === focus || d.to === focus)));
+  }
+  function select(id) {
+    focus = id; const p = byId.get(id);
+    const mine = rels.filter((r) => r.from === id || r.to === id);
+    const line = (r) => {
+      const other = byId.get(r.from === id ? r.to : r.from), dir = r.from === id ? "→" : "←";
+      const vals = [r.affection != null ? `호감 ${r.affection}` : "", r.trust != null ? `신뢰 ${r.trust}` : ""].filter(Boolean).join(" · ");
+      return `<li style="border-left-color:var(${FAM[famOf(r)]})"><span class="tag">${dir} ${esc(r.type)}${r.public === false ? '<span class="pill">비밀</span>' : ""}</span><br><span class="who" data-id="${other.id}">${esc(other.name)}</span> ${vals ? `<span class="tag">(${vals})</span>` : ""}${r.note ? `<br>${esc(r.note)}` : ""}</li>`;
+    };
+    document.getElementById("person").innerHTML = `<div class="eyebrow">${esc(p.region || "")} · 등급 ${esc(p.tier || "B")}</div><h2>${esc(p.name)}</h2><div class="meta">${esc([p.subrace || p.race, p.age ? p.age + "세" : "", p.role].filter(Boolean).join(" · "))}</div>${p.summary ? `<p>${esc(p.summary)}</p>` : ""}${(p.factions || []).length ? `<div class="meta">소속: ${esc(p.factions.join(", "))}</div>` : ""}<div class="eyebrow" style="margin-top:10px">관계 ${mine.length}개</div><ul>${mine.map(line).join("")}</ul>`;
+    document.querySelectorAll("#person .who").forEach((el) => el.addEventListener("click", () => select(el.dataset.id)));
+    const s = window.__sel; if (s) highlight(s.L, s.N, s.links);
+  }
+  ["q", "region", "faction", "secret"].forEach((id) => document.getElementById(id).addEventListener("input", draw));
+  famBox.addEventListener("change", draw);
+  document.getElementById("hop2").addEventListener("change", () => { const s = window.__sel; if (s) highlight(s.L, s.N, s.links); });
+  document.getElementById("reset").addEventListener("click", () => { document.getElementById("q").value = ""; document.getElementById("region").value = DATA.defaultRegion || ""; document.getElementById("faction").value = ""; famBox.querySelectorAll("input").forEach((i) => (i.checked = true)); focus = null; draw(); });
+  document.getElementById("region").value = DATA.defaultRegion || "";
+  draw();
+  const start = people.find((p) => p.id === DATA.defaultFocus) || people[0];
+  if (start) select(start.id);
+})();
+</script>
+</body>
+</html>
