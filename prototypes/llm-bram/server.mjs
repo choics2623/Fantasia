@@ -1,7 +1,8 @@
 // 로컬 실험 서버 — 21_LLM_HYBRID.md §10의 LlmProvider를 바꿔 끼운다.
 //   LLM_PROVIDER=cli      (기본) 내 PC의 Claude Code 로그인 = 구독으로 돌린다. 혼자 테스트 전용.
 //   LLM_PROVIDER=api      ANTHROPIC_API_KEY + `npm i @anthropic-ai/sdk` 필요. 종량제.
-//   LLM_PROVIDER=offline  LLM 없이 규칙 기반 대체 문장만 (게임이 LLM 없이도 도는지 확인).
+//   LLM_PROVIDER=mock     테스트 전용 가짜 LLM (고정 문장). MOCK_FAIL=0.3 이면 30% 확률로 실패를 흉내 낸다.
+// LLM은 필수다 (21 §1): 응답이 없으면 그 턴은 일어나지 않은 것으로 되돌리고 다시 시도를 기다린다.
 // 실행: node server.mjs  →  http://localhost:5173
 import http from "node:http";
 import { spawn } from "node:child_process";
@@ -106,10 +107,15 @@ async function callApi(prompt) {
   return { text, meta: { duration_ms: Date.now() - t0, usage: msg.usage } };
 }
 
-async function llm(kind, prompt, debug) {
-  if (PROVIDER === "offline") { debug.push({ kind, provider: "offline", note: "LLM 없이 대체 문장" }); return null; }
+// 테스트 전용 가짜 LLM — 플레이어용이 아니다
+function callMock(kind, mock) {
+  if (Math.random() < Number(process.env.MOCK_FAIL || 0)) throw new Error("가짜 LLM: 실패 흉내");
+  return { text: JSON.stringify(mock ? mock() : {}), meta: { duration_ms: 0, mock: true } };
+}
+
+async function llm(kind, prompt, debug, mock) {
   try {
-    const r = PROVIDER === "api" ? await callApi(prompt) : await callCli(prompt);
+    const r = PROVIDER === "mock" ? callMock(kind, mock) : PROVIDER === "api" ? await callApi(prompt) : await callCli(prompt);
     const json = parseJson(r.text);
     debug.push({ kind, provider: PROVIDER, model: MODEL, meta: r.meta, prompt, raw: json });
     return json;
@@ -122,14 +128,23 @@ async function llm(kind, prompt, debug) {
 // ───────────────────────── 게임 진행 ─────────────────────────
 let G = E.newGame();
 
+// 서술 + 다음 선택지. 실패하면 null — 대체 문장으로 이어 가지 않는다.
 async function narrate(outcome, res, debug) {
   const ids = G.over ? [] : E.affordances(G);
-  const out = await llm("turn", turnPrompt(G, outcome, ids), debug);
-  const v = E.validateTurn(G, out || {}, ids, res);
-  if (v.problems.length) debug.push({ kind: "validate", problems: v.problems });
-  const beats = v.beats || (res ? E.fallbackBeats(G, res) : ["빗물이 처마에서 떨어진다. 배급 줄 끝, 브람의 탁자 앞. 그가 귀리죽 한 국자를 당신 그릇에 붓는다. 눈은 들지 않는다.", "\"다음.\""]);
-  for (const b of beats) G.transcript.push({ who: "bram", text: b });
-  return { beats, choices: G.over ? [] : v.choices.map((c) => withOdds(c)) , usedFallback: !v.beats };
+  const mock = () => ({ beats: res ? E.fallbackBeats(G, res) : ["빗물이 처마에서 떨어진다. 브람이 귀리죽 한 국자를 당신 그릇에 붓는다. 눈은 들지 않는다.", "\"다음.\""], choices: ids.map((id) => ({ affordance: id, text: "[가짜] " + E.affLabel(id) })) });
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const out = await llm("turn", turnPrompt(G, outcome, ids), debug, mock);
+    if (!out) continue;
+    const v = E.validateTurn(G, out, ids, res);
+    if (v.problems.length) debug.push({ kind: "validate", attempt, problems: v.problems });
+    const choices = v.choices.filter((c) => !c.fallback);
+    if (v.beats && (G.over || choices.length >= Math.min(2, ids.length))) {
+      for (const b of v.beats) G.transcript.push({ who: "bram", text: b });
+      return { beats: v.beats, choices: G.over ? [] : choices.map((c) => withOdds(c)) };
+    }
+    debug.push({ kind: "validate", attempt, problems: ["쓸 수 있는 서술·선택지가 부족 → 다시 생성"] });
+  }
+  return null;
 }
 function withOdds(c) {
   const o = E.odds(G, c.affordance);
@@ -137,7 +152,7 @@ function withOdds(c) {
 }
 function view(extra = {}) {
   return {
-    provider: PROVIDER, model: PROVIDER === "offline" ? null : MODEL, loop: G.loop, over: G.over,
+    provider: PROVIDER, model: PROVIDER === "mock" ? null : MODEL, loop: G.loop, over: G.over,
     bram: { like: G.bram.like, trust: G.bram.trust, fear: G.bram.fear, anger: G.bram.anger, warmth: G.bram.warmth, impressions: G.bram.impressions, memories: G.bram.memories, revealed: G.bram.revealed, patience: G.bram.patience },
     player: { items: G.player.items, knows: G.player.knows, future: G.player.future },
     notebook: G.notebook, lastRegressMemories: G.lastRegressMemories,
@@ -145,54 +160,67 @@ function view(extra = {}) {
   };
 }
 
+const BROKEN = (debug, retry) => view({ error: "잿빛 실이 끊겼다 — LLM이 응답하지 않는다. 이 박자는 일어나지 않았다.", retry, beats: [], choices: [], debug });
+
 async function api(path, body) {
   const debug = [];
-  if (path === "/api/start") {
+  if (path === "/api/start" || path === "/api/reset") {
+    if (path === "/api/reset") G = E.newGame();
+    const snap = structuredClone(G);
     const r = await narrate(null, null, debug);
+    if (!r) { G = snap; return BROKEN(debug, { path, body }); }
     return view({ ...r, debug });
   }
   if (path === "/api/act") {
     if (G.over) return view({ beats: [], choices: [], debug: [{ kind: "note", note: "대화가 끝났다" }] });
+    const snap = structuredClone(G);           // 턴은 원자적이다: 서술까지 성공해야 확정
+    const roll = G._retryRoll ?? Math.random(); // 다시 시도해도 같은 주사위 — 재시도로 이득을 보지 못한다
     const ids = E.affordances(G);
     let id = body.affordance, tags = [], actionText = body.text;
     if (body.free) {
       G.transcript.push({ who: "player", text: body.free });
-      const out = await llm("interpret", interpretPrompt(G, body.free, ids), debug);
-      const v = E.validateInterpret(G, out || E.keywordInterpret(G, body.free, ids), ids);
-      if (!out) debug.push({ kind: "engine", note: "LLM 해석 없음 → 키워드 규칙으로 해석" });
+      const out = await llm("interpret", interpretPrompt(G, body.free, ids), debug, () => E.keywordInterpret(G, body.free, ids));
+      if (!out) { G = snap; G._retryRoll = roll; return BROKEN(debug, { path, body }); }
+      const v = E.validateInterpret(G, out, ids);
       if (v.problems.length) debug.push({ kind: "validate", problems: v.problems });
       id = v.id; tags = v.tags; actionText = body.free;
       debug.push({ kind: "engine", note: `자유 입력 → ${id} (${E.affLabel(id)})`, tags });
     } else {
-      if (!ids.includes(id)) return view({ error: "지금은 할 수 없는 행동", debug });
+      if (!ids.includes(id)) return view({ error: "지금은 할 수 없는 행동", beats: [], choices: [], debug });
       G.transcript.push({ who: "player", text: actionText || E.affLabel(id) });
     }
-    const res = E.resolve(G, id, { tags, playerText: actionText });
-    debug.push({ kind: "engine", note: `판정 ${E.affSkill(id) || "없음"} → ${res.tier} (P ${Math.round(res.odds.P * 100)}%)`, math: res.odds.parts, changes: res.changes, reveal: res.reveal, futureUsed: res.futureUsed });
+    const res = E.resolve(G, id, { tags, playerText: actionText, rng: () => roll });
+    debug.push({ kind: "engine", note: `판정 ${E.affSkill(id) || "없음"} → ${res.tier} (P ${Math.round(res.odds.P * 100)}%, 주사위 ${roll.toFixed(3)})`, math: res.odds.parts, changes: res.changes, reveal: res.reveal, futureUsed: res.futureUsed });
     const r = await narrate(E.outcomeBrief(G, res, actionText || E.affLabel(id)), res, debug);
+    if (!r) { G = snap; G._retryRoll = roll; debug.push({ kind: "engine", note: "서술 실패 → 턴 되돌림 (판정·상태 변화 취소, 주사위 보존)" }); return BROKEN(debug, { path, body }); }
+    delete G._retryRoll;
     let memo = null;
-    if (G.over) memo = await endConversation(debug);
+    if (G.over) { memo = await endConversation(debug); if (memo === false) memo = { pending: true }; }
     return view({ ...r, result: { tier: res.tier, p: Math.round(res.odds.P * 100), skill: E.affSkill(id) }, memo, debug });
   }
   if (path === "/api/end") {
-    if (!G.over) G.over = true;
+    G.over = true;
     const memo = await endConversation(debug);
-    return view({ beats: ["당신은 자리에서 일어난다. 브람은 이미 다음 그릇을 채우고 있다."], choices: [], memo, debug });
+    if (memo === false) return BROKEN(debug, { path, body });
+    return view({ beats: memo ? ["당신은 자리에서 일어난다. 브람은 이미 다음 그릇을 채우고 있다."] : [], choices: [], memo, debug });
   }
   if (path === "/api/regress") {
+    const snap = structuredClone(G);
     G = E.regress(G);
     const r = await narrate(null, null, debug);
+    if (!r) { G = snap; return BROKEN(debug, { path, body }); }
     return view({ ...r, regressed: true, debug });
   }
-  if (path === "/api/reset") { G = E.newGame(); const r = await narrate(null, null, debug); return view({ ...r, debug }); }
   throw new Error("unknown " + path);
 }
 
+// 대화가 끝나면 기억을 정리한다. 실패하면 false — 기억 정리를 건너뛰지 않고 다시 시도를 기다린다.
 async function endConversation(debug) {
   if (G._memoDone) return null;
+  const out = await llm("memory", memoryPrompt(G), debug, () => ({ memories: [] }));
+  if (!out) return false;
   G._memoDone = true;
-  const out = await llm("memory", memoryPrompt(G), debug);
-  const { accepted, rejected } = E.acceptMemories(G, out?.memories || []);
+  const { accepted, rejected } = E.acceptMemories(G, out.memories || []);
   const lines = E.insight(G);
   debug.push({ kind: "memory", accepted, rejected });
   return { accepted, rejected, insight: lines };
@@ -220,5 +248,5 @@ const server = http.createServer(async (req, res) => {
 });
 server.listen(PORT, () => {
   console.log(`브람 실험실 → http://localhost:${PORT}`);
-  console.log(`LLM 공급자: ${PROVIDER}${PROVIDER === "offline" ? "" : ` (모델 ${MODEL})`}`);
+  console.log(`LLM 공급자: ${PROVIDER}${PROVIDER === "mock" ? " — 테스트 전용 가짜 LLM" : ` (모델 ${MODEL})`}`);
 });

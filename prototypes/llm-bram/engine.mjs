@@ -395,7 +395,7 @@ export function validateInterpret(g, out, ids) {
   return { id, tags, problems };
 }
 
-// LLM이 없을 때의 자유 입력 해석 — 키워드 규칙
+// 테스트 전용 가짜 LLM(mock)이 쓰는 자유 입력 해석 — 키워드 규칙. 플레이어에게는 쓰지 않는다 (LLM 필수)
 export function keywordInterpret(g, text, ids) {
   const t = String(text);
   const has = (...w) => w.some((x) => t.includes(x));
@@ -419,7 +419,7 @@ export function keywordInterpret(g, text, ids) {
   return { affordance: id || pick("small_talk", "leave"), argument_tags: tags };
 }
 
-// LLM이 없을 때의 대체 서술
+// 테스트 전용 가짜 LLM(mock)이 쓰는 서술 템플릿. 플레이어에게는 쓰지 않는다 (LLM 필수)
 export function fallbackBeats(g, res, actionText) {
   const t = res.tier;
   const r = res.reveal ? REVEAL_TEXT[res.reveal].replace("브람은", "").trim() : null;

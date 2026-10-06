@@ -66,6 +66,9 @@ details.log summary { cursor: pointer; }
 details.log pre { white-space: pre-wrap; word-break: break-word; background: var(--bg); border: 1px solid var(--line); padding: 8px; border-radius: 4px; max-height: 320px; overflow: auto; color: var(--ink-soft); }
 .legend { display: flex; gap: 10px; flex-wrap: wrap; font-family: var(--font-ui); font-size: 0.68rem; color: var(--ink-faint); }
 .legend i { display: inline-block; width: 10px; height: 2px; vertical-align: middle; margin-right: 4px; }
+.broken { border: 1px solid #5b3a2c; background: #1f1512; border-radius: 6px; padding: 14px 16px; margin: 14px 0; }
+.broken p { margin: 0 0 6px; }
+.broken .sub { font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 10px; }
 .err { color: var(--bad); font-family: var(--font-ui); font-size: 0.8rem; }
 </style>
 </head>
@@ -79,6 +82,11 @@ details.log pre { white-space: pre-wrap; word-break: break-word; background: var
   <main>
     <div class="story" id="story"></div>
     <div class="busy" id="busy"></div>
+    <div class="broken" id="broken" hidden>
+      <p id="brokenMsg"></p>
+      <p class="sub">이 게임은 LLM이 있어야 진행됩니다. 판정과 상태 변화는 되돌려졌고, 다시 시도해도 같은 주사위가 쓰입니다.</p>
+      <button class="ui" type="button" id="btnRetry">다시 시도</button>
+    </div>
     <div class="choices" id="choices"></div>
     <form class="free" id="free">
       <input id="freeText" placeholder="직접 말하거나 행동하기 — 예: 술을 한 잔 따라 주며 하겐 얘기를 슬쩍 꺼낸다" autocomplete="off">
@@ -111,15 +119,18 @@ details.log pre { white-space: pre-wrap; word-break: break-word; background: var
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-let busy = false, rejectedShown = [];
+let busy = false, rejectedShown = [], lastReq = null;
 
 async function call(path, body) {
   if (busy) return; busy = true;
   $("busy").textContent = "브람이 생각한다"; $("busy").classList.add("on");
   $("choices").innerHTML = "";
+  $("broken").hidden = true;
+  lastReq = { path, body };
   try {
     const r = await fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body || {}) });
     const d = await r.json();
+    if (d.retry) { broken(d); return; }
     if (d.error && !d.beats) throw new Error(d.error);
     render(d);
   } catch (e) {
@@ -129,14 +140,24 @@ async function call(path, body) {
   }
 }
 
+// LLM이 응답하지 않으면 진행하지 않는다 — 턴은 되돌려졌다
+function broken(d) {
+  const pl = [...document.querySelectorAll("#story .player")].pop();
+  if (pl && lastReq && lastReq.path === "/api/act") pl.remove();
+  $("brokenMsg").textContent = d.error;
+  $("broken").hidden = false;
+  $("free").style.display = "none";
+  logDebug(d.debug);
+}
 function render(d) {
-  $("prov").textContent = d.provider === "offline" ? "LLM 없음 (규칙 대체 문장)" : `LLM: ${d.provider === "cli" ? "구독 (Claude Code)" : "API"} · ${d.model}`;
+  $("prov").textContent = d.provider === "mock" ? "가짜 LLM (테스트 전용)" : `LLM: ${d.provider === "cli" ? "구독 (Claude Code)" : "API"} · ${d.model}`;
   $("meta").textContent = `${d.loop}회차 · 낙엽월 2일 저녁 · 절름발이 수탉`;
   const st = $("story");
   if (d.regressed) st.insertAdjacentHTML("beforeend", `<p class="sys">— 시간이 접혔다. ${d.loop}회차. 브람은 당신을 처음 본다. 당신은 기억한다. —</p>`);
   if (d.result) st.insertAdjacentHTML("beforeend", `<p class="tier">${d.result.skill ? `${esc(d.result.skill)} 판정 · <b>${esc(d.result.tier)}</b> (${d.result.p}%)` : ""}</p>`);
   for (const b of d.beats || []) st.insertAdjacentHTML("beforeend", `<p>${esc(b).replace(/\n/g, "<br>")}</p>`);
-  if (d.memo) {
+  if (d.memo && d.memo.pending) st.insertAdjacentHTML("beforeend", `<p class="sys">대화가 끝났다. 브람의 기억 정리는 LLM이 돌아오면 이어진다 — 「대화를 끝낸다」로 다시 시도.</p>`);
+  else if (d.memo) {
     const ins = (d.memo.insight || []).map((l) => `<p class="sys">수첩에 적힌다 — ${esc(l)}</p>`).join("");
     st.insertAdjacentHTML("beforeend", `<p class="sys">대화가 끝났다. 브람의 기억이 정리된다: 받아들임 ${d.memo.accepted.length} · 버림 ${d.memo.rejected.length}</p>${ins}`);
     rejectedShown = d.memo.rejected;
@@ -156,13 +177,16 @@ function render(d) {
     br.memories.map((m) => `<li class="${m.source}"><span class="k">${esc(m.kind)}${m.tag ? " · " + esc(m.tag) : ""} · 중요도 ${m.salience}${m.capped ? " · 상한 " + esc(m.capped) : ""}</span>${esc(m.text)}</li>`).join("") +
     rejectedShown.map((m) => `<li class="rej"><span class="k">버림: ${esc((m.why || []).join(", "))}</span>${esc(m.text || m.evidence)}</li>`).join("") || `<li><span class="k">없음</span>브람은 당신을 모른다.</li>`;
   $("notebook").innerHTML = (d.notebook || []).map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 적힌 것이 없다.</li>";
+  logDebug(d.debug);
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+function logDebug(list) {
   const log = $("log");
-  for (const e of d.debug || []) {
-    const title = e.kind === "engine" ? `엔진 · ${e.note}` : e.kind === "validate" ? `검증 · 문제 ${(e.problems || []).length}개` : e.kind === "memory" && e.accepted ? `메모리 · 통과 ${e.accepted.length} / 버림 ${e.rejected.length}` : e.error ? `LLM ${e.kind} · 실패 → 대체` : `LLM ${e.kind}${e.meta?.duration_ms ? ` · ${(e.meta.duration_ms / 1000).toFixed(1)}초` : ""}`;
+  for (const e of list || []) {
+    const title = e.kind === "engine" ? `엔진 · ${e.note}` : e.kind === "validate" ? `검증 · 문제 ${(e.problems || []).length}개` : e.kind === "memory" && e.accepted ? `메모리 · 통과 ${e.accepted.length} / 버림 ${e.rejected.length}` : e.error ? `LLM ${e.kind} · 실패` : `LLM ${e.kind}${e.meta?.duration_ms ? ` · ${(e.meta.duration_ms / 1000).toFixed(1)}초` : ""}`;
     const body = { ...e }; delete body.kind;
     log.insertAdjacentHTML("afterbegin", `<details class="log"><summary>${esc(title)}</summary><pre>${esc(JSON.stringify(body, null, 1))}</pre></details>`);
   }
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 }
 
 $("free").addEventListener("submit", (e) => {
@@ -173,6 +197,12 @@ $("free").addEventListener("submit", (e) => {
   call("/api/act", { free: t });
 });
 $("btnEnd").addEventListener("click", () => call("/api/end"));
+$("btnRetry").addEventListener("click", () => {
+  if (!lastReq) return;
+  const { path, body } = lastReq;
+  if (path === "/api/act") $("story").insertAdjacentHTML("beforeend", `<p class="player">${esc(body.free || body.text || "")}</p>`);
+  call(path, body);
+});
 $("btnRegress").addEventListener("click", () => { rejectedShown = []; call("/api/regress"); });
 $("btnReset").addEventListener("click", () => { rejectedShown = []; $("story").innerHTML = ""; $("log").innerHTML = ""; call("/api/reset"); });
 call("/api/start");

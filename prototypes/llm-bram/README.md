@@ -3,6 +3,7 @@
 '첫 밤'의 배급 막사 장면 하나를 **LLM은 제안하고, 규칙이 판정하는** 방식으로 돌려 보는 실험용 프로토타입입니다.
 
 - LLM이 하는 일: 선택지 문장, 브람의 반응 서술, 자유 입력 해석, 대화가 끝난 뒤 브람의 기억 후보 뽑기
+- **LLM은 필수**: LLM이 응답하지 않으면 그 턴은 일어나지 않은 것으로 되돌리고(판정·상태 변화 취소) 「다시 시도」를 기다립니다. 다시 시도해도 같은 주사위가 쓰입니다. 대체 문장으로 몰래 이어 가지 않습니다.
 - 규칙 엔진(`engine.mjs`)이 하는 일: 가능한 행동, 성공 확률(01 문서 공식), 결과 5단계, 호감·신뢰·두려움, 비밀 공개 여부, 기억 검증과 상한, 회귀
 
 ## 실행 (내 PC, Claude 구독으로)
@@ -23,12 +24,12 @@ node server.mjs
 | 환경 변수 | 뜻 |
 |-----------|----|
 | `LLM_PROVIDER=cli` (기본) | 구독 — 내 PC의 Claude Code 로그인 |
-| `LLM_PROVIDER=offline` | LLM 없이 규칙 대체 문장만. 게임이 LLM 없이도 도는지 확인 |
+| `LLM_PROVIDER=mock` | **테스트 전용** 가짜 LLM (고정 문장). `MOCK_FAIL=0.3`이면 30% 확률로 실패를 흉내 내 되돌리기를 시험한다 |
 | `LLM_PROVIDER=api` | Claude API (종량제). `npm i @anthropic-ai/sdk` 후 `ANTHROPIC_API_KEY` 설정 |
 | `LLM_MODEL=haiku` | 모델. cli는 `haiku`/`sonnet` 같은 별칭, api는 `claude-haiku-4-5` 같은 전체 ID |
 | `PORT=5173` | 포트 |
 
-윈도우 PowerShell: `$env:LLM_PROVIDER="offline"; node server.mjs`
+윈도우 PowerShell: `$env:LLM_PROVIDER="api"; node server.mjs`
 
 ## 해 볼 것
 
@@ -46,3 +47,7 @@ node server.mjs
 | **생각 꺼짐** — 이 서버의 설정 | **5~8초** | 약 580 |
 
 → 서버는 `alwaysThinkingEnabled: false` 설정과 `MAX_THINKING_TOKENS=0`으로 생각을 끈다. 문장 품질 차이는 거의 없었다.
+
+## 연결이 끊기면
+
+화면에 「잿빛 실이 끊겼다」가 뜨고 진행이 멈춥니다. 방금 고른 행동은 일어나지 않은 것이 되고, 「다시 시도」를 누르면 같은 행동을 같은 주사위로 다시 보냅니다.
