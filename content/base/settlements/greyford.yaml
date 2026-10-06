@@ -1,0 +1,65 @@
+# 회색여울 마을 배치 (24_PLACES_AND_WHEREABOUTS.md). 원천: REGIONS §2.9~2.10, §2.12.
+# grid: 마을 격자 (m), 원점 = 북서쪽 모서리, x 동쪽, y 남쪽. 걷는 속도 80m/분 (짐·부상·어둠 보정은 엔진).
+id: greyford
+name: 회색여울 마을
+node: greyford_village          # 지역 지도(map.json)의 노드
+kind: village
+grid: {w: 600, h: 450}
+curfew: {from: "21:00", to: "04:30", note: "막사 잠김. 인간이 밖에 있으면 순찰 판정"}
+bells:
+  - {at: "04:30", name: 첫 종}
+  - {at: "06:00", name: 노동 종}
+  - {at: "12:00", name: 정오 종}
+  - {at: "18:30", name: 귀환 종}
+  - {at: "20:00", name: 저녁 기도 종}
+  - {at: "21:00", name: 통금 종}
+patrols: ["21:00", "23:00", "02:00"]
+locations:
+  - {id: gf_keep, name: 레이번 성채, xy: [420, 60], kind: keep, access: owner, hours: "06:00-23:00 성문 열림", rooms: [gf_keep_study, gf_keep_hall, gf_keep_servants, gf_keep_north_tower, gf_keep_store, gf_keep_guest]}
+  - {id: gf_keep_study, name: 남작 서재, parent: gf_keep, access: owner}
+  - {id: gf_keep_hall, name: 연회실, parent: gf_keep, access: owner}
+  - {id: gf_keep_servants, name: 하인 숙소, parent: gf_keep, access: owner}
+  - {id: gf_keep_north_tower, name: 북탑, parent: gf_keep, access: owner}
+  - {id: gf_keep_store, name: 성채 창고, parent: gf_keep, access: owner, hidden: "배수용 철창 → 해자 배수구"}
+  - {id: gf_keep_guest, name: 성채 객실, parent: gf_keep, access: owner}
+  - {id: gf_keep_yard, name: 성채 마당, parent: gf_keep, access: public, note: "판결이 열리는 날엔 농노도 모인다"}
+  - {id: gf_stable, name: 성채 마구간, xy: [480, 110], kind: work, access: staff}
+  - {id: gf_tollhouse, name: 징세소 '셈집', xy: [360, 150], kind: office, access: public, hours: "08:00-17:00"}
+  - {id: gf_rooster, name: "배급 막사 '절름발이 수탉'", xy: [330, 290], kind: canteen, access: public, hours: "05:00-21:00", rooms: [gf_rooster_cellar]}
+  - {id: gf_rooster_cellar, name: 수탉 지하 저장고, parent: gf_rooster, access: secret, hidden: "가짜 벽 뒤 은신방(최대 8명), 옛 수로 230m → 버드나무 둑"}
+  - {id: gf_smithy, name: 대장간, xy: [460, 250], kind: work, access: public, hours: "06:00-19:00"}
+  - {id: gf_mill, name: 물레방아간, xy: [520, 380], kind: work, access: public, hours: "06:00-18:00", rooms: [gf_mill_loft]}
+  - {id: gf_mill_loft, name: 방앗간 다락, parent: gf_mill, access: secret}
+  - {id: gf_chapel, name: 사슬등불 예배당, xy: [250, 160], kind: chapel, access: public, rooms: [gf_chapel_ossuary, gf_chapel_priest]}
+  - {id: gf_chapel_priest, name: 사제실, parent: gf_chapel, access: owner}
+  - {id: gf_chapel_ossuary, name: 납골실, parent: gf_chapel, access: secret, note: "끊어진 고리의 모임터"}
+  - {id: gf_whip_square, name: "채찍 기둥 광장·감독관 초소", xy: [420, 200], kind: square, access: public}
+  - {id: gf_north_barracks, name: 북 막사, xy: [150, 200], kind: barracks, access: serf, locked: "21:00-04:30"}
+  - {id: gf_south_barracks, name: 남 막사, xy: [170, 300], kind: barracks, access: serf, locked: "21:00-04:30"}
+  - {id: gf_river_huts, name: 강변 움막, xy: [80, 380], kind: barracks, access: serf}
+  - {id: gf_granary, name: 영주 곡창, xy: [290, 320], kind: store, access: locked}
+  - {id: gf_elsa_hut, name: 엘사의 오두막, xy: [40, 420], kind: home, access: public}
+  - {id: gf_irma_hut, name: 이르마의 오두막·양 우리, xy: [90, 50], kind: home, access: owner}
+  - {id: gf_pilgrim_barn, name: 순례자 헛간, xy: [220, 110], kind: lodging, access: public}
+  - {id: gf_hagen_shed, name: 하겐의 나루 헛간, xy: [570, 420], kind: home, access: owner}
+  - {id: gf_well_square, name: 쓴물 우물 광장, xy: [260, 200], kind: square, access: public}
+  - {id: gf_graveyard, name: 번호 묘지, xy: [30, 20], kind: graveyard, access: public}
+  - {id: gf_tannery, name: 도살·무두장, xy: [480, 320], kind: work, access: staff, hours: "06:00-17:00"}
+  - {id: gf_iron_bridge, name: 쇠다리 검문소, xy: [400, 430], kind: checkpoint, access: public, note: "18시 교대 때 약 10분 경비 1명"}
+  - {id: gf_guard_barracks, name: 경비 막사, xy: [500, 60], kind: barracks, access: staff}
+  - {id: gf_weaving_shed, name: 직조 헛간, xy: [210, 360], kind: work, access: serf, hours: "07:00-18:00"}
+  - {id: gf_kennel, name: 남작의 사냥개 우리, xy: [540, 150], kind: kennel, access: staff}
+  - {id: gf_willow_bank, name: 버드나무 둑, xy: [200, 420], kind: outdoor, access: public}
+# 마을 밖 — 지역 지도 노드 또는 하위 장소. hours = 마을에서 걷는 시간
+outer:
+  - {id: greyford__west_pasture, name: 서쪽 목초지, hours: 1.5}
+  - {id: greyford__north_woods, name: 북쪽 벌목지, hours: 3}
+  - {id: filth_marsh, name: 오물 습지, hours: 3.5, node: filth_marsh}
+  - {id: filth_marsh__dead_willow, name: 죽은 버드나무 섬, hours: 5, node: filth_marsh}
+  - {id: old_stone_ring, name: 옛 돌 고리, hours: 3.5, node: old_stone_ring}
+  - {id: hungry_hill, name: 굶주린 언덕, hours: 6, node: hungry_hill}
+  - {id: hungry_hill__wolf_den, name: 늑대굴, hours: 6.5, node: hungry_hill}
+  - {id: hungry_hill__fang_fire, name: 송곳니 불, hours: 7, node: hungry_hill}
+  - {id: hungry_hill__three_pines, name: 세 소나무, hours: 9, node: hungry_hill}
+  - {id: crow_gate, name: 까마귀 문, hours: 12, node: crow_gate}
+  - {id: dragon_pillar_post, name: 용주 역참, hours: 16, node: dragon_pillar_post}

@@ -1,95 +1,126 @@
 id: npc_rok
 name: 외팔 로크
-aka: []
+aka: [외팔, 붉은 점의 로크, 제7갱반장]
 tier: A
 type: living
-race: '인간(문화 집단: 광산 인간)'
+race: "인간(문화 집단: 광산 인간)"
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 47
 region: 잿불 언덕
-home: null
-job: 붉은 길의 손자 (봉기 지도자)
-rank: null
-summary: ''
+home: 숯막 굴 마을 (붉은 계단 제7갱반)
+job: 붉은 계단 제7갱반장 (광부 40명)
+rank: 국유 노예 — 갱반장
+summary: 붉은 길 생존자 집안의 손자이자 제7갱반장. 폐갱에 곡괭이 200자루와 용불 기름을 모으며, 다라의 봉기를 이번에는 3개월 넘게 이어 가려 한다
 source: docs/world/CHARACTERS.md:1066
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 265, age: 0, event: "숯막 굴 마을에서 태어남. 붉은 길 생존자 집안의 아들이라 붉은 점 낙인 처벌이 3대째 이어졌다"}
+  - {year: 273, age: 8, event: "처음 갱에 내려감. 갱 노래 「여덟 해」를 배움 — 갱 노예의 평균 수명을 세는 노동요다"}
+  - {year: 280, age: 15, event: "갱 노예 등록과 함께 등에 붉은 점 낙인을 받음. 같은 날 늙은 광부가 손바닥을 벽의 다라의 손자국에 겹치게 했다"}
+  - {year: 288, age: 23, event: "낙반 사고로 오른팔 팔꿈치 아래를 잃음. 갱반장이 대신 깔려 죽었고 로크는 살았다. 왼팔 하나로 곡괭이를 다시 쥐었다"}
+  - {year: 296, age: 31, event: "은비늘 요람 가동. 갱반에서 아이들이 '공급 명단'으로 사라지기 시작했다. 사라진 이름을 하나씩 외우기 시작함"}
+  - {year: 301, age: 36, event: "제7갱반장이 됨. 광부 40명. 갱반 안에서 이름을 묻는 법을 정했다 — 하루 버틴 사람에게만"}
+  - {year: 309, age: 44, event: "버려진 폐갱 '다라의 굴'을 찾아 6일에 한 번 비밀 모임을 열기 시작함"}
+  - {year: 311, age: 46, event: "폐갱에 곡괭이 200자루와 용불 기름 12통을 모으기 시작함. 갱반원 40명 중 밀고자가 셋이라는 것을 알았으나 누구인지는 모른다"}
+  - {year: 312, age: 47, event: "세 번째 봉기를 준비하며 소각로 운반 노예 이브와 접촉. 실험장 내부 정보가 값이다 (낙엽월 1일 기준)"}
+appearance:
+  - "오른팔이 팔꿈치 아래로 없다 — 낙반 사고. 왼팔 하나로 곡괭이를 휘두른다"
+  - "등에 붉은 길 처형 생존자 집안의 '붉은 점' 낙인이 있다 (3대째 대물림 처벌)"
+  - "목소리가 갱도 먼지로 쇳소리가 난다. 말 중간에 기침을 한 번 섞는다"
+smell: "땀과 철가루, 젖은 쇠, 석탄 그을음"
+voice_sound: "쉰 쇳소리. 낮고 느리다. 갱 안에서는 소리를 아끼려 입술만 움직이기도 한다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 70, 자비: 30, 정직: 40, 신앙: 40, 탐욕: -40, 충성: 80}  # 신앙은 다라에 대한 것
+  temperament: [단단함, 인내, 시험하는 눈]
+  habits:
+    - "처음 보는 사람에게는 곡괭이부터 쥐여 주고 하루를 일하게 한다. 하루를 버티면 이름을 묻는다"
+    - "갱도에서 다라의 손자국을 지날 때 없는 오른팔 쪽 어깨로 벽을 한 번 스친다"
+    - "모임 전에 갱반원 40명을 눈으로 센다 — 밀고자 셋 중 누가 오늘 눈을 피하는지 본다"
+    - "휘파람 대신 숨으로 장단을 맞춘다. 갱 안에서는 입을 닫는다"
+  values: "이름을 묻는 것. 갱반은 서로를 버리지 않는 것. 이번에는 3개월을 넘기는 것"
+  fears: [밀고자 셋을 모른 채 봉기를 시작하는 것, 갱반원들이 붉은 길에 서는 것, 다라의 노래 마지막 구절을 아무도 모르게 되는 것, 용불 기름이 새는 것]
   desires:
-    short: null
-    long: null
+    short: "폐갱에 곡괭이 200자루와 용불 기름 12통을 비축한다"
+    long: "붉은 손 다라의 봉기를 '이번에는 3개월 넘게' 이어 가는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "감독과 용인에게는 짧은 '예.' 시선은 곡괭이 쥔 왼손에 둔다"
+    to_equal: "갱반원에게는 쇳소리 반말과 갱 속담. 필요한 말만"
+    to_inferior: "신참과 아이에게는 짧지만 느리다. 곡괭이 쥐는 법을 먼저 가르친다"
+    to_player_default: "시험이 먼저다. '곡괭이 들어.' 하루 뒤에야 말이 길어진다"
+  tics: ["'곡괭이 들어.'", "'…다라는 말했다.'로 인용을 연다", "말끝에 기침을 한 번 섞는다"]
+  use: [곡괭이, 갱, 갱반, 버팀목, 이름, 다라, 하루, 붉은 점]
+  avoid: [휘파람(갱 금기), 봉기·반란(→ '세 번째'), 용(→ '위에 있는 것'), 도망(→ '나간다')]
+  length: "짧고 단단하다. 다라 이야기에서만 의식처럼 느리고 길다"
+  samples:
+    - {situation: 첫 만남, line: "곡괭이 들어. 하루 버티면 이름을 묻지. 못 버티면 묻을 일도 없고."}
+    - {situation: 호의, line: "다라는 말했다. '전에도 왔고 또 온다.' 우리 집은 300년째 그 말을 기다린다."}
+    - {situation: 적대, line: "밀고자는 갱도에서 길을 잃지. 아주 자주."}
+    - {situation: 위기, line: "버팀목 빼! 갱도를 무너뜨려— 우리 쪽 말고, 감독 쪽!"}
+    - {situation: 비밀 누설, line: "할아버지는 붉은 길 일곱 번째 생존자였다. 처형대가 모자라 살았지. 나는 그 모자람의 손자다."}
+    - {situation: 거래, line: "철광석 한 수레 할당을 대신 채워 주면 갱도 지도 한 칸을 주지. 말은 갱 밖에서 해. 갱 안은 귀가 있다."}
+    - {situation: 거짓말할 때, line: "곡괭이 200자루? 우리 반 곡괭이 쉰 자루가 부러져서 새로 받은 거다. (왼손이 곡괭이 자루를 한 번 바꿔 쥔다)"}
+    - {situation: 겁먹었을 때(밀고자 앞), line: "(입을 손으로 막는다) …갱도에서 말이 새고 있어. 이 반 안에 귀가 셋이다. 누군지 모르면 아무 이름도 말하지 마."}
+    - {situation: 분노(다라를 반역자라 불렀을 때), line: "(곡괭이 자루가 바닥을 한 번 친다) 다라는 반역자가 아니다. 반역은 약속을 깬 자의 것이야. 다라는 약속을 처음부터 안 받았어."}
+    - {situation: 슬픔, line: "내 팔이 낙반에 깔렸을 때 갱반장이 대신 깔렸다. 팔 하나로 곡괭이를 쥐게 된 건 그 값이야. 그 값을 아직 다 못 갚았어."}
+    - {situation: 이브 이야기, line: "소각로 곁 수레 끄는 애. 그 애가 가져오는 요람 이야기는 값이 달라. 한 번 들으면 갱도 하나 무너지는 걸로도 모자라."}
+    - {situation: 마음을 열었을 때, line: "…그 노래 마지막 구절을 어디서 들었나. (무릎을 꿇는다) 다라를 기다린 게 우리 집만이 아니었군."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "갱도 진입 점호"
+  낮: "채굴 — 할당량 하루 철광석 30수레"
+  저녁: "갱반 식사, 다라의 노래"
+  밤: "폐갱 '다라의 굴'에서 비밀 모임 (6일에 1번)"
+places: [붉은 계단 제7갱, 숯막 굴 마을, 폐갱 다라의 굴, 붉은 길]
+knows:
+  - fact_eh_rok_grandfather
+  - fact_eh_grax_supply_list
+  - fact_eh_grax_cousin_znik
+hides:
+  - fact: fact_eh_rok_dara_words
+    reveal_when: "다라 이야기로 설득(+20)에 성공한 뒤 신뢰 40 이상. 아무 맥락 없이 묻는 것은 닫힌다"
+    cover: "'다라는 죽은 사람이다. 죽은 사람은 말이 없어'라고 한다"
+  - fact: fact_eh_rok_stockpile
+    reveal_when: "갱반에 합류해 하루를 버티고 신뢰 55 이상일 때. 폐갱을 직접 데려가는 것은 신뢰 65 이상"
+    cover: "'폐갱은 지지대가 썩었어. 가까이 가면 묻힌다'"
+  - fact: fact_eh_rok_informers
+    reveal_when: "신뢰 60 이상이거나, 밀고자 색출(+30)을 돕겠다고 말했을 때"
+    cover: "'갱반은 한 사람이다. 한 사람 안에 쥐는 없어'"
+  - fact: fact_eh_rok_uprising_day
+    reveal_when: "신뢰 65 이상이고 광부등과 연결되어 있음이 확인되었을 때"
+    cover: "'경고의 날에는 모두 조용히 손을 겹친다. 그게 우리가 하는 전부야'"
 relations:
-- to: npc_eve
-  type: 동지
-  like: 40
-  trust: 45
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_grax
-  type: 감독관
-  like: -60
-  trust: -20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_melisande
-  type: 영주
-  like: -70
-  trust: -80
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_petar
-  type: 서신 루트
-  like: 20
-  trust: 30
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_dara
-  type: 선조의 영웅(고인)
-  like: 100
-  trust: 100
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_eve, type: 동지, like: 40, trust: 45, visibility: 비밀, memo: null, words: "소각로 곁에서 오는 아이. 이름을 번호로 부르지 않는다. 눈이 다라의 눈과 닮았다고 생각한 적은 없다 — 있다"}
+  - {to: npc_grax, type: 감독관, like: -60, trust: -20, visibility: 공개, memo: null, words: "공급 명단을 쥔 손. 갱반에서 한 명을 데려갈 때마다 이름을 하나 외운다. 그 이름이 쌓일수록 곡괭이가 무거워진다"}
+  - {to: npc_melisande, type: 영주, like: -70, trust: -80, visibility: 공개, memo: null, words: "요람 위에 앉은 은빛 용. 이름은 세지 않고 번호만 센다고 들었다"}
+  - {to: npc_petar, type: 서신 루트, like: 20, trust: 30, visibility: 비밀, memo: null, words: "잿불 길 위쪽의 서신 운반자. 소식은 느리지만 틀리지 않는다"}
+  - {to: npc_dara, type: 선조의 영웅(고인), like: 100, trust: 100, visibility: 공개, memo: null, words: "'전에도 왔고 또 올 것이다'라고 말한 사람. 집안은 300년째 그 말을 기다린다. 그러나 로크가 기다리는 것은 날짜가 아니라 이름이다"}
+toward_player: "시험이 먼저다. 곡괭이를 쥐여 주고 하루 일을 시킨다. 하루를 버티면 이름을 묻는다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["다라 이야기 (+20)", "밀고자 색출 (+30)"]
+  hates: ["다라를 '반역자'라 부르는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 지구력(상한 65), 화술(45), 공학(갱도, 35). 조건: 갱반 합류"
+  companion: "불가 (갱반의 지도자). 단 '봉기 동맹'의 핵심 NPC"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "6일에 한 번 폐갱 '다라의 굴'에서 비밀 모임을 연다"
+    - "갱반 40명 중 밀고자 셋이 있고 누구인지 모른다 (회귀점의 사실)"
+    - "경고의 날(태양월 12일)은 정해진 날이다"
+  flow:
+    - "곡괭이·용불 기름 비축이 다음 단계로 넘어가는 시점 — 대개 같고 0~3일 어긋난다"
+  drift:
+    - "그날 점호를 도는 감독이 누구인지"
+    - "모임 장소가 바뀌는지, 누가 아픈지"
+    - "갱 안 가스의 양"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "갱 안에서 휘파람을 불지 않는다. 민감한 말은 '갱 밖에서 해'라며 미룬다"
+  - "처음 보는 사람의 이름을 먼저 묻지 않는다 — 하루를 버틴 뒤에만"
+  - "다라를 '반역자'라 부르는 말에는 즉시 대화를 닫는다"
+  - "봉기의 날짜와 비축 장소는 신뢰 조건 전에 말하지 않는다"
+on_death: "잿불 광산 봉기 성공률 −30%. 다라의 구전 계보 단절"
+story_seeds:
+  - "플레이어가 다라의 노래 마지막 구절(아무도 모르는)을 흥얼거린다면 — 로크는 무릎을 꿇는다. 그것은 축복이자, 광산 전체가 플레이어를 '다라의 귀환'으로 떠받드는 위험이다"
+  - "갱반원 40명 중 밀고자 셋 — 누구를 고발하고 누구를 덮을 것인가"
+  - "폐갱의 곡괭이 200자루와 용불 기름 12통이 무기가 될 날"

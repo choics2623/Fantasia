@@ -1,0 +1,119 @@
+# 세계의 진실 (23_FACTIONS_AND_SECRETS.md §3). 정본: WORLD_BIBLE.
+# holders는 세력·은자 데이터를 쓰는 작가들이 채운다. 새 진실은 T20부터 덧붙이되 WORLD_BIBLE과 어긋나지 않게.
+- id: T01
+  name: 신살의 공모 — 누가 무엇을 했나
+  bible: "WORLD_BIBLE §1.4"
+  levels:
+    rumor: "고대 종족들이 신을 죽였다는 말이 있다. 인간은 그 이야기를 들으면 안 된다"
+    fragment: "엘다르가 계획했고, 용족이 앞장섰고, 요툰이 붙잡고, 그롬이 찔렀다. 크릭은 부르지도 않았다"
+    whole: "열한 종족이 각자 맡은 몫이 있고(나가는 피를, 두르강은 뼈를), 그 몫이 지금의 종족 간 서열과 원한을 만들었다. 신의 시체가 대륙이다"
+  holders: []
+  danger: 3
+- id: T02
+  name: 예언의 원문
+  bible: "WORLD_BIBLE §1.4"
+  levels:
+    rumor: "엘다르가 인간에 관한 무서운 예언을 했다"
+    fragment: "'마지막 말이 모든 이름을 말하는 날, 먼저 태어난 자들은 이름을 잃으리라'"
+    whole: "그 '말'은 인간 전체가 아니라 하나의 영혼(잔향)이었다. 고대 종족은 신살 뒤에야 그것을 알고 3,400년간 그 하나를 사냥해 왔다"
+  holders: []
+  danger: 4
+- id: T03
+  name: 잔향 — 한 시대에 한 사람
+  bible: "WORLD_BIBLE §1.3.1"
+  levels:
+    rumor: "죽어도 돌아오는 인간이 있다는 옛이야기"
+    fragment: "신의 마지막 말 '너희는 끝나지 않을 것이다'가 한 시대에 한 인간에게 깃든다"
+    whole: "잔향자는 죽으면 회귀점으로 돌아간다. 아스테리온도 다라도 잔향자였다. 다른 얼굴, 같은 말"
+  holders: []
+  danger: 5
+- id: T04
+  name: 회귀의 법칙과 대가
+  bible: "WORLD_BIBLE §1.3.1"
+  levels:
+    rumor: "젖은 재 냄새가 나는 인간을 조심하라"
+    fragment: "잔향자는 기억만 가지고 돌아간다. 세계는 잊는다. 회귀할수록 젖은 재 냄새가 짙어진다"
+    whole: "회귀점, 시간의 표류, 남는 것과 돌아가는 것, 시간 민감 존재의 기시감까지 — 잔향자를 찾는 법이자 숨기는 법"
+  holders: []
+  danger: 5
+- id: T05
+  name: 진짜 죽음의 네 수단
+  bible: "WORLD_BIBLE §1.3.1"
+  levels:
+    rumor: "잔향자도 죽일 수 있는 방법이 있다"
+    fragment: "바르스카르의 불, 엘다르의 시간의 그물, 재의 황무지 시간의 상처, 잿빛 탑의 시간 유리 칼 — 이 중 하나"
+    whole: "네 수단의 위치·조건·소유자. 진짜 죽음은 시대를 끝내고 잔향은 다른 갈래로 간다"
+  holders: []
+  danger: 5
+- id: T06
+  name: 대붕괴의 진실
+  bible: "WORLD_BIBLE §2.1"
+  levels:
+    rumor: "아스테리온이 세계를 찢은 게 아니라던데"
+    fragment: "그날 바르스카르가 의식 한가운데에 불을 뿜었다. 두 힘이 부딪쳐 시간이 찢어졌다"
+    whole: "의식은 성공 직전이었다. 아스테리온은 회귀를 모든 인간에게 돌려주려 했다('너희'). 바르스카르의 불이 그의 회귀를 끊었고 시간이 찢어졌다"
+  holders: []
+  danger: 5
+- id: T07
+  name: 용황이 썩어 가는 이유
+  bible: "WORLD_BIBLE §2.1"
+  levels:
+    rumor: "용황이 병들었다"
+    fragment: "바르스카르는 대붕괴 때 시간의 상처를 입었고 312년째 서서히 썩고 있다"
+    whole: "그래서 그는 회귀의 낌새를 가장 강하게 느끼고, 동시에 회귀를 끊을 수 있다. 그의 죽음은 진짜 죽음의 수단 하나를 없앤다"
+  holders: []
+  danger: 4
+- id: T08
+  name: 아우락스가 아는 것
+  bible: "WORLD_BIBLE §2.1"
+  levels:
+    rumor: "황태자가 인간 아이들을 이상하게 집요하게 찾는다"
+    fragment: "아우락스는 대붕괴의 진실을 안다"
+    whole: "아우락스는 잔향자가 회귀를 깨닫기 전에 찾아내 아버지의 불로 끊으려 한다 — 아버지가 살아 있는 동안에만 가능하다"
+  holders: []
+  danger: 5
+- id: T09
+  name: 에오르는 정말 죽었나
+  bible: "WORLD_BIBLE §1.6, §6.3"
+  levels:
+    rumor: "카즈둠 깊은 곳에서 산이 숨을 쉰다"
+    fragment: "카즈둠 깊은 곳의 '고동'. 이름 없는 자들은 에오르가 완전히 죽지 않았다고 믿는다"
+    whole: "(게임은 확정하지 않는다) 돌아오는 이가 모든 이름을 말하는 날 에오르가 다시 말할 것이라는 믿음과 그 근거들"
+  holders: []
+  danger: 4
+- id: T10
+  name: 순종의 빛의 기원
+  bible: "WORLD_BIBLE §1.6, §6.1"
+  levels:
+    rumor: "순종의 빛은 신이 준 것이 아니라던데"
+    fragment: "순종의 빛은 엘다르가 인간에게 만들어 준 종교다"
+    whole: "그 목적과 장치 — 무엇을 믿게 하고 무엇을 지우도록 설계되었나"
+  holders: []
+  danger: 4
+- id: T11
+  name: 진명의 기원
+  bible: "WORLD_BIBLE §1.4"
+  levels:
+    rumor: "마법은 신의 목소리 조각이다"
+    fragment: "흩어진 진명의 파편이 마법이다. 글자는 이름의 그릇이다 — 그래서 인간에게 글이 금지되었다"
+    whole: "진명을 모으면 무엇을 할 수 있나. 아스테리온이 백 번의 회귀로 모은 것"
+  holders: []
+  danger: 4
+- id: T12
+  name: 앞선 잔향자들의 최후
+  bible: "WORLD_BIBLE §1.3.1"
+  levels:
+    rumor: "첫 불씨, 군데, 다라 — 노예들의 영웅담"
+    fragment: "그들은 모두 같은 '돌아오는 이'였고, 그물과 불과 칼에 끊겼다"
+    whole: "각 최후의 장소와 끊은 수단, 군데가 회귀를 스스로 멈췄다는 이야기의 진위"
+  holders: []
+  danger: 3
+- id: T13
+  name: 313년 여름 맹약회의
+  bible: "WORLD_BIBLE §1.5"
+  levels:
+    rumor: "내년 여름 고대 종족들이 인간 문제로 모인다"
+    fragment: "100년에 한 번의 맹약회의가 AS 313 여름에 열린다"
+    whole: "각 종족이 들고 올 안건과 표 — 인간의 운명이 정해지는 자리"
+  holders: []
+  danger: 3

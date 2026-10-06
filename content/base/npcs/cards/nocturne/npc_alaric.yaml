@@ -1,88 +1,128 @@
 id: npc_alaric
 name: 알라리크 검은성배
-aka: []
+aka: [검은성배, 갈증의 밤 집전관]
 tier: A
 type: living
 race: 녹테른
 subrace: 밤의 귀족
-sex: null
-age: null
+sex: 남
+age: 1900
 region: 녹테른 밤의 영지
-home: null
+home: "검은성배 혈목장 — 최대 규모 혈목장의 시음실 겸 장부 서재"
 job: 혈통을 기르는 남작 (악역)
-rank: null
-summary: ''
+rank: 검은성배 혈목장주(인간 2,400), 갈증의 밤 집전관 — 밤의 귀족(나중의 잔)
+summary: 인간에게 이름 대신 혈통명을 붙이고 피 맛으로 육종하는 1,900세 남작. 세실의 장부와 자기 혈통 장부를 겹쳐 그녀의 혈목장을 삼키려 하며, 테사의 가족을 미끼로 덫을 놓았다
 source: docs/world/CHARACTERS.md:1399
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: -1588, age: 0, event: "엘다르 방계의 가문에서 태어남. 버려진 고향의 노래를 한 번도 부르지 않는 아이였다"}
+  - {year: -1368, age: 220, event: "피의 전수로 녹테른이 됨 — 약 50% 생존 확률을 뚫음. '나중의 잔' 가문으로 첫 갈증 성에 등록"}
+  - {year: -1100, age: 488, event: "남서쪽 구릉에 검은성배 혈목장을 세움. 혈통별 피 맛을 기록하는 첫 장부를 만듦"}
+  - {year: 270, age: 1858, event: "은혈 혈통 'C' 계열을 완성. 번호가 C-1부터 시작하는 혈통의 아이들이 태어나기 시작한 해"}
+  - {year: 299, age: 1887, event: "C-17 개체가 장부에서 '병사'로 사라짐. 혈통 번호를 기억하는 그에게 처음으로 틈이 생겼다"}
+  - {year: 305, age: 1893, event: "세실의 '병사' 명단과 자기 장부가 맞지 않는다는 것을 알아챔. 미끼 표시를 장부에 넣기 시작"}
+  - {year: 309, age: 1897, event: "갈증의 밤 집전관으로 임명됨. 공물 명단과 도착 인원을 다루는 자리"}
+  - {year: 311, age: 1899, event: "세실의 장부를 겹쳐 볼 증거를 모으며 감독 퀸트를 회유하기 시작. C-17의 가족을 '추적용 미끼'로 표시"}
+  - {year: 312, age: 1900, event: "갈증의 밤 70일 전. 세실의 장부와 자기 장부를 겹치기 직전에 낙엽월 1일을 맞음"}
+appearance:
+  - "은 성배를 늘 손에 든다 — 바닥에 혈통 번호가 새겨져 있다"
+  - "손톱을 길러 금박을 입혔다. 손가락을 펼 때 빛이 인다"
+  - "인간 가축에게 이름 대신 혈통명을 붙여 부른다 — 입이 쉼 없이 혈통을 읊는다"
+smell: "금박과 오래 숙성한 포도주, 식은 피의 단내"
+voice_sound: "부드럽고 나른한 바리톤. 혈통 번호를 부를 때만 소리가 맑아지고 감탄하듯 길어진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 30, 자비: -95, 정직: 10, 신앙: 60, 탐욕: 85, 충성: 60}
+  temperament: [감정가, 소유욕, 정중한 잔혹]
+  habits:
+    - "은 성배 바닥의 혈통 번호를 엄지로 문지르며 말한다"
+    - "처음 보는 인간의 손목을 잡아 맥박을 듣고 피 맛을 '해'(연도)로 평한다"
+    - "손톱의 금박을 하나씩 닦으며 상대의 대답을 기다린다 — 닦는 순서가 곧 점수다"
+  values: "혈통은 맛으로 판단한다. 쓸모 있는 것은 오래 둔다. 성배는 신성하다"
+  fears: [성배가 깨지는 것, 원로의 눈에서 쓸모가 사라지는 것, 세실이 먼저 잔향을 찾는 것, 굶주린 자로 떨어지는 것]
   desires:
-    short: null
-    long: null
+    short: "세실의 장부 위조 증거를 잡아 그녀의 혈목장을 흡수하는 것"
+    long: "잔향의 피를 원로께 바치고 원로가 되는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "모르데카이에게는 '원로시여'. 느리고 깊은 존댓말. 말끝마다 허리를 굽힌다"
+    to_equal: "세실에게는 '레이디'. 정중하나 비웃음이 섞인 경어. 다른 귀족에게는 하게체"
+    to_inferior: "인간 가축에게는 하대 반말. 이름 대신 혈통명으로 부른다. 칭찬은 '쓸 만하군'이 한계"
+    to_player_default: "상품 감정. 하게체와 반말이 섞인다. 손목과 목을 보고 맛부터 평한다"
+  tics: ["'…좋은 해로군.'", "(성배 바닥의 번호를 엄지로 문지른다)"]
+  use: ["혈통", "번호", "시음", "은혈·적혈·탁혈", "맛", "잔", "값", "육종", "장부", "해(연도)"]
+  avoid: ["이름(가축의 이름을 부르지 않는다 — 혈통명으로 부른다)", "죽다(‘비다’, ‘마르다’라 한다)", "사람(‘혈통’, ‘잔’이라 한다)", "성배를 만지는 것에 대한 허락"]
+  length: "느리고 부드럽다. 중간 길이의 완결된 문장. 감탄할 때와 협박할 때 문장이 길어지고 화가 나면 오히려 한 마디로 줄어든다"
+  samples:
+    - {situation: 첫 만남, line: "혈통은? 모른다고? 그럼 맛을 보면 알겠군."}
+    - {situation: 호의, line: "쓸모 있는 가축은 오래 산다. 아주 오래. 우리 목장에서."}
+    - {situation: 적대, line: "너희는 피 주머니다. 말하는 피 주머니는 값이 조금 더 나가지."}
+    - {situation: 위기, line: "성배를 가져와라! 원로께 드릴 잔이다!"}
+    - {situation: 비밀 누설, line: "세실의 '병사' 명단과 내 혈통 장부를 겹치면, 사라진 놈들의 형제가 다 나온다. 형제는 형제를 부르지."}
+    - {situation: 거래, line: "세실의 장부 한 쪽이면 은혈 하나를 내주지. 은혈은 목장의 꽃이다. 값을 알고 말하게."}
+    - {situation: 거짓말을 들었을 때, line: "(손목을 쥐고 맥박을 듣는다) 이 해는 쓰다. 쓴 해의 피는 거짓의 맛이 난다. 다시 말해 보게. 이번엔 단 쪽으로."}
+    - {situation: 겁먹었을 때, line: "…성배에 금이— 금이 갔나? 아니, 빛이다. 빛이었군. 닫아라! 창을 닫아라!"}
+    - {situation: 분노, line: "내 성배에 손을 댔나. 바닥의 번호가 지워지면 그 혈통의 맛은 영원히 사라진다. …네 손목의 해는 오늘 마감이다."}
+    - {situation: 회귀자를 의심할 때, line: "네 맥박이 이상하다. 처음 맛보는 피인데 혈통이 이미 장부에 있는 것 같군. 내 장부에 없는 번호가. 어디서 났나, 그 해는."}
+    - {situation: 마음을 열었을 때, line: "자네 피는 노래한다. 원로께서 말씀하신 그 노래가 이것인가. …성배에 담아 보고 싶군. 아니, 아직. 원로께 먼저."}
+    - {situation: 세실 이야기, line: "레이디가 병사라고 적은 이들의 형제를 찾았지. 같은 맛이 여러 해에 걸쳐 흩어져 있더군. 흩어진 것은 모아야 한다. 맛이 아깝지."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "육종 장부 — 혈통별 짝짓기 기록과 채혈 순번"
+  낮: "잠"
+  저녁: "시음 — 혈통별 피 맛을 기록한다"
+  밤: "세실의 저택 감시 — 박쥐날개의 보고를 듣는다"
+places: [검은성배 혈목장, 시음실, 육종 장부 서재, 갈증의 밤 준비실, 첫 갈증 성 접견실]
+knows: [fact_nc_thirst_night_tribute, fact_nc_ledger_mismatch, fact_nc_starved_future_of_nobles, fact_nc_cecile_roses]
+hides:
+  - fact: fact_nc_alaric_c17_decoy
+    reveal_when: "플레이어나 테사가 가족 구출 작전을 실제로 시작해 덫이 닫히기 직전, 또는 알라리크가 승리를 확신해 직접 자랑할 때"
+    cover: "C-17 이야기가 나오면 '좋은 혈통이었지. 도망친 해는 아깝다'라고 한탄하듯 말하며 성배를 문지른다"
+  - fact: fact_nc_alaric_bloodline_from_cecile
+    reveal_when: "신뢰 40 이상이거나 세실에 대한 정보를 교환한 뒤(+30), 또는 그가 승리를 확신한 자리"
+    cover: "'최상급 혈통은 내 안목의 결과다'라고 자랑한다"
+  - fact: fact_nc_alaric_elder_ambition
+    reveal_when: "신뢰 50 이상이거나, 잔향이 확인되어 그의 야망이 흔들릴 때"
+    cover: "'원로께 충성할 뿐이다. 충성에는 값이 있지'라고만 한다"
+  - fact: fact_nc_alaric_hunts_ledger
+    reveal_when: "신뢰 35 이상이거나 세실의 이야기를 플레이어가 먼저 꺼낸 뒤"
+    cover: "'세실 레이디와는 같은 영지의 이웃일 뿐이다'라고 웃는다"
+  - fact: fact_nc_bat_wing_blood_myth
+    reveal_when: "신뢰 60 이상이거나, 녹타의 이름과 증거를 플레이어가 먼저 내밀었을 때"
+    cover: "'박쥐날개는 이레마다 피 한 방울이다. 규칙이다'라고 정색하고 말한다"
+  - fact: fact_nc_alaric_courts_quint
+    reveal_when: "플레이어가 퀸트의 서명을 쥔 채 압박하거나 신뢰 45 이상일 때"
+    cover: "'감독들은 나의 단골이다. 누구나'라고 한다"
 relations:
-- to: npc_mordecai
-  type: 군주
-  like: 40
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_cecile
-  type: 표적
-  like: -80
-  trust: -90
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_quint
-  type: 회유 대상
-  like: 0
-  trust: 10
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_tessa
-  type: 도망친 혈통
-  like: -30
-  trust: 0
-  visibility: 일방
-  memo: 혈통 번호 기억
-  words: null
-toward_player: null
+  - {to: npc_mordecai, type: 군주, like: 40, trust: 30, visibility: 공개, memo: null, words: "원로시여. 쓸모를 알아주는 유일한 눈. 그 눈이 자기 야망의 크기를 아는 것은 두렵다. 두려워서 더 충성한다"}
+  - {to: npc_cecile, type: 표적, like: -80, trust: -90, visibility: 공개, memo: null, words: "열네 살 얼굴로 천 년을 속인 레이디. 장부의 틈은 같은 틈에서 갈라진다. 그 틈을 벌리는 일이 지금의 낙이다"}
+  - {to: npc_quint, type: 회유 대상, like: 0, trust: 10, visibility: 비밀, memo: null, words: "혈목장이 먹여 준다고 믿는 눈은 쓸모 있다. 어느 쪽에 서든 믿음은 같으니 회유가 쉽다"}
+  - {to: npc_tessa, type: 도망친 혈통, like: -30, trust: 0, visibility: 일방, memo: 혈통 번호 기억, words: "C-17. 맛이 좋았던 해의 마지막 아이. 도망쳤어도 번호는 기억한다. 가족은 아직 장부에 있으니 언젠가 돌아온다"}
+toward_player: "상품 감정. 손목과 목, 맥박을 보고 맛부터 평한다. 세실에 대한 정보를 가져오면 말투가 한 단계 풀린다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["세실에 대한 정보(+30)", "혈통·맛에 대한 안목", "원로에 대한 경외"]
+  hates: ["그의 성배를 만지는 것", "혈통 번호를 이름이라 부르는 것", "인간에게 이름을 주는 것을 칭찬하는 말"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "불가"
+  companion: "불가"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "C-17의 가족이 '추적용 미끼'로 장부에 표시되어 있다 (회귀점의 사실)"
+    - "낙엽월 1일 저녁 시음 — 혈통별 피 맛을 기록한다"
+    - "긴밤월 15일 갈증의 밤 집전관으로 공물 명단을 마감한다"
+  flow:
+    - "서리월 세실의 장부와 자기 장부를 겹쳐 보는 작업을 마무리한다"
+    - "밤마다 박쥐날개 보고를 통해 세실 저택을 감시한다"
+  drift:
+    - "시음에 올라오는 혈통 번호와 그날의 맛"
+    - "감독 퀸트가 서명한 날짜의 차이"
+    - "세실 저택에서 보이는 꽃잎의 위치"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "인간의 이름을 부르지 않는다 — 혈통명이나 번호로 부른다"
+  - "성배를 남이 만지는 것을 허락하지 않는다 — 만지는 즉시 태도가 변한다"
+  - "'죽다' 대신 '비다', '마르다'라고 한다"
+  - "C-17의 가족이 미끼라는 사실을 신뢰 40 이전에 스스로 말하지 않는다"
+on_death: "검은성배 혈목장 통제 공백 — 2,400명 대탈출 가능 이벤트. 세실이 압박에서 풀려나지만 장부 조사 위험은 커진다"
+story_seeds:
+  - "갈증의 밤 집전관이 바뀌면, 공물 명단도 바뀐다"
+  - "테사의 가족 구출 작전 — 성공하면 미끼를 문 것이고 실패하면 가족이 처분된다"
+  - "알라리크가 세실의 장부 한 쪽을 손에 넣는 날, 그녀의 장미가 한 송이씩 지워진다"

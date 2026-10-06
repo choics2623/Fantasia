@@ -1,0 +1,16 @@
+# 날짜가 정해진 일정 — 일과보다 우선한다 (24 §3.2). 원천: REGIONS §2.14, §2.11.
+# repeat: monthly(day) — 매달 같은 날. travel: 지역 지도 경로로 이동.
+- {id: ev_kaspar_supply_meeting, npcs: [npc_kaspar, npc_lea], repeat: monthly, day: 15, from: "10:00", to: "16:00", at: gf_keep_hall, doing: 성채 보급 회의, travel_from: crow_gate, travel_back_via: old_stone_ring}
+- {id: ev_kaspar_stone_ring, npcs: [npc_kaspar], repeat: monthly, day: 15, from: "17:00", to: "17:10", at: old_stone_ring, doing: 혼자 옛 돌 고리를 지난다 — 돌 틈 전갈}
+- {id: ev_lea_post, npcs: [npc_lea], repeat: monthly, day: 25, from: "12:00", to: "14:00", at: dragon_pillar_post, doing: 우편함에 보고서를 넣는다, travel_from: crow_gate}
+- {id: ev_owen_crow_gate, npcs: [npc_owen_raven], repeat: monthly, day: 1, from: "14:00", to: "16:00", at: crow_gate, doing: 까마귀 문 왕래, travel_from: gf_keep}
+- {id: ev_severo_envoy, date: "312-09-03", npcs: [npc_godric_raven], from: "10:00", to: "13:00", at: gf_keep_hall, doing: 세렌 중개인의 사자와 매각 계약}
+- {id: ev_sara_overhears, date: "312-09-03", npcs: [npc_sara], from: "10:00", to: "13:00", at: gf_keep_hall, doing: 응접실 밖에서 엿듣는다}
+- {id: ev_hagen_knot, date: "312-09-05", npcs: [npc_hagen], from: "22:00", to: "03:00", at: hungry_hill__three_pines, doing: 그루터기에 탈주자 위치 매듭을 남긴다}
+- {id: ev_henrik_ledger, date: "312-09-10", npcs: [npc_henrik], from: "08:00", to: "10:00", at: gf_iron_bridge, doing: 결산 장부를 바알카르로 보낸다}
+- {id: ev_hagen_sells, date: "312-09-22", npcs: [npc_hagen, npc_volk], from: "22:00", to: "02:00", at: hungry_hill__fang_fire, doing: 탈주자 셋을 넘긴다, condition: "하겐 생존·미발각"}
+- {id: ev_volk_search, date: "312-09-25", npcs: [npc_volk], from: "04:00", to: "20:00", at: hungry_hill, doing: 굶주린 언덕 대수색}
+- {id: ev_first_sale_convoy, date: "312-10-09", npcs: [npc_znik], from: "06:00", to: "12:00", at: gf_iron_bridge, doing: 1차 매각 호송 출발}
+- {id: ev_grain_search, date: "312-10-20", npcs: [npc_znik, npc_henrik], from: "08:00", to: "14:00", at: gf_mill, doing: 곡물 수색}
+- {id: ev_second_sale_convoy, date: "312-12-03", npcs: [npc_znik, npc_godric_raven], from: "06:00", to: "11:00", at: gf_iron_bridge, doing: 2차 매각 호송 출발}
+- {id: ev_martha_smells, date: "312-12-10", npcs: [npc_martha], from: "19:00", to: "19:40", at: gf_rooster, doing: 수탉 지하의 냄새를 알아챈다}

@@ -1,0 +1,205 @@
+# 루멘(순종의 빛 성지)의 사실 (22_NPC_PERSONA.md §1.2, 08 §3.3)
+# id 규칙: fact_lu_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# ── 교리와 그레고르 7세 ──
+- id: fact_lu_doctrine_false
+  text: "'순종한 자는 다음 생에 빛의 종족으로 태어난다'는 순종의 빛 교리는 거짓이다. 평범한 인간의 영혼은 돌아오지 않는다. 돌아오는 것은 신의 마지막 말 — 단 하나의 영혼뿐이다. 엘다르가 그 전설을 비틀어 만든 거짓이다"
+  truth: true
+  danger: 5
+  names: [순종의 빛, 엘다르]
+- id: fact_lu_gregor_paper
+  text: "그레고르 7세는 대성당 종탑 밑 기도실에 종이 한 장을 펼쳐 두고, 자신이 서명한 화형 승인서 1,107장의 이름들을 아주 작은 글씨로 적어 왔다"
+  truth: true
+  danger: 5
+  names: [그레고르 7세]
+- id: fact_lu_gregor_signed_1107
+  text: "그레고르 7세는 재임 41년간 화형 승인서 1,107장에 서명했다"
+  truth: true
+  danger: 3
+  names: [그레고르 7세]
+- id: fact_lu_gregor_delays_signature
+  text: "그레고르 7세는 알베릭의 처형 서명을 1년째 미루고 있다. 그가 죽으면 마테우스가 바로 서명한다"
+  truth: true
+  danger: 5
+  names: [그레고르 7세, 알베릭, 마테우스]
+- id: fact_lu_gregor_teacher
+  text: "알베릭은 그레고르 7세의 제자였다. '빛의 서신'의 첫 문장은 그레고르가 젊을 때 한 말이다. 알베릭은 스승을 지키려고 이를 공개하지 않았다"
+  truth: true
+  danger: 4
+  names: [그레고르 7세, 알베릭]
+- id: fact_lu_gregor_maren_descendant
+  text: "알베릭은 성 마렌의 숨은 후손(등잔지기)이다. 그레고르 7세는 그것을 알고, 그래서 그를 죽이지 못한다"
+  truth: true
+  danger: 4
+  names: [알베릭, 그레고르 7세, 성 마렌]
+- id: fact_lu_gregor_maren_day
+  text: "그레고르 7세는 AS 313 꽃월 성 마렌 축일에 마렌의 '두 번째 설교'를 낭독할지 고민한다. 알베릭의 '빛의 서신'을 외우고 있다. 낭독하면 그날 밤 마테우스가 움직인다"
+  truth: true
+  danger: 5
+  names: [그레고르 7세, 성 마렌, 마테우스]
+- id: fact_lu_gregor_fears_massacre
+  text: "그레고르 7세는 교리의 거짓을 공개하면 30만 신도가 학살당한다는 것을 안다. 그래서 어떻게든 '남기는' 방법만 찾는다"
+  truth: true
+  danger: 4
+  names: [그레고르 7세]
+- id: fact_lu_gregor_hands
+  text: "그레고르 7세의 손은 나이 때문이 아니라 서명 때문에 떤다. 그는 사적으로는 후회하고 공적으로는 엘다르의 뜻을 따른다"
+  truth: true
+  danger: 2
+  names: [그레고르 7세]
+# ── 알베릭 ──
+- id: fact_lu_alberic_second_letter
+  text: "알베릭의 '두 번째 서신'은 머릿속에 완성되어 있다. 핵심 문장은 '우리는 돌아오지 않는다. 그러니 무릎 꿇은 채 이번 생을 낭비하지 마라'이다"
+  truth: true
+  danger: 5
+  names: [알베릭]
+- id: fact_lu_alberic_tap_code
+  text: "알베릭은 벽 두드림 문자를 만들어 옆 감방의 베라에게 가르쳤다. 베라는 이제 '듣고 쓸' 수 있다"
+  truth: true
+  danger: 2
+  names: [알베릭, 베라]
+- id: fact_lu_alberic_wont_leave_alone
+  text: "알베릭은 탈옥할 수 있으나 하지 않는다. 그레고르의 낭독을 기다리며, 베라를 두고는 나가지 않는다"
+  truth: true
+  danger: 4
+  names: [알베릭, 베라, 그레고르 7세]
+- id: fact_lu_alberic_hanna
+  text: "알베릭의 누이 한나는 루멘 대성당의 촛불지기이며, 알베릭에게 소식과 양초 조각을 몰래 전한다"
+  truth: true
+  danger: 3
+  names: [알베릭, 한나]
+- id: fact_lu_alberic_wall_writing
+  text: "알베릭은 매일 감방 벽에 손톱으로 글을 새기고, 간수는 매달 회칠로 지운다. 벽에 '빛의 서신' 2장이 남아 있다"
+  truth: true
+  danger: 3
+  names: [알베릭]
+# ── 마테우스 ──
+- id: fact_lu_mateus_clara
+  text: "마테우스는 AS 290에 열다섯 살 누이 클라라를 잔향 징후자로 고발했다. 클라라의 눈의 잿빛 얼룩은 결막 질환이었다. 그녀의 머리핀을 반지처럼 구부려 약지에 끼고 있다"
+  truth: true
+  danger: 4
+  names: [마테우스, 클라라]
+- id: fact_lu_mateus_212_none
+  text: "마테우스가 태운 징후자 212명 중 '진짜'는 한 명도 없었다. 그는 그것을 알면서 멈추지 못한다 — 멈추면 212명이 무의미해지기 때문이다"
+  truth: true
+  danger: 5
+  names: [마테우스]
+- id: fact_lu_mateus_reported_paper
+  text: "마테우스는 엘다르 감독관 세레니엘에게 그레고르 7세의 '종이 한 장'의 존재를 보고했다"
+  truth: true
+  danger: 4
+  names: [마테우스, 세레니엘, 그레고르 7세]
+- id: fact_lu_mateus_vera_213
+  text: "마테우스는 베라를 213번째 징후자 후보로 센다. 그녀가 타면 그는 213번째를 센다. 그녀를 꺼내면 대신 누군가를 찾는다"
+  truth: true
+  danger: 3
+  names: [마테우스, 베라]
+- id: fact_lu_mateus_successor
+  text: "마테우스는 루멘 등불관 겸 정화청장이며 차기 대사제 유력 후보다. 엘다르 감독관 세레니엘이 뒤에서 민다"
+  truth: true
+  danger: 1
+  names: [마테우스, 세레니엘]
+- id: fact_lu_mateus_questions
+  text: "마테우스는 처음 만난 사람에게 늘 세 가지를 묻는다 — 어디서 왔나, 누구에게 배웠나, 꿈을 꾸는가"
+  truth: true
+  danger: 1
+  names: [마테우스]
+- id: fact_lu_mateus_penance
+  text: "마테우스는 밤마다 독방에서 채찍으로 고행한다. 등에 채찍 자국이 있고 앉을 때 숨을 멈춘다"
+  truth: true
+  danger: 2
+  names: [마테우스]
+# ── 세레니엘 ──
+- id: fact_lu_sere_wrote_doctrine
+  text: "세레니엘은 AS 87에 순종의 빛 교리를 직접 쓴 엘다르 위원회 일원이다. 교리 셋째 장의 '고난은 정화다'는 그녀가 쓴 문장이다"
+  truth: true
+  danger: 4
+  names: [세레니엘, 순종의 빛]
+- id: fact_lu_sere_mateus_work
+  text: "세레니엘은 마테우스의 신앙을 '우리가 만든 것 중 가장 아름다운 작품'이라 기록했다"
+  truth: true
+  danger: 3
+  names: [세레니엘, 마테우스]
+- id: fact_lu_sere_double_report
+  text: "세레니엘은 '설명되지 않는 학습 속도' 보고를 모아 아에린(존속파)에게 보내고, 같은 보고서를 마테우스에게도 보낸다. 그녀는 '그것'을 태우려는 자와 가져가려는 자 사이에 있다"
+  truth: true
+  danger: 4
+  names: [세레니엘, 아에린, 마테우스]
+- id: fact_lu_sere_sends_suspects
+  text: "세레니엘은 매년 실바렌의 영혼 정원에 '잔향 의심자' 3명을 보낸다"
+  truth: true
+  danger: 4
+  names: [세레니엘, 영혼 정원]
+- id: fact_lu_sere_kept_distance
+  text: "세레니엘은 인간과 같은 방에 있을 때 백합 향 손수건으로 코를 가리고 일정한 거리를 둔다"
+  truth: true
+  danger: 1
+  names: [세레니엘]
+# ── 아그네스 ──
+- id: fact_lu_agnes_underground
+  text: "순례자 숙소를 관리하는 수녀 아그네스는 끊어진 고리의 루멘 책임자이자 잿빛 실 루멘 거점의 지기이다. 지금까지 그곳을 지나 탈주한 이는 214명이다"
+  truth: true
+  danger: 5
+  names: [아그네스, 끊어진 고리, 잿빛 실]
+- id: fact_lu_agnes_rescue_plan
+  text: "아그네스는 침묵의 우물의 알베릭을 구출하려 한다. 간수 2명은 이미 매수했고 1명이 남았다"
+  truth: true
+  danger: 5
+  names: [아그네스, 알베릭]
+- id: fact_lu_agnes_felix_suspicion
+  text: "아그네스는 고해 사제 펠릭스가 밀고자라고 의심하나 확신이 없다"
+  truth: true
+  danger: 3
+  names: [아그네스, 펠릭스]
+- id: fact_lu_agnes_grey_voice
+  text: "아그네스는 회색 여인의 목소리를 한 번 들었다 — '기다려라, 돌아오는 이를.' 그 뒤 그녀는 '기다림'을 잿빛 실의 규칙으로 삼았다"
+  truth: true
+  danger: 4
+  names: [아그네스, 회색 여인]
+- id: fact_lu_agnes_well
+  text: "순례자 숙소 지하 저장고의 '물 없는 우물'이 탈주자를 잿빛 실 → 모르바로 인도하는 입구다. 밧줄은 셋째 돌 밑에 있다"
+  truth: true
+  danger: 4
+  names: [아그네스, 물 없는 우물]
+# ── 베라 ──
+- id: fact_lu_vera_sister
+  text: "베라의 언니도 AS 296에 같은 이유(눈의 잿빛 얼룩)로 화형당했다. 베라는 같은 집안 두 번째 징후자다. 둘 다 대장간 불티에 덴 상처였다"
+  truth: true
+  danger: 2
+  names: [베라]
+- id: fact_lu_vera_false_accusation
+  text: "베라를 고발한 것은 그녀의 혼처를 노리던 이웃이다. 징후 고발은 이웃 간 복수 수단이 되었다"
+  truth: true
+  danger: 3
+  names: [베라]
+- id: fact_lu_vera_tap_student
+  text: "베라는 매일 벽 두드림으로 알베릭에게 글을 배운다. 읽고쓰기는 두드림 문자를 포함해 35에 이른다"
+  truth: true
+  danger: 3
+  names: [베라, 알베릭]
+# ── 펠릭스와 오토 ──
+- id: fact_lu_felix_informs_mateus
+  text: "고해 사제 펠릭스는 순례자의 고해를 마테우스에게 넘긴다. 이단을 고발하는 것이 신도의 영혼을 구한다고 진심으로 믿는다"
+  truth: true
+  danger: 4
+  names: [펠릭스, 마테우스]
+- id: fact_lu_felix_ledger
+  text: "펠릭스의 '고해 장부'에는 루멘 일대의 비밀의 절반이 적혀 있다. 요한의 보고도 그에게 들어온다"
+  truth: true
+  danger: 4
+  names: [펠릭스, 요한]
+- id: fact_lu_otto_cousin
+  text: "침묵의 우물 간수장 오토는 마테우스의 사촌이다. 매수가 불가능하다"
+  truth: true
+  danger: 2
+  names: [오토, 마테우스]
+- id: fact_lu_otto_wife
+  text: "오토에게는 아픈 아내가 있다. 약이 필요하다. 엘사나 오다의 약이 열쇠다"
+  truth: true
+  danger: 2
+  names: [오토, 엘사, 오다]
+# ── 루멘의 공개 사실 ──
+- id: fact_lu_pyres_autumn
+  text: "정화의 뜰에는 이번 가을에만 장작이 네 번 쌓였다. 대사제는 82세로 침상에 누운 날이 많다"
+  truth: true
+  danger: 1
+  names: [정화의 뜰]

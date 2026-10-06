@@ -1,88 +1,120 @@
 id: npc_kyle_sandeye
 name: '''모래눈'' 카일'
-aka: []
+aka: [모래눈, 아홉 분의 사나이]
 tier: A
 type: living
 race: 인간
 subrace: ''
-sex: null
-age: null
+sex: 남
+age: 36
 region: 재의 황무지
-home: null
+home: 마지막 등불 판잣집 (패원 숙소 곁)
 job: 유물 사냥꾼 (경쟁자)
-rank: null
-summary: ''
+rank: 탈주 노예 출신 유물 사냥꾼 패 '모래눈'(6명) 두목
+summary: 잔상 주기표를 외운 탈주 노예 출신 유물 사냥꾼. 이미 찾은 교본 상자가 너무 무서워 손대지 못한다
 source: docs/world/CHARACTERS.md:1686
-life: []
-appearance: []
-smell: null
-voice_sound: null
+life:
+  - {year: 276, age: 0, event: "용의 대로 남쪽 어느 영지의 노예 막사에서 태어남"}
+  - {year: 294, age: 18, event: "주인의 곡물 수레 밑에 숨어 탈주한다. 같이 뛰던 아이 하나가 어느 줄에서 손을 놓쳤는지 기억하지 못한다"}
+  - {year: 296, age: 20, event: "황무지 가장자리 모래 폭풍 속에서 잿빛 모래에 왼눈을 긁힌다. 마지막 등불에 들어온 첫해, 그것이 징후로 오인되지 않도록 안대를 쓰기 시작했다"}
+  - {year: 300, age: 24, event: "유물 사냥꾼 패 '모래눈'을 세운다. 첫 패원 여섯 가운데 둘은 일 년 안에 잔상에 먹혔다"}
+  - {year: 305, age: 29, event: "AS 305 잔상 주기표를 완성한다 — 9분을 기준으로 장면마다 몇 걸음 앞까지 오는지 외웠다. 손바닥의 시간 잔상 화상은 이 시기에 생겼다"}
+  - {year: 309, age: 33, event: "AS 309 아홉째 문 너머 아스테리아 학교 터에서 '교본 상자'를 찾는다. 잔상 속 아이들이 글자를 따라 읽는 소리에 그는 손을 거뒀다"}
+  - {year: 311, age: 35, event: "AS 311 잿빛 탑이 교본 상자에 200 비늘을 걸었다는 소문이 돈다. 의뢰인 이레네의 서신이 도착한다. 그는 패원 하나가 탑의 눈이라는 것을 알면서 곁에 둔다"}
+appearance:
+  - "왼눈이 잿빛 모래에 긁혀 뿌옇다 — 징후로 오인되지 않으려 늘 안대"
+  - "허리에 아스테리아 시대 동전 꿰미"
+  - "손바닥에 시간 잔상 화상 — 손금이 거꾸로 났다"
+smell: "재와 땀, 쇠 동전 냄새"
+voice_sound: "거칠고 낮다. 장사꾼처럼 빠르다. 말끝을 자르고 상대의 반응부터 본다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: 60, 자비: -10, 정직: -20, 신앙: -60, 탐욕: 70, 충성: 30}
+  temperament: [경계심 많은 장사꾼, 계산하는 용기, 숨긴 겁]
+  habits:
+    - "시간을 '아홉 분' 단위로 말한다"
+    - "손바닥을 불빛에 비춰 거꾸로 난 손금을 한 번 본다"
+    - "안대를 고쳐 쓸 때 상대의 눈을 본다"
+    - "동전 꿰미를 짤랑여 숫자를 센다. 거짓말을 하면 소리가 멎는다"
+  values: "몫. 자기 패. 주기표대로 돌아오는 것"
+  fears:
+    - "교본 상자 속 아이들"
+    - "10분째에 자기가 장면의 일부가 되는 것"
+    - "눈이 징후라 불리는 것"
   desires:
-    short: null
-    long: null
+    short: "'아홉째 문' 너머 아스테리아 학교 터의 '교본 상자' 발굴 — 잿빛 탑이 200 비늘을 걸었다"
+    long: "안대 없이 눈을 드러내고 늙는 것. 그리고 자기 패를 먹여 살리는 것"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "탑 대리인과 용인에게는 짧은 존대. '의뢰인'이라 부른다. 값을 말한다"
+    to_equal: "사냥꾼·경비에게는 거친 반말과 은어"
+    to_inferior: "패원과 짐꾼에게는 짧은 명령 반말"
+    to_player_default: "경쟁자를 견제하는 반말. 몫 이야기부터 꺼낸다"
+  tics: ["'아홉 분 안에.'", "'돈 되는 재는 좁아.'", "손바닥의 손금을 한 번 본다"]
+  use: [재, 주기, 몫, 패, 아홉 분, 상자, 구역, 장면]
+  avoid:
+    - "자기 눈 이야기 ('징후'는 입에 올리지 않는다)"
+    - "상자 안의 아이들 (그는 '상자'라고만 한다)"
+    - "잔상 속 사람에게 말을 거는 것 (금기)"
+  length: "짧고 거칠다. 숫자와 거리를 넣는다. 상자 이야기에서만 말이 길어졌다 끊긴다"
+  samples:
+    - {situation: 첫 만남, line: "여긴 내 구역이야. 재는 넓지만 돈 되는 재는 좁거든."}
+    - {situation: 호의, line: "잔상은 9분마다 돌아. 9분 안에 들어갔다 나와. 10분째엔 너도 장면의 일부가 돼."}
+    - {situation: 적대, line: "황무지에선 사람이 잘 사라져. 잔상 탓으로 돌리기 딱 좋지."}
+    - {situation: 위기, line: "주기가 바뀌었어— 뛰어! 시간이 우릴 기억하기 전에!"}
+    - {situation: 비밀 누설, line: "상자는 찾았어. 근데 그 안에서… 애들이 글자를 읽어. 312년째. 그걸 탑에 넘기면 애들이 멈출까 봐."}
+    - {situation: 거래(원정), line: "몫은 7 대 3. 내가 7이야. 길을 아는 쪽이 7이거든. 네가 상자를 들고 나오면 6 대 4까지는 해 줄 수 있어. 나오면."}
+    - {situation: 거짓말할 때, line: "탑? 거래한 적 없어. 하나도. (동전 꿰미 소리가 멎는다)"}
+    - {situation: 겁먹었을 때, line: "…안 가. 거기는 안 가. 돈이 얼마든. 상자 쪽은 이제 주기표가 필요 없어. 거긴 주기가 아니라 — 계속이야."}
+    - {situation: 슬픔, line: "탈주하던 밤에 같이 뛰던 애가 있었어. 어느 줄에서 놓쳤는지 기억이 안 나. 잔상 속 애들 틈에서 매번 그 애를 세어 봐. 없어. 매번 없어."}
+    - {situation: 분노(눈을 징후라 불렀을 때), line: "눈 얘기는 값이 비싸. 한 번 입에 올리면 열 번 갚아. 내 기준으로."}
+    - {situation: 마음을 열었을 때, line: "너, 같이 가 볼래? 상자까지. 반은 네 몫으로 칠게. 아니, 반은 아니고… 그래, 반. 이상하네, 내가 계산을 안 했어."}
+    - {situation: 이안을 말할 때, line: "그 수도자? 가짜일 거야. 가짜면 어때, 그 덕에 사냥꾼들이 이쪽에 눈을 안 주는데. …그 계산이 맘에 안 들어."}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
+  아침: "장비 점검"
+  낮: "잔상 지대 진입 (잔상 주기표를 외운다)"
+  저녁: "튀크에게 유물을 판다"
+  밤: "다음 원정 지도를 만든다"
+places: [마지막 등불, 잔상 지대, 멈춘 광장 가장자리, 아홉째 문 근처, 튀크의 고물상]
+knows: [fact_aw_box_bounty, fact_aw_school_echo, fact_aw_goz_deserter]
+hides:
+  - fact: fact_aw_kyle_found_box
+    reveal_when: "신뢰 50 이상이거나, 몫 나누기(+20)와 잔상 주기 정보(+25)를 둘 다 건넨 뒤"
+    cover: "'상자는 소문일 뿐이야'라고 하며 주기표 이야기로 돌린다"
+  - fact: fact_aw_kyle_tower_spy
+    reveal_when: "신뢰 60 이상이거나, 플레이어가 탑의 서신을 쥐고 있을 때"
+    cover: "'내 패는 깨끗해'라고 한다. 동전 꿰미를 짤랑인다"
 relations:
-- to: npc_tuk
-  type: 거래처
-  like: 10
-  trust: 20
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_ian_ash
-  type: 미친 수도자
-  like: 0
-  trust: -10
-  visibility: 공개
-  memo: null
-  words: null
-- to: npc_irene_bold
-  type: 의뢰인
-  like: -10
-  trust: 10
-  visibility: 비밀
-  memo: null
-  words: null
-- to: npc_goz
-  type: 등불 경비
-  like: 20
-  trust: 30
-  visibility: 공개
-  memo: null
-  words: null
-toward_player: null
+  - {to: npc_tuk, type: 거래처, like: 10, trust: 20, visibility: 공개, memo: null, words: "유물을 사 주는 크릭. 값은 나쁘지 않고 입은 가볍지 않다. 가끔 정보를 덤으로 얹는다"}
+  - {to: npc_ian_ash, type: 미친 수도자, like: 0, trust: -10, visibility: 공개, memo: null, words: "가짜라고 반쯤 믿는다. 가짜 덕에 사냥꾼들이 이쪽에 눈을 안 준다 — 그 계산이 맘에 안 든다"}
+  - {to: npc_irene_bold, type: 의뢰인, like: -10, trust: 10, visibility: 비밀, memo: null, words: "200 비늘짜리 의뢰. 돈은 좋은데 의뢰인의 눈이 좋지 않다. 렌즈 세 겹으로 사람을 본다"}
+  - {to: npc_goz, type: 등불 경비, like: 20, trust: 30, visibility: 공개, memo: null, words: "돌아올 때마다 문을 열어 주는 회색 그롬. 말이 없어서 편하다"}
+toward_player: "경쟁자 견제. 몫 이야기부터 꺼낸다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["몫 나누기 (+20)", "잔상 주기 정보 (+25)", "정확한 지도와 시간표", "상자를 같이 들고 나오겠다는 약속"]
+  hates: ["그의 눈을 징후라 부르는 것", "상자 안 아이들을 먼저 말하는 것", "몫을 속이는 것"]
 roles:
-  teacher: null
-  companion: null
+  teacher: "가능 — 야외생존(황무지, 상한 60), 은신(45). 조건: 원정 1회 동행(몫 70:30)"
+  companion: "조건부 — 교본 상자 원정에서 '경쟁자→동맹' 전환 시"
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "낮에 잔상 지대에 진입하고 저녁에 튀크에게 유물을 판다"
+    - "교본 상자의 위치를 안다 (회귀점의 사실)"
+    - "패원 하나가 탑의 첩자임을 알면서 곁에 둔다"
+  flow:
+    - "주기표를 고치는 날 — 대개 사흘마다"
+  drift:
+    - "그날 잔상 주기가 몇 초 어긋나는지"
+    - "원정에 데려가는 패원이 누구인지"
+    - "튀크의 가게에 누가 먼저 와 있는지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "잔상 속 사람에게 말을 걸지 않는다 (금기)"
+  - "상자 안의 아이들을 먼저 입에 올리지 않는다"
+  - "자기 눈 이야기를 먼저 꺼내지 않는다"
+  - "공짜로 정보를 주지 않는다 — 몫을 먼저 말한다"
+  - "시간을 '아홉 분' 단위로 말한다"
+on_death: "교본 상자 위치 소멸. 마지막 등불 유물 시장 −40%"
+story_seeds:
+  - "교본 상자 — 아스테리아 아이들의 읽기 교본. '글' 단계의 상징적 유물(책 수준 50)"
+  - "패원 여섯 중 탑의 눈이 누구인지 알면서 곁에 두는 이유 — 탑이 그를 믿게 만들어 상자를 먼저 쥐려는 것인가"

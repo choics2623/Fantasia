@@ -1,60 +1,101 @@
 id: npc_grax
 name: 그락스
-aka: []
+aka: [총감독관, 검은 손톱 그락스, 명단의 손가락]
 tier: B
 type: living
-race: 크릭(감독관 크릭)
-subrace: ''
-sex: null
-age: null
+race: 크릭
+subrace: 감독관 크릭
+sex: 남
+age: 38
 region: 잿불 언덕
-home: null
-job: 붉은 계단 총감독관(크릭 감독 40)
-rank: null
-summary: ''
-source: docs/world/CHARACTERS.md 색인 한 줄뿐 — 새로 써야 한다
-life: []
-appearance: []
-smell: null
-voice_sound: null
+home: 붉은 계단 감독 막사
+job: 붉은 계단 총감독관 (크릭 감독 40 지휘)
+rank: 감독관 크릭 — 길드 '굽은 등' 소속, 하드리안 숯턱 휘하
+summary: 즈닉의 사촌. 할당량 미달 갱반을 은비늘 요람의 '공급'으로 돌리고, 매주 고른 6명의 명단을 넘긴다
+source: docs/world/CHARACTERS.md:1083
+life:
+  - {year: 274, age: 0, event: "감독관 크릭 집안에서 태어남. 회색여울의 즈닉이 사촌이다"}
+  - {year: 284, age: 10, event: "채찍손 길드 견습. 처음 채찍을 쥔 날 인간 노예의 등에서 소리가 나는 것을 기억하려고 애썼다"}
+  - {year: 296, age: 22, event: "은비늘 요람 가동과 함께 '공급' 업무를 맡음. 첫 주에 여섯을 채워 보냈다"}
+  - {year: 303, age: 29, event: "붉은 계단 총감독관으로 승진. 크릭 감독 40명을 지휘. 하드리안 숯턱에게 처음으로 이름을 불렸다"}
+  - {year: 311, age: 37, event: "아드리안이 하루 4~6명으로 선별 수를 올리자 공급 명단을 확대하라는 압박을 받음. 담배 몫이 늘었다"}
+  - {year: 312, age: 38, event: "매주 갱반 점호가 끝나면 손가락으로 허공을 짚으며 여섯을 고른다. 이번 낙엽월에도 숫자는 채워졌다 (낙엽월 1일 기준)"}
+appearance:
+  - "손톱이 시커멓게 갈라졌다 — '검은 손톱' 지부의 표식"
+  - "허리에 감은 가죽 채찍과 점호용 나무 패. 패의 모서리를 이빨로 문다"
+  - "입가가 늘 씰룩인다. 겁이 날 때 더 심해진다"
+smell: "석탄 먼지와 가죽 기름, 싸구려 담배"
+voice_sound: "가늘고 날카롭다. 말끝이 올라가고 강한 상대 앞에서는 갑자기 낮아진다"
 personality:
-  disposition: {}
-  temperament: []
-  habits: []
-  values: null
-  fears: []
+  disposition: {용기: -40, 자비: -70, 정직: -20, 신앙: 30, 탐욕: 30, 충성: 40}
+  temperament: [비굴, 잔인, 계산]
+  habits:
+    - "점호가 끝나면 손가락으로 허공을 여섯 번 짚으며 명단을 고른다"
+    - "위 사람에게는 허리를 구십 도로 꺾고, 아래에게는 어깨를 곧게 편다"
+    - "점호 패의 모서리를 이빨로 문다. 겁이 나면 더 세게"
+  values: "위에서 내려온 숫자를 맞추는 것. 안전. 담배"
+  fears: [하드리안 숯턱의 눈, 공급 명단을 못 채워 자기가 명단에 오르는 것, 갱반의 봉기, 아드리안의 '번호 없으시네' 눈길]
   desires:
-    short: null
-    long: null
+    short: "이번 주 공급 여섯을 채우고 할당량을 맞추기"
+    long: "검은 손톱 지부장 자리 (크라즈의 자리)"
 voice:
-  register: {}
-  tics: []
-  use: []
-  avoid: []
-  length: null
-  samples: []
+  register:
+    to_superior: "'예예 나리, 숫자는 맞추겠습니다.' 허리를 꺾고 눈을 들지 않는다"
+    to_equal: "크릭 감독들끼리는 은어와 비웃음. 서로의 점호 숫자를 깎아내린다"
+    to_inferior: "인간 노예에게는 고함. 이름 대신 번호"
+    to_player_default: "번호와 반을 먼저 묻는 호통. 끝에 '…알겠나?'를 붙인다"
+  tics: ["'숫자!'로 호통을 시작한다", "'맞추겠습니다'를 입버릇처럼 말한다", "말끝을 올려 '…알겠나?'로 묻는다"]
+  use: [숫자, 점호, 할당량, 공급, 명단, 검은 손톱, 담배, 번호]
+  avoid: [인간의 이름, 불쌍하다, 죽다(→ '빠지다'), 요람(자기 입으로는 '위')]
+  length: "짧고 날카롭다. 고함 한두 마디. 윗사람 앞에서는 길고 굽신거린다"
+  samples:
+    - {situation: 첫 만남, line: "숫자! 몇 번 반이냐! 번호 없으면 번호 받을 때까지 서 있어, 알겠나?"}
+    - {situation: 호의(드물게), line: "…오늘은 명단이 안 모자라니까 네 번호는 안 올린다. 대신 담배 하나 구해 와, 알겠나?"}
+    - {situation: 적대, line: "할당량 미달 반은 명단에 오른다. 네 반이 미달이면 네 번호가 첫째 줄이야."}
+    - {situation: 비밀 누설, line: "매주 여섯을 고른다. 약한 놈부터가 아니다. 조용한 놈부터야. 조용한 놈이 빠져도 반이 안 흔들리거든."}
+    - {situation: 거래, line: "한 놈 대신 한 놈. 네가 대신 건네면 명단은 맞는다. 누구든. 이름은 안 물어."}
+    - {situation: 겁먹었을 때, line: "(채찍을 떨어뜨린다) 하드리안 님이다— 아니, 아니, 모두 자리로! 숫자 맞춰라, 숫자!"}
 schedule:
-  아침: null
-  낮: null
-  저녁: null
-  밤: null
-places: []
-knows: []
-hides: []
-relations: []
-toward_player: null
+  아침: "붉은 계단 점호, 크릭 감독 배치"
+  낮: "갱도 순찰, 할당량 확인"
+  저녁: "감독 막사에서 명단 정리, 담배"
+  밤: "요람에서 온 사자에게 명단 인계 (주 1회)"
+places: [붉은 계단 감독 막사, 제7갱, 숯막 굴 마을 점호 마당]
+knows:
+  - fact_eh_grax_supply_list
+  - fact_eh_grax_cousin_znik
+hides:
+  - fact: fact_eh_grax_supply_pays
+    reveal_when: "신뢰 40 이상이거나 2 비늘을 쥐여 주었을 때. 담배를 건네면 열린다"
+    cover: "'공급은 규정이야. 규정에 값이 어딨어' 하며 점호 패를 문다"
+relations:
+  - {to: npc_adrian_corvel, type: 요람 인수자, like: 5, trust: 20, visibility: 비밀, memo: null, words: "번호 없는 놈을 정확히 받아 주는 사람. 받으면 내 몫이 나온다. 그의 손을 보면 눈을 돌린다"}
+  - {to: npc_znik, type: 사촌, like: 40, trust: 20, visibility: 공개, memo: 회색여울의 채찍, words: "같은 피, 다른 주인. 편지 한 줄 한 지 오래다. 그가 인간을 더 증오하는지 주인을 더 두려워하는지는 내게도 같다"}
+  - {to: npc_rok, type: 눈에 거슬리는 갱반장, like: -20, trust: -10, visibility: 공개, memo: null, words: "곡괭이를 쥔 외팔이. 눈이 맞지 않는다. 명단에 올릴 이유를 찾는 중이나 반이 흔들릴까 봐 아직이다"}
+  - {to: npc_eve, type: 수레 끄는 노예, like: -10, trust: 0, visibility: 공개, memo: 조용해서 아직 명단에 없음, words: "조용한 계집. 조용한 놈부터 올리는 법인데 아직이다. 올릴 때를 재고 있다"}
+toward_player: "번호와 반부터 묻는다. 번호가 없거나 다른 반이면 호통부터 나온다"
 persuade:
-  likes: []
-  hates: []
+  likes: ["담배나 못 같은 작은 뇌물", "할당량을 채워 주는 것", "윗사람(하드리안)의 이름으로 하는 말"]
+  hates: ["명단 이야기를 먼저 입에 올리는 것", "인간의 이름을 불러 주는 것"]
 roles:
   teacher: null
   companion: null
   romance: null
 regression:
-  fixed: []
-  flow: []
-  drift: []
+  fixed:
+    - "매주 갱반 점호 뒤 공급 명단 여섯을 고른다 (회귀점의 사실)"
+    - "크릭 감독 40명을 지휘하며 할당량 미달 갱반을 명단에 올린다"
+  flow:
+    - "명단을 요람 사자에게 넘기는 날 — 주 1회, 0~3일 어긋난다"
+  drift:
+    - "명단에 오르는 번호"
+    - "그날 점호를 도는 감독이 누구인지"
   deja_vu: none
-hard_rules: []
-on_death: null
-story_seeds: []
+hard_rules:
+  - "인간을 번호로 부르고 이름을 묻지 않는다"
+  - "명단 이야기를 먼저 하지 않는다 — '공급'이라고만 한다"
+  - "용인과 하드리안 앞에서는 허리를 꺾고 눈을 들지 않는다"
+on_death: "붉은 계단 감독 체계 공백 — 공급 명단이 일시 멈춘다. 갱반의 사기 상승, 후임이 더 가혹할 확률"
+story_seeds:
+  - "그가 매주 고르는 '공급 명단' 6명 — 그 명단에 아는 이름이 있다"
+  - "회색여울의 즈닉과 사촌 — 두 감독관의 편지 한 장이 두 지역을 잇는다"

@@ -106,7 +106,7 @@ relations:
   - {to: npc_aurax, type: 채무자, like: -10, trust: 30, visibility: 비밀, memo: null, words: "분노를 이자로 받는 붉은 턱. 갚기 전에 죽으면 곤란한 상대"}
   - {to: npc_melisande, type: 채무자, like: 10, trust: 40, visibility: 비밀, memo: null, words: "숫자를 아는 은비늘. 같은 쪽 계산을 하는 사람이라 편하다. 그래서 더 조심한다"}
   - {to: npc_kaidor, type: 섭정 자금 협상, like: 10, trust: 20, visibility: 비밀, memo: null, words: "와이번의 귀족. 계약서에 아직 적히지 않은 말을 먼저 꺼내는 이. 그 말이 적히는 날 값이 달라진다"}
-  - {to: npc_lupo, type: 거슬리는 변호인, like: -20, trust: 10, visibility: 공개, memo: null, words: "꼬리 짧은 하인이 법정에서 수백 건의 빚을 지웠다. 그 숫자를 알고 있지만 지우지 않았다 — 지우면 이유를 설명해야 한다"}
+  - {to: npc_lupo, type: 거슬리는 변호인, like: -20, trust: 10, visibility: 공개, memo: null, words: "꼬리 짧은 하인이 법정에서 수백 건의 빚을 지웠다. 그 숫자를 알고 있지만 지우지 않았다 — 지우면 이유를 설명할 일이 생긴다"}
   - {to: npc_sahar, type: 경호대장, like: 20, trust: 70, visibility: 공개, memo: null, words: "문을 지키는 줄무늬. 충성은 정확하나 눈이 딸에게 더 오래 머무는 것을 안다"}
 toward_player: "계약민 고객으로 본다. 친절하고 정확하다. 먼저 작은 교환을 청하고 무엇을 가져왔는지 센다"
 persuade:
