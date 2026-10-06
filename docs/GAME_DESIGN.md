@@ -23,6 +23,7 @@
 | [systems/10_REPUTATION_AND_WORLD_RESPONSE.md](systems/10_REPUTATION_AND_WORLD_RESPONSE.md) | **명성·악명**: 집단별 시선, 칭호, 정체(가면·돌아오는 이), 세력 대응 단계, 정세 변화 |
 | [systems/11_POWER_AND_INTRIGUE.md](systems/11_POWER_AND_INTRIGUE.md) | **권력과 음모**: 인정의 지렛대, 땅 없는 힘, 암살·납치·누명, 진룡을 죽이는 법 |
 | [systems/12_ROMANCE_AND_FAMILY.md](systems/12_ROMANCE_AND_FAMILY.md) | **연애·결혼·가족·가문**: 관계 단계, 금지된 사랑, 임신·자녀, 비밀 가문, 영혼 계승과의 연결 |
+| [systems/13_DARK_PATHS.md](systems/13_DARK_PATHS.md) | **어둠의 길**: 노예상·협력자·공포 정치·피의 마법·학살자, 어둠의 찬가 엔딩 |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |
@@ -595,7 +596,7 @@ choices:
 
 | 질문 | 결정 | 반영 문서 |
 |------|------|-----------|
-| 톤 | **그림다크 + 인간 찬가** | world/WORLD_BIBLE.md §0 |
+| 톤 | **그림다크 + 인간 찬가**. 현대 윤리로 세계를 재단하지 않음, 설교 없음, 주인공도 괴물이 될 수 있음 | world/WORLD_BIBLE.md §0, systems/13_DARK_PATHS.md |
 | 세계관 | 신을 죽인 고대 종족 다수가 지배, **인간은 최약체 노예 종족**. 세대를 이어 해방을 이루는 서사 | world/ 전체 |
 | 플랫폼 | **모바일 우선**, 이후 PC(스팀) — TS + React + Capacitor + Tauri | tech/04_MOBILE_AND_LLM.md |
 | 대사·텍스트 | **런타임 LLM 없이** 규칙 기반 대사 DB. 개발 단계에서 LLM(대량: Haiku 4.5 / Sonnet 5.5 low, 핵심: Opus 5.5)으로 생성 + 사람 검수 | systems/05_DIALOGUE_AND_REACTIVITY.md |
