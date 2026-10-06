@@ -148,6 +148,7 @@ button.ui:hover { border-color: var(--gold); }
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
   <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
   <h2>몸과 손</h2><ul id="skills"></ul>
+  <h2>낱말</h2><ul id="lex"></ul>
   <h2 data-sec="secRep">평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep" data-sec="secRep"></ul>
   <h2>저장</h2>
   <div class="row-btns"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="ui" id="saveBtn">저장</button></div>
@@ -248,6 +249,7 @@ function render(d, loading = false) {
       + (R.titles?.length ? `<li>사람들이 부르는 이름: ${esc(R.titles.join(", "))}</li>` : "")
       + (Object.keys(R.views || {}).length ? `<li>${Object.entries(R.views).map(([k, x]) => `${esc(k)} ${x > 0 ? "+" : ""}${x}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
     $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
+    $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
     $("skills").innerHTML = (v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span style="color:var(--ink-faint)">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("");
   }
   $("debug").textContent = JSON.stringify({ debug: d.debug, usage: d.usage, provider: d.provider }, null, 1);
@@ -374,15 +376,15 @@ function drawMap() {
     const Wd = m.world, xs = Wd.nodes.map((n) => n.x), ys = Wd.nodes.map((n) => n.y);
     const x0 = Math.min(...xs) - 30, y0 = Math.min(...ys) - 20, w = Math.max(...xs) - x0 + 30, h = Math.max(...ys) - y0 + 20;
     const N = new Map(Wd.nodes.map((n) => [n.id, n]));
-    const lit = (n) => n.here || n.visited || n.heard;
+    const lit = (n) => n.here || n.visited || n.remembered || n.heard;
     const svg = `<svg viewBox="${x0} ${y0} ${w} ${h}" role="img" aria-label="대륙 지도">
       ${Wd.edges.map((e) => { const a = N.get(e.from), b = N.get(e.to); if (!a || !b) return ""; const on = lit(a) && lit(b);
         return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${on ? "var(--ink-soft)" : "var(--line)"}" stroke-width="${e.road === "imperial" ? 2 : 1}" ${e.road === "sea" ? 'stroke-dasharray="4 4"' : ""}/>`; }).join("")}
-      ${Wd.nodes.map((n) => `<g><circle cx="${n.x}" cy="${n.y}" r="${n.here ? 7 : n.major ? 5 : 3}" fill="${n.here ? "var(--gold)" : n.visited ? "var(--ink)" : n.heard ? "var(--frost)" : "var(--ink-faint)"}"/>
-        ${n.here || n.visited || n.heard || n.major ? `<text x="${n.x}" y="${n.y - 9}" text-anchor="middle" font-size="${n.major ? 15 : 12}" ${n.here ? 'style="fill:var(--gold)"' : lit(n) ? "" : 'style="fill:var(--ink-faint)"'}>${esc(n.name)}</text>` : ""}</g>`).join("")}
+      ${Wd.nodes.map((n) => `<g><circle cx="${n.x}" cy="${n.y}" r="${n.here ? 7 : n.major ? 5 : 3}" fill="${n.here ? "var(--gold)" : n.visited ? "var(--ink)" : n.remembered ? "var(--ink-soft)" : n.heard ? "var(--frost)" : "var(--ink-faint)"}"/>
+        ${n.here || n.visited || n.remembered || n.heard || n.major ? `<text x="${n.x}" y="${n.y - 9}" text-anchor="middle" font-size="${n.major ? 15 : 12}" ${n.here ? 'style="fill:var(--gold)"' : lit(n) ? "" : 'style="fill:var(--ink-faint)"'}>${esc(n.name)}</text>` : ""}</g>`).join("")}
     </svg>`;
     $("mapBody").innerHTML = `<h2>대륙</h2><div style="overflow-x:auto"><div style="min-width:760px">${svg}</div></div>
-      <div class="legend"><span style="color:var(--gold)">●</span> 지금 · <span style="color:var(--ink)">●</span> 가 본 곳 · <span style="color:var(--frost)">●</span> 들어 본 곳 · 흐린 점은 아직 모르는 곳. 굵은 선은 제국 가도, 점선은 뱃길.</div>`;
+      <div class="legend"><span style="color:var(--gold)">●</span> 지금 · <span style="color:var(--ink)">●</span> 가 본 곳 · <span style="color:var(--ink-soft)">●</span> 지난 회차에 가 본 곳 · <span style="color:var(--frost)">●</span> 들어 본 곳 · 흐린 점은 아직 모르는 곳. 굵은 선은 제국 가도, 점선은 뱃길.</div>`;
   }
 }
 $("mapBtn").onclick = openMap;

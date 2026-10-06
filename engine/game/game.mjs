@@ -546,6 +546,18 @@ function againCard(g) {
   if (held.length && g.run.loop >= 3) L.push(`품은 것\n${held.map((x) => `· ${x}`).join("\n")}`);
   return L.join("\n\n");
 }
+// 약속 (21 §6.1): 기한 달린 기대. 그 자리에 가면 지킨 것, 안 가면 — 그 사람은 기다렸다
+function promisesTick(g, t) {
+  for (const p of g.promises || []) {
+    if (p.state !== "open") continue;
+    if (t >= p.from && t <= p.to && g.at === p.place) { p.state = "kept"; bumpRel(g, p.npc, 3, 6); addMemory(g, p.npc, { kind: "emotion", tag: "정직함", text: "셋째가 약속한 대로 왔다", salience: 3, source: "engine" }); continue; }
+    if (t > p.to + 60) {
+      p.state = "broken"; bumpRel(g, p.npc, -5, -10);
+      addMemory(g, p.npc, { kind: "emotion", tag: "거짓말쟁이", text: `셋째는 오지 않았다 — ${p.what}`, salience: 4, source: "engine" });
+      g.feed.push({ kind: "echo", text: josa(`〰 ${displayName(g, p.npc)}이(가) ${placeName(g, p.place)}에서 기다렸다. 너는 가지 않았다.`) });
+    }
+  }
+}
 // 맹세의 판정과 메아리 (16 §3·§5)
 function oathsTick(g, t) {
   for (const o of g.oaths || []) {
@@ -687,6 +699,15 @@ function seenCarrying(g, res) {
     res.notes.push("네 옷의 핏자국을 보는 눈들이 있다");
   }
 }
+// 낱말 사전 (19 §4): 아는 낱말 / 소리로만 들리는 낱말
+export function lexicon(g) {
+  const out = [];
+  for (const w of g.content.game.lexicon || []) {
+    const known = (soul(g).lexicon || []).includes(w.word) || (w.learn_when || []).some((c) => storyWhen(g, [c]));
+    out.push({ word: w.word, lang: w.lang, meaning: known ? w.meaning : null });
+  }
+  return out;
+}
 // ── 기억 표지 (14 §7.5): ┊ 지난 회차에 일어났던 일 · ◇ 기억과 어긋남 ──
 // 엔진이 고른 줄을 그대로 화면에 (LLM이 쓰지 않는다). 회차 안에서 같은 방아쇠에 한 번, 한 박자에 둘까지.
 function memoryInk(g) {
@@ -787,9 +808,14 @@ function pass(g, minutes, { sleeping = false } = {}) {
     if (wt) { g.t = next; openStory(g, wt); break; }
     if (threatsTick(g, next)) break;
     oathsTick(g, next);
+    promisesTick(g, next);
   }
   g.t = Math.min(g.story ? t : to, g.ended?.t ?? to);
-  for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) nemesisDay(g, d);
+  for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
+    nemesisDay(g, d);
+    // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
+    for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
+  }
   if (sleeping) { g.P.status.pain = clamp(g.P.status.pain - 10, 0, 100); }
   // 하루에 한 번 배가 고파진다 (배급을 받으면 준다)
   for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
@@ -1030,7 +1056,7 @@ function storyEffect(g, e, res) {
   else if (k === "wanted") { const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += Number(parts[1]); w.since ??= g.t; w.reasons.push(parts.slice(2).join(" ")); }
   else if (k === "nemesis") { const n = parts[1], gr = Number(parts[2] || 2); const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, gr); }
   else if (k === "smell_mark") { if (hash(g.seed, "smell", parts[1], g.run.loop) < 0.25 + smellOf(g) / 40) storyEffect(g, `nemesis ${parts[1]} 1`, res); }
-  else if (k === "deed") deed(g, parts[1], parts[2] || null);
+  else if (k === "deed") deed(g, parts[1], parts[2] || null, g.at, { witnessed: true });
   else if (k === "threat_pay") { const th = g.S.threats[g.storyCtx?.threat]; const n = Number(parts[1]); g.S.purse.player -= n; g.S.purse[th.by] = (g.S.purse[th.by] || 0) + n; th.paid = (th.paid || 0) + 1; th.t = g.t + 30 * 1440; }
   else if (k === "threat_delay") { const th = g.S.threats[g.storyCtx?.threat]; th.t = g.t + Number(parts[1]) * 1440 - 360; }
   else if (k === "threat_refuse") {
@@ -1222,6 +1248,14 @@ const DO = {
     if (OK(res.tier)) {
       const hot = g.L.beliefs(n).filter((b) => b.heat > 0.3 && b.subject !== "player" && ["dead", "suspect", "missing", "saw_item"].includes(b.kind)).sort((a, b) => b.heat - a.heat)[0];
       if (hot) { const line = describeBelief(g, hot); if (!g.P.heard.has(line)) { g.P.heard.add(line); g.P.notebook.push(`${nameOf(g, n)}에게 들은 소문 — ${line}`); res.rumor = line; } }
+      // 내 소문이 돌아온다 (14 §8 #12): 내가 한 일이 남의 입으로 — 왜곡되어, 대개는 누가 했는지 모른 채
+      else {
+        const nw = reputation(g).news.filter((x) => x.scope === "village").slice(-1)[0];
+        if (nw) {
+          const line = nw.identified ? `셋째라는 애가 ${nw.place}에서 그랬대 — ${nw.label}${nw.distortion === "과장" ? ". 열 명이라던가" : ""}` : `요즘 ${nw.place} 쪽에서 ${nw.label} 일이 있었대. 누가 했는지는 아무도 몰라`;
+          if (!g.P.heard.has(line)) { g.P.heard.add(line); g.P.notebook.push(`${nameOf(g, n)}에게 들은 내 소문 — ${line}`); res.rumor = line; }
+        }
+      }
     }
   },
   ask(g, topic, res) {
@@ -1256,6 +1290,7 @@ const DO = {
       bumpRel(g, n, hungry ? 8 : 4, hungry ? 4 : 1); g.convo.turns++;
       addMemory(g, n, { kind: "emotion", tag: "다정함", text: `셋째가 ${it.name}을(를) 나눠 주었다`, salience: hungry ? 4 : 2, source: "engine" });
       res.notes.push(`${it.name}을(를) 나눴다`);
+      if (hungry) deed(g, "share_food", null, g.at, { witnessed: true });
       return;
     }
     g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12;
@@ -1344,6 +1379,7 @@ function applyRecord(g, n, mem) {
   if (mem.promise && !g.S.dead.has(n)) {
     g.W.override({ npc: n, from: mem.promise.from, to: mem.promise.to, kind: "at", at: mem.promise.place, doing: `셋째와 약속한 대로 기다린다 — ${mem.promise.what}` });
     g.P.notebook.push(josa(`${nameOf(g, n)}과(와)의 약속 — ${fmt(mem.promise.from)}, ${placeName(g, mem.promise.place)}: ${mem.promise.what}`));
+    (g.promises ??= []).push({ npc: n, ...mem.promise, state: "open" });
   }
   if (mem.claim?.believed) {
     // 믿은 주장은 그 NPC의 믿음이 된다 → 사람이 모이는 곳에서 소문으로 퍼진다 (27 §3.4)
@@ -1458,6 +1494,7 @@ function settleSoul(g, record) {
     P.loops = [...P.loops.filter((x) => x.loop !== loop), { loop, like: r.like, trust: r.trust, impressions, lines, told, died: g.L.bodies.some((b) => b.npc === n) || !!g.S.dead?.has?.(n) }].slice(-6);
   }
   S.places = [...new Set([...(S.places || []), ...g.P.been])];
+  S.visitedSettlements = [...new Set([...(S.visitedSettlements || []), ...(g.P.visited || [])])];   // 지도 기억은 남는다 (07 §3)
   S.obs = g.P.obs || {};                       // 지난 회차의 같은 날·같은 30분에 누가 어디 있었나 (◇ 표류를 알아본다)
   if (g.ended?.trace) {                        // 죽음의 흔적: 같은 흔적을 또 얻으면 단계가 오른다
     const tr = g.ended.trace, old = (S.traces ||= []).find((x) => x.id === tr.id && (x.npc || null) === (tr.npc || null));
@@ -1466,6 +1503,7 @@ function settleSoul(g, record) {
   S.skills ||= {};
   for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
   S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
+  S.lexicon = [...new Set([...(S.lexicon || []), ...lexicon(g).filter((w) => w.meaning).map((w) => w.word)])];
   for (const o of g.oaths || []) { const oa = (g.content.game.oaths || []).find((x) => x.id === o.id); if (oa && !(S.oaths ||= []).some((x) => x.id === o.id)) S.oaths.push({ id: o.id, line: oa.line, loop, state: o.state }); }
   S.nemeses = [...(S.nemeses || []), ...Object.entries(g.nem || {}).map(([npc, x]) => ({ npc, loop, grudge: x.grudge }))].slice(-12);
   S.memUsed ||= {};
@@ -1603,9 +1641,10 @@ function estimate(g, n) {
 }
 
 // ── 평판 (10 · 21 §8) ──
-function deed(g, kind, victim, at = g.at) {
+function deed(g, kind, victim, at = g.at, { witnessed = false } = {}) {
   const k = classifyDeed(kind, victim ? profOf(g, victim) : {}, victim ? cardOf(g, victim) : {});
-  g.deeds.push({ id: `d${g.deeds.length + 1}`, kind: k, victim, at, placeName: placeName(g, at), t: g.t });
+  // 본 사람이 있는 일 (빵을 나눔, 장면 속의 밀고): 그 자리에서 알려지고 누가 했는지도 안다
+  g.deeds.push({ id: `d${g.deeds.length + 1}`, kind: k, victim, at, placeName: placeName(g, at), t: g.t, ...(witnessed ? { seenAt: g.t } : {}) });
 }
 // 행적을 아는 사람이 생긴 때(known)와 플레이어가 했다고 믿는 사람이 생긴 때(identified) — 반응 층의 믿음에서
 function deedKnowledge(g, d) {
@@ -1616,6 +1655,7 @@ function deedKnowledge(g, d) {
     if (known == null || b.t < known) known = b.t;
     if (b.subject === "player" && (ident == null || b.t < ident)) ident = b.t;
   }
+  if (d.seenAt != null) { known = Math.min(known ?? d.seenAt, d.seenAt); ident = Math.min(ident ?? d.seenAt, d.seenAt); }
   return { ...d, knownAt: known, identifiedAt: ident };
 }
 export function reputation(g) { return g.rep.summary(g.deeds.map((d) => deedKnowledge(g, d)), g.t); }
@@ -1661,10 +1701,11 @@ export function mapView(g) {
   }).filter((l) => !l.secret);
   const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours }));
   const visited = new Set([SETTLEMENT, ...(g.P.visited || [])]);
+  const remembered = new Set((soul(g).visitedSettlements || []).map((sid) => g.content.bundle.settlements[sid]?.node).filter(Boolean));
   const nodeOfS = (sid) => g.content.bundle.settlements[sid]?.node;
   const visitedNodes = new Set([...visited].map(nodeOfS).filter(Boolean));
   const heard = new Set(); for (const f of g.P.knows) for (const n of g.content.bundle.map.nodes) if ((g.content.facts[f]?.text || "").includes(n.name)) heard.add(n.id);
-  const nodes = g.content.bundle.map.nodes.map((n) => ({ id: n.id, name: n.name, x: n.x, y: n.y, major: !!n.major, here: n.id === nodeOfS(g.P.settlement), visited: visitedNodes.has(n.id), heard: heard.has(n.id) }));
+  const nodes = g.content.bundle.map.nodes.map((n) => ({ id: n.id, name: n.name, x: n.x, y: n.y, major: !!n.major, here: n.id === nodeOfS(g.P.settlement), visited: visitedNodes.has(n.id), remembered: remembered.has(n.id) && !visitedNodes.has(n.id), heard: heard.has(n.id) }));
   const exits = new Set(G_options_ids(g));
   return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, locations: locs, outer, goable: [...exits].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
     world: { nodes, edges: g.content.bundle.map.edges.map((e) => ({ from: e.from, to: e.to, road: e.road })), here: nodeOfS(g.P.settlement) } };
@@ -1711,6 +1752,7 @@ export function view(g) {
     oaths: (g.oaths || []).map((o) => ({ line: (g.content.game.oaths || []).find((x) => x.id === o.id)?.line, state: o.state, witnesses: o.witnesses.map((n) => displayName(g, n)) })),
     pastOaths: (soul(g).oaths || []).filter((o) => !(g.oaths || []).some((x) => x.id === o.id)).map((o) => o.line),
     lastHook: g.P.lastHook || null,
+    lexicon: lexicon(g),
     reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };
 }

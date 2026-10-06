@@ -108,6 +108,15 @@ function outcomeLines(g, res) {
   return L.map(josa);
 }
 
+// 상태가 문장을 바꾼다 (19 §3): 숫자가 아니라 문장의 결로
+function bodyLine(g, v) {
+  const L = [];
+  if (v.player.hunger >= 3) L.push("굶주림 — 음식 낱말(빵·죽·김)이 눈에 걸린다. 생각이 자꾸 먹을 것으로 미끄러진다");
+  if (v.player.pain >= 60) L.push("통증 — 문장 사이에 아픔이 끼어든다. 한 박자에 한 번");
+  const fear = (v.player.wanted || 0) >= 2 || v.people.some((p) => (g.content.game.sim.profiles[p.id] || {}).role === "hunter");
+  if (fear) L.push("공포 — 문장이 짧아진다. 쉼표가 많아진다. 소리에 먼저 반응한다");
+  return L.length ? `[몸의 상태 — 서술의 결이 이것을 따른다]\n${L.map((x) => "- " + x).join("\n")}` : "";
+}
 export function turnPrompt(g, res, opts, { transcript = [], memories = false, sceneNew = false, introduced = new Set() } = {}) {
   const v = view(g);
   const loopLine = v.loop === 1
@@ -126,6 +135,8 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
     `[이 자리에 있는 사람]\n${v.people.map(personLine).join("\n") || "- 아무도 없다"}`,
     v.goals?.length ? `[주인공이 지키려는 사람 — 서술이 이 무게를 잊지 않게]\n${v.goals.map((x) => `- ${x.who}: ${x.what}${x.days != null ? ` (${x.days}일 남음)` : ""}`).join("\n")}` : "",
     v.bodies.length ? `[시체] ${v.bodies.join(", ")}` : "",
+    bodyLine(g, v),
+    (() => { const L = v.lexicon || []; const unk = L.filter((w) => !w.meaning).map((w) => w.word), kn = L.filter((w) => w.meaning).map((w) => `${w.word}=${w.meaning.split(" — ")[0]}`); return unk.length || kn.length ? `[낱말] ${kn.length ? `주인공이 아는 말: ${kn.join(", ")}. ` : ""}${unk.length ? `모르는 말(서술에 나오면 뜻을 풀지 말고 소리로만): ${unk.join(", ")}` : ""}` : ""; })(),
     (() => { const seen = v.player.items.filter((i) => i.seen).map((i) => `${i.slot}에 ${i.name}`); const b = v.player.bloody ? ["옷에 핏자국"] : []; return seen.length || b.length ? `[주인공의 겉모습 — 남들 눈에 보인다] ${[...seen, ...b].join(", ")}` : ""; })(),
   ].filter(Boolean).join("\n");
   const convoNpc = g.convo?.npc || res?.convoEnded?.npc;

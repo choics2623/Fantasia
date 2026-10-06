@@ -1,0 +1,7 @@
+# 낱말 사전 (19 §4): 주인공이 모르는 말은 소리로만 남는다. 배운 낱말은 회귀해도 풀린 채로 (영혼).
+# learn_when: 플레이어 쪽 조건 (pknows 사실 · var …) 하나라도 참이면 배운다
+words:
+  - {word: 하르벡, lang: 용언, meaning: 담보 — 빚 대신 잡혀 있는 것, learn_when: ["pknows fact_gf_godric_debt", "pknows fact_gf_owen_suspects_debt"]}
+  - {word: 바르그, lang: 용언, meaning: 늑대 — 노예사냥꾼 조합을 그렇게 부른다, learn_when: ["date >= 312-09-14"]}
+  - {word: 크릭, lang: 노예말, meaning: 목줄 — 감독관을 몰래 부르는 말, learn_when: ["loop >= 1"]}
+  - {word: 여울은 얕은가, lang: 노예말, meaning: 잿빛 실의 암호 — 대답은 '얕아도 차갑다', learn_when: ["pknows fact_gf_greyash_route"]}
