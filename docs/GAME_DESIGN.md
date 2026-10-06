@@ -11,6 +11,7 @@
 |------|------|
 | **GAME_DESIGN.md** (이 문서) | 전체 개요, 디자인 기둥, 핵심 시스템 요약, 로드맵 |
 | **시스템** | |
+| [systems/00_SYSTEMS_MAP.md](systems/00_SYSTEMS_MAP.md) | **시스템 연동도**: 공통 세계 상태, 사건 흐름, 연동 표, 한 생애의 연쇄 예시 |
 | [systems/01_STATS_AND_CHECKS.md](systems/01_STATS_AND_CHECKS.md) | 능력치·스킬·성향·상태, **판정 확률 공식**, 체감 확률 표시 |
 | [systems/02_ITEMS_AND_CHOICES.md](systems/02_ITEMS_AND_CHOICES.md) | **인벤토리·장비가 선택지를 바꾸는 방식**, 선택지 생성 파이프라인 |
 | [systems/03_ROGUELITE_AND_LEGACY.md](systems/03_ROGUELITE_AND_LEGACY.md) | 생애·시대 구조, **수련 남용 방지**, 죽음과 2단 계승(잔향) |
@@ -20,6 +21,8 @@
 | [systems/08_NPC_RELATIONSHIPS.md](systems/08_NPC_RELATIONSHIPS.md) | **NPC 관계망**: 등급, 관계 데이터, 자동 관계도, 인물 수첩, 검증 |
 | [systems/09_DOMAINS_AND_STEWARDS.md](systems/09_DOMAINS_AND_STEWARDS.md) | **영역·영지와 관리자**: 은신처→인간의 도시, 노출도, 위임, 배신 |
 | [systems/10_REPUTATION_AND_WORLD_RESPONSE.md](systems/10_REPUTATION_AND_WORLD_RESPONSE.md) | **명성·악명**: 집단별 시선, 칭호, 정체(가면·돌아오는 이), 세력 대응 단계, 정세 변화 |
+| [systems/11_POWER_AND_INTRIGUE.md](systems/11_POWER_AND_INTRIGUE.md) | **권력과 음모**: 인정의 지렛대, 땅 없는 힘, 암살·납치·누명, 진룡을 죽이는 법 |
+| [systems/12_ROMANCE_AND_FAMILY.md](systems/12_ROMANCE_AND_FAMILY.md) | **연애·결혼·가족·가문**: 관계 단계, 금지된 사랑, 임신·자녀, 비밀 가문, 영혼 계승과의 연결 |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |
