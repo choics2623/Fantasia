@@ -1169,7 +1169,7 @@ distortionRate: 0.05
   voice: archetype:any
   priority: 95
   criteria: [ scene.present has {ps.killer} ]
-  lines: [ "{voice:{ps.id}|저거야. 나 {ps.killer.name}한테 죽었어.}" ]
+  lines: [ "{voice:{ps.id}|저거야. 저 얼굴. 나 저거한테 죽었어.}" ]
 - id: past_host_hatred
   concept: voice.past.host
   voice: archetype:농노_무뚝뚝
@@ -1183,8 +1183,6 @@ distortionRate: 0.05
   lines: [ "{voice:{ps.id}|…안 그랬어? 왜?}", "{voice:{ps.id}|몰랐어.}" ]
   then: [ { voice_rest_progress: +1 } ]
 ```
-
-> `{ps.killer.name}한테`처럼 조사를 직접 붙이면 05 §7.4 검증에 걸린다 — 실제 데이터에서는 `한테`가 받침과 무관하므로 허용 목록에 넣는다.
 
 ### 12.3 개념(Concept) 목록 — `voice.*`
 

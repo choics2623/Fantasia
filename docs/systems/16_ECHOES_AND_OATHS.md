@@ -1022,119 +1022,75 @@ W = Rel × Mag × Final × Hook
 ### 6.1 TypeScript
 
 ```ts
-// ── 인과의 실 (00 문서 사건 버스 확장) ──────────────────────────────
-type CauseKind =
-  | 'choice' | 'check' | 'declined' | 'nature' | 'companion_act'      // 뿌리 종류
-  | 'fact' | 'rumor_hop' | 'memory' | 'npc_decision'
-  | 'faction_tier' | 'clock_tick' | 'world_event';
-
-interface CauseRef { event: EventId; kind: CauseKind; weight: number }   // 0~1
-
-interface RootRef {                  // 앞으로 전파되는 플레이어 뿌리 요약 (상위 3개)
-  root: EventId; kind: 'choice'|'check'|'declined'|'nature'|'companion_act';
-  pathWeight: number;                // 경로 가중치의 곱
-  body: BodyId; life: number;        // 어느 몸, 몇 번째 생애
+// ── 인과의 실 (00 §7 events.ts 의 사건 구조 확장) ─────────────────────
+type RootKind  = 'choice' | 'check' | 'declined' | 'nature' | 'companion_act';
+type CauseKind = RootKind | 'fact' | 'rumor_hop' | 'memory' | 'npc_decision' | 'faction_tier' | 'clock_tick' | 'world_event';
+interface CauseRef { event: EventId; kind: CauseKind; weight: number }              // 0~1
+interface RootRef  { root: EventId; kind: RootKind; pathWeight: number; body: BodyId; life: number }
+interface GameEvent {
+  id: EventId; t: GameTime; kind: string; actors: ActorId[]; place?: PlaceId;
+  tags: string[];             // 주제 꼬리표 — 짐작 메아리 후보 탐색
+  magnitude: number;          // §3.2 M
+  causes: CauseRef[];         // 결정할 때 읽은 상태 키들의 lastWriter
+  roots: RootRef[];           // 앞으로 전파된 플레이어 뿌리 상위 3
+  facts?: FactId[]; hintedAt?: ChoiceId[]; rootPhrase?: string;
 }
-
-interface GameEvent {                // 00 §7 events.ts 의 기존 사건에 필드 추가
-  id: EventId; t: GameTime; kind: string;
-  actors: ActorId[]; place?: PlaceId; tags: string[];   // 주제 꼬리표 (짐작 메아리용)
-  magnitude: number;                 // §3.2 M
-  causes: CauseRef[];                // 읽은 상태 키의 lastWriter
-  roots: RootRef[];                  // 최대 3
-  facts?: FactId[];
-  hintedAt?: ChoiceId[];             // 이 결과를 미리 암시한 선택지
-  rootPhrase?: string;               // 뿌리 사건일 때: 메아리 줄 문장 (선택지 데이터에서)
-}
-
 interface StateProvenance { key: string; lastWriter: EventId }
 
 // ── 메아리 ─────────────────────────────────────────────────────────
 type RippleStyle = 'big' | 'normal' | 'quiet' | 'rumor' | 'guess' | 'filled' | 'cut' | 'joined';
-
-interface RippleScore { D: number; M: number; A: number; S: number; bonus: number; total: number }
-
 interface Ripple {
-  id: RippleId;
-  consequence: EventId; root: EventId;
-  score: RippleScore; style: RippleStyle;
-  crossLife?: number;                // 몇 생애 전 (0 = 같은 생애)
-  belief?: 'true' | 'false' | 'unknown';   // 짐작 메아리의 실제 참거짓 (플레이어에게 비공개)
+  id: RippleId; consequence: EventId; root: EventId; style: RippleStyle;
+  score: { D: number; M: number; A: number; S: number; bonus: number; total: number };
+  crossLife: number;                               // 0 = 같은 생애
+  belief?: 'true' | 'false';                       // 짐작 메아리의 실제 참거짓 (비공개)
   revealRoute?: { npc: NpcId; condition: string }[];
-  line: string;                      // 최종 메아리 줄
-  shownAt?: GameTime; queuedAt?: GameTime;
+  line: string; shownAt?: GameTime; queuedAt?: GameTime;
 }
-
 interface ThreadNode {
   event: EventId; t: GameTime; tLearned?: GameTime;
   certainty: 'witnessed' | 'heard' | 'guessed' | 'unknown';
-  label: string;                     // ≤ 44자
-  hint?: '누군가 보았다' | '누군가 말을 옮겼다' | '어떤 세력이 움직였다' | '흐름이 바뀌었다';
-  cut?: boolean;                     // 거짓으로 판명된 고리
+  label: string; hint?: string; cut?: boolean;     // label ≤ 44자, cut = 거짓으로 판명
 }
-
-interface RippleBudget {             // 세션 상한 (18 문서의 세션 경계로 초기화)
-  sessionLines: number; sessionBig: number; sessionCrossLife: number;
-  scenesSinceLast: number; dayLines: number;
-  queue: RippleId[];
-}
+interface RippleBudget { sessionLines: number; sessionBig: number; sessionCrossLife: number;
+                         scenesSinceLast: number; dayLines: number; queue: RippleId[] }
 
 // ── 당신이 없던 N년 ─────────────────────────────────────────────────
 type AbsenceSection = 'opening' | 'world' | 'people' | 'domain' | 'enemies' | 'legend' | 'oaths';
-
-interface AbsenceItem {
-  section: AbsenceSection; weight: number;            // W
-  clarity: 'clear' | 'blurred' | 'heard';
-  text: string;                                       // ≤ 80자
-  npc?: NpcId; threadRoot?: EventId;
-  rippleSeed: boolean;                                // 다음 생애 메아리 뿌리 후보
-}
-
+interface AbsenceItem { section: AbsenceSection; weight: number; clarity: 'clear' | 'blurred' | 'heard';
+                        text: string; npc?: NpcId; threadRoot?: EventId; rippleSeed: boolean }
 interface AbsenceSummary {
   fromT: GameTime; toT: GameTime; years: number;
   pastBody: { id: BodyId; name: string; origin: OriginId; born: number; died: number };
   cards: { section: AbsenceSection; items: AbsenceItem[] }[];
-  carriedOaths: OathId[];
-  charCount: number;                                  // ≤ 1500 검증
+  carriedOaths: OathId[]; charCount: number;       // 검증: 항목 ≤ 16, 공백 포함 ≤ 1,500자
 }
 
 // ── 맹세 ───────────────────────────────────────────────────────────
-type OathType = 'protect' | 'avenge' | 'build' | 'free' | 'learn' | 'destroy';
-type OathStake = 'word' | 'name' | 'blood' | 'soul';
-type OathStatus = 'active' | 'kept' | 'broken' | 'lapsed' | 'failed_trying'
-                | 'extinguished' | 'released' | 'carried' | 'laid_down' | 'faded';
-
+type OathType   = 'protect' | 'avenge' | 'build' | 'free' | 'learn' | 'destroy';
+type OathStake  = 'word' | 'name' | 'blood' | 'soul';
+type OathStatus = 'active' | 'kept' | 'broken' | 'lapsed' | 'failed_trying' | 'extinguished'
+                | 'released' | 'carried' | 'laid_down' | 'faded';
 interface Oath {
-  id: OathId; type: OathType; line: string;
+  id: OathId; type: OathType; line: string; status: OathStatus;
   swornBy: BodyId; life: number; swornAt: GameTime; place: PlaceId;
-  target: TargetRef; fulfill: Condition;               // 05 스토리렛 조건식 문법
+  target: TargetRef; fulfill: Condition;           // 05 스토리렛 조건식 문법
   deadline?: { event?: string; date?: GameTime; label: string };
   witnesses: { npc: NpcId; hostile: boolean; alive: boolean }[];
-  beneficiary?: NpcId; askedBy?: NpcId;
-  stake: OathStake;
+  beneficiary?: NpcId; askedBy?: NpcId; stake: OathStake;
   dark: boolean; scope?: 'all' | 'named';
-  difficultyP: number;                                 // 맹세 시점 달성 확률 추정 (사소한 맹세 판정)
-  attempts: number;                                    // 돕는 행동 횟수 (늦음 vs 지키지 못함)
-  status: OathStatus;
-  log: EventId[];                                      // 맹세록에 쌓이는 줄
-  smallFae?: boolean;                                  // 페이의 그림자 작은 맹세
+  difficultyP: number;                             // 맹세 시점 달성 확률 추정 → 사소한 맹세 판정
+  attempts: number;                                // 돕는 행동 횟수 → 늦음 vs 지키지 못함
+  log: EventId[]; smallFae?: boolean;
 }
-
 interface OathPromptRule {
-  id: string;
+  id: string; criteria: Criterion[]; offers: OathType[]; lineTemplates: string[]; deadlineFrom?: string;
   trigger: 'loss' | 'injustice' | 'betrayal' | 'dying_request' | 'near_death' | 'teacher_threshold' | 'mass_execution';
-  criteria: Criterion[];
-  offers: OathType[];
-  lineTemplates: string[];                             // 주인공의 말 (따옴표 안)
-  deadlineFrom?: string;                               // 세계 사건에서 기한 문구 생성
 }
-
 interface NpcOath {
-  id: string; by: NpcId; to: 'body' | 'returner' | 'legacy'; toBody?: BodyId;
-  hostile: boolean; line: string;
-  keepsWhile: Condition;
-  pressurePoints: { when: string; pressure: number }[];
-  onPlayerDeath: 'legacy' | 'extinguish' | 'persists';
+  id: string; by: NpcId; to: 'body' | 'returner' | 'legacy'; toBody?: BodyId; hostile: boolean;
+  line: string; keepsWhile: Condition; pressurePoints: { when: string; pressure: number }[];
+  onPlayerDeath: 'legacy' | 'extinguish' | 'persists' | 'persists_if_body_not_found';
   status: 'active' | 'kept' | 'broken' | 'extinguished';
 }
 ```
@@ -1142,26 +1098,19 @@ interface NpcOath {
 ### 6.2 YAML — 메아리 문장 데이터
 
 ```yaml
-# content/base/ripples/root_phrases.yaml  — 선택지 데이터에 붙는 뿌리 문장
-- choice: limping_rooster_cellar.c3_replaster
-  root_phrase: "당신은 수탉 지하의 가짜 벽을 밤새 다시 발랐다"
-- choice: three_pines_knot.c2_retie
-  root_phrase: "당신은 세 소나무 그루터기의 매듭을 풀어, 다른 골짜기를 가리키게 다시 묶었다"
-- choice: irma_staff_notch.declined
-  root_phrase: "당신은 이르마의 지팡이에서 일곱 번째 칼자국을 보았고, 아무 말도 하지 않았다"
-- choice: johan_departure.c1_sew_pages
-  root_phrase: "당신은 요한의 목패 끈 안쪽에 필사본 석 장을 꿰매 넣었다"
+# content/base/ripples/root_phrases.yaml — 선택지 데이터에 붙는 뿌리 문장 (02·05)
+- { choice: limping_rooster_cellar.c3_replaster, root_phrase: "당신은 수탉 지하의 가짜 벽을 밤새 다시 발랐다" }
+- { choice: three_pines_knot.c2_retie,           root_phrase: "당신은 세 소나무 그루터기의 매듭을 풀어, 다른 골짜기를 가리키게 다시 묶었다" }
+- { choice: irma_staff_notch.declined,           root_phrase: "당신은 이르마의 지팡이에서 일곱 번째 칼자국을 보았고, 아무 말도 하지 않았다" }
+- { choice: johan_departure.c1_sew_pages,        root_phrase: "당신은 요한의 목패 끈 안쪽에 필사본 석 장을 꿰매 넣었다" }
 
-# content/base/ripples/hints.yaml  — 모르는 고리의 범주 힌트
-- kind: rumor_hop       ; hint: "누군가 말을 옮겼다"
-- kind: npc_decision    ; hint: "누군가 무엇을 정했다"
-- kind: faction_tier    ; hint: "어떤 세력이 움직였다"
-- kind: clock_tick      ; hint_by_clock:
-    northern_exodus: "북쪽의 흐름이 바뀌었다"
-    dragon_throne:   "바알카르의 공기가 바뀌었다"
-    covenant_313:    "서약섬의 저울이 기울었다"
+# content/base/ripples/hints.yaml — 모르는 고리의 범주 힌트
+rumor_hop: "누군가 말을 옮겼다"
+npc_decision: "누군가 무엇을 정했다"
+faction_tier: "어떤 세력이 움직였다"
+clock_tick: { northern_exodus: "북쪽의 흐름이 바뀌었다", dragon_throne: "바알카르의 공기가 바뀌었다", covenant_313: "서약섬의 저울이 기울었다" }
 
-# content/base/ripples/authored.yaml  — 작가 지정 메아리 (점수 계산을 덮어쓰지 않고, 문장만 지정)
+# content/base/ripples/authored.yaml — 작가 지정 메아리 (점수는 엔진이, 문장만 작가가)
 - id: ripple_kaspar_carried_word
   style: filled
   when: "thread(ripple_egil_word).node(rumor_north).known_by has player"
@@ -1176,27 +1125,18 @@ interface NpcOath {
 
 ```yaml
 # content/base/absence/templates.yaml
-- event: npc_sold_to_seren
-  clarity: clear
-  section: people
-  text: "{npc.name}{npc.은는} 살아 있다. {npc.age_now}, 세렌 {place.name}의 계약민이다. 남은 빚은 {debt}두카트."
-- event: npc_eloped
-  clarity: blurred
-  text: "{npc.name}{npc.은는} {year}년 {season}, {other.name}{other.과와} 함께 사라졌다. 어디로 갔는지는 보이지 않는다."
-- event: npc_died
-  clarity: clear
-  variants:
-    - "{npc.name}{npc.은는} {year}년 {month}을 넘기지 못했다. {witness.name}{witness.이가} 마지막 밤을 지켰다."
-    - "{npc.name}{npc.은는} {year}년에 죽었다. {legacy_phrase}"
-- event: domain_survived
-  section: domain
-  text: "{domain.name}{domain.은는} 무너지지 않았다. {domain.stage_name}, {domain.population}명."
-- event: nemesis_kept_token          # 17 문서
-  section: enemies
-  text: "{npc.name}{npc.은는} 당신의 {item.name}{item.을를} 아직 {where} 다닌다. {belief_phrase}"
-- event: hidden_cache_untouched
-  section: domain
-  text: "{place.detail}. 당신이 묻은 {items}{items.은는} 아직 거기 있다. 아무도 그 자리를 모른다."
+- { event: npc_sold_to_seren, section: people, clarity: clear,
+    text: "{npc.name}{npc.은는} 살아 있다. {npc.age_now}, 세렌 {place.name}의 계약민이다. 남은 빚은 {debt}두카트." }
+- { event: npc_eloped, section: people, clarity: blurred,
+    text: "{npc.name}{npc.은는} {year}년 {season}, {other.name}{other.과와} 함께 사라졌다. 어디로 갔는지는 보이지 않는다." }
+- { event: npc_died, section: people, clarity: clear,
+    text: "{npc.name}{npc.은는} {year}년 {month}을 넘기지 못했다. {witness.name}{witness.이가} 마지막 밤을 지켰다." }
+- { event: domain_survived, section: domain, clarity: clear,
+    text: "{domain.name}{domain.은는} 무너지지 않았다. {domain.stage_name}, {domain.population}명." }
+- { event: nemesis_kept_token, section: enemies, clarity: clear,          # 17 문서
+    text: "{npc.name}{npc.은는} 당신의 {item.name}{item.을를} 아직 {where} 다닌다. {belief_phrase}" }
+- { event: hidden_cache_untouched, section: domain, clarity: clear,
+    text: "{place.detail}. 당신이 묻은 {items}{items.은는} 아직 거기 있다. 아무도 그 자리를 모른다." }
 ```
 
 ---
@@ -1297,21 +1237,3 @@ interface NpcOath {
 - 「계절 요약」(30일 이상 몰아서 보내기).
 - LLM 이야기꾼 모드의 요약 다듬기.
 - 업적 O2·O4·O5 (시대 단위 플레이가 필요).
-
----
-
-## 11. 다른 문서와 맞춰야 할 지점
-
-| 문서 | 맞출 것 |
-|------|---------|
-| 00 | 엔진 규약에 `causes`·`roots`·`lastWriter` 추가 (§3.1). `engine/core/events.ts`의 사건 구조 변경 |
-| 02·05 | 선택지 데이터에 `root_phrase`, `hintedAt` 필드. 05 개념 목록에 `맹세들음` 추가, 메아리 금지어를 자동 검증에 추가 |
-| 03 | 연대기에 '이어진 맹세', '당신 대신 탄 사람들', 실타래 보관함. 따라잡기 시뮬레이션이 사건 로그를 남겨야 요약이 생성된다 |
-| 10 | 칭호 4종 (§5.6) |
-| 14 | 첫 메아리 시점 (권장: 312.9.25 볼크 대수색 날 M1). 맹세록은 첫 맹세 이후 해금 |
-| 15 | 목소리 명단·말투 확정 후 §5.6.1 반응 대사 교체. "맹세를 한 몸이 목소리가 된다"는 전제 |
-| 17 | 적의 맹세 데이터 형식(`NpcOath.hostile`) 공유, 숙적의 기억 물건(볼크의 목도리)을 요약 '당신의 적'에서 사용 |
-| 18 | 세션 경계 정의, 큰 메아리 지연(최대 2장면), 맹세 제안 예산, 사소한 맹세 판정용 달성 확률 추정 |
-| 19 | `{ripple|…}` 태그 서식, 큰 메아리 단음, 진동 없음 |
-| 20 | 상실 장면 = 맹세 제안 계기 표 공유 |
-| SCENARIOS | 업적 ACH-O1~O5 번호 확정. 코드에서 `echo_*`는 잔향 전용, 메아리는 `ripple_*` |
