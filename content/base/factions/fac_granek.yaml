@@ -1,0 +1,171 @@
+# 그라넥 백작가 — "제국의 곳간". 정본: HOUSES §2.4, §6.3 / REGIONS §1.6(곡물 40%) / 흐림니르 사절 거절 → hrosgard 북방 기근
+# 기준: AS 312 낙엽월 1일. 'unnamed:...'는 TODO-NPC.
+id: fac_granek
+name: 그라넥 백작가
+kind: house
+race: [용인(순혈)]
+governance: 봉건 위계 — 곳간이 법인 순혈 백작가
+governance_note: >
+  이 가문의 통치는 칼이 아니라 곳간 열쇠다. 배급량이 곧 법이고, 할당량이 곧 충성의 척도다. 마을 단위 연좌 책임으로 굶주림을 무기로 쓴다.
+  백작 오도릭은 잿빛 겨울(AS 0~38)을 아이 시절 겪은 사람이다 — 배고픔이 무엇인지 안다. 그래서 무기로 쓴다.
+motto: "굶주림이 충성을 가르친다."
+seat: "그라넥 평원 — 바알카르 서쪽. 곳간 '일곱 탑'(증축 중). 세라크 붉은재가 상공을 난다"
+size:
+  members: "순혈 직계 4 + 용인 곳간 관리·감사관 수십 + 평원 농노 약 1만 2천"
+  territory: "바알카르 서쪽 그라넥 평원 — 제국 곡물의 약 40%. 녹옥 혈통 베릴라(아우락스의 왕비 후보)의 영지와 붙어 있다"
+  wealth: "곡물 — 일곱 탑에 3년치. 북부 흉작(AS 309~311)으로 곡물값 3배 인상. 레이번에 곡물 대출 채권(미상환 40비늘)"
+  force: "자체 병력은 적다. 하스트란의 군량 공급과 곡물값이 곧 영향력 — 지지율 4 (아우락스). 세라크 붉은재의 총애를 받는 기수 루카스"
+
+offices:
+  - id: off_count
+    title: 백작
+    holder: "unnamed:오도릭 그라넥 — 백작, 233세"   # TODO-NPC
+    reports_to: null
+    powers: ["가문의 법", "곳간 개폐 — 배급·가격·수출", "아우락스의 '기근 → 남침 → 군권' 계획의 수행"]
+    chosen_by: "장자 상속 (시조 그라넥 흙비늘, SK 780 서부 평원 개간)"
+    perks: ["황금 바탕 붉은 용 발톱이 밀단을 움켜쥔 문장"]
+    note: "AS 0~38 잿빛 겨울을 아이 시절 겪었다 — 배고픔을 안다. 그래서 무기로 쓴다"
+  - id: off_countess
+    title: 백작부인 (곳간 관리)
+    holder: "unnamed:헬가 그라넥 — 205세"   # TODO-NPC
+    reports_to: off_count
+    powers: ["일곱 탑 곳간의 장부 — 남편보다 숫자가 정확하다", "배급량의 계산"]
+    chosen_by: "혼인"
+    perks: []
+  - id: off_heir_rider
+    title: 기수 (아들)
+    holder: "unnamed:루카스 그라넥 — 88세"   # TODO-NPC
+    reports_to: off_count
+    powers: ["세라크 붉은재와 함께 하늘을 난다 — 용황의 손녀(아우락스의 딸)의 총애"]
+    chosen_by: "장자 지명"
+    perks: ["세라크의 의심(아버지 아우락스에 대한)을 가장 가까이에서 듣는 인간 아닌 자"]
+  - id: off_daughter
+    title: 딸
+    holder: "unnamed:에다 그라넥 — 61세"   # TODO-NPC
+    reports_to: off_count
+    powers: ["공식 권한 없음 — 평원 농노 마을에 몰래 곡식을 흘린다"]
+    chosen_by: "—"
+    perks: ["어릴 때의 유모(인간)에 대한 기억"]
+  - id: off_granary_seven
+    title: 곳간 '일곱 탑' 관리관
+    holder: "unnamed:일곱 탑 곳간 관리관 — 용인"
+    reports_to: off_countess
+    powers: ["3년치 곡물의 입출고", "열쇠 — 일곱 탑 접근은 사형"]
+    chosen_by: "백작부인 지명"
+    perks: []
+  - id: off_tower_works
+    title: 일곱 탑 증축 감독
+    holder: "unnamed:증축 감독 — 용인 건축관"
+    reports_to: off_granary_seven
+    powers: ["AS 312 가을 증축 공사 — 인간 노예 600 투입"]
+    chosen_by: "관리관 추천"
+    perks: []
+  - id: off_ration_inspector
+    title: 배급 감사관
+    holder: "unnamed:배급 감사관 — 용인 비늘혈"
+    reports_to: off_countess
+    powers: ["마을별 할당량 대조 — 미달 마을은 다음 달 배급 1/3 삭감", "연좌 책임 확정"]
+    chosen_by: "백작부인 임명"
+    perks: []
+  - id: off_village_reeve
+    title: 마을 할당 책임자 (인간 이장)
+    holder: null          # 마을마다 하나. 이장이 곧 연좌의 첫 사람
+    reports_to: off_ration_inspector
+    powers: ["마을 할당량 보고와 분배", "미달 시 가장 먼저 매질"]
+    chosen_by: "감사관 지명 — 인간 중 가장 순종적인 자"
+    perks: ["이장 가족의 배급 가산 (미세하게)"]
+  - id: off_levy_supply
+    title: 하스트란 군량 공급 담당
+    holder: "unnamed:군량 공급 담당 — 용인"
+    reports_to: off_count
+    powers: ["비늘기사단 600기·징집병 8,000의 군량"]
+    chosen_by: "백작 지명"
+    perks: []
+  - id: off_envoy_file
+    title: 흐림니르 사절 거절 문서 관리
+    holder: "unnamed:서고 서기 — 용인 (사본 보관 담당)"
+    reports_to: off_count
+    powers: ["AS 310 서리왕 사절의 곡물 매입 요청과 거절 지시 문서 — 아우락스의 지시가 적혀 있다"]
+    chosen_by: "백작 직속"
+    perks: []
+
+ranks:
+  - {id: rank_count, title: "백작", duties: "곳간 열쇠", privileges: "배급과 가격의 결정", open_to_player: false}
+  - {id: rank_kin, title: "직계", duties: "곳간 관리·기수·가문 일", privileges: "곳간 출입", open_to_player: false}
+  - {id: rank_inspector, title: "곳간 관리관·감사관 (용인)", duties: "입출고, 할당 감사", privileges: "연좌 판정권", open_to_player: false}
+  - {id: rank_reeve, title: "마을 할당 책임자 (인간)", duties: "할당량을 채운다", privileges: "배급 소폭 가산", open_to_player: true, condition: "순종적인 농노 중 감사관이 지명"}
+  - {id: rank_farm_serf, title: "평원 농노", duties: "개간·수확, 연좌 책임", privileges: "없다 — 미달 시 배급 1/3 삭감", open_to_player: true, condition: "기본 신분 (국유·사유 배당)"}
+
+decision: "백작이 열쇠를 쥐고 백작부인이 계산한다. 할당과 배급은 매 달 초 장부 대조로 정해지고, 미달 마을은 즉시 공고된다. 큰 결정(수출·사절 거절·곳간 개방)은 아우락스의 사자가 오는 저녁에 백작이 한다 — 가문의 정치는 곳간이 아니라 사자의 방문 일정이다."
+succession: "장자 상속. 백작이 죽으면 장남 루카스가 아니라 먼저 백작부인 헬가가 '곳간 열쇠 섭정'을 쥔다는 관례가 있다 (숫자가 정확한 쪽이 열쇠를 쥔다). 루카스의 기수 신분은 세라크와의 줄이므로 가문의 외교로 작용한다."
+
+law:
+  crimes:
+    - {act: "마을 할당량 미달", punishment: "다음 달 배급 1/3 삭감 — 마을 단위 연좌 책임", note: "인간. 개인이 아니라 마을 전체가 벌을 받는다"}
+    - {act: "곳간 곡물 절도", punishment: "손가락 절단 또는 매각 (제국법)", note: "인간. 곳간 접근 자체는 사형"}
+    - {act: "일곱 탑 접근", punishment: "사형", note: "인간·용인 하급. 증축 인부는 감독 하에서만"}
+    - {act: "배당 곡물을 몰래 마을에 흘린다", punishment: "가문 내 훈계 — 외부 발각 시 곡물 절도로 처리", note: "에다의 행위. 가문 규율상 공식 처벌 없음"}
+    - {act: "탈주 (평원 농노)", punishment: "마을 연좌 — 같은 마을 배급 1/3 삭감 추가", note: "제국 탈주법에 가산"}
+    - {act: "북방 구휼 요청을 받아들인다", punishment: "가문 내 금기 — 백작의 판단", note: "모르간트의 요청은 매번 거절한다"}
+    - {act: "사절 거절 문서를 외부에 유출한다", punishment: "용인은 가문 이름 삭제, 인간은 처형", note: "아우락스의 지시가 적힌 문서 — 요툰의 남침 대상을 바꿀 증거"}
+
+customs:
+  greeting: "'올해 몇 탑이 찼습니까.' 곳간의 상태가 안부다. 식탁에서는 빵을 남기지 않는다 — 한 알이라도 땅에 버리지 않는 것이 가문의 예의. 인간은 곳간 문 앞에서 모자를 벗고 눈을 내리깐다."
+  taboos:
+    - "잿빛 겨울(AS 0~38)에 곳간을 잠가 평원 농노 60%가 아사한 일을 '잠갔다'고 말하는 것 — '지켰다'고 말한다"
+    - "곳간의 실제 저장량을 공공연히 밝히는 것"
+    - "흐림니르 사절 이야기"
+    - "빵을 땅에 떨어뜨리는 것"
+  rites:
+    - {name: "곳간 봉인식", when: "수확월 말", what: "일곱 탑을 한 탑씩 봉인한다. 백작이 열쇠를 돌리고 부인이 숫자를 낭독한다"}
+    - {name: "배급 낭독", when: "굶주림월 첫날", what: "마을별 삭감량을 공포한다. 이장들이 광장에 늘어선다"}
+    - {name: "종자 분배", when: "파종월", what: "종자를 마을별로 배당. 작년 할당 미달 마을은 종자도 삭감"}
+    - {name: "곳간 장부 대조", when: "매달 첫 안식일", what: "헬가가 장부를 소리 내어 읽고 감사관들이 숫자를 맞춘다"}
+  speech: "숫자와 무게의 말('섬', '탑'). 인간을 '입'(먹을 것을 나눠야 하는 수)으로 센다. 짧고 단정적. 감정이 섞이면 어릴 적 겨울 이야기가 반 문장 나온다."
+
+membership:
+  join: "출생. 감사관은 비늘혈 가신으로 계약."
+  leave: "곳간 열쇠에서 이름이 지워지는 것이 퇴장."
+  signs: ["황금 바탕 붉은 발톱이 쥔 밀단 문장", "곳간 열쇠 꾸러미 (일곱 개)"]
+
+internal_factions:
+  - {name: "오도릭 곳간파", leader: null, aim: "아우락스의 계획 수행 — 북방 기근 악화, 요툰 남침 유도, 전쟁을 핑계로 아우락스가 군권을 잡게 한다", strength: 60}
+  - {name: "헬가 숫자파", leader: null, aim: "곳간의 숫자가 가장 두려운 것을 안다 — 전쟁은 곡물값을 넘어 곳간을 불태울 수 있다고 계산", strength: 15}
+  - {name: "루카스 기수파", leader: null, aim: "세라크의 총애 — 세라크가 아버지를 의심하면 가문이 흔들린다", strength: 15}
+  - {name: "에다의 유모", leader: null, aim: "평원 농노 마을에 몰래 곡식을 흘린다 — 어릴 때 유모(인간)에 대한 기억", strength: 10}
+  # leader null = 카드 미작성
+
+assets:
+  - "곳간 '일곱 탑' — 3년치 곡물, 증축 중(인간 600)"
+  - "그라넥 평원 — 제국 곡물의 약 40%, 농노 1만 2천"
+  - "AS 310 흐림니르 사절 거절 문서"
+  - "레이번에 대한 곡물 대출 채권 (미상환 40비늘)"
+
+secrets:
+  # TODO-FACT: AS 310 서리왕 흐림니르 사절의 곡물 매입 요청을 아우락스의 지시로 거절 — 북방 기근 악화 → 요툰 남침 유도 → 아우락스 군권 장악 / 곳간 '일곱 탑' 3년치 곡물 / 잿빛 겨울 곳간 봉쇄와 농노 60% 아사 / 에다의 몰래 곡식 흘리기
+  - {fact: fact_dk_succession_split, known_by_rank: rank_kin}
+  - {truth: T13, level: rumor, holders: [off_count]}
+
+relations:
+  # HOUSES §2.4 '관계' 서술에서 환산 (행렬 §6.1 밖)
+  - {to: fac_hastran, stance: 40, note: "군량 공급"}
+  - {to: fac_sarkos, stance: 20, note: "농노 보충"}
+  - {to: fac_morgant, stance: -50, note: "적대 — 북방 구휼 요청을 매번 거절"}
+  - {to: fac_raven_house, stance: 10, note: "곡물 대출 채권자 (미상환 40비늘)"}
+  - {to: fac_great_dragon_lines, stance: 30, note: "녹옥 혈통 베릴라 — 영지가 붙어 있다"}
+toward_echo: "화형 → 단절. 아우락스 진영. 곡물과 연좌 — 잔향 징후가 있는 마을은 곳간이 먼저 닫힌다. 그러나 곳간의 주인들은 잔향의 이야기보다 곡물값에 반응한다."
+player_paths:
+  - "사절 거절 문서 — 요툰에게 넘기면 남침의 표적이 그라넥으로 바뀐다 (아우락스 −3)"
+  - "일곱 탑을 턴다 — 북방 탈주자 수천 명을 한 겨울 먹일 수 있다 (증축 인부 600으로 잠입)"
+  - "에다 — 곡식을 흘리는 딸. 유모(인간)의 기억을 통해 평원 농노와 연결된다"
+  - "루카스 — 세라크의 기수. 세라크의 의심을 전하는 통로"
+  - "할당량 마을 — 이장이 되어 연좌 책임을 지고 마을을 지키거나 팔아넘긴다"
+regression:
+  fixed:
+    - "AS 310 사절 거절 문서, 일곱 탑 3년치 곡물, 증축 공사 중"
+    - "굶주림월 첫날 배급 낭독"
+  flow:
+    - "수확월 곳간 봉인 일자, 할당 미달 마을의 수"
+  drift:
+    - "그날 감사관 순회 경로와 미달 마을의 이름"
+    - "에다가 곡식을 흘리는 마을"

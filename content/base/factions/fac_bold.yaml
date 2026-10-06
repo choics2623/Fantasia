@@ -1,0 +1,169 @@
+# 볼드 자작가 — "기록하는 비늘". 정본: HOUSES §2.8, §6.3 / RACES §3 / 아르카스 탑섬 (REGIONS §10) / 카드: arkas/npc_irene_bold.yaml
+# 볼드는 용인 대가문 중 가장 젊은 가문(AS 3 창건), 비늘혈. 가주가 곧 잿빛 탑 탑주 — 가문과 학회가 겹친다.
+# 기준: AS 312 낙엽월 1일. 'unnamed:...'는 TODO-NPC.
+id: fac_bold
+name: 볼드 자작가
+kind: house
+race: [용인(비늘혈), 인간(서기 노예)]
+governance: 장인·학회 — 지식의 위계 위에 앉은 비늘혈 자작가
+governance_note: >
+  가문의 위계는 피가 아니라 '무엇을 읽었는가'다. 가주 이레네는 탑주이기도 하므로 가문의 결정이 학회의 결정이 되고 학회의 금지가 가문의 금지가 된다.
+  서고와 서기 노예가 가문의 재산이다. 서기 노예 60 중 상당수는 글을 안다 — 볼드는 알면서 모른 척한다(유용하니까).
+  가문의 법은 '기록되지 않은 것은 일어나지 않았다'는 한 줄이고, 그 한 줄이 가장 위험한 문서(볼드 사본)를 숨기는 이유다.
+motto: "기록되지 않은 것은 일어나지 않았다."
+seat: "바알카르 학자 구역 '잉크 거리' 저택 / 아르카스 탑섬 잿빛 탑 내 '볼드 서고' (REGIONS 노드 아르카스)"
+size:
+  members: "비늘혈 직계 4 + 서기·사서 수십 + 서기 노예 60 (아르카스) + 잉크 거리 하인·필사 노예"
+  territory: "바알카르 잉크 거리 저택, 아르카스 탑섬 잿빛 탑 내 볼드 서고"
+  wealth: "서고와 문서, 탑의 연구 후원, 징후자 수집·연구 자료. 멜리산드의 이식 실험 자료 공유를 대가로 지지"
+  force: "무력은 없다. 지식과 서기 노예. 지지율은 '볼드 자작가 + 잿빛 탑' 합쳐 5 (멜리산드)"
+
+offices:
+  - id: off_head
+    title: 가주 겸 잿빛 탑 탑주
+    holder: npc_irene_bold
+    reports_to: null
+    powers: ["가문의 법과 서고 열쇠", "잿빛 탑 탑주 — 징후자 수집·연구와 시험법 (셋째 시험 14명 사망)", "볼드 사본 원본 — 봉인 서가 일곱째 칸"]
+    chosen_by: "AS 268 탑주 취임. 가문은 가주가 곧 탑주 — 학회가 가문을 겸한다 (엘리아스 볼드의 AS 3 창건, AS 201 잿빛 탑 공동 창립)"
+    perks: ["탑주실 17층", "시간 유리 칼 '마지막 금' — 한 번도 쓰이지 않은 셋째 칼을 몸에 지닌다 (fact_ar_glass_blades)", "회색 바탕 책 위 눈 하나가 그려진 등잔 문장"]
+    note: "'진실은 연구 대상이지 무기가 아니다.' 진실을 알면서 쓰지 않는다. 낙엽월 안에 장부에 '설명되지 않는 기시감. 북쪽.'이라 쓴다 (회차가 쌓일수록 더 일찍)"
+  - id: off_ink_street
+    title: 바알카르 잉크 거리 관리 (궁정 연대기 담당)
+    holder: "unnamed:테오 볼드 — 용인 131세, 이레네의 남동생"   # TODO-NPC
+    reports_to: off_head
+    powers: ["잉크 거리 저택 관리", "형식상의 궁정 연대기 — 용제국 공식 역사('인간 아스테리온이 세계를 찢었다')를 쓴다"]
+    chosen_by: "가주 지명"
+    perks: ["누나를 두려워한다"]
+  - id: off_fissure_researcher
+    title: 균열학파 연구원
+    holder: "unnamed:클로틸데 볼드 — 용인 58세, 조카"   # TODO-NPC
+    reports_to: off_head
+    powers: ["재의 황무지 경계에서 시간 잔상을 측정", "균열학파(탑 내 시간 연구 분과)의 가문 측 대표"]
+    chosen_by: "가주 지명"
+    perks: ["황무지 경계 관측소 출입"]
+  - id: off_chief_scribe
+    title: 수석 서기 노예
+    holder: "unnamed:이삭 — 인간 39세"   # TODO-NPC
+    reports_to: off_head
+    powers: ["서기 노예 60의 반장", "문서 정서·필사 — 숫자와 기호만 가르쳤다는 형식"]
+    chosen_by: "볼드의 소유 노예. 글을 안다 — 볼드 사본을 필사한 적이 있다"
+    perks: ["서고 출입(책을 만질 수 있는 몇 안 되는 인간)"]
+    note: "이름 없는 자들의 '등잔'이 될 수 있는 인물 (HOUSES §2.8). 서기 노예를 통해 의도치 않게 정보가 누설 중"
+  - id: off_scribe_slaves
+    title: 서기 노예 (60)
+    holder: "unnamed:서기 노예 60 — 아르카스 '숫자와 기호' 교육"
+    reports_to: off_chief_scribe
+    powers: ["필사, 장부 정서, 도서 분류"]
+    chosen_by: "볼드 소유 — 아르카스에서 '숫자와 기호만' 가르친 서기 노예 (실제로 상당수는 글을 안다)"
+    perks: ["글자를 읽는 것은 즉결 처형 대상이지만 볼드는 눈감는다"]
+  - id: off_bold_library
+    title: 볼드 서고 사서 (아르카스)
+    holder: "unnamed:볼드 서고 사서 — 용인"
+    reports_to: off_head
+    powers: ["탑 내 볼드 서고 — 가문 문서 보관", "봉인 서가 접근 관리(일곱째 칸은 가주만)"]
+    chosen_by: "가주 지명"
+    perks: []
+  - id: off_codex_keeper
+    title: 볼드 사본 보관
+    holder: npc_irene_bold
+    reports_to: off_head
+    powers: ["엘리아스 볼드의 목격기 — '용황의 불이 의식이 끝나기 전에 떨어졌다. 의식은 거의 완성되어 있었다.' 공식 역사를 뒤집는 문서", "원본은 탑 봉인 서가 일곱째 칸"]
+    chosen_by: "가주 겸임 — 선대 가주들이 이어 보관"
+    perks: []
+  - id: off_wounded_archive
+    title: 재의 법 반대 발언으로 몰수된 서고 (공석)
+    holder: null          # AS 41 시조 엘리아스의 반대 발언으로 서고 일부 몰수. 몰수된 문서의 향방은 기록에 없다
+    reports_to: off_head
+    powers: ["몰수된 서고의 일부 — 되찾지 못한 기록"]
+    chosen_by: "—"
+    perks: []
+
+ranks:
+  - {id: rank_head, title: "가주 (탑주)", duties: "서고와 학회", privileges: "봉인 서가, 시간 유리 칼", open_to_player: false}
+  - {id: rank_kin, title: "직계 (연대기·균열학파)", duties: "연대기·측정", privileges: "탑 출입", open_to_player: false}
+  - {id: rank_librarian, title: "사서·서기 (용인)", duties: "서고 관리", privileges: "읽고 쓴다", open_to_player: false}
+  - {id: rank_scribe_chief, title: "수석 서기 노예", duties: "서기 노예 반장", privileges: "책을 만질 수 있다", open_to_player: true, condition: "볼드 소유로 팔린 글을 아는 서기. '숫자와 기호만' 배운 것으로 위장"}
+  - {id: rank_scribe_slave, title: "서기 노예", duties: "필사·장부 정서", privileges: "서고 출입 — 읽는 것이 들키면 즉결 처형이 원칙이나 가문은 알면서 모른 척한다", open_to_player: true, condition: "아르카스 서기 노예 공급(비늘 시장에서 글을 아는 노예를 잿빛 탑이 사는 소문)에서 오는 길. 글을 아는 것을 들키지 않는다"}
+
+decision: "가주 이레네가 학회와 가문을 한 손으로 정한다. 의논은 서고에서 서면으로 이루어지고, 결정은 장부의 한 줄이다. 테오와 클로틸데는 의견을 말할 수 있으나 표가 없다. 지지(멜리산드)의 대가는 이식 실험 자료 공유 — 이레네는 그것이 '연구 교환'이라고 부르고 정치라고 부르지 않는다."
+succession: "가주 지명 — 학식과 숫자로. 혈연은 필요조건일 뿐이다. 이레네가 죽거나 사라지면 탑주 자리와 가문 자리가 갈라질 수 있다 — 둘이 다른 사람에게 가는 날 볼드 사본이 움직인다. 클로틸데가 후계로 거론되나 가주는 아직 지명하지 않았다."
+
+law:
+  crimes:
+    - {act: "서기 노예가 글을 읽는다 (들킨 경우)", punishment: "원칙은 즉결 처형, 볼드의 경우 피험자(탑)로 이송", note: "'숫자와 기호만' 가르쳤다는 형식이 유지되는 한 가문은 눈감는다. 읽는 것이 들키면 이 형식이 깨진다"}
+    - {act: "봉인 서가 일곱째 칸을 연다", punishment: "가문원은 가문 장부에서 삭제, 인간은 즉결 처형", note: "가주만 열 수 있다"}
+    - {act: "볼드 사본의 존재를 외부에 발설", punishment: "탑주의 판단 — 서기는 피험자, 가문원은 서고 박탈", note: "공식 역사를 뒤집는 문서"}
+    - {act: "기록을 지우거나 고친다 (서기)", punishment: "서고 박탈 — '기록되지 않은 것은 일어나지 않았다'의 역이므로 가장 큰 죄", note: "용인에게만"}
+    - {act: "탑의 연구 자료를 가문 밖에 판다", punishment: "가문 장부 삭제 + 탑 계약 위반", note: "멜리산드와의 공유 협정만 예외"}
+    - {act: "인간이 글자를 소유·쓴다 (서기 노예 외)", punishment: "즉결 처형 (재의 법)", note: "서기 노예는 사실상 면제 — 비공식"}
+
+customs:
+  greeting: "'기록에 남을 이름을 말씀하십시오.' — 서기 앞에서 이름과 용건을 장부에 적는 것이 인사다. 가문원끼리는 잉크 묻은 손가락을 보여 주며 서로의 일을 묻는다. 서기 노예는 눈을 내리깔고 펜을 내려놓는다."
+  taboos:
+    - "볼드 사본이라는 낱말 — '목격기'라고 부른다"
+    - "공식 역사('인간이 세계를 찢었다')를 입 밖에서 의심하는 것 (테오가 가장 민감하다)"
+    - "서기 노예가 읽을 수 있다고 말하는 것"
+    - "AS 41 시조의 반대 발언 — 서고가 몰수당한 일"
+  rites:
+    - {name: "대붕괴 기록관 서임 기념", when: "재의 날 첫날", what: "AS 3 시조 엘리아스가 '대붕괴 기록관'으로 서임된 날. 낙서처럼 오른손 없는 사람의 왼손 글씨 한 줄을 낭독한다 — 목격기 본문은 낭독하지 않는다"}
+    - {name: "서고 점검", when: "해빙월 첫 안식일", what: "봉인 서가의 일곱 칸을 가주가 직접 점검한다"}
+    - {name: "잉크 거리의 먹의 날", when: "파종월 대시장 즈음", what: "바알카르 학자 구역에서 새 서기 노예의 '숫자 시험'. 글을 아는지 아닌지 가려내지 않고 그냥 지나간다"}
+  speech: "서기체 — '기록에 의하면', '장부상으로는'. 완곡하고 건조하다. 감정은 괄호로 쓴다. 이레네는 짧게 숫자로 말하고, 테오는 공손하게 우회하며, 인간 서기는 말을 아낀다. 금지어: 목격기(공개 자리에서는 '문서'), 믿는다(→ '기록한다')."
+
+membership:
+  join: "출생. 서기는 서고 시험(읽고쓰기·학식). 서기 노예는 구매 — 글을 아는 노예는 몰래 선호된다."
+  leave: "서고 박탈 또는 피험자 이송 (서기 노예)."
+  signs: ["회색 바탕 책 위에 눈 하나가 그려진 등잔 문장", "잉크 묻은 오른손(서기)", "서고 열쇠의 눈 문양"]
+
+internal_factions:
+  - {name: "이레네 연구 우선파", leader: npc_irene_bold, aim: "진실은 연구 대상이지 무기가 아니다. 징후자를 수집·연구해 '진짜 하나'를 찾는다. 멜리산드와 자료를 교환한다", strength: 55}
+  - {name: "테오 연대기파", leader: null, aim: "공식 역사 유지 — 볼드 사본이 열리면 공식 연대기가 가문에 해가 된다고 본다. 누나를 두려워한다", strength: 20}
+  - {name: "클로틸데 균열학파", leader: null, aim: "황무지 경계에서 시간 잔상을 측정 — 실제 데이터를 근거로 이레네를 설득하려 한다", strength: 15}
+  - {name: "서기 노예 (이삭)", leader: null, aim: "이름 없는 자들의 '등잔'이 될 수 있는 사람들 — 의도치 않게 정보가 누설되는 통로", strength: 10}
+  # leader null = 카드 미작성
+
+assets:
+  - "볼드 서고 (아르카스 탑 내, 몰수당한 일부 제외)"
+  - "볼드 사본 원본 — 잿빛 탑 봉인 서가 일곱째 칸"
+  - "시간 유리 칼 '마지막 금' — 탑주가 몸에 지닌다"
+  - "서기 노예 60과 필사 노예, 잉크 거리 저택"
+  - "AS 303 압수한 알베릭의 '빛의 서신' 사본 연구 자료"
+  - "멜리산드와 공유하는 이식 실험 자료"
+
+secrets:
+  - {fact: fact_ar_third_test_dead14, known_by_rank: rank_head}
+  - {fact: fact_ar_glass_blades, known_by_rank: rank_head}
+  - {fact: fact_ar_tower_clerks_literate, known_by_rank: rank_scribe_slave}
+  - {fact: fact_ar_irene_ledger_deja_vu, known_by_rank: rank_head}
+  - {fact: fact_dk_egg_hunters, known_by_rank: rank_head}
+  # TODO-FACT: 볼드 사본 — 시조 엘리아스의 목격기 '용황의 불이 의식이 끝나기 전에 떨어졌다. 의식은 거의 완성되어 있었다.' (원본 봉인 서가 일곱째 칸, 이삭이 필사한 적 있음) / AS 41 시조의 재의 법 반대 발언과 서고 몰수 / AS 303 알베릭의 '빛의 서신' 사본 압수 연구
+  - {truth: T06, level: whole, holders: [npc_irene_bold]}
+  - {truth: T03, level: fragment, holders: [npc_irene_bold]}
+  - {truth: T04, level: fragment, holders: [npc_irene_bold]}
+  - {truth: T05, level: fragment, holders: [npc_irene_bold]}
+  - {truth: T06, level: fragment, holders: [off_chief_scribe]}
+
+relations:
+  # HOUSES §2.8 '관계' 서술에서 환산 (행렬 §6.1 밖)
+  - {to: fac_ashen_tower, stance: 80, note: "사실상 지배 — 가주가 곧 탑주"}
+  - {to: fac_melisande, stance: 60, note: "동맹 — 이식 실험 자료 공유를 대가로 지지 (지지율 5, 탑 합산)"}
+  - {to: fac_kaldaran, stance: -30, note: "경쟁 — 기록의 독점권 다툼"}
+  - {to: fac_tarbien, stance: 20, note: "학술 교류"}
+  - {to: fac_nameless, stance: -50, note: "서기 노예를 통해 의도치 않게 누설 중 — 가문은 적으로 본다 (탑 → 이름 없는 자들 −70, HOUSES §6.1)"}
+toward_echo: "포획 후 연구 — 이레네는 잔향을 넘기지 않으려 한다 (멜리산드에게도). 볼드 사본의 증거를 쥔 가주이므로 잔향의 '왜'를 안다. 낙엽월마다 기시감을 '측정 오차'라 쓴다."
+player_paths:
+  - "서기 노예로 편입 — 숫자와 기호만 배운 척하며 서고에 들어, 이삭과 접촉한다 (이름 없는 자들의 등잔 후보)"
+  - "볼드 사본 — 찬가 7단계 '잔향의 진실 공개'의 핵심 증거. 봉인 서가 일곱째 칸(이레네만 연다)을 향한 침투 또는 이삭의 필사본"
+  - "이레네 — 진실을 알고도 쓰지 않는 학자. 잔향을 독점하려 하면 멜리산드가 이탈 (표 −5)"
+  - "클로틸데 — 균열학파. 황무지 경계의 측정 데이터가 증언이 된다"
+  - "테오 — 공식 연대기. 연대기와 사본의 차이를 폭로하는 길"
+regression:
+  fixed:
+    - "볼드 사본이 봉인 서가 일곱째 칸에 있다, 이삭이 필사한 적이 있다"
+    - "이레네가 낙엽월 안에 장부에 '설명되지 않는 기시감. 북쪽.'을 쓴다 (회차가 쌓일수록 더 일찍)"
+    - "셋째 시험 14명 사망, 시간 유리 칼 '마지막 금'은 한 번도 쓰이지 않았다"
+  flow:
+    - "서고 점검, 시험 일정, 균열 측정 일자"
+  drift:
+    - "이삭이 그날 필사하는 문서"
+    - "클로틸데가 황무지 경계에서 측정하는 시각"

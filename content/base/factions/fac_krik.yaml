@@ -1,0 +1,227 @@
+# 크릭 집단 — 재 혈명('적응')의 굴레(강자에게 굴종하는 본능)가 만든 '강자 목록' 군체형 추종.
+# 근거: HOUSES §3.11, RACES §16, SUBRACES §14, facts(drakmar/emberhills/greyford/ashwaste).
+id: fac_krik
+name: 크릭 집단 (채찍손 길드 · 재굴 무리 · 굴 크릭 전체)
+kind: polity
+race: [굴 크릭, 늪 크릭, 감독관 크릭]
+governance: 강자 목록 합의 (군체형 추종)  # 지도자가 없다. 전체가 하나의 '목록'을 외우고 목록이 바뀌면 같은 날 같은 방향으로 움직인다
+motto: "주인이 바뀌면 채찍도 바뀐다. (채찍손 길드 규칙 제1조)"
+seat: "없음 — 크릭 고유의 땅은 없다. 채찍손 길드 본부: 바알카르 지하 '굽은 회랑' / 재굴 무리: 재의 황무지 가장자리 마지막 등불 남쪽 '재굴'"
+size:
+  members: "크릭 약 1,400,000 — 굴 크릭 약 1,100,000, 늪 크릭 약 262,000, 감독관 크릭 약 38,000(채찍손 길드원 약 3,000), 재굴 무리"
+  territory: "고유 땅 없음. 드라크마르 약 520,000, 세렌 하역꾼 약 180,000, 그롬마르 약 150,000, 카즈둠 약 60,000, 녹테른 약 40,000"
+  wealth: "감독관 1인 연봉 4~8 비늘(인간 성인 노예 두 명 값). 하역 장부, 굴 단위의 식량 저장"
+  force: "떼 — 단독으로는 싸우지 않는다. 주인의 군대의 짐꾼·땅굴 파기·후방 감시. 강자의 편에 서면 수가 곧 힘"
+
+decision: >
+  크릭에게는 지도자가 없다. 대신 모든 크릭이 같은 '강자 목록'을 외운다 — 용황 → 용 → 용인 → … → 크릭 → 인간. 크릭 아이는 말을 배우자마자 가장 먼저 이 목록을 외운다.
+  결정은 목록이 한다. 누가 누구보다 강한지가 곧 누구를 따를지이고, 그 외의 정치는 없다. 크릭은 '우리가 정했다'고 말하지 않고 '목록이 그렇다'고 말한다.
+  목록은 공개된 사건으로만 바뀐다 — 결투, 굴종의 무릎(패배한 크릭이 이긴 자의 발 앞에 무릎 꿇고 목을 드러낸다), 공개적인 패배와 망신. 아무도 보지 않은 패배는 목록을 바꾸지 못한다.
+  갱신은 소문의 속도로 번진다. 굴 → 굴 모임(매일 저녁 '목록 낭송') → 감독관 크릭 → 채찍손 길드 → 다른 굴의 순서로 한 도시 안에서는 하루, 대륙 끝까지는 7~10일 걸린다.
+  갱신 하나가 돌면 모든 굴이 같은 저녁에 같은 줄을 새로 외운다 — 그날 크릭 전체가 같은 방향으로 움직인다(편을 바꾼다). 군체처럼 보이는 이유다.
+  거부권은 없고, '모른 척'뿐이다. 굴 모임이 새 목록을 낭송하지 않으면 그 굴은 목록 밖이 되어 주인 없는 크릭(고아)으로 취급받는다.
+  채찍손 길드 규칙 제1조 '주인이 바뀌면 채찍도 바뀐다'는 이 구조의 명문화다. 봉기가 이기기 시작하면 감독관들이 가장 먼저 편을 바꾼다 — 인간 해방 대사의 숨은 변수(찬가 4단계).
+  크릭은 맹약의 서명 종족이 아니다(공모에 부르지도 않았다) — 법도 맹약회의도 없다. 맹약회의 313에도 초대받지 않는다.
+succession: >
+  채찍손 길드장은 길드 원로회의 합의로 오른다 — 가장 큰 주인을 가진 감독관이 높다. 감독관의 아이는 감독관이 된다(크릭 사회의 유일한 세습).
+  재굴 무리에는 우두머리가 없고 가장 오래 산 자(치륵, 37)가 말을 먼저 한다.
+  목록 자체는 승계가 없다 — 가장 강한 자가 쓰러지면 다음 줄이 즉시 올라온다. 약점은 목록의 꼭대기가 뒤집히는 날이다(인간이 고대 종족 하나를 공개적으로 꺾는 날).
+
+offices:
+  - id: off_whip_guild_head
+    title: 채찍손 길드장
+    holder: "unnamed:니브 여섯꼬리 (28) — 크릭 수명 약 40"
+    reports_to: null
+    powers: ["각 종족에게 노예 감독관 공급", "길드 규칙 제1조의 해석", "'강한 쪽'에 길드를 맞춤(현재 아우락스)"]
+    chosen_by: "길드 원로회 합의 — 가장 큰 주인을 가진 감독관"
+    perks: ["굽은 회랑(바알카르 지하) 본부"]
+  - id: off_guild_board
+    title: 채찍손 길드 원로회 (감독관 크릭 — 집합 자리)
+    holder: "unnamed:길드원 약 3,000 중 원로 감독관들"
+    reports_to: off_whip_guild_head
+    powers: ["감독관 계약 중개(연봉 4~8 비늘)", "편 바꿈 판단 — '목록이 흔들린다'를 선언"]
+    chosen_by: "길드 서열"
+    perks: []
+  - id: off_overseer_znik
+    title: 회색여울 농노 감독관 (감독관 크릭)
+    holder: npc_znik
+    reports_to: off_guild_board
+    powers: ["회색여울 노동 할당·채찍·배급 분배·밀고"]
+    chosen_by: "길드 파견 — 레이번 가문의 크릭"
+    perks: ["하겐에게 정보를 판다(fact_gf_znik_sells_to_hagen)"]
+  - id: off_overseer_grax
+    title: 붉은 계단 총감독관
+    holder: npc_grax
+    reports_to: off_guild_board
+    powers: ["잿불 언덕 크릭 감독 40 지휘", "멜리산드 실험장의 인간 선별 보조"]
+    chosen_by: "길드 파견 — 멜리산드의 크릭"
+    perks: ["즈닉의 사촌"]
+  - id: off_palace_ear
+    title: 궁의 귀 (정보상 — 감독관 크릭)
+    holder: npc_fizik
+    reports_to: off_guild_board
+    powers: ["궁정 소문·경로 판매 — 모든 편에게 판다", "소리 방(fact_dk_fizik_sound_room)"]
+    chosen_by: "길드 소속 — 용좌령 궁의 크릭"
+    perks: ["손재주 스승"]
+  - id: off_egg_nurse
+    title: 알 보관실 시녀 (크릭, 멜리산드의 첩자)
+    holder: npc_soom
+    reports_to: off_palace_ear
+    powers: ["서리 탑 알 보관실 출입"]
+    chosen_by: "궁의 시녀 — 멜리산드가 심어 둔 눈"
+    perks: []
+  - id: off_runaway
+    title: 굴뚝에서 도망친 크릭 (동료 후보)
+    holder: npc_chik
+    reports_to: null
+    powers: ["없음 — 주인 없는 크릭. 목록 밖에 있다"]
+    chosen_by: "스스로 — 고아(공유가 끊긴 개체)"
+    perks: ["피직의 경로 매각을 목격했다(fact_dk_chik_saw_route_sale)"]
+  - id: off_ashpit_eldest
+    title: 재굴 무리 최고령 (우두머리 없음)
+    holder: "unnamed:치륵 (37) — 시간 잔상을 냄새로 맡는다"
+    reports_to: null
+    powers: ["재의 황무지 가장자리 재굴 무리 — 가장 오래 산 자가 먼저 말한다", "인간 유물 사냥꾼의 길 안내(대가: 인간 음식)"]
+    chosen_by: "가장 오래 산 자"
+    perks: ["재의 '적응' 혈명이 재오염에 면역을 준다"]
+  - id: off_lantern_fence
+    title: 마지막 등불 고물상 (굴 크릭)
+    holder: npc_tuk
+    reports_to: off_ashpit_eldest
+    powers: ["황무지 유물 거래·정보 판매 — 멜리산드에게도 판다"]
+    chosen_by: "재굴 무리의 거래 창구"
+    perks: []
+  - id: off_harbor_foreman
+    title: 세렌 하역꾼 우두머리
+    holder: "unnamed:스크레 — 계약민과 몰래 거래하는 하역 장부"
+    reports_to: off_guild_board
+    powers: ["세렌 하역꾼 약 180,000의 대표"]
+    chosen_by: "하역꾼들의 목록 서열"
+    perks: []
+  - id: off_ash_children
+    title: 재의 아이들 (인간에게 진 크릭 — 시작)
+    holder: "unnamed:티즈 — 원형장에서 인간 투사에게 지고 그를 따르게 된 크릭"
+    reports_to: null
+    powers: ["크릭도 실은 노예라는 소문의 발원", "다른 크릭이 죽이려 한다"]
+    chosen_by: "굴종의 무릎 — 목록이 뒤집힌 한 사건"
+    perks: []
+  - id: off_swamp_gur
+    title: 늪 크릭 우두머리 (일곱 노파의 심부름꾼 무리)
+    holder: "unnamed:구르 (17)"
+    reports_to: null
+    powers: ["모르바 정착지 경계 파수 — 늪의 목록 꼭대기는 일곱 노파"]
+    chosen_by: "늪에서 가장 강한 자를 따른다 — 지금은 마녀"
+    perks: []
+  - id: off_swamp_tip
+    title: 녹테른 안개 늪 무리 우두머리 (구르의 형)
+    holder: "unnamed:티프 (22)"
+    reports_to: null
+    powers: ["녹테른 경계 경비 — 늪 크릭의 배신자"]
+    chosen_by: "녹테른이 더 강하다고 믿는다"
+    perks: []
+  - id: off_list_reciter
+    title: 굴 모임 낭송자 (목록 낭송 — 집합 자리)
+    holder: "unnamed:굴마다 저녁에 목록을 낭송하는 연장자와 아이들"
+    reports_to: null
+    powers: ["매일 저녁 목록 낭송 — 갱신된 줄을 처음으로 입에 올림"]
+    chosen_by: "굴의 연장자"
+    perks: []
+  - id: off_ash_crone
+    title: 재 속에서 일어난 인간을 본 크릭 노파
+    holder: "unnamed:대붕괴의 날 아스테리아에서 본 것을 이야기하겠다는 크릭 노파"
+    reports_to: null
+    powers: ["없음 — 옛이야기의 보관자"]
+    chosen_by: "굴의 구전"
+    perks: ["'재 속에서 일어난 인간'에 대한 무서운 옛이야기"]
+
+ranks:
+  - {id: rank_whip, title: "채찍을 쥔 자 (감독관)", duties: "노동 할당, 채찍, 배급 분배, 밀고", privileges: "연봉 4~8 비늘, 세습", open_to_player: false}
+  - {id: rank_club, title: "몽둥이", duties: "감독 보조", privileges: "굴 안에서 우대", open_to_player: false}
+  - {id: rank_bare, title: "맨손", duties: "굴 노동", privileges: "없음", open_to_player: false}
+  - {id: rank_carrier, title: "짐꾼 · 하역꾼", duties: "짐·하역·청소", privileges: "없음 — 인간보다 덜 먹는다", open_to_player: false}
+  - {id: rank_orphan, title: "고아 (목록 밖 — 주인 없는 크릭)", duties: "없음", privileges: "없음 — 공유가 끊긴 개체", open_to_player: false}
+  - {id: rank_master, title: "크릭의 주인 (인간)", duties: "굴종한 크릭 한 마리를 거둔다", privileges: "크릭이 따른다 — 목록이 갱신되면 굴 전체가 주인의 이름을 낭송한다", open_to_player: true, condition: "공개적으로 크릭을 이긴다(크릭 의지 D 40, 실패 시 그 크릭은 플레이어의 것). 아무도 보지 않으면 목록이 바뀌지 않는다. 티즈처럼 따르는 크릭이 다른 크릭에게 죽임당할 위험"}
+  - {id: rank_friend_of_ash, title: "재의 아이들의 벗 (인간)", duties: "크릭 노예 해방의 소문을 퍼뜨린다", privileges: "재굴 무리의 길 안내", open_to_player: true, condition: "치륵에게 인간이 먹는 음식을 대가로 낸다. 크릭에게 그것은 '강자의 음식'"}
+
+law:
+  crimes:
+    - {act: "인간에게 지는 것", punishment: "목록에서 지워짐 — 굴이 외면한다. 크릭에게 세계가 무너지는 공포", note: "크릭 대상 (금기 ①). 공개되지 않으면 처벌 없음"}
+    - {act: "주인을 바꿈", punishment: "굴에서 쫓겨남 — 단 주인이 패배하면 허락된다", note: "크릭 대상 (금기 ②). 길드 규칙 제1조의 예외 조항"}
+    - {act: "굶주린 동족을 버림", punishment: "굴에서 외면 — 재굴 무리에서는 추방", note: "크릭 대상 (금기 ③)"}
+    - {act: "재를 밟음", punishment: "조상을 모독한 자 — 굴 낭송에서 한 줄 지워짐", note: "크릭 대상 (금기 ④)"}
+    - {act: "강자의 이름을 함부로 부름", punishment: "채찍 — 강자가 알면 주인이 처벌", note: "크릭 대상 (금기 ⑤)"}
+    - {act: "감독관이 배급을 빼돌림", punishment: "길드 제명과 연봉 삭감 — 굶주린 크릭 새끼를 먹이려는 경우는 묵인되기도 한다", note: "감독관 대상. 인간 노예는 그 대가로 굶는다"}
+    - {act: "인간이 크릭을 때리거나 공개적으로 모욕함", punishment: "주인의 재산 훼손으로 취급 — 주인이 정한다. 공개적인 승리는 굴종 판정", note: "인간 대상. 크릭의 주인에 따라 처분이 다르다"}
+    - {act: "봉기에서 편을 바꾸지 못함(지는 쪽에 남음)", punishment: "길드가 외면 — 목록이 뒤집히는 날 가장 먼저 편을 바꾸는 쪽이 이긴다", note: "크릭 대상 — 규칙 제1조의 실질"}
+
+customs:
+  greeting: "'누가 위요?' — 상대의 주인을 먼저 묻고 목을 낮춘다. 같은 주인이면 '같은 발 아래'라 부르고, 더 높은 주인의 크릭이면 무릎을 굽힌다. 주인이 없으면 인사를 하지 않는다."
+  taboos:
+    - "인간에게 지는 것, 강자 목록이 뒤집히는 말"
+    - "주인을 바꾸는 것(주인이 패배하지 않는 한)"
+    - "굶주린 동족을 버리는 것, 재를 밟는 것"
+    - "강자의 이름을 함부로 부르는 것"
+    - "공개 모욕 — 강자 앞에서의 망신은 크릭을 미치게 한다"
+  rites:
+    - {name: "목록 낭송", when: "매일 저녁", what: "굴마다 강자 목록을 낭송한다. 아이들이 가장 먼저 외운다. 갱신된 줄이 있으면 그날 모든 굴이 같은 줄을 새로 외운다"}
+    - {name: "굴종의 무릎", when: "패배 직후", what: "패배한 크릭이 이긴 자의 발 앞에 무릎 꿇고 목을 드러낸다. 이긴 자가 받아들이면 그의 크릭이 된다"}
+    - {name: "재의 날 낭송", when: "재의 날 (연말 5일)", what: "대붕괴 추모 — 크릭은 재를 밟지 않는다. '재 속에서 일어난 인간'의 옛이야기를 낮게 읊는다"}
+    - {name: "채찍 서약", when: "감독관 입문", what: "길드 규칙 제1조를 외우고 주인의 이름을 채찍 자루에 새긴다"}
+  speech: "빠르고 쇳소리. 강자 앞에서는 문장이 짧고 '예'로 끝나며, 약자 앞에서는 크고 길다. 이름은 한두 음절에 주인의 이름을 붙여 부른다('즈닉-레이번'). '무섭다'고 말하지 않고 '목록이 흔들린다'고 한다. 인간에게는 반말과 증오 섞인 명령형 — 인간은 목록에서 그들 아래의 유일한 존재이기 때문이다. '우리'는 굴이 아니라 목록을 가리킨다."
+
+membership:
+  join: "크릭은 굴에서 태어난다(4세에 일하고 8세 성년). 감독관은 길드 서약(채찍 서약)과 주인의 선택. 인간은 공개적으로 크릭을 이겨 굴종하게 해 '주인'이 될 수 있다."
+  leave: "주인이 패배하면 주인을 바꿀 수 있다. 주인 없이 사는 크릭은 고아다. 재의 아이들은 목록을 고쳐 쓰려는 소수."
+  signs: ["채찍 자루에 새긴 주인의 이름", "큰 귀, 잿빛·흙빛 피부, 어둠에 강한 노란 눈", "굴종의 무릎 자세", "재굴 무리의 재를 바른 이마"]
+
+internal_factions:
+  - {name: "주인 충성", leader: null, aim: "(길드장 니브 여섯꼬리 휘하) 목록의 꼭대기를 지킨다. 강한 쪽(현재 아우락스)에 길드를 맞춘다. 봉기가 이기기 시작하면 가장 먼저 편을 바꾼다", strength: 70}
+  - {name: "재의 아이들", leader: null, aim: "크릭도 실은 노예라는 사실을 목록에 넣는다. 인간 투사에게 진 티즈가 시작. 이름 없는 자들은 크릭을 동맹으로 삼을 수 있는가를 두고 갈라져 있다", strength: 5}
+  - {name: "늪 크릭 (마녀파 vs 녹테른파)", leader: null, aim: "늪에서 가장 강한 자를 따른다 — 구르는 일곱 노파, 티프는 녹테른이 더 강하다고 속삭인다", strength: 15}
+  - {name: "재굴 무리 (주인 없음)", leader: null, aim: "어떤 종족에도 속하지 않고 재를 먹는다. 인간 유물 사냥꾼과 거래. 시간 잔상을 냄새로 맡는다", strength: 10}
+
+assets:
+  - "굽은 회랑(바알카르 지하) — 채찍손 길드 본부, 감독관 약 3,000"
+  - "하역 장부(세렌), 소식의 속도 — 도시 하루·대륙 7~10일"
+  - "굴 모임의 목록 낭송 망, 굴 단위 식량 저장"
+  - "재굴 무리의 냄새 — 시간 잔상을 맡는 코, 재오염 면역"
+  - "궁의 귀·소리 방(피직), 알 보관실의 눈(숨)"
+
+secrets:
+  - {fact: fact_gf_znik_anne, known_by_rank: rank_whip}
+  - {fact: fact_gf_znik_wet_himself, known_by_rank: rank_whip}
+  - {fact: fact_gf_znik_sells_to_hagen, known_by_rank: rank_whip}
+  - {fact: fact_eh_grax_supply_list, known_by_rank: rank_whip}
+  - {fact: fact_eh_grax_cousin_znik, known_by_rank: rank_whip}
+  - {fact: fact_dk_fizik_sells_all_sides, known_by_rank: rank_whip}
+  - {fact: fact_dk_fizik_sold_route, known_by_rank: rank_whip}
+  - {fact: fact_dk_soom_melisande_spy, known_by_rank: rank_whip}
+  - {fact: fact_dk_chik_saw_route_sale, known_by_rank: rank_orphan}
+  - {fact: fact_aw_tuk_sold_hearts, known_by_rank: rank_carrier}
+  - {truth: T06, level: rumor, holders: [fac_krik]}
+  - {truth: T04, level: rumor, holders: [fac_krik]}
+  # TODO-FACT: 채찍손 길드 규칙 제1조 "주인이 바뀌면 채찍도 바뀐다" — 봉기가 이기기 시작하면 크릭 감독관들이 가장 먼저 편을 바꾼다 (HOUSES §3.11) — 사실로 등록 필요
+  # TODO-FACT: 재굴 크릭은 시간 잔상을 냄새로 맡는다. 재의 '적응' 혈명이 재오염 면역을 준다 (HOUSES §3.11)
+  # TODO-FACT: 맹약회의 313에 크릭은 초대받지 않는다 — 그들이 처음으로 자기 자리를 요구한다면 (RACES §16 씨앗 5)
+  # TODO-FACT: 크릭 사이에 '재 속에서 일어난 인간'에 대한 대붕괴 이후의 무서운 옛이야기가 있다 (RACES §16 신앙)
+
+relations:
+  # 크릭 집단은 HOUSES §6.1 행렬에 없다 — 아래 값은 서술 근거로 정한 '행렬 밖' 값이다.
+  - {to: fac_aurax, stance: 30, note: "행렬 밖 — 채찍손 길드는 '강한 쪽'(현재 아우락스). 강한 쪽이 바뀌면 길드가 바뀐다"}
+  - {to: fac_melisande, stance: 10, note: "행렬 밖 — 그락스·숨은 멜리산드의 크릭"}
+  - {to: fac_nameless, stance: -30, note: "행렬 밖 — 크릭은 인간을 증오한다. 이름 없는 자들 안에서도 크릭을 동맹으로 삼을지 갈려 있다"}
+  - {to: fac_collar, stance: 20, note: "행렬 밖 — 감독관과 목줄단은 같은 일을 다른 종족에게 한다"}
+  - {to: fac_seren, stance: 10, note: "행렬 밖 — 세렌 하역꾼 약 180,000"}
+  - {to: fac_swamp_hags, stance: 15, note: "행렬 밖 — 늪 크릭이 마녀를 따른다(약해 보이는 날 녹테른으로 넘어간다)"}
+  - {to: fac_nocturne, stance: 0, note: "행렬 밖 — 녹테른 안개 늪 크릭 무리(티프)와 크릭 목동 약 2,500"}
+toward_echo: "굴종하기 / 이용하기. 크릭은 강한 자를 따른다 — 잔향이 아니라 '목록 꼭대기가 뒤집힌 인간'을 본다. 공개적으로 크릭을 이기면 굴종하고, 주인보다 강한 자의 이름을 말하면 흔들린다. 재굴의 치륵은 시간 잔상을 냄새로 맡는다. '재 속에서 일어난 인간'의 옛이야기는 플레이어의 얼굴을 하고 있다."
+player_paths:
+  - "굴종: 즈닉이 졌다 — 아무도 보지 않았다(공개되지 않으면 목록은 바뀌지 않는다). 공개 대결로 이기면 크릭 하나가 플레이어의 것"
+  - "연대: 재의 아이들(티즈)을 보호하고 이름 없는 자들의 크릭 동맹 논쟁을 한쪽으로 기울인다"
+  - "이용: 피직(소리 방)·튀크·스크레의 하역 장부 — 길드를 거치는 정보망"
+  - "붕괴: 인간이 고대 종족 하나를 공개적으로 꺾는 날(찬가 3단계) 굴 크릭 수백이 강자 목록을 고쳐 쓴다 — 감독관이 가장 먼저 편을 바꾼다(찬가 4단계)"
+  - "안내: 치륵에게 인간이 먹는 음식을 주고 재의 황무지 시간 잔상 길로"
+regression:
+  fixed: ["강자 목록의 구조와 길드 규칙 제1조", "굴종의 무릎 규칙(공개된 패배만 인정)", "재의 날 낭송과 '재 속에서 일어난 인간'의 이야기", "즈닉의 두려움(주인 앞)"]
+  flow: ["길드가 따르는 강한 쪽 — 계승 위기의 진행에 따라", "재의 아이들 수", "하역 장부의 계약민 수"]
+  drift: ["즈닉이 플레이어에게 지는 시점과 목격자", "굴 모임이 새 줄을 외우는 날짜", "늪 크릭 무리의 이탈 시점"]

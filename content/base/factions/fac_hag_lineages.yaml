@@ -1,0 +1,199 @@
+# 늪 마녀 일곱 계보 — AS 2 '글 학교'의 여자 일곱이 연 일곱 스승-딸 사슬. 인간 숨은 혈통 중 유일하게 '혈명 대신 빌린 피'로 이어진다.
+# 회합(운영 조직)은 fac_swamp_hags(다른 작가) — 이 파일은 계보의 몸(전승·규약·유품)이다.
+# 근거: HOUSES §4.3, WORLD_BIBLE §1.3·§4.3, CHARACTERS R08, facts/morva.yaml.
+id: fac_hag_lineages
+name: 늪 마녀 일곱 계보 (쑥·뼈바늘·버들·거머리·재·안개·갈대)
+kind: house
+secret: true            # 모르바 늪에서는 자유(불법)이나 늪 밖에서는 화형·탑 인계다. 계보 이름이 곧 비밀 이름이다
+race: [인간(주로 여성)]
+governance: 계보 사슬 — 낱말 대조  # 스승과 딸의 일대일 사슬, 결정은 노파가 하고 오류는 딸이 잡는다
+motto: "한 마디에 몇 주, 한 마디에 몇 년. 값을 알고 말하라."
+seat: "모르바 늪 — 일곱 노파의 둥지(seven_hags_circle), 말하는 이끼 바위(seven_hags__talking_moss). 계보마다 오두막"
+size:
+  members: "노파 7, 딸(정식 제자) 약 30, 손님 제자 약 20, 견습 약 40 — 마흔을 넘기지 못하는 사람들이다"
+  territory: "모르바 늪 안의 일곱 오두막과 섬. 늪 밖에서는 계보가 아니라 '약초 노파' 얼굴로 산다"
+  wealth: "빌린 피 저장고(우르사 피, 거인 골수, 나가 허물, 용인 피(거머리로), 녹테른 피, 페이 이슬, 하르칸 피), 약초(세렌 마르디 상가에 판매), 고대 진명어 낱말 약 400개"
+  force: "작은 주술 — 약효 돋우기, 안개 부르기, 상처 봉하기. 주문 하나에 수명 몇 주에서 몇 년. 독꼬리 와이번과의 '젖은 휴전'"
+
+decision: >
+  계보는 일대일 사슬이다. 한 계보 안에서는 노파가 결정하고, 딸들은 '낱말 대조'로 그 결정을 점검한다 — 노파가 낱말 하나를 틀리게 외우면 가장 어린 딸이라도 보름 회합에서 이의를 걸 수 있고,
+  이의가 맞으면 노파는 그 낱말의 값(수명)을 자기 수명에서 먼저 낸다. 이 규칙이 계보를 정직하게 만든다 — 마녀의 말은 값이기 때문이다.
+  계보와 계보 사이는 보름 회합(fac_swamp_hags)에서 다수결로 정하고, '말하는 이끼 바위'·시간 근원·'그릇'에게 낱말을 넘기는 일만은 일곱 전원이 필요하다.
+  계보 안의 거부권은 '낱말을 돌려줌'이다 — 딸이 스승에게 외운 낱말을 돌려주고 늪을 떠난다(엘사가 AS 270에 그렇게 했다).
+  시전의 결정은 늘 셈이다. 노파는 시전 전에 수명을 센다: 몇 주면 약초, 몇 달이면 안개, 몇 년이면 불의 낱말. 셈이 틀리면 그 자리에서 늙는다.
+succession: >
+  노파가 죽으면 그 계보의 딸 중 가장 많은 낱말을 외운 자가 다음 보름 회합에서 빈 오두막에 들어간다. 마녀는 마흔을 넘기지 못하므로 계승은 잦다.
+  오다(첫째)는 남은 시전이 많아야 세 번이다(fact_mv_oda_three_casts_left) — 그녀가 죽으면 둘째 브리타가 첫째의 말을 쥐고 회합의 방침이 '그릇을 가두기'로 바뀐다.
+  일곱째 루네는 앞 노파가 일찍 죽어 한 번도 시전하지 않은 채 자리를 이었다. 여덟째(시간)는 AS 2부터 공석이다 — 어떤 계보도 그 낱말을 입에 올리지 않는다.
+
+offices:
+  - id: off_line_mugwort
+    title: "쑥 계보의 노파 — 첫째 (생명 · 빌린 피: 우르사 피)"
+    holder: npc_oda
+    reports_to: null
+    powers: ["생명의 낱말과 빛·물의 첫 낱말", "쑥 줄기 매듭 300개(약초 진명 목록) 전승", "피를 쓰는 일의 마지막 말"]
+    chosen_by: "쑥 계보 딸 중 가장 많이 외운 자"
+    perks: ["첫째의 서열", "남은 시전 3회"]
+  - id: off_line_mugwort_exile
+    title: 쑥 계보의 떠난 딸 (회색여울의 약초 노파)
+    holder: npc_elsa
+    reports_to: off_line_mugwort
+    powers: ["AS 270에 '낱말을 늪 밖 아이들에게도 가르치자'고 하다 떠났다", "42년간 세 번만 시전해 일흔까지 산 유일한 노인"]
+    chosen_by: "스스로 — 낱말을 돌려주고 늪을 떠남"
+    perks: ["이름 없는 자들의 연락책"]
+  - id: off_line_bonenedle
+    title: "뼈바늘 계보의 노파 — 둘째 (대지·쇠 · 빌린 피: 거인 골수)"
+    holder: npc_hag_brita
+    reports_to: off_line_mugwort
+    powers: ["돌에 진명을 '꿰매는' 거인 뼈 바늘", "북방 탈주자 출신 제자를 가장 많이 받는다", "오다 사후 첫째의 말"]
+    chosen_by: "뼈바늘 계보의 딸 중 가장 많이 외운 자"
+    perks: ["별강철 마지막 단계(대지의 진명) 값 — 빌린 피로 하면 수명 10년"]
+  - id: off_line_willow
+    title: "버들 계보의 노파 — 셋째 (물·꿈 · 빌린 피: 나가 허물 피)"
+    holder: npc_hag_hana
+    reports_to: off_line_mugwort
+    powers: ["버들가지 점술 막대", "세렌 마르디 상가 약초 거래 — 회합의 돈줄", "꿈에서 잿빛 고리의 외지인을 보았다"]
+    chosen_by: "버들 계보의 딸 중 가장 많이 외운 자"
+    perks: ["헤드비가의 스승(딸)"]
+  - id: off_line_leech
+    title: "거머리 계보의 노파 — 넷째 (불 · 빌린 피: 용인의 피)"
+    holder: npc_hag_jorda
+    reports_to: off_line_mugwort
+    powers: ["검게 칠한 거머리 단지 — 용인 감독관·병자의 피를 훔쳐 온다", "멜리산드 실험장 저주 의식"]
+    chosen_by: "거머리 계보의 딸 중 가장 많이 외운 자"
+    perks: ["혀가 반쯤 탔고 아이를 낳을 수 없다"]
+  - id: off_line_ash
+    title: "재 계보의 노파 — 다섯째 (그림자 · 빌린 피: 녹테른 피)"
+    holder: npc_hag_mag
+    reports_to: off_line_mugwort
+    powers: ["잿빛 고리 모양 목걸이(잿빛 실 매듭 문자의 원형)", "갈대 계보의 바람 낱말도 맡아 루네를 가르친다", "그림자장미 가문과 50년 거래"]
+    chosen_by: "재 계보의 딸 중 가장 많이 외운 자 — 시조가 시간의 낱말 조각을 재에 묻고 그림자로 옮겼다"
+    perks: ["매듭 문자를 만든 자"]
+  - id: off_line_mist
+    title: "안개 계보의 노파 — 여섯째 (정신 · 빌린 피: 페이 이슬)"
+    holder: npc_hag_elsbet
+    reports_to: off_line_mugwort
+    powers: ["안개 낀 날만 보이는 그림 조각(유리판)", "목줄단 첩자를 가려내는 '꿈 심문'", "페이의 떨어진 자 잿가루와 친구"]
+    chosen_by: "안개 계보의 딸 중 가장 많이 외운 자"
+    perks: ["이끼판 — 의심스러운 처형 둘의 이름"]
+  - id: off_line_reed
+    title: "갈대 계보의 노파 — 일곱째, 견습 (바람 · 빌린 피: 하르칸 피)"
+    holder: npc_hag_rune
+    reports_to: off_line_mugwort
+    powers: ["갈대 피리 — 바람 진명을 부르는 음", "하르칸 일곱샘 부족과 노래 교환"]
+    chosen_by: "앞 노파가 일찍 죽어 견습이 자리를 이었다"
+    perks: ["아직 한 번도 시전하지 않았다(19)"]
+  - id: off_line_time
+    title: 여덟째 근원 — 시간의 자리 (AS 2부터 공석, 금지)
+    holder: null
+    reports_to: off_line_mugwort
+    powers: ["없음 — 찢어진 시간을 건드리면 시간 잔상에 걸린다"]
+    chosen_by: "아무도 — 여덟째 근원은 대붕괴 이후 금지되었다"
+    perks: []
+  - id: off_daughter_hedwig
+    title: 버들 계보의 딸 (늪 밖의 연락)
+    holder: "unnamed:헤드비가 (SCENARIOS O-10) — 버들 계보의 '딸'"
+    reports_to: off_line_willow
+    powers: ["늪 밖의 약초·소식 통로"]
+    chosen_by: "버들 노파의 딸"
+    perks: []
+  - id: off_knot_keeper
+    title: 쑥 줄기 매듭 지킴이 (약초 진명 목록 300)
+    holder: "unnamed:저장고지기 딸 — 쑥 계보"
+    reports_to: off_line_mugwort
+    powers: ["쑥 줄기를 엮은 매듭 300개 — 약초 진명 목록", "빌린 피 병 수 장부"]
+    chosen_by: "첫째의 지명"
+    perks: []
+
+ranks:
+  - {id: rank_crone, title: "노파 (계보의 장)", duties: "근원 하나를 지키고 빌린 피를 배분한다", privileges: "한 표, 빌린 피 일곱 병", open_to_player: false}
+  - {id: rank_daughter, title: "딸 (정식 제자)", duties: "낱말을 외운다, 노파의 오류를 대조", privileges: "빌린 피 한 병, 계보 이름", open_to_player: false}
+  - {id: rank_guest_disciple, title: "손님 제자 (AS 280 이후 — 남자·외부인도)", duties: "약초·소식·피를 가져온다, 낱말 한두 개를 배운다", privileges: "늪 안 거처와 보호", open_to_player: true, condition: "약초나 빌린 피, 소식으로 노파 한 명의 신뢰를 얻는다. 잔향은 빌린 피 없이 낱말을 말해도 타지 않는다 — 그것을 알면 노파들이 4:3으로 갈라진다. 일곱 근원 모두를 배우려면 일곱 노파 전원의 동의가 필요하다"}
+  - {id: rank_apprentice, title: "견습", duties: "낱말을 소리 없이 따라 읊는다", privileges: "늪의 안전", open_to_player: false}
+
+law:
+  crimes:
+    - {act: "빌린 피 없이 진명 낱말을 입에 올림", punishment: "한 마디에 목숨이 탄다 — 계보가 말리지 못한다", note: "인간 대상 (평범한 인간). 잔향만 예외"}
+    - {act: "시간 근원(여덟째)의 낱말을 입에 올림", punishment: "시간 잔상에 걸린다 — 계보가 그 사람의 오두막을 비운다", note: "계보 규약 — 대붕괴 이후 금지"}
+    - {act: "다른 계보의 근원 낱말을 허락 없이 가르침", punishment: "계보에서 낱말을 돌려받고 쫓아낸다", note: "계보 규약"}
+    - {act: "'그릇'(돌아오는 이)에게 낱말을 일곱 전원의 병 없이 넘김", punishment: "회합이 그 노파의 병을 거둔다", note: "회합 규약 — 사실상 한 노파의 거부권"}
+    - {act: "빌린 피 저장고의 병을 몰래 씀", punishment: "병 값의 열 배만큼 수명을 낸다 — 그 노파가 정한다", note: "계보 규약"}
+    - {act: "늪 밖의 아이에게 낱말을 가르침", punishment: "쑥 계보 규약은 '그릇이 올 때까지 안 된다'. 어기면 낱말을 돌려주고 늪을 떠나야 한다 — 엘사 사례", note: "계보 규약 (쑥 계보의 규칙)"}
+    - {act: "늪 밖에서 마법을 씀 (제국·루멘)", punishment: "화형", note: "인간법 — 용제국·루멘. 세렌은 벌금 후 잿빛 탑 인계, 카즈둠은 금지"}
+    - {act: "비밀 이름(계보 이름)을 낯선 이에게 말함", punishment: "경고 후 딸의 낱말 중 하나를 노파가 돌려받는다", note: "계보 규약"}
+
+customs:
+  greeting: "'어느 계보냐?' — 답은 계보 이름(쑥, 뼈바늘, 버들, 거머리, 재, 안개, 갈대) 하나다. 계보 이름이 곧 비밀 이름이므로 낯선 이에게는 말하지 않는다. 노파끼리는 손바닥을 맞대고 서로의 오두막 냄새를 맡는다."
+  taboos:
+    - "시간의 낱말, 말하는 이끼 바위의 뒷면을 입에 올리거나 읽는 것"
+    - "마흔을 넘기려 낱말을 아끼는 것 — 노파는 '아낀 낱말은 남의 목숨으로 갚는다'고 한다"
+    - "빌린 피를 낭비하는 것(병 하나는 주문 하나 값이다)"
+    - "평범한 인간이 낱말을 소리 내 따라 하게 두는 것"
+    - "'마녀'라는 말 — 늪에서는 '노파', 늪 밖에서는 '약초 노파'"
+  rites:
+    - {name: "보름 회합", when: "보름마다", what: "일곱 노파가 둥지 원형 마당에 모여 낱말을 대조하고 병을 그릇 쪽으로 민다"}
+    - {name: "낱말 대조", when: "보름 회합 전", what: "스승이 외운 낱말 400개를 딸이 한 줄씩 대조한다. 틀린 낱말의 값은 스승이 먼저 낸다"}
+    - {name: "병 채우기", when: "겨울 전", what: "독꼬리 와이번 피 3병 등 빌린 피를 저장고에 채운다. 젖은 휴전의 표시는 사냥터에 맨 갈대 매듭"}
+    - {name: "수명 셈", when: "시전 전", what: "노파가 이번 낱말의 값을 센다. 몇 주면 약초, 몇 년이면 불"}
+    - {name: "이름 받기", when: "딸이 된 날", what: "계보 이름을 귓속말로 받고 첫 낱말을 외운다"}
+  speech: "노파는 반말, 짧고 비유가 많다 — 값을 셈하는 말투('한 철어치', '석 달 값'). 딸은 노파에게 하오체로, 서로에게는 해요체. '고맙다' 대신 '값을 안다'고 한다. 낱말은 소리 내지 않고 입 모양과 손가락으로 말한다 — 소리를 낼 수 있는 이는 잔향뿐이라는 노래가 있다."
+
+membership:
+  join: "딸의 입문은 낱말 하나를 입 모양으로 외우는 것 — 노파가 받아 주고 계보 이름을 귓속말로 준다. 손님 제자는 약초·피·소식으로 받아 준다."
+  leave: "낱말을 돌려주고 떠난다(엘사). 낱말을 돌려준 자는 그 계보에 대해 입을 닫는다. 마흔 전후로 시전의 값을 못 내면 죽는다."
+  signs: ["일곱 계보의 유품 — 쑥 줄기 매듭, 거인 뼈 바늘, 버들가지 막대, 검은 거머리 단지, 잿빛 고리 목걸이, 유리판 조각, 갈대 피리", "목에 건 뼈 병(빌린 피)", "겉보기 나이가 실제보다 20~40년 많다"]
+
+internal_factions:
+  - {name: "모든 근원을 그릇에게 (쑥·버들·재·갈대)", leader: npc_oda, aim: "돌아오는 이를 알아보면 일곱 근원 모두를 준다 — 300년 기다림의 결말", strength: 45}
+  - {name: "그릇을 늪에 가둬 지키자 (뼈바늘·거머리·안개)", leader: npc_hag_brita, aim: "그가 오면 늪이 불탄다 — 다라 때처럼. 오다 사후 방침이 바뀐다", strength: 45}
+  - {name: "떠난 딸들 (엘사)", leader: npc_elsa, aim: "낱말을 늪 밖 아이들에게도 가르치자 — '그릇을 기다리다 아이들이 죽는다'", strength: 10}
+
+assets:
+  - "고대 진명어 낱말 약 400개 — 300년간 외워 온 '말할 수 있는 그릇'을 위한 낱말"
+  - "빌린 피 저장고 — 일곱 종족의 피(독꼬리 와이번 피 3병이 겨울 전에 필요)"
+  - "말하는 이끼 바위(뒷면은 읽은 자가 없다 — 읽으려면 일곱 노파 전원 동의)"
+  - "계보 유품 일곱 — 쑥 줄기 매듭 300, 거인 뼈 바늘, 버들가지 막대, 검은 거머리 단지, 잿빛 고리 목걸이, 유리판 조각, 갈대 피리"
+  - "세렌 마르디 상가 약초 거래(돈줄), 독꼬리 와이번 독침 진액, 매듭 문자(잿빛 실 암호의 원형)"
+
+secrets:
+  - {fact: fact_mv_witch_forty_limit, known_by_rank: rank_daughter}
+  - {fact: fact_mv_oda_three_casts_left, known_by_rank: rank_crone}
+  - {fact: fact_mv_vessel_wait_300, known_by_rank: rank_daughter}
+  - {fact: fact_mv_hag_split_4_3, known_by_rank: rank_crone}
+  - {fact: fact_mv_brita_confine_plan, known_by_rank: rank_crone}
+  - {fact: fact_mv_time_forbidden, known_by_rank: rank_crone}
+  - {fact: fact_mv_back_of_rock_unread, known_by_rank: rank_crone}
+  - {fact: fact_mv_jorda_curse_ritual, known_by_rank: rank_crone}
+  - {fact: fact_mv_hana_dreamed_grey_ring, known_by_rank: rank_crone}
+  - {fact: fact_mv_rune_never_cast, known_by_rank: rank_daughter}
+  - {truth: T11, level: fragment, holders: [fac_hag_lineages]}
+  - {truth: T03, level: rumor, holders: [fac_hag_lineages]}
+  # TODO-FACT: 시조 일곱은 AS 2 아스테리아 외곽 '글 학교'에서 아스테리온에게 진명을 배우던 여자들이다 — 아스테리온은 "너희 목은 이 말을 견디지 못한다"고 경고했다 (HOUSES §4.3)
+
+relations:
+  # 계보는 fac_swamp_hags(회합)와 같은 행을 쓴다 — HOUSES §6.1 '늪 마녀 회합' 행.
+  - {to: fac_swamp_hags, stance: 70, note: "행렬 밖 — 계보의 노파들이 곧 회합이다"}
+  - {to: fac_aurax, stance: -90, note: "행렬 — 늪 마녀 회합"}
+  - {to: fac_melisande, stance: -70, note: "행렬 — 거머리 계보의 저주 의식"}
+  - {to: fac_kaspar, stance: 10, note: "행렬"}
+  - {to: fac_eldar, stance: -40, note: "행렬"}
+  - {to: fac_nocturne, stance: -10, note: "행렬. 예외: 세실 그림자장미 +40 (재 계보와 50년 거래)"}
+  - {to: fac_durgan, stance: 0, note: "행렬"}
+  - {to: fac_seren, stance: 10, note: "행렬 — 마르디 상가 약초 거래"}
+  - {to: fac_jotun, stance: 0, note: "행렬 — 엘사는 거인 뼈를 빌린 피로 원한다"}
+  - {to: fac_grom, stance: 0, note: "행렬"}
+  - {to: fac_light, stance: -70, note: "행렬"}
+  - {to: fac_nameless, stance: 70, note: "행렬"}
+  - {to: fac_collar, stance: -60, note: "행렬"}
+  - {to: fac_ashen_tower, stance: -50, note: "행렬"}
+  - {to: fac_barg, stance: -80, note: "행렬"}
+toward_echo: "4:3 분열 — 근원의 계승자 / 늪의 재앙. 쑥·버들·재·갈대는 '모든 근원을 그에게', 뼈바늘·거머리·안개는 '그가 오면 늪이 불탄다'. 노파들이 플레이어를 알아보는 순간 회합이 갈라진다. 낱말을 소리 내어도 타지 않는 인간은 대륙에 하나다."
+player_paths:
+  - "손님 제자: 약초·피·소식으로 노파의 신뢰를 얻고 낱말 한두 개를 배운다. 잔향이라면 빌린 피 없이 일곱 근원을 모두"
+  - "중재: 4:3의 분열에서 쑥·버들·재·갈대를 도와 일곱 노파 전원의 동의를 얻는다 — 오다의 남은 시전 3회가 시간제한"
+  - "거래: 요르다의 저주 의식에 용인의 피와 재를 가져다준다 / 브리타의 별강철 마지막 단계(대지의 진명)"
+  - "금지: 말하는 이끼 바위의 뒷면을 읽으려면 일곱 노파 전원의 동의 — 시간 근원의 비밀"
+regression:
+  fixed: ["일곱 계보의 이름·근원·유품과 시조 일곱", "마흔 한계와 시전의 값(수명)", "말하는 이끼 바위 뒷면은 읽히지 않는다", "여덟째 근원(시간)의 금지"]
+  flow: ["오다의 남은 시전 수", "4:3 분열의 기울기(플레이어 개입)", "빌린 피 저장고의 병 수"]
+  drift: ["어느 딸이 먼저 자리를 이을 준비를 하는가", "독꼬리 와이번 피 3병을 겨울 전에 들이는 시점", "엘사와 오다의 재회 여부"]

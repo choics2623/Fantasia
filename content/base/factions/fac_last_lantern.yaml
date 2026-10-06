@@ -1,0 +1,151 @@
+# 마지막 등불 유물 사냥꾼들 — 재의 황무지 가장자리 판잣집 마을. 등불 아래서는 거짓말을 하지 않는다. 종족을 묻지 않는다.
+# 근거: HOUSES §5.13·§4.1(청동 열쇠), REGIONS §11(last_lantern·등불 규칙), CHARACTERS R11, facts/ashwaste.yaml.
+# 이름 충돌: 등불지기는 HOUSES §5.13 '하그로스(두르강 돌피 출신, 210)' / REGIONS §11.3 '할그림 반돌(두르강, 맹세를 깨 돌로 굳어감)'. 같은 자리로 보고 REGIONS 이름을 쓴다 — 미해결.
+id: fac_last_lantern
+name: 마지막 등불 유물 사냥꾼들
+kind: org
+race: [크릭(재굴 무리), 인간 탈주자, 몰락 용인, 두르강 추방자, 그롬 낙오자 — 종족을 묻지 않는다]
+governance: 등불 규칙 — 등불지기 한 사람의 규칙. 위반은 추방(황무지로). 큰일은 '등불 아래 회합'(허가 사냥꾼 전원)
+motto: "길 잃은 자는 이 불을 향해 걸어라."
+seat: 마지막 등불 (last_lantern) — 재 평원 동쪽 가장자리 바위 언덕
+size:
+  members: "마을 약 600 — 허가 사냥꾼(등불 인장) 약 60, 짐꾼 약 200(대부분 인간 노예·탈주자), 길잡이(재굴 크릭), 경비"
+  territory: "마지막 등불과 황무지 가장자리 길. 붉은 말뚝(시간의 상처 경계)까지"
+  wealth: "유물 하나 2~200비늘(잿빛 탑이 최대 구매자), 물(물 한 통 3못 — 가장 비싸다), 등불 인장 발급"
+  force: "경비대(고즈 — 잿빛 그롬), 사냥꾼들의 칼. 진짜 방벽은 등불 — 꺼지면 마을이 잔상에 먹힌다고 믿는다"
+
+decision: >
+  등불지기가 정한다 — 등불 규칙 다섯(해 지기 전 돌아온다 / 붉은 말뚝 너머로 가지 않는다 / 남의 유물을 빼앗지 않는다 / 등불을 끄지 않는다 / 종족을 묻지 않는다)은 바뀐 적이 없다.
+  규칙 밖의 큰일(잿빛 탑 관측자의 요구, 회색 순례자와의 다툼, 재 폭풍 때 원정 금지)은 '등불 아래 회합' — 재의 날 밤 허가 사냥꾼 전원이 등불 아래 앉아 말한다.
+  등불 아래에서는 거짓말을 하지 않는다(금기). 그래서 회합은 길지 않다. 마지막 말은 등불지기가 한다.
+succession: "등불지기는 등불을 처음 건 두르강 추방자의 핏줄이 잇는다(AS 140 조부 → 지금의 등불지기). 그가 돌이 되면(맹세 파기의 돌화가 심장에 닿으면) 회합이 등불을 지킬 자를 뽑는다 — 아직 정해 둔 자가 없다."
+
+offices:
+  - id: off_lantern_keeper
+    title: 등불지기
+    holder: "unnamed:할그림 반돌 (두르강) — 깊은 문 아래의 것을 말하지 않겠다는 맹세를 깨 왼팔과 왼쪽 얼굴이 돌. HOUSES의 '하그로스'와 같은 자리"
+    reports_to: null
+    powers: ["등불 규칙", "추방", "등불 인장 발급", "유물 창고"]
+    chosen_by: "등불을 건 핏줄 (AS 140)"
+    perks: ["집 아래 깨진 맹세 석판", "창고 가장 깊은 상자 — 아스테리아 서고의 문짝 한 장(열쇠 구멍에 여덟 갈래 별)"]
+  - id: off_guard_captain
+    title: 경비대장
+    holder: npc_goz
+    reports_to: off_lantern_keeper
+    powers: ["방벽", "잔상 마물 처리", "추방 집행"]
+    chosen_by: "등불지기의 고용"
+    perks: ["매일 싸울 상대 — 그의 혈명은 싸우지 않으면 쇠약해진다"]
+  - id: off_chief_guide
+    title: 수석 길잡이
+    holder: "unnamed:모그 (인간, 44) — 황무지에 23번 들어갔다 나온 유일한 인간. 바엘리스의 굳은 그림자 옆에서 '너는 또 왔구나'를 들었다"
+    reports_to: off_lantern_keeper
+    powers: ["원정 경로", "잔상 주기"]
+    chosen_by: "살아 돌아온 횟수"
+    perks: []
+  - id: off_trader
+    title: 고물상 '등잔 밑'
+    holder: npc_tuk
+    reports_to: off_lantern_keeper
+    powers: ["유물 감정·거래", "정보(끈 매듭 장부)"]
+    chosen_by: "가게 — 등불지기의 묵인"
+    perks: []
+  - id: off_hunter_sandeye
+    title: 허가 사냥꾼 — '모래눈' 패 (6)
+    holder: npc_kyle_sandeye
+    reports_to: off_lantern_keeper
+    powers: ["원정, 유물 판매"]
+    chosen_by: "등불 인장"
+    perks: ["교본 상자의 위치 — 아무에게도 말하지 않았다"]
+  - id: off_hunter_glass_eye
+    title: 허가 사냥꾼 — '유리눈'
+    holder: "unnamed:'유리눈' 데스 (용인 몰락 기사, 81) — 시간 잔상을 보는 의안"
+    reports_to: off_lantern_keeper
+    powers: ["잔상 감정"]
+    chosen_by: "등불 인장"
+    perks: []
+  - id: off_ash_guide
+    title: 길잡이 — 재굴 크릭
+    holder: "unnamed:치륵 (크릭, 37) — 재굴 무리, 잔상을 냄새로 맡는다"
+    reports_to: off_chief_guide
+    powers: ["길 안내"]
+    chosen_by: "재굴 무리의 거래"
+    perks: []
+  - id: off_cornerstone
+    title: 주춧돌 (숨은 모임 — 글자 석판 조각 14)
+    holder: "unnamed:주춧돌의 인간 사냥꾼 14 — 이름 없는 자들 재의 황무지 등잔이 그중 하나"
+    reports_to: off_lantern_keeper
+    powers: ["아스테리아 글자 석판 수집 — 공개 거래 불가(재의 법)"]
+    chosen_by: "스스로"
+    perks: []
+
+ranks:
+  - {id: rank_keeper, title: "등불지기", duties: "규칙", privileges: "등불", open_to_player: false}
+  - {id: rank_licensed, title: "허가 사냥꾼 (등불 인장)", duties: "원정", privileges: "유물 판매, 회합 자리", open_to_player: true}
+  - {id: rank_porter, title: "짐꾼", duties: "짐", privileges: "몫 1/10", open_to_player: true}
+  - {id: rank_guide, title: "길잡이", duties: "길", privileges: "몫 1/5", open_to_player: true}
+# 플레이어의 사다리: 짐꾼으로 한 번 들어갔다 살아 나오면 허가 사냥꾼 후보. 등불 인장(`길드인장:마지막등불`)은 법적으로 인간이 가질 수 없지만, 여기서는 아무도 묻지 않는다.
+# 첫 임무: '아스테리아 외곽 노래하는 돌을 하나 가져와라. 돌이 부르는 노래를 따라 부르지 마라.' (평범한 인간이 따라 부르면 수명이 탄다 — 잔향은 타지 않는다.)
+
+law:
+  crimes:
+    - {act: "해 지기 전에 돌아오지 않음", punishment: "구조하지 않는다", note: "모두"}
+    - {act: "붉은 말뚝 너머로 감", punishment: "추방 — 황무지로", note: "모두. 시간의 상처 — 잔향에게도 진짜 죽음"}
+    - {act: "남의 유물을 빼앗음", punishment: "손 결박 후 재 위에 하루", note: "모두"}
+    - {act: "등불을 끔", punishment: "추방", note: "모두"}
+    - {act: "종족을 물음", punishment: "벌금 — 물 1통", note: "모두"}
+    - {act: "등불 아래서 거짓말", punishment: "금기 — 벌은 없다. 그 뒤로 아무도 그의 말을 사지 않는다", note: "모두"}
+    - {act: "글자 석판 공개 거래 (재의 법)", punishment: "바깥 법 — 처형. 등불지기는 보지 못한 척한다", note: "인간 대상"}
+
+customs:
+  greeting: "등불 쪽으로 고개를 한 번 끄덕이고 '불 아래.' — 답 '불 아래.' 원정에서 돌아온 자에게는 물을 먼저 건넨다."
+  taboos: ["잔상 속 사람에게 말 걸기", "재를 맨손으로 먹기(굶주린 자들의 전설)", "등불 아래서 거짓말", "종족을 묻기"]
+  rites:
+    - {name: "재의 날 밤샘", when: "재의 날", what: "마을 전원이 등불 아래 모여 밤새 잔상을 지켜본다. 인간 사냥꾼들은 아스테리아의 하늘에 떠오르는 '말하는 자'의 그림자를 본다고 한다"}
+    - {name: "등불 아래 회합", when: "재의 날 밤", what: "허가 사냥꾼 전원이 큰일을 말한다 — 거짓말 금지"}
+    - {name: "빈 자리 물", when: "원정에서 누가 돌아오지 않은 밤", what: "그의 몫의 물 한 그릇을 등불 아래 둔다. 아침에 재 위에 붓는다"}
+  speech: "종족어가 섞인 거친 공용어. 값과 길과 시간(잔상 주기 — '9분')으로 말한다. 서로 반말."
+
+membership:
+  join: "짐꾼으로 한 번 들어갔다 살아 나오기 → 등불 인장"
+  leave: "언제든 — 황무지는 붙잡지 않는다. 사람이 사라질 뿐"
+  signs: ["등불 인장(쇠 등잔 모양)", "'불 아래.'", "물을 먼저 건네기"]
+
+internal_factions:
+  - {name: "등불 사람들", leader: npc_goz, aim: "규칙과 방벽 — 마을이 산다", strength: 50}
+  - {name: "탑에 파는 자들", leader: npc_kyle_sandeye, aim: "유물 값 — 교본 상자 200비늘", strength: 30}
+  - {name: "주춧돌", leader: null, aim: "아스테리아의 글자를 모은다 — 팔지 않는다", strength: 20}
+
+assets: ["황무지 지도(부분)", "유물 거래망(잿빛 탑·세렌·쥐들의 왕관·고르바)", "재오염 해독 약", "아스테리아 서고의 문짝 — 청동 열쇠가 맞는 문"]
+
+secrets:
+  - {fact: fact_aw_kyle_found_box, known_by_rank: rank_licensed}
+  - {fact: fact_aw_school_echo, known_by_rank: rank_licensed}
+  - {fact: fact_aw_kyle_tower_spy, known_by_rank: rank_licensed}
+  - {fact: fact_aw_box_bounty, known_by_rank: rank_licensed}
+  - {fact: fact_aw_tuk_sold_hearts, known_by_rank: rank_licensed}
+  - {fact: fact_aw_hearts_melisande_bait, known_by_rank: rank_keeper}
+  - {fact: fact_aw_tuk_knows_ian_fake, known_by_rank: rank_licensed}
+  - {fact: fact_aw_goz_weakness, known_by_rank: rank_keeper}
+  - {fact: fact_aw_echo_girl_calls, known_by_rank: rank_guide}
+  - {fact: fact_gm_gorba_buys_relics, known_by_rank: rank_licensed}
+  # TODO-FACT: 등불지기 창고의 가장 깊은 상자에 아스테리아 서고의 문짝 한 장 — 열쇠 구멍에 여덟 갈래 별, 청동 열쇠가 맞는다 (HOUSES §5.13)
+  # TODO-FACT: 등불지기 할그림이 깬 맹세는 '깊은 문 아래의 것을 말하지 않는다'이며, 그는 그것을 누군가에게 말했다 (REGIONS §11.9·§11.13 — 고동 장부 fac_beat_ledger와 연결)
+  # TODO-FACT: 수석 길잡이 모그는 바엘리스 흑요비늘의 굳은 그림자 옆에서 '너는 또 왔구나'라는 목소리를 들었다 (HOUSES §5.13)
+  - {truth: T05, level: rumor, holders: [npc_kyle_sandeye, npc_tuk]}
+  - {truth: T06, level: rumor, holders: [npc_goz]}
+
+relations:
+  - {to: fac_ashen_tower, stance: 20, note: "행렬 밖 — 최대 구매자이자 재눈 초소의 감시"}
+  - {to: fac_grey_pilgrims, stance: -40, note: "행렬 밖 — 성소 침범 시비"}
+  - {to: fac_drakmar_empire, stance: -20, note: "행렬 밖 — 베르미온 가문(무허가 채굴)"}
+  - {to: fac_beat_ledger, stance: 0, note: "행렬 밖 — 등불지기의 깨진 맹세"}
+toward_echo: "고용. 등불지기: '돌아오는 놈이라면 황무지에서 죽어도 다시 오겠군 — 최고의 짐꾼이다.' 그는 틀렸다 — 붉은 말뚝 너머 시간의 상처 안에서는 잔향자도 돌아오지 못한다. 모그는 다르다 — 그는 '너는 또 왔구나'를 들었다."
+player_paths:
+  - "짐꾼 → 허가 사냥꾼. 노래하는 돌 — 따라 불러도 타지 않는 것을 누가 보는가"
+  - "유물 사냥 = 기억 조각 사냥: 멈춘 광장, 성벽 위의 소녀, 교본 상자"
+  - "문짝과 열쇠: 별의 집 세 열쇠 중 하나가 서고 문짝에 맞는다"
+  - "고즈의 쇠약: 그가 싸우지 못하게 되면 방벽이 무너진다"
+regression:
+  fixed: ["등불 규칙 다섯", "교본 상자 발견됨(미개봉)", "두 번째 등불 소멸(AS 311)"]
+  flow: ["카일의 다음 원정", "튀크의 용심 조각 손님"]
+  drift: ["잔상 주기의 작은 어긋남(9분 ±)", "그날 돌아오지 않은 짐꾼"]

@@ -1,0 +1,91 @@
+# 진실의 holders — 용족·용제국 묶음 (drakmar_empire · varskar_brood · great_dragon_lines · scale_council · 용인 대가문 10).
+# truths.yaml은 고치지 않는다. 이 파일은 그 holders 항목을 대신 채운다 — 형식: {truth, who, level, note}.
+# who: npc id, 또는 id 없는 인물은 {who: fac_..., office: off_...} (세력 파일의 자리). level: rumor | fragment | whole.
+# 근거는 각 NPC 카드의 knows/hides(facts/drakmar.yaml 등)와 세력 파일 secrets.
+# 단계는 오를 수만 있다. 진실을 아는 NPC가 죽으면 진실은 그가 남긴 물건·제자에게 넘어가거나 사라진다 (23 §5.1).
+
+# ── T01 신살의 공모 ──
+- {truth: T01, who: npc_varskar, level: whole, note: "아버지 아그라몬(신살의 첫 불)에게서 직접 들었다. 용족 최고령"}
+- {truth: T01, who: npc_aurax, level: fragment, note: "용족 전승 — 엘다르가 계획했고 용족이 앞장섰다. 열한 종족의 몫의 전부는 아니다"}
+- {truth: T01, who: npc_melisande, level: fragment, note: "용족 전승과 진명 친화 은빛 계의 학식"}
+- {truth: T01, who: npc_isolde, level: fragment, note: "서리비늘 전승"}
+- {truth: T01, who: npc_irene_bold, level: fragment, note: "잿빛 탑 연구 — 진명과 글자의 그릇"}
+- {truth: T01, who: npc_serak, level: rumor, note: "서고에서 대붕괴 기록을 읽다 접한 반쪽 이야기"}
+
+# ── T02 예언의 원문 ──
+- {truth: T02, who: npc_varskar, level: whole, note: "신살 세대의 기억에서 — 그 '말'이 한 사람(잔향)임을 3,400년 사냥으로 안다"}
+- {truth: T02, who: npc_aurax, level: whole, note: "fact_dk_aurax_echo_belief — 잔향이 실재한다고 믿는 몇 안 되는 용"}
+- {truth: T02, who: npc_melisande, level: fragment, note: "'신의 마지막 말을 몸에 품은 잔향'을 그릇으로 찾는다 (fact_eh_mel_vessel)"}
+- {truth: T02, who: npc_irene_bold, level: fragment, note: "예언 원문의 첫 구절까지 — 시험법의 근거"}
+- {truth: T02, who: npc_isolde, level: rumor, note: "흰 알 예언('흰 것이 깨어나면 사슬도 깨어나리라')의 엘다르 쪽 맥락"}
+
+# ── T03 잔향 — 한 시대에 한 사람 ──
+- {truth: T03, who: npc_varskar, level: whole, note: "fact_dk_varskar_awaits_return — 죽어도 같은 날로 돌아오는 자가 있음을 안다. 아스테리온의 '다시 오겠다'를 기억한다"}
+- {truth: T03, who: npc_aurax, level: whole, note: "평범한 불로는 잔향자가 회귀할 뿐이라는 것을 안다 — 그래서 아버지의 불"}
+- {truth: T03, who: npc_melisande, level: fragment, note: "그릇 = 잔향 (fact_eh_mel_vessel, fact_eh_mel_311_reports). 회귀의 법칙까지는 모른다"}
+- {truth: T03, who: npc_irene_bold, level: fragment, note: "징후자 수집·연구 — 낙엽월마다 '설명되지 않는 기시감. 북쪽.'"}
+- {truth: T03, who: npc_kaspar, level: rumor, note: "어머니 엘레나의 마지막 말 '너는 끝나지 않을 것이다'가 금기의 문구임을 안다 (fact_gf_kaspar_mother_words)"}
+- {truth: T03, who: npc_isolde, level: rumor, note: "잔향이 만지면 흰 알 껍질의 실금이 빛난다 (fact_dk_egg_voice)"}
+- {truth: T03, who: fac_scale_council, office: off_longshadow_head, level: fragment, note: "'잔향 징후 3배'의 의미를 가장 먼저 이해한 이르마스 긴그림자 — 죽이기보다 쓰려 한다"}
+- {truth: T03, who: fac_kaldaran, office: off_duke, level: rumor, note: "AS 311 징후 보고를 절반으로 줄여 올린 세베리안 — 무언가 깨어났다는 것은 숫자로만 안다"}
+- {truth: T03, who: fac_sarkos, office: off_classifier, level: rumor, note: "이사벨 — 212건의 분류에서 진짜가 하나도 없었음을 안다"}
+- {truth: T03, who: fac_vermion, office: off_countess_cradle, level: rumor, note: "오렐리아 — 멜리산드의 '견디는 그릇'이 무엇인지 어렴풋이"}
+- {truth: T03, who: fac_morgant, office: off_matriarch, level: rumor, note: "게르트루드 — 엘레나의 마지막 말을 들었을 수 있다 (TODO-FACT)"}
+
+# ── T04 회귀의 법칙과 대가 ──
+- {truth: T04, who: npc_varskar, level: fragment, note: "기시감 — 낙엽월 초하루마다 '또 그 저녁'이라 중얼거린다. 회귀의 낌새를 가장 강하게 느끼지만 기억은 못 한다"}
+- {truth: T04, who: npc_aurax, level: fragment, note: "아버지의 중얼거림이 무슨 뜻인지 안다 (RACES §17.2 '회귀를 느끼는 자들')"}
+- {truth: T04, who: npc_irene_bold, level: fragment, note: "장부의 기시감 줄 — '측정 오차'라 부른다 (fact_ar_irene_ledger_deja_vu)"}
+- {truth: T04, who: npc_melisande, level: rumor, note: "'젖은 재 냄새'의 소문 — 이식 자료와 대조"}
+
+# ── T05 진짜 죽음의 네 수단 ──
+- {truth: T05, who: npc_varskar, level: fragment, note: "자기 불이 그 돌아옴을 끊는다는 것을 안다 (fact_dk_varskar_awaits_return)"}
+- {truth: T05, who: npc_aurax, level: fragment, note: "아버지의 불을 쓰려는 계획. 엘다르 그물·탑 칼의 위치는 모른다"}
+- {truth: T05, who: npc_irene_bold, level: fragment, note: "시간 유리 칼 세 자루 — 셋째 '마지막 금'을 몸에 지닌다 (fact_ar_glass_blades)"}
+
+# ── T06 대붕괴의 진실 ──
+- {truth: T06, who: npc_varskar, level: whole, note: "의식 한가운데에 불을 뿜은 당사자 (fact_dk_collapse_truth)"}
+- {truth: T06, who: npc_aurax, level: whole, note: "대붕괴 당시 아버지 곁에 있었고 의식이 성공 직전이었음을 안다 (fact_dk_aurax_saw_collapse)"}
+- {truth: T06, who: npc_nora, level: whole, note: "열두 번째 청자 — 앞선 열한 명은 처분되었다 (fact_dk_nora_twelfth_listener)"}
+- {truth: T06, who: npc_irene_bold, level: whole, note: "볼드 사본의 보관자 — 진실을 알지만 '연구 대상이지 무기가 아니다'"}
+- {truth: T06, who: fac_bold, office: off_chief_scribe, level: fragment, note: "이삭 — 볼드 사본을 필사한 적이 있다 ('용황의 불이 의식이 끝나기 전에 떨어졌다')"}
+- {truth: T06, who: fac_hastran, office: off_marquis, level: fragment, note: "발레리우스 하스트란 — 아우락스의 기수로 참전, '무언가'를 보고 그 뒤로 불을 무서워한다"}
+- {truth: T06, who: fac_great_dragon_lines, office: off_gromak, level: fragment, note: "그로마크 — 대붕괴 전날을 반복해서 산다. 설득하면 포위 계획(불을 뿜기로 미리 결정)을 이야기한다"}
+- {truth: T06, who: npc_serak, level: rumor, note: "밤마다 서고에서 대붕괴 기록을 읽는다 — 확인하려는 중 (fact_dk_serak_reads_archive)"}
+
+# ── T07 용황이 썩어 가는 이유 ──
+- {truth: T07, who: npc_varskar, level: whole, note: "자기 몸의 시간의 상처 (오른쪽 옆구리, 왼눈) — 그의 죽음은 진짜 죽음의 수단 하나를 없앤다"}
+- {truth: T07, who: npc_aurax, level: whole, note: "대붕괴 당시 곁에 있었고 아버지의 불이 시간을 태운다는 것을 안다"}
+- {truth: T07, who: npc_nora, level: fragment, note: "시중장 — 상처를 직접 본다 (fact_dk_varskar_time_wound). 회귀와의 연결은 듣지 않았다"}
+- {truth: T07, who: npc_isolde, level: fragment, note: "짝 — 상처의 모양은 알지만 이유는 묻지 못했다"}
+- {truth: T07, who: npc_melisande, level: fragment, note: "아버지의 시간의 상처를 그릇에 '옮겨 담으려' 한다 (fact_eh_mel_goal_wound)"}
+- {truth: T07, who: npc_kaidor, level: rumor, note: "용황이 3년째 글을 못 읽는다는 것까지 — 이유는 모른다"}
+- {truth: T07, who: fac_kaldaran, office: off_duke, level: rumor, note: "AS 302 병세를 처음 확인하고 비밀로 했다 — 원인은 모른다"}
+
+# ── T08 아우락스가 아는 것 ──
+- {truth: T08, who: npc_aurax, level: whole, note: "본인 — 잔향자가 회귀를 깨닫기 전에 아버지의 불로 끊으려 한다 (fact_dk_aurax_echo_belief)"}
+- {truth: T08, who: npc_varskar, level: fragment, note: "장자가 진실을 안다는 것을 안다 — 계획의 전모는 모른다"}
+- {truth: T08, who: fac_sarkos, office: off_classifier, level: rumor, note: "'황태자가 인간 아이를 이상하게 집요하게 찾는다' — 징후자 수요의 압력에서 직접 느낀다"}
+- {truth: T08, who: npc_nora, level: rumor, note: "궁정 소문 (fact_dk_nora_court_gossip)"}
+- {truth: T08, who: npc_serak, level: rumor, note: "아버지의 날개에 새겨진 이름들과 유모의 이름"}
+
+# ── T10 순종의 빛의 기원 ──
+- {truth: T10, who: fac_tarbien, office: off_viscountess, level: fragment, note: "리산드라 — AS 87 성 마렌의 순종의 빛 창시 때 엘다르 후원금을 전달한 창구 가문"}
+
+# ── T11 진명의 기원 ──
+- {truth: T11, who: npc_varskar, level: fragment, note: "아스테리온이 백 번의 회귀로 모은 이름들을 의식에서 직접 보았다"}
+- {truth: T11, who: npc_irene_bold, level: fragment, note: "글자는 이름의 그릇 — 탑의 연구 전제"}
+- {truth: T11, who: npc_melisande, level: rumor, note: "은빛 계의 진명 친화 — 이식 실험의 한 단서"}
+- {truth: T11, who: fac_raven_house, office: off_baron, level: rumor, note: "고드릭 — 성채 지하 우물 옆 진명 석판 조각을 '저주를 막는 부적'으로만 안다"}
+
+# ── T12 앞선 잔향자들의 최후 ──
+- {truth: T12, who: npc_varskar, level: fragment, note: "아스테리온의 최후 — 자기 불이 끊었다"}
+- {truth: T12, who: npc_aurax, level: fragment, note: "대붕괴 당시 현장. 징후자 처형에서 이어지는 계산"}
+- {truth: T12, who: npc_irene_bold, level: fragment, note: "탑의 시간 유리 칼이 '이름 없는 아이들'에게 여러 번 쓰였다 (fact_ar_glass_blades)"}
+- {truth: T12, who: fac_hastran, office: off_marquis, level: rumor, note: "AS 100 '붉은 길' 처형 — 붉은 손 다라의 오른손 미라가 요새에 있다"}
+
+# ── T13 313년 여름 맹약회의 ──
+- {truth: T13, who: npc_kaidor, level: fragment, note: "원로회의 '인간 번식 할당' 상향 제안(노동력 1.4배) 준비 — 의제를 일부 안다"}
+- {truth: T13, who: npc_aurax, level: fragment, note: "자기 안건('잔향 대숙청' — 15~25세 인간 남녀 10명 중 1명 처형, fact_dk_aurax_purge_plan)을 통과시킬 계획"}
+- {truth: T13, who: fac_granek, office: off_count, level: rumor, note: "오도릭 — 맹약회의 313이 인간 문제로 모인다는 소문 수준"}
+- {truth: T13, who: fac_orsel, office: off_advisor, level: rumor, note: "지올 — 몬달리 상가 쪽에서 들은 소문 수준"}

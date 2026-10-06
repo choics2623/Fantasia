@@ -59,3 +59,21 @@
 - {truth: T06, who: npc_kyrie, level: fragment, note: "하늘에서 시간의 균열이 위로도 찢어진 것을 보았다 (HOUSES §3.8 — 210세와 312년 전의 산술 불일치는 보고)"}
 - {truth: T03, who: npc_kyrie, level: rumor, note: "역행하는 별이 잔향의 각성과 함께 나타났다는 까마귀 아에리의 해석을 비밀로 한다 (fact_ws_retrograde_star)"}
 - {truth: T13, who: npc_kyrie, level: fragment, note: "맹약회의 313에 처음으로 대표를 보낸다. 표를 어느 쪽에 던질지는 정하지 못했다"}
+
+# ── 페이 (fac_fae)
+- {truth: T01, who: npc_thorn_queen, level: whole, note: "신살 때 웃은 자 — 열한 종족의 공모와 각자의 몫을 직접 보았다"}
+- {truth: T02, who: npc_thorn_queen, level: whole, note: "에오르의 마지막 말을 인간에게 남기는 것을 보고 공모가 실패할 것을 알았다 (fact_tm_queen_laugh_reason)"}
+- {truth: T03, who: npc_thorn_queen, level: whole, note: "플레이어에게 깃든 것이 잔향임을 알아본다. 3,400년간 구경해 왔다"}
+- {truth: T06, who: npc_thorn_queen, level: fragment, note: "살아 있던 아스테리온을 구경거리로 삼아 지켜보았다 (fact_tm_queen_asterion_spectacle)"}
+- {truth: T09, who: npc_thorn_queen, level: fragment, note: "'에오르가 다시 말하는 것이 두 번째로 재미있는 일'이라 말했다"}
+
+# ── 수인족 (fac_beastkin)
+- {truth: T03, who: npc_volk, level: rumor, note: "죽어도 돌아오는 인간이 있다는 이야기. 잔향만은 산 채로 잡으려 한다 (fact_gf_volk_human_mother)"}
+- {truth: T04, who: npc_volk, level: fragment, note: "젖은 재 냄새 — 늙은 바르그의 가르침. 회귀할수록 냄새가 짙어진다는 것까지"}
+- {truth: T04, who: fac_beastkin, level: fragment, note: "냄새 문서고 수석 관리인 하가 늙은코(npc 없음, rank_pack_alpha 아래) — '이건 오늘 처음 맡는 냄새인데 왜 다 아는 냄새 같지'"}
+- {truth: T09, who: fac_beastkin, level: rumor, note: "우르사 브루나 마흔겨울(npc 없음) — 깊은 문 근처 숲에서 '땅이 뛴다'고 말한다"}
+- {truth: T12, who: fac_beastkin, level: rumor, note: "그나르 마굴 뼈주머니(npc 없음) — 붉은 길 1만 명의 이름 노래. 다라의 마지막 동료들"}
+
+# ── 크릭 (fac_krik)
+- {truth: T06, who: fac_krik, level: rumor, note: "크릭 노파(npc 없음) — 대붕괴의 날 아스테리아에서 '재 속에서 일어난 인간'을 보았다는 옛이야기. 진실은 아스테리온이 세계를 찢은 게 아니라는 소문과 닿는다"}
+- {truth: T04, who: fac_krik, level: rumor, note: "재굴 무리 치륵(npc 없음) — 시간 잔상을 냄새로 맡는다. 젖은 재 냄새의 소문"}

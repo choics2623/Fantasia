@@ -1,0 +1,168 @@
+# 오르셀 백작가 — "강 위의 사슬". 정본: HOUSES §2.7, §6.3 / REGIONS §9(세렌), §1.10(은빛 강) / 몰락 중 순혈
+# 오르셀은 이미 파산했다 — 몬달리 상가에 4,200두카트, 배·항구·노예가 담보. 백작은 꼭두각시, 실질 가주는 몬달리 파견 회계 고문 지올.
+# 기준: AS 312 낙엽월 1일. 'unnamed:...'는 TODO-NPC.
+id: fac_orsel
+name: 오르셀 백작가
+kind: house
+race: [용인(순혈), 나가(몬달리 파견 회계 고문)]
+governance: 봉건 위계 (채무 종속) — 이름은 백작가, 실제 결정은 채권자의 회계 고문
+governance_note: >
+  이 가문은 아직 용인 대가문의 모양을 하고 있다. 백작 마그누스는 자기가 아직 주인이라고 믿고 싶어 하고, 함대장은 노예선에서 태어났다는 농담을 싫어하고,
+  백작 며느리 이브레아는 친정(레이번)을 살리려 남편의 장부를 훔쳐본다. 그리고 회계 고문 지올의 도장이 없는 지출은 단 한 건도 집행되지 않는다.
+motto: "강은 결국 바다로 간다."
+seat: "오르셀 나루 — 은빛 강 중류 항구 (바알카르~루멘~세렌 수운)"
+size:
+  members: "순혈 직계 3(+며느리 1) + 나가 회계 고문 1 + 선장·항만 관리 수십 + 크릭 '배밑' 감독 + 노예선 23척 승선 노예 수천"
+  territory: "은빛 강 중류 항구 '오르셀 나루', 노예선 23척, 바알카르~루멘~세렌 수운 통행세"
+  wealth: "표면적으로 통행세와 노예선 운임. 실제로는 몬달리 상가에 4,200두카트(AS 298~) — 배·항구·노예 전부가 담보로 넘어갔다. AS 296 세렌 계약민법으로 계약민 운송권 획득"
+  force: "노예선 23척과 선원 — 군사력이 아니라 운송력. 지지율 3 (멜리산드). 몬달리가 채권을 회수하면 즉시 붕괴"
+
+offices:
+  - id: off_count
+    title: 백작 (꼭두각시)
+    holder: "unnamed:마그누스 오르셀 — 백작, 205세"   # TODO-NPC
+    reports_to: null
+    powers: ["명목상의 가문 법", "수운 통행세 선언", "멜리산드에게 서약"]
+    chosen_by: "장자 상속 (시조 오르셀 물비늘, SK 2,050 은빛 강 수운권)"
+    perks: ["남색 바탕 은빛 물결 두 줄 + 쇠사슬 감긴 닻 문장"]
+    note: "자기가 아직 주인이라고 믿고 싶어 한다. 사실은 베아트릭스 몬달리의 꼭두각시"
+  - id: off_advisor
+    title: 몬달리 상가 파견 회계 고문 (실질 가주)
+    holder: "unnamed:지올 — 나가, 140세"   # TODO-NPC. 몬달리 상가 소속
+    reports_to: off_count     # 형식상 백작 아래 — 실제로는 백작 위 (몬달리 상가의 채권 대리)
+    powers: ["모든 지출의 도장", "담보(배·항구·노예) 관리와 채권 회수 시기의 결정", "레이번 채권 흐름(오르셀 경유)의 중계"]
+    chosen_by: "몬달리 상가 파견 (AS 298 첫 대출 이후)"
+    perks: ["백작의 서재 열쇠"]
+  - id: off_fleet_master
+    title: 함대장 (장남)
+    holder: "unnamed:세바스찬 오르셀 — 90세"   # TODO-NPC
+    reports_to: off_count
+    powers: ["노예선 23척의 항로와 선장 임명", "'검은 물떼새' 호 등 선단 운용"]
+    chosen_by: "장자 지명"
+    perks: ["'노예선에서 태어났다'는 농담을 싫어한다"]
+  - id: off_daughter_in_law
+    title: 함대장의 아내 (구 레이번)
+    holder: "unnamed:이브레아 오르셀 (구 레이번) — 63세, 고드릭의 딸"   # TODO-NPC
+    reports_to: off_fleet_master
+    powers: ["공식 권한 없음 — 남편의 장부를 훔쳐본다", "레이번 가문의 몰락을 막을 정보를 쥔다"]
+    chosen_by: "AS 309 혼인 — 레이번의 빚을 '사돈 간 대여'로 위장하기 위해"
+    perks: ["그 정보의 대가로 회색여울 농노를 더 팔자고 할 것이다"]
+  - id: off_port_master
+    title: 오르셀 나루 항만장
+    holder: "unnamed:항만장 — 용인 비늘혈"
+    reports_to: off_count
+    powers: ["항구 입출항, 통행세 징수, 노예선 정박"]
+    chosen_by: "백작 임명"
+    perks: []
+  - id: off_ship_captains
+    title: 노예선 선장단 (23척)
+    holder: "unnamed:선장 23 — 용인·나가 혼합"
+    reports_to: off_fleet_master
+    powers: ["배밑 사슬 연결 — 노예선 1척당 120~200명, 바알카르→세렌 9일 항해 평균 사망률 6%"]
+    chosen_by: "함대장 임명"
+    perks: []
+  - id: off_hold_overseer
+    title: 배밑 감독 (크릭)
+    holder: "unnamed:배밑 감독 크릭 — 선박별"
+    reports_to: off_ship_captains
+    powers: ["갑판 아래 노예 감독, 사슬 배열, 노 젓는 노예('노꾼') 등급 관리"]
+    chosen_by: "선장 임명"
+    perks: []
+  - id: off_contract_transport
+    title: 계약민 운송 담당 (AS 296 세렌 계약민법)
+    holder: "unnamed:계약민 운송 관리 — 나가 서기"
+    reports_to: off_advisor
+    powers: ["계약민 운송권 — 세렌 계약민 형식의 진주 잠수 노예 등 운송"]
+    chosen_by: "회계 고문 지명"
+    perks: []
+  - id: off_black_plover_crew
+    title: 노예선 '검은 물떼새' 선원 (잿빛 실 내통)
+    holder: "unnamed:선원 2 — 잿빛 실 내통자"
+    reports_to: off_ship_captains
+    powers: ["배 한 척을 통째로 탈출시키는 작전의 내부 열쇠"]
+    chosen_by: "—"
+    perks: []
+
+ranks:
+  - {id: rank_count, title: "백작 (꼭두각시)", duties: "이름과 서명", privileges: "백작의 의장, 도장 없는 서명", open_to_player: false}
+  - {id: rank_advisor, title: "회계 고문 (몬달리)", duties: "지출과 채권 관리", privileges: "모든 도장", open_to_player: false}
+  - {id: rank_kin, title: "직계 (함대장·며느리)", duties: "선단과 장부", privileges: "선단 지휘", open_to_player: false}
+  - {id: rank_captain, title: "선장·항만 관리", duties: "항해와 입출항", privileges: "배 위의 법", open_to_player: false}
+  - {id: rank_overseer, title: "배밑 감독 (크릭)", duties: "사슬과 매질", privileges: "배급 가산", open_to_player: false}
+  - {id: rank_rower, title: "노 젓는 노예 ('노꾼')", duties: "노예선의 노", privileges: "갑판에서 숨 쉴 수 있다 — 배밑보다 낫다", open_to_player: true, condition: "노예선에 실려 들어와 선장·감독의 눈에 든 자 (체격·기술)"}
+  - {id: rank_hold_slave, title: "배밑 노예", duties: "사슬에 연결되어 운송된다", privileges: "없다 — 항해 사망률 6%", open_to_player: true, condition: "비늘 시장·울타리 셋에서 매각된 자. 잿빛 실 내통자를 만나면 탈출 경로가 열린다"}
+  - {id: rank_contractee, title: "계약민 (세렌 형식)", duties: "계약 노동", privileges: "형식상 자유 — 실제는 노예", open_to_player: true, condition: "세렌 계약민법에 따른 운송 대상"}
+
+decision: "표면: 백작이 서명하고 함대장이 항해한다. 실제: 지올의 도장이 찍히지 않은 서명은 집행되지 않는다. 가문 회의는 따로 없고 저녁 식탁에서 지올이 '오늘의 장부'를 읽는 것으로 대신한다. 몬달리가 채권을 회수하면 모든 결정이 한꺼번에 종료된다."
+succession: "장자 상속이 형식. 백작이 죽으면 세바스찬이 이을 수 있으나 가문의 담보 일체가 몬달리에게 넘어갈 수 있다 — 상속 자체가 의미가 없다. 지올은 후계가 아니라 '청산 시기'를 정한다."
+
+law:
+  crimes:
+    - {act: "노예선 배밑 노예의 탈출·사슬 이탈", punishment: "즉결 — 바다에 던진다 또는 다음 항해에서 노꾼으로", note: "인간"}
+    - {act: "선원의 잿빛 실 내통", punishment: "처형 — 용인이면 가문 이름 삭제, 인간 선원이면 선상 처형", note: "'검은 물떼새' 호의 선원 둘이 내통 중이나 아직 발각되지 않았다"}
+    - {act: "회계 고문의 도장 없는 지출", punishment: "집행 불가 — 명령 철회, 반복되면 해당 용인은 가문 이름 삭제", note: "실질 가주의 규칙"}
+    - {act: "담보 목록에 오른 배·노예를 임의로 매각", punishment: "몬달리 상가와의 계약 위반 — 담보 즉시 압류", note: "용인·나가 모두"}
+    - {act: "통행세 빼돌림", punishment: "항만 관리는 태형, 장부 대조 후 월급 정산", note: ""}
+    - {act: "노예선 항해 중 사망률 허위 보고", punishment: "선장은 항해 봉급 삭감, 반복 시 퇴선", note: "평균 6%를 넘으면 세렌 쪽이 먼저 알아챈다"}
+    - {act: "계약민을 '노예'로 칭한다 (세렌 항구에서)", punishment: "세렌 계약법상 위약 — 벌금", note: "AS 296 이후 운송 형식은 계약민"}
+
+customs:
+  greeting: "'물길은 어디까지?' — 항로가 안부다. 선장은 선수 앞에서 닻을 손바닥으로 두 번 친다. 백작 앞에서 지올은 나가의 습관대로 한 걸음 뒤에 서고, 용인들은 그것을 못 본 척한다."
+  taboos:
+    - "'노예선에서 태어났다'는 농담 (세바스찬)"
+    - "몬달리 상가의 빚 액수(4,200두카트)"
+    - "AS 0~38 잿빛 겨울에 강이 얼어 3년 운항이 중단된 일 — 가문은 그때 배를 팔지 않은 것을 자랑한다"
+    - "'꼭두각시'라는 낱말"
+  rites:
+    - {name: "첫 출항", when: "해빙월 범람이 끝난 뒤", what: "닻줄에 소금을 뿌리고 선장이 항로를 낭독. 올해의 첫 노예선이 나루를 떠난다"}
+    - {name: "세렌 대시장 입항", when: "포도월", what: "노예선이 세렌 소금 나루에 닿는 날 — 몬달리 상가의 사람이 마중 나온다"}
+    - {name: "얼음의 날", when: "긴밤월 결빙 때", what: "AS 0~38의 3년 운항 중단을 기억하는 침묵. 선원들은 그날 닻을 닦는다"}
+  speech: "항로와 숫자의 말. 지올은 나가의 계산된 완곡체('이 건은 도장이 필요합니다'), 마그누스는 용인의 자존심 섞인 공문체. 인간을 '화물'이라 부르지 않고 '인원'이라 부른다. 금지어: 꼭두각시, 담보, 몬달리(백작 앞에서)."
+
+membership:
+  join: "출생(순혈). 선장·항만 관리는 계약."
+  leave: "청산 — 담보로 넘어가면 이름만 남는다."
+  signs: ["남색 바탕 은빛 물결 두 줄·쇠사슬 감긴 닻 문장", "선단 깃발"]
+
+internal_factions:
+  - {name: "마그누스 '아직 주인'", leader: null, aim: "자신이 아직 주인이라 믿는다. 몬달리의 개입을 인정하지 않는다", strength: 15}
+  - {name: "지올의 장부 (몬달리)", leader: null, aim: "채권 회수 시기를 정한다 — 멜리산드 지지(세렌 자본과 같은 배). 레이번 담보까지 흡수", strength: 55}
+  - {name: "세바스찬 함대장파", leader: null, aim: "선단의 독립 — 배를 팔지 않고 가문을 지킨다", strength: 20}
+  - {name: "이브레아 친정파", leader: null, aim: "레이번을 살린다 — 남편의 장부를 훔쳐본다. 그 대가로 회색여울 농노를 더 팔 것이다", strength: 10}
+  # leader null = 카드 미작성
+
+assets:
+  - "노예선 23척과 오르셀 나루 — 모두 몬달리 담보"
+  - "수운 통행세와 계약민 운송권 (AS 296)"
+  - "레이번 채권의 중계 — 오르셀 경유로 몬달리에게 흐른다"
+  - "'검은 물떼새' 선원 둘이 잿빛 실과 내통 중"
+
+secrets:
+  - {fact: fact_gf_godric_debt, known_by_rank: rank_advisor}
+  - {fact: fact_sr_godric_debt_designed, known_by_rank: rank_advisor}
+  # TODO-FACT: 오르셀의 파산(AS 298 이후 몬달리에 4,200두카트, 배·항구·노예 전부 담보, 마그누스는 꼭두각시) / 이브레아가 훔쳐본 장부의 레이번 관련 기록 / '검은 물떼새' 선원 둘의 잿빛 실 내통
+  - {truth: T13, level: rumor, holders: [off_advisor]}
+
+relations:
+  # HOUSES §2.7 '관계' 서술에서 환산 (행렬 §6.1 밖)
+  - {to: fac_seren, stance: 30, note: "몬달리 상가에 채무 — 사실상 소유주. 이해관계의 크기 ±30"}
+  - {to: fac_raven_house, stance: 30, note: "사돈(AS 309) · 채권자"}
+  - {to: fac_sarkos, stance: 40, note: "노예선 공동 운영"}
+  - {to: fac_grey_thread, stance: 0, note: "선원 중 내통자 있음 — 가문은 모른다"}
+toward_echo: "포획 후 이식 — 멜리산드 진영의 한 줄. 그러나 가문 스스로는 '운송'만 한다. 잔향이 노예선에 실려 있다면 선장은 값을 알지 못한 채 싣고, 지올은 값을 안다."
+player_paths:
+  - "'검은 물떼새' — 선원 둘이 잿빛 실과 내통한다. 배 한 척을 통째로 탈출시키는 작전"
+  - "이브레아 — 레이번 가문을 살릴 정보를 쥐었지만 그 대가는 회색여울 농노를 더 파는 것이다"
+  - "채권 회수 시기 — 몬달리가 회수하면 즉시 붕괴 (멜리산드 지지 3점 소멸). 지올의 도장이 열쇠"
+  - "노꾼 — 노예선에 실려 가며 선원·감독의 눈에 든다 (세렌 소금 나루까지 9일)"
+  - "계약민 형식 — 세렌 계약법의 틈으로 운송 도중에 신분이 바뀌는 순간을 노린다"
+regression:
+  fixed:
+    - "몬달리 상가에 4,200두카트, 담보 일체, 지올의 도장"
+    - "'검은 물떼새' 선원 둘의 내통"
+    - "AS 309 이브레아 혼인"
+  flow:
+    - "노예선 출항·입항 일정 (포도월 세렌 대시장)"
+  drift:
+    - "그날 선적되는 인원의 이름과 사망률"
+    - "이브레아가 장부를 훔쳐보는 시각"

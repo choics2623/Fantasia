@@ -210,7 +210,7 @@ secrets:
   - {fact: fact_eh_mel_goal_wound, known_by_rank: rank_pretender}
   # TODO-FACT: 반용 '처분' 기록 (AS 140년대·230년대, 칼다란 기록) / 도둑맞은 알의 소재(세렌 '깊은 바다' 사원 지하 소문) / 세벨린의 자진 유배 이유와 즉위 자격 / 하길라 살해와 아우락스의 300년 / 바엘리스의 굳은 그림자(재의 황무지 중심) / 토르반 송곳니
   - {truth: T01, level: whole, holders: [npc_varskar]}
-  - {truth: T03, level: whole, holders: [npc_aurax]}
+  - {truth: T03, level: whole, holders: [npc_varskar, npc_aurax]}
   - {truth: T06, level: whole, holders: [npc_varskar, npc_aurax]}
   - {truth: T07, level: whole, holders: [npc_varskar, npc_aurax]}
   - {truth: T08, level: whole, holders: [npc_aurax]}

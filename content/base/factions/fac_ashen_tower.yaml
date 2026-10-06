@@ -1,0 +1,259 @@
+# 잿빛 탑 (아르카스 학회) — 3,400년 사냥만 해 온 '돌아오는 자'를 처음으로 '이해'하려는 학자들. 가장 친절한 감옥.
+# 근거: HOUSES §5.8·§2.8·§3.3(룬새김)·§3.2(흑수정)·§6.1, WORLD_BIBLE §1.3.1(시간 유리 칼)·§2(AS 201·214·268·305), REGIONS §10·§11.9(재눈 초소), CHARACTERS R10·R02-22, facts/arkas.yaml·greyford_b.yaml.
+id: fac_ashen_tower
+name: 잿빛 탑 (아르카스 학회)
+kind: org
+race: [용인, 엘다르, 두르강, 나가, 녹테른, 하르칸, 크릭, 아에리 — 학자 / 인간 — 서기 노예·피험자]
+governance: 장인·학회 — 논문과 실험의 위계. 위에는 일곱 원로의 '일곱 의자'와 탑주의 봉인권
+motto: "진실은 연구 대상이지 무기가 아니다. (탑주 이레네)"
+seat: 아르카스 탑섬 — 일곱 층 탑, 지하 '수집실', 봉인 서가, 꼭대기 '귀 기울이는 방' (REGIONS §10)
+size:
+  members: "학자 약 400 (용인 약 300 포함 — REGIONS 수치), 서기 노예 약 180~600 (문서마다 다르다 — 이 파일은 REGIONS 180을 상주, HOUSES 600을 볼드 가문 소속 포함 총수로 본다), 피험자(수집된 징후자) 약 230~400"
+  territory: "아르카스 탑섬, 재의 황무지 재눈 초소(관측자 용인 8), 각지 '잿빛 눈' 수집관"
+  wealth: "대륙 최대 서고, 봉인 서가(볼드 사본 포함), 맹약회의 '학술 의견' 제출권, 멜리산드·볼드 가문·세렌 오필 상가의 후원, 유물 구매(마지막 등불의 최대 구매자)"
+  force: "잔향 사냥꾼 부대 '잿빛 눈' 12명, 시간 측정관, 그리고 시간 유리 칼 세 자루 — 진짜 죽음의 네 수단 중 하나"
+
+decision: >
+  학문의 일은 논문이 정한다 — 계절마다(해빙월·푸른월·포도월·긴밤월 첫날) 일곱 층 강당에서 '낭독 논문'을 발표하고, 같은 학파 정학자 셋의 '봉인 도장'을 받으면 탑의 지식이 된다.
+  탑의 일(예산, 피험자 배분, 사냥꾼 파견, 맹약회의 학술 의견)은 '일곱 의자' — 일곱 원로가 매달 그믐 꼭대기 층 원탁에서 정한다. 넷이면 통과.
+  그러나 탑주는 '봉인권'을 가진다: 봉인 서가·시간 유리 칼·잔향학파 수집실에 닿는 안건은 탑주 한 사람이 거부하거나 일곱 의자에서 빼낼 수 있다. 이레네는 AS 268 취임 뒤 이 권한을 44번 썼다.
+  금지된 주제(아래 forbidden_topics)는 일곱 의자의 만장일치로만 풀 수 있고, 풀린 적이 없다.
+  원로들은 각자의 바깥 주인(세렌 의회, 녹테른 흑수정 가문, 두르강 룬새김, 엘다르 은이슬)에게 먼저 보고한다 — 탑의 결정은 언제나 탑 밖에서 먼저 새어 나간다.
+succession: >
+  원로 자리가 비면 그 학파의 정학자 중 '봉인 도장을 가장 많이 받은 논문'의 저자가 일곱 의자 넷의 동의로 오른다. 탑주는 일곱 의자의 만장일치 — 실제로는 볼드 가문이 AS 201 창립 이래
+  탑주를 낸다(공동 창립자 넷 중 볼드만 상주했기 때문). 이레네가 죽으면 그녀가 몸에 지닌 셋째 칼 '마지막 금'이 누구 손에 가는지가 계승 그 자체다.
+
+forbidden_topics:
+  - {topic: "시간의 진명 — 발화 실험", why: "AS 214 첫 칼 '첫 침묵'을 만들 때 실험자 넷이 잔상이 되었다. 시간 근원은 대붕괴 이후 어느 종족도 입에 올리지 않는다", penalty: "학자는 직위 박탈과 수집실 '관찰 대상', 인간 피험자는 즉시 시간 유리 칼 시험대", who_breaks_it: "진명학파 나엘리스는 흰 알 두루마리 복원에 시간의 목소리가 필요하다는 것을 안다 — 그녀만이 이 금지를 깨고 싶어 한다"}
+  - {topic: "볼드 사본 — 대붕괴 목격기의 열람·인용", why: "공식 역사('인간이 세계를 찢었다')를 뒤집는다. 맹약회의의 재의 법이 그 역사 위에 서 있다", penalty: "봉인 서가 일곱째 칸은 탑주만 연다. 인용한 논문은 불태우고 저자는 탑을 떠난다(AS 241 한 번)", who_breaks_it: "이삭(볼드 수석 서기 노예)이 한 번 필사했다"}
+  - {topic: "화형 통계 — '징후자 6,100명 중 잔향 0'", why: "AS 213 맹약회의의 잔향 사냥 의무가 무의미했다는 숫자다. 탑의 학술 의견이 그 정책을 지지해 왔다", penalty: "발표 금지. 숫자를 쓴 장부는 기록학파 금고에", who_breaks_it: "틱 셈쟁이가 셈했고 아무에게도 말하지 않았다"}
+  - {topic: "인간에게 글 '쓰기'를 가르침", why: "재의 법·사슬의 맹약 제2조. 서기 노예에게는 '숫자와 기호만'", penalty: "학자는 맹세 위반(두르강은 돌화), 서기는 피험자로", who_breaks_it: "오틸리는 '읽기'만 가르친다 — 맹세의 틈. 그러나 오른손이 손목까지 돌로 굳어 간다"}
+  - {topic: "고동 — 카즈둠 깊은 문 아래의 것", why: "두르강 왕가와의 자료 협정(룬새김 씨족 경유)의 조건. 깊은 문은 두르강의 일이다", penalty: "자료 압수, 두르강 원로 해그가 탑을 떠난다", who_breaks_it: "해그 룬새김은 깊은 문의 룬과 황무지 균열의 룬이 같은 손의 글씨라는 것을 발견했다 — 논문은 서랍 속에 있다"}
+  - {topic: "순종의 빛의 기원", why: "엘다르 은이슬·빛실 가지 후원의 조건", penalty: "후원 철회 — 원로 둘이 떠난다", who_breaks_it: "없음. 기록학파 오필 시라는 세렌에 먼저 팔 생각을 한다"}
+  - {topic: "시간 유리 칼의 제조법", why: "탑이 가진 유일한 '진짜 죽음'. 300년 동안 세 자루", penalty: "제조법은 탑주의 머릿속과 금고 하나에만 — 쓴 자는 칼의 시험 대상", who_breaks_it: "—"}
+
+offices:
+  - id: off_tower_master
+    title: 탑주 (잔향학파 수장 겸임)
+    holder: npc_irene_bold
+    reports_to: null
+    powers: ["봉인권(봉인 서가·칼·수집실 안건 거부)", "잿빛 눈 직접 지휘", "맹약회의 학술 의견", "피험자 최종 배분"]
+    chosen_by: "일곱 의자 만장일치 — 실제로는 볼드 가문 세습 관례"
+    perks: ["셋째 칼 '마지막 금'(AS 305, 한 번도 쓰이지 않음) — 허리에", "볼드 사본 원본", "꼭대기 층 서재"]
+  - id: off_elder_truename
+    title: 원로 — 진명학파 수장
+    holder: "unnamed:나엘리스 은이슬 (엘다르, 2,200) — 흰 알 예언 두루마리 관리자"
+    reports_to: off_tower_master
+    powers: ["일곱 의자 한 표", "진명 '타는 시간' 실험"]
+    chosen_by: "일곱 의자 넷 — 은이슬 가지의 객원"
+    perks: ["이슬 두루마리 사본 서가"]
+  - id: off_elder_rift
+    title: 원로 — 균열학파 수장
+    holder: "unnamed:해그 룬새김 (두르강, 380) — 황무지 봉인 룬 설계자"
+    reports_to: off_tower_master
+    powers: ["일곱 의자 한 표", "황무지 경계 측정", "피험자를 경계에 '측정용'으로 세운다"]
+    chosen_by: "일곱 의자 넷"
+    perks: []
+  - id: off_elder_record
+    title: 원로 — 기록학파 수장
+    holder: "unnamed:오필 시라 (나가, 450) — 세렌 오필 상가 의석주 겸임"
+    reports_to: off_tower_master
+    powers: ["일곱 의자 한 표", "서기 노예 관리", "역사·족보·맹약 문서"]
+    chosen_by: "일곱 의자 넷"
+    perks: ["탑의 연구 결과를 세렌 의회에 먼저 판다"]
+  - id: off_elder_graft
+    title: 원로 — 이식학파 수장
+    holder: "unnamed:발타사르 흑수정 (녹테른, 약 2,500)"
+    reports_to: off_tower_master
+    powers: ["일곱 의자 한 표", "멜리산드와 피험자 교환(사망률 99%)"]
+    chosen_by: "일곱 의자 넷"
+    perks: ["수정 동굴 연구소 — 잔향을 '초대'하려는 유일한 원로"]
+  - id: off_elder_wind
+    title: 원로 — 균열학파 (바람이 거꾸로 부는 지점)
+    holder: "unnamed:보르테 바람실 (하르칸, 70) — 정착병을 무릅쓰고 머무는 추방 학자"
+    reports_to: off_tower_master
+    powers: ["일곱 의자 한 표"]
+    chosen_by: "일곱 의자 넷"
+    perks: ["시간 잔상 속 역풍 지도"]
+  - id: off_elder_count
+    title: 원로 — 기록학파 (숫자)
+    holder: "unnamed:틱 셈쟁이 (크릭, 33) — 크릭 최초의 원로"
+    reports_to: off_tower_master
+    powers: ["일곱 의자 한 표", "탑의 모든 숫자"]
+    chosen_by: "일곱 의자 넷 — 숫자가 틀린 적이 없어서"
+    perks: ["화형 기록 금고"]
+  - id: off_grey_eye_captain
+    title: 잿빛 눈 대장 (잔향 사냥꾼 12)
+    holder: "unnamed:카르바 (용인, 77)"
+    reports_to: off_tower_master
+    powers: ["사냥꾼 파견", "산 채로 포획"]
+    chosen_by: "탑주의 지명"
+    perks: []
+  - id: off_grey_eye_collector
+    title: 잿빛 눈 징후 수집관 (회색여울 — 순례자로 위장)
+    holder: npc_isol
+    reports_to: off_grey_eye_captain
+    powers: ["분기마다 징후자 1명 이상 인계 — 못 채우면 그 자신이 피험대로", "마테우스와 정보 교환"]
+    chosen_by: "사냥개 계약 (피험체 7호 → AS 299 풀려남)"
+    perks: ["잿빛 고리 렌즈, 탑의 봉인 편지", "50명이면 '해방 증서' — 효력 없음. 지금 38명"]
+  - id: off_time_measurer
+    title: 시간 측정관 (둘째 칼 '정오'의 소지자)
+    holder: "unnamed:시간 측정관 — 징후 보고가 몰리는 곳으로 옮겨 다니는 균열학파 학자"
+    reports_to: off_elder_rift
+    powers: ["시간 잔상의 떨림 측정", "둘째 칼 '정오'(AS 268)"]
+    chosen_by: "탑주와 균열학파 수장의 합의"
+    perks: ["회차가 쌓이면 회귀점 무렵의 떨림을 쫓아 회색여울로 온다"]
+  - id: off_ash_eye_post
+    title: 재눈 초소 관측장 (재의 황무지)
+    holder: "unnamed:세레나 펠 (용인)"
+    reports_to: off_elder_rift
+    powers: ["황무지 경계 측정", "기록함 — '경계 확장이 맹약회의 날짜에 맞춰 가속된다'"]
+    chosen_by: "균열학파"
+    perks: []
+  - id: off_sky_observer
+    title: 잔상 관측 담당 (하늘 기록)
+    holder: npc_corvina
+    reports_to: off_elder_record
+    powers: ["역행하는 별 기록", "하늘 기록 해석 보고"]
+    chosen_by: "기록학파"
+    perks: ["같은 기록을 바람의 여왕 키리에에게도 몰래 보낸다"]
+  - id: off_oath_scholar
+    title: 기록학파 정학자 (맹세의 틈으로 가르치는 학자)
+    holder: npc_ottilie
+    reports_to: off_elder_record
+    powers: ["서기 노예 교육 — '읽기'만"]
+    chosen_by: "봉인 도장"
+    perks: []
+  - id: off_vault
+    title: 금고지기 (첫째 칼 '첫 침묵')
+    holder: "unnamed:금고지기 — 탑주 직속 용인"
+    reports_to: off_tower_master
+    powers: ["첫째 칼 '첫 침묵'(AS 214 — 이름 없는 아이들에게 여러 번 쓰였다)", "봉인 서가 열쇠(일곱째 칸 제외)"]
+    chosen_by: "탑주의 지명"
+    perks: []
+  - id: off_reference_body
+    title: 기준체 (피험자 — 자리가 곧 감옥)
+    holder: npc_halla
+    reports_to: off_tower_master
+    powers: ["없음. '진짜'를 재려면 가짜가 하나는 있어야 한다"]
+    chosen_by: "AS 282 수집, 30년째"
+    perks: ["오틸리가 넣어 주는 책", "첫 불씨에 관한 엘다르 기록 필사 한 장"]
+  - id: off_scribe
+    title: 서기 노예 (먼지 서고)
+    holder: npc_milo
+    reports_to: off_oath_scholar
+    powers: ["장부 필사 — '모양만'"]
+    chosen_by: "볼드 가문 경유 매입"
+    perks: ["셋째 시험 사망자 14명의 명단을 외웠다"]
+
+ranks:
+  - {id: rank_master, title: "탑주", duties: "봉인권", privileges: "셋째 칼", open_to_player: false}
+  - {id: rank_elder, title: "원로 (일곱 의자)", duties: "탑의 일 결정, 학파 수장", privileges: "한 표, 바깥 주인에게 보고", open_to_player: false}
+  - {id: rank_full_scholar, title: "정학자 (학파 의석)", duties: "논문 봉인 도장", privileges: "피험자 배정 요청", open_to_player: false}
+  - {id: rank_scholar, title: "학자", duties: "낭독 논문, 실험", privileges: "서고", open_to_player: false}
+  - {id: rank_grey_eye, title: "잿빛 눈 (사냥꾼)", duties: "징후자 수집", privileges: "무허가 이동, 탑의 봉인 편지", open_to_player: true}
+  - {id: rank_clerk, title: "서기 노예", duties: "필사 — '숫자와 기호만'", privileges: "배급, 읽는 것을 들키지 않는 한 산다", open_to_player: true}
+  - {id: rank_cooperative_subject, title: "협조 피험자", duties: "징후자를 자처 — 꿈 기록, 수면 박탈", privileges: "대우가 좋다 — 그리고 셋째 시험이 기다린다", open_to_player: true}
+# 인간은 학자가 될 수 없다. 플레이어의 길: 서기 노예(볼드 이삭 경유 — 첫 임무 '봉인 서가 넷째 칸의 목록을 필사하라. 읽지 말고 모양만 옮겨라'),
+# 협조 피험자(가장 위험), 또는 잿빛 눈의 사냥개(이졸처럼 — 어두운 길).
+
+law:
+  crimes:
+    - {act: "금지된 주제를 연구·발표", punishment: "위 forbidden_topics의 벌", note: "학자 대상"}
+    - {act: "봉인 서가 무단 열람", punishment: "학자는 탑에서 추방, 서기·피험자는 수집실", note: "모두"}
+    - {act: "서기 노예가 읽을 줄 앎이 들킴", punishment: "피험자로 옮긴다", note: "인간 대상 — 서기 약 180 중 약 70이 읽는다. 탑은 모르는 척한다"}
+    - {act: "피험자 탈출", punishment: "잿빛 눈 추적 — 산 채로", note: "인간 대상"}
+    - {act: "탑의 결과를 바깥 주인보다 먼저 다른 세력에 팖", punishment: "원로 자리 박탈 — 집행된 적 없다(모두가 판다)", note: "원로 대상"}
+    - {act: "마녀질 (늪 마녀)", punishment: "포획 현상금 30비늘 — 탑의 '자료'", note: "인간 대상"}
+
+customs:
+  greeting: "학자끼리: 자기 최근 논문 제목을 대고 상대의 것을 묻는다('「경계 말뚝의 떨림 셋째」 — 그대는?'). 원로에게는 한 층 아래 계단에서 멈추고 말한다. 서기 노예는 인사하지 않는다 — 고개를 숙이고 펜을 내려놓는다."
+  taboos:
+    - "'모른다'고 말하는 것 — '아직 측정되지 않았다'고 한다"
+    - "피험자를 이름으로 부르는 것 — 번호로 부른다(할라만 예외처럼 불린다 — '기준체')"
+    - "봉인 서가 일곱째 칸 앞에서 멈추는 것"
+    - "칼의 이름을 소리 내어 부르는 것"
+  rites:
+    - {name: "낭독 논문", when: "해빙월·푸른월·포도월·긴밤월 첫날", what: "일곱 층 강당에서 논문을 읽고 정학자 셋의 봉인 도장을 받는다. 인간 서기들이 강당 뒤에서 모양만 받아 적는다"}
+    - {name: "그믐의 일곱 의자", when: "매달 그믐", what: "원로 회의. 꼭대기 원탁 — 창이 일곱이고 하나는 늘 닫혀 있다(봉인 서가 쪽)"}
+    - {name: "재의 날 측정", when: "재의 날 (연말 5일)", what: "모든 측정관이 황무지 경계와 탑 꼭대기 귀 기울이는 방에서 잔상 수를 센다 — 1년의 가장 큰 자료"}
+  speech: "용언·엘다르어 학술어가 섞인 공용어. 단정 대신 측정치로 말한다('셋째 칸에서 열둘 중 넷'). 인간에게는 반말이 아니라 '대상'에게 쓰는 무감정한 존댓말 — 그것이 더 무섭다. 이레네는 '흥미롭다'를 가장 차가운 순간에 쓴다."
+
+membership:
+  join: "학자는 다종족 학회의 추천과 첫 논문. 인간은 서기 노예 또는 협조 피험자(위)"
+  leave: "학자는 떠날 수 있다(자료를 두고). 서기와 피험자는 나갈 수 없다 — 해방 증서는 효력이 없다"
+  signs: ["잿빛 탑 봉인(일곱 층 탑 위의 눈)이 찍힌 편지", "잿빛 눈의 잿빛 고리 렌즈", "피험자 손목의 번호 화상(이졸 '7')", "학자의 회색 띠 — 학파마다 매듭이 다르다"]
+
+internal_factions:
+  - {name: "잔향학파 (이해하려는 자)", leader: npc_irene_bold, aim: "진짜 하나를 가려내 산 채로 연구한다 — 아우락스에게도 멜리산드에게도 넘기지 않는다", strength: 35}
+  - {name: "이식·멜리산드파", leader: null, aim: "발타사르(unnamed)와 이식학파 — 피험자 교환, 잔향을 그릇으로. 탑주가 잔향을 독점하면 멜리산드 지지(5)가 이탈한다", strength: 25}
+  - {name: "균열·봉인파", leader: null, aim: "해그 룬새김(unnamed) — 황무지 확장 억제가 먼저다. 회색 순례자를 막는다", strength: 20}
+  - {name: "세렌에 파는 자들", leader: null, aim: "오필 시라(unnamed) — 탑의 결과를 세렌 의회에 먼저 판다", strength: 10}
+  - {name: "말하지 않는 자들", leader: npc_ottilie, aim: "오틸리·틱·나엘리스 — 각자 금지를 하나씩 깨고 싶어 하지만 서로 모른다", strength: 10}
+
+assets:
+  - "대륙 최대 서고, 봉인 서가(볼드 사본 — 일곱째 칸)"
+  - "시간 유리 칼 세 자루: '첫 침묵'(금고), '정오'(시간 측정관), '마지막 금'(탑주의 허리)"
+  - "피험자 약 230~400, 서기 노예"
+  - "귀 기울이는 방 — '흔들림' 지도(회색여울 근방에 몰려 있다)"
+  - "맹약회의 학술 의견 제출권"
+  - "잿빛 눈 12, 재눈 초소"
+
+secrets:
+  - {fact: fact_ar_glass_blades, known_by_rank: rank_elder}
+  - {fact: fact_ar_glass_blade_ends_return, known_by_rank: rank_elder}
+  - {fact: fact_ar_third_test_dead14, known_by_rank: rank_full_scholar}
+  - {fact: fact_ar_dead14_families_told, known_by_rank: rank_full_scholar}
+  - {fact: fact_ar_first_second_tests_flawed, known_by_rank: rank_elder}
+  - {fact: fact_ar_halla_reference_body, known_by_rank: rank_master}
+  - {fact: fact_ar_isol_paper_void, known_by_rank: rank_master}
+  - {fact: fact_ar_tower_clerks_literate, known_by_rank: rank_full_scholar}
+  - {fact: fact_ar_irene_ledger_deja_vu, known_by_rank: rank_master}
+  - {fact: fact_ar_wobble_map, known_by_rank: rank_scholar}
+  - {fact: fact_ar_retrograde_star, known_by_rank: rank_scholar}
+  - {fact: fact_ar_tower_supplies_aerin, known_by_rank: rank_elder}
+  - {fact: fact_ar_corvina_reports_kirie, known_by_rank: rank_clerk}
+  - {fact: fact_ar_ottilie_vow_gap, known_by_rank: rank_clerk}
+  - {fact: fact_gb_isol_tower_hound, known_by_rank: rank_grey_eye}
+  - {fact: fact_gb_isol_38_false, known_by_rank: rank_grey_eye}
+  - {fact: fact_aw_box_bounty, known_by_rank: rank_scholar}
+  # TODO-FACT: 볼드 사본 — '용황의 불이 의식이 끝나기 전에 떨어졌다. 의식은 거의 완성되어 있었다.' 원본은 봉인 서가 일곱째 칸 (HOUSES §2.8)
+  # TODO-FACT: 진명학파 실험 — 평범한 인간은 진명 한 음절에 평균 2년 4개월의 수명을 잃는다. 잔향은 0이어야 한다 (HOUSES §5.8)
+  # TODO-FACT: 해그 룬새김은 깊은 문의 룬과 황무지 균열의 룬이 같은 손의 글씨임을 발견했다 (HOUSES §5.8)
+  # TODO-FACT: 틱 셈쟁이는 화형 기록 6,100명 중 진짜 0을 셈하고 아무에게도 말하지 않았다 (HOUSES §5.8)
+  - {truth: T06, level: whole, holders: [npc_irene_bold]}
+  - {truth: T05, level: fragment, holders: [npc_irene_bold]}
+  - {truth: T04, level: fragment, holders: [npc_irene_bold, npc_corvina]}
+  - {truth: T03, level: fragment, holders: [npc_irene_bold, npc_halla]}
+  - {truth: T12, level: fragment, holders: [npc_halla]}
+  - {truth: T11, level: fragment, holders: [npc_ottilie]}
+  - {truth: T13, level: fragment, holders: [npc_irene_bold]}
+
+relations:
+  - {to: fac_aurax, stance: -20, note: "HOUSES §6.1 행렬 (잿빛 탑 행)"}
+  - {to: fac_melisande, stance: 70, note: "행렬 — 이식 자료 공유, 지지율 5"}
+  - {to: fac_kaspar, stance: -10, note: "행렬"}
+  - {to: fac_eldar, stance: 40, note: "행렬 — 피오나엘·나엘리스 객원, 영혼 정원에 징후자 송출"}
+  - {to: fac_nocturne, stance: 20, note: "행렬 — 흑수정"}
+  - {to: fac_durgan, stance: 20, note: "행렬 — 룬새김"}
+  - {to: fac_seren, stance: 40, note: "행렬 — 오필 상가"}
+  - {to: fac_jotun, stance: -10, note: "행렬"}
+  - {to: fac_grom, stance: 0, note: "행렬"}
+  - {to: fac_light, stance: 0, note: "행렬"}
+  - {to: fac_nameless, stance: -70, note: "행렬"}
+  - {to: fac_collar, stance: 10, note: "행렬"}
+  - {to: fac_barg, stance: 30, note: "행렬"}
+  - {to: fac_swamp_hags, stance: -40, note: "행렬"}
+  - {to: fac_grey_pilgrims, stance: -60, note: "행렬 밖 — 균열을 넓히는 자들"}
+  - {to: fac_last_lantern, stance: 30, note: "행렬 밖 — 최대 구매자"}
+toward_echo: "산 채로 잡는다. 아우락스(태운다)와 멜리산드(이식한다) 사이에서 탑은 '연구한다'를 고른다 — 플레이어에게는 가장 친절한 감옥이다. 판별법: 진명 한 음절에 수명이 0이면 진짜. 그리고 탑은 진짜를 끝낼 칼 세 자루를 쥐고 있다. 이레네의 장부에는 회차가 쌓일수록 더 일찍 '설명되지 않는 기시감. 북쪽.'이 적힌다."
+player_paths:
+  - "잠입: 서기 노예(이삭 경유) — 봉인 서가 목록을 '모양만' 옮기다 볼드 사본 칸에 닿는다"
+  - "협조 피험자: 가장 빠르고 가장 위험한 길 — 진명 한 음절이 판별법이다"
+  - "칼 셋: 금고·측정관·탑주의 허리 — 셋을 다 없애면 진짜 죽음의 수단 하나가 사라진다(T05)"
+  - "구하기: 할라(기준체 30년), 셋째 시험 사망자 14명의 가족(마일로의 명단), 이졸의 목록에 오른 회색여울 아이 셋"
+  - "이용: 발타사르의 '초대' — 녹테른 저주를 읽어 줄 목소리"
+regression:
+  fixed: ["칼 세 자루의 위치", "할라 30년째 기준체, 이졸 38명", "셋째 시험 14명 사망", "금지된 주제 일곱"]
+  flow: ["이졸의 분기 마감 — 긴밤월 30일", "시간 측정관이 회색여울로 오는 날 — 회차가 쌓일수록 일찍"]
+  drift: ["이레네가 장부에 '북쪽'을 쓰는 날 — 회차가 쌓일수록 앞당겨진다(기시감)", "귀 기울이는 방의 바늘이 튀는 시각", "그 계절의 낭독 논문 제목들"]

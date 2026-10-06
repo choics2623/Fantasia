@@ -1,0 +1,179 @@
+# 베르미온 백작가 — "잿불 언덕의 관리인". 정본: HOUSES §2.6, §6.3 / REGIONS §3(잿불 언덕) / SCENARIOS 잿불 광산 출신
+# 잿불 언덕의 소유자는 멜리산드, 관리자가 베르미온. 41번 갱도 아래 '은비늘 요람'의 행정도 이 가문이 쥔다 (수석 시술의 아드리안 코르벨은 멜리산드 직속 — 이 가문 소속이 아님).
+# 주의(모순 기록): REGIONS §1.3의 '재무·세렌 대출 창구 오렐리아 베스페린'과 이 가문의 '백작부인 오렐리아 베르미온'은 이름이 같은 별개 인물로 둔다.
+# 기준: AS 312 낙엽월 1일. 'unnamed:...'는 TODO-NPC.
+id: fac_vermion
+name: 베르미온 백작가
+kind: house
+race: [용인(순혈), 크릭(감독관)]
+governance: 봉건 위계 — 갱 단위 봉인제로 굴을 통치하는 순혈 백작가
+governance_note: >
+  가문은 광산이다. 영지의 소유는 멜리산드, 관리권은 가문 — 가문의 통치는 '갱 단위 봉인제'로 요약된다. 광부는 갱도별 30명 '갱조'로 묶여
+  함께 먹고 함께 처벌받는다. 갱조 하나가 탈주하면 나머지 29명의 배급이 끊긴다. 3대 이상 지상에 올라가 본 적 없는 '굴 태생' 노예가 4천 명.
+  가문의 숫자는 죽음의 보고 — 백작은 '낙반 3, 열병 7'로 말한다.
+motto: "깊이 팔수록 빛난다."
+seat: "잿불 언덕 광산 지대 (REGIONS §3) — 갱도 41곳, 본갱 위 '은비늘 둥지'는 멜리산드의 것"
+size:
+  members: "순혈 직계 4 + 용인 갱도 감독 수십 + 크릭 감독 약 40(붉은 계단) + 광산 노예 약 1만 8천(갱조 600) + 굴 태생 4천"
+  territory: "잿불 언덕 광산 지대 전체의 관리권(소유는 멜리산드), 갱도 41곳. AS 311 황무지 동쪽 경계 2리 확장으로 동쪽 갱도 4곳이 재에 묻혔다"
+  wealth: "철·은·잿불석(AS 241 대량 채굴 시작). 소유권은 멜리산드, 가문은 관리 수수료와 채굴량 일부"
+  force: "독가스 장치(드루스가 갱도마다 숨겼다) — 봉기 시 광부 전원을 죽일 수 있다. 크릭 감독 약 40. 지지율 6 (멜리산드)"
+
+offices:
+  - id: off_count
+    title: 백작
+    holder: "unnamed:카시안 베르미온 — 백작, 190세"   # TODO-NPC
+    reports_to: null
+    powers: ["가문의 법", "갱도 41곳의 채굴량·사고 보고 — 숫자로 죽음을 보고한다", "멜리산드에게 비늘 서약 (SK 2,830 토르반 사망 이후)"]
+    chosen_by: "장자 상속 (시조 베르미온 쇠냄새 — SK 1,600 첫 광산 감독)"
+    perks: ["검은 바탕 붉은 갱도 입구(아치) 위 은빛 비늘 하나의 문장"]
+  - id: off_countess_cradle
+    title: 백작부인 — 은비늘 요람 행정관
+    holder: "unnamed:오렐리아 베르미온 — 166세"   # TODO-NPC. REGIONS의 '오렐리아 베스페린'과 별개
+    reports_to: off_count
+    powers: ["은비늘 요람(41번 갱도 아래)의 행정 — 이식 순번 대기 감방, 사망자의 '낙반 사고' 기록", "피험자 조달: 갱조 인원이 매년 약 200명 '낙반'으로 줄어든다"]
+    chosen_by: "혼인 (멜리산드를 숭배한다)"
+    perks: ["멜리산드의 이식 실험실 열쇠 일부"]
+  - id: off_chief_miner
+    title: 갱도 총감독 (장남)
+    holder: "unnamed:드루스 베르미온 — 112세"   # TODO-NPC
+    reports_to: off_count
+    powers: ["갱도 41곳의 일상 관리·갱조 편성", "독가스 장치 — 다라의 반란이 다시 오리라 믿고 갱도마다 숨겼다"]
+    chosen_by: "장자 지명"
+    perks: ["갱도 설계도 전체"]
+  - id: off_granddaughter
+    title: 손녀 (실바라의 '친구')
+    holder: "unnamed:아멜리 베르미온 — 43세"   # TODO-NPC
+    reports_to: off_count
+    powers: ["공식 권한 없음 — 실바라 은재와의 친분을 통해 은비늘 요람 지하에 출입한다"]
+    chosen_by: "—"
+    perks: ["피험자 명단 사본을 본 적이 있다"]
+  - id: off_red_stair
+    title: 붉은 계단 총감독관 (크릭 감독 총괄)
+    holder: npc_grax
+    reports_to: off_chief_miner
+    powers: ["크릭 감독 약 40 지휘 — 갱조 점호·처벌", "공급 명부 관리"]
+    chosen_by: "크릭 감독관 길드 추천, 갱도 총감독 승인"
+    perks: []
+  - id: off_shaft_inspectors
+    title: 갱도 감독 (용인 비늘혈)
+    holder: "unnamed:갱도 감독 41 — 용인 비늘혈"
+    reports_to: off_chief_miner
+    powers: ["갱도 한 곳씩 책임 — 낙반 보고와 갱조 배급"]
+    chosen_by: "총감독 임명"
+    perks: []
+  - id: off_gang_foreman
+    title: 갱조 반장 (인간)
+    holder: "unnamed:갱조 반장 600 — 인간 (예: 하로, 54세, 매듭끈 계승자)"   # SCENARIOS 잿불 광산 출신의 갱 반장 하로를 예시로
+    reports_to: off_shaft_inspectors
+    powers: ["30명 갱조의 점호·배급 분배", "탈주 시 첫 연좌 책임자"]
+    chosen_by: "갱도 감독 지명"
+    perks: ["갱조 안에서 가장 늦게 먹는다"]
+  - id: off_collar_liaison
+    title: 잿불 언덕 목줄장 연락
+    holder: "unnamed:'쇠눈' 크롬 — 인간, 51세 (fac_collar의 잿불 언덕 목줄장)"
+    reports_to: off_chief_miner
+    powers: ["광산 노예 감시, 다라손(광부 혈통) 감시, 은비늘 요람 '자원자' 모집"]
+    chosen_by: "멜리산드 영지 감독관의 임명 (fac_collar 소속)"
+    perks: []
+  - id: off_casualty_clerk
+    title: 사고 기록 서기
+    holder: "unnamed:낙반 기록 서기 — 용인"
+    reports_to: off_countess_cradle
+    powers: ["요람 사망자를 '낙반 사고'로 기록 — 기록상 AS 296~312 피험자 3,214명(HOUSES 수치)"]
+    chosen_by: "백작부인 지명"
+    perks: []
+  - id: off_sealed_west
+    title: 서쪽 갱도 9곳 폐쇄 관리
+    holder: null          # AS 0 대붕괴에서 시간 잔상에 잠긴 서쪽 갱도 9곳 — 관리자가 없다. 아무도 들어가려 하지 않는다
+    reports_to: off_chief_miner
+    powers: ["폐쇄 갱도의 출입 금지 — 시간 잔상이 일하는 광부들을 되풀이한다"]
+    chosen_by: "—"
+    perks: []
+
+ranks:
+  - {id: rank_count, title: "백작", duties: "갱도와 사고 보고", privileges: "관리권, 요람 열쇠", open_to_player: false}
+  - {id: rank_kin, title: "직계 (요람 행정·갱도 총감독)", duties: "요람과 광산 일상", privileges: "멜리산드에게 직접 보고", open_to_player: false}
+  - {id: rank_inspector, title: "갱도 감독 (용인)", duties: "갱도 한 곳 책임", privileges: "갱조 처벌권", open_to_player: false}
+  - {id: rank_overseer_kric, title: "크릭 감독", duties: "갱조 점호와 매질", privileges: "배급 가산", open_to_player: false}
+  - {id: rank_foreman, title: "갱조 반장 (인간)", duties: "30명 갱조의 점호", privileges: "가장 늦게 먹는다 — 탈주 시 첫 연좌 책임", open_to_player: true, condition: "갱조 안에서 감독의 눈에 든 자 (매듭끈 계승자일 수 있다)"}
+  - {id: rank_miner, title: "광부 (갱조원)", duties: "채굴, 연좌 책임", privileges: "없다 — 갱조 하나가 탈주하면 나머지 29명의 배급이 끊긴다", open_to_player: true, condition: "잿불 언덕 출신 시작 또는 국유 노예 배당"}
+  - {id: rank_cave_born, title: "굴 태생", duties: "3대 이상 지상에 올라가 본 적 없다", privileges: "없다", open_to_player: false}
+  - {id: rank_cradle_subject, title: "은비늘 요람 피험자 (대기 감방)", duties: "이식 순번을 기다린다", privileges: "멜리산드의 담요와 맥 짚기", open_to_player: true, condition: "'낙반'으로 갱조에서 빼내지거나 자원자(fac_collar 모집)로 들어간다. 이식 99%가 며칠 안에 죽는다"}
+
+decision: "백작이 숫자로 보고하고 드루스가 갱도를 편성한다. 은비늘 요람은 오렐리아가 멜리산드의 명으로 따로 움직인다 — 가문 회의 없이 한 가문 안에 두 지휘선이 있다. 갱조는 결정에 참여하지 못한다 (연좌 책임만 진다)."
+succession: "장자 상속 — 드루스. 백작이 죽으면 드루스의 독가스 장치 접근권이 가문에서 가장 큰 변수가 된다. 멜리산드의 즉위 여부가 '요람의 합법화'를 정한다 — 즉위하면 가문의 지위가 오르고 실패하면 요람의 시신이 가문의 죄가 된다."
+
+law:
+  crimes:
+    - {act: "갱조원의 탈주", punishment: "나머지 29명의 배급 중단 + 탈주자 힘줄 절단 후 갱조 복귀 또는 요람 이송", note: "인간. 연좌 책임이 곧 감시"}
+    - {act: "갱도 무단 이탈·지상 접촉", punishment: "태형 + 독방 봉인 3일", note: "굴 태생은 지상 접촉 자체가 형벌 사유"}
+    - {act: "봉기·다라 관련 이야기의 전파", punishment: "갱조 전원 연좌 배급 삭감 + 주모자 갱도 봉쇄(질식)", note: "AS 100 다라의 반란 때 가주 코르빈이 광부들에게 산 채로 묻혔다 — 가문은 그것을 '용감한 전사'로 위조"}
+    - {act: "서쪽 갱도 9곳 폐쇄 구역 출입", punishment: "시간 잔상에 잠긴 채 돌아오지 않는다 — 가문은 사고로 기록", note: "AS 0 시간 잔상에 잠긴 갱도"}
+    - {act: "요람 피험자의 신원·수를 외부에 발설", punishment: "가족 전원 이식 순번 앞당김", note: "인간. 용인 서기는 가문 이름 삭제"}
+    - {act: "독가스 장치의 위치를 안다 (갱도 감독 외)", punishment: "사형", note: "드루스만 전체를 안다"}
+    - {act: "사망을 '낙반'이 아닌 이식으로 기록", punishment: "서기의 가문 이름 삭제", note: "비밀 규칙 — 요람 사망은 '낙반 사고'로만 적는다"}
+
+customs:
+  greeting: "'깊이는?' — 갱도의 깊이로 안부를 묻는다. 대답은 숫자로 짧게. 백작 앞에서는 낙반·열병의 수를 먼저 보고한다. 인간 광부는 감독 앞에서 곡괭이를 내려놓고 갱 번호를 댄다."
+  taboos:
+    - "'붉은 길'과 다라의 이름 (갱 안에서 입에 올리면 연좌)"
+    - "코르빈 가주의 마지막 장면 — 가문은 '용감한 전사'로 위조했다"
+    - "서쪽 갱도 9곳 안에서 일하는 광부의 그림자 이야기"
+    - "독가스 장치"
+  rites:
+    - {name: "갱조 교대 종", when: "매일 교대 시각", what: "갱 번호별 점호 — 번호를 못 대면 교대 지연"}
+    - {name: "월말 낙반 보고", when: "매달 말", what: "백작이 사고 수를 숫자로 낭독한다 ('낙반 3, 열병 7')"}
+    - {name: "코르빈 추모", when: "TODO: 날짜 미정", what: "'용감한 전사' 코르빈을 기리는 공식 의례 — 위조된 이야기. 광부들은 이 날 말하지 않는다"}
+    - {name: "재의 날 갱도 봉인", when: "연말 5일", what: "불을 피우지 않는다. 갱도 입구를 봉인하고 시간 잔상이 가장 많이 나타나는 서쪽 갱도는 문을 걸어 잠근다"}
+  speech: "숫자 보고체. 죽음을 건조하게 낭독한다('낙반 3, 열병 7'). 갱 번호와 갱조 번호로 사람을 부른다. 멜리산드 이야기에서는 목소리가 낮아지고 존칭이 길어진다."
+
+membership:
+  join: "출생(순혈). 갱도 감독은 비늘혈 가신 계약. 광부는 배당 또는 사유."
+  leave: "'낙반'. 퇴장은 죽음으로 기록된다."
+  signs: ["검은 바탕 붉은 갱도 입구 — 위에 은빛 비늘 하나", "갱조 번호 목걸이(구리)", "크릭 감독의 채찍 손잡이 갱 번호"]
+
+internal_factions:
+  - {name: "카시안 숫자파", leader: null, aim: "보고의 안정 — '낙반 3, 열병 7'. 현상 유지, 멜리산드에게 순종", strength: 50}
+  - {name: "오렐리아 요람파", leader: null, aim: "멜리산드를 숭배 — 요람의 확대와 이식 성공. 가문의 지위가 요람에 달렸다", strength: 25}
+  - {name: "드루스 독가스파", leader: null, aim: "다라의 반란이 다시 오리라 — 광부 전원 사살 장치로 대비", strength: 20}
+  - {name: "아멜리의 친구", leader: null, aim: "실바라 은재와의 우정 — 피험자 명단 사본을 본 적이 있다. 아직 파벌이 아니다", strength: 5}
+  # leader null = 카드 미작성
+
+assets:
+  - "잿불 언덕 갱도 41곳 (소유는 멜리산드)"
+  - "은비늘 요람의 행정과 대기 감방 (이식 순번 인간 약 60)"
+  - "갱도마다 숨긴 독가스 장치 (드루스)"
+  - "피험자 명단 사본 (3,214명)"
+  - "코르빈 위조 기록 — '용감한 전사'"
+
+secrets:
+  - {fact: fact_eh_cradle_experiment, known_by_rank: rank_kin}
+  - {fact: fact_eh_grax_supply_list, known_by_rank: rank_overseer_kric}
+  # TODO-FACT: 드루스의 독가스 장치(갱도마다 숨김, 봉기 시 광부 전원 사살) / AS 100 코르빈이 광부들에게 산 채로 묻혔고 가문이 '용감한 전사'로 위조 / '낙반' 위장 — 피험자 조달로 갱조 인원이 매년 200명씩 줄어든다 / 아멜리가 본 피험자 명단 사본 / 은비늘 요람 대기 감방 인간 약 60
+  - {truth: T03, level: rumor, holders: [off_countess_cradle]}
+
+relations:
+  # HOUSES §2.6 '관계' 서술에서 환산 (행렬 §6.1 밖)
+  - {to: fac_melisande, stance: 80, note: "주종 — SK 2,830 이후 서약. 지지율 6"}
+  - {to: fac_ashen_tower, stance: 40, note: "피험자 교환"}
+  - {to: fac_hastran, stance: -40, note: "원한 — 붉은 길 이후 광산 노동력 손실 책임 공방"}
+  - {to: fac_durgan, stance: 30, note: "두르강 잿모루 씨족과 철 거래"}
+  - {to: fac_grey_pilgrims, stance: -30, note: "갱도 깊은 곳 접근을 놓고 마찰 (id는 회색 순례자 담당 작가 확인)"}
+toward_echo: "포획 후 이식 — 멜리산드의 '그릇'. 오렐리아는 요람의 감방이 비어 있는 날을 가장 두려워한다. 한 번도 살아남은 그릇이 없으므로 이 가문의 눈에 잔향은 '마침내 낭독할 수 있는 이름'이다."
+player_paths:
+  - "독가스 장치 무력화 — 잿불 광산 봉기(찬가 4단계) 전에 반드시 해야 할 일. 드루스를 매수하거나 설계도를 훔친다"
+  - "은비늘 요람 대기 감방 — 이식 순번을 기다리는 인간 약 60. 구출하면 봉기의 첫 병력"
+  - "피험자로 잡힘 — 멜리산드는 3,000번의 실패 끝에 처음으로 살아남는 그릇을 손에 넣는다 (안에서 무너뜨리는 길 포함)"
+  - "아멜리 — 실바라의 '친구'. 명단 사본을 외부로 가져나갈 열쇠"
+  - "코르빈의 위조 — 광부들 사이의 진짜 이야기를 되살린다 (다라의 후손)"
+regression:
+  fixed:
+    - "AS 296 은비늘 요람 가동, 피험자 3,214명, 대기 감방 약 60"
+    - "독가스 장치가 갱도마다 숨겨져 있다"
+    - "AS 311 황무지 동쪽 경계 2리 확장, 동쪽 갱도 4곳이 재에 묻힘"
+  flow:
+    - "'낙반'으로 사라지는 갱조 인원 (매달)"
+  drift:
+    - "그날 낙반 사고의 갱도 번호"
+    - "요람으로 끌려가는 자의 이름"

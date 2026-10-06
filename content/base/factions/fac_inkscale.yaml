@@ -1,0 +1,143 @@
+# 세렌 계약 중개인 조합 ('먹물비늘 조합') — 빚진 인간을 '계약민'으로 조달·등록·거래한다. 숫자가 사슬이다.
+# 근거: HOUSES §5.10·§3.4, WORLD_BIBLE §2(AS 296)·§5·§7.2, RACES 나가(탐욕과 교환), REGIONS §9, CHARACTERS R09, CONTINUITY_LOG #4·#5·#46·#47, facts/seren.yaml·greyford.yaml.
+id: fac_inkscale
+name: 세렌 계약 중개인 조합 ('먹물비늘 조합')
+kind: org
+race: [나가 (약 60%), 용인, 인간 (계약민 감정사·심부름꾼), 크릭, 라미아]
+governance: 과두 의회 — 인장 48개가 의석이다. 인장은 사고판다
+motto: "모든 빚에는 이름이 있다."
+seat: 세렌 항구 '먹물 회관'
+size:
+  members: "약 350 — 인장 중개인 48, 현장 중개인 약 300, 계약민 감독(나가·크릭·인간)"
+  territory: "세렌 동맹 전역, 용제국 영지의 빚 장부(현장 중개인 파견), 노예선 항로(소금 나루)"
+  wealth: "계약서 양식 독점, 몬달리 상가의 자금, 용제국 영주들의 빚 장부, 빚 문서 2차 매매 수수료"
+  force: "없다 — 세렌 의회 경호대(사하르)와 법정이 대신한다. 무기는 이자율이다"
+
+decision: >
+  인장 중개인 48이 먹물 회관 원형 계단에 앉는다(포도월 세렌 대시장 전, 그리고 분기마다). 안건은 인장 수로 정한다 — 인장 하나가 한 표, 한 중개인이 인장을 여러 개 가질 수 있다
+  (조합장 도나 벨렌은 인장 9개). 과반 25. 의회(열두 의석)가 내린 계약민법 개정은 조합이 거부하지 못하지만, 계약서 '양식'은 조합이 정한다 — 법보다 양식이 사람을 묶는다.
+  인장은 사고판다(최근 거래 인장 하나 1,200두카트). 몬달리 상가가 비밀리에 인장 14개를 쥐고 있다 — 조합의 실제 주인은 의장 베아트릭스다.
+succession: "조합장은 인장 과반으로 뽑는다 — 사실상 몬달리가 정한다. 인장 중개인이 죽으면 인장은 상속되거나 경매에 붙는다. 인장이 경매에 붙는 날, 인간 계약민의 돈(셈 모임의 공동 적립)이 대리인을 통해 인장 하나를 사는 꿈을 꾼다."
+
+offices:
+  - id: off_guild_head
+    title: 조합장
+    holder: "unnamed:도나 벨렌 (나가, 230) — 인장 9개"
+    reports_to: null
+    powers: ["계약서 양식 확정", "인장 회의 주재", "'죽음으로 끝나지 않는 계약서' 양식 연구 지시"]
+    chosen_by: "인장 과반 — 몬달리의 뜻"
+    perks: ["먹물 회관 꼭대기 방"]
+  - id: off_seal_broker_greyford
+    title: 인장 중개인 — 회색여울 건 (몬달리 채권 대리인)
+    holder: npc_severo
+    reports_to: off_guild_head
+    powers: ["회색여울 농노 1차 40명·2차 31명 인수", "고드릭 레이번 채권(1,840두카트) 대리", "담보 영지 경매"]
+    chosen_by: "인장 보유"
+    perks: ["노예선 소금 나루 하역권"]
+  - id: off_field_broker
+    title: 현장 중개인 — 회색여울 담당
+    holder: "unnamed:세보 리크 (나가, 88) — 고드릭에게서 농노 37명을 사들인 자 (HOUSES §5.10. CONTINUITY #5는 세베로를 중개인으로 확정 — 같은 일의 실무자로 둔다)"
+    reports_to: off_seal_broker_greyford
+    powers: ["농노 인도 서류", "남작의 인장 받기"]
+    chosen_by: "인장 중개인의 고용"
+    perks: []
+  - id: off_appraiser
+    title: 계약 감정사 ('반쪽 혀')
+    holder: "unnamed:'반쪽 혀' 오스카 (인간 계약민, 51) — 계약서의 숫자를 읽는다"
+    reports_to: off_guild_head
+    powers: ["상환 공식 계산", "계약서 감정"]
+    chosen_by: "조합장의 고용 — 숫자를 읽는 인간은 쓸모 있다"
+    perks: ["상환 공식의 함정을 숫자로 증명할 수 있다 — 그래서 위험하다"]
+  - id: off_registry
+    title: 계약 등록소 '푸른 장부관' (오랄 가) — 계약민 전환 등록
+    holder: "unnamed:시르 오랄 — 계약민 전환 등록 실무"
+    reports_to: off_guild_head
+    powers: ["계약 등록", "저당 계약 보관"]
+    chosen_by: "오랄 가 세습"
+    perks: ["'숫자의 집'이라는 별칭"]
+  - id: off_overseer
+    title: 계약민 감독 (집합 자리)
+    holder: "unnamed:계약민 감독 — 나가·크릭·라미아"
+    reports_to: off_registry
+    powers: ["노역 할당", "상환 기록"]
+    chosen_by: "인장 중개인의 고용"
+    perks: []
+  - id: off_errand
+    title: 현장 심부름꾼 (계약민 — 빚 상환 1.5배)
+    holder: "unnamed:계약민 심부름꾼"
+    reports_to: off_field_broker
+    powers: ["서류 운반, 인장 받아 오기"]
+    chosen_by: "계약민 중 고른다"
+    perks: ["상환 속도 1.5배"]
+
+ranks:
+  - {id: rank_seal, title: "인장 중개인 (48)", duties: "인장 회의, 큰 거래", privileges: "의석", open_to_player: false}
+  - {id: rank_field, title: "현장 중개인 (약 300)", duties: "조달·등록", privileges: "수수료", open_to_player: false}
+  - {id: rank_overseer, title: "계약민 감독", duties: "노역 관리", privileges: "-", open_to_player: true}
+  - {id: rank_errand, title: "현장 심부름꾼 (계약민)", duties: "서류", privileges: "상환 1.5배", open_to_player: true}
+  - {id: rank_contractee, title: "계약민 (상품)", duties: "노역으로 빚을 갚는다 — 평균 22년", privileges: "세렌 안의 '자유', 칼날 한 뼘 이하, 상거래용 숫자", open_to_player: true}
+# 플레이어의 길: 계약민이 된 뒤 현장 심부름꾼. 첫 임무 '회색여울 레이번 성채에서 이번 분기 농노 7명의 인도 서류에 남작의 인장을 받아 와라' — 그 7명 중 하나가 아는 얼굴이다.
+
+law:
+  crimes:
+    - {act: "계약 파기 도주 (계약민)", punishment: "현상금(나디아 4두카트), 왼팔 낙인, 빚 두 배", note: "인간 대상"}
+    - {act: "장부를 찢음 / 빚을 없던 것으로 함", punishment: "살인보다 무겁다 — 인장 몰수와 추방", note: "나가 대상. 나가의 금기"}
+    - {act: "계약서 없는 약속", punishment: "효력 없음 — 그리고 수치", note: "모두"}
+    - {act: "공짜로 주는 것", punishment: "금기 — 나가는 대가 없이 줄 수 없다", note: "나가 대상(혈명의 굴레)"}
+    - {act: "계약민이 칼날 한 뼘 넘는 무기를 지님", punishment: "빚 가산 + 탑 인계", note: "인간 대상 — 세렌 법"}
+    - {act: "계약민이 숫자 이상의 글을 앎", punishment: "벌금 후 탑 인계", note: "인간 대상"}
+
+customs:
+  greeting: "나가끼리: 상대의 빚과 내 빚을 하나씩 말하고 고개를 숙인다('나는 몬달리에 이천을, 그대는?'). 계약민에게는 이름이 아니라 계약 번호로 부른다."
+  taboos: ["공짜", "장부를 찢는 것", "계약서 없는 약속", "붉은 해구 이야기를 계약민 앞에서 하는 것"]
+  rites:
+    - {name: "인장 회의", when: "분기마다 + 포도월 세렌 대시장 전", what: "원형 계단에 인장을 내려놓고 표를 센다"}
+    - {name: "빚 문서 경매", when: "포도월 세렌 대시장 (아마란트 리비아 주관)", what: "계약민 빚 문서를 2차 매매 — 사람은 그 자리에 없다. 숫자만 팔린다"}
+  speech: "숫자로 말한다. 모든 문장에 값이 붙는다('그 말은 두 발톱짜리다'). 인간 계약민에게는 정중한 존댓말 — 고객이니까. 그 정중함이 이자율이다."
+
+membership:
+  join: "나가 상가의 추천 + 인장 매입(1,200두카트) 또는 현장 중개인 고용. 인간은 계약민 → 심부름꾼"
+  leave: "인장을 팔면 나간다. 계약민은 빚을 다 갚으면 — 등록자의 약 1.8%"
+  signs: ["먹물 묻은 비늘 인장", "계약민 왼팔 낙인", "푸른 장부관 등록 번호"]
+
+internal_factions:
+  - {name: "몬달리의 손", leader: npc_beatrix, aim: "조합을 통해 용제국 영지를 빚으로 산다(회색여울이 다음)", strength: 55}
+  - {name: "중개인 본류 (수수료)", leader: npc_severo, aim: "더 많이, 더 빨리 — 회색여울 1·2차, 사라를 심해 대가로", strength: 35}
+  - {name: "숫자의 반역 (조합 밖에서 안을 갉는 자들)", leader: npc_lupo, aim: "계약서 오류로 빚을 무효화(212건, 목표 300). 오스카(unnamed)의 증명, 셈 모임 1,100명", strength: 10}
+
+assets:
+  - "계약서 양식 독점 — 상환 공식은 이자율이 노동 가치보다 언제나 0.3% 높게 설계되어 있다"
+  - "몬달리 자금, 용제국 영주들의 빚 장부"
+  - "'죽음으로 끝나지 않는 계약서' 양식 연구 — 회귀하면 계약서는 서명하기 전으로, 잉크는 병 속으로 돌아간다(주인공만 안다)"
+
+secrets:
+  - {fact: fact_sr_repay_rate_true, known_by_rank: rank_seal}
+  - {fact: fact_sr_godric_debt_designed, known_by_rank: rank_seal}
+  - {fact: fact_sr_severo_greyford_batches, known_by_rank: rank_field}
+  - {fact: fact_sr_severo_sara_deep_sea, known_by_rank: rank_seal}
+  - {fact: fact_sr_severo_buys_hagen_peyn, known_by_rank: rank_field}
+  - {fact: fact_sr_severo_henrik_remit, known_by_rank: rank_field}
+  - {fact: fact_gf_serf_sale_contract, known_by_rank: rank_field}
+  - {fact: fact_gf_godric_sold_37, known_by_rank: rank_field}
+  - {fact: fact_sr_lupo_212_voided, known_by_rank: rank_seal}
+  - {fact: fact_sr_cell_meeting_1100, known_by_rank: rank_seal}
+  # TODO-FACT: 몬달리 상가가 조합 인장 48개 중 14개를 비밀리에 쥐고 있다 (이 파일 신설 — 확정 필요)
+  # TODO-FACT: 조합장 도나 벨렌은 '죽음으로 끝나지 않는 계약서' 양식을 연구시켰다 (HOUSES §5.10)
+  # 모순 메모: 상환 성공률 — HOUSES §5.10 '등록자의 4%' / CONTINUITY #46·facts '공식 6%, 실제 약 1.8%'. 사실 id를 따른다.
+  - {truth: T03, level: rumor, holders: [npc_severo]}
+
+relations:
+  - {to: fac_seren, stance: 60, note: "행렬 밖 — 열두 의석 아래의 조달 조직"}
+  - {to: fac_grey_thread, stance: -50, note: "행렬 밖 — 계약민 도주"}
+  - {to: fac_nameless, stance: -40, note: "행렬 밖"}
+  - {to: fac_salt_tongue, stance: 10, note: "행렬 밖 — 심해 대가(사라)를 사러 온 자들인 줄 모른다"}
+toward_echo: "가격표. '죽어도 돌아오는 자라면 빚도 따라 돌아오나? 그렇다면 영원한 계약민이다.' 도나 벨렌은 실제로 '죽음으로 끝나지 않는 계약서' 양식을 연구시켰다. 베아트릭스는 다른 값을 안다 — 심해 나가가 요구한 '이름을 말할 수 있는 인간 하나'."
+player_paths:
+  - "계약민 → 심부름꾼(회색여울 7명의 인도 서류)"
+  - "숫자로 무너뜨리기: 오스카의 증명 + 루포의 무효 + 미코의 1,140 → 노르발 의석주 → 맹약회의 313 '계약민 시민권'(찬가 6단계)"
+  - "인장 하나 사기: 셈 모임 적립금과 대리인으로 '인간의 인장'"
+  - "회색여울: 1차 40명(서리월 9일), 2차 31명(굶주림월 3일, 사라 포함)"
+regression:
+  fixed: ["고드릭 빚 1,840두카트, AS 313 포도월 30일 만기", "1차·2차 호송 날짜", "상환 공식의 0.3%"]
+  flow: ["세보 리크가 회색여울 성채에 오는 날 — 9월 3일 사자 방문"]
+  drift: ["그 분기 심부름꾼이 누구인지", "빚 문서 경매의 낙찰가"]

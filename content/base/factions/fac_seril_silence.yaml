@@ -1,0 +1,158 @@
+# 세릴의 침묵 — 엘다르 안의 비밀 결사. 예언의 '뒷부분'이 위협이 아니라 약속이라고 믿는 자들.
+# [신설 결사 — HOUSES에 없음] 세계가 함의하는 것: 새벽가지 시조 세릴이 신살 때 에오르의 마지막 숨을 '기록'했다(HOUSES §3.1.2),
+# 아엘베린/이실도르의 예언 뒷부분 "…그리고 처음으로 이름을 얻으리라"(HOUSES §3.1.1), 여왕의 의심(fact_sv_elastriel_name_loss_doubt),
+# 침묵의 해(AS 268), 아에릭의 침묵 서약(HOUSES §3.1.2), 피오나엘의 꿈(AS 311~), 리안델의 '배움'(fact_sv_liandel_learned_songs), 드라우르 에뮌(SUBRACES §4.3).
+# 왜 지금(AS 312): 아에린이 맹약회의 313 전에 시간의 그물을 다시 짜고 리안델을 '돌아옴의 그릇'으로 보며(fact_sv_aerin_vessel_liandel),
+# 잔향이 깨어났다(징후 3배, 피오나엘의 꿈). 그물이 이번 잔향을 붙잡으면 '이름을 얻는 날'은 다시 수백 년 뒤로 간다.
+id: fac_seril_silence
+name: 세릴의 침묵 (엘다르 비밀 결사)
+kind: secret
+race: [별빛 엘다르, 실반(심부름), 반엘다르(접촉자)]
+governance: 침묵 합의 — '빠진 음'으로 말하는 결사. 결정은 첫 아침의 노래에서 같은 음을 함께 빼는 것으로 난다
+motto: "이름을 잃는 날, 처음으로 이름을 얻으리라."
+seat: 없음. 실바렌 마른 숲 가장자리의 '침묵의 그루터기'(아에릭의 거처)와 이슬 서고 뒤 복원실
+size:
+  members: "엘다르 열한 — 모두 시간 민감한 기억을 가진 자들(회차가 쌓일수록 기시감이 짙다). 실반 심부름꾼 셋, 반엘다르 접촉자 하나"
+  territory: "실바렌 영원 정원 안 — 새벽가지·은이슬 가지·고목 가지에 흩어져 있다"
+  wealth: "세릴의 '숨 수정'(신살 때 에오르의 마지막 숨을 담은 기억 수정 — 새벽가지 금고 안, 아에린이 그 가치를 반만 안다), 이슬 두루마리 복원실 출입"
+  force: "없다. 엘다르는 엘다르를 해치지 못한다(첫 아침의 노래가 끊긴다). 그들의 무기는 그물을 짜는 손 중 하나가 매듭을 '느슨하게' 하는 것뿐이다"
+
+reason_now: >
+  아에린이 영혼 정원에서 그물을 다시 짜고, 리안델을 그릇으로 점찍었다. 결사는 리안델을 '처음으로 배운 엘다르' — 예언의 뒷부분이 이미 시작되었다는 증거 — 로 본다.
+  잔향이 그물에 걸려 진짜로 죽으면 그 증거도 그릇이 되어 사라진다. 그래서 결사는 3,400년 만에 처음으로 침묵을 깰 준비를 한다.
+
+decision: >
+  열하나는 서로를 만나지 않는다. 매일 새벽 첫 아침의 노래(3,400년간 한 음도 바뀌지 않은)를 부를 때, 결사원은 정해진 자리에서 음 하나를 '빼고' 부른다.
+  어느 음을 빼느냐가 말이다 — 셋째 소절 끝음을 빼면 '모여라', 아홉째 소절 첫음을 빼면 '아니다(거부)', 끝 소절을 통째로 숨 쉬듯 흘리면 '그물이 짜인다'.
+  시간 민감한 엘다르만 그 빈 음을 듣는다 — 그래서 결사원이 될 수 있는 것도 그들뿐이다. 결정은 노래 한 바퀴(9일) 동안 같은 음을 뺀 자가 일곱 이상이면 난다.
+  누군가 '아니다'를 빼면 그 바퀴의 결정은 없다 — 한 엘다르의 거부권. 아에릭은 서약 이후 노래를 부르지 않는다 — 그의 침묵 자체가 '모든 음을 뺀' 영구한 신호이고, 결사는 그를 머리로 친다.
+succession: "머리(아에릭)가 퇴색하면 숨 수정을 만질 수 있는 새벽가지 직계 중 결사원이 잇는다 — 지금은 없다. 아에린만 남는다. 그래서 결사는 아에릭이 살아 있는 동안 끝을 보려 한다."
+
+offices:
+  - id: off_silent_head
+    title: 침묵 (머리)
+    holder: npc_aeric   # 신설 은자 (docs/world/SECRETS_AND_HERMITS.md H-02) — fac_eldar off_silent_brother와 같은 사람
+    reports_to: null
+    powers: ["영구한 '모든 음 빼기' — 결사의 기준", "숨 수정의 기억을 가진 유일한 결사원(쌍둥이로서 세릴의 직계)", "그물 짜기에 손을 보탤 권리(새벽가지)"]
+    chosen_by: "AS 300 영혼 정원 첫 실험 날 스스로 침묵을 서약했을 때 열하나가 그를 머리로 쳤다"
+    perks: ["침묵의 그루터기 — 정원지기도 엘다르도 다가오지 않는다"]
+  - id: off_dreamer
+    title: 꿈꾸는 자
+    holder: "unnamed:피오나엘 (엘다르, 980) — 잿빛 탑 객원, AS 311부터 본 적 없는 인간의 기억을 꿈꾼다"
+    reports_to: off_silent_head
+    powers: ["잔향의 회차 장면을 꿈으로 본다(회차가 쌓일수록 같은 저녁의 배급 줄)", "탑과의 자료 교환 — 결사의 눈"]
+    chosen_by: "꿈이 그녀를 골랐다 — AS 311 겨울 첫 빈 음"
+    perks: []
+  - id: off_dew_keeper
+    title: 이슬 복원실지기
+    holder: "unnamed:이벨린 (엘다르, 600) — 은이슬 가지 서고지기"
+    reports_to: off_silent_head
+    powers: ["흰 알 예언 두루마리 복원실 출입", "예언 원문 조각 대조"]
+    chosen_by: "빈 음"
+    perks: ["'깨어나리라/끊어지리라'의 손상 자리를 가장 오래 본 엘다르"]
+  - id: off_net_weaver
+    title: 그물 짜는 손 (새벽가지 안)
+    holder: "unnamed:새벽가지의 그물꾼 하나 — 이름 숨김. 영원 여왕·아에린과 함께 수정 기둥 사이에서 그물을 짠다"
+    reports_to: off_silent_head
+    powers: ["매듭 하나를 느슨하게 둘 수 있다 — 들키면 이름 깎기"]
+    chosen_by: "빈 음"
+    perks: []
+  - id: off_silvan_runner
+    title: 실반 심부름꾼
+    holder: "unnamed:실반 셋 — 흰 울타리 바깥 숲길"
+    reports_to: off_silent_head
+    powers: ["드라우르 '아래 정원'과의 연락(모르바 검은 우물 경유)", "반엘다르 접촉자와의 연락"]
+    chosen_by: "실반은 노래의 빈 음을 듣지 못한다 — 그래서 무엇을 나르는지 모른다"
+    perks: []
+  - id: off_halfblood_contact
+    title: 접촉자 (반엘다르)
+    holder: npc_dane
+    reports_to: off_silvan_runner
+    powers: ["엘다르 문자를 읽는다", "정원지기 마을과 리안델 사이"]
+    chosen_by: "결사가 골랐으나 그는 결사를 모른다 — 실반이 건네는 '시 낭독 부탁'으로만 일한다"
+    perks: []
+  - id: off_outside_witness
+    title: 바깥 증인 (드라우르)
+    holder: npc_emyn   # 신설 은자 H-03
+    reports_to: null
+    powers: ["신살의 마지막 장면을 잊지 않은 자 — 결사의 기억이 어긋날 때 대조할 유일한 바깥 기억"]
+    chosen_by: "결사원이 아니다. 동맹이다"
+    perks: []
+
+ranks:
+  - {id: rank_silence, title: "침묵 (머리)", duties: "모든 음을 뺀다", privileges: "-", open_to_player: false}
+  - {id: rank_rest, title: "빈 음 (결사원)", duties: "노래에서 음을 빼 말한다", privileges: "숨 수정의 기억을 나눠 받는다", open_to_player: false}
+  - {id: rank_carrier, title: "나르는 자 (실반·반엘다르)", duties: "모르고 나른다", privileges: "-", open_to_player: true}
+  - {id: rank_learner, title: "배우는 자 (지켜야 할 자)", duties: "없다 — 존재가 증거다", privileges: "결사의 보호", open_to_player: false}
+
+cell_graph:
+  rule: "결사원은 서로의 얼굴이 아니라 빈 음의 '자리'를 안다(노래의 몇째 줄, 몇째 자리에 서는가). 한 결사원이 잡혀도 그가 드러낼 수 있는 것은 자리뿐이다 — 그러나 자리를 아는 첫 낭송관은 그 자리에 선 자를 찾을 수 있다"
+  nodes:
+    - {id: n_aeric, who: npc_aeric, knows_up: null, knows_members: [n_fionael, n_ivelin, n_weaver, n_runners], if_captured: "그는 말하지 않는다 — 서약. 아에린이 그를 '고친다'면(되새김 교정) 숨 수정의 기억이 아에린에게 간다"}
+    - {id: n_fionael, who: "unnamed:피오나엘", knows_up: "n_aeric — 끝 소절 흘리기", knows_members: [n_ivelin], if_captured: "꿈의 내용 — 아에린이 가장 원하는 것(잔향의 위치 단서)"}
+    - {id: n_ivelin, who: "unnamed:이벨린", knows_up: "n_aeric", knows_members: [n_fionael], if_captured: "복원실 대조 기록"}
+    - {id: n_weaver, who: "unnamed:그물꾼", knows_up: "n_aeric", knows_members: [], if_captured: "느슨한 매듭 — 이름 깎기. 그물이 다시 짜인다"}
+    - {id: n_runners, who: "unnamed:실반 셋", knows_up: "n_aeric — 그루터기의 놓인 물건", knows_members: ["npc_dane", "npc_emyn (아래 정원 입구 — 검은 우물)"], if_captured: "아래 정원 입구 하나가 별빛에게 드러난다 — 3,400년의 은신이 끝난다"}
+
+infiltration:
+  join_real: "들어올 수 있는 것은 빈 음을 듣는 엘다르뿐이다. 후보가 노래에서 같은 빈 음을 사흘 연속 따라 빼면 결사가 그를 본다. 시험: '한 바퀴 빼기' — 9일 동안 정해진 음을 빼고도 첫 낭송관에게 '어긋남'으로 불리지 않아야 한다(정확히 같은 길이로 숨을 쉬어 빈자리를 메운다). 그리고 '배운 것 하나'를 그루터기에 놓아야 한다 — 기억이 아니라 새로 배운 것(인간의 노래 한 줄, 처음 맡은 냄새). 엘다르에게 그것은 이단의 고백이다"
+  join_fake: "가짜가 들어오기 어렵다 — 빈 음을 듣는 것 자체가 시간 민감의 증거다. 다만 아에린 자신도 시간 민감하다. 그가 빈 음을 들었다면 결사는 이미 반쯤 드러났다"
+  proof_test: "잔향에게: 결사는 인간과 말하지 않는다 — 아에릭은 서약했고, 나머지는 인간과 말하는 것을 들키면 끝이다. 잔향이 그루터기에 앉아 하루를 말없이 기다리면(H-02의 시험), 아에릭이 숨 수정의 기억 한 조각을 손짓으로 건넨다"
+  exposure: "첫 낭송관이 '한 박자 어긋남'을 선언하면 고리의 의회가 9일 동안 기억을 대조한다 — 빈 음의 자리가 드러난다. 재의 날 '한 박자 돌아봄' 의례가 가장 위험하다: 시간 잔상이 많아 빈 음이 더 크게 들린다"
+
+law:
+  crimes:
+    - {act: "결사원이 엘다르를 해침", punishment: "결사에서 지운다 — 첫 아침의 노래를 끊는 죄", note: "엘다르 대상"}
+    - {act: "인간에게 결사를 말함", punishment: "그 결사원의 자리를 비운다(다시는 빈 음에 답하지 않는다)", note: "엘다르 대상"}
+    - {act: "바깥 법 — 엘다르의 '배움'", punishment: "'고쳐야 할 병' — 교사가 붙어 되새김 교정", note: "fac_eldar의 법"}
+    - {act: "바깥 법 — 예언을 끝까지 말함", punishment: "고리의 의회 낭송권 정지", note: "fac_eldar의 법 — 결사의 모토 자체가 이 죄다"}
+
+customs:
+  greeting: "인사하지 않는다. 마주치면 둘 다 숨을 한 박자 늦게 쉰다."
+  taboos: ["예언을 끝까지 말하기 — 결사 안에서조차 '…얻으리라'를 소리 내지 않는다", "리안델 앞에서 '그릇'이라는 말", "시간의 그물을 '그물'이라 부르기 — '그 노래'라고 한다"]
+  rites:
+    - {name: "빈 음", when: "매일 새벽 첫 아침의 노래", what: "정해진 자리에서 음 하나를 뺀다"}
+    - {name: "배운 것 놓기", when: "결사원이 무언가를 처음 배운 날", what: "침묵의 그루터기에 그것의 흔적(꽃잎, 매듭, 돌)을 놓는다 — 엘다르가 3,400년 못 한 일의 기록"}
+  speech: "결사원끼리는 말하지 않는다. 바깥에서는 엘다르의 과거 어미를 그대로 쓰되, 아주 가끔 현재형('지금')을 섞는다 — 그것이 그들의 버릇이고 그들을 드러낸다."
+
+membership:
+  join: "위 infiltration.join_real"
+  leave: "빈 음을 다시 채우면 나간 것이다. 아무도 쫓지 않는다 — 그러나 그는 매일 새벽 빈 음을 듣는다"
+  signs: ["첫 아침의 노래의 빈 음(셋째 소절 끝·아홉째 소절 첫·끝 소절 흘리기)", "숨을 한 박자 늦게 쉬는 인사", "그루터기에 놓인 '배운 것'", "현재형을 섞는 말버릇"]
+
+internal_factions:
+  - {name: "기다리는 침묵", leader: npc_aeric, aim: "그물을 느슨하게 하고 잔향이 스스로 '모든 이름'에 닿게 둔다. 리안델을 지킨다", strength: 60}
+  - {name: "말하려는 자들", leader: null, aim: "피오나엘(unnamed) — 꿈의 내용을 잔향에게 직접 전하고 실바누스와 손잡자. 3,400년의 침묵은 공모였다", strength: 40}
+
+assets: ["세릴의 숨 수정 — 에오르의 마지막 숨(새벽가지 금고)", "이슬 복원실 출입", "그물 짜는 손 하나", "드라우르 에뮌과의 연락"]
+
+secrets:
+  - {fact: fact_sv_elastriel_name_loss_doubt, known_by_rank: rank_rest}
+  - {fact: fact_sv_liandel_learned_songs, known_by_rank: rank_rest}
+  - {fact: fact_sv_aerin_vessel_liandel, known_by_rank: rank_rest}
+  - {fact: fact_sv_time_net_soul_garden, known_by_rank: rank_rest}
+  - {fact: fact_sv_prophecy_first_seen, known_by_rank: rank_silence}
+  # TODO-FACT: 새벽가지 시조 세릴이 신살 때 기록한 '숨 수정'이 새벽가지 금고에 있다 — 마지막 숨이 누구를 향했는지 담겼다 (이 파일 신설, HOUSES §3.1.2 '마지막 숨을 기록한 서기'에서)
+  # TODO-FACT: 첫 아침의 노래에서 음을 빼는 '빈 음'은 시간 민감한 엘다르만 듣는다 (이 파일 신설)
+  # TODO-FACT: 아엘베린(이실도르)의 돌 입술이 반복하는 예언의 뒷부분 — '…그리고 처음으로 이름을 얻으리라' (HOUSES §3.1.1)
+  - {truth: T20, level: whole, holders: [npc_aeric]}
+  - {truth: T20, level: fragment, holders: [npc_emyn]}
+  - {truth: T02, level: whole, holders: [npc_aeric, npc_emyn]}
+  - {truth: T05, level: fragment, holders: [npc_aeric]}
+  - {truth: T03, level: fragment, holders: [npc_aeric]}
+
+relations:
+  - {to: fac_eldar, stance: -10, note: "신설 — 몸은 그 안에 있다. 존속파에는 -60, 여왕에게는 0(그녀가 의심하는 것을 결사는 믿는다)"}
+  - {to: fac_nameless, stance: 20, note: "신설 — 서로 모른다. 같은 것을 기다린다"}
+  - {to: fac_ashen_tower, stance: -30, note: "신설 — 피오나엘의 객원 자리가 그들의 눈이자 위험"}
+  - {to: fac_laugh_shards, stance: 10, note: "신설 — 페이도 그날의 뒷부분을 안다는 소문"}
+toward_echo: "지킨다 — 그러나 말하지 않는다. 결사에게 잔향은 엘다르가 '이름을 잃고 얻는 날'의 유일한 열쇠다. 그물에 걸리게 두지 않으려 하고, 영혼 정원에서 그를 빼낼 매듭 하나를 느슨하게 둔다 — 단 한 번. 그 대가로 바라는 것은 하나: 그가 '모든 이름'을 말하는 날 엘다르의 이름도 빠뜨리지 않는 것."
+player_paths:
+  - "아에릭의 그루터기 — 하루의 침묵을 견디면 숨 수정의 조각(T20)"
+  - "영혼 정원 탈출 시나리오(클락 #5)에서 느슨한 매듭 — 결사를 만났다면 탈출 판정이 한 번 보정된다"
+  - "리안델: 결사가 지키는 '처음 배운 엘다르' — 아에린의 그릇 계획을 깨면 결사의 신뢰"
+  - "배신(어두운 길): 빈 음의 자리를 아에린에게 팔면 결사가 무너지고 그물은 더 단단해진다"
+regression:
+  fixed: ["결사원 열하나, 아에릭의 침묵(AS 300~)", "숨 수정의 위치", "리안델이 노래 셋을 배웠다"]
+  flow: ["피오나엘이 꿈을 아에린에게 보고할지 — 대개 서리월 첫 바퀴에서 망설인다"]
+  drift: ["회차가 쌓일수록 결사원들이 빈 음을 더 일찍, 더 많이 뺀다 — 시간 민감한 기시감", "어느 날 그물꾼이 매듭을 느슨하게 두는지"]

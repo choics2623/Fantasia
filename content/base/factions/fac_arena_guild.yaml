@@ -1,0 +1,147 @@
+# 피의 원형장 투사 조합 — 그롬이 '무관심해서' 허락한 인간 투사들의 자치. 승수가 계급이다.
+# 근거: HOUSES §5.7·§4.4·§3.7, WORLD_BIBLE §4.3·§5(그롬마르 무기 허용)·§8(태양월 대축제), CHARACTERS R16, CONTINUITY_LOG #40, facts/grommar.yaml·greyford_b.yaml.
+id: fac_arena_guild
+name: 피의 원형장 투사 조합 ('쇠우리')
+kind: org
+race: [인간 (투사), (묵인) 그롬]
+governance: 힘의 서열 + 흉터 회의 — 승수가 사다리, 조합장은 흉터 이상 중에서 뽑는다
+motto: "쇠우리의 동료를 경기 밖에서 죽이지 않는다. (조합 규칙 제1조)"
+seat: 그롬마르 피의 원형장 지하 투사 숙소 '쇠우리' 12곳
+size:
+  members: "투사 약 1,200 (새끼 약 700, 칼 약 380, 흉터 약 110, 문턱 3, 현역 백승자 0)"
+  territory: "원형장 지하 숙소 12곳과 훈련장. 원형장 밖은 그롬의 땅"
+  wealth: "원형장 내기 수익의 1/20, 투사 장례 기금(이빨로 낸다)"
+  force: "무기 합법 소지 — 인간 중 유일. 쇠우리 9번 숙소 바닥 아래 무기 300자루(봉기 준비)"
+
+decision: >
+  흉터 회의 — 흉터(50승) 이상 투사 전원이 경기 없는 안식일 밤 쇠우리 1번 숙소 바닥에 원으로 앉는다. 말하는 순서는 승수 순이다. 결정은 손을 든 자의 승수를 합산한다
+  (78승 조합장의 손은 78표, 51승 흉터의 손은 51표). 그래서 문턱 셋과 조합장이 합치면 무엇이든 정한다.
+  새끼와 칼은 회의에 들지 못하지만, 숙소마다 '목소리'(가장 오래 산 칼) 하나를 보내 듣게 한다.
+  그롬 쪽의 일(대진, 상대 배정, 경기 날짜)은 조합이 정하지 못한다 — 이빨장수 고르바와 피도끼 전쟁무리가 정한다. 조합이 정하는 것은 훈련·치료·장례·숙소 규칙, 그리고 비밀리에 봉기.
+succession: >
+  조합장이 죽으면(대개 경기에서) 다음 안식일 흉터 회의가 흉터 이상 중 하나를 승수 합산으로 뽑는다. 조합장이 경기 밖에서 죽으면 규칙 제1조 위반을 먼저 조사한다.
+  100승자가 나오면 조합장 자리는 의미를 잃는다 — 그롬이 그를 '노예가 아닌 전사'로 데려가기 때문이다(그리고 아무도 그가 어디로 가는지 모른다).
+
+offices:
+  - id: off_guild_master
+    title: 조합장
+    holder: "unnamed:오그 (인간, 47, 78승) — 백승가의 '칼 제자'"
+    reports_to: null
+    powers: ["흉터 회의 소집", "숙소 배정", "규칙 제1조 위반 처벌", "봉기 계획 총괄(비밀)"]
+    chosen_by: "흉터 회의의 승수 합산"
+    perks: ["1번 숙소 독방", "원형장 내기 수익 1/20의 관리"]
+  - id: off_threshold_hart
+    title: 문턱 — 100승 도전자
+    holder: "unnamed:'외팔' 하르트 (인간, 30, 94승) — 다음 축제에 100승 도전"
+    reports_to: off_guild_master
+    powers: ["흉터 회의 94표"]
+    chosen_by: "승수"
+    perks: ["그롬 전사들의 존중(일부)"]
+  - id: off_scar_mara
+    title: 흉터 — 87승 (백승가 다음 세대가 노리는 이름)
+    holder: npc_mara
+    reports_to: off_guild_master
+    powers: ["흉터 회의 87표", "7번 숙소의 '목소리'"]
+    chosen_by: "승수"
+    perks: []
+  - id: off_scar_mia
+    title: 칼 — 백승가 (카렐의 손녀)
+    holder: "unnamed:미아 (인간, 22, 41승) — 쇠우리 7번 숙소"
+    reports_to: off_guild_master
+    powers: ["숙소 '목소리' — 회의에 들지 못하나 듣는다"]
+    chosen_by: "승수"
+    perks: ["탈의 이빨 목걸이의 이야기 — 그러나 목걸이는 군나르가 지닌다"]
+  - id: off_healer
+    title: 숙소 치료사
+    holder: "unnamed:노라베 (인간, 59) — 전 정원지기, 실바렌 탈주자"
+    reports_to: off_guild_master
+    powers: ["치료·장례", "약초 — 그롬에게서 붉은 젖 금단 증상을 숨기는 법을 안다"]
+    chosen_by: "조합장의 임명"
+    perks: []
+  - id: off_armory_keeper
+    title: 9번 숙소 바닥지기 (비밀)
+    holder: "unnamed:9번 숙소의 칼 셋 — 바닥 아래 무기 300자루"
+    reports_to: off_guild_master
+    powers: ["무기 은닉"]
+    chosen_by: "조합장의 지명"
+    perks: []
+  - id: off_legend
+    title: 백승의 탈 (전설 — 빈 무덤의 주인)
+    holder: npc_tal
+    reports_to: null
+    powers: ["없음 — 뼈의 전당 지하에 쇠사슬로 묶여 붉은 젖에 중독된 채 매일 밤 우르가쉬와 대련한다"]
+    chosen_by: "AS 258 태양월 대축제의 100승"
+    perks: ["원형장 옆의 빈 무덤", "봉헌대 밑돌에 새겨진 인간의 이름"]
+
+ranks:
+  - {id: rank_hundred, title: "백승자", duties: "그롬이 데려간다", privileges: "'혈명 없는 혈명' — 실은 붉은 젖의 목줄", open_to_player: true}
+  - {id: rank_threshold, title: "문턱 (90~99승)", duties: "100승 도전", privileges: "흉터 회의의 큰 손", open_to_player: true}
+  - {id: rank_scar, title: "흉터 (50~89승)", duties: "흉터 회의, 새끼 훈련", privileges: "투표, 조합장 후보", open_to_player: true}
+  - {id: rank_blade, title: "칼 (10~49승)", duties: "경기, 숙소 일", privileges: "숙소 '목소리'로 뽑힐 수 있음", open_to_player: true}
+  - {id: rank_pup, title: "새끼 (0~9승)", duties: "살아남기", privileges: "조합의 장례", open_to_player: true}
+# 플레이어의 사다리: 팔려 오거나 걸어 들어간다 → 첫 경기에서 살아남기 → 승수로 오른다. 실제 첫 임무는 조합장이 준다:
+# '하르트의 100승 경기에서 상대의 무기에 금이 가 있게 하라.'
+
+law:
+  crimes:
+    - {act: "쇠우리의 동료를 경기 밖에서 죽임", punishment: "흉터 회의 — 다음 경기에서 무기 없이 내보낸다", note: "규칙 제1조. 투사 대상"}
+    - {act: "동료의 무기를 망가뜨림", punishment: "손가락 하나", note: "투사 대상 — 조합장의 지시는 예외(그래서 첫 임무가 시험이다)"}
+    - {act: "그롬에게 조합 회의를 말함", punishment: "숙소에서 쫓아낸다 — 숙소 밖의 투사는 오래 살지 못한다", note: "투사 대상"}
+    - {act: "경기 거부 (그롬의 법)", punishment: "소모품 병사로 강등 — 죽음과 같다", note: "그롬마르의 바깥 법"}
+    - {act: "탈주 (그롬의 법)", punishment: "추적대 — 고르바는 도망친 99승 군나르를 아직 찾는다", note: "바깥 법"}
+
+customs:
+  greeting: "투사끼리 오른 주먹으로 상대 가슴의 승수 흉터(경기마다 하나씩 긋는 가슴의 짧은 칼자국)를 한 번 친다. 승수가 낮은 쪽이 먼저 친다. 말은 '아직?' — 답은 '아직.'(살아 있다)"
+  taboos: ["경기 전날 밤 상대의 이름을 부르는 것", "100승을 입에 올리는 것 — 문턱 앞에서는 더더욱", "죽은 동료의 무기를 녹이는 것 — 숙소 벽에 건다", "빈 무덤 이야기"]
+  rites:
+    - {name: "승수 긋기", when: "경기에서 이긴 밤", what: "숙소 동료가 이긴 자의 가슴에 짧은 칼자국 하나를 긋는다. 87승의 마라는 가슴이 모자라 등까지 내려갔다 — 같은 막사 동료를 이긴 셋은 왼팔 안쪽에 이름으로 새겼다"}
+    - {name: "쇠우리 장례", when: "경기에서 죽은 밤", what: "죽은 자의 무기를 숙소 벽에 걸고, 그가 이긴 수만큼 바닥을 친다"}
+    - {name: "태양월 대축제", when: "태양월 (AS 313 — 맹약회의와 같은 달)", what: "문턱의 100승 도전. 그롬 권력 교체(그라샤 피도끼의 도전)와 겹친다 — 조합은 이날을 봉기의 날로 잡았다"}
+  speech: "그롬 전투어가 섞인 짧은 노예말. 숫자(승수)로 사람을 부른다('일흔여덟', '아흔넷'). 미래형을 쓰지 않는다 — '내일 이긴다'가 아니라 '내일 싸운다'."
+
+membership:
+  join: "원형장에 팔려 오거나(노예) 스스로 걸어 들어간다(탈주자의 마지막 피난처). 규칙 제1조를 지키겠다는 말을 1번 숙소 바닥에 무릎 꿇고 한다"
+  leave: "죽음, 100승, 탈주(추적대). 그 밖에는 없다"
+  signs: ["가슴의 승수 흉터", "숙소 번호를 새긴 쇠 목걸이", "'아직?' — '아직.'"]
+
+internal_factions:
+  - {name: "봉기파 (태양월)", leader: null, aim: "조합장 오그(unnamed)와 문턱들 — AS 313 태양월 대축제에 원형장 봉기. 9번 숙소 무기 300. 계획을 아는 그롬은 재울음 노파 우르크 하나", strength: 45}
+  - {name: "백승파 (100승이 출구다)", leader: npc_mara, aim: "100승을 하면 혈명 없는 혈명 — 원형장 밖으로 걸어 나간다. 봉기는 동료를 다 죽인다. (그들은 백승자가 사슬에 묶여 있다는 것을 모른다)", strength: 40}
+  - {name: "살아남기만 하는 자들", leader: null, aim: "새끼와 칼 다수. 오늘 살아남는 것", strength: 15}
+
+assets:
+  - "무기 합법 소지(인간 유일), 전투 기술, 그롬 전사들의 존중(일부)"
+  - "원형장 내기 수익 1/20"
+  - "쇠우리 9번 숙소 바닥 아래 무기 300자루"
+  - "무르크(npc_murk)가 듣는 배수로 — 뼈의 전당 지하 감방 벽과 맞닿아 있다"
+  - "울브(npc_ulb)의 목에 걸린 감방 열쇠 — 그는 마라의 경기를 좋아한다"
+
+secrets:
+  - {fact: fact_gm_tal_alive_chained, known_by_rank: rank_hundred}
+  - {fact: fact_gm_red_milk_ritual, known_by_rank: rank_hundred}
+  - {fact: fact_gm_gorba_rigged_bouts, known_by_rank: rank_threshold}
+  - {fact: fact_gm_mara_three_names, known_by_rank: rank_scar}
+  - {fact: fact_gm_ulb_holds_cell_key, known_by_rank: rank_scar}
+  - {fact: fact_gm_murk_hears_chains, known_by_rank: rank_scar}
+  - {fact: fact_gm_tal_true_name_under_altar, known_by_rank: rank_hundred}
+  - {fact: fact_gm_gorba_seeks_gunnar_disciple, known_by_rank: rank_scar}
+  - {fact: fact_gb_gunnar_tal_truth, known_by_rank: rank_hundred}
+  # TODO-FACT: 투사 조합은 AS 313 태양월 대축제에 원형장 봉기를 준비 중이며 쇠우리 9번 숙소 바닥 아래 무기 300자루가 있다. 계획을 아는 그롬은 재울음 노파 우르크뿐 (HOUSES §5.7)
+  # TODO-FACT: 조합장 오그의 실제 첫 임무 — '하르트의 100승 경기에서 상대의 무기에 금이 가 있게 하라' (HOUSES §5.7)
+  # 모순 메모: CHARACTERS R16-03은 마라를 백승가 다음 세대처럼, HOUSES §4.4는 미아(22, 41승)를 백승가로 둔다 — 둘 다 살렸다(마라는 백승가가 아니다).
+
+relations:
+  - {to: fac_grom, stance: -20, note: "행렬 밖 — 해골이빨은 무관심, 피도끼는 투사를 소모품으로 쓴다(적대)"}
+  - {to: fac_nameless, stance: 20, note: "행렬 밖 — 탈주자의 마지막 피난처가 여기다"}
+  - {to: fac_barg, stance: -30, note: "행렬 밖 — 투사 거래"}
+  - {to: fac_collar, stance: -20, note: "행렬 밖"}
+toward_echo: "무관심에 가깝다. '100승을 하면 혈명 없는 혈명을 받는다. 죽고 다시 돌아올 필요가 있나?' — 그러나 잔향이 투사라면 그들은 가장 먼저 그를 따른다. 잔향이 백승자의 사슬(붉은 젖)을 드러내면 백승파가 무너지고 봉기파가 조합 전체를 쥔다."
+player_paths:
+  - "가입: 새끼 → 칼 → 흉터 → 문턱 → 100승. 회귀가 가장 정직하게 보상되는 사다리 — 몸의 상한에 묶이지만 기술은 남는다"
+  - "봉기: 태양월 대축제 — 그라샤의 도전과 같은 날. 원형장 봉기(찬가 4단계)의 최적 시점이자 최악의 학살 시점"
+  - "탈: 울브의 열쇠, 무르크의 배수로 — 뼈의 전당 지하. 탈을 빼내면 붉은 젖 금단으로 무너진다"
+  - "고르바: 그는 마라의 100승 상대로 '군나르의 제자'를 찾는다 — 플레이어가 군나르에게 배웠다면 그 자리에 선다"
+regression:
+  fixed: ["하르트 94승, 마라 87승, 오그 78승", "9번 숙소 무기 300", "탈은 뼈의 전당 지하에 살아 있다", "AS 313 태양월 대축제"]
+  flow: ["그 시즌의 대진 — 고르바가 짠다"]
+  drift: ["새끼 개개인의 생사", "어느 밤 우르가쉬와 탈의 대련이 끝나는 시각"]

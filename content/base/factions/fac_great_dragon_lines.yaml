@@ -19,10 +19,17 @@ size:
   force: "진룡 5마리 — 그러나 용제국 밖 12마리 중 계승 위기에 실제로 날아올 수 있는 것은 소수. 스카디아는 흰 알의 즉위를 위해 날아올 준비가 되어 있다"
 
 offices:
+  - id: off_no_assembly
+    title: 대룡 회합 (존재한 적 없는 합의체)
+    holder: null          # 형식상의 루트. 다섯 대룡이 한자리에 모인 적은 없다 — 모이는 날이 계승 판도가 뒤집히는 날이다
+    reports_to: null
+    powers: ["없음 — 각 대룡이 자기 보고의 유일한 주인이다. 이 자리는 '공석'이라는 사실을 보이기 위한 이름이다"]
+    chosen_by: "—"
+    perks: []
   - id: off_skadia
     title: 서리비늘 혈통의 가장 오래된 용 — 스카디아
     holder: "unnamed:스카디아 서리비늘 — 2,600세 (이졸데의 어미)"   # TODO-NPC
-    reports_to: null
+    reports_to: off_no_assembly
     powers: ["서리 이빨 빙봉과 얼음 정원", "흰 알 지지 — 이졸데의 결정을 따른다 (지지율 4)", "북방 국경에서 날아올 수 있는 대룡"]
     chosen_by: "혈통상 가장 오래된 용 — 서리비늘의 장(長)은 연령으로 정해진다"
     perks: ["얼음 속에 AS 0 이전에 얼어붙은 아스테리아 시민 일곱 — 그중 하나는 글이 새겨진 석판을 품고 있다"]
@@ -36,14 +43,14 @@ offices:
   - id: off_ormegin
     title: 구리뿔 혈통의 가장 오래된 용 — 오르메긴
     holder: "unnamed:오르메긴 구리뿔 — 2,200세"   # TODO-NPC
-    reports_to: null
+    reports_to: off_no_assembly
     powers: ["구리 가마와 두르강 왕가와의 불가침 계약 (SK 1,900)", "이긴 쪽에 금속을 판다 — 중립"]
     chosen_by: "혈통상 가장 오래된 용"
     perks: ["금속, 특히 두르강이 만든 물건의 수집", "대장장이 노예 80 + 두르강 계약에 따른 인간 계약 광부"]
   - id: off_salastra
     title: 청동물결 혈통의 가장 오래된 용 — 살라스트라
     holder: "unnamed:살라스트라 청동물결 — 1,900세"   # TODO-NPC
-    reports_to: null
+    reports_to: off_no_assembly
     powers: ["진주 무덤과 남해 해군", "세렌 동맹과의 수호 계약", "멜리산드 지지 (지지율 3)"]
     chosen_by: "혈통상 가장 오래된 용"
     perks: ["침몰선과 그 화물의 수집", "진주 잠수 노예 600 — 세렌 계약민 형식"]
@@ -51,7 +58,7 @@ offices:
   - id: off_gromak
     title: 검댕 혈통의 가장 오래된 용 — 그로마크
     holder: "unnamed:그로마크 검댕 — 2,900세"   # TODO-NPC
-    reports_to: null
+    reports_to: off_no_assembly
     powers: ["검은 유리 둥지 — 지금은 같은 하루를 반복해서 산다", "계승 입장 없음"]
     chosen_by: "혈통상 가장 오래된 용 — 그러나 그의 혈통은 사실상 그 혼자다"
     perks: ["아스테리아의 잔해 수집", "대붕괴 전날을 반복해서 사는 증언자 — '내일은 대붕괴의 날'이라고 설득하면 포위 계획을 이야기한다 (바르스카르가 의식 한가운데에 불을 뿜기로 미리 결정했다)"]
@@ -59,7 +66,7 @@ offices:
   - id: off_beryla
     title: 녹옥 혈통의 가장 오래된 용 — 베릴라
     holder: "unnamed:베릴라 녹옥발톱 — 1,600세 (용좌에 서약한 용제국 진룡)"   # TODO-NPC
-    reports_to: null
+    reports_to: off_no_assembly
     powers: ["이끼 왕좌와 정원 길 남쪽 숲", "아우락스 지지 (지지율 4) — 즉위 시 왕비 자리를 약속받았다"]
     chosen_by: "혈통상 가장 오래된 용"
     perks: ["살아 있는 것들 — 희귀한 식물, 동물, 노래하는 인간 40", "그라넥 평원과 영지가 붙어 있다"]

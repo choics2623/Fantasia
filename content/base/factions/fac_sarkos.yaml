@@ -147,7 +147,7 @@ relations:
   - {to: fac_barg, stance: 50, note: "공생 — 최대 후원자 (id는 바르그 조합 담당 작가 확인)"}
   - {to: fac_kaldaran, stance: -20, note: "칼다란이 이용하지만 경멸한다 — 사르코스는 두려움 섞인 거리 두기"}
   - {to: fac_orsel, stance: 40, note: "노예선 공동 운영"}
-  - {to: fac_seren_broker_guild, stance: 10, note: "세렌 계약 중개인 조합('먹물비늘 조합') — 경쟁 겸 협력 (id는 담당 작가 확인)"}
+  - {to: fac_inkscale, stance: 10, note: "세렌 계약 중개인 조합('먹물비늘 조합') — 경쟁 겸 협력 (id는 담당 작가 확인)"}
   - {to: fac_raven_house, stance: 20, note: "고드릭이 판 농노를 오르셀 경유로 사들인다"}
   - {to: fac_scale_council, stance: 20, note: "원로회의 비늘혈 후원 관계 (원로회 쪽 값 +20과 같게)"}
 toward_echo: "공식은 아우락스 편 — 징후자는 화형. 실제로는 '값'. 잔향 징후가 있는 아이에게는 30~60비늘을 매긴다. 그러나 이사벨은 지난 212건이 모두 틀렸음을 안다 — 진짜 잔향이 눈앞에 서면 처음으로 값을 매기지 못할 수 있다."

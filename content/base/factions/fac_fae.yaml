@@ -1,0 +1,259 @@
+# 페이 가시 궁정 — 꿈 혈명('변덕')의 굴레(진실을 말하면 그 말에 묶인다)가 만든 약속의 궁정.
+# 근거: HOUSES §3.9, RACES §15, REGIONS §6, facts/thornmist.yaml.
+# 조정: 바꿔치기 장인의 이름이 문서마다 다르다 — HOUSES '실뜨기', REGIONS '유리 손가락 부인', RACES '은방울 부인'. 여기서는 셋 모두 '자리의 별명'으로 본다 (보고).
+id: fac_fae
+name: 페이 가시 궁정 (가시 왕관의 궁정)
+kind: polity
+race: [페이 — 여름 궁정, 겨울 궁정, 붉은모자, 픽시, 바꿔치기, 인간 장난감·돌아온 아이]
+governance: 약속 궁정 — 거울 전언제  # 직위는 약속의 형태이고 모든 결정은 반대로 전해지거나 농담으로 판결된다
+motto: "웃어라, 아니면 약속하라. (페이는 가훈을 말하지 못한다 — 이것은 인간이 붙인 말이다)"
+seat: 가시 궁정 (가시안개 숲 중심 — 왕좌 뒤 가시 속에 '웃음의 상자')
+size:
+  members: "이름 있는 페이 약 4,000(RACES) — 셀 수 없는 작은 이. 인간 장난감·하인 580~1,500, 바꿔치기 아이 출신 120, 두번째 엄마들의 마을 약 40"
+  territory: "가시안개 숲 — 숲 안의 1년이 하룻밤일 수 있다. 안개 장터, 옛 돌 고리(회색여울 근처)가 숲 밖의 접점"
+  wealth: "화폐 없음 — 약속과 대가. 안개 장터 시세(기억·웃음·이름의 첫 글자·목소리). 저주받은 유물이 세렌 암시장에 흘러나옴"
+  force: "환영, 길 잃게 하기, 계약 함정. 쇠 무기를 든 무리는 숲이 삼킨다. 정면 전투는 하지 않는다"
+
+decision: >
+  페이는 진실을 말할 수 없거나 말하면 그 말에 묶인다. 그래서 궁정의 결정은 '말'이 아니라 '약속의 형태'로 존재한다.
+  여왕은 한 마디 하고, 그 말은 첫째 원의 거울 시녀 셋('어제', '아니', '혹시')이 거꾸로 전한다 — 시녀의 말이 진실일 수 있는 것은 그 때문이다.
+  전해진 말은 궁정이 '웃음'으로 받는다. 웃음 재판관(판사 휘파람)이 안건을 농담의 형태로 판결하고, 궁정이 세 번 웃으면 그 판결이 법이 된다.
+  거부권은 '지루하다'다. 한 페이가 안건에 '지루하다'고 말하면 그 안건은 흥미를 잃어 사라진다 — 여왕이 가장 두려워하는 말이다.
+  직위는 계절마다 바뀔 수 있고, 약속이 이행되면 그 자리가 사라진다(공석이 아니라 소멸). 칭호로만 불리고 진짜 이름은 이름 수집가가 보관한다.
+  정기 회기는 긴밤월 '가시 무도회' — 여왕의 궁정이 열리는 밤이며 숲 밖 인간이 가시 한 가닥의 초대장을 받는 경우가 있다.
+  인간은 의제가 아니다. 인간은 장난감이고 약속의 상대다. 계약 연회에서 음식을 먹으면 무엇을 주기로 했는지는 나중에 안다.
+succession: >
+  여왕 자리는 이은 적이 없다 — 신살 때 웃은 자 그대로다. 여왕의 지지(계승 위기에서 '가장 재미있는 쪽')는 현재 카스파르다('잡종 왕이라니, 웃기잖아').
+  여왕의 진명은 시대의 마지막 장에서만 말할 수 있고, 그 전에 추측한 자는 그녀의 것이 된다. 잔향이 모든 이름을 말하는 날 그 이름도 불리고, 그것이 죽음인지 해방인지는 여왕도 모른다.
+  하위 직위는 계절의 놀이에 따라 바뀐다 — 가장 오래 기억되는 자가 높다. 잊혀진 페이는 사라진다.
+
+offices:
+  - id: off_queen
+    title: 가시 왕관의 여왕
+    holder: npc_thorn_queen
+    reports_to: null
+    powers: ["궁정의 모든 말 — 거울 시녀를 통해 거꾸로 전해진다", "계승 위기의 지지(가장 재미있는 쪽)", "AS 311부터 숲 밖으로 사자를 보냄('가장 좋은 장난감이 돌아왔다')"]
+    chosen_by: "신살 때 웃은 자. 이름을 부르면 주의를 끈다"
+    perks: ["가시 궁정 — 웃음의 상자는 왕좌 뒤 가시 속에"]
+  - id: off_mirror_yesterday
+    title: 거울 시녀 '어제'
+    holder: "unnamed:시녀 '어제'"
+    reports_to: off_queen
+    powers: ["여왕의 말을 거꾸로 전함 — 지나간 일을 현재형으로"]
+    chosen_by: "여왕의 변덕 — 계절마다 바뀔 수 있다"
+    perks: []
+  - id: off_mirror_no
+    title: 거울 시녀 '아니'
+    holder: "unnamed:시녀 '아니'"
+    reports_to: off_queen
+    powers: ["여왕의 말을 부정으로 전함"]
+    chosen_by: "여왕의 변덕"
+    perks: []
+  - id: off_mirror_perhaps
+    title: 거울 시녀 '혹시'
+    holder: "unnamed:시녀 '혹시'"
+    reports_to: off_queen
+    powers: ["여왕의 말을 가능성으로 전함"]
+    chosen_by: "여왕의 변덕"
+    perks: []
+  - id: off_laugh_judge
+    title: 웃음 재판관
+    holder: "unnamed:판사 휘파람"
+    reports_to: off_queen
+    powers: ["계약 위반 심판 — 판결은 반드시 농담의 형태", "궁정이 세 번 웃으면 법"]
+    chosen_by: "여왕의 변덕"
+    perks: []
+  - id: off_thorn_knights
+    title: 가시 기사 (13)
+    holder: "unnamed:기사 은방울, 기사 녹슨 장미 외 11 — 숲 경계를 지키고 계약을 이행시킨다"
+    reports_to: off_queen
+    powers: ["숲 경계 방어", "계약 이행 강제", "초대 없이 궁정에 든 자를 장난감으로 만든다(세 번 웃는 기사)"]
+    chosen_by: "여왕이 웃은 자 중에서"
+    perks: []
+  - id: off_changeling_master
+    title: 바꿔치기 장인 (실뜨기 / 유리 손가락 부인 / 은방울 부인)
+    holder: "unnamed:바꿔치기 장인 — 인간 아기를 데려가고 나뭇가지·그림자 '대체품'을 놓는다"
+    reports_to: off_summer_court
+    powers: ["요람의 아기 교체", "숲에서 페이어를 가르침", "돌아온 아이 송환"]
+    chosen_by: "여름 궁정의 위임"
+    perks: []
+  - id: off_dawn_hunters
+    title: 새벽 사냥꾼
+    holder: "unnamed:새벽 사냥꾼들 — 숲에 들어온 자를 '놀이'로 쫓는다"
+    reports_to: off_thorn_knights
+    powers: ["숲 바깥 원의 추격"]
+    chosen_by: "놀이의 계절"
+    perks: []
+  - id: off_summer_court
+    title: 여름 궁정 (인간 아이 수집)
+    holder: "unnamed:은방울 부인 (RACES 신규)"
+    reports_to: off_queen
+    powers: ["인간 아이 모으기", "바꿔치기의 주인"]
+    chosen_by: "계절"
+    perks: []
+  - id: off_winter_court
+    title: 겨울 궁정 (인간 기억 수집)
+    holder: "unnamed:엉겅퀴 공 (RACES 신규) — 대붕괴 당시 아스테리아 인간의 기억 한 해를 갖고 있다"
+    reports_to: off_queen
+    powers: ["인간 기억 수집·거래"]
+    chosen_by: "계절"
+    perks: []
+  - id: off_fog_market
+    title: 안개 장터 관장 ('재채기 공작')
+    holder: "unnamed:재채기 공작"
+    reports_to: off_queen
+    powers: ["안개 장터 시세 — 길 안내=기억, 치유=웃음 1년, 숲 밖 길=이름 첫 글자, 진명 한 조각=목소리 또는 첫째 아이"]
+    chosen_by: "여왕의 변덕"
+    perks: []
+  - id: off_name_collector
+    title: 이름 수집가
+    holder: "unnamed:이름 수집가 — 빼앗은 이름 보관"
+    reports_to: off_queen
+    powers: ["진짜 이름을 말한 자의 이름 수거"]
+    chosen_by: "여왕의 변덕"
+    perks: ["보관된 이름들"]
+  - id: off_pixie_teacher
+    title: 거짓의 스승 (픽시)
+    holder: npc_nibble
+    reports_to: off_queen
+    powers: ["가르침을 전부 반대말로 — 학생이 뒤집을 줄 알아야 배운다", "엘린을 바꿔치기 한 장본인"]
+    chosen_by: "스스로 — 진실을 말할 수 없어서 선생이 되었다"
+    perks: ["정신 마법·기만 스승"]
+  - id: off_red_cap
+    title: 붉은모자 (남쪽 경계 사냥)
+    holder: npc_grik
+    reports_to: off_thorn_knights
+    powers: ["남쪽 경계에서 탈주자를 사냥해 모자를 피에 적신다 — 여왕도 통제하지 않는다"]
+    chosen_by: "스스로 — 모자가 마르면 죽는다"
+    perks: ["잿빛 실 남쪽 우회로와 사냥터가 겹친다"]
+  - id: off_messenger
+    title: 거꾸로 걷는 이 (여왕의 사자 — 숲 밖)
+    holder: "unnamed:거꾸로 걷는 이 — 회색여울 옛 돌 고리에서 플레이어를 기다린다"
+    reports_to: off_queen
+    powers: ["여왕의 사자 — '여왕께서 네 다음 이름을 알고 싶어 하신다'"]
+    chosen_by: "여왕의 변덕"
+    perks: []
+  - id: off_fallen
+    title: 떨어진 자들 (궁정 밖 — 진실을 말하게 된 페이)
+    holder: "unnamed:잿가루 — 모르바 늪 마녀들의 오랜 친구. 바꿔치기 아이를 숲에서 되찾는 법을 안다"
+    reports_to: off_queen
+    powers: ["진실을 말하게 된 추방자 — 대가: 가장 아끼는 기억 하나"]
+    chosen_by: "추방 — 인간과 너무 오래 놀았다"
+    perks: []
+  - id: off_toy_garden
+    title: 장난감 정원 — 목각 기사 (인간, 계약 용병)
+    holder: npc_odo
+    reports_to: off_summer_court
+    powers: ["없음 — AS 241 서른 살에 숲에 들어와 페이 계약으로 늙지 않고 매일 같은 춤을 춘다"]
+    chosen_by: "계약 — 풀면 71년치를 하룻밤에 산다"
+    perks: []
+  - id: off_time_keeper
+    title: 바꿔치기 당한 인간 — 바깥 시간을 알리는 자
+    holder: npc_elin
+    reports_to: off_changeling_master
+    powers: ["장난감 정원의 인간들에게 바깥 시간이 얼마나 흘렀는지 알려 준다", "밤마다 손바닥에 페이어 낱말을 쓴다"]
+    chosen_by: "니블의 바꿔치기 — '자기 작품'"
+    perks: []
+  - id: off_stone_counters
+    title: 돌 세는 자들 지도자 (인간)
+    holder: "unnamed:할멈 니나 (인간, 나이 불명) — 조약돌 하나를 하루로 센다. 인간 23명"
+    reports_to: off_toy_garden
+    powers: ["숲 안 바깥 시간 셈"]
+    chosen_by: "스스로"
+    perks: []
+
+ranks:
+  - {id: rank_queen, title: "여왕", duties: "한 마디", privileges: "이름을 부르면 안 되는 자", open_to_player: false}
+  - {id: rank_high_one, title: "높은 이 (이름 있는 페이 — 궁정 귀족)", duties: "궁정의 직위, 약속의 이행", privileges: "얼마나 오래 기억되는가로 서열", open_to_player: false}
+  - {id: rank_named_fae, title: "이름 있는 페이", duties: "궁정의 놀이", privileges: "칭호만 쓰며 진짜 이름은 숨긴다", open_to_player: false}
+  - {id: rank_small_one, title: "작은 이 (픽시 등)", duties: "장난, 전령", privileges: "없음", open_to_player: false}
+  - {id: rank_changeling, title: "바꿔치기 (페이 아이)", duties: "인간 아이와 맞바뀌어 인간 사이에서 산다", privileges: "페이어를 배우며 큼", open_to_player: false}
+  - {id: rank_toy, title: "장난감 (인간)", duties: "페이가 부르면 춤추고 노래하고 수수께끼를 맞히고 짐승이 된다", privileges: "페이의 음식 — 세 번 먹으면 숲 밖 음식이 재 맛이 난다", open_to_player: true, condition: "초대 없이 궁정에 들어서거나 계약 연회에서 음식을 먹는다. 쇠를 들지 않고 이름을 숨긴다"}
+  - {id: rank_returned, title: "돌아온 아이 (바꿔치기 출신 인간)", duties: "없음 — 숲에서 자라 몇 년 뒤 돌려보내진다", privileges: "페이어 단어 몇 개, 숲의 안전한 길을 안다", open_to_player: true, condition: "플레이어가 잔향이 이식을 거부하는 판정(D −20)을 거쳐 출신이 될 수 있는 길 — 일반 인간은 대개 꺼려진다(목줄단이 마녀로 밀고하기 쉽다)"}
+
+law:
+  crimes:
+    - {act: "약속 위반", punishment: "약속에 걸었던 것을 강제로 빼앗긴다", note: "페이·인간 모두. 집행자는 약속 그 자체. 한 번 '약속한다'고 하면 페이 자신도 깰 수 없다"}
+    - {act: "'고맙다'고 말함", punishment: "빚이 생긴다 — 상대 페이가 아무 때나 갚으라고 할 수 있다", note: "인간 대상 (금기)"}
+    - {act: "진짜 이름을 말함", punishment: "이름 수집가가 그 이름을 가져간다", note: "양쪽 모두. 스스로 지은 이름을 가진 자는 '이름 빼앗기'에 면역"}
+    - {act: "여왕의 이름을 부름", punishment: "여왕의 주의 — 결과 무작위(대개 끔찍함)", note: "양쪽 모두"}
+    - {act: "초대 없이 궁정 진입", punishment: "장난감이 된다", note: "인간 대상. 집행 세 번 웃는 기사"}
+    - {act: "철(쇠)을 지니고 들어옴", punishment: "길이 닫힌다 — 안내도 받을 수 없다. 철은 실제 보호 수단", note: "인간 대상"}
+    - {act: "공짜 선물을 받음 / 선물 거절의 무례", punishment: "받으면 빚(페이에게도), 거절하면 역린 — 모욕", note: "양쪽 모두"}
+    - {act: "'진실을 말하라'고 강요하는 요구에 응함 / 강요에 성공함", punishment: "응한 페이는 그 말에 묶이고, 강요한 자도 같은 말에 묶인다", note: "페이 대상 — 강요한 인간도 묶인다"}
+    - {act: "진실을 말하게 되도록 인간과 너무 오래 놂", punishment: "추방 — 떨어진 자가 된다", note: "페이 대상"}
+    - {act: "지루하게 만듦", punishment: "여왕의 흥미를 잃은 안건·자는 '사라진다'", note: "양쪽 모두 — 가장 큰 불경"}
+
+customs:
+  greeting: "인사 대신 수수께끼나 반대말을 던진다. 이름 대신 별명을 말하고 상대의 별명을 먼저 묻지 않는다. '고맙다'를 말하는 순간 빚이 생기므로 감사는 '재미있었다'로 한다. 계약 연회의 첫 음식은 한 입만."
+  taboos:
+    - "여왕의 이름을 부르는 것 — 부르면 여왕이 온다"
+    - "공짜 선물을 받는 것, '고맙다'고 말하는 것"
+    - "쇠(대장간에서 두드린 쇠)를 궁정에 들이는 것"
+    - "'진실을 말하라'는 요구에 응하는 것, 스스로 지은 이름을 가진 자에게 거짓 이름을 붙이는 것"
+    - "원 안으로 발 들이기(버섯 고리), 거울 보기, 음식 세 번"
+  rites:
+    - {name: "가시 무도회", when: "긴밤월", what: "여왕의 궁정에서 열리는 무도회. 숲 밖 인간이 가시 한 가닥의 초대장을 받기도 한다"}
+    - {name: "계약 연회", when: "수시", what: "연회에서 음식을 먹으면 계약이 성립한다 — 무엇을 주기로 했는지는 나중에 안다"}
+    - {name: "바꿔치기", when: "수시(요람의 아기)", what: "인간 아기를 데려가고 나무토막이나 작은 이를 놓아둔다. 몇 년 뒤 돌려보내기도 한다(돌아온 아이)"}
+    - {name: "칭호 교체", when: "계절마다", what: "직위가 놀이처럼 바뀐다. 약속이 이행되면 자리가 사라진다"}
+    - {name: "웃음 판결", when: "계약 위반 시", what: "웃음 재판관이 농담으로 판결하고 궁정이 세 번 웃으면 법"}
+  speech: "페이는 진실을 말할 수 없으므로 거짓이나 반쯤의 진실로 말한다. 질문에 질문으로 답하고, 중요한 것은 반대말로 말하며, '약속한다'는 말은 극히 아낀다(그 말은 페이도 못 깬다). 존대는 오래 기억되는 정도로 정해지고, 인간에게는 '작은 손님', '장난감'으로 부른다. 쇠 이야기, 지루한 설명은 하지 않는다. 친절해 보이는 말일수록 대가가 크다."
+
+membership:
+  join: "페이는 꿈에서 깨어나거나 바꿔치기로 태어난다. 인간은 초대 없이 궁정에 들어서거나 계약 연회에서 음식을 먹어 장난감이 된다. 세 번 먹으면 숲 밖 음식이 재 맛이 난다."
+  leave: "인간은 약속에 걸었던 것(기억·목소리·이름의 첫 글자)을 내고 숲 밖 길을 산다. 페이는 잊혀지면 사라지거나 진실을 말하게 되어 떨어진 자로 추방된다."
+  signs: ["가시 한 가닥의 초대장", "그림자가 몸과 다르게 움직인다", "별명(진짜 이름은 숨김)", "철 못(인간이 숲에서 지키는 표식)", "돌 세는 자들의 조약돌 달력"]
+
+internal_factions:
+  - {name: "여름 궁정 (인간 아이 수집)", leader: null, aim: "인간 아이를 모아 바꿔치기. 은방울 부인", strength: 35}
+  - {name: "겨울 궁정 (인간 기억 수집)", leader: null, aim: "인간의 기억을 모은다. 엉겅퀴 공이 대붕괴 당시 아스테리아의 기억 한 해를 갖고 있다", strength: 35}
+  - {name: "여왕의 사자들", leader: npc_thorn_queen, aim: "'가장 좋은 장난감이 돌아왔다'며 잔향을 지켜본다. 이름을 알아낸다", strength: 20}
+  - {name: "떨어진 자들 (진실을 말하게 된 페이)", leader: null, aim: "궁정 밖에서 인간과 지낸다. 잿가루는 늪 마녀들의 친구", strength: 10}
+
+assets:
+  - "웃음의 상자 — 신살 때의 웃음 봉인. 열면 진실 한 조각, 대가로 연 사람은 웃음을 영원히 잃는다"
+  - "이름 수집가가 보관한 이름들"
+  - "안개 장터 — 기억·웃음·이름·목소리 거래"
+  - "바꿔치기 아이와 숲에서 배운 페이어('거꾸로 읽는 진명어')"
+  - "가시 기사 13, 새벽 사냥꾼, 숲 자체(쇠 무기를 든 군대를 삼킨다)"
+  - "장난감 정원, 두번째 엄마들의 마을(엘다르 '잊힌 자' 출신 정원지기 약 40)"
+
+secrets:
+  - {fact: fact_tm_queen_laugh_reason, known_by_rank: rank_queen}
+  - {fact: fact_tm_queen_true_name_fate, known_by_rank: rank_queen}
+  - {fact: fact_tm_queen_name_rule, known_by_rank: rank_high_one}
+  - {fact: fact_tm_queen_knows_echo, known_by_rank: rank_queen}
+  - {fact: fact_tm_queen_asterion_spectacle, known_by_rank: rank_queen}
+  - {fact: fact_tm_laugh_box, known_by_rank: rank_high_one}
+  - {fact: fact_tm_nibble_took_elin, known_by_rank: rank_named_fae}
+  - {fact: fact_tm_elin_double, known_by_rank: rank_named_fae}
+  - {fact: fact_tm_odo_contract, known_by_rank: rank_high_one}
+  - {fact: fact_tm_grik_south_border, known_by_rank: rank_named_fae}
+  - {truth: T01, level: whole, holders: [npc_thorn_queen]}
+  - {truth: T02, level: whole, holders: [npc_thorn_queen]}
+  - {truth: T03, level: whole, holders: [npc_thorn_queen]}
+  - {truth: T06, level: fragment, holders: [npc_thorn_queen]}
+  - {truth: T09, level: fragment, holders: [npc_thorn_queen]}
+  # TODO-FACT: 바꿔치기된 인간 아이들은 숲에서 페이어(진명어의 '거꾸로 읽기')를 배운다. 숲 밖으로 돌아온 자는 진명을 '귀로' 반쯤 알아듣지만 입에 올리면 수명이 탄다 — 잔향에게는 최고의 교사다 (HOUSES §3.9)
+
+relations:
+  # 페이 궁정은 HOUSES §6.1 행렬에 없다 — 아래 값은 서술 근거로 정한 '행렬 밖' 값이다.
+  - {to: fac_kaspar, stance: 30, note: "행렬 밖 — 여왕이 '잡종 왕이라니, 웃기잖아'라며 지지(계승 지지표 1%, 여왕이 지루해지면 0)"}
+  - {to: fac_aurax, stance: -10, note: "행렬 밖 — 지루한 쪽"}
+  - {to: fac_melisande, stance: -10, note: "행렬 밖"}
+  - {to: fac_eldar, stance: 0, note: "행렬 밖 — 엘다르 '잊힌 자'가 숲에 와 두번째 엄마들의 마을을 이뤘다"}
+  - {to: fac_light, stance: -30, note: "행렬 밖 — 돌아온 아이를 정화청이 마녀로 밀고한다"}
+  - {to: fac_swamp_hags, stance: 25, note: "행렬 밖 — 안개 계보(여섯째)가 페이 이슬을 빌린 피로 쓰고 잿가루가 오랜 친구"}
+  - {to: fac_nameless, stance: 10, note: "행렬 밖"}
+toward_echo: "구경하기·이용하기. 페이는 잔향을 알아본다 — 그리고 그것을 대륙에서 가장 재미있는 장난감으로 여긴다. 여왕은 3,400년간 잔향을 '구경'해 왔고 AS 311부터 사자를 보낸다. 진명을 아는 자는 페이에게 가장 중요한 이름을 가진 자이기도 하다."
+player_paths:
+  - "계약: 안개 장터에서 길 안내(기억 1개)·치유(웃음 1년)·진명 한 조각(목소리)을 산다. 계약의 모든 단어를 따져 묻는다(학식/통찰)"
+  - "스승: 니블의 반대말 수업(정신 마법·기만). 엘린에게서 페이어를 배운다"
+  - "이용: 스스로 지은 이름으로 이름 빼앗기에 면역. 쇠로 환영을 찢는다. 수수께끼와 새 이야기로 흥미를 끈다"
+  - "구출: 바꿔치기된 아이를 되찾는다 — 잿가루의 방법, 대가는 가장 아끼는 기억 하나. 오도의 계약을 푼다"
+  - "금단: 웃음의 상자 — 진실 한 조각 대신 웃음을 영원히 잃는다"
+regression:
+  fixed: ["여왕의 이름 규칙(시대의 마지막 장에서만)", "웃음의 상자의 위치와 대가", "오도의 계약(71년)", "여왕의 잔향 인지와 사자 파견"]
+  flow: ["여름 궁정 대 겨울 궁정의 세력비", "여왕의 카스파르 지지가 이어지는 정도(지루해지면 0)", "안개 장터의 시세"]
+  drift: ["숲 안 시간의 흐름(1년이 하룻밤)", "거꾸로 걷는 이가 나타나는 장소·날짜", "바꿔치기되는 요람의 아기", "칭호의 교체"]

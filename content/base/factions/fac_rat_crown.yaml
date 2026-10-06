@@ -1,0 +1,134 @@
+# 쥐들의 왕관 — 법이 닿지 않는 곳의 질서. 잿빛 겨울의 굶주린 뒷골목에서 태어났다. 그리고 실은 세렌 졸라크 상가의 하청이다.
+# 근거: HOUSES §5.11·§3.4(졸라크)·§3.11(채찍손 길드), WORLD_BIBLE §2(AS 0~38 잿빛 겨울), REGIONS §1(바알카르), facts/drakmar.yaml.
+id: fac_rat_crown
+name: 쥐들의 왕관 (도시 뒷골목 조직)
+kind: org
+race: [크릭, 인간, 추방 수인(바르그·스카브), 나가, 몰락 용인]
+governance: 힘의 서열 + 왕관 도전 — 왕관을 쓴 자가 쥐왕. 도전은 '왕관 훔치기'로 한다
+motto: "굶은 쥐가 왕이다."
+seat: 바알카르 하수도 '왕관 방'. 세렌 '밤 부두' 지부, 오르셀 나루 지부
+size:
+  members: "약 1,500 — 쥐왕 1, 이빨 5, 꼬리(구역장) 약 40, 쥐 약 1,450"
+  territory: "바알카르 하수도 전체, 세렌 밤 부두, 오르셀 나루. 밀수 길은 은빛 강 전체"
+  wealth: "밀수, 장물, 도박(잉크손 베아의 도박장), 위조(인간용 통행증 1장 2비늘), 경비병 매수 명단 — 그러나 진짜 장부는 세렌 졸라크 상가가 쥐고 있다"
+  force: "칼 든 쥐 수백, 해결사 '쉰목소리' 루, 하수도 지도 — 칼다란 도시 경비가 하수도에 들어오지 않는다"
+
+decision: >
+  쥐왕이 정한다. 이빨 다섯(종족별 간부)은 매달 첫 안식일 밤 왕관 방의 '다섯 접시'에서 자기 구역 수입을 접시에 올린다 — 가장 많이 올린 이빨이 그달 쥐왕 다음의 말을 한다.
+  쥐왕을 바꾸는 법은 하나 — 왕관(녹슨 쇠 왕관, 크릭 머리에 맞는다)을 훔쳐 사흘 동안 지니고 다섯 접시에 나타나는 것. 피프는 일곱 번째로 왕관을 쓴 자다.
+  그러나 큰일(밀수 경로 변경, 큰 장물 처분, 졸라크가 원하는 '심부름')은 피프가 정하지 않는다 — 세렌에서 매듭 편지가 온다. 쥐들 대부분은 그 사실을 모른다.
+succession: "왕관 훔치기(위). 쥐왕이 죽으면 왕관은 왕관 방 기둥에 걸리고, 사흘 안에 그것을 벗겨 쓴 자가 왕이다 — 일곱 번 바뀌는 동안 졸라크 장부는 한 번도 바뀌지 않았다."
+
+offices:
+  - id: off_rat_king
+    title: 쥐왕
+    holder: "unnamed:피프 일곱째 (크릭, 31) — 일곱 번째로 왕관을 쓴 자"
+    reports_to: null
+    powers: ["모든 구역", "이빨 임명", "왕관 방"]
+    chosen_by: "왕관 훔치기"
+    perks: ["녹슨 쇠 왕관", "하수도 지도 원본"]
+  - id: off_tooth_forger
+    title: 이빨 — 위조 (인간)
+    holder: "unnamed:하랄 (인간, 44) — 이름 없는 자들의 심지. 통행증 1/3이 잿빛 실로 간다"
+    reports_to: off_rat_king
+    powers: ["위조 통행증 공방"]
+    chosen_by: "쥐왕의 임명"
+    perks: []
+  - id: off_tooth_fence
+    title: 이빨 — 장물 (나가)
+    holder: "unnamed:모스 (나가, 120)"
+    reports_to: off_rat_king
+    powers: ["장물 시장", "세렌 밤 부두 지부"]
+    chosen_by: "쥐왕의 임명"
+    perks: []
+  - id: off_tooth_fixer
+    title: 이빨 — 해결사 (추방 바르그)
+    holder: "unnamed:'쉰목소리' 루 (추방 바르그, 38)"
+    reports_to: off_rat_king
+    powers: ["처리, 빚 받기"]
+    chosen_by: "쥐왕의 임명"
+    perks: []
+  - id: off_tooth_dice
+    title: 이빨 — 도박장 (몰락 용인)
+    holder: "unnamed:잉크손 베아 (몰락 용인, 92)"
+    reports_to: off_rat_king
+    powers: ["도박장", "몰락 귀족 연줄"]
+    chosen_by: "쥐왕의 임명"
+    perks: []
+  - id: off_tooth_ears
+    title: 이빨 — 정보 (크릭)
+    holder: "unnamed:시스 (크릭, 25)"
+    reports_to: off_rat_king
+    powers: ["정보", "궁정 크릭 하인망"]
+    chosen_by: "쥐왕의 임명"
+    perks: []
+  - id: off_tail
+    title: 꼬리 (구역장 — 집합 자리)
+    holder: "unnamed:꼬리 약 40"
+    reports_to: off_rat_king
+    powers: ["구역"]
+    chosen_by: "이빨의 지명"
+    perks: []
+  - id: off_ledger_owner
+    title: 진짜 장부 — 세렌 졸라크 상가 (조직 밖의 주인)
+    holder: "unnamed:졸라크 니에바 (나가, 410) — 세렌 9의석"
+    reports_to: null
+    powers: ["쥐들의 왕관 실제 장부 보관", "큰일의 지시(매듭 편지)"]
+    chosen_by: "—"
+    perks: ["사르코스의 징후자 판매 장부 사본도 같은 금고에"]
+
+ranks:
+  - {id: rank_king, title: "쥐왕", duties: "왕관을 지킨다", privileges: "모든 것", open_to_player: true}
+  - {id: rank_tooth, title: "이빨 (5)", duties: "종족별 사업", privileges: "다섯 접시", open_to_player: true}
+  - {id: rank_tail, title: "꼬리 (구역장)", duties: "구역", privileges: "구역 수입 1/5", open_to_player: true}
+  - {id: rank_rat, title: "쥐", duties: "심부름, 훔치기, 망보기", privileges: "하수도에서 잔다", open_to_player: true}
+# 플레이어의 길: 바알카르 하수도 입구에 쥐 그림을 그려 두면 사흘 안에 꼬리가 찾아온다. 첫 임무 '쇠사슬 광장 경매장에서 경매사 오트마르 사르코스의 인장 반지를 가져와라.'
+# 왕관 훔치기는 플레이어에게도 열려 있다 — 사흘을 버티면 쥐왕.
+
+law:
+  crimes:
+    - {act: "쥐가 쥐를 경비병에 팖", punishment: "하수도 물에 사흘 — 대개 죽는다", note: "조직원"}
+    - {act: "다섯 접시에 수입을 덜 올림", punishment: "손가락 하나", note: "이빨·꼬리"}
+    - {act: "왕관을 훔치고 사흘을 못 버팀", punishment: "왕관 방 기둥에 묶어 둔다 — 다음 쥐왕이 정한다", note: "누구든"}
+    - {act: "바깥 법 — 인간의 돈 소지", punishment: "절도 의심 — 수색·매질·몰수", note: "인간 대상(용제국)"}
+
+customs:
+  greeting: "새끼손가락을 서로 건다(쥐 꼬리). 암호는 '오늘 비 오나?' — 답 '하수도는 늘 젖어.'"
+  taboos: ["왕관 방에서 불을 크게 피우는 것(하수도 가스)", "채찍손 길드 크릭에게 말을 거는 것 — 크릭끼리의 원한", "졸라크라는 이름"]
+  rites:
+    - {name: "다섯 접시", when: "매달 첫 안식일 밤", what: "이빨 다섯이 수입을 접시에 올린다"}
+    - {name: "잿빛 겨울의 빵", when: "굶주림월 첫날", what: "AS 39 무리의 기원 — 훔친 빵을 쥐 모두에게 한 조각씩 나눈다. 쥐왕이 직접 뜯는다"}
+  speech: "크릭 은어와 노예말과 하수도 말이 섞인다. 모두 반말 — 왕관 앞에서도. 값을 먼저 말한다."
+
+membership:
+  join: "하수도 입구의 쥐 그림 → 꼬리의 방문 → 첫 임무"
+  leave: "나갈 수 있다 — 아는 것이 적다면. 이빨은 나갈 수 없다"
+  signs: ["하수도 입구의 쥐 그림", "새끼손가락 걸기", "'하수도는 늘 젖어'"]
+
+internal_factions:
+  - {name: "왕관파", leader: null, aim: "피프(unnamed) — 일곱 번째 왕관을 지킨다. 졸라크의 하청인 줄 안다", strength: 50}
+  - {name: "모르는 쥐들", leader: null, aim: "자기들이 자유롭다고 믿는 쥐 다수", strength: 40}
+  - {name: "하랄의 손", leader: null, aim: "통행증 1/3을 잿빛 실로 — 이름 없는 자들", strength: 10}
+
+assets: ["하수도 지도", "위조 통행증(인간용 1장 2비늘)", "장물 시장", "경비병 매수 명단", "바알카르 하수도 — 해방되면 인간 탈주로가 된다"]
+
+secrets:
+  # TODO-FACT: 쥐왕은 일곱 번 바뀌었지만 진짜 장부는 세렌 졸라크 상가가 쥐고 있다 — 쥐들의 왕관은 졸라크의 하청이다 (HOUSES §5.11)
+  # TODO-FACT: 이빨 하랄은 이름 없는 자들의 심지이며 그가 위조한 통행증의 1/3이 잿빛 실로 간다 (HOUSES §5.11)
+  # TODO-FACT: 졸라크 금고에 사르코스의 징후자 판매 장부 사본이 있다 (HOUSES §3.4)
+  - {truth: T03, level: rumor, holders: []}
+
+relations:
+  - {to: fac_seren, stance: 20, note: "행렬 밖 — 졸라크의 하청(대부분은 모른다)"}
+  - {to: fac_nameless, stance: 10, note: "행렬 밖 — 하랄"}
+  - {to: fac_drakmar_empire, stance: -40, note: "행렬 밖 — 칼다란 도시 경비"}
+  - {to: fac_collar, stance: -20, note: "행렬 밖"}
+toward_echo: "상품 — 그러나 이빨 하랄은 이름 없는 자들이다. 쥐왕 피프는 잔향의 값을 졸라크에게 묻는다."
+player_paths:
+  - "가입: 쥐 → 꼬리 → 이빨 → 왕관 훔치기(사흘)"
+  - "해방: 졸라크 장부를 훔치면 쥐들의 왕관을 '해방'시킬 수 있다 — 대가로 바알카르 하수도 전체를 인간 탈주로로"
+  - "이용: 위조 통행증, 경비병 매수 명단, 장물 시장(유물 처분)"
+regression:
+  fixed: ["피프 일곱째가 쥐왕", "진짜 장부는 졸라크 금고"]
+  flow: ["다섯 접시의 순위"]
+  drift: ["그달 경비병 매수 명단의 이름", "어느 꼬리가 어느 구역을"]
