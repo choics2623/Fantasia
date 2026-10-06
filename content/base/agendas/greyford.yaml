@@ -1,0 +1,108 @@
+# 회색여울 NPC의 목표 행동 (26_AGENDAS.md). 플레이어가 아무것도 하지 않아도 세계는 이렇게 움직인다.
+# when: 모두 참이어야 한다. every: once | daily | "weekday:N" | "every:N". chance: 그날 일어날 확률(회차 시드).
+# at: 그 일을 하는 시각·장소 — 위치 엔진에 덮어쓰기로 들어가 NPC가 실제로 그 자리에 간다.
+# effects: 그 일이 끝나면 세계 상태가 바뀐다.
+vars:                         # 회귀점의 세계 상태
+  egil_hidden: true           # 에길 일가 다섯이 수탉 지하에 있다
+  egil_moved: false
+  henrik_extortion: 2         # 브람이 매주 내는 입막음 값 (발톱)
+  bram_coin: 30               # 브람이 모아 둔 돈 (토마스 곡물을 세렌 선원에게 판 돈)
+  bram_debt: 0                # 밀린 주 수
+  grain_route: true           # 토마스 → 브람 → 세렌 선원 곡물 길이 살아 있다
+  thomas_floor_hidden: false  # 방앗간 두 번째 바닥을 숨겼나 (플레이어가 도울 수 있다)
+  sigrid_group: 47            # 굶주린 언덕의 탈주자 수
+  fugitives_caught: 0
+  hagen_known_fugitives: 3    # 하겐이 위치를 아는 탈주자 수
+  zero_cellar_raid: false
+agendas:
+  - id: ag_bram_income
+    npc: npc_bram
+    goal: 토마스가 빼돌린 곡물을 세렌 선원에게 판다
+    every: "weekday:4"
+    when: ["alive npc_bram", "alive npc_thomas", "var grain_route == true"]
+    at: {place: gf_hagen_shed, from: "22:30", to: "23:00", doing: 나루 헛간 뒤에서 세렌 선원에게 자루를 넘긴다}
+    effects: ["var bram_coin += 3"]
+  - id: ag_henrik_collect
+    npc: npc_henrik
+    goal: 매주 입막음 값을 받는다
+    every: "weekday:2"
+    when: ["alive npc_henrik", "alive npc_bram", "var egil_hidden == true", "knows npc_henrik fact_gf_bram_pays_henrik", "date >= 312-09-08"]
+    at: {place: gf_rooster, from: "21:00", to: "21:30", doing: 수탉 뒷문에서 입막음 값을 받는다}
+    effects: ["if var bram_coin >= var:henrik_extortion: var bram_coin -= var:henrik_extortion ; var bram_debt = 0",
+              "else: var bram_debt += 1 ; rel npc_henrik>npc_bram like -10 ; log 브람이 입막음 값을 못 냈다 ({bram_debt}주째)"]
+  - id: ag_henrik_raise
+    npc: npc_henrik
+    goal: 값을 올린다 — 다음 주는 3 발톱 (CHARACTERS 이야기 씨앗)
+    every: "weekday:2"
+    chance: 0.3
+    when: ["alive npc_henrik", "var egil_hidden == true", "var henrik_extortion < 6", "date >= 312-09-08"]
+    at: {place: gf_rooster, from: "21:30", to: "21:40", doing: 다음 주 값을 말한다}
+    effects: ["var henrik_extortion += 1", "rel npc_bram>npc_henrik like -4", "log 헨릭이 입막음 값을 올렸다 ({henrik_extortion} 발톱)"]
+  - id: ag_henrik_tidy_ledger
+    npc: npc_henrik
+    goal: 세 주를 못 받으면 장부를 '정리'한다 — 유령 머릿수를 즈닉에게 넘긴다
+    every: once
+    when: ["alive npc_henrik", "var egil_hidden == true", "var bram_debt >= 3"]
+    at: {place: gf_whip_square, from: "20:30", to: "21:00", doing: 초소에서 즈닉에게 장부 한 장을 보여 준다}
+    effects: ["learn npc_znik fact_gf_egil_family_in_cellar", "log 브람이 세 주를 못 내자 헨릭이 즈닉에게 유령 머릿수를 넘겼다"]
+  - id: ag_znik_grain_search
+    npc: npc_znik
+    goal: 곡창 부족분을 농노 탓으로 — 방앗간부터 뒤진다 (REGIONS 10.20)
+    every: once
+    when: ["alive npc_znik", "date >= 312-10-20"]
+    at: {place: gf_mill, from: "08:00", to: "14:00", doing: 방앗간 곡물 수색}
+    effects: ["if var thomas_floor_hidden == false: var grain_route = false ; log 즈닉이 방앗간 두 번째 바닥을 찾았다 — 브람의 곡물 길이 끊겼다",
+              "else: log 즈닉이 방앗간을 뒤졌지만 두 번째 바닥은 찾지 못했다"]
+  - id: ag_hagen_sell_three
+    npc: npc_hagen
+    goal: 탈주자 셋을 볼크에게 넘긴다 (REGIONS 9.22)
+    every: once
+    when: ["alive npc_hagen", "present npc_volk", "date >= 312-09-22", "var hagen_known_fugitives >= 3"]
+    at: {place: hungry_hill__fang_fire, from: "22:00", to: "02:00", doing: 송곳니 불에서 탈주자 셋을 넘긴다}
+    effects: ["var fugitives_caught += 3", "var sigrid_group -= 3", "var hagen_known_fugitives -= 3", "log 하겐이 탈주자 셋을 볼크에게 넘겼다"]
+  - id: ag_hagen_sell_den
+    npc: npc_hagen
+    goal: 늑대굴 위치를 볼크에게 판다 — 값이 맞으면
+    every: daily
+    chance: 0.35
+    when: ["alive npc_hagen", "present npc_volk", "knows npc_hagen fact_gf_wolf_den", "not knows npc_volk fact_gf_wolf_den"]
+    at: {place: gf_rooster, from: "22:00", to: "23:00", doing: 수탉 구석에서 볼크와 낮게 이야기한다}
+    effects: ["learn npc_volk fact_gf_wolf_den", "log 하겐이 볼크에게 늑대굴 위치를 팔았다"]
+  - id: ag_hagen_learn_den
+    npc: npc_hagen
+    goal: 페인을 시켜 늑대굴을 알아낸다
+    every: daily
+    chance: 0.15
+    when: ["alive npc_hagen", "alive npc_fayne", "not knows npc_hagen fact_gf_wolf_den", "date >= 312-09-10"]
+    at: {place: gf_hagen_shed, from: "18:00", to: "18:30", doing: 페인에게 언덕 이야기를 캐묻는다}
+    effects: ["learn npc_hagen fact_gf_wolf_den", "log 하겐이 페인에게서 늑대굴 위치를 알아냈다"]
+  - id: ag_volk_sweep
+    npc: npc_volk
+    goal: 굶주린 언덕 대수색 (REGIONS 9.25)
+    every: once
+    when: ["alive npc_volk", "present npc_volk", "date >= 312-09-25"]
+    at: {place: hungry_hill, from: "04:00", to: "20:00", doing: 굶주린 언덕 대수색}
+    effects: ["if knows npc_volk fact_gf_wolf_den: var fugitives_caught += 19 ; var sigrid_group -= 19 ; log 볼크가 늑대굴을 덮쳤다 — 열아홉이 끌려갔다",
+              "else: var fugitives_caught += 4 ; var sigrid_group -= 4 ; log 볼크의 대수색 — 늑대굴은 찾지 못하고 넷을 잡았다"]
+  - id: ag_martha_smell
+    npc: npc_martha
+    goal: 수탉 지하의 냄새를 알아챈다 (REGIONS 12.10)
+    every: once
+    when: ["alive npc_martha", "var egil_hidden == true", "date >= 312-12-10"]
+    at: {place: gf_rooster, from: "19:00", to: "19:40", doing: 배급 줄에서 코를 든다}
+    effects: ["learn npc_martha fact_gf_egil_family_in_cellar", "log 마르타가 수탉 지하의 냄새를 알아챘다"]
+  - id: ag_martha_report
+    npc: npc_martha
+    goal: 알게 된 것은 즈닉에게 보고한다 — 리즈를 지키려면
+    every: once
+    when: ["alive npc_martha", "knows npc_martha fact_gf_egil_family_in_cellar", "not knows npc_znik fact_gf_egil_family_in_cellar", "var egil_hidden == true"]
+    at: {place: gf_whip_square, from: "21:00", to: "21:20", doing: 초소에서 즈닉에게 보고한다}
+    effects: ["learn npc_znik fact_gf_egil_family_in_cellar", "log 마르타가 즈닉에게 수탉 지하를 보고했다"]
+  - id: ag_znik_raid
+    npc: npc_znik
+    goal: 알게 되면 다음 날 새벽 지하실을 뒤진다
+    every: once
+    when: ["alive npc_znik", "knows npc_znik fact_gf_egil_family_in_cellar", "var egil_hidden == true"]
+    at: {place: gf_rooster_cellar, from: "05:30", to: "06:30", doing: 크릭 감독 셋을 데리고 지하실을 뒤진다}
+    effects: ["var egil_hidden = false", "var fugitives_caught += 5", "capture npc_egil at gf_whip_square", "punish npc_bram at gf_whip_square for 3",
+              "log 즈닉이 수탉 지하를 덮쳤다 — 에길 일가 다섯이 끌려 나갔고, 브람은 채찍 기둥에 묶였다"]

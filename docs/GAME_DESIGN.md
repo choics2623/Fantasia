@@ -37,6 +37,7 @@
 | [systems/23_FACTIONS_AND_SECRETS.md](systems/23_FACTIONS_AND_SECRETS.md) | **세력의 몸과 세계의 비밀**: 통치 형태, 조직도(자리와 사람), 법·관습, 비밀 결사의 세포, 은자, 진실 목록과 누가 어디까지 아는가 |
 | [systems/24_PLACES_AND_WHEREABOUTS.md](systems/24_PLACES_AND_WHEREABOUTS.md) | **장소와 행방**: 마을 안 건물 배치, NPC 일과, 실시간 위치 알고리즘(시간의 함수, 표류, 이동, LOD) |
 | [systems/25_REGION_KITS.md](systems/25_REGION_KITS.md) | **지역 생성 키트**: 닻(손으로 쓴 핵심) + 키트(그 지역다운 재료) + 즉석 인물(말을 거는 순간 LLM이 완성). 정착지·인물 생성기, 확장 순서 |
+| [systems/26_AGENDAS.md](systems/26_AGENDAS.md) | **목표 행동**: 플레이어가 없어도 세계가 움직인다 — NPC 목표의 조건·효과 사슬, 정본 사건이 원인과 결과로 이어지고 플레이어가 고리를 끊으면 뒤가 달라진다 |
 | **세계관** | |
 | [world/WORLD_BIBLE.md](world/WORLD_BIBLE.md) | **정본**: 우주관, 신살, 역사, 16개 지역, 핵심 인물, 법, 경제, 월드 클락 |
 | [world/RACES.md](world/RACES.md) | 종족 상세 |
