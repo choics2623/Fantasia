@@ -1,27 +1,5 @@
 # 큰 시스템의 가장 작은 판 (P3) — 작전 하나, 연애 하나, 진명 하나.
 storylets:
-  # ── 작전 카드 (11 §3.2): 헨릭의 진짜 장부 — 징세소 다락 마루 밑. 준비가 판정을 깎는다 ──
-  - id: op_ledger
-    trigger: {window: {from: "312-09-01 00:00", to: "313-12-30 00:00"}, at: gf_tollhouse, night: true, when: ["pknows fact_gf_henrik_skims_baron", "not with npc_henrik"]}
-    text: |
-      징세소. 아래층 장부대 위에 먼지 냄새. 다락으로 오르는 사다리가 삐걱거린다. 마루판 하나가 다른 판보다 못 자국이 많다.
-    choices:
-      - id: pry
-        label: 마루판을 뜯는다
-        check: {skill: 손재주, D: 62, warn: ["has 광원", "has 갈고리", "been gf_tollhouse"]}
-        success:
-          text: |
-            판이 소리 없이 들린다. 기름종이에 싼 장부. 첫 장의 숫자 — 사백. 남작에게 보고한 숫자는 삼백쉰둘이었다. 너는 장부를 품에 넣고, 판을 그대로 덮는다.
-          effects: ["item henrik_ledger", "learn fact_gf_godric_henrik_headcount", "note 헨릭의 진짜 장부 — 사백 명. 남작에게는 삼백쉰둘"]
-        failure:
-          text: |
-            못 하나가 비명을 지른다. 아래층에서 의자가 끌리는 소리. 너는 사다리를 버리고 창으로 뛰어내린다.
-          effects: ["pain 15", "wanted 3 징세소 다락에서 들켰다", "die_if 0.2 rope 징세소 다락에서 붙잡혀 채찍 기둥에 매달렸다"]
-      - id: leave
-        label: 손대지 않고 나간다
-        text: ""
-        effects: []
-
   # ── 연애·가족의 가장 작은 판 (12 §2): 사라 — 가까워지면, 고백, 그리고 끈혼례 ──
   - id: sara_confession
     trigger: {window: {from: "312-09-05 06:00", to: "313-12-30 00:00"}, with: npc_sara, when: ["romance npc_sara >= 2", "var sara_lover != true"]}

@@ -1,0 +1,84 @@
+# 작전 (11 §3): ① 정보 ② 접근 ③ 수단 → ④ 실행 ⑤ 탈출 ⑥ 은폐·누명
+# 준비 하나가 참이면 실행 판정에 +10 (정보가 지난 회차의 기억뿐이면 +5 — 확신도가 낮다).
+# security(11 §3.3): 1 없음 · 2 정보 · 3 정보+접근 · 4 정보+접근+약점 — 그만큼 갖춰야 작전이 열린다.
+ops:
+  henrik_ledger:
+    target: 헨릭의 진짜 장부 — 징세소 다락 마루 밑
+    security: 2
+    D: 50
+    skill: 손재주
+    at: gf_tollhouse
+    night: true
+    when: ["not with npc_henrik"]
+    known_when: ["pknows fact_gf_henrik_skims_baron"]
+    hint: 밤, 헨릭이 없을 때 (화·금 21시엔 수탉 뒷문에 있다)
+    ready:
+      - {phase: 정보, label: 장부가 다락 마루 밑에 있다, cond: "pknows fact_gf_henrik_skims_baron"}
+      - {phase: 정보, label: 헨릭이 집을 비우는 때 (브람의 입막음 값), cond: "pknows fact_gf_bram_pays_henrik"}
+      - {phase: 접근, label: 징세소 안을 본 적이 있다, cond: "been gf_tollhouse"}
+      - {phase: 수단, label: 불 (양초), cond: "has 광원"}
+      - {phase: 수단, label: 마루를 뜯을 쇠갈고리, cond: "has 갈고리"}
+      - {phase: 탈출, label: 버드나무 둑으로 빠지는 길을 안다, cond: "been gf_willow_bank"}
+    exec_text: 사다리, 다락, 못 자국이 많은 마루판.
+    success: ["item henrik_ledger", "learn fact_gf_godric_henrik_headcount", "note 헨릭의 진짜 장부 — 사백 명. 남작에게는 삼백쉰둘"]
+    caught: ["wanted 3 징세소 다락에서 들켰다", "die_if 0.2 rope 징세소 다락에서 붙잡혀 채찍 기둥에 매달렸다"]
+    scapegoat: npc_thomas
+  keep_strongbox:
+    target: 남작 서재의 금고 — 매각 명단과 빚 증서
+    security: 3
+    D: 60
+    skill: 손재주
+    at: gf_keep_study
+    night: true
+    when: []
+    known_when: ["pknows fact_gf_keep_strongbox"]
+    hint: 밤, 남작이 연회실에서 술을 마실 때 (19~23시)
+    ready:
+      - {phase: 정보, label: 금고에 명단과 증서가 있다, cond: "pknows fact_gf_keep_strongbox"}
+      - {phase: 정보, label: 남작의 빚 — 무엇이 걸려 있는지, cond: "pknows fact_gf_godric_debt"}
+      - {phase: 접근, label: 성채 담을 넘을 밧줄과 갈고리, cond: "has 밧줄"}
+      - {phase: 접근, label: 마르타의 열쇠 (거래), cond: "var martha_deal == true"}
+      - {phase: 수단, label: 불 (양초), cond: "has 광원"}
+      - {phase: 탈출, label: 잿빛 실의 길 (옛 수로), cond: "pknows fact_gf_greyash_route"}
+    exec_text: 식은 벽난로 냄새. 쇠 금고, 열쇠 구멍이 셋.
+    success: ["var list_burned = true", "var sara_on_list = false", "var kit_on_list = false", "note 금고 — 명단과 증서를 벽난로에. 세렌에 사본이 있다고 했다. 그래도 서른 날은 번다"]
+    caught: ["wanted 4 성채 서재에 침입했다", "die_if 0.5 rope 성채 마당의 들보에 — 금고를 연 밤의 끝"]
+    scapegoat: npc_martha
+  granary:
+    target: 영주 곡창 — 장부에 없는 삼할
+    security: 2
+    D: 45
+    skill: 은신
+    at: gf_granary
+    night: true
+    when: []
+    known_when: ["pknows fact_gf_henrik_granary_skim"]
+    hint: 밤, 지붕 환기창으로
+    ready:
+      - {phase: 정보, label: 곡창의 실제 저장량은 장부의 칠할, cond: "pknows fact_gf_henrik_granary_skim"}
+      - {phase: 접근, label: 지붕 환기창 — 갈고리, cond: "has 갈고리"}
+      - {phase: 접근, label: 밧줄, cond: "has 밧줄"}
+      - {phase: 수단, label: 숨긴 곳이 있다 (나를 곳), cond: "domain_any"}
+      - {phase: 탈출, label: 버드나무 둑으로 빠지는 길, cond: "been gf_willow_bank"}
+    exec_text: 보리 냄새. 자루, 자루, 자루.
+    success: ["item bread", "item bread", "domain food_add 120", "note 곡창 — 보리 다섯 자루를 언덕으로"]
+    caught: ["wanted 3 곡창에서 들켰다", "pain 25"]
+    scapegoat: npc_hagen
+  znik:
+    target: 감독관 즈닉 — 초소에서 조는 새벽
+    security: 1
+    D: 40
+    skill: 싸움
+    at: gf_whip_square
+    hours: ["02:30", "04:40"]
+    when: ["alive npc_znik"]
+    known_when: ["been gf_whip_square"]
+    hint: 새벽 두 시 반부터 첫 종까지, 초소에서 존다
+    ready:
+      - {phase: 정보, label: 즈닉이 새벽에 초소에서 존다, cond: "been gf_whip_square"}
+      - {phase: 수단, label: 칼, cond: "has 무기"}
+      - {phase: 탈출, label: 강변 움막까지의 그림자 길, cond: "been gf_river_huts"}
+    exec_text: 초소의 등불이 꺼져 있다. 코 고는 소리.
+    success: ["agenda kill npc_znik", "deed kill npc_znik"]
+    caught: ["wanted 4 감독관을 노렸다", "die_if 0.4 blade 즈닉의 채찍 손잡이에 — 초소 앞에서"]
+    scapegoat: npc_hagen

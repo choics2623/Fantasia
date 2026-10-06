@@ -26,8 +26,8 @@ const fresh = (extra = {}) => G.boot(C, { ...G.newRun({ seed: 7, opening: false 
   const g = fresh();
   check("장부의 자리를 모르면 작전도 없다", G.view(g).ops.length === 0);
   g.P.knows.add("fact_gf_henrik_skims_baron");
-  const op = G.view(g).ops[0];
-  check("작전 카드 — 헨릭의 장부, 준비 항목", op && op.ready.length === 4 && op.ready[0].ok && !op.ready[2].ok, JSON.stringify(op?.ready));
+  const op = G.view(g).ops.find((o) => o.id === "henrik_ledger");
+  check("작전 카드 — 헨릭의 장부, 준비 항목", op && op.ready.length === 6 && op.ready[0].ok && !op.ready[3].ok, JSON.stringify(op?.ready));
 }
 // 연애: 가까워지면 고백의 장면이 열린다
 {

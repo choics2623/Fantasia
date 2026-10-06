@@ -296,6 +296,7 @@ function rawOptions(g) {
   if (g.story) return storyOptions(g);
   if (g.ended) return [{ id: "regress", kind: "regress", label: "눈을 감는다 — 회귀점으로" }];
   const o = [];
+  if (g.op) return opOptions(g);
   // 싸움 (GAME_DESIGN §6, 01 §3.4): 한 번의 굴림으로 끝나지 않으면 합을 나눈다 — 도주·항복·흥정이 정상 선택지
   if (g.fight) {
     const n = g.fight.npc, nm = displayName(g, n);
@@ -369,6 +370,8 @@ function rawOptions(g) {
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
+  // 작전: 그 자리, 그 시각, 필수 준비를 갖췄으면
+  for (const [id, op] of Object.entries(g.content.game.ops || {})) if (opAvailable(g, id, op)) o.push({ id: `op_start:${id}`, kind: "scene", label: `작전 — ${op.target}`, risk: "준비한 만큼만 쉬워진다" });
   // 영역 세우기 (09 §2): 그 자리를 알고, 그 자리의 사람이 너를 믿으면
   { _domData = g.content.game.domains; const at = DOM.canFound(g, DMH()); if (at && !g.storyDone.has("domain_found")) o.push({ id: "found_domain", kind: "scene", label: `${displayName(g, g.content.game.domains.sites[at].steward)}에게 — 여기 사람들을 돕겠다고 말한다` }); }
   // 숨긴 곳: 키트를 늑대굴로 (밤에, 같이 있을 때) · 숨긴 곳에 먹을 것을 두고 간다
@@ -420,6 +423,13 @@ function topicsFor(g, n) {
 // parts: 근거 미리보기 (01 §4.3) — 캐릭터가 아는 말로만. ▲ 유리 ▼ 불리 ? 모른다
 export function odds(g, opt) {
   if (!opt.skill) return null;
+  if (opt.opD != null) {   // 작전의 판정: 준비 하나에 +10 (11 §3.2)
+    const op = g.content.game.ops[g.op.id], parts = [];
+    let S = skill(g, opt.skill) + (opt.skill === "은신" ? g.P.mods.민첩 * 2 : 0);
+    if (opt.id === "op_exec") for (const r of opReady(g, op)) { if (r.ok) { S += r.bonus; parts.push({ sign: "▲", text: `${r.phase} — ${r.label}${r.bonus === 5 ? " (기억뿐이다)" : ""}` }); } else parts.push({ sign: "▼", text: `${r.phase} — ${r.label} (없다)` }); }
+    if (g.P.status.hunger >= 3) { S -= 5; parts.push({ sign: "▼", text: "배가 고프다" }); }
+    return { P: prob(S, opt.opD), S: Math.round(S), D: opt.opD, parts };
+  }
   const p = g.P;
   const n = opt.npc || g.convo?.npc;
   const pr = n ? profOf(g, n) : { perception: 50, nerve: 50 };
@@ -841,18 +851,39 @@ function hideTick(g, day) {
     g.feed.push({ kind: "echo", text: `〰 ${placeName(g, H.at)}이(가) 드러났다. 숨겨 둔 ${H.people.map((n) => displayName(g, n)).join(", ")}이(가) 끌려 나왔다.` });
   }
 }
-// ── 작전 카드 (11 §3.2): 정보 · 접근 · 수단 — 갖춘 만큼 실행 판정이 쉬워진다 ──
-function opsOf(g) {
-  if (!knowsFact(g, "fact_gf_henrik_skims_baron")) return [];
-  const ready = [
-    { label: "정보 — 장부가 다락 마루 밑에 있다", ok: true },
-    { label: "접근 — 징세소에 들어가 본 적이 있다", ok: g.P.been.has("gf_tollhouse") },
-    { label: "수단 — 불 (양초)", ok: hasTag(g, "광원") },
-    { label: "수단 — 쇠갈고리 (마루를 뜯을 것)", ok: hasTag(g, "갈고리") },
-  ];
-  return [{ id: "op_ledger", target: "헨릭의 진짜 장부 — 징세소 다락", when: "밤, 헨릭이 없을 때 (화·금 21시엔 수탉 뒷문에 있다)", ready, done: g.storyDone.has("op_ledger") }];
+// ── 작전 (11 §3): ① 정보 ② 접근 ③ 수단 → ④ 실행 ⑤ 탈출 ⑥ 은폐·누명 ──
+const REQ = { 1: [], 2: ["정보"], 3: ["정보", "접근"], 4: ["정보", "접근", "약점"] };
+function opReady(g, op) {
+  return op.ready.map((r) => {
+    const ok = storyWhen(g, [r.cond]);
+    // 지난 회차의 기억만으로 아는 정보는 절반 (03 §4.4)
+    const half = ok && /^pknows /.test(r.cond) && !g.P.knows.has(r.cond.split(" ")[1]);
+    return { ...r, ok, bonus: ok ? (half ? 5 : 10) : 0 };
+  });
 }
-// 얼룩 (13 §3.2): 어두운 행적은 영혼에 남는다 — 그 사람을 다시 보면 손이 무겁다
+function opsOf(g) {
+  return Object.entries(g.content.game.ops || {}).filter(([, op]) => storyWhen(g, op.known_when)).map(([id, op]) => {
+    const ready = opReady(g, op);
+    const missing = REQ[op.security].filter((ph) => !ready.some((r) => r.phase === ph && r.ok));
+    return { id, target: op.target, when: op.hint, security: op.security, ready: ready.map((r) => ({ label: `${r.phase} — ${r.label}`, ok: r.ok })), missing, done: !!g.P.opsDone?.[id] };
+  });
+}
+function opAvailable(g, id, op) {
+  if (g.P.opsDone?.[id] || !atPlace(g, op.at) || !storyWhen(g, op.known_when) || !storyWhen(g, op.when)) return false;
+  if (op.night && !isNight(g.t)) return false;
+  if (op.hours) { const hm = ((g.t % 1440) + 1440) % 1440; if (!(hm >= parseClock(op.hours[0]) && hm < parseClock(op.hours[1]))) return false; }
+  return REQ[op.security].every((ph) => opReady(g, op).some((r) => r.phase === ph && r.ok));
+}
+function opOptions(g) {
+  const O = g.op, op = g.content.game.ops[O.id];
+  if (O.phase === "exec") return [{ id: "op_exec", kind: "op", label: `실행한다 — ${op.target}`, skill: op.skill, opD: op.D, risk: "들키면 끝이다" }, { id: "op_abort", kind: "op", label: "물러난다 — 오늘은 아니다" }];
+  if (O.phase === "escape") {
+    const route = opReady(g, op).some((r) => r.phase === "탈출" && r.ok);
+    return [...(route ? [{ id: "op_flee:route", kind: "op", label: "준비해 둔 길로 빠진다", skill: "은신", opD: O.caught ? 40 : 22 }] : []), { id: "op_flee:any", kind: "op", label: "아무 데로나 달린다", skill: "은신", opD: O.caught ? 55 : 35 }];
+  }
+  return [{ id: "op_cover:wipe", kind: "op", label: "흔적을 지운다", skill: "손재주", opD: 30 }, { id: "op_cover:frame", kind: "op", label: `${displayName(g, op.scapegoat)}에게 누명을 씌운다`, risk: "그 사람이 대신 맞는다" }, { id: "op_cover:none", kind: "op", label: "그대로 둔다 — 빨리 잔다" }];
+}
+// 얼룩 (13 §3.2)// 얼룩 (13 §3.2): 어두운 행적은 영혼에 남는다 — 그 사람을 다시 보면 손이 무겁다
 const DARK = new Set(["inform", "betray", "kill_serf"]);
 // ── 영역 (09): domain.mjs ──
 const DMH = () => ({ sites: () => DOMDATA().sites || {}, stewards: () => DOMDATA().stewards || {}, facilities: () => DOMDATA().facilities || {}, atPlace, storyWhen, relOf, hash, placeName, displayName, winterStart: toMinutes(312, 10, 30) });
@@ -897,6 +928,7 @@ function domainEffect(g, [op, a], res) {
   else if (op === "exposure_reset") { D.expMod = (D.expMod || 0) - 20; D.alarm = 0; }
   else if (op === "build") { if (!D.built.includes(a)) { D.built.push(a); D.morale = clamp(D.morale + (F[a]?.morale || 0), 0, 100); } }
   else if (op === "delegate") D.delegation = a;
+  else if (op === "food_add") D.food += Number(a);
   else if (op === "raid_held") { D.morale = clamp(D.morale + 8, 0, 100); D.expMod = (D.expMod || 0) - 10; DIR.crisis(g, 4); }
   else if (op === "raid_lost") {
     const lost = Math.round(DOM.popOf(g, D) * Number(a)); DOM.addPop(g, D, -lost); g.S.vars.fugitives_caught = (g.S.vars.fugitives_caught || 0) + lost;
@@ -1183,6 +1215,7 @@ function storyWhen(g, conds, t = g.t) {
     else if (k === "rel_trust") r = { ">=": relOf(g, a).trust >= Number(d), "<": relOf(g, a).trust < Number(d) }[b];
     else if (k === "trace") r = (soul(g).traces || []).some((x) => x.id === a);
     else if (k === "with") r = present(g, t).some((w) => w.npc === a && w.kind !== "captive");
+    else if (k === "domain_any") r = !!g.domain && !g.domain.lost;
     else if (k === "domain_has") r = !!g.domain?.built.includes(a);
     else if (k === "domain_lacks") r = !!g.domain && !g.domain.built.includes(a);
     else if (k === "domain_delegation") r = g.domain?.delegation === a;
@@ -1513,6 +1546,33 @@ const DO = {
       res.notes.push("할당을 못 채웠다. 즈닉의 채찍 셋 — 오늘 저녁 배급은 없다"); g.P.status.stress = clamp(g.P.status.stress + 4, 0, 100);
     } else res.notes.push("해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
     g.at = "gf_rooster";
+  },
+  op_start(g, id, res) { g.op = { id, phase: "exec" }; const op = g.content.game.ops[id]; res.notes.push(op.exec_text); pass(g, 5); },
+  op_abort(g, _, res) { g.op = null; res.notes.push("물러난다. 다음 밤이 있다 — 아마도"); },
+  op_exec(g, _, res) {
+    const O = g.op, op = g.content.game.ops[O.id]; pass(g, 20);
+    O.ok = OK(res.tier) || res.tier === "부분 성공"; O.caught = !OK(res.tier);
+    if (O.ok) for (const e of op.success) storyEffect(g, e, res);
+    res.notes.push(O.ok ? (O.caught ? "해냈다. 그러나 소리가 났다" : "해냈다. 아무도 모른다 — 아직은") : "실패했다. 발소리가 다가온다");
+    O.phase = "escape"; DIR.crisis(g, 3);
+  },
+  op_flee(g, how, res) {
+    const O = g.op, op = g.content.game.ops[O.id]; pass(g, 10);
+    if (OK(res.tier) || (res.tier === "부분 성공" && !O.caught)) { res.notes.push(how === "route" ? "준비해 둔 길이 너를 삼킨다" : "어둠이 너를 숨겨 준다"); O.phase = O.ok ? "cover" : null; if (!O.ok) g.op = null; return; }
+    for (const e of op.caught) storyEffect(g, e, res);
+    res.notes.push("붙잡혔다 — 아니면 거의"); g.op = null;
+  },
+  op_cover(g, how, res) {
+    const O = g.op, op = g.content.game.ops[O.id]; g.op = null; (g.P.opsDone ??= {})[O.id] = g.t; pass(g, 15);
+    if (how === "wipe" && !OK(res.tier)) { const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 1; w.since ??= g.t; w.reasons.push(`${op.target} — 흔적이 남았다`); res.notes.push("흔적이 남았다"); }
+    else if (how === "frame") {
+      // 누명 (11 §3.2 ⑥): 그 사람이 대신 채찍 기둥에 선다. 너만 안다 — 얼룩이 된다
+      g.A.doEffect(`punish ${op.scapegoat} at gf_whip_square for 3`, g.t);
+      g.S.vars[`framed_${op.scapegoat.replace("npc_", "")}`] = true;
+      deed(g, "inform", op.scapegoat, g.at); temper(g, "정직", -4); temper(g, "자비", -3);
+      res.notes.push(`${displayName(g, op.scapegoat)}의 물건 하나를 그 자리에 떨어뜨린다. 내일 아침 채찍 기둥에 선 것은 ${displayName(g, op.scapegoat)}이다`);
+    } else if (how === "none" && O.caught) { const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 2; w.since ??= g.t; w.reasons.push(op.target); }
+    else res.notes.push("손을 털고 어둠 속으로");
   },
   found_domain(g, _, res) { const st = SL(g, "domain_found"); openStory(g, st); res.storyText = g.feed.pop()?.text; },
   hide_kit(g, _, res) {

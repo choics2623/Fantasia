@@ -265,7 +265,7 @@ function render(d, loading = false) {
     const HD = v.hide; $("hide").hidden = $("hideH").hidden = !HD;
     if (HD) $("hide").innerHTML = `${esc(HD.at)} — ${esc(HD.people.join(", "))}<br>먹을 것: ${HD.food}일치 · ${esc(HD.exposure)}`;
     const OP = v.ops || []; $("ops").hidden = $("opsH").hidden = !OP.length;
-    $("ops").innerHTML = OP.map((o) => `<div><b>${esc(o.target)}</b>${o.done ? " — 끝났다" : ""}<br><span style="color:var(--ink-faint)">${esc(o.when)}</span>${o.ready.map((r) => `<br>${r.ok ? "✓" : "✗"} ${esc(r.label)}`).join("")}</div>`).join("");
+    $("ops").innerHTML = OP.map((o) => `<div style="margin-bottom:8px"><b>${esc(o.target)}</b> <span style="color:var(--ink-faint)">보안 ${o.security}</span>${o.done ? " — 끝났다" : ""}<br><span style="color:var(--ink-faint)">${esc(o.when)}</span>${o.ready.map((r) => `<br>${r.ok ? "✓" : "✗"} ${esc(r.label)}`).join("")}${o.missing.length ? `<br><span style="color:var(--bad)">아직 열리지 않는다 — ${esc(o.missing.join("·"))}이(가) 없다</span>` : ""}</div>`).join("");
     const T2 = v.twoDays; $("two").hidden = $("twoH").hidden = !T2?.then;
     if (T2?.then) $("two").innerHTML = (T2.marks || []).map((m) => `<div>${esc(m)}</div>`).join("") + `<div style="color:var(--ink-faint)">┊ 지난 회차의 이 날 (${esc(T2.then.date)}) — ${esc(T2.then.at)}${T2.then.notes.map((n) => `<br>┊ ${esc(n)}`).join("")}</div>${T2.now ? `<div style="margin-top:6px">이번 — ${esc(T2.now.at)}${T2.now.notes.map((n) => `<br>· ${esc(n)}`).join("")}</div>` : `<div style="margin-top:6px">이번 — 아직 하루가 끝나지 않았다</div>`}`;
     $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
