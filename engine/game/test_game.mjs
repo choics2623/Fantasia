@@ -57,9 +57,12 @@ check("어떤 회차에서는 해낸다", !!n, n && `시드 ${n.run.seed}`);
 if (n) {
   play(n, "loot:npc_hagen");
   check("칼과 돈을 챙겼다", G.view(n).player.items.some((i) => i.name === "뼈자루 접이칼") && G.view(n).player.coin > 3);
-  play(n, "go:gf_north_barracks", "sleep");
+  // 칼과 동전을 몸에 지니고 점호에 나가면 걸린다 — 헛간에 숨겨 두고 간다
+  const knife = G.view(n).player.items.find((i) => i.name === "뼈자루 접이칼").id;
+  play(n, `stash:${knife}`, "stash:coin", "go:gf_north_barracks", "sleep");
   const vm = G.view(n);
   check("자고 일어나면 점호 광장이다", vm.place.id === "gf_whip_square", vm.time);
+  check("숨겨 둔 덕에 몸수색을 넘긴다", !n.ended, n.ended?.why);
   check("통금에 막사 밖에 있었으니 대가가 있을 수 있다", true, `순찰에 걸린 횟수 ${n.S.vars.player_curfew || 0}`);
   for (let i = 0; i < 72 && !n.L.bodies[0].found && !n.ended; i++) play(n, has(n, "wait:60") ? "wait:60" : "sleep");
   check("사흘 안에 누군가 헛간에서 시체를 찾는다 (반응 층 — 일하러 오거나, 사라진 하겐을 찾다가)", !!n.L.bodies[0].found, n.L.bodies[0].found && `${n.L.bodies[0].found.by}`);
@@ -139,6 +142,64 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   if (!pub.ended) { for (let i = 0; i < 5 * 24 && !pub.ended; i++) play(pub, G.options(pub).some((o) => o.id === "wait:60") ? "wait:60" : "sleep"); }
   const r2 = G.reputation(pub);
   check("크기 2의 사건은 며칠 뒤 영지까지 간다 (붙잡히면 시간이 멈춘다)", pub.ended || r2.news.some((n) => n.scope === "domain"), `${r2.reach} ${r2.news.map((n) => n.scopeName + (n.distortion ? "(" + n.distortion + ")" : "")).join(", ")}`);
+}
+
+// 11b. 점호 몸수색: 첫 회차 둘째 날 아침은 반드시 플레이어 — 죽은 사람의 칼을 지닌 채 나가면 붙잡힌다
+{
+  let caught = null;
+  for (let sd = 1; sd < 80 && !caught; sd++) {
+    const x = G.boot(C, G.newRun({ seed: sd }));
+    while (G.view(x).hm < "23:00" && G.view(x).time.includes("1일")) play(x, "wait:60");
+    play(x, "go:gf_hagen_shed"); if (!has(x, "attack:npc_hagen")) continue;
+    play(x, "attack:npc_hagen"); if (!x.S.dead.has("npc_hagen") || x.ended) continue;
+    play(x, "loot:npc_hagen", "go:gf_north_barracks", "sleep");
+    if (x.ended) caught = x;
+  }
+  check("칼을 지닌 채 점호에 나가면 몸수색에 걸려 붙잡히는 회차가 있다", !!caught, caught?.ended.why);
+}
+
+// 13. 먹고 사기: 저녁 배급, 브람에게 빵, 굶주림월 값 세 배, 장물아비만 칼을 판다
+{
+  const x = G.boot(C, G.newRun({ seed: 7 }));
+  const h0 = G.view(x).player.hunger;
+  play(x, "ration");
+  check("저녁 배급으로 배고픔이 준다 (하루 한 번)", G.view(x).player.hunger === h0 - 1 && !has(x, "ration"));
+  play(x, "talk:npc_bram");
+  const buy = G.options(x).find((o) => o.id === "buy:bread");
+  check("브람에게 빵을 살 수 있다 (1못)", !!buy, buy?.label);
+  play(x, "buy:bread");
+  check("산 물건은 소지품이 되고 돈이 준다", G.view(x).player.items.some((i) => i.name.includes("빵")) && G.view(x).player.coin === 2);
+  check("브람은 칼을 팔지 않는다", !G.options(x).some((o) => o.id === "buy:knife"));
+}
+
+// 14. 장소의 상태: 해빙 홍수 동안 쇠다리는 닫힌다 (일과도, 플레이어도 가지 못한다)
+{
+  const x = G.boot(C, G.newRun({ seed: 7 }));
+  check("평소엔 쇠다리로 갈 수 있다", has(x, "go:gf_iron_bridge"));
+  check("313년 해빙월 16일엔 쇠다리가 통제된다", !!x.W.placeState("gf_iron_bridge", 164333910 + 0) === false && !!x.W.placeState("gf_iron_bridge", (313 * 365 + 15) * 1440 + 600));
+}
+
+// 15. 재생 비용: 한 달을 보낸 기록을 불러오는 데 걸리는 시간
+{
+  const x = G.boot(C, G.newRun({ seed: 7 }));
+  // 저녁마다 수탉에서 배급을 받고, 막사로 가서 잔다 (굶으면 일주일 안에 죽는다)
+  for (let d = 0; d < 30 && !x.ended; d++) {
+    while (!x.ended && G.view(x).hm < "18:30" && G.view(x).hm >= "05:00") { if (x.at !== "gf_rooster" && has(x, "go:gf_rooster")) play(x, "go:gf_rooster"); else play(x, "wait:60"); }
+    if (!x.ended && x.at !== "gf_rooster" && has(x, "go:gf_rooster")) play(x, "go:gf_rooster");
+    if (!x.ended && has(x, "ration")) play(x, "ration");
+    if (!x.ended && has(x, "go:gf_north_barracks")) play(x, "go:gf_north_barracks");
+    if (!x.ended) play(x, has(x, "sleep") ? "sleep" : "wait:60");
+  }
+  check("배급을 받고 막사에서 자면 한 달을 산다", !x.ended || x.ended.kind !== "dead", x.ended?.why || G.view(x).time);
+  const t0 = Date.now(); G.boot(C, JSON.parse(JSON.stringify(x.run))); const ms = Date.now() - t0;
+  check("한 달치 기록 재생 3초 이내", ms < 3000, `${x.run.journal.length}개 기록, ${ms}ms (${G.view(x).time})`);
+}
+
+// 16. 굶으면 죽는다
+{
+  const x = G.boot(C, G.newRun({ seed: 7 }));
+  for (let i = 0; i < 24 * 12 && !x.ended; i++) play(x, "wait:60");
+  check("아무것도 먹지 않으면 열흘 안에 죽는다", x.ended?.kind === "dead", x.ended?.why);
 }
 
 // 12. 자리 승계: 즈닉이 죽으면 감독관 자리는 누군가 잇고, 그 사람이 점호를 선다 / 남작이 죽으면 오웬이 남작

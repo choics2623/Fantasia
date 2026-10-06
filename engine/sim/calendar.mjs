@@ -5,8 +5,10 @@ const DAYS_IN = (m) => (m === 13 ? 5 : 30);
 
 export function dayIndex(y, m, d) { return y * 365 + (m - 1) * 30 + (d - 1); }
 export function toMinutes(y, m, d, hh = 0, mm = 0) { return dayIndex(y, m, d) * 1440 + hh * 60 + mm; }
-export function parseDate(s) { const [y, m, d] = s.split("-").map(Number); return { y, m, d }; }
-export function parseClock(s) { const [h, m] = s.split(":").map(Number); return h * 60 + (m || 0); }
+// 같은 문자열을 수십만 번 읽는다 (위치 엔진) — 한 번 읽은 것은 기억해 둔다
+const DATES = new Map(), CLOCKS = new Map();
+export function parseDate(s) { let r = DATES.get(s); if (!r) { const [y, m, d] = s.split("-").map(Number); r = { y, m, d }; DATES.set(s, r); } return r; }
+export function parseClock(s) { let r = CLOCKS.get(s); if (r === undefined) { const [h, m] = String(s).split(":").map(Number); r = h * 60 + (m || 0); CLOCKS.set(s, r); } return r; }
 
 export function fromMinutes(t) {
   const day = Math.floor(t / 1440), min = t - day * 1440;

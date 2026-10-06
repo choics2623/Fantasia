@@ -1,0 +1,28 @@
+# 회색여울의 물건과 값 (WORLD_BIBLE §7.1 기준, 못 단위: 1 발톱 = 12 못). 28 진행 루프의 '사기·먹기·쓰기'.
+# 굶주림월(12월)에는 먹을 것 값이 세 배 (§7.2 흉년). 인간이 은화(12못 이상)를 지니면 절도 의심 — 점호 몸수색에 걸린다.
+# 인간 농노가 가질 수 있는 돈은 거의 없다 — 부츠 속 3못이 시작이다. 값은 흥정(호감·신뢰)과 평판(그 사람 집단의 시선)으로 ±20%.
+# illegal: 인간이 지니면 죄 (§7.1 단검 = 사형감). 장물아비(fence)만 판다 — 값은 두 배, 그리고 그는 당신이 무엇을 샀는지 안다.
+goods:
+  bread:        {name: 보리빵 한 덩이, price: 1, tags: [음식], eat: {hunger: -1}}
+  porridge:     {name: 귀리죽 한 그릇 더, price: 1, tags: [음식], eat: {hunger: -1}}
+  eel:          {name: 훈제 장어 한 토막, price: 6, tags: [음식], eat: {hunger: -2}}
+  beer:         {name: 묽은 맥주 한 잔, price: 1, tags: [술], eat: {pain: -5}}
+  poultice:     {name: 쑥 찜질약, price: 4, tags: [치료], use: {pain: -20}}
+  willow_bark:  {name: 버드나무 껍질 달인 물, price: 3, tags: [치료], use: {pain: -10}}
+  rope:         {name: 삼 밧줄 열 걸음, price: 6, tags: [밧줄, 도구]}
+  hook:         {name: 쇠갈고리, price: 12, tags: [도구, 갈고리]}
+  candle:       {name: 수지 양초, price: 2, tags: [광원]}
+  knife:        {name: 녹슨 접이칼, price: 72, tags: [무기, 날붙이, 숨길수있음], illegal: true, visibility: 숨김}
+  forged_pass:  {name: 위조 통행증, price: 120, tags: [문서, 통행증, 위조], illegal: true, visibility: 숨김}
+shops:
+  npc_bram:  {sells: [porridge, bread, beer], note: "죽은 배급이지만 한 그릇 더는 값을 받는다 — 지하실 손님들 몫이 모자라서"}
+  npc_elsa:  {sells: [poultice, willow_bark], note: "약을 살 돈이 없는 사람에게는 외상 — 게르다처럼"}
+  npc_bran:  {sells: [hook, rope, candle], note: "칼은 팔지 않는다. 인간에게 칼을 팔면 그도 교수대다"}
+  npc_hagen: {sells: [rope, eel, knife], fence: true, note: "웃으며 판다 — 그리고 누구에게 무엇을 팔았는지 볼크에게 판다"}
+  npc_henrik: {sells: [forged_pass], fence: true, note: "통행증은 셈집 서랍에서 나온다"}
+ration:
+  at: gf_rooster
+  from: "18:30"
+  to: "20:30"
+  food: {hunger: -1}
+  note: "하루 한 번 저녁 배급 (굶주림월부터는 아침 죽이 끊긴다 — REGIONS 12.1)"

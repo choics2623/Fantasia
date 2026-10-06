@@ -74,6 +74,9 @@ export function createAgenda(world, state, agendaData, { loopSeed = 1 } = {}) {
     } else if (k === "pay") {          // pay a b n [단위] — 가진 만큼만 넘어간다
       const [, from, to, val, unit] = parts; const n = Math.min(state.purse[from] || 0, v(val) * (UNIT[unit] || 1));
       state.purse[from] -= n; state.purse[to] = (state.purse[to] || 0) + n;
+    } else if (k === "close" || k === "burn") {   // close <장소> <날수> <이유…> / burn <장소> <이유…>
+      const at = parts[1], days = k === "close" ? Number(parts[2]) : null, reason = parts.slice(k === "close" ? 3 : 2).join(" ");
+      world.setPlaceState?.({ at, fromT: t, toT: days ? t + days * 1440 : null, state: k === "close" ? "closed" : "burned", reason });
     } else if (k === "learn") {
       const [, npc, fact] = parts;
       if (!state.knows.has(fact)) state.knows.set(fact, new Set());

@@ -447,8 +447,10 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
     },
   };
 
+  // 새 물건 (산 것·만든 것) — 소유 이력이 '삼'으로 시작한다
+  function give(owner, def) { const it = { ...def, owner, worn: false, provenance: [{ owner, how: "삼", t: now }] }; items.set(def.id, it); return it; }
   return {
-    advance, player, emit, believe, items, purse, bodies,
+    advance, player, emit, believe, items, purse, bodies, give,
     get now() { return now; },
     beliefs: (npc) => [...(beliefs.get(npc)?.values() || [])],
     knowsAbout: (npc, kind, subject) => has(npc, kind, (b) => !subject || b.subject === subject),

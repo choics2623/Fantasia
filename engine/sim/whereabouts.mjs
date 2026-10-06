@@ -17,6 +17,9 @@ const WALK_M_PER_MIN = 80;
 
 export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
   const { settlements, routines, events, map } = bundle;
+  // 장소의 상태 (24 §3.7): 닫힘·통제·불탐 — 그 기간 일과는 그곳에 가지 않는다
+  const placeStates = (bundle.placeStates || []).map((p) => ({ ...p, fromT: p.fromT ?? toMinutes(...Object.values(parseDate(p.from))), toT: p.toT ?? (p.to ? toMinutes(...Object.values(parseDate(p.to))) + 1440 : null) }));
+  const placeState = (id, t) => placeStates.find((p) => (p.at === id || loc.get(id)?.parent === p.at) && t >= p.fromT && (p.toT == null || t < p.toT)) || null;
   const overrides = new Map();   // npc → [덮어쓰기…] (사람별 색인 — 수천 명이 되어도 where()가 느려지지 않게)
   let condFn = null;             // 일정의 when 조건을 판정할 함수 (목표 행동 엔진이 넣어 준다)
   const eventsByNpc = new Map();
@@ -138,6 +141,8 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
     const blockDay = Math.floor(hit.start / 1440);
     if (hit.b.alt && !hit.b.fixed && hash(loopSeed, npc, blockDay, hit.idx, "alt") < hit.b.alt.p) { at = hit.b.alt.at; doing = hit.b.alt.doing; note = "표류"; }
     if (hit.b.rain && rainy(blockDay)) { at = hit.b.rain.at; doing = hit.b.rain.doing; note = "비"; }
+    const ps = placeState(at, t);
+    if (ps) { const name = loc.get(at)?.name || at; at = r.home; doing = `${name}이(가) ${ps.state === "burned" ? "불타" : "닫혀"} 집에 있다`; note = ps.reason || "닫힘"; }
     const out = { at, doing, source: "routine", from: hit.start, to: hit.end, note };
     // 블록이 막 시작했다면, 앞 장소에서 걸어오는 중이다
     if (depth === 0) {
@@ -253,8 +258,9 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
   // 장면이 바꾼 것: 죽음, 포로, 플레이어가 데려감… (세이브에 남는다. 회귀하면 비운다)
   function override(o) { if (!overrides.has(o.npc)) overrides.set(o.npc, []); overrides.get(o.npc).push(o); }
   function setCond(fn) { condFn = fn; }
+  function setPlaceState(p) { placeStates.push(p); }
   function inherit(npc, routineOf, from) { if (!routines[routineOf]) return; if (!inherits.has(npc)) inherits.set(npc, []); inherits.get(npc).push({ from, routineOf }); }
   const npcs = () => [...new Set([...Object.keys(routines), ...eventsByNpc.keys()])];
 
-  return { where, whoIsAt, timeline, override, setCond, inherit, npcs, hasEvents: (n) => eventsByNpc.has(n), travelMinutes, route, rainy, exists, loc };
+  return { where, whoIsAt, timeline, override, setCond, inherit, setPlaceState, placeState, npcs, hasEvents: (n) => eventsByNpc.has(n), travelMinutes, route, rainy, exists, loc };
 }

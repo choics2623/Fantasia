@@ -42,7 +42,8 @@ def main():
         print("\n".join(bad)); raise SystemExit(1)
     events = [e for f in load("content/base/events/*.yaml") for e in (f or [])]
     world = json.load(open(os.path.join(ROOT, "content/base/world/map.json"), encoding="utf-8"))
-    bundle = {"settlements": settlements, "routines": routines, "events": events,
+    place_states = [x for f in load("content/base/places/*.yaml") for x in (f or [])]
+    bundle = {"settlements": settlements, "routines": routines, "events": events, "placeStates": place_states,
               "map": {"nodes": world["nodes"], "edges": world["edges"]}}
     p = os.path.join(OUT, "whereabouts.json")
     json.dump(bundle, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -91,7 +92,10 @@ def main():
     for p4 in sorted(glob.glob(os.path.join(ROOT, "content/base/factions/*.yaml"))):
         f = yaml.safe_load(open(p4, encoding="utf-8")) or {}
         factions[f.get("id")] = {"name": f.get("name"), "offices": [{k: o.get(k) for k in ("id", "title", "holder", "reports_to", "successor")} for o in (f.get("offices") or [])]}
-    game = {"agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
+    economy = {"goods": {}, "shops": {}, "ration": {}}
+    for f in load("content/base/economy/*.yaml"):
+        for k in economy: (economy[k].update((f or {}).get(k) or {}))
+    game = {"economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")

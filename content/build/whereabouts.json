@@ -26265,6 +26265,22 @@
    "doing": "깃털 근수를 맞교환한다 — 서명 쇠판 한 장이 오고 가며 줄지기의 금속 고리 빚이 한 줄 줄어든다"
   }
  ],
+ "placeStates": [
+  {
+   "at": "gf_iron_bridge",
+   "from": "313-01-15",
+   "to": "313-01-18",
+   "state": "closed",
+   "reason": "해빙 홍수 — 쇠다리 3일 통제 (REGIONS 1.15~25)"
+  },
+  {
+   "at": "gf_willow_bank",
+   "from": "313-01-15",
+   "to": "313-01-26",
+   "state": "closed",
+   "reason": "해빙 홍수로 둑이 잠겼다"
+  }
+ ],
  "map": {
   "nodes": [
    {

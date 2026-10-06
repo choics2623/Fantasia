@@ -119,8 +119,17 @@ function learn(g, f, how) {
 }
 
 // ── 지금 장면 ──
+// 이 고장에 올 수 있는 사람만 본다: 여기 사는 사람 + 일정으로 여기 오는 사람 (LOD — 다른 고장 수백 명은 계산하지 않는다)
+function localNpcs(g) {
+  if (g._local) return g._local;
+  const inHere = (id) => g.W.loc.get(id)?.settlement === SETTLEMENT;
+  const set = new Set();
+  for (const [n, r] of Object.entries(g.content.bundle.routines)) if (inHere(r.home) || (r.blocks || []).some((b) => inHere(b.at))) set.add(n);
+  for (const e of g.content.bundle.events) if (inHere(e.at) || inHere(e.travel_from) || inHere(e.return_to)) e.npcs.forEach((n) => set.add(n));
+  return (g._local = [...set]);
+}
 function present(g, t = g.t) {
-  return g.W.whoIsAt(g.at, t, g.W.npcs()).filter((w) => (w.kind === "at" || w.kind === "captive") && w.at === g.at && !g.S.dead.has(w.npc));
+  return g.W.whoIsAt(g.at, t, localNpcs(g)).filter((w) => (w.kind === "at" || w.kind === "captive") && w.at === g.at && !g.S.dead.has(w.npc));
 }
 const isNight = (t) => { const m = ((t % 1440) + 1440) % 1440; return m >= 21 * 60 || m < 4 * 60 + 30; };
 // 자고 있나: 일과 글에 잠이 있거나, 깊은 밤(23~04시)에 자기 집에 있으면
@@ -133,7 +142,7 @@ function asleep(w, t) {
 }
 function bodiesHere(g) { return g.L.bodies.filter((b) => b.at === g.at && !b.removed); }
 function worn(g, n) { return [...g.L.items.values()].filter((i) => i.owner === n && i.worn); }
-function mine(g) { return [...g.L.items.values()].filter((i) => i.owner === "player"); }
+function mine(g) { return [...g.L.items.values()].filter((i) => i.owner === "player" && !i.stashed); }
 const hasWeapon = (g) => mine(g).some((i) => i.tags?.includes("무기"));
 
 function locAccess(g, id, t) {
@@ -155,6 +164,7 @@ function exits(g) {
     if (!isTop && !isRoomHere) continue;
     if (l.outer && (l.node !== "greyford" && l.outerHours > 3)) continue;
     let a = locAccess(g, id, g.t);
+    if (g.W.placeState(id, g.t)) continue;           // 닫힘·통제·불탐 (24 §3.7)
     if (a === "secret" && !g.P.knowsPlaces.has(id)) continue;
     if (a === "locked") continue;
     out.push({ id, name: l.name, access: a, minutes: g.W.travelMinutes(g.at, id) });
@@ -180,6 +190,11 @@ function rawOptions(g) {
       o.push({ id: `show:${it.id}`, kind: "talk", label: `${it.name}을(를) 꺼내 보인다`, risk: "물건을 알아볼 수 있다" });
       if (profOf(g, n).role === "fence" || (it.value || 0) > 0) o.push({ id: `sell:${it.id}`, kind: "talk", label: `${it.name}을(를) 팔겠다고 한다` });
     }
+    const shop = g.content.game.economy?.shops?.[n];
+    for (const gid of shop?.sells || []) {
+      const good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
+      if (good && g.S.purse.player >= price) o.push({ id: `buy:${gid}`, kind: "talk", label: `${good.name}을(를) ${price}못에 산다${good.illegal ? " (몰래)" : ""}`, risk: good.illegal ? "인간이 지니면 죄" : null });
+    }
     o.push({ id: "leave", kind: "talk", label: "이야기를 끝낸다" });
     return o;
   }
@@ -193,8 +208,17 @@ function rawOptions(g) {
     if (left) o.push({ id: `loot:${b.npc}`, kind: "scene", label: `${nameOf(g, b.npc)}의 시체를 뒤진다`, npc: b.npc });
     o.push({ id: `hide_body:${b.npc}`, kind: "scene", label: `${nameOf(g, b.npc)}의 시체를 숨긴다`, npc: b.npc });
   }
+  const ra = g.content.game.economy?.ration;
+  if (ra?.at === g.at && g.P.lastRation !== Math.floor(g.t / 1440)) {
+    const m = ((g.t % 1440) + 1440) % 1440;
+    if (m >= parseClock(ra.from) && m < parseClock(ra.to) && present(g).some((w) => w.npc === "npc_bram")) o.push({ id: "ration", kind: "scene", label: "배급 줄에 서서 죽 한 그릇을 받는다" });
+  }
+  for (const it of mine(g)) if (it.eat || it.use) o.push({ id: `use:${it.id}`, kind: "scene", label: `${it.name}을(를) ${it.eat ? "먹는다" : "쓴다"}` });
   o.push({ id: "search", kind: "scene", label: "이곳을 뒤져 본다", skill: "통찰" });
-  for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && it.owner !== "player" && g.P.found.has(it.id)) o.push({ id: `take:${it.id}`, kind: "scene", label: `${it.name}을(를) 챙긴다` });
+  for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && (it.owner !== "player" || it.stashed) && g.P.found.has(it.id)) o.push({ id: `take:${it.id}`, kind: "scene", label: `${it.name}을(를) 챙긴다` });
+  // 숨기기: 몸에 지니면 점호 몸수색에 걸린다 — 어딘가에 묻어 두고 다닌다
+  for (const it of mine(g)) if (!it.stashed) o.push({ id: `stash:${it.id}`, kind: "scene", label: `${it.name}을(를) 이곳에 숨긴다` });
+  if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", label: `동전 ${g.S.purse.player - 3}못을 이곳에 숨긴다 (부츠 속 3못만 남기고)` });
   for (const e of exits(g)) {
     const sneak = ["owner", "staff", "closed", "secret", "home_locked"].includes(e.access) && !(e.id === HOME);
     o.push({ id: `go:${e.id}`, kind: "move", label: `${e.name}(으)로 간다${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id });
@@ -296,7 +320,8 @@ function pass(g, minutes, { sleeping = false } = {}) {
     // 점호 (04:45~05:00, 안식일 제외): 그 시각 광장에 없으면 즈닉이 안다
     if (hm === 5 * 60 && !isSabbath(c.day) && g.P.lastRollcall !== c.day && overseer(g) && !g.S.dead.has(overseer(g))) {   // 점호는 감독관 자리의 일 — 즈닉이 죽으면 이은 사람이, 공석이면 점호도 없다
       g.P.lastRollcall = c.day;
-      if (g.at !== ROLLCALL) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: "새벽 점호에 나가지 않았다. 즈닉의 명단에 빈칸이 생겼다." }); }
+      if (g.at !== ROLLCALL) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: "새벽 점호에 나가지 않았다. 감독관의 명단에 빈칸이 생겼다." }); }
+      else rollcallSearch(g, c.day);
     }
     // 통금 순찰 (21:00·23:00·02:00): 막사 밖에 있는 인간은 걸린다 — 은신 판정
     if (["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && g.at !== HOME && !g.W.loc.get(g.at)?.outer && !g.ended) {
@@ -315,7 +340,12 @@ function pass(g, minutes, { sleeping = false } = {}) {
   g.t = Math.min(to, g.ended?.t ?? to);
   if (sleeping) { g.P.status.pain = clamp(g.P.status.pain - 10, 0, 100); }
   // 하루에 한 번 배가 고파진다 (배급을 받으면 준다)
-  if (Math.floor(to / 1440) > Math.floor(from / 1440)) g.P.status.hunger = clamp(g.P.status.hunger + 1, 0, 4);
+  for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
+    // 굶주림: 이미 바닥(4)이면 몸이 먹힌다 — 아픔 +15, 100이면 죽는다
+    if (g.P.status.hunger >= 4) { g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100); g.feed.push({ kind: "rule", text: "사흘째 빈속이다. 손이 떨리고 무릎이 꺾인다." }); }
+    g.P.status.hunger = clamp(g.P.status.hunger + 1, 0, 4);
+    if (g.P.status.pain >= 100 && !g.ended) { g.P.alive = false; g.ended = { kind: "dead", why: "굶주림과 상처 — 몸이 더 버티지 못했다", t: d * 1440 }; }
+  }
   // 플레이어가 알 수 있는 일: 지금 이 자리에서 일어난 공개 기록, 그리고 자기에 대한 것
   for (const l of g.S.log.slice(logFrom)) {
     if (l.vis === "secret" || l.vis === "player") continue;
@@ -407,7 +437,23 @@ const DO = {
     for (const i of found) g.P.found.add(i.id);
     res.notes.push(found.length ? `찾았다: ${found.map((i) => i.name).join(", ")}` : "특별한 것은 없다");
   },
-  take(g, id, res) { pass(g, 2); g.L.player.takeFrom(g.t, g.at, id); res.notes.push(`${g.L.items.get(id).name}을(를) 챙겼다`); },
+  take(g, id, res) {
+    pass(g, 2);
+    const it = g.L.items.get(id);
+    if (it.stashed) { it.stashed = false; it.at = null; it.owner = "player"; }
+    else g.L.player.takeFrom(g.t, g.at, id);
+    if (it.coin) { g.S.purse.player += it.coin; g.L.items.delete(id); }
+    res.notes.push(`${it.name}을(를) 챙겼다`);
+  },
+  stash(g, id, res) {
+    pass(g, 10);
+    let it;
+    if (id === "coin") { const n = g.S.purse.player - 3; g.S.purse.player = 3; it = g.L.give("player", { id: `it_coin_${g.run.journal.length}`, name: `동전 ${n}못`, coin: n, tags: ["화폐"], value: n }); }
+    else it = g.L.items.get(id);
+    Object.assign(it, { at: g.at, worn: false, stashed: true });
+    g.P.found.add(it.id);
+    res.notes.push(`${it.name}을(를) ${placeName(g, g.at)} 어딘가에 숨겼다`);
+  },
   attack(g, n, res) {
     pass(g, 2);
     if (OK(res.tier)) {
@@ -482,6 +528,29 @@ const DO = {
     res.notes.push(r.sold ? `${r.price}못을 받았다` : `${nameOf(g, n)}은(는) 사지 않는다`);
     if (r.knew) res.notes.push("누구 물건인지 알아본 눈치다");
     endIfSpent(g, res, 1);
+  },
+  buy(g, gid, res) {
+    const n = g.convo.npc, good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
+    g.S.purse.player -= price; g.S.purse[n] = (g.S.purse[n] || 0) + price;
+    const it = g.L.give("player", { ...good, id: `it_${gid}_${g.run.journal.length}`, value: good.price, gid });
+    res.notes.push(`${good.name}을(를) ${price}못에 샀다`);
+    if (good.illegal) g.S.threats.push({ by: n, target: "player", kind: "leverage", about: gid, t: g.t });   // 장물아비는 당신이 무엇을 샀는지 안다
+    endIfSpent(g, res, 0.5);
+  },
+  use(g, id, res) {
+    const it = g.L.items.get(id), fx = it.eat || it.use || {};
+    if (fx.hunger) g.P.status.hunger = clamp(g.P.status.hunger + fx.hunger, 0, 4);
+    if (fx.pain) g.P.status.pain = clamp(g.P.status.pain + fx.pain, 0, 100);
+    g.L.items.delete(id);
+    res.notes.push(`${it.name}을(를) ${it.eat ? "먹었다" : "썼다"}`);
+    pass(g, 5);
+  },
+  ration(g, _, res) {
+    g.P.lastRation = Math.floor(g.t / 1440);
+    const f = g.content.game.economy.ration.food || {};
+    g.P.status.hunger = clamp(g.P.status.hunger + (f.hunger || -1), 0, 4);
+    res.notes.push("귀리죽 한 국자. 묽다. 그래도 따뜻하다");
+    pass(g, 15);
   },
   leave(g, _, res) { res.ending = true; res.convoEnded = g.convo; g.convo = null; pass(g, 1); },
   regress(g) { /* 서버가 newRun으로 처리한다 */ },
@@ -620,6 +689,44 @@ export function regressRun(g) {
   const future = [...new Set([...carry.future, ...g.P.knows])];
   const deaths = [...carry.deaths, ...(g.ended ? [{ loop: g.run.loop, ...g.ended }] : [])];
   return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths } });
+}
+
+// 값: 기본값 × 흥정(호감·신뢰 ±20%) × 흉년(굶주림월 먹을 것 ×3) × 장물(불법 ×2)
+function priceOf(g, n, gid) {
+  const good = g.content.game.economy.goods[gid], r = relOf(g, n);
+  const haggle = 1 - clamp((r.like * 0.6 + r.trust * 0.4) / 250, -0.2, 0.2);
+  const famine = fromMinutes(g.t).m === 12 && good.tags?.includes("음식") ? 3 : 1;
+  return Math.max(1, Math.round(good.price * haggle * famine * (good.illegal ? 2 : 1)));
+}
+// 점호 몸수색 (14 §0:14 — 첫 회차는 반드시 플레이어, 그 뒤는 셋 중 하나): 숨길 수 있는 것은 손재주로 숨긴다.
+// 은화(12못 이상)는 절도 의심으로 빼앗기고, 무기·위조 문서는 죄가 된다
+function rollcallSearch(g, day) {
+  const searched = g.run.loop === 1 && day === Math.floor(START / 1440) + 1 ? true : hash(g.seed, "search", day) < 1 / 3;
+  if (!searched) return;
+  const found = [];
+  for (const it of mine(g)) {
+    const hideable = it.tags?.includes("숨길수있음") || it.visibility === "숨김";
+    const P = hideable ? prob(g.P.skills.손재주 + g.P.mods.민첩 * 2 + 8, 20) : 0.05;
+    if (hash(g.seed, "frisk", day, it.id) >= P) found.push(it);
+  }
+  const coin = g.S.purse.player;
+  let text = "크릭 감독이 당신의 옷과 부츠를 뒤진다.";
+  if (coin >= 12 && hash(g.seed, "frisk-coin", day) >= prob(g.P.skills.손재주 + 8, 18)) {
+    g.S.purse.player = 0; g.S.purse[overseer(g)] = (g.S.purse[overseer(g)] || 0) + coin;
+    text += ` 동전 ${coin}못이 나왔다 — 인간이 은화를? 즈닉이 가져가고 채찍 다섯.`;
+    g.P.status.pain = clamp(g.P.status.pain + 10, 0, 100);
+  }
+  for (const it of found) {
+    g.L.items.delete(it.id);
+    if (it.tags?.includes("무기") || it.illegal) {
+      const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] });
+      w.heat += 3; w.since ??= g.t; w.by.add(overseer(g)); w.reasons.push(`점호에서 ${it.name}이(가) 나왔다`);
+      deed(g, "weapon", null);
+      text += ` ${it.name}이(가) 나왔다. 광장이 조용해진다.`;
+    } else text += ` ${it.name}을(를) 빼앗겼다.`;
+  }
+  if (!found.length && !(coin >= 12)) text += " 아무것도 나오지 않았다.";
+  g.feed.push({ kind: "rule", text: josa(text) });
 }
 
 // ── 평판 (10 · 21 §8) ──
