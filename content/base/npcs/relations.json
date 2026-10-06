@@ -2288,6 +2288,138 @@
   "note": ""
  },
  {
+  "from": "npc_gerda",
+  "to": "npc_kit",
+  "type": "아들",
+  "family": "혈연",
+  "affection": 95,
+  "trust": 80,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_gerda",
+  "to": "npc_osric",
+  "type": "두 아이에게 세례를 준 사제",
+  "family": "감정",
+  "affection": 40,
+  "trust": 50,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_gerda",
+  "to": "npc_elsa",
+  "type": "약을 살 수 없는 약초꾼",
+  "family": "감정",
+  "affection": 30,
+  "trust": 30,
+  "public": true,
+  "visibility": "공개",
+  "note": "빚지기 싫다"
+ },
+ {
+  "from": "npc_gerda",
+  "to": "npc_henrik",
+  "type": "체납 장부의 주인",
+  "family": "위계",
+  "affection": -50,
+  "trust": -60,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_gerda",
+  "to": "npc_heinz",
+  "type": "같은 예배당의 장로",
+  "family": "감정",
+  "affection": 20,
+  "trust": 20,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_gerda",
+  "to": "npc_martha",
+  "type": "명단을 쥔 이웃",
+  "family": "적대",
+  "affection": -20,
+  "trust": -10,
+  "public": false,
+  "visibility": "일방",
+  "note": "키트 때문에 두렵다"
+ },
+ {
+  "from": "npc_kit",
+  "to": "npc_gerda",
+  "type": "어머니",
+  "family": "혈연",
+  "affection": 95,
+  "trust": 90,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_kit",
+  "to": "npc_znik",
+  "type": "무서운 감독",
+  "family": "위계",
+  "affection": -40,
+  "trust": -30,
+  "public": true,
+  "visibility": "공개",
+  "note": "무섭지 않은 척"
+ },
+ {
+  "from": "npc_kit",
+  "to": "npc_bram",
+  "type": "누룽지를 주는 아저씨",
+  "family": "감정",
+  "affection": 40,
+  "trust": 35,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_kit",
+  "to": "npc_fayne",
+  "type": "처마 위의 형",
+  "family": "혈연",
+  "affection": 30,
+  "trust": 20,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
+  "from": "npc_kit",
+  "to": "npc_henrik",
+  "type": "정수리를 짚은 손",
+  "family": "적대",
+  "affection": -30,
+  "trust": -20,
+  "public": false,
+  "visibility": "일방",
+  "note": "이유를 모른다"
+ },
+ {
+  "from": "npc_kit",
+  "to": "npc_sara",
+  "type": "성채 누나",
+  "family": "혈연",
+  "affection": 35,
+  "trust": 30,
+  "public": true,
+  "visibility": "공개",
+  "note": ""
+ },
+ {
   "from": "npc_melisande",
   "to": "npc_aurax",
   "type": "오빠·경쟁자",
@@ -2961,7 +3093,7 @@
  {
   "from": "npc_elastriel",
   "to": "npc_first_ember",
-  "type": "그녀가 태운 잔향의 전생",
+  "type": "그녀가 그물로 끊은 앞선 잔향자",
   "family": "감정",
   "affection": 10,
   "trust": 0,
