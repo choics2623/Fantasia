@@ -1352,3 +1352,236 @@
 | cm_naga_shedding | 탈피 | 세렌 | 나가 저택 출입 | 나가 상인이 탈피 중이라 꼼짝 못 한다. 허물 벗기를 도와 달란다. 나가는 대가 없이 받을 수 없다 | A 돕는다 / B 대가를 미리 정한다 `[흥정 D30]` / C 거절한다 | A 나가가 억지로 대가를 찾아 헤맨다 (희극) / B 계약 이자 감면 / C — |
 | cm_heron_eggs | 왜가리 알 | 모르바 | 늪 이동 | 토른이 왜가리 알을 훔치다 어미에게 쫓긴다. 어미 왜가리가 엄청나다 | A 토른을 돕는다 / B 웃는다 / C 알을 돌려놓는다 | A 둘 다 쪼인다 / B 토른 애정 −5, 마을 전체가 웃는다 / C 어미가 돌아간다, 토른은 굶는다 |
 
+---
+
+## 5. 완전 작성 스토리렛 예시 (YAML)
+
+> GAME_DESIGN §11.4 형식을 따른다. 이 문서가 덧붙인 확장 필드: `text_append` (조건부 추가 단락), `scene_tags`, `on_partial` (부분 성공). 변수는 `{...}` 로 치환한다.
+
+### 5.1 출신 첫 장면 — 「명단」 (O-01)
+
+```yaml
+id: greywater_serf_opening
+title: 명단
+location: { settlement: greywater, place: village_well }
+scene_tags: [origin_opening, echo_wake]
+conditions:
+  - player.origin == origin.greywater_serf
+  - time.date == AS312-09-01
+  - time.hour between 5 and 6
+weight: 1000            # 출신 첫 장면은 강제
+text: |
+  새벽 안개가 여울강에서 기어 올라와 우물가를 덮는다. 물동이를 내려놓는 순간,
+  성채 하녀 {npc.sara.name}가 옆에 와서 두레박줄을 잡는다. 그녀는 당신을 보지 않고
+  우물 속만 들여다보며 말한다. "어젯밤 남작님 방에서 들었어. 세렌에서 온 나가 중개인한테
+  스무 명을 판대. 사흘 뒤, 여울강 나루에서." 두레박이 물에 닿는 소리. "명단에 {player.sibling.name}가 있어."
+
+  {npc.sara.name}는 물을 긷지도 않고 성채 쪽으로 걸어간다. 오두막에서 어머니의 기침 소리가 들린다.
+  {player.sibling.name}는 아직 자고 있다. 열 살. 노예 시장에서 열 살짜리 사내아이는 1비늘 반이면 팔린다.
+  당신의 부츠 속에는 동화 {player.hidden_coins}닢이 있다.
+text_append:
+  - conditions: [ player.life_index == 1 ]          # 첫 생애: 잔향의 각성 전문
+    effects:
+      - set: { player.echo_awakening: 1 }
+      - learn: memory.asteria_doors
+      - roll: { chance: 0.20, on_hit: [ add_flag: sara_saw_grey_ring ] }
+    text: |
+      열여섯 해 동안 이 몸은 농노의 아이였다. {npc.sara.name}의 입에서 그 이름이 나오는 순간,
+      그 안에서 무언가가 눈을 뜬다. 우물물에 비친 당신의 눈동자 가장자리로 재 같은 고리가 스치고, 사라진다.
+      머릿속에 낯선 거리가 떠오른다. 문마다 글자가 새겨진 도시. 당신은 그 글자를 읽을 수 있다.
+  - conditions: [ player.life_index > 1 ]           # 이후 생애: 기억 조각 변형
+    text: |
+      우물물에 비친 얼굴 위로 다른 이름 하나가 겹친다. {player.previous_life.name}. 당신은 돌아왔다.
+choices:
+  - text: 사라를 따라가 명단을 더 묻는다
+    check: { skill: persuasion, difficulty: 15 }
+    on_success:
+      - learn: knowledge.greywater_sale_list
+      - relation: { target: sara, trust: +5 }
+      - text: "여섯 이름. 거래는 여울강 나루, 중개인 이름은 세스카 벨루."
+    on_fail:
+      - add_flag: { marta_suspects: +10 }
+      - text: 사라는 고개를 젓고 빠르게 걸어간다. 성채 문간에서 마르타가 이쪽을 보고 있다.
+    time_cost: 0.25h
+  - text: 오스릭 사제에게 간다
+    effects:
+      - start_scene: oswric_blessing_exemption
+    time_cost: 0.5h
+  - text: '절름발이 수탉'으로 가 브람에게 북쪽 길을 묻는다
+    check: { skill: insight, difficulty: 30 }
+    on_success:
+      - learn: knowledge.bram_hides_northern_refugees
+    on_fail:
+      - relation: { target: bram, trust: -3 }
+      - text: 브람은 "애들 장난 칠 시간 없다"며 잔을 닦는다.
+    time_cost: 0.5h
+  - text: 징세관 헨릭을 찾아가 체납금으로 흥정한다
+    check:
+      skill: haggling
+      difficulty: 45
+      modifiers:
+        - { if: player.choice_reveals_coins, value: -10, label: "숨긴 동전을 꺼냈다" }
+    on_success:
+      - add_quest: { id: henrik_ten_days, deadline_days: 10, cost: { 발톱: 4 } }
+      - alignment: { mercy: -5 }
+      - text: "헨릭이 웃는다. \"열흘 안에 4발톱. 그럼 다른 집 아이 이름을 적지.\""
+    on_partial:
+      - lose_item: { tag: 화폐, amount: all }
+      - add_quest: { id: henrik_ten_days, deadline_days: 7, cost: { 발톱: 4 } }
+    on_fail:
+      - lose_item: { tag: 화폐, amount: all }
+      - rumor: { fact: player_hides_money, spread: village }
+    time_cost: 1h
+  - text: 목줄장 마르타에게 간청한다
+    check: { contest: persuasion, vs: { npc: marta, resist: insight } }
+    on_success:
+      - add_quest: marta_price          # 밀고 퀘스트
+    on_fail:
+      - relation: { target: zhnik, fear: +10 }
+      - text: 마르타는 대답 대신 즈닉에게 무언가를 속삭인다.
+    time_cost: 0.5h
+  - text: 페인에게 하겐의 '북쪽 길'을 부탁한다
+    requires: [ relation.pain.trust >= 15 ]
+    show_locked: false
+    effects:
+      - start_scene: hagen_northern_road
+    time_cost: 0.5h
+  - text: 아무에게도 말하지 않고 들일을 나간다
+    effects:
+      - work: { type: field, hours: 10 }
+      - npc_state: { target: gerda, health: -10 }
+      - text: 저녁, 어머니는 이미 소문을 들었다. 기침 사이로 우는 소리가 섞인다.
+    time_cost: 10h
+```
+
+### 5.2 잔향 환영 — 「옛 돌 고리의 밤」
+
+```yaml
+id: echo_old_stone_ring_ash_day
+title: 옛 돌 고리의 밤
+location: { settlement: greywater, place: old_stone_ring }
+scene_tags: [echo_vision, forbidden_site, reveal_arc]
+conditions:
+  - calendar.is_ash_day == true                 # 재의 날 5일 중 하루
+  - time.hour between 22 and 3
+  - player.echo_awakening >= 1
+  - not: player.flags.stone_ring_visited_this_era
+weight: 40
+text: |
+  재의 날에는 불을 피우지 않는다. 그래서 옛 돌 고리는 달빛만으로 서 있다.
+  금지된 성소. 이 돌에 손을 대면 손을 자른다는 것이 레이번가의 법이다.
+  열한 개의 선 돌, 그리고 한가운데 누운 돌 하나. 누운 돌의 표면은 긁힌 자국으로 가득하다.
+  {if player.skill.literacy >= 15}그것은 긁힌 자국이 아니다. 이름이다.{else}자국들은 묘하게 고르다. 마치 누군가 일부러 새긴 것처럼.{end}
+  돌 고리 바깥, 덤불 그늘에 사람이 하나 숨어 있다. {npc.elsa.name}다. 그녀는 당신을 보고도 움직이지 않는다.
+text_append:
+  - conditions: [ player.lives_total >= 2 ]
+    text: |
+      누운 돌의 가장자리, 아직 이끼가 덜 덮인 자리에 이름 하나가 있다. {player.previous_life.name}.
+      전생의 당신이 죽은 뒤, 누군가 여기에 새겼다.
+choices:
+  - text: 누운 돌에 새겨진 이름들을 읽는다
+    requires: [ player.skill.literacy >= 15 ]
+    show_locked: true
+    locked_hint: "글자를 읽을 수 없다"
+    effects:
+      - learn: knowledge.stone_ring_names        # 이름 없는 자들이 새긴 담지자·순교자 목록
+      - reveal_progress: { arc: reveal.returner, step: R4, value: +1 }
+      - text: |
+          맨 위의 이름은 너무 닳아 읽을 수 없다. 그 아래, '다라'. 그 아래로 수십 개의 이름,
+          그리고 이름 옆마다 같은 표시 — 잿빛 고리. 대부분은 아이들의 나이다.
+    time_cost: 1h
+  - text: 돌에 손을 대고 눈을 감는다
+    check: { attribute: will, skill: none, difficulty: 30, label: "기억의 물살을 견딘다" }
+    on_success:
+      - add: { player.echo_awakening: +1 }
+      - learn: { memory_fragment: random_previous_carrier }
+      - text: |
+          돌이 따뜻하다. 다른 밤, 다른 손이 이 돌을 짚고 있었다. 붉은 흙을 바른 손.
+          "다음의 나야." 목소리가 당신의 목에서 나온다. 덤불 속의 {npc.elsa.name}가 숨을 들이켠다.
+      - relation: { target: elsa, trust: +30 }
+      - add_flag: elsa_knows_returner
+    on_fail:
+      - status: { stress: +25 }
+      - roll: { chance: 0.5, on_hit: [ add_trait_temp: { id: grey_ring_visible, days: 3 } ] }
+      - text: 너무 많은 얼굴이 한꺼번에 밀려온다. 정신을 차렸을 때 당신은 돌 위에 엎드려 있고, 손바닥이 피투성이다.
+    time_cost: 2h
+  - text: 내 이름을 돌에 새긴다
+    requires: [ has_tag: 날붙이 ]
+    show_locked: false
+    effects:
+      - add_flag: stone_ring_name_carved          # 다음 생애가 읽을 수 있는 표식 (§3.8)
+      - legacy_mark: { type: stone_ring, payload: player.current_name }
+      - risk: { law: raven_forbidden_site, witness_check: { skill: stealth, difficulty: 30 } }
+    time_cost: 1h
+  - text: 덤불 속의 엘사에게 다가간다
+    effects:
+      - start_scene: elsa_ash_day_vigil            # 그녀는 이름 없는 자들의 연락책이다
+    time_cost: 0.25h
+  - text: 조용히 떠난다
+    effects:
+      - text: 등 뒤에서 누군가 아주 작게, 불 없는 날의 노래를 부르기 시작한다.
+    time_cost: 0.25h
+```
+
+### 5.3 작은 자비의 희극 — 「즈닉의 틀니」
+
+```yaml
+id: comedy_zhnik_lost_teeth
+title: 즈닉의 틀니
+location: { settlement: greywater, place: barley_fields }
+scene_tags: [comedy, small_mercy]
+conditions:
+  - npc.zhnik.alive == true
+  - time.weekday != sabbath
+  - time.hour between 7 and 17
+  - not: world.flags.zhnik_teeth_event_done
+weight: 8
+text: |
+  보리밭 한가운데서 즈닉이 채찍을 휘두르며 무언가 외친다. "휘이-쉬! 휘쉬 휘이-!"
+  아무도 알아듣지 못한다. 농노 마흔 명이 허리를 편 채 서로를 본다.
+  크릭 감독관의 입이 이상하게 오므라져 있다. 쇠로 만든 그의 틀니가 없다.
+  {npc.zhnik.name}이 휘파람 같은 소리로 다시 외친다. 이번엔 화가 났다는 것만은 확실히 전해진다.
+  두렁 끝, 진흙 속에서 무언가 반짝인다.
+  {if player.skill.insight >= 25}근처 농노 몇이 웃음을 참느라 어깨를 떤다. 그리고 즈닉의 눈에는 — 공포가 있다. 틀니가 없는 감독관은 성채에서 '쓸모없다'고 여겨질 것이다.{end}
+choices:
+  - text: 진흙 속의 틀니를 주워 즈닉에게 내민다
+    effects:
+      - relation: { target: zhnik, trust: +15, fear: -5 }
+      - add_flag: { zhnik_owes_player: 7 }       # 7일간 당신에게는 채찍을 들지 않는다
+      - alignment: { mercy: +2 }
+      - relation_group: { target: greywater_serfs, trust: -3 }
+      - text: |
+          즈닉은 틀니를 낚아채 입에 끼우고, 한참 당신을 노려본 뒤 말한다. "…본 거 없다."
+          그날 오후, 그는 당신 이랑만 건너뛴다. 이웃들은 당신을 이상한 눈으로 본다.
+    time_cost: 0.25h
+  - text: 못 알아들은 척 허리를 펴고 쉰다
+    check: { skill: deception, difficulty: 15 }
+    on_success:
+      - world_effect: { field_rest_hours: 3, scope: greywater_barley }
+      - status: { fatigue: -1 }
+      - add: { hymn.courage.greywater: +1 }
+      - text: 한 사람이 쉬자 열 사람이 쉰다. 즈닉은 휘파람만 불다 지쳐 주저앉는다. 들판에 처음으로 웃음소리가 번진다.
+    on_fail:
+      - status: { injury: { part: back, severity: light } }
+      - text: 즈닉은 말은 못 해도 채찍은 휘두를 수 있다.
+    time_cost: 3h
+  - text: 틀니를 몰래 주워 대장간의 브란에게 가져간다
+    requires: [ relation.brann.trust >= 10 ]
+    show_locked: false
+    effects:
+      - item_gain: { id: zhnik_iron_teeth, tags: [ 귀금속, 장물, 우스꽝스러움 ] }
+      - start_scene: brann_teeth_negotiation    # 브란은 틀니를 '고쳐 주는' 대가로 즈닉에게서 쇠를 받는다 — 무기 재료
+      - text: 브란은 틀니를 불빛에 비춰 보고 처음으로 웃는다. "이 쇠, 좋은 쇠다."
+    time_cost: 1h
+  - text: 틀니를 발로 밟아 진흙 깊이 묻는다
+    effects:
+      - alignment: { mercy: -3 }
+      - world_effect: { npc_state: { target: zhnik, status: disgraced, days: 14 } }
+      - roll:
+          chance: 0.5
+          on_hit:
+            - npc_replace: { role: greywater_overseer, with: harsher_overseer_template }
+            - text: 2주 뒤, 즈닉 대신 새 감독관이 온다. 그는 틀니가 있고, 채찍을 더 좋아한다.
+    time_cost: 0.1h
+```
+
