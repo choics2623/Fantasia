@@ -17,7 +17,10 @@ const WALK_M_PER_MIN = 80;
 
 export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
   const { settlements, routines, events, map } = bundle;
-  const overrides = [];
+  const overrides = new Map();   // npc → [덮어쓰기…] (사람별 색인 — 수천 명이 되어도 where()가 느려지지 않게)
+  let condFn = null;             // 일정의 when 조건을 판정할 함수 (목표 행동 엔진이 넣어 준다)
+  const eventsByNpc = new Map();
+  for (const ev of events) for (const n of ev.npcs) { if (!eventsByNpc.has(n)) eventsByNpc.set(n, []); eventsByNpc.get(n).push(ev); }
 
   // ── 장소 색인 ──
   const loc = new Map();      // id → { id, name, settlement, xy, node, outerHours, parent }
@@ -160,10 +163,11 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
   // 일정은 목록 순서대로 본다 — 먼저 맞는 것이 이긴다 (이어지는 일정은 뒤의 것을 앞에 적는다).
   // travel_from: 일정 전에 그곳에서 출발한다. return_to: 일정이 끝나면 그곳으로 돌아간다. mounted: 말을 탄다(×0.35).
   function eventAt(npc, t) {
-    for (const ev of events) {
-      if (!ev.npcs.includes(npc)) continue;
+    for (const ev of eventsByNpc.get(npc) || []) {
       if (ev.if && !flags[ev.if]) continue;
       if (flags[ev.id + ":off"]) continue;
+      // 조건부 일정: 세계 상태가 바뀌면 일어나지 않는다 (호송이 습격당했으면 바알카르 도착도 없다)
+      if (ev.when && condFn && !ev.when.every((c) => condFn(c, t))) continue;
       const speed = ev.mounted ? 0.35 : 1;
       for (const { start, end } of eventInstances(ev, t)) {
         if (t >= start && t < end) return { at: ev.at, doing: ev.doing, source: "event", event: ev.id, from: start, to: end };
@@ -209,9 +213,10 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
 
   // ── 공개 API ──
   function where(npc, t) {
-    for (let i = overrides.length - 1; i >= 0; i--) {
-      const o = overrides[i];
-      if (o.npc === npc && t >= o.from && (o.to == null || t < o.to)) return finish(npc, t, { kind: o.kind || "at", at: o.at ?? null, doing: o.doing, source: "override" });
+    const list = overrides.get(npc) || [];
+    for (let i = list.length - 1; i >= 0; i--) {
+      const o = list[i];
+      if (t >= o.from && (o.to == null || t < o.to)) return finish(npc, t, { kind: o.kind || "at", at: o.at ?? null, doing: o.doing, source: "override" });
     }
     const ev = eventAt(npc, t);
     if (ev) return finish(npc, t, { kind: "at", ...ev });
@@ -239,7 +244,9 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
     return segs;
   }
   // 장면이 바꾼 것: 죽음, 포로, 플레이어가 데려감… (세이브에 남는다. 회귀하면 비운다)
-  function override(o) { overrides.push(o); }
+  function override(o) { if (!overrides.has(o.npc)) overrides.set(o.npc, []); overrides.get(o.npc).push(o); }
+  function setCond(fn) { condFn = fn; }
+  const npcs = () => [...new Set([...Object.keys(routines), ...eventsByNpc.keys()])];
 
-  return { where, whoIsAt, timeline, override, travelMinutes, route, rainy, exists, loc };
+  return { where, whoIsAt, timeline, override, setCond, npcs, hasEvents: (n) => eventsByNpc.has(n), travelMinutes, route, rainy, exists, loc };
 }

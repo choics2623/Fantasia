@@ -88,22 +88,45 @@ export function createAgenda(world, state, agendaData, { loopSeed = 1 } = {}) {
     return false;
   }
 
-  // 하루를 굴린다: 그날 해당하는 목표를 시각 순서대로 처리
-  function runDay(day) {
-    const todays = agendas.filter((ag) => due(ag, day)).sort((a, b) => parseClock(a.at.from) - parseClock(b.at.from));
-    for (const ag of todays) {
-      const start = day * 1440 + parseClock(ag.at.from);
-      let end = day * 1440 + parseClock(ag.at.to); if (end <= start) end += 1440;
-      if (ag.chance != null && hash(loopSeed, ag.id, day) >= ag.chance) continue;
-      if (!(ag.when || []).every((c) => cond(c, start))) continue;
-      // NPC를 실제로 그 자리에 보낸다
-      world.override({ npc: ag.npc, from: start, to: end, kind: "at", at: ag.at.place, doing: ag.at.doing, agenda: ag.id });
-      for (const e of ag.effects || []) effect(e, ag, start, end);
-      state.done.add(ag.id);
-    }
+  // 시각 순서로 굴린다. 하루를 통째로 먼저 처리하지 않는다 — 플레이어가 20시에 한 일이 21시의 목표를 막을 수 있어야 하므로.
+  // 각 목표는 시작 시각에 조건을 보고, 맞으면 NPC를 보내고 효과를 적용한다. (목표, 날)마다 한 번만 본다.
+  const seen = new Set();
+  let cursor = null;
+  function startOf(ag, day) {
+    const start = day * 1440 + parseClock(ag.at.from);
+    let end = day * 1440 + parseClock(ag.at.to); if (end <= start) end += 1440;
+    return { start, end };
   }
-
-  function run(fromT, toT) { for (let d = Math.floor(fromT / 1440); d < Math.floor(toT / 1440); d++) runDay(d); return state; }
+  function fire(ag, day, start, end) {
+    seen.add(ag.id + "@" + day);
+    if (ag.every === "once" && state.done.has(ag.id)) return;
+    if (ag.chance != null && hash(loopSeed, ag.id, day) >= ag.chance) return;
+    if (!(ag.when || []).every((c) => cond(c, start))) return;
+    world.override({ npc: ag.npc, from: start, to: end, kind: "at", at: ag.at.place, doing: ag.at.doing, agenda: ag.id });
+    for (const e of ag.effects || []) effect(e, ag, start, end);
+    state.done.add(ag.id);
+    hooks.forEach((h) => h({ type: "agenda", ag, start, end }));
+  }
+  // [fromT, toT) 사이에 시작하는 목표를 시각 순서대로 처리한다
+  function stepTo(toT) {
+    const fromT = cursor ?? toT;
+    if (cursor == null) { cursor = toT; return state; }
+    const todo = [];
+    for (let d = Math.floor(fromT / 1440); d <= Math.floor((toT - 1) / 1440); d++) {
+      for (const ag of agendas) {
+        if (seen.has(ag.id + "@" + d) || !due(ag, d)) continue;
+        const { start, end } = startOf(ag, d);
+        if (start >= fromT && start < toT) todo.push({ ag, d, start, end });
+      }
+    }
+    todo.sort((a, b) => a.start - b.start);
+    for (const x of todo) fire(x.ag, x.d, x.start, x.end);
+    cursor = Math.max(cursor, toT);
+    return state;
+  }
+  function runDay(day) { if (cursor == null || cursor > day * 1440) cursor = day * 1440; return stepTo((day + 1) * 1440); }
+  function run(fromT, toT) { if (cursor == null || cursor > fromT) cursor = Math.floor(fromT / 1440) * 1440; return stepTo(Math.floor(toT / 1440) * 1440); }
+  const hooks = [];
 
   // 플레이어 개입 — 죽임, 옮김, 변수 바꾸기
   function intervene(t, kind, ...args) {
@@ -111,5 +134,6 @@ export function createAgenda(world, state, agendaData, { loopSeed = 1 } = {}) {
     if (kind === "set") { state.vars[args[0]] = args[1]; state.log.push({ t, npc: "player", text: `플레이어: ${args[0]} = ${args[1]}` }); }
   }
 
-  return { run, runDay, intervene, state, fmtLog: () => [...state.log].sort((a, b) => a.t - b.t).map((l) => `${fmt(l.t)}  ${l.text}`) };
+  world.setCond?.((c, t) => cond(c, t));
+  return { run, runDay, stepTo, intervene, cond, onFire: (h) => hooks.push(h), state, fmtLog: () => [...state.log].sort((a, b) => a.t - b.t).map((l) => `${fmt(l.t)}  ${l.text}`) };
 }

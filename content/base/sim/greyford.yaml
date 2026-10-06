@@ -1,0 +1,28 @@
+# 회색여울 NPC의 시뮬레이션 성향 (27_LIVING_WORLD.md §3). 카드(22)가 '어떻게 말하나'라면, 이것은 '무엇을 하나'의 숫자다.
+# perception: 눈치 0~100 (보고·듣고·알아보는 힘). nerve: 담력 0~100. talk: 입이 가벼운 정도 0~1. greed: 0~1. duty: 윗선에 알리려는 마음 0~1.
+# ties: 그 사람에 대한 마음 −3(증오) ~ +3(목숨). report_to: 보고하러 가는 윗선 (앞에서부터, 없거나 죽었으면 다음).
+# searches: 사람이 사라지면 찾아 나서는 자리 (감독관). role: authority(조사·체포), hunter(뒤쫓는다), fence(장물을 사고 입을 다문다).
+defaults: {perception: 50, nerve: 50, talk: 0.4, greed: 0.4, duty: 0.4, report_to: [npc_znik, npc_owen_raven]}
+social_places: [gf_rooster, gf_well_square, gf_chapel, gf_whip_square, gf_south_barracks, gf_north_barracks, gf_weaving_shed]
+profiles:
+  npc_fayne:   {perception: 80, nerve: 25, talk: 0.15, greed: 0.6, duty: 0.05, ties: {npc_hagen: -3, npc_irma: 2, npc_thomas: 1, npc_elsa: 2, npc_bram: 1}}
+  npc_bram:    {perception: 45, nerve: 40, talk: 0.2, greed: 0.2, duty: 0.15, ties: {npc_egil: 3, npc_henrik: -2, npc_znik: -2}}
+  npc_znik:    {perception: 45, nerve: 30, talk: 0.5, greed: 0.7, duty: 0.8, role: authority, searches: true, report_to: [npc_owen_raven, npc_godric_raven], ties: {npc_hagen: 1, npc_henrik: -1}}
+  npc_owen_raven: {perception: 55, nerve: 60, talk: 0.3, greed: 0.2, duty: 0.8, role: authority, report_to: [npc_godric_raven], ties: {npc_sara: 2}}
+  npc_godric_raven: {perception: 50, nerve: 55, talk: 0.3, greed: 0.8, duty: 0.2, role: authority, report_to: []}
+  npc_henrik:  {perception: 70, nerve: 35, talk: 0.25, greed: 0.95, duty: 0.3, role: fence, ties: {npc_znik: -1}}
+  npc_martha:  {perception: 85, nerve: 40, talk: 0.75, greed: 0.4, duty: 0.75, ties: {npc_liz: 3}}
+  npc_liz:     {perception: 50, nerve: 35, talk: 0.6, duty: 0.3, ties: {npc_martha: 3}}
+  npc_gerda:   {perception: 45, nerve: 50, talk: 0.7, greed: 0.2, duty: 0.2, ties: {npc_kit: 3}}
+  npc_volk:    {perception: 95, nerve: 90, talk: 0.2, greed: 0.8, duty: 0.3, role: hunter, report_to: [], ties: {npc_hagen: 0}}
+  npc_isol:    {perception: 90, nerve: 70, talk: 0.05, greed: 0.1, duty: 0.1, report_to: []}
+  npc_osric:   {perception: 40, nerve: 35, talk: 0.5, greed: 0.1, duty: 0.6}
+  npc_elsa:    {perception: 60, nerve: 60, talk: 0.15, greed: 0.1, duty: 0.0, ties: {npc_fayne: 2, npc_irma: 2}}
+  npc_thomas:  {perception: 40, nerve: 30, talk: 0.3, duty: 0.1, ties: {npc_fayne: 1}}
+  npc_irma:    {perception: 55, nerve: 45, talk: 0.4, duty: 0.1, ties: {npc_fayne: 2, npc_hagen: 1}}
+  npc_bran:    {perception: 55, nerve: 70, talk: 0.25, duty: 0.2}
+  npc_gunnar:  {perception: 50, nerve: 55, talk: 0.3, duty: 0.3}
+  npc_sara:    {perception: 70, nerve: 45, talk: 0.2, duty: 0.1, ties: {npc_owen_raven: 1}}
+  npc_johan:   {perception: 45, nerve: 30, talk: 0.8, duty: 0.3}
+  npc_dietmar: {perception: 60, nerve: 75, talk: 0.3, greed: 0.5, duty: 0.0, role: fence, report_to: []}
+  npc_hagen:   {perception: 65, nerve: 45, talk: 0.4, greed: 0.9, duty: 0.2, role: fence, report_to: [npc_volk, npc_znik]}

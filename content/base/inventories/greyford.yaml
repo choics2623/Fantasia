@@ -1,0 +1,75 @@
+# 회색여울 NPC의 소지품 (02 §1·§⑥, 27_LIVING_WORLD.md §4).
+# coin: 못 단위 (1 발톱 = 12 못, 1 비늘 = 20 발톱). worn: 몸에 지닌 것(보임/숨김), stash: 집·은닉처에 둔 것.
+# marks: 알아볼 수 있는 표시. recognizers: 보면 '누구 것'인지 아는 사람. 표시를 지우면(녹이기·다시 칠하기) 아무도 못 알아본다.
+# reveals: 이 물건을 손에 넣고 살펴보면 알게 되는 사실.
+# 브람의 돈은 목표 행동의 세계 변수 bram_coin으로 따로 센다 (26).
+npc_hagen:
+  coin: 91          # 7 발톱 7 못 — 볼크에게서 받은 머릿값의 남은 것
+  worn:
+    - {id: it_hagen_knife, name: 뼈자루 접이칼, tags: [무기, 날붙이, 숨길수있음], slot: 허리띠, visibility: 숨김, value: 50,
+       marks: ["자루에 늑대 이빨 세 개를 박았다"], recognizers: [npc_fayne, npc_volk, npc_dietmar, npc_irma]}
+    - {id: it_hagen_leash_token, name: 목줄꾼 표식, tags: [신분, 증표], slot: 목, visibility: 숨김, value: 6,
+       marks: ["바르그 조합의 송곳니 낙인"], recognizers: [npc_volk], reveals: fact_gf_hagen_sells_runaways}
+  stash:
+    - {id: it_hagen_knot_cord, name: 매듭 끈 꾸러미, tags: [문서, 끈], at: gf_hagen_shed, value: 0,
+       marks: ["세 소나무 그루터기와 같은 매듭"], recognizers: [npc_fayne, npc_volk]}
+npc_henrik:
+  coin: 264         # 22 발톱 — 장부에서 덜어 낸 것
+  worn:
+    - {id: it_henrik_key, name: 셈집 장부함 열쇠, tags: [열쇠], slot: 허리띠, visibility: 보임, value: 1,
+       marks: ["레이번 가 까마귀가 새겨진 머리"], recognizers: [npc_godric_raven, npc_znik, npc_martha]}
+  stash:
+    - {id: it_henrik_ledger_page, name: 유령 머릿수 장부 한 장, tags: [문서, 증서], at: gf_tollhouse, value: 0,
+       marks: ["헨릭의 손글씨 — 352라는 둥근 숫자"], recognizers: [npc_henrik, npc_godric_raven], reveals: fact_gf_henrik_skims_baron}
+npc_znik:
+  coin: 70
+  worn:
+    - {id: it_znik_whip, name: 감독관 채찍, tags: [무기, 채찍, 제복:감독관], slot: 무기_주, visibility: 보임, value: 30,
+       marks: ["손잡이에 녹색 칠 — 크릭 감독관의 것"], recognizers: [npc_bram, npc_gerda, npc_fayne, npc_thomas, npc_elsa, npc_martha, npc_owen_raven, npc_henrik]}
+    - {id: it_znik_keys, name: 막사 열쇠 꾸러미, tags: [열쇠], slot: 허리띠, visibility: 보임, value: 2,
+       marks: ["열쇠 일곱 개, 하나는 녹이 슬었다"], recognizers: [npc_owen_raven, npc_martha]}
+npc_volk:
+  coin: 480         # 2 비늘
+  worn:
+    - {id: it_volk_fang_string, name: 송곳니 목걸이, tags: [장신구, 전리품], slot: 목, visibility: 보임, value: 40,
+       marks: ["인간 송곳니 열아홉 개"], recognizers: [npc_hagen, npc_fayne, npc_znik, npc_sigrid, npc_owen_raven]}
+npc_godric_raven:
+  coin: 960
+  worn:
+    - {id: it_godric_signet, name: 까마귀 인장 반지, tags: [장신구, 문장:레이번, 귀금속], slot: 반지, visibility: 보임, value: 480,
+       marks: ["레이번 가 까마귀 — 남작의 인장"], recognizers: [npc_owen_raven, npc_henrik, npc_martha, npc_sara, npc_liz, npc_znik, npc_gunnar]}
+npc_owen_raven:
+  coin: 120
+  worn:
+    - {id: it_owen_sword, name: 레이번 가 장검, tags: [무기, 날붙이, 양손], slot: 무기_주, visibility: 보임, value: 240,
+       marks: ["칼자루 끝에 까마귀 머리"], recognizers: [npc_godric_raven, npc_znik, npc_gunnar, npc_bran]}
+npc_osric:
+  coin: 18
+  worn:
+    - {id: it_osric_symbol, name: 사슬등불 성표, tags: [성표:순종의빛, 장신구], slot: 목, visibility: 보임, value: 12,
+       marks: ["사슬 고리 하나를 실로 이었다"], recognizers: [npc_elsa, npc_heinz, npc_gerda, npc_johan]}
+npc_gerda:
+  coin: 2
+  worn:
+    - {id: it_gerda_udo_cord, name: 우도의 매듭 끈, tags: [끈, 유품], slot: 손목, visibility: 보임, value: 0,
+       marks: ["죽은 남편이 묶은 세 겹 매듭"], recognizers: [npc_kit, npc_thomas]}
+npc_fayne:
+  coin: 5
+  worn:
+    - {id: it_fayne_charm, name: 쑥 부적, tags: [부적], slot: 목, visibility: 숨김, value: 0,
+       marks: ["엘사가 묶은 쑥과 붉은 실"], recognizers: [npc_elsa, npc_irma]}
+npc_elsa:
+  coin: 9
+  worn:
+    - {id: it_elsa_herbs, name: 약초 주머니, tags: [치료, 약초], slot: 허리띠, visibility: 보임, value: 6,
+       marks: ["늪 버드나무 껍질 냄새"], recognizers: [npc_irma, npc_osric]}
+npc_isol:
+  coin: 150
+  worn:
+    - {id: it_isol_token, name: 회색 탑 증표, tags: [신분, 증표], slot: 품, visibility: 숨김, value: 0,
+       marks: ["잿빛 탑의 회색 원"], recognizers: [npc_godric_raven], reveals: fact_gb_isol_tower_hound}
+npc_bran:
+  coin: 40
+  worn:
+    - {id: it_bran_hammer, name: 대장장이 망치, tags: [도구, 망치, 둔기], slot: 허리띠, visibility: 보임, value: 10,
+       marks: ["자루가 손 모양으로 닳았다"], recognizers: [npc_owen_raven, npc_gunnar]}
