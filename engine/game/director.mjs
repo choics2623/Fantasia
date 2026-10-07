@@ -92,10 +92,28 @@ export function pickScene(g, t, H) {
     }
     cands.push({ st, w: Math.min(0.95, w) });
   }
-  for (const c of cands) {
-    if (H.hash(g.seed, "director", c.st.id, Math.floor(t / 30)) < c.w) { d.used[day] = (d.used[day] || 0) + 1; return c.st; }
-  }
-  return null;
+  // 고르기: 후보마다 따로 굴리면 콘텐츠 앞쪽 장면이 늘 이긴다. 그래서 '이 반시간에 무슨 일이든 일어날 확률'은
+  // 그대로 두고 (1 − Π(1 − w)), 무엇이 일어날지는 가중 추첨으로 정한다.
+  // 신선함: 이틀 안에 같은 갈래가 나왔으면 ×0.5, 닷새 넘게 안 나온 갈래는 ×1.3, 사흘 안에 같은 자리에서 나왔으면 ×0.7
+  if (!cands.length) return null;
+  const slot = Math.floor(t / 30);
+  const pAny = 1 - cands.reduce((a, c) => a * (1 - c.w), 1);
+  if (H.hash(g.seed, "director", slot) >= pAny) return null;
+  const recent = d.recent || [];
+  const catOf = (st) => st.trigger?.category || "calm", atOf = (st) => [].concat(st.trigger?.at || [])[0] || null;
+  const fresh = (st) => {
+    const lc = recent.filter((r) => r.cat === catOf(st)).pop(), la = atOf(st) && recent.filter((r) => r.at === atOf(st)).pop();
+    let f = lc && t - lc.t < 2 * 1440 ? 0.5 : !lc || t - lc.t > 5 * 1440 ? 1.3 : 1;
+    if (la && t - la.t < 3 * 1440) f *= 0.7;
+    return f;
+  };
+  const ws = cands.map((c) => c.w * fresh(c.st)), sum = ws.reduce((a, b) => a + b, 0);
+  let r = H.hash(g.seed, "director-pick", slot) * sum, pick = cands[cands.length - 1];
+  for (const [i, c] of cands.entries()) { r -= ws[i]; if (r <= 0) { pick = c; break; } }
+  d.used[day] = (d.used[day] || 0) + 1;
+  (d.recent ??= []).push({ id: pick.st.id, cat: catOf(pick.st), at: atOf(pick.st), t });
+  if (d.recent.length > 12) d.recent.shift();
+  return pick.st;
 }
 // 갈고리 비율 (§4.2): 화자마다 갈고리가 나오는 밤의 비율이 다르다
 export const hookAllowed = (g, H, day) => H.hash(g.seed, "hookrate", day) < narratorOf(g).hookRate;

@@ -14,6 +14,7 @@ import { josa } from "../sim/text.mjs";
 import { createReputation, classifyDeed } from "../sim/reputation.mjs";
 import { createOffices } from "../sim/offices.mjs";
 import * as DIR from "./director.mjs";
+import { nearDuplicate } from "./recall.mjs";
 import * as DOM from "./domain.mjs";
 
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
@@ -253,6 +254,67 @@ function settlementAtNode(g, node) {
   for (const [sid, st] of Object.entries(g.content.bundle.settlements)) if (st.node === node) return sid;
   return null;
 }
+// ── 길 찾기 (07 · 03 §3.3): 아는 길로만 — 빠른 길과 안전한 길 ──
+// 아는 곳: 회귀점에서 아는 곳(지도 시작 지식) · 가 본 고장 · 지난 회차에 가 본 고장 · 사실에서 들은 곳 · 길에서 지나친 곳
+export function knownNodes(g) {
+  const key = `${g.P.knows.size}|${(g.P.visited || []).length}|${(g.P.knownNodes || []).length}|${(soul(g).visitedSettlements || []).length}`;
+  if (g._kn?.key === key) return g._kn.K;
+  const M = g.content.bundle.map, K = new Set(), S = g.content.bundle.settlements;
+  g._kn = { key, K };
+  for (const [id, lv] of Object.entries(M.start?.knowledge || {})) if (lv >= 1) K.add(id);
+  for (const id of M.start?.sketch || []) K.add(id);   // 머릿속 약도에 있는 곳
+  for (const sid of [SETTLEMENT, ...(g.P.visited || []), ...(soul(g).visitedSettlements || [])]) if (S[sid]?.node) K.add(S[sid].node);
+  for (const id of g.P.knownNodes || []) K.add(id);
+  for (const f of g.P.knows) { const t = g.content.facts[f]?.text || ""; for (const n of M.nodes) if (t.includes(n.name)) K.add(n.id); }
+  return K;
+}
+// A* (휴리스틱: 직선거리 × 지도에서 가장 빠른 걸음) — 비용 = 시간 × (1 + 위험 가중 × 위험도/5) + 통행증 없는 검문의 값.
+// 빠른 길은 위험을 거의 보지 않고, 안전한 길은 위험한 길목을 크게 돌아간다. 비밀 길은 가 본 곳끼리만, 뱃길은 배를 기다리는 반나절이 더 든다.
+// 모르는 땅을 지나는 구간은 길을 물어 가며 간다 — 네 걸음에 다섯 걸음이 들고, 계획에서도 그만큼 비싸다 (그래서 아는 길이 있으면 아는 길로)
+export const legHours = (L) => L.hours * (L.unknown ? 1.25 : 1) + (L.road === "sea" ? 12 : 0);
+export function planJourney(g, to, mode = "fast") {
+  const M = g.content.bundle.map, from = g.content.bundle.settlements[g.P.settlement]?.node;
+  if (!from || !to || from === to) return null;
+  const K = knownNodes(g); if (!K.has(to)) return null;
+  const visitedN = new Set([SETTLEMENT, ...(g.P.visited || []), ...(soul(g).visitedSettlements || [])].map((sid) => g.content.bundle.settlements[sid]?.node).filter(Boolean));
+  const pass = hasTag(g, "통행증"), w = mode === "safe" ? 1.6 : 0.15;
+  const key = `${from}>${to}|${mode}|${K.size}|${visitedN.size}|${pass}`;
+  if (g._jc?.[key] !== undefined) return g._jc[key];
+  const nodes = new Map(M.nodes.map((n) => [n.id, n]));
+  const adj = new Map();
+  let minRate = Infinity;
+  for (const e of M.edges) {
+    if (e.road === "secret" && !(visitedN.has(e.from) && visitedN.has(e.to))) continue;
+    const a = nodes.get(e.from), b = nodes.get(e.to); if (!a || !b) continue;
+    const len = Math.hypot(a.x - b.x, a.y - b.y) || 1, unknown = !K.has(e.from) || !K.has(e.to);
+    minRate = Math.min(minRate, e.hours / len);
+    const needPass = /통행증/.test(e.cond || "") && !pass;
+    const L = { hours: e.hours, road: e.road, unknown };
+    const cost = legHours(L) * (1 + w * (e.danger || 0) / 5) + (needPass ? 6 + 24 * w : 0) + (unknown ? 3 : 0);
+    for (const [x, y] of [[e.from, e.to], [e.to, e.from]]) { if (!adj.has(x)) adj.set(x, []); adj.get(x).push({ to: y, e, cost, unknown }); }
+  }
+  const T = nodes.get(to), h = (id) => { const n = nodes.get(id); return Math.hypot(n.x - T.x, n.y - T.y) * (isFinite(minRate) ? minRate : 0); };
+  const gS = new Map([[from, 0]]), prev = new Map(), open = new Set([from]), done = new Set();
+  while (open.size) {
+    let u = null; for (const x of open) if (u === null || gS.get(x) + h(x) < gS.get(u) + h(u)) u = x;
+    if (u === to) break;
+    open.delete(u); done.add(u);
+    for (const { to: v, e, cost, unknown } of adj.get(u) || []) {
+      if (done.has(v)) continue;
+      const d = gS.get(u) + cost; if (d < (gS.get(v) ?? Infinity)) { gS.set(v, d); prev.set(v, { u, e, unknown }); open.add(v); }
+    }
+  }
+  let out = null;
+  if (prev.has(to)) {
+    const legs = []; for (let x = to; x !== from; x = prev.get(x).u) { const { u, e, unknown } = prev.get(x); legs.unshift({ from: u, to: x, hours: e.hours, danger: e.danger || 0, road: e.road, cond: e.cond || null, unknown }); }
+    const hours = legs.reduce((a, l) => a + legHours(l), 0);
+    out = { to, mode, path: [from, ...legs.map((l) => l.to)], legs, hours: Math.round(hours * 10) / 10, danger: Math.max(...legs.map((l) => l.danger)),
+      risk: Math.round((legs.reduce((a, l) => a + legHours(l) * l.danger, 0) / Math.max(1, hours)) * 10) / 10,
+      passNeeded: legs.some((l) => /통행증/.test(l.cond || "")) && !pass, unknownLegs: legs.filter((l) => l.unknown).length };
+  }
+  (g._jc ??= {})[key] = out;
+  return out;
+}
 function travels(g) {
   const st = g.content.bundle.settlements[g.P.settlement]; if (!st) return [];
   const here = g.W.loc.get(g.at);
@@ -424,6 +486,16 @@ function rawOptions(g) {
     o.push({ id: `go:${e.id}`, kind: "move", label: `${e.via ? `${e.via} ` : ""}${e.name}(으)로 ${e.via ? "넘어 들어간다" : "간다"}${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id, via: e.via });
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
+  // 먼 길 (지도에서 고른다): 아는 고장마다 빠른 길·안전한 길 — 행동 목록에는 있지만 화면의 행동 칸에는 내지 않는다
+  const near = new Set(travels(g).map((t) => t.settlement));
+  if (!g.P.traveling) for (const [sid, st] of Object.entries(g.content.bundle.settlements)) {
+    if (sid === g.P.settlement || near.has(sid)) continue;
+    const fast = planJourney(g, st.node, "fast"); if (!fast) continue;
+    const desert = g.P.settlement === SETTLEMENT ? " — 탈주" : "";
+    o.push({ id: `journey:${sid}:fast`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 빠른 길 (${fast.hours}시간)${desert}`, minutes: Math.round(fast.hours * 60), risk: fast.passNeeded ? "통행증 없이 검문을 지난다" : fast.danger >= 4 ? "위험한 길목이 있다" : fast.unknownLegs ? "모르는 땅을 물어 가며 간다" : desert ? "점호에 두 번 빠지면 탈주 노예" : null });
+    const safe = planJourney(g, st.node, "safe");
+    if (safe && safe.path.join() !== fast.path.join()) o.push({ id: `journey:${sid}:safe`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 돌아가는 길 (${safe.hours}시간)${desert}`, minutes: Math.round(safe.hours * 60), risk: safe.passNeeded ? "통행증 없이 검문을 지난다" : null });
+  }
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
   // 가르친다 (12 §7.2): 세 살부터, 움막에서 — 아이는 제자이기도 하다
   if (g.at === HOME && g.family?.children?.length) for (const [i, c] of g.family.children.entries()) if ((g.t - c.born) / 1440 >= 3 * YEAR && c.lastTaught !== Math.floor(g.t / 1440)) {
@@ -625,7 +697,11 @@ function step(g, e) {
   pickVoice(g, e, opt);
   if (e?.id?.startsWith("talk:")) (g.P.talkedBefore ??= new Set()).add(e.id);
   successions(g);
-  for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
+  for (const w of present(g)) {
+    g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
+    // 관찰 기록: 그 사람을 이 시간대(두 시간)에 어디서 봤나 — 추정의 확신이 여기서 온다
+    if (g.P.met.has(w.npc)) { const k = `${w.npc}|${Math.floor((((g.t % 1440) + 1440) % 1440) / 120)}`, L = ((g.P.seenLog ??= {})[k] ??= {}); const at = g.W.loc.get(g.at)?.parent || g.at; L[at] = (L[at] || 0) + 1; }
+  }
   g.P.been.add(g.at);
   if (!TRIVIAL.test(e.id)) g.P.acts = [...(g.P.acts || []), { id: e.id, label: res.label, t: g.t, at: g.at }].slice(-8);
   if (opt.memory) {
@@ -1321,7 +1397,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
   while (t < to) {
     let next = Math.min(to, Math.floor(t / 30) * 30 + 30);
     // 대본 장면의 시각이 이 구간에 있고 플레이어가 그 자리에 있으면 — 거기서 멈추고 장면을 연다 (잠도 깬다)
-    const trig = nextTrigger(g, t, next);
+    const trig = g.P.traveling ? null : nextTrigger(g, t, next);   // 길 위에서는 고장의 장면이 열리지 않는다 (그 자리에 없다)
     if (trig) next = trig.t;
     g.L.advance(next);
     successions(g);
@@ -1357,12 +1433,13 @@ function pass(g, minutes, { sleeping = false } = {}) {
     t = next;
     if (g.ended) break;
     if (trig) { openStory(g, trig.st); break; }
-    const wt = !sleeping || true ? windowTrigger(g, next) : null;
+    const road = g.P.traveling;
+    const wt = road ? null : windowTrigger(g, next);
     if (wt) { g.t = next; openStory(g, wt); break; }
-    const vg = vignetteTrigger(g, next);
+    const vg = road ? null : vignetteTrigger(g, next);
     if (vg) { g.t = next; openStory(g, vg); break; }
-    if (threatsTick(g, next)) break;
-    if (domainStoryTick(g)) { g.t = next; break; }
+    if (!road && threatsTick(g, next)) break;
+    if (!road && domainStoryTick(g)) { g.t = next; break; }
     oathsTick(g, next);
     promisesTick(g, next);
   }
@@ -1828,6 +1905,32 @@ const DO = {
     res.notes.push(`${g.content.bundle.settlements[sid].name}에 닿았다`);
     if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
     checkpoint(g, res, 0.35);   // 낯선 인간은 들어서는 길목에서 붙잡히기 쉽다
+  },
+  // 먼 길 (07): 구간마다 시간이 흐르고, 위험한 길목에서는 일이 생길 수 있다. 장면이 열리거나 붙잡히면 거기서 멈춘다
+  journey(g, arg, res) {
+    const [sid, mode] = arg.split(":"); const st = g.content.bundle.settlements[sid];
+    const plan = st && planJourney(g, st.node, mode || "fast"); if (!plan) { res.notes.push("가는 길을 모른다"); return; }
+    const from = g.P.settlement;
+    for (const L of plan.legs) {
+      g.P.traveling = true; pass(g, Math.round(legHours(L) * 60)); g.P.traveling = false;
+      (g.P.knownNodes ??= []).includes(L.to) || g.P.knownNodes.push(L.to);
+      if (g.ended) return;
+      // 위험한 길목 (위험 3 이상): 순찰·짐승·검문 — 통행증이 있으면 지나가고, 없으면 은신으로 피한다
+      if (L.danger >= 3 && hash(g.seed, "road", L.from, L.to, String(g._i)) < 0.05 * (L.danger - 2) * (isNight(g.t) ? 1.5 : 1)) {
+        const papers = hasTag(g, "통행증") && /통행증/.test(L.cond || "");
+        const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2, 25 + L.danger * 6);
+        if (papers || hash(g.seed, "road-hide", L.from, String(g._i)) < P) res.notes.push(papers ? "길목의 순찰이 통행증을 본다. 지나간다" : "길목에 횃불이 있다. 덤불에 엎드려 지나갈 때까지 기다린다");
+        else if (/통행증/.test(L.cond || "")) { g.ended = { kind: "captured", why: "길목의 검문에 걸렸다 — 통행증이 없는 인간은 탈주 노예다", t: g.t, trace: { id: "rope" } }; return; }
+        else { g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100); res.notes.push("길에서 짐승을 만났다. 달아났지만 다리에 상처가 남았다"); }
+      }
+    }
+    if (g.ended) return;
+    g.P.settlement = sid; g.at = entryOf(g, sid); g._local = null;
+    (g.P.visited ??= []).includes(sid) || g.P.visited.push(sid);
+    g.L.setActive([sid]);
+    res.notes.push(`${plan.legs.length}구간, ${plan.hours}시간을 걸어 ${st.name}에 닿았다`);
+    if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
+    checkpoint(g, res, 0.35);
   },
   routine_day(g, _, res) {
     dayEnd(g);
@@ -2480,7 +2583,11 @@ function applyRecord(g, n, mem) {
 }
 function addMemory(g, n, mem) {
   const m = mind(g, n);
-  m.memories.push(mem);
+  mem.t ??= g.t;
+  // 거의 같은 기억이 이미 있으면 (같은 갈래·태그, 사흘 안, 글이 닮음) 새 줄을 쌓지 않고 그 기억을 짙게 한다 — 칸을 아끼고, 대화 카드에 같은 말이 겹치지 않게
+  const dup = nearDuplicate(m.memories, mem, g.t);
+  if (dup) { dup.salience = Math.max(dup.salience || 1, mem.salience || 1); dup.t = g.t; dup.count = (dup.count || 1) + 1; }
+  else m.memories.push(mem);
   if (mem.kind === "impression" && mem.tag) {
     m.impressions[mem.tag] = clamp((m.impressions[mem.tag] || 0) + (mem.delta || 0), -20, 20);
     // 인상은 관계 수치로 이어진다 — 반응 층(27)이 "고발할까 침묵할까"를 정할 때 이 마음을 쓴다
@@ -2814,8 +2921,29 @@ let ESTIMATOR = null;
 function estimate(g, n) {
   if (!ESTIMATOR || ESTIMATOR.bundle !== g.content.bundle) ESTIMATOR = { bundle: g.content.bundle, W: createWorld(g.content.bundle, { loopSeed: 0 }) };
   if (!n) return null;
+  return estimateOf(g, n)?.text || null;
+}
+// 그 사람은 지금 어디쯤 (24 §3.6): 방금 본 곳 > 약속 > 늘 이 시각엔 (직접 본 횟수만큼 확신) > 일정표의 짐작.
+// 보이는 것은 진짜 위치가 아니라 주인공의 짐작이다 — 그래서 확신(conf)과 근거(src)를 같이 낸다
+export function estimateOf(g, n) {
+  if (!ESTIMATOR || ESTIMATOR.bundle !== g.content.bundle) ESTIMATOR = { bundle: g.content.bundle, W: createWorld(g.content.bundle, { loopSeed: 0 }) };
+  const top = (id) => g.W.loc.get(id)?.parent || id;
+  if (present(g).some((w) => w.npc === n)) return { at: top(g.at), conf: 1, src: "here", text: "여기 있다" };
+  const seen = g.P.seen?.[n], ago = seen ? g.t - seen.t : Infinity;
+  // 약속 시각이 다가왔으면 (30분 전부터) 약속 자리 — 약속 시각이 지나고 다른 데서 본 게 아니라면
+  const pr = (g.promises || []).find((p) => p.npc === n && p.state === "open" && g.t >= p.from - 30 && g.t <= p.to);
+  if (pr && !(seen && seen.t >= pr.from)) return { at: top(pr.place), conf: 0.9, src: "promise", text: `약속대로 ${placeName(g, top(pr.place))}에 있을 것` };
+  if (seen && ago <= 90) return { at: top(seen.at), conf: 0.85 - ago / 600, src: "seen", text: `방금 ${placeName(g, top(seen.at))}에서 봤다` };
   const w = ESTIMATOR.W.where(n, g.t);
-  return w.kind === "away" ? "이 고장에 없을 것" : w.at ? `아마 ${placeName(g, w.at)}` : null;
+  if (w.kind === "away") return { at: null, conf: 0.6, src: "routine", text: "이 고장에 없을 것" };
+  const slot = Math.floor((((g.t % 1440) + 1440) % 1440) / 120), obs = g.P.seenLog?.[`${n}|${slot}`] || {};
+  const best = Object.entries(obs).sort((a, b) => b[1] - a[1])[0];
+  // 직접 본 자리가 일정표와 다르고 두 번 이상이면 — 본 것을 믿는다
+  if (best && best[1] >= 2 && (!w.at || top(w.at) !== best[0])) return { at: best[0], conf: Math.min(0.8, 0.45 + best[1] * 0.1), src: "habit", text: `이 시각엔 늘 ${placeName(g, best[0])}` };
+  if (!w.at) return null;
+  const confirm = obs[top(w.at)] || 0;
+  const conf = Math.min(0.85, 0.5 + confirm * 0.1);
+  return { at: top(w.at), conf, src: "routine", text: conf >= 0.7 ? `늘 이 시각엔 ${placeName(g, top(w.at))}` : `아마 ${placeName(g, top(w.at))}` };
 }
 
 // ── 평판 (10 · 21 §8) ──
@@ -2869,25 +2997,45 @@ function goals(g) {
 
 // ── 지도 (07): 지금 고장의 건물 배치 + 대륙 지도. 플레이어가 가 본 곳·아는 곳만 밝게 ──
 export function mapView(g) {
-  const st = g.content.bundle.settlements[g.P.settlement];
+  const st = g.content.bundle.settlements[g.P.settlement], M = g.content.bundle.map;
   estimate(g, null);   // 추정기 준비
-  // 아는 사람을 '늘 그 시각엔 거기' 자리에 찍는다 (24 §3.6 — 진짜 위치가 아니라 추정, 그래서 가끔 틀린다)
-  const people = [...g.P.met].map((n) => { const w = ESTIMATOR.W.where(n, g.t); return { id: n, name: displayName(g, n), at: w?.kind === "at" ? w.at : null }; });
+  // 아는 사람을 추정 자리에 찍는다 (24 §3.6 — 진짜 위치가 아니라 주인공의 짐작: 확신·근거와 함께, 그래서 가끔 틀린다)
+  const top = (id) => g.W.loc.get(id)?.parent || id;
+  const people = [...g.P.met].filter((n) => !g.S.dead.has(n)).map((n) => { const e = estimateOf(g, n); return { id: n, name: displayName(g, n), at: e?.at || null, conf: e ? Math.round(e.conf * 100) / 100 : 0, src: e?.src || "unknown", text: e?.text || "모른다" }; });
   const locs = (st?.locations || []).filter((l) => l.xy).map((l) => {
     const acc = locAccess(g, l.id, g.t);
-    return { id: l.id, name: l.name, xy: l.xy, kind: l.kind || null, access: acc, here: g.at === l.id || g.W.loc.get(g.at)?.parent === l.id,
-      secret: acc === "secret" && !g.P.knowsPlaces.has(l.id), people: people.filter((p) => p.at === l.id || g.W.loc.get(p.at)?.parent === l.id).map((p) => p.name) };
+    return { id: l.id, name: l.name, xy: l.xy, kind: l.kind || null, access: acc, here: g.at === l.id || top(g.at) === l.id,
+      secret: acc === "secret" && !g.P.knowsPlaces.has(l.id), people: people.filter((p) => p.at && top(p.at) === l.id).map((p) => p.name) };
   }).filter((l) => !l.secret);
-  const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours }));
+  const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours, dir: o.dir || null }));
   const visited = new Set([SETTLEMENT, ...(g.P.visited || [])]);
-  const remembered = new Set((soul(g).visitedSettlements || []).map((sid) => g.content.bundle.settlements[sid]?.node).filter(Boolean));
   const nodeOfS = (sid) => g.content.bundle.settlements[sid]?.node;
+  const remembered = new Set((soul(g).visitedSettlements || []).map(nodeOfS).filter(Boolean));
   const visitedNodes = new Set([...visited].map(nodeOfS).filter(Boolean));
-  const heard = new Set(); for (const f of g.P.knows) for (const n of g.content.bundle.map.nodes) if ((g.content.facts[f]?.text || "").includes(n.name)) heard.add(n.id);
-  const nodes = g.content.bundle.map.nodes.map((n) => ({ id: n.id, name: n.name, x: n.x, y: n.y, major: !!n.major, here: n.id === nodeOfS(g.P.settlement), visited: visitedNodes.has(n.id), remembered: remembered.has(n.id) && !visitedNodes.has(n.id), heard: heard.has(n.id) }));
-  const exits = new Set(G_options_ids(g));
-  return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, locations: locs, outer, goable: [...exits].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
-    world: { nodes, edges: g.content.bundle.map.edges.map((e) => ({ from: e.from, to: e.to, road: e.road })), here: nodeOfS(g.P.settlement) } };
+  const heard = new Set(); for (const f of g.P.knows) for (const n of M.nodes) if ((g.content.facts[f]?.text || "").includes(n.name)) heard.add(n.id);
+  const K = knownNodes(g), here = nodeOfS(g.P.settlement);
+  const sidOfNode = Object.fromEntries(Object.entries(g.content.bundle.settlements).map(([sid, s2]) => [s2.node, sid]));
+  // 안개: 모르는 곳은 자리만 (이름·설명 없이) — 지도 가장자리의 빈칸
+  const nodes = M.nodes.map((n) => { const known = K.has(n.id); return { id: n.id, x: n.x, y: n.y, known, name: known ? n.name : null, type: known ? n.type || n.kind || null : null, desc: known && (visitedNodes.has(n.id) || remembered.has(n.id)) ? n.desc || null : null,
+    region: n.region ?? null, major: !!n.major, here: n.id === here, visited: visitedNodes.has(n.id), remembered: remembered.has(n.id) && !visitedNodes.has(n.id), heard: heard.has(n.id), settlement: known ? sidOfNode[n.id] || null : null }; });
+  const visitedN = new Set([...visitedNodes, ...remembered]);
+  const edges = M.edges.filter((e) => e.road !== "secret" || (visitedN.has(e.from) && visitedN.has(e.to))).map((e) => ({ from: e.from, to: e.to, road: e.road, hours: e.hours, danger: e.danger || 0,
+    known: K.has(e.from) && K.has(e.to), name: K.has(e.from) && K.has(e.to) ? e.roadName || null : null, cond: K.has(e.from) && K.has(e.to) ? e.cond || null : null }));
+  // 떠날 수 있는 곳: 가까운 이웃(바로 가는 길)과 먼 길(빠른 길·돌아가는 길)
+  const ids = new Set(G_options_ids(g));
+  const journeys = [];
+  for (const [sid, s2] of Object.entries(g.content.bundle.settlements)) {
+    if (sid === g.P.settlement || !K.has(s2.node)) continue;
+    const fast = planJourney(g, s2.node, "fast"), safe = planJourney(g, s2.node, "safe");
+    if (!fast) continue;
+    const brief = (p) => p && { hours: p.hours, risk: p.risk, danger: p.danger, path: p.path, passNeeded: p.passNeeded, unknownLegs: p.unknownLegs };
+    journeys.push({ settlement: sid, node: s2.node, name: s2.name, travel: ids.has(`travel:${sid}`) ? `travel:${sid}` : null,
+      fast: { ...brief(fast), id: ids.has(`journey:${sid}:fast`) ? `journey:${sid}:fast` : null },
+      safe: safe && safe.path.join() !== fast.path.join() ? { ...brief(safe), id: ids.has(`journey:${sid}:safe`) ? `journey:${sid}:safe` : null } : null });
+  }
+  return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, locations: locs, outer, people, goable: [...ids].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
+    world: { nodes, edges, here, regions: M.regions || [], terrain: M.terrain || {}, journeys, deserter: g.P.settlement === SETTLEMENT },
+    clock: (() => { const c = fromMinutes(g.t); return { hm: `${String(c.hh).padStart(2, "0")}:${String(c.mm).padStart(2, "0")}`, night: isNight(g.t) }; })() };
 }
 const G_options_ids = (g) => (g.story || g.convo || g.ended ? [] : rawOptions(g).map((o) => o.id));
 
@@ -2912,7 +3060,7 @@ export function view(g) {
   return {
     loop: g.run.loop, t: g.t, time: fmt(g.t), month: MONTHS[c.m - 1], hm: `${String(c.hh).padStart(2, "0")}:${String(c.mm).padStart(2, "0")}`,
     night: isNight(g.t), rain: g.W.rainy(Math.floor(g.t / 1440)),
-    place: { id: g.at, name: placeName(g, g.at) }, people,
+    place: { id: g.at, name: placeName(g, g.at), kind: g.W.loc.get(g.at)?.kind || g.W.loc.get(g.W.loc.get(g.at)?.parent)?.kind || null, settlement: g.content.bundle.settlements[g.P.settlement]?.name || null, outer: !!g.W.loc.get(g.at)?.outer }, people,
     bodies: bodiesHere(g).map((b) => nameOf(g, b.npc)),
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     fight: g.fight ? { npc: g.fight.npc, name: displayName(g, g.fight.npc), round: g.fight.round, me: g.fight.me, foe: g.fight.foe } : null,
@@ -2932,6 +3080,7 @@ export function view(g) {
     oaths: (g.oaths || []).map((o) => ({ line: (g.content.game.oaths || []).find((x) => x.id === o.id)?.line, state: o.state, witnesses: o.witnesses.map((n) => displayName(g, n)) })),
     pastOaths: (soul(g).oaths || []).filter((o) => !(g.oaths || []).some((x) => x.id === o.id)).map((o) => o.line),
     lastHook: g.P.lastHook || null,
+    promises: (g.promises || []).filter((p) => p.state === "open").map((p) => ({ who: displayName(g, p.npc), when: fmt(p.from).slice(7), where: placeName(g, p.place), what: p.what, soon: p.from - g.t <= 360 })),
     lexicon: lexicon(g),
     twoDays: twoDays(g),
     domain: (() => { _domData = g.content.game.domains; return DOM.domainView(g, DMH()); })(),

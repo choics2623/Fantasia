@@ -14,7 +14,10 @@ const INK = new Set(["ink", "drift", "grow", "voice", "dayend", "echo", "recap"]
 export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());
   let transcript = g.run.transcript || [];
-  const save = () => { g.run.transcript = transcript.slice(-40); g.run.lastPlayedAt = Date.now(); onSave?.(waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run); };   // 서술을 기다리는 박자는 저장하지 않는다
+  // 서술의 기억 (화면용 — 재생에 쓰지 않는다): 줄기(오늘 한 일), 사람마다 지난 대화의 요지, 최근 서술의 꼬리(되풀이 검사)
+  let thread = g.run.thread || [], talkLog = g.run.talkLog || {}, tail = g.run.tail || [];
+  const resetMemory = (run) => { thread = run?.thread || []; talkLog = run?.talkLog || {}; tail = run?.tail || []; };
+  const save = () => { g.run.transcript = transcript.slice(-40); g.run.thread = thread.slice(-16); g.run.talkLog = talkLog; g.run.tail = tail.slice(-12); g.run.lastPlayedAt = Date.now(); onSave?.(waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run); };   // 서술을 기다리는 박자는 저장하지 않는다
   // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
   // 시간선: 회귀·새 판·불러오기는 새 시간선이다. 되돌리기는 그 아침 뒤의 대화만 지운다 — 지워진 시간선의 기억이 새 기록에 섞이지 않게
   const jobs = [], pending = [], live = new Set();
@@ -57,6 +60,23 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     if (any) save();
   }
   const peopleKey = () => G.view(g).people.map((p) => p.id).sort().join(",");
+  // 한 박자가 끝나면: 줄기에 한 줄, 서술 꼬리에 박자들, 대화가 끝났으면 그 사람의 지난 대화 요지
+  function remember(res, beats, conv = null) {
+    if (res) {
+      const v = G.view(g);
+      const what = String(res.text || res.label || "").replace(/\s*\(\d+분\)|\s*— 몰래/g, "").slice(0, 60);
+      const how = res.skill && res.tier ? ` (${res.tier})` : "";
+      const note = res.reveal ? " — 숨긴 것을 들었다" : res.notes?.[0] ? ` — ${String(res.notes[0]).slice(0, 50)}` : "";
+      thread.push({ t: g.t, hm: v.hm, at: g.run.journal.length, text: `${what}${how}${note}` });
+      if (thread.length > 16) thread = thread.slice(-16);
+    }
+    tail.push(...beats.filter(Boolean)); if (tail.length > 12) tail = tail.slice(-12);
+    if (conv) {
+      const asked = conv.lines.filter((x) => x.who === "player" && !/말을 건다$|이야기를 끝낸다$/.test(x.text)).map((x) => x.text.slice(0, 40)).slice(-3);   // 여닫는 인사는 빼고
+      const last = conv.lines.filter((x) => x.who === "narr").pop()?.text.slice(0, 120) || "";
+      talkLog = { ...talkLog, [conv.npc]: [...(talkLog[conv.npc] || []), { t: g.t, when: fmt(g.t).slice(7), asked, last }].slice(-3) };
+    }
+  }
 
   function needsLLM(res, beforePeople) {
     if (!res) return !g.story;                       // 대본 장면은 손으로 쓴 글 그대로 — LLM을 부르지 않는다
@@ -88,20 +108,23 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     const sceneKey = `${g.at}|${g.convo?.npc || ""}`;
     const sceneNew = !res || lastScene !== sceneKey && !(res.convoEnded && lastScene?.startsWith(g.at)) || res.kind === "move";
     const introduced = new Set(g.run.introduced || []);
-    const prompt = turnPrompt(g, res, opts, { transcript, memories, sceneNew: sceneNew && !g.convo, introduced });
+    const ctx = { transcript, memories, sceneNew: sceneNew && !g.convo, introduced, thread, talkLog, tail };
+    let prompt = turnPrompt(g, res, opts, ctx);
     lastScene = sceneKey;
     let lastProblems = [];
     for (let attempt = 1; attempt <= 2; attempt++) {
       let streamed = "";
+      if (attempt === 2 && lastProblems.some((p) => p.startsWith("반복"))) prompt = turnPrompt(g, res, opts, { ...ctx, retry: "방금 쓴 글이 앞의 서술을 거의 되풀이했다. 같은 일을 다른 문장, 다른 몸짓, 다른 감각으로 다시 써라." });
       const text = await provider.complete(SYSTEM, prompt, {
         // 서술 부분만 흘려보낸다 (<선택지> 이후는 보내지 않는다)
         onText: onText && ((d) => { streamed += d; const cut = streamed.indexOf("</서술>"); const body = streamed.replace(/^[\s\S]*?<서술>\s*/, ""); if (streamed.includes("<서술>") && (cut < 0 || streamed.length - d.length < cut)) onText(body.slice(0, cut < 0 ? undefined : body.indexOf("</서술>"))); }),
         mock: () => mockTurn(g, res, opts, { memories }),
       });
       const parsed = parseTurn(text);
-      const v = validateTurn(g, parsed, opts, { res, free, prompt });
+      const v = validateTurn(g, parsed, opts, { res, free, prompt, tail });
       lastProblems = v.problems;
-      if (v.ok && !parsed.bad) {
+      // 되풀이는 한 번만 다시 쓰게 한다 — 두 번째에도 닮았으면 그대로 받는다 (턴을 깨지는 않는다)
+      if (v.ok && !parsed.bad && (!v.repeat || attempt === 2)) {
         // 이번 서술에 나온 사람은 '소개됐다' — 다음부터는 이름만 (화면용 기록, 재생에 쓰지 않는다)
         const text = v.beats.join(" ");
         g.run.introduced = [...new Set([...(g.run.introduced || []), ...G.view(g).people.filter((p) => text.includes(p.name)).map((p) => p.id)])];
@@ -130,7 +153,9 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         waiting = null;
         if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
         transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
-        if (P.res?.convoEnded) { enqueue(P.res.convoEnded.npc, transcript.slice(-(P.res.convoEnded.turns * 2 + 6))); transcript = []; }
+        const conv0 = P.res?.convoEnded ? { npc: P.res.convoEnded.npc, lines: transcript.slice(-(P.res.convoEnded.turns * 2 + 6)) } : null;
+        remember(P.res, n.beats, conv0);
+        if (conv0) { enqueue(conv0.npc, conv0.lines); transcript = []; }
         save();
         return payload(P.res, n, [...debug, { kind: "renarrate" }]);
       } catch (e) {
@@ -161,7 +186,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         res.text = text; acted = res;
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
         opts = G.options(g); actedOpts = opts;
-        if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+        if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, []); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       } else {
         opts = G.options(g);
         if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
@@ -169,8 +194,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       const n = await narrate(res, opts, { onText, free: input?.free, memories: false });
       if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
       transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
-      if (res?.convoEnded) {
-        enqueue(res.convoEnded.npc, transcript.slice(-(res.convoEnded.turns * 2 + 6)));   // 기록관에게 — 기다리지 않는다
+      const conv = res?.convoEnded ? { npc: res.convoEnded.npc, lines: transcript.slice(-(res.convoEnded.turns * 2 + 6)) } : null;
+      remember(res, n.beats, conv);
+      if (conv) {
+        enqueue(conv.npc, conv.lines);   // 기록관에게 — 기다리지 않는다
         transcript = [];
       }
       save();
@@ -216,11 +243,11 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     async regress(o) {
       const next = G.regressRun(g);
       if (!next) return { epilogue: G.epilogue(g), view: G.view(g), choices: [], beats: [] };   // 진짜 죽음 — 시대가 끝난다
-      newTimeline(); g = G.boot(content, next); transcript = []; save(); return turn(null, o);
+      newTimeline(); g = G.boot(content, next); transcript = []; resetMemory(null); save(); return turn(null, o);
     },
     // 회귀를 놓는다 (03 §4.6): 다음 회차가 마지막 — 그 회차의 죽음은 돌아오지 않는다
     release() { g.run.release = true; save(); return { ok: true }; },
-    async newGame(seed, o, mode = "grim", narrator = "silent_god") { newTimeline(); g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode, narrator }); transcript = []; save(); return turn(null, o); },
+    async newGame(seed, o, mode = "grim", narrator = "silent_god") { newTimeline(); g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode, narrator }); transcript = []; resetMemory(null); save(); return turn(null, o); },
     narrator(id) { G.setNarrator(g, id); save(); return { ok: true, view: G.view(g) }; },
     // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
     async rewind(o) {
@@ -231,10 +258,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       if (mark == null) return { error: "되돌아갈 아침이 아직 없다" };
       cutTimeline(mark); waiting = null;
       g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, mark), rewinds: { ...(g.run.rewinds || {}), [g.run.loop]: used + 1 } });
-      transcript = []; save(); return turn(null, o);
+      transcript = []; thread = thread.filter((x) => x.at <= mark); tail = []; save(); return turn(null, o);
     },
     drain: () => kick() || Promise.resolve(),   // 검사용: 기록관이 끝날 때까지
-    load(run) { newTimeline(); g = G.boot(content, run); transcript = run.transcript || []; },
+    load(run) { newTimeline(); g = G.boot(content, run); transcript = run.transcript || []; resetMemory(run); },
     // 서술을 기다리는 박자는 아직 일어나지 않았다 — 밖에서 보는 기록에는 없다
     get run() { return waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run; }, get game() { return g; },
   };

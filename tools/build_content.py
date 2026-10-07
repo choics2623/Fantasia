@@ -66,7 +66,8 @@ def main():
     world = json.load(open(os.path.join(ROOT, "content/base/world/map.json"), encoding="utf-8"))
     place_states = [x for f in load("content/base/places/*.yaml") for x in (f or [])]
     bundle = {"settlements": settlements, "routines": routines, "events": events, "placeStates": place_states,
-              "map": {"nodes": world["nodes"], "edges": world["edges"]}}
+              "map": {"nodes": world["nodes"], "edges": world["edges"], "regions": world.get("regions", []),
+                      "terrain": world.get("terrain", {}), "start": world.get("start", {})}}
     p = os.path.join(OUT, "whereabouts.json")
     json.dump(bundle, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"정착지 {len(settlements)} · 일과 {len(routines)}명 · 일정 {len(events)} → {p}")
