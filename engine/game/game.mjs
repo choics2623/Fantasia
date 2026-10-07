@@ -370,6 +370,8 @@ function rawOptions(g) {
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
+  // 봉기: 채찍 기둥 광장, 밤, 준비 지표 넷 이상 (SCENARIOS §3.4)
+  if (g.at === ROLLCALL && isNight(g.t) && !g.S.vars.greyford_free && !g.S.vars.rising_failed && risingReady(g).filter((x) => x.ok).length >= 4) o.push({ id: "rising", kind: "scene", label: "사람들을 부른다 — 여울강이 붉어지는 날", risk: "실패하면 붉은 길" });
   // 작전: 그 자리, 그 시각, 필수 준비를 갖췄으면
   for (const [id, op] of Object.entries(g.content.game.ops || {})) if (opAvailable(g, id, op)) o.push({ id: `op_start:${id}`, kind: "scene", label: `작전 — ${op.target}`, risk: "준비한 만큼만 쉬워진다" });
   // 영역 세우기 (09 §2): 그 자리를 알고, 그 자리의 사람이 너를 믿으면
@@ -835,6 +837,9 @@ const ACHIEVEMENTS = [
   { id: "winter", tp: 2, text: "굶주림월을 넘겼다", when: (g) => g.t > toMinutes(312, 12, 4) },
   { id: "ten_facts", tp: 1, text: "열 가지 비밀을 알았다", when: (g) => g.P.knows.size >= 10 },
   { id: "no_blood", tp: 1, text: "이레 동안 아무도 죽이지 않았다", when: (g) => g.t - START >= 7 * 1440 && !g.deeds.some((d) => /^kill/.test(d.kind)) },
+  { id: "rising", tp: 3, text: "회색여울이 사슬을 끊었다", when: (g) => !!g.S.vars.greyford_free },
+  { id: "rising_90", tp: 3, text: "해방구가 아흔 날을 버텼다", when: (g) => !!g.S.vars.rising_held_90 },
+  { id: "charter", tp: 3, text: "인간의 글자로 쓴 칙허", when: (g) => !!g.S.vars.kaspar_charter },
   { id: "oath_kept", tp: 2, text: "맹세를 지켰다", when: (g) => (g.oaths || []).some((o) => o.state === "kept") },
 ];
 // ── 애착 (20 §4): 플레이어가 들인 것으로 잰다 — 나눈 빵, 대신 맞은 채찍, 붙여 준 이름, 밤의 의식 ──
@@ -899,7 +904,8 @@ const DMH = () => ({ sites: () => DOMDATA().sites || {}, stewards: () => DOMDATA
 let _domData = null; const DOMDATA = () => _domData || {};
 function domainTick(g, day) {
   _domData = g.content.game.domains;
-  const ev = DOM.domainDay(g, day, DMH());
+  if (g.domain?.open && !g.domain.lost && g.domain.siege?.length && day * 1440 >= g.domain.siege[0]) { g.domain.siege.shift(); (g.domainDue ??= []).push("siege"); }
+  const ev = g.domain?.open ? (g.t >= g.domain?.nextReport ? (g.domain.nextReport += 10 * 1440, "report") : null) : DOM.domainDay(g, day, DMH());
   if (!ev) return;
   const D = g.domain;
   if (ev === "empty") { g.feed.push({ kind: "echo", text: `〰 ${placeName(g, D.at)}이(가) 비었다. 남은 사람이 없다.` }); return; }
@@ -911,7 +917,7 @@ function domainStoryTick(g) {
   if (!g.domainDue?.length || g.story || g.convo || g.fight || g.ended) return false;
   const ev = g.domainDue.shift();
   if (ev === "hostage") { const F = g.family; F.hostage = F.members.find((n) => n === "npc_kit") || F.members[0]; g.storyCtx = { ...(g.storyCtx || {}), hostage: F.hostage }; }
-  const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage" }[ev]); if (!st) return false;
+  const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage", siege: "rising_siege" }[ev]); if (!st) return false;
   g.storyDone.delete(st.id); openStory(g, st);
   return true;
 }
@@ -945,6 +951,41 @@ function domainEffect(g, [op, a], res) {
     D.morale = clamp(D.morale - 15, 0, 100); D.expMod = (D.expMod || 0) - 15; DIR.crisis(g, 4); DIR.loss(g, 8);
     if (g.hide && g.hide.at === D.at && !g.hide.lost) g.hide.exposure = 1;
     res && res.notes?.push(`${lost}명이 끌려갔다`);
+  }
+}
+// ── 봉기 (SCENARIOS §3.4 「여울강이 붉어지는 날」): 준비 지표 여섯 중 넷 ──
+const RISING = [
+  ["브란의 창날 마흔", (g) => !!g.S.vars.bran_spears],
+  ["군나르의 훈련", (g) => !!g.S.vars.gunnar_trains],
+  ["시그리드의 북방인", (g) => !!g.domain && !g.domain.lost && g.domain.steward === "npc_sigrid" && DOM.loyaltyOf(g, g.domain, DMH()) >= 40],
+  ["성채 안의 손 (사라·오웬)", (g) => romanceStage(g, "npc_sara") >= 2 || relOf(g, "npc_owen_raven").trust >= 30],
+  ["마르타의 전향", (g) => relOf(g, "npc_martha").trust >= 40],
+  ["즈닉의 처리", (g) => g.S.dead.has("npc_znik") || !!g.S.vars.znik_submitted],
+];
+export const risingReady = (g) => { _domData = g.content.game.domains; return RISING.map(([label, f]) => ({ label, ok: f(g) })); };
+function risingEffect(g, op, res) {
+  _domData = g.content.game.domains;
+  const ready = risingReady(g).filter((x) => x.ok).length;
+  if (op === "success") {
+    // 해방구 (09 §2 단계 3): 숨길 수 없는 땅 — 대신 진압군이 온다 (30·60·90일)
+    g.domain = { at: "gf_whip_square", popVar: null, pop: 400, steward: g.S.dead.has("npc_gunnar") ? "npc_bran" : "npc_gunnar", food: 400 * 0.4 * 30, defense: 10 + ready * 5, morale: 70, order: 50, literacy: 0, built: [], policy: "open", delegation: "direct", since: g.t, nextReport: g.t + 10 * 1440, alarm: 0, lost: false, open: true, siege: [30, 60, 90].map((d) => g.t + d * 1440), held: 0 };
+    g.S.vars.greyford_free = true; g.A.doEffect("kill npc_znik", g.t); g.S.vars.player_fugitive = false; if (g.S.wanted.player) g.S.wanted.player.heat = 0;
+    DIR.crisis(g, 5); temper(g, "용기", 10);
+  } else if (op === "fail" || op === "fall") {
+    // 반동 「두 번째 붉은 길」: 참가자의 칠할이 길가에서 — 처형자 명부는 회귀하면 없다. 이름은 네가 외운다
+    g.S.vars.red_road = true; g.S.vars.rising_failed = true;
+    const names = ["npc_bran", "npc_gunnar", "npc_sigrid", "npc_bram", "npc_dietmar", "npc_fayne"].filter((n) => !g.S.dead.has(n) && hash(g.seed, "redroad", n) < 0.7);
+    for (const n of names) g.A.doEffect(`kill ${n}`, g.t);
+    g.redRoad = names; DIR.loss(g, 15); DIR.crisis(g, 5);
+    g.P.status.stress = clamp(g.P.status.stress + 20, 0, 100);
+    if (g.domain?.open) g.domain.lost = true;
+    if (hash(g.seed, "redroad", "player") < 0.6) g.ended = { kind: "dead", why: "두 번째 붉은 길 — 봉기는 진압되었다", t: g.t, trace: { id: "rope" } };
+  } else if (op === "held") { g.domain.held++; g.domain.morale = clamp(g.domain.morale + 5, 0, 100); if (g.domain.held >= 3) { g.S.vars.rising_held_90 = true; g.P.notebook.push("해방구가 아흔 날을 버텼다 — 다라보다 아홉 날 길다"); } }
+  else if (op === "truce") { g.domain.siege = g.domain.siege.map((t) => t + 10 * 1440); }
+  else if (op === "charter") {
+    // 하사받는다 (09 §3): 칙허 — 영역이 공인 영지가 된다. 하사한 자가 지면 휴지
+    if (g.domain && !g.domain.lost) { g.domain.chartered = true; g.domain.open = true; }
+    else { g.domain = { at: "greyford__west_pasture", popVar: null, pop: 30, steward: "npc_gunnar", food: 30 * 0.4 * 30, defense: 5, morale: 60, order: 60, literacy: 0, built: [], policy: "open", delegation: "direct", since: g.t, nextReport: g.t + 10 * 1440, alarm: 0, lost: false, open: true, chartered: true }; }
   }
 }
 // ── 진명 (GAME_DESIGN §5) ──
@@ -1011,6 +1052,8 @@ function memoryInk(g) {
   for (const st of soul(g).stains || []) if (st.victim && here.includes(st.victim)) { if (!said.has(`stain:${st.victim}`)) g.P.status.stress = clamp(g.P.status.stress + 5, 0, 100); ink(`stain:${st.victim}`, `┊ 너는 이 사람을 ${st.kind === "inform" ? "팔았었다" : st.kind === "betray" ? "사냥대에 넘겼었다" : "죽였었다"}. 이 사람은 모른다.`); }
   // 재회 (12 §2.2): 지난 회차의 연인
   for (const [n, stg] of Object.entries(soul(g).romance || {})) if (stg >= 3 && here.includes(n)) ink(`love:${n}`, stg >= 4 ? "┊ 이 손목에 끈이 감겨 있었다. 지금은 너를 모른다." : "┊ 이 손이 네 손을 잡았었다. 지금은 너를 모른다.");
+  // 처형자 명부 (SCENARIOS §3.4): 명부의 이름들은 모두 살아 있다. 당신은 그 이름을 외운다
+  for (const n of soul(g).redRoad || []) if (here.includes(n)) ink(`redroad:${n}`, `┊ 이 사람은 붉은 길 옆에서 죽었었다. 네가 불렀기 때문에. 지금은 살아 있다.`);
   // 그 회차에만 있던 아이 (20 §6.1 소멸)
   for (const c of soul(g).lostChildren || []) if (g.at === c.place) ink(`child:${c.name}:${c.loop}`, `┊ 여기서 ${c.name}이(가) 태어났었다. 이번엔 태어나지 않는다.`);
   // 지난 회차에 이름을 붙여 준 것 (이번엔 그 이름을 모른다)
@@ -1289,6 +1332,9 @@ const fill = (g, text) => josa(domainFill(g, String(text || ""))).trim().replace
   .replace(/\{(who|about|nem)\}/g, (_, k) => g.storyCtx?.[k + "Name"] || g.storyCtx?.[k] || "…")
   .replace(/\{hostage\}/g, () => displayName(g, g.storyCtx?.hostage || g.family?.hostage || "npc_kit"))
   .replace(/\{birth_helper\}/g, () => (relOf(g, "npc_elsa").trust >= 40 ? "엘사가 와 있다. 늙은 손이 빠르다." : "아무도 오지 않았다. 너와 게르다뿐이다."))
+  .replace(/\{rising_ready\}/g, () => risingReady(g).filter((x) => x.ok).map((x) => x.label).join(", ") || "없다")
+  .replace(/\{rising_who\}/g, () => ["npc_bran", "npc_gunnar", "npc_sigrid", "npc_sara", "npc_martha", "npc_bram"].filter((n) => !g.S.dead.has(n) && (relOf(g, n).trust >= 20 || g.P.met.has(n))).map((n) => displayName(g, n)).join(", ") || "몇 안 되는 얼굴")
+  .replace(/\{rising_siege_text\}/g, () => ["레이번가의 기사 열둘이 남쪽 길에 선다. 깃발은 없다 — 깃발이 필요 없는 자들이다.", "바알카르의 용인 백인대가 쇠다리를 건넌다. 창끝이 해를 가린다.", "와이번 그림자가 광장을 지난다. 한 번. 두 번. 세 번째는 내려온다."][Math.min(2, g.domain?.held || 0)])
   .replace(/\{gaze\}/g, () => String(Math.min(6, 3 + 0.5 * (g.run.loop - 1))).replace(".5", "과 반"))
   .replace(/\{volk_last\}/g, () => (g.S.vars.volk_lied ? '"도망치는 고기가 더 맛있다."' : '"너는 거짓말은 안 했다. 그러니 나도 안 하겠다. 아프다."'))
   .replace(/\{again_card\}/g, () => againCard(g))
@@ -1332,7 +1378,8 @@ function storyOdds(g, ck) {
   for (const w of ck.warn || []) if (storyWhen(g, [w])) { S += 10; parts.push({ sign: "▲", text: WARN_TEXT(g, w) }); }
   if (ck.auto && storyWhen(g, [ck.auto])) return { P: 0.97, S: 99, D: ck.D, parts: [{ sign: "▲", text: "몸이 먼저 안다" }] };
   // 회차가 쌓일수록 시간에 닿은 것들이 낌새를 챈다 (14 §7.4 — 볼크의 코)
-  const D = ck.D + (ck.D_per_loop || 0) * (g.run.loop - 1);
+  let D = ck.D + (ck.D_per_loop || 0) * (g.run.loop - 1);
+  if (ck.per_ready) { const n = risingReady(g).filter((x) => x.ok).length; D -= ck.per_ready * n; parts.push({ sign: "▲", text: `준비된 것 ${n}가지` }); }
   if (ck.D_per_loop && g.run.loop > 1) parts.push({ sign: "▼", text: "젖은 재 냄새가 짙다" });
   return { P: prob(S, D), S, D, parts };
 }
@@ -1355,6 +1402,8 @@ function storyEffect(g, e, res) {
   else if (k === "bond") bond(g, parts[1], Number(parts[2]));
   else if (k === "domain") domainEffect(g, parts.slice(1), res);
   else if (k === "family") familyEffect(g, parts.slice(1));
+  else if (k === "rising") risingEffect(g, parts[1], res);
+  else if (k === "skill_gain") (g.P.gain ??= {})[parts[1]] = (g.P.gain[parts[1]] || 0) + Number(parts[2]);
   else if (k === "awaken") { (g.P.awakened ??= []).push(parts[1]); g.P.tpSpent = (g.P.tpSpent || 0) + 3; }
   else if (k === "temper") temper(g, parts[1], Number(parts[2]));
   else if (k === "stress") g.P.status.stress = clamp(g.P.status.stress + Number(parts[1]), 0, 100);
@@ -1588,6 +1637,7 @@ const DO = {
     } else res.notes.push("해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
     g.at = "gf_rooster";
   },
+  rising(g, _, res) { const st = SL(g, "rising_call"); g.storyDone.delete(st.id); openStory(g, st); res.storyText = g.feed.pop()?.text; },
   op_start(g, id, res) { g.op = { id, phase: "exec" }; const op = g.content.game.ops[id]; res.notes.push(op.exec_text); pass(g, 5); },
   op_abort(g, _, res) { g.op = null; res.notes.push("물러난다. 다음 밤이 있다 — 아마도"); },
   op_exec(g, _, res) {
@@ -2012,6 +2062,8 @@ function settleSoul(g, record) {
     S.domainMemory = [...new Set([...(S.domainMemory || []), "site:" + g.domain.at, ...(g.domain.policy === "open" && (g.S.vars.fugitives_caught || 0) > 0 ? ["traitor"] : [])])];
     const ob = (S.stewardSeen ||= {}); const st = g.domain.steward; ob[st] = (ob[st] || 0) + 1;
   }
+  if (g.redRoad?.length) S.redRoad = [...new Set([...(S.redRoad || []), ...g.redRoad])];
+  if (g.S.vars.greyford_free) S.risingDone = true;
   if (g.family?.name) S.house = { name: g.family.name, motto: g.family.motto };
   S.lostChildren = [...(S.lostChildren || []), ...((g.family?.children || []).map((c) => ({ ...c, loop })))].slice(-20);
   S.memUsed ||= {};
@@ -2274,6 +2326,8 @@ export function view(g) {
     hide: g.hide ? { at: placeName(g, g.hide.at), people: g.hide.people.map((n) => displayName(g, n)), food: Math.round(g.hide.food * 10) / 10, exposure: g.hide.exposure < 0.3 ? "아직 아무도 모른다" : g.hide.exposure < 0.6 ? "냄새가 새기 시작했다" : g.hide.exposure < 1 ? "누군가 그쪽을 본다" : "드러났다", lost: !!g.hide.lost } : null,
     family: g.family ? { name: g.family.name || null, motto: g.family.motto || null, members: g.family.members.map((n) => displayName(g, n)), children: g.family.children.map((c) => `${c.name} (${c.sex}, ${Math.floor((g.t - c.born) / 1440)}일)`), pregnant: !!g.family.pregnant } : null,
     trueNames: Object.keys(g.content.game.truenames || {}).filter((w) => knowsWord(g, w)).map((w) => ({ word: w, source: g.content.game.truenames[w].source })),
+    rising: (() => { const r = risingReady(g); return r.some((x) => x.ok) || g.S.vars.greyford_free ? { ready: r, free: !!g.S.vars.greyford_free, failed: !!g.S.vars.rising_failed } : null; })(),
+    succession: g.S.vars.varskar_dead || g.S.vars.kaspar_warned ? { dead: !!g.S.vars.varskar_dead, kaspar: g.S.vars.faction_kaspar, throne: !!g.S.vars.kaspar_throne, charter: !!g.S.vars.kaspar_charter } : null,
     ops: opsOf(g), final: !!g.run.carry.final,
     romance: { npc_sara: romanceStage(g, "npc_sara") },
     narrator: { id: g.narrator || g.run.narrator || "silent_god", name: DIR.narratorOf(g).name }, director: g.dir ? { phase: g.dir.phase, T: g.dir.T, target: DIR.targetT(g) } : null,

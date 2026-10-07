@@ -46,12 +46,12 @@ export function domainDay(g, day, H) {
   return null;
 }
 export function addPop(g, D, n) { if (D.popVar) g.S.vars[D.popVar] = Math.max(0, (g.S.vars[D.popVar] || 0) + n); else D.pop = Math.max(0, D.pop + n); }
-export function stageName(g, D) { return STAGES[stageOf(popOf(g, D))][1]; }
+export function stageName(g, D) { return D.chartered ? "공인 영지" : D.open ? "해방구" : STAGES[stageOf(popOf(g, D))][1]; }
 export function domainView(g, H) {
   const D = g.domain; if (!D) return null;
   const fac = H.facilities();
   return { at: H.placeName(g, D.at), stage: stageName(g, D), pop: popOf(g, D), foodDays: Math.round(D.food / Math.max(1, popOf(g, D) * 0.4)), defense: D.defense + D.built.reduce((a, f) => a + (fac[f]?.defense || 0), 0),
     conceal: (H.sites()[D.at]?.conceal || 0) + D.built.reduce((a, f) => a + (fac[f]?.conceal || 0), 0), morale: Math.round(D.morale), order: D.order, literacy: Math.round(D.literacy),
-    exposure: exposureOf(g, D, H), threshold: THRESHOLD, steward: H.displayName(g, D.steward), loyalty: loyaltyOf(g, D, H), delegation: D.delegation, policy: D.policy,
+    exposure: D.open ? 100 : exposureOf(g, D, H), threshold: THRESHOLD, steward: H.displayName(g, D.steward), loyalty: loyaltyOf(g, D, H), delegation: D.delegation, policy: D.policy,
     built: D.built.map((f) => fac[f]?.name || f), lost: D.lost };
 }
