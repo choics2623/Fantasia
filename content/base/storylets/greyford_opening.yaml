@@ -183,7 +183,7 @@ storylets:
       late_effects: ["pain 0", "var kit_covered_for_you = true", "note 키트가 네 자리를 맡다가 즈닉에게 태형 셋 — \"두 자리 맡는 쥐새끼\""]
 
   - id: serf_mother_memory
-    trigger: {at_time: "312-09-01 21:30", at: gf_river_huts, loop1_only: false}
+    trigger: {at_time: "312-09-01 21:30", at: gf_river_huts, loop1_only: false, late: "312-09-03 06:00", night: true}
     text: |
       통금 종이 지나고 움막 12호. 어둠 속에서 어머니가 다시 기침한다. 키트는 벌써 잠들었다.
 

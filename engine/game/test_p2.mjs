@@ -158,9 +158,9 @@ const fresh = () => G.boot(C, G.newRun({ seed: 7, opening: false }));
   check("첫 잠자리 — 깨어날 재능을 고른다", ids(n2).includes("story:wake_voice") && !ids(n2).includes("story:wake_shadow"), ids(n2).join(","));
   const v0 = G.skill(n2, "화술");
   G.act(n2, { id: "story:wake_voice" });
-  check("목소리가 깨어난다 (화술 +6)", G.skill(n2, "화술") === v0 + 6 && G.view(n2).talents.includes("voice"));
+  check("목소리가 깨어난다 (화술 +6)", G.skill(n2, "화술") === v0 + 6 && G.view(n2).talents.some((t) => t.id === "voice"));
   const n3 = G.boot(C, { ...G.regressRun(n2), opening: false });
-  check("깨어난 재능은 영혼에 남는다", G.view(n3).talents.includes("voice") && G.view(n3).talents.includes("shadow"));
+  check("깨어난 재능은 영혼에 남는다", G.view(n3).talents.some((t) => t.id === "voice") && G.view(n3).talents.some((t) => t.id === "shadow"));
 }
 // 앎의 흔적: 기억을 쓰면 징후가 쌓이고 — 엘사가 먼저 다가온다
 {
@@ -203,7 +203,7 @@ const fresh = () => G.boot(C, G.newRun({ seed: 7, opening: false }));
 {
   const g = G.boot(C, { ...G.newRun({ seed: 7, opening: false }), lethal: true });
   let hit = null;
-  for (let i = 0; i < 40 && !hit; i++) { if (G.view(g).story) { hit = G.view(g).story.id; break; } if (g.at !== "gf_graveyard" && ids(g).includes("go:gf_graveyard")) G.act(g, { id: "go:gf_graveyard" }); else G.act(g, { id: ids(g).includes("wait:60") ? "wait:60" : ids(g)[0] }); }
+  for (let i = 0; i < 60 && !hit; i++) { const sid = G.view(g).story?.id; if (sid && sid.startsWith("vg_")) { hit = sid; break; } if (sid) { G.act(g, { id: ids(g)[0] }); continue; } if (g.at !== "gf_graveyard" && ids(g).includes("go:gf_graveyard")) G.act(g, { id: "go:gf_graveyard" }); else G.act(g, { id: ids(g).includes("wait:60") ? "wait:60" : ids(g)[0] }); }
   check("번호 묘지에 머물면 고요한 날의 소품", hit === "vg_graveyard_numbers", hit);
 }
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

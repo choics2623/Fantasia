@@ -54,7 +54,12 @@ const ROLLCALL = "gf_whip_square";
 // 머리의 스킬(화술·기만·위압·통찰)은 회귀해도 그대로. 몸의 스킬(싸움·은신·손재주)은 수치를 기억하지만 몸의 상한에 묶인다.
 const BODY_STAT = { 싸움: (s) => (s.근력 + s.체질) / 2, 은신: (s) => s.민첩, 손재주: (s) => s.민첩 };
 // 어머니가 기억하는 너 (14 §6.2) — 재능: 깨어날 때 한 번 얹히고, 그 스킬은 1.25배 빨리 자라며 상한이 5 높다 (06 §3)
-const TALENT = { voice: { skills: { 화술: 6, 기만: 3 }, grow: ["화술", "기만"] }, shadow: { skills: { 은신: 8, 손재주: 3 }, grow: ["은신", "손재주"] }, gunnar: { skills: { 싸움: 8, 손재주: 2 }, grow: ["싸움"] } };
+const TALENT = { voice: { name: "말을 먼저 배운 아이", skills: { 화술: 6, 기만: 3 }, grow: ["화술", "기만"] }, shadow: { name: "발소리 없는 아이", skills: { 은신: 8, 손재주: 3 }, grow: ["은신", "손재주"] }, gunnar: { name: "군나르의 손", skills: { 싸움: 8, 손재주: 2 }, grow: ["싸움"] } };
+// 화면에는 숫자 대신 구간 이름 (01 §4, 10 §8)
+const VIEW_BANDS = [[-6, "적대"], [-2, "경계"], [2, "무심"], [6, "호의"], [Infinity, "존경"]];
+const viewBand = (x) => VIEW_BANDS.find(([max]) => x <= max)[1];
+const wantedWord = (h) => (h <= 0 ? null : h < 2 ? "눈에 띄었다" : h < 3 ? "이름이 적혔다" : h < 5 ? "쫓기고 있다" : "현상금");
+const ROMANCE_WORDS = ["모르는 사이", "눈이 간다", "마음이 기운다", "연인", "끈혼례"];
 const statsOf = (g) => ({ 근력: 9 + g.P.mods.근력 * 2, 민첩: 9 + g.P.mods.민첩 * 2, 체질: 9, 지능: 9 + g.P.mods.지능 * 2, 감각: 9 + g.P.mods.감각 * 2 });
 // 재능들: 어머니가 기억하는 너 + 회귀 각성으로 깨어난 것 (영혼)
 const talentsOf = (g) => [...new Set([g.P.talent, ...(g.run.carry.soul?.extraTalents || []), ...(g.P.awakened || [])].filter(Boolean))];
@@ -71,7 +76,8 @@ export function skill(g, sk) {
 }
 export const skillWord = (v) => (v < 12 ? "서툴다" : v < 20 ? "어설프다" : v < 30 ? "쓸 만하다" : v < 42 ? "제법이다" : v < 55 ? "능숙하다" : v < 70 ? "뛰어나다" : "경지에 닿았다");
 // 판정 하나가 남기는 것: 난이도 × 위험 × (실패면 1.2) × 재능 × (1 − 스킬/상한)². 너무 쉬운 판정(D < 스킬−20)은 아무것도 가르치지 않는다
-const PRACTICE = { attack: { risk: 2, cap: 100 }, small_talk: { risk: 0.6, cap: 40 }, search: { risk: 0.3, cap: 25 } };
+// 수련 방식 (03 §3.1): 안전한 연습은 40에서 멈춘다 · 실전(목숨이 걸린 판정)은 ×2, 상한 없음 · 스승은 스승 −10까지 ×2.5
+const PRACTICE = { attack: { risk: 2, cap: 100 }, story: { risk: 2, cap: 100 }, op: { risk: 2, cap: 100 }, small_talk: { risk: 0.6, cap: 40 }, ask: { risk: 0.6, cap: 40 }, give: { risk: 0.4, cap: 40 }, press: { risk: 1, cap: 60 }, search: { risk: 0.3, cap: 25 } };
 function growSkill(g, sk, od, tier, verb) {
   if (!sk || !od) return;
   const { risk, cap } = PRACTICE[verb] || { risk: 1, cap: 100 };
@@ -544,13 +550,15 @@ function step(g, e) {
   const [verb, arg] = e.id.split(/:(.*)/s);
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
-  if (od && opt.skill) growSkill(g, opt.skill, od, tier, verb);
+  const grown = opt.skill || opt.check?.skill;   // 대본 장면의 판정도 실전이다
+  if (od && grown) growSkill(g, grown, od, tier, opt.check ? "story" : verb.startsWith("op_") ? "op" : verb);
   for (const [k, d] of Object.entries(TEMPER_OF[verb] || {})) temper(g, k, d);
   // 두려움 (01 §1.4): 사냥꾼과 같은 자리, 수배 — 쌓이고, 장면이 바뀌면 조금씩 가라앉는다
-  const scary = present(g).some((w) => profOf(g, w.npc).role === "hunter") || (g.S.wanted?.player?.heat || 0) >= 3;
+  const scary = present(g).some((w) => profOf(g, w.npc).role === "hunter") || heatHere(g) >= 3;
   g.P.status.fear = clamp(g.P.status.fear + (scary ? 1 : -1), 0, 5);
   if (!g.story && !g.ended && !g.convo) { const wt = windowTrigger(g); if (wt) openStory(g, wt); else nemesisCheck(g); }
   pickVoice(g, e, opt);
+  if (e?.id?.startsWith("talk:")) (g.P.talkedBefore ??= new Set()).add(e.id);
   successions(g);
   for (const w of present(g)) g.P.seen[w.npc] = { t: g.t, at: g.at };   // 마지막으로 본 곳 (24 §3.6)
   g.P.been.add(g.at);
@@ -693,7 +701,7 @@ function voiceWhen(g, c, e, opt) {
   if (k === "with") return present(g).some((w) => w.npc === a && w.kind !== "captive");
   if (k === "role") return present(g).some((w) => profOf(g, w.npc).role === a);
   if (k === "wanted") return (g.S.wanted?.player?.heat || 0) >= Number(b);
-  if (k === "talk_new") return e?.id?.startsWith("talk:") && !(g.P.talkedBefore ??= new Set()).has(e.id) && (g.P.talkedBefore.add(e.id), true);
+  if (k === "talk_new") return e?.id?.startsWith("talk:") && !(g.P.talkedBefore ??= new Set()).has(e.id);   // 조건은 상태를 바꾸지 않는다 — 표시는 걸음 끝에
   if (k === "story") return g.story?.id === a;
   if (k === "with_killer") { const tr = g.run.carry.deaths[g.run.carry.deaths.length - 1]?.trace; return !!tr?.npc && present(g).some((w) => w.npc === tr.npc); }
   if (k === "dark") { const d = g.deeds[g.deeds.length - 1]; return !!d && d.t === g.t && (DARK.has(d.kind) || (d.kind === "assault" && (cardOf(g, d.victim).age ?? 30) < 14)); }
@@ -1091,7 +1099,7 @@ function memoryInk(g) {
   const day = Math.floor(g.t / 1440), key = `${day}|${Math.floor((g.t % 1440) / 30)}|${g.at}`;
   const here = present(g).filter((w) => w.kind !== "captive").map((w) => w.npc);
   const obs = (g.P.obs ??= {});
-  if (!obs[key] && Object.keys(obs).length < 1500) obs[key] = here;
+  if (obs[key] == null && Object.keys(obs).length < 6000) obs[key] = here.join(",");   // 넉 달 치 — 글자로 접어 영혼을 가볍게
   if (g.run.loop < 2 || g.story) return;
   const said = (g.P.inkSaid ??= new Set());
   let budget = 2;
@@ -1119,7 +1127,8 @@ function memoryInk(g) {
   // 지난 회차에 너를 쫓던 사람 (17 §3.7 휴면 숙적): 그는 모른다. 너는 안다
   for (const x of soul(g).nemeses || []) if (here.includes(x.npc)) ink(`nem:${x.npc}`, "┊ 이 사람은 너를 쫓았었다. 지금은 너를 모른다.");
   // ◇ 표류: 지난 회차의 같은 날·같은 30분·같은 자리와 지금이 다르다 (회차마다 처음 3번만 진동, H5)
-  const past = soul(g).obs?.[key];
+  const pastRaw = soul(g).obs?.[key];
+  const past = typeof pastRaw === "string" ? pastRaw.split(",").filter(Boolean) : pastRaw;
   if (past) {
     const drifted = (g.P.driftCount ??= { n: 0 });
     const pick = (n, was) => { const nm = displayName(g, n); const id = `drift:${key}:${n}`; if (said.has(id) || budget <= 0) return; ink(id, `┊ 지난번엔 이 시각에 ${nm}${josaPick(nm, "이", "가")} 여기 ${was ? "있었다" : "없었다"}. ◇`, { drift: true, buzz: drifted.n++ < 3 ? "H5" : null }); };
@@ -1338,8 +1347,8 @@ function checkDanger(g) {
 const SL = (g, id) => (g.content.game.storylets || []).find((x) => x.id === id);
 function startStory(g) { const st = (g.content.game.storylets || []).find((x) => x.trigger?.start); if (st) openStory(g, st); }
 function openStory(g, st) {
-  if (st.severity) DIR.crisis(g, st.severity);
   if (st.once !== false && g.storyDone.has(st.id)) return;
+  if (st.severity) DIR.crisis(g, st.severity);   // 실제로 열린 장면만 긴장 곡선을 흔든다
   const needName = (st.input === "true_name" && !trueName(g)) || st.input === "child_name";
   g.story = { id: st.id, phase: needName ? "input" : "choice" };
   g.feed.push({ kind: "story", text: storyText(g, st, needName) });
@@ -1404,9 +1413,11 @@ function windowTrigger(g, t = g.t) {
   if (g.story || g.ended || g.convo) return null;
   for (const st of g.content.game.storylets || []) {
     const tr = st.trigger || {};
-    if (!tr.window || g.storyDone.has(st.id)) continue;
-    const fromL = tr.window.from_loop ? Object.entries(tr.window.from_loop).filter(([k]) => g.run.loop >= Number(k)).map(([, v]) => v).pop() : null;
-    if (t < parseDT(fromL || tr.window.from) || t > parseDT(tr.window.to)) continue;
+    // 시각이 정해진 장면을 놓쳤으면 (그 자리에 없었으면) late까지 그 자리에 오는 순간 열린다 — 첫 회차의 재능 장면 (14 §8 #6)
+    const win = tr.window || (tr.at_time && tr.late ? { from: tr.at_time, to: tr.late } : null);
+    if (!win || g.storyDone.has(st.id)) continue;
+    const fromL = win.from_loop ? Object.entries(win.from_loop).filter(([k]) => g.run.loop >= Number(k)).map(([, v]) => v).pop() : null;
+    if (t < parseDT(fromL || win.from) || t > parseDT(win.to)) continue;
     if (!atPlace(g, tr.at)) continue;
     if (tr.night && !isNight(t)) continue;
     if (tr.with && !present(g, t).some((w) => w.npc === tr.with && w.kind !== "captive" && !asleep(w, t))) continue;
@@ -2085,10 +2096,14 @@ function addMemory(g, n, mem) {
     m.impressions[mem.tag] = clamp((m.impressions[mem.tag] || 0) + (mem.delta || 0), -20, 20);
     // 인상은 관계 수치로 이어진다 — 반응 층(27)이 "고발할까 침묵할까"를 정할 때 이 마음을 쓴다
     const good = ["영리함", "정직함", "다정함", "용감함", "쓸모 있음"].includes(mem.tag), bad = ["위험함", "거짓말쟁이", "비굴함", "짐"].includes(mem.tag);
-    if (good) bumpRel(g, n, mem.delta || 0, Math.round((mem.delta || 0) / 2));
-    if (bad) bumpRel(g, n, -Math.abs(mem.delta || 0), -Math.abs(mem.delta || 0));
+    // 하루 상한 (21 §6.3): 인상이 쌓여도 하루에 호감 ±15, 신뢰 ±12까지 — 태그 다섯이 +25가 되지 않게
+    const day = Math.floor(g.t / 1440), cap = ((g.P.impDay ??= {})[n] ??= { day, like: 0, trust: 0 });
+    if (cap.day !== day) Object.assign(cap, { day, like: 0, trust: 0 });
+    const lim = (k, v, max) => { const room = v >= 0 ? max - cap[k] : -max - cap[k]; const d = v >= 0 ? Math.min(v, Math.max(0, room)) : Math.max(v, Math.min(0, room)); cap[k] += d; return d; };
+    const dl = good ? (mem.delta || 0) : bad ? -Math.abs(mem.delta || 0) : 0, dt = good ? Math.round((mem.delta || 0) / 2) : bad ? -Math.abs(mem.delta || 0) : 0;
+    if (good || bad) bumpRel(g, n, lim("like", dl, 15), lim("trust", dt, 12));
   }
-  const slots = { S: 60, A: 30, B: 12 }[g.P.promoted?.has(n) ? "B" : cardOf(g, n).tier] || 8;
+  const slots = { S: 60, A: 30, B: 12, C: 4 }[g.P.promoted?.has(n) ? "B" : cardOf(g, n).tier] || 4;   // C등급(이름 없는 주민)은 4칸 (21 §6.4)
   if (m.memories.length > slots) { m.memories.sort((a, b) => (b.salience || 0) - (a.salience || 0)); m.memories.length = slots; }
 }
 // "방앗간" → gf_mill (이름의 일부로 찾는다)
@@ -2491,7 +2506,7 @@ export function view(g) {
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     fight: g.fight ? { npc: g.fight.npc, name: displayName(g, g.fight.npc), round: g.fight.round, me: g.fight.me, foe: g.fight.foe } : null,
     skills: Object.keys(g.P.skills).map((sk) => { const v = skill(g, sk); return { name: sk, word: skillWord(v), body: !!BODY_STAT[sk], lagging: !!BODY_STAT[sk] && rawSkill(g, sk) + talentBonus(g, sk) > bodyCap(g, sk) }; }),
-    player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen })), bloody: !!g.P.bloody, wanted: g.S.wanted?.player?.heat || 0 },
+    player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen })), bloody: !!g.P.bloody, wanted: heatHere(g), wantedWord: wantedWord(heatHere(g)) },
     notebook: [...g.run.carry.notebook, ...g.P.notebook],
     ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, final: !!g.run.carry.final && g.ended.kind === "dead", canRelease: g.run.loop >= 3 && !g.run.carry.final, epilogue: g.run.carry.final && g.ended.kind === "dead" ? epilogue(g) : null, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,
     story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),
@@ -2515,11 +2530,12 @@ export function view(g) {
     rising: (() => { const r = risingReady(g); return r.some((x) => x.ok) || g.S.vars.greyford_free ? { ready: r, free: !!g.S.vars.greyford_free, failed: !!g.S.vars.rising_failed } : null; })(),
     succession: g.S.vars.varskar_dead || g.S.vars.kaspar_warned ? { dead: !!g.S.vars.varskar_dead, kaspar: g.S.vars.faction_kaspar, throne: !!g.S.vars.kaspar_throne, charter: !!g.S.vars.kaspar_charter } : null,
     ops: opsOf(g), final: !!g.run.carry.final,
-    romance: { npc_sara: romanceStage(g, "npc_sara") },
+    romance: { npc_sara: romanceStage(g, "npc_sara"), words: { npc_sara: ROMANCE_WORDS[romanceStage(g, "npc_sara")] } },
     narrator: { id: g.narrator || g.run.narrator || "silent_god", name: DIR.narratorOf(g).name }, director: g.dir ? { phase: g.dir.phase, T: g.dir.T, target: DIR.targetT(g) } : null,
     traits: traits(g), mode: g.run.mode || "grim", echoNamed: !!g.S.vars.echo_named || (soul(g).echoNamed || false),
-    talents: talentsOf(g), achievements: soul(g).achievements || [],
-    reputation: (() => { const r = reputation(g); return { views: r.views, titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
+    talents: talentsOf(g).map((t) => ({ id: t, name: TALENT[t]?.name || t, grows: TALENT[t]?.grow || [] })),
+    achievements: (soul(g).achievements || []).map((a) => (typeof a === "string" ? a : a.id)).map((id) => ACHIEVEMENTS.find((x) => x.id === id)?.text || id),
+    reputation: (() => { const r = reputation(g); return { views: r.views, bands: Object.fromEntries(Object.entries(r.views || {}).map(([k, x]) => [k, viewBand(x)])), titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),
   };
 }
 const pastBond = (x) => { const s = x.like * 0.6 + x.trust * 0.4; return s >= 40 ? "깊이 믿는 사이였다" : s >= 20 ? "마음을 연 사이였다" : s >= 8 ? "나쁘지 않은 사이였다" : s <= -25 ? "원수였다" : s <= -10 ? "나를 믿지 않았다" : "스쳐 간 사이였다"; };
