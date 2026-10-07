@@ -16,9 +16,12 @@ export function createSession(content, provider, { run = null, onSave = null, fa
   let transcript = g.run.transcript || [];
   const save = () => { g.run.transcript = transcript.slice(-40); g.run.lastPlayedAt = Date.now(); onSave?.(g.run); };
   // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
-  const jobs = [], pending = [];
-  let busy = false, working = null, recDebug = [];
-  function enqueue(npc, conv) { jobs.push({ npc, transcript: conv, t: g.t, time: fmt(g.t), tries: 0 }); kick(); }
+  // 시간선: 회귀·새 판·불러오기는 새 시간선이다. 되돌리기는 그 아침 뒤의 대화만 지운다 — 지워진 시간선의 기억이 새 기록에 섞이지 않게
+  const jobs = [], pending = [], live = new Set();
+  let busy = false, working = null, recDebug = [], timeline = {};
+  function enqueue(npc, conv) { const j = { npc, transcript: conv, t: g.t, time: fmt(g.t), tries: 0, tl: timeline, at: g.run.journal.length }; jobs.push(j); live.add(j); kick(); }
+  function newTimeline() { timeline = {}; for (const j of live) j.dead = true; live.clear(); jobs.length = 0; pending.length = 0; }
+  function cutTimeline(mark) { for (const j of live) if (j.at > mark) { j.dead = true; live.delete(j); } }
   function kick() {
     if (working || !jobs.length) return working;
     working = (async () => {
@@ -31,7 +34,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
           for (const j of batch) pending.push({ job: j, recs: recs.filter((r) => r.npc === j.npc) });
         } catch (e) {
           recDebug.push({ kind: "recorder-error", error: String(e.message || e) });
-          for (const j of batch) if (++j.tries < 3) jobs.push(j); else recDebug.push({ kind: "recorder-drop", npc: j.npc });
+          for (const j of batch) if (j.dead) continue; else if (++j.tries < 3) jobs.push(j); else { live.delete(j); recDebug.push({ kind: "recorder-drop", npc: j.npc }); }
           if (jobs.length) await new Promise((r) => setTimeout(r, 2000 * batch[0].tries));
         }
       }
@@ -44,6 +47,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     let any = false;
     while (pending.length) {
       const { job, recs } = pending.shift();
+      live.delete(job);
+      if (job.dead || job.tl !== timeline) { recDebug.push({ kind: "recorder-stale", npc: job.npc }); continue; }
       const { accepted, rejected } = G.validateMemories(g, job.npc, job.transcript, recs, { t: job.t });
       G.recordMemories(g, job.npc, accepted);
       recDebug.push({ kind: "recorder", npc: job.npc, accepted, rejected });
@@ -180,11 +185,11 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     async regress(o) {
       const next = G.regressRun(g);
       if (!next) return { epilogue: G.epilogue(g), view: G.view(g), choices: [], beats: [] };   // 진짜 죽음 — 시대가 끝난다
-      g = G.boot(content, next); transcript = []; save(); return turn(null, o);
+      newTimeline(); g = G.boot(content, next); transcript = []; save(); return turn(null, o);
     },
     // 회귀를 놓는다 (03 §4.6): 다음 회차가 마지막 — 그 회차의 죽음은 돌아오지 않는다
     release() { g.run.release = true; save(); return { ok: true }; },
-    async newGame(seed, o, mode = "grim", narrator = "silent_god") { g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode, narrator }); transcript = []; save(); return turn(null, o); },
+    async newGame(seed, o, mode = "grim", narrator = "silent_god") { newTimeline(); g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode, narrator }); transcript = []; save(); return turn(null, o); },
     narrator(id) { G.setNarrator(g, id); save(); return { ok: true, view: G.view(g) }; },
     // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
     async rewind(o) {
@@ -193,11 +198,12 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       if (used >= 3) return { error: "이번 회차의 되돌리기를 다 썼다" };
       const mark = G.morningMark(g);
       if (mark == null) return { error: "되돌아갈 아침이 아직 없다" };
+      cutTimeline(mark);
       g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, mark), rewinds: { ...(g.run.rewinds || {}), [g.run.loop]: used + 1 } });
       transcript = []; save(); return turn(null, o);
     },
     drain: () => kick() || Promise.resolve(),   // 검사용: 기록관이 끝날 때까지
-    load(run) { g = G.boot(content, run); transcript = run.transcript || []; },
+    load(run) { newTimeline(); g = G.boot(content, run); transcript = run.transcript || []; },
     get run() { return g.run; }, get game() { return g; },
   };
 }

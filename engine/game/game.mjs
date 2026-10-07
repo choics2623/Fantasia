@@ -517,9 +517,12 @@ export function odds(g, opt) {
 const knowsPlace = (g, id) => !!id && ((g.P.been || new Set()).has(id) || (soul(g).places || []).includes(id));
 
 // ── 한 걸음: 기록 하나를 적용한다 (결정적) ──
+// 이 걸음의 기록 번호 (「기억대로 보낸다」의 하위 걸음은 "12.3" — 앞 번호만), 물건 id는 번호 + 걸음 안 순번
+const jidx = (g) => Number(String(g._i ?? 0).split(".")[0]) || 0;
+const uid = (g, base) => `${base}_${String(g._i ?? 0)}_${g._seq = (g._seq || 0) + 1}`;
 // entry: {i, kind:'act', id, tags?, text?} | {i, kind:'memory', npc, mems:[...]} | {i, kind:'regress'}
 export function apply(g, e, { replay = false } = {}) {
-  g.feed = [];
+  g.feed = []; g._i = e.i; g._seq = 0;      // 기록 번호: 실시간과 재생이 같은 값을 본다 (journal.length는 재생 때 전체 길이다)
   if (e.kind === "memory") { for (const m of e.mems) applyRecord(g, e.npc, m); return { kind: "memory" }; }
   if (e.kind === "narrator") { g.narrator = e.id; return { kind: "narrator" }; }   // 화자 바꾸기 (18 §4.4) — 기록에 남아 재생된다
   const res = step(g, e);
@@ -605,7 +608,7 @@ function dayEnd(g) {
   const card = [`수첩 +${Math.max(0, g.P.notebook.length - mk.notebook)}`, `아는 사람 ${g.P.met.size}`, `동화 ${g.S.purse.player}못`, ...goalsNow].join(" · ");
   g.feed.push({ kind: "dayend", text, card });
   (g.P.days ??= []).push({ day: Math.floor((g.t - START) / 1440), date: fmt(g.t).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, ""), at: placeName(g, g.at), notes: g.P.notebook.slice(mk.notebook).slice(-3), hook: text });
-  g.P.dayMark = { notebook: g.P.notebook.length, met: g.P.met.size, coin: g.S.purse.player, journal: g.run.journal.length };
+  g.P.dayMark = { notebook: g.P.notebook.length, met: g.P.met.size, coin: g.S.purse.player, journal: jidx(g) + 1 };
   g.P.lastDayEnd = day;
 }
 // 두 겹의 날 (16 §4): 지난 회차의 같은 날과 오늘을 나란히 — 같음/달라짐은 플레이어가 본다
@@ -685,7 +688,7 @@ function oathsTick(g, t) {
 function voiceWhen(g, c, e, opt) {
   const [k, a, b] = c.split(/\s+/);
   if (k === "first") return g.t >= START + 30;
-  if (k === "after_first") return (g.run.journal.length || 0) >= 2;
+  if (k === "after_first") return jidx(g) >= 2;
   if (k === "place") return g.at === a || g.W.loc.get(g.at)?.parent === a;
   if (k === "with") return present(g).some((w) => w.npc === a && w.kind !== "captive");
   if (k === "role") return present(g).some((w) => profOf(g, w.npc).role === a);
@@ -704,7 +707,7 @@ function pickVoice(g, e, opt) {
   if (st.day !== day) { st.day = day; st.today = 0; }
   if (st.cool > 0) { st.cool--; return; }
   if (st.today >= 8 || g.ended) return;
-  if (g.run.loop >= 2 && g.run.journal.length < 1) return;          // 회귀 직후 첫 박자는 침묵
+  if (g.run.loop >= 2 && jidx(g) < 1) return;          // 회귀 직후 첫 박자는 침묵
   const say = (who, id, text, once) => { if (once !== false) st.used.add(id); st.today++; st.cool = 2; g.feed.push({ kind: "voice", who, text }); return true; };
   const killerName = () => { const tr = g.run.carry.deaths[g.run.carry.deaths.length - 1]?.trace; return tr?.npc ? displayName(g, tr.npc) : "그 사람"; };
   // 지난 회차의 나 — 회귀 뒤 첫 마디는 그 회차의 마지막 장면
@@ -1158,7 +1161,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
       }
     }
     // 통금 순찰 (21:00·23:00·02:00): 막사 밖에 있는 인간은 걸린다 — 은신 판정
-    if (!g.P.traveling && g.P.settlement !== SETTLEMENT && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08);
+    if (!g.P.traveling && g.P.settlement !== SETTLEMENT && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08, next);
     if (g.P.settlement === SETTLEMENT && !g.P.traveling && ["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && g.at !== HOME && !g.W.loc.get(g.at)?.outer && !g.ended) {
       const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6, 22);
       if (hash(g.seed, "patrol", next) >= P) {
@@ -1232,13 +1235,14 @@ const overseer = (g) => g.offices.holder("fac_raven_house.off_overseer");
 
 // 낯선 고장의 인간: 길목·순찰에서 통행증을 요구받는다. 없으면 탈주 노예로 붙잡힌다. 위조 통행증은 기만 판정.
 // 소문(평판)이 이 고장까지 닿았고 얼굴이 알려졌으면 더 어렵다. 자유민의 땅(윗선이 없는 고장)은 묻지 않는다.
-function checkpoint(g, res, p) {
+function checkpoint(g, res, p, T = g.t) {
+  // T: 검문이 일어나는 시각 — pass() 안에서는 g.t가 아직 출발 시각이다 (매시 다른 굴림이어야 한다)
   const chain = g.content.game.sim.defaults_by_settlement?.[g.P.settlement]?.report_to || [];
   if (!chain.length || g.ended) return;
-  if (g.P.clearedUntil > g.t) return;                       // 한 번 넘긴 검문은 하루 동안 다시 묻지 않는다
+  if (g.P.clearedUntil > T) return;                       // 한 번 넘긴 검문은 하루 동안 다시 묻지 않는다
   const l = g.W.loc.get(g.at) || {};
   if (l.outer || ["secret", "serf"].includes(l.access)) p *= 0.25;   // 마을 밖·숨은 곳·인간 거처는 덜 묻는다
-  const roll = hash(g.seed, "check", g.P.settlement, g.t);
+  const roll = hash(g.seed, "check", g.P.settlement, T);
   if (roll >= p) return;
   const pass = mine(g).find((i) => i.tags?.includes("통행증"));
   const rep = reputation(g);
@@ -1246,11 +1250,11 @@ function checkpoint(g, res, p) {
   let ok = false, text;
   if (pass) {
     const P2 = prob(skill(g, "기만") + g.P.mods.지능 * 2 + (pass.tags.includes("위조") ? 0 : 20) - (known ? 10 : 0), 22);
-    ok = hash(g.seed, "check-pass", g.t) < P2;
+    ok = hash(g.seed, "check-pass", T) < P2;
     text = ok ? "경비가 통행증을 오래 들여다보다가 돌려준다." : "경비가 통행증의 인장을 손톱으로 긁는다. 위조다.";
   } else text = "경비가 묻는다. 누구의 것이냐, 통행증은. 대답할 것이 없다.";
-  if (ok) g.P.clearedUntil = g.t + 1440;
-  if (!ok) { g.ended = { kind: "captured", why: `${text} 탈주 노예로 붙잡혔다 — ${g.content.bundle.settlements[g.P.settlement]?.name}`, t: g.t, trace: { id: "rope" } }; }
+  if (ok) g.P.clearedUntil = T + 1440;
+  if (!ok) { g.ended = { kind: "captured", why: `${text} 탈주 노예로 붙잡혔다 — ${g.content.bundle.settlements[g.P.settlement]?.name}`, t: T, trace: { id: "rope" } }; }
   (res?.notes || g.feed).push(res ? text : { kind: "rule", text });
 }
 
@@ -1433,7 +1437,7 @@ function storyEffect(g, e, res) {
   else if (k === "coin") g.S.purse.player = Math.max(0, g.S.purse.player + Number(parts[1]));
   else if (k === "hunger") g.P.status.hunger = clamp(g.P.status.hunger + Number(parts[1]), 0, 4);
   else if (k === "pain") g.P.status.pain = clamp(g.P.status.pain + Number(parts[1]), 0, 100);
-  else if (k === "item") { const good = g.content.game.economy.goods[parts[1]]; if (good) g.L.give("player", { ...good, id: `it_${parts[1]}_${g.run.journal.length}_${Math.floor(g.t % 1440)}`, gid: parts[1] }); }
+  else if (k === "item") { const good = g.content.game.economy.goods[parts[1]]; if (good) g.L.give("player", { ...good, id: uid(g, `it_${parts[1]}`), gid: parts[1] }); }
   else if (k === "talent") { if (!g.P.talent) g.P.talent = parts[1]; }   // 재능의 값은 skill()이 얹는다 (영혼의 스킬과 겹치지 않게)
   else if (k === "note") g.P.notebook.push(fill(g, rest));
   else if (k === "memory") { const [, n, tag] = parts; addMemory(g, n, { kind: "impression", tag, delta: 0, text: parts.slice(3).join(" "), salience: 4, source: "engine" }); }
@@ -1455,7 +1459,7 @@ function storyEffect(g, e, res) {
     let i = 1, p = 1;
     if (k === "die_if") { p = Number(parts[1]); i = 2; }
     const trace = parts[i], tail = parts.slice(i + 1);
-    if (hash(g.seed, "die", g.story?.id || "", g.run.journal.length) >= p) return;
+    if (hash(g.seed, "die", g.story?.id || "", String(g._i ?? 0)) >= p) return;
     if (tail.length === 1 && SL(g, tail[0])) { g._then = tail[0]; return; }        // 죽음이 다음 장면에서 온다 (사라의 무릎 위)
     const npc = tail[0]?.startsWith("npc_") ? tail.shift() : null;
     g.P.alive = false; g.ended = { kind: "dead", why: fill(g, tail.join(" ")), t: g.t, trace: { id: trace, npc } };
@@ -1540,6 +1544,7 @@ const DO = {
   go(g, to, res, opt) {
     const sneak = opt.skill === "은신";
     pass(g, Math.max(1, opt.minutes || 1));
+    if (g.ended) return;                 // 가는 길에 붙잡히거나 쓰러졌다 — 거기서 끝이다
     if (sneak && !OK(res.tier)) {
       const seen = g.L.player.trespass(g.t, to, res.tier === "대실패" ? 1 : 0.7);
       if (seen.length) deed(g, "trespass", null, to);
@@ -1574,7 +1579,12 @@ const DO = {
       step(() => { g.at = "gf_rooster"; pass(g, Math.max(1, parseClock(ra.from) - m)); });
       if (!g.ended && present(g).some((w) => w.npc === "npc_bram")) step(() => { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); pass(g, 15); });
     }
-    // 2) 통금 전에 막사로, 자고, 점호
+    // 2) 통금 전에 막사로, 자고, 점호 — 깨어난 아침에 표지를 남긴다 (되돌리기)
+    if (!g.ended && !g.story) {
+      (g.P.marks ??= []).push(jidx(g) + 1);
+      const cnt = SL(g, "count_before_sleep");
+      if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { g.at = HOME; g.feed = feedAll; openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
+    }
     if (!g.ended && !g.story) step(() => { g.at = HOME; const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); });
     if (!g.ended && !g.story && !isSabbath(Math.floor(g.t / 1440))) step(() => { pass(g, 5); g.at = ROLLCALL; pass(g, 20); });
     g.feed = feedAll;
@@ -1582,7 +1592,7 @@ const DO = {
   },
   sleep(g, _, res, opt, e) {
     dayEnd(g);
-    (g.P.marks ??= []).push((e?.i ?? g.run.journal.length) + 1);   // 이 잠까지 포함한 기록 길이 = 깨어난 아침
+    (g.P.marks ??= []).push(jidx(g) + 1);   // 이 잠까지 포함한 기록 길이 = 깨어난 아침 (하위 걸음이어도 바깥 기록 다음)
     // 두 번째 회차부터, 첫 잠자리 전에 지난 회차를 센다 (14 §6.6)
     const cnt = SL(g, "count_before_sleep");
     if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
@@ -1610,8 +1620,9 @@ const DO = {
   },
   stash(g, id, res) {
     pass(g, 10);
+    if (g.ended) return;
     let it;
-    if (id === "coin") { const n = g.S.purse.player - 3; g.S.purse.player = 3; it = g.L.give("player", { id: `it_coin_${g.run.journal.length}`, name: `동전 ${n}못`, coin: n, tags: ["화폐"], value: n }); }
+    if (id === "coin") { const n = g.S.purse.player - 3; g.S.purse.player = 3; it = g.L.give("player", { id: uid(g, "it_coin"), name: `동전 ${n}못`, coin: n, tags: ["화폐"], value: n }); }
     else it = g.L.items.get(id);
     Object.assign(it, { at: g.at, worn: false, stashed: true });
     g.P.found.add(it.id);
@@ -1619,6 +1630,7 @@ const DO = {
   },
   attack(g, n, res) {
     pass(g, 2);
+    if (g.ended) return;
     if (OK(res.tier)) {
       const seen = g.L.player.kill(g.t, n, { at: g.at, stealth: res.tier === "대성공" ? 60 : 20 });
       deed(g, "kill", n);
@@ -1806,7 +1818,7 @@ const DO = {
     else if (profOf(g, F.npc).role === "authority") { const w = (g.S.wanted.player ??= { heat: 0, by: new Set(), reasons: [] }); w.heat += 2; w.since ??= g.t; w.by.add(F.npc); w.reasons.push("감독에게 덤볐다"); }
   },
   wash(g, _, res) { pass(g, 20); g.P.bloody = false; res.notes.push("찬물에 옷을 비벼 빤다. 핏물이 흐려진다"); },
-  loot(g, n, res) { pass(g, 5); g.P.bloody = true; const got = g.L.player.loot(g.t, n); res.notes.push(got.length ? `가져왔다: ${got.join(", ")}` : "남은 것이 없다"); },
+  loot(g, n, res) { pass(g, 5); if (g.ended) return; g.P.bloody = true; const got = g.L.player.loot(g.t, n); res.notes.push(got.length ? `가져왔다: ${got.join(", ")}` : "남은 것이 없다"); },
   hide_body(g, n, res) { pass(g, 20); g.L.player.hideBody(g.t, n); res.notes.push("시체를 짚더미 밑에 밀어 넣었다"); },
   // ── 대화 ──
   small_talk(g, _, res) {
@@ -1888,7 +1900,7 @@ const DO = {
   buy(g, gid, res) {
     const n = g.convo.npc, good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
     g.S.purse.player -= price; g.S.purse[n] = (g.S.purse[n] || 0) + price;
-    const it = g.L.give("player", { ...good, id: `it_${gid}_${g.run.journal.length}`, value: good.price, gid });
+    const it = g.L.give("player", { ...good, id: uid(g, `it_${gid}`), value: good.price, gid });
     res.notes.push(`${good.name}을(를) ${price}못에 샀다`);
     if (good.illegal) g.S.threats.push({ by: n, target: "player", kind: "leverage", about: gid, t: g.t });   // 장물아비는 당신이 무엇을 샀는지 안다
     endIfSpent(g, res, 0.5);
@@ -2060,7 +2072,11 @@ export function regressRun(g) {
   const record = loopRecord(g);
   const deaths = [...carry.deaths, ...(g.ended ? [{ loop: g.run.loop, ...g.ended, t: g.t, at: g.at }] : [])];
   // 이름과 재능은 영혼의 것 — 회귀해도 남는다 (WORLD_BIBLE §1.3.1, 06)
-  return newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null, soul: settleSoul(g, record), final: !!g.run.release } });
+  const next = newRun({ seed: g.run.seed, loop: g.run.loop + 1, carry: { notebook: notebook.slice(-200), future, deaths, trueName: trueName(g), sibling: sibling(g), talent: g.P.talent || carry.talent || null, soul: settleSoul(g, record), final: !!g.run.release } });
+  // 플레이어의 설정은 회차를 넘는다: 이야기 모드(03 §6)·고른 화자(18 §4)·인물 수첩 메모(08 §5 "수첩은 남는다")·회차별 되돌리기 횟수
+  for (const k of ["mode", "memos", "rewinds"]) if (g.run[k] != null) next[k] = g.run[k];
+  if (g.narrator || g.run.narrator) next.narrator = g.narrator || g.run.narrator;   // (opening·lethal은 검사용 깃발 — 넘기지 않는다)
+  return next;
 }
 // 이번 회차를 영혼에 정산한다 — 관계는 수치가 아니라 '그 회차에 어떤 사이였나'로 (03 §4.1, 08 §5)
 function settleSoul(g, record) {

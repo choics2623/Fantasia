@@ -346,6 +346,8 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   }
 
   // ── 시간 ──
+  // 플레이어의 행동이 지난 시각을 들고 오면 (끝난 판의 뒷정리 등) 지금 일어난 것으로 친다 — 세계 시계는 거꾸로 가지 않는다
+  function upTo(t) { if (t < now) return now; advance(t); return t; }
   function advance(toT) {
     if (toT < now) throw new Error("시간은 거꾸로 가지 않는다");
     while (now < toT) {
@@ -371,7 +373,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   // ── 플레이어 행동 ── (모두 시각을 받는다. 그 시각까지 세계를 먼저 굴린다)
   const player = {
     kill(t, victim, { at, stealth = 0 } = {}) {
-      advance(t);
+      t = upTo(t);
       const place = at || world.where(victim, t).at;
       agenda?.intervene(t, "kill", victim);
       world.override({ npc: victim, from: t, to: null, kind: "dead", at: place, doing: "죽어 있다" });
@@ -382,7 +384,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
     },
     // 덤볐지만 죽이지 못했다 — 당한 사람이 살아서 안다
     assault(t, victim, { at } = {}) {
-      advance(t);
+      t = upTo(t);
       const place = at || world.where(victim, t).at;
       const seen = emit({ kind: "assault", t, at: place, actor: "player", target: victim, vis: 1, loud: true });
       believe(victim, t, { kind: "suspect", subject: "player", object: victim, reason: "나에게 덤벼들었다", certainty: 1, at: place, source: "saw", assault: true });
@@ -390,15 +392,15 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       return seen;
     },
     // 들어가면 안 되는 곳에 들어갔다가 들켰다
-    trespass(t, at, vis = 0.7) { advance(t); return emit({ kind: "trespass", t, at, actor: "player", vis }); },
+    trespass(t, at, vis = 0.7) { t = upTo(t); return emit({ kind: "trespass", t, at, actor: "player", vis }); },
     hideBody(t, victim, { to } = {}) {
-      advance(t);
+      t = upTo(t);
       const b = bodies.find((x) => x.npc === victim); if (!b) return;
       if (to) { b.at = to; world.override({ npc: victim, from: t, to: null, kind: "dead", at: to, doing: "죽어 있다" }); }
       b.hidden = true; log(t, "player", `주인공이 ${NAME(victim)}의 시체를 숨겼다`, "player");
     },
     loot(t, victim, what = "all") {
-      advance(t);
+      t = upTo(t);
       const at = bodies.find((x) => x.npc === victim)?.at || world.where(victim, t).at;
       const got = [];
       if (what === "all" || what === "coin") { const c = purse.get(victim) || 0; purse.set("player", purse.get("player") + c); purse.set(victim, 0); if (c) got.push(`${c}못`); }
@@ -411,18 +413,18 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       return got;
     },
     takeFrom(t, at, itemId) {   // 은닉처·집에서 꺼내기
-      advance(t);
+      t = upTo(t);
       const it = items.get(itemId); if (!it || it.worn || it.at !== at) return false;
       it.owner = "player"; it.at = null; it.provenance.push({ owner: "player", how: "훔침", t });
       emit({ kind: "loot", t, at, actor: "player", item: it.id, vis: 0.4 });
       return true;
     },
     // 물건을 꺼내 보이거나 차고 다닌다 — 그 자리에 있는 사람이 알아볼 수 있다
-    show(t, itemId, at) { advance(t); const it = items.get(itemId); it.worn = true; it.visibility = "보임"; return emit({ kind: "show_item", t, at, actor: "player", item: itemId, vis: 0.8 }); },
-    drop(t, itemId, at) { advance(t); const it = items.get(itemId); Object.assign(it, { owner: null, worn: false, at, dropped: true, droppedBy: "player" }); it.provenance.push({ owner: null, how: `${at}에 떨어뜨림`, t }); },
+    show(t, itemId, at) { t = upTo(t); const it = items.get(itemId); it.worn = true; it.visibility = "보임"; return emit({ kind: "show_item", t, at, actor: "player", item: itemId, vis: 0.8 }); },
+    drop(t, itemId, at) { t = upTo(t); const it = items.get(itemId); Object.assign(it, { owner: null, worn: false, at, dropped: true, droppedBy: "player" }); it.provenance.push({ owner: null, how: `${at}에 떨어뜨림`, t }); },
     // 판다: 사는 사람은 가까이서 살핀다 (알아볼 확률 ↑). 장물아비는 알아봐도 값을 깎고 입을 다문다
     sell(t, itemId, buyer, at) {
-      advance(t);
+      t = upTo(t);
       const it = items.get(itemId), pr = prof(buyer);
       const knew = recognizes(buyer, it, 1.6);
       const price = Math.round((it.value || 0) * (pr.role === "fence" ? (knew ? 0.3 : 0.5) : knew ? 0 : 0.7));
@@ -439,7 +441,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
     },
     // 표시 지우기: 대장장이·장물아비가 녹이거나 고친다. 맡기는 순간 그 사람이 먼저 본다
     alter(t, itemId, smith, at) {
-      advance(t);
+      t = upTo(t);
       const it = items.get(itemId);
       const knew = recognizes(smith, it, 1.6);
       if (knew) believe(smith, t, { kind: "saw_item", subject: "player", object: origOwner(it), item: it.id, at, source: "saw" });

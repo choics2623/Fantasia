@@ -13,6 +13,7 @@ function at(sid, when, vars = {}, rel = {}) {
   const st = C.bundle.settlements[sid]; g.P.settlement = sid; g.at = (st.locations.find((l) => (l.access || "public") === "public") || st.locations[0]).id; g.L.setActive([sid]);
   g.storyDone.add(`arrive_${sid === "dragon_pillar_post" ? "dragon_pillar" : sid}`);
   g.t = parseDT(when); g.P.status.hunger = 0;
+  g.P.clearedUntil = Infinity;   // 이 검사는 장면을 본다 — 검문은 test_game·fuzz가 본다 (통행증을 보인 셈)
   return g;
 }
 function waitStory(g, id, hours = 48) {

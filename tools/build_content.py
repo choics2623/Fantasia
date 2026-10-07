@@ -120,6 +120,16 @@ def main():
     storylets = []
     for f in load("content/base/storylets/*.yaml"):
         storylets += (f or {}).get("storylets") or []
+    # YAML 1.1은 on/off/yes/no를 불리언으로 읽는다 — 장면·선택지 id는 반드시 글자여야 한다 (선택지 id가 true가 되면 그 장면을 넘길 수 없다)
+    seen_ids, bad = set(), []
+    for st in storylets:
+        if not isinstance(st.get("id"), str): bad.append(f"장면 id가 글자가 아니다: {st.get('id')!r}")
+        elif st["id"] in seen_ids: bad.append(f"장면 id가 겹친다: {st['id']}")
+        seen_ids.add(st.get("id"))
+        cids = [c.get("id") for c in st.get("choices") or []]
+        bad += [f"{st.get('id')}: 선택지 id가 글자가 아니다: {c!r}" for c in cids if not isinstance(c, str)]
+        bad += [f"{st.get('id')}: 선택지 id가 겹친다: {c}" for c in set(x for x in cids if cids.count(x) > 1)]
+    if bad: raise SystemExit("스토리렛 검사 실패:\n  " + "\n  ".join(bad))
     public = {}
     for f in load("content/base/npcs/public_*.yaml"):
         public.update(f or {})

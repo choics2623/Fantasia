@@ -127,7 +127,7 @@ storylets:
         label: 손바닥을 찍는다
         text: '숯이 차다. 벽은 따뜻하다. 네 손자국이 다른 손자국들 사이에 끼어든다. 크기가 거의 같다.'
         effects: ["var em_handprint_done = true", "var em_signs += 1", "temper 용기 3", "rel npc_caleb_dara trust 15", "note 잿불 언덕 — 9번 갱 막장에 손바닥을 찍었다"]
-      - id: no
+      - id: withdraw
         label: 손을 거둔다
         text: '칼렙은 실망하지 않는다. "다음에." 다음이 있다는 듯이.'
         effects: ["var em_handprint_done = true"]
