@@ -676,6 +676,11 @@ details.help ul { margin-top: 10px; font-size: .84rem; color: var(--ink-soft); }
 .cr-dice.on { border-color: var(--gold); } .cr-dice.on .die { color: var(--gold); }
 .cr-roll { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-family: var(--ui); font-size: .82rem; color: var(--ink-soft); }
 .cr-roll b { color: var(--gold); } .cr-roll b.bad, .bad { color: var(--bad); }
+.cr-names { display: grid; gap: 12px; max-width: 720px; margin-bottom: 16px; }
+.cr-name { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 2px 12px; align-items: center; font-family: var(--ui); font-size: .8rem; color: var(--ink-soft); }
+.cr-name input { font-family: var(--body); font-size: 1.05rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; min-width: 0; max-width: 16em; }
+.cr-name input:focus { border-color: var(--gold); outline: none; }
+.cr-name small { grid-column: 2; font-size: .7rem; color: var(--ink-faint); }
 .cr-sum { border: 1px solid var(--line-2); border-radius: 12px; padding: 14px 16px; background: var(--bg); max-width: 720px; }
 .cr-birth { margin: 0 0 12px; font-family: var(--body); font-size: 1.05rem; line-height: 1.6; color: var(--ink); }
 .cr-sum dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; margin: 0; font-size: .88rem; }

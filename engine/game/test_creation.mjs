@@ -171,6 +171,27 @@ for (const o of ORIGINS) {
   check(`${CR.originDef(C, o).name}: 다시 재생해도 같다`, fp(g) === fp(again), `${g.run.journal.length}걸음`);
 }
 
+// ── 이름: 만들 때 짓는다 (진짜 이름 · 형/누나 · 불리는 이름) ──
+{ const ids2 = (g) => G.options(g).map((o) => o.id);
+  const g = mk({ origin: "eldar_gardener", name: "하린", call: "이슬" }, { seed: 23 });
+  check("이름을 지어 오면 첫 장면이 이름을 묻지 않는다", g.story?.id === "o3_dawn_open" && !ids2(g).includes("story_name"), ids2(g).join(","));
+  check("첫 장면의 글이 그 이름을 부른다", /하린/.test(G.storyIntro(g) || ""), (G.storyIntro(g) || "").slice(-60));
+  G.act(g, { id: G.options(g)[0].id });
+  check("건너뛴 이름 장면의 효과도 일어난다 (은빛 핀)", G.view(g).player.items.some((i) => /핀/.test(i.name)) && g.S.vars.o3_nina_known === true, G.view(g).player.items.map((i) => i.name).join(","));
+  check("불리는 이름을 지으면 세상이 그 이름으로 부른다", G.callName(g) === "이슬" && G.view(g).origin.call === "이슬");
+  check("탄생 서사가 이름으로 시작한다", CR.birthLine(C, g.run.build).startsWith("하린, "), CR.birthLine(C, g.run.build));
+  const s2 = mk({ origin: "serf", name: "도윤", sibling: "누나" }, { seed: 24 });
+  check("셋째의 형/누나도 만들 때 정한다 (이름 칸 없이 첫 장면)", G.view(s2).story?.id === "ration_line_open" && s2.run.build.sibling === "누나" && !G.options(s2).some((o) => o.id === "story_name"));
+  check("이름 칸의 글자 거르기: 자리표·구분자를 뺀다", CR.finalizeBuild(C, { origin: "serf", name: "{하}|린" }, 1).name === "하린");
+  check("빈 이름은 첫 장면에서 정한다", !CR.finalizeBuild(C, { origin: "serf", name: "  " }, 1).name && mk({ origin: "serf" }).story && G.options(mk({ origin: "serf" }))[0].id === "story_name");
+  // 회귀한 회차에도 이름 장면의 효과가 일어난다 (이름은 이미 안다)
+  const d = mk({ origin: "eldar_gardener" }, { seed: 25 });
+  for (let i = 0; i < 6 && d.story; i++) { const op = G.options(d); G.act(d, op[0].id === "story_name" ? { id: "story_name", text: "하린" } : { id: op[0].id }); }
+  d.ended = { kind: "dead", why: "검사", t: d.t, trace: { id: "blade" } };
+  const d2 = G.boot(C, G.regressRun(d));
+  G.act(d2, { id: G.options(d2)[0].id });
+  check("두 번째 회차: 이름 장면의 효과 (은빛 핀)", G.view(d2).player.items.some((i) => /핀/.test(i.name)), G.view(d2).player.items.map((i) => i.name).join(",")); }
+
 // ── 세션: 새 판에 생성을 싣는다 ──
 { const prov = { kind: "mock", usage: { calls: 0, failures: 0 }, async complete() { this.usage.calls++; return "<서술>\n저녁이다.\n</서술>\n<선택지>\n{\"choices\": []}\n</선택지>"; } };
   const S = createSession(C, prov, {});

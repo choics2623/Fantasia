@@ -67,7 +67,7 @@ const startWord = (g) => originOf(g).when_word || dayWord(startOf(g));
 // 게르다와 키트가 식구인 출신 (셋째의 다섯 갈래) — 움막의 의식·키트의 명단·어머니의 구조
 const familyOf = (g) => originOf(g).family !== false && homeSid(g) === GREYFORD;
 // 세상이 주인공을 부르는 이름 (셋째 · 코 · 칠번 …) — 엔진이 쓰는 줄과 서술자에게
-export const callName = (g) => originOf(g).call || "셋째";
+export const callName = (g) => buildOf(g)?.call || originOf(g).call || "셋째";   // 만들 때 지은 이름이 있으면 그것
 const callJ = (g, rest) => josa(`${callName(g)}${rest}`);
 // 매인 사람: 허락 없이 고장을 떠나면 탈주다 (자유민은 아니다)
 const boundOf = (g) => originOf(g).free !== true;
@@ -249,7 +249,7 @@ const NEW_PLAYER = () => ({
 function newPlayer(content, build) {
   const P = NEW_PLAYER(), o = CR.originDef(content, build?.origin);
   if (!o) return P;
-  if (o.call) P.name = o.call;
+  if (build?.call || o.call) P.name = build?.call || o.call;
   if (o.age) P.age = o.age;
   if (o.skills) P.skills = { ...P.skills, ...o.skills };
   if (o.status) P.status = { ...P.status, ...o.status };
@@ -401,8 +401,14 @@ function localNpcs(g) {
   return g._local.list;
 }
 function present(g, t = g.t) {
-  return g.W.whoIsAt(g.at, t, localNpcs(g)).filter((w) => (w.kind === "at" || w.kind === "captive") && w.at === g.at && !g.S.dead.has(w.npc));
+  const k = g._pm ? `${g.at}|${t}` : null;
+  if (k) { const c = g._pm.get(k); if (c) return c.slice(); }
+  const r = g.W.whoIsAt(g.at, t, localNpcs(g)).filter((w) => (w.kind === "at" || w.kind === "captive") && w.at === g.at && !g.S.dead.has(w.npc));
+  if (k) g._pm.set(k, r);
+  return k ? r.slice() : r;
 }
+// 읽기만 하는 셈(선택지 · 화면 · 목소리 고르기) 안에서는 세계가 멈춰 있다 — 같은 자리·같은 때의 '여기 있는 사람'을 한 번만 센다
+function frozen(g, fn) { if (g._pm) return fn(); g._pm = new Map(); try { return fn(); } finally { g._pm = null; } }
 const isNight = (t) => { const m = ((t % 1440) + 1440) % 1440; return m >= 21 * 60 || m < 4 * 60 + 30; };
 // 자고 있나: 일과 글에 잠이 있거나, 깊은 밤(23~04시)에 자기 집에 있으면
 let ROUTINES = {};
@@ -620,11 +626,12 @@ function exits(g) {
 export function options(g) {
   // ◈는 한 화면에 셋까지 (14 §7.5) — 나머지는 접힌 줄로
   let mem = 0;
-  return rawOptions(g).map((o) => ({ ...o, label: josa(o.label), ...(o.memory && ++mem > 3 ? { more: true } : {}) }));
+  return frozen(g, () => rawOptions(g).map((o) => ({ ...o, label: josa(o.label), ...(o.memory && ++mem > 3 ? { more: true } : {}) })));
 }
 // 잠긴 선택지 (GAME_DESIGN §2.4): 있는 줄은 아는데 지금은 못 하는 것 — 회색과 이유. 존재를 모르는 것은 보이지 않는다.
 // 행동 목록(options)과 따로 둔다: 고를 수 없으니 기록·재생과 상관이 없다
-export function lockedOptions(g) {
+export function lockedOptions(g) { return frozen(g, () => lockedOptions0(g)); }
+function lockedOptions0(g) {
   if (g.ended || g.fight || g.op) return [];
   const out = [], add = (label, why) => out.push({ label: josa(label), why });
   if (g.story) {
@@ -1313,7 +1320,8 @@ function voiceWhen(g, c, e, opt) {
   if (k === "death_place") { const d = g.run.carry.deaths[g.run.carry.deaths.length - 1]; return !!d?.at && g.at === d.at; }
   return storyWhen(g, [c]);
 }
-function pickVoice(g, e, opt) {
+function pickVoice(g, e, opt) { return frozen(g, () => pickVoice0(g, e, opt)); }
+function pickVoice0(g, e, opt) {
   const V = g.content.game.voices; if (!V) return;
   const st = (g.voice ??= { used: new Set(), day: -1, today: 0, cool: 0, lastAt: null });
   const day = Math.floor(g.t / 1440);
@@ -2074,7 +2082,7 @@ function openStory(g, st) {
   if (st.once !== false && g.storyDone.has(st.id)) return;
   if (st.severity) DIR.crisis(g, st.severity);   // 실제로 열린 장면만 긴장 곡선을 흔든다
   const needName = (st.input === "true_name" && !trueName(g)) || st.input === "child_name";
-  g.story = { id: st.id, phase: needName ? "input" : "choice" };
+  g.story = { id: st.id, phase: needName ? "input" : "choice", ...(!needName && st.input === "true_name" && (st.effects || []).length ? { owed: true } : {}) };
   g.feed.push({ kind: "story", text: storyText(g, st, needName) });
   if (!needName) for (const e of st.effects || []) storyEffect(g, e);
 }
@@ -2151,8 +2159,8 @@ function windowTrigger(g, t = g.t) {
   return null;
 }
 // 이름: 첫 회차에 받은 이름은 이 회차의 상태(P)에, 회귀할 때 carry로 넘어간다 (재생해도 이름 입력은 기록에서 다시 온다)
-const trueName = (g) => g.P.trueName || g.run.carry.trueName || null;
-const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
+const trueName = (g) => g.P.trueName || g.run.carry.trueName || buildOf(g)?.name || null;
+const sibling = (g) => g.P.sibling || g.run.carry.sibling || buildOf(g)?.sibling || "형";
 // 문맹과 모르는 말 (19 §4): {read|글} · {lang:용언|말} — 읽고쓰기·언어 스킬만큼만 보인다. 배우면 같은 글이 풀려 보인다
 const readMask = (g, t) => {
   const r = skill(g, "읽고쓰기");
@@ -2347,6 +2355,8 @@ const DO = {
   },
   story(g, cid, res) {
     const st = SL(g, g.story.id);
+    // 이름을 이미 알아서 건너뛴 이름 장면의 효과 (만들 때 지은 이름 · 회귀한 회차): 첫 걸음에 적용한다
+    if (g.story.owed) { g.story.owed = false; for (const ef of st.effects || []) storyEffect(g, ef, res); }
     if (cid.startsWith("wake:")) {   // 회귀 각성 (awakenOptions)
       const id = cid.slice(5), T = CR.talentDef(g.content, id), cur = talentTier(g, id);
       const cost = CR.tierCost(g.content, id, cur + 1) - CR.tierCost(g.content, id, cur);
@@ -3752,7 +3762,8 @@ export function storyIntro(g) {
   return storyText(g, st, g.story.phase !== "choice");
 }
 
-export function view(g) {
+export function view(g) { return frozen(g, () => view0(g)); }
+function view0(g) {
   const c = fromMinutes(g.t);
   const people = present(g).map((w) => {
     const n = w.npc, r = relOf(g, n), m = mind(g, n);

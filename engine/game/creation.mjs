@@ -1,6 +1,6 @@
 // 캐릭터 생성 (06 캐릭터 생성과 재능 · content/base/creation) — 출신 → 능력치 → 재능 → 특질 → 결점 → 운명의 주사위.
 // 판 하나(시대)에 한 번 정하고, 회귀해도 그대로다. 저장은 시드 + 기록 + build — build는 여기서 검증하고 마무리한다.
-//   build = { origin, alloc: {능력치: 더한 점}, talents: {id: 등급 1~3}, traits: [id], flaws: [id], dice: bool,
+//   build = { origin, name, sibling, call, alloc: {능력치: 더한 점}, talents: {id: 등급 1~3}, traits: [id], flaws: [id], dice: bool,
 //             diceResult: {talent, tier, flaw}, hidden: [id] }   ← 뒤의 둘은 finalizeBuild가 시드로 정해 적는다
 // 엔진(game.mjs)은 build를 읽기만 한다. 이 파일은 game.mjs를 부르지 않는다 (서버와 화면이 직접 쓴다).
 
@@ -8,6 +8,9 @@ export const DEFAULT_ORIGIN = "serf";
 const EMPTY = { rules: { tp: 10, flaw_max: 8, free_stats: 4, stat_min: 6, stat_max: 15, genius_max: 3, dice_refund: 2, dice_flaw: 0.3, hidden: 2, tier_names: ["소질", "수재", "천재"], cost: { major: [2, 4, 7], minor: [1, 2, 4] }, growth: [1.25, 1.5, 2], practice: [5, 10, 20], body: [3, 5, 8], stats: [], areas: [] }, talents: [], traits: [], flaws: [], origins: [] };
 export const creationOf = (content) => content?.game?.creation || EMPTY;
 export const STAT_KEYS = ["근력", "민첩", "체질", "지능", "감각", "의지"];
+// 이름: 진짜 이름(비워 두면 첫 장면에서 정한다) · 세상이 부르는 이름(비워 두면 출신의 것). 자리표와 구분자에 쓰는 글자는 뺀다
+export const NAME_MAX = 8;
+export const cleanName = (x) => String(x ?? "").replace(/[|{}<>\[\]\n\r\t]/g, "").replace(/\s+/g, " ").trim().slice(0, NAME_MAX);
 
 function hash(...parts) {
   let h = 2166136261 >>> 0;
@@ -58,6 +61,8 @@ export function checkBuild(content, build = {}) {
   const C = creationOf(content), R = C.rules, errors = [];
   const origin = originDef(content, build.origin);
   if (build.origin && origin?.id !== build.origin) errors.push(`모르는 출신: ${build.origin}`);
+  for (const [k, lab] of [["name", "이름"], ["call", "불리는 이름"]]) if (build[k] != null && String(build[k]).trim() && !cleanName(build[k])) errors.push(`${lab}에 쓸 수 있는 글자가 없다`);
+  if (build.sibling != null && !["형", "누나"].includes(build.sibling)) errors.push("형 또는 누나");
   // 능력치
   let used = 0;
   for (const [k, v] of Object.entries(build.alloc || {})) {
@@ -99,6 +104,9 @@ export function finalizeBuild(content, build = {}, seed = 7) {
   const C = creationOf(content), R = C.rules;
   const out = {
     origin: originDef(content, build.origin)?.id || DEFAULT_ORIGIN,
+    ...(cleanName(build.name) ? { name: cleanName(build.name) } : {}),
+    ...(["형", "누나"].includes(build.sibling) ? { sibling: build.sibling } : {}),
+    ...(cleanName(build.call) && cleanName(build.call) !== originDef(content, build.origin)?.call ? { call: cleanName(build.call) } : {}),
     alloc: Object.fromEntries(Object.entries(build.alloc || {}).filter(([k, v]) => STAT_KEYS.includes(k) && Number(v) > 0).map(([k, v]) => [k, Number(v)])),
     talents: Object.fromEntries(Object.entries(build.talents || {}).filter(([id, t]) => talentDef(content, id) && t >= 1).map(([id, t]) => [id, Math.min(3, Number(t))])),
     traits: [...new Set([...fixedTraits(content, build), ...(build.traits || [])].filter((id) => traitDef(content, id)))],
@@ -142,7 +150,7 @@ export function birthLine(content, build) {
   const tl = Object.entries(buildTalents(build)).map(([id, t]) => ({ T: talentDef(content, id), t })).filter((x) => x.T?.line).sort((a, b) => b.t - a.t || tierCost(content, b.T.id, b.t) - tierCost(content, a.T.id, a.t));
   const bits = tl.slice(0, 2).map((x) => x.T.line);
   const flaw = buildFlaws(build).map((id) => flawDef(content, id)?.name).filter(Boolean)[0];
-  return `${o?.title || "회색여울의 아이"}.${bits.length ? ` ${bits.join(". ")}.` : ""}${flaw ? ` 그리고 — ${flaw}.` : ""}`;
+  return `${build?.name ? `${build.name}, ` : ""}${o?.title || "회색여울의 아이"}.${bits.length ? ` ${bits.join(". ")}.` : ""}${flaw ? ` 그리고 — ${flaw}.` : ""}`;
 }
 
 const placeOf = (content, sid, id) => (content?.bundle?.settlements?.[sid]?.locations || []).find((l) => l.id === id)?.name || null;

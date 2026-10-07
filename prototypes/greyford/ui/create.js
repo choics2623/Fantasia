@@ -201,7 +201,12 @@ function confirmHTML() {
   const esc = deps.esc, R = D.rules, o = O(), P = tp(), pv = S.preview;
   const tl = Object.entries(S.build.talents).sort((a, b) => b[1] - a[1]);
   const errs = pv?.check?.errors || [], TT = myTraits(), FF = myFlaws();
-  return `<div class="cr-sum">
+  return `<div class="cr-names">
+      <label class="cr-name"><span>진짜 이름</span><input id="crName" maxlength="8" autocomplete="off" value="${esc(S.build.name || "")}" placeholder="비워 두면 첫 장면에서"><small>${o.family ? "어머니만 부르는 이름" : "이 삶에서 아는 사람이 드문 이름"}. 회귀해도 남는다.</small></label>
+      ${o.family ? `<div class="cr-name"><span>키트에게 너는</span><span class="seg" id="crSib">${["형", "누나"].map((x) => `<button type="button" data-sib="${x}" aria-pressed="${(S.build.sibling || "형") === x}">${x}</button>`).join("")}</span></div>` : ""}
+      <label class="cr-name"><span>불리는 이름</span><input id="crCall" maxlength="8" autocomplete="off" value="${esc(S.build.call || "")}" placeholder="${esc(o.call)}"><small>세상이 너를 부르는 이름. 비워 두면 '${esc(o.call)}'.</small></label>
+    </div>
+    <div class="cr-sum">
       <p class="cr-birth">${esc(pv?.line || "…")}</p>
       <dl>
         <dt>출신</dt><dd><span><b>${esc(o.name)}</b> — ${esc(o.title)}</span></dd>
@@ -213,7 +218,7 @@ function confirmHTML() {
         <dt>남긴 점수</dt><dd>${P.left > 0 ? `${P.left}점 — 첫 회귀 때 잔향에 남는다` : "없다"}</dd>
         <dt>숨은 재능</dt><dd>${pv?.hidden ?? R.hidden}개 — 하다 보면 알게 된다</dd>
       </dl>
-      <p class="cr-note">진짜 이름은 첫 장면에서 정한다 — 이 삶에서 그 이름을 아는 사람이 부르는 이름. 회귀해도 남는다.</p>
+      ${S.build.name ? "" : `<p class="cr-note">진짜 이름을 비워 두면 첫 장면에서 정한다 — 그 삶에서 그 이름을 아는 사람이 부른다.</p>`}
       ${errs.length ? `<div class="cr-err">${errs.map((e) => `<div>${esc(e)}</div>`).join("")}</div>` : ""}
       ${S.error ? `<div class="cr-err">${esc(S.error)}</div>` : ""}
     </div>
@@ -228,6 +233,7 @@ function bind() {
     const id = b.dataset.origin;
     if (S.build.origin === id) return;
     S.build.origin = id; S.build.alloc = {};   // 바탕이 바뀌면 배분을 다시
+    if (!D.origins.find((x) => x.id === id)?.family) delete S.build.sibling;
     const o = O();   // 새 출신이 정한 결점·피는 고른 목록에서 뺀다 (저절로 든다) · 그 피로 태어나야 하는 특질은 못 가져간다
     S.build.flaws = S.build.flaws.filter((f) => !fixF(o).includes(f));
     S.build.traits = S.build.traits.filter((t) => !fixT(o).includes(t) && !TR(t)?.origin_only);
@@ -268,6 +274,8 @@ function bind() {
   const rr = $("crReroll"); if (rr) rr.onclick = () => { S.seed = Math.floor(Math.random() * 1e6); S.preview = null; render(); refreshPreview(); };
   body.querySelectorAll("#crMode [data-mode]").forEach((b) => (b.onclick = () => { S.mode = b.dataset.mode; render(); }));
   const nr = $("crNarr"); if (nr) nr.onchange = () => { S.narrator = nr.value; };
+  for (const [id, k] of [["crName", "name"], ["crCall", "call"]]) { const el = $(id); if (el) el.oninput = () => { const v = el.value.trim(); if (v) S.build[k] = v; else delete S.build[k]; refreshPreview(); }; }
+  body.querySelectorAll("#crSib [data-sib]").forEach((b) => (b.onclick = () => { S.build.sibling = b.dataset.sib; body.querySelectorAll("#crSib [data-sib]").forEach((x) => x.setAttribute("aria-pressed", x === b)); }));
 }
 
 // 서버의 미리보기: 주사위·탄생 서사·검사 (멈춘 뒤 한 번)
@@ -280,7 +288,11 @@ function refreshPreview() {
       const pv = await deps.post("/api/creation/preview", { build: S.build, seed: S.seed });
       if (!S || JSON.stringify([S.build, S.seed]) !== want) return;
       S.preview = pv;
-      if (["flaws", "confirm"].includes(STEPS[S.step][0])) render();
+      if (["flaws", "confirm"].includes(STEPS[S.step][0])) {
+        // 이름을 쓰는 중이면 다시 그리지 않는다 (글자가 끊긴다) — 탄생 서사 한 줄만 바꾼다
+        if (document.activeElement?.closest?.(".cr-names")) { const bl = document.querySelector(".cr-birth"); if (bl) bl.textContent = pv?.line || "…"; }
+        else render();
+      }
     } catch { /* 미리보기가 없어도 시작은 서버가 다시 검사한다 */ }
   }, 180);
 }
