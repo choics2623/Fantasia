@@ -3,6 +3,7 @@
 #   danger 1~5, at: 그 일의 시각. near: 하루 안이면 쓰는 문장, far: 그보다 멀 때 (없으면 쓰지 않는다)
 beats:
   - id: convoy1
+    family: true   # 키트·마르타의 값 — 셋째의 갈래에게만
     at: "312-10-09 05:00"
     danger: 5
     involved: 1
@@ -10,6 +11,7 @@ beats:
     near: "내일 해가 뜨면, 채찍 기둥 광장에서 키트의 이름이 불린다. 너는 아직 아무것도 정하지 않았다."
     far: "서리월 9일, 마흔 명이 사슬에 묶인다. 스물여섯째 줄은 아직 지워지지 않았다."
   - id: convoy1_toby
+    family: true   # 키트·마르타의 값 — 셋째의 갈래에게만
     at: "312-10-09 05:00"
     danger: 3
     involved: 0.6
@@ -48,6 +50,7 @@ beats:
     when: ["var sara_well_noon == true"]
     near: "내일 정오, 우물. 사라가 기다린다."
   - id: martha_deadline
+    family: true   # 키트·마르타의 값 — 셋째의 갈래에게만
     at: "312-09-03 19:40"
     danger: 3
     involved: 1

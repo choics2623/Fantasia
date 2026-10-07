@@ -61,6 +61,7 @@ origins:
     vars: {o5_debt: 31, o5_levy: none, o5_short: 0, o5_night_jobs: 0}
     wanted: null
     flaws: [master_debt]
+    debt: false                     # 빚은 세계 변수 o5_debt (금화 서른하나) — 엔진의 일반 빚쟁이(열흘마다 은화 한 닢)는 돌지 않는다
     flaw_note: {master_debt: 아버지 펠의 승계분 — 카셀론 해운 장부의 서른한 금화}
     traits: []
     trait_discount: {}

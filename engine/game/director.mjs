@@ -77,6 +77,7 @@ export function pickScene(g, t, H) {
   for (const st of g.content.game.storylets || []) {
     const tr = st.trigger || {};
     if (!(tr.vignette || tr.director) || g.storyDone.has(st.id) || !H.atPlace(g, tr.at)) continue;
+    if (H.storyFor && !H.storyFor(g, st)) continue;   // 다른 출신의 장면 · 출신이 뺀 장면 · 셋째의 가족 장면
     if (tr.hours && !(hm >= H.parseClock(tr.hours[0]) && hm < H.parseClock(tr.hours[1]))) continue;
     if (tr.rain && !g.W.rainy(day)) continue;
     if (tr.night && !H.isNight(t)) continue;

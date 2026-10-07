@@ -1103,6 +1103,7 @@ function threads(g) {
     const at = parseDT(b.at), left = (at - g.t) / 1440;
     // 박자는 그 고장의 일이다: 매인 고장이거나 지금 있는 고장의 박자만 (기본은 회색여울)
     const bs = b.settlement || GREYFORD; if (bs !== homeSid(g) && bs !== g.P.settlement) continue;
+    if (b.family && !familyOf(g)) continue;   // 키트의 명단·마르타의 값은 셋째의 일이다
     if (left < 0 || !storyWhen(g, b.when)) continue;
     const near = left <= 1.2, text = near ? b.near : b.far;
     if (!text) continue;
@@ -1445,6 +1446,7 @@ function firstSeenCheck(g) {
   // 코로 쫓는 사냥꾼만 (젖은 재 냄새 — 17 §3.7.2). 회귀점의 첫 한 시간은 대본 장면의 것
   const last = [...(soul(g).nemeses || [])].reverse().find((p) => profOf(g, p.npc).role === "hunter")?.npc;
   if (!last || g.t < startOf(g) + 60 || g.S.dead.has(last) || !present(g).some((w) => w.npc === last && w.kind !== "captive")) return false;
+  if (originOf(g).rel?.[last]) return false;   // 회귀점에서 이미 아는 사람 (사냥개에게 볼크) — 처음 보는 얼굴이 아니다
   const st = SL(g, "first_seen_enemy"); if (!st) return false;
   g.P.firstSeen = last; g.storyCtx = { nem: last, nemName: displayName(g, last) };
   openStory(g, st); return true;
@@ -1584,7 +1586,7 @@ function domainStoryTick(g) {
   const ev = g.domainDue.shift();
   if (ev === "hostage") { const F = g.family; F.hostage = F.members.find((n) => n === "npc_kit") || F.members[0]; g.storyCtx = { ...(g.storyCtx || {}), hostage: F.hostage }; }
   if (ev === "report" && g.domain) { g.domain.newsNow = g.domain.news || []; g.domain.news = []; }   // 이 보고가 전할 소식 (한 번 전하면 끝)
-  if (String(ev).startsWith("clock:")) { const cs = SL(g, ev.slice(6)); if (!cs) return false; g.storyDone.delete(cs.id); openStory(g, cs); return true; }
+  if (String(ev).startsWith("clock:")) { const cs = SL(g, ev.slice(6)); if (!cs || !storyFor(g, cs)) return false; g.storyDone.delete(cs.id); openStory(g, cs); return true; }
   const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage", siege: "rising_siege", child: "child_question" }[ev]); if (!st) return false;
   g.storyDone.delete(st.id); openStory(g, st);
   return true;
@@ -1734,7 +1736,7 @@ function familyEffect(g, [op, a]) {
   else if (op === "abandon") { const h = F.hostage; if (h === "npc_kit") { g.S.vars.kit_on_list = true; } DIR.loss(g, 10); F.members = F.members.filter((x) => x !== h); }
 }
 // ── 연출가 (18): director.mjs — 여기서는 도우미만 넘긴다 ──
-const DH = (g) => ({ START: g ? startOf(g) : START, soul, goals, threads, atPlace, storyWhen, parseClock, isNight, hash });
+const DH = (g) => ({ START: g ? startOf(g) : START, soul, goals, threads, atPlace, storyWhen, parseClock, isNight, hash, storyFor });
 function tension(g) { return g.dir?.T ?? DIR.tensionRaw(g, DH(g)); }
 function vignetteTrigger(g, t) {
   if (g.run.opening === false && !g.run.lethal) return null;
@@ -2066,7 +2068,8 @@ function originMatch(st, o) {
   if (st.origin && ![].concat(st.origin).includes(o?.id || "serf")) return false;
   return !(o?.exclude || []).includes(st.id);
 }
-const storyFor = (g, st) => originMatch(st, originOf(g));   // 다른 출신의 장면은 열리지 않는다
+// 다른 출신의 장면은 열리지 않는다 · family: true — 게르다·키트·움막을 가정한 장면은 셋째의 갈래에게만
+const storyFor = (g, st) => originMatch(st, originOf(g)) && (!st.family || familyOf(g));
 function openStory(g, st) {
   if (st.once !== false && g.storyDone.has(st.id)) return;
   if (st.severity) DIR.crisis(g, st.severity);   // 실제로 열린 장면만 긴장 곡선을 흔든다
@@ -2165,7 +2168,7 @@ const tongueMask = (g, lang, t) => {
   return t.replace(/[^\s.,!?]+/g, (w) => ([...known].some((k) => w.startsWith(k)) || (r >= 20 && hash(g.seed, "tongue", w) < 0.7)) ? w : "■".repeat(Math.min(3, [...w].length)));
 };
 export const literacyFilter = (g, text) => String(text || "").replace(/\{read\|([^}]*)\}/g, (_, t) => readMask(g, t)).replace(/\{lang:([^|}]+)\|([^}]*)\}/g, (_, l, t) => tongueMask(g, l, t));
-const fill = (g, text) => josa(domainFill(g, literacyFilter(g, String(text || "")))).trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
+const fill = (g, text) => josa(domainFill(g, literacyFilter(g, String(text || "")).replace(/\{call\}/g, callName(g)))).trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
   .replace(/\{(who|about|nem)\}/g, (_, k) => g.storyCtx?.[k + "Name"] || g.storyCtx?.[k] || "…")
   .replace(/\{hostage\}/g, () => displayName(g, g.storyCtx?.hostage || g.family?.hostage || "npc_kit"))
   .replace(/\{birth_helper\}/g, () => (relOf(g, "npc_elsa").trust >= 40 ? "엘사가 와 있다. 늙은 손이 빠르다." : "아무도 오지 않았다. 너와 게르다뿐이다."))

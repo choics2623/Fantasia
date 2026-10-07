@@ -3,6 +3,7 @@
 # trigger.vignette: true · at · hours [from, to] · rain/night · when · chance (그 자리에 있을 때 30분마다)
 storylets:
   - id: vg_rain_hut12
+    family: true
     trigger: {vignette: true, category: bond, at: gf_river_huts, rain: true, hours: ["19:00", "23:30"], chance: 0.35, when: ["alive npc_kit"]}
     text: |
       지붕 새는 자리에서 물이 똑, 똑 떨어진다. 키트가 그릇을 받쳐 놓고, 물방울 소리에 맞춰 무언가를 흥얼거린다. 어머니가 부르던 옛 노래다. 가사는 다 틀렸다.

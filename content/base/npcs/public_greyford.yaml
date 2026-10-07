@@ -31,6 +31,8 @@ npc_johan: 순례 인솔자
 npc_kaspar: 까마귀 문의 사령관 (반비늘)
 npc_lea: 까마귀 문의 서기
 npc_grod: "? 송곳니 초소의 사냥개 몰이꾼"
+npc_o12_skali: "? 왼쪽 귀 끝만 흰 젊은 바르그"
+npc_o12_rug: "? 볼크 사냥대의 늙은 바르그"
 npc_toby: "?강변 움막 아홉 호의 아이"
 npc_aldo: "?배급 줄 맨 끝의 늙은이"
 npc_stray_dog: "?갈비뼈가 보이는 떠돌이 개"

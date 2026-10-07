@@ -4,7 +4,7 @@ storylets:
   - id: dir_crik_stop
     trigger: {director: true, category: threat, at: [gf_whip_square, gf_well_square, gf_rooster], hours: ["07:00", "20:00"], chance: 0.25}
     text: |
-      크릭 감독 하나가 막대로 네 가슴을 막는다. "어디 가는 길이냐, 셋째." 대답이 늦으면 막대가 먼저 말한다.
+      크릭 감독 하나가 막대로 네 가슴을 막는다. "어디 가는 길이냐, {call}." 대답이 늦으면 막대가 먼저 말한다.
     choices:
       - id: answer
         label: '"배급 막사로요. 즈닉 감독님이 부르셨습니다."'
@@ -26,6 +26,7 @@ storylets:
         success: {text: "세 번째 모퉁이에서 돌아보면 아무도 없다.", effects: []}
         failure: {text: "모퉁이마다 그가 있다. 서두르지 않는다.", effects: ["wanted 1 마르타의 밀고자가 따라붙었다"]}
   - id: dir_ration_half
+    family: true
     trigger: {director: true, category: lack, at: gf_rooster, hours: ["18:00", "19:00"], chance: 0.3}
     text: |
       솥이 바닥을 긁는다. 즈닉이 국자를 반만 채운다. "곡창 사정이 그렇다." 줄 뒤에서 누군가 웃는다 — 웃을 일이 아니라서.
@@ -58,6 +59,7 @@ storylets:
         text: "다른 누군가의 하루가 조금 나아질 것이다."
         effects: ["temper 정직 1"]
   - id: dir_bram_bread
+    family: true
     trigger: {director: true, category: opportunity, at: gf_rooster, hours: ["19:00", "21:00"], chance: 0.2, when: ["rel_trust npc_bram >= 10"]}
     text: |
       배식이 끝난 뒤, 브람이 장작 더미 뒤에서 너를 부른다. 말없이 무언가를 내민다. 누룽지와 빵 꽁다리.
@@ -67,6 +69,7 @@ storylets:
         text: "\"키트 거다. 네 거 아니다.\" 브람은 벌써 등을 돌렸다."
         effects: ["item bread", "rel npc_bram like 3"]
   - id: dir_kit_letters
+    family: true
     trigger: {director: true, category: bond, at: gf_river_huts, night: true, chance: 0.3, when: ["alive npc_kit"]}
     text: |
       키트가 손가락으로 흙바닥에 무언가를 그린다. "형(누나), 이거 뭐야? 배식대에 있던 거." 레이번. 그 글자다.
