@@ -1,13 +1,16 @@
-// 새 시대 — 잔향이 고를 사람 (06 캐릭터 생성 · §10 생성 화면). 출신 → 능력치 → 재능 → 결점·주사위 → 확인.
+// 새 시대 — 잔향이 고를 사람 (06 캐릭터 생성 · §10 생성 화면). 출신 → 능력치 → 재능 → 혈통 → 결점·주사위 → 확인.
 // 점수의 셈은 화면이 바로 한다 (누르는 대로 보이게). 주사위의 결과·탄생 서사·최종 검사는 서버가 한다 (/api/creation/preview)
 // — 같은 시드로 미리 굴리므로, 미리보기에서 본 주사위가 시작한 판의 주사위다.
 
-const STEPS = [["origin", "출신"], ["stats", "능력치"], ["talents", "재능"], ["flaws", "결점·주사위"], ["confirm", "확인"]];
+const STEPS = [["origin", "출신"], ["stats", "능력치"], ["talents", "재능"], ["blood", "혈통"], ["flaws", "결점·주사위"], ["confirm", "확인"]];
 const SKW = (v) => (v < 12 ? "서툴다" : v < 20 ? "어설프다" : v < 30 ? "쓸 만하다" : v < 42 ? "제법이다" : v < 55 ? "능숙하다" : v < 70 ? "뛰어나다" : "경지에 닿았다");
 const WORD = { 읽고쓰기: (v) => (v < 1 ? "글을 모른다" : v < 10 ? "숫자만 읽는다" : v < 30 ? "이름과 짧은 말을 읽는다" : "글을 읽는다"), 용언: (v) => (v < 1 ? "쇳소리로만 들린다" : v < 20 ? "아는 낱말만 들린다" : v < 50 ? "반쯤 알아듣는다" : "알아듣는다") };
 const NARR = [["silent_god", "침묵하는 신 — 세계는 제 무게대로"], ["old_teller", "늙은 이야기꾼 — 쉬어 가며 하마"], ["ash_teller", "재의 화자 — 가장 나쁜 때에 불탄다"], ["dice", "주사위 — 뼈가 던져진 대로"]];
+const DAYW = (hm) => { const h = Number(String(hm).slice(0, 2)); return h < 5 ? "새벽" : h < 10 ? "아침" : h < 16 ? "낮" : h < 21 ? "저녁" : "밤"; };
+const STARS = (n) => `${"★".repeat(n)}${"☆".repeat(Math.max(0, 5 - n))}`;
 let deps = null, D = null, S = null, timer = 0;
 const $ = (id) => document.getElementById(id);
+const narrow = () => matchMedia("(max-width: 760px)").matches;
 
 export function initCreate(d) {
   deps = d;
@@ -32,33 +35,49 @@ const T = (id) => D.talents.find((t) => t.id === id);
 const TR = (id) => D.traits.find((t) => t.id === id);
 const F = (id) => D.flaws.find((t) => t.id === id);
 const O = () => D.origins.find((o) => o.id === S.build.origin) || D.origins[0];
+// 출신이 정한 결점·피 (노예 낙인, 반용의 잠든 비늘): 고를 수도 뺄 수도 없다. 결점은 점수를 돌려준다
+const fixF = (o = O()) => o.flaws || [];
+const fixT = (o = O()) => o.traits || [];
+const tCost = (id, o = O()) => Math.max(0, (TR(id)?.cost || 0) - (o.discount?.[id] || 0));   // 반용은 용심이 싸다
+const myTraits = () => [...new Set([...fixT(), ...S.build.traits])];
+const myFlaws = () => [...new Set([...fixF(), ...S.build.flaws, ...(S.build.dice && S.preview?.dice?.flaw ? [S.preview.dice.flaw] : [])])];   // 주사위가 준 결점까지
 function tp() {
   const R = D.rules, b = S.build; let spent = 0, refund = 0;
   for (const [id, t] of Object.entries(b.talents)) spent += T(id)?.cost[t - 1] || 0;
-  for (const id of b.traits) spent += TR(id)?.cost || 0;
-  for (const id of b.flaws) refund += F(id)?.refund || 0;
+  for (const id of b.traits) if (!fixT().includes(id)) spent += tCost(id);
+  for (const id of new Set([...fixF(), ...b.flaws])) refund += F(id)?.refund || 0;
   const r = Math.min(R.flaw_max, refund), dice = b.dice ? R.dice_refund : 0;
   return { base: R.tp, refund: r, refundRaw: refund, dice, spent, left: R.tp + r + dice - spent };
 }
 const used = () => Object.values(S.build.alloc).reduce((a, v) => a + v, 0);
-function statsNow() {
-  const o = O(), out = {};
-  for (const s of D.rules.stats) out[s.id] = (o.stats?.[s.id] ?? 9) + (S.build.alloc[s.id] || 0);
-  const fl = [...S.build.flaws, ...(S.build.dice && S.preview?.dice?.flaw ? [S.preview.dice.flaw] : [])];   // 주사위가 준 결점까지
-  if (fl.includes("frail")) out.체질 -= 2;
-  if (fl.includes("one_eye")) out.감각 -= 2;
-  return out;
+// 능력치의 몫: 바탕(출신 + 배분 — 생성의 상한은 여기까지만 본다) · 피(몸의 특질) · 결점
+function statParts(k) {
+  const base = O().stats?.[k] ?? 9, add = S.build.alloc[k] || 0, fl = myFlaws();
+  let blood = 0; for (const id of myTraits()) blood += Number(TR(id)?.stats?.[k]) || 0;
+  const flaw = (k === "체질" && fl.includes("frail") ? -2 : 0) + (k === "감각" && fl.includes("one_eye") ? -2 : 0);
+  return { base, add, blood, flaw, v: base + add + blood + flaw };
 }
 const geniusCount = () => Object.values(S.build.talents).filter((t) => t === 3).length;
+// 피를 더 고를 수 있나: 고른 것은 둘까지 · 함께 들지 않는 피 · 점수
+function traitState(t) {
+  const R = D.rules, max = R.trait_max ?? 2;
+  if (fixT().includes(t.id)) return { on: true, fixed: true };
+  if (S.build.traits.includes(t.id)) return { on: true };
+  const mine = new Set(myTraits());
+  for (const [a, b] of R.trait_exclusive || []) { const other = t.id === a ? b : t.id === b ? a : null; if (other && mine.has(other)) return { why: `함께 들지 않는 피 — ${TR(other)?.name || other}` }; }
+  if (S.build.traits.filter((id) => !fixT().includes(id)).length >= max) return { why: `고르는 피는 ${max}개까지` };
+  if (tp().left < tCost(t.id)) return { why: "점수가 모자란다" };
+  return {};
+}
 
 // ── 그리기 ──
 function render() {
-  const esc = deps.esc, P = tp();
+  const P = tp();
   $("createSteps").innerHTML = STEPS.map(([k, l], i) => `<button type="button" class="cr-step${i === S.step ? " on" : ""}${i < S.step ? " done" : ""}" data-step="${i}" aria-current="${i === S.step ? "step" : "false"}"><i>${i + 1}</i><span>${l}</span></button>`).join("");
   $("createSteps").querySelectorAll("[data-step]").forEach((b) => (b.onclick = () => go(Number(b.dataset.step))));
   const body = $("createBody"), k = STEPS[S.step][0];
-  body.innerHTML = k === "origin" ? originHTML() : k === "stats" ? statsHTML() : k === "talents" ? talentsHTML() : k === "flaws" ? flawsHTML() : confirmHTML();
-  bind(k);
+  body.innerHTML = k === "origin" ? originHTML() : k === "stats" ? statsHTML() : k === "talents" ? talentsHTML() : k === "blood" ? bloodHTML() : k === "flaws" ? flawsHTML() : confirmHTML();
+  bind();
   const pips = (n, of) => Array.from({ length: Math.max(of, n) }, (_, i) => `<i class="${i < n ? "on" : ""}"></i>`).join("");
   const free = D.rules.free_stats - used();
   $("createFoot").innerHTML = `<div class="cr-meters">
@@ -72,36 +91,57 @@ function render() {
 }
 function go(i) { S.step = Math.max(0, Math.min(STEPS.length - 1, i)); render(); $("createBody").scrollTop = 0; }
 
+// 출신: 고장마다 묶은 목록 + 고른 사람의 자세한 카드 (넓은 화면은 옆에, 폰은 고른 줄 바로 밑에)
 function originHTML() {
+  const esc = deps.esc, o = O(), groups = [];
+  for (const x of D.origins) {
+    const key = x.branch ? "branch" : x.region;
+    let g = groups.find((y) => y.key === key);
+    if (!g) groups.push((g = { key, label: x.branch ? `${x.region} — 게르다의 셋째, 다섯 갈래` : x.region, items: [] }));
+    g.items.push(x);
+  }
+  const row = (x) => `<button type="button" class="cr-orow${x.id === o.id ? " on" : ""}" role="radio" aria-checked="${x.id === o.id}" data-origin="${esc(x.id)}">
+      <span class="cr-orn"><b>${esc(x.name)}</b>${x.canon ? `<span class="cr-badge">정본</span>` : ""}<span class="cr-diff" title="어려움 ${x.difficulty}/5">${STARS(x.difficulty)}</span></span>
+      <span class="cr-ors">${esc([`${DAYW(x.time)} ${x.time}`, x.place || x.settlementName, `${x.age}살`].filter(Boolean).join(" · "))}</span></button>${x.id === o.id ? `<div class="cr-odetail inline">${detailHTML(x)}</div>` : ""}`;
+  return `<p class="cr-lead">잔향은 한 시대에 단 한 사람에게 깃든다. 첫 시대에는 그 사람을 고를 수 있다 — 회색여울 게르다의 셋째, 또는 같은 날 대륙 곳곳에서 저마다 매인 삶을 사는 사람들. 고른 사람이 <b>붕괴력 312년 9월 1일</b>에 서 있던 그 자리, 그 시각이 회귀점이 된다.</p>
+    <div class="cr-ogrid"><div class="cr-olist" role="radiogroup" aria-label="출신 — ${D.origins.length}명">${groups.map((g) => `<div class="cr-og" role="group" aria-label="${esc(g.label)}"><h4 class="cr-h">${esc(g.label)}</h4>${g.items.map(row).join("")}</div>`).join("")}</div>
+      <div class="cr-odetail side">${detailHTML(o)}</div></div>`;
+}
+function detailHTML(x) {
   const esc = deps.esc;
-  return `<p class="cr-lead">잔향은 한 시대에 단 한 사람에게 깃든다. 첫 시대의 그 사람은 게르다의 셋째 — 진짜 이름도, 열 살 동생 키트도 어느 갈래에서나 같다. 다른 것은 열일곱 해를 어디서 어떻게 살았느냐다. 고른 갈래의 저녁 여섯 시가 회귀점이 된다.</p>
-    <div class="cr-origins" role="radiogroup" aria-label="출신">${D.origins.map((o) => {
-      const top = Object.entries(o.skills || {}).filter(([k]) => !WORD[k]).sort((a, b) => b[1] - a[1]).slice(0, 3);
-      const lit = Object.entries(o.skills || {}).filter(([k, v]) => WORD[k] && v > 0);
-      return `<button type="button" class="cr-origin${o.id === S.build.origin ? " on" : ""}" role="radio" aria-checked="${o.id === S.build.origin}" data-origin="${esc(o.id)}">
-        <span class="cr-oh"><b>${esc(o.name)}</b>${o.canon ? `<span class="cr-badge">정본</span>` : ""}<span class="cr-diff" title="어려움">${"★".repeat(o.difficulty)}${"☆".repeat(5 - o.difficulty)}</span></span>
-        <span class="cr-ot">${esc(o.title)}</span>
-        <span class="cr-ob">${esc(o.blurb)}</span>
-        <span class="cr-skills">${top.map(([k, v]) => `<span>${esc(k)} <em>${SKW(v)}</em></span>`).join("")}${lit.map(([k, v]) => `<span>${esc(k)} <em>${WORD[k](v)}</em></span>`).join("")}</span>
-        <span class="cr-pb"><span class="up">${o.perks.map((x) => `<span>▲ ${esc(x)}</span>`).join("")}</span><span class="down">${o.burdens.map((x) => `<span>▼ ${esc(x)}</span>`).join("")}</span></span>
-        <span class="cr-oi">${o.items.length ? `지닌 것 — ${esc(o.items.join(", "))} · ` : ""}돈 — ${esc(coin(o.coin))}</span>
-      </button>`;
-    }).join("")}</div>`;
+  const top = Object.entries(x.skills || {}).filter(([k]) => !WORD[k]).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const lit = Object.entries(x.skills || {}).filter(([k, v]) => WORD[k] && v > 0);
+  const fixed = [
+    ...(x.flaws || []).map((id) => { const f = F(id); return f ? `<span class="cr-chip bad" title="${esc(f.desc)}">${esc(f.name)}${x.flawNote?.[id] ? ` — ${esc(x.flawNote[id])}` : ""} <em>+${f.refund}</em></span>` : ""; }),
+    ...(x.traits || []).map((id) => { const t = TR(id); return t ? `<span class="cr-chip gold" title="${esc(t.desc)}">${esc(t.name)}</span>` : ""; }),
+  ].filter(Boolean);
+  const disc = Object.entries(x.discount || {}).filter(([id]) => TR(id)).map(([id, n]) => `${TR(id).name}이(가) ${n}점 싸다`);
+  return `<div class="cr-oh"><b>${esc(x.name)}</b>${x.canon ? `<span class="cr-badge">정본</span>` : ""}<span class="cr-diff" title="어려움 ${x.difficulty}/5">${STARS(x.difficulty)}</span></div>
+    <div class="cr-ot">${esc(x.title)}</div>
+    <dl class="cr-ofacts"><dt>회귀점</dt><dd>9월 1일 ${DAYW(x.time)} ${esc(x.time)} — ${esc(x.place || x.region)}${x.settlementName && !String(x.place || "").includes(x.settlementName) ? ` <span class="faint">(${esc(x.settlementName)})</span>` : ""}</dd>
+      <dt>나이</dt><dd>${x.age}살</dd><dt>불리는 이름</dt><dd>${esc(x.call)}</dd>${x.free ? `<dt>매인 곳</dt><dd>없다 — 자유민. 떠나도 탈주가 아니다</dd>` : ""}</dl>
+    <p class="cr-ob">${esc(x.blurb)}</p>
+    <div class="cr-skills">${top.map(([k, v]) => `<span>${esc(k)} <em>${SKW(v)}</em></span>`).join("")}${lit.map(([k, v]) => `<span>${esc(k)} <em>${WORD[k](v)}</em></span>`).join("")}</div>
+    <div class="cr-pb"><span class="up">${(x.perks || []).map((p) => `<span>▲ ${esc(p)}</span>`).join("")}</span><span class="down">${(x.burdens || []).map((p) => `<span>▼ ${esc(p)}</span>`).join("")}</span></div>
+    ${fixed.length ? `<div class="cr-fixed"><span class="cr-fl">출신이 정한 것 — 뺄 수 없다</span>${fixed.join("")}${disc.length ? `<small>${esc(disc.join(" · "))}</small>` : ""}</div>` : ""}
+    <div class="cr-oi">${x.items.length ? `지닌 것 — ${esc(x.items.join(", "))} · ` : ""}돈 — ${esc(coin(x.coin))}</div>
+    <button type="button" class="btn primary cr-pick" data-next>이 사람으로 — 능력치 ›</button>`;
 }
 const coin = (n) => { if (!n) return "없다"; const parts = [[Math.floor(n / 240), "금화"], [Math.floor((n % 240) / 12), "은화"], [n % 12, "동화"]].filter(([v]) => v); return parts.map(([v, k]) => `${k} ${v}닢`).join(" "); };
 
 function statsHTML() {
-  const esc = deps.esc, st = statsNow(), o = O(), R = D.rules, free = R.free_stats - used();
-  return `<p class="cr-lead">인간의 바탕은 모두 9. ${esc(o.name)}의 열일곱 해가 남긴 것 위에 <b>${R.free_stats}점</b>을 더한다. 생성 때는 ${R.stat_max}까지.</p>
+  const esc = deps.esc, o = O(), R = D.rules, free = R.free_stats - used();
+  const anyBlood = R.stats.some((s) => statParts(s.id).blood), anyFlaw = R.stats.some((s) => statParts(s.id).flaw);
+  return `<p class="cr-lead">인간의 바탕은 모두 9. ${esc(o.name)}의 ${o.age}해가 남긴 것 위에 <b>${R.free_stats}점</b>을 더한다. 생성 때는 ${R.stat_max}까지 — 피(혈통)가 더하는 것은 그 위에 따로 붙는다.</p>
     <div class="cr-stats">${R.stats.map((s) => {
-      const base = o.stats?.[s.id] ?? 9, v = st[s.id], add = S.build.alloc[s.id] || 0, mod = v - base - add;
+      const x = statParts(s.id);
       return `<div class="cr-stat"><div class="cr-sn"><b>${esc(s.id)}</b><small>${esc(s.desc)}</small></div>
-        <div class="cr-sv"><button type="button" class="btn" data-stat="${esc(s.id)}" data-d="-1" aria-label="${esc(s.id)} 빼기"${add <= 0 ? " disabled" : ""}>−</button>
-        <span class="cr-num"><b>${v}</b>${add ? `<em>+${add}</em>` : ""}${mod ? `<em class="bad">${mod}</em>` : ""}</span>
-        <button type="button" class="btn" data-stat="${esc(s.id)}" data-d="1" aria-label="${esc(s.id)} 더하기"${free <= 0 || v >= R.stat_max ? " disabled" : ""}>＋</button></div>
-        <span class="cr-bar" aria-hidden="true"><i style="width:${Math.round(((v - 4) / 11) * 100)}%"></i><i class="base" style="left:${Math.round(((9 - 4) / 11) * 100)}%"></i></span></div>`;
+        <div class="cr-sv"><button type="button" class="btn" data-stat="${esc(s.id)}" data-d="-1" aria-label="${esc(s.id)} 빼기"${x.add <= 0 ? " disabled" : ""}>−</button>
+        <span class="cr-num"><b>${x.v}</b>${x.add ? `<em>+${x.add}</em>` : ""}${x.blood ? `<em class="blood" title="피가 더한 것">${x.blood > 0 ? "+" : ""}${x.blood} 피</em>` : ""}${x.flaw ? `<em class="bad" title="결점이 깎은 것">${x.flaw}</em>` : ""}</span>
+        <button type="button" class="btn" data-stat="${esc(s.id)}" data-d="1" aria-label="${esc(s.id)} 더하기"${free <= 0 || x.base + x.add >= R.stat_max ? " disabled" : ""}>＋</button></div>
+        <span class="cr-bar" aria-hidden="true"><i style="width:${Math.max(0, Math.min(100, Math.round(((x.v - 4) / 11) * 100)))}%"></i><i class="base" style="left:${Math.round(((9 - 4) / 11) * 100)}%"></i></span></div>`;
     }).join("")}</div>
-    <p class="cr-note">숫자는 이 화면에서만 보인다. 판에서는 몸의 말로 — "팔에 힘이 없다", "눈이 밝다".${S.build.flaws.some((f) => ["frail", "one_eye"].includes(f)) ? " 붉은 숫자는 결점이 깎은 것." : ""}</p>`;
+    <p class="cr-note">숫자는 이 화면에서만 보인다. 판에서는 몸의 말로 — "팔에 힘이 없다", "눈이 밝다".${anyBlood ? " '피'는 몸의 특질이 더하거나 깎은 것." : ""}${anyFlaw ? " 붉은 숫자는 결점이 깎은 것." : ""}</p>`;
 }
 
 function talentsHTML() {
@@ -110,7 +150,7 @@ function talentsHTML() {
   const list = D.talents.filter((t) => S.area === "전부" || t.area === S.area);
   return `<p class="cr-lead">재능은 처음부터 강하게 만들지 않는다 — <b>얼마나 빨리, 얼마나 높이</b>를 정한다. 소질·수재·천재 (신재는 다음 시대). 남긴 점수는 첫 회귀 때 잔향에 남아, 어둠 속에서 재능을 깨우는 데 쓴다.</p>
     ${o.presets?.length ? `<div class="cr-presets"><span>추천 — ${esc(o.name)}</span>${o.presets.map((p, i) => `<button type="button" class="btn" data-preset="${i}">${esc(p.name)}</button>`).join("")}<button type="button" class="btn ghost" data-preset="clear">비우기</button></div>` : ""}
-    <div class="cr-areas" role="tablist">${areas.map((a) => `<button type="button" role="tab" aria-selected="${a === S.area}" data-area="${esc(a)}">${esc(a)}${a !== "전부" && D.talents.some((t) => t.area === a && S.build.talents[t.id]) ? "<i></i>" : ""}</button>`).join("")}</div>
+    <div class="cr-areas" role="tablist" aria-label="재능의 분야">${areas.map((a) => `<button type="button" role="tab" aria-selected="${a === S.area}" data-area="${esc(a)}">${esc(a)}<small>${a === "전부" ? D.talents.length : D.talents.filter((t) => t.area === a).length}</small>${a !== "전부" && D.talents.some((t) => t.area === a && S.build.talents[t.id]) ? "<i></i>" : ""}</button>`).join("")}</div>
     <div class="cr-talents">${list.map((t) => {
       const cur = S.build.talents[t.id] || 0;
       const tiers = R.tier_names.map((nm, i) => {
@@ -123,15 +163,33 @@ function talentsHTML() {
         <div class="cr-tiers">${tiers}${cur ? `<button type="button" class="cr-tier off" data-talent="${esc(t.id)}" data-tier="0" aria-label="${esc(t.name)} 빼기">✕</button>` : ""}</div>
         <div class="cr-te">${cur ? "" : "<span class='faint'>소질이면 — </span>"}${esc(eff)}${gr ? `<small>${esc(gr)}</small>` : ""}</div></div>`;
     }).join("")}</div>
-    <h4 class="cr-h">몸의 특질 — 같은 몸으로 돌아오므로 시대 내내 그대로</h4>
-    <div class="cr-flaws">${D.traits.map((t) => { const on = S.build.traits.includes(t.id); return `<button type="button" class="cr-flaw trait${on ? " on" : ""}" data-trait="${esc(t.id)}" aria-pressed="${on}"${!on && P.left < t.cost ? " disabled" : ""}><b>${esc(t.name)}</b><em>${t.cost}점</em><small>${esc(t.desc)}</small></button>`; }).join("")}
-      <p class="cr-note">다른 혈통(용심·거인의 뼈·엘다르의 눈…)은 업적으로 열린다 — 다음 시대.</p></div>`;
+    <p class="cr-note">피에 새겨진 것(용심·거인의 뼈·엘다르의 눈…)은 다음 차례 — 혈통에서 고른다.</p>`;
+}
+
+// 혈통: 몸의 특질 — 같은 몸으로 돌아오므로 시대 내내 그대로
+function bloodHTML() {
+  const esc = deps.esc, R = D.rules, o = O(), max = R.trait_max ?? 2;
+  const shown = D.traits.filter((t) => !t.origin_only || fixT().includes(t.id)).sort((a, b) => fixT().includes(b.id) - fixT().includes(a.id));
+  const chosen = S.build.traits.filter((id) => !fixT().includes(id)).length;
+  const excl = (R.trait_exclusive || []).map(([a, b]) => `${TR(a)?.name} · ${TR(b)?.name}`);
+  return `<p class="cr-lead">피에 새겨진 것. 같은 몸으로 돌아오므로 <b>시대 내내 그대로</b>다. 고르는 피는 <b>${max}개까지</b>${fixT().length ? " — 출신이 정한 피는 세지 않는다" : ""}. 값은 재능과 같은 점수에서 나간다 — 모자라면 결점으로 돌려받는다. <span class="cr-count">고른 피 <b>${chosen}/${max}</b></span></p>
+    <div class="cr-flaws">${shown.map((t) => {
+      const st = traitState(t), full = t.cost || 0, cost = tCost(t.id);
+      const price = st.fixed ? `<em class="fix">출신</em>` : `<em>${cost < full ? `<s>${full}</s> ` : ""}${cost}점</em>`;
+      const inner = `<b>${esc(t.name)}</b>${price}<small>${esc(t.desc)}</small>${st.fixed ? `<span class="cr-why">${esc(o.name)}의 피 — 뺄 수 없다</span>` : st.why ? `<span class="cr-why">${esc(st.why)}</span>` : ""}`;
+      return st.fixed ? `<div class="cr-flaw trait on fixed">${inner}</div>`
+        : `<button type="button" class="cr-flaw trait${st.on ? " on" : ""}" data-trait="${esc(t.id)}" aria-pressed="${!!st.on}"${!st.on && st.why ? " disabled" : ""}>${inner}</button>`;
+    }).join("")}</div>
+    ${excl.length ? `<p class="cr-note">한 몸에 들지 않는 피 — ${esc(excl.join(" / "))}.</p>` : ""}
+    <p class="cr-note">피가 더하는 능력치는 생성의 상한(${R.stat_max})과 따로 센다. 피를 고르지 않아도 된다 — 평범한 인간의 몸으로 산다.</p>`;
 }
 
 function flawsHTML() {
-  const esc = deps.esc, R = D.rules, P = tp(), pv = S.preview;
-  return `<p class="cr-lead">결점은 점수를 돌려준다 — 합쳐서 <b>${R.flaw_max}점</b>까지. 돌려받은 점수: ${P.refund}${P.refundRaw > R.flaw_max ? ` <span class="bad">(${P.refundRaw}점어치를 골랐다 — ${R.flaw_max}점까지만)</span>` : ""}</p>
-    <div class="cr-flaws">${D.flaws.map((f) => { const on = S.build.flaws.includes(f.id); return `<button type="button" class="cr-flaw${on ? " on" : ""}" data-flaw="${esc(f.id)}" aria-pressed="${on}"><b>${esc(f.name)}</b><em>+${f.refund}</em><small>${esc(f.desc)}</small></button>`; }).join("")}</div>
+  const esc = deps.esc, R = D.rules, P = tp(), pv = S.preview, o = O();
+  const fixed = fixF().map(F).filter(Boolean), rest = D.flaws.filter((f) => !fixF().includes(f.id));
+  return `<p class="cr-lead">결점은 점수를 돌려준다 — 합쳐서 <b>${R.flaw_max}점</b>까지. 돌려받은 점수: ${P.refund}${P.refundRaw > R.flaw_max ? ` <span class="bad">(${P.refundRaw}점어치 — ${R.flaw_max}점까지만)</span>` : ""}</p>
+    <div class="cr-flaws">${fixed.map((f) => `<div class="cr-flaw on fixed"><b>${esc(f.name)}</b><em>+${f.refund}</em><small>${esc(f.desc)}</small><span class="cr-why">${esc(o.name)} — ${esc(o.flawNote?.[f.id] || "출신이 정한 것")} · 뺄 수 없다</span></div>`).join("")}
+      ${rest.map((f) => { const on = S.build.flaws.includes(f.id); return `<button type="button" class="cr-flaw${on ? " on" : ""}" data-flaw="${esc(f.id)}" aria-pressed="${on}"><b>${esc(f.name)}</b><em>+${f.refund}</em><small>${esc(f.desc)}</small></button>`; }).join("")}</div>
     <h4 class="cr-h">운명의 주사위</h4>
     <button type="button" class="cr-dice${S.build.dice ? " on" : ""}" id="crDice" aria-pressed="${S.build.dice}"><span class="die" aria-hidden="true">⚄</span><span><b>운명에 맡긴다</b><small>무작위 재능 하나(가진 것이면 한 등급 위) + ${R.dice_refund}점. 셋에 하나꼴로 결점도 하나 — 그 결점은 점수를 돌려주지 않는다.</small></span></button>
     ${S.build.dice ? `<div class="cr-roll" aria-live="polite">${pv?.dice ? `주사위 — <b>${esc(T(pv.dice.talent)?.name || pv.dice.talent)} ${esc(R.tier_names[pv.dice.tier - 1])}</b>${pv.dice.flaw ? ` · 결점 <b class="bad">${esc(F(pv.dice.flaw)?.name)}</b>` : " · 결점은 없다"}` : "주사위를 굴리는 중…"} <button type="button" class="btn ghost" id="crReroll" title="다른 시드로 — 숨은 재능도 바뀐다">다시 굴린다</button></div>` : ""}
@@ -140,21 +198,22 @@ function flawsHTML() {
 }
 
 function confirmHTML() {
-  const esc = deps.esc, R = D.rules, o = O(), P = tp(), st = statsNow(), pv = S.preview;
+  const esc = deps.esc, R = D.rules, o = O(), P = tp(), pv = S.preview;
   const tl = Object.entries(S.build.talents).sort((a, b) => b[1] - a[1]);
-  const errs = pv?.check?.errors || [];
+  const errs = pv?.check?.errors || [], TT = myTraits(), FF = myFlaws();
   return `<div class="cr-sum">
       <p class="cr-birth">${esc(pv?.line || "…")}</p>
       <dl>
-        <dt>출신</dt><dd><b>${esc(o.name)}</b> — ${esc(o.title)}</dd>
-        <dt>능력치</dt><dd class="cr-sline">${R.stats.map((s) => `<span>${esc(s.id)} <b>${st[s.id]}</b></span>`).join("")}</dd>
-        <dt>재능</dt><dd>${tl.length ? tl.map(([id, t]) => `<span class="cr-chip">${esc(T(id)?.name)} <em>${esc(R.tier_names[t - 1])}</em></span>`).join("") : "<span class='faint'>없다 — 평범한 인간처럼 자란다</span>"}${pv?.dice ? `<span class="cr-chip dice">⚄ ${esc(T(pv.dice.talent)?.name)} <em>${esc(R.tier_names[pv.dice.tier - 1])}</em></span>` : ""}</dd>
-        ${S.build.traits.length ? `<dt>특질</dt><dd>${S.build.traits.map((id) => `<span class="cr-chip">${esc(TR(id)?.name)}</span>`).join("")}</dd>` : ""}
-        ${S.build.flaws.length || pv?.dice?.flaw ? `<dt>결점</dt><dd>${[...S.build.flaws, ...(pv?.dice?.flaw ? [pv.dice.flaw] : [])].map((id) => `<span class="cr-chip bad">${esc(F(id)?.name)}</span>`).join("")}</dd>` : ""}
+        <dt>출신</dt><dd><span><b>${esc(o.name)}</b> — ${esc(o.title)}</span></dd>
+        <dt>회귀점</dt><dd>9월 1일 ${DAYW(o.time)} ${esc(o.time)} — ${esc(o.place || o.region)}</dd>
+        <dt>능력치</dt><dd class="cr-sline">${R.stats.map((s) => `<span>${esc(s.id)} <b>${statParts(s.id).v}</b></span>`).join("")}</dd>
+        <dt>재능</dt><dd>${tl.length ? tl.map(([id, t]) => `<span class="cr-chip">${esc(T(id)?.name)} <em>${esc(R.tier_names[t - 1])}</em></span>`).join("") : pv?.dice ? "" : "<span class='faint'>없다 — 평범한 인간처럼 자란다</span>"}${pv?.dice ? `<span class="cr-chip dice">⚄ ${esc(T(pv.dice.talent)?.name)} <em>${esc(R.tier_names[pv.dice.tier - 1])}</em></span>` : ""}</dd>
+        ${TT.length ? `<dt>혈통</dt><dd>${TT.map((id) => `<span class="cr-chip gold">${esc(TR(id)?.name)}</span>`).join("")}</dd>` : ""}
+        ${FF.length ? `<dt>결점</dt><dd>${FF.map((id) => `<span class="cr-chip bad">${esc(F(id)?.name)}</span>`).join("")}</dd>` : ""}
         <dt>남긴 점수</dt><dd>${P.left > 0 ? `${P.left}점 — 첫 회귀 때 잔향에 남는다` : "없다"}</dd>
         <dt>숨은 재능</dt><dd>${pv?.hidden ?? R.hidden}개 — 하다 보면 알게 된다</dd>
       </dl>
-      <p class="cr-note">진짜 이름은 첫 장면에서 정한다 — 어머니가 부르는 이름. 회귀해도 남는다.</p>
+      <p class="cr-note">진짜 이름은 첫 장면에서 정한다 — 이 삶에서 그 이름을 아는 사람이 부르는 이름. 회귀해도 남는다.</p>
       ${errs.length ? `<div class="cr-err">${errs.map((e) => `<div>${esc(e)}</div>`).join("")}</div>` : ""}
       ${S.error ? `<div class="cr-err">${esc(S.error)}</div>` : ""}
     </div>
@@ -163,30 +222,46 @@ function confirmHTML() {
       <select id="crNarr" aria-label="화자">${NARR.map(([id, lab]) => `<option value="${id}"${S.narrator === id ? " selected" : ""}>${lab}</option>`).join("")}</select></div>`;
 }
 
-function bind(k) {
+function bind() {
   const body = $("createBody");
   body.querySelectorAll("[data-origin]").forEach((b) => (b.onclick = () => {
-    if (S.build.origin === b.dataset.origin) return go(1);
-    S.build.origin = b.dataset.origin; S.build.alloc = {};   // 바탕이 바뀌면 배분을 다시
+    const id = b.dataset.origin;
+    if (S.build.origin === id) return;
+    S.build.origin = id; S.build.alloc = {};   // 바탕이 바뀌면 배분을 다시
+    const o = O();   // 새 출신이 정한 결점·피는 고른 목록에서 뺀다 (저절로 든다) · 그 피로 태어나야 하는 특질은 못 가져간다
+    S.build.flaws = S.build.flaws.filter((f) => !fixF(o).includes(f));
+    S.build.traits = S.build.traits.filter((t) => !fixT(o).includes(t) && !TR(t)?.origin_only);
     render(); refreshPreview();
+    const on = body.querySelector(".cr-orow.on");
+    on?.focus({ preventScroll: true });
+    if (narrow()) on?.scrollIntoView({ block: "start", behavior: "smooth" });
   }));
+  body.querySelectorAll("[data-next]").forEach((b) => (b.onclick = () => go(S.step + 1)));
   body.querySelectorAll("[data-stat]").forEach((b) => (b.onclick = () => {
-    const k2 = b.dataset.stat, d = Number(b.dataset.d), cur = S.build.alloc[k2] || 0;
-    if (d > 0 && (used() >= D.rules.free_stats || statsNow()[k2] >= D.rules.stat_max)) return;
+    const k2 = b.dataset.stat, d = Number(b.dataset.d), cur = S.build.alloc[k2] || 0, x = statParts(k2);
+    if (d > 0 && (used() >= D.rules.free_stats || x.base + x.add >= D.rules.stat_max)) return;
     S.build.alloc[k2] = Math.max(0, cur + d); if (!S.build.alloc[k2]) delete S.build.alloc[k2];
     render(); body.querySelector(`[data-stat="${CSS.escape(k2)}"][data-d="${d}"]`)?.focus();
   }));
-  body.querySelectorAll("[data-area]").forEach((b) => (b.onclick = () => { S.area = b.dataset.area; render(); }));
+  body.querySelectorAll("[data-area]").forEach((b) => (b.onclick = () => { S.area = b.dataset.area; render(); body.querySelector(`[data-area="${CSS.escape(S.area)}"]`)?.focus(); }));
   body.querySelectorAll("[data-talent]").forEach((b) => (b.onclick = () => {
     const id = b.dataset.talent, k2 = Number(b.dataset.tier);
     if (!k2 || S.build.talents[id] === k2) delete S.build.talents[id]; else S.build.talents[id] = k2;
     render(); refreshPreview();
   }));
-  body.querySelectorAll("[data-trait]").forEach((b) => (b.onclick = () => { const id = b.dataset.trait; S.build.traits = S.build.traits.includes(id) ? S.build.traits.filter((x) => x !== id) : [...S.build.traits, id]; render(); refreshPreview(); }));
-  body.querySelectorAll("[data-flaw]").forEach((b) => (b.onclick = () => { const id = b.dataset.flaw; S.build.flaws = S.build.flaws.includes(id) ? S.build.flaws.filter((x) => x !== id) : [...S.build.flaws, id]; render(); refreshPreview(); }));
+  body.querySelectorAll("[data-trait]").forEach((b) => (b.onclick = () => {
+    const id = b.dataset.trait;
+    S.build.traits = S.build.traits.includes(id) ? S.build.traits.filter((x) => x !== id) : [...S.build.traits, id];
+    render(); refreshPreview(); body.querySelector(`[data-trait="${CSS.escape(id)}"]`)?.focus();
+  }));
+  body.querySelectorAll("[data-flaw]").forEach((b) => (b.onclick = () => {
+    const id = b.dataset.flaw;
+    S.build.flaws = S.build.flaws.includes(id) ? S.build.flaws.filter((x) => x !== id) : [...S.build.flaws, id];
+    render(); refreshPreview(); body.querySelector(`[data-flaw="${CSS.escape(id)}"]`)?.focus();
+  }));
   body.querySelectorAll("[data-preset]").forEach((b) => (b.onclick = () => {
     if (b.dataset.preset === "clear") { S.build.talents = {}; S.build.traits = []; S.build.alloc = {}; }
-    else { const p = O().presets[Number(b.dataset.preset)]; S.build.talents = { ...(p.talents || {}) }; S.build.traits = [...(p.traits || [])]; S.build.alloc = { ...(p.stats || {}) }; }
+    else { const p = O().presets[Number(b.dataset.preset)]; S.build.talents = { ...(p.talents || {}) }; S.build.traits = (p.traits || []).filter((id) => !fixT().includes(id)); S.build.alloc = { ...(p.stats || {}) }; }
     render(); refreshPreview();
   }));
   const dice = $("crDice"); if (dice) dice.onclick = () => { S.build.dice = !S.build.dice; render(); refreshPreview(); };

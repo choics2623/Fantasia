@@ -234,7 +234,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     const choices = (n?.choices || G.options(g).map((o) => ({ ...o, text: o.label }))).map((c) => {
       const o = G.optionOdds(g, c);
       // 화면엔 체감 등급(01 §4.2 — 서툴수록 과신하고 틀린다)과 캐릭터가 아는 근거(▲▼?)만. 진짜 확률은 엔진 기록에만
-      return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, button: c.button || null, say: c.say || null, more: c.more || false, memory: c.memory || null };
+      return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, button: c.button || null, say: c.say || null, sibling: c.sibling || null, more: c.more || false, memory: c.memory || null };
     });
     const ink = [...(n?.recap || []).map((text) => ({ kind: "recap", text })), ...(res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null, who: f.who || null, card: f.card || null }))];
     return { view: v, beats: n?.beats || [], ink, choices, locked: G.lockedOptions(g), codexSig: X.codexSig(g, g.run.heard || []), fresh: g.run.loop === 1 && !g.run.journal.length && !g.run.build && g.run.opening !== false, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };

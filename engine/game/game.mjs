@@ -2179,7 +2179,7 @@ const fill = (g, text) => josa(domainFill(g, literacyFilter(g, String(text || ""
   .replace(/\{record_full\}/g, () => { const r = soul(g).records.filter((x) => x.loop === g.run.loop - 1).pop(); return r ? recordCard(r).join("\n\n") : "…셀 것이 없다."; });
 function storyOptions(g) {
   const st = SL(g, g.story.id);
-  if (g.story.phase === "input") return st.input === "child_name" ? [{ id: "story_childname", kind: "story", label: "아이의 이름", input: "child_name" }] : [{ id: "story_name", kind: "story", label: st.input_label || "어머니가 부르는 이름", input: "true_name", button: st.input_button || null, say: st.input_say || null, sibling: st.input_sibling === false ? null : st.input_sibling || (familyOf(g) ? "키트에게 너는" : null) }];
+  if (g.story.phase === "input") return st.input === "child_name" ? [{ id: "story_childname", kind: "story", label: "아이의 이름", input: "child_name" }] : [{ id: "story_name", kind: "story", label: st.input_label || (familyOf(g) ? "어머니가 부르는 이름" : "너의 진짜 이름"), input: "true_name", button: st.input_button || null, say: st.input_say || (familyOf(g) ? "어머니가 부르는 이름에 대답한다" : "그 이름에 대답한다"), sibling: st.input_sibling === false ? null : st.input_sibling || (familyOf(g) ? "키트에게 너는" : null) }];
   const out = [];
   for (const c of st.choices || []) {
     // 두 번째 회차부터 어머니의 세 카드 중 고른 것만 진하다 — 다시 고를 수 없다 (14 §6.2)
@@ -3819,6 +3819,8 @@ export function view(g) {
     } : null,
     tp: { free: Math.max(0, tpFree(g)) },
     // 개 코(수재부터): 제 몸의 젖은 재 냄새를 맡는다
+    // 주인의 빚 (결점): 남은 빚 · 빚쟁이가 오기까지 · 못 낸 번
+    debt: g.P.debt > 0 ? (() => { const d = Math.floor(g.t / 1440) - Math.floor(startOf(g) / 1440); return { left: coinText(g.P.debt), days: 10 - (((d % 10) + 10) % 10), miss: g.P.debtMiss || 0 }; })() : null,
     smell: talentTier(g, "dog_nose") >= 2 ? (() => { const v = smellOf(g); return v < 1 ? "아직 나지 않는다" : v < 6 ? "옅다 — 개나 맡는다" : v < 12 ? "짙어지고 있다 — 바르그가 고개를 돌린다" : "짙다 — 사냥꾼이 먼저 안다"; })() : null,
     forecast: (() => { const k = talentTier(g, "weather"); if (!k) return null; const d0 = Math.floor(g.t / 1440); return Array.from({ length: [0, 1, 3, 7][k] }, (_, i) => ({ day: i + 1, rain: !!g.W.rainy(d0 + i + 1) })); })(),
     achievements: (soul(g).achievements || []).map((a) => (typeof a === "string" ? a : a.id)).map((id) => achievementsOf(g).find((x) => x.id === id)?.text || ACHIEVEMENTS.find((x) => x.id === id)?.text || id),

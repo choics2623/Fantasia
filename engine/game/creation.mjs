@@ -145,14 +145,16 @@ export function birthLine(content, build) {
   return `${o?.title || "회색여울의 아이"}.${bits.length ? ` ${bits.join(". ")}.` : ""}${flaw ? ` 그리고 — ${flaw}.` : ""}`;
 }
 
+const placeOf = (content, sid, id) => (content?.bundle?.settlements?.[sid]?.locations || []).find((l) => l.id === id)?.name || null;
 // 화면이 받는 것: 규칙·출신(고를 때 보이는 것만)·재능·특질·결점
 export function creationView(content) {
   const C = creationOf(content);
   return {
     rules: C.rules,
     origins: C.origins.map((o) => ({ id: o.id, name: o.name, title: o.title, canon: !!o.canon, difficulty: o.difficulty, blurb: o.blurb, start: o.start, stats: o.stats, skills: o.skills, perks: o.perks || [], burdens: o.burdens || [], presets: o.presets || [], items: (o.items || []).map((i) => i.name || content?.game?.economy?.goods?.[i.gid]?.name || i.gid), coin: o.coin ?? 0,
-      region: o.region || "회색여울", branch: (o.settlement || "greyford") === "greyford" && o.family !== false, scenario: o.scenario || null, age: o.age || 17, time: o.time || "18:00", place: o.place || null, call: o.call || "셋째",
-      flaws: o.flaws || [], traits: o.traits || [], discount: o.trait_discount || {} })),
+      region: o.region || "회색여울", branch: (o.settlement || "greyford") === "greyford" && o.family !== false, scenario: o.scenario || null, age: o.age || 17, time: o.time || "18:00", call: o.call || "셋째",
+      place: o.place || placeOf(content, o.settlement || "greyford", o.start), settlementName: content?.bundle?.settlements?.[o.settlement || "greyford"]?.name || null, free: o.free === true,
+      flaws: o.flaws || [], flawNote: o.flaw_note || {}, traits: o.traits || [], discount: o.trait_discount || {} })),
     talents: C.talents.map((t) => ({ id: t.id, name: t.name, area: t.area, size: t.size, skills: t.skills || {}, grow: t.grow || [], tiers: t.tiers || [], line: t.line || "", cost: (C.rules.cost[t.size] || C.rules.cost.major) })),
     traits: C.traits, flaws: C.flaws,
   };

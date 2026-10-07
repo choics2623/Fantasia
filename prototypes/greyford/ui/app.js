@@ -102,7 +102,18 @@ const bandHTML = (b) => { if (!b) return ""; const n = BAND_N[b] ?? 2; return `<
 const moodCls = (m) => (/열었|나쁘지 않/.test(m) ? "open" : /화가/.test(m) ? "angry" : /겁/.test(m) ? "afraid" : /믿지 않/.test(m) ? "cold" : "");
 const initial = (name) => (String(name || "?").replace(/^[^가-힣A-Za-z]+/, "")[0] || "?");
 const PHASE = (h, night) => (night ? "밤" : h < 6 ? "새벽" : h < 11 ? "아침" : h < 14 ? "한낮" : h < 18 ? "오후" : "저녁");
-const KIND_KO = { keep: "성채", work: "일터", barracks: "막사", home: "집", square: "광장", office: "관청", canteen: "배급소", chapel: "예배당", store: "곳간", lodging: "헛간 숙소", graveyard: "묘지", checkpoint: "검문소", kennel: "개 우리", outdoor: "물가·들" };
+const KIND_KO = { keep: "성채", work: "일터", barracks: "막사", home: "집", square: "광장", office: "관청", canteen: "배급소", chapel: "예배당", store: "곳간", lodging: "헛간 숙소", graveyard: "묘지", checkpoint: "검문소", kennel: "개 우리", outdoor: "물가·들",
+  // 회색여울 밖의 고장들
+  quay: "부두", dock: "나루", pens: "우리", pen: "우리", shed: "헛간", path: "길", track: "길", street: "거리", wall: "성벽", ruin: "폐허", well: "우물", tower: "탑", edge: "변두리", hut: "오두막", dunes: "모래언덕",
+  palace: "궁", perch: "횃대", district: "구역", tavern: "선술집", inn: "여관", market: "장터", guildhall: "길드 회관", guild: "길드", slum: "빈민가", sewer: "하수도", arena: "투기장", hall: "회당", yard: "마당", ground: "마당",
+  camp: "야영지", tent: "천막", shrine: "사당", pit: "구덩이", culvert: "배수로", tomb: "무덤", grave: "무덤", graves: "묘역", crypt: "지하 묘실", gate: "문", post: "초소", watch: "망루", guardhouse: "위병소",
+  ladder: "사다리", lift: "승강기", stair: "계단", cave: "동굴", clinic: "치료소", infirmary: "진료소", loft: "다락", prison: "감옥", archive: "서고", library: "서고", stacks: "서가", scriptorium: "필사실", court: "법정",
+  gallery: "회랑", landmark: "표지", mailbox: "우편함", smelter: "제련소", depot: "집하장", lair: "소굴", residence: "거처", quarters: "처소", secret: "숨은 곳", shaft: "갱도", drift: "갱도", sealed: "봉인된 곳",
+  vent: "환기구", abandoned: "버려진 곳", open_pit: "노천 구덩이", sacred_tree: "신목", lake: "호수", pool: "못", spring: "샘", council: "회의장", orchard: "과수원", village: "마을", wood: "숲", spot: "자리",
+  cellar: "지하실", vault: "금고", rock: "바위", stone: "돌", field: "들", flat: "너른 땅", ring: "원", pole: "장대", hill: "언덕", lantern: "등불", shop: "가게", cistern: "저수조", house: "집", homes: "집들",
+  manor: "저택", cathedral: "대성당", temple: "신전", school: "학당", workshop: "공방", forge: "대장간", altar: "제단", box: "상자", garden: "정원", stable: "마구간", fence: "울타리", lodge: "산막",
+  bank: "은행", registry: "등기소", canal: "운하", shipyard: "조선소", tenement: "셋집", seabed: "바다 밑", lighthouse: "등대", customs: "세관", burrow: "굴", throne: "옥좌", ballroom: "무도회장",
+  chamber: "방", maze: "미로", kitchen: "부엌", hollow: "움푹한 곳", border: "경계", nest: "둥지", peak: "봉우리", cliff: "벼랑", ledge: "바위턱", bridge: "다리", slope: "비탈" };
 const ACCESS_KO = { public: "누구나 드나든다", serf: "농노의 자리", staff: "일꾼만 드나든다", owner: "주인의 자리 — 허락 없이는", locked: "잠겨 있다", secret: "숨은 곳" };
 const ABOUT = { suspect: "너를 의심한다", saw_item: "네가 지닌 것을 보았다", trespass: "네가 들어가는 것을 보았다", claim: "네 말을 믿는다", kill: "네가 한 일을 안다", assault: "네가 한 일을 안다", echo_sign: "네가 이상하다고 생각한다" };
 // 돈: 속은 동화 단위 — 금화 1 = 은화 20 = 동화 240 (엔진의 coinText와 같은 셈)
@@ -179,6 +190,7 @@ const bindItems = (root) => root.querySelectorAll(".itm[data-item]").forEach((b)
 const HUNGER_W = ["배부르다", "괜찮다", "출출하다", "배고프다", "굶주렸다"];
 // 이/가 (받침이 있으면 '이') — 엔진의 josa와 같은 셈
 const iga = (w) => { const c = String(w).charCodeAt(String(w).length - 1) - 0xac00; return `${w}${c >= 0 && c < 11172 && c % 28 ? "이" : "가"}`; };
+const eul = (w) => { const c = String(w).charCodeAt(String(w).length - 1) - 0xac00; return `${w}${c >= 0 && c < 11172 && c % 28 ? "을" : "를"}`; };
 const painWord = (x) => (x >= 75 ? "몸을 가누기 힘들다" : x >= 50 ? "욱신거린다" : x >= 25 ? "쑤신다" : "견딜 만하다");
 const tiredWord = (x) => (x >= 85 ? "쓰러지기 직전" : x >= 60 ? "지쳤다" : x >= 30 ? "조금 피곤하다" : "멀쩡하다");
 const fearWord = (x) => (x >= 4 ? "공포에 질렸다" : x >= 2 ? "떨린다" : x >= 1 ? "불안하다" : "담담하다");
@@ -336,9 +348,9 @@ function renderDock(d, loading) {
   if (nameC) {
     panel.innerHTML = `<form class="namebox" id="nameForm"><label for="tn">${esc(nameC.text)} — 이 이름은 회귀해도 남는다</label>
       <input type="text" id="tn" maxlength="8" placeholder="이름" autocomplete="off" required>
-      <div class="sib"><span>키트에게 너는</span><label><input type="radio" name="sib" value="형" checked> 형</label><label><input type="radio" name="sib" value="누나"> 누나</label></div>
+      ${nameC.sibling ? `<div class="sib"><span>${esc(nameC.sibling)}</span><label><input type="radio" name="sib" value="형" checked> 형</label><label><input type="radio" name="sib" value="누나"> 누나</label></div>` : ""}
       <button class="btn primary">${esc(nameC.button || "그 이름으로 대답한다")}</button></form>`;
-    $("nameForm").onsubmit = (e) => { e.preventDefault(); const n = $("tn").value.trim(); if (!n) return; const sib = panel.querySelector("input[name=sib]:checked").value; act({ id: nameC.id, text: `${n}|${sib}` }, false, `"${n}." — ${nameC.say || "어머니가 부르는 이름에 대답한다"}`); };
+    $("nameForm").onsubmit = (e) => { e.preventDefault(); const n = $("tn").value.trim(); if (!n) return; const sib = panel.querySelector("input[name=sib]:checked")?.value; act({ id: nameC.id, text: sib ? `${n}|${sib}` : n }, false, `"${n}." — ${nameC.say || "그 이름에 대답한다"}`); };
     setTimeout(() => $("tn")?.focus(), 50);
     return;
   }
@@ -378,7 +390,7 @@ let offeredCreate = false;
 function show(d, isFresh = false) {
   last = d; fresh = isFresh;
   // 처음 여는 판 (자동 저장이 비어 있다): 생성 화면부터 — 닫으면 정본의 셋째로 그대로 시작한다
-  if (d.fresh && !offeredCreate && !d.broken) { offeredCreate = true; setTimeout(() => openCreate({ canClose: true, reason: "누구로 시작할까 — 셋째의 갈래" }), 60); }
+  if (d.fresh && !offeredCreate && !d.broken) { offeredCreate = true; setTimeout(() => openCreate({ canClose: true, reason: "누구로 시작할까 — 잔향이 깃들 사람" }), 60); }
   if (!d.broken) addBeats(d); else currentTurn = null;
   render(d);
   // 새로 알게 된 것이 있으면 백과 목록을 다시 받고, 방금 그린 덩어리의 이름을 다시 잇는다
@@ -412,7 +424,7 @@ function renderSheet(v) {
   const sec = (title, html, show = true) => (show && html ? `<div class="sec"><h4>${title}</h4>${html}</div>` : "");
   let h = "";
   if (sheetTab === "memory") {
-    h += sec(v.echoNamed ? "잔향 — 회귀해도 남는다" : "기억 — 회귀해도 남는다", `<ul>${v.trueName ? `<li style="color:var(--gold)">네 이름 — ${esc(v.trueName)}. 어머니만 부른다</li>` : ""}${v.lastHook ? `<li class="past">마지막 줄 — ${esc(v.lastHook)}</li>` : ""}${v.notebook.map((x) => `<li class="${x.startsWith("◇") ? "past" : ""}">${esc(x)}</li>`).join("") || "<li class='faint'>아직 없다</li>"}</ul>`, U.has("notebook"));
+    h += sec(v.echoNamed ? "잔향 — 회귀해도 남는다" : "기억 — 회귀해도 남는다", `<ul>${v.trueName ? `<li style="color:var(--gold)">네 이름 — ${esc(v.trueName)}.${v.origin?.family !== false ? " 어머니만 부른다" : ""}</li>` : ""}${v.lastHook ? `<li class="past">마지막 줄 — ${esc(v.lastHook)}</li>` : ""}${v.notebook.map((x) => `<li class="${x.startsWith("◇") ? "past" : ""}">${esc(x)}</li>`).join("") || "<li class='faint'>아직 없다</li>"}</ul>`, U.has("notebook"));
     const OA = [...(v.oaths || []).map((o) => `<li>"${esc(o.line)}" — ${o.state === "held" ? "품고 있다" : o.state === "kept" ? "지켜졌다" : "깨졌다"}${o.witnesses.length ? ` <span class="faint">(증인: ${esc(o.witnesses.join(", "))})</span>` : ""}</li>`), ...(v.pastOaths || []).map((l) => `<li class="past">┊ "${esc(l)}" — 증인은 잊었다. 너는 기억한다</li>`)];
     h += sec("맹세", OA.length ? `<ul>${OA.join("")}</ul>` : "");
     const T2 = v.twoDays;
@@ -440,7 +452,7 @@ function renderSheet(v) {
       meter("두려움", p.fear || 0, 5, { seg: true, warn: 0.4, crit: 0.8, show: fearWord(p.fear || 0) }),
       meter("마음의 짐", p.stress || 0, 100, { warn: 0.45, crit: 0.7, show: stressWord(p.stress || 0) }),
     ].join("")}</div>
-      <div class="bline">${v.origin ? `<span class="chip gold" title="${esc(v.origin.title)} · 잠자리 — ${esc(v.origin.home)}">${esc(v.origin.name)}</span>` : ""}<span class="chip">${esc(v.body?.train || "")}</span>${v.body?.weak ? `<span class="chip hot">굶주려 팔에 힘이 없다</span>` : ""}${(v.traits || []).map((t) => `<span class="chip gold">기질 — ${esc(t)}</span>`).join("")}${TL.map((t) => `<span class="chip gold" title="${esc(iga(t.grows.join("·")))} 빨리 는다">재능 — ${esc(t.name)}</span>`).join("")}</div>`);
+      <div class="bline">${v.origin ? `<span class="chip gold" title="${esc(v.origin.title)} · 잠자리 — ${esc(v.origin.home)}">${esc(v.origin.name)}</span>` : ""}<span class="chip">${esc(v.body?.train || "")}</span>${v.body?.weak ? `<span class="chip hot">굶주려 팔에 힘이 없다</span>` : ""}${v.debt ? `<span class="chip hot" title="열흘마다 빚쟁이가 온다 — 두 번 못 내면 쫓긴다">빚 — ${esc(v.debt.left)} · 빚쟁이까지 ${v.debt.days}일${v.debt.miss ? ` · 못 낸 번 ${v.debt.miss}` : ""}</span>` : ""}${v.smell ? `<span class="chip" title="개 코 — 제 몸의 젖은 재 냄새를 맡는다">젖은 재 냄새 — ${esc(v.smell)}</span>` : ""}${(v.traits || []).map((t) => `<span class="chip gold">기질 — ${esc(t)}</span>`).join("")}${TL.map((t) => `<span class="chip gold" title="${esc(iga(t.grows.join("·")))} 빨리 는다">재능 — ${esc(t.name)}</span>`).join("")}</div>`);
     const bySlot = (s) => p.items.filter((i) => i.slot === s);
     h += sec(`지닌 것 <span class="h4r">짐 — ${esc(LD.word)}</span>`, `<div class="doll">${SLOT_INFO.map(([s, lab, seen]) => `<div class="slot${seen ? " seen" : ""}"><div class="sl"><b>${s}</b><span>${seen ? "👁 남들 눈에 보인다" : lab}</span></div><div class="its">${bySlot(s).map((i) => itemChip(i)).join("") || `<span class="none">비었다</span>`}</div></div>`).join("")}</div>
       <div class="loadrow">${meter("짐", LD.total, LD.cap, { warn: 0.84, crit: 1.01, show: LD.total > LD.cap ? "몸놀림이 둔하다" : LD.word })}${coinHTML(p.coin)}</div>
@@ -495,7 +507,7 @@ function settingsHTML(v) {
       <div class="set-row"><span>이름 잇기</span><span class="seg" data-set="links">${[[true, "켬 — 이름을 누르면 카드"], [false, "끔"]].map(([val, lab]) => `<button type="button" data-v="${val}" aria-pressed="${linksOn() === val}">${lab}</button>`).join("")}</span></div></div>
     <div class="sec"><h4>누가 이 이야기를 기억하는가</h4><div class="row"><select id="narr">${NARR.map(([id, lab]) => `<option value="${id}"${v?.narrator?.id === id ? " selected" : ""}>${lab}</option>`).join("")}</select><button class="btn" id="narrBtn">이 화자로</button></div></div>
     <div class="sec"><h4>저장</h4><div class="row"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="btn" id="saveBtn">저장</button></div><div class="row" id="slots" style="margin-top:8px"></div></div>
-    <div class="sec"><h4>새 판 — 셋째의 갈래·능력치·재능을 고른다</h4><div class="row"><button class="btn" id="newBtn">새 판 — 그림다크</button><button class="btn" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
+    <div class="sec"><h4>새 판 — 출신·능력치·재능·혈통을 고른다</h4><div class="row"><button class="btn" id="newBtn">새 판 — 그림다크</button><button class="btn" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
       ${v?.mode === "story" ? `<div class="row" style="margin-top:8px"><button class="btn" id="rewindBtn">마지막 아침으로 되돌린다</button></div>` : ""}</div>
     <div class="sec"><h4>단축키</h4><div class="keys"><span class="kbd">1</span><span>~ <span class="kbd">9</span> 선택지 고르기</span><span class="kbd">/</span><span>직접 쓰기</span><span class="kbd">M</span><span>지도</span><span class="kbd">N</span><span>수첩</span><span class="kbd">B</span><span>백과</span><span class="kbd">Esc</span><span>닫기</span></div></div>
     ${DEBUG ? `<div class="sec"><h4>엔진 기록 (판정·검증)</h4><pre id="debugOut">${esc(JSON.stringify({ debug: last?.debug, usage: last?.usage, provider: last?.provider }, null, 1))}</pre></div>` : ""}`;
@@ -612,7 +624,7 @@ function worldPop(id, anchor) {
   pop.innerHTML = `<button class="close" aria-label="닫기">✕</button><h4>${esc(n.name)}</h4>
     <div class="sub">${esc(TYPE_KO[n.type] || "")}${region ? ` · ${esc(region)}` : ""} · ${status}</div>
     ${n.desc ? `<div class="desc">${esc(n.desc)}</div>` : ""}
-    ${J ? `<div class="acts">${acts}</div>${J.fast.id || J.travel ? "" : `<div class="warn">지금은 떠날 수 없다 — 대화나 장면이 끝난 뒤에</div>`}${W.deserter ? `<div class="warn">회색여울을 떠나면 — 점호에 두 번 빠지면 탈주 노예다</div>` : ""}` : n.here ? "" : `<div class="sub">${n.settlement ? "아직 가는 길을 모른다" : "머물 곳이 없는 땅 — 지나가는 길목이다"}</div>`}`;
+    ${J ? `<div class="acts">${acts}</div>${J.fast.id || J.travel ? "" : `<div class="warn">지금은 떠날 수 없다 — 대화나 장면이 끝난 뒤에</div>`}${W.deserter ? `<div class="warn">${esc(eul(W.home || "매인 고장"))} 떠나면 — 점호에 두 번 빠지면 달아난 자로 쫓긴다</div>` : ""}` : n.here ? "" : `<div class="sub">${n.settlement ? "아직 가는 길을 모른다" : "머물 곳이 없는 땅 — 지나가는 길목이다"}</div>`}`;
   $("mapStage").appendChild(pop); placePop(pop, anchor);
   pop.querySelector(".close").onclick = closePop;
   const showRoute = (path) => { const rt = $("mapStage").querySelector(".route-layer"); if (rt) rt.innerHTML = path ? routePath(W, path.split(",")) : ""; };
@@ -669,7 +681,7 @@ async function deathSequence(E) {
   const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
   rec.classList.add("ash"); await nap(650); rec.remove();
   // 삽화 (19 §9): 접힘 뒤에 '시간의 접힘' 목판화가 희미하게, 빵 냄새에는 배급 줄
-  const plate = (name) => { const im = document.createElement("img"); im.className = "plate"; im.alt = ""; im.src = `/art/${name}.svg`; veil.appendChild(im); requestAnimationFrame(() => im.classList.add("on")); return im; };
+  const plate = (name) => { const im = document.createElement("img"); im.className = "plate"; im.alt = ""; im.onerror = () => im.remove(); im.src = `/art/${name}.svg`; veil.appendChild(im); requestAnimationFrame(() => im.classList.add("on")); return im; };
   const foldArt = plate("03_time_fold");
   const fold = document.createElement("div"); fold.className = "fold"; veil.appendChild(fold);
   let gap = E.loop === 1 ? 220 : 120;
@@ -691,7 +703,7 @@ async function deathSequence(E) {
   const n = E.loop + 1;
   const sm = document.createElement("div"); sm.className = "smell";
   const sense = last?.view?.origin?.sense || "빵 냄새";   // 갈래의 회귀점 냄새 (농노: 배급 줄의 빵, 하인: 남작의 식탁 …)
-  sm.innerHTML = `<p>${n >= 12 ? `젖은 재. 그 위에, ${sense}.` : n >= 4 ? `${sense}. 그 밑에, 젖은 재.` : `${sense}.`}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3); if ((last?.view?.origin?.id || "serf") === "serf") plate("01_ration_line");
+  sm.innerHTML = `<p>${n >= 12 ? `젖은 재. 그 위에, ${sense}.` : n >= 4 ? `${sense}. 그 밑에, 젖은 재.` : `${sense}.`}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3); const pl = last?.view?.origin?.plate ?? ((last?.view?.origin?.id || "serf") === "serf" ? "01_ration_line" : null); if (pl) plate(pl);
   await nap(800); sm.insertAdjacentHTML("beforeend", `<p class="inner">나는 — 이 냄새를 안다.</p>`);
   if (god) setTimeout(() => god.remove(), 1000);
   const d = await next; await tapOr(veil);
