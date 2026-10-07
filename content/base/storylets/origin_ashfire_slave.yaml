@@ -746,7 +746,7 @@ storylets:
             눈을 뜬다. 수레 위다. 소각로의 열기. 왼쪽 얼굴에 불티 자국이 흩어진 여자가 너를 내려다본다. 그녀의 손이 수레 손잡이에서 떨어진다. "…넌. 어떻게 일어나?" 대답을 기다리지 않는다. "연기 많은 쪽. 아홉 칸. 가."
 
             철 사다리, 녹슨 쇠창살, 슬래그 비탈의 새벽 공기. 가슴 속에서 무언가가 두 번 뛴다. 네 심장이 아닌 박자로.
-          effects: ["var o2_vessel = true", "var o2_grafted = true", "var o2_cradle_escaped = true", "var o2_taken = false", "learn fact_o2_vessel_lives", "skill_gain 싸움 8", "fear -5", "pain 30", "hunger 1", "goto em_out_slag_slope", "wanted 2 요람의 장부에서 시체 하나가 모자란다", "rel npc_eve trust 25", "rel npc_eve like 10", "memory npc_eve 이상함 수레에서 일어난 번호를 연통으로 내보냈다", "temper 용기 5", "note 이식대에서 살아 나왔다 — 가슴 속에 다른 박자가 뛴다. 장부에는 종료. 은비늘의 사람들이 빠진 번호를 찾을 것이다"]
+          effects: ["var o2_vessel = true", "var o2_grafted = true", "graft dragon_heart", "var o2_cradle_escaped = true", "var o2_taken = false", "learn fact_o2_vessel_lives", "skill_gain 싸움 8", "fear -5", "pain 30", "hunger 1", "goto em_out_slag_slope", "wanted 2 요람의 장부에서 시체 하나가 모자란다", "rel npc_eve trust 25", "rel npc_eve like 10", "memory npc_eve 이상함 수레에서 일어난 번호를 연통으로 내보냈다", "temper 용기 5", "note 이식대에서 살아 나왔다 — 가슴 속에 다른 박자가 뛴다. 장부에는 종료. 은비늘의 사람들이 빠진 번호를 찾을 것이다"]
         failure:
           text: |
             사람의 모습을 한 여자가 담요를 편다. "춥지?" 바늘이 손목에 닿는다. 차다.
@@ -769,7 +769,7 @@ storylets:
             눈을 뜬다. 수레 위다. 소각로의 열기. 왼쪽 얼굴에 불티 자국이 흩어진 여자가 너를 내려다본다. "…넌. 어떻게 일어나?" 대답을 기다리지 않는다. "연기 많은 쪽. 아홉 칸. 가."
 
             철 사다리, 녹슨 쇠창살, 슬래그 비탈의 새벽 공기. 가슴 속에서 무언가가 두 번 뛴다. 네 심장이 아닌 박자로.
-          effects: ["var o2_vessel = true", "var o2_grafted = true", "var o2_cradle_escaped = true", "var o2_taken = false", "learn fact_o2_vessel_lives", "skill_gain 싸움 8", "fear -5", "pain 30", "hunger 1", "goto em_out_slag_slope", "wanted 2 요람의 장부에서 시체 하나가 모자란다", "rel npc_eve trust 25", "rel npc_eve like 10", "memory npc_eve 이상함 수레에서 일어난 번호를 연통으로 내보냈다", "temper 용기 5", "note 이식대에서 살아 나왔다 — 가슴 속에 다른 박자가 뛴다. 장부에는 종료. 은비늘에게 보고가 갈 것이다"]
+          effects: ["var o2_vessel = true", "var o2_grafted = true", "graft dragon_heart", "var o2_cradle_escaped = true", "var o2_taken = false", "learn fact_o2_vessel_lives", "skill_gain 싸움 8", "fear -5", "pain 30", "hunger 1", "goto em_out_slag_slope", "wanted 2 요람의 장부에서 시체 하나가 모자란다", "rel npc_eve trust 25", "rel npc_eve like 10", "memory npc_eve 이상함 수레에서 일어난 번호를 연통으로 내보냈다", "temper 용기 5", "note 이식대에서 살아 나왔다 — 가슴 속에 다른 박자가 뛴다. 장부에는 종료. 은비늘에게 보고가 갈 것이다"]
         failure:
           text: |
             그다음은 불이다. 너는 센다. 하나, 둘. 스물까지는 이름으로 센다. 그다음은 숫자로. 그다음은 세지 않는다.

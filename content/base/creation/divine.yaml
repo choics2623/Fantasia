@@ -1,0 +1,167 @@
+# 신재(神才) — 큰 재능의 넷째 등급 (06 §3). 이름과 그 등급의 한 줄
+# 엔진은 각 재능의 효과를 천재에서 한 걸음 더 잇고 성장 ×2.5를 준다. 숫자가 적힌 줄은 그 한 걸음의 값이다.
+divine:
+  # ── 사회 ──
+  - talent: tongue
+    name: 언신(言神)의 재능
+    text: 용 앞에서도 말이 끊기지 않는다
+  - talent: deceit
+    name: 기신(欺神)의 재능
+    text: 네 거짓이 듣는 자의 진실이 된다
+  - talent: menace
+    name: 군림(君臨)의 눈빛
+    text: 용인도 눈을 먼저 내리깐다
+  # ── 감각 ──
+  - talent: liar_nose
+    name: 독심(讀心)의 재능
+    text: 입을 열기 전에 거짓이 먼저 냄새로 온다
+  - talent: spatial
+    name: 흉중(胸中)의 지도
+    text: 눈을 감아도 고장 하나가 통째로 그려진다
+  # ── 그림자 ──
+  - talent: shadow_step
+    name: 무영(無影)의 걸음
+    text: 용인의 눈앞을 지나도 아무도 기억하지 못한다
+  # ── 무예 ──
+  - talent: brawler
+    name: 권신(拳神)의 재능
+    text: 빈손이 어떤 칼보다 무겁다
+  - talent: knife_hand
+    name: 단검귀(短劍鬼)
+    text: 숨 한 번 사이에 날이 들어갔다 나온다
+  # ── 몸 ──
+  - talent: iron_body
+    name: 불괴(不壞)의 몸
+    text: 사흘을 쉬지 않아도 숨이 흐트러지지 않는다
+  - talent: pain_tolerance
+    name: 무통(無痛)의 몸
+    text: 아픔이 판정에 닿지 않는다
+  - talent: fleet
+    name: 질풍(疾風)의 다리
+    text: 말 탄 사냥꾼도 따라잡지 못한다
+  # ── 생존 ──
+  - talent: beast_friend
+    name: 뭇짐승의 벗
+    text: 사냥개가 쫓다 말고 꼬리를 흔든다
+  # ── 기술·지식 ──
+  - talent: memory_palace
+    name: 만권(萬卷)의 궁전
+    text: 머릿속 서고가 아스테리온의 것보다 넓다
+  - talent: tongues
+    name: 만어(萬語)의 재능
+    text: 용언 너머, 옛 이름들의 문법이 들린다
+  # ── 영혼 ──
+  - talent: ash_mute
+    name: 무취(無臭)의 몸
+    text: 젖은 재 냄새가 나지 않는다 — 바르그의 코에도 처음 사는 사람이다
+  - talent: dejavu_block
+    name: 무흔(無痕)의 영혼
+    text: 시간에 닿은 자들이 아무 낌새도 채지 못한다
+  # ── 사회 ──
+  - talent: charm
+    name: 경국(傾國)의 매혹
+    text: 원수의 마음도 기운다 (호감이 2.5배)
+  - talent: merchant
+    name: 거상(巨商)의 재능
+    text: +40% — 세렌의 의석에 앉을 손
+  - talent: crowd_voice
+    name: 선창(先唱)의 목소리
+    text: 네 첫 소절에 여러 도시가 함께 일어선다
+  - talent: command
+    name: 대장군(大將軍)의 재능
+    text: 용인의 군대 앞에서도 대열이 무너지지 않는다
+  # ── 감각 ──
+  - talent: sixth_sense
+    name: 선지(先知)의 재능
+    text: 위험이 오기 하루 전에 목덜미가 식는다
+  - talent: photo_memory
+    name: 각인(刻印)의 기억
+    text: 스쳐 본 얼굴과 장부의 숫자가 회차를 넘어도 그대로다
+  # ── 그림자 ──
+  - talent: disguise
+    name: 천면(千面)의 재능
+    text: 그 사람의 어미도 의심하지 않는다
+  - talent: forgery
+    name: 귀필(鬼筆)의 재능
+    text: 용인 귀족도 제 필체를 의심한다
+  - talent: assassin
+    name: 무명(無名)의 칼
+    text: 죽음이 지나간 자리에 소문조차 남지 않는다
+  # ── 무예 ──
+  - talent: sword
+    name: 검신(劍神)의 재능
+    text: 칼을 쥔 손이 생각보다 먼저 간다
+  - talent: spear
+    name: 창귀(槍鬼)
+    text: 용의 비늘 사이로 창끝이 들어간다
+  - talent: improvised
+    name: 부엌칼의 전설
+    text: 부엌칼 한 자루가 기사의 칼을 부러뜨린다
+  - talent: hidden_blade
+    name: 무형(無形)의 날
+    text: 벌거벗겨 뒤져도 날 하나가 남는다
+  - talent: battle_sense
+    name: 전신(戰神)의 재능
+    text: 칼이 뽑히기 전에 싸움의 끝이 보인다
+  # ── 몸 ──
+  - talent: recovery
+    name: 다시 돋는 살
+    text: 하룻밤 잠에 깊은 상처가 닫힌다 (×2.4)
+  - talent: reflexes
+    name: 신수(神獸)의 반사신경
+    text: 날아오는 화살을 보고 피한다
+  # ── 생존 ──
+  - talent: hunter
+    name: 산군(山君)의 재능
+    text: 마물도 짐승이다 — 노숙하는 밤마다 먹을 것이 잡힌다
+  - talent: tracker
+    name: 추적귀(追跡鬼)
+    text: 며칠 지난 흔적도, 물 위의 흔적도 읽힌다
+  - talent: survivor
+    name: 황야(荒野)의 주인
+    text: 시간의 상처 가장자리에서도 잠이 온다
+  - talent: medic
+    name: 신의(神醫)의 재능
+    text: 끊어진 숨도 손끝에서 다시 잇는다
+  # ── 기술·지식 ──
+  - talent: smith
+    name: 철신(鐵神)의 재능
+    text: 벼린 칼이 용비늘을 꿴다
+  - talent: engineer
+    name: 천공(天工)의 재능
+    text: 두르강이 잊은 기계도 다시 돌린다
+  - talent: architect
+    name: 축성(築城)의 재능
+    text: 시설이 남의 절반도 안 되는 품으로 선다 (−60%)
+  - talent: scholar
+    name: 태고(太古)의 학식
+    text: 제국 이전의 글자도 읽힌다
+  - talent: strategist
+    name: 신산(神算)의 재능
+    text: 세력들이 두 수 뒤에 둘 곳이 보인다
+  - talent: teacher
+    name: 스승의 스승
+    text: 가르친 것이 세 배로 붙는다 — 평범한 인간을 천재로
+  # ── 신비 ──
+  - talent: truename_ear
+    name: 근원(根源)의 귀
+    text: 처음 듣는 진명도 통째로 들린다 — 부르는 값 −80%
+  - talent: vessel
+    name: 무저(無底)의 그릇
+    text: 진명이 몸을 반도 태우지 않는다 (−60%)
+  - talent: graft_affinity
+    name: 무봉(無縫)의 몸
+    text: 남의 살이 제 살보다 잘 붙는다 — 그래도 회귀하면 몸과 함께 사라진다
+  # ── 영혼 ──
+  - talent: clear_return
+    name: 명경(明鏡)의 회귀
+    text: 첫 회차의 저녁도 오늘 아침처럼 선명하다
+  - talent: drift_read
+    name: 천기(天機)의 눈
+    text: 넷 — 시간이 어느 쪽으로 비틀릴지 먼저 안다
+  - talent: resonance
+    name: 만향(萬響)의 영혼
+    text: 넷 더 — 앞선 자들이 한목소리로 온다
+  - talent: predecessor
+    name: 선대(先代)의 혼
+    text: 앞선 자들의 손이 모두 네 손이 된다

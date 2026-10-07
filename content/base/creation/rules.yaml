@@ -16,14 +16,16 @@ rules:
   stat_min: 6
   stat_max: 15           # 생성 때의 최대 (06 §1.2)
   genius_max: 3          # 천재는 셋까지
+  divine_max: 1          # 신재는 하나 — 큰 재능만, 잔향의 장부가 열어 준 것만 (06 §3)
+  tp_max: 40             # 시대를 넘는 업적으로 오르는 재능 포인트의 끝 (06 §2)
   dice_refund: 2         # 운명의 주사위: 무작위 재능 하나 + 2점
   dice_flaw: 0.3         #   그리고 30%로 결점 하나 (환급 없음)
   hidden: 2              # 숨은 재능 — 게임이 몰래 심는다 (06 §6)
-  tier_names: [소질, 수재, 천재]
-  cost: {major: [2, 4, 7], minor: [1, 2, 4]}
-  growth: [1.25, 1.5, 2.0]
-  practice: [5, 10, 20]
-  body: [3, 5, 8]
+  tier_names: [소질, 수재, 천재, 신재]
+  cost: {major: [2, 4, 7, 12], minor: [1, 2, 4]}
+  growth: [1.25, 1.5, 2.0, 2.5]
+  practice: [5, 10, 20, 25]
+  body: [3, 5, 8, 12]
   stats:
     - {id: 근력, desc: "싸움·위압, 짊어질 수 있는 짐, 싸움의 몸 상한"}
     - {id: 민첩, desc: "싸움·은신·손재주, 몸수색에서 숨기기, 통금 빠져나가기"}
@@ -32,9 +34,39 @@ rules:
     - {id: 감각, desc: "화술·기만·통찰, 알아차리기"}
     - {id: 의지, desc: "위압, 두려움을 버티는 힘"}
   areas: [사회, 감각, 그림자, 무예, 몸, 생존, 기술·지식, 신비, 영혼]
+  art_req: [30, 50, 70, 90]   # 비기가 열리는 스킬: 수재 비기 · 천재 비기 · 신재 비기 · 오의 (06 §3.1)
+  mastery: [5, 10, 15]   # 경지 1~3단계의 판정 보너스 — 신재만, 스킬 100을 넘어 (06 §3.2)
+  divine_unlock: {skill: 85, genius_loops: 3}   # 신재가 열리는 길: 그 스킬이 85에 닿았거나, 천재로 세 회차를 살았다
   trait_max: 2           # 몸의 특질은 생성 때 둘까지 (06 §7) — 출신이 고정한 것은 세지 않는다
   trait_exclusive: [[dragon_heart, nocturne_thirst], [fae_shadow, durgan_heart]]   # 함께 가질 수 없는 피
-  helps: [0, 5, 9, 13]   # 대본 장면의 판정을 돕는 재능 (check.helps): 소질·수재·천재마다 더하는 값. 특질은 +8
+  helps: [0, 5, 9, 13, 17]   # 대본 장면의 판정을 돕는 재능 (check.helps): 소질·수재·천재마다 더하는 값. 특질은 +8
+  # 정본 해금 (SCENARIOS §1.0 '해금' 칸 · §6): 잔향의 장부에서 canon을 켰을 때만 잠근다. 기본은 모두 열림 (CONTINUITY_LOG 5.20).
+  #   origins: eras = 그만큼의 시대가 끝난 뒤 / when = 그 조건을 이룬 회차가 장부에 새겨지면 (업적 canon:origin:<id>)
+  #   traits: when이 있으면 그 업적, 없어도 그 피를 이식해 이레를 견디면 열린다
+  canon:
+    origins:
+      ashfire_slave: {eras: 1, text: 두 번째 시대부터}
+      seren_bonded: {eras: 1, text: 두 번째 시대부터}
+      frost_runaway: {eras: 1, text: 두 번째 시대부터}
+      eldar_gardener: {when: ["visited eternal_garden"], text: 정원의 노래 — 영원 정원에 들어선다}
+      bloodfarm_runaway: {when: ["visited red_pens"], text: 장미 아래 — 붉은 우리에 들어섰다가 살아 나온다}
+      arena_fighter: {when: ["visited blood_arena"], text: 모래의 첫 걸음 — 피의 원형장에 선다}
+      lumen_acolyte: {when: ["visited lumen"], text: 아홉째 감방 — 루멘에 들어간다}
+      tower_scribe: {when: ["skill 읽고쓰기 >= 30"], text: 훔친 글 — 읽고쓰기 30}
+      morva_freeborn: {when: ["visited root_village"], text: 늪의 문 — 모르바 늪의 마을에 닿는다}
+      hidden_halfdragon: {when: ["rel_trust npc_kaspar >= 30"], text: 두 반비늘 — 카스파르 반비늘의 신뢰 30}
+      varg_houndling: {when: ["var o12_skali_oath == true"], text: 냄새의 반대편 — 바르그와 이름을 부르는 사이가 된다}
+    traits:
+      dragon_heart: {when: ["var o2_vessel == true"], text: 하층에서 올라온 자 — 이식대에서 살아 나온다}
+      naga_scale: {when: ["var o5_debt <= 0"], text: 빚 없는 이름 — 세렌의 빚을 모두 갚는다}
+      varg_blood: {when: ["var o12_skali_oath == true"], text: 형제의 달 — 스칼리와 함께 무리를 떠난다}
+      grom_rage: {when: ["var o6_wins >= 3"], text: 피의 맹세 — 원형장에서 세 번 이긴다}
+      giant_bone: {text: 그 피를 이식해 이레를 견딘다}
+      eldar_eye: {text: 그 피를 이식해 이레를 견딘다}
+      durgan_heart: {text: 그 피를 이식해 이레를 견딘다}
+      aeri_bone: {text: 그 피를 이식해 이레를 견딘다}
+      nocturne_thirst: {text: 그 피를 이식해 이레를 견딘다}
+      fae_shadow: {text: 그 피를 이식해 이레를 견딘다}
 
 talents:
   # ── 사회 ──
@@ -758,3 +790,12 @@ flaws:
   - {id: master_debt, name: 주인의 빚, refund: 3, special: debt, desc: "빚을 지고 시작한다 (금화 열 닢 — 출신이 정한 빚이 있으면 그것). 열흘마다 빚쟁이가 은화 한 닢을 걷는다. 두 번 못 내면 수배"}
   - {id: cursed_name, name: 저주받은 이름, refund: 5, special: cursed_name, desc: "사람들이 이유 없이 너를 꺼린다 — 처음 말을 섞는 인간의 호감 −10, 앞일을 아는 티가 더 크게 퍼진다"}
   - {id: ash_taint, name: 재오염, refund: 6, special: ash_taint, desc: "재열병 초기 — 회차마다 같은 병을 안고 시작한다. 날마다 아픔 +3(열 아래로는 내려가지 않는다), 더 빨리 지친다"}
+
+# 유산 특질 (SCENARIOS §6): 잔향의 장부에 새긴 업적이 여는 작은 특질 — 다음 시대의 생성(혈통 단계)에서 고른다. 점수는 재능과 같은 주머니
+legacy:
+  - {id: day_one, name: 하루살이, cost: 1, achievement: dawn_death, desc: "회귀한 뒤 첫 하루, 통찰 +10 — 이 저녁을 너무 잘 안다"}
+  - {id: old_soul, name: 오래된 영혼, cost: 3, achievement: ten_evenings, desc: "젖은 재 냄새가 옅다 (−5) — 열 번의 저녁이 몸에 배었다"}
+  - {id: old_fox, name: 늙은 여우, cost: 2, achievement: one_year, desc: "통찰이 1.2배 빨리 는다 — 한 해를 버틴 눈"}
+  - {id: scarred_back, name: 흉터 많은 등, cost: 1, achievement: scars, desc: "아픔이 15% 덜 누른다"}
+  - {id: knot_hand, name: 매듭 읽는 손, cost: 1, achievement: "ashfire_slave:knot_reader", desc: "읽고쓰기 +5로 시작한다 — 매듭도 글이다"}
+  - {id: hunter_scent, name: 사냥꾼의 냄새, cost: 2, achievement: isol_marked, desc: "감독·사냥꾼 앞에서 통찰 +10"}

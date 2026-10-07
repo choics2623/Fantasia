@@ -281,9 +281,41 @@ def build_creation(settlements, economy, facts, storylets, routines, cards, worl
             refund = min(rules["rules"]["flaw_max"], sum(FL[f].get("refund", 0) for f in set((o.get("flaws") or []) + (pr.get("flaws") or [])) if f in FL))
             if tp > rules["rules"]["tp"] + refund: bad.append(f"출신 {oid} 추천 {pr.get('name')}: {tp}점 > {rules['rules']['tp'] + refund}")
             if sum((pr.get("stats") or {}).values()) > rules["rules"]["free_stats"]: bad.append(f"출신 {oid} 추천 {pr.get('name')}: 능력치가 넘친다")
+    # 신재 (06 §3): 큰 재능의 넷째 등급 — 이름과 한 줄 (divine.yaml)
+    dp = os.path.join(base, "divine.yaml")
+    divine = (yaml.safe_load(open(dp, encoding="utf-8")) or {}).get("divine") or [] if os.path.exists(dp) else []
+    for d in divine:
+        if d.get("talent") not in T: bad.append(f"신재: 모르는 재능 {d.get('talent')}")
+        elif T[d["talent"]].get("size") != "major": bad.append(f"신재: {d['talent']}은(는) 작은 재능이다")
+        elif not d.get("name") or not d.get("text"): bad.append(f"신재 {d['talent']}: 이름과 한 줄")
+        else: T[d["talent"]]["divine"] = {"name": d["name"], "text": d["text"]}
+    # 비기·오의 (06 §3.1): 재능 등급 + 스킬 (arts.yaml) — 엔진이 아는 효과만
+    ap = os.path.join(base, "arts.yaml")
+    arts = (yaml.safe_load(open(ap, encoding="utf-8")) or {}).get("arts") or [] if os.path.exists(ap) else []
+    SKILLS = {"화술", "기만", "위압", "통찰", "손재주", "은신", "싸움", "읽고쓰기", "용언"}
+    WHEN = {"any", "fight", "fight_first", "after_guard", "unarmed", "armed", "talk", "story", "night", "sneak", "authority"}
+    ACTS = {"disarm", "knockout", "escape", "finish", "pry", "calm", "sway", "mend"}
+    seen = set()
+    for a in arts:
+        aid, e = a.get("id"), a.get("effect") or {}
+        if aid in seen: bad.append(f"비기 id가 겹친다: {aid}")
+        seen.add(aid)
+        t = T.get(a.get("talent"))
+        if not t: bad.append(f"비기 {aid}: 모르는 재능 {a.get('talent')}"); continue
+        if a.get("tier") not in (2, 3, 4, 5) or (a["tier"] >= 4 and t.get("size") != "major"): bad.append(f"비기 {aid}: 등급 {a.get('tier')}")
+        if a.get("skill") not in SKILLS: bad.append(f"비기 {aid}: 스킬 {a.get('skill')}")
+        k = e.get("kind")
+        if k == "edge" and (e.get("when") not in WHEN or not 1 <= (e.get("n") or 0) <= 30): bad.append(f"비기 {aid}: edge")
+        elif k == "second" and e.get("when") not in (None, *WHEN): bad.append(f"비기 {aid}: second")
+        elif k == "crit" and not 1 <= (e.get("n") or 0) <= 50: bad.append(f"비기 {aid}: crit")
+        elif k == "act" and e.get("act") not in ACTS: bad.append(f"비기 {aid}: act {e.get('act')}")
+        elif k not in ("edge", "second", "crit", "act"): bad.append(f"비기 {aid}: 모르는 효과 {k}")
+    # 유산 특질 (SCENARIOS §6): 업적이 여는 작은 특질 — 생성 때 고른다
+    for l in rules.get("legacy") or []:
+        if not l.get("id") or not l.get("name") or l.get("cost") is None: bad.append(f"유산 특질: {l}")
     if bad: raise SystemExit("캐릭터 생성 검사 실패:\n  " + "\n  ".join(bad))
-    print(f"캐릭터 생성: 출신 {len(origins)} · 재능 {len(talents)} · 특질 {len(traits)} · 결점 {len(flaws)}")
-    return {"rules": rules["rules"], "talents": talents, "traits": traits, "flaws": flaws, "origins": origins}
+    print(f"캐릭터 생성: 출신 {len(origins)} · 재능 {len(talents)} (신재 {len(divine)} · 비기 {len(arts)}) · 특질 {len(traits)} · 결점 {len(flaws)} · 유산 {len(rules.get('legacy') or [])}")
+    return {"rules": rules["rules"], "talents": talents, "traits": traits, "flaws": flaws, "origins": origins, "arts": arts, "legacy": rules.get("legacy") or []}
 
 
 import re, zlib

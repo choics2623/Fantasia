@@ -34,15 +34,18 @@ const provider = createProvider({ model: process.env.LLM_MODEL || (process.env.L
 const fast = createProvider({ model: process.env.LLM_FAST_MODEL || (process.env.LLM_PROVIDER === "api" ? "claude-haiku-4-5" : "haiku") });
 const slot = (name) => join(SAVES, `${String(name || "auto").replace(/[^\w가-힣-]/g, "")}.json`);
 const autosave = (run) => { mkdirSync(SAVES, { recursive: true }); writeFileSync(slot("auto"), JSON.stringify(run)); };   // 저장 폴더가 지워져도 다시 만든다
+// 잔향의 장부 (시대를 건너는 것): 판과 따로 둔다 — 새 판을 열어도, 저장을 불러와도 그대로
+const LEDGER = join(SAVES, "ledger.echo");   // .json이 아니어서 저장 칸 목록에 섞이지 않고, 칸 이름으로 덮어쓸 수 없다
+const ledgerStore = { load: () => { try { return existsSync(LEDGER) ? JSON.parse(readFileSync(LEDGER, "utf8")) : null; } catch { return null; } }, save: (L) => { mkdirSync(SAVES, { recursive: true }); writeFileSync(LEDGER, JSON.stringify(L)); } };
 // 자동 저장이 깨졌으면 (옛 판본·고장 난 기록) 서버를 멈추지 않는다 — 옆으로 치워 두고 새 판으로
 function openSession() {
   const raw = existsSync(slot("auto")) ? readFileSync(slot("auto"), "utf8") : null;
-  try { return createSession(content, provider, { fast, run: raw ? JSON.parse(raw) : null, onSave: autosave }); }
+  try { return createSession(content, provider, { fast, run: raw ? JSON.parse(raw) : null, onSave: autosave, ledgerStore }); }
   catch (e) {
     const bad = join(SAVES, `auto.broken-${Date.now()}.json`);
     if (raw) writeFileSync(bad, raw);
     console.error(`자동 저장을 열지 못했다 (${e.message}) — ${bad}로 옮기고 새 판을 연다`);
-    return createSession(content, provider, { fast, run: null, onSave: autosave });
+    return createSession(content, provider, { fast, run: null, onSave: autosave, ledgerStore });
   }
 }
 const session = openSession();
@@ -61,6 +64,8 @@ async function handle(path, body, onText) {
   if (path === "/api/new") return session.newGame(body?.seed, { onText }, body?.mode === "story" ? "story" : "grim", body?.narrator || "silent_god", body?.build || null);
   if (path === "/api/creation") return session.creation();
   if (path === "/api/creation/preview") return session.creationPreview(body?.build, body?.seed);
+  if (path === "/api/ledger") return session.ledger();
+  if (path === "/api/ledger/canon") return session.setCanon(!!body?.on);
   if (path === "/api/narrator") return session.narrator(body?.id);
   if (path === "/api/rewind") return session.rewind({ onText });
   if (path === "/api/release") return session.release();

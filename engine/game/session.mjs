@@ -7,14 +7,21 @@
 import * as G from "./game.mjs";
 import { systemFor, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn, RECORDER_SYSTEM, recorderPrompt, parseRecords } from "./prompts.mjs";
 import * as CR from "./creation.mjs";
+import * as LG from "./ledger.mjs";
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 import * as X from "./codex.mjs";
 
 const INK = new Set(["ink", "drift", "grow", "voice", "dayend", "echo", "recap"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
 // provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
-export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
+export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null, ledgerStore = null } = {}) {
   let g = G.boot(content, run || G.newRun());
+  // 잔향의 장부 (시대를 건너는 것): 회귀·시대의 끝에 영혼을 옮겨 적는다. 저장은 판 밖 (ledgerStore)
+  let ledger = LG.ledgerOf(ledgerStore?.load?.() || null);
+  const keepLedger = (soul, ended = null) => {
+    ledger = LG.absorb(ledger, { seed: g.run.seed, origin: g.run.build?.origin || "serf", name: g.run.build?.name || g.run.carry?.trueName || null, loop: g.run.loop, ended, soul, achievementsAll: G.achievementList(g) });
+    ledgerStore?.save?.(ledger);
+  };
   let transcript = g.run.transcript || [];
   // 서술의 기억 (화면용 — 재생에 쓰지 않는다): 줄기(오늘 한 일), 사람마다 지난 대화의 요지, 최근 서술의 꼬리(되풀이 검사)
   let thread = g.run.thread || [], talkLog = g.run.talkLog || {}, tail = g.run.tail || [];
@@ -253,7 +260,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     act: (input, o) => turn(input, o),
     async regress(o) {
       const next = G.regressRun(g);
-      if (!next) return { epilogue: G.epilogue(g), view: G.view(g), choices: [], beats: [] };   // 진짜 죽음 — 시대가 끝난다
+      if (!next) { keepLedger(G.eraSoul(g), g.ended?.why || "진짜 죽음"); return { epilogue: G.epilogue(g), view: G.view(g), choices: [], beats: [] }; }   // 진짜 죽음 — 시대가 끝난다. 장부에 남긴다
+      keepLedger(next.carry.soul);
       next.heard = [...(g.run.heard || [])];   // 들은 이름은 회귀해도 남는다 (주인공의 기억)
       newTimeline(); g = G.boot(content, next); transcript = []; resetMemory(null); save(); return turn(null, o);
     },
@@ -263,13 +271,16 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     async newGame(seed, o, mode = "grim", narrator = "silent_god", build = null) {
       const sd = seed ?? Math.floor(Math.random() * 1e6);
       let fin = null;
-      if (build) { const ck = CR.checkBuild(content, build); if (!ck.ok) return { error: "만들 수 없다 — " + ck.errors.join(" · "), errors: ck.errors }; fin = CR.finalizeBuild(content, build, sd); }
+      if (build) { const ck = CR.checkBuild(content, build, ledger); if (!ck.ok) return { error: "만들 수 없다 — " + ck.errors.join(" · "), errors: ck.errors }; fin = CR.finalizeBuild(content, build, sd, ledger); }
       newTimeline(); g = G.boot(content, { ...G.newRun({ seed: sd }), mode, narrator, ...(fin ? { build: fin } : {}) }); transcript = []; resetMemory(null); save(); return turn(null, o);
     },
     // 생성 화면: 규칙·출신·재능 (시드는 화면이 받아서 미리보기와 시작에 같이 쓴다 — 주사위가 같다)
-    creation: () => ({ ...CR.creationView(content), seed: Math.floor(Math.random() * 1e6) }),
-    creationPreview: (build, seed) => { const ck = CR.checkBuild(content, build || {}); const fin = CR.finalizeBuild(content, build || {}, Number(seed) || 7); return { check: ck, dice: fin.diceResult || null, line: CR.birthLine(content, fin), hidden: fin.hidden.length }; },
+    creation: () => ({ ...CR.creationView(content, ledger), seed: Math.floor(Math.random() * 1e6) }),
+    creationPreview: (build, seed) => { const ck = CR.checkBuild(content, build || {}, ledger); const fin = CR.finalizeBuild(content, build || {}, Number(seed) || 7, ledger); return { check: ck, dice: fin.diceResult || null, line: CR.birthLine(content, fin), hidden: fin.hidden.length }; },
     narrator(id) { G.setNarrator(g, id); save(); return { ok: true, view: G.view(g) }; },
+    // 잔향의 장부: 지난 시대들과 새긴 업적 · 정본 해금 켜고 끄기
+    ledger: () => ({ eras: ledger.eras, achievements: Object.entries(ledger.achievements).map(([id, a]) => ({ id, ...a })), tp: LG.ledgerTP(content, ledger), canon: !!ledger.canon, divine: [...LG.divineOpen(content, ledger)].map((id) => CR.talentDef(content, id)?.name || id), grafted: ledger.grafted.map((id) => CR.traitDef(content, id)?.name || id) }),
+    setCanon(on) { ledger = { ...ledger, canon: !!on }; ledgerStore?.save?.(ledger); return { ok: true, canon: !!on }; },
     // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
     async rewind(o) {
       if (g.run.mode !== "story") return { error: "그림다크에서는 되돌릴 수 없다" };

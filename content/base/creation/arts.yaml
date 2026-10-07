@@ -1,0 +1,1017 @@
+# 비기·오의 (06 §3.1): 재능 등급과 스킬이 함께 열어 준다. 수재 비기(스킬 30) · 천재 비기(50) · 신재 비기(70) · 오의(신재 + 90)
+#
+# 값의 뜻
+#   tier: 2 = 수재 비기 · 3 = 천재 비기 · 4 = 신재 비기 · 5 = 오의
+#   skill: 비기가 걸리는 스킬 — 그 스킬이 위의 수치에 닿아야 열린다
+#   effect
+#     edge   — 조건(when)이 맞는 동안 그 스킬의 판정 +n
+#     second — 하루 한 번, 실패한 그 스킬의 판정을 다시 굴린다 (when이 있으면 그 조건에서만)
+#     crit   — 그 스킬의 판정이 성공하면 n% 확률로 대성공
+#     act    — 하루 한 번 쓰는 새 선택지 (n: 그 선택지의 판정 보너스)
+#   when: any · fight · fight_first · after_guard · unarmed · armed · talk · story(장면) · night · sneak(숨기·빠져나가기·통금·달아나기) · authority(감독·주인·경비·사냥꾼)
+#   큰 재능은 넷(수재·천재·신재·오의), 작은 재능은 둘(수재·천재). 스킬이 없는 재능 가운데 싸우고 숨고 말하는 여섯(질주·암기·반사신경·결투·심문·사냥꾼)도 받는다.
+arts:
+  # ── 사회 ──
+  # 혀의 재능 (tongue)
+  - id: tongue_first
+    talent: tongue
+    tier: 2
+    skill: 화술
+    name: 첫마디
+    desc: "첫마디부터 귀에 걸린다 — 말을 나눌 때 화술 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: tongue_turn
+    talent: tongue
+    tier: 3
+    skill: 화술
+    name: 말머리 돌리기
+    desc: "엇나간 말머리를 되돌린다 — 하루 한 번, 말을 나눌 때 실패한 화술 판정을 다시 굴린다"
+    effect: {kind: second, when: talk}
+  - id: tongue_foe
+    talent: tongue
+    tier: 4
+    skill: 화술
+    name: 적을 벗으로
+    desc: "하루 한 번, 말을 나눌 때: 칼을 쥔 자의 숨이 가라앉는다 — 너에게 품은 두려움과 노여움이 풀리고 말이 길어진다 (화술 +15)"
+    effect: {kind: act, act: calm, n: 15}
+  - id: tongue_dragon
+    talent: tongue
+    tier: 5
+    skill: 화술
+    name: 용에게 거는 말
+    desc: "하루 한 번, 말을 나눌 때: 용에게도 말이 닿는다 — 단숨에 신뢰 +15, 호감 +10 (화술 +20)"
+    effect: {kind: act, act: sway, n: 20}
+
+  # 기만의 재능 (deceit)
+  - id: deceit_net
+    talent: deceit
+    tier: 2
+    skill: 기만
+    name: 거짓의 그물
+    desc: "거짓끼리 앞뒤가 맞물린다 — 말을 나눌 때 기만 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: deceit_reweave
+    talent: deceit
+    tier: 3
+    skill: 기만
+    name: 다시 엮는 거짓
+    desc: "들킨 거짓을 다시 엮는다 — 하루 한 번, 말을 나눌 때 실패한 기만 판정을 다시 굴린다"
+    effect: {kind: second, when: talk}
+  - id: deceit_inquisitor
+    talent: deceit
+    tier: 4
+    skill: 기만
+    name: 심문관의 눈
+    desc: "심문관의 눈도 미끄러진다 — 감독·주인·경비·사냥꾼을 상대로 기만 +18"
+    effect: {kind: edge, n: 18, when: authority}
+  - id: deceit_truth
+    talent: deceit
+    tier: 5
+    skill: 기만
+    name: 진실이 된 거짓
+    desc: "하루 한 번, 말을 나눌 때: 네 거짓이 그의 진실이 된다 — 단숨에 신뢰 +15, 호감 +10 (기만 +15)"
+    effect: {kind: act, act: sway, n: 15}
+
+  # 위압의 재능 (menace)
+  - id: menace_gaze
+    talent: menace
+    tier: 2
+    skill: 위압
+    name: 무거운 눈빛
+    desc: "눈을 맞춘 자가 먼저 고개를 돌린다 — 말을 나눌 때 위압 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: menace_unbent
+    talent: menace
+    tier: 3
+    skill: 위압
+    name: 꺾이지 않는 목
+    desc: "몽둥이 앞에서도 고개가 꺾이지 않는다 — 하루 한 번, 감독·주인·경비·사냥꾼을 상대로 실패한 위압 판정을 다시 굴린다"
+    effect: {kind: second, when: authority}
+  - id: menace_silence
+    talent: menace
+    tier: 4
+    skill: 위압
+    name: 긴 침묵
+    desc: "하루 한 번, 말을 나눌 때: 말없이 오래 바라본다 — 상대가 숨기던 것 하나를 털어놓는다 (위압 +15)"
+    effect: {kind: act, act: pry, n: 15}
+  - id: menace_scales
+    talent: menace
+    tier: 5
+    skill: 위압
+    name: 비늘이 물러선다
+    desc: "고대 종족도 한 걸음 물러선다 — 감독·주인·경비·사냥꾼을 상대로 위압 +25"
+    effect: {kind: edge, n: 25, when: authority}
+
+  # 매혹 (charm)
+  - id: charm_lean
+    talent: charm
+    tier: 2
+    skill: 화술
+    name: 기우는 마음
+    desc: "마주 앉은 자의 마음이 기운다 — 말을 나눌 때 화술 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: charm_soften
+    talent: charm
+    tier: 3
+    skill: 화술
+    name: 누그러진 눈
+    desc: "하루 한 번, 말을 나눌 때: 웃음 하나에 굳은 얼굴이 풀린다 — 너에게 품은 두려움과 노여움이 가라앉고 말이 길어진다 (화술 +10)"
+    effect: {kind: act, act: calm, n: 10}
+  - id: charm_smile
+    talent: charm
+    tier: 4
+    skill: 화술
+    name: 오래 남는 웃음
+    desc: "한 번 본 웃음이 오래 남는다 — 화술 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: charm_open
+    talent: charm
+    tier: 5
+    skill: 화술
+    name: 열리는 마음
+    desc: "하루 한 번, 말을 나눌 때: 누구든 한 번은 마음을 연다 — 단숨에 신뢰 +15, 호감 +10 (화술 +20)"
+    effect: {kind: act, act: sway, n: 20}
+
+  # 상재 (merchant)
+  - id: merchant_patter
+    talent: merchant
+    tier: 2
+    skill: 화술
+    name: 장사꾼의 너스레
+    desc: "값을 부르는 입이 가볍다 — 말을 나눌 때 화술 +8"
+    effect: {kind: edge, n: 8, when: talk}
+  - id: merchant_margin
+    talent: merchant
+    tier: 3
+    skill: 화술
+    name: 남는 장사
+    desc: "흥정이 맞으면 덤이 붙는다 — 화술 판정이 성공하면 20% 확률로 대성공"
+    effect: {kind: crit, n: 20}
+  - id: merchant_price
+    talent: merchant
+    tier: 4
+    skill: 화술
+    name: 값 뒤의 사정
+    desc: "하루 한 번, 말을 나눌 때: 값을 깎다 보면 사정이 나온다 — 상대가 숨기던 것 하나를 흘린다 (화술 +10)"
+    effect: {kind: act, act: pry, n: 10}
+  - id: merchant_seat
+    talent: merchant
+    tier: 5
+    skill: 화술
+    name: 세렌의 의석
+    desc: "주인과도 장사꾼으로 마주 앉는다 — 감독·주인·경비·사냥꾼을 상대로 화술 +25"
+    effect: {kind: edge, n: 25, when: authority}
+
+  # 군중의 목소리 (crowd_voice)
+  - id: crowd_voice_night
+    talent: crowd_voice
+    tier: 2
+    skill: 화술
+    name: 밤의 집회
+    desc: "불가에 모인 자들이 귀를 기울인다 — 밤에 화술 +10"
+    effect: {kind: edge, n: 10, when: night}
+  - id: crowd_voice_soothe
+    talent: crowd_voice
+    tier: 3
+    skill: 화술
+    name: 노여움 삭이기
+    desc: "하루 한 번, 말을 나눌 때: 성난 목소리를 삭인다 — 너에게 품은 두려움과 노여움이 가라앉고 말이 길어진다 (화술 +10)"
+    effect: {kind: act, act: calm, n: 10}
+  - id: crowd_voice_rally
+    talent: crowd_voice
+    tier: 4
+    skill: 화술
+    name: 다시 모인다
+    desc: "흩어지던 무리를 다시 세운다 — 하루 한 번, 장면에서 실패한 화술 판정을 다시 굴린다"
+    effect: {kind: second, when: story}
+  - id: crowd_voice_hymn
+    talent: crowd_voice
+    tier: 5
+    skill: 화술
+    name: 찬가를 선창하다
+    desc: "네가 첫 소절을 부르면 모두가 따라 부른다 — 장면에서 화술 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # 지휘 (command)
+  - id: command_order
+    talent: command
+    tier: 2
+    skill: 위압
+    name: 짧은 명령
+    desc: "짧게 끊어 말해도 따른다 — 말을 나눌 때 위압 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: command_front
+    talent: command
+    tier: 3
+    skill: 위압
+    name: 앞에 서는 자
+    desc: "제 사람들 앞을 막아선다 — 감독·주인·경비·사냥꾼을 상대로 위압 +14"
+    effect: {kind: edge, n: 14, when: authority}
+  - id: command_line
+    talent: command
+    tier: 4
+    skill: 위압
+    name: 다시 서는 줄
+    desc: "무너지던 줄을 다시 세운다 — 하루 한 번, 장면에서 실패한 위압 판정을 다시 굴린다"
+    effect: {kind: second, when: story}
+  - id: command_army
+    talent: command
+    tier: 5
+    skill: 위압
+    name: 무혈자의 군대
+    desc: "네 말 한마디에 무리가 한 몸처럼 움직인다 — 장면에서 위압 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # 심문 (interrogator)
+  - id: interrogator_point
+    talent: interrogator
+    tier: 2
+    skill: 위압
+    name: 칼끝의 물음
+    desc: "칼끝 앞에서 말이 더 나온다 — 말을 나눌 때 위압 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: interrogator_confess
+    talent: interrogator
+    tier: 3
+    skill: 위압
+    name: 고문 없는 자백
+    desc: "하루 한 번, 말을 나눌 때: 손대지 않고 묻는다 — 상대가 숨기던 것 하나를 털어놓는다 (위압 +10)"
+    effect: {kind: act, act: pry, n: 10}
+
+  # 이야기꾼·노래 (storyteller)
+  - id: storyteller_song
+    talent: storyteller
+    tier: 2
+    skill: 화술
+    name: 밤의 노래
+    desc: "불가의 노래가 오래 남는다 — 밤에 화술 +10"
+    effect: {kind: edge, n: 10, when: night}
+  - id: storyteller_tale
+    talent: storyteller
+    tier: 3
+    skill: 화술
+    name: 옛이야기
+    desc: "하루 한 번, 말을 나눌 때: 옛이야기 한 자락을 꺼낸다 — 너에게 품은 두려움과 노여움이 가라앉고 말이 길어진다 (화술 +10)"
+    effect: {kind: act, act: calm, n: 10}
+
+  # 연기 (actor)
+  - id: actor_mask
+    talent: actor
+    tier: 2
+    skill: 기만
+    name: 노예의 얼굴
+    desc: "주인 앞에서는 순한 노예의 얼굴을 쓴다 — 감독·주인·경비·사냥꾼을 상대로 기만 +10"
+    effect: {kind: edge, n: 10, when: authority}
+  - id: actor_tears
+    talent: actor
+    tier: 3
+    skill: 기만
+    name: 거짓 눈물
+    desc: "들킬 뻔한 얼굴에 눈물을 올린다 — 하루 한 번, 말을 나눌 때 실패한 기만 판정을 다시 굴린다"
+    effect: {kind: second, when: talk}
+
+  # ── 감각 ──
+  # 거짓말 냄새 (liar_nose)
+  - id: liar_nose_scent
+    talent: liar_nose
+    tier: 2
+    skill: 통찰
+    name: 말끝의 냄새
+    desc: "숨긴 말에서 냄새가 난다 — 말을 나눌 때 통찰 +10"
+    effect: {kind: edge, n: 10, when: talk}
+  - id: liar_nose_reckon
+    talent: liar_nose
+    tier: 3
+    skill: 통찰
+    name: 말 뒤의 셈
+    desc: "하루 한 번, 말을 나눌 때: 말 뒤의 셈을 짚는다 — 상대가 숨기던 것 하나를 흘린다 (통찰 +10)"
+    effect: {kind: act, act: pry, n: 10}
+  - id: liar_nose_twice
+    talent: liar_nose
+    tier: 4
+    skill: 통찰
+    name: 두 번 맡는 코
+    desc: "한 번 속아도 두 번은 속지 않는다 — 하루 한 번, 말을 나눌 때 실패한 통찰 판정을 다시 굴린다"
+    effect: {kind: second, when: talk}
+  - id: liar_nose_heart
+    talent: liar_nose
+    tier: 5
+    skill: 통찰
+    name: 사람 속을 안다
+    desc: "하루 한 번, 말을 나눌 때: 그가 듣고 싶던 말을 안다 — 단숨에 신뢰 +15, 호감 +10 (통찰 +15)"
+    effect: {kind: act, act: sway, n: 15}
+
+  # 사진 같은 기억 (photo_memory)
+  - id: photo_memory_place
+    talent: photo_memory
+    tier: 2
+    skill: 통찰
+    name: 한 번 본 자리
+    desc: "한 번 본 자리의 어긋남이 눈에 걸린다 — 장면에서 통찰 +10"
+    effect: {kind: edge, n: 10, when: story}
+  - id: photo_memory_slip
+    talent: photo_memory
+    tier: 3
+    skill: 통찰
+    name: 어긋난 말
+    desc: "하루 한 번, 말을 나눌 때: 지난번 말과 어긋난 데를 짚는다 — 상대가 숨기던 것 하나를 흘린다 (통찰 +10)"
+    effect: {kind: act, act: pry, n: 10}
+  - id: photo_memory_dark
+    talent: photo_memory
+    tier: 4
+    skill: 통찰
+    name: 눈 감고도 본다
+    desc: "등불이 없어도 본 자리가 머릿속에 있다 — 밤에 통찰 +16"
+    effect: {kind: edge, n: 16, when: night}
+  - id: photo_memory_eye
+    talent: photo_memory
+    tier: 5
+    skill: 통찰
+    name: 잊지 않는 눈
+    desc: "한 번 본 것은 다시 꺼내 본다 — 실패한 통찰 판정은 언제나 한 번 더 굴린다"
+    effect: {kind: second}
+
+  # ── 그림자 ──
+  # 그림자 걸음 (shadow_step)
+  - id: shadow_step_quiet
+    talent: shadow_step
+    tier: 2
+    skill: 은신
+    name: 소리 없는 발
+    desc: "돌바닥에도 발소리가 묻힌다 — 숨거나 달아날 때 은신 +10"
+    effect: {kind: edge, n: 10, when: sneak}
+  - id: shadow_step_noon
+    talent: shadow_step
+    tier: 3
+    skill: 은신
+    name: 대낮의 그림자
+    desc: "대낮에도 그림자에 녹는다 — 은신 +10"
+    effect: {kind: edge, n: 10, when: any}
+  - id: shadow_step_varg
+    talent: shadow_step
+    tier: 4
+    skill: 은신
+    name: 바르그의 코
+    desc: "사냥개가 지나간 자리로 다시 숨는다 — 하루 한 번, 감독·주인·경비·사냥꾼을 상대로 실패한 은신 판정을 다시 굴린다"
+    effect: {kind: second, when: authority}
+  - id: shadow_step_none
+    talent: shadow_step
+    tier: 5
+    skill: 은신
+    name: 없는 사람
+    desc: "밤이면 너는 없는 사람이다 — 밤에 은신 +25"
+    effect: {kind: edge, n: 25, when: night}
+
+  # 자물쇠 손 (lock_hands)
+  - id: lock_hands_night
+    talent: lock_hands
+    tier: 2
+    skill: 손재주
+    name: 밤의 자물쇠
+    desc: "등불 없이도 핀이 손끝에 걸린다 — 밤에 손재주 +10"
+    effect: {kind: edge, n: 10, when: night}
+  - id: lock_hands_vault
+    talent: lock_hands
+    tier: 3
+    skill: 손재주
+    name: 용인의 금고
+    desc: "걸린 핀을 처음부터 다시 고른다 — 하루 한 번, 밤에 실패한 손재주 판정을 다시 굴린다"
+    effect: {kind: second, when: night}
+
+  # 소매치기 (pickpocket)
+  - id: pickpocket_light
+    talent: pickpocket
+    tier: 2
+    skill: 손재주
+    name: 가벼운 손가락
+    desc: "손가락이 깃털처럼 가볍다 — 손재주 +8"
+    effect: {kind: edge, n: 8, when: any}
+  - id: pickpocket_key
+    talent: pickpocket
+    tier: 3
+    skill: 손재주
+    name: 열쇠 하나만
+    desc: "경비의 열쇠 꾸러미에서 하나만 빼낸다 — 감독·주인·경비·사냥꾼을 상대로 손재주 +14"
+    effect: {kind: edge, n: 14, when: authority}
+
+  # 변장 (disguise)
+  - id: disguise_gate
+    talent: disguise
+    tier: 2
+    skill: 기만
+    name: 말로 넘는 검문
+    desc: "통행증 없이 말로 검문을 넘는다 — 감독·주인·경비·사냥꾼을 상대로 기만 +10"
+    effect: {kind: edge, n: 10, when: authority}
+  - id: disguise_identity
+    talent: disguise
+    tier: 3
+    skill: 기만
+    name: 다른 신분
+    desc: "들킬 뻔한 신분을 다른 신분으로 갈아입는다 — 하루 한 번, 감독·주인·경비·사냥꾼을 상대로 실패한 기만 판정을 다시 굴린다"
+    effect: {kind: second, when: authority}
+  - id: disguise_gait
+    talent: disguise
+    tier: 4
+    skill: 기만
+    name: 남의 걸음걸이
+    desc: "목소리와 걸음걸이까지 남의 것이다 — 말을 나눌 때 기만 +16"
+    effect: {kind: edge, n: 16, when: talk}
+  - id: disguise_become
+    talent: disguise
+    tier: 5
+    skill: 기만
+    name: 그 사람이 된다
+    desc: "얼굴도 목소리도 버릇도 그 사람이다 — 장면에서 기만 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # 위조 (forgery)
+  - id: forgery_letters
+    talent: forgery
+    tier: 2
+    skill: 읽고쓰기
+    name: 글자 베끼기
+    desc: "남의 글자를 획까지 베낀다 — 읽고쓰기 +8"
+    effect: {kind: edge, n: 8, when: any}
+  - id: forgery_seal
+    talent: forgery
+    tier: 3
+    skill: 손재주
+    name: 인장 새기기
+    desc: "밀랍 인장을 손톱만 한 칼로 새긴다 — 장면에서 손재주 +14"
+    effect: {kind: edge, n: 14, when: story}
+  - id: forgery_hand
+    talent: forgery
+    tier: 4
+    skill: 손재주
+    name: 용인의 필체
+    desc: "획 하나까지 주인의 손이다 — 손재주 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: forgery_truer
+    talent: forgery
+    tier: 5
+    skill: 손재주
+    name: 진짜보다 진짜
+    desc: "들킨 획도 다시 고쳐 쓴다 — 실패한 손재주 판정은 언제나 한 번 더 굴린다"
+    effect: {kind: second}
+
+  # 암살 감각 (assassin)
+  - id: assassin_unwary
+    talent: assassin
+    tier: 2
+    skill: 싸움
+    name: 방심한 목
+    desc: "방심한 자를 먼저 친다 — 첫 합에 싸움 +12"
+    effect: {kind: edge, n: 12, when: fight_first}
+  - id: assassin_shift
+    talent: assassin
+    tier: 3
+    skill: 은신
+    name: 교대의 틈
+    desc: "경비가 바뀌는 숨 사이로 지나간다 — 감독·주인·경비·사냥꾼을 상대로 은신 +14"
+    effect: {kind: edge, n: 14, when: authority}
+  - id: assassin_choke
+    talent: assassin
+    tier: 4
+    skill: 싸움
+    name: 뒤에서 조르기
+    desc: "하루 한 번, 싸움 중에: 뒤에서 목을 조른다 — 상대는 두 시간 깨어나지 못하고 싸움이 끝난다 (싸움 +15)"
+    effect: {kind: act, act: knockout, n: 15}
+  - id: assassin_unknown
+    talent: assassin
+    tier: 5
+    skill: 은신
+    name: 아무도 몰랐다
+    desc: "아무도 오지 않았고 아무도 가지 않았다 — 숨거나 달아날 때 은신 +25"
+    effect: {kind: edge, n: 25, when: sneak}
+
+  # ── 무예 ──
+  # 무투가의 재능 (brawler)
+  - id: brawler_joint
+    talent: brawler
+    tier: 2
+    skill: 싸움
+    name: 관절 꺾기
+    desc: "붙잡힌 팔꿈치가 거꾸로 꺾인다 — 맨손으로 싸울 때 싸움 +12"
+    effect: {kind: edge, n: 12, when: unarmed}
+  - id: brawler_disarm
+    talent: brawler
+    tier: 3
+    skill: 싸움
+    name: 칼 빼앗기
+    desc: "하루 한 번, 싸움 중에: 빈손으로 칼을 빼앗는다 — 상대는 무기를 떨구고 물러서며, 아무도 죽지 않는다 (싸움 +10)"
+    effect: {kind: act, act: disarm, n: 10}
+  - id: brawler_flurry
+    talent: brawler
+    tier: 4
+    skill: 싸움
+    name: 급소 연타
+    desc: "하루 한 번, 싸움 중에: 급소를 연달아 친다 — 상대는 두 시간 깨어나지 못하고 싸움이 끝난다 (싸움 +15)"
+    effect: {kind: act, act: knockout, n: 15}
+  - id: brawler_break
+    talent: brawler
+    tier: 5
+    skill: 싸움
+    name: 칼을 꺾는 맨손
+    desc: "하루 한 번, 싸움 중에: 맨손으로 칼을 부러뜨린다 — 상대는 죽지 않고 쓰러지고, 그 자리의 모두가 너를 두려워한다 (싸움 +20)"
+    effect: {kind: act, act: finish, n: 20}
+
+  # 단검의 재능 (knife_hand)
+  - id: knife_hand_grip
+    talent: knife_hand
+    tier: 2
+    skill: 싸움
+    name: 역수 쥐기
+    desc: "날을 거꾸로 쥐고 파고든다 — 무기를 쥐고 싸울 때 싸움 +10"
+    effect: {kind: edge, n: 10, when: armed}
+  - id: knife_hand_vital
+    talent: knife_hand
+    tier: 3
+    skill: 싸움
+    name: 급소 찌르기
+    desc: "날이 급소를 찾아간다 — 싸움 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: knife_hand_shadow
+    talent: knife_hand
+    tier: 4
+    skill: 싸움
+    name: 그림자 일격
+    desc: "어둠 속에서 날이 먼저 닿는다 — 밤에 싸움 +18"
+    effect: {kind: edge, n: 18, when: night}
+  - id: knife_hand_breath
+    talent: knife_hand
+    tier: 5
+    skill: 싸움
+    name: 한 번의 숨
+    desc: "숨 한 번에 끝낸다 — 첫 합에 싸움 +25"
+    effect: {kind: edge, n: 25, when: fight_first}
+
+  # 검의 재능 (sword)
+  - id: sword_parry
+    talent: sword
+    tier: 2
+    skill: 싸움
+    name: 흘려치기
+    desc: "막아 낸 칼을 흘리고 되받아친다 — 막아 낸 바로 다음 합에 싸움 +12"
+    effect: {kind: edge, n: 12, when: after_guard}
+  - id: sword_first
+    talent: sword
+    tier: 3
+    skill: 싸움
+    name: 첫 합에서 결판
+    desc: "한 칼에 모든 것을 싣는다 — 첫 합에 싸움 +15"
+    effect: {kind: edge, n: 15, when: fight_first}
+  - id: sword_gap
+    talent: sword
+    tier: 4
+    skill: 싸움
+    name: 갑옷 틈을 본다
+    desc: "갑옷의 이음매로 날이 들어간다 — 싸움 판정이 성공하면 30% 확률로 대성공"
+    effect: {kind: crit, n: 30}
+  - id: sword_unkilling
+    talent: sword
+    tier: 5
+    skill: 싸움
+    name: 베지 않는 칼
+    desc: "하루 한 번, 싸움 중에: 베지 않고 꺾는다 — 상대는 죽지 않고 쓰러지고, 그 자리의 모두가 너를 두려워한다 (싸움 +20)"
+    effect: {kind: act, act: finish, n: 20}
+
+  # 창의 재능 (spear)
+  - id: spear_reach
+    talent: spear
+    tier: 2
+    skill: 싸움
+    name: 거리 지키기
+    desc: "창끝이 먼저 닿는다 — 첫 합에 싸움 +10"
+    effect: {kind: edge, n: 10, when: fight_first}
+  - id: spear_brace
+    talent: spear
+    tier: 3
+    skill: 싸움
+    name: 돌격 저지
+    desc: "달려드는 자 앞에 다시 창끝을 세운다 — 하루 한 번, 싸우는 동안 실패한 싸움 판정을 다시 굴린다"
+    effect: {kind: second, when: fight}
+  - id: spear_pierce
+    talent: spear
+    tier: 4
+    skill: 싸움
+    name: 꿰뚫기
+    desc: "창끝이 갑옷째 꿰뚫는다 — 싸움 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: spear_dragon
+    talent: spear
+    tier: 5
+    skill: 싸움
+    name: 용을 찌르는 창
+    desc: "비늘 덮인 주인도 창끝을 피하지 못한다 — 감독·주인·경비·사냥꾼을 상대로 싸움 +25"
+    effect: {kind: edge, n: 25, when: authority}
+
+  # 둔기의 재능 (blunt)
+  - id: blunt_through
+    talent: blunt
+    tier: 2
+    skill: 싸움
+    name: 갑옷 너머
+    desc: "갑옷 너머로 무게를 싣는다 — 무기를 쥐고 싸울 때 싸움 +10"
+    effect: {kind: edge, n: 10, when: armed}
+  - id: blunt_crown
+    talent: blunt
+    tier: 3
+    skill: 싸움
+    name: 정수리 치기
+    desc: "하루 한 번, 싸움 중에: 정수리를 내려친다 — 상대는 두 시간 깨어나지 못하고 싸움이 끝난다 (싸움 +10)"
+    effect: {kind: act, act: knockout, n: 10}
+
+  # 즉석 무기의 재능 (improvised)
+  - id: improvised_tool
+    talent: improvised
+    tier: 2
+    skill: 싸움
+    name: 손에 익은 연장
+    desc: "낫이든 쇠스랑이든 쥐면 무기다 — 무기를 쥐고 싸울 때 싸움 +10"
+    effect: {kind: edge, n: 10, when: armed}
+  - id: improvised_hook
+    talent: improvised
+    tier: 3
+    skill: 싸움
+    name: 쇠스랑 걸기
+    desc: "하루 한 번, 싸움 중에: 쇠스랑으로 칼을 걸어 뺏는다 — 상대는 무기를 떨구고 물러서며, 아무도 죽지 않는다 (싸움 +10)"
+    effect: {kind: act, act: disarm, n: 10}
+  - id: improvised_grab
+    talent: improvised
+    tier: 4
+    skill: 싸움
+    name: 손에 닿는 것
+    desc: "빈손이면 곁의 것을 집어 든다 — 맨손으로 싸울 때 싸움 +16"
+    effect: {kind: edge, n: 16, when: unarmed}
+  - id: improvised_blade
+    talent: improvised
+    tier: 5
+    skill: 싸움
+    name: 무엇이든 칼이다
+    desc: "손에 든 것이 칼이다 — 싸우는 동안 싸움 +22"
+    effect: {kind: edge, n: 22, when: fight}
+
+  # 결투의 재능 (duelist)
+  - id: duelist_habit
+    talent: duelist
+    tier: 2
+    skill: 싸움
+    name: 버릇 읽기
+    desc: "막으며 상대의 버릇을 읽는다 — 막아 낸 바로 다음 합에 싸움 +10"
+    effect: {kind: edge, n: 10, when: after_guard}
+  - id: duelist_hold
+    talent: duelist
+    tier: 3
+    skill: 싸움
+    name: 지지 않는 합
+    desc: "첫 합 뒤엔 지지 않는다 — 하루 한 번, 싸우는 동안 실패한 싸움 판정을 다시 굴린다"
+    effect: {kind: second, when: fight}
+
+  # 암기의 재능 (hidden_blade)
+  - id: hidden_blade_sleeve
+    talent: hidden_blade
+    tier: 2
+    skill: 싸움
+    name: 소매 칼
+    desc: "소매에서 날이 먼저 나온다 — 첫 합에 싸움 +12"
+    effect: {kind: edge, n: 12, when: fight_first}
+  - id: hidden_blade_hilt
+    talent: hidden_blade
+    tier: 3
+    skill: 싸움
+    name: 칼자루 치기
+    desc: "하루 한 번, 싸움 중에: 숨긴 칼의 자루로 관자놀이를 친다 — 상대는 두 시간 깨어나지 못하고 싸움이 끝난다 (싸움 +10)"
+    effect: {kind: act, act: knockout, n: 10}
+  - id: hidden_blade_unseen
+    talent: hidden_blade
+    tier: 4
+    skill: 싸움
+    name: 보이지 않는 날
+    desc: "몸을 뒤진 경비도 모르는 날이 있다 — 감독·주인·경비·사냥꾼을 상대로 싸움 +18"
+    effect: {kind: edge, n: 18, when: authority}
+  - id: hidden_blade_thousand
+    talent: hidden_blade
+    tier: 5
+    skill: 싸움
+    name: 천 개의 바늘
+    desc: "하루 한 번, 싸움 중에: 어디서 나왔는지 모를 날이 쏟아진다 — 상대는 죽지 않고 쓰러지고, 그 자리의 모두가 너를 두려워한다 (싸움 +20)"
+    effect: {kind: act, act: finish, n: 20}
+
+  # 전장 감각 (battle_sense)
+  - id: battle_sense_patrol
+    talent: battle_sense
+    tier: 2
+    skill: 통찰
+    name: 수색대의 등불
+    desc: "어둠 속 수색대의 등불을 먼저 본다 — 밤에 통찰 +10"
+    effect: {kind: edge, n: 10, when: night}
+  - id: battle_sense_formation
+    talent: battle_sense
+    tier: 3
+    skill: 통찰
+    name: 진형 읽기
+    desc: "경비의 자리와 순찰의 길이 읽힌다 — 감독·주인·경비·사냥꾼을 상대로 통찰 +14"
+    effect: {kind: edge, n: 14, when: authority}
+  - id: battle_sense_field
+    talent: battle_sense
+    tier: 4
+    skill: 통찰
+    name: 온 싸움터
+    desc: "한 자리를 읽으면 싸움터 전체가 보인다 — 통찰 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: battle_sense_ahead
+    talent: battle_sense
+    tier: 5
+    skill: 통찰
+    name: 한 수 앞
+    desc: "상대의 다음 수가 먼저 보인다 — 장면에서 통찰 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # ── 몸 ──
+  # 질주 (fleet)
+  - id: fleet_bolt
+    talent: fleet
+    tier: 2
+    skill: 은신
+    name: 내빼는 발
+    desc: "싸우다가도 틈이 나면 내뺀다 — 싸우는 동안 은신(달아나기) +10"
+    effect: {kind: edge, n: 10, when: fight}
+  - id: fleet_wind
+    talent: fleet
+    tier: 3
+    skill: 은신
+    name: 다시 트인 숨
+    desc: "숨이 끊길 즈음 한 번 더 내달린다 — 하루 한 번, 숨거나 달아날 때 실패한 은신 판정을 다시 굴린다"
+    effect: {kind: second, when: sneak}
+  - id: fleet_slip
+    talent: fleet
+    tier: 4
+    skill: 은신
+    name: 몸 빼기
+    desc: "하루 한 번, 싸움 중에: 몸을 빼 달아난다 — 달아나기 +20, 실패해도 맞지 않는다"
+    effect: {kind: act, act: escape, n: 20}
+  - id: fleet_outrun
+    talent: fleet
+    tier: 5
+    skill: 은신
+    name: 지치는 사냥꾼
+    desc: "쫓는 자가 먼저 지친다 — 감독·주인·경비·사냥꾼을 상대로 은신 +25"
+    effect: {kind: edge, n: 25, when: authority}
+
+  # 맹수의 반사신경 (reflexes)
+  - id: reflexes_first
+    talent: reflexes
+    tier: 2
+    skill: 싸움
+    name: 먼저 도는 몸
+    desc: "기척보다 몸이 먼저 돈다 — 첫 합에 싸움 +10"
+    effect: {kind: edge, n: 10, when: fight_first}
+  - id: reflexes_dodge
+    talent: reflexes
+    tier: 3
+    skill: 싸움
+    name: 화살 피하기
+    desc: "하루 한 번, 싸움 중에: 날아드는 것을 피해 몸을 뺀다 — 달아나기 +15, 실패해도 맞지 않는다"
+    effect: {kind: act, act: escape, n: 15}
+  - id: reflexes_counter
+    talent: reflexes
+    tier: 4
+    skill: 싸움
+    name: 되치는 발톱
+    desc: "피한 자리에서 곧장 문다 — 막아 낸 바로 다음 합에 싸움 +18"
+    effect: {kind: edge, n: 18, when: after_guard}
+  - id: reflexes_slow
+    talent: reflexes
+    tier: 5
+    skill: 싸움
+    name: 느려진 시간
+    desc: "시간이 느려 보인다 — 실패한 싸움 판정은 언제나 한 번 더 굴린다"
+    effect: {kind: second}
+
+  # ── 생존 ──
+  # 사냥꾼 (hunter)
+  - id: hunter_night
+    talent: hunter
+    tier: 2
+    skill: 싸움
+    name: 밤사냥
+    desc: "밤 숲의 짐승처럼 싸운다 — 밤에 싸움 +10"
+    effect: {kind: edge, n: 10, when: night}
+  - id: hunter_beast
+    talent: hunter
+    tier: 3
+    skill: 싸움
+    name: 큰 짐승 잡이
+    desc: "하루 한 번, 싸움 중에: 큰 짐승을 잡듯 머리를 친다 — 상대는 두 시간 깨어나지 못하고 싸움이 끝난다 (싸움 +10)"
+    effect: {kind: act, act: knockout, n: 10}
+  - id: hunter_pounce
+    talent: hunter
+    tier: 4
+    skill: 싸움
+    name: 덮치기
+    desc: "숨어 기다리다 먼저 덮친다 — 첫 합에 싸움 +18"
+    effect: {kind: edge, n: 18, when: fight_first}
+  - id: hunter_alpha
+    talent: hunter
+    tier: 5
+    skill: 싸움
+    name: 재늑대 우두머리
+    desc: "하루 한 번, 싸움 중에: 우두머리처럼 상대를 짓누른다 — 상대는 죽지 않고 쓰러지고, 그 자리의 모두가 너를 두려워한다 (싸움 +20)"
+    effect: {kind: act, act: finish, n: 20}
+
+  # 추적 (tracker)
+  - id: tracker_rain
+    talent: tracker
+    tier: 2
+    skill: 통찰
+    name: 비 온 뒤
+    desc: "비에 씻긴 발자국도 읽는다 — 통찰 +8"
+    effect: {kind: edge, n: 8, when: any}
+  - id: tracker_night
+    talent: tracker
+    tier: 3
+    skill: 통찰
+    name: 밤의 발자국
+    desc: "어둠에 묻힌 흔적을 다시 더듬는다 — 하루 한 번, 밤에 실패한 통찰 판정을 다시 굴린다"
+    effect: {kind: second, when: night}
+  - id: tracker_stone
+    talent: tracker
+    tier: 4
+    skill: 통찰
+    name: 바위 위의 흔적
+    desc: "바위 위의 흔적도 놓치지 않는다 — 통찰 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: tracker_reverse
+    talent: tracker
+    tier: 5
+    skill: 통찰
+    name: 거꾸로 쫓기
+    desc: "쫓는 자의 흔적을 거꾸로 밟는다 — 감독·주인·경비·사냥꾼을 상대로 통찰 +25"
+    effect: {kind: edge, n: 25, when: authority}
+
+  # ── 기술·지식 ──
+  # 기억의 궁전 (memory_palace)
+  - id: memory_palace_rooms
+    talent: memory_palace
+    tier: 2
+    skill: 읽고쓰기
+    name: 기억의 방
+    desc: "읽은 글을 방마다 걸어 둔다 — 읽고쓰기 +8"
+    effect: {kind: edge, n: 8, when: any}
+  - id: memory_palace_words
+    talent: memory_palace
+    tier: 3
+    skill: 통찰
+    name: 새겨 둔 말
+    desc: "들은 말은 한 마디도 잊지 않는다 — 말을 나눌 때 통찰 +12"
+    effect: {kind: edge, n: 12, when: talk}
+  - id: memory_palace_page
+    talent: memory_palace
+    tier: 4
+    skill: 읽고쓰기
+    name: 한눈에 한 장
+    desc: "한 장을 한눈에 읽는다 — 읽고쓰기 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: memory_palace_library
+    talent: memory_palace
+    tier: 5
+    skill: 읽고쓰기
+    name: 아스테리온 서고
+    desc: "머릿속에 서고 하나가 통째로 있다 — 장면에서 읽고쓰기 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # 언어 천재 (tongues)
+  - id: tongues_ear
+    talent: tongues
+    tier: 2
+    skill: 용언
+    name: 귀동냥
+    desc: "주인들의 말을 귀동냥으로 익힌다 — 용언 +8"
+    effect: {kind: edge, n: 8, when: any}
+  - id: tongues_masters
+    talent: tongues
+    tier: 3
+    skill: 용언
+    name: 주인의 말
+    desc: "주인이 노예 앞에서 흘린 말이 다 들린다 — 감독·주인·경비·사냥꾼을 상대로 용언 +14"
+    effect: {kind: edge, n: 14, when: authority}
+  - id: tongues_grammar
+    talent: tongues
+    tier: 4
+    skill: 용언
+    name: 용언의 문법
+    desc: "낱말의 뿌리가 보인다 — 용언 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: tongues_ancient
+    talent: tongues
+    tier: 5
+    skill: 용언
+    name: 고대 진명어
+    desc: "옛 이름들의 문법까지 들린다 — 장면에서 용언 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # 대장장이 (smith)
+  - id: smith_whet
+    talent: smith
+    tier: 2
+    skill: 손재주
+    name: 숫돌질
+    desc: "하루 한 번, 싸움도 장면도 아닐 때: 판정 없이 지닌 무기나 연장 하나를 온전히 되살린다"
+    effect: {kind: act, act: mend, n: 0}
+  - id: smith_secret
+    talent: smith
+    tier: 3
+    skill: 손재주
+    name: 몰래 벼린 날
+    desc: "밤의 대장간에서 몰래 벼린다 — 밤에 손재주 +14"
+    effect: {kind: edge, n: 14, when: night}
+  - id: smith_master
+    talent: smith
+    tier: 4
+    skill: 손재주
+    name: 명품의 손
+    desc: "손을 거친 쇠마다 쓸 만하다 — 손재주 판정이 성공하면 30% 확률로 대성공"
+    effect: {kind: crit, n: 30}
+  - id: smith_scale
+    talent: smith
+    tier: 5
+    skill: 손재주
+    name: 용비늘 꿰는 칼
+    desc: "용의 비늘도 꿰는 날을 벼린다 — 장면에서 손재주 +25"
+    effect: {kind: edge, n: 25, when: story}
+
+  # 공학 (engineer)
+  - id: engineer_latch
+    talent: engineer
+    tier: 2
+    skill: 손재주
+    name: 걸쇠와 쇠창살
+    desc: "걸쇠와 쇠창살이 어떻게 물려 있는지 안다 — 장면에서 손재주 +10"
+    effect: {kind: edge, n: 10, when: story}
+  - id: engineer_prop
+    talent: engineer
+    tier: 3
+    skill: 손재주
+    name: 갱목 손질
+    desc: "하루 한 번, 싸움도 장면도 아닐 때: 판정 없이 지닌 연장이나 무기 하나를 온전히 되살린다"
+    effect: {kind: act, act: mend, n: 0}
+  - id: engineer_collapse
+    talent: engineer
+    tier: 4
+    skill: 손재주
+    name: 무너뜨릴 자리
+    desc: "버팀목 하나를 빼면 무엇이 무너지는지 안다 — 손재주 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: engineer_durgan
+    talent: engineer
+    tier: 5
+    skill: 손재주
+    name: 두르강의 기계
+    desc: "어떤 걸쇠와 쇠창살도 길을 막지 못한다 — 숨거나 달아날 때 손재주 +25"
+    effect: {kind: edge, n: 25, when: sneak}
+
+  # 학식 (scholar)
+  - id: scholar_history
+    talent: scholar
+    tier: 2
+    skill: 읽고쓰기
+    name: 옛일의 기록
+    desc: "옛일을 알면 지금이 읽힌다 — 장면에서 읽고쓰기 +10"
+    effect: {kind: edge, n: 10, when: story}
+  - id: scholar_loophole
+    talent: scholar
+    tier: 3
+    skill: 읽고쓰기
+    name: 맹약의 허점
+    desc: "주인의 법을 주인보다 잘 안다 — 감독·주인·경비·사냥꾼을 상대로 읽고쓰기 +14"
+    effect: {kind: edge, n: 14, when: authority}
+  - id: scholar_lines
+    talent: scholar
+    tier: 4
+    skill: 읽고쓰기
+    name: 행간 읽기
+    desc: "글이 말하지 않은 것까지 읽는다 — 읽고쓰기 판정이 성공하면 25% 확률로 대성공"
+    effect: {kind: crit, n: 25}
+  - id: scholar_empire
+    talent: scholar
+    tier: 5
+    skill: 읽고쓰기
+    name: 고대 제국어
+    desc: "닳아 없어진 글자도 다시 읽어 낸다 — 실패한 읽고쓰기 판정은 언제나 한 번 더 굴린다"
+    effect: {kind: second}
+
+  # 서기 (scribe)
+  - id: scribe_ledger
+    talent: scribe
+    tier: 2
+    skill: 읽고쓰기
+    name: 장부 넘기기
+    desc: "장부의 숫자가 먼저 눈에 든다 — 읽고쓰기 +8"
+    effect: {kind: edge, n: 8, when: any}
+  - id: scribe_hand
+    talent: scribe
+    tier: 3
+    skill: 손재주
+    name: 남의 필체
+    desc: "한 번 본 필체를 손이 따라 쓴다 — 손재주 판정이 성공하면 20% 확률로 대성공"
+    effect: {kind: crit, n: 20}

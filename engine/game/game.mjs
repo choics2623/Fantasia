@@ -33,7 +33,7 @@ const skillFn = (g, sk) => skill(g, sk);
 export function perceived(g, P, skill, key) {
   const sk = skillFn(g, skill), sense = 10 + g.P.mods.감각 * 2;
   const bias = 0.15 * Math.max(0, 1 - sk / 50);
-  const sd = 0.2 * Math.max(0, 1 - (sk + sense * 2) / 140) * (g.run.build?.traits?.includes("eldar_eye") ? 0.5 : 1);   // 엘다르의 눈: 오차 절반
+  const sd = 0.2 * Math.max(0, 1 - (sk + sense * 2) / 140) * (hasTrait(g, "eldar_eye") ? 0.5 : 1);   // 엘다르의 눈: 오차 절반
   const u1 = Math.max(1e-6, hash(g.seed, "feel", key, Math.floor(g.t / 1440))), u2 = hash(g.seed, "feel2", key);
   const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
   return clamp(P + bias + z * sd, 0.01, 0.99);
@@ -108,21 +108,28 @@ function talentLevels(g) {
   if (g._tl) return g._tl;
   const out = { ...CR.buildTalents(buildOf(g)) };
   for (const id of [...(soul(g).revealed || []), ...(g.P.revealed || [])]) out[id] = Math.max(out[id] || 0, 1);
-  for (const R of [soul(g).raised || {}, g.P.raised || {}]) for (const [id, n] of Object.entries(R)) out[id] = Math.min(3, (out[id] || 0) + n);
+  for (const R of [soul(g).raised || {}, g.P.raised || {}]) for (const [id, n] of Object.entries(R)) out[id] = Math.min(CR.maxTier(CR.talentDef(g.content, id)), (out[id] || 0) + n);
   return (g._tl = out);
 }
 export const talentTier = (g, id) => talentLevels(g)[id] || 0;
 const tpLeftOf = (g) => (buildOf(g) ? Math.max(0, CR.checkBuild(g.content, buildOf(g)).tp.left) : 0);
 const tpFree = (g) => (soul(g).tp || 0) - (g.P.tpSpent || 0);
-const hasTrait = (g, id) => (buildOf(g)?.traits || []).includes(id);
+const hasTrait = (g, id) => (buildOf(g)?.traits || []).includes(id) || (g.P?.grafts || []).includes(id);   // 혈통 + 이 회차에 몸에 붙인 것 (이식 — 회귀하면 사라진다)
 const hasFlaw = (g, id) => CR.buildFlaws(buildOf(g)).includes(id);
-const TIER_MUL = [0, 1, 1.5, 2];
+const TIER_MUL = [0, 1, 1.5, 2, 2.5];
+// 신재가 열린 큰 재능 (06 §3): 만들 때 장부가 연 것 + 이 시대 영혼이 연 것 (그 스킬 85 · 천재로 세 회차)
+function divineOpenIn(g) {
+  const C = CR.creationOf(g.content), U = C.rules.divine_unlock || { skill: 85, genius_loops: 3 }, S = soul(g), out = new Set(buildOf(g)?.divineOpen || []);
+  for (const T of C.talents) if (T.size === "major" && ((T.grow || []).some((sk) => Math.max(S.skills?.[sk] || 0, rawSkill(g, sk)) >= U.skill) || (S.genius?.[T.id] || 0) >= U.genius_loops)) out.add(T.id);
+  return out;
+}
 const tierWord = (g, k) => CR.creationOf(g.content).rules.tier_names?.[k - 1] || ["소질", "수재", "천재"][k - 1];
 // 그 스킬을 키우는 재능 가운데 가장 센 것: 성장 배율 · 안전한 연습의 한계 + · 몸의 상한 + (어머니가 기억하는 재능은 ×1.25 · +5 · +5)
 function growOf(g, sk) {
   const R = CR.creationOf(g.content).rules; let mul = 1, practice = 0, body = 0, tier = 0;
   for (const t of talentsOf(g)) if (TALENT[t]?.grow?.includes(sk)) { mul = Math.max(mul, 1.25); practice = Math.max(practice, 5); body = Math.max(body, 5); tier = Math.max(tier, 1); }
   for (const [id, k] of Object.entries(talentLevels(g))) if (k && CR.talentDef(g.content, id)?.grow?.includes(sk)) { mul = Math.max(mul, R.growth[k - 1]); practice = Math.max(practice, R.practice[k - 1]); body = Math.max(body, R.body[k - 1]); tier = Math.max(tier, k); }
+  if (sk === "통찰" && hasLegacy(g, "old_fox")) mul *= 1.2;   // 늙은 여우 (유산)
   return { mul, practice, body, tier };
 }
 const talentGrows = (g, sk) => growOf(g, sk).tier > 0;
@@ -130,15 +137,102 @@ const talentBonus = (g, sk) => talentsOf(g).reduce((a, t) => a + (TALENT[t]?.ski
   + Object.entries(talentLevels(g)).reduce((a, [id, k]) => a + Math.round((CR.talentDef(g.content, id)?.skills?.[sk] || 0) * TIER_MUL[k]), 0);
 export function bodyCap(g, sk) { return BODY_STAT[sk] ? 15 + (BODY_STAT[sk](statsOf(g)) - 9) * 5 + g.P.train + growOf(g, sk).body : Infinity; }
 // 근육 기억 (06 §4.2 · §5.2): 지난 회차들의 최고치까지는 세 배 — 재능이 있으면 네·다섯·여섯 배
-const trainRegain = (g) => (g.P.train < (soul(g).trainPeak || 0) ? [3, 4, 5, 6][talentTier(g, "muscle_memory")] : 1);
+const trainRegain = (g) => (g.P.train < (soul(g).trainPeak || 0) ? TV(g, "muscle_memory", [3, 4, 5, 6]) : 1);
 // 몸의 재능과 결점이 판정·하루를 누르는 정도 (06 §5.2 · §5.3 · §8.1)
-const hungerPen = (g, h) => { const k = talentTier(g, "iron_gut"); return h < (k >= 1 ? 3 : 2) ? 0 : [5, 5, 3, 0][k]; };
-const painMul = (g) => [1, 0.75, 0.5, 0.25][talentTier(g, "pain_tolerance")];
-const tiredAt = (g) => [70, 80, 90, 101][talentTier(g, "iron_body")];
-const darkPen = (g) => (hasTrait(g, "eldar_eye") || hasTrait(g, "varg_blood") || hasTrait(g, "nocturne_thirst") ? 0 : [10, 5, 2, 0][talentTier(g, "night_eyes")]);   // 엘다르의 눈·바르그의 피·녹테른의 갈증은 밤눈
-const walkMul = (g) => (hasFlaw(g, "lame") ? 1.3 : 1) * [1, 0.95, 0.9, 0.85][talentTier(g, "fleet")];
+const hungerPen = (g, h) => { const k = talentTier(g, "iron_gut"); return h < (k >= 1 ? 3 : 2) ? 0 : tvx(k, [5, 5, 3, 0]); };
+const painMul = (g) => TV(g, "pain_tolerance", [1, 0.75, 0.5, 0.25]) * (hasLegacy(g, "scarred_back") ? 0.85 : 1);   // 흉터 많은 등 (유산)
+const tiredAt = (g) => TV(g, "iron_body", [70, 80, 90, 101]);
+const darkPen = (g) => (hasTrait(g, "eldar_eye") || hasTrait(g, "varg_blood") || hasTrait(g, "nocturne_thirst") ? 0 : TV(g, "night_eyes", [10, 5, 2, 0]));   // 엘다르의 눈·바르그의 피·녹테른의 갈증은 밤눈
+const walkMul = (g) => (hasFlaw(g, "lame") ? 1.3 : 1) * TV(g, "fleet", [1, 0.95, 0.9, 0.85]);
 // ── 재능 표 (06 §5, creation/rules.yaml의 special) — 등급 0·1·2·3마다의 값 ──
-const TV = (g, id, row) => row[talentTier(g, id)];
+// 등급별 값: 표의 0~3은 그대로, 신재(4)는 천재에서 같은 걸음 하나 더 (06 §3) — 0을 넘어 뒤집히지는 않는다
+const tvx = (k, row) => { if (k < row.length) return row[k]; const a = row[row.length - 1], b = row[row.length - 2]; if (typeof a !== "number" || typeof b !== "number") return a; const x = Math.round((a + (a - b)) * 1000) / 1000; return a >= 0 && x < 0 ? 0 : x; };
+const TV = (g, id, row) => tvx(talentTier(g, id), row);
+// ── 비기·오의 (06 §3.1): 재능 등급 + 그 스킬 — 수재 비기(30) · 천재 비기(50) · 신재 비기(70) · 오의(신재 + 90) ──
+// 효과는 넷뿐 (content/base/creation/arts.yaml): edge(조건부 판정 +) · second(하루 한 번 다시 굴린다) · crit(대성공이 잦다) · act(새 행동)
+const ARTS = (g) => CR.creationOf(g.content).arts || [];
+const artDef = (g, id) => ARTS(g).find((a) => a.id === id) || null;
+function artsOn(g) {
+  const req = CR.creationOf(g.content).rules.art_req || [30, 50, 70, 90];
+  // 스킬은 배운 만큼 (rawSkill) — 몸이 받쳐 주는 만큼으로 줄이지 않는다: 비기는 손이 기억하는 것이고, 판정은 따로 몸에 묶인다
+  return ARTS(g).filter((a) => { const k = talentTier(g, a.talent); return (a.tier <= 4 ? k >= a.tier : k >= 4) && rawSkill(g, a.skill) >= req[a.tier - 2]; });
+}
+const ART_RANK = { 대실패: 0, 실패: 1, "부분 성공": 2, 성공: 3, 대성공: 4 };
+// 비기의 조건: 지금 이 판정에 닿는가
+function artWhen(g, w, sk, ctx = {}) {
+  const o = ctx.opt || {}, fightOpt = !!g.fight || /^(attack|fight_|art:)/.test(o.id || "");
+  const wpn = () => bestGear(g, "무기");
+  switch (w || "any") {
+    case "any": return true;
+    case "fight": return fightOpt;
+    case "fight_first": return /^attack:/.test(o.id || "") || (!!g.fight && g.fight.round <= 1);
+    case "after_guard": return !!g.fight && (g.fight.edge || 0) > 0;
+    case "unarmed": return fightOpt && !wpn();
+    case "armed": return fightOpt && !!wpn();
+    case "talk": return !!g.convo || o.kind === "talk";
+    case "story": return !!ctx.story;
+    case "night": return isNight(g.t);
+    case "sneak": return sk === "은신" || o.id === "fight_flee" || /^(pick:|op_cover:wipe)/.test(o.id || "") || (o.kind === "move" && !!o.skill);   // 숨고 달아나고, 몰래 손대는 판정
+    case "authority": { const n = o.npc || g.convo?.npc || g.storyCtx?.nem || g.storyCtx?.who; return !!n && ["authority", "hunter"].includes(profOf(g, n).role); }
+    default: return false;
+  }
+}
+// 판정에 더해지는 것: 조건이 맞는 비기(합쳐서 30까지) · 경지 · 유산 특질
+function artEdge(g, sk, ctx = {}) {
+  let n = 0; const names = [];
+  for (const a of artsOn(g)) if (a.skill === sk && a.effect?.kind === "edge" && artWhen(g, a.effect.when, sk, ctx)) { n += a.effect.n || 0; names.push(a.name); }
+  n = Math.min(30, n);
+  const lv = soulMastery(g)[sk] || 0, M = CR.creationOf(g.content).rules.mastery || [5, 10, 15];
+  if (lv) { n += M[lv - 1]; names.push(`경지 ${lv}단계`); }
+  for (const l of legacyEdges(g, sk, ctx)) { n += l.n; names.push(l.name); }
+  return { n, text: names.length ? `비기 — ${names.join(" · ")}` : "" };
+}
+// 다시 굴리기(second) · 대성공(crit): 기록 번호로 굴리므로 재생해도 같다
+function artTier(g, sk, tier, P, e, notes, ctx) {
+  const day = Math.floor(g.t / 1440), used = (g.P.artDay ??= {});
+  if (!OK(tier)) for (const a of artsOn(g)) {
+    if (a.skill !== sk || a.effect?.kind !== "second" || !artWhen(g, a.effect.when || "any", sk, ctx)) continue;
+    if (a.tier < 5 && used[a.id] === day) continue;   // 오의는 매번
+    used[a.id] = day;
+    const t2 = tierOf(P, hash(g.seed, "second", e.i, a.id));
+    notes.push(`비기 — ${a.name}: 한 번 더`);
+    if (ART_RANK[t2] > ART_RANK[tier]) tier = t2;
+    break;
+  }
+  if (tier === "성공") for (const a of artsOn(g)) if (a.skill === sk && a.effect?.kind === "crit" && hash(g.seed, "crit", e.i, a.id) < (a.effect.n || 0) / 100) { tier = "대성공"; notes.push(`비기 — ${a.name}`); break; }
+  return tier;
+}
+// 비기가 여는 행동 (하루 한 번): 싸움(무장해제·기절·빠져나가기·오의), 대화(캐묻기·달래기·오의), 손질
+const ART_LABEL = { disarm: (nm) => `${nm}의 손에서 무기를 떨군다`, knockout: (nm) => `${nm}의 숨통을 쳐 쓰러뜨린다`, escape: () => "틈으로 빠져나간다", finish: (nm) => `${nm}을(를) 죽이지 않고 꺾는다`,
+  pry: (nm) => `${nm}이(가) 숨기는 것을 끌어낸다`, calm: (nm) => `${nm}의 날을 누그러뜨린다`, sway: (nm) => `한마디로 ${nm}의 마음을 돌린다`, mend: () => "지닌 것 하나를 손본다" };
+function artOptions(g, acts, n) {
+  const day = Math.floor(g.t / 1440), used = g.P.artDay || {}, out = [];
+  for (const a of artsOn(g)) {
+    if (a.effect?.kind !== "act" || !acts.includes(a.effect.act) || used[a.id] === day) continue;
+    if (a.effect.act === "mend" && (g.story || g.fight || g.convo || !mine(g).some((i) => i.condition != null && i.condition < 100 && (i.tags || []).some((t) => ["무기", "도구"].includes(t))))) continue;
+    if (a.effect.act === "pry" && !(g.content.reveals[n] || []).some((r) => !mind(g, n).revealed.has(r.fact) && !knowsFact(g, r.fact))) continue;
+    const nm = n ? displayName(g, n) : "";
+    out.push({ id: `art:${a.id}`, kind: g.fight ? "fight" : g.convo ? "talk" : "act", label: `${ART_LABEL[a.effect.act](nm)} — ${a.name}`, ...(a.effect.act === "mend" ? {} : { skill: a.skill }), npc: n || undefined, art: a.id, ...(g.fight && a.effect.act !== "escape" ? { risk: "실패하면 맞는다" } : {}) });
+  }
+  return out;
+}
+// 경지 (06 §3.2): 신재만 — 그 스킬이 95를 넘은 뒤, 어려운 판정(난이도 40 이상)의 대성공 셋마다 한 단계 (셋까지). 영혼에 남는다
+const soulMastery = (g) => ({ ...(soul(g).mastery || {}), ...(g.P.mastery || {}) });
+function masteryGain(g, sk, od, tier, notes) {
+  if (tier !== "대성공" || od.D < 40 || rawSkill(g, sk) < 95) return;
+  const divine = Object.entries(talentLevels(g)).some(([id, k]) => k >= 4 && CR.talentDef(g.content, id)?.grow?.includes(sk));
+  const lv = soulMastery(g)[sk] || 0; if (!divine || lv >= 3) return;
+  const xp = ((g.P.masteryXP ??= { ...(soul(g).masteryXP || {}) })[sk] = ((g.P.masteryXP[sk] || 0) + 1));
+  if (xp >= 3 * (lv + 1)) { (g.P.mastery ??= {})[sk] = lv + 1; g.P.notebook.push(`경지 — ${sk}, ${lv + 1}단계. 손이 사람의 끝을 넘었다`); notes.push(`경지 — ${sk} ${lv + 1}단계`); }
+}
+// 유산 특질 (SCENARIOS §6): 장부의 업적이 연 작은 특질 — 만들 때 고른다
+const hasLegacy = (g, id) => (buildOf(g)?.legacy || []).includes(id);
+function legacyEdges(g, sk, ctx) {
+  const out = [];
+  if (sk === "통찰" && hasLegacy(g, "day_one") && g.t < startOf(g) + 1440 && g.run.loop >= 2) out.push({ n: 10, name: "하루살이" });
+  if (sk === "통찰" && hasLegacy(g, "hunter_scent") && artWhen(g, "authority", sk, ctx)) out.push({ n: 10, name: "사냥꾼의 냄새" });
+  return out;
+}
 // ── 몸의 특질 (혈통, 06 §7) — 판정·하루·몸을 바꾼다. 출신이 정한 것(잠든 비늘)까지 ──
 const chosenTraits = (g) => (buildOf(g)?.traits || []).filter((id) => !CR.traitDef(g.content, id)?.origin_only && !(originOf(g).traits || []).includes(id));
 const mixedBlood = (g) => chosenTraits(g).length >= 2;     // 혼혈의 부담: 마음의 짐이 1.2배로 쌓인다
@@ -257,6 +351,7 @@ function newPlayer(content, build) {
   const st = CR.statsOf(content, build);
   for (const k of CR.STAT_KEYS) P.mods[k] = (st[k] - 9) / 2;
   if (CR.buildFlaws(build).includes("coward")) P.temper.용기 = -40;
+  if ((build?.legacy || []).includes("knot_hand")) P.skills.읽고쓰기 = (P.skills.읽고쓰기 || 0) + 5;   // 매듭 읽는 손 (유산)
   return P;
 }
 
@@ -298,7 +393,7 @@ export function boot(content, run) {
   // 기시감 (10 §5.2): 시간에 닿은 세력은 회차를 넘어 낌새를 챈다 — 셋째 회차부터 잿빛 탑의 밀정이 일찍 온다
   if (run.loop >= (hasTrait(g, "echo_eye") ? 2 : 3)) ((g.nem ??= {}).npc_isol ??= { grudge: 1, track: 0, since: startOf(g) });   // 잿빛 고리가 눈에 있으면 한 회차 일찍
   // 회귀점의 고요 (06 §5.9): 돌아온 저녁, 두려움이 없고 지난 죽음의 무게가 덜 남는다
-  { const k = talentTier(g, "calm_return"); if (k && run.loop >= 2) { g.P.status.fear = 0; g.P.status.stress = Math.round(30 + (g.P.status.stress - 30) * [1, 0.75, 0.5, 0.25][k]); } }
+  { const k = talentTier(g, "calm_return"); if (k && run.loop >= 2) { g.P.status.fear = 0; g.P.status.stress = Math.round(30 + (g.P.status.stress - 30) * tvx(k, [1, 0.75, 0.5, 0.25])); } }
   if (run.carry.soul?.bloodNumb) g.P.bloodNumb = true;
   if (run.carry.soul?.idle) g.P.idle = { ...run.carry.soul.idle };
   for (const e of run.journal) apply(g, e, { replay: true });
@@ -682,6 +777,7 @@ function rawOptions(g) {
       { id: "fight_plead", kind: "fight", label: `"그만, 그만!" — ${nm}에게 매달린다`, skill: "화술", npc: n, request: 10 },
       { id: "fight_yield", kind: "fight", label: "무릎을 꿇는다" },
       ...(hasTrait(g, "dragon_heart") && !g.fight.rage && g.P.rageDay !== Math.floor(g.t / 1440) ? [{ id: "fight_rage", kind: "fight", label: "가슴의 불을 놓아 버린다 — 용의 분노", skill: "싸움", npc: n, edge: g.fight.edge || 0, risk: "세 합 뒤엔 다리가 풀린다" }] : []),
+      ...artOptions(g, ["disarm", "knockout", "escape", "finish"], n),
     ];
   }
   if (g.convo) {
@@ -710,9 +806,11 @@ function rawOptions(g) {
       const good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
       if (good && g.S.purse.player >= price) o.push({ id: `buy:${gid}`, kind: "talk", label: `${good.name}을(를) ${coinText(price)}에 산다${good.illegal ? " (몰래)" : ""}`, risk: good.illegal ? "인간이 지니면 죄" : null });
     }
+    o.push(...artOptions(g, ["pry", "calm", "sway"], n));
     o.push({ id: "leave", kind: "talk", label: "이야기를 끝낸다" });
     return o;
   }
+  o.push(...artOptions(g, ["mend"]));
   for (const w of present(g)) {
     if (w.kind === "captive") continue;
     o.push({ id: `talk:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 말을 건다${asleep(w, g.t) ? " (자고 있다)" : ""}`, npc: w.npc });
@@ -984,7 +1082,7 @@ export function odds(g, opt) {
     { const ld = loadOf(g); if (ld.total > ld.cap) { const k = ld.total > ld.cap + 3 ? 10 : 5; S -= k; why("▼", "짐이 무겁다 — 몸놀림이 둔하다"); } }
     if (g.P.bloody) { S -= 4; why("▼", "옷에 피가 묻어 있다"); }
     if (opt.id === "fight_flee") {
-      const k = talentTier(g, "fleet"); if (k) { S += [0, 10, 15, 20][k]; why("▲", "달리기라면 자신 있다"); }
+      const k = talentTier(g, "fleet"); if (k) { S += tvx(k, [0, 10, 15, 20]); why("▲", "달리기라면 자신 있다"); }
       const r2 = TV(g, "reflexes", [0, 5, 8, 10]) + (hasTrait(g, "aeri_bone") ? 10 : 0); if (r2) { S += r2; why("▲", "몸이 먼저 빠진다"); }
       if (hasFlaw(g, "lame")) { S -= 20; why("▼", "다리를 전다"); }
     }
@@ -1005,12 +1103,12 @@ export function odds(g, opt) {
       S += base + QMOD[q]; why("▲", q === 0 ? `${wpn.name} — 날이 무디다, 그래도 맨손보다는` : q >= 2 ? `${wpn.name} — 좋은 날이다` : `${wpn.name}이(가) 있다`);
       gear.push({ id: wpn.id, kind: "weapon" });
     } else why("▼", mine(g).some((i) => i.tags?.includes("무기")) ? "칼이 부러졌다 — 맨손이나 다름없다" : "맨손이다");
-    { const k = talentTier(g, "brawler"); if (k && !wpn) { S += [0, 3, 5, 8][k]; why("▲", "맨손 싸움을 안다"); } }
-    { const k = talentTier(g, "knife_hand"); if (k && wpn?.tags?.includes("날붙이") && wpn.tags.includes("숨길수있음")) { S += [0, 3, 5, 8][k]; why("▲", "날을 쥔 손이 길을 안다"); } }
-    { const k = talentTier(g, "sword"); if (k && wpn?.tags?.includes("날붙이") && !wpn.tags.includes("숨길수있음")) { S += [0, 3, 5, 8][k]; why("▲", "긴 날이 손의 일부다"); } }
-    { const k = talentTier(g, "spear"); if (k && wpn?.tags?.includes("장병기")) { S += [0, 3, 5, 8][k]; why("▲", "창끝으로 거리를 지킨다"); } }
-    { const k = talentTier(g, "blunt"); if (k && wpn?.tags?.includes("둔기")) { S += [0, 2, 4, 6][k]; why("▲", "무게를 실을 줄 안다"); } }
-    { const k = talentTier(g, "improvised"); if (k && wpn && (wpn.tags?.includes("도구") || !wpn.tags?.includes("무기"))) { S += [0, 3, 5, 8][k]; why("▲", "손에 든 것이 칼이다"); } }
+    { const k = talentTier(g, "brawler"); if (k && !wpn) { S += tvx(k, [0, 3, 5, 8]); why("▲", "맨손 싸움을 안다"); } }
+    { const k = talentTier(g, "knife_hand"); if (k && wpn?.tags?.includes("날붙이") && wpn.tags.includes("숨길수있음")) { S += tvx(k, [0, 3, 5, 8]); why("▲", "날을 쥔 손이 길을 안다"); } }
+    { const k = talentTier(g, "sword"); if (k && wpn?.tags?.includes("날붙이") && !wpn.tags.includes("숨길수있음")) { S += tvx(k, [0, 3, 5, 8]); why("▲", "긴 날이 손의 일부다"); } }
+    { const k = talentTier(g, "spear"); if (k && wpn?.tags?.includes("장병기")) { S += tvx(k, [0, 3, 5, 8]); why("▲", "창끝으로 거리를 지킨다"); } }
+    { const k = talentTier(g, "blunt"); if (k && wpn?.tags?.includes("둔기")) { S += tvx(k, [0, 2, 4, 6]); why("▲", "무게를 실을 줄 안다"); } }
+    { const k = talentTier(g, "improvised"); if (k && wpn && (wpn.tags?.includes("도구") || !wpn.tags?.includes("무기"))) { S += tvx(k, [0, 3, 5, 8]); why("▲", "손에 든 것이 칼이다"); } }
     if (g.fight && g.fight.round >= 2) { const k = TV(g, "duelist", [0, 5, 8, 10]); if (k) { S += k; why("▲", "상대의 버릇이 보인다 (결투)"); } }
     if (!g.fight || g.fight.round <= 1) { const k = TV(g, "reflexes", [0, 5, 8, 12]); if (k) { S += k; why("▲", "먼저 움직인다 (반사신경)"); } }
     if (opt.id === "fight_guard") { const k = TV(g, "battle_sense", [0, 5, 8, 12]) - (hasTrait(g, "grom_rage") ? 10 : 0); if (k) { S += k; why(k > 0 ? "▲" : "▼", k > 0 ? "틈이 보인다 (전장 감각)" : "막을 생각이 들지 않는다 — 분노샘"); } }
@@ -1032,6 +1130,8 @@ export function odds(g, opt) {
     if (present(g).filter((x) => x.kind !== "captive" && x.npc !== n && !asleep(x, g.t)).length) { D += 6; why("▼", "보는 눈이 있다"); }
   }
   for (const tr of soul(g).traces || []) if (n && tr.npc === n) { S -= Math.round(5 * (tr.level || 1) * TV(g, "death_numb", [1, 0.75, 0.5, 0.25])); why("▼", TRACE_TEXT[tr.id]?.why || tr.name); }
+  { const a = artEdge(g, opt.skill, { opt }); if (a.n) { S += a.n; why("▲", a.text); } }
+  if (opt.art) { const A = artDef(g, opt.art); if (A) { S += A.effect.n || 0; D += { disarm: 10, knockout: 15, finish: 10, escape: 0, pry: 10, calm: 0, sway: 15 }[A.effect.act] || 0; if (A.effect.n) why("▲", `${A.name}`); } }
   const P = prob(S, D);
   return { P, S: Math.round(S), D: Math.round(D), parts, gear };
 }
@@ -1061,8 +1161,11 @@ function step(g, e) {
   const od = opt.check ? storyOdds(g, opt.check) : odds(g, { ...opt, tags: e.tags });
   const bonus = Math.min(25, (e.tags || []).reduce((s, t) => s + tagBonus(g, t), 0));
   const P = od ? prob(od.S + bonus, od.D) : 1;
-  const tier = od ? tierOf(P, roll) : "성공";
-  const res = { id: e.id, label: opt.label, kind: opt.kind, tier, P, roll, skill: opt.skill || null, changes: [], reveal: null, notes: [], futureUsed: [] };
+  const sk0 = opt.skill || opt.check?.skill, artNotes = [];
+  let tier = od ? tierOf(P, roll) : "성공";
+  if (od && sk0) tier = artTier(g, sk0, tier, P, e, artNotes, { opt, story: !!opt.check });
+  const res = { id: e.id, label: opt.label, kind: opt.kind, tier, P, roll, skill: opt.skill || null, changes: [], reveal: null, notes: [...artNotes], futureUsed: [] };
+  if (od && sk0) masteryGain(g, sk0, od, tier, res.notes);
   const [verb, arg] = e.id.split(/:(.*)/s);
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
@@ -1418,7 +1521,7 @@ function threatsTick(g, t) {
 // 냄새 (03 §7.1): 회차가 쌓일수록 사냥꾼이 일찍 코를 돌린다 = min(30, 3·(회차−1)^0.7)
 export const smellOf = (g) => {   // 짙은 잔향(결점)은 두 회차를 더한 만큼, 재 냄새 억제(재능)는 −25·50·75%
   const full = !!(g.P && g.run.carry), deep = full && hasFlaw(g, "deep_echo") ? 2 : 0, k = full ? talentTier(g, "ash_mute") : 0;
-  return Math.min(30, 3 * Math.max(0, g.run.loop - 1 + deep) ** 0.7) * [1, 0.75, 0.5, 0.25][k];
+  return Math.max(0, Math.min(30, 3 * Math.max(0, g.run.loop - 1 + deep) ** 0.7) * tvx(k, [1, 0.75, 0.5, 0.25]) - (full && hasLegacy(g, "old_soul") ? 5 : 0));   // 오래된 영혼 (유산): −5
 };
 // 숙적의 마음 (17 §3.2): 원한(grudge 단계) · 집착 · 공포 · 존경 — 성향이 사냥의 모양을 정한다
 const nemMind = (x) => { x.obs ??= (x.grudge || 0) * 20; x.fear ??= 0; x.resp ??= 0; x.lessons ??= []; return x; };
@@ -1509,9 +1612,19 @@ const ACHIEVEMENTS = [
   { id: "rising_90", tp: 3, text: "해방구가 아흔 날을 버텼다", when: (g) => !!g.S.vars.rising_held_90 },
   { id: "charter", tp: 3, text: "인간의 글자로 쓴 칙허", when: (g) => !!g.S.vars.kaspar_charter },
   { id: "oath_kept", tp: 2, text: "맹세를 지켰다", when: (g) => (g.oaths || []).some((o) => o.state === "kept") },
+  // 유산 특질을 여는 업적 (SCENARIOS §6.1·§6.5)
+  { id: "dawn_death", tp: 0, text: "깨어나자마자 — 회귀점에서 하루도 안 되어 끝났다", when: (g) => !!g.ended && g.run.loop >= 2 && g.t - startOf(g) < 1440 },
+  { id: "ten_evenings", tp: 1, text: "열 번의 저녁 — 한 시대에 열 번 돌아왔다", when: (g) => g.run.loop >= 10 },
+  { id: "one_year", tp: 1, text: "한 해 — 한 회차에서 삼백예순 날을 살았다", when: (g) => g.t - startOf(g) >= 360 * 1440 },
+  { id: "scars", tp: 0, text: "흉터 — 몸이 무너지기 직전까지 갔다가 사흘을 더 살았다", when: (g) => g.P.painPeakT != null && g.t - g.P.painPeakT >= 3 * 1440 },
+  { id: "isol_marked", tp: 1, text: "순례자의 가면 — 이졸을 알아보았다", when: (g) => !!g.S.vars.isol_marked },
 ];
-// 이 판의 업적: 공통 + 출신의 것 (origins.yaml achievements — 조건은 대본 장면의 문법)
+// 이 판의 업적: 공통 + 출신의 것 (origins.yaml achievements — 조건은 대본 장면의 문법) + 정본 해금 (rules.canon — 장부에 새겨 다음 시대의 출신·혈통을 연다)
+const canonAchievements = (g) => { const K = CR.creationOf(g.content).rules.canon || {}, out = [];
+  for (const [kind, M] of [["origin", K.origins], ["trait", K.traits]]) for (const [id, u] of Object.entries(M || {})) if (u.when) out.push({ id: `canon:${kind}:${id}`, tp: 0, text: u.text || id, when: (g2) => storyWhen(g2, u.when) });
+  return out; };
 const achievementsOf = (g) => [
+  ...canonAchievements(g),
   ...ACHIEVEMENTS.filter((a) => !a.family || familyOf(g)),
   ...(originOf(g).achievements || []).map((a) => ({ id: `${originIdOf(g)}:${a.id}`, tp: a.tp || 1, text: a.text, when: (g2) => storyWhen(g2, a.when) })),
 ];
@@ -1871,7 +1984,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     // 통금 순찰 (매인 고장의 순찰 시각 — 정본 21:00·23:00·02:00): 잠자리 밖에 있는 인간은 걸린다 — 은신 판정
     const cf = dutyOf(g).curfew, patrolT = cf === false ? [] : cf?.patrols || g.content.bundle.settlements[home]?.patrols || ["21:00", "23:00", "02:00"];
     if (g.P.settlement === home && !g.P.traveling && patrolT.some((x) => parseClock(x) === hm) && isNight(next) && !nightSafe(g) && !g.W.loc.get(g.at)?.outer && !g.ended) {
-      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6 + [0, 6, 12, 18][talentTier(g, "beast_friend")] + traitStealth(g, next), 22 + 4 * (g.S.vars.patrol_level || 0) + (cf?.D || 0));   // 바르그 순찰이 늘면 통금이 무겁다 · 짐승의 벗이면 개가 덜 짖는다
+      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6 + TV(g, "beast_friend", [0, 6, 12, 18]) + traitStealth(g, next), 22 + 4 * (g.S.vars.patrol_level || 0) + (cf?.D || 0));   // 바르그 순찰이 늘면 통금이 무겁다 · 짐승의 벗이면 개가 덜 짖는다
       const by = authorityOf(g, home);
       if (hash(g.seed, "patrol", next) >= P && g.S.vars.player_fugitive) {   // 탈주 노예가 통금에 걸리면 — 잠자리가 아니라 매질 기둥이다
         g.feed.push({ kind: "rule", text: fill(g, cf?.fugitive || `통금 순찰의 등불이 얼굴에 멈춘다. "도망친 ${callName(g)}다." 크릭 감독의 몽둥이가 무릎을 꺾는다.`) });
@@ -1922,12 +2035,12 @@ function pass(g, minutes, { sleeping = false } = {}) {
   else {
     // 지침: 강철 체력이 줄이고, 녹테른의 갈증은 낮에 두 배·밤에 절반, 재오염은 1.2배
     const night = isNight(to), nt = hasTrait(g, "nocturne_thirst") ? (night ? 0.5 : 2) : 1;
-    g.P.status.fatigue = clamp(g.P.status.fatigue + Math.round((Math.round(minutes / 60) * 3 + (g.P.working ? Math.round(minutes / 60) * 3 : 0)) * [1, 0.85, 0.7, 0.55][talentTier(g, "iron_body")] * nt * (hasFlaw(g, "ash_taint") ? 1.2 : 1)), 0, 100);
+    g.P.status.fatigue = clamp(g.P.status.fatigue + Math.round((Math.round(minutes / 60) * 3 + (g.P.working ? Math.round(minutes / 60) * 3 : 0)) * TV(g, "iron_body", [1, 0.85, 0.7, 0.55]) * nt * (hasFlaw(g, "ash_taint") ? 1.2 : 1)), 0, 100);
   }
   // 하루에 한 번 배가 고파진다 (배급을 받으면 준다)
   for (let d = Math.floor(from / 1440) + 1; d <= Math.floor(to / 1440); d++) {
     // 굶주림: 이미 바닥(4)이면 몸이 먹힌다 — 아픔 +15, 100이면 죽는다
-    if (g.P.status.hunger >= 4) { g.P.status.pain = clamp(g.P.status.pain + Math.round(15 * [1, 1, 0.7, 0.5][talentTier(g, "iron_gut")]), 0, 100); g.feed.push({ kind: "rule", text: "사흘째 빈속이다. 손이 떨리고 무릎이 꺾인다." }); }
+    if (g.P.status.hunger >= 4) { g.P.status.pain = clamp(g.P.status.pain + Math.round(15 * TV(g, "iron_gut", [1, 1, 0.7, 0.5])), 0, 100); g.feed.push({ kind: "rule", text: "사흘째 빈속이다. 손이 떨리고 무릎이 꺾인다." }); }
     // 기근 생존: 나흘·사흘·이틀에 하루는 배가 덜 고프다 · 거인의 뼈: 이틀에 한 번 더 고프다
     const fam = TV(g, "famine", [0, 4, 3, 2]);
     if (!(fam && d % fam === 0)) g.P.status.hunger = clamp(g.P.status.hunger + 1, 0, 4);
@@ -2019,7 +2132,7 @@ function checkpoint(g, res, p, T = g.t) {
   let ok = false, text;
   if (pass) {
     const forged = pass.tags.includes("위조"), fg = forged ? Math.round(TV(g, "forgery", [0, 10, 15, 20]) * (skill(g, "읽고쓰기") >= 10 ? 1 : 0.5)) + (forged && talentTier(g, "scribe") ? 5 : 0) : 0;
-    const P2 = prob(skill(g, "기만") + g.P.mods.지능 * 2 + (forged ? 0 : 20) - (known ? 10 : 0) + [0, 10, 15, 20][talentTier(g, "smuggler")] - (hasFlaw(g, "brand") ? 15 : 0) + fg - (hasTrait(g, "giant_bone") ? 10 : 0) - (hasTrait(g, "eldar_eye") ? 5 : 0), 22);   // 밀수 · 노예 낙인 · 위조 · 눈에 띄는 몸
+    const P2 = prob(skill(g, "기만") + g.P.mods.지능 * 2 + (forged ? 0 : 20) - (known ? 10 : 0) + TV(g, "smuggler", [0, 10, 15, 20]) - (hasFlaw(g, "brand") ? 15 : 0) + fg - (hasTrait(g, "giant_bone") ? 10 : 0) - (hasTrait(g, "eldar_eye") ? 5 : 0), 22);   // 밀수 · 노예 낙인 · 위조 · 눈에 띄는 몸
     ok = hash(g.seed, "check-pass", T) < P2;
     text = ok ? "경비가 통행증을 오래 들여다보다가 돌려준다." : "경비가 통행증의 인장을 손톱으로 긁는다. 위조다.";
   } else if (talentTier(g, "disguise")) {
@@ -2120,6 +2233,8 @@ function storyWhen(g, conds, t = g.t) {
     const [k, a, b, d] = c.replace(/^not /, "").split(/\s+/), neg = c.startsWith("not ");
     let r;
     if (k === "pknows") r = knowsFact(g, a);
+    else if (k === "visited") r = g.P.settlement === a || (g.P.visited || []).includes(a) || (soul(g).visitedSettlements || []).includes(a);
+    else if (k === "skill") r = { ">=": rawSkill(g, a) >= Number(d), "<": rawSkill(g, a) < Number(d) }[b];
     else if (k === "been") r = g.P.been.has(a);
     else if (k === "loop") r = { ">=": g.run.loop >= Number(b), "==": g.run.loop === Number(b) }[a];
     else if (k === "rel_trust") r = { ">=": relOf(g, a).trust >= Number(d), "<": relOf(g, a).trust < Number(d) }[b];
@@ -2213,13 +2328,13 @@ function storyOptions(g) {
 function awakenOptions(g) {
   if ((g.P.awakened || []).length || Object.keys(g.P.raised || {}).length) return [];
   const C = CR.creationOf(g.content), free = tpFree(g), used = soul(g).usedLast || [], out = [];
-  const genius = Object.values(talentLevels(g)).filter((k) => k >= 3).length;
+  const genius = Object.values(talentLevels(g)).filter((k) => k === 3).length, divine = Object.values(talentLevels(g)).filter((k) => k >= 4).length, open = divineOpenIn(g);
   const cand = C.talents.map((T) => {
     const cur = talentTier(g, T.id), cost = CR.tierCost(g.content, T.id, cur + 1) - CR.tierCost(g.content, T.id, cur);
     const hand = (T.grow || []).findIndex((sk) => used.includes(sk));
     const knack = Math.max(0, ...(T.grow || []).map((sk) => rawSkill(g, sk) / 10));   // 이미 손에 익은 것 쪽으로
     return { T, cur, cost, score: (cur ? 10 : 0) + (hand >= 0 ? 20 - used.indexOf(T.grow[hand]) * 5 : 0) + knack };
-  }).filter((x) => x.cur < 3 && x.cost > 0 && x.cost <= free && !(x.cur === 2 && genius >= C.rules.genius_max)).sort((a, b) => b.score - a.score || a.T.id.localeCompare(b.T.id)).slice(0, 4);
+  }).filter((x) => x.cost > 0 && x.cost <= free && (x.cur < 3 || (x.cur === 3 && CR.maxTier(x.T) === 4 && open.has(x.T.id) && divine < (C.rules.divine_max ?? 1))) && !(x.cur === 2 && genius >= C.rules.genius_max)).sort((a, b) => b.score - a.score || a.T.id.localeCompare(b.T.id)).slice(0, 4);
   for (const { T, cur, cost } of cand) out.push({ id: `story:wake:${T.id}`, kind: "story", label: `어둠 속에서 — ${T.name}이(가) ${cur ? `${tierWord(g, cur + 1)}(으)로 자란다` : "깨어난다"} (잔향 ${cost}점)`, minutes: 0 });
   return out.map((o) => ({ ...o, label: josa(o.label) }));
 }
@@ -2268,9 +2383,22 @@ function storyOdds(g, ck) {
   if (ck.per_defense && g.domain) { _domData = g.content.game.domains; const dv = DOM.defenseOf(g, g.domain, DMH()); D -= Math.round(ck.per_defense * dv); if (dv) parts.push({ sign: "▲", text: `방어 ${dv}` }); }
   if (ck.per_ready) { const n = risingReady(g).filter((x) => x.ok).length; D -= ck.per_ready * n; parts.push({ sign: "▲", text: `준비된 것 ${n}가지` }); const cv = TV(g, "crowd_voice", [0, 5, 8, 12]); if (cv) { S += cv; parts.push({ sign: "▲", text: "사람들이 네 목소리를 따라 부른다 (군중의 목소리)" }); } }
   if (ck.D_per_loop && g.run.loop > 1) parts.push({ sign: "▼", text: "젖은 재 냄새가 짙다" });
+  { const a = artEdge(g, ck.skill, { story: true }); if (a.n) { S += a.n; parts.push({ sign: "▲", text: a.text }); } }
   return { P: prob(S, D), S, D, parts };
 }
 const WARN_TEXT = (g, w) => { const [k, a] = w.split(/\s+/); if (k === "pknows") return `너는 안다 — ${shortFact(g, a) || a}`; if (k === "been") return `${placeName(g, a)}에 가 본 적이 있다`; if (k === "date") return "볼크가 마을에 왔다"; if (k === "var") return g.content.game.flags?.[a]?.warn || "들은 것이 있다"; return "들은 것이 있다"; };
+// 이식 (06 §4.4 · SCENARIOS §6): 이 회차의 몸에 붙인 특질 — 능력치가 바로 붙고, 이레 동안 몸이 거부한다 (이식 친화가 덜어 준다).
+// 회귀하면 사라진다. 이레를 견디면 영혼에 남는다 — 장부에 새겨져, 정본 해금에서는 다음 시대의 혈통으로 열린다
+function graft(g, id, res) {
+  const T = CR.traitDef(g.content, id); if (!T || hasTrait(g, id)) return;
+  // 한 몸에 들지 않는 피 (06 §7): 이식은 거부된다 — 아픔만 남는다
+  const clash = (CR.creationOf(g.content).rules.trait_exclusive || []).find(([a, b]) => (a === id && hasTrait(g, b)) || (b === id && hasTrait(g, a)));
+  if (clash) { g.P.status.pain = clamp(g.P.status.pain + 20, 0, 100); g.P.notebook.push(`이식 — ${T.name}. 몸이 받지 않았다. 피가 그것을 밀어냈다`); res?.notes?.push?.("몸이 그것을 받지 않는다"); return; }
+  (g.P.grafts ??= []).push(id); (g.P.graftAt ??= {})[id] = g.t;
+  for (const [k, v] of Object.entries(T.stats || {})) if (k in g.P.mods) g.P.mods[k] += (Number(v) || 0) / 2;
+  g.P.notebook.push(`이식 — ${T.name}. 몸이 이레 동안 그것을 밀어낸다`);
+  res?.notes?.push?.(`${T.name} — 몸이 그것을 밀어낸다`);
+}
 function storyEffect(g, e, res) {
   const parts = String(e).split(/\s+/), k = parts[0], rest = String(e).slice(k.length + 1);
   if (k === "learn") learn(g, parts[1], "그 저녁");
@@ -2281,7 +2409,8 @@ function storyEffect(g, e, res) {
   else if (k === "hunger") g.P.status.hunger = clamp(g.P.status.hunger + Number(parts[1]), 0, 4);
   else if (k === "pain") { const v = Number(parts[1]); g.P.status.pain = clamp(g.P.status.pain + (v > 0 ? Math.round(v * TV(g, "strong_bones", [1, 0.9, 0.8, 0.7]) * (hasTrait(g, "aeri_bone") ? 1.15 : 1)) : v), 0, 100); }   // 강골은 매와 떨어짐을 덜 받는다
   else if (k === "item") { const good = g.content.game.economy.goods[parts[1]]; if (good) g.L.give("player", { ...good, id: uid(g, `it_${parts[1]}`), gid: parts[1] }); }
-  else if (k === "talent") { if (!g.P.talent) g.P.talent = parts[1]; }   // 재능의 값은 skill()이 얹는다 (영혼의 스킬과 겹치지 않게)
+  else if (k === "talent") { if (!g.P.talent) g.P.talent = parts[1]; }
+  else if (k === "graft") graft(g, parts[1], res);   // 재능의 값은 skill()이 얹는다 (영혼의 스킬과 겹치지 않게)
   else if (k === "note") g.P.notebook.push(fill(g, rest));
   else if (k === "memory") { const [, n, tag] = parts; addMemory(g, n, { kind: "impression", tag, delta: 0, text: parts.slice(3).join(" "), salience: 4, source: "engine" }); }
   else if (k === "goto") g.at = parts[1];
@@ -2857,6 +2986,36 @@ const DO = {
     g.P.notebook.push(`맹세 — ${oa.line}${witnesses.length ? ` (증인: ${witnesses.map((n) => displayName(g, n)).join(", ")})` : ""}`);
     pass(g, 1);
   },
+  // 비기의 행동 (06 §3.1)
+  art(g, id, res) {
+    const a = artDef(g, id); if (!a) return;
+    (g.P.artDay ??= {})[id] = Math.floor(g.t / 1440);
+    const ok = OK(res.tier), act = a.effect.act;
+    if (["disarm", "knockout", "finish", "escape"].includes(act)) {
+      const F = g.fight; pass(g, 1); F.round++;
+      if (act === "escape") { if (ok) { g.fight = null; res.notes.push(`${a.name} — 몸이 먼저 틈을 찾았다. 따돌렸다`); } else { res.notes.push(`${a.name} — 막혔다. 그래도 맞지는 않았다`); } return; }
+      if (!ok) { hurtInFight(g, res, 1); rageTick(g, res); fightEnd(g, res); return; }
+      g.fight = null;
+      const nm = nameOf(g, F.npc);
+      if (act === "disarm") { res.notes.push(`${a.name} — ${nm}의 손에서 무기가 떨어진다. ${nm}이(가) 물러선다`); bumpRel(g, F.npc, -4, 0); }
+      else {
+        g.W.override({ npc: F.npc, from: g.t, to: g.t + 120, kind: "captive", at: g.at, doing: "정신을 잃고 쓰러져 있다" });
+        res.notes.push(`${a.name} — ${nm}이(가) 쓰러진다. 숨은 붙어 있다`);
+        if (act === "finish") { for (const w of present(g)) if (w.npc !== F.npc && w.kind !== "captive") mind(g, w.npc).fear += 2; g.P.notebook.push(`오의 — ${a.name}. 보는 사람들이 너를 다르게 본다`); }
+      }
+      const x = ((g.nem ??= {})[F.npc] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 1);
+      return;
+    }
+    if (act === "mend") { const it = mine(g).filter((i) => i.condition != null && (i.tags || []).some((t) => ["무기", "도구"].includes(t))).sort((p, q) => p.condition - q.condition)[0]; if (it) { it.condition = 100; res.notes.push(`${a.name} — ${it.name}이(가) 제 모양을 찾았다`); } pass(g, 30); return; }
+    const n = g.convo?.npc; if (!n) return;
+    const m = mind(g, n); g.convo.turns++; pass(g, 5);
+    if (act === "pry") {
+      const hid = (g.content.reveals[n] || []).filter((r) => !m.revealed.has(r.fact) && !knowsFact(g, r.fact));
+      if (ok && hid.length) { const r = hid[Math.floor(hash(g.seed, "pry", n, String(g._i)) * hid.length)]; m.revealed.add(r.fact); m.toldPlayer.add(r.fact); learn(g, r.fact, `${nameOf(g, n)}이(가) 말끝에 흘렸다`); res.reveal = r.fact; bumpRel(g, n, 0, -3); }
+      else { g.convo.patience -= 2; res.notes.push("말을 아낀다. 눈이 좁아진다"); }
+    } else if (act === "calm") { if (ok) { m.fear = Math.max(0, m.fear - 2); m.anger = Math.max(0, (m.anger || 0) - 2); g.convo.patience += 3; bumpRel(g, n, 4, 0); res.notes.push("어깨가 내려간다"); } else res.notes.push("귀를 닫는다"); }
+    else if (act === "sway") { if (ok) { bumpRel(g, n, 10, 15); res.notes.push(`${a.name} — 한마디가 그 사람 안에서 오래 울린다`); } else { g.convo.patience -= 2; res.notes.push("너무 멀리 갔다"); } }
+  },
   // ── 싸움의 합 ──
   fight_strike(g, _, res) { const F = g.fight; pass(g, 1); F.round++; F.edge = 0; if (OK(res.tier)) { F.foe += res.tier === "대성공" ? 2 : 1; res.notes.push(`${nameOf(g, F.npc)}이(가) 휘청인다`); } else hurtInFight(g, res, res.tier === "대실패" ? 2 : 1); rageTick(g, res); fightEnd(g, res); },
   fight_guard(g, _, res) { const F = g.fight; pass(g, 1); F.round++; if (OK(res.tier) || res.tier === "부분 성공") { F.edge = 12; res.notes.push("팔이 주먹을 받아 낸다. 상대의 숨이 거칠다"); } else hurtInFight(g, res, 1); rageTick(g, res); fightEnd(g, res); },
@@ -3047,7 +3206,7 @@ export function revealCtx(g, n, tier) {
   const tavern = g.at === "gf_rooster" || /tavern|inn|주막|술집/.test(`${l.kind || ""}${l.name || ""}`);
   const scene = tavern && (hm >= 18 * 60 || hm < 2 * 60) ? "술자리" : null;
   return { npc: n, trust: r.trust, like: r.like, tier, dead: g.S.dead, toldBy, scene, offer: !!g.convo?.offer, flags,
-    dejaVu: (g.run.loop - 1) * 10 * [1, 0.75, 0.5, 0.25][talentTier(g, "dejavu_block")],                                                     // 시간에 민감한 존재의 기시감 (03 §7) — 회차마다 쌓인다
+    dejaVu: (g.run.loop - 1) * 10 * TV(g, "dejavu_block", [1, 0.75, 0.5, 0.25]),                                                     // 시간에 민감한 존재의 기시감 (03 §7) — 회차마다 쌓인다
     echoKnown: m.memories.some((x) => x.tag === "이상함") && (g.run.loop > 1), gifts: m.gifts || 0 };
 }
 function describeBelief(g, b) {
@@ -3151,6 +3310,11 @@ function rustDay(g) {
 }
 // ── 몸의 하루 (06 §7·§8): 특질·결점·재능이 날마다 하는 일 ──
 function bodyDay(g, d) {
+  if (g.P.status.pain >= 90 && g.P.painPeakT == null) g.P.painPeakT = d * 1440;   // 업적 '흉터'의 시작
+  for (const id of g.P.grafts || []) {   // 이식의 거부 반응: 이레
+    const days = (d * 1440 - (g.P.graftAt?.[id] ?? 0)) / 1440, k = TV(g, "graft_affinity", [1, 0.7, 0.5, 0.3]);
+    if (days > 0 && days <= 7) { g.P.status.pain = clamp(g.P.status.pain + Math.round(5 * k), 0, 100); g.P.status.stress = clamp(g.P.status.stress + Math.round(3 * k), 0, 100); if (days > 6) { (g.P.graftHeld ??= []).includes(id) || g.P.graftHeld.push(id); g.feed.push({ kind: "rule", text: `${CR.traitDef(g.content, id)?.name}이(가) 몸에 붙었다. 이제 밀어내지 않는다.`, quiet: true }); } }
+  }
   const P = g.P, day0 = Math.floor(startOf(g) / 1440), T = d * 1440;
   // 나가의 비늘살: 이틀 물을 못 보면 살갗이 갈라진다
   if (hasTrait(g, "naga_scale") && T - (P.lastWaterT ?? startOf(g)) >= 2 * 1440) { P.status.pain = clamp(P.status.pain + 4, 0, 100); g.feed.push({ kind: "rule", text: "살갗이 갈라진다. 손등의 비늘살이 하얗게 일어난다 — 물이 필요하다.", quiet: true }); }
@@ -3190,7 +3354,7 @@ function driftHints(g, d, k) {
 function overhear(g, t) {
   const k = talentTier(g, "bat_ear"); if (!k || g.story || g.convo) return;
   const here = present(g, t).filter((w) => w.kind !== "captive" && !asleep(w, t)).map((w) => w.npc);
-  if (here.length < 2 || hash(g.seed, "overhear", t) >= [0, 0.1, 0.18, 0.25][k]) return;
+  if (here.length < 2 || hash(g.seed, "overhear", t) >= tvx(k, [0, 0.1, 0.18, 0.25])) return;
   for (const n of here) {
     const b = g.L.beliefs(n).filter((x) => x.heat > 0.2 && x.subject !== "player" && ["dead", "suspect", "missing", "saw_item", "claim"].includes(x.kind)).sort((a, c) => c.heat - a.heat)[0];
     if (!b) continue;
@@ -3409,6 +3573,11 @@ export function regressRun(g) {
   if (g.narrator || g.run.narrator) next.narrator = g.narrator || g.run.narrator;   // (opening·lethal은 검사용 깃발 — 넘기지 않는다)
   return next;
 }
+// 장부(잔향의 장부)에 옮길 영혼: 이 회차가 지금 끝났다면 — 시대가 끝날 때(진짜 죽음) 마지막 회차까지 셈한다
+export const eraSoul = (g) => settleSoul(g, loopRecord(g));
+// 검사용 손잡이 (test_divine): 안쪽 셈을 그대로 들여다본다
+export const _internal = { divineOpenIn: (g) => divineOpenIn(g), artsOn: (g) => artsOn(g), artEdge: (g, sk, ctx) => artEdge(g, sk, ctx), graft: (g, id) => graft(g, id, { notes: [] }), tvx, awakenOptions: (g) => awakenOptions(g), hasTrait: (g, id) => hasTrait(g, id), bodyDay: (g, d) => bodyDay(g, d) };
+export const achievementList = (g) => achievementsOf(g).map(({ id, tp, text }) => ({ id, tp, text }));
 // 이번 회차를 영혼에 정산한다 — 관계는 수치가 아니라 '그 회차에 어떤 사이였나'로 (03 §4.1, 08 §5)
 function settleSoul(g, record) {
   const old = soul(g), loop = g.run.loop;
@@ -3432,6 +3601,9 @@ function settleSoul(g, record) {
   S.skills ||= {};
   for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
   S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
+  S.mastery = soulMastery(g); S.masteryXP = { ...(S.masteryXP || {}), ...(g.P.masteryXP || {}) };   // 경지는 영혼에 새긴 깨달음 (06 §3.2)
+  S.genius ||= {}; for (const [id, k] of Object.entries(talentLevels(g))) if (k >= 3) S.genius[id] = (S.genius[id] || 0) + 1;   // 천재로 산 회차 → 신재가 열린다
+  S.grafted = [...new Set([...(S.grafted || []), ...(g.P.graftHeld || [])])];   // 이레를 견딘 이식 → 장부에 (정본 해금의 혈통)
   S.idle = { ...(g.P.idle || {}) };                                  // 녹슮 타이머는 회귀를 건넌다 (03 §3.2)
   S.daysLived = (S.daysLived || 0) + Math.max(0, Math.floor((g.t - startOf(g)) / 1440));   // 영혼의 햇수 (03 §2.3)
   // 마음속 기억의 벽 (20 §5.6): 마음을 들인 사람이 그 회차에 죽었으면 — 이름이 벽에 남는다
@@ -3588,7 +3760,7 @@ function rollcallSearch(g, day) {
   for (const it of mine(g)) {
     // 자리마다 다르다: 손·허리는 그대로 드러나고, 품은 더듬으면 나오고, 부츠·소매는 손재주로 숨긴다 (02 §2)
     const sl = slotOf(it), hideable = it.tags?.includes("숨길수있음");
-    const smug = [0, 10, 20, 30][talentTier(g, "smuggler")] + (it.tags?.includes("무기") && hideable ? TV(g, "hidden_blade", [0, 15, 20, 25]) : 0);   // 밀수: 옷 안에 감출 줄 안다 · 암기: 숨긴 날은 더
+    const smug = TV(g, "smuggler", [0, 10, 20, 30]) + (it.tags?.includes("무기") && hideable ? TV(g, "hidden_blade", [0, 15, 20, 25]) : 0);   // 밀수: 옷 안에 감출 줄 안다 · 암기: 숨긴 날은 더
     const P = SLOTS[sl].seen ? 0 : sl === "품" ? (hideable ? prob(skill(g, "손재주") + g.P.mods.민첩 * 2 + smug, 24) : 0.05 + smug / 100) : prob(skill(g, "손재주") + g.P.mods.민첩 * 2 + 8 + smug, 20);
     if (hash(g.seed, "frisk", day, it.id) >= P) found.push(it);
   }
@@ -3820,7 +3992,7 @@ function view0(g) {
     traits: traits(g), mode: g.run.mode || "grim", echoNamed: !!g.S.vars.echo_named || (soul(g).echoNamed || false),
     talents: [
       ...talentsOf(g).map((t) => ({ id: t, name: TALENT[t]?.name || t, grows: TALENT[t]?.grow || [], tier: 1, tierName: "어머니가 기억하는", mother: true })),
-      ...Object.entries(talentLevels(g)).filter(([, k]) => k > 0).map(([id, k]) => { const T = CR.talentDef(g.content, id); return T ? { id, name: T.name, grows: T.grow || [], tier: k, tierName: tierWord(g, k), area: T.area, effect: T.tiers?.[k - 1] || "", revealed: [...(soul(g).revealed || []), ...(g.P.revealed || [])].includes(id) } : null; }).filter(Boolean),
+      ...Object.entries(talentLevels(g)).filter(([, k]) => k > 0).map(([id, k]) => { const T = CR.talentDef(g.content, id); return T ? { id, name: k >= 4 && T.divine?.name ? T.divine.name : T.name, grows: T.grow || [], tier: k, tierName: tierWord(g, k), area: T.area, effect: (k >= 4 ? T.divine?.text : T.tiers?.[k - 1]) || T.tiers?.[2] || "", revealed: [...(soul(g).revealed || []), ...(g.P.revealed || [])].includes(id) } : null; }).filter(Boolean),
     ],
     // 셋째의 갈래와 생성 (06): 화면의 몸 칸 · 죽음 화면의 마지막 냄새
     origin: { id: originIdOf(g), name: originOf(g).name || "농노", title: originOf(g).title || "", sense: originOf(g).sense || "빵 냄새", home: placeName(g, homeOf(g)), routine: dutyOf(g).routine || null,
@@ -3830,13 +4002,19 @@ function view0(g) {
       flaws: CR.buildFlaws(buildOf(g)).map((id) => CR.flawDef(g.content, id)).filter(Boolean).map((f) => ({ id: f.id, name: f.name, desc: f.desc })),
       traits: (buildOf(g).traits || []).map((id) => CR.traitDef(g.content, id)).filter(Boolean).map((t) => ({ id: t.id, name: t.name, desc: t.desc })),
       hiddenLeft: (buildOf(g).hidden || []).filter((id) => !talentTier(g, id)).length,
+      legacy: (buildOf(g).legacy || []).map((id) => CR.legacyDef(g.content, id)).filter(Boolean).map((l) => ({ id: l.id, name: l.name, desc: l.desc })),
     } : null,
+    // 비기 (06 §3.1): 열린 것과, 등급은 됐는데 스킬이 모자라 아직 닫힌 것 (그 스킬 몇에 열리는지)
+    arts: (() => { const req = CR.creationOf(g.content).rules.art_req || [30, 50, 70, 90], on = new Set(artsOn(g).map((a) => a.id)), day = Math.floor(g.t / 1440);
+      return ARTS(g).filter((a) => { const k = talentTier(g, a.talent); return a.tier <= 4 ? k >= a.tier : k >= 4; }).map((a) => ({ id: a.id, name: a.name, desc: a.desc, tier: a.tier, skill: a.skill, req: req[a.tier - 2], on: on.has(a.id), used: a.effect?.kind === "act" && g.P.artDay?.[a.id] === day, talent: CR.talentDef(g.content, a.talent)?.name })); })(),
+    mastery: Object.entries(soulMastery(g)).filter(([, v]) => v > 0).map(([sk, lv]) => ({ skill: sk, level: lv })),
+    grafts: (g.P.grafts || []).map((id) => ({ id, name: CR.traitDef(g.content, id)?.name || id, held: (g.P.graftHeld || []).includes(id) })),
     tp: { free: Math.max(0, tpFree(g)) },
     // 개 코(수재부터): 제 몸의 젖은 재 냄새를 맡는다
     // 주인의 빚 (결점): 남은 빚 · 빚쟁이가 오기까지 · 못 낸 번
     debt: g.P.debt > 0 ? (() => { const d = Math.floor(g.t / 1440) - Math.floor(startOf(g) / 1440); return { left: coinText(g.P.debt), days: 10 - (((d % 10) + 10) % 10), miss: g.P.debtMiss || 0 }; })() : null,
     smell: talentTier(g, "dog_nose") >= 2 ? (() => { const v = smellOf(g); return v < 1 ? "아직 나지 않는다" : v < 6 ? "옅다 — 개나 맡는다" : v < 12 ? "짙어지고 있다 — 바르그가 고개를 돌린다" : "짙다 — 사냥꾼이 먼저 안다"; })() : null,
-    forecast: (() => { const k = talentTier(g, "weather"); if (!k) return null; const d0 = Math.floor(g.t / 1440); return Array.from({ length: [0, 1, 3, 7][k] }, (_, i) => ({ day: i + 1, rain: !!g.W.rainy(d0 + i + 1) })); })(),
+    forecast: (() => { const k = talentTier(g, "weather"); if (!k) return null; const d0 = Math.floor(g.t / 1440); return Array.from({ length: tvx(k, [0, 1, 3, 7]) }, (_, i) => ({ day: i + 1, rain: !!g.W.rainy(d0 + i + 1) })); })(),
     achievements: (soul(g).achievements || []).map((a) => (typeof a === "string" ? a : a.id)).map((id) => achievementsOf(g).find((x) => x.id === id)?.text || ACHIEVEMENTS.find((x) => x.id === id)?.text || id),
     ladder: (() => { const st = ladderStage(g); return st ? { stage: st, name: LADDER[st] } : null; })(),
     echo: g.P.echoStage?.[g.P.settlement] ? ECHO_STAGES[g.P.echoStage[g.P.settlement]] : null,
