@@ -69,7 +69,7 @@ export function bodyCap(g, sk) { return BODY_STAT[sk] ? 15 + (BODY_STAT[sk](stat
 const rawSkill = (g, sk) => (g.P.skills[sk] ?? 10) + (g.P.gain?.[sk] || 0);
 // 실제 쓰는 스킬 = 상한까지는 그대로, 넘는 만큼은 1/4 ("기술이 몸을 이끈다")
 export function skill(g, sk) {
-  let v = rawSkill(g, sk) + talentBonus(g, sk);
+  let v = rawSkill(g, sk) + talentBonus(g, sk) + (sk === "통찰" && (soul(g).daysLived || 0) >= 50 * 365 ? 5 : 0);   // 늙은 눈 (03 §2.3)
   const cap = bodyCap(g, sk);
   if (v > cap) v = cap + (v - cap) * 0.25;
   return v;
@@ -140,6 +140,7 @@ export function boot(content, run) {
   // 기시감 (10 §5.2): 시간에 닿은 세력은 회차를 넘어 낌새를 챈다 — 셋째 회차부터 잿빛 탑의 밀정이 일찍 온다
   if (run.loop >= 3) ((g.nem ??= {}).npc_isol ??= { grudge: 1, track: 0, since: START });
   if (run.carry.soul?.bloodNumb) g.P.bloodNumb = true;
+  if (run.carry.soul?.idle) g.P.idle = { ...run.carry.soul.idle };
   for (const e of run.journal) apply(g, e, { replay: true });
   return g;
 }
@@ -614,6 +615,7 @@ function step(g, e) {
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
   const grown = opt.skill || opt.check?.skill;   // 대본 장면의 판정도 실전이다
+  if (grown) (g.P.idle ??= {})[grown] = 0;      // 녹슮 타이머: 쓴 날은 0으로
   if (od && grown) growSkill(g, grown, od, tier, opt.check ? "story" : verb.startsWith("op_") ? "op" : verb);
   for (const [k, d] of Object.entries(TEMPER_OF[verb] || {})) temper(g, k, d);
   // 두려움 (01 §1.4): 사냥꾼과 같은 자리, 수배 — 쌓이고, 장면이 바뀌면 조금씩 가라앉는다
@@ -1377,6 +1379,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     echoTick(g, d);
     ladderTick(g, d);
     clocksTick(g, d);
+    rustDay(g);
     // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
     for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
   }
@@ -2398,6 +2401,18 @@ function ladderTick(g, day) {
   }
   if (g.domain && !g.domain.lost && (L[sid] || 0) >= 2) g.domain.expMod = (g.domain.expMod || 0) + 0.5;   // 사냥대가 냄새를 맡는다 — 숨은 곳이 위험해진다
 }
+// 녹슮 (03 §3.2): 30일 쓰지 않으면 하루 −0.05, 최고치의 80% 아래로는 떨어지지 않는다.
+// 영혼이 쓰지 않은 날로 센다 — 회귀는 타이머를 되돌리지 않는다 (soul.idle)
+function rustDay(g) {
+  const I = (g.P.idle ??= {});
+  for (const sk of Object.keys(g.P.skills)) {
+    if (["읽고쓰기", "용언"].includes(sk) && rawSkill(g, sk) <= 0) continue;
+    I[sk] = (I[sk] || 0) + 1;
+    if (I[sk] <= 30) continue;
+    const peak = Math.max(soul(g).skills?.[sk] || 0, rawSkill(g, sk)), floor = peak * 0.8;
+    if (rawSkill(g, sk) - 0.05 >= floor) (g.P.gain ??= {})[sk] = (g.P.gain[sk] || 0) - 0.05;
+  }
+}
 // 대본 장면이 남긴 깃발의 결과 가운데 '며칠 뒤'가 필요한 것 (A13): 목표 행동 문법에는 상대 시각이 없다
 function flagsDay(g, day) {
   const V = g.S.vars, P = g.P, T = day * 1440;
@@ -2621,6 +2636,10 @@ function settleSoul(g, record) {
   S.skills ||= {};
   for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
   S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
+  S.idle = { ...(g.P.idle || {}) };                                  // 녹슮 타이머는 회귀를 건넌다 (03 §3.2)
+  S.daysLived = (S.daysLived || 0) + Math.max(0, Math.floor((g.t - START) / 1440));   // 영혼의 햇수 (03 §2.3)
+  // 마음속 기억의 벽 (20 §5.6): 마음을 들인 사람이 그 회차에 죽었으면 — 이름이 벽에 남는다
+  S.wall = [...(S.wall || []), ...Object.entries(g.P.bond || {}).filter(([n, v]) => v >= 12 && g.S.dead.has(n)).map(([n]) => ({ npc: n, name: displayName(g, n), loop }))].slice(-40);
   // 업적 → 재능 점수 (03 §4.2): 잔향에 조용히 새겨진다. 회차 기록에는 붙지 않는다
   S.achievements ||= [];
   for (const a of ACHIEVEMENTS) if (!S.achievements.includes(a.id) && a.when(g)) { S.achievements.push(a.id); S.tp = (S.tp || 0) + a.tp; }
@@ -2921,6 +2940,8 @@ export function view(g) {
     trueNames: Object.keys(g.content.game.truenames || {}).filter((w) => knowsWord(g, w)).map((w) => ({ word: w, source: g.content.game.truenames[w].source })),
     rising: (() => { const r = risingReady(g); return r.some((x) => x.ok) || g.S.vars.greyford_free ? { ready: r, free: !!g.S.vars.greyford_free, failed: !!g.S.vars.rising_failed } : null; })(),
     succession: g.S.vars.varskar_dead || g.S.vars.kaspar_warned ? { dead: !!g.S.vars.varskar_dead, kaspar: g.S.vars.faction_kaspar, throne: !!g.S.vars.kaspar_throne, charter: !!g.S.vars.kaspar_charter } : null,
+    soulYears: Math.floor(((soul(g).daysLived || 0) + Math.max(0, Math.floor((g.t - START) / 1440))) / 365),
+    memoryWall: (soul(g).wall || []).map((w) => `${w.name} — ${w.loop}회차`),
     hunters: [
       ...Object.entries(g.nem || {}).filter(([n]) => !g.S.dead.has(n)).map(([n, x]) => ({ name: displayName(g, n), disposition: nemDisposition(x), track: x.track, lessons: (nemMind(x).lessons || []).map((l) => ({ flee: "달아나는 길을 안다 — 다음엔 먼저 막는다", bargain: "말을 듣지 않는다 — 흥정이 어렵다", fight: "맞붙는 법을 안다" }[l] || l)), now: true })),
       ...(soul(g).nemeses || []).filter((p) => !(g.nem || {})[p.npc]).map((p) => ({ name: displayName(g, p.npc), disposition: "휴면 — 그는 너를 모른다", past: `〔회차 ${p.loop || "?"}〕`, now: false })),

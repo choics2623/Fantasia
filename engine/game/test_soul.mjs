@@ -84,4 +84,17 @@ const habit = G.boot(C, { ...n2.run, journal: [], loop: 5, carry: { ...n2.run.ca
 G.act(habit, { id: "story:next" });
 const hs = G.options(habit).find((o) => o.id === "story:mem_sara_first");
 check("세 회차 연속 고른 ◈는 습관 — 표지가 빠진다", hs && !hs.memory);
+// 녹슮 (03 §3.2) · 영혼의 햇수 (03 §2.3) · 기억의 벽 (20 §5.6)
+{
+  const g = G.boot(C, G.newRun({ seed: 7, opening: false })); g.at = "gf_river_huts";
+  g.P.gain.싸움 = 20; const s0 = G.skill(g, "싸움");
+  for (let i = 0; i < 40; i++) { if (G.view(g).story) { g.storyDone.add(G.view(g).story.id); g.story = null; } g.P.status.hunger = 0; G.act(g, { id: "routine_day" }); }
+  const s1 = G.skill(g, "싸움");
+  check("서른 날 쓰지 않은 손은 녹슨다 — 그러나 최고치의 80% 아래로는 아니다", s1 < s0 && s1 >= s0 * 0.8, `${s0.toFixed(2)} → ${s1.toFixed(2)}`);
+  g.P.bond = { npc_kit: 20 }; g.A.doEffect("kill npc_kit", g.t); g.ended = { kind: "dead", why: "t", t: g.t };
+  const n2 = G.boot(C, { ...G.regressRun(g), opening: false });
+  check("녹슮 타이머는 회귀를 건넌다", (n2.P.idle?.싸움 || 0) > 30);
+  check("기억의 벽 — 마음을 들인 사람의 죽음", G.view(n2).memoryWall.some((w) => w.includes("키트")), JSON.stringify(G.view(n2).memoryWall));
+  check("영혼의 햇수가 쌓인다", (n2.run.carry.soul.daysLived || 0) >= 39);
+}
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);
