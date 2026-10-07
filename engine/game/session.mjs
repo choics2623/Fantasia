@@ -14,13 +14,13 @@ const INK = new Set(["ink", "drift", "grow", "voice", "dayend", "echo", "recap"]
 export function createSession(content, provider, { run = null, onSave = null, fast = provider, recorder = fast, mockRecords = null } = {}) {
   let g = G.boot(content, run || G.newRun());
   let transcript = g.run.transcript || [];
-  const save = () => { g.run.transcript = transcript.slice(-40); g.run.lastPlayedAt = Date.now(); onSave?.(g.run); };
+  const save = () => { g.run.transcript = transcript.slice(-40); g.run.lastPlayedAt = Date.now(); onSave?.(waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run); };   // 서술을 기다리는 박자는 저장하지 않는다
   // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
   // 시간선: 회귀·새 판·불러오기는 새 시간선이다. 되돌리기는 그 아침 뒤의 대화만 지운다 — 지워진 시간선의 기억이 새 기록에 섞이지 않게
   const jobs = [], pending = [], live = new Set();
   let busy = false, working = null, recDebug = [], timeline = {};
   function enqueue(npc, conv) { const j = { npc, transcript: conv, t: g.t, time: fmt(g.t), tries: 0, tl: timeline, at: g.run.journal.length }; jobs.push(j); live.add(j); kick(); }
-  function newTimeline() { timeline = {}; for (const j of live) j.dead = true; live.clear(); jobs.length = 0; pending.length = 0; }
+  function newTimeline() { waiting = null; timeline = {}; for (const j of live) j.dead = true; live.clear(); jobs.length = 0; pending.length = 0; }
   function cutTimeline(mark) { for (const j of live) if (j.at > mark) { j.dead = true; live.delete(j); } }
   function kick() {
     if (working || !jobs.length) return working;
@@ -116,9 +116,32 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     busy = true;
     try { return await turnInner(input, opts2); } finally { busy = false; flush(); }
   }
+  // 서술만 실패한 박자: 엔진은 이미 굴렀다 (주사위는 기록 번호로 정해진다 — 다시 해도 같다).
+  // 같은 행동으로 다시 시도하면 재생 없이 서술만 다시 부른다. 다른 행동을 고르면 그때 되돌린다 (재생)
+  let waiting = null;
+  const sameInput = (a, b) => !!a && !!b && a.id === b.id && (a.text || null) === (b.text || null) && (a.free || null) === (b.free || null);
   async function turnInner(input = null, { onText } = {}) {
     const debug = recDebug.splice(0);
+    if (waiting && sameInput(input, waiting.input)) {
+      const P = waiting;
+      try {
+        transcript.push({ who: "player", text: P.res.text || P.res.label });
+        const n = await narrate(P.res, P.opts, { onText, free: input?.free, memories: false });
+        waiting = null;
+        if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
+        transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
+        if (P.res?.convoEnded) { enqueue(P.res.convoEnded.npc, transcript.slice(-(P.res.convoEnded.turns * 2 + 6))); transcript = []; }
+        save();
+        return payload(P.res, n, [...debug, { kind: "renarrate" }]);
+      } catch (e) {
+        transcript = transcript.slice(0, P.keepT);
+        debug.push({ kind: "error", error: String(e.message || e), problems: e.problems });
+        return { broken: "잿빛 실이 끊겼다 — LLM이 응답하지 않는다. 이 박자는 일어나지 않았다.", retry: input, ...payload(null, null, debug), ...(P.view ? { view: P.view } : {}) };
+      }
+    }
+    if (waiting) { g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, waiting.keep) }); transcript = transcript.slice(0, waiting.keepT); waiting = null; }
     const keep = g.run.journal.length, keepT = transcript.length;
+    let acted = null, actedOpts = null, preView = null;
     try {
       let res = null, opts;
       if (input) {
@@ -131,12 +154,13 @@ export function createSession(content, provider, { run = null, onSave = null, fa
           id = it.id; tags = it.tags; text = input.free; debug.push({ kind: "interpret", ...it });
         }
         if (!before.some((o) => o.id === id)) return { error: "지금은 할 수 없는 행동", ...payload(null, null, debug) };
+        preView = G.view(g);   // 서술이 실패하면 이 화면을 보인다 — 그 박자는 일어나지 않았다
         const beforePeople = peopleKey();
         transcript.push({ who: "player", text: text || before.find((o) => o.id === id).label });
         res = G.act(g, { id, tags, text });
-        res.text = text;
+        res.text = text; acted = res;
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
-        opts = G.options(g);
+        opts = G.options(g); actedOpts = opts;
         if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       } else {
         opts = G.options(g);
@@ -152,6 +176,13 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       save();
       return payload(res, n, debug);
     } catch (e) {
+      if (acted && g.run.journal.length === keep + 1) {
+        // 엔진은 굴렀고 서술만 실패했다 — 되돌리지 않고 기다린다 (같은 행동으로 다시 시도하면 서술만, 다른 행동이면 그때 되돌린다)
+        waiting = { input, keep, keepT, res: acted, opts: actedOpts || G.options(g), view: preView };
+        transcript = transcript.slice(0, keepT);
+        debug.push({ kind: "error", error: String(e.message || e), problems: e.problems });
+        return { broken: "잿빛 실이 끊겼다 — LLM이 응답하지 않는다. 이 박자는 일어나지 않았다.", retry: input, ...payload(null, null, debug), ...(preView ? { view: preView } : {}) };
+      }
       // 되돌리기: 기록을 빼고 재생한다. 주사위는 기록 번호로 정해지므로 다시 시도해도 같다
       g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, keep) });
       transcript = transcript.slice(0, keepT);
@@ -198,12 +229,13 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       if (used >= 3) return { error: "이번 회차의 되돌리기를 다 썼다" };
       const mark = G.morningMark(g);
       if (mark == null) return { error: "되돌아갈 아침이 아직 없다" };
-      cutTimeline(mark);
+      cutTimeline(mark); waiting = null;
       g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, mark), rewinds: { ...(g.run.rewinds || {}), [g.run.loop]: used + 1 } });
       transcript = []; save(); return turn(null, o);
     },
     drain: () => kick() || Promise.resolve(),   // 검사용: 기록관이 끝날 때까지
     load(run) { newTimeline(); g = G.boot(content, run); transcript = run.transcript || []; },
-    get run() { return g.run; }, get game() { return g; },
+    // 서술을 기다리는 박자는 아직 일어나지 않았다 — 밖에서 보는 기록에는 없다
+    get run() { return waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run; }, get game() { return g; },
   };
 }

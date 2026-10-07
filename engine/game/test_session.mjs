@@ -50,6 +50,7 @@ check("LLM이 실패하면 그 턴은 일어나지 않는다 (기록이 그대�
 process.env.MOCK_FAIL = "0";
 const again = await s.act(broken.retry);
 check("다시 시도하면 이어진다", !again.broken && s.run.journal.length === jl + 1);
+check("다시 시도는 재생 없이 서술만 다시 부른다 (같은 주사위 — 엔진은 이미 굴렀다)", (again.debug || []).some((d) => d.kind === "renarrate"));
 check("자동 저장된다 (기록)", saved && saved.journal.length === s.run.journal.length);
 console.log(`LLM 호출 ${prov.usage.calls}회 (실패 ${prov.usage.failures})`);
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

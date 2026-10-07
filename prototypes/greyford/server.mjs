@@ -34,7 +34,18 @@ const provider = createProvider({ model: process.env.LLM_MODEL || (process.env.L
 const fast = createProvider({ model: process.env.LLM_FAST_MODEL || (process.env.LLM_PROVIDER === "api" ? "claude-haiku-4-5" : "haiku") });
 const slot = (name) => join(SAVES, `${String(name || "auto").replace(/[^\w가-힣-]/g, "")}.json`);
 const autosave = (run) => { mkdirSync(SAVES, { recursive: true }); writeFileSync(slot("auto"), JSON.stringify(run)); };   // 저장 폴더가 지워져도 다시 만든다
-const session = createSession(content, provider, { fast, run: existsSync(slot("auto")) ? JSON.parse(readFileSync(slot("auto"), "utf8")) : null, onSave: autosave });
+// 자동 저장이 깨졌으면 (옛 판본·고장 난 기록) 서버를 멈추지 않는다 — 옆으로 치워 두고 새 판으로
+function openSession() {
+  const raw = existsSync(slot("auto")) ? readFileSync(slot("auto"), "utf8") : null;
+  try { return createSession(content, provider, { fast, run: raw ? JSON.parse(raw) : null, onSave: autosave }); }
+  catch (e) {
+    const bad = join(SAVES, `auto.broken-${Date.now()}.json`);
+    if (raw) writeFileSync(bad, raw);
+    console.error(`자동 저장을 열지 못했다 (${e.message}) — ${bad}로 옮기고 새 판을 연다`);
+    return createSession(content, provider, { fast, run: null, onSave: autosave });
+  }
+}
+const session = openSession();
 
 function allowed(req, url) {
   const ip = req.socket.remoteAddress || "";
