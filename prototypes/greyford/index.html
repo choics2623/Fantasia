@@ -80,6 +80,14 @@
   <div class="card-bar"><button class="btn" id="cardBack" hidden>‹ 뒤로</button><span class="sp"></span><button class="btn" id="cardClose" aria-label="닫기">닫기 <kbd>Esc</kbd></button></div>
   <div class="card-body" id="cardBody"></div>
 </aside>
+<div class="create" id="create" hidden role="dialog" aria-modal="true" aria-labelledby="createTitle">
+  <div class="create-pane" id="createPane" tabindex="-1">
+    <div class="create-head"><h2 id="createTitle">새 시대 — 잔향이 고를 사람</h2><button class="btn" id="createClose" aria-label="닫기">닫기 <kbd>Esc</kbd></button></div>
+    <nav class="cr-steps" id="createSteps" aria-label="만드는 차례"></nav>
+    <div class="create-body" id="createBody"></div>
+    <div class="create-foot" id="createFoot"></div>
+  </div>
+</div>
 <div class="veil" id="veil" hidden></div>
 <script type="module" src="/ui/app.js"></script>
 </body>

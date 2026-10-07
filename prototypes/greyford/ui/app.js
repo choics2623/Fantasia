@@ -3,6 +3,7 @@
 import { worldSVG, townSVG, routePath, panZoom, fitToScreen, TYPE_KO } from "./map.js";
 import { pawnIconHTML } from "./piece.js";
 import { initCodex, codexSync, linkify, relink, openCard, closeCard, cardOpen, encyclopediaHTML, bindEncyclopedia, linksOn, setLinks } from "./codex.js";
+import { initCreate, openCreate, closeCreate, createOpen } from "./create.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -176,6 +177,8 @@ function itemEntry(cid) {
 }
 const bindItems = (root) => root.querySelectorAll(".itm[data-item]").forEach((b) => (b.onclick = () => openCard(`item:${b.dataset.item}`)));
 const HUNGER_W = ["배부르다", "괜찮다", "출출하다", "배고프다", "굶주렸다"];
+// 이/가 (받침이 있으면 '이') — 엔진의 josa와 같은 셈
+const iga = (w) => { const c = String(w).charCodeAt(String(w).length - 1) - 0xac00; return `${w}${c >= 0 && c < 11172 && c % 28 ? "이" : "가"}`; };
 const painWord = (x) => (x >= 75 ? "몸을 가누기 힘들다" : x >= 50 ? "욱신거린다" : x >= 25 ? "쑤신다" : "견딜 만하다");
 const tiredWord = (x) => (x >= 85 ? "쓰러지기 직전" : x >= 60 ? "지쳤다" : x >= 30 ? "조금 피곤하다" : "멀쩡하다");
 const fearWord = (x) => (x >= 4 ? "공포에 질렸다" : x >= 2 ? "떨린다" : x >= 1 ? "불안하다" : "담담하다");
@@ -334,8 +337,8 @@ function renderDock(d, loading) {
     panel.innerHTML = `<form class="namebox" id="nameForm"><label for="tn">${esc(nameC.text)} — 이 이름은 회귀해도 남는다</label>
       <input type="text" id="tn" maxlength="8" placeholder="이름" autocomplete="off" required>
       <div class="sib"><span>키트에게 너는</span><label><input type="radio" name="sib" value="형" checked> 형</label><label><input type="radio" name="sib" value="누나"> 누나</label></div>
-      <button class="btn primary">그 이름으로 대답한다</button></form>`;
-    $("nameForm").onsubmit = (e) => { e.preventDefault(); const n = $("tn").value.trim(); if (!n) return; const sib = panel.querySelector("input[name=sib]:checked").value; act({ id: nameC.id, text: `${n}|${sib}` }, false, `"${n}." — 어머니가 부르는 이름에 대답한다`); };
+      <button class="btn primary">${esc(nameC.button || "그 이름으로 대답한다")}</button></form>`;
+    $("nameForm").onsubmit = (e) => { e.preventDefault(); const n = $("tn").value.trim(); if (!n) return; const sib = panel.querySelector("input[name=sib]:checked").value; act({ id: nameC.id, text: `${n}|${sib}` }, false, `"${n}." — ${nameC.say || "어머니가 부르는 이름에 대답한다"}`); };
     setTimeout(() => $("tn")?.focus(), 50);
     return;
   }
@@ -371,8 +374,11 @@ function renderDock(d, loading) {
   const tw = $("toWorld"); if (tw) tw.onclick = () => openMap("world");
 }
 
+let offeredCreate = false;
 function show(d, isFresh = false) {
   last = d; fresh = isFresh;
+  // 처음 여는 판 (자동 저장이 비어 있다): 생성 화면부터 — 닫으면 정본의 셋째로 그대로 시작한다
+  if (d.fresh && !offeredCreate && !d.broken) { offeredCreate = true; setTimeout(() => openCreate({ canClose: true, reason: "누구로 시작할까 — 셋째의 갈래" }), 60); }
   if (!d.broken) addBeats(d); else currentTurn = null;
   render(d);
   // 새로 알게 된 것이 있으면 백과 목록을 다시 받고, 방금 그린 덩어리의 이름을 다시 잇는다
@@ -412,7 +418,7 @@ function renderSheet(v) {
     const T2 = v.twoDays;
     if (T2?.then) h += sec("두 겹의 날", `<div class="book">${(T2.marks || []).map((m) => `<div>${esc(m)}</div>`).join("")}<div class="faint">┊ 지난 회차의 이 날 (${esc(T2.then.date)}) — ${esc(T2.then.at)}${T2.then.notes.map((x) => `<br>┊ ${esc(x)}`).join("")}</div>${T2.now ? `<div style="margin-top:6px">이번 — ${esc(T2.now.at)}${T2.now.notes.map((x) => `<br>· ${esc(x)}`).join("")}</div>` : `<div style="margin-top:6px">이번 — 아직 하루가 끝나지 않았다</div>`}</div>`);
     const TL = v.talents || [], AC = v.achievements || [];
-    h += sec("재능과 새긴 것", TL.length || AC.length ? `<div class="book">${TL.map((t) => `<b>${esc(t.name)}</b> <span class="faint">— ${esc(t.grows.join("·"))}이(가) 빨리 는다</span>`).join("<br>")}${AC.length ? `<div class="faint" style="margin-top:6px">잔향에 새긴 것 — ${esc(AC.join(" · "))}</div>` : ""}</div>` : "");
+    h += sec("재능과 새긴 것", TL.length || AC.length ? `<div class="book">${TL.map((t) => `<b>${esc(t.name)}</b> <span class="faint">${t.mother ? "어머니가 기억하는 너" : esc(t.tierName)}${t.grows.length ? ` — ${esc(iga(t.grows.join("·")))} 빨리 는다` : t.effect ? ` — ${esc(t.effect)}` : ""}</span>`).join("<br>")}${AC.length ? `<div class="faint" style="margin-top:6px">잔향에 새긴 것 — ${esc(AC.join(" · "))}</div>` : ""}</div>` : "");
     const WL = v.memoryWall || [];
     h += sec("기억의 벽", WL.length ? `<div class="book">${WL.map((w) => `<div class="past">┊ ${esc(w)}</div>`).join("")}${v.soulYears ? `<div class="faint" style="margin-top:6px">영혼의 햇수 — ${v.soulYears}년</div>` : ""}</div>` : "");
   }
@@ -434,7 +440,7 @@ function renderSheet(v) {
       meter("두려움", p.fear || 0, 5, { seg: true, warn: 0.4, crit: 0.8, show: fearWord(p.fear || 0) }),
       meter("마음의 짐", p.stress || 0, 100, { warn: 0.45, crit: 0.7, show: stressWord(p.stress || 0) }),
     ].join("")}</div>
-      <div class="bline"><span class="chip">${esc(v.body?.train || "")}</span>${v.body?.weak ? `<span class="chip hot">굶주려 팔에 힘이 없다</span>` : ""}${(v.traits || []).map((t) => `<span class="chip gold">기질 — ${esc(t)}</span>`).join("")}${TL.map((t) => `<span class="chip gold" title="${esc(t.grows.join("·"))}이(가) 빨리 는다">재능 — ${esc(t.name)}</span>`).join("")}</div>`);
+      <div class="bline">${v.origin ? `<span class="chip gold" title="${esc(v.origin.title)} · 잠자리 — ${esc(v.origin.home)}">${esc(v.origin.name)}</span>` : ""}<span class="chip">${esc(v.body?.train || "")}</span>${v.body?.weak ? `<span class="chip hot">굶주려 팔에 힘이 없다</span>` : ""}${(v.traits || []).map((t) => `<span class="chip gold">기질 — ${esc(t)}</span>`).join("")}${TL.map((t) => `<span class="chip gold" title="${esc(iga(t.grows.join("·")))} 빨리 는다">재능 — ${esc(t.name)}</span>`).join("")}</div>`);
     const bySlot = (s) => p.items.filter((i) => i.slot === s);
     h += sec(`지닌 것 <span class="h4r">짐 — ${esc(LD.word)}</span>`, `<div class="doll">${SLOT_INFO.map(([s, lab, seen]) => `<div class="slot${seen ? " seen" : ""}"><div class="sl"><b>${s}</b><span>${seen ? "👁 남들 눈에 보인다" : lab}</span></div><div class="its">${bySlot(s).map((i) => itemChip(i)).join("") || `<span class="none">비었다</span>`}</div></div>`).join("")}</div>
       <div class="loadrow">${meter("짐", LD.total, LD.cap, { warn: 0.84, crit: 1.01, show: LD.total > LD.cap ? "몸놀림이 둔하다" : LD.word })}${coinHTML(p.coin)}</div>
@@ -442,6 +448,13 @@ function renderSheet(v) {
     const ST = v.stash || [];
     h += sec("숨겨 둔 것", ST.length ? `<div class="stash">${ST.map((i) => `<div class="st-row">${itemChip(i)}<span class="where">${esc(i.where)}</span></div>`).join("")}</div>` : "");
     h += sec("손에 익은 것 — 쓸수록 는다", `<div class="skills">${(v.skills || []).map(skillRow).join("")}</div>`);
+    const B = v.build, TLs = (v.talents || []).filter((t) => !t.mother);
+    if (B || TLs.length) h += sec("타고난 것 — 재능·특질·결점", `<div class="born">${B?.line ? `<p class="birth">${esc(B.line)}</p>` : ""}
+      ${TLs.map((t) => `<div class="tal"><b>${esc(t.name)}</b><span class="tier t${t.tier}">${esc(t.tierName)}</span>${t.revealed ? `<span class="rev">숨어 있던 것</span>` : ""}<div class="faint">${esc(t.effect || "")}${t.grows.length ? ` · ${esc(iga(t.grows.join("·")))} 빨리 는다` : ""}</div></div>`).join("")}
+      ${(B?.traits || []).map((t) => `<div class="tal"><b>${esc(t.name)}</b><span class="tier">특질</span><div class="faint">${esc(t.desc)}</div></div>`).join("")}
+      ${(B?.flaws || []).map((f) => `<div class="tal bad"><b>${esc(f.name)}</b><span class="tier">결점</span><div class="faint">${esc(f.desc)}</div></div>`).join("")}
+      <div class="faint born-foot">${B?.hiddenLeft ? `숨은 재능 ${B.hiddenLeft}개가 아직 잠들어 있다. ` : ""}${v.tp?.free > 0 ? `잔향에 남은 점수 ${v.tp.free} — 회귀할 때 어둠 속에서 재능을 깨운다.` : ""}</div>
+      ${v.forecast ? `<div class="forecast">${v.forecast.map((f) => `<span class="${f.rain ? "rain" : ""}">${f.day === 1 ? "내일" : `${f.day}일 뒤`} ${f.rain ? "비" : "맑음"}</span>`).join("")}</div>` : ""}</div>`);
     h += `<details class="sec help"><summary>몸이 기억하는 법 — 성장과 장비</summary><ul>${GROWTH_HELP.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></details>`;
     h += sec("낱말", (v.lexicon || []).length ? `<ul>${v.lexicon.map((w) => `<li>${esc(w.word)} <span class="faint">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span class='faint'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("")}</ul>` : "");
   }
@@ -482,7 +495,7 @@ function settingsHTML(v) {
       <div class="set-row"><span>이름 잇기</span><span class="seg" data-set="links">${[[true, "켬 — 이름을 누르면 카드"], [false, "끔"]].map(([val, lab]) => `<button type="button" data-v="${val}" aria-pressed="${linksOn() === val}">${lab}</button>`).join("")}</span></div></div>
     <div class="sec"><h4>누가 이 이야기를 기억하는가</h4><div class="row"><select id="narr">${NARR.map(([id, lab]) => `<option value="${id}"${v?.narrator?.id === id ? " selected" : ""}>${lab}</option>`).join("")}</select><button class="btn" id="narrBtn">이 화자로</button></div></div>
     <div class="sec"><h4>저장</h4><div class="row"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="btn" id="saveBtn">저장</button></div><div class="row" id="slots" style="margin-top:8px"></div></div>
-    <div class="sec"><h4>새 판</h4><div class="row"><button class="btn" id="newBtn">새 판 — 그림다크</button><button class="btn" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
+    <div class="sec"><h4>새 판 — 셋째의 갈래·능력치·재능을 고른다</h4><div class="row"><button class="btn" id="newBtn">새 판 — 그림다크</button><button class="btn" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
       ${v?.mode === "story" ? `<div class="row" style="margin-top:8px"><button class="btn" id="rewindBtn">마지막 아침으로 되돌린다</button></div>` : ""}</div>
     <div class="sec"><h4>단축키</h4><div class="keys"><span class="kbd">1</span><span>~ <span class="kbd">9</span> 선택지 고르기</span><span class="kbd">/</span><span>직접 쓰기</span><span class="kbd">M</span><span>지도</span><span class="kbd">N</span><span>수첩</span><span class="kbd">B</span><span>백과</span><span class="kbd">Esc</span><span>닫기</span></div></div>
     ${DEBUG ? `<div class="sec"><h4>엔진 기록 (판정·검증)</h4><pre id="debugOut">${esc(JSON.stringify({ debug: last?.debug, usage: last?.usage, provider: last?.provider }, null, 1))}</pre></div>` : ""}`;
@@ -496,8 +509,8 @@ function bindSettings() {
   })));
   $("narrBtn").onclick = async () => { const r = await post("/api/narrator", { id: $("narr").value }); if (r.view && last) { last.view = r.view; render(last); } };
   $("saveBtn").onclick = async () => { await post("/api/save", { name: $("slotName").value }); loadSaves(); };
-  $("newBtn").onclick = () => newGame({ narrator: $("narr").value });
-  $("newStoryBtn").onclick = () => newGame({ mode: "story", narrator: $("narr").value });
+  $("newBtn").onclick = () => { closeSheet(); openCreate({ canClose: true, narrator: $("narr").value, mode: "grim" }); };
+  $("newStoryBtn").onclick = () => { closeSheet(); openCreate({ canClose: true, narrator: $("narr").value, mode: "story" }); };
   const rw = $("rewindBtn"); if (rw) rw.onclick = async () => { closeSheet(); const d = await call("/api/rewind"); if (d.error) { $("busy").textContent = d.error; return; } resetStory(); show(d); };
   loadSaves();
 }
@@ -507,7 +520,12 @@ async function loadSaves() {
   el.querySelectorAll("button").forEach((b) => (b.onclick = async () => { closeSheet(); resetStory(); show(await call("/api/load", { name: b.dataset.s })); }));
 }
 function resetStory() { $("story").innerHTML = ""; currentTurn = null; lastPlace = null; }
-async function newGame(body) { closeSheet(); resetStory(); show(await call("/api/new", body)); }
+async function newGame(body) {
+  closeSheet(); resetStory();
+  const d = await call("/api/new", body);
+  if (d?.error) { show(await call("/api/state")); return d; }
+  offeredCreate = true; show(d); return d;
+}
 
 // ── 지도 ──
 let mapTab = "town", pz = null, selNode = null;
@@ -661,7 +679,7 @@ async function deathSequence(E) {
     await nap(700); fold.classList.add("ash"); foldArt.classList.remove("on"); await nap(900); fold.remove(); foldArt.remove(); await nap(1500);
     const d = await next;
     const ep = document.createElement("div"); ep.className = "rec"; ep.innerHTML = (d.epilogue || E.epilogue || []).map((x) => `<p>${esc(x)}</p>`).join("") + `<p style="margin-top:22px;color:#5e574c">시대가 끝났다.</p>`;
-    const nb = document.createElement("button"); nb.className = "btn"; nb.textContent = "새 시대 — 새 판"; nb.onclick = async () => { veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false; resetStory(); show(await call("/api/new", {})); };
+    const nb = document.createElement("button"); nb.className = "btn"; nb.textContent = "새 시대 — 새 판"; nb.onclick = () => { veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false; openCreate({ canClose: false, reason: "새 시대 — 잔향이 고를 사람" }); };
     veil.appendChild(ep); veil.appendChild(nb); veil.onclick = null;
     return;
   }
@@ -672,7 +690,8 @@ async function deathSequence(E) {
   if (E.firstDeath) { god = document.createElement("div"); god.className = "god"; god.textContent = "너희는 끝나지 않을 것이다."; veil.appendChild(god); await nap(2500); }
   const n = E.loop + 1;
   const sm = document.createElement("div"); sm.className = "smell";
-  sm.innerHTML = `<p>${n >= 12 ? "젖은 재. 그 위에, 빵 냄새." : n >= 4 ? "빵 냄새. 그 밑에, 젖은 재." : "빵 냄새."}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3); plate("01_ration_line");
+  const sense = last?.view?.origin?.sense || "빵 냄새";   // 갈래의 회귀점 냄새 (농노: 배급 줄의 빵, 하인: 남작의 식탁 …)
+  sm.innerHTML = `<p>${n >= 12 ? `젖은 재. 그 위에, ${sense}.` : n >= 4 ? `${sense}. 그 밑에, 젖은 재.` : `${sense}.`}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3); if ((last?.view?.origin?.id || "serf") === "serf") plate("01_ration_line");
   await nap(800); sm.insertAdjacentHTML("beforeend", `<p class="inner">나는 — 이 냄새를 안다.</p>`);
   if (god) setTimeout(() => god.remove(), 1000);
   const d = await next; await tapOr(veil);
@@ -683,6 +702,7 @@ async function deathSequence(E) {
 // ── 단추와 단축키 ──
 $("placePawn").innerHTML = pawnIconHTML(26);
 initCodex({ post, esc, store, local: itemEntry, onAction: (a) => { closeSheet(); act({ id: a.id, text: a.text }); } });
+initCreate({ post, esc, start: (body) => newGame(body) });
 document.body.classList.toggle("no-links", !linksOn());
 $("mapBtn").onclick = () => openMap();
 $("bookBtn").onclick = () => openSheet();
@@ -700,6 +720,7 @@ $("zLegend").onclick = () => $("legend").classList.toggle("show");
 $("miniMap").onclick = () => openMap("town");
 document.addEventListener("keydown", (e) => {
   const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "");
+  if (createOpen()) { if (e.key === "Escape") closeCreate(); return; }   // 생성 화면이 열려 있으면 단축키는 쉰다
   if (e.key === "Escape") { if ($("menuPop")) return closeMenu(); if (cardOpen()) return closeCard(); if ($("mapPop")) return closePop(); if (!$("mapview").hidden) return closeMap(); if (!$("sheet").hidden) return closeSheet(); if (typing) document.activeElement.blur(); return; }
   if (typing || e.metaKey || e.ctrlKey || e.altKey || deathRunning) return;
   if (e.key === "m" || e.key === "M" || e.key === "ㅡ") { e.preventDefault(); $("mapview").hidden ? openMap() : closeMap(); return; }

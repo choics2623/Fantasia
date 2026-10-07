@@ -1,0 +1,242 @@
+# 캐릭터 생성 (06 캐릭터 생성과 재능 — 회색여울 판). 시대의 시작에 한 번: 출신 → 능력치 → 재능 → 특질 → 결점 → 주사위.
+# 06의 119개 재능 가운데 이 엔진의 판정·몸·지도·회귀에 실제로 닿는 것만 골랐다. 효과가 없는 재능은 싣지 않는다.
+#
+# 값의 뜻
+#   size: major(큰 재능 — 소질 2·수재 4·천재 7) | minor(작은 재능 — 소질 1·수재 2·천재 4)
+#   skills: 소질일 때 처음부터 얹히는 손 (수재 ×1.5, 천재 ×2, 반올림)
+#   grow: 빨리 느는 스킬 — 성장 ×1.25 / ×1.5 / ×2, 안전한 연습의 한계 +5 / +10 / +20, 몸의 스킬이면 몸의 상한 +3 / +5 / +8
+#   special: 엔진이 따로 읽는 효과 (game.mjs talentTier로 찾는다)
+#   tiers: 등급마다 화면에 보이는 한 줄 (숫자 대신 말로)
+#   line: 탄생 서사 한 줄의 조각 ("이 아이는 …")
+rules:
+  tp: 10                 # 첫 시대의 재능 포인트 (06 §2)
+  flaw_max: 8            # 결점 환급 한도
+  free_stats: 4          # 능력치 자유 배분
+  stat_min: 6
+  stat_max: 15           # 생성 때의 최대 (06 §1.2)
+  genius_max: 3          # 천재는 셋까지
+  dice_refund: 2         # 운명의 주사위: 무작위 재능 하나 + 2점
+  dice_flaw: 0.3         #   그리고 30%로 결점 하나 (환급 없음)
+  hidden: 2              # 숨은 재능 — 게임이 몰래 심는다 (06 §6)
+  tier_names: [소질, 수재, 천재]
+  cost: {major: [2, 4, 7], minor: [1, 2, 4]}
+  growth: [1.25, 1.5, 2.0]
+  practice: [5, 10, 20]
+  body: [3, 5, 8]
+  stats:
+    - {id: 근력, desc: "싸움·위압, 짊어질 수 있는 짐, 싸움의 몸 상한"}
+    - {id: 민첩, desc: "싸움·은신·손재주, 몸수색에서 숨기기, 통금 빠져나가기"}
+    - {id: 체질, desc: "싸움의 몸 상한, 아픔에서 돌아오는 힘"}
+    - {id: 지능, desc: "화술·기만·통찰, 거짓 통행증, 들킨 거짓말 수습"}
+    - {id: 감각, desc: "화술·기만·통찰, 알아차리기"}
+    - {id: 의지, desc: "위압, 두려움을 버티는 힘"}
+  areas: [사회, 감각, 그림자, 무예, 몸, 생존, 기술·지식, 영혼]
+
+talents:
+  # ── 사회 ──
+  - id: tongue
+    name: 혀의 재능
+    area: 사회
+    size: major
+    skills: {화술: 4}
+    grow: [화술]
+    line: 말이 먼저 닿는 아이였다
+    tiers: ["말이 귀에 닿는다", "듣는 사람이 고개를 든다", "적의 입에서도 대답을 끌어낸다"]
+  - id: deceit
+    name: 기만의 재능
+    area: 사회
+    size: major
+    skills: {기만: 4}
+    grow: [기만]
+    line: 거짓말을 할 때 눈을 피하지 않았다
+    tiers: ["거짓이 매끄럽다", "들켜도 다시 엮는다", "심문관의 눈도 속인다"]
+  - id: menace
+    name: 위압의 재능
+    area: 사회
+    size: major
+    skills: {위압: 4}
+    grow: [위압]
+    line: 눈빛 하나로 개를 물리는 아이였다
+    tiers: ["눈빛이 무겁다", "여럿 앞에서도 꺾이지 않는다", "고대 종족도 한 걸음 물러선다"]
+  # ── 감각 ──
+  - id: liar_nose
+    name: 거짓말 냄새
+    area: 감각
+    size: major
+    skills: {통찰: 4}
+    grow: [통찰]
+    line: 어른들의 거짓말을 냄새로 알았다
+    tiers: ["숨긴 것이 보인다", "말 뒤의 셈이 보인다", "사람 속이 읽힌다"]
+  - id: night_eyes
+    name: 어둠눈
+    area: 감각
+    size: minor
+    special: dark
+    line: 불 없는 밤에도 길을 잃지 않았다
+    tiers: ["어둠이 덜 무겁다 (어둠의 불리함 절반)", "어둠이 거의 걸리지 않는다", "밤이 낮과 같다"]
+  - id: people_memory
+    name: 사람 기억
+    area: 감각
+    size: minor
+    special: whereabouts
+    line: 한 번 본 얼굴을 잊지 않았다
+    tiers: ["한 번 본 자리로도 버릇을 짐작한다", "짐작이 더 단단하다", "누가 어디 있을지 거의 틀리지 않는다"]
+  - id: spatial
+    name: 공간 지각
+    area: 감각
+    size: major
+    special: spatial
+    line: 벽 두께가 맞지 않으면 알아챘다
+    tiers: ["들어선 건물의 숨은 방을 알아챈다", "+ 모르는 길도 덜 헤맨다", "+ 가 본 곳의 이웃 땅이 머릿속에 그려진다"]
+  - id: weather
+    name: 날씨 읽기
+    area: 감각
+    size: minor
+    special: forecast
+    line: 바람 냄새로 내일 비를 맞혔다
+    tiers: ["내일 비를 안다", "사흘 앞의 비를 안다", "이레 앞의 비를 안다"]
+  # ── 그림자 ──
+  - id: shadow_step
+    name: 그림자 걸음
+    area: 그림자
+    size: major
+    skills: {은신: 4}
+    grow: [은신]
+    line: 발소리가 나지 않는 아이였다
+    tiers: ["발소리가 작다", "대낮에도 그림자에 녹는다", "바르그의 코도 속인다"]
+  - id: lock_hands
+    name: 자물쇠 손
+    area: 그림자
+    size: minor
+    skills: {손재주: 3}
+    grow: [손재주]
+    line: 매듭이든 걸쇠든 손에 쥐면 풀었다
+    tiers: ["손끝이 빠르다", "소리 없이 연다", "용인의 금고도 손에 맞는다"]
+  - id: smuggler
+    name: 밀수
+    area: 그림자
+    size: minor
+    special: smuggle
+    line: 무엇이든 옷 안에 감출 줄 알았다
+    tiers: ["몸수색에서 숨긴 것이 덜 나온다, 검문이 조금 쉽다", "더 잘 숨긴다", "검문의 눈이 미끄러진다"]
+  # ── 무예 ──
+  - id: brawler
+    name: 무투가의 재능
+    area: 무예
+    size: major
+    skills: {싸움: 3}
+    grow: [싸움]
+    special: unarmed
+    line: 맨주먹으로도 큰 아이들을 눕혔다
+    tiers: ["맨손 싸움이 낫다", "빈손으로 칼을 빼앗는다", "맨손으로 칼을 부러뜨린다"]
+  - id: knife_hand
+    name: 단검의 재능
+    area: 무예
+    size: major
+    skills: {싸움: 3}
+    grow: [싸움]
+    special: blade
+    line: 손에 쥔 날이 손의 일부 같았다
+    tiers: ["날붙이를 쥐면 낫다", "급소를 안다", "한 번의 숨에 끝낸다"]
+  # ── 몸 ──
+  - id: iron_body
+    name: 강철 체력
+    area: 몸
+    size: major
+    special: fatigue
+    line: 해가 질 때까지 지치지 않았다
+    tiers: ["피로가 늦게 온다", "지쳐도 몸이 버틴다", "지침이 판정을 누르지 않는다"]
+  - id: pain_tolerance
+    name: 고통 내성
+    area: 몸
+    size: major
+    special: pain
+    line: 채찍 아래에서도 울지 않았다
+    tiers: ["아픔이 판정을 덜 누른다", "아픔을 절반만 느낀다", "아픔이 거의 걸리지 않는다"]
+  - id: iron_gut
+    name: 무쇠 위장
+    area: 몸
+    size: minor
+    special: hunger
+    line: 상한 죽도 탈 없이 삼켰다
+    tiers: ["배고픔이 늦게 걸린다", "굶주림도 덜 무겁다", "빈속이 판정을 누르지 않는다"]
+  - id: fleet
+    name: 질주
+    area: 몸
+    size: major
+    special: flee
+    line: 달리면 아무도 따라잡지 못했다
+    tiers: ["달아날 때 낫다, 먼 길이 조금 짧다", "더 빠르다", "쫓는 자가 먼저 지친다"]
+  - id: muscle_memory
+    name: 근육 기억
+    area: 몸
+    size: minor
+    special: muscle
+    line: 한 번 몸에 붙은 것은 떨어지지 않았다
+    tiers: ["돌아온 뒤 몸이 네 배로 기억을 따라잡는다", "다섯 배", "여섯 배"]
+  # ── 생존 ──
+  - id: beast_friend
+    name: 짐승의 벗
+    area: 생존
+    size: major
+    special: beasts
+    line: 개들이 이 아이를 보면 짖지 않았다
+    tiers: ["통금의 개들이 덜 짖는다, 사냥개가 냄새를 늦게 문다", "더", "바르그의 개들도 짖지 않는다"]
+  # ── 기술·지식 ──
+  - id: memory_palace
+    name: 기억의 궁전
+    area: 기술·지식
+    size: major
+    skills: {통찰: 2}
+    grow: [읽고쓰기, 통찰]
+    line: 한 번 본 장부를 통째로 외웠다
+    tiers: ["글과 셈이 빨리 붙는다", "본 것을 잊지 않는다", "아스테리온의 서고처럼"]
+  - id: tongues
+    name: 언어 천재
+    area: 기술·지식
+    size: major
+    skills: {용언: 5}
+    grow: [용언]
+    line: 주인들의 쇳소리를 흉내 내다 혼났다
+    tiers: ["낯선 말이 빨리 들린다", "한 달에 한 말씩", "용언의 문법이 보인다"]
+  # ── 영혼 (회귀자만) ──
+  - id: calm_return
+    name: 회귀점의 고요
+    area: 영혼
+    size: minor
+    special: calm
+    line: ""
+    tiers: ["돌아온 저녁, 두려움이 없다 · 지난 죽음의 무게가 덜 남는다", "더 가볍다", "거의 남지 않는다"]
+  - id: ash_mute
+    name: 재 냄새 억제
+    area: 영혼
+    size: major
+    special: smell
+    line: ""
+    tiers: ["몸의 젖은 재 냄새가 옅다 (−25%)", "절반", "거의 나지 않는다 (−75%)"]
+  - id: dejavu_block
+    name: 기시감 차단
+    area: 영혼
+    size: major
+    special: dejavu
+    line: ""
+    tiers: ["시간에 닿은 자들의 낌새가 늦다 (−25%)", "절반", "거의 눈치채지 못한다 (−75%)"]
+
+# 몸의 특질 (혈통, 06 §7): 같은 몸으로 돌아오므로 시대 내내 그대로. 이 시대에 열린 것은 잔향의 눈뿐이다 (나머지는 업적 — 다음 시대)
+traits:
+  - id: echo_eye
+    name: 잔향의 눈 (잿빛 고리)
+    cost: 4
+    special: echo_eye
+    desc: "목소리가 더 자주 찾아온다. 대가: 눈동자에 잿빛 고리 — 잿빛 탑의 밀정이 한 회차 일찍 온다"
+
+# 결점 (06 §8.1): 환급은 합쳐서 여덟까지
+flaws:
+  - {id: stutter, name: 말더듬, refund: 2, special: stutter, desc: "화술 −10, 기만 −5. 노래·연설은 막히지만 일대일 설득은 된다"}
+  - {id: frail, name: 허약 체질, refund: 3, special: frail, desc: "체질 −2, 잠으로 아픔이 덜 가신다"}
+  - {id: coward, name: 겁쟁이, refund: 3, special: coward, desc: "용기 −40에서 시작, 겁에 질리면 싸움·위압이 두 배로 무너진다"}
+  - {id: lame, name: 절름발이, refund: 4, special: lame, desc: "걷는 시간 +30%, 달아날 때 −20"}
+  - {id: one_eye, name: 외눈, refund: 3, special: one_eye, desc: "감각 −2"}
+  - {id: brand, name: 얼굴 낙인, refund: 2, special: brand, desc: "노예 표지가 얼굴에 — 검문과 통행증 판정 −15"}
+  - {id: deep_echo, name: 짙은 잔향, refund: 4, special: deep_echo, desc: "젖은 재 냄새가 첫 회차부터 짙다 (세 번째 회차만큼)"}
+  - {id: enemy_blood, name: 원수의 피, refund: 4, special: enemy_blood, desc: "첫 회차부터 볼크 회색송곳니가 네 냄새를 쫓는다"}

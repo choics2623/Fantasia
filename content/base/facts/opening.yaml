@@ -14,3 +14,24 @@
   truth: true
   danger: 2
   names: []
+# 셋째의 다른 갈래가 같은 저녁에 듣는 같은 소식 (creation/origins.yaml · storylets/origins_greyford.yaml)
+- id: fact_op_kit_line_keep
+  text: "키트가 1차 매각 명단(서리월 9일 호송) 스물여섯째 줄에 있다 — 남작의 식탁에서 헨릭이 읽어 올렸다. 이름 뒤에 쇳소리 같은 말 하나: '하르벡'"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_op_kit_line_forge
+  text: "키트가 1차 매각 명단(서리월 9일 호송) 스물여섯째 줄에 있다 — 대장간에서 족쇄를 세던 즈닉이 말했다. 손목이 가늘어 작은 족쇄를 하나 더"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_op_kit_line_chapel
+  text: "키트가 1차 매각 명단(서리월 9일 호송) 스물여섯째 줄에 있다 — 오스릭 사제가 제단 먼지에 그 이름을 썼다가 지웠다. 사라가 서재에서 들은 것"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_op_kit_line_den
+  text: "키트가 1차 매각 명단(서리월 9일 호송) 스물여섯째 줄에 있다 — 페인이 늑대굴까지 올라와 전한 말. 사라에게서 들었다고"
+  truth: true
+  danger: 2
+  names: []

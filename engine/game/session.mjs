@@ -5,7 +5,8 @@
 //   - 부르지 않는 때: 아무도 없는 곳으로 걷기, 아무 일 없이 기다리기·자기 → 엔진의 짧은 문장
 //   - 자유 입력은 해석 호출이 하나 더 든다
 import * as G from "./game.mjs";
-import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn, RECORDER_SYSTEM, recorderPrompt, parseRecords } from "./prompts.mjs";
+import { systemFor, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn, RECORDER_SYSTEM, recorderPrompt, parseRecords } from "./prompts.mjs";
+import * as CR from "./creation.mjs";
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 import * as X from "./codex.mjs";
@@ -125,7 +126,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     for (let attempt = 1; attempt <= 2; attempt++) {
       let streamed = "";
       if (attempt === 2 && lastProblems.some((p) => p.startsWith("반복"))) prompt = turnPrompt(g, res, opts, { ...ctx, retry: "방금 쓴 글이 앞의 서술을 거의 되풀이했다. 같은 일을 다른 문장, 다른 몸짓, 다른 감각으로 다시 써라." });
-      const text = await provider.complete(SYSTEM, prompt, {
+      const text = await provider.complete(systemFor(CR.originDef(content, g.run.build?.origin)), prompt, {
         // 서술 부분만 흘려보낸다 (<선택지> 이후는 보내지 않는다)
         onText: onText && ((d) => { streamed += d; const cut = streamed.indexOf("</서술>"); const body = streamed.replace(/^[\s\S]*?<서술>\s*/, ""); if (streamed.includes("<서술>") && (cut < 0 || streamed.length - d.length < cut)) onText(body.slice(0, cut < 0 ? undefined : body.indexOf("</서술>"))); }),
         mock: () => mockTurn(g, res, opts, { memories }),
@@ -183,7 +184,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         let id = input.id, tags = [], text = input.text || null;
         const before = G.options(g);
         if (input.free) {
-          const out = await fast.complete(SYSTEM, interpretPrompt(g, input.free, before), { mock: () => JSON.stringify({ id: before.find((o) => o.id === "small_talk")?.id || before[0].id, tags: [] }) });
+          const out = await fast.complete(systemFor(CR.originDef(content, g.run.build?.origin)), interpretPrompt(g, input.free, before), { mock: () => JSON.stringify({ id: before.find((o) => o.id === "small_talk")?.id || before[0].id, tags: [] }) });
           const it = parseInterpret(g, out, before);
           if (!it) throw new Error("자유 입력을 해석하지 못했다");
           id = it.id; tags = it.tags; text = input.free; debug.push({ kind: "interpret", ...it });
@@ -233,10 +234,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     const choices = (n?.choices || G.options(g).map((o) => ({ ...o, text: o.label }))).map((c) => {
       const o = G.optionOdds(g, c);
       // 화면엔 체감 등급(01 §4.2 — 서툴수록 과신하고 틀린다)과 캐릭터가 아는 근거(▲▼?)만. 진짜 확률은 엔진 기록에만
-      return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, more: c.more || false, memory: c.memory || null };
+      return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, button: c.button || null, say: c.say || null, more: c.more || false, memory: c.memory || null };
     });
     const ink = [...(n?.recap || []).map((text) => ({ kind: "recap", text })), ...(res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null, who: f.who || null, card: f.card || null }))];
-    return { view: v, beats: n?.beats || [], ink, choices, locked: G.lockedOptions(g), codexSig: X.codexSig(g, g.run.heard || []), result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
+    return { view: v, beats: n?.beats || [], ink, choices, locked: G.lockedOptions(g), codexSig: X.codexSig(g, g.run.heard || []), fresh: g.run.loop === 1 && !g.run.journal.length && !g.run.build && g.run.opening !== false, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
   }
 
   return {
@@ -258,7 +259,16 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     },
     // 회귀를 놓는다 (03 §4.6): 다음 회차가 마지막 — 그 회차의 죽음은 돌아오지 않는다
     release() { g.run.release = true; save(); return { ok: true }; },
-    async newGame(seed, o, mode = "grim", narrator = "silent_god") { newTimeline(); g = G.boot(content, { ...G.newRun({ seed: seed ?? Math.floor(Math.random() * 1e6) }), mode, narrator }); transcript = []; resetMemory(null); save(); return turn(null, o); },
+    // 새 판 (06 생성): build를 검사하고 시드로 주사위·숨은 재능을 정해 적는다. build가 없으면 정본의 농노 — 재능 없이
+    async newGame(seed, o, mode = "grim", narrator = "silent_god", build = null) {
+      const sd = seed ?? Math.floor(Math.random() * 1e6);
+      let fin = null;
+      if (build) { const ck = CR.checkBuild(content, build); if (!ck.ok) return { error: "만들 수 없다 — " + ck.errors.join(" · "), errors: ck.errors }; fin = CR.finalizeBuild(content, build, sd); }
+      newTimeline(); g = G.boot(content, { ...G.newRun({ seed: sd }), mode, narrator, ...(fin ? { build: fin } : {}) }); transcript = []; resetMemory(null); save(); return turn(null, o);
+    },
+    // 생성 화면: 규칙·출신·재능 (시드는 화면이 받아서 미리보기와 시작에 같이 쓴다 — 주사위가 같다)
+    creation: () => ({ ...CR.creationView(content), seed: Math.floor(Math.random() * 1e6) }),
+    creationPreview: (build, seed) => { const ck = CR.checkBuild(content, build || {}); const fin = CR.finalizeBuild(content, build || {}, Number(seed) || 7); return { check: ck, dice: fin.diceResult || null, line: CR.birthLine(content, fin), hidden: fin.hidden.length }; },
     narrator(id) { G.setNarrator(g, id); save(); return { ok: true, view: G.view(g) }; },
     // 이야기 모드 (03 §6): 마지막 아침으로 — 회차당 세 번. 그림다크(기본)에는 없다
     async rewind(o) {

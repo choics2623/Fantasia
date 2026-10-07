@@ -1,6 +1,13 @@
 # 알려진 사정 (A13 정리): 대본 장면이 세운 깃발 가운데 세계를 움직이지는 않지만 서술이 알아야 하는 것.
 # 서술 프롬프트에 "[알려진 사정]"으로 들어간다 (참일 때만). npc가 있으면 그 사람이 그 자리에 있을 때 먼저.
 flags:
+  # 셋째의 다른 갈래 (storylets/origins_greyford.yaml)
+  kit_shackle_soft:     {line: "스물여섯째 족쇄(키트의 것)는 일부러 무르게 담금질되었다. 돌로 세 번 치면 벌어진다. 브란도 안다", npc: npc_bran}
+  sara_knows_list:      {line: "사라는 둘째 명단에 자기 이름이 있다는 것을 셋째에게서 들었다. 아무에게도 말하지 않았다", npc: npc_sara}
+  osric_invites:        {line: "오스릭은 셋째가 끊어진 고리의 납골실 모임을 안다는 것을 알고, 열두 번째 자리를 생각한다", npc: npc_osric}
+  gerda_knows_alive:    {line: "게르다는 페인 편에 도망친 셋째가 살아 있다는 말을 들었다. 아무에게도 말하지 않는다", npc: npc_gerda}
+  den_hidden_better:    {line: "늑대굴 입구를 가시덤불로 더 덮었다. 시그리드의 사내들이 밤마다 송곳니 불을 지켜본다", npc: npc_sigrid}
+  sigrid_warned_hagen:  {line: "시그리드는 하겐이 늑대굴을 볼크에게 팔려 한다는 것을 안다. 나루 쪽 길목에 사람을 세웠다", npc: npc_sigrid}
   mother_called:        {line: "어머니 게르다만 셋째의 진짜 이름을 부른다. 남들 앞에서는 부르지 않는다", npc: npc_gerda}
   bram_rewalled:        {line: "브람은 셋째의 말을 듣고 지하실 벽을 다시 발랐다. 셋째가 그 벽을 안다는 것을 이상하게 여긴다", npc: npc_bram}
   elsa_heard_sleeptalk: {line: "엘사는 셋째가 잠결에 아직 오지 않은 날짜를 중얼거리는 것을 들었다", npc: npc_elsa}

@@ -2,6 +2,7 @@
 // - 카드는 통째로 보내지 않는다: 지금 대화 상대는 말투·견본 3개·마음·숨긴 것의 '얼버무림'만, 나머지 사람은 한 줄씩 (22 §3).
 // - 출력 형식: <서술>…</서술> 다음 <선택지>{json}</선택지>. 서술은 오는 대로 화면에 흘려보낸다(스트리밍).
 // - 대화가 끝나는 턴은 기억 후보도 같은 호출에서 받는다 → 대화 한 번에 LLM 호출 하나를 줄인다.
+import { originDef } from "./creation.mjs";
 import { view, knownNames, moodWords, IMPRESSION_TAGS, skill } from "./game.mjs";
 import { josa } from "../sim/text.mjs";
 import { rankMemories, repetition, crutches } from "./recall.mjs";
@@ -36,6 +37,12 @@ export const SYSTEM = `너는 한국어 그림다크 판타지 소설을 쓰는 
 - 확률·성공 가능성, 숫자(호감·신뢰)를 말하지 않는다.
 - 장면에 없는 인물, 주어진 자료에 없는 고유명사를 만들지 않는다.
 - 형식: <서술>문단들(문단 사이는 빈 줄)</서술> 그다음 <선택지>JSON 하나</선택지>. 그 밖의 말은 쓰지 않는다.`;
+// 주인공 줄은 셋째의 갈래가 정한다 (creation/origins.yaml prompt). 정본의 농노면 SYSTEM 그대로 — 프롬프트 캐시가 갈래마다 하나
+const PROTAGONIST = /^주인공: 셋째라 불리는[^\n]*$/m;
+export function systemFor(origin) {
+  const line = origin?.prompt;
+  return line && origin.id !== "serf" ? SYSTEM.replace(PROTAGONIST, `${line} 회귀에 대해서는 장면 자료의 [회차]를 따른다. 서술에서는 언제나 "당신".`) : SYSTEM;
+}
 
 const PHRASED = (o) => o.kind === "talk" || o.id.startsWith("talk:") || o.id.startsWith("attack:");
 
@@ -111,7 +118,7 @@ function outcomeLines(g, res) {
   const ink = (res.feed || []).filter((f) => ["ink", "drift", "voice", "echo"].includes(f.kind));
   if (ink.length) L.push(`주인공의 기억이 스친다 (화면이 이 줄을 따로 보여 준다 — 서술에 옮겨 쓰지 말고, 어긋나게 쓰지도 말 것): ${ink.map((f) => f.text).join(" / ")}`);
   if (res.ending) L.push("이 박자로 대화를 닫는다.");
-  if (res.id === "routine_day") L.push("하루를 건너뛰었다: 배급 줄·막사·잠·점호를 두세 문장의 몽타주로. 그사이 주인공 주변에서 일어난 일만 짚는다. 없으면 같은 하루의 무게만.");
+  if (res.id === "routine_day") L.push(`하루를 건너뛰었다: ${(originDef(g.content, g.run.build?.origin)?.duty?.routine || "배급 줄·막사·잠·점호").replace(/ → /g, "·")}를 두세 문장의 몽타주로. 그사이 주인공 주변에서 일어난 일만 짚는다. 없으면 같은 하루의 무게만.`);
   return L.map(josa);
 }
 

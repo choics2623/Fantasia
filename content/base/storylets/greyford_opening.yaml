@@ -10,6 +10,7 @@
 #   · miss_ration (그날 배급을 놓친다)
 storylets:
   - id: ration_line_open
+    origin: serf
     trigger: {start: true}
     stage:   # 장면을 위해 그 시각 그 자리에 세우는 사람들 (위치 엔진 덮어쓰기)
       - {npc: npc_kit, at: gf_rooster, from: "18:00", to: "19:30", doing: 네 소매를 잡고 줄에 서 있다}
@@ -254,10 +255,28 @@ storylets:
   # 두 번째 회차의 첫 잠자리 (14 §6.5 끝·§6.6): 잠들기 전, 너는 센다 — 지난 회차의 기록이 펼쳐진다
   - id: count_before_sleep
     trigger: {first_sleep_loop: 2}
+    awaken: true      # 잔향의 점수로 재능을 깨우는 선택지가 덧붙는다 (game.mjs awakenOptions — 06 §8.3)
     text: |
       키트는 무릎을 가슴까지 끌어당긴 채 네 등에 이마를 대고 잔다. 이마가 따뜻하다.
 
       잠들기 전, 너는 센다.
+    text_by_origin:   # 갈래마다 잠자리가 다르다 (creation/origins.yaml)
+      keep_servant: |
+        하인 숙소의 짚더미. 옆자리 하녀의 숨소리가 고르다. 담 너머 강변 움막 쪽은 캄캄하다.
+
+        잠들기 전, 너는 센다.
+      smith_hand: |
+        풀무 곁의 재가 아직 따뜻하다. 브란은 모루에 이마를 대고 잔다. 벽에 걸린 족쇄들이 바람에 아주 조금 운다.
+
+        잠들기 전, 너는 센다.
+      chapel_ringer: |
+        종 줄이 어둠 속에서 조금 흔들린다. 제단의 등잔은 꺼졌고, 납골실 쪽에서 찬 바람이 올라온다.
+
+        잠들기 전, 너는 센다.
+      hill_runaway: |
+        늑대굴 안쪽에서 누가 기침을 한다. 시그리드가 불씨에 재를 덮는다. 동쪽 비탈은 조용하다. 아직은.
+
+        잠들기 전, 너는 센다.
     choices:
       - id: count
         label: 센다 ▸

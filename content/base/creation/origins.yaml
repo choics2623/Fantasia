@@ -1,0 +1,220 @@
+# 시작 신분 — 셋째의 다섯 갈래 (SCENARIOS §1.0 "다른 갈래의 셋째", 2026-10 결정: 첫 시대에도 고른다)
+# 잔향은 한 시대에 단 한 사람에게 깃든다. 첫 시대의 그 사람은 언제나 게르다의 셋째 — 진짜 이름, 어머니, 열 살 동생 키트는 어느 갈래에서나 같다.
+# 갈래가 바꾸는 것: 열일곱 해를 어디서 어떻게 살았나 — 저녁 6시의 자리(회귀점), 잠자리, 몸과 손, 아는 사람과 아는 것, 낮의 의무.
+# 회귀하면 같은 갈래, 같은 저녁, 같은 자리로 돌아온다.
+#
+#   stats: 인간 기본 9에서 이 삶이 남긴 것 (생성 화면에서 자유 4점을 더한다)
+#   skills: 엔진의 아홉 스킬 · status: 배고픔 0~4, 아픔·지침·마음의 짐 0~100, 두려움 0~5
+#   items: 경제 물건 id(gid) 또는 그 자리에서 정의한 물건 · rel: npc → [호감, 신뢰]
+#   knows: 처음부터 아는 사실 · places: 처음부터 아는 숨은 곳 · vars: 세계 변수 · wanted: 처음부터의 수배
+#   duty.rollcall: 새벽 다섯 시 채찍 기둥 광장 점호 (감독관이 센다)
+#   duty.meal: ration(수탉의 저녁 배급) 또는 {at, from, to, label, hunger, thin(묽을 확률), with(있어야 하는 사람), text}
+#   duty.work: 낮일 {at, label, done, fail, train(단련), pain(일의 아픔), fail_pain·fail_meal·fail_fear(못 채웠을 때), story(첫날 대본 장면), food(성공하면 얻는 물건), outlaw(탈주 노예도)}
+#   duty.count: 저녁 점고 {time, at[], by, miss} — 성채 하인
+#   access: 이 갈래에게는 드나들 수 있는 곳 (몰래 들 필요가 없다)
+#   opening: 회귀점의 대본 장면 · sense: 돌아올 때 맡는 냄새 (죽음의 화면 끝) · prompt: 서술자에게 주는 주인공 줄
+origins:
+  - id: serf
+    name: 농노
+    title: 들일하는 아이
+    canon: true
+    difficulty: 2
+    blurb: >-
+      정본의 셋째. 강변 움막 12호에서 어머니 게르다, 동생 키트와 산다. 새벽 점호와 들일과 저녁 배급 줄 —
+      마을의 맨 밑바닥에서 모든 얼굴을 안다. 회귀점은 배급 줄, 키트가 네 소매를 잡고 있다.
+    start: gf_rooster
+    home: gf_river_huts
+    stats: {근력: 8, 민첩: 10, 체질: 9, 지능: 10, 감각: 11, 의지: 9}
+    skills: {화술: 22, 기만: 15, 위압: 8, 통찰: 18, 손재주: 12, 은신: 16, 싸움: 12, 읽고쓰기: 0, 용언: 0}
+    status: {hunger: 2, pain: 30, fatigue: 20, fear: 0, stress: 30}
+    train: 5
+    coin: 3
+    duty:
+      rollcall: true
+      meal: ration
+      work:
+        at: greyford__west_pasture
+        label: 들일에 나간다 (해 질 때까지)
+        done: 해 질 때까지 고랑을 탔다. 단은 모자라지 않았다
+        fail: 할당을 못 채웠다. 즈닉의 채찍 셋 — 오늘 저녁 배급은 없다
+        train: 0.4
+        story: znik_lash
+      routine: 배급 → 막사 → 점호
+    opening: ration_line_open
+    sense: 빵 냄새
+    prompt: "주인공: 셋째라 불리는 열일곱 살 농노 (진짜 이름은 어머니만 안다). 강변 움막 12호에서 어머니 게르다, 열 살 동생 키트와 산다. 등에 채찍 자국, 늘 배가 고프다."
+    perks: [마을 사람 모두를 얼굴로 안다, 어머니와 키트가 곁에 있다 — 지킬 사람이 손에 닿는다, 배급 줄의 소문이 먼저 온다]
+    burdens: [새벽 점호와 들일 — 낮이 매여 있다, 점호의 몸수색, 등의 채찍 자국]
+    presets:
+      - {name: 여울의 목소리, talents: {tongue: 2, liar_nose: 1, iron_gut: 1, people_memory: 1, weather: 1, calm_return: 1}, stats: {지능: 2, 감각: 1, 의지: 1}}
+      - {name: 굶주린 언덕의 그림자, talents: {shadow_step: 2, beast_friend: 1, iron_gut: 1, night_eyes: 1, smuggler: 1, muscle_memory: 1}, stats: {민첩: 3, 감각: 1}}
+      - {name: 군나르의 제자, talents: {brawler: 2, pain_tolerance: 1}, traits: [echo_eye], stats: {근력: 2, 체질: 2}}
+
+  - id: keep_servant
+    name: 성채 하인
+    title: 레이번 성채의 부엌데기
+    difficulty: 2
+    blurb: >-
+      열세 살에 성채 부엌으로 끌려갔다. 하인 숙소에서 자고, 집사 마르타의 눈 아래 냄비를 닦고 남작의 식탁에
+      접시를 나른다. 주인들의 말을 가장 가까이에서 듣는다 — 그러나 어머니와 키트는 담 너머에 있다.
+      회귀점은 남작의 저녁 식탁, 헨릭이 명단을 읽어 올리는 자리다.
+    start: gf_keep_yard
+    home: gf_keep_servants
+    stats: {근력: 8, 민첩: 10, 체질: 9, 지능: 11, 감각: 11, 의지: 9}
+    skills: {화술: 20, 기만: 22, 위압: 6, 통찰: 22, 손재주: 14, 은신: 18, 싸움: 6, 읽고쓰기: 2, 용언: 12}
+    status: {hunger: 1, pain: 10, fatigue: 30, fear: 0, stress: 35}
+    train: 3
+    coin: 2
+    items:
+      - {id: servant_tag, name: 레이번가 하인 목패, tags: [신분], slot: 허리, desc: 성채 하인의 목패. 심부름이면 성채 문을 지난다 — 통행증은 아니다}
+    rel: {npc_sara: [15, 20], npc_martha: [0, -5], npc_bram: [5, 5]}
+    knows: [fact_gf_godric_debt]
+    access: {gf_keep: public, gf_keep_servants: public, gf_keep_hall: public, gf_keep_store: public}
+    duty:
+      rollcall: false
+      meal: {at: gf_keep_servants, from: "20:30", to: "21:30", label: 부엌에서 남은 것을 긁어 먹는다, hunger: -1, text: "식은 기름과 빵 귀퉁이. 남작의 식탁에서 내려온 것이다 — 배는 찬다"}
+      work:
+        at: gf_keep_hall
+        label: 성채 일을 한다 (해 질 때까지)
+        done: 냄비와 바닥과 계단. 마르타의 눈이 한 번도 너에게 오래 머물지 않았다
+        fail: 접시 하나가 깨졌다. 마르타의 손바닥 — 오늘 저녁 부엌의 몫은 없다
+        train: 0.2
+        fail_pain: 5
+      count: {time: "21:00", at: [gf_keep, gf_keep_servants, gf_keep_hall, gf_keep_store, gf_keep_yard], by: npc_martha, miss: "저녁 점고에 없었다. 마르타가 하인 명부의 네 줄에 점 하나를 찍었다"}
+      routine: 부엌 → 하인 숙소 → 아침 종
+    opening: keep_supper_open
+    sense: 구운 고기 냄새
+    prompt: "주인공: 셋째라 불리는 열일곱 살 인간 하인 (진짜 이름은 어머니만 안다). 열세 살에 레이번 성채 부엌으로 끌려가 하인 숙소에서 잔다 — 집사 마르타의 눈 아래 냄비를 닦고 남작의 식탁에 접시를 나른다. 어머니 게르다와 열 살 동생 키트는 강변 움막 12호에 산다."
+    perks: [성채 안을 드나든다 — 주인들의 말이 가장 가까이에서 들린다, 사라와 같은 부엌에서 일한다, 배를 덜 곯는다]
+    burdens: [마르타(목줄단의 우두머리)가 저녁마다 하인을 센다, 싸움에 서툴다, 어머니와 키트는 담 너머에 있다]
+    presets:
+      - {name: 부엌의 귀, talents: {deceit: 2, liar_nose: 1, people_memory: 1, smuggler: 1, tongues: 1}, stats: {지능: 2, 감각: 2}}
+      - {name: 서재의 그림자, talents: {shadow_step: 1, lock_hands: 2, spatial: 1, memory_palace: 1, night_eyes: 1, weather: 1}, stats: {민첩: 3, 지능: 1}}
+
+  - id: smith_hand
+    name: 대장간 풀무꾼
+    title: 브란의 풀무를 밟는 아이
+    difficulty: 3
+    blurb: >-
+      열네 살부터 대장장이 브란의 풀무를 밟았다. 팔에 불티 자국, 손바닥에 굳은살. 브란은 너에게만 슬래그 더미
+      밑을 보여 주었다. 회귀점은 대장간의 저녁 — 모루 위에 족쇄가 있다. 마흔 벌, 서리월 아흐레까지.
+    start: gf_smithy
+    home: gf_smithy
+    stats: {근력: 11, 민첩: 9, 체질: 11, 지능: 9, 감각: 9, 의지: 10}
+    skills: {화술: 14, 기만: 10, 위압: 14, 통찰: 14, 손재주: 22, 은신: 10, 싸움: 18, 읽고쓰기: 1, 용언: 0}
+    status: {hunger: 2, pain: 20, fatigue: 35, fear: 0, stress: 25}
+    train: 12
+    coin: 4
+    items:
+      - {gid: hook, desc: 브란 몰래 두드려 둔 세 갈래 쇠갈고리. 밧줄만 있으면 담을 넘는다}
+    rel: {npc_bran: [20, 30], npc_gunnar: [5, 5]}
+    knows: [fact_gf_bran_spearheads, fact_gf_bran_greta_taken]
+    duty:
+      rollcall: true
+      meal: ration
+      work:
+        at: gf_smithy
+        label: 대장간 일을 한다 (해 질 때까지)
+        done: 풀무와 망치. 낫 열두 자루가 식는다 — 자루마다 쇠 반 돈이 덜 들어갔다
+        fail: 불을 꺼뜨렸다. 브란은 말없이 네 몫의 쇠를 다시 달군다 — 손등에 불티가 앉는다
+        train: 0.6
+        pain: 3
+        fail_pain: 8
+        fail_meal: false
+      routine: 배급 → 대장간 → 점호
+    opening: forge_chains_open
+    sense: 식는 쇠 냄새
+    prompt: "주인공: 셋째라 불리는 열일곱 살 인간 농노 (진짜 이름은 어머니만 안다). 열네 살부터 대장장이 브란의 대장간에서 풀무를 밟고, 풀무 곁에서 잔다 — 팔에 불티 자국, 손에 굳은살. 어머니 게르다와 열 살 동생 키트는 강변 움막 12호에 산다."
+    perks: [힘과 손 — 싸움과 손재주가 처음부터 쓸 만하다, 브란이 너를 믿는다 — 숨긴 창날을 안다, 쇠갈고리를 몰래 두드려 두었다]
+    burdens: [매각의 족쇄를 네 손으로 두드린다, 말에 서툴다, 새벽 점호]
+    presets:
+      - {name: 브란의 쇠, talents: {brawler: 2, iron_body: 1, pain_tolerance: 1, lock_hands: 1, iron_gut: 1}, stats: {근력: 2, 체질: 2}}
+      - {name: 봉기의 무기고, talents: {knife_hand: 2, menace: 1, iron_body: 1, muscle_memory: 1, smuggler: 1}, stats: {근력: 2, 의지: 2}}
+
+  - id: chapel_ringer
+    name: 예배당 종지기
+    title: 오스릭 사제의 종을 치는 아이
+    difficulty: 2
+    blurb: >-
+      오스릭 사제가 세례를 준 아이. 열 살부터 사슬등불 예배당의 종을 치고 납골실을 쓴다. 사제는 밤마다 흙바닥에
+      글자를 그어 보였다 — 너는 이름과 짧은 말을 읽는다. 글을 아는 인간은 교수대로 간다.
+      회귀점은 저녁 기도의 종 줄, 손바닥에 삼끈이 감겨 있다.
+    start: gf_chapel
+    home: gf_chapel
+    stats: {근력: 8, 민첩: 9, 체질: 8, 지능: 12, 감각: 10, 의지: 11}
+    skills: {화술: 22, 기만: 12, 위압: 6, 통찰: 24, 손재주: 12, 은신: 12, 싸움: 6, 읽고쓰기: 10, 용언: 4}
+    status: {hunger: 2, pain: 10, fatigue: 15, fear: 0, stress: 30}
+    train: 2
+    coin: 1
+    items:
+      - {gid: candle, desc: 제단 등잔에서 남은 짐승 기름 양초. 납골실에 들 때 쓴다}
+    rel: {npc_osric: [25, 30], npc_elsa: [5, 5], npc_johan: [5, 5]}
+    knows: [fact_gf_osric_teaches_letters]
+    places: [gf_chapel_ossuary]
+    duty:
+      rollcall: true
+      meal: ration
+      work:
+        at: gf_chapel
+        label: 예배당 일을 한다 (종·마루·납골실)
+        done: 마루를 닦고 등잔에 기름을 채웠다. 납골실 문은 잠근 그대로다
+        fail: 정오 종이 늦었다. 크릭 감독이 예배당 문을 걷어찬다 — 매 둘
+        train: 0.1
+        fail_pain: 6
+        fail_meal: false
+      routine: 배급 → 예배당 → 점호
+    opening: bell_rope_open
+    sense: 꺼진 밀랍 냄새
+    prompt: "주인공: 셋째라 불리는 열일곱 살 인간 농노 (진짜 이름은 어머니만 안다). 열 살부터 사슬등불 예배당의 종을 치고 납골실을 쓰며 예배당 구석에서 잔다 — 오스릭 사제가 몰래 글자를 가르쳐 이름과 짧은 말을 읽는다(인간의 문해는 교수대감). 어머니 게르다와 열 살 동생 키트는 강변 움막 12호에 산다."
+    perks: [글을 조금 읽는다 — 문서가 열린다, 오스릭이 처음부터 스승이 되어 준다, 납골실을 알고 양초가 있다]
+    burdens: [글을 안다는 것 자체가 죄다, 몸이 약하다 — 싸움은 거의 못 한다, 새벽 종과 점호]
+    presets:
+      - {name: 몰래 읽는 아이, talents: {memory_palace: 2, tongue: 1, liar_nose: 1, calm_return: 1, weather: 1}, stats: {지능: 2, 감각: 2}}
+      - {name: 종탑의 눈, talents: {liar_nose: 2, people_memory: 2, spatial: 1, night_eyes: 1, iron_gut: 1}, stats: {감각: 3, 의지: 1}}
+
+  - id: hill_runaway
+    name: 탈주 노예
+    title: 굶주린 언덕에 숨은 아이
+    difficulty: 4
+    blurb: >-
+      지난 굶주림월, 아버지 우도가 방앗간에서 죽은 밤에 도망쳤다. 겨울과 여름을 습지와 숲에서 났고, 열이틀 전
+      서리 길을 넘어온 시그리드의 무리를 늑대굴로 이끌었다. 마을에서 너는 탈주 노예다 — 그리고 같은 언덕 위,
+      송곳니 불가에 볼크가 있다. 회귀점은 늑대굴 입구, 아래 마을에서 배급 연기가 오른다.
+    start: hungry_hill__wolf_den
+    home: hungry_hill__wolf_den
+    stats: {근력: 9, 민첩: 11, 체질: 10, 지능: 9, 감각: 12, 의지: 10}
+    skills: {화술: 12, 기만: 16, 위압: 12, 통찰: 18, 손재주: 16, 은신: 24, 싸움: 16, 읽고쓰기: 0, 용언: 0}
+    status: {hunger: 3, pain: 20, fatigue: 40, fear: 1, stress: 45}
+    train: 10
+    coin: 0
+    items:
+      - {id: flint_knife, name: 부싯돌 칼, tags: [무기, 날붙이, 숨길수있음], slot: 소매, quality: 조악, condition: 70, illegal: true, value: 2, desc: 부싯돌을 깨서 사슴뿔에 묶은 날. 인간이 지니면 사형감}
+      - {id: dried_roots, name: 말린 쥐뿌리 한 줌, tags: [음식], slot: 품, eat: {hunger: -1}, value: 0, desc: 언덕 비탈에서 캔 쓴 뿌리. 배는 찬다}
+    rel: {npc_sigrid: [15, 25], npc_fayne: [10, 15], npc_znik: [-15, -20]}
+    knows: [fact_gf_wolf_den, fact_gf_sigrid_volk_escape]
+    places: [hungry_hill__wolf_den]
+    vars: {player_fugitive: true}
+    wanted: {heat: 2, by: [npc_znik, npc_volk], reason: 탈주}
+    duty:
+      rollcall: false
+      meal: {at: hungry_hill__wolf_den, from: "19:00", to: "21:00", label: 늑대굴의 몫을 받는다 — 쥐뿌리 죽, hunger: -1, thin: 0.4, with: npc_sigrid, text: "시그리드가 나무 숟가락으로 죽을 떠 준다. 묽다. 마흔일곱이 나눠 먹는 솥이다"}
+      work:
+        at: hungry_hill
+        label: 언덕에서 먹을 것을 찾는다 (덫·뿌리)
+        done: 덫 둘은 비었다. 그래도 뿌리 한 줌 — 늑대굴 솥에 반, 품에 반
+        fail: 송곳니들의 개가 짖는다. 덫을 버리고 엎드려 해를 보냈다
+        train: 0.3
+        food: dried_roots
+        outlaw: true          # 탈주 노예여도 할 수 있는 일
+        fail_pain: 0
+        fail_meal: false
+        fail_fear: 1
+      routine: 늑대굴에서 하루를 버틴다
+    opening: den_smoke_open
+    sense: 젖은 이끼 냄새
+    prompt: "주인공: 셋째라 불리는 열일곱 살 인간 — 탈주 노예 (진짜 이름은 어머니만 안다). 지난 굶주림월에 회색여울에서 도망쳤고, 지금은 굶주린 언덕 늑대굴에서 북방 탈주자 시그리드의 무리와 숨어 지낸다. 마을에서는 탈주 노예로 이름이 적혔다. 어머니 게르다와 열 살 동생 키트는 여전히 강변 움막 12호에 산다."
+    perks: [점호도 들일도 없다 — 하루가 네 것이다, 은신과 언덕길 — 밤에 강하다, 시그리드의 무리가 너를 믿는다]
+    burdens: [탈주 노예 — 마을에서 알아보면 끝이다, 같은 언덕에 볼크의 송곳니 불, 늘 배가 고프다 — 배급이 없다]
+    presets:
+      - {name: 늑대굴의 그림자, talents: {shadow_step: 2, beast_friend: 1, night_eyes: 1, iron_gut: 1, fleet: 1}, stats: {민첩: 2, 감각: 2}}
+      - {name: 송곳니를 무는 자, talents: {knife_hand: 2, fleet: 1, ash_mute: 1, iron_gut: 1, night_eyes: 1}, stats: {근력: 2, 민첩: 2}}

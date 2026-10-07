@@ -185,10 +185,50 @@ def main():
     truenames = {}
     for f in load("content/base/truenames/*.yaml"):
         truenames.update((f or {}).get("words") or {})
-    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "clocks": clocks, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions, "glossary": glossary}
+    creation = build_creation(settlements, economy, facts, storylets)
+    game = {"creation": creation, "truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "clocks": clocks, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions, "glossary": glossary}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")
+
+
+def build_creation(settlements, economy, facts, storylets):
+    """캐릭터 생성 (06 · content/base/creation): 규칙·재능·특질·결점·출신. 잘못된 참조는 묶기 전에 잡는다."""
+    base = os.path.join(ROOT, "content/base/creation")
+    rules = yaml.safe_load(open(os.path.join(base, "rules.yaml"), encoding="utf-8")) or {}
+    origins = (yaml.safe_load(open(os.path.join(base, "origins.yaml"), encoding="utf-8")) or {}).get("origins") or []
+    talents, traits, flaws = rules.get("talents") or [], rules.get("traits") or [], rules.get("flaws") or []
+    bad = []
+    for kind, lst in (("재능", talents), ("특질", traits), ("결점", flaws), ("출신", origins)):
+        ids = [x.get("id") for x in lst]
+        if not all(isinstance(x, str) for x in ids) or len(ids) != len(set(ids)): bad.append(f"{kind} id가 겹치거나 글자가 아니다")
+    T = {t["id"]: t for t in talents}
+    C = rules["rules"]["cost"]
+    for t in talents:
+        if t.get("size") not in C: bad.append(f"재능 {t['id']}: size {t.get('size')}")
+        if len(t.get("tiers") or []) != 3: bad.append(f"재능 {t['id']}: 등급 줄이 셋이 아니다")
+    locs = {l["id"] for st in settlements.values() for l in (st.get("locations") or []) + (st.get("outer") or [])}
+    sids = {st.get("id") for st in storylets}
+    for o in origins:
+        for k in ("start", "home"):
+            if o.get(k) not in locs: bad.append(f"출신 {o['id']}: {k} {o.get(k)} — 그런 장소가 없다")
+        if o.get("opening") not in sids: bad.append(f"출신 {o['id']}: 회귀점 장면 {o.get('opening')}이(가) 없다")
+        for it in o.get("items") or []:
+            if it.get("gid") and it["gid"] not in economy["goods"]: bad.append(f"출신 {o['id']}: 물건 {it['gid']}")
+        for f in o.get("knows") or []:
+            if f not in facts: bad.append(f"출신 {o['id']}: 사실 {f}")
+        for p in o.get("places") or []:
+            if p not in locs: bad.append(f"출신 {o['id']}: 숨은 곳 {p}")
+        w = (o.get("duty") or {}).get("work") or {}
+        if w.get("food") and w["food"] not in {i.get("id") for i in o.get("items") or []} | set(economy["goods"]): bad.append(f"출신 {o['id']}: 일의 먹을 것 {w['food']}")
+        for pr in o.get("presets") or []:
+            tp = sum(C[T[k]["size"]][v - 1] for k, v in (pr.get("talents") or {}).items() if k in T) + sum(x.get("cost", 0) for x in traits if x["id"] in (pr.get("traits") or []))
+            bad += [f"출신 {o['id']} 추천 {pr.get('name')}: 모르는 재능 {k}" for k in (pr.get("talents") or {}) if k not in T]
+            if tp > rules["rules"]["tp"]: bad.append(f"출신 {o['id']} 추천 {pr.get('name')}: {tp}점 > {rules['rules']['tp']}")
+            if sum((pr.get("stats") or {}).values()) > rules["rules"]["free_stats"]: bad.append(f"출신 {o['id']} 추천 {pr.get('name')}: 능력치가 넘친다")
+    if bad: raise SystemExit("캐릭터 생성 검사 실패:\n  " + "\n  ".join(bad))
+    print(f"캐릭터 생성: 출신 {len(origins)} · 재능 {len(talents)} · 특질 {len(traits)} · 결점 {len(flaws)}")
+    return {"rules": rules["rules"], "talents": talents, "traits": traits, "flaws": flaws, "origins": origins}
 
 
 import re, zlib
