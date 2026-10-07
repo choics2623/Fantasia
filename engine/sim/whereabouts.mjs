@@ -81,14 +81,24 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
 
   // ── 날씨 (간단한 결정적 모델) ──
   const RAIN_P = { 9: 0.35, 10: 0.3, 11: 0.25, 12: 0.2, 1: 0.3, 2: 0.3, 3: 0.35, 4: 0.3, 5: 0.2, 6: 0.15, 7: 0.15, 8: 0.2, 13: 0.1 };
-  function rainy(day) {
+  const RAINY = new Map();   // 날마다 한 번만 굴린다 (같은 시드·같은 날이면 같은 비)
+  function rainy(day) { let r = RAINY.get(day); if (r === undefined) { r = rainyRaw(day); RAINY.set(day, r); } return r; }
+  function rainyRaw(day) {
     const c = fromMinutes(day * 1440);
     if (c.y === 312 && c.m === 9 && c.d <= 3) return true; // 정본: "비가 사흘째" — 회귀점의 사실
     return hash(loopSeed, "rain", day) < (RAIN_P[c.m] ?? 0.2);
   }
 
   // ── 일과 ──
+  // 위치 엔진은 같은 (요일 규칙, 날)을 수십만 번 묻는다 — 한 번 셈한 것은 기억해 둔다 (순수 함수라 결과는 같다)
+  const DAYS = new Map();   // 날 → (규칙 → 맞나). 가까운 며칠만 쥔다
   function dayApplies(spec, day) {
+    let D = DAYS.get(day);
+    if (!D) { D = new Map(); DAYS.set(day, D); if (DAYS.size > 8) DAYS.delete(DAYS.keys().next().value); }
+    let r = D.get(spec); if (r === undefined) { r = dayAppliesRaw(spec, day); D.set(spec, r); }
+    return r;
+  }
+  function dayAppliesRaw(spec, day) {
     const c = fromMinutes(day * 1440);
     if (spec === "all") return true;
     if (spec === "workday") return !isSabbath(day);
@@ -102,20 +112,24 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
   const SPECIFIC = (spec) => (spec.startsWith("monthday") ? 5 : spec.startsWith("weekday") || spec === "odd" || spec === "even" ? 4 : spec === "sabbath" ? 3 : spec === "workday" ? 2 : 1);
 
   // 그 분(minute)을 덮는 일과 블록들 중 가장 구체적인 것. 자정을 넘는 블록은 전날 것을 본다.
+  const BT = new WeakMap();   // 블록 → [시작, 끝] (분) — 내용 객체는 건드리지 않는다
   function coveringBlock(r, day, m) {
     let best = null;
-    (r.blocks || []).forEach((b, idx) => {
-      const f = parseClock(b.from), to = parseClock(b.to);
+    const B = r.blocks || [];
+    for (let idx = 0; idx < B.length; idx++) {
+      const b = B[idx];
+      let bt = BT.get(b); if (!bt) { bt = [parseClock(b.from), parseClock(b.to)]; BT.set(b, bt); }
+      const f = bt[0], to = bt[1];
       let hit = null;
       if (to > f) { if (m >= f && m < to && dayApplies(b.days, day)) hit = { start: day * 1440 + f, end: day * 1440 + to }; }
       else {
         if (m >= f && dayApplies(b.days, day)) hit = { start: day * 1440 + f, end: (day + 1) * 1440 + to };
         else if (m < to && dayApplies(b.days, day - 1)) hit = { start: (day - 1) * 1440 + f, end: day * 1440 + to };
       }
-      if (!hit) return;
+      if (!hit) continue;
       const score = SPECIFIC(b.days) * 1000 + idx; // 같은 구체성이면 뒤에 적은 것이 이긴다
       if (!best || score > best.score) best = { b, idx, score, ...hit };
-    });
+    }
     return best;
   }
 
@@ -126,12 +140,20 @@ export function createWorld(bundle, { loopSeed = 1, flags = {} } = {}) {
     if (list) for (const x of list) if (t >= x.from) id = x.routineOf;
     return routines[id];
   }
+  const SHIFT = new Map();   // 날 → (사람 → 그날의 표류 분). 순수 — 시드·사람·날. 가까운 며칠만 쥔다
+  function shiftOf(npc, day) {
+    let D = SHIFT.get(day);
+    if (!D) { D = new Map(); SHIFT.set(day, D); if (SHIFT.size > 8) SHIFT.delete(SHIFT.keys().next().value); }
+    let v = D.get(npc);
+    if (v === undefined) { v = Math.round((hash(loopSeed, npc, day, "shift") * 2 - 1) * 10); D.set(npc, v); }
+    return v;
+  }
   function routineAt(npc, t, depth = 0) {
     const r = routineFor(npc, t);
     if (!r) return null;
     const day = Math.floor(t / 1440);
     // 사람마다 하루가 조금씩 이르거나 늦다 (표류). fixed 블록은 흔들리지 않는다.
-    const shift = Math.round((hash(loopSeed, npc, day, "shift") * 2 - 1) * 10);
+    const shift = shiftOf(npc, day);
     let t2 = t - shift, d2 = Math.floor(t2 / 1440), m2 = t2 - d2 * 1440;
     let hit = coveringBlock(r, d2, m2);
     const plain = coveringBlock(r, day, t - day * 1440);
