@@ -44437,7 +44437,7 @@
        "player_offer": "글자를 가르쳐 주겠다는 제안(+25) 뒤"
       },
       {
-       "flag": "story"
+       "like": 40
       }
      ],
      "cover": "흙바닥의 금을 발로 문지르고 '그림'이라 한다"
@@ -142221,6 +142221,16 @@
     "정화의 뜰"
    ]
   },
+  "fact_lu_alberic_cell9": {
+   "id": "fact_lu_alberic_cell9",
+   "text": "알베릭은 침묵의 우물 최하층 9번 독방에 아홉 해째 있다. 지키는 수도사는 자정 기도에 사십 분 자리를 비운다 (요나스의 공물 명단 사본 맨 아래)",
+   "truth": true,
+   "danger": 3,
+   "names": [
+    "알베릭",
+    "요나스"
+   ]
+  },
   "fact_mv_witch_forty_limit": {
    "id": "fact_mv_witch_forty_limit",
    "text": "늪 마녀는 마흔을 넘기지 못한다. 진명을 맨입으로 말할 수 없어 다른 종족의 피를 '빌린 혈명' 촉매로 쓰고, 주문 하나에 몇 주에서 몇 년의 수명이 든다",
@@ -142752,6 +142762,29 @@
     "볼크",
     "이르가"
    ]
+  },
+  "fact_op_marks_hut12": {
+   "id": "fact_op_marks_hut12",
+   "text": "강변 움막 12호 흙바닥에 글자 같은 금이 있었다 — 선 셋이 한 점에서 만나는 모양. 크릭 감독 스니가 보았다",
+   "truth": true,
+   "danger": 3,
+   "names": [
+    "스니"
+   ]
+  },
+  "fact_gf_scythe_signal": {
+   "id": "fact_gf_scythe_signal",
+   "text": "들일 노예들의 신호 — 낫으로 땅을 세 번 치면 '감독관이 온다'. 두 번은 '물 마셔라', 한 번 길게 끌면 '누가 쓰러졌다'",
+   "truth": true,
+   "danger": 1,
+   "names": []
+  },
+  "fact_op_kit_line": {
+   "id": "fact_op_kit_line",
+   "text": "키트가 1차 매각 명단(서리월 9일 호송) 스물여섯째 줄에 있다 — 사라의 귓속말. 헨릭이 키트의 정수리를 짚으며 쇳소리 같은 말을 했다: '하르벡'",
+   "truth": true,
+   "danger": 2,
+   "names": []
   },
   "fact_bk_severian_third_drawer": {
    "id": "fact_bk_severian_third_drawer",

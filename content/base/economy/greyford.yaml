@@ -13,8 +13,11 @@ goods:
   hook:         {name: 쇠갈고리, price: 12, tags: [도구, 갈고리]}
   candle:       {name: 수지 양초, price: 2, tags: [광원]}
   knife:        {name: 녹슨 접이칼, price: 72, tags: [무기, 날붙이, 숨길수있음], illegal: true, visibility: 숨김}
-  light_letter: {name: 빛의 서신 조각, price: 0, tags: [문서, 금서, 숨길수있음], illegal: true, visibility: 숨김}
-  henrik_ledger: {name: 헨릭의 진짜 장부, price: 0, tags: [문서, 숨길수있음], illegal: true}
+  light_letter: {name: 빛의 서신 조각, price: 0, tags: [문서, 금서, 숨길수있음], illegal: true, visibility: 숨김, read: {D: 30, facts: [fact_gf_osric_broken_ring], text: "'빛은 사슬을 녹이지 않는다. 사슬을 찬 손을 비출 뿐이다.' 맨 아래, 안식일 밤 열 시. 납골실."}}
+  henrik_ledger: {name: 헨릭의 진짜 장부, price: 0, tags: [문서, 숨길수있음], illegal: true, read: {D: 25, facts: [fact_gf_henrik_skims_baron, fact_gf_henrik_seren_account], text: "숫자 두 줄. 남작에게 올린 것과 실제로 거둔 것. 차액 옆에 같은 이름이 매달 — 세베로. 세렌."}}
+  sale_list:    {name: 2차 매각 명단 초안, price: 0, tags: [문서, 숨길수있음], illegal: true, read: {D: 20, facts: [fact_gf_sara_on_sale_list, fact_gf_martha_swapped_list], text: "서른한 줄. 열일곱째 줄에 사라. 마지막 줄은 칼로 긁어낸 자국 — 긁힌 자리 밑에 희미하게 '리즈'."}}
+  tribute_copy: {name: 공물 명단 사본, price: 0, tags: [문서, 숨길수있음], illegal: true, read: {D: 10, facts: [fact_lu_alberic_cell9], text: "마흔 줄. 줄 그은 이름 열둘. 맨 아래 지워지지 않은 이름 하나 — 알베릭, 침묵의 우물 9번 독방. 자정 기도 사십 분."}}
+  lea_report:   {name: 레아의 방관 보고서, price: 0, tags: [문서, 숨길수있음], illegal: true, read: {D: 10, lang: 용언, langD: 30, facts: [fact_gf_lea_report_route], text: "용언 보고서. '사령관은 10월 3일 밤 북문 망루를 비웠다.' 맨 아래 — 매달 25일, 역참 우편함. 전서구는 열흘에 한 번."}}
   forged_pass:  {name: 위조 통행증, price: 120, tags: [문서, 통행증, 위조], illegal: true, visibility: 숨김}
 shops:
   npc_bram:  {sells: [porridge, bread, beer], note: "죽은 배급이지만 한 그릇 더는 값을 받는다 — 지하실 손님들 몫이 모자라서"}

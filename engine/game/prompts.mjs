@@ -2,7 +2,7 @@
 // - 카드는 통째로 보내지 않는다: 지금 대화 상대는 말투·견본 3개·마음·숨긴 것의 '얼버무림'만, 나머지 사람은 한 줄씩 (22 §3).
 // - 출력 형식: <서술>…</서술> 다음 <선택지>{json}</선택지>. 서술은 오는 대로 화면에 흘려보낸다(스트리밍).
 // - 대화가 끝나는 턴은 기억 후보도 같은 호출에서 받는다 → 대화 한 번에 LLM 호출 하나를 줄인다.
-import { view, knownNames, moodWords, IMPRESSION_TAGS } from "./game.mjs";
+import { view, knownNames, moodWords, IMPRESSION_TAGS, skill } from "./game.mjs";
 import { josa } from "../sim/text.mjs";
 
 export const SYSTEM = `너는 한국어 그림다크 판타지 소설을 쓰는 작가다. 이 소설은 독자가 고르는 대로 흘러가고, 무엇이 일어나는지는 규칙 엔진이 이미 정했다. 너는 그 일을 **읽히는 글**로 쓴다.
@@ -140,6 +140,8 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
     v.bodies.length ? `[시체] ${v.bodies.join(", ")}` : "",
     bodyLine(g, v),
     (() => { const L = v.lexicon || []; const unk = L.filter((w) => !w.meaning).map((w) => w.word), kn = L.filter((w) => w.meaning).map((w) => `${w.word}=${w.meaning.split(" — ")[0]}`); return unk.length || kn.length ? `[낱말] ${kn.length ? `주인공이 아는 말: ${kn.join(", ")}. ` : ""}${unk.length ? `모르는 말(서술에 나오면 뜻을 풀지 말고 소리로만): ${unk.join(", ")}` : ""}` : ""; })(),
+    // 글 (19 §4.2): 글을 모르는 주인공의 서술에 글의 내용이 새지 않게
+    (() => { const r = skill(g, "읽고쓰기"); return r >= 30 ? "" : `[글] 주인공은 ${r < 1 ? "글을 전혀 읽지 못한다. 서술에 글(게시문·편지·장부·명단)이 나오면 내용을 쓰지 말고 글자 모양만(▯▯▯)" : r < 10 ? "숫자만 읽는다. 글이 나오면 숫자 말고는 ▯로" : "이름과 짧은 말만 읽는다. 긴 글은 ▯로"} 쓴다.`; })(),
     // 알려진 사정: 대본 장면이 남긴 사정 가운데 이 자리 사람과 닿는 것 먼저 (서술이 잊지 않게)
     (() => { const here = new Set(v.people.map((p) => p.id)); const F = Object.entries(g.content.game.flags || {}).filter(([k]) => g.S.vars[k]).sort((a, b) => (here.has(b[1].npc) ? 1 : 0) - (here.has(a[1].npc) ? 1 : 0)).slice(0, 5); return F.length ? `[알려진 사정]\n${F.map(([, x]) => `- ${x.line}`).join("\n")}` : ""; })(),
     (() => { const seen = v.player.items.filter((i) => i.seen).map((i) => `${i.slot}에 ${i.name}`); const b = v.player.bloody ? ["옷에 핏자국"] : []; return seen.length || b.length ? `[주인공의 겉모습 — 남들 눈에 보인다] ${[...seen, ...b].join(", ")}` : ""; })(),

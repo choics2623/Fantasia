@@ -203,3 +203,8 @@
   truth: true
   danger: 1
   names: [정화의 뜰]
+- id: fact_lu_alberic_cell9
+  text: "알베릭은 침묵의 우물 최하층 9번 독방에 아홉 해째 있다. 지키는 수도사는 자정 기도에 사십 분 자리를 비운다 (요나스의 공물 명단 사본 맨 아래)"
+  truth: true
+  danger: 3
+  names: [알베릭, 요나스]

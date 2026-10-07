@@ -89,7 +89,7 @@ hides:
     cover: "북쪽 길 이야기에 '나는 노만 저어'라고 한다"
   - fact: fact_gf_fayne_letters
     reveal_when: "글자를 가르쳐 주겠다는 제안(+25) 뒤, 또는 호감 40 — 그가 흙바닥에 써 보인다"
-    reveal: [{"player_offer":"글자를 가르쳐 주겠다는 제안(+25) 뒤"},{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
+    reveal: [{"player_offer":"글자를 가르쳐 주겠다는 제안(+25) 뒤"},{"like":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "흙바닥의 금을 발로 문지르고 '그림'이라 한다"
   - fact: fact_gf_egil_family_in_cellar
     reveal_when: "신뢰 50 이상이고 브람을 해치지 않을 것을 확신할 때"

@@ -45,7 +45,7 @@ storylets:
         check: {skill: 손재주, D: 60}
         success:
           text: '양피지는 네 소매 안에서 바스락거린다. 다음 날 레아는 책상 서랍을 세 번 연다. 다시 쓰기에는 날짜가 늦었다.'
-          effects: ["var cg_report_stopped = true", "note 레아의 방관 보고서를 훔쳤다"]
+          effects: ["var cg_report_stopped = true", "item lea_report", "note 레아의 방관 보고서를 훔쳤다 — 용언으로 쓰여 있다"]
         failure:
           text: '서랍이 끽 소리를 낸다. 부관실 문 밖에서 군화 소리.'
           effects: ["wanted 2 부관실 서랍", "pain 15"]
@@ -65,7 +65,7 @@ storylets:
         check: {skill: 손재주, D: 55}
         success:
           text: '양피지 대신 짐꾼 할당표 한 장. 봉인은 손톱 끝으로 다시 붙는다. 바알카르의 책상에 오르는 것은 숫자뿐일 것이다.'
-          effects: ["var cg_report_filed = false", "var cg_report_stopped = true", "note 역참 우편함 — 방관 보고서를 바꿔치기했다"]
+          effects: ["var cg_report_filed = false", "var cg_report_stopped = true", "item lea_report", "learn fact_gf_lea_report_route", "note 역참 우편함 — 방관 보고서를 바꿔치기했다. 매달 25일, 이 우편함"]
         failure:
           text: '봉인이 쪼개진다. 다시 붙지 않는다. 너는 우편함을 닫고 떠난다. 이스멜은 쪼개진 봉인을 볼 것이다.'
           effects: ["wanted 2 역참 우편함"]
@@ -162,12 +162,14 @@ storylets:
     text: |
       대성당 서고 뒤 골목. 공물 서기 요나스가 너를 불러 세운다. 처음 보는 사람이다. 그런데 너를 고른 것 같다.
 
-      그가 접힌 양피지를 내민다. 공물 명단 사본. 이름 위에 줄이 그어진 자국 — 지우다 만 자국이 일부러 남아 있다. "원본에서는 지웠소. 사본에는 남겼소. 누군가는 알아야 하니까."
+      그가 접힌 양피지를 내민다. 공물 명단 사본. 이름 위에 줄이 그어진 자국 — 지우다 만 자국이 일부러 남아 있다.
+
+      {read|마흔 줄. 줄 그은 이름 열둘. 맨 아래 지워지지 않은 이름 하나 — 알베릭, 9번 독방.} "원본에서는 지웠소. 사본에는 남겼소. 누군가는 알아야 하니까."
     choices:
       - id: take
         label: 사본을 받는다
         text: '양피지가 따뜻하다. 요나스는 벌써 골목 끝에 있다. 돌아보지 않는다.'
-        effects: ["var lm_list_copy = true", "note 루멘 — 요나스의 공물 명단 사본. 지운 자국이 남아 있다"]
+        effects: ["var lm_list_copy = true", "item tribute_copy", "note 루멘 — 요나스의 공물 명단 사본. 지운 자국이 남아 있다"]
       - id: strike
         label: 사본으로 정화청 목록의 이름을 지운다 — 원본에 손을 댄다
         check: {skill: 손재주, D: 60}
@@ -178,10 +180,10 @@ storylets:
           text: '서기실 문이 열린다. 수도사의 등잔이 네 얼굴을 비춘다.'
           effects: ["var lm_list_copy = true", "wanted 3 정화청 서기실", "var lm_impure += 1"]
   - id: lm_silent_well
-    trigger: {window: {from: "312-09-10 06:00", to: "330-12-30 00:00"}, at: "@lumen", night: true, when: ["alive npc_alberic", "var lm_alberic_escaped != true", "var lm_list_copy == true"]}
+    trigger: {window: {from: "312-09-10 06:00", to: "330-12-30 00:00"}, at: "@lumen", night: true, when: ["alive npc_alberic", "var lm_alberic_escaped != true", "pknows fact_lu_alberic_cell9"]}
     severity: 4
     text: |
-      침묵의 우물. 아홉 층 아래에 9번 독방. 요나스의 사본 맨 아래에 이름 하나가 지워지지 않고 남아 있었다 — 알베릭. 아홉 해째.
+      침묵의 우물. 아홉 층 아래에 9번 독방. 요나스의 사본 맨 아래, 지워지지 않은 이름 하나 — 알베릭. 아홉 해째.
 
       우물 밧줄이 바람에 흔들린다. 지키는 수도사는 자정 기도에 간다. 사십 분.
     choices:

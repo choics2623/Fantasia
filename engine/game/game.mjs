@@ -66,7 +66,7 @@ const talentsOf = (g) => [...new Set([g.P.talent, ...(g.run.carry.soul?.extraTal
 const talentGrows = (g, sk) => talentsOf(g).some((t) => TALENT[t]?.grow?.includes(sk));
 const talentBonus = (g, sk) => talentsOf(g).reduce((a, t) => a + (TALENT[t]?.skills?.[sk] || 0), 0);
 export function bodyCap(g, sk) { return BODY_STAT[sk] ? 15 + (BODY_STAT[sk](statsOf(g)) - 9) * 5 + g.P.train + (talentGrows(g, sk) ? 5 : 0) : Infinity; }
-const rawSkill = (g, sk) => (g.P.skills[sk] || 10) + (g.P.gain?.[sk] || 0);
+const rawSkill = (g, sk) => (g.P.skills[sk] ?? 10) + (g.P.gain?.[sk] || 0);
 // 실제 쓰는 스킬 = 상한까지는 그대로, 넘는 만큼은 1/4 ("기술이 몸을 이끈다")
 export function skill(g, sk) {
   let v = rawSkill(g, sk) + talentBonus(g, sk);
@@ -74,6 +74,9 @@ export function skill(g, sk) {
   if (v > cap) v = cap + (v - cap) * 0.25;
   return v;
 }
+// 글과 말은 다른 말로 잰다 (19 §4 표의 구간)
+const LETTER_WORD = (v) => (v < 1 ? "글을 모른다" : v < 10 ? "숫자만 읽는다" : v < 30 ? "이름과 짧은 말을 읽는다" : "글을 읽는다");
+const TONGUE_WORD = (v) => (v < 1 ? "쇳소리로만 들린다" : v < 20 ? "아는 낱말만 들린다" : v < 50 ? "반쯤 알아듣는다" : "알아듣는다");
 export const skillWord = (v) => (v < 12 ? "서툴다" : v < 20 ? "어설프다" : v < 30 ? "쓸 만하다" : v < 42 ? "제법이다" : v < 55 ? "능숙하다" : v < 70 ? "뛰어나다" : "경지에 닿았다");
 // 판정 하나가 남기는 것: 난이도 × 위험 × (실패면 1.2) × 재능 × (1 − 스킬/상한)². 너무 쉬운 판정(D < 스킬−20)은 아무것도 가르치지 않는다
 // 수련 방식 (03 §3.1): 안전한 연습은 40에서 멈춘다 · 실전(목숨이 걸린 판정)은 ×2, 상한 없음 · 스승은 스승 −10까지 ×2.5
@@ -93,7 +96,7 @@ function growSkill(g, sk, od, tier, verb) {
 }
 const NEW_PLAYER = () => ({
   name: "셋째", age: 17,
-  skills: { 화술: 22, 기만: 15, 위압: 8, 통찰: 18, 손재주: 12, 은신: 16, 싸움: 12 },
+  skills: { 화술: 22, 기만: 15, 위압: 8, 통찰: 18, 손재주: 12, 은신: 16, 싸움: 12, 읽고쓰기: 0, 용언: 0 },   // 노예의 아이는 글을 모른다 (19 §4)
   mods: { 근력: -0.5, 민첩: 0.5, 지능: 0.5, 감각: 1, 의지: 0 },
   status: { hunger: 2, pain: 30, fatigue: 20, fear: 0, stress: 30 },
   temper: { 용기: 0, 자비: 0, 정직: 0, 신앙: 0, 탐욕: 0, 충성: 0 },   // 성향 (01 §1.3): 행동으로 움직이고, ±60에 특성이 된다
@@ -323,6 +326,8 @@ function rawOptions(g) {
       if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f, memory: isFuture(g, f) ? memMark(g, `press:${f}`, { fact: f, loop: soul(g).knowledge[f]?.last || g.run.loop - 1 }) : null });
     }
     if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
+    // 제안 (22 §1.2 player_offer): 내놓을 것이 있을 때만 — 받은 사람은 숨긴 것을 꺼낼 이유가 생긴다
+    if (!g.convo.offer) for (const [k, label, ok] of OFFERS) if (ok(g)) o.push({ id: `offer:${k}`, kind: "talk", label, skill: "화술", request: 0 });
     for (const it of mine(g)) if (it.eat) o.push({ id: `give:${it.id}`, kind: "talk", label: `${it.name}을(를) 나눈다` });   // 빵 나누기 (20 §5.2)
     for (const it of mine(g)) {
       if (it.eat || it.use || it.coin) continue;                 // 먹을 것·약은 보이거나 팔 물건이 아니다
@@ -354,6 +359,10 @@ function rawOptions(g) {
   }
   for (const it of mine(g)) if (it.eat || it.use) o.push({ id: `use:${it.id}`, kind: "scene", label: `${it.name}을(를) ${it.eat ? "먹는다" : "쓴다"}` });
   o.push({ id: "search", kind: "scene", more: true, label: "이곳을 뒤져 본다", skill: "통찰" });
+  // 글로 된 것 (19 §4.2): 읽어 본다 — 글을 모르면 글자 모양만
+  for (const it of mine(g)) if (goodOf(g, it)?.read && !(g.P.readDocs ??= new Set()).has(it.id)) o.push({ id: `read:${it.id}`, kind: "scene", more: true, label: `${it.name}을(를) 펼쳐 읽는다` });
+  // 스승 (03 §3.1): 그 사람이 여기 있고, 받아들였고, 오늘 아직 배우지 않았으면
+  for (const M of mentorsHere(g)) for (const [sk, cap] of Object.entries(M.teach)) if (rawSkill(g, sk) < cap - 10) o.push({ id: `train:${M.npc}:${sk}`, kind: "time", label: `${displayName(g, M.npc)}에게 ${sk}을(를) 배운다 (두 시간)${M.fee?.startsWith("coin") ? ` — ${M.fee.split(" ")[1]}못` : M.fee?.startsWith("item") ? ` — ${g.content.game.economy.goods[M.fee.split(" ")[1]]?.name}` : ""}`, minutes: 120, risk: M.risk === "witness" ? "금지된 수업 — 들키면" : M.risk === "trap" ? null : null });
   for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && (it.owner !== "player" || it.stashed) && g.P.found.has(it.id)) o.push({ id: `take:${it.id}`, kind: "scene", label: `${it.name}을(를) 챙긴다` });
   // 숨기기: 몸에 지니면 점호 몸수색에 걸린다 — 어딘가에 묻어 두고 다닌다
   for (const it of mine(g)) if (!it.stashed) o.push({ id: `stash:${it.id}`, kind: "scene", more: true, label: `${it.name}을(를) 이곳에 숨긴다` });
@@ -1429,7 +1438,22 @@ function windowTrigger(g, t = g.t) {
 // 이름: 첫 회차에 받은 이름은 이 회차의 상태(P)에, 회귀할 때 carry로 넘어간다 (재생해도 이름 입력은 기록에서 다시 온다)
 const trueName = (g) => g.P.trueName || g.run.carry.trueName || null;
 const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
-const fill = (g, text) => josa(domainFill(g, String(text || ""))).trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
+// 문맹과 모르는 말 (19 §4): {read|글} · {lang:용언|말} — 읽고쓰기·언어 스킬만큼만 보인다. 배우면 같은 글이 풀려 보인다
+const readMask = (g, t) => {
+  const r = skill(g, "읽고쓰기");
+  if (r >= 30) return t;
+  const names = new Set([...g.P.met].map((n) => displayName(g, n)).concat([trueName(g) || "", "셋째"]).filter(Boolean));
+  return t.replace(/[^\s.,'"·—!?]+/g, (w) => (/^\d+$/.test(w) && r >= 1) || (r >= 10 && [...names].some((nm) => w.startsWith(nm))) ? w : "▯".repeat(Math.min(4, [...w].length)));
+};
+const tongueMask = (g, lang, t) => {
+  const r = skill(g, lang === "용언" ? "용언" : lang);
+  if (r >= 50) return `${t} (${lang})`;
+  const known = new Set((lexicon(g) || []).filter((w) => w.meaning && (w.lang || "용언") === lang).map((w) => w.meaning.split(" — ")[0].trim()));
+  if (r < 1 && !known.size) return `${t.replace(/[^\s.,!?]+/g, (w) => "■".repeat(Math.min(3, [...w].length)))} (${lang}이다. 알아들을 수 없다)`;
+  return t.replace(/[^\s.,!?]+/g, (w) => ([...known].some((k) => w.startsWith(k)) || (r >= 20 && hash(g.seed, "tongue", w) < 0.7)) ? w : "■".repeat(Math.min(3, [...w].length)));
+};
+export const literacyFilter = (g, text) => String(text || "").replace(/\{read\|([^}]*)\}/g, (_, t) => readMask(g, t)).replace(/\{lang:([^|}]+)\|([^}]*)\}/g, (_, l, t) => tongueMask(g, l, t));
+const fill = (g, text) => josa(domainFill(g, literacyFilter(g, String(text || "")))).trim().replace(/\{name\}/g, trueName(g) || "…").replace(/\{sibling\}/g, sibling(g))
   .replace(/\{(who|about|nem)\}/g, (_, k) => g.storyCtx?.[k + "Name"] || g.storyCtx?.[k] || "…")
   .replace(/\{hostage\}/g, () => displayName(g, g.storyCtx?.hostage || g.family?.hostage || "npc_kit"))
   .replace(/\{birth_helper\}/g, () => (relOf(g, "npc_elsa").trust >= 40 ? "엘사가 와 있다. 늙은 손이 빠르다." : "아무도 오지 않았다. 너와 게르다뿐이다."))
@@ -1586,6 +1610,8 @@ const DO = {
       if ((c.minutes || 0) > 15) { for (const ef of st.after_choice.late_effects || []) storyEffect(g, ef, res); extra += "\n\n돌아왔을 때 키트의 손등에 붉은 줄이 셋 있다. 즈닉이 출결 막대를 짚고 지나간다. \"두 자리 맡는 쥐새끼.\""; }
     }
     if (c.miss_ration) g.P.lastRation = Math.floor(g.t / 1440);   // 배식을 놓쳤다
+    // 함께 지난 장면 (22 §1.2 flag story): 그 장면에 있던 사람은 이제 '그 이야기를 아는 사이'다 — 숨긴 것 하나가 더 열릴 수 있다
+    for (const n of new Set([st.trigger?.with, ...effects.map((e) => (/^(rel|memory|bond) (npc_\w+)/.exec(e) || [])[2])].filter(Boolean))) g.S.vars[`story:${n}`] = true;
     g.storyDone.add(st.id); g.story = null;
     res.storyText = fill(g, text) + extra;
     if (g.ended) return;
@@ -1677,7 +1703,15 @@ const DO = {
     if (!OK(res.tier) && res.tier !== "부분 성공") { res.notes.push("아무것도 찾지 못했다"); return; }
     const found = [...g.L.items.values()].filter((i) => i.at === g.at && !i.worn && i.owner !== "player");
     for (const i of found) g.P.found.add(i.id);
-    res.notes.push(found.length ? `찾았다: ${found.map((i) => i.name).join(", ")}` : "특별한 것은 없다");
+    // 장소가 알려 주는 것 (22 §1.2 "장소로만"): 그 자리를 뒤지면
+    let place = false;
+    for (const R of g.content.game.placeReveals || []) {
+      if (R.at !== g.at || knowsFact(g, R.fact) || !storyWhen(g, R.needs)) continue;
+      place = true;
+      if (R.read && skill(g, "읽고쓰기") < R.read) { res.notes.push(R.unread || "글자가 있다. 읽을 수 없다"); continue; }
+      res.notes.push(R.text); learn(g, R.fact, `${placeName(g, g.at)}에서 직접 보았다`);
+    }
+    if (found.length || !place) res.notes.push(found.length ? `찾았다: ${found.map((i) => i.name).join(", ")}` : "특별한 것은 없다");
   },
   take(g, id, res) {
     pass(g, 2);
@@ -1768,6 +1802,46 @@ const DO = {
     for (const a of AXES) c.temper[a] = clamp(c.temper[a] + Math.sign(g.P.temper[a] || 0) * (a === c.own ? 0 : 1), -100, 100);
     pass(g, 120);
     res.notes.push(c.skills[sk] >= mine - 1 ? `${c.name}이(가) 너보다 빨리 한다. 너는 아무 말도 하지 않는다. 자랑스러워서.` : `${c.name}의 손이 ${sk}을(를) 따라 한다. 서툴다. 어제보다 덜 서툴다.`);
+  },
+  // 읽는다 (19 §4.2): 글을 알면 사실이 된다. 모르면 글자 모양만 — 글을 아는 사람에게 보여야 한다
+  read(g, id, res) {
+    pass(g, 10);
+    const it = g.L.items.get(id), R = goodOf(g, it)?.read; if (!R) return;
+    const lit = skill(g, "읽고쓰기") >= (R.D || 30), tongue = !R.lang || skill(g, R.lang) >= (R.langD || 30);
+    if (lit && tongue) {
+      (g.P.readDocs ??= new Set()).add(id);
+      res.notes.push(literacyFilter(g, R.text || ""));
+      for (const f of R.facts || []) learn(g, f, `${it.name}에서 읽었다`);
+    } else res.notes.push(lit ? `글자는 읽힌다. 말이 ${R.lang}이다 — ${tongueMask(g, R.lang, R.text || "")}` : `${readMask(g, R.text || "")} — 글자다. 읽을 수 없다. 글을 아는 사람에게 보여야 한다`);
+  },
+  // 제안한다 (22 §1.2 player_offer): 이 대화에서 숨긴 것의 문이 하나 더 열린다
+  offer(g, kind, res) {
+    const n = g.convo.npc;
+    talkTurn(g, res, { 대성공: [3, 2], 성공: [2, 1], "부분 성공": [1, 0], 실패: [0, -1], 대실패: [-2, -3] });
+    if (kind === "coin") { g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12; }
+    g.convo.offer = kind;
+    addMemory(g, n, { kind: "debt", tag: null, text: `셋째가 제안했다 — ${OFFERS.find((x) => x[0] === kind)?.[1].replace(/"/g, "")}`, salience: 3, source: "engine" });
+    res.notes.push(`${nameOf(g, n)}이(가) 그 말을 오래 곱씹는다`);
+  },
+  // 배운다 (03 §3.1): 스승의 스킬 −10까지, 연습의 2.5배. 받아들여지면 시험이 여는 비밀(trial:<npc>)
+  train(g, arg, res) {
+    const [n, sk] = arg.split(":"); const M = (g.content.game.mentors || []).find((x) => x.npc === n); if (!M) return;
+    const cap = M.teach[sk] - 10, cur = rawSkill(g, sk);
+    const first = !g.S.vars[`trial:${n}`];
+    if (first) { g.S.vars[`trial:${n}`] = true; res.notes.push(fill(g, M.text || "")); }
+    if (M.fee && M.fee !== "none") { const [k, v] = M.fee.split(" "); if (k === "coin") { g.S.purse.player -= Number(v); g.S.purse[n] = (g.S.purse[n] || 0) + Number(v); } else if (k === "item") { const it = mine(g).find((i) => i.gid === v); if (it) g.L.items.delete(it.id); } }
+    const d = Math.max(0.6, (cap - cur) * 0.09) * (talentGrows(g, sk) ? 1.25 : 1);
+    (g.P.gain ??= {})[sk] = (g.P.gain[sk] || 0) + Math.min(d, Math.max(0, cap - cur));
+    (g.P.trainedDay ??= {})[n] = Math.floor(g.t / 1440);
+    g.P.status.fatigue = clamp(g.P.status.fatigue + 15, 0, 100);
+    bumpRel(g, n, 1, 1); bond(g, n, 1);
+    pass(g, 120);
+    const after = skill(g, sk);
+    res.notes.push(`${sk} — ${sk === "읽고쓰기" ? LETTER_WORD(after) : sk === "용언" ? TONGUE_WORD(after) : skillWord(after)}`);
+    // 수업의 대가 (CHARACTERS 각 스승의 '주의'): 금지된 수업은 목격될 수 있고, 어떤 스승은 제자를 판다
+    if (M.risk === "witness" && hash(g.seed, "lesson", n, Math.floor(g.t / 1440)) < (present(g).some((w) => profOf(g, w.npc).role === "authority") ? 0.5 : g.S.dead.has("npc_isol") ? 0.04 : 0.1)) { wantedAdd(g, 1, "금지된 글을 배웠다"); res.notes.push("창밖에서 누군가 걸음을 멈췄다가 지나간다"); }
+    if (M.risk === "sells" && hash(g.seed, "lesson-sell", n, Math.floor(g.t / 1440)) < 0.08) wantedAdd(g, 1, `${nameOf(g, n)}이(가) 제자 이야기를 흘렸다`);
+    if (M.risk === "trap") g.S.vars.hagen_knows_escape_intent = true;
   },
   rising(g, _, res) { const st = SL(g, "rising_call"); g.storyDone.delete(st.id); openStory(g, st); res.storyText = g.feed.pop()?.text; },
   op_start(g, id, res) { g.op = { id, phase: "exec" }; const op = g.content.game.ops[id]; res.notes.push(op.exec_text); pass(g, 5); },
@@ -1957,6 +2031,16 @@ const DO = {
     res.notes.push(knew ? `${nameOf(g, n)}의 눈빛이 달라진다` : `${g.L.items.get(id).name}을(를) 꺼내 보였다`);
     // 작전의 열매: 헨릭에게 그의 진짜 장부를 — 스물여섯째 줄이 지워진다
     if (n === "npc_henrik" && g.L.items.get(id)?.gid === "henrik_ledger") { mind(g, n).fear += 3; g.S.vars.kit_on_list = false; g.S.vars.henrik_blackmailed = true; res.notes.push("헨릭의 얼굴에서 핏기가 빠진다. 그가 명부를 펴고, 스물여섯째 줄을 긋는다"); g.S.threats.push({ by: n, target: "player", kind: "hunt", about: "henrik_ledger", t: g.t }); }
+    // 글을 아는 사람에게 보이면 읽어 준다 (19 §4.2 "글을 아는 누군가에게 보여줘야 한다") — 그 사람도 알게 된다
+    const R = goodOf(g, g.L.items.get(id))?.read;
+    if (n && R && LITERATE.has(n) && !g.P.readDocs?.has(id)) {
+      if (relOf(g, n).trust >= 15 || OK(res.tier)) {
+        (g.P.readDocs ??= new Set()).add(id);
+        res.notes.push(`${nameOf(g, n)}이(가) 소리 죽여 읽어 준다 — "${(R.text || "").slice(0, 80)}"`);
+        for (const f of R.facts || []) { learn(g, f, `${nameOf(g, n)}이(가) 읽어 주었다`); if (!g.S.knows.has(f)) g.S.knows.set(f, new Set()); g.S.knows.get(f).add(n); }
+        addMemory(g, n, { kind: "fact_learned", tag: null, text: `셋째가 ${g.L.items.get(id).name}을(를) 보여 주었다`, salience: 4, source: "engine" });
+      } else res.notes.push(`${nameOf(g, n)}이(가) 글을 힐끗 보고는 고개를 돌린다. "나는 아무것도 못 봤다."`);
+    }
     if (n) endIfSpent(g, res, 1);
   },
   sell(g, id, res) {
@@ -2005,12 +2089,16 @@ function endIfSpent(g, res, cost) {
   pass(g, 5);
   if (g.convo && (g.convo.patience <= 0 || mind(g, g.convo.npc).anger >= 3)) { res.ending = true; res.convoEnded = g.convo; g.convo = null; res.notes.push("상대가 등을 돌린다 — 이야기는 끝났다"); }
 }
-function revealCtx(g, n, tier) {
+export function revealCtx(g, n, tier) {
   const r = relOf(g, n);
   const toldBy = new Set(Object.entries(g.M).filter(([k, m]) => k !== n && m.toldPlayer.size).map(([k]) => k));
   const m = mind(g, n);
   const flags = new Set(Object.keys(g.S.vars).filter((k) => g.S.vars[k] === true && /^(trial|story):/.test(k)));
-  return { npc: n, trust: r.trust, like: r.like, tier, dead: g.S.dead, toldBy, scene: null, offer: false, flags,
+  // 술자리: 저녁의 수탉(주막) — 혀가 풀리는 자리 / 제안: 이 대화에서 내놓은 것
+  const hm = ((g.t % 1440) + 1440) % 1440, l = g.W.loc.get(g.at) || {};
+  const tavern = g.at === "gf_rooster" || /tavern|inn|주막|술집/.test(`${l.kind || ""}${l.name || ""}`);
+  const scene = tavern && (hm >= 18 * 60 || hm < 2 * 60) ? "술자리" : null;
+  return { npc: n, trust: r.trust, like: r.like, tier, dead: g.S.dead, toldBy, scene, offer: !!g.convo?.offer, flags,
     dejaVu: (g.run.loop - 1) * 10,                                                     // 시간에 민감한 존재의 기시감 (03 §7) — 회차마다 쌓인다
     echoKnown: m.memories.some((x) => x.tag === "이상함") && (g.run.loop > 1), gifts: m.gifts || 0 };
 }
@@ -2026,6 +2114,22 @@ function describeBelief(g, b) {
 // ── 기억 (21 §6) ──
 const KINDS = ["fact_learned", "claim", "impression", "emotion", "promise", "debt", "threat", "suspicion", "learned"];
 export const IMPRESSION_TAGS = ["영리함", "위험함", "정직함", "거짓말쟁이", "다정함", "비굴함", "용감함", "이상함", "쓸모 있음", "짐"];
+// 제안할 수 있는 것: [id, 선택지, 할 수 있나]
+const OFFERS = [
+  ["letters", "\"글자를 가르쳐 줄게.\" — 흙바닥에 손가락으로", (g) => skill(g, "읽고쓰기") >= 10],
+  ["route", "\"빠져나갈 길이 있어.\" — 잿빛 실 이야기를 꺼낸다", (g) => knowsFact(g, "fact_gf_greyash_route") || (!!g.domain && !g.domain.lost)],
+  ["shelter", "\"숨을 곳이 있어. 언덕에.\"", (g) => !!g.domain && !g.domain.lost],
+  ["coin", "\"값은 치를게.\" — 1 발톱을 보여 준다", (g) => g.S.purse.player >= 12],
+];
+const goodOf = (g, it) => (it?.gid ? g.content.game.economy.goods[it.gid] : null);
+const LITERATE = new Set(["npc_osric", "npc_owen_raven", "npc_henrik", "npc_martha", "npc_lea", "npc_godric_raven", "npc_kaspar", "npc_sara", "npc_lm_jonas", "npc_alberic", "npc_melisande", "npc_mateus"]);
+function mentorsHere(g) {
+  if (g.convo || g.fight || g.story) return [];
+  const here = new Set(present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc));
+  const today = Math.floor(g.t / 1440);
+  return (g.content.game.mentors || []).filter((M) => here.has(M.npc) && !g.S.dead.has(M.npc) && storyWhen(g, M.needs) && (g.P.trainedDay?.[M.npc] ?? -1) !== today && feeOK(g, M.fee));
+}
+const feeOK = (g, fee) => { if (!fee || fee === "none") return true; const [k, v] = fee.split(" "); return k === "coin" ? g.S.purse.player >= Number(v) : k === "item" ? mine(g).some((i) => i.gid === v) : true; };
 // 대본 장면이 남긴 깃발의 결과 가운데 '며칠 뒤'가 필요한 것 (A13): 목표 행동 문법에는 상대 시각이 없다
 function flagsDay(g, day) {
   const V = g.S.vars, P = g.P, T = day * 1440;
@@ -2505,7 +2609,7 @@ export function view(g) {
     bodies: bodiesHere(g).map((b) => nameOf(g, b.npc)),
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     fight: g.fight ? { npc: g.fight.npc, name: displayName(g, g.fight.npc), round: g.fight.round, me: g.fight.me, foe: g.fight.foe } : null,
-    skills: Object.keys(g.P.skills).map((sk) => { const v = skill(g, sk); return { name: sk, word: skillWord(v), body: !!BODY_STAT[sk], lagging: !!BODY_STAT[sk] && rawSkill(g, sk) + talentBonus(g, sk) > bodyCap(g, sk) }; }),
+    skills: Object.keys(g.P.skills).map((sk) => { const v = skill(g, sk); return { name: sk, word: sk === "읽고쓰기" ? LETTER_WORD(v) : sk === "용언" ? TONGUE_WORD(v) : skillWord(v), body: !!BODY_STAT[sk], lagging: !!BODY_STAT[sk] && rawSkill(g, sk) + talentBonus(g, sk) > bodyCap(g, sk) }; }),
     player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen })), bloody: !!g.P.bloody, wanted: heatHere(g), wantedWord: wantedWord(heatHere(g)) },
     notebook: [...g.run.carry.notebook, ...g.P.notebook],
     ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, final: !!g.run.carry.final && g.ended.kind === "dead", canRelease: g.run.loop >= 3 && !g.run.carry.final, epilogue: g.run.carry.final && g.ended.kind === "dead" ? epilogue(g) : null, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,

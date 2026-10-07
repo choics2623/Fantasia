@@ -41,7 +41,7 @@ ops:
       - {phase: 수단, label: 불 (양초), cond: "has 광원"}
       - {phase: 탈출, label: 잿빛 실의 길 (옛 수로), cond: "pknows fact_gf_greyash_route"}
     exec_text: 식은 벽난로 냄새. 쇠 금고, 열쇠 구멍이 셋.
-    success: ["var list_burned = true", "var sara_on_list = false", "var kit_on_list = false", "note 금고 — 명단과 증서를 벽난로에. 세렌에 사본이 있다고 했다. 그래도 서른 날은 번다"]
+    success: ["var list_burned = true", "var sara_on_list = false", "var kit_on_list = false", "item sale_list", "note 금고 — 명단과 증서를 벽난로에. 2차 명단 초안 한 장은 품에. 세렌에 사본이 있다고 했다. 그래도 서른 날은 번다"]
     caught: ["wanted 4 성채 서재에 침입했다", "die_if 0.5 rope 성채 마당의 들보에 — 금고를 연 밤의 끝"]
     scapegoat: npc_martha
   granary:

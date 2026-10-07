@@ -142,6 +142,12 @@ def main():
     director = {"beats": [], "quiet": []}
     for f in load("content/base/director/*.yaml"):
         director["beats"] += (f or {}).get("beats") or []; director["quiet"] += (f or {}).get("quiet") or []
+    place_reveals = []
+    for f in load("content/base/reveals/*.yaml"):
+        place_reveals += (f or {}).get("places") or []
+    mentors = []
+    for f in load("content/base/mentors/*.yaml"):
+        mentors += (f or {}).get("mentors") or []
     flags = {}
     for f in load("content/base/flags/*.yaml"):
         flags.update((f or {}).get("flags") or {})
@@ -166,7 +172,7 @@ def main():
     truenames = {}
     for f in load("content/base/truenames/*.yaml"):
         truenames.update((f or {}).get("words") or {})
-    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
+    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")

@@ -68,7 +68,7 @@ const C_ = (sid, when, vars, rel) => (s) => { const g = at(sid, when, vars, rel)
   if (opened) { pick(g, "take"); check("사본을 손에 넣는다 — 맹세가 열린다", g.S.vars.lm_list_copy === true && ids(g).includes("oath:oath_lumen")); } }
 { const r = trySeeds(C_("lumen", "312-11-11 19:00"), "lm_jonas_copy", "strike", (g) => g.S.vars.lm_impure < 26);
   check("원본에서 열둘을 지운다 (var -= 가 먹는다)", r.opened && r.ok, r.g ? String(r.g.S.vars.lm_impure) : ""); }
-{ const r = trySeeds(C_("lumen", "312-11-13 22:00", { lm_list_copy: true }), "lm_silent_well", "down", (g) => g.S.vars.lm_alberic_escaped);
+{ const r = trySeeds((s) => { const g = C_("lumen", "312-11-13 22:00", { lm_list_copy: true })(s); g.P.knows.add("fact_lu_alberic_cell9"); return g; }, "lm_silent_well", "down", (g) => g.S.vars.lm_alberic_escaped);
   check("침묵의 우물 — 알베릭", r.opened && r.ok); }
 // 맹세 판정: 넷째 장작
 { const g = at("lumen", "312-12-10 09:00", { lm_list_copy: true });

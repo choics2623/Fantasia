@@ -1,0 +1,73 @@
+# 스승 (03 §3.1 · CHARACTERS 각 인물의 '스승' 줄): 스승의 스킬 −10(상한)까지, 연습의 2.5배로 는다.
+# skill은 엔진 스킬 이름 (검술·맨손격투·단검 → 싸움). needs: 장면 조건 문법. fee: coin n | item <물건 gid> | none.
+# risk: witness(목격 판정 — 금지된 수업) · sells(제자를 판다) · trap(탈주 의도를 모은다). 받아들여지면 trial:<npc> 깃발 — 시험이 여는 비밀 (22 §1.2)
+mentors:
+  - npc: npc_gunnar
+    teach: {싸움: 72}
+    needs: ["rel_trust npc_gunnar >= 40"]
+    fee: none
+    text: "군나르가 말채찍을 칼처럼 쥔다. \"눈 감지 마라. 한 번도.\""
+  - npc: npc_osric
+    teach: {읽고쓰기: 45, 화술: 50}
+    needs: ["rel_trust npc_osric >= 25"]
+    fee: item candle
+    risk: witness
+    text: "오스릭이 밀랍판에 글자 하나를 긋는다. 문을 한 번 본다. \"이건 '물'이다. 소리 내어 읽지 마라.\""
+  - npc: npc_owen_raven
+    teach: {읽고쓰기: 52, 용언: 45}
+    needs: ["rel_trust npc_owen_raven >= 35"]
+    fee: none
+    risk: witness
+    text: "오웬이 사라의 이름을 쓴다. 그리고 지운다. \"네 차례다.\""
+  - npc: npc_henrik
+    teach: {읽고쓰기: 65}
+    needs: ["rel_trust npc_henrik >= 20"]
+    fee: coin 3
+    risk: sells
+    text: "헨릭이 장부 귀퉁이를 찢어 숫자를 쓴다. \"숫자부터. 글자는 숫자의 하인이다.\""
+  - npc: npc_martha
+    teach: {통찰: 58, 기만: 45}
+    needs: ["rel_trust npc_martha >= 40"]
+    fee: none
+    text: "마르타가 창밖의 사람 하나를 가리킨다. \"저 여자는 무엇을 숨기지? 말해 봐. 틀리면 다시.\""
+  - npc: npc_hagen
+    teach: {기만: 55, 싸움: 45}
+    needs: ["rel_trust npc_hagen >= 15"]
+    fee: coin 12
+    risk: trap
+    text: "하겐이 웃는다. \"거짓말은 반만 하는 거야. 나머지 반은 진짜로.\" 그는 네가 어디로 가고 싶은지 묻지 않는다. 듣기만 한다."
+  - npc: npc_bram
+    teach: {통찰: 42, 화술: 35}
+    needs: ["rel_trust npc_bram >= 30"]
+    fee: none
+    text: "브람이 죽을 저으며 말한다. \"손님 얼굴을 봐라. 그릇보다 먼저.\""
+  - npc: npc_fayne
+    teach: {은신: 40, 손재주: 30}
+    needs: ["rel_trust npc_fayne >= 15"]
+    fee: item bread
+    text: "페인이 처마로 올라간다. 소리가 없다. \"발가락으로 먼저. 뒤꿈치는 거짓말을 해.\""
+  - npc: npc_dietmar
+    teach: {위압: 40, 은신: 35}
+    needs: ["rel_trust npc_dietmar >= 30"]
+    fee: none
+    text: "디트마르가 눈을 가늘게 뜬다. 그것만으로 개가 물러난다. \"소리 지르는 놈은 겁먹은 놈이다.\""
+  - npc: npc_sara
+    teach: {통찰: 28}
+    needs: ["romance npc_sara >= 1"]
+    fee: none
+    text: "사라가 성채 하인들 이야기를 한다. 누가 누구에게 고개를 얼마나 숙이는지. 그게 지도라고 한다."
+  - npc: npc_johan
+    teach: {화술: 40}
+    needs: ["rel_trust npc_johan >= 15"]
+    fee: none
+    text: "요한이 노래 한 소절을 부르고 멈춘다. \"이야기는 멈출 데를 아는 거야.\""
+  - npc: npc_kaspar
+    teach: {싸움: 68}
+    needs: ["rel_trust npc_kaspar >= 40"]
+    fee: none
+    text: "카스파르가 목검을 던진다. \"인간의 검술은 짧다. 그래서 먼저 닿아야 한다.\""
+  - npc: npc_fizik
+    teach: {손재주: 62, 은신: 55}
+    needs: ["rel_trust npc_fizik >= 20"]
+    fee: coin 6
+    text: "피직이 네 소매에서 동전을 꺼내 보인다. 언제 넣었는지 너는 모른다."

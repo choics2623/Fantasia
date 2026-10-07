@@ -1,0 +1,17 @@
+# 장소가 알려 주는 사실 (22 §1.2 "물건·장소·증언으로만" — A10): 그 자리를 뒤지면(search) 엔진이 사실을 준다.
+# read: 읽고쓰기가 그만큼 있어야 글을 읽는다 (19 §4.2) — 모자라면 unread 글만 남는다.
+places:
+  - id: rv_keep_strongbox
+    fact: fact_gf_keep_strongbox
+    at: gf_keep_study
+    text: "태피스트리 뒤의 벽이 비어 있는 소리를 낸다. 쇠문. 열쇠 구멍이 이상한 모양이다 — 고드릭의 목에 늘 걸린 그 목걸이의 모양."
+  - id: rv_anne_stake
+    fact: fact_hi_anne_grave
+    at: filth_marsh
+    read: 10
+    text: "처형터 가장자리, 다른 말뚝보다 낮은 말뚝 하나. 칼로 새긴 글자 — 앤. 그 아래 서툰 손으로 한 줄 더: '빵은 내가'."
+    unread: "처형터 가장자리의 낮은 말뚝에 무언가 새겨져 있다. ▯ ▯▯ ▯▯. 글자다. 읽을 수 없다."
+  - id: rv_fayne_letters
+    fact: fact_gf_fayne_letters
+    at: gf_mill_loft
+    text: "다락 흙바닥에 글자 넷. 서툴다. 같은 글자를 몇 번이고 다시 쓴 자국 — 페인의 손 크기다."

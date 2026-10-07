@@ -51,6 +51,8 @@ export function revealOK(alts, ctx, fact = null) {
   return alts.some((a) => {
     if (a.never || a.self) return false;                         // 물어서는 열리지 않는다
     if (a.flag && !ctx.flags?.has(`${a.flag}:${fact}`) && !ctx.flags?.has(`${a.flag}:${ctx.npc}`)) return false;
+    // 사람 단위 깃발(함께 지난 장면·스승의 시험)만으로 여는 비밀은 신뢰도 조금 있어야 한다 — 장면 하나로 모든 문이 열리지 않게
+    if (a.flag && Object.keys(a).length === 1 && !ctx.flags?.has(`${a.flag}:${fact}`) && !(ctx.trust >= 25)) return false;
     if (a.trust != null && !(ctx.trust >= a.trust)) return false;
     if (a.like != null && !(ctx.like >= a.like)) return false;
     if (a.tier === "대성공" && ctx.tier !== "대성공") return false;
