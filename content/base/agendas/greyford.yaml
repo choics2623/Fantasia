@@ -20,6 +20,16 @@ vars:                         # 회귀점의 세계 상태
   sara_on_list: true          # 사라 — 2차 명단 (fact_gf_sara_on_sale_list)
   kit_sold: false
   sara_sold: false
+  # 대본 장면이 세운 깃발의 결과 (A13)
+  grain_search_early: false
+  grain_search_done: false
+  kit_whipped: false
+  henrik_suspects_sara: false
+  sara_watched: false
+  hagen_knows_escape_intent: false
+  hagen_knows_escape_intent_via_fayne: false
+  den_found: false
+  kit_confirmed: false
 agendas:
   - id: ag_bram_income
     npc: npc_bram
@@ -55,7 +65,7 @@ agendas:
     npc: npc_znik
     goal: 곡창 부족분을 농노 탓으로 — 방앗간부터 뒤진다 (REGIONS 10.20)
     every: once
-    when: ["alive npc_znik", "date >= 312-10-20"]
+    when: ["alive npc_znik", "date >= 312-10-20", "var grain_search_done != true"]
     at: {place: gf_mill, from: "08:00", to: "14:00", doing: 방앗간 곡물 수색}
     effects: ["if var thomas_floor_hidden == false: var grain_route = false ; log 즈닉이 방앗간 두 번째 바닥을 찾았다 — 브람의 곡물 길이 끊겼다",
               "else: log 즈닉이 방앗간을 뒤졌지만 두 번째 바닥은 찾지 못했다"]
@@ -129,3 +139,47 @@ agendas:
     at: {place: gf_whip_square, from: "05:00", to: "07:00", doing: 2차 호송 — 서른하나를 사슬로 묶는다}
     effects: ["if var sara_on_list == true: var sara_sold = true ; capture npc_sara at dragon_pillar_post ; log 2차 호송 — 사라가 서른하나 사이에서 남쪽으로 끌려갔다",
               "else: log 2차 호송 — 서른하나가 남쪽으로 끌려갔다"]
+  # ── 대본 장면이 남긴 깃발의 결과 (A13) ──
+  - id: ag_znik_grain_search_early
+    npc: npc_znik
+    goal: 마르타가 판 보리 — 곡물 수색을 열이틀 앞당긴다
+    every: once
+    when: ["alive npc_znik", "var grain_search_early == true", "date >= 312-10-08"]
+    at: {place: gf_mill, from: "08:00", to: "14:00", doing: 마르타가 귀띔한 방앗간 바닥을 뒤진다}
+    effects: ["var grain_search_done = true", "if var thomas_floor_hidden == false: var grain_route = false ; log 즈닉이 마르타의 귀띔대로 방앗간 두 번째 바닥을 찾았다 — 곡물 길이 끊겼다",
+              "else: log 즈닉이 방앗간을 뒤졌지만 두 번째 바닥은 찾지 못했다"]
+  - id: ag_kit_lashes
+    npc: npc_znik
+    goal: 움막 바닥의 금 — 다음 점호에서 키트에게 태형 셋
+    every: once
+    when: ["alive npc_kit", "var kit_whipped == true"]
+    at: {place: gf_whip_square, from: "05:00", to: "05:30", doing: 점호 끝에 키트를 채찍 기둥에 세운다 — 셋}
+    effects: ["punish npc_kit at gf_whip_square for 1", "log 점호에서 키트가 태형 셋을 맞았다 — 움막 12호의 금 때문에"]
+  - id: ag_henrik_names_sara
+    npc: npc_henrik
+    goal: 의심은 장부에 적힌다 — 사라의 이름을 즈닉에게 흘린다
+    every: once
+    when: ["alive npc_henrik", "alive npc_sara", "var henrik_suspects_sara == true", "date >= 312-09-04"]
+    at: {place: gf_whip_square, from: "20:30", to: "21:00", doing: 초소에서 즈닉에게 사라 이야기를 흘린다}
+    effects: ["var sara_watched = true", "punish npc_sara at gf_whip_square for 1", "log 헨릭의 말 한마디에 사라가 초소로 불려 갔다 — 돌아와서 말이 없다"]
+  - id: ag_fayne_sells_word
+    npc: npc_fayne
+    goal: 소문은 팔린다 — 셋째가 명단을 묻고 다닌다는 말을 하겐에게 빵 한 조각에
+    every: once
+    when: ["alive npc_hagen", "var hagen_knows_escape_intent_via_fayne == true", "date >= 312-09-06"]
+    at: {place: gf_rooster, from: "19:00", to: "20:00", doing: 하겐 옆에 앉아 빵 한 조각 값으로 소문을 판다}
+    effects: ["var hagen_knows_escape_intent = true", "log 페인이 빵 한 조각에 셋째 이야기를 하겐에게 흘렸다"]
+  - id: ag_volk_den_raid
+    npc: npc_volk
+    goal: 개들이 찾은 굴 — 해가 지기 전에 턴다
+    every: once
+    when: ["alive npc_volk", "var den_found == true", "var sigrid_group > 0"]
+    at: {place: hungry_hill__wolf_den, from: "16:00", to: "18:00", doing: 늑대굴 입구에 불을 놓고 나오는 자를 묶는다}
+    effects: ["var sigrid_group -= 12", "var fugitives_caught += 12", "log 볼크가 늑대굴을 털었다 — 열둘이 목줄에 묶였다"]
+  - id: ag_martha_red_mark
+    npc: npc_martha
+    goal: 남의 아이를 고른 셋째 — 키트의 줄에 붉은 점을
+    every: once
+    when: ["var kit_confirmed == true", "var kit_sold != true"]
+    at: {place: gf_keep, from: "07:00", to: "08:00", doing: 명부의 스물여섯째 줄 옆에 붉은 점을 찍는다}
+    effects: ["var kit_on_list = true", "log 마르타가 명부 스물여섯째 줄에 붉은 점을 찍었다 — 키트의 이름은 지워지지 않는다"]

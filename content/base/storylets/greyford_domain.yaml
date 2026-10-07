@@ -24,6 +24,8 @@ storylets:
 
       관리자 {dom_steward}: "{dom_ask}"
 
+      {dom_news}
+
       {dom_memory}
     choices:
       - id: close
@@ -41,24 +43,54 @@ storylets:
         effects: ["domain policy open", "domain exposure_mod -8", "temper 자비 -2"]
       - id: build_gate
         label: "사업 — 위장 입구"
-        when: ["domain_lacks hidden_gate"]
+        when: ["domain_lacks hidden_gate", "not domain_building"]
         text: "닷새 동안 덤불을 엮는다. 입구 하나가 산이 된다."
         effects: ["domain build hidden_gate"]
       - id: build_school
         label: "사업 — 비밀 학교 (오스릭)"
-        when: ["domain_lacks school", "alive npc_osric"]
+        when: ["domain_lacks school", "alive npc_osric", "not domain_building"]
         text: "흙바닥에 글자 하나. 아이 일곱이 그것을 따라 긋는다. 들키면 모두 탄다."
         effects: ["domain build school"]
       - id: build_wall
         label: "사업 — 기억의 벽"
-        when: ["domain_lacks memory_wall"]
+        when: ["domain_lacks memory_wall", "not domain_building"]
         text: "동굴 벽에 이름들이 늘어난다. 룬과 글자와, 글자를 모르는 이들의 손자국."
         effects: ["domain build memory_wall"]
       - id: build_watch
         label: "사업 — 망루와 봉화"
-        when: ["domain_lacks watch"]
+        when: ["domain_lacks watch", "not domain_building"]
         text: "언덕 꼭대기에 마른 장작더미. 불이 오르면 모두 흩어진다."
         effects: ["domain build watch"]
+      - id: build_herbs
+        label: "사업 — 약초밭 (엘사의 씨앗)"
+        when: ["domain_lacks herbs", "alive npc_elsa", "rel_trust npc_elsa >= 15", "not domain_building"]
+        text: "엘사가 씨앗 주머니를 내민다. 쑥, 버드나무 껍질, 이름을 말하지 않는 풀 하나. \"마지막 것은 아이들 손이 닿지 않는 데에.\""
+        effects: ["domain build herbs"]
+      - id: appoint_bram
+        label: 관리자를 바꾼다 — 브람에게
+        when: ["alive npc_bram", "rel_trust npc_bram >= 20", "not domain_steward npc_bram"]
+        text: "브람이 앞치마를 벗어 접는다. \"수탉은 누가 보고?\" 대답을 기다리지 않는다."
+        effects: ["domain appoint npc_bram"]
+      - id: appoint_sigrid
+        label: 관리자를 바꾼다 — 시그리드에게
+        when: ["alive npc_sigrid", "rel_trust npc_sigrid >= 20", "not domain_steward npc_sigrid"]
+        text: "시그리드가 창을 땅에 꽂는다. 그것이 대답이다."
+        effects: ["domain appoint npc_sigrid"]
+      - id: appoint_elsa
+        label: 관리자를 바꾼다 — 엘사에게
+        when: ["alive npc_elsa", "rel_trust npc_elsa >= 25", "not domain_steward npc_elsa"]
+        text: "엘사가 오래 침묵한다. \"그럼 내 오두막은 비워 두어라. 사람들은 아플 때 거기로 온다.\""
+        effects: ["domain appoint npc_elsa"]
+      - id: appoint_gunnar
+        label: 관리자를 바꾼다 — 군나르에게
+        when: ["alive npc_gunnar", "rel_trust npc_gunnar >= 25", "not domain_steward npc_gunnar"]
+        text: "군나르가 웃는다. 처음 보는 웃음이다. \"싸움판보다 낫겠지.\""
+        effects: ["domain appoint npc_gunnar"]
+      - id: appoint_martha
+        label: 관리자를 바꾼다 — 마르타에게 (솜씨는 가장 낫다)
+        when: ["alive npc_martha", "rel_trust npc_martha >= 20", "not domain_steward npc_martha"]
+        text: "마르타가 장부를 펼친다. 이미 숫자가 적혀 있다. 언제부터 세고 있었는지 너는 묻지 않는다."
+        effects: ["domain appoint npc_martha"]
       - id: delegate
         label: '관리자에게 맡긴다 — "당신이 정하시오."'
         when: ["domain_delegation direct"]
@@ -74,7 +106,7 @@ storylets:
     choices:
       - id: hold
         label: 입구를 막고 버틴다
-        check: {skill: 싸움, D: 50, warn: ["domain_has watch", "domain_has hidden_gate"]}
+        check: {skill: 싸움, D: 50, per_defense: 0.6, warn: ["domain_has watch", "domain_has hidden_gate"]}
         success:
           text: "덤불 뒤의 어둠에서 돌이 날아간다. 개들이 먼저 물러난다. 수색대는 해가 지기 전에 내려간다."
           effects: ["domain raid_held"]

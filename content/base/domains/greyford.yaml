@@ -26,9 +26,9 @@ stewards:
   npc_gunnar: {skill: 50, loyalty: 20, belief: 해방, ambition: 15, principle: 신중함, secret: "백 번째 시합을 하지 않은 이유"}
   npc_martha: {skill: 75, loyalty: -10, belief: 가족, ambition: 50, principle: 냉혹, secret: "딸 리즈를 지키려고 명단을 고쳤다"}
 facilities:
-  hidden_gate: {name: 위장 입구, conceal: 10, exposure: -5, food: -2, text: "가시덤불을 엮어 입구를 하나 더 숨긴다"}
-  school:      {name: 비밀 학교, morale: 5, literacy: 5, exposure: 3, food: 0, text: "흙바닥에 글자를 — 오스릭이 몰래 가르치겠다고 한다", when: ["alive npc_osric"]}
-  herbs:       {name: 약초밭, morale: 2, exposure: 1, food: 0, text: "엘사의 씨앗으로 쑥과 버드나무 껍질을"}
-  watch:       {name: 망루와 봉화, defense: 5, exposure: 4, food: 0, text: "언덕 꼭대기에 망을 세운다"}
-  memory_wall: {name: 기억의 벽, morale: 8, exposure: 3, food: 0, text: "죽은 이들의 이름을 동굴 벽에 — 시그리드의 룬 옆에"}
+  hidden_gate: {name: 위장 입구, days: 5, conceal: 10, exposure: -5, food: -2, text: "가시덤불을 엮어 입구를 하나 더 숨긴다"}
+  school:      {name: 비밀 학교, days: 8, morale: 5, literacy: 5, exposure: 3, food: 0, text: "흙바닥에 글자를 — 오스릭이 몰래 가르치겠다고 한다", when: ["alive npc_osric"]}
+  herbs:       {name: 약초밭, days: 6, morale: 2, exposure: 1, food: 1, text: "엘사의 씨앗으로 쑥과 버드나무 껍질을"}
+  watch:       {name: 망루와 봉화, days: 6, defense: 5, exposure: 4, food: 0, text: "언덕 꼭대기에 망을 세운다"}
+  memory_wall: {name: 기억의 벽, days: 4, morale: 8, exposure: 3, food: 0, text: "죽은 이들의 이름을 동굴 벽에 — 시그리드의 룬 옆에"}
 # (봉기·칙허로 생기는 영역은 엔진이 직접 만든다 — 숨길 수 없는 땅)

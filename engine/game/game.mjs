@@ -919,6 +919,7 @@ function domainTick(g, day) {
   if (!ev) return;
   const D = g.domain;
   if (ev === "empty") { g.feed.push({ kind: "echo", text: `〰 ${placeName(g, D.at)}이(가) 비었다. 남은 사람이 없다.` }); return; }
+  if (ev === "steward") { (g.domainDue ??= []).push("report"); return; }   // 후임 문제는 보고로 온다
   if (ev === "usurp") { g.feed.push({ kind: "echo", text: `〰 ${displayName(g, D.steward)}이(가) ${placeName(g, D.at)}을(를) 제 것으로 삼았다. 너는 이제 거기 사람이 아니다.` }); D.lost = true; return; }
   (g.domainDue ??= []).push(ev);
 }
@@ -927,6 +928,7 @@ function domainStoryTick(g) {
   if (!g.domainDue?.length || g.story || g.convo || g.fight || g.ended) return false;
   const ev = g.domainDue.shift();
   if (ev === "hostage") { const F = g.family; F.hostage = F.members.find((n) => n === "npc_kit") || F.members[0]; g.storyCtx = { ...(g.storyCtx || {}), hostage: F.hostage }; }
+  if (ev === "report" && g.domain) { g.domain.newsNow = g.domain.news || []; g.domain.news = []; }   // 이 보고가 전할 소식 (한 번 전하면 끝)
   const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage", siege: "rising_siege", child: "child_question" }[ev]); if (!st) return false;
   g.storyDone.delete(st.id); openStory(g, st);
   return true;
@@ -940,7 +942,8 @@ function domainFill(g, text) {
   const mem = (soul(g).domainMemory || []).includes("traitor") ? "〰 기억: 지난 회차의 이 무렵, 문을 열었다. 새로 온 사내 하나가 볼크에게 길을 팔았다." : "";
   return String(text || "").replace(/\{dom_(\w+)\}/g, (_, k) => {
     if (!V) { const s2 = g.content.game.domains.sites; const at = DOM.canFound(g, DMH()); const site = s2[at] || {}; return { name: site.name, steward: displayName(g, site.steward), pop: site.pop_var ? g.S.vars[site.pop_var] : site.pop, food: site.food_days }[k] ?? ""; }
-    return { messenger: near ? "" : "밤에, 페인이 처마에서 내려와 귓속말을 한다. 언덕에서 온 말이다.", name: V.at, stage: V.stage, pop: V.pop, food: V.foodDays, defense: V.defense, conceal: V.conceal, morale: V.morale, order: V.order, exposure: `${V.exposure}/${V.threshold}`, steward: V.steward, ask, memory: mem }[k] ?? "";
+    const news = [...(D.newsNow || []), ...(V.building ? [`${V.building.name} — 짓는 중 (${V.building.days}일 남음)`] : [])];
+    return { messenger: near ? "" : "밤에, 페인이 처마에서 내려와 귓속말을 한다. 언덕에서 온 말이다.", name: V.at, stage: V.stage, pop: V.pop, food: V.foodDays, defense: V.defense, conceal: V.conceal, morale: V.morale, order: V.order, exposure: `${V.exposure}/${V.threshold}`, steward: V.steward, ask, memory: mem, news: news.length ? `소식: ${news.join(" · ")}` : "" }[k] ?? "";
   });
 }
 function domainEffect(g, [op, a], res) {
@@ -952,7 +955,19 @@ function domainEffect(g, [op, a], res) {
   else if (op === "morale") D.morale = clamp(D.morale + Number(a), 0, 100);
   else if (op === "exposure_mod") D.expMod = (D.expMod || 0) + Number(a);
   else if (op === "exposure_reset") { D.expMod = (D.expMod || 0) - 20; D.alarm = 0; }
-  else if (op === "build") { if (!D.built.includes(a)) { D.built.push(a); D.morale = clamp(D.morale + (F[a]?.morale || 0), 0, 100); } }
+  else if (op === "build") {
+    // 짓기에는 날과 먹을 것이 든다 (09 §5): 일하는 손은 먹어야 한다. 시설의 조건(when)이 맞아야 한다
+    if (D.built.includes(a) || D.building || (F[a]?.when && !storyWhen(g, F[a].when))) return;
+    const days = F[a]?.days || 6; D.building = { id: a, until: g.t + days * 1440 };
+    D.food = Math.max(0, D.food - Math.round(DOM.popOf(g, D) * 0.2 * days));
+  }
+  else if (op === "appoint") {
+    // 관리자를 바꾼다 (09 §6): 새 사람은 너를 얼마나 믿느냐로 충성이 정해진다 — 야심 큰 사람은 칼이 된다
+    if (!a || g.S.dead.has(a) || a === D.steward) return;
+    const old = D.steward; D.steward = a; D.delegation = "direct"; D.usurped = false;
+    if (old && !g.S.dead.has(old)) bumpRel(g, old, -6, -8);
+    g.P.met.add(a); g.P.notebook.push(`영역 — 관리자를 ${old ? `${displayName(g, old)}에서 ` : ""}${displayName(g, a)}(으)로`);
+  }
   else if (op === "delegate") D.delegation = a;
   else if (op === "food_add") D.food += Number(a);
   else if (op === "raid_held") { D.morale = clamp(D.morale + 8, 0, 100); D.expMod = (D.expMod || 0) - 10; DIR.crisis(g, 4); }
@@ -1172,6 +1187,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
         g.S.vars.player_curfew = (g.S.vars.player_curfew || 0) + 1;
       }
     }
+    if (g.P.settlement === SETTLEMENT && isNight(next) && g.at !== HOME && !g.P.traveling && next % 60 === 0) g.P.nightOut = (g.P.nightOut || 0) + 1;
     manhunt(g, next);
     t = next;
     if (g.ended) break;
@@ -1194,6 +1210,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     familyDay(g, d);
     wantedCool(g, d);
     liesTick(g);
+    flagsDay(g, d);
     // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
     for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
   }
@@ -1371,6 +1388,8 @@ function storyWhen(g, conds, t = g.t) {
     else if (k === "domain_has") r = !!g.domain?.built.includes(a);
     else if (k === "domain_lacks") r = !!g.domain && !g.domain.built.includes(a);
     else if (k === "domain_delegation") r = g.domain?.delegation === a;
+    else if (k === "domain_steward") r = g.domain?.steward === a;
+    else if (k === "domain_building") r = !!g.domain?.building;
     else if (k === "domain_memory") r = (soul(g).domainMemory || []).includes(a);
     else if (k === "has") r = hasTag(g, a);
     else if (k === "romance") r = { ">=": romanceStage(g, a) >= Number(d) }[b];
@@ -1451,11 +1470,12 @@ function storyOdds(g, ck) {
   if (ck.auto && storyWhen(g, [ck.auto])) return { P: 0.97, S: 99, D: ck.D, parts: [{ sign: "▲", text: "몸이 먼저 안다" }] };
   // 회차가 쌓일수록 시간에 닿은 것들이 낌새를 챈다 (14 §7.4 — 볼크의 코)
   let D = ck.D + (ck.D_per_loop || 0) * (g.run.loop - 1);
+  if (ck.per_defense && g.domain) { _domData = g.content.game.domains; const dv = DOM.defenseOf(g, g.domain, DMH()); D -= Math.round(ck.per_defense * dv); if (dv) parts.push({ sign: "▲", text: `방어 ${dv}` }); }
   if (ck.per_ready) { const n = risingReady(g).filter((x) => x.ok).length; D -= ck.per_ready * n; parts.push({ sign: "▲", text: `준비된 것 ${n}가지` }); }
   if (ck.D_per_loop && g.run.loop > 1) parts.push({ sign: "▼", text: "젖은 재 냄새가 짙다" });
   return { P: prob(S, D), S, D, parts };
 }
-const WARN_TEXT = (g, w) => { const [k, a] = w.split(/\s+/); if (k === "pknows") return `너는 안다 — ${shortFact(g, a) || a}`; if (k === "been") return `${placeName(g, a)}에 가 본 적이 있다`; if (k === "date") return "볼크가 마을에 왔다"; return "들은 것이 있다"; };
+const WARN_TEXT = (g, w) => { const [k, a] = w.split(/\s+/); if (k === "pknows") return `너는 안다 — ${shortFact(g, a) || a}`; if (k === "been") return `${placeName(g, a)}에 가 본 적이 있다`; if (k === "date") return "볼크가 마을에 왔다"; if (k === "var") return g.content.game.flags?.[a]?.warn || "들은 것이 있다"; return "들은 것이 있다"; };
 function storyEffect(g, e, res) {
   const parts = String(e).split(/\s+/), k = parts[0], rest = String(e).slice(k.length + 1);
   if (k === "learn") learn(g, parts[1], "그 저녁");
@@ -1995,6 +2015,41 @@ function describeBelief(g, b) {
 // ── 기억 (21 §6) ──
 const KINDS = ["fact_learned", "claim", "impression", "emotion", "promise", "debt", "threat", "suspicion", "learned"];
 export const IMPRESSION_TAGS = ["영리함", "위험함", "정직함", "거짓말쟁이", "다정함", "비굴함", "용감함", "이상함", "쓸모 있음", "짐"];
+// 대본 장면이 남긴 깃발의 결과 가운데 '며칠 뒤'가 필요한 것 (A13): 목표 행동 문법에는 상대 시각이 없다
+function flagsDay(g, day) {
+  const V = g.S.vars, P = g.P, T = day * 1440;
+  // 명단을 태웠다 — "세렌에 사본이 있다. 그래도 서른 날은 번다"
+  if (V.list_burned && !V.list_restored) {
+    P.listBurnedDay ??= day;
+    if (day - P.listBurnedDay >= 30) {
+      V.list_restored = true;
+      if (!V.sara_sold && !g.S.dead.has("npc_sara") && !V.sara_freed) V.sara_on_list = true;
+      if (!V.kit_sold && !g.S.dead.has("npc_kit")) V.kit_on_list = true;
+      g.feed.push({ kind: "echo", text: "〰 세렌에서 명단 사본이 왔다는 말이 돈다. 불탄 이름들이 다시 적혔다." });
+      g.S.log.push({ t: T, npc: "npc_owen_raven", agenda: "sim", vis: "public", text: "세렌의 사본으로 매각 명단을 다시 썼다" });
+    }
+  }
+  // 사슬에서 풀린 사라 — 늑대굴로 간다
+  if (V.sara_freed && !P.saraMoved && !g.S.dead.has("npc_sara")) {
+    P.saraMoved = true;
+    g.W.override({ npc: "npc_sara", from: T, to: null, kind: "at", at: "hungry_hill__wolf_den", doing: "늑대굴 안쪽 — 손목의 쐐기 자국을 문지른다" });
+    if (V.sigrid_group != null) V.sigrid_group += 1;
+  }
+  // 마르타의 눈 — 밤에 마을 안을 돌아다니면 즈닉이 듣는다
+  if (V.martha_watches_you && P.settlement === SETTLEMENT && (P.nightOut || 0) > 0 && hash(g.seed, "martha_eye", day) < 0.3) wantedAdd(g, 1, "마르타가 본 것을 즈닉에게 전했다", overseer(g), SETTLEMENT);
+  P.nightOut = 0;
+  // 겁먹은 헨릭 — 이레가 지나도 장부가 네 손에 있으면 하겐에게 동전을 쥐여 준다
+  if (V.henrik_blackmailed && !V.henrik_hired && !g.S.dead.has("npc_henrik") && !g.S.dead.has("npc_hagen")) {
+    P.blackmailDay ??= day;
+    if (day - P.blackmailDay >= 7 && mine(g).some((i) => i.gid === "henrik_ledger")) {
+      V.henrik_hired = true;
+      const x = ((g.nem ??= {}).npc_hagen ??= { grudge: 0, track: 0, since: T }); x.grudge = Math.max(x.grudge, 2);
+      g.feed.push({ kind: "echo", text: "〰 수탉 뒤뜰에서 헨릭이 하겐에게 무언가를 쥐여 주는 것을 누가 보았다고 한다." });
+    }
+  }
+  // 통금에 세 번 걸리면 즈닉의 명단에 오른다
+  if ((V.player_curfew || 0) >= 3 && !P.curfewListed) { P.curfewListed = true; wantedAdd(g, 1, "통금을 세 번 어겼다", overseer(g), SETTLEMENT); }
+}
 // 배신감 (21 §5.3): 믿은 거짓말은 사실처럼 작동하다가, 반대 증거(그 사람이 진실을 알게 됨)를 만나면 신뢰가 무너진다
 function liesTick(g) {
   for (const [n, m] of Object.entries(g.M || {})) for (const mem of m.memories || []) {
@@ -2298,7 +2353,9 @@ function priceOf(g, n, gid) {
 // 점호 몸수색 (14 §0:14 — 첫 회차는 반드시 플레이어, 그 뒤는 셋 중 하나): 숨길 수 있는 것은 손재주로 숨긴다.
 // 은화(12못 이상)는 절도 의심으로 빼앗기고, 무기·위조 문서는 죄가 된다
 function rollcallSearch(g, day) {
-  const searched = g.run.loop === 1 && day === Math.floor(START / 1440) + 1 ? true : hash(g.seed, "search", day) < 1 / 3;
+  // 움막 12호의 금을 본 감독은 다음 점호에 반드시 뒤진다
+  const marked = g.S.vars.hut12_marks_seen && !g.P.hut12Searched; if (marked) g.P.hut12Searched = true;
+  const searched = marked || (g.run.loop === 1 && day === Math.floor(START / 1440) + 1 ? true : hash(g.seed, "search", day) < 1 / 3);
   if (!searched) return;
   const found = [];
   for (const it of mine(g)) {

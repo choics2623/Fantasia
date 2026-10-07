@@ -12,6 +12,8 @@ export function exposureOf(g, D, H) {
   let e = STAGES[st][2] + popOf(g, D) * 0.05 + (D.policy === "open" ? 6 : 0) + (D.expMod || 0) - (site.conceal || 0) * 0.5 - sk * 0.1;
   for (const f of D.built) e += fac[f]?.exposure || 0;
   for (const f of D.built) e -= (fac[f]?.conceal || 0) * 0.5;
+  e -= (D.literacy || 0) * 0.05;   // 글을 아는 마을은 쪽지로 말한다 — 시끄러운 전령이 준다
+  if ((D.order ?? 50) < 30) e += 5; // 질서가 무너지면 입이 가볍다
   return Math.max(0, Math.round(e));
 }
 export function canFound(g, H) {
@@ -23,18 +25,39 @@ export function found(g, at, H) {
   const s = H.sites()[at];
   g.domain = { at, popVar: s.pop_var || null, pop: s.pop || 0, steward: s.steward, food: Math.round(s.food_days * (s.pop || g.S.vars[s.pop_var] || 1) * 0.4), defense: s.defense || 0, morale: s.morale || 40, order: 50, literacy: 0, built: [], policy: "close", delegation: "direct", since: g.t, nextReport: g.t + 10 * 1440, alarm: 0, lost: false };
 }
-export function loyaltyOf(g, D, H) { return (H.stewards()[D.steward]?.loyalty || 0) + Math.round(H.relOf(g, D.steward).trust / 2); }
+export function loyaltyOf(g, D, H) { if (!D.steward) return 0; return (H.stewards()[D.steward]?.loyalty || 0) + Math.round(H.relOf(g, D.steward).trust / 2); }
+// 질서 (09 §4): 관리자의 솜씨와 원칙, 사기, 글
+export function orderOf(g, D, H) {
+  const S = H.stewards()[D.steward] || {};
+  return Math.max(0, Math.min(100, Math.round(25 + (S.skill || 0) * 0.4 + (S.principle === "냉혹" ? 10 : 0) + ((D.morale ?? 50) - 50) * 0.4 + (D.literacy || 0) * 0.1)));
+}
+export function defenseOf(g, D, H) { const fac = H.facilities(); return (D.defense || 0) + D.built.reduce((a, f) => a + (fac[f]?.defense || 0), 0); }
+// 관리자가 죽으면 후임 다툼 (09 §6.3): 살아 있고 너를 믿는 후보 가운데 솜씨가 가장 나은 사람. 없으면 비어 있다
+export function successorOf(g, D, H) {
+  return Object.entries(H.stewards()).filter(([n]) => n !== D.steward && !g.S.dead.has(n) && H.relOf(g, n).trust >= 10).sort((a, b) => (b[1].skill || 0) - (a[1].skill || 0))[0]?.[0] || null;
+}
 
 // 하루: 먹을 것, 들어오는 사람, 사기, 드러남. 드러남이 임계값을 이틀 넘으면 수색대
 export function domainDay(g, day, H) {
   const D = g.domain; if (!D || D.lost) return null;
   const pop = popOf(g, D);
   if (pop <= 0) { D.lost = true; return "empty"; }
-  const winter = day * 1440 >= H.winterStart;
-  D.food = Math.max(0, D.food - pop * (winter ? 0.7 : 0.4));
+  const winter = day * 1440 >= H.winterStart, fac = H.facilities();
+  D.food = Math.max(0, D.food - pop * (winter ? 0.7 : 0.4) + D.built.reduce((a, f) => a + (fac[f]?.food || 0), 0));
+  // 공사 (09 §5 노동): 짓는 데 날이 든다 — 다 지으면 다음 보고에 올라온다
+  if (D.building && g.t >= D.building.until) { const f = D.building.id; D.built.push(f); D.morale = Math.min(100, D.morale + (fac[f]?.morale || 0)); (D.news ??= []).push(`${fac[f]?.name || f}을(를) 다 지었다`); D.building = null; }
+  // 관리자가 죽었다
+  if (D.steward && g.S.dead.has(D.steward)) {
+    const dead = D.steward, next = successorOf(g, D, H);
+    D.steward = next; D.delegation = "direct"; D.morale = Math.max(0, D.morale - 12);
+    (D.news ??= []).push(next ? `${H.displayName(g, dead)}이(가) 죽었다. 후임 다툼 끝에 ${H.displayName(g, next)}이(가) 맡았다` : `${H.displayName(g, dead)}이(가) 죽었다. 맡을 사람이 없다 — 네가 직접 정해야 한다`);
+    return "steward";
+  }
+  D.order = orderOf(g, D, H);
+  if (D.order < 30 && H.hash(g.seed, "desert", day) < 0.15) { addPop(g, D, -1); (D.news ??= []).push("질서가 무너졌다 — 밤사이 하나가 떠났다"); }
   if (D.policy === "open" && H.hash(g.seed, "inflow", day) < 0.5) addPop(g, D, 1);
   if (D.food <= 0) { D.morale = Math.max(0, D.morale - 4); if (H.hash(g.seed, "starve", day) < 0.3) addPop(g, D, -1); }
-  if (D.built.includes("school")) D.literacy = Math.min(100, D.literacy + 0.3);
+  if (D.built.includes("school")) D.literacy = Math.min(100, D.literacy + 0.3 + (fac.school?.literacy || 0) * 0.05);
   // 관리자가 만드는 이야기 (§6.3): 맡겼다면 관리자의 신념대로
   const S = H.stewards()[D.steward] || {}, loy = loyaltyOf(g, D, H);
   if (D.delegation === "full") { D.policy = S.belief === "생존" && exposureOf(g, D, H) > THRESHOLD - 15 ? "close" : S.belief === "해방" ? "open" : D.policy; }
@@ -50,8 +73,9 @@ export function stageName(g, D) { return D.chartered ? "공인 영지" : D.open 
 export function domainView(g, H) {
   const D = g.domain; if (!D) return null;
   const fac = H.facilities();
-  return { at: H.placeName(g, D.at), stage: stageName(g, D), pop: popOf(g, D), foodDays: Math.round(D.food / Math.max(1, popOf(g, D) * 0.4)), defense: D.defense + D.built.reduce((a, f) => a + (fac[f]?.defense || 0), 0),
+  return { at: H.placeName(g, D.at), stage: stageName(g, D), pop: popOf(g, D), foodDays: Math.round(D.food / Math.max(1, popOf(g, D) * 0.4)), defense: defenseOf(g, D, H),
+    building: D.building ? { name: fac[D.building.id]?.name || D.building.id, days: Math.max(0, Math.ceil((D.building.until - g.t) / 1440)) } : null,
     conceal: (H.sites()[D.at]?.conceal || 0) + D.built.reduce((a, f) => a + (fac[f]?.conceal || 0), 0), morale: Math.round(D.morale), order: D.order, literacy: Math.round(D.literacy),
-    exposure: D.open ? 100 : exposureOf(g, D, H), threshold: THRESHOLD, steward: H.displayName(g, D.steward), loyalty: loyaltyOf(g, D, H), delegation: D.delegation, policy: D.policy,
+    exposure: D.open ? 100 : exposureOf(g, D, H), threshold: THRESHOLD, steward: D.steward ? H.displayName(g, D.steward) : "(비어 있다)", loyalty: loyaltyOf(g, D, H), delegation: D.delegation, policy: D.policy,
     built: D.built.map((f) => fac[f]?.name || f), lost: D.lost };
 }

@@ -140,6 +140,8 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
     v.bodies.length ? `[시체] ${v.bodies.join(", ")}` : "",
     bodyLine(g, v),
     (() => { const L = v.lexicon || []; const unk = L.filter((w) => !w.meaning).map((w) => w.word), kn = L.filter((w) => w.meaning).map((w) => `${w.word}=${w.meaning.split(" — ")[0]}`); return unk.length || kn.length ? `[낱말] ${kn.length ? `주인공이 아는 말: ${kn.join(", ")}. ` : ""}${unk.length ? `모르는 말(서술에 나오면 뜻을 풀지 말고 소리로만): ${unk.join(", ")}` : ""}` : ""; })(),
+    // 알려진 사정: 대본 장면이 남긴 사정 가운데 이 자리 사람과 닿는 것 먼저 (서술이 잊지 않게)
+    (() => { const here = new Set(v.people.map((p) => p.id)); const F = Object.entries(g.content.game.flags || {}).filter(([k]) => g.S.vars[k]).sort((a, b) => (here.has(b[1].npc) ? 1 : 0) - (here.has(a[1].npc) ? 1 : 0)).slice(0, 5); return F.length ? `[알려진 사정]\n${F.map(([, x]) => `- ${x.line}`).join("\n")}` : ""; })(),
     (() => { const seen = v.player.items.filter((i) => i.seen).map((i) => `${i.slot}에 ${i.name}`); const b = v.player.bloody ? ["옷에 핏자국"] : []; return seen.length || b.length ? `[주인공의 겉모습 — 남들 눈에 보인다] ${[...seen, ...b].join(", ")}` : ""; })(),
   ].filter(Boolean).join("\n");
   const convoNpc = g.convo?.npc || res?.convoEnded?.npc;

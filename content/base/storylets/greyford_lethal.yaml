@@ -507,7 +507,7 @@ storylets:
           effects: ["nem_caught"]
       - id: bargain
         label: 흥정한다
-        check: {skill: 화술, D: 55}
+        check: {skill: 화술, D: 55, warn: ["var volk_honest == true"]}
         success:
           text: |
             {nem}이(가) 네 말을 끝까지 듣는다. 그리고 침을 뱉는다. "이번만이다."
