@@ -63,6 +63,20 @@ export function domainDay(g, day, H) {
   if (D.delegation === "full") { D.policy = S.belief === "생존" && exposureOf(g, D, H) > THRESHOLD - 15 ? "close" : S.belief === "해방" ? "open" : D.policy; }
   if (loy < (D.kinship ? -20 : 0) && (S.ambition || 0) >= 50 && !D.usurped) { D.usurped = true; return "usurp"; }   // 연좌제: 배신이 훨씬 어려워진다
   if (D.orderMod) D.orderMod = Math.max(0, D.orderMod - 0.2);   // 본보기의 효과는 천천히 옅어진다
+  // 관리자가 만드는 이야기 (09 §6.3) — 이레에 한 번, 신념과 원칙대로. 흔들리는 선택: 지난 회차와 같다는 보장이 없다
+  if (D.steward && day % 7 === 3 && H.hash(g.seed, "steward", D.steward, day) < 0.6) {
+    const E0 = exposureOf(g, D, H), news = (D.news ??= []);
+    if (S.belief === "생존" && S.principle === "신중함" && E0 > THRESHOLD - 10) {
+      if (loy < 20) { H.wantedAdd?.(g, 2, `${H.displayName(g, D.steward)}이(가) 공동체를 지키려고 너를 밀고했다`); news.push(`${H.displayName(g, D.steward)}이(가) 초소에 다녀왔다. 언덕을 지키려고 — 너를 팔았다`); }
+      else { addPop(g, D, -2); D.expMod = (D.expMod || 0) - 6; news.push(`${H.displayName(g, D.steward)}이(가) 새로 온 둘을 내쫓았다. 발자국을 줄이려고`); }
+    } else if (S.belief === "복수" && S.principle === "대담함") {
+      D.expMod = (D.expMod || 0) + 15; D.morale = Math.min(100, D.morale + 5); news.push(`${H.displayName(g, D.steward)}이(가) 허락 없이 감독관 초소를 쳤다. 언덕이 환호한다. 언덕이 너무 잘 보인다`);
+    } else if (S.belief === "이익" && loy < 0) {
+      D.expMod = (D.expMod || 0) + 8; D.food += 20; news.push(`${H.displayName(g, D.steward)}이(가) 용인 상인과 몰래 거래했다. 곡식이 늘었다. 누가 무엇을 팔았는지는 모른다`);
+    } else if ((S.skill || 0) >= 60 && loy >= 40 && D.delegation === "full") {
+      addPop(g, D, 3); D.expMod = (D.expMod || 0) + 2; news.push(`${H.displayName(g, D.steward)}이(가) 네가 없는 동안 셋을 더 들였다. 잘 해냈다. 너무 잘`);
+    }
+  }
   const E = exposureOf(g, D, H);
   D.alarm = E >= THRESHOLD ? D.alarm + 1 : 0;
   if (D.alarm >= 2) { D.alarm = 0; return "raid"; }

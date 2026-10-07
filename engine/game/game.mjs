@@ -1062,7 +1062,7 @@ function opOptions(g) {
 // 얼룩 (13 §3.2)// 얼룩 (13 §3.2): 어두운 행적은 영혼에 남는다 — 그 사람을 다시 보면 손이 무겁다
 const DARK = new Set(["inform", "betray", "kill_serf"]);
 // ── 영역 (09): domain.mjs ──
-const DMH = () => ({ sites: () => DOMDATA().sites || {}, stewards: () => DOMDATA().stewards || {}, facilities: () => DOMDATA().facilities || {}, atPlace, storyWhen, relOf, hash, placeName, displayName, winterStart: toMinutes(312, 10, 30) });
+const DMH = () => ({ sites: () => DOMDATA().sites || {}, stewards: () => DOMDATA().stewards || {}, facilities: () => DOMDATA().facilities || {}, atPlace, storyWhen, relOf, hash, placeName, displayName, wantedAdd: (g, h, why) => wantedAdd(g, h, why, null, SETTLEMENT), winterStart: toMinutes(312, 10, 30) });
 let _domData = null; const DOMDATA = () => _domData || {};
 function domainTick(g, day) {
   _domData = g.content.game.domains;
@@ -1433,7 +1433,7 @@ export function wantedAdd(g, heat, reason, by = null, sid = g.P.settlement) {
   w.local[sid] = (w.local[sid] || 0) + heat; w.heat = Object.values(w.local).reduce((a, b) => a + b, 0);
   w.since ??= g.t; w.lastAt = g.t;
   const hunter = by || authorityOf(g, sid); if (hunter) w.by.add(hunter);
-  if (reason) w.reasons.push(reason);
+  if (reason) w.reasons.push(josa(reason));
   return w;
 }
 const heatHere = (g, sid = g.P.settlement) => wantedOf(g)?.local?.[sid] || 0;

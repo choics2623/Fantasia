@@ -91,6 +91,16 @@ storylets:
         when: ["alive npc_martha", "rel_trust npc_martha >= 20", "not domain_steward npc_martha"]
         text: "마르타가 장부를 펼친다. 이미 숫자가 적혀 있다. 언제부터 세고 있었는지 너는 묻지 않는다."
         effects: ["domain appoint npc_martha"]
+      - id: appoint_hagen
+        label: 관리자를 바꾼다 — 하겐에게 (돈이 되면 누구든 판다)
+        when: ["alive npc_hagen", "rel_trust npc_hagen >= 15", "not domain_steward npc_hagen"]
+        text: "하겐이 웃는다. 이가 하나 빠져 있다. \"장사는 내가 제일 잘하지.\" 무엇을 파는지는 말하지 않는다."
+        effects: ["domain appoint npc_hagen"]
+      - id: appoint_dietmar
+        label: 관리자를 바꾼다 — 디트마르에게
+        when: ["alive npc_dietmar", "rel_trust npc_dietmar >= 30", "not domain_steward npc_dietmar"]
+        text: "디트마르가 칼날을 엄지로 쓸어 본다. \"지키는 건 내 일이 아니야. 갚는 게 내 일이지.\""
+        effects: ["domain appoint npc_dietmar"]
       - id: terror_example
         label: 본보기 — 곡식을 훔친 자를 모두 앞에서 (질서를 산다)
         when: ["domain_any"]

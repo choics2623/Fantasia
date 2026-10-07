@@ -59,6 +59,13 @@ if (raid) { const p0 = G.view(h).domain.pop; G.act(h, { id: "story:scatter" }); 
     check("신뢰를 잃은 야심가는 영역을 제 것으로 삼는다 (찬탈)", lost && m.domain.usurped);
   }
 }
+// 관리자가 만드는 이야기 (09 §6.3): 생존·신중한 관리자는 위기 때 — 믿음이 얕으면 너를 판다
+{
+  const d = setup(); G.act(d, { id: "found_domain" }); G.act(d, { id: "story:accept" });
+  d.S.rel.set("npc_sigrid>player", { like: 0, trust: -40 }); d.domain.expMod = 60;
+  for (let i = 0; i < 24 * 15 && !(d.S.wanted.player?.reasons || []).some((r) => /밀고/.test(r)) && !d.ended; i++) { if (G.view(d).story) { G.act(d, { id: ids(d)[0] }); continue; } d.P.status.hunger = 0; d.domain.expMod = 60; G.act(d, { id: ids(d).includes("sleep") ? "sleep" : "wait:60" }); }
+  check("생존·신중함의 관리자 — 위기에 믿음이 얕으면 너를 밀고한다", (d.S.wanted.player?.reasons || []).some((r) => /밀고/.test(r)) || d.ended?.kind === "captured", (d.S.wanted.player?.reasons || []).join("/"));
+}
 // 회귀: 관리자는 너를 잊는다. 너는 그녀를 안다
 const g2 = G.boot(C, { ...G.regressRun(g), opening: false });
 check("회귀하면 영역은 없다", !G.view(g2).domain);
