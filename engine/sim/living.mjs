@@ -227,7 +227,12 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       }
       const w = (state.wanted[b.subject] ??= { heat: 0, by: new Set(), reasons: [] });
       w.since ??= t;
-      w.heat += b.assault ? 2 : b.certainty === 1 ? 3 : b.kind === "illegal_weapon" ? 2 : 1; w.by.add(npc); w.reasons.push(`${crime} (${b.reason || b.source})`);
+      const inc = b.assault ? 2 : b.certainty === 1 ? 3 : b.kind === "illegal_weapon" ? 2 : 1;
+      // 고장마다 따로 (10 §6): 고한 사람이 있는 고장의 수배다
+      const st = world.where(npc, t)?.settlement || "greyford";
+      w.local ??= { [w.settlement || "greyford"]: w.heat || 0 };
+      w.local[st] = (w.local[st] || 0) + inc; w.heat = Object.values(w.local).reduce((a, x) => a + x, 0); w.lastAt = t;
+      w.by.add(npc); w.reasons.push(`${crime} (${b.reason || b.source})`);
       state.vars[`${b.subject}_wanted`] = w.heat;
       log(t, npc, `${NAME(npc)}이(가) ${NAME(b.subject)}을(를) 쫓기 시작했다 — ${crime}${b.reason ? " · " + b.reason : ""} (수배 ${w.heat})`);
     } else if (choice === "silence") {

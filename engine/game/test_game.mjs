@@ -110,15 +110,30 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
 
 // 10. 기록관의 제안이 규칙을 거쳐 세계에 닿는다: 믿은 주장 → 소문, 말해 준 사실 → 그 NPC의 지식(목표 행동 조건)
 {
-  const w = G.boot(C, G.newRun({ seed: 7, opening: false, carry: { notebook: [], future: ["fact_gf_egil_family_in_cellar"], deaths: [] } }));
+  const w = G.boot(C, G.newRun({ seed: 7, opening: false, carry: { notebook: [], future: ["fact_gf_egil_family_in_cellar", "fact_gf_hagen_sells_runaways"], deaths: [] } }));
+  w.P.skills.기만 = 85;   // 믿는지는 엔진의 판정 (21 §5.3) — 말솜씨 좋은 셋째
   play(w, "talk:npc_bram");
   const tr = [{ who: "player", text: "하겐이 탈주자를 볼크에게 판대요. 그리고 수탉 지하에 사람이 있다는 걸 마르타도 알아요." }];
   const v = G.validateMemories(w, "npc_bram", tr, [
-    { npc: "npc_bram", kind: "claim", text: "셋째 말로는 하겐이 탈주자를 판다", evidence: "하겐이 탈주자를 볼크에게 판대요", salience: 4, claim: { about: "하겐", content: "하겐이 탈주자를 볼크에게 판다", believed: true } },
+    { npc: "npc_bram", kind: "claim", text: "셋째 말로는 하겐이 탈주자를 판다", evidence: "하겐이 탈주자를 볼크에게 판대요", salience: 4, claim: { about: "하겐", content: "하겐이 탈주자를 볼크에게 판다", believed: false, fact: "fact_gf_hagen_sells_runaways" } },
     { npc: "npc_bram", kind: "learned", text: "모르는 사실", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_henrik_skims_baron" },
     { npc: "npc_bram", kind: "learned", text: "자기가 숨긴 일", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_egil_family_in_cellar" },
   ]);
   check("플레이어가 모르는 사실, 그 NPC가 이미 아는 사실을 '말해 주었다'는 제안은 버린다", v.accepted.length === 1 && v.rejected.length === 2);
+  check("주장의 진위·믿음은 엔진이 정한다 (LLM이 believed:false라 해도 판정이 이긴다)", v.accepted[0].claim?.truth === true && v.accepted[0].claim?.believed === true, JSON.stringify(v.accepted[0].claim));
+  // 서툰 거짓말: 아는 사실과 어긋나는 말을 진실을 아는 사람에게 — 그 자리에서 들킨다
+  const liar = G.boot(C, G.newRun({ seed: 7, opening: false, carry: { notebook: [], future: ["fact_gf_egil_family_in_cellar"], deaths: [] } }));
+  const lv = G.validateMemories(liar, "npc_bram", [{ who: "player", text: "수탉 지하엔 아무도 없어요. 쥐뿐이에요." }], [{ npc: "npc_bram", kind: "claim", text: "셋째가 지하에 아무도 없다고 했다", evidence: "수탉 지하엔 아무도 없어요", salience: 3, claim: { about: "브람", content: "지하에는 아무도 없다", believed: true, contradicts: "fact_gf_egil_family_in_cellar" } }]);
+  check("진실을 아는 사람에게 한 거짓말은 들킨다 — 거짓말쟁이 인상", lv.accepted[0]?.claim?.truth === false && lv.accepted[0]?.claim?.believed === false && lv.accepted[0]?.claim?.caught, JSON.stringify(lv.accepted[0]?.claim));
+  // 믿은 거짓말 → 진실을 알게 되면 배신감
+  const l2 = G.boot(C, G.newRun({ seed: 7, opening: false, carry: { notebook: [], future: ["fact_gf_egil_family_in_cellar"], deaths: [] } }));
+  l2.P.skills.기만 = 95; l2.P.met.add("npc_kit"); l2.S.rel.set("npc_kit>player", { like: 30, trust: 40 });
+  const kv = G.validateMemories(l2, "npc_kit", [{ who: "player", text: "수탉 지하엔 아무도 없어. 쥐뿐이야." }], [{ npc: "npc_kit", kind: "claim", text: "형이 지하엔 아무도 없다고 했다", evidence: "수탉 지하엔 아무도 없어", salience: 3, claim: { about: "키트", content: "지하에는 아무도 없다", contradicts: "fact_gf_egil_family_in_cellar" } }]);
+  G.recordMemories(l2, "npc_kit", kv.accepted);
+  const tr0 = l2.S.rel.get("npc_kit>player").trust;
+  l2.S.knows.set("fact_gf_egil_family_in_cellar", new Set(["npc_kit"]));
+  for (let i = 0; i < 26; i++) play(l2, G.options(l2).some((o) => o.id === "wait:60") ? "wait:60" : "sleep");
+  check("믿은 거짓말 — 진실을 알게 되면 배신감 (신뢰가 무너진다)", kv.accepted[0]?.claim?.believed && l2.S.rel.get("npc_kit>player").trust <= tr0 - 15 && l2.P.notebook.some((x) => x.includes("거짓이었다")), `${tr0} → ${l2.S.rel.get("npc_kit>player").trust}`);
   G.recordMemories(w, "npc_bram", v.accepted);
   const vm2 = G.validateMemories(w, "npc_martha", tr, [{ npc: "npc_martha", kind: "learned", text: "셋째가 수탉 지하 이야기를 했다", evidence: "수탉 지하에 사람이 있다", salience: 5, fact: "fact_gf_egil_family_in_cellar" }]);
   G.recordMemories(w, "npc_martha", vm2.accepted);

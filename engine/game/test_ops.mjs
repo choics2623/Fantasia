@@ -46,6 +46,24 @@ if (done) {
   check("누명 — 토마스가 대신 채찍 기둥에, 얼룩이 된다", done.S.vars.framed_thomas === true && done.deeds.some((d) => d.kind === "inform" && d.victim === "npc_thomas"));
   check("작전은 한 번", !G.view(done).ops.find((o) => o.id === "henrik_ledger").missing.length && G.view(done).ops.find((o) => o.id === "henrik_ledger").done);
 }
+// 즈닉: 아무도 모르게 해냈으면 — 시체는 초소에 남고, 누가 했는지는 아직 아무도 모른다 (작전의 deed는 '본 사람 없음')
+{
+  let z = null;
+  for (let seed = 1; seed < 40 && !z; seed++) {
+    const x = G.boot(C, { ...G.newRun({ seed, opening: false }), lethal: true });
+    give(x, "knife"); x.P.been.add("gf_whip_square"); x.P.been.add("gf_river_huts");
+    x.at = "gf_whip_square"; x.t = Math.floor(x.t / 1440) * 1440 + 1440 + 2 * 60 + 40;
+    if (!ids(x).includes("op_start:znik")) continue;
+    G.act(x, { id: "op_start:znik" }); G.act(x, { id: "op_exec" });
+    if (x.S.dead.has("npc_znik") && x.op && !x.op.caught) z = x;
+  }
+  check("즈닉 작전 — 해냈다", !!z);
+  if (z) {
+    check("세계 안에서 죽었다 — 시체가 초소에 남는다", z.L.bodies.some((b) => b.npc === "npc_znik"));
+    const d = G.reputation(z);
+    check("본 사람이 없으면 평판에 '셋째'라는 이름이 아직 붙지 않는다", !d.news.some((n) => n.identified), JSON.stringify(d.news.map((n) => n.text || n.kind)).slice(0, 160));
+  }
+}
 // 지난 회차의 기억뿐인 정보는 절반
 const m = G.boot(C, { ...G.newRun({ seed: 7, opening: false }), lethal: true }); m.run.carry.future.push("fact_gf_henrik_skims_baron");
 for (let i = 0; i < 300 && !ids(m).includes("op_start:henrik_ledger") && !m.ended; i++) { if (G.view(m).story) { G.act(m, { id: ids(m)[0] }); continue; } const hm = G.view(m).hm; if (hm >= "20:40" && hm < "22:00" && m.at !== "gf_tollhouse" && ids(m).includes("go:gf_tollhouse")) { G.act(m, { id: "go:gf_tollhouse" }); continue; } G.act(m, { id: "wait:60" }); }

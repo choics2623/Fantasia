@@ -79,6 +79,6 @@ ops:
       - {phase: 수단, label: 칼, cond: "has 무기"}
       - {phase: 탈출, label: 강변 움막까지의 그림자 길, cond: "been gf_river_huts"}
     exec_text: 초소의 등불이 꺼져 있다. 코 고는 소리.
-    success: ["agenda kill npc_znik", "deed kill npc_znik"]
+    success: ["slay npc_znik"]   # 세계 안에서 — 시체가 초소에 남는다. 본 사람이 없으면 누가 했는지는 아직 모른다
     caught: ["wanted 4 감독관을 노렸다", "die_if 0.4 blade 즈닉의 채찍 손잡이에 — 초소 앞에서"]
     scapegoat: npc_hagen

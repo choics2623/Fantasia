@@ -257,9 +257,9 @@ export function recorderPrompt(g, jobs) {
     ...jobs.map((j, i) => `[대화 ${i + 1}] NPC: ${j.npc} (${g.content.cards[j.npc]?.name}), 끝난 시각: ${j.time}\n${j.transcript.map((x) => `${x.who === "player" ? "셋째" : "서술"}: ${x.text}`).join("\n")}`),
     `출력: {"records": [{"npc": "npc id", "kind": "impression|emotion|promise|claim|learned|suspicion|debt|threat", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "그 NPC의 입장에서 한 줄", "evidence": "대화 기록 그대로", "salience": "1~5",
   "promise": {"place": "장소 이름", "when": "오늘 밤|내일 정오|모레 새벽 다섯 시 처럼", "what": "무엇을"},
-  "claim": {"about": "주인공이 말한 대상 인물 이름", "content": "주인공의 주장 한 줄", "believed": true},
+  "claim": {"about": "주인공이 말한 대상 인물 이름", "content": "주인공의 주장 한 줄", "fact": "위 사실 목록 가운데 이 주장과 같은 내용의 id (없으면 빼라)", "contradicts": "위 사실 목록 가운데 이 주장과 어긋나는 id (없으면 빼라)"},
   "fact": "learned일 때 사실 id"}]}
-대화마다 0~4개. 약속·주장·들은 사실이 없으면 그 칸은 빼라.`,
+대화마다 0~4개. 약속·주장·들은 사실이 없으면 그 칸은 빼라. 주장을 NPC가 믿었는지는 적지 마라 — 엔진이 판정한다.`,
   ].join("\n\n");
 }
 export function parseRecords(text) {
