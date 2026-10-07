@@ -223,7 +223,7 @@ export function worldSVG(W, { mini = false, idp = "w" } = {}) {
     const ph = rates.length ? rates[Math.floor(rates.length / 2)] : 3, day = ph * 12;
     s += compass(985, 712, 34);
     s += `<g class="m-cartouche" transform="translate(132 718)"><path class="m-scroll" d="M-96 -26h192q10 0 10 10v32q0 10 -10 10h-192q-10 0 -10 -10v-32q0 -10 10 -10Z"/><path class="m-scroll-curl" d="M-106 -16q-12 0 -12 12t12 12M106 -16q12 0 12 12t-12 12"/>
-      <text class="m-title" y="2" text-anchor="middle">에오르</text><text class="m-subtitle" y="19" text-anchor="middle">회색여울에서 본 대륙 · 붕괴력 312년</text></g>`;
+      <text class="m-title" y="2" text-anchor="middle">에오르</text><text class="m-subtitle" y="19" text-anchor="middle">${esc(W.home || "회색여울")}에서 본 대륙 · 붕괴력 312년</text></g>`;
     s += `<g class="m-scale" transform="translate(${f1(985 - day)} 768)">${[0, 1, 2, 3].map((i) => `<rect x="${f1((i * day) / 4)}" y="0" width="${f1(day / 4)}" height="4" class="${i % 2 ? "m-sc-l" : "m-sc-d"}"/>`).join("")}<text x="0" y="-4" class="m-sc-t">0</text><text x="${f1(day / 2)}" y="-4" class="m-sc-t" text-anchor="middle">반나절</text><text x="${f1(day)}" y="-4" class="m-sc-t" text-anchor="end">하루 걸음</text></g>`;
   }
   s += `<rect x="${base.x - 400}" y="${base.y - 400}" width="${base.w + 800}" height="${base.h + 800}" fill="url(#${I("Vig")})" pointer-events="none"/>`;
