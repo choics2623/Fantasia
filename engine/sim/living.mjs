@@ -309,7 +309,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
   }
 
   // ── 소문: 사람이 모인 곳에서, 사람 사이로 ──
-  const GOSSIP_KINDS = new Set(["suspect", "dead", "body", "saw_item", "missing", "claim"]);
+  const GOSSIP_KINDS = new Set(["suspect", "dead", "body", "saw_item", "missing", "claim", "echo_sign"]);   // echo_sign: 셋째가 앞일을 안다 (03 §4.3)
   const anyHot = () => { for (const m of beliefs.values()) for (const b of m.values()) if (GOSSIP_KINDS.has(b.kind) && b.heat > 0.3) return true; return false; };
   function gossip(t) {
     for (const [place, people] of present(t)) {
