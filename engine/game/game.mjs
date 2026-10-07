@@ -139,6 +139,7 @@ export function boot(content, run) {
   if (run.opening !== false) startStory(g);   // 회귀점의 대본 장면 (검사는 opening:false로 건너뛸 수 있다)
   // 기시감 (10 §5.2): 시간에 닿은 세력은 회차를 넘어 낌새를 챈다 — 셋째 회차부터 잿빛 탑의 밀정이 일찍 온다
   if (run.loop >= 3) ((g.nem ??= {}).npc_isol ??= { grudge: 1, track: 0, since: START });
+  if (run.carry.soul?.bloodNumb) g.P.bloodNumb = true;
   for (const e of run.journal) apply(g, e, { replay: true });
   return g;
 }
@@ -360,6 +361,8 @@ function rawOptions(g) {
       if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f, memory: isFuture(g, f) ? memMark(g, `press:${f}`, { fact: f, loop: soul(g).knowledge[f]?.last || g.run.loop - 1 }) : null });
     }
     if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
+    // 심문 (13 §4.1): 칼을 쥐고 단둘이, 혹은 이미 겁에 질린 사람 — 아이에게는 없다
+    if ((cardOf(g, n).age ?? 30) >= 14 && ((hasWeapon(g) && present(g).filter((w) => w.kind !== "captive" || w.npc === n).length === 1) || mind(g, n).fear >= 3)) o.push({ id: "interrogate", kind: "talk", label: `칼끝을 들이댄다 — "숨긴 걸 말해."`, skill: "위압", request: 10, risk: "피를 보게 된다" });
     // 빚 (21 §6.1 debt): 그가 너에게 진 빚을 한 번 꺼내 쓴다 — 다음 부탁이 쉬워진다
     if (!g.convo.favor && mind(g, n).memories.some((x) => x.kind === "debt" && !x.used && x.source !== "engine-offer")) o.push({ id: "favor", kind: "talk", label: `"그때 일, 기억하지?" — ${c.name}에게 빚을 꺼낸다` });
     // 제안 (22 §1.2 player_offer): 내놓을 것이 있을 때만 — 받은 사람은 숨긴 것을 꺼낼 이유가 생긴다
@@ -527,6 +530,7 @@ export function odds(g, opt) {
     if (titles.has("빵을 나누는 이") && human) { S += 4; why("▲", "'빵을 나누는 이'"); }
   }
   if (g.convo?.favor && /^(ask|press):/.test(opt.id || "")) { S += 15; why("▲", "빚을 꺼냈다 — 한 번은 들어준다"); }
+  if (g.P.bloodNumb && opt.skill === "화술") { S -= 3; why("▼", "피에 무뎌졌다 — 말이 차갑게 나온다"); }
   if (opt.skill === "화술") {
     const relB = Math.round(r.like * 0.3 + r.trust * 0.2); S += relB;
     if (relB >= 4) why("▲", "그가 너를 좋게 본다"); else if (relB <= -4) why("▼", "그가 너를 믿지 않는다");
@@ -972,7 +976,8 @@ const ACHIEVEMENTS = [
   { id: "oath_kept", tp: 2, text: "맹세를 지켰다", when: (g) => (g.oaths || []).some((o) => o.state === "kept") },
 ];
 // ── 애착 (20 §4): 플레이어가 들인 것으로 잰다 — 나눈 빵, 대신 맞은 채찍, 붙여 준 이름, 밤의 의식 ──
-function bond(g, n, d) { (g.P.bond ??= {})[n] = clamp((g.P.bond[n] || 0) + d, 0, 100); }
+// 애착 마모 (13 §3.2): 얼룩이 셋을 넘으면 마음을 들이는 것도 반만 닿는다
+function bond(g, n, d) { const worn = (soul(g).stains || []).length + g.deeds.filter((x) => DARK.has(x.kind)).length >= 3; (g.P.bond ??= {})[n] = clamp((g.P.bond[n] || 0) + (d > 0 && worn ? d * 0.5 : d), 0, 100); }
 const knots = (v) => (v >= 40 ? 4 : v >= 25 ? 3 : v >= 12 ? 2 : v >= 5 ? 1 : 0);
 // ── 연애의 가장 작은 판 (12 §2): 0 아는 사이 · 1 정다운 · 2 가까운 (호감40·신뢰30·함께한 일 셋) · 3 연인 · 4 끈혼례 ──
 export function romanceStage(g, n) {
@@ -1080,6 +1085,13 @@ function domainEffect(g, [op, a], res) {
     if (D.built.includes(a) || D.building || (F[a]?.when && !storyWhen(g, F[a].when))) return;
     const days = F[a]?.days || 6; D.building = { id: a, until: g.t + days * 1440 };
     D.food = Math.max(0, D.food - Math.round(DOM.popOf(g, D) * 0.2 * days));
+  }
+  else if (op === "terror") {
+    // 공포 정치 (13 §4.3): 질서를 사고 사기를 판다. 관리자의 원칙과 부딪힌다
+    const S = (g.content.game.domains.stewards || {})[D.steward] || {};
+    if (a === "example") { D.orderMod = (D.orderMod || 0) + 15; D.expMod = (D.expMod || 0) - 5; D.morale = clamp(D.morale - 10, 0, 100); temper(g, "자비", -5); if (S.principle !== "냉혹" && D.steward) bumpRel(g, D.steward, -6, -10); }
+    else if (a === "kin") { D.kinship = true; D.morale = clamp(D.morale - 15, 0, 100); temper(g, "자비", -4); }
+    else if (a === "preempt") { D.orderMod = (D.orderMod || 0) + 5; D.morale = clamp(D.morale - 10, 0, 100); deed(g, "kill_serf", null, D.at, { witnessed: true }); g.S.vars.traitor_executed = true; g.P.notebook.push("영역 — 지난 회차에 길을 판 사내를, 팔기 전에 매달았다. 그는 이번엔 아무것도 하지 않았다"); }
   }
   else if (op === "appoint") {
     // 관리자를 바꾼다 (09 §6): 새 사람은 너를 얼마나 믿느냐로 충성이 정해진다 — 야심 큰 사람은 칼이 된다
@@ -1227,7 +1239,9 @@ function memoryInk(g) {
     if (line) ink(`person:${n}`, line);
   }
   // 얼룩: 지난 회차에 판 사람 (13 §3.2) — 재회의 무게
-  for (const st of soul(g).stains || []) if (st.victim && here.includes(st.victim)) { if (!said.has(`stain:${st.victim}`)) g.P.status.stress = clamp(g.P.status.stress + 5, 0, 100); ink(`stain:${st.victim}`, `┊ 너는 이 사람을 ${st.kind === "inform" ? "팔았었다" : st.kind === "betray" ? "사냥대에 넘겼었다" : "죽였었다"}. 이 사람은 모른다.`); }
+  // 얼룩 재회 판정 (13 §3.2): D = 30 + 10 × min(4, 얼룩 수) — 실패하면 손이 떨린다
+  const nStain = (soul(g).stains || []).length;
+  for (const st of soul(g).stains || []) if (st.victim && here.includes(st.victim)) { if (!said.has(`stain:${st.victim}`)) { const ok = hash(g.seed, "stain", st.victim, g.run.loop) < prob(30 + g.P.mods.의지 * 10 - g.P.status.stress / 5 + (g.P.bloodNumb ? 10 : 0), 30 + 10 * Math.min(4, nStain)); g.P.status.stress = clamp(g.P.status.stress + (ok ? 3 : 10), 0, 100); if (!ok) g.P.status.fear = clamp(g.P.status.fear + 1, 0, 5); } ink(`stain:${st.victim}`, `┊ 너는 이 사람을 ${st.kind === "inform" ? "팔았었다" : st.kind === "betray" ? "사냥대에 넘겼었다" : "죽였었다"}. 이 사람은 모른다.`); }
   // 재회 (12 §2.2): 지난 회차의 연인
   for (const [n, stg] of Object.entries(soul(g).romance || {})) if (stg >= 3 && here.includes(n)) ink(`love:${n}`, stg >= 4 ? "┊ 이 손목에 끈이 감겨 있었다. 지금은 너를 모른다." : "┊ 이 손이 네 손을 잡았었다. 지금은 너를 모른다.");
   // 처형자 명부 (SCENARIOS §3.4): 명부의 이름들은 모두 살아 있다. 당신은 그 이름을 외운다
@@ -1643,7 +1657,7 @@ function storyEffect(g, e, res) {
   else if (k === "skill_gain") (g.P.gain ??= {})[parts[1]] = (g.P.gain[parts[1]] || 0) + Number(parts[2]);
   else if (k === "awaken") { (g.P.awakened ??= []).push(parts[1]); g.P.tpSpent = (g.P.tpSpent || 0) + 3; }
   else if (k === "temper") temper(g, parts[1], Number(parts[2]));
-  else if (k === "stress") g.P.status.stress = clamp(g.P.status.stress + Number(parts[1]), 0, 100);
+  else if (k === "stress") g.P.status.stress = clamp(g.P.status.stress + Number(parts[1]) * (g.P.bloodNumb && Number(parts[1]) > 0 ? 0.6 : 1), 0, 100);
   else if (k === "fatigue") g.P.status.fatigue = clamp(g.P.status.fatigue + Number(parts[1]), 0, 100);
   else if (k === "fear") g.P.status.fear = clamp(g.P.status.fear + Number(parts[1]), 0, 5);
   else if (k === "then") g._then = parts[1];
@@ -1942,6 +1956,31 @@ const DO = {
       res.notes.push(literacyFilter(g, R.text || ""));
       for (const f of R.facts || []) learn(g, f, `${it.name}에서 읽었다`);
     } else res.notes.push(lit ? `글자는 읽힌다. 말이 ${R.lang}이다 — ${tongueMask(g, R.lang, R.text || "")}` : `${readMask(g, R.text || "")} — 글자다. 읽을 수 없다. 글을 아는 사람에게 보여야 한다`);
+  },
+  // 고문과 심문 (13 §4.1): 진실 / 거짓 자백 / 아무것도 / 죽음. 고문당한 사람은 기억한다. 반복하면 피에 무뎌진다
+  interrogate(g, _, res) {
+    const n = g.convo.npc, m = mind(g, n);
+    pass(g, 30);
+    temper(g, "자비", -6); m.fear += 3; deed(g, "assault", n, g.at);
+    g.P.tortures = (g.P.tortures || 0) + 1;
+    if (g.P.tortures >= 3 && !g.P.bloodNumb) { g.P.bloodNumb = true; g.P.notebook.push("피에 무뎌졌다 — 비명이 예전만큼 무겁지 않다"); }
+    addMemory(g, n, { kind: "threat", tag: "위험함", delta: -5, text: "셋째가 칼끝을 들이댔다", salience: 5, source: "engine" });
+    if (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 50) { const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2); }
+    const hid = (g.content.reveals[n] || []).filter((r) => !m.revealed.has(r.fact) && !knowsFact(g, r.fact));
+    if (OK(res.tier) && hid.length) {
+      const r = hid[Math.floor(hash(g.seed, "torture", n, String(g._i)) * hid.length)];
+      m.revealed.add(r.fact); learn(g, r.fact, `${nameOf(g, n)}이(가) 칼끝 앞에서 털어놓았다`); res.reveal = r.fact;
+    } else if (res.tier === "부분 성공") {
+      // 거짓 자백: 고통을 멈추려고 아무 말이나 — 맞는지 너는 모른다 (확신도 □)
+      const others = Object.keys(g.content.cards).filter((x) => x !== n && g.P.met.has(x));
+      const blamed = others[Math.floor(hash(g.seed, "false", n, String(g._i)) * Math.max(1, others.length))];
+      g.P.notebook.push(`□ ${nameOf(g, n)}이(가) 칼끝 앞에서 한 말 — "${blamed ? displayName(g, blamed) : "그 사람"}이(가) 시켰다." 맞는지 모른다`);
+      res.notes.push("무언가를 말한다. 너무 빨리. 맞는 말인지 너는 모른다");
+    } else if (res.tier === "대실패") {
+      g.convo = null; g.L.player.kill(g.t, n, { at: g.at, stealth: 30 }); deed(g, "kill", n); g.P.bloody = true;
+      res.notes.push(`${nameOf(g, n)}의 숨이 끊긴다. 아무것도 말하지 않았다`); return;
+    } else res.notes.push("이를 악문다. 아무것도 말하지 않는다");
+    endIfSpent(g, res, 2);
   },
   favor(g, _, res) {
     const n = g.convo.npc, d = mind(g, n).memories.find((x) => x.kind === "debt" && !x.used && x.source !== "engine-offer");
@@ -2572,6 +2611,7 @@ function settleSoul(g, record) {
   }
   if (g.redRoad?.length) S.redRoad = [...new Set([...(S.redRoad || []), ...g.redRoad])];
   if (g.S.vars.greyford_free) S.risingDone = true;
+  if (g.P.bloodNumb) S.bloodNumb = true;   // 특성은 회귀해도 남는다 (13 §4.1)
   if (g.family?.name) S.house = { name: g.family.name, motto: g.family.motto };
   S.lostChildren = [...(S.lostChildren || []), ...((g.family?.children || []).map((c) => ({ ...c, loop })))].slice(-20);
   S.memUsed ||= {};

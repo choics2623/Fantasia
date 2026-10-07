@@ -91,6 +91,21 @@ storylets:
         when: ["alive npc_martha", "rel_trust npc_martha >= 20", "not domain_steward npc_martha"]
         text: "마르타가 장부를 펼친다. 이미 숫자가 적혀 있다. 언제부터 세고 있었는지 너는 묻지 않는다."
         effects: ["domain appoint npc_martha"]
+      - id: terror_example
+        label: 본보기 — 곡식을 훔친 자를 모두 앞에서 (질서를 산다)
+        when: ["domain_any"]
+        text: "동굴 입구 앞에 모두가 모인다. 너는 끝까지 본다. 그날 밤 누구도 곡식 자루 쪽으로 가지 않는다. 누구도 너를 똑바로 보지 않는다."
+        effects: ["domain terror example"]
+      - id: terror_kin
+        label: 연좌제 — 하나가 배신하면 그 식구 모두 (배신이 어려워진다)
+        when: ["domain_any"]
+        text: "말이 돈다. 아이들도 안다. 언덕이 조용해진다. 조용한 것과 평화로운 것은 다르다."
+        effects: ["domain terror kin"]
+      - id: terror_preempt
+        label: 미리 처형한다 — 지난 회차에 볼크에게 길을 판 사내를, 팔기 전에
+        when: ["domain_memory traitor", "var traitor_executed != true"]
+        text: "그 사내는 이번 회차에 아무 짓도 하지 않았다. 사람들이 묻는다 — 왜? 너는 대답하지 않는다. 대답할 수 없다."
+        effects: ["domain terror preempt"]
       - id: delegate
         label: '관리자에게 맡긴다 — "당신이 정하시오."'
         when: ["domain_delegation direct"]

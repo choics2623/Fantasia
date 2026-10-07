@@ -29,7 +29,7 @@ export function loyaltyOf(g, D, H) { if (!D.steward) return 0; return (H.steward
 // 질서 (09 §4): 관리자의 솜씨와 원칙, 사기, 글
 export function orderOf(g, D, H) {
   const S = H.stewards()[D.steward] || {};
-  return Math.max(0, Math.min(100, Math.round(25 + (S.skill || 0) * 0.4 + (S.principle === "냉혹" ? 10 : 0) + ((D.morale ?? 50) - 50) * 0.4 + (D.literacy || 0) * 0.1)));
+  return Math.max(0, Math.min(100, Math.round(25 + (S.skill || 0) * 0.4 + (S.principle === "냉혹" ? 10 : 0) + ((D.morale ?? 50) - 50) * 0.4 + (D.literacy || 0) * 0.1 + (D.orderMod || 0))));
 }
 export function defenseOf(g, D, H) { const fac = H.facilities(); return (D.defense || 0) + D.built.reduce((a, f) => a + (fac[f]?.defense || 0), 0); }
 // 관리자가 죽으면 후임 다툼 (09 §6.3): 살아 있고 너를 믿는 후보 가운데 솜씨가 가장 나은 사람. 없으면 비어 있다
@@ -61,7 +61,8 @@ export function domainDay(g, day, H) {
   // 관리자가 만드는 이야기 (§6.3): 맡겼다면 관리자의 신념대로
   const S = H.stewards()[D.steward] || {}, loy = loyaltyOf(g, D, H);
   if (D.delegation === "full") { D.policy = S.belief === "생존" && exposureOf(g, D, H) > THRESHOLD - 15 ? "close" : S.belief === "해방" ? "open" : D.policy; }
-  if (loy < 0 && (S.ambition || 0) >= 50 && !D.usurped) { D.usurped = true; return "usurp"; }
+  if (loy < (D.kinship ? -20 : 0) && (S.ambition || 0) >= 50 && !D.usurped) { D.usurped = true; return "usurp"; }   // 연좌제: 배신이 훨씬 어려워진다
+  if (D.orderMod) D.orderMod = Math.max(0, D.orderMod - 0.2);   // 본보기의 효과는 천천히 옅어진다
   const E = exposureOf(g, D, H);
   D.alarm = E >= THRESHOLD ? D.alarm + 1 : 0;
   if (D.alarm >= 2) { D.alarm = 0; return "raid"; }
