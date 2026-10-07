@@ -619,7 +619,7 @@ function step(g, e) {
   // 두려움 (01 §1.4): 사냥꾼과 같은 자리, 수배 — 쌓이고, 장면이 바뀌면 조금씩 가라앉는다
   const scary = present(g).some((w) => profOf(g, w.npc).role === "hunter") || heatHere(g) >= 3;
   g.P.status.fear = clamp(g.P.status.fear + (scary ? 1 : -1), 0, 5);
-  if (!g.story && !g.ended && !g.convo) { const wt = windowTrigger(g); if (wt) openStory(g, wt); else nemesisCheck(g); }
+  if (!g.story && !g.ended && !g.convo) { const wt = windowTrigger(g); if (wt) openStory(g, wt); else if (!firstSeenCheck(g)) nemesisCheck(g); }
   pickVoice(g, e, opt);
   if (e?.id?.startsWith("talk:")) (g.P.talkedBefore ??= new Set()).add(e.id);
   successions(g);
@@ -916,14 +916,42 @@ function threatsTick(g, t) {
 // 쫓는 자 (17 §3.6 추적 거리 0~4): 하루에 한 번 거리가 줄어든다. 4가 되면 너를 찾아낸다.
 // 냄새 (03 §7.1): 회차가 쌓일수록 사냥꾼이 일찍 코를 돌린다 = min(30, 3·(회차−1)^0.7)
 export const smellOf = (g) => Math.min(30, 3 * Math.max(0, g.run.loop - 1) ** 0.7);
+// 숙적의 마음 (17 §3.2): 원한(grudge 단계) · 집착 · 공포 · 존경 — 성향이 사냥의 모양을 정한다
+const nemMind = (x) => { x.obs ??= (x.grudge || 0) * 20; x.fear ??= 0; x.resp ??= 0; x.lessons ??= []; return x; };
+export function nemDisposition(x) {
+  nemMind(x);
+  const base = x.obs >= 60 && x.fear >= 60 ? "독사" : x.fear >= 80 && x.obs < 40 ? "꺾인 자" : x.obs >= 70 && x.fear < 40 ? "사냥개" : x.obs < 30 && x.fear < 30 && (x.grudge || 0) < 2 ? "잠듦" : "쫓는 자";
+  return x.resp >= 60 ? `${base} · 정직한 적` : base;
+}
 function nemesisDay(g, day) {
   for (const [n, x] of Object.entries(g.nem || {})) {
     if (g.S.dead.has(n)) { delete g.nem[n]; continue; }
+    nemMind(x);
+    // 시간이 마음을 식힌다 (계절당 −5 — 하루로 나눈다). 원한은 남는다
+    x.obs = Math.max(0, x.obs - 0.06); x.fear = Math.max(0, x.fear - 0.06);
+    const d = nemDisposition(x);
+    if (d.startsWith("꺾인 자")) { x.track = 0; continue; }   // 사냥을 멈춘다 — 지렛대만 있으면 정보원이 된다
+    if (d.startsWith("독사")) {
+      // 직접 오지 않는다: 이레에 한 번 대리 사냥 — 밀고, 식구가 있으면 인질
+      if (day % 7 === 0) { if (g.family?.members?.length && !g.family.hostageSeen && hash(g.seed, "viper", n, day) < 0.5) { g.family.hostageSeen = true; (g.domainDue ??= []).push("hostage"); } else wantedAdd(g, 1, `${nameOf(g, n)}이(가) 대신 고했다`); }
+      continue;
+    }
     const w = g.W.where(n, day * 1440 + 720);
     if (!w || w.kind === "away" || g.W.loc.get(w.at)?.settlement !== g.P.settlement) continue;
     const heat = heatHere(g);
-    if (hash(g.seed, "track", n, day) < 0.2 + 0.1 * x.grudge + smellOf(g) / 100 + heat * 0.05) x.track = Math.min(4, x.track + 1);
+    if (d.startsWith("잠듦") && x.track === 0) continue;
+    if (hash(g.seed, "track", n, day) < 0.2 + 0.1 * x.grudge + smellOf(g) / 100 + heat * 0.05 + (d.startsWith("사냥개") ? 0.15 : 0)) x.track = Math.min(4, x.track + 1);
   }
+}
+// 처음 보는 원수 (17 §3.7): 회귀점의 그는 휴면 숙적 — 지난 회차의 원수가 이번 회차에 처음 너를 본다
+function firstSeenCheck(g) {
+  if (g.run.loop < 2 || g.story || g.convo || g.fight || g.P.firstSeen) return false;
+  // 코로 쫓는 사냥꾼만 (젖은 재 냄새 — 17 §3.7.2). 회귀점의 첫 한 시간은 대본 장면의 것
+  const last = [...(soul(g).nemeses || [])].reverse().find((p) => profOf(g, p.npc).role === "hunter")?.npc;
+  if (!last || g.t < START + 60 || g.S.dead.has(last) || !present(g).some((w) => w.npc === last && w.kind !== "captive")) return false;
+  const st = SL(g, "first_seen_enemy"); if (!st) return false;
+  g.P.firstSeen = last; g.storyCtx = { nem: last, nemName: displayName(g, last) };
+  openStory(g, st); return true;
 }
 function nemesisCheck(g) {
   for (const [n, x] of Object.entries(g.nem || {})) {
@@ -1600,7 +1628,7 @@ function storyOptions(g) {
     if (c.needs_been && !g.P.been.has(c.needs_been)) continue;
     let memory = null;
     if (c.needs_memory) { memory = memoryOK(g, c.needs_memory); if (!memory) continue; memory = memMark(g, `story:${c.id}`, memory); }
-    out.push({ id: `story:${c.id}`, kind: "story", label: fill(g, c.label), skill: c.check?.skill || null, check: c.check || null, minutes: c.minutes || 0, memory, risk: c.risk || null });
+    out.push({ id: `story:${c.id}`, kind: "story", label: fill(g, c.label), skill: c.check?.skill || null, check: c.check ? { ...c.check, _cid: c.id } : null, minutes: c.minutes || 0, memory, risk: c.risk || null });
   }
   if (!out.length) out.push({ id: "story:next", kind: "story", label: "▸" });
   return out;
@@ -1626,6 +1654,9 @@ function storyOdds(g, ck) {
   if (ck.auto && storyWhen(g, [ck.auto])) return { P: 0.97, S: 99, D: ck.D, parts: [{ sign: "▲", text: "몸이 먼저 안다" }] };
   // 회차가 쌓일수록 시간에 닿은 것들이 낌새를 챈다 (14 §7.4 — 볼크의 코)
   let D = ck.D + (ck.D_per_loop || 0) * (g.run.loop - 1);
+  // 교훈 (17 §3.4): 숙적은 너에게서 배운다 — 같은 회차에 같은 수는 D +15 (말로 빠지기는 +20)
+  const nx = g.storyCtx?.nem && g.nem?.[g.storyCtx.nem];
+  if (nx && ck._cid && (nx.lessons || []).includes(ck._cid)) { D += ck._cid === "bargain" ? 20 : 15; parts.push({ sign: "▼", text: `${displayName(g, g.storyCtx.nem)}은(는) 지난번 수를 배웠다` }); }
   if (ck.per_defense && g.domain) { _domData = g.content.game.domains; const dv = DOM.defenseOf(g, g.domain, DMH()); D -= Math.round(ck.per_defense * dv); if (dv) parts.push({ sign: "▲", text: `방어 ${dv}` }); }
   if (ck.per_ready) { const n = risingReady(g).filter((x) => x.ok).length; D -= ck.per_ready * n; parts.push({ sign: "▲", text: `준비된 것 ${n}가지` }); }
   if (ck.D_per_loop && g.run.loop > 1) parts.push({ sign: "▼", text: "젖은 재 냄새가 짙다" });
@@ -1692,6 +1723,8 @@ function storyEffect(g, e, res) {
     wantedAdd(g, 2, `${nameOf(g, th.by)}이(가) 감독관에게 고했다`);
     g.L.believe(th.by, g.t, { kind: "suspect", subject: "player", object: th.about, at: g.at, source: "told", reason: "협박을 거절했다", choice: "report" }, { react: false });
   }
+  else if (k === "nem_wake") { const n = g.storyCtx?.nem; if (n) { const x = nemMind(((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t })); x.obs = clamp(x.obs + Number(parts[1]) + smellOf(g) * 2, 0, 100); if (x.obs >= 25) x.grudge = Math.max(x.grudge, 1); } }   // 휴면 숙적의 의심 (17 §3.7.4): 냄새 × 2 + 이번 흔적
+  else if (k === "echo_sign") echoSign(g, Number(parts[1]) || 1, parts.slice(2).join(" "));
   else if (k === "nem_track") { const x = g.nem?.[g.storyCtx?.nem]; if (x) x.track = Number(parts[1]); }
   else if (k === "nem_caught") { const n = g.storyCtx?.nem; g.ended = { kind: "captured", why: `${nameOf(g, n)}에게 붙잡혔다`, t: g.t, trace: { id: profOf(g, n).role === "hunter" ? "teeth" : "rope", npc: n } }; }
   else if (k === "nem_kill") { const n = g.storyCtx?.nem; g.L.player.kill(g.t, n, { at: g.at, stealth: 20 }); deed(g, "kill", n); g.P.bloody = true; delete g.nem[n]; }
@@ -1726,6 +1759,13 @@ const DO = {
     if (echo) (g.echoes ??= []).push({ ...echo, label: c.label, t: g.t });
     for (const ef of effects) storyEffect(g, ef, res);
     for (const ef of st.after_all || []) storyEffect(g, ef, res);
+    // 숙적이 살아서 놓쳤으면 — 그 수를 배운다 (교훈 상한 5), 집착 +10
+    if (st.id === "nemesis_found" && g.storyCtx?.nem && !g.ended && !g.S.dead.has(g.storyCtx.nem)) {
+      const x = nemMind(g.nem[g.storyCtx.nem] ??= { grudge: 1, track: 0, since: g.t });
+      if (!x.lessons.includes(c.id)) { x.lessons.push(c.id); if (x.lessons.length > 5) x.lessons.shift(); }
+      x.obs = clamp(x.obs + 10, 0, 100);
+      if (c.id === "bargain" && OK(res.tier)) x.resp = clamp(x.resp + 5, 0, 100);
+    }
     // 줄을 떠나는 선택: 키트가 자리를 맡는다. 15분 넘게 비우면 키트가 맞는다 (⏱가 진짜라는 첫 교훈, 14 §6.1)
     let extra = "";
     if (c.leave_line && st.after_choice) {
@@ -1887,7 +1927,7 @@ const DO = {
       g.L.player.assault(g.t, n, { at: g.at });
       deed(g, "assault", n);
       if (res.tier === "부분 성공" && !g.fight) { g.fight = { npc: n, round: 1, me: 0, foe: 1, edge: 0 }; res.notes.push(`${nameOf(g, n)}이(가) 비틀거린다. 아직 끝나지 않았다`); return; }
-      if (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 60) { const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2); }
+      if (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 60) { const x = nemMind((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2); if (res.tier === "부분 성공") x.fear = clamp(x.fear + 15, 0, 100); x.obs = clamp(x.obs + 10, 0, 100); }
       g.P.status.pain = clamp(g.P.status.pain + (res.tier === "대실패" ? 40 : 20), 0, 100);
       res.notes.push(`${nameOf(g, n)}을(를) 쓰러뜨리지 못했다`);
       if (res.tier === "대실패" && (cardOf(g, n).age ?? 30) >= 14 && (profOf(g, n).nerve >= 60 || worn(g, n).some((i) => i.tags?.includes("무기")) || g.P.status.pain >= 100)) { g.P.alive = false; g.ended = { kind: "dead", why: `${nameOf(g, n)}의 손에 죽었다`, t: g.t, trace: { id: "blade", npc: n } }; }
@@ -2881,6 +2921,10 @@ export function view(g) {
     trueNames: Object.keys(g.content.game.truenames || {}).filter((w) => knowsWord(g, w)).map((w) => ({ word: w, source: g.content.game.truenames[w].source })),
     rising: (() => { const r = risingReady(g); return r.some((x) => x.ok) || g.S.vars.greyford_free ? { ready: r, free: !!g.S.vars.greyford_free, failed: !!g.S.vars.rising_failed } : null; })(),
     succession: g.S.vars.varskar_dead || g.S.vars.kaspar_warned ? { dead: !!g.S.vars.varskar_dead, kaspar: g.S.vars.faction_kaspar, throne: !!g.S.vars.kaspar_throne, charter: !!g.S.vars.kaspar_charter } : null,
+    hunters: [
+      ...Object.entries(g.nem || {}).filter(([n]) => !g.S.dead.has(n)).map(([n, x]) => ({ name: displayName(g, n), disposition: nemDisposition(x), track: x.track, lessons: (nemMind(x).lessons || []).map((l) => ({ flee: "달아나는 길을 안다 — 다음엔 먼저 막는다", bargain: "말을 듣지 않는다 — 흥정이 어렵다", fight: "맞붙는 법을 안다" }[l] || l)), now: true })),
+      ...(soul(g).nemeses || []).filter((p) => !(g.nem || {})[p.npc]).map((p) => ({ name: displayName(g, p.npc), disposition: "휴면 — 그는 너를 모른다", past: `〔회차 ${p.loop || "?"}〕`, now: false })),
+    ],
     ops: opsOf(g), final: !!g.run.carry.final,
     romance: { npc_sara: romanceStage(g, "npc_sara"), words: { npc_sara: ROMANCE_WORDS[romanceStage(g, "npc_sara")] } },
     narrator: { id: g.narrator || g.run.narrator || "silent_god", name: DIR.narratorOf(g).name }, director: g.dir ? { phase: g.dir.phase, T: g.dir.T, target: DIR.targetT(g) } : null,

@@ -573,3 +573,31 @@ storylets:
         text: |
           "그래, 그래." 엘사가 손을 거둔다. "나도 아무것도 못 봤다." 그녀는 가면서 한 번 돌아본다.
         effects: ["var echo_named = true", "rel npc_elsa trust 5"]
+  # 처음 보는 원수 (17 §2.3 · §3.7): 회귀점의 그는 숙적이 아니다 — 휴면 숙적. 그는 모르고, 너는 안다
+  - id: first_seen_enemy
+    dynamic: true
+    severity: 2
+    text: |
+      {nem}이(가) 코를 킁킁거린다. 한 번, 두 번. 처음 보는 얼굴이다 — 그에게는.
+
+      "젖은 재… 처음 맡는 냄새다." 그가 고개를 갸웃한다. "그런데 왜 코가 먼저 아는 척을 하지."
+
+      "너. 뭘 그렇게 보냐."
+    choices:
+      - id: bow
+        label: '"아닙니다, 나리." 고개를 숙인다'
+        check: {skill: 기만, D: 40}
+        success:
+          text: '그가 코를 한 번 더 킁킁거리고 지나간다. 등 뒤에서 다시 돌아보지는 않는다. 이번에는.'
+          effects: []
+        failure:
+          text: '그가 걸음을 멈춘다. 오래 본다. 이유를 말하지 못한다. 너는 이유를 안다. 그날 저녁, 목줄단 하나가 너를 따라 걷는다.'
+          effects: ["nem_wake 10"]
+      - id: name
+        label: 그의 이름을 먼저 부른다
+        text: '그의 눈이 좁아진다. "내 이름을 어디서 들었지, 농노." 대답을 기다리는 눈이 아니다. 외우는 눈이다.'
+        effects: ["nem_wake 25", "echo_sign 2 처음 보는 사냥꾼의 이름을 불렀다"]
+      - id: stare
+        label: 대답하지 않고 계속 본다
+        text: '그가 침을 뱉는다. "미친 놈." 그리고 간다. 세 걸음 가서 돌아본다.'
+        effects: ["nem_wake 12"]

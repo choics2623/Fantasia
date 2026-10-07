@@ -153,6 +153,7 @@ button.ui:hover { border-color: var(--gold); }
   <h2 id="riseH" hidden>여울강이 붉어지는 날</h2><div id="rise" hidden class="book"></div>
   <h2 id="succH" hidden>용좌의 그림자</h2><div id="succ" hidden class="book"></div>
   <h2 id="talH" hidden>재능과 새긴 것</h2><div id="tal" hidden class="book"></div>
+  <h2 id="huntH" hidden>사냥꾼 판</h2><div id="hunt" hidden class="book"></div>
   <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
   <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
   <h2 id="twoH" hidden>두 겹의 날</h2><div id="two" hidden class="book"></div>
@@ -283,6 +284,8 @@ function render(d, loading = false) {
     if (SC) $("succ").innerHTML = [SC.dead ? "용황이 죽었다 — 계승이 시작되었다" : "용황은 아직 숨을 쉰다", SC.throne ? "카스파르 반비늘이 즉위했다" : `카스파르의 세력: ${SC.kaspar >= 50 ? "즉위할 만하다" : SC.kaspar >= 30 ? "모이고 있다" : "아직 작다"}`, SC.charter ? "인간 자치령 칙허 — 그가 지는 날 휴지가 된다" : ""].filter(Boolean).map(esc).join("<br>");
     const TL = v.talents || [], AC = v.achievements || []; $("tal").hidden = $("talH").hidden = !TL.length && !AC.length;
     $("tal").innerHTML = TL.map((t) => `<b>${esc(t.name)}</b> <span style="color:var(--ink-faint)">— ${esc(t.grows.join("·"))}이(가) 빨리 는다</span>`).join("<br>") + (AC.length ? `<div style="margin-top:6px;color:var(--ink-faint)">잔향에 새긴 것 — ${esc(AC.join(" · "))}</div>` : "");
+    const HU = v.hunters || []; $("hunt").hidden = $("huntH").hidden = !HU.length;
+    $("hunt").innerHTML = HU.map((h) => `<div style="margin-bottom:6px"><b>${esc(h.name)}</b> — ${esc(h.disposition)}${h.past ? ` <span style="color:var(--ink-faint)">${esc(h.past)}</span>` : ""}${h.now && h.track ? ` <span style="color:var(--bad)">· ${"●".repeat(h.track)}${"○".repeat(Math.max(0, 4 - h.track))}</span>` : ""}${(h.lessons || []).map((l) => `<br><span style="color:var(--ink-faint)">교훈 — ${esc(l)}</span>`).join("")}</div>`).join("");
     const T2 = v.twoDays; $("two").hidden = $("twoH").hidden = !T2?.then;
     if (T2?.then) $("two").innerHTML = (T2.marks || []).map((m) => `<div>${esc(m)}</div>`).join("") + `<div style="color:var(--ink-faint)">┊ 지난 회차의 이 날 (${esc(T2.then.date)}) — ${esc(T2.then.at)}${T2.then.notes.map((n) => `<br>┊ ${esc(n)}`).join("")}</div>${T2.now ? `<div style="margin-top:6px">이번 — ${esc(T2.now.at)}${T2.now.notes.map((n) => `<br>· ${esc(n)}`).join("")}</div>` : `<div style="margin-top:6px">이번 — 아직 하루가 끝나지 않았다</div>`}`;
     $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
