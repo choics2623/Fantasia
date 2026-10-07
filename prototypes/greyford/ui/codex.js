@@ -2,7 +2,7 @@
 // 아는 정도: 1 = 들어 본 이름 (점선 밑줄 + ?), 2 = 안다, 3 = 깊이 안다 (숨은 사정을 하나라도 안다).
 // 서버(engine/game/codex.mjs)가 정한 것만 보인다 — 화면은 아는 것보다 더 보여 주지 않는다.
 
-const KIND = { npc: "사람", loc: "장소", node: "장소", reg: "땅", fac: "세력", word: "말", gl: "세상" };
+const KIND = { npc: "사람", loc: "장소", node: "장소", reg: "땅", fac: "세력", word: "말", gl: "세상", item: "지닌 것" };
 const JOSA1 = new Set([..."이가은는을를의에와과도만로으께랑야아처보까부마조뿐한씨들"]);
 let deps = null, index = { sig: "", entries: [] }, names = [], byId = new Map(), loading = null;
 let enabled = true, tipTimer = 0, history = [];
@@ -109,15 +109,19 @@ export async function openCard(id) {
   if (history.length > 20) history.shift();
   document.getElementById("cardBack").hidden = history.length < 2;
   let e;
-  try { e = await deps.post("/api/codex/entry", { id }); } catch { body.innerHTML = `<p class="empty">카드를 못 불렀다</p>`; return; } finally { panel.classList.remove("loading"); }
+  // 화면이 직접 만드는 카드 (지닌 물건) — 서버를 부르지 않는다
+  if (deps.local && /^item:/.test(id)) { panel.classList.remove("loading"); e = deps.local(id); if (!e) { body.innerHTML = `<p class="empty">이제 지니고 있지 않다</p>`; return; } }
+  else try { e = await deps.post("/api/codex/entry", { id }); } catch { body.innerHTML = `<p class="empty">카드를 못 불렀다</p>`; return; } finally { panel.classList.remove("loading"); }
   const esc = deps.esc;
   const lvWord = e.level >= 3 ? "깊이 안다" : e.level >= 2 ? "안다" : e.level >= 1 ? "들어 본 이름" : "모른다";
   body.innerHTML = `<div class="card-head k-${e.kind}">
-      <div class="portrait${e.image ? " img" : ""}">${e.image ? `<img src="${esc(e.image)}" alt="${esc(e.name)}">` : `<span>${esc(monogram(e.name))}</span>`}</div>
-      <div class="ttl"><span class="kind">${esc(e.kindLabel || KIND[e.kind] || "")}</span><h3>${esc(e.name)}${e.level < 2 ? `<sup class="uq">?</sup>` : ""}</h3><div class="sub">${esc(e.sub || "")}</div><span class="lv lv${e.level}">${lvWord}</span></div>
+      <div class="portrait${e.image ? " img" : ""}${e.artHTML ? " art" : ""}">${e.image ? `<img src="${esc(e.image)}" alt="${esc(e.name)}">` : e.artHTML ? e.artHTML : `<span>${esc(monogram(e.name))}</span>`}</div>
+      <div class="ttl"><span class="kind">${esc(e.kindLabel || KIND[e.kind] || "")}</span><h3>${esc(e.name)}${e.level < 2 ? `<sup class="uq">?</sup>` : ""}</h3><div class="sub">${esc(e.sub || "")}</div>${e.kind === "item" ? (e.badges || []).map((b) => `<span class="lv ${esc(b.cls || "")}">${esc(b.text)}</span>`).join(" ") : `<span class="lv lv${e.level}">${lvWord}</span>`}</div>
     </div>
-    ${(e.sections || []).map((s) => `<section class="csec">${s.title ? `<h4>${esc(s.title)}</h4>` : ""}<ul>${s.lines.map((l) => `<li class="${l.unknown ? "unk" : ""}${l.past ? " past" : ""}${l.faint ? " faint" : ""}${l.deep ? " deep" : ""}">${l.unknown ? `<span class="qbox" aria-hidden="true">?</span>` : l.mark ? `<span class="mk">${esc(l.mark)}</span>` : ""}<span class="tx">${esc(l.text)}</span>${l.conf != null ? ` <span class="conf" title="짐작의 확신">${l.conf >= 0.85 ? "●●●" : l.conf >= 0.65 ? "●●○" : "●○○"}</span>` : ""}</li>`).join("")}</ul></section>`).join("")}
+    ${(e.sections || []).map((s) => `<section class="csec">${s.title ? `<h4>${esc(s.title)}</h4>` : ""}<ul>${s.lines.map((l) => `<li class="${l.unknown ? "unk" : ""}${l.past ? " past" : ""}${l.faint ? " faint" : ""}${l.deep ? " deep" : ""}${l.bad ? " bad" : ""}">${l.unknown ? `<span class="qbox" aria-hidden="true">?</span>` : l.mark ? `<span class="mk">${esc(l.mark)}</span>` : ""}<span class="tx">${esc(l.text)}</span>${l.conf != null ? ` <span class="conf" title="짐작의 확신">${l.conf >= 0.85 ? "●●●" : l.conf >= 0.65 ? "●●○" : "●○○"}</span>` : l.meter != null ? `<span class="lbar${l.meter <= 0.2 ? " low" : l.meter <= 0.5 ? " mid" : ""}" aria-hidden="true"><i style="width:${Math.round(l.meter * 100)}%"></i></span>` : ""}</li>`).join("")}</ul></section>`).join("")}
+    ${(e.actions || []).length ? `<section class="csec"><h4>지금 할 수 있는 것</h4><div class="card-acts">${e.actions.map((a, i) => `<button class="btn" data-act="${i}">${esc(a.text)}</button>`).join("")}</div></section>` : e.kind === "item" ? `<section class="csec"><p class="empty">지금 이 자리에서 이것으로 할 수 있는 일은 없다.</p></section>` : ""}
     ${e.memoable ? `<section class="csec"><h4>메모 — 회귀해도 남는다</h4><textarea class="memo" id="cardMemo" rows="2" placeholder="이 사람에 대해 적어 둔다">${esc(e.memo || "")}</textarea></section>` : ""}`;
+  body.querySelectorAll("[data-act]").forEach((b) => (b.onclick = () => { const a = e.actions[Number(b.dataset.act)]; closeCard(); deps.onAction?.(a); }));
   const seen = new Set([id]);
   body.querySelectorAll(".csec .tx").forEach((x) => linkify(x, { seen }));
   const memo = document.getElementById("cardMemo");

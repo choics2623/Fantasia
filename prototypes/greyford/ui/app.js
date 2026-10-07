@@ -114,10 +114,90 @@ function coinHTML(n) {
   return `<span class="coins" title="가진 돈 — ${coinText(n)}" aria-label="가진 돈 ${coinText(n)}">${segs.map(([k, v]) => `<span class="cn ${cls[k]}"><i aria-hidden="true"></i>${v}<small>${k.slice(0, 1)}</small></span>`).join("")}</span>`;
 }
 function meter(label, val, max, { seg = false, warn = 0.5, crit = 0.75, show } = {}) {
-  const f = Math.max(0, Math.min(1, val / max)), cls = f >= crit ? "crit" : f >= warn ? "warn" : "";
+  const raw = max ? val / max : 0, f = Math.max(0, Math.min(1, raw)), cls = raw >= crit ? "crit" : raw >= warn ? "warn" : "";
   const bar = seg ? `<span class="bar seg">${Array.from({ length: max }, (_, i) => `<i class="${i < val ? "on" : ""}"></i>`).join("")}</span>` : `<span class="bar"><i style="width:${Math.round(f * 100)}%"></i></span>`;
-  return `<span class="meter ${cls}" title="${esc(label)} ${val}/${max}"><span class="lab">${esc(label)}<b>${esc(show ?? val)}</b></span>${bar}</span>`;
+  return `<span class="meter ${cls}" title="${esc(label)} — ${esc(show ?? val)}"><span class="lab">${esc(label)}<b>${esc(show ?? val)}</b></span>${bar}</span>`;
 }
+
+// ── 지닌 것 (02 인벤토리 · 19 §8): 몸의 자리마다 · 질과 닳음 · 누르면 물건 카드 ──
+const SLOT_INFO = [["손", "손에 든 것", true], ["허리", "허리에 찬 것", true], ["품", "품속", false], ["소매", "소매 속 — 하나만", false], ["부츠", "부츠 속 — 하나만", false]];
+const Q_CLS = { 조악: "q0", 보통: "q1", 좋음: "q2", 명품: "q3", 걸작: "q4" };
+const ICON = {
+  blade: `<path d="M3.5 20.5l5-5M8.5 15.5l2 2"/><path d="M9.6 14.4 19 5c1.2 2.6.4 5.6-2.4 7.6l-4.8 4.1z"/>`,
+  light: `<path d="M9 10h6v9.5H9zM7 19.5h10M12 10V7.8"/><path d="M12 3.4c1.4 1.5 1.7 2.7.9 3.5-.5.5-1.3.5-1.8 0-.8-.8-.5-2 .9-3.5z"/>`,
+  rope: `<ellipse cx="12" cy="11" rx="7.5" ry="5"/><ellipse cx="12" cy="11" rx="4" ry="2.4"/><path d="M19.4 11.6c-.3 3-2.4 5.5-5 7.9"/>`,
+  hook: `<circle cx="12" cy="4" r="1.4"/><path d="M12 5.4V15"/><path d="M12 15c0 4-7 4-7-.5V12M12 15c0 4 7 4 7-.5V12"/>`,
+  food: `<path d="M3.8 15c0-4.4 3.7-7.6 8.2-7.6s8.2 3.2 8.2 7.6v1.8H3.8z"/><path d="M8.6 10.4l1 3.2M12.4 9.6l1 3.6M16 10.6l.8 2.6"/>`,
+  drink: `<path d="M6 7h9v12.5H6zM6 10h9"/><path d="M15 10.5h2.4c.9 0 1.6.7 1.6 1.6v2.8c0 .9-.7 1.6-1.6 1.6H15"/>`,
+  herb: `<path d="M5 19.5C5 11 10 6 19 4.5c-.8 9-6 14.5-14 15z"/><path d="M5 19.5l8.5-8.5"/>`,
+  doc: `<path d="M7 4h10v13.5a2.5 2.5 0 0 1-2.5 2.5H6.5"/><path d="M7 4a2 2 0 0 0-2 2v11.6c0 1.3 1 2.4 2.4 2.4"/><path d="M10 8.5h4.5M10 11.5h4.5M10 14.5h3"/>`,
+  pass: `<path d="M5 5h14v11H5z"/><path d="M8 8.5h5M8 11h4"/><circle cx="15.5" cy="15.5" r="2.6"/><path d="M14.5 17.8 14 21l1.5-1 1.5 1-.5-3.2"/>`,
+  coin: `<path d="M8.6 6h6.8l-1.3 2.4c3 1.3 5.2 4.2 5.2 7.4 0 3-3.5 4.2-7.3 4.2s-7.3-1.2-7.3-4.2c0-3.2 2.2-6.1 5.2-7.4z"/><path d="M9.8 8.4h4.4"/>`,
+  sack: `<path d="M9 4h6l-1 3c3.2 1.4 5 4.4 5 7.6 0 3.6-3 5.4-7 5.4s-7-1.8-7-5.4C5 11.4 6.8 8.4 10 7z"/>`,
+};
+const iconKey = (tags = []) => (tags.includes("무기") ? "blade" : tags.includes("광원") ? "light" : tags.includes("갈고리") ? "hook" : tags.includes("밧줄") ? "rope" : tags.includes("통행증") ? "pass" : tags.includes("문서") ? "doc" : tags.includes("화폐") ? "coin" : tags.includes("술") ? "drink" : tags.includes("치료") ? "herb" : tags.includes("음식") ? "food" : "sack");
+const itemIcon = (tags, px = 18) => `<svg viewBox="0 0 24 24" width="${px}" height="${px}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[iconKey(tags)]}</svg>`;
+function itemChip(i, { mini = false } = {}) {
+  return `<button type="button" class="itm ${Q_CLS[i.effQuality] || ""}${i.illegal ? " ill" : ""}${i.seen ? " seen" : ""}${mini ? " mini" : ""}" data-item="${esc(i.id)}" aria-label="${esc(i.name)}${i.conditionWord ? ` — ${esc(i.conditionWord)}` : ""} · 물건 카드">
+    <span class="ic">${itemIcon(i.tags)}</span><span class="nm">${esc(i.name)}</span>${i.quality && i.quality !== "보통" && !mini ? `<span class="qb">${esc(i.quality)}</span>` : ""}${i.illegal && !mini ? `<span class="ib" title="인간이 지니면 죄다">금지</span>` : ""}${i.condition != null ? `<span class="cb${i.condition <= 20 ? " low" : i.condition <= 50 ? " mid" : ""}" title="${esc(i.conditionWord)}"><i style="width:${i.condition}%"></i></span>` : ""}</button>`;
+}
+const BULK_WORD = (b) => (b <= 0 ? "자리를 차지하지 않는다" : b === 1 ? "한 줌 — 거의 짐이 안 된다" : b === 2 ? "제법 자리를 차지한다" : "무겁다 — 짐이 된다");
+const USE_LINES = {
+  무기: ["싸움에서 맨손보다 훨씬 낫다 — 날이 좋을수록 더", "쓸 때마다 무뎌진다. 부서지면 맨손이다"],
+  광원: ["어두운 곳을 뒤질 때, 캄캄한 아래로 숨어들 때", "한 번 쓸 때마다 탄다 — 다 타면 없어진다"],
+  갈고리: ["밧줄과 함께 있으면 담을 넘는 길이 열린다"], 밧줄: ["갈고리와 함께 있으면 담을 넘는 길이 열린다", "쓸수록 해진다"],
+  음식: ["먹으면 허기가 가신다", "누군가에게 나눌 수도 있다 — 굶는 곳에서 빵은 말보다 크다"], 술: ["마시면 아픔이 조금 가신다"], 치료: ["아픔을 덜어 준다"],
+  문서: ["펼쳐 읽을 수 있다 — 글을 모르면 읽어 줄 사람이 필요하다"], 통행증: ["관문의 검문을 지날 때 보여 준다"], 화폐: ["숨겨 둔 돈 — 챙기면 다시 쓸 수 있다"],
+};
+function itemEntry(cid) {
+  const v = last?.view; if (!v) return null;
+  const id = cid.slice(5), it = v.player.items.find((x) => x.id === id) || (v.stash || []).find((x) => x.id === id);
+  if (!it) return null;
+  const sections = [], L = (text, o = {}) => ({ text, ...o });
+  const what = [it.desc ? L(it.desc) : null,
+    L(`질 — ${it.quality}${it.effQuality !== it.quality ? ` · 닳아서 ${it.effQuality}만큼밖에 못 한다` : ""}`, { mark: "◆" }),
+    it.condition != null ? L(`상태 — ${it.conditionWord}`, { mark: "◇", meter: it.condition / 100 }) : null,
+    L(`부피 — ${BULK_WORD(it.bulk)}`, { mark: "▢" }),
+    it.value ? L(`값 — ${it.value}쯤`, { mark: "¤" }) : null].filter(Boolean);
+  sections.push({ title: "어떤 것", lines: what });
+  const where = it.where ? [L(`숨겨 둔 곳 — ${it.where}`), L("몸에 지니지 않았다 — 몸수색에는 안 걸린다", { faint: true })]
+    : [L(`${it.slot} — ${it.seen ? "남들 눈에 보인다" : "감춰져 있다 (몸을 뒤지면 나온다)"}`)];
+  sections.push({ title: "어디에", lines: where });
+  const warn = [it.illegal ? L("인간이 지니면 죄다 — 들키면 채찍이나 그보다 나쁜 것", { bad: true, mark: "!" }) : null,
+    it.seen && it.tags.includes("무기") ? L("칼을 드러내고 다닌다 — 보는 사람마다 기억한다", { bad: true, mark: "!" }) : null,
+    it.stolen ? L(`원래 주인 — ${it.from || "누군가"}. 알아보는 눈이 있다`, { mark: "!" }) : it.from ? L(`${it.from}에게서 왔다`, { faint: true }) : null].filter(Boolean);
+  if (warn.length) sections.push({ title: "조심", lines: warn });
+  const use = [...new Set(it.tags.flatMap((t) => USE_LINES[t] || []))].map((t) => L(t));
+  if (use.length) sections.push({ title: "쓰임", lines: use });
+  const verbs = ["use", "read", "stash", "give", "sell", "take"].map((x) => `${x}:${id}`);
+  const actions = (last?.choices || []).filter((c) => verbs.includes(c.id) || c.id.startsWith(`wear:${id}:`)).map((c) => ({ id: c.id, text: c.text }));
+  const badges = [{ text: it.quality, cls: it.quality === "조악" ? "lv1" : ["명품", "걸작"].includes(it.quality) ? "lv3" : "" }, it.illegal ? { text: "금지된 물건", cls: "bad" } : null].filter(Boolean);
+  return { id: cid, kind: "item", kindLabel: it.where ? "숨겨 둔 것" : "지닌 것", level: 2, name: it.name, sub: it.where ? `${it.where}에 숨겨 두었다` : `${it.slot}에 · ${it.seen ? "남들 눈에 보인다" : "감춰져 있다"}`, artHTML: itemIcon(it.tags, 54), badges, sections, actions };
+}
+const bindItems = (root) => root.querySelectorAll(".itm[data-item]").forEach((b) => (b.onclick = () => openCard(`item:${b.dataset.item}`)));
+const HUNGER_W = ["배부르다", "괜찮다", "출출하다", "배고프다", "굶주렸다"];
+const painWord = (x) => (x >= 75 ? "몸을 가누기 힘들다" : x >= 50 ? "욱신거린다" : x >= 25 ? "쑤신다" : "견딜 만하다");
+const tiredWord = (x) => (x >= 85 ? "쓰러지기 직전" : x >= 60 ? "지쳤다" : x >= 30 ? "조금 피곤하다" : "멀쩡하다");
+const fearWord = (x) => (x >= 4 ? "공포에 질렸다" : x >= 2 ? "떨린다" : x >= 1 ? "불안하다" : "담담하다");
+const stressWord = (x) => (x >= 70 ? "무너지기 직전" : x >= 45 ? "무겁다" : x >= 20 ? "짊어졌다" : "가볍다");
+function skillRow(k) {
+  const pct = Math.round((k.progress || 0) * 100);
+  return `<div class="sk${k.lagging ? " lag" : ""}">
+    <div class="sk-top"><b>${esc(k.name)}</b>${k.body ? `<span class="sk-tag" title="몸의 기술 — 몸이 받쳐 주는 만큼만 쓴다">몸</span>` : ""}<span class="w">${esc(k.word)}</span>${k.next ? `<span class="nx">다음 — ${esc(k.next)}</span>` : `<span class="nx top">끝에 닿았다</span>`}</div>
+    <div class="sk-bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="${esc(k.name)}: 다음 단계까지 ${pct}%"><i style="width:${pct}%"></i></div>
+    ${(k.notes || []).map((n) => `<div class="sk-note ${n.sign === "▲" ? "up" : n.sign === "▼" ? "down" : ""}">${esc(n.sign)} ${esc(n.text)}</div>`).join("")}
+    ${(k.mentors || []).length ? `<div class="sk-m">가르칠 사람 — ${k.mentors.map((m) => `<span class="ent k-npc lv2" data-ent="npc:${esc(m.npc)}" tabindex="0" role="button">${esc(m.name)}</span> <span class="faint">${m.ready ? (m.fee ? `(값: ${esc(m.fee)})` : "(받아 줄 것이다)") : "(아직 너를 그만큼 믿지 않는다)"}</span>`).join(" · ")}</div>` : ""}
+  </div>`;
+}
+const GROWTH_HELP = [
+  "기술은 쓰는 만큼 는다 — 어려운 판정, 목숨이 걸린 판정일수록 많이. 너무 쉬운 일은 아무것도 가르치지 않는다.",
+  "잡담과 혼자 하는 연습은 '제법이다'에서 멈춘다. 그 위는 실전과 스승의 몫이다. 스승은 믿음을 얻어야 받아 준다.",
+  "몸의 기술(싸움·은신·손재주)은 몸이 받쳐 주는 만큼만 쓴다. 돌아오면 몸은 처음으로 돌아가지만, 손은 기억한다 — 다시 단련하면 세 배로 빨리 붙는다.",
+  "머리의 기술(화술·기만·위압·통찰)과 글·말은 돌아와도 그대로다.",
+  "한 달 넘게 쓰지 않으면 무뎌진다 — 그래도 가장 좋았던 때의 여덟 할 아래로는 떨어지지 않는다.",
+  "물건에는 질(조악·보통·좋음·명품·걸작)과 닳음이 있다. 판정에 쓸 때마다 닳고, 망가지기 직전이면 한 단계 낮게 친다.",
+  "손과 허리에 찬 것은 남들이 본다. 품·소매·부츠 속은 감춰지지만 몸을 뒤지면 나온다. 많이 지니면 몸놀림이 둔해진다.",
+];
 
 // ── 그리기 ──
 function render(d, loading = false) {
@@ -142,9 +222,9 @@ function renderTop(v) {
   $("placeN").textContent = nm ? nm[1] : v.place.name;
   $("placeS").textContent = [nm ? `'${nm[2]}'` : null, v.place.settlement, KIND_KO[v.place.kind]].filter(Boolean).join(" · ");
   $("vitals").innerHTML = [
-    meter("배고픔", p.hunger, 4, { seg: true, warn: 0.5, crit: 0.75 }),
-    meter("아픔", p.pain, 100, { warn: 0.3, crit: 0.6 }),
-    meter("지침", p.fatigue || 0, 100, { warn: 0.6, crit: 0.85 }),
+    meter("배고픔", p.hunger, 4, { seg: true, warn: 0.5, crit: 0.75, show: HUNGER_W[p.hunger] }),
+    meter("아픔", p.pain, 100, { warn: 0.3, crit: 0.6, show: p.pain >= 75 ? "심하다" : p.pain >= 50 ? "욱신" : p.pain >= 25 ? "쑤신다" : "가볍다" }),
+    meter("지침", p.fatigue || 0, 100, { warn: 0.6, crit: 0.85, show: (p.fatigue || 0) >= 85 ? "한계" : (p.fatigue || 0) >= 60 ? "지쳤다" : (p.fatigue || 0) >= 30 ? "피곤" : "멀쩡" }),
     coinHTML(p.coin),
   ].join("");
   $("status").innerHTML = [
@@ -179,11 +259,13 @@ function renderAside(v, d) {
   $("asideGoals").hidden = !goals.length && !proms.length;
   $("asideGoals").innerHTML = `<h3><span>지켜야 할 것</span></h3>${goals.join("")}${proms.join("")}`;
   // 몸
-  const p = v.player, seen = p.items.filter((i) => i.seen);
-  $("asideBody").innerHTML = `<h3><span>몸</span><button class="more" data-tab="body">수첩 ›</button></h3>
-    <div class="kv"><span>배고픔</span><b>${["배부르다", "괜찮다", "출출하다", "배고프다", "굶주렸다"][p.hunger] || p.hunger}</b><span>아픔</span><b>${p.pain >= 75 ? "몸을 가누기 힘들다" : p.pain >= 50 ? "욱신거린다" : p.pain >= 25 ? "쑤신다" : "견딜 만하다"}</b>${(v.traits || []).length ? `<span>기질</span><b>${esc(v.traits.join(", "))}</b>` : ""}</div>
-    <div class="tags">${seen.map((i) => `<span class="tag seen" title="남들 눈에 보인다">${esc(i.name)}</span>`).join("")}${p.items.filter((i) => !i.seen).slice(0, 4).map((i) => `<span class="tag">${esc(i.name)}</span>`).join("")}${p.bloody ? `<span class="tag bad">옷에 핏자국</span>` : ""}</div>`;
+  const p = v.player, items = [...p.items.filter((i) => i.seen), ...p.items.filter((i) => !i.seen)];
+  $("asideBody").innerHTML = `<h3><span>몸</span><button class="more" data-tab="body">몸과 짐 ›</button></h3>
+    <div class="kv"><span>배고픔</span><b>${HUNGER_W[p.hunger] || p.hunger}</b><span>아픔</span><b>${painWord(p.pain)}</b>${v.load ? `<span>짐</span><b class="${v.load.total > v.load.cap ? "bad" : ""}">${esc(v.load.word)}</b>` : ""}${(v.traits || []).length ? `<span>기질</span><b>${esc(v.traits.join(", "))}</b>` : ""}</div>
+    <div class="itms">${items.slice(0, 6).map((i) => itemChip(i, { mini: true })).join("")}${items.length > 6 ? `<button type="button" class="itm mini more-i">+${items.length - 6}</button>` : ""}${p.bloody ? `<span class="tag bad">옷에 핏자국</span>` : ""}</div>`;
   $("asideBody").querySelector(".more").onclick = () => openSheet("body");
+  $("asideBody").querySelector(".more-i")?.addEventListener("click", () => openSheet("body"));
+  bindItems($("asideBody"));
   // 쫓는 자
   const hu = (v.hunters || []).filter((h) => h.now && h.track >= 1);
   $("asideHunt").hidden = !hu.length;
@@ -344,9 +426,23 @@ function renderSheet(v) {
     h += sec("사냥꾼 판", HU.length ? HU.map((x) => `<div class="pk"><div class="top"><b>${esc(x.name)}</b> <span class="faint">${esc(x.disposition)}</span>${x.past ? ` <span class="faint">${esc(x.past)}</span>` : ""}${x.now && x.track ? ` <span style="color:var(--bad)">${"●".repeat(x.track)}${"○".repeat(Math.max(0, 4 - x.track))}</span>` : ""}</div>${(x.lessons || []).map((l) => `<div class="guess">교훈 — ${esc(l)}</div>`).join("")}</div>`).join("") : "");
   }
   if (sheetTab === "body") {
-    h += sec("몸과 손", `<ul>${(v.traits || []).length ? `<li style="color:var(--gold)">기질 — ${esc(v.traits.join(", "))}</li>` : ""}${(v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span class="faint">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("")}</ul>`);
-    const p = v.player;
-    h += sec("소지품 — 몸의 어디에", `<ul>${p.items.map((i) => `<li>${esc(i.name)} <span class="faint">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>"}</ul>`, U.has("items"));
+    const p = v.player, LD = v.load || { total: 0, cap: 6, word: "" }, TL = v.talents || [];
+    h += sec("몸", `<div class="bvit">${[
+      meter("배고픔", p.hunger, 4, { seg: true, show: HUNGER_W[p.hunger] }),
+      meter("아픔", p.pain, 100, { warn: 0.3, crit: 0.6, show: painWord(p.pain) }),
+      meter("지침", p.fatigue || 0, 100, { warn: 0.6, crit: 0.85, show: tiredWord(p.fatigue || 0) }),
+      meter("두려움", p.fear || 0, 5, { seg: true, warn: 0.4, crit: 0.8, show: fearWord(p.fear || 0) }),
+      meter("마음의 짐", p.stress || 0, 100, { warn: 0.45, crit: 0.7, show: stressWord(p.stress || 0) }),
+    ].join("")}</div>
+      <div class="bline"><span class="chip">${esc(v.body?.train || "")}</span>${v.body?.weak ? `<span class="chip hot">굶주려 팔에 힘이 없다</span>` : ""}${(v.traits || []).map((t) => `<span class="chip gold">기질 — ${esc(t)}</span>`).join("")}${TL.map((t) => `<span class="chip gold" title="${esc(t.grows.join("·"))}이(가) 빨리 는다">재능 — ${esc(t.name)}</span>`).join("")}</div>`);
+    const bySlot = (s) => p.items.filter((i) => i.slot === s);
+    h += sec(`지닌 것 <span class="h4r">짐 — ${esc(LD.word)}</span>`, `<div class="doll">${SLOT_INFO.map(([s, lab, seen]) => `<div class="slot${seen ? " seen" : ""}"><div class="sl"><b>${s}</b><span>${seen ? "👁 남들 눈에 보인다" : lab}</span></div><div class="its">${bySlot(s).map((i) => itemChip(i)).join("") || `<span class="none">비었다</span>`}</div></div>`).join("")}</div>
+      <div class="loadrow">${meter("짐", LD.total, LD.cap, { warn: 0.84, crit: 1.01, show: LD.total > LD.cap ? "몸놀림이 둔하다" : LD.word })}${coinHTML(p.coin)}</div>
+      ${p.bloody ? `<div class="warnline">옷에 핏자국 — 물가에서 빨아야 한다</div>` : ""}<p class="faint-note">물건을 누르면 카드가 열린다 — 질과 닳음, 누가 볼 수 있는지, 지금 할 수 있는 일.</p>`, U.has("items") || p.items.length > 0);
+    const ST = v.stash || [];
+    h += sec("숨겨 둔 것", ST.length ? `<div class="stash">${ST.map((i) => `<div class="st-row">${itemChip(i)}<span class="where">${esc(i.where)}</span></div>`).join("")}</div>` : "");
+    h += sec("손에 익은 것 — 쓸수록 는다", `<div class="skills">${(v.skills || []).map(skillRow).join("")}</div>`);
+    h += `<details class="sec help"><summary>몸이 기억하는 법 — 성장과 장비</summary><ul>${GROWTH_HELP.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></details>`;
     h += sec("낱말", (v.lexicon || []).length ? `<ul>${v.lexicon.map((w) => `<li>${esc(w.word)} <span class="faint">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span class='faint'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("")}</ul>` : "");
   }
   if (sheetTab === "world") {
@@ -373,6 +469,7 @@ function renderSheet(v) {
   }
   body.innerHTML = h || `<div class="sec empty">아직 적힌 것이 없다. 살아남으면 이 장부가 찬다.</div>`;
   body.querySelectorAll(".memo").forEach((m) => (m.onchange = () => post("/api/memo", { npc: m.dataset.npc, text: m.value })));
+  bindItems(body);
 }
 const NARR = [["silent_god", "침묵하는 신 — 세계는 제 무게대로"], ["old_teller", "늙은 이야기꾼 — 쉬어 가며 하마"], ["ash_teller", "재의 화자 — 가장 나쁜 때에 불탄다"], ["dice", "주사위 — 뼈가 던져진 대로"]];
 function settingsHTML(v) {
@@ -585,7 +682,7 @@ async function deathSequence(E) {
 
 // ── 단추와 단축키 ──
 $("placePawn").innerHTML = pawnIconHTML(26);
-initCodex({ post, esc, store });
+initCodex({ post, esc, store, local: itemEntry, onAction: (a) => { closeSheet(); act({ id: a.id, text: a.text }); } });
 document.body.classList.toggle("no-links", !linksOn());
 $("mapBtn").onclick = () => openMap();
 $("bookBtn").onclick = () => openSheet();

@@ -79,6 +79,29 @@ export function skill(g, sk) {
 const LETTER_WORD = (v) => (v < 1 ? "글을 모른다" : v < 10 ? "숫자만 읽는다" : v < 30 ? "이름과 짧은 말을 읽는다" : "글을 읽는다");
 const TONGUE_WORD = (v) => (v < 1 ? "쇳소리로만 들린다" : v < 20 ? "아는 낱말만 들린다" : v < 50 ? "반쯤 알아듣는다" : "알아듣는다");
 export const skillWord = (v) => (v < 12 ? "서툴다" : v < 20 ? "어설프다" : v < 30 ? "쓸 만하다" : v < 42 ? "제법이다" : v < 55 ? "능숙하다" : v < 70 ? "뛰어나다" : "경지에 닿았다");
+// 성장의 눈금 (03 §3 · 19 §8): 숫자 대신 '다음 이름까지 얼마나', 그리고 무엇이 막고 무엇이 돕나
+const STEPS = { 읽고쓰기: [1, 10, 30], 용언: [1, 20, 50] }, STEP = [12, 20, 30, 42, 55, 70];
+const wordOf = (sk) => (sk === "읽고쓰기" ? LETTER_WORD : sk === "용언" ? TONGUE_WORD : skillWord);
+const TALK_SKILLS = new Set(["화술", "기만", "위압", "통찰"]);
+export function skillInfo(g, sk) {
+  const v = skill(g, sk), raw = rawSkill(g, sk), T = STEPS[sk] || STEP, W = wordOf(sk);
+  const k = T.findIndex((x) => v < x), lo = k === 0 ? 0 : k === -1 ? T[T.length - 1] : T[k - 1], hi = k === -1 ? 100 : T[k];
+  const lagging = !!BODY_STAT[sk] && raw + talentBonus(g, sk) > bodyCap(g, sk), notes = [];
+  if (lagging) notes.push({ sign: "▼", text: "손은 기억하는데 몸이 따라오지 않는다 — 먹고, 버티고, 몸을 써야 풀린다" });
+  else if (BODY_STAT[sk] && raw + talentBonus(g, sk) > bodyCap(g, sk) - 3) notes.push({ sign: "·", text: "몸이 받쳐 주는 끝에 거의 닿았다" });
+  if (TALK_SKILLS.has(sk) && raw >= 38 && raw < 60) notes.push({ sign: "·", text: "잡담과 혼자 하는 연습으로는 여기까지 — 목숨이 걸린 판이나 스승이 더 가르친다" });
+  if (talentGrows(g, sk)) notes.push({ sign: "▲", text: "타고났다 — 남보다 빨리 는다" });
+  const idle = g.P.idle?.[sk] || 0;
+  if (idle > 30 && !(STEPS[sk] && raw <= 0)) notes.push({ sign: "▼", text: "오래 쓰지 않았다 — 무뎌지고 있다" });
+  else if (idle > 20 && !(STEPS[sk] && raw <= 0)) notes.push({ sign: "·", text: "한동안 쓰지 않았다 — 더 두면 무뎌진다" });
+  const known = new Set([...g.P.met, ...Object.keys(soul(g).people || {})]);
+  const mentors = (g.content.game.mentors || []).filter((M) => M.teach?.[sk] > raw + 2 && known.has(M.npc) && !g.S.dead.has(M.npc))
+    .map((M) => ({ npc: M.npc, name: displayName(g, M.npc), ready: storyWhen(g, M.needs), fee: M.fee && M.fee !== "none" ? feeText(g, M.fee) : null }));
+  return { name: sk, word: W(v), next: k === -1 ? null : W(hi), progress: Math.round(clamp((v - lo) / (hi - lo), 0, 1) * 100) / 100, body: !!BODY_STAT[sk], lagging, notes, mentors };
+}
+const feeText = (g, fee) => { const [k, v] = fee.split(" "); return k === "coin" ? coinText(Number(v)) : k === "item" ? g.content.game.economy.goods[v]?.name || v : fee; };
+// 몸의 단련 (03 §3.3): 몸의 스킬이 닿을 수 있는 끝을 정한다
+export const trainWord = (t) => (t < 5 ? "덜 여문 몸" : t < 15 ? "일에 단련된 몸" : t < 30 ? "단단한 몸" : t < 45 ? "싸움에 익은 몸" : "쇠 같은 몸");
 // 판정 하나가 남기는 것: 난이도 × 위험 × (실패면 1.2) × 재능 × (1 − 스킬/상한)². 너무 쉬운 판정(D < 스킬−20)은 아무것도 가르치지 않는다
 // 수련 방식 (03 §3.1): 안전한 연습은 40에서 멈춘다 · 실전(목숨이 걸린 판정)은 ×2, 상한 없음 · 스승은 스승 −10까지 ×2.5
 const PRACTICE = { attack: { risk: 2, cap: 100 }, story: { risk: 2, cap: 100 }, op: { risk: 2, cap: 100 }, small_talk: { risk: 0.6, cap: 40 }, ask: { risk: 0.6, cap: 40 }, give: { risk: 0.4, cap: 40 }, press: { risk: 1, cap: 60 }, search: { risk: 0.3, cap: 25 } };
@@ -231,7 +254,7 @@ function asleep(w, t) {
 }
 function bodiesHere(g) { return g.L.bodies.filter((b) => b.at === g.at && !b.removed); }
 function worn(g, n) { return [...g.L.items.values()].filter((i) => i.owner === n && i.worn); }
-const hasTag = (g, t) => mine(g).some((i) => i.tags?.includes(t)) || (t === "광원" && g.P.fireAt != null && g.t - g.P.fireAt <= 60);
+const hasTag = (g, t) => mine(g).some((i) => i.tags?.includes(t) && condOf(i) > 0) || (t === "광원" && g.P.fireAt != null && g.t - g.P.fireAt <= 60);
 // 몸의 자리 (02 §2): 손·허리는 보이고, 부츠·소매는 한 칸씩 숨기고, 품은 옷 안
 const SLOTS = { 손: { seen: true }, 허리: { seen: true }, 품: { seen: false }, 부츠: { seen: false, one: true, hide: true }, 소매: { seen: false, one: true, hide: true } };
 // NPC 인벤토리의 자리 이름(허리띠·목·손가락…)도 받아 다섯 자리로 접는다
@@ -239,7 +262,49 @@ const SLOT_ALIAS = { 허리띠: "허리", 등: "허리", 목: "품", 손가락: 
 const slotOf = (it) => SLOTS[it.slot] ? it.slot : SLOT_ALIAS[it.slot] || (it.tags?.includes("무기") && !it.tags?.includes("숨길수있음") ? "허리" : "품");
 const visibleMine = (g) => mine(g).filter((i) => SLOTS[slotOf(i)]?.seen);
 function mine(g) { return [...g.L.items.values()].filter((i) => i.owner === "player" && !i.stashed); }
-const hasWeapon = (g) => mine(g).some((i) => i.tags?.includes("무기"));
+const hasWeapon = (g) => mine(g).some((i) => i.tags?.includes("무기") && condOf(i) > 0);
+// ── 장비의 질과 닳음, 짐의 부피 (02 §1 · §3② 장비보정 · §3④ 내구도 · §3⑤ 부피) ──
+// 질: 조악 −5 · 보통 0 · 좋음 +3 · 명품 +6 · 걸작 +10. 닳으면(20 이하) 한 단계 아래, 0이면 부서져 쓸 수 없다 (양초는 다 타서 사라진다)
+export const QUALITY = ["조악", "보통", "좋음", "명품", "걸작"];
+const QMOD = [-5, 0, 3, 6, 10];
+const qualityOf = (it) => (QUALITY.includes(it.quality) ? it.quality : /녹슨|이 빠진|낡은|조잡|부러진/.test(it.name || "") ? "조악" : "보통");
+const condOf = (it) => (it.condition ?? 100);
+const effQ = (it) => Math.max(0, QUALITY.indexOf(qualityOf(it)) - (condOf(it) <= 20 ? 1 : 0));
+export const conditionWord = (c) => (c >= 90 ? "새것" : c >= 60 ? "쓸 만하다" : c >= 30 ? "닳았다" : c > 0 ? "망가지기 직전" : "부서졌다");
+const bulkOf = (it) => it.bulk ?? (it.coin || it.tags?.includes("문서") || it.tags?.includes("화폐") ? 0 : it.tags?.includes("밧줄") || (it.tags?.includes("무기") && !it.tags?.includes("숨길수있음")) ? 2 : 1);
+function bestGear(g, tag) { return mine(g).filter((i) => i.tags?.includes(tag) && condOf(i) > 0).sort((a, b) => effQ(b) - effQ(a) || condOf(b) - condOf(a))[0] || null; }
+// 짐: 몸에 지닌 것의 부피 합 — 한도는 근력에 따라 (기본 6). 넘으면 은신·싸움이 둔해진다
+export function loadOf(g) {
+  const total = mine(g).reduce((a, i) => a + bulkOf(i), 0), cap = 6 + Math.round((statsOf(g).근력 - 9) / 2);
+  return { total, cap, word: total <= cap * 0.5 ? "가볍다" : total <= cap ? "지닐 만하다" : total <= cap + 3 ? "무겁다" : "버겁다" };
+}
+// 물건 하나를 화면에 (02 §2 · §7): 질·닳음·부피·값·쓰임 — 숫자 대신 말로
+const TAG_DESC = { 음식: "먹을 것", 술: "마시면 아픔이 조금 가신다", 치료: "아픔을 덜어 준다", 밧줄: "담을 넘거나 내려갈 때 — 갈고리와 함께", 갈고리: "밧줄과 함께 담을 넘는다", 광원: "어둠 속에서 뒤지거나 숨을 때 — 쓸 때마다 탄다", 무기: "싸움에 쓴다 — 쓸수록 무뎌진다", 문서: "글을 읽을 줄 알거나, 읽어 줄 사람이 있어야 한다", 통행증: "관문을 지날 때 보여 준다", 위조: "가짜다 — 눈 밝은 경비에게는 들킨다", 화폐: "모아 둔 돈", 금서: "지닌 것이 들키면 목숨이 걸린다", 도구: "손에 드는 연장" };
+export function itemView(g, i) {
+  const q = qualityOf(i), c = condOf(i), wear = !!(i.tags || []).some((t) => ["무기", "광원", "갈고리", "밧줄"].includes(t)) && !i.coin;
+  const good = i.gid ? g.content.game.economy.goods[i.gid] : null;
+  return {
+    id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen,
+    quality: q, effQuality: QUALITY[effQ(i)], condition: wear ? c : null, conditionWord: wear ? conditionWord(c) : null, bulk: bulkOf(i),
+    value: i.coin || i.value || good?.price ? coinText(i.coin || i.value || good.price) : null, illegal: !!(i.illegal ?? good?.illegal), stolen: (i.provenance || []).some((p) => p.how === "훔침" || p.how === "시체에서 가져감"),
+    eat: !!i.eat, use: !!i.use, read: !!i.read,
+    desc: i.desc || good?.desc || [...new Set((i.tags || []).map((t) => TAG_DESC[t]).filter(Boolean))].slice(0, 2).join(" · ") || null,
+    from: (i.provenance || []).filter((p) => p.owner && p.owner !== "player").map((p) => displayName(g, p.owner)).slice(-1)[0] || null,
+  };
+}
+// 판정에 쓴 장비는 닳는다: 싸움의 칼 (성공 4 · 부분 6 · 실패 8 · 대실패 15), 불빛은 한 번에 25, 오르는 도구 6 (실패 10)
+function wearGear(g, gear, tier, res) {
+  for (const { id, kind } of gear) {
+    const it = g.L.items.get(id); if (!it || it.owner !== "player") continue;   // 빼앗긴 물건은 내 것이 아니다
+    const n = kind === "light" ? 25 : kind === "climb" ? (OK(tier) ? 6 : 10) : tier === "대실패" ? 15 : OK(tier) ? 4 : tier === "부분 성공" ? 6 : 8;
+    const before = condOf(it);
+    it.condition = Math.max(0, before - n);
+    if (it.condition === 0) {
+      if (kind === "light" && !it.tags?.includes("무기")) { g.L.items.delete(id); res.notes.push(josa(`${it.name}이(가) 다 타 버렸다`)); }
+      else res.notes.push(josa(`${it.name}이(가) ${it.tags?.includes("밧줄") ? "끊어졌다" : "부서졌다"} — 더는 쓸 수 없다`));
+    } else if (before > 20 && it.condition <= 20) res.notes.push(josa(`${it.name}이(가) 망가지기 직전이다`));
+  }
+}
 
 function locAccess(g, id, t) {
   const l = g.W.loc.get(id); if (!l) return "none";
@@ -605,7 +670,7 @@ export function odds(g, opt) {
   const m = n ? mind(g, n) : { fear: 0, anger: 0 };
   const r = n ? relOf(g, n) : { like: 0, trust: 0 };
   const knowsHim = n && (p.met.has(n) || soulPerson(g, n));
-  const parts = [];
+  const parts = [], gear = [];
   let S = skill(g, opt.skill), D = 10;
   if (BODY_STAT[opt.skill] && rawSkill(g, opt.skill) + talentBonus(g, opt.skill) > bodyCap(g, opt.skill)) parts.push({ sign: "▼", text: "손은 기억하는데 몸이 아직 따라오지 않는다" });
   const why = (sign, text) => parts.push({ sign, text: josa(text) });
@@ -649,14 +714,28 @@ export function odds(g, opt) {
     D += 18; why("?", "무엇이 있을지 모른다");
     if (g.P.seeAt != null && g.t - g.P.seeAt <= 60) { S += 15; why("▲", "'보다'의 이름이 아직 눈에 남아 있다"); }
     const dark = g.content.game.access?.[g.at]?.dark || isNight(g.t);
-    if (dark) { if (hasTag(g, "광원")) { S += 6; why("▲", "양초가 있다"); } else { S -= 10; why("▼", "어둡다 — 손으로 더듬어야 한다"); } }
+    if (dark) {
+      const lamp = bestGear(g, "광원");
+      if (g.P.fireAt != null && g.t - g.P.fireAt <= 60) { S += 6; why("▲", "불을 피워 두었다"); }
+      else if (lamp) { const b = 6 + QMOD[effQ(lamp)]; S += b; why("▲", condOf(lamp) <= 25 ? `${lamp.name}이(가) 거의 다 탔다` : `${lamp.name}이(가) 있다`); gear.push({ id: lamp.id, kind: "light" }); }
+      else { S -= 10; why("▼", "어둡다 — 손으로 더듬어야 한다"); }
+    }
   }
   if (opt.skill === "은신") {
     const watchers = g.W.whoIsAt(opt.to, g.t + (opt.minutes || 0), g.W.npcs()).filter((w) => w.kind === "at").length;
     D += 10 + watchers * 6 + (isNight(g.t) ? -6 : 4);
-    if (opt.via) { S += 10; why("▲", "갈고리와 밧줄이 있다"); }
+    if (opt.via) {   // 넘어 들어가는 길: 그 길의 도구들 가운데 가장 허술한 것이 정한다
+      const tools = g.content.game.access?.[opt.to]?.breach?.tools || ["갈고리", "밧줄"];
+      const kit = tools.map((t) => bestGear(g, t)).filter(Boolean), q = kit.length ? Math.min(...kit.map(effQ)) : 1;
+      S += 10 + QMOD[q]; why("▲", `${tools.join("과(와) ")}이(가) 있다${q < 1 ? " — 허술하다" : q >= 2 ? " — 튼튼하다" : ""}`);
+      for (const t of kit) gear.push({ id: t.id, kind: "climb" });
+    }
     if (g.P.closeAt != null && g.t - g.P.closeAt <= 30) { S += 12; why("▲", "등 뒤의 문은 닫혀 있다"); }
-    if (g.content.game.access?.[opt.to]?.dark && !hasTag(g, "광원")) { S -= 10; why("▼", "그 아래는 캄캄하다 — 불이 없다"); }
+    if (g.content.game.access?.[opt.to]?.dark) {
+      const lamp = bestGear(g, "광원"), fire = g.P.fireAt != null && g.t - g.P.fireAt <= 60;
+      if (fire) why("▲", "불을 피워 두었다"); else if (lamp) gear.push({ id: lamp.id, kind: "light" }); else { S -= 10; why("▼", "그 아래는 캄캄하다 — 불이 없다"); }
+    }
+    { const ld = loadOf(g); if (ld.total > ld.cap) { const k = ld.total > ld.cap + 3 ? 10 : 5; S -= k; why("▼", "짐이 무겁다 — 몸놀림이 둔하다"); } }
     if (g.P.bloody) { S -= 4; why("▼", "옷에 피가 묻어 있다"); }
     why(isNight(g.t) ? "▲" : "▼", isNight(g.t) ? "어둡다" : "아직 밝다");
     if (knowsPlace(g, opt.to)) why(watchers ? "▼" : "▲", watchers ? `이 시각엔 그곳에 사람이 있다 (${watchers})` : "이 시각엔 그곳이 빈다");
@@ -668,7 +747,13 @@ export function odds(g, opt) {
     D += 10 + Math.round(pr.nerve / 5) + (armed ? 8 : 0) + (profOf(g, n).role === "hunter" ? 12 : 0);
     if (armed) why("▼", "상대가 무기를 지녔다");
     if (profOf(g, n).role === "hunter" && knowsHim) why("▼", "사람을 사냥하는 자다");
-    if (hasWeapon(g)) { S += 10; why("▲", "칼이 있다"); } else why("▼", "맨손이다");
+    const wpn = bestGear(g, "무기");
+    if (wpn) {
+      const base = wpn.tags?.includes("날붙이") ? 10 : wpn.tags?.includes("둔기") ? 7 : 5, q = effQ(wpn);
+      S += base + QMOD[q]; why("▲", q === 0 ? `${wpn.name} — 날이 무디다, 그래도 맨손보다는` : q >= 2 ? `${wpn.name} — 좋은 날이다` : `${wpn.name}이(가) 있다`);
+      gear.push({ id: wpn.id, kind: "weapon" });
+    } else why("▼", mine(g).some((i) => i.tags?.includes("무기")) ? "칼이 부러졌다 — 맨손이나 다름없다" : "맨손이다");
+    { const ld = loadOf(g); if (ld.total > ld.cap) { S -= 5; why("▼", "짐이 무겁다 — 몸놀림이 둔하다"); } }
     if (opt.edge) { S += opt.edge; why("▲", "상대가 지쳤다 — 틈이 보인다"); }
     if (g.fight?.me) { S -= 5 * g.fight.me; why("▼", `${g.fight.me === 1 ? "한 대" : "여러 대"} 맞았다`); }
     if (asleep(w, g.t)) { S += 20; why("▲", "자고 있다"); }
@@ -676,7 +761,7 @@ export function odds(g, opt) {
   }
   for (const tr of soul(g).traces || []) if (n && tr.npc === n) { S -= 5 * (tr.level || 1); why("▼", TRACE_TEXT[tr.id]?.why || tr.name); }
   const P = prob(S, D);
-  return { P, S: Math.round(S), D: Math.round(D), parts };
+  return { P, S: Math.round(S), D: Math.round(D), parts, gear };
 }
 // 그 장소를 아는가: 들어가 봤거나(seen) 일정을 아는 곳 — 은신 근거에 쓴다
 const knowsPlace = (g, id) => !!id && ((g.P.been || new Set()).has(id) || (soul(g).places || []).includes(id));
@@ -709,6 +794,7 @@ function step(g, e) {
   const [verb, arg] = e.id.split(/:(.*)/s);
   const before = g.t;
   DO[verb](g, arg, res, opt, e);
+  if (od?.gear?.length && !g.ended) wearGear(g, od.gear, tier, res);   // 쓴 장비는 닳는다
   const grown = opt.skill || opt.check?.skill;   // 대본 장면의 판정도 실전이다
   if (grown) (g.P.idle ??= {})[grown] = 0;      // 녹슮 타이머: 쓴 날은 0으로
   if (od && grown) growSkill(g, grown, od, tier, opt.check ? "story" : verb.startsWith("op_") ? "op" : verb);
@@ -3108,8 +3194,10 @@ export function view(g) {
     bodies: bodiesHere(g).map((b) => nameOf(g, b.npc)),
     convo: g.convo ? { npc: g.convo.npc, name: nameOf(g, g.convo.npc), turns: g.convo.turns } : null,
     fight: g.fight ? { npc: g.fight.npc, name: displayName(g, g.fight.npc), round: g.fight.round, me: g.fight.me, foe: g.fight.foe } : null,
-    skills: Object.keys(g.P.skills).map((sk) => { const v = skill(g, sk); return { name: sk, word: sk === "읽고쓰기" ? LETTER_WORD(v) : sk === "용언" ? TONGUE_WORD(v) : skillWord(v), body: !!BODY_STAT[sk], lagging: !!BODY_STAT[sk] && rawSkill(g, sk) + talentBonus(g, sk) > bodyCap(g, sk) }; }),
-    player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => ({ id: i.id, name: i.name, slot: slotOf(i), tags: i.tags || [], seen: !!SLOTS[slotOf(i)]?.seen })), bloody: !!g.P.bloody, wanted: heatHere(g), wantedWord: wantedWord(heatHere(g)) },
+    skills: Object.keys(g.P.skills).map((sk) => skillInfo(g, sk)),
+    player: { ...g.P.status, coin: g.S.purse.player, items: mine(g).map((i) => itemView(g, i)), bloody: !!g.P.bloody, wanted: heatHere(g), wantedWord: wantedWord(heatHere(g)) },
+    load: loadOf(g), body: { train: trainWord(g.P.train), weak: (g.P.mods.근력 || 0) < 0 },
+    stash: [...g.L.items.values()].filter((i) => i.owner === "player" && i.stashed).map((i) => ({ ...itemView(g, i), where: placeName(g, i.at) })),
     notebook: [...g.run.carry.notebook, ...g.P.notebook],
     ended: g.ended ? (() => { const r = loopRecord(g); return { ...g.ended, firstDeath: !g.run.carry.deaths.length, loop: g.run.loop, final: !!g.run.carry.final && g.ended.kind === "dead", canRelease: g.run.loop >= 3 && !g.run.carry.final, epilogue: g.run.carry.final && g.ended.kind === "dead" ? epilogue(g) : null, record: { short: recordCard(r, { short: true }), full: recordCard(r), rewind: r.rewind } }; })() : null,
     story: g.story ? { id: g.story.id, phase: g.story.phase } : null, goals: goals(g), trueName: trueName(g),
