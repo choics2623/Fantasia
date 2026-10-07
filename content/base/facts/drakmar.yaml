@@ -27,7 +27,7 @@
   danger: 2
   names: [노라]
 - id: fact_dk_varskar_scales_stolen
-  text: "용황의 비늘이 하루 한 바구니씩 바래 떨어지고, 노예들이 그것을 몰래 훔쳐 판다 (비늘 한 장 2 비늘). 둥지 바닥의 비늘은 시간 잔상을 품는다"
+  text: "용황의 비늘이 하루 한 바구니씩 바래 떨어지고, 노예들이 그것을 몰래 훔쳐 판다 (비늘 한 장 금화 2닢). 둥지 바닥의 비늘은 시간 잔상을 품는다"
   truth: true
   danger: 2
   names: []
@@ -157,7 +157,7 @@
   names: [세라크, 베티, 아우락스]
 # ── 피직과 치크 ──
 - id: fact_dk_fizik_sold_route
-  text: "피직이 아우락스의 용인 자객 3명에게 서리 탑 침입 경로를 2 비늘에 팔았다"
+  text: "피직이 아우락스의 용인 자객 3명에게 서리 탑 침입 경로를 금화 2닢에 팔았다"
   truth: true
   danger: 3
   names: [피직, 아우락스]
@@ -224,7 +224,7 @@
   danger: 4
   names: [카이도르, 아우락스, 카스파르]
 - id: fact_dk_kaidor_forged_passes
-  text: "인간 통행증 발급은 카이도르의 손을 거친다. 값만 맞으면 위조 통행증을 만든다 (1장 3 비늘)"
+  text: "인간 통행증 발급은 카이도르의 손을 거친다. 값만 맞으면 위조 통행증을 만든다 (1장 금화 3닢)"
   truth: true
   danger: 3
   names: [카이도르]

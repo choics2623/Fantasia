@@ -86,7 +86,7 @@
 
 ```yaml
 npc_hagen:
-  coin: 91                      # 못 (1 발톱 = 12 못)
+  coin: 91                      # 못 (은화 1닢 = 동화 12닢)
   worn:
     - {id: it_hagen_knife, name: 뼈자루 접이칼, tags: [무기, 날붙이, 숨길수있음], slot: 허리띠, visibility: 숨김,
        marks: ["자루에 늑대 이빨 세 개를 박았다"], recognizers: [npc_fayne, npc_volk, npc_dietmar, npc_irma]}

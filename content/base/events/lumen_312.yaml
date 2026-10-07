@@ -57,7 +57,7 @@
 - {id: ev_lm_tobias_dispatch, date: "313-01-12", npcs: [npc_lm_tobias, npc_lm_aegidius], from: "09:00", to: "10:00", at: lm_inq_hall, doing: "토비아스가 셋째 함 맨 아래 종이를 처음으로 올린다 — 에기디우스의 가방에 마르타의 보고가 들어간다", condition: "마르타의 오스릭 보고가 회수되지 않음"}
 - {id: ev_lm_aegidius_greyford, date: "313-01-17", npcs: [npc_lm_aegidius], from: "10:00", to: "17:00", at: gf_chapel, doing: "북부 순회 심문 — 회색여울 예배당에서 세 가지 질문. 오스릭의 이름이 처음으로 정화청 종이에 오른다", travel_from: lm_inq_hall, condition: "마르타의 오스릭 보고가 회수되지 않음"}
 - {id: ev_lm_aegidius_osric, date: "313-01-17", npcs: [npc_osric], from: "10:00", to: "17:00", at: gf_chapel_priest, doing: "심문 사제의 세 가지 질문을 받는다 — 필사본은 이미 루멘에 갔다", condition: "마르타의 오스릭 보고가 회수되지 않음"}
-- {id: ev_lm_sworn_tokens, date: "313-02-10", npcs: [npc_lm_matthias, npc_lm_laurenz], from: "10:00", to: "13:00", at: lm_cath_nave, doing: "파종월 성표 서약 — 일곱 살이 된 아이마다 목에 쇠사슬 고리 하나. 고리 값 3못은 주인이 낸다. 성가대가 첫 곡을 연다"}
+- {id: ev_lm_sworn_tokens, date: "313-02-10", npcs: [npc_lm_matthias, npc_lm_laurenz], from: "10:00", to: "13:00", at: lm_cath_nave, doing: "파종월 성표 서약 — 일곱 살이 된 아이마다 목에 쇠사슬 고리 하나. 고리 값 동화 3닢은 주인이 낸다. 성가대가 첫 곡을 연다"}
 # ── 꽃월 12일 성 마렌 축일 (AS 313) 준비 ──
 - {id: ev_lm_hero_prep, date: "313-03-10", npcs: [npc_lm_hero], from: "04:00", to: "22:00", at: ps_oven, doing: "순례자 삼백이 몰려드는 날 — 빵 서른 판. 화덕이 하루 종일 꺼지지 않는다"}
 - {id: ev_lm_ivan_prep, date: "313-03-10", npcs: [npc_lm_ivan], from: "06:00", to: "12:00", at: lm_garrison_commander, doing: "축일 병력 배치 — 삼천 대 삼백의 계산표를 다시 쓴다"}

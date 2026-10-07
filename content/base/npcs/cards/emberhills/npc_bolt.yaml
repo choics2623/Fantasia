@@ -50,7 +50,7 @@ voice:
     - {situation: 첫 만남, line: "불 가까이 서지 마. 이 불은 누구 편도 아니야."}
     - {situation: 호의, line: "주조는 말이 없어서 좋지. 쇳물은 거짓말을 못 해."}
     - {situation: 적대, line: "나는 이긴 쪽 편이다. 아직 누가 이길지 몰라서 천천히 걷는 거고."}
-    - {situation: 거래, line: "불량 주형은 폐기 값이야. 한 개에 1발톱. 몇 개 필요한가는 말하지 마."}
+    - {situation: 거래, line: "불량 주형은 폐기 값이야. 한 개에 은화 1닢. 몇 개 필요한가는 말하지 마."}
     - {situation: 위기, line: "주형 창고! 문 잠가! 누가 열었어!"}
     - {situation: 비밀 누설, line: "칼날 모양이라고? 그냥 불량이야. …값만 맞으면 불량도 제값을 받지."}
 schedule:
@@ -62,7 +62,7 @@ places: [붉은 솥 제련소, 용광로 열두 기, 주형 창고, 제련 노�
 knows: [fact_em_barto_sells_passes]
 hides:
   - fact: fact_em_bolt_blade_molds
-    reveal_when: "신뢰 50 이상이거나, 1발톱 이상의 값을 제시했을 때"
+    reveal_when: "신뢰 50 이상이거나, 은화 1닢 이상의 값을 제시했을 때"
     reveal: [{"trust":50}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'불량 주형은 폐기 대기다'라고만 한다"
 relations:

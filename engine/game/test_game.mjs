@@ -13,7 +13,7 @@ const g = G.boot(C, G.newRun({ seed: 7, opening: false }));
 const v0 = G.view(g);
 check("회귀점: 낙엽월 1일 18:00, 절름발이 수탉", v0.time.includes("낙엽월 1일 18:00") && v0.place.id === "gf_rooster");
 check("그 자리에 실제로 있는 사람만 장면에 나온다 (브람)", v0.people.some((p) => p.id === "npc_bram"), v0.people.map((p) => p.name).join(", "));
-check("가진 돈: 부츠 속 3못", v0.player.coin === 3);
+check("가진 돈: 부츠 속 동화 3닢", v0.player.coin === 3);
 
 // 2. 대화 — 아는 것은 판정으로, 숨긴 것은 공개 조건으로
 play(g, "talk:npc_bram");
@@ -183,7 +183,7 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   check("저녁 배급으로 배고픔이 준다 (하루 한 번)", G.view(x).player.hunger === h0 - 1 && !has(x, "ration"));
   play(x, "talk:npc_bram");
   const buy = G.options(x).find((o) => o.id === "buy:bread");
-  check("브람에게 빵을 살 수 있다 (1못)", !!buy, buy?.label);
+  check("브람에게 빵을 살 수 있다 (동화 1닢)", !!buy, buy?.label);
   play(x, "buy:bread");
   check("산 물건은 소지품이 되고 돈이 준다", G.view(x).player.items.some((i) => i.name.includes("빵")) && G.view(x).player.coin === 2);
   check("브람은 칼을 팔지 않는다", !G.options(x).some((o) => o.id === "buy:knife"));
@@ -232,7 +232,7 @@ check("기억도 재생된다", fingerprint(G.boot(C, JSON.parse(JSON.stringify(
   const x = G.boot(C, G.newRun({ seed: 3, opening: false }));
   play(x, "go:gf_river_huts", "sleep");          // 점호 몸수색이 은화를 빼앗으니, 돈은 그 뒤에
   while (G.view(x).hm < "09:00") play(x, "wait:60");
-  x.S.purse.player = 300;                             // 시험용: 위조 통행증 값 (헨릭에게 240못)
+  x.S.purse.player = 300;                             // 시험용: 위조 통행증 값 (헨릭에게 은화 20닢 — 장물아비는 두 배)
   play(x, "go:gf_tollhouse");
   if (has(x, "talk:npc_henrik")) {
     play(x, "talk:npc_henrik");

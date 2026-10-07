@@ -168,10 +168,10 @@ relations:
   words: 이용 가능한 이웃
 toward_player: 값을 부르는 눈. 처음 보는 사람에게는 먼저 얼굴을 본다
 persuade:
-  likes: 딸 구출의 길, 은 3발톱, 요툰 정보
+  likes: 딸 구출의 길, 은 은화 3닢, 요툰 정보
   hates: '''노예상''이라는 말, 딸을 입에 올리는 협박'
 roles:
-  teacher: '스승 가능 — 야외생존(상한 50), 흥정(40). 조건: 은 5발톱 또는 딸 구출 약속 + 신뢰 35'
+  teacher: '스승 가능 — 야외생존(상한 50), 흥정(40). 조건: 은 은화 5닢 또는 딸 구출 약속 + 신뢰 35'
   companion: 불가
   romance: null
 affiliations:

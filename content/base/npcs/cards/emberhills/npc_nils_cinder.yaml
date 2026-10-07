@@ -43,11 +43,11 @@ voice:
     to_inferior: "없다"
     to_player_default: "눈을 피하고 도망 칠 곳을 본다"
   tics: ["'…네, 네.'", "바퀴를 만진다"]
-  use: [매듭, 바퀴, 술, 2못, 심부름]
+  use: [매듭, 바퀴, 술, 동화 2닢, 심부름]
   avoid: [끈, 광부등, 뜻]
   length: "짧고 빠르다"
   samples:
-    - {situation: 첫 만남, line: "…술이요? 네, 한 잔요. 2못이에요."}
+    - {situation: 첫 만남, line: "…술이요? 네, 한 잔요. 동화 2닢이에요."}
     - {situation: 호의, line: "바퀴요? 아, 그냥 굴러가요. 그냥요."}
     - {situation: 적대, line: "나는 몰라요! 아무것도 안 날랐어요!"}
     - {situation: 거래, line: "빵 반 조각이면… 오늘 매듭 수만 알려 드릴게요. 뜻은 몰라요."}

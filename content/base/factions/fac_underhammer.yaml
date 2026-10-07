@@ -32,7 +32,7 @@ offices:
     reports_to: null
     powers: ["별강철 박자 전승", "슬래그 더미 아래 창날 23개·단검 4자루", "디트마르 무리에게 주 1회 창날 공급", "군나르와 봉기의 날(재의 날 둘째 날)을 정함"]
     chosen_by: "아버지 욘의 박자 전수(AS 279)"
-    perks: ["시장가 14비늘의 숙련 장인"]
+    perks: ["시장가 금화 14닢의 숙련 장인"]
   - id: off_wife_loaned
     title: 가장의 아내 (바알카르에 '빌려진' 세탁장 노예)
     holder: npc_greta

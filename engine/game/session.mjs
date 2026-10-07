@@ -8,6 +8,7 @@ import * as G from "./game.mjs";
 import { SYSTEM, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn, RECORDER_SYSTEM, recorderPrompt, parseRecords } from "./prompts.mjs";
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
+import * as X from "./codex.mjs";
 
 const INK = new Set(["ink", "drift", "grow", "voice", "dayend", "echo", "recap"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
 // provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
@@ -60,8 +61,17 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     if (any) save();
   }
   const peopleKey = () => G.view(g).people.map((p) => p.id).sort().join(",");
+  // 서술에서 들은 이름 (백과의 '들어 본 이름') — 회귀해도 남는다 (regress가 다음 회차로 넘긴다)
+  function noteHeard(texts) {
+    const found = X.heardIn(g, texts.filter(Boolean));
+    if (!found.length) return;
+    const H = new Set(g.run.heard || []); let added = false;
+    for (const id of found) if (!H.has(id)) { H.add(id); added = true; }
+    if (added) g.run.heard = [...H];
+  }
   // 한 박자가 끝나면: 줄기에 한 줄, 서술 꼬리에 박자들, 대화가 끝났으면 그 사람의 지난 대화 요지
   function remember(res, beats, conv = null) {
+    noteHeard(beats);
     if (res) {
       const v = G.view(g);
       const what = String(res.text || res.label || "").replace(/\s*\(\d+분\)|\s*— 몰래/g, "").slice(0, 60);
@@ -186,10 +196,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         res.text = text; acted = res;
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
         opts = G.options(g); actedOpts = opts;
-        if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, []); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+        if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, []); noteHeard(beats); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       } else {
         opts = G.options(g);
-        if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+        if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); noteHeard(beats); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       }
       const n = await narrate(res, opts, { onText, free: input?.free, memories: false });
       if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
@@ -226,7 +236,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, more: c.more || false, memory: c.memory || null };
     });
     const ink = [...(n?.recap || []).map((text) => ({ kind: "recap", text })), ...(res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null, who: f.who || null, card: f.card || null }))];
-    return { view: v, beats: n?.beats || [], ink, choices, locked: G.lockedOptions(g), result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
+    return { view: v, beats: n?.beats || [], ink, choices, locked: G.lockedOptions(g), codexSig: X.codexSig(g, g.run.heard || []), result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
   }
 
   return {
@@ -243,6 +253,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     async regress(o) {
       const next = G.regressRun(g);
       if (!next) return { epilogue: G.epilogue(g), view: G.view(g), choices: [], beats: [] };   // 진짜 죽음 — 시대가 끝난다
+      next.heard = [...(g.run.heard || [])];   // 들은 이름은 회귀해도 남는다 (주인공의 기억)
       newTimeline(); g = G.boot(content, next); transcript = []; resetMemory(null); save(); return turn(null, o);
     },
     // 회귀를 놓는다 (03 §4.6): 다음 회차가 마지막 — 그 회차의 죽음은 돌아오지 않는다
@@ -260,6 +271,9 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, mark), rewinds: { ...(g.run.rewinds || {}), [g.run.loop]: used + 1 } });
       transcript = []; thread = thread.filter((x) => x.at <= mark); tail = []; save(); return turn(null, o);
     },
+    // 백과 (codex.mjs): 목록과 카드 하나 — 읽기만
+    codex: () => X.codexIndex(g, { heard: g.run.heard || [] }),
+    codexEntry: (id) => X.codexEntry(g, id, { heard: g.run.heard || [] }),
     drain: () => kick() || Promise.resolve(),   // 검사용: 기록관이 끝날 때까지
     load(run) { newTimeline(); g = G.boot(content, run); transcript = run.transcript || []; resetMemory(run); },
     // 서술을 기다리는 박자는 아직 일어나지 않았다 — 밖에서 보는 기록에는 없다

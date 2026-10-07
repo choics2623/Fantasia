@@ -17,9 +17,9 @@ locations:
   # ── 등불 둘레 ──
   - {id: ll_lantern, name: 등불 (꺼지지 않는 등불), xy: [350, 260], kind: lantern, access: public, hours: "24시", note: "마을 한가운데 꺼지지 않는 등불. 길 잃은 자는 이 불을 향해 걸으라고 한다. 대붕괴 이후 첫 생존자가 피웠다는 전설. 등불 아래서 거짓말하는 것은 금기"}
   - {id: ll_square, name: 등불 앞 광장, xy: [350, 305], kind: square, access: public, hours: "24시", note: "사냥꾼이 해 지기 전 돌아와 인원을 세는 맨땅. 재의 날 밤에는 마을 전원이 여기 모인다"}
-  - {id: ll_market, name: 유물 시장, xy: [290, 325], kind: market, access: public, hours: "06:00-20:00", note: "유물과 물이 오가는 가판 시장. 물 한 통 3못, 유물은 흥정. 재의 법에 따라 남의 유물은 빼앗지 않는다", hidden: "시장 한쪽 끝에 '글자 돌'을 사겠다는 쪽지가 매일 다른 가판에 붙는다 — 주춧돌의 신호"}
+  - {id: ll_market, name: 유물 시장, xy: [290, 325], kind: market, access: public, hours: "06:00-20:00", note: "유물과 물이 오가는 가판 시장. 물 한 통 동화 3닢, 유물은 흥정. 재의 법에 따라 남의 유물은 빼앗지 않는다", hidden: "시장 한쪽 끝에 '글자 돌'을 사겠다는 쪽지가 매일 다른 가판에 붙는다 — 주춧돌의 신호"}
   - {id: ll_tuk_stall, name: 고물상 '등잔 밑', xy: [255, 345], kind: shop, access: public, hours: "07:00-22:00", note: "크릭 튀크의 낮은 가게. 장부 대신 끈 매듭. 물건 밑이 늘 한 뼘 깊다", hidden: "가게 바닥 아래 마른 구멍 — 매듭 장부와 유물 한두 개"}
-  - {id: ll_water_store, name: 물 저장고, xy: [450, 300], kind: cistern, access: public, hours: "06:00-20:00", note: "바위를 파낸 석조 물탱크 둘. 물지기 오트가 구리 말로 되어 판다. 한 통 3못. 겨울 재 폭풍 전에 채워 두는 것이 연중 가장 큰 일", hidden: "저장고 뒤 작은 상자 선반 — 약 상자가 매달 한 번 비었다가 문 앞에서 다시 찬다"}
+  - {id: ll_water_store, name: 물 저장고, xy: [450, 300], kind: cistern, access: public, hours: "06:00-20:00", note: "바위를 파낸 석조 물탱크 둘. 물지기 오트가 구리 말로 되어 판다. 한 통 동화 3닢. 겨울 재 폭풍 전에 채워 두는 것이 연중 가장 큰 일", hidden: "저장고 뒤 작은 상자 선반 — 약 상자가 매달 한 번 비었다가 문 앞에서 다시 찬다"}
   # ── 집과 숙소 ──
   - {id: ll_halgrim_house, name: 할그림의 집, xy: [380, 195], kind: house, access: owner, hours: "24시", rooms: [ll_oath_cellar], note: "등불에서 스무 걸음 위 바위턱의 집. 사냥꾼 허가 인장이 문턱 서랍에 있다. 집주인의 왼팔이 이미 돌이다"}
   - {id: ll_oath_cellar, name: 깨진 맹세 석판 (집 아래), parent: ll_halgrim_house, access: secret, hours: "24시", locked: "석판 틈 열쇠 — 할그림만", note: "집 아래 지하 방. 두르강 룬이 새겨진 석판이 둘로 깨져 있다", hidden: "깨진 석판 곁 가장 깊은 상자 — 아스테리아 서고의 문짝 한 장. 열쇠 구멍이 여덟 갈래 별 모양이다. 석판의 갈라진 틈이 반 뼘씩 가슴 쪽으로 번진다"}

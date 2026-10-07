@@ -2,6 +2,7 @@
 // 각 목표는 조건(when)이 맞는 날, 정해진 시각·장소에 NPC를 보내고(위치 엔진 덮어쓰기), 끝나면 세계 상태를 바꾼다(effects).
 // 같은 회차 시드 = 같은 하루. 플레이어가 조건을 깨면(하겐을 죽인다, 에길을 옮긴다) 그 뒤의 사슬이 달라진다.
 import { parseClock, parseDate, toMinutes, fromMinutes, weekday, fmt } from "./calendar.mjs";
+import { coinText } from "./text.mjs";
 
 function hash(...parts) {
   let h = 2166136261 >>> 0;
@@ -9,7 +10,7 @@ function hash(...parts) {
   return ((h ^ (h >>> 15)) >>> 0) / 4294967296;
 }
 
-const UNIT = { 못: 1, 발톱: 12, 비늘: 240 };
+const UNIT = { 동화: 1, 은화: 12, 금화: 240, 못: 1, 발톱: 12, 비늘: 240 };   // 금속 이름이 정본, 속칭(못·발톱·비늘)도 읽는다
 // 세계 상태는 순수 데이터다 (Map·Set은 저장할 때 풀어 쓴다 — 28 저장은 '시드 + 행동 기록'이라 이 상태를 직접 저장할 일은 없다)
 export function createState({ cards = {}, vars = {}, inventories = {} } = {}) {
   const knows = new Map();       // fact → Set(npc)
@@ -19,7 +20,7 @@ export function createState({ cards = {}, vars = {}, inventories = {} } = {}) {
       knows.get(f).add(c.id);
     }
   }
-  const purse = { player: 0 };   // 하나의 지갑 (못 단위): 목표 행동·반응 층·플레이어 거래가 같이 쓴다
+  const purse = { player: 0 };   // 하나의 지갑 (동화 단위): 목표 행동·반응 층·플레이어 거래가 같이 쓴다
   for (const [n, inv] of Object.entries(inventories)) purse[n] = inv.coin || 0;
   return { knows, vars: { ...vars }, rel: new Map(), dead: new Set(), log: [], done: new Set(), purse };
 }
@@ -150,7 +151,7 @@ export function createAgenda(world, state, agendaData, { loopSeed = 1 } = {}) {
   // 플레이어 개입 — 죽임, 옮김, 변수 바꾸기
   function intervene(t, kind, ...args) {
     if (kind === "kill") { state.dead.add(args[0]); world.override({ npc: args[0], from: t, to: null, kind: "dead", doing: "죽었다" }); state.log.push({ t, npc: "player", text: `플레이어: ${args[0]}을(를) 죽였다` }); }
-    if (kind === "coin") { state.purse[args[0]] = args[1]; state.log.push({ t, npc: "player", text: `플레이어: ${args[0]}의 지갑 = ${args[1]}못` }); }
+    if (kind === "coin") { state.purse[args[0]] = args[1]; state.log.push({ t, npc: "player", text: `플레이어: ${args[0]}의 지갑 = ${coinText(args[1])}` }); }
     if (kind === "set") { state.vars[args[0]] = args[1]; state.log.push({ t, npc: "player", text: `플레이어: ${args[0]} = ${args[1]}` }); }
   }
 

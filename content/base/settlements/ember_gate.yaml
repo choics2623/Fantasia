@@ -16,10 +16,10 @@ bells:
 patrols: ["22:00", "00:30", "03:00"]
 locations:
   - {id: eg_gatehouse, name: 성문 검문소, xy: [80, 350], kind: gate, access: public, hours: "06:00-22:00 문 열림, 밤엔 쪽문만", rooms: [eg_gate_pass], note: "잿불 길이 들어서는 곳. 광산 구역 표찰을 본다"}
-  - {id: eg_gate_pass, name: 표찰 발급소, parent: eg_gatehouse, access: public, hours: "08:00-16:00", hidden: "위조 표찰 한 장 1발톱 — 시장관의 도장과 똑같은 모양"}
+  - {id: eg_gate_pass, name: 표찰 발급소, parent: eg_gatehouse, access: public, hours: "08:00-16:00", hidden: "위조 표찰 한 장 은화 1닢 — 시장관의 도장과 똑같은 모양"}
   - {id: eg_hall, name: 시장관 청사, xy: [450, 180], kind: office, access: public, hours: "08:00-17:00", rooms: [eg_hall_study], note: "바르토 하스크의 청사. 징세와 표찰 도장이 여기서 나간다"}
   - {id: eg_hall_study, name: 시장관 서재, parent: eg_hall, access: owner, hidden: "하스크 가에 보내는 이중 장부 — 광석 세금이 둘로 갈라져 있다"}
-  - {id: eg_tavern, name: "용인 술집 '숯불'", xy: [330, 330], kind: tavern, access: public, hours: "16:00-02:00", rooms: [eg_tavern_yard, eg_tavern_cellar], note: "용인 광부 감독이 가는 술집. 맥주 한 잔 2못 — 바알카르의 두 배"}
+  - {id: eg_tavern, name: "용인 술집 '숯불'", xy: [330, 330], kind: tavern, access: public, hours: "16:00-02:00", rooms: [eg_tavern_yard, eg_tavern_cellar], note: "용인 광부 감독이 가는 술집. 맥주 한 잔 동화 2닢 — 바알카르의 두 배"}
   - {id: eg_tavern_yard, name: 숯불 뒷마당, parent: eg_tavern, access: staff, hidden: "물탱크 물속에 매듭 끈이 담겨 있다 — 광부등 세포가 쪽지 대신 쓴다"}
   - {id: eg_tavern_cellar, name: 숯불 지하 저장고, parent: eg_tavern, access: staff, note: "몇 해 전 가스가 샌 적이 있다"}
   - {id: eg_smelter, name: 붉은 솥 제련소, xy: [700, 260], kind: smelter, access: staff, hours: "상시 (교대 06:00/18:00)", rooms: [eg_furnace_row, eg_mold_store], note: "용광로 12기. 노예 2,400. 밤에도 붉다"}

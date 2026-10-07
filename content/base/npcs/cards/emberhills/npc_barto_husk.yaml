@@ -50,7 +50,7 @@ voice:
     - {situation: 첫 만남, line: "표찰? 합법이면 석 달, 사정이 있으면 일주일. 사정은 무겁습니까?"}
     - {situation: 호의, line: "당신 같은 사람과는 말이 빨라서 좋군요."}
     - {situation: 적대, line: "잿문의 문은 제가 엽니다. 닫는 것도 제 일이고요."}
-    - {situation: 거래, line: "한 장에 1발톱. 위조 값이 아니라 입 다무는 값이죠."}
+    - {situation: 거래, line: "한 장에 은화 1닢. 위조 값이 아니라 입 다무는 값이죠."}
     - {situation: 거짓말할 때, line: "표찰은 모두 합법 발급입니다. (인장을 한 바퀴 돌린다) 합법입니다."}
     - {situation: 겁먹었을 때, line: "누가 이 도장을— 아니, 그건 내 도장입니다!"}
     - {situation: 비밀 누설, line: "본가에는 두 부 보냅니다. 한 부는 세금, 한 부는 인정이죠."}
@@ -63,7 +63,7 @@ places: [시장관 청사, 표찰 발급소, 술집 '숯불']
 knows: [fact_em_hadrian_quota_lie]
 hides:
   - fact: fact_em_barto_sells_passes
-    reveal_when: "신뢰 40 이상이거나, 1발톱을 먼저 건넸을 때"
+    reveal_when: "신뢰 40 이상이거나, 은화 1닢을 먼저 건넸을 때"
     reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'발급은 합법입니다'라며 웃는다"
 relations:
@@ -80,7 +80,7 @@ roles:
   romance: null
 regression:
   fixed:
-    - "위조 표찰이 한 장 1발톱에 팔린다 (회귀점의 사실)"
+    - "위조 표찰이 한 장 은화 1닢에 팔린다 (회귀점의 사실)"
 affiliations:
   - {faction: fac_drakmar_empire, rank: rank_scale_officer, office: null, since: 295, loyalty: 20, public: true, cell: null}
 truths: []

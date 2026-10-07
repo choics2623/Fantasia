@@ -79,7 +79,7 @@ agendas:
     every: once
     when: ["alive npc_sisra", "var sv_auction_lots >= 40"]
     at: {place: silver_leaf_gate__auction, from: "17:00", to: "18:00", doing: 은목재 지불 대행 — 수를 두세 명 부풀려 적는다}
-    effects: ["coin npc_sisra += 3 비늘", "log 시스라가 경매 수를 두세 명 부풀려 은목재를 받았다 — 카엘론은 알고 말하지 않는다"]
+    effects: ["coin npc_sisra += 3 금화", "log 시스라가 경매 수를 두세 명 부풀려 은목재를 받았다 — 카엘론은 알고 말하지 않는다"]
   - id: ag_sv_naelis_leaves
     npc: npc_naelis
     goal: 10.30 긴밤월 전 잿빛 탑으로 — 이번에는 기억 수정을 두고 간다 (정본)

@@ -7,6 +7,7 @@
 // 소문은 사람이 모이는 곳에서 사람 사이로만 퍼진다. 시체는 누군가 그 자리에 가야 발견된다. 물건은 소유 이력을 끌고 다닌다.
 // 결정적이다: 같은 회차 시드 + 같은 플레이어 행동 = 같은 결과. 플레이어가 아무것도 안 하면 이 층은 조용하다 (정본이 흔들리지 않는다).
 import { fmt } from "./calendar.mjs";
+import { coinText } from "./text.mjs";
 import { josa } from "./text.mjs";
 
 function hash(...parts) {
@@ -247,7 +248,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       b.heat = 1.5; log(t, npc, `${NAME(npc)}은(는) 이 이야기를 하고 싶어 입이 근질거린다`, "secret");
     } else if (choice === "rob_body") {
       const coin = purse.get(b.object) || 0; purse.set(npc, (purse.get(npc) || 0) + coin); purse.set(b.object, 0);
-      log(t, npc, `${NAME(npc)}이(가) ${NAME(b.object)}의 시체에서 ${coin}못을 챙기고 입을 다물었다`, "secret");
+      log(t, npc, `${NAME(npc)}이(가) ${NAME(b.object)}의 시체에서 ${coinText(coin)}을 챙기고 입을 다물었다`, "secret");
       b.heat = 0;
     } else if (choice === "flee") {
       log(t, npc, `${NAME(npc)}은(는) 시체를 보고 달아났다 — 아무에게도 말하지 않는다`, "secret");
@@ -408,7 +409,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       t = upTo(t);
       const at = bodies.find((x) => x.npc === victim)?.at || world.where(victim, t).at;
       const got = [];
-      if (what === "all" || what === "coin") { const c = purse.get(victim) || 0; purse.set("player", purse.get("player") + c); purse.set(victim, 0); if (c) got.push(`${c}못`); }
+      if (what === "all" || what === "coin") { const c = purse.get(victim) || 0; purse.set("player", purse.get("player") + c); purse.set(victim, 0); if (c) got.push(coinText(c)); }
       for (const it of holding(victim)) if (it.worn && (what === "all" || what === it.id)) {
         it.owner = "player"; it.worn = false; it.provenance.push({ owner: "player", how: "시체에서 가져감", t });
         got.push(it.name);
@@ -441,7 +442,7 @@ export function createLivingWorld({ world, state, agenda, inventories = {}, sim 
       if (knew) { believe(buyer, t, { kind: "saw_item", subject: "player", object: origOwner(it), item: it.id, at, source: "saw" }, { react: false }); state.threats.push({ by: buyer, target: "player", kind: "leverage", about: origOwner(it), t }); }
       it.owner = buyer; it.worn = !!it.slot && it.visibility === "보임"; it.provenance.push({ owner: buyer, how: "삼", t });
       purse.set("player", purse.get("player") + price);
-      log(t, buyer, `${NAME(buyer)}이(가) ${it.name}을(를) ${price}못에 샀다${knew ? " — 누구 것인지 알면서" : ""}`, knew ? "secret" : "public");
+      log(t, buyer, `${NAME(buyer)}이(가) ${it.name}을(를) ${coinText(price)}에 샀다${knew ? " — 누구 것인지 알면서" : ""}`, knew ? "secret" : "public");
       return { sold: true, knew, price };
     },
     // 표시 지우기: 대장장이·장물아비가 녹이거나 고친다. 맡기는 순간 그 사람이 먼저 본다

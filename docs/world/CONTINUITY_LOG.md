@@ -101,7 +101,7 @@
 |---|------|------|-----------|
 | 51 | **NPC id 오기**: `npc_marta`, `npc_paine`(08), `npc_godric`(05), `npc_brann_smith`(02·ITEMS), 08 계보의 `npc_ysolde_raven` | `npc_martha`, `npc_fayne`, `npc_godric_raven`, `npc_bran`, `npc_rowena_raven` | systems 02·05·08, ITEMS |
 | 52 | **식별자 표기 혼재**: `greywater`(SCENARIOS·GAME_DESIGN·08) vs REGIONS 노드 `greyford_*` / ITEMS `reyburn_*`(레이번), `raven_gate_uniform`(까마귀 문을 raven으로 — 레이번가와 혼동) / GAME_DESIGN 예시의 `clock.northern_famine`, `lang_northern` | `greyford`로 통일, `raven_*`(레이번), `crow_gate_uniform`, `clock.northern_exodus`, `lang_frost` | SCENARIOS, GAME_DESIGN, ITEMS, systems 08 |
-| 53 | **화폐·달력 표기**: 02 YAML `value: { 은: 6 }`, GAME_DESIGN "은화 2/5", 03 식비 "동", GAME_DESIGN 화폐 "동화/은화/금화"만 표기, tech/04 "일주일 = 168틱"(7일) | 발톱·못 단위로(단검 6발톱 = 정본), GAME_DESIGN에 정본 환율 명시, **일주일 = 144틱(6일 주)** | systems 02·03, GAME_DESIGN, tech/04 |
+| 53 | **화폐·달력 표기**: 02 YAML `value: { 은: 6 }`, GAME_DESIGN "은화 2/5", 03 식비 "동", GAME_DESIGN 화폐 "동화/은화/금화"만 표기, tech/04 "일주일 = 168틱"(7일) | 발톱·못 단위로(단검 은화 6닢 = 정본), GAME_DESIGN에 정본 환율 명시, **일주일 = 144틱(6일 주)** | systems 02·03, GAME_DESIGN, tech/04 |
 | 54 | **06 결점 이름** '얼굴 낙인' vs 정본 고정 명단 B '노예 낙인' | '노예 낙인'(부위는 출신에 따라) | systems 06 |
 | 55 | **GAME_DESIGN 세부**: 노화 "1년 = 60~100시간"(03: 3~6시간), "지방 약 12"(정본 16), 성격 축 "용기·탐욕·신앙심·충성·정직·사교성·잔혹성"(정본 6축), 출신 표 북방 탈주자 시작 위치(SCENARIOS O-07은 까마귀 문 앞), "312년 전 아스테리온이 봉기"(봉기는 AS −9 = 321년 전), 스킬 목록이 01 문서와 다름 | 03·정본·01 기준으로 정정, 스킬 목록에는 "초기 분류 예시 — 정본은 01 문서" 주석 | GAME_DESIGN |
 | 56 | **기타 시스템 문서**: 10 "음유시인 요한"(찬송 순례자), 12 "인간 ↔ 용인" 사례로 엘레나(진룡의 '작은 몸'), 13 존재하지 않는 'WORLD_BIBLE §7 마물' 참조 | 정정 | systems 10·12·13 |
@@ -365,3 +365,4 @@ TODO-FACT: 엘린의 대역 페이 아이, 오틸리 맹세 푸는 법, 튀크 �
 | 5.15 | 마지막 등불↔아스테리아 폐허: 지도 좌표는 가까운데 56시간 | 시간 왜곡 지대 — **56시간이 맞다** (재의 황무지의 길은 직선으로 걷지 못한다). 지도 그림의 거리는 그대로 둔다 | 황무지의 시간 균열 |
 | 5.16 | 헤스터의 세포 `n_lamp_arkas`가 세포 그래프에 없음 | null 유지 — 다음 세포 그래프 정리 때 아르카스 등잔 세포를 추가 | — |
 | 5.17 | 황무지 인물 5명의 자동 위치(아스테리아)와 카드 거처(마지막 등불) | 손으로 쓴 일과(ashwaste.yaml)가 이긴다 — 자동 위치 도구가 다음 실행 때 뺀다 (확인함: 자동 위치 16명으로 줄었다) | 28 §… fill_locations 규칙 |
+| 5.18 | 화폐 이름: 정본(못·발톱·비늘)을 플레이어가 알아듣기 어렵다 | **화면·서술은 동화·은화·금화(세는 말 '닢')**, 못·발톱·비늘은 용제국의 속칭으로 남긴다. 환율은 그대로 (금화 1 = 은화 20 = 동화 240). 숫자가 붙은 돈만 일괄 변환 — '비늘 시장'·'아홉 비늘'·몸의 비늘은 그대로 | WORLD_BIBLE §7.1, GAME_DESIGN, content 전체 |

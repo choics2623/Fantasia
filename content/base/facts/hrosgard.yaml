@@ -99,7 +99,7 @@
   danger: 4
   names: [볼크, 마투쉬]
 - id: fact_hg_harva_carried_runaways
-  text: "서리 와이번 하르바는 탈주자를 등에 태워 산을 넘긴 적이 한 번 있다. 삯은 30 비늘이었다"
+  text: "서리 와이번 하르바는 탈주자를 등에 태워 산을 넘긴 적이 한 번 있다. 삯은 금화 30닢이었다"
   truth: true
   danger: 3
   names: [하르바]

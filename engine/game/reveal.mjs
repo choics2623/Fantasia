@@ -32,7 +32,7 @@ export function parseRevealText(text, names = {}) {
     if ((m = /\(\s*신뢰\s*(\d+)\s*이상\s*\)/.exec(p))) a.trust = NUM(m[1]);
     if ((m = /기시감\s*(\d+)/.exec(p))) a.deja_vu = NUM(m[1]);
     if (/잔향(으로|임을)?\s*(확정|확인)/.test(p)) a.echo_known = true;
-    if ((m = /뇌물\s*(\d+)\s*발톱/.exec(p))) a.gift = NUM(m[1]) * 12;
+    if ((m = /뇌물\s*(?:은화\s*)?(\d+)\s*(?:발톱|닢)/.exec(p))) a.gift = NUM(m[1]) * (/금화/.test(p) ? 240 : /동화/.test(p) ? 1 : 12);   // 뇌물 은화 N닢 (속칭 N발톱도)
     else if (/뇌물/.test(p)) a.gift = 12;
     if (/은자 시험|시험\(|시험을 통과|통과 후|제자로 받|사사|스승 조건/.test(p)) a.flag = "trial";
     if ((m = /([가-힣]+?)(?:이|가)?\s*(?:죽(?:거나|은|으면)|실각한)/.exec(p))) { const id = names[m[1]]; if (id) a.dead = id; }

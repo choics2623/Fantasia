@@ -159,7 +159,7 @@ ranks:
   - {id: rank_scar_warrior, title: "흉터 전사", duties: "전쟁·대련 — 흉터 수로 서열", privileges: "등 흉터는 덮지 않는다", open_to_player: false}
   - {id: rank_pup, title: "애송이", duties: "10세 첫 싸움, 13세 성년", privileges: "대련 참가", open_to_player: false}
   - {id: rank_blood_brother, title: "그롬의 형제 (혈명 없는 혈명 — 100승 인간)", duties: "붉은 젖으로 이어지는 의존", privileges: "자유, 무기 소지, 전리품 소유, 그롬 씨족 합류, 그롬이 고개를 숙임 — 실제로는 붉은 젖 중독(fact_gm_red_milk_ritual)", open_to_player: true, condition: "원형장 100승. 지금까지 셋(전설상 백승의 탈 포함). 군나르는 99승에서 탈주했다"}
-  - {id: rank_gladiator, title: "인간 투사", duties: "원형장 경기, 새벽 훈련 4시간", privileges: "잘 먹는다. 무기 소지 허용(그롬마르에서만 합법). 10승 이름·25승 개인 천막·50승 제자 1명", open_to_player: true, condition: "투사 후보 노예(3~6 비늘)로 들어와 예선(봄)에 선발된다. 경기를 거부하면 소모품으로 강등"}
+  - {id: rank_gladiator, title: "인간 투사", duties: "원형장 경기, 새벽 훈련 4시간", privileges: "잘 먹는다. 무기 소지 허용(그롬마르에서만 합법). 10승 이름·25승 개인 천막·50승 제자 1명", open_to_player: true, condition: "투사 후보 노예(금화 3~6닢)로 들어와 예선(봄)에 선발된다. 경기를 거부하면 소모품으로 강등"}
   - {id: rank_expendable, title: "인간 소모품 (병사·노역)", duties: "원정 첫 열, 귀리죽 2", privileges: "없음 — 생존율이 매우 낮다", open_to_player: true, condition: "원정 징발(가을) 또는 투사 강등"}
 
 law:

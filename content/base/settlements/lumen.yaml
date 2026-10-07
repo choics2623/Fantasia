@@ -83,7 +83,7 @@ locations:
   - {id: lm_pilgrim_post, name: 게시 기둥, xy: [1120, 1420], kind: outdoor, access: public, note: "허가증 검사 일정과 정화 날짜가 붙는다"}
   - {id: lm_north_house, name: 북부 사제관, xy: [1150, 1380], kind: lodging, access: staff, hours: "04:00-22:00", note: "북부 등불관 공석 3년 — 대리 수녀 아델이 쓴다. 북부 순례자와 허가증 발급", hidden: "서랍 안 순례 허가증 인장 — 도장 두 개. 하나는 북부, 하나는 아델의 것이 아니다 (fact_lm_adel_seal)"}
   - {id: lm_apothecary, name: 순례길 약방, xy: [1000, 1380], kind: shop, access: public, hours: "07:00-18:00", note: "오토의 아내 약을 짓는 곳. 약값은 헌금 쪽지로"}
-  - {id: lm_tithe_office, name: 헌금 쪽지 교환소, xy: [1180, 1320], kind: office, access: public, hours: "08:00-16:00", note: "동판 쪽지를 발행·교환한다. 순례 허가증(1발톱)도 여기서 판다"}
+  - {id: lm_tithe_office, name: 헌금 쪽지 교환소, xy: [1180, 1320], kind: office, access: public, hours: "08:00-16:00", note: "동판 쪽지를 발행·교환한다. 순례 허가증(은화 1닢)도 여기서 판다"}
   - {id: lm_dock, name: 루멘 부두, xy: [1100, 1800], kind: dock, access: public, hours: "새벽-일몰", note: "노예선 정기편(세렌행)과 강 수운이 선다. 성표 고리를 단 인간이 배에 오르면 성표 계수소가 확인한다", hidden: "성표 계수소 장부 — 세렌행 선적 인간의 성표 번호. 팔려 간 신도 수가 그대로 적힌다"}
   # ── 다리·성문·수비 ──
   - {id: lm_bridge_west, name: 서쪽 다리, xy: [800, 700], kind: checkpoint, access: public, note: "허가증과 무기 검사. 용인 수비병 둘"}

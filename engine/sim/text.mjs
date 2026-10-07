@@ -6,3 +6,14 @@ export function josa(text) {
     const [a, b] = pair.replace(")", "").split("("); return ch + q + (batchim ? a : b);
   });
 }
+
+// 돈 (WORLD_BIBLE §7.1): 속은 동화 단위 하나. 보일 때는 금화·은화·동화 — 금화 1 = 은화 20 = 동화 240. 세는 말은 '닢'
+export const COPPER_PER = { 금화: 240, 은화: 12, 동화: 1 };
+export function coinParts(n) {
+  n = Math.max(0, Math.round(Number(n) || 0));
+  return { 금화: Math.floor(n / 240), 은화: Math.floor((n % 240) / 12), 동화: n % 12 };
+}
+export function coinText(n) {
+  const p = coinParts(n), out = Object.entries(p).filter(([, v]) => v).map(([k, v]) => `${k} ${v}닢`);
+  return out.length ? out.join(" ") : "동화 0닢";
+}

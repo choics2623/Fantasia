@@ -75,7 +75,7 @@ const at = (g, place, hm) => { g.at = place; if (hm != null) g.t = Math.floor(g.
 // ── 잠긴 선택지 (GAME_DESIGN §2.4): 있는 줄 아는 것은 회색과 이유로 ──
 { const g = fresh(); g.convo = { npc: "npc_henrik", turns: 0, patience: 6, transcript: [] };
   const L = G.lockedOptions(g);
-  check("돈이 모자라면 — 살 수 없는 물건이 회색으로", L.some((l) => /위조 통행증/.test(l.label) && /못/.test(l.why)), JSON.stringify(L));
+  check("돈이 모자라면 — 살 수 없는 물건이 회색으로", L.some((l) => /위조 통행증/.test(l.label) && /닢이 든다/.test(l.why)), JSON.stringify(L));
   const r = fresh(); r.at = "gf_whip_square"; r.t = Math.floor(r.t / 1440) * 1440 + 1440 + 23 * 60; r.S.vars.bran_spears = true; r.S.vars.gunnar_trains = true;
   const L2 = G.lockedOptions(r);
   check("준비가 모자란 봉기 — 이유와 함께 보인다 (고를 수는 없다)", L2.some((l) => /둘|2가지/.test(l.why)) && !G.options(r).some((o) => o.id === "rising"), JSON.stringify(L2));

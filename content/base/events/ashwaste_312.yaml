@@ -53,7 +53,7 @@
 # ── 313 수확월 (7) ──
 - {id: ev_aw_jul_ash_storm, date: "313-07-10", npcs: [npc_aw_ott, npc_aw_kora, npc_aw_halgrim], from: "06:00", to: "18:00", at: ll_water_store, doing: "여름 재 폭풍 — 시야 0. 오트가 물 저장고 뚜껑을 덮고 코라가 여관 문을 막대로 건다. 할그림은 등불 곁에서 돌이 어디까지 왔는지 손가락 마디로 센다"}
 # ── 매달 반복 ──
-- {id: ev_aw_monthly_water, npcs: [npc_aw_ott, npc_aw_halgrim], repeat: monthly, day: 10, from: "10:00", to: "14:00", at: ll_water_store, doing: "월 물 배급 — 인장 소지 사냥꾼 예순에게 물 두 통씩 배급한다. 할그림이 인장을 확인하고 오트가 구리 말로 되어 준다. 한 못은 장부에 오르지 않는다", fixed: true}
+- {id: ev_aw_monthly_water, npcs: [npc_aw_ott, npc_aw_halgrim], repeat: monthly, day: 10, from: "10:00", to: "14:00", at: ll_water_store, doing: "월 물 배급 — 인장 소지 사냥꾼 예순에게 물 두 통씩 배급한다. 할그림이 인장을 확인하고 오트가 구리 말로 되어 준다. 동화 한 닢은 장부에 오르지 않는다", fixed: true}
 - {id: ev_aw_monthly_embers, npcs: [npc_aw_silene], repeat: monthly, day: 6, from: "06:00", to: "11:00", at: ll__ash_edge, doing: "잿불석 매장일 — 실레네가 순례자에게 붉은 말뚝 한 걸음 앞 묻는 자리를 가르친다. 열쇠 본은 손바닥에 올려 둔 채", travel_from: ll__sanct_ember_room, return_to: ll__sanct_ember_room}
 - {id: ev_aw_monthly_serena_jump, npcs: [npc_aw_serena], repeat: monthly, day: 7, from: "04:00", to: "08:00", at: ll__ash_eye_stakes, doing: "잿불석 매장 다음 날 새벽 — 말뚝이 반 뼘 더 뛴다. 세레나가 곡선 위에 점을 찍고 이번 달 점이 지난달 점보다 위에 있는지 확인한다"}
 - {id: ev_aw_monthly_serena_report, npcs: [npc_aw_serena], repeat: monthly, day: 8, from: "20:00", to: "24:00", at: ll__ash_eye_records, doing: "탑에 올리는 월간 보고 — 세레나가 곡선을 옮겨 쓰고 원인 칸에 '원인 미상'이라고 적는다. 봉인 편지는 다음 날 새벽 배달부가 가져간다", fixed: true}

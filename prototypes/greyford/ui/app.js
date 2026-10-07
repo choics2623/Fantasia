@@ -2,6 +2,7 @@
 // 서버(server.mjs)의 /api/*를 부른다. 서술은 SSE로 흘러 들어온다.
 import { worldSVG, townSVG, routePath, panZoom, fitToScreen, TYPE_KO } from "./map.js";
 import { pawnIconHTML } from "./piece.js";
+import { initCodex, codexSync, linkify, relink, openCard, closeCard, cardOpen, encyclopediaHTML, bindEncyclopedia, linksOn, setLinks } from "./codex.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -27,7 +28,7 @@ mq?.addEventListener?.("change", applySettings);
 applySettings();
 
 // ── 상태 ──
-let busy = false, last = null, currentTurn = null, lastPlace = null, fresh = false, deathRunning = false;
+let busy = false, last = null, currentTurn = null, lastPlace = null, fresh = false, deathRunning = false, lastTurn = null;
 let mapData = null, mapKey = "";
 
 // ── 서버 부르기 (서술은 오는 대로) ──
@@ -86,6 +87,8 @@ function addBeats(d) {
     if (k.kind === "echo" || k.kind === "recap") { p.className = k.kind; p.textContent = k.text; if (k.kind === "recap") t.insertBefore(p, t.firstChild); else t.appendChild(p); continue; }
     p.className = k.kind === "grow" ? "grow" : "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]);
   }
+  linkify(t);   // 이야기 속 이름 → 카드 (아는 만큼만)
+  lastTurn = t;
   // 죽음: 마지막 문장이 문장 중간에서 끊긴다 (14 §4.1 ①)
   if (d.view?.ended?.kind === "dead" && d.beats?.length) { const ps = t.querySelectorAll("p:not(.player)"); const lp = ps[ps.length - 1]; if (lp) { const w = lp.textContent; const cut = w.lastIndexOf(" ", Math.floor(w.length * 0.6)); lp.textContent = w.slice(0, cut > 10 ? cut : Math.floor(w.length * 0.6)).replace(/[.,!?…"']+$/, ""); } }
   currentTurn = null;
@@ -101,6 +104,15 @@ const PHASE = (h, night) => (night ? "밤" : h < 6 ? "새벽" : h < 11 ? "아침
 const KIND_KO = { keep: "성채", work: "일터", barracks: "막사", home: "집", square: "광장", office: "관청", canteen: "배급소", chapel: "예배당", store: "곳간", lodging: "헛간 숙소", graveyard: "묘지", checkpoint: "검문소", kennel: "개 우리", outdoor: "물가·들" };
 const ACCESS_KO = { public: "누구나 드나든다", serf: "농노의 자리", staff: "일꾼만 드나든다", owner: "주인의 자리 — 허락 없이는", locked: "잠겨 있다", secret: "숨은 곳" };
 const ABOUT = { suspect: "너를 의심한다", saw_item: "네가 지닌 것을 보았다", trespass: "네가 들어가는 것을 보았다", claim: "네 말을 믿는다", kill: "네가 한 일을 안다", assault: "네가 한 일을 안다", echo_sign: "네가 이상하다고 생각한다" };
+// 돈: 속은 동화 단위 — 금화 1 = 은화 20 = 동화 240 (엔진의 coinText와 같은 셈)
+const coinParts = (n) => ({ 금화: Math.floor(n / 240), 은화: Math.floor((n % 240) / 12), 동화: n % 12 });
+const coinText = (n) => Object.entries(coinParts(n)).filter(([, v]) => v).map(([k, v]) => `${k} ${v}닢`).join(" ") || "동화 0닢";
+function coinHTML(n) {
+  const segs = Object.entries(coinParts(n)).filter(([, v]) => v);
+  if (!segs.length) segs.push(["동화", 0]);
+  const cls = { 금화: "au", 은화: "ag", 동화: "cu" };
+  return `<span class="coins" title="가진 돈 — ${coinText(n)}" aria-label="가진 돈 ${coinText(n)}">${segs.map(([k, v]) => `<span class="cn ${cls[k]}"><i aria-hidden="true"></i>${v}<small>${k.slice(0, 1)}</small></span>`).join("")}</span>`;
+}
 function meter(label, val, max, { seg = false, warn = 0.5, crit = 0.75, show } = {}) {
   const f = Math.max(0, Math.min(1, val / max)), cls = f >= crit ? "crit" : f >= warn ? "warn" : "";
   const bar = seg ? `<span class="bar seg">${Array.from({ length: max }, (_, i) => `<i class="${i < val ? "on" : ""}"></i>`).join("")}</span>` : `<span class="bar"><i style="width:${Math.round(f * 100)}%"></i></span>`;
@@ -133,7 +145,7 @@ function renderTop(v) {
     meter("배고픔", p.hunger, 4, { seg: true, warn: 0.5, crit: 0.75 }),
     meter("아픔", p.pain, 100, { warn: 0.3, crit: 0.6 }),
     meter("지침", p.fatigue || 0, 100, { warn: 0.6, crit: 0.85 }),
-    `<span class="coin" title="가진 돈">${p.coin}못</span>`,
+    coinHTML(p.coin),
   ].join("");
   $("status").innerHTML = [
     U.has("loop") ? `<span class="chip gold">${v.loop}회차</span>` : "",
@@ -207,12 +219,12 @@ function personMenu(npc, anchor) {
   const ch = (last?.choices || []).filter((c) => c.id.split(":").includes(npc) || c.id.endsWith(":" + npc));
   const p = last?.view?.people.find((x) => x.id === npc);
   const m = document.createElement("div"); m.className = "menu-pop"; m.id = "menuPop"; m.setAttribute("role", "menu");
-  m.innerHTML = `<div class="mh">${esc(p?.name || "")}${p?.who ? ` — ${esc(p.who)}` : ""}</div>${ch.length ? ch.map((c) => `<button role="menuitem" data-id="${esc(c.id)}">${esc(c.text)}</button>`).join("") : `<div class="mh">지금은 할 수 있는 게 없다</div>`}`;
+  m.innerHTML = `<div class="mh">${esc(p?.name || "")}${p?.who ? ` — ${esc(p.who)}` : ""}</div><button role="menuitem" data-card="npc:${esc(npc)}" class="card-item">📜 카드 보기</button>${ch.length ? ch.map((c) => `<button role="menuitem" data-id="${esc(c.id)}">${esc(c.text)}</button>`).join("") : `<div class="mh">지금은 할 수 있는 게 없다</div>`}`;
   document.body.appendChild(m);
   const r = anchor.getBoundingClientRect(), mw = m.offsetWidth, mh = m.offsetHeight;
   m.style.left = Math.max(12, Math.min(innerWidth - mw - 12, r.left)) + "px";
   m.style.top = (r.bottom + mh + 8 < innerHeight ? r.bottom + 6 : Math.max(12, r.top - mh - 6)) + "px";
-  m.querySelectorAll("button").forEach((b) => (b.onclick = () => { closeMenu(); const c = ch.find((x) => x.id === b.dataset.id); act({ id: c.id, text: c.text }); }));
+  m.querySelectorAll("button").forEach((b) => (b.onclick = () => { closeMenu(); if (b.dataset.card) return openCard(b.dataset.card); const c = ch.find((x) => x.id === b.dataset.id); act({ id: c.id, text: c.text }); }));
   m.querySelector("button")?.focus();
   setTimeout(() => document.addEventListener("pointerdown", outside, { once: true }), 0);
   function outside(e) { if (!m.contains(e.target)) closeMenu(); else document.addEventListener("pointerdown", outside, { once: true }); }
@@ -281,6 +293,8 @@ function show(d, isFresh = false) {
   last = d; fresh = isFresh;
   if (!d.broken) addBeats(d); else currentTurn = null;
   render(d);
+  // 새로 알게 된 것이 있으면 백과 목록을 다시 받고, 방금 그린 덩어리의 이름을 다시 잇는다
+  if (d.codexSig) codexSync(d.codexSig).then((changed) => { if (changed) { $("story").querySelectorAll(".turn").forEach((t) => relink(t)); if (!$("sheet").hidden && sheetTab === "codex") renderSheet(last?.view); } });
 }
 async function act(input, retry = false, label) {
   if (busy) return;
@@ -304,6 +318,7 @@ function renderSheet(v) {
   document.querySelectorAll("#sheet .tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.tab === sheetTab));
   const body = $("sheetBody");
   if (sheetTab === "settings") { body.innerHTML = settingsHTML(v); bindSettings(); return; }
+  if (sheetTab === "codex") { body.innerHTML = encyclopediaHTML(); bindEncyclopedia(body, () => renderSheet(last?.view)); return; }
   if (!v) { body.innerHTML = `<div class="sec empty">아직 아무것도 없다.</div>`; return; }
   const U = new Set(v.unlocked || []);
   const sec = (title, html, show = true) => (show && html ? `<div class="sec"><h4>${title}</h4>${html}</div>` : "");
@@ -321,7 +336,7 @@ function renderSheet(v) {
   }
   if (sheetTab === "people") {
     h += sec("약속", (v.promises || []).length ? `<ul>${v.promises.map((p) => `<li><b>${esc(p.who)}</b> — ${esc(p.when)} ${esc(p.where)}: ${esc(p.what)}</li>`).join("")}</ul>` : "");
-    h += sec("아는 사람들 — 지금 어디쯤", (v.people_known || []).map((x) => `<div class="pk"><div class="top"><b>${esc(x.name)}</b>${x.knots ? ` <span style="color:var(--gold)" title="매듭">${"⟡".repeat(x.knots)}</span>` : ""}${x.heldKnots && !x.thisLoop ? ` <span class="faint" title="지난 회차의 매듭">${"◇".repeat(x.heldKnots)}</span>` : ""}${x.who ? ` <span class="faint">${esc(x.who)}</span>` : ""}</div>
+    h += sec("아는 사람들 — 지금 어디쯤", (v.people_known || []).map((x) => `<div class="pk"><div class="top"><b class="ent k-npc lv2" data-ent="npc:${esc(x.id)}" tabindex="0" role="button">${esc(x.name)}</b>${x.knots ? ` <span style="color:var(--gold)" title="매듭">${"⟡".repeat(x.knots)}</span>` : ""}${x.heldKnots && !x.thisLoop ? ` <span class="faint" title="지난 회차의 매듭">${"◇".repeat(x.heldKnots)}</span>` : ""}${x.who ? ` <span class="faint">${esc(x.who)}</span>` : ""}</div>
       <div class="guess">${esc(x.guess || "모른다")}${x.lastSeen ? ` · 마지막으로 본 곳: ${esc(x.lastSeen)}` : ""} · ${esc(x.mood)}${x.id === "npc_sara" && v.romance?.words?.npc_sara && v.romance.npc_sara > 0 ? ` · <span style="color:var(--gold)">${esc(v.romance.words.npc_sara)}</span>` : ""}</div>
       ${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}
       ${(x.past || []).map((l) => `<div class="book past">┊ ${esc(l)}</div>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></div>`).join("") || `<div class="empty">아직 말을 섞은 사람이 없다</div>`, U.has("people"));
@@ -366,17 +381,19 @@ function settingsHTML(v) {
       <div class="set-row"><span>글자 크기</span>${segBtns("size", [["s", "작게"], ["m", "보통"], ["l", "크게"], ["xl", "아주 크게"]])}</div>
       <div class="set-row"><span>바탕</span>${segBtns("theme", [["night", "밤"], ["parchment", "양피지"], ["system", "기기 따라"]])}</div>
       <div class="set-row"><span>지난 글</span>${segBtns("dim", [[true, "흐리게"], [false, "또렷하게"]])}</div>
-      <div class="set-row"><span>움직임</span>${segBtns("motion", [[true, "켬"], [false, "줄임"]])}</div></div>
+      <div class="set-row"><span>움직임</span>${segBtns("motion", [[true, "켬"], [false, "줄임"]])}</div>
+      <div class="set-row"><span>이름 잇기</span><span class="seg" data-set="links">${[[true, "켬 — 이름을 누르면 카드"], [false, "끔"]].map(([val, lab]) => `<button type="button" data-v="${val}" aria-pressed="${linksOn() === val}">${lab}</button>`).join("")}</span></div></div>
     <div class="sec"><h4>누가 이 이야기를 기억하는가</h4><div class="row"><select id="narr">${NARR.map(([id, lab]) => `<option value="${id}"${v?.narrator?.id === id ? " selected" : ""}>${lab}</option>`).join("")}</select><button class="btn" id="narrBtn">이 화자로</button></div></div>
     <div class="sec"><h4>저장</h4><div class="row"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="btn" id="saveBtn">저장</button></div><div class="row" id="slots" style="margin-top:8px"></div></div>
     <div class="sec"><h4>새 판</h4><div class="row"><button class="btn" id="newBtn">새 판 — 그림다크</button><button class="btn" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
       ${v?.mode === "story" ? `<div class="row" style="margin-top:8px"><button class="btn" id="rewindBtn">마지막 아침으로 되돌린다</button></div>` : ""}</div>
-    <div class="sec"><h4>단축키</h4><div class="keys"><span class="kbd">1</span><span>~ <span class="kbd">9</span> 선택지 고르기</span><span class="kbd">/</span><span>직접 쓰기</span><span class="kbd">M</span><span>지도</span><span class="kbd">N</span><span>수첩</span><span class="kbd">Esc</span><span>닫기</span></div></div>
+    <div class="sec"><h4>단축키</h4><div class="keys"><span class="kbd">1</span><span>~ <span class="kbd">9</span> 선택지 고르기</span><span class="kbd">/</span><span>직접 쓰기</span><span class="kbd">M</span><span>지도</span><span class="kbd">N</span><span>수첩</span><span class="kbd">B</span><span>백과</span><span class="kbd">Esc</span><span>닫기</span></div></div>
     ${DEBUG ? `<div class="sec"><h4>엔진 기록 (판정·검증)</h4><pre id="debugOut">${esc(JSON.stringify({ debug: last?.debug, usage: last?.usage, provider: last?.provider }, null, 1))}</pre></div>` : ""}`;
 }
 function bindSettings() {
   document.querySelectorAll("#sheetBody .seg").forEach((sg) => sg.querySelectorAll("button").forEach((b) => (b.onclick = () => {
     const key = sg.dataset.set, raw = b.dataset.v, val = raw === "true" ? true : raw === "false" ? false : raw;
+    if (key === "links") { setLinks(val); $("story").querySelectorAll(".turn").forEach((t) => relink(t)); sg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b)); return; }
     SET[key] = val; store.set(key, val); applySettings();
     sg.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
   })));
@@ -568,6 +585,8 @@ async function deathSequence(E) {
 
 // ── 단추와 단축키 ──
 $("placePawn").innerHTML = pawnIconHTML(26);
+initCodex({ post, esc, store });
+document.body.classList.toggle("no-links", !linksOn());
 $("mapBtn").onclick = () => openMap();
 $("bookBtn").onclick = () => openSheet();
 $("setBtn").onclick = () => openSheet("settings");
@@ -584,11 +603,12 @@ $("zLegend").onclick = () => $("legend").classList.toggle("show");
 $("miniMap").onclick = () => openMap("town");
 document.addEventListener("keydown", (e) => {
   const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || "");
-  if (e.key === "Escape") { if ($("menuPop")) return closeMenu(); if ($("mapPop")) return closePop(); if (!$("mapview").hidden) return closeMap(); if (!$("sheet").hidden) return closeSheet(); if (typing) document.activeElement.blur(); return; }
+  if (e.key === "Escape") { if ($("menuPop")) return closeMenu(); if (cardOpen()) return closeCard(); if ($("mapPop")) return closePop(); if (!$("mapview").hidden) return closeMap(); if (!$("sheet").hidden) return closeSheet(); if (typing) document.activeElement.blur(); return; }
   if (typing || e.metaKey || e.ctrlKey || e.altKey || deathRunning) return;
   if (e.key === "m" || e.key === "M" || e.key === "ㅡ") { e.preventDefault(); $("mapview").hidden ? openMap() : closeMap(); return; }
   if (e.key === "n" || e.key === "N" || e.key === "ㅜ") { e.preventDefault(); $("sheet").hidden ? openSheet() : closeSheet(); return; }
-  if (!$("mapview").hidden || !$("sheet").hidden) return;
+  if (e.key === "b" || e.key === "B" || e.key === "ㅠ") { e.preventDefault(); $("sheet").hidden || sheetTab !== "codex" ? openSheet("codex") : closeSheet(); return; }
+  if (!$("mapview").hidden || !$("sheet").hidden || cardOpen()) return;
   if (e.key === "/") { const f = $("freeText"); if (f) { e.preventDefault(); f.focus(); } return; }
   if (/^[1-9]$/.test(e.key)) { const b = $("dock").querySelector(`.choice[data-key="${e.key}"]`); if (b && !b.disabled) { e.preventDefault(); b.click(); } }
 });

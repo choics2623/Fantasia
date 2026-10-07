@@ -113,7 +113,7 @@ storylets:
         text: "군중이 갈라진다. 즈닉이 웃는다. 밧줄이 손목에서 {hostage}의 손목으로가 아니라, 네 손목으로 옮겨 간다."
         effects: ["captured 가족 대신 걸어 나갔다 — 채찍 기둥"]
       - id: ransom
-        label: 두 발톱을 들고 초소 뒷문으로 간다
+        label: 은화 두 닢을 들고 초소 뒷문으로 간다
         needs: "coin >= 24"
         text: "즈닉은 동전을 세지 않는다. 받기만 한다. 해 질 녘, {hostage}이(가) 풀려난다. 즈닉의 장부에 네 이름 옆 숫자가 하나 는다."
         effects: ["coin -24", "family ransom"]

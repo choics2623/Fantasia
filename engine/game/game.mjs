@@ -10,7 +10,7 @@ import { createState, createAgenda } from "../sim/agenda.mjs";
 import { createLivingWorld } from "../sim/living.mjs";
 import { fmt, toMinutes, fromMinutes, isSabbath, parseClock, parseDate, MONTHS } from "../sim/calendar.mjs";
 import { cardReveals, revealOK } from "./reveal.mjs";
-import { josa } from "../sim/text.mjs";
+import { josa, coinText } from "../sim/text.mjs";
 import { createReputation, classifyDeed } from "../sim/reputation.mjs";
 import { createOffices } from "../sim/offices.mjs";
 import * as DIR from "./director.mjs";
@@ -154,7 +154,7 @@ function build(content, run) {
   const S = createState({ cards, vars: game.agendas.vars, inventories: game.inventories });
   const A = createAgenda(W, S, game.agendas, { loopSeed: seed });
   const L = createLivingWorld({ world: W, state: S, agenda: A, inventories: game.inventories, sim: game.sim, cards, loopSeed: seed, active: [SETTLEMENT], startAt: START });
-  S.purse.player = 3;      // 부츠 속 동화 3못 (14)
+  S.purse.player = 3;      // 부츠 속 동화 3닢 (14) — 지갑은 동화 단위
   // 대본 장면의 무대: 회차 시작 장면이 세우는 사람들 (모든 회차 같다 — 회귀점의 고정 인물)
   const day0 = Math.floor(START / 1440) * 1440;
   // 시각만 쓰면 회귀점의 날, '날짜 시각'이면 그 날 (마르타의 뒷문 등)
@@ -391,14 +391,14 @@ export function lockedOptions(g) {
     const st = SL(g, g.story.id);
     for (const c of st.choices || []) {
       if (c.when && !storyWhen(g, c.when)) continue;   // 조건 자체를 모르는 선택지는 숨긴다
-      if (c.needs) { const [, k, , v] = /^(\w+)\s*(>=|<=|>|<|==)\s*(\S+)$/.exec(c.needs) || []; if (k === "coin" && !(g.S.purse.player >= Number(v))) add(fill(g, c.label), `동전이 모자라다 (${v}못)`); }
+      if (c.needs) { const [, k, , v] = /^(\w+)\s*(>=|<=|>|<|==)\s*(\S+)$/.exec(c.needs) || []; if (k === "coin" && !(g.S.purse.player >= Number(v))) add(fill(g, c.label), `돈이 모자라다 (${coinText(v)})`); }
     }
     return out;
   }
   if (g.convo) {
     const shop = g.content.game.economy?.shops?.[g.convo.npc];
     const hostile = bandOf(g, g.convo.npc) === "적대";
-    for (const gid of shop?.sells || []) { const good = g.content.game.economy.goods[gid], price = priceOf(g, g.convo.npc, gid); if (good && hostile) add(`${good.name}을(를) 산다`, "너에게는 팔지 않는다 — 네 이름이 나쁘게 돈다"); else if (good && g.S.purse.player < price) add(`${good.name}을(를) 산다`, `${price}못이 든다`); }
+    for (const gid of shop?.sells || []) { const good = g.content.game.economy.goods[gid], price = priceOf(g, g.convo.npc, gid); if (good && hostile) add(`${good.name}을(를) 산다`, "너에게는 팔지 않는다 — 네 이름이 나쁘게 돈다"); else if (good && g.S.purse.player < price) add(`${good.name}을(를) 산다`, `${coinText(price)}이 든다`); }
     return out;
   }
   // 작전: 아는 작전의 자리에 있는데 시각이나 준비가 아니다
@@ -444,7 +444,7 @@ function rawOptions(g) {
       const hid = (g.content.reveals[n] || []).find((r) => r.fact === f);
       if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f, memory: isFuture(g, f) ? memMark(g, `press:${f}`, { fact: f, loop: soul(g).knowledge[f]?.last || g.run.loop - 1 }) : null });
     }
-    if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
+    if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "은화 한 닢을 건넨다", skill: "화술", request: -15 });
     // 심문 (13 §4.1): 칼을 쥐고 단둘이, 혹은 이미 겁에 질린 사람 — 아이에게는 없다
     if ((cardOf(g, n).age ?? 30) >= 14 && ((hasWeapon(g) && present(g).filter((w) => w.kind !== "captive" || w.npc === n).length === 1) || mind(g, n).fear >= 3)) o.push({ id: "interrogate", kind: "talk", label: `칼끝을 들이댄다 — "숨긴 걸 말해."`, skill: "위압", request: 10, risk: "피를 보게 된다" });
     // 빚 (21 §6.1 debt): 그가 너에게 진 빚을 한 번 꺼내 쓴다 — 다음 부탁이 쉬워진다
@@ -460,7 +460,7 @@ function rawOptions(g) {
     const shop = g.content.game.economy?.shops?.[n];
     for (const gid of bandOf(g, n) === "적대" ? [] : shop?.sells || []) {   // 적대: 문을 닫는다 (10 §4)
       const good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
-      if (good && g.S.purse.player >= price) o.push({ id: `buy:${gid}`, kind: "talk", label: `${good.name}을(를) ${price}못에 산다${good.illegal ? " (몰래)" : ""}`, risk: good.illegal ? "인간이 지니면 죄" : null });
+      if (good && g.S.purse.player >= price) o.push({ id: `buy:${gid}`, kind: "talk", label: `${good.name}을(를) ${coinText(price)}에 산다${good.illegal ? " (몰래)" : ""}`, risk: good.illegal ? "인간이 지니면 죄" : null });
     }
     o.push({ id: "leave", kind: "talk", label: "이야기를 끝낸다" });
     return o;
@@ -485,7 +485,7 @@ function rawOptions(g) {
   // 글로 된 것 (19 §4.2): 읽어 본다 — 글을 모르면 글자 모양만
   for (const it of mine(g)) if (goodOf(g, it)?.read && !(g.P.readDocs ??= new Set()).has(it.id)) o.push({ id: `read:${it.id}`, kind: "scene", more: true, label: `${it.name}을(를) 펼쳐 읽는다` });
   // 스승 (03 §3.1): 그 사람이 여기 있고, 받아들였고, 오늘 아직 배우지 않았으면
-  for (const M of mentorsHere(g)) for (const [sk, cap] of Object.entries(M.teach)) if (rawSkill(g, sk) < cap - 10) o.push({ id: `train:${M.npc}:${sk}`, kind: "time", label: `${displayName(g, M.npc)}에게 ${sk}을(를) 배운다 (두 시간)${M.fee?.startsWith("coin") ? ` — ${M.fee.split(" ")[1]}못` : M.fee?.startsWith("item") ? ` — ${g.content.game.economy.goods[M.fee.split(" ")[1]]?.name}` : ""}`, minutes: 120, risk: M.risk === "witness" ? "금지된 수업 — 들키면" : M.risk === "trap" ? null : null });
+  for (const M of mentorsHere(g)) for (const [sk, cap] of Object.entries(M.teach)) if (rawSkill(g, sk) < cap - 10) o.push({ id: `train:${M.npc}:${sk}`, kind: "time", label: `${displayName(g, M.npc)}에게 ${sk}을(를) 배운다 (두 시간)${M.fee?.startsWith("coin") ? ` — ${coinText(M.fee.split(" ")[1])}` : M.fee?.startsWith("item") ? ` — ${g.content.game.economy.goods[M.fee.split(" ")[1]]?.name}` : ""}`, minutes: 120, risk: M.risk === "witness" ? "금지된 수업 — 들키면" : M.risk === "trap" ? null : null });
   for (const it of g.L.items.values()) if (it.at === g.at && !it.worn && (it.owner !== "player" || it.stashed) && g.P.found.has(it.id)) o.push({ id: `take:${it.id}`, kind: "scene", label: `${it.name}을(를) 챙긴다` });
   // 숨기기: 몸에 지니면 점호 몸수색에 걸린다 — 어딘가에 묻어 두고 다닌다
   for (const it of mine(g)) if (!it.stashed) o.push({ id: `stash:${it.id}`, kind: "scene", more: true, label: `${it.name}을(를) 이곳에 숨긴다` });
@@ -501,7 +501,7 @@ function rawOptions(g) {
     }
   }
   if (g.P.bloody && WATER.has(g.at)) o.push({ id: "wash", kind: "scene", label: "옷의 피를 물에 빤다" });
-  if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", more: true, label: `동전 ${g.S.purse.player - 3}못을 이곳에 숨긴다 (부츠 속 3못만 남기고)` });
+  if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", more: true, label: `${coinText(g.S.purse.player - 3)}을 이곳에 숨긴다 (부츠 속 동화 3닢만 남기고)` });
   for (const e of exits(g)) {
     const sneak = ["owner", "staff", "closed", "secret", "home_locked"].includes(e.access) && !(e.id === HOME);
     o.push({ id: `go:${e.id}`, kind: "move", label: `${e.via ? `${e.via} ` : ""}${e.name}(으)로 ${e.via ? "넘어 들어간다" : "간다"}${e.minutes ? ` (${e.minutes}분)` : ""}${sneak ? " — 몰래" : ""}`, minutes: e.minutes, skill: sneak ? "은신" : null, to: e.id, via: e.via });
@@ -777,7 +777,7 @@ function dayEnd(g) {
   g.P.lastHookId = hook?.id || null; g.P.lastHook = text;
   if (hook?.id === "passed") g.P.passedLastEnd = true;
   const goalsNow = goals(g).filter((x) => x.days != null).map((x) => `${x.who}까지 ${x.days}일`);
-  const card = [`수첩 +${Math.max(0, g.P.notebook.length - mk.notebook)}`, `아는 사람 ${g.P.met.size}`, `동화 ${g.S.purse.player}못`, ...goalsNow].join(" · ");
+  const card = [`수첩 +${Math.max(0, g.P.notebook.length - mk.notebook)}`, `아는 사람 ${g.P.met.size}`, coinText(g.S.purse.player), ...goalsNow].join(" · ");
   g.feed.push({ kind: "dayend", text, card });
   (g.P.days ??= []).push({ day: Math.floor((g.t - START) / 1440), date: fmt(g.t).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, ""), at: placeName(g, g.at), notes: g.P.notebook.slice(mk.notebook).slice(-3), hook: text });
   g.P.dayMark = { notebook: g.P.notebook.length, met: g.P.met.size, coin: g.S.purse.player, journal: jidx(g) + 1 };
@@ -2049,7 +2049,7 @@ const DO = {
     pass(g, 10);
     if (g.ended) return;
     let it;
-    if (id === "coin") { const n = g.S.purse.player - 3; g.S.purse.player = 3; it = g.L.give("player", { id: uid(g, "it_coin"), name: `동전 ${n}못`, coin: n, tags: ["화폐"], value: n }); }
+    if (id === "coin") { const n = g.S.purse.player - 3; g.S.purse.player = 3; it = g.L.give("player", { id: uid(g, "it_coin"), name: `동전 꾸러미 (${coinText(n)})`, coin: n, tags: ["화폐"], value: n }); }
     else it = g.L.items.get(id);
     Object.assign(it, { at: g.at, worn: false, stashed: true });
     g.P.found.add(it.id);
@@ -2404,7 +2404,7 @@ const DO = {
     const n = g.convo.npc;
     pass(g, 3);
     const r = g.L.player.sell(g.t, id, n, g.at);
-    res.notes.push(r.sold ? `${r.price}못을 받았다` : `${nameOf(g, n)}은(는) 사지 않는다`);
+    res.notes.push(r.sold ? `${coinText(r.price)}을 받았다` : `${nameOf(g, n)}은(는) 사지 않는다`);
     if (r.knew) res.notes.push("누구 물건인지 알아본 눈치다");
     endIfSpent(g, res, 1);
   },
@@ -2412,7 +2412,7 @@ const DO = {
     const n = g.convo.npc, good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
     g.S.purse.player -= price; g.S.purse[n] = (g.S.purse[n] || 0) + price;
     const it = g.L.give("player", { ...good, id: uid(g, `it_${gid}`), value: good.price, gid });
-    res.notes.push(`${good.name}을(를) ${price}못에 샀다`);
+    res.notes.push(`${good.name}을(를) ${coinText(price)}에 샀다`);
     if (good.illegal) g.S.threats.push({ by: n, target: "player", kind: "leverage", about: gid, t: g.t });   // 장물아비는 당신이 무엇을 샀는지 안다
     endIfSpent(g, res, 0.5);
   },
@@ -2474,7 +2474,7 @@ const OFFERS = [
   ["letters", "\"글자를 가르쳐 줄게.\" — 흙바닥에 손가락으로", (g) => skill(g, "읽고쓰기") >= 10],
   ["route", "\"빠져나갈 길이 있어.\" — 잿빛 실 이야기를 꺼낸다", (g) => knowsFact(g, "fact_gf_greyash_route") || (!!g.domain && !g.domain.lost)],
   ["shelter", "\"숨을 곳이 있어. 언덕에.\"", (g) => !!g.domain && !g.domain.lost],
-  ["coin", "\"값은 치를게.\" — 1 발톱을 보여 준다", (g) => g.S.purse.player >= 12],
+  ["coin", "\"값은 치를게.\" — 은화 한 닢을 보여 준다", (g) => g.S.purse.player >= 12],
 ];
 const goodOf = (g, it) => (it?.gid ? g.content.game.economy.goods[it.gid] : null);
 const LITERATE = new Set(["npc_osric", "npc_owen_raven", "npc_henrik", "npc_martha", "npc_lea", "npc_godric_raven", "npc_kaspar", "npc_sara", "npc_lm_jonas", "npc_alberic", "npc_melisande", "npc_mateus"]);
@@ -2890,7 +2890,7 @@ export function recordCard(r, { short = false } = {}) {
   // 그 회차에 세운 것 (14 §6.6) — 아이는 잊는 것이 아니라 없어지는 것
   if (r.children?.length || r.house || r.built) lines.push(`── 그 회차에 세운 것 ──\n${[...(r.children || []).map((n) => `${n} — 그 회차에 태어났다. 다시 태어나지 않는다.`), ...(r.house ? [`'${r.house}' — 가문원들은 서로를 모르는 사람들로 돌아갔다.`] : []), ...(r.built ? [`${r.built}. 아직 아무도 거기 없다.`] : [])].join("\n")}`);
   if (r.stains) lines.push(`── 손에 남은 것 ──\n${r.stains}번. 아무도 기억하지 못한다. 너만.`);
-  lines.push(`── 두고 온 것 ──\n${[...left, `너 — 동화 ${r.coin}못${r.deeds?.length ? ", 손에 남았던 것들" : ""}. 그 밤은 이제 없다.`].join("\n")}`);
+  lines.push(`── 두고 온 것 ──\n${[...left, `너 — ${coinText(r.coin)}${r.deeds?.length ? ", 손에 남았던 것들" : ""}. 그 밤은 이제 없다.`].join("\n")}`);
   return lines;
 }
 
@@ -2919,7 +2919,7 @@ function priceOf(g, n, gid) {
   return Math.max(1, Math.round(good.price * haggle * famine * band * (good.illegal ? 2 : 1)));
 }
 // 점호 몸수색 (14 §0:14 — 첫 회차는 반드시 플레이어, 그 뒤는 셋 중 하나): 숨길 수 있는 것은 손재주로 숨긴다.
-// 은화(12못 이상)는 절도 의심으로 빼앗기고, 무기·위조 문서는 죄가 된다
+// 은화(동화 12닢 이상)는 절도 의심으로 빼앗기고, 무기·위조 문서는 죄가 된다
 function rollcallSearch(g, day) {
   // 움막 12호의 금을 본 감독은 다음 점호에 반드시 뒤진다
   const marked = g.S.vars.hut12_marks_seen && !g.P.hut12Searched; if (marked) g.P.hut12Searched = true;
@@ -2936,7 +2936,7 @@ function rollcallSearch(g, day) {
   let text = "크릭 감독이 당신의 옷과 부츠를 뒤진다.";
   if (coin >= 12 && hash(g.seed, "frisk-coin", day) >= prob(skill(g, "손재주") + 8, 18)) {
     g.S.purse.player = 0; g.S.purse[overseer(g)] = (g.S.purse[overseer(g)] || 0) + coin;
-    text += ` 동전 ${coin}못이 나왔다 — 인간이 은화를? 즈닉이 가져가고 채찍 다섯.`;
+    text += ` ${coinText(coin)}이 나왔다 — 인간이 은화를? 즈닉이 가져가고 채찍 다섯.`;
     g.P.status.pain = clamp(g.P.status.pain + 10, 0, 100);
   }
   for (const it of found) {
@@ -3178,3 +3178,7 @@ export function recordMemories(g, npc, mems) {   // 기억과 기록관의 제�
   const e = { i: g.run.journal.length, kind: "memory", npc, mems };
   apply(g, e); g.run.journal.push(e);
 }
+
+// 백과(codex.mjs)가 읽는 것 — 읽기만 한다
+export const soulOf = (g) => soul(g);
+export { knowsFact, storyWhen, placeName };

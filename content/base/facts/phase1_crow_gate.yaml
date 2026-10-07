@@ -159,7 +159,7 @@
   danger: 4
   names: [얀]
 - id: fact_cg_checkpoint_forged_passes
-  text: "검문 하사 오르벡은 바알카르에서 흘러온 위조 통행증을 한 장에 2발톱에 되판다. 찍는 인장 틀은 바알카르 근위대 쪽에서 나왔다"
+  text: "검문 하사 오르벡은 바알카르에서 흘러온 위조 통행증을 한 장에 은화 2닢에 되판다. 찍는 인장 틀은 바알카르 근위대 쪽에서 나왔다"
   truth: true
   danger: 3
   names: [오르벡]

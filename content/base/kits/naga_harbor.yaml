@@ -57,8 +57,8 @@ jobs:
   - {id: lamia_servant, name: 하위 라미아 (하인·밀수·중개), class: 하위 나가·라미아, race: 나가, weight: 4, schedule: sch_lamia}
   - {id: seat_family, name: 상가 가족·장부지기 (나가), class: 의석주·상가 가족, race: 나가, weight: 2, schedule: sch_seat_family}
   - {id: dragonkin_factor, name: 용인 상관·용병, class: 용인 상관·용병, race: 용인, weight: 1, schedule: sch_dragonkin_harbor}
-schedules:          # at = 정착지 틀의 역할. 계약 노동 평균 11시간. 계약 외 시간은 자유 — 대신 숙식비 4못이 빚에 쌓인다
-  sch_hauler:    [{days: all, from: "05:00", to: "06:00", at: quay, doing: 하역표를 받는다, fixed: true}, {days: all, from: "06:00", to: "12:00", at: quay, doing: 노예선·상선 하역 — 사슬과 마대}, {days: all, from: "12:00", to: "13:00", at: quay, doing: 정오 생선죽 한 그릇, fixed: true}, {days: all, from: "13:00", to: "18:00", at: quay, doing: 오후 하역과 창고 정리}, {days: all, from: "18:00", to: "23:00", at: tenement, doing: 숙소로 돌아와 숙식비를 센다 — 4못이 빚에 쌓인다}, {days: all, from: "23:00", to: "05:00", at: tenement, doing: 잔다}]
+schedules:          # at = 정착지 틀의 역할. 계약 노동 평균 11시간. 계약 외 시간은 자유 — 대신 숙식비 동화 4닢이 빚에 쌓인다
+  sch_hauler:    [{days: all, from: "05:00", to: "06:00", at: quay, doing: 하역표를 받는다, fixed: true}, {days: all, from: "06:00", to: "12:00", at: quay, doing: 노예선·상선 하역 — 사슬과 마대}, {days: all, from: "12:00", to: "13:00", at: quay, doing: 정오 생선죽 한 그릇, fixed: true}, {days: all, from: "13:00", to: "18:00", at: quay, doing: 오후 하역과 창고 정리}, {days: all, from: "18:00", to: "23:00", at: tenement, doing: 숙소로 돌아와 숙식비를 센다 — 동화 4닢이 빚에 쌓인다}, {days: all, from: "23:00", to: "05:00", at: tenement, doing: 잔다}]
   sch_salt:      [{days: all, from: "05:00", to: "12:00", at: salt_works, doing: 소금밭 긁기 — 눈이 소금물에 쓰리다, outdoor: true}, {days: all, from: "12:00", to: "13:00", at: salt_works, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: salt_works, doing: 소금 결정을 마대에 담는다, outdoor: true}, {days: all, from: "19:00", to: "05:00", at: tenement, doing: 숙소에서 잔다}]
   sch_quarry:    [{days: all, from: "05:00", to: "06:00", at: quarry_gate, doing: 번표 점호와 사다리 내리기, fixed: true}, {days: all, from: "06:00", to: "19:00", at: quarry, doing: 산호석 쪼개기·승강기 싣기}, {days: all, from: "19:00", to: "05:00", at: barracks_q, doing: 숙영지에서 잔다}]
   sch_shipwright: [{days: all, from: "05:00", to: "12:00", at: shipyard, doing: 선체 목공 — 용골과 판자}, {days: all, from: "12:00", to: "13:00", at: shipyard, doing: 정오 생선죽, fixed: true}, {days: all, from: "13:00", to: "19:00", at: shipyard, doing: 갑판 보수와 도장}, {days: all, from: "19:00", to: "05:00", at: tenement, doing: 숙소에서 잔다}]
@@ -78,7 +78,7 @@ voices:             # 말투 원형 — 나가는 값을 먼저 말하고 계약
   - {id: v_lamia, name: 하위 라미아, register: "느리고 조용한 존대. 대가를 입 밖에 먼저 낸다. 꼬리가 짧다는 말에 민감하다", tics: ["'숫자 하나만.'"], use: [숫자, 대가, 상담, 물때], avoid: [꼬리, 하인, 공짜], sample: "상담은 무료입니다. 아, 아니요, 정정하죠. 나가는 무료를 못 해요. 대신 하나만 말해 주세요."}
   - {id: v_krik_hauler, name: 크릭 하역꾼, register: "빠르고 작은 말. 나가에게는 굽신한 존대, 인간에게는 은근한 반말. 장부 이야기에 눈이 커진다", tics: ["'하역표 보여 주세요.'"], use: [하역표, 번호, 장부, 열둘, 밤], avoid: [스물셋, 밤 하역], sample: "하역표 보여 주세요. 표 없으면 하역 못 해요. 표 없으면 사람이 없는 거예요."}
   - {id: v_broker, name: 중개인, register: "서류를 먼저 내민다. 서명은 엄지로도. 값은 부르지 않고 서류의 줄로 보인다", tics: ["'서명은 엄지로도.'"], use: [서류, 인수, 정산, 줄, 인장], avoid: [지운 줄, 서른일곱], sample: "서명은 엄지로도 됩니다. 어느 쪽이 편하십니까?"}
-  - {id: v_auctioneer, name: 경매관, register: "크고 노래처럼 이어지는 호가. 사람을 로트 번호로 부른다", tics: ["'열 발톱 하나, 열 발톱 둘!'"], use: [로트, 호가, 낙찰, 이빨, 발톱], avoid: [담합, 이름], sample: "오늘의 로트, 서른둘! 이빨 보여 주고!"}
+  - {id: v_auctioneer, name: 경매관, register: "크고 노래처럼 이어지는 호가. 사람을 로트 번호로 부른다", tics: ["'은화 열 닢 하나, 은화 열 닢 둘!'"], use: [로트, 호가, 낙찰, 이빨, 발톱], avoid: [담합, 이름], sample: "오늘의 로트, 서른둘! 이빨 보여 주고!"}
 temperaments: [계산, 겸손, 탐욕, 인내, 겁, 영리, 냉정, 다정, 비굴, 집요, 체념, 눈치, 속정, 자존, 은밀]
 naga_customs:       # 나가 항구에서만 있는 것 — 법·관습 본문은 fac_seren.law / customs, REGIONS §9.7·§9.8
   - "'공짜'는 모욕이다. 나가는 대가 없이 아무것도 줄 수 없다 — 대가가 없으면 빚으로 적힌다. 인사는 '무엇을 가져오셨나요?'"

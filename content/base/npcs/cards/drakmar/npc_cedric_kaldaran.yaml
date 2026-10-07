@@ -58,7 +58,7 @@ places: ["집사 집무실", "칼다란 관저"]
 knows: []
 hides:
   - fact: fact_bk_cedric_saw_drawer
-    reveal_when: "탐욕을 건드리는 거래 (5비늘 이상) 또는 신뢰 30"
+    reveal_when: "탐욕을 건드리는 거래 (금화 5닢 이상) 또는 신뢰 30"
     reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'서랍? 집무실에 서랍이 몇 개인데'"
 relations:

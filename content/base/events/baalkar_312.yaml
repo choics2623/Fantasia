@@ -70,7 +70,7 @@
 # ── 파종월 (2) — 노예 대시장 ──
 - {id: ev_bk_ring_house_hearth, date: "313-02-14", npcs: [npc_ebert], from: "21:00", to: "23:59", at: bk_iron_door, doing: "고리집 '아궁이 회합' — 목줄장 집안 일곱이 모인다. 롤프가 지팡이를 노린다"}
 - {id: ev_bk_isabel_sorting, date: "313-02-13", npcs: [npc_isabel_sarkos], from: "07:00", to: "21:00", at: bk_cs_sorting, doing: "대시장 전 분류 — '특수 물건' 질문 일곱을 하루 종일"}
-- {id: ev_bk_great_market_otmar, date: "313-02-15", npcs: [npc_otmar_sarkos], from: "07:00", to: "18:00", at: bk_cs_block, doing: "파종월 노예 대시장 — 경매사의 목소리 (성인 농노 2비늘까지 떨어진다)"}
+- {id: ev_bk_great_market_otmar, date: "313-02-15", npcs: [npc_otmar_sarkos], from: "07:00", to: "18:00", at: bk_cs_block, doing: "파종월 노예 대시장 — 경매사의 목소리 (성인 농노 금화 2닢까지 떨어진다)"}
 - {id: ev_bk_great_market_nebra, date: "313-02-15", npcs: [npc_nebra_sarkos], from: "07:00", to: "18:00", at: bk_cs_sarkos, doing: 대시장 — 상관 창문에서 낙찰가를 센다}
 - {id: ev_bk_great_market_rolf, date: "313-02-15", npcs: [npc_rolf], from: "07:00", to: "18:00", at: bk_cs_block, doing: "대시장 경매 보조 — '자!' 반란자를 직접 경매대에 세운다"}
 - {id: ev_bk_great_market_grim, date: "313-02-15", npcs: [npc_grim], from: "05:00", to: "19:00", at: bk_cs_brand, doing: 대시장 낙인 — 한 등급 낮춘 차액이 가장 많은 날}

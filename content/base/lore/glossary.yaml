@@ -1,0 +1,263 @@
+# 백과의 '세상' 항목 (19 §5 보강 — 이야기 속 낱말을 누르면 나오는 카드). 정본: WORLD_BIBLE.
+# 주인공(회색여울의 열일곱 살 농노)이 아는 만큼만 쓴다. 단계:
+#   heard  — 들어 본 이름 (화면에 ?가 붙는다)
+#   known  — 안다
+#   deep   — 깊이 안다 (숨은 사정)
+# hidden: true — 처음엔 목록에도 없다 (서술에서 그 이름을 들으면 '들어 본 이름'이 된다)
+# heard_when / known_when / deep_when: 플레이어 쪽 조건 가운데 하나라도 참이면 그 단계 (pknows 사실 · loop >= n · been 장소 · met npc · visited 고장 · date >= …).
+#   known_when을 빼면 처음부터 안다. 회귀해도 아는 것은 남는다 (영혼의 사실·사람·장소 + 서술에서 들은 이름).
+# aka: 이야기에서 같은 것을 가리키는 다른 이름 (두 글자 이상, 흔한 낱말은 넣지 않는다 — '못'·'비늘'·'용' 같은 것)
+
+entries:
+  # ── 종족 ──
+  - id: gl_human
+    name: 인간
+    kind: 종족
+    known: "우리. 신이 마지막으로 빚었으나 피에 아무것도 새기지 않았다고 사제는 말한다 — 그래서 '무혈자'. 땅도 성(姓)도 글자도 가질 수 없다(사슬의 맹약). 짧게 살고, 쉽게 팔린다."
+    deep: "평범한 인간의 영혼은 돌아오지 않는다. 죽으면 끝이다. 그런데 너는 돌아왔다."
+    deep_when: ["loop >= 2"]
+  - id: gl_dragonkin
+    name: 용인
+    aka: [용인족]
+    kind: 종족
+    known: "용의 피가 섞인 귀족들. 몸 어딘가에 비늘이 돋고 체온이 높다. 회색여울의 주인 레이번 남작가도 용인이다. 그들의 말(용언)을 인간이 입에 올리면 혀를 자른다."
+  - id: gl_true_dragon
+    name: 진룡
+    aka: [용황]
+    kind: 종족
+    known: "하늘을 가리는 진짜 용. 대륙에 스물셋만 남았다고 한다. 용제국의 황제 '용황'은 바알카르 둥지에 누운 늙은 진룡이다."
+    deep: "용황의 옆구리에는 비늘 없는 구멍 '시간의 상처'가 있다고 한다. 가까이 서면 촛불이 거꾸로 탄다."
+    deep_when: ["pknows fact_dk_varskar_time_wound", "visited baalkar"]
+  - id: gl_wyvern
+    name: 와이번
+    kind: 종족
+    known: "짐을 나르고 하늘을 지키는 작은 용. 굶주린 언덕 위를 잿빛 와이번 한 마리가 날마다 돈다 — 그 그림자가 지나가면 숲의 사람들은 엎드린다."
+  - id: gl_krik
+    name: 크릭
+    kind: 종족
+    known: "작은 종족. 강한 자에게 엎드리는 본능이 있어 인간을 부리는 감독관으로 쓰인다. 감독관 즈닉이 크릭이다."
+  - id: gl_eldar
+    name: 엘다르
+    aka: [엘프]
+    kind: 종족
+    heard: "늙지 않는다는 고귀한 엘프. 인간에게 '순종의 빛'을 내려 준 것이 그들이라 사제는 말한다."
+    known: "늙지 않고, 아무것도 잊지 않는다. 숲의 나라 실바렌에서 인간을 '정원지기'로 부린다 — 꽃 이름을 붙여서."
+    known_when: ["visited eternal_garden", "visited silver_leaf_gate"]
+  - id: gl_beastkin
+    name: 수인족
+    kind: 종족
+    heard: "짐승의 감각을 지닌 종족. 그 가운데 늑대 같은 바르그는 냄새로 사람을 쫓아 노예사냥꾼이 된다."
+    known: "무리 없이는 미쳐 간다. 피 냄새에 끌린다. 바르그의 코는 사흘 거리 냄새를 쫓는다 — 젖은 재 냄새를 특히 잘 맡는다고 한다."
+    known_when: ["date >= 312-09-14", "met npc_volk"]
+  - id: gl_jotun
+    name: 요툰
+    aka: [거인]
+    kind: 종족
+    heard: "북쪽 얼음 땅의 거인들. 늘 배가 고프다고 한다. 북방 탈주자들은 그들의 말(서리말)을 쓴다."
+  - id: gl_durgan
+    name: 두르강
+    aka: [드워프]
+    kind: 종족
+    heard: "산 밑에 사는 돌의 종족. 맹세를 깨면 피가 돌로 굳는다고 한다. 깊은망치 왕궁은 계약으로 굴러간다."
+    known: "계약은 신성하다. 인간도 계약으로 일하면 값을 받는다 — 굴뚝 숙영지의 인간 광부들이 그렇다."
+    known_when: ["visited deephammer_hall", "visited ember_mines"]
+  - id: gl_naga
+    name: 나가
+    kind: 종족
+    heard: "물의 뱀 종족. 대가 없이는 아무것도 주지 못한다고 한다. 세렌의 은행과 계약이 그들의 것이다."
+  - id: gl_harkan
+    name: 하르칸
+    kind: 종족
+    heard: "동쪽 초원을 달리는 켄타우로스. 한곳에 오래 머물면 병든다고 한다."
+  - id: gl_grom
+    name: 그롬
+    kind: 종족
+    heard: "피를 기도로 아는 전쟁 종족. 남쪽 붉은 황야의 원형장에서 인간 투사를 싸우게 한다."
+  - id: gl_aeri
+    name: 아에리
+    kind: 종족
+    heard: "날개 달린 사람들. 바람첨탑에 산다. 갇히면 죽는다고 한다."
+  - id: gl_fae
+    name: 페이
+    aka: [요정]
+    kind: 종족
+    heard: "가시안개 숲의 요정들. 진실을 말하지 못하거나, 말하면 그 말에 묶인다. 웃으며 약속하라는 말이 있다."
+  - id: gl_nocturne_people
+    name: 녹테른
+    kind: 종족
+    heard: "밤의 가문. 피를 마신다. 긴밤월 '갈증의 밤'에 인간 공물을 받는다 — 루멘의 명단에서."
+
+  # ── 돈 ──
+  - id: gl_copper
+    name: 동화
+    kind: 돈
+    known: "구리 동전. 빵 한 덩이, 귀리죽 한 그릇이 동화 한 닢. 용제국 사람들은 '못'이라 부른다. 부츠 속 세 닢이 네가 가진 전부다."
+  - id: gl_silver
+    name: 은화
+    kind: 돈
+    known: "은화 한 닢 = 동화 열두 닢. 용제국 사람들은 '발톱'이라 부른다. 인간이 은화를 지니고 있으면 도둑으로 몰린다 — 점호 몸수색에 걸리면 빼앗기고 채찍."
+  - id: gl_gold
+    name: 금화
+    kind: 돈
+    known: "금화 한 닢 = 은화 스무 닢 = 동화 이백사십 닢. 용제국 사람들은 '비늘'이라 부른다. 성인 농노 하나의 값이 금화 두세 닢이다."
+  - id: gl_ducat
+    name: 두카트
+    kind: 돈
+    heard: "세렌의 금화. 세렌 안에서는 인간 계약민도 돈을 가질 수 있다고 한다."
+
+  # ── 때 ──
+  - id: gl_calendar
+    name: 붕괴력
+    kind: 때
+    known: "대붕괴로부터 센 해. 지금은 312년 가을. 한 해는 열두 달(해빙월·파종월·꽃월·푸른월·태양월·건초월·수확월·포도월·낙엽월·서리월·긴밤월·굶주림월)과 '재의 날' 닷새. 엿새에 한 번 안식일."
+  - id: gl_ash_days
+    name: 재의 날
+    kind: 때
+    known: "한 해 끝의 닷새. 대붕괴를 기리는 금기의 날 — 불을 피우면 안 된다. 그날에는 지나간 것의 그림자가 가장 많이 보인다고 한다."
+  - id: gl_sabbath
+    name: 안식일
+    kind: 때
+    known: "엿새에 하루. 노예에게는 쉬는 날이 아니라 순종의 빛 예배일이다. 점호도 없다."
+
+  # ── 법과 마을의 일 ──
+  - id: gl_chain_pact
+    name: 사슬의 맹약
+    aka: [맹약]
+    kind: 법
+    known: "신이 죽은 뒤 열한 종족이 맺은 약속. 인간은 누군가의 것이 될 수 있다. 인간은 땅·재산·성을 가질 수 없다. 인간은 글자를 배울 수 없다. 인간은 진명을 배울 수 없다 — 어기면 누구든 죽여도 된다."
+    deep: "백 년마다 열한 종족이 모여 '인간 문제'를 논한다 — 맹약회의. 다음 회의는 붕괴력 313년 여름이다."
+    deep_when: ["loop >= 3", "pknows fact_dk_aurax_purge_plan"]
+  - id: gl_rollcall
+    name: 점호
+    kind: 법
+    known: "새벽 다섯 시, 채찍 기둥 광장. 감독관이 머릿수를 센다(안식일은 쉰다). 빠지면 명단에 빈칸이 생기고, 두 번 빠진 채 마을 밖에 있으면 탈주 노예다. 가끔 줄 선 사람을 하나씩 뒤진다."
+  - id: gl_ration
+    name: 배급
+    kind: 법
+    known: "하루 한 번, 저녁 여섯 시부터 여덟 시 반까지 절름발이 수탉에서 귀리죽 한 국자. 굶주림월에는 아침 죽이 끊긴다."
+  - id: gl_curfew
+    name: 통금
+    kind: 법
+    known: "밤 아홉 시 통금 종이 울리면 막사가 잠긴다. 밖에 있는 인간은 순찰(아홉 시·열한 시·새벽 두 시)에 걸린다."
+  - id: gl_headtax
+    name: 인두세
+    kind: 법
+    known: "인간 머릿수에 매기는 세금. 수확월에 걷는다. 못 내면 그 집에서 사람으로 채운다 — 체납은 명단으로 간다."
+  - id: gl_sale_list
+    name: 매각 명단
+    aka: [1차 명단, 2차 명단]
+    kind: 법
+    heard: "누군가 팔려 간다는 명단 이야기가 돈다. 어머니는 그 말을 낮게만 한다."
+    known: "남작이 빚을 갚으려 농노를 판다. 1차 마흔 명은 서리월 9일, 2차 서른한 명은 굶주림월 3일 — 용의 대로로 호송된다. 키트가 1차 명단 스물여섯째 줄에 있다."
+    known_when: ["pknows fact_gb_kit_on_first_list", "pknows fact_gf_serf_sale_contract", "pknows fact_gb_sara_overheard_sale"]
+  - id: gl_pass
+    name: 통행증
+    kind: 법
+    known: "인간이 마을 밖을 다니려면 주인의 통행증이 있어야 한다. 없으면 탈주 노예. 낯선 고장의 길목마다 검문이 묻는다. 위조는 사형감이다."
+  - id: gl_sign_bearer
+    name: 징후자
+    kind: 법
+    heard: "꿈 이야기를 하거나 처음 보는 길을 아는 아이 — '징후'가 있다고 고발되면 불에 태워진다. 순종의 빛은 그것을 정화라 부른다."
+    known: "잿빛 탑과 순례자들이 징후자를 찾아다닌다. 고발된 이들 가운데 진짜는 한 명도 없었다고 한다 — 진짜를 찾을 때까지 가짜를 태운다."
+    known_when: ["pknows fact_gb_isol_38_false", "pknows fact_gf_elsa_marks_children"]
+  - id: gl_true_names
+    name: 진명
+    aka: [진명어]
+    kind: 법
+    heard: "고대의 말. 모든 마법이 그것으로 된다고 한다. 인간이 배우면 사형 — 그리고 인간의 몸은 그 값을 견디지 못한다."
+    known: "한 마디마다 몸이 값을 치른다. 늪 마녀들은 고대 종족의 피를 훔쳐 '빌린 혈명'으로 작은 주술을 쓰고, 마흔을 넘기지 못한다."
+    known_when: ["pknows fact_gf_elsa_name_words"]
+
+  # ── 말 ──
+  - id: gl_dragon_tongue
+    name: 용언
+    kind: 말
+    known: "용족과 용인 귀족의 말. 인간이 입에 올리면 혀를 자른다. 쇳소리처럼 들린다."
+  - id: gl_slave_tongue
+    name: 노예말
+    kind: 말
+    known: "인간끼리 쓰는 은어와 손짓. 감독관을 '크릭(목줄)'이라 부르는 것도 노예말이다."
+  - id: gl_frost_tongue
+    name: 서리말
+    kind: 말
+    heard: "북쪽 요툰과 북방 탈주자들의 말. 밤에 문을 두드리는 사람이 '빵'을 서리말로 말한다는 소문이 있다."
+  - id: gl_common_tongue
+    name: 공용어
+    kind: 말
+    known: "대륙의 공용어(용제국어). 인간도 말은 해도 되지만, 글은 금지다."
+
+  # ── 믿음 ──
+  - id: gl_eor
+    name: 에오르
+    kind: 믿음
+    heard: "죽었다는 신. 사제들은 그 이름을 함부로 부르지 않는다. 신의 시체가 이 대륙이라는 말도 있다."
+    deep: "신의 마지막 말 — '너희는 끝나지 않을 것이다.' 너는 그 말을 들었다. 처음 죽었을 때."
+    deep_when: ["loop >= 2"]
+  - id: gl_asterion
+    name: 아스테리온
+    kind: 믿음
+    heard: "재의 날에 이름 없는 자들이 몰래 기린다는 이름. 대붕괴 때 무언가를 지키다 사라졌다고 한다."
+    known_when: ["pknows fact_gf_elsa_nameless"]
+    known: "이름 없는 자들의 성인. 사슬을 풀려다 불에 탄 인간 — 문 너머에서 목소리가 들린다는 사람도 있다."
+
+  # ── 땅 ──
+  - id: gl_eordal
+    name: 에오르달
+    aka: [에오르 대륙]
+    kind: 땅
+    known: "이 대륙. 북쪽은 얼음, 남쪽은 바다. 신의 시체 위에 세워졌다고 한다. 회색여울 사람 대부분은 마을 밖을 평생 모른다."
+  - id: gl_ford_river
+    name: 여울강
+    kind: 땅
+    known: "회색여울 남쪽을 흐르는 얕은 강. 강변 움막과 버드나무 둑, 물레방아간이 그 물로 산다. 쇠다리 검문소가 건너는 사람을 센다."
+  - id: gl_frost_road
+    name: 서리 길
+    kind: 땅
+    heard: "북쪽에서 내려오는 탈주자들의 길. 서리월에 닫히고 해빙월에 열린다."
+
+  # ── 회귀 (네가 겪은 것) ──
+  - id: gl_return
+    name: 돌아옴
+    aka: [회귀]
+    kind: 비밀
+    hidden: true
+    known: "죽었는데, 낙엽월 1일 저녁 배급 줄로 돌아왔다. 빵 냄새. 아무도 기억하지 못한다 — 너만 빼고."
+    known_when: ["loop >= 2"]
+  - id: gl_echo
+    name: 잔향
+    kind: 비밀
+    hidden: true      # 서술에서 그 낱말을 들어야 '들어 본 이름'이 된다
+    heard: "사제들이 금기로 여기는 낱말. 신의 마지막 말이 남긴 메아리라고 한다. 고대 종족이 3,400년 동안 사냥해 온 것."
+    known: "한 시대에 한 사람. 신의 마지막 말이 깃든 영혼 — 죽으면 돌아온다. 그게 너다."
+    known_when: ["echo_named", "loop >= 4"]
+
+# 세력: 회색여울 농노가 아는 만큼 (factions/*.yaml은 작가용 전부 — 여기는 플레이어 쪽 첫 줄)
+factions:
+  fac_drakmar_empire: {known: "용황이 다스리는 제국. 회색여울은 그 변경의 작은 영지다. '불은 위에서 아래로 흐른다.'"}
+  fac_raven_house: {known: "회색여울의 주인 — 레이번 남작가. 남작 고드릭 레이번은 용인이고, 성채에 산다. 아들 오웬이 있다."}
+  fac_light: {known: "인간에게 주어진 교단. '고난은 정화다. 사슬은 등불을 지킨다.' 안식일마다 사슬등불 예배당에서 예배를 본다."}
+  fac_krik: {known: "크릭 감독관들. 채찍손 길드. 인간을 세고, 때리고, 줄 세운다."}
+  fac_barg: {heard: "늑대 같은 노예사냥꾼들. 냄새로 탈주자를 쫓는다.", known: "바르그 노예사냥 조합 — 사냥대장 볼크. 탈주자 현상금의 일부를 받는다. 사흘 거리 냄새를 쫓는 코.", known_when: ["date >= 312-09-14", "met npc_volk"]}
+  fac_collar: {heard: "목줄단 — 인간 밀고자들. 누가 목줄인지는 아무도 모른다.", known: "목줄을 쥔 손은 자유롭다. 고리집이라는 집안이 대대로 목줄장을 낸다 — 마르타가 그 집 사람이다.", known_when: ["pknows fact_gf_martha_ring_house"]}
+  fac_grey_thread: {heard: "탈주 노예를 남쪽으로 빼내는 길이 있다는 소문.", known: "잿빛 실 — 한 번에 한 매듭. 회색여울 매듭은 엘사 오두막 뒤 물총새 말뚝에서 시작한다. 암호는 '여울은 얕은가?'", known_when: ["pknows fact_gf_greyash_route", "pknows fact_gf_elsa_nameless"]}
+  fac_nameless: {heard: "'밤이 기네요' — 그렇게 말을 거는 사람들이 있다는 소문.", known: "이름 없는 자들. 인간의 비밀 믿음 — '밤이 기네요. 그래도 끝나지 않아요.' 엘사가 회색여울의 연락책이다.", known_when: ["pknows fact_gf_elsa_nameless", "pknows fact_gf_kaspar_nameless_contact"]}
+  fac_broken_ring: {heard: "예배당에 밤마다 사람이 모인다는 소문.", known: "끊어진 고리 — 순종의 빛 안의 지하 신도회. 빛의 서신을 외운다. 회색여울 책임자는 예배당지기 오스릭.", known_when: ["pknows fact_gf_osric_broken_ring"]}
+  fac_ashen_tower: {heard: "아르카스 섬의 탑. 학자들이 무언가를 연구한다.", known: "잿빛 탑 — 징후자를 사들여 실험한다. 순례자 이졸이 탑의 징후 수집관이다.", known_when: ["pknows fact_gb_isol_tower_hound", "pknows fact_gb_isol_lens"]}
+  fac_grey_pilgrims: {heard: "재를 숭배한다는 회색 옷의 순례자들."}
+  fac_sarkos: {heard: "노예 장사로 대륙에서 가장 부자가 된 백작가. 모든 목에는 값이 있다."}
+  fac_swamp_hags: {heard: "모르바 늪의 일곱 노파. 한 마디에 몇 년 — 값을 알고 말하라.", known: "늪 마녀 회합. 고대 종족의 피를 빌려 주술을 쓰고, 마흔을 넘기지 못한다. 엘사가 그 계보 출신이다.", known_when: ["pknows fact_gf_elsa_swamp_witch"]}
+  fac_nocturne: {heard: "밤의 가문. 긴밤월 '갈증의 밤'에 루멘에서 인간 공물을 받는다."}
+  fac_seren: {heard: "남쪽 바다의 상인 도시들. 인간이 '계약민'으로 돈을 가질 수 있다는 곳. 남작의 빚도 세렌 은행에 있다."}
+  fac_inkscale: {heard: "세렌의 계약 중개인 조합 — 먹물비늘. 모든 빚에는 이름이 있다."}
+  fac_aurax: {heard: "용제국 안의 한 패 — 아우락스파. 전통을 지킨다는 자들."}
+  fac_kaspar: {heard: "까마귀 문의 사령관 카스파르를 따르는 자들.", known: "서자의 국경 — 반은 인간인 카스파르의 편. '내 이름의 반은 네 것이다.'", known_when: ["pknows fact_gf_kaspar_nameless_contact", "pknows fact_gf_owen_letter_kaspar"]}
+  fac_melisande: {heard: "잿불 언덕의 은의 서약 — 멜리산드파.", known_when: ["pknows fact_gf_lea_melisande_spy"], known: "멜리산드파 — '견디는 그릇 하나.' 성채의 레아가 그들의 첩자다."}
+  fac_grom: {heard: "그롬 전쟁무리 — 피의 원형장의 주인."}
+  fac_arena_guild: {heard: "원형장의 투사 조합 '쇠우리'. 마구간지기 군나르가 투사였다는 말이 있다.", known_when: ["pknows fact_gb_gunnar_bounty"], known: "쇠우리 — 원형장 투사들의 조합. 군나르는 99승에서 달아났다."}
+  fac_harkan: {heard: "동쪽 초원의 칸국."}
+  fac_durgan: {heard: "두르강의 산 밑 공화국 — 계약은 신성하다."}
+  fac_eldar: {heard: "엘다르의 숲 나라 — 첫 아침 나무."}
+  fac_jotun: {heard: "요툰의 서리 씨족들."}
+  fac_beastkin: {heard: "수인족의 무리들."}
+  fac_aeri: {heard: "바람첨탑의 아에리 둥지."}
+  fac_fae: {heard: "가시안개 숲의 페이 궁정."}

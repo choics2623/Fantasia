@@ -6,7 +6,7 @@
   danger: 5
   names: [에길, 룬]
 - id: fact_gf_bram_pays_henrik
-  text: "브람은 헨릭에게 매주 2 발톱씩 입막음 값을 낸다. 헨릭은 '유령 머릿수' 장부 덕에 은신을 눈치챘다"
+  text: "브람은 헨릭에게 매주 은화 2닢씩 입막음 값을 낸다. 헨릭은 '유령 머릿수' 장부 덕에 은신을 눈치챘다"
   truth: true
   danger: 4
   names: [헨릭]
@@ -35,7 +35,7 @@
   danger: 3
   names: [세베로, 몬달리, 오르셀]
 - id: fact_gf_serf_sale_contract
-  text: "고드릭은 세베로 칼레스에게 농노를 판다. 1차 40명은 서리월 9일, 2차 31명은 굶주림월 3일 용의 대로로 호송된다(바알카르 사슬 부두를 거쳐 세렌 소금 나루). 성인 1명 3비늘, 숙련자 6비늘"
+  text: "고드릭은 세베로 칼레스에게 농노를 판다. 1차 40명은 서리월 9일, 2차 31명은 굶주림월 3일 용의 대로로 호송된다(바알카르 사슬 부두를 거쳐 세렌 소금 나루). 성인 1명 금화 3닢, 숙련자 금화 6닢"
   truth: true
   danger: 3
   names: [세베로]
@@ -99,7 +99,7 @@
   danger: 3
   names: [레아, 멜리산드]
 - id: fact_gf_henrik_seren_account
-  text: "헨릭은 올해 착복분 42비늘을 세베로를 창구로 세렌 은행 비밀 계좌에 보내고 있다. 루멘 근처 포도밭을 사서 은퇴할 생각이다"
+  text: "헨릭은 올해 착복분 금화 42닢을 세베로를 창구로 세렌 은행 비밀 계좌에 보내고 있다. 루멘 근처 포도밭을 사서 은퇴할 생각이다"
   truth: true
   danger: 3
   names: [세베로]
@@ -155,7 +155,7 @@
   danger: 2
   names: [마르타]
 - id: fact_gf_znik_sells_to_hagen
-  text: "즈닉은 하겐에게 탈주자 위치를 1명당 2발톱에 판다"
+  text: "즈닉은 하겐에게 탈주자 위치를 1명당 은화 2닢에 판다"
   truth: true
   danger: 3
   names: [하겐]
@@ -167,7 +167,7 @@
   danger: 3
   names: []
 - id: fact_gf_volk_sweep_contract
-  text: "볼크는 고드릭과 북방 탈주자 일괄 소탕 계약(1명당 1비늘, 총 60비늘)을 맺으려 한다"
+  text: "볼크는 고드릭과 북방 탈주자 일괄 소탕 계약(1명당 금화 1닢, 총 금화 60닢)을 맺으려 한다"
   truth: true
   danger: 2
   names: [고드릭]
@@ -244,12 +244,12 @@
   danger: 4
   names: [볼크]
 - id: fact_gf_hagen_hut_cache
-  text: "하겐의 나루 헛간 마루 밑 상자에 은화 19발톱과 비늘 1개, 바르그 조합의 송곳니 표식 패(밀고자 증표)가 있다"
+  text: "하겐의 나루 헛간 마루 밑 상자에 은화 19닢과 비늘 1개, 바르그 조합의 송곳니 표식 패(밀고자 증표)가 있다"
   truth: true
   danger: 4
   names: []
 - id: fact_gf_hagen_sigrid_price
-  text: "하겐은 시그리드 무리의 위치를 통째로 볼크에게 넘기면 15비늘을 받기로 했다. 아직 늑대굴 입구를 찾지 못했다"
+  text: "하겐은 시그리드 무리의 위치를 통째로 볼크에게 넘기면 금화 15닢을 받기로 했다. 아직 늑대굴 입구를 찾지 못했다"
   truth: true
   danger: 4
   names: [시그리드, 볼크]

@@ -66,7 +66,7 @@ knows:
   - fact_eh_grax_cousin_znik
 hides:
   - fact: fact_eh_grax_supply_pays
-    reveal_when: "신뢰 40 이상이거나 2 비늘을 쥐여 주었을 때. 담배를 건네면 열린다"
+    reveal_when: "신뢰 40 이상이거나 금화 2닢을 쥐여 주었을 때. 담배를 건네면 열린다"
     reveal: [{"trust":40}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'공급은 규정이야. 규정에 값이 어딨어' 하며 점호 패를 문다"
 relations:

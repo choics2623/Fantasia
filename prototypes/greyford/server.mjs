@@ -67,8 +67,13 @@ async function handle(path, body, onText) {
   if (path === "/api/saves") return { saves: listSaves() };
   if (path === "/api/map") return mapView(session.game);
   if (path === "/api/memo") return session.memo(body?.npc, body?.text);
+  if (path === "/api/codex") return session.codex();
+  if (path === "/api/codex/entry") { const e = session.codexEntry(String(body?.id || "")); return { ...e, image: e.image ? artFor(e.image) : null }; }
   throw new Error("unknown " + path);
 }
+// 백과 카드의 그림 (나중에 넣는다): assets/codex/<이름>.(webp|png|jpg|svg) — 이름은 카드 id의 뒤쪽 (npc_bram, gf_rooster, fac_barg, gl_human …)
+const ART = join(ROOT, "assets/codex");
+const artFor = (key) => { for (const ext of ["webp", "png", "jpg", "jpeg", "svg"]) if (existsSync(join(ART, `${key}.${ext}`))) return `/art/codex/${key}.${ext}`; return null; };
 const listSaves = () => readdirSync(SAVES).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
 
 const server = http.createServer(async (req, res) => {
@@ -86,6 +91,13 @@ const server = http.createServer(async (req, res) => {
       if (!existsSync(f)) { res.writeHead(404); return res.end(); }
       res.writeHead(200, { "content-type": url.pathname.endsWith(".css") ? "text/css; charset=utf-8" : "text/javascript; charset=utf-8", "cache-control": "no-cache" });
       return res.end(await readFile(f));
+    }
+    // 백과 카드의 그림
+    if (req.method === "GET" && /^\/art\/codex\/[\w-]+\.(webp|png|jpe?g|svg)$/.test(url.pathname)) {
+      const f = join(ART, url.pathname.slice(11));
+      if (!existsSync(f)) { res.writeHead(404); return res.end(); }
+      const ext = f.split(".").pop(), type = { webp: "image/webp", png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", svg: "image/svg+xml" }[ext];
+      res.writeHead(200, { "content-type": type, "cache-control": "max-age=3600" }); return res.end(await readFile(f));
     }
     // 삽화 (19 §9 — tools/woodcut.py가 만든 목판화 SVG)
     if (req.method === "GET" && /^\/art\/[\w-]+\.svg$/.test(url.pathname)) {

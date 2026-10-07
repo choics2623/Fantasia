@@ -10,7 +10,7 @@ seat: "없음 — 크릭 고유의 땅은 없다. 채찍손 길드 본부: 바�
 size:
   members: "크릭 약 1,400,000 — 굴 크릭 약 1,100,000, 늪 크릭 약 262,000, 감독관 크릭 약 38,000(채찍손 길드원 약 3,000), 재굴 무리"
   territory: "고유 땅 없음. 드라크마르 약 520,000, 세렌 하역꾼 약 180,000, 그롬마르 약 150,000, 카즈둠 약 60,000, 녹테른 약 40,000"
-  wealth: "감독관 1인 연봉 4~8 비늘(인간 성인 노예 두 명 값). 하역 장부, 굴 단위의 식량 저장"
+  wealth: "감독관 1인 연봉 금화 4~8닢(인간 성인 노예 두 명 값). 하역 장부, 굴 단위의 식량 저장"
   force: "떼 — 단독으로는 싸우지 않는다. 주인의 군대의 짐꾼·땅굴 파기·후방 감시. 강자의 편에 서면 수가 곧 힘"
 
 decision: >
@@ -39,7 +39,7 @@ offices:
     title: 채찍손 길드 원로회 (감독관 크릭 — 집합 자리)
     holder: "unnamed:길드원 약 3,000 중 원로 감독관들"
     reports_to: off_whip_guild_head
-    powers: ["감독관 계약 중개(연봉 4~8 비늘)", "편 바꿈 판단 — '목록이 흔들린다'를 선언"]
+    powers: ["감독관 계약 중개(연봉 금화 4~8닢)", "편 바꿈 판단 — '목록이 흔들린다'를 선언"]
     chosen_by: "길드 서열"
     perks: []
   - id: off_overseer_znik
@@ -166,7 +166,7 @@ offices:
     perks: []
     note: "1차 확장 작가가 제안한 자리 — 검수 필요"
 ranks:
-  - {id: rank_whip, title: "채찍을 쥔 자 (감독관)", duties: "노동 할당, 채찍, 배급 분배, 밀고", privileges: "연봉 4~8 비늘, 세습", open_to_player: false}
+  - {id: rank_whip, title: "채찍을 쥔 자 (감독관)", duties: "노동 할당, 채찍, 배급 분배, 밀고", privileges: "연봉 금화 4~8닢, 세습", open_to_player: false}
   - {id: rank_club, title: "몽둥이", duties: "감독 보조", privileges: "굴 안에서 우대", open_to_player: false}
   - {id: rank_bare, title: "맨손", duties: "굴 노동", privileges: "없음", open_to_player: false}
   - {id: rank_carrier, title: "짐꾼 · 하역꾼", duties: "짐·하역·청소", privileges: "없음 — 인간보다 덜 먹는다", open_to_player: false}

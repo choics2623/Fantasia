@@ -118,7 +118,7 @@ law:
     - {act: "회합의 피를 허락 없이 씀", punishment: "그 해 자기 계보 몫 몰수", note: "노파·딸"}
     - {act: "시간 근원을 입에 올림", punishment: "회합에서 내쫓긴다 — AS 2의 약속", note: "누구에게나"}
     - {act: "늪 자유민을 목줄단·바르그에 팖", punishment: "꿈 심문(엘스베트) → 늪에 빠뜨린다", note: "인간 대상 — 진흙등불 장부 연간 사망 30여 건 중 7건"}
-    - {act: "마녀질 (바깥 법)", punishment: "용제국·루멘: 화형. 잿빛 탑: 포획 현상금 30비늘", note: "인간 대상"}
+    - {act: "마녀질 (바깥 법)", punishment: "용제국·루멘: 화형. 잿빛 탑: 포획 현상금 금화 30닢", note: "인간 대상"}
 
 customs:
   greeting: "노파끼리: 서로의 목에 건 피 병 하나를 손끝으로 만진다 — '몇 해 남았나'라는 뜻. 답은 손가락 수(남은 시전 수). 외부인에게는 인사 대신 그의 목소리를 먼저 듣는다('말해 봐라, 아무 말이나')."
@@ -182,7 +182,7 @@ relations:
   - {to: fac_light, stance: -70, note: "행렬 — 화형"}
   - {to: fac_nameless, stance: 70, note: "행렬"}
   - {to: fac_collar, stance: -60, note: "행렬"}
-  - {to: fac_ashen_tower, stance: -50, note: "행렬 — 마녀 포획 현상금 30비늘"}
+  - {to: fac_ashen_tower, stance: -50, note: "행렬 — 마녀 포획 현상금 금화 30닢"}
   - {to: fac_barg, stance: -80, note: "행렬"}
   - {to: fac_laugh_shards, stance: 30, note: "행렬 밖 — 잿가루"}
 toward_echo: "4:3 분열 직전. 첫째 오다는 300년 기다린 그릇에게 낱말을 넘기려 한다. 브리타는 그를 늪에 가둬 지키려 한다. 플레이어가 정체를 드러내면 회합이 갈라지고, 반대파 노파 하나가 정화청과 거래할 수 있다."

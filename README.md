@@ -42,6 +42,7 @@ node engine/game/test_dark.mjs           # 심문·공포 정치·얼룩 재회�
 node engine/game/test_nemesis.mjs        # 숙적의 마음·성향·교훈·사냥꾼 판·처음 보는 원수 (17)
 node engine/game/test_journey.mjs        # 안개 속 길 찾기·먼 길·위치 추정의 확신·연출가 추첨·기억 병합·지도 v2
 node engine/game/test_narration.mjs      # 서술 문맥: 이야기의 줄기·문체·장소의 감각·대화의 흐름·되풀이 막기
+node engine/game/test_codex.mjs          # 백과: 아는 만큼의 카드·?·들은 이름·회귀해도 남는 앎, 동화·은화·금화
 node engine/gen/test_gen.mjs             # 정착지·즉석 인물 생성 (25)
 python3 tools/validate_npc_cards.py && node tools/validate_agendas.mjs && python3 tools/link_world.py
 ```

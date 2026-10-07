@@ -58,7 +58,7 @@ places: ["남문", "비늘혈 선술집 반쪽 비늘"]
 knows: ["fact_gb_gunnar_bounty"]
 hides:
   - fact: fact_bk_mariel_gate_ledger
-    reveal_when: "1비늘 이상을 내기에 걸거나, 하랄을 통해"
+    reveal_when: "금화 1닢 이상을 내기에 걸거나, 하랄을 통해"
     reveal: [{"flag":"story"}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'기록은 기록이지'"
 relations:

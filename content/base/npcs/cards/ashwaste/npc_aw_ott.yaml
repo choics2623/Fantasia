@@ -1,7 +1,7 @@
 # 물지기 오트 — 재의 황무지 2차 확장 카드. 원천: docs/world/people/ashwaste.md (P2W-14)
 id: npc_aw_ott
 name: 물지기 오트
-aka: [한 못은 돌에게, 구리 말의 사내]
+aka: [동화 한 닢은 돌에게, 구리 말의 사내]
 tier: B
 type: living
 race: 인간
@@ -10,15 +10,15 @@ sex: 남
 age: 53
 region: 재의 황무지
 home: 마지막 등불 물 저장고 곁 방
-job: 물 저장고 물지기 (물 한 통 3못)
+job: 물 저장고 물지기 (물 한 통 동화 3닢)
 rank: 물지기 (등불 허가)
-summary: 마지막 등불의 물 저장고를 쥔 탈주 노예 출신. 물 한 통 3못 가운데 한 못을 장부에 쓰지 않고 매달 할그림의 돌 약 값으로 돌려 약 상자째 그의 집 앞에 둔다
+summary: 마지막 등불의 물 저장고를 쥔 탈주 노예 출신. 물 한 통 동화 3닢 가운데 동화 한 닢을 장부에 쓰지 않고 매달 할그림의 돌 약 값으로 돌려 약 상자째 그의 집 앞에 둔다
 source: docs/world/people/ashwaste.md (npc_aw_ott)
 life:
   - {year: 259, age: 0, event: "에그몬트 하류 농장 노예 집안에서 태어남"}
   - {year: 285, age: 26, event: "탈주해 마지막 등불에 닿음. 짐꾼이 됨"}
   - {year: 298, age: 39, event: "물 저장고 물지기가 됨. 구리 말을 허리에 참"}
-  - {year: 309, age: 50, event: "할그림의 돌이 번지는 것을 보고 물값 한 못을 약값으로 돌리기 시작함"}
+  - {year: 309, age: 50, event: "할그림의 돌이 번지는 것을 보고 물값 동화 한 닢을 약값으로 돌리기 시작함"}
 appearance:
   - "손바닥이 늘 물에 불어 있다"
   - "허리에 물 되는 구리 말을 찬다"
@@ -30,33 +30,33 @@ personality:
   temperament: [성실, 말수 적음, 정, 고집]
   habits:
     - "구리 말을 들어 보이며 물 한 통을 권한다"
-    - "저녁마다 장부에 쓰지 않는 한 못을 센다"
+    - "저녁마다 장부에 쓰지 않는 동화 한 닢을 센다"
   values: "물은 돌보다 오래 간다. 돌은 사람이 돌이 되는 걸 못 막지만 물은 늦출 수 있다"
   fears: ["장부를 보자는 말", "할그림의 돌 약이 끊기는 일"]
   desires:
     short: "겨울 재 폭풍 전 물 저장고를 가득 채우는 것"
-    long: "물값이 3못에서 1못으로 내리는 날"
+    long: "물값이 동화 3닢에서 동화 1닢으로 내리는 날"
 voice:
   register:
     to_superior: "할그림에게 짧은 존대"
     to_equal: "평어"
     to_inferior: "짐꾼에게 반말"
     to_player_default: "물 한 통을 권하는 평어"
-  tics: ["'한 통에 3못.'"]
+  tics: ["'한 통에 동화 3닢.'"]
   use: [물, 못, 통, 장부, 돌, 약]
-  avoid: [장부에 안 쓰는 한 못]
+  avoid: [장부에 안 쓰는 동화 한 닢]
   length: "짧고 단조롭다"
   samples:
-    - {situation: 첫 만남, line: "물은 한 통에 3못. 3못에 물과 이름이 같이 들어 있어."}
+    - {situation: 첫 만남, line: "물은 한 통에 동화 3닢. 동화 3닢에 물과 이름이 같이 들어 있어."}
     - {situation: 호의, line: "물은 돌보다 오래 가요. 돌은 사람이 돌이 되는 걸 못 막지만 물은 늦출 수 있고."}
-    - {situation: 거절, line: "장부는 장부예요. 장부에 안 쓰는 한 못이 있다는 말은 안 들은 걸로."}
-    - {situation: 거래, line: "약초 한 묶음이면 물 한 통을 2못에 줄게요. 3못은 3못이고 2못은 약값이에요."}
-    - {situation: 비밀 누설, line: "한 못은 할그림 몫이에요. 돌 약. 매달 약 상자째 그 집 문 앞에 놔요. 말하지 마요."}
+    - {situation: 거절, line: "장부는 장부예요. 장부에 안 쓰는 동화 한 닢이 있다는 말은 안 들은 걸로."}
+    - {situation: 거래, line: "약초 한 묶음이면 물 한 통을 동화 2닢에 줄게요. 동화 3닢은 동화 3닢이고 동화 2닢은 약값이에요."}
+    - {situation: 비밀 누설, line: "동화 한 닢은 할그림 몫이에요. 돌 약. 매달 약 상자째 그 집 문 앞에 놔요. 말하지 마요."}
     - {situation: 분노, line: "장부 보자는 사람한테 물은 안 팔아요."}
 schedule:
   아침: "물 통을 센다"
   낮: "물을 판다"
-  저녁: "장부에 쓰지 않는 한 못을 센다"
+  저녁: "장부에 쓰지 않는 동화 한 닢을 센다"
   밤: "약 상자를 할그림의 집 앞에 둔다"
 places: [물 저장고, 할그림의 집 앞]
 knows:
@@ -65,7 +65,7 @@ hides:
   - fact: fact_p2aw_ott_water_tithe
     reveal_when: "신뢰 60 이상이고 약초나 돌 약 이야기를 플레이어가 먼저 꺼냈을 때"
     reveal: [{"trust":60,"named":"할그림"},{"told_by":"npc_aw_halgrim"}]
-    cover: "'장부는 장부예요. 3못은 3못이고요'라고 한다"
+    cover: "'장부는 장부예요. 동화 3닢은 동화 3닢이고요'라고 한다"
 relations:
   - {to: npc_aw_halgrim, type: 등불지기, like: 30, trust: 45, visibility: 비밀, memo: "돌 약 값을 내는 사람", words: "돌이 번지는 모습을 매일 보는 사람. 약 상자를 문 앞에 두고 노크하지 않는다"}
   - {to: npc_tuk, type: 고물상, like: 10, trust: 20, visibility: 공개, memo: null, words: "물값을 흥정하는 크릭. 숫자 매듭을 잘 읽는다"}
@@ -79,7 +79,7 @@ roles:
   romance: null
 regression:
   fixed:
-    - "물 3못 가운데 한 못은 할그림의 돌 약값이다"
+    - "물 동화 3닢 가운데 동화 한 닢은 할그림의 돌 약값이다"
   drift:
     - "그 달에 둔 약 상자의 종류"
   deja_vu: none
@@ -87,8 +87,8 @@ affiliations:
   - {faction: fac_last_lantern, rank: rank_licensed, office: null, since: 298, loyalty: 60, public: true, cell: null}
 truths: []
 hard_rules:
-  - "장부에 안 쓰는 한 못을 먼저 입에 올리지 않는다"
+  - "장부에 안 쓰는 동화 한 닢을 먼저 입에 올리지 않는다"
   - "설교하지 않는다. 물과 못과 통으로 말한다"
 on_death: "할그림의 돌 약값 경로가 끊겨 돌의 속도가 빨라진다."
 story_seeds:
-  - "물값 한 못이 할그림의 돌 약을 대 왔다 — 약값을 대신 대면 돌이 몇 주 늦춰진다."
+  - "물값 동화 한 닢이 할그림의 돌 약을 대 왔다 — 약값을 대신 대면 돌이 몇 주 늦춰진다."

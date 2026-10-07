@@ -39,7 +39,7 @@ storylets:
           text: '채찍이 네 얼굴을 친다. "그 이름을 또 입에 올리면 혀를 뽑는다."'
           effects: ["pain 15", "rel npc_znik like -20"]
       - id: hagen
-        label: '"하겐에게 사람을 팔지. 한 명에 두 발톱. 고드릭이 알면?"'
+        label: '"하겐에게 사람을 팔지. 한 명에 은화 두 닢. 고드릭이 알면?"'
         needs_fact: fact_gf_znik_sells_to_hagen
         check: {skill: 화술, D: 45}
         success:

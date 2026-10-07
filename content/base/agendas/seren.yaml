@@ -50,8 +50,8 @@ agendas:
     goal: 10.30 계약 시장 경매 (정본) — 회색여울 마흔이 로트 번호 아래 선다. 담합을 알면서 수수료 1%를 받는다
     every: once
     when: ["alive npc_sr_run", "var sr_arrived >= 40", "date >= 312-10-30"]
-    at: {place: sr_auction_stage, from: "09:00", to: "18:00", doing: 상아 망치가 열 발톱부터 부른다 — 입찰자 둘이 같은 눈짓을 나눈다}
-    effects: ["var sr_sold += 40", "var sr_ring_wins += 1", "coin npc_sr_run += 4 발톱", "log 계약 시장 경매 — 회색여울 마흔이 팔려 계약민으로 전환되었다 (담합한 입찰자 둘이 낙찰을 가져갔다)"]
+    at: {place: sr_auction_stage, from: "09:00", to: "18:00", doing: 상아 망치가 은화 열 닢부터 부른다 — 입찰자 둘이 같은 눈짓을 나눈다}
+    effects: ["var sr_sold += 40", "var sr_ring_wins += 1", "coin npc_sr_run += 4 은화", "log 계약 시장 경매 — 회색여울 마흔이 팔려 계약민으로 전환되었다 (담합한 입찰자 둘이 낙찰을 가져갔다)"]
   - id: ag_sr_lucio_cap
     npc: npc_sr_lucio
     goal: 12.9 '소금 바늘'호 사망 보고를 열둘 이하로 미리 정해 둔다 — 보험금 (멜리산드 편)

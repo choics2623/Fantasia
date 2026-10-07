@@ -41,7 +41,7 @@
   danger: 3
   names: [카일]
 - id: fact_aw_box_bounty
-  text: "잿빛 탑이 교본 상자에 200 비늘의 값을 걸었다"
+  text: "잿빛 탑이 교본 상자에 금화 200닢의 값을 걸었다"
   truth: true
   danger: 1
   names: [교본 상자]

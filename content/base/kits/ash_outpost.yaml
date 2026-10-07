@@ -1,7 +1,7 @@
 # 지역 생성 키트 — 재의 황무지 전초 (25_REGION_KITS.md). 마지막 등불·재눈 초소·재 성소·두 번째 등불의 흔적, 그리고 재 평원 가장자리에 서는 모든 사냥꾼 마을.
 # 원천: REGIONS §11(11.5 삶·11.7 등불 규칙·11.8 문화), HOUSES §5.12·§5.13, fac_last_lantern, fac_grey_pilgrims, fac_ashen_tower, fac_nameless, fac_trace_keepers, docs/world/people/ashwaste.md.
 # 관습·법·말투의 결은 다시 쓰지 않는다 → fac_last_lantern.law / customs 를 본다. 여기에는 '재 평원 가장자리에만 있는 재료'(해 지기 전 귀환, 시간 잔상, 물값, 등불 규칙, 막대 눈금 장부, 재를 혀에 올리는 받아들임)를 더한다.
-# 핵심: 지배자가 없다 — 법은 등불 규칙 다섯뿐이고 그 아래 세 개의 다른 줄(탑의 눈·순례자의 재·주춧돌의 글자)이 흐른다. 여기서는 노예도 '사냥꾼'이다. 가장 비싼 것은 물이다(한 통 3못).
+# 핵심: 지배자가 없다 — 법은 등불 규칙 다섯뿐이고 그 아래 세 개의 다른 줄(탑의 눈·순례자의 재·주춧돌의 글자)이 흐른다. 여기서는 노예도 '사냥꾼'이다. 가장 비싼 것은 물이다(한 통 동화 3닢).
 id: kit_ash_outpost
 applies_to: [마지막 등불, 재눈 초소, 재 성소, 두 번째 등불(소멸), 재의 암자, 낙오자 숙영지, 재 평원 가장자리 사냥꾼 마을]
 reuses: []
@@ -53,7 +53,7 @@ jobs:
 schedules:          # at = 정착지 틀의 역할(role). 황무지는 새벽에 시작해 해 지기 전에 접는다 — 해 진 뒤 밖에 있는 자는 구조하지 않는다.
   sch_relic_hunter: [{days: all, from: "06:00", to: "09:00", at: hunters_yard, doing: 원정 장비를 꾸린다}, {days: all, from: "09:00", to: "17:00", at: ash_edge, doing: 재 평원 가장자리에서 유물을 줍는다 — 해 지기 전에 돌아올 길을 눈으로 잰다, outdoor: true}, {days: all, from: "17:00", to: "19:00", at: market, doing: 해 지기 전 호각에 맞춰 돌아와 유물을 판다}, {days: all, from: "19:00", to: "24:00", at: inn, doing: 죽과 술 — 오늘 본 잔상 이야기를 낮게 한다}, {days: all, from: "24:00", to: "06:00", at: shacks, doing: 판잣집에서 잔다}]
   sch_porter:       [{days: all, from: "06:00", to: "17:00", at: hunters_yard, doing: 사냥꾼 곁에서 짐을 진다 — 몫은 십분의 일}, {days: all, from: "17:00", to: "21:00", at: water_store, doing: 물 한 통을 몫으로 받으러 줄을 선다}, {days: all, from: "21:00", to: "06:00", at: shacks, doing: 판잣집 골목에서 잔다}]
-  sch_water_seller: [{days: all, from: "06:00", to: "12:00", at: water_store, doing: 물 통을 센다 — 구리 말로 되어 준다}, {days: all, from: "12:00", to: "19:00", at: water_store, doing: "물을 판다 — 한 통에 3못"}, {days: all, from: "19:00", to: "06:00", at: water_store, doing: 저장고 곁 방에서 잔다}]
+  sch_water_seller: [{days: all, from: "06:00", to: "12:00", at: water_store, doing: 물 통을 센다 — 구리 말로 되어 준다}, {days: all, from: "12:00", to: "19:00", at: water_store, doing: "물을 판다 — 한 통에 동화 3닢"}, {days: all, from: "19:00", to: "06:00", at: water_store, doing: 저장고 곁 방에서 잔다}]
   sch_stall:        [{days: all, from: "06:00", to: "12:00", at: market, doing: 가판을 펴고 유물을 감정한다}, {days: all, from: "12:00", to: "18:00", at: market, doing: 장사 — 값은 흥정이다}, {days: all, from: "18:00", to: "22:00", at: market, doing: 가판 밑 마른 구멍에서 장부 매듭을 맞춘다}, {days: all, from: "22:00", to: "06:00", at: shacks, doing: 잔다}]
   sch_inn_hand:     [{days: all, from: "05:00", to: "12:00", at: inn, doing: 죽 솥에 불을 올린다}, {days: all, from: "12:00", to: "23:00", at: inn, doing: 사냥꾼에게 죽을 푼다 — 손바닥을 본다}, {days: all, from: "23:00", to: "05:00", at: shacks, doing: 잔다}]
   sch_ash_guide:    [{days: all, from: "06:00", to: "09:00", at: guide_hut, doing: 길 지도를 펼친다}, {days: all, from: "09:00", to: "17:00", at: ash_edge, doing: 신입을 이끌고 가장자리 길을 잰다, outdoor: true}, {days: all, from: "17:00", to: "22:00", at: lantern, doing: 등불 아래서 규칙 셋을 외운다}, {days: all, from: "22:00", to: "06:00", at: guide_hut, doing: 지도의 점을 하나 지운다}]
@@ -72,7 +72,7 @@ voices:             # 말투 원형 — 짧고 물처럼 아낀다. 말을 헤�
 temperaments: [과묵, 계산, 다정, 의심, 끈기, 겁, 완고, 쓸쓸함, 경계, 체념, 정, 눈치, 책임, 속죄, 헌신]
 ash_customs:        # 재 평원 가장자리에만 있는 것 — 법·관습 본문은 fac_last_lantern.law / customs, REGIONS §11.7·§11.8
   - "해 지기 전 귀환이 첫 규칙이다. 해 진 뒤 밖에 있는 자는 구조하지 않는다 — 17시 반 호각이 불면 모든 일을 멈추고 문 안으로 든다"
-  - "물 한 통 3못 — 3못에 물과 이름이 같이 들어 있다. 이름은 묻지 않고 손바닥을 본다. 숙박부는 막대 눈금이다"
+  - "물 한 통 동화 3닢 — 동화 3닢에 물과 이름이 같이 들어 있다. 이름은 묻지 않고 손바닥을 본다. 숙박부는 막대 눈금이다"
   - "등불 아래서는 거짓말을 하지 않는다 (금기). 등불을 끄는 자는 추방한다. 길 잃은 자는 꺼지지 않는 등불을 향해 걸으라고 한다"
   - "잔상 속 사람에게 말을 걸지 않는다. 잔상이 사람이라고 믿는 순간 거기 서 있게 된다 — 길잡이의 규칙: 해 지기 전에 돌아온다, 아홉 분을 세지 않는다, 붉은 말뚝을 눈에 담지 않는다"
   - "재를 맨손으로 먹지 않는다 (굶주린 자들의 전설) — 재 성소에서는 받아들임지기가 혀에 재를 올린다. 올린 자는 석 달 안에 잔상이 보이기 시작한다"

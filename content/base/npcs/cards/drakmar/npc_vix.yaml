@@ -54,7 +54,7 @@ voice:
     - {situation: "적대", line: "열쇠 마흔 개. 그중 하나가 네 우리 거야. 오늘 밤 어느 걸로 잠글까."}
     - {situation: "위기", line: "장부! 장부는 두 권 다 — 아니, 한 권만! 정본은 재상청에 있다고 해!"}
     - {situation: "비밀 누설", line: "회색여울 마흔 중 넷은 죽은 사람이야. 회색 장부엔 '사망'. 선매 장부엔 '건강, 3등급'. 츳, 하나가 아니라 넷이 비어."}
-    - {situation: "거래", line: "장부 한 줄 보여 주는 데 1발톱. 두 줄이면 2발톱. 정본이랑 비교하는 건… 그건 값이 없어. 내 목이니까."}
+    - {situation: "거래", line: "장부 한 줄 보여 주는 데 은화 1닢. 두 줄이면 은화 2닢. 정본이랑 비교하는 건… 그건 값이 없어. 내 목이니까."}
     - {situation: "겁먹었을 때", line: "(열쇠 소리가 멈춘다) 재상께서… 오셨어? 웃고 계셔?"}
     - {situation: "회귀자를 의심할 때", line: "다음 달 대시장 첫 낙찰가를 말했지. 츳. 그건 내 머리에도 아직 없는 숫자야."}
 schedule:
@@ -66,7 +66,7 @@ places: ["비늘 시장 경매대", "거래 장부실", "진열 우리"]
 knows: ["fact_dk_scale_market_ledger", "fact_bk_severin_market_skim"]
 hides:
   - fact: fact_bk_vix_dead_names
-    reveal_when: "2발톱 이상, 또는 신뢰 30 + 헨릭의 이름을 꺼낼 때"
+    reveal_when: "은화 2닢 이상, 또는 신뢰 30 + 헨릭의 이름을 꺼낼 때"
     reveal: [{"flag":"story"},{"trust":30}]   # 엔진 조건 (28 §4) — 고치면 이것이 정본
     cover: "'선매는 선매야. 번호만 맞으면 돼'"
 relations:
@@ -78,7 +78,7 @@ relations:
   - {to: "npc_skik", type: "길드 원로", like: 10, trust: 10, visibility: "공개", memo: null, words: "늙은 굽은 등. 손이 떨린다는 소문"}
 toward_player: "번호를 붙이려 한다. 숫자 이야기를 하면 귀가 열린다"
 persuade:
-  likes: ["숫자를 맞춰 주는 것 (+15)", "돈 (1발톱 = +5)", "장부를 존중하는 말"]
+  likes: ["숫자를 맞춰 주는 것 (+15)", "돈 (은화 1닢 = +5)", "장부를 존중하는 말"]
   hates: ["두 장부를 들추는 것 (역린)", "열쇠 고리를 만지는 것"]
 roles:
   teacher: "손재주(자물쇠, 상한 50). 조건: 진열 우리 물 먹이기 30일"

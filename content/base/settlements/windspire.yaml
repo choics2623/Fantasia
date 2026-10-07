@@ -37,7 +37,7 @@ locations:
   - {id: ws_feather_library, name: 깃 서고 (서쪽 아래층 탑), xy: [160, 300], kind: library, access: staff, hours: "06:00-18:00", rooms: [ws_knot_room], note: "까마귀 아에리 8,000이 사는 낮은 탑. 3,400년치 하늘 연대기가 깃털 매듭으로 걸려 있다"}
   - {id: ws_knot_room, name: 대붕괴 날의 매듭, parent: ws_feather_library, access: owner, hidden: "맨 안쪽 깃 한 다발 — 대붕괴 날을 묶은 첫 매듭: '불이 의식보다 먼저 떨어졌다'"}
   - {id: ws_seven_fingers, name: 일곱 손가락 (둥지 탑 군), xy: [560, 90], kind: nest, access: staff, hours: "24시", rooms: [ws_hawk_mews], note: "일곱 기둥이 손가락처럼 솟은 둥지 군. 아에리 2,000이 산다"}
-  - {id: ws_hawk_mews, name: 매 사육장, parent: ws_seven_fingers, access: staff, hours: "05:00-19:00", note: "길들인 매가 한 마리 3비늘. 인간 일손이 새장 청소를 한다 — 새장은 닫지 않는다", hidden: "서쪽 구석 지붕 줄 한 타래 — 땅손의 줄에 이어 붙이려는 사육사의 몫"}
+  - {id: ws_hawk_mews, name: 매 사육장, parent: ws_seven_fingers, access: staff, hours: "05:00-19:00", note: "길들인 매가 한 마리 금화 3닢. 인간 일손이 새장 청소를 한다 — 새장은 닫지 않는다", hidden: "서쪽 구석 지붕 줄 한 타래 — 땅손의 줄에 이어 붙이려는 사육사의 몫"}
   # ── 땅손의 구역 ──
   - {id: ws_wind_garden, name: 바람 정원 (기둥 꼭대기 계단밭), xy: [500, 260], kind: garden, access: serf, hours: "05:00-19:00", rooms: [ws_water_jars], note: "고산 약초와 열매가 자라는 계단밭. 인간 140의 터전. 계단 가장자리마다 낙사 방지 줄이 쳐졌다"}
   - {id: ws_water_jars, name: 물 항아리 (내려가는 줄 210m), parent: ws_wind_garden, access: secret, hidden: "큰 항아리 밑 — 몰래 땋은 '내려가는 줄' 210m. 필요한 길이는 340m다"}

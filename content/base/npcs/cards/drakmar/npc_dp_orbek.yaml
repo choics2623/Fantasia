@@ -14,7 +14,7 @@ region: 회색여울 변경
 home: 용인 숙소 하사 방
 job: 용주 검문대 하사
 rank: 역참 소속 용인 하사
-summary: 위조 통행증을 한 장에 2발톱에 되파는 검문 하사. 월급 석 달이 밀렸다는 말로 모든 것을 설명한다
+summary: 위조 통행증을 한 장에 은화 2닢에 되파는 검문 하사. 월급 석 달이 밀렸다는 말로 모든 것을 설명한다
 source: docs/world/people/crow_gate.md (npc_dp_orbek)
 life:
 - year: 254
@@ -53,7 +53,7 @@ personality:
   habits:
   - 통행증을 손가락으로 튕긴다
   - 풀뿌리를 질겅질겅 씹으며 말한다
-  values: 밀린 월급. 통행증 한 장에 붙는 2발톱
+  values: 밀린 월급. 통행증 한 장에 붙는 은화 2닢
   fears:
   - 근위대의 눈
   - 세라프가 모른 척을 그만두는 것
@@ -80,11 +80,11 @@ voice:
   length: 짧고 느리다
   samples:
   - situation: 첫 만남
-    line: 통행증. 이름 틀렸군. 아니, 맞는군. …2발톱이면 맞다고 해 주지.
+    line: 통행증. 이름 틀렸군. 아니, 맞는군. …은화 2닢이면 맞다고 해 주지.
   - situation: 호의
     line: 오늘은 조용히 지나가라. 어제 손님보다 낫다.
   - situation: 거래
-    line: 새 통행증은 2발톱. 낡은 건 1발톱. 인장이 번진 건 3발톱이다.
+    line: 새 통행증은 은화 2닢. 낡은 건 은화 1닢. 인장이 번진 건 은화 3닢이다.
   - situation: 비밀 누설
     line: 인장 틀은 바알카르 근위대 쪽에서 왔다. 어디서 났는지는 묻지 마라.
 schedule:
@@ -125,7 +125,7 @@ relations:
   words: 문서를 믿지 않는 눈
 toward_player: 통행증부터 뒤집는다
 persuade:
-  likes: 밀린 월급을 갚는 일, 은 2발톱
+  likes: 밀린 월급을 갚는 일, 은 은화 2닢
   hates: 위조라고 부르는 것
 roles:
   teacher: 불가

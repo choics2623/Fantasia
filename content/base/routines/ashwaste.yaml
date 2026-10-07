@@ -112,9 +112,9 @@ npc_aw_ott:
   blocks:
     - {days: all, from: "06:00", to: "12:00", at: ll_water_store, doing: "물 통을 센다 — 구리 말을 들어 첫 손님에게 보인다"}
     - {days: all, from: "12:00", to: "13:00", at: ll_water_store, doing: "정오 되질 — 구리 말 소리", fixed: true}
-    - {days: all, from: "13:00", to: "19:00", at: ll_water_store, doing: "물을 판다 — 한 통에 3못"}
+    - {days: all, from: "13:00", to: "19:00", at: ll_water_store, doing: "물을 판다 — 한 통에 동화 3닢"}
     - {days: "monthday:[1]", from: "21:00", to: "22:00", at: ll_halgrim_house, doing: "약 상자를 할그림의 집 문 앞에 놓고 노크하지 않는다"}
-    - {days: all, from: "19:00", to: "22:00", at: ll_water_store, doing: "장부에 쓰지 않는 한 못을 센다"}
+    - {days: all, from: "19:00", to: "22:00", at: ll_water_store, doing: "장부에 쓰지 않는 동화 한 닢을 센다"}
     - {days: all, from: "22:00", to: "06:00", at: ll_water_store, doing: "저장고 곁 방에서 잔다"}
 npc_aw_kora:
   home: ll_inn

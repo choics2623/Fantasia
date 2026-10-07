@@ -1,12 +1,12 @@
 # 회색여울 NPC의 소지품 (02 §1·§⑥, 27_LIVING_WORLD.md §4).
-# coin: 못 단위 (1 발톱 = 12 못, 1 비늘 = 20 발톱). worn: 몸에 지닌 것(보임/숨김), stash: 집·은닉처에 둔 것.
+# coin: 동화 단위 (은화 1닢 = 동화 12닢, 금화 1닢 = 은화 20닢). worn: 몸에 지닌 것(보임/숨김), stash: 집·은닉처에 둔 것.
 # marks: 알아볼 수 있는 표시. recognizers: 보면 '누구 것'인지 아는 사람. 표시를 지우면(녹이기·다시 칠하기) 아무도 못 알아본다.
 # reveals: 이 물건을 손에 넣고 살펴보면 알게 되는 사실.
 # 돈은 하나의 지갑이다: 목표 행동(26)의 coin·pay 효과도, 반응 층(27)의 시체 털기도, 플레이어의 거래도 같은 지갑을 쓴다.
 npc_bram:
-  coin: 360         # 30 발톱 — 토마스 곡물을 세렌 선원에게 판 돈. 헨릭의 입막음 값이 여기서 나간다
+  coin: 360         # 은화 30닢 — 토마스 곡물을 세렌 선원에게 판 돈. 헨릭의 입막음 값이 여기서 나간다
 npc_hagen:
-  coin: 91          # 7 발톱 7 못 — 볼크에게서 받은 머릿값의 남은 것
+  coin: 91          # 은화 7닢 동화 7닢 — 볼크에게서 받은 머릿값의 남은 것
   worn:
     - {id: it_hagen_knife, name: 뼈자루 접이칼, tags: [무기, 날붙이, 숨길수있음], slot: 허리띠, visibility: 숨김, value: 50,
        marks: ["자루에 늑대 이빨 세 개를 박았다"], recognizers: [npc_fayne, npc_volk, npc_dietmar, npc_irma]}
@@ -16,7 +16,7 @@ npc_hagen:
     - {id: it_hagen_knot_cord, name: 매듭 끈 꾸러미, tags: [문서, 끈], at: gf_hagen_shed, value: 0,
        marks: ["세 소나무 그루터기와 같은 매듭"], recognizers: [npc_fayne, npc_volk]}
 npc_henrik:
-  coin: 264         # 22 발톱 — 장부에서 덜어 낸 것
+  coin: 264         # 은화 22닢 — 장부에서 덜어 낸 것
   worn:
     - {id: it_henrik_key, name: 셈집 장부함 열쇠, tags: [열쇠], slot: 허리띠, visibility: 보임, value: 1,
        marks: ["레이번 가 까마귀가 새겨진 머리"], recognizers: [npc_godric_raven, npc_znik, npc_martha]}
@@ -31,7 +31,7 @@ npc_znik:
     - {id: it_znik_keys, name: 막사 열쇠 꾸러미, tags: [열쇠], slot: 허리띠, visibility: 보임, value: 2,
        marks: ["열쇠 일곱 개, 하나는 녹이 슬었다"], recognizers: [npc_owen_raven, npc_martha]}
 npc_volk:
-  coin: 480         # 2 비늘
+  coin: 480         # 금화 2닢
   worn:
     - {id: it_volk_fang_string, name: 송곳니 목걸이, tags: [장신구, 전리품], slot: 목, visibility: 보임, value: 40,
        marks: ["인간 송곳니 열아홉 개"], recognizers: [npc_hagen, npc_fayne, npc_znik, npc_sigrid, npc_owen_raven]}

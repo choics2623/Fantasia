@@ -767,7 +767,7 @@
   "trust": 30,
   "public": false,
   "visibility": "비밀",
-  "note": "주 2 발톱"
+  "note": "주 은화 2닢"
  },
  {
   "from": "npc_henrik",
@@ -5189,7 +5189,7 @@
   "trust": -60,
   "public": true,
   "visibility": "공개",
-  "note": "현상금 3 비늘"
+  "note": "현상금 금화 3닢"
  },
  {
   "from": "npc_urgash",
@@ -9292,7 +9292,7 @@
   "trust": 20,
   "public": false,
   "visibility": "비밀",
-  "note": "1비늘"
+  "note": "금화 1닢"
  },
  {
   "from": "npc_harald",

@@ -83,7 +83,7 @@ locations:
   - {id: bk_cs_brand, name: 등급 낙인장, parent: bk_chain_square, access: staff, note: "왼쪽 손등에 1~7등급"}
   - {id: bk_seren_house, name: "세렌 상관 '물방' (몬달리·졸라크 대금 창구)", xy: [2060, 1230], kind: office, access: public, hours: "08:00-18:00", note: "나가 대금업자. 물 채운 바닥방. 인간 계약민 서기 둘"}
   - {id: baalkar__fang_hall, name: "송곳니 회관 (바르그 노예사냥 조합 본부)", xy: [930, 1720], kind: guildhall, access: staff, rooms: [bk_fang_board, bk_fang_jars, bk_fang_kennels, bk_fang_den], note: "도시 서쪽 '사냥꾼 막사' 안. 바르그 60 상주"}
-  - {id: bk_fang_board, name: 현상 수배판 홀, parent: baalkar__fang_hall, access: public, note: "벽 하나를 덮은 현상 수배판. 잔향 포획 현상금 500비늘 — 맨 위 칸은 늘 비어 있다"}
+  - {id: bk_fang_board, name: 현상 수배판 홀, parent: baalkar__fang_hall, access: public, note: "벽 하나를 덮은 현상 수배판. 잔향 포획 현상금 금화 500닢 — 맨 위 칸은 늘 비어 있다"}
   - {id: bk_fang_jars, name: 냄새 단지 선반, parent: baalkar__fang_hall, access: locked, hidden: "탈주자 옷 조각 단지 — 셋째 선반에 시그리드 무리의 옷 조각 3개. 태우면 그 냄새는 추적에서 사라진다"}
   - {id: bk_fang_kennels, name: 사냥개 우리, parent: baalkar__fang_hall, access: staff}
   - {id: bk_fang_den, name: 루가의 굴, parent: baalkar__fang_hall, access: owner}

@@ -114,7 +114,8 @@ def main():
     factions = {}
     for p4 in sorted(glob.glob(os.path.join(ROOT, "content/base/factions/*.yaml"))):
         f = yaml.safe_load(open(p4, encoding="utf-8")) or {}
-        factions[f.get("id")] = {"name": f.get("name"), "offices": [{k: o.get(k) for k in ("id", "title", "holder", "reports_to", "successor")} for o in (f.get("offices") or [])]}
+        factions[f.get("id")] = {"name": f.get("name"), "kind": f.get("kind"), "motto": f.get("motto"), "seat": f.get("seat"), "race": f.get("race"),
+                                 "offices": [{k: o.get(k) for k in ("id", "title", "holder", "reports_to", "successor")} for o in (f.get("offices") or [])]}
     economy = {"goods": {}, "shops": {}, "ration": {}}
     for f in load("content/base/economy/*.yaml"):
         for k in economy: (economy[k].update((f or {}).get(k) or {}))
@@ -161,6 +162,11 @@ def main():
     oaths = []
     for f in load("content/base/oaths/*.yaml"):
         oaths += (f or {}).get("oaths") or []
+    # 백과의 '세상' 항목과 세력의 첫 줄 (lore/glossary.yaml)
+    glossary = yaml.safe_load(open(os.path.join(ROOT, "content/base/lore/glossary.yaml"), encoding="utf-8")) or {}
+    gl_ids = [e.get("id") for e in glossary.get("entries") or []]
+    if len(gl_ids) != len(set(gl_ids)) or not all(isinstance(x, str) for x in gl_ids):
+        print("백과 항목 id가 겹치거나 문자열이 아니다"); raise SystemExit(1)
     lexicon = []
     for f in load("content/base/lexicon/*.yaml"):
         lexicon += (f or {}).get("words") or []
@@ -179,7 +185,7 @@ def main():
     truenames = {}
     for f in load("content/base/truenames/*.yaml"):
         truenames.update((f or {}).get("words") or {})
-    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "clocks": clocks, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
+    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "clocks": clocks, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions, "glossary": glossary}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")

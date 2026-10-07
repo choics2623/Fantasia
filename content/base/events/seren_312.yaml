@@ -14,7 +14,7 @@
 - {id: ev_sr_oct_dominic_estuary, date: "312-10-19", npcs: [npc_sr_dominic, npc_miko], from: "14:00", to: "20:00", at: se_slave_pier, doing: "회색여울 마흔을 실은 노예선이 갈림목에 닿는다 — 입항 검역으로 하룻밤 묶인다. 도미닉이 선원 수와 사람 수를 장부에 두 줄로 적는다", travel_from: sr_salt_quay}
 - {id: ev_sr_oct_arrival_40, date: "312-10-20", npcs: [npc_severo, npc_sr_sebo, npc_sr_skre, npc_miko, npc_sr_catarina], from: "08:00", to: "14:00", at: sr_salt_quay, doing: "회색여울 마흔이 소금 나루에 내린다 — 스크레의 하역표에 마흔 번호가 찍히고 미코가 속으로 센다. 카타리나가 부두 가장자리에서 번호를 외우고 세베로의 가마가 선착장 끝에 선다", fixed: true}
 - {id: ev_sr_oct_quarantine, date: "312-10-25", npcs: [npc_sr_oral, npc_sr_sebo], from: "10:00", to: "16:00", at: sr_registry_desk, doing: "전환 등록 보류 닷새째 — 회색여울 마흔의 번호가 한 줄씩 장부에 오른다. 보류 기간의 숙식비가 먼저 붙는다"}
-- {id: ev_sr_oct_auction_40, date: "312-10-30", npcs: [npc_sr_run, npc_severo, npc_sr_sebo, npc_sr_oral, npc_ophelia], from: "09:00", to: "18:00", at: sr_auction_stage, doing: "계약 시장 경매 — 회색여울 마흔이 로트 번호 아래 선다. 룬의 상아 망치가 열 발톱부터 부른다. 입찰자 둘이 같은 눈짓을 나눈다", fixed: true}
+- {id: ev_sr_oct_auction_40, date: "312-10-30", npcs: [npc_sr_run, npc_severo, npc_sr_sebo, npc_sr_oral, npc_ophelia], from: "09:00", to: "18:00", at: sr_auction_stage, doing: "계약 시장 경매 — 회색여울 마흔이 로트 번호 아래 선다. 룬의 상아 망치가 은화 열 닢부터 부른다. 입찰자 둘이 같은 눈짓을 나눈다", fixed: true}
 - {id: ev_sr_oct_mondali_loan, date: "312-10-24", npcs: [npc_beatrix, npc_sr_zolak], from: "18:00", to: "22:00", at: sr_chair_office, doing: "용제국 양쪽 채권의 이자 정산 — 의장이 졸라크에게 사본 한 장을 건넨다. 어느 쪽의 것인지는 말하지 않는다"}
 # ── 긴밤월 (11) ──
 - {id: ev_sr_nov_oscar_proof, date: "312-11-09", npcs: [npc_sr_oscar, npc_lupo], from: "21:00", to: "24:00", at: sr_lupo_office, doing: "오스카가 증명의 일곱째 쪽을 입으로 들려주고 루포가 '숫자 하나'를 대가로 받는다. 쪽지는 한 줄도 쓰이지 않는다", travel_from: sr_debt_alley, return_to: sr_debt_alley}
@@ -51,7 +51,7 @@
 - {id: ev_sr_jul_mortgage_prep, date: "313-07-28", npcs: [npc_sr_oral, npc_beatrix, npc_severo], from: "10:00", to: "17:00", at: sr_ledger_stacks, doing: "포도월 대시장과 회색여울 저당 기한(313.8.30)을 앞둔 점검 — 오랄이 맨 위 칸의 열쇠를 의장에게 보인다. 세베로는 경매 순서를 묻는다"}
 # ── 매달 반복 ──
 - {id: ev_sr_monthly_council, npcs: [npc_beatrix, npc_sr_sirenna, npc_sr_norval, npc_sr_zolak, npc_sr_mardi, npc_sr_pescar, npc_sr_lucio, npc_ophelia], repeat: monthly, day: 1, from: "09:00", to: "17:00", at: sr_chamber, doing: "의회 정기 회기 — 그믐 이튿날. 모든 안건은 '계약안'의 형식으로 올라와야 접수된다. 이의가 나오면 정산이 끝날 때까지 안건은 정지한다", fixed: true}
-- {id: ev_sr_monthly_pescar_fund, npcs: [npc_sr_pescar, npc_jan], repeat: monthly, day: 5, from: "19:00", to: "22:00", at: sr_shipyard, doing: "공제회 '빚 갚는 배' — 조선소 계약민 300이 노임에서 몇 못씩 모은다. 가장 급한 이의 빚이 오늘 한 건 지워진다. 페스카르는 장부를 경비로 옮긴다"}
+- {id: ev_sr_monthly_pescar_fund, npcs: [npc_sr_pescar, npc_jan], repeat: monthly, day: 5, from: "19:00", to: "22:00", at: sr_shipyard, doing: "공제회 '빚 갚는 배' — 조선소 계약민 300이 노임에서 동화 몇 닢씩 모은다. 가장 급한 이의 빚이 오늘 한 건 지워진다. 페스카르는 장부를 경비로 옮긴다"}
 - {id: ev_sr_monthly_cell, npcs: [npc_sr_catarina, npc_sr_oscar, npc_jan], repeat: monthly, day: 10, from: "22:00", to: "24:00", at: sr_roof_bridge, doing: "셈 모임 — 지붕 다리에서 서로의 이자 계산을 맞춰 본다. 숫자는 합법이다. 카타리나는 사본 셋의 위치를 입에 올리지 않는다"}
 - {id: ev_sr_monthly_dona_seals, npcs: [npc_sr_dona, npc_sr_sebo, npc_sr_oral], repeat: monthly, day: 8, from: "09:00", to: "13:00", at: sr_inkscale_hall, doing: "인장 중개인 회의 — 이번 달 계약서 양식과 이자 조항을 갱신한다. 도나가 인장 아홉을 한 번씩 찍어 본다"}
 - {id: ev_sr_monthly_olaf_cloth, npcs: [npc_sr_olaf], repeat: monthly, day: 14, from: "17:00", to: "19:00", at: sr_blind_lighthouse, doing: "소금배 물때 — 푸른 천을 꼭대기 창에 건다. 물비늘대 순찰이 가까우면 붉은색으로 바꾼다. 모르바 배가 보일 때까지 서 있는다", fixed: true}

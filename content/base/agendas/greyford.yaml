@@ -46,18 +46,18 @@ agendas:
     every: "weekday:4"
     when: ["alive npc_bram", "alive npc_thomas", "var grain_route == true"]
     at: {place: gf_hagen_shed, from: "22:30", to: "23:00", doing: 나루 헛간 뒤에서 세렌 선원에게 자루를 넘긴다}
-    effects: ["coin npc_bram += 3 발톱"]   # 돈은 소지품(27)과 같은 지갑 — 브람의 지갑
+    effects: ["coin npc_bram += 3 은화"]   # 돈은 소지품(27)과 같은 지갑 — 브람의 지갑
   - id: ag_henrik_collect
     npc: npc_henrik
     goal: 매주 입막음 값을 받는다
     every: "weekday:2"
     when: ["alive npc_henrik", "alive npc_bram", "var egil_hidden == true", "knows npc_henrik fact_gf_bram_pays_henrik", "date >= 312-09-08"]
     at: {place: gf_rooster, from: "21:00", to: "21:30", doing: 수탉 뒷문에서 입막음 값을 받는다}
-    effects: ["if coin npc_bram >= var:henrik_extortion 발톱: pay npc_bram npc_henrik var:henrik_extortion 발톱 ; var bram_debt = 0",
+    effects: ["if coin npc_bram >= var:henrik_extortion 은화: pay npc_bram npc_henrik var:henrik_extortion 은화 ; var bram_debt = 0",
               "else: var bram_debt += 1 ; rel npc_henrik>npc_bram like -10 ; log 브람이 입막음 값을 못 냈다 ({bram_debt}주째)"]
   - id: ag_henrik_raise
     npc: npc_henrik
-    goal: 값을 올린다 — 다음 주는 3 발톱 (CHARACTERS 이야기 씨앗)
+    goal: 값을 올린다 — 다음 주는 은화 3닢 (CHARACTERS 이야기 씨앗)
     every: "weekday:2"
     chance: 0.3
     when: ["alive npc_henrik", "var egil_hidden == true", "var henrik_extortion < 6", "date >= 312-09-08"]
