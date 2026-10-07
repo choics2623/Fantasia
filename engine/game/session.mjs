@@ -168,7 +168,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       return { id: c.id, text: c.text, kind: c.kind, skill: c.skill || null, band: o ? G.band(G.perceived(g, o.P, c.skill, c.id)) : null, why: o?.parts || [], p: o ? Math.round(o.P * 100) : null, risk: c.risk || null, input: c.input || null, more: c.more || false, memory: c.memory || null };
     });
     const ink = [...(n?.recap || []).map((text) => ({ kind: "recap", text })), ...(res?.feed || []).filter((f) => INK.has(f.kind)).map((f) => ({ kind: f.kind, text: f.text, buzz: f.buzz || null, who: f.who || null, card: f.card || null }))];
-    return { view: v, beats: n?.beats || [], ink, choices, result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
+    return { view: v, beats: n?.beats || [], ink, choices, locked: G.lockedOptions(g), result: res ? { tier: res.tier, skill: res.skill, p: Math.round(res.P * 100) } : null, engineOnly, debug, usage: provider.usage, provider: provider.kind };
   }
 
   return {

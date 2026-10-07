@@ -26,4 +26,13 @@ const logHas = (g, re) => g.S.log.some((l) => re.test(l.text));
 { const g = fresh(); g.S.vars.volk_honest = true;
   const st = C.game.storylets.find((s) => s.id === "nemesis_found"); const bargain = st.choices.find((c) => c.id === "bargain");
   check("볼크가 기억하는 정직 — 흥정의 근거가 된다", (bargain.check.warn || []).includes("var volk_honest == true")); }
+// 메아리 상한 (16 §3.3): 한 장면에 하나, 넘치면 대기열 → 잠자리의 「밤의 메아리」
+{ const g = fresh(); g.at = "gf_river_huts";
+  g.echoes = [1, 2, 3, 4].map((k) => ({ when: "loop >= 1", text: `〰 메아리 ${k}`, t: g.t, R: 60 + k * 5 }));
+  const r = G.act(g, { id: "wait:60" });
+  const shown = (r.feed || []).filter((f) => f.kind === "echo" && /메아리 \d/.test(f.text));
+  check("한 장면에 메아리는 하나", shown.length === 1 && (g.P.echoQ || []).length === 3, `${shown.length} / 대기 ${(g.P.echoQ || []).length}`);
+  let night = [];
+  for (let i = 0; i < 3 && !night.length; i++) { if (G.view(g).story) { g.storyDone.add(G.view(g).story.id); g.story = null; } g.at = "gf_river_huts"; const r2 = G.act(g, { id: "sleep" }); night = (r2.feed || []).filter((f) => /밤의 메아리/.test(f.text)); }
+  check("잠자리에 — 밤의 메아리 둘까지", night.length >= 1 && night.length <= 2, night.map((f) => f.text).join(" / ")); }
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

@@ -297,6 +297,37 @@ export function options(g) {
   let mem = 0;
   return rawOptions(g).map((o) => ({ ...o, label: josa(o.label), ...(o.memory && ++mem > 3 ? { more: true } : {}) }));
 }
+// 잠긴 선택지 (GAME_DESIGN §2.4): 있는 줄은 아는데 지금은 못 하는 것 — 회색과 이유. 존재를 모르는 것은 보이지 않는다.
+// 행동 목록(options)과 따로 둔다: 고를 수 없으니 기록·재생과 상관이 없다
+export function lockedOptions(g) {
+  if (g.ended || g.fight || g.op) return [];
+  const out = [], add = (label, why) => out.push({ label: josa(label), why });
+  if (g.story) {
+    const st = SL(g, g.story.id);
+    for (const c of st.choices || []) {
+      if (c.when && !storyWhen(g, c.when)) continue;   // 조건 자체를 모르는 선택지는 숨긴다
+      if (c.needs) { const [, k, , v] = /^(\w+)\s*(>=|<=|>|<|==)\s*(\S+)$/.exec(c.needs) || []; if (k === "coin" && !(g.S.purse.player >= Number(v))) add(fill(g, c.label), `동전이 모자라다 (${v}못)`); }
+    }
+    return out;
+  }
+  if (g.convo) {
+    const shop = g.content.game.economy?.shops?.[g.convo.npc];
+    for (const gid of shop?.sells || []) { const good = g.content.game.economy.goods[gid], price = priceOf(g, g.convo.npc, gid); if (good && g.S.purse.player < price) add(`${good.name}을(를) 산다`, `${price}못이 든다`); }
+    return out;
+  }
+  // 작전: 아는 작전의 자리에 있는데 시각이나 준비가 아니다
+  for (const op of opsOf(g)) {
+    const O = g.content.game.ops[op.id]; if (!O || op.done || O.at !== g.at) continue;
+    if (op.missing.length) add(`작전 — ${O.target}`, `${op.missing.join("·")}이(가) 아직 없다`);
+    else if (!options(g).some((o) => o.id === `op_start:${op.id}`)) add(`작전 — ${O.target}`, `지금은 때가 아니다 (${O.hours?.join("~") || ""})`);
+  }
+  // 스승: 여기 있는데 아직 받아 주지 않는다
+  const here = new Set(present(g).map((w) => w.npc));
+  for (const M of g.content.game.mentors || []) if (here.has(M.npc) && !g.S.dead.has(M.npc) && g.P.met.has(M.npc) && !storyWhen(g, M.needs)) add(`${displayName(g, M.npc)}에게 ${Object.keys(M.teach).join("·")}을(를) 배운다`, "아직 받아 주지 않는다 — 믿음이 모자라다");
+  // 봉기: 밤의 광장, 준비가 모자라다
+  if (g.at === ROLLCALL && isNight(g.t) && !g.S.vars.greyford_free && !g.S.vars.rising_failed) { const n = risingReady(g).filter((x) => x.ok).length; if (n >= 1 && n < 4) add("사람들을 부른다 — 여울강이 붉어지는 날", `준비된 것이 ${n}가지뿐이다 (넷이 있어야 한다)`); }
+  return out;
+}
 // ◈ 표지: 지난 회차의 기억이 연 선택지. 세 회차 연속 고르면 표지가 빠진다 — 기억이 아니라 습관 (§7.2)
 function memMark(g, id, source) {
   const used = soul(g).memUsed?.[id] || [], L = g.run.loop;
@@ -427,7 +458,12 @@ function rawOptions(g) {
   if (g.run.loop >= 2 && recallPlan(g).length >= 2) o.push({ id: "recall", kind: "time", label: "기억대로 보낸다 — 지난 회차의 이 하루처럼 (다음 아침까지)" });
   o.push({ id: "wait:60", kind: "time", label: "한 시간 기다린다" });
   // 18 「기억대로 보낸다」: 하루를 늘 하던 대로 — 저녁 배급, 막사, 잠, 점호. 그사이 눈앞에서 일어난 일만 남는다
-  if (g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive) o.push({ id: "routine_day", kind: "time", label: "하루를 늘 하던 대로 보낸다 (배급 → 막사 → 점호)" });
+  if (g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive) {
+    o.push({ id: "routine_day", kind: "time", label: "하루를 늘 하던 대로 보낸다 (배급 → 막사 → 점호)" });
+    // 몰아서 보내기 (03 §3.3): 그 사이에도 세계는 돈다 — 무슨 일이 생기면 거기서 멈춘다
+    o.push({ id: "routine_days:3", kind: "time", more: true, label: "사흘을 늘 하던 대로 보낸다 — 일이 생기면 멈춘다" });
+    o.push({ id: "routine_days:7", kind: "time", more: true, label: "이레를 늘 하던 대로 보낸다 — 일이 생기면 멈춘다" });
+  }
   if ((g.at === HOME && g.P.settlement === SETTLEMENT) || isNight(g.t)) o.push({ id: "sleep", kind: "time", label: g.at === HOME ? "침상에 눕는다" : "이곳에서 웅크리고 잔다" });
   return o;
 }
@@ -539,7 +575,7 @@ const jidx = (g) => Number(String(g._i ?? 0).split(".")[0]) || 0;
 const uid = (g, base) => `${base}_${String(g._i ?? 0)}_${g._seq = (g._seq || 0) + 1}`;
 // entry: {i, kind:'act', id, tags?, text?} | {i, kind:'memory', npc, mems:[...]} | {i, kind:'regress'}
 export function apply(g, e, { replay = false } = {}) {
-  g.feed = []; g._i = e.i; g._seq = 0;      // 기록 번호: 실시간과 재생이 같은 값을 본다 (journal.length는 재생 때 전체 길이다)
+  g.feed = []; g._i = e.i; g._seq = 0; g._echoN = 0;      // 기록 번호: 실시간과 재생이 같은 값을 본다 (journal.length는 재생 때 전체 길이다)
   if (e.kind === "memory") { for (const m of e.mems) applyRecord(g, e.npc, m); return { kind: "memory" }; }
   if (e.kind === "narrator") { g.narrator = e.id; return { kind: "narrator" }; }   // 화자 바꾸기 (18 §4.4) — 기록에 남아 재생된다
   const res = step(g, e);
@@ -685,7 +721,7 @@ function oathsTick(g, t) {
     const broken = storyWhen(g, oa.broken, t);
     o.state = broken ? "broken" : "kept";
     for (const n of o.witnesses) bumpRel(g, n, broken ? -5 : 4, broken ? -15 : 10);
-    g.feed.push({ kind: "echo", text: broken ? `〰 "${oa.line}" — 깨졌다. ${o.witnesses.length ? `${o.witnesses.map((n) => displayName(g, n)).join(", ")} 앞에서 한 말이었다.` : "너만 안다."}` : `〰 "${oa.line}" — 지켜졌다.` });
+    echoOut(g, broken ? `〰 "${oa.line}" — 깨졌다. ${o.witnesses.length ? `${o.witnesses.map((n) => displayName(g, n)).join(", ")} 앞에서 한 말이었다.` : "너만 안다."}` : `〰 "${oa.line}" — 지켜졌다.`, 85);
   }
   // 지난 회차의 맹세 — 다시 말하지 않았어도, 조건이 맞으면 (회귀를 넘는 맹세, §5.8)
   for (const so of soul(g).oaths || []) {
@@ -693,15 +729,33 @@ function oathsTick(g, t) {
     const oa = (g.content.game.oaths || []).find((x) => x.id === so.id);
     if (!oa || t < parseDT(oa.deadline)) continue;
     g.P.oathEchoed.add(so.id);
-    if (!storyWhen(g, oa.broken, t)) g.feed.push({ kind: "echo", text: `〰 "${oa.line}" — 지켜졌다. 아무도 모른다.` });
+    if (!storyWhen(g, oa.broken, t)) echoOut(g, `〰 "${oa.line}" — 지켜졌다. 아무도 모른다.`, 75);
   }
   // 상실 (18 §3.3 L): 유대 있는 사람이 끌려가면
   for (const [v, n] of [["kit_sold", "npc_kit"], ["sara_sold", "npc_sara"], ["toby_sold", "npc_toby"]]) if (g.S.vars[v] && !(g.P.lossSeen ??= new Set()).has(v)) { g.P.lossSeen.add(v); if ((g.P.bond?.[n] || 0) >= 5 || n === "npc_kit") { DIR.loss(g, 7); DIR.crisis(g, 4); } }
   // 메아리: 네가 한 일이 세상에 닿은 순간 (원인 한 줄을 불러 준다)
   for (const ec of g.echoes || []) {
     if (ec.done || t < ec.t) continue;
-    if (storyWhen(g, [ec.when], t)) { ec.done = true; g.feed.push({ kind: "echo", text: ec.text }); }
+    if (storyWhen(g, [ec.when], t)) { ec.done = true; echoOut(g, ec.text, ec.R || 70); }
   }
+}
+// 메아리 상한 (16 §3.3): 흔하면 무뎌진다 — 한 장면에 하나, 하루에 둘(큰 메아리는 하루 하나). 넘치면 R 순 대기열 → 잠자리의 「밤의 메아리」
+function echoOut(g, text, R = 70) {
+  const day = Math.floor(g.t / 1440), D = (g.P.echoDay ??= { day, n: 0, big: 0 });
+  if (D.day !== day) Object.assign(D, { day, n: 0, big: 0 });
+  const big = R >= 80;
+  if ((g._echoN || 0) >= 1 || D.n >= 2 || (big && D.big >= 1)) { (g.P.echoQ ??= []).push({ text, R, day }); return; }
+  g._echoN = (g._echoN || 0) + 1; D.n++; if (big) D.big++;
+  g.feed.push({ kind: "echo", text });
+}
+function nightEchoes(g) {
+  const Q = g.P.echoQ || []; if (!Q.length) return;
+  const day = Math.floor(g.t / 1440);
+  for (const q of Q) q.R -= 5 * Math.max(0, day - q.day), q.day = day;   // 기다리는 동안 하루에 R −5
+  const keep = Q.filter((q) => q.R >= 50).sort((a, b) => b.R - a.R);
+  (g.P.quietEchoes ??= []).push(...Q.filter((q) => q.R < 50).map((q) => q.text));   // 조용한 메아리로 보관 (회차 비교에 남는다)
+  for (const q of keep.splice(0, 2)) g.feed.push({ kind: "echo", text: `밤의 메아리 — ${q.text.replace(/^〰\s*/, "")}` });
+  g.P.echoQ = keep;
 }
 // ── 내면의 목소리 (15) — 엔진이 고른 한 줄이 그대로 화면에 (LLM이 쓰지 않는다) ──
 function voiceWhen(g, c, e, opt) {
@@ -1670,8 +1724,10 @@ const DO = {
   },
   routine_day(g, _, res) {
     dayEnd(g);
+    nightEchoes(g);
     const start = g.t, feedAll = [];
-    const step = (fn) => { fn(); feedAll.push(...g.feed); };
+    const step = (fn) => { const from = g.feed.length; fn(); feedAll.push(...g.feed.slice(from)); };   // 새로 생긴 줄만 (같은 줄이 여러 번 쌓이지 않게)
+    feedAll.push(...g.feed);   // 하루의 끝 카드 (dayEnd)
     const ra = g.content.game.economy?.ration;
     // 1) 저녁 배급까지 (이미 지났으면 바로 막사로)
     const m = ((g.t % 1440) + 1440) % 1440;
@@ -1690,8 +1746,25 @@ const DO = {
     g.feed = feedAll;
     res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
   },
+  routine_days(g, n, res, opt, e) {
+    const QUIET = new Set(["ink", "drift", "grow", "voice", "dayend", "recap"]);
+    const feedAll = []; let done = 0, why = null;
+    for (let i = 0; i < Number(n); i++) {
+      const sub = { ...res, notes: [] };
+      g.feed = [];
+      DO.routine_day(g, null, sub, opt, e);
+      feedAll.push(...g.feed); done++;
+      const loud = g.feed.find((f) => !QUIET.has(f.kind) && !f.quiet);
+      if (g.story || g.ended || g.convo || g.fight) { why = g.ended ? "끝" : "장면"; break; }
+      if (loud) { why = loud.text; break; }
+      if (g.P.settlement !== SETTLEMENT || g.S.vars.player_fugitive) break;
+    }
+    g.feed = feedAll;
+    res.notes.push(`${done}일을 보냈다${why && done < Number(n) ? " — 거기서 멈췄다" : ""}`);
+  },
   sleep(g, _, res, opt, e) {
     dayEnd(g);
+    nightEchoes(g);   // 쉼표 — 대기열의 메아리를 둘까지
     (g.P.marks ??= []).push(jidx(g) + 1);   // 이 잠까지 포함한 기록 길이 = 깨어난 아침 (하위 걸음이어도 바깥 기록 다음)
     // 두 번째 회차부터, 첫 잠자리 전에 지난 회차를 센다 (14 §6.6)
     const cnt = SL(g, "count_before_sleep");
@@ -2558,7 +2631,7 @@ function rollcallSearch(g, day) {
     } else text += ` ${it.name}을(를) 빼앗겼다.`;
   }
   if (!found.length && !(coin >= 12)) text += " 아무것도 나오지 않았다.";
-  g.feed.push({ kind: "rule", text: josa(text) });
+  g.feed.push({ kind: "rule", text: josa(text), quiet: !found.length && !(coin >= 12 && g.S.purse.player === 0) });   // 아무것도 안 나온 몸수색은 늘 있는 일
 }
 
 // 플레이어가 아는 행방 (24 §3.6): 진짜 위치가 아니라 '늘 그 시각엔 거기' — 표류 없는 일과로 추정한다. 그래서 가끔 틀린다

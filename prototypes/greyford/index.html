@@ -327,6 +327,7 @@ function render(d, loading = false) {
   panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
     ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
     ${nameNpc.map((c) => c.input === "house" ? `<form class="free nameNpc house" data-id="${esc(c.id)}"><input placeholder="가문 이름" maxlength="10" autocomplete="off"><input placeholder="가훈 한 문장" maxlength="40" autocomplete="off"><button class="ui">세운다</button></form>` : `<form class="free nameNpc" data-id="${esc(c.id)}"><input placeholder="${esc(c.text)}" maxlength="10" autocomplete="off"><button class="ui">이름</button></form>`).join("")}
+    ${(d.locked || []).length ? `<div class="choices locked">${d.locked.map((l) => `<button class="ui" disabled title="${esc(l.why)}" style="opacity:.45">${esc(l.label)} <span style="font-size:.85em">— ${esc(l.why)}</span></button>`).join("")}</div>` : ""}
     ${more.length ? `<details class="moves"><summary>다른 행동 (${more.length})</summary><div class="choices">${more.map(btn).join("")}</div></details>` : ""}
     ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
     ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;

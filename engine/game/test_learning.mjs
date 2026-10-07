@@ -72,4 +72,19 @@ const at = (g, place, hm) => { g.at = place; if (hm != null) g.t = Math.floor(g.
   let done = false;
   for (let i = 0; i < 60 && !done; i++) { const sid = G.view(g).story?.id; if (sid === "bran_spears") { G.act(g, { id: "story:take" }); done = true; break; } if (sid) { G.act(g, { id: ids(g)[0] }); continue; } g.at = g.W.where("npc_bran", g.t)?.at || g.at; G.act(g, { id: "wait:60" }); }
   check("브란과 장면을 지나면 — '그 이야기를 아는 사이' (story:npc_bran)", done && g.S.vars["story:npc_bran"] === true); }
+// ── 잠긴 선택지 (GAME_DESIGN §2.4): 있는 줄 아는 것은 회색과 이유로 ──
+{ const g = fresh(); g.convo = { npc: "npc_henrik", turns: 0, patience: 6, transcript: [] };
+  const L = G.lockedOptions(g);
+  check("돈이 모자라면 — 살 수 없는 물건이 회색으로", L.some((l) => /위조 통행증/.test(l.label) && /못/.test(l.why)), JSON.stringify(L));
+  const r = fresh(); r.at = "gf_whip_square"; r.t = Math.floor(r.t / 1440) * 1440 + 1440 + 23 * 60; r.S.vars.bran_spears = true; r.S.vars.gunnar_trains = true;
+  const L2 = G.lockedOptions(r);
+  check("준비가 모자란 봉기 — 이유와 함께 보인다 (고를 수는 없다)", L2.some((l) => /둘|2가지/.test(l.why)) && !G.options(r).some((o) => o.id === "rising"), JSON.stringify(L2));
+  const m = fresh(); m.P.met.add("npc_gunnar"); m.at = m.W.where("npc_gunnar", m.t)?.at || m.at;
+  if (G.view(m).people.some((p) => p.id === "npc_gunnar")) check("스승이 아직 받아 주지 않는다 — 회색", G.lockedOptions(m).some((l) => /군나르/.test(l.label))); }
+// ── 몰아서 보내기 (03 §3.3) ──
+{ const g = fresh(); g.at = "gf_river_huts"; const d0 = Math.floor(g.t / 1440);
+  check("사흘·이레를 몰아서 보낼 수 있다", G.options(g).some((o) => o.id === "routine_days:7"));
+  const r = G.act(g, { id: "routine_days:7" }); const d1 = Math.floor(g.t / 1440);
+  check("세계는 그 사이에도 돈다 — 일이 생기면 멈춘다", d1 > d0 && (d1 - d0 <= 8) && (r.notes || []).some((x) => /일을 보냈다/.test(x)), `${d1 - d0}일 · ${r.notes.join(" / ")}`);
+  check("재생해도 같다", JSON.stringify(G.view(G.boot(C, JSON.parse(JSON.stringify(g.run)))).time) === JSON.stringify(G.view(g).time)); }
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);
