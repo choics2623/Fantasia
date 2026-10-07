@@ -315,6 +315,27 @@ export function planJourney(g, to, mode = "fast") {
   (g._jc ??= {})[key] = out;
   return out;
 }
+// 먼 길의 일정: 걷다가 밤(21시)이 되거나 지치면(피로 80) 노숙 — 밤이면 새벽 다섯 시까지, 낮이면 여섯 시간.
+// 걸음마다 피로 +3/시, 잠은 −12/시 (pass와 같은 셈). 같은 출발 시각·같은 피로면 같은 일정 — 재생해도 같다
+export function journeySchedule(g, plan) {
+  let t = g.t, f = g.P.status.fatigue;
+  const steps = [];
+  const hm = (x) => ((x % 1440) + 1440) % 1440;
+  for (const [i, L] of plan.legs.entries()) {
+    let rest = Math.round(legHours(L) * 60);
+    while (rest > 0) {
+      const m = hm(t), night = m >= 21 * 60 || m < 5 * 60;
+      const toNight = night ? 120 : 21 * 60 - m, toTired = Math.max(30, Math.round(((80 - f) / 3) * 60));
+      const walk = Math.min(rest, Math.max(30, Math.min(toNight, toTired)));
+      steps.push({ walk, leg: i }); rest -= walk; t += walk; f = Math.min(100, f + Math.round(walk / 60) * 3);
+      if (rest <= 0) break;
+      const m2 = hm(t), camp = m2 >= 18 * 60 || m2 < 5 * 60 ? ((5 * 60 - m2 + 1440) % 1440 || 1440) : 360;
+      steps.push({ camp, leg: i }); t += camp; f = Math.max(0, f - Math.round(camp / 60) * 12);
+    }
+  }
+  const camps = steps.filter((x) => x.camp).length, total = t - g.t;
+  return { steps, camps, total, walk: steps.reduce((a, x) => a + (x.walk || 0), 0) };
+}
 function travels(g) {
   const st = g.content.bundle.settlements[g.P.settlement]; if (!st) return [];
   const here = g.W.loc.get(g.at);
@@ -492,9 +513,11 @@ function rawOptions(g) {
     if (sid === g.P.settlement || near.has(sid)) continue;
     const fast = planJourney(g, st.node, "fast"); if (!fast) continue;
     const desert = g.P.settlement === SETTLEMENT ? " — 탈주" : "";
-    o.push({ id: `journey:${sid}:fast`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 빠른 길 (${fast.hours}시간)${desert}`, minutes: Math.round(fast.hours * 60), risk: fast.passNeeded ? "통행증 없이 검문을 지난다" : fast.danger >= 4 ? "위험한 길목이 있다" : fast.unknownLegs ? "모르는 땅을 물어 가며 간다" : desert ? "점호에 두 번 빠지면 탈주 노예" : null });
+    const way = (p) => { const sc = journeySchedule(g, p); return { txt: `걸어서 ${p.hours}시간${sc.camps ? ` · 노숙 ${sc.camps}밤` : ""}`, minutes: sc.total }; };
+    const wf = way(fast);
+    o.push({ id: `journey:${sid}:fast`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 빠른 길 (${wf.txt})${desert}`, minutes: wf.minutes, risk: fast.passNeeded ? "통행증 없이 검문을 지난다" : fast.danger >= 4 ? "위험한 길목이 있다" : fast.unknownLegs ? "모르는 땅을 물어 가며 간다" : desert ? "점호에 두 번 빠지면 탈주 노예" : null });
     const safe = planJourney(g, st.node, "safe");
-    if (safe && safe.path.join() !== fast.path.join()) o.push({ id: `journey:${sid}:safe`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 돌아가는 길 (${safe.hours}시간)${desert}`, minutes: Math.round(safe.hours * 60), risk: safe.passNeeded ? "통행증 없이 검문을 지난다" : null });
+    if (safe && safe.path.join() !== fast.path.join()) { const ws = way(safe); o.push({ id: `journey:${sid}:safe`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 돌아가는 길 (${ws.txt})${desert}`, minutes: ws.minutes, risk: safe.passNeeded ? "통행증 없이 검문을 지난다" : null }); }
   }
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
   // 가르친다 (12 §7.2): 세 살부터, 움막에서 — 아이는 제자이기도 하다
@@ -1910,25 +1933,37 @@ const DO = {
   journey(g, arg, res) {
     const [sid, mode] = arg.split(":"); const st = g.content.bundle.settlements[sid];
     const plan = st && planJourney(g, st.node, mode || "fast"); if (!plan) { res.notes.push("가는 길을 모른다"); return; }
-    const from = g.P.settlement;
-    for (const L of plan.legs) {
-      g.P.traveling = true; pass(g, Math.round(legHours(L) * 60)); g.P.traveling = false;
-      (g.P.knownNodes ??= []).includes(L.to) || g.P.knownNodes.push(L.to);
-      if (g.ended) return;
+    const from = g.P.settlement, sc = journeySchedule(g, plan);
+    let leg = -1, camps = 0;
+    const roadEvent = (L, i) => {
       // 위험한 길목 (위험 3 이상): 순찰·짐승·검문 — 통행증이 있으면 지나가고, 없으면 은신으로 피한다
-      if (L.danger >= 3 && hash(g.seed, "road", L.from, L.to, String(g._i)) < 0.05 * (L.danger - 2) * (isNight(g.t) ? 1.5 : 1)) {
-        const papers = hasTag(g, "통행증") && /통행증/.test(L.cond || "");
-        const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2, 25 + L.danger * 6);
-        if (papers || hash(g.seed, "road-hide", L.from, String(g._i)) < P) res.notes.push(papers ? "길목의 순찰이 통행증을 본다. 지나간다" : "길목에 횃불이 있다. 덤불에 엎드려 지나갈 때까지 기다린다");
-        else if (/통행증/.test(L.cond || "")) { g.ended = { kind: "captured", why: "길목의 검문에 걸렸다 — 통행증이 없는 인간은 탈주 노예다", t: g.t, trace: { id: "rope" } }; return; }
-        else { g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100); res.notes.push("길에서 짐승을 만났다. 달아났지만 다리에 상처가 남았다"); }
+      if (L.danger < 3 || hash(g.seed, "road", L.from, L.to, String(g._i)) >= 0.05 * (L.danger - 2) * (isNight(g.t) ? 1.5 : 1)) return;
+      const papers = hasTag(g, "통행증") && /통행증/.test(L.cond || "");
+      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2, 25 + L.danger * 6);
+      if (papers || hash(g.seed, "road-hide", L.from, String(g._i)) < P) res.notes.push(papers ? "길목의 순찰이 통행증을 본다. 지나간다" : "길목에 횃불이 있다. 덤불에 엎드려 지나갈 때까지 기다린다");
+      else if (/통행증/.test(L.cond || "")) g.ended = { kind: "captured", why: "길목의 검문에 걸렸다 — 통행증이 없는 인간은 탈주 노예다", t: g.t, trace: { id: "rope" } };
+      else { g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100); res.notes.push("길에서 짐승을 만났다. 달아났지만 다리에 상처가 남았다"); }
+    };
+    for (const step of sc.steps) {
+      const L = plan.legs[step.leg];
+      g.P.traveling = true;
+      if (step.walk) pass(g, step.walk);
+      else {
+        // 노숙: 굶었으면 지닌 먹을 것을 먹고, 잔다. 위험한 땅에서는 밤에 무언가가 불가로 온다
+        if (g.P.status.hunger >= 3) { const food = mine(g).find((it) => it.eat); if (food) { g.P.status.hunger = clamp(g.P.status.hunger + (food.eat.hunger || -1), 0, 4); g.L.items.delete(food.id); res.notes.push(`불가에서 ${food.name}을(를) 먹었다`); } }
+        pass(g, step.camp, { sleeping: true }); camps++;
+        if (L.danger >= 3 && hash(g.seed, "camp", L.from, String(camps), String(g._i)) < 0.04 * (L.danger - 2)) { g.P.status.pain = clamp(g.P.status.pain + 10, 0, 100); res.notes.push("밤에 무언가가 불가로 다가왔다. 불붙은 가지를 휘둘러 쫓았다"); }
       }
+      g.P.traveling = false;
+      if (g.ended) return;
+      // 한 구간을 다 걸었으면: 그 길목의 일, 지나온 곳은 아는 곳
+      const done = step.walk && !sc.steps.slice(sc.steps.indexOf(step) + 1).some((x) => x.leg === step.leg && x.walk);
+      if (done && step.leg > leg) { leg = step.leg; (g.P.knownNodes ??= []).includes(L.to) || g.P.knownNodes.push(L.to); roadEvent(L, step.leg); if (g.ended) return; }
     }
-    if (g.ended) return;
     g.P.settlement = sid; g.at = entryOf(g, sid); g._local = null;
     (g.P.visited ??= []).includes(sid) || g.P.visited.push(sid);
     g.L.setActive([sid]);
-    res.notes.push(`${plan.legs.length}구간, ${plan.hours}시간을 걸어 ${st.name}에 닿았다`);
+    res.notes.push(`${plan.legs.length}구간, 걸어서 ${plan.hours}시간${camps ? `, 노숙 ${camps}밤` : ""} — ${st.name}에 닿았다`);
     if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
     checkpoint(g, res, 0.35);
   },
@@ -3007,13 +3042,22 @@ export function mapView(g) {
     return { id: l.id, name: l.name, xy: l.xy, kind: l.kind || null, access: acc, here: g.at === l.id || top(g.at) === l.id,
       secret: acc === "secret" && !g.P.knowsPlaces.has(l.id), people: people.filter((p) => p.at && top(p.at) === l.id).map((p) => p.name) };
   }).filter((l) => !l.secret);
-  const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours, dir: o.dir || null }));
+  // 고장 밖으로 나가는 길: 지도에서 그쪽 방향 (그 노드가 있으면 노드 쪽, 이름에 방위가 있으면 그 방위)
+  const homeN = M.nodes.find((n) => n.id === st?.node);
+  const angleOf = (o) => {
+    const n = M.nodes.find((x) => x.id === o.id || o.id.startsWith(x.id + "__"));
+    if (n && homeN && n.id !== homeN.id) return Math.round(Math.atan2(n.y - homeN.y, n.x - homeN.x) * 180 / Math.PI);
+    const w = /서쪽|서녘/.test(o.name) ? 180 : /북쪽/.test(o.name) ? -90 : /동쪽/.test(o.name) ? 0 : /남쪽/.test(o.name) ? 90 : null;
+    return w;
+  };
+  const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours, angle: angleOf(o), here: g.at === o.id || top(g.at) === o.id }));
   const visited = new Set([SETTLEMENT, ...(g.P.visited || [])]);
   const nodeOfS = (sid) => g.content.bundle.settlements[sid]?.node;
   const remembered = new Set((soul(g).visitedSettlements || []).map(nodeOfS).filter(Boolean));
   const visitedNodes = new Set([...visited].map(nodeOfS).filter(Boolean));
   const heard = new Set(); for (const f of g.P.knows) for (const n of M.nodes) if ((g.content.facts[f]?.text || "").includes(n.name)) heard.add(n.id);
-  const K = knownNodes(g), here = nodeOfS(g.P.settlement);
+  // 고장 밖의 장소(오물 습지처럼 지도의 노드이기도 한 곳)에 있으면 대륙 지도의 말도 거기에
+  const K = knownNodes(g), outNode = M.nodes.find((n) => g.at === n.id || String(g.at).startsWith(n.id + "__")), here = outNode?.id || nodeOfS(g.P.settlement);
   const sidOfNode = Object.fromEntries(Object.entries(g.content.bundle.settlements).map(([sid, s2]) => [s2.node, sid]));
   // 안개: 모르는 곳은 자리만 (이름·설명 없이) — 지도 가장자리의 빈칸
   const nodes = M.nodes.map((n) => { const known = K.has(n.id); return { id: n.id, x: n.x, y: n.y, known, name: known ? n.name : null, type: known ? n.type || n.kind || null : null, desc: known && (visitedNodes.has(n.id) || remembered.has(n.id)) ? n.desc || null : null,
@@ -3028,12 +3072,12 @@ export function mapView(g) {
     if (sid === g.P.settlement || !K.has(s2.node)) continue;
     const fast = planJourney(g, s2.node, "fast"), safe = planJourney(g, s2.node, "safe");
     if (!fast) continue;
-    const brief = (p) => p && { hours: p.hours, risk: p.risk, danger: p.danger, path: p.path, passNeeded: p.passNeeded, unknownLegs: p.unknownLegs };
+    const brief = (p) => { if (!p) return null; const sc = journeySchedule(g, p); return { hours: p.hours, risk: p.risk, danger: p.danger, path: p.path, passNeeded: p.passNeeded, unknownLegs: p.unknownLegs, camps: sc.camps, total: Math.round(sc.total / 6) / 10 }; };
     journeys.push({ settlement: sid, node: s2.node, name: s2.name, travel: ids.has(`travel:${sid}`) ? `travel:${sid}` : null,
       fast: { ...brief(fast), id: ids.has(`journey:${sid}:fast`) ? `journey:${sid}:fast` : null },
       safe: safe && safe.path.join() !== fast.path.join() ? { ...brief(safe), id: ids.has(`journey:${sid}:safe`) ? `journey:${sid}:safe` : null } : null });
   }
-  return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, locations: locs, outer, people, goable: [...ids].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
+  return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, features: st?.features || null, locations: locs, outer, people, goable: [...ids].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
     world: { nodes, edges, here, regions: M.regions || [], terrain: M.terrain || {}, journeys, deserter: g.P.settlement === SETTLEMENT },
     clock: (() => { const c = fromMinutes(g.t); return { hm: `${String(c.hh).padStart(2, "0")}:${String(c.mm).padStart(2, "0")}`, night: isNight(g.t) }; })() };
 }

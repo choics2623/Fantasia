@@ -15,7 +15,7 @@ const fresh = (seed = 7, extra = {}) => G.boot(C, { ...G.newRun({ seed, opening:
   check("통행증이 없으면 검문 구간을 안다", f.passNeeded === true);
   check("모르는 곳으로는 계획이 없다 (안개)", G.planJourney(g, "seren", "fast") === null);
   const opts = G.options(g).filter((o) => o.kind === "journey");
-  check("먼 길은 지도에서 고르는 행동으로 (more)", opts.some((o) => o.id === "journey:baalkar:fast" && o.more && o.minutes === 44 * 60), opts.map((o) => o.id).join(" "));
+  check("먼 길은 지도에서 고르는 행동으로 (more, 노숙 포함 시간)", opts.some((o) => o.id === "journey:baalkar:fast" && o.more && o.minutes > 44 * 60 && /노숙/.test(o.label)), opts.map((o) => `${o.id} ${o.label}`).join(" / "));
   G.act(g, { id: "wait:60" });   // 상태를 흔들어도 같은 답 (캐시가 낡지 않는다)
   g.L.give("player", { ...C.game.economy.goods.forged_pass, id: "it_test_pass", gid: "forged_pass" });
   const f2 = G.planJourney(g, "baalkar", "fast");
@@ -43,12 +43,17 @@ const fresh = (seed = 7, extra = {}) => G.boot(C, { ...G.newRun({ seed, opening:
   check("비밀 길은 가 보지 않으면 모른다", G.planJourney(g4, "t_goal", "fast").hours !== 2); }
 
 // ── 먼 길을 떠난다 ──
-{ const g = fresh(5); g.at = "gf_river_huts"; const t0 = g.t; g.P.status.hunger = 0;
-  const plan = G.planJourney(g, "baalkar", "fast");
+{ // 닿는 판을 하나 고른다 (도착 검문에 걸리는 시드도 있다)
+  let seed = 5; for (let sd = 1; sd < 40; sd++) { const x = fresh(sd); x.at = "gf_river_huts"; x.L.give("player", { ...C.game.economy.goods.forged_pass, id: "it_pass_t", gid: "forged_pass" }); G.act(x, { id: "journey:baalkar:fast" }); if (!x.ended) { seed = sd; break; } }
+  const g = fresh(seed); g.at = "gf_river_huts"; const t0 = g.t; g.P.status.hunger = 0;
+  g.L.give("player", { ...C.game.economy.goods.forged_pass, id: "it_pass_t", gid: "forged_pass" });
+  const plan = G.planJourney(g, "baalkar", "fast"), sc = G.journeySchedule(g, plan);
+  check("먼 길의 일정: 밤에는 노숙한다 (44시간 길 = 걸음 44시간 + 밤 둘 이상)", sc.walk === 44 * 60 && sc.camps >= 2 && sc.total > sc.walk, `walk ${sc.walk / 60}h camps ${sc.camps} total ${(sc.total / 60).toFixed(1)}h`);
   const res = G.act(g, { id: "journey:baalkar:fast" });
-  check("도착하거나, 길목에서 붙잡히거나", g.P.settlement === "baalkar" || g.ended?.kind === "captured", `${g.P.settlement} ${g.ended?.kind || ""} ${res.notes.join(" / ")}`);
-  if (!g.ended) {
-    check("걸린 시간 ≈ 계획 시간", Math.abs((g.t - t0) / 60 - plan.hours) < 1, `${((g.t - t0) / 60).toFixed(1)}h vs ${plan.hours}h`);
+  check("통행증을 지니고 가면 닿는다 (도착 검문을 넘긴 판)", g.P.settlement === "baalkar" && !g.ended, `seed ${seed} ${g.P.settlement} ${g.ended?.kind || ""} ${res.notes.join(" / ")}`);
+  {
+    check("걸린 시간 = 일정 (걸음 + 노숙)", Math.abs((g.t - t0) - sc.total) < 2, `${((g.t - t0) / 60).toFixed(1)}h vs ${(sc.total / 60).toFixed(1)}h`);
+    check("노숙하며 갔으니 쓰러질 만큼 지치지는 않았다", g.P.status.fatigue < 90, `피로 ${g.P.status.fatigue}`);
     check("지나온 곳은 이제 아는 곳", (g.P.knownNodes || []).includes("dragon_pillar_post"));
     check("길 위에서는 고장의 장면이 열리지 않는다 (그 자리에 없다)", !g.story || g.P.settlement === "baalkar"); }
   // 같은 시드·같은 기록이면 같은 길 (재생)

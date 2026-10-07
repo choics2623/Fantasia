@@ -80,6 +80,13 @@ const server = http.createServer(async (req, res) => {
       if (url.searchParams.get("key") === ACCESS_KEY) headers["set-cookie"] = `fkey=${ACCESS_KEY}; Path=/; Max-Age=31536000; SameSite=Strict`;
       res.writeHead(200, headers); return res.end(await readFile(join(HERE, "index.html")));
     }
+    // 화면 조각 (ui/ — 스타일·스크립트·지도·체스말)
+    if (req.method === "GET" && /^\/ui\/[\w-]+\.(js|css)$/.test(url.pathname)) {
+      const f = join(HERE, url.pathname.slice(1));
+      if (!existsSync(f)) { res.writeHead(404); return res.end(); }
+      res.writeHead(200, { "content-type": url.pathname.endsWith(".css") ? "text/css; charset=utf-8" : "text/javascript; charset=utf-8", "cache-control": "no-cache" });
+      return res.end(await readFile(f));
+    }
     // 삽화 (19 §9 — tools/woodcut.py가 만든 목판화 SVG)
     if (req.method === "GET" && /^\/art\/[\w-]+\.svg$/.test(url.pathname)) {
       const f = join(ROOT, "assets/illustrations", url.pathname.slice(5));

@@ -1,473 +1,81 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="night">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
 <title>회색여울</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500&display=swap">
-<style>
-:root {
-  --bg: #12100e; --bg-2: #1b1815; --bg-3: #24201b; --line: #3a332b;
-  --ink: #e2d8c5; --ink-soft: #a89c88; --ink-faint: #6f6556;
-  --gold: #c9a35c; --rust: #b4532f; --frost: #8fb3c4; --bad: #c46a5a;
-  --body: "Gowun Batang", "Nanum Myeongjo", "Batang", serif;
-  --ui: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; background: var(--bg); color: var(--ink); }
-body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bottom: env(safe-area-inset-bottom, 0px); }
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 16px; }
-.top .row { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; max-width: 760px; margin: 0 auto; }
-.top .when { font-weight: 700; }
-.top .where { color: var(--ink-soft); }
-.chips { display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.72rem; margin-left: auto; }
-.chip { border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.chip.hot { border-color: var(--rust); color: #e7b6a4; }
-.wrap { max-width: 760px; margin: 0 auto; padding: 14px 16px 40px; }
-/* 읽기: 한 줄 35자 안팎, 문단 사이 숨, 턴은 덩어리로 — 지난 턴은 흐리게, 지금 턴만 또렷하게 */
-.story { max-width: 640px; margin: 0 auto; font-size: 1.06rem; line-height: 1.9; word-break: keep-all; overflow-wrap: anywhere; }
-.turn { padding: 18px 0 6px; border-top: 1px solid var(--line); transition: opacity .3s; }
-.turn:first-child { border-top: 0; }
-.turn.past { opacity: .55; }
-.turn.past:hover { opacity: .9; }
-.story p { margin: 0 0 1.05em; }
-.story .player { font-family: var(--ui); font-size: .86rem; color: var(--gold); margin: 0 0 .9em; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
-.story .player::before { content: "▸"; }
-.story .player .tier { color: var(--ink-faint); font-size: .74rem; letter-spacing: .04em; }
-.story .eng { color: var(--ink-soft); font-size: .94rem; font-style: italic; }
-.story .live { white-space: pre-wrap; }
-.story p { white-space: pre-line; }
-/* 기억 잉크 (14 §6.5): 지난 회차의 일 — 흐린 회색 기울임, 가는 점선 막대 */
-.story .ink { color: var(--ink-faint); font-style: italic; border-left: 1px dashed var(--ink-faint); padding-left: 10px; }
-.story .ink.drift { color: var(--frost); }
-/* 목소리 (15 §19 서체): 머릿속의 다른 사람 — 이름표를 달고, 다른 서체로 */
-.story .voice { font-family: var(--ui); font-size: .9rem; color: #b9a6d6; padding-left: 10px; border-left: 2px solid #5d4c78; }
-.story .voice .who { display: block; font-size: .68rem; letter-spacing: .08em; color: #7d6d96; }
-.story .echo { font-family: var(--ui); font-size: .84rem; color: var(--frost); }
-.story .recap { font-family: var(--ui); font-size: .84rem; color: var(--ink-soft); background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 6px 10px; }
-.story .dayend { margin-top: 18px; padding: 14px 0 4px; border-top: 1px dashed var(--line); font-style: italic; color: var(--ink-soft); }
-.story .dayend .card { display: block; font-style: normal; font-family: var(--ui); font-size: .72rem; color: var(--ink-faint); margin-top: 8px; letter-spacing: .03em; }
-.pane .book { margin: 4px 0 2px; font-size: .82rem; color: var(--ink-soft); }
-.pane .book .lk { color: var(--frost); }
-.pane .memo { width: 100%; margin-top: 4px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 4px 6px; font-family: var(--ui); font-size: .78rem; }
-.story .grow { font-family: var(--ui); font-size: .76rem; color: var(--gold); letter-spacing: .03em; }
-.story .inner { font-family: var(--ui); font-style: italic; color: var(--ink-soft); font-size: .92em; }
-.story .cut::after { content: ""; }
-/* 죽음에서 회귀까지 (14 §4.1) */
-.veil { position: fixed; inset: 0; z-index: 30; background: #000; color: #8d8577; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 20px; text-align: center; font-family: var(--body); cursor: pointer; }
-.veil .rec { max-width: 420px; text-align: left; font-size: .98rem; line-height: 1.8; color: #8d8577; transition: opacity .6s, filter .6s; }
-.veil .rec p { margin: 0 0 .9em; white-space: pre-line; }
-.veil .rec.ash, .veil .fold.ash { opacity: 0; filter: blur(6px); }
-.veil .fold { height: 40vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; font-family: var(--ui); font-size: .9rem; color: #b7ae9f; letter-spacing: .04em; mask-image: linear-gradient(transparent, #000 40%); -webkit-mask-image: linear-gradient(transparent, #000 40%); }
-.veil .fold div::after { content: ""; display: block; height: 1px; margin: 6px auto 0; width: 60%; border-top: 1px dotted #3a352e; }
-.veil .plate { position: absolute; inset: 0; margin: auto; max-height: 72vh; max-width: 88vw; opacity: 0; transition: opacity 1.6s ease; pointer-events: none; filter: grayscale(.2); }
-.veil .plate.on { opacity: .22; }
-.veil .god { position: absolute; bottom: calc(14vh + env(safe-area-inset-bottom, 0px)); font-size: .78rem; color: #6d665b; letter-spacing: .06em; }
-.veil .smell p { margin: 0 0 14px; font-size: 1.3rem; color: #d9cfbd; }
-.veil .smell .inner { font-family: var(--ui); font-style: italic; font-size: .95rem; color: #8d8577; }
-.veil .hint { position: absolute; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); font-family: var(--ui); font-size: .7rem; color: #4a453d; }
-body.ashing .story, body.ashing #panel, body.ashing .people { transition: opacity 2.4s, filter 2.4s, letter-spacing 2.4s; opacity: 0; filter: blur(4px); letter-spacing: .3em; }
-@media (min-width: 700px) { .story { font-size: 1.1rem; } }
-.story hr { border: 0; border-top: 1px dashed var(--line); margin: 16px 0; }
-.people { max-width: 640px; margin-left: auto; margin-right: auto; display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.78rem; margin: 6px 0 14px; }
-.people span { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; color: var(--ink-soft); }
-.people b { color: var(--ink); font-weight: 500; }
-#panel { max-width: 640px; margin: 0 auto; }
-.group h3 { font-family: var(--ui); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-faint); margin: 14px 0 6px; }
-.choices { display: grid; gap: 8px; }
-.choice { text-align: left; font-family: var(--body); font-size: 1rem; line-height: 1.5; padding: 10px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--ink); cursor: pointer; display: grid; gap: 3px; }
-.choice:hover, .choice:focus-visible { border-color: var(--gold); outline: none; }
-.choice .band { font-family: var(--ui); font-size: 0.7rem; color: var(--ink-soft); display: flex; gap: 8px; flex-wrap: wrap; }
-.choice .band .risk { color: var(--rust); }
-.crow { display: flex; gap: 6px; align-items: stretch; }
-.crow .choice { flex: 1; min-width: 0; }
-.crow .q { font-family: var(--ui); font-size: .8rem; color: var(--ink-faint); background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 0 10px; cursor: pointer; }
-.crow .q[aria-expanded=true] { color: var(--gold); border-color: var(--gold); }
-.why { font-family: var(--ui); font-size: .76rem; color: var(--ink-soft); background: var(--bg); border: 1px dashed var(--line); border-radius: 4px; padding: 6px 10px; margin-top: -2px; }
-.why div { line-height: 1.6; }
-.why .up { color: #9cc29a; } .why .down { color: var(--bad); } .why .unk { color: var(--frost); }
-.mem { color: var(--frost); font-family: var(--ui); font-size: .8em; margin-right: 4px; }
-.pane li .past { display: block; color: var(--ink-faint); font-size: .84rem; }
-details.moves summary { cursor: pointer; font-family: var(--ui); font-size: 0.8rem; color: var(--ink-soft); margin: 12px 0 6px; }
-.moves .choices { grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); }
-.moves .choice { font-size: 0.92rem; padding: 8px 10px; }
-.free { display: flex; gap: 8px; margin-top: 14px; }
-.free input { flex: 1; min-width: 0; font-family: var(--body); font-size: 1rem; background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; }
-button.ui { font-family: var(--ui); font-size: 0.8rem; background: var(--bg-3); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; cursor: pointer; }
-button.ui:hover { border-color: var(--gold); }
-.busy { font-family: var(--ui); font-size: 0.78rem; color: var(--frost); min-height: 1.2em; margin-top: 8px; }
-.broken, .ended { border: 1px solid #5b3a2c; background: #1f1512; border-radius: 6px; padding: 14px 16px; margin: 14px 0; }
-.broken .sub, .ended .sub { font-family: var(--ui); font-size: 0.78rem; color: var(--ink-soft); margin: 4px 0 10px; }
-[hidden] { display: none !important; }
-.goals { max-width: 760px; margin: 4px auto 0; display: flex; gap: 6px 14px; flex-wrap: wrap; font-family: var(--ui); font-size: 0.74rem; color: var(--ink-soft); }
-.goals b { color: var(--ink); font-weight: 500; }
-.goals .d { color: #e7b6a4; font-variant-numeric: tabular-nums; }
-.people .who { color: var(--ink-faint); }
-.namebox { display: grid; gap: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 6px; padding: 14px; }
-.namebox label { font-family: var(--ui); font-size: 0.78rem; color: var(--ink-soft); }
-.namebox input[type=text] { font-family: var(--body); font-size: 1.1rem; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; }
-.namebox .sib { display: flex; gap: 14px; font-family: var(--ui); font-size: 0.86rem; }
-.map .tabs { display: flex; gap: 6px; margin: 10px 0; }
-.map .tabs button[aria-pressed=true] { border-color: var(--gold); color: var(--gold); }
-.map svg { width: 100%; height: auto; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; display: block; }
-.map svg text { font-family: var(--ui); fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
-.map .loc { cursor: default; }
-.map .loc.go { cursor: pointer; }
-.map .loc.go:hover circle { stroke: var(--gold); }
-.map .legend { font-family: var(--ui); font-size: 0.72rem; color: var(--ink-faint); margin: 6px 0; }
-.map ul.outer li { cursor: default; }
-.map ul.outer li.go { cursor: pointer; color: var(--ink); }
-.map ul.outer li.go:hover { color: var(--gold); }
-.drawer { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: flex; justify-content: flex-end; z-index: 10; }
-.drawer .pane { width: min(420px, 100%); height: 100%; overflow: auto; background: var(--bg-2); border-left: 1px solid var(--line); padding: 16px; padding-top: calc(16px + env(safe-area-inset-top, 0px)); }
-.pane h2 { font-family: var(--ui); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 8px; }
-.pane ul { margin: 0; padding-left: 18px; font-size: 0.92rem; line-height: 1.55; }
-.pane li.past { color: var(--frost); }
-.pane pre { white-space: pre-wrap; word-break: break-word; font-family: var(--ui); font-size: 0.7rem; color: var(--ink-soft); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px; max-height: 300px; overflow: auto; }
-.row-btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.row-btns input { flex: 1; min-width: 0; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; font-family: var(--ui); }
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500&family=Song+Myung&display=swap">
+<link rel="stylesheet" href="/ui/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.5a2.4 2.4 0 0 1 1.3 4.4l.9.8H5.8l.9-.8A2.4 2.4 0 0 1 8 1.5ZM6.4 7.4h3.2l.7 4.6h1.4l.8 2.5H3.5l.8-2.5h1.4Z' fill='%23c4473c'/%3E%3C/svg%3E">
 </head>
-<body>
-<div class="top"><div class="row">
-  <span class="when" id="when">…</span><span class="where" id="where"></span>
-  <span class="chips" id="chips"></span>
-  <button class="ui" id="mapBtn" aria-label="지도">지도</button>
-  <button class="ui" id="menuBtn" aria-label="수첩과 저장">수첩</button>
-</div><div class="goals" id="goals"></div></div>
-<div class="wrap">
-  <div class="story" id="story"></div>
-  <div class="people" id="people"></div>
-  <div id="panel"></div>
-  <div class="busy" id="busy" aria-live="polite"></div>
+<body class="dim-past">
+<a class="sr" href="#dock">선택지로 건너뛰기</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="clock" aria-live="polite"><span class="d" id="clockD">…</span><span class="t" id="clockT"></span></div>
+    <div class="placebox"><span id="placePawn"></span><span class="tx"><span class="pn" id="placeN"></span><span class="ps" id="placeS"></span></span></div>
+    <div class="vitals" id="vitals"></div>
+    <div class="tb-btns">
+      <button class="btn" id="mapBtn" aria-label="지도 (M)">🗺<span class="lbl">지도</span><kbd>M</kbd></button>
+      <button class="btn" id="bookBtn" aria-label="수첩 (N)">📜<span class="lbl">수첩</span><kbd>N</kbd></button>
+      <button class="btn" id="setBtn" aria-label="설정과 저장">⚙</button>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+</header>
+<nav class="strip" id="strip" aria-label="이 자리의 사람들"></nav>
+<div class="layout">
+  <main class="main">
+    <div class="story" id="story" aria-live="polite"></div>
+    <div class="busy" id="busy" aria-live="polite"></div>
+    <div class="dock" id="dock"></div>
+  </main>
+  <aside class="aside" id="aside" aria-label="장면">
+    <section class="card" id="asideScene"></section>
+    <section class="card" id="asideHunt" hidden></section>
+    <section class="card" id="asideGoals" hidden></section>
+    <section class="card" id="asideMap" hidden><h3><span>약도</span></h3><div class="minimap" id="miniMap" role="button" tabindex="0" aria-label="지도 열기"></div><div class="mini-cap" id="miniCap"></div></section>
+    <section class="card" id="asideBody"></section>
+  </aside>
 </div>
-<div class="drawer" id="drawer" hidden><div class="pane">
-  <div class="row-btns"><button class="ui" id="closeDrawer">닫기</button></div>
-  <h2 data-sec="secNotes" id="notesH">수첩 — 회귀해도 남는다</h2><ul id="notes" data-sec="secNotes"></ul>
-  <h2 id="oathH" hidden>맹세</h2><ul id="oaths" hidden></ul>
-  <h2 id="famH" hidden>가족</h2><div id="fam" hidden class="book"></div>
-  <h2 id="tnH" hidden>진명</h2><div id="tn2" hidden class="book"></div>
-  <h2 id="domH" hidden>영역</h2><div id="dom" hidden class="book"></div>
-  <h2 id="hideH" hidden>숨긴 곳</h2><div id="hide" hidden class="book"></div>
-  <h2 id="opsH" hidden>작전</h2><div id="ops" hidden class="book"></div>
-  <h2 id="riseH" hidden>여울강이 붉어지는 날</h2><div id="rise" hidden class="book"></div>
-  <h2 id="succH" hidden>용좌의 그림자</h2><div id="succ" hidden class="book"></div>
-  <h2 id="talH" hidden>재능과 새긴 것</h2><div id="tal" hidden class="book"></div>
-  <h2 id="huntH" hidden>사냥꾼 판</h2><div id="hunt" hidden class="book"></div>
-  <h2 id="wallH" hidden>기억의 벽</h2><div id="wall" hidden class="book"></div>
-  <h2 data-sec="secWhom">아는 사람들 — 지금 어디쯤</h2><ul id="whom" data-sec="secWhom"></ul>
-  <h2 data-sec="secItems">소지품 — 몸의 어디에</h2><ul id="items" data-sec="secItems"></ul>
-  <h2 id="twoH" hidden>두 겹의 날</h2><div id="two" hidden class="book"></div>
-  <h2>몸과 손</h2><ul id="skills"></ul>
-  <h2>낱말</h2><ul id="lex"></ul>
-  <h2 data-sec="secRep">평판 — 사람들이 나를 어떻게 말하나</h2><ul id="rep" data-sec="secRep"></ul>
-  <h2>저장</h2>
-  <div class="row-btns"><input id="slotName" placeholder="칸 이름" value="칸1"><button class="ui" id="saveBtn">저장</button></div>
-  <div class="row-btns" id="slots" style="margin-top:8px"></div>
-  <h2>누가 이 이야기를 기억하는가</h2>
-  <div class="row-btns"><select id="narr" class="ui"><option value="silent_god">침묵하는 신 — 세계는 제 무게대로</option><option value="old_teller">늙은 이야기꾼 — 쉬어 가며 하마</option><option value="ash_teller">재의 화자 — 가장 나쁜 때에 불탄다</option><option value="dice">주사위 — 뼈가 던져진 대로</option></select><button class="ui" id="narrBtn">이 화자로</button></div>
-  <div class="row-btns" style="margin-top:8px"><button class="ui" id="newBtn">새 판 — 그림다크</button><button class="ui" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
-  <div class="row-btns" style="margin-top:8px"><button class="ui" id="rewindBtn" hidden>마지막 아침으로 되돌린다</button></div>
-  <h2 data-dbg>엔진 기록 (판정·검증)</h2><pre id="debug" data-dbg>—</pre>
-</div></div>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet-pane">
+    <div class="sheet-head"><h2 id="sheetTitle">수첩</h2><button class="btn" id="closeSheet" aria-label="닫기">닫기 <kbd>Esc</kbd></button></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="memory">기억</button>
+      <button class="tab" role="tab" data-tab="people">사람</button>
+      <button class="tab" role="tab" data-tab="body">몸</button>
+      <button class="tab" role="tab" data-tab="world">세상</button>
+      <button class="tab" role="tab" data-tab="settings">설정</button>
+    </div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+
+<div class="mapview" id="mapview" hidden role="dialog" aria-modal="true" aria-labelledby="mapTitle">
+  <div class="map-head">
+    <h2 id="mapTitle">지도</h2>
+    <span class="seg"><button type="button" id="tabTown" aria-pressed="true">이 고장</button><button type="button" id="tabWorld" aria-pressed="false">대륙</button></span>
+    <span class="sp"></span>
+    <button class="btn" id="closeMap" aria-label="닫기">닫기 <kbd>Esc</kbd></button>
+  </div>
+  <div class="map-stage" id="mapStageWrap" style="position:relative">
+    <div id="mapStage" style="position:absolute;inset:0"></div>
+    <div class="legend" id="legend"></div>
+    <div class="map-tools">
+      <button class="btn" id="zIn" aria-label="확대">＋</button>
+      <button class="btn" id="zOut" aria-label="축소">－</button>
+      <button class="btn" id="zMe" aria-label="내 자리로">◎</button>
+      <button class="btn" id="zLegend" aria-label="범례">ℹ</button>
+    </div>
+  </div>
+</div>
+
 <div class="veil" id="veil" hidden></div>
-<div class="drawer" id="mapDrawer" hidden><div class="pane map">
-  <div class="row-btns"><button class="ui" id="closeMap">닫기</button></div>
-  <div class="tabs"><button class="ui" id="tabTown" aria-pressed="true">이 고장</button><button class="ui" id="tabWorld" aria-pressed="false">대륙</button></div>
-  <div id="mapBody"></div>
-</div></div>
-<script>
-const $ = (id) => document.getElementById(id);
-const DEBUG = new URLSearchParams(location.search).has("debug");
-document.querySelectorAll("[data-dbg]").forEach((el) => (el.hidden = !DEBUG));
-const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-let busy = false, last = null;
-
-async function call(path, body) {
-  busy = true; render(last, true);
-  const turn = currentTurn || newTurn();
-  const live = document.createElement("p"); live.className = "live"; turn.appendChild(live);
-  let scrolled = false;
-  try {
-    const r = await fetch(path, { method: "POST", headers: { "content-type": "application/json", accept: "text/event-stream" }, body: JSON.stringify(body || {}) });
-    if (!r.ok) throw new Error(await r.text());
-    const reader = r.body.getReader(), dec = new TextDecoder(); let buf = "", out = null;
-    for (;;) {
-      const { value, done } = await reader.read(); if (done) break;
-      buf += dec.decode(value, { stream: true });
-      let i; while ((i = buf.indexOf("\n\n")) >= 0) {
-        const chunk = buf.slice(0, i); buf = buf.slice(i + 2);
-        const ev = /event: (\w+)/.exec(chunk)?.[1], data = JSON.parse(/data: ([\s\S]*)/.exec(chunk)?.[1] || "null");
-        if (ev === "text") { live.textContent = data; if (!scrolled) { scrolled = true; turn.scrollIntoView({ behavior: "smooth", block: "start" }); } }
-        if (ev === "done") out = data;
-      }
-    }
-    live.remove();
-    return out;
-  } catch (e) { live.remove(); return { broken: "서버에 닿지 않는다 — " + e.message, retry: body }; }
-  finally { busy = false; }
-}
-
-// 한 턴 = 한 덩어리: 내가 고른 것(+판정) → 서술 문단들. 새 턴이 오면 지난 턴은 흐려진다
-let currentTurn = null;
-function newTurn() {
-  for (const t of $("story").querySelectorAll(".turn:not(.past)")) t.classList.add("past");
-  const t = document.createElement("section"); t.className = "turn"; $("story").appendChild(t);
-  while ($("story").children.length > 40) $("story").removeChild($("story").firstChild);
-  return (currentTurn = t);
-}
-function addBeats(d) {
-  const t = currentTurn || newTurn();
-  const pl = t.querySelector(".player");
-  if (pl && d.result && d.result.skill) { const tg = document.createElement("span"); tg.className = "tier"; tg.textContent = `${d.result.skill} — ${d.result.tier}`; pl.appendChild(tg); }
-  for (const b of d.beats || []) {
-    const p = document.createElement("p");
-    if (b.startsWith("┊")) p.className = "ink";
-    else if (/^\*[^*]+\*$/.test(b)) { p.className = "inner"; p.textContent = b.slice(1, -1); t.appendChild(p); continue; }
-    else if (d.engineOnly && !d.view?.story) p.className = "eng";
-    p.textContent = b; t.appendChild(p);
-  }
-  for (const k of d.ink || []) {
-    if (k.kind === "voice") { const p = document.createElement("p"); p.className = "voice"; p.innerHTML = `<span class="who">⟨${esc(k.who)}⟩</span>${esc(k.text)}`; t.appendChild(p); continue; }
-    if (k.kind === "dayend") { const p = document.createElement("p"); p.className = "dayend"; p.innerHTML = `${esc(k.text)}${k.card ? `<span class="card">${esc(k.card)}</span>` : ""}`; t.appendChild(p); continue; }
-    if (k.kind === "echo" || k.kind === "recap") { const p = document.createElement("p"); p.className = k.kind; p.textContent = k.text; if (k.kind === "recap") t.insertBefore(p, t.firstChild); else t.appendChild(p); continue; }
-    const p = document.createElement("p"); p.className = k.kind === "grow" ? "grow" : "ink" + (k.kind === "drift" ? " drift" : ""); p.textContent = k.text; t.appendChild(p); if (k.buzz) buzz(HAPTIC[k.buzz]);
-  }
-  // 죽음: 마지막 문장이 문장 중간에서 끊긴다 (14 §4.1 ①)
-  if (d.view?.ended?.kind === "dead" && d.beats?.length) { const ps = t.querySelectorAll("p:not(.player)"); const last = ps[ps.length - 1]; if (last) { const w = last.textContent; const cut = w.lastIndexOf(" ", Math.floor(w.length * 0.6)); last.textContent = w.slice(0, cut > 10 ? cut : Math.floor(w.length * 0.6)).replace(/[.,!?…"']+$/, ""); } }
-  currentTurn = null;
-}
-function say(text) { const t = newTurn(); const p = document.createElement("p"); p.className = "player"; const sp = document.createElement("span"); sp.textContent = text; p.appendChild(sp); t.appendChild(p); }
-
-let fresh = false, deathRunning = false;
-function render(d, loading = false) {
-  $("busy").textContent = loading ? "잿빛 실이 이어지는 중" : "";
-  if (!d) return;
-  const v = d.view;
-  if (v) {
-    $("when").textContent = `${v.month} ${v.time.split(" ")[3]} ${v.hm}${v.night ? " · 밤" : ""}${v.rain ? " · 비" : ""}`;
-    $("where").textContent = v.place.name;
-    $("goals").innerHTML = (v.goals || []).map((x) => `<span><b>${esc(x.who)}</b> ${esc(x.what)}${x.days != null ? ` <span class="d">D-${x.days}</span>` : ""}</span>`).join("");
-    const p = v.player;
-    const U = new Set(v.unlocked || []);
-    if (v.narrator && document.activeElement !== $("narr")) $("narr").value = v.narrator.id;
-    $("notesH").textContent = v.echoNamed ? "잔향 — 회귀해도 남는다" : "기억 — 회귀해도 남는다";
-    $("rewindBtn").hidden = v.mode !== "story";
-    for (const [id, key] of [["secNotes", "notebook"], ["secWhom", "people"], ["secItems", "items"], ["secRep", "reputation"]]) for (const el of document.querySelectorAll(`[data-sec=${id}]`)) el.hidden = !U.has(key);
-    $("chips").innerHTML = [U.has("loop") ? `${v.loop}회차` : "", `배고픔 ${p.hunger}/4`, `아픔 ${p.pain}`, p.fatigue >= 50 ? `지침 ${p.fatigue}` : "", p.fear >= 2 ? `<span class="chip hot">떨림</span>` : "", v.fight ? `<span class="chip hot">싸움 — ${esc(v.fight.name)} · ${v.fight.round}합</span>` : "", `${p.coin}못`, p.wantedWord ? `<span class="chip hot">수배 — ${esc(p.wantedWord)}</span>` : "", v.ladder ? `<span class="chip hot">${esc(v.ladder.name)}</span>` : ""].filter(Boolean).map((x) => x.startsWith("<") ? x : `<span class="chip">${x}</span>`).join("");
-    const ABOUT = { suspect: "너를 의심한다", saw_item: "네가 지닌 것을 보았다", trespass: "네가 들어가는 것을 보았다", claim: "네 말을 믿는다", kill: "네가 한 일을 안다", assault: "네가 한 일을 안다", echo_sign: "네가 이상하다고 생각한다" };
-    $("people").innerHTML = v.people.map((x) => { const ab = [...new Set((x.aboutPlayer || []).map((b) => ABOUT[b.kind]).filter(Boolean))]; return `<span><b>${esc(x.name)}</b>${x.who && x.who !== x.name ? ` <span class="who">${esc(x.who)}</span>` : ""} · ${esc(x.doing)}${x.asleep ? " (잠)" : ""}${ab.length ? ` <span style="color:var(--bad)">· ${esc(ab.join(", "))}</span>` : ""}</span>`; }).join("") + (v.bodies.length ? `<span style="color:var(--bad)">시체: ${esc(v.bodies.join(", "))}</span>` : "");
-    $("notes").innerHTML = (v.trueName ? `<li style="color:var(--gold)">네 이름 — ${esc(v.trueName)}. 어머니만 부른다</li>` : "") + (v.lastHook ? `<li class="past">마지막 줄 — ${esc(v.lastHook)}</li>` : "") + (v.notebook.map((n) => `<li class="${n.startsWith("◇") ? "past" : ""}">${esc(n)}</li>`).join("") || "<li>아직 없다</li>");
-    $("whom").innerHTML = (v.people_known || []).map((x) => `<li><b>${esc(x.name)}</b>${x.knots ? ` <span style="color:var(--gold)" title="매듭">${"⟡".repeat(x.knots)}</span>` : ""}${x.heldKnots && !x.thisLoop ? ` <span style="color:var(--ink-faint)" title="지난 회차의 매듭">${"◇".repeat(x.heldKnots)}</span>` : ""}${x.who ? ` <span style="color:var(--ink-faint)">${esc(x.who)}</span>` : ""} — ${esc(x.guess || "모른다")}${x.lastSeen ? ` <span style="color:var(--ink-faint)">(마지막으로 본 곳: ${esc(x.lastSeen)})</span>` : ""} · ${esc(x.mood)}${(x.facts || []).length ? `<div class="book">${x.facts.map((f) => `<div>${esc(f.sure)} ${esc(f.text)}</div>`).join("")}</div>` : ""}${(x.links || []).length ? `<div class="book lk">${x.links.map((l) => `— ${esc(l.other)}: ${esc(l.text)}`).join("<br>")}</div>` : ""}${x.id === "npc_sara" && v.romance?.words?.npc_sara && v.romance.npc_sara > 0 ? ` <span style="color:var(--gold)">· ${esc(v.romance.words.npc_sara)}</span>` : ""}${(x.past || []).map((l) => `<span class="past">┊ ${esc(l)}</span>`).join("")}<input class="memo" data-npc="${esc(x.id)}" placeholder="메모 — 회귀해도 남는다" value="${esc(x.memo || "")}"></li>`).join("") || "<li>아직 말을 섞은 사람이 없다</li>";
-    const OA = [...(v.oaths || []).map((o) => `<li>"${esc(o.line)}" — ${o.state === "held" ? "품고 있다" : o.state === "kept" ? "지켜졌다" : "깨졌다"}${o.witnesses.length ? ` <span style="color:var(--ink-faint)">(증인: ${esc(o.witnesses.join(", "))})</span>` : ""}</li>`), ...(v.pastOaths || []).map((l) => `<li class="past">┊ "${esc(l)}" — 증인은 잊었다. 너는 기억한다</li>`)];
-    $("oaths").innerHTML = OA.join(""); $("oaths").hidden = $("oathH").hidden = !OA.length;
-    $("whom").querySelectorAll(".memo").forEach((m) => (m.onchange = () => fetch("/api/memo", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ npc: m.dataset.npc, text: m.value }) })));
-    const R = v.reputation || {};
-    $("rep").innerHTML = (R.news || []).map((n) => `<li>${esc(n.scopeName)}: ${esc(n.label)}${n.place ? ` (${esc(n.place)})` : ""}${n.distortion ? ` — 소문이 ${esc(n.distortion)}` : ""}${n.identified ? "" : " — 누가 했는지는 모른다"}</li>`).join("")
-      + ([...(R.titles || []), ...(R.extraTitles || [])].length ? `<li>사람들이 부르는 이름: ${esc([...new Set([...(R.titles || []), ...(R.extraTitles || [])])].join(", "))}</li>` : "")
-      + (v.echo ? `<li style="color:var(--bad)">앎의 흔적 — ${esc(v.echo)}</li>` : "")
-      + (Object.keys(R.bands || {}).length ? `<li>${Object.entries(R.bands).map(([k, b]) => `${esc(k)}: ${esc(b)}`).join(" · ")}</li>` : "") || "<li>아무도 당신을 모른다</li>";
-    $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
-    $("skills").dataset.traits = (v.traits || []).join(", ");
-    const FM = v.family; $("fam").hidden = $("famH").hidden = !FM;
-    if (FM) $("fam").innerHTML = `${FM.name ? `<b>'${esc(FM.name)}'</b> — "${esc(FM.motto)}"<br>` : ""}${FM.members.length ? `식구: ${esc(FM.members.join(", "))}` : ""}${FM.children.length ? `<br>아이: ${FM.children.map((c) => `${esc(c.name)} (${esc(c.sex)}, ${esc(c.age)}${c.traits.length ? " · " + esc(c.traits.join(", ")) : ""}${Object.keys(c.skills).length ? " · " + esc(Object.entries(c.skills).map(([k, v]) => `${k} ${v}`).join(", ")) : ""})`).join(", ")} <span style="color:var(--ink-faint)">— 이 회차에만 있다</span>` : ""}${FM.pregnant ? "<br>사라가 아이를 가졌다" : ""}`;
-    const TN = v.trueNames || []; $("tn2").hidden = $("tnH").hidden = !TN.length;
-    $("tn2").innerHTML = TN.map((w) => `'${esc(w.word)}' — ${esc(w.source)}`).join("<br>");
-    const DM = v.domain; $("dom").hidden = $("domH").hidden = !DM;
-    if (DM) $("dom").innerHTML = `<b>${esc(DM.at)}</b> — ${esc(DM.stage)}${DM.lost ? " (잃었다)" : ""}<br>머릿수 ${DM.pop} · 먹을 것 ${DM.foodDays}일치 · 방어 ${DM.defense} · 은폐 ${DM.conceal} · 사기 ${DM.morale}<br>드러남 <span style="color:${DM.exposure >= DM.threshold - 10 ? "var(--bad)" : "inherit"}">${DM.exposure}/${DM.threshold}</span> · 관리자 ${esc(DM.steward)} (충성 ${DM.loyalty}, ${DM.delegation === "full" ? "전권" : "직접 지시"}) · 방침 ${DM.policy === "open" ? "받는다" : "닫는다"}${DM.built.length ? `<br>시설: ${esc(DM.built.join(", "))}` : ""}${DM.building ? `<br>짓는 중: ${esc(DM.building.name)} (${DM.building.days}일 남음)` : ""}`;
-    const HD = v.hide; $("hide").hidden = $("hideH").hidden = !HD;
-    if (HD) $("hide").innerHTML = `${esc(HD.at)} — ${esc(HD.people.join(", "))}<br>먹을 것: ${HD.food}일치 · ${esc(HD.exposure)}`;
-    const OP = v.ops || []; $("ops").hidden = $("opsH").hidden = !OP.length;
-    $("ops").innerHTML = OP.map((o) => `<div style="margin-bottom:8px"><b>${esc(o.target)}</b> <span style="color:var(--ink-faint)">보안 ${o.security}</span>${o.done ? " — 끝났다" : ""}<br><span style="color:var(--ink-faint)">${esc(o.when)}</span>${o.ready.map((r) => `<br>${r.ok ? "✓" : "✗"} ${esc(r.label)}`).join("")}${o.missing.length ? `<br><span style="color:var(--bad)">아직 열리지 않는다 — ${esc(o.missing.join("·"))}이(가) 없다</span>` : ""}</div>`).join("");
-    const RS = v.rising; $("rise").hidden = $("riseH").hidden = !RS;
-    if (RS) $("rise").innerHTML = RS.free ? "회색여울은 사슬을 끊었다 — 해방구" : RS.failed ? "<span style='color:var(--bad)'>두 번째 붉은 길</span>" : RS.ready.map((r) => `${r.ok ? "✓" : "·"} ${esc(r.label)}`).join("<br>") + `<br><span style="color:var(--ink-faint)">넷이 갖춰지면 밤의 채찍 기둥 광장에서 사람들을 부를 수 있다</span>`;
-    const SC = v.succession; $("succ").hidden = $("succH").hidden = !SC;
-    if (SC) $("succ").innerHTML = [SC.dead ? "용황이 죽었다 — 계승이 시작되었다" : "용황은 아직 숨을 쉰다", SC.throne ? "카스파르 반비늘이 즉위했다" : `카스파르의 세력: ${SC.kaspar >= 50 ? "즉위할 만하다" : SC.kaspar >= 30 ? "모이고 있다" : "아직 작다"}`, SC.charter ? "인간 자치령 칙허 — 그가 지는 날 휴지가 된다" : ""].filter(Boolean).map(esc).join("<br>");
-    const TL = v.talents || [], AC = v.achievements || []; $("tal").hidden = $("talH").hidden = !TL.length && !AC.length;
-    $("tal").innerHTML = TL.map((t) => `<b>${esc(t.name)}</b> <span style="color:var(--ink-faint)">— ${esc(t.grows.join("·"))}이(가) 빨리 는다</span>`).join("<br>") + (AC.length ? `<div style="margin-top:6px;color:var(--ink-faint)">잔향에 새긴 것 — ${esc(AC.join(" · "))}</div>` : "");
-    const WL = v.memoryWall || []; $("wall").hidden = $("wallH").hidden = !WL.length;
-    $("wall").innerHTML = WL.map((w) => `<div class="past">┊ ${esc(w)}</div>`).join("") + (v.soulYears ? `<div style="color:var(--ink-faint);margin-top:6px">영혼의 햇수 — ${v.soulYears}년</div>` : "");
-    const HU = v.hunters || []; $("hunt").hidden = $("huntH").hidden = !HU.length;
-    $("hunt").innerHTML = HU.map((h) => `<div style="margin-bottom:6px"><b>${esc(h.name)}</b> — ${esc(h.disposition)}${h.past ? ` <span style="color:var(--ink-faint)">${esc(h.past)}</span>` : ""}${h.now && h.track ? ` <span style="color:var(--bad)">· ${"●".repeat(h.track)}${"○".repeat(Math.max(0, 4 - h.track))}</span>` : ""}${(h.lessons || []).map((l) => `<br><span style="color:var(--ink-faint)">교훈 — ${esc(l)}</span>`).join("")}</div>`).join("");
-    const T2 = v.twoDays; $("two").hidden = $("twoH").hidden = !T2?.then;
-    if (T2?.then) $("two").innerHTML = (T2.marks || []).map((m) => `<div>${esc(m)}</div>`).join("") + `<div style="color:var(--ink-faint)">┊ 지난 회차의 이 날 (${esc(T2.then.date)}) — ${esc(T2.then.at)}${T2.then.notes.map((n) => `<br>┊ ${esc(n)}`).join("")}</div>${T2.now ? `<div style="margin-top:6px">이번 — ${esc(T2.now.at)}${T2.now.notes.map((n) => `<br>· ${esc(n)}`).join("")}</div>` : `<div style="margin-top:6px">이번 — 아직 하루가 끝나지 않았다</div>`}`;
-    $("lex").innerHTML = (v.lexicon || []).map((w) => `<li>${esc(w.word)} <span style="color:var(--ink-faint)">(${esc(w.lang)})</span> — ${w.meaning ? esc(w.meaning) : "<span style='color:var(--ink-faint)'>뜻을 모른다. 쇳소리 같은 말</span>"}</li>`).join("");
-    $("skills").innerHTML = ((v.traits || []).length ? `<li style="color:var(--gold)">기질 — ${esc(v.traits.join(", "))}</li>` : "") + (v.skills || []).map((k) => `<li>${esc(k.name)} — ${esc(k.word)}${k.lagging ? ` <span style="color:var(--ink-faint)">(손은 기억하는데 몸이 아직)</span>` : ""}</li>`).join("");
-  }
-  $("debug").textContent = JSON.stringify({ debug: d.debug, usage: d.usage, provider: d.provider }, null, 1);
-  const panel = $("panel");
-  if (loading) { panel.querySelectorAll("button").forEach((b) => (b.disabled = true)); return; }
-  if (d.broken) {
-    panel.innerHTML = `<div class="broken"><p>${esc(d.broken)}</p><div class="sub">판정도, 시간도 흐르지 않았다. 다시 시도하면 같은 주사위로 이어진다.</div><button class="ui" id="retry">다시 시도</button></div>`;
-    $("retry").onclick = () => d.retry ? act(d.retry, true) : start();
-    return;
-  }
-  if (v?.ended) {
-    panel.innerHTML = `<button class="ui" id="reg" aria-label="계속">…</button>`;
-    $("reg").onclick = () => deathSequence(v.ended);
-    if (!deathRunning && fresh) setTimeout(() => deathSequence(v.ended), 1800);
-    return;
-  }
-  const ch = d.choices || [];
-  const nameC = ch.find((c) => c.input === "true_name");
-  if (nameC) {
-    panel.innerHTML = `<form class="namebox" id="nameForm"><label for="tn">${esc(nameC.text)} — 이 이름은 회귀해도 남는다</label>
-      <input type="text" id="tn" maxlength="8" placeholder="이름" autocomplete="off" required>
-      <div class="sib"><span>키트에게 너는</span><label><input type="radio" name="sib" value="형" checked> 형</label><label><input type="radio" name="sib" value="누나"> 누나</label></div>
-      <button class="ui">그 이름으로 대답한다</button></form>`;
-    $("nameForm").onsubmit = (e) => { e.preventDefault(); const n = $("tn").value.trim(); if (!n) return; const sib = panel.querySelector("input[name=sib]:checked").value; act({ id: nameC.id, text: `${n}|${sib}` }, false, `"${n}." — 어머니가 부르는 이름에 대답한다`); };
-    setTimeout(() => $("tn")?.focus(), 50);
-    return;
-  }
-  // 이름 붙이기: 선택지를 누르면 입력칸이 열린다
-  const nameNpc = ch.filter((c) => c.input === "npc_name" || c.input === "child_name" || c.input === "house");
-  const more = ch.filter((c) => c.more && !["npc_name", "child_name", "house"].includes(c.input));
-  const main = ch.filter((c) => !c.more && c.kind !== "move" && c.kind !== "time" && !["npc_name", "child_name", "house"].includes(c.input));
-  const moves = ch.filter((c) => !c.more && c.kind === "move"), time = ch.filter((c) => !c.more && c.kind === "time");
-  const cls = { "▲": "up", "▼": "down", "?": "unk" };
-  const btn = (c) => {
-    const b = `<button class="choice" data-id="${esc(c.id)}"><span class="ct">${c.memory ? `<span class="mem" title="지난 회차의 기억">◈</span>` : ""}${esc(c.text)}</span>${c.band || c.risk ? `<span class="band">${c.skill ? `${esc(c.skill)} · ` : ""}${esc(c.band || "")}${DEBUG && c.p != null ? ` (${c.p}%)` : ""}${c.risk ? ` <span class="risk">${esc(c.risk)}</span>` : ""}</span>` : ""}</button>`;
-    if (!c.why?.length) return b;
-    return `<div><div class="crow">${b}<button class="q" aria-expanded="false" aria-label="판정 근거" data-q="${esc(c.id)}">?</button></div><div class="why" hidden>${c.why.map((w) => `<div class="${cls[w.sign] || ""}">${esc(w.sign)} ${esc(w.text)}</div>`).join("")}<div>→ "${esc(c.band)}"</div></div></div>`;
-  };
-  panel.innerHTML = `<div class="group"><div class="choices">${main.map(btn).join("")}</div></div>
-    ${time.length ? `<div class="group"><h3>시간</h3><div class="choices">${time.map(btn).join("")}</div></div>` : ""}
-    ${nameNpc.map((c) => c.input === "house" ? `<form class="free nameNpc house" data-id="${esc(c.id)}"><input placeholder="가문 이름" maxlength="10" autocomplete="off"><input placeholder="가훈 한 문장" maxlength="40" autocomplete="off"><button class="ui">세운다</button></form>` : `<form class="free nameNpc" data-id="${esc(c.id)}"><input placeholder="${esc(c.text)}" maxlength="10" autocomplete="off"><button class="ui">이름</button></form>`).join("")}
-    ${(d.locked || []).length ? `<div class="choices locked">${d.locked.map((l) => `<button class="ui" disabled title="${esc(l.why)}" style="opacity:.45">${esc(l.label)} <span style="font-size:.85em">— ${esc(l.why)}</span></button>`).join("")}</div>` : ""}
-    ${more.length ? `<details class="moves"><summary>다른 행동 (${more.length})</summary><div class="choices">${more.map(btn).join("")}</div></details>` : ""}
-    ${moves.length ? `<details class="moves"><summary>다른 곳으로 (${moves.length})</summary><div class="choices">${moves.map(btn).join("")}</div></details>` : ""}
-    ${d.view?.convo || main.length ? `<form class="free" id="free"><input id="freeText" placeholder="직접 말하거나 행동한다" autocomplete="off"><button class="ui">하기</button></form>` : ""}`;
-  panel.querySelectorAll(".choice").forEach((b) => (b.onclick = () => act({ id: b.dataset.id, text: b.querySelector(".ct").textContent.replace(/^◈/, "") })));
-  panel.querySelectorAll(".q").forEach((q) => (q.onclick = () => { const w = q.parentElement.nextElementSibling; w.hidden = !w.hidden; q.setAttribute("aria-expanded", !w.hidden); }));
-  panel.querySelectorAll(".nameNpc").forEach((fm) => (fm.onsubmit = (e) => { e.preventDefault(); const ins = fm.querySelectorAll("input"); const v = ins[0].value.trim(); if (!v) return; const text = fm.classList.contains("house") ? `${v}|${ins[1].value.trim()}` : v; act({ id: fm.dataset.id, text }, false, `"${v}."`); }));
-  const f = $("free"); if (f) f.onsubmit = (e) => { e.preventDefault(); const t = $("freeText").value.trim(); if (t) act({ free: t }); };
-}
-function show(d, isFresh = false) {
-  last = d; fresh = isFresh;
-  if (!d.broken) addBeats(d); else currentTurn = null;
-  render(d);
-}
-async function act(input, retry = false, label) {
-  if (busy) return;
-  if (!retry) say(label || input.free || input.text || input.id);
-  show(await call("/api/act", input), true);
-}
-async function start() { show(await call("/api/state")); }
-
-// ── 진동 (14 §4.2) — 몸의 감각만. 기기가 못 하면 아무 일 없다 ──
-const HAPTIC = { H1: [450], H1water: [180, 120, 140, 160, 100], H1teeth: [90, 60, 90], H1blade: [260], H1rope: [450], H2: [25], H3: [60, 140, 80], H4: [70], H5: [40] };
-function buzz(p) { try { if (p && navigator.vibrate) navigator.vibrate(p); } catch {} }
-const nap = (ms) => new Promise((r) => setTimeout(r, ms));
-const tapOr = (veil, ms) => new Promise((r) => { const done = () => { veil.onclick = null; clearTimeout(t); r(); }; const t = ms ? setTimeout(done, ms) : null; veil.onclick = done; });
-// 죽음 → 재 → 회차 기록 → 시간이 접힌다 → 정적 → (시대의 첫 죽음에만) 말 → 빵 냄새. '사망'·'회귀'라는 말은 쓰지 않는다
-async function deathSequence(E) {
-  if (deathRunning) return; deathRunning = true;
-  const veil = $("veil");
-  buzz(HAPTIC["H1" + (E.trace?.id || "")] || HAPTIC.H1);
-  document.body.classList.add("ashing");
-  await nap(2500);
-  veil.innerHTML = ""; veil.hidden = false;
-  const rec = document.createElement("div"); rec.className = "rec";
-  const lines = E.loop === 1 ? E.record.short : E.record.full;
-  rec.innerHTML = lines.map((x) => `<p>${esc(x)}</p>`).join(""); veil.appendChild(rec);
-  if (E.loop === 1) await tapOr(veil, 4500);
-  else {
-    await nap(2000);
-    // 회귀를 놓는다 (03 §4.6): 두 번 눌러야 한다 — 다음 회차의 죽음은 돌아오지 않는다
-    if (E.canRelease) {
-      const b = document.createElement("button"); b.className = "ui"; b.style.marginTop = "18px"; b.textContent = "회귀를 놓는다";
-      b.onclick = async (ev) => { ev.stopPropagation(); if (b.dataset.armed) { await fetch("/api/release", { method: "POST" }); b.textContent = "놓았다. 다음 저녁이 마지막이다."; b.disabled = true; } else { b.dataset.armed = "1"; b.textContent = "정말로? 다음 죽음은 돌아오지 않는다 — 한 번 더 누르면"; } };
-      rec.appendChild(b);
-    }
-    const h = document.createElement("div"); h.className = "hint"; h.textContent = "닫는다"; veil.appendChild(h); await tapOr(veil); h.remove();
-  }
-  const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
-  rec.classList.add("ash"); await nap(650); rec.remove();
-  // 삽화 (19 §9): 접힘 뒤에 '시간의 접힘' 목판화가 희미하게, 빵 냄새에는 배급 줄
-  const plate = (name) => { const im = document.createElement("img"); im.className = "plate"; im.alt = ""; im.src = `/art/${name}.svg`; veil.appendChild(im); requestAnimationFrame(() => im.classList.add("on")); return im; };
-  const foldArt = plate("03_time_fold");
-  const fold = document.createElement("div"); fold.className = "fold"; veil.appendChild(fold);
-  let gap = E.loop === 1 ? 220 : 120;
-  // 진짜 죽음: 접힘이 시작했다가 멈춘다. 날짜가 두세 줄 오르다 재가 된다. 빵 냄새는 오지 않는다
-  if (E.final) {
-    for (const dt of E.record.rewind.slice(0, 3)) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); buzz(HAPTIC.H2); await nap(260); }
-    await nap(700); fold.classList.add("ash"); foldArt.classList.remove("on"); await nap(900); fold.remove(); foldArt.remove(); await nap(1500);
-    const d = await next;
-    const ep = document.createElement("div"); ep.className = "rec"; ep.innerHTML = (d.epilogue || E.epilogue || []).map((x) => `<p>${esc(x)}</p>`).join("") + `<p style="margin-top:22px;color:#5e574c">시대가 끝났다.</p>`;
-    const nb = document.createElement("button"); nb.className = "ui"; nb.textContent = "새 시대 — 새 판"; nb.onclick = async () => { veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", {})); };
-    veil.appendChild(ep); veil.appendChild(nb); veil.onclick = null;
-    return;
-  }
-  for (const dt of E.record.rewind) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); while (fold.children.length > 9) fold.firstChild.remove(); buzz(HAPTIC.H2); await nap(gap); gap = Math.max(40, gap * 0.86); }
-  await nap(500); fold.classList.add("ash"); foldArt.classList.remove("on"); await nap(400); fold.remove(); setTimeout(() => foldArt.remove(), 1700);
-  await nap(1500);   // 정적 — 그림도 소리도 없다
-  let god = null;
-  if (E.firstDeath) { god = document.createElement("div"); god.className = "god"; god.textContent = "너희는 끝나지 않을 것이다."; veil.appendChild(god); await nap(2500); }
-  const n = E.loop + 1;
-  const sm = document.createElement("div"); sm.className = "smell";
-  sm.innerHTML = `<p>${n >= 12 ? "젖은 재. 그 위에, 빵 냄새." : n >= 4 ? "빵 냄새. 그 밑에, 젖은 재." : "빵 냄새."}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3); plate("01_ration_line");
-  await nap(800); sm.insertAdjacentHTML("beforeend", `<p class="inner">나는 — 이 냄새를 안다.</p>`);
-  if (god) setTimeout(() => god.remove(), 1000);
-  const d = await next; await tapOr(veil);
-  veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false;
-  $("story").innerHTML = ""; currentTurn = null; show(d);
-}
-$("menuBtn").onclick = async () => { $("drawer").hidden = false; const r = await fetch("/api/saves", { method: "POST" }).then((x) => x.json()); $("slots").innerHTML = r.saves.map((s) => `<button class="ui" data-s="${esc(s)}">불러오기: ${esc(s)}</button>`).join(""); $("slots").querySelectorAll("button").forEach((b) => (b.onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; currentTurn = null; show(await call("/api/load", { name: b.dataset.s })); })); };
-$("closeDrawer").onclick = () => ($("drawer").hidden = true);
-$("drawer").onclick = (e) => { if (e.target.id === "drawer") $("drawer").hidden = true; };
-$("saveBtn").onclick = async () => { await fetch("/api/save", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: $("slotName").value }) }); $("menuBtn").onclick(); };
-$("newBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", { narrator: $("narr").value })); };
-$("newStoryBtn").onclick = async () => { $("drawer").hidden = true; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", { mode: "story", narrator: $("narr").value })); };
-$("narrBtn").onclick = async () => { const r = await fetch("/api/narrator", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: $("narr").value }) }).then((x) => x.json()); if (r.view) { last.view = r.view; render(last); } };
-$("rewindBtn").onclick = async () => { $("drawer").hidden = true; const d = await call("/api/rewind"); if (d.error) { $("busy").textContent = d.error; return; } $("story").innerHTML = ""; currentTurn = null; show(d); };
-// ── 지도: 이 고장(건물 배치·아는 사람의 '아마 거기')과 대륙(가 본 곳·들은 곳만 밝게) ──
-let mapTab = "town", mapData = null;
-async function openMap() {
-  $("mapDrawer").hidden = false; $("mapBody").innerHTML = "<p class='legend'>펼치는 중…</p>";
-  try { mapData = await fetch("/api/map", { method: "POST" }).then((x) => x.json()); } catch (e) { $("mapBody").textContent = "지도를 못 불렀다: " + e.message; return; }
-  drawMap();
-}
-function drawMap() {
-  $("tabTown").setAttribute("aria-pressed", mapTab === "town"); $("tabWorld").setAttribute("aria-pressed", mapTab === "world");
-  const m = mapData; if (!m || m.error) { $("mapBody").textContent = m?.error || "—"; return; }
-  const choiceText = (id) => (last?.choices || []).find((c) => c.id === id)?.text;
-  if (mapTab === "town") {
-    const S = m.settlement, W = S.grid?.w || 600, H = S.grid?.h || 450, go = new Set(S.goable);
-    const col = (l) => l.here ? "var(--gold)" : l.access === "public" ? "var(--ink-soft)" : l.access === "secret" ? "var(--frost)" : "var(--ink-faint)";
-    const svg = `<svg viewBox="-30 -20 ${W + 60} ${H + 40}" role="img" aria-label="${esc(S.name)} 지도">
-      ${S.locations.map((l) => `<g class="loc${go.has(l.id) ? " go" : ""}" data-id="${esc(l.id)}">
-        <circle cx="${l.xy[0]}" cy="${l.xy[1]}" r="${l.here ? 11 : 8}" fill="${col(l)}" stroke="var(--line)" stroke-width="2"/>
-        <text x="${l.xy[0]}" y="${l.xy[1] - 15}" text-anchor="middle" font-size="17" ${l.here ? 'style="fill:var(--gold)"' : ""}>${esc(l.name.replace(/\s*'.*'$/, ""))}</text>
-        ${l.people.length ? `<text x="${l.xy[0]}" y="${l.xy[1] + 26}" text-anchor="middle" font-size="15" style="fill:var(--frost)">${esc(l.people.slice(0, 3).join(", "))}${l.people.length > 3 ? ` 외 ${l.people.length - 3}` : ""}</text>` : ""}
-      </g>`).join("")}</svg>`;
-    $("mapBody").innerHTML = `<h2>${esc(S.name)}</h2>${svg}
-      <div class="legend"><span style="color:var(--gold)">●</span> 지금 있는 곳 · <span style="color:var(--frost)">이름</span> 아는 사람이 '늘 이 시각엔' 있는 곳 (추정 — 틀릴 수 있다) · 누르면 그리로 간다</div>
-      <h2>고장 밖 (걸어서)</h2><ul class="outer">${S.outer.map((o) => `<li class="${go.has(o.id) ? "go" : ""}" data-id="${esc(o.id)}">${esc(o.name)} — ${o.hours}시간</li>`).join("")}</ul>`;
-    const goTo = (id) => { if (!go.has(id) || busy) return; $("mapDrawer").hidden = true; act({ id: "go:" + id, text: choiceText("go:" + id) || id }); };
-    $("mapBody").querySelectorAll(".loc.go, li.go").forEach((el) => (el.onclick = () => goTo(el.dataset.id)));
-  } else {
-    const Wd = m.world, xs = Wd.nodes.map((n) => n.x), ys = Wd.nodes.map((n) => n.y);
-    const x0 = Math.min(...xs) - 30, y0 = Math.min(...ys) - 20, w = Math.max(...xs) - x0 + 30, h = Math.max(...ys) - y0 + 20;
-    const N = new Map(Wd.nodes.map((n) => [n.id, n]));
-    const lit = (n) => n.here || n.visited || n.remembered || n.heard;
-    const svg = `<svg viewBox="${x0} ${y0} ${w} ${h}" role="img" aria-label="대륙 지도">
-      ${Wd.edges.map((e) => { const a = N.get(e.from), b = N.get(e.to); if (!a || !b) return ""; const on = lit(a) && lit(b);
-        return `<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${on ? "var(--ink-soft)" : "var(--line)"}" stroke-width="${e.road === "imperial" ? 2 : 1}" ${e.road === "sea" ? 'stroke-dasharray="4 4"' : ""}/>`; }).join("")}
-      ${Wd.nodes.map((n) => `<g><circle cx="${n.x}" cy="${n.y}" r="${n.here ? 7 : n.major ? 5 : 3}" fill="${n.here ? "var(--gold)" : n.visited ? "var(--ink)" : n.remembered ? "var(--ink-soft)" : n.heard ? "var(--frost)" : "var(--ink-faint)"}"/>
-        ${n.here || n.visited || n.remembered || n.heard || n.major ? `<text x="${n.x}" y="${n.y - 9}" text-anchor="middle" font-size="${n.major ? 15 : 12}" ${n.here ? 'style="fill:var(--gold)"' : lit(n) ? "" : 'style="fill:var(--ink-faint)"'}>${esc(n.name)}</text>` : ""}</g>`).join("")}
-    </svg>`;
-    $("mapBody").innerHTML = `<h2>대륙</h2><div style="overflow-x:auto"><div style="min-width:760px">${svg}</div></div>
-      <div class="legend"><span style="color:var(--gold)">●</span> 지금 · <span style="color:var(--ink)">●</span> 가 본 곳 · <span style="color:var(--ink-soft)">●</span> 지난 회차에 가 본 곳 · <span style="color:var(--frost)">●</span> 들어 본 곳 · 흐린 점은 아직 모르는 곳. 굵은 선은 제국 가도, 점선은 뱃길.</div>`;
-  }
-}
-$("mapBtn").onclick = openMap;
-$("closeMap").onclick = () => ($("mapDrawer").hidden = true);
-$("mapDrawer").onclick = (e) => { if (e.target.id === "mapDrawer") $("mapDrawer").hidden = true; };
-$("tabTown").onclick = () => { mapTab = "town"; drawMap(); };
-$("tabWorld").onclick = () => { mapTab = "world"; drawMap(); };
-start();
-</script>
+<script type="module" src="/ui/app.js"></script>
 </body>
 </html>

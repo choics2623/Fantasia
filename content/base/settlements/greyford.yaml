@@ -14,6 +14,10 @@ bells:
   - {at: "20:00", name: 저녁 기도 종}
   - {at: "21:00", name: 통금 종}
 patrols: ["21:00", "23:00", "02:00"]
+# 지도 그림 (19 §6): 여울강 — 서쪽 움막 앞에서 쇠다리 밑을 지나 물레방아간과 하겐의 나루로. 그림일 뿐, 길 찾기는 위의 장소 좌표가 한다
+features:
+  river: [[-40, 452], [30, 446], [90, 414], [150, 430], [210, 448], [300, 456], [400, 440], [470, 424], [525, 408], [575, 438], [645, 446]]
+  river_name: 여울강
 locations:
   - {id: gf_keep, aka: [성채, 성], name: 레이번 성채, xy: [420, 60], kind: keep, access: owner, hours: "06:00-23:00 성문 열림", rooms: [gf_keep_study, gf_keep_hall, gf_keep_servants, gf_keep_north_tower, gf_keep_store, gf_keep_guest]}
   - {id: gf_keep_study, name: 남작 서재, parent: gf_keep, access: owner}
