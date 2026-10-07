@@ -30,7 +30,16 @@ node engine/game/test_p3.mjs             # 숨긴 곳·작전 카드·연애·�
 node engine/game/test_director.mjs       # 연출가: 긴장도·목표 곡선·화자 넷·연출 장면 (18)
 node engine/game/test_domain.mjs         # 영역: 세우기·열흘 보고·시설·수색대·관리자 (09)
 node engine/game/test_ops.mjs            # 작전 여섯 단계: 준비·실행·탈출·은폐·누명 (11)
-node engine/game/test_family.mjs         # 가족: 가문·입양·출산·인질, 진명 넷 (12, GAME_DESIGN §5)
+node engine/game/test_family.mjs         # 가족: 가문·입양·출산·인질·양육, 진명 넷 (12, GAME_DESIGN §5)
+node engine/game/test_rising.mjs         # 봉기 「여울강이 붉어지는 날」·계승 전쟁의 칙허 (SCENARIOS §3.4, 09 §3)
+node engine/game/test_regions.mjs        # 다른 고장의 대본 장면과 맹세
+node engine/game/test_replay.mjs         # 재생 결정성: 무작위로 놀고 20걸음마다 재생 지문 비교 (28 §1)
+node engine/game/test_flags.mjs          # 대본 장면 깃발의 결과·메아리 상한과 밤의 메아리·다라의 꿈 (16 §3.3, 14 §3.4)
+node engine/game/test_learning.mjs       # 글과 말·스승·숨긴 사실의 공개 경로·잠긴 선택지·몰아서 보내기·빚 (19 §4, 03 §3, 22 §1.2)
+node engine/game/test_echo.mjs           # 앎의 흔적의 세계 반응·세력의 대응 사다리 (03 §4.3, 10 §5)
+node engine/game/test_clock.mjs          # 월드 클락: 탈주자 유입·수색·징발 포고·재열병 (03 §2.2)
+node engine/game/test_dark.mjs           # 심문·공포 정치·얼룩 재회·애착 마모·피에 무뎌짐 (13)
+node engine/game/test_nemesis.mjs        # 숙적의 마음·성향·교훈·사냥꾼 판·처음 보는 원수 (17)
 node engine/gen/test_gen.mjs             # 정착지·즉석 인물 생성 (25)
 python3 tools/validate_npc_cards.py && node tools/validate_agendas.mjs && python3 tools/link_world.py
 ```
