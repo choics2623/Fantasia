@@ -1717,6 +1717,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
       if (!(cnt.at || []).includes(g.at)) {
         g.S.vars.player_missed_count = (g.S.vars.player_missed_count || 0) + 1;
         g.feed.push({ kind: "rule", text: cnt.miss || "저녁 점고에 없었다." });
+        for (const e of cnt.miss_effects || []) storyEffect(g, e);
         addMemory(g, cnt.by, { kind: "suspicion", tag: "위험함", text: callJ(g, "이(가) 저녁 점고에 없었다"), salience: 3, source: "engine" });
         if (g.S.vars.player_missed_count >= 2) wantedAdd(g, 1, cnt.reason || "점고에 빠졌다", cnt.by);
       }
@@ -1725,7 +1726,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     const rc = rcOf(g), rcb = rc ? rcBy(g) : null;
     if (rc && rcb && hm === parseClock(rc.time) && !isSabbath(c.day) && g.P.lastRollcall !== c.day && !g.S.vars.player_fugitive) {
       g.P.lastRollcall = c.day;
-      if (g.at !== rc.at && g.W.loc.get(g.at)?.parent !== rc.at) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: rc.miss || "새벽 점호에 나가지 않았다. 감독관의 명단에 빈칸이 생겼다." }); }
+      if (g.at !== rc.at && g.W.loc.get(g.at)?.parent !== rc.at) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: rc.miss || "새벽 점호에 나가지 않았다. 감독관의 명단에 빈칸이 생겼다." }); for (const e of rc.miss_effects || []) storyEffect(g, e); }
       else if (rc.frisk !== false) rollcallSearch(g, c.day);
       // 점호에 두 번 빠진 채 고장 밖에 있으면 — 탈주 노예. 부르던 자가 현상금을 건다
       if ((g.S.vars.player_missed_rollcall || 0) >= 2 && g.P.settlement !== home && !g.S.vars.player_fugitive) {
@@ -1749,6 +1750,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
       } else if (hash(g.seed, "patrol", next) >= P) {
         g.P.status.pain = clamp(g.P.status.pain + (cf?.pain ?? 15), 0, 100);
         g.feed.push({ kind: "rule", text: fill(g, cf?.caught || "통금 순찰에 걸렸다. 크릭 감독의 몽둥이 — 그리고 막사로 끌려간다.") });
+        for (const e of cf?.effects || []) storyEffect(g, e);   // 출신의 값 (세렌: 매가 아니라 빚이 는다)
         g.at = homeOf(g);
         g.S.vars.player_curfew = (g.S.vars.player_curfew || 0) + 1;
       }
