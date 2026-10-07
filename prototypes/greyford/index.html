@@ -7,7 +7,7 @@
 <title>회색여울</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500&family=Song+Myung&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Song+Myung&display=swap">
 <link rel="stylesheet" href="/ui/app.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1.5a2.4 2.4 0 0 1 1.3 4.4l.9.8H5.8l.9-.8A2.4 2.4 0 0 1 8 1.5ZM6.4 7.4h3.2l.7 4.6h1.4l.8 2.5H3.5l.8-2.5h1.4Z' fill='%23c4473c'/%3E%3C/svg%3E">
 </head>
@@ -15,15 +15,14 @@
 <a class="sr" href="#dock">선택지로 건너뛰기</a>
 <header class="topbar">
   <div class="topbar-in">
-    <div class="clock" aria-live="polite"><span class="d" id="clockD">…</span><span class="t" id="clockT"></span></div>
-    <div class="placebox"><span id="placePawn"></span><span class="tx"><span class="pn" id="placeN"></span><span class="ps" id="placeS"></span></span></div>
-    <div class="vitals" id="vitals"></div>
-    <div class="tb-btns">
-      <button class="btn" id="mapBtn" aria-label="지도 (M)">🗺<span class="lbl">지도</span><kbd>M</kbd></button>
-      <button class="btn" id="bookBtn" aria-label="수첩 (N)">📜<span class="lbl">수첩</span><kbd>N</kbd></button>
-      <button class="btn" id="setBtn" aria-label="설정과 저장">⚙</button>
-    </div>
-    <div class="status" id="status"></div>
+    <div class="placebox"><span class="pn" id="placeN"></span><span class="ps" id="placeS"></span></div>
+    <div class="clock" aria-live="polite"><span class="t" id="clockT"></span><span class="d" id="clockD">…</span></div>
+    <nav class="tb-btns" aria-label="도구">
+      <button class="tool" id="mapBtn" aria-label="지도 (M)">지도<kbd>M</kbd></button>
+      <button class="tool" id="bookBtn" aria-label="수첩 (N)">수첩<kbd>N</kbd></button>
+      <button class="tool" id="setBtn" aria-label="설정과 저장">설정</button>
+    </nav>
+    <div class="status" id="status" aria-live="polite"></div>
   </div>
 </header>
 <nav class="strip" id="strip" aria-label="이 자리의 사람들"></nav>
@@ -38,13 +37,12 @@
     <section class="card" id="asideHunt" hidden></section>
     <section class="card" id="asideGoals" hidden></section>
     <section class="card" id="asideMap" hidden><h3><span>약도</span></h3><div class="minimap" id="miniMap" role="button" tabindex="0" aria-label="지도 열기"></div><div class="mini-cap" id="miniCap"></div></section>
-    <section class="card" id="asideBody"></section>
   </aside>
 </div>
 
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
   <div class="sheet-pane">
-    <div class="sheet-head"><h2 id="sheetTitle">수첩</h2><button class="btn" id="closeSheet" aria-label="닫기">닫기 <kbd>Esc</kbd></button></div>
+    <div class="sheet-head"><h2 id="sheetTitle">수첩</h2><button class="btn text" id="closeSheet" aria-label="닫기">닫기<kbd>Esc</kbd></button></div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" data-tab="memory">기억</button>
       <button class="tab" role="tab" data-tab="people">사람</button>
@@ -62,27 +60,27 @@
     <h2 id="mapTitle">지도</h2>
     <span class="seg"><button type="button" id="tabTown" aria-pressed="true">이 고장</button><button type="button" id="tabWorld" aria-pressed="false">대륙</button></span>
     <span class="sp"></span>
-    <button class="btn" id="closeMap" aria-label="닫기">닫기 <kbd>Esc</kbd></button>
+    <button class="btn text" id="closeMap" aria-label="닫기">닫기<kbd>Esc</kbd></button>
   </div>
   <div class="map-stage" id="mapStageWrap" style="position:relative">
     <div id="mapStage" style="position:absolute;inset:0"></div>
     <div class="legend" id="legend"></div>
     <div class="map-tools">
-      <button class="btn" id="zIn" aria-label="확대">＋</button>
-      <button class="btn" id="zOut" aria-label="축소">－</button>
+      <button class="btn" id="zIn" aria-label="확대">+</button>
+      <button class="btn" id="zOut" aria-label="축소">−</button>
       <button class="btn" id="zMe" aria-label="내 자리로">◎</button>
-      <button class="btn" id="zLegend" aria-label="범례">ℹ</button>
+      <button class="btn" id="zLegend" aria-label="범례">?</button>
     </div>
   </div>
 </div>
 
 <aside class="card-panel" id="card" hidden role="dialog" aria-label="백과 카드">
-  <div class="card-bar"><button class="btn" id="cardBack" hidden>‹ 뒤로</button><span class="sp"></span><button class="btn" id="cardClose" aria-label="닫기">닫기 <kbd>Esc</kbd></button></div>
+  <div class="card-bar"><button class="btn text" id="cardBack" hidden>‹ 뒤로</button><span class="sp"></span><button class="btn text" id="cardClose" aria-label="닫기">닫기<kbd>Esc</kbd></button></div>
   <div class="card-body" id="cardBody"></div>
 </aside>
 <div class="create" id="create" hidden role="dialog" aria-modal="true" aria-labelledby="createTitle">
   <div class="create-pane" id="createPane" tabindex="-1">
-    <div class="create-head"><h2 id="createTitle">새 시대 — 잔향이 고를 사람</h2><button class="btn" id="createClose" aria-label="닫기">닫기 <kbd>Esc</kbd></button></div>
+    <div class="create-head"><h2 id="createTitle">새 시대 — 잔향이 고를 사람</h2><button class="btn text" id="createClose" aria-label="닫기">닫기<kbd>Esc</kbd></button></div>
     <nav class="cr-steps" id="createSteps" aria-label="만드는 차례"></nav>
     <div class="create-body" id="createBody"></div>
     <div class="create-foot" id="createFoot"></div>

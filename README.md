@@ -47,6 +47,7 @@ node engine/game/test_gear.mjs           # 장비의 질·닳음·짐, 성장의
 node engine/game/test_creation.mjs       # 캐릭터 생성: 셋째의 다섯 갈래·능력치·재능 등급·결점·주사위·숨은 재능·회귀 각성 (06)
 node engine/game/test_origins.mjs        # 출신 열여섯을 하나씩 걷는다: 회귀점·첫 장면·하루의 의무·회귀·재생 (출신 id를 주면 그것만)
 node engine/game/test_talents.mjs        # 혈통 특질·재능·결점이 엔진에 닿는다: 쌍둥이 판 비교 (06 §7·§12)
+node engine/game/test_divine.mjs         # 신재·비기·오의·경지·이식·잔향의 장부·유산 특질·정본 해금 (06 §3·§12.1)
 node engine/gen/test_gen.mjs             # 정착지·즉석 인물 생성 (25)
 python3 tools/validate_npc_cards.py && node tools/validate_agendas.mjs && python3 tools/link_world.py
 ```
