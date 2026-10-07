@@ -40,7 +40,21 @@ const waitFor = (g, pred, n = 400) => { for (let i = 0; i < n && !pred() && !g.e
   if (born) {
     check("아이의 이름을 묻는다", G.options(g)[0].input === "child_name");
     G.act(g, { id: "story_childname", text: "새벽" });
-    check("아이가 태어난다 — 이 회차에만 있다", G.view(g).family.children[0]?.startsWith("새벽"));
+    check("아이가 태어난다 — 이 회차에만 있다", G.view(g).family.children[0]?.name === "새벽");
+    // 양육 (12 §7.2): 자란다 · 보고 배운다 · 가르친다 · 다섯 살의 질문
+    const c = g.family.children[0];
+    check("아이는 저만의 성향과 고집을 갖고 태어난다", Object.keys(c.temper).length === 6 && !!c.own);
+    c.born = g.t - (5 * 360 - 1) * 1440; g.P.temper.자비 = 80; const before = c.temper.자비;
+    g.P.skills.손재주 = 60; g.at = "gf_river_huts";
+    for (let i = 0; i < 60 && G.view(g).story?.id !== "child_question"; i++) { if (G.view(g).story) { G.act(g, { id: G.options(g)[0].id }); continue; } G.act(g, { id: G.options(g).some((o) => o.id === "sleep") ? "sleep" : "wait:60" }); }
+    check("다섯 살 — 아이가 묻는다", G.view(g).story?.id === "child_question" && G.storyIntro(g).includes("새벽"), G.view(g).story?.id);
+    if (G.view(g).story?.id === "child_question") { const b = c.temper.용기; G.act(g, { id: "story:truth" }); check("사실대로 말하면 아이가 대담해진다", c.temper.용기 > b); }
+    check("이정표 — 처음 걷는다·첫 말", c.seen.includes("first_steps") && c.seen.includes("first_word"), c.seen.join(","));
+    check("보고 배운다 — 너의 자비 쪽으로", c.own === "자비" ? c.temper.자비 <= before : c.temper.자비 > before, `${before} → ${c.temper.자비}`);
+    g.at = "gf_river_huts"; while (G.view(g).story) G.act(g, { id: G.options(g)[0].id });
+    const tid = G.options(g).find((o) => o.id === "teach:0");
+    check("세 살부터 가르칠 수 있다", !!tid, G.options(g).map((o) => o.id).slice(0, 12).join(","));
+    if (tid) { const r = G.act(g, { id: "teach:0" }); check("가르친 것이 아이의 스킬이 된다", (c.skills.손재주 || 0) > 5 && G.view(g).family.children[0].skills.손재주 > 0, JSON.stringify(c.skills)); check("하루에 한 번", !G.options(g).some((o) => o.id === "teach:0")); }
     const rc = G.recordCard(G.loopRecord(g)).join("\n");
     check("회차 기록 — 그 회차에 세운 것: 다시 태어나지 않는다", rc.includes("그 회차에 세운 것") && rc.includes("새벽 — 그 회차에 태어났다"));
     const g2 = G.boot(C, { ...G.regressRun(g), opening: false });

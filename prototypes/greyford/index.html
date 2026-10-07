@@ -263,7 +263,7 @@ function render(d, loading = false) {
     $("items").innerHTML = p.items.map((i) => `<li>${esc(i.name)} <span style="color:var(--ink-faint)">— ${esc(i.slot)}${i.seen ? " (남들 눈에 보인다)" : ""}</span></li>`).join("") + (p.bloody ? `<li style="color:var(--bad)">옷에 핏자국 — 물가에서 빨아야 한다</li>` : "") || "<li>부츠 속 동전뿐</li>";
     $("skills").dataset.traits = (v.traits || []).join(", ");
     const FM = v.family; $("fam").hidden = $("famH").hidden = !FM;
-    if (FM) $("fam").innerHTML = `${FM.name ? `<b>'${esc(FM.name)}'</b> — "${esc(FM.motto)}"<br>` : ""}${FM.members.length ? `식구: ${esc(FM.members.join(", "))}` : ""}${FM.children.length ? `<br>아이: ${esc(FM.children.join(", "))} <span style="color:var(--ink-faint)">— 이 회차에만 있다</span>` : ""}${FM.pregnant ? "<br>사라가 아이를 가졌다" : ""}`;
+    if (FM) $("fam").innerHTML = `${FM.name ? `<b>'${esc(FM.name)}'</b> — "${esc(FM.motto)}"<br>` : ""}${FM.members.length ? `식구: ${esc(FM.members.join(", "))}` : ""}${FM.children.length ? `<br>아이: ${FM.children.map((c) => `${esc(c.name)} (${esc(c.sex)}, ${esc(c.age)}${c.traits.length ? " · " + esc(c.traits.join(", ")) : ""}${Object.keys(c.skills).length ? " · " + esc(Object.entries(c.skills).map(([k, v]) => `${k} ${v}`).join(", ")) : ""})`).join(", ")} <span style="color:var(--ink-faint)">— 이 회차에만 있다</span>` : ""}${FM.pregnant ? "<br>사라가 아이를 가졌다" : ""}`;
     const TN = v.trueNames || []; $("tn2").hidden = $("tnH").hidden = !TN.length;
     $("tn2").innerHTML = TN.map((w) => `'${esc(w.word)}' — ${esc(w.source)}`).join("<br>");
     const DM = v.domain; $("dom").hidden = $("domH").hidden = !DM;

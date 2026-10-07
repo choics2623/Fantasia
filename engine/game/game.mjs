@@ -370,6 +370,11 @@ function rawOptions(g) {
   }
   // 다른 고장으로: 지도에서 이웃한 고장 (주인공은 농노다 — 허락 없이 떠나면 탈주다)
   for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
+  // 가르친다 (12 §7.2): 세 살부터, 움막에서 — 아이는 제자이기도 하다
+  if (g.at === HOME && g.family?.children?.length) for (const [i, c] of g.family.children.entries()) if ((g.t - c.born) / 1440 >= 3 * YEAR && c.lastTaught !== Math.floor(g.t / 1440)) {
+    const best = Object.keys(g.P.skills).concat(Object.keys(g.P.gain || {})).filter((k, j, a) => a.indexOf(k) === j).sort((x, y) => rawSkill(g, y) - rawSkill(g, x))[0];
+    if (best) o.push({ id: `teach:${i}`, kind: "time", label: `${c.name}에게 ${best}을(를) 가르친다 (두 시간)`, minutes: 120 });
+  }
   // 봉기: 채찍 기둥 광장, 밤, 준비 지표 넷 이상 (SCENARIOS §3.4)
   if (g.at === ROLLCALL && isNight(g.t) && !g.S.vars.greyford_free && !g.S.vars.rising_failed && risingReady(g).filter((x) => x.ok).length >= 4) o.push({ id: "rising", kind: "scene", label: "사람들을 부른다 — 여울강이 붉어지는 날", risk: "실패하면 붉은 길" });
   // 작전: 그 자리, 그 시각, 필수 준비를 갖췄으면
@@ -917,7 +922,7 @@ function domainStoryTick(g) {
   if (!g.domainDue?.length || g.story || g.convo || g.fight || g.ended) return false;
   const ev = g.domainDue.shift();
   if (ev === "hostage") { const F = g.family; F.hostage = F.members.find((n) => n === "npc_kit") || F.members[0]; g.storyCtx = { ...(g.storyCtx || {}), hostage: F.hostage }; }
-  const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage", siege: "rising_siege" }[ev]); if (!st) return false;
+  const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage", siege: "rising_siege", child: "child_question" }[ev]); if (!st) return false;
   g.storyDone.delete(st.id); openStory(g, st);
   return true;
 }
@@ -1003,13 +1008,46 @@ function familyDay(g, day) {
   const F = g.family; if (!F) return;
   if (F.bound && !F.pregnant && (g.t - F.bound) >= 20 * 1440 && hash(g.seed, "preg", day) < 0.02 && !g.S.dead.has("npc_sara")) { F.pregnant = { since: g.t, due: g.t + 270 * 1440 }; g.P.notebook.push("사라가 네 손을 배 위에 올려놓는다. 아무 말도 하지 않는다."); }
   if (F.pregnant && g.t >= F.pregnant.due) { F.pregnant = null; (g.domainDue ??= []).push("birth"); }
+  for (const c of F.children) childDay(g, c, day);
   const heat = g.S.wanted?.player?.heat || 0;
   if (heat >= 4 && !F.hostageSeen && (F.members.length || F.children.length)) { F.hostageSeen = true; (g.domainDue ??= []).push("hostage"); }
 }
+// ── 양육 (12 §7.2): 아이는 자란다 · 보고 배운다 · 가르친 것이 아이의 것이 된다 · 뜻대로만 자라지 않는다 ──
+const YEAR = 360;
+const AXES = ["용기", "자비", "정직", "신앙", "탐욕", "충성"];
+// 같은 아이는 다시 만들지 않는다 (12 §7.3): 출생 순간의 시드로 굴리고, 잃은 아이와 겹치면 다시 굴린다
+function newChild(g, name, sex) {
+  const lost = (soul(g).lostChildren || []).filter((c) => c.temper);
+  let temper, k = 0;
+  do { temper = Object.fromEntries(AXES.map((a) => [a, Math.round((hash(g.seed, "childT", g.t, a, k) - 0.5) * 40)])); k++; }
+  while (k < 20 && lost.some((c) => AXES.every((a) => Math.abs((c.temper[a] || 0) - temper[a]) < 8)));
+  const own = AXES[Math.floor(hash(g.seed, "childOwn", g.t, k) * AXES.length)];   // 이 아이만의 고집 — 이 축은 너를 닮지 않는다
+  return { name, sex, born: g.t, place: HOME, temper, own, skills: {}, seen: [], taught: 0 };
+}
+export const childAge = (g, c) => { const d = Math.floor((g.t - c.born) / 1440); return d >= YEAR ? `${Math.floor(d / YEAR)}살` : d >= 30 ? `${Math.floor(d / 30)}개월` : `${d}일`; };
+const CHILD_MILESTONES = [
+  [40, "first_smile", (c) => `${c.name}이(가) 처음으로 너를 보고 웃는다. 이유는 없다.`],
+  [330, "first_steps", (c) => `${c.name}이(가) 움막 기둥을 놓고 세 걸음을 걷는다. 네 번째에 넘어진다. 울지 않는다.`],
+  [420, "first_word", (c) => `${c.name}의 첫 말. 엄마도 아빠도 아니다 — "빵".`],
+  [900, "first_lie", (c) => `${c.name}이(가) 처음으로 거짓말을 한다. 빵 부스러기가 입가에 붙어 있다. 너는 웃음을 참는다. 이 마을에서 거짓말은 살아남는 기술이다.`],
+  [1440, "whip", (c) => `${c.name}이(가) 채찍 기둥 쪽을 오래 본다. 묻지 않는다. 아이들은 묻지 않는 법을 일찍 배운다.`],
+];
+function childDay(g, c, day) {
+  const age = Math.floor((g.t - c.born) / 1440);
+  for (const [d, id, line] of CHILD_MILESTONES) if (age >= d && !c.seen.includes(id)) { c.seen.push(id); g.feed.push({ kind: "echo", text: `〰 ${line(c)}` }); g.P.notebook.push(`${c.name} — ${line(c)}`); }
+  // 보고 배운다: 두 살부터, 너의 성향 쪽으로 천천히. 고집하는 축은 반대로 조금
+  if (age >= 2 * YEAR) for (const a of AXES) {
+    const pv = g.P.temper[a] || 0, d = (pv - c.temper[a]) * 0.004;
+    c.temper[a] = clamp(c.temper[a] + (a === c.own ? -d * 0.5 : d), -100, 100);
+  }
+  if (age >= 5 * YEAR && !c.asked && !g.storyDone.has("child_question")) { c.asked = true; g.storyCtx = { ...(g.storyCtx || {}), child: c.name }; (g.domainDue ??= []).push("child"); }
+}
+export function childTraits(c) { return Object.entries(c.temper || {}).filter(([, v]) => Math.abs(v) >= 30).map(([k, v]) => TRAITS[k][v > 0 ? 1 : 0]); }
 function familyEffect(g, [op, a]) {
   const F = (g.family ??= { members: [], children: [] });
   if (op === "bound") { F.bound = g.t; F.members.includes(a) || F.members.push(a); }
   else if (op === "ransom") { const w = g.S.wanted.player; if (w) w.heat = Math.max(0, w.heat - 2); }
+  else if (op === "child_temper") { for (const c of F.children) { const [ax, d] = a.split(":"); c.temper[ax] = clamp((c.temper[ax] || 0) + Number(d), -100, 100); } }
   else if (op === "abandon") { const h = F.hostage; if (h === "npc_kit") { g.S.vars.kit_on_list = true; } DIR.loss(g, 10); F.members = F.members.filter((x) => x !== h); }
 }
 // ── 연출가 (18): director.mjs — 여기서는 도우미만 넘긴다 ──
@@ -1332,6 +1370,7 @@ const fill = (g, text) => josa(domainFill(g, String(text || ""))).trim().replace
   .replace(/\{(who|about|nem)\}/g, (_, k) => g.storyCtx?.[k + "Name"] || g.storyCtx?.[k] || "…")
   .replace(/\{hostage\}/g, () => displayName(g, g.storyCtx?.hostage || g.family?.hostage || "npc_kit"))
   .replace(/\{birth_helper\}/g, () => (relOf(g, "npc_elsa").trust >= 40 ? "엘사가 와 있다. 늙은 손이 빠르다." : "아무도 오지 않았다. 너와 게르다뿐이다."))
+  .replace(/\{child\}/g, () => g.storyCtx?.child || g.family?.children?.at(-1)?.name || "아이")
   .replace(/\{rising_ready\}/g, () => risingReady(g).filter((x) => x.ok).map((x) => x.label).join(", ") || "없다")
   .replace(/\{rising_who\}/g, () => ["npc_bran", "npc_gunnar", "npc_sigrid", "npc_sara", "npc_martha", "npc_bram"].filter((n) => !g.S.dead.has(n) && (relOf(g, n).trust >= 20 || g.P.met.has(n))).map((n) => displayName(g, n)).join(", ") || "몇 안 되는 얼굴")
   .replace(/\{rising_siege_text\}/g, () => ["레이번가의 기사 열둘이 남쪽 길에 선다. 깃발은 없다 — 깃발이 필요 없는 자들이다.", "바알카르의 용인 백인대가 쇠다리를 건넌다. 창끝이 해를 가린다.", "와이번 그림자가 광장을 지난다. 한 번. 두 번. 세 번째는 내려온다."][Math.min(2, g.domain?.held || 0)])
@@ -1637,6 +1676,16 @@ const DO = {
     } else res.notes.push("해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
     g.at = "gf_rooster";
   },
+  teach(g, i, res) {
+    const c = g.family.children[Number(i)];
+    const sk = Object.keys(g.P.skills).concat(Object.keys(g.P.gain || {})).filter((k, j, a) => a.indexOf(k) === j).sort((x, y) => rawSkill(g, y) - rawSkill(g, x))[0];
+    const mine = rawSkill(g, sk), cur = c.skills[sk] || 5;
+    c.skills[sk] = Math.min(mine, cur + Math.max(1, (mine - cur) / 8)); c.taught++; c.lastTaught = Math.floor(g.t / 1440);
+    // 가르치는 사람을 닮는다 — 가르치는 동안 보이는 것도 같이 배운다
+    for (const a of AXES) c.temper[a] = clamp(c.temper[a] + Math.sign(g.P.temper[a] || 0) * (a === c.own ? 0 : 1), -100, 100);
+    pass(g, 120);
+    res.notes.push(c.skills[sk] >= mine - 1 ? `${c.name}이(가) 너보다 빨리 한다. 너는 아무 말도 하지 않는다. 자랑스러워서.` : `${c.name}의 손이 ${sk}을(를) 따라 한다. 서툴다. 어제보다 덜 서툴다.`);
+  },
   rising(g, _, res) { const st = SL(g, "rising_call"); g.storyDone.delete(st.id); openStory(g, st); res.storyText = g.feed.pop()?.text; },
   op_start(g, id, res) { g.op = { id, phase: "exec" }; const op = g.content.game.ops[id]; res.notes.push(op.exec_text); pass(g, 5); },
   op_abort(g, _, res) { g.op = null; res.notes.push("물러난다. 다음 밤이 있다 — 아마도"); },
@@ -1713,7 +1762,7 @@ const DO = {
   story_childname(g, _, res, opt, e) {
     const nm = String(e.text || "").trim().slice(0, 10) || "아이";
     const fam = g.family, sex = hash(g.seed, "child", g.run.loop, fam.children.length) < 0.5 ? "딸" : "아들";
-    fam.children.push({ name: nm, sex, born: g.t, place: HOME });   // 강변 움막 12호
+    fam.children.push(newChild(g, nm, sex));   // 강변 움막 12호
     g.story.phase = "choice"; const st = SL(g, g.story.id);
     res.storyText = fill(g, st.after_input).replace(/\{child\}/g, nm);
     g.storyDone.add(st.id); g.story = null; bond(g, "npc_sara", 10);
@@ -2324,7 +2373,7 @@ export function view(g) {
     twoDays: twoDays(g),
     domain: (() => { _domData = g.content.game.domains; return DOM.domainView(g, DMH()); })(),
     hide: g.hide ? { at: placeName(g, g.hide.at), people: g.hide.people.map((n) => displayName(g, n)), food: Math.round(g.hide.food * 10) / 10, exposure: g.hide.exposure < 0.3 ? "아직 아무도 모른다" : g.hide.exposure < 0.6 ? "냄새가 새기 시작했다" : g.hide.exposure < 1 ? "누군가 그쪽을 본다" : "드러났다", lost: !!g.hide.lost } : null,
-    family: g.family ? { name: g.family.name || null, motto: g.family.motto || null, members: g.family.members.map((n) => displayName(g, n)), children: g.family.children.map((c) => `${c.name} (${c.sex}, ${Math.floor((g.t - c.born) / 1440)}일)`), pregnant: !!g.family.pregnant } : null,
+    family: g.family ? { name: g.family.name || null, motto: g.family.motto || null, members: g.family.members.map((n) => displayName(g, n)), children: g.family.children.map((c) => ({ name: c.name, sex: c.sex, age: childAge(g, c), traits: childTraits(c), skills: Object.fromEntries(Object.entries(c.skills || {}).map(([k, v]) => [k, Math.round(v)])), taught: c.taught || 0, own: c.own })), pregnant: !!g.family.pregnant } : null,
     trueNames: Object.keys(g.content.game.truenames || {}).filter((w) => knowsWord(g, w)).map((w) => ({ word: w, source: g.content.game.truenames[w].source })),
     rising: (() => { const r = risingReady(g); return r.some((x) => x.ok) || g.S.vars.greyford_free ? { ready: r, free: !!g.S.vars.greyford_free, failed: !!g.S.vars.rising_failed } : null; })(),
     succession: g.S.vars.varskar_dead || g.S.vars.kaspar_warned ? { dead: !!g.S.vars.varskar_dead, kaspar: g.S.vars.faction_kaspar, throne: !!g.S.vars.kaspar_throne, charter: !!g.S.vars.kaspar_charter } : null,
