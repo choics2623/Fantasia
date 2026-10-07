@@ -132,9 +132,11 @@ def main():
         bad += [f"{st.get('id')}: 선택지 id가 글자가 아니다: {c!r}" for c in cids if not isinstance(c, str)]
         bad += [f"{st.get('id')}: 선택지 id가 겹친다: {c}" for c in set(x for x in cids if cids.count(x) > 1)]
     if bad: raise SystemExit("스토리렛 검사 실패:\n  " + "\n  ".join(bad))
-    public = {}
-    for f in load("content/base/npcs/public_*.yaml"):
-        public.update(f or {})
+    # 플레이어가 아는 대로의 이름 (public_<고장>.yaml): 그 고장에서 나고 자란 주인공의 눈 — 다른 고장 출신에게는 쓰지 않는다
+    public, public_home = {}, {}
+    for pp in sorted(glob.glob(os.path.join(ROOT, "content/base/npcs/public_*.yaml"))):
+        sid = os.path.basename(pp)[len("public_"):-len(".yaml")]
+        public_home.setdefault(sid, {}).update(yaml.safe_load(open(pp, encoding="utf-8")) or {})
     access = {}
     for f in load("content/base/access/*.yaml"):
         access.update(f or {})
@@ -185,47 +187,100 @@ def main():
     truenames = {}
     for f in load("content/base/truenames/*.yaml"):
         truenames.update((f or {}).get("words") or {})
-    creation = build_creation(settlements, economy, facts, storylets)
-    game = {"creation": creation, "truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "clocks": clocks, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions, "glossary": glossary}
+    creation = build_creation(settlements, economy, facts, storylets, routines, {**cards, **extra_cards}, json.load(open(os.path.join(ROOT, "content/base/world/map.json"), encoding="utf-8")))
+    game = {"creation": creation, "truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "publicHome": public_home, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "clocks": clocks, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions, "glossary": glossary}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")
 
 
-def build_creation(settlements, economy, facts, storylets):
-    """캐릭터 생성 (06 · content/base/creation): 규칙·재능·특질·결점·출신. 잘못된 참조는 묶기 전에 잡는다."""
+def build_creation(settlements, economy, facts, storylets, routines, cards, world_map):
+    """캐릭터 생성 (06 · content/base/creation): 규칙·재능·특질·결점·출신. 잘못된 참조는 묶기 전에 잡는다.
+    출신은 origins.yaml(셋째의 다섯 갈래)과 origins_<id>.yaml(다른 고장의 출신 — 한 파일에 하나)에서 모은다. order가 있으면 그 순서."""
     base = os.path.join(ROOT, "content/base/creation")
     rules = yaml.safe_load(open(os.path.join(base, "rules.yaml"), encoding="utf-8")) or {}
-    origins = (yaml.safe_load(open(os.path.join(base, "origins.yaml"), encoding="utf-8")) or {}).get("origins") or []
+    origins = []
+    for op in sorted(glob.glob(os.path.join(base, "origins*.yaml"))):
+        origins += (yaml.safe_load(open(op, encoding="utf-8")) or {}).get("origins") or []
+    origins.sort(key=lambda o: o.get("order", 0))
     talents, traits, flaws = rules.get("talents") or [], rules.get("traits") or [], rules.get("flaws") or []
     bad = []
     for kind, lst in (("재능", talents), ("특질", traits), ("결점", flaws), ("출신", origins)):
         ids = [x.get("id") for x in lst]
         if not all(isinstance(x, str) for x in ids) or len(ids) != len(set(ids)): bad.append(f"{kind} id가 겹치거나 글자가 아니다")
     T = {t["id"]: t for t in talents}
+    TR = {t["id"]: t for t in traits}
+    FL = {f["id"]: f for f in flaws}
     C = rules["rules"]["cost"]
     for t in talents:
         if t.get("size") not in C: bad.append(f"재능 {t['id']}: size {t.get('size')}")
         if len(t.get("tiers") or []) != 3: bad.append(f"재능 {t['id']}: 등급 줄이 셋이 아니다")
-    locs = {l["id"] for st in settlements.values() for l in (st.get("locations") or []) + (st.get("outer") or [])}
+        if t.get("area") not in (rules["rules"].get("areas") or []): bad.append(f"재능 {t['id']}: 모르는 분야 {t.get('area')}")
+    for pair in rules["rules"].get("trait_exclusive") or []:
+        bad += [f"특질 배타 쌍에 모르는 특질 {x}" for x in pair if x not in TR]
+    loc_sid = {}
+    for sid, st in settlements.items():
+        for l in (st.get("locations") or []) + (st.get("outer") or []): loc_sid[l["id"]] = sid
     sids = {st.get("id") for st in storylets}
+    nodes = {n["id"] for n in world_map.get("nodes") or []}
+    known_npc = lambda n: n in cards or n in routines
+    import re as _re
     for o in origins:
+        oid = o.get("id")
+        home = o.get("settlement", "greyford")
+        if home not in settlements: bad.append(f"출신 {oid}: 고장 {home}이(가) 없다"); continue
+        if o.get("time") and not _re.match(r"^\d\d:\d\d$", str(o["time"])): bad.append(f"출신 {oid}: time {o['time']} (HH:MM)")
         for k in ("start", "home"):
-            if o.get(k) not in locs: bad.append(f"출신 {o['id']}: {k} {o.get(k)} — 그런 장소가 없다")
-        if o.get("opening") not in sids: bad.append(f"출신 {o['id']}: 회귀점 장면 {o.get('opening')}이(가) 없다")
+            if o.get(k) not in loc_sid: bad.append(f"출신 {oid}: {k} {o.get(k)} — 그런 장소가 없다")
+            elif loc_sid[o[k]] != home and not (home == "greyford" and loc_sid[o[k]] == "greyford"): bad.append(f"출신 {oid}: {k} {o[k]}은(는) {home}이 아니라 {loc_sid[o[k]]}에 있다")
+        if o.get("opening") not in sids: bad.append(f"출신 {oid}: 회귀점 장면 {o.get('opening')}이(가) 없다")
         for it in o.get("items") or []:
-            if it.get("gid") and it["gid"] not in economy["goods"]: bad.append(f"출신 {o['id']}: 물건 {it['gid']}")
+            if it.get("gid") and it["gid"] not in economy["goods"]: bad.append(f"출신 {oid}: 물건 {it['gid']}")
         for f in o.get("knows") or []:
-            if f not in facts: bad.append(f"출신 {o['id']}: 사실 {f}")
-        for p in o.get("places") or []:
-            if p not in locs: bad.append(f"출신 {o['id']}: 숨은 곳 {p}")
-        w = (o.get("duty") or {}).get("work") or {}
-        if w.get("food") and w["food"] not in {i.get("id") for i in o.get("items") or []} | set(economy["goods"]): bad.append(f"출신 {o['id']}: 일의 먹을 것 {w['food']}")
+            if f not in facts: bad.append(f"출신 {oid}: 사실 {f}")
+        for p in (o.get("places") or []):
+            if p not in loc_sid: bad.append(f"출신 {oid}: 숨은 곳 {p}")
+        for n in list((o.get("rel") or {}).keys()) + list((o.get("public") or {}).keys()) + ([o["enemy"]] if o.get("enemy") else []) + list((o.get("wanted") or {}).get("by") or []):
+            if not known_npc(n): bad.append(f"출신 {oid}: 모르는 사람 {n}")
+        for f in o.get("flaws") or []:
+            if f not in FL: bad.append(f"출신 {oid}: 고정 결점 {f}")
+        for t in o.get("traits") or []:
+            if t not in TR: bad.append(f"출신 {oid}: 고정 특질 {t}")
+        for x in o.get("exclude") or []:
+            if x not in sids: bad.append(f"출신 {oid}: exclude {x} — 그런 장면이 없다")
+        for nid in ((o.get("map") or {}).get("knowledge") or {}).keys():
+            if nid not in nodes: bad.append(f"출신 {oid}: 지도 노드 {nid}")
+        for nid in (o.get("map") or {}).get("sketch") or []:
+            if nid not in nodes: bad.append(f"출신 {oid}: 지도 노드 {nid}")
+        d = o.get("duty") or {}
+        rc = d.get("rollcall")
+        if isinstance(rc, dict):
+            if rc.get("at") not in loc_sid: bad.append(f"출신 {oid}: 점호 자리 {rc.get('at')}")
+            if rc.get("by") and not known_npc(rc["by"]): bad.append(f"출신 {oid}: 점호를 부르는 사람 {rc['by']}")
+        ml = d.get("meal")
+        if isinstance(ml, dict):
+            if ml.get("at") not in loc_sid: bad.append(f"출신 {oid}: 저녁 자리 {ml.get('at')}")
+            if ml.get("with") and not known_npc(ml["with"]): bad.append(f"출신 {oid}: 저녁을 주는 사람 {ml['with']}")
+        w = d.get("work") or {}
+        if w and w.get("at") and w["at"] not in loc_sid and w["at"] not in nodes: bad.append(f"출신 {oid}: 일터 {w['at']}")
+        if w.get("food") and w["food"] not in {i.get("id") for i in o.get("items") or []} | set(economy["goods"]): bad.append(f"출신 {oid}: 일의 먹을 것 {w['food']}")
+        if w.get("story") and w["story"] not in sids: bad.append(f"출신 {oid}: 일의 첫 장면 {w['story']}")
+        cn = d.get("count")
+        if cn:
+            for x in cn.get("at") or []:
+                if x not in loc_sid: bad.append(f"출신 {oid}: 점고 자리 {x}")
+            if cn.get("by") and not known_npc(cn["by"]): bad.append(f"출신 {oid}: 점고하는 사람 {cn['by']}")
+        for x in d.get("safe") or []:
+            if x not in loc_sid: bad.append(f"출신 {oid}: 밤에 있어도 되는 곳 {x}")
+        for k in (o.get("texts") or {}):
+            if k not in sids and k not in ("wanted_hook", "nem_door", "gossip_where"): bad.append(f"출신 {oid}: texts의 {k} — 장면도 아는 글자리도 아니다")
         for pr in o.get("presets") or []:
-            tp = sum(C[T[k]["size"]][v - 1] for k, v in (pr.get("talents") or {}).items() if k in T) + sum(x.get("cost", 0) for x in traits if x["id"] in (pr.get("traits") or []))
-            bad += [f"출신 {o['id']} 추천 {pr.get('name')}: 모르는 재능 {k}" for k in (pr.get("talents") or {}) if k not in T]
-            if tp > rules["rules"]["tp"]: bad.append(f"출신 {o['id']} 추천 {pr.get('name')}: {tp}점 > {rules['rules']['tp']}")
-            if sum((pr.get("stats") or {}).values()) > rules["rules"]["free_stats"]: bad.append(f"출신 {o['id']} 추천 {pr.get('name')}: 능력치가 넘친다")
+            tp = sum(C[T[k]["size"]][v - 1] for k, v in (pr.get("talents") or {}).items() if k in T) + sum(TR[x].get("cost", 0) - (o.get("trait_discount") or {}).get(x, 0) for x in (pr.get("traits") or []) if x in TR)
+            bad += [f"출신 {oid} 추천 {pr.get('name')}: 모르는 재능 {k}" for k in (pr.get("talents") or {}) if k not in T]
+            bad += [f"출신 {oid} 추천 {pr.get('name')}: 모르는 특질 {k}" for k in (pr.get("traits") or []) if k not in TR]
+            refund = min(rules["rules"]["flaw_max"], sum(FL[f].get("refund", 0) for f in set((o.get("flaws") or []) + (pr.get("flaws") or [])) if f in FL))
+            if tp > rules["rules"]["tp"] + refund: bad.append(f"출신 {oid} 추천 {pr.get('name')}: {tp}점 > {rules['rules']['tp'] + refund}")
+            if sum((pr.get("stats") or {}).values()) > rules["rules"]["free_stats"]: bad.append(f"출신 {oid} 추천 {pr.get('name')}: 능력치가 넘친다")
     if bad: raise SystemExit("캐릭터 생성 검사 실패:\n  " + "\n  ".join(bad))
     print(f"캐릭터 생성: 출신 {len(origins)} · 재능 {len(talents)} · 특질 {len(traits)} · 결점 {len(flaws)}")
     return {"rules": rules["rules"], "talents": talents, "traits": traits, "flaws": flaws, "origins": origins}

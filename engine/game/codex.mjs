@@ -2,7 +2,7 @@
 // 아는 만큼만 보인다: 0 모름(목록에 없다) · 1 들어 봤다(? — 이름뿐) · 2 안다 · 3 깊이 안다(숨은 사정을 하나라도 안다).
 // 회귀해도 아는 것은 남는다: 영혼의 사람·사실·장소·낱말, 그리고 서술에서 들은 이름(run.heard — 세션이 다음 회차로 넘긴다).
 // 읽기만 한다 — 세계를 바꾸지 않으므로 재생과 상관없다.
-import { view, displayName, whoIs, knownNodes, estimateOf, lexicon, soulOf, knowsFact, storyWhen, placeName, planJourney, journeySchedule } from "./game.mjs";
+import { view, displayName, whoIs, knownNodes, estimateOf, lexicon, soulOf, knowsFact, storyWhen, placeName, planJourney, journeySchedule, homeSettlementOf, callName } from "./game.mjs";
 import { josa } from "../sim/text.mjs";
 
 export const KIND_LABEL = { npc: "사람", loc: "장소", node: "장소", reg: "땅", fac: "세력", word: "말", gl: "세상" };
@@ -11,7 +11,8 @@ const LOC_KIND = { keep: "성채", work: "일터", barracks: "막사", home: "�
 const NODE_TYPE = { city: "도시", fort: "요새", wild: "황야", mine: "광산·농장", ruin: "폐허", temple: "성소", secret: "숨은 곳", village: "마을", port: "나루·항구", site: "유적", island: "섬" };
 const ROAD = { imperial: "제국 가도", road: "큰길", trail: "오솔길", secret: "숨은 길", sea: "뱃길", river: "물길" };
 const ACCESS = { public: "누구나 드나든다", serf: "농노의 자리", staff: "일꾼만 드나든다", owner: "주인의 자리 — 허락 없이는 못 든다", locked: "잠겨 있다", secret: "숨은 곳" };
-const HOME = "greyford";
+// 나고 자란 고장: 출신마다 (회색여울 · 잿불 본갱 · 세렌 …)
+const HOME_OF = (g) => homeSettlementOf(g);
 // 이야기에서 이름으로 잡지 않을 흔한 낱말 (별명이 흔한 낱말인 사람이 있다)
 const STOP = new Set(["국자", "하나", "노을", "바람", "그림자", "늑대", "여우", "까마귀", "아이", "엄마", "형", "누나", "할멈", "영감", "나리", "주인", "손님", "셋째", "당신", "어머니", "아버지", "사내", "여자", "노인"]);
 const first = (s) => String(s || "").split(/(?<=[.!?…])\s/)[0];
@@ -91,7 +92,7 @@ function peopleLevels(g, H, facts) {
   for (const n of g.P.met) add(n, 2);
   for (const n of Object.keys(S.people || {})) add(n, 2);
   for (const n of Object.keys(g.P.seen || {})) add(n, 2);   // 본 사람 — 주인공은 이 마을 사람을 이름으로 안다
-  for (const n of residents(g, HOME)) if (whoIs(g, n)) add(n, 2);   // 회색여울의 이름난 사람들 — 나고 자란 마을이다
+  for (const n of residents(g, HOME_OF(g))) if (whoIs(g, n)) add(n, 2);   // 나고 자란 고장의 이름난 사람들
   for (const f of facts) for (const nm of g.content.facts[f]?.names || []) add(g.content.names[nm], 1);
   for (const id of H) if (id.startsWith("npc:")) add(id.slice(4), 1);
   for (const [n, lv] of out) if (lv >= 2 && (g.content.cards[n]?.hides || []).some((h) => knowsFact(g, h.fact))) out.set(n, 3);
@@ -99,7 +100,7 @@ function peopleLevels(g, H, facts) {
 }
 function placeLevels(g) {
   const out = new Map(), S = soulOf(g), sets = g.content.bundle.settlements;
-  for (const sid of new Set([HOME, g.P.settlement])) for (const l of sets[sid]?.locations || []) {
+  for (const sid of new Set([HOME_OF(g), g.P.settlement])) for (const l of sets[sid]?.locations || []) {
     if (l.parent) continue;
     if (l.access === "secret" && !g.P.knowsPlaces?.has(l.id)) continue;
     out.set(l.id, 2);
@@ -109,7 +110,7 @@ function placeLevels(g) {
 }
 function nodeLevels(g) {
   const K = knownNodes(g), S = soulOf(g), sets = g.content.bundle.settlements, out = new Map();
-  const seenS = new Set([HOME, g.P.settlement, ...(g.P.visited || []), ...(S.visitedSettlements || [])].map((sid) => sets[sid]?.node).filter(Boolean));
+  const seenS = new Set([HOME_OF(g), g.P.settlement, ...(g.P.visited || []), ...(S.visitedSettlements || [])].map((sid) => sets[sid]?.node).filter(Boolean));
   for (const n of g.content.bundle.map.nodes) if (K.has(n.id)) out.set(n.id, seenS.has(n.id) ? 2 : 1);
   return out;
 }
@@ -164,8 +165,8 @@ export function codexNames(g) {
   const list = [];
   const add = (name, id) => { if (name && name.length >= 2 && !STOP.has(name)) list.push([name, id]); };
   const regionOf = (sid) => { const node = g.content.bundle.map.nodes.find((n) => n.id === g.content.bundle.settlements[sid]?.node); return (g.content.bundle.map.regions || []).find((r) => r.id === node?.region)?.name; };
-  const regions = new Set([regionOf(HOME), regionOf(g.P.settlement)].filter(Boolean));
-  const local = new Set([...residents(g, HOME), ...residents(g, g.P.settlement)]);
+  const regions = new Set([regionOf(HOME_OF(g)), regionOf(g.P.settlement)].filter(Boolean));
+  const local = new Set([...residents(g, HOME_OF(g)), ...residents(g, g.P.settlement)]);
   for (const c of Object.values(g.content.cards)) {
     if (!c?.name) continue;
     if (local.has(c.id) || regions.has(c.region)) for (const t of personTokens(c, g.content.cards)) add(t, `npc:${c.id}`);

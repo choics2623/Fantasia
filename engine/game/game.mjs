@@ -48,18 +48,48 @@ export function tierOf(P, r) {
 const OK = (t) => t === "성공" || t === "대성공";
 
 // ── 회귀점 (14 첫 시간, WORLD_BIBLE §1.3) ──
-export const START = toMinutes(312, 9, 1, 18, 0);   // 회귀점: 낙엽월 1일 저녁 6시, 배급 줄의 빵 냄새 (14 §2)
-const SETTLEMENT = "greyford";            // 주인공이 매인 곳 (회귀점). 지금 있는 곳은 g.P.settlement
-const HOME = "gf_river_huts";                         // 강변 움막 12호 — 어머니 게르다, 동생 키트와 함께 (14 §6.2). 갈래가 달라도 가족의 움막은 여기
-// 셋째의 갈래 (creation/origins.yaml): 저녁 6시의 자리, 잠자리, 낮의 의무가 다르다. build가 없는 판(옛 저장·검사)은 정본의 농노
+export const START = toMinutes(312, 9, 1, 18, 0);   // 정본의 회귀점: 낙엽월 1일 저녁 6시, 배급 줄의 빵 냄새 (14 §2). 출신마다 시각이 다르다 → startOf(g)
+const GREYFORD = "greyford";              // 회색여울에만 있는 장치(클락·언덕의 영역·봉기·마르타·남작가 감독관)는 이 고장의 것
+const HOME = "gf_river_huts";                         // 강변 움막 12호 — 어머니 게르다, 동생 키트와 함께 (14 §6.2). 셋째의 갈래가 달라도 가족의 움막은 여기
+// 출신 (creation/origins.yaml): 회귀점의 자리·시각, 잠자리, 낮의 의무가 다르다. build가 없는 판(옛 저장·검사)은 정본의 농노
 const buildOf = (g) => g.run.build || null;
 const originOf = (g) => (g._origin ??= CR.originDef(g.content, buildOf(g)?.origin) || { id: "serf" });
 const dutyOf = (g) => originOf(g).duty || {};
 const homeOf = (g) => originOf(g).home || HOME;
-// 밤에 있어도 되는 곳: 내 잠자리, 가족의 움막, 갈래의 일터(성채 하인은 성채 안)
-const nightSafe = (g) => g.at === homeOf(g) || g.at === HOME || (dutyOf(g).count?.at || []).includes(g.at);
+// 주인공이 매인 고장 (회귀점이 있는 곳). 지금 있는 곳은 g.P.settlement
+const homeSid = (g) => originOf(g).settlement || GREYFORD;
+export const homeSettlementOf = (g) => homeSid(g);
+// 이 판의 회귀점 시각: 낙엽월 1일, 출신의 시각 (O-01 저녁 6시 · 잿불 광산 교대 직전 · 혈목장 새벽 두 시 …)
+const startOf = (g) => g.start ?? START;
+// 회귀점의 때를 한 낱말로 ('{n}째 저녁', '낙엽월 1일 새벽부터') — 출신이 정하지 않았으면 시각으로
+const dayWord = (m) => { const h = Math.floor((((m % 1440) + 1440) % 1440) / 60); return h < 5 ? "새벽" : h < 10 ? "아침" : h < 16 ? "낮" : h < 21 ? "저녁" : "밤"; };
+const startWord = (g) => originOf(g).when_word || dayWord(startOf(g));
+// 게르다와 키트가 식구인 출신 (셋째의 다섯 갈래) — 움막의 의식·키트의 명단·어머니의 구조
+const familyOf = (g) => originOf(g).family !== false && homeSid(g) === GREYFORD;
+// 세상이 주인공을 부르는 이름 (셋째 · 코 · 칠번 …) — 엔진이 쓰는 줄과 서술자에게
+export const callName = (g) => originOf(g).call || "셋째";
+const callJ = (g, rest) => josa(`${callName(g)}${rest}`);
+// 매인 사람: 허락 없이 고장을 떠나면 탈주다 (자유민은 아니다)
+const boundOf = (g) => originOf(g).free !== true;
+// 밤에 있어도 되는 곳: 내 잠자리, 가족의 움막, 출신의 일터·숙소(성채 하인은 성채 안, 광부는 굴 마을)
+const nightSafe = (g) => g.at === homeOf(g) || (familyOf(g) && g.at === HOME) || (dutyOf(g).count?.at || []).includes(g.at) || (dutyOf(g).safe || []).includes(g.at) || (dutyOf(g).safe || []).includes(g.W.loc.get(g.at)?.parent);
 export const originIdOf = (g) => originOf(g).id || "serf";
 const ROLLCALL = "gf_whip_square";
+// 점호 (출신의 duty.rollcall): {at, time, by, miss, frisk, frisk_text} — true면 회색여울의 새벽 다섯 시 채찍 기둥 광장, false면 없다
+function rcOf(g) {
+  const r = dutyOf(g).rollcall;
+  if (r === false) return null;
+  if (r && typeof r === "object") return { time: "05:00", ...r };
+  return homeSid(g) === GREYFORD ? { at: ROLLCALL, time: "05:00", by: null } : null;
+}
+// 점호를 부르는 사람: 출신이 정한 사람(죽으면 그 자리를 이은 사람), 없으면 남작가의 감독관 자리
+function rcBy(g) {
+  const rc = rcOf(g); if (!rc) return null;
+  if (!rc.by) return overseer(g);
+  let n = rc.by;
+  for (let i = 0; i < 5 && g.S.dead.has(n) && g.S.heirs?.[n]; i++) n = g.S.heirs[n];
+  return g.S.dead.has(n) ? null : n;
+}
 // ── 스킬 (01 §5 성장, 03 §3 수련 상한, 06 §4 몸의 상한) ──
 // 머리의 스킬(화술·기만·위압·통찰)은 회귀해도 그대로. 몸의 스킬(싸움·은신·손재주)은 수치를 기억하지만 몸의 상한에 묶인다.
 const BODY_STAT = { 싸움: (s) => (s.근력 + s.체질) / 2, 은신: (s) => s.민첩, 손재주: (s) => s.민첩 };
@@ -107,6 +137,9 @@ const painMul = (g) => [1, 0.75, 0.5, 0.25][talentTier(g, "pain_tolerance")];
 const tiredAt = (g) => [70, 80, 90, 101][talentTier(g, "iron_body")];
 const darkPen = (g) => [10, 5, 2, 0][talentTier(g, "night_eyes")];
 const walkMul = (g) => (hasFlaw(g, "lame") ? 1.3 : 1) * [1, 0.95, 0.9, 0.85][talentTier(g, "fleet")];
+// 몸의 특질 (혈통, 06 §7) — 아래의 갈고리들이 판정·하루·몸을 바꾼다
+function traitStealth(g, t) { return 0; }
+function bloodTraitsAtBirth(g) { }
 // 공간 지각: 들어선 건물의 숨은 자리를 알아챈다 (06 §5.3)
 function spatialSense(g) {
   if (!talentTier(g, "spatial")) return;
@@ -187,6 +220,8 @@ const NEW_PLAYER = () => ({
 function newPlayer(content, build) {
   const P = NEW_PLAYER(), o = CR.originDef(content, build?.origin);
   if (!o) return P;
+  if (o.call) P.name = o.call;
+  if (o.age) P.age = o.age;
   if (o.skills) P.skills = { ...P.skills, ...o.skills };
   if (o.status) P.status = { ...P.status, ...o.status };
   if (o.train != null) P.train = o.train;
@@ -232,7 +267,7 @@ export function boot(content, run) {
   if (run.carry.talent) storyEffect(g, `talent ${run.carry.talent}`);   // 재능은 영혼에 남는다 (06)
   if (run.opening !== false) startStory(g);   // 회귀점의 대본 장면 (검사는 opening:false로 건너뛸 수 있다)
   // 기시감 (10 §5.2): 시간에 닿은 세력은 회차를 넘어 낌새를 챈다 — 셋째 회차부터 잿빛 탑의 밀정이 일찍 온다
-  if (run.loop >= (hasTrait(g, "echo_eye") ? 2 : 3)) ((g.nem ??= {}).npc_isol ??= { grudge: 1, track: 0, since: START });   // 잿빛 고리가 눈에 있으면 한 회차 일찍
+  if (run.loop >= (hasTrait(g, "echo_eye") ? 2 : 3)) ((g.nem ??= {}).npc_isol ??= { grudge: 1, track: 0, since: startOf(g) });   // 잿빛 고리가 눈에 있으면 한 회차 일찍
   // 회귀점의 고요 (06 §5.9): 돌아온 저녁, 두려움이 없고 지난 죽음의 무게가 덜 남는다
   { const k = talentTier(g, "calm_return"); if (k && run.loop >= 2) { g.P.status.fear = 0; g.P.status.stress = Math.round(30 + (g.P.status.stress - 30) * [1, 0.75, 0.5, 0.25][k]); } }
   if (run.carry.soul?.bloodNumb) g.P.bloodNumb = true;
@@ -248,19 +283,22 @@ function build(content, run) {
   const W = createWorld(bundle, { loopSeed: seed });
   const S = createState({ cards, vars: game.agendas.vars, inventories: game.inventories });
   const A = createAgenda(W, S, game.agendas, { loopSeed: seed });
-  const L = createLivingWorld({ world: W, state: S, agenda: A, inventories: game.inventories, sim: game.sim, cards, loopSeed: seed, active: [SETTLEMENT], startAt: START });
   const origin = CR.originDef(content, run.build?.origin);
+  // 회귀점: 낙엽월 1일, 출신의 시각 · 출신의 고장 (O-01은 저녁 6시 회색여울)
+  const start = origin?.time ? Math.floor(START / 1440) * 1440 + parseClock(origin.time) : START;
+  const homeS = origin?.settlement || GREYFORD;
+  const L = createLivingWorld({ world: W, state: S, agenda: A, inventories: game.inventories, sim: game.sim, cards, loopSeed: seed, active: [homeS], startAt: start });
   S.purse.player = origin?.coin ?? 3;      // 부츠 속 동화 3닢 (14) — 지갑은 동화 단위. 갈래마다 다르다
   // 대본 장면의 무대: 회차 시작 장면이 세우는 사람들 (모든 회차 같다 — 회귀점의 고정 인물)
-  const day0 = Math.floor(START / 1440) * 1440;
+  const day0 = Math.floor(start / 1440) * 1440;
   // 시각만 쓰면 회귀점의 날, '날짜 시각'이면 그 날 (마르타의 뒷문 등)
   const stT = (x) => (String(x).includes(" ") ? (() => { const [d, hm] = String(x).split(" "); const { y, m, d: dd } = parseDate(d); return toMinutes(y, m, dd) + parseClock(hm); })() : day0 + parseClock(x));
   const oid = origin?.id || "serf";
-  for (const st of game.storylets || []) if (!st.origin || st.origin === oid) for (const x of st.stage || []) W.override({ npc: x.npc, from: stT(x.from), to: stT(x.to), kind: "at", at: x.at, doing: x.doing });
+  for (const st of game.storylets || []) if (originMatch(st, origin)) for (const x of st.stage || []) W.override({ npc: x.npc, from: stT(x.from), to: stT(x.to), kind: x.kind || "at", at: x.at, doing: x.doing });
   const g = {
-    content, run, W, S, A, L, seed,
-    t: START, at: origin?.start || "gf_rooster",
-    P: { ...newPlayer(content, run.build), settlement: SETTLEMENT, alive: true, captured: false, knows: new Set(), met: new Set(), seen: {}, knowsPlaces: new Set(), found: new Set(), been: new Set([origin?.start || "gf_rooster"]), notebook: [], heard: new Set(), lastRollcall: null },
+    content, run, W, S, A, L, seed, start,
+    t: start, at: origin?.start || "gf_rooster",
+    P: { ...newPlayer(content, run.build), settlement: homeS, alive: true, captured: false, knows: new Set(), met: new Set(), seen: {}, knowsPlaces: new Set(), found: new Set(), been: new Set([origin?.start || "gf_rooster"]), notebook: [], heard: new Set(), lastRollcall: null },
     M: {},             // NPC의 마음 (회차 안에서만): {fear, anger, memories[], impressions{}, revealed:Set, toldPlayer:Set}
     convo: null,       // {npc, turns, patience, transcript[]}
     ended: null,       // {kind: dead|captured, why}
@@ -292,8 +330,12 @@ function applyOrigin(g) {
     const x = g.L.give("player", { ...(good || {}), ...it, id, ...(it.gid ? { gid: it.gid } : {}), value: it.value ?? good?.price ?? 0 });
     x.provenance = [{ owner: "player", how: "처음부터", t: g.t }];
   }
-  if (o.wanted) { const w = wantedAdd(g, o.wanted.heat || 1, o.wanted.reason || null, (o.wanted.by || [])[0] || null, SETTLEMENT); for (const n of o.wanted.by || []) w.by.add(n); }
-  if (CR.buildFlaws(b).includes("enemy_blood")) { const x = ((g.nem ??= {}).npc_volk ??= { grudge: 0, track: 0, since: START }); x.grudge = Math.max(x.grudge, 2); x.track = Math.max(x.track, 1); }
+  if (o.wanted) { const w = wantedAdd(g, o.wanted.heat || 1, o.wanted.reason || null, (o.wanted.by || [])[0] || null, homeSid(g)); for (const n of o.wanted.by || []) w.by.add(n); }
+  // 원수의 피: 출신이 정한 원수 (반용은 순혈파 이복형, 그 밖에는 바르그 사냥대장 볼크)
+  if (CR.buildFlaws(b).includes("enemy_blood")) { const n = o.enemy || "npc_volk", x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: startOf(g) }); x.grudge = Math.max(x.grudge, 2); x.track = Math.max(x.track, 1); }
+  // 매인 고장에 처음 닿는 장면(arrive_*)은 이미 지난 일이다 — 여기서 나고 자랐다
+  for (const st of g.content.game.storylets || []) if (/^arrive_/.test(st.id) && st.trigger?.at === `@${homeSid(g)}`) g.storyDone.add(st.id);
+  bloodTraitsAtBirth(g);
 }
 const mind = (g, n) => (g.M[n] ??= { fear: 0, anger: 0, memories: [], impressions: {}, revealed: new Set(), toldPlayer: new Set() });
 const relOf = (g, n) => g.S.rel.get(`${n}>player`) || { like: 0, trust: 0 };
@@ -415,12 +457,13 @@ export function knownNodes(g) {
   if (g._kn?.key === key) return g._kn.K;
   const M = g.content.bundle.map, K = new Set(), S = g.content.bundle.settlements;
   g._kn = { key, K };
-  for (const [id, lv] of Object.entries(M.start?.knowledge || {})) if (lv >= 1) K.add(id);
-  for (const id of M.start?.sketch || []) K.add(id);   // 머릿속 약도에 있는 곳
-  for (const sid of [SETTLEMENT, ...(g.P.visited || []), ...(soul(g).visitedSettlements || [])]) if (S[sid]?.node) K.add(S[sid].node);
+  const MS = originOf(g).map || M.start || {};   // 출신마다 머릿속 지도가 다르다 (회색여울의 농노는 마을과 그 둘레가 전부)
+  for (const [id, lv] of Object.entries(MS.knowledge || {})) if (lv >= 1) K.add(id);
+  for (const id of MS.sketch || []) K.add(id);   // 머릿속 약도에 있는 곳
+  for (const sid of [homeSid(g), ...(g.P.visited || []), ...(soul(g).visitedSettlements || [])]) if (S[sid]?.node) K.add(S[sid].node);
   for (const id of g.P.knownNodes || []) K.add(id);
   for (const f of g.P.knows) { const t = g.content.facts[f]?.text || ""; for (const n of M.nodes) if (t.includes(n.name)) K.add(n.id); }
-  if (talentTier(g, "spatial") >= 3) { const V = new Set([SETTLEMENT, ...(g.P.visited || [])].map((sid) => S[sid]?.node).filter(Boolean)); for (const e of M.edges) { if (V.has(e.from)) K.add(e.to); if (V.has(e.to)) K.add(e.from); } }   // 가 본 곳의 이웃 땅
+  if (talentTier(g, "spatial") >= 3) { const V = new Set([homeSid(g), ...(g.P.visited || [])].map((sid) => S[sid]?.node).filter(Boolean)); for (const e of M.edges) { if (V.has(e.from)) K.add(e.to); if (V.has(e.to)) K.add(e.from); } }   // 가 본 곳의 이웃 땅
   return K;
 }
 // A* (휴리스틱: 직선거리 × 지도에서 가장 빠른 걸음) — 비용 = 시간 × (1 + 위험 가중 × 위험도/5) + 통행증 없는 검문의 값.
@@ -431,7 +474,7 @@ export function planJourney(g, to, mode = "fast") {
   const M = g.content.bundle.map, from = g.content.bundle.settlements[g.P.settlement]?.node;
   if (!from || !to || from === to) return null;
   const K = knownNodes(g); if (!K.has(to)) return null;
-  const visitedN = new Set([SETTLEMENT, ...(g.P.visited || []), ...(soul(g).visitedSettlements || [])].map((sid) => g.content.bundle.settlements[sid]?.node).filter(Boolean));
+  const visitedN = new Set([homeSid(g), ...(g.P.visited || []), ...(soul(g).visitedSettlements || [])].map((sid) => g.content.bundle.settlements[sid]?.node).filter(Boolean));
   const pass = hasTag(g, "통행증"), w = mode === "safe" ? 1.6 : 0.15;
   const key = `${from}>${to}|${mode}|${K.size}|${visitedN.size}|${pass}`;
   if (g._jc?.[key] !== undefined) return g._jc[key];
@@ -638,7 +681,7 @@ function rawOptions(g) {
   // 갈래의 저녁 (성채 하인은 부엌, 탈주자는 늑대굴의 솥): creation/origins.yaml duty.meal
   { const ml = dutyOf(g).meal; if (ml && typeof ml === "object" && ml.at === g.at && g.P.lastRation !== Math.floor(g.t / 1440)) {
     const m = ((g.t % 1440) + 1440) % 1440;
-    if (m >= parseClock(ml.from) && m < parseClock(ml.to) && (!ml.with || present(g).some((w) => w.npc === ml.with && w.kind !== "captive"))) o.push({ id: "meal", kind: "scene", label: ml.label || "저녁을 먹는다" });
+    if (m >= parseClock(ml.from) && m < parseClock(ml.to) && (!ml.with || present(g).some((w) => w.npc === ml.with && w.kind !== "captive")) && g.S.purse.player >= (ml.cost || 0)) o.push({ id: "meal", kind: "scene", label: `${ml.label || "저녁을 먹는다"}${ml.cost ? ` — ${coinText(ml.cost)}` : ""}` });
   } }
   for (const it of mine(g)) if (it.eat || it.use) o.push({ id: `use:${it.id}`, kind: "scene", label: `${it.name}을(를) ${it.eat ? "먹는다" : "쓴다"}` });
   o.push({ id: "search", kind: "scene", more: true, label: "이곳을 뒤져 본다", skill: "통찰" });
@@ -660,7 +703,7 @@ function rawOptions(g) {
       o.push({ id: `wear:${it.id}:${sl}`, kind: "scene", more: true, label: `${it.name}을(를) ${sl === "손" ? "손에 쥔다" : sl === "허리" ? "허리에 찬다" : `${sl}에 넣는다`}` });
     }
   }
-  if (g.P.bloody && WATER.has(g.at)) o.push({ id: "wash", kind: "scene", label: "옷의 피를 물에 빤다" });
+  if (g.P.bloody && isWater(g, g.at)) o.push({ id: "wash", kind: "scene", label: "옷의 피를 물에 빤다" });
   if (g.S.purse.player >= 12) o.push({ id: "stash:coin", kind: "scene", more: true, label: `${coinText(g.S.purse.player - 3)}을 이곳에 숨긴다 (부츠 속 동화 3닢만 남기고)` });
   for (const e of exits(g)) {
     const sneak = ["owner", "staff", "closed", "secret", "home_locked"].includes(e.access) && !(e.id === homeOf(g));
@@ -672,14 +715,15 @@ function rawOptions(g) {
   if (!g.P.traveling) for (const [sid, st] of Object.entries(g.content.bundle.settlements)) {
     if (sid === g.P.settlement || near.has(sid)) continue;
     const fast = planJourney(g, st.node, "fast"); if (!fast) continue;
-    const desert = g.P.settlement === SETTLEMENT ? " — 탈주" : "";
+    const desert = g.P.settlement === homeSid(g) && boundOf(g) ? " — 탈주" : "";
     const way = (p) => { const sc = journeySchedule(g, p); return { txt: `걸어서 ${p.hours}시간${sc.camps ? ` · 노숙 ${sc.camps}밤` : ""}`, minutes: sc.total }; };
     const wf = way(fast);
-    o.push({ id: `journey:${sid}:fast`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 빠른 길 (${wf.txt})${desert}`, minutes: wf.minutes, risk: fast.passNeeded ? "통행증 없이 검문을 지난다" : fast.danger >= 4 ? "위험한 길목이 있다" : fast.unknownLegs ? "모르는 땅을 물어 가며 간다" : desert ? "점호에 두 번 빠지면 탈주 노예" : null });
+    o.push({ id: `journey:${sid}:fast`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 빠른 길 (${wf.txt})${desert}`, minutes: wf.minutes, risk: fast.passNeeded ? "통행증 없이 검문을 지난다" : fast.danger >= 4 ? "위험한 길목이 있다" : fast.unknownLegs ? "모르는 땅을 물어 가며 간다" : desert ? desertRisk(g) : null });
     const safe = planJourney(g, st.node, "safe");
     if (safe && safe.path.join() !== fast.path.join()) { const ws = way(safe); o.push({ id: `journey:${sid}:safe`, kind: "journey", more: true, label: `${st.name}(으)로 먼 길을 떠난다 — 돌아가는 길 (${ws.txt})${desert}`, minutes: ws.minutes, risk: safe.passNeeded ? "통행증 없이 검문을 지난다" : null }); }
   }
-  for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${g.P.settlement === SETTLEMENT ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60 * walkMul(g)), risk: g.P.settlement === SETTLEMENT ? "점호에 두 번 빠지면 탈주 노예" : null });
+  { const desert = g.P.settlement === homeSid(g) && boundOf(g);
+    for (const tr of travels(g)) o.push({ id: `travel:${tr.settlement}`, kind: "move", label: `${tr.name}(으)로 길을 떠난다 (${tr.hours}시간)${desert ? " — 탈주" : ""}`, minutes: Math.round(tr.hours * 60 * walkMul(g)), risk: desert ? desertRisk(g) : null }); }
   // 가르친다 (12 §7.2): 세 살부터, 움막에서 — 아이는 제자이기도 하다
   if (g.at === homeOf(g) && g.family?.children?.length) for (const [i, c] of g.family.children.entries()) if ((g.t - c.born) / 1440 >= 3 * YEAR && c.lastTaught !== Math.floor(g.t / 1440)) {
     const best = Object.keys(g.P.skills).concat(Object.keys(g.P.gain || {})).filter((k, j, a) => a.indexOf(k) === j).sort((x, y) => rawSkill(g, y) - rawSkill(g, x))[0];
@@ -692,7 +736,7 @@ function rawOptions(g) {
   // 영역 세우기 (09 §2): 그 자리를 알고, 그 자리의 사람이 너를 믿으면
   { _domData = g.content.game.domains; const at = DOM.canFound(g, DMH()); if (at && !g.storyDone.has("domain_found")) o.push({ id: "found_domain", kind: "scene", label: `${displayName(g, g.content.game.domains.sites[at].steward)}에게 — 여기 사람들을 돕겠다고 말한다` }); }
   // 숨긴 곳: 키트를 늑대굴로 (밤에, 같이 있을 때) · 숨긴 곳에 먹을 것을 두고 간다
-  if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && !g.hide && knowsFact(g, "fact_gf_wolf_den")) o.push({ id: "hide_kit", kind: "scene", label: "키트를 데리고 늑대굴로 간다 — 숨긴다", risk: "통금 뒤의 길", minutes: 390 });
+  if (familyOf(g) && g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && !g.hide && knowsFact(g, "fact_gf_wolf_den")) o.push({ id: "hide_kit", kind: "scene", label: "키트를 데리고 늑대굴로 간다 — 숨긴다", risk: "통금 뒤의 길", minutes: 390 });
   if ((g.hide && !g.hide.lost && g.at === g.hide.at) || (g.domain && !g.domain.lost && atPlace(g, g.domain.at))) for (const it of mine(g)) if (it.eat) o.push({ id: `stock:${it.id}`, kind: "scene", label: `${it.name}을(를) 숨은 곳에 두고 간다` });
   // 진명 — 불 (소리 내지 않고): 한 시간 동안 빛이 된다. 몸이 값을 치른다. 본 사람이 있으면 '마녀'
   for (const [w, T] of Object.entries(g.content.game.truenames || {})) {
@@ -701,11 +745,11 @@ function rawOptions(g) {
     o.push({ id: `true_name:${w}`, kind: "scene", more: true, label: `${T.source}의 이름 — '${w}'을(를) 속으로 부른다`, risk: "본 사람이 있으면 재의 법" });
   }
   // 가족 (12): 입양 · 가문 세우기
-  if (present(g).some((w) => w.npc === "npc_fayne") && relOf(g, "npc_fayne").trust >= 30 && (g.P.bond?.npc_fayne || 0) >= 10 && !g.family?.members.includes("npc_fayne")) o.push({ id: "adopt:npc_fayne", kind: "scene", label: "페인에게 — 움막 12호에 와서 같이 살자고 한다" });
+  if (familyOf(g) && present(g).some((w) => w.npc === "npc_fayne") && relOf(g, "npc_fayne").trust >= 30 && (g.P.bond?.npc_fayne || 0) >= 10 && !g.family?.members.includes("npc_fayne")) o.push({ id: "adopt:npc_fayne", kind: "scene", label: "페인에게 — 움막 12호에 와서 같이 살자고 한다" });
   if (g.at === homeOf(g) && !g.family?.name && Object.values(g.P.bond || {}).some((v) => v >= 15)) o.push({ id: "found_house", kind: "scene", more: !soul(g).house, label: soul(g).house ? `가문을 다시 세운다 — '${soul(g).house.name}'` : "가문을 세운다 — 이름 없는 자들의 이름", input: soul(g).house ? null : "house" });
   // 이름 붙이기 / 밤의 의식
   for (const w of present(g)) if (cardOf(g, w.npc).nameable && !g.P.names?.[w.npc]) o.push({ id: `name:${w.npc}`, kind: "scene", label: `${displayName(g, w.npc)}에게 이름을 붙여 준다`, input: "npc_name", npc: w.npc });
-  if (g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && g.P.lastRitual !== Math.floor((g.t - 6 * 60) / 1440)) {
+  if (familyOf(g) && g.at === HOME && isNight(g.t) && present(g).some((w) => w.npc === "npc_kit") && g.P.lastRitual !== Math.floor((g.t - 6 * 60) / 1440)) {
     o.push({ id: "ritual:song", kind: "scene", label: "키트에게 강물 노래를 불러 준다" });
     if (mine(g).some((i) => i.eat)) o.push({ id: "ritual:bread", kind: "scene", label: "빵을 반으로 나눠 키트와 먹는다" });
   }
@@ -715,19 +759,33 @@ function rawOptions(g) {
     o.push({ id: `oath:${oa.id}`, kind: "scene", more: present(g).length === 0, label: `소리 내어 맹세한다 — "${oa.line}"`, oath: true });
   }
   // 들일 (03 §2.1, 14 §5.1): 낮 노동은 몰아서. 할당을 못 채우면 즈닉의 채찍과 배급 삭감
-  { const W = dutyOf(g).work || {}, hm = ((g.t % 1440) + 1440) % 1440; if (g.P.settlement === SETTLEMENT && (!g.S.vars.player_fugitive || W.outlaw) && hm >= 6 * 60 && hm < 14 * 60 && !isSabbath(Math.floor(g.t / 1440)) && g.P.lastWork !== Math.floor(g.t / 1440)) o.push({ id: "work_day", kind: "time", label: W.label || "들일에 나간다 (해 질 때까지)" }); }
+  // 낮일의 시각: 출신마다 (광부의 검은 교대 06~18시, 원형장의 훈련 …) — 그 창이 열려 있을 때 나간다
+  { const W = dutyOf(g).work || {}, hm = ((g.t % 1440) + 1440) % 1440, wf = parseClock(W.from || "06:00"), wt = parseClock(W.until || "14:00");
+    if (dutyOf(g).work !== false && g.P.settlement === homeSid(g) && (!g.S.vars.player_fugitive || W.outlaw) && hm >= wf && hm < wt && (W.sabbath || !isSabbath(Math.floor(g.t / 1440))) && g.P.lastWork !== Math.floor(g.t / 1440)) o.push({ id: "work_day", kind: "time", label: W.label || "들일에 나간다 (해 질 때까지)" }); }
   // 「기억대로 보낸다」 (03 §3.5, 18 §5.6): 지난 회차의 이 하루를 다시 고른다 — 어긋나면 멈춘다
   if (g.run.loop >= 2 && recallPlan(g).length >= 2) o.push({ id: "recall", kind: "time", label: "기억대로 보낸다 — 지난 회차의 이 하루처럼 (다음 아침까지)" });
   o.push({ id: "wait:60", kind: "time", label: "한 시간 기다린다" });
   // 18 「기억대로 보낸다」: 하루를 늘 하던 대로 — 저녁 배급, 막사, 잠, 점호. 그사이 눈앞에서 일어난 일만 남는다
-  if (g.P.settlement === SETTLEMENT && (!g.S.vars.player_fugitive || dutyOf(g).work?.outlaw)) {
+  if (g.P.settlement === homeSid(g) && (!g.S.vars.player_fugitive || dutyOf(g).work?.outlaw)) {
     o.push({ id: "routine_day", kind: "time", label: `하루를 늘 하던 대로 보낸다 (${dutyOf(g).routine || "배급 → 막사 → 점호"})` });
     // 몰아서 보내기 (03 §3.3): 그 사이에도 세계는 돈다 — 무슨 일이 생기면 거기서 멈춘다
     o.push({ id: "routine_days:3", kind: "time", more: true, label: "사흘을 늘 하던 대로 보낸다 — 일이 생기면 멈춘다" });
     o.push({ id: "routine_days:7", kind: "time", more: true, label: "이레를 늘 하던 대로 보낸다 — 일이 생기면 멈춘다" });
   }
-  if ((g.at === homeOf(g) && g.P.settlement === SETTLEMENT) || isNight(g.t)) o.push({ id: "sleep", kind: "time", label: g.at === homeOf(g) ? "잠자리에 눕는다" : "이곳에서 웅크리고 잔다" });
+  if ((g.at === homeOf(g) && g.P.settlement === homeSid(g)) || isNight(g.t)) o.push({ id: "sleep", kind: "time", label: g.at === homeOf(g) ? "잠자리에 눕는다" : "이곳에서 웅크리고 잔다" });
   return o;
+}
+// 고장을 떠나는 길의 위험 한 줄: 점호가 있으면 탈주 노예, 없으면 주인이 찾는다
+const desertRisk = (g) => (rcOf(g) ? "점호에 두 번 빠지면 탈주 노예" : dutyOf(g).desert || "허락 없이 떠나면 주인이 찾는다");
+// 잠에서 깨는 시각 (정본 04:40 — 첫 종 전). 출신이 정할 수 있다 (광부는 교대 종 전)
+function wakeAt(g) { const c = fromMinutes(g.t), [h, mi] = String(dutyOf(g).wake || "04:40").split(":").map(Number); let w = toMinutes(c.y, c.m, c.d, h, mi); if (w <= g.t) w += 1440; return w; }
+// 점호 자리로: 점호 시각 15분 전까지 기다렸다가 그 자리에서 20분 (안식일·탈주 노예·점호 없는 출신은 없다)
+function toRollcall(g, res) {
+  const rc = rcOf(g); if (!rc || !rcBy(g) || g.S.vars.player_fugitive || isSabbath(Math.floor(g.t / 1440)) || g.P.settlement !== homeSid(g)) return;
+  const hm = ((g.t % 1440) + 1440) % 1440, due = parseClock(rc.time);
+  if (hm > due) return;
+  pass(g, Math.max(5, due - 15 - hm)); if (g.story || g.ended) return;
+  g.at = rc.at; if (res) res.notes.push(rc.wake_text || "첫 종. 막사 문이 열리고 모두 광장으로 밀려 나간다 — 점호"); pass(g, 20);
 }
 
 export function knownNames(g) {
@@ -879,7 +937,7 @@ export function apply(g, e, { replay = false } = {}) {
   if (e.kind === "memory") { for (const m of e.mems) applyRecord(g, e.npc, m); return { kind: "memory" }; }
   if (e.kind === "narrator") { g.narrator = e.id; return { kind: "narrator" }; }   // 화자 바꾸기 (18 §4.4) — 기록에 남아 재생된다
   const res = step(g, e);
-  DIR.updateTension(g, DH());
+  DIR.updateTension(g, DH(g));
   if (g.ended) g.ended.why = josa(g.ended.why);
   if (!replay) res.feed = g.feed.map((f) => ({ ...f, text: josa(f.text) }));
   return res;
@@ -929,6 +987,8 @@ function step(g, e) {
   return res;
 }
 const WATER = new Set(["gf_willow_bank", "gf_well_square", "gf_iron_bridge", "gf_hagen_shed"]);
+// 물가: 회색여울의 넷, 그리고 다른 고장의 우물·부두·수로·빨래터 (이름과 종류로)
+const isWater = (g, at) => { if (WATER.has(at)) return true; const l = g.W.loc.get(at); return !!l && (/well|dock|pier|canal|river|spring|laundry|marsh|ford|water/.test(l.kind || "") || /우물|물가|강가|샘|부두|나루|수로|빨래|세탁|물탱크|늪/.test(l.name || "")); };
 const TRIVIAL = /^(wait|sleep|leave|small_talk|story:next|story_name)\b/;
 
 // ── 하루의 끝 (18 §5.2·§5.3): 갈고리 한 줄 + 하루 요약 카드. 잠이 장(章)을 닫는다 ──
@@ -936,6 +996,8 @@ function threads(g) {
   const out = [];
   for (const b of g.content.game.director?.beats || []) {
     const at = parseDT(b.at), left = (at - g.t) / 1440;
+    // 박자는 그 고장의 일이다: 매인 고장이거나 지금 있는 고장의 박자만 (기본은 회색여울)
+    const bs = b.settlement || GREYFORD; if (bs !== homeSid(g) && bs !== g.P.settlement) continue;
     if (left < 0 || !storyWhen(g, b.when)) continue;
     const near = left <= 1.2, text = near ? b.near : b.far;
     if (!text) continue;
@@ -949,9 +1011,17 @@ function threads(g) {
     if (left > 0 && left <= 1.2) out.push({ id: "last_end", text: `내일, 지난번의 너는 ${last.at}에 있었다. 이번엔 아직 아무것도 정해지지 않았다.`, score: 45 });
     if (left < 0 && left > -1.2 && !g.P.passedLastEnd) out.push({ id: "passed", text: "여기서부터는 아무것도 모른다. 내일 아침 무슨 종이 울리는지도.", score: 40 });
   }
-  const heat = heatHere(g, SETTLEMENT);
-  if (heat >= 2) out.push({ id: "wanted", text: "감독관 초소의 등불이 늦게까지 꺼지지 않는다. 명단에 무언가가 더 적혔다.", score: 10 * Math.min(5, heat) * 0.6 });
-  for (const [n, x] of Object.entries(g.nem || {})) if (x.track >= 3) out.push({ id: `nem_${n}`, text: `막사 문설주에 손톱자국 세 줄이 나 있다. ${displayName(g, n)}의 손 간격이다.`, score: 36 });
+  const heat = heatHere(g, homeSid(g));
+  if (heat >= 2) out.push({ id: "wanted", text: originOf(g).texts?.wanted_hook || "감독관 초소의 등불이 늦게까지 꺼지지 않는다. 명단에 무언가가 더 적혔다.", score: 10 * Math.min(5, heat) * 0.6 });
+  for (const [n, x] of Object.entries(g.nem || {})) if (x.track >= 3) out.push({ id: `nem_${n}`, text: `${originOf(g).texts?.nem_door || "막사 문설주"}에 손톱자국 세 줄이 나 있다. ${displayName(g, n)}의 손 간격이다.`, score: 36 });
+  // 출신의 박자 (origins.yaml beats): 그 출신만 아는 다가오는 일
+  for (const b of originOf(g).beats || []) {
+    const at = parseDT(b.at), left = (at - g.t) / 1440;
+    if (left < 0 || !storyWhen(g, b.when)) continue;
+    const near = left <= 1.2, text = near ? b.near : b.far; if (!text) continue;
+    const imm = left <= 1.2 ? 1 : left <= 3 ? 0.7 : left <= 7 ? 0.4 : 0.2;
+    out.push({ id: b.id, text, score: (b.danger || 3) * 10 * imm * (b.involved || 1) * (g.P.lastHookId === b.id ? 0.3 : 1) });
+  }
   return out.sort((a, b) => b.score - a.score);
 }
 function dayEnd(g) {
@@ -959,10 +1029,11 @@ function dayEnd(g) {
   if (g.P.lastDayEnd === day || g.story || g.ended) return;
   const mk = g.P.dayMark || { notebook: 0, met: 0, coin: 3 };
   const th = threads(g)[0];
-  const quiet = g.content.game.director?.quiet || [];
+  // 고요한 마감 문장: 출신의 것 (회색여울의 문장은 움막의 밤이다)
+  const quiet = originOf(g).quiet?.length ? originOf(g).quiet : g.content.game.director?.quiet || [];
   // 매일 밤이 절벽이면 절벽이 아니다 — 세 밤 연속 갈고리였으면 넷째 밤은 아주 무거운 것만
   const streak = g.P.hookStreak || 0;
-  let hook = th && th.score >= 12 && (streak < 3 || th.score >= 40) && (th.score >= 40 || DIR.hookAllowed(g, DH(), day)) ? th : null;
+  let hook = th && th.score >= 12 && (streak < 3 || th.score >= 40) && (th.score >= 40 || DIR.hookAllowed(g, DH(g), day)) ? th : null;
   const text = hook ? hook.text : quiet[Math.floor(hash(g.seed, "quiet", day) * quiet.length)] || "";
   g.P.hookStreak = hook ? streak + 1 : 0;
   g.P.lastHookId = hook?.id || null; g.P.lastHook = text;
@@ -970,13 +1041,13 @@ function dayEnd(g) {
   const goalsNow = goals(g).filter((x) => x.days != null).map((x) => `${x.who}까지 ${x.days}일`);
   const card = [`수첩 +${Math.max(0, g.P.notebook.length - mk.notebook)}`, `아는 사람 ${g.P.met.size}`, coinText(g.S.purse.player), ...goalsNow].join(" · ");
   g.feed.push({ kind: "dayend", text, card });
-  (g.P.days ??= []).push({ day: Math.floor((g.t - START) / 1440), date: fmt(g.t).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, ""), at: placeName(g, g.at), notes: g.P.notebook.slice(mk.notebook).slice(-3), hook: text });
+  (g.P.days ??= []).push({ day: Math.floor((g.t - startOf(g)) / 1440), date: fmt(g.t).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, ""), at: placeName(g, g.at), notes: g.P.notebook.slice(mk.notebook).slice(-3), hook: text });
   g.P.dayMark = { notebook: g.P.notebook.length, met: g.P.met.size, coin: g.S.purse.player, journal: jidx(g) + 1 };
   g.P.lastDayEnd = day;
 }
 // 두 겹의 날 (16 §4): 지난 회차의 같은 날과 오늘을 나란히 — 같음/달라짐은 플레이어가 본다
 function twoDays(g) {
-  const day = Math.floor((g.t - START) / 1440), prev = soul(g).days?.[g.run.loop - 1] || [];
+  const day = Math.floor((g.t - startOf(g)) / 1440), prev = soul(g).days?.[g.run.loop - 1] || [];
   const then = prev.find((x) => x.day === day) || null, now = (g.P.days || []).find((x) => x.day === day) || null;
   // 같음/달라짐 표지 (16 §4.2): 자리, 그리고 그날 수첩에 남은 줄
   const marks = then && now ? [then.at === now.at ? "= 같은 자리에서 하루를 닫았다" : `≠ 지난번엔 ${then.at}, 이번엔 ${now.at}`, ...now.notes.filter((n) => !then.notes.includes(n)).map((n) => `+ 처음: ${n}`), ...then.notes.filter((n) => !now.notes.includes(n)).map((n) => `− 이번엔 없었다: ${n}`)] : [];
@@ -988,19 +1059,19 @@ export function morningMark(g) { return g.P.marks?.length ? g.P.marks[g.P.marks.
 export function recap(g, gapHours) {
   if (gapHours < 6) return [];
   const out = [];
-  if (g.run.loop >= 2) out.push(`${nthKo(g.run.loop)} 저녁.`);
+  if (g.run.loop >= 2) out.push(`${nthKo(g.run.loop)} ${startWord(g)}.`);
   if (gapHours < 48) { if (g.P.lastHook) out.push(`지난밤: ${g.P.lastHook}`); return out; }
   const notes = g.P.notebook.slice(g.P.dayMark?.notebook ? Math.max(0, g.P.notebook.length - 3) : -3);
   out.push(...notes.map((x) => `· ${x}`));
   for (const t of threads(g).slice(0, 2)) out.push(`· ${t.text}`);
   out.push(`지금 — ${fmt(g.t).replace(/^AS \d+ /, "")} · ${placeName(g, g.at)} · 배고픔 ${g.P.status.hunger}/4`);
-  return DIR.recapVoice(g, out, DH());
+  return DIR.recapVoice(g, out, DH(g));
 }
 // 「다시, 낙엽월 1일」 (18 §5.7): 이번 회차에 들고 들어가는 것 — 첫 회귀에는 짧게
 function againCard(g) {
   const S = soul(g), last = S.records[S.records.length - 1];
-  const L = [`다시, 낙엽월 1일 — ${nthKo(g.run.loop)} 저녁`];
-  if (S.furthest > START) L.push(`가장 멀리 간 날 — ${fmt(S.furthest).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, "")}`);
+  const L = [`다시, 낙엽월 1일 — ${nthKo(g.run.loop)} ${startWord(g)}`];
+  if (S.furthest > startOf(g)) L.push(`가장 멀리 간 날 — ${fmt(S.furthest).replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, "")}`);
   if (last) L.push(`지난번 — ${last.end.replace(/^AS \d+ /, "").replace(/ \d\d:\d\d$/, "")}, ${last.at}`);
   const beats = (g.content.game.director?.beats || []).filter((b) => parseDT(b.at) > g.t && (b.far || b.near)).filter((b) => storyWhen(g, b.when) || (b.when || []).some((c) => /pknows|goal_/.test(c))).slice(0, g.run.loop === 2 ? 3 : 5);
   if (beats.length) L.push(`아는 박자\n${beats.map((b) => `· ${(b.far || b.near)}`).join("\n")}`);
@@ -1012,10 +1083,10 @@ function againCard(g) {
 function promisesTick(g, t) {
   for (const p of g.promises || []) {
     if (p.state !== "open") continue;
-    if (t >= p.from && t <= p.to && g.at === p.place) { p.state = "kept"; bumpRel(g, p.npc, 3, 6); addMemory(g, p.npc, { kind: "emotion", tag: "정직함", text: "셋째가 약속한 대로 왔다", salience: 3, source: "engine" }); continue; }
+    if (t >= p.from && t <= p.to && g.at === p.place) { p.state = "kept"; bumpRel(g, p.npc, 3, 6); addMemory(g, p.npc, { kind: "emotion", tag: "정직함", text: callJ(g, "이(가) 약속한 대로 왔다"), salience: 3, source: "engine" }); continue; }
     if (t > p.to + 60) {
       p.state = "broken"; bumpRel(g, p.npc, -5, -10);
-      addMemory(g, p.npc, { kind: "emotion", tag: "거짓말쟁이", text: `셋째는 오지 않았다 — ${p.what}`, salience: 4, source: "engine" });
+      addMemory(g, p.npc, { kind: "emotion", tag: "거짓말쟁이", text: callJ(g, `은(는) 오지 않았다 — ${p.what}`), salience: 4, source: "engine" });
       g.feed.push({ kind: "echo", text: josa(`〰 ${displayName(g, p.npc)}이(가) ${placeName(g, p.place)}에서 기다렸다. 너는 가지 않았다.`) });
     }
   }
@@ -1040,7 +1111,9 @@ function oathsTick(g, t) {
     if (!storyWhen(g, oa.broken, t)) echoOut(g, `〰 "${oa.line}" — 지켜졌다. 아무도 모른다.`, 75);
   }
   // 상실 (18 §3.3 L): 유대 있는 사람이 끌려가면
-  for (const [v, n] of [["kit_sold", "npc_kit"], ["sara_sold", "npc_sara"], ["toby_sold", "npc_toby"]]) if (g.S.vars[v] && !(g.P.lossSeen ??= new Set()).has(v)) { g.P.lossSeen.add(v); if ((g.P.bond?.[n] || 0) >= 5 || n === "npc_kit") { DIR.loss(g, 7); DIR.crisis(g, 4); } }
+  for (const [v, n] of [["kit_sold", "npc_kit"], ["sara_sold", "npc_sara"], ["toby_sold", "npc_toby"]]) if (g.S.vars[v] && !(g.P.lossSeen ??= new Set()).has(v)) { g.P.lossSeen.add(v); if ((g.P.bond?.[n] || 0) >= 5 || (n === "npc_kit" && familyOf(g))) { DIR.loss(g, 7); DIR.crisis(g, 4); } }
+  // 출신의 상실 (origins.yaml losses): 그 출신이 지키려던 사람이 끌려가거나 죽으면
+  for (const x of originOf(g).losses || []) if (!(g.P.lossSeen ??= new Set()).has(x.id) && storyWhen(g, x.when, t)) { g.P.lossSeen.add(x.id); DIR.loss(g, x.weight || 7); DIR.crisis(g, 4); if (x.text) echoOut(g, `〰 ${fill(g, x.text)}`, 80); }
   // 메아리: 네가 한 일이 세상에 닿은 순간 (원인 한 줄을 불러 준다)
   for (const ec of g.echoes || []) {
     if (ec.done || t < ec.t) continue;
@@ -1052,6 +1125,7 @@ function oathsTick(g, t) {
 function eatMeal(g) {
   const ml = dutyOf(g).meal || {}, day = Math.floor(g.t / 1440);
   g.P.lastRation = day;
+  if (ml.cost) g.S.purse.player = Math.max(0, g.S.purse.player - ml.cost);   // 사 먹는 저녁 (세렌의 계약민 — 식비는 빚에서도 깎인다)
   const thin = !!ml.thin && hash(g.seed, "meal-thin", day) < ml.thin;
   if (!thin) g.P.status.hunger = clamp(g.P.status.hunger + (ml.hunger || -1), 0, 4);
   return !thin;
@@ -1069,11 +1143,12 @@ function clocksTick(g, day) {
     if ((g.P.clocks ??= {})[c.id] || day * 1440 < parseDT(c.date) || !storyWhen(g, c.when)) continue;
     g.P.clocks[c.id] = day;
     for (const e of c.effects || []) g.A.doEffect(e, g.t);
-    if (g.P.settlement === SETTLEMENT) g.feed.push({ kind: "echo", text: `〰 ${c.text}` });
-    if (c.scene && g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive) (g.domainDue ??= []).push(`clock:${c.scene}`);
+    const cs = c.settlement || GREYFORD;   // 클락은 그 고장의 일 — 거기 있어야 보인다
+    if (g.P.settlement === cs) g.feed.push({ kind: "echo", text: `〰 ${c.text}` });
+    if (c.scene && g.P.settlement === cs && !g.S.vars.player_fugitive) (g.domainDue ??= []).push(`clock:${c.scene}`);
     if (c.engine === "plague") {
       // 〔표류〕 첫 환자는 회차마다 다르다 — 회차 시드로 고른다
-      const pool = Object.keys(g.content.cards).filter((n) => !g.S.dead.has(n) && g.W.where(n, g.t)?.settlement === SETTLEMENT && /인간/.test(cardOf(g, n).race || "인간"));
+      const pool = Object.keys(g.content.cards).filter((n) => !g.S.dead.has(n) && g.W.where(n, g.t)?.settlement === cs && /인간/.test(cardOf(g, n).race || "인간"));
       const v = pool[Math.floor(hash(g.seed, "plague", g.run.loop) * pool.length)];
       if (v) { g.A.doEffect(`kill ${v}`, g.t); g.feed.push({ kind: "echo", text: `〰 ${displayName(g, v)}이(가) 재열병으로 죽었다. 지난번에는 다른 사람이었다.` }); }
     }
@@ -1083,7 +1158,7 @@ function clocksTick(g, day) {
 function dreamTick(g) {
   const D = g.content.game.dreams; if (!D?.fragments?.length) return;
   const day = Math.floor(g.t / 1440), late = g.t >= toMinutes(312, 12, 4);
-  g.P.nextDream ??= Math.floor(START / 1440) + 6;
+  g.P.nextDream ??= Math.floor(startOf(g) / 1440) + 6;
   if (day < g.P.nextDream) return;
   const n = (g.P.dreamN = (g.P.dreamN || 0) + 1);
   g.feed.push({ kind: "voice", who: D.who, text: D.fragments[(n - 1) % D.fragments.length] });
@@ -1110,7 +1185,7 @@ function nightEchoes(g) {
 // ── 내면의 목소리 (15) — 엔진이 고른 한 줄이 그대로 화면에 (LLM이 쓰지 않는다) ──
 function voiceWhen(g, c, e, opt) {
   const [k, a, b] = c.split(/\s+/);
-  if (k === "first") return g.t >= START + 30;
+  if (k === "first") return g.t >= startOf(g) + 30;
   if (k === "after_first") return jidx(g) >= 2;
   if (k === "place") return g.at === a || g.W.loc.get(g.at)?.parent === a;
   if (k === "with") return present(g).some((w) => w.npc === a && w.kind !== "captive");
@@ -1251,7 +1326,7 @@ function firstSeenCheck(g) {
   if (g.run.loop < 2 || g.story || g.convo || g.fight || g.P.firstSeen) return false;
   // 코로 쫓는 사냥꾼만 (젖은 재 냄새 — 17 §3.7.2). 회귀점의 첫 한 시간은 대본 장면의 것
   const last = [...(soul(g).nemeses || [])].reverse().find((p) => profOf(g, p.npc).role === "hunter")?.npc;
-  if (!last || g.t < START + 60 || g.S.dead.has(last) || !present(g).some((w) => w.npc === last && w.kind !== "captive")) return false;
+  if (!last || g.t < startOf(g) + 60 || g.S.dead.has(last) || !present(g).some((w) => w.npc === last && w.kind !== "captive")) return false;
   const st = SL(g, "first_seen_enemy"); if (!st) return false;
   g.P.firstSeen = last; g.storyCtx = { nem: last, nemName: displayName(g, last) };
   openStory(g, st); return true;
@@ -1291,20 +1366,26 @@ export function lexicon(g) {
   }
   return out;
 }
+// family: 게르다와 키트가 식구인 출신에서만 (다른 출신에게 키트는 모르는 아이다)
 const ACHIEVEMENTS = [
-  { id: "kit_kept", tp: 3, text: "키트를 첫 호송에서 빼냈다", when: (g) => g.t > toMinutes(312, 10, 9, 7) && !g.S.vars.kit_sold },
-  { id: "sara_kept", tp: 3, text: "사라를 둘째 호송에서 빼냈다", when: (g) => g.t > toMinutes(312, 12, 3, 7) && !g.S.vars.sara_sold },
+  { id: "kit_kept", tp: 3, family: true, text: "키트를 첫 호송에서 빼냈다", when: (g) => g.t > toMinutes(312, 10, 9, 7) && !g.S.vars.kit_sold },
+  { id: "sara_kept", tp: 3, family: true, text: "사라를 둘째 호송에서 빼냈다", when: (g) => g.t > toMinutes(312, 12, 3, 7) && !g.S.vars.sara_sold },
   { id: "fayne_saved", tp: 2, text: "하겐의 배에서 페인을 살렸다", when: (g) => !!g.S.vars.fayne_saved },
   { id: "den_saved", tp: 2, text: "대수색에서 늑대굴을 지켰다", when: (g) => !!g.S.vars.den_saved },
   { id: "egil_moved", tp: 2, text: "에길 일가를 잿빛 실에 넘겼다", when: (g) => !!g.S.vars.egil_moved },
   { id: "autumn", tp: 1, text: "낙엽월을 넘겼다", when: (g) => g.t > toMinutes(312, 9, 30, 23) },
   { id: "winter", tp: 2, text: "굶주림월을 넘겼다", when: (g) => g.t > toMinutes(312, 12, 4) },
   { id: "ten_facts", tp: 1, text: "열 가지 비밀을 알았다", when: (g) => g.P.knows.size >= 10 },
-  { id: "no_blood", tp: 1, text: "이레 동안 아무도 죽이지 않았다", when: (g) => g.t - START >= 7 * 1440 && !g.deeds.some((d) => /^kill/.test(d.kind)) },
+  { id: "no_blood", tp: 1, text: "이레 동안 아무도 죽이지 않았다", when: (g) => g.t - startOf(g) >= 7 * 1440 && !g.deeds.some((d) => /^kill/.test(d.kind)) },
   { id: "rising", tp: 3, text: "회색여울이 사슬을 끊었다", when: (g) => !!g.S.vars.greyford_free },
   { id: "rising_90", tp: 3, text: "해방구가 아흔 날을 버텼다", when: (g) => !!g.S.vars.rising_held_90 },
   { id: "charter", tp: 3, text: "인간의 글자로 쓴 칙허", when: (g) => !!g.S.vars.kaspar_charter },
   { id: "oath_kept", tp: 2, text: "맹세를 지켰다", when: (g) => (g.oaths || []).some((o) => o.state === "kept") },
+];
+// 이 판의 업적: 공통 + 출신의 것 (origins.yaml achievements — 조건은 대본 장면의 문법)
+const achievementsOf = (g) => [
+  ...ACHIEVEMENTS.filter((a) => !a.family || familyOf(g)),
+  ...(originOf(g).achievements || []).map((a) => ({ id: `${originIdOf(g)}:${a.id}`, tp: a.tp || 1, text: a.text, when: (g2) => storyWhen(g2, a.when) })),
 ];
 // ── 애착 (20 §4): 플레이어가 들인 것으로 잰다 — 나눈 빵, 대신 맞은 채찍, 붙여 준 이름, 밤의 의식 ──
 // 애착 마모 (13 §3.2): 얼룩이 셋을 넘으면 마음을 들이는 것도 반만 닿는다
@@ -1365,7 +1446,7 @@ function opOptions(g) {
 // 얼룩 (13 §3.2)// 얼룩 (13 §3.2): 어두운 행적은 영혼에 남는다 — 그 사람을 다시 보면 손이 무겁다
 const DARK = new Set(["inform", "betray", "kill_serf"]);
 // ── 영역 (09): domain.mjs ──
-const DMH = () => ({ sites: () => DOMDATA().sites || {}, stewards: () => DOMDATA().stewards || {}, facilities: () => DOMDATA().facilities || {}, atPlace, storyWhen, relOf, hash, placeName, displayName, wantedAdd: (g, h, why) => wantedAdd(g, h, why, null, SETTLEMENT), winterStart: toMinutes(312, 10, 30) });
+const DMH = () => ({ sites: () => DOMDATA().sites || {}, stewards: () => DOMDATA().stewards || {}, facilities: () => DOMDATA().facilities || {}, atPlace, storyWhen, relOf, hash, placeName, displayName, wantedAdd: (g, h, why) => wantedAdd(g, h, why, null, GREYFORD), winterStart: toMinutes(312, 10, 30) });
 let _domData = null; const DOMDATA = () => _domData || {};
 function domainTick(g, day) {
   _domData = g.content.game.domains;
@@ -1457,7 +1538,7 @@ function risingEffect(g, op, res) {
   if (op === "success") {
     // 해방구 (09 §2 단계 3): 숨길 수 없는 땅 — 대신 진압군이 온다 (30·60·90일)
     g.domain = { at: "gf_whip_square", popVar: null, pop: 400, steward: g.S.dead.has("npc_gunnar") ? "npc_bran" : "npc_gunnar", food: 400 * 0.4 * 30, defense: 10 + ready * 5, morale: 70, order: 50, literacy: 0, built: [], policy: "open", delegation: "direct", since: g.t, nextReport: g.t + 10 * 1440, alarm: 0, lost: false, open: true, siege: [30, 60, 90].map((d) => g.t + d * 1440), held: 0 };
-    g.S.vars.greyford_free = true; g.A.doEffect("kill npc_znik", g.t); g.S.vars.player_fugitive = false; if (wantedOf(g)) { const w = wantedOf(g); w.local[SETTLEMENT] = 0; w.heat = Object.values(w.local).reduce((a, b) => a + b, 0); }
+    g.S.vars.greyford_free = true; g.A.doEffect("kill npc_znik", g.t); if (homeSid(g) === GREYFORD) g.S.vars.player_fugitive = false; if (wantedOf(g)) { const w = wantedOf(g); w.local[GREYFORD] = 0; w.heat = Object.values(w.local).reduce((a, b) => a + b, 0); }
     DIR.crisis(g, 5); temper(g, "용기", 10);
   } else if (op === "fail" || op === "fall") {
     // 반동 「두 번째 붉은 길」: 참가자의 칠할이 길가에서 — 처형자 명부는 회귀하면 없다. 이름은 네가 외운다
@@ -1482,7 +1563,7 @@ function witchCheck(g, res) {
   const seen = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t) && !g.family?.members.includes(w.npc)).map((w) => w.npc);
   if (!seen.length) return;
   wantedAdd(g, 3, "마녀 — 진명을 불렀다");
-  g.S.vars.witch_seen = true; for (const n of seen) addMemory(g, n, { kind: "emotion", tag: "위험함", text: "셋째가 알 수 없는 것을 불렀다", salience: 5, source: "engine" });
+  g.S.vars.witch_seen = true; for (const n of seen) addMemory(g, n, { kind: "emotion", tag: "위험함", text: callJ(g, "이(가) 알 수 없는 것을 불렀다"), salience: 5, source: "engine" });
   const x = ((g.nem ??= {}).npc_isol ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2);
   res.notes.push(`${seen.map((n) => displayName(g, n)).join(", ")}이(가) 보았다`);
 }
@@ -1492,7 +1573,7 @@ function familyDay(g, day) {
   if (F.bound && !F.pregnant && (g.t - F.bound) >= 20 * 1440 && hash(g.seed, "preg", day) < 0.02 && !g.S.dead.has("npc_sara")) { F.pregnant = { since: g.t, due: g.t + 270 * 1440 }; g.P.notebook.push("사라가 네 손을 배 위에 올려놓는다. 아무 말도 하지 않는다."); }
   if (F.pregnant && g.t >= F.pregnant.due) { F.pregnant = null; (g.domainDue ??= []).push("birth"); }
   for (const c of F.children) childDay(g, c, day);
-  const heat = heatHere(g, SETTLEMENT);   // 식구를 잡는 것은 회색여울의 윗선이다
+  const heat = heatHere(g, homeSid(g));   // 식구를 잡는 것은 매인 고장의 윗선이다
   if (heat >= 4 && !F.hostageSeen && (F.members.length || F.children.length)) { F.hostageSeen = true; (g.domainDue ??= []).push("hostage"); }
 }
 // ── 양육 (12 §7.2): 아이는 자란다 · 보고 배운다 · 가르친 것이 아이의 것이 된다 · 뜻대로만 자라지 않는다 ──
@@ -1529,18 +1610,18 @@ export function childTraits(c) { return Object.entries(c.temper || {}).filter(([
 function familyEffect(g, [op, a]) {
   const F = (g.family ??= { members: [], children: [] });
   if (op === "bound") { F.bound = g.t; F.members.includes(a) || F.members.push(a); }
-  else if (op === "ransom") { const w = wantedOf(g); if (w) { const k = SETTLEMENT; w.local[k] = Math.max(0, (w.local[k] || 0) - 2); w.heat = Object.values(w.local).reduce((a, b) => a + b, 0); } }
+  else if (op === "ransom") { const w = wantedOf(g); if (w) { const k = homeSid(g); w.local[k] = Math.max(0, (w.local[k] || 0) - 2); w.heat = Object.values(w.local).reduce((a, b) => a + b, 0); } }
   else if (op === "child_temper") { for (const c of F.children) { const [ax, d] = a.split(":"); c.temper[ax] = clamp((c.temper[ax] || 0) + Number(d), -100, 100); } }
   else if (op === "abandon") { const h = F.hostage; if (h === "npc_kit") { g.S.vars.kit_on_list = true; } DIR.loss(g, 10); F.members = F.members.filter((x) => x !== h); }
 }
 // ── 연출가 (18): director.mjs — 여기서는 도우미만 넘긴다 ──
-const DH = () => ({ START, soul, goals, threads, atPlace, storyWhen, parseClock, isNight, hash });
-function tension(g) { return g.dir?.T ?? DIR.tensionRaw(g, DH()); }
+const DH = (g) => ({ START: g ? startOf(g) : START, soul, goals, threads, atPlace, storyWhen, parseClock, isNight, hash });
+function tension(g) { return g.dir?.T ?? DIR.tensionRaw(g, DH(g)); }
 function vignetteTrigger(g, t) {
   if (g.run.opening === false && !g.run.lethal) return null;
   if (g.story || g.ended || g.convo || g.fight) return null;
-  if (t < START + 11 * 60) return null;            // 첫 저녁과 첫 밤은 대본의 것이다 (2일 새벽까지)
-  return DIR.pickScene(g, t, DH());
+  if (t < startOf(g) + 11 * 60) return null;            // 회귀점의 첫 반나절은 대본의 것이다 (정본은 2일 새벽까지)
+  return DIR.pickScene(g, t, DH(g));
 }
 // 성향 (01 §1.3): −100~100. ±60에서 특성이 된다. 처음의 나(0)에서 얼마나 멀어졌나 = 본디의 거리 (15 §7.5)
 function temper(g, axis, d) { if (g.P.temper[axis] == null) return; g.P.temper[axis] = clamp(g.P.temper[axis] + d, -100, 100); }
@@ -1630,44 +1711,49 @@ function pass(g, minutes, { sleeping = false } = {}) {
     const hm = c.hh * 60 + c.mm;
     // 점호 (04:45~05:00, 안식일 제외): 그 시각 광장에 없으면 즈닉이 안다
     // 저녁 점고 (성채 하인 — creation/origins.yaml duty.count): 그 시각 성채 안에 없으면 마르타가 점을 찍는다. 둘째 점부터 고한다
-    const cnt = dutyOf(g).count;
-    if (cnt && hm === parseClock(cnt.time) && g.P.lastCount !== c.day && g.P.settlement === SETTLEMENT && !g.S.dead.has(cnt.by) && !g.ended) {
+    const cnt = dutyOf(g).count, home = homeSid(g);
+    if (cnt && hm === parseClock(cnt.time) && g.P.lastCount !== c.day && g.P.settlement === home && !g.S.dead.has(cnt.by) && !g.ended) {
       g.P.lastCount = c.day;
       if (!(cnt.at || []).includes(g.at)) {
         g.S.vars.player_missed_count = (g.S.vars.player_missed_count || 0) + 1;
         g.feed.push({ kind: "rule", text: cnt.miss || "저녁 점고에 없었다." });
-        addMemory(g, cnt.by, { kind: "suspicion", tag: "위험함", text: "셋째가 저녁 점고에 없었다", salience: 3, source: "engine" });
-        if (g.S.vars.player_missed_count >= 2) wantedAdd(g, 1, "하인 점고에 빠졌다", cnt.by);
+        addMemory(g, cnt.by, { kind: "suspicion", tag: "위험함", text: callJ(g, "이(가) 저녁 점고에 없었다"), salience: 3, source: "engine" });
+        if (g.S.vars.player_missed_count >= 2) wantedAdd(g, 1, cnt.reason || "점고에 빠졌다", cnt.by);
       }
     }
-    if (hm === 5 * 60 && dutyOf(g).rollcall !== false && !isSabbath(c.day) && g.P.lastRollcall !== c.day && overseer(g) && !g.S.dead.has(overseer(g)) && !g.S.vars.player_fugitive) {   // 점호는 감독관 자리의 일 — 즈닉이 죽으면 이은 사람이, 공석이면 점호도 없다
+    // 점호 (출신의 duty.rollcall — 정본은 새벽 다섯 시 채찍 기둥 광장, 안식일 제외): 점호는 그 자리의 일 — 부르는 사람이 죽으면 이은 사람이, 공석이면 점호도 없다
+    const rc = rcOf(g), rcb = rc ? rcBy(g) : null;
+    if (rc && rcb && hm === parseClock(rc.time) && !isSabbath(c.day) && g.P.lastRollcall !== c.day && !g.S.vars.player_fugitive) {
       g.P.lastRollcall = c.day;
-      if (g.at !== ROLLCALL) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: "새벽 점호에 나가지 않았다. 감독관의 명단에 빈칸이 생겼다." }); }
-      else rollcallSearch(g, c.day);
-      // 점호에 두 번 빠진 채 마을 밖에 있으면 — 탈주 노예. 감독관이 바르그 조합에 현상금을 건다
-      if ((g.S.vars.player_missed_rollcall || 0) >= 2 && g.P.settlement !== SETTLEMENT && !g.S.vars.player_fugitive) {
+      if (g.at !== rc.at && g.W.loc.get(g.at)?.parent !== rc.at) { g.S.vars.player_missed_rollcall = (g.S.vars.player_missed_rollcall || 0) + 1; g.feed.push({ kind: "rule", text: rc.miss || "새벽 점호에 나가지 않았다. 감독관의 명단에 빈칸이 생겼다." }); }
+      else if (rc.frisk !== false) rollcallSearch(g, c.day);
+      // 점호에 두 번 빠진 채 고장 밖에 있으면 — 탈주 노예. 부르던 자가 현상금을 건다
+      if ((g.S.vars.player_missed_rollcall || 0) >= 2 && g.P.settlement !== home && !g.S.vars.player_fugitive) {
         g.S.vars.player_fugitive = true;
-        const w = wantedAdd(g, 3, "탈주", overseer(g), SETTLEMENT); w.since ??= next; w.settlement = SETTLEMENT;
-        g.deeds.push({ id: `d${g.deeds.length + 1}`, kind: "flee", victim: null, at: ROLLCALL, placeName: placeName(g, ROLLCALL), t: next });
-        g.L.believe(overseer(g), next, { kind: "trespass", subject: "player", at: ROLLCALL, source: "noticed", reason: "탈주" }, { react: false });
-        g.S.log.push({ t: next, npc: overseer(g), agenda: "sim", vis: "public", text: "감독관이 셋째를 탈주 노예로 올렸다 — 바르그 조합에 현상금" });
+        const w = wantedAdd(g, 3, "탈주", rcb, home); w.since ??= next; w.settlement = home;
+        g.deeds.push({ id: `d${g.deeds.length + 1}`, kind: "flee", victim: null, at: rc.at, placeName: placeName(g, rc.at), t: next });
+        g.L.believe(rcb, next, { kind: "trespass", subject: "player", at: rc.at, source: "noticed", reason: "탈주" }, { react: false });
+        g.S.log.push({ t: next, npc: rcb, agenda: "sim", vis: "public", text: callJ(g, "을(를) 탈주 노예로 올렸다 — 현상금이 걸렸다") });
       }
     }
-    // 통금 순찰 (21:00·23:00·02:00): 막사 밖에 있는 인간은 걸린다 — 은신 판정
-    if (!g.P.traveling && g.P.settlement !== SETTLEMENT && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08, next);
-    if (g.P.settlement === SETTLEMENT && !g.P.traveling && ["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && !nightSafe(g) && !g.W.loc.get(g.at)?.outer && !g.ended) {
-      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6 + [0, 6, 12, 18][talentTier(g, "beast_friend")], 22 + 4 * (g.S.vars.patrol_level || 0));   // 바르그 순찰이 늘면 통금이 무겁다 · 짐승의 벗이면 개가 덜 짖는다
-      if (hash(g.seed, "patrol", next) >= P && g.S.vars.player_fugitive) {   // 탈주 노예가 통금에 걸리면 — 막사가 아니라 채찍 기둥이다
-        g.feed.push({ kind: "rule", text: "통금 순찰의 등불이 얼굴에 멈춘다. \"도망친 셋째다.\" 크릭 감독의 몽둥이가 무릎을 꺾는다." });
-        g.ended = { kind: "captured", why: "통금 순찰에 붙잡혔다 — 탈주 노예로 채찍 기둥에 묶였다", t: next, trace: { id: "rope", ...(overseer(g) ? { npc: overseer(g) } : {}) } };
+    // 낯선 고장: 매시 검문 (매인 고장 밖)
+    if (!g.P.traveling && g.P.settlement !== home && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08, next);
+    // 통금 순찰 (매인 고장의 순찰 시각 — 정본 21:00·23:00·02:00): 잠자리 밖에 있는 인간은 걸린다 — 은신 판정
+    const cf = dutyOf(g).curfew, patrolT = cf === false ? [] : cf?.patrols || g.content.bundle.settlements[home]?.patrols || ["21:00", "23:00", "02:00"];
+    if (g.P.settlement === home && !g.P.traveling && patrolT.some((x) => parseClock(x) === hm) && isNight(next) && !nightSafe(g) && !g.W.loc.get(g.at)?.outer && !g.ended) {
+      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6 + [0, 6, 12, 18][talentTier(g, "beast_friend")] + traitStealth(g, next), 22 + 4 * (g.S.vars.patrol_level || 0) + (cf?.D || 0));   // 바르그 순찰이 늘면 통금이 무겁다 · 짐승의 벗이면 개가 덜 짖는다
+      const by = authorityOf(g, home);
+      if (hash(g.seed, "patrol", next) >= P && g.S.vars.player_fugitive) {   // 탈주 노예가 통금에 걸리면 — 잠자리가 아니라 매질 기둥이다
+        g.feed.push({ kind: "rule", text: fill(g, cf?.fugitive || `통금 순찰의 등불이 얼굴에 멈춘다. "도망친 ${callName(g)}다." 크릭 감독의 몽둥이가 무릎을 꺾는다.`) });
+        g.ended = { kind: "captured", why: cf?.fugitive_why || "통금 순찰에 붙잡혔다 — 탈주 노예로 채찍 기둥에 묶였다", t: next, trace: { id: "rope", ...(by ? { npc: by } : {}) } };
       } else if (hash(g.seed, "patrol", next) >= P) {
-        g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100);
-        g.feed.push({ kind: "rule", text: "통금 순찰에 걸렸다. 크릭 감독의 몽둥이 — 그리고 막사로 끌려간다." });
+        g.P.status.pain = clamp(g.P.status.pain + (cf?.pain ?? 15), 0, 100);
+        g.feed.push({ kind: "rule", text: fill(g, cf?.caught || "통금 순찰에 걸렸다. 크릭 감독의 몽둥이 — 그리고 막사로 끌려간다.") });
         g.at = homeOf(g);
         g.S.vars.player_curfew = (g.S.vars.player_curfew || 0) + 1;
       }
     }
-    if (g.P.settlement === SETTLEMENT && isNight(next) && !nightSafe(g) && !g.P.traveling && next % 60 === 0) g.P.nightOut = (g.P.nightOut || 0) + 1;
+    if (g.P.settlement === home && isNight(next) && !nightSafe(g) && !g.P.traveling && next % 60 === 0) g.P.nightOut = (g.P.nightOut || 0) + 1;
     manhunt(g, next);
     t = next;
     if (g.ended) break;
@@ -1708,7 +1794,15 @@ function pass(g, minutes, { sleeping = false } = {}) {
     g.P.status.hunger = clamp(g.P.status.hunger + 1, 0, 4);
     if (g.P.status.pain >= 100 && !g.ended) {
       // 첫 회차의 무작위 사망 감쇄 (14 §3.3): 고른 길의 끝이 아닌 죽음은 한 번 빈사로 — 첫 회귀는 플레이어가 고른 길의 끝에서 와야 한다
-      if (g.run.loop === 1 && !g.P.spared) { const out = !!g.S.vars.player_fugitive; g.P.spared = true; g.P.status.pain = 80; g.P.status.hunger = 2; g.feed.push({ kind: "rule", text: out ? "눈앞이 하얘진다. 누군가 너를 굴 안으로 끌고 간다. 입에 묽은 죽이 흘러든다 — 시그리드다." : "눈앞이 하얘진다. 누군가 너를 막사로 끌고 간다. 입에 묽은 죽이 흘러든다 — 게르다다." }); g.at = out ? homeOf(g) : HOME; continue; }
+      if (g.run.loop === 1 && !g.P.spared) {
+        // 누가 끌고 가나: 셋째의 갈래는 게르다(탈주자면 시그리드), 다른 출신은 그 삶의 사람 (origins.yaml rescue)
+        const out = !!g.S.vars.player_fugitive, o = originOf(g), away = g.P.settlement !== homeSid(g) || g.P.traveling; g.P.spared = true; g.P.status.pain = 80; g.P.status.hunger = 2;
+        const text = away ? "눈앞이 하얘진다. 낯선 손이 너를 처마 밑으로 끌어다 놓는다. 입에 묽은 죽이 흘러든다. 얼굴은 보지 못했다."
+          : familyOf(g) ? (out ? "눈앞이 하얘진다. 누군가 너를 굴 안으로 끌고 간다. 입에 묽은 죽이 흘러든다 — 시그리드다." : "눈앞이 하얘진다. 누군가 너를 막사로 끌고 간다. 입에 묽은 죽이 흘러든다 — 게르다다.") : (out && o.rescue_out) || o.rescue || "눈앞이 하얘진다. 누군가 너를 잠자리로 끌고 간다. 입에 묽은 죽이 흘러든다.";
+        g.feed.push({ kind: "rule", text: fill(g, text) });
+        if (!away) g.at = familyOf(g) && !out ? HOME : homeOf(g);
+        continue;
+      }
       g.P.alive = false; g.ended = { kind: "dead", why: "굶주림과 상처 — 몸이 더 버티지 못했다", t: d * 1440, trace: { id: "hunger" } };
     }
   }
@@ -1739,12 +1833,13 @@ function successions(g) {
 const overseer = (g) => g.offices.holder("fac_raven_house.off_overseer");
 // 수배 (10 §6): 고장마다 따로 — 까마귀 문에서 한 일로 회색여울 막사에서 잡히지 않는다. 쫓는 사람은 늘 있다 (그 고장의 윗선)
 function authorityOf(g, sid = g.P.settlement) {
-  if (sid === SETTLEMENT && overseer(g) && !g.S.dead.has(overseer(g))) return overseer(g);
+  if (sid === GREYFORD && overseer(g) && !g.S.dead.has(overseer(g))) return overseer(g);
+  if (sid === homeSid(g) && rcOf(g)?.by && rcBy(g)) return rcBy(g);   // 매인 고장: 점호를 부르는 사람
   return (g.content.game.sim.defaults_by_settlement?.[sid]?.report_to || []).find((n) => !g.S.dead.has(n)) || null;
 }
 function wantedOf(g) {
   const w = g.S.wanted?.player; if (!w) return null;
-  w.local ??= { [w.settlement || SETTLEMENT]: w.heat || 0 };   // 옛 모양(고장 하나)도 읽는다
+  w.local ??= { [w.settlement || homeSid(g)]: w.heat || 0 };   // 옛 모양(고장 하나)도 읽는다
   return w;
 }
 export function wantedAdd(g, heat, reason, by = null, sid = g.P.settlement) {
@@ -1759,7 +1854,7 @@ const heatHere = (g, sid = g.P.settlement) => wantedOf(g)?.local?.[sid] || 0;
 // 시간이 지나면 식는다 (10 §6.3): 사흘 조용하면 하루에 0.25씩 — 탈주 노예라는 사실(변수)은 식지 않는다
 function wantedCool(g, day) {
   const w = wantedOf(g); if (!w || day * 1440 - (w.lastAt ?? w.since ?? 0) < 3 * 1440) return;
-  const floor = (k) => (k === SETTLEMENT && g.S.vars.player_fugitive && originOf(g).wanted ? 1 : 0);   // 탈주 노예로 이름이 적힌 갈래: 고향에서는 식지 않는다
+  const floor = (k) => (k === homeSid(g) && g.S.vars.player_fugitive && originOf(g).wanted ? 1 : 0);   // 탈주 노예로 이름이 적힌 갈래: 고향에서는 식지 않는다
   for (const k of Object.keys(w.local)) w.local[k] = Math.max(floor(k), +(w.local[k] - 0.25).toFixed(2));
   w.heat = Object.values(w.local).reduce((a, b) => a + b, 0);
 }
@@ -1828,7 +1923,12 @@ function startStory(g) {
   const st = L.find((x) => x.id === originOf(g).opening) || L.find((x) => x.origin === oid) || L.find((x) => !x.origin || x.origin === "serf");
   if (st) openStory(g, st);
 }
-const storyFor = (g, st) => !st.origin || st.origin === originIdOf(g);   // 다른 갈래의 장면은 열리지 않는다
+// 장면이 이 출신의 것인가: origin(한 출신 또는 목록) · 출신의 exclude(이 출신에게는 열리지 않는 장면 — 사냥개에게 볼크의 코 같은)
+function originMatch(st, o) {
+  if (st.origin && ![].concat(st.origin).includes(o?.id || "serf")) return false;
+  return !(o?.exclude || []).includes(st.id);
+}
+const storyFor = (g, st) => originMatch(st, originOf(g));   // 다른 출신의 장면은 열리지 않는다
 function openStory(g, st) {
   if (st.once !== false && g.storyDone.has(st.id)) return;
   if (st.severity) DIR.crisis(g, st.severity);   // 실제로 열린 장면만 긴장 곡선을 흔든다
@@ -1849,7 +1949,7 @@ function nextTrigger(g, t, next) {
 }
 // 장면 글: 두 번째 회차부터 첫 줄 아래 속마음, 죽음의 흔적이 깨운 줄, 기억 잉크가 얹힌다 (14 §6.5)
 function storyText(g, st, needName = false) {
-  let paras = fill(g, st.text_by_origin?.[originIdOf(g)] ?? st.text).split(/\n\s*\n/);
+  let paras = fill(g, st.text_by_origin?.[originIdOf(g)] ?? originOf(g).texts?.[st.id] ?? st.text).split(/\n\s*\n/);   // 출신의 글 (잠자리가 다른 첫 잠 등)
   if (g.run.loop >= 2 && st.return_text) {
     const heavy = Object.entries(st.return_heavy || {}).filter(([k]) => g.run.loop >= Number(k)).pop();
     if (heavy) paras[0] = heavy[1];
@@ -1916,7 +2016,7 @@ const sibling = (g) => g.P.sibling || g.run.carry.sibling || "형";
 const readMask = (g, t) => {
   const r = skill(g, "읽고쓰기");
   if (r >= 30) return t;
-  const names = new Set([...g.P.met].map((n) => displayName(g, n)).concat([trueName(g) || "", "셋째"]).filter(Boolean));
+  const names = new Set([...g.P.met].map((n) => displayName(g, n)).concat([trueName(g) || "", callName(g)]).filter(Boolean));
   return t.replace(/[^\s.,'"·—!?]+/g, (w) => (/^\d+$/.test(w) && r >= 1) || (r >= 10 && [...names].some((nm) => w.startsWith(nm))) ? w : "▯".repeat(Math.min(4, [...w].length)));
 };
 const tongueMask = (g, lang, t) => {
@@ -1941,7 +2041,7 @@ const fill = (g, text) => josa(domainFill(g, literacyFilter(g, String(text || ""
   .replace(/\{record_full\}/g, () => { const r = soul(g).records.filter((x) => x.loop === g.run.loop - 1).pop(); return r ? recordCard(r).join("\n\n") : "…셀 것이 없다."; });
 function storyOptions(g) {
   const st = SL(g, g.story.id);
-  if (g.story.phase === "input") return st.input === "child_name" ? [{ id: "story_childname", kind: "story", label: "아이의 이름", input: "child_name" }] : [{ id: "story_name", kind: "story", label: st.input_label || "어머니가 부르는 이름", input: "true_name", button: st.input_button || null, say: st.input_say || null }];
+  if (g.story.phase === "input") return st.input === "child_name" ? [{ id: "story_childname", kind: "story", label: "아이의 이름", input: "child_name" }] : [{ id: "story_name", kind: "story", label: st.input_label || "어머니가 부르는 이름", input: "true_name", button: st.input_button || null, say: st.input_say || null, sibling: st.input_sibling === false ? null : st.input_sibling || (familyOf(g) ? "키트에게 너는" : null) }];
   const out = [];
   for (const c of st.choices || []) {
     // 두 번째 회차부터 어머니의 세 카드 중 고른 것만 진하다 — 다시 고를 수 없다 (14 §6.2)
@@ -1992,6 +2092,16 @@ function storyOdds(g, ck) {
   if (status) parts.push({ sign: "▼", text: p.status.hunger >= 2 ? "배가 고프다" : "몸이 아프다" });
   // 경고 하나에 +10 (논거 보정, 14 §3.3) — 모은 경고만큼 '무모하다'가 '반반이다'로
   for (const w of ck.warn || []) if (storyWhen(g, [w])) { S += 10; parts.push({ sign: "▲", text: WARN_TEXT(g, w) }); }
+  // 돕는 재능·특질 (check.helps): 가장 센 재능의 등급만큼 (+5·+9·+13), 특질은 +8 — 이 장면에 타고난 것이 닿는다
+  if (ck.helps?.length) {
+    const R = CR.creationOf(g.content).rules, H = R.helps || [0, 5, 9, 13];
+    const best = ck.helps.map((id) => ({ id, k: talentTier(g, id) })).sort((a, b) => b.k - a.k)[0];
+    if (best?.k) { S += H[best.k]; parts.push({ sign: "▲", text: `${CR.talentDef(g.content, best.id)?.name || best.id} — 타고난 것이 닿는다` }); }
+    const tr = ck.helps.find((id) => hasTrait(g, id));
+    if (tr) { S += 8; parts.push({ sign: "▲", text: `${CR.traitDef(g.content, tr)?.name || tr} — 피가 안다` }); }
+  }
+  // 막는 것 (check.hinders): 이 장면에서는 결점·특질이 짐이다 (−10)
+  for (const id of ck.hinders || []) if (hasFlaw(g, id) || hasTrait(g, id)) { S -= 10; parts.push({ sign: "▼", text: `${(CR.flawDef(g.content, id) || CR.traitDef(g.content, id))?.name || id} — 몸이 막는다` }); }
   if (ck.auto && storyWhen(g, [ck.auto])) return { P: 0.97, S: 99, D: ck.D, parts: [{ sign: "▲", text: "몸이 먼저 안다" }] };
   // 회차가 쌓일수록 시간에 닿은 것들이 낌새를 챈다 (14 §7.4 — 볼크의 코)
   let D = ck.D + (ck.D_per_loop || 0) * (g.run.loop - 1);
@@ -2172,7 +2282,7 @@ const DO = {
     (g.P.visited ??= []).includes(sid) || g.P.visited.push(sid);
     g.L.setActive([sid]);
     res.notes.push(`${g.content.bundle.settlements[sid].name}에 닿았다`);
-    if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
+    if (from === homeSid(g) && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
     checkpoint(g, res, 0.35);   // 낯선 인간은 들어서는 길목에서 붙잡히기 쉽다
   },
   // 먼 길 (07): 구간마다 시간이 흐르고, 위험한 길목에서는 일이 생길 수 있다. 장면이 열리거나 붙잡히면 거기서 멈춘다
@@ -2210,7 +2320,7 @@ const DO = {
     (g.P.visited ??= []).includes(sid) || g.P.visited.push(sid);
     g.L.setActive([sid]);
     res.notes.push(`${plan.legs.length}구간, 걸어서 ${plan.hours}시간${camps ? `, 노숙 ${camps}밤` : ""} — ${st.name}에 닿았다`);
-    if (from === SETTLEMENT && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
+    if (from === homeSid(g) && !g.P.leftHomeAt) g.P.leftHomeAt = g.t;
     checkpoint(g, res, 0.35);
   },
   routine_day(g, _, res) {
@@ -2225,7 +2335,7 @@ const DO = {
     if (ra && m < parseClock(ra.to) - 10 && g.P.lastRation !== Math.floor(g.t / 1440)) {
       step(() => { g.at = ra.at; pass(g, Math.max(1, parseClock(ra.from) - m)); });
       if (ml === "ration") { if (!g.ended && present(g).some((w) => w.npc === "npc_bram")) step(() => { eatRation(g); pass(g, 15); }); }
-      else if (!g.ended && (!ra.with || present(g).some((w) => w.npc === ra.with && w.kind !== "captive"))) step(() => { eatMeal(g); pass(g, 15); });
+      else if (!g.ended && (!ra.with || present(g).some((w) => w.npc === ra.with && w.kind !== "captive")) && g.S.purse.player >= (ra.cost || 0)) step(() => { eatMeal(g); pass(g, 15); });
     }
     // 2) 통금 전에 막사로, 자고, 점호 — 깨어난 아침에 표지를 남긴다 (되돌리기)
     if (!g.ended && !g.story) {
@@ -2233,8 +2343,8 @@ const DO = {
       const cnt = SL(g, "count_before_sleep");
       if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { g.at = homeOf(g); g.feed = feedAll; openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
     }
-    if (!g.ended && !g.story) step(() => { g.at = homeOf(g); const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); if (!g.story && !g.ended) dreamTick(g); });
-    if (!g.ended && !g.story && !isSabbath(Math.floor(g.t / 1440)) && dutyOf(g).rollcall !== false && !g.S.vars.player_fugitive) step(() => { pass(g, 5); g.at = ROLLCALL; pass(g, 20); });
+    if (!g.ended && !g.story) step(() => { g.at = homeOf(g); pass(g, wakeAt(g) - g.t, { sleeping: true }); if (!g.story && !g.ended) dreamTick(g); });
+    if (!g.ended && !g.story) step(() => toRollcall(g, null));
     g.feed = feedAll;
     res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
   },
@@ -2249,7 +2359,7 @@ const DO = {
       const loud = g.feed.find((f) => !QUIET.has(f.kind) && !f.quiet);
       if (g.story || g.ended || g.convo || g.fight) { why = g.ended ? "끝" : "장면"; break; }
       if (loud) { why = loud.text; break; }
-      if (g.P.settlement !== SETTLEMENT || (g.S.vars.player_fugitive && !dutyOf(g).work?.outlaw)) break;
+      if (g.P.settlement !== homeSid(g) || (g.S.vars.player_fugitive && !dutyOf(g).work?.outlaw)) break;
     }
     g.feed = feedAll;
     res.notes.push(`${done}일을 보냈다${why && done < Number(n) ? " — 거기서 멈췄다" : ""}`);
@@ -2261,13 +2371,11 @@ const DO = {
     // 두 번째 회차부터, 첫 잠자리 전에 지난 회차를 센다 (14 §6.6)
     const cnt = SL(g, "count_before_sleep");
     if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
-    const c = fromMinutes(g.t);
-    let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440;
-    pass(g, wake - g.t, { sleeping: true });
+    pass(g, wakeAt(g) - g.t, { sleeping: true });
     if (g.story) return;               // 잠이 장면에 깼다 (첫 밤, 첫 종…)
     dreamTick(g);
-    // 점호 날이면 막사 사람들과 함께 광장으로 끌려 나간다
-    if (!isSabbath(Math.floor(g.t / 1440)) && g.at === homeOf(g) && dutyOf(g).rollcall !== false && !g.S.vars.player_fugitive) { pass(g, 5); g.at = ROLLCALL; res.notes.push("첫 종. 막사 문이 열리고 모두 광장으로 밀려 나간다 — 점호"); pass(g, 20); }
+    // 점호 날이면 잠자리의 사람들과 함께 점호 자리로 끌려 나간다
+    if (g.at === homeOf(g)) toRollcall(g, res);
   },
   search(g, _, res) {
     pass(g, 10);
@@ -2367,10 +2475,13 @@ const DO = {
       g.P.status.pain = clamp(g.P.status.pain + (W.fail_pain ?? 12), 0, 100);
       if (W.fail_meal !== false) g.P.lastRation = day;
       if (W.fail_fear) g.P.status.fear = clamp(g.P.status.fear + W.fail_fear, 0, 5);
+      if (W.fail_var) g.S.vars[W.fail_var] = (Number(g.S.vars[W.fail_var]) || 0) + 1;   // 못 채운 날의 표식 (광부의 흑점 …)
       res.notes.push(W.fail || "할당을 못 채웠다. 즈닉의 채찍 셋 — 오늘 저녁 배급은 없다"); g.P.status.stress = clamp(g.P.status.stress + 4, 0, 100);
     } else {
       res.notes.push(W.done || "해 질 때까지 고랑을 탔다. 단은 모자라지 않았다");
       if (W.pain) g.P.status.pain = clamp(g.P.status.pain + W.pain, 0, 100);
+      if (W.done_var) g.S.vars[W.done_var] = (Number(g.S.vars[W.done_var]) || 0) + 1;
+      if (W.coin) g.S.purse.player += W.coin;   // 품삯 (자유민·계약민)
       if (W.food) { const od = (originOf(g).items || []).find((i) => i.id === W.food), good = g.content.game.economy.goods[W.food]; const def = od || good; if (def) g.L.give("player", { ...def, id: uid(g, `it_${W.food}`), ...(good ? { gid: W.food } : {}) }); }
     }
     const ml = dutyOf(g).meal ?? "ration";
@@ -2404,7 +2515,7 @@ const DO = {
     temper(g, "자비", -6); m.fear += 3; deed(g, "assault", n, g.at);
     g.P.tortures = (g.P.tortures || 0) + 1;
     if (g.P.tortures >= 3 && !g.P.bloodNumb) { g.P.bloodNumb = true; g.P.notebook.push("피에 무뎌졌다 — 비명이 예전만큼 무겁지 않다"); }
-    addMemory(g, n, { kind: "threat", tag: "위험함", delta: -5, text: "셋째가 칼끝을 들이댔다", salience: 5, source: "engine" });
+    addMemory(g, n, { kind: "threat", tag: "위험함", delta: -5, text: callJ(g, "이(가) 칼끝을 들이댔다"), salience: 5, source: "engine" });
     if (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 50) { const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2); }
     const hid = (g.content.reveals[n] || []).filter((r) => !m.revealed.has(r.fact) && !knowsFact(g, r.fact));
     if (OK(res.tier) && hid.length) {
@@ -2434,7 +2545,7 @@ const DO = {
     talkTurn(g, res, { 대성공: [3, 2], 성공: [2, 1], "부분 성공": [1, 0], 실패: [0, -1], 대실패: [-2, -3] });
     if (kind === "coin") { g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12; }
     g.convo.offer = kind;
-    addMemory(g, n, { kind: "debt", tag: null, text: `셋째가 제안했다 — ${OFFERS.find((x) => x[0] === kind)?.[1].replace(/"/g, "")}`, salience: 3, source: "engine-offer" });
+    addMemory(g, n, { kind: "debt", tag: null, text: callJ(g, `이(가) 제안했다 — ${OFFERS.find((x) => x[0] === kind)?.[1].replace(/"/g, "")}`), salience: 3, source: "engine-offer" });
     res.notes.push(`${nameOf(g, n)}이(가) 그 말을 오래 곱씹는다`);
   },
   // 배운다 (03 §3.1): 스승의 스킬 −10까지, 연습의 2.5배. 받아들여지면 시험이 여는 비밀(trial:<npc>)
@@ -2560,7 +2671,7 @@ const DO = {
     const oa = (g.content.game.oaths || []).find((x) => x.id === id);
     const witnesses = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
     (g.oaths ??= []).push({ id, t: g.t, witnesses, state: "held" });
-    for (const n of witnesses) addMemory(g, n, { kind: "promise", tag: "맹세", text: `셋째가 맹세했다: "${oa.line}"`, salience: 4, source: "engine" });
+    for (const n of witnesses) addMemory(g, n, { kind: "promise", tag: "맹세", text: `${callJ(g, "이(가)")} 맹세했다: "${oa.line}"`, salience: 4, source: "engine" });
     res.notes.push(witnesses.length ? `${witnesses.map((n) => displayName(g, n)).join(", ")}이(가) 들었다` : "아무도 듣지 않았다. 너만 안다");
     g.P.notebook.push(`맹세 — ${oa.line}${witnesses.length ? ` (증인: ${witnesses.map((n) => displayName(g, n)).join(", ")})` : ""}`);
     pass(g, 1);
@@ -2591,7 +2702,7 @@ const DO = {
       else {
         const nw = reputation(g).news.filter((x) => x.scope === "village").slice(-1)[0];
         if (nw) {
-          const line = nw.identified ? `셋째라는 애가 ${nw.place}에서 그랬대 — ${nw.label}${nw.distortion === "과장" ? ". 열 명이라던가" : ""}` : `요즘 ${nw.place} 쪽에서 ${nw.label} 일이 있었대. 누가 했는지는 아무도 몰라`;
+          const line = nw.identified ? `${callJ(g, "(이)라는")} 애가 ${nw.place}에서 그랬대 — ${nw.label}${nw.distortion === "과장" ? ". 열 명이라던가" : ""}` : `요즘 ${nw.place} 쪽에서 ${nw.label} 일이 있었대. 누가 했는지는 아무도 몰라`;
           if (!g.P.heard.has(line)) { g.P.heard.add(line); g.P.notebook.push(`${nameOf(g, n)}에게 들은 내 소문 — ${line}`); res.rumor = line; }
         }
       }
@@ -2617,9 +2728,9 @@ const DO = {
   },
   press(g, f, res) {
     const n = g.convo.npc, m = mind(g, n);
-    if (isFuture(g, f)) { res.futureUsed.push(f); addMemory(g, n, { kind: "suspicion", tag: "이상함", text: "셋째가 알 리 없는 것을 안다", salience: 5, source: "engine" }); m.fear += 1; }
-    if (OK(res.tier)) { m.fear += 2; bumpRel(g, n, -8, -10); m.revealed.add(f); learn(g, f, `${nameOf(g, n)}이(가) 겁에 질려 인정했다`); res.reveal = f; addMemory(g, n, { kind: "threat", tag: "위험함", text: "셋째가 내 비밀로 나를 겁박했다", salience: 5, source: "engine" }); }
-    else { m.anger += res.tier === "대실패" ? 2 : 1; bumpRel(g, n, -5, -15); addMemory(g, n, { kind: "threat", tag: "위험함", text: "셋째가 내 비밀을 들먹였다", salience: 5, source: "engine" }); }
+    if (isFuture(g, f)) { res.futureUsed.push(f); addMemory(g, n, { kind: "suspicion", tag: "이상함", text: callJ(g, "이(가) 알 리 없는 것을 안다"), salience: 5, source: "engine" }); m.fear += 1; }
+    if (OK(res.tier)) { m.fear += 2; bumpRel(g, n, -8, -10); m.revealed.add(f); learn(g, f, `${nameOf(g, n)}이(가) 겁에 질려 인정했다`); res.reveal = f; addMemory(g, n, { kind: "threat", tag: "위험함", text: callJ(g, "이(가) 내 비밀로 나를 겁박했다"), salience: 5, source: "engine" }); }
+    else { m.anger += res.tier === "대실패" ? 2 : 1; bumpRel(g, n, -5, -15); addMemory(g, n, { kind: "threat", tag: "위험함", text: callJ(g, "이(가) 내 비밀을 들먹였다"), salience: 5, source: "engine" }); }
     endIfSpent(g, res, 1);
   },
   give(g, what, res) {
@@ -2628,8 +2739,8 @@ const DO = {
       const it = g.L.items.get(what); g.L.items.delete(what);
       const hungry = (cardOf(g, n).rank || "").match(/노예|농노|고아/) || profOf(g, n).role === "serf";
       bumpRel(g, n, hungry ? 8 : 4, hungry ? 4 : 1); g.convo.turns++;
-      addMemory(g, n, { kind: "emotion", tag: "다정함", text: `셋째가 ${it.name}을(를) 나눠 주었다`, salience: hungry ? 4 : 2, source: "engine" });
-      if (hungry) addMemory(g, n, { kind: "debt", tag: "빚", text: `굶을 때 셋째가 ${it.name}을(를) 나눠 주었다`, salience: 3, source: "engine" });   // 빵 한 덩이의 빚 — 한 번은 꺼내 쓸 수 있다
+      addMemory(g, n, { kind: "emotion", tag: "다정함", text: callJ(g, `이(가) ${it.name}을(를) 나눠 주었다`), salience: hungry ? 4 : 2, source: "engine" });
+      if (hungry) addMemory(g, n, { kind: "debt", tag: "빚", text: josa(`굶을 때 ${callName(g)}이(가) ${it.name}을(를) 나눠 주었다`), salience: 3, source: "engine" });   // 빵 한 덩이의 빚 — 한 번은 꺼내 쓸 수 있다
       res.notes.push(`${it.name}을(를) 나눴다`);
       if (hungry) deed(g, "share_food", null, g.at, { witnessed: true });
       bond(g, n, hungry ? 8 : 5);
@@ -2637,7 +2748,7 @@ const DO = {
     }
     g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12;
     talkTurn(g, res, { 대성공: [10, 5], 성공: [8, 3], "부분 성공": [4, 1], 실패: [1, 0], 대실패: [-2, 0] });
-    addMemory(g, n, { kind: "debt", tag: "빚", text: "셋째가 돈을 쥐여 주었다", salience: 3, source: "engine" });
+    addMemory(g, n, { kind: "debt", tag: "빚", text: callJ(g, "이(가) 돈을 쥐여 주었다"), salience: 3, source: "engine" });
   },
   show(g, id, res) {
     pass(g, 2);
@@ -2650,12 +2761,12 @@ const DO = {
     if (n === "npc_henrik" && g.L.items.get(id)?.gid === "henrik_ledger") { mind(g, n).fear += 3; g.S.vars.kit_on_list = false; g.S.vars.henrik_blackmailed = true; res.notes.push("헨릭의 얼굴에서 핏기가 빠진다. 그가 명부를 펴고, 스물여섯째 줄을 긋는다"); g.S.threats.push({ by: n, target: "player", kind: "hunt", about: "henrik_ledger", t: g.t }); }
     // 글을 아는 사람에게 보이면 읽어 준다 (19 §4.2 "글을 아는 누군가에게 보여줘야 한다") — 그 사람도 알게 된다
     const R = goodOf(g, g.L.items.get(id))?.read;
-    if (n && R && LITERATE.has(n) && !g.P.readDocs?.has(id)) {
+    if (n && R && isLiterate(g, n) && !g.P.readDocs?.has(id)) {
       if (relOf(g, n).trust >= 15 || OK(res.tier)) {
         (g.P.readDocs ??= new Set()).add(id);
         res.notes.push(`${nameOf(g, n)}이(가) 소리 죽여 읽어 준다 — "${(R.text || "").slice(0, 80)}"`);
         for (const f of R.facts || []) { learn(g, f, `${nameOf(g, n)}이(가) 읽어 주었다`); if (!g.S.knows.has(f)) g.S.knows.set(f, new Set()); g.S.knows.get(f).add(n); }
-        addMemory(g, n, { kind: "fact_learned", tag: null, text: `셋째가 ${g.L.items.get(id).name}을(를) 보여 주었다`, salience: 4, source: "engine" });
+        addMemory(g, n, { kind: "fact_learned", tag: null, text: callJ(g, `이(가) ${g.L.items.get(id).name}을(를) 보여 주었다`), salience: 4, source: "engine" });
       } else res.notes.push(`${nameOf(g, n)}이(가) 글을 힐끗 보고는 고개를 돌린다. "나는 아무것도 못 봤다."`);
     }
     if (n) endIfSpent(g, res, 1);
@@ -2738,6 +2849,8 @@ const OFFERS = [
 ];
 const goodOf = (g, it) => (it?.gid ? g.content.game.economy.goods[it.gid] : null);
 const LITERATE = new Set(["npc_osric", "npc_owen_raven", "npc_henrik", "npc_martha", "npc_lea", "npc_godric_raven", "npc_kaspar", "npc_sara", "npc_lm_jonas", "npc_alberic", "npc_melisande", "npc_mateus"]);
+// 글을 아는 사람: 손으로 꼽은 회색여울 사람들 + 카드가 literate인 사람 + 글이 일인 자리(학자·사제·서기·필사·서고·장부) — 인간 노예·농노는 카드가 말할 때만
+const isLiterate = (g, n) => LITERATE.has(n) || cardOf(g, n).literate === true || (cardOf(g, n).literate !== false && /학자|사제|서기|필사|서고|사서|장부꾼|심문관|탑주|의장|집전관|원로/.test(`${cardOf(g, n).job || ""} ${cardOf(g, n).rank || ""}`) && !/노예|농노/.test(cardOf(g, n).rank || ""));
 function mentorsHere(g) {
   if (g.convo || g.fight || g.story) return [];
   const here = new Set(present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc));
@@ -2749,7 +2862,7 @@ const feeOK = (g, fee) => { if (!fee || fee === "none") return true; const [k, v
 function echoSign(g, severity, what) {
   g.S.vars.echo_signs = (g.S.vars.echo_signs || 0) + severity;
   const seen = present(g).filter((w) => w.kind !== "captive" && !asleep(w, g.t)).map((w) => w.npc);
-  for (const n of seen) g.L.believe(n, g.t, { kind: "echo_sign", subject: "player", at: g.at, source: "saw", heat: Math.min(1, 0.5 + severity * 0.2), content: String(what || "").slice(0, 30), reason: "셋째가 알 리 없는 것을 안다" }, { react: false });
+  for (const n of seen) g.L.believe(n, g.t, { kind: "echo_sign", subject: "player", at: g.at, source: "saw", heat: Math.min(1, 0.5 + severity * 0.2), content: String(what || "").slice(0, 30), reason: callJ(g, "이(가) 알 리 없는 것을 안다") }, { react: false });
 }
 const echoBelievers = (g, sid = g.P.settlement) => Object.keys(g.content.cards).filter((n) => !g.S.dead.has(n) && g.L.beliefs(n).some((b) => b.kind === "echo_sign") && (g.W.where(n, g.t)?.settlement || null) === sid);
 const ECHO_STAGES = ["", "소문", "밀고", "추적"];
@@ -2759,7 +2872,7 @@ function echoTick(g, day) {
   const stage = who.length >= 8 ? 3 : who.length >= 5 || (informer && who.length >= 2) ? 2 : who.length >= 3 ? 1 : 0;
   if (stage <= (E[sid] || 0)) return;
   E[sid] = stage;
-  if (stage >= 1) { g.P.titles = [...new Set([...(g.P.titles || []), "날을 아는 자"])]; g.feed.push({ kind: "echo", text: "〰 셋째가 앞일을 안다는 말이 돈다. 우물가에서, 배급 줄에서." }); }
+  if (stage >= 1) { g.P.titles = [...new Set([...(g.P.titles || []), "날을 아는 자"])]; g.feed.push({ kind: "echo", text: `〰 ${callJ(g, "이(가)")} 앞일을 안다는 말이 돈다. ${originOf(g).texts?.gossip_where || "우물가에서, 배급 줄에서."}` }); }
   if (stage >= 2) {
     wantedAdd(g, 1, "잔향 징후 — 목줄단의 밀고", authorityOf(g, sid), sid);
     const x = ((g.nem ??= {}).npc_isol ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 1);
@@ -2786,16 +2899,16 @@ function ladderTick(g, day) {
   const sid = g.P.settlement, L = (g.P.ladder ??= {}), st = ladderStage(g, sid), was = L[sid] || 0;
   if (st > was) {
     L[sid] = st;
-    const lines = ["", "초소 문에 그림 한 장이 붙는다. 얼굴은 서툴다. 셋째라는 이름은 또렷하다 — 현상금.", "바르그의 개 짖는 소리가 마을 밖에서 들린다. 사냥대가 왔다. 냄새를 맡으러.", "집집마다 문이 열린다. 숨긴 자를 내놓지 않으면 대신 매달겠다는 포고 — 본보기.", "와이번 그림자가 언덕을 쓸고 지나간다. 한 번. 두 번."];
+    const lines = ["", `초소 문에 그림 한 장이 붙는다. 얼굴은 서툴다. ${callJ(g, "(이)라는")} 이름은 또렷하다 — 현상금.`, "바르그의 개 짖는 소리가 마을 밖에서 들린다. 사냥대가 왔다. 냄새를 맡으러.", "집집마다 문이 열린다. 숨긴 자를 내놓지 않으면 대신 매달겠다는 포고 — 본보기.", "와이번 그림자가 언덕을 쓸고 지나간다. 한 번. 두 번."];
     g.feed.push({ kind: "echo", text: `〰 ${lines[st]}` }); g.P.notebook.push(`세력의 눈 — ${LADDER[st]}`);
     if (st >= 2 && !g.S.dead.has("npc_volk")) { const x = ((g.nem ??= {}).npc_volk ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 2); }
     if (st >= 4 && g.domain && !g.domain.lost) (g.domainDue ??= []).push("raid");
   } else if (st < was && day % 3 === 0) L[sid] = st;   // 식으면 천천히 내려간다
   // 본보기 (3단계): 사흘에 한 번, 누군가 채찍 기둥에 — 인간들이 주인공 때문에 맞는다
-  if ((L[sid] || 0) >= 3 && day % 3 === 0 && sid === SETTLEMENT) {
+  if ((L[sid] || 0) >= 3 && day % 3 === 0 && sid === homeSid(g) && rcOf(g)) {
     const pool = Object.keys(g.content.cards).filter((n) => cardOf(g, n).tier === "C" && !g.S.dead.has(n) && g.W.where(n, g.t)?.settlement === sid);
     const v = pool[Math.floor(hash(g.seed, "example", day) * pool.length)];
-    if (v) { g.A.doEffect(`punish ${v} at gf_whip_square for 1`, g.t); g.feed.push({ kind: "echo", text: `〰 ${displayName(g, v)}이(가) 채찍 기둥에 묶였다. 셋째를 숨겼다는 이유로. 숨긴 적이 없다.` }); DIR.loss(g, 3); }
+    if (v) { g.A.doEffect(`punish ${v} at ${rcOf(g).at} for 1`, g.t); g.feed.push({ kind: "echo", text: josa(`〰 ${displayName(g, v)}이(가) ${placeName(g, rcOf(g).at)}에 묶였다. ${callName(g)}을(를) 숨겼다는 이유로. 숨긴 적이 없다.`) }); DIR.loss(g, 3); }
   }
   if (g.domain && !g.domain.lost && (L[sid] || 0) >= 2) g.domain.expMod = (g.domain.expMod || 0) + 0.5;   // 사냥대가 냄새를 맡는다 — 숨은 곳이 위험해진다
 }
@@ -2832,7 +2945,7 @@ function flagsDay(g, day) {
     if (V.sigrid_group != null) V.sigrid_group += 1;
   }
   // 마르타의 눈 — 밤에 마을 안을 돌아다니면 즈닉이 듣는다
-  if (V.martha_watches_you && P.settlement === SETTLEMENT && (P.nightOut || 0) > 0 && hash(g.seed, "martha_eye", day) < 0.3) wantedAdd(g, 1, "마르타가 본 것을 즈닉에게 전했다", overseer(g), SETTLEMENT);
+  if (V.martha_watches_you && P.settlement === GREYFORD && (P.nightOut || 0) > 0 && hash(g.seed, "martha_eye", day) < 0.3) wantedAdd(g, 1, "마르타가 본 것을 즈닉에게 전했다", overseer(g), GREYFORD);
   P.nightOut = 0;
   // 겁먹은 헨릭 — 이레가 지나도 장부가 네 손에 있으면 하겐에게 동전을 쥐여 준다
   if (V.henrik_blackmailed && !V.henrik_hired && !g.S.dead.has("npc_henrik") && !g.S.dead.has("npc_hagen")) {
@@ -2844,7 +2957,7 @@ function flagsDay(g, day) {
     }
   }
   // 통금에 세 번 걸리면 즈닉의 명단에 오른다
-  if ((V.player_curfew || 0) >= 3 && !P.curfewListed) { P.curfewListed = true; wantedAdd(g, 1, "통금을 세 번 어겼다", overseer(g), SETTLEMENT); }
+  if ((V.player_curfew || 0) >= 3 && !P.curfewListed) { P.curfewListed = true; wantedAdd(g, 1, "통금을 세 번 어겼다", authorityOf(g, homeSid(g)), homeSid(g)); }
 }
 // 배신감 (21 §5.3): 믿은 거짓말은 사실처럼 작동하다가, 반대 증거(그 사람이 진실을 알게 됨)를 만나면 신뢰가 무너진다
 function liesTick(g) {
@@ -2854,7 +2967,7 @@ function liesTick(g) {
     if (!knows || g.S.dead.has(n)) continue;
     c.exposed = g.t;
     bumpRel(g, n, -10, -20);
-    addMemory(g, n, { kind: "impression", tag: "거짓말쟁이", delta: -5, text: `셋째의 말은 거짓이었다 — "${c.content}"`, salience: 5, source: "engine" });
+    addMemory(g, n, { kind: "impression", tag: "거짓말쟁이", delta: -5, text: `${callName(g)}의 말은 거짓이었다 — "${c.content}"`, salience: 5, source: "engine" });
     addMemory(g, n, { kind: "emotion", tag: "배신감", text: "믿었던 말이 거짓이었다", salience: 5, source: "engine" });
     if (g.P.met.has(n)) g.P.notebook.push(`${displayName(g, n)} — 네가 한 말이 거짓이었다는 것을 알았다 ("${c.content}")`);
   }
@@ -2863,13 +2976,13 @@ function liesTick(g) {
 function applyRecord(g, n, mem) {
   addMemory(g, n, mem);
   if (mem.promise && !g.S.dead.has(n)) {
-    g.W.override({ npc: n, from: mem.promise.from, to: mem.promise.to, kind: "at", at: mem.promise.place, doing: `셋째와 약속한 대로 기다린다 — ${mem.promise.what}` });
+    g.W.override({ npc: n, from: mem.promise.from, to: mem.promise.to, kind: "at", at: mem.promise.place, doing: josa(`${callName(g)}과(와) 약속한 대로 기다린다 — ${mem.promise.what}`) });
     g.P.notebook.push(josa(`${nameOf(g, n)}과(와)의 약속 — ${fmt(mem.promise.from)}, ${placeName(g, mem.promise.place)}: ${mem.promise.what}`));
     (g.promises ??= []).push({ npc: n, ...mem.promise, state: "open" });
   }
   // 협박 (21 §6.1 threat): 두려움 + 원한의 씨앗 — 사냥꾼·윗선·담이 큰 사람은 숙적 후보가 된다 (17)
   if (mem.kind === "threat" && !g.S.dead.has(n) && (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 60)) { const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 1); }
-  if (mem.claim?.caught) addMemory(g, n, { kind: "impression", tag: "거짓말쟁이", delta: -3, text: `셋째가 거짓말을 했다 — "${mem.claim.content}"`, salience: 3, source: "engine" });
+  if (mem.claim?.caught) addMemory(g, n, { kind: "impression", tag: "거짓말쟁이", delta: -3, text: `${callJ(g, "이(가)")} 거짓말을 했다 — "${mem.claim.content}"`, salience: 3, source: "engine" });
   if (mem.claim?.believed) {
     // 믿은 주장은 그 NPC의 믿음이 된다 → 사람이 모이는 곳에서 소문으로 퍼진다 (27 §3.4)
     g.L.believe(n, g.t, { kind: "claim", subject: mem.claim.about || "unknown", content: mem.claim.content, source: "player", heat: 1.2 }, { react: false });
@@ -2901,7 +3014,7 @@ function addMemory(g, n, mem) {
     const folded = m.memories.splice(slots - 1);
     const old = folded.find((x) => x.kind === "summary"), tags = Object.entries(m.impressions).filter(([, v]) => Math.abs(v) >= 3).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1])).map(([k]) => k);
     const count = (old?.count || 0) + folded.filter((x) => x.kind !== "summary").length;
-    m.memories.push({ kind: "summary", text: `셋째와 몇 번 얽혔다 (${count})${tags[0] ? ` — ${tags[0]} 아이` : ""}`, salience: 1, count, source: "engine" });
+    m.memories.push({ kind: "summary", text: `${josa(`${callName(g)}과(와)`)} 몇 번 얽혔다 (${count})${tags[0] ? ` — ${tags[0]} 아이` : ""}`, salience: 1, count, source: "engine" });
   }
 }
 // "방앗간" → gf_mill (이름의 일부로 찾는다)
@@ -2994,11 +3107,16 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
 // 시대의 끝 (03 §4.5·§4.6): 회귀를 놓으면, 다음 죽음이 진짜 죽음이다. 세계는 나 없이 흘러간다
 export function epilogue(g) {
   const v = g.S.vars, out = [];
-  out.push(v.kit_sold ? "서리월 9일, 키트는 사슬 속에서 남쪽으로 갔다. 그 뒤의 일은 아무도 적지 않았다." : v.kit_hidden ? "키트는 늑대굴에서 겨울을 났다. 봄에, 시그리드의 무리와 함께 북쪽으로 갔다." : "키트는 명단에서 빠졌다. 열두 살에 글자 하나를 배웠다. 누구에게서인지 말하지 않았다.");
-  out.push(v.sara_sold ? "사라는 굶주림월 3일의 사슬에 있었다. 세렌의 어느 집에서, 그녀는 누군가의 이름을 소리 없이 불렀다." : v.sara_bound ? "사라는 손목의 끈을 풀지 않았다. 아무도 그것이 무엇인지 묻지 않았다." : "사라는 성채에서 늙었다. 우물가에서 가끔 누군가를 기다리는 얼굴을 했다.");
+  // 출신의 맺음 (origins.yaml epilogue): 조건이 맞는 줄을 차례로 — 회색여울의 줄은 셋째의 것이다
+  const E = originOf(g).epilogue;
+  if (E?.length) { for (const x of E) if (storyWhen(g, x.when)) out.push(fill(g, x.text)); }
+  else {
+    out.push(v.kit_sold ? "서리월 9일, 키트는 사슬 속에서 남쪽으로 갔다. 그 뒤의 일은 아무도 적지 않았다." : v.kit_hidden ? "키트는 늑대굴에서 겨울을 났다. 봄에, 시그리드의 무리와 함께 북쪽으로 갔다." : "키트는 명단에서 빠졌다. 열두 살에 글자 하나를 배웠다. 누구에게서인지 말하지 않았다.");
+    out.push(v.sara_sold ? "사라는 굶주림월 3일의 사슬에 있었다. 세렌의 어느 집에서, 그녀는 누군가의 이름을 소리 없이 불렀다." : v.sara_bound ? "사라는 손목의 끈을 풀지 않았다. 아무도 그것이 무엇인지 묻지 않았다." : "사라는 성채에서 늙었다. 우물가에서 가끔 누군가를 기다리는 얼굴을 했다.");
+  }
   // 마지막 회차에서만, 관리자는 주인공이 죽은 뒤에도 영역을 이끈다 (09 §6.5)
   if (g.domain && !g.domain.lost) out.push(`${placeName(g, g.domain.at)}은(는) ${displayName(g, g.domain.steward)}이(가) 이끌었다. ${(g.domain.built || []).includes("school") ? "그 동굴에서 글자를 배운 아이가 열이 넘었다." : "그 겨울, 아무도 그곳을 찾지 못했다."}`);
-  out.push((v.fugitives_caught || 0) >= 19 ? "늑대굴은 비었다. 굶주린 언덕에 연기가 오르지 않는다." : "회색여울은 그 뒤로도 저녁마다 빵 냄새가 났다. 배급 줄은 줄지 않았다.");
+  if (!E?.length) out.push((v.fugitives_caught || 0) >= 19 ? "늑대굴은 비었다. 굶주린 언덕에 연기가 오르지 않는다." : "회색여울은 그 뒤로도 저녁마다 빵 냄새가 났다. 배급 줄은 줄지 않았다.");
   return out;
 }
 export function regressRun(g) {
@@ -3039,12 +3157,12 @@ function settleSoul(g, record) {
   for (const sk of Object.keys(g.P.skills)) S.skills[sk] = Math.max(S.skills[sk] || 0, Math.round(rawSkill(g, sk) * 10) / 10);
   S.trainPeak = Math.max(S.trainPeak || 0, g.P.train);
   S.idle = { ...(g.P.idle || {}) };                                  // 녹슮 타이머는 회귀를 건넌다 (03 §3.2)
-  S.daysLived = (S.daysLived || 0) + Math.max(0, Math.floor((g.t - START) / 1440));   // 영혼의 햇수 (03 §2.3)
+  S.daysLived = (S.daysLived || 0) + Math.max(0, Math.floor((g.t - startOf(g)) / 1440));   // 영혼의 햇수 (03 §2.3)
   // 마음속 기억의 벽 (20 §5.6): 마음을 들인 사람이 그 회차에 죽었으면 — 이름이 벽에 남는다
   S.wall = [...(S.wall || []), ...Object.entries(g.P.bond || {}).filter(([n, v]) => v >= 12 && g.S.dead.has(n)).map(([n]) => ({ npc: n, name: displayName(g, n), loop }))].slice(-40);
   // 업적 → 재능 점수 (03 §4.2): 잔향에 조용히 새겨진다. 회차 기록에는 붙지 않는다
   S.achievements ||= [];
-  for (const a of ACHIEVEMENTS) if (!S.achievements.includes(a.id) && a.when(g)) { S.achievements.push(a.id); S.tp = (S.tp || 0) + a.tp; }
+  for (const a of achievementsOf(g)) if (!S.achievements.includes(a.id) && a.when(g)) { S.achievements.push(a.id); S.tp = (S.tp || 0) + a.tp; }
   if (!S.tpSeeded) { S.tpSeeded = true; S.tp = (S.tp || 0) + tpLeftOf(g); }   // 생성 때 남긴 점수는 첫 회귀에 잔향으로 (06 §2.1)
   S.tp = (S.tp || 0) - (g.P.tpSpent || 0);
   S.extraTalents = [...new Set([...(S.extraTalents || []), ...(g.P.awakened || [])])];
@@ -3083,12 +3201,12 @@ function settleSoul(g, record) {
   for (const id of g.P.memUsed || []) S.memUsed[id] = [...(S.memUsed[id] || []), loop].slice(-5);
   S.records = [...S.records, record].slice(-30);
   S.unlocked = [...new Set([...S.unlocked, ...unlockedNow(g)])];
-  S.furthest = Math.max(S.furthest || START, g.t);
+  S.furthest = Math.max(S.furthest || startOf(g), g.t);
   return S;
 }
 // 회차 기록 (03 §5.1, 14 §6.6): 기간·끝·가져온 것·두고 온 것
 export function loopRecord(g) {
-  const days = Math.max(0, Math.floor((g.t - START) / 1440));
+  const days = Math.max(0, Math.floor((g.t - startOf(g)) / 1440));
   const learned = [...g.P.knows].filter((f) => !soul(g).knowledge[f]);
   const moved = [...g.P.met].map((n) => ({ n, r: relOf(g, n) })).filter(({ r }) => Math.abs(r.like) + Math.abs(r.trust) >= 20)
     .sort((a, b) => Math.abs(b.r.like) + Math.abs(b.r.trust) - Math.abs(a.r.like) - Math.abs(a.r.trust)).slice(0, 4)
@@ -3097,7 +3215,7 @@ export function loopRecord(g) {
   return {
     loop: g.run.loop, days, endT: g.t, end: fmt(g.t), at: placeName(g, g.at),
     kind: g.ended?.kind || "alive", why: g.ended?.why || null,
-    chain: causeChain(g), trace: tr ? TRACE_TEXT[tr.id]?.name || tr.id : null, rewind: rewindDates(g.t),
+    chain: causeChain(g), trace: tr ? TRACE_TEXT[tr.id]?.name || tr.id : null, rewind: rewindDates(g, g.t), startWord: startWord(g),
     learned: learned.length, keyFacts: learned.slice(-2).map((f) => g.content.facts[f]?.text).filter(Boolean),
     leftBehind: moved, coin: g.S.purse.player, deeds: g.deeds.map((d) => d.kind).slice(-3),
     goals: goals(g).map((x) => `${x.who}: ${x.what}`),
@@ -3125,10 +3243,10 @@ function pastTense(label) {
   return t.endsWith(".") ? t : `${t}.`;
 }
 // 되감기 날짜 (14 §4.1 ④): 60일 이하는 날, 그보다 길면 달. 마지막 줄은 언제나 낙엽월 1일
-function rewindDates(t) {
-  const out = [], days = Math.floor((t - START) / 1440);
-  if (days <= 60) for (let d = days; d >= 0; d--) { const c = fromMinutes(START + d * 1440); out.push(`${MONTHS[c.m - 1]} ${c.d}일`); }
-  else { const seen = new Set(); for (let d = days; d >= 0; d -= 5) { const c = fromMinutes(START + d * 1440); const k = `${MONTHS[c.m - 1]}`; if (!seen.has(k)) { seen.add(k); out.push(k); } } out.push("낙엽월 1일"); }
+function rewindDates(g, t) {
+  const S0 = startOf(g), out = [], days = Math.floor((t - S0) / 1440);
+  if (days <= 60) for (let d = days; d >= 0; d--) { const c = fromMinutes(S0 + d * 1440); out.push(`${MONTHS[c.m - 1]} ${c.d}일`); }
+  else { const seen = new Set(); for (let d = days; d >= 0; d -= 5) { const c = fromMinutes(S0 + d * 1440); const k = `${MONTHS[c.m - 1]}`; if (!seen.has(k)) { seen.add(k); out.push(k); } } out.push("낙엽월 1일"); }
   return out;
 }
 const DAYS_KO = ["", "하루", "이틀", "사흘", "나흘", "닷새", "엿새", "이레", "여드레", "아흐레"];
@@ -3143,11 +3261,11 @@ export const koOrdinal = (n) => (n <= 10 ? `${ORD_KO[n]} 번째` : `${TENS_KO[Ma
 // 회차 기록 카드 (14 §6.6) — 문단 = 한 박자. short: 첫 죽음의 세 줄
 export function recordCard(r, { short = false } = {}) {
   const end = r.end.split(" ").slice(2, 4).join(" ");
-  const head = `낙엽월 1일 저녁부터 ${koDays(r.days + 1)}.`;
+  const head = `낙엽월 1일 ${r.startWord || "저녁"}부터 ${koDays(r.days + 1)}.`;
   const cut = (x, n) => { const t = x.replace(/\s*\([^)]*\)/g, "").split(/[.,—]/)[0].trim(); return t.length > n ? t.slice(0, n - 1) + "…" : t; };
   const carry = [r.trace, ...(r.keyFacts || []).map((x) => cut(x, 30))].filter(Boolean);
   if (short) return [head, r.chain || r.why || "", carry.length ? `가져가는 것 — ${carry.slice(0, 2).join(". ")}.` : ""].filter(Boolean);
-  const lines = [`${koOrdinal(r.loop)} 저녁부터\n낙엽월 1일 — ${end} (${koDays(r.days + 1)})`];
+  const lines = [`${koOrdinal(r.loop)} ${r.startWord || "저녁"}부터\n낙엽월 1일 — ${end} (${koDays(r.days + 1)})`];
   if (r.chain) lines.push(`"${r.chain}"`);
   lines.push(`── 가져온 것 ──\n기억 ${r.learned}${r.keyFacts?.length ? ` (${r.keyFacts.map((x) => cut(x, 24)).join(" · ")})` : ""}${r.trace ? `\n죽음 — ${r.trace}` : ""}`);
   const left = (r.leftBehind || []).map((x) => `${x.name} — ${x.how === "가까워졌다" ? "너와 가까워졌다. 기억하지 못한다." : "너를 멀리했다. 그것도 잊었다."}`);
@@ -3167,7 +3285,7 @@ function unlockedNow(g) {
   if ((g.S.wanted?.player?.heat || 0) > 0) u.add("wanted");
   if (g.deeds.length) u.add("reputation");
   if (g.run.loop >= 2) { u.add("loop"); u.add("memory"); }
-  if (g.P.settlement !== SETTLEMENT || g.P.been.size >= 3) u.add("map");
+  if (g.P.settlement !== homeSid(g) || g.P.been.size >= 3) u.add("map");
   return [...u];
 }
 
@@ -3187,7 +3305,7 @@ function priceOf(g, n, gid) {
 function rollcallSearch(g, day) {
   // 움막 12호의 금을 본 감독은 다음 점호에 반드시 뒤진다
   const marked = g.S.vars.hut12_marks_seen && !g.P.hut12Searched; if (marked) g.P.hut12Searched = true;
-  const searched = marked || (g.run.loop === 1 && day === Math.floor(START / 1440) + 1 ? true : hash(g.seed, "search", day) < (g.S.vars.house_search ? 0.5 : 1 / 3));   // 겨울의 수색: 둘에 하나
+  const searched = marked || (g.run.loop === 1 && day === Math.floor(startOf(g) / 1440) + 1 ? true : hash(g.seed, "search", day) < (g.S.vars.house_search ? 0.5 : 1 / 3));   // 겨울의 수색: 둘에 하나
   if (!searched) return;
   const found = [];
   for (const it of mine(g)) {
@@ -3198,16 +3316,17 @@ function rollcallSearch(g, day) {
     if (hash(g.seed, "frisk", day, it.id) >= P) found.push(it);
   }
   const coin = g.S.purse.player;
-  let text = "크릭 감독이 당신의 옷과 부츠를 뒤진다.";
+  const rc = rcOf(g) || {}, by = rcBy(g), byName = by ? displayName(g, by) : "감독";
+  let text = rc.frisk_text || "크릭 감독이 당신의 옷과 부츠를 뒤진다.";   // 정본: 즈닉의 크릭 감독
   if (coin >= 12 && hash(g.seed, "frisk-coin", day) >= prob(skill(g, "손재주") + 8, 18)) {
-    g.S.purse.player = 0; g.S.purse[overseer(g)] = (g.S.purse[overseer(g)] || 0) + coin;
-    text += ` ${coinText(coin)}이 나왔다 — 인간이 은화를? 즈닉이 가져가고 채찍 다섯.`;
+    g.S.purse.player = 0; if (by) g.S.purse[by] = (g.S.purse[by] || 0) + coin;
+    text += josa(` ${coinText(coin)}이 나왔다 — 인간이 은화를? ${byName}이(가) 가져가고 채찍 다섯.`);
     g.P.status.pain = clamp(g.P.status.pain + 10, 0, 100);
   }
   for (const it of found) {
     g.L.items.delete(it.id);
     if (it.tags?.includes("무기") || it.illegal) {
-      wantedAdd(g, 3, `점호에서 ${it.name}이(가) 나왔다`, overseer(g), SETTLEMENT);
+      wantedAdd(g, 3, `점호에서 ${it.name}이(가) 나왔다`, rcBy(g), homeSid(g));
       deed(g, "weapon", null);
       text += ` ${it.name}이(가) 나왔다. 광장이 조용해진다.`;
     } else text += ` ${it.name}을(를) 빼앗겼다.`;
@@ -3282,17 +3401,25 @@ function groupOf(g, n) {
 // 화면과 서술에 쓰는 이름: 셋째가 이름을 아는 사람은 이름, 모르는 사람은 겉모습 구절 (content/base/npcs/public_*.yaml)
 export function displayName(g, n) {
   if (g.P.names?.[n]) return g.P.names[n];
-  const pub = g.content.game.public?.[n];
+  const pub = publicOf(g, n);   // 출신이 아는 대로 (광부는 감독의 이름을 알고, 셋째는 모른다)
   if (pub && String(pub).startsWith("?") && !g.P.met.has(n) && !soulPerson(g, n) && !knownNames(g).has(nameOf(g, n))) return String(pub).slice(1).trim();
   return nameOf(g, n);
 }
-export function whoIs(g, n) { const pub = g.content.game.public?.[n]; return pub && !String(pub).startsWith("?") ? String(pub) : null; }
+export function whoIs(g, n) { const pub = publicOf(g, n); return pub && !String(pub).startsWith("?") ? String(pub) : null; }
+// 아는 대로의 한 구절: 출신의 것 > 매인 고장에서 나고 자란 사람의 것(public_<고장>.yaml) > 즉석 인물의 겉모습
+const publicOf = (g, n) => originOf(g).public?.[n] ?? g.content.game.publicHome?.[homeSid(g)]?.[n] ?? g.content.game.public?.[n];
 // 지킬 사람과 시한 (14 §1.1 "첫 1분에 시한과 지킬 사람이 생긴다")
 function goals(g) {
   const out = [];
   const daysTo = (y, m, d) => Math.max(0, Math.ceil((toMinutes(y, m, d) - g.t) / 1440));
   if (g.S.vars.goal_kit_known) out.push({ who: "키트", what: g.S.vars.kit_sold ? "1차 호송에 끌려갔다" : g.S.vars.kit_on_list ? "1차 매각 명단 스물여섯째 줄 — 서리월 9일 호송" : "명단에서 빠졌다", days: g.S.vars.kit_on_list && !g.S.vars.kit_sold ? daysTo(312, 10, 9) : null });
   if (g.S.vars.goal_sara_known || g.P.knows.has("fact_gf_sara_on_sale_list")) out.push({ who: "사라", what: g.S.vars.sara_sold ? "2차 호송에 끌려갔다" : g.S.vars.sara_on_list ? "2차 매각 명단 — 굶주림월 3일 호송" : "명단에서 빠졌다", days: g.S.vars.sara_on_list && !g.S.vars.sara_sold ? daysTo(312, 12, 3) : null });
+  // 출신의 지킬 사람 (origins.yaml goals): {who, when: 보일 조건, states: [{when, what, until?}]} — 맞는 첫 상태, until이 있으면 남은 날
+  for (const G2 of originOf(g).goals || []) {
+    if (!storyWhen(g, G2.when)) continue;
+    const st = (G2.states || []).find((x) => storyWhen(g, x.when)); if (!st) continue;
+    out.push({ who: G2.who, what: fill(g, st.what), days: st.until ? Math.max(0, Math.ceil((parseDT(st.until) - g.t) / 1440)) : null });
+  }
   return out;
 }
 
@@ -3317,7 +3444,7 @@ export function mapView(g) {
     return w;
   };
   const outer = (st?.outer || []).map((o) => ({ id: o.id, name: o.name, hours: o.hours, angle: angleOf(o), here: g.at === o.id || top(g.at) === o.id }));
-  const visited = new Set([SETTLEMENT, ...(g.P.visited || [])]);
+  const visited = new Set([homeSid(g), ...(g.P.visited || [])]);
   const nodeOfS = (sid) => g.content.bundle.settlements[sid]?.node;
   const remembered = new Set((soul(g).visitedSettlements || []).map(nodeOfS).filter(Boolean));
   const visitedNodes = new Set([...visited].map(nodeOfS).filter(Boolean));
@@ -3344,7 +3471,7 @@ export function mapView(g) {
       safe: safe && safe.path.join() !== fast.path.join() ? { ...brief(safe), id: ids.has(`journey:${sid}:safe`) ? `journey:${sid}:safe` : null } : null });
   }
   return { settlement: { id: g.P.settlement, name: st?.name, grid: st?.grid || null, features: st?.features || null, locations: locs, outer, people, goable: [...ids].filter((x) => x.startsWith("go:")).map((x) => x.slice(3)) },
-    world: { nodes, edges, here, regions: M.regions || [], terrain: M.terrain || {}, journeys, deserter: g.P.settlement === SETTLEMENT },
+    world: { nodes, edges, here, regions: M.regions || [], terrain: M.terrain || {}, journeys, deserter: g.P.settlement === homeSid(g) && boundOf(g), home: g.content.bundle.settlements[homeSid(g)]?.name || null },
     clock: (() => { const c = fromMinutes(g.t); return { hm: `${String(c.hh).padStart(2, "0")}:${String(c.mm).padStart(2, "0")}`, night: isNight(g.t) }; })() };
 }
 const G_options_ids = (g) => (g.story || g.convo || g.ended ? [] : rawOptions(g).map((o) => o.id));
@@ -3401,7 +3528,7 @@ export function view(g) {
     trueNames: Object.keys(g.content.game.truenames || {}).filter((w) => knowsWord(g, w)).map((w) => ({ word: w, source: g.content.game.truenames[w].source })),
     rising: (() => { const r = risingReady(g); return r.some((x) => x.ok) || g.S.vars.greyford_free ? { ready: r, free: !!g.S.vars.greyford_free, failed: !!g.S.vars.rising_failed } : null; })(),
     succession: g.S.vars.varskar_dead || g.S.vars.kaspar_warned ? { dead: !!g.S.vars.varskar_dead, kaspar: g.S.vars.faction_kaspar, throne: !!g.S.vars.kaspar_throne, charter: !!g.S.vars.kaspar_charter } : null,
-    soulYears: Math.floor(((soul(g).daysLived || 0) + Math.max(0, Math.floor((g.t - START) / 1440))) / 365),
+    soulYears: Math.floor(((soul(g).daysLived || 0) + Math.max(0, Math.floor((g.t - startOf(g)) / 1440))) / 365),
     memoryWall: (soul(g).wall || []).map((w) => `${w.name} — ${w.loop}회차`),
     hunters: [
       ...Object.entries(g.nem || {}).filter(([n]) => !g.S.dead.has(n)).map(([n, x]) => ({ name: displayName(g, n), disposition: nemDisposition(x), track: x.track, lessons: (nemMind(x).lessons || []).map((l) => ({ flee: "달아나는 길을 안다 — 다음엔 먼저 막는다", bargain: "말을 듣지 않는다 — 흥정이 어렵다", fight: "맞붙는 법을 안다" }[l] || l)), now: true })),
@@ -3416,7 +3543,8 @@ export function view(g) {
       ...Object.entries(talentLevels(g)).filter(([, k]) => k > 0).map(([id, k]) => { const T = CR.talentDef(g.content, id); return T ? { id, name: T.name, grows: T.grow || [], tier: k, tierName: tierWord(g, k), area: T.area, effect: T.tiers?.[k - 1] || "", revealed: [...(soul(g).revealed || []), ...(g.P.revealed || [])].includes(id) } : null; }).filter(Boolean),
     ],
     // 셋째의 갈래와 생성 (06): 화면의 몸 칸 · 죽음 화면의 마지막 냄새
-    origin: { id: originIdOf(g), name: originOf(g).name || "농노", title: originOf(g).title || "", sense: originOf(g).sense || "빵 냄새", home: placeName(g, homeOf(g)), routine: dutyOf(g).routine || null },
+    origin: { id: originIdOf(g), name: originOf(g).name || "농노", title: originOf(g).title || "", sense: originOf(g).sense || "빵 냄새", home: placeName(g, homeOf(g)), routine: dutyOf(g).routine || null,
+      call: callName(g), settlement: homeSid(g), settlementName: g.content.bundle.settlements[homeSid(g)]?.name || null, family: familyOf(g), plate: originOf(g).plate || null, when: startWord(g) },
     build: buildOf(g) ? {
       line: CR.birthLine(g.content, buildOf(g)),
       flaws: CR.buildFlaws(buildOf(g)).map((id) => CR.flawDef(g.content, id)).filter(Boolean).map((f) => ({ id: f.id, name: f.name, desc: f.desc })),
@@ -3425,7 +3553,7 @@ export function view(g) {
     } : null,
     tp: { free: Math.max(0, tpFree(g)) },
     forecast: (() => { const k = talentTier(g, "weather"); if (!k) return null; const d0 = Math.floor(g.t / 1440); return Array.from({ length: [0, 1, 3, 7][k] }, (_, i) => ({ day: i + 1, rain: !!g.W.rainy(d0 + i + 1) })); })(),
-    achievements: (soul(g).achievements || []).map((a) => (typeof a === "string" ? a : a.id)).map((id) => ACHIEVEMENTS.find((x) => x.id === id)?.text || id),
+    achievements: (soul(g).achievements || []).map((a) => (typeof a === "string" ? a : a.id)).map((id) => achievementsOf(g).find((x) => x.id === id)?.text || ACHIEVEMENTS.find((x) => x.id === id)?.text || id),
     ladder: (() => { const st = ladderStage(g); return st ? { stage: st, name: LADDER[st] } : null; })(),
     echo: g.P.echoStage?.[g.P.settlement] ? ECHO_STAGES[g.P.echoStage[g.P.settlement]] : null,
     reputation: (() => { const r = reputation(g); return { views: r.views, extraTitles: g.P.titles || [], bands: Object.fromEntries(Object.entries(r.views || {}).map(([k, x]) => [k, viewBand(x)])), titles: r.titles, reach: r.reach, news: r.news.slice(-6) }; })(),

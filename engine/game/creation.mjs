@@ -29,11 +29,25 @@ export function tierCost(content, id, tier) {
   return T && tier >= 1 ? (C[T.size] || C.major)[Math.min(3, tier) - 1] : 0;
 }
 
-// 능력치: 출신의 바탕 + 자유 배분 + 결점(허약 체질 −2 체질, 외눈 −2 감각)
-export function statsOf(content, build) {
+// 출신이 정한 결점·특질 (노예 낙인, 반용의 잠든 비늘): 고를 수도 뺄 수도 없다. 결점은 환급에 든다
+export const fixedFlaws = (content, build) => originDef(content, build?.origin)?.flaws || [];
+export const fixedTraits = (content, build) => originDef(content, build?.origin)?.traits || [];
+const allTraits = (content, build) => [...new Set([...fixedTraits(content, build), ...(build?.traits || [])])];
+// 특질의 값: 출신이 깎아 주는 것이 있다 (반용은 용심이 4점 싸다)
+export function traitCost(content, build, id) {
+  const t = traitDef(content, id); if (!t) return 0;
+  return Math.max(0, (t.cost || 0) - (originDef(content, build?.origin)?.trait_discount?.[id] || 0));
+}
+// 능력치: 출신의 바탕 + 자유 배분 (여기까지가 생성의 상한 15) + 몸의 특질(거인의 뼈 근력 +3 …) + 결점(허약 체질 −2 체질, 외눈 −2 감각)
+export function baseStats(content, build) {
   const o = originDef(content, build?.origin), out = {};
   for (const k of STAT_KEYS) out[k] = (o?.stats?.[k] ?? 9) + (Number(build?.alloc?.[k]) || 0);
-  const F = new Set(buildFlaws(build));   // 주사위가 준 결점까지
+  return out;
+}
+export function statsOf(content, build) {
+  const out = baseStats(content, build);
+  for (const id of allTraits(content, build)) for (const [k, v] of Object.entries(traitDef(content, id)?.stats || {})) if (k in out) out[k] += Number(v) || 0;
+  const F = new Set([...buildFlaws(build), ...fixedFlaws(content, build)]);   // 주사위가 준 결점, 출신의 결점까지
   if (F.has("frail")) out.체질 -= 2;
   if (F.has("one_eye")) out.감각 -= 2;
   return out;
@@ -52,8 +66,8 @@ export function checkBuild(content, build = {}) {
     used += Math.max(0, Number(v) || 0);
   }
   if (used > R.free_stats) errors.push(`능력치 점수가 넘친다 (${used}/${R.free_stats})`);
-  const stats = statsOf(content, build);
-  for (const k of STAT_KEYS) if (stats[k] > R.stat_max) errors.push(`${k}은(는) ${R.stat_max}까지`);
+  const stats = statsOf(content, build), base = baseStats(content, build);
+  for (const k of STAT_KEYS) if (base[k] > R.stat_max) errors.push(`${k}은(는) ${R.stat_max}까지`);
   // 재능
   let spent = 0, genius = 0;
   for (const [id, tier] of Object.entries(build.talents || {})) {
@@ -64,11 +78,16 @@ export function checkBuild(content, build = {}) {
     spent += tierCost(content, id, tier);
   }
   if (genius > R.genius_max) errors.push(`천재는 ${R.genius_max}개까지`);
-  for (const id of build.traits || []) { const t = traitDef(content, id); if (!t) errors.push(`모르는 특질: ${id}`); else spent += t.cost || 0; }
+  // 몸의 특질: 고른 것은 둘까지 (출신이 정한 것은 세지 않는다) · 함께 가질 수 없는 피 · 출신만의 특질은 고를 수 없다
+  const fixT = new Set(fixedTraits(content, build)), chosenT = [...new Set((build.traits || []).filter((id) => !fixT.has(id)))];
+  for (const id of chosenT) { const t = traitDef(content, id); if (!t) errors.push(`모르는 특질: ${id}`); else if (t.origin_only) errors.push(`${t.name}은(는) 고를 수 없다 — 그 피로 태어나야 한다`); else spent += traitCost(content, build, id); }
+  if (chosenT.length > (R.trait_max ?? 2)) errors.push(`몸의 특질은 ${R.trait_max ?? 2}개까지`);
+  const TT = new Set([...fixT, ...chosenT]);
+  for (const [a, b] of R.trait_exclusive || []) if (TT.has(a) && TT.has(b)) errors.push(`${traitDef(content, a)?.name}과(와) ${traitDef(content, b)?.name}은(는) 한 몸에 들지 않는다`);
   const flaws = build.flaws || [];
   if (new Set(flaws).size !== flaws.length) errors.push("같은 결점을 두 번 고를 수 없다");
   let refundRaw = 0;
-  for (const id of flaws) { const f = flawDef(content, id); if (!f) errors.push(`모르는 결점: ${id}`); else refundRaw += f.refund || 0; }
+  for (const id of new Set([...fixedFlaws(content, build), ...flaws])) { const f = flawDef(content, id); if (!f) errors.push(`모르는 결점: ${id}`); else refundRaw += f.refund || 0; }
   const refund = Math.min(R.flaw_max, refundRaw), dice = build.dice ? R.dice_refund : 0;
   const left = R.tp + refund + dice - spent;
   if (left < 0) errors.push(`재능 포인트가 모자란다 (${-left}점)`);
@@ -82,8 +101,8 @@ export function finalizeBuild(content, build = {}, seed = 7) {
     origin: originDef(content, build.origin)?.id || DEFAULT_ORIGIN,
     alloc: Object.fromEntries(Object.entries(build.alloc || {}).filter(([k, v]) => STAT_KEYS.includes(k) && Number(v) > 0).map(([k, v]) => [k, Number(v)])),
     talents: Object.fromEntries(Object.entries(build.talents || {}).filter(([id, t]) => talentDef(content, id) && t >= 1).map(([id, t]) => [id, Math.min(3, Number(t))])),
-    traits: [...new Set((build.traits || []).filter((id) => traitDef(content, id)))],
-    flaws: [...new Set((build.flaws || []).filter((id) => flawDef(content, id)))],
+    traits: [...new Set([...fixedTraits(content, build), ...(build.traits || [])].filter((id) => traitDef(content, id)))],
+    flaws: [...new Set([...fixedFlaws(content, build), ...(build.flaws || [])].filter((id) => flawDef(content, id)))],
     dice: !!build.dice,
   };
   if (out.dice) out.diceResult = rollDice(content, out, seed);
@@ -101,7 +120,8 @@ export function rollDice(content, build, seed) {
     if (cur < 3) res = { talent: t.id, tier: cur + 1, from: cur };
   }
   if (res && hash(seed, "dice", "flaw") < (R.dice_flaw ?? 0.3)) {
-    const F = C.flaws.filter((f) => !(build.flaws || []).includes(f.id));
+    const have = new Set([...(build.flaws || []), ...fixedFlaws(content, build)]);
+    const F = C.flaws.filter((f) => !have.has(f.id));
     if (F.length) res.flaw = F[Math.floor(hash(seed, "dice", "which") * F.length)].id;
   }
   return res;
@@ -130,7 +150,9 @@ export function creationView(content) {
   const C = creationOf(content);
   return {
     rules: C.rules,
-    origins: C.origins.map((o) => ({ id: o.id, name: o.name, title: o.title, canon: !!o.canon, difficulty: o.difficulty, blurb: o.blurb, start: o.start, stats: o.stats, skills: o.skills, perks: o.perks || [], burdens: o.burdens || [], presets: o.presets || [], items: (o.items || []).map((i) => i.name || content?.game?.economy?.goods?.[i.gid]?.name || i.gid), coin: o.coin ?? 0 })),
+    origins: C.origins.map((o) => ({ id: o.id, name: o.name, title: o.title, canon: !!o.canon, difficulty: o.difficulty, blurb: o.blurb, start: o.start, stats: o.stats, skills: o.skills, perks: o.perks || [], burdens: o.burdens || [], presets: o.presets || [], items: (o.items || []).map((i) => i.name || content?.game?.economy?.goods?.[i.gid]?.name || i.gid), coin: o.coin ?? 0,
+      region: o.region || "회색여울", branch: (o.settlement || "greyford") === "greyford" && o.family !== false, scenario: o.scenario || null, age: o.age || 17, time: o.time || "18:00", place: o.place || null, call: o.call || "셋째",
+      flaws: o.flaws || [], traits: o.traits || [], discount: o.trait_discount || {} })),
     talents: C.talents.map((t) => ({ id: t.id, name: t.name, area: t.area, size: t.size, skills: t.skills || {}, grow: t.grow || [], tiers: t.tiers || [], line: t.line || "", cost: (C.rules.cost[t.size] || C.rules.cost.major) })),
     traits: C.traits, flaws: C.flaws,
   };

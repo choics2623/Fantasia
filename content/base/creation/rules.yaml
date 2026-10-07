@@ -1,5 +1,6 @@
-# 캐릭터 생성 (06 캐릭터 생성과 재능 — 회색여울 판). 시대의 시작에 한 번: 출신 → 능력치 → 재능 → 특질 → 결점 → 주사위.
-# 06의 119개 재능 가운데 이 엔진의 판정·몸·지도·회귀에 실제로 닿는 것만 골랐다. 효과가 없는 재능은 싣지 않는다.
+# 캐릭터 생성 (06 캐릭터 생성과 재능). 시대의 시작에 한 번: 출신 → 능력치 → 재능 → 특질 → 결점 → 주사위.
+# 06의 119개 재능 가운데 이 엔진의 판정·몸·지도·회귀·하루에 실제로 닿는 것만 골랐다 (2026-10: 24 → 83). 효과가 없는 재능은 싣지 않는다.
+# 빠진 것: 활·쇠뇌·투척·방패·기마(원거리·말 싸움이 엔진에 없다), 연금술·독(독이 없다), 시간의 근원·끝나지 않는 자(해금 — 다음 시대).
 #
 # 값의 뜻
 #   size: major(큰 재능 — 소질 2·수재 4·천재 7) | minor(작은 재능 — 소질 1·수재 2·천재 4)
@@ -30,7 +31,10 @@ rules:
     - {id: 지능, desc: "화술·기만·통찰, 거짓 통행증, 들킨 거짓말 수습"}
     - {id: 감각, desc: "화술·기만·통찰, 알아차리기"}
     - {id: 의지, desc: "위압, 두려움을 버티는 힘"}
-  areas: [사회, 감각, 그림자, 무예, 몸, 생존, 기술·지식, 영혼]
+  areas: [사회, 감각, 그림자, 무예, 몸, 생존, 기술·지식, 신비, 영혼]
+  trait_max: 2           # 몸의 특질은 생성 때 둘까지 (06 §7) — 출신이 고정한 것은 세지 않는다
+  trait_exclusive: [[dragon_heart, nocturne_thirst], [fae_shadow, durgan_heart]]   # 함께 가질 수 없는 피
+  helps: [0, 5, 9, 13]   # 대본 장면의 판정을 돕는 재능 (check.helps): 소질·수재·천재마다 더하는 값. 특질은 +8
 
 talents:
   # ── 사회 ──
@@ -222,21 +226,535 @@ talents:
     line: ""
     tiers: ["시간에 닿은 자들의 낌새가 늦다 (−25%)", "절반", "거의 눈치채지 못한다 (−75%)"]
 
-# 몸의 특질 (혈통, 06 §7): 같은 몸으로 돌아오므로 시대 내내 그대로. 이 시대에 열린 것은 잔향의 눈뿐이다 (나머지는 업적 — 다음 시대)
+  # ───────── 2026-10 확장: 06 §5에서 엔진에 닿는 것 (special은 game.mjs가 talentTier로 읽는다) ─────────
+  # ── 사회 ──
+  - id: charm
+    name: 매혹
+    area: 사회
+    size: major
+    special: charm
+    grow: [화술]
+    line: 처음 보는 사람도 이 아이에게는 빵을 나눴다
+    tiers: ["마음이 빨리 기운다 (호감이 1.25배)", "1.5배", "누구든 한 번은 마음을 연다 (2배)"]
+  - id: haggle
+    name: 흥정
+    area: 사회
+    size: minor
+    special: haggle
+    line: 동전 한 닢을 두고 반나절을 버텼다
+    tiers: ["사는 값이 조금 싸다 (−8%)", "−15%", "세렌 상인과 대등하다 (−22%)"]
+  - id: merchant
+    name: 상재
+    area: 사회
+    size: major
+    special: merchant
+    grow: [화술]
+    line: 쓰레기 더미에서도 팔 것을 골라냈다
+    tiers: ["파는 값이 조금 높다 (+10%)", "+20%", "+30% — 상관을 차릴 손"]
+  - id: etiquette
+    name: 예법
+    area: 사회
+    size: minor
+    special: etiquette
+    line: 주인들의 식탁에서 한 번도 접시를 울리지 않았다
+    tiers: ["귀족·용인 앞에서 말이 덜 걸린다, 주인의 자리에 숨어들 때 하인처럼 보인다", "더", "실수가 없다"]
+  - id: crowd_voice
+    name: 군중의 목소리
+    area: 사회
+    size: major
+    special: crowd
+    grow: [화술]
+    line: 줄 선 사람들이 이 아이의 노래를 따라 불렀다
+    tiers: ["여럿을 움직이는 판정이 쉽다", "봉기의 준비 하나를 대신한다", "도시 하나를 일으킨다"]
+  - id: command
+    name: 지휘
+    area: 사회
+    size: major
+    special: command
+    grow: [위압]
+    line: 아이들 싸움에서도 늘 이 아이가 순서를 정했다
+    tiers: ["작전의 실행이 조금 낫다", "사람들이 네 말에 맞춰 움직인다", "무혈자의 군대"]
+  - id: interrogator
+    name: 심문
+    area: 사회
+    size: minor
+    special: interrogate
+    line: 거짓말한 아이는 이 아이 앞에서 결국 울었다
+    tiers: ["칼끝 앞의 말이 더 나온다", "고문 없이도 — 자비가 덜 깎인다", "진실만 나온다"]
+  - id: storyteller
+    name: 이야기꾼·노래
+    area: 사회
+    size: minor
+    special: storyteller
+    grow: [화술]
+    line: 겨울밤 막사에서 이 아이의 이야기가 끝나야 모두 잤다
+    tiers: ["잡담이 마음을 조금 더 연다, 밤의 노래가 깊다", "더", "노래로 사람의 눈빛을 바꾼다"]
+  - id: actor
+    name: 연기
+    area: 사회
+    size: minor
+    special: actor
+    grow: [기만]
+    line: 우는 척을 하면 감독도 채찍을 내렸다
+    tiers: ["거짓말이 더 잘 먹힌다, 숙적의 의심이 늦다", "더", "다른 사람이 된다"]
+  # ── 감각 ──
+  - id: hawk_eye
+    name: 매의 눈
+    area: 감각
+    size: minor
+    special: hawk
+    line: 지붕 위에서 언덕 너머의 연기를 먼저 봤다
+    tiers: ["바깥을 뒤질 때 눈이 밝다", "+ 서 있는 땅의 이웃 길이 보인다", "멀리 있는 것이 손에 잡힌다"]
+  - id: bat_ear
+    name: 박쥐 귀
+    area: 감각
+    size: minor
+    special: overhear
+    line: 벽 너머의 귓속말을 듣고 다녔다
+    tiers: ["사람이 모인 곳에서 소문을 엿듣는다", "더 자주", "벽 너머의 말도 들린다"]
+  - id: dog_nose
+    name: 개 코
+    area: 감각
+    size: minor
+    special: nose
+    line: 바람에 실린 젖은 털 냄새를 먼저 맡았다
+    tiers: ["쫓는 자의 냄새가 먼저 온다 (사냥꾼이 가까우면 안다)", "+ 제 몸의 젖은 재 냄새를 맡는다", "바르그의 코와 겨룬다"]
+  - id: sixth_sense
+    name: 육감
+    area: 감각
+    size: major
+    special: sixth
+    line: 매질이 오기 전에 목덜미가 먼저 알았다
+    tiers: ["수색과 검문이 덜 걸린다", "위험이 먼저 목덜미에 닿는다", "시간이 얇아지는 자리를 안다"]
+  - id: photo_memory
+    name: 사진 같은 기억
+    area: 감각
+    size: major
+    special: photo
+    grow: [통찰]
+    line: 한 번 본 얼굴과 장부를 그대로 다시 그렸다
+    tiers: ["지난 회차의 앎이 흐려지지 않는다 (작전의 기억이 온전하다)", "본 것을 통째로", "아무것도 잊지 않는다"]
+  # ── 그림자 ──
+  - id: pickpocket
+    name: 소매치기
+    area: 그림자
+    size: minor
+    special: pick
+    grow: [손재주]
+    line: 장터에서 돌아오면 주머니가 무거웠다
+    tiers: ["남의 주머니에 손이 덜 걸린다", "열쇠 꾸러미에서 하나만", "넣는 것도 — 누명용"]
+  - id: disguise
+    name: 변장
+    area: 그림자
+    size: major
+    special: disguise
+    grow: [기만]
+    line: 하녀의 앞치마 하나로 성채 문을 지났다
+    tiers: ["통행증 없이도 검문을 말로 넘길 수 있다", "다른 신분이 된다", "그 사람이 된다"]
+  - id: evade_track
+    name: 추적 회피
+    area: 그림자
+    size: minor
+    special: evade
+    line: 비 온 뒤에도 발자국을 남기지 않았다
+    tiers: ["쫓는 자가 거리를 덜 좁힌다, 수배가 빨리 식는다", "더", "바르그도 흔적을 잃는다"]
+  - id: forgery
+    name: 위조
+    area: 그림자
+    size: major
+    special: forgery
+    grow: [손재주, 읽고쓰기]
+    line: 주인의 서명을 흙바닥에 똑같이 그렸다
+    tiers: ["가짜 통행증이 덜 들킨다 (글을 알아야 온전하다)", "인장까지", "진짜보다 진짜"]
+  - id: false_face
+    name: 거짓 얼굴
+    area: 그림자
+    size: minor
+    special: falseface
+    line: 매를 맞으면서도 얼굴이 바뀌지 않았다
+    tiers: ["앞일을 아는 티가 덜 난다 (잔향의 징후 −25%)", "−50%", "−75%"]
+  - id: assassin
+    name: 암살 감각
+    area: 그림자
+    size: major
+    special: assassin
+    grow: [싸움, 은신]
+    line: 개를 잡을 때도 개가 짖기 전에 끝냈다
+    tiers: ["잠든 자·방심한 자를 칠 때 낫다, 작전의 실행이 낫다", "경비 교대의 틈이 보인다", "아무도 몰랐다"]
+  # ── 무예 ──
+  - id: sword
+    name: 검의 재능
+    area: 무예
+    size: major
+    skills: {싸움: 3}
+    grow: [싸움]
+    special: sword
+    line: 막대기를 쥐어도 칼처럼 쥐었다
+    tiers: ["긴 날을 쥐면 낫다 (숨길 수 없는 날)", "흘려치고 되친다", "갑옷 틈을 본다"]
+  - id: spear
+    name: 창의 재능
+    area: 무예
+    size: major
+    skills: {싸움: 3}
+    grow: [싸움]
+    special: spear
+    line: 장대 하나로 개 세 마리를 물렸다
+    tiers: ["창·장병기를 쥐면 낫다", "거리를 지킨다", "용을 찌르는 창"]
+  - id: blunt
+    name: 둔기의 재능
+    area: 무예
+    size: minor
+    grow: [싸움]
+    special: blunt
+    line: 곡괭이 자루가 손에 붙었다
+    tiers: ["둔기를 쥐면 낫다", "뼈를 부순다", "갑옷 너머로 친다"]
+  - id: improvised
+    name: 즉석 무기의 재능
+    area: 무예
+    size: major
+    grow: [싸움]
+    special: improvised
+    line: 낫이든 깨진 병이든 손에 든 것이 칼이었다
+    tiers: ["연장을 들어도 무기처럼 싸운다", "주변의 것이 다 무기다", "손에 든 것이 칼이다"]
+  - id: duelist
+    name: 결투의 재능
+    area: 무예
+    size: minor
+    special: duel
+    line: 두 번째 합부터는 상대의 버릇이 보였다
+    tiers: ["둘째 합부터 상대가 읽힌다", "더", "첫 합 뒤엔 지지 않는다"]
+  - id: hidden_blade
+    name: 암기의 재능
+    area: 무예
+    size: major
+    special: hidden_blade
+    line: 몸수색을 받고 나와도 손에는 칼이 있었다
+    tiers: ["숨긴 날이 몸수색에서 덜 나온다, 숨긴 날로 먼저 친다", "더", "천 개의 바늘"]
+  - id: battle_sense
+    name: 전장 감각
+    area: 무예
+    size: major
+    special: battle
+    grow: [통찰]
+    line: 싸움판에서 어디가 무너질지 먼저 알았다
+    tiers: ["막을 때 틈이 보인다, 수색대를 먼저 본다", "진형이 읽힌다", "한 수 앞"]
+  # ── 몸 ──
+  - id: long_walk
+    name: 장거리 걸음
+    area: 몸
+    size: minor
+    special: walk
+    line: 하루에 두 고장을 걸어도 발이 붓지 않았다
+    tiers: ["먼 길이 짧다 (−10%)", "−20%", "−30%"]
+  - id: climber
+    name: 등반
+    area: 몸
+    size: minor
+    special: climb
+    line: 성채 담의 돌 틈을 손가락으로 기억했다
+    tiers: ["담을 넘을 때 낫다, 오르는 도구가 덜 닳는다", "더", "맨손으로 성벽을"]
+  - id: swimmer
+    name: 수영·잠수
+    area: 몸
+    size: minor
+    special: swim
+    line: 여울강 밑바닥의 돌을 주워 올렸다
+    tiers: ["물가에서 숨기·달아나기가 낫다", "숨을 두 배로 참는다", "물속에서 싸운다"]
+  - id: recovery
+    name: 회복력
+    area: 몸
+    size: major
+    special: recovery
+    line: 채찍 자국이 남보다 이틀 먼저 아물었다
+    tiers: ["잠이 상처를 더 낫게 한다 (×1.3)", "×1.6", "×2"]
+  - id: cold_hardy
+    name: 추위·더위 내성
+    area: 몸
+    size: minor
+    special: cold
+    line: 서리 내린 밤에도 맨발이었다
+    tiers: ["겨울의 노숙이 덜 아프다", "더", "서리땅에서 맨몸으로"]
+  - id: strong_bones
+    name: 강골
+    area: 몸
+    size: minor
+    special: bones
+    line: 지붕에서 떨어져도 툭툭 털고 일어났다
+    tiers: ["맞고 떨어져 받는 상처가 덜하다 (−20%)", "−35%", "−50%"]
+  - id: reflexes
+    name: 맹수의 반사신경
+    area: 몸
+    size: major
+    special: reflex
+    line: 날아오는 돌을 눈 감고도 피했다
+    tiers: ["첫 합에 먼저 움직인다, 달아날 때 낫다", "더", "시간이 느려 보인다"]
+  - id: beauty
+    name: 아름다운 몸
+    area: 몸
+    size: minor
+    special: beauty
+    line: 진흙을 뒤집어써도 사람들이 돌아봤다
+    tiers: ["처음 말을 섞는 사람이 조금 더 호의적이다", "더", "누구든 돌아본다 — 탐내는 자도"]
+  # ── 생존 ──
+  - id: hunter
+    name: 사냥꾼
+    area: 생존
+    size: major
+    special: hunt
+    line: 덫 하나로 겨울을 났다
+    tiers: ["노숙하는 밤에 먹을 것을 잡는다", "더 자주", "큰 짐승도"]
+  - id: tracker
+    name: 추적
+    area: 생존
+    size: major
+    special: track
+    grow: [통찰]
+    line: 사흘 지난 발자국으로 누가 어디 갔는지 맞혔다
+    tiers: ["사람이 어디 있을지 더 잘 짐작한다, 바깥을 뒤질 때 낫다", "더", "바위 위의 흔적도"]
+  - id: survivor
+    name: 야외생존
+    area: 생존
+    size: major
+    special: survive
+    line: 굶주린 언덕에서 혼자 열흘을 버텼다
+    tiers: ["노숙이 덜 지치고, 길의 짐승이 덜 온다", "더", "황무지에서도"]
+  - id: herbalist
+    name: 약초꾼
+    area: 생존
+    size: minor
+    special: herbs
+    line: 쑥과 독미나리를 냄새로 갈랐다
+    tiers: ["바깥에서 약초를 찾는다, 약이 더 듣는다", "더", "드문 것도 찾는다"]
+  - id: medic
+    name: 의술
+    area: 생존
+    size: major
+    special: medic
+    line: 덧난 상처를 실과 바늘로 꿰맸다
+    tiers: ["상처를 싸맬 줄 안다 (약이 없어도 하루 한 번)", "더 깊이", "죽은 자를 붙잡는다"]
+  - id: pathfinder
+    name: 길잡이
+    area: 생존
+    size: minor
+    special: path
+    line: 처음 가는 늪에서도 길을 잃지 않았다
+    tiers: ["모르는 땅을 덜 헤맨다, 길목의 일이 덜 생긴다", "더", "잿빛 실을 찾는다"]
+  - id: famine
+    name: 기근 생존
+    area: 생존
+    size: minor
+    special: famine
+    line: 굶주림월에도 살이 덜 빠졌다
+    tiers: ["나흘에 하루는 배가 덜 고프다", "사흘에 하루", "이틀에 하루"]
+  # ── 기술·지식 ──
+  - id: smith
+    name: 대장장이
+    area: 기술·지식
+    size: major
+    special: smith
+    grow: [손재주]
+    line: 못 하나로 칼을 두드렸다
+    tiers: ["대장간에서 날과 연장을 손본다", "더 많이", "걸작을"]
+  - id: engineer
+    name: 공학
+    area: 기술·지식
+    size: major
+    special: engineer
+    grow: [손재주]
+    line: 물레방아의 톱니를 혼자 맞췄다
+    tiers: ["걸쇠·쇠창살·갱목 — 기계를 다루는 판정이 낫다", "더", "두르강의 기계를 읽는다"]
+  - id: architect
+    name: 건축
+    area: 기술·지식
+    size: major
+    special: build
+    line: 움막 지붕을 비가 새지 않게 다시 얹었다
+    tiers: ["영역의 시설을 빨리 짓는다 (−15%)", "−30%", "−45%"]
+  - id: scholar
+    name: 학식
+    area: 기술·지식
+    size: major
+    special: scholar
+    grow: [읽고쓰기]
+    line: 늙은 사제의 옛이야기를 하나도 잊지 않았다
+    tiers: ["문서가 덜 어렵다, 옛것을 아는 판정이 낫다", "법의 허점이 보인다", "고대 제국어"]
+  - id: cartographer
+    name: 지도 제작
+    area: 기술·지식
+    size: minor
+    special: map
+    line: 흙바닥에 마을 길을 그려 동생에게 가르쳤다
+    tiers: ["지나온 길의 이웃 땅이 지도에 남는다", "모르는 길이 덜 길다", "정확한 지도"]
+  - id: strategist
+    name: 전략가
+    area: 기술·지식
+    size: major
+    special: strategy
+    line: 감독의 다음 수를 세 번 먼저 맞혔다
+    tiers: ["작전의 준비 하나하나가 더 값지다", "더", "세력의 다음 수가 보인다"]
+  - id: scribe
+    name: 서기
+    area: 기술·지식
+    size: minor
+    special: scribe
+    grow: [읽고쓰기, 손재주]
+    line: 글을 몰라도 글자 모양을 그대로 베꼈다
+    tiers: ["글과 장부가 빨리 붙는다, 위조가 낫다", "더", "남의 필체"]
+  - id: teacher
+    name: 가르치는 재능
+    area: 기술·지식
+    size: major
+    special: teach
+    line: 이 아이에게 배운 아이들은 금방 따라 했다
+    tiers: ["가르친 것이 빨리 붙는다 (×1.5), 글을 가르치겠다는 제안이 무겁다", "×2", "평범한 인간을 수재로"]
+  # ── 신비 ──
+  - id: truename_ear
+    name: 진명의 귀
+    area: 신비
+    size: major
+    special: truename
+    line: 노파들의 매듭 노래에서 없는 소리를 들었다
+    tiers: ["진명을 부르는 값이 가볍다 (−20%), 진명을 듣는 판정이 낫다", "−40%", "처음 듣는 이름도 한 낱말은 안다"]
+  - id: vessel
+    name: 마력 그릇
+    area: 신비
+    size: major
+    special: vessel
+    line: 번개 친 밤에도 머리카락이 서지 않았다
+    tiers: ["진명이 몸을 덜 태운다 (−15%)", "−30%", "−45%"]
+  - id: dream_walker
+    name: 꿈 걷기
+    area: 신비
+    size: minor
+    special: dream
+    line: 꿈에서 본 길을 낮에 걸었다
+    tiers: ["앞선 자의 꿈이 더 자주 온다, 목소리가 하루 하나 더", "더", "꿈으로 묻는다"]
+  - id: graft_affinity
+    name: 이식 친화
+    area: 신비
+    size: major
+    special: graft
+    line: 남의 피를 받아도 열이 오르지 않았다
+    tiers: ["이식대 위에서 살아남는 판정이 낫다", "더", "거부가 없다 — 그러나 회귀하면 몸과 함께 사라진다"]
+  # ── 영혼 (회귀자만) ──
+  - id: clear_return
+    name: 선명한 회귀
+    area: 영혼
+    size: major
+    special: clear
+    line: ""
+    tiers: ["지난 회차의 앎이 흐려지지 않는다 (작전의 기억이 온전하다)", "앞일을 꺼내 압박할 때 더 무겁다", "오래된 회차도 어제 같다"]
+  - id: death_numb
+    name: 죽음 내성
+    area: 영혼
+    size: minor
+    special: deathnumb
+    line: ""
+    tiers: ["죽음의 기억이 덜 무겁다 (−40%)", "−70%", "남지 않는다 — 손이 떨리지도 않는다"]
+  - id: drift_read
+    name: 표류 읽기
+    area: 영혼
+    size: major
+    special: drift
+    line: ""
+    tiers: ["아침마다 이번 회차에 어긋날 일 하나가 보인다", "둘", "셋"]
+  - id: resonance
+    name: 전생 공명
+    area: 영혼
+    size: major
+    special: resonance
+    line: ""
+    tiers: ["목소리가 하루 하나 더 온다", "둘 더, 더 자주", "셋 더"]
+  - id: predecessor
+    name: 앞선 자의 기억
+    area: 영혼
+    size: major
+    special: predecessor
+    line: ""
+    tiers: ["회차마다 첫 꿈에서 손에 익은 기술이 조금 는다", "더", "앞선 자의 손"]
+
+# 몸의 특질 (혈통, 06 §7): 같은 몸으로 돌아오므로 시대 내내 그대로. 생성 때 둘까지 (출신이 정한 것은 세지 않는다).
+# 2026-10: 업적 해금을 기다리지 않고 첫 시대부터 연다. 평범한 인간의 몸은 다른 종족의 피를 견디지 못한다 — 잔향자만 (SCENARIOS §0.3).
+#   stats: 능력치에 더한다 (생성의 상한 15를 넘을 수 있다) · special: game.mjs가 hasTrait로 읽는 효과 · cost: 재능 포인트
+#   둘을 가지면 혼혈의 부담 — 마음의 짐이 1.2배로 쌓인다
 traits:
   - id: echo_eye
     name: 잔향의 눈 (잿빛 고리)
     cost: 4
     special: echo_eye
     desc: "목소리가 더 자주 찾아온다. 대가: 눈동자에 잿빛 고리 — 잿빛 탑의 밀정이 한 회차 일찍 온다"
+  - id: dragon_heart
+    name: 용심 (드래곤 하트)
+    cost: 12
+    stats: {체질: 4, 근력: 2}
+    special: dragon_heart
+    desc: "체질 +4 · 근력 +2 · 두려움이 반만 누른다 · 불의 이름이 몸을 덜 태운다 · 하루 한 번 '용의 분노' — 세 합 동안 싸움이 크게 낫고, 그 뒤 탈진. 대가: 용인 앞에서 숨기 어렵고(−10), 용인이 피 냄새로 알아챈다"
+  - id: giant_bone
+    name: 거인의 뼈
+    cost: 8
+    stats: {근력: 3, 체질: 2}
+    special: giant_bone
+    desc: "근력 +3 · 체질 +2 · 위압 +10. 대가: 2미터가 넘는 몸 — 은신 −15, 검문에서 눈에 띈다(−10), 배가 두 배로 고프다"
+  - id: eldar_eye
+    name: 엘다르의 눈
+    cost: 8
+    stats: {감각: 3}
+    special: eldar_eye
+    desc: "감각 +3 · 어둠이 걸리지 않는다 · 확률을 보는 눈이 정확하다(오차 절반) · 앞선 자의 꿈이 더 자주 오고, 내일의 일을 비춘다. 대가: 은빛 눈동자 — 검문에서 눈에 띄고(−5), 엘다르가 탐낸다"
+  - id: varg_blood
+    name: 바르그의 피
+    cost: 6
+    special: varg_blood
+    desc: "냄새로 쫓는다(뒤지기·행방 짐작이 낫다) · 상처가 두 배로 아문다 · 밤눈. 대가: 보름달 밤의 피의 충동(말이 거칠어진다), 바르그 사냥꾼이 냄새를 일찍 문다"
+  - id: naga_scale
+    name: 나가의 비늘살
+    cost: 6
+    special: naga_scale
+    desc: "싸움에서 받는 상처 −25% · 병이 덜 붙는다 · 물가에서 숨고 달아나기가 낫다(+10). 대가: 물을 이틀 못 보면 살갗이 갈라진다(아픔), 세렌의 나가 상가가 소유권을 주장한다"
+  - id: grom_rage
+    name: 그롬의 분노샘
+    cost: 6
+    special: grom_rage
+    desc: "싸움에서 아픔을 잊는다 · 덤빌 때 +15, 막을 때 −10 (광란) · 위압 +10. 대가: 화술 −5, 모욕을 참지 못한다"
+  - id: durgan_heart
+    name: 두르강의 돌심장
+    cost: 6
+    stats: {체질: 2, 민첩: -1}
+    special: durgan_heart
+    desc: "체질 +2 · 역병과 병이 붙지 않는다 · 맹세를 지니는 동안 위압 +10, 두려움이 덜 붙는다. 대가: 민첩 −1, 헤엄치지 못한다, 맹세를 깨면 체질이 영영 깎인다 (회귀해도 남는 영혼의 흉터)"
+  - id: aeri_bone
+    name: 아에리의 깃뼈
+    cost: 5
+    stats: {민첩: 3}
+    special: aeri_bone
+    desc: "민첩 +3 · 떨어져도 다치지 않는다 · 담을 넘고 달아날 때 +15. 대가: 맞으면 더 아프다(×1.3), 갇히면 마음의 짐이 두 배"
+  - id: nocturne_thirst
+    name: 녹테른의 갈증
+    cost: 8
+    special: nocturne_thirst
+    desc: "밤의 판정 +5 · 밤눈 · 밤에는 덜 지친다. 대가: 낮에는 두 배로 지친다, 사흘마다 갈증(마음의 짐), 순종의 빛 사람들이 악마로 본다(화술 −10)"
+  - id: fae_shadow
+    name: 페이의 그림자
+    cost: 7
+    special: fae_shadow
+    desc: "기만 +10 · 밤의 은신 +10 · 하루 한 번 그림자를 겹친다 (한 시간 동안 은신 +20). 대가: 쇠붙이를 지니면 살이 쓰리다, 맹세를 깨면 그림자가 문다"
+  - id: sleeping_scale
+    name: 잠든 비늘
+    cost: 0
+    special: sleeping_scale
+    origin_only: true
+    desc: "반용의 피 — 불에 데지 않는다(불의 이름이 몸을 덜 태운다), 용심이 4점 싸다. 대가: 비늘이 드러나면 순혈주의자의 처단 대상"
 
-# 결점 (06 §8.1): 환급은 합쳐서 여덟까지
+# 결점 (06 §8.1): 환급은 합쳐서 여덟까지 — 출신이 정한 결점(노예 낙인 등)도 환급에 든다
 flaws:
   - {id: stutter, name: 말더듬, refund: 2, special: stutter, desc: "화술 −10, 기만 −5. 노래·연설은 막히지만 일대일 설득은 된다"}
   - {id: frail, name: 허약 체질, refund: 3, special: frail, desc: "체질 −2, 잠으로 아픔이 덜 가신다"}
   - {id: coward, name: 겁쟁이, refund: 3, special: coward, desc: "용기 −40에서 시작, 겁에 질리면 싸움·위압이 두 배로 무너진다"}
   - {id: lame, name: 절름발이, refund: 4, special: lame, desc: "걷는 시간 +30%, 달아날 때 −20"}
   - {id: one_eye, name: 외눈, refund: 3, special: one_eye, desc: "감각 −2"}
-  - {id: brand, name: 얼굴 낙인, refund: 2, special: brand, desc: "노예 표지가 얼굴에 — 검문과 통행증 판정 −15"}
+  - {id: brand, name: 노예 낙인, refund: 2, special: brand, desc: "노예 표지가 몸에 (얼굴·손목·목) — 검문과 통행증 판정 −15"}
   - {id: deep_echo, name: 짙은 잔향, refund: 4, special: deep_echo, desc: "젖은 재 냄새가 첫 회차부터 짙다 (세 번째 회차만큼)"}
-  - {id: enemy_blood, name: 원수의 피, refund: 4, special: enemy_blood, desc: "첫 회차부터 볼크 회색송곳니가 네 냄새를 쫓는다"}
+  - {id: enemy_blood, name: 원수의 피, refund: 4, special: enemy_blood, desc: "첫 회차부터 강한 원수가 네 냄새를 쫓는다 (대개 볼크 회색송곳니 — 출신이 정한 원수가 있으면 그 사람)"}
+  - {id: master_debt, name: 주인의 빚, refund: 3, special: debt, desc: "빚을 지고 시작한다 (금화 열 닢 — 출신이 정한 빚이 있으면 그것). 열흘마다 빚쟁이가 은화 한 닢을 걷는다. 두 번 못 내면 수배"}
+  - {id: cursed_name, name: 저주받은 이름, refund: 5, special: cursed_name, desc: "사람들이 이유 없이 너를 꺼린다 — 처음 말을 섞는 인간의 호감 −10, 앞일을 아는 티가 더 크게 퍼진다"}
+  - {id: ash_taint, name: 재오염, refund: 6, special: ash_taint, desc: "재열병 초기 — 회차마다 같은 병을 안고 시작한다. 날마다 아픔 +3(열 아래로는 내려가지 않는다), 더 빨리 지친다"}
