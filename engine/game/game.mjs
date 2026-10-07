@@ -312,7 +312,8 @@ export function lockedOptions(g) {
   }
   if (g.convo) {
     const shop = g.content.game.economy?.shops?.[g.convo.npc];
-    for (const gid of shop?.sells || []) { const good = g.content.game.economy.goods[gid], price = priceOf(g, g.convo.npc, gid); if (good && g.S.purse.player < price) add(`${good.name}을(를) 산다`, `${price}못이 든다`); }
+    const hostile = bandOf(g, g.convo.npc) === "적대";
+    for (const gid of shop?.sells || []) { const good = g.content.game.economy.goods[gid], price = priceOf(g, g.convo.npc, gid); if (good && hostile) add(`${good.name}을(를) 산다`, "너에게는 팔지 않는다 — 네 이름이 나쁘게 돈다"); else if (good && g.S.purse.player < price) add(`${good.name}을(를) 산다`, `${price}못이 든다`); }
     return out;
   }
   // 작전: 아는 작전의 자리에 있는데 시각이나 준비가 아니다
@@ -359,6 +360,8 @@ function rawOptions(g) {
       if (hid && !mind(g, n).revealed.has(f)) o.push({ id: `press:${f}`, kind: "talk", label: `${c.name}이 숨기는 것을 안다고 넌지시 말한다`, skill: "위압", request: 8, fact: f, memory: isFuture(g, f) ? memMark(g, `press:${f}`, { fact: f, loop: soul(g).knowledge[f]?.last || g.run.loop - 1 }) : null });
     }
     if (g.S.purse.player >= 12) o.push({ id: "give:coin", kind: "talk", label: "1 발톱(12못)을 건넨다", skill: "화술", request: -15 });
+    // 빚 (21 §6.1 debt): 그가 너에게 진 빚을 한 번 꺼내 쓴다 — 다음 부탁이 쉬워진다
+    if (!g.convo.favor && mind(g, n).memories.some((x) => x.kind === "debt" && !x.used && x.source !== "engine-offer")) o.push({ id: "favor", kind: "talk", label: `"그때 일, 기억하지?" — ${c.name}에게 빚을 꺼낸다` });
     // 제안 (22 §1.2 player_offer): 내놓을 것이 있을 때만 — 받은 사람은 숨긴 것을 꺼낼 이유가 생긴다
     if (!g.convo.offer) for (const [k, label, ok] of OFFERS) if (ok(g)) o.push({ id: `offer:${k}`, kind: "talk", label, skill: "화술", request: 0 });
     for (const it of mine(g)) if (it.eat) o.push({ id: `give:${it.id}`, kind: "talk", label: `${it.name}을(를) 나눈다` });   // 빵 나누기 (20 §5.2)
@@ -368,7 +371,7 @@ function rawOptions(g) {
       if (profOf(g, n).role === "fence" || (it.value || 0) > 0) o.push({ id: `sell:${it.id}`, kind: "talk", label: `${it.name}을(를) 팔겠다고 한다` });
     }
     const shop = g.content.game.economy?.shops?.[n];
-    for (const gid of shop?.sells || []) {
+    for (const gid of bandOf(g, n) === "적대" ? [] : shop?.sells || []) {   // 적대: 문을 닫는다 (10 §4)
       const good = g.content.game.economy.goods[gid], price = priceOf(g, n, gid);
       if (good && g.S.purse.player >= price) o.push({ id: `buy:${gid}`, kind: "talk", label: `${good.name}을(를) ${price}못에 산다${good.illegal ? " (몰래)" : ""}`, risk: good.illegal ? "인간이 지니면 죄" : null });
     }
@@ -515,6 +518,15 @@ export function odds(g, opt) {
   if (p.status.fear >= 2 && ["싸움", "위압"].includes(opt.skill)) { S -= 3 * p.status.fear; why("▼", "다리가 떨린다"); }
   if (p.status.stress >= 70 && ["화술", "기만"].includes(opt.skill)) { S -= 5; why("▼", "목소리가 갈라진다 — 너무 많은 것을 짊어졌다"); }
   if (opt.skill === "화술" && n) { const grp = groupOf(g, n), v = grp ? (reputation(g).views[grp] || 0) : 0; if (v) { const b = clamp(Math.round(v * 0.3), -8, 8); S += b; why(b >= 0 ? "▲" : "▼", `${grp} 사이에서 네 이름이 ${b >= 0 ? "좋게" : "나쁘게"} 돈다`); } }
+  // 칭호 (10 §4.1): 소문이 붙인 이름이 처음 보는 사람의 태도를 바꾼다
+  if (n && opt.skill === "화술") {
+    const titles = new Set([...(repCache(g).titles || []), ...(g.P.titles || [])]), human = /인간/.test(cardOf(g, n).race || "인간");
+    if (titles.has("날을 아는 자") && human) { S += 4; why("▲", "'날을 아는 자' — 인간들은 너를 경외한다"); }
+    if (titles.has("날을 아는 자") && groupOf(g, n) === "순종의 빛") { S -= 6; why("▼", "'날을 아는 자' — 사제들에게는 이단의 냄새"); }
+    if (titles.has("개목걸이") && human) { S -= 8; why("▼", "'개목걸이' — 동족을 판 자"); }
+    if (titles.has("빵을 나누는 이") && human) { S += 4; why("▲", "'빵을 나누는 이'"); }
+  }
+  if (g.convo?.favor && /^(ask|press):/.test(opt.id || "")) { S += 15; why("▲", "빚을 꺼냈다 — 한 번은 들어준다"); }
   if (opt.skill === "화술") {
     const relB = Math.round(r.like * 0.3 + r.trust * 0.2); S += relB;
     if (relB >= 4) why("▲", "그가 너를 좋게 본다"); else if (relB <= -4) why("▼", "그가 너를 믿지 않는다");
@@ -738,6 +750,16 @@ function oathsTick(g, t) {
     if (ec.done || t < ec.t) continue;
     if (storyWhen(g, [ec.when], t)) { ec.done = true; echoOut(g, ec.text, ec.R || 70); }
   }
+}
+// 앞선 잔향자의 꿈 (14 §3.4): 잠에서 깰 때 — 굶주림월 4일 전에는 이레에 한 번, 그 뒤에는 사흘에 한 번
+function dreamTick(g) {
+  const D = g.content.game.dreams; if (!D?.fragments?.length) return;
+  const day = Math.floor(g.t / 1440), late = g.t >= toMinutes(312, 12, 4);
+  g.P.nextDream ??= Math.floor(START / 1440) + 6;
+  if (day < g.P.nextDream) return;
+  const n = (g.P.dreamN = (g.P.dreamN || 0) + 1);
+  g.feed.push({ kind: "voice", who: D.who, text: D.fragments[(n - 1) % D.fragments.length] });
+  g.P.nextDream = day + (late ? 3 : 7);
 }
 // 메아리 상한 (16 §3.3): 흔하면 무뎌진다 — 한 장면에 하나, 하루에 둘(큰 메아리는 하루 하나). 넘치면 R 순 대기열 → 잠자리의 「밤의 메아리」
 function echoOut(g, text, R = 70) {
@@ -1106,7 +1128,7 @@ function familyDay(g, day) {
   if (heat >= 4 && !F.hostageSeen && (F.members.length || F.children.length)) { F.hostageSeen = true; (g.domainDue ??= []).push("hostage"); }
 }
 // ── 양육 (12 §7.2): 아이는 자란다 · 보고 배운다 · 가르친 것이 아이의 것이 된다 · 뜻대로만 자라지 않는다 ──
-const YEAR = 360;
+const YEAR = 365;   // 열두 달 × 30일 + 재의 날 닷새 (sim/calendar)
 const AXES = ["용기", "자비", "정직", "신앙", "탐욕", "충성"];
 // 같은 아이는 다시 만들지 않는다 (12 §7.3): 출생 순간의 시드로 굴리고, 잃은 아이와 겹치면 다시 굴린다
 function newChild(g, name, sex) {
@@ -1741,7 +1763,7 @@ const DO = {
       const cnt = SL(g, "count_before_sleep");
       if (cnt && g.run.loop >= (cnt.trigger?.first_sleep_loop || 2) && !g.storyDone.has(cnt.id) && soul(g).records.length && g.run.opening !== false) { g.at = HOME; g.feed = feedAll; openStory(g, cnt); res.storyText = g.feed.pop()?.text; return; }
     }
-    if (!g.ended && !g.story) step(() => { g.at = HOME; const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); });
+    if (!g.ended && !g.story) step(() => { g.at = HOME; const c = fromMinutes(g.t); let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440; pass(g, wake - g.t, { sleeping: true }); if (!g.story && !g.ended) dreamTick(g); });
     if (!g.ended && !g.story && !isSabbath(Math.floor(g.t / 1440))) step(() => { pass(g, 5); g.at = ROLLCALL; pass(g, 20); });
     g.feed = feedAll;
     res.notes.push(`${fmt(start).slice(4, 16)}부터 ${fmt(g.t).slice(4, 16)}까지, 늘 하던 대로`);
@@ -1773,6 +1795,7 @@ const DO = {
     let wake = toMinutes(c.y, c.m, c.d, 4, 40); if (wake <= g.t) wake += 1440;
     pass(g, wake - g.t, { sleeping: true });
     if (g.story) return;               // 잠이 장면에 깼다 (첫 밤, 첫 종…)
+    dreamTick(g);
     // 점호 날이면 막사 사람들과 함께 광장으로 끌려 나간다
     if (!isSabbath(Math.floor(g.t / 1440)) && g.at === HOME) { pass(g, 5); g.at = ROLLCALL; res.notes.push("첫 종. 막사 문이 열리고 모두 광장으로 밀려 나간다 — 점호"); pass(g, 20); }
   },
@@ -1892,13 +1915,19 @@ const DO = {
       for (const f of R.facts || []) learn(g, f, `${it.name}에서 읽었다`);
     } else res.notes.push(lit ? `글자는 읽힌다. 말이 ${R.lang}이다 — ${tongueMask(g, R.lang, R.text || "")}` : `${readMask(g, R.text || "")} — 글자다. 읽을 수 없다. 글을 아는 사람에게 보여야 한다`);
   },
+  favor(g, _, res) {
+    const n = g.convo.npc, d = mind(g, n).memories.find((x) => x.kind === "debt" && !x.used && x.source !== "engine-offer");
+    if (d) d.used = g.t;
+    g.convo.favor = true; pass(g, 1);
+    res.notes.push(`${nameOf(g, n)}이(가) 잠깐 눈을 내리깐다. 갚아야 할 것이 있다는 얼굴이다`);
+  },
   // 제안한다 (22 §1.2 player_offer): 이 대화에서 숨긴 것의 문이 하나 더 열린다
   offer(g, kind, res) {
     const n = g.convo.npc;
     talkTurn(g, res, { 대성공: [3, 2], 성공: [2, 1], "부분 성공": [1, 0], 실패: [0, -1], 대실패: [-2, -3] });
     if (kind === "coin") { g.S.purse.player -= 12; g.S.purse[n] = (g.S.purse[n] || 0) + 12; mind(g, n).gifts = (mind(g, n).gifts || 0) + 12; }
     g.convo.offer = kind;
-    addMemory(g, n, { kind: "debt", tag: null, text: `셋째가 제안했다 — ${OFFERS.find((x) => x[0] === kind)?.[1].replace(/"/g, "")}`, salience: 3, source: "engine" });
+    addMemory(g, n, { kind: "debt", tag: null, text: `셋째가 제안했다 — ${OFFERS.find((x) => x[0] === kind)?.[1].replace(/"/g, "")}`, salience: 3, source: "engine-offer" });
     res.notes.push(`${nameOf(g, n)}이(가) 그 말을 오래 곱씹는다`);
   },
   // 배운다 (03 §3.1): 스승의 스킬 −10까지, 연습의 2.5배. 받아들여지면 시험이 여는 비밀(trial:<npc>)
@@ -2062,6 +2091,7 @@ const DO = {
   },
   ask(g, topic, res) {
     const n = g.convo.npc, c = cardOf(g, n), m = mind(g, n);
+    if (g.convo.favor) g.convo.favor = "spent";   // 빚은 한 번만
     talkTurn(g, res, { 대성공: [2, 3], 성공: [1, 1], "부분 성공": [0, 0], 실패: [-1, -2], 대실패: [-3, -5] });
     if (!OK(res.tier) && res.tier !== "부분 성공") return;
     const about = (f) => topic === "요즘 마을 사정" || (g.content.facts[f]?.names || []).includes(topic);
@@ -2091,6 +2121,7 @@ const DO = {
       const hungry = (cardOf(g, n).rank || "").match(/노예|농노|고아/) || profOf(g, n).role === "serf";
       bumpRel(g, n, hungry ? 8 : 4, hungry ? 4 : 1); g.convo.turns++;
       addMemory(g, n, { kind: "emotion", tag: "다정함", text: `셋째가 ${it.name}을(를) 나눠 주었다`, salience: hungry ? 4 : 2, source: "engine" });
+      if (hungry) addMemory(g, n, { kind: "debt", tag: "빚", text: `굶을 때 셋째가 ${it.name}을(를) 나눠 주었다`, salience: 3, source: "engine" });   // 빵 한 덩이의 빚 — 한 번은 꺼내 쓸 수 있다
       res.notes.push(`${it.name}을(를) 나눴다`);
       if (hungry) deed(g, "share_food", null, g.at, { witnessed: true });
       bond(g, n, hungry ? 8 : 5);
@@ -2318,6 +2349,8 @@ function applyRecord(g, n, mem) {
     g.P.notebook.push(josa(`${nameOf(g, n)}과(와)의 약속 — ${fmt(mem.promise.from)}, ${placeName(g, mem.promise.place)}: ${mem.promise.what}`));
     (g.promises ??= []).push({ npc: n, ...mem.promise, state: "open" });
   }
+  // 협박 (21 §6.1 threat): 두려움 + 원한의 씨앗 — 사냥꾼·윗선·담이 큰 사람은 숙적 후보가 된다 (17)
+  if (mem.kind === "threat" && !g.S.dead.has(n) && (["hunter", "authority"].includes(profOf(g, n).role) || profOf(g, n).nerve >= 60)) { const x = ((g.nem ??= {})[n] ??= { grudge: 0, track: 0, since: g.t }); x.grudge = Math.max(x.grudge, 1); }
   if (mem.claim?.caught) addMemory(g, n, { kind: "impression", tag: "거짓말쟁이", delta: -3, text: `셋째가 거짓말을 했다 — "${mem.claim.content}"`, salience: 3, source: "engine" });
   if (mem.claim?.believed) {
     // 믿은 주장은 그 NPC의 믿음이 된다 → 사람이 모이는 곳에서 소문으로 퍼진다 (27 §3.4)
@@ -2340,7 +2373,14 @@ function addMemory(g, n, mem) {
     if (good || bad) bumpRel(g, n, lim("like", dl, 15), lim("trust", dt, 12));
   }
   const slots = { S: 60, A: 30, B: 12, C: 4 }[g.P.promoted?.has(n) ? "B" : cardOf(g, n).tier] || 4;   // C등급(이름 없는 주민)은 4칸 (21 §6.4)
-  if (m.memories.length > slots) { m.memories.sort((a, b) => (b.salience || 0) - (a.salience || 0)); m.memories.length = slots; }
+  if (m.memories.length > slots) {
+    // 슬롯이 차면 중요도가 낮은 것부터 요약한다 (21 §6.4) — 지우지 않고 한 줄로 접는다
+    m.memories.sort((a, b) => (b.salience || 0) - (a.salience || 0) || (b.t || 0) - (a.t || 0));
+    const folded = m.memories.splice(slots - 1);
+    const old = folded.find((x) => x.kind === "summary"), tags = Object.entries(m.impressions).filter(([, v]) => Math.abs(v) >= 3).sort((a, b) => Math.abs(b[1]) - Math.abs(a[1])).map(([k]) => k);
+    const count = (old?.count || 0) + folded.filter((x) => x.kind !== "summary").length;
+    m.memories.push({ kind: "summary", text: `셋째와 몇 번 얽혔다 (${count})${tags[0] ? ` — ${tags[0]} 아이` : ""}`, salience: 1, count, source: "engine" });
+  }
 }
 // "방앗간" → gf_mill (이름의 일부로 찾는다)
 function resolvePlace(g, name) {
@@ -2388,7 +2428,13 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
     if (!found) why.push("대화에 근거가 없음");
     if (why.length) { rejected.push({ ...c, why }); continue; }
     let delta = clamp(Number(c.delta) || 0, -5, 5);
-    if (c.kind === "impression") { const used = perTag[c.tag] || 0; delta = clamp(delta, -5 - used, 5 - used); perTag[c.tag] = used + delta; }
+    if (c.kind === "impression") {
+      const used = perTag[c.tag] || 0; delta = clamp(delta, -5 - used, 5 - used); perTag[c.tag] = used + delta;
+      // 대화 한 번의 상한 (21 §6.3): 호감 ±8 · 신뢰 ±6 — 좋은 인상은 호감으로, 나쁜 인상은 신뢰로 깎인다
+      const good = ["영리함", "정직함", "다정함", "용감함", "쓸모 있음"].includes(c.tag), bad = ["위험함", "거짓말쟁이", "비굴함", "짐"].includes(c.tag);
+      const room = good ? 8 - (perTag._like || 0) : bad ? 6 - (perTag._trust || 0) : 5;
+      if (good || bad) { const k = good ? "_like" : "_trust"; const d = Math.sign(delta) * Math.min(Math.abs(delta), Math.max(0, room)); perTag[k] = (perTag[k] || 0) + Math.abs(d); delta = d; }
+    }
     const mem = { kind: c.kind, tag: c.tag || null, delta, text: String(c.text || c.evidence).slice(0, 120), salience: clamp(Number(c.salience) || 2, 1, 5), source: "llm" };
     // 기록관의 제안 — 규칙을 거쳐 세계에 닿는다 (28 §6)
     if (c.kind === "promise" && c.promise) {
@@ -2595,11 +2641,15 @@ function unlockedNow(g) {
 }
 
 // 값: 기본값 × 흥정(호감·신뢰 ±20%) × 흉년(굶주림월 먹을 것 ×3) × 장물(불법 ×2)
+// 대우 (10 §4): 그 사람이 속한 집단의 시선 구간 — 호의는 깎아 주고, 경계는 올려 받고, 적대는 팔지 않는다
+const repCache = (g) => { const k = `${g.t}|${g.deeds.length}|${(g.S.beliefs?.size || 0)}`; if (g._rep?.k !== k) g._rep = { k, r: reputation(g) }; return g._rep.r; };
+function bandOf(g, n) { const grp = n ? groupOf(g, n) : null; const v = grp ? (repCache(g).views[grp] || 0) : 0; return viewBand(v); }
 function priceOf(g, n, gid) {
   const good = g.content.game.economy.goods[gid], r = relOf(g, n);
   const haggle = 1 - clamp((r.like * 0.6 + r.trust * 0.4) / 250, -0.2, 0.2);
   const famine = fromMinutes(g.t).m === 12 && good.tags?.includes("음식") ? 3 : 1;
-  return Math.max(1, Math.round(good.price * haggle * famine * (good.illegal ? 2 : 1)));
+  const band = { 존경: 0.8, 호의: 0.9, 무심: 1, 경계: 1.25, 적대: 1.5 }[bandOf(g, n)] || 1;
+  return Math.max(1, Math.round(good.price * haggle * famine * band * (good.illegal ? 2 : 1)));
 }
 // 점호 몸수색 (14 §0:14 — 첫 회차는 반드시 플레이어, 그 뒤는 셋 중 하나): 숨길 수 있는 것은 손재주로 숨긴다.
 // 은화(12못 이상)는 절도 의심으로 빼앗기고, 무기·위조 문서는 죄가 된다

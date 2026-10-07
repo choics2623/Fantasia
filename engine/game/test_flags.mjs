@@ -35,4 +35,14 @@ const logHas = (g, re) => g.S.log.some((l) => re.test(l.text));
   let night = [];
   for (let i = 0; i < 3 && !night.length; i++) { if (G.view(g).story) { g.storyDone.add(G.view(g).story.id); g.story = null; } g.at = "gf_river_huts"; const r2 = G.act(g, { id: "sleep" }); night = (r2.feed || []).filter((f) => /밤의 메아리/.test(f.text)); }
   check("잠자리에 — 밤의 메아리 둘까지", night.length >= 1 && night.length <= 2, night.map((f) => f.text).join(" / ")); }
+// 앞선 잔향자의 꿈 (14 §3.4)
+{ const g = fresh(); g.at = "gf_river_huts"; const seen = [];
+  for (let i = 0; i < 16; i++) { const r = G.act(g, { id: "routine_day" }); seen.push(...(r.feed || []).filter((f) => f.kind === "voice" && /다라/.test(f.who || ""))); if (G.view(g).story) { g.storyDone.add(G.view(g).story.id); g.story = null; } }
+  check("이레에 한 번 — 붉은 손 다라의 꿈", seen.length === 2 && seen[0].text !== seen[1].text, seen.map((f) => f.text.slice(0, 16)).join(" / ")); }
+// 굶주림월 10일 — 엘사가 먼저 다가온다
+{ const g = G.boot(C, { ...G.newRun({ seed: 7, opening: false }), lethal: true });
+  const { toMinutes } = await import("../sim/calendar.mjs");
+  g.t = toMinutes(312, 12, 10) + 8 * 60; let st = null;
+  for (let i = 0; i < 14 && !st; i++) { g.P.status.hunger = 0; const sid = G.view(g).story?.id; if (sid === "elsa_dream_question") { st = sid; break; } if (sid) { g.storyDone.add(sid); g.story = null; continue; } g.at = g.W.where("npc_elsa", g.t)?.at || g.at; G.act(g, { id: "wait:60" }); }
+  check("굶주림월 10일 — '너는 꿈을 꾸지?'", st === "elsa_dream_question"); }
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

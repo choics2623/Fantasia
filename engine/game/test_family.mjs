@@ -44,7 +44,7 @@ const waitFor = (g, pred, n = 400) => { for (let i = 0; i < n && !pred() && !g.e
     // 양육 (12 §7.2): 자란다 · 보고 배운다 · 가르친다 · 다섯 살의 질문
     const c = g.family.children[0];
     check("아이는 저만의 성향과 고집을 갖고 태어난다", Object.keys(c.temper).length === 6 && !!c.own);
-    c.born = g.t - (5 * 360 - 1) * 1440; g.P.temper.자비 = 80; const before = c.temper.자비;
+    c.born = g.t - (5 * 365 - 1) * 1440; g.P.temper.자비 = 80; const before = c.temper.자비;
     g.P.skills.손재주 = 60; g.at = "gf_river_huts";
     for (let i = 0; i < 60 && G.view(g).story?.id !== "child_question"; i++) { if (G.view(g).story) { G.act(g, { id: G.options(g)[0].id }); continue; } G.act(g, { id: G.options(g).some((o) => o.id === "sleep") ? "sleep" : "wait:60" }); }
     check("다섯 살 — 아이가 묻는다", G.view(g).story?.id === "child_question" && G.storyIntro(g).includes("새벽"), G.view(g).story?.id);

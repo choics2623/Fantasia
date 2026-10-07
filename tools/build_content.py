@@ -145,6 +145,9 @@ def main():
     place_reveals = []
     for f in load("content/base/reveals/*.yaml"):
         place_reveals += (f or {}).get("places") or []
+    dreams = {}
+    for f in load("content/base/dreams/*.yaml"):
+        dreams.update((f or {}).get("dreams") or {})
     mentors = []
     for f in load("content/base/mentors/*.yaml"):
         mentors += (f or {}).get("mentors") or []
@@ -172,7 +175,7 @@ def main():
     truenames = {}
     for f in load("content/base/truenames/*.yaml"):
         truenames.update((f or {}).get("words") or {})
-    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
+    game = {"truenames": truenames, "ops": ops, "domains": domains, "extraCards": extra_cards, "lexicon": lexicon, "storylets": storylets, "public": public, "access": access, "voices": voices, "director": director, "oaths": oaths, "flags": flags, "placeReveals": place_reveals, "mentors": mentors, "dreams": dreams, "economy": economy, "agendas": agendas, "inventories": inventories, "sim": sim, "facts": facts, "reputation": rep, "factions": factions}
     p3 = os.path.join(OUT, "game.json")
     json.dump(game, open(p3, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"목표 행동 {len(agendas['agendas'])} · 소지품 {len(inventories)}명 · 성향 {len(sim['profiles'])}명 · 사실 {len(facts)} → {p3}")

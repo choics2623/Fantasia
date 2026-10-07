@@ -87,4 +87,14 @@ const at = (g, place, hm) => { g.at = place; if (hm != null) g.t = Math.floor(g.
   const r = G.act(g, { id: "routine_days:7" }); const d1 = Math.floor(g.t / 1440);
   check("세계는 그 사이에도 돈다 — 일이 생기면 멈춘다", d1 > d0 && (d1 - d0 <= 8) && (r.notes || []).some((x) => /일을 보냈다/.test(x)), `${d1 - d0}일 · ${r.notes.join(" / ")}`);
   check("재생해도 같다", JSON.stringify(G.view(G.boot(C, JSON.parse(JSON.stringify(g.run)))).time) === JSON.stringify(G.view(g).time)); }
+// ── 빚을 꺼낸다 · 기억 접기 (21 §6.1·§6.4) ──
+{ const g = fresh(); g.convo = { npc: "npc_bram", turns: 0, patience: 8, transcript: [] };
+  G.recordMemories(g, "npc_bram", [{ kind: "debt", tag: "빚", text: "셋째가 빵을 나눠 주었다", salience: 3, source: "llm" }]);
+  check("빚이 있으면 꺼낼 수 있다", ids(g).includes("favor"));
+  const ask = G.options(g).find((o) => o.id.startsWith("ask:")); const before = ask ? G.optionOdds(g, ask).S : 0;
+  G.act(g, { id: "favor" }); const after = ask ? G.optionOdds(g, G.options(g).find((o) => o.id === ask.id)).S : 0;
+  check("다음 부탁이 쉬워진다 (+15) — 한 번만", after - before === 15 && !ids(g).includes("favor"), `${before} → ${after}`);
+  const c = fresh(); for (let i = 0; i < 8; i++) G.recordMemories(c, "npc_aldo", [{ kind: "emotion", tag: null, text: `일 ${i}`, salience: 1, source: "llm" }]);
+  const mem = c.M.npc_aldo?.memories || [];
+  check("C등급 기억 칸이 차면 지우지 않고 한 줄로 접는다", mem.length <= 4 && mem.some((x) => x.kind === "summary" && x.count >= 4), JSON.stringify(mem.map((x) => x.kind))); }
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

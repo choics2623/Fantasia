@@ -183,3 +183,39 @@ storylets:
         label: 아무 말도 하지 않는다
         text: '마르타가 숫자를 하나씩 센다. 손가락으로. 열을 넘기고, 다시 처음부터. 이름은 하나도 말하지 않는다.'
         effects: ["learn fact_gf_martha_confession", "rel npc_martha trust 5"]
+  # 엘사가 먼저 다가온다 (14 §3.4 — 굶주림월 10일, 마르타가 수탉 지하의 냄새를 알아채는 날)
+  - id: elsa_dream_question
+    trigger: {window: {from: "312-12-10 06:00", to: "312-12-11 06:00"}, at: "@greyford", with: npc_elsa}
+    severity: 2
+    text: |
+      엘사가 네 소매를 잡는다. 늙은 손이 차다. 사람들 사이에서, 아무도 보지 않는 틈에.
+
+      "너는 꿈을 꾸지? 같은 아침을 아홉 번 사는 여자 꿈."
+    choices:
+      - id: admit
+        label: 고개를 끄덕인다
+        text: '엘사가 숨을 길게 내쉰다. "그 여자는 아홉 번째에 하늘을 봤다. 너는 몇 번째냐." 대답을 기다리지 않는다. "세지 마라. 세는 순간 무거워진다."'
+        effects: ["rel npc_elsa trust 15", "memory npc_elsa 이상함 셋째는 다라의 꿈을 꾼다", "var elsa_knows_dreams = true", "note 엘사 — 다라의 꿈을 안다"]
+      - id: deny
+        label: '"무슨 꿈이요."'
+        text: '엘사가 손을 놓는다. "그래. 나도 그렇게 말했지. 처음에는."'
+        effects: ["rel npc_elsa trust 3"]
+  # 옛 돌 고리 잔상 (14 §3.4 — 재의 날 3일 밤): 붉은 길의 처형 잔상. 다라의 얼굴이 한순간 너의 얼굴이 된다
+  - id: stone_ring_afterimage
+    trigger: {window: {from: "312-13-03 20:00", to: "312-13-04 04:00"}, at: old_stone_ring, night: true}
+    severity: 3
+    text: |
+      옛 돌 고리. 서리가 돌 위에서 빛난다. 돌 사이에 사람들이 서 있다 — 아니, 서 있었다. 오백. 목에 밧줄 자국. 맨 앞의 여자.
+
+      여자의 얼굴이 한순간 네 얼굴이 된다. 그리고 다시 여자의 얼굴. 여자가 입 모양으로 말한다.
+
+      "또 와."
+    choices:
+      - id: stay
+        label: 돌 사이에 선다 — 끝까지 본다
+        text: '잔상이 하나씩 꺼진다. 맨 끝까지 너를 보던 것은 여자였다. 마지막 하나가 꺼질 때 너는 그 이름을 소리 내어 부른다. 다라.'
+        effects: ["stress 10", "var dara_seen = true", "note 옛 돌 고리 — 다라가 '또 와'라고 했다"]
+      - id: flee
+        label: 뒷걸음질 친다
+        text: '돌 고리를 벗어나자 서리가 다시 서리가 된다. 등 뒤에서 아무 소리도 나지 않는다. 그게 더 무섭다.'
+        effects: ["fear 1"]
