@@ -219,3 +219,34 @@ storylets:
         label: 뒷걸음질 친다
         text: '돌 고리를 벗어나자 서리가 다시 서리가 된다. 등 뒤에서 아무 소리도 나지 않는다. 그게 더 무섭다.'
         effects: ["fear 1"]
+  # 징발 포고 (03 §2.2 〔고정〕 313 여름): 플레이어도 대상 — 거부 / 뇌물 / 숨기 / 끌려가기
+  - id: conscription_decree
+    dynamic: true
+    severity: 4
+    text: |
+      채찍 기둥 광장. 감독관이 명부를 펼친다. 다섯에 하나. 이름이 불린다. 셋째 이름이 — 불린다.
+
+      "내일 새벽, 까마귀 문으로 간다. 짐을 지는 자, 방패를 드는 자."
+    choices:
+      - id: go
+        label: 줄에 선다 — 까마귀 문으로
+        text: '사슬은 없다. 짐꾼에게는 사슬 대신 짐이 있다. 사흘을 걸어 까마귀 문에 닿는다. 등 뒤로 여울강이 작아진다.'
+        effects: ["conscripted", "note 징발 — 까마귀 문의 짐꾼이 되었다"]
+      - id: bribe
+        label: 감독관에게 은화를 쥐여 준다
+        needs: "coin >= 36"
+        text: '명부의 이름 하나에 줄이 그어지고, 그 아래 다른 이름이 적힌다. 너는 그 이름을 읽지 않는다. 읽을 수 있어도.'
+        effects: ["coin -36", "deed inform", "temper 자비 -3"]
+      - id: hide
+        label: 늑대굴로 숨는다
+        check: {skill: 은신, D: 50}
+        success:
+          text: '이틀 밤을 언덕에서 보낸다. 징발대가 떠난다. 네 자리는 다른 누군가가 채웠다.'
+          effects: ["wanted 2 징발을 피했다"]
+        failure:
+          text: '바르그의 개가 먼저 너를 찾는다. 짐꾼 줄 맨 뒤에, 목줄을 찬 채로.'
+          effects: ["conscripted", "pain 15"]
+      - id: refuse
+        label: '"가지 않는다."'
+        text: '감독관이 웃는다. 그날 밤 네 이름이 탈주 노예 명부에 오른다.'
+        effects: ["wanted 4 징발을 거부했다", "var player_fugitive = true"]

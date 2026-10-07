@@ -20,6 +20,15 @@ vars:                         # 회귀점의 세계 상태
   sara_on_list: true          # 사라 — 2차 명단 (fact_gf_sara_on_sale_list)
   kit_sold: false
   sara_sold: false
+  # 월드 클락 (03 §2.2)
+  ration_cut: false
+  patrol_level: 0
+  house_search: false
+  baron_side: ""
+  conscription: false
+  conscripted: false
+  requisition: false
+  plague: false
   # 대본 장면이 세운 깃발의 결과 (A13)
   grain_search_early: false
   grain_search_done: false

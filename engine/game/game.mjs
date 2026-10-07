@@ -751,6 +751,30 @@ function oathsTick(g, t) {
     if (storyWhen(g, [ec.when], t)) { ec.done = true; echoOut(g, ec.text, ec.R || 70); }
   }
 }
+// 배급 (월드 클락 연동): 북방 탈주자가 내려오면 솥이 준다 — 열흘에 넷은 배가 차지 않는다, 군대의 징발 뒤에는 절반
+function eatRation(g) {
+  g.P.lastRation = Math.floor(g.t / 1440);
+  const f = g.content.game.economy.ration?.food || {}, day = Math.floor(g.t / 1440);
+  const thin = (g.S.vars.requisition && hash(g.seed, "thin2", day) < 0.5) || (g.S.vars.ration_cut && hash(g.seed, "thin", day) < 0.4);
+  if (!thin) g.P.status.hunger = clamp(g.P.status.hunger + (f.hunger || -1), 0, 4);
+  return !thin;
+}
+// 월드 클락 (03 §2.2): 날이 되면 (조건이 맞으면) — 세상이 마을을 찾아온다
+function clocksTick(g, day) {
+  for (const c of g.content.game.clocks || []) {
+    if ((g.P.clocks ??= {})[c.id] || day * 1440 < parseDT(c.date) || !storyWhen(g, c.when)) continue;
+    g.P.clocks[c.id] = day;
+    for (const e of c.effects || []) g.A.doEffect(e, g.t);
+    if (g.P.settlement === SETTLEMENT) g.feed.push({ kind: "echo", text: `〰 ${c.text}` });
+    if (c.scene && g.P.settlement === SETTLEMENT && !g.S.vars.player_fugitive) (g.domainDue ??= []).push(`clock:${c.scene}`);
+    if (c.engine === "plague") {
+      // 〔표류〕 첫 환자는 회차마다 다르다 — 회차 시드로 고른다
+      const pool = Object.keys(g.content.cards).filter((n) => !g.S.dead.has(n) && g.W.where(n, g.t)?.settlement === SETTLEMENT && /인간/.test(cardOf(g, n).race || "인간"));
+      const v = pool[Math.floor(hash(g.seed, "plague", g.run.loop) * pool.length)];
+      if (v) { g.A.doEffect(`kill ${v}`, g.t); g.feed.push({ kind: "echo", text: `〰 ${displayName(g, v)}이(가) 재열병으로 죽었다. 지난번에는 다른 사람이었다.` }); }
+    }
+  }
+}
 // 앞선 잔향자의 꿈 (14 §3.4): 잠에서 깰 때 — 굶주림월 4일 전에는 이레에 한 번, 그 뒤에는 사흘에 한 번
 function dreamTick(g) {
   const D = g.content.game.dreams; if (!D?.fragments?.length) return;
@@ -1024,6 +1048,7 @@ function domainStoryTick(g) {
   const ev = g.domainDue.shift();
   if (ev === "hostage") { const F = g.family; F.hostage = F.members.find((n) => n === "npc_kit") || F.members[0]; g.storyCtx = { ...(g.storyCtx || {}), hostage: F.hostage }; }
   if (ev === "report" && g.domain) { g.domain.newsNow = g.domain.news || []; g.domain.news = []; }   // 이 보고가 전할 소식 (한 번 전하면 끝)
+  if (String(ev).startsWith("clock:")) { const cs = SL(g, ev.slice(6)); if (!cs) return false; g.storyDone.delete(cs.id); openStory(g, cs); return true; }
   const st = SL(g, { raid: "domain_raid", report: "domain_report", birth: "family_birth", hostage: "family_hostage", siege: "rising_siege", child: "child_question" }[ev]); if (!st) return false;
   g.storyDone.delete(st.id); openStory(g, st);
   return true;
@@ -1275,7 +1300,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     // 통금 순찰 (21:00·23:00·02:00): 막사 밖에 있는 인간은 걸린다 — 은신 판정
     if (!g.P.traveling && g.P.settlement !== SETTLEMENT && hm % 60 === 0 && !g.ended) checkpoint(g, null, isNight(next) ? 0.04 : 0.08, next);
     if (g.P.settlement === SETTLEMENT && !g.P.traveling && ["21:00", "23:00", "02:00"].some((x) => parseClock(x) === hm) && g.at !== HOME && !g.W.loc.get(g.at)?.outer && !g.ended) {
-      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6, 22);
+      const P = prob(skill(g, "은신") + g.P.mods.민첩 * 2 + 6, 22 + 4 * (g.S.vars.patrol_level || 0));   // 바르그 순찰이 늘면 통금이 무겁다
       if (hash(g.seed, "patrol", next) >= P) {
         g.P.status.pain = clamp(g.P.status.pain + 15, 0, 100);
         g.feed.push({ kind: "rule", text: "통금 순찰에 걸렸다. 크릭 감독의 몽둥이 — 그리고 막사로 끌려간다." });
@@ -1309,6 +1334,7 @@ function pass(g, minutes, { sleeping = false } = {}) {
     flagsDay(g, d);
     echoTick(g, d);
     ladderTick(g, d);
+    clocksTick(g, d);
     // 감정은 며칠에 걸쳐 흐려진다 (21 §6.4) — 사실과 약속은 남고, 마음의 열기만 식는다
     for (const m of Object.values(g.M)) for (const x of m.memories) if (x.kind === "emotion") x.salience = Math.max(0.5, (x.salience || 1) - 0.2);
   }
@@ -1606,7 +1632,9 @@ function storyEffect(g, e, res) {
   else if (k === "note") g.P.notebook.push(fill(g, rest));
   else if (k === "memory") { const [, n, tag] = parts; addMemory(g, n, { kind: "impression", tag, delta: 0, text: parts.slice(3).join(" "), salience: 4, source: "engine" }); }
   else if (k === "goto") g.at = parts[1];
-  else if (k === "ration") { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); }
+  else if (k === "ration") eatRation(g);
+  // 징발 (03 §2.2): 까마귀 문의 짐꾼이 된다 — 회색여울을 떠나 다른 고장에서 이어진다
+  else if (k === "conscripted") { g.S.vars.conscripted = true; g.P.settlement = "crow_gate"; g.at = "cg_porter_barracks"; g.L.setActive(["crow_gate"]); g.P.clearedUntil = g.t + 365 * 1440; (g.P.visited ??= []).includes("crow_gate") || g.P.visited.push("crow_gate"); }
   else if (k === "agenda") g.A.doEffect(rest, g.t);
   else if (k === "bond") bond(g, parts[1], Number(parts[2]));
   else if (k === "domain") domainEffect(g, parts.slice(1), res);
@@ -1755,7 +1783,7 @@ const DO = {
     const m = ((g.t % 1440) + 1440) % 1440;
     if (ra && m < parseClock(ra.to) - 10 && g.P.lastRation !== Math.floor(g.t / 1440)) {
       step(() => { g.at = "gf_rooster"; pass(g, Math.max(1, parseClock(ra.from) - m)); });
-      if (!g.ended && present(g).some((w) => w.npc === "npc_bram")) step(() => { g.P.lastRation = Math.floor(g.t / 1440); g.P.status.hunger = clamp(g.P.status.hunger - 1, 0, 4); pass(g, 15); });
+      if (!g.ended && present(g).some((w) => w.npc === "npc_bram")) step(() => { eatRation(g); pass(g, 15); });
     }
     // 2) 통금 전에 막사로, 자고, 점호 — 깨어난 아침에 표지를 남긴다 (되돌리기)
     if (!g.ended && !g.story) {
@@ -2177,10 +2205,8 @@ const DO = {
     pass(g, 5);
   },
   ration(g, _, res) {
-    g.P.lastRation = Math.floor(g.t / 1440);
-    const f = g.content.game.economy.ration.food || {};
-    g.P.status.hunger = clamp(g.P.status.hunger + (f.hunger || -1), 0, 4);
-    res.notes.push("귀리죽 한 국자. 묽다. 그래도 따뜻하다");
+    const full = eatRation(g);
+    res.notes.push(full ? "귀리죽 한 국자. 묽다. 그래도 따뜻하다" : "귀리죽이 반 국자다. 솥 바닥을 긁는 소리. 배가 차지 않는다");
     pass(g, 15);
   },
   leave(g, _, res) { res.ending = true; res.convoEnded = g.convo; g.convo = null; pass(g, 1); },
@@ -2656,7 +2682,7 @@ function priceOf(g, n, gid) {
 function rollcallSearch(g, day) {
   // 움막 12호의 금을 본 감독은 다음 점호에 반드시 뒤진다
   const marked = g.S.vars.hut12_marks_seen && !g.P.hut12Searched; if (marked) g.P.hut12Searched = true;
-  const searched = marked || (g.run.loop === 1 && day === Math.floor(START / 1440) + 1 ? true : hash(g.seed, "search", day) < 1 / 3);
+  const searched = marked || (g.run.loop === 1 && day === Math.floor(START / 1440) + 1 ? true : hash(g.seed, "search", day) < (g.S.vars.house_search ? 0.5 : 1 / 3));   // 겨울의 수색: 둘에 하나
   if (!searched) return;
   const found = [];
   for (const it of mine(g)) {

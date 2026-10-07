@@ -1,0 +1,36 @@
+# 월드 클락 (03 §2.2): 세상이 마을을 찾아온다. 〔고정〕은 매 회차 같은 날, 〔흐름〕은 조건이 맞을 때, 〔표류〕는 회차마다 다른 얼굴.
+# effects: 목표 행동 문법 (var·log·kill…). engine: 엔진이 읽는 깃발 (ration_cut · house_search · requisition · plague)
+clocks:
+  - id: clk_refugees
+    kind: 흐름
+    date: "312-10-05"
+    text: "북쪽에서 거인 노예 탈주자들이 내려온다는 말이 돈다. 배급 솥이 하나 줄었다. 바르그 순찰이 늘었다."
+    effects: ["var ration_cut = true", "var patrol_level += 1", "log 북방 탈주자 유입 — 배급이 줄고 바르그 순찰이 늘었다"]
+  - id: clk_house_search
+    kind: 흐름
+    date: "312-11-15"
+    text: "집집마다 문이 열린다. 탈주자를 숨긴 자는 광장에서 맞는다 — 겨울의 수색."
+    effects: ["var house_search = true", "log 탈주자 은닉 수색이 시작됐다 — 집집마다"]
+  - id: clk_baron_side
+    kind: 고정
+    date: "313-03-10"
+    text: "레이번 성채에 바알카르의 전령이 다녀갔다. 남작이 누구 편에 설지 정했다는 말이 돈다."
+    effects: ["if var faction_kaspar >= 30: var baron_side = kaspar ; log 레이번 남작이 카스파르 반비늘 쪽으로 기울었다", "else: var baron_side = aurax ; log 레이번 남작이 아우락스 쪽에 섰다"]
+  - id: clk_conscription
+    kind: 고정
+    date: "313-05-15"
+    text: "맹약회의의 포고. 마을 인간 다섯에 하나 — 군용 짐꾼과 방패병으로."
+    effects: ["var conscription = true", "log 징발 포고 — 회색여울 인간 다섯에 하나"]
+    scene: conscription_decree
+  - id: clk_requisition
+    kind: 흐름
+    date: "313-08-20"
+    when: ["var varskar_dead == true"]
+    text: "계승 전쟁의 군대가 쇠다리를 건넌다. 곡식 자루와 사람이 함께 실려 간다."
+    effects: ["var requisition = true", "log 군대의 징발 — 곡식과 사람이 실려 갔다"]
+  - id: clk_plague
+    kind: 표류
+    date: "314-02-10"
+    text: "재열병. 첫 환자는 — 회차마다 다르다. 이번에는 그 사람이다."
+    effects: ["var plague = true", "log 재열병이 돌기 시작했다"]
+    engine: plague
