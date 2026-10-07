@@ -10,6 +10,7 @@ vars:
   cg_looked_away: false       # 카스파르가 북문 망루를 비우고 굴 쪽을 보지 않았다
   cg_report_filed: false      # 레아가 방관 보고서를 우편함에 넣었다
   cg_report_collected: false  # 멜리산드의 전령이 보고서를 가져갔다
+  cg_report_stopped: false   # 플레이어가 보고서를 막았다 (레아를 설득·훔침·바꿔치기)
   cg_conscripts: 0            # 푸른월 짐꾼 징발 (정본 30)
   cg_jotun_battle: false      # 서리왕 남침 — 까마귀 문 전투
 agendas:
@@ -40,7 +41,7 @@ agendas:
     npc: npc_lea
     goal: "'카스파르가 탈주자를 방관한다'는 보고서를 용주 역참 우편함에 넣는다 (정본 10.25)"
     every: once
-    when: ["alive npc_lea", "var cg_looked_away == true", "date >= 312-10-25"]
+    when: ["alive npc_lea", "var cg_looked_away == true", "var cg_report_stopped != true", "date >= 312-10-25"]
     at: {place: dp_mailbox, from: "12:00", to: "14:00", doing: 방관 보고서를 우편함에 넣는다 — 은밀랍 봉인}
     effects: ["var cg_report_filed = true", "log 레아가 '카스파르가 탈주자를 방관한다'는 보고서를 우편함에 넣었다"]
   - id: ag_cg_ismel_collect

@@ -7,6 +7,7 @@ vars:
   em_cradle_dead: 0            # 은비늘 요람에서 나오지 못한 사람
   em_crackdown: false
   em_rising: false
+  em_nit_bought: false
 agendas:
   - id: ag_em_quota
     npc: npc_hadrian_ashjaw
@@ -43,7 +44,7 @@ agendas:
     goal: 조짐이 차면 붉은 교대 감독반장이 냄새를 맡는다 — 밀고는 그의 승진이다
     every: daily
     chance: 0.15
-    when: ["alive npc_nit_threetail", "var em_signs >= 6", "var em_crackdown == false"]
+    when: ["alive npc_nit_threetail", "var em_signs >= 6", "var em_crackdown == false", "var em_nit_bought != true"]
     at: {place: em_office_chief, from: "21:00", to: "21:30", doing: 총감 사무실 문을 두드린다}
     effects: ["var em_crackdown = true", "log 밀고 — 9번 갱 막장의 모임이 총감에게 새어 나갔다"]
   - id: ag_em_crackdown

@@ -1,0 +1,22 @@
+# 회색여울 밖의 맹세 (16 §5.2) — 각 거점의 정본 사건 하나씩
+oaths:
+  - id: oath_cg_report
+    line: 카스파르의 그 밤은 바알카르의 책상에 오르지 않는다.
+    offer_when: ["var cg_looked_away == true", "var cg_drain_seen == true"]
+    deadline: "312-10-27 00:00"
+    broken: ["var cg_report_collected == true"]
+  - id: oath_noeul
+    line: 노을은 계단에서 사라지지 않는다.
+    offer_when: ["var bk_noeul_seen == true"]
+    deadline: "312-11-02 00:00"
+    broken: ["var bk_noeul_protected != true"]
+  - id: oath_caleb
+    line: 9번 갱조는 사슬 구덩이에 들어가지 않는다.
+    offer_when: ["var em_handprint_done == true"]
+    deadline: "313-01-30 00:00"
+    broken: ["var em_crackdown == true"]
+  - id: oath_lumen
+    line: 넷째 장작은 타지 않는다.
+    offer_when: ["var lm_list_copy == true"]
+    deadline: "312-12-13 00:00"
+    broken: ["var lm_pyre4 == true"]

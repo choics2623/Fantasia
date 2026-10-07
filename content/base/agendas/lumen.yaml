@@ -4,6 +4,7 @@
 vars:
   lm_impure: 26                # 정화청의 '불순한 자' 목록 (9.17·10.8 두 번의 장작 분량이 이미 있다)
   lm_burned: 0
+  lm_pyre4: false
   lm_tribute: 40               # 녹테른 공물 명단
   lm_alberic_escaped: false
   lm_hp_health: 6              # 대사제의 몸
@@ -46,7 +47,7 @@ agendas:
     every: once
     when: ["alive npc_mateus", "var lm_impure >= 18", "date >= 312-12-12"]
     at: {place: lm_pyre_court, from: "15:00", to: "18:00", doing: 정화 — 장작 앞 의자에 앉는다}
-    effects: ["var lm_burned += 18", "var lm_impure -= 18", "log 루멘의 정화 — 장작 18 (모두 {lm_burned})"]
+    effects: ["var lm_burned += 18", "var lm_impure -= 18", "var lm_pyre4 = true", "log 루멘의 정화 — 장작 18 (모두 {lm_burned})"]
   - id: ag_lm_double_tribute
     npc: npc_mateus
     goal: 알베릭이 사라지면 공물 명단을 두 배로 — 본보기

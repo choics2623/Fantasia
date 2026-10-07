@@ -1116,6 +1116,7 @@ const TRACE_TEXT = {
   hunger: { name: "빈 속", ink: "배가 꼬인다. 아니다 — 이 저녁엔 빵이 나온다.", why: "빈 속이 무엇인지 안다." },
   water: { name: "물이 차다", ink: "물이 차다. 가슴 위의 발.", why: "물이 차다. 너는 그걸 안다." },
   teeth: { name: "목덜미", ink: "목덜미가 가렵다. 긁으면 손톱 밑에 아무것도 없다.", why: "목덜미가 기억한다." },
+  fall: { name: "발밑", ink: "발밑이 꺼지는 것 같다. 돌바닥은 그대로다.", why: "발이 먼저 기억한다. 여기서 떨어졌다." },
   spear: { name: "옆구리", ink: "옆구리가 시리다. 손을 대 보면 따뜻하다.", why: "옆구리가 기억한다." },
 };
 const TAGS = {
@@ -1427,6 +1428,7 @@ function storyEffect(g, e, res) {
   const parts = String(e).split(/\s+/), k = parts[0], rest = String(e).slice(k.length + 1);
   if (k === "learn") learn(g, parts[1], "그 저녁");
   else if (k === "rel") { const [, n, field, v] = parts; bumpRel(g, n, field === "like" ? Number(v) : 0, field === "trust" ? Number(v) : 0); }
+  else if (k === "var" && (parts[2] === "+=" || parts[2] === "-=")) g.A.doEffect(e, g.t);
   else if (k === "var") { const [, name, , v] = parts; g.S.vars[name] = v === "true" ? true : v === "false" ? false : isNaN(Number(v)) ? v : Number(v); }
   else if (k === "coin") g.S.purse.player = Math.max(0, g.S.purse.player + Number(parts[1]));
   else if (k === "hunger") g.P.status.hunger = clamp(g.P.status.hunger + Number(parts[1]), 0, 4);
