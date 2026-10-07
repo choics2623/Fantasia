@@ -55,11 +55,14 @@ export function repetition(beats, recent) {
   const R = recent.map((x) => bigrams(x));
   return beats.map((b) => { const B = bigrams(b); return R.reduce((m, r) => Math.max(m, jaccard(B, r)), 0); });
 }
-const STOP = new Set(["당신", "당신은", "당신의", "당신을", "그리고", "그러나", "하지만", "있다", "없다", "한다", "했다", "것이", "것을", "그는", "그가", "그의", "그녀", "다시", "아직", "이미", "조금", "같은", "하고", "듯이", "위에", "아래", "앞에", "뒤에", "모두"]);
+const STOP = new Set(["너는", "너의", "너를", "네가", "너에게", "너도", "당신", "당신은", "당신의", "당신을", "그리고", "그러나", "하지만", "있다", "없다", "한다", "했다", "것이", "것을", "그는", "그가", "그의", "그녀", "다시", "아직", "이미", "조금", "같은", "하고", "듯이", "위에", "아래", "앞에", "뒤에", "모두"]);
+// 낱말의 줄기: 조사·어미 꼬리를 떼어 '짤랑'·'짤랑하고'·'짤랑거린다'를 한 낱말로 센다
+const TAIL = /(에서|으로|하고|하며|처럼|까지|부터|거린다|거리고|거리며|이다|이고|한다|했다|하게|하다|이|가|은|는|을|를|의|에|로|와|과|도|만)$/;
+const stemOf = (w) => (w.length >= 3 ? w.replace(TAIL, "") : w);
 export function crutches(texts, { min = 3, top = 6 } = {}) {
   const words = new Map(), openers = new Map();
   for (const t of texts) {
-    for (const w of String(t).split(/[\s"“”'‘’.,!?…—\-()]+/)) if (w.length >= 2 && !STOP.has(w)) words.set(w, (words.get(w) || 0) + 1);
+    for (const w0 of String(t).split(/[\s"“”'‘’.,!?…—\-()]+/)) { if (w0.length < 2 || STOP.has(w0)) continue; const w = stemOf(w0); if (w.length >= 2 && !STOP.has(w)) words.set(w, (words.get(w) || 0) + 1); }
     for (const s of String(t).split(/(?<=[.!?…])\s+/)) { const o = s.trim().slice(0, 6); if (o.length >= 4) openers.set(o, (openers.get(o) || 0) + 1); }
   }
   return {

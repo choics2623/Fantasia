@@ -30,6 +30,7 @@ origins:
     status: {hunger: 2, pain: 30, fatigue: 20, fear: 0, stress: 30}
     train: 5
     coin: 3
+    rel: {npc_gerda: [70, 60], npc_kit: [85, 70], npc_toby: [20, 15]}   # 어머니·동생·옆 움막 아이 — 셋째를 이미 안다
     duty:
       rollcall: true
       meal: ration
@@ -69,7 +70,7 @@ origins:
     coin: 2
     items:
       - {id: servant_tag, name: 레이번가 하인 목패, tags: [신분], slot: 허리, desc: 성채 하인의 목패. 심부름이면 성채 문을 지난다 — 통행증은 아니다}
-    rel: {npc_sara: [15, 20], npc_martha: [0, -5], npc_bram: [5, 5]}
+    rel: {npc_sara: [15, 20], npc_martha: [0, -5], npc_bram: [5, 5], npc_gerda: [70, 60], npc_kit: [85, 70]}
     knows: [fact_gf_godric_debt]
     access: {gf_keep: public, gf_keep_servants: public, gf_keep_hall: public, gf_keep_store: public}
     duty:
@@ -110,7 +111,7 @@ origins:
     coin: 4
     items:
       - {gid: hook, desc: 브란 몰래 두드려 둔 세 갈래 쇠갈고리. 밧줄만 있으면 담을 넘는다}
-    rel: {npc_bran: [20, 30], npc_gunnar: [5, 5]}
+    rel: {npc_bran: [20, 30], npc_gunnar: [5, 5], npc_gerda: [70, 60], npc_kit: [85, 70]}
     knows: [fact_gf_bran_spearheads, fact_gf_bran_greta_taken]
     duty:
       rollcall: true
@@ -152,7 +153,7 @@ origins:
     coin: 1
     items:
       - {gid: candle, desc: 제단 등잔에서 남은 짐승 기름 양초. 납골실에 들 때 쓴다}
-    rel: {npc_osric: [25, 30], npc_elsa: [5, 5], npc_johan: [5, 5]}
+    rel: {npc_osric: [25, 30], npc_elsa: [5, 5], npc_johan: [5, 5], npc_gerda: [70, 60], npc_kit: [85, 70]}
     knows: [fact_gf_osric_teaches_letters]
     places: [gf_chapel_ossuary]
     duty:
@@ -195,7 +196,7 @@ origins:
     items:
       - {id: flint_knife, name: 부싯돌 칼, tags: [무기, 날붙이, 숨길수있음], slot: 소매, quality: 조악, condition: 70, illegal: true, value: 2, desc: 부싯돌을 깨서 사슴뿔에 묶은 날. 인간이 지니면 사형감}
       - {id: dried_roots, name: 말린 쥐뿌리 한 줌, tags: [음식], slot: 품, eat: {hunger: -1}, value: 0, desc: 언덕 비탈에서 캔 쓴 뿌리. 배는 찬다}
-    rel: {npc_sigrid: [15, 25], npc_fayne: [10, 15], npc_znik: [-15, -20]}
+    rel: {npc_sigrid: [15, 25], npc_fayne: [10, 15], npc_znik: [-15, -20], npc_gerda: [70, 60], npc_kit: [85, 70]}
     knows: [fact_gf_wolf_den, fact_gf_sigrid_volk_escape]
     places: [hungry_hill__wolf_den]
     vars: {player_fugitive: true}

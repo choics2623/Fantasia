@@ -5,7 +5,7 @@ export function josa(text) {
     if (pair === "(으)로") return ch + q + (batchim && code % 28 !== 8 ? "으로" : "로");   // ㄹ 받침은 '로'
     if (pair === "(이)라" || pair === "(이)다") return ch + q + (batchim ? "이" : "") + pair.slice(-1);   // 코라는 · 칠번이라는
     const [a, b] = pair.replace(")", "").split("("); return ch + q + (batchim ? a : b);
-  });
+  }).replace(/(?<![가-힣])너가(?![가-힣])/g, "네가");   // 주인공('너')이 주어일 때는 '네가'
 }
 
 // 돈 (WORLD_BIBLE §7.1): 속은 동화 단위 하나. 보일 때는 금화·은화·동화 — 금화 1 = 은화 20 = 동화 240. 세는 말은 '닢'

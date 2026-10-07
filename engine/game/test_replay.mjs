@@ -10,7 +10,7 @@ const R = () => { rng = (rng * 1103515245 + 12345) % 2147483648; return rng / 21
 // 죽음을 덜 고르는 플레이어: 위험한 행동은 가끔만 — 더 오래 살아야 물건과 장면이 쌓인다
 const pickOpt = (opts) => { const safe = opts.filter((o) => !o.risk && !/^attack:|^fight_/.test(o.id)); const pool = safe.length && R() < 0.85 ? safe : opts; return pool[Math.floor(R() * pool.length)]; };
 let steps = 0, regress = 0, items = 0;
-for (let s = 0; s < 4; s++) {
+for (let s = 0; s < 6; s++) {   // 여섯 판 — 무작위 길이 물건을 줍는 판을 하나는 지나게
   let g = G.boot(C, G.newRun({ seed: 300 + s })), bad = null;
   for (let i = 0; i < 160 && !bad; i++) {
     if (g.ended) { const nr = G.regressRun(g); if (!nr) break; g = G.boot(C, nr); regress++; continue; }

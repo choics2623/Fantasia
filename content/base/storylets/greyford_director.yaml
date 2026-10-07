@@ -72,7 +72,7 @@ storylets:
     family: true
     trigger: {director: true, category: bond, at: gf_river_huts, night: true, chance: 0.3, when: ["alive npc_kit"]}
     text: |
-      키트가 손가락으로 흙바닥에 무언가를 그린다. "형(누나), 이거 뭐야? 배식대에 있던 거." 레이번. 그 글자다.
+      키트가 손가락으로 흙바닥에 무언가를 그린다. "{sibling}, 이거 뭐야? 배식대에 있던 거." 레이번. 그 글자다.
     choices:
       - id: teach
         label: 손을 덮어 지운다 — 그리고 귓속말로 한 글자만

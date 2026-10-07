@@ -77,9 +77,18 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     for (const id of found) if (!H.has(id)) { H.add(id); added = true; }
     if (added) g.run.heard = [...H];
   }
+  // 독자에게 '소개된' 사람: 서술이든 대본이든 글에 이름이 나온 사람 — 다음부터 서술은 이름만 쓴다 (화면용 기록, 재생에 쓰지 않는다)
+  function markIntroduced(texts) {
+    const T = texts.filter(Boolean); if (!T.length) return;
+    const text = T.join(" ");
+    // 지금 이 자리의 사람 + 글에 이름이 나온 사람 (아직 이 자리에 오지 않았어도 — 예: 대본이 먼저 '징세관 헨릭'을 소개한다)
+    const ids = new Set(G.view(g).people.filter((p) => text.includes(p.name)).map((p) => p.id));
+    for (const id of X.heardIn(g, T)) if (id.startsWith("npc:")) ids.add(id.slice(4));
+    if ([...ids].some((id) => !(g.run.introduced || []).includes(id))) g.run.introduced = [...new Set([...(g.run.introduced || []), ...ids])];
+  }
   // 한 박자가 끝나면: 줄기에 한 줄, 서술 꼬리에 박자들, 대화가 끝났으면 그 사람의 지난 대화 요지
   function remember(res, beats, conv = null) {
-    noteHeard(beats);
+    noteHeard(beats); markIntroduced(beats);
     if (res) {
       const v = G.view(g);
       const what = String(res.text || res.label || "").replace(/\s*\(\d+분\)|\s*— 몰래/g, "").slice(0, 60);
@@ -96,9 +105,11 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     }
   }
 
-  function needsLLM(res, beforePeople) {
+  function needsLLM(res, beforePeople, free = false) {
     if (!res) return !g.story;                       // 대본 장면은 손으로 쓴 글 그대로 — LLM을 부르지 않는다
     if (res.storyText != null || g.story) return false;
+    if (free) return true;                           // 직접 쓴 말은 그 말에 답하는 서술로 — 엔진의 뼈대 문장으로 덮지 않는다
+    if (/^(oath|ritual):/.test(res.id)) return true; // 맹세·의식은 장면이다 — 기록 한 줄로 끝내지 않는다
     if (g.convo || res.convoEnded) return true;
     if (res.id.startsWith("attack:") || res.id.startsWith("loot:") || res.id.startsWith("fight_") || g.fight || res.id.startsWith("op_")) return true;
     if (res.feed?.some((f) => !INK.has(f.kind))) return true;
@@ -114,10 +125,12 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       const parts = [res.storyText || "", ...(res.feed || []).filter((f) => f.kind === "story").map((f) => f.text)];
       return parts.join("\n\n").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean);
     }
-    const v = G.view(g);
-    const b = [josa(`${res.label.replace(/\s*\(\d+분\)|\s*— 몰래/g, "")}. ${v.hm}${v.night ? ", 어둡다" : ""}${v.rain ? ", 비가 온다" : ""}.`)];
-    if (!v.people.length) b.push(`${v.place.name}에는 아무도 없다.`);
-    for (const n of res.notes) b.push(n);
+    // 그 밖의 가벼운 행동(줍기·숨기기·뒤지기·빈 곳으로 가기): 결과만 한두 줄 — 고른 말·시각·날씨는 화면이 이미 보인다
+    const v = G.view(g), dot = (x) => { const t = String(x).trim(); return /[.!?…"”'’)]$/.test(t) ? t : `${t}.`; };
+    const b = [];
+    if (res.kind === "move") b.push(dot(`${v.place.name}${!v.people.length && !v.bodies.length ? ". 아무도 없다" : ""}`));
+    for (const n of res.notes || []) b.push(dot(josa(n)));
+    if (!b.length) b.push(dot(josa(res.label.replace(/\s*\(\d+분\)|\s*— 몰래/g, ""))));
     return b;
   }
 
@@ -173,7 +186,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
         const conv0 = P.res?.convoEnded ? { npc: P.res.convoEnded.npc, lines: transcript.slice(-(P.res.convoEnded.turns * 2 + 6)) } : null;
         remember(P.res, n.beats, conv0);
-        if (conv0) { enqueue(conv0.npc, conv0.lines); transcript = []; }
+        if (conv0) { enqueue(conv0.npc, conv0.lines); transcript = transcript.slice(-6); }   // 대화의 기록은 기록관에게, 서술의 앞뒤는 남긴다
         save();
         return payload(P.res, n, [...debug, { kind: "renarrate" }]);
       } catch (e) {
@@ -204,10 +217,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         res.text = text; acted = res;
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
         opts = G.options(g); actedOpts = opts;
-        if (!needsLLM(res, beforePeople)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, []); noteHeard(beats); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+        if (!needsLLM(res, beforePeople, !!input.free)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, beats); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       } else {
         opts = G.options(g);
-        if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); noteHeard(beats); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+        if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); noteHeard(beats); markIntroduced(beats); if (!transcript.length) transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       }
       const n = await narrate(res, opts, { onText, free: input?.free, memories: false });
       if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
@@ -216,7 +229,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       remember(res, n.beats, conv);
       if (conv) {
         enqueue(conv.npc, conv.lines);   // 기록관에게 — 기다리지 않는다
-        transcript = [];
+        transcript = transcript.slice(-6);   // 대화가 끝나도 바로 앞의 서술은 남긴다 — 다음 박자가 이어 쓰게
       }
       save();
       return payload(res, n, debug);

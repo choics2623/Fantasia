@@ -468,7 +468,7 @@ function bumpRel(g, n, like = 0, trust = 0) {
   g.S.rel.set(`${n}>player`, r);
 }
 const cardOf = (g, n) => g.content.cards[n] || { id: n, name: n };
-const nameOf = (g, n) => (n === "player" ? "당신" : cardOf(g, n).name || n);
+const nameOf = (g, n) => (n === "player" ? "너" : cardOf(g, n).name || n);   // 서술은 주인공을 '너'라고 부른다
 const placeName = (g, id) => g.W.loc.get(id)?.name || id;
 const profOf = (g, n) => ({ perception: 50, nerve: 50, ...(g.content.game.sim.defaults_by_settlement?.[g.P.settlement] || {}), ...(g.content.game.sim.profiles[n] || {}) });
 const knowsFact = (g, f) => g.P.knows.has(f) || g.run.carry.future.includes(f);
@@ -2159,7 +2159,7 @@ function manhunt(g, next) {
   const p = (hidden ? 0.08 : g.at === homeOf(g) ? 0.7 : day ? 0.45 : 0.15) * ((g.P.ladder?.[g.P.settlement] || 0) >= 3 ? 1.4 : 1) * TV(g, "sixth_sense", [1, 0.75, 0.55, 0.4]) * TV(g, "battle_sense", [1, 0.85, 0.7, 0.6]);   // 수색령: 집집마다 · 육감·전장 감각이 먼저 안다
   if (hash(g.seed, "hunt", next) < p) {
     const by = [...w.by].find((n) => !g.S.dead.has(n) && g.W.where(n, next)?.settlement === g.P.settlement) || authorityOf(g);
-    g.ended = { kind: "captured", why: `${by ? `${nameOf(g, by)}의 사람들이` : "경비대가"} 당신을 찾아냈다 — ${w.reasons.slice(-1)[0] || ""}`, t: next, trace: { id: "rope", ...(by ? { npc: by } : {}) } };
+    g.ended = { kind: "captured", why: `${by ? `${nameOf(g, by)}의 사람들이` : "경비대가"} 너를 찾아냈다 — ${w.reasons.slice(-1)[0] || ""}`, t: next, trace: { id: "rope", ...(by ? { npc: by } : {}) } };
     g.feed.push({ kind: "rule", text: g.ended.why });
   }
 }
@@ -2172,7 +2172,7 @@ function checkDanger(g) {
   const anyGuard = here.find((n) => profOf(g, n).role === "authority" && g.L.knowsAbout(n, "suspect", "player"));
   const who = hunter || anyGuard;
   if (who && w.heat >= 3) {
-    g.ended = { kind: "captured", why: `${nameOf(g, who)}이(가) 당신을 붙잡았다 — ${w.reasons.slice(-1)[0] || ""}`, t: g.t, trace: { id: "rope", npc: who } };
+    g.ended = { kind: "captured", why: `${nameOf(g, who)}이(가) 너를 붙잡았다 — ${w.reasons.slice(-1)[0] || ""}`, t: g.t, trace: { id: "rope", npc: who } };
     g.feed.push({ kind: "rule", text: g.ended.why });
   }
 }
@@ -2276,6 +2276,8 @@ function windowTrigger(g, t = g.t) {
 // 이름: 첫 회차에 받은 이름은 이 회차의 상태(P)에, 회귀할 때 carry로 넘어간다 (재생해도 이름 입력은 기록에서 다시 온다)
 const trueName = (g) => g.P.trueName || g.run.carry.trueName || buildOf(g)?.name || null;
 const sibling = (g) => g.P.sibling || g.run.carry.sibling || buildOf(g)?.sibling || "형";
+// 사람들이 주인공을 부르는 말의 재료 (서술 프롬프트가 카드의 {player.형누나}·{진짜 이름}을 채운다)
+export const addressOf = (g) => ({ call: callName(g), sibling: sibling(g), name: trueName(g) });
 // 문맹과 모르는 말 (19 §4): {read|글} · {lang:용언|말} — 읽고쓰기·언어 스킬만큼만 보인다. 배우면 같은 글이 풀려 보인다
 const readMask = (g, t) => {
   const r = skill(g, "읽고쓰기");
@@ -3766,7 +3768,7 @@ function rollcallSearch(g, day) {
   }
   const coin = g.S.purse.player;
   const rc = rcOf(g) || {}, by = rcBy(g), byName = by ? displayName(g, by) : "감독";
-  let text = rc.frisk_text || "크릭 감독이 당신의 옷과 부츠를 뒤진다.";   // 정본: 즈닉의 크릭 감독
+  let text = rc.frisk_text || "크릭 감독이 네 옷과 부츠를 뒤진다.";   // 정본: 즈닉의 크릭 감독
   if (coin >= 12 && hash(g.seed, "frisk-coin", day) >= prob(skill(g, "손재주") + 8, 18)) {
     g.S.purse.player = 0; if (by) g.S.purse[by] = (g.S.purse[by] || 0) + coin;
     text += josa(` ${coinText(coin)}이 나왔다 — 인간이 은화를? ${byName}이(가) 가져가고 채찍 다섯.`);
