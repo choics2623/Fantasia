@@ -80,6 +80,12 @@ const server = http.createServer(async (req, res) => {
       if (url.searchParams.get("key") === ACCESS_KEY) headers["set-cookie"] = `fkey=${ACCESS_KEY}; Path=/; Max-Age=31536000; SameSite=Strict`;
       res.writeHead(200, headers); return res.end(await readFile(join(HERE, "index.html")));
     }
+    // 삽화 (19 §9 — tools/woodcut.py가 만든 목판화 SVG)
+    if (req.method === "GET" && /^\/art\/[\w-]+\.svg$/.test(url.pathname)) {
+      const f = join(ROOT, "assets/illustrations", url.pathname.slice(5));
+      if (!existsSync(f)) { res.writeHead(404); return res.end(); }
+      res.writeHead(200, { "content-type": "image/svg+xml", "cache-control": "max-age=86400" }); return res.end(await readFile(f));
+    }
     if (req.method === "POST" && url.pathname.startsWith("/api/")) {
       let raw = ""; for await (const c of req) raw += c;
       const body = raw ? JSON.parse(raw) : {};

@@ -62,6 +62,8 @@ body { font-family: var(--body); font-size: 17px; line-height: 1.75; padding-bot
 .veil .rec.ash, .veil .fold.ash { opacity: 0; filter: blur(6px); }
 .veil .fold { height: 40vh; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; font-family: var(--ui); font-size: .9rem; color: #b7ae9f; letter-spacing: .04em; mask-image: linear-gradient(transparent, #000 40%); -webkit-mask-image: linear-gradient(transparent, #000 40%); }
 .veil .fold div::after { content: ""; display: block; height: 1px; margin: 6px auto 0; width: 60%; border-top: 1px dotted #3a352e; }
+.veil .plate { position: absolute; inset: 0; margin: auto; max-height: 72vh; max-width: 88vw; opacity: 0; transition: opacity 1.6s ease; pointer-events: none; filter: grayscale(.2); }
+.veil .plate.on { opacity: .22; }
 .veil .god { position: absolute; bottom: calc(14vh + env(safe-area-inset-bottom, 0px)); font-size: .78rem; color: #6d665b; letter-spacing: .06em; }
 .veil .smell p { margin: 0 0 14px; font-size: 1.3rem; color: #d9cfbd; }
 .veil .smell .inner { font-family: var(--ui); font-style: italic; font-size: .95rem; color: #8d8577; }
@@ -380,12 +382,15 @@ async function deathSequence(E) {
   }
   const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
   rec.classList.add("ash"); await nap(650); rec.remove();
+  // 삽화 (19 §9): 접힘 뒤에 '시간의 접힘' 목판화가 희미하게, 빵 냄새에는 배급 줄
+  const plate = (name) => { const im = document.createElement("img"); im.className = "plate"; im.alt = ""; im.src = `/art/${name}.svg`; veil.appendChild(im); requestAnimationFrame(() => im.classList.add("on")); return im; };
+  const foldArt = plate("03_time_fold");
   const fold = document.createElement("div"); fold.className = "fold"; veil.appendChild(fold);
   let gap = E.loop === 1 ? 220 : 120;
   // 진짜 죽음: 접힘이 시작했다가 멈춘다. 날짜가 두세 줄 오르다 재가 된다. 빵 냄새는 오지 않는다
   if (E.final) {
     for (const dt of E.record.rewind.slice(0, 3)) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); buzz(HAPTIC.H2); await nap(260); }
-    await nap(700); fold.classList.add("ash"); await nap(900); fold.remove(); await nap(1500);
+    await nap(700); fold.classList.add("ash"); foldArt.classList.remove("on"); await nap(900); fold.remove(); foldArt.remove(); await nap(1500);
     const d = await next;
     const ep = document.createElement("div"); ep.className = "rec"; ep.innerHTML = (d.epilogue || E.epilogue || []).map((x) => `<p>${esc(x)}</p>`).join("") + `<p style="margin-top:22px;color:#5e574c">시대가 끝났다.</p>`;
     const nb = document.createElement("button"); nb.className = "ui"; nb.textContent = "새 시대 — 새 판"; nb.onclick = async () => { veil.hidden = true; document.body.classList.remove("ashing"); deathRunning = false; $("story").innerHTML = ""; currentTurn = null; show(await call("/api/new", {})); };
@@ -393,13 +398,13 @@ async function deathSequence(E) {
     return;
   }
   for (const dt of E.record.rewind) { const x = document.createElement("div"); x.textContent = dt; fold.appendChild(x); while (fold.children.length > 9) fold.firstChild.remove(); buzz(HAPTIC.H2); await nap(gap); gap = Math.max(40, gap * 0.86); }
-  await nap(500); fold.classList.add("ash"); await nap(400); fold.remove();
-  await nap(1500);
+  await nap(500); fold.classList.add("ash"); foldArt.classList.remove("on"); await nap(400); fold.remove(); setTimeout(() => foldArt.remove(), 1700);
+  await nap(1500);   // 정적 — 그림도 소리도 없다
   let god = null;
   if (E.firstDeath) { god = document.createElement("div"); god.className = "god"; god.textContent = "너희는 끝나지 않을 것이다."; veil.appendChild(god); await nap(2500); }
   const n = E.loop + 1;
   const sm = document.createElement("div"); sm.className = "smell";
-  sm.innerHTML = `<p>${n >= 12 ? "젖은 재. 그 위에, 빵 냄새." : n >= 4 ? "빵 냄새. 그 밑에, 젖은 재." : "빵 냄새."}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3);
+  sm.innerHTML = `<p>${n >= 12 ? "젖은 재. 그 위에, 빵 냄새." : n >= 4 ? "빵 냄새. 그 밑에, 젖은 재." : "빵 냄새."}</p>`; veil.appendChild(sm); buzz(HAPTIC.H3); plate("01_ration_line");
   await nap(800); sm.insertAdjacentHTML("beforeend", `<p class="inner">나는 — 이 냄새를 안다.</p>`);
   if (god) setTimeout(() => god.remove(), 1000);
   const d = await next; await tapOr(veil);
