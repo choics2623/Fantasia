@@ -6,11 +6,19 @@
 //   - 자유 입력은 해석 호출이 하나 더 든다
 import * as G from "./game.mjs";
 import { systemFor, turnPrompt, parseTurn, validateTurn, interpretPrompt, parseInterpret, mockTurn, RECORDER_SYSTEM, recorderPrompt, parseRecords } from "./prompts.mjs";
+import { similar } from "./recall.mjs";
 import * as CR from "./creation.mjs";
 import * as LG from "./ledger.mjs";
 import { fmt } from "../sim/calendar.mjs";
 import { josa } from "../sim/text.mjs";
 import * as X from "./codex.mjs";
+// 대화의 마지막 대사: 서술 속 따옴표 말 가운데 끝의 것 — 주인공이 한 말을 서술이 되받은 것은 빼고
+function lastQuote(lines) {
+  const mine = lines.filter((x) => x.who === "player").map((x) => x.text);
+  const qs = lines.filter((x) => x.who === "narr").flatMap((x) => [...String(x.text).matchAll(/["“]([^"”]{2,90})["”]/g)].map((m) => m[1].trim()));
+  for (let i = qs.length - 1; i >= 0; i--) if (!mine.some((p) => p.includes(qs[i]) || similar(p, qs[i]) >= 0.5)) return qs[i].slice(0, 80);
+  return null;
+}
 
 const INK = new Set(["ink", "drift", "grow", "voice", "dayend", "echo", "recap"]);   // 기억 잉크 — 엔진이 쓴 줄을 화면이 그대로 보인다 (LLM이 다시 쓰지 않는다)
 // provider: 서술(플레이어가 읽는 글 — 좋은 모델), fast: 자유 입력 해석(구조화 — 빠른 모델), recorder: 기록관(뒤에서 — 빠른 모델)
@@ -25,7 +33,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
   let transcript = g.run.transcript || [];
   // 서술의 기억 (화면용 — 재생에 쓰지 않는다): 줄기(오늘 한 일), 사람마다 지난 대화의 요지, 최근 서술의 꼬리(되풀이 검사)
   let thread = g.run.thread || [], talkLog = g.run.talkLog || {}, tail = g.run.tail || [];
-  const resetMemory = (run) => { thread = run?.thread || []; talkLog = run?.talkLog || {}; tail = run?.tail || []; };
+  // 대화가 열린 자리 (transcript 번호): 기록관에게는 그 대화만 준다 — 끝난 대화의 꼬리를 남겨 두므로, 앞 사람과의 말이 섞이지 않게
+  let convoAt = null;
+  const convLines = (ended) => { const from = convoAt != null && convoAt < transcript.length ? convoAt : Math.max(0, transcript.length - (ended.turns * 2 + 6)); convoAt = null; return transcript.slice(from); };
+  const resetMemory = (run) => { thread = run?.thread || []; talkLog = run?.talkLog || {}; tail = run?.tail || []; convoAt = null; };
   const save = () => { g.run.transcript = transcript.slice(-40); g.run.thread = thread.slice(-16); g.run.talkLog = talkLog; g.run.tail = tail.slice(-12); g.run.lastPlayedAt = Date.now(); onSave?.(waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run); };   // 서술을 기다리는 박자는 저장하지 않는다
   // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
   // 시간선: 회귀·새 판·불러오기는 새 시간선이다. 되돌리기는 그 아침 뒤의 대화만 지운다 — 지워진 시간선의 기억이 새 기록에 섞이지 않게
@@ -99,9 +110,10 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     }
     tail.push(...beats.filter(Boolean)); if (tail.length > 12) tail = tail.slice(-12);
     if (conv) {
-      const asked = conv.lines.filter((x) => x.who === "player" && !/말을 건다$|이야기를 끝낸다$/.test(x.text)).map((x) => x.text.slice(0, 40)).slice(-3);   // 여닫는 인사는 빼고
+      // 여닫는 인사는 빼고 — 선택지 글은 서술이 다시 쓰므로 행동 id로 가린다 (id가 없는 옛 기록은 글로)
+      const asked = conv.lines.filter((x) => x.who === "player" && !(x.id ? x.id === "leave" || x.id.startsWith("talk:") : /말을 건다$|이야기를 끝낸다$/.test(x.text))).map((x) => x.text.slice(0, 40)).slice(-3);
       const last = conv.lines.filter((x) => x.who === "narr").pop()?.text.slice(0, 120) || "";
-      talkLog = { ...talkLog, [conv.npc]: [...(talkLog[conv.npc] || []), { t: g.t, when: fmt(g.t).slice(7), asked, last }].slice(-3) };
+      talkLog = { ...talkLog, [conv.npc]: [...(talkLog[conv.npc] || []), { t: g.t, when: fmt(g.t).slice(7), asked, last, said: lastQuote(conv.lines) }].slice(-3) };
     }
   }
 
@@ -179,12 +191,12 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     if (waiting && sameInput(input, waiting.input)) {
       const P = waiting;
       try {
-        transcript.push({ who: "player", text: P.res.text || P.res.label });
+        transcript.push({ who: "player", text: P.res.text || P.res.label, id: P.res.id });
         const n = await narrate(P.res, P.opts, { onText, free: input?.free, memories: false });
         waiting = null;
         if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
         transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
-        const conv0 = P.res?.convoEnded ? { npc: P.res.convoEnded.npc, lines: transcript.slice(-(P.res.convoEnded.turns * 2 + 6)) } : null;
+        const conv0 = P.res?.convoEnded ? { npc: P.res.convoEnded.npc, lines: convLines(P.res.convoEnded) } : null;
         remember(P.res, n.beats, conv0);
         if (conv0) { enqueue(conv0.npc, conv0.lines); transcript = transcript.slice(-6); }   // 대화의 기록은 기록관에게, 서술의 앞뒤는 남긴다
         save();
@@ -212,9 +224,12 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         if (!before.some((o) => o.id === id)) return { error: "지금은 할 수 없는 행동", ...payload(null, null, debug) };
         preView = G.view(g);   // 서술이 실패하면 이 화면을 보인다 — 그 박자는 일어나지 않았다
         const beforePeople = peopleKey();
-        transcript.push({ who: "player", text: text || before.find((o) => o.id === id).label });
+        transcript.push({ who: "player", text: text || before.find((o) => o.id === id).label, id });
+        const wasConvo = g.convo?.npc || null;
         res = G.act(g, { id, tags, text });
         res.text = text; acted = res;
+        if ((g.convo && g.convo.npc !== wasConvo) || (res.convoEnded && res.convoEnded.npc !== wasConvo)) convoAt = keepT;   // 이 박자에 대화가 열렸다
+        else if (!g.convo && !res.convoEnded) convoAt = null;
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
         opts = G.options(g); actedOpts = opts;
         if (!needsLLM(res, beforePeople, !!input.free)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, beats); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
@@ -225,7 +240,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       const n = await narrate(res, opts, { onText, free: input?.free, memories: false });
       if (n.problems.length) debug.push({ kind: "validate", problems: n.problems });
       transcript.push(...n.beats.map((b) => ({ who: "narr", text: b })));
-      const conv = res?.convoEnded ? { npc: res.convoEnded.npc, lines: transcript.slice(-(res.convoEnded.turns * 2 + 6)) } : null;
+      const conv = res?.convoEnded ? { npc: res.convoEnded.npc, lines: convLines(res.convoEnded) } : null;
       remember(res, n.beats, conv);
       if (conv) {
         enqueue(conv.npc, conv.lines);   // 기록관에게 — 기다리지 않는다
@@ -303,7 +318,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
       if (mark == null) return { error: "되돌아갈 아침이 아직 없다" };
       cutTimeline(mark); waiting = null;
       g = G.boot(content, { ...g.run, journal: g.run.journal.slice(0, mark), rewinds: { ...(g.run.rewinds || {}), [g.run.loop]: used + 1 } });
-      transcript = []; thread = thread.filter((x) => x.at <= mark); tail = []; save(); return turn(null, o);
+      transcript = []; convoAt = null; thread = thread.filter((x) => x.at <= mark); tail = []; save(); return turn(null, o);
     },
     // 백과 (codex.mjs): 목록과 카드 하나 — 읽기만
     codex: () => X.codexIndex(g, { heard: g.run.heard || [] }),

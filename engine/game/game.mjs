@@ -3221,7 +3221,7 @@ function describeBelief(g, b) {
 }
 
 // ── 기억 (21 §6) ──
-const KINDS = ["fact_learned", "claim", "impression", "emotion", "promise", "debt", "threat", "suspicion", "learned"];
+const KINDS = ["fact_learned", "claim", "impression", "emotion", "promise", "debt", "threat", "suspicion", "learned", "unfinished"];   // unfinished: 끝나지 않은 이야기 — 다음에 만나면 이어질 것
 export const IMPRESSION_TAGS = ["영리함", "위험함", "정직함", "거짓말쟁이", "다정함", "비굴함", "용감함", "이상함", "쓸모 있음", "짐"];
 // 제안할 수 있는 것: [id, 선택지, 할 수 있나]
 const OFFERS = [
@@ -3436,7 +3436,7 @@ function addMemory(g, n, mem) {
   mem.t ??= g.t;
   // 거의 같은 기억이 이미 있으면 (같은 갈래·태그, 사흘 안, 글이 닮음) 새 줄을 쌓지 않고 그 기억을 짙게 한다 — 칸을 아끼고, 대화 카드에 같은 말이 겹치지 않게
   const dup = nearDuplicate(m.memories, mem, g.t);
-  if (dup) { dup.salience = Math.max(dup.salience || 1, mem.salience || 1); dup.t = g.t; dup.count = (dup.count || 1) + 1; }
+  if (dup) { dup.salience = Math.max(dup.salience || 1, mem.salience || 1); dup.t = Math.max(dup.t || 0, mem.t); dup.count = (dup.count || 1) + 1; }
   else m.memories.push(mem);
   if (mem.kind === "impression" && mem.tag) {
     m.impressions[mem.tag] = clamp((m.impressions[mem.tag] || 0) + (mem.delta || 0), -20, 20);
@@ -3493,6 +3493,7 @@ export function resolveWhen(text, t) {
 export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
   const norm = (s) => String(s).replace(/[\s"'“”‘’.,!?…·—-]/g, "");
   const T = norm(transcript.map((x) => x.text).join(""));
+  let fd = null; const factDigits = () => (fd ??= [...g.P.knows, ...(g.run.carry?.future || [])].map((f) => g.content.facts[f]?.text || "").join(" "));
   const accepted = [], rejected = [], perTag = {};
   for (const c of cands || []) {
     const why = [];
@@ -3503,6 +3504,12 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
     let found = ev.length >= 4 && T.includes(ev);
     for (let i = 0; !found && i + 6 <= ev.length; i += 3) if (T.includes(ev.slice(i, i + 6))) found = true;
     if (!found) why.push("대화에 근거가 없음");
+    // 기억은 '그 사람이 주인공에 대해' 적는 수첩 — 제 이름을 주어로 쓴 줄은 그 사람 자신의 설명이다 ("헨릭은 말을 끝까지 듣는다")
+    const nm = String(cardOf(g, npc).name || ""), txt = String(c.text || "");
+    const own = [...new Set([nm, nm.split(/\s+/)[0]])].filter((x) => x.length >= 2).map((x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    if (own.length && new RegExp(`^(${own.join("|")})(은|는|이|가)\\s`).test(txt)) why.push("그 사람 자신의 설명 — 주인공에 대한 기억이 아니다");
+    // 대화에 없는 숫자를 보태지 않는다 (예: 번호 '삼백십칠'을 '317세'로) — 주인공이 아는 사실의 글에 있는 숫자는 된다
+    if ((txt.match(/\d+/g) || []).some((d) => !T.includes(d) && !factDigits().includes(d))) why.push("대화에 없는 숫자");
     if (why.length) { rejected.push({ ...c, why }); continue; }
     let delta = clamp(Number(c.delta) || 0, -5, 5);
     if (c.kind === "impression") {
@@ -3512,7 +3519,14 @@ export function validateMemories(g, npc, transcript, cands, { t = g.t } = {}) {
       const room = good ? 8 - (perTag._like || 0) : bad ? 6 - (perTag._trust || 0) : 5;
       if (good || bad) { const k = good ? "_like" : "_trust"; const d = Math.sign(delta) * Math.min(Math.abs(delta), Math.max(0, room)); perTag[k] = (perTag[k] || 0) + Math.abs(d); delta = d; }
     }
-    const mem = { kind: c.kind, tag: c.tag || null, delta, text: String(c.text || c.evidence).slice(0, 120), salience: clamp(Number(c.salience) || 2, 1, 5), source: "llm" };
+    // t: 대화가 끝난 시각 — 기록관이 늦게 와도 기억은 그 대화의 것이다 (끝나지 않은 이야기는 바로 다음 만남에만 꺼낸다)
+    const mem = { kind: c.kind, tag: c.tag || null, delta, text: String(c.text || c.evidence).slice(0, 120), salience: clamp(Number(c.salience) || 2, 1, 5), source: "llm", t };
+    // 누가 한 약속인가 — 서술이 약속을 거꾸로 쓰지 않게. 근거가 주인공의 말(▸ 줄)에만 있으면 주인공의 약속, 서술에만 있으면 그 사람의 약속 (기록관의 표시보다 근거를 믿는다)
+    if (c.kind === "promise") {
+      const k = ev.slice(0, 12), inP = !!k && transcript.some((x) => x.who === "player" && norm(x.text).includes(k)), inN = !!k && transcript.some((x) => x.who !== "player" && norm(x.text).includes(k));
+      const by = inP && !inN ? "player" : inN && !inP ? (c.by === "both" ? "both" : "npc") : ["player", "npc", "both"].includes(c.by) ? c.by : null;
+      if (by) mem.by = by;
+    }
     // 기록관의 제안 — 규칙을 거쳐 세계에 닿는다 (28 §6)
     if (c.kind === "promise" && c.promise) {
       const place = resolvePlace(g, c.promise.place), when = resolveWhen(c.promise.when, t);
@@ -3967,6 +3981,7 @@ function view0(g) {
       lastSeen: g.P.seen[n] ? `${fmt(g.P.seen[n].t).slice(7)} ${placeName(g, g.P.seen[n].at)}` : null, guess: estimate(g, n),
       mood: g.P.met.has(n) ? moodWords(relOf(g, n), mind(g, n)) : "이번 회차엔 아직 나를 모른다",
       ...bookOf(g, n), knots: knots(g.P.bond?.[n] || 0), heldKnots: knots(soul(g).bonds?.[n] || 0),
+      talks: (g.run.talkLog?.[n] || []).slice(-2).map((x) => ({ when: x.when, asked: x.asked || [], said: x.said || null })),
       past: (soulPerson(g, n)?.loops || []).map((x) => `${x.loop}회차: ${pastBond(x)}${x.impressions.length ? ` · 그는 나를 '${x.impressions.join("·")}'(으)로 보았다` : ""}${x.lines[0] ? ` · ${x.lines[0]}` : ""}${x.died ? " · 그 회차에 죽었다" : ""}`),
     })),
     unlocked: unlockedNow(g),

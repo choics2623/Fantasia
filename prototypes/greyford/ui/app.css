@@ -297,6 +297,7 @@ kbd, .kbd { font-family: var(--sans); font-size: .62rem; color: var(--ink-3); ma
 .pk .top b { font-size: 1.02rem; font-weight: 400; color: var(--name); }
 .pk .guess { font-size: .84rem; color: var(--ink-2); margin-top: 2px; }
 .pk .lk { color: var(--frost); }
+.pk .talks { margin-top: 4px; font-size: .86rem; }   /* 지난 이야기 — 이 회차에 나눈 말의 끝 */
 .knots { color: var(--ochre); letter-spacing: 2px; }
 .memo { width: 100%; margin-top: 8px; background: none; color: var(--ink); border: 0; border-bottom: 1px dotted var(--rule-2); border-radius: 0; padding: 4px 0; font-family: var(--ui); font-size: .86rem; resize: vertical; }
 .memo:focus { outline: none; border-bottom-color: var(--ink-2); }

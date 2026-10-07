@@ -17,7 +17,7 @@ export function jaccard(A, B) {
 }
 export const similar = (a, b) => jaccard(bigrams(a), bigrams(b));
 
-const KIND_W = { promise: 1.5, threat: 1.4, debt: 1.2, suspicion: 1.2, claim: 1.0, learned: 0.9, emotion: 0.8, impression: 0.6, summary: 0.2 };
+const KIND_W = { promise: 1.5, threat: 1.4, unfinished: 1.3, debt: 1.2, suspicion: 1.2, claim: 1.0, learned: 0.9, emotion: 0.8, impression: 0.6, summary: 0.2 };
 const DAY = 1440;
 
 // 지금 꺼낼 기억 k개. topic = 이번 박자의 행동·화제 글, now = 지금 시각(분)

@@ -80,6 +80,29 @@ function samplePick(card, ctx, said = "", fill = (x) => x) {
   return out.map((s) => `(${s.situation}) ${s.line}`);
 }
 
+// 기억 한 줄의 갈래 표시 — 누가 한 약속인지, 신세·의심·위협인지 (서술이 기억을 거꾸로 쓰지 않게)
+const memTag = (x, call) => x.kind === "promise" ? `[${x.by === "player" ? josa(`${call}이(가) 한 약속`) : x.by === "npc" ? "이 사람이 한 약속" : x.by === "both" ? "서로 한 약속" : "약속"}] ` : ({ debt: "[신세] ", suspicion: "[의심] ", threat: "[위협] ", claim: "[들은 말] " })[x.kind] || "";
+// 다시 만난 사람 (21 §6.7): 이 회차에 이미 말을 섞었으면 — 지난 대화의 끝, 끝나지 않은 이야기, 마음에 둔 것 하나
+// 끝나지 않은 이야기는 '바로 지난 대화'에서 나온 것만 — 그 뒤에 또 만났으면 이미 이어졌거나, 기록관이 다시 적었다
+const lastTalk = (talkLog, n) => (talkLog?.[n] || []).slice(-1)[0] || null;
+function openThreads(g, n, talkLog) {
+  const last = lastTalk(talkLog, n); if (!last) return [];
+  return (g.M[n]?.memories || []).filter((x) => x.kind === "unfinished" && (x.t ?? 0) >= last.t - 5).map((x) => x.text);
+}
+function keptInMind(g, n) {
+  const ms = (g.M[n]?.memories || []).filter((x) => ["promise", "debt", "threat", "suspicion"].includes(x.kind) || (x.salience || 0) >= 4 && !["summary", "unfinished"].includes(x.kind));
+  const x = rankMemories(ms, { now: g.t, k: 1 })[0];
+  return x ? `${memTag(x, callName(g))}${x.text}` : null;
+}
+function reunionLine(g, n, talkLog) {
+  const last = lastTalk(talkLog, n), open = openThreads(g, n, talkLog), kept = keptInMind(g, n);
+  return [
+    last ? ` · 전에 말을 섞었다 (${last.when})${last.said ? ` — 끝에 한 말: "${last.said}"` : ""}` : "",
+    open.length ? ` · 끝나지 않은 이야기: ${open[0]}` : "",
+    kept ? ` · 마음에 둔 것 (겉으로는 눈길·몸짓으로만): ${kept}` : "",
+  ].join("");
+}
+
 // 카드 글의 자리표: {player.형누나} → 이 판의 형/누나, {진짜 이름} → 이 판의 이름
 const fillAddress = (A) => (x) => String(x || "").replace(/\{player\.(형누나|누나형)\}/g, A.sibling).replace(/형\/누나|형\(누나\)|누나\(형\)/g, A.sibling).replace(/\{진짜 이름\}|\{name\}/g, A.name || "…");
 function convoCard(g, n, res, recent = []) {
@@ -94,7 +117,7 @@ function convoCard(g, n, res, recent = []) {
   const saidLines = [...(v.samples || []).map((x) => fill(x.line)), ...((c.regression?.fixed) || []).map(fill)].filter((x) => alreadySaid(x, said)).map((x) => fragmentsOf(x).filter((f) => said.includes(f))[0]).filter(Boolean);
   // 꺼낼 기억: 중요도만이 아니라 이번 박자의 화제와 닮은 것·최근 것·약속과 위협 먼저, 서로 닮은 것은 하나만 (recall.mjs)
   const topic = [res?.text, res?.label, res?.topic, ...(res?.notes || [])].filter(Boolean).join(" ");
-  const mems = rankMemories(m.memories || [], { topic, now: g.t, k: 6 }).map((x) => `- ${x.text}${x.count > 1 ? " (여러 번)" : ""}`);
+  const mems = rankMemories((m.memories || []).filter((x) => x.kind !== "unfinished"), { topic, now: g.t, k: 6 }).map((x) => `- ${memTag(x, A.call)}${x.text}${x.count > 1 ? " (여러 번)" : ""}`);
   return [
     `이름: ${c.name} (${c.race || "인간"}, ${c.age ?? "?"}세). ${c.job || ""}`,
     `말투(${callName(g)}에게 — 부르는 말도 이대로): ${fill(v.register?.to_player_default || v.register?.to_equal || "")}. 길이: ${v.length || "짧게"}`,
@@ -137,7 +160,8 @@ function pastLine(g, n) {
 }
 
 function outcomeLines(g, res) {
-  if (!res) return ["장면 시작 (또는 다시 시작)."];
+  // 다시 연 화면 (불러오기·서버 재시작): 앞 서술을 짧게 다시 비출 뿐 — 주인공이 하지 않은 말을 지어내지 않는다
+  if (!res) return [g.convo ? "다시 연 화면 — 대화가 이어지는 중이다. 바로 앞의 순간을 한두 문장으로 다시 비추고, 상대가 주인공의 다음 말을 기다리는 데서 멈춘다. 주인공의 말·행동을 지어내지 않고 새 일을 일으키지 않는다." : "장면 시작 (또는 다시 연 화면) — 주인공의 말·행동을 지어내지 않는다."];
   const L = [`주인공의 행동: ${res.text || res.label}`];
   if (res.skill) L.push(`판정: ${res.skill} — ${res.tier}`);
   const who = g.content.cards[(res.convoEnded || g.convo)?.npc]?.name;
@@ -225,7 +249,10 @@ function convoFlow(g, transcript, talkLog) {
   const asked = transcript.filter((t) => t.who === "player").slice(-Math.max(1, c.turns)).slice(0, -1).map((t) => t.text.slice(0, 40));
   if (asked.length) L.push(`이 대화에서 이미 오간 말: ${asked.join(" / ")} — 같은 대답을 되풀이하지 않는다`);
   const past = (talkLog?.[c.npc] || []).slice(-2);
-  for (const x of past) L.push(`지난 대화 (${x.when}): ${x.asked.length ? josa(`${callName(g)}이(가) 꺼낸 말 — ${x.asked.join(" / ")}`) : "짧은 인사"}${x.last ? ` · 끝은 — ${x.last}` : ""}`);
+  if (past.length && c.turns <= 1) L.unshift("다시 만난 사이다 — 지난 대화를 기억하는 사람처럼 말을 받는다. 처음 보는 듯 인사하거나 자기를 다시 소개하지 않는다.");
+  for (const x of past) L.push(`지난 대화 (${x.when}): ${x.asked.length ? josa(`${callName(g)}이(가) 꺼낸 말 — ${x.asked.join(" / ")}`) : "짧은 인사"}${x.said ? ` · 이 사람의 마지막 말 — "${x.said}"` : x.last ? ` · 끝은 — ${x.last}` : ""}`);
+  const open = openThreads(g, c.npc, talkLog);
+  if (open.length) L.push(josa(`지난번에 끝나지 않은 이야기 — 이 사람이 먼저 꺼내거나, ${callName(g)}이(가) 꺼내면 바로 받는다: ${open.join(" / ")}`));
   return `[대화의 흐름]\n${L.map((x) => "- " + x).join("\n")}`;
 }
 function avoidBlock(tail, names = []) {
@@ -255,7 +282,7 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
     const fixedNow = (g.content.cards[p.id]?.regression?.fixed || []).filter((x) => x.includes(today)).map(stripMeta).map(fill).filter((x) => !alreadySaid(x, said) && !fixedPast(x, v.hm)).slice(0, 1);
     // 지닌 것은 장면을 깔 때, 또는 한동안 짚지 않았을 때만 — 매 박자 '열쇠 꾸러미가 짤랑'이 되지 않게
     const wearsNow = p.wears.filter((w) => sceneNew || !lastNarr.some((t) => t.includes(String(w).split(/\s+/).pop())));
-    return `- ${tag}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${wearsNow.length ? ` · 지닌 것: ${wearsNow.join(", ")}` : ""} · ${p.mood}${fixedNow.length ? ` · 매 회차 이 날 같은 일: ${fixedNow[0]}` : ""}${pastLine(g, p.id)}`;
+    return `- ${tag}: ${(p.doing || "").length <= 4 ? "그 자리에 있다" : p.doing}${p.asleep ? " (잠듦)" : ""}${wearsNow.length ? ` · 지닌 것: ${wearsNow.join(", ")}` : ""} · ${p.mood}${fixedNow.length ? ` · 매 회차 이 날 같은 일: ${fixedNow[0]}` : ""}${pastLine(g, p.id)}${p.id !== g.convo?.npc && !unknownName ? reunionLine(g, p.id, talkLog) : ""}`;
   };
   const scene = [
     loopLine,
@@ -274,7 +301,7 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
   const convoNpc = g.convo?.npc || res?.convoEnded?.npc;
   const card = convoNpc ? `[대화 상대 카드]\n${convoCard(g, convoNpc, res, recent)}` : "";
   const phrased = opts.filter(PHRASED).map((o) => ({ id: o.id, 행동: o.label, ...(o.topic ? { 주제: o.topic } : {}), ...(o.risk ? { 위험: o.risk } : {}) }));
-  const mem = memories && convoNpc ? `,\n "memories": [{"kind": "impression|emotion|promise|claim|suspicion", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "${g.content.cards[convoNpc]?.name}의 입장에서 쓴 기억 한 줄", "evidence": "대화 기록에서 그대로 옮긴 구절", "salience": "1~5"}]  ← 대화가 끝났다. 상대가 ${callName(g)}에 대해 기억하게 될 미묘한 것 0~3개` : "";
+  const mem = memories && convoNpc ? `,\n "memories": [{"kind": "impression|emotion|promise|claim|suspicion|unfinished", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "${josa(`${g.content.cards[convoNpc]?.name}이(가) ${callName(g)}에 대해`)} 수첩에 적을 한 줄 — 자기 설명이 아니라 ${josa(`${callName(g)}이(가)`)} 한 말·한 일과 그때 든 마음", "evidence": "대화 기록에서 그대로 옮긴 구절", "salience": "1~5"}]  ← 대화가 끝났다. 상대가 ${callName(g)}에 대해 기억하게 될 미묘한 것 0~3개` : "";
   return [
     `[문체 — 화자: ${v.narrator?.name || "침묵하는 신"}] ${NARRATOR_STYLE[v.narrator?.id] || NARRATOR_STYLE.silent_god}`,
     scene, threadBlock(g, v, thread), card, convoFlow(g, transcript, talkLog),
@@ -284,7 +311,7 @@ export function turnPrompt(g, res, opts, { transcript = [], memories = false, sc
     retry ? `[다시 쓰기] ${retry}` : "",
     transcript.length ? `[지금까지 (바로 앞에서 이어 쓴다)]\n${transcript.slice(-14).map((t) => `${t.who === "player" ? `▸ ${josa(`${callName(g)}이(가)`)} 고른 것` : "서술"}: ${t.text}`).join("\n")}` : "",
     `[이번 박자 — 엔진이 정한 결과]\n${outcomeLines(g, res).join("\n")}`,
-    phrased.length ? `[다음 선택지로 쓸 행동]\n각 행동을 **주인공이 실제로 할 말 한마디나 몸짓 하나**로 다시 써라 (40자 이내). 주어진 문장을 베끼지 말 것. 행동의 뜻을 넘지 말 것 — '주제'가 있으면 그 주제만 묻는다. 새 화제를 만들지 않고, 숨긴 것을 짐작하는 말을 넣지 않는다.\n- 지금 장면에 이어지게: 상대가 방금 한 말·몸짓에 닿는 말로. 'small_talk'(이런저런 말)는 상대가 **방금 한 말에 대한 대답이나 맞장구**로 쓴다 — 상대가 물었으면 그 물음에 답하는 한마디로.\n- 주인공이 이미 아는 사람(같이 사는 사람·마을 사람)을 '누구냐'고 묻지 않는다 — 그 사람의 사정이나 속을 묻는 말로. 앞에서 이미 물은 것을 같은 말로 다시 묻지 않는다.\n예) "브람에게 이런저런 말을 붙인다" → "그릇을 받으며 '비가 사흘째네요' 하고 말을 흘린다" / "하겐에 대해 묻는다" → "빵을 든 하겐 쪽으로 턱을 든다 — '하겐 아저씨는 요즘 뭘 실어 날라요?'"\n${JSON.stringify(phrased)}` : "[다음 선택지] 없음",
+    phrased.length ? `[다음 선택지로 쓸 행동]\n각 행동을 **주인공이 실제로 할 말 한마디나 몸짓 하나**로 다시 써라 (40자 이내). 주어진 문장을 베끼지 말 것. 행동의 뜻을 넘지 말 것 — '주제'가 있으면 그 주제만 묻는다. 새 화제를 만들지 않고, 숨긴 것을 짐작하는 말을 넣지 않는다.\n- 지금 장면에 이어지게: 상대가 방금 한 말·몸짓에 닿는 말로. 'small_talk'(이런저런 말)는 상대가 **방금 한 말에 대한 대답이나 맞장구**로 쓴다 — 상대가 물었으면 그 물음에 답하는 한마디로.\n- 주인공이 이미 아는 사람(같이 사는 사람·마을 사람)을 '누구냐'고 묻지 않는다 — 그 사람의 사정이나 속을 묻는 말로. 앞에서 이미 물은 것을 같은 말로 다시 묻지 않는다.\n예 (다른 이야기의 장면 — 문장을 베끼지 말고 이 장면의 말로): "등짐장수에게 이런저런 말을 붙인다" → "짐 끈을 같이 잡아 주며 '고개 너머엔 눈이 왔어요?' 하고 묻는다" / "등짐장수의 동행에 대해 묻는다" → "수레 쪽으로 턱을 든다 — '저분은 어디까지 같이 가세요?'"\n${JSON.stringify(phrased)}` : "[다음 선택지] 없음",
     `출력:\n<서술>\n박자들\n</서술>\n<선택지>\n{"choices": [{"id": "주어진 id 그대로", "text": "선택지 문장"}]${mem}}\n</선택지>`,
   ].filter(Boolean).join("\n\n");
 }
@@ -380,26 +407,49 @@ export function mockTurn(g, res, opts, { memories = false } = {}) {
 }
 
 // ── 기록관 (28 §6): 끝난 대화를 '제안'으로 옮긴다. 플레이어는 기다리지 않는다 (뒤에서 돈다) ──
-export const RECORDER_SYSTEM = `너는 텍스트 게임의 기록관이다. 끝난 대화를 읽고, 그 NPC가 앞으로 기억하거나 행동에 옮길 것을 구조화된 제안으로 뽑는다.
+export const RECORDER_SYSTEM = `당신은 텍스트 게임의 기록관이다. 끝난 대화를 읽고, 그 사람이 주인공에 대해 앞으로 기억하거나 행동에 옮길 것을 구조화된 제안으로 뽑는다.
+대화 기록의 서술은 주인공을 '너'라고 부른다 — 서술 속 '너'·'네'·'너를'은 언제나 주인공이다 (당신이 아니다). ▸ 줄은 주인공이 고른 말과 행동이다.
+기억은 그 사람의 수첩이다 — 다음에 주인공을 다시 만났을 때 꺼낼 것: 주인공이 한 말과 한 일, 주고받은 약속, 끝맺지 못한 이야기, 그때 든 마음.
 세계를 바꾸지 않는다 — 제안만 한다. 엔진이 대화 기록에서 근거를 확인하고 받아들일지 정한다.
-근거(evidence)는 반드시 대화 기록에서 글자 그대로 옮긴다. 대화에 없는 것은 쓰지 않는다. 출력은 JSON 하나뿐.`;
+근거(evidence)는 반드시 대화 기록에서 글자 그대로 옮긴다. 대화에 없는 것(숫자·나이·이름·사정)은 쓰지 않는다. 출력은 JSON 하나뿐.`;
 
 export function recorderPrompt(g, jobs) {
   const facts = [...g.P.knows, ...g.run.carry.future].map((f) => `${f}: ${g.content.facts[f]?.text}`).join("\n");
   const places = [...g.W.loc.values()].filter((l) => l.settlement === g.P.settlement && !l.parent).map((l) => l.name).join(", ");
+  const cn = callName(g), fill = fillAddress(addressOf(g)), J = (x) => josa(x);
   return [
-    `[주인공이 아는 사실 — 주인공이 NPC에게 이것을 말해 주었으면 kind "learned"로, fact에 이 id를]\n${facts || "(없음)"}`,
+    `[주인공이 아는 사실 — 주인공이 그 사람에게 이것을 말해 주었으면 kind "learned"로, fact에 이 id를]\n${facts || "(없음)"}`,
     `[마을의 장소 이름 — 약속 장소는 이 중에서]\n${places}`,
     ...jobs.map((j, i) => {
-      // 이미 가진 기억 (같은 내용을 또 뽑지 않게 — 엔진도 거의 같은 기억은 하나로 합친다)
-      const had = rankMemories(g.M[j.npc]?.memories || [], { topic: j.transcript.map((x) => x.text).join(" "), now: g.t, k: 5 }).map((x) => `  · ${x.text}`);
-      return `[대화 ${i + 1}] NPC: ${j.npc} (${g.content.cards[j.npc]?.name}), 끝난 시각: ${j.time}${had.length ? `\n이미 가진 기억 (같은 내용은 다시 뽑지 마라):\n${had.join("\n")}` : ""}\n${j.transcript.map((x) => `${x.who === "player" ? callName(g) : "서술"}: ${x.text}`).join("\n")}`;
+      const c = g.content.cards[j.npc] || {}, reg = fill(c.voice?.register?.to_player_default || c.voice?.register?.to_equal || "");
+      // 이미 가진 기억 (같은 내용을 또 뽑지 않게 — 엔진도 거의 같은 기억은 하나로 합친다). 끝나지 않은 이야기는 빼고 보인다: 아직도 안 끝났으면 다시 적어야 다음 만남에 이어진다
+      const had = rankMemories((g.M[j.npc]?.memories || []).filter((x) => x.kind !== "unfinished"), { topic: j.transcript.map((x) => x.text).join(" "), now: g.t, k: 5 }).map((x) => `  · ${x.text}`);
+      return `[대화 ${i + 1}] 그 사람: ${c.name || j.npc} (${j.npc})${c.job ? ` — ${c.job}` : ""}. 끝난 시각: ${j.time}${reg ? `\n그 사람이 ${J(`${cn}을(를)`)} 부르는 말·말투: ${reg}` : ""}${had.length ? `\n이미 가진 기억 (같은 내용은 다시 뽑지 마라):\n${had.join("\n")}` : ""}\n${j.transcript.map((x) => (x.who === "player" ? `▸ ${cn}: ${x.text}` : `서술: ${x.text}`)).join("\n")}`;
     }),
-    `출력: {"records": [{"npc": "npc id", "kind": "impression|emotion|promise|claim|learned|suspicion|debt|threat", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "그 NPC의 입장에서 한 줄", "evidence": "대화 기록 그대로", "salience": "1~5",
+    `출력: {"records": [{"npc": "npc id", "kind": "impression|emotion|promise|claim|learned|suspicion|debt|threat|unfinished", "tag": "인상일 때: ${IMPRESSION_TAGS.join("|")}", "delta": "인상일 때 -5~5", "text": "그 사람의 수첩에 적힐 한 줄 (아래 쓰는 법)", "evidence": "대화 기록 그대로", "salience": "1~5",
+  "by": "약속일 때 누가 했나: player(${cn}) | npc(그 사람) | both(서로)",
   "promise": {"place": "장소 이름", "when": "오늘 밤|내일 정오|모레 새벽 다섯 시 처럼", "what": "무엇을"},
-  "claim": {"about": "주인공이 말한 대상 인물 이름", "content": "주인공의 주장 한 줄", "fact": "위 사실 목록 가운데 이 주장과 같은 내용의 id (없으면 빼라)", "contradicts": "위 사실 목록 가운데 이 주장과 어긋나는 id (없으면 빼라)"},
+  "claim": {"about": "${J(`${cn}이(가)`)} 말한 대상 인물 이름", "content": "${cn}의 주장 한 줄", "fact": "위 사실 목록 가운데 이 주장과 같은 내용의 id (없으면 빼라)", "contradicts": "위 사실 목록 가운데 이 주장과 어긋나는 id (없으면 빼라)"},
   "fact": "learned일 때 사실 id"}]}
-대화마다 0~4개. 약속·주장·들은 사실이 없으면 그 칸은 빼라. 주장을 NPC가 믿었는지는 적지 마라 — 엔진이 판정한다.`,
+뽑는 순서:
+1. ▸ 줄 (${J(`${cn}이(가)`)} 한 말·행동)을 하나씩 본다 — 약속("내가 …할게"), 부탁, 털어놓은 사실, 거짓말, 협박, 뒤로 미룬 이야기가 있으면 하나씩 적는다. 한 말에 약속과 미룬 이야기가 함께 있으면 둘 다 적는다.
+2. 그 사람이 한 약속·미룬 이야기·베푼 신세도 적는다 (약속이면 by: npc).
+3. 마지막으로, 이 대화로 그 사람이 ${J(`${cn}을(를)`)} 어떻게 보게 됐나 (impression·emotion) — 서술 속 그 사람의 반응이 근거다.
+갈래:
+- impression: ${J(`${cn}이(가)`)} 어떤 사람으로 보였나 (tag 필수)
+- emotion: ${J(`${cn}이(가)`)} 한 말·일 때문에 그 사람에게 남은 마음 (${J(`${cn}과(와)`)} 무관한 마음은 빼라)
+- promise: 누군가 하겠다고 한 말 — by에 누가 했는지. 만날 장소·시각까지 정했으면 promise 칸을 채운다
+- claim: ${J(`${cn}이(가)`)} 다른 사람이나 일에 대해 한 주장 — 그 사람이 한 말·경고는 claim이 아니다
+- learned: ${J(`${cn}이(가)`)} 말해 준 사실 (위 사실 목록의 id)
+- suspicion: ${cn}에 대해 품은 의심 · debt: 누가 누구에게 신세를 졌나 · threat: ${J(`${cn}이(가)`)} 한 협박, 또는 ${J(`${cn}이(가)`)} 위험하다고 본 일
+- unfinished: 끝맺지 못하고 미룬 이야기 — "이따 움막에서 얘기하자", 대답을 못 들은 물음, 하다 만 부탁. 다음에 만나면 이어진다
+text 쓰는 법 — 그 사람의 수첩에 적힐 한 줄, 그 사람의 눈으로:
+- ${J(`${cn}이(가)`)} 한 말·한 일과 그때 든 마음. 주어는 빼거나, ${J(`${cn}을(를)`)} 그 사람이 부르는 말로.
+- 그 사람 자신이 한 일은 둘 사이에 남는 것(신세·약속)일 때만. 그 사람의 성격·습관·몸짓·처지는 쓰지 않는다 (카드에 이미 있다). 그 사람의 이름으로 문장을 시작하지 않는다.
+- 대화에 없는 숫자·나이·이름·사정을 보태지 않는다.
+좋은 줄: "약을 구해 오겠다고 했다 — 어디서 구할지는 말하지 않았다." (promise, by: player) / "맞고도 신음 한 번 안 냈다. 아이 같지 않다." (impression) / "장터 일은 나중에 마저 하자고 했다 — 아직 못 했다." (unfinished)
+나쁜 줄: "아무개는 말을 끝까지 듣는 사람이다" (자기 설명) · "목소리가 낮아졌다, 기침이 잦았다" (그 사람의 몸짓) · "자식을 지키려는 강한 의지" (${J(`${cn}과(와)`)} 무관한 자기 마음) · "${cn}의 나이(317세)" (대화에 없는 숫자)
+대화마다 0~4개 — 기억할 만한 것이 없으면 빈 배열. 약속·주장·들은 사실이 없으면 그 칸은 빼라. 주장을 그 사람이 믿었는지는 적지 마라 — 엔진이 판정한다.`,
   ].join("\n\n");
 }
 export function parseRecords(text) {

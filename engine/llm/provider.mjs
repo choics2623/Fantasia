@@ -2,8 +2,9 @@
 //   cli  — 내 PC의 Claude Code 로그인(구독). 스트리밍(stream-json)으로 글자가 오는 대로 onText를 부른다.
 //   api  — ANTHROPIC_API_KEY. 스트리밍.
 //   mock — 테스트 전용. 받은 mock 함수의 결과를 그대로 돌려준다. MOCK_FAIL=0.3이면 30% 실패.
+// LLM_LOG=경로 — 주고받은 글을 한 줄씩(JSONL) 남긴다. 프롬프트를 고칠 때 실제로 무엇이 갔는지 보는 개발용
 import { spawn } from "node:child_process";
-import { writeFile, mkdtemp } from "node:fs/promises";
+import { writeFile, mkdtemp, appendFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -84,6 +85,7 @@ export function createProvider({ kind = process.env.LLM_PROVIDER || "cli", model
         for (const piece of out.match(/[\s\S]{1,40}/g) || []) onText?.(piece);
       } else out = kind === "api" ? await api(system, prompt, { onText }) : await cli(system, prompt, { onText });
       usage.ms += Date.now() - t0;
+      if (process.env.LLM_LOG) appendFile(process.env.LLM_LOG, JSON.stringify({ at: new Date().toISOString(), model, ms: Date.now() - t0, system: String(system).slice(0, 60), prompt, out }) + "\n").catch(() => {});
       return out;
     } catch (e) { usage.failures++; throw e; }
   }
