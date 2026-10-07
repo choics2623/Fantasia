@@ -1,0 +1,205 @@
+# O-10 모르바 늪 자유민 (docs/world/SCENARIOS.md O-10) — 첫 시대에도 고르는 출신. 이 사람이 그 시대의 잔향자다.
+# 회귀점: AS 312 낙엽월 1일 21:00, 뿌리마을 회의 섬 '투표의 원' — 열여섯 살의 첫 뿌리 모임. 장면은 storylets/origin_morva_freeborn.yaml.
+#
+# SCENARIOS → 지역 자료 (지역 카드·배치도가 이긴다)
+#   '버들뿌리 마을'(인구 140, 3대째)   → 뿌리마을 root_village (뿌리나무 아홉 섬, 회의 섬·투표의 원·이름 바구니). '버들'은 마을이 주인공을 부르는 이름으로
+#                                       남겼다 — 버들 계보의 딸이 기른 아이라서 (늪에서 아이는 기른 사람의 것으로 불린다)
+#   뗏목 열한 개 위의 회의            → 회의 섬은 작아서 뿌리 모임(초하루·보름 밤)에는 섬 둘레에 뗏목 열한 개를 묶는다. 발로 투표한다 — 오른발 찬성, 왼발 반대
+#   할머니 헤드비가(35, 겉보기 일흔)   → npc_mv_hedwiga (29, 이른 흰 머리 — 버들 계보의 딸, '물거울' 하나의 정식 제자). AS 302 늪열로 부모를 잃은 여섯 살을 거두었다.
+#                                       둥지(26시간)에 산다 — 첫 회의를 보러 물길을 저어 왔다가 새벽 배로 돌아간다. 회귀점의 stage에 세우지만 둥지 사람이라
+#                                       엔진의 '이 자리 사람' 목록에는 잡히지 않는다(일과가 둥지에만 있다): 그 밤의 장면 글로 선다. 다른 날은 일곱 노파의 둥지 버들 오두막.
+#   셋째 노파 '물거울'                 → npc_hag_hana
+#   마을장 몰리(50)                    → npc_mv_alek (뿌리 모임 대표, 47 — "천천히". 노란 둑이 불탄 뒤로 숨는 쪽에 선다)
+#   친구 토른(17, 다혈질)              → 새 사람 npc_o10_torn — 대장장이 토르(npc_mv_torr, 쉰의 과묵한 탈주 대장장이)의 풀무를 밟는 열일곱. AS 303 바르그가 늪길로 든 해에 아버지를 잃었다
+#   잿빛 실의 뱃사공                   → 장면 글에만 선다 (붉은 갈대 선에서 사람을 받아 오고 그 밤으로 돌아간다)
+#   녹테른에서 온 다섯과 아이           → 새 사람 npc_o10_kong '콩'(아홉 살, 다섯 가운데 막내). 어른 넷은 장면 글. 진흙등불(베른)은 겨울 장부가 모자라 받지 못했다
+#   바르그 셋 + 인간 사냥개(O-12)       → 바르그 코 셋은 장면 글. 인간은 새 사람 npc_o10_leash '맨발' — 조합 목줄꾼 가운데 하나. O-12의 '코'는 같은 날 아침
+#                                       굶주린 언덕에서 볼크의 사냥대 선두에 있다 — 이 세계에서 그는 만난 적 없는 남이고, 맨발은 그가 아니다
+#   '늪 입구'                          → 붉은 갈대 선 rv__red_reed_line (녹테른 쪽 늪 가장자리, 뿌리마을에서 7시간). 늪 어귀 morva_mouth(루멘 쪽, 44시간)는 루멘 길의 입구다
+#   가라앉은 종탑                      → rv__sunken_belfry (5시간). 떨어진 페이 잿가루(npc_ashdust)가 산다
+#   회색여울의 엘사                    → npc_elsa (이름만 안다 — 할머니와 매듭을 주고받는 늙은 약초꾼)
+#   마법:물 3                         → 엔진의 진명 '물' (truenames/greyford.yaml, var true_name_water). 할머니의 매듭 장면에서 깨친다 — 영혼에 남는다
+#   스킬                              → 야외생존·추적 25 → 통찰·은신 / 궁술 20 → 싸움 / 약학 18 → 통찰·손재주 / 읽고쓰기 15 그대로 / 노예말 20 → 서술(prompt)
+#   추천 조합                          → 활의 재능 → 사냥꾼(hunter), 협상 → 흥정(haggle). 나머지는 같은 이름의 재능
+origins:
+  - id: morva_freeborn
+    order: 20
+    scenario: O-10
+    region: 모르바 늪
+    name: 모르바 늪 자유민
+    title: 주인을 가져 본 적 없는 아이
+    call: 버들
+    age: 16
+    difficulty: 3
+    family: false
+    settlement: root_village
+    time: "21:00"
+    place: 뿌리마을 회의 섬 — 투표의 원
+    start: rv_vote_circle
+    home: rv_herb_hut
+    blurb: >-
+      모르바 늪의 숨은 자유 마을, 뿌리마을에서 나고 자랐다. 여섯 살에 늪열로 부모를 잃고, 버들 계보의 딸 헤드비가 —
+      스물아홉에 머리가 하얀 '할머니' — 손에 약초 오두막 건조대 아래에서 컸다. 태어나서 한 번도 주인을 가져 본 적이 없다.
+      회귀점은 열여섯 살의 첫 뿌리 모임, 녹테른에서 온 다섯과 바르그의 냄새가 함께 온 밤이다.
+    stats: {근력: 8, 민첩: 11, 체질: 10, 지능: 9, 감각: 12, 의지: 10}
+    skills: {화술: 16, 기만: 8, 위압: 8, 통찰: 22, 손재주: 16, 은신: 18, 싸움: 14, 읽고쓰기: 15, 용언: 0}
+    status: {hunger: 1, pain: 5, fatigue: 30, fear: 0, stress: 25}
+    train: 8
+    coin: 0
+    items:
+      - {id: o10_reed_bow, name: 갈대 활과 뼈 화살 열둘, tags: [무기, 활], slot: 허리, quality: 보통, condition: 80, illegal: true, value: 10, desc: "갈대를 겹쳐 묶은 짧은 활과 물새 뼈 촉 화살 열둘. 늪에서는 아무도 묻지 않는다 — 늪 밖에서 인간이 활을 지니면 그 자리에서 목이 달린다는 것을, 너는 이야기로만 들었다"}
+      - {id: o10_herb_pouch, name: 늪 약초 주머니, tags: [치료, 약초], slot: 허리, quality: 보통, value: 2, use: {pain: -15}, desc: "쑥과 버들 껍질, 지혈 이끼. 할머니가 채워 준다 — 짓이겨 상처에 얹는다"}
+      - {id: o10_knot_charm, name: 할머니의 매듭 부적, tags: [신비, 매듭], slot: 품, quality: 보통, illegal: false, value: 0, desc: "버들 껍질 끈에 매듭 일곱. 맨 안쪽 매듭이 네 진짜 이름이다 — 할머니가 묶었다. 늪 밖에서는 마녀의 물건이다"}
+    rel: {npc_mv_hedwiga: [80, 60], npc_o10_torn: [40, 30], npc_mv_alek: [20, 30], npc_mv_hilke: [30, 25], npc_mv_nanne: [15, 20], npc_mv_torr: [10, 15], npc_mv_rif: [15, 5], npc_hag_hana: [10, 20]}
+    knows: [fact_o10_root_council, fact_o10_parents_fever, fact_mv_witch_forty_limit, fact_p2mv_beni_arm_barg_trap]
+    places: [rv_black_pool]
+    vars:
+      o10_five_known: false
+      o10_five_stay: false
+      o10_five_out: false
+      o10_five_safe: false
+      o10_five_taken: false
+      o10_kong_lost: false
+      o10_kong_knot: false
+      o10_plan: none
+      o10_scent_rags: false
+      o10_hunters_near: 1
+      o10_hunt_end: none
+      o10_fog: false
+      o10_hedwiga_years: 0
+      o10_hedwiga_saw: false
+      o10_hedwiga_silent: false
+      o10_hags_told: false
+      o10_retaliation: 0
+      o10_tracker: free
+      o10_tracker_turned: false
+      o10_tracker_dead: false
+      o10_tracker_saw: false
+      o10_torn_killed: false
+      o10_knows_camp: false
+      o10_bell_read: false
+      o10_watch_doubled: false
+      o10_naive: true
+    wanted: null
+    flaws: []
+    traits: []
+    trait_discount: {}
+    free: true
+    access: {}
+    duty:
+      rollcall: false
+      wake: "04:50"
+      meal: {at: rv_pot, from: "18:00", to: "20:00", label: 공동 솥에서 몫을 받는다 — 장어와 뿌리죽, hunger: -1, thin: 0.15, with: npc_mv_hilke, cost: 0, text: "힐케가 국자로 너를 가리킨다. \"먹었어?\" 대답을 듣기 전에 국자가 그릇 바닥까지 들어간다. 장어 토막과 뿌리죽 — 몫은 솥지기가 정한다"}
+      work:
+        at: rv_eel_traps
+        from: "05:00"
+        until: "10:00"
+        label: 장어 덫을 올리고 약초 둑으로 나간다 (해 질 때까지)
+        done: 통발 열일곱에 장어가 아홉. 오후에는 물안개 둑 쪽 진흙에서 쑥과 버들 껍질을 한 짐 — 약초 오두막 건조대가 다시 찬다
+        fail: 통발이 비었다. 검은 턱이 먼저 다녀갔다 — 대나무 살이 부러져 있다. 약초 둑도 물에 잠겨 빈손으로 돌아왔다
+        train: 0.4
+        pain: 2
+        fail_pain: 4
+        fail_meal: false
+        fail_fear: 0
+        coin: 0
+        food: eel
+        outlaw: false
+        sabbath: true
+      count: null
+      curfew: false
+      routine: 공동 솥 → 약초 오두막 → 장어 덫
+    opening: o10_council_open
+    sense: 젖은 뿌리 냄새
+    when_word: 밤
+    rescue: "눈앞이 하얘진다. 누군가 너를 약초 오두막 침상으로 끌고 간다. 입에 뿌리죽이 흘러든다 — 힐케의 국자다. \"먹었어? 안 먹었잖아.\""
+    quiet:
+      - 줄다리마다 반딧불 병이 하나씩 꺼진다. 마지막 불 덮기. 솥 쪽에서 힐케가 국자를 한 번 핥는 소리가 난다.
+      - 물 위로 장어가 한 번 뒤집힌다. 건조대의 쑥이 바스락거린다. 늪은 오늘 아무도 데려가지 않았다.
+      - 북쪽 뿌리나무 위 집에서 누가 노래를 부르다 멈춘다. 가사 없는 노래. 아무도 그만하라고 하지 않는다.
+      - 망루에서 호루라기가 짧게 한 번 — 상인. 그다음엔 아무 소리도 없다. 장어 기름 냄새가 오두막 가죽 문 안까지 들어온다.
+    beats:
+      - {id: dawn_boat, at: "312-09-02 05:00", danger: 4, when: ["var o10_five_out == true"], near: "새벽 솥 불이 오르면 뱃사공의 배가 다섯을 싣고 갈대 선으로 간다. 일곱 시간 물길.", far: "새벽 배."}
+      - {id: second_council, at: "312-09-04 21:00", danger: 4, when: ["var o10_five_stay == true"], near: "내일 밤 뿌리 모임이 다시 선다. 그때도 냄새가 갈대 선에 있으면 — 왼발이다.", far: "초나흘 밤 뿌리 모임이 다시 선다. 다섯의 사흘이 줄어든다."}
+      - {id: reed_line, at: "312-09-04 12:00", danger: 3, when: ["var o10_hunters_near == 1", "var o10_fog == false"], near: "갈대 선 쪽에서 바람이 쇠 냄새를 싣고 온다. 사냥대는 아직 거기 있다.", far: "갈대 선 서쪽 둔덕에서 불 없는 야영이 이어진다고, 망꾼이 호루라기로 전한다."}
+      - {id: blood_price, at: "312-09-10 06:00", danger: 5, when: ["var o10_retaliation >= 1"], near: "갈대 선 쪽에서 깃털 냄새가 난다. 바르그는 흘린 피를 센다.", far: "바르그 조합은 자기 피를 잊지 않는다 — 모르바 쪽으로 코를 돌린다."}
+      - {id: name_day, at: "312-09-12 18:00", danger: 1, near: "내일 첫 이름 날 — 일 년을 채운 열한 명이 스스로 성을 짓는다. 난네가 끈을 고른다.", far: "첫 이름 날이 다가온다. 회의 섬의 이름 바구니가 물 위에서 흔들린다."}
+      - {id: full_moon, at: "312-09-15 19:00", danger: 3, when: ["var o10_hags_told == true"], near: "내일 보름 — 일곱 노파가 둥지 마당에 선다. 할머니가 그 전에 오라고 했다.", far: "보름 회합 전에 둥지로 — 스물여섯 시간 물길."}
+    goals:
+      - who: 콩과 녹테른에서 온 다섯
+        when: ["var o10_five_known == true"]
+        states:
+          - {when: ["var o10_kong_lost == true"], what: 갈대 선 너머에서 사냥대에 붙잡혀 녹테른으로 끌려갔다 — 이름 바구니에 이름 없는 끈이 하나 늘었다}
+          - {when: ["var o10_five_safe == true"], what: 뿌리마을에 남았다 — 이름은 일 년 뒤 첫 이름 날에}
+          - {when: ["var o10_five_out == true"], what: 뿌리 모임이 내보내기로 했다 — 새벽 배로 갈대 선까지, until: "312-09-02 05:00"}
+          - {when: ["var o10_five_stay == true"], what: 새 도착자 초막에서 사흘 — 뿌리 모임이 다시 선다, until: "312-09-04 21:00"}
+          - {what: 뿌리 모임의 발을 기다린다}
+      - who: 할머니 헤드비가
+        when: []
+        states:
+          - {when: ["dead npc_mv_hedwiga"], what: 죽었다}
+          - {when: ["var o10_hedwiga_years >= 2"], what: 안개 매듭에 두 해를 태웠다 — 마흔이 더 가까워졌다. 일곱 노파의 둥지 버들 오두막}
+          - {what: 일곱 노파의 둥지 버들 오두막 — 늪으로 스물여섯 시간}
+      - who: 토른
+        when: []
+        states:
+          - {when: ["dead npc_o10_torn"], what: 죽었다}
+          - {when: ["var o10_torn_killed == true"], what: 장어 덫 물길에서 목줄꾼을 쏘았다 — 그 뒤로 활을 끌어안고 잔다}
+          - {what: 토르의 풀무를 밟는다 — 새벽에는 장어 덫}
+    losses:
+      - {id: kong_lost, when: ["var o10_kong_lost == true"], text: "콩이 탄 배가 붉은 갈대 사이로 사라진다. 이름 바구니 맨 밑에 이름 없는 끈이 하나 는다.", weight: 7}
+      - {id: torn_lost, when: ["dead npc_o10_torn"], text: "토른의 활이 대장간 풀무 곁에 기대어 있다. 줄이 풀린 채로.", weight: 6}
+      - {id: hedwiga_lost, when: ["dead npc_mv_hedwiga"], text: "버들 오두막의 점 막대가 문 곁에 꽂힌 채 마른다. 매듭을 풀 사람이 없다.", weight: 8}
+    achievements:
+      - {id: five_rooted, tp: 2, text: 녹테른에서 온 다섯이 첫 이름 날을 뿌리마을에서 맞았다, when: ["var o10_five_safe == true", "date >= 312-09-12"]}
+      - {id: nose_turned, tp: 2, text: 목줄 찬 인간이 사냥대를 늪 밖으로 돌렸다, when: ["var o10_tracker_turned == true"]}
+      - {id: quiet_water, tp: 1, text: 물의 이름을 알고도 보름까지 늪을 드러내지 않았다, when: ["var true_name_water == true", "not var witch_seen == true", "date >= 312-09-15"]}
+    epilogue:
+      - {when: ["var o10_kong_lost == true"], text: "긴밤월 15일, 갈증의 밤 명단에 손목에 숫자가 있는 아홉 살이 있었다. 뿌리마을 이름 바구니 맨 밑에는 이름 없는 끈이 열셋이다."}
+      - {when: ["var o10_five_safe == true"], text: "녹테른에서 온 다섯은 이듬해 첫 이름 날에 성을 지었다. 가장 짧은 끈은 콩의 것이었다 — 그 아이는 성 대신 이름을 지었다."}
+      - {when: ["var o10_hedwiga_years >= 2"], text: "헤드비가는 서른넷에 노파의 얼굴이 되었다. 안개 매듭 이야기는 끝내 하지 않았다."}
+      - {when: ["not var o10_hedwiga_years >= 2"], text: "헤드비가는 오래 버들 오두막에 앉아 꿈을 적었다. 손주의 이름 매듭은 다시 풀지 않았다."}
+      - {when: ["var o10_retaliation >= 1"], text: "바르그 조합은 모르바 사냥 시즌을 열었다. 붉은 갈대 선에 깃털 꽂힌 말뚝이 늘었고, 뿌리마을은 반딧불 병을 더 낮게 들었다."}
+      - {when: ["not var o10_retaliation >= 1"], text: "뿌리마을은 그 겨울에도 불 대신 반딧불 병을 들었다. 숨는 것이, 그들이 아는 방법이었다."}
+    texts:
+      count_before_sleep: |
+        건조대 아래 짚자리. 머리 위에서 마른 쑥이 바스락거린다. 문 대신 걸린 가죽 너머, 줄다리 위에서 반딧불 병 하나가 흔들린다.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "회의 섬에 반딧불 병이 늦게까지 걸려 있다. 네 이야기를 하는 목소리가 물 위로 건너온다."
+      nem_door: "약초 오두막 문기둥"
+      gossip_where: "솥 곁에서, 줄다리 위에서."
+    public:
+      npc_mv_hedwiga: 할머니 — 버들 계보의 딸 헤드비가
+      npc_hag_hana: 물거울 하나 — 할머니의 스승, 셋째 노파
+      npc_oda: 눈먼 오다 — 첫째 노파
+      npc_hag_brita: 쇠손 브리타 — 둘째 노파
+      npc_mv_alek: 알렉 선생 — 뿌리 모임의 입, 진흙판 학교 선생
+      npc_mv_hilke: 솥지기 힐케
+      npc_mv_nanne: 바구니지기 난네
+      npc_mv_torr: 대장장이 토르
+      npc_mv_rif: 장어 덫의 리프 — 진흙판 학교에서 제일 빠른 아이
+      npc_o10_torn: 토른 — 토르의 풀무를 밟는 열일곱, 같이 덫을 올리며 자랐다
+      npc_o10_kong: 콩 — 녹테른에서 온 다섯 가운데 가장 작은 아이
+      npc_o10_leash: "? 목줄을 찬 맨발의 인간"
+      npc_bern: 진흙등불의 베른 촌장
+      npc_nadia: "'갈대' 나디아 — 진흙등불 사냥대장"
+      npc_mv_beni: 늪 어귀의 외팔 베니 — 망꾼장
+      npc_mv_marek: 늪 어귀의 훈제 장수 마레크
+      npc_mv_garr: "? 둥지의 후드 쓴 손님 제자"
+      npc_ashdust: "? 가라앉은 종탑의 웃지 않는 것"
+      npc_tessa: "? 붉은 갈대 선의 칼 든 안내인"
+      npc_elsa: 회색여울의 엘사 — 할머니와 매듭을 주고받는 늙은 약초꾼 (이름만 안다)
+    map: {knowledge: {root_village: 3, seven_hags_circle: 2, morva_mouth: 2, rose_manor: 1, red_pens: 1, lumen: 1, seren_estuary: 1, seren: 1, greyford_village: 1}, sketch: [seven_hags_circle, morva_mouth]}
+    world: "주인공이 사는 곳은 모르바 늪 — 용제국의 법이 닿지 않는 숨은 자유 마을 뿌리마을. 주인 없는 인간들이 뿌리나무 위와 아래, 줄다리로 이은 아홉 섬에 산다. 점호도 배급도 없다 — 공동 솥의 몫과 뿌리 모임의 발이 있을 뿐이다."
+    people: "주인공은 뿌리마을에서 나고 자랐다 — 마을 사람은 이름이나 하는 일로 안다(솥지기 힐케, 바구니지기 난네, 대장장이 토르, 알렉 선생). 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"힐케 — 공동 솥의 솥지기, 국자로 사람을 가리키는 노파 — 가\"). 이름을 모르는 사람은 겉모습으로만 부른다. 늪 사람은 높임말을 노파에게만 쓴다."
+    nouns: "'뿌리마을'은 모르바 늪의 숨은 자유 마을이다. '뿌리 모임'은 마을 회의 — 초하루와 보름 밤 회의 섬에 서서 발로 투표한다(오른발 찬성, 왼발 반대). '붉은 갈대 선'은 늪이 녹테른 쪽에서 끝나는 경계다. '코'는 바르그 조합의 추적꾼, '목줄꾼'은 조합에 딸린 인간이다. '검은 턱'은 늪의 악어, '잿빛 표'는 늪의 셈 표다."
+    prompt: "주인공: 버들이라 불리는 열여섯 살 늪 자유민 (진짜 이름은 할머니 헤드비가만 안다 — 버들 계보의 딸, 스물아홉에 머리가 하얀 양할머니). 뿌리마을 약초 오두막 건조대 아래에서 자랐고, 갈대 활과 뼈 화살, 늪 약초 주머니, 할머니의 매듭 부적을 지닌다. 노예말과 공용어를 하고, 진흙판 학교에서 글자를 이름과 짧은 말만큼 배웠다 — 늪에서는 죄가 아니다. 태어나서 한 번도 주인을 가져 본 적 없다: 늪 밖의 법(인간이 글을 읽거나 활을 들면 죽는다)을 이야기로만 들었고, 고개를 숙이는 법을 모른다."
+    awakening: "다만 할머니가 매듭을 풀 때 물의 이름 첫 음절이 들렸고, 입술이 그 소리를 이미 알았다 — 늪물이 한 번 주인공 쪽으로 기울었다. 다 배우지 않은 글자가 읽히는 이상한 감각도 막 깨어났다."
+    exclude: []
+    perks: [주인이 없다 — 점호도 통금도 없고 늪을 떠나도 탈주가 아니다, 글자를 이름과 짧은 말만큼 안다 — 늪에서는 죄가 아니다, 할머니의 매듭 — 물의 이름이 입술에 걸려 있다]
+    burdens: [늪 밖의 법을 모른다 — 활을 멘 채 고개를 들고 다닌다, 늪은 숨는 법만 안다 — 바르그 사냥대가 갈대 선에 왔다, 할머니는 스물여섯 시간 물길 너머 둥지에 산다]
+    presets:
+      - {name: 물거울 노파의 손주, talents: {truename_ear: 2, beast_friend: 1, memory_palace: 1, iron_gut: 1, herbalist: 1}, stats: {감각: 2, 지능: 2}}
+      - {name: 늪의 사냥꾼, talents: {hunter: 2, shadow_step: 1, beast_friend: 1, iron_gut: 1, pathfinder: 1}, stats: {민첩: 2, 감각: 2}}
+      - {name: 뿌리마을의 목소리, talents: {crowd_voice: 2, tongue: 2, iron_gut: 1, haggle: 1}, stats: {지능: 2, 의지: 2}}

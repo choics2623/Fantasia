@@ -1,0 +1,1066 @@
+# O-08 순종의 빛 견습 사제 — 회귀점의 대본 장면과 첫 열흘 (creation/origins_lumen_acolyte.yaml의 opening).
+# 문법은 greyford_opening.yaml 머리말과 같다. {name} = 진짜 이름. origin: lumen_acolyte — 이 출신의 판에서만 열리고, stage도 이 판에서만 걸린다.
+#
+# 회귀점 (낙엽월 1일 19:00, 9번 독방의 쇠창살 앞):
+#   o8_well_open (이름) → o8_well_letters (알베릭의 글자 · 잔향의 각성 · 선택) → o8_well_report (우물 당번의 저녁 보고 — 서약)
+# 첫 열흘:
+#   o8_luca_eyes        1일 밤 기숙사 — 루카가 침상 발치에 앉는다 (SCENARIOS luca_eyes)
+#   o8_descent_hungry / o8_descent   2일 저녁 우물 — 첫째 층의 벤노, 둘째 수업 (아홉째 빵의 값 · seed.ninth_bread)
+#   o8_first_ring       2일 정오~4일 — 원장의 성가집 (원장에게 아뢰었을 때 · broken_ring_trial_1)
+#   o8_gregor_cough     3일 아침 — 대사제의 탕약, "알베릭은 아직 먹고 있느냐" (gregor_cough)
+#   o8_audit_accused / o8_audit_niklas / o8_eldar_audit   5일 새벽 기도 뒤 — 감독관의 감사와 서약 (eldar_audit · bt_luca_report)
+#   o8_board_turned     감사에서 판이 뒤집힐 때 (뒷면에 손톱자국이 있으면 붙잡힌다)
+#   o8_pyre_benno / o8_pyre_other    17일 정화의 뜰 첫 장작 (정본 9.17) — 견습들은 줄지어 외운다
+# 같은 창에 열리는 변형은 파일 순서가 우선이다 (먼저 적은 것이 맞으면 먼저 열린다). 열린 변형은 *_done 변수로 나머지를 닫는다.
+storylets:
+  # ───────────────────────── 회귀점: 침묵의 우물 ─────────────────────────
+  - id: o8_well_open
+    origin: lumen_acolyte
+    trigger: {start: true}
+    stage:
+      - {npc: npc_alberic, at: lm_uc_cell_9, from: "19:00", to: "19:50", doing: "쇠창살 안 — 손톱 없는 손끝으로 창살 밖 흙바닥에 글자를 짚는다"}
+      - {npc: npc_o8_luca, at: lm_undercroft, from: "19:00", to: "19:25", doing: "침묵의 우물 나선 계단 — 몇 층 위에서 발소리를 죽이고 서 있다"}
+      - {npc: npc_o8_luca, at: lm_sem_hall, from: "19:25", to: "20:40", doing: "낭독실 구석 긴 의자 — 구절을 외우는 척한다. 신발 밑창에 흰 돌가루"}
+      - {npc: npc_lm_anselm, at: lm_sem_hall, from: "19:00", to: "20:40", doing: "낭독실 등잔 아래 — 책상 모서리를 두드리며 우물 당번의 보고를 기다린다"}
+      - {npc: npc_lm_tobias, at: lm_inquisition, from: "19:40", to: "21:00", doing: "접수관 처소의 등잔 아래 — 동기 장부를 쓰다가 문 두드리는 소리에 깃펜부터 든다"}
+    text: |
+      젖은 돌 냄새. 그 위에 촛농, 오래 갇힌 몸의 냄새.
+
+      침묵의 우물은 우물이 아니다. 사슬등불 대성당 밑으로 아홉 층을 감아 내려가는 나선 계단이다. 가운데는 바닥이 보이지 않는 구멍이고, 도르래 밧줄 하나가 그 어둠 속으로 늘어져 있다. 층마다 계단이 끝나는 자리에 독방이 하나씩. 너는 버들 바구니를 안고 내려간다. 검은 빵 아홉 덩이. 우물은 바닥부터 먹인다 — 간수들의 규칙이다.
+
+      머리 위 돌 속에서 저녁 기도 종이 울린다. 일곱 번. 지금 위에서는 천이백 명이 한꺼번에 무릎을 꿇는다. 여기서는 종소리가 돌을 타고 내려와 발바닥으로 온다.
+
+      어제까지 이 바구니는 벤노의 것이었다. 기숙사, 네 옆 침상의 벤노. '병이 나서' 바뀌었다고, 안셀름 원장은 그렇게만 말했다. 그 뒤로 아무도 벤노의 이름을 입에 올리지 않는다.
+
+      아홉째 층. 계단이 끝나는 곳에 문 대신 쇠창살이 있다. 아홉 해째 같은 사람이 그 안에 있다. 너는 등잔을 바닥에 내려놓고 무릎을 꿇는다. 첫 빵을 쥔다.
+
+      종소리가 잦아드는 사이, 이름 하나가 들린다. 이 우물에서 들릴 리 없는 목소리로.
+    input: true_name
+    input_label: 어머니가 남긴 이름
+    input_button: 그 이름을 속으로 부른다
+    input_say: 종소리 사이로, 열 해 전의 목소리가 부르는 이름
+    input_sibling: false
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "젖은 돌 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 젖은 돌 냄새."}
+    trace_lines:
+      water: 바구니 손잡이가 젖어 있다. 아니다. 손바닥이 젖었다. 목 안에 물이 있다. 없다. 이 우물은 이름뿐이다.
+      teeth: 목덜미가 가렵다. 긁으면 손톱 밑에 돌가루뿐이다.
+      spear: 옆구리가 시리다. 계단 벽에 기댄 쪽이다.
+      blade: 목이 뜨겁다. 손을 대 보면 성표 고리가 있다. 쇠가 차다.
+      rope: 손목이 쓸린다. 바구니 끈 자국이다. 바구니 끈 자국일 것이다.
+      hunger: 배가 꼬인다. 바구니에 빵이 아홉 덩이 있다. 하나도 네 것이 아니다.
+      fall: 발밑이 꺼진다. 아니다 — 아홉째 층, 마지막 계단이다. 발바닥이 돌을 찾는다. 가운데 구멍에서 밧줄이 흔들린다.
+    return_ink: |
+      ┊ 그 다음엔 손톱 없는 손이 네 문자판을 가리켰다. "그거, 읽을 줄 아느냐." 그리고 계단 위에서 발소리가 멈췄다.
+    after_input: |
+      "{name}."
+
+      열 해 전, 신학원 쪽문. 같은 종이 울리고 있었다. 어머니는 네 목에 쇠고리 성표를 걸어 주고, 귀에 입을 대고 그 이름을 한 번 불렀다. "사제님들한테도 말하지 마라. 이름을 아는 자가 너를 가진다." 그 겨울, 어머니의 성표 번호는 부두 계수소의 장부로 들어갔다. 세렌행.
+
+      이름을 대지 않은 아이는 번호로 적는다. 그날부터 너는 서원 마흔셋이다.
+
+      종이 그친다. 쇠창살 사이로 손이 나온다. 앙상하고, 손톱이 하나도 없다.
+    effects: ["var o8_goal_alberic = true", "note 어머니만 알던 이름 — {name}. 신학원에서는 서원 마흔셋이라 부른다"]
+    next: o8_well_letters
+
+  - id: o8_well_letters
+    origin: lumen_acolyte
+    text: |
+      빵을 쇠창살 안으로 민다. 손이 빵을 받지 않는다. 손가락 하나가 네 허리를 가리킨다 — 끈에 매달린 나무판. 경전 문자판. 교단이 허락한 마흔두 글자가 새겨진 판.
+
+      (똑, 똑똑, 똑.) 손톱 없는 손끝이 돌을 두드린다. 그리고 쉰 목소리가 천천히 온다. "…그거, 읽을 줄 아느냐." 등잔 불빛에 그의 눈에서 물이 흐른다. 우는 것이 아니다. 아홉 해 동안 빛을 보지 못한 눈이다. 너는 고개를 끄덕인다. 견습은 마흔두 글자를 배운다. 낭독하는 사제 곁에서 줄을 짚어 주려고. 그뿐이다.
+
+      "셋째 줄을 읽어 봐라."
+
+      너는 읽는다. '빛은 순종하는 자를 기억한다.' 쇠창살 안에서 낮은 웃음. 이가 몇 남지 않은 소리다. "같은 글자로 이렇게도 쓴다." 손끝이 창살 밖 흙바닥에 글자를 하나씩 짚는다. 같은 글자들이다. 다른 문장이다. '빛은 기억하는 자를 따른다.'
+
+      계단 위에서 발소리가 멈춘다. 몇 층 위. 내려오지도, 올라가지도 않는다.
+
+      흙바닥의 글자들이 떠오르는 것처럼 보인다. 너는 문득 안다. 이 글자는 마흔두 개가 아니었다. 쉰여섯 개였다. 열네 개는 아스테리아가 불탄 뒤 사라졌다. 너는 그 열네 개를 쓸 줄 안다. 손끝이 멈춘다. 쇠창살 너머에서 젖은 눈이 너를 찾는다. "…너는."
+    effects: ["learn fact_o8_same_letters", "learn fact_o8_fourteen_letters", "rel npc_alberic trust 15", "rel npc_alberic like 10", "var o8_alberic_suspects = true", "memory npc_alberic 이상함 새 빵 당번의 눈이 사라진 글자를 아는 눈이었다", "note 9번 독방 — 같은 마흔두 글자로 다른 문장. 그리고 너는 사라진 열네 글자를 안다"]
+    next: o8_well_report
+    choices:
+      - id: listen
+        label: 쇠창살 앞에 앉는다 — 그의 말을 끝까지 듣는다
+        minutes: 45
+        text: |
+          그는 서두르지 않는다. 한 문장씩, 접속사 없이. "에오르는 우리를 노예로 만들지 않았다." 그게 첫 줄이라고 한다. 무엇의 첫 줄인지는 말하지 않는다. 너는 안다 — 기숙사에서 이불 밑으로만 오가는 이름. 빛의 서신.
+
+          "누가 처음 한 말인지는 묻지 마라. 예의다." 손끝이 흙바닥의 글자를 하나씩 지운다. 지우는 데 오래 걸린다.
+
+          남은 빵 여덟 덩이를 안고 올라가는 동안, 계단 위의 발소리는 내내 너보다 몇 층 앞에 있다.
+        effects: ["learn fact_o8_letter_first_line", "stress 10", "rel npc_alberic trust 6", "rel npc_alberic like 4", "var o8_luca_heard = true", "var o8_luca_doubt += 1", "memory npc_alberic 정직함 새 빵 당번은 끝까지 들었다", "note 빛의 서신의 첫 줄 — 에오르는 우리를 노예로 만들지 않았다"]
+      - id: memorize
+        label: 그가 짚는 순서를 외운다 — 손끝이 멈춘 자리마다
+        minutes: 35
+        check: {skill: 읽고쓰기, D: 26, helps: [memory_palace, scribe, photo_memory]}
+        success:
+          text: |
+            경전에서 글자는 늘 같은 자리에 선다. 그의 손끝은 그 자리를 무시한다. 소리를 따라간다. 네 머릿속에서 마흔두 개의 글자가 처음으로 줄을 벗어난다.
+
+            너는 흙바닥에 손가락을 댄다. 그가 쓰지 않은 말을 쓴다. 네 이름의 첫 글자. 손톱 없는 손이 그 글자를 덮는다. 빨리. "여기서는 아니다." 그런데 그 손이 떨린다. 웃음 때문에.
+
+            재의 법은 그것을 한 줄로 적는다. 글을 아는 인간은 교수대.
+          effects: ["skill_gain 읽고쓰기 6", "var o8_letters_free = true", "var o8_lessons += 1", "learn fact_o8_any_sentence", "rel npc_alberic trust 8", "temper 용기 2", "memory npc_alberic 영리함 빵 당번이 한 번에 배열을 외웠다", "note 마흔두 글자를 경전의 순서가 아니라 소리대로 — 무슨 말이든 쓸 수 있다"]
+        failure:
+          text: |
+            그의 손끝을 따라가다 글자들이 서로 자리를 바꾼다. '기억'이 '순종'으로 돌아가고, 문장은 다시 경전이 된다. 마흔두 글자는 열 해 동안 같은 자리에 서 있었다. 하룻저녁에 비켜서지 않는다.
+
+            "괜찮다." 쇠창살 안에서 쉰 목소리. "빵은 내일도 온다. 가르쳐 주마."
+          effects: ["skill_gain 읽고쓰기 2", "var o8_lessons += 1", "rel npc_alberic like 3"]
+      - id: footsteps
+        label: 등잔을 들어 계단 위를 비춘다 — 누가 서 있는가
+        minutes: 30
+        check: {skill: 통찰, D: 24, helps: [bat_ear, night_eyes, hawk_eye]}
+        success:
+          text: |
+            불빛이 세 바퀴 위의 난간에 닿는다. 회색 법의 자락. 성표를 쥔 하얀 손. 루카다 — 같은 해에 서원한 견습. 빵 당번은 그가 원장에게 청했던 자리다.
+
+            불빛을 받자 그가 한 걸음 물러선다. 아직 아무것도 모르는 얼굴이다. 글자를 본 얼굴이 아니라 — 목소리만 들은 얼굴.
+
+            발소리가 올라가 사라진다. 빵 당번 말고는 아무도 내려오면 안 되는 계단이다. 그도 그것을 안다.
+          effects: ["var o8_luca_seen = true", "learn fact_o8_luca_on_stair", "memory npc_o8_luca 위험함 마흔셋이 우물 계단 위의 나를 등잔으로 비췄다", "note 루카가 우물 계단에 있었다 — 빵 당번 말고는 내려오면 안 되는 계단"]
+        failure:
+          text: |
+            등잔을 드는 사이 발소리가 먼저 움직인다. 빠르게, 위로. 불빛이 닿은 난간에는 아무도 없다. 돌가루가 조금 떨어져 내린다.
+
+            누구였는지 모른다. 무엇을 들었는지도.
+          effects: ["var o8_luca_heard = true", "var o8_luca_doubt += 1"]
+      - id: wrist
+        label: 쇠창살 사이로 그의 손목을 잡는다 — 더러운 헝겊 밑을 본다
+        minutes: 30
+        check: {skill: 손재주, D: 20, helps: [medic, herbalist]}
+        success:
+          text: |
+            헝겊 밑에서 쇠고랑 자국이 곪아 있다. 너는 물그릇의 물로 그것을 씻는다. 그가 숨을 들이켠다. 소리는 내지 않는다. 법의 자락 끝을 이로 찢어 손목에 감는다. 낭독실에서 늙은 사제들의 손을 싸매던 손이다.
+
+            "…가르쳐 주마." 그가 말한다. 무엇을 가르쳐 주겠다는지는 말하지 않는다. 고맙다는 말 대신인 것 같다.
+          effects: ["var o8_wrist_tended = true", "rel npc_alberic trust 8", "rel npc_alberic like 6", "temper 자비 3", "memory npc_alberic 다정함 빵 당번이 곪은 손목을 씻고 싸매 주었다", "note 9번의 손목 — 쇠고랑 자국이 곪아 있었다. 법의 자락으로 싸맸다"]
+        failure:
+          text: |
+            헝겊 밑에서 쇠고랑 자국이 곪아 있다. 뜨겁고, 단내가 난다. 물그릇은 비어 있다. 손에는 아무것도 없다 — 약도, 깨끗한 천도.
+
+            "괜찮다." 그가 손을 거둔다. "아홉 해 동안 이보다 나빴던 날이 많았다."
+          effects: ["var o8_wrist_bad = true", "rel npc_alberic like 3", "stress 4"]
+      - id: ninth_bread
+        label: 바구니에서 빵 하나를 더 꺼내 쇠창살 안으로 민다
+        minutes: 30
+        text: |
+          둘째 빵이 흙바닥을 미끄러져 들어간다. 손이 그것을 오래 쥐고 있다. "이건 누구 몫이냐."
+
+          너는 대답하지 못한다. 그는 빵을 돌려주지 않는다. 아홉 해 동안 빵을 거절한 적이 없다고 한다. 거절은 배부른 자의 예의라고.
+
+          올라가는 길, 일곱 덩이로 여덟 문을 지난다. 첫째 층 맨 끝 문 앞에서 바구니가 빈다. 문 아래 틈 너머에서 아무 소리도 나지 않는다. 너는 빈 바구니를 들고 지나간다.
+        effects: ["var o8_ninth_bread = true", "deed share_food npc_alberic unseen", "rel npc_alberic like 6", "temper 자비 2", "note 아홉째 빵을 9번에게 — 첫째 층 맨 끝 독방이 오늘 빈손이다. 누구의 문인지 모른다"]
+      - id: obey
+        label: 빵만 넣고 일어선다 — 독방의 이단과는 말을 섞지 않는다, 규칙대로
+        minutes: 30
+        text: |
+          너는 흙바닥의 글자를 보지 않는다. 보지 않은 것은 아뢰지 않아도 된다 — 그렇게 생각하기로 한다.
+
+          쇠창살 안의 손끝이 흙 위에서 멈춘 채로 있다. 글자는 지워지지 않는다. 그가 지우지 않으면, 밤 순찰의 등잔이 그것을 볼 것이다.
+
+          여덟 문, 여덟 덩이. 문마다 '빛이 너를 기억한다.' 계단 위의 발소리는 너보다 먼저 올라가 사라진다.
+        effects: ["var o8_obeyed = true", "var o8_dirt_letters = true", "rel npc_alberic like -2", "stress 6", "temper 용기 -2"]
+      # ── ◈ 기억 선택지: 지난 회차에 계단 위의 얼굴을 보았다 ──
+      - id: mem_luca
+        needs_memory: fact:fact_o8_luca_on_stair
+        label: '계단 위를 올려다보지 않고, 낮게: "루카. 내려와."'
+        minutes: 30
+        text: |
+          발소리가 멈춘 채로 숨을 쉰다. 길게. 그리고 내려온다 — 두 바퀴. 등잔 불빛 가장자리에 루카의 얼굴이 들어온다. 하얗다.
+
+          "…어떻게 알았어." 그는 쇠창살 쪽을 보지 않는다. 볼 수 없는 것처럼.
+
+          빵 당번 말고는 아무도 내려오면 안 되는 계단이다. 이제 그도 여기 있다. 네가 그것을 안다는 것을, 그가 안다.
+        effects: ["var o8_luca_seen = true", "var o8_luca_caught = true", "var o8_luca_quiet = true", "rel npc_o8_luca trust -6", "memory npc_o8_luca 이상함 마흔셋이 올려다보지도 않고 내 이름을 불렀다", "note 루카를 우물 계단에서 불러 내렸다 — 서로 입을 다물어야 한다"]
+
+  # 우물 당번의 저녁 보고 — 서약 "본 것을 보고하리라"
+  - id: o8_well_report
+    origin: lumen_acolyte
+    text: |
+      아홉 층을 다시 오른다. 대성당 마루로 올라서자 저녁 기도가 막 끝나 있다. 신도들이 흩어지는 발소리, 꺼지는 등잔 냄새.
+
+      낭독실. 등잔 하나. 안셀름 원장 — 예순셋, 너를 쪽문에서 받아 준 노인 — 이 석판 앞에 앉아 책상 모서리를 중지로 두드리고 있다. 석판 옆에 식은 귀리죽 한 그릇. 우물 당번의 몫이다.
+
+      우물 당번은 돌아와 원장에게 아뢴다. 서원할 때 너는 그렇게 맹세했다 — 본 것을 보고하리라.
+
+      구석 긴 의자에서 루카가 구절을 외운다. 입술이 움직인다. 소리는 나지 않는다. 신발 밑창에 우물 계단의 흰 돌가루가 묻어 있다.
+
+      "구절 하나 외워 보게." 원장이 눈을 감은 채 말한다. 그것이 그의 인사다. "그리고 — 우물은 어땠나."
+    effects: ["goto lm_sem_hall"]
+    choices:
+      - id: tell_all
+        label: '"9번 독방의 사람이 제 문자판을 읽게 했습니다. 같은 글자로 — 다른 문장을 썼습니다."'
+        minutes: 20
+        text: |
+          두드리던 손가락이 멈춘다. 원장은 눈을 뜨지 않는다. "루카. 기숙사로 가게. 등잔은 두고." 루카가 일어선다. 천천히. 문간에서 한 번 돌아본다.
+
+          문이 닫히자 원장이 눈을 뜬다. 오래 너를 본다. "그 사람은 이 낭독실에서 가르쳤네. 글은 그림이 아니라 그릇이라고 했지." 손가락이 다시 책상 모서리로 간다. 박자가 느리다. "자네가 본 것은 내가 들었네. 서약은 지켜졌어."
+
+          귀리죽 그릇이 네 쪽으로 온다. "다 먹고, 내일 정오 원장실로 오게. 구절 하나를 더 가르쳐 주지."
+        effects: ["var o8_told_anselm = true", "var o8_oath_kept += 1", "hunger -1", "rel npc_lm_anselm trust 10", "temper 정직 3", "memory npc_lm_anselm 정직함 마흔셋이 우물에서 본 것을 그대로 아뢰었다", "note 원장에게 본 대로 아뢰었다 — 내일 정오, 원장실"]
+      - id: to_inquisition
+        label: 원장을 지나쳐 정화청으로 간다 — 서약은 원장이 아니라 빛에게 한 것이다
+        minutes: 40
+        risk: 9번 독방에 벌이 내린다
+        text: |
+          "빵은 넣었습니다." 그 말만 하고 너는 물러난다. 원장의 손가락이 책상 위에서 멈춘다. 붙잡지 않는다.
+
+          정화의 뜰 서쪽, 등불 심문소. 밀고 함 홀은 닫혔다. 접수관의 처소에 등잔이 켜져 있다. 토비아스 — 한 해 사백 건을 받아 적는 사람 — 가 문을 열고, 아무것도 묻기 전에 깃펜부터 든다.
+
+          "이름은." "서원 마흔셋." "이름은?" "마흔셋." 두 번. 그는 네 말을 받아 적는다. 9번 독방, 문자판, 같은 글자로 다른 문장. 다 적고 나서 그는 다른 장부를 펴 한 줄을 더 쓴다. 너는 그 줄을 읽을 수 있다. 동기 — 서약.
+
+          그가 동판 쪽지 하나를 네 손바닥에 놓는다. 따뜻하다. 그의 손에 오래 있었던 것이다.
+        effects: ["var o8_reported_inq = true", "var o8_oath_kept += 1", "goto lm_inquisition", "item o8_reward_note", "deed inform npc_alberic", "temper 신앙 8", "temper 충성 3", "temper 자비 -4", "rel npc_lm_tobias trust 10", "rel npc_lm_anselm trust -6", "memory npc_lm_tobias 정직함 신학원 견습 마흔셋이 9번의 글자 수업을 고했다 — 동기는 서약", "note 정화청 접수관에게 9번의 글자 수업을 고했다 — 동판 쪽지 하나"]
+      - id: tell_bread
+        label: '"아홉 독방에 빵을 넣었습니다. 그뿐입니다."'
+        minutes: 15
+        text: |
+          "그뿐인가." 원장이 눈을 뜬다. 오래 너를 본다. 구석에서 루카의 입술이 멈춘다.
+
+          "…그래. 먹고 자게." 손가락이 다시 책상 모서리로 간다. 아까보다 느리다.
+
+          귀리죽은 식었다. 너는 그것을 다 먹는다. 서원한 입으로.
+        effects: ["var o8_oath_broken += 1", "hunger -1", "temper 정직 -3", "temper 신앙 -2", "stress 6", "agenda if var o8_luca_heard == true: var o8_luca_doubt += 1", "memory npc_lm_anselm 이상함 마흔셋이 우물에서 아무것도 보지 못했다고 했다"]
+      # ── ◈ 기억 선택지: 지난 회차에 원장이 무엇인지 알았다 ──
+      - id: mem_clasp
+        needs_memory: fact:fact_lm_anselm_clasp
+        label: '원장에게만 들리게: "걸쇠께서는 오늘 고리 하나를 더 거시렵니까."'
+        minutes: 20
+        text: |
+          두드리던 손가락이 멈춘다. 이번에는 다시 움직이지 않는다. "루카, 기숙사로 가게. 등잔은 두고."
+
+          문이 닫히고 한참 뒤에야 그가 입을 연다. "누가 그 낱말을 가르쳤나." 대답을 기다리지 않는다. "카타콤의 못 하나가 아직 비어 있네. …아니. 아직은 아니야."
+
+          너는 우물에서 본 것을 아뢴다. 다. 그는 끝까지 듣고, 고개를 한 번 끄덕인다. 귀리죽 그릇이 네 쪽으로 온다. "내일 정오, 원장실로 오게."
+        effects: ["var o8_told_anselm = true", "var o8_oath_kept += 1", "var o8_ring_known = true", "hunger -1", "rel npc_lm_anselm trust 15", "memory npc_lm_anselm 이상함 마흔셋이 걸쇠라는 낱말을 안다 — 누가 가르쳤나", "note 원장은 끊어진 고리의 걸쇠다 — 카타콤에 빈 못 하나"]
+
+  # ───────────────────────── 1일 밤: 루카의 눈 ─────────────────────────
+  - id: o8_luca_eyes
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-01 22:00", to: "312-09-02 03:00"}, at: lm_sem_dorm, night: true, when: ["alive npc_o8_luca", "var o8_luca_caught != true", "var o8_luca_taken != true"]}
+    stage:
+      - {npc: npc_o8_luca, at: lm_sem_dorm, from: "22:00", to: "23:30", doing: "마흔셋의 침상 발치에 앉아 있다 — 성표를 쥐고"}
+    text: |
+      밤 기도 종이 그치고 등잔이 꺼진다. 견습 기숙사, 마흔 개의 침상, 마흔 개의 숨. 마지막 침상에서 니클라스의 손가락이 어둠에 무언가를 그리다 멈춘다.
+
+      네 침상 발치가 꺼진다. 누가 앉았다. 루카다. 열 해 전 같은 해에 성표를 받은 아이. 빵 당번은 그가 원장에게 청했던 자리다. 열흘 전쯤 그가 밀고 함 홀에서 동판 쪽지를 받아 왔다는 말이 기숙사에 돌았다. 벤노가 '병이 나기' 사흘 전이었다.
+
+      "우물에서 오래 있었지." 속삭임이다. 그의 손이 목의 성표를 쥐고 있다. 손가락 마디가 하얗다. "아홉째 층. 그 사람이 뭐라고 했어?"
+
+      대답을 기다리는 동안 그는 숨을 참는다. 그 역시 열일곱 살이다.
+    choices:
+      - id: persuade
+        label: '"빵을 넣었어. 고맙다고 하더라. 그게 다야."'
+        minutes: 10
+        check: {skill: 기만, D: 22, helps: [deceit, actor, false_face], warn: ["var o8_luca_seen == true"]}
+        success:
+          text: |
+            루카가 한참 너를 본다. 어둠 속이라 얼굴은 보이지 않는다. 숨소리만. "…그래. 빛이 보고 계셔."
+
+            그가 일어난다. 자기 침상으로 가는 발소리가 조심스럽다. 믿어서가 아니다. 아직 아뢸 만큼은 아니라서다.
+          effects: ["agenda if var o8_luca_doubt > 0: var o8_luca_doubt -= 1", "rel npc_o8_luca trust 4", "memory npc_o8_luca 이상함 마흔셋은 우물에서 빵만 넣었다고 했다"]
+        failure:
+          text: |
+            "거짓말." 속삭임이 날카롭다. "나 계단에 있었어. 세 바퀴 위에. 그 사람 목소리가 길었어."
+
+            그는 일어나지 않는다. 한참 뒤에야 간다. 성표를 쥔 채로.
+          effects: ["var o8_luca_doubt += 1", "var o8_luca_heard = true", "memory npc_o8_luca 거짓말쟁이 마흔셋이 우물 일로 거짓말을 했다"]
+      - id: leverage
+        when: ["var o8_luca_seen == true"]
+        label: '"너도 계단에 있었지. 빵 당번 말고는 아무도 내려가면 안 되는 계단에."'
+        minutes: 10
+        check: {skill: 위압, D: 20, helps: [menace, command]}
+        success:
+          text: |
+            성표를 쥔 손이 풀린다. 다시 쥔다. "…나는 — 보려고 간 거야. 서약대로." 그 말이 그의 귀에도 가볍게 들린다. 둘 다 안다. 계단은 계단이다.
+
+            "알았어." 그가 일어선다. "아무도 아무 데도 안 갔어."
+          effects: ["var o8_luca_bound = true", "var o8_luca_quiet = true", "rel npc_o8_luca like -6", "memory npc_o8_luca 위험함 마흔셋이 우물 계단 일로 나를 쥐고 있다", "note 루카와 나 — 서로의 계단을 안다. 둘 다 입을 다문다"]
+        failure:
+          text: |
+            그가 웃는다. 소리 없이. "그럼 둘 다 아뢰자. 누구 말을 믿을까. 동판 쪽지를 받아 본 사람하고, 9번 앞에 오래 앉아 있던 사람하고."
+
+            그는 일어서지 않는다. 기다린다. 네가 먼저 눈을 돌리기를.
+          effects: ["var o8_luca_doubt += 1"]
+      - id: show_letters
+        when: ["var o8_letters_free == true"]
+        label: 침상 옆 바닥의 먼지에 손가락으로 쓴다 — 마흔두 글자로, 경전에 없는 문장을
+        minutes: 20
+        check: {skill: 화술, D: 30, helps: [tongue, teacher, crowd_voice]}
+        success:
+          text: |
+            달빛이 창살 모양으로 바닥에 떨어진다. 너는 그 안에 쓴다. 루카, 너도 읽을 수 있다. 그가 아는 글자들이다. 경전의 글자들이다. 그런데 경전이 아니다.
+
+            루카의 숨이 멎는다. 성표를 쥔 손이 풀린다. 오래. "…다시." 목소리가 갈라진다. "다시 해 봐."
+          effects: ["var o8_luca_turned = true", "var o8_luca_quiet = true", "rel npc_o8_luca trust 10", "temper 용기 3", "memory npc_o8_luca 이상함 마흔셋이 경전의 글자로 경전이 아닌 말을 썼다 — 내 이름이 들어 있었다", "note 루카에게 글자를 보였다 — 그가 '다시'라고 했다"]
+        failure:
+          text: |
+            글자 셋에서 그의 손이 네 손목을 잡는다. 아프게. "너 —" 속삭임이 높아진다. 옆 침상에서 누가 뒤척인다. "너 그걸… 쓸 줄 알아?"
+
+            그는 손바닥으로 먼지를 지운다. 다 지우고도 계속 문지른다. 자기 침상으로 돌아가서도 눕지 않는다. 앉아서, 밤새.
+          effects: ["var o8_luca_doubt += 2", "memory npc_o8_luca 위험함 마흔셋이 금지된 글자를 쓸 줄 안다"]
+      - id: frame_luca
+        when: ["var o8_letters_free == true"]
+        label: 그가 잠들기를 기다린다 — 그의 문자판 뒷면에, 그 배열을 새긴다
+        minutes: 60
+        risk: 그 역시 열일곱 살이다
+        check: {skill: 은신, D: 22, helps: [shadow_step, night_eyes]}
+        success:
+          text: |
+            루카는 성표를 쥔 채 잠든다. 그의 문자판은 침상 기둥에 걸려 있다. 너는 그것을 뒤집는다. 손톱이 나무를 판다. 경전의 순서가 아닌 순서. 그가 읽을 줄 모르는 순서.
+
+            판을 제자리에 건다. 끈의 매듭까지 그대로. 네 침상으로 돌아와 눕는다. 마지막 침상에서 니클라스의 숨이 고르다. 고르다고, 너는 믿는다.
+          effects: ["var o8_luca_framed = true", "deed inform npc_o8_luca unseen", "temper 자비 -10", "stress 14", "note 루카의 문자판 뒷면 — 내가 새긴 배열. 그는 모른다"]
+        failure:
+          text: |
+            판을 뒤집는 순간 마지막 침상에서 숨소리가 멈춘다. 니클라스가 눈을 뜨고 있다. 그는 아무것도 묻지 않는다. 다만 손가락 하나가 허공에서 아주 천천히 무언가의 모양을 그린다. 네가 판 위에 새기려던 모양을.
+
+            너는 판을 다시 건다. 손톱자국 하나 없이.
+          effects: ["var o8_niklas_saw = true", "var o8_niklas_watch = true", "stress 10", "memory npc_lm_niklas 이상함 마흔셋이 밤중에 루카의 문자판을 뒤집었다"]
+      - id: give_niklas
+        label: '"…내가 본 건 그 사람이 아니야. 니클라스. 밤마다 허공에 글자를 그려."'
+        minutes: 10
+        risk: 니클라스
+        text: |
+          루카의 고개가 마지막 침상 쪽으로 돈다. 어둠 속에서 니클라스의 손가락이 아직 무언가를 그리고 있다. 잠결에.
+
+          "…보여." 루카가 속삭인다. 그의 손이 성표에서 풀린다. 처음으로. 그가 일어난다. 너에게 고맙다는 말은 하지 않는다. 그 대신 내일 아침 무엇을 아뢸지를 입속으로 한 번 외운다.
+        effects: ["var o8_niklas_named = true", "var o8_niklas_watch = true", "var o8_luca_doubt = 0", "deed inform npc_lm_niklas", "agenda learn npc_o8_luca fact_lm_niklas_shape_memory", "temper 정직 -4", "temper 자비 -6", "stress 12", "memory npc_o8_luca 이상함 마흔셋이 우물 대신 니클라스를 내주었다", "note 루카에게 니클라스를 주었다"]
+      - id: turn_away
+        label: 돌아눕는다 — 벽 쪽으로
+        minutes: 10
+        text: |
+          벽의 돌이 차다. 등 뒤에서 루카의 숨이 한참 그대로 있다. "그래." 마침내 그가 일어선다. "그럼 내가 알아서 아뢸게. 서약대로."
+
+          그의 발소리가 자기 침상으로 간다. 성표 고리가 침상 기둥에 한 번 부딪힌다.
+        effects: ["agenda if var o8_luca_quiet != true: var o8_luca_doubt += 1", "stress 4"]
+      # ── ◈ 기억 선택지: 지난 회차에 벤노에게서 들었다 ──
+      - id: mem_benno
+        needs_memory: fact:fact_o8_benno_reported
+        label: '"벤노한테도 이렇게 물었어? 열흘 전에, 이렇게 침상 발치에 앉아서."'
+        minutes: 10
+        text: |
+          성표가 그의 손에서 미끄러진다. 쇠고리가 침상 기둥에 부딪힌다. 소리가 크다. 마흔 개의 숨 가운데 몇이 멈춘다.
+
+          "…벤노는 아팠어." 그의 목소리가 갈라진다. "병이 났다고 했잖아. 원장님이 그랬잖아." 그는 일어선다. 자기 침상으로 가지 않는다. 문 쪽으로 간다. 밤 기도는 끝났는데.
+        effects: ["var o8_luca_shaken = true", "var o8_luca_quiet = true", "rel npc_o8_luca like -4", "memory npc_o8_luca 이상함 마흔셋이 벤노의 일을 안다 — 누가 말했나"]
+
+  # ───────────────────────── 2일 저녁: 다시 우물로 (아홉째 빵의 값) ─────────────────────────
+  # 변형 둘 — 아홉째 빵을 9번에게 더 넣었으면 첫째 층의 벤노가 빈손으로 밤을 났다. 선택지는 같다 (&o8_descent_choices).
+  - id: o8_descent_hungry
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-02 18:55", to: "312-09-02 21:00"}, at: "@lumen", when: ["var o8_ninth_bread == true", "var o8_descent_done != true", "alive npc_alberic"]}
+    stage:
+      - {npc: npc_lm_jakob, at: lm_uc_gate, from: "312-09-02 18:50", to: "312-09-02 19:20", doing: "우물 문 — 빵 바구니를 건넨다. 묻지 않는다"}
+    text: |
+      저녁 기도 종. 우물 문에서 간수 야코프 — 숨죽인 목소리, 소매 안에 열쇠 꾸러미 — 가 바구니를 건넨다. 검은 빵 아홉. 그는 아무것도 묻지 않는다. 묻지 않는 것이 그의 대답이다.
+
+      첫째 층. 맨 끝 독방의 문 아래 틈에서 목소리가 너를 부른다. 이름이 아니라 번호로. "마흔셋."
+
+      너는 그 목소리를 안다. 기숙사, 네 옆 침상. 벤노다.
+
+      "어제 빵이 안 왔어." 웃음 같은 숨이 틈으로 새어 나온다. "그래서 알았지. 새 당번이 아래에서 누구한테 하나를 더 줬구나. 나도 그랬어. 그래서 여기 있는 거야."
+
+      바닥부터 먹인다. 그의 빵은 오늘도 마지막이다.
+
+      아홉째 층. (똑, 똑똑, 똑.) 쇠창살 안에서 손끝이 돌을 두드리고, 옆 감방에서 가늘게 대답이 온다. 똑똑. 어제의 흙바닥 글자는 지워져 있다.
+    effects: ["var o8_descent_done = true", "var o8_benno_known = true", "goto lm_uc_cell_9", "note 벤노는 병이 나지 않았다 — 우물 첫째 층 맨 끝 독방. 어제 빵을 받지 못한 문이 그의 문이었다"]
+    choices: &o8_descent_choices
+      - id: lesson
+        label: 쇠창살 앞에 앉는다 — 그가 짚는 글자를 따라 짚는다
+        minutes: 45
+        risk: 계단 위의 귀
+        check: {skill: 읽고쓰기, D: 24, helps: [memory_palace, scribe, photo_memory]}
+        success:
+          text: |
+            오늘은 문장이 아니라 소리다. 그는 글자 하나를 짚고 소리를 낸다. 낮게. 너는 따라 짚는다. 같은 소리가 경전의 다른 자리에도 있다는 것을, 그 소리들을 이으면 아무 말이나 된다는 것을 — 손끝이 먼저 안다.
+
+            "써 봐라." 너는 흙바닥에 쓴다. 벤노. 첫째 층의 그 이름을. 그가 손끝으로 그 글자들을 더듬는다. 오래. "…좋은 이름이다. 지워라."
+
+            네가 지우는 동안 계단 어딘가에서 돌가루가 떨어진다.
+          effects: ["skill_gain 읽고쓰기 5", "var o8_letters_free = true", "var o8_lessons += 1", "learn fact_o8_any_sentence", "rel npc_alberic trust 6", "agenda if var o8_luca_quiet != true: var o8_luca_doubt += 1", "note 9번에게 소리를 배웠다 — 마흔두 글자로 무슨 말이든"]
+        failure:
+          text: |
+            그의 소리를 따라가다 손끝이 엉킨다. 열 해 동안 같은 자리에 서 있던 글자들이 비켜서지 않는다.
+
+            그가 손을 거둔다. "괜찮다. 손이 먼저 겁을 낸다. 내일도 빵은 온다."
+          effects: ["skill_gain 읽고쓰기 2", "var o8_lessons += 1", "rel npc_alberic like 3", "agenda if var o8_luca_quiet != true: var o8_luca_doubt += 1"]
+      - id: wrist_again
+        when: ["var o8_wrist_tended != true"]
+        label: 그의 손목 — 곪은 자리를 물로 씻고 법의 자락으로 싸맨다
+        minutes: 30
+        check: {skill: 손재주, D: 18, helps: [medic, herbalist]}
+        success:
+          text: |
+            물그릇의 물을 다 쓴다. 법의 자락은 이제 무릎 아래가 들쭉날쭉하다. 원장이 그것을 볼 것이다.
+
+            그는 손을 거두지 않는다. 다 감을 때까지. 다 감고 나서야 두드림이 다시 시작된다. 옆 감방에 무언가를 전하는 박자다. 너에 대한 것인지는 모른다.
+          effects: ["var o8_wrist_tended = true", "var o8_alberic_fever = false", "rel npc_alberic trust 6", "temper 자비 3", "memory npc_alberic 다정함 빵 당번이 곪은 손목을 씻고 싸매 주었다"]
+        failure:
+          text: |
+            헝겊을 벗기자 단내가 올라온다. 손목이 뜨겁다. 손목만이 아니다. 이마도.
+
+            너는 물을 붓고, 감고, 다시 감는다. 그가 웃는다. 이가 몇 남지 않은 웃음. "열이 나는 건 몸이 아직 싸운다는 뜻이다."
+          effects: ["var o8_alberic_fever = true", "stress 6", "rel npc_alberic like 3"]
+      - id: scratch_board
+        when: ["var o8_letters_free == true", "var o8_board_marked != true"]
+        label: 배운 순서를 잊지 않으려고 — 문자판 뒷면에 손톱으로 새긴다
+        minutes: 20
+        risk: 판을 뒤집는 사람은 안다
+        text: |
+          등잔을 계단에 내려놓고, 판을 뒤집는다. 손톱이 나무를 판다. 경전의 순서가 아니라 소리의 순서. 마흔두 개의 홈 뒤에 마흔두 개의 긁힌 자국.
+
+          쇠창살 안에서 두드림이 멎는다. "…그 판은 너보다 오래 산다." 그는 그 말만 한다.
+        effects: ["skill_gain 읽고쓰기 3", "var o8_board_marked = true", "note 문자판 뒷면에 소리의 순서를 새겼다 — 판을 뒤집는 사람은 안다"]
+      - id: talk_benno
+        label: 올라가는 길 — 첫째 층의 문 앞에 무릎을 꿇고 벤노에게 묻는다
+        minutes: 30
+        risk: 독방과 말을 섞는 것 — 벤노가 여기 온 까닭
+        text: |
+          빵을 문 아래로 밀어 넣으며 너는 일어서지 않는다. 틈 너머의 숨이 멈춘다. 그러다 빠르게 말한다. 들킬 시간이 없다는 듯이.
+
+          "루카야. 내가 9번 앞에 오래 있었다고, 글자를 짚었다고. 동판 쪽지 하나 받았대." 웃음 같은 숨. "열이렛날. 장작 열둘. 간수가 세는 걸 들었어. 나는 일곱째래."
+
+          그가 틈에 대고 마지막으로 말한다. "너도 루카한테는 말하지 마. 아무것도."
+        effects: ["learn fact_o8_benno_reported", "learn fact_o8_benno_list", "var o8_benno_known = true", "stress 8", "temper 용기 2", "note 벤노 — 루카가 고했다. 낙엽월 17일 첫 장작, 일곱째"]
+      - id: confess_alberic
+        when: ["var o8_reported_inq == true"]
+        label: '"제가 아뢰었습니다. 어젯밤, 정화청에."'
+        minutes: 15
+        text: |
+          두드림이 멎는다. 쇠창살 안의 그는 등을 돌리고 앉아 있다. 오늘 그의 몫은 반 덩이였다. 바구니에서 그것을 꺼낸 것이 네 손이었다.
+
+          "…알고 있다." 쉰 목소리. "서약을 지키는 아이를 미워한 적은 없다. 아홉 해 동안 한 번도." 그는 돌아보지 않는다. "다만 오늘은 가르치지 않겠다."
+        effects: ["rel npc_alberic trust 4", "rel npc_alberic like -5", "stress 10", "temper 정직 2"]
+      - id: climb
+        label: 빵을 넣고 — 여덟 문을 거쳐 올라간다
+        minutes: 30
+        text: |
+          바닥에서 꼭대기까지. 문마다 '빛이 너를 기억한다.' 첫째 층 맨 끝 문 아래로 마지막 빵이 들어간다. 틈 너머에서 아무 말도 없다. 빵을 받는 소리만.
+        effects: ["stress 3", "goto lm_uc_gate"]
+      # ── ◈ 기억 선택지: 지난 회차에 그가 머릿속에만 둔 문장을 들었다 ──
+      - id: mem_second_letter
+        needs_memory: fact:fact_lu_alberic_second_letter
+        label: '쇠창살에 이마를 대고: "우리는 돌아오지 않는다. 그러니 무릎 꿇은 채 이번 생을 낭비하지 마라."'
+        minutes: 20
+        text: |
+          두드림이 멎는다. 아주 오래. 옆 감방에서 대답을 기다리는 두드림이 한 번 오고, 그친다.
+
+          "…그 문장을 어디서 들었느냐." 그의 목소리에 처음으로 박자가 없다. "아직 아무 데도 쓰지 않았다. 벽에도. 머릿속에만 있다." 손톱 없는 손이 쇠창살 사이로 나와 네 손등을 찾는다. 차다. "돌아오는 이는 — 노래 속에만 있는 줄 알았다."
+        effects: ["var o8_alberic_knows = true", "rel npc_alberic trust 20", "echo_sign 1 아직 쓰이지 않은 서신의 첫 문장을 안다", "stress 4", "memory npc_alberic 이상함 빵 당번이 아직 쓰지 않은 두 번째 서신의 첫 문장을 말했다"]
+
+  - id: o8_descent
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-02 18:55", to: "312-09-02 21:00"}, at: "@lumen", when: ["var o8_descent_done != true", "alive npc_alberic"]}
+    text: |
+      저녁 기도 종. 우물 문에서 간수 야코프 — 숨죽인 목소리, 소매 안에 열쇠 꾸러미 — 가 바구니를 건넨다. 검은 빵 아홉. 그는 아무것도 묻지 않는다. 묻지 않는 것이 그의 대답이다.
+
+      첫째 층. 맨 끝 독방의 문 아래 틈에서 목소리가 너를 부른다. 이름이 아니라 번호로. "마흔셋."
+
+      너는 그 목소리를 안다. 기숙사, 네 옆 침상. 벤노다. 어제 너는 이 문 앞에 빵을 놓고 지나갔다. 누구의 문인지 모른 채.
+
+      "아래에 가지 마." 틈 너머에서 숨이 빠르다. "아니 — 가. 빵은 줘야지. 말만 하지 마. 아무 말도. 나는 그 말 때문에 여기 있어."
+
+      아홉째 층. (똑, 똑똑, 똑.) 쇠창살 안에서 손끝이 돌을 두드리고, 옆 감방에서 가늘게 대답이 온다. 똑똑. 어제의 흙바닥 글자는 지워져 있다.
+    effects: ["var o8_descent_done = true", "var o8_benno_known = true", "goto lm_uc_cell_9", "note 벤노는 병이 나지 않았다 — 우물 첫째 층 맨 끝 독방"]
+    choices: *o8_descent_choices
+
+  # ───────────────────────── 2일 정오~4일: 첫 번째 고리 (원장에게 아뢰었을 때) ─────────────────────────
+  - id: o8_first_ring
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-02 12:00", to: "312-09-04 18:00"}, at: "@lumen", when: ["var o8_told_anselm == true", "alive npc_lm_anselm", "var o8_betrayed_anselm != true"]}
+    text: |
+      정오 기도 종이 그치자 심부름 견습 하나가 너를 찾는다. 원장실.
+
+      안셀름 원장은 책상 모서리를 두드리지 않는다. 손이 책상 위의 얇은 책을 덮고 있다. 가죽 표지, 성 마렌 축일 성가집. 책등을 한 번 뜯었다가 다시 꿰맨 자리가 보인다. 꿰맨 실이 새것이다.
+
+      "구절 하나 외워 보게." 너는 외운다. 그는 뜻을 묻지 않는다. "어젯밤 자네가 아뢴 사람은 글은 그릇이라고 했네. 그릇은 무언가를 나르는 거야."
+
+      그가 성가집을 네 쪽으로 민다. "성가 막사의 라우렌츠 사제에게. 오후 연습 전에. 아무것도 묻지 말고 — 아무것도 보고하지 말고."
+    effects: ["goto lm_seminary"]
+    choices:
+      - id: carry
+        label: 성가집을 법의 안에 품고 회랑을 지난다 — 정화청 창 아래로
+        minutes: 40
+        check: {skill: 기만, D: 22, helps: [actor, false_face, etiquette]}
+        success:
+          text: |
+            회랑의 그림자가 짧다. 정오다. 심문소 창 아래를 지날 때 너는 걸음을 늦추지도 서두르지도 않는다. 성가집을 든 견습은 성가 막사로 간다. 그뿐이다.
+
+            성가 막사. 라우렌츠 사제 — 귀에 밀랍 마개를 한 지휘 사제 — 가 성가집을 받아 책등을 엄지로 한 번 쓴다. "한 줄 불러 보게." 너는 부른다. 그가 고개를 끄덕인다. "자네 목소리는 거짓말을 못 하는군. 다행이야. 거짓말은 손이 하면 되니까."
+
+            그가 성가집을 악보 더미 맨 아래에 끼운다. "걸쇠가 고리를 하나 더 걸었군."
+          effects: ["var o8_ring_trial = true", "learn fact_o8_hymnal_road", "learn fact_lm_anselm_clasp", "rel npc_lm_anselm trust 10", "rel npc_lm_laurenz trust 10", "temper 용기 3", "goto lm_sem_chant", "note 성가집을 라우렌츠에게 — 끊어진 고리의 첫 시험. 원장은 걸쇠다"]
+        failure:
+          text: |
+            회랑 모퉁이에서 누군가와 어깨가 부딪친다. 성가집이 돌바닥에 떨어진다. 맑은 눈의 젊은 사제가 그것을 집어 든다 — 심문 사제 에기디우스. 그는 성가 한 장을 넘겨 본다. 둘째 장. 꿰맨 책등에는 손이 가지 않는다.
+
+            "무겁군요, 성가집이." 그가 돌려준다. "서원 번호는?" "마흔셋." "마흔셋." 두 번. 그는 웃는다. 고해실의 사제처럼.
+
+            성가 막사에서 라우렌츠는 아무것도 묻지 않는다. 네 손이 떨리는 것을 보았기 때문이다.
+          effects: ["var o8_ring_trial = true", "var o8_aegidius_eye = true", "learn fact_o8_hymnal_road", "fear 1", "stress 8", "rel npc_lm_laurenz trust 4", "memory npc_lm_aegidius 이상함 서원 마흔셋이 성가집을 떨어뜨리고 손을 떨었다", "goto lm_sem_chant", "note 에기디우스가 내 번호를 두 번 물었다"]
+      - id: read_seam
+        when: ["var o8_letters_free == true"]
+        label: 건네기 전에 — 꿰맨 책등을 손톱으로 열고 접힌 종이를 읽는다
+        minutes: 50
+        check: {skill: 읽고쓰기, D: 22, helps: [memory_palace, scribe]}
+        success:
+          text: |
+            책등 안에 접힌 종이 두 장. 글자들이 경전의 순서를 버리고 소리대로 서 있다. 빛의 서신. 첫 줄 — 에오르는 너희를 노예로 만들지 않았다.
+
+            너희. 9번 독방의 손끝은 '우리'라고 짚었다. 모양 하나가 뒤집혀 있다. 이 종이를 베낀 손은 글을 읽지 못하는 손이다. 그래서 틀린 줄도 모른다.
+
+            너는 손톱으로 그 모양 하나를 긁어 바로 세운다. 책등을 다시 여민다. 라우렌츠는 꿰맨 실을 엄지로 쓸어 보고, 아무것도 묻지 않는다.
+          effects: ["var o8_ring_trial = true", "var o8_copy_fixed = true", "learn fact_lm_otilie_copies", "learn fact_lm_otilie_flawed_first_line", "learn fact_o8_hymnal_road", "skill_gain 읽고쓰기 2", "rel npc_lm_anselm trust 6", "goto lm_sem_chant", "note 성가집 속 서신의 첫 줄 — '우리'가 '너희'로 뒤집혀 있었다. 바로잡았다"]
+        failure:
+          text: |
+            꿰맨 실이 손톱에 걸려 끊어진다. 종이 끝이 보인다. 글자들이 너무 작고 너무 빽빽하다. 다시 여미는 손이 서툴다.
+
+            라우렌츠는 책등을 엄지로 쓸어 보고 오래 너를 본다. "누가 열었나." 대답을 기다리지 않는다. "다음에는 열지 말게. 여는 손은 읽는 손보다 먼저 들키네."
+          effects: ["var o8_ring_trial = true", "learn fact_o8_hymnal_road", "rel npc_lm_laurenz trust -5", "goto lm_sem_chant"]
+      - id: to_tobias
+        label: 성가집을 받아 든다 — 그리고 성가 막사가 아니라 밀고 함 홀로 간다
+        minutes: 60
+        risk: 원장이 끌려간다
+        text: |
+          밀고 함 홀. 열두 개의 나무 함. 토비아스가 고개를 든다. "이름은." "서원 마흔셋." "이름은?" "마흔셋."
+
+          그가 성가집의 책등을 칼끝으로 연다. 접힌 종이. 그는 그것을 읽지 않는다. 읽지 않아도 무엇인지 안다. "누구에게서." 너는 원장의 이름을 댄다. 그는 받아 적고, 다른 장부에 한 줄을 더 쓴다. 동기.
+
+          그날 오후, 원장실 문 앞에 검은 끈의 사제 둘이 선다. 안셀름은 책상 모서리를 두드리지 않는다. 낭독실의 견습들이 구절을 소리 내 외운다 — 큰 소리로, 아주 큰 소리로.
+        effects: ["var o8_betrayed_anselm = true", "var o8_oath_kept += 1", "agenda capture npc_lm_anselm at lm_inq_interrogation", "var lm_impure += 1", "deed inform npc_lm_anselm", "item o8_reward_note", "temper 신앙 6", "temper 자비 -10", "temper 충성 -8", "stress 15", "goto lm_inq_hall", "note 원장의 성가집을 정화청에 — 검은 끈의 사제 둘이 원장실 문 앞에 섰다"]
+      - id: refuse
+        label: '성가집에 손대지 않는다 — "저는 본 것을 보고하겠다고 서원했습니다."'
+        minutes: 15
+        text: |
+          원장이 성가집을 거둔다. 천천히. "그렇지. 그렇게 서원했지. 나도 했네. 마흔 해 전에." 손가락이 책상 모서리로 돌아간다. "그럼 오늘 본 것도 보고하게. 누구에게 할지는 — 자네가 고르게."
+
+          그는 다시 눈을 감는다. 구절을 외우는 입술이 움직인다. 너는 원장실 문을 닫고 나온다. 등 뒤에서 두드리는 소리가 계속된다. 박자가 흐트러지지 않는다.
+        effects: ["var o8_ring_refused = true", "learn fact_lm_anselm_clasp", "rel npc_lm_anselm trust -5", "temper 신앙 3", "stress 6", "note 원장은 고리의 사람이다 — 그리고 그것을 내게 보였다. 누구에게 아뢸지는 내가 고른다"]
+      # ── ◈ 기억 선택지: 지난 회차에 책등 속 첫 줄을 읽었다 ──
+      - id: mem_copy_flaw
+        needs_memory: fact:fact_lm_otilie_flawed_first_line
+        label: '"원장님, 그 안의 첫 줄 — 모양 하나가 뒤집혀 있습니다. 읽지 못하는 손이 베꼈으니까요."'
+        minutes: 40
+        text: |
+          원장의 손이 성가집 위에서 굳는다. "…열지도 않고 그걸 아는가." 그는 책등을 연다. 직접. 종이를 펴고, 오래 본다. 그는 읽을 줄 안다. 사슬사제니까.
+
+          "우리가… 너희로." 그가 칼끝으로 그 모양 하나를 바로 세운다. 손이 떨리지 않는다. "누가 자네를 가르쳤는지 묻지 않겠네. 뜻을 묻지 않는 것이 이 낭독실의 규칙이니까." 성가집이 다시 네 쪽으로 온다. "라우렌츠에게."
+        effects: ["var o8_ring_trial = true", "var o8_copy_fixed = true", "learn fact_lm_anselm_clasp", "learn fact_o8_hymnal_road", "rel npc_lm_anselm trust 15", "memory npc_lm_anselm 이상함 마흔셋이 열지도 않은 성가집 속 서신의 틀린 모양을 안다", "goto lm_sem_chant"]
+
+  # ───────────────────────── 3일 아침: 대사제의 기침 ─────────────────────────
+  - id: o8_gregor_cough
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-03 09:30", to: "312-09-03 13:00"}, at: "@lumen", when: ["alive npc_gregor7"]}
+    stage:
+      - {npc: npc_gregor7, at: lm_cath_prayer_room, from: "312-09-03 09:30", to: "312-09-03 12:30", doing: "침상에 비스듬히 누워 기침한다 — 탕약 그릇을 기다린다"}
+    text: |
+      아침 암송이 끝나 갈 무렵, 안셀름 원장이 너를 부른다. "대사제께서 탕약을 들고 올 견습을 찾으셨네. 우물 당번으로." 그는 이유를 말하지 않는다. 모르는 얼굴은 아니다.
+
+      종탑 밑 기도실. 쑥과 향유와 오래된 양피지 냄새. 빛의 대사제 그레고르 7세 — 여든둘, 삼십만 신도의 아버지 — 가 침상에 비스듬히 누워 있다. 목에 성표 고리 일곱 겹, 그 무게에 목이 앞으로 굽었다. 기침이 그치면 손이 떤다.
+
+      탁자 위에 종이 한 장. 아주 작은 글씨가 빽빽하다. 그 곁에 접힌 양피지 하나 — 붉은 밀랍, 비어 있는 서명란.
+
+      탕약 그릇을 받아 든 두 손이 흔들린다. 김이 오른다. 그가 너를 보지 않고 묻는다. "…알베릭은 아직 먹고 있느냐."
+    effects: ["goto lm_cath_prayer_room"]
+    choices:
+      - id: eats
+        label: '"드십니다. 하루 한 덩이를 — 남김없이."'
+        minutes: 20
+        text: |
+          그릇이 입술에 닿았다가 떨어진다. "…그래. 먹는구나." 떨리는 손바닥이 이불 위에서 펴진다. 펜을 내려놓을 때처럼.
+
+          "투옥에는 내가 서명했다. 그다음 것은 — 절차의 일이다. 절차는 느리다." 그는 탕약을 다 마시지 않는다. 남은 것을 네가 들고 나간다.
+        effects: ["rel npc_gregor7 trust 8", "rel npc_gregor7 like 4", "memory npc_gregor7 정직함 우물 당번이 9번이 먹는다고 전했다", "goto lm_cath_nave"]
+      - id: first_line
+        when: ["pknows fact_o8_letter_first_line"]
+        label: '"그분이 첫 줄을 가르치셨습니다. 에오르는 우리를 노예로 만들지 않았다."'
+        minutes: 30
+        text: |
+          그릇이 이불 위에 엎어진다. 탕약이 번진다. 대사제는 그것을 보지 않는다. "그 문장은…" 성표 고리 하나를 쥔다. "…내가 한 말이다. 마흔 살에, 열여섯 살 아이들 앞에서. 한 아이가 받아 적었지."
+
+          한참 뒤에 그가 덧붙인다. 너에게가 아니라. "나는 그 아이를 가르친 게 아니라, 그 아이 입에 말을 넣었던 거야."
+
+          젖은 이불을 갈아 끼우는 동안 그는 아무 말도 하지 않는다.
+        effects: ["learn fact_lu_gregor_teacher", "var o8_gregor_trusts = true", "rel npc_gregor7 trust 15", "stress 4", "memory npc_gregor7 이상함 우물 당번이 빛의 서신 첫 줄을 그 입으로 외웠다", "goto lm_cath_nave"]
+      - id: read_warrant
+        label: 그가 눈을 감은 사이 — 접힌 양피지의 이름들을 읽는다
+        minutes: 20
+        check: {skill: 읽고쓰기, D: 16, helps: [memory_palace, hawk_eye, scribe]}
+        success:
+          text: |
+            열두 줄. 이름과 짧은 말 — 네가 읽을 수 있는 것은 딱 그만큼이고, 그 양피지에 적힌 것도 딱 그만큼이다.
+
+            일곱째 줄. 벤노. 서원 견습. 이단과의 대화. 맨 위에 날짜 — 낙엽월 열이렛날, 정화의 뜰. 서명란은 비어 있다.
+
+            대사제가 눈을 뜨기 전에 너는 그릇을 고쳐 든다.
+          effects: ["learn fact_o8_benno_list", "var o8_benno_known = true", "note 첫 장작 승인서 — 낙엽월 17일, 열두 줄. 일곱째 줄 벤노. 서명란은 비어 있다", "goto lm_cath_nave"]
+        failure:
+          text: |
+            글자에 눈이 닿기도 전에 젖은 눈이 떠진다. "그대여." 목소리가 얇다. "그것은 기도문이 아니다."
+
+            그가 양피지를 이불 밑으로 끌어당긴다. 손이 떨려서 두 번 만에.
+          effects: ["rel npc_gregor7 trust -5", "memory npc_gregor7 위험함 우물 당번이 탁자의 양피지를 읽으려 했다", "goto lm_cath_nave"]
+      - id: spare_benno
+        when: ["var o8_benno_known == true"]
+        label: '"첫 장작의 일곱째 줄 — 벤노는 9번 독방 앞에 오래 있었던 죄뿐입니다."'
+        minutes: 30
+        check: {skill: 화술, D: 30, helps: [tongue, etiquette, crowd_voice], warn: ["var o8_gregor_trusts == true"]}
+        success:
+          text: |
+            대사제가 펜을 든다. 펜을 내려놓는다. 떨리는 손바닥을 편다. 한 호흡. 다시 든다. 일곱째 줄에 줄을 긋지 않는다. 대신 그 이름 옆에 아주 작은 점 하나.
+
+            "서명이 느려질 것이다. 그뿐이다." 그가 눈을 감는다. "마테우스는 열둘을 채울 것이다. 그는 늘 채운다."
+
+            점 하나가 누구의 이름을 부를지, 너도 그도 묻지 않는다.
+          effects: ["var o8_benno_saved = true", "temper 자비 4", "stress 8", "rel npc_gregor7 trust 6", "memory npc_gregor7 용감함 우물 당번이 승인서의 이름 하나를 두고 빌었다", "note 벤노의 이름 옆에 점 하나 — 서명이 늦어진다. 마테우스는 열둘을 채운다", "goto lm_cath_nave"]
+        failure:
+          text: |
+            젖은 눈이 처음으로 너를 똑바로 본다. "…그대는 다음 줄이 되고 싶으냐." 질문이 아니다.
+
+            그는 양피지를 덮고 눈을 감는다. 탕약 그릇을 받는 손이 문까지 너를 밀어낸다.
+          effects: ["fear 1", "rel npc_gregor7 trust -3", "goto lm_cath_nave"]
+      - id: silent
+        label: 탕약 그릇을 받쳐 들고 — 아무 말 없이 기다린다
+        minutes: 20
+        text: |
+          대답이 없자 그가 고개를 끄덕인다. 대답을 들은 것처럼. "고난은 정화이니, 견디라." 입버릇이다. 그 말을 하는 동안 그의 눈은 탁자 위의 종이에 가 있다.
+
+          너는 빈 그릇을 들고 나온다.
+        effects: ["stress 2", "goto lm_cath_nave"]
+      # ── ◈ 기억 선택지: 돌아온 눈 ──
+      - id: mem_eyes
+        needs_memory: loop
+        label: 젖은 눈을 마주 본다 — 피하지 않고
+        minutes: 20
+        text: |
+          그릇을 든 손이 멈춘다. 김만 오른다. "…그대의 눈." 목소리가 처음으로 또렷하다. 낭독할 때의 목소리다. "어디서 보았더라. 서품 날, 엘다르가 말한 '단 하나'의 —"
+
+          그는 말을 끊는다. "…아니다. 늙으면 모든 눈이 낯익다."
+
+          그러나 네가 문을 나설 때 그가 부른다. 낮게. "알베릭의 서명은 하지 않았다. 내가 숨 쉬는 동안은."
+        effects: ["var o8_gregor_sensed = true", "learn fact_lu_gregor_delays_signature", "rel npc_gregor7 trust 12", "memory npc_gregor7 이상함 우물 당번의 눈이 서품 날 들은 '단 하나'의 눈 같았다", "goto lm_cath_nave"]
+
+  # ───────────────────────── 5일 새벽 기도 뒤: 감독관의 감사 ─────────────────────────
+  # 변형 셋 (먼저 맞는 것이 열린다): 루카가 너를 아뢴다 / 루카가 니클라스를 아뢴다 (네가 준 이름) / 감사만.
+  - id: o8_audit_accused
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-05 06:00", to: "312-09-05 11:00"}, at: "@lumen", when: ["var o8_audit_done != true", "var o8_luca_doubt >= 2", "var o8_luca_quiet != true", "alive npc_o8_luca"]}
+    stage:
+      - {npc: npc_serenielle, at: lm_sem_hall, from: "312-09-05 05:30", to: "312-09-05 08:30", doing: "낭독실 문지방 너머 — 백합 향 손수건으로 코를 가리고 견습들의 문자판을 본다"}
+    text: |
+      새벽 기도가 끝나도 낭독실 문이 닫히지 않는다. 문간에 엘다르가 서 있다. 세레니엘 맑은잎 — 맑은물 정자의 수석 감독관. 피부 밑으로 핏줄이 은빛으로 비친다. 그녀는 문지방을 넘지 않는다. 백합 향 손수건이 코를 가린다. 인간 시종 하나가 세 걸음 뒤에 서 있다.
+
+      견습 마흔이 긴 탁자에 문자판을 펴 놓는다. 같은 시각, 아홉 층 아래에서는 간수장이 9번 독방의 벽에 회칠을 하고 있을 것이다.
+
+      "서약을." 손수건 너머의 목소리는 모음이 길다. 견습들이 한목소리로 외운다 — 본 것을 보고하리라. 그리고 하나씩, 본 것을 아뢴다. 대개는 아무것도 없다.
+
+      루카의 차례. 그가 일어선다. 성표를 쥔 손이 하얗다. "서원 마흔셋은 9번 독방 앞에서 오래 머뭅니다. 저는 계단에서 들었습니다 — 글자를."
+
+      낭독실이 조용해진다. 손수건이 너를 향해 아주 조금 돈다. "거기서 말하라."
+    effects: ["var o8_audit_done = true", "goto lm_sem_hall"]
+    choices:
+      - id: deny
+        label: '"빵을 넣고 ''빛이 너를 기억한다''고 말했을 뿐입니다."'
+        minutes: 30
+        check: {skill: 기만, D: 26, helps: [actor, false_face, deceit], D_per_loop: 3}
+        success:
+          text: |
+            손수건이 한 박자 머문다. "…기억에 있는 거짓이었다. 인간의 거짓은 대개 그렇다."
+
+            그녀의 눈이 루카에게 간다. "계단에 있었다고 했다. 빵 당번 말고는 내려갈 수 없는 계단에." 루카의 얼굴에서 피가 빠진다. 그날 저녁 기숙사에서 그는 등을 돌리고 눕는다. 손바닥에 회초리 자국 다섯.
+          effects: ["var o8_audit_passed = true", "var o8_luca_quiet = true", "var o8_luca_shamed = true", "var o8_oath_broken += 1", "rel npc_o8_luca like -10", "temper 정직 -3", "memory npc_o8_luca 거짓말쟁이 마흔셋이 감독관 앞에서 거짓말을 했고 내가 매를 맞았다", "note 감독관 앞에서 부인했다 — 루카가 매를 맞았다"]
+        failure:
+          text: |
+            손수건이 내려가지 않는다. "…그 문장은 기억에 없다. 참도 거짓도 아닌 문장이다." 그녀가 시종에게 손짓한다. 네 판을.
+          effects: ["var o8_in_report = true", "var o8_oath_broken += 1", "then o8_board_turned"]
+      - id: confess_part
+        label: '"그분이 제 판을 읽어 보라 하셨습니다. 저는 셋째 줄을 읽었습니다 — 경전의 순서대로."'
+        minutes: 30
+        check: {skill: 화술, D: 24, helps: [tongue, etiquette]}
+        success:
+          text: |
+            반만 참인 말은 참에 가깝다. 손수건이 머문다. "경전의 순서대로였다면, 기억할 것이 없었다." 그녀가 고개를 돌린다.
+
+            회초리 셋이 네 손바닥에 떨어진다 — 독방의 이단과 말을 섞은 값. 루카는 자리에 앉는다. 이긴 얼굴이 아니다.
+          effects: ["var o8_audit_passed = true", "var o8_luca_quiet = true", "var o8_oath_kept += 1", "pain 6", "note 반만 아뢰었다 — 회초리 셋"]
+        failure:
+          text: |
+            손수건이 기울어진다. "셋째 줄을 읽는 데 그렇게 오래 머물렀었는가." 그녀가 시종에게 손짓한다. 네 판을.
+          effects: ["var o8_in_report = true", "then o8_board_turned"]
+      - id: blame_niklas
+        label: '"계단에서 들린 건 제 목소리가 아닙니다. 니클라스가 밤마다 허공에 글자를 그립니다."'
+        minutes: 20
+        risk: 니클라스
+        text: |
+          니클라스가 고개를 든다. 손가락이 허공에서 멈춘 채로. 손수건이 그쪽으로 돈다 — 기억에 이미 있는 이름이라는 듯이, 쉽게.
+
+          "그 아이." 시종이 니클라스의 판을 집는다. 판은 아무것도 말하지 않는다. 그래도 니클라스는 일어선다. 그는 울지 않는다. 문간에서 한 번 돌아본다. 너를. 손가락이 허공에 모양 하나를 그리고 내려간다.
+
+          루카는 앉는다. 그는 너를 보지 않는다.
+        effects: ["var o8_niklas_taken = true", "var o8_niklas_watch = true", "var o8_audit_passed = true", "var o8_luca_quiet = true", "agenda capture npc_lm_niklas at lm_pavilion", "deed inform npc_lm_niklas", "temper 자비 -8", "temper 정직 -6", "stress 15", "note 니클라스가 맑은물 정자로 불려 갔다 — 내 입에서 나간 이름"]
+      - id: counter_luca
+        when: ["var o8_luca_seen == true"]
+        label: '"루카도 그 계단에 있었습니다. 빵 당번이 아닌데."'
+        minutes: 20
+        check: {skill: 위압, D: 22, helps: [menace, command]}
+        success:
+          text: |
+            루카가 입을 연다. 닫는다. 빵 당번 말고는 내려갈 수 없는 계단 — 그 말을 그도 서약처럼 외웠다. 손수건이 두 사람 사이를 한 번 오간다.
+
+            "서로를 보고했었다. 둘 다 기억해 두겠다." 그것으로 끝이다. 오늘은.
+          effects: ["var o8_audit_passed = true", "var o8_luca_quiet = true", "var o8_in_report = true", "rel npc_o8_luca like -8", "memory npc_o8_luca 위험함 마흔셋이 감독관 앞에서 나를 계단에 세웠다"]
+        failure:
+          text: |
+            루카가 먼저 말한다. "저는 마흔셋을 따라갔습니다 — 서약대로, 보려고." 손수건이 끄덕인다. 아주 조금. 그 말은 그녀의 기억에 있는 말이다. 시종이 네 판을 집는다.
+          effects: ["var o8_in_report = true", "then o8_board_turned"]
+      - id: silent
+        label: 아무 말도 하지 않는다 — 판만 내려다본다
+        minutes: 30
+        text: |
+          침묵이 길어진다. 손수건이 기다린다. 엘다르는 기다리는 데 지치지 않는다.
+
+          "…침묵도 기록된다." 그녀가 마침내 말하고, 다음 판으로 간다. 네 번호가 기억 수정에 새겨진다. 무엇과 함께인지는 모른다.
+        effects: ["var o8_in_report = true", "fear 1", "stress 6"]
+      # ── ◈ 기억 선택지: 지난 회차에 벤노에게서 들었다 ──
+      - id: mem_luca_benno
+        needs_memory: fact:fact_o8_benno_reported
+        label: '"루카는 열흘 전에도 이렇게 아뢰었습니다. 벤노를. 벤노는 지금 우물 첫째 층에 있습니다."'
+        minutes: 20
+        text: |
+          루카의 손에서 성표가 미끄러진다. 쇠고리가 탁자에 울린다. 손수건이 그 소리 쪽으로 돈다. "…같은 입이 같은 계단을 두 번 보고했었는가."
+
+          기억을 훑는 눈. "보고는 아름다운 일이다. 너무 잦으면 기록할 가치가 없어진다." 그녀가 루카의 말을 기억 수정에 새기지 않는다. 루카는 앉지도 서지도 못한다.
+        effects: ["var o8_audit_passed = true", "var o8_luca_quiet = true", "var o8_luca_shamed = true", "rel npc_o8_luca like -12", "memory npc_o8_luca 위험함 마흔셋이 감독관 앞에서 벤노의 일을 꺼냈다", "note 감독관 앞에서 루카의 첫 고발을 꺼냈다 — 그의 말은 새겨지지 않았다"]
+
+  - id: o8_audit_niklas
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-05 06:00", to: "312-09-05 11:00"}, at: "@lumen", when: ["var o8_audit_done != true", "var o8_niklas_named == true", "alive npc_o8_luca", "var o8_luca_taken != true", "var o8_niklas_taken != true"]}
+    text: |
+      새벽 기도가 끝나도 낭독실 문이 닫히지 않는다. 문간에 엘다르가 서 있다. 세레니엘 맑은잎 — 맑은물 정자의 수석 감독관. 피부 밑으로 핏줄이 은빛으로 비친다. 그녀는 문지방을 넘지 않는다. 백합 향 손수건이 코를 가린다. 인간 시종 하나가 세 걸음 뒤에 서 있다.
+
+      견습 마흔이 긴 탁자에 문자판을 펴 놓는다. "서약을." 손수건 너머의 목소리는 모음이 길다. 견습들이 한목소리로 외운다 — 본 것을 보고하리라. 그리고 하나씩, 본 것을 아뢴다.
+
+      루카의 차례. 그가 일어선다. 성표를 쥔 손이 하얗다. "견습 니클라스는 밤마다 허공에 글자를 그립니다. 저는 보았습니다." 그는 너를 보지 않는다. 그 말은 네 입에서 나간 말이다.
+
+      마지막 침상의 니클라스가 고개를 든다. 손가락이 허공에서 멈춘 채로. 손수건이 그쪽으로 돈다 — 기억에 이미 있는 이름이라는 듯이, 쉽게. "그 아이."
+    effects: ["var o8_audit_done = true", "var o8_niklas_watch = true", "goto lm_sem_hall"]
+    choices:
+      - id: take_back
+        label: '"루카가 들은 것은 제 말입니다. 제가 지어낸 말입니다."'
+        minutes: 20
+        check: {skill: 화술, D: 28, helps: [tongue, crowd_voice]}
+        success:
+          text: |
+            낭독실의 숨이 멈춘다. 손수건이 너에게로 돈다. "…거짓을 고백하는 거짓도 있었다."
+
+            그녀는 한참 너를 본다. 니클라스를 데려가라는 손짓은 오지 않는다. 대신 그녀의 눈이 감긴다. 기억에 무언가를 새기는 동안. 네 번호다.
+          effects: ["var o8_niklas_safe = true", "var o8_in_report = true", "var o8_audit_passed = true", "rel npc_lm_niklas trust 20", "temper 정직 4", "temper 용기 4", "rel npc_o8_luca like -10", "memory npc_lm_niklas 용감함 마흔셋이 감독관 앞에서 내 이름을 거두어 갔다", "note 니클라스의 이름을 거두었다 — 대신 내 번호가 새겨졌다"]
+        failure:
+          text: |
+            손수건이 너를 본다. 그리고 니클라스를 본다. "둘 다였다." 과거형.
+
+            니클라스가 일어선다. 문간에서 한 번 돌아본다. 너를. 그리고 네 번호가 기억 수정에 새겨진다. 그를 구하지 못한 채로.
+          effects: ["var o8_niklas_taken = true", "var o8_in_report = true", "agenda capture npc_lm_niklas at lm_pavilion", "stress 12", "temper 용기 2"]
+      - id: stay_silent
+        label: 입을 다문다 — 판만 내려다본다
+        minutes: 20
+        text: |
+          니클라스가 일어선다. 그는 울지 않는다. 문간에서 한 번 돌아본다. 너를. 손가락이 허공에 모양 하나를 그리고 내려간다.
+
+          손수건은 남은 판들을 빨리 지나간다. 네 판 앞에서도. 오늘 그녀가 찾던 것은 이미 찾았다.
+        effects: ["var o8_niklas_taken = true", "var o8_audit_passed = true", "agenda capture npc_lm_niklas at lm_pavilion", "stress 14", "temper 용기 -3", "note 니클라스가 맑은물 정자로 불려 갔다 — 내 입에서 나간 이름"]
+      # ── ◈ 기억 선택지: 저울사제에게서 들은 것 ──
+      - id: mem_not_echo
+        needs_memory: fact:fact_lm_niklas_not_echo
+        label: '"니클라스는 잔향이 아닙니다. 평범한 기억입니다 — 감독관님 기록의 그 줄은 틀렸습니다."'
+        minutes: 20
+        text: |
+          손수건이 떨어진다. "…그 줄은 내 기록에만 있었다." 그녀의 목소리에서 처음으로 모음이 짧아진다. "누가 그 줄을 읽었었는가."
+
+          대답을 기다리지 않는다. 니클라스를 데려가라는 손짓이 오지 않는다. 그녀는 너를 본다. 오래. 기억에 없는 것을 처음 보는 눈으로.
+        effects: ["var o8_niklas_safe = true", "var o8_sere_intrigued = true", "var o8_in_report = true", "var o8_audit_passed = true", "echo_sign 2 감독관 기록의 줄을 안다", "memory npc_serenielle 이상함 인간 견습이 내 기록의 줄을 안다", "note 니클라스를 지켰다 — 감독관이 나를 기억한다"]
+
+  - id: o8_eldar_audit
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-05 06:00", to: "312-09-05 11:00"}, at: "@lumen", when: ["var o8_audit_done != true"]}
+    text: |
+      새벽 기도가 끝나도 낭독실 문이 닫히지 않는다. 문간에 엘다르가 서 있다. 세레니엘 맑은잎 — 맑은물 정자의 수석 감독관. 피부 밑으로 핏줄이 은빛으로 비친다. 그녀는 문지방을 넘지 않는다. 백합 향 손수건이 코를 가린다. 인간 시종 하나가 세 걸음 뒤에 서 있다.
+
+      견습 마흔이 긴 탁자에 문자판을 펴 놓는다. 같은 시각, 아홉 층 아래에서는 간수장이 9번 독방의 벽에 회칠을 하고 있을 것이다.
+
+      "서약을." 손수건 너머의 목소리는 모음이 길다. 견습들이 한목소리로 외운다 — 본 것을 보고하리라. 그리고 하나씩, 본 것을 아뢴다. 대개는 아무것도 없다. 루카도 오늘은 아무것도 아뢰지 않는다.
+
+      손수건이 판 하나하나 앞에서 멈췄다가 지나간다. 마지막 침상의 니클라스. 그리고 너.
+    effects: ["var o8_audit_done = true", "var o8_niklas_watch = true", "goto lm_sem_hall"]
+    choices:
+      - id: plain
+        when: ["var o8_letters_free != true"]
+        label: 경전의 순서대로 판을 짚는다 — 아는 것은 그것뿐이다
+        minutes: 30
+        text: |
+          마흔두 글자. 경전의 순서대로. 손수건이 네 판 앞에서 한 박자 머물다가 지나간다. 다음은 니클라스.
+
+          니클라스가 일부러 한 글자를 틀린다. 그런데 틀린 자리가 너무 정확하다. 손수건이 처음으로 길게 머문다. "이 아이는 틀리는 법을 안다." 과거형이 아니다. 엘다르가 과거형으로 맺지 않는 말은 아직 끝나지 않은 말이다.
+        effects: ["var o8_audit_passed = true", "var o8_niklas_marked = true", "learn fact_o8_audit_niklas", "note 감독관의 손수건이 니클라스의 판 앞에서 오래 멈췄다 — 틀리는 법을 아는 아이"]
+      - id: fumble
+        when: ["var o8_letters_free == true"]
+        label: 경전의 순서대로 짚되 — 한 군데를 일부러 틀린다, 서툴게
+        minutes: 30
+        check: {skill: 기만, D: 24, helps: [actor, false_face, deceit], D_per_loop: 3}
+        success:
+          text: |
+            넷째 줄에서 손끝이 미끄러진다. 일부러. 서툴게 — 정확하게 틀리는 손이 아니라, 열 해 동안 같은 자리만 짚은 손처럼. 손수건은 머물지 않는다.
+
+            다음은 니클라스. 그가 일부러 한 글자를 틀린다. 틀린 자리가 너무 정확하다. 손수건이 처음으로 길게 머문다. "이 아이는 틀리는 법을 안다."
+          effects: ["var o8_audit_passed = true", "var o8_niklas_marked = true", "learn fact_o8_audit_niklas", "note 감사를 넘겼다 — 손수건은 니클라스 앞에서 멈췄다"]
+        failure:
+          text: |
+            넷째 줄에서 손끝이 미끄러진다. 일부러. 그런데 손수건이 멈춘다. "…너는 틀리는 법을 배웠다." 그녀의 눈이 감긴다. 기억을 한 번 훑는 동안. "누구에게서."
+
+            대답하기 전에 그녀가 시종에게 손짓한다. 네 판을 뒤집으라고.
+          effects: ["var o8_in_report = true", "then o8_board_turned"]
+      - id: hide_back
+        when: ["var o8_board_marked == true"]
+        label: 판을 뒤집지 않는다 — 뒷면의 손톱자국 위에 손바닥을 얹은 채로
+        minutes: 30
+        check: {skill: 손재주, D: 26, helps: [smuggler, pickpocket]}
+        success:
+          text: |
+            손바닥 밑에서 긁힌 자국들이 땀에 젖는다. 손수건이 네 판 앞에서 한 박자 머문다. 앞면의 마흔두 글자는 경전의 순서대로다. 지나간다.
+
+            다음은 니클라스. 손수건이 처음으로 길게 머문다. "이 아이는 틀리는 법을 안다."
+          effects: ["var o8_audit_passed = true", "var o8_niklas_marked = true", "learn fact_o8_audit_niklas"]
+        failure:
+          text: |
+            손바닥이 판 가장자리에서 미끄러진다. 판이 반쯤 들린다. 손수건이 멈춘다. 시종이 네 판을 집어 든다.
+          effects: ["then o8_board_turned"]
+      - id: shield_niklas
+        label: 니클라스의 판 쪽으로 몸을 기울인다 — 그가 틀릴 자리를 하나 더, 서툴게 만든다
+        minutes: 30
+        check: {skill: 손재주, D: 24, helps: [pickpocket, smuggler]}
+        success:
+          text: |
+            네 소매가 그의 판을 스친다. 글자 둘이 비뚤어진다. 니클라스의 판은 이제 열 해 동안 같은 자리만 짚은 아이의 판이다. 손수건이 지나간다 — 그리고 돌아온다. 너에게로.
+
+            "누가 그 아이의 판에 손을 댔었다." 과거형. 기억에 새겨졌다는 뜻이다. 니클라스는 고개를 숙인 채, 탁자 밑에서 네 손가락을 한 번 쥔다.
+          effects: ["var o8_niklas_safe = true", "var o8_in_report = true", "rel npc_lm_niklas trust 15", "rel npc_lm_niklas like 10", "temper 자비 4", "memory npc_lm_niklas 다정함 마흔셋이 감독관 앞에서 내 판을 흐트러뜨려 주었다", "note 니클라스를 감추었다 — 대신 감독관의 기억에 내 번호가"]
+        failure:
+          text: |
+            소매가 그의 판을 친다. 판이 탁자에서 떨어져 돌바닥에 울린다. 낭독실이 조용해진다. 손수건이 두 판 사이를 오간다. "둘 다." 그 말만 한다.
+          effects: ["var o8_niklas_marked = true", "var o8_in_report = true", "fear 1"]
+      - id: report_now
+        label: 서약대로 — 9번 독방의 글자 수업을 감독관 앞에서 아뢴다
+        minutes: 30
+        risk: 9번의 빵이 반 덩이가 된다
+        text: |
+          견습들의 숨이 멈춘다. 너는 아뢴다. 9번 독방, 문자판, 같은 글자로 다른 문장. '빛은 기억하는 자를 따른다.'
+
+          손수건이 내려간다. 처음으로. 세레니엘이 그 문장을 입속으로 한 번 따라 한다. "…아름다운 문장이었다." 과거형. 그녀가 시종에게 고개를 끄덕인다. 오늘부터 9번의 빵은 반 덩이다.
+
+          그리고 그녀는 너를 본다. 오래. "너는 그것을 하루 만에 읽었었는가."
+        effects: ["var o8_reported_sere = true", "var o8_oath_kept += 1", "var o8_audit_passed = true", "var o8_in_report = true", "deed inform npc_alberic", "temper 신앙 6", "temper 충성 3", "rel npc_serenielle trust 10", "memory npc_serenielle 이상함 인간 견습이 9번의 문장을 그대로 옮겼다 — 하루 만에 읽었다", "note 감독관 앞에서 9번의 글자 수업을 아뢰었다 — 9번의 빵이 반 덩이가 된다"]
+      - id: luca_board
+        when: ["var o8_luca_framed == true"]
+        label: 루카의 차례 — 시종이 그의 판을 뒤집는다. 너는 눈을 돌리지 않는다
+        minutes: 30
+        text: |
+          손수건이 루카의 판을 가리킨다. 왜 그의 판인지는 아무도 모른다. 시종이 판을 뒤집는다. 뒷면에 긁힌 자국. 경전의 순서가 아닌 순서.
+
+          "제 것이 아닙니다." 루카의 목소리가 높다. "저는 — 저는 그렇게 쓸 줄 모릅니다! 다들 아시잖아요!" 다들 안다. 아무도 말하지 않는다.
+
+          검은 끈의 사제 둘이 문간에 선다. 루카가 끌려 나가며 한 번 돌아본다. 너를. 그는 모른다. 그런데 너를 본다.
+        effects: ["var o8_luca_taken = true", "var o8_luca_quiet = true", "var o8_audit_passed = true", "agenda capture npc_o8_luca at lm_uc_upper_cells", "var lm_impure += 1", "stress 15", "temper 자비 -6", "note 루카는 침묵의 우물 첫째 층으로 — 벤노가 있는 층"]
+      # ── ◈ 기억 선택지: 지난번 이 아침, 손수건은 니클라스 앞에서 멈췄다 ──
+      - id: mem_draw_eye
+        needs_memory: fact:fact_o8_audit_niklas
+        label: 손수건이 니클라스에게 가기 전에 — 네 판을 일부러 돌바닥에 떨어뜨린다
+        minutes: 30
+        text: |
+          판이 돌바닥에 울린다. 앞면이 위로. 손수건이 너에게로 돈다. 그리고 멈춘다. 오래.
+
+          "…낯설지 않은 아이로구나." 모음이 처음으로 흔들린다. "처음 보는 얼굴이 낯설지 않다. 엘다르의 기억에 이런 오류는 없었다 — 그러니 오류가 아니라 징후일 것이다."
+
+          그녀는 남은 판들을 보지 않고 돌아선다. 니클라스의 판은 아무도 보지 않았다.
+        effects: ["var o8_niklas_safe = true", "var o8_sere_intrigued = true", "var o8_in_report = true", "rel npc_lm_niklas trust 10", "echo_sign 1 엘다르의 기시감을 깨웠다", "memory npc_serenielle 이상함 처음 보는 인간 견습의 얼굴이 낯설지 않았다 — 징후", "note 감독관의 눈을 니클라스에게서 내게로 — 그녀가 나를 낯설지 않다고 했다"]
+
+  # 감사에서 판이 뒤집힐 때 — 보이는 선택지는 언제나 하나다 (뒷면이 무엇인지에 따라)
+  - id: o8_board_turned
+    origin: lumen_acolyte
+    text: |
+      손수건의 손짓 하나에 인간 시종이 네 판을 집어 든다. 시종의 손이 떨리지 않는다. 그래서 더 무섭다. 그가 판을 뒤집는다.
+    choices:
+      - id: marked
+        when: ["var o8_board_marked == true"]
+        label: 뒷면의 손톱자국 위에서 — 손수건이 멈춘다
+        text: |
+          긁힌 자국들. 경전의 순서가 아닌 순서. 손수건 너머에서 숨 하나가 길게 나간다. "…글자였다." 엘다르의 목소리가 처음으로 짧다.
+
+          그날 저녁 빵 바구니는 다른 견습이 든다. 너는 바구니 없이 우물을 내려간다. 첫째 층. 바닥부터 먹인다. 네 빵은 마지막이다.
+        effects: ["captured 감독관의 감사에서 문자판 뒷면의 글자가 드러났다 — 글자를 가진 견습은 침묵의 우물로"]
+      - id: clean
+        when: ["var o8_board_marked != true"]
+        label: 뒷면은 비어 있다 — 나뭇결뿐이다
+        text: |
+          나뭇결. 손때. 아무것도 없다. 손수건이 한참 머물다가 지나간다. "판은 깨끗했다. 손이 깨끗하지 않았다." 그 말을 그녀는 과거형으로 맺는다.
+
+          네 번호가 기억 수정에 새겨진다.
+        effects: ["var o8_in_report = true", "fear 1", "stress 6"]
+
+  # ───────────────────────── 17일: 정화의 뜰, 첫 장작 (정본 9.17) ─────────────────────────
+  - id: o8_pyre_benno
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-17 09:30", to: "312-09-17 12:30"}, at: "@lumen", when: ["var o8_pyre_done != true", "var o8_benno_saved != true"]}
+    stage:
+      - {npc: npc_lm_niklas, at: lm_pyre_court, from: "312-09-17 09:30", to: "312-09-17 12:30", doing: "견습 줄에 서서 외운다 — 입술이 움직이지 않는다"}
+      - {npc: npc_o8_luca, at: lm_pyre_court, from: "312-09-17 09:30", to: "312-09-17 12:30", doing: "견습 줄 맨 앞에서 한 박자 크게 외운다"}
+    text: |
+      정화의 뜰. 견습 마흔이 두 줄로 선다. 회색 법의, 쇠고리 성표. 그 앞에 장작 열둘. 순례자들이 뜰 가장자리를 메운다. 벤치의 늙은 순례자 하나가 손가락을 접어 장작을 센다.
+
+      정화청장 마테우스가 장작 앞 의자에 앉는다. 앉을 때 숨을 멈춘다. 용인 병사들이 횃불을 든다. 수비대장이 병사 하나하나에게 이름을 묻는다.
+
+      일곱째 장작. 벤노가 있다. 머리를 깎였고, 성표 고리가 없다. 그가 견습들의 줄을 본다. 찾는다.
+
+      견습들이 한목소리로 외우기 시작한다. 그의 고난이 그를 정화하기를.
+    effects: ["var o8_pyre_done = true", "goto lm_pyre_court"]
+    choices:
+      - id: chant
+        label: '다른 견습들과 함께 외운다 — "그의 고난이 그를 정화하기를."'
+        minutes: 60
+        text: |
+          네 목소리가 마흔 개의 목소리에 섞인다. 섞이면 들리지 않는다. 그게 이 구절이 한목소리인 까닭이다.
+
+          연기가 오른다. 일곱째 장작에서 소리가 난다. 견습들의 목소리가 조금 커진다. 그 소리를 덮으려고.
+        effects: ["var o8_benno_burned = true", "stress 12", "temper 용기 -2", "temper 신앙 2"]
+      - id: lips_only
+        label: 입술만 움직인다 — 소리는 내지 않는다
+        minutes: 60
+        check: {skill: 기만, D: 18, helps: [actor, false_face]}
+        success:
+          text: |
+            입술이 구절의 모양을 따라간다. 소리는 없다. 마흔 개의 목소리 속에서 하나가 빠진 것을 아무도 모른다. 일곱째 장작에서 연기가 오른다.
+          effects: ["var o8_benno_burned = true", "stress 10"]
+        failure:
+          text: |
+            입술이 구절의 모양을 따라간다. 소리는 없다. 줄 끝에서 맑은 눈 하나가 너를 본다. 심문 사제 에기디우스. 그는 아무것도 적지 않는다. 기억할 뿐이다.
+          effects: ["var o8_benno_burned = true", "var o8_aegidius_eye = true", "stress 10", "fear 1"]
+      - id: meet_eyes
+        label: 벤노의 눈을 찾는다 — 연기 너머로, 피하지 않고
+        minutes: 60
+        text: |
+          그가 너를 찾는다. 찾았다. 그의 입술이 움직인다. 소리는 견습들의 구절에 묻힌다. 너는 그 입모양을 안다. 네 번호다. 마흔셋.
+
+          그다음 입모양은 모른다. 연기가 그것을 가져간다.
+        effects: ["var o8_benno_burned = true", "stress 16", "temper 용기 3", "note 정화의 뜰 — 벤노가 마지막에 내 번호를 불렀다"]
+
+  - id: o8_pyre_other
+    origin: lumen_acolyte
+    trigger: {window: {from: "312-09-17 09:30", to: "312-09-17 12:30"}, at: "@lumen", when: ["var o8_pyre_done != true", "var o8_benno_saved == true"]}
+    text: |
+      정화의 뜰. 견습 마흔이 두 줄로 선다. 그 앞에 장작 열둘. 정화청장이 장작 앞 의자에 앉는다. 앉을 때 숨을 멈춘다.
+
+      일곱째 장작에 벤노가 없다. 낯선 여자가 있다. 서안 신도 숙사의 누군가 — 성표 고리 대신 손목에 끈 자국. 마테우스는 열둘을 채웠다. 그는 늘 채운다.
+
+      벤노의 이름 옆에 찍힌 점 하나가 이 여자를 불렀다. 견습들이 한목소리로 외우기 시작한다. 그의 고난이 그를 정화하기를.
+    effects: ["var o8_pyre_done = true", "goto lm_pyre_court"]
+    choices:
+      - id: chant
+        label: '외운다 — "그의 고난이 그를 정화하기를."'
+        minutes: 60
+        text: |
+          '그'의 고난. 구절은 늘 '그'라고 한다. 오늘 일곱째 장작의 사람은 그가 아니다. 구절은 고쳐지지 않는다.
+        effects: ["stress 10", "temper 신앙 1"]
+      - id: learn_name
+        label: 그 여자의 이름을 알아낸다 — 벤치의 노파에게 묻는다
+        minutes: 60
+        check: {skill: 화술, D: 22, helps: [people_memory, tongue]}
+        success:
+          text: |
+            벤치의 노파가 손가락을 접으며 센다. 열둘. 일곱째에서 손가락이 멈춘다. "서안 우물가의 마르그리트. 이웃이 꿈 이야기를 들었다더군."
+
+            노파는 이름을 말하는 데 익숙하다. 아무도 묻지 않는 것들이라서.
+          effects: ["stress 12", "temper 자비 2", "note 정화의 뜰 — 벤노 대신 일곱째 장작에 선 사람. 서안 우물가의 마르그리트"]
+        failure:
+          text: |
+            노파는 대답하지 않는다. 손가락만 접는다. 열둘. 장작지기가 집게를 만지작거린다. 그는 이름을 부르지 않는다. 한 번도.
+          effects: ["stress 10"]
+      - id: silent
+        label: 입을 다문다 — 점 하나를 찍게 한 입을
+        minutes: 60
+        text: |
+          마흔 개의 목소리 가운데 하나가 빈다. 아무도 모른다. 일곱째 장작에서 연기가 오른다. 너는 그 연기에서 눈을 떼지 않는다. 그것이 네가 할 수 있는 전부다.
+        effects: ["stress 14", "temper 정직 2"]
+
+  # ───────────────────────── 신학원의 나날 (연출가의 소품 — 이 출신의 판에서만) ─────────────────────────
+  - id: o8_dir_shapes
+    origin: lumen_acolyte
+    trigger: {director: true, category: bond, at: [lm_sem_hall, lm_sem_garden, lm_sem_dorm], hours: ["05:00", "21:00"], chance: 0.25, when: ["alive npc_lm_niklas", "var o8_niklas_taken != true"]}
+    text: |
+      낭독실 긴 의자 끝. 니클라스가 눈을 감고 손가락으로 허공에 무언가를 그린다. 구절의 모양. 누가 보면 성호를 긋는 것처럼 보이도록 손목을 굽힌다.
+
+      그의 눈이 뜨인다. 네가 보고 있었다는 것을 안다.
+    choices:
+      - id: ask_shape
+        label: '"그건 무슨 구절이야?"'
+        minutes: 10
+        text: |
+          니클라스가 시선을 피한다. 성표를 만진다. "…구절로 하면, 사슬은 등불을 지킬지니." 잠깐 뒤에, 아주 작게. "모양이 둘이에요. 하나는 사슬이고 하나는 등불."
+
+          그는 그 말을 하고 나서 한참 숨을 참는다. 네가 웃지 않자 숨을 쉰다.
+        effects: ["var o8_niklas_watch = true", "rel npc_lm_niklas trust 6", "rel npc_lm_niklas like 4", "memory npc_lm_niklas 다정함 마흔셋은 모양 이야기를 비웃지 않았다"]
+      - id: warn_niklas
+        when: ["pknows fact_lm_niklas_three_watchers"]
+        label: '"허공에 그리지 마. 너를 보는 눈이 셋이야."'
+        minutes: 10
+        text: |
+          그의 손가락이 허공에서 멈춘다. 얼굴에서 피가 빠진다. "…어떻게 알아요." 정자, 심문소, 그리고 순례자 아주머니. 그는 그 셋을 입 밖에 내지 않는다. 네가 이미 안다는 얼굴이라서.
+
+          그날부터 그의 손가락은 소매 안에서만 움직인다.
+        effects: ["var o8_niklas_watch = true", "var o8_niklas_warned = true", "rel npc_lm_niklas trust 10", "memory npc_lm_niklas 이상함 마흔셋이 나를 보는 세 개의 눈을 안다"]
+      - id: look_away
+        label: 못 본 척 돌아선다
+        minutes: 5
+        text: |
+          등 뒤에서 그의 손가락이 다시 움직이는 소리. 소리가 날 리 없는데.
+        effects: ["rel npc_lm_niklas like 2"]
+
+  - id: o8_dir_candles
+    origin: lumen_acolyte
+    trigger: {director: true, category: omen, at: [lm_cath_candle_stair, lm_cath_eternal_lamp], hours: ["17:00", "19:00"], chance: 0.3, when: ["alive npc_lm_hanna"]}
+    text: |
+      영원등 곁 계단. 촛불지기 한나 — 영원등의 초를 가는 늙은 수녀 — 가 감옥 쪽 층계를 내려간다. 셋째 단에서 몸을 굽힌다. 일어설 때 손에 있던 양초 조각이 없다.
+
+      그녀가 너를 본다. 놀라지 않는다. "얘야." 다정하다. "사슬을 감은 것은?"
+    choices:
+      - id: answer
+        when: ["pknows fact_lm_laurenz_hymn_code"]
+        label: '"등불이 아니라 — 손입니다."'
+        minutes: 10
+        text: |
+          한나가 웃는다. 주름이 깊어진다. "그 셋째 단은 밟지 마라, 얘야. 밟으면 촛농이 묻는단다."
+
+          그녀가 층계를 올라간다. 발소리를 일부러 같게. 너는 셋째 단을 건너뛴다. 오늘부터.
+        effects: ["learn fact_lm_hanna_stair_third_step", "learn fact_lu_alberic_hanna", "rel npc_lm_hanna trust 15", "note 촛불지기 한나 — 감옥 층계 셋째 단 밑에 양초 조각. 9번에게 가는 소식"]
+      - id: dunno
+        label: '"…모르겠습니다, 수녀님."'
+        minutes: 5
+        text: |
+          "그럼 모르는 채로 두렴." 그녀가 네 소매의 분필 가루를 털어 준다. "모르는 것이 너를 지킬 때도 있단다."
+        effects: ["rel npc_lm_hanna like 3", "note 촛불지기 한나가 감옥 층계 셋째 단에서 무언가를 놓고 갔다"]
+      - id: lift_step
+        label: 그녀가 가고 나서 — 셋째 단 밑을 들춘다
+        minutes: 15
+        risk: 우물 간수의 눈
+        check: {skill: 은신, D: 20, helps: [shadow_step, lock_hands]}
+        success:
+          text: |
+            돌단 밑 틈에 양초 조각 하나. 심지에 매듭이 촘촘하다. 매듭 사이에 접힌 종잇조각 — 마흔두 글자, 경전의 순서가 아닌 순서. '오빠. 베라 먼저.'
+
+            너는 그것을 제자리에 넣는다. 매듭 하나 흐트러뜨리지 않고.
+          effects: ["learn fact_lm_hanna_stair_third_step", "learn fact_lu_alberic_hanna", "var o8_hanna_note = true", "note 셋째 단 밑 양초 심지 — '오빠. 베라 먼저.' 한나는 9번의 누이다"]
+        failure:
+          text: |
+            돌단을 들추는 순간 아래에서 발소리. 간수 야코프가 층계를 오른다. 셋째 단을 밟지 않고. 너를 본다. 아무것도 묻지 않는다. 묻지 않는 것이 그의 대답이다.
+          effects: ["memory npc_lm_jakob 위험함 빵 당번이 감옥 층계 셋째 단을 들추고 있었다", "stress 6"]

@@ -1,0 +1,34 @@
+# 알려진 사정 — O-08 순종의 빛 견습 사제 (storylets/origin_lumen_acolyte.yaml)의 장면이 세운 깃발.
+# 서술 프롬프트에 "[알려진 사정]"으로 들어간다 (참일 때만). npc가 있으면 그 사람이 그 자리에 있을 때 먼저. warn은 판정의 '논거' 한 줄.
+flags:
+  o8_alberic_suspects: {line: "알베릭은 새 빵 당번의 눈이 사라진 열네 글자를 아는 눈이었다고 믿는다 — '돌아오는 이'일지 모른다고. 고문을 받으면 그 말이 샐 수 있다", npc: npc_alberic}
+  o8_alberic_knows:    {line: "알베릭은 빵 당번이 아직 아무 데도 쓰지 않은 두 번째 서신의 첫 문장을 말한 것을 안다 — 돌아오는 이라고 확신한다", npc: npc_alberic}
+  o8_wrist_tended:     {line: "빵 당번이 알베릭의 곪은 손목을 씻고 법의 자락으로 싸매 주었다", npc: npc_alberic}
+  o8_alberic_fever:    {line: "알베릭의 손목 상처가 곪아 열이 오른다. 하루 한 끼로는 버티기 어렵다", npc: npc_alberic}
+  o8_dirt_letters:     {line: "9번 독방 앞 흙바닥에 남은 글자를 밤 순찰이 보았다 — 알베릭은 그 밤 매를 맞았다", npc: npc_alberic}
+  o8_ninth_bread:      {line: "새 빵 당번이 9번 독방에 빵 하나를 더 넣었다. 그날 밤 첫째 층 맨 끝 독방(벤노)은 빈손이었다"}
+  o8_letters_free:     {line: "마흔셋은 마흔두 글자를 경전의 순서가 아니라 소리대로 늘어놓을 줄 안다 — 무슨 말이든 쓸 수 있다. 들키면 재의 법", warn: "너는 마흔두 글자로 무엇이든 쓸 줄 안다"}
+  o8_board_marked:     {line: "마흔셋의 경전 문자판 뒷면에 손톱으로 새긴 소리의 순서가 있다 — 판을 뒤집는 사람은 안다", warn: "문자판 뒷면에 손톱자국이 있다"}
+  o8_told_anselm:      {line: "안셀름 원장은 마흔셋에게서 9번 독방의 글자 수업을 들었다. 아무에게도 올리지 않았다", npc: npc_lm_anselm}
+  o8_reported_inq:     {line: "마흔셋은 9번 독방의 글자 수업을 정화청 접수관 토비아스에게 고했다 — 동기: 서약. 9번의 빵이 반 덩이가 되었다", npc: npc_lm_tobias}
+  o8_reported_sere:    {line: "마흔셋은 감독관 세레니엘 앞에서 9번 독방의 글자 수업을 아뢰었다. 9번의 빵이 반 덩이가 되었다", npc: npc_serenielle}
+  o8_luca_seen:        {line: "마흔셋은 루카가 우물 계단에 있었던 것을 안다 — 빵 당번 말고는 내려가면 안 되는 계단", npc: npc_o8_luca, warn: "너는 루카가 우물 계단에 있었던 것을 안다"}
+  o8_luca_bound:       {line: "루카는 자기가 우물 계단에 있었다는 것을 마흔셋이 쥐고 있다는 것을 안다 — 서로 입을 다문다", npc: npc_o8_luca}
+  o8_luca_turned:      {line: "루카는 마흔셋이 경전의 글자로 경전이 아닌 말을 쓰는 것을 보았다. 무서워하면서도 다시 보고 싶어 한다", npc: npc_o8_luca}
+  o8_luca_shaken:      {line: "루카는 마흔셋이 벤노의 일을 안다는 것을 안다. 그 뒤로 그의 기도가 길어졌다", npc: npc_o8_luca}
+  o8_luca_framed:      {line: "루카의 문자판 뒷면에 누군가 금지된 배열을 새겼다. 루카는 모른다", npc: npc_o8_luca}
+  o8_luca_taken:       {line: "루카는 감사에서 문자판 뒷면이 드러나 침묵의 우물 첫째 층으로 내려갔다", npc: npc_o8_luca}
+  o8_niklas_named:     {line: "마흔셋이 루카에게 니클라스의 이름을 주었다 — 밤마다 허공에 글자를 그린다고", npc: npc_o8_luca, warn: "니클라스의 이름은 네 입에서 나갔다"}
+  o8_niklas_taken:     {line: "니클라스는 감사 날 맑은물 정자로 불려 갔다 — 정원으로 가는 순례자가 될지 모른다", npc: npc_lm_niklas}
+  o8_niklas_safe:      {line: "마흔셋이 감독관의 눈을 니클라스에게서 돌려놓았다. 니클라스는 그것을 안다", npc: npc_lm_niklas}
+  o8_benno_known:      {line: "마흔셋은 앞의 빵 당번 벤노가 '병'이 아니라 고발로 우물 첫째 층 독방에 있다는 것을 안다"}
+  o8_benno_saved:      {line: "대사제는 첫 장작 승인서의 벤노 이름 옆에 점 하나를 찍고 서명을 미뤘다 — 마테우스는 열둘을 다른 이름으로 채운다", npc: npc_gregor7}
+  o8_gregor_trusts:    {line: "대사제 그레고르는 빵 당번이 빛의 서신 첫 줄을 외우는 것을 들었다 — 그 문장이 자기 말이었다고 털어놓았다", npc: npc_gregor7, warn: "대사제는 네가 그 첫 문장을 외우는 것을 들었다"}
+  o8_gregor_sensed:    {line: "대사제 그레고르는 빵 당번의 눈에서 서품 날 엘다르가 말한 '단 하나'의 눈을 보았다고 생각했다 — 그리고 '아니다'라고 고쳐 말했다", npc: npc_gregor7}
+  o8_ring_trial:       {line: "마흔셋은 안셀름 원장의 성가집을 성가 막사까지 날랐다 — 끊어진 고리의 첫 시험을 넘겼다", npc: npc_lm_anselm}
+  o8_ring_refused:     {line: "마흔셋은 원장의 성가집을 받지 않았다. 원장이 고리의 사람이라는 것을 안다 — 아뢸지는 아직 정하지 않았다", npc: npc_lm_anselm}
+  o8_betrayed_anselm:  {line: "마흔셋이 안셀름 원장의 성가집을 정화청에 가져갔다. 원장은 심문실에 있고, 신학원 고리가 흔들린다", npc: npc_lm_tobias}
+  o8_copy_fixed:       {line: "성가집 속 빛의 서신 모사의 첫 줄('우리'가 '너희'로 뒤집힌 모양)을 마흔셋이 바로잡았다", npc: npc_lm_laurenz}
+  o8_aegidius_eye:     {line: "심문 사제 에기디우스가 서원 마흔셋의 번호를 두 번 물었다 — 그는 그 번호를 잊지 않는다", npc: npc_lm_aegidius, warn: "에기디우스가 네 번호를 기억한다"}
+  o8_in_report:        {line: "세레니엘 맑은잎의 '설명되지 않는 학습 속도' 기록에 서원 마흔셋의 번호가 새겨졌다 — 같은 보고가 마테우스에게도 간다", npc: npc_serenielle, warn: "감독관의 기억에 네 번호가 새겨졌다"}
+  o8_sere_intrigued:   {line: "세레니엘은 인간 견습 마흔셋이 '기억에 없는 말'을 했다고 기록했다 — 끌림이자 두려움", npc: npc_serenielle}

@@ -1,0 +1,14 @@
+# 바르그의 인간 사냥개 '코' (SCENARIOS O-12)의 사람들 — 송곳니 불의 두 바르그 (24 §3 일과).
+# 낮에는 굶주린 언덕에서 사냥대로, 밤에는 송곳니 불가에서. 낙엽월 2일의 뼈패 심부름(스칼리)은 장면의 stage가 덮어쓴다 (storylets/origin_varg_houndling.yaml).
+npc_o12_skali:
+  home: hungry_hill__fang_fire
+  blocks:
+    - {days: all, from: "23:00", to: "05:00", at: hungry_hill__fang_fire, doing: 불가에서 코의 등에 등을 붙이고 잔다}
+    - {days: all, from: "05:00", to: "19:00", at: hungry_hill, doing: 사냥대 가운데서 코를 땅에 박는다, alt: {p: 0.2, at: hungry_hill__three_pines, doing: 세 소나무까지 냄새를 쫓아갔다 온다}}
+    - {days: all, from: "19:00", to: "23:00", at: hungry_hill__fang_fire, doing: 불가의 바위에 앉아 달 쪽으로 목을 길게 늘인다}
+npc_o12_rug:
+  home: hungry_hill__fang_fire
+  blocks:
+    - {days: all, from: "22:00", to: "05:00", at: hungry_hill__fang_fire, doing: 우리 수레 곁에서 코를 땅에 박고 잔다}
+    - {days: all, from: "05:00", to: "19:00", at: hungry_hill, doing: 사냥대를 이끈다 — 털 없는 코의 백 걸음 뒤에서, alt: {p: 0.3, at: hungry_hill__three_pines, doing: 그루터기 속 하겐의 매듭 끈을 확인한다}}
+    - {days: all, from: "19:00", to: "22:00", at: hungry_hill__fang_fire, doing: 고기를 먼저 뜯는다 — 아비가 없는 불가의 첫 이빨}

@@ -1,0 +1,185 @@
+# 잿빛 탑 서기 노예 — SCENARIOS O-09 `origin.tower_scribe` (첫 시대부터 고를 수 있다 — 2026-10 결정). 필드의 뜻은 origins.yaml 머리말.
+# 이 시대의 잔향자는 서기 칠번이다. 회귀점은 AS 312 낙엽월 1일 14시, 재의 서고 필사대 — 마티스가 내려놓은 수집 후보 목록의 셋째 줄에 칠번의 번호가 있다.
+# 셋째는 잔향 없이 회색여울에 있다 (SCENARIOS §1.13) — 이 사람과 아무 사이도 아니다.
+#
+# SCENARIOS → 자료 (지역 자료가 이긴다 — 장면 파일 storylets/origin_tower_scribe.yaml 머리말에 같은 표):
+#   '셋째 필사실' → 재의 서고 필사대 gt_dust_desk · 펠릭 회색혀 → 마티스 그레이브 npc_ar_mathis · 노파 테클라 → '먹물 할멈' 헤스터 npc_ar_hester
+#   말 없는 요나스 → 0307호 네레 npc_ar_nere + 0213호의 노인 npc_ar_old0213 · 동료 서기 → '잉크' 마일로 npc_milo, 서기 요나 npc_ar_yona, 새 사람 도브 npc_o9_dov
+#   탑주 이레네 볼드 npc_irene_bold (칠번을 모른다) · 관찰실 → 지하 수집실 gt_collection_room · 즉결 처형(재의 법) → 탑 안에서는 '읽음 = 피험자 전환', '기록 고침 = 처형' (REGIONS 10.7)
+#   스킬: 읽고쓰기 35(비밀) · 학식 25 + 통찰 15 → 통찰 22 · 손재주 20 · 용언 10(글자로만) · 고대 진명어 6과 노예말은 prompt 줄로
+#   소지품: 숨긴 깃펜 촉 → o9_nib(소매) · 서기 목걸이 '7번'과 먹물 손가락 → 몸의 것(결점 '노예 낙인'과 flaw_note) · 상선 시간표(머릿속) → fact_o9_salt_ledger
+#   추천 조합: 「훔친 글」 기억의 궁전 수재 4 + 위조 수재 4 + 잔향의 눈 4 / 「탑의 진명사」 진명의 귀·기억의 궁전·혀의 재능 수재 / 「도망치는 서기」 그림자 걸음 수재 4 + 혀의 재능 수재 4 + 서기 수재 2 + 무쇠 위장 소질 1 + 거짓 얼굴 소질 1 — 모두 10 + 낙인 2 = 12
+origins:
+  - id: tower_scribe
+    order: 19
+    scenario: O-09
+    region: 아르카스 탑섬
+    name: 잿빛 탑 서기 노예
+    title: 글을 모른다고 적힌 서기
+    call: 칠번
+    age: 24
+    difficulty: 3
+    family: false
+    settlement: grey_tower
+    time: "14:00"
+    place: 잿빛 탑 재의 서고 필사대 — 오후 필사
+    start: gt_dust_desk
+    home: gt_scribe_dorm
+    blurb: >-
+      열두 살에 잿빛 탑으로 팔려 와 재의 서고의 긴 필사대에서 학자들의 원고를 모양대로 베낀다. 서기는 글을 읽지 못한다고
+      장부에 적혀 있다 — 그래서 학자들은 서기 앞에서 무엇이든 쓴다. 너는 읽는다. 먹물 할멈 헤스터가 바늘 구멍으로 가르쳤다.
+      회귀점은 오후 필사, 네 손이 베끼는 수집 후보 목록의 셋째 줄에 네 번호가 있다.
+    stats: {근력: 8, 민첩: 10, 체질: 9, 지능: 13, 감각: 11, 의지: 9}
+    skills: {화술: 12, 기만: 18, 위압: 4, 통찰: 22, 손재주: 20, 은신: 14, 싸움: 5, 읽고쓰기: 35, 용언: 10}
+    status: {hunger: 1, pain: 10, fatigue: 35, fear: 0, stress: 35}
+    train: 2
+    coin: 0
+    items:
+      - {id: o9_nib, name: 숨긴 펜촉, tags: [도구, 필기구, 숨길수있음], slot: 소매, quality: 보통, condition: 80, illegal: false, value: 0, desc: "필사대에서 부러졌다고 적고 소매에 넣어 둔 쇠 촉. 숙소 판자에 대면 글자가 된다 — 그래서 숨긴다"}
+      - {id: o9_ink_drops, name: 잉크 방울 세 개, tags: [화폐, 숨길수있음], slot: 품, quality: 보통, illegal: false, value: 1, desc: "약병 마개에 모은 먹물. 섬에는 시장이 없다 — 서기들끼리는 이것이 돈이다"}
+    rel: {npc_ar_hester: [55, 40], npc_ar_mathis: [0, 10], npc_milo: [10, 15], npc_ar_yona: [10, 20], npc_o9_dov: [25, 30], npc_ottilie: [5, 10], npc_ar_marga: [10, 10]}
+    knows: [fact_ar_tower_clerks_literate, fact_p2ar_hester_hole_script, fact_o9_dead_one, fact_o9_salt_ledger]
+    places: []
+    vars: {o9_suspicion: 0, o9_list_known: false, o9_forged: false, o9_struck: false, o9_dov_swapped: false, o9_dov_taken: false, o9_hester_confessed: false, o9_sold_holes: false}
+    wanted: null
+    flaws: [brand]
+    flaw_note: {brand: "목에 서기 목걸이 자국, 왼손목 안쪽에 탑 번호 문신 — 칠. 손가락 끝의 먹물은 씻어도 지워지지 않는다"}
+    traits: []
+    trait_discount: {}
+    free: false
+    access: {gt_ash_archive: public, gt_dust_desk: public, gt_corridor: public}
+    duty:
+      rollcall: {at: gt_dust_desk, time: "06:00", by: npc_ar_karba, miss: "새벽 측정 종에 필사대 자리가 비었다. 헤스터가 번호를 부르다 한 번 멈추고, 경비 장부의 칠번 옆에 점 하나가 찍힌다.", miss_effects: ["var o9_suspicion += 1"], frisk: true, frisk_text: "필사대 문가에서 용인 경비가 서기들의 소매와 품을 턴다 — 종이 한 장, 펜촉 하나도 서고를 드나들지 못한다.", wake_text: "소등 빗장이 풀린다. 서기들이 층층 침상에서 내려와 줄을 지어 서고로 간다 — 새벽 측정 종 전에 필사대에 앉아야 한다."}
+      wake: "05:00"
+      meal: {at: gt_mess, from: "18:30", to: "19:30", label: 피험자 식당 구석에서 서기 몫의 귀리죽을 받는다, hunger: -1, thin: 0.25, with: npc_ar_marga, cost: 0, text: "마르가가 국자를 눈높이로 든다. \"번호? 먼저 먹고 말해.\" 귀리죽에 생선 기름이 한 방울 떠 있다. 서기 몫은 피험자 몫보다 반 국자 많다 — 손이 일을 하니까."}
+      work:
+        at: gt_dust_desk
+        from: "06:00"
+        until: "09:00"
+        label: 필사대에 앉는다 (저녁 종까지)
+        done: "열 시간 필사. 학자의 원고 스무 장이 네 손을 지나 사본이 되었다 — 읽지 않은 것처럼, 모양만."
+        fail: "먹이 번졌다. 사본 석 장이 화로로 들어가고, 경비의 자가 손등을 친다. 할당을 못 채운 서기에게 저녁 귀리죽은 없다."
+        train: 0.05
+        pain: 2
+        fail_pain: 6
+        fail_meal: true
+        fail_fear: 0
+        fail_var: null
+        done_var: null
+        coin: 0
+        food: null
+        story: o9_corridor_errand
+        outlaw: false
+        sabbath: true
+      count: {time: "22:00", at: [gt_scribe_dorm, gt_hole_hidden], by: npc_ar_karba, miss: "소등 종. 경비가 서기 숙소 문에 빗장을 지르며 머릿수를 센다. 하나가 모자란다 — 칠번의 침상.", reason: 소등 점고에 빠졌다, miss_effects: ["var o9_suspicion += 1"]}
+      safe: [gt_scribe_dorm, gt_hole_hidden]
+      curfew: {caught: "번호 회랑의 경비 등불이 얼굴에서 멈춘다. 목걸이를 뒤집어 번호를 읽는다 — 칠. 창 자루가 정강이를 친다. 서기 숙소 문까지 끌려간다. 경비 장부에 칠번이 한 줄 더 적힌다.", fugitive: "경비 등불이 얼굴에서 멈춘다. \"칠.\" 목걸이를 쥐는 손이 무겁다. 이관을 피한 번호는 경비 장부 맨 위에 있다.", fugitive_why: "통금 순찰에 붙잡혔다 — 달아난 서기로 지하 수집실에 끌려갔다", pain: 12, effects: ["var o9_suspicion += 1"], D: 0}
+      desert: "허락 없이 탑을 떠나는 서기는 피험자보다 먼저 찾는다 — 섬에서 나가는 길은 바다뿐이다"
+      routine: 귀리죽 → 서기 숙소 → 새벽 측정 종
+    opening: o9_ink_open
+    sense: 먹 냄새
+    when_word: 오후
+    rescue: "눈앞이 하얘진다. 누군가 너를 층층 침상 위로 끌어 올린다. 입에 식은 귀리죽이 흘러든다. 먹물 냄새 — 헤스터다."
+    quiet:
+      - 서기 숙소의 층층 침상. 백여든의 숨소리 가운데 하나가 숫자를 센다. 열넷까지 세고 멈춘다.
+      - 판자 벽 안에서 쥐가 종이를 갉는다. 쥐가 아닐지도 모른다.
+      - 소등 종이 울리고 빗장이 걸린다. 탑 아래 절벽에서 밀물이 조수 무덤을 덮는 소리.
+      - 손가락 끝의 먹물은 씻어도 지워지지 않는다. 너는 어둠 속에서 손가락으로 판자의 결을 읽는다.
+      - 오늘 밤 네 입에서 나오는 소리를 받아 적는 사람은 없다. 아마도.
+    beats:
+      - {id: o9_tik_day, at: "312-09-15 14:00", danger: 4, when: ["var o9_forged == true", "not var o9_struck == true"], near: "내일 오후, 틱 셈쟁이가 사본을 원본과 맞춰 센다. 칠과 일 — 획 하나.", far: "보름이 지나면 틱이 사본의 숫자를 원본과 맞춰 센다. 사본에는 아직 죽은 일번이 있다."}
+      - {id: o9_first_ebb, at: "312-10-01 05:00", danger: 2, when: ["pknows fact_o9_tide_cave"], near: "내일 새벽, 서리월 첫 썰물. 조수 무덤 아래 동굴이 두 시간 열린다 — 조개가 돌 하나를 놓으러 온다.", far: "서리월 첫 썰물이면 조수 무덤 아래 동굴이 두 시간 열린다."}
+      - {id: o9_landing, at: "312-11-09 17:00", danger: 3, when: ["pknows fact_o9_eleven_innocents"], near: "내일 저녁, 부두에 열둘이 내린다. 목록의 줄들이 사람이 되어 탑 길을 걸어 올라온다.", far: "긴밤월 9일, 목록의 바깥 열 줄이 배에서 내린다. 너는 그들의 얼굴을 모른다. 줄을 안다."}
+      - {id: o9_beacon, at: "312-11-09 23:00", danger: 2, when: ["pknows fact_p2ar_fisher_beacon"], near: "내일 밤, 등대 바위의 옛 봉화대에 불이 선다. 한 해에 한 번 — 그롬마르 쪽 배가 그 불을 본다. 네 이관 전날 밤이다."}
+      - {id: o9_transfer, at: "312-11-10 04:30", danger: 5, when: ["var o9_list_known == true", "not var o9_struck == true"], near: "내일 새벽 측정 종 전, 브릭의 열쇠가 서기 숙소 문을 연다. 목록의 셋째 줄 — 칠.", far: "긴밤월 10일 새벽, 지하 수집실. 셋째 줄은 아직 지워지지 않았다."}
+      - {id: o9_dov_dawn, at: "312-11-10 04:30", danger: 4, when: ["var o9_dov_swapped == true", "not var o9_dov_taken == true"], near: "내일 새벽, 브릭의 열쇠가 네 침상 아래에서 멈춘다. 백열둘.", far: "긴밤월 10일 새벽, 네 줄 대신 백열둘의 번호가 내려간다. 그 애는 모른다."}
+      - {id: o9_third_test, at: "312-11-20 21:00", danger: 4, when: ["pknows fact_o9_list_feeds_third_test"], near: "내일 밤, 셋째 시험 열다섯째. 후보 둘 가운데 하나가 수집실에서 돌아오지 않는다.", far: "긴밤월 20일, 셋째 시험 열다섯째 — 0307호의 네레가 후보 둘 가운데 하나다."}
+      - {id: o9_last_ship, at: "312-12-01 05:00", danger: 3, when: ["var o9_list_known == true"], near: "내일 아침 마지막 배가 떠난다. 그 뒤로 섬은 봄까지 닫힌다.", far: "굶주림월 1일, 마지막 배. 그 뒤로 바다는 닫힌다."}
+    goals:
+      - who: 칠번의 줄
+        when: ["var o9_list_known == true"]
+        states:
+          - {when: ["var o9_sold_holes == true"], what: 줄이 그어졌다 — 서기실장과 서른한 권이 대신 탔다}
+          - {when: ["var o9_dov_swapped == true"], what: 지워졌다 — 그 자리에 아래 칸 백열둘의 번호가 들어갔다}
+          - {when: ["var o9_mathis_reader == true"], what: 지워졌다 — 마티스의 두 목록을 나란히 놓는 손이 되었다}
+          - {when: ["var o9_tik_silent == true"], what: "사본에는 죽은 일번 — 틱이 매듭에만 남겼다"}
+          - {when: ["var o9_struck == true"], what: 지워졌다}
+          - {when: ["var o9_fled == true"], what: 이관을 피해 달아났다 — 경비가 섬을 뒤진다}
+          - {when: ["var o9_forged == true", "date < 312-09-15"], what: "사본에는 죽은 일번, 원본에는 아직 칠 — 틱이 셀 때까지", until: "312-09-15 14:00"}
+          - {what: "긴밤월 10일 새벽 — 지하 수집실 이관", until: "312-11-10 04:30"}
+      - who: 네레
+        when: ["pknows fact_p2ar_nere_third_test_candidate"]
+        states:
+          - {when: ["var ar_third_dead >= 15"], what: 셋째 시험 열다섯째가 치러졌다 — 마르가의 그릇 줄에 빈 그릇이 하나 더 섰다}
+          - {what: "0307호 — 셋째 시험 열다섯째의 후보 둘 가운데 하나", until: "312-11-20 21:00"}
+      - who: 헤스터
+        when: ["var o9_hester_confessed == true"]
+        states:
+          - {when: ["dead npc_ar_hester"], what: 서기실장 자리가 비었다 — 바늘 쌈만 못에 걸려 있다}
+          - {when: ["var o9_dov_swapped == true"], what: 너를 보지 않는다 — 네 줄을 지우고 다른 번호를 넣었다}
+          - {when: ["var o9_hester_ally == true"], what: 너를 섬 밖으로 내보낼 길을 찾는다}
+          - {what: 서기 일흔을 필사대에 앉힌다 — 너를 보지 않는다}
+      - who: 백열둘
+        when: ["var o9_dov_swapped == true"]
+        states:
+          - {when: ["var o9_dov_taken == true"], what: 지하 수집실로 내려갔다 — 그 애는 정말로 못 읽는다}
+          - {what: "네 줄 대신 수집 후보 목록에 — 긴밤월 10일 새벽", until: "312-11-10 04:30"}
+    losses:
+      - {id: hester_dead, when: ["dead npc_ar_hester"], text: "서기실 안쪽 방 못에 바늘 쌈이 걸려 있다. 아무도 그것을 차지 않는다.", weight: 8}
+      - {id: holes_burned, when: ["var o9_sold_holes == true"], text: "탑 마당에서 종이가 탄다. 구멍 난 종이는 불이 더 빨리 붙는다.", weight: 6}
+      - {id: dov_taken, when: ["var o9_dov_taken == true"], text: "네 침상 아래가 비었다. 쥐구멍을 지켜보던 아이가 없다.", weight: 7}
+      - {id: fifteenth_bowl, when: ["var ar_third_dead >= 15"], text: "마르가의 그릇 줄에 열다섯째 빈 그릇이 선다. 마일로의 입술이 이름 하나를 더 센다.", weight: 4}
+    achievements:
+      - {id: line_struck, tp: 2, text: 제 손으로 베낀 수집 목록에서 제 줄을 지웠다, when: ["var o9_struck == true", "not var o9_dov_taken == true", "date >= 312-11-11"]}
+      - {id: thirty_one, tp: 2, text: 할멈을 팔지 않았다 — 서른한 권이 새 겨울을 넘었다, when: ["var o9_hester_confessed == true", "not var o9_sold_holes == true", "not var o9_dov_swapped == true", "date >= 312-12-01"]}
+      - {id: two_lists, tp: 3, text: 마티스의 두 목록을 나란히 놓았다 — 없는 징후로 끌려올 아이들이 줄었다, when: ["var o9_mathis_reader == true", "date >= 312-10-10"]}
+    epilogue:
+      - {when: ["var o9_sold_holes == true"], text: "서른한 권은 탑 마당에서 탔다. 일흔은 그 뒤로 서로의 문장을 다시 쓰지 못했다. 서기실장 자리에는 읽지 못하는 서기가 앉았다."}
+      - {when: ["not var o9_sold_holes == true"], text: "구멍 글은 서른한 권에서 서른두 권이 되었다. 마지막 권의 첫 장에 바늘구멍 몇 개 — 서기들은 손가락으로 그것을 이름이라고 읽었다."}
+      - {when: ["var o9_dov_taken == true"], text: "백열둘은 수집실에서 질문 셋에 대답하지 못했다. 그 애는 정말로 읽지 못했다. 그것이 대답이었다."}
+      - {when: ["var o9_mathis_reader == true"], text: "마티스 그레이브는 끝내 두 목록을 나란히 놓으라고 지시하지 않았다. 그 일은 서기 하나가 했고, 그 서기의 이름은 어느 장부에도 없다."}
+      - {when: [], text: "잿빛 탑의 기록에는 한 줄이 남았다. '서기 칠번 — 수면 중 고대 진명어 잠꼬대.' 그 줄 아래, 누군가 서기의 필체로 아주 작게 덧붙였다. '그는 돌아온다.'"}
+    texts:
+      count_before_sleep: |
+        서기 숙소의 층층 침상. 네 아래 칸에서 백열둘이 무릎을 끌어안고 잔다. 판자 벽 안쪽에서 쥐가 종이를 갉는 소리 — 서른한 권 쪽이다.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "잿빛 눈 사무실의 등잔이 늦게까지 꺼지지 않는다. 경비 장부의 칠번 옆에 점이 하나 더 찍혔다."
+      nem_door: "서기 숙소 판자 문"
+      gossip_where: "필사대의 바늘 구멍으로, 식당의 그릇 줄에서."
+    public:
+      npc_ar_hester: 서기실장, 먹물 할멈 — 칠번에게 글을 가르쳤다
+      npc_milo: 두 자리 건너의 서기 — 입술로 숫자를 센다
+      npc_ar_yona: 판자 곁에서 자는 서기, 구멍 요나
+      npc_o9_dov: 백열둘 — 칠번 아래 칸의 아이
+      npc_ottilie: 기록 보관소장 — 손이 돌이 되어 가는 두르강 학자
+      npc_ar_mathis: 귀의 부서장 — 왼쪽 귀가 접힌 용인 학자
+      npc_ar_tik: 매듭을 감은 크릭 원로
+      npc_irene_bold: 탑주 — 왼눈에 렌즈를 박은 용인
+      npc_ar_karba: 잿빛 눈의 대장 — 경비를 부리는 외눈 용인
+      npc_ar_brick: 번호 회랑의 간수 — 열쇠 꾸러미 소리
+      npc_ar_marga: 피험자 식당의 급식 노파
+      npc_ar_dessa: 회랑의 약사 — 쑥 냄새
+      npc_ar_rail: 시간 측정관 — 은색 눈의 용인
+      npc_ar_opil: 기록학파 원로 — 나가
+      npc_ar_borte: 바람을 재는 원로
+      npc_ar_orvel: 금고지기
+      npc_ar_nere: "? 0307호의 아이 — 벽에 숯으로 길을 그린다"
+      npc_ar_old0213: "? 0213호의 노인"
+      npc_halla: "? 13층 독방의 필사가 — 마일로가 벽을 두드리는 방"
+      npc_corvina: "? 탑 꼭대기의 까마귀 아에리"
+      npc_ar_ishi: "? 부두장 — 나가"
+      npc_ar_fisher: "? 등대 바위의 늙은 어부"
+    map: {knowledge: {grey_tower: 3, arkas_harbor: 2, seren: 1, grommar_port: 1, oath_isle: 1, asteria_ruins: 1, lumen: 1, greyford_village: 1}, sketch: [arkas_harbor, seren]}
+    world: "주인공이 매인 곳은 아르카스 탑섬 — 잔향 징후자를 모아 연구하는 다종족 학회 '잿빛 탑'의 기록 보관소(재의 서고). 서기 노예는 글을 읽지 못한다고 장부에 적혀 있다."
+    people: "주인공은 잿빛 탑의 서기 숙소에서 열두 해를 살았다 — 서고와 회랑의 사람은 번호나 별명으로 안다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"헤스터 — 서기실장, 허리에 바늘 쌈을 찬 노파 — 가\"). 이름을 모르는 사람은 겉모습으로만 부른다."
+    nouns: "'재의 서고'는 탑의 기록 보관소이자 서기들의 필사실이다(먼지 서고라고도 한다). '번호 회랑'은 피험자의 방 사백 개가 늘어선 곳. '구멍 글'은 서기들이 바늘 구멍으로 남기는 글이다 — 탑은 '종이 벌레'라 부른다. '칠번'은 주인공의 목걸이 번호이자 부르는 이름이다."
+    prompt: "주인공: 칠번이라 불리는 스물네 살 서기 노예 (진짜 이름은 서기실장 헤스터만 안다). 열두 살에 잿빛 탑으로 팔려 와 서기 숙소의 층층 침상에서 자고, 재의 서고에서 학자들의 원고를 모양대로 베낀다 — 서기는 글을 읽지 못한다고 되어 있지만 칠번은 읽는다(드러나면 피험자로 옮겨지고, 탑의 기록을 고치면 처형이다). 손가락 끝이 먹물로 검고, 목에 목걸이 자국, 왼손목 안쪽에 탑 번호 문신이 있으며, 소매에 펜촉 하나를 숨겼다. 용언은 글자로만 조금 알고, 고대 진명어 몇 자를 모양으로 안다. 노예말을 쓴다."
+    awakening: "다만 펜촉이 저절로 다른 획을 그으려 한다 — 이 탑이 찾는 '찢어진 시간의 이름'의 첫 획을 손이 안다. 누구의 기억인지 모른다."
+    exclude: []
+    perks: [글을 읽는다 — 탑의 원고·목록·장부가 열린다, 학자들이 서기 앞에서 무엇이든 쓴다 — 탑의 비밀이 손 아래로 지나간다, 서기 일흔의 구멍 글과 헤스터의 바늘]
+    burdens: [읽는다는 것이 드러나면 피험자 — 기록을 고치면 처형, 수집 후보 목록에 네 번호가 있다 — 긴밤월 10일 새벽, 섬이다 — 나가는 길은 바다뿐이다]
+    presets:
+      - {name: 훔친 글, talents: {memory_palace: 2, forgery: 2}, traits: [echo_eye], stats: {지능: 2, 감각: 2}}
+      - {name: 탑의 진명사, talents: {truename_ear: 2, memory_palace: 2, tongue: 2}, stats: {지능: 2, 의지: 2}}
+      - {name: 도망치는 서기, talents: {shadow_step: 2, tongue: 2, scribe: 2, iron_gut: 1, false_face: 1}, stats: {민첩: 3, 체질: 1}}

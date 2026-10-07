@@ -1,0 +1,184 @@
+# O-11 반용 — 용인 귀족가의 숨겨진 아이 (docs/world/SCENARIOS.md O-11 → 바알카르 지역 자료에 맞춘 각색. 지역 자료가 이긴다)
+#
+# 사람 (SCENARIOS → 자료)
+#   벨라스 가문              → 화염문 가. 칼다란·하스트란·타르굴·베스페린 가운데 발레리우스 화염문(npc_valerius)의 카드만 맞는다:
+#                               아우락스파 자금줄, 저녁마다 연회(일과 18~23시), 밤마다 장부, 기질 '불임의 공포', 두려움 '인간의 얼굴이 자기 얼굴과 닮았다는 사실'.
+#                               하스트란 저택은 해가 지면 불을 모두 끄고(연회가 없다), 칼다란은 S급 집사가(대공) 얽히고, 베스페린은 멜리산드파다
+#   생부 세바르 벨라스(210)   → 발레리우스 화염문 (310) — 카드 그대로. 인간과 말하지 않는다. 값이 걸린 밤에만 처음으로 직접 말한다
+#   이복형 루칸 벨라스(80)    → 새 인물 npc_o11_lucan 루칸 화염문 (80, 발레리우스의 외아들, 아이가 없다) — 원수의 피의 원수(enemy)
+#   요리장 테오(인간, 72)     → 새 인물 npc_o11_herm 헤름. npc_theo_bold(테오 볼드)는 잉크 거리의 용인 관리라 맞지 않고, 같은 도시에 같은 이름을 두지 않으려 이름을 바꿨다
+#   어머니 아나              → 이름만. AS 307 재 마당에서 징후자로 탔다 — 등잔(바알카르의 이름 없는 자들)의 물통 길
+#   '세 번째 우물' 접선 장소  → 재받이 하수 분기점(bk_sewer_third, 등잔 회합)과 베노의 아궁이(npc_benno)
+#   저택의 감독              → 새 인물 npc_o11_kruk 크룩 — 그레타(npc_greta)의 카드에 나오는 '감독 크릭'. 저녁 점고를 부른다
+#   같은 저택의 사람          → 그레타(npc_greta, 세탁 노예 — 브란의 아내). 아나와 두 해를 같은 저택에서 살았다
+# 그 밖의 각색
+#   하인복(제복:벨라스)       → 화염문가 사슬 표찰 (바알카르의 '사슬 표찰'). 부엌칼은 '근무 중에만'이라 소지품에서 뺐다
+#   잠든 비늘 (0 TP)         → traits: [sleeping_scale] + trait_discount {dragon_heart: 4}. 비늘이 드러나면 처단 — 대본 장면의 die/위험으로
+#   선택 3 {요구: 용기 30+}   → 엔진에 성향 조건이 없다: 화술 판정(장부 방 문 앞의 집사)으로 바꿨다
+#   선택 6 [의지 D45]        → 통찰 D32 + 잠든 비늘이 돕는다(+8). 펜던트는 녹지 않고 검게 그을린다 (물건을 없애는 효과가 없다)
+#   카스파르에게 알리는 길    → kaspar_warning(인간 짐꾼의 글) 대신 이 출신의 o11_kaspar_blood (같은 효과 + '두 반비늘')
+#   하인의 하루              → 점호 없음, 통금 종 뒤 20:00 크룩의 저녁 점고 · 05:00부터 부엌일 · 18:30 연회의 남은 것 · 바알카르 통금 19:30
+origins:
+  - id: hidden_halfdragon
+    order: 21
+    scenario: O-11
+    region: 드라크마르 용좌령
+    name: 숨겨진 반용
+    title: 용인 저택 부엌의 숨겨진 아이
+    call: 부지깽이
+    age: 17
+    difficulty: 4
+    family: false
+    settlement: baalkar
+    time: "20:00"
+    place: 바알카르 비늘 언덕, 화염문 저택의 하인 계단
+    start: bk_sh_flamegate
+    home: bk_sh_flamegate
+    blurb: >-
+      화염문 저택 부엌에서 자란 열일곱 살. 어머니는 인간 노예였고 다섯 해 전 재 마당에서 탔다. 아비는 위층에서
+      장부를 센다 — 그는 너를 알고, 인정하지 않는다. 사흘째 열이 내리지 않는다. 회귀점은 사냥 연회의 밤,
+      구운 사슴 쟁반을 들고 오르는 하인 계단 — 등뼈를 따라 비늘 세 개가 살을 찢고 나온다.
+    stats: {근력: 8, 민첩: 9, 체질: 12, 지능: 9, 감각: 11, 의지: 11}
+    skills: {화술: 22, 기만: 18, 위압: 6, 통찰: 18, 손재주: 18, 은신: 15, 싸움: 6, 읽고쓰기: 0, 용언: 15}
+    status: {hunger: 1, pain: 35, fatigue: 45, fear: 0, stress: 40}
+    train: 6
+    coin: 1
+    items:
+      - {id: o11_scale_pendant, name: 비늘 펜던트, tags: [유물, 숨길수있음], slot: 품, quality: 보통, illegal: true, value: 0, desc: "손톱만 한 붉은 금빛 비늘에 구멍을 뚫어 삼끈을 꿰었다. 네가 태어난 밤 위층 사람이 목덜미에서 뽑아 화덕에 던진 것을 어머니가 맨손으로 꺼냈다. 비늘은 타지 않았다. 들키면 도둑이거나, 더 나쁜 것이다"}
+      - {id: o11_house_tag, name: 화염문가 사슬 표찰, tags: [신분], slot: 허리, value: 0, desc: "불꽃 문 문장이 찍힌 쇠 표찰. 화염문 저택의 하인이라는 뜻 — 심부름이면 층계 검문을 지난다. 통행증은 아니다"}
+    rel: {npc_o11_herm: [70, 60], npc_o11_lucan: [-20, -30], npc_valerius: [-10, 0], npc_greta: [15, 10], npc_o11_kruk: [-5, -10]}
+    knows: [fact_dk_valerius_funds_aurax, fact_o11_sire, fact_o11_ana_burned]
+    places: []
+    vars:
+      o11_sire_known: true
+      o11_scales_out: true
+      o11_fire_memory: false
+      o11_lucan_eye: 0
+      o11_hunt_heard: false
+      o11_herm_marked: false
+      o11_herm_warned: false
+      o11_herm_dead: false
+      o11_herm_saved: false
+      o11_survived_hunt: false
+      o11_cast_out: false
+      o11_fled: false
+      o11_lamp_met: false
+      o11_lamp_knows_blood: false
+      o11_greta_dead: false
+      o11_greta_saved: false
+      o11_kaspar_blood: false
+    wanted: null
+    flaws: [enemy_blood]
+    flaw_note: {enemy_blood: "이복형 루칸 화염문 — 같은 저택에서, 첫 회차부터 네 냄새를 쫓는다"}
+    traits: [sleeping_scale]
+    trait_discount: {dragon_heart: 4}
+    enemy: npc_o11_lucan
+    free: false
+    access: {bk_sh_flamegate: public, bk_sh_flamegate_laundry: public, bk_sh_servant_passage: public, bk_scale_hill: public}
+    duty:
+      rollcall: false
+      wake: "04:30"
+      meal: {at: bk_sh_flamegate, from: "18:30", to: "19:30", label: 부엌 뒤에서 연회의 남은 것을 받는다, hunger: -1, thin: 0.15, cost: 0, text: "식은 기름, 뼈에 붙은 고기, 빵 귀퉁이. 위층 식탁에서 내려온 것을 부엌 사람들이 고루 나눈다 — 배는 찬다. 등은 벽 쪽으로"}
+      work:
+        at: bk_sh_flamegate
+        from: "05:00"
+        until: "09:00"
+        label: 부엌일을 한다 (불 지피기부터 연회 설거지까지)
+        done: 화덕 넷, 고기 꼬챙이, 물동이, 위층 계단. 몇 번 오르내렸는지 세다가 그만둔다. 접시 하나 깨지지 않았다 — 등은 늘 벽 쪽으로
+        fail: 소스가 눌어붙었다. 크룩의 막대가 손등에 떨어진다 — 오늘 저녁 부엌의 몫은 없다
+        train: 0.3
+        pain: 2
+        fail_pain: 8
+        fail_meal: true
+        outlaw: false
+        sabbath: true
+      count: {time: "20:00", at: [bk_sh_flamegate, bk_sh_flamegate_laundry], by: npc_o11_kruk, miss: "통금 종 뒤 반 시간, 크룩이 하인 숙소 문 앞에서 머릿수를 셌다. 한 자리가 비었다 — 크룩의 혀가 이빨에 부딪혀 딱 소리를 낸다", reason: 화염문 저택의 저녁 점고에 빠졌다}
+      safe: [bk_sh_flamegate_laundry, bk_sewer]
+      curfew:
+        caught: "통금 순찰의 등불이 얼굴에 멈춘다. 비늘 근위 둘. 사슬 표찰을 보고도 몽둥이가 먼저다 — 태형 열. 하인복 등판이 찢어지기 전에 크룩이 표찰 값을 치르고 너를 끌고 간다. 화염문의 물건은 남의 기둥에 오래 두지 않는다. 아침이면 그 이야기가 위층까지 올라간다"
+        fugitive: "등불이 얼굴에 멈춘다. \"화염문에서 도망친 부엌것이다.\" 사슬 기둥으로 끌려가며 하인복이 찢어진다. 등불이 등에 닿는다."
+        fugitive_why: "통금 순찰에 붙잡혔다 — 도망친 하인으로 사슬 기둥에 묶였고, 등불 빛에 등의 비늘이 드러났다"
+        pain: 20
+        effects: ["var o11_lucan_eye += 1", "stress 6"]
+        D: 4
+      desert: "허락 없이 바알카르를 떠나면 크룩이 송곳니 회관에 이름을 넘긴다 — 가주의 통행증이 있으면 심부름이다"
+      routine: 부엌 → 연회 시중 → 하인 숙소
+    opening: o11_stairs_open
+    sense: 사슴 기름 타는 냄새
+    rescue: "눈앞이 하얘진다. 누군가 너를 하인 숙소 짚더미로 끌고 간다. 입에 식은 국물이 흘러든다. 잿물 냄새 나는 손 — 세탁장의 그레타다."
+    rescue_out: "눈앞이 하얘진다. 재 냄새 나는 손이 너를 어딘가 따뜻한 데로 끌어다 놓는다. 이 없는 입이 무어라 웅얼거리고, 묽은 죽이 입에 흘러든다."
+    quiet:
+      - "위층에서 마지막 잔이 부딪힌다. 접시가 내려오고, 기름이 하얗게 굳는다. 하인 숙소에는 등잔이 없다 — 화덕의 남은 불이 벽을 붉게 한다."
+      - "새벽종이 일곱 층을 내려간다. 비늘 언덕에서 맨 아래 재받이까지. 화덕에 첫 장작을 넣는 손은 언제나 부엌의 맨 아래 손이다."
+      - "세탁장 쪽에서 방망이 소리가 늦게까지 난다. 누군가의 피 묻은 비단을 빤다. 너는 등을 벽에 붙이고 잔다. 벽이 시원하다."
+      - "용좌봉 쪽 하늘이 붉다. 재의 둥지에서 늙은 용이 숨을 쉰다고, 하인들은 그렇게만 말한다. 누구도 그쪽을 오래 보지 않는다."
+    beats:
+      - {id: o11_hunt_beat, at: "312-09-03 21:00", danger: 4, when: ["var o11_hunt_heard == true"], near: "내일 밤, 루칸의 놀이. 횃불 여섯, 하인 통로, 불꽃 홀의 자정 북.", far: "루칸의 손님들이 '놀이'를 말한다. 사냥감은 부엌에서 고른다고."}
+      - {id: o11_north_gate, at: "312-09-02 05:00", danger: 2, when: ["var o11_cast_out == true"], near: "새벽 다섯 시, 북문이 열린다. 가주의 통행증이 품 안에서 무겁다."}
+      - {id: o11_lamp_night, at: "312-09-13 23:00", danger: 2, when: ["var o11_lamp_knows_blood == true"], near: "내일 밤 열한 시, 재받이 하수 분기점에 등잔이 켜진다.", far: "열사흘 밤 열한 시 — 재받이 하수 분기점의 등잔 회합."}
+      - {id: o11_varskar_fit, at: "312-09-08 06:00", danger: 2, when: ["loop >= 2"], near: "내일 새벽, 재의 둥지 병상 문이 사흘 닫힌다. 위층의 잔들이 그 소식에 오래 부딪힐 것이다.", far: "용좌봉의 늙은 용이 곧 한 번 더 무너진다. 너는 그 날을 안다."}
+    goals:
+      - who: 헤름
+        states:
+          - {when: ["var o11_herm_dead == true"], what: 루칸의 놀이에서 돌아오지 못했다}
+          - {when: ["var o11_herm_saved == true"], what: 놀이에서 살아남았다 — 루칸은 그 밤을 잊지 않는다}
+          - {when: ["var o11_hunt_heard == true"], what: 루칸이 놀이의 사냥감으로 눈여겨보았다 — 낙엽월 3일 밤, until: "312-09-03 21:00"}
+          - {what: 부엌 화덕 곁 — 네 이름과 네 등을 아는 단 한 사람}
+      - who: 네 등의 비늘
+        states:
+          - {when: ["var o11_scales_bleached == true"], what: 잿물에 바래 살갗과 같은 빛 — 사흘은 쓰라리다}
+          - {when: ["var o11_lucan_eye >= 2"], what: 루칸이 눈치챘다 — 하인복 속의 비늘 셋}
+          - {what: 하인복 속의 비늘 셋 — 드러나면 그 자리에서 처단이다}
+      - who: 카스파르 반비늘
+        when: ["pknows fact_dk_aurax_kaspar_contract"]
+        states:
+          - {when: ["dead npc_kaspar"], what: 죽었다}
+          - {when: ["var kaspar_warned == true"], what: 경고가 닿았다}
+          - {what: 아우락스가 송곳니 회관의 볼크에게 목값을 냈다 — 용황이 숨을 거두는 밤. 까마귀 문은 용의 대로 북쪽 끝이다}
+    losses:
+      - {id: herm_lost, when: ["var o11_herm_dead == true"], text: "헤름의 화덕이 식었다. 다음 날 아침 첫 장작을 넣은 것은 너다. 아무도 그 자리를 묻지 않는다.", weight: 7}
+      - {id: greta_lost, when: ["var o11_greta_dead == true"], text: "세탁장의 방망이 소리가 하나 줄었다. 허리끈의 매듭이 무엇이었는지 아는 사람은 이제 회색여울에 하나뿐이다.", weight: 5}
+    achievements:
+      - {id: herm_lives, tp: 2, text: 헤름을 루칸의 놀이에서 지켜냈다, when: ["var o11_herm_saved == true", "alive npc_o11_herm", "date >= 312-09-15"]}
+      - {id: hunt_survived, tp: 2, text: 루칸의 놀이에서 자정 북까지 살아남았다, when: ["var o11_survived_hunt == true"]}
+      - {id: two_halfscales, tp: 3, text: 두 반비늘 — 카스파르에게 같은 피를 보였다, when: ["var o11_kaspar_blood == true"]}
+      - {id: lamp_child, tp: 1, text: 아나의 등잔 — 재받이의 베노가 네 등을 보았다, when: ["var o11_lamp_knows_blood == true"]}
+    epilogue:
+      - {when: ["var o11_herm_dead == true"], text: "화염문 부엌의 화덕은 그 겨울 다른 손이 지폈다. 연회마다 사슴은 구워졌고, 아무도 늙은 요리장의 간을 기억하지 못했다."}
+      - {when: ["not var o11_herm_dead == true"], text: "헤름은 그 겨울을 넘겼다. 봄에 화덕 재를 치우다가 검게 그을린 비늘 하나를 주워 오래 들여다보았다. 그리고 다시 재 속에 묻었다."}
+      - {when: ["var kaspar_warned == true"], text: "용황이 숨을 거둔 밤, 까마귀 문 사령관실 창 밖에 그림자가 섰다. 사령관은 깨어 있었다."}
+      - {when: ["not var kaspar_warned == true"], text: "용황이 죽은 해 봄, 까마귀 문의 반비늘이 죽었다. 쇠 송곳니 자국이 남았다. 누구의 금이었는지는 화염문의 장부에만 적혔다."}
+      - {when: ["alive npc_o11_lucan"], text: "루칸 화염문은 사냥 연회를 그만두지 않았다. 부엌에서 사냥감을 고르는 놀이도. 화염문의 대는 그에게서 끊겼다."}
+      - {when: ["dead npc_o11_lucan"], text: "루칸 화염문이 죽은 뒤, 발레리우스는 장부를 처음부터 다시 셌다. 부엌, 하나 — 그 줄은 이미 지워져 있었다."}
+    texts:
+      count_before_sleep: |
+        부엌 뒤 하인 숙소. 짚더미가 화덕 벽에 붙어 있어 등이 따뜻하다 — 등뼈의 세 자리만 더 뜨겁다. 위층에서 마지막 잔이 부딪히는 소리가 내려온다. 너는 등을 벽에 붙인다.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "크룩이 하인 숙소 문 앞에서 오래 서 있다. 송곳니 회관에서 온 바르그 하나가 저택 뒷문 냄새를 맡고 갔다."
+      nem_door: "부엌 화덕 위 그을음"
+      gossip_where: "세탁장 물통가에서, 하인 계단에서."
+    public:
+      npc_valerius: 위층의 가주 — 장부를 세는 아비
+      npc_o11_lucan: 가주의 아들, 사냥 연회의 주인 — 이복형
+      npc_o11_herm: 부엌의 늙은 요리장
+      npc_o11_kruk: 저택의 크릭 감독
+      npc_greta: 세탁장의 화상 손
+      npc_aurax: 이 저택이 금을 대는 붉은 홀의 진룡
+      npc_kaspar: 까마귀 문의 반비늘 — 연회의 웃음거리
+      npc_varskar: 용좌봉 재의 둥지에서 죽어 가는 용황
+      npc_valerius_hastran: 밤이면 불을 모두 끄는 하스트란 저택의 늙은 후작
+      npc_benno: "? 재받이 아궁이의 이 빠진 노인"
+    map: {knowledge: {baalkar: 3, dragon_throne_peak: 2, red_spire: 1, crown_farms: 1, reed_ferry: 1, dragon_pillar_post: 1, greyford_village: 1, crow_gate: 1}, sketch: [dragon_throne_peak]}
+    world: "주인공이 매인 곳은 바알카르 — 드라크마르 용제국의 수도, 일곱 층으로 오르는 산의 도시. 6층 비늘 언덕의 순혈 대가문 화염문 저택, 노예 210 가운데 부엌의 하나다. 통금(19:30) 뒤 저택 밖의 인간은 태형과 사슬 기둥이다."
+    people: "주인공은 화염문 저택의 부엌에서 나고 자랐다 — 저택 사람은 이름이나 별명으로 안다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"헤름 — 화염문 부엌의 늙은 요리장, 손등이 불티 자국투성이인 노인 — 이\"). 이름을 모르는 사람은 겉모습으로만 부른다."
+    nouns: "'화염문'은 순혈 대가문의 이름이다(문이 아니다). '비늘 언덕'은 바알카르 6층의 순혈 저택가, '재받이'는 맨 아래 강가의 인간 빈민가다. '등잔'은 이름 없는 자들의 바알카르 조직을 부르는 말이다. '부지깽이'는 주인공의 부엌 별명이다 — 화덕에 손을 넣어도 데지 않아서. 순혈 용인은 거의 인간처럼 보인다(목덜미에 비늘 몇 장, 금빛 눈, 뜨거운 손)."
+    prompt: "주인공: 부지깽이라 불리는 열일곱 살 반용 — 화염문 가주 발레리우스와 인간 노예 아나(다섯 해 전 재 마당에서 탔다) 사이에서 난, 아무도 인정하지 않는 아이 (진짜 이름은 늙은 요리장 헤름만 안다). 바알카르 비늘 언덕 화염문 저택 부엌 뒤 하인 숙소에서 잔다. 사흘째 열이 내리지 않고, 낙엽월 1일 밤 등뼈를 따라 비늘 세 개가 살을 찢고 나왔다 — 드러나면 처단이다. 손은 불에 데지 않고, 품에 어머니가 남긴 비늘 펜던트를 숨겼다."
+    awakening: "다만 등의 비늘이 달아오를 때마다 배운 적 없는 불이 기억난다 — 하늘을 메운 불이 자기 목소리를 한가운데서 찢던 순간과, 그 불을 뿜은 용의 이름. 그 용은 지금 용좌봉에서 죽어 가고 있다."
+    exclude: [kaspar_warning]
+    perks: ["아비의 저택 안을 드나든다 — 순혈들의 말이 가장 가까이에서 들린다", "늙은 요리장 헤름이 네 이름과 네 등을 지킨다", "반용의 피 — 불에 데지 않고, 용심이 4점 싸다"]
+    burdens: ["비늘이 드러나면 그 자리에서 처단이다", "이복형 루칸이 같은 저택에서 처음부터 냄새를 쫓는다 (원수의 피)", "통금이 가혹하다 — 저택 밖의 밤은 태형과 사슬 기둥"]
+    presets:
+      - {name: 깨어나는 비늘, talents: {tongue: 2, iron_gut: 1, etiquette: 1}, traits: [dragon_heart], stats: {의지: 2, 감각: 2}}
+      - {name: 궁정의 그림자, talents: {shadow_step: 2, tongue: 2, memory_palace: 2, truename_ear: 1}, stats: {민첩: 2, 지능: 2}}
+      - {name: 반비늘의 형제, talents: {command: 2, tongue: 2, sword: 2, iron_gut: 1, etiquette: 1}, stats: {근력: 2, 체질: 2}}

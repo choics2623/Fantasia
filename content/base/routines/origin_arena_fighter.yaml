@@ -1,0 +1,14 @@
+# O-06 피의 원형장 투사의 새 사람 — 벡 예순넷 (npcs/extra_arena_fighter.yaml). 장소 id는 settlements/blood_arena.yaml (ba_*).
+# 가을 피의 날(낙엽월 1일) 15시의 모래와 그날 저녁의 치료소는 회귀점 장면의 stage가 세운다 (storylets/origin_arena_fighter.yaml).
+# 그 뒤의 하루는 무릎 나간 투사의 하루 — 새벽 훈련에 서지 못하고, 치료소의 소금물과 훈련장 가장자리를 오간다.
+# 안식일(6일째) 밤에는 흉터(50승 이상)로서 1번 숙소 바닥의 흉터 회의에 앉는다. 쇠우리는 22시에 닫힌다.
+npc_o6_vek:
+  home: ba_dorm7
+  blocks:
+    - {days: all, from: "21:00", to: "05:00", at: ba_dorm7, doing: 창걸이 아래 짚더미에 누워 있다 — 오른쪽 무릎에 감은 천이 소금물에 젖었다}
+    - {days: all, from: "05:00", to: "12:00", at: ba_infirmary, doing: 노라베의 소금물에 오른쪽 무릎을 담근다 — 이를 문다}
+    - {days: all, from: "12:00", to: "13:00", at: ba_cookhouse, doing: 에이다의 국을 앉아서 먹는다 — 서서 먹지 못한다}
+    - {days: workday, from: "13:00", to: "17:00", at: ba_training, doing: 훈련장 가장자리에 앉아 창 자루로 바닥을 두드린다 — 신참들의 발을 센다}
+    - {days: sabbath, from: "13:00", to: "17:00", at: ba_dorm7, doing: 숙소 아궁이 곁에서 창날을 간다}
+    - {days: all, from: "17:00", to: "21:00", at: ba_dorm7, doing: 아궁이 앞에서 창날을 간다 — 날은 이제 쓸 데가 없다}
+    - {days: sabbath, from: "21:00", to: "24:00", at: ba_dorm1, doing: 안식일 밤 흉터 회의 — 바닥에 원으로 앉아 예순넷의 손을 든다}

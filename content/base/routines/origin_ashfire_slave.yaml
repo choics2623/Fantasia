@@ -1,0 +1,13 @@
+# 잿불 광산 노예 (O-02)에서 새로 쓴 사람의 일과 (24 §3). 장소는 settlements/ember_mines.yaml(em_*). 쉼표가 든 값은 따옴표로.
+# 에디크: 하로의 갱조, 검은 교대 (점호 05:30 · 입갱 06:00 · 올림 17:30). 다리를 다쳐도 일과는 같다 — 갱에서는 다리가 부러져도 내려간다.
+# 일과 글은 다친 다리에도 성한 다리에도 맞게 썼다. 죽으면(낙반·수레 밑판) 장면이 'agenda kill'로, 요람으로 끌려가면 'agenda capture'로 일과를 덮는다.
+npc_o2_edik:
+  home: em_burrow_black
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: em_burrow_black, doing: 이백열셋 호 굴에서 잔다 — 코를 곤다}
+    - {days: all, from: "05:00", to: "05:30", at: em_burrow_black, doing: 굴 앞에 앉아 발목의 쇠고리 자국을 문지른다}
+    - {days: workday, from: "05:30", to: "06:00", at: em_roll_yard, doing: 점호 — 하로의 갱조 줄에서 번호를 댄다, fixed: true}
+    - {days: workday, from: "06:00", to: "17:30", at: em_lvl_mid, doing: 중층 4번 막장에서 곡괭이를 든다}
+    - {days: all, from: "17:30", to: "18:30", at: em_ration, doing: 검은 빵 창구 줄에 서서 이다에게 농담을 건다, fixed: true}
+    - {days: all, from: "18:30", to: "20:00", at: em_burrow_black, doing: 굴 앞 비탈에 앉아 다리를 주무르며 붉은 계단 쪽 하늘을 본다}
+    - {days: sabbath, from: "05:30", to: "17:30", at: em_burrow_black, doing: 굴 앞 양지에 누워 하늘 쪽으로 얼굴을 든다}

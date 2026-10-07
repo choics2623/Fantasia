@@ -1,0 +1,22 @@
+# 알려진 사정 — 세렌 계약민 출신 (seren_bonded)의 장면이 세운 깃발. 참일 때 서술 프롬프트의 [알려진 사정]에 들어간다.
+# 빚(o5_debt)과 분담금(o5_levy)은 숫자·글자 변수라 늘 참이다 — 깃발로 쓰지 않는다 (화면의 '지킬 것'이 보여 준다).
+flags:
+  o5_reads:              {line: "펠네는 장부 앞에서 숫자 밖의 글자를 읽기 시작했다. 아무에게도 말하지 않았다 — 세렌에서 계약민의 글자는 벌금 다섯 금화와 탑 인계 검토다"}
+  o5_unruly:             {line: "마르셀은 펠네의 줄 옆에 '불온'이라 적었다. 다음 달 일감이 셋에 하나 줄었다", npc: npc_o5_marcel}
+  o5_collective:         {line: "급여일 줄에서 서른이 분담금에 엄지를 거뒀다 — 펠네가 장부의 검은 7을 짚었다. 소금계단 사람들이 그 얼굴을 기억한다", npc: npc_miko, warn: "급여일 줄의 서른이 기억한다"}
+  o5_lucio_deal:         {line: "루치오 카셀론은 펠네에게 값을 불렀다 — 밤에 남의 짐을 나르는 계약민의 이름 하나와 밤 하나", npc: npc_sr_lucio}
+  o5_lucio_watch:        {line: "루치오 카셀론은 펠네가 보험 한도 열둘 너머의 숫자를 안다는 것을 안다. 지켜본다", npc: npc_sr_lucio}
+  o5_night_work:         {line: "펠네는 스크레의 밤 하역을 받았다 — 등 없는 배, 소금 나루 뒤편", npc: npc_sr_skre}
+  o5_has_sheet:          {line: "펠네의 품에 마르셀의 분담금 계산지가 있다 — 784 가운데 392가 어디로도 가지 않는다", npc: npc_o5_marcel, warn: "마르셀의 계산지가 네 품에 있다"}
+  o5_marcel_grudge:      {line: "마르셀은 펠네가 자기 계산지를 안다는 것을 안다. 겁먹은 장부꾼은 위험하다", npc: npc_o5_marcel}
+  o5_knows_miko_smuggle: {line: "펠네는 미코의 밤일(눈먼 등대의 상자)을 안다. 미코는 그것을 친구에게 말했다고 믿는다", npc: npc_miko}
+  o5_miko_wary:          {line: "미코는 펠네가 루치오에게 팔 숫자를 캐려 했다고 믿는다. 펠네 앞에서는 휘파람을 불지 않는다", npc: npc_miko}
+  o5_miko_sold:          {line: "미코는 펠네가 루치오에게 판 숫자 때문에 물비늘대에 끌려가 산호 채석장으로 갔다", npc: npc_miko}
+  o5_freed_one:          {line: "밤 하역에서 사슬 하나가 풀려 검은 물로 내려갔다. 스크레는 장부에서 한 줄을 지웠고 펠네를 의심한다", npc: npc_sr_skre}
+  o5_skre_scared:        {line: "스크레는 펠네가 밤 하역의 짐을 보고 돌아섰다는 것을 안다. 펠네가 입을 열까 두려워한다", npc: npc_sr_skre}
+  o5_skre_burned:        {line: "스크레의 크릭들은 펠네를 부두 끝에서 물에 밀어 넣었다. 밤 하역에 다시는 부르지 않는다", npc: npc_sr_skre}
+  o5_lupo_case:          {line: "루포는 펠의 승계 조항(죽음보다 사흘 앞선 등록)을 판관 청원에 올렸다 — 아버지가 떨어진 날 갑판에 있던 증인이 필요하다", npc: npc_lupo}
+  o5_lied_to_lucio:      {line: "펠네는 루치오 카셀론에게 지어낸 이름을 팔았다. 나가는 거짓을 기억한다", npc: npc_sr_lucio}
+  o5_sold_lamp:          {line: "펠네가 루치오 카셀론에게 오스카의 이름을 팔았다 — 잿빛 실의 남쪽 끝이 끊겼고, 셈 모임은 등잔을 잃었다", npc: npc_sr_catarina}
+  o5_marcel_exposed:     {line: "마르셀의 계산지나 그가 올린 승계 날짜가 판관 앞에 나왔다. 그는 그것이 누구 손에서 나왔는지 안다", npc: npc_o5_marcel}
+  o5_succession_void:    {line: "판관이 펠의 승계 조항을 지웠다 — 213번째 무효. 서른한 금화가 장부에서 사라졌다", npc: npc_lupo}

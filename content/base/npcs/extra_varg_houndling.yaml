@@ -1,0 +1,91 @@
+# 바르그의 인간 사냥개 '코' (SCENARIOS O-12)의 사람들 — 데이터에 없던 둘 (B등급).
+# 스칼리: SCENARIOS의 '사냥 형제 스칼리 (바르그 청년, 함께 자람) 애정 80'.
+# 루그:   SCENARIOS의 '조합 바르그 루그 적대 ("털 없는 것")'. 바알카르의 루가(npc_luga, 송곳니 회관)와는 다른 늑대다.
+# 둘 다 볼크 사냥대의 앞잡이로 송곳니 불에 머문다 (routines/origin_varg_houndling.yaml). 볼크가 북쪽에 간 낙엽월 2~13일에는 루그가 불가의 첫 이빨이다.
+cards:
+  npc_o12_skali:
+    id: npc_o12_skali
+    tier: B
+    name: 스칼리
+    race: 수인족
+    subrace: 바르그(늑대)
+    sex: 남
+    age: 19
+    job: 볼크 사냥대의 막내 바르그 — 코와 같은 불가에서 자랐다
+    rank: 노예사냥 조합 견습 코 (바르그)
+    appearance:
+      - "또래 바르그보다 한 뼘 작다. 잿빛 털에 왼쪽 귀 끝만 희다"
+      - "목에 볼크가 감아 준 가죽끈 — 조합의 놋쇠 패는 아직 없다"
+    smell: "젖은 새끼 늑대 털과 불 연기, 언제나 조금 겁"
+    personality:
+      temperament: [순하다, 무리를 떠나지 못한다, 달을 무서워한다]
+      values: "무리. 아비. 코"
+      fears: [무리 없이 남는 것, 보름달, 아비의 실망]
+    voice:
+      register:
+        to_player_default: "무리말로 짧은 반말 — 너를 '코'라 부른다. 인간의 말은 마지못해 몇 마디"
+        to_superior: "볼크 앞에서는 귀를 눕히고 한 마디로 대답한다 — '예, 아비'"
+      length: 짧게
+      tics: ["'킁.'", "'너는 내 무리야.'"]
+      use: [무리, 달, 냄새, 아비, 코]
+      avoid: [털 없는 것, 고기(사람을 가리킬 때)]
+      samples:
+        - {situation: 첫 만남, line: "킁. 비 냄새에 네 냄새가 섞였어. 어디 갔다 왔어, 코."}
+        - {situation: 호의, line: "내 몫 반 줄게. 루그는 몰라도 돼."}
+        - {situation: 겁, line: "달이 너무 커. 아비가 없으면 달이 더 커."}
+        - {situation: 비밀, line: "나는 아무것도 못 맡았어. …그렇게 말할게. 한 번만."}
+        - {situation: 슬픔, line: "무리 없는 늑대는 달에 미친대. 아비가 그랬어. 너 어디 가지 마."}
+    toward_player: "형제. 코가 무엇을 하든 냄새로 먼저 안다 — 그리고 대개 모른 척한다. 코가 무리를 떠나는 것만은 견디지 못한다"
+    hard_rules:
+      - "볼크에게 거짓말을 하지 못한다 — 말하지 않을 수는 있다"
+      - "코를 '털 없는 것'이라 부르지 않는다"
+      - "무리를 버리자는 말에는 귀를 접는다"
+    regression:
+      fixed:
+        - "사냥대 가운데서 걷는다 — 코의 백 걸음 뒤"
+        - "밤이면 불가의 바위에 올라 달 쪽으로 목을 늘인다 — 소리는 내지 않는다"
+      deja_vu: none
+    knows: [fact_o12_pack]
+    region: 회색여울 변경
+  npc_o12_rug:
+    id: npc_o12_rug
+    tier: B
+    name: 루그
+    race: 수인족
+    subrace: 바르그(늑대)
+    sex: 남
+    age: 31
+    job: 볼크 사냥대의 늙은 코 — 털 없는 것이 선두에 서는 것을 견디지 못한다
+    rank: 노예사냥 조합 코 (바르그)
+    appearance:
+      - "주둥이에 오래된 흉터 셋 — 탈주자의 낫 자국"
+      - "털이 군데군데 빠져 회색 살이 드러났다"
+    smell: "썩은 고기 기름과 젖은 털, 이빨 사이의 피"
+    personality:
+      temperament: [시샘, 끈질김, 잔인]
+      values: "무리의 순서. 첫 이빨"
+      fears: [아비의 눈 밖에 나는 것, 털 없는 것이 무리를 물려받는 것]
+    voice:
+      register:
+        to_player_default: "하대 반말 — '털 없는 것'이라 부르거나, '코'를 비웃듯 길게 끈다"
+        to_superior: "볼크 앞에서는 꼬리를 내리고 짧게 — '예, 아비'"
+      length: 짧고 거칠게
+      tics: ["'킁.'", "'털 없는 게.'"]
+      use: [고기, 털, 첫 이빨, 아비, 냄새]
+      avoid: [형제]
+      samples:
+        - {situation: 첫 만남, line: "킁. 털 없는 게 또 앞에 서네."}
+        - {situation: 적대, line: "네 냄새가 바뀌었어. 아비가 오면 말할 거야. 다."}
+        - {situation: 거래, line: "고기 반. 그러면 오늘은 아무것도 못 맡은 걸로 해 주지."}
+        - {situation: 겁, line: "아비한테는… 아비한테는 내가 먼저 말해야 돼."}
+    toward_player: "경멸과 시샘. 코가 냄새를 놓친 날과 이상한 날을 센다. 아비가 돌아오면 그 수를 말할 것이다"
+    hard_rules:
+      - "볼크 앞에서 코를 해치지 않는다 — 볼크의 코다"
+      - "코가 놓친 날을 잊지 않는다"
+    regression:
+      fixed:
+        - "아비가 없는 불가에서 고기의 첫 이빨은 그의 것이다"
+        - "열나흘째 아침, 볼크의 귀에 대고 먼저 짖는다"
+      deja_vu: none
+    knows: [fact_o12_pack, fact_gb_grod_buys_hagen]
+    region: 회색여울 변경

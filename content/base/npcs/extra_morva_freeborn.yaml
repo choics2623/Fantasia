@@ -1,0 +1,52 @@
+# O-10 모르바 늪 자유민 (creation/origins_morva_freeborn.yaml)이 데려온 사람들 — SCENARIOS에 있고 지역 자료에 없는 셋.
+# 이 사람들은 어느 출신의 세계에나 있다: 토른과 콩은 뿌리마을에, 맨발은 낙엽월 1~4일 붉은 갈대 선의 사냥대에 (routines/origin_morva_freeborn.yaml).
+# 콩의 어미 이야기(fact_o10_kong_mother)와 맨발의 숨은 이름(fact_o10_leash_name)은 facts/origin_morva_freeborn.yaml.
+cards:
+  npc_o10_torn:
+    id: npc_o10_torn
+    tier: B
+    name: 토른
+    race: 인간
+    sex: 남
+    age: 17
+    job: 뿌리마을 장어 덫꾼, 대장장이 토르의 풀무를 밟는 손 — 버들과 같이 덫을 올리며 자란 단짝
+    rank: 늪 자유민
+    summary: 뿌리마을에서 난 열일곱. AS 303 바르그 원정대가 늪길로 들어온 해(베니가 팔을 잃은 해)에 아버지를 잃었다 — 그해 갈대 선을 넘어온 탈주자 일곱이 냄새를 달고 왔다고 믿는다. 바르그를 미워하고, 냄새를 달고 오는 새 도착자도 미워한다. 둘 중 무엇이 먼저인지 자기도 모른다
+    personality: {temperament: [다혈질, 고집, 정이 깊다, 말이 먼저 나간다]}
+    voice: {register: {to_player_default: "거친 반말 — 화가 나면 '버들'을 길게 끌어 부른다"}, length: 짧게, tics: ["숨는 게 다야?", "아버지는 숨다가 죽었어"]}
+    toward_player: 같이 덫을 올리며 자란 사이. 네가 겁을 내면 화를 내고, 네가 앞에 서면 따라온다.
+    hard_rules: [아버지 이야기는 한 줄로 끊는다 — 길게 하지 않는다, 토르 앞에서는 대들지 않는다, "바르그를 '사람'이라고 부르지 않는다"]
+    knows: [fact_p2mv_beni_arm_barg_trap]
+    region: 모르바 늪
+  npc_o10_kong:
+    id: npc_o10_kong
+    tier: C
+    name: 콩
+    race: 인간
+    sex: 여
+    age: 9
+    job: 녹테른 혈목장에서 달아난 다섯 가운데 막내 — 손목에 지져 넣은 숫자
+    rank: 새 도착자 (일 년 전 — 아직 성이 없다)
+    summary: 붉은 우리의 막사에서 번호로 자랐다. '콩'은 작아서 어른들이 붙인 이름이다. 여섯이 떠나 다섯이 왔다 — 어미는 이빨 골짜기에서 숨을 참지 못했다. 솥에서 받은 것을 반은 품에 넣는다
+    personality: {temperament: [말이 없다, 먹을 것을 숨긴다, 눈을 피하지 않는다]}
+    voice: {register: {to_player_default: 노예말로 아주 짧게 — 공용어는 몇 낱말뿐}, length: 한두 낱말, tics: ["…몫이야?", "숨 참는 거, 알아"]}
+    toward_player: 첫 회의에서 너를 본 아이. 네가 그 밤에 무엇을 했는지 기억한다.
+    hard_rules: [어미 이야기는 한 번만 — 이빨 골짜기에서 숨을 참지 못했다는 한 마디, 손목의 숫자를 스스로 감추지 않는다 (누가 가르쳐 주기 전까지), 먹을 것은 반을 품에 넣는다]
+    knows: [fact_o10_kong_mother]
+    region: 모르바 늪
+  npc_o10_leash:
+    id: npc_o10_leash
+    tier: B
+    name: 맨발
+    race: 인간
+    sex: 남
+    age: 19
+    job: 바르그 노예사냥 조합의 목줄꾼 — 사냥대 앞에서 맨발로 냄새를 읽는 인간 추적자
+    rank: 조합 목줄꾼 (노예)
+    summary: 루멘 강변 마을에서 징후자로 몰려 탄 부모의 아이. 일곱 살에 바르그 조합이 샀다. 바르그들은 그를 맨발이라 부른다 — 신을 신기면 땅을 못 읽는다고. 진짜 이름은 티모다. 바르그의 코는 냄새를 따라가지만, 사람이 어디에 숨는지는 사람이 안다 — 그래서 그가 앞에 선다
+    personality: {temperament: [말이 없다, 눈치가 빠르다, 지쳤다]}
+    voice: {register: {to_player_default: 노예말 섞인 짧은 반말 — 묻는 말에만 답한다}, length: 아주 짧게, tics: ["…냄새가 달라.", "놈들이 듣는다."]}
+    toward_player: 주인 없는 인간 냄새를 처음 맡는다. 겁보다 궁금함이 먼저다.
+    hard_rules: [진짜 이름을 먼저 말하지 않는다 — 먹을 것을 나눈 사람에게만, 바르그 셋의 이름을 대지 않는다, 목줄을 스스로 풀지 않는다 — 풀면 개들이 먼저 문다는 것을 안다]
+    knows: [fact_o10_party_size]
+    region: 모르바 늪

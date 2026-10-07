@@ -1,0 +1,207 @@
+# 잿불 광산 노예 (SCENARIOS O-02 `origin.ashfire_slave`) — 첫 시대부터 고를 수 있는 출신 (2026-10 결정).
+# 이 사람이 그 시대의 잔향자다. 회귀점: AS 312 낙엽월 1일 17:40, 잿불 본갱 중층 4번 막장 — 교대 종 직전, 천장이 숨을 쉬는 순간.
+# 필드의 뜻은 creation/origins.yaml 머리말. 장면은 storylets/origin_ashfire_slave.yaml, 사람은 npcs/extra_ashfire_slave.yaml.
+#
+# SCENARIOS → 지역 자료 (지역 자료가 이긴다 — settlements/ember_mines.yaml · npcs/cards/emberhills · routines/ember_hills.yaml)
+#   '붉은 목구멍' 지하 4층       → 본갱 중층 수평갱 4번 막장 (em_lvl_mid, 깊이 250m — 하로의 갱조 서른이 파는 막장). 갱에 '4층'은 없다.
+#                                 '붉은 목구멍'은 광부들이 제1수직갱(em_main_shaft)을 부르는 말로 남겼다 (nouns).
+#                                 요람의 '그릇의 방(지하 4층)'은 정착지 자료 그대로 — 갱에는 없는 층이라고 장면이 말한다.
+#   18시 교대 직전              → 17:40. 검은 교대(06~18시)는 17:30 올림 종에 바구니로 오르고, 하로의 갱조는 늘 마지막 바구니다 — 18시 붉은 교대 입갱 종 직전.
+#   크릭 감독 스크릿            → 그락스 (npc_grax) — 붉은 계단 총감독관. 평일 중층을 돌며 할당량을 보고, 점호 뒤 공급 명단을 고른다.
+#   갱 반장 하로 (54, 매듭끈)    → 하로 (npc_haro) — 30명 갱조 반장, 중층 4번 막장. 신뢰 40.
+#   단짝 에디크 (20)            → 새 사람 npc_o2_edik (B등급). 이 갱에서 주인공의 진짜 이름을 소리 내어 부르는 유일한 사람.
+#   용인 의사 실렌 바스크        → 아드리안 코르벨 (npc_adrian_corvel) — 은비늘 요람 수석 시술의, '아직 번호가 없으시네요'.
+#   하층 공방                   → 은비늘 요람 (em_cradle — 대기 감방 em_cradle_ward, 그릇의 방 em_cradle_vessel). 광부들의 말이 '하층 공방'.
+#   흑점 셋, 넷이면 하층 공방    → 세계 변수 o2_black_marks (시작 3). 낮일 실패(fail_var)·새벽 점호 결석(miss_effects)·장면마다 +1.
+#                                 넷이면 새벽 점호에서 그락스의 공급 명단(o2_lower_call) → 그날 밤 쇠눈 크롬(o2_cradle_take) → 감방 → 이식대.
+#   "용인 의사가 번호 셋을 불렀다" → 그락스의 주간 공급 명단 (fact_eh_grax_supply_list).
+#   ashfire.suspicion           → 봉기 조짐 em_signs (agendas/ember_hills.yaml) — 넷이 넘으면 셋꼬리 닛의 코(em_nit_nose)가 온다.
+#   flag.ashfire_first_solidarity → o2_solidarity · haro.suspects_returner → o2_haro_watching · memory.dara_hands → fact_o2_dara_hands
+#   hunt.melisande              → o2_cradle_escaped / o2_vessel — 요람에서 빠진 번호를 쇠눈 크롬이 찾는다 (o2_krom_hunt).
+#   다라의 노래                 → 다라의 매듭끈에 엮인 노래 (로크 갱반의 '다라의 노래'). 마테의 「붉은 길」과는 다른 노래로 두었다.
+#   흑요석 조각                 → 변수 o2_shard (소매 속). 장면이 물건을 빼앗는 효과가 엔진에 없어 소지품으로 두지 않았다.
+#   두르강 행상인(검은 할당) · 붉은 길의 돌무덤 → 이번에는 쓰지 않았다 (첫 열흘 밖).
+#   요람 감방 14번의 한나는 다른 피험자다 — 그 사람의 별칭은 이 출신의 이름·번호·굴에 쓰지 않는다 (장면에서도 '저쪽 벽 언니'로 부른다).
+# 기존 장면과의 이음: 9번 갱 손바닥 벽(em_handprint)은 둘째 날 아침에 열린다 — 하로가 첫 밤에 "칼렙이 벽 앞에서 손을 보자더라"고 미리 말한다.
+#   셋꼬리 닛의 코(em_nit_nose)는 이 출신의 노래·갱조의 연대가 쌓은 조짐(em_signs)으로 온다.
+origins:
+  - id: ashfire_slave
+    order: 12
+    scenario: O-02
+    region: 잿불 언덕
+    name: 잿불 광산 노예
+    title: 붉은 목구멍의 광부
+    call: 이백열둘
+    age: 19
+    difficulty: 4
+    family: false
+    settlement: ember_mines
+    time: "17:40"
+    place: 붉은 목구멍 — 본갱 중층 4번 막장
+    start: em_lvl_mid
+    home: em_burrow_black
+    blurb: >-
+      숯막에서 나고 자란 열아홉 살 광산 노예. 하로의 갱조에서 중층 4번 막장을 판다 — 곡괭이, 광부 등잔, 죽은 어미가 물려준
+      다라의 매듭끈, 그리고 소매 속 흑요석 한 조각. 번호판의 숯 점이 셋이다. 넷이면 하층 공방이다.
+      회귀점은 교대 종 직전의 막장, 천장이 숨을 쉬는 순간 — 서쪽 갱도 끝에 단짝 에디크가 있다.
+    stats: {근력: 13, 민첩: 9, 체질: 12, 지능: 8, 감각: 8, 의지: 10}
+    skills: {화술: 10, 기만: 10, 위압: 12, 통찰: 14, 손재주: 15, 은신: 12, 싸움: 18, 읽고쓰기: 0, 용언: 0}
+    status: {hunger: 2, pain: 25, fatigue: 60, fear: 0, stress: 40}
+    train: 14
+    coin: 0
+    items:
+      - {id: o2_pick, name: 곡괭이, tags: [도구, 둔기], slot: 손, quality: 보통, condition: 70, illegal: false, value: 6, desc: "자루에 갱 번호가 지져진 곡괭이. 멜리산드 영지의 것 — 네 손때만 네 것이다"}
+      - {id: o2_lamp, name: 광부 등잔, tags: [광원, 도구], slot: 허리, quality: 조악, condition: 60, illegal: false, value: 2, desc: "그을음 낀 쇠 등잔. 기름은 하루 한 번, 갱 입구에서 받는다"}
+      - {id: o2_knotcord, name: 다라의 매듭끈, tags: [기억매듭, 숨김, 숨길수있음], slot: 품, quality: 보통, condition: 80, illegal: false, value: 0, desc: "죽은 어미의 손목에서 풀어 온 끈. 매듭 하나가 다라의 노래 한 줄이라고 했다 — 글이 아니어서 재의 법에 걸리지 않는다. 허리춤 안쪽에 감아 다닌다"}
+    rel: {npc_haro: [20, 40], npc_o2_edik: [60, 50], npc_grax: [-25, -15], npc_kraz: [-10, -5], npc_yan_nose: [10, 15], npc_ida_bread: [10, 10]}
+    knows: [fact_o2_black_marks, fact_o2_supply_night, fact_o2_dara_cord, fact_eh_grax_supply_list, fact_em_dara_handprint_wall]
+    places: [em_old_cave]
+    vars: {o2_black_marks: 3, o2_shard: true}
+    wanted: null
+    flaws: [brand]
+    flaw_note: {brand: 발목 쇠고리 자국}
+    traits: []
+    trait_discount: {}
+    free: false
+    access: {em_main_shaft: public, em_lift_cage: public}
+    duty:
+      rollcall:
+        at: em_roll_yard
+        time: "05:30"
+        by: npc_kraz
+        miss: "새벽 점호에 서지 않았다. 크라즈가 번호판의 네 번호 옆에 숯 점을 하나 찍는다 — 흑점. 넷이면 그락스의 공급 명단이다."
+        miss_effects: ["var o2_black_marks += 1"]
+        frisk: false
+        wake_text: "쇠문의 빗장이 풀리는 소리. 숯막의 굴들이 한꺼번에 기침을 하고, 사람들이 점호 마당으로 쏟아진다 — 크릭 감독들이 번호를 부른다."
+      wake: "04:50"
+      meal: {at: em_ration, from: "17:30", to: "20:00", label: 검은 빵 창구에서 몫을 받는다, hunger: -1, thin: 0.25, with: npc_ida_bread, cost: 0, text: "귀리죽 한 그릇, 톱밥 섞인 검은 빵 반 덩이. 물은 한 바가지 — 나머지 한 바가지는 크라즈의 장부로 간다. 이다가 국자 끝으로 빵 귀퉁이를 하나 더 민다. 아무 말 없이."}
+      work:
+        at: em_lvl_mid
+        from: "05:50"
+        until: "09:00"
+        label: 막장에 내려간다 — 붉은 목구멍, 중층 4번 (교대 종까지)
+        done: "열두 시간, 수레 서른. 숯 점은 늘지 않았다. 올라오는 바구니 안에서 누가 다라의 노래를 숨으로만 부른다."
+        fail: "수레 하나가 모자랐다. 그락스가 번호판의 네 번호 옆에 숯 점을 하나 더 찍는다 — 흑점. 오늘 저녁 검은 빵 창구에 네 몫은 없다. 넷이면 공급 명단이다."
+        train: 0.6
+        pain: 4
+        fail_pain: 10
+        fail_meal: true
+        fail_fear: 0
+        fail_var: o2_black_marks
+        coin: 0
+        outlaw: false
+        sabbath: false
+      count: null
+      safe: [em_burrow_black, em_cradle, em_old_cave]
+      curfew:
+        caught: "등잔 하나가 네 얼굴에서 멈춘다. \"번호!\" 크릭 감독의 곤봉이 정강이를 친다. 숯막 쇠문 앞까지 끌려가 문 안으로 던져진다."
+        fugitive: "등잔이 네 발목의 쇠고리 자국에서 멈춘다. \"이백열둘. 명단에서 빠진 번호다.\" 곤봉이 무릎을 꺾는다."
+        fugitive_why: "통금 순찰에 붙잡혔다 — 도망친 광산 노예로 점호 마당의 처벌 기둥에 묶였다"
+        pain: 15
+      desert: "허락 없이 본갱을 떠나면 크릭 감독들이 사냥대를 푼다 — 붉은 길에는 기둥이 남아 있다"
+      routine: 검은 빵 창구 → 숯막 → 새벽 점호
+    opening: o2_cavein_open
+    sense: 붉은 먼지 냄새
+    when_word: 저녁
+    rescue: "눈앞이 하얘진다. 누군가 너를 숯막으로 끌고 간다. 입에 묽은 귀리죽이 흘러든다 — 하로다. 가장 늦게 먹는 사람이 제 몫을 네 입에 붓는다."
+    quiet:
+      - 숯막의 쇠문이 닫힌다. 옆 굴에서 누가 기침을 세다가 멈춘다.
+      - 등잔 기름이 바닥났다. 어둠 속에서 손바닥의 굳은살을 엄지로 센다.
+      - 권양탑의 쇠줄이 밤새 운다. 붉은 교대가 내려가는 소리다.
+      - 환기탑이 기침을 한다. 굴 마을 전체가 그 소리에 맞춰 숨을 쉰다.
+    beats:
+      - {id: o2_b_marks_2, at: "312-09-02 05:30", danger: 4, when: ["var o2_black_marks >= 4", "var o2_listed != true", "var o2_cradle_escaped != true"], near: "새벽 점호 — 번호판의 네 번호 옆에 숯 점이 넷이다. 그락스의 손가락이 거기서 멈출 것이다."}
+      - {id: o2_b_marks_3, at: "312-09-03 05:30", danger: 4, when: ["var o2_black_marks >= 4", "var o2_listed != true", "var o2_cradle_escaped != true"], near: "새벽 점호 — 번호판의 네 번호 옆에 숯 점이 넷이다. 그락스의 손가락이 거기서 멈출 것이다."}
+      - {id: o2_b_marks_4, at: "312-09-04 05:30", danger: 4, when: ["var o2_black_marks >= 4", "var o2_listed != true", "var o2_cradle_escaped != true"], near: "새벽 점호 — 번호판의 네 번호 옆에 숯 점이 넷이다. 그락스의 손가락이 거기서 멈출 것이다."}
+      - {id: o2_b_marks_5, at: "312-09-05 05:30", danger: 4, when: ["var o2_black_marks >= 4", "var o2_listed != true", "var o2_cradle_escaped != true"], near: "새벽 점호 — 번호판의 네 번호 옆에 숯 점이 넷이다. 그락스의 손가락이 거기서 멈출 것이다."}
+      - {id: o2_b_marks_7, at: "312-09-07 05:30", danger: 4, when: ["var o2_black_marks >= 4", "var o2_listed != true", "var o2_cradle_escaped != true"], near: "새벽 점호 — 번호판의 네 번호 옆에 숯 점이 넷이다. 그락스의 손가락이 거기서 멈출 것이다."}
+      - {id: o2_b_ward, at: "312-09-03 07:30", danger: 4, when: ["var o2_edik_ward == true", "var o2_edik_out != true", "var o2_edik_taken != true"], near: "내일 아침 비늘 없는 손의 의사가 병동에 내려온다. 쓸 만한 숨을 고른다 — 에디크가 거기 누워 있다."}
+      - {id: o2_b_mel_walk, at: "312-09-04 23:30", danger: 2, near: "내일 밤 은비늘이 사람의 모습으로 점호 마당을 걷는다는 날이다. 그 밤엔 크릭들도 마당에 나오지 않는다."}
+      - {id: o2_b_sabbath, at: "312-09-06 05:30", danger: 2, near: "내일은 안식일 — 점호도 막장도 없다. 하루가 땅 위에 있다."}
+      - {id: o2_b_flue_day, at: "312-09-09 04:00", danger: 3, when: ["pknows fact_em_fourteen_escape_plan"], near: "내일 새벽 요람의 소각로를 비운다. 연기가 가장 많이 나가는 날 — 벽 너머의 둘이 연통의 칸을 셀 것이다.", far: "아흐레째 새벽, 요람의 소각로를 비운다. 연기가 가장 많이 나가는 날이다."}
+      - {id: o2_b_mel_leaves, at: "312-09-10 23:00", danger: 2, near: "내일이면 은비늘이 바알카르로 떠난다. 그릇의 방의 불이 꺼진다.", far: "은비늘이 둥지에 있다 — 열흘. 그동안 밤마다 그릇의 방에 불이 켜진다."}
+    goals:
+      - who: 에디크
+        when: ["var o2_edik_known == true"]
+        states:
+          - {when: ["var o2_edik_dead == true"], what: "서쪽 갱도 낙반에 깔려 죽었다"}
+          - {when: ["var o2_edik_taken == true"], what: "하층 공방(은비늘 요람)으로 끌려갔다"}
+          - {when: ["var o2_edik_out == true"], what: "장부에는 열병 사망 — 웨나의 수레 밑판으로 슬래그 비탈에 나갔다"}
+          - {when: ["var o2_edik_ward == true"], what: "검은 폐 막사(병동) — 요람의 의사가 아침마다 병동의 숨을 고른다", until: "312-09-03 07:30"}
+          - {when: ["var o2_edik_carried == true"], what: "다리를 절며 갱조에 남았다 — 그의 몫을 나눠 판다"}
+          - {when: ["var o2_edik_hurt == true"], what: "왼다리가 무릎 아래에서 부서졌다 — 못 서는 번호는 병동으로 간다"}
+          - {when: ["var o2_edik_saved == true"], what: "살았다 — 정강이에 멍, 뼈는 붙어 있다"}
+          - {what: "무너진 서쪽 갱도 밑에 있다 — 손가락이 움직인다"}
+      - who: 번호판의 흑점
+        when: ["var o2_edik_known == true"]
+        states:
+          - {when: ["var o2_vessel == true"], what: "이식대에서 살아 나왔다 — 장부에는 종료, 요람이 빠진 번호를 찾는다"}
+          - {when: ["var o2_cradle_escaped == true"], what: "요람의 명단에서 빠진 번호 — 쇠눈 크롬이 얼굴을 외웠다"}
+          - {when: ["var o2_taken == true"], what: "하층 공방에 있다"}
+          - {when: ["var o2_listed == true"], what: "공급 명단에 올랐다 — 오늘 밤 쇠눈 크롬이 굴에 온다"}
+          - {when: ["var o2_black_marks >= 4"], what: "숯 점 넷 — 새벽 점호에서 그락스의 손가락이 멈춘다"}
+          - {when: ["var o2_black_marks == 3"], what: "숯 점 셋 — 하나 더면 하층 공방"}
+          - {what: "숯 점 둘 이하 — 그락스의 손가락이 지나간다"}
+    losses:
+      - {id: o2_edik_lost, when: ["var o2_edik_dead == true"], text: "에디크의 손가락이 멈췄다. 이 갱에서 네 이름을 소리 내어 부르는 사람이 없다.", weight: 7}
+      - {id: o2_edik_cradle, when: ["var o2_edik_taken == true"], text: "에디크의 번호가 하층 공방으로 내려갔다. 그 바구니는 올라오지 않는다.", weight: 7}
+      - {id: o2_yan_cradle, when: ["var o2_yan_blamed == true"], text: "얀의 굴 문이 밤에 열렸다. 쇠눈 크롬이 등불을 들고 있었다. 네가 댄 이름이었다.", weight: 5}
+    achievements:
+      - {id: edik_lives, tp: 2, text: 에디크가 낙엽월을 살아서 넘겼다, when: ["var o2_edik_known == true", "var o2_edik_dead != true", "var o2_edik_taken != true", "date >= 312-09-30"]}
+      - {id: vessel, tp: 3, text: 하층에서 올라온 자 — 이식대에서 살아 나왔다, when: ["var o2_vessel == true"]}
+      - {id: first_song, tp: 2, text: 갱이 함께 다라의 노래를 불렀다, when: ["var o2_song_sung == true"]}
+      - {id: knot_reader, tp: 1, text: 다라의 매듭을 배우기 전에 읽었다, when: ["var o2_knot_read == true"]}
+    epilogue:
+      - {when: ["var o2_edik_dead == true"], text: "에디크는 낙엽월 첫날 서쪽 갱도에 묻혔다. 하로의 끈에서 그의 매듭은 마흔둘째였다. 이름은 하로가 외웠다."}
+      - {when: ["var o2_edik_taken == true"], text: "에디크의 번호는 하층 공방에서 올라오지 않았다. 아드리안의 기록부에 그 번호 옆으로 생존 일수가 적혔다. 이름은 적히지 않았다."}
+      - {when: ["var o2_edik_out == true"], text: "슬래그 비탈 아래 어딘가에서 다리를 저는 사내가 하늘을 보며 일했다. 장부에는 열병으로 죽었다고 적혀 있었다."}
+      - {when: ["var o2_edik_dead != true", "var o2_edik_taken != true", "var o2_edik_out != true"], text: "에디크는 다리를 절며 갱으로 내려갔다. 교대 종 직전이면 서쪽 갱도 끝에서 누군가의 이름을 불렀다. 대답하는 사람이 없어도."}
+      - {when: ["var o2_vessel == true"], text: "하층에서 올라온 광부의 이야기는 숯막에서 숯막으로 건너갔다. 은비늘의 사람들은 그 겨울 내내 굴 문을 열었다. 그릇은 하나라고, 그녀는 기록했다."}
+      - {when: ["var em_signs >= 6"], text: "그해 겨울, 9번 갱 막장의 손바닥 자국이 늘었다. 셋꼬리 닛은 첫 갱 앞에 물을 두 그릇 놓았다."}
+      - {when: ["var em_signs < 6"], text: "잿불 언덕의 광부들은 그 뒤로도 교대 종 직전에 천장 소리를 들었다. 아무도 먼저 외치지 않았다."}
+    texts:
+      count_before_sleep: |
+        숯막의 굴. 슬래그 비탈에 판 구멍 하나, 짚 한 단. 발목의 쇠고리 자국이 바닥 돌에 닿는다. 멀리서 권양탑의 쇠줄이 운다.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "감독 초소의 등잔이 늦게까지 꺼지지 않는다. 번호판 앞에서 크릭 둘이 네 번호를 손가락으로 짚는다."
+      nem_door: "굴 이백열둘 호 문틀"
+      gossip_where: "검은 빵 창구 줄에서, 승강 바구니 안에서, 물탱크 앞에서."
+    public:
+      npc_o2_edik: 단짝 — 같은 슬래그 비탈의 굴에서 자랐다
+      npc_haro: 갱조 반장 — 손목에 매듭끈을 감은 노인
+      npc_grax: 붉은 계단 총감독관 — 공급 명단을 고르는 크릭
+      npc_kraz: 검은 손톱 지부장 — 앞니 하나가 금인 크릭, 물 배급표를 쥔다
+      npc_nit_threetail: 붉은 교대 감독반장 — 꼬리가 셋인 크릭
+      npc_yan_nose: 코 얀 — 가스 냄새를 먼저 맡는 같은 갱조
+      npc_leonic: 굴 312호의 늙은 레오닉 — 스물세 해 묶이지 않은 광부
+      npc_caleb_dara: 9번 갱 갱조장 — 손바닥이 붉은 사람
+      npc_yana: 칼렙의 딸 — 요람으로 내려갔다
+      npc_dorte: 취사장의 도르테 — 칼렙의 누이
+      npc_ida_bread: 검은 빵 창구의 빵 굽는 이
+      npc_wenna_ward: 검은 폐 막사의 웨나
+      npc_mate_singer: 노래꾼 마테 — 「붉은 길」을 외우는 노인
+      npc_rok: 외팔 로크 — 붉은 계단 제7갱반장
+      npc_krom_ironeye: 쇠눈 크롬 — 목줄장, 얼굴을 외우는 자
+      npc_erhard: 사슬등불 예배당의 사제
+      npc_hadrian_ashjaw: 숯턱 총감 — 숫자의 집의 용인
+      npc_adrian_corvel: "?비늘 없는 손의 의사 — 하층 공방"
+      npc_aurelia_vermion: "?담요를 나눠 주는 용인 귀부인"
+      npc_melisande: "?은비늘 — 둥지의 주인"
+      npc_eve: "?소각로 수레를 끄는 불티 얼굴의 여자"
+      npc_hanne_fourteen: "?벽 너머에서 숫자를 세는 목소리"
+      npc_cassian_vermion: 백작 — 월말에 낙반 숫자를 낭독하는 용인
+      npc_orin_ironwire: 쇠줄 방의 두르강 노인
+    map: {knowledge: {ember_mines: 3, ember_gate: 2, red_road: 2, silver_cradle: 1, baalkar: 1}, sketch: [ember_gate, red_road]}
+    world: "주인공이 매인 곳은 잿불 언덕 — 용황의 차녀 멜리산드 은비늘의 광산 영지, 잿불 본갱의 인간 광산 노예 굴 마을 '숯막'."
+    people: "주인공은 숯막에서 나고 자랐다 — 갱의 사람은 번호와 이름으로 안다. 크릭 감독과 용인은 광부를 번호로만 부른다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"하로 — 갱조 반장, 손목에 매듭끈을 감은 노인 — 가\"). 이름을 모르는 사람은 겉모습으로만 부른다."
+    nouns: "'숯막'은 슬래그 비탈에 판 광산 노예 굴 마을의 이름이다(숯 굽는 막이 아니다). '붉은 목구멍'은 광부들이 제1수직갱을 부르는 말이다. '하층 공방'은 광부들이 은비늘 요람(용심 이식 실험장)을 부르는 말이다. '흑점'은 할당을 못 채운 날 점호 마당 번호판에 찍히는 숯 점 — 넷이면 공급 명단이다."
+    prompt: "주인공: 이백열둘이라 불리는 열아홉 살 인간 광산 노예 (진짜 이름은 단짝 에디크만 소리 내어 부른다). 잿불 본갱 숯막 검은 교대 구역의 굴에서 자고, 하로의 갱조에서 중층 4번 막장을 판다 — 넓은 어깨, 갈라진 손, 발목에 노예 쇠고리 자국. 허리춤 안쪽에 죽은 어미의 다라의 매듭끈, 소매에 흑요석 조각. 번호판에 할당 미달의 숯 점(흑점)이 쌓인다 — 넷이면 하층 공방이다."
+    awakening: "다만 무너진 갱도에서 에디크의 손을 보는 순간 다른 손이 겹쳐 보였다 — 이백열두 해 전 이 매듭을 처음 묶던 여자의 손. 배운 적 없는 매듭이 읽히고, 허리춤의 끈이 뜨겁다."
+    exclude: []
+    perks: ["힘과 몸 — 싸움이 처음부터 쓸 만하고, 막장이 몸을 단련해 두었다", "하로의 갱조 서른이 너를 안다 — 이름을 부르는 사람들", "다라의 매듭끈 — 글이 아닌 기록, 배운 적 없는 매듭이 읽힌다"]
+    burdens: ["흑점 셋 — 하나 더면 하층 공방(은비늘 요람)", "새벽 점호와 열두 시간의 막장 — 낮이 땅 밑에 매여 있다", "말과 글에 서툴다 — 크릭과 용인은 너를 번호로 부른다"]
+    presets:
+      - {name: 갱의 짐승, talents: {command: 2, engineer: 2, beast_friend: 1, iron_gut: 1, famine: 1}, stats: {근력: 2, 체질: 2}}
+      - {name: 돌의 사람, traits: [durgan_heart], talents: {smith: 2, iron_gut: 1, strong_bones: 1}, stats: {근력: 2, 의지: 2}}
+      - {name: 다라의 아이, talents: {command: 2, memory_palace: 2, iron_gut: 2, people_memory: 2}, stats: {지능: 2, 감각: 2}}

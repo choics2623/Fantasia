@@ -1,0 +1,18 @@
+# 엘다르 정원지기 (O-03)가 데려온 사람의 일과. 장소 id는 settlements/eternal_garden.yaml.
+# 니나는 낙엽월 1일 06:12부터 4일 저녁까지 안쪽 정원(영혼 정원)에 있다 — 그것은 장면의 stage가 정한다 (storylets/origin_eldar_gardener.yaml).
+# 새벽 05:00-05:50 '첫 아침의 노래'는 정본 시각이다 (fixed). 쉼표가 든 값은 큰따옴표로.
+npc_o3_nina:
+  home: eg_dew_pens
+  blocks:
+    - {days: all, from: "21:30", to: "04:30", at: eg_dew_pens, doing: "잔다 — 발목의 방울을 손바닥으로 감싸고"}
+    - {days: all, from: "04:30", to: "05:00", at: eg_dew_mess, doing: "에이다 할멈의 아궁이 곁에서 손을 녹인다"}
+    - {days: all, from: "05:00", to: "05:50", at: eg_first_tree, doing: "첫 아침의 노래 — 무릎 꿇고 입술만 움직인다", fixed: true}
+    - {days: workday, from: "06:00", to: "13:00", at: eg_terraces_upper, doing: "은방울 뜰 — 은목 가지를 닦는다. 방울이 운다"}
+    - {days: all, from: "13:00", to: "14:00", at: eg_dew_mess, doing: "점심 — 흰 빵을 반으로 나눠 반은 소매에 넣는다"}
+    - {days: workday, from: "14:00", to: "18:00", at: eg_terraces_upper, doing: "은방울 뜰 — 화단의 이슬을 거둔다"}
+    - {days: sabbath, from: "06:00", to: "13:00", at: eg_orchard, doing: "과수원 가장자리 — 렌과 나뭇잎을 올려다본다", outdoor: true, rain: {at: eg_dew_pens, doing: "이슬 우리 처마 밑에 앉아 있다"}}
+    - {days: sabbath, from: "14:00", to: "18:00", at: eg_dew_pens, doing: "이슬 우리 마당 볕에 앉아 있다"}
+    - {days: all, from: "18:00", to: "19:00", at: eg_dew_pens, doing: "저녁 점호 — 수를 세는 실반 앞에 선다"}
+    - {days: all, from: "19:00", to: "20:00", at: eg_dew_mess, doing: "저녁 — 흰 빵과 꿀"}
+    - {days: all, from: "20:00", to: "21:00", at: eg_dew_bath, doing: "목욕 연못 — 소리 내어 웃는다. 하루에 한 번"}
+    - {days: all, from: "21:00", to: "21:30", at: eg_dew_pens, doing: "숙소 마당에서 머리를 말린다"}

@@ -1,0 +1,53 @@
+# 녹테른 혈목장 탈주자 (O-04 bloodfarm_runaway) — 회귀점과 첫 스무 날의 장면이 가르치는 것.
+# id 규칙: fact_o4_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# 정본 사실(fact_nc_*·fact_p2nc_*)은 고치지 않고 그대로 가르친다 — 여기에는 이 출신만의 사실만 둔다.
+- id: fact_o4_rose_gate
+  text: "AS 312 낙엽월 1일 새벽, 붉은 우리 흰 울타리의 철문이 검은 장미 한 송이가 꽂힌 채 반쯤 열려 있었다. 자정 채혈 줄에서 돌아오던 셋 — 3동의 마르틴, 7동의 예순셋과 리나 — 이 그 문으로 나갔다. 누가 열었는지 우리 안에서는 아무도 모른다"
+  truth: true
+  danger: 4
+  names: [검은 장미, 마르틴, 리나]
+- id: fact_o4_rose_map
+  text: "검은 장미 봉투 속 그림은 길이다 — 포도밭 배수로를 따라 남쪽으로 그은 선, 버드나무 세 그루, 검은 장미가 덮인 둔덕, 그리고 붉게 칠한 갈대. 붉은 우리에서 그림자장미 저택 뒤 붉은 갈대 습지로 가는 길이다"
+  truth: true
+  danger: 3
+  names: [그림자장미]
+- id: fact_o4_willow_knot
+  text: "포도밭 끝 셋째 버드나무 밑동에 잿빛 매듭이 묶여 있다. 그 아래 배수 굴이 검은 장미 둔덕 쪽으로 이어진다 — 잿빛 실의 표식이다"
+  truth: true
+  danger: 3
+  names: [잿빛 실]
+- id: fact_o4_mother_name
+  text: "예순셋의 진짜 이름은 어머니가 지었다. 어머니는 세 해 전 갈증의 밤 공물 줄로 가기 전에 그 이름을 마르틴에게 맡겼다 — 우리를 나가는 밤에 돌려주라고"
+  truth: true
+  danger: 2
+  names: [마르틴]
+- id: fact_o4_hounds_scent
+  text: "침묵종 사냥꾼의 창백한 개는 짖지 않는다. 흰 옷을 빤 잿물 냄새와 피 냄새를 따라온다. 물은 냄새를 끊고, 불은 개를 물리고, 피는 냄새를 남긴다"
+  truth: true
+  danger: 3
+  names: [침묵종]
+- id: fact_o4_bounty
+  text: "붉은 우리의 영주 아드리엘 핏빛유리가 달아난 셋에 금화 두 닢을 걸고 침묵종 집에 사냥을 맡겼다. 갈증의 밤 공물 수를 채우려는 것이다 — 산 채로"
+  truth: true
+  danger: 4
+  names: [아드리엘, 침묵종]
+- id: fact_o4_kin_debt
+  text: "붉은 우리에서는 달아난 자의 빈 홈을 피붙이로 채운다. 마르틴이 달아난 새벽, 그의 딸 아다(아홉 살, 3동)의 이름이 갈증의 밤 공물 명단에 올랐다"
+  truth: true
+  danger: 4
+  names: [마르틴, 아다]
+- id: fact_o4_ada_barrack
+  text: "3동은 회복 막사 바로 옆이다. 막사에서 자는 헤트 노파가 새벽 다섯 시 반, 맥을 짚으러 3동 문을 가장 먼저 연다 — 그때 문이 한 번 열린다"
+  truth: true
+  danger: 3
+  names: [헤트, 아다]
+- id: fact_o4_lina_named
+  text: "리나라는 이름은 예순셋이 지어 주었다. 우리에서는 아이에게 이름을 주지 않는다 — 번호를 준다"
+  truth: true
+  danger: 1
+  names: [리나]
+- id: fact_o4_scent_convoy
+  text: "개들이 냄새를 아는 사람이 호송 줄에 서면 줄 전체가 그 냄새를 달고 간다. 테사는 그런 사람을 줄에 세우지 않는다 — 다음 달까지 냄새가 식기를 기다린다"
+  truth: true
+  danger: 2
+  names: [테사]

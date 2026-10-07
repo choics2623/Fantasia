@@ -1,0 +1,101 @@
+# 잿빛 탑 서기 노예 (O-09, origin tower_scribe)의 사실. 장면: storylets/origin_tower_scribe.yaml. id 규칙 fact_o9_<주제>.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. 기존 fact_ar_*·fact_p2ar_*는 고치지 않고 함께 쓴다.
+# 정본과의 맞춤: 서기가 읽는 것이 드러나면 피험자 전환(REGIONS 10.7 — 서기실장 보고 → 평의회), 탑 기록 훼손은 처형(탑주).
+# 긴밤월 9일 피험자 열둘 하선(events/arkas_312.yaml) · 11월 20일 셋째 시험 열다섯째(agendas/arkas.yaml)에 맞춘다.
+
+# ── 수집 후보 목록 (회귀점의 원고) ──
+- id: fact_o9_transfer_date
+  text: "분기 수집 후보 목록 셋째 줄 — 서기 칠번: 수면 중 고대 진명어 잠꼬대(동료 보고), 홍채 회색 고리 의심. 긴밤월 10일 새벽, 지하 수집실로 이관한다"
+  truth: true
+  danger: 4
+  names: [지하 수집실]
+- id: fact_o9_dead_one
+  text: "서기 일번은 수확월 열이틀에 회랑 결핵으로 죽었다. 그 번호는 아직 아무에게도 다시 주어지지 않았다"
+  truth: true
+  danger: 1
+  names: []
+- id: fact_o9_tik_counts_copies
+  text: "수집 후보 목록의 사본은 보름이 지나면 원로 틱 셈쟁이가 원본과 맞춰 센다. 낙엽월 15일부터다. 죽은 번호가 목록에 있으면 틱은 그것을 안다 — 그는 죽은 번호를 다 센다"
+  truth: true
+  danger: 3
+  names: [틱 셈쟁이]
+- id: fact_o9_eleven_innocents
+  text: "분기 수집 후보 목록 열두 줄 가운데 열한 줄은 열병과 악몽과 재먼지 눈병으로 고발된 평범한 사람들이다 — 남의 꿈을 말한 루멘 강변의 아이, 눈에 회색 얼룩이 앉은 세렌 어촌의 노파, 0307호의 네레. 바깥의 열은 긴밤월 9일 배로 온다"
+  truth: true
+  danger: 3
+  names: [네레]
+- id: fact_o9_list_feeds_third_test
+  text: "셋째 시험 열다섯째(긴밤월 20일)의 후보 둘은 수집 후보 목록에서 나온다 — 0307호의 네레, 그리고 지하 수집실로 내려간 사람 하나"
+  truth: true
+  danger: 5
+  names: [셋째 시험, 네레]
+- id: fact_o9_margin_hand
+  text: "수집 후보 목록 여백의 진명어 받아쓰기는 학자의 글씨가 아니라 서기의 손이다 — 뜻 모르고 모양대로 그린 획, 맺음마다 바늘을 꽂듯 찍은 점. 칠번의 잠꼬대를 받아 적은 사람은 서기실 안에 있다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_o9_torn_name_fragment
+  text: "칠번이 잠결에 말했다는 세 낱말 가운데 마지막은 '찢어진 시간의 이름'의 첫 획에서 멎었다. 탑이 백열한 해 동안 찾아 온 진명의 조각이다"
+  truth: true
+  danger: 5
+  names: [찢어진 시간의 이름]
+# ── 보고한 사람 ──
+- id: fact_o9_dov_heard
+  text: "칠번의 잠꼬대를 처음 들은 것은 아래 침상의 서기 백열둘(도브)이다. 아이는 무서워서 서기실장 헤스터에게 말했다"
+  truth: true
+  danger: 2
+  names: [도브, 헤스터]
+- id: fact_o9_hester_reported
+  text: "칠번의 잠꼬대를 탑에 보고한 '동료'는 서기실장 헤스터다. 그녀는 '읽는다'가 아니라 '잠꼬대'라고 썼다"
+  truth: true
+  danger: 4
+  names: [헤스터]
+- id: fact_o9_hester_why
+  text: "귀의 학자들이 서기 숙소의 밤 소리를 묻기 시작했다. '서기가 읽는다'는 보고가 먼저 올라가면 서기 일흔이 같이 간다 — 그래서 헤스터는 칠번 하나를 '잠꼬대'로 먼저 내주었다"
+  truth: true
+  danger: 4
+  names: [헤스터, 귀]
+- id: fact_o9_dov_in_place
+  text: "헤스터는 수집 후보 목록 사본의 셋째 줄에서 칠번을 지우고 서기 백열둘(도브)의 번호를 넣었다. 열둘은 열둘이어야 한다. 도브는 정말로 글을 읽지 못한다"
+  truth: true
+  danger: 3
+  names: [도브, 헤스터]
+# ── 탑의 눈 ──
+- id: fact_o9_collection_watch
+  text: "지하 수집실의 문은 번호 회랑 끝 계단 아래에 있다. 문 열쇠는 간수 브릭의 꾸러미 셋째 줄이고, 자정에 간수가 바뀐다"
+  truth: true
+  danger: 3
+  names: [지하 수집실, 브릭]
+- id: fact_o9_mathis_reading_test
+  text: "마티스 그레이브는 서기의 눈을 시험한다 — 서기 앞에서 종잇조각에 한 줄을 쓰고, 눈이 펜촉을 따라가는지 줄 끝을 먼저 가는지 본다. 읽는 눈은 줄 끝에 먼저 가 있다"
+  truth: true
+  danger: 3
+  names: [마티스 그레이브]
+# ── 회랑과 꿈 ──
+- id: fact_o9_streets_names
+  text: "0307호 네레가 벽에 숯으로 그리는 길에는 이름이 있다 — 칠번만 아는 이름들. 골목마다, 문마다 글자가 새겨진 도시의 골목 이름이다. 네레도 마일로도 그 이름을 모른다"
+  truth: true
+  danger: 4
+  names: [네레]
+- id: fact_o9_same_dream
+  text: "0213호의 노인은 서기들이 방 앞에서 읽던 비교 문서를 외운다 — 아스테리온과 다라는 같은 꿈을 꾸었다. 바다 앞에 서서, 아무도 말하지 않은 말을 하는 꿈. 칠번도 그 꿈을 꾼다"
+  truth: true
+  danger: 4
+  names: [아스테리온, 다라]
+# ── 섬을 나가는 길 ──
+- id: fact_o9_tide_cave
+  text: "조수 무덤 아래 바다 동굴은 썰물 두 시간만 열린다. 서리월 첫 썰물(1일 새벽)에는 등대 바위의 어부 조개가 그 앞에 돌 하나를 놓으러 온다. 조개도 서기였다"
+  truth: true
+  danger: 3
+  names: [조개]
+- id: fact_o9_salt_ledger
+  text: "칠번은 아르카스 부두의 입항 장부를 베꼈다 — 탑의 배와 세렌 소금 상선이 닿는 날이 거기 적힌다. 긴밤월 9일에는 피험자를 실은 배가 닿고, 굶주림월 1일에 마지막 배가 떠나면 섬은 봄까지 닫힌다"
+  truth: true
+  danger: 2
+  names: []
+# ── 서고의 기록 ──
+- id: fact_o9_collapse_testimony
+  text: "재의 서고 아래 칸의 목격자 진술 단편 — '의식이 거의 끝나 갈 때 하늘에서 불이 내려왔다. 이름이 다 불리기 전에.' 공식 역사(아스테리온이 금지된 이름을 말해 세계를 찢었다)와 맞지 않는 줄이다"
+  truth: true
+  danger: 5
+  names: [아스테리온]

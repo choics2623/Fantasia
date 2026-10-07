@@ -1,0 +1,5 @@
+# O-07 북방 거인 노예 탈주자 — 까마귀 문 북문 앞에서 손에 들어오는 것 (값은 동화 단위). ration은 정의하지 않는다 (회색여울의 것).
+goods:
+  o7_husk_bread: {name: 겨빵 한 조각, desc: "겨와 도토리 가루를 뭉쳐 구운 납작한 빵. 짐꾼 반장이 날품 값으로 쥐여 준다 — 병사 몫이 아니다", price: 1, tags: [음식], eat: {hunger: -1}}
+  o7_ibex_haunch: {name: 산양 뒷다리 한 짝, desc: "협곡 벽에서 잡은 산양의 뒷다리. 날고기다 — 불이 없어도 이틀은 버틴다", price: 4, tags: [음식], eat: {hunger: -2}}
+  o7_tenth_note: {name: 기름종이 쪽지, desc: "기름종이에 접은 쪽지. 줄마다 글자가 빽빽하고, 맨 아래 숫자 몇 개", price: 0, tags: [문서, 숨길수있음], illegal: true, visibility: 숨김, read: {D: 10, facts: [fact_cg_jailer_sells_list], text: "이름 서른, 골짜기 넷. 돌무릎, 뼈울타리, 바위배, 그리고 하나는 '모름'. 문 밖 백일흔. 맨 아래 작은 글씨 — 열 번째. 반귀에게."}}

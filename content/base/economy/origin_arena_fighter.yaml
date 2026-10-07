@@ -1,0 +1,8 @@
+# O-06 피의 원형장 투사 — 원형장 도시의 물건 (값은 동화 단위). 그롬은 화폐를 경멸한다: 값은 이빨로 치고, 크릭이 대신 동화로 센다 (REGIONS §16.6).
+# 투사는 잘 먹는다 — 저녁은 쇠우리 취사장의 고기와 빵(origins_arena_fighter.yaml duty.meal). 여기 것은 그 밖의 것.
+goods:
+  o6_salt_wrap: {name: 소금물 붕대, desc: "노라베가 소금물과 씨앗 달인 물에 적셔 둔 천. 상처를 조이면 쓰리다 — 그러고 나면 덜 아프다", price: 2, tags: [치료], use: {pain: -15}}
+  o6_skewer:    {name: 고기 꼬치, desc: "관중 노점 거리의 크릭이 굽는 꼬치. 무슨 고기인지는 묻지 않는다", price: 1, tags: [음식], eat: {hunger: -1}}
+shops:
+  npc_gm_norabe: {sells: [o6_salt_wrap], note: "치료소의 소금물 붕대 — 돈이 없는 투사에게는 다음 승리에 달아 둔다"}
+  npc_gm_tick:   {sells: [o6_skewer, beer], note: "노점 거리의 꼬치와 묽은 맥주 — 값은 한 번 오릅니다요"}

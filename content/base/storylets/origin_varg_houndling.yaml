@@ -1,0 +1,1006 @@
+# 바르그의 인간 사냥개 '코' (SCENARIOS O-12 · creation/origins_varg_houndling.yaml) — 회귀점의 대본 장면과 첫 열흘의 장면.
+# origin: varg_houndling — 이 출신의 판에서만 열리고, 그 판에서만 stage(사람 세우기)가 걸린다. 문법은 greyford_opening.yaml 머리말과 같다.
+#
+#   o12_scent_open → o12_scent_ferns   회귀점 (낙엽월 1일 10시, 굶주린 언덕): 냄새 천 → 고사리 밑의 맨발 + 잔향의 각성
+#   o12_volk_fire      「볼크의 불」    1일 저녁 송곳니 불 — 소나무의 금 열넷, 굴을 찾아라, 뼈패 심부름 (SCENARIOS volk_den)
+#   o12_skali_moon     「스칼리의 달」  사냥이 두 번 냄새를 끝까지 따라간 밤 (o12_trail >= 2) — 가시덤불의 냄새, 무리 없는 늑대는 달에 미친다
+#     └ o12_den_spear   늑대굴 가시덤불 앞 — 세 가지 질문 (시그리드)
+#   o12_bram_spits     「브람의 침」    목줄을 차고 처음 마을에 들어설 때 — 수탉 문턱, 크릭, 마루 밑의 기침 냄새
+#     └ o12_cellar      수탉 지하의 다섯 — 지킨다 / 판다 / 아비에게 남긴다
+#   o12_first_name     「첫 이름」      엘사가 다섯 살 이전의 이름을 부른다 (input: true_name) — 5일 언덕, 또는 마을에서
+#   o12_volk_morning   「열나흘째 아침」 볼크가 돌아와 '굴'을 묻는다 (낙엽월 14일)
+#     └ o12_three_days  거짓말·정직한 거절 — "사흘이다"
+#   o12_scent_ends     「냄새가 끝나는 곳」 나흘째 아침 (18일~), 사흘을 받은 코가 아직 회색여울에 있으면
+#   o12_dir_*          송곳니 불·언덕의 하루 (연출가 장면 — 이 출신에게만: var o12_hound)
+storylets:
+  # ───────────────────────── 회귀점: 냄새 ─────────────────────────
+  - id: o12_scent_open
+    origin: varg_houndling
+    trigger: {start: true}
+    stage:   # 볼크는 정본대로 14일에 '도착'한다 — 이 시대에는 1일 아침 언덕을 지나며 코를 앞세우고, 2일 새벽 북쪽(까마귀 문)으로 떠난다
+      - {npc: npc_volk, at: hungry_hill, from: "10:00", to: "13:00", doing: 사냥대 맨 뒤에서 바람을 맡는다 — 쇠송곳니에 빗물이 맺힌다}
+      - {npc: npc_volk, at: hungry_hill__fang_fire, from: "13:00", to: "312-09-02 05:30", doing: 송곳니 불가에 앉아 있다 — 새벽이면 북쪽으로 떠난다}
+      - {npc: npc_o12_skali, at: hungry_hill, from: "10:00", to: "12:30", doing: 사냥대 가운데서 코를 땅에 박는다}
+      - {npc: npc_o12_rug, at: hungry_hill, from: "10:00", to: "12:30", doing: 털 없는 코의 백 걸음 뒤에서 킁킁거린다}
+      - {npc: npc_grod, at: hungry_hill__three_pines, from: "09:00", to: "12:00", doing: 세 소나무 그루터기 속 매듭 끈을 뒤진다}
+      - {npc: npc_sigrid, at: hungry_hill__wolf_den, from: "09:00", to: "16:00", doing: 개 짖는 소리에 창을 쥐고 굴 입구 가시덤불 뒤에 엎드려 있다}
+    text: |
+      젖은 양털 냄새. 그 밑에 식은 쥐뿌리 죽, 연기, 그리고 겁.
+
+      냄새 천은 손바닥만 한 누더기다. 송곳니 회관의 냄새 단지에서 꺼내 온, 북쪽 사람들의 옷 조각. 너는 그것을 코에 한 번, 바람에 한 번 댄다. 겁은 냄새가 있다. 너는 그걸 다섯 살 때부터 배웠다.
+
+      굶주린 언덕. 비가 사흘째다. 바위가 검게 젖었고, 냄새는 땅에 낮게 깔린다. 너는 맨 앞에서 걷는다. 볼크는 그것을 "인간이 인간을 찾는 법"이라고 불렀다. 인간의 코는 바르그의 코만 못하다. 그러나 인간은 인간이 어디에 숨는지 안다. 그래서 네가 선두다.
+
+      백 걸음 뒤에 스칼리와 루그. 그 뒤에 볼크 — 네가 아비라 부르는, 왼쪽 송곳니가 쇠인 늙은 늑대. 목의 조합 목줄이 빗물을 먹어 무겁다. 입에 문 뼈 호루라기를 한 번 불면, 이 일은 끝난다.
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "젖은 양털 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 젖은 양털 냄새."}
+    trace_lines:
+      water: 빗물이 목으로 들어온다. 목 안에 물이 있다. 없다. 개울은 비탈 아래에 있다.
+      teeth: 목덜미가 가렵다. 쇠 냄새가 난다 — 백 걸음 뒤에서.
+      spear: 옆구리가 시리다. 가시덤불이다. 가시덤불일 것이다.
+      blade: 목이 뜨겁다. 소매 속의 칼은 제자리에 있다.
+      rope: 목줄이 조인다. 놋쇠 패가 쇄골에 닿는다. 원래 그 자리다.
+      hunger: 배가 꼬인다. 아니다 — 송곳니 불에는 고기가 있다.
+      fall: 발밑의 바위가 기운다. 기울지 않는다. 비에 젖었을 뿐이다.
+    return_ink: |
+      ┊ 그 다음엔 고사리 밑으로 작은 맨발이 삐져나왔다. 그리고 루그가 물었다. "코, 뭐 있냐?"
+    next: o12_scent_ferns
+
+  - id: o12_scent_ferns
+    origin: varg_houndling
+    text: |
+      바위 틈을 지나며 냄새가 짙어진다. 여자 하나, 아이 하나. 오래 걷지 않았다 — 발 냄새가 아직 따뜻하다.
+
+      바위 아래 움푹한 곳. 마른 고사리 더미가 빗물에 눌려 있다. 그 밑으로 삐져나온 작은 맨발 하나. 발가락이 꼼지락거린다. 그리고 멈춘다. 아이는 숨을 참고 있다. 아주 잘 참고 있다.
+
+      너도 어릴 때 그렇게 숨을 참았다. 그 기억이 어디서 왔는지, 너는 모른다.
+
+      등 뒤에서 루그가 코를 킁킁거린다. 젖은 털 냄새가 가까워진다. "코, 뭐 있냐?"
+
+      숨을 참는 작은 발. 너도 그렇게 숨을 참았다 — 이 몸이 다섯 살이던 때. 그리고 그보다 훨씬 전, 다른 아이가 다른 고사리 밑에서. 돌아오는 법을 알기도 전에 사냥에 끊긴, 이름 없는 아이. 그때 그 아이를 찾아낸 것도 바르그였다.
+
+      고사리 줄기 사이로 잿빛 하늘이 보인다. 그 하늘을 가리는 늑대의 턱이 — 아래에서 위로. 너는 그쪽에 누워 본 적이 없다. 그런데 보인다. 네 안의 무언가는 사냥당하는 쪽이 무엇인지 아주 오래 배웠다. 눈가로 잿빛 고리가 스치고 사라진다.
+    effects: ["var o12_ferns_known = true", "note 고사리 밑의 맨발 — 여자 하나, 아이 하나. 비. 루그가 백 걸음 뒤에 있다"]
+    choices:
+      - id: whistle
+        label: 호루라기를 분다
+        minutes: 30
+        text: |
+          뼈 호루라기가 빗소리를 찢는다. 루그가 먼저 온다. 고사리가 걷히고, 여자가 아이를 끌어안은 채 일어선다 — 북쪽 말로 무언가를 외친다. 루그의 이빨이 그녀의 팔뚝을 문다. 놓지 않는다.
+
+          볼크가 서두르지 않고 걸어와 네 목덜미에 코를 댄다. "킁. 좋은 코다." 그가 아이를 내려다본다. 진흙 속에서 작은 맨발이 오므라든다.
+
+          스물넷, 스물다섯. 너는 센다. 세는 것도 일이다. 그런데 가슴 안쪽에서 무언가가 그 수를 받지 않는다. 뱉어 낸다. 이빨이 박힌 자리처럼 오래 욱신거린다.
+        effects: ["var o12_ferns_caged = true", "var o12_caught += 2", "var fugitives_caught += 2", "var sigrid_group -= 2", "var o12_foot_dream = true", "temper 충성 10", "temper 자비 -10", "stress 30", "rel npc_volk trust 8", "rel npc_o12_rug like 4", "memory npc_volk 쓸모 있음 코가 고사리 밑의 둘을 찾았다", "deed betray", "note 고사리 밑의 여자와 아이 — 스물넷째, 스물다섯째. 송곳니 불의 우리 수레로"]
+      - id: misdirect
+        label: '"아무것도 없다." — 냄새를 다른 바위로 끌고 간다'
+        minutes: 40
+        check: {skill: 기만, D: 26, helps: [deceit, actor, false_face]}
+        success:
+          text: |
+            너는 고개를 젓는다. "아무것도 없다." 그리고 동쪽 바위로 코를 돌린다. 젖은 이끼에 무릎을 대고 오래 맡는 시늉을 한다. 루그가 따라온다. 의심하는 걸음이지만, 따라온다.
+
+            사냥대가 동쪽 비탈로 내려간다. 고사리 밑의 둘은 살아 있다 — 아직은. 맨 뒤의 볼크가 한 번 고사리 쪽을 돌아본다. 아무 말도 하지 않는다.
+          effects: ["var o12_ferns_saved = true", "var o12_elsa_heard = true", "var o12_rug_marks += 1", "temper 자비 5", "deed rescue unseen", "note 고사리 밑의 둘 — 냄새를 동쪽으로 돌렸다. 루그의 걸음이 의심했다"]
+        failure:
+          text: |
+            네 목소리가 반 박자 늦다. 루그의 코가 너를 지나쳐 고사리 더미로 간다. 그가 앞발로 고사리를 걷는다. 여자가 아이를 끌어안고 일어선다.
+
+            루그가 너를 돌아본다. 이빨이 다 보이게 웃는다. "털 없는 코가 냄새를 놓쳤네. 아니면 — 안 놓쳤나?" 뒤에서 볼크의 코가 킁, 한 번 운다.
+          effects: ["var o12_ferns_caged = true", "var o12_caught += 2", "var fugitives_caught += 2", "var sigrid_group -= 2", "var o12_rug_marks += 2", "rel npc_o12_rug trust -10", "rel npc_volk trust -5", "memory npc_o12_rug 거짓말쟁이 털 없는 코가 고사리 더미를 지나치려 했다", "note 고사리 밑의 둘 — 루그가 찾았다. 루그는 내가 지나치려 한 것을 안다"]
+      - id: whisper
+        label: 루그를 서쪽 능선으로 보내고 — 혼자 남아 고사리 더미에 속삭인다
+        minutes: 15
+        check: {skill: 은신, D: 30, helps: [shadow_step, beast_friend]}
+        success:
+          text: |
+            너는 루그에게 서쪽 능선을 턱짓한다 — 냄새가 그쪽이라고. 루그가 간다. 너는 고사리 앞에 쪼그려 앉는다. 인간의 말은 입에 잘 붙지 않는다. "해… 지면. 서쪽. 습지."
+
+            고사리가 아주 조금 갈라진다. 여자의 눈. 그 눈이 네 목줄의 놋쇠 패에 멈춘다. 조합의 표. 얼굴이 하얘진다 — 늑대를 봤을 때보다 더. 그녀가 아이의 귀에 대고 숨처럼 말한다. "리브. 숨 쉬어. 천천히."
+          effects: ["var o12_ferns_saved = true", "var o12_ferns_warned = true", "var o12_elsa_heard = true", "learn fact_o12_child_name", "temper 자비 6", "temper 용기 3", "deed rescue unseen", "note 고사리 밑의 여자에게 — 해 지면 서쪽 습지로. 아이 이름은 리브. 여자는 내 목줄을 보았다"]
+        failure:
+          text: |
+            고사리 앞에 쪼그려 앉는 순간 아이가 숨을 터뜨린다 — 짧은 딸꾹질 같은 소리. 서쪽 능선에서 루그의 귀가 돌아선다.
+
+            루그가 돌아왔을 때, 너는 아직 고사리 앞에 있다. 입을 반쯤 벌린 채. 루그가 천천히 고사리를 걷는다. 그리고 너를 본다. 오래.
+          effects: ["var o12_ferns_caged = true", "var o12_caught += 2", "var fugitives_caught += 2", "var sigrid_group -= 2", "var o12_rug_marks += 2", "rel npc_volk trust -8", "memory npc_o12_rug 위험함 털 없는 코가 고사리 더미에 대고 사람 말을 했다", "note 고사리 앞에서 루그에게 들켰다. 둘은 우리 수레로 — 루그는 내가 사람 말을 한 것을 들었다"]
+      - id: tell_skali
+        label: 스칼리에게만 — 무리말로 털어놓는다
+        minutes: 10
+        check: {skill: 화술, D: 12, helps: [tongue, beast_friend]}
+        success:
+          text: |
+            너는 스칼리의 귀에 무리말로 짧게 짖는다. 아이. 고사리. 숨.
+
+            스칼리가 한참 너를 본다. 젖은 털 끝에서 빗물이 떨어진다. 그리고 고개를 돌려, 루그가 들으라고 말한다. "나는 아무것도 못 맡았어. 비 때문이야." 그가 앞장서 북쪽 바위로 간다. 루그가 투덜거리며 따라간다.
+
+            형제의 비밀이다. 무리말에는 '숨겨 준다'는 낱말이 없다. 스칼리는 그 낱말 없이 그것을 했다.
+          effects: ["var o12_ferns_saved = true", "var o12_skali_secret = true", "bond npc_o12_skali 10", "rel npc_o12_skali trust 10", "temper 자비 4", "deed rescue unseen", "note 스칼리와의 비밀 — 고사리 밑의 둘. 스칼리가 '아무것도 못 맡았다'고 했다"]
+        failure:
+          text: |
+            스칼리의 귀가 뒤로 젖혀진다. 그가 너와 고사리 더미를 번갈아 본다. 무리말에는 '숨겨 준다'는 낱말이 없다. 그 낱말이 없으면, 그것은 생각나지 않는다.
+
+            "아비." 스칼리가 뒤를 돌아본다. "코가 이상해." 볼크가 걸어온다. 그의 코가 고사리 더미에 닿는다. 그리고 너에게 닿는다. 오래.
+          effects: ["var o12_ferns_caged = true", "var o12_caught += 2", "var fugitives_caught += 2", "var sigrid_group -= 2", "var o12_volk_doubt = true", "rel npc_volk trust -10", "rel npc_o12_skali trust -4", "memory npc_volk 위험함 코가 고사리 밑의 고기를 감추려 했다", "note 스칼리가 아비를 불렀다. 볼크가 고사리 밑의 둘을 찾았다 — 그리고 내 냄새를 오래 맡았다"]
+      - id: lose_cloth
+        label: 냄새 천을 바람에 '잃어버린다'
+        minutes: 20
+        check: {skill: 손재주, D: 15, helps: [pickpocket, lock_hands]}
+        success:
+          text: |
+            손가락을 아주 조금 편다. 바람이 냄새 천을 채 간다 — 비탈 아래, 가시나무 너머, 개울 쪽으로. 너는 소리를 지르며 그쪽으로 뛴다. 사냥대가 너를 따라 개울로 내려간다. 천은 물에 젖어, 이제 아무 냄새도 나지 않는다.
+
+            볼크의 손등이 네 뺨을 친다. 한 번. "코가 손을 놓치면, 코가 아니다." 루그는 말이 없다. 네 손을 오래 본다.
+          effects: ["var o12_ferns_saved = true", "var o12_cloth_lost = true", "pain 6", "rel npc_volk trust -6", "var o12_rug_marks += 1", "deed rescue unseen", "note 냄새 천을 바람에 놓쳤다 — 볼크의 손등. 루그가 내 손을 보았다"]
+        failure:
+          text: |
+            천이 손가락 사이에서 미끄러진다 — 그런데 루그가 공중에서 그것을 이빨로 낚아챈다. 웃으며 네 코앞에 흔든다. "놓쳤네, 코."
+
+            루그는 천을 제 코에 대고 곧장 고사리 더미로 간다. 바람은 그의 편이다.
+          effects: ["var o12_ferns_caged = true", "var o12_caught += 2", "var fugitives_caught += 2", "var sigrid_group -= 2", "var o12_rug_marks += 1", "rel npc_o12_rug like 3", "note 냄새 천을 놓치려다 루그에게 빼앗겼다. 루그가 고사리 밑의 둘을 찾았다"]
+      - id: trace_back
+        label: 고사리 밑의 발자국이 어디서 왔는지 — 냄새의 길을 외우고, 사냥대는 북쪽으로 돌린다
+        minutes: 45
+        check: {skill: 통찰, D: 30, helps: [tracker, memory_palace, dog_nose]}
+        success:
+          text: |
+            너는 사냥대를 북쪽 바위로 돌린다. 그리고 걸으며, 고사리 밑에서 나온 냄새의 실을 머릿속으로 거꾸로 감는다. 젖은 양털, 쥐뿌리, 연기. 동쪽 비탈. 가시덤불. 그 뒤의 가장 깊은 굴 — 마흔이 넘는 사람 냄새가 그 안에 고여 있다.
+
+            너는 그 냄새를 아무에게도 주지 않는다. 아직은. 이 냄새는 팔 수도, 지킬 수도 있다.
+          effects: ["var o12_ferns_saved = true", "learn fact_gf_wolf_den", "var o12_trail = 2", "note 늑대굴 — 동쪽 비탈 가시덤불 뒤. 마흔이 넘는 냄새. 아직 아무에게도 말하지 않았다"]
+        failure:
+          text: |
+            냄새의 실이 빗물에 끊긴다. 너는 사냥대를 북쪽으로 돌리는 데까지는 해낸다 — 하지만 고사리 밑의 둘이 어디서 왔는지는 비가 먹었다.
+
+            루그가 고사리 쪽을 두 번 돌아본다. 세 번째는 돌아보지 않는다. 그게 더 나쁘다.
+          effects: ["var o12_ferns_saved = true", "var o12_rug_marks += 1", "note 사냥대를 북쪽으로 돌렸다. 냄새의 실은 비에 끊겼다. 루그가 두 번 돌아보았다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_liv
+        needs_memory: fact:fact_o12_child_name
+        label: '◈ 고사리에 대고, 아이의 이름을 낮게 부른다 — "리브."'
+        minutes: 10
+        text: |
+          고사리 밑에서 숨이 멎는다. 참던 숨이 아니라, 놀란 숨이. 이 언덕에서 그 이름을 아는 것은 그 어미와, 이제 너뿐이다.
+
+          "동쪽. 개울. 물을 따라." 너는 일어서서 루그에게 서쪽 능선을 턱짓한다. 등 뒤에서 고사리가 아주 조용히 갈라진다. 여자는 묻지 않는다. 물을 따라 간다. 냄새가 물에서 끊긴다.
+        effects: ["var o12_ferns_saved = true", "var o12_ferns_warned = true", "var o12_elsa_heard = true", "temper 자비 4", "deed rescue unseen", "echo_sign 1 고사리 밑 아이의 이름을 알았다", "note ◈ 리브 — 이름을 부르자 어미가 물을 따라 갔다"]
+
+  # ───────────────────────── 1일 저녁: 볼크의 불 ─────────────────────────
+  - id: o12_volk_fire
+    origin: varg_houndling
+    trigger: {window: {from: "312-09-01 13:30", to: "312-09-01 23:30"}, at: hungry_hill__fang_fire, with: npc_volk}
+    text: |
+      송곳니 불. 바위 그늘 아래 모닥불, 사슬 더미, 바닥 판자가 썩은 우리 수레. 비가 불을 반쯤 눌러 놓았다.
+
+      볼크가 불가에 앉아 고깃덩이를 찢는다. 그가 먼저 한 입을 문다. 그다음이 루그, 그다음이 스칼리, 그다음이 너. 무리의 순서다. 누구도 그보다 먼저 이를 대지 않는다.
+
+      다 먹은 뒤 볼크가 일어나 불가의 소나무로 간다. 쇠송곳니로 껍질에 금을 긋는다. 하나, 둘 … 열넷. 그는 거짓말을 하지 않는다. 약속은 나무에 새긴다.
+
+      "나는 새벽에 북쪽으로 간다. 까마귀 문." 그가 돌아와 네 목덜미에 코를 댄다. 킁. "이 언덕에 굴이 있다. 북쪽 고기 마흔이 숨은 굴. 열나흘째 아침에 내가 여기 선다. 그때 네 코가 그 굴의 입구를 말해라."
+
+      그가 사슴 정강이뼈 하나를 네 손에 쥐여 준다. 쇠송곳니로 새긴 금 열넷, 그리고 예순. "내일 스칼리와 성채에 가져가라. 남작에게. 열나흘에 온다, 예순이다."
+
+      루그가 불 너머에서 웃는다. 스칼리는 고기 뼈를 핥다가 멈춘다.
+    effects: ["var o12_volk_task = true", "var o12_errand = true", "note 볼크 — 소나무에 금 열넷. 열나흘째 아침에 늑대굴 입구를 묻는다", "note 뼈패 — 내일 스칼리와 성채의 남작에게. '열나흘에 온다, 예순'"]
+    choices:
+      - id: feed_cart
+        when: ["var o12_ferns_caged == true"]
+        label: 우리 수레의 아이에게 고기 조각을 밀어 넣는다
+        minutes: 5
+        text: |
+          판자 틈으로 손가락만 한 고기 조각을 밀어 넣는다. 작은 손이 그것을 낚아챈다. 어미가 아이의 귀에 대고 북쪽 말로 속삭인다. "리브. 천천히 먹어."
+
+          불 너머에서 루그의 귀가 선다. 그는 아무 말도 하지 않는다. 대신 뼈를 하나 더 부순다. 크게.
+        effects: ["learn fact_o12_child_name", "temper 자비 3", "var o12_rug_marks += 1", "rel npc_o12_rug like -4", "note 우리 수레의 아이 — 리브. 고기 조각을 밀어 넣었다. 루그가 보았다"]
+      - id: missed_child
+        when: ["var o12_ferns_caged == true"]
+        label: '"올해의 놓친 아이 — 저 아이로 하시오."'
+        minutes: 10
+        check: {skill: 화술, D: 20, helps: [tongue, charm], warn: ["pknows fact_gf_volk_human_mother"]}
+        success:
+          text: |
+            볼크가 우리 수레를 오래 본다. 빗물이 쇠송곳니를 타고 흐른다. "올해 것을 지금 쓰겠느냐." 대답을 기다리지 않는다.
+
+            그가 빗장을 열고, 아이의 목덜미를 쥐어 어둠 속에 내려놓는다. "뛰어라." 아이는 뛰지 않는다. 어미를 본다. 어미가 북쪽 말로 외친다 — "리브, 가!" — 아이가 뛴다. 맨발 소리가 비에 묻힌다.
+
+            "놓친 아이는 해마다 하나다." 볼크가 빗장을 다시 건다. 여자는 수레 안에 남는다. "너는 올해 것을 썼다."
+          effects: ["var o12_child_missed = true", "var o12_caught -= 1", "var fugitives_caught -= 1", "var sigrid_group += 1", "learn fact_o12_child_name", "rel npc_volk like 4", "rel npc_volk trust -3", "var o12_rug_marks += 1", "memory npc_volk 이상함 코가 올해의 놓친 아이를 청했다", "note 볼크가 아이를 놓아주었다 — 올해의 놓친 아이, 리브. 어미는 수레에 남았다"]
+        failure:
+          text: |
+            볼크가 고개를 젓는다. "놓친 아이는 내가 고른다. 코가 고르는 게 아니다." 그가 고기를 다시 찢는다. 그것으로 끝이다.
+
+            수레 안에서 아이가 너를 본다. 목줄 찬 사람이 늑대에게 무엇을 청했는지, 아이는 알아들었다. 어미가 아이를 끌어안으며 이름을 부른다. 리브.
+          effects: ["learn fact_o12_child_name", "rel npc_volk trust -5", "var o12_rug_marks += 1", "note 볼크에게 놓친 아이를 청했다 — 거절. 아이 이름은 리브"]
+      - id: cart_nail
+        when: ["var o12_ferns_caged == true"]
+        label: 밤이 깊으면 — 우리 수레 바닥 판자의 헐거운 못을 뽑는다
+        minutes: 20
+        risk: 들키면 루그의 이빨이다
+        check: {skill: 손재주, D: 26, helps: [lock_hands, pickpocket, shadow_step], warn: ["pknows fact_gb_fangfire_cart_nail"]}
+        success:
+          text: |
+            불이 사그라들고, 루그의 숨이 길어진다. 너는 수레 밑으로 기어든다. 못 하나 — 그로드가 알면서 고치지 않은 못. 손톱으로 녹을 긁고, 이빨로 문다. 판자가 한 뼘 들린다.
+
+            여자가 아이를 먼저 밀어낸다. 그리고 자기가 나온다. 그녀는 고맙다는 말을 하지 않는다. 네 목줄을 한 번 보고, 어둠으로 간다.
+
+            새벽, 볼크가 빈 수레의 판자를 오래 맡는다. 킁. 그리고 너를 본다. 아무 말도 하지 않는다. 그게 첫 번째다.
+          effects: ["var o12_ferns_freed = true", "var o12_ferns_saved = true", "var o12_caught -= 2", "var fugitives_caught -= 2", "var sigrid_group += 2", "var o12_volk_doubt = true", "var o12_elsa_heard = true", "rel npc_volk trust -10", "var o12_rug_marks += 2", "deed rescue unseen", "temper 자비 6", "temper 용기 4", "note 헐거운 못 — 우리 수레를 비웠다. 새벽에 볼크가 판자에서 내 손 냄새를 맡았다"]
+        failure:
+          text: |
+            못이 운다. 녹슨 쇠가 나무에서 빠지는 소리는 빗소리보다 크다. 루그의 눈이 어둠 속에서 열린다.
+
+            그의 이빨이 네 손등을 문다. 뼈까지는 아니다. 루그는 너를 놓아주고 웃는다. "아비가 알면 재밌겠네." 수레 안의 여자가 다시 웅크린다.
+          effects: ["pain 12", "var o12_rug_marks += 2", "var o12_volk_doubt = true", "rel npc_volk trust -8", "memory npc_o12_rug 위험함 털 없는 코가 밤에 우리 수레 못을 뽑으려 했다", "note 수레 못을 뽑다 루그에게 들켰다 — 손등의 이빨 자국"]
+      - id: give_den
+        when: ["pknows fact_gf_wolf_den"]
+        label: '"굴은 벌써 맡았소. 동쪽 비탈, 가시덤불 뒤."'
+        minutes: 10
+        text: |
+          볼크의 귀가 앞으로 선다. 그가 네 목덜미를 한 번 더 맡는다. 거짓말 냄새를 찾는다. 없다.
+
+          "좋은 코다." 그가 소나무를 돌아본다. 금 열넷은 지우지 않는다. "열나흘은 그대로다. 스무닷새에 개를 다 푼다. 그날 네가 선두다."
+
+          루그가 웃음을 멈춘다. 스칼리는 고기 뼈를 내려놓는다. 가슴 안쪽에서, 마흔 몇의 숨소리가 한꺼번에 멎는 것 같다.
+        effects: ["agenda learn npc_volk fact_gf_wolf_den", "var o12_volk_has_den = true", "var o12_den_given = true", "deed betray", "temper 자비 -10", "temper 충성 8", "stress 25", "rel npc_volk trust 15", "rel npc_volk like 6", "note 볼크에게 늑대굴을 말했다 — 스무닷새, 대수색. 내가 선두다"]
+      - id: promise
+        label: '"열나흘. 굴을 찾아 두겠소."'
+        minutes: 5
+        text: |
+          볼크가 고개를 한 번 끄덕인다. 그는 약속을 말로 받지 않는다. 소나무의 금을 손톱으로 한 번 쓸 뿐이다.
+
+          "나는 거짓말 안 한다. 너도 안 한다. 그래서 네가 내 코다."
+        effects: ["var o12_promised = true", "rel npc_volk trust 8", "temper 충성 5", "note 아비에게 약속했다 — 열나흘째 아침, 굴의 입구"]
+      - id: refuse
+        label: '"그 굴은 — 찾지 않겠소."'
+        minutes: 5
+        risk: 아비는 거절도 기억한다
+        text: |
+          불이 한 번 튄다. 루그가 고기를 씹다 멈춘다.
+
+          볼크는 화를 내지 않는다. 그가 네 목덜미를 맡는다. 거짓말 냄새를 찾는다. 없다. "…정직한 코는 처음이다." 그가 소나무의 금을 손가락으로 쓴다. "열나흘까지 생각해라. 그날에도 같은 말이면, 너는 고기다. 정직한 고기는 정직하게 사냥한다."
+        effects: ["var o12_refused_volk = true", "var o12_volk_respect = true", "rel npc_volk trust -10", "rel npc_volk like 4", "temper 정직 5", "temper 용기 4", "note 아비에게 거절했다 — '그날에도 같은 말이면, 너는 고기다'"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_mother
+        needs_memory: fact:fact_gf_volk_human_mother
+        label: '◈ 불 너머로, 아주 낮게 — "빵을 씹어서 입에 넣어 주던 여자."'
+        minutes: 5
+        text: |
+          볼크의 손에서 고기가 떨어진다. 불 속으로. 아무도 줍지 않는다.
+
+          그는 오래 너를 본다. 냄새를 맡지 않는다. 처음이다. "…누가 그 말을 했지." 대답을 기다리지 않는다. 그가 일어나 소나무 쪽으로 간다. 금 열넷 옆에, 아무 뜻도 없는 금을 하나 더 긋는다. 그리고 그것을 손바닥으로 문지른다.
+        effects: ["var o12_volk_softened = true", "rel npc_volk like 10", "memory npc_volk 이상함 코가 그 여자를 안다", "echo_sign 1 볼크의 어린 날을 알았다", "note ◈ 아비에게 그 여자 이야기를 했다 — 그는 냄새를 맡지 않았다"]
+      - id: withdraw
+        label: 고기 뼈를 들고 불가에서 물러난다 — 아무것도 약속하지 않는다
+        minutes: 10
+        text: |
+          너는 뼈를 들고 바위 그늘로 물러난다. 볼크는 붙잡지 않는다. 약속하지 않은 코는 약속을 어길 수도 없다 — 그것이 그의 셈이다.
+
+          스칼리가 따라와 네 옆에 앉는다. 뼈를 반으로 쪼개 반을 민다. 소나무의 금 열넷이 불빛에 젖어 번들거린다.
+        effects: ["rel npc_volk trust -2", "bond npc_o12_skali 3", "stress 4", "note 아비의 금 열넷. 나는 아무것도 약속하지 않았다"]
+
+  # ───────────────────────── 스칼리의 달 (사냥이 두 번 냄새를 끝까지 따라간 뒤의 밤) ─────────────────────────
+  - id: o12_skali_moon
+    origin: varg_houndling
+    trigger: {window: {from: "312-09-02 20:00", to: "312-09-13 04:00"}, at: hungry_hill__fang_fire, with: npc_o12_skali, night: true, when: ["var o12_trail >= 2"]}
+    text: |
+      비가 걷힌 밤. 달이 차오른다.
+
+      루그는 우리 수레 곁에서 코를 땅에 박고 잔다. 스칼리는 잠들지 않는다. 불가의 바위에 올라앉아 달 쪽으로 목을 길게 늘인다 — 소리는 내지 않는다. 바르그가 달에게 하는 기도다. 볼크도 그렇게 한다. 너는 그 기도의 말을 모른다. 늑대의 목구멍만 그 말을 안다.
+
+      "코." 스칼리가 바위에서 내려와 네 곁에 앉는다. 무리말이다. "냄새가 가시덤불에서 끝나. 동쪽 비탈. 너도 맡았지." 그는 대답을 기다리지 않는다. "마흔이 넘어. 아이들이 많아. 아비가 오면 — 말해야 해."
+
+      그가 다시 달을 본다. "무리 없는 늑대는 달에 미친대. 아비가 그랬어. 두 번째 무리를 잃었을 때, 달이 아비를 거의 데려갔대." 스칼리의 꼬리가 네 발목에 감긴다. "너는 내 무리야, 코. 어디 가지 마."
+    effects: ["learn fact_gf_wolf_den", "var o12_moon_done = true", "note 스칼리 — 가시덤불의 냄새. '무리 없는 늑대는 달에 미친다. 어디 가지 마'"]
+    choices:
+      - id: tell_rug
+        when: ["not var o12_volk_has_den == true"]
+        label: '"내일 루그에게 말하자. 아비에게 사람을 보내라고."'
+        minutes: 10
+        text: |
+          스칼리의 꼬리가 풀린다. 안도다. 그는 무리의 일을 무리답게 하는 것이 좋다.
+
+          새벽, 루그가 세 소나무로 달려가 그로드의 코 하나를 북쪽으로 보낸다. 까마귀 문의 아비에게, 가시덤불의 냄새를. 돌아온 루그가 너를 본다. 처음으로, 웃지 않고.
+
+          그날 밤 너는 늑대굴 쪽에서 바람이 불어올 때마다 잠을 깬다. 마흔 몇의 숨소리가, 이제 네 것이 아니다.
+        effects: ["agenda learn npc_volk fact_gf_wolf_den", "var o12_volk_has_den = true", "var o12_den_told = true", "deed betray", "temper 자비 -8", "temper 충성 6", "stress 20", "bond npc_o12_skali 4", "rel npc_o12_rug trust 6", "note 루그가 아비에게 사람을 보냈다 — 가시덤불의 냄새. 스무닷새, 대수색"]
+      - id: already_told
+        when: ["var o12_volk_has_den == true"]
+        label: '"아비는 벌써 알아. 내가 말했어."'
+        minutes: 5
+        text: |
+          스칼리의 꼬리가 풀린다. "…그럼 됐어." 그가 다시 달을 본다. 기도의 목이 아까보다 낮다.
+
+          "아이들이 많던데." 그것으로 끝이다. 스칼리는 그 말을 다시 하지 않는다.
+        effects: ["bond npc_o12_skali 3", "stress 8", "note 스칼리에게 — 아비는 이미 안다. '아이들이 많던데.'"]
+      - id: moon_oath
+        when: ["not var o12_volk_has_den == true"]
+        label: '"달 앞에서 — 아비에게도 말하지 말자."'
+        minutes: 15
+        check: {skill: 화술, D: 18, helps: [tongue, beast_friend], warn: ["var o12_skali_secret == true"]}
+        success:
+          text: |
+            스칼리가 한참 대답하지 않는다. 달이 구름에 한 번 들어갔다 나온다.
+
+            "달 앞에서 한 말은 무리의 말이야." 그가 네 손등을 핥는다. 늑대가 맹세하는 방식이다. "아비가 물으면 — 나는 아무것도 못 맡았어. 거짓말이 아니게, 아무 말도 안 할게."
+          effects: ["var o12_skali_oath = true", "bond npc_o12_skali 10", "rel npc_o12_skali trust 8", "temper 자비 5", "note 스칼리와 달 앞의 맹세 — 가시덤불을 아비에게도 말하지 않는다"]
+        failure:
+          text: |
+            스칼리가 귀를 접는다. "아비한테는 거짓말 못 해. 아비는 냄새로 알아. 말 안 하는 것도 냄새가 나." 그가 고개를 젓는다. "열나흘에 아비가 물으면, 나는 말할 거야. 미안해, 코."
+
+            그는 그 밤 네 등에 등을 붙이지 않는다.
+          effects: ["var o12_skali_will_tell = true", "bond npc_o12_skali -3", "note 스칼리 — 아비가 물으면 말할 것이다. '미안해, 코'"]
+      - id: to_den
+        label: 오늘 밤 혼자 가시덤불로 간다
+        minutes: 60
+        risk: 창끝이 먼저 나온다
+        text: |
+          "잠깐 오줌." 스칼리는 고개를 들지 않는다. 그는 알고, 모른 척한다. 그게 형제다.
+
+          너는 동쪽 비탈을 탄다. 달빛이 바위를 희게 칠한다. 네 냄새가 바위에 남는다 — 루그가 내일 맡을 것이다.
+        effects: ["goto hungry_hill__wolf_den", "var o12_rug_marks += 1", "then o12_den_spear"]
+      - id: run_together
+        label: '"같이 가자. 무리 없이, 아비 없이."'
+        minutes: 15
+        check: {skill: 화술, D: 34, helps: [tongue, charm]}
+        success:
+          text: |
+            스칼리의 털이 곤두선다. 오래. 그리고 천천히 가라앉는다.
+
+            "…달이 질 때까지 생각할게." 그가 달을 본다. 처음으로, 기도 없이. "무리 없는 늑대는 미친대. 그런데 너 없는 무리도 — 무리야?"
+          effects: ["var o12_skali_wavers = true", "bond npc_o12_skali 6", "note 스칼리에게 같이 떠나자고 했다 — '너 없는 무리도 무리야?'"]
+        failure:
+          text: |
+            스칼리가 벌떡 일어선다. "무리를 버리면 달이 우리를 미치게 해!" 목소리가 커서 루그가 뒤척인다. 스칼리는 숨을 고른다. 낮게. "그 말은 안 들은 걸로 할게."
+
+            그는 루그에게 말하지 않는다. 그러나 그 밤 너와 같은 바위에 앉지 않는다.
+          effects: ["bond npc_o12_skali -5", "rel npc_o12_skali trust -6", "var o12_asked_skali_run = true", "note 스칼리에게 같이 떠나자고 했다 — 그는 귀를 접었다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_fourteenth
+        needs_memory: loop
+        label: ◈ 스칼리에게 — 열나흘 아침에 아비가 무엇을 묻는지, 루그가 무엇을 짖는지 미리 말해 준다
+        minutes: 10
+        text: |
+          스칼리의 귀가 앞으로 선다. 네 말이 끝날 때까지 꼬리가 움직이지 않는다.
+
+          "너… 아비 냄새를 미리 맡았구나." 그가 네 얼굴을 맡는다. 젖은 재 냄새 — 그는 그게 무엇인지 모른다. "무섭다, 코. 그래도 — 그날 아침엔 네 옆에 설게."
+        effects: ["var o12_skali_prepared = true", "bond npc_o12_skali 8", "echo_sign 1 열나흘 아침의 일을 미리 말했다", "note ◈ 스칼리에게 열나흘 아침을 미리 말했다 — '네 옆에 설게'"]
+      - id: moon_watch
+        label: 스칼리 곁에 앉아 같이 달을 본다 — 아무것도 정하지 않는다
+        minutes: 60
+        text: |
+          너는 아무 말도 하지 않는다. 스칼리도 더 묻지 않는다. 둘이 같이 달을 본다. 바르그의 목은 길게, 인간의 목은 짧게.
+
+          달이 바위 뒤로 넘어갈 무렵 스칼리가 말한다. 거의 잠꼬대처럼. "네가 안 하면, 아비가 물을 때 내가 해야 해." 그리고 네 등에 등을 붙이고 잠든다.
+        effects: ["bond npc_o12_skali 6", "stress -6", "var o12_skali_will_tell = true", "note 스칼리와 달을 보았다. 아무것도 정하지 않았다 — 아비가 물으면 스칼리가 말할 것이다"]
+
+  - id: o12_den_spear
+    origin: varg_houndling
+    text: |
+      가시덤불. 그 뒤에 마흔 몇의 냄새가 고여 있다 — 연기, 쥐뿌리 죽, 언 가죽, 열이 오른 아이의 단내.
+
+      덤불이 갈라진다. 창끝이 먼저 나온다. 그다음이 얼굴 — 오른쪽 절반이 동상으로 검게 죽은 얼굴. 창끝이 네 목줄의 놋쇠 패에 닿는다. 쇠와 쇠가 한 번 운다.
+
+      "멈춰. 세 가지만 묻는다." 쉰 목소리, 북쪽 억양. "누구 거냐. 누굴 달고 왔냐. 뭘 가져왔냐."
+
+      너는 이 냄새를 안다. 삼 년 전, 서리 길 마지막 이정표. 바위틈에서 숨을 참던 여자의 냄새다.
+    effects: ["learn fact_gf_wolf_den", "var o12_met_sigrid = true"]
+    choices:
+      - id: three_truths
+        label: '"볼크의 코다. 아무도 안 달고 왔다. 열나흘을 가져왔다 — 아비가 돌아오는 날."'
+        minutes: 15
+        text: |
+          창끝이 손가락 한 마디만큼 내려간다. 더는 아니다.
+
+          "열나흘." 그녀가 그 말을 서리말로 한 번 되뇐다. 굴 안쪽에서 누가 아이의 입을 막는 소리가 난다 — 막지 마라, 숨을 못 쉰다, 하는 누군가의 속삭임.
+
+          "개가 주인의 날짜를 들고 왔다." 그녀는 고맙다고 하지 않는다. "돌아가. 오늘 밤 네 냄새는 내 사람들이 지운다." 그날 밤부터 가시덤불 앞에 그림자가 둘 선다.
+        effects: ["var o12_sigrid_warned = true", "var den_hidden_better = true", "var o12_elsa_heard = true", "goto hungry_hill__fang_fire", "rel npc_sigrid trust 15", "rel npc_sigrid like 5", "temper 정직 3", "deed rescue unseen", "note 늑대굴의 북쪽 여자에게 — 열나흘. 그녀는 가시덤불 앞에 사람을 더 세웠다"]
+      - id: crevice
+        when: ["pknows fact_o12_crevice_309"]
+        label: '"삼 년 전, 서리 길 마지막 이정표. 바위틈. 나는 호루라기를 불지 않았다."'
+        minutes: 15
+        check: {skill: 화술, D: 20, helps: [tongue]}
+        success:
+          text: |
+            창끝이 멈춘다. 그녀의 검은 쪽 얼굴이 달빛을 받는다. 그녀는 오래 네 눈을 본다 — 바위틈의 어둠 속에서 한 번 마주쳤던 눈을 찾는 것처럼.
+
+            "…그 개가 너였나." 창이 내려간다. 끝까지는 아니다. "서리 길에서 일곱을 잃었다. 하나는 남았다. 남은 하나가 이 굴에 마흔일곱을 데려왔다." 그녀가 뼈 구슬을 손가락으로 굴린다. "그 셈에 네가 있는 줄은 몰랐다."
+          effects: ["var o12_sigrid_crevice = true", "var o12_elsa_heard = true", "goto hungry_hill__fang_fire", "rel npc_sigrid trust 25", "rel npc_sigrid like 10", "note 늑대굴의 북쪽 여자 — 서리 길 바위틈의 그 여자다. 그녀는 내가 그 개였다는 것을 안다"]
+        failure:
+          text: |
+            "거짓말하는 개가 많다." 창끝이 네 쇄골 위 살을 가른다. 얕게. 피가 목줄의 놋쇠 패로 흘러내린다.
+
+            "서리 길의 개들은 모두 같은 냄새가 났다. 돌아가라. 다음엔 묻지 않는다."
+          effects: ["pain 10", "goto hungry_hill__fang_fire", "rel npc_sigrid trust -5", "note 늑대굴의 북쪽 여자 — 바위틈 이야기를 믿지 않았다. 창끝이 쇄골을 그었다"]
+      - id: hagen_sells
+        when: ["pknows fact_gf_hagen_sells_runaways"]
+        label: '"나룻배의 하겐 — 북쪽 사람들 냄새를 아비에게 판다. 열아홉이 그렇게 갔다."'
+        minutes: 10
+        text: |
+          그녀의 얼굴이 굳는다. 하겐 — 빵을 들고 웃는 나룻배 사내. 그녀는 그의 배를 타려 했었다.
+
+          "개가 개 장사꾼을 판다." 창이 조금 내려간다. "왜." 너는 대답하지 못한다. 그녀도 대답을 기다리지 않는다. 그날부터 나루 쪽 길목에 사람이 선다.
+        effects: ["var sigrid_warned_hagen = true", "var o12_elsa_heard = true", "goto hungry_hill__fang_fire", "rel npc_sigrid trust 12", "note 늑대굴의 북쪽 여자에게 하겐을 말했다 — 나루 길목에 사람이 섰다"]
+      - id: threaten
+        label: '"아이들을 내놓으면 — 나머지는 아비에게서 숨겨 주겠다."'
+        minutes: 5
+        risk: 창끝이 먼저 나온다
+        text: |
+          그녀는 대답하지 않는다. 창이 대답한다.
+
+          가시덤불 뒤에서 사내 둘이 일어선다. 서리 길을 넘어온 어깨들. 무엇이 먼저 네게 닿는지, 너는 보지 못한다 — 달빛이 갑자기 너무 밝다.
+        effects: ["die_if 0.45 spear npc_sigrid 늑대굴 가시덤불 앞에서 — 북쪽 여자의 창에", "pain 25", "goto hungry_hill__fang_fire", "rel npc_sigrid trust -30", "rel npc_sigrid like -20", "var o12_sigrid_enemy = true", "note 늑대굴에서 아이들을 내놓으라 했다 — 창이 대답했다"]
+      - id: turn_back
+        label: 말없이 돌아선다
+        minutes: 60
+        text: |
+          너는 대답하지 않는다. 등을 돌린다. 창끝이 내려가지 않는 것을 등으로 안다.
+
+          송곳니 불로 돌아왔을 때, 루그가 깨어 있다. 그가 네 발목의 흙을 맡는다. 동쪽 비탈의 흙이다.
+        effects: ["goto hungry_hill__fang_fire", "var o12_rug_marks += 1", "rel npc_sigrid trust -3", "note 늑대굴 앞에서 말없이 돌아섰다. 루그가 내 발목의 흙을 맡았다"]
+
+  # ───────────────────────── 브람의 침 (목줄을 차고 처음 마을에 들어설 때) ─────────────────────────
+  - id: o12_bram_spits
+    origin: varg_houndling
+    trigger: {window: {from: "312-09-01 12:00", to: "312-09-30 22:00"}, at: [gf_keep, gf_stable, gf_tollhouse, gf_rooster, gf_smithy, gf_mill, gf_chapel, gf_whip_square, gf_north_barracks, gf_south_barracks, gf_river_huts, gf_elsa_hut, gf_irma_hut, gf_pilgrim_barn, gf_hagen_shed, gf_well_square, gf_graveyard, gf_tannery, gf_iron_bridge, gf_guard_barracks, gf_weaving_shed, gf_kennel, gf_willow_bank], when: ["has 조합목줄"]}
+    stage:   # 볼크의 뼈패 심부름 (낙엽월 2일): 스칼리가 먼저 내려와 우물가에서 코를 기다린다 — 바르그 곁의 목줄은 통행증이다
+      - {npc: npc_o12_skali, kind: walking, at: gf_well_square, from: "312-09-02 05:30", to: "312-09-02 12:00", doing: 뼈패 심부름 — 마을로 내려간다}
+      - {npc: npc_o12_skali, at: gf_well_square, from: "312-09-02 12:00", to: "312-09-02 15:30", doing: 우물가 돌턱에 앉아 코를 기다린다 — 혼자서는 성채 문에 들지 못한다}
+      - {npc: npc_o12_skali, kind: walking, at: hungry_hill__fang_fire, from: "312-09-02 15:30", to: "312-09-02 22:00", doing: 언덕으로 돌아간다}
+    text: |
+      마을로 내려오는 길은 비탈 하나, 개울 하나, 그리고 흙길이다. 흙길에서 사람들이 너를 먼저 본다 — 네 목의 놋쇠 패를.
+
+      물동이를 인 여자가 길을 비킨다. 그리고 네 발치에 침을 뱉는다. 아이 하나가 어미의 치마 뒤로 숨는다. 숨는 법을 아는 아이다. 너는 그 아이가 다음에 어디에 숨을지 안다. 그게 더 나쁘다.
+
+      배급 막사 '절름발이 수탉'의 처마 밑에서 외다리 사내가 국자로 솥 가장자리를 한 번 친다. 브람이다. "개는 문턱 밖이다." 그가 침을 뱉는다. 이번엔 네 얼굴에. "언덕의 개. 냄새 맡으러 왔냐."
+
+      길 건너에서 크릭 감독 하나가 네 목줄을 보고, 네 뒤를 본다 — 바르그가 따라오는지. 늪가의 약초 노파 하나가 손바닥을 눈썹 위에 얹고 너를 오래 본다.
+
+      그리고 수탉 마루 밑에서, 아주 희미하게, 기침 냄새가 올라온다.
+    effects: ["var o12_elsa_heard = true", "var o12_village_spits += 1", "note 회색여울 — 브람이 얼굴에 침을 뱉었다. 수탉 문턱은 개에게 닫혀 있다"]
+    choices:
+      - id: bone_to_keep
+        when: ["var o12_errand == true", "not var o12_bone_delivered == true"]
+        label: 침을 닦고 성채로 간다 — 볼크의 뼈패를 전한다
+        minutes: 20
+        text: |
+          너는 소매로 얼굴을 닦는다. 침은 빗물과 섞여 금방 지워진다. 지워지지 않는 것도 있다.
+
+          성채 마당. 문지기 용인이 뼈패를 손가락 끝으로 받는다. 금 열넷, 그리고 예순. 그는 글을 읽듯 그것을 읽는다. "열나흘. 남작께 아뢰마." 그가 뼈패를 허리춤에 넣으며 네 목줄을 본다. "개가 심부름은 하는군."
+        effects: ["goto gf_keep_yard", "var o12_bone_delivered = true", "stress 4", "note 뼈패를 성채에 전했다 — 열나흘에 볼크가 온다, 예순"]
+      - id: with_skali
+        when: ["with npc_o12_skali"]
+        label: 우물가의 스칼리 곁으로 간다 — 바르그 곁의 목줄
+        minutes: 10
+        text: |
+          스칼리가 우물 돌턱에서 일어선다. 크릭 감독이 바르그를 보자 몽둥이를 등 뒤로 감춘다. 목줄 찬 인간 곁에 늑대가 서면, 그 목줄은 통행증이다.
+
+          물동이를 인 여자들이 길을 비킨다. 이번엔 침을 뱉지 않는다. 대신 아이들을 집 안으로 들인다. 스칼리가 코를 킁킁거리며 웃는다. "인간들은 너를 무서워해, 코." 무서워하는 게 아니다. 그걸 스칼리에게 설명할 무리말은 없다.
+        effects: ["goto gf_well_square", "bond npc_o12_skali 3", "stress 3", "memory npc_bram 위험함 언덕의 개가 바르그를 달고 왔다", "note 스칼리와 함께면 크릭이 길을 비킨다 — 목줄이 통행증이 된다"]
+      - id: collar_alone
+        when: ["not with npc_o12_skali"]
+        label: 다가오는 크릭에게 목줄의 놋쇠 패를 들이민다 — "볼크의 코다."
+        minutes: 10
+        check: {skill: 위압, D: 26, helps: [menace, command]}
+        success:
+          text: |
+            크릭이 놋쇠 패를 들여다본다. 그리고 너를 본다. 바르그가 없는 목줄을. "볼크의 코라." 그가 이를 드러낸다. 크릭의 웃음이다. "열나흘에 늑대가 오면, 개가 혼자 마을을 돌아다녔다고 말해 주마."
+
+            그래도 몽둥이는 내려온다. 길을 비킨다.
+          effects: ["var o12_rug_marks += 1", "note 크릭에게 볼크의 이름을 댔다 — 길은 텄다. 혼자 다니는 개라는 말이 아비에게 갈 것이다"]
+        failure:
+          text: |
+            "혼자 다니는 개는 도망친 개다." 크릭의 몽둥이가 무릎 뒤를 친다. 흙탕물에 얼굴이 박힌다. 크릭 둘이 너를 채찍 기둥 광장까지 끌고 가, 기둥에 목줄을 건다. 해 질 녘까지.
+
+            지나가는 농노들이 너를 본다. 침을 뱉는 사람은 없다. 개에게는 침도 아깝다는 얼굴이다.
+          effects: ["pain 12", "goto gf_whip_square", "wanted 1 혼자 다니는 조합의 개", "var o12_rug_marks += 1", "note 혼자 마을에 내려갔다가 크릭에게 — 채찍 기둥에 목줄이 걸렸다"]
+      - id: growl
+        label: 이빨을 드러낸다 — 무리에게 배운 대로, 목 깊은 데서
+        minutes: 5
+        check: {skill: 위압, D: 22, helps: [menace, varg_blood]}
+        success:
+          text: |
+            사람의 목에서 나면 안 되는 소리가 난다. 물동이가 흙탕에 떨어진다. 여자가 아이를 낚아채 달아난다. 흙길이 빈다.
+
+            브람만 그대로 서 있다. 국자를 쥔 손의 마디가 하얗다. "…그래. 그게 너다." 그가 문턱 안으로 들어가 문을 닫는다. 빗장 소리.
+          effects: ["var o12_village_fear += 1", "rel npc_bram like -6", "temper 용기 2", "temper 자비 -2", "note 마을에서 으르렁거렸다 — 흙길이 비었다. 브람이 빗장을 질렀다"]
+        failure:
+          text: |
+            목에서 나오는 것은 쉰 기침 같은 소리다. 누가 웃는다. 그리고 돌이 날아온다. 관자놀이.
+
+            "개가 짖네." 크릭 감독이 길 건너에서 손뼉을 친다. 너는 피를 손바닥으로 누르며 걷는다. 뒤에서 웃음소리가 따라온다.
+          effects: ["pain 8", "rel npc_bram like -2", "note 마을에서 으르렁거리려다 돌을 맞았다"]
+      - id: bram_bowl
+        label: '브람에게 — "개도 배는 고프다."'
+        minutes: 15
+        check: {skill: 화술, D: 20, helps: [tongue, charm]}
+        success:
+          text: |
+            브람이 오래 너를 본다. 네 얼굴이 아니라, 광대뼈 밑의 움푹한 데를. 그는 굶은 얼굴에 약하다. 그게 그의 약점이라는 걸 그도 안다.
+
+            "빌어먹을." 그가 그릇에 죽을 퍼서 — 문턱 밖 흙바닥에 놓는다. 개에게 주듯이. "먹었으면 가. 질문은 하지 말고."
+          effects: ["hunger -1", "rel npc_bram like 8", "var o12_bram_bowl = true", "note 브람이 문턱 밖에 죽 한 그릇을 놓아 주었다 — 개에게 주듯이"]
+        failure:
+          text: |
+            국자가 네 손등을 친다. "개는 언덕에서 먹어. 네 주인이 사람 고기를 주잖아." 문턱 안의 농노들은 웃지 않는다. 누구도 웃지 않는다.
+          effects: ["pain 5", "rel npc_bram like -3", "note 브람의 국자 — '개는 언덕에서 먹어'"]
+      - id: smell_cellar
+        label: 수탉 마루 밑의 기침 냄새를 맡는다 — 코가 하는 일을
+        minutes: 5
+        check: {skill: 통찰, D: 24, helps: [dog_nose, tracker, liar_nose]}
+        success:
+          text: |
+            콧구멍이 저절로 벌름거린다. 기침. 피가 섞인 가래. 아이 오줌, 젖은 짚, 북쪽 사람들의 기름 냄새. 마루 밑에 사람이 있다. 다섯. 하나는 아프다.
+          effects: ["learn fact_gf_egil_family_in_cellar", "then o12_cellar"]
+        failure:
+          text: |
+            수탉의 연기와 탄 보리 껍질 냄새가 다른 것을 덮는다. 그런데 브람이 네 코를 본다. 네 콧구멍이 벌름거리는 것을. 그의 얼굴에서 핏기가 빠진다.
+
+            "냄새 맡으러 왔냐고 물었다." 그가 문을 닫는다. 빗장 소리가 두 번 난다.
+          effects: ["rel npc_bram trust -10", "memory npc_bram 위험함 언덕의 개가 수탉 바닥을 맡았다", "note 수탉 마루 밑을 맡으려 했다 — 연기가 덮었다. 브람이 보았다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_cough
+        needs_memory: fact:fact_gf_egil_family_in_cellar
+        label: '◈ 브람의 귀에 대고 — "기침이 마루까지 샌다. 아이 오줌 냄새도."'
+        minutes: 5
+        text: |
+          브람의 국자가 멈춘다. 그는 너를 보지 않는다. 문턱 안 솥만 본다. 오래.
+
+          "…누가." 그 말이 질문인지 너는 모른다. "언덕의 개가 그걸 왜 나한테 말하지." 대답을 기다리지 않는다. 그날 밤 수탉의 지하 벽에 짚과 진흙이 한 겹 더 발린다.
+        effects: ["var o12_bram_warned = true", "learn fact_gf_egil_family_in_cellar", "rel npc_bram trust 15", "echo_sign 1 수탉 지하의 손님들을 알았다", "note ◈ 브람에게 — 기침이 마루까지 샌다. 그가 벽을 다시 발랐다"]
+      - id: wipe_spit
+        label: 침을 닦는다 — 아무것도 하지 않는다
+        minutes: 10
+        text: |
+          너는 소매로 얼굴을 닦는다. 브람은 문턱에 선 채 움직이지 않는다. 너도 움직이지 않는다. 한참 뒤, 그가 먼저 눈을 돌린다. 솥이 끓는다.
+
+          침을 닦는 개를, 그는 처음 본다는 얼굴이다.
+        effects: ["stress 5", "rel npc_bram like 2", "memory npc_bram 이상함 언덕의 개가 침을 닦고 그냥 갔다", "note 브람의 침을 닦았다. 아무것도 하지 않았다"]
+
+  - id: o12_cellar
+    origin: varg_houndling
+    text: |
+      브람이 네 코를 본다. 네 콧구멍이 벌름거리는 것을. 국자를 쥔 손의 마디가 하얘진다. 그는 아무 말도 하지 않는다. 대답 대신 그릇을 닦는다. 닦는 손이 떨린다.
+
+      이 냄새 하나로 볼크는 머릿수를 다섯 더 센다. 즈닉은 은화 두 닢을 던질 것이다. 브람은 채찍 기둥에 묶일 것이다.
+    choices:
+      - id: shake_head
+        label: 브람에게 고개를 젓는다 — 아무 냄새도 안 났다
+        minutes: 5
+        text: |
+          너는 고개를 젓는다. 한 번. 브람의 손이 그릇을 닦다 멈춘다.
+
+          "…질문은 하지 말고." 그의 목소리가 갈라져 있다. "먹었으면 가." 너는 먹은 것이 없다. 그래도 간다.
+        effects: ["var o12_cellar_kept = true", "rel npc_bram trust 12", "temper 자비 4", "memory npc_bram 이상함 언덕의 개가 지하실 냄새를 맡고도 고개를 저었다", "note 수탉 마루 밑 — 다섯. 브람에게 고개를 저었다"]
+      - id: warn_bram
+        label: '브람의 귀에 — "기침을 막아라. 코는 나만이 아니다."'
+        minutes: 5
+        text: |
+          브람의 얼굴이 하얘졌다가, 붉어진다. 그는 오래 너를 본다 — 처음으로 개가 아니라 다른 무언가를.
+
+          "…빌어먹을." 그가 국자를 내려놓는다. "빚지는 건 싫은데." 그날 밤 자정, 그는 남은 죽을 들고 지하로 내려가기 전에 문 쪽을 네 번 본다. 세 번이 아니라.
+        effects: ["var o12_bram_warned = true", "rel npc_bram trust 18", "rel npc_bram like 5", "temper 자비 6", "note 브람에게 — 기침을 막아라. '빌어먹을. 빚지는 건 싫은데.'"]
+      - id: sell_znik
+        label: 감독관 초소로 간다 — 냄새를 판다
+        minutes: 20
+        text: |
+          감독관 초소. 즈닉이 노란 눈으로 네 목줄을 본다. 너는 무리말 대신 서툰 인간 말로 말한다. 마루 밑. 다섯. 기침.
+
+          즈닉의 꼬리가 바닥을 한 번 친다. 은화 두 닢이 흙바닥에 떨어진다. 개에게 던지듯이. 너는 줍는다. 줍는 손이 이상하게 무겁다 — 가슴 안쪽에서 무언가가 그 은화를 받지 않는다.
+        effects: ["agenda learn npc_znik fact_gf_egil_family_in_cellar", "var o12_cellar_sold = true", "goto gf_whip_square", "coin 24", "deed inform npc_bram", "temper 자비 -12", "stress 25", "note 즈닉에게 수탉 지하의 냄새를 팔았다 — 은화 두 닢. 내일 새벽, 지하실"]
+      - id: keep_for_volk
+        label: 아비를 위해 남겨 둔다 — 열나흘에 바칠 냄새
+        minutes: 5
+        text: |
+          너는 아무 말도 하지 않는다. 브람에게도, 크릭에게도. 냄새는 코 안에 둔다. 아비가 오면 꺼낼 수 있도록.
+
+          브람의 떨리는 손이 그릇을 다 닦는다. 그는 네가 무엇을 정했는지 모른다. 그래서 더 떤다.
+        effects: ["var o12_cellar_for_volk = true", "stress 6", "note 수탉 마루 밑 — 다섯. 아비를 위해 남겨 두었다"]
+
+  # ───────────────────────── 첫 이름 (엘사 — 다섯 살 이전의 이름) ─────────────────────────
+  - id: o12_first_name
+    origin: varg_houndling
+    trigger: {window: {from: "312-09-02 08:00", to: "312-09-30 22:00"}, with: npc_elsa, when: ["var o12_elsa_heard == true"]}
+    stage:   # 엘사가 늑대굴 아이들의 열을 보러 언덕에 오른다 (5일) — 코의 사냥 길 위에서
+      - {npc: npc_elsa, at: hungry_hill, from: "312-09-05 11:00", to: "312-09-05 17:00", doing: 남사면 바위틈에서 이끼를 뜯는다 — 늑대굴 아이들의 열을 보러 올라왔다}
+    text: |
+      쑥 냄새. 늪물, 말린 개구리, 끓인 버드나무 껍질.
+
+      그리고 그 밑에 — 네가 모르는 냄새가 하나 있다. 아니다. 아는 냄새다. 어디서 맡았는지 모를 뿐이다. 연기에 그을린 움막의 짚, 젖, 그리고 쑥.
+
+      노파 하나가 네 앞을 막아선다. 손톱 밑이 초록색이다. 목줄 찬 개 앞에 혼자 선 인간. 그녀가 손바닥을 눈썹 위에 얹고 네 눈을 들여다본다. 오래. 네 목줄의 놋쇠 패가 아니라, 눈을.
+
+      "얘야." 갈라진 혀끝에서 'ㅅ' 소리가 바람처럼 샌다. "너는 개가 아니다. 개는 그렇게 숨을 참지 않아."
+
+      그녀가 무언가를 부른다. 이름이다. 아주 낮게. 아무도 못 듣게.
+    input: true_name
+    input_label: 엘사가 부른 이름
+    input_button: 그 이름을 받는다
+    input_say: 다섯 살 이전의 이름 — 아무도 부르지 않던 이름이 들린다
+    input_sibling: false
+    after_input: |
+      "{name}."
+
+      네가 아는 소리가 아니다. 그런데 목덜미가 먼저 안다. 고사리 밑에서 누가 그 소리로 너를 불렀다. 숨 참아, {name}. 숨 참아.
+
+      "내가 받아낸 아이다." 노파가 말한다. 엘사 — 강변 움막의 아이들을 받아낸 늪가의 산파. "열아홉 해 전, 강변 움막. 네 어미가 첫 울음 뒤에 그 이름을 네 귀에 속삭이는 걸 내가 들었지. 이름을 아는 자가 너를 가진다 — 그래서 아무도 몰랐다. 나 말고는."
+
+      "다섯 살 가을이었다. 네 어미와 아비가 너를 업고 언덕으로 갔다. 늪을 건너 남쪽으로 가는 길의, 첫 매듭이었지." 그녀가 쓴 잎을 씹는다. "매듭은 언덕에서 끊겼다. 아이는 놓쳤다고 적혔다. 나는 열네 해 동안 놓친 줄 알았다."
+    effects: ["var o12_name_heard = true", "learn fact_o12_first_knot", "rel npc_elsa trust 15", "rel npc_elsa like 10", "note 엘사가 부른 이름 — {name}. 다섯 살 이전의 이름. 무리는 너를 코라 부른다"]
+    choices:
+      - id: mother
+        label: '"어미는."'
+        minutes: 10
+        text: |
+          엘사가 잎을 뱉는다. "사슬 부두로 갔다는 말까지만 들었다. 바알카르. 그다음은 아무도 적지 않았다." 그녀가 손가락으로 땅에 금을 하나 긋는다. 그리고 지운다.
+
+          "네 아비는 언덕에 남았다. 이름은 내가 솥에 대고 부른다. 해마다."
+        effects: ["learn fact_o12_mother_sold", "stress 8", "note 엘사 — 어미는 바알카르 사슬 부두로. 아비는 그날 언덕에서"]
+      - id: who_took
+        label: '"그날 고사리를 걷은 게 — 아비였소."'
+        minutes: 10
+        text: |
+          엘사가 대답하지 않는다. 대답하지 않는 것이 대답이다. 한참 뒤에야 말한다. "그 가을, 쇠송곳니를 박은 늑대가 언덕에 왔다. 남쪽에서 무리를 다 잃고 돌아온 늑대였다지."
+
+          "놓쳤다고 적은 아이를, 그는 놓지 않았구나." 그녀가 네 목줄을 본다. 처음으로.
+        effects: ["learn fact_o12_volk_kept_you", "var o12_knows_taken = true", "temper 충성 -6", "stress 10", "note 엘사 — 그날 고사리를 걷은 것은 볼크였다. 놓쳤다고 적고, 놓지 않았다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_twice
+        needs_memory: loop
+        label: '◈ "알아요. 전에도 — 이렇게 불렀어요."'
+        minutes: 5
+        text: |
+          엘사의 손이 멈춘다. 그녀가 네 턱을 들어 올린다. 늙은 손이 차다.
+
+          "…같은 날을 두 번 산 얼굴이구나." 그녀는 놀라지 않는다. "돌아오는 이. 옛날엔 그렇게 불렀지." 그리고 아주 작게 웃는다. "그래서 개가 숨을 참았구나."
+        effects: ["var echo_named = true", "rel npc_elsa trust 20", "note ◈ 엘사 — '같은 날을 두 번 산 얼굴'. 돌아오는 이"]
+      - id: refuse_name
+        label: '"그 이름은 버렸다. 나는 코다."'
+        minutes: 5
+        text: |
+          "버려도 이름은 너를 안 버린다." 엘사가 일어선다. 무릎이 소리를 낸다. "개로 살든, 사람으로 죽든. 그 이름은 거기 있다. 네 어미가 거기 두었다."
+
+          그녀는 돌아보지 않고 간다. 쑥 냄새가 오래 남는다.
+        effects: ["var o12_name_refused = true", "temper 충성 3", "rel npc_elsa like -3", "note 엘사가 부른 이름을 버렸다 — '버려도 이름은 너를 안 버린다'"]
+      - id: hold_name
+        label: 그 이름을 입속으로 한 번 굴려 본다 — 아무 말도 하지 않는다
+        minutes: 10
+        text: |
+          소리 내지 않는다. 혀끝으로만. {name}. 무리말에는 없는 소리다.
+
+          엘사는 기다린다. 그러다 고개를 끄덕인다. "그래. 그렇게 갖고 있어라. 아무한테도 주지 말고." 그녀가 네 손바닥에 쓴 잎을 하나 쥐여 준다. "씹어라. 쓴 건 산 거다."
+        effects: ["var o12_name_kept = true", "stress -6", "rel npc_elsa like 4", "note 이름을 아무에게도 주지 않았다 — 엘사의 쓴 잎"]
+
+  # ───────────────────────── 열나흘째 아침 (볼크가 돌아온다) ─────────────────────────
+  - id: o12_volk_morning
+    origin: varg_houndling
+    severity: 4
+    trigger: {at_time: "312-09-14 04:30", at: [hungry_hill__fang_fire, hungry_hill], late: "312-09-15 03:00", with: npc_volk, when: ["alive npc_volk", "not var o12_reckoning_done == true"]}
+    stage:
+      - {npc: npc_volk, at: hungry_hill__fang_fire, from: "312-09-14 04:00", to: "312-09-14 07:30", doing: 송곳니 불 앞 소나무 곁에 서 있다 — 금 열넷을 센다}
+    text: |
+      열나흘째 아침. 송곳니 불이 다시 높다.
+
+      볼크가 소나무 곁에 서 있다. 금 열넷 — 그가 마지막 금을 쇠송곳니로 한 번 더 긋는다. 그는 거짓말을 하지 않는다. 약속한 날에 온다. 그의 뒤에서 처음 보는 바르그 넷이 젖은 털을 턴다.
+
+      루그가 먼저 볼크의 귀에 대고 낮게 짖는다. 오래. 볼크는 듣는 동안 너를 본다. 스칼리는 불가에 엎드려 귀를 눕힌다.
+
+      볼크가 걸어와 네 목덜미에 코를 댄다. 킁. 한 번, 두 번. 그의 코가 거기서 오래 멈춘다 — 열나흘 전에는 없던 무언가를 맡는 것처럼. "…이상한 냄새가 묻었구나. 젖은 재." 그는 그것을 묻지 않는다.
+
+      "굴." 한 마디다.
+    effects: ["goto hungry_hill__fang_fire", "note 열나흘째 아침 — 볼크가 돌아왔다. '굴.'"]
+    choices:
+      - id: give_den
+        when: ["pknows fact_gf_wolf_den", "not var o12_volk_has_den == true"]
+        label: 굴을 말한다 — 동쪽 비탈, 가시덤불 뒤
+        minutes: 10
+        text: |
+          볼크의 귀가 앞으로 선다. 그가 네 목덜미를 한 번 더 맡는다. 거짓말 냄새를 찾는다. 없다. "좋은 코다."
+
+          그가 처음 보는 바르그 넷에게 턱짓을 한다. "스무닷새. 개를 다 푼다. 선두는 코다." 루그가 꼬리를 내린다. 스칼리는 고개를 들지 않는다.
+
+          가슴 안쪽에서 무언가가 한 번 크게 뛰고, 멎는다. 마흔 몇의 숨이 네 입에서 나갔다.
+        effects: ["agenda learn npc_volk fact_gf_wolf_den", "var o12_volk_has_den = true", "var o12_den_given = true", "var o12_reckoning_done = true", "deed betray", "temper 자비 -10", "temper 충성 8", "stress 25", "rel npc_volk trust 12", "note 열나흘째 아침, 아비에게 늑대굴을 말했다 — 스무닷새, 내가 선두다"]
+      - id: already_knows
+        when: ["var o12_volk_has_den == true"]
+        label: 고개를 숙인다 — 아비는 이미 굴을 안다
+        minutes: 5
+        text: |
+          "루그의 코가 먼저 왔다." 볼크가 말한다. "그래도 네 냄새였다." 그가 네 목덜미에서 코를 뗀다. 그것이 칭찬이다.
+
+          "스무닷새. 개를 다 푼다." 스칼리가 불가에서 귀를 눕힌 채 너를 본다.
+        effects: ["var o12_reckoning_done = true", "rel npc_volk trust 5", "stress 6", "note 열나흘째 아침 — 아비는 이미 굴을 안다. 스무닷새"]
+      - id: not_found
+        when: ["not pknows fact_gf_wolf_den", "not var o12_volk_has_den == true"]
+        label: '"못 찾았소." — 사실대로'
+        minutes: 5
+        text: |
+          볼크가 맡는다. 거짓말 냄새를 찾는다. 없다. "…킁. 코가 무뎌졌구나."
+
+          그가 루그를 돌아본다. 루그가 꼬리를 세운다. "스무닷새엔 루그가 선두다." 그것으로 끝이다. 열네 해 만에, 너는 무리의 맨 앞에서 내려온다.
+        effects: ["var o12_reckoning_done = true", "var o12_demoted = true", "rel npc_volk trust -8", "rel npc_o12_rug like 6", "note 열나흘째 아침 — 굴을 못 찾았다. 스무닷새엔 루그가 선두다"]
+      - id: lie
+        when: ["pknows fact_gf_wolf_den", "not var o12_volk_has_den == true", "not var o12_skali_will_tell == true", "var o12_rug_marks < 3"]
+        label: '"굴은 없었소." — 거짓말을 한다'
+        minutes: 5
+        check: {skill: 기만, D: 42, D_per_loop: 5, helps: [deceit, actor, false_face], warn: ["var o12_skali_oath == true", "var o12_skali_prepared == true", "var o12_volk_softened == true"]}
+        success:
+          text: |
+            볼크의 코가 네 목덜미에 오래 머문다. 그리고 떨어진다.
+
+            "…킁. 열나흘 동안 비가 많이 왔지." 그것이 다다. 그는 루그를 돌아보지 않는다. 루그의 꼬리가 천천히 내려간다. 스칼리가 불가에서 숨을 내쉰다. 아주 길게.
+          effects: ["var o12_reckoning_done = true", "var o12_den_hidden = true", "rel npc_volk trust -3", "stress 12", "note 열나흘째 아침, 아비에게 거짓말을 했다 — 그는 '비가 많이 왔지'라고만 했다"]
+        failure:
+          text: |
+            "킁." 볼크의 코가 멈춘다. "냄새가 바뀌었다."
+
+            그가 한 걸음 물러선다. 처음으로, 너를 사냥감을 보는 눈으로 본다. "거짓말은 땀에서 난다. 너는 내 코였다."
+          effects: ["var o12_lied_volk = true", "then o12_three_days"]
+      - id: lie_marked
+        when: ["pknows fact_gf_wolf_den", "not var o12_volk_has_den == true", "not var o12_skali_will_tell == true", "var o12_rug_marks >= 3"]
+        label: '"굴은 없었소." — 거짓말을 한다 (루그가 네 날들을 셌다)'
+        minutes: 5
+        check: {skill: 기만, D: 52, D_per_loop: 5, helps: [deceit, actor, false_face], warn: ["var o12_skali_oath == true", "var o12_skali_prepared == true", "var o12_volk_softened == true"]}
+        success:
+          text: |
+            루그가 짖은 날들이 볼크의 귀에 있다. 그래도 그의 코는 네 목덜미에서 아무것도 찾지 못한다.
+
+            "…킁. 루그는 날을 세고, 나는 냄새를 센다." 그것이 다다. 루그의 꼬리가 천천히 내려간다. 스칼리가 불가에서 숨을 내쉰다. 아주 길게.
+          effects: ["var o12_reckoning_done = true", "var o12_den_hidden = true", "rel npc_volk trust -5", "rel npc_o12_rug like -6", "stress 14", "note 열나흘째 아침, 루그의 날들을 넘어 아비에게 거짓말을 했다"]
+        failure:
+          text: |
+            "킁." 볼크의 코가 멈춘다. "루그가 센 날들과 같은 냄새다."
+
+            그가 한 걸음 물러선다. 처음으로, 너를 사냥감을 보는 눈으로 본다. "거짓말은 땀에서 난다. 너는 내 코였다."
+          effects: ["var o12_lied_volk = true", "then o12_three_days"]
+      - id: lie_skali
+        when: ["pknows fact_gf_wolf_den", "not var o12_volk_has_den == true", "var o12_skali_will_tell == true"]
+        label: '"굴은 없었소." — 거짓말을 한다 (스칼리는 아비에게 거짓말을 못 한다)'
+        minutes: 5
+        risk: 스칼리가 듣고 있다
+        text: |
+          볼크가 맡기도 전에, 불가에서 스칼리가 일어선다. 귀를 눕힌 채. "아비… 가시덤불. 동쪽 비탈." 목소리가 떨린다. "미안해, 코."
+
+          볼크가 스칼리를 보고, 너를 본다. "형제가 거짓말을 못 하는 무리에서, 너는 거짓말을 했다."
+        effects: ["agenda learn npc_volk fact_gf_wolf_den", "var o12_volk_has_den = true", "var o12_lied_volk = true", "bond npc_o12_skali -6", "then o12_three_days"]
+      - id: honest_no
+        when: ["pknows fact_gf_wolf_den", "not var o12_volk_has_den == true"]
+        label: '"찾았소. 그러나 말하지 않겠소."'
+        minutes: 5
+        risk: 정직한 고기는 정직하게 사냥한다
+        text: |
+          불이 한 번 튄다. 처음 보는 바르그 넷이 동시에 고개를 든다.
+
+          볼크는 화를 내지 않는다. 그가 네 목덜미를 맡는다. 거짓말 냄새를 찾는다. 없다. "…너는 거짓말은 안 했다. 그러니 나도 안 하겠다."
+        effects: ["var o12_volk_respect = true", "temper 정직 6", "temper 용기 6", "then o12_three_days"]
+      - id: trade_cellar
+        when: ["pknows fact_gf_egil_family_in_cellar", "not var o12_cellar_sold == true", "not var o12_volk_has_den == true"]
+        label: '"굴 대신 — 더 가까운 고기가 있소. 수탉 마루 밑에 다섯."'
+        minutes: 10
+        text: |
+          볼크의 귀가 선다. 더 큰 사냥감 이야기다. 그가 좋아하는 것이다. "남작의 마을 고기는 남작의 개가 먹는다." 그가 루그에게 턱짓을 한다. 루그가 마을 쪽으로 달려 내려간다 — 감독관 초소로.
+
+          "굴은 스무닷새에 내 코로 찾는다." 볼크가 말한다. 다음 날 새벽, 언덕 아래 마을에서 개 짖는 소리와 채찍 소리가 올라온다. 너는 그 소리를 센다. 다섯이 아니다. 더 많다.
+        effects: ["agenda learn npc_znik fact_gf_egil_family_in_cellar", "var o12_cellar_sold = true", "var o12_reckoning_done = true", "deed inform npc_bram", "temper 자비 -12", "stress 22", "rel npc_volk trust 6", "note 열나흘째 아침 — 굴 대신 수탉 마루 밑의 다섯을 아비에게 주었다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_bread
+        needs_memory: fact:fact_gf_volk_human_mother
+        label: '◈ "놓친 아이 — 아비도 하나였지. 빵을 씹어 입에 넣어 주던 여자의."'
+        minutes: 10
+        text: |
+          볼크가 움직이지 않는다. 바르그 넷이 서로를 본다. 루그가 한 발 물러선다.
+
+          아주 오래, 볼크는 냄새를 맡지 않는다. 그러다 소나무 쪽으로 몸을 돌린다. "…스무닷새에, 너는 언덕에 오지 마라." 목소리가 낮다. 끝이 갈라진다. 무리 이야기를 할 때만 그렇게 된다. "굴은 내 코로 찾는다. 네 코는 — 그날은 쉬어라."
+        effects: ["var o12_excused = true", "var o12_volk_softened = true", "var o12_reckoning_done = true", "rel npc_volk like 15", "echo_sign 1 볼크의 어린 날을 알았다", "note ◈ 열나흘째 아침 — 아비가 '스무닷새엔 쉬어라'고 했다. 그 여자 이야기"]
+      - id: silent
+        label: 고개를 숙이고 아무 말도 하지 않는다
+        minutes: 5
+        text: |
+          볼크가 기다린다. 볼크는 오래 기다릴 줄 안다. 그러다 코를 뗀다.
+
+          "말 안 하는 코는 쓸모가 없다." 그가 루그를 돌아본다. "스무닷새엔 루그가 선두다." 루그가 너를 보며 이빨을 드러낸다. 웃음이다.
+        effects: ["var o12_reckoning_done = true", "var o12_demoted = true", "rel npc_volk trust -8", "rel npc_o12_rug like 4", "stress 6", "note 열나흘째 아침 — 아무 말도 하지 않았다. 스무닷새엔 루그가 선두다"]
+
+  - id: o12_three_days
+    origin: varg_houndling
+    severity: 4
+    text: |
+      볼크가 소나무로 가서, 금 열넷 옆에 금 셋을 더 긋는다. 천천히. 하나, 둘, 셋.
+
+      "사흘이다." 목소리에 화가 없다. 볼크는 화를 내지 않는다. "나흘째 아침에 나는 네 냄새가 끝나는 곳에 서 있을 거다. 나는 거짓말 안 한다."
+
+      스칼리가 불가에서 일어선다. 루그가 웃는다. 처음 보는 바르그 넷은 벌써 네 냄새를 외우고 있다.
+
+      목줄은 그대로 둔다. 도망친 개의 표로.
+    effects: ["var o12_volk_prey = true", "var o12_reckoning_done = true", "rel npc_volk trust -40", "note 볼크 — 사흘. 나흘째 아침, 내 냄새가 끝나는 곳에. 그는 거짓말을 하지 않는다"]
+    choices:
+      - id: run_marsh
+        label: 뛴다 — 남쪽 늪으로. 물은 냄새를 끊는다
+        minutes: 30
+        text: |
+          너는 뛴다. 비탈, 개울, 갈대. 등 뒤에서 아무도 쫓아오지 않는다. 사흘은 사흘이다 — 그것이 더 무섭다.
+
+          오물 습지의 썩은 물이 무릎까지 차오른다. 냄새가 물에 녹는다. 너는 그것을 다섯 살 때부터 알았다. 쫓는 쪽에서.
+        effects: ["goto filth_marsh", "var o12_ran_marsh = true", "fatigue 20", "note 사흘 — 남쪽 늪으로 뛰었다"]
+      - id: fight_now
+        label: 아비에게 덤빈다 — 지금, 불가에서
+        minutes: 5
+        risk: 죽을 수 있다
+        check: {skill: 싸움, D: 52, helps: [knife_hand, brawler, assassin, reflexes]}
+        success:
+          text: |
+            쇠송곳니가 네 어깨를 문다. 네 소매 속 칼이 그의 옆구리에 들어간다 — 열네 해 동안 그가 가르친 자리에. 볼크가 처음으로 소리를 낸다.
+
+            너는 그 틈에 뛴다. 비탈, 개울, 갈대. 등 뒤에서 그의 목소리가 따라온다. 화난 목소리가 아니다. "사흘이다. 그대로다."
+          effects: ["var o12_wounded_volk = true", "pain 30", "goto filth_marsh", "var o12_ran_marsh = true", "deed assault npc_volk", "temper 용기 8", "note 아비의 옆구리에 칼을 넣고 늪으로 뛰었다 — '사흘이다. 그대로다'"]
+        failure:
+          text: |
+            쇠송곳니가 네 어깨를 문다. 그리고 놓지 않는다. 열네 해 동안 너는 그 이빨이 다른 목에 박히는 것을 보았다. 이번엔 아래에서 위로 본다 — 고사리 줄기 사이로 보던 그 하늘처럼.
+          effects: ["die teeth npc_volk 송곳니 불 앞에서 — 아비의 쇠송곳니에"]
+      - id: kneel
+        label: 무릎을 꿇는다 — 목줄을 내민다
+        minutes: 5
+        risk: 목줄로 돌아가는 길은 우리 수레다
+        text: |
+          너는 무릎을 꿇는다. 목줄의 놋쇠 패가 쇄골에 닿는다. 원래 그 자리다.
+
+          볼크가 너를 내려다본다. "꿇는 고기는 고기다." 루그가 사슬 더미에서 사슬을 끌어온다. 우리 수레의 판자 — 헐거운 못이 있던 자리는 새 못으로 막혀 있다.
+        effects: ["captured 볼크 앞에 무릎을 꿇었다 — 코는 우리 수레에 들어갔다"]
+      - id: run_north
+        label: 뛴다 — 북쪽, 세 소나무와 밀수꾼 길 쪽으로
+        minutes: 30
+        text: |
+          너는 뛴다. 북쪽으로, 세 소나무 쪽으로. 까마귀 문으로 가는 밀수꾼 길이 거기서 갈라진다. 회색여울을 벗어나면, 아비의 코도 거기서 끝날까.
+
+          등 뒤에서 아무도 쫓아오지 않는다. 사흘은 사흘이다.
+        effects: ["goto hungry_hill__three_pines", "var o12_ran_north = true", "fatigue 15", "note 사흘 — 북쪽 세 소나무로 뛰었다. 밀수꾼 길이 거기서 갈라진다"]
+      - id: farewell_skali
+        when: ["alive npc_o12_skali"]
+        label: 스칼리에게 무리말로 한 마디 — "달." 그리고 뛴다
+        minutes: 30
+        text: |
+          "달." 무리말로는 그것이 작별이다. 다음 달에도 같은 달을 보자는 말.
+
+          스칼리가 한 발 따라오다 멈춘다. 볼크가 그를 보지도 않고 말한다. "무리는 여기 있다." 스칼리의 목이 길게 늘어난다. 소리가 난다. 처음으로, 소리가 난다.
+
+          너는 남쪽 늪으로 뛴다. 그 소리가 비탈 끝까지 따라온다.
+        effects: ["bond npc_o12_skali 10", "var o12_skali_farewell = true", "goto filth_marsh", "var o12_ran_marsh = true", "fatigue 20", "note 스칼리에게 '달'이라고 했다. 그가 처음으로 소리를 냈다"]
+
+  # ───────────────────────── 냄새가 끝나는 곳 (나흘째 아침 — 사흘을 받고도 회색여울에 있으면) ─────────────────────────
+  - id: o12_scent_ends
+    origin: varg_houndling
+    severity: 5
+    trigger: {window: {from: "312-09-18 05:00", to: "312-09-30 23:00"}, at: "@greyford", when: ["var o12_volk_prey == true", "alive npc_volk"]}
+    text: |
+      나흘째 아침. 바람이 바뀐다.
+
+      젖은 털, 오래된 피, 쇠송곳니의 녹. 냄새가 먼저 온다. 늘 그랬다. 너는 그 냄새를 다섯 살 때부터 맡았다.
+
+      볼크가 거기 서 있다. 네 냄새가 끝나는 곳에. 약속한 날, 약속한 자리. 그는 서두르지 않는다. 한 걸음, 또 한 걸음, 네 쪽으로.
+
+      "코." 그가 너를 마지막으로 그렇게 부른다. "도망쳐라. 도망치는 고기가 더 맛있다."
+    choices:
+      - id: into_water
+        label: 물로 뛰어든다 — 물을 따라, 냄새가 끊기는 곳까지
+        minutes: 30
+        check: {skill: 은신, D: 50, helps: [swimmer, evade_track, shadow_step], warn: ["var o12_ran_marsh == true", "var o12_wounded_volk == true"]}
+        success:
+          text: |
+            물이 목까지 차오른다. 너는 숨을 참는다. 아주 잘 참는다. 다섯 살 때처럼, 고사리 밑에서처럼.
+
+            물가에서 볼크가 멈춘다. 오래 맡는다. 물은 냄새를 지운다 — 그가 가르친 것이다. "…킁." 그것이 다다. 서리 길의 여자 다음으로, 그가 놓친 두 번째다.
+          effects: ["var o12_escaped_volk = true", "var o12_volk_prey = false", "var player_fugitive = true", "goto filth_marsh", "wanted 2 볼크의 목줄을 찬 채 달아난 코", "note 아비의 사냥에서 살아남았다 — 물이 냄새를 끊었다. 이제 도망친 개다"]
+        failure:
+          text: |
+            물이 생각보다 얕다. 무릎, 허벅지 — 그리고 바닥. 등 뒤에서 물을 가르는 소리가 서두르지 않는다.
+
+            쇠송곳니의 녹 냄새가 목덜미에 닿는다. 마지막으로 맡는 냄새가, 처음 맡았던 냄새와 같다.
+          effects: ["die teeth npc_volk 냄새가 끝나는 곳에서 — 아비의 쇠송곳니에"]
+      - id: beg_missed
+        when: ["not var o12_child_missed == true"]
+        label: '"놓친 아이 — 올해 것을 나에게 써 주시오."'
+        minutes: 10
+        check: {skill: 화술, D: 40, helps: [tongue, charm], warn: ["var o12_volk_respect == true", "var o12_volk_softened == true", "var o12_knows_taken == true"]}
+        success:
+          text: |
+            볼크가 멈춘다. 쇠송곳니가 네 목에서 한 뼘. 그가 오래 너를 본다 — 고사리 밑에서 꺼낸 다섯 살짜리를 보는 것처럼.
+
+            "…올해의 놓친 아이는 너다." 그가 돌아선다. "장부에 그렇게 적겠다. 다시 네 냄새를 맡으면, 그때는 놓치지 않는다. 나는 거짓말 안 한다."
+          effects: ["var o12_missed_by_volk = true", "var o12_escaped_volk = true", "var o12_volk_prey = false", "var player_fugitive = true", "rel npc_volk like 10", "note 올해의 놓친 아이는 나다 — 다시 맡으면, 그때는 놓치지 않는다"]
+        failure:
+          text: |
+            "올해 것은 이미 정했다." 볼크가 말한다. 거짓말이 아니다. 그는 거짓말을 하지 않는다.
+
+            쇠송곳니가 내려온다. 고사리 줄기 사이로 보던 그 하늘이, 마지막으로 보인다.
+          effects: ["die teeth npc_volk 냄새가 끝나는 곳에서 — 아비의 쇠송곳니에"]
+      - id: blade
+        label: 소매의 칼을 뽑는다 — 아비에게
+        minutes: 10
+        risk: 죽을 수 있다
+        check: {skill: 싸움, D: 56, helps: [knife_hand, brawler, assassin, hidden_blade], warn: ["var o12_wounded_volk == true"]}
+        success:
+          text: |
+            칼이 그의 목 밑에 들어간다 — 열네 해 동안 그가 가르친 자리에. 볼크가 무릎을 꿇는다. 쇠송곳니가 흙에 닿는다.
+
+            "…좋은 코다." 그것이 마지막 말이다. 그의 코가 네 손목에 닿아 있다. 마지막까지, 냄새를 맡으면서.
+          effects: ["slay npc_volk 20", "var o12_killed_volk = true", "var o12_escaped_volk = true", "var o12_volk_prey = false", "var player_fugitive = true", "temper 용기 10", "stress 20", "note 아비를 죽였다. 냄새가 끝나는 곳에서 — '좋은 코다'"]
+        failure:
+          text: |
+            칼이 털에 미끄러진다. 열네 해 동안 그가 가르친 자리를, 그도 안다.
+
+            쇠송곳니가 네 어깨를 문다. 놓지 않는다.
+          effects: ["die teeth npc_volk 냄새가 끝나는 곳에서 — 아비의 쇠송곳니에"]
+      - id: kneel_end
+        label: 무릎을 꿇는다
+        minutes: 5
+        risk: 목줄로 돌아가는 길은 우리 수레다
+        text: |
+          너는 무릎을 꿇는다. 볼크가 네 목줄을 쥔다. 놋쇠 패가 그의 손바닥에서 운다.
+
+          "꿇는 고기는 고기다." 그가 너를 끌고 송곳니 불로 간다. 우리 수레의 판자에는 새 못이 박혀 있다.
+        effects: ["captured 냄새가 끝나는 곳에서 무릎을 꿇었다 — 코는 우리 수레에 들어갔다"]
+
+  # ───────────────────────── 송곳니 불·언덕의 하루 (연출가 장면 — 이 출신에게만) ─────────────────────────
+  - id: o12_dir_rug_share
+    origin: varg_houndling
+    trigger: {director: true, category: lack, at: hungry_hill__fang_fire, hours: ["19:00", "21:00"], chance: 0.3, when: ["var o12_hound == true", "alive npc_o12_rug", "not var player_fugitive == true"]}
+    text: |
+      고기가 불에서 내려온다. 산토끼 두 마리. 루그가 먼저 뜯는다 — 아비가 없는 불가에서 첫 이빨은 그의 것이다. 아비가 있는 밤에도, 아비 다음은 그의 것이다.
+
+      그가 네 몫으로 남긴 것은 뼈 하나다. 살점이 없다. 루그가 그것을 네 발치에 던진다. "털 없는 건 이로 먹는 게 아니지. 손으로 먹지."
+    choices:
+      - id: take_meat
+        label: 루그의 고기에 손을 뻗는다 — 무리의 순서를 깬다
+        minutes: 10
+        risk: 루그의 이빨
+        check: {skill: 싸움, D: 26, helps: [brawler, menace, reflexes]}
+        success:
+          text: |
+            네 손이 그의 고기를 낚아챈다. 루그의 이빨이 허공을 문다. 불가가 조용해진다. 너는 고기를 뜯는다 — 손으로, 그가 보는 앞에서.
+
+            루그는 덤비지 않는다. 대신 무언가를 센다.
+          effects: ["hunger -1", "rel npc_o12_rug trust -6", "rel npc_o12_rug like -6", "var o12_rug_marks += 1", "temper 용기 3"]
+        failure:
+          text: |
+            루그의 이빨이 네 팔뚝에 박힌다. 놓지 않는다. 한참 뒤에야 놓는다 — 피를 핥으며. "순서는 순서다, 털 없는 거."
+          effects: ["pain 15", "rel npc_o12_rug like 3"]
+      - id: skali_half
+        when: ["with npc_o12_skali"]
+        label: 스칼리가 제 몫을 반으로 찢어 민다 — 받는다
+        minutes: 10
+        text: |
+          스칼리가 루그를 보지 않고 제 고기를 반으로 찢는다. 네 쪽으로 민다. 루그가 으르렁거린다. 스칼리는 귀를 눕히지만, 고기는 거두지 않는다.
+        effects: ["hunger -1", "bond npc_o12_skali 4", "rel npc_o12_rug like -3"]
+      - id: take_bone
+        label: 뼈를 줍는다
+        minutes: 10
+        text: |
+          너는 뼈를 줍는다. 손으로. 바위에 쳐서 쪼갠다. 골수는 쓰고 비리다. 배는 차지 않는다. 루그가 웃는다.
+        effects: ["hunger 1", "stress 4", "rel npc_o12_rug like 2"]
+
+  - id: o12_dir_wyvern
+    origin: varg_houndling
+    trigger: {director: true, category: omen, at: hungry_hill, hours: ["07:00", "08:30"], chance: 0.3, when: ["var o12_hound == true", "with npc_gorm"]}
+    text: |
+      그림자가 먼저 온다. 비탈의 풀이 한쪽으로 눕고, 그 위로 잿빛 날개가 지나간다. 와이번 — 용의 대로를 지키는 늙은 짐승. 북사면을 한 바퀴 돌고, 남사면은 건너뛴다.
+
+      바르그들이 바위 그늘에 엎드린다. 늑대도 하늘의 것은 무서워한다.
+    choices:
+      - id: read_sky
+        label: 와이번이 왜 남사면을 건너뛰는지 맡는다
+        minutes: 20
+        check: {skill: 통찰, D: 22, helps: [hawk_eye, tracker, dog_nose]}
+        success:
+          text: |
+            남사면 양 우리 쪽에 빈자리 하나. 양 한 마리가 없다. 피 냄새는 없다 — 와이번은 굶지 않았다. 양 한 마리면 다음 순찰 한 번, 남사면이 빈다. 바람이 그 셈을 네 코에 실어 온다.
+          effects: ["learn fact_gb_gorm_patrol", "note 잿빛 와이번 — 양 한 마리면 다음 순찰 한 번 남사면이 빈다"]
+        failure:
+          text: |
+            날개 바람이 냄새를 다 쓸어 간다. 남은 것은 젖은 풀 냄새뿐이다.
+          effects: ["fear 1"]
+      - id: lie_low
+        label: 엎드린다 — 바르그에게 배운 대로, 그림자가 지나갈 때까지
+        minutes: 20
+        text: |
+          너는 바위 그늘에 배를 붙인다. 그림자가 네 등을 지나간다. 차갑다. 그림자에도 온도가 있다는 걸, 너는 이 언덕에서 배웠다.
+        effects: ["fear 1", "stress 2"]

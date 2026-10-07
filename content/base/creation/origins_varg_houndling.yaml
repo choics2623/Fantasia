@@ -1,0 +1,231 @@
+# 출신 — 바르그의 인간 사냥개 '코' (SCENARIOS O-12 origin.varg_houndling). 첫 시대부터 고를 수 있다 (2026-10 결정):
+# 고르면 이 사람이 그 시대의 잔향자다 — 회귀점은 AS 312 낙엽월 1일 10시, 굶주린 언덕의 바위틈, 고사리 밑의 맨발.
+# 셋째는 이 시대에도 회색여울 강변 움막에 잔향 없이 산다 (게르다·키트는 코의 식구가 아니다).
+#
+# SCENARIOS → 데이터 (사람)
+#   볼크 회색송곳니 ('아비')      → npc_volk (기존). 정본은 낙엽월 14일 '도착'(REGIONS 9.14 확정, 일과의 presence 9/14~). 이 시대에는
+#                                  1일 아침 언덕을 지나며 코를 앞세우고(stage), 1일 저녁 송곳니 불에서 '열나흘'을 소나무에 새긴 뒤
+#                                  2일 새벽 북쪽(까마귀 문 — 일과의 away)으로 간다. 14일 아침 바르그 넷과 돌아온다 — 정본 그대로.
+#   스칼리 (사냥 형제)             → npc_o12_skali (새 B등급, npcs/extra_varg_houndling.yaml)
+#   루그 (적대하는 조합 바르그)     → npc_o12_rug (새 B등급). 바알카르의 루가(npc_luga)와 다른 늑대
+#   브람 (침)                      → npc_bram — 수탉 문턱을 개에게 닫는다 (access gf_rooster: staff = '몰래'만)
+#   시그리드 (언덕의 개를 증오)     → npc_sigrid — AS 309 서리 길 바위틈의 여자 (fact_o12_crevice_309: 그때 코가 호루라기를 불지 않았다)
+#   잿빛 실 ('언덕의 개'를 증오)    → 엘사(심지)·브람 — 회색여울 매듭의 첫 길손이 AS 298 코의 부모였다 (fact_o12_first_knot)
+#   엘사 (첫 이름을 안다)           → npc_elsa — 강변 움막에서 코를 받아낸 산파. 「첫 이름」에서 input: true_name
+#   고사리 밑의 여자와 아이         → 카드 없음. 늑대굴(시그리드) 무리의 사람 — sigrid_group·fugitives_caught 변수로 센다. 아이 이름 리브
+#   그로드 (회색여울의 송곳니)      → npc_grod — 회귀점에는 세 소나무에 세워 둔다 (stage)
+# 고친 것 (엔진·데이터가 정한 것)
+#   냄새 천: 물건으로 두지 않는다 (효과 문법에 물건을 빼앗는 줄이 없다) — 장면의 사물, '잃어버림'은 var o12_cloth_lost
+#   '현상금 몫 은화 4닢': 주지 않는다 — 몫은 볼크가 계약을 맺는 열나흘 뒤의 일 (돈 0으로 시작)
+#   knowledge.grey_thread_cache_hungry_hill → fact_gf_wolf_den (늑대굴 = 엘사가 아이들을 남쪽으로 보낼 언덕 끝)
+#   flag.skali_secret → var o12_skali_secret · memory.hunted_child → var o12_foot_dream
+#   스킬: 추적·사냥 38 → 통찰 30, 야외생존·은신 → 은신 22, 운동·맨손격투 → 싸움 20·단련 16, 무리말 30·노예말 5 → 화술 8 + 프롬프트
+#   조합 목줄: 통행증이 아니다 (혼자면 '도망친 개' — 회색여울 밖 검문은 통행증 없는 인간으로 본다). 바르그 곁에서의 통행증 효과는
+#             장면의 with 조건(스칼리·볼크)과 크릭·통금의 글로, 목줄을 벗어 숨기면(stash) 「브람의 침」이 열리지 않는다 (has 조합목줄)
+#   점호 = 아비의 아침 (05:00 송곳니 불, by npc_volk — 볼크가 북쪽에 간 동안에는 루그가 대신 맡는다). 몸수색은 없다 (frisk: false)
+#   exclude: 셋째·게르다·키트를 가정하는 회색여울 장면, 그리고 주인공을 볼크의 사냥감으로 보는 장면 (volk_sniff, death_b1_lure, death_b2_guide)
+origins:
+  - id: varg_houndling
+    order: 22
+    scenario: O-12
+    region: 회색여울 변경
+    name: 바르그의 인간 사냥개
+    title: 볼크 회색송곳니의 코
+    call: 코
+    age: 19
+    difficulty: 3
+    family: false
+    settlement: greyford
+    time: "10:00"
+    when_word: 아침
+    place: 굶주린 언덕 — 사냥대 선두
+    start: hungry_hill
+    home: hungry_hill__fang_fire
+    blurb: >-
+      다섯 살에 굶주린 언덕의 고사리 밑에서 바르그에게 거두어졌다. 그 뒤로 열네 해, 사냥대장 볼크 회색송곳니의 '코' —
+      인간이 어디에 숨는지 아는 인간의 코였다. 송곳니 불가에서 늑대들과 자고, 인간의 말보다 무리말이 편하다.
+      회귀점은 비 내리는 언덕의 바위틈, 마른 고사리 밑으로 삐져나온 작은 맨발 하나.
+    stats: {근력: 9, 민첩: 12, 체질: 10, 지능: 8, 감각: 14, 의지: 8}
+    skills: {화술: 8, 기만: 10, 위압: 16, 통찰: 30, 손재주: 14, 은신: 22, 싸움: 20, 읽고쓰기: 0, 용언: 0}
+    status: {hunger: 1, pain: 20, fatigue: 35, fear: 0, stress: 35}
+    train: 16
+    coin: 0
+    items:
+      - {id: o12_collar, name: 조합 목줄, tags: [신분, 조합목줄], slot: 목, quality: 보통, condition: 90, illegal: false, value: 0, desc: "놋쇠 패가 달린 가죽 목줄. 바르그 노예사냥 조합의 '코'라는 표 — 바르그 곁에서는 길을 열고, 혼자면 도망친 개의 표다"}
+      - {id: o12_knife, name: 가죽 벗기는 칼, tags: [무기, 날붙이, 숨길수있음], slot: 소매, quality: 보통, condition: 85, illegal: false, value: 0, desc: "조합의 개에게만 허락된 짧은 칼. 언덕에서는 사냥칼이고, 마을에서 드러내면 인간의 칼이다 — 사형감"}
+      - {id: o12_whistle, name: 뼈 호루라기, tags: [도구, 신호], slot: 품, quality: 보통, condition: 100, illegal: false, value: 0, desc: "사슴 뼈를 깎은 호루라기. 한 번 불면 사냥대가 온다"}
+    rel: {npc_volk: [40, 60], npc_o12_skali: [80, 70], npc_o12_rug: [-40, -30], npc_bram: [-35, -30], npc_sigrid: [-40, -50], npc_elsa: [-10, -20], npc_hagen: [5, 15], npc_grod: [-10, 15]}
+    knows: [fact_o12_pack, fact_o12_crevice_309, fact_o12_missed_child, fact_gf_hagen_sells_runaways, fact_gf_volk_sweep_contract, fact_gb_fangfire_cart_nail, fact_gb_grod_buys_hagen]
+    places: []
+    vars: {o12_hound: true, o12_hill_dog: true, o12_caught: 23, o12_rug_marks: 0, o12_trail: 0, o12_village_spits: 0, o12_village_fear: 0}
+    wanted: null
+    flaws: [cursed_name]
+    flaw_note: {cursed_name: "사람의 이름이 없다 — 무리가 부르는 이름은 '코'뿐"}
+    traits: []
+    access: {gf_kennel: public, gf_rooster: staff}
+    duty:
+      rollcall:
+        at: hungry_hill__fang_fire
+        time: "05:00"
+        by: npc_volk
+        frisk: false
+        miss: "아비의 아침에 네 자리가 비었다. 루그가 빈자리에 코를 대고 오래 맡는다 — 아비가 돌아오면 셀 것이다."
+        miss_effects: ["var o12_rug_marks += 1"]
+        wake_text: "송곳니 불이 다시 일어난다. 무리가 불가에 둘러서고, 차례로 목덜미에 코가 닿는다 — 아비의 아침. 아비가 없는 날엔 루그가 대신 맡는다."
+      wake: "04:30"
+      meal: {at: hungry_hill__fang_fire, from: "19:00", to: "21:00", label: 송곳니 불의 몫을 받는다 — 뼈와 비계, hunger: -1, thin: 0.25, cost: 0, text: "무리의 순서대로 이가 들어간다. 네 차례가 오면 남는 것은 뼈와 비계다. 스칼리가 제 몫에서 한 점을 떼어 네 쪽으로 민다"}
+      work:
+        at: hungry_hill
+        from: "05:20"
+        until: "09:00"
+        label: 사냥대 선두에 선다 (해 질 때까지)
+        done: "해 질 때까지 냄새를 쫓았다. 바위틈 둘, 개울 하나. 냄새의 실이 동쪽 비탈 쪽으로 조금 더 감긴다 — 덫에 걸린 산토끼는 루그가 먼저 뜯는다"
+        fail: "냄새를 놓쳤다. 비가 바위의 냄새를 씻었다 — 루그가 그 날을 센다. 오늘 저녁 네 몫은 없다"
+        train: 0.5
+        pain: 3
+        fail_pain: 10
+        fail_meal: true
+        fail_fear: 0
+        fail_var: o12_rug_marks
+        done_var: o12_trail
+        coin: 0
+        food: null
+        outlaw: false
+        sabbath: true
+      count: null
+      safe: [hungry_hill, hungry_hill__three_pines, hungry_hill__wolf_den]
+      curfew:
+        caught: "크릭 순찰의 등불이 네 목줄에 멈춘다. 놋쇠 패, 조합의 표 — 그리고 곁에 바르그가 없다. \"혼자 다니는 개는 도망친 개다.\" 몽둥이가 무릎 뒤를 친다. 크릭들은 너를 마을 어귀까지 끌고 가 언덕 쪽으로 걷어찬다."
+        fugitive: "통금 순찰의 등불이 얼굴에 멈춘다. \"볼크의 개다 — 목줄 찬 채 도망친.\" 크릭의 올가미가 목줄에 걸린다."
+        fugitive_why: "통금 순찰에 붙잡혔다 — 도망친 개로 채찍 기둥에 묶였다"
+        pain: 12
+        effects: ["var o12_rug_marks += 1"]
+        D: 0
+      desert: "허락 없이 언덕을 떠나면 아비의 아침에 빈자리 — 두 번이면 코가 사냥감이 된다"
+      routine: 아비의 아침 → 사냥대 선두 → 송곳니 불
+    opening: o12_scent_open
+    sense: 젖은 양털 냄새
+    rescue: "눈앞이 하얘진다. 누군가 네 목줄을 물고 송곳니 불가로 끌고 간다. 입에 씹은 고기가 밀려 들어온다 — 스칼리다."
+    rescue_out: "눈앞이 하얘진다. 갈대 사이에서 누군가 너를 끌어낸다. 쑥 냄새. 입에 쓴 잎이 밀려 들어온다. 얼굴은 보지 못했다."
+    quiet:
+      - 송곳니 불이 사그라든다. 스칼리가 네 등에 등을 붙이고 잔다. 늑대의 등은 늘 따뜻하다.
+      - 언덕 어딘가에서 아이가 기침을 한다. 바람이 그 소리를 송곳니 불까지 실어 온다. 루그의 귀가 한 번 선다.
+      - 비가 바위의 냄새를 씻는다. 아침이면 언덕은 처음부터 다시 냄새를 가질 것이다.
+      - 우리 수레의 사슬이 바람에 운다. 비어 있어도 운다.
+      - 언덕 아래 마을에서 보리 껍질 타는 냄새가 올라온다. 너는 그 냄새를 어디서 맡았는지 모른다.
+    beats:
+      - {id: o12_cart_dawn, at: "312-09-02 05:30", danger: 4, when: ["var o12_ferns_caged == true", "not var o12_ferns_freed == true"], near: "새벽이면 볼크가 우리 수레를 끌고 북쪽으로 간다. 수레 바닥 판자의 못 하나가 헐겁다."}
+      - {id: o12_volk_back, at: "312-09-14 05:00", danger: 4, when: ["alive npc_volk", "not var o12_reckoning_done == true"], near: "내일 아침, 볼크가 송곳니 불에 선다. 열나흘이다. 그가 묻는 것은 한 마디 — 굴.", far: "열나흘째 아침, 아비가 돌아온다. 소나무의 금 열넷은 그대로다."}
+      - {id: o12_scent_ends, at: "312-09-18 05:00", danger: 5, when: ["var o12_volk_prey == true"], near: "내일 아침 — 나흘째다. 볼크는 네 냄새가 끝나는 곳에 서 있을 것이다. 그는 거짓말을 하지 않는다.", far: "나흘째 아침, 볼크가 온다. 사흘은 사흘이다. 회색여울 밖이라면 — 그의 코도 거기서 끝난다."}
+      - {id: o12_hagen_night, at: "312-09-22 22:00", danger: 3, when: ["pknows fact_gf_hagen_sells_runaways", "date >= 312-09-14", "not var o12_volk_prey == true"], near: "내일 밤, 하겐이 송곳니 불로 북쪽 사람 셋을 데려온다. 아비가 값을 센다."}
+    goals:
+      - who: 고사리 밑의 아이
+        when: ["var o12_ferns_known == true"]
+        states:
+          - {when: ["var o12_ferns_freed == true"], what: 헐거운 못 — 어미와 함께 어둠 속으로 달아났다}
+          - {when: ["var o12_child_missed == true", "date >= 312-09-02"], what: 올해의 놓친 아이로 어둠 속에 — 어미는 볼크가 북쪽으로 끌고 갔다}
+          - {when: ["var o12_child_missed == true"], what: 올해의 놓친 아이로 어둠 속에 — 어미는 아직 우리 수레에}
+          - {when: ["var o12_ferns_caged == true", "date >= 312-09-02"], what: 볼크가 우리 수레째 북쪽 회관으로 끌고 갔다}
+          - {when: ["var o12_ferns_caged == true"], what: 송곳니 불의 우리 수레 안 — 새벽이면 북쪽으로 간다, until: "312-09-02 05:30"}
+          - {when: ["var o12_ferns_saved == true"], what: 고사리 밑에서 살아 나갔다}
+          - {what: 고사리 밑에서 숨을 참고 있다}
+      - who: 늑대굴의 마흔일곱
+        when: ["pknows fact_gf_wolf_den"]
+        states:
+          - {when: ["var o12_volk_has_den == true"], what: 아비가 굴을 안다 — 스무닷새 대수색, until: "312-09-25 04:00"}
+          - {when: ["var o12_sigrid_warned == true"], what: 북쪽 여자가 열나흘을 안다 — 가시덤불 앞에 사람이 섰다}
+          - {what: 너만 아는 냄새 — 아직 아무에게도 말하지 않았다}
+      - who: 스칼리
+        when: ["var o12_hound == true"]
+        states:
+          - {when: ["dead npc_o12_skali"], what: 죽었다}
+          - {when: ["var o12_volk_prey == true"], what: 송곳니 불에 혼자 남았다 — 무리 없는 늑대는 달에 미친다}
+          - {when: ["var o12_skali_oath == true"], what: 달 앞에서 맹세했다 — 아비 앞에서 버틸 수 있을까}
+          - {when: ["var o12_skali_will_tell == true"], what: 아비에게 거짓말을 못 한다 — 열나흘에 가시덤불을 말할 것이다}
+          - {when: ["var o12_skali_secret == true"], what: 고사리 밑의 둘을 함께 숨긴 형제}
+          - {what: 네 등에 등을 붙이고 잔다}
+      - who: 아비의 열나흘
+        when: ["alive npc_volk", "not var o12_reckoning_done == true"]
+        states:
+          - {what: 볼크가 돌아와 굴을 묻는다, until: "312-09-14 05:00"}
+      - who: 아비의 사흘
+        when: ["var o12_volk_prey == true"]
+        states:
+          - {what: 나흘째 아침 — 볼크가 네 냄새가 끝나는 곳에 선다, until: "312-09-18 05:00"}
+    losses:
+      - {id: o12_cart_north, when: ["var o12_ferns_caged == true", "not var o12_ferns_freed == true", "not var o12_child_missed == true", "date >= 312-09-02"], text: "새벽, 볼크가 우리 수레를 끌고 북쪽으로 떠났다. 판자 틈으로 작은 맨발 하나가 삐져나와 있었다.", weight: 6}
+      - {id: o12_cart_mother, when: ["var o12_child_missed == true", "not var o12_ferns_freed == true", "date >= 312-09-02"], text: "새벽, 볼크가 우리 수레를 끌고 북쪽으로 떠났다. 수레 안에 여자 하나. 아이는 없다 — 놓친 아이다.", weight: 4}
+      - {id: o12_skali_alone, when: ["var o12_volk_prey == true", "alive npc_o12_skali"], text: "송곳니 불가에서 스칼리가 달 쪽으로 목을 늘인다. 소리가 난다. 무리 없는 늑대의 소리다.", weight: 6}
+      - {id: o12_cellar_raid, when: ["var o12_cellar_sold == true", "var egil_hidden == false"], text: "수탉 지하에서 다섯이 끌려 나왔다. 브람은 채찍 기둥에 묶였다. 냄새를 판 것은 네 코였다.", weight: 5}
+    achievements:
+      - {id: ferns_breathe, tp: 2, text: 고사리 밑의 숨을 지켰다, when: ["var o12_ferns_saved == true", "date >= 312-09-14"]}
+      - {id: first_name, tp: 2, text: 다섯 살 이전의 이름을 들었다, when: ["var o12_name_heard == true"]}
+      - {id: two_packs, tp: 3, text: 두 무리의 개 — 열나흘을 넘기고도 굴을 지켰다, when: ["var o12_reckoning_done == true", "not var o12_volk_has_den == true", "not var o12_volk_prey == true", "date >= 312-09-20"]}
+      - {id: collar_teeth, tp: 2, text: 목줄을 끊은 이빨 — 아비의 사냥에서 살아남았다, when: ["var o12_escaped_volk == true"]}
+    epilogue:
+      - {when: ["var o12_volk_has_den == true"], text: "스무닷새, 늑대굴 입구에 연기가 들어갔다. 열아홉이 끌려 나왔다. 그 냄새를 아비에게 준 것은 인간의 코였다."}
+      - {when: ["not var o12_volk_has_den == true"], text: "늑대굴의 무리는 서리월이 오기 전에 언덕을 떠났다. 그 굴의 냄새를 아는 코 하나는 끝내 입을 열지 않았다."}
+      - {when: ["var o12_ferns_saved == true"], text: "고사리 밑에서 숨을 참던 아이는 그 겨울을 넘겼다. 누가 바람을 돌렸는지 아이는 몰랐다."}
+      - {when: ["var o12_ferns_caged == true", "not var o12_ferns_saved == true", "not var o12_child_missed == true"], text: "우리 수레의 아이는 바알카르 사슬 부두까지 갔다. 그 뒤의 일은 아무도 적지 않았다."}
+      - {when: ["var o12_child_missed == true"], text: "그해의 놓친 아이는 리브라는 이름이었다. 볼크의 장부에는 이름이 없다."}
+      - {when: ["var o12_name_heard == true"], text: "엘사는 그 이름을 한 번 더 불렀다. 솥에 대고, 불탄 아이 셋의 이름 다음에."}
+      - {when: ["not var o12_name_heard == true"], text: "그는 끝까지 코였다. 이름을 아는 노파는 그를 찾지 못했다."}
+      - {when: ["alive npc_o12_skali", "var o12_volk_prey == true"], text: "스칼리는 보름마다 송곳니 불가에서 목을 길게 늘였다. 이번에는 소리가 났다."}
+      - {when: ["alive npc_o12_skali", "not var o12_volk_prey == true"], text: "스칼리는 보름마다 송곳니 불가에서 목을 길게 늘였다. 소리는 내지 않았다."}
+    texts:
+      count_before_sleep: |
+        송곳니 불의 재가 아직 따뜻하다. 스칼리가 네 등에 등을 붙이고 잔다. 우리 수레의 사슬이 바람에 한 번 운다.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "송곳니 불 쪽에서 루그가 밤새 코를 땅에 대고 있다. 네 냄새가 어디서 끝나는지 재고 있다."
+      nem_door: "송곳니 불가의 소나무"
+      gossip_where: "송곳니 불가에서, 수탉 처마 밑에서."
+    public:
+      npc_volk: 아비 — 사냥대장
+      npc_o12_skali: 형제 — 같은 불가에서 자란 바르그
+      npc_o12_rug: 털 없는 것을 싫어하는 늙은 코
+      npc_sigrid: "? 언덕의 북쪽 여자 — 냄새를 아는 얼굴"
+      npc_kit: "? 강변 움막의 아이"
+      npc_gerda: "? 강변 움막의 기침하는 여자"
+      npc_bram: 수탉의 외다리 — 너를 보면 침을 뱉는다
+      npc_hagen: 나룻배 사내 — 아비에게 고기를 파는 목줄꾼
+      npc_grod: 반귀 그로드 — 회색여울의 송곳니
+      npc_elsa: "? 늪가의 약초 노파"
+      npc_znik: 마을의 크릭 감독관
+      npc_irma: 언덕 남사면의 양치기 과부
+      npc_fayne: "? 지붕을 타는 마을 아이"
+      npc_sara: "? 성채의 젊은 하녀"
+      npc_godric_raven: 남작 — 아비에게 값을 치르는 용인
+      npc_henrik: 징세관 (용인)
+      npc_osric: 사슬등불 예배당의 사제
+      npc_egil: "? 수탉 마루 밑의 기침 냄새"
+      npc_gorm: "? 언덕 위를 도는 잿빛 와이번"
+      npc_isol: "? 회색 망토의 낯선 여자"
+    map: {knowledge: {hungry_hill: 3, greyford_village: 2, crow_gate: 2, weeping_pass: 2, baalkar: 1, filth_marsh: 1, old_stone_ring: 1, dragon_pillar_post: 1}, sketch: [crow_gate, weeping_pass]}
+    world: "주인공이 매인 곳은 굶주린 언덕 — 바르그 노예사냥 조합 사냥대장 볼크의 송곳니 불 야영지. 회색여울 마을은 여섯 시간 아래에 있다."
+    people: "주인공은 바르그 사이에서 자랐다 — 무리와 사냥감은 냄새로, 마을 사람은 겉모습과 몇몇 이름으로 안다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"스칼리 — 같은 불가에서 자란 바르그 청년 — 가\"). 이름을 모르는 사람은 겉모습이나 냄새로만 부른다."
+    nouns: "'송곳니 불'은 바르그 사냥대의 야영지 이름이다(불 이름이 아니다). '코'는 조합에서 냄새를 쫓는 자를 부르는 말이자 주인공을 부르는 이름이다. '절름발이 수탉'은 마을 배급 막사의 이름이다."
+    prompt: "주인공: 코라 불리는 열아홉 살 인간 — 바르그 노예사냥 조합 사냥대장 볼크 회색송곳니의 '코'(인간 사냥개). 다섯 살에 굶주린 언덕의 고사리 밑에서 거두어져 바르그 무리말로 자랐고, 인간의 말은 서툴다. 송곳니 불 야영지에서 형제처럼 자란 바르그 청년 스칼리, 그를 '털 없는 것'이라 부르는 루그와 잔다. 목에 조합 목줄, 소매에 가죽 벗기는 칼, 품에 뼈 호루라기. 지금까지 탈주자 스물셋을 찾아냈고, 마을 인간들은 그를 '언덕의 개'라 부르며 침을 뱉는다. 다섯 살 이전의 이름은 기억하지 못한다."
+    awakening: "다만 고사리 밑으로 삐져나온 작은 맨발을 본 뒤로, 냄새가 처음으로 '고기'가 아니라 '사람'으로 맡아진다 — 숨을 참는 쪽이 어떤지를, 이 몸은 기억하지 못하는데 목구멍이 기억한다. 눈가로 잿빛 고리가 스치는 것을 그는 모른다."
+    exclude:
+      - serf_mother_memory      # 움막 12호의 어머니 게르다 — 셋째의 재능 장면
+      - first_night_letter      # 움막 12호, 키트 곁의 첫 밤
+      - doorpost_circle         # 움막 12호 문설주의 숯 원
+      - martha_price_night      # 키트의 명단을 두고 셋째에게 하는 마르타의 거래
+      - hagen_northern_road     # 탈주를 꿈꾸는 농노에게 하는 하겐의 '북쪽 길' — 코는 하겐이 무엇을 파는지 안다
+      - death_c_northern_road
+      - volk_sniff              # 볼크가 낯선 농노의 냄새를 맡는 장면 — 코는 그의 코다 (주인공 = 볼크의 사냥감)
+      - death_b1_lure           # 대수색 날 언덕에 숨은 주인공을 볼크가 잡는 장면 (주인공 = 사냥감) — 코는 사냥대에 있다
+      - death_b2_guide          # 즈닉이 '언덕 길을 아는 농노'를 사냥대에 목줄로 붙이는 장면
+    perks:
+      - 냄새로 사람을 찾는다 — 통찰과 은신이 처음부터 날카롭다
+      - 바르그 곁에서는 조합 목줄이 길을 연다 — 언덕은 네 땅이다
+      - 볼크의 셈을 가장 먼저 안다 — 하겐의 매듭, 열나흘, 대수색
+    burdens:
+      - 이름이 없다 — 인간은 처음부터 너를 꺼린다
+      - 마을에서는 '언덕의 개' — 침을 맞고, 수탉 문턱을 넘지 못한다
+      - 혼자 다니는 목줄은 도망친 개의 표다 — 아비는 거짓말 냄새를 맡는다
+    presets:
+      - {name: 무리의 코, talents: {shadow_step: 2, beast_friend: 1, tongue: 1, dog_nose: 1}, traits: [varg_blood], stats: {감각: 1, 민첩: 3}}
+      - {name: 이중의 개, talents: {shadow_step: 2, tongue: 2, memory_palace: 2, false_face: 2, iron_gut: 1}, stats: {지능: 2, 의지: 2}}
+      - {name: 목줄을 끊는 이빨, talents: {knife_hand: 2, command: 2, shadow_step: 2, evade_track: 2, iron_gut: 1}, stats: {근력: 2, 체질: 2}}

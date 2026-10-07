@@ -1,0 +1,21 @@
+# 녹테른 혈목장 탈주자 (O-04 bloodfarm_runaway)의 알려진 사정 — 대본 장면이 세운 깃발 가운데 서술이 알아야 하는 것.
+# 서술 프롬프트에 "[알려진 사정]"으로 들어간다 (참일 때만). npc가 있으면 그 사람이 그 자리에 있을 때 먼저. warn은 판정의 '들은 것' 한 줄.
+flags:
+  o4_lina_saw_grey:   {line: "리나는 수로의 물에서 예순셋의 눈이 회색으로 변하는 것을 보았다. 아이의 입은 막을 수 없다", npc: npc_o4_lina}
+  o4_shift_burned:    {line: "예순셋 일행은 우리의 흰 옷을 벗어 버렸다. 지금은 거친 자루 천을 두르고 있다 — 잿물 냄새가 옅어졌다"}
+  o4_tessa_takes:     {line: "테사는 검은 장미 꽃잎을 보았다 — 레이디가 연 문으로 나온 셋은 장부에서 이미 '병사'다. 스무날 밤 호송 줄에 세운다", npc: npc_tessa}
+  o4_have_keys:       {line: "예순셋의 품에 크릭 목동장 즈라그의 열쇠 꾸러미가 있다 — 흰 울타리 철문과 막사 열두 동의 열쇠", npc: npc_zrag, warn: "즈라그의 열쇠가 네 품에 있다"}
+  o4_zrag_dead:       {line: "크릭 목동장 즈라그가 포도밭 수로 둑에서 촛대에 맞아 죽었다. 크릭 숫자표의 주인이 없다"}
+  o4_hounds_close:    {line: "짖지 않는 개들이 밤마다 붉은 갈대 선을 따라 은신처 가까이 온다 — 예순셋 일행이 남긴 냄새가 짙다", npc: npc_ninth_hunter, warn: "개들이 가까이 왔다는 것을 안다"}
+  o4_hound_killed:    {line: "예순셋이 사냥꾼의 창백한 개 한 마리를 촛대로 죽였다. 사냥꾼은 그 피 냄새를 잊지 않는다", npc: npc_ninth_hunter}
+  o4_ninth_spared:    {line: "갈대 선의 사냥꾼 '아홉째'는 예순셋 앞에서 개를 물렸다. 그는 그 일을 아무에게도 말하지 않는다", npc: npc_ninth_hunter}
+  o4_ada_known:       {line: "마르틴의 딸 아다(아홉 살, 3동)의 이름이 갈증의 밤 공물 명단에 올랐다 — 달아난 아버지의 빈 홈을 채우려고", npc: npc_o4_martin}
+  o4_ada_out:         {line: "아다가 우리 밖으로 나왔다. 마르틴 곁에서 아버지 팔의 홈을 센다", npc: npc_o4_martin}
+  o4_ada_listed:      {line: "테사가 레이디에게 아다의 번호를 전했다 — 오르페가 기록판의 홈을 고치면 아다는 '병사'가 되어 장미원 통로로 나온다", npc: npc_tessa}
+  o4_ada_promise:     {line: "예순셋은 마르틴에게 아다를 데려가겠다고 약속했다 — 다음 달 스무날까지", npc: npc_o4_martin}
+  o4_martin_stays:    {line: "마르틴은 아다를 두고 리나 곁에 남기로 했다. 밤마다 붉은 우리 쪽을 보지 않으려고 애쓴다", npc: npc_o4_martin}
+  o4_martin_brooding: {line: "마르틴은 먹을 것을 넷으로 나눈다 — 넷째 몫은 갈대 사이에 묻는다", npc: npc_o4_martin}
+  o4_freed:           {line: "회귀점의 새벽 7동에서 여섯이 더 깨어 함께 나왔다 — 붉은 갈대 쪽 어딘가에 흩어져 숨어 있다"}
+  o4_lina_with_tessa: {line: "리나는 밤마다 테사의 숨소리 옆에서 잔다", npc: npc_tessa}
+  o4_tessa_promise:   {line: "테사는 다음 달 스무날 예순셋을 위해 갈대 선에 다시 오기로 했다", npc: npc_tessa}
+  o4_lina_crossed:    {line: "리나는 테사의 호송 줄을 따라 붉은 갈대 선을 넘었다. 예순셋은 이쪽에 남았다", npc: npc_tessa}

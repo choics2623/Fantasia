@@ -1,0 +1,207 @@
+# O-04 녹테른 혈목장 탈주자 (SCENARIOS §1, O-04) — 첫 시대부터 고를 수 있는 출신. 그 판의 잔향자는 이 사람이다.
+# 회귀점: AS 312 낙엽월 1일 새벽 두 시, 붉은 우리 흰 울타리 바깥 포도밭 배수로 — 달아나는 중. 첫 1분부터 탈주자다.
+#
+# SCENARIOS → 지역 자료 (regional data wins — 카드·고장·사실이 이긴다)
+#   장미울타리 목장(셋째 혈목장)     → 붉은 우리 (settlements/red_pens.yaml). 철문 = 흰 울타리(rp_fence)의 문, 수로 = 검은 포도밭(rp_vineyard) 배수로.
+#                                     세실의 '병사' 위장은 붉은 우리 기록판에서도 일어난다 (오르페가 3년에 서른여덟 번 — fact_p2nc_orphe_thirty_eight).
+#   버드나무 세 그루(잿빛 실 첫 거점) → 검은 장미 봉투의 그림 속 표지. 실제 숨을 곳은 검은 장미 둔덕(nocturne__nameless_mound, 첫날 낮)과
+#                                     늪 경계 은신처 = 붉은 갈대 선(nocturne__marsh_edge, 잠자리). 테사의 은신처이고, 밤마다 사냥꾼이 그 선을 훑는다.
+#   쇠오리(잿빛 실 안내인)           → '흉터목' 테사 npc_tessa (잿빛 실 남쪽 안내인 — 붉은 갈대 선에서 모르바까지).
+#   목줄단 목장지기 그렐(인간, 46)   → 크릭 목동장 '울타리 혀' 즈라그 npc_zrag (열쇠꾼 출신, 우리의 숫자를 세는 자 — 셋이 비면 그의 숫자가 무너진다).
+#   사냥귀족 오렐리안 핏빛서리       → 둘로 나눈다: 사냥을 맡긴 자는 붉은 우리 영주 아드리엘 핏빛유리 npc_adriel (갈증의 밤 공물 수 — fact_o4_bounty),
+#                                     사냥하는 자는 침묵종 집의 갈증받이 사냥꾼 '아홉째' npc_ninth_hunter (밤마다 붉은 갈대 선을 훑는다 — 숙적).
+#                                     녹테른은 바르그 조합에 맡기지 않는다 — 제 집의 갈증받이로 직접 사냥한다.
+#   문을 열어 준 누군가              → 레이디 세실 그림자장미 npc_cecile (플레이어는 모른다 — 검은 장미 꽃잎만 본다).
+#   마르틴(30)·리나(8)               → 새 카드 npc_o4_martin · npc_o4_lina (npcs/extra_bloodfarm_runaway.yaml). 마르틴의 딸은 카드 없이 이름만 — 아다(9, 3동).
+#   창백한 사냥개                    → 사냥꾼의 개 (카드 없음 — 장면 안의 것).
+#   모르바의 첫 마을(O-10 회의)      → 이 고장 밖이다. 대신 스무날 밤 테사의 호송(정본 ev_rp_rose_escape)이 첫 고비의 끝 — 리나와 마르틴이 갈대 선을 넘고,
+#                                     냄새가 묻은 주인공은 이쪽에 남는다 (fact_o4_scent_convoy).
+#   시작 상태 빈혈(체질 판정 −5, 7일) → 상태로: 지침 55·아픔 25. 자정 채혈 줄에서 막 돌아온 몸이다.
+#   스킬: 운동 20·지구력 15 → 싸움 18·단련 12 / 은신 18 → 20 / 응급처치(지혈) 12 → 손재주 14 / 예법(식탁 시중) 10 → 화술 14 / 노예말 20 → 말(용언 0).
+#         피 표의 홈과 번호는 읽는다 → 읽고쓰기 2 ("숫자만 읽는다").
+#   추천 조합: 「늪길의 안내자」의 '활의 재능' → 사냥꾼(hunter) 소질 2. 나머지는 06 그대로 (12 / 12).
+# 내용 규칙: 혈목장은 몸을 가축으로 쓰는 공포다 — 피, 홈, 번호, 잘 먹이는 손. 성적인 것은 없다.
+origins:
+  - id: bloodfarm_runaway
+    order: 14
+    scenario: O-04
+    region: 녹테른
+    name: 혈목장 탈주자
+    title: 붉은 우리에서 달아난 아이
+    call: 예순셋
+    age: 17
+    difficulty: 5
+    family: false
+    settlement: red_pens
+    time: "02:00"
+    place: 붉은 우리 흰 울타리 바깥 — 검은 포도밭 배수로
+    start: rp_vineyard
+    home: nocturne__marsh_edge
+    blurb: >-
+      붉은 우리 7동에서 태어나 일곱 살부터 이레마다 피를 뽑혔다. 우리는 너를 잘 먹였고, 예순셋이라 불렀다.
+      낙엽월 1일 새벽 두 시, 검은 장미가 꽂힌 채 열려 있던 철문을 지나 허리까지 차는 수로에 서 있다 —
+      여덟 살 리나를 등에 업고, 열네 해 피를 바친 마르틴과 함께. 등 뒤에서 짖지 않는 개들이 풀려난다.
+    stats: {근력: 9, 민첩: 10, 체질: 13, 지능: 9, 감각: 11, 의지: 8}
+    skills: {화술: 14, 기만: 12, 위압: 4, 통찰: 18, 손재주: 14, 은신: 20, 싸움: 18, 읽고쓰기: 2, 용언: 0}
+    status: {hunger: 1, pain: 25, fatigue: 55, fear: 1, stress: 45}
+    train: 12
+    coin: 0
+    items:
+      - {id: o4_candlestick, name: 철 촛대, tags: [무기, 둔기], slot: 손, quality: 조악, condition: 80, illegal: true, value: 3, desc: "채혈 헛간 기록판 곁에 서 있던 철 촛대. 초는 없다. 나오는 길에 손에 쥐었다 — 그 뒤로 놓지 못했다"}
+      - {gid: o4_rose_envelope, desc: "검은 장미 꽃잎을 붙여 봉한 봉투. 철문에 꽂힌 장미 밑에 끼워져 있었다. 글은 없다 — 그림뿐이다"}
+      - {gid: o4_bean_cake, desc: "자정 채혈 뒤에 나눠 주는 콩떡. 우리는 피를 뽑은 날 더 먹인다"}
+    rel: {npc_o4_martin: [40, 50], npc_o4_lina: [60, 40], npc_zrag: [-20, -25], npc_hedwig: [20, 25]}
+    knows: [fact_nc_thirst_night_tribute, fact_p2nc_rumor_thirst_night_free, fact_o4_lina_named]
+    places: [rp_ledger_board]
+    vars:
+      player_fugitive: true
+      o4_trail: 1              # 흔적 — 개들이 맡을 냄새의 겹. 셋이면 사냥꾼이 은신처 앞에서 멈춘다 (o4_hunter_reeds)
+      o4_lina_cold: 0          # 리나의 한기 — 찬 물과 젖은 옷. 둘이면 열이 오른다
+      o4_freed: 0              # 회귀점의 새벽 7동에서 함께 깨운 사람 수
+      o4_reached_reeds: false
+      o4_tessa_met: false
+      o4_hunter_done: false
+      o4_martin_taken: false
+      o4_lina_taken: false
+      o4_lina_crossed: false
+      o4_ada_out: false
+    wanted: {heat: 2, by: [npc_ninth_hunter, npc_zrag], reason: 탈주}
+    flaws: [brand]
+    flaw_note: {brand: 손목 안쪽 목장 표식}
+    traits: []
+    trait_discount: {}
+    free: false
+    access: {}
+    duty:
+      rollcall: false
+      wake: "05:00"
+      meal: {at: nocturne__marsh_edge, from: "17:00", to: "18:40", label: 해 지기 전 마르틴이 나눈 몫을 받는다, hunger: -1, thin: 0.35, with: npc_o4_martin, cost: 0, text: "마르틴이 먹을 것을 셋으로 나눈다 — 갈대 뿌리, 새알 하나, 우리에서 들고 나온 콩떡 부스러기. 제 몫을 리나 쪽으로 민다. 해가 지기 전에 다 먹는다. 해가 지면 입을 다문다"}
+      work:
+        at: nocturne__marsh_edge
+        from: "05:30"
+        until: "12:00"
+        label: 물가에서 먹을 것을 찾는다 (갈대 뿌리·새알·개구리)
+        done: 갈대 뿌리 한 줌과 개구리 둘. 물에 손을 넣을 때마다 팔 안쪽의 바늘 자국이 쓰라리다. 셋이 먹기엔 모자라다 — 그래도 한 줌
+        fail: 둑 위로 크릭 목동의 머리가 지나간다. 해가 질 때까지 갈대 속에 엎드려 있었다 — 손이 빈 채로
+        train: 0.3
+        pain: 0
+        fail_pain: 0
+        fail_meal: false
+        fail_fear: 1
+        coin: 0
+        food: o4_reed_root
+        outlaw: true          # 탈주자여도 — 탈주자라서 하는 일
+        sabbath: true         # 갈대밭에는 안식일이 없다
+      count: null
+      safe: [nocturne__nameless_mound]
+      curfew:
+        caught: 통금 뒤의 우리 안. 크릭 목동의 몽둥이 — 그리고 막사로 끌려간다.
+        fugitive: 등불이 아니다. 냄새다. 창백한 개 셋이 소리 없이 너를 둘러싼다. 그 뒤에서 크릭의 호루라기가 짧게, 세 번 — 빈 홈 하나가 채워지는 소리다.
+        fugitive_why: 밤의 우리 안에서 붙잡혔다 — 달아난 가축은 갈증의 밤 공물 줄로 간다
+        pain: 15
+        patrols: ["22:00", "01:00", "03:30"]
+        D: 4
+      desert: 울타리 밖의 가축은 사냥감이다 — 침묵종의 갈증받이가 냄새를 쫓는다
+      routine: 물가에서 먹을 것 → 해 지기 전의 몫 → 갈대 속의 밤
+    opening: o4_canal_open
+    sense: 썩은 포도 냄새
+    when_word: 새벽
+    rescue: 눈앞이 하얘진다. 누군가 너를 갈대 속으로 끌고 간다. 입에 쓴 뿌리즙이 흘러든다. 손이 차다 — 손목에 천이 감겨 있다.
+    quiet:
+      - 갈대가 밤새 한쪽으로 눕는다. 물이 숨을 쉬는 소리 — 아니면 네 숨이다.
+      - 해 질 녘, 멀리서 귀환 호루라기가 운다. 여기까지 들릴 리가 없다. 그래도 들린다.
+      - 손목 안쪽의 표식이 물에 불어 가렵다. 진흙을 한 겹 더 바른다.
+      - 오늘 밤은 아무것도 지나가지 않았다. 아무것도 지나가지 않는 밤이 제일 길다.
+    beats:
+      - {id: o4_hounds_a, at: "312-09-04 21:00", danger: 4, when: ["var o4_trail >= 2", "var o4_hunter_done != true"], near: "갈대 선을 따라 짖지 않는 것들이 은신처 가까이 왔다 간다. 냄새가 한 겹만 더 남으면 — 그 사냥꾼은 여기서 멈출 것이다.", far: "짖지 않는 개들이 밤마다 갈대 선을 조금씩 더 가까이 훑는다. 냄새가 짙다."}
+      - {id: o4_hounds_b, at: "312-09-08 21:00", danger: 4, when: ["var o4_trail >= 2", "var o4_hunter_done != true"], near: "갈대 선을 따라 짖지 않는 것들이 은신처 가까이 왔다 간다. 냄새가 한 겹만 더 남으면 — 그 사냥꾼은 여기서 멈출 것이다.", far: "짖지 않는 개들이 밤마다 갈대 선을 조금씩 더 가까이 훑는다. 냄새가 짙다."}
+      - {id: o4_hounds_c, at: "312-09-13 21:00", danger: 4, when: ["var o4_trail >= 2", "var o4_hunter_done != true"], near: "갈대 선을 따라 짖지 않는 것들이 은신처 가까이 왔다 간다. 냄새가 한 겹만 더 남으면 — 그 사냥꾼은 여기서 멈출 것이다.", far: "짖지 않는 개들이 밤마다 갈대 선을 조금씩 더 가까이 훑는다. 냄새가 짙다."}
+      - {id: o4_hounds_d, at: "312-09-18 21:00", danger: 4, when: ["var o4_trail >= 2", "var o4_hunter_done != true"], near: "갈대 선을 따라 짖지 않는 것들이 은신처 가까이 왔다 간다. 냄새가 한 겹만 더 남으면 — 그 사냥꾼은 여기서 멈출 것이다.", far: "짖지 않는 개들이 밤마다 갈대 선을 조금씩 더 가까이 훑는다. 냄새가 짙다."}
+      - {id: o4_convoy, at: "312-09-20 22:00", danger: 3, when: ["var o4_tessa_met == true"], near: "내일 밤이 스무날이다. 리나의 손을 누구에게 쥐여 줄지 정해야 한다.", far: "스무날 밤, 장미원 통로가 열린다 — 테사의 호송 줄이 붉은 갈대 선을 넘는다."}
+      - {id: o4_ada_tribute, at: "312-11-15 18:00", danger: 3, when: ["var o4_ada_known == true", "var o4_ada_out != true"], near: "내일이 갈증의 밤이다. 3동의 아다가 공물 줄에 선다.", far: "긴밤월 보름, 갈증의 밤 — 아다의 이름이 공물 명단에 있다."}
+      - {id: o4_thirst_night, at: "312-11-15 18:00", danger: 4, near: "내일이 갈증의 밤이다. 붉은 우리의 촛불이 모두 꺼진다.", far: "긴밤월 보름, 갈증의 밤 — 우리의 빈 홈은 그 밤까지 채워져야 한다. 산 것으로."}
+    goals:
+      - who: 리나
+        when: ["var o4_lina_known == true"]
+        states:
+          - {when: ["dead npc_o4_lina"], what: 갈대 속에 묻었다}
+          - {when: ["var o4_lina_taken == true"], what: 붙잡혀 우리로 끌려갔다 — 흰 옷을 다시 입었다}
+          - {when: ["var o4_lina_crossed == true"], what: 테사의 호송 줄을 따라 붉은 갈대 선을 넘었다}
+          - {when: ["date >= 312-09-21"], what: 테사의 호송 줄을 따라 늪으로 갔다 — 작별은 하지 못했다}
+          - {when: ["var o4_lina_cold >= 2"], what: 열이 오른다 — 찬 물과 젖은 옷, until: "312-09-20 22:00"}
+          - {what: 네 등에 매달려 있다 — 스무날 밤 장미원 통로가 열린다, until: "312-09-20 22:00"}
+      - who: 마르틴
+        when: ["var o4_lina_known == true"]
+        states:
+          - {when: ["dead npc_o4_martin"], what: 죽었다}
+          - {when: ["var o4_martin_taken == true"], what: 붙잡혀 채혈 헛간에 묶였다 — 갈증의 밤 공물 줄}
+          - {when: ["var o4_martin_crossed == true"], what: 리나와 함께 붉은 갈대 선을 넘었다}
+          - {when: ["date >= 312-09-21"], what: 테사의 호송 줄을 따라 늪으로 갔다}
+          - {when: ["var o4_ada_out == true"], what: 아다를 데리고 나왔다 — 셋이 아니라 넷이다}
+          - {what: 열네 해의 팔로 먹을 것을 셋으로 나눈다}
+      - who: 아다
+        when: ["var o4_ada_known == true"]
+        states:
+          - {when: ["var o4_ada_out == true"], what: 우리 밖으로 나왔다 — 아버지 곁에 있다}
+          - {when: ["var o4_ada_listed == true"], what: 레이디의 명단에 번호가 올랐다 — 기록판의 홈이 고쳐지기를 기다린다, until: "312-09-20 22:00"}
+          - {when: ["var o4_ada_promise == true"], what: 너는 마르틴에게 약속했다 — 다음 달 스무날까지, until: "312-10-20 22:00"}
+          - {what: 3동 — 아버지의 빈 홈을 채우려고 갈증의 밤 공물 명단에 올랐다, until: "312-11-15 18:00"}
+    losses:
+      - {id: o4_lina_dead, when: ["dead npc_o4_lina"], text: "리나의 숨소리가 갈대 속에서 멎었다. 너는 센다 — 하나가 모자란다.", weight: 9}
+      - {id: o4_lina_taken, when: ["var o4_lina_taken == true"], text: "리나는 흰 옷을 입고 다시 우리 안에 있다. 이번에는 아무도 그 아이를 이름으로 부르지 않는다.", weight: 8}
+      - {id: o4_martin_taken, when: ["var o4_martin_taken == true"], text: "마르틴은 채혈 헛간에 묶였다. 열네 해의 팔에 홈이 하나 더 새겨진다.", weight: 7}
+      - {id: o4_martin_dead, when: ["dead npc_o4_martin"], text: "마르틴은 돌아오지 않았다. 먹을 것을 셋으로 나누던 손이 없다.", weight: 7}
+    achievements:
+      - {id: reeds, tp: 1, text: 리나를 업고 붉은 갈대 선까지 갔다, when: ["var o4_reached_reeds == true", "alive npc_o4_lina", "var o4_lina_taken != true"]}
+      - {id: crossed, tp: 2, text: 리나가 붉은 갈대 선을 넘었다, when: ["var o4_lina_crossed == true"]}
+      - {id: ada, tp: 2, text: 마르틴의 딸을 우리에서 데리고 나왔다, when: ["var o4_ada_out == true"]}
+      - {id: spared, tp: 2, text: 갈대 선의 사냥꾼이 한 번 더 개를 물렸다, when: ["var o4_ninth_spared == true"]}
+    epilogue:
+      - {when: ["var o4_lina_crossed == true"], text: "리나는 늪에서 자랐다. 진흙등불 회관에서 매듭으로 글자를 배웠고, 맨 처음 묶은 낱말은 자기 이름이었다. 그 이름을 누가 지어 주었는지는 끝까지 말하지 않았다."}
+      - {when: ["var o4_lina_taken == true"], text: "리나는 그해 긴밤월, 갈증의 밤 공물 행렬의 '공물 아님' 줄에 섰다. 집행인이 열두 살 아래를 세워 두는 줄이다. 그 뒤의 일은 아무도 적지 않았다."}
+      - {when: ["dead npc_o4_lina"], text: "갈대 속 작은 무덤에는 표식이 없다. 표식은 우리에서 쓰는 것이다."}
+      - {when: ["var o4_lina_crossed != true", "var o4_lina_taken != true", "alive npc_o4_lina"], text: "리나는 테사의 줄에 섞여 갈대를 넘었다. 늪 사람들이 이름을 묻자 아이는 숫자를 세다가, 다섯에서 멈추고 이름을 말했다."}
+      - {when: ["var o4_ada_out == true"], text: "아다는 아버지 팔의 홈을 하나씩 세는 버릇이 있었다. 칠백스물여덟에서 늘 멈췄다."}
+      - {when: ["var o4_martin_taken == true"], text: "마르틴은 채혈 헛간에서 겨울을 넘기지 못했다. 기록판에서 그의 홈은 '병사'로 고쳐졌다 — 이번에는 사실이었다."}
+      - {text: "붉은 우리는 그 뒤로도 해 질 녘마다 귀환 호루라기를 불었다. 크릭의 숫자표에는 홈이 모자랐고, 장부는 그 칸을 '병사'라고 불렀다."}
+    texts:
+      count_before_sleep: |
+        갈대 사이로 물이 숨을 쉰다. 리나가 네 겨드랑이에 얼굴을 묻고 잠결에 숫자를 센다. 마르틴의 숨소리가 셋에서 끊겼다가 다시 이어진다. 멀리, 갈대 선을 따라, 짖지 않는 것들이 지나간다.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: 해 질 녘, 붉은 우리 쪽에서 호루라기가 짧게 세 번 운다. 빈 홈을 세는 소리다. 사냥꾼 초소의 문이 열리는 소리는 들리지 않는다 — 원래 들리지 않는다.
+      nem_door: 은신처 앞 버드나무 껍질
+      gossip_where: 갈대 선의 호송 줄에서, 우리 막사의 숨죽인 밤에.
+    public:
+      npc_o4_martin: 3동의 공여자 — 열네 해를 바친 사내
+      npc_o4_lina: 7동의 아이, 여덟 살 — 네가 이름을 지어 주었다
+      npc_zrag: 울타리 혀 — 크릭 목동장
+      npc_hedwig: 회복 막사의 쑥 노파
+      npc_chik_tally: 나무패 지기 — 홈을 읽는 크릭 서기
+      npc_adriel: "? 언덕 저택의 영주"
+      npc_kasimir: "? 하얀 우리의 영주"
+      npc_ninth_hunter: "? 목에 흉터 줄이 있는 사냥꾼"
+      npc_tessa: "? 목에 천을 감은 여자"
+      npc_cecile: "? 검은 장미의 주인"
+      npc_orphe: "? 홈을 고치는 사내"
+      npc_pips: "? 장미 냄새가 나는 크릭"
+      npc_starved_pack: "? 골짜기에서 웅얼거리는 것들"
+    map: {knowledge: {red_pens: 3, rose_manor: 1, first_thirst_castle: 1, lumen: 1}, sketch: [rose_manor]}
+    world: "주인공이 매인 곳은 녹테른 밤의 영지 — 붉은 우리. 녹테른이 인간 6,800을 번호로 길러 이레마다 피를 뽑는 혈목장이다. 주인공은 그 흰 울타리를 넘어 달아난 가축이고, 영지 안 어디에서나 사냥감이다."
+    people: "주인공은 우리에서 나고 자랐다 — 우리 사람은 번호로, 크릭 목동은 직함으로 안다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"마르틴 — 열네 해 동안 피를 바친 서른 살 사내 — 이\"). 이름을 모르는 사람은 겉모습으로만 부른다."
+    nouns: "'붉은 우리'는 녹테른의 혈목장(인간을 가축처럼 길러 피를 뽑는 곳)이다. '흰 옷'은 우리 사람이 입는 옷, '피 표'는 채혈 때마다 홈을 새기는 나무패, '병사'는 장부에서 사라진 사람을 지우는 말(병으로 죽음). '갈증받이'는 녹테른의 피를 이레마다 받는 인간 사냥꾼, '창백한 개'는 짖지 않고 냄새로 쫓는 사냥개, '붉은 갈대 선'은 녹테른 땅과 늪의 경계다."
+    prompt: "주인공: 예순셋이라 불리는 열일곱 살 인간 — 녹테른의 혈목장 '붉은 우리' 7동에서 태어나 일곱 살부터 이레마다 피를 뽑힌 아이 (진짜 이름은 어머니가 지어 마르틴에게 맡겼다가, 탈주하는 밤에 돌려받았다). 손목 안쪽에 목장 표식, 팔 안쪽에 채혈 자국, 빈혈로 몸이 무겁다. 맨발에 젖은 흰 옷, 손에는 채혈 헛간의 철 촛대. 여덟 살 리나를 업고 열네 해 피를 바친 마르틴과 함께 붉은 갈대 선 쪽으로 달아났다 — 처음부터 쫓기는 탈주자다."
+    awakening: "다만 수로의 검은 물에 비친 얼굴이 잠깐 자기 것이 아니었다 — 불붙은 하늘 아래 성벽 위의 남자. 수만 명이 한꺼번에 숨을 들이켜는 소리를 들었고, 등에 업힌 리나가 '눈이 회색이야'라고 속삭였다."
+    exclude: []
+    perks:
+      - 우리는 가축을 잘 먹였다 — 체질이 좋고 아침마다 달린 다리가 있다
+      - 마르틴과 리나 — 너를 믿는 둘이 곁에 있다
+      - 우리의 길과 크릭의 순찰을 몸이 안다
+    burdens:
+      - 빈혈 — 오늘 밤에도 피를 뽑혔다
+      - 처음부터 쫓긴다 — 짖지 않는 개와 갈증받이 사냥꾼
+      - 손목 안쪽의 목장 표식 — 어디서나 가축임이 드러난다
+    presets:
+      - {name: 밤을 건넌 자, traits: [nocturne_thirst], talents: {shadow_step: 1, iron_gut: 1, night_eyes: 1}, stats: {체질: 2, 민첩: 2}}
+      - {name: 늪길의 안내자, traits: [echo_eye], talents: {shadow_step: 2, hunter: 1, iron_gut: 1, pathfinder: 1}, stats: {민첩: 2, 감각: 2}}
+      - {name: 장미의 빚, talents: {tongue: 2, memory_palace: 2, etiquette: 2, false_face: 2}, stats: {지능: 2, 의지: 2}}

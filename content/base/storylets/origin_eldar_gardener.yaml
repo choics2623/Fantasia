@@ -1,0 +1,711 @@
+# O-03 엘다르 정원지기 — 회귀점의 대본 장면과 첫 열흘 (SCENARIOS O-03, creation/origins_eldar_gardener.yaml).
+# origin: 이 출신으로 시작한 판에서만 열리고, 그 판에서만 stage(사람 세우기)가 걸린다. 문법은 greyford_opening.yaml 머리말과 같다.
+#   {name} = 아래 이름 (니나만 안다). 엘다르어는 반쯤 알아들은 대로 쓴다 — 끊긴 자리는 '…'.
+#
+# 흐름
+#   o3_dawn_open (06:00 첫 아침의 나무 아래, 아래 이름) → o3_dawn_verse (잔향의 각성 · 일곱 선택)
+#   o3_pavilion        안쪽 정원(영혼 정원)의 피험자 정자 — 니나를 따라가거나 걸어서 닿으면 (1일~4일 아침)
+#   o3_measure_day     낙엽월 4일 무게를 재는 날 — 은 수반 앞에 네가 먼저 서기로 했다면 (o3_measure_me)
+#   o3_nina_back_*     4일 저녁 니나가 돌아온다 — 네 아래 이름을 쥐고 왔는가 (o3_nina_kept) / 잃고 왔는가
+#   o3_stopped(_ledger) 어긋남이 셋이면 수호자 에를란의 정지 — 두 번째 정지면 미리엘의 장부에 '이송'
+#   o3_transfer        '이송'이 장부에 오르면 저녁 점호에서 페른이 쪽지를 읽는다 — 아래 문, 북문, 또는 흰 침상
+# 장부의 셈: o3_offbeat (점호·저녁 점호·통금·낮일을 어기면 +1 — duty가 센다), 셋이면 정지.
+# 니나의 사흘 (낙엽월 1일 06:12 ~ 4일 저녁)은 모든 판에서 같다 (stage). 플레이어가 바꾸는 것은 그녀가 무엇을 쥐고 돌아오는가다.
+storylets:
+  # ───────────────────────── 회귀점 ─────────────────────────
+  - id: o3_dawn_open
+    origin: eldar_gardener
+    trigger: {start: true}
+    stage:
+      - {npc: npc_aerin, at: eg_first_tree, from: "06:00", to: "06:20", doing: 무릎 꿇은 줄을 따라 걷다가 멈춘다 — 손톱 밑이 흙으로 검다}
+      - {npc: npc_fionael, at: eg_first_tree, from: "06:00", to: "06:20", doing: 정원사 뒤에 서서 공기의 냄새를 맡는다}
+      - {npc: npc_o3_nina, at: eg_first_tree, from: "06:00", to: "06:12", doing: 무릎을 펴고 일어선다 — 머리에서 은 핀을 뽑는다}
+      - {npc: npc_o3_nina, at: soul_garden__patient_pavilion, from: "06:12", to: "312-09-04 08:00", doing: 흰 침상에 앉아 있다 — 맑은 아이들 사이에서 무게를 재는 날을 기다린다}
+      - {npc: npc_loren, at: eg_first_tree, from: "06:00", to: "06:25", doing: 무릎을 펴며 입술만 움직여 아이들의 수를 센다}
+      - {npc: npc_wren, at: eg_first_tree, from: "06:00", to: "06:15", doing: 어른 곁에 무릎 꿇은 채 위를 올려다본다}
+      - {npc: npc_erlan, at: eg_first_tree, from: "06:00", to: "06:30", doing: 뿌리 곁에 서서 내려가는 정원지기들의 걸음을 본다}
+    text: |
+      은목 이슬 냄새. 노래의 마지막 음이 아직 가지 사이에 걸려 있다.
+
+      첫 아침의 나무 뿌리 아래, 무릎 꿇는 자리. 이슬 우리의 정원지기들이 줄지어 엎드려 있다. 엘다르의 노래는 끝나도 한참 끝나지 않는다 — 음 하나가 은목 꼭대기까지 올라가 오래 맴돌다가, 이슬이 되어 떨어진다. 이슬은 어제와 같은 잎에 맺힌다. 그제와도. 열두 해 동안 한 번도 다른 잎에 맺힌 적이 없다. 경계 밖은 사흘째 비라고 했다. 비는 여기까지 오지 않는다.
+
+      너는 입술만 움직여 노래를 따라 했다. 소리는 내지 않는다. 뜻은 모른다. 뜻을 아는 것은 금지다 — 정원지기는 듣기만 한다. 왼쪽 발목에서 금방울이 한 번, 바람에 운다.
+
+      마지막 음이 떨어지자 테라스 쪽에서 엘다르 하나가 내려온다. 손톱 밑이 흙으로 검은 엘다르. 이슬 우리 사람들은 그를 정원사라 부른다. 그가 무릎 꿇은 줄을 따라 걷다가, 네 옆에서 멈춘다. 네 어깨에서 먼지를 턴다. 먼지는 없었다.
+
+      "셋째 단, 일곱째 새싹." 다정한 목소리다. 숫자가 정확하다. "이리 와요. 햇빛 쪽으로."
+
+      네 옆에서 — 일곱째 자리에서 — 니나가 일어선다. 일어서며 머리에서 은 핀을 뽑는다. 틀어 올린 머리가 등으로 쏟아진다. 핀이 네 손바닥에 들어온다. 차갑다. 그녀가 허리를 굽히는 척, 네 귀에 숨을 댄다. 아무도 못 듣게.
+    input: true_name
+    input_label: 니나만 아는 아래 이름
+    input_button: 그 이름을 듣는다
+    input_say: 니나가 숨으로만 부르는 이름
+    input_sibling: false
+    return_text: "나는 — 이 음을 안다."
+    return_heavy: {4: "은목 이슬 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 은목 이슬 냄새."}
+    trace_lines:
+      water: 무릎 밑의 이슬이 목으로 차오른다. 목 안에 물이 있다. 없다. 이슬은 무릎 밑에만 있다.
+      teeth: 목덜미가 가렵다. 긁으면 손톱 밑에 은목 이끼뿐이다.
+      spear: 옆구리가 시리다. 뿌리에 기댄 쪽이다. 뿌리에 기댄 쪽일 것이다.
+      blade: 목이 뜨겁다. 허리의 전지가위는 제자리에 있다.
+      rope: 손목이 쓸린다. 발목도. 방울 고리 자국이다.
+      hunger: 배가 꼬인다. 아니다 — 이 정원에서는 아무도 굶지 않는다.
+      fall: 발밑이 꺼지는 것 같다. 마흔한 단의 테라스가 그대로 아래로 흘러내린다. 너는 무릎을 꿇고 있다.
+    return_ink: |
+      ┊ 그 다음엔 니나가 은 핀을 네 손에 쥐여 주고, 정원사를 따라 안개 쪽으로 갔다. 나흘째 저녁에 돌아왔다.
+    after_input: |
+      "{name}."
+
+      그 이름을 아는 사람은 이 정원에 하나뿐이다. 열한 살 여름 — 정원에는 여름이 없으니 이름만 여름인 어느 저녁 — 목욕 연못에서 둘은 아래 이름을 바꿔 말했다. 정원지기는 아래 이름을 한 사람에게만 준다. 이름을 아는 자가 너를 가진다.
+
+      니나가 몸을 편다. 손톱으로 네 손등을 두 번 두드린다. 괜찮아. 그리고 정원사 쪽으로 걸어간다. 정원사가 그녀의 어깨를 털고, 햇빛 쪽으로 돌려세운다. 화분을 옮기듯이.
+    effects: ["item o3_silver_pin", "var o3_nina_known = true", "note 아래 이름 — {name}. 정원에서 그 이름을 아는 사람은 니나 하나다. 엘다르의 장부에는 번호, 이슬 우리에서는 '방울'", "note 소매 단에 말린 기억꽃 한 송이 — 은방울 뜰 구석에서 몰래 말린 것"]
+    next: o3_dawn_verse
+
+  - id: o3_dawn_verse
+    origin: eldar_gardener
+    text: |
+      니나의 방울 소리가 멀어진다. 테라스로 내려가지 않는다 — 북서쪽, 은목 숲에 안개가 고인 쪽으로. 이슬 우리 어른들이 '아픈 곳'이라 부르는 쪽. 안쪽 정원.
+
+      정원사 뒤에 섰던 젊은 엘다르가 돌아서서 그와 낮게 말한다. 눈 밑이 푸르다. 엘다르어다. 너는 그 말의 절반을 알아듣는다 — 열두 해 동안 듣기만 한 귀가 주워 모은 절반.
+
+      "…수반이… 셋째 단 쪽으로… 또 울었어요…"
+
+      "그래서 맑은 아이부터… 잔향의 무게를… 다시 재야지요. 사흘 뒤…"
+
+      "…이 아이는 꿈이 젖지 않았어요."
+
+      "재 보면 알아요." 정원사의 목소리는 여전히 다정하다. "재 보면 다 알아요."
+
+      로렌이 무릎을 편다. 이슬 우리 반장은 네 쪽을 보지 않는다. 엘다르가 곁에 있을 때 그는 아무도 보지 않는다. 입술만 움직여 센다. 열둘. 하나가 빈 열둘. 뿌리 곁에서는 수호자 에를란이 손가락 하나를 반쯤 든 채, 내려가는 정원지기들의 걸음을 본다.
+
+      니나가 안개 쪽으로 멀어지는 동안, 방금 끝난 노래의 한 구절이 갑자기 뜻으로 바뀐다. '…마지막 말이 모든 이름을 말하는 날…' 반쯤만 알던 말이 그 구절만은 다 들린다. 너는 이 노래를 엘다르보다 먼저 들었다. 그들이 그것을 처음 부른 밤, 너는 죽어 가는 목소리 속에 있었다. 눈가로 잿빛 고리가 스치고 사라진다. 안개 쪽 아주 먼 데서 — 들릴 리 없는 거리에서 — 은 수반 하나가, 아무도 건드리지 않았는데, 한 번 운다.
+    effects: ["learn fact_o3_first_verse", "var o3_elvish += 5", "note 니나 — 정원사가 안쪽 정원으로 데려갔다. '사흘 뒤, 잔향의 무게를 다시 잰다'", "note 첫 아침의 노래 — '…마지막 말이 모든 이름을 말하는 날…' 그 구절만은 다 들렸다"]
+    choices:
+      - id: follow
+        label: 방울을 손으로 감싸 쥐고 — 니나를 따라 안개 길로 들어간다
+        minutes: 90
+        risk: 금방울이 운다
+        check: {skill: 은신, D: 30, D_per_loop: 2, helps: [shadow_step, fleet], warn: ["var o3_bell_muffled == true"]}
+        success:
+          text: |
+            엘다르 둘의 등 뒤 열 걸음. 방울은 손바닥 안에서 땀에 젖어 운다 — 아주 작게. 숲길에 들어서자 은목들이 접힌 천처럼 겹쳐 지나간다. 몇 걸음에 한 마장이 접힌다. 엘다르가 지나간 자리라서. 그 자리를 놓치지 않으려고 너는 그들의 발자국만 밟는다.
+
+            안개가 걷히자 유리 지붕들이 나타난다.
+          effects: ["learn fact_o3_fold_path", "var o3_followed = true", "goto soul_garden__patient_pavilion"]
+        failure:
+          text: |
+            숲길 초입에서 방울이 운다. 한 번. 손바닥 안에서였는데도.
+
+            정원사가 돌아본다. 놀라지 않는다. 화단에서 늘 보던 새싹을 보는 얼굴이다. "따라오고 싶었어요?" 그가 네 어깨의 먼지를 턴다. 이번에도 먼지는 없다. "좋아요. 무게를 재는 날 — 당신도 와요. 나흘째 아침에. 둘이 서면 바늘이 덜 외롭겠지요."
+
+            젊은 엘다르가 너를 숲 가장자리까지 데려다 놓는다. 한마디도 하지 않는다. 다만 돌아서기 전에, 네 머리카락 냄새를 한 번 맡는다.
+          effects: ["var o3_measure_me = true", "var o3_aerin_noticed = true", "learn fact_o3_measure_day", "memory npc_aerin 이상함 셋째 단의 여덟째 새싹이 안개 길을 따라왔다 — 잘 자랄 것 같다", "memory npc_fionael 이상함 방울을 단 정원지기가 안개 길을 따라왔다", "goto eg_white_fence", "stress 8"]
+      - id: ask_instead
+        label: '정원사 앞에 엎드린다 — "일곱째 대신 여덟째를 데려가십시오."'
+        minutes: 10
+        check: {skill: 화술, D: 30, helps: [etiquette, tongue, charm]}
+        success:
+          text: |
+            정원사가 너를 내려다본다. 오래. 엘다르의 '오래'다 — 이슬 하나가 잎 끝에서 떨어질 만큼.
+
+            "새싹이 스스로 오겠다고 한 건 처음이군요." 그의 손가락이 네 턱을 들어 햇빛 쪽으로 돌린다. 흙 냄새가 난다. "그 아이는 벌써 화분을 옮겼어요. 대신 이렇게 하지요 — 나흘째 아침, 무게를 재는 날, 당신이 먼저 서요. 당신에게 무게가 있으면 그 아이는 잴 필요가 없지요. 없으면…" 말끝이 다정하게 내려간다. "둘 다 재고요."
+
+            니나가 안개 쪽에서 한 번 돌아본다. 고개를 젓는다. 아주 천천히.
+          effects: ["var o3_measure_me = true", "learn fact_o3_measure_day", "rel npc_aerin like 10", "memory npc_aerin 이상함 셋째 단의 여덟째 새싹이 스스로 오겠다고 했다 — 처음 있는 일", "rel npc_o3_nina trust 5", "note 정원사와 정했다 — 낙엽월 4일 무게를 재는 날, 내가 먼저 은 수반 앞에 선다. 무게가 있으면 니나는 재지 않는다", "temper 용기 4", "temper 자비 3"]
+        failure:
+          text: |
+            정원사는 대답하지 않는다. 대신 뿌리 곁의 수호자를 본다. 에를란의 손가락이 반쯤 올라간다.
+
+            "정원지기는 묻지 않아요." 정원사가 말한다. 다정하게. "묻는 건 자라는 게 아니라 — 웃자라는 거지요." 그는 니나를 데리고 간다. 돌아보지 않는다.
+
+            무례는 굶주림으로 갚는다 — 엘다르는 그렇게 가르친다. 오늘 아침 네 몫의 흰 빵은 식당 선반에 놓이지 않는다.
+          effects: ["hunger 1", "var o3_offbeat += 1", "memory npc_aerin 이상함 여덟째 새싹이 엘다르에게 먼저 말을 걸었다", "memory npc_erlan 위험함 방울을 단 정원지기가 정원사에게 청을 넣었다", "stress 6"]
+      - id: ask_loren
+        label: 무릎을 펴는 로렌 곁으로 — 안쪽 정원을 낮게 묻는다
+        minutes: 20
+        check: {skill: 통찰, D: 18, helps: [liar_nose, people_memory]}
+        success:
+          text: |
+            로렌은 대답하지 않는다. 엘다르가 아직 뿌리 곁에 있다. 그는 이슬 단지를 들고 테라스로 내려가다가, 네가 따라오는 걸음에 맞춰 걸음을 늦춘다. 아래 단에 닿아서야 입을 연다. 단지만 보면서.
+
+            "돌아온 아이들은 음이 비어서 와." 숨을 한 번 멈춘다. "얼굴도 손도 그대로야. 밥도 먹고 웃기도 하고. 그런데 노래를 맞춰 보면 — 제 음 자리가 비어 있어. 나는 사람을 음으로 세니까 알지."
+
+            그가 단지를 내려놓는다. "온실에 네 번 눕고도 아직 거기 있는 여자가 있다지. 미라. 들은 얘기다." 그리고 아주 낮게 덧붙인다. "세 번 어긋나지 마라. 정지 두 번이면 장부의 다른 칸이다."
+          effects: ["learn fact_o3_returned_no_pitch", "rel npc_loren trust 6", "rel npc_loren like 3", "goto eg_terraces_lower", "note 로렌 — 안쪽 정원에서 돌아온 아이들은 음이 비어서 온다. 온실에 네 번 누운 여자, 미라"]
+        failure:
+          text: |
+            로렌은 이슬 단지를 들어 올린다. "예. 이슬은 오늘도 단지 열둘입니다." 엘다르 쪽을 향해 하는 말이다. 너에게가 아니라.
+
+            그는 네 얼굴을 한 번도 보지 않고 테라스로 내려간다. 걸음이 평소보다 빠르다.
+          effects: ["rel npc_loren trust -2", "goto eg_terraces_lower"]
+      - id: eavesdrop
+        label: 고개를 숙인 채 — 엘다르의 말을 끝까지 듣는다
+        minutes: 15
+        check: {skill: 통찰, D: 30, helps: [bat_ear, memory_palace, tongues], warn: ["var o3_elvish >= 35"]}
+        success:
+          text: |
+            너는 이슬 맺힌 뿌리만 본다. 귀는 두 엘다르 쪽에 둔다. 말이 끊긴 자리를, 끊긴 자리 그대로 외운다.
+
+            "…낙엽월 나흘째 아침… 수정 기둥 사이에서… 맑은 아이들을 차례로…"
+
+            "…평범한 아이는 무게가 없어요. 바늘이 움직이지 않으면… 그냥 돌려보내요. 조금 덜어 낸 채로."
+
+            "우리가 찾는 건 사람이 아니에요." 정원사의 목소리. "사람 안에서… 끝나지 않는 것. 그것만 옮기면 돼요."
+
+            옮긴다. 그 낱말을 너는 안다. 화분을 옮길 때 엘다르가 쓰는 말이다.
+          effects: ["learn fact_o3_measure_day", "learn fact_o3_unending", "var o3_elvish += 3", "note 엿들은 말 — 낙엽월 4일 아침, 수정 기둥 사이에서 맑은 아이들을 잰다. 무게 없는 아이는 '조금 덜어 낸 채로' 돌려보낸다"]
+        failure:
+          text: |
+            젊은 엘다르의 말이 뚝 멎는다. 그녀가 너를 본다. 고개 숙인 정원지기들 가운데서, 정확히 너를.
+
+            "정원지기는 듣기만 하지요." 그녀가 공용어로 말한다. 부드럽게. "그런데 — 듣고 있었군요."
+
+            뿌리 곁에서 에를란의 손가락이 끝까지 올라간다. "움직임이 어긋났소."
+          effects: ["var o3_offbeat = 3", "memory npc_fionael 이상함 방울을 단 정원지기가 엘다르어를 알아듣는 얼굴로 들었다", "memory npc_erlan 위험함 방울을 단 정원지기가 엘다르의 말을 엿들었다"]
+      - id: muffle
+        label: 무릎 밑의 젖은 흙을 떠 — 금방울 속을 몰래 메운다
+        minutes: 20
+        check: {skill: 손재주, D: 26, helps: [lock_hands, smuggler]}
+        success:
+          text: |
+            엎드린 채 손가락으로 흙을 뭉친다. 은목 뿌리 밑의 흙은 끈기가 있다. 방울 구멍에 조금씩 밀어 넣는다. 방울의 혀가 흙에 묻힌다.
+
+            일어서서 한 걸음. 소리가 없다. 두 걸음. 없다. 열두 해 만에 처음으로, 네 발목이 조용하다.
+
+            흙은 마르면 갈라진다. 밤마다 다시 메워야 한다. 그리고 수호자는 소리를 세는 귀를 가졌다 — 들리던 것이 안 들리는 것도 소리다.
+          effects: ["var o3_bell_muffled = true", "note 금방울을 흙으로 메웠다 — 울지 않는다. 마르기 전에 밤마다 다시 메운다", "temper 용기 2"]
+        failure:
+          text: |
+            흙덩이 속의 돌이 방울 안에서 구른다. 방울이 깨진 소리로 운다 — 평소보다 크게, 평소보다 오래. 무릎 꿇은 줄 전체가 그 소리에 굳는다.
+
+            에를란이 너를 본다. 손가락 하나가 올라간다. 내려오지 않는다. "방울은 우는 물건이오." 그가 말한다. 그 말을 기억해 두라는 듯이.
+          effects: ["var o3_offbeat += 1", "memory npc_erlan 위험함 방울을 단 정원지기가 방울을 흙으로 막으려 했다", "stress 5"]
+      - id: kneel
+        label: 그대로 무릎을 꿇고 — 노래의 남은 음이 다 떨어질 때까지 입술만 움직인다
+        minutes: 30
+        text: |
+          정원지기는 묻지 않는다. 정원지기는 따라가지 않는다. 너는 이슬이 마지막 잎 끝에서 떨어질 때까지 무릎을 꿇고 있다. 니나의 방울 소리가 안개 속으로 줄어든다. 하나. 하나. 그리고 없다.
+
+          로렌이 지나가며 네 어깨를 아주 잠깐 짚는다. 잘했다는 뜻인지, 그렇게 하라는 뜻인지, 너는 모른다. 손바닥 안에서 은 핀이 체온만큼 데워진다.
+        effects: ["temper 신앙 5", "temper 충성 5", "stress 8", "rel npc_loren trust 3", "var o3_obeyed = true"]
+      # ── ◈ 기억 선택지: 지난 회차에 은 수반이 무엇을 가져가는지 알았다면 ──
+      - id: mem_flower
+        needs_memory: fact:fact_o3_measure_takes
+        label: '일어선다 — 소매 단을 이로 뜯어, 니나의 손에 말린 기억꽃을 쥐여 준다. "바늘 앞에서, 혀 밑에."'
+        minutes: 3
+        text: |
+          너는 일어선다. 세 걸음. 엘다르 앞에서 정원지기가 일어서는 것은 어긋남이다 — 그래도. 소매 단의 실을 이로 끊는다. 니나의 손을 잡는 척, 말린 꽃 한 송이가 그녀의 손바닥으로 옮겨 간다. 그녀의 손가락이 그것을 감싼다. 묻지 않는다.
+
+          "바늘 앞에서. 혀 밑에." 입술만 움직인다. 니나의 눈이 한 번 커졌다가 — 네 얼굴에서 무언가를 읽는다. 무엇을 읽었는지 너는 모른다. 그녀는 고개를 아주 작게 끄덕이고, 안개 쪽으로 걸어간다.
+
+          정원사 뒤의 젊은 엘다르가 공기의 냄새를 맡는다. 한 번. 비 냄새를 맡은 사람처럼. 뿌리 곁에서 에를란의 손가락이 반쯤 올라간다.
+        effects: ["var o3_flower = 0", "var o3_nina_kept = true", "var o3_nina_flower = true", "var o3_offbeat += 1", "var o3_fionael_knows = true", "bond npc_o3_nina 6", "rel npc_o3_nina trust 8", "memory npc_o3_nina 다정함 방울이 말린 기억꽃을 쥐여 주었다 — 바늘 앞에서 혀 밑에 물라고", "memory npc_fionael 이상함 방울을 단 정원지기에게서 비에 젖은 재 냄새가 났다", "note 기억꽃은 니나에게 — 나에게는 이제 없다"]
+
+  # ───────────────────────── 안쪽 정원 (1일 ~ 4일 아침) ─────────────────────────
+  - id: o3_pavilion
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-01 06:00", to: "312-09-04 07:30"}, at: [soul_garden, soul_garden__patient_pavilion, soul_garden__graft_beds, soul_garden__crystal_columns, soul_garden__greenhouse_2, soul_garden__greenhouse_3, soul_garden__greenhouse_7], when: ["not var o3_escaped == true"]}
+    text: |
+      유리 온실들. 안개가 유리에 맺혀 흘러내리고, 그 안에서 무언가가 자란다. 꽃이 아니다.
+
+      온실 사이 빈터에 수정 기둥이 둥글게 서 있다. 가운데에 은 수반 하나. 물이 담겨 있지 않다. 바닥 위에 바늘 하나가 떠 있다 — 아무것도 받치지 않는데. 기둥들이 아주 낮게, 귀가 아닌 데로 운다.
+
+      그 곁의 정자. 흰 침상들이 줄지어 있고, 누운 사람들의 얼굴이 평온하다. 너무 평온하다. 감은 눈꺼풀 밑에서 눈동자가 빠르게 움직인다. 꿈을 꾸는 것처럼. 아니면 무언가가 꿈을 꺼내 가는 것처럼.
+
+      입구 쪽 침상에 니나가 앉아 있다. 머리에 핀이 없다. 너를 본다. 놀라지 않는다. 고개를 아주 천천히 젓는다 — 돌아가.
+    effects: ["goto soul_garden__patient_pavilion"]
+    choices:
+      - id: flower
+        when: ["var o3_flower >= 1"]
+        label: 소매 단을 이로 뜯어 — 말린 기억꽃을 니나의 손바닥에 옮긴다
+        minutes: 150
+        text: |
+          니나 곁에 무릎을 꿇는다. 소매 단의 실을 이로 끊는다. 말린 꽃 한 송이 — 은방울 뜰 구석에서 너 혼자 말린 것, 네가 불려 가는 날을 위해 말린 것. 그것이 니나의 손바닥으로 옮겨 간다.
+
+          "바늘 앞에서. 혀 밑에." 니나가 꽃을 쥔다. 입술만 움직여 대답한다. 나흘째. 수반. 그리고 네 손등을 두 번 두드린다. 괜찮아. 이번에는 네가 그 말을 믿지 않는다는 것을 그녀도 안다.
+
+          정원 쪽으로 돌아가는 엘다르의 발소리. 너는 그 뒤에 바짝 붙는다. 접힌 길이 닫히기 전에.
+        effects: ["var o3_flower = 0", "var o3_nina_kept = true", "var o3_nina_flower = true", "bond npc_o3_nina 8", "rel npc_o3_nina trust 8", "memory npc_o3_nina 다정함 방울이 흰 방까지 와서 기억꽃을 쥐여 주었다", "learn fact_o3_measure_day", "goto eg_white_fence", "note 기억꽃은 니나에게 — 나에게는 이제 없다. 니나 — '나흘째, 수반'"]
+      - id: mira
+        when: ["with npc_mira"]
+        label: 손가락 마디를 하나씩 누르며 무언가를 세는 여자 곁으로 간다
+        minutes: 150
+        check: {skill: 화술, D: 22, helps: [tongue, charm]}
+        success:
+          text: |
+            왼눈이 흐린 여자다. 손바닥으로 그 눈을 반쯤 가리고 너를 본다. "…새 얼굴이네요. 온실은 처음이죠?" 그녀가 손가락 마디를 누른다. 하나, 둘, 셋. "잊기 전에 말할게요. 다섯 번째가 돌아와요. 서리월 구 일이요. 그 날짜를 아직 안 잊었는데 — 그게 제일 무서워요."
+
+            그녀가 네 소매를 잡는다. "당신도 하나만 외워 줄래요? 제 이름 정도만. 미라예요." 그리고 같은 말을 한 번 더 한다. 처음 하는 말처럼.
+
+            정원 쪽으로 돌아가는 엘다르의 발소리. 너는 접힌 길 뒤에 바짝 붙는다. 미라의 이름을 입속으로 두 번 외우면서.
+          effects: ["learn fact_sv_mira_fifth_ritual", "var o3_mira_known = true", "rel npc_mira trust 10", "rel npc_mira like 6", "memory npc_mira 다정함 방울을 단 정원지기가 내 이름을 외워 주겠다고 했다", "goto eg_white_fence", "note 미라 — 온실의 정원지기. 서리월 9일, 다섯 번째 옮김 의식. 이름을 외워 달라고 했다"]
+        failure:
+          text: |
+            여자가 너를 본다. 손가락 마디를 누른다. "…제가 뭘 말하려 했죠?" 그리고 처음부터 다시 센다. 하나, 둘. 너는 거기 없는 사람이 된다.
+
+            정원 쪽으로 돌아가는 엘다르의 발소리. 너는 접힌 길 뒤에 바짝 붙는다.
+          effects: ["stress 5", "goto eg_white_fence"]
+      - id: basin
+        label: 수정 기둥 사이로 — 물 없는 은 수반 가장자리에 손끝을 댄다
+        minutes: 150
+        risk: 기둥이 운다
+        text: |
+          은이 차다. 손끝이 닿자 — 바늘이 돈다. 천천히, 네 쪽으로. 수면도 없는 수반 위에서, 별을 찾는 바늘처럼.
+
+          수정 기둥들이 한꺼번에 낮게 운다. 귀가 아닌 데로. 온실 하나의 유리문이 열리는 소리.
+
+          너는 손을 뗀다. 바늘이 제자리로 돌아오기 전에 빈터를 빠져나온다. 정원 쪽으로 돌아가는 엘다르의 발소리 — 그 접힌 길 뒤에 바짝 붙는다. 등 뒤에서 누군가 공기의 냄새를 맡는 숨소리가 들린다. 비 냄새를 맡은 사람처럼.
+        effects: ["learn fact_o3_needle_turns", "memory npc_fionael 이상함 한낮에 수정 기둥이 혼자 울었다 — 젖은 재 냄새가 났다", "stress 8", "goto eg_white_fence", "note 은 수반 — 내가 손을 대자 바늘이 내 쪽으로 돌았다"]
+      - id: stay
+        label: 빈 침상 그늘에 숨어 — 해 질 녘까지 지켜본다
+        minutes: 600
+        risk: 접힌 길이 닫힌다 — 돌아가는 길이 하루가 된다
+        check: {skill: 은신, D: 28, helps: [shadow_step], warn: ["var o3_bell_muffled == true"]}
+        success:
+          text: |
+            빈 침상 밑. 방울을 손바닥으로 감싸고, 숨을 셋으로 나눠 쉰다.
+
+            한낮에 정원사가 침상들을 돈다. 한 사람 한 사람의 어깨를 털고, 햇빛 쪽으로 얼굴을 돌린다. 말을 건다. 다정하게. 니나의 침상에서 그는 오래 멈춘다. "잘 자랄 것 같군요."
+
+            해 질 녘, 그가 젊은 엘다르에게 엘다르어로 말한다. 너는 그 절반을 알아듣는다. "…여든일곱… 전부 방법의 실패였어요… 여든여덟째는…" 젊은 엘다르는 대답하지 않는다. 손톱으로 소매 안의 종이에 무언가를 적는다.
+
+            엘다르들이 떠난 뒤 안개 길로 나서자, 길이 펴져 있다. 접힌 자리가 없다. 은목이 끝없이 이어진다.
+
+            은방울 뜰에서는 오늘 하루 네 방울이 울지 않았다. 창가의 엘다르 누군가가 빈 화단을 세었을 것이다.
+          effects: ["learn fact_sv_aerin_87_failures", "learn fact_o3_measure_day", "learn fact_o3_fold_path", "var o3_offbeat += 1", "stress 10", "note 정원사 — '여든일곱, 전부 방법의 실패.' 니나의 침상 앞에서 '잘 자랄 것 같군요'", "note 안개 길이 펴졌다 — 혼자서는 하루 길이다. 은방울 뜰의 내 화단은 하루 비었다"]
+        failure:
+          text: |
+            침상 밑으로 들어가는 순간 방울이 운다. 정자 안의 누구도 깨지 않는다. 깨어 있는 사람만 고개를 든다.
+
+            젊은 엘다르가 침상 앞에 쪼그려 앉는다. 눈 밑이 푸르다. 그녀가 네 냄새를 맡는다. 오래. 그러고는 아무에게도 아무 말 없이, 너를 안개 길 입구까지 데려다 놓는다. 돌아서기 전에 한 마디. "나흘째 아침에 — 당신도 오게 될 거예요."
+
+            너는 해가 기울 때까지 숲 가장자리에 앉아 있다. 다리가 움직이지 않아서.
+          effects: ["var o3_measure_me = true", "learn fact_o3_measure_day", "memory npc_fionael 이상함 피험자 정자에 숨어든 정원지기 — 걸음이 꿈속의 사람과 같다", "goto eg_white_fence", "stress 8"]
+      - id: back
+        label: 니나의 눈을 따른다 — 접힌 길이 닫히기 전에 돌아간다
+        minutes: 120
+        text: |
+          니나의 입술이 움직인다. 소리 없이. 나흘째. 수반. 그리고 — 가.
+
+          너는 간다. 정원 쪽으로 돌아가는 엘다르의 발소리 뒤에 바짝 붙어서. 은목이 접힌 천처럼 겹쳐 지나간다. 방울이 손바닥 안에서 한 번도 울지 않는다. 울면 안 된다는 것을 방울도 아는 것처럼.
+        effects: ["learn fact_o3_measure_day", "rel npc_o3_nina trust 4", "goto eg_white_fence", "note 니나 — 피험자 정자의 흰 침상. '나흘째, 수반'"]
+
+  # ───────────────────────── 무게를 재는 날 (4일 아침) ─────────────────────────
+  - id: o3_measure_day
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-04 08:00", to: "312-09-04 11:30"}, at: "@eternal_garden", when: ["var o3_measure_me == true", "not var o3_escaped == true"]}
+    stage:
+      - {npc: npc_aerin, at: soul_garden__crystal_columns, from: "312-09-04 08:00", to: "312-09-04 12:00", doing: 은 수반 곁에서 바늘을 들여다본다 — 다정하게}
+      - {npc: npc_fionael, at: soul_garden__crystal_columns, from: "312-09-04 08:00", to: "312-09-04 12:00", doing: 수정 기둥 사이에 서서 숨을 참는다}
+      - {npc: npc_o3_nina, at: soul_garden__crystal_columns, from: "312-09-04 08:00", to: "312-09-04 12:00", doing: "은 수반 곁에 선다 — 흰 옷, 핀 없는 머리"}
+    text: |
+      정원사 곁에 서던 젊은 엘다르가 너를 찾아왔다. 눈 밑이 푸르다. 그녀가 네 냄새를 맡는다. 아주 잠깐. "오늘이에요, 새싹."
+
+      그녀와 함께 걸으면 안개 길은 짧다. 은목 숲이 접힌 천처럼 겹쳐 지나가고, 유리 온실들이 나타난다. 수정 기둥 사이, 물 없는 은 수반. 바닥 위에 바늘 하나가 떠 있다.
+
+      니나가 수반 곁에 서 있다. 흰 옷. 머리에 핀이 없다. 너를 보고 — 웃지 않는다. 웃으면 안 되는 자리라는 것을 니나는 안다.
+
+      정원사가 네 어깨의 먼지를 턴다. 햇빛 쪽으로 세운다. 수반 앞으로. "당신이 먼저 서요. 무게가 있으면 — 그 아이는 잴 필요가 없지요. 없으면, 둘 다 재고요." 그가 웃는다. "어느 쪽이 더 슬플까요?"
+    effects: ["goto soul_garden__crystal_columns", "learn fact_o3_measure_day"]
+    choices:
+      - id: stand
+        label: 수반 앞에 그대로 선다
+        minutes: 120
+        text: |
+          발을 딛는다. 방울이 한 번 운다.
+
+          바늘이 돈다. 천천히 — 그리고 멈추지 않는다. 수정 기둥들이 한꺼번에 낮게 운다. 귀가 아닌 데로. 젊은 엘다르의 손이 입으로 올라간다.
+
+          정원사는 아무 말도 하지 않는다. 오래. 그러다 숫자를 하나 말한다. "여든여덟." 그 다음 말은 엘다르어다. 너는 그 절반을 알아듣는다. "…여든일곱 번… 모두 방법의 실패였어요… 이번에는…"
+
+          그가 니나를 돌아본다. 다 자란 화분을 보듯이. "그 아이는 저녁에 돌려보내요. 이제 잴 필요가 없으니까." 그리고 너에게 — 다정하게. "당신은 오늘 돌아가요. 장부에 옮겨 쓰는 데 하루가 걸리거든요."
+
+          니나는 수반 곁에 남는다. 네가 접힌 길로 들어설 때, 그녀가 손등을 두 번 두드리는 시늉을 한다. 허공에. 이번에는 네가 괜찮지 않다는 것을 둘 다 안다.
+        effects: ["var o3_carrier_known = true", "var o3_transfer_due = true", "var o3_nina_kept = true", "var o3_measured = true", "learn fact_sv_aerin_87_failures", "learn fact_o3_needle_turns", "rel npc_aerin like 20", "memory npc_aerin 이상함 여든여덟째 — 바늘이 움직였다. 셋째 단의 방울을 단 새싹", "memory npc_fionael 이상함 꿈속의 사람이 수반 앞에 섰다 — 바늘이 돌았다", "bond npc_o3_nina 10", "rel npc_o3_nina trust 10", "stress 12", "temper 자비 5", "temper 용기 5", "goto eg_white_fence", "note 은 수반의 바늘이 내 앞에서 돌았다. 정원사 — '여든여덟.' 니나는 재지 않는다", "note 정원사 — '장부에 옮겨 쓰는 데 하루.' 이송"]
+      - id: flower
+        when: ["var o3_flower >= 1"]
+        label: 소매 단을 이로 뜯어 — 말린 기억꽃을 혀 밑에 물고 선다
+        minutes: 120
+        check: {skill: 통찰, D: 30, helps: [herbalist, medic, iron_gut]}
+        success:
+          text: |
+            쓰다. 혀 밑에서 마른 꽃잎이 녹으며 머릿속에 안개가 낀다. 수반 앞에 선다. 방울이 운다 — 아주 멀리서 우는 것처럼.
+
+            바늘이 떤다. 돈다 — 돌려다가, 흐려진다. 수면 없는 수반에 김이 서린 것처럼. 바늘이 제자리로 돌아온다.
+
+            "…무게 없음." 젊은 엘다르의 목소리. 그녀가 너를 오래 본다. 냄새를 맡는다. 아무 말도 하지 않는다.
+
+            정원사의 미소가 한 박자 늦게 돌아온다. "아쉽군요. 잘 자랄 것 같았는데." 그가 니나 쪽으로 손을 편다. "그럼 — 그 아이를."
+
+            니나가 수반 앞에 선다. 바늘은 움직이지 않는다. 그녀의 눈꺼풀이 한 번, 아주 길게 감겼다가 뜨인다. 그게 전부다. 너는 그날 내내, 방금 무엇을 보았는지 자꾸 처음부터 다시 떠올린다.
+          effects: ["var o3_flower = 0", "var o3_weightless = true", "var o3_measured = true", "stress 15", "fatigue 25", "rel npc_aerin like -5", "memory npc_fionael 이상함 '무게 없음' — 그런데 냄새가 꿈속의 사람과 같았다", "goto eg_white_fence", "note 기억꽃 — 바늘이 흐려졌다. '무게 없음.' 니나는 내 다음에 섰다", "note 하루 동안 머릿속이 안개 같다"]
+        failure:
+          text: |
+            꽃잎이 목에 걸린다. 기침이 터진다 — 수반 앞에서. 쓴 즙이 머리로 오르고, 세상이 기울고, 너는 수반 가장자리를 짚는다.
+
+            바늘이 돈다. 흐려지지 않는다. 수정 기둥들이 한꺼번에 운다.
+
+            "여든여덟." 정원사가 말한다. 기침하는 새싹의 등을 다정하게 쓸어 준다. "쓴 걸 먹었군요. 괜찮아요. 자라는 건 원래 조금 써요." 그가 니나를 돌아본다. "그 아이는 저녁에 돌려보내요."
+          effects: ["var o3_flower = 0", "var o3_carrier_known = true", "var o3_transfer_due = true", "var o3_nina_kept = true", "var o3_measured = true", "learn fact_o3_needle_turns", "stress 15", "fatigue 25", "memory npc_aerin 이상함 여든여덟째 — 쓴 꽃을 물고도 바늘이 움직였다", "goto eg_white_fence", "note 기억꽃도 소용없었다 — 바늘이 내 앞에서 돌았다. 니나는 재지 않는다", "note 정원사 — '장부에 옮겨 쓰는 데 하루.' 이송"]
+      - id: step_back
+        label: '한 걸음 물러선다 — "저는… 오늘 무게가 없을 겁니다."'
+        minutes: 120
+        text: |
+          정원사가 고개를 갸웃한다. "그건 바늘이 정하지요." 그러나 그는 너를 밀지 않는다. 엘다르는 밀지 않는다. 기다릴 뿐이다. 그리고 기다리는 동안 다른 화분을 먼저 옮긴다.
+
+          "그럼 그 아이부터."
+
+          니나가 수반 앞에 선다. 너를 보지 않는다. 바늘은 움직이지 않는다. 그녀의 눈꺼풀이 한 번, 아주 길게 감겼다가 뜨인다. 그게 전부다.
+
+          "다음 바퀴에 와요." 정원사가 네 어깨를 턴다. "자라는 데는 시간이 걸리니까요."
+        effects: ["temper 용기 -6", "temper 자비 -5", "stress 15", "rel npc_o3_nina trust -10", "memory npc_aerin 이상함 스스로 온다던 새싹이 수반 앞에서 물러섰다", "goto eg_white_fence"]
+      # ── ◈ 기억 선택지: 첫 아침의 노래의 그 구절을 지난 회차에도 들었다면 ──
+      - id: mem_verse
+        needs_memory: fact:fact_o3_first_verse
+        label: 수반 앞에서 — 첫 아침의 노래의 다음 구절을 엘다르어로 낮게 부른다
+        minutes: 120
+        check: {skill: 화술, D: 28, helps: [truename_ear, tongue], warn: ["var o3_elvish >= 35"]}
+        success:
+          text: |
+            "…먼저 태어난 자들은 이름을 잃으리라."
+
+            엘다르어다. 정원지기의 입에서 나와서는 안 되는 말. 소리 내어 불러 본 적 없는 구절인데 — 네 목은 그 음을 안다. 그 밤의 음을.
+
+            정원사의 손이 네 어깨에서 떨어진다. 처음으로, 그의 말끝이 다정하게 내려가지 않는다. "그 구절을 —" 그가 멈춘다. 손끝이 옷깃의 마른 들꽃으로 간다. "…오늘은 바늘을 보지 않겠어요." 그가 수반 위에 손바닥을 덮는다. "둘 다 돌아가요."
+
+            젊은 엘다르가 너를 본다. 꿈속에서 본 얼굴을 깨어서 보는 사람의 눈이다.
+          effects: ["var o3_aerin_shaken = true", "var o3_nina_kept = true", "var o3_fionael_knows = true", "memory npc_aerin 이상함 새싹이 첫 아침의 노래 다음 구절을 엘다르어로 불렀다 — 그 음까지", "memory npc_fionael 이상함 꿈속의 사람이 수반 앞에 서 있었다", "goto eg_white_fence", "note 노래의 다음 구절 — 정원사가 수반을 덮었다. 둘 다 돌아왔다. 그는 나를 잊지 않을 것이다"]
+        failure:
+          text: |
+            음이 목에서 걸린다. 반 박자 어긋난 엘다르어가 수정 기둥 사이에 떨어진다.
+
+            정원사가 웃는다. 처음보다 더 다정하게. "누가 가르쳐 줬어요? 정원지기는 듣기만 하는데." 그가 네 어깨를 수반 쪽으로 민다 — 엘다르는 밀지 않는다고들 하는데. "더 궁금해졌어요."
+
+            바늘이 돈다.
+          effects: ["var o3_carrier_known = true", "var o3_transfer_due = true", "var o3_nina_kept = true", "var o3_measured = true", "learn fact_o3_needle_turns", "memory npc_aerin 이상함 여든여덟째 — 엘다르어를 부르는 새싹. 바늘이 움직였다", "stress 12", "goto eg_white_fence", "note 바늘이 내 앞에서 돌았다. 니나는 재지 않는다", "note 정원사 — '장부에 옮겨 쓰는 데 하루.' 이송"]
+
+  # ───────────────────────── 니나가 돌아온다 (4일 저녁 ~) ─────────────────────────
+  - id: o3_nina_back_kept
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-04 16:30", to: "312-09-07 22:00"}, at: [eg_dew_pens, eg_dew_mess, eg_dew_hearth, eg_dew_bath], with: npc_o3_nina, when: ["var o3_nina_kept == true"]}
+    stage:
+      - {npc: npc_o3_nina, at: soul_garden__patient_pavilion, from: "312-09-04 12:00", to: "312-09-04 16:30", doing: 흰 침상에 앉아 손바닥을 오래 들여다본다}
+      - {npc: npc_o3_nina, at: eg_dew_pens, from: "312-09-04 16:30", to: "312-09-04 22:00", doing: 이슬 우리 마당 끝 담 그늘에 앉아 있다 — 누가 불러도 한 박자 늦게 돌아본다}
+    text: |
+      이슬 우리 마당 끝, 담 그늘. 니나가 앉아 있다. 흰 옷이 안개에 젖었다. 머리에 핀이 없다.
+
+      네 방울 소리에 그녀가 돌아본다. 한 박자 늦게. 그리고 웃는다 — 소리 없이. 네 손목을 잡아당겨, 네 귀에 숨을 댄다.
+
+      "{name}."
+
+      그 이름이 아직 그녀 안에 있다. 그녀는 그것을 확인하듯 한 번 더, 입술만으로 부른다. 그리고 손등을 두 번 두드린다. 괜찮아.
+    effects: ["var o3_nina_back = true", "stress -15", "bond npc_o3_nina 5"]
+    choices:
+      - id: hold
+        label: 니나 곁에 앉는다 — 아무 말 없이 손을 잡는다
+        minutes: 60
+        text: |
+          담 그늘이 길어진다. 니나의 손이 차다가, 조금씩 데워진다. 목욕 연못 쪽에서 웃음소리가 났다가 그친다. 둘 다 그쪽을 보지 않는다.
+        effects: ["bond npc_o3_nina 6", "stress -8"]
+      - id: white_room_flower
+        when: ["var o3_nina_flower == true"]
+        label: 흰 방에서 무엇을 보았는지 묻는다
+        minutes: 20
+        text: |
+          "하얘. 다 하얘." 니나가 혀를 내밀어 보인다. 혀 밑이 아직 쓴 물로 누렇다. "네 꽃 — 수반 앞에서 물었어. 바늘 앞에 선 사람들, 다 무언가를 두고 왔어. 손을 펴면 맨 위에 있는 걸 누가 집어 가. 제일 늦게 쥔 거. 나는 꽃이 하도 써서 — 손을 꽉 쥐고 있었어."
+
+          그녀가 주먹을 편다. 손바닥에 손톱자국이 넷.
+        effects: ["learn fact_o3_measure_takes", "rel npc_o3_nina trust 4", "note 니나 — 은 수반은 맨 위에 있는 것, 제일 늦게 쥔 것을 집어 간다. 기억꽃을 물면 덜 빠진다"]
+      - id: white_room_stood
+        when: ["var o3_carrier_known == true", "not var o3_nina_flower == true"]
+        label: 흰 방에서 무엇을 보았는지 묻는다
+        minutes: 20
+        text: |
+          "나는 안 섰어." 니나가 너를 본다. 오래. "네가 섰잖아. 바늘이 — 네 앞에서 돌았어. 나는 봤어." 그녀가 네 손을 잡는다. 세게.
+
+          "다른 아이들은 섰어. 맑은 아이들. 다들 무언가를 두고 왔어 — 손을 펴면 맨 위에 있는 걸 누가 집어 가. 제일 늦게 쥔 거. 정원사는 그걸 '조금 덜어 낸다'고 해."
+        effects: ["learn fact_o3_measure_takes", "rel npc_o3_nina trust 4", "note 니나 — 은 수반은 제일 늦게 쥔 것을 집어 간다. 그리고 바늘은 내 앞에서 돌았다"]
+      - id: white_room_verse
+        when: ["var o3_aerin_shaken == true", "not var o3_nina_flower == true"]
+        label: 흰 방에서 무엇을 보았는지 묻는다
+        minutes: 20
+        text: |
+          "정원사가 수반을 덮었어. 손바닥으로." 니나가 네 입술을 본다. "네가 부른 거 — 그거 엘다르 말이지. 그 사람 손가락이 떨렸어. 엘다르 손가락이 떠는 거 처음 봤어."
+
+          "다른 아이들은 섰어. 다들 무언가를 두고 왔어. 손을 펴면 맨 위에 있는 걸 누가 집어 가. 제일 늦게 쥔 거."
+        effects: ["learn fact_o3_measure_takes", "rel npc_o3_nina trust 4"]
+      - id: ada_door
+        when: ["with npc_ada"]
+        label: 마당 볕의 에이다 할멈에게 — 낮게, '아래 문'을 묻는다
+        minutes: 30
+        check: {skill: 화술, D: 34, helps: [tongue, charm], warn: ["pknows fact_sv_mira_fifth_ritual"]}
+        success:
+          text: |
+            에이다 할멈은 대답 대신 네 입에 흰 빵 한 조각을 넣는다. 질문은 입이 비고 나서. 빵을 다 삼킬 때까지 그녀는 마당만 본다.
+
+            "아래 문이 있어." 목소리가 낮고 퍼진다. "41단 맨 아래. 쇠창살 고리는 안쪽에서 풀려. 문 너머는 계절이 바뀐다." 국자를 쥔 손이 한 번 떨린다. "넘는 순간 등 뒤가 너를 붙잡는대. 흰 빵이, 꿀이. 돌아서고 싶어진대. 돌아서면 안 돼."
+
+            그녀가 무릎을 두 번 친다. 그 말은 여기서 끝났다는 신호다.
+          effects: ["learn fact_p2sv_waterway_three_elders", "rel npc_ada trust 8", "memory npc_ada 다정함 방울에게 아래 문을 알려 주었다 — 아이들을 위해서", "note 에이다 할멈 — 아래 문. 41단 맨 아래, 쇠창살 고리는 안쪽에서 풀린다. 넘을 때 돌아서지 마라"]
+        failure:
+          text: |
+            "아래는 습기가 차." 에이다 할멈이 일어선다. 행주를 귀 뒤에 다시 꽂는다. "습기 찬 데는 가지 마라. 뼈가 상한다."
+
+            그녀는 그 저녁 내내 너에게 빵을 건네지 않는다.
+          effects: ["rel npc_ada trust -3"]
+      - id: tell_ledger
+        when: ["var o3_transfer_due == true"]
+        label: 니나에게 — 장부의 '이송' 칸을 말한다
+        minutes: 20
+        text: |
+          니나는 놀라지 않는다. 바늘이 도는 것을 본 사람이다. 그녀가 네 발목의 방울을 손바닥으로 감싼다. 울지 않게.
+
+          "그럼 오늘 밤이야." 어디로냐고 묻지 않는다. 정원지기는 묻지 않는다. "방울은 네가 끊어. 나는 망을 볼게." 그녀가 웃는다. 소리 없이. "엘다르는 사람보다 방울을 먼저 들어. 그러니까 내 방울을 반대쪽에서 울리면 돼."
+        effects: ["var o3_nina_helps = true", "bond npc_o3_nina 6", "rel npc_o3_nina trust 6"]
+
+  - id: o3_nina_back_lost
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-04 16:30", to: "312-09-07 22:00"}, at: [eg_dew_pens, eg_dew_mess, eg_dew_hearth, eg_dew_bath], with: npc_o3_nina, when: ["not var o3_nina_kept == true"]}
+    text: |
+      이슬 우리 마당 끝, 담 그늘. 니나가 앉아 있다. 흰 옷이 안개에 젖었다. 머리에 핀이 없다.
+
+      네 방울 소리에 그녀가 돌아본다. 한 박자 늦게. 너를 보고 웃는다. 같은 화단, 같은 방울, 열두 해. 그녀는 다 안다 — 네가 가지를 칠 때 왼손을 먼저 쓴다는 것도, 목욕 연못에서 누구보다 오래 숨을 참는다는 것도.
+
+      "왔어?" 그녀가 네 손을 잡는다. 그리고 멈춘다. 입술이 무언가를 부르려다 — 열리지 않는다. 그녀의 눈이 네 얼굴을 더듬는다. 거기 있어야 할 것을 찾는 눈이다.
+
+      "이상하다." 니나가 웃는다. 이번엔 소리가 난다. "네 이름이 — 아래 이름 말이야. 우리 바꿨잖아, 열한 살 때. 그건 기억나는데."
+
+      그녀가 손바닥을 펴 본다. 거기 무언가 쥐고 있었던 것처럼. 아무것도 없다.
+    effects: ["var o3_nina_lost = true", "var o3_nina_back = true", "stress 20"]
+    choices:
+      - id: retell
+        label: 귀에 대고 — 아래 이름을 다시 말해 준다
+        minutes: 20
+        text: |
+          너는 그녀의 귀에 숨을 댄다. 열한 살 여름처럼. "{name}."
+
+          니나가 따라 한다. 입술만으로. 한 번, 두 번. 그리고 눈을 감는다 — 무언가를 손바닥에 다시 쥐듯이. "이번엔 안 놓칠게." 그녀가 말한다. 그 말이 약속인지 기도인지, 그녀도 모르는 얼굴이다.
+
+          이름을 아는 자가 너를 가진다. 너는 그것을 두 번 주었다. 같은 사람에게.
+        effects: ["var o3_name_retold = true", "bond npc_o3_nina 8", "rel npc_o3_nina trust 8", "stress -10", "note 니나에게 아래 이름을 다시 주었다 — 두 번째"]
+      - id: her_name
+        label: '그녀의 아래 이름을 불러 준다 — "여름."'
+        minutes: 20
+        text: |
+          니나가 눈을 감는다. 그 이름은 아직 거기 있다. 손바닥을 펴지 않아도 된다는 듯이, 그녀의 어깨가 내려간다.
+
+          "그건 있어." 그녀가 말한다. "그건 엄마가 준 거니까. 맨 밑에 있었나 봐." 그녀가 웃는다. 이번엔 소리 없이. "넌 내 걸 아는데, 나는 네 걸 모르네. 불공평하다."
+        effects: ["bond npc_o3_nina 6", "rel npc_o3_nina like 6", "stress -5", "temper 자비 2", "note 니나의 아래 이름 — 여름. 그녀는 자기 이름은 쥐고 왔다"]
+      - id: pin
+        when: ["has 은핀"]
+        label: 니나의 은 핀을 꺼내 보인다
+        minutes: 10
+        text: |
+          니나가 핀을 받아 든다. 해에 비춰 돌려 본다. "예쁘다." 그녀가 그것을 제 머리에 대 본다. "딱 맞겠다. 누가 줬어?"
+
+          너는 대답하지 않는다. 그녀가 핀을 네 손바닥에 돌려준다. 손바닥이 차다. 나흘 전 새벽처럼.
+
+          그제야 안다. 수반은 맨 위에 있는 것을 집어 간다. 그녀가 마지막으로 쥐여 준 것 — 이 핀과, 핀을 준 아침과, 그 아침에 부른 이름.
+        effects: ["learn fact_o3_measure_takes", "stress 12", "note 은 수반은 제일 늦게 쥐여 준 것부터 집어 간다 — 니나는 핀을 준 아침을 모른다"]
+      - id: white_room
+        label: 흰 방에서 무엇을 보았는지 묻는다
+        minutes: 20
+        check: {skill: 통찰, D: 22, helps: [liar_nose, charm]}
+        success:
+          text: |
+            "하얘." 니나가 손바닥을 본다. "수반 앞에 서니까 — 누가 내 손을 펴는 것 같았어. 맨 위에 있는 걸 집어 갔어. 제일 늦게 쥔 거." 그녀가 고개를 든다. 너를 본다. 오래.
+
+            "…그게 네 이름이었구나."
+          effects: ["learn fact_o3_measure_takes", "stress 6", "rel npc_o3_nina trust 4", "note 니나 — 수반 앞에 서면 누가 손을 펴고 맨 위의 것을 집어 간다. 제일 늦게 쥔 것"]
+        failure:
+          text: |
+            "기억 안 나. 하얘." 니나가 웃는다. 그리고 조금 뒤에 같은 말을 한다. 처음 하는 말처럼. "기억 안 나. 하얘."
+
+            너는 다시 묻지 않는다.
+          effects: ["stress 6"]
+      - id: ada_door
+        when: ["with npc_ada"]
+        label: 마당 볕의 에이다 할멈에게 — 낮게, '아래 문'을 묻는다
+        minutes: 30
+        check: {skill: 화술, D: 34, helps: [tongue, charm], warn: ["pknows fact_sv_mira_fifth_ritual"]}
+        success:
+          text: |
+            에이다 할멈은 대답 대신 네 입에 흰 빵 한 조각을 넣는다. 질문은 입이 비고 나서. 그녀의 눈이 니나 쪽으로 한 번 갔다가 돌아온다. 무엇이 비어서 왔는지 그녀도 안다.
+
+            "아래 문이 있어." 목소리가 낮고 퍼진다. "41단 맨 아래. 쇠창살 고리는 안쪽에서 풀려. 문 너머는 계절이 바뀐다." 국자를 쥔 손이 한 번 떨린다. "넘는 순간 등 뒤가 너를 붙잡는대. 흰 빵이, 꿀이. 돌아서고 싶어진대. 돌아서면 안 돼."
+
+            그녀가 무릎을 두 번 친다. 그 말은 여기서 끝났다는 신호다.
+          effects: ["learn fact_p2sv_waterway_three_elders", "rel npc_ada trust 8", "memory npc_ada 다정함 방울에게 아래 문을 알려 주었다 — 아이들을 위해서", "note 에이다 할멈 — 아래 문. 41단 맨 아래, 쇠창살 고리는 안쪽에서 풀린다. 넘을 때 돌아서지 마라"]
+        failure:
+          text: |
+            "아래는 습기가 차." 에이다 할멈이 일어선다. 행주를 귀 뒤에 다시 꽂는다. "습기 찬 데는 가지 마라. 뼈가 상한다."
+
+            그녀는 그 저녁 내내 너에게 빵을 건네지 않는다.
+          effects: ["rel npc_ada trust -3"]
+      - id: sit
+        label: 아무 말 없이 곁에 앉는다 — 이름은 혼자 지닌다
+        minutes: 60
+        text: |
+          담 그늘이 길어진다. 니나는 네가 왜 말이 없는지 묻지 않는다. 손톱으로 네 손등을 두 번 두드린다. 괜찮아. 그 버릇은 그대로다.
+
+          이제 네 아래 이름을 아는 사람은 이 정원에 없다. 너는 그것을 혼자 지닌다. 방울보다 무겁다.
+        effects: ["bond npc_o3_nina 3", "stress 4", "note 이제 내 아래 이름을 아는 사람은 이 정원에 없다"]
+
+  # ───────────────────────── 정지 (어긋남이 셋) ─────────────────────────
+  - id: o3_stopped
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-01 06:00", to: "312-09-30 23:00"}, at: "@eternal_garden", when: ["var o3_offbeat >= 3", "var o3_stops == 0", "not var o3_escaped == true", "alive npc_erlan"]}
+    text: |
+      수호자 에를란이 네 앞에 선다. 손가락 하나를 든다 — 시간을 가늠하듯. "움직임이 세 번 어긋났소." 평탄한 목소리. 판결이 아니라 셈이다.
+
+      차가운 손바닥이 네 이마에 닿는다.
+
+      세상이 멎는다. 숨이 멎은 것이 아니다 — 숨과 숨 사이가 끝없이 길어진다. 눈을 감을 수 없다. 깜박일 수도 없다. 너는 이슬 우리 마당 기둥 곁에 세워진다. 본보기로. 정원지기들이 너를 보지 않으려고 고개를 돌리며 지나간다.
+
+      그리고 위쪽 테라스에서 낭송이 흘러내려 온다. 엘다르의 낭송. 멎은 몸 안에서, 깨어 있는 귀가 그것을 한 글자도 놓치지 않는다. 놓칠 수가 없다. 시간이 너에게만 느리다.
+    effects: ["goto eg_dew_pens"]
+    choices:
+      - id: endure
+        label: 멎은 채로 — 낭송을 듣는다 ▸
+        minutes: 360
+        text: |
+          수호자의 손가락이 내려온 것은 한참 뒤다. 무릎이 꺾이고, 이슬 우리의 흙바닥이 뺨에 닿는다. 숨이 한꺼번에 몰려온다.
+
+          머릿속에 엘다르의 낭송이 한 줄도 빠짐없이 남아 있다. 반쯤만 알던 말인데 — 멎어 있던 동안 몇 번이고 되풀이해서, 이제 그 줄들의 모양을 안다. 에를란이 너를 내려다본다. 오래. 정지를 건 뒤에 늘 그러듯이. 그리고 아무 말 없이 돌아선다.
+        effects: ["var o3_offbeat = 0", "var o3_stops += 1", "var o3_elvish += 5", "learn fact_p2sv_stopped_memorize", "stress 12", "fatigue 20", "memory npc_erlan 이상함 정지된 정원지기의 눈이 낭송을 따라 움직였다", "note 정지 — 한 번. 두 번이면 장부의 '이송' 칸이다"]
+
+  - id: o3_stopped_ledger
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-01 06:00", to: "312-09-30 23:00"}, at: "@eternal_garden", when: ["var o3_offbeat >= 3", "var o3_stops >= 1", "not var o3_escaped == true", "alive npc_erlan"]}
+    text: |
+      에를란의 손가락. 이번에는 시간을 가늠하지 않는다 — 이미 셈이 끝났다는 듯이. "두 번째요."
+
+      차가운 손바닥. 세상이 멎는다. 이슬 우리 마당 기둥 곁.
+
+      멎은 눈앞으로 관리장 미리엘이 지나간다. 장부를 펼친 채로. 그녀는 너를 보지 않는다 — 네 어깨 너머의 한 점을 본다. 장부를 넘기는 데 소리가 나지 않는다. 그녀의 손가락이 한 줄 위에서 멈추고, 종이 모서리를 한 번 접는다. 서명할 자리에서 그녀가 늘 하는 일이다.
+    effects: ["goto eg_dew_pens"]
+    choices:
+      - id: endure
+        label: 멎은 채로 — 소리 없는 장부를 듣는다 ▸
+        minutes: 360
+        text: |
+          풀려났을 때, 마당의 그림자가 반대쪽으로 누워 있다. 기둥에 기댄 채 숨을 고른다. 옆을 지나던 로렌이 걸음을 늦추지 않고 말한다. 입술만으로.
+
+          "옮겨졌다. 네 번호."
+
+          관리장의 장부에서 네 번호가 다른 칸으로 옮겨졌다. 서명은 없다. 서명이 없어도 장부는 한 번도 틀린 적이 없다.
+        effects: ["var o3_offbeat = 0", "var o3_stops += 1", "var o3_elvish += 3", "var o3_transfer_due = true", "learn fact_p2sv_stopped_memorize", "stress 18", "fatigue 20", "note 정지 — 두 번. 미리엘의 장부, '이송' 칸"]
+
+  # ───────────────────────── 이송 (장부에 오르면) ─────────────────────────
+  - id: o3_transfer
+    origin: eldar_gardener
+    trigger: {window: {from: "312-09-02 18:00", to: "312-09-30 21:00"}, at: eg_dew_pens, with: npc_fern, when: ["var o3_transfer_due == true", "not var o3_escaped == true"]}
+    text: |
+      저녁 점호. 흰 울타리의 실반 — 이끼손 페른 — 이 이슬 우리 마당에서 머릿수를 센다. 입술 안에서. 오늘은 한 번 더 센다.
+
+      그가 소매에서 쪽지를 꺼낸다. 글이 아니라 홈이다 — 손톱으로 낸 홈 몇 개. 관리장의 장부에서 옮겨 온 번호다. 그가 네 앞에서 멈춘다. 다섯 걸음이 아니라 한 걸음 앞에서.
+
+      "다시 말해 봐." 대답할 사람이 없는데 그가 말한다. 그리고 스스로 대답한다. 네 번호를. 두 번.
+
+      "새벽 노래 뒤. 안개 길." 페른이 쪽지를 접는다. "이송이다."
+
+      그는 다음 사람에게 간다. 문을 닫을 때처럼, 소리 없이.
+    choices:
+      - id: low_door
+        needs_fact: fact_p2sv_waterway_three_elders
+        when: ["has 은핀"]
+        label: 등 끄기 종 뒤 — 41단 맨 아래, 아래 문으로 간다
+        minutes: 240
+        risk: 들키면 이송이 아니라 잊힘이다
+        check: {skill: 손재주, D: 32, helps: [lock_hands, shadow_step, swimmer], warn: ["var o3_bell_muffled == true", "var o3_nina_helps == true"]}
+        success:
+          text: |
+            등 끄기 종. 흰 등이 하나씩 꺼진다. 너는 테라스 아래 단을 맨발로 내려간다. 마흔한 단. 맨 아래, 물소리.
+
+            쇠창살 앞에서 — 니나의 은 핀을 발목 고리의 은못 밑에 넣는다. 아래에서 위로. 못이 한 번, 비명 같은 소리를 내고 빠진다. 방울을 품에 넣는다. 버리면 누가 줍고, 주우면 센다.
+
+            쇠창살 고리는 안쪽에서 풀린다. 물이 차다. 어둠을 기어간다. 그리고 — 경계. 등 뒤의 무언가가 너를 붙잡는다. 돌아서고 싶다. 흰 빵이, 꿀이, 늘 같은 잎의 이슬이 등 뒤에서 너를 부른다. 너는 기어간다.
+
+            배수구 끝에서 바람이 분다. 차다. 처음 맡는 냄새 — 젖은 낙엽. 머리 위에서 잎 하나가 진다. 붉다. 열두 해 만에, 처음으로 계절이 바뀐다.
+          effects: ["var o3_escaped = true", "var player_fugitive = true", "var o3_bell_cut = true", "var o3_bell_muffled = false", "wanted 2 이송을 앞둔 정원지기가 사라졌다", "temper 용기 8", "goto eternal_garden__silver_forest", "note 아래 문을 지났다 — 은목 숲, 정원 경계 밖. 방울은 끊어 품에 넣었다", "note 정원 길은 엘다르 동행 없이는 이어지지 않는다 — 은잎문까지 마흔여섯 시간"]
+        failure:
+          text: |
+            은못이 빠지지 않는다. 핀이 미끄러지고, 방울이 운다 — 수로 안에서. 물 위에서 소리는 열 배가 된다.
+
+            쇠창살 너머에서 흰 등이 다가온다. 수호자의 손가락이 올라간다. 이번에는 "어긋났소"라고 말하지 않는다. 이것은 어긋남이 아니다.
+
+            은잎문 아치 앞에서, 언젠가 누군가 네 아래 이름을 낭송할 것이다. 네가 그것을 마지막에 속삭인다면.
+          effects: ["captured 아래 문의 쇠창살 앞에서 붙잡혔다 — 달아나려던 정원지기로, 잊힘을 기다린다"]
+      - id: fern_gate
+        label: '페른을 따라가 낮게 — "북문. 소리 없이 닫히는 문."'
+        minutes: 180
+        risk: 실반이 고하면 끝이다
+        check: {skill: 화술, D: 36, helps: [tongue, charm], warn: ["pknows fact_sv_fern_north_gate_key", "pknows fact_sv_fern_seed_bribe"]}
+        success:
+          text: |
+            페른이 멈춘다. 돌아보지 않는다. "…다시 말해 봐."
+
+            너는 다시 말한다. 그는 그것을 두 번 외운다 — 입술 안에서. 그리고 허리춤을 한 번 친다. 열쇠가 있는 자리다.
+
+            그날 밤, 흰 울타리 북문이 열리는 소리는 나지 않는다. 문 밖은 마른 숲이다. 페른이 문짝을 한 손으로 받쳐 소리 없이 닫는다. 문틈으로 그의 목소리. "두 번 외울 사람이 하나 줄었다고 치겠다."
+
+            숲의 바람이 차다. 젖은 낙엽 냄새. 처음 맡는 냄새다. 발목에서 방울이 운다. 이제 그 소리를 세는 사람이 없다.
+          effects: ["var o3_escaped = true", "var player_fugitive = true", "wanted 2 이송을 앞둔 정원지기가 사라졌다", "rel npc_fern trust 10", "memory npc_fern 다정함 방울을 단 정원지기를 북문으로 내보냈다 — 두 번 외운다", "goto eternal_garden__silver_forest", "note 북문 — 페른이 소리 없이 열었다. 방울은 아직 발목에 있다", "temper 용기 5"]
+        failure:
+          text: |
+            페른이 다섯 걸음을 정확히 재고 선다. "다섯 걸음." 그가 말한다. "한 걸음 더 오면 — 네 손이다."
+
+            그는 고하지 않는다. 고할 필요가 없다. 쪽지는 이미 장부에서 왔다. 새벽 노래가 끝나자 안개 길이 너를 기다리고 있다.
+          effects: ["captured 이송 — 북문은 열리지 않았다. 새벽 노래 뒤 안개 길로 끌려갔다"]
+      - id: go_quiet
+        label: 고개를 숙인다 — 정원지기는 묻지 않는다
+        text: |
+          그날 밤 너는 방울을 손바닥으로 감싸지 않는다. 울게 둔다. 니나의 자리 쪽에서 누군가 몸을 뒤척인다.
+
+          새벽 노래가 끝나자 안개 길. 젊은 엘다르와 함께 걸으면 짧다. 유리 온실들. 흰 침상. 정원사가 네 어깨의 먼지를 털고, 햇빛 쪽으로 눕힌다.
+
+          "여섯 번이에요." 그가 말한다. 다정하게. "아프지 않아요. 자라는 건 원래 조금 아프지만."
+
+          수정 기둥들이 낮게 운다. 그물은 아직 성기다 — 너는 그것을 모르고, 그도 모른다.
+        effects: ["captured 이송 — 안쪽 정원의 흰 침상에 눕혀졌다. 정원사의 '여섯 번의 수업'이 시작되었다"]
+
+  # ───────────────────────── 영원 정원의 소품 (연출가 — 이 고장에 있는 누구에게나) ─────────────────────────
+  - id: o3_dir_wrong_note
+    trigger: {director: true, category: bond, at: [eg_dew_hearth, eg_dew_mess], hours: ["19:00", "21:00"], chance: 0.3, when: ["alive npc_loren", "alive npc_ada"]}
+    text: |
+      식당 아궁이 곁. 에이다 할멈이 국자로 솥 가장자리를 두 번 친다. 아무 일도 아닌 소리다. 아무 일도 아닌 것처럼, 로렌이 음 하나를 낮게 낸다. 가사는 없다. 높이만.
+
+      아이 둘이 그 음을 따라 한다. 일부러 조금 틀리게. 다음 음. 그 다음 음. 마지막 음 앞에서 — 로렌의 숨이 멎는다. 아궁이의 불만 소리를 낸다. 아무도 마저 부르지 않는다.
+    choices:
+      - id: hum
+        label: 그 음을 따라 낸다 — 일부러 반 음 틀리게
+        text: |
+          로렌이 너를 본다. 엘다르가 없는 자리에서, 처음으로 오래. 그리고 아주 작게 고개를 끄덕인다. 틀리게 부르는 법을 아는 사람에게 하는 인사다.
+        effects: ["rel npc_loren like 4", "rel npc_loren trust 4", "rel npc_ada like 2", "stress -4"]
+      - id: listen
+        label: 아궁이 불만 본다
+        text: |
+          불이 솥 바닥을 핥는다. 멎은 숨이 다시 돌아오기까지, 아무도 움직이지 않는다.
+        effects: ["stress -2"]
+
+  - id: o3_dir_pavilion_clap
+    trigger: {director: true, category: omen, at: eg_terraces_upper, hours: ["13:30", "17:30"], chance: 0.25, when: ["alive npc_liandel"]}
+    text: |
+      위쪽 단, 아이의 정자 쪽에서 손뼉 소리가 난다. 작은 손. 박자가 있다 — 엘다르의 박자가 아니다. 이슬 우리 아이들이 빨래를 두드리며 부르는 노래의 박자다.
+
+      어른 엘다르의 목소리 하나가 그 소리를 덮는다. 손뼉이 멎는다. 정자 기둥 그늘에서 은빛 머리 하나가 잠깐 내다보고, 사라진다.
+    choices:
+      - id: answer
+        label: 가지를 치는 척 — 전지가위로 다음 박자를 두 번 맞춘다
+        risk: 엘다르가 들으면
+        text: |
+          딸깍, 딸깍. 가윗날이 박자를 맞춘다. 정자 그늘이 조용하다. 그리고 — 아주 작게, 손뼉 두 번. 대답이다.
+
+          아래 단으로 수호자의 흰 옷이 지나간다. 걸음이 멈추지 않는다. 이번에는.
+        effects: ["learn fact_sv_liandel_learned_songs", "temper 용기 2", "stress -2"]
+      - id: work
+        label: 못 들은 척 가지를 닦는다
+        text: |
+          은목 가지는 매끈하다. 상처가 나지 않게 닦는 것이 네 일이다. 손뼉 소리는 다시 나지 않는다.
+        effects: ["stress 1"]

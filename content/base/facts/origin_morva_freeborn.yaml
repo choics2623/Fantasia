@@ -1,0 +1,67 @@
+# O-10 모르바 늪 자유민 — 장면이 가르치는 사실 (storylets/origin_morva_freeborn.yaml). id 접두사 fact_o10_.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. 기존 fact_mv_* / fact_p2mv_* 는 고치지 않는다.
+- id: fact_o10_root_council
+  text: "뿌리 모임은 초하루와 보름 밤 회의 섬에서 선다. 열여섯이 되면 처음 말할 수 있다. 찬성은 오른발, 반대는 왼발 — 난네가 매듭 짚는 손으로 센다. 섬이 작아 둘레에 뗏목을 묶는다"
+  truth: true
+  danger: 0
+  names: [뿌리 모임, 회의 섬, 난네]
+- id: fact_o10_parents_fever
+  text: "버들의 부모는 AS 302 여름 늪열 때 뿌리마을 약초 오두막 침상에서 죽었다. 버들 계보의 딸 헤드비가 — 그때 열아홉 — 가 여섯 살 아이를 거두었고, 아이는 이른 흰 머리를 보고 그녀를 할머니라고 불렀다"
+  truth: true
+  danger: 0
+  names: [헤드비가]
+- id: fact_o10_five_from_farm
+  text: "녹테른 혈목장에서 달아난 다섯(어른 넷과 아홉 살 콩)이 낙엽월 1일 밤 잿빛 실의 뱃사공 배로 뿌리마을에 왔다. 붉은 갈대 선에서 넘겨받았지만 진흙등불은 겨울 장부가 모자라 받지 못했다"
+  truth: true
+  danger: 2
+  names: [콩, 진흙등불]
+- id: fact_o10_kong_mother
+  text: "녹테른에서 여섯이 떠나 다섯이 왔다. 콩의 어미는 이빨 골짜기에서 숨을 참지 못했다 — 굶주린 자들은 숨소리를 따라온다"
+  truth: true
+  danger: 1
+  names: [콩, 이빨 골짜기]
+- id: fact_o10_varg_at_reed_line
+  text: "바르그 노예사냥 조합의 사냥대가 녹테른에서 온 다섯의 냄새를 따라 붉은 갈대 선까지 왔다. 뱃사공은 '셋, 어쩌면 넷'이라고 했다"
+  truth: true
+  danger: 3
+  names: [붉은 갈대 선, 바르그]
+- id: fact_o10_party_size
+  text: "붉은 갈대 선 서쪽 마른 둔덕의 사냥대는 바르그 코 셋과 목줄 찬 인간 추적자 하나(맨발)다. 불을 피우지 않고, 인간이 맨발로 앞서 걷는다. 배가 간 물길은 냄새를 남기지 않아 그들은 갈대 선에서 멈춰 있다"
+  truth: true
+  danger: 3
+  names: [맨발, 붉은 갈대 선]
+- id: fact_o10_fog_knot
+  text: "헤드비가는 아껴 둔 나가 허물 피 한 방울로 '안개 매듭'을 풀 수 있다 — 붉은 갈대 선을 사흘 동안 안개로 덮어 바르그의 코를 막는다. 값은 그녀의 수명 두 해다"
+  truth: true
+  danger: 2
+  names: [헤드비가]
+- id: fact_o10_water_knot
+  text: "버들은 피 없이 물의 이름(진명)을 입술에 올린다. 노파들은 나가의 피와 몇 해의 수명을 태워야 그 낱말을 말한다. 헤드비가가 그것을 보았고, 그 소리를 매듭 하나에 묶어 버들에게 쥐여 주었다"
+  truth: true
+  danger: 5
+  names: [헤드비가]
+- id: fact_o10_leash_name
+  text: "목줄꾼 '맨발'의 진짜 이름은 티모다. 루멘 강변 마을에서 징후자로 몰려 탄 부모의 아이였고, 일곱 살에 바르그 조합이 샀다. 그 이름을 부르는 사람은 이제 없다"
+  truth: true
+  danger: 2
+  names: [맨발, 티모]
+- id: fact_o10_bell_surname
+  text: "가라앉은 종탑의 종 허리에 아스테리아 시대 인간의 성 하나가 아홉 글자로 새겨져 있다. 그 가운데 셋은 진흙판 학교에서 가르치지 않는 글자다"
+  truth: true
+  danger: 3
+  names: [가라앉은 종탑, 진흙판 학교]
+- id: fact_o10_ashdust_smell
+  text: "가라앉은 종탑의 웃지 않는 페이는 버들에게서 젖은 재 냄새를 맡았다 — 돌아오는 이의 냄새. 가시 궁정 여왕의 사자도 숲 밖으로 나와 그 냄새를 찾는다"
+  truth: true
+  danger: 4
+  names: [잿가루, 가시 궁정]
+- id: fact_o10_outside_rule
+  text: "늪 밖에서는 인간이 글을 읽거나 활을 지니면 그 자리에서 죽는다. 주인 있는 인간에게 주인 없는 말을 걸면 맞는 것은 그 사람이다. 늪 사람은 늪 어귀에서 활을 자루에 넣는다"
+  truth: true
+  danger: 1
+  names: []
+- id: fact_o10_feather_marks
+  text: "바르그가 늪길 어귀에 꽂는 깃털은 말이다 — 끝을 피에 담갔다 말린 깃털 하나면 '본다', 셋이면 '온다'"
+  truth: true
+  danger: 3
+  names: [바르그]

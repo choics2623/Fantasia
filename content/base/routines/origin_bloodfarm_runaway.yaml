@@ -1,0 +1,24 @@
+# 녹테른 혈목장 탈주자 (O-04 bloodfarm_runaway)의 동행 둘 — 붉은 갈대 선 은신처(nocturne__marsh_edge)에 숨어 산다.
+# 낙엽월 1일(회귀점)의 수로와 검은 장미 둔덕은 대본 장면의 stage가 세운다 (storylets/origin_bloodfarm_runaway.yaml).
+# 스무날 밤 테사의 호송 줄을 따라 붉은 갈대 선을 넘는다 — 21일부터 이 고장에 없다 (presence). 붙잡히거나 죽으면 덮어쓰기가 이긴다.
+# 쉼표가 든 값은 큰따옴표로.
+npc_o4_martin:
+  home: nocturne__marsh_edge
+  presence:
+    - {from: "312-09-01", to: "312-09-20"}
+  away: {at: rv__red_reed_line, doing: "붉은 갈대 선 너머 — 테사의 호송 줄을 따라 늪으로 갔다"}
+  blocks:
+    - {days: all, from: "05:00", to: "12:00", at: nocturne__marsh_edge, doing: "갈대밭 가장자리에서 뿌리를 캔다 — 팔을 물에 담그지 않는다"}
+    - {days: all, from: "12:00", to: "17:00", at: nocturne__marsh_edge, doing: "갈대 속에 누워 눈만 감는다 — 낮에는 크릭이 둑을 본다"}
+    - {days: all, from: "17:00", to: "19:00", at: nocturne__marsh_edge, doing: "해 지기 전 먹을 것을 셋으로 나눈다", fixed: true}
+    - {days: all, from: "19:00", to: "05:00", at: nocturne__marsh_edge, doing: "갈대 속에 엎드려 숨을 센다 — 짖지 않는 것들이 지나갈 때까지"}
+npc_o4_lina:
+  home: nocturne__marsh_edge
+  presence:
+    - {from: "312-09-01", to: "312-09-20"}
+  away: {at: rv__red_reed_line, doing: "붉은 갈대 선 너머 — 테사의 호송 줄을 따라 늪으로 갔다"}
+  blocks:
+    - {days: all, from: "05:00", to: "12:00", at: nocturne__marsh_edge, doing: "물가에 쪼그려 갈대 줄기를 센다 — 소리 내지 않고"}
+    - {days: all, from: "12:00", to: "17:00", at: nocturne__marsh_edge, doing: "마르틴의 팔을 베고 낮잠을 잔다"}
+    - {days: all, from: "17:00", to: "19:00", at: nocturne__marsh_edge, doing: "제 몫을 받아 쥐고 반을 품에 넣는다", fixed: true}
+    - {days: all, from: "19:00", to: "05:00", at: nocturne__marsh_edge, doing: "갈대 속에 웅크려 잠든다 — 잠결에 숫자를 센다"}

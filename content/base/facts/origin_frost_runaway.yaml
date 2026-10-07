@@ -1,0 +1,68 @@
+# O-07 북방 거인 노예 탈주자 (creation/origins_frost_runaway.yaml)의 사실 — 이 출신의 장면이 가르치는 것.
+# id 규칙: fact_o7_<주제>. text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사.
+# (주의: 사실 글에 "북문"이 들어가면 엔진이 숨은 곳 '물빼기 굴'을 아는 곳으로 올린다 — 굴을 찾는 사실에만 쓴다)
+# 흐로스가르드·까마귀 문의 정본 사실(fact_hg_*, fact_cg_*)과 겹치지 않게 — 주인공의 눈으로 본 것만 새로 적는다.
+
+# ── 돌무릎 골짜기와 서리 길 (처음부터 아는 것) ──
+- id: fact_o7_baug_empty_slot
+  text: "돌무릎 씨족장 바우그는 도망친 노예의 발목을 부러뜨리지 않는다 — 다리 부러진 노예는 짐을 못 진다. 대신 장부의 칸을 비워 두었다가, 돌아오면 다시 쓴다. 빈 칸에는 값이 붙어 있어서, 칸 이름을 아는 자는 그 노예를 북쪽에 되팔 수 있다. '가죽 일곱'의 칸도 비어 있다"
+  truth: true
+  danger: 2
+  names: [바우그]
+- id: fact_o7_ketil_doll
+  text: "잉가가 안고 다니는 나무 인형은 주인공의 동생 케틸이 깎은 것이다. 케틸은 서리 길 아흐레째 밤, 울음 고개에서 웅크린 채 얼어 죽었다"
+  truth: true
+  danger: 0
+  names: [케틸, 잉가]
+- id: fact_o7_inge_last_fire
+  text: "울음 고개 '마지막 불'의 안내인 잉에가 주인공의 무리에게 일러 주었다 — 언니 시그리드는 봄에 까마귀 문을 지나 굶주린 언덕으로 갔다"
+  truth: true
+  danger: 2
+  names: [잉에, 시그리드]
+
+# ── 북문 앞에서 배우는 것 ──
+- id: fact_o7_lea_hands
+  text: "성문 위의 은빛 머리 장교는 사람을 고를 때 얼굴이 아니라 손과 신발을 먼저 본다. 썩는 발은 받지 않는다"
+  truth: true
+  danger: 1
+  names: []
+- id: fact_o7_thirty_passage
+  text: "까마귀 문 감옥의 수용 칸은 이미 찼다. 요새가 받은 북쪽 것들은 바깥문과 쇠창살 사이의 돌 통로에서 잔다"
+  truth: true
+  danger: 1
+  names: [까마귀 문]
+- id: fact_o7_husk_bucket
+  text: "문 닫는 나팔이 울리면 성벽 위에서 겨죽 한 동이가 밧줄에 매달려 문 밖 무리에게 내려온다. 사령관의 명이다 — 장부에는 말먹이로 적힌다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_o7_magda_gate
+  text: "의무실의 마그다는 낙엽월 2일부터 사흘, 문 닫는 나팔 무렵 쪽문으로 나와 문 밖 무리의 언 발을 본다. 사령관이 그 한 시간을 눈감았다"
+  truth: true
+  danger: 2
+  names: [마그다]
+- id: fact_o7_drain_breath
+  text: "북문 서쪽, 성벽이 바위에 박히는 틈에 성벽 밑으로 들어가는 돌 굴 입구가 있다. 녹슨 쇠창살 안에서 따뜻한 잿물 냄새가 난다 — 안쪽 빨래터로 이어지는 듯하다"
+  truth: true
+  danger: 3
+  names: []
+- id: fact_o7_smuggler_cairns
+  text: "물빼기 굴 입구 위 바위 선반에서 남쪽으로 사람이 쌓은 돌무더기가 이어진다 — 요새를 돌아가는 밀수꾼 길이다. 끝은 굶주린 언덕의 세 소나무라고 한다"
+  truth: true
+  danger: 3
+  names: [세 소나무]
+- id: fact_o7_fangs_come
+  text: "간수가 판 쪽지의 이름과 골짜기를 들고, 송곳니 초소의 사냥꾼들이 밤에 문 앞 무리로 온다. 성벽 그늘 밖은 용좌의 땅이 아니라서 병사들은 보지 않는다. 칸이 비어 있는 노예는 북쪽에 되팔린다"
+  truth: true
+  danger: 4
+  names: [송곳니]
+- id: fact_o7_bonefence_rumor
+  text: "문 밖 무리의 뼈울타리 출신 사내가, 돌팔 씨족이 장원에 돌 망치를 모은다고 말했다 — 푸른월에 남쪽으로 내려간다는 말과 함께"
+  truth: true
+  danger: 4
+  names: [돌팔, 뼈울타리]
+- id: fact_o7_kaspar_three
+  text: "카스파르는 문 밖 무리에게 늘 같은 세 가지를 묻는다 — 어디서 왔나, 누가 길을 열었나, 몇이나 더 오나. 레아가 왼손으로 받아 적는다"
+  truth: true
+  danger: 2
+  names: [카스파르, 레아]

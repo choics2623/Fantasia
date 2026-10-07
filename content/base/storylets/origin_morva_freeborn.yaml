@@ -1,0 +1,976 @@
+# O-10 모르바 늪 자유민 — 회귀점의 대본 장면과 첫 열흘 (creation/origins_morva_freeborn.yaml). 문법은 greyford_opening.yaml 머리말과 같다.
+# 회귀점: 낙엽월 1일 21:00, 뿌리마을 회의 섬 투표의 원 — 열여섯 살의 첫 뿌리 모임 (SCENARIOS O-10 「버들뿌리의 회의」).
+#   o10_council_open (이름: 할머니 헤드비가) → o10_council_word (회의의 말 + 잔향의 각성, 선택 일곱) → o10_knots (할머니의 매듭 — 물의 이름)
+# 첫 열흘:
+#   o10_dawn_boat      9.2 새벽 — 왼발이 이겼으면 다섯이 배에 오른다 (놓치면 o10_five_gone)
+#   o10_reed_dawn      9.2~9.4 붉은 갈대 선 — 사냥대의 둔덕: 발자국을 읽는다 / 쏜다 / 맨발에게 말을 건다 (SCENARIOS 2·5)
+#   o10_barefoot       9.3 새벽 장어 덫 물길 — 냄새의 주인: 맨발이 덫 줄을 읽는다. 죽이거나, 붙잡거나, 말을 건다 (SCENARIOS varg_scent)
+#   o10_barefoot_fog   9.3 새벽 — 할머니의 안개 속에서 물에 빠진 맨발 (안개 매듭의 값)
+#   o10_belfry         가라앉은 종탑 — 아스테리아의 종, 웃지 않는 페이, 냄새를 끝내는 자리 (SCENARIOS sunken_bell)
+#   o10_second_council 9.4 밤 — 두 번째 뿌리 모임: 다섯의 사흘이 끝난다 (놓치면 o10_council_absent)
+#   o10_feathers       9.7~ — 피를 흘렸으면 장어 덫 줄에 바르그의 피 깃털
+#   o10_first_outside  늪 어귀에 처음 닿는 날 — 늪 밖의 사람들 (SCENARIOS first_outside — 활을 내리는 법)
+# 뿌리마을의 소품 (연출가, 어느 출신이든): o10_dir_pot · o10_dir_black_jaw (밤 물길 — 늪 자체가 밤의 위험이다) · o10_dir_basket
+# 다섯의 갈래: 남는다(o10_five_safe) / 붙잡혀 간다(o10_five_taken — 콩은 세계에서 지운다: agenda kill, 갈증의 밤 명단으로 끌려간 것이다)
+village: &village [rv_council_island, rv_mud_school, rv_rope_bridges, rv_pot, rv_smokehouse, rv_eel_traps, rv_reed_works, rv_forge, rv_herb_hut, rv_stilt_homes_n, rv_stilt_homes_s, rv_arrival_hut, rv_glow_field, rv_watch_post, rv_black_pool]
+storylets:
+  # ───────────────────────── 회귀점 ─────────────────────────
+  - id: o10_council_open
+    origin: morva_freeborn
+    trigger: {start: true}
+    stage:   # 헤드비가는 둥지 사람이라 엔진의 '이 자리 사람'에는 잡히지 않는다 — 장면 글로 선다 (stage는 그 밤의 자리를 적어 둔다)
+      - {npc: npc_mv_alek, at: rv_vote_circle, from: "20:30", to: "22:40", doing: "투표의 원 한가운데 — 귀 뒤의 막대를 꺼냈다가 도로 꽂는다"}
+      - {npc: npc_mv_torr, at: rv_vote_circle, from: "20:30", to: "22:40", doing: "원 가장자리에서 팔짱을 끼고 선다 — 망치 자루가 허리에 있다"}
+      - {npc: npc_mv_nanne, at: rv_vote_circle, from: "20:30", to: "22:40", doing: "원 곁에 앉아 끈을 꼰다 — 다섯에게 첫 질문을 했다"}
+      - {npc: npc_o10_torn, at: rv_vote_circle, from: "20:30", to: "22:40", doing: "뗏목 끝에 걸터앉아 다섯 쪽을 노려본다"}
+      - {npc: npc_o10_kong, at: rv_vote_circle, from: "20:30", to: "22:40", doing: "다섯 사이에서 소매 밖으로 나온 손목을 감추지 않고 너를 본다"}
+      - {npc: npc_mv_hedwiga, at: rv_vote_circle, from: "20:30", to: "22:30", doing: "네 등 뒤에서 자기 손목의 매듭 끈을 풀었다 다시 묶는다"}
+      - {npc: npc_mv_hedwiga, at: rv_herb_hut, from: "22:30", to: "312-09-02 04:30", doing: "약초 오두막 문가에 앉아 매듭을 꼰다 — 새벽 배로 둥지에 돌아간다"}
+    text: |
+      젖은 뿌리 냄새. 갈대 연기, 장어 기름.
+
+      회의 섬은 작다. 뿌리나무 아홉 그루가 둘러싼 둥근 땅에 어른이 다 서기엔 모자라서, 뿌리 모임의 밤이면 섬 둘레에 뗏목 열한 개를 묶는다. 오늘은 달 없는 초하루. 횃불은 없다. 줄마다 반딧불 병이 걸려 있다 — 불은 연기를 내고, 연기는 냄새를 멀리 데려간다.
+
+      너는 투표의 원 가장자리에 서 있다. 열여섯. 오늘부터 발을 내밀 수 있다. 찬성은 오른발, 반대는 왼발. 그리고 처음으로, 말할 수 있다.
+
+      원 안에 다섯이 서 있다. 어른 넷, 아이 하나. 손목마다 지져 넣은 숫자. 녹테른의 혈목장에서 왔다. 어른 하나가 아이의 어깨를 잡는다. "콩아." 작아서 붙은 이름이다. 손목에는 다른 이름이 있다.
+
+      잿빛 실의 뱃사공이 붉은 갈대 선에서 그들을 받아 왔다. 진흙등불은 올겨울 장부가 이미 모자라서. 뱃사공은 다른 것도 데려왔다. 그가 삿대에 기대어 말한다. "바르그 냄새가 갈대 선까지 따라왔소. 셋. 어쩌면 넷."
+
+      뗏목이 물에 닿는 소리만 남는다.
+
+      등 뒤에서 누가 부른다. 낮게. 아무도 못 듣게.
+    input: true_name
+    input_label: 할머니만 아는 이름
+    input_button: 그 이름을 듣는다
+    input_say: 할머니가 귓가에 낮게 부르는 이름
+    input_sibling: false
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "젖은 뿌리 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 젖은 뿌리 냄새."}
+    trace_lines:
+      water: 뗏목 아래 늪물이 목까지 차오른다. 아니다. 물은 발목에 있다. 목 안에 물이 있다. 없다.
+      teeth: 목덜미가 가렵다. 긁으면 손톱 밑에 진흙뿐이다. 갈대 선은 일곱 시간 밖이다.
+      spear: 옆구리가 시리다. 활시위가 닿던 자리다.
+      blade: 목이 뜨겁다. 손을 대 보면 아무것도 없다. 반딧불 빛뿐이다.
+      rope: 손목이 쓸린다. 부적 끈 자국이다. 부적 끈 자국일 것이다.
+      hunger: 배가 꼬인다. 아니다 — 저녁 솥에서 장어 토막을 받았다.
+      fall: 발밑이 꺼진다. 뗏목이다. 뗏목이 물을 한 번 밀어낼 뿐이다.
+    return_ink: |
+      ┊ 그 다음엔 알렉 선생이 말했다. "숨는 것이 우리가 아는 유일한 방법이다." 토른이 일어섰다.
+    after_input: |
+      "{name}."
+
+      그 이름을 아는 사람은 이 늪에 하나뿐이다. 할머니다. 헤드비가 — 버들 계보의 딸, 스물아홉. 머리는 벌써 하얗다. 늪 마녀는 마흔 전에 늙는다. 여섯 살의 네가 할머니라고 불렀고, 그 뒤로 아무도 고쳐 부르지 않았다.
+
+      "부적 맨 안쪽 매듭이 그 이름이야. 처음 말하는 날이니까, 한 번은 들려줘야지." 할머니의 손가락이 네 목의 부적 끈을 한 번 쓸고 지나간다. "이름을 아는 자가 너를 가진다. 그러니 아무한테도 주지 마라. 나한테도 다시는."
+
+      할머니는 일곱 노파의 둥지에서 스물여섯 시간 물길을 저어 왔다. 네 첫 회의를 보려고.
+
+      원 한가운데로 알렉 선생이 나선다.
+    effects: ["var o10_five_known = true", "learn fact_o10_five_from_farm", "learn fact_o10_varg_at_reed_line", "note 할머니만 아는 이름 — {name}. 마을은 너를 버들이라 부른다", "note 녹테른에서 온 다섯 — 아이 콩과 어른 넷. 바르그 냄새가 붉은 갈대 선까지 따라왔다"]
+    next: o10_council_word
+
+  - id: o10_council_word
+    origin: morva_freeborn
+    text: |
+      알렉 선생 — 뿌리 모임의 입, 진흙판 학교의 선생 — 이 귀 뒤의 막대를 꺼냈다가 도로 꽂는다. 대답하기 전의 버릇이다.
+
+      "우리는 숨어서 살아남았다." 그는 다섯을 보지 않는다. 발밑 진흙을 본다. "숨는 것이 우리가 아는 유일한 방법이다. 다섯은 갈대 선 너머에서 왔고, 냄새도 같이 왔다."
+
+      뗏목 하나가 출렁인다. 토른이 일어선다 — 열일곱, 대장장이 토르의 풀무를 밟는 손. 아홉 해 전 바르그가 늪길로 들어온 해에 아버지를 잃었다. "숨는 거라면 저 다섯을 늪 밖에 내다 놓는 게 제일 잘 숨는 거겠지." 웃는 목소리가 아니다. 누구 편인지도 모를 목소리다.
+
+      할머니는 아무 말 없이 자기 손목의 매듭 끈을 풀었다 다시 묶는다.
+
+      반딧불 병 그늘 속에서 콩이 너를 보고 있다. 손목의 숫자가 소매 밖으로 나와 있다. 아이는 그것을 감추지 않는다. 감추는 법을 모른다.
+
+      모두가 네 첫마디를 기다린다.
+
+      할머니의 손끝에서 매듭이 풀리는 순간, 그 안에 묶여 있던 소리가 들린다. 물의 이름, 그 첫 음절. 노파들은 나가의 피 한 방울과 몇 해의 목숨을 태워야 그것을 겨우 입에 올린다. 네 입술은 그 소리를 이미 안다. 뗏목 아래의 늪물이 한 번, 네 쪽으로 기운다. 눈가로 잿빛 고리가 스치고 사라진다.
+
+      할머니의 손이 멈춘다. 그녀는 늪물을 보고, 너를 본다.
+    effects: ["var o10_hedwiga_saw = true", "note 할머니의 매듭이 풀릴 때 — 물의 이름, 그 첫 음절. 입술이 그 소리를 안다. 늪물이 기울었다"]
+    next: o10_knots
+    choices:
+      - id: hide_five
+        label: '"갈대 선이 냄새를 데려왔으면, 늪이 지우면 돼." — 다섯을 숨기자고 말한다'
+        minutes: 40
+        check: {skill: 화술, D: 27, helps: [crowd_voice, tongue, charm], warn: ["pknows fact_o10_party_size", "pknows fact_p2mv_torr_gas_traps"]}
+        success:
+          text: |
+            네 목소리가 물 위로 건너간다. 처음 듣는 네 목소리다. "다섯은 배로 왔어. 물은 냄새를 안 남겨. 갈대 선까지는 냄새가 와도, 갈대 선부터는 늪이야."
+
+            뗏목 하나에서 누가 웃는다. 비웃음이 아니다.
+
+            알렉이 막대를 귀 뒤에 꽂는다. "발."
+
+            오른발이 나온다. 하나, 둘 — 난네가 센다. 매듭을 짚는 손가락의 속도로. 왼발보다 여섯이 많다. 토른은 발을 내밀지 않는다.
+
+            "사흘." 알렉이 말한다. "다섯은 사흘 동안 초막에서 먹고 잔다. 사흘 뒤에도 냄새가 갈대 선에 있으면, 다시 선다."
+
+            콩이 너를 본다. 이번에는 손목을 감춘다. 누가 가르쳐 준 것도 아닌데.
+          effects: ["var o10_five_stay = true", "rel npc_mv_alek trust 3", "memory npc_mv_alek 용감함 버들이 첫 뿌리 모임에서 다섯을 숨기자고 말했다", "bond npc_o10_kong 6", "rel npc_o10_kong like 10", "temper 자비 4", "temper 용기 3", "note 첫 뿌리 모임 — 오른발이 여섯 많았다. 다섯은 사흘 초막에. 초나흘 밤 다시 선다"]
+        failure:
+          text: |
+            네 목소리가 나온다. 생각보다 작다. 물 위로 건너가기 전에 반딧불 병 사이에서 흩어진다.
+
+            알렉이 막대를 귀 뒤에 꽂는다. "발."
+
+            왼발이 나온다. 하나, 둘 — 난네가 센다. 오른발보다 둘이 많다. 둘. 토른의 왼발이 그 둘 가운데 하나다.
+
+            "새벽에 뱃사공이 다시 온다." 알렉은 다섯을 보지 않는다. "갈대 선까지 데려다준다. 거기서부터는 — 우리가 정할 일이 아니다."
+
+            콩은 손목을 감추지 않는다. 감출 이유가 없어졌다.
+          effects: ["var o10_five_out = true", "stress 10", "memory npc_o10_kong 정직함 그 사람은 우리 쪽으로 말했다. 발이 모자랐다", "note 첫 뿌리 모임 — 왼발이 둘 많았다. 다섯은 새벽 배로 갈대 선까지"]
+      - id: reed_line
+        label: '"내가 갈대 선에 가 볼게. 몇인지, 어디 있는지." — 사냥대의 냄새를 보고 오겠다고 한다'
+        minutes: 30
+        risk: 밤의 늪길 일곱 시간 — 갈대 선에는 사냥대가 있다
+        text: |
+          뗏목 위가 다시 조용해진다. 이번에는 다른 조용함이다.
+
+          "열여섯이." 누가 말한다. 알렉은 대답하지 않고 너를 본다. 먼 데 글자를 읽듯이, 눈을 가늘게 하고.
+
+          "…다녀와라. 숫자를 가져와." 막대가 귀 뒤로 돌아간다. "발은 사흘 뒤에 내민다. 그동안 다섯은 초막에서 먹고 잔다."
+
+          토른이 뗏목에서 일어선다. "나도 —" 토르의 손이 토른의 목덜미를 잡는다. 말 한 마디. "풀무." 토른은 다시 앉는다. 너를 노려본다. 부러운 얼굴로.
+        effects: ["var o10_five_stay = true", "var o10_plan = reed", "rel npc_mv_alek trust 4", "rel npc_o10_torn like 3", "memory npc_mv_alek 용감함 버들이 갈대 선의 숫자를 가져오겠다고 했다", "note 갈대 선까지 일곱 시간 — 사냥대의 숫자를 가져오기로 했다. 초나흘 밤 뿌리 모임"]
+      - id: fog_knot
+        label: 할머니에게 — "안개 매듭을 풀어 줘."
+        minutes: 40
+        text: |
+          할머니의 손가락이 매듭 위에서 멈춘다. 오래.
+
+          "그건 값이 달라." 그녀가 말한다. 늘 하던 말이다. 이번에는 웃지 않는다.
+
+          그녀가 품에서 뼈 병 하나를 꺼낸다. 엄지손가락만 하다. 바닥에 검푸른 것이 한 방울 — 나가 허물에서 짜낸 피. 노파들에게서 받아 아껴 둔 마지막 것이다. 그녀가 병을 혀에 기울이고, 매듭 하나를 푼다. 입술이 움직인다. 소리는 너만 듣는다.
+
+          늪이 숨을 내쉰다. 물 위로 하얀 것이 일어나 남쪽으로, 갈대 선 쪽으로 기어간다. 사흘은 걷히지 않을 안개다.
+
+          할머니의 귀밑머리 몇 가닥이 반딧불 빛 아래에서 하얗게 바랜다. 원래도 하얗던 머리가, 더.
+
+          알렉이 안개를 보고 막대를 귀 뒤에 꽂는다. "안개가 있는 사흘. 다섯은 초막에 둔다. 걷히면, 다시 선다."
+        effects: ["var o10_five_stay = true", "var o10_fog = true", "var o10_hedwiga_years += 2", "learn fact_o10_fog_knot", "rel npc_mv_hedwiga like 5", "memory npc_mv_hedwiga 다정함 버들이 다섯을 위해 안개를 청했다 — 두 해가 갔다", "stress 8", "temper 자비 3", "note 할머니의 안개 매듭 — 갈대 선에 사흘 안개. 값은 나가의 피 한 방울과 할머니의 두 해"]
+      - id: false_trail
+        label: '"다섯의 헌 옷을 줘. 냄새는 내가 가라앉은 종탑으로 끌고 갈게."'
+        minutes: 30
+        risk: 밤의 늪길 다섯 시간 — 거머리 물길을 지난다
+        text: |
+          다섯 가운데 여자 하나가 너를 본다. 말을 알아듣지 못한 얼굴이다. 난네가 노예말로 옮겨 준다. 여자가 천천히 겉옷을 벗는다. 다른 셋도. 콩은 마지막까지 소매를 놓지 않다가, 놓는다.
+
+          젖은 천 다섯. 녹테른의 냄새 — 쇠와 장미, 그 밑의 겁.
+
+          알렉이 너를 오래 본다. "종탑은 마을 밖이다. 마을이 정할 일이 아니다." 막대가 귀 뒤로 돌아간다. "다섯은 사흘 초막에. 그 뒤에 다시 선다."
+
+          토르가 토른의 어깨를 잡고 있다. 토른은 너를 보며 입 모양으로만 말한다. 미쳤어.
+        effects: ["var o10_five_stay = true", "var o10_plan = trail", "var o10_scent_rags = true", "bond npc_o10_kong 3", "note 다섯의 헌 옷 — 냄새를 가라앉은 종탑으로 끌고 간다 (다섯 시간 물길)"]
+      - id: give_up
+        label: '"마을이 먼저야. 다섯은 —" 다섯을 내주자고 말한다'
+        minutes: 30
+        text: |
+          말이 끝나기 전에 토른이 손바닥으로 뗏목을 친다. 한 번. 찬성이다.
+
+          알렉은 막대를 꺼내지 않는다. 꺼낼 필요가 없다. "발."
+
+          왼발이 나온다. 많이. 난네는 세다가 그만둔다.
+
+          "새벽에 뱃사공이 다시 온다. 갈대 선까지." 알렉의 목소리가 처음으로 빨라진다. 숫자를 셀 때처럼.
+
+          콩이 너를 본다. 계속 본다. 반딧불 병이 하나씩 꺼질 때까지. 마지막 병이 꺼져도, 어둠 속에서 너는 그 눈이 어디 있는지 안다.
+        effects: ["var o10_five_out = true", "temper 자비 -10", "rel npc_o10_torn like 5", "rel npc_tessa trust -20", "rel npc_mv_rena trust -10", "deed betray", "stress 12", "memory npc_o10_kong 위험함 우리를 내보내자고 한 사람", "note 다섯을 내주자고 했다. 새벽 배로 갈대 선까지 — 잿빛 실은 이 일을 잊지 않는다"]
+      - id: silent
+        label: 아무 말도 하지 않는다 — 발도 내밀지 않는다
+        minutes: 30
+        text: |
+          모두가 기다린다. 너는 아무 말도 하지 않는다. 처음 말할 수 있게 된 밤에.
+
+          알렉이 기다리다가, 막대를 귀 뒤에 꽂는다. "발."
+
+          발들이 나온다. 네 발은 그 자리에 있다. 난네가 센다. 왼발이 둘 많다.
+
+          "새벽에 뱃사공이 다시 온다." 알렉이 말한다. "갈대 선까지."
+
+          할머니가 네 옆에서 매듭을 묶는다. 아주 세게.
+        effects: ["var o10_five_out = true", "stress 8", "rel npc_mv_hedwiga trust -3", "note 첫 뿌리 모임 — 말하지 않았다. 왼발이 둘 많았다. 다섯은 새벽 배로 갈대 선까지"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_party_size
+        needs_memory: fact:fact_o10_party_size
+        label: '"바르그 코 셋, 목줄 찬 인간 하나 — 맨발이야. 갈대 선 서쪽 마른 둔덕에, 불 없이."'
+        minutes: 30
+        text: |
+          뗏목 위의 숨소리가 멎는다.
+
+          알렉의 막대가 귀 뒤에서 나오다 말고 멈춘다. "…어떻게 아느냐."
+
+          너는 대답하지 않는다. 대답할 말이 없다 — 아직 오지 않은 새벽에 진흙에서 읽은 숫자라고는.
+
+          "셋이면." 토르가 처음으로 입을 연다. 망치 자루를 한 번 쥐었다 놓는다. "셋이면 늪이 이긴다."
+
+          오른발이 나온다. 많이. 난네가 세다가 너를 본다. 세던 손가락으로 매듭 하나를 꼰다. 이상한 것을 기억하는 매듭.
+        effects: ["var o10_five_stay = true", "var o10_knows_camp = true", "echo_sign 1 갈대 선의 머릿수를 안다", "memory npc_mv_alek 이상함 버들이 갈대 선의 머릿수를 안다 — 아무도 가 보지 않았는데", "memory npc_mv_nanne 이상함 버들이 아직 아무도 모르는 숫자를 말했다", "rel npc_mv_torr trust 4", "bond npc_o10_kong 5", "note 갈대 선 서쪽 둔덕 — 바르그 코 셋, 맨발 하나. 다섯은 사흘 초막에. 초나흘 밤 다시 선다"]
+
+  # ───────────────────────── 할머니의 매듭 ─────────────────────────
+  - id: o10_knots
+    origin: morva_freeborn
+    effects: ["goto rv_herb_hut", "var true_name_water = true", "learn fact_o10_water_knot", "note 할머니의 매듭 — 물의 이름. 소리 내지 않고 부른다. 손에 묻은 것이 물이 되어 흘러내린다. 본 사람이 있으면 — 마녀다"]
+    text: |
+      뿌리 모임이 흩어진다. 뗏목이 하나씩 풀리고, 반딧불 병이 하나씩 섬을 떠난다.
+
+      할머니가 네 손목을 잡고 약초 오두막으로 데려간다. 건조대 아래, 네가 여섯 살 때부터 잔 자리. 쑥 냄새, 버들 껍질. 문 대신 걸린 가죽을 내린다.
+
+      "아까. 물이 너한테 기울었어." 할머니가 아까 풀었다 다시 묶은 끈을 네 손바닥에 올린다. "노파들은 낱말을 매듭으로 외워. 소리로 외우면 혀가 먼저 타. 매듭은 안 타."
+
+      손가락이 매듭을 하나씩 짚는다. 하나, 둘. 셋째에서 멈춘다.
+
+      "이게 물의 이름이야. 나는 이걸 입에 올리려면 나가의 피를 혀에 얹어야 해. 한 번에 몇 해가 가." 할머니는 웃지 않는다. "너는 피 없이 입술을 움직였어. 소리도 안 내고."
+
+      너는 매듭을 짚는다. 셋째 매듭에서 입술이 먼저 안다. 손바닥에 묻어 있던 뿌리 진흙이 물이 되어 손가락 사이로 흘러내린다.
+
+      할머니의 손이 네 손을 덮는다. 차다. "보는 사람 앞에서는, 절대."
+    choices:
+      - id: secret
+        label: '"노파들한테는 말하지 마. 물거울 할머니한테도."'
+        minutes: 15
+        text: |
+          할머니가 오래 너를 본다. 그러다 고개를 끄덕인다. 한 번.
+
+          "둘째 노파 — 브리타는 그릇이 오면 늪에 가두겠다고 했어. 바위 앞에서, 다들 듣는 데서." 그녀의 손가락이 매듭을 하나 더 묶는다. 아무것도 들어 있지 않은 매듭. "나는 너를 가두려고 건조대 밑에 눕힌 게 아니야."
+        effects: ["var o10_hedwiga_silent = true", "learn fact_mv_brita_confine_plan", "rel npc_mv_hedwiga trust 5", "note 할머니는 노파들에게 말하지 않는다 — 둘째 노파 브리타는 그릇이 오면 늪에 가둔다"]
+      - id: tell
+        label: '"물거울 할머니한테 알려 줘. 둥지에 오라면 갈게."'
+        minutes: 15
+        text: |
+          할머니의 손이 멈춘다. "노파들은 삼백 년을 기다렸어. 빌린 피 없이 낱말을 말하는 그릇을." 그녀가 말을 고른다. 값을 매기는 사람처럼. "넷은 너한테 모든 근원을 주자고 할 거고, 셋은 늪에 가두자고 할 거야. 보름 회합에서 피 병을 밀고 당기듯이."
+
+          "보름 전에 와. 내가 물거울 할머니 곁에 앉아 있을게."
+        effects: ["var o10_hags_told = true", "learn fact_mv_vessel_wait_300", "learn fact_mv_hag_split_4_3", "memory npc_mv_hedwiga 용감함 버들이 노파들 앞에 서겠다고 했다", "note 보름 회합 전에 일곱 노파의 둥지로 — 스물여섯 시간 물길"]
+      - id: years
+        when: ["var o10_fog == true"]
+        label: '"두 해. 왜 그렇게 쉽게 줬어?"'
+        minutes: 10
+        text: |
+          "쉽게?" 할머니가 웃는다. 웃음 끝이 갈라진다.
+
+          "그건 값이 달라." 그녀가 하얘진 귀밑머리를 손가락에 감는다. "열 해 동안 너는 나한테 아무것도 달라고 안 했어. 쑥 한 줌도. 처음 달라는 게 남의 목숨이더라." 매듭 하나를 더 묶는다. "마흔은 원래 멀지 않았어. 조금 가까워진 것뿐이야."
+        effects: ["rel npc_mv_hedwiga like 5", "bond npc_mv_hedwiga 6", "stress 4", "note 할머니의 두 해 — 늪 마녀는 마흔을 넘기지 못한다"]
+      - id: go_reed
+        when: ["var o10_plan == reed"]
+        label: 반딧불 병 하나만 들고 갈대 선으로 떠난다 — 일곱 시간 물길
+        risk: 밤의 늪길 — 갈대 선에는 사냥대가 있다
+        minutes: 400
+        text: |
+          할머니가 문가의 가죽을 걷어 준다. "둔덕으로 가지 말고 물로 가. 냄새는 물이 먹어." 그녀가 네 손목에 매듭 하나를 묶는다. 아무것도 들어 있지 않은 매듭. "돌아오면 풀어."
+
+          줄다리를 건너 뿌리나무 그늘을 벗어나면, 반딧불 병 하나가 세상의 빛 전부다. 검은 물 위로 개구리가 운다. 무언가 큰 것이 물을 가르고 지나간다. 너는 멈추지 않는다.
+        effects: ["goto rv__red_reed_line", "fatigue 15", "note 밤의 물길로 갈대 선까지 — 할머니가 손목에 빈 매듭을 묶어 주었다"]
+      - id: go_belfry
+        when: ["var o10_plan == trail"]
+        label: 다섯의 헌 옷을 자루에 넣고 가라앉은 종탑으로 떠난다 — 다섯 시간
+        risk: 밤의 늪길 — 거머리 물길을 지난다
+        minutes: 290
+        text: |
+          할머니가 자루 끈을 한 번 더 묶어 준다. "종탑에는 웃지 않는 것이 있어. 거짓말만 하지 마. 그것만 지키면 아무것도 안 해."
+
+          녹테른의 냄새가 등에서 흔들린다. 쇠와 장미, 그 밑의 겁. 너는 일부러 마른 둔덕만 골라 밟는다. 냄새가 남도록.
+        effects: ["goto rv__sunken_belfry", "fatigue 12", "note 다섯의 헌 옷을 지고 가라앉은 종탑으로 — 냄새를 끌고 간다"]
+      - id: sleep
+        label: 건조대 아래 눕는다
+        minutes: 20
+        text: |
+          쑥 냄새 아래 눕는다. 할머니는 문가에 앉아 매듭을 꼰다. 손가락이 한 번도 멈추지 않는다.
+
+          잠이 들 무렵 그녀가 말한다. 너한테가 아니라 매듭한테. "새벽 배로 간다. 바위 앞에 서야 하니까." 그리고 조금 뒤에, 더 작게. "물이 기울었어. 나한테가 아니라."
+        effects: ["note 할머니는 새벽 배로 일곱 노파의 둥지에 돌아간다 — 버들 오두막, 스물여섯 시간 물길"]
+
+  # ───────────────────────── 새벽 배 (왼발이 이겼으면) ─────────────────────────
+  - id: o10_dawn_boat
+    origin: morva_freeborn
+    trigger: {at_time: "312-09-02 05:00", late: "312-09-02 07:00", at: *village, when: ["var o10_five_out == true"]}
+    severity: 3
+    effects: ["goto rv_arrival_hut"]
+    text: |
+      새벽 솥 불. 힐케의 첫 연기가 물 위로 눕는다.
+
+      새 도착자 초막 앞 물길에 뱃사공의 배가 대어져 있다. 다섯이 오른다. 어른 넷이 먼저, 콩이 마지막. 아무도 밀지 않는다. 밀 필요가 없다 — 발을 내민 쪽이 정했다.
+
+      물 건너 회의 섬에서 난네가 이름 바구니 밑 물을 떠내다가 손을 멈춘다. 알렉 선생은 오지 않았다. 장어 덫 물길 쪽에서 토른이 통발을 들어 올린다. 배 쪽은 보지 않는다.
+
+      콩이 배 가장자리에 앉아 손목의 숫자를 소매로 덮는다. 처음으로. 밤사이 누가 감추는 법을 가르쳐 준 모양이다.
+
+      뱃사공이 삿대를 세운다. 갈대 선까지 일곱 시간. 갈대 선을 넘은 사람은 돌아오지 못한다 — 벌이 아니라, 늪이 그렇다.
+    choices:
+      - id: beg
+        label: '뱃사공에게 — "갈대 선 말고, 그 앞 물풀 섬에 내려 줘. 선을 넘지 않게."'
+        minutes: 20
+        check: {skill: 화술, D: 28, helps: [tongue, charm, crowd_voice]}
+        success:
+          text: |
+            뱃사공이 삿대를 멈춘다. 늙은 손등에 물이 흐른다. "선을 넘겨 주는 게 내 일이다." 그가 말한다. 그리고 한참 너를 본다. "…물풀 섬은 선 안쪽이지."
+
+            배가 떠난다. 해가 질 무렵 돌아온 배에 사람은 없다. 다섯은 갈대 선 이쪽, 물 위에 뜬 풀섬에 엎드려 있었다. 냄새는 물이 먹었다.
+
+            밤이 깊어 다섯이 젖은 채 초막으로 돌아온다. 선을 넘지 않은 사람은 돌아올 수 있다 — 그것도 늪의 말이다. 알렉 선생은 아무 말도 하지 않는다. 막대를 귀 뒤에 꽂을 뿐이다. "초나흘 밤, 다시 선다."
+          effects: ["var o10_five_out = false", "var o10_five_stay = true", "rel npc_mv_alek trust -4", "bond npc_o10_kong 8", "rel npc_o10_kong like 10", "temper 자비 4", "note 다섯은 갈대 선을 넘지 않았다 — 물풀 섬에서 돌아왔다. 초나흘 밤 뿌리 모임"]
+        failure:
+          text: |
+            뱃사공은 대답하지 않는다. 삿대가 물을 민다. "선을 넘겨 주는 게 내 일이다." 등 뒤로 그 말만 남는다.
+
+            해가 질 무렵 배가 돌아온다. 빈 배다. 뱃사공이 초막 앞에 배를 대며 한 마디 한다. 누구에게도 아니게. "둔덕에서 개 짖는 소리가 났다."
+
+            그날 밤 난네가 이름 없는 끈 하나를 꼬아 바구니 맨 밑에 넣는다. 열셋째.
+          effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 12", "note 다섯은 갈대 선 너머에서 붙잡혔다. 난네가 이름 없는 끈을 꼬았다 — 열셋째"]
+      - id: knot
+        label: 부적 끈에서 매듭 하나를 풀어 콩의 손목에 묶어 준다
+        minutes: 10
+        text: |
+          이름이 든 매듭은 아니다. 맨 바깥 것, 아무것도 묶여 있지 않은 매듭. 너는 그것을 풀어 콩의 숫자 위에 감는다. 숫자가 가려진다.
+
+          콩이 매듭을 내려다본다. 오래. 처음으로 입을 연다. 노예말, 한 마디. "엄마는 숨을 못 참았어." 그리고 품에서 꺼낸 것을 네 손에 쥐여 준다. 어젯밤 솥에서 받은 장어 반 토막. 먹지 않고 넣어 둔 것.
+
+          배가 갈대 사이로 사라진다. 해가 질 무렵 빈 배가 돌아온다. 그날 밤 난네가 이름 없는 끈 하나를 꼰다. 열셋째.
+        effects: ["bond npc_o10_kong 10", "var o10_kong_knot = true", "learn fact_o10_kong_mother", "item eel", "var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 8", "rel npc_mv_nanne like 3", "note 콩의 손목에 늪의 매듭 — 녹테른으로 갔다. 난네의 열셋째 끈"]
+      - id: watch
+        label: 초막 앞에 서서 배가 갈대 사이로 사라질 때까지 본다
+        minutes: 30
+        text: |
+          배가 물길을 따라 작아진다. 콩은 한 번도 돌아보지 않는다. 돌아보는 법을 모르는 아이처럼. 갈대가 배를 삼킨다. 물이 닫힌다.
+
+          해가 질 무렵 빈 배가 돌아온다. 뱃사공이 초막 앞에 배를 대며 한 마디 한다. 누구에게도 아니게. "둔덕에서 개 짖는 소리가 났다."
+
+          그날 밤 난네가 이름 없는 끈 하나를 꼬아 바구니 맨 밑에 넣는다. 열셋째.
+        effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 10", "note 다섯은 새벽 배로 갔다. 빈 배가 돌아왔다 — 난네의 열셋째 끈"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_east
+        needs_memory: fact:fact_o10_party_size
+        label: '뱃사공에게 — "서쪽 둔덕에 셋이 있어. 맨발 하나. 동쪽 물풀 섬에 내려 줘."'
+        minutes: 15
+        text: |
+          뱃사공의 삿대가 물 위에서 멈춘다. "…둔덕을 어떻게 알아." 너는 대답하지 않는다. 그가 동쪽 하늘을 한 번 본다. 아직 해가 없는 쪽.
+
+          해가 질 무렵 빈 배가 돌아온다. 그리고 밤이 깊어 다섯이 젖은 채 초막으로 기어든다. 갈대 선 이쪽, 물풀 섬에서 하루를 엎드려 있었다. 서쪽 둔덕에서는 개들이 종일 엉뚱한 바람에 대고 짖었다고 한다.
+
+          알렉 선생은 막대를 귀 뒤에 꽂는다. "선을 넘지 않았으면 — 초나흘 밤, 다시 선다."
+        effects: ["var o10_five_out = false", "var o10_five_stay = true", "echo_sign 1 사냥대의 둔덕을 안다", "bond npc_o10_kong 8", "rel npc_mv_alek trust -2", "note 다섯은 물풀 섬에서 돌아왔다. 초나흘 밤 뿌리 모임"]
+
+  # 새벽 배를 놓쳤으면 (마을 밖에 있었다) — 다섯은 이미 갔다
+  - id: o10_five_gone
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-02 07:00", to: "312-09-14 23:00"}, at: *village, when: ["var o10_five_out == true"]}
+    text: |
+      새 도착자 초막이 비어 있다. 짚자리 다섯 개가 눌린 자국 그대로다.
+
+      새벽 배였다고, 솥 곁에서 누가 말한다. 네가 마을에 없던 아침. 해 질 무렵 빈 배가 돌아왔고, 뱃사공은 둔덕에서 개 짖는 소리를 들었다고 했다.
+
+      그날 밤 난네가 이름 없는 끈 하나를 꼬아 바구니 맨 밑에 넣었다고 한다. 열셋째.
+    choices:
+      - id: gone
+        label: 비어 있는 짚자리를 본다 ▸
+        text: |
+          짚자리 하나가 유난히 작다. 그 자리 밑에 장어 반 토막이 눌려 있다. 먹지 않고 넣어 둔 것.
+        effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 10", "note 다섯은 네가 없는 사이 새벽 배로 갔다 — 난네의 열셋째 끈"]
+
+  # ───────────────────────── 붉은 갈대 선 ─────────────────────────
+  - id: o10_reed_dawn
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-02 04:30", to: "312-09-04 20:00"}, at: [rv__red_reed_line], when: ["var o10_hunters_near == 1", "var o10_fog == false"]}
+    severity: 3
+    text: |
+      붉은 갈대. 해가 없을 때는 검다. 녹테른 쪽에서 불어오는 바람에 쇠 냄새가 섞여 있다 — 피 뽑는 우리의 냄새라고, 할머니는 말했었다.
+
+      갈대 선은 늪이 끝나는 자리다. 여기서부터 물이 얕아지고 땅이 단단해진다. 뱃사공의 삿대 자국이 진흙에 남아 있다. 다섯이 배에 오른 자리. 그 둘레를 빙 둘러, 다른 자국들.
+
+      서쪽 마른 둔덕 너머에서 불 없는 숨소리가 들린다. 낮고 길다. 사람의 숨이 아니다. 그리고 하나 — 그보다 가볍고, 빠르다.
+
+      물가로 누군가 혼자 내려온다. 맨발이다. 목에 가죽 줄이 감겨 있고, 줄 끝은 둔덕의 말뚝에 묶여 있다. 그가 엎드려 물을 마신다. 개처럼. 아니 — 개를 흉내 내는 데 오래 익숙해진 사람처럼.
+    choices:
+      - id: read
+        label: 갈대 속에 엎드려 진흙의 발자국을 읽는다 — 몇인지, 어디서 멈췄는지
+        minutes: 40
+        check: {skill: 통찰, D: 24, helps: [tracker, hunter, survivor, pathfinder]}
+        success:
+          text: |
+            발자국은 정직하다. 바르그의 발 셋 — 발가락 넷, 발톱 자국이 깊다. 하나는 왼쪽 뒷발을 끈다. 그리고 그 앞에서 늘 먼저 걷는 발 하나. 신을 신지 않은 사람의 발.
+
+            넷의 자국이 모두 물가에서 멈춘다. 배가 떠난 자리에서. 물은 냄새를 남기지 않는다. 그들은 여기서 물을 노려보고 있다.
+
+            너는 올 때보다 더 천천히 물러난다. 바람은 네 쪽에서 둔덕 쪽으로 불지 않았다.
+          effects: ["learn fact_o10_party_size", "var o10_knows_camp = true", "skill_gain 통찰 1", "note 갈대 선 서쪽 둔덕 — 바르그 코 셋(하나는 왼 뒷발을 끈다)과 맨발의 인간 하나. 물가에서 멈췄다"]
+        failure:
+          text: |
+            진흙에 엎드리자 둔덕 쪽 숨소리 하나가 멎는다. 바람이 돌았다.
+
+            너는 숨을 참는다. 오래. 숨소리가 다시 낮고 길어질 때까지. 발자국을 셀 틈은 없었다. 갈대 사이로 물러나는 동안 등 뒤에서 무언가가 코를 킁킁거린다. 아주 오래.
+          effects: ["fear 1", "stress 4", "note 갈대 선 — 바람이 돌았다. 세지 못하고 물러났다"]
+      - id: shoot
+        label: 갈대 속에서 활을 당긴다 — 둔덕에서 가장 큰 숨소리에
+        minutes: 30
+        risk: 놓치면 이빨이다
+        check: {skill: 싸움, D: 36, helps: [hunter, assassin, reflexes, hidden_blade]}
+        success:
+          text: |
+            숨을 둘 센다. 하나, 둘. 시위가 손가락을 떠난다.
+
+            물새 뼈 촉이 둔덕 너머로 사라지고, 낮고 긴 숨소리 하나가 끊긴다. 끊긴 자리에서 울음이 터진다. 사람의 울음이 아니다. 무리가 무리를 잃었을 때 내는 소리.
+
+            물가의 맨발이 말뚝 쪽으로 몸을 던진다. 너를 보았다. 둔덕 너머에서 둘이 일어선다. 그러나 오지 않는다. 죽은 것 곁에서 원을 그리며 짖는다. 해가 높아질 무렵, 갈대 선 남쪽으로 발자국 셋이 멀어진다. 하나를 끌고.
+          effects: ["var o10_hunters_near = 0", "var o10_hunt_end = blood", "var o10_retaliation += 2", "deed kill_hunter", "temper 용기 5", "temper 자비 -2", "stress 6", "note 갈대 선 — 바르그 하나를 쏘았다. 사냥대는 하나를 끌고 남쪽으로 물러났다. 조합은 피를 센다"]
+        failure:
+          text: |
+            시위가 울기 전에 바람이 돈다. 둔덕 너머의 숨소리가 셋 다 멎는다.
+
+            화살은 날아간다. 무언가를 스친다. 그리고 갈대가 갈라진다 — 낮고 빠르게, 셋이.
+
+            너는 물로 뛰어든다. 물은 냄새를 먹는다. 이빨이 먼저 닿지만 않는다면.
+          effects: ["die_if 0.35 teeth 붉은 갈대 선에서 바르그의 이빨이 목을 찾았다", "pain 35", "fear 2", "stress 6", "var o10_tracker_saw = true", "note 갈대 선 — 쏘았지만 놓쳤다. 물로 달아났다. 둔덕의 셋이 늪 사람의 냄새를 맡았다"]
+      - id: talk
+        label: 물가의 맨발에게 노예말로 낮게 부른다 — "배고프지."
+        minutes: 30
+        risk: 둔덕의 셋이 듣는다
+        check: {skill: 화술, D: 28, helps: [tongue, charm, beast_friend]}
+        success:
+          text: |
+            그가 고개를 든다. 물방울이 턱에서 떨어진다. 도망치지 않는다. 코로 한 번, 숨을 들이쉰다.
+
+            "…냄새가 달라." 노예말이다. "너는 목줄 냄새가 안 나."
+
+            너는 품에 있던 것을 꺼내 진흙 위에 놓는다. 저녁 솥에서 남긴 장어 반 토막. 그가 그것을 본다. 둔덕 쪽을 본다. 다시 장어를 본다. 개가 아니라 사람이 먹는 속도로 먹는다.
+
+            "배는 물로 갔어." 네가 말한다. "물은 냄새를 안 남겨. 늪에는 아무것도 없다고 해."
+
+            그가 목줄을 손가락으로 쓸어 본다. 오래. "…티모." 묻지도 않았는데. "엄마가 그렇게 불렀어. 놈들은 맨발이라고 해." 그리고 둔덕으로 돌아간다. 해가 높아질 무렵, 갈대 선 남쪽으로 발자국 넷이 멀어진다.
+          effects: ["var o10_tracker = turned", "var o10_tracker_turned = true", "var o10_hunters_near = 0", "var o10_hunt_end = turned", "learn fact_o10_party_size", "learn fact_o10_leash_name", "rel npc_o10_leash trust 25", "rel npc_o10_leash like 20", "memory npc_o10_leash 다정함 주인 없는 인간이 먹을 것을 진흙 위에 놓았다", "temper 자비 5", "note 맨발 — 진짜 이름은 티모. 사냥대에게 늪에 아무것도 없다고 했다"]
+        failure:
+          text: |
+            그가 고개를 든다. 너를 본다. 그리고 손가락 두 개를 입에 넣는다.
+
+            휘파람이 갈대를 찢는다. 둔덕 너머에서 셋이 일어선다.
+
+            너는 물로 뛰어든다. 등 뒤에서 그가 소리친다. 노예말로, 미안하다는 것처럼 들리는 말을. 물이 귀를 막는다.
+          effects: ["die_if 0.2 teeth 붉은 갈대 선의 물가에서 바르그의 이빨이 너를 끌어냈다", "pain 25", "fear 1", "var o10_tracker_saw = true", "note 갈대 선 — 맨발이 휘파람을 불었다. 물로 달아났다. 사냥대가 늪 사람의 냄새를 맡았다"]
+      - id: back
+        label: 아무것도 하지 않고 물러난다 — 본 것만 가지고
+        minutes: 420
+        text: |
+          너는 갈대 사이로 물러난다. 둔덕도, 물가의 맨발도 너를 보지 못한다. 본 것은 너 하나다.
+
+          돌아오는 물길은 해가 있어 짧게 느껴진다. 뿌리나무 그늘에 들어서자 솥 연기가 보인다.
+        effects: ["goto rv_herb_hut", "fatigue 15", "note 갈대 선 서쪽 둔덕 — 불 없는 숨소리. 물가에 목줄 찬 맨발의 인간"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_name
+        needs_memory: fact:fact_o10_leash_name
+        label: 물가의 맨발에게 낮게 — "티모."
+        minutes: 20
+        text: |
+          그가 얼어붙는다. 물을 마시던 그대로, 엎드린 채.
+
+          아무도 그 이름을 부르지 않았다. 열두 해 동안. 그가 천천히 고개를 든다. 너를 처음 보는 얼굴로 — 그런데 처음 보는 사람을 보는 눈이 아니다.
+
+          "…누가 알려 줬어." 대답을 기다리지 않는다. 그는 목줄을 쓸어 보고, 둔덕을 보고, 다시 너를 본다. "배는 물로 갔다고 할게. 늪엔 아무것도 없다고." 해가 높아질 무렵, 갈대 선 남쪽으로 발자국 넷이 멀어진다.
+        effects: ["var o10_tracker = turned", "var o10_tracker_turned = true", "var o10_hunters_near = 0", "var o10_hunt_end = turned", "learn fact_o10_party_size", "rel npc_o10_leash trust 30", "memory npc_o10_leash 이상함 처음 보는 주인 없는 인간이 내 이름을 불렀다", "echo_sign 1 목줄꾼의 이름을 안다", "note 맨발 — 티모. 이름을 부르자 사냥대를 돌렸다"]
+
+  # ───────────────────────── 냄새의 주인 (장어 덫 물길) ─────────────────────────
+  - id: o10_barefoot
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-03 04:00", to: "312-09-03 09:00"}, at: [rv_eel_traps], when: ["var o10_hunters_near == 1", "var o10_tracker == free", "var o10_fog == false"]}
+    severity: 3
+    text: |
+      새벽 덫. 대나무 통발이 물을 토해 내는 소리. 토른이 빈 통발을 발로 찬다.
+
+      통발 줄 하나가 이상하다. 매듭이 거꾸로 묶여 있다 — 누가 풀었다가, 모르는 손으로 다시 묶었다.
+
+      갈대가 움직이지 않는다. 바람이 있는데.
+
+      갈대 밑동 진흙에 맨발 하나가 박혀 있다. 발목에 쓸린 자국. 그 위로 목에 감긴 가죽 줄, 그 위로 너와 비슷한 나이의 얼굴. 그는 덫 줄을 읽고 있었다. 사람이 사는 곳으로 이어지는 줄을.
+
+      그가 너를 본다. 도망치지 않는다. 코로 한 번, 숨을 들이쉰다. "…냄새가 달라." 노예말이다. "너는 목줄 냄새가 안 나."
+
+      토른의 활이 벌써 올라가 있다.
+    choices:
+      - id: shoot
+        label: 네가 먼저 쏜다 — 그가 소리치기 전에
+        minutes: 15
+        check: {skill: 싸움, D: 20, helps: [hunter, assassin, reflexes]}
+        success:
+          text: |
+            가깝다. 숨 둘을 셀 필요도 없다.
+
+            그는 소리를 내지 않는다. 내지 못한다. 진흙에 무릎을 꿇고, 목줄을 쥔 채 옆으로 눕는다. 목줄을 끝까지 놓지 않는다 — 놓으면 개들이 먼저 문다는 것을 아는 손처럼.
+
+            토른이 활을 내린다. 아무 말도 하지 않는다. 장어 덫 물길의 물이 붉은 것을 천천히 데려간다.
+          effects: ["slay npc_o10_leash 40", "var o10_tracker = dead", "var o10_tracker_dead = true", "var o10_retaliation += 1", "stress 10", "temper 자비 -5", "rel npc_o10_torn trust 5", "note 장어 덫 물길 — 목줄꾼을 쏘았다. 갈대 선의 사냥대에는 이제 인간 코가 없다"]
+        failure:
+          text: |
+            시위가 운다. 그는 이미 물속에 있다. 화살은 그가 엎드렸던 진흙에 꽂힌다.
+
+            갈대가 한 번 흔들리고, 물이 한 번 갈라지고, 그다음엔 아무것도 없다. 덫 줄 하나가 끊겨 떠내려간다. 그가 읽던 줄이다.
+          effects: ["var o10_tracker_saw = true", "stress 4", "rel npc_o10_torn like -3", "note 장어 덫 물길 — 놓쳤다. 맨발이 덫 줄을 읽고 물로 사라졌다"]
+      - id: torn
+        label: 토른에게 맡긴다 — 고개만 끄덕인다
+        minutes: 10
+        text: |
+          토른은 끄덕임을 기다리고 있었다. 시위가 운다.
+
+          맨발이 진흙에 무릎을 꿇는다. 놀란 얼굴이 아니다. 오래 기다리던 것이 온 얼굴이다. 목줄을 쥔 채 옆으로 눕는다.
+
+          토른이 다가가 발로 그를 뒤집는다. 그리고 한참 서 있다. "…우리 또래네." 그 말이 다다. 그날 토른은 풀무에 가지 않는다.
+        effects: ["agenda kill npc_o10_leash", "var o10_tracker = dead", "var o10_tracker_dead = true", "var o10_torn_killed = true", "var o10_retaliation += 1", "stress 6", "temper 자비 -3", "rel npc_o10_torn trust 6", "memory npc_o10_torn 비굴함 버들은 고개만 끄덕였다 — 쏜 건 나다", "note 장어 덫 물길 — 토른이 목줄꾼을 쏘았다. 내가 끄덕였다"]
+      - id: grab
+        label: 목줄을 잡아채 물에 처박는다 — "몇이야. 어디야."
+        minutes: 20
+        check: {skill: 위압, D: 24, helps: [menace, brawler, interrogator]}
+        success:
+          text: |
+            가죽 줄은 손에 감기기 좋게 생겼다. 그것을 위해 만든 줄이다. 너는 그것을 당겨 그의 얼굴을 물에 넣는다. 하나, 둘. 꺼낸다.
+
+            "셋." 그가 물을 토하며 말한다. "코 셋. 서쪽 둔덕. 하나는 뒷다리를 절어." 숨. "줄은 읽었어. 아직 아무한테도 안 했어."
+
+            "그럼 하지 마." 너는 줄을 놓는다. "늪엔 아무것도 없다고 해. 다음엔 꺼내지 않는다."
+
+            그가 너를 본다. 미워하는 눈이 아니다. 무엇을 알아본 눈이다 — 주인이 줄을 쥐는 법과 똑같이 쥐었다는 것을. 그는 물로 사라진다.
+          effects: ["var o10_tracker = turned", "var o10_tracker_turned = true", "var o10_hunters_near = 0", "var o10_hunt_end = turned", "learn fact_o10_party_size", "temper 자비 -3", "memory npc_o10_leash 위험함 주인 없는 인간이 주인처럼 줄을 쥐었다", "note 맨발을 물에 처박았다 — 늪엔 아무것도 없다고 하라 했다"]
+        failure:
+          text: |
+            줄을 잡기도 전에 그의 이빨이 네 손등에 박힌다. 사람의 이빨이다. 개를 흉내 내다 개가 된 이빨.
+
+            그는 물로 사라진다. 손등에서 피가 흐르고, 덫 줄 하나가 끊겨 떠내려간다.
+          effects: ["pain 10", "var o10_tracker_saw = true", "note 장어 덫 물길 — 맨발이 손등을 물고 달아났다. 덫 줄을 읽고 갔다"]
+      - id: feed
+        label: 통발에서 장어 한 마리를 꺼내 그 앞 진흙에 던진다 — "배고프지."
+        minutes: 30
+        check: {skill: 화술, D: 24, helps: [tongue, charm, beast_friend]}
+        success:
+          text: |
+            장어가 진흙 위에서 한 번 뒤틀린다. 그는 그것을 본다. 너를 본다. 토른의 활을 본다.
+
+            "토른, 내려." 토른은 내리지 않는다. 그래도 쏘지 않는다.
+
+            그가 장어를 집는다. 개가 아니라 사람이 먹는 속도로, 날것을. 다 먹고 나서 손가락을 핥는다. 그리고 말한다. 묻지도 않았는데. "…티모. 엄마가 그렇게 불렀어. 놈들은 맨발이라고 해."
+
+            "배는 물로 갔어. 물은 냄새를 안 남겨. 늪엔 아무것도 없다고 해." 그가 목줄을 손가락으로 쓸어 본다. 오래. 그리고 고개를 한 번 끄덕이고, 물로 사라진다.
+          effects: ["var o10_tracker = turned", "var o10_tracker_turned = true", "var o10_hunters_near = 0", "var o10_hunt_end = turned", "learn fact_o10_party_size", "learn fact_o10_leash_name", "rel npc_o10_leash trust 25", "rel npc_o10_leash like 20", "memory npc_o10_leash 다정함 주인 없는 인간이 장어를 던져 주었다", "rel npc_o10_torn like -5", "temper 자비 5", "note 맨발 — 진짜 이름은 티모. 늪엔 아무것도 없다고 하기로 했다"]
+        failure:
+          text: |
+            장어가 진흙 위에서 뒤틀린다. 그는 그것을 보지 않는다. 너를 본다. 그리고 토른의 활을.
+
+            그는 장어를 집지 않고 물로 미끄러져 들어간다. 소리 없이. 덫 줄 하나가 끊겨 떠내려간다. 그가 읽던 줄이다.
+
+            토른이 활을 내리며 침을 뱉는다. "장어까지 줬어. 그놈이 길을 안다고."
+          effects: ["var o10_tracker_saw = true", "rel npc_o10_torn like -6", "note 장어 덫 물길 — 맨발이 장어를 두고 물로 사라졌다. 덫 줄을 읽고 갔다"]
+      - id: let_go
+        label: 활을 내리고 비켜선다 — 가라
+        minutes: 10
+        text: |
+          너는 활을 내린다. 토른의 활 앞에 한 걸음 들어선다.
+
+          "버들 —" 토른이 이름을 길게 끈다.
+
+          맨발은 너를 오래 본다. 고맙다는 얼굴이 아니다. 이상한 것을 보는 얼굴이다. 그리고 물로 미끄러져 들어간다. 덫 줄 하나를 쥔 채.
+
+          토른이 활을 진흙에 던진다. "그놈이 길을 안다고. 덫 줄이 회의 섬까지 이어진다고!"
+        effects: ["var o10_tracker_saw = true", "rel npc_o10_torn like -8", "rel npc_o10_torn trust -5", "memory npc_o10_leash 다정함 주인 없는 인간이 활을 내렸다", "temper 자비 3", "note 맨발을 보냈다 — 덫 줄을 쥐고 갔다. 토른이 활을 던졌다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_name
+        needs_memory: fact:fact_o10_leash_name
+        label: 활을 내리고 낮게 — "티모."
+        minutes: 15
+        text: |
+          그가 얼어붙는다. 진흙에 박힌 맨발 그대로.
+
+          "…누가." 목소리가 갈라진다. 열두 해 동안 아무도 부르지 않은 이름이다. 토른이 너와 그를 번갈아 본다. 활이 조금 내려간다.
+
+          "배는 물로 갔어. 늪엔 아무것도 없다고 해." 네가 말한다. 그가 고개를 한 번 끄덕인다. 이유를 묻지 않는다. 이름을 아는 사람에게는 묻지 않는다는 듯이.
+        effects: ["var o10_tracker = turned", "var o10_tracker_turned = true", "var o10_hunters_near = 0", "var o10_hunt_end = turned", "rel npc_o10_leash trust 30", "memory npc_o10_leash 이상함 처음 보는 주인 없는 인간이 내 이름을 불렀다", "memory npc_o10_torn 이상함 버들이 처음 보는 사냥개의 이름을 불렀다", "echo_sign 1 목줄꾼의 이름을 안다", "note 맨발 — 티모. 이름을 부르자 고개를 끄덕였다"]
+
+  # 할머니의 안개 속에서 (안개 매듭의 값)
+  - id: o10_barefoot_fog
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-03 04:00", to: "312-09-03 09:00"}, at: [rv_eel_traps], when: ["var o10_fog == true", "var o10_tracker == free"]}
+    severity: 3
+    text: |
+      안개. 할머니의 안개가 갈대 선에서 여기까지 흘러왔다. 통발 줄이 셋째 매듭에서 하얗게 지워진다.
+
+      물이 첨벙거린다. 장어가 아니다. 장어는 그렇게 오래 허우적거리지 않는다.
+
+      깊은 물길 한가운데에서 사람 하나가 가라앉았다 떠오른다. 목에 가죽 줄. 줄 끝이 아무것에도 묶여 있지 않다. 안개 속에서 길을 잃고, 냄새를 잃고, 발 디딜 땅을 잃은 맨발.
+
+      그의 손이 물 위로 올라온다. 너를 향해서가 아니다. 그냥 위로.
+
+      토른이 네 옆에서 숨을 멈춘다. 아무 말도 하지 않는다. 늪이 정하게 두자는 얼굴로.
+    choices:
+      - id: pull
+        label: 물에 들어가 그를 끌어낸다
+        minutes: 30
+        check: {skill: 싸움, D: 18, helps: [swimmer, iron_body]}
+        success:
+          text: |
+            물은 가슴까지 온다. 그가 너를 붙잡는다 — 물에 빠진 사람이 붙잡는 힘으로. 둘이 같이 가라앉았다가, 토른의 삿대가 물을 친다.
+
+            진흙 위에서 그가 물을 토한다. 한참. 그리고 코로 숨을 들이쉰다. "…냄새가 달라." 노예말이다. "너는 목줄 냄새가 안 나."
+
+            너는 그의 목줄 끝을 그의 손에 쥐여 준다. "갈대 선은 남쪽이야. 안개가 걷히기 전에 가. 늪엔 아무것도 없다고 해." 그가 오래 너를 본다. 그리고 안개 속으로, 남쪽으로.
+          effects: ["var o10_tracker = turned", "var o10_tracker_turned = true", "var o10_hunters_near = 0", "var o10_hunt_end = fog", "rel npc_o10_leash trust 30", "rel npc_o10_leash like 25", "memory npc_o10_leash 다정함 주인 없는 인간이 물에서 끌어냈다", "temper 자비 6", "fatigue 10", "rel npc_o10_torn like -3", "note 안개 속에서 맨발을 끌어냈다 — 늪엔 아무것도 없다고 하라 했다"]
+        failure:
+          text: |
+            물은 가슴까지 온다. 그가 너를 붙잡는다. 물에 빠진 사람의 힘으로. 둘이 같이 가라앉는다. 진흙이 발목을 문다.
+
+            토른의 삿대가 물을 친다. 너를 건져 올린다. 너만.
+
+            물 위에 가죽 줄 하나가 떠 있다. 줄 끝은 아무것에도 묶여 있지 않다.
+          effects: ["agenda kill npc_o10_leash", "var o10_tracker = dead", "var o10_tracker_dead = true", "var o10_hunters_near = 0", "var o10_hunt_end = fog", "pain 10", "stress 8", "note 안개 속 깊은 물길 — 맨발을 끌어내지 못했다"]
+      - id: push
+        label: 물에 들어가 그를 아래로 누른다
+        minutes: 20
+        text: |
+          물은 가슴까지 온다. 그가 너를 붙잡는다. 살려는 힘으로. 너는 그 힘을 아래로 누른다.
+
+          오래 걸리지 않는다. 오래 걸린다.
+
+          물 위로 올라왔을 때 토른이 너를 본다. 처음 보는 사람을 보듯이.
+        effects: ["slay npc_o10_leash 70", "var o10_tracker = dead", "var o10_tracker_dead = true", "var o10_hunters_near = 0", "var o10_hunt_end = fog", "var o10_retaliation += 1", "temper 자비 -10", "stress 12", "memory npc_o10_torn 위험함 버들이 안개 속에서 사람을 물에 눌렀다", "note 안개 속 깊은 물길 — 맨발을 물 아래로 눌렀다"]
+      - id: watch
+        label: 물가에 서서 본다 — 늪이 정하게 둔다
+        minutes: 20
+        text: |
+          그의 손이 한 번 더 올라온다. 그다음엔 올라오지 않는다.
+
+          물이 닫힌다. 안개가 그 자리를 덮는다. 아무 일도 없었던 것처럼 — 늪에서는 늘 아무 일도 없었던 것처럼.
+
+          토른이 통발을 들어 올린다. 장어가 아홉. "늪이 했어." 그가 말한다. 너한테가 아니라 물한테.
+        effects: ["agenda kill npc_o10_leash", "var o10_tracker = dead", "var o10_tracker_dead = true", "var o10_hunters_near = 0", "var o10_hunt_end = fog", "stress 8", "temper 자비 -5", "note 안개 속 깊은 물길 — 맨발이 가라앉는 것을 보았다. 늪이 했다"]
+
+  # ───────────────────────── 가라앉은 종탑 ─────────────────────────
+  - id: o10_belfry
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-02 02:30", to: "312-09-30 23:00"}, at: [rv__sunken_belfry]}
+    severity: 2
+    effects: ["var o10_bell_read = true", "learn fact_o10_bell_surname", "note 가라앉은 종탑 — 종 허리의 아스테리아 성을 읽었다. 가르치지 않은 글자 셋까지"]
+    text: |
+      종탑은 반쯤 가라앉아 있다. 돌계단이 물속으로 내려가고, 물 위로는 종루와 지붕만 남았다. 아스테리아 사람들이 쌓은 돌이다 — 늪보다 오래된 것.
+
+      종루에 종이 걸려 있다. 녹이 푸르다. 종 허리에 글자가 한 줄 둘러 있다.
+
+      알렉 선생이 진흙판에 가르치는 글자는 열여덟. 종의 글자 가운데 셋은 그 열여덟에 없다. 너는 그것을 읽는다. 성 하나. 사람의 성. 마지막 글자에서 눈가로 잿빛 고리가 스친다 — 그리고 들린다. 이 종이 울리던 날, 종탑 아래 광장에서 글자를 소리 내어 읽는 아이들의 목소리. 수백. 아무도 숨지 않는 목소리.
+
+      종루 난간에 무언가가 앉아 있다. 사람의 모양이다. 가장자리가 재처럼 흐리다. 바람이 불자 손가락 끝이 흩어졌다가 다시 모인다. 웃지 않는 얼굴.
+
+      "너는 오늘 거짓말을 한 번도 안 했구나." 맑고 평평한 목소리. "…젖은 재 냄새. 아주 옅게. 처음 맡는데, 아는 냄새야. 이건 진실이야."
+    choices:
+      - id: trail
+        when: ["var o10_scent_rags == true"]
+        label: 다섯의 헌 옷을 종루 기둥에 묶어 둔다 — 냄새를 여기서 끝낸다
+        minutes: 40
+        check: {skill: 은신, D: 28, helps: [survivor, evade_track, pathfinder]}
+        success:
+          text: |
+            젖은 천 다섯을 종루 기둥에 묶는다. 바람이 녹테른의 냄새를 늪 위로 흩는다 — 마을 반대쪽으로.
+
+            웃지 않는 것이 그것을 내려다본다. "바르그가 오면 내가 진실 하나를 말해 줄게." 평평한 목소리. "그러면 다시는 안 와. 개들은 진실을 싫어하거든."
+
+            돌아오는 물길에서 너는 일부러 물속으로만 걷는다. 네 냄새는 종탑에서 끝난다.
+          effects: ["var o10_scent_rags = false", "var o10_hunters_near = 0", "var o10_hunt_end = trail", "rel npc_ashdust trust 10", "note 다섯의 냄새를 가라앉은 종탑에서 끝냈다 — 웃지 않는 것이 바르그에게 진실 하나를 말해 주겠다고 했다"]
+        failure:
+          text: |
+            종루로 오르는 돌계단은 물에 잠겨 있다. 허리까지 물에 잠긴 채 오른다. 다리에 무언가가 붙는다. 하나, 그리고 열.
+
+            거머리다. 종탑 물길의 거머리는 피를 먹고 열을 남긴다. 젖은 천 다섯은 기둥에 묶었지만, 묶는 동안 네 냄새가 물 위로 흘렀다. 바르그가 종탑까지 온다면, 거기서 돌아가는 냄새 하나를 더 찾을 것이다.
+
+            웃지 않는 것이 말한다. "너는 지금 열이 올라. 이건 진실이야."
+          effects: ["var o10_scent_rags = false", "pain 20", "fatigue 15", "note 종탑 물길의 거머리 — 열이 오른다. 냄새가 반쯤 남았다"]
+      - id: ask
+        label: 웃지 않는 것에게 묻는다 — "나한테서 무슨 냄새가 나?"
+        minutes: 20
+        text: |
+          "돌아오는 냄새." 대답이 곧다. 망설임이 없다. 망설일 수가 없는 입이다.
+
+          "아주 옛날에 숲의 여왕이 웃었어. 왜 웃었는지 나는 알아. 그건 상자 속의 진실이라 지금은 말 못 해." 손가락 끝이 흩어졌다 모인다. "여왕의 사자가 숲 밖으로 나왔어. 그 냄새를 찾으러. 이것도 진실이야. 그래서 이 말은 무서워."
+
+          그것이 너를 본다. 웃으려는 것처럼 입가가 움직인다. 소리는 나지 않는다.
+        effects: ["learn fact_o10_ashdust_smell", "rel npc_ashdust trust 10", "memory npc_ashdust 이상함 젖은 재 냄새가 아주 옅은 늪 아이가 왔다", "stress 4", "note 종탑의 웃지 않는 것 — 나한테서 돌아오는 냄새가 난다. 여왕의 사자가 그 냄새를 찾는다"]
+      - id: bell
+        label: 종의 성을 손가락으로 따라 쓴다 — 외운다
+        minutes: 30
+        text: |
+          녹이 손가락에 묻어난다. 아홉 글자. 셋은 진흙판 학교에서 한 번도 본 적 없는 모양이다. 손가락이 그것을 안다.
+
+          웃지 않는 것이 난간에서 내려다본다. "그 종이 울리던 날 나는 성벽 아래에 있었어. 인간 아이들이 글자를 읽는 소리를 들었지. 너도 방금 들었구나." 진실만 말하는 입이다. "그 소리를 들은 인간은 너 하나야. 삼천 년 만에."
+        effects: ["skill_gain 읽고쓰기 2", "rel npc_ashdust trust 6", "memory npc_ashdust 이상함 늪 아이가 종이 울리던 날의 소리를 들었다", "note 종의 성 아홉 글자 — 손가락이 외웠다. 종탑의 웃지 않는 것도 그날의 소리를 들었다고 했다"]
+      - id: leave
+        label: 종탑을 떠난다 — 뒤돌아보지 않는다
+        minutes: 10
+        text: |
+          돌계단을 내려온다. 등 뒤에서 평평한 목소리가 따라온다. "다음에 오면 거짓말을 세어 줄게. 오늘은 셀 게 없었어."
+
+          물길로 들어서자 종이 한 번 운다. 바람 때문이다. 바람 때문일 것이다.
+        effects: ["note 가라앉은 종탑을 떠났다 — 종이 한 번 울었다"]
+
+  # ───────────────────────── 두 번째 뿌리 모임 (초나흘 밤) ─────────────────────────
+  - id: o10_second_council
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-04 20:30", to: "312-09-05 02:00"}, at: *village, when: ["var o10_five_stay == true"]}
+    severity: 3
+    effects: ["goto rv_vote_circle"]
+    text: |
+      초하루에서 사흘. 회의 섬 둘레에 다시 뗏목이 묶이고, 줄마다 반딧불 병이 걸린다.
+
+      알렉 선생이 귀 뒤의 막대를 꺼낸다. 이번에는 도로 꽂지 않는다. "사흘이 지났다. 갈대 선 이야기를 하자."
+
+      다섯은 원 가장자리에 서 있다. 사흘 동안 솥의 몫을 받은 얼굴들. 콩이 사람들 사이에서 너를 찾는다. 찾아낸다.
+    choices:
+      - id: gone_stay
+        when: ["var o10_hunters_near == 0"]
+        label: 오른발을 내민다 — 갈대 선은 비었다
+        minutes: 40
+        text: |
+          알렉이 갈대 선 이야기를 끝내기도 전에 오른발이 나온다. 하나, 둘, 셋 — 난네가 세다가 그만둔다. 셀 필요가 없다.
+
+          난네가 다섯 앞에 선다. 이름은 묻지 않는다. "어디서 왔어?" 첫 질문이다. 이름은 일 년 뒤, 첫 이름 날에.
+
+          콩이 대답 대신 손목을 내민다. 숫자가 있는 손목. 난네가 그 위에 매듭 끈 하나를 감아 준다. 아직 이름이 없는 끈이다.
+        effects: ["var o10_five_stay = false", "var o10_five_out = false", "var o10_five_safe = true", "bond npc_o10_kong 6", "rel npc_mv_nanne like 3", "note 다섯은 뿌리마을에 남는다 — 콩의 손목에 이름 없는 끈. 첫 이름 날은 일 년 뒤"]
+      - id: fog_stay
+        when: ["var o10_hunters_near == 1", "var o10_fog == true"]
+        label: 안개가 걷혔다 — 오른발을 내민다
+        minutes: 40
+        text: |
+          사흘 만에 안개가 걷혔다. 갈대 선 쪽에서 돌아온 망꾼이 숫자를 댄다. 발자국 넷, 모두 남쪽으로. 돌아오는 발자국은 없다.
+
+          오른발이 나온다. 할머니의 두 해가 낸 길이다. 그걸 아는 사람은 이 섬에 너 하나다.
+
+          난네가 다섯 앞에 선다. "어디서 왔어?" 첫 질문이다. 콩이 손목을 내민다. 난네가 그 위에 이름 없는 끈 하나를 감아 준다.
+        effects: ["var o10_five_stay = false", "var o10_five_out = false", "var o10_five_safe = true", "var o10_hunters_near = 0", "var o10_hunt_end = fog", "bond npc_o10_kong 5", "note 안개가 사흘을 덮었다 — 사냥대는 남쪽으로 돌아갔다. 다섯은 남는다"]
+      - id: speak
+        when: ["var o10_hunters_near == 1", "var o10_fog == false", "var o10_tracker_saw == false"]
+        label: '"냄새는 갈대 선에서 끝나. 늪은 냄새를 안 남겨." — 다시 말한다'
+        minutes: 40
+        check: {skill: 화술, D: 28, helps: [crowd_voice, tongue, charm], warn: ["pknows fact_o10_party_size", "pknows fact_p2mv_torr_gas_traps", "var o10_tracker_dead == true"]}
+        success:
+          text: |
+            "냄새는 갈대 선에서 끝나." 이번에는 목소리가 물 위로 건너간다. "물은 냄새를 안 남겨. 사흘 동안 둔덕에서 아무도 물로 들어오지 못했어. 못 들어오는 거야."
+
+            알렉이 막대를 귀 뒤에 꽂는다. "발."
+
+            오른발이 나온다. 난네가 센다. 이번에는 끝까지. 왼발보다 넷이 많다. 토른의 발은 — 오른발이다. 너를 보지 않고.
+
+            난네가 다섯 앞에 선다. "어디서 왔어?" 첫 질문이다. 콩이 손목을 내민다. 난네가 그 위에 이름 없는 끈 하나를 감아 준다.
+          effects: ["var o10_five_stay = false", "var o10_five_out = false", "var o10_five_safe = true", "bond npc_o10_kong 6", "rel npc_mv_alek trust 4", "rel npc_o10_torn trust 3", "memory npc_mv_alek 용감함 버들이 두 번째 뿌리 모임에서도 다섯 쪽에 섰다", "note 두 번째 뿌리 모임 — 오른발이 넷 많았다. 다섯은 남는다"]
+        failure:
+          text: |
+            네 말이 끝나기 전에 누가 말한다. 뗏목 끝에서. "냄새가 사흘째야. 내일은 나흘째고."
+
+            알렉이 막대를 귀 뒤에 꽂는다. "발."
+
+            왼발이 나온다. 난네가 센다. 세다가, 손이 멈춘다. 다시 센다.
+
+            새벽, 뱃사공의 배가 초막 앞에 닿는다. 콩이 마지막으로 오른다. 손목의 숫자를 소매로 덮는다. 처음으로. 해가 질 무렵 빈 배가 돌아온다. 그날 밤 난네가 이름 없는 끈 하나를 꼬아 바구니 맨 밑에 넣는다.
+          effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 12", "note 두 번째 뿌리 모임 — 왼발. 다섯은 새벽 배로 갈대 선 너머로. 난네의 이름 없는 끈"]
+      - id: speak_hard
+        when: ["var o10_hunters_near == 1", "var o10_fog == false", "var o10_tracker_saw == true"]
+        label: '"길이 있다는 걸 아는 건 하나야. 하나는 물을 못 건너." — 다시 말한다'
+        minutes: 40
+        check: {skill: 화술, D: 36, helps: [crowd_voice, tongue, charm], warn: ["pknows fact_o10_party_size", "pknows fact_p2mv_torr_gas_traps"]}
+        success:
+          text: |
+            "맨발이 우리 냄새를 맡았어. 그래, 늪 안쪽에 길이 있다는 걸 알아." 뗏목 위가 술렁인다. 너는 기다린다. 술렁임이 가라앉을 때까지. "그런데 아는 건 하나야. 바르그는 물을 못 건너. 그놈 혼자 늪에 들어오면 — 늪이 먼저 안다."
+
+            토르가 망치 자루를 한 번 쥐었다 놓는다. 그리고 처음으로 오른발을 내민다. 다른 발들이 따라 나온다.
+
+            난네가 다섯 앞에 선다. "어디서 왔어?" 콩이 손목을 내민다. 난네가 그 위에 이름 없는 끈 하나를 감아 준다.
+          effects: ["var o10_five_stay = false", "var o10_five_out = false", "var o10_five_safe = true", "bond npc_o10_kong 6", "rel npc_mv_torr trust 5", "rel npc_mv_alek trust 3", "note 두 번째 뿌리 모임 — 맨발이 냄새를 맡은 것을 다 알고도 오른발. 다섯은 남는다"]
+        failure:
+          text: |
+            "맨발이 우리 냄새를 맡았어." 뗏목 끝에서 토른이 말한다. 너를 보지 않고. "길을 아는 놈이 하나 생겼다고."
+
+            알렉이 막대를 귀 뒤에 꽂는다. "발."
+
+            왼발이 나온다. 많이.
+
+            새벽, 뱃사공의 배가 초막 앞에 닿는다. 콩이 마지막으로 오른다. 해가 질 무렵 빈 배가 돌아온다. 그날 밤 난네가 이름 없는 끈 하나를 꼬아 바구니 맨 밑에 넣는다.
+          effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 12", "note 두 번째 뿌리 모임 — 맨발이 냄새를 맡았다는 말에 왼발. 다섯은 새벽 배로"]
+      - id: silent
+        when: ["var o10_hunters_near == 1", "var o10_fog == false"]
+        label: 이번에도 발을 내밀지 않는다
+        minutes: 40
+        text: |
+          알렉이 막대를 귀 뒤에 꽂는다. "발."
+
+          발들이 나온다. 네 발은 그 자리에 있다. 콩의 눈이 네 발을 본다. 오래.
+
+          왼발이 많다. 새벽, 뱃사공의 배가 초막 앞에 닿는다. 해가 질 무렵 빈 배가 돌아온다. 그날 밤 난네가 이름 없는 끈 하나를 꼬아 바구니 맨 밑에 넣는다.
+        effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 12", "note 두 번째 뿌리 모임 — 발을 내밀지 않았다. 다섯은 새벽 배로 갔다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_three
+        when: ["var o10_hunters_near == 1", "var o10_fog == false"]
+        needs_memory: fact:fact_o10_party_size
+        label: '"코 셋, 하나는 왼 뒷발을 끌어. 셋이면 늪이 이긴다."'
+        minutes: 40
+        text: |
+          뗏목 위가 조용해진다. 다른 조용함이다.
+
+          "…어떻게 아느냐." 알렉이 묻는다. 너는 대답하지 않는다. 토르가 망치 자루를 한 번 쥐었다 놓는다. "셋이면 늪이 이긴다." 네 말을 그대로 따라 한다. 그리고 오른발을 내민다.
+
+          난네가 센다. 세면서 너를 본다. 세던 손가락으로 매듭 하나를 꼰다 — 이상한 것을 기억하는 매듭. 콩의 손목에 이름 없는 끈이 감긴다.
+        effects: ["var o10_five_stay = false", "var o10_five_out = false", "var o10_five_safe = true", "echo_sign 1 사냥대의 다리까지 안다", "memory npc_mv_alek 이상함 버들이 갈대 선 사냥대의 다리까지 안다", "bond npc_o10_kong 6", "note 두 번째 뿌리 모임 — 셋이면 늪이 이긴다. 다섯은 남는다"]
+
+  # 두 번째 뿌리 모임을 놓쳤으면 (마을 밖에 있었다)
+  - id: o10_council_absent
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-05 02:00", to: "312-09-14 23:00"}, at: *village, when: ["var o10_five_stay == true"]}
+    text: |
+      네가 없는 사이 뿌리 모임이 섰다. 초나흘 밤.
+
+      마을은 그 이야기를 솥 곁에서, 줄다리 위에서 한다. 낮은 목소리로. 발이 어느 쪽으로 나왔는지.
+    choices:
+      - id: kept
+        when: ["var o10_hunters_near == 0"]
+        label: 오른발이었다 — 다섯은 남았다
+        text: |
+          갈대 선이 비어 있었으니까. 난네가 콩의 손목에 이름 없는 끈을 감아 주었다고 한다. 네가 없는 자리에서.
+        effects: ["var o10_five_stay = false", "var o10_five_safe = true", "note 네가 없는 사이 두 번째 뿌리 모임 — 다섯은 남았다"]
+      - id: fog_kept
+        when: ["var o10_hunters_near == 1", "var o10_fog == true"]
+        label: 안개가 걷혔다 — 다섯은 남았다
+        text: |
+          안개가 걷힌 갈대 선에 발자국 넷이 남쪽으로 나 있었다고, 망꾼이 숫자를 댔다고 한다. 오른발이 많았다. 콩의 손목에 이름 없는 끈.
+        effects: ["var o10_five_stay = false", "var o10_five_safe = true", "var o10_hunters_near = 0", "var o10_hunt_end = fog", "note 네가 없는 사이 — 안개가 걷히고 사냥대는 남쪽으로 갔다. 다섯은 남았다"]
+      - id: lost
+        when: ["var o10_hunters_near == 1", "var o10_fog == false"]
+        label: 왼발이었다 — 새벽 배였다
+        text: |
+          왼발이 많았다. 새벽 배였다. 해 질 무렵 빈 배가 돌아왔고, 그날 밤 난네가 이름 없는 끈 하나를 꼬았다고 한다. 초막의 가장 작은 짚자리 밑에 장어 반 토막이 눌려 있다.
+        effects: ["var o10_five_out = false", "var o10_five_stay = false", "var o10_five_taken = true", "var o10_kong_lost = true", "var o10_hunters_near = 0", "var o10_hunt_end = taken", "agenda kill npc_o10_kong", "stress 10", "note 네가 없는 사이 두 번째 뿌리 모임 — 왼발. 다섯은 새벽 배로 갔다"]
+
+  # ───────────────────────── 피 깃털 (피를 흘렸으면) ─────────────────────────
+  - id: o10_feathers
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-07 04:00", to: "312-09-14 20:00"}, at: [rv_eel_traps], when: ["var o10_retaliation >= 1"]}
+    severity: 2
+    text: |
+      통발 줄 끝에 깃털 하나가 꽂혀 있다. 물새 깃털이 아니다. 끝을 피에 담갔다가 말렸다.
+
+      늪 아이들도 안다. 바르그가 꽂는 깃털은 말이다. 하나면 '본다'. 셋이면 '온다'.
+
+      하나다. 아직은.
+    choices:
+      - id: pull
+        label: 깃털을 뽑아 물에 던진다
+        minutes: 5
+        text: |
+          물이 깃털을 데려간다. 내일 아침 같은 자리에 둘이 꽂혀 있을지도 모른다. 아니면 셋이.
+        effects: ["learn fact_o10_feather_marks", "var o10_retaliation += 1", "stress 4", "temper 용기 2", "note 장어 덫 줄의 피 깃털 — 뽑아 물에 던졌다"]
+      - id: alek
+        label: 깃털을 그대로 두고 알렉 선생에게 알린다
+        minutes: 40
+        text: |
+          알렉은 깃털을 오래 본다. 진흙판의 글자를 읽듯이. "천천히." 그 말이 다다.
+
+          그날 밤부터 안쪽 망루의 밤 망이 둘이 된다. 줄다리의 반딧불 병은 한 줄 걸러 하나씩만 건다.
+        effects: ["learn fact_o10_feather_marks", "var o10_watch_doubled = true", "rel npc_mv_alek trust 4", "note 피 깃털 — 알렉 선생이 안쪽 망루의 밤 망을 둘로 늘렸다"]
+      - id: leave
+        label: 보지 않은 척 통발을 올린다
+        minutes: 30
+        text: |
+          깃털은 그 자리에 있다. 바람이 불 때마다 한 번씩 고개를 끄덕인다. 본다, 본다, 본다.
+        effects: ["learn fact_o10_feather_marks", "stress 3", "note 장어 덫 줄의 피 깃털 — 그대로 두었다"]
+
+  # ───────────────────────── 늪 밖의 사람들 (늪 어귀에 처음 닿는 날) ─────────────────────────
+  - id: o10_first_outside
+    origin: morva_freeborn
+    trigger: {window: {from: "312-09-02 06:00", to: "313-08-30 23:00"}, at: "@morva_mouth"}
+    severity: 1
+    text: |
+      늪 어귀. 썩은 나루 기둥을 따라 가판 열두 곳. 훈제 장어 냄새 위로 처음 맡는 냄새가 섞여 있다 — 기름 먹인 가죽, 쇠, 그리고 루멘에서 온 사람들의 몸 냄새.
+
+      장어 장수들이 값을 부른다. 그 뒤에서 짐을 진 사람 하나가 고개를 숙이고 서 있다. 목에 쇠고리. 고리에 새겨진 글자를 너는 읽는다 — 사람의 이름이다. 그 사람의 이름이 아니다. 그 사람은 한 번도 고개를 들지 않는다.
+
+      외팔의 사내가 너를 보더니 곧장 걸어온다. 베니다 — 늪 어귀의 망꾼장, 목에 호루라기 일곱. 그의 눈이 네 등의 활에 멈춘다.
+
+      "활 내려." 숫자를 대듯 짧다. "여기서부터는 늪이 아니야."
+    choices:
+      - id: lower
+        label: 활을 내려 자루에 넣는다
+        minutes: 10
+        text: |
+          베니가 고개를 한 번 끄덕인다. "눈도." 그가 말한다. "루멘 사람 앞에서는 발을 봐. 글자가 보여도 읽은 얼굴을 하지 말고."
+
+          쇠고리를 찬 사람이 짐을 고쳐 진다. 너는 처음으로 고개를 숙여 본다. 목이 낯설게 접힌다.
+        effects: ["var o10_naive = false", "learn fact_o10_outside_rule", "rel npc_mv_beni like 4", "note 늪 어귀 — 늪 밖에서는 활을 감춘다. 글자도, 눈도"]
+      - id: ask_serf
+        label: 쇠고리를 찬 사람에게 말을 건다 — "어디서 왔어?"
+        minutes: 10
+        text: |
+          그 사람이 움찔한다. 대답하지 않는다. 대신 장어 장수의 막대가 그 사람의 등을 친다. 한 번. 너 때문에.
+
+          베니가 네 팔을 잡아 끈다. 나루 기둥 뒤까지. "주인 있는 사람한테 주인 없는 말을 걸면, 맞는 건 그 사람이야." 그가 네 활을 자루에 쑤셔 넣는다. "늪 사람은 늪 밖에서 아무한테도 말을 걸지 않아."
+        effects: ["var o10_naive = false", "learn fact_o10_outside_rule", "stress 6", "temper 자비 1", "rel npc_mv_beni trust -2", "note 늪 어귀 — 주인 있는 사람한테 주인 없는 말을 걸면 맞는 건 그 사람이다"]
+      - id: keep
+        label: 활을 멘 채 고개를 든다 — 늪 사람은 그렇게 산다
+        minutes: 10
+        risk: 루멘에서 온 눈들이 본다
+        text: |
+          베니가 너를 본다. 오래. 그리고 숫자를 대듯 말한다. "그럼 네 얼굴이 루멘에 간다. 장수 셋이 봤어. 셋이면 소문이다."
+
+          장어 장수 하나가 너를 보며 무언가를 혀 위에서 굴린다. 값을 매기는 얼굴이다.
+        effects: ["wanted 1 늪 어귀에서 활을 멘 인간이 보였다", "rel npc_mv_beni trust -4", "note 늪 어귀 — 활을 멘 채 섰다. 루멘 장수 셋이 보았다"]
+
+  # ───────────────────────── 뿌리마을의 소품 (연출가 — 어느 출신이든) ─────────────────────────
+  - id: o10_dir_pot
+    trigger: {director: true, category: calm, at: [rv_pot], hours: ["17:30", "20:00"], chance: 0.3}
+    text: |
+      솥 셋에서 김이 오른다. 힐케가 국자로 사람을 하나씩 가리킨다. "먹었어?" 대답이 '응'이어도 국자는 한 번 더 들어간다.
+
+      솥 가장자리에 국자 자국이 줄지어 있다. 자국 하나가 하루다. 굶주림월이 오면 자국이 반으로 준다고, 힐케는 말하지 않는다.
+    choices:
+      - id: ask
+        label: '힐케에게 — "겨울엔 하루에 몇 자국이야?"'
+        text: |
+          힐케는 대답 대신 국자로 네 그릇 가장자리를 한 번 친다. 그리고 한 국자를 더 붓는다. "먹었어? 그럼 됐어."
+        effects: ["rel npc_mv_hilke like 2", "note 공동 솥 — 굶주림월에는 국자 자국이 반으로 준다"]
+      - id: count
+        label: 국자 자국을 센다
+        text: |
+          스물아홉에서 손가락이 멈춘다. 그 뒤로는 자국이 겹쳐서 셀 수가 없다. 김이 얼굴을 덮는다. 따뜻하다.
+        effects: ["stress -3"]
+  - id: o10_dir_black_jaw
+    trigger: {director: true, category: threat, at: [rv_eel_traps, rv_rope_bridges, rv_glow_field, rv_smokehouse], hours: ["00:00", "24:00"], night: true, chance: 0.25}
+    text: |
+      물이 한 번 갈라진다. 반딧불 병 빛이 닿지 않는 데서.
+
+      검은 턱이다. 길이는 줄다리 널 넷. 눈 두 개가 물 위에 떠 있고, 그 사이가 너무 멀다.
+
+      밤 물길은 혼자 다니지 않는다. 규칙이 아니라, 살아남은 사람들의 버릇이다.
+    choices:
+      - id: still
+        label: 숨을 죽이고 엎드린다 — 지나갈 때까지
+        minutes: 20
+        check: {skill: 은신, D: 18, helps: [beast_friend, shadow_step]}
+        success:
+          text: |
+            눈 두 개가 가라앉는다. 물이 닫힌다. 한참 뒤에야 개구리가 다시 운다.
+          effects: ["stress 2"]
+        failure:
+          text: |
+            발밑의 널이 기운다. 발목이 물에 잠긴다 — 무언가가 스치고 지나간다. 이빨이 아니었다. 이번에는.
+          effects: ["pain 12", "fear 1"]
+      - id: light
+        label: 반딧불 병을 흔들어 망루 쪽으로 빛을 낸다
+        minutes: 10
+        text: |
+          망루에서 호루라기가 짧게 두 번 — 불. 누가 삿대로 물을 친다. 두 번, 세 번. 눈 두 개가 물러난다. 아주 천천히, 서두를 것 없다는 듯이.
+        effects: ["stress 4"]
+  - id: o10_dir_basket
+    trigger: {director: true, category: omen, at: [rv_council_island], hours: ["20:00", "23:00"], chance: 0.25}
+    text: |
+      이름 바구니가 물 위에서 흔들린다. 난네가 바구니 밑 물을 손바닥으로 떠낸다. 한 번, 두 번.
+
+      그녀의 손가락이 매듭 끈 사이를 지나간다. 사백열둘. 그 사이사이에 매듭만 있고 이름이 없는 끈들.
+    choices:
+      - id: ask
+        label: '"이름 없는 끈은 누구 거야?"'
+        minutes: 15
+        text: |
+          난네는 손을 멈추지 않는다. "일 년을 못 채운 사람들." 끈 하나를 꼰다. "이름은 없어도 매듭은 맸어. 끈 하나가 한 사람이야."
+        effects: ["learn fact_p2mv_nanne_twelve_blank_cords", "rel npc_mv_nanne like 3"]
+      - id: leave
+        label: 바구니에서 눈을 뗀다
+        text: |
+          물이 바구니 밑을 핥는다. 난네의 손이 그 물을 다시 떠낸다. 한 번, 두 번.
+        effects: ["stress -1"]

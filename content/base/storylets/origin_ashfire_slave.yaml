@@ -1,0 +1,847 @@
+# 잿불 광산 노예 (SCENARIOS O-02) — 회귀점의 대본 장면과 첫 열흘의 장면. 사람의 대응표는 creation/origins_ashfire_slave.yaml 머리말.
+# 문법은 greyford_opening.yaml 머리말과 같다. {name} = 진짜 이름 (갱에서는 에디크만 소리 내어 부른다). 이 출신에게 {sibling}은 없다.
+#
+# 흐름
+#   o2_cavein_open (17:40, 회귀점) → o2_cavein_hand (낙반 · 잔향의 각성 · 일곱 선택) — 두 번째 회차부터 ◈ 천장보다 먼저 외치면 o2_cavein_early
+#   첫 밤 숯막: o2_knot_lesson (에디크가 살았으면 — 매듭 읽기) / o2_knot_for_edik (죽었으면 — 마흔둘째 매듭)
+#   둘째 날 새벽 점호: o2_edik_leg (부서진 다리 — 갱조·병동·웨나의 수레) → o2_ward_night (병동의 밤) → o2_edik_taken (요람의 손)
+#   흑점 넷: o2_lower_call (새벽 점호, 그락스의 손가락) → o2_cradle_take (그날 밤, 쇠눈 크롬) → o2_cradle_cell (대기 감방)
+#            → o2_graft_table (이식대 — 견디면 그릇, 못 견디면 종료) · 한 번 넘긴 뒤 다시 넷이면 o2_lower_again
+#   요람에서 빠지면: o2_krom_hunt (쇠눈 크롬이 외운 얼굴)
+# 시각: `then`으로 잇는 장면은 시간이 흐르지 않는다 (요람의 밤은 한 밤 안에 끝난다 — 은비늘은 20~23:30 그릇의 방에 있다).
+storylets:
+  # ───────────────────────── 회귀점 — 붉은 목구멍의 낙반 ─────────────────────────
+  - id: o2_cavein_open
+    origin: ashfire_slave
+    trigger: {start: true}
+    stage:
+      - {npc: npc_haro, at: em_lvl_mid, from: "17:40", to: "19:40", doing: 갱목 사이를 걸으며 갱조 서른의 이름을 입속으로 센다}
+      - {npc: npc_o2_edik, at: em_lvl_mid, from: "17:40", to: "17:58", doing: 서쪽 갱도 끝에서 마지막 수레를 채운다}
+      - {npc: npc_grax, at: em_lvl_mid, from: "17:40", to: "18:10", doing: 점호 패를 이빨로 문 채 막장 입구에서 수레를 센다}
+      - {npc: npc_yan_nose, at: em_lvl_mid, from: "17:40", to: "19:40", doing: 막장 앞에서 코를 훌쩍이며 먼지 냄새를 맡는다}
+    text: |
+      붉은 먼지 냄새. 등잔 기름, 젖은 돌, 식은 땀.
+
+      중층 4번 막장. 교대 종까지 손가락 두 마디. 올림 바구니는 한 번에 서른을 태우고, 하로의 갱조는 언제나 마지막 바구니다. 곡괭이들이 하나씩 벽에서 떨어진다.
+
+      하로 — 갱조 반장, 손목에 매듭끈을 감은 노인 — 가 갱목 사이를 걷는다. 입술만 움직인다. 번호가 아니라 이름을 센다. 감독 앞에서는 하지 않는 일이다. 막장 입구에서는 그락스가 점호 패를 이빨로 문 채 수레를 센다.
+
+      서쪽 갱도 끝에서 에디크가 마지막 수레를 채운다. 스물, 같은 슬래그 비탈의 굴에서 자란 네 단짝. 그가 등잔을 들어 너를 비추고 이를 드러낸다.
+
+      그가 부른다. 번호가 아니라. 이 갱에서 그 이름을 소리 내어 부르는 사람은 그 하나다.
+    input: true_name
+    input_label: 에디크가 부르는 이름
+    input_button: 돌아본다
+    input_say: 번호가 아니라 이름을 부른다
+    input_sibling: false
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "붉은 먼지 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 붉은 먼지 냄새."}
+    trace_lines:
+      water: 기침이 터진다. 목 안에 물이 있다. 없다. 갱도 바닥의 물웅덩이는 발목 깊이다.
+      teeth: 목덜미가 가렵다. 긁으면 손톱 밑에 붉은 먼지뿐이다.
+      spear: 옆구리가 시리다. 갱목 모서리에 닿은 자리다. 그럴 것이다.
+      blade: 가슴뼈 한가운데가 뜨겁다. 손을 대 보면 꿰맨 자리는 없다.
+      rope: 손목이 쓸린다. 밧줄 자국은 없다. 발목의 쇠고리 자국뿐이다.
+      hunger: 배가 꼬인다. 아니다 — 교대가 끝나면 검은 빵 창구가 열린다.
+      fall: 등에 돌의 무게가 있다. 없다. 천장은 아직 숨을 쉬지 않았다.
+    return_ink: |
+      ┊ 그 다음엔 천장이 숨을 다 쉬었다. 서쪽 갱도가 무너졌고, 에디크가 그 밑에 있었다.
+    after_input: |
+      "{name}! 종 치기 전에 올라가면 이다 아줌마가 한 조각 더 준대. 어제 그랬어."
+
+      그때 천장이 숨을 쉰다.
+
+      오래된 광부들만 아는 소리다. 갱목 하나가 길게 운다. 머리 위 어딘가에서 모래가 흐른다 — 가늘게, 끊기지 않고. 하로의 입술이 멈춘다. 얀이 코를 훌쩍이다 만다.
+    effects: ["var o2_name_called = true", "bond npc_o2_edik 8", "note 진짜 이름 — {name}. 갱에서 그 이름을 소리 내어 부르는 사람은 에디크 하나다. 크릭과 용인은 너를 이백열둘이라 부른다"]
+    choices:
+      - id: freeze
+        label: 숨을 멈추고 천장을 올려다본다
+        minutes: 0
+        text: ""
+        effects: []
+      # ── ◈ 두 번째 회차부터: 천장보다 먼저 ──
+      - id: mem_shout_first
+        needs_memory: loop
+        label: '"엎드려!" — 천장이 숨을 다 쉬기 전에, 에디크의 허리띠를 잡아챈다'
+        minutes: 0
+        text: ""
+        effects: ["then o2_cavein_early"]
+    next: o2_cavein_hand
+
+  - id: o2_cavein_hand
+    origin: ashfire_slave
+    text: |
+      네가 "엎드려!"라고 외치기도 전에 서쪽 갱도가 무너진다.
+
+      소리는 나중에 온다. 먼저 바람이 — 등잔 불을 모조리 눕히는 바람이 — 오고, 그다음에 돌이 온다. 붉은 먼지가 등잔 빛을 삼킨다. 입 안이 쇳가루다.
+
+      먼지 속에서 하로가 이름을 부른다. 하나씩, 서른. 대답이 하나씩 돌아온다. 하로의 목소리가 한 이름에서 두 번 멈춘다. "에디크." 대답이 없다.
+
+      먼지가 가라앉는다. 돌무더기 위로 셋째 갱목 기둥이 꺾여 있다. 속이 검다. 썩었다. 돌무더기 틈으로 손 하나가 나와 있다. 에디크의 손이다. 손가락이 움직인다.
+
+      등 뒤에서 등잔 하나가 높이 들린다. 그락스 — 붉은 계단의 총감독관, 공급 명단을 고르는 크릭 — 가 무너진 벽 너머를 본다. 에디크가 아니라. 돌이 쏟아진 자리에 녹 빛 줄기가 벽을 타고 내려간다. "광맥! 붉은 철이다!" 그의 목소리가 처음으로 갈라진다. "오늘 할당 못 채운 번호는 흑점이다. 파라. 저기를." 손가락이 광맥을 가리킨다.
+
+      점호 마당 번호판, 네 번호 옆에는 숯 점이 이미 셋이다. 오늘 새벽 그락스는 공급 명단의 번호 셋을 불렀다 — 하층 공방으로 내려간 번호들. 네 번호는 아직 불리지 않았다. 아직은.
+
+      에디크의 손을 보는 순간, 다른 손이 겹쳐 보인다. 붉은 흙을 바른 손. 지금 네 허리춤에 감긴 이 매듭을 처음 묶던 손. 너는 그 손의 굳은살 자리까지 안다 — 왼손 엄지, 두 겹. 네 손이 아니었다. 그런데 네 안에서 그 손이 기억난다. 이백열두 해 전, 이 언덕에서 이 매듭을 처음 묶던 여자의 손. 허리춤의 매듭끈이 뜨겁다. 눈가로 잿빛 고리가 스치고 사라진다.
+    effects: ["learn fact_o2_dara_hands", "learn fact_o2_west_drift", "var o2_edik_known = true", "note 낙엽월 첫날 교대 종 직전, 중층 4번 막장 서쪽 갱도 낙반 — 셋째 갱목 기둥이 썩어 있었다. 에디크가 돌 밑에 있다. 그락스는 드러난 붉은 광맥을 파라고 한다"]
+    choices:
+      - id: dig_hands
+        label: 맨손으로 돌을 들어낸다 — 에디크의 손을 향해
+        minutes: 120
+        check: {skill: 싸움, D: 18, helps: [iron_body, strong_bones, pain_tolerance]}
+        success:
+          text: |
+            돌 하나, 돌 하나. 손톱이 먼저 나가고, 다음에 손바닥이 갈라진다. 뒤에서 그락스가 무언가를 외친다. 너는 듣지 않는다.
+
+            에디크가 나온다. 왼다리가 무릎 아래에서 이상한 쪽을 보고 있다. 그래도 웃는다 — 웃는 얼굴이 하얗다. "늦었잖아."
+
+            그락스가 패에 이빨 자국을 하나 더 낸다. "이백열둘. 흑점." 하로가 아무 말 없이 에디크의 다리에 갱목 쪼가리를 대고 묶는다. 묶으면서 너를 본다. 오래.
+          effects: ["var o2_edik_saved = true", "var o2_edik_hurt = true", "var o2_black_marks += 1", "pain 15", "fatigue 15", "rel npc_haro trust 10", "rel npc_o2_edik like 10", "rel npc_o2_edik trust 10", "bond npc_o2_edik 6", "temper 용기 4", "temper 자비 4", "memory npc_grax 위험함 이백열둘이 광맥 대신 돌무더기를 팠다", "note 에디크를 파냈다 — 왼다리가 부서졌다. 숯 점 넷. 새벽 점호에서 그락스의 손가락이 멈출 것이다"]
+        failure:
+          text: |
+            셋째 돌을 들어 올리는 순간 천장이 한 번 더 숨을 쉰다. 이번엔 짧게. 무너진 자리 위로 돌이 다시 쏟아지고, 하나가 네 왼팔을 문다.
+
+            하로의 손이 네 뒷덜미를 잡아 끌어낸다. 먼지가 가라앉았을 때, 돌 틈의 손은 움직이지 않는다. 하로가 거기에 손바닥을 한 번 댄다. 그것이 그의 인사다.
+
+            그락스는 패에 이빨 자국을 낸다. "이백열둘. 흑점." 붉은 교대가 내려와 돌을 치우기 시작한다. 자정은 넘어야 할 것이다.
+          effects: ["pain 25", "var o2_black_marks += 1", "var o2_edik_dead = true", "agenda kill npc_o2_edik", "stress 15", "temper 용기 3", "rel npc_haro trust 5", "note 에디크 — 두 번째 낙반. 손이 멈췄다. 숯 점 넷"]
+      - id: haro_props
+        label: '하로에게 외친다 — "갱목! 같이 받치고 같이 파요!"'
+        minutes: 90
+        check: {skill: 손재주, D: 16, helps: [engineer, command]}
+        success:
+          text: |
+            하로가 한 번 고개를 끄덕인다. 그것으로 충분하다. 갱조 서른이 곡괭이를 내려놓고 갱목을 든다. 넷째 기둥 자리에 새 갱목이 박히고, 천장이 숨을 고른다. 넷이 돌을 들어내고 넷이 받친다. 얀이 코를 훌쩍이며 먼지 쪽을 가리킨다. 거기는 아니라고.
+
+            에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다. "너희 다 미쳤어." 그가 웃는다.
+
+            그락스가 광맥과 갱조 서른을 번갈아 본다. 서른을 한꺼번에 흑점으로 할 수는 없다. "반장. 흑점." 하로가 대답한다. "예."
+          effects: ["var o2_edik_saved = true", "var o2_edik_hurt = true", "var o2_solidarity = true", "var em_signs += 1", "rel npc_haro trust 15", "rel npc_yan_nose like 5", "rel npc_o2_edik like 8", "temper 용기 3", "memory npc_grax 위험함 하로의 갱조가 광맥 앞에서 곡괭이를 내려놓았다", "memory npc_haro 용감함 이백열둘이 갱조를 불러 에디크를 함께 팠다", "note 하로의 갱조가 함께 에디크를 파냈다 — 왼다리가 부서졌다. 그락스는 하로에게 흑점을 줬다"]
+        failure:
+          text: |
+            갱목 하나가 젖은 바닥에서 미끄러진다. 받치던 하로의 어깨로 돌이 내려앉는다. 하로는 소리를 내지 않는다. 갱조가 다시 받친다. 더 느리게.
+
+            에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다. 그락스의 손가락이 너를 가리킨다. "외친 번호. 흑점."
+          effects: ["var o2_edik_saved = true", "var o2_edik_hurt = true", "var o2_black_marks += 1", "pain 10", "rel npc_haro trust 5", "note 에디크를 파냈다 — 왼다리가 부서졌다. 외친 값으로 숯 점 넷"]
+      - id: bribe_shard
+        when: ["var o2_shard == true"]
+        label: 소매 속 흑요석을 그락스의 손에 쥐여 준다 — "용의 눈물입니다. 오늘만."
+        minutes: 90
+        check: {skill: 화술, D: 10, helps: [haggle, merchant]}
+        success:
+          text: |
+            그락스가 검은 유리를 이빨로 깨문다. 크릭들은 그것을 용의 눈물이라 부르고 부적으로 산다. 그의 입가가 씰룩인다. "…오늘만이다." 패를 다시 문다.
+
+            갱조가 돌을 들어낸다. 에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다. 소매가 가볍다.
+          effects: ["var o2_shard = false", "var o2_shard_gone = true", "var o2_edik_saved = true", "var o2_edik_hurt = true", "rel npc_grax like 5", "memory npc_grax 영리함 이백열둘이 용의 눈물을 쥐고 있었다", "note 흑요석을 그락스에게 줬다 — 에디크를 파냈다. 왼다리가 부서졌다"]
+        failure:
+          text: |
+            그락스가 유리를 받아 들고 등잔에 비춘다. 날이 선 쪽을. "날을 숨겨 다니는 번호." 유리는 그의 주머니로 들어간다. 돌려주지 않는다. "흑점. 그리고 이건 초소에 말해 두지."
+
+            그락스가 바구니로 올라간 뒤, 하로의 갱조가 남아 돌을 들어낸다. 에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다.
+          effects: ["var o2_shard = false", "var o2_shard_gone = true", "wanted 1 흑요석 날을 숨겨 다녔다", "var o2_black_marks += 1", "var o2_edik_saved = true", "var o2_edik_hurt = true", "note 흑요석을 빼앗겼다 — 초소에 날을 숨겼다는 말이 들어갔다. 숯 점 넷"]
+      - id: collar_grax
+        label: 그락스의 멱살을 잡는다 — "저건 사람이다."
+        minutes: 60
+        check: {skill: 위압, D: 16, helps: [menace, command]}
+        success:
+          text: |
+            그락스의 패가 이빨에서 떨어진다. 크릭의 몸이 먼저 안다 — 강한 쪽 앞에서는 허리가 꺾인다. 그는 꺾인 허리를 펴지 못한 채 뒷걸음질 친다. "…파 봐라." 목소리가 낮아진다. 강한 상대 앞에서처럼. "번호는 기억해 두지."
+
+            갱조가 돌을 들어낸다. 에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다. 바구니로 올라가는 그락스의 등이 한 번도 돌아보지 않는다.
+          effects: ["var o2_edik_saved = true", "var o2_edik_hurt = true", "nemesis npc_grax 1", "memory npc_grax 위험함 이백열둘이 멱살을 잡았다", "rel npc_haro trust 8", "temper 용기 6", "note 그락스의 멱살을 잡았다 — 에디크를 파냈다. 그락스는 잊지 않는다"]
+        failure:
+          text: |
+            그락스가 호루라기를 분다. 크릭 감독 둘이 바구니에서 내려온다. 권양탑 아래 처벌 기둥, 채찍 열. 셋째에서 너는 세기를 그만둔다.
+
+            네가 기둥에 묶여 있는 동안, 하로의 갱조가 남아 돌을 들어낸다. 에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다.
+          effects: ["pain 30", "var o2_black_marks += 1", "var o2_edik_saved = true", "var o2_edik_hurt = true", "temper 용기 3", "rel npc_haro trust 6", "note 그락스의 멱살 — 채찍 열과 숯 점 넷. 하로의 갱조가 에디크를 파냈다"]
+      - id: knot_song
+        when: ["has 기억매듭"]
+        label: 매듭끈을 쥐고 다라의 노래를 낮게 시작한다
+        minutes: 90
+        check: {skill: 화술, D: 22, helps: [crowd_voice, storyteller, command], warn: ["pknows fact_o2_dara_hands"]}
+        success:
+          text: |
+            첫 줄은 네 목에서만 나온다. 배운 적 없는 가락이 매듭을 따라 손가락 끝에서 올라온다. 둘째 줄에서 하로가 따라온다. 셋째 줄에서 얀이. 그다음은 셀 수 없다.
+
+            갱조 서른이 곡괭이 자루로 박자를 치며 노래한다 — 광맥이 아니라 돌무더기 쪽으로 걸어가며. 그락스는 혼자다. 패를 문 채, 아무 말도 하지 않는다.
+
+            에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다. 그가 노래의 끝 줄을 따라 부른다. 틀린 가사로. 노래는 바구니를 타고 위로 올라간다.
+          effects: ["var o2_edik_saved = true", "var o2_edik_hurt = true", "var o2_solidarity = true", "var o2_song_sung = true", "var o2_song_heard = true", "var em_signs += 2", "rel npc_haro trust 15", "rel npc_yan_nose like 6", "temper 용기 6", "memory npc_haro 이상함 이백열둘이 다라의 노래를 끝까지 알았다", "note 갱조 서른이 다라의 노래를 불렀다 — 에디크를 파냈다. 노래는 위로 올라갔다"]
+        failure:
+          text: |
+            목소리가 먼지에 갈라진다. 따라오는 소리가 없다. 그락스의 채찍 손잡이가 네 입을 친다. "갱에서 노래하는 번호."
+
+            그락스가 바구니로 올라간 뒤, 하로의 갱조가 남아 돌을 들어낸다. 아무도 노래하지 않는다. 에디크가 나온다. 왼다리가 무릎 아래에서 꺾였다. 노래 이야기는 감독 막사까지 먼저 올라가 있다.
+          effects: ["pain 20", "var o2_black_marks += 1", "var em_signs += 1", "var o2_song_heard = true", "var o2_edik_saved = true", "var o2_edik_hurt = true", "note 노래가 끊겼다 — 숯 점 넷. 감독 막사에 노래 이야기가 올라갔다"]
+      - id: dig_vein
+        label: 광맥을 판다
+        minutes: 120
+        text: |
+          곡괭이가 붉은 철에 박힌다. 한 번, 두 번. 그락스가 수레를 센다. 등 뒤에서 돌 틈의 손가락이 움직인다. 너는 돌아보지 않는다.
+
+          할당이 찬다. 숯 점은 늘지 않는다. 바구니가 내려오고 올라가고, 손가락은 언제부턴가 움직이지 않는다. 하로가 돌무더기에 손바닥을 한 번 댄다. 그것이 그의 인사다.
+
+          하로는 너를 보지 않는다. 붉은 교대가 내려와 돌을 치우기 시작한다.
+        effects: ["var o2_edik_dead = true", "var o2_dug_vein = true", "agenda kill npc_o2_edik", "temper 자비 -10", "stress 20", "fatigue 20", "rel npc_haro trust -20", "rel npc_grax like 5", "memory npc_haro 비굴함 이백열둘이 에디크의 손을 보고도 광맥을 팠다", "note 광맥을 팠다. 숯 점은 셋 그대로. 에디크의 손가락이 멈췄다"]
+      # ── ◈ 기억 선택지 ──
+      - id: mem_third_prop
+        needs_memory: fact:fact_o2_west_drift
+        label: '"셋째 기둥이 썩었어요 — 거기 말고 넷째부터!" 하로에게, 돌이 다시 움직이기 전에'
+        minutes: 60
+        text: |
+          하로가 너를 한 번 본다. 묻지 않는다. 갱목이 넷째 기둥 자리에 박히고, 천장이 숨을 고른다. 서른이 돌을 들어낸다. 이번에는 두 번째 숨이 오지 않는다.
+
+          에디크가 나온다. 정강이가 돌에 눌렸을 뿐, 뼈는 붙어 있다. 그가 절며 일어나 네 어깨를 친다. "너 오늘 이상해."
+
+          그락스가 하로를 본다. "반장. 흑점." "예." 그리고 하로가 네 쪽으로 고개를 돌린다. "셋째 기둥이 썩은 건 어떻게 알았나. 무너지기 전엔 아무도 몰랐다."
+        effects: ["var o2_edik_saved = true", "var o2_solidarity = true", "var o2_haro_watching = true", "rel npc_haro trust 10", "rel npc_o2_edik like 8", "bond npc_o2_edik 4", "memory npc_haro 이상함 이백열둘이 무너지기 전부터 썩은 기둥을 알았다", "echo_sign 1 무너지기 전에 썩은 기둥을 알았다", "note 넷째 기둥부터 받쳤다 — 에디크는 다리를 절 뿐이다. 하로가 물었다: 어떻게 알았나"]
+
+  # ◈ 두 번째 회차부터 — 천장보다 먼저 외친 저녁 (회귀점 화면 둘의 다른 갈래)
+  - id: o2_cavein_early
+    origin: ashfire_slave
+    text: |
+      "엎드려!"
+
+      네 목소리가 천장보다 먼저 나간다. 손이 에디크의 허리띠를 잡아챈다. 둘이 함께 바닥에 구른다 — 그리고 서쪽 갱도가 무너진다. 방금 에디크가 서 있던 자리에.
+
+      붉은 먼지가 등잔 빛을 삼킨다. 먼지 속에서 하로가 이름을 부른다. 하나씩, 서른. 서른 개의 대답이 돌아온다. 에디크의 대답은 네 귀 바로 옆에서, 기침과 웃음이 반씩 섞여서 나온다. "…{name}, 너 방금…"
+
+      먼지가 가라앉는다. 무너진 자리에 셋째 갱목 기둥이 꺾여 있다. 속이 검다. 그 너머로 녹 빛 줄기가 벽을 타고 내려간다. 그락스가 등잔을 높이 든다. "광맥! 붉은 철이다!" 그리고 그는 광맥이 아니라 너를 본다. 천장보다 먼저 외친 번호를.
+
+      하로도 너를 본다. 얀이 코를 훌쩍인다. 갱조 서른이 모두 너를 본다.
+
+      네 손은 아직 에디크의 허리띠를 쥐고 있다. 그 손 위로 다른 손이 겹쳐 보인다. 붉은 흙을 바른 손. 네 허리춤의 이 매듭을 처음 묶던 손 — 왼손 엄지에 굳은살이 두 겹. 이백열두 해 전, 이 언덕에서. 허리춤의 매듭끈이 뜨겁다. 눈가로 잿빛 고리가 스치고 사라진다.
+    effects: ["learn fact_o2_dara_hands", "learn fact_o2_west_drift", "var o2_edik_known = true", "var o2_edik_saved = true", "var o2_shouted_first = true", "rel npc_o2_edik like 6", "note 이번엔 천장보다 먼저 외쳤다 — 에디크는 돌 밑에 없다. 갱조 서른이 그것을 보았다"]
+    choices:
+      - id: lie
+        label: '"모래 흐르는 소리를 들었어요. 다들 들었잖아요."'
+        minutes: 60
+        check: {skill: 기만, D: 14, helps: [actor, deceit]}
+        success:
+          text: |
+            얀이 먼저 고개를 끄덕인다. 훌쩍. "…달았어. 냄새가." 하로가 갱목을 손바닥으로 친다. "그래. 모래 소리. 다들 들었다." 그는 그렇게 말하고 너를 오래 본다. 다들 듣지 못했다는 것을, 하로는 안다.
+
+            그락스는 패를 깨문다. 광맥이 더 급하다. 갱조는 교대 종이 지나도록 붉은 철을 판다.
+          effects: ["var o2_haro_watching = true", "rel npc_haro trust 5", "rel npc_yan_nose like 4", "fatigue 15", "note 모래 소리였다고 했다. 얀이 거들었다. 하로는 믿지 않는 얼굴로 믿어 주었다"]
+        failure:
+          text: |
+            아무도 고개를 끄덕이지 않는다. 그락스가 패를 문 채 웃는다. 가늘게. "모래 소리라." 그는 너를 숫자처럼 오래 본다. "하층에서는 그런 귀를 좋아하지. 귀가 좋은 번호는 값이 다르거든."
+          effects: ["echo_sign 1 천장보다 먼저 외쳤다", "memory npc_grax 이상함 이백열둘이 천장보다 먼저 알았다", "var o2_grax_eye = true", "fatigue 15", "note 그락스가 천장보다 먼저 외친 번호를 외웠다"]
+      - id: blame_yan
+        label: '"얀이 먼저 냄새를 맡았어요."'
+        minutes: 30
+        text: |
+          얀의 얼굴이 하얘진다. 훌쩍이다 만다. 그락스의 눈이 너에게서 얀에게로 옮겨 간다. 천천히, 숫자를 옮겨 적듯이.
+
+          그날 밤 숯막 쇠문의 빗장이 열린다. 쇠눈 크롬이 얀의 굴 앞에서 침을 삼킨다. 얀은 코를 훌쩍이며 따라간다. 아무 말도 하지 않는다. 너를 보지도 않는다.
+        effects: ["var o2_yan_blamed = true", "agenda capture npc_yan_nose at em_cradle_ward", "deed inform", "temper 정직 -6", "temper 자비 -8", "stress 12", "rel npc_haro trust -10", "note 얀의 이름을 댔다 — 그날 밤 쇠눈 크롬이 얀을 하층 공방으로 데려갔다"]
+      - id: dig_vein_now
+        label: 아무 말도 하지 않는다 — 광맥 앞에 곡괭이를 든다
+        minutes: 120
+        text: |
+          그락스는 오래 보지 않는다. 광맥이 더 급하다. 그러나 등 뒤에서 갱조의 눈이 떨어지지 않는다. 숨을 고를 때마다, 곡괭이를 고쳐 쥘 때마다.
+
+          교대 종이 지나도록 붉은 철을 판다. 올라오는 바구니 안에서 아무도 네 옆에 서지 않는다. 에디크만 빼고.
+        effects: ["echo_sign 1 천장보다 먼저 외쳤다", "fatigue 20", "rel npc_grax like 3", "rel npc_o2_edik trust 6", "note 천장보다 먼저 외친 저녁 — 갱조가 그것을 본 눈이 떨어지지 않는다"]
+
+  # ───────────────────────── 첫 밤 — 숯막 ─────────────────────────
+  # 하로는 저녁마다 굴 입구에서 매듭끈을 묶는다 (routines 18:30~20:00). 첫 밤엔 늦게까지 앉아 있다 (stage).
+  - id: o2_knot_lesson
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-01 19:30", to: "312-09-01 23:30"}, at: em_burrow_black, with: npc_haro, when: ["var o2_edik_dead != true"]}
+    stage:
+      - {npc: npc_haro, at: em_burrow_black, from: "20:00", to: "23:30", doing: 굴 입구 등잔 아래 앉아 매듭끈을 엄지로 훑는다}
+    text: |
+      숯막. 슬래그 비탈에 판 굴들이 층층이 어둡다. 굴 입구마다 구리 목걸이 번호 — 네 굴의 문패는 이백열둘.
+
+      하로가 굴 입구 등잔 아래 앉아 손목의 끈을 푼다. 갱조의 끈. 낙반으로 사라진 사람마다 매듭이 하나다. 그는 그것을 할머니가 감아 준 부적이라고 말한다. 갱조 서른은 모두 그 말을 믿는 척한다.
+
+      그가 네 허리춤을 턱으로 가리킨다. "그거. 네 어미 것이지. 이리 줘 봐."
+
+      다라의 매듭끈. 매듭 하나가 노래 한 줄이라고, 숯막의 어미들은 말했다. 글이 아니어서 재의 법에 걸리지 않는다. 너는 그 끈을 다섯 해 동안 차고 다녔지만 한 줄도 읽어 본 적이 없다.
+
+      하로의 엄지가 첫 매듭을 누른다. "첫 줄. '붉은 흙을 손에 바르고.'" 엄지가 둘째 매듭으로 간다. 그리고 덧붙인다. 지나가는 말처럼. "내일 새벽 칼렙이 너를 보자더라. 9번 갱 벽 앞에서. 손을 보자고."
+    choices:
+      - id: read_ahead
+        label: 하로보다 먼저 둘째 줄을 읊는다
+        minutes: 30
+        text: |
+          "'벽에 손을 두고.'"
+
+          하로의 엄지가 멈춘다. 등잔 심지가 한 번 튄다. 그는 셋째 매듭으로 가지 않는다. 너를 본다.
+
+          "누가 가르쳤냐." 대답을 기다리지 않는다. "네 어미는 첫 줄밖에 몰랐다. 끈을 감아 준 할미도." 그는 끈을 네 손에 돌려준다. 손을 떼지 않는다. 한참. "셋째 줄은 뭐냐."
+
+          너는 안다. '다 셀 때까지 떼지 마라.' 하로의 손이 네 손 위에서 무거워진다.
+        effects: ["var o2_knot_read = true", "var o2_haro_watching = true", "learn fact_o2_cord_lines", "rel npc_haro trust 8", "memory npc_haro 이상함 이백열둘이 배운 적 없는 매듭을 읽었다", "note 다라의 매듭끈 — '붉은 흙을 손에 바르고 / 벽에 손을 두고 / 다 셀 때까지 떼지 마라.' 하로보다 먼저 읽었다"]
+      - id: ask_count
+        label: 하로의 손목 끈을 가리킨다 — "그건 몇 개예요? 진짜로."
+        minutes: 20
+        check: {skill: 화술, D: 12, helps: [tongue, people_memory], warn: ["var o2_solidarity == true"]}
+        success:
+          text: |
+            하로가 끈을 등잔 쪽으로 기울인다. 매듭들이 줄지어 그림자를 만든다. "마흔하나. 올해만." 그는 한 마디씩 끊는다. "백작은 월말에 낙반 셋이라고 읽지. 장부에 그렇게 적힌다."
+
+            그는 끈을 다시 손목에 감는다. 천천히, 매듭이 하나도 빠지지 않게. "이건 부적이다. 알지?"
+          effects: ["learn fact_em_haro_knotcords", "learn fact_em_cassian_monthly_numbers", "rel npc_haro trust 5", "note 하로의 끈 — 올해 낙반 매듭 마흔하나. 백작이 읽는 숫자는 셋"]
+        failure:
+          text: |
+            "할머니가 감아 준 부적이다." 하로가 말한다. 그 말을 서른 번은 한 목소리다. 그는 끈을 소매 속으로 밀어 넣는다.
+          effects: ["rel npc_haro like -2"]
+      - id: learn
+        label: 모르는 척, 하로의 엄지를 따라간다
+        minutes: 40
+        text: |
+          둘째 매듭. 하로가 말하기 전에 그 줄이 네 입 안에 먼저 와 있다. 너는 입을 다문다. 그의 엄지가 셋째 매듭으로 간다. 너는 거기서도 입을 다문다.
+
+          "외워 둬." 하로가 끈을 돌려준다. "글이 아니니까 아무도 못 뺏는다. 머리에 넣으면." 그가 일어서며 무릎을 짚는다. 가장 늦게 먹는 사람의 무릎이다.
+        effects: ["learn fact_o2_cord_lines", "rel npc_haro like 5", "stress -5", "note 다라의 매듭끈 첫 절 — 하로가 가르쳤다. 둘째 줄은 배우기 전에 알았다. 말하지 않았다"]
+      # ── ◈ ──
+      - id: mem_last_knot
+        needs_memory: fact:fact_o2_cord_lines
+        label: '끈의 맨 끝 매듭을 짚는다 — "이건 아무도 못 풀었죠."'
+        minutes: 30
+        text: |
+          하로가 숨을 한 번 들이쉬고, 내쉬지 않는다. "…그 매듭은 다라가 직접 묶었다는 말이 있다. 붉은 길에 서기 전날 밤. 다음 사람에게." 그가 엄지로 그 매듭을 덮는다. 감추듯이.
+
+          "너는 처음 보는 눈이 아니구나, 그 매듭." 그는 대답을 기다리지 않는다. 등잔을 끄고, 어둠 속에서 한참 앉아 있다.
+        effects: ["learn fact_o2_last_knot", "var o2_haro_watching = true", "rel npc_haro trust 6", "memory npc_haro 이상함 이백열둘이 다라의 마지막 매듭을 안다", "note 다라의 끈 마지막 매듭 — 붉은 길 전날 밤, 다음 사람에게"]
+
+  - id: o2_knot_for_edik
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-01 19:30", to: "312-09-01 23:30"}, at: em_burrow_black, with: npc_haro, when: ["var o2_edik_dead == true"]}
+    text: |
+      숯막. 굴 입구 등잔 아래 하로가 손목의 끈을 푼다. 갱조의 끈. 낙반으로 사라진 사람마다 매듭이 하나다 — 그는 그것을 할머니가 감아 준 부적이라고 말한다.
+
+      마흔하나. 그가 마흔둘째를 묶는다. 천천히, 이빨로 끝을 당겨서. 매듭에는 이름이 없다. 이름은 하로가 외운다.
+
+      "에디크." 그가 말한다. 끈에게.
+
+      옆 굴, 이백열셋 호의 문이 열려 있다. 짚 한 단이 그대로다. 하로가 너를 본다. "내일 새벽 칼렙한테 가라. 9번 갱 벽 앞. 손을 보자더라."
+    choices:
+      - id: hold
+        label: 끈의 끝을 잡아 준다
+        minutes: 20
+        text: |
+          하로가 끈을 당긴다. 네 손가락이 매듭 안에 한 번 갇혔다가 빠진다. 매듭이 단단해진다. "잘 잡는군." 그가 말한다. 그것이 오늘 그가 너에게 한 가장 긴 말이다.
+        effects: ["rel npc_haro like 5", "rel npc_haro trust 3", "stress -5"]
+      - id: say_name
+        label: '"에디크." — 소리 내어 부른다'
+        minutes: 10
+        text: |
+          네 목소리가 숯막의 층층을 타고 올라간다. 위의 굴에서 누가 따라 부른다. "에디크." 그 위에서 또. 이름이 비탈을 다 올라갈 때까지 하로는 매듭에서 손을 떼지 않는다.
+
+          이제 이 갱에서 네 이름을 소리 내어 부르는 사람은 없다. 너는 그 이름 대신 그의 이름을 부른다.
+        effects: ["temper 용기 2", "stress -8", "rel npc_haro trust 4", "memory npc_haro 정직함 이백열둘이 에디크의 이름을 소리 내어 불렀다", "note 숯막이 에디크의 이름을 불렀다"]
+      - id: confess
+        when: ["var o2_dug_vein == true"]
+        label: '"광맥을 팠어요. 손가락이 움직이는 걸 봤는데."'
+        minutes: 10
+        text: |
+          하로가 매듭을 다 묶을 때까지 대답하지 않는다. 그리고 끈을 손목에 감으며 말한다. "알아. 나도 봤다." 한 박자. "나도 광맥 앞에 서 있었다. 서른 해 동안."
+
+          그는 일어나 굴로 들어간다. 등잔은 두고 간다.
+        effects: ["temper 정직 5", "rel npc_haro trust 8", "stress 5", "memory npc_haro 정직함 이백열둘이 광맥을 판 것을 제 입으로 말했다"]
+      # ── ◈ ──
+      - id: mem_next
+        needs_memory: fact:fact_o2_west_drift
+        label: '"셋째 기둥이었어요. 다음엔 — "'
+        minutes: 10
+        text: |
+          하로의 이빨이 매듭 끝에서 멈춘다. "다음?" 그가 너를 본다. 갱에 다음은 없다. 매듭은 한 사람에 하나다. 그는 그 말을 하지 않는다. 대신 오래 본다. 처음 보는 사람을 보듯이.
+        effects: ["var o2_haro_watching = true", "memory npc_haro 이상함 이백열둘이 '다음'을 말했다", "echo_sign 1 다음 낙반을 아는 것처럼 말했다"]
+      - id: turn_away
+        label: 굴 안으로 들어간다
+        minutes: 10
+        text: |
+          짚 위에 눕는다. 옆 굴에서 코 고는 소리가 나지 않는다. 밖에서 하로가 이빨로 매듭 끝을 당기는 소리가 한 번 더 들린다.
+        effects: ["stress 8", "rel npc_haro like -3"]
+
+  # ───────────────────────── 둘째 날 — 에디크의 다리 ─────────────────────────
+  - id: o2_edik_leg
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-02 05:00", to: "312-09-02 12:00"}, at: em_roll_yard, when: ["var o2_edik_hurt == true", "alive npc_o2_edik", "var o2_edik_taken != true"]}
+    severity: 3
+    text: |
+      새벽 점호. 횃불 둘 아래 번호판. 하로의 갱조가 줄을 선다 — 서른.
+
+      에디크가 한 발로 선다. 왼다리는 무릎 아래가 갱목 쪼가리에 묶였고, 발끝이 이상한 쪽을 본다. 그래도 그는 줄에 있다. 서 있는 동안은 갱조다.
+
+      크라즈 — 검은 손톱 지부장, 앞니 하나가 금인 크릭 — 가 단상에서 내려온다. 채찍 손잡이로 에디크의 무릎을 툭 친다. 에디크가 소리를 삼키고 웃는다. 웃는 얼굴이 하얗다.
+
+      "못 서는 번호는 병동이다." 크라즈의 손가락이 서열을 센다. 위, 위, 아래. "병동은 위에서 고르지. 목록이 그렇다."
+    choices:
+      - id: carry
+        label: '"제가 메고 내려갑니다. 몫도 제가 팝니다."'
+        minutes: 10
+        text: |
+          크라즈의 금니가 횃불에 번쩍인다. "몫을 두 번 판다? 물은 한 번만 마시면서?" 그는 값을 안다. 너도 안다. "네 물 몫, 이레. 그럼 이 번호는 서 있는 걸로 하지."
+
+          에디크가 네 어깨에 팔을 건다. 무겁다. 바구니까지 서른 걸음. 그는 걸음마다 농담을 하나씩 한다. 스물아홉째에서 농담이 끊긴다.
+        effects: ["var o2_edik_carried = true", "hunger 1", "fatigue 30", "rel npc_o2_edik trust 10", "bond npc_o2_edik 6", "rel npc_kraz like 3", "temper 자비 4", "note 에디크의 몫까지 판다 — 물 몫 이레가 크라즈에게 간다"]
+      - id: haro
+        when: ["var o2_solidarity == true"]
+        label: 하로를 본다 — 갱조가 나눠 지자고
+        minutes: 10
+        text: |
+          하로가 한 걸음 나선다. "갱조가 몫을 나눕니다." 짧은 존대. 눈은 바닥에.
+
+          "서른이 스물아홉의 몫을?" 크라즈가 웃는다. 그리고 갱조 서른의 얼굴을 하나씩 본다. 아무도 눈을 피하지 않는다. 크라즈의 엄지가 채찍 손잡이를 두 번 문지른다. "…목록이 그렇다면."
+        effects: ["var o2_edik_carried = true", "var em_signs += 1", "rel npc_haro trust 5", "rel npc_o2_edik trust 8", "memory npc_kraz 위험함 하로의 갱조가 한 몸으로 섰다", "note 하로의 갱조가 에디크의 몫을 나눠 진다"]
+      - id: ward
+        label: 에디크를 병동으로 보낸다 — 웨나에게
+        minutes: 15
+        text: |
+          "괜찮아." 에디크가 먼저 말한다. "병동은 따뜻하대. 누워서 하늘 얘기나 하지 뭐."
+
+          검은 폐 막사의 웨나가 그를 받는다. 젖은 손으로 다리를 만져 보고, 숨을 쉬어 보라고 한다. 그리고 너를 본다. 무언가 말하려다 만다.
+        effects: ["var o2_edik_ward = true", "rel npc_o2_edik like -2", "note 에디크 — 검은 폐 막사(병동). 요람의 의사가 아침마다 병동의 숨을 고른다"]
+      # ── ◈ ──
+      - id: mem_wenna_cart
+        needs_memory: fact:fact_em_wenna_false_deaths
+        label: '병동의 웨나에게 낮게 — "수레 밑판이 두 겹인 거 알아요. 오늘 밤."'
+        minutes: 30
+        check: {skill: 화술, D: 16, helps: [tongue, liar_nose], warn: ["pknows fact_em_wenna_false_deaths"]}
+        success:
+          text: |
+            웨나의 젖은 손이 멈춘다. 오래. "…누가 말했어." 대답을 기다리지 않는다. "오늘이 둘째 날이니까. 오늘 밤 열병으로 하나가 죽어. 죽었다고 적으면 죽은 거야, 이 병동에선."
+
+            그날 밤 시체 수레가 슬래그 비탈로 나간다. 밑판 아래에서 누가 웃음을 참는다.
+          effects: ["var o2_edik_out = true", "agenda kill npc_o2_edik", "rel npc_wenna_ward trust 10", "memory npc_wenna_ward 이상함 처음 보는 광부가 수레 밑판을 안다", "echo_sign 1 수레 밑판을 안다", "note 에디크 — 장부에는 열병 사망. 웨나의 수레 밑판으로 슬래그 비탈에 나갔다. 살아서"]
+        failure:
+          text: |
+            "수레는 비어 있어." 웨나가 말한다. 목소리가 낮고 단단하다. "그리고 너는 여기 온 적 없어." 그녀는 에디크를 침상에 눕힌다. 그것뿐이다.
+          effects: ["var o2_edik_ward = true", "note 에디크 — 병동. 웨나는 수레 이야기를 하지 않았다"]
+      - id: kraz_water
+        needs_fact: fact_em_kraz_water_trade
+        label: '크라즈에게 낮게 — "물 장부가 두 권이라는 걸 총감 나리는 모르시죠."'
+        minutes: 5
+        check: {skill: 위압, D: 16, helps: [menace, interrogator]}
+        success:
+          text: |
+            크라즈의 엄지가 채찍 손잡이 위에서 멈춘다. 금니가 보이지 않는다. "…번호 하나쯤은 서 있는 걸로 하지." 그는 단상으로 돌아간다. 돌아가면서 네 번호를 한 번 더 본다. 외우는 눈이다.
+          effects: ["var o2_edik_carried = true", "memory npc_kraz 위험함 이백열둘이 물 장부를 안다", "rel npc_kraz trust -10", "note 크라즈의 물 장부로 에디크를 세웠다. 크라즈가 네 번호를 외웠다"]
+        failure:
+          text: |
+            "물이 필요한가?" 크라즈가 웃는다. 금니. "값은 알지?" 채찍 손잡이가 네 입을 한 번 친다. 에디크는 병동으로 끌려간다.
+          effects: ["pain 10", "wanted 1 크라즈의 물 장부를 입에 올렸다", "var o2_edik_ward = true", "note 에디크 — 병동으로 끌려갔다"]
+
+  - id: o2_ward_night
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-02 17:00", to: "312-09-02 23:30"}, at: em_infirmary, with: npc_wenna_ward, when: ["var o2_edik_ward == true", "var o2_edik_out != true", "alive npc_o2_edik"]}
+    severity: 2
+    text: |
+      검은 폐 막사. 침상보다 사람이 많다. 기침이 한쪽 끝에서 시작해 다른 끝까지 건너간다.
+
+      에디크는 문가 침상에 누워 있다. 다리 밑에 짚을 괴었다. 너를 보고 웃는다. "왔어? 여기 하늘은 천장에 그려져 있더라. 그을음으로."
+
+      웨나가 침상 사이를 걸으며 숨을 센다. 젖은 손. 에디크의 침상에서 오래 멈춘다. 그리고 낮게, 누구에게도 아니게 말한다. "내일 아침엔 위에서 손이 내려와."
+    choices:
+      - id: plead
+        label: 웨나를 붙잡는다 — "내일 아침 전에. 뭐든."
+        minutes: 30
+        check: {skill: 화술, D: 18, helps: [tongue, charm], warn: ["var o2_solidarity == true"]}
+        success:
+          text: |
+            웨나가 네 손을 본다. 굳은살. 갈라진 손톱. "…수레는 비어 있어." 그녀가 말한다. "오늘 밤만 빼고. 둘째 날 밤마다 열병으로 하나가 죽지. 밑판이 두 겹이야."
+
+            자정 무렵 시체 수레가 슬래그 비탈로 나간다. 밑판 아래에서 에디크가 웃음을 참는다. 비탈 아래 어둠에서 누가 수레를 받는다.
+          effects: ["var o2_edik_out = true", "agenda kill npc_o2_edik", "learn fact_em_wenna_false_deaths", "rel npc_wenna_ward trust 8", "rel npc_o2_edik trust 10", "bond npc_o2_edik 6", "note 에디크 — 장부에는 열병 사망. 웨나의 수레 밑판으로 슬래그 비탈에 나갔다. 살아서"]
+        failure:
+          text: |
+            "죽었다고 적으면 죽은 거야. 이 병동에선." 웨나가 말한다. "살아 있는 사람은 적을 수가 없어." 그녀는 다음 침상으로 간다. 기침 소리를 센다.
+          effects: ["stress 6"]
+      - id: carry_back
+        label: 에디크를 업고 숯막으로 돌아간다 — 내일부터 둘의 몫을 판다
+        minutes: 40
+        risk: 숯막의 쇠문은 저녁 일곱 시에 잠긴다
+        text: |
+          에디크가 네 등에서 웃는다. "무거워?" "무거워." 쇠문 앞에서 크릭 하나가 등잔을 든다. 번호 둘. 하나는 업혀 있다. 크릭은 침을 뱉고 등잔을 내린다.
+        effects: ["var o2_edik_ward = false", "var o2_edik_carried = true", "goto em_burrow_black", "fatigue 25", "pain 5", "bond npc_o2_edik 6", "note 에디크를 병동에서 데려왔다 — 내일부터 둘의 몫을 판다"]
+      - id: sit
+        label: 침상 곁에 앉아 하늘 이야기를 듣는다
+        minutes: 60
+        text: |
+          에디크가 노천 붉은 계단 이야기를 한다. 거기서 일하면 하늘이 보인대. 잿비가 오는 날엔 일이 멈춘대. 그가 그락스에게 세 번 빌었던 이야기다.
+
+          웨나가 등잔 심지를 자른다. 기침 소리가 조금 줄어든다. 에디크가 먼저 잠든다.
+        effects: ["bond npc_o2_edik 5", "rel npc_o2_edik like 6", "stress -6"]
+
+  - id: o2_edik_taken
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-03 08:00", to: "312-09-30 23:00"}, at: "@ember_mines", when: ["var o2_edik_ward == true", "var o2_edik_out != true", "var o2_edik_taken != true", "alive npc_o2_edik"]}
+    severity: 4
+    text: |
+      소문은 승강 바구니를 타고 내려오고, 물탱크 줄을 타고 올라간다.
+
+      오늘 아침 비늘이 하나도 없는 손의 의사가 병동에 내려왔다. 침상 사이를 걸으며 맥을 짚었다. 넷을 골랐다. 넷째는 다리를 절었다고 한다. 끌려가면서 웃었다고 한다.
+    effects: ["agenda capture npc_o2_edik at em_cradle_ward", "var o2_edik_taken = true", "note 에디크 — 병동에서 하층 공방(은비늘 요람)으로 끌려갔다"]
+    choices:
+      - id: to_wenna
+        label: 병동으로 간다 — 웨나에게 따진다
+        minutes: 30
+        text: |
+          웨나는 빈 침상의 짚을 갈고 있다. 너를 보지 않는다. "어젯밤이었으면." 그녀가 짚만 보며 말한다. "수레 밑판이 두 겹이야. 둘째 날 밤마다 하나가 열병으로 죽어. 어젯밤이었으면."
+
+          그녀는 그 말을 다시 하지 않는다. 너는 그 말을 잊지 않는다.
+        effects: ["learn fact_em_wenna_false_deaths", "stress 10", "goto em_infirmary", "note 웨나 — 시체 수레 밑판이 두 겹. 둘째 날 밤마다. 어젯밤이었으면"]
+      - id: follow
+        label: 그락스에게 간다 — "같은 감방으로 보내 주십시오."
+        minutes: 30
+        risk: 하층 공방에서 올라온 번호는 없다
+        text: |
+          그락스가 점호 패를 이빨에서 뗀다. 처음으로 너를 숫자 이외의 것으로 본다 — 숫자가 하나 더 생긴 것으로. "자원?" 그가 웃는다. "자원은 값이 안 나와. 그래도 명단은 늘 모자라지."
+
+          네 번호 옆에 숯 대신 손톱자국이 하나 난다. 오늘 밤이다.
+        effects: ["var o2_listed = true", "temper 용기 5", "temper 충성 6", "stress 8", "note 스스로 공급 명단에 올랐다 — 오늘 밤 쇠눈 크롬이 온다. 에디크가 거기 있다"]
+      - id: knot
+        label: 하로를 찾아간다 — 끈에 매듭을 묶어 달라고
+        minutes: 20
+        text: |
+          하로는 끈을 풀지 않는다. "하층으로 간 번호는 매듭이 안 된다." 그가 말한다. "죽은 게 아니니까. 아직은." 그는 끈 대신 네 손목을 한 번 쥔다. 세게.
+        effects: ["rel npc_haro trust 4", "stress -4"]
+
+  # ───────────────────────── 흑점 넷 — 하층의 호명 ─────────────────────────
+  - id: o2_lower_call
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-02 05:00", to: "312-10-30 23:00"}, at: em_roll_yard, when: ["var o2_black_marks >= 4", "var o2_listed != true", "var o2_cradle_escaped != true"]}
+    severity: 4
+    text: |
+      새벽 점호. 번호판 앞에 횃불 둘. 크라즈가 단상에서 갱조 번호를 훑고, 그 옆에서 그락스가 점호 패의 모서리를 이빨로 문다.
+
+      번호를 다 부르고 나서 그락스가 손가락을 든다. 허공을 짚는다. 하나, 둘, 셋. 손가락이 번호판의 한 줄에서 멈춘다. 숯 점이 넷.
+
+      "이백열둘." 패를 문 채로. "공급."
+
+      그락스는 그 낱말만 쓴다. 광부들은 하층 공방이라 부르고, 위에서는 은비늘 요람이라 부른다. 명단에 오른 번호는 그날 밤 쇠눈 크롬이 굴에서 데려간다. 올라온 번호는 없다.
+
+      줄 어딘가에서 하로의 입술이 움직인다. 번호가 아니라 이름이다.
+    choices:
+      - id: other_number
+        label: 그락스에게 낮게 — "한 놈 대신 한 놈. 이백아홉 굴의 기침쟁이."
+        minutes: 10
+        text: |
+          그락스의 눈이 가늘어진다. 그는 그 거래를 안다. 자기가 만든 말이다. "명단은 맞으면 되지." 엄지에 침을 묻혀 네 번호 옆 숯 점 하나를 문지른다. 그리고 패에 다른 번호를 새긴다.
+
+          그날 밤 이백아홉 굴의 기침 소리가 멎는다. 하로는 듣지 못했다. 그러나 저녁에 그 굴 앞에서 매듭을 하나 묶는다. 너를 보지 않는다.
+        effects: ["var o2_black_marks = 3", "var o2_lower_averted = true", "deed inform", "temper 자비 -8", "temper 충성 -4", "stress 15", "rel npc_haro trust -8", "memory npc_grax 영리함 이백열둘은 번호를 댈 줄 안다", "note 이백아홉 — 네가 댄 번호. 그날 밤 그 굴의 기침이 멎었다"]
+      - id: haro_share
+        when: ["var o2_solidarity == true"]
+        label: 하로를 본다 — 갱조가 숯 점을 나눠 지자고
+        minutes: 10
+        text: |
+          하로가 줄에서 한 걸음 나온다. "갱조가 나눕니다. 숯 넷을 서른이." 짧은 존대. 눈은 바닥에.
+
+          "서른이?" 그락스가 패를 입에서 뗀다. 갱조 서른의 얼굴이 횃불 아래 있다. 아무도 눈을 피하지 않는다. 그락스는 숫자를 안다. 서른이 한꺼번에 흔들리면 할당이 흔들린다. "…이번 주 할당, 서른 몫에 한 수레씩 더."
+
+          그날부터 갱조는 한 수레씩 더 판다. 아무도 네게 그 말을 하지 않는다.
+        effects: ["var o2_black_marks = 3", "var o2_lower_averted = true", "var em_signs += 1", "fatigue 20", "rel npc_haro trust 6", "memory npc_grax 위험함 하로의 갱조가 공급을 막았다", "note 하로의 갱조가 흑점을 나눠 졌다 — 이번 주 서른 몫에 한 수레씩 더"]
+      - id: supply_pays
+        needs_fact: fact_eh_grax_supply_pays
+        label: 그락스의 귀에 — "한 머리에 동화 두 닢. 하드리안 나리는 그 값을 아십니까?"
+        minutes: 5
+        check: {skill: 위압, D: 14, helps: [menace, interrogator]}
+        success:
+          text: |
+            패가 그락스의 이빨에서 떨어진다. 그는 줍지 않는다. 입가가 씰룩인다. 겁이 날 때 더 심해지는 버릇이다. "…숯이 번졌군." 엄지가 네 번호 옆을 문지른다. 점 하나가 회색 얼룩이 된다.
+
+            그는 너를 다시 보지 않는다. 그게 더 나쁘다는 것을 너는 안다.
+          effects: ["var o2_black_marks = 3", "var o2_lower_averted = true", "nemesis npc_grax 1", "memory npc_grax 위험함 이백열둘이 공급의 값을 안다", "note 그락스 — 공급 값으로 숯 점을 지웠다. 그는 잊지 않는다"]
+        failure:
+          text: |
+            그락스가 웃는다. 가늘고 날카롭게. "하드리안 나리?" 그가 크라즈를 돌아본다. "이 번호가 나리 이름을 안다는군." 처벌 기둥. 열.
+
+            "이백열둘. 공급. 첫째 줄."
+          effects: ["pain 25", "var o2_listed = true", "note 공급 명단 첫째 줄 — 오늘 밤 쇠눈 크롬이 온다"]
+      - id: flee
+        label: 줄 끝에서 빠져나간다 — 폐갱으로
+        minutes: 30
+        risk: 점호 마당 한가운데다
+        check: {skill: 은신, D: 16, helps: [shadow_step, evade_track]}
+        success:
+          text: |
+            횃불 둘 사이에는 그림자가 셋 있다. 너는 셋째 그림자에 선다. 그리고 거기 없다.
+
+            슬래그 비탈, 썩은 지지대, 묻힌다는 소문이 지키는 폐갱. 다라의 굴. 안쪽 깊은 데서 기름 냄새가 난다. 오늘 밤 그락스의 명단은 다른 번호로 채워질 것이다. 누구의 번호일지, 너는 생각하지 않으려 한다.
+          effects: ["goto em_old_cave", "var o2_hiding = true", "var o2_lower_averted = true", "temper 자비 -3", "note 폐갱에 숨었다 — 그락스의 명단은 다른 번호로 채워진다"]
+        failure:
+          text: |
+            횃불이 돈다. 크릭 감독 하나가 네 뒷덜미를 잡는다. 그락스가 패를 문 채 웃는다. "도망치는 숫자는 먼저 센다."
+          effects: ["pain 15", "var o2_listed = true", "note 공급 명단 — 도망치다 잡혔다. 오늘 밤이다"]
+      - id: step_forward
+        label: 앞으로 나선다
+        minutes: 10
+        text: |
+          번호판까지 일곱 걸음. 그락스가 패에 이빨 자국을 하나 더 낸다. 크라즈는 벌써 다음 갱조를 본다.
+
+          돌아서는 너를 하로가 본다. 그의 입술이 한 번 더 움직인다. 이름이다. 오늘 밤까지 남은 시간을 너는 세지 않으려 한다.
+        effects: ["var o2_listed = true", "stress 10", "note 공급 명단 — 오늘 밤 쇠눈 크롬이 요람의 경비와 굴에 온다"]
+
+  - id: o2_lower_again
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-02 05:00", to: "312-10-30 23:00"}, at: em_roll_yard, when: ["var o2_black_marks >= 4", "var o2_lower_averted == true", "var o2_listed != true", "var o2_cradle_escaped != true"]}
+    severity: 4
+    text: |
+      번호판 앞. 그락스의 손가락이 다시 네 줄에서 멈춘다. 이번에는 패를 깨물지 않는다.
+
+      "이백열둘. 공급." 그가 말한다. "두 번은 값이 다르지."
+    choices:
+      - id: flee
+        label: 다시 — 셋째 그림자로
+        minutes: 30
+        risk: 그락스가 이번엔 보고 있다
+        check: {skill: 은신, D: 22, helps: [shadow_step, evade_track]}
+        success:
+          text: |
+            그락스가 보고 있다. 그래도 횃불은 둘이고 그림자는 셋이다. 폐갱의 썩은 지지대 아래에서 너는 숨을 고른다. 이번에는 돌아갈 줄이 없다는 것을 안다.
+          effects: ["goto em_old_cave", "var o2_hiding = true", "var o2_cradle_escaped = true", "note 공급 명단에서 두 번 도망쳤다 — 폐갱에 숨는다. 쇠눈 크롬이 얼굴을 외웠다"]
+        failure:
+          text: |
+            셋째 그림자에 크릭 감독이 먼저 서 있다. 그락스가 패를 문다. "두 번은 값이 다르다고 했지."
+          effects: ["pain 15", "var o2_listed = true", "note 공급 명단 — 오늘 밤이다"]
+      - id: step_forward
+        label: 앞으로 나선다
+        minutes: 10
+        text: |
+          일곱 걸음. 이번에는 하로의 입술이 움직이지 않는다. 그는 이미 이름을 외웠다.
+        effects: ["var o2_listed = true", "stress 8", "note 공급 명단 — 오늘 밤 쇠눈 크롬이 온다"]
+
+  # ───────────────────────── 그날 밤 — 쇠눈 크롬 ─────────────────────────
+  - id: o2_cradle_take
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-02 21:00", to: "312-10-31 04:00"}, at: "@ember_mines", night: true, when: ["var o2_listed == true", "var o2_taken != true", "var o2_cradle_escaped != true"]}
+    severity: 4
+    text: |
+      쇠문의 빗장이 밤에 열린다. 숯막의 모두가 그 소리를 안다. 아무도 일어나지 않는다.
+
+      등불 둘, 그리고 쇠 눈 하나. 목줄장 크롬이 네 앞에서 침을 삼킨다. 그 뒤에 용인 경비 둘과 요람의 운반 노예 하나. 운반 노예의 팔에 회색 담요가 걸려 있다.
+
+      "이백열둘." 쇠 눈이 네 얼굴에서 멈춘다. "얼굴은 외웠어."
+
+      옆 굴들이 숨을 멈춘다.
+    choices:
+      - id: fight
+        label: 곡괭이 자루를 쥔다
+        minutes: 20
+        risk: 용인 경비가 둘이다
+        check: {skill: 싸움, D: 22, helps: [brawler, improvised, blunt]}
+        success:
+          text: |
+            자루 끝이 등불을 친다. 기름이 쏟아지고 불이 바닥을 핥는다. 용인 경비 하나가 불을 밟아 끄는 사이, 너는 어둠 속으로 — 슬래그 비탈로, 폐갱 쪽으로. 등 뒤에서 크롬의 호루라기.
+
+            폐갱의 썩은 지지대 아래에서 너는 숨을 센다. 크롬은 얼굴을 외웠다. 외운 얼굴은 잊지 않는다.
+          effects: ["goto em_old_cave", "var o2_listed = false", "var o2_hiding = true", "var o2_cradle_escaped = true", "wanted 2 요람의 사람들에게 곡괭이 자루를 휘둘렀다", "nemesis npc_krom_ironeye 1", "temper 용기 6", "note 쇠눈 크롬을 뿌리치고 폐갱에 숨었다 — 요람의 명단에서 빠진 번호"]
+        failure:
+          text: |
+            용인 경비의 창 자루가 네 무릎을 꺾는다. 둘째는 등을. 크롬이 침을 삼킨다. "얼굴은 외웠다고 했잖아." 운반 노예가 담요를 네 어깨에 얹는다. 젖은 피 위로.
+          effects: ["pain 30", "var o2_taken = true", "item o2_cradle_blanket", "goto em_cradle_ward", "then o2_cradle_cell"]
+      - id: shard
+        when: ["var o2_shard == true"]
+        label: 소매의 흑요석을 크롬의 쇠 눈 밑에 댄다
+        minutes: 10
+        risk: 날을 드러낸다
+        check: {skill: 위압, D: 16, helps: [menace, knife_hand]}
+        success:
+          text: |
+            검은 유리의 날이 쇠 눈 밑 살갗에 닿는다. 크롬이 침을 삼킨다. 한 번, 두 번. "…이 굴은 비었다고 적지." 그가 뒷걸음질 친다. "명단은 맞으면 되니까."
+
+            그들은 옆 굴의 문을 연다. 잠든 사람의 번호를 부른다. 그 사람은 아무것도 묻지 않고 담요를 받는다. 크롬은 돌아보며 네 얼굴을 한 번 더 외운다.
+          effects: ["var o2_listed = false", "var o2_cradle_escaped = true", "temper 자비 -5", "temper 용기 4", "nemesis npc_krom_ironeye 1", "memory npc_krom_ironeye 위험함 이백열둘이 쇠 눈 밑에 날을 댔다", "note 쇠눈 크롬이 물러났다 — 옆 굴의 잠든 번호가 대신 갔다. 크롬은 얼굴을 외웠다"]
+        failure:
+          text: |
+            용인 경비가 네 손목을 비튼다. 검은 유리가 바닥에서 두 조각이 난다. "날이다." 크롬이 침을 삼킨다. "날까지 숨겼군. 요람이 좋아하겠어."
+          effects: ["var o2_shard = false", "var o2_shard_gone = true", "wanted 2 흑요석 날을 목줄장의 눈에 댔다", "pain 15", "var o2_taken = true", "item o2_cradle_blanket", "goto em_cradle_ward", "then o2_cradle_cell"]
+      - id: go
+        label: 담요를 받는다
+        minutes: 0
+        text: |
+          담요는 마른 약초 냄새가 난다. 네가 쇠문을 지날 때 숯막의 굴들은 여전히 숨을 멈추고 있다. 한 굴만 빼고. 거기서 누군가가 입속으로 네 이름을 부른다. 번호가 아니라.
+        effects: ["var o2_taken = true", "item o2_cradle_blanket", "goto em_cradle_ward", "then o2_cradle_cell"]
+
+  # ───────────────────────── 하층 공방 — 대기 감방 ─────────────────────────
+  - id: o2_cradle_cell
+    origin: ashfire_slave
+    severity: 4
+    text: |
+      요람의 바구니는 둥지 아래 축을 따라 내려간다. 사백 미터. 귀가 먹먹해진다. 갱의 바구니보다 조용하다. 쇠줄에 기름을 먹였다.
+
+      대기 감방. 문패의 번호 자리가 비어 있다 — 아직. 돌벽 너머에서 누가 두 번 두드리고 한 번 쉰다. 다른 벽 너머에서 같은 소리로 대답이 온다. 두 번, 한 번.
+
+      복도를 걷는 발소리. 문패마다 멈추고, 입술만 움직이는 소리. 은빛으로 비늘을 간 용인 귀부인 하나가 번호를 소리 없이 읊으며 지나간다. 네 문 앞에서 멈춘다. "춥지 않으세요?" 대답을 기다리지 않는다.
+
+      얼마나 지났는지 모른다. 문이 다시 열린다. 비늘이 하나도 없는 손이 등잔을 든다. 그가 네 손목을 들어 맥을 짚고, 손을 한 번 쥐었다 편다. "아직 번호가 없으시네요." 정중한 목소리다. "곧 드리겠습니다."
+    choices:
+      - id: tap
+        label: 벽을 두 번 두드리고, 한 번 쉰다
+        minutes: 0
+        text: |
+          두 번, 한 번. 벽 너머가 오래 조용하다. 그리고 속삭임. "…누구야? 저쪽 벽 언니가 아니라."
+
+          "숯막. 하로의 갱조." 너는 그 목소리를 안다. 굴 마을에서 자란 목소리다. "칼렙의 딸이지. 야나."
+
+          벽 너머의 숨이 멈췄다가 돌아온다. "…아버지 손은 — 아직 벽에 있어?" 너는 있다고 말한다. 다른 벽 너머에서 다른 목소리가 숫자를 센다. 낮고 빠르게. "아홉 칸. 연기가 많이 나가는 쪽." 그리고 아무 말도 없다.
+        effects: ["learn fact_em_yana_slot_37", "learn fact_eh_flue_exit", "rel npc_yana trust 8", "rel npc_yana like 6", "rel npc_hanne_fourteen trust 4", "memory npc_yana 다정함 벽 너머의 새 번호가 아버지의 손을 전해 주었다", "note 대기 감방 — 벽 너머에 칼렙의 딸 야나. 다른 벽의 목소리: 아홉 칸, 연기 많은 쪽", "then o2_graft_table"]
+      - id: edik
+        when: ["var o2_edik_taken == true"]
+        label: 벽마다 두드린다 — "에디크."
+        minutes: 0
+        text: |
+          두 번, 한 번. 다음 벽. 두 번, 한 번. 셋째 벽에서 기침이 대답한다. 그리고 웃음. 기침과 웃음이 반씩 섞인 목소리.
+
+          "…{name}?" 이 지하에서도 그 이름을 소리 내어 부르는 사람은 그 하나다. "너 여기 왜 왔어. 바보야."
+
+          너는 대답하지 않는다. 벽에 손바닥을 댄다. 벽 너머에서도 손바닥이 닿는 소리가 난다.
+        effects: ["bond npc_o2_edik 8", "rel npc_o2_edik like 10", "stress -10", "then o2_graft_table"]
+      # ── ◈ ──
+      - id: mem_flue
+        needs_memory: fact:fact_eh_flue_exit
+        label: 벽 너머로 — "아홉 칸. 연기 많은 쪽." 그리고 소각로 쪽 문을 본다
+        minutes: 120
+        check: {skill: 은신, D: 22, helps: [shadow_step, climber], warn: ["pknows fact_em_fourteen_escape_plan"]}
+        success:
+          text: |
+            벽 너머의 숫자 세는 목소리가 멈춘다. "…누가 가르쳐 줬어. 사다리 칸 수를." 대답할 시간이 없다. 감방의 빗장은 낡았고, 소각로 쪽 복도는 밤에 비어 있다. 연기가 가장 많이 나가는 쪽.
+
+            철 사다리. 하나, 둘 — 아홉. 마지막 칸의 쇠창살이 녹슬어 손바닥에서 부서진다. 슬래그 비탈의 찬 공기가 얼굴을 친다. 뒤를 돌아본다. 연통 아래 어둠 속에서 아무도 따라오지 않는다. 벽 너머의 두 사람은 둘이 아니면 가지 않는다.
+          effects: ["goto em_out_slag_slope", "var o2_taken = false", "var o2_listed = false", "var o2_cradle_escaped = true", "var o2_flue_out = true", "learn fact_em_fourteen_escape_plan", "wanted 2 요람의 감방에서 번호 하나가 사라졌다", "temper 용기 6", "note 연통으로 요람을 빠져나왔다 — 아홉 칸. 벽 너머의 둘은 남았다"]
+        failure:
+          text: |
+            빗장은 열린다. 소각로 쪽 복도에는 등잔이 하나 더 있다. 용인 경비의 창 자루가 네 정강이를 친다. "연통 쪽으로 가는 번호는 처음이군." 그는 웃지 않는다.
+          effects: ["pain 15", "then o2_graft_table"]
+      - id: wait
+        label: 담요를 두르고 기다린다
+        minutes: 0
+        text: |
+          담요에서 마른 약초 냄새가 난다. 벽 너머의 두드림이 멎는다. 문패에는 아직 번호가 없다.
+        effects: ["stress 6", "then o2_graft_table"]
+
+  # ───────────────────────── 이식대 — 그릇의 방 ─────────────────────────
+  # 견디면 그릇 (이번 회차의 몸에만 — 회귀하면 몸과 함께 사라진다), 못 견디면 종료. 은비늘은 둥지에 있는 밤(9.1~10)에만 그릇의 방에 내려온다.
+  - id: o2_graft_table
+    origin: ashfire_slave
+    severity: 5
+    text: |
+      바구니가 한 번 더 내려간다. 그릇의 방 — 지하 4층. 갱에는 없는 층이다.
+
+      은제 대야 하나. 계측 바늘이 놓인 쟁반. 벽에 등잔 넷, 그림자가 흔들리지 않을 만큼 밝다. 가죽끈이 손목과 발목을 찾는다. 발목의 끈은 쇠고리 자국 위에 정확히 걸린다.
+
+      아드리안 코르벨이 손을 식초에 담갔다가 불에 스친다. 세 번. 대야 안에 무엇이 있는지 너는 보지 않는다. 뛰고 있다.
+
+      "삼천이백열다섯 씨." 그가 손을 한 번 쥐었다 편다. "기록하겠습니다."
+    choices:
+      - id: endure_silver
+        when: ["present npc_melisande"]
+        label: 은빛 손이 담요를 편다 — 숨을 센다
+        minutes: 420
+        check: {skill: 싸움, D: 20, helps: [graft_affinity, dragon_heart], hinders: [frail]}
+        success:
+          text: |
+            사람의 모습을 한 여자가 네 가슴께에 담요를 편다. 손끝까지 은비늘이 장갑처럼 덮였다. "춥지? 담요를 줄게. 맥박 좀 볼게." 바늘이 손목에 닿는다. 차다.
+
+            그다음은 불이다. 가슴뼈 한가운데에서 시작해 손끝까지. 너는 센다. 하나, 둘. 서른까지 세고 다시 하나부터. 갱조의 이름으로 센다. 하로가 하듯이.
+
+            눈을 뜬다. 수레 위다. 소각로의 열기. 왼쪽 얼굴에 불티 자국이 흩어진 여자가 너를 내려다본다. 그녀의 손이 수레 손잡이에서 떨어진다. "…넌. 어떻게 일어나?" 대답을 기다리지 않는다. "연기 많은 쪽. 아홉 칸. 가."
+
+            철 사다리, 녹슨 쇠창살, 슬래그 비탈의 새벽 공기. 가슴 속에서 무언가가 두 번 뛴다. 네 심장이 아닌 박자로.
+          effects: ["var o2_vessel = true", "var o2_grafted = true", "var o2_cradle_escaped = true", "var o2_taken = false", "learn fact_o2_vessel_lives", "skill_gain 싸움 8", "fear -5", "pain 30", "hunger 1", "goto em_out_slag_slope", "wanted 2 요람의 장부에서 시체 하나가 모자란다", "rel npc_eve trust 25", "rel npc_eve like 10", "memory npc_eve 이상함 수레에서 일어난 번호를 연통으로 내보냈다", "temper 용기 5", "note 이식대에서 살아 나왔다 — 가슴 속에 다른 박자가 뛴다. 장부에는 종료. 은비늘의 사람들이 빠진 번호를 찾을 것이다"]
+        failure:
+          text: |
+            사람의 모습을 한 여자가 담요를 편다. "춥지?" 바늘이 손목에 닿는다. 차다.
+
+            그다음은 불이다. 너는 센다. 하나, 둘. 스물까지는 이름으로 센다. 그다음은 숫자로. 그다음은 세지 않는다.
+
+            아드리안이 분 단위로 시각을 적는다. 은빛 손이 담요를 네 얼굴까지 끌어올린다. "쓸데없이 죽이는 건 싫은데." 그녀가 말한다. 누구에게도 아니게.
+          effects: ["die blade npc_adrian_corvel 은비늘 요람 그릇의 방 — 아드리안 코르벨이 사망 시각을 분 단위로 적었다. 삼천이백열다섯, 종료"]
+      - id: endure
+        when: ["not present npc_melisande"]
+        label: 숨을 센다 — 견딘다
+        minutes: 420
+        check: {skill: 싸움, D: 20, helps: [graft_affinity, dragon_heart], hinders: [frail]}
+        success:
+          text: |
+            아드리안이 담요를 네 가슴께에 편다. 그분이 계시지 않는 밤에도 담요는 편다. 규칙이다.
+
+            그다음은 불이다. 가슴뼈 한가운데에서 시작해 손끝까지. 너는 센다. 서른까지 세고 다시 하나부터. 갱조의 이름으로 센다. 하로가 하듯이.
+
+            눈을 뜬다. 수레 위다. 소각로의 열기. 왼쪽 얼굴에 불티 자국이 흩어진 여자가 너를 내려다본다. "…넌. 어떻게 일어나?" 대답을 기다리지 않는다. "연기 많은 쪽. 아홉 칸. 가."
+
+            철 사다리, 녹슨 쇠창살, 슬래그 비탈의 새벽 공기. 가슴 속에서 무언가가 두 번 뛴다. 네 심장이 아닌 박자로.
+          effects: ["var o2_vessel = true", "var o2_grafted = true", "var o2_cradle_escaped = true", "var o2_taken = false", "learn fact_o2_vessel_lives", "skill_gain 싸움 8", "fear -5", "pain 30", "hunger 1", "goto em_out_slag_slope", "wanted 2 요람의 장부에서 시체 하나가 모자란다", "rel npc_eve trust 25", "rel npc_eve like 10", "memory npc_eve 이상함 수레에서 일어난 번호를 연통으로 내보냈다", "temper 용기 5", "note 이식대에서 살아 나왔다 — 가슴 속에 다른 박자가 뛴다. 장부에는 종료. 은비늘에게 보고가 갈 것이다"]
+        failure:
+          text: |
+            그다음은 불이다. 너는 센다. 하나, 둘. 스물까지는 이름으로 센다. 그다음은 숫자로. 그다음은 세지 않는다.
+
+            아드리안이 분 단위로 시각을 적는다. 손이 떨리지 않는다. 그것이 그의 자랑이다.
+          effects: ["die blade npc_adrian_corvel 은비늘 요람 그릇의 방 — 아드리안 코르벨이 사망 시각을 분 단위로 적었다. 삼천이백열다섯, 종료"]
+      # ── ◈ ──
+      - id: mem_calm_pulse
+        when: ["present npc_melisande"]
+        needs_memory: loop
+        label: 은 바늘이 맥에 닿는다 — 지난번의 죽음을 떠올리며, 맥을 고르게 둔다
+        minutes: 0
+        text: |
+          "…흥미롭네." 바늘이 멈춘다. "다들 여기서는 맥박이 빨라지는데." 은비늘의 여자가 네 손목을 놓지 않는다. "맥박이 정직하네. 처음 오는 곳에서 이렇게 평온한 맥박은 처음 봐. 죽음을 이미 아는 사람의 맥박이야."
+
+          그녀가 아드리안을 돌아본다. "이 사람은 내가 볼게." 아드리안의 손이 한 번 쥐었다 펴진다. 그는 대야를 내려놓는다.
+
+          "그릇은 하나야." 그녀가 네 귀에 대고 말한다. 다정하게. "기록해도 될까?" 대답을 기다리지 않는다. 담요가 한 장 더 온다.
+        effects: ["learn fact_eh_mel_vessel", "captured 멜리산드 은비늘이 '그릇'을 데려갔다 — 그릇의 방에 담요가 깔렸다"]
+
+  # ───────────────────────── 요람에서 빠진 번호 — 쇠눈 크롬 ─────────────────────────
+  - id: o2_krom_hunt
+    origin: ashfire_slave
+    trigger: {window: {from: "312-09-02 05:00", to: "312-10-30 23:00"}, at: "@ember_mines", with: npc_krom_ironeye, when: ["var o2_cradle_escaped == true", "var o2_hunt_done != true"]}
+    severity: 4
+    text: |
+      쇠 눈이 너를 본다. 오래. 목줄장 크롬은 말을 시작하기 전에 침을 삼킨다.
+
+      "요람 명단에서 번호 하나가 빠졌다더군." 그가 한 걸음 다가온다. "장부는 맞춰 놨대. 나는 장부보다 얼굴을 믿어. 얼굴은 외웠어."
+
+      그의 손이 허리의 호루라기로 간다. 요람의 경비를 부르는 소리다. 은비늘이 무엇을 찾는지 크롬은 모른다. 값이 크다는 것만 안다.
+    choices:
+      - id: names
+        label: '"명단에서 이름 하나를 빼는 값은 이름 둘." — 이름 둘을 댄다'
+        minutes: 10
+        text: |
+          크롬이 침을 삼킨다. 쇠 눈이 네 입술을 본다. 이름 둘. 너는 그 둘의 얼굴을 떠올리지 않으려 한다. "…쉽지?" 그가 말한다. 호루라기에서 손이 떨어진다.
+
+          이레 뒤 그 두 굴이 빈다. 크롬의 오두막 명부에 줄이 둘 늘었다.
+        effects: ["var o2_hunt_done = true", "deed inform", "temper 자비 -12", "temper 정직 -4", "stress 15", "memory npc_krom_ironeye 영리함 이백열둘은 이름 값을 안다", "note 크롬에게 이름 둘을 댔다 — 이레 뒤 그 두 굴이 비었다"]
+      - id: run
+        label: 슬래그 비탈로 — 폐갱 쪽으로 달린다
+        minutes: 30
+        risk: 호루라기 한 번이면 끝이다
+        check: {skill: 은신, D: 22, helps: [fleet, shadow_step, evade_track]}
+        success:
+          text: |
+            호루라기가 운다. 한 번. 그러나 슬래그 비탈은 숯막 사람의 것이다. 굴과 굴 사이, 무너진 수레 밑, 썩은 지지대 아래. 크롬의 등불이 비탈 중간에서 멈춘다. 오래. 그리고 내려간다.
+          effects: ["goto em_old_cave", "var o2_hunt_done = true", "var o2_hiding = true", "note 폐갱 — 크롬의 호루라기를 따돌렸다. 얼굴은 외워졌다"]
+        failure:
+          text: |
+            호루라기가 운다. 두 번째는 필요 없다. 용인 경비의 창 자루가 슬래그 비탈 중간에서 네 다리를 쓸어 넘긴다. 크롬이 내려와 침을 삼킨다. "얼굴은 외웠다고 했잖아."
+          effects: ["captured 쇠눈 크롬의 호루라기 — 요람의 경비가 명단에서 빠졌던 번호를 다시 데려갔다"]
+      - id: grab
+        when: ["var o2_grafted == true"]
+        label: 가슴 속의 것이 뛴다 — 호루라기 쥔 손을 잡는다
+        minutes: 5
+        risk: 목줄장에게 손을 댄다
+        check: {skill: 싸움, D: 22, helps: [brawler], warn: ["var o2_grafted == true"]}
+        success:
+          text: |
+            손가락 사이에서 호루라기가 부서진다. 크롬의 손가락 둘이 함께 휜다. 쇠 눈이 처음으로 겁을 담는다. 그는 침을 삼키지 못한다.
+
+            "나는…" 그가 뒷걸음질 친다. "아무 얼굴도 못 봤어." 거짓말이다. 그러나 오늘은 그 거짓말이 그를 살린다.
+          effects: ["var o2_hunt_done = true", "memory npc_krom_ironeye 위험함 요람에서 나온 번호가 호루라기를 부쉈다", "rel npc_krom_ironeye trust -20", "note 크롬의 호루라기를 부쉈다 — 아무 얼굴도 못 봤다고 한다. 지금은"]
+        failure:
+          text: |
+            가슴 속의 박자가 한 번 어긋난다. 손이 미끄러진다. 호루라기가 운다. 두 번째는 필요 없다.
+          effects: ["captured 쇠눈 크롬의 호루라기 — 요람의 경비가 살아난 그릇을 데려갔다"]
+      - id: surrender
+        label: 손을 내민다
+        minutes: 0
+        text: |
+          크롬이 침을 삼킨다. 호루라기를 분다. 한 번. 용인 경비가 오기 전까지 그는 네 손목을 잡고 있다. 쥐는 손이 떨린다. 그는 자기 손이 왜 떠는지 모른다.
+        effects: ["captured 쇠눈 크롬이 요람의 경비를 불렀다 — 명단에서 빠졌던 번호가 하층 공방으로 돌아갔다"]

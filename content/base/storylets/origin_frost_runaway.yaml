@@ -1,0 +1,828 @@
+# O-07 북방 거인 노예 탈주자 — 회귀점의 대본 장면과 첫 열흘 (creation/origins_frost_runaway.yaml).
+# 문법은 greyford_opening.yaml 머리말과 같다. {name} = 울릭만 아는 진짜 이름. origin: 이 출신으로 시작한 판에서만 열리고, stage도 그 판에만 걸린다.
+#
+# SCENARIOS O-07 → 이 파일 (지역 자료가 이긴다 — 사람 대응은 origins_frost_runaway.yaml 머리말)
+#   frost_opening_crowgate 「까마귀 문」  → o7_crowgate_open (08:00, 이름) → o7_gate_thirty (레아의 서른 + 잔향의 각성 「군데」)
+#   (서른이 문 안으로)                    → o7_noon_door      낙엽월 1일 정오 — 받은 자는 바깥문과 쇠창살 사이 통로로. 울릭·잉가와 갈리는 자리
+#   ulric_toes 「울릭의 발가락」          → o7_ulric_toes     2~4일 해 질 녘, 의무실 마그다가 쪽문으로 나온다 (stage) — 자를 것인가
+#                                         o7_ulric_last     5일부터 — 자르지 않았으면 붉은 띠가 무릎을 넘는다 (울릭의 죽음)
+#   (까마귀 문의 정본: 간수 베른의 쪽지) → o7_tenth_note     2일 밤 11시 — 감옥 뒷문의 열 번째 쪽지가 송곳니 초소로 (베른 일과 monthday 2)
+#   (카스파르의 세 질문 — 심문의 정본)   → o7_three_questions 3일 오전 — 비 오는 날, 쪽문 앞에서 문 밖 무리에게 (stage)
+#   hungry_hill_camp·halvor_envoy        → 회색여울 쪽 장면이라 쓰지 않았다. 대신 쪽지의 값이 문 앞으로 온다:
+#                                         o7_fangs          5~8일 밤 — 송곳니들이 골짜기 이름을 들고 문 밖 무리로 (쪽지를 막지 못했으면)
+#   문 앞의 소품 (연출가)                 → o7_gate_frozen · o7_crick_coin (북문 앞에서만, 이 출신의 판에서만 — var o7_ulric_known)
+# 정본과의 이음: 서리월 1일 북문 봉쇄(ag_cg_gate_closed) · 3일 밤 물빼기 굴(cg_drain_night)은 이 출신에게도 그대로 온다.
+storylets:
+  # ───────────────────────── 회귀점: 북문 앞 진흙, 아침 8시 ─────────────────────────
+  - id: o7_crowgate_open
+    origin: frost_runaway
+    trigger: {start: true}
+    stage:
+      - {npc: npc_lea, at: cg_north_gate, from: "08:00", to: "12:10", doing: 성문 위 성벽에 서서 받을 서른을 고른다 — 이름보다 손과 신발을 본다}
+      - {npc: npc_cg_brynja, at: cg_north_gate, from: "08:00", to: "09:40", doing: 무리 가장자리에서 장교의 말을 서리말로 옮긴다 — 돌아갈 사람의 값을 센다}
+      - {npc: npc_cg_gunter, at: cg_north_gate, from: "08:30", to: "13:00", doing: 문 앞에서 짐 질 손을 고른다 — 이름보다 손부터 본다}
+      - {npc: npc_kaspar, at: cg_north_gate, from: "10:20", to: "11:20", doing: 진눈깨비 속에 북문 위로 올라와 문 앞 진흙을 내려다본다}
+      - {npc: npc_cg_bern, at: cg_north_gate, from: "12:00", to: "13:30", doing: 문틈에서 들어오는 자마다 이름과 골짜기를 묻고 적는다}
+    text: |
+      젖은 털가죽 냄새. 진눈깨비가 털 사이로 스며 살에 닿는다.
+
+      까마귀 문은 이름처럼 검다. 협곡을 막아선 돌벽 위에 정말로 까마귀가 앉아 있고, 장대 끝에는 새가 아닌 것도 걸려 있다. 그 아래 진흙 벌판에 너 같은 사람이 이백쯤 앉아 있다. 털가죽을 뒤집어쓴 등, 등, 등. 아무도 일어서지 않는다. 일어서면 바람이 먼저 온다.
+
+      서리 길을 넘는 데 열아흐레가 걸렸다. 돌무릎 골짜기를 나설 때는 마흔이었다. 아흐레째 밤, 울음 고개에서 케틸이 — 네 동생이 — 웅크린 채 일어나지 않았다. 그 뒤로 너는 세지 않는다.
+
+      잉가가 네 무릎 사이에 앉아 나무 인형을 안고 있다. 열두 살. 케틸이 깎다 만 인형이다. 아이의 입술이 소리 없이 움직인다. 성벽의 까마귀를 세고 있다.
+
+      울릭이 네 팔을 붙든다. 예순여섯의 덫꾼. 털가죽으로 싸맨 그의 발에서 단 냄새가 난다. 썩는 살의 냄새다. 그가 네 귀에 입을 댄다. 서리말로. 낮게. 아무도 못 듣게.
+    input: true_name
+    input_label: 어머니가 지어 준 이름 — 울릭만 안다
+    input_button: 그 이름을 듣는다
+    input_say: 울릭이 귀에 대고 부르는 이름
+    input_sibling: false
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "젖은 털가죽 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 젖은 털가죽 냄새."}
+    trace_lines:
+      water: 진눈깨비가 목으로 흘러든다. 목 안에 물이 있다. 없다. 털가죽이 젖었을 뿐이다.
+      teeth: 목덜미가 가렵다. 개 냄새가 난다 — 아니다, 젖은 털가죽 냄새다.
+      spear: 옆구리가 시리다. 성벽 위의 쇠뇌들은 아직 하늘을 보고 있다.
+      blade: 목이 뜨겁다. 부츠 속 뼈 칼은 제자리에 있다.
+      rope: 손목이 쓸린다. 아무것도 묶여 있지 않다. 아직은.
+      hunger: 배가 꼬인다. 이건 진짜다. 서리 길 열아흐레 동안 내내 그랬다.
+      fall: 발밑이 꺼지는 것 같다. 진흙은 그대로다.
+    return_ink: |
+      ┊ 그 다음엔 성문 위에 은빛 머리의 장교가 섰다. "서른." 브린야가 그 말을 서리말로 옮겼다.
+    after_input: |
+      "{name}."
+
+      거인의 장부에서 너는 '가죽 일곱'이다. 무리는 너를 일곱이라 부른다. 그 이름 말고 — 어머니가 숨을 거두기 전에 울릭의 귀에 남긴 이름. 이 세상에 그것을 아는 입은 이제 이 노인 하나다.
+
+      "발가락이 검다." 울릭이 말한다. 남의 발 이야기처럼. "이름을 아는 사람이 하나는 남아야지. 아무한테도 주지 마라. 큰 것들한테도, 용한테도. 이름을 아는 자가 너를 가진다."
+
+      성벽 위에서 나팔이 짧게 운다. 진흙 위의 머리들이 일제히 든다.
+    effects: ["var o7_ulric_known = true", "var o7_inga_known = true", "var o7_inga_out = true", "note 울릭만 아는 이름 — {name}. 무리는 너를 일곱이라 부른다 (거인의 장부에서는 '가죽 일곱')"]
+    next: o7_gate_thirty
+
+  # ───────────────────────── 둘째 화면: 서른 — 그리고 잔향의 각성 ─────────────────────────
+  - id: o7_gate_thirty
+    origin: frost_runaway
+    text: |
+      성문 위에 용인 장교가 선다. 짧게 자른 은회색 머리, 머리선을 따라 은빛 비늘이 돋은 여자다. 오른손은 허리 뒤에 감추었다. 그녀가 공용어로 짧게 말한다. 너는 절반만 알아듣는다 — 서른. 그리고, 돌아가라.
+
+      무리 가장자리에서 털가죽을 목까지 올린 여자가 서리말로 옮긴다. 눈 아래에 서리 화상, 입김이 한쪽으로만 나온다. 마지막 이정표의 천막에서 너희에게 값을 물었던 그 여자 — 브린야다. "서른. 쓸모 있는 자 서른만 받는다. 나머지는 돌아가라." 그리고 장교에게는 들리지 않게 덧붙인다. "돌아갈 길이 필요하면 해 질 녘, 바위 틈 굴 입구. 값이 있다."
+
+      울릭의 손이 네 팔을 더 세게 쥔다. 잉가는 아직 까마귀를 센다. 돌아가면 서리가 기다린다. 서리 길은 한 달 뒤 닫힌다. 그리고 바우그 — 돌무릎의 주인, 손가락이 가는 거인 — 는 도망친 노예의 발목을 부러뜨리지 않는다. 다리 부러진 노예는 짐을 못 지니까. 장부의 칸을 비워 둘 뿐이다. 돌아오면 다시 쓴다.
+
+      장교의 눈이 무리 위를 지나간다. 얼굴이 아니라 손을 본다. 그리고 발을.
+
+      까마귀 떼가 한꺼번에 날아오른다. 그때 너는 이 땅을 본 적이 있다는 것을 안다. 성벽이 서기 전에. 거인과 그롬이 부딪치던 들판, 방패 대신 세워진 인간들의 줄. 그 줄 한가운데에 누군가 있었다. 네 안에서 그가 방패를 고쳐 쥔다. 같은 들판에서 몇 번이고 다시 선 사람. 이름 하나만 남았다 — 군데.
+
+      혀끝에 배운 적 없는 요툰의 옛말이 걸렸다가 녹는다. 눈가로 잿빛 고리가 스치고 사라진다.
+    effects: ["learn fact_hi_gunde_shield_line", "learn fact_o7_lea_hands", "var o7_old_tongue = true", "note 성문 위의 은빛 머리 장교 — 서른만 받는다. 나머지는 돌아가라", "note 브린야 — 해 질 녘 바위 틈 굴 입구. 값이 있다"]
+    choices:
+      - id: interpret
+        label: '앞으로 나선다 — 공용어로: "내가 옮긴다. 서리말, 노예말."'
+        minutes: 30
+        check: {skill: 화술, D: 18, helps: [tongue, tongues, crowd_voice]}
+        success:
+          text: |
+            장교가 너를 내려다본다. 손을 먼저, 신발을 다음에. "옮겨 봐라. 저 노인에게. '돌아가라.'"
+
+            너는 울릭을 보지 않고 서리말로 옮긴다. 공용어가 네 입에서 서너 번 넘어진다. 그래도 뜻은 간다. 진흙 위의 머리들이 너를 본다 — 처음으로, 문의 말을 하는 입을.
+
+            "통역은 쓸모다." 장교가 왼손 손가락 하나를 든다. 문 옆의 크릭 열쇠지기가 석판에 금 하나를 긋는다. "스물아홉째. 정오에 들어온다. 혼자."
+
+            울릭이 네 팔을 놓는다. 놓았다는 것을 너는 한참 뒤에 안다.
+          effects: ["var o7_taken = true", "var o7_interpreter = true", "rel npc_lea trust 6", "memory npc_lea 영리함 서리말과 노예말을 옮기는 북쪽 것 — 스물아홉째로 받았다", "rel npc_o7_ulric trust -4", "stress 6", "note 성문 위의 장교 — 통역으로 받았다. 스물아홉째, 정오에 혼자 들어간다"]
+        failure:
+          text: |
+            네 공용어가 첫 마디에서 넘어진다. 둘째 마디에서 성벽 위의 크릭들이 웃는다. 장교는 웃지 않는다. 그게 더 나쁘다.
+
+            "다음." 그녀의 눈이 네 옆 사람의 손으로 옮겨 간다.
+          effects: ["stress 8", "rel npc_lea like -3", "memory npc_lea 짐 공용어 한 마디 못 세우면서 통역을 하겠다고 나선 북쪽 것"]
+      - id: bypass
+        label: 울릭과 잉가를 데리고 무리를 빠져나온다 — 성벽을 돌아가는 길을 찾는다
+        minutes: 240
+        risk: 울릭의 발로는 오래 못 걷는다
+        check: {skill: 통찰, D: 26, helps: [survivor, pathfinder, long_walk, cold_hardy]}
+        success:
+          text: |
+            북문 서쪽, 성벽이 바위에 박히는 곳. 바위 틈에서 따뜻한 김이 올라온다. 잿물 냄새 — 성벽 밑으로 들어가는 돌 굴이다. 쇠창살이 녹슬어 붉다. 안쪽 어딘가에서 빨래 방망이 소리가 물을 타고 온다.
+
+            그 위 바위 선반에 돌무더기가 있다. 둘, 셋. 남쪽으로 이어진다. 바람이 쌓은 돌이 아니다. 사람이 쌓은 돌이다. 요새를 돌아가는 길 — 밀수꾼의 길.
+
+            울릭이 바위에 등을 대고 앉는다. 숨이 길다. "오늘은 못 간다." 그가 웃는다. "내일도." 잉가가 돌무더기를 센다. 셋, 넷, 다섯.
+
+            너희가 문 앞 진흙으로 돌아왔을 때, 정오의 나팔이 운다.
+          effects: ["learn fact_o7_drain_breath", "learn fact_o7_smuggler_cairns", "var o7_path_found = true", "fatigue 15", "rel npc_o7_ulric like 4", "note 북문 서쪽 바위 틈 — 성벽 밑 돌 굴(잿물 냄새, 녹슨 창살). 그 위 바위 선반에서 남쪽으로 돌무더기 길"]
+        failure:
+          text: |
+            비탈의 돌이 울릭의 발밑에서 미끄러진다. 그는 넘어지며 소리를 내지 않는다. 그게 더 무섭다. 털가죽을 벗기자 검은 발가락 하나가 덜렁거린다.
+
+            너는 그를 업고 내려온다. 가볍다. 잉가가 뒤에서 인형과 울릭의 지팡이를 든다. 문 앞 진흙에 닿았을 때 정오의 나팔이 운다.
+          effects: ["pain 8", "fatigue 20", "var o7_ulric_worse = true", "rel npc_o7_ulric like 4", "note 성벽을 돌아가는 길은 찾지 못했다 — 울릭의 발로는 비탈을 못 오른다"]
+      - id: hunt
+        label: 협곡 벽의 산양을 쫓는다 — 고기로 쓸모를 보인다
+        minutes: 240
+        check: {skill: 은신, D: 20, helps: [hunter, tracker, beast_friend]}
+        success:
+          text: |
+            협곡 동쪽 벽. 진눈깨비가 바람을 감춰 준다. 산양은 너를 보지 못하고, 너는 산양을 본다. 뼈 칼은 돌보다 느리다. 돌이 먼저 간다.
+
+            정오에 너는 산양을 끌고 문 앞에 닿는다. 진흙 위의 머리들이 고기를 본다. 성벽 위의 크릭들도. 절구통 같은 사내 — 짐꾼 반장 — 가 문 앞에서 네 손을 본다. 피 묻은 손.
+
+            "병사 솥에 넣어라." 명령이 아니라 값을 부르는 말투다. 너는 뒷다리 하나를 떼어 털가죽 속에 넣는다 — 울릭과 잉가 몫이다. 나머지는 밧줄에 묶여 성벽 위로 올라간다. 석 달 급료를 못 받은 얼굴들이 성가퀴 너머로 하나씩 내려다본다.
+          effects: ["var o7_soldiers_fed = true", "item o7_ibex_haunch", "rel npc_cg_gunter like 8", "rel npc_cg_gunter trust 6", "memory npc_cg_gunter 영리함 산양을 잡아 병사 솥에 넣은 북쪽 것 — 손이 좋다", "memory npc_cg_grik 이상함 병사 솥에 산양을 바친 북쪽 것", "fatigue 15"]
+        failure:
+          text: |
+            산양이 너보다 먼저 바람을 맡는다. 협곡 벽에 흰 엉덩이 하나가 번뜩이고 사라진다. 너는 언 손으로 빈 덫을 거둔다.
+
+            정오에 빈손으로 문 앞에 닿는다. 서른의 줄은 이미 섰다.
+          effects: ["fatigue 20", "stress 5"]
+      - id: shout_sigrid
+        label: '일어서서 외친다 — "시그리드를 안다! 서리손 집안의 시그리드!"'
+        minutes: 10
+        risk: 산 사람의 이름이다
+        text: |
+          진흙 위의 머리들이 너를 본다. 울릭의 손이 네 털가죽 자락을 잡아당긴다. 늦었다.
+
+          성문 위의 장교가 처음으로 걸음을 멈춘다. "시그리드." 공용어 사이에 끼인 북쪽 이름을, 그녀가 혀 위에서 굴린다. "봄에 예순을 끌고 길을 연 여자." 그녀가 왼손 손가락 하나를 든다. 문 옆의 크릭이 석판에 금을 긋는다. "길을 연 자를 아는 입은 쓸모가 있다. 정오에 들어온다."
+
+          성벽 위의 크릭 하나가 그 이름을 입속으로 따라 한다. 그리고 웃는다.
+
+          울릭이 서리말로 낮게 말한다. "산 사람 이름을 성문에 대고 부르는 게 아니다."
+        effects: ["var o7_taken = true", "var o7_sigrid_named = true", "rel npc_lea trust 4", "memory npc_lea 영리함 시그리드를 안다고 외친 북쪽 것 — 길을 연 여자를 안다", "memory npc_cg_grik 이상함 성문 앞에서 시그리드라는 이름을 외친 북쪽 것", "rel npc_o7_ulric trust -8", "note 성문 앞에서 시그리드의 이름을 외쳤다. 장교가 금을 그었다 — 정오에 들어간다. 성벽 위의 크릭 하나가 웃었다"]
+      - id: push_gate
+        label: 무리를 일으켜 세운다 — 함께 문을 민다
+        minutes: 20
+        risk: 성벽 위에 쇠뇌가 있다
+        check: {skill: 위압, D: 34, helps: [command, crowd_voice, menace]}
+        success:
+          text: |
+            네 서리말이 진흙 위로 번진다. 열이 일어서고, 서른이, 백이. 참나무 문짝이 처음으로 신음한다.
+
+            성벽 위에서 쇠뇌들이 일제히 내려온다. 장교가 손을 들어 막는다 — 아직. 목소리는 높아지지 않는다. "다섯 걸음 물러서면 아무도 안 죽는다." 브린야가 그 말을 옮기기도 전에 앞줄이 물러선다. 뒷줄이 따른다.
+
+            장교가 너를 본다. 손이 아니라 얼굴을. "오늘은 아무도 들이지 않는다." 그녀가 돌아선다. 무리의 눈이 너에게 온다. 이백의 눈이다.
+          effects: ["var o7_pushed = true", "var o7_no_intake = true", "wanted 1 성문을 민 북쪽 것들의 앞줄", "rel npc_lea trust -15", "memory npc_lea 위험함 무리를 일으켜 성문을 밀게 한 북쪽 것", "temper 용기 4", "stress 12"]
+        failure:
+          text: |
+            열이 일어선다. 서른이. 문짝이 신음한다 — 그리고 성벽 위에서 마른 소리가 난다. 한 번. 열 번.
+
+            진흙이 붉어진다. 앞줄이 무너지고 뒷줄이 그 위로 넘어진다. 너는 울릭을 일으키려 한다. 그의 발로는 일어설 수 없다. 사람들이 그 위를 밟고 지나간다. 잉가의 비명이 어디선가 끊긴다 — 살아 있다. 인형을 안고 문틀 밑에 웅크려 있다.
+
+            쇠뇌 살 하나가 네 옆구리를 지나간다. 지나가지 않았다.
+          effects: ["var o7_pushed = true", "var o7_massacre = true", "var o7_no_intake = true", "agenda kill npc_o7_ulric", "var o7_ulric_dead = true", "pain 40", "temper 용기 4", "stress 20", "die_if 0.5 spear 성문 앞 진흙에서 쇠뇌 살을 맞았다 — 무리를 일으켜 세운 앞줄이었다"]
+      - id: appeal_kaspar
+        label: 반나절을 기다린다 — 성벽 위에 사령관이 서면 노예말로 외친다
+        minutes: 150
+        risk: 용인 앞에서 고개를 드는 인간
+        check: {skill: 화술, D: 30, helps: [tongue, crowd_voice, etiquette], warn: ["pknows fact_gf_kaspar_slave_tongue", "pknows fact_gf_kaspar_mother_words"]}
+        success:
+          text: |
+            정오가 가까울 무렵, 성벽 위에 다른 그림자가 선다. 얼굴 왼쪽 반이 은회색 비늘로 덮인 사내. 병사들이 허리를 편다.
+
+            너는 일어선다. 서리말이 아니라 노예말로 외친다 — 거인의 골짜기에서도 용의 땅에서도 사슬 찬 사람들이 쓰는 말로. 발이 썩는 노인 하나, 아이 하나. 서른의 줄에 들 수 없는 몸들에 대하여.
+
+            사내가 내려다본다. 오래. 그리고 장교에게 공용어로 말한다. 너는 절반만 알아듣는다. 나머지 절반은 장교의 얼굴이 말해 준다.
+
+            "내 어머니도 이런 진흙에 앉아 있었다. 쉰. 노인과 아이를 먼저."
+
+            장교는 대답하지 않는다. 손을 허리 뒤에 감춘 채 사령관의 옆얼굴을 오래 본다. 그리고 크릭에게 손가락 다섯을 편다.
+          effects: ["var o7_taken = true", "var o7_fifty = true", "var o7_ulric_taken = true", "var o7_inga_taken = true", "var o7_inga_out = false", "rel npc_kaspar like 15", "rel npc_kaspar trust 5", "memory npc_kaspar 다정함 노예말로 노인과 아이를 위해 외친 북쪽 것", "rel npc_lea like -10", "rel npc_lea trust -10", "memory npc_lea 위험함 사령관이 저 북쪽 것의 말에 서른을 쉰으로 바꿨다 — 보고서에 적을 일", "temper 용기 5", "note 반쪽 비늘의 사령관 — '쉰. 노인과 아이를 먼저.' 울릭과 잉가도 정오에 들어간다"]
+        failure:
+          text: |
+            정오가 가까울 무렵, 성벽 위에 얼굴 반쪽이 비늘로 덮인 사내가 선다. 너는 외친다. 공용어는 바람에 찢기고, 노예말은 진흙 위의 웅성거림에 묻힌다.
+
+            사내의 눈이 한 번 너에게 머문다. "명분이 있나?" 그가 장교에게 묻는다 — 너에게가 아니라. 장교가 고개를 젓는다. 사내는 망루를 한 번 올려다보고, 돌아선다.
+
+            성벽 위에서 창 자루가 내려와 네 어깨를 친다. 한 번. 그걸로 끝이다.
+          effects: ["pain 10", "stress 6", "memory npc_kaspar 이상함 진흙 위에서 노예말로 외치던 북쪽 것"]
+      - id: bow_wait
+        label: 고개를 숙이고 기다린다 — 고르는 것은 저 장교다
+        minutes: 120
+        text: |
+          장교의 눈이 줄을 따라 내려온다. 손, 신발. 손, 신발. 문 옆의 크릭 열쇠지기가 석판에 금을 긋는다. 열하나. 열둘.
+
+          네 앞에서 그 눈이 멈춘다. 네 손은 쓸 만하다. 그리고 네 옆에 — 울릭의 털가죽 밖으로 비어져 나온 검은 발. 눈이 지나간다.
+
+          그때 잉가가 일어선다. 인형을 품에 넣고, 성벽 위로 손을 든다. 공용어 세 마디. 서리 길에서 크릭 장사꾼에게 주워들은 말. "나. 물. 길어요."
+
+          장교가 처음으로 웃는다. 웃음이라기엔 짧다. "부엌에 아이 손이 모자라지." 금이 하나 더 그어진다. 스물넷.
+
+          잉가는 너를 돌아보지 않는다. 돌아보면 못 갈 것을 아는 얼굴이다.
+        effects: ["var o7_inga_taken = true", "var o7_inga_out = false", "rel npc_o7_inga trust 4", "stress 10", "note 잉가가 스스로 손을 들었다 — 스물넷째. 정오에 서른과 함께 문 안으로 간다"]
+      # ── ◈ 기억 선택지: 장교가 무엇을 보는지 안다 ──
+      - id: mem_lea_hands
+        needs_memory: fact:fact_o7_lea_hands
+        label: '울릭의 검은 발을 넝마로 싸매 신발처럼 묶는다 — "저 장교는 손과 신발을 본다."'
+        minutes: 40
+        check: {skill: 손재주, D: 14, helps: [disguise, actor]}
+        success:
+          text: |
+            너는 털가죽 안자락을 찢어 울릭의 발을 싸맨다. 진흙을 바르고, 끈을 신발 끈처럼 엮는다. 울릭은 아무것도 묻지 않는다. 네 손이 어떻게 이 일을 아는지도.
+
+            장교의 눈이 울릭에게 온다. 손 — 덫꾼의 손, 굳은살과 흉터. 신발 — 진흙 묻은 가죽. 눈이 지나간다. 금이 하나 그어진다.
+
+            울릭이 네 손등을 한 번 두드린다. 아이를 재울 때처럼.
+          effects: ["var o7_ulric_taken = true", "rel npc_o7_ulric trust 6", "memory npc_o7_ulric 이상함 일곱이 장교가 무엇을 볼지 미리 알았다", "note 울릭을 서른의 줄에 넣었다 — 검은 발을 넝마로 싸매서"]
+        failure:
+          text: |
+            장교의 눈이 울릭의 발에서 멈춘다. 넝마 밑으로 단 냄새가 올라온다. "썩는 발은 겨울을 못 넘긴다." 그 눈이 너에게 온다. "거짓말하는 손도."
+          effects: ["rel npc_lea trust -8", "memory npc_lea 거짓말쟁이 썩는 발을 넝마로 싸매 줄에 세운 북쪽 것", "stress 6"]
+
+  # ───────────────────────── 정오의 문: 서른이 들어간다 ─────────────────────────
+  - id: o7_noon_door
+    origin: frost_runaway
+    trigger: {at_time: "312-09-01 12:00", at: cg_north_gate, late: "312-09-01 17:30", when: ["var o7_no_intake != true"]}
+    text: |
+      참나무 바깥문이 사람 하나 지나갈 만큼 열려 있다 — 정오 교대의 나팔부터 문 닫는 나팔까지. 문틈 안은 어둡다. 바깥문과 쇠창살 사이, 돌로 된 통로. 감옥의 칸은 이미 찼다고, 받은 자는 그 통로에서 잔다고, 무리 사이에 말이 돈다.
+
+      크릭 열쇠지기가 문틈에 서서 석판의 금을 손톱으로 짚는다. 하나씩. 그 뒤에서 열쇠 꾸러미를 목에 건 사내가 — 귀 한쪽이 없다 — 들어오는 자마다 이름과 골짜기를 묻고, 무언가를 적는다. 웃음이 말보다 먼저 나오는 사내다.
+
+      진흙 위에서 서른이 일어선다. 나머지는 앉은 채로 그 등을 본다.
+    effects: ["learn fact_o7_thirty_passage"]
+    choices:
+      - id: enter_alone
+        when: ["var o7_taken == true", "var o7_ulric_taken != true", "var o7_inga_taken != true"]
+        label: 문틈으로 들어간다 — 울릭과 잉가를 진흙 위에 두고
+        minutes: 15
+        text: |
+          귀 없는 사내가 묻는다. 이름. 너는 거인의 장부에 적힌 이름을 댄다 — 가죽 일곱. 골짜기. 돌무릎. 그가 적는다. 웃으며.
+
+          돌아보면 울릭이 진흙 위에서 손을 든다. 가라는 손이다. 잉가는 인형을 안은 채 일어서지 않는다. 까마귀를 세던 입술이 멈춰 있다.
+
+          문틈이 등 뒤에서 좁아진다. 진눈깨비 소리가 한 겹 멀어진다.
+        effects: ["var o7_inside = true", "var o7_name_given = true", "stress 10", "rel npc_o7_inga trust -6", "note 문 안 — 바깥문과 쇠창살 사이 돌 통로. 귀 없는 사내가 '가죽 일곱, 돌무릎'이라 적었다"]
+      - id: give_place
+        when: ["var o7_taken == true", "var o7_fifty != true", "var o7_inga_taken != true", "alive npc_o7_inga"]
+        label: 네 자리를 잉가에게 준다 — 아이를 문틈으로 민다
+        minutes: 15
+        text: |
+          너는 잉가를 일으켜 문틈 앞에 세운다. 크릭 열쇠지기가 아이를 내려다보고, 석판을 보고, 어깨를 으쓱한다. 금은 금이다. 귀 없는 사내가 묻는다. 이름. 잉가가 너를 돌아본다. 너는 거인의 장부식으로 대신 대답한다 — 물 셋. 돌무릎.
+
+          잉가가 인형을 네 손에 쥐여 주려 한다. 너는 받지 않는다. 문틈이 좁아진다.
+        effects: ["var o7_taken = false", "var o7_interpreter = false", "var o7_inga_taken = true", "var o7_inga_out = false", "var o7_inga_inside = true", "var o7_gave_place = true", "temper 자비 6", "rel npc_o7_inga like 10", "rel npc_o7_inga trust 10", "bond npc_o7_inga 6", "note 네 자리를 잉가에게 주었다 — 잉가는 문 안, 너는 진흙 위"]
+      - id: enter_fifty
+        when: ["var o7_fifty == true"]
+        label: 울릭을 업고 쉰의 줄로 들어간다 — 잉가의 손을 잡고
+        minutes: 20
+        text: |
+          쉰의 줄. 크릭 열쇠지기가 금을 다시 센다. 그어 놓은 서른 옆에 스물을 더 긋는다. 투덜거림이 석판 위로 떨어진다.
+
+          너는 울릭을 업는다. 가볍다. 잉가가 네 털가죽 자락을 쥔다. 귀 없는 사내가 세 번 묻고, 세 번 적는다. 가죽 일곱. 덫 하나. 물 셋. 돌무릎.
+
+          문 안의 돌바닥이 차다. 그래도 바람이 없다. 울릭이 등에서 웃는다. "용의 땅 돌바닥이로구나."
+        effects: ["var o7_inside = true", "var o7_name_given = true", "var o7_ulric_inside = true", "var o7_inga_inside = true", "rel npc_o7_ulric like 6", "rel npc_o7_inga like 6", "bond npc_o7_inga 4", "note 쉰 — 울릭과 잉가와 함께 문 안으로"]
+      - id: ulric_goes
+        when: ["var o7_ulric_taken == true", "var o7_taken != true", "alive npc_o7_ulric"]
+        label: 울릭을 문틈까지 부축한다 — 그 혼자 들여보낸다
+        minutes: 15
+        text: |
+          넝마로 싸맨 발이 진흙에서 두 번 미끄러진다. 크릭 열쇠지기는 발을 보지 않는다. 석판만 본다. 귀 없는 사내가 묻는다. 이름. 울릭이 대답한다. 덫 하나.
+
+          문틈 앞에서 울릭이 네 귀에 입을 댄다. "이름은 내가 지킨다. 너는 잉가를 지켜라." 그리고 들어간다. 문틈이 좁아진다.
+        effects: ["var o7_ulric_inside = true", "rel npc_o7_ulric trust 6", "stress 6", "note 울릭은 문 안 — 이름은 그가 지킨다. 너는 잉가를"]
+      - id: inga_goes
+        when: ["var o7_inga_taken == true", "var o7_taken != true", "alive npc_o7_inga"]
+        label: 잉가를 문틈까지 데려다준다
+        minutes: 15
+        text: |
+          잉가는 끝내 돌아보지 않는다. 문틈 앞에서 한 번 멈출 뿐이다. 인형을 품에서 꺼내 네 손에 쥐여 주려다 — 다시 넣는다. "케틸 거야. 내가 가지고 있을게."
+
+          귀 없는 사내가 묻는다. 이름. 아이가 공용어 세 마디 가운데 하나를 쓴다. "물." 사내가 웃으며 적는다. 크릭 열쇠지기가 금을 짚는다. 문틈이 좁아진다.
+        effects: ["var o7_inga_inside = true", "rel npc_o7_inga trust 6", "bond npc_o7_inga 4", "stress 8", "note 잉가는 문 안 — 케틸의 인형과 함께"]
+      - id: meat_me
+        when: ["var o7_soldiers_fed == true", "var o7_taken != true"]
+        label: '짐꾼 반장에게 — "산양 값으로 자리 하나. 내 자리."'
+        minutes: 15
+        text: |
+          짐꾼 반장이 성벽 위를 본다. 고기 굽는 연기가 성가퀴 너머로 오른다. 그가 윗입술을 오른쪽으로 당기며 크릭에게 손가락 하나를 든다. 금이 하나 더 그어진다. 서른하나.
+
+          "짐은 짐이다." 그가 네 어깨를 한 번 친다. 무게를 재는 손이다. "내일 문 여는 나팔에 내 줄로 와."
+        effects: ["var o7_taken = true", "var o7_inside = true", "var o7_name_given = true", "rel npc_cg_gunter trust 6", "note 짐꾼 반장 — 산양 값으로 서른하나째. 문 여는 나팔에 그의 줄로"]
+      - id: meat_inga
+        when: ["var o7_soldiers_fed == true", "var o7_inga_taken != true", "alive npc_o7_inga"]
+        label: '짐꾼 반장에게 — "산양 값으로 자리 하나. 저 아이 자리."'
+        minutes: 15
+        text: |
+          짐꾼 반장이 잉가의 손을 본다. 작은 손, 갈라진 손. "물동이는 지겠군." 그가 크릭에게 고개를 까딱한다. 금이 하나 더 그어진다.
+
+          잉가가 너를 본다. 너는 가라고 턱짓한다. 아이가 인형을 품에 넣고 간다. 문틈 앞에서 한 번, 셈하듯 너를 돌아본다.
+        effects: ["var o7_inga_taken = true", "var o7_inga_out = false", "var o7_inga_inside = true", "rel npc_cg_gunter trust 3", "rel npc_o7_inga trust 8", "bond npc_o7_inga 4", "temper 자비 4", "note 산양 값으로 잉가를 문 안에 넣었다 — 짐꾼 반장이 물동이를 지게 한다"]
+      - id: push_inga
+        when: ["var o7_taken != true", "var o7_inga_taken != true", "alive npc_o7_inga"]
+        label: '잉가를 줄 끝에 세운다 — 짐꾼 반장에게: "이 애는 물을 긷습니다."'
+        minutes: 15
+        check: {skill: 화술, D: 16, helps: [tongue, crowd_voice]}
+        success:
+          text: |
+            짐꾼 반장 — 절구통 같은 사내 — 이 잉가의 손을 본다. 작은 손, 갈라진 손. "물동이는 지겠군." 그가 크릭에게 고개를 까딱한다. 금 하나가 더 그어진다.
+
+            잉가가 너를 본다. 너는 가라고 턱짓한다. 문틈이 아이를 삼킨다.
+          effects: ["var o7_inga_taken = true", "var o7_inga_out = false", "var o7_inga_inside = true", "rel npc_cg_gunter trust 3", "rel npc_o7_inga trust 4", "stress 6", "note 잉가는 문 안 — 짐꾼 반장이 물동이를 지겠다고 했다"]
+        failure:
+          text: |
+            "아이 입은 아이 손보다 크다." 짐꾼 반장이 돌아선다. 잉가가 인형을 더 꽉 안는다. 아이는 너를 보지 않는다.
+          effects: ["stress 4", "rel npc_o7_inga like -2"]
+      - id: slip_in
+        when: ["var o7_taken != true"]
+        label: 서른의 줄 끝에 붙는다 — 금 하나 없이 문틈으로 섞여 든다
+        minutes: 15
+        risk: 크릭이 머리를 센다
+        check: {skill: 은신, D: 22, helps: [shadow_step, actor, disguise]}
+        success:
+          text: |
+            열쇠지기의 손톱이 석판을 짚는다. 스물아홉, 서른. 그의 눈이 석판에 있는 사이 너는 서른째의 그림자에 붙어 문틈을 지난다. 귀 없는 사내가 이름을 묻는다. 너는 대답한다. 그는 적는다. 세는 일은 그의 일이 아니다.
+
+            안에서 돌아본다. 문틈 너머 진흙 위에 — 남은 얼굴들.
+          effects: ["var o7_taken = true", "var o7_slipped = true", "var o7_inside = true", "var o7_name_given = true", "stress 6", "note 금 없이 문 안으로 섞여 들었다 — 석판의 서른보다 하나 많다"]
+        failure:
+          text: |
+            열쇠지기의 손톱이 멈춘다. 서른하나. 그가 고개를 들고, 너를 본다. 크릭의 몽둥이가 네 무릎 뒤를 친다. 진흙이 입으로 들어온다. 성벽 위에서 웃음소리.
+          effects: ["pain 12", "wanted 1 금 없이 문 안으로 섞여 들려 했다", "memory npc_cg_creak 위험함 금 없이 줄에 섞여 든 북쪽 것"]
+      - id: watch_door
+        when: ["var o7_taken != true"]
+        label: 진흙 위에 앉은 채 문틈이 닫히는 것을 본다
+        minutes: 30
+        text: |
+          서른의 등이 문틈으로 하나씩 사라진다. 마지막 등이 지나가자 참나무 문은 반 뼘쯤 더 열려 있다가, 크릭의 어깨에 밀려 다시 좁아진다. 성벽 위에서 까마귀 하나가 내려앉는다.
+
+          울릭이 털가죽 속에서 서리말로 수를 센다. 이백 빼기 서른. 셈이 끝나도 그는 입을 다물지 않는다.
+        effects: ["stress 6", "var o7_watched_door = true"]
+
+  # ───────────────────────── 울릭의 발가락: 의무실 여자가 나오는 해 질 녘 ─────────────────────────
+  - id: o7_ulric_toes
+    origin: frost_runaway
+    trigger: {window: {from: "312-09-02 17:30", to: "312-09-04 18:45"}, at: cg_north_gate, with: npc_cg_magda, when: ["alive npc_o7_ulric", "var o7_ulric_cut != true", "var o7_ulric_dead != true"]}
+    severity: 3
+    stage:
+      - {npc: npc_cg_magda, at: cg_north_gate, from: "312-09-02 17:40", to: "312-09-02 18:40", doing: 쪽문으로 나와 문 앞 무리의 언 발을 본다 — 손바닥을 비벼 데우며}
+      - {npc: npc_cg_magda, at: cg_north_gate, from: "312-09-03 17:40", to: "312-09-03 18:40", doing: 쪽문으로 나와 문 앞 무리의 언 발을 본다 — 손바닥을 비벼 데우며}
+      - {npc: npc_cg_magda, at: cg_north_gate, from: "312-09-04 17:40", to: "312-09-04 18:40", doing: 쪽문으로 나와 문 앞 무리의 언 발을 본다 — 손바닥을 비벼 데우며}
+    text: |
+      문 닫는 나팔 직전. 쪽문이 열리고 앞치마를 두른 여자가 진흙 위로 나온다. 앞치마에 마른 약초 잎이 붙었고, 왼손 약지가 굽었다. 손바닥을 비벼 데우며 언 발들 사이를 걷는다. 의무실 사람이다 — 사령관이 해 질 녘 한 시간은 눈감는다고, 문 옆의 크릭이 투덜거린다.
+
+      그녀가 울릭 앞에서 멈춘다. 울릭이 털가죽을 푼다. 단 냄새가 올라온다. 발가락 넷이 검다. 검은 것이 발등으로 번지는 자리에 붉은 띠가 둘렸다.
+
+      "손부터 내놔 봐." 여자가 울릭의 손을 쥐었다 놓는다. 그리고 발을 본다. 오래. "붉은 띠가 무릎에 닿으면 늦어. 잘라야 해. 오늘."
+
+      울릭이 웃는다. 서리말로. "발가락 열 개로 서리 길을 넘었다. 그걸로 됐다."
+
+      여자는 서리말을 모르는 척한다. 알아듣는 얼굴이다.
+    effects: ["learn fact_o7_magda_gate"]
+    choices:
+      - id: magda_cut
+        label: '의무실 여자에게 맡긴다 — "자르세요. 제가 붙잡겠습니다."'
+        minutes: 40
+        text: |
+          그녀가 크릭의 화로에 작은 톱날을 넣는다. 너는 울릭의 어깨를 끌어안는다. 잉가가 인형을 두 손으로 들어 제 눈을 가린다.
+
+          울릭은 소리를 지르지 않는다. 서리말로 센다. 하나, 둘 — 넷에서 멈춘다. 발가락이 넷이었다.
+
+          여자가 단 냄새 나는 넝마를 진흙에 버리고 손을 닦는다. "약초가 모자라. 쑥이든 버드나무 껍질이든. 돈은 필요 없어." 그녀가 쪽문으로 돌아간다. 돌아보지 않는다.
+        effects: ["var o7_ulric_cut = true", "var o7_owe_magda = true", "rel npc_cg_magda trust 6", "rel npc_cg_magda like 4", "rel npc_o7_ulric like 6", "rel npc_o7_ulric trust 4", "memory npc_cg_magda 다정함 노인을 끌어안고 놓지 않은 북쪽 것", "stress 4", "note 의무실 여자 — 울릭의 발가락 넷을 잘랐다. 약초를 원한다 (쑥, 버드나무 껍질)"]
+      - id: knife_cut
+        label: 부츠의 뼈 칼을 화로에 달군다 — 네 손으로 자른다
+        minutes: 40
+        risk: 잘못 자르면 피가 멎지 않는다
+        check: {skill: 손재주, D: 12, helps: [medic, herbalist, knife_hand]}
+        success:
+          text: |
+            뼈 칼은 쇠처럼 달궈지지 않는다. 그래서 더 빨라야 한다. 너는 울릭이 가르친 대로 한다 — 덫에 걸린 짐승의 다리를 끊을 때처럼, 망설이지 않고.
+
+            의무실 여자가 네 손을 본다. 그리고 달군 쇠를 건넨다. 지혈은 그녀가 한다. "손이 좋네." 칭찬인지 다른 것인지, 그녀의 얼굴은 말하지 않는다. 문 옆의 크릭이 네 부츠 쪽을 오래 본다.
+
+            울릭이 진흙 위에 누운 채 웃는다. "내가 가르쳤지."
+          effects: ["var o7_ulric_cut = true", "rel npc_cg_magda like 6", "memory npc_cg_magda 영리함 뼈 칼로 동상 발가락을 끊은 북쪽 것", "memory npc_cg_creak 위험함 북쪽 것이 부츠에서 칼을 꺼냈다", "rel npc_o7_ulric like 8", "rel npc_o7_ulric trust 6", "temper 용기 2", "note 울릭의 검은 발가락을 내 손으로 끊었다 — 문 옆의 크릭이 칼을 보았다"]
+        failure:
+          text: |
+            칼이 미끄러진다. 발가락이 아니라 발등의 굵은 줄이 갈라진다. 피가 진흙 위로 검게 번진다.
+
+            의무실 여자가 따뜻한 손바닥으로 누른다. 피가 손가락 사이로 나온다. 그녀가 너를 보지 않고 말한다. "의무실이었으면." 그 뒤는 말하지 않는다.
+
+            울릭은 새벽까지 버티지 못한다. 마지막에 그가 네 귀에 입을 대지만, 숨만 나온다.
+          effects: ["agenda kill npc_o7_ulric", "var o7_ulric_dead = true", "stress 25", "memory npc_cg_magda 짐 칼을 함부로 쓴 북쪽 것 — 노인이 죽었다", "memory npc_cg_creak 위험함 북쪽 것이 부츠에서 칼을 꺼냈다", "note 내 칼이 울릭을 죽였다 — 이름을 아는 사람은 이제 나 하나"]
+      - id: let_be
+        label: 울릭의 뜻대로 둔다 — 발가락 열 개로 서리 길을 넘은 사람이다
+        minutes: 20
+        text: |
+          너는 의무실 여자에게 고개를 젓는다. 그녀가 울릭을 한 번, 너를 한 번 본다. "그럼 사흘이다." 셈하는 목소리다. 그녀는 다음 발로 간다.
+
+          울릭이 털가죽을 다시 싸맨다. 손이 느리다. "고맙다." 그가 말한다. 무엇이 고마운지는 말하지 않는다.
+        effects: ["var o7_ulric_rot = true", "rel npc_o7_ulric like 6", "stress 8", "note 울릭은 자르지 않겠다고 했다 — 의무실 여자의 셈으로 사흘"]
+      # ── ◈ 기억 선택지: 그녀가 올 것을 안다 ──
+      - id: mem_ready
+        needs_memory: fact:fact_o7_magda_gate
+        label: 그녀가 오기 전에 화로와 끓인 소금물을 준비해 두었다 — 울릭에게도 낮에 말해 두었다
+        minutes: 30
+        text: |
+          울릭은 낮에 이미 고개를 끄덕였다. 네가 무엇을 아는지 묻지 않고. 크릭의 화로는 달궈져 있고, 소금물은 김을 낸다 — 무리를 돌며 한 꼬집씩 얻은 소금이다.
+
+          의무실 여자가 그것을 보고 걸음을 멈춘다. "누가 너한테 이걸 가르쳤지?" 대답을 기다리지 않는다. 톱날이 화로로 들어간다. 이번엔 빠르다.
+        effects: ["var o7_ulric_cut = true", "rel npc_cg_magda trust 10", "memory npc_cg_magda 이상함 내가 나올 줄 알고 화로와 소금물을 준비해 둔 북쪽 것", "rel npc_o7_ulric trust 6", "note 울릭의 발가락 — 준비해 둔 화로로 깨끗하게 잘랐다"]
+
+  # ───────────────────────── 울릭의 마지막 새벽: 자르지 않았으면 ─────────────────────────
+  - id: o7_ulric_last
+    origin: frost_runaway
+    trigger: {window: {from: "312-09-05 06:00", to: "312-09-09 22:00"}, at: cg_north_gate, when: ["alive npc_o7_ulric", "var o7_ulric_cut != true"]}
+    severity: 3
+    text: |
+      새벽. 울릭이 털가죽 밑에서 너를 부른다. 이름이 아니라 — 일곱. 목소리가 뜨겁다.
+
+      붉은 띠가 무릎을 넘었다. 단 냄새가 무리의 냄새를 덮는다. 사람들이 조금씩 자리를 옮겨 앉는다.
+
+      "귀 대 봐라." 그가 서리말로 말한다. 네가 귀를 대자 그가 부른다. "{name}." 그리고 하나를 더 말한다 — 네 어머니의 이름. 너는 그것을 처음 듣는다.
+
+      "이제 둘을 아는 사람이 하나다." 울릭이 웃는다. "됐다."
+
+      그는 해가 협곡 위로 오르기 전에 숨을 멈춘다.
+    effects: ["agenda kill npc_o7_ulric", "var o7_ulric_dead = true", "note 울릭이 죽었다 — 네 이름을 아는 사람은 이제 너 하나. 그가 어머니의 이름을 남겼다"]
+    choices:
+      - id: edda_cart
+        label: 까마귀 할멈의 수레를 기다린다 — 이름 없는 돌무더기로
+        minutes: 30
+        text: |
+          사흘 뒤 밤, 검은 깃을 머리에 꽂은 노파가 수레를 끌고 온다. 어깨에 까마귀 한 마리. 묻지 않는다. 울릭을 수레에 싣고, 털가죽은 네 손에 돌려준다.
+
+          "돌만 놓는다." 그녀가 말한다. 이름은 묻지 않는다. 물어도 대답할 사람이 없다는 것을, 그녀는 아는 얼굴이다.
+        effects: ["learn fact_cg_edda_buries_dead", "var o7_ulric_edda = true", "memory npc_cg_edda 다정함 노인을 수레에 함께 실은 북쪽 것", "note 울릭은 까마귀 할멈의 수레로 — 국경 묘역의 이름 없는 돌무더기"]
+      - id: stones
+        label: 네 손으로 돌을 쌓는다 — 북문 서쪽 바위 선반에
+        minutes: 180
+        text: |
+          언 땅은 파이지 않는다. 그래서 돌을 쌓는다. 하나, 둘. 바위 선반의 돌은 바람에 깎여 둥글다. 서른이 넘었을 때 너는 세는 것을 멈춘다.
+
+          울릭이 가르친 대로 머리는 바람 아래로 두었다. 이름은 새기지 않는다. 새길 줄도 모르고 — 새기면 안 된다는 것은 안다.
+        effects: ["var o7_ulric_cairn = true", "fatigue 20", "temper 충성 3", "note 울릭의 돌무더기 — 북문 서쪽 바위 선반. 이름은 새기지 않았다"]
+      - id: fur_inga
+        when: ["var o7_inga_out == true", "alive npc_o7_inga"]
+        label: 울릭의 털가죽을 벗긴다 — 산 사람이 먼저다
+        minutes: 15
+        text: |
+          털가죽은 아직 따뜻하다. 너는 그것을 접어 잉가의 어깨에 두른다. 아이가 인형을 품에서 꺼내 울릭의 손에 쥐여 주려다 — 멈추고, 다시 넣는다. "케틸 거야."
+
+          무리의 누군가가 너를 본다. 아무도 말하지 않는다. 이 문 앞에서는 다들 그렇게 한다.
+        effects: ["temper 충성 -2", "temper 자비 2", "rel npc_o7_inga like 6", "bond npc_o7_inga 4", "note 울릭의 털가죽은 잉가가 입었다"]
+
+  # ───────────────────────── 열 번째 쪽지: 감옥 뒷문, 밤 11시 ─────────────────────────
+  - id: o7_tenth_note
+    origin: frost_runaway
+    trigger: {at_time: "312-09-02 23:00", at: cg_north_gate, when: ["var o7_no_intake != true"]}
+    text: |
+      개 냄새에 깬다. 젖은 털가죽 냄새와는 다르다 — 개다.
+
+      북문 위 횃불 아래에서 밤 보초가 서리 노래 곡조를 흥얼거린다. 가사 없이. 비늘이 옅어 횃불에 비치는 용인이다.
+
+      성벽을 따라 서쪽, 성벽 밑의 낮은 쇠문이 열린다. 감옥의 뒷문이다. 열쇠 꾸러미를 목에 건 사내가 나온다 — 정오에 문틈에서 이름과 골짜기를 적던, 귀 한쪽이 없는 그 사내. 그가 접은 쪽지를 내민다. 받는 손은 바위 그늘에서 나온다. 털가죽 두건, 허리에 짧은 창. 개 두 마리가 그 다리 사이에서 진흙 냄새를 맡는다.
+
+      "열 번째다." 귀 없는 사내가 웃으며 말한다. 웃음이 먼저, 말이 나중이다. "이름 서른에 골짜기 넷. 문 밖에 백일흔."
+
+      쪽지 안에 무엇이 적혔는지 너는 모른다. 정오에 누가 무엇을 적었는지는 안다.
+    choices:
+      - id: follow_runner
+        label: 심부름꾼을 따라간다 — 바람 아래로, 개 냄새 뒤로
+        minutes: 60
+        risk: 개가 있다
+        check: {skill: 은신, D: 22, helps: [shadow_step, tracker, night_eyes, beast_friend]}
+        success:
+          text: |
+            그는 성벽을 끼고 서쪽으로 간다. 바위 틈의 따뜻한 김 — 성벽 밑으로 들어가는 돌 굴의 입구 — 를 지나, 그 위 바위 선반으로. 돌무더기가 있다. 둘, 셋. 남쪽으로 이어진다. 개들이 길을 안다. 사람보다 먼저.
+
+            돌무더기 길이 협곡 너머로 꺾이는 곳에서 너는 멈춘다. 멀리 남쪽, 용의 대로 가에 불 하나. 송곳니 초소다. 쪽지는 저기로 간다. 열흘마다.
+          effects: ["learn fact_cg_jailer_sells_list", "learn fact_o7_fangs_come", "learn fact_o7_drain_breath", "learn fact_o7_smuggler_cairns", "var o7_names_sold = true", "note 귀 없는 간수 — 열흘마다 감옥 뒷문에서 송곳니 초소로 쪽지. 이름과 골짜기, 머릿수"]
+        failure:
+          text: |
+            개 한 마리가 고개를 든다. 바람이 돌았다. 짖는 소리 하나 — 그리고 두건 쓴 사내가 돌아선다. 창끝이 어둠을 훑는다. 너는 진흙에 엎드린다. 창끝이 네 등 위 한 뼘에서 멈춘다.
+
+            "북쪽 고기 냄새." 사내가 웃는다. 쫓아오지 않는다. 쪽지에 머릿수가 있으니까.
+          effects: ["nemesis npc_grod 1", "fear 1", "pain 6", "learn fact_o7_fangs_come", "var o7_names_sold = true"]
+      - id: snatch_note
+        label: 쪽지를 낚아챈다 — 심부름꾼이 돌아서기 전에
+        minutes: 10
+        risk: 개와 짧은 창
+        check: {skill: 손재주, D: 20, helps: [pickpocket, lock_hands, fleet]}
+        success:
+          text: |
+            기름종이가 손에서 손으로 건너가는 그 한 박자. 네 손이 먼저 닿는다. 너는 진흙 위를 굴러 무리 속으로 들어간다. 털가죽 등, 등, 등. 개들이 짖는다. 횃불이 기운다 — 그리고 밤 보초의 곡조가 멈춘다.
+
+            두건 쓴 사내는 무리 속으로 들어오지 않는다. 성벽 위에 횃불이 있다. 귀 없는 사내는 쇠문 안으로 사라진다. 웃음 없이.
+
+            쪽지가 네 품에 있다. 글자다. 너는 읽을 수 없다.
+          effects: ["item o7_tenth_note", "var o7_note_stopped = true", "memory npc_cg_bern 위험함 열 번째 쪽지를 채 간 북쪽 것 — 어둠 속이라 얼굴은 못 봤다", "temper 용기 3", "note 귀 없는 사내의 열 번째 쪽지를 낚아챘다 — 글자다. 읽을 수 없다"]
+        failure:
+          text: |
+            네 손이 기름종이 끝에 닿는다 — 그리고 짧은 창 자루가 네 손목을 내리친다. 개가 네 털가죽 자락을 문다. 너는 자락을 찢고 진흙 위로 굴러 빠져나온다.
+
+            쪽지는 두건 쓴 사내의 품으로 들어간다. 그가 네 얼굴을 본다. 오래.
+          effects: ["pain 18", "nemesis npc_grod 1", "var o7_names_sold = true", "learn fact_o7_fangs_come"]
+      - id: confront_bern
+        label: '귀 없는 사내 앞에 선다 — 노예말로: "그 쪽지에 누구 이름이 있나."'
+        minutes: 15
+        check: {skill: 위압, D: 16, helps: [menace, interrogator]}
+        success:
+          text: |
+            노예말에 사내의 웃음이 멈춘다. 감옥의 말이다. 그가 쪽지를 쥔 손을 가슴께로 끌어안는다 — 열쇠 꾸러미와 함께.
+
+            "이름만 팔았다." 그가 빠르게 말한다. 웃음이 다시 먼저 온다. "이름만. 이름 말고 뭐가 남았는데? 딸이 있어. 문서 값이 — 열 번째에서 채워진다고."
+
+            두건 쓴 사내가 혀를 차고 바위 그늘로 돌아간다. 쪽지 없이. 귀 없는 사내가 너를 본다. 오늘 밤 처음으로, 웃지 않고.
+          effects: ["learn fact_cg_jailer_sells_list", "var o7_note_stopped = true", "rel npc_cg_bern trust -6", "memory npc_cg_bern 위험함 노예말로 뒷문의 쪽지를 캐물은 북쪽 것 — 딸 이야기를 해 버렸다", "note 귀 없는 간수 — 열흘마다 송곳니에게 이름을 판다. 딸의 해방 문서 값이라고 했다"]
+        failure:
+          text: |
+            사내가 웃는다. 이번엔 말이 먼저다. "열쇠는 내가 쥐고 있다." 그가 두건 쓴 사내에게 턱짓을 한다. 너를 가리키는 턱짓이다.
+
+            쪽지가 건너간다. 두건 쓴 사내가 네 얼굴을 횃불 쪽으로 돌려 본다. 개가 네 손 냄새를 맡는다.
+          effects: ["nemesis npc_grod 1", "var o7_names_sold = true", "memory npc_cg_bern 위험함 뒷문 앞에서 노예말로 대든 북쪽 것", "fear 1", "learn fact_o7_fangs_come"]
+      - id: sing_balder
+        label: 밤 보초의 곡조에 가사를 붙여 부른다 — 서리 자장가
+        minutes: 15
+        check: {skill: 화술, D: 12, helps: [storyteller, tongue]}
+        success:
+          text: |
+            너는 그 곡조를 안다. 돌무릎 골짜기의 어미들이 부르던 노래 — 눈이 오면 아이는 굴 안으로, 굴 안의 아이는 불 곁으로. 너는 낮게 가사를 붙인다.
+
+            성벽 위의 흥얼거림이 멈춘다. 횃불이 네 쪽으로 기운다. 비늘이 옅은 얼굴이 성가퀴 너머로 내려다본다. 오래. 그리고 아주 작게, 가사를 따라 입술을 움직인다. 틀린 데서 틀린다.
+
+            그 사이 성벽 밑 쇠문 쪽의 어둠은 닫혀 있다. 쪽지가 건너갔는지 너는 보지 못했다.
+          effects: ["var o7_balder_song = true", "var o7_names_sold = true", "rel npc_cg_balder trust 12", "rel npc_cg_balder like 10", "memory npc_cg_balder 다정함 유모의 노래 가사를 아는 북쪽 것", "note 북문 밤 보초 — 서리 자장가의 곡조만 안다. 가사를 붙여 주었다"]
+        failure:
+          text: |
+            목소리가 갈라진다. 열아흐레 동안 노래를 부르지 않았다. 성벽 위의 흥얼거림이 멈춘다. "…뭘 봐." 횃불이 돌아선다.
+          effects: ["var o7_names_sold = true", "stress 3"]
+      - id: lie_still
+        label: 털가죽을 머리까지 끌어올리고 다시 눕는다
+        minutes: 5
+        text: |
+          개 냄새가 멀어진다. 쇠문이 닫히는 소리. 밤 보초의 곡조가 다시 이어진다. 털가죽 밑에서 너는 센다 — 무엇을 세는지 모르는 채로.
+        effects: ["var o7_names_sold = true", "stress 4"]
+      # ── ◈ 기억 선택지: 쪽지가 어디로 가는지 안다 ──
+      - id: mem_runner
+        needs_memory: fact:fact_cg_jailer_sells_list
+        label: '간수보다 먼저 쇠문 앞 그늘에 선다 — 심부름꾼에게 서리말로: "오늘은 쪽지가 없다. 간수가 값을 올렸다."'
+        minutes: 20
+        check: {skill: 기만, D: 12, helps: [deceit, actor]}
+        success:
+          text: |
+            두건 쓴 사내가 너를 내려다본다. 북쪽 냄새, 북쪽 말. 쪽지를 사러 오는 자들이 북쪽에서 쓰는 말이다. "값을 올렸다고." 그가 침을 뱉는다. "열흘 뒤에 다시 온다고 전해."
+
+            그가 개들과 함께 바위 그늘로 사라진 뒤에 쇠문이 열린다. 귀 없는 사내가 쪽지를 들고 어둠을 향해 웃는다. 아무도 없다. 웃음이 천천히 지워진다.
+          effects: ["var o7_note_stopped = true", "memory npc_cg_bern 이상함 쪽지를 사 갈 손이 오지 않았다 — 누가 먼저 다녀갔다", "temper 정직 -2", "note 송곳니 심부름꾼을 먼저 돌려보냈다 — 열흘 뒤에 다시 온다"]
+        failure:
+          text: |
+            두건 쓴 사내가 네 냄새를 맡는다. "간수는 값을 안 올려. 간수는 겁을 올리지." 개가 낮게 운다. 쇠문이 열리고, 쪽지가 건너간다. 두건 쓴 사내가 너를 보며 그것을 품에 넣는다.
+          effects: ["nemesis npc_grod 1", "var o7_names_sold = true", "fear 1"]
+
+  # ───────────────────────── 세 가지 질문: 비 오는 오전, 쪽문 앞 ─────────────────────────
+  - id: o7_three_questions
+    origin: frost_runaway
+    trigger: {window: {from: "312-09-03 10:00", to: "312-09-03 11:00"}, at: cg_north_gate, with: npc_kaspar}
+    severity: 2
+    stage:
+      - {npc: npc_kaspar, at: cg_north_gate, from: "312-09-03 10:00", to: "312-09-03 11:00", doing: 빗속에 쪽문 앞에 서서 문 밖 무리에게 세 가지를 묻는다}
+      - {npc: npc_lea, at: cg_north_gate, from: "312-09-03 10:00", to: "312-09-03 11:00", doing: 사령관 곁에서 석판에 왼손으로 받아 적는다}
+    text: |
+      비가 사흘째다. 진눈깨비가 비로 풀렸다. 쪽문이 열리고, 얼굴 반쪽이 비늘로 덮인 사내가 진흙 위로 나선다. 비늘 없는 오른쪽 얼굴이 무리를 향한다. 곁에 은빛 머리의 장교가 왼손에 석판을 들었다.
+
+      사내가 공용어로 세 가지를 묻는다. 오늘은 옮기는 사람이 없다.
+
+      "어디서 왔나. 누가 길을 열었나. 몇이나 더 오나."
+
+      무리가 서로를 본다. 사내의 눈이 문 안팎의 얼굴들을 천천히 지나간다 — 그리고 너에게서 멈춘다. 공용어를 조금이라도 알아들은 얼굴은 표가 난다.
+
+      "말해라." 그가 말한다. "…아니, 일어설 필요는 없다."
+    effects: ["learn fact_o7_kaspar_three"]
+    choices:
+      - id: truth
+        label: 있는 그대로 — 돌무릎 골짜기, 얼음손 아스타, 서리월 전에 이백
+        minutes: 20
+        text: |
+          너는 서툰 공용어로, 막히는 데서는 노예말로 말한다. 돌무릎 골짜기. 장로 아스타가 사람을 세어 내보낸다. 서리월 전에 — 이백이 더.
+
+          "이백." 사내가 되뇐다. 장교의 석판 위에서 왼손이 멈췄다가, 적는다. 아스타. 이백.
+
+          사내의 눈이 잠깐 서쪽 바위 쪽으로 간다. 거기 아무것도 없다는 듯이. "서리월 1일, 이 문을 닫는다." 그가 말한다. 무리에게가 아니라 너에게. "그 뒤로 오는 자는 이 문을 지나지 못한다." 그리고 돌아선다.
+        effects: ["var o7_told_kaspar = true", "learn fact_cg_oct1_closure_order", "rel npc_kaspar trust 8", "memory npc_kaspar 정직함 아스타와 이백을 말해 준 북쪽 것", "memory npc_lea 영리함 아스타라는 이름을 댄 북쪽 것 — 골짜기의 장로", "note 반쪽 비늘의 사령관 — 서리월 1일 문을 닫는다. 그 뒤로 오는 자는 이 문을 지나지 못한다. 눈이 서쪽 바위로 갔다"]
+      - id: protect
+        label: '거짓으로 — "길은 우리가 찾았다. 더 오는 자는 없다."'
+        minutes: 15
+        check: {skill: 기만, D: 16, helps: [deceit, actor]}
+        success:
+          text: |
+            사내가 너를 오래 본다. 비늘 없는 쪽 눈으로. 너는 시선을 내리지 않는다. 장교의 석판 위에서 왼손이 그를 기다린다.
+
+            "…그렇게 적어라." 그가 말한다. 장교의 손이 한 박자 늦게 움직인다. 더 없음.
+
+            돌아서며 사내가 노예말로 아주 낮게 무언가를 말한다. 너만 들을 만큼. "얕아도 차갑다." 무슨 뜻인지 너는 모른다.
+          effects: ["var o7_lied_kaspar = true", "rel npc_kaspar like 5", "memory npc_kaspar 용감함 제 사람들을 감싸려고 내 앞에서 거짓말을 한 북쪽 것", "note 반쪽 비늘의 사령관이 노예말로 — '얕아도 차갑다.' 뜻은 모른다"]
+        failure:
+          text: |
+            "거짓말하는 입이군." 장교가 사령관보다 먼저 말한다. 석판에 무언가를 적는다 — 네 얼굴을 보면서.
+
+            사내는 아무 말도 하지 않는다. 다음 얼굴로 눈을 옮길 뿐이다. 그게 대답이다.
+          effects: ["rel npc_lea trust -8", "memory npc_lea 거짓말쟁이 사령관 앞에서 더 오는 자가 없다고 거짓말한 북쪽 것", "stress 5"]
+      - id: interpret_crowd
+        when: ["var o7_interpreter == true"]
+        label: 통역으로 나선다 — 무리의 대답을 하나씩 옮긴다
+        minutes: 40
+        check: {skill: 화술, D: 16, helps: [tongue, tongues, crowd_voice]}
+        success:
+          text: |
+            너는 진흙 위의 대답들을 하나씩 공용어로 옮긴다. 뼈울타리에서 온 사내가 말한다 — 돌팔 씨족이 장원에 돌 망치를 모은다고. 푸른월에 남쪽으로 내려간다고. 너는 그 말을 고치지 않고 옮긴다.
+
+            장교의 왼손이 석판 위에서 빨라진다. 사령관은 한동안 북쪽 하늘만 본다. "돌 망치." 그가 말한다. 그 말이 무겁다.
+          effects: ["var o7_warned_march = true", "learn fact_o7_bonefence_rumor", "rel npc_kaspar trust 10", "rel npc_lea trust 4", "memory npc_kaspar 영리함 무리의 말을 고치지 않고 옮긴 통역", "note 뼈울타리 사내의 말 — 돌팔 씨족이 돌 망치를 모은다. 푸른월에 남쪽으로"]
+        failure:
+          text: |
+            네 공용어가 뼈울타리 사내의 말을 따라가지 못한다. 돌 — 망치 — 푸른 — . 장교가 손을 든다. "다음." 사령관의 눈은 이미 다른 얼굴에 가 있다.
+          effects: ["stress 5", "rel npc_lea like -3"]
+      - id: ask_ulric
+        when: ["alive npc_o7_ulric", "var o7_ulric_cut != true", "var o7_ulric_rot != true"]
+        label: '대답 대신 묻는다 — "노인의 발이 썩습니다."'
+        minutes: 10
+        text: |
+          사내의 눈이 울릭에게 간다. 털가죽 밖으로 단 냄새가 빗속에서도 난다.
+
+          "의무실 침상은 병사 것이다." 그가 말한다. 그리고 장교를 보지 않고 덧붙인다. "마그다는 해 질 녘에 한 시간 나온다. 그 한 시간을 나는 모른다."
+
+          장교의 왼손이 석판 위에서 멈춘다. 적지 않는다.
+        effects: ["learn fact_o7_magda_gate", "rel npc_kaspar like 4", "memory npc_kaspar 다정함 제 대답 대신 노인의 발을 내민 북쪽 것", "memory npc_lea 이상함 사령관이 의무실 노예의 한 시간을 모른다고 했다", "note 사령관 — 의무실 마그다는 해 질 녘 한 시간 나온다"]
+      # ── ◈ 기억 선택지: 그의 어머니의 마지막 말 ──
+      - id: mem_mother
+        needs_memory: fact:fact_gf_kaspar_mother_words
+        label: '노예말로, 그에게만 들리게 — "너는 끝나지 않을 것이다."'
+        minutes: 5
+        text: |
+          사내의 얼굴에서 무언가가 멈춘다. 비늘 없는 쪽이. 그가 한 걸음 다가와 몸을 숙인다 — 인간에게 그러는 용인은 없다. 장교가 석판을 내린다.
+
+          "그 말을 어디서 들었지." 그의 숨이 왼쪽 목에서 뜨겁다. "그 문장은 어머니가 내 귀에만 했다."
+
+          너는 대답하지 않는다. 그도 기다리지 않는다. 그는 몸을 펴고, 망루를 한 번 올려다보고, 다음 얼굴로 간다. 그의 손이 갑옷 위로 가슴께를 누른다.
+        effects: ["var o7_echo_kaspar = true", "rel npc_kaspar trust 15", "memory npc_kaspar 이상함 어머니가 내 귀에만 한 말을 노예말로 한 북쪽 것", "memory npc_lea 위험함 사령관이 진흙 위의 북쪽 것에게 몸을 숙였다", "echo_sign 2 사령관의 어머니가 한 말을 안다"]
+      - id: silent
+        label: 고개를 숙이고 알아듣지 못한 척한다
+        minutes: 10
+        text: |
+          너는 진흙만 본다. 사내의 눈이 네 정수리에 잠깐 머물다 지나간다.
+
+          대답은 무리 속의 다른 입들에서 나온다 — 엉터리 공용어, 거짓 골짜기, 맞지 않는 숫자. 장교가 그것을 모두 적는다. "명분이 없군." 사내가 말한다. 무엇의 명분인지 그는 말하지 않는다. 쪽문이 닫힌다.
+        effects: ["stress 4", "var o7_silent_kaspar = true", "memory npc_kaspar 비굴함 알아들은 얼굴로 고개를 숙인 북쪽 것"]
+
+  # ───────────────────────── 송곳니: 쪽지의 값이 문 앞으로 온다 ─────────────────────────
+  - id: o7_fangs
+    origin: frost_runaway
+    trigger: {window: {from: "312-09-05 22:00", to: "312-09-08 04:00"}, at: cg_north_gate, night: true, when: ["var o7_note_stopped != true"]}
+    severity: 4
+    text: |
+      개 냄새에 깬다. 이번엔 가깝다.
+
+      횃불 둘, 개 넷. 털가죽 두건을 쓴 사내들이 무리의 가장자리를 따라 걷는다. 하나가 기름종이를 펴 들고 서툰 서리말로 읽는다. 이름이 아니다 — 골짜기다. "돌무릎. 뼈울타리." 칸에 값이 붙은 골짜기들.
+
+      진흙 위의 털가죽들이 움직이지 않는다. 움직이면 개가 먼저 안다. 성벽 위 횃불은 그대로다. 쇠뇌가 닿는 그늘 밖은 용좌의 땅이 아니다.
+
+      개 한 마리가 네 쪽으로 코를 돌린다.
+    effects: ["learn fact_o7_fangs_come"]
+    choices:
+      - id: hide_inga
+        when: ["var o7_inside != true", "var o7_inga_out == true", "alive npc_o7_inga"]
+        label: 잉가를 털가죽 밑에 끌어안고 숨을 죽인다
+        minutes: 20
+        check: {skill: 은신, D: 20, helps: [shadow_step, beast_friend]}
+        success:
+          text: |
+            잉가의 심장이 네 팔 안에서 뛴다. 아이가 입술만 움직인다. 넷, 다섯. 개의 숨이 털가죽 위를 지나간다. 지나간다.
+
+            다섯 걸음 떨어진 곳에서 비명이 난다. 뼈울타리에서 온 사내의 아들이다. 사내가 일어서다 창 자루에 맞고 주저앉는다. 횃불이 멀어진다. 잉가가 셈을 멈추지 않는다.
+          effects: ["var o7_fangs_took_other = true", "rel npc_o7_inga trust 6", "bond npc_o7_inga 6", "stress 10", "note 송곳니들이 뼈울타리 사내의 아들을 끌고 갔다. 잉가는 털가죽 밑에 있었다"]
+        failure:
+          text: |
+            개가 털가죽 자락을 문다. 당긴다. 잉가의 발이 드러난다 — 작은 발. 두건 쓴 사내가 웃는다. "돌무릎. 작은 것." 골짜기 이름이다. 그들은 냄새로 골짜기를 안다.
+
+            네가 아이를 붙잡는다. 창 자루가 네 손등을 부순다. 잉가는 인형을 놓지 않는다. 그것이 아이가 놓지 않은 유일한 것이다.
+          effects: ["agenda capture npc_o7_inga at crow_gate__frost_road_head", "var o7_inga_lost = true", "var o7_inga_out = false", "pain 20", "stress 25", "note 송곳니들이 잉가를 끌고 갔다 — 서리 길 초입 쪽으로. 북쪽에 되팔린다"]
+      - id: run_with_inga
+        when: ["var o7_inside != true", "var o7_inga_out == true", "alive npc_o7_inga"]
+        label: 잉가를 업고 바위 틈으로 달린다 — 굴 입구 쪽
+        minutes: 30
+        risk: 개는 사람보다 빠르다 — 업고는 더
+        check: {skill: 은신, D: 26, helps: [fleet, shadow_step, climber]}
+        success:
+          text: |
+            아이는 가볍다. 너무 가볍다. 너는 무리 사이를 낮게 빠져 바위 틈까지 달린다. 따뜻한 김이 올라오는 굴 입구 옆, 바위 그늘에 둘이 몸을 박는다. 잉가가 네 목덜미에 대고 센다. 소리 없이.
+
+            횃불이 무리 쪽에서 오래 머문다. 비명이 하나, 둘. 그리고 멀어진다.
+          effects: ["goto crow_gate__drain_mouth", "var o7_fangs_took_other = true", "rel npc_o7_inga trust 8", "bond npc_o7_inga 6", "fatigue 15", "stress 10", "learn fact_o7_drain_breath", "note 잉가를 업고 굴 입구 옆 바위 그늘로 — 무리에서 둘이 비었다"]
+        failure:
+          text: |
+            바위 틈 세 걸음 앞에서 그물이 네 발목을 감는다. 잉가가 네 등에서 굴러 떨어진다. 진흙이 입으로 들어온다. 무릎 하나가 네 등을 누른다.
+
+            "돌무릎." 두건 쓴 사내가 네 털가죽 냄새를 맡고 말한다. "거인의 가죽 냄새. 둘 다 빈 칸이로군. 빈 칸은 값을 치르게 되어 있지."
+          effects: ["agenda capture npc_o7_inga at crow_gate__frost_road_head", "var o7_inga_lost = true", "var o7_inga_out = false", "captured 송곳니들의 그물에 걸렸다 — 잉가와 함께, 돌무릎의 빈 칸으로 되팔린다"]
+      - id: run_rocks
+        when: ["var o7_inside != true", "var o7_inga_out != true"]
+        label: 북쪽 냄새가 밴 넝마를 던지고 바위 틈으로 달린다 — 굴 입구 쪽
+        minutes: 30
+        risk: 개는 사람보다 빠르다
+        check: {skill: 은신, D: 22, helps: [fleet, shadow_step, climber]}
+        success:
+          text: |
+            넝마를 개들 쪽으로 던진다. 북쪽 냄새가 가득 밴 넝마에 개 둘이 달려든다. 너는 바위 틈까지 달린다. 따뜻한 김이 올라오는 굴 입구 옆, 바위 그늘에 몸을 박는다.
+
+            횃불이 무리 쪽에서 오래 머문다. 비명이 하나, 둘. 그리고 멀어진다. 날이 밝으면 돌아가야 한다. 몇이 비었는지 세러.
+          effects: ["goto crow_gate__drain_mouth", "var o7_fangs_took_other = true", "stress 12", "fatigue 15", "learn fact_o7_drain_breath", "note 송곳니들을 피해 굴 입구 옆 바위 그늘로 달렸다"]
+        failure:
+          text: |
+            바위 틈 세 걸음 앞에서 그물이 네 발목을 감는다. 진흙이 입으로 들어온다. 무릎 하나가 네 등을 누른다.
+
+            "돌무릎." 두건 쓴 사내가 네 털가죽 냄새를 맡고 말한다. "거인의 가죽 냄새. 빈 칸은 값을 치르게 되어 있지."
+          effects: ["captured 송곳니들의 그물에 걸렸다 — 돌무릎의 빈 칸으로 되팔린다"]
+      - id: fight
+        when: ["var o7_inside != true"]
+        label: 뼈 칼을 뽑는다 — 개의 목부터
+        minutes: 10
+        risk: 죽을 수 있다
+        check: {skill: 싸움, D: 24, helps: [knife_hand, brawler, reflexes]}
+        success:
+          text: |
+            개가 덤벼든다. 너는 피하지 않는다. 뼈 칼이 개의 목 밑으로 들어간다. 따뜻한 것이 손목까지 흐른다.
+
+            두건 쓴 사내들이 멈춘다. 고기가 이빨을 가졌다. 횃불 하나가 성벽 쪽을 본다 — 소리가 커졌다. 그들은 셈을 한다. 그리고 물러선다. 하나가 너를 가리키고, 제 코를 두드린다. 냄새를 기억하겠다는 뜻이다.
+          effects: ["nemesis npc_grod 2", "var o7_fangs_turned = true", "temper 용기 5", "pain 8", "memory npc_cg_creak 위험함 문 앞에서 칼로 송곳니의 개를 죽인 북쪽 것", "note 송곳니의 개를 죽였다 — 그들이 냄새를 기억한다"]
+        failure:
+          text: |
+            개가 네 팔을 문다. 뼈 칼이 진흙에 떨어진다. 둘째 개가 목덜미로 온다. 세상이 개 냄새로 가득 찬다.
+
+            성벽 위에서 누군가 횃불을 기울인다. 늦게.
+          effects: ["pain 30", "nemesis npc_grod 2", "var o7_fangs_took_other = true", "die_if 0.4 teeth 송곳니의 개가 목덜미를 물었다 — 북문 앞 진흙에서"]
+      - id: call_wall
+        label: 성벽 위로 외친다 — 공용어로, 밤 보초에게
+        minutes: 10
+        check: {skill: 화술, D: 20, helps: [crowd_voice, tongue], warn: ["var o7_balder_song == true", "var o7_soldiers_fed == true", "var o7_echo_kaspar == true"]}
+        success:
+          text: |
+            공용어가 네 입에서 넘어진다. 그래도 한 낱말은 선다 — 문. 성벽 위의 흥얼거림이 멈춘다. 횃불 하나가 성가퀴 너머로 기운다. 비늘이 옅은 얼굴.
+
+            "용좌의 문 앞이다." 보초가 말한다. 크지 않은 목소리다. 그 뒤로 쇠뇌 하나가 성가퀴에 얹히는 소리. 두건 쓴 사내들이 서로를 본다. 셈을 한다. 개들을 부른다.
+
+            그날 밤 문 앞에서는 아무도 비지 않는다.
+          effects: ["var o7_fangs_turned = true", "rel npc_cg_balder trust 6", "memory npc_cg_balder 용감함 송곳니 앞에서 성벽 위로 외친 북쪽 것", "temper 용기 3", "note 북문 밤 보초가 송곳니들을 돌려보냈다 — '용좌의 문 앞이다'"]
+        failure:
+          text: |
+            네 공용어가 바람에 찢긴다. 성벽 위의 횃불은 움직이지 않는다. 대신 두건 쓴 사내 하나가 네 쪽으로 고개를 돌린다. 웃으면서.
+
+            그들은 너를 데려가지 않는다. 무리 가장자리의 소년을 데려간다. 네 외침에 깨어 고개를 든 소년이다.
+          effects: ["var o7_fangs_took_other = true", "nemesis npc_grod 1", "stress 15"]
+      - id: still
+        label: 눈을 감고 숨을 센다 — 그들이 고르는 대로
+        minutes: 20
+        text: |
+          너는 센다. 하나, 둘. 개들이 진흙 위를 오간다. 셋, 넷. 비명. 다섯. 비명이 멀어진다.
+
+          날이 밝자 무리에서 아이 하나가 비어 있다. 아이의 어미는 울지 않는다. 진흙만 본다. 너도.
+        effects: ["var o7_fangs_took_other = true", "stress 12", "temper 용기 -3", "rel npc_o7_inga trust -4"]
+      # ── ◈ 기억 선택지: 이 밤을 안다 ──
+      - id: mem_shadow
+        needs_memory: fact:fact_o7_fangs_come
+        label: "해 지기 전에 무리를 성벽 그늘 안쪽으로 옮겨 두었다 — '쇠뇌가 닿는 데까지가 용좌의 땅이다'"
+        minutes: 5
+        text: |
+          해가 지기 전에 너는 무리를 깨웠다. 이유를 묻는 사람에게는 개 냄새라고만 했다. 털가죽들이 투덜거리며 성벽 밑, 쇠뇌가 내려다보는 그늘 안쪽으로 옮겨 앉았다.
+
+          이제 두건 쓴 사내들은 그늘의 가장자리에서 멈춘다. 성벽 위에서 횃불 하나가 기운다. 그들은 셈을 한다. 그늘 안은 셈이 맞지 않는다. 개들이 돌아선다.
+
+          무리의 누군가가 너를 본다. 개 냄새를 미리 맡은 얼굴을.
+        effects: ["var o7_fangs_turned = true", "echo_sign 1 송곳니가 올 밤을 미리 알았다", "temper 용기 2", "note 송곳니들이 성벽 그늘 앞에서 돌아섰다"]
+
+  # ───────────────────────── 문 앞의 소품 (연출가 — 이 출신의 판에서만: var o7_ulric_known) ─────────────────────────
+  - id: o7_gate_frozen
+    trigger: {director: true, category: lack, at: cg_north_gate, hours: ["05:00", "08:00"], chance: 0.3, when: ["var o7_ulric_known == true", "date < 312-10-01"]}
+    text: |
+      새벽. 무리 가장자리에서 한 사람이 일어나지 않는다. 털가죽 위에 서리가 앉았고, 그 위에 까마귀가 먼저 앉았다. 옆 사람이 그 털가죽을 벗기기 시작한다. 아무도 말리지 않는다.
+    choices:
+      - id: close_eyes
+        label: 다가가 그 눈을 감긴다 — 서리말로 이름을 묻는다
+        text: "털가죽을 쥔 옆 사람이 마지못해 이름을 댄다. 너는 그 이름을 한 번 소리 내어 부른다. 까마귀가 날아오른다. 이 문 앞에서 이름이 불린 마지막 사람이다."
+        effects: ["temper 자비 2", "stress -3", "note 문 앞에서 얼어 죽은 사람의 이름을 한 번 불렀다"]
+      - id: take_fur
+        label: 털가죽을 먼저 챙긴다 — 산 사람이 먼저다
+        text: "털가죽은 아직 차갑지 않다. 옆 사람이 너를 노려보다가, 소매 하나를 찢어 간다. 너는 나머지를 접어 품에 넣는다. 오늘 밤은 덜 춥다."
+        effects: ["temper 자비 -2", "pain -4", "stress 3"]
+      - id: look_away_frozen
+        label: 보지 않는다
+        text: "까마귀가 먼저 안다. 사람은 나중에 안다. 해가 오를 무렵이면 털가죽도, 신발도 없다."
+        effects: ["stress 3"]
+  - id: o7_crick_coin
+    trigger: {director: true, category: threat, at: cg_north_gate, hours: ["09:00", "17:00"], chance: 0.25, when: ["var o7_ulric_known == true", "date < 312-10-01"]}
+    text: |
+      성벽 위에서 크릭 보조병 하나가 끈에 꿴 동화 한 닢을 늘어뜨린다. 동전이 진흙 위 머리들 앞에서 흔들린다. "춤춰 봐라, 북쪽 것. 거인들 앞에서 추던 대로."
+    choices:
+      - id: dance
+        label: 일어나서 춘다
+        text: "진흙이 발목을 잡는다. 성벽 위에서 웃음이 쏟아진다. 끈이 내려온다. 동전이 손바닥에 떨어진다 — 차다. 무리의 누구도 너를 보지 않는다. 그게 예의다."
+        effects: ["coin 1", "stress 6", "temper 용기 -2"]
+      - id: sit_still
+        label: 앉은 채로 성벽을 올려다본다
+        text: "크릭이 침을 뱉는다. 침은 진흙에 떨어진다. 동전이 다시 올라간다. 성벽 위에서 누가 혀를 찬다 — 크릭인지 아닌지는 모른다."
+        effects: ["temper 용기 1", "stress 2"]
+      - id: curse_frost
+        label: '서리말로 욕을 한다 — "서리 어머니가 가져가라."'
+        text: "크릭들은 알아듣지 못한다. 진흙 위의 몇이 웃는다 — 이 문 앞에 와서 처음 듣는 웃음이다. 북문 위 밤 보초 자리의 누군가만 고개를 돌린다."
+        effects: ["stress -4", "temper 용기 2"]

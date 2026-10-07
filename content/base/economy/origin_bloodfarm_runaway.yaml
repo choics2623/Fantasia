@@ -1,0 +1,16 @@
+# 녹테른 혈목장 탈주자 (O-04 bloodfarm_runaway)의 물건. 값은 동화 단위 (economy/greyford.yaml 머리말).
+# 우리 사람은 돈이 없다 — 가진 것은 우리에서 들고 나온 것과 갈대밭에서 캔 것뿐이다.
+goods:
+  o4_reed_root:     {name: 갈대 뿌리 한 줌, desc: "붉은 갈대의 흰 뿌리. 씹으면 단물이 나고, 오래 씹으면 쓰다", price: 0, tags: [음식], eat: {hunger: -1}}
+  o4_bean_cake:     {name: 우리의 콩떡, desc: "배급 홀의 콩떡. 우리는 가축을 잘 먹인다 — 피가 좋아지라고", price: 1, tags: [음식], eat: {hunger: -1}}
+  o4_rose_envelope:
+    name: 검은 장미 봉투
+    desc: "검은 장미 꽃잎을 붙여 봉한 봉투. 글은 없다 — 그림뿐이다"
+    price: 0
+    tags: [신표, 숨길수있음]
+    visibility: 숨김
+    read:
+      D: 1
+      facts: [fact_o4_rose_map]
+      text: "글자가 아니다. 그림이다. 숯으로 그은 선 하나가 포도밭 아래 배수로를 따라 남쪽으로 내려간다. 버드나무 세 그루 — 하나의 밑동이 조금 더 검다. 그 아래 둔덕, 둔덕을 덮은 장미. 꽃잎이 진짜로 붙어 있다. 맨 아래, 붉게 칠한 갈대."
+  o4_fence_keys:    {name: 즈라그의 열쇠 꾸러미, desc: "크릭 목동장의 열쇠 꾸러미. 흰 울타리 철문과 막사 열두 동의 열쇠 — 열쇠마다 크릭의 홈이 새겨진 쇠패가 달려 있다", price: 0, tags: [열쇠, 도구], illegal: true}

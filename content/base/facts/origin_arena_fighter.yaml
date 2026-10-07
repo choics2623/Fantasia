@@ -1,0 +1,105 @@
+# O-06 피의 원형장 투사 (creation/origins_arena_fighter.yaml · storylets/origin_arena_fighter.yaml)가 가르치는 사실. id 접두사 fact_o6_.
+# text는 엔진이 진위를 판단하는 기준 문장. names는 누설 검사용 고유명사. 기존 fact_gm_*·fact_p2gm_*는 고치지 않고 그대로 쓴다.
+# ── 처음부터 아는 것 (이 삶이 남긴 것) ──
+- id: fact_o6_battle_tongue
+  text: "열하나는 그롬 전투어를 반쯤 알아듣고 몇 마디는 말한다 — 새벽 훈련장에서 쉬라 피웃음에게 입 모양으로 몰래 배웠다. 그롬의 말에는 부탁이 없다"
+  truth: true
+  danger: 1
+  names: [쉬라]
+- id: fact_o6_vek_knee
+  text: "벡 예순넷의 오른쪽 무릎은 지난주 훈련에서 나갔다. 고르바는 쓸모없어진 투사를 먹이지 않는다 — 가을 피의 날 그를 열하나의 상대로 세웠다"
+  truth: true
+  danger: 1
+  names: [벡, 고르바]
+- id: fact_o6_vek_named
+  text: "열하나의 진짜 이름을 아는 사람은 벡 하나다. 일곱 해 전 세렌 노예선에서 내린 첫날 밤에 듣고 한 번도 부르지 않았다. 열 번째 승리에 투사명이 허락되었을 때도 열하나는 이름을 대지 않았다"
+  truth: true
+  danger: 2
+  names: [벡]
+- id: fact_o6_hundred_freedom
+  text: "쇠우리 사람들은 백 승이 자유라고 믿는다 — 그롬이 '혈명 없는 혈명'을 주고, 백승의 탈은 그 뒤 황무지로 걸어갔다고. 누구나 같은 순서로 그 이야기를 한다"
+  truth: true
+  danger: 1
+  names: [탈]
+- id: fact_o6_gunnar_postponed
+  text: "대진표 돌판 한 모서리에 '군나르 — 99승 — 미룸'이 아직 새겨져 있다. 쇠우리는 군나르가 백 번째 경기 전날 밤 북쪽으로 갔다고 말한다"
+  truth: true
+  danger: 1
+  names: [군나르]
+- id: fact_o6_spear_rack
+  text: "투사의 날은 모래와 훈련장과 숙소 창걸이의 것이다. 그롬마르의 법은 투사의 무기를 허락하지만, 날을 드러내고 그롬 감독들 앞을 돌아다니는 인간은 '날 든 짐승'으로 고해진다"
+  truth: true
+  danger: 1
+  names: []
+# ── 가을 피의 날 (회귀점의 모래) ──
+- id: fact_o6_hundredth_sand
+  text: "가을 피의 날 모래 위에서 함성이 한순간 다른 시대의 함성으로 바뀌었다 — 백 번째 상대가 쓰러지고 그롬 수천이 침묵하던 날. 그날 모래 위에 서 있던 사람을 열하나는 알았다. 그러나 그것은 열하나의 기억이 아니다"
+  truth: true
+  danger: 2
+  names: []
+- id: fact_o6_vek_wants_death
+  text: "벡은 가을 피의 날 열하나의 열두 번째 승이 되기로 했다 — 모래 위에서 입 모양으로 '찔러라, 왼쪽'. 뼈 행렬에서 번호로 죽느니 가르친 아이의 승수로 죽겠다는 것이다"
+  truth: true
+  danger: 2
+  names: [벡]
+- id: fact_o6_haag_left_fist
+  text: "두개골쪼개기 하그는 도살도를 오른쪽에서 휘두르고, 그 반 박자 뒤에 왼손 주먹이 온다. 그롬은 칼만으로 싸우지 않는다"
+  truth: true
+  danger: 1
+  names: [하그]
+# ── 쇠우리의 셈 ──
+- id: fact_o6_gorba_column
+  text: "낙엽월 스무날, 가을 원정 징발에 맞춰 고르바는 쓸모없어진 투사들을 북문의 수레로 뼈 행렬 막사에 넘긴다 — 무릎 나간 투사, 팔 잘린 투사, 경기를 거부한 투사"
+  truth: true
+  danger: 3
+  names: [고르바, 뼈 행렬]
+- id: fact_o6_chant_spares
+  text: "모래 위에서 쓰러졌다 일어선 투사의 이름을 관중이 연호하면, 고르바는 그 해 그를 뼈 행렬 수레에 올리지 못한다 — 삼만이 부른 이름에는 값이 붙는다"
+  truth: true
+  danger: 2
+  names: [고르바]
+- id: fact_o6_bloodless_blood
+  text: "고르바의 말 — 백 승이면 그롬이 '혈명 없는 혈명'을 준다. 그롬의 형제가 되어 군주와 같은 붉은 잔을 받는다. 그 값은 이빨로 못 센다"
+  truth: true
+  danger: 2
+  names: [고르바]
+- id: fact_o6_og_flinch
+  text: "오그 일흔여덟은 백승의 탈이 백 번째 뒤에 무엇을 받았느냐고 물으면 대답 대신 칼을 닦는다 — 그는 백 번째 뒤의 일을 안다"
+  truth: true
+  danger: 3
+  names: [오그, 탈]
+- id: fact_o6_gorba_scratch
+  text: "고르바는 대진표 돌판 앞에서 '군나르 — 99승 — 미룸' 옆의 빈칸을 손톱으로 긁는다. 백 번째 자리를 채울 이름을 찾는 손이다"
+  truth: true
+  danger: 3
+  names: [고르바, 군나르]
+- id: fact_o6_tick_twentieth
+  text: "틱틱은 스무날 정식 대진에서 열하나에게 셋째 합에 무릎을 꿇으라고 했다 — 이빨 열 개, 동화 열두 닢. 비율은 시작 전에 움직인다"
+  truth: true
+  danger: 3
+  names: [틱틱]
+- id: fact_o6_tick_manumission
+  text: "틱틱이 말하는 '투사 해방금' — 이빨 삼백이면 고르바가 목고리를 풀어 준다는 말은 거짓이다. 그롬의 셈에 그런 값은 없다"
+  truth: true
+  danger: 2
+  names: [틱틱, 고르바]
+- id: fact_o6_tick_eleven
+  text: "틱틱은 마라의 경기 이야기가 나오자 '열한…'에서 말을 끊었다. 내기 장부 벽에 무언가가 따로 묶여 있다"
+  truth: true
+  danger: 3
+  names: [틱틱, 마라]
+- id: fact_o6_pup_still
+  text: "쉬라 피웃음의 그롬 애송이 셋은 노예말로 '아직'을 안다. 스무날 열하나의 상대로 나온 애송이가 모래에 쓰러지며 그 말을 했다"
+  truth: true
+  danger: 3
+  names: [쉬라]
+- id: fact_o6_urgash_shoulder
+  text: "우르가쉬의 오른쪽 어깨는 아침 대련에서 한 박자 느리다. 그는 그것을 숨기려고 상대를 오른쪽에 세우지 않는다"
+  truth: true
+  danger: 4
+  names: [우르가쉬]
+- id: fact_o6_ninety_nine_bout
+  text: "서리월 스무날 열하나의 상대는 9번 숙소의 인간 투사였다. 그는 칼을 들지 않고 서 있었다 — '아흔아홉'은 인간끼리 죽이는 경기에서 칼을 들지 않는 날을 연습한다"
+  truth: true
+  danger: 4
+  names: [아흔아홉]

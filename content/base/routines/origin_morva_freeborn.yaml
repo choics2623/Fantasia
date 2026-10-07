@@ -1,0 +1,35 @@
+# O-10 모르바 늪 자유민이 데려온 사람들의 일과 (npcs/extra_morva_freeborn.yaml). 늪의 하루: 05:00 새벽 솥 불 · 12:00 정오 국자 · 18:00 저녁 공동 솥 · 22:00 마지막 불 덮기.
+# 늪은 안식일을 쉬지 않는다 — days는 all. 쉼표가 든 값은 큰따옴표로.
+# 회귀점의 밤(낙엽월 1일 20:30~)에는 회의 섬에 선다 — storylets/origin_morva_freeborn.yaml의 stage.
+npc_o10_torn:
+  home: rv_stilt_homes_s
+  blocks:
+    - {days: all, from: "00:00", to: "04:00", at: rv_stilt_homes_s, doing: 뗏목 기둥 위 집에서 잔다 — 활을 끌어안고}
+    - {days: all, from: "04:00", to: "07:00", at: rv_eel_traps, doing: 새벽 덫을 올린다 — 빈 통발은 발로 찬다. 비가 와도 덫은 올린다}
+    - {days: all, from: "07:00", to: "12:00", at: rv_forge, doing: 토르의 풀무를 밟는다 — 토르가 말하기 전에 숯을 넣는다}
+    - {days: all, from: "12:00", to: "13:00", at: rv_pot, doing: 정오 국자 소리 — 선 채로 먹는다}
+    - {days: all, from: "13:00", to: "17:00", at: rv_forge, doing: 화살촉을 간다 — 갈 때마다 날을 손톱에 대 본다}
+    - {days: all, from: "17:00", to: "18:00", at: rv_eel_traps, doing: 저녁 덫을 내린다}
+    - {days: all, from: "18:00", to: "20:00", at: rv_pot, doing: 저녁 공동 솥 — 새로 온 사람들 쪽은 보지 않는다}
+    - {days: all, from: "20:00", to: "22:00", at: rv_glow_field, doing: 반딧불 병 공터 가장자리에서 활줄을 손본다}
+    - {days: all, from: "22:00", to: "24:00", at: rv_stilt_homes_s, doing: 집에 든다}
+npc_o10_kong:
+  home: rv_arrival_hut
+  blocks:
+    - {days: all, from: "00:00", to: "06:00", at: rv_arrival_hut, doing: 초막 구석에서 무릎을 안고 잔다 — 다섯이 서로 등을 댄다}
+    - {days: all, from: "06:00", to: "09:00", at: rv_arrival_hut, doing: 초막 문턱에 앉아 줄다리를 건너는 사람을 센다}
+    - {days: all, from: "09:00", to: "12:00", at: rv_mud_school, doing: 진흙판 학교 문밖에 쪼그려 앉아 막대가 긋는 모양을 손가락으로 따라 긋는다, alt: {p: 0.3, at: rv_reed_works, doing: 갈대 엮는 노인들 곁에서 갈대 껍질을 줍는다}}
+    - {days: all, from: "12:00", to: "13:00", at: rv_pot, doing: 정오 국자 소리 — 그릇을 두 손으로 받는다}
+    - {days: all, from: "13:00", to: "18:00", at: rv_glow_field, doing: 반딧불 병 공터 가장자리에서 늪 아이들이 노는 것을 본다 — 끼지 않는다}
+    - {days: all, from: "18:00", to: "20:00", at: rv_pot, doing: 저녁 공동 솥 — 장어 반 토막을 먹지 않고 품에 넣는다}
+    - {days: all, from: "20:00", to: "24:00", at: rv_arrival_hut, doing: 초막 — 손목의 숫자를 손톱으로 긁는다}
+npc_o10_leash:
+  home: rv__red_reed_line
+  presence:   # 다섯의 냄새를 따라온 사냥대가 갈대 선에 머무는 나흘 — 그 뒤는 조합 본부
+    - {from: "312-09-01", to: "312-09-04"}
+  away: {at: baalkar__fang_hall, doing: 바르그 조합 송곳니 회관 — 다음 사냥까지 우리 곁에 묶여 있다}
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: rv__red_reed_line, doing: 바르그 셋의 발치에서 목줄을 찬 채 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: rv__red_reed_line, doing: 맨발로 갈대 선을 따라 걸으며 진흙의 냄새를 읽는다}
+    - {days: all, from: "12:00", to: "18:00", at: rv__red_reed_line, doing: 물가에 엎드려 배가 지나간 자리를 찾는다}
+    - {days: all, from: "18:00", to: "24:00", at: rv__red_reed_line, doing: 불 없는 야영 — 바르그들이 먹고 남긴 뼈를 받는다}

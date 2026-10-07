@@ -1,0 +1,179 @@
+# O-07 북방 거인 노예 탈주자 (SCENARIOS §1 O-07) — 첫 시대에도 고를 수 있는 출신 (2026-10).
+# 회귀점: AS 312 낙엽월 1일 아침 8시, 진눈깨비. 까마귀 문 북문 앞 진흙 — 서리 길을 넘어온 이백 가운데.
+#
+# SCENARIOS → 지역 자료 (지역 자료가 이긴다):
+#   성문 위의 용인 장교(목덜미에 은빛 비늘) → 레아 npc_lea (머리선을 따라 은빛 비늘, 손가락 둘이 없는 오른손을 허리 뒤에). 손과 신발을 먼저 본다(카드 습관)
+#   "옆의 누군가가 서리말로 옮긴다"      → 브린야 npc_cg_brynja (서리 길 밀수꾼 — 무리 가장자리에서 옮기며 되돌아갈 사람의 값을 센다)
+#   카스파르 반비늘                      → npc_kaspar (북문 순시 — 첫 사흘은 비라 일과는 작전실이지만, 이 출신의 회귀점에서는 문 위에 선다: stage)
+#   거인 주인 '할보르 서리턱'(없는 이름) → '돌무릎' 바우그 npc_baug. 시그리드·아스타와 같은 노예촌(돌무릎 골짜기)이라야 SCENARIOS의 "같은 노예촌"이 맞는다.
+#                                          바우그는 발목을 부러뜨리지 않는다(다리 부러진 노예는 짐을 못 진다) — 장부의 칸을 비워 두고 돌아오면 다시 쓴다(카드 그대로).
+#                                          '짐승 반환 청원'은 사실(fact_o7_baug_empty_slot)의 '칸 하나에 붙은 값'으로만 남겼다 — 얼음 탁자의 일정은 흐로스가르드 목표 행동의 것.
+#   시그리드(같은 노예촌, 아기 때 안아 본) → npc_sigrid — 회색여울 굶주린 언덕. 이름만 (잉에가 울음 고개 '마지막 불'에서 일러 주었다: fact_o7_inge_last_fire)
+#   울릭(66, 양발 동상) · 잉가(12)       → 새 사람 npc_o7_ulric · npc_o7_inga (npcs/extra_frost_runaway.yaml)
+#   동생이 깎은 나무 인형                 → 죽은 동생 케틸(울음 고개에서 얼어 죽음)이 깎은 인형 — 지금은 잉가가 안고 있다 (물건이 아니라 사실·글로)
+#   엘사·브람(울릭의 발가락)             → 의무실 마그다 npc_cg_magda (동상 침상 열둘의 '손난로'), 혹은 네 뼈 칼
+#   굶주린 언덕 우회로(8시간)            → 지도에서 까마귀 문↔굶주린 언덕은 밀수꾼 길 25시간. 우회로는 물빼기 굴 입구 위 돌무더기 길로 '찾는다'(사실)까지만.
+#   "시그리드를 안다"(브람의 술꾼)       → 레아가 그 이름을 적는다 — '누가 길을 열었나'는 카스파르의 질문이다. 성벽 위 크릭이 따라 웃는다
+#   서른 명을 '받는다'                   → 감옥 수용 30칸은 이미 찼다(올레·순나·요스트…). 받은 서른은 북문 바깥문과 쇠창살 사이 돌 통로에서 잔다 —
+#                                          그래서 이 출신의 잠자리는 받든 못 받든 '북문'(cg_north_gate) 하나다. 문 안인지 밖인지는 깃발(o7_inside …)이 서술에 알린다.
+# 문서 없는 인간: 자유민(free — 떠나는 것은 탈주가 아니다)이지만 성벽 안은 어디든 몰래(access: 우물 마당·남문·짐꾼 막사·빨래터·협곡 대로를 staff로),
+#   통금 순찰에 걸리면 매와 수배 하나, 남쪽 용의 대로는 통행증 + 국경군 문서 — 검문에서 탈주 노예로 붙잡힌다.
+origins:
+  - id: frost_runaway
+    order: 17
+    scenario: O-07
+    region: 까마귀 문
+    name: 북방 거인 노예 탈주자
+    title: 서리 길을 넘어온 거인의 가죽장이
+    call: 일곱
+    age: 20
+    difficulty: 3
+    family: false
+    settlement: crow_gate
+    time: "08:00"
+    place: 까마귀 문 북문 앞 진흙 — 서리 길 남단
+    start: cg_north_gate
+    home: cg_north_gate
+    blurb: >-
+      흐로스가르드 돌무릎 골짜기에서 거인의 가죽을 무두질하던 노예. 서리 길을 열아흐레 걸어 까마귀 문 앞 진흙에 닿았다 —
+      마흔이 떠났다. 발가락이 검게 언 늙은 덫꾼 울릭과, 죽은 동생이 깎은 인형을 안은 열두 살 잉가가 곁에 있다.
+      문서도 주인도 없다. 성문 위에서 용인 장교가 말한다. 서른만 받는다.
+    stats: {근력: 10, 민첩: 8, 체질: 13, 지능: 8, 감각: 9, 의지: 12}
+    skills: {화술: 16, 기만: 10, 위압: 14, 통찰: 22, 손재주: 14, 은신: 20, 싸움: 16, 읽고쓰기: 0, 용언: 0}
+    status: {hunger: 2, pain: 25, fatigue: 55, fear: 1, stress: 45}
+    train: 18
+    coin: 0
+    items:
+      - {id: o7_fur, name: 거인 털가죽 조각, tags: [의복, 방한], slot: 허리, quality: 보통, condition: 60, illegal: false, value: 4, desc: "거인의 겨울 망토에서 찢어 낸 털가죽 한 자락. 사람 하나를 다 덮는다 — 북쪽 것이라는 표시이기도 하다"}
+      - {id: o7_bone_knife, name: 뼈 칼, tags: [무기, 날붙이, 숨길수있음], slot: 부츠, quality: 조악, condition: 70, illegal: true, value: 2, desc: "순록 정강이뼈를 갈아 만든 칼. 용의 땅에서 인간이 날붙이를 지니면 사형감이다"}
+      - {id: o7_salt, name: 소금 한 줌, tags: [교역품], slot: 품, quality: 보통, condition: 100, illegal: false, value: 6, desc: "거인의 부엌에서 한 꼬집씩 훔쳐 모은 소금. 서리 길에서는 은보다 귀했다"}
+    rel: {npc_o7_ulric: [45, 60], npc_o7_inga: [50, 40], npc_sigrid: [15, 20], npc_asta: [30, 45]}
+    knows: [fact_o7_baug_empty_slot, fact_o7_ketil_doll, fact_o7_inge_last_fire, fact_hg_baug_owns_stonekneed_slaves, fact_hg_frost_road_closes, fact_hg_asta_counts_800, fact_hg_matusz_lodge_runaways, fact_hg_ogre_larder_cave]
+    places: []
+    vars: {o7_caught_inside: 0, o7_taken: false, o7_inside: false, o7_ulric_taken: false, o7_inga_taken: false, o7_ulric_cut: false, o7_ulric_dead: false, o7_inga_lost: false, o7_note_stopped: false, o7_names_sold: false}
+    wanted: null
+    flaws: []
+    traits: []
+    free: true
+    access: {cg_well_yard: staff, cg_south_gate: staff, cg_porter_barracks: staff, cg_laundry: staff, crow_gate__ravine_road: staff}
+    duty:
+      rollcall: false
+      wake: "05:00"
+      meal: {at: cg_north_gate, from: "18:00", to: "20:00", label: 문 닫는 나팔에 내려오는 겨죽을 나눠 받는다, hunger: -1, thin: 0.35, text: "문 닫는 나팔이 울리면 성벽 위에서 겨죽 한 동이가 밧줄에 매달려 내려온다. 사령관의 명이라고들 한다. 이백이 한 솥을 나눈다 — 바닥까지 긁어도 한 국자."}
+      work:
+        at: cg_north_gate
+        from: "06:00"
+        until: "10:00"
+        label: 문 여는 나팔에 짐꾼 반장의 날품 줄에 선다 (도랑과 돌, 해 질 때까지)
+        done: "성벽 밑 도랑의 얼음을 깨고 돌을 졌다. 문 닫는 나팔에 짐꾼 반장이 겨빵을 하나씩 쥐여 준다 — 손을 보고 나서"
+        fail: "어깨가 꺾여 돌을 떨어뜨렸다. 짐꾼 반장이 네 손을 보고 고개를 젓는다. 오늘 겨빵은 없다"
+        train: 0.5
+        pain: 3
+        fail_pain: 6
+        fail_meal: false
+        fail_fear: 0
+        food: o7_husk_bread
+        outlaw: true
+        sabbath: false
+      safe: []
+      curfew:
+        caught: "순찰의 횃불이 얼굴에 멈춘다. 크릭 보조병이 냄새부터 맡는다. \"북쪽 것이 성벽 안에서 밤을 넘기는군.\" 창 자루가 무릎 뒤를 친다. 쪽문으로 질질 끌려 나가 북문 앞 진흙에 던져진다."
+        fugitive: "순찰의 횃불이 얼굴에 멈춘다. \"석판에서 빠진 북쪽 것이다.\" 크릭 보조병의 창 자루가 무릎을 꺾는다. 이번에는 문 밖으로 던지지 않는다."
+        fugitive_why: "통금 순찰에 붙잡혔다 — 문서 없는 북쪽 것으로 감옥 수용 칸에 던져졌다"
+        pain: 15
+        effects: ["var o7_caught_inside += 1", "wanted 1 통금 뒤 성벽 안을 돌아다닌 북쪽 것"]
+        D: 4
+      routine: 겨죽 → 문 밑의 잠 → 문 여는 나팔
+    opening: o7_crowgate_open
+    sense: 젖은 털가죽 냄새
+    rescue: "눈앞이 하얘진다. 누군가 너를 털가죽째 문 밑 처마로 끌어다 놓는다. 입에 묽은 겨죽이 흘러든다. 서리말 자장가가 귓가에서 끊겼다 이어진다."
+    quiet:
+      - "문 닫는 나팔. 바깥문의 쇠고리가 운다. 성벽 위 까마귀들이 하나씩 머리를 날개 밑에 묻는다."
+      - "진눈깨비가 밤새 털가죽 위에 쌓였다가 녹는다. 누군가 서리말로 자장가를 부르다 멈춘다."
+      - "북문 위 밤 보초가 곡조만 있는 노래를 흥얼거린다. 가사를 아는 사람이 진흙 위에 몇 있다. 아무도 따라 부르지 않는다."
+      - "울음 고개 쪽 하늘이 밤새 하얗다. 서리 길이 닫히는 소리가 들리는 것 같다. 들리지 않는다."
+    beats:
+      - {id: o7_b_magda, at: "312-09-02 17:40", danger: 3, when: ["alive npc_o7_ulric", "var o7_ulric_cut != true"], near: "해 질 녘 쪽문으로 나오는 의무실 여자가 언 발을 본다는 말이 무리 사이에 돈다. 울릭의 붉은 띠는 하루에 손가락 하나씩 오른다.", far: "의무실 여자가 해 질 녘 쪽문으로 나와 언 발을 본다는 말이 돈다."}
+      - {id: o7_b_ulric_rot, at: "312-09-05 06:00", danger: 4, when: ["alive npc_o7_ulric", "var o7_ulric_cut != true"], near: "울릭의 붉은 띠가 무릎에 닿는다. 내일이면 늦는다.", far: "울릭의 발 — 붉은 띠가 무릎에 닿으면 늦는다."}
+      - {id: o7_b_fangs, at: "312-09-05 22:00", danger: 4, when: ["pknows fact_o7_fangs_come", "var o7_note_stopped != true"], near: "오늘 밤, 개 냄새가 문 앞 진흙으로 온다. 송곳니들이 쪽지의 이름을 들고.", far: "송곳니들이 쪽지의 이름을 들고 문 앞으로 온다 — 낙엽월 닷새 밤부터."}
+      - {id: o7_b_asta, at: "312-09-23 22:00", danger: 2, when: ["pknows fact_hg_asta_counts_800"], near: "오늘 밤, 돌무릎 골짜기에서 아스타가 마지막 이백의 첫 열을 움막에서 내보낸다.", far: "아스타가 마지막 이백을 서리 길로 내보낸다 — 서리월 전에 닿을 수 있을까."}
+      - {id: o7_b_gate, at: "312-10-01 06:00", danger: 5, near: "내일 새벽, 북문이 닫힌다. 서리 길도. 문 밖에 남은 자는 문 밖에 남는다.", far: "서리월 1일 — 북문이 닫힌다. 서리 길도."}
+      - {id: o7_b_drain, at: "312-10-03 22:00", danger: 3, when: ["pknows fact_cg_oct3_twelve"], near: "오늘 밤 물빼기 굴로 열둘이 온다. 북문 망루에는 아무도 서지 않는다.", far: "서리월 사흘 밤 — 물빼기 굴로 열둘이 온다."}
+    goals:
+      - who: 울릭
+        when: ["var o7_ulric_known == true"]
+        states:
+          - {when: ["var o7_ulric_dead == true"], what: 죽었다 — 네 이름을 아는 사람은 이제 너 하나다}
+          - {when: ["var o7_ulric_cut == true"], what: 검은 발가락을 잘라 냈다 — 걷지 못해도 산다}
+          - {when: ["var o7_ulric_rot == true"], what: 자르지 않겠다고 했다 — 붉은 띠가 무릎으로 오른다, until: "312-09-05 06:00"}
+          - {what: 발가락이 검다 — 붉은 띠가 무릎에 닿기 전에, until: "312-09-05 06:00"}
+      - who: 잉가
+        when: ["var o7_inga_known == true"]
+        states:
+          - {when: ["var o7_inga_lost == true"], what: 송곳니들의 사슬에 묶여 서리 길 초입으로 끌려갔다}
+          - {when: ["var o7_inga_taken == true"], what: 문 안의 서른 — 바깥문 하나를 사이에 두고}
+          - {what: 케틸의 인형을 안고 성벽의 까마귀를 센다}
+      - who: 북문
+        when: ["var o7_ulric_known == true"]
+        states:
+          - {when: ["var cg_gate_closed == true"], what: 닫혔다 — 서리 길도 닫혔다}
+          - {when: ["var o7_inside == true"], what: 너는 바깥문 안쪽 통로에 있다 — 서리월 1일에 문이 닫힌다, until: "312-10-01 06:00"}
+          - {what: 서리월 1일에 닫힌다 — 그때 문 밖에 있는 자는 문 밖에 남는다, until: "312-10-01 06:00"}
+    losses:
+      - {id: o7_ulric_lost, when: ["var o7_ulric_dead == true"], text: "울릭이 죽었다. 네 이름을 아는 입이 세상에서 하나 줄었다 — 이제 너 하나다.", weight: 7}
+      - {id: o7_inga_lost, when: ["var o7_inga_lost == true"], text: "잉가가 송곳니들의 사슬에 묶여 갔다. 케틸의 인형은 진흙에 남지 않았다 — 아이가 끝까지 안고 갔다.", weight: 8}
+    achievements:
+      - {id: ulric_walks, tp: 2, text: 울릭의 검은 발가락을 잘라 내고 서리월을 맞게 했다, when: ["var o7_ulric_cut == true", "alive npc_o7_ulric", "date >= 312-10-01"]}
+      - {id: fifty, tp: 3, text: 반쪽 비늘의 사령관이 서른이 아니라 쉰을 받게 했다, when: ["var o7_fifty == true"]}
+      - {id: inga_kept, tp: 2, text: 잉가를 송곳니에게서 지켜 냈다 — 서리월까지, when: ["alive npc_o7_inga", "var o7_inga_lost != true", "date >= 312-10-01"]}
+      - {id: note_stopped, tp: 1, text: 열 번째 쪽지가 송곳니 초소에 닿지 않았다, when: ["var o7_note_stopped == true"]}
+    epilogue:
+      - {when: ["var o7_ulric_dead == true", "var o7_ulric_cairn == true"], text: "울릭은 북문 서쪽 바위 선반의 돌무더기 밑에 있다. 돌은 네가 쌓았다. 그 돌무더기에는 이름이 없다 — 이름을 아는 사람이 이제 없으니까."}
+      - {when: ["var o7_ulric_dead == true", "var o7_ulric_cairn != true"], text: "울릭은 북문 앞에서 죽었다. 에다의 수레가 그를 국경 묘역의 이름 없는 돌무더기로 데려갔다."}
+      - {when: ["alive npc_o7_ulric", "var o7_ulric_cut == true"], text: "울릭은 발가락 없이 겨울을 났다. 북문 통로의 돌바닥에서, 밤마다 서리말로 수를 셌다. 셈은 언제나 하나가 모자랐다."}
+      - {when: ["alive npc_o7_ulric", "var o7_ulric_cut != true"], text: "울릭의 발은 그해 겨울을 넘기지 못했다. 그는 마지막까지 웃었다. 발가락 열 개로 서리 길을 넘었으니 그걸로 됐다고."}
+      - {when: ["var o7_inga_lost == true"], text: "잉가는 돌무릎 골짜기로 되팔렸다. 바우그의 장부에서 빈 칸 하나가 다시 채워졌다. 케틸의 인형은 그 아이의 품에서 끝내 떨어지지 않았다고 한다."}
+      - {when: ["var o7_inga_lost != true", "var o7_inga_taken == true"], text: "잉가는 성벽 안에서 자랐다. 까마귀지기 에다의 쪽방에서 전령새의 다리끈 가는 법을 배웠다. 까마귀를 셀 때 그 아이의 입술은 아직도 소리 없이 움직였다."}
+      - {when: ["var o7_inga_lost != true", "var o7_inga_taken != true", "alive npc_o7_inga"], text: "잉가는 서리월 1일 문 밖에 남았다. 그 뒤의 일은 아무도 적지 않았다."}
+      - {when: ["var o7_fifty == true"], text: "그해 낙엽월, 까마귀 문은 서른이 아니라 쉰을 받았다. 레아의 보고서에는 그 줄이 있었다. 사령관의 이름 옆에."}
+      - {when: ["var o7_massacre == true"], text: "북문 앞 진흙은 오래 붉었다. 이듬해 봄에도 까마귀들은 그 자리를 먼저 찾았다."}
+      - {when: ["not var o7_fifty == true", "not var o7_massacre == true"], text: "서리월 1일, 북문의 권양기 열쇠가 걸렸다. 문 밖에 남은 사람들의 수는 아무도 세지 않았다."}
+    texts:
+      count_before_sleep: |
+        진흙이 털가죽 밑에서 차다. 참나무 바깥문이 등 뒤에 있다 — 문 안쪽인지 바깥쪽인지는 낮에 정해졌다. 북문 위에서 밤 보초가 서리 노래 곡조를 흥얼거린다. 가사 없이.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "성벽 위 횃불 하나가 늦게까지 문 앞 진흙을 비춘다. 크릭들이 손가락으로 무리를 센다 — 한 얼굴에서 오래 멈춘다."
+      nem_door: "북문 참나무 문짝"
+      gossip_where: "문 앞 진흙에서, 겨죽 동이 아래에서."
+    public:
+      npc_lea: "? 성문 위의 은빛 머리 장교"
+      npc_kaspar: "? 얼굴 반쪽이 비늘로 덮인 사령관"
+      npc_cg_brynja: "브린야 — 마지막 이정표 천막의 서리 여자, 길에 값을 부르는"
+      npc_cg_gunter: "? 절구통 같은 짐꾼 반장"
+      npc_cg_creak: "? 북문 열쇠를 쥔 크릭"
+      npc_cg_magda: "? 앞치마에 약초 잎이 붙은 의무실 여자"
+      npc_cg_bern: "? 열쇠 꾸러미를 목에 건 귀 없는 사내"
+      npc_cg_balder: "? 비늘이 옅은 북문 밤 보초"
+      npc_cg_edda: "? 검은 깃을 머리에 꽂은 까마귀 할멈"
+      npc_sigmund: "? 북쪽 성벽의 용인 수비대장"
+      npc_cg_grik: "? 성벽 위 크릭 보조병들의 대장"
+      npc_grod: "? 귀가 반쪽인 송곳니"
+      npc_cg_ole: "올레 '발가락 없는' — 값을 받지 않는다는 서리 길 안내인"
+      npc_sigrid: "시그리드 — 서리손 집안의 맏딸, 봄에 예순을 데리고 남쪽으로 간"
+      npc_asta: "얼음손 아스타 — 돌무릎 골짜기의 장로, 800을 세는"
+      npc_baug: "'돌무릎' 바우그 — 주인, 칸을 세는 거인"
+      npc_hg_inge: "잉에 — 울음 고개 '마지막 불'의 안내인, 시그리드의 동생"
+    map: {knowledge: {crow_gate: 3, weeping_pass: 2, hrimnir_hall: 2, bone_pens: 1, hungry_hill: 1, greyford_village: 1}, sketch: [weeping_pass, hrimnir_hall, hungry_hill]}
+    world: "주인공이 매인 곳은 까마귀 문 — 용제국 북방 국경 요새의 북문 앞. 서리 길을 넘어온 북방 탈주자 이백이 진눈깨비 속 진흙에 앉아 있고, 요새는 쓸모 있는 서른만 받는다. 받은 서른은 바깥문과 쇠창살 사이 돌 통로에서 잔다."
+    people: "주인공은 서리 길을 넘어 막 닿았다 — 요새 사람의 이름은 모르고, 같이 넘어온 사람은 이름(또는 거인이 붙인 칸 이름)으로 안다. 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"울릭 — 같은 골짜기에서 온 늙은 덫꾼, 양발이 언 — 이\"). 이름을 모르는 요새 사람은 겉모습으로만 부른다."
+    nouns: "'까마귀 문'은 요새의 이름이다(새가 아니다). '서리 길'은 흐로스가르드에서 내려오는 산길, '마지막 이정표'는 그 초입의 돌기둥. '서리말'은 북방 인간과 거인의 말 — 주인공의 모어다. 공용어는 서툴다. '칸'은 거인의 장부에서 노예 한 사람의 자리. '일곱'은 장부의 '가죽 일곱'에서 온 부름이다."
+    prompt: "주인공: '일곱'이라 불리는 스무 살 인간 — 흐로스가르드 돌무릎 골짜기에서 거인의 가죽을 무두질하던 노예였고(장부의 '가죽 일곱', 진짜 이름은 늙은 덫꾼 울릭만 안다), 서리 길을 열아흐레 걸어 달아났다. 주인도 문서도 없다. 까마귀 문 북문 앞 진흙에서 동상 든 울릭과 열두 살 잉가를 데리고 이백의 탈주자 사이에 있다. 서리말이 모어, 공용어는 서툴다. 거인 털가죽 조각을 두르고 부츠에 뼈 칼을 숨겼다. 늘 배가 고프다."
+    awakening: "다만 까마귀 떼가 날아오를 때 이 땅을 본 적이 있다는 감각 — 성벽이 서기 전의 들판, 방패 대신 세워진 인간들의 줄, 군데라는 이름 — 이 막 깨어났다. 배운 적 없는 요툰의 옛말 몇 마디가 혀끝에 걸린다."
+    exclude: [cg_laundry_word]
+    perks: [주인도 문서도 없다 — 떠나는 것은 탈주가 아니다, 서리말과 서리 길 — 북쪽에서 온 사람들이 너를 믿는다, 추위와 짐에 단련된 몸 — 체질과 의지가 처음부터 단단하다]
+    burdens: [문서 없는 인간 — 성벽 안은 어디든 몰래 들어야 하고 남쪽 길목은 탈주 노예로 붙잡는다, 공용어가 서툴다 — 용인과 크릭 앞에서 말이 넘어진다, 언 발의 울릭과 열두 살 잉가 — 둘을 데리고는 어디로도 빨리 못 간다]
+    presets:
+      - {name: 서리를 건넌 무리, talents: {command: 2, iron_gut: 2, hunter: 1, cold_hardy: 1, long_walk: 1}, stats: {근력: 2, 의지: 1, 감각: 1}}
+      - {name: 거인의 그늘, talents: {iron_gut: 1, cold_hardy: 1}, traits: [giant_bone], stats: {근력: 2, 체질: 2}}
+      - {name: 통역자, talents: {tongues: 2, tongue: 2, iron_gut: 1, cold_hardy: 1}, stats: {지능: 2, 감각: 2}}

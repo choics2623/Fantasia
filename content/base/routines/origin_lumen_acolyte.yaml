@@ -1,0 +1,18 @@
+# O-08 순종의 빛 견습 사제의 새 인물 일과 (루멘 lumen.yaml 장소). 루멘의 시계는 일곱 번의 기도다: 04·07·10·13·16·19·22시.
+# days: all | workday | sabbath (안식일 = 6일째). 쉼표가 든 값은 큰따옴표로 감싼다.
+npc_o8_luca:
+  home: lm_sem_dorm
+  blocks:
+    - {days: all, from: "03:30", to: "04:00", at: lm_sem_dorm, doing: "등잔 당번 — 막대로 침상 기둥을 쳐 견습들을 깨운다", fixed: true}
+    - {days: all, from: "04:00", to: "04:40", at: lm_cath_nave, doing: "새벽 기도 — 견습 줄 맨 앞, 정화청 쪽 자리가 보이는 곳", fixed: true}
+    - {days: all, from: "04:40", to: "05:00", at: lm_sem_hall, doing: "낭독실 등잔을 켠다"}
+    - {days: workday, from: "05:00", to: "10:00", at: lm_sem_hall, doing: "낭독문 암송 — 남보다 한 박자 크게"}
+    - {days: workday, from: "11:00", to: "15:00", at: lm_sem_hall, doing: "고해 실습 — 고해자 역을 맡으면 남의 죄를 지어내 말한다"}
+    - {days: workday, from: "15:00", to: "18:00", at: lumen__farm, doing: "농원 노역", outdoor: true, alt: {p: 0.3, at: lm_inq_hall, doing: "밀고 함 홀 앞 의자 — 접수관의 문이 열리기를 기다린다"}}
+    - {days: all, from: "18:00", to: "19:00", at: lm_sem_garden, doing: "신학원 정원 — 벤치 왼쪽 빈자리를 바라본다"}
+    - {days: all, from: "19:00", to: "19:40", at: lm_cath_nave, doing: "저녁 기도 — 성표를 쥔다"}
+    - {days: all, from: "19:40", to: "22:00", at: lm_sem_hall, doing: "낭독실 구석 긴 의자 — 구절을 외운다. 귀가 열려 있다"}
+    - {days: all, from: "22:00", to: "03:30", at: lm_sem_dorm, doing: "기숙사 — 성표를 쥔 채 잔다"}
+    - {days: sabbath, from: "07:00", to: "09:30", at: lm_cath_nave, doing: "안식일 예배 — 정화청 사제들 반 보 뒤"}
+    - {days: sabbath, from: "10:00", to: "12:00", at: lm_cath_confessionals, doing: "고해실 줄 — 고해 사제 펠릭스의 칸 앞"}
+    - {days: sabbath, from: "15:00", to: "17:00", at: lm_sem_garden, doing: "정원 — 정화청장이 앉는 벤치 곁에 서 있다"}

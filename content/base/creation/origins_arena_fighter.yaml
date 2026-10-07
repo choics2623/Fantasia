@@ -1,0 +1,201 @@
+# O-06 피의 원형장 투사 (docs/world/SCENARIOS.md O-06 — 2026-10: 첫 시대부터 고를 수 있다). 필드의 뜻은 origins.yaml 머리말.
+# 잔향이 고른 사람: '열하나'라 불리는 스물한 살 인간 투사. 열네 살에 세렌 노예선에서 내려 이빨장수 고르바에게 팔렸고,
+# 원형장 밑 쇠우리 7번 숙소에서 늙은 투사 벡에게 창을 배웠다. 회귀점은 AS 312 낙엽월 1일 15시, 가을 피의 날의 투사 입장 터널.
+#
+# SCENARIOS → 데이터 (지역 카드·고장 자료가 이긴다):
+#   '쇠이빨 막사'              → 쇠우리 (ba_gates · 백 개의 문, 22시에 닫힌다) — 잠자리는 7번 숙소 (ba_dorm7: 마라·미아·어린 탈과 같은 숙소)
+#   조련사 고르즈 반쪽귀       → 이빨장수 고르바 (npc_gorba) — 조련·매매·대진. '존중'은 그의 셈법대로 '값'(이빨). 새벽 점호를 센다
+#   동료 투사 레나 (24, 37승)  → 미아 마흔하나 (npc_gm_mia, 22, 41승) — 7번 숙소의 목소리. 경쟁과 연대
+#   노장 투사 벡 (40, 64승)    → 벡 예순넷 (npc_o6_vek, 새 카드 — extra_arena_fighter.yaml)
+#   크릭 도박꾼 치틱           → 내기 장부지기 틱틱 (npc_gm_tick)
+#   두개골쪼개기 하그          → 장면 안의 이름뿐 (관중석 맨 앞의 그롬 흉터 전사 — 카드 없음)
+#   우르가쉬                   → npc_urgash — 카드대로 앉지 않는다 (앉은 군주는 쇠약한 군주). 서서 하품한다
+#   '짐승 우리' 형벌           → 소모품 강등 (REGIONS §16.7 '경기 거부 → 소모품 강등', 스무날 북문의 수레)
+#   군나르의 99승              → 대진표 돌판의 '미룸', 오그의 이야기로만 (회색여울과는 닿지 않는다)
+# 스킬 접기: 창·장병기 30 · 맨손 22 → 싸움 30 · 지구력 25 → 단련 24 · 위압 15 → 18 · 방패술·응급처치 → 손재주 10 ·
+#   그롬 전투어 25 → 엔진 스킬이 없다 — 사실(fact_o6_battle_tongue)·서술 줄(prompt·nouns)·장면의 판정(위압)으로.
+# 승수: 세계 변수 o6_wins (회귀점 11). 정식 대진이 올린다 — 가을 피의 날(장면), 낙엽월 스무날, 서리월 스무날. 백 승은 먼 길이다.
+# 고르바의 이빨: o6_marks — 새벽 북(점호)에 빠지거나 통금에 걸리면 하나씩. 셋이면 뼈 행렬 수레에 팔린다 (o6_marks_sold).
+origins:
+  - id: arena_fighter
+    order: 16
+    scenario: O-06
+    region: 그롬마르 붉은 황야
+    name: 피의 원형장 투사
+    title: 쇠우리 7번 숙소의 창
+    call: 열하나
+    age: 21
+    difficulty: 3
+    family: false
+    settlement: blood_arena
+    time: "15:00"
+    place: 피의 원형장 투사 입장 터널 — 가을 피의 날
+    start: ba_gate_tunnel
+    home: ba_dorm7
+    blurb: >-
+      열네 살에 세렌 노예선 짐칸에서 내려 이빨장수 고르바에게 팔렸다. 원형장 밑 쇠우리 7번 숙소에서 일곱 해 —
+      늙은 투사 벡에게 창을 배웠고, 정식 대진에서 열한 번 이겼다. 쇠우리는 너를 승수로 부른다. 진짜 이름은 벡만 안다.
+      회귀점은 가을 피의 날 오후 세 시, 입장문 쇠살대 앞. 오늘의 상대는 무릎이 나간 벡이다.
+    stats: {근력: 13, 민첩: 12, 체질: 10, 지능: 8, 감각: 8, 의지: 9}
+    skills: {화술: 12, 기만: 14, 위압: 18, 통찰: 20, 손재주: 10, 은신: 6, 싸움: 30, 읽고쓰기: 0, 용언: 0}
+    status: {hunger: 1, pain: 15, fatigue: 20, fear: 1, stress: 45}
+    train: 24
+    coin: 2
+    items:
+      - {id: o6_spear, name: 투사 창, tags: [무기, 장병기, 양손], slot: 손, quality: 보통, condition: 85, illegal: false, value: 30, desc: "물푸레 자루에 쇠 시장 나가의 날을 단 창. 손잡이 홈은 벡이 깎았다 — 그롬마르에서만 인간이 쥘 수 있는 날"}
+      - {id: o6_teeth, name: 이빨 목걸이 (승리 표식 열하나), tags: [신분, 승리표식], slot: 품, quality: 보통, illegal: false, value: 0, desc: "이긴 밤마다 고르바가 던져 준 그롬 이빨을 가죽끈에 꿴 것. 열하나. 투사의 값은 이빨로 센다"}
+      - {id: o6_collar, name: 쇠 목고리, tags: [신분, 투사], slot: 품, quality: 조악, illegal: false, value: 0, desc: "원형장의 소유물이라는 표식. 열네 살에 채워졌다 — 쓸린 자리가 굳은살이 됐다. 백 승에야 풀린다고들 한다"}
+    rel: {npc_o6_vek: [60, 50], npc_gm_mia: [40, 25], npc_gorba: [10, 20], npc_gm_shira: [25, 20], npc_gm_og: [20, 30], npc_gm_ytal: [30, 25], npc_mara: [10, 15], npc_gm_eida: [20, 15], npc_gm_norabe: [15, 20], npc_murk: [10, 15], npc_gm_tick: [5, 5], npc_gm_kroll: [0, 10]}
+    knows: [fact_o6_battle_tongue, fact_o6_vek_knee, fact_o6_vek_named, fact_o6_hundred_freedom, fact_o6_gunnar_postponed, fact_o6_spear_rack]
+    places: [ba_drain]          # 투사 시체를 옮기는 배수로 — 신참 때 무르크에게 그 입구에서 낙법을 배웠다
+    vars: {o6_wins: 11, o6_marks: 0}
+    wanted: null
+    flaws: [brand]
+    flaw_note: {brand: 목고리 자국}
+    traits: []
+    trait_discount: {}
+    free: false
+    # 투사가 드나드는 곳: 쇠우리(백 개의 문)와 그 방들, 입장 터널 — 고장 자료에는 staff
+    access: {ba_gate_tunnel: public, ba_gates: public, ba_training: public, ba_dorm7: public, ba_dorm1: public, ba_dorm9: public, ba_cookhouse: public, ba_infirmary: public}
+    duty:
+      rollcall:
+        at: ba_training
+        time: "05:00"
+        by: npc_gorba
+        frisk: false            # 투사의 몸은 뒤지지 않는다 — 날은 그롬마르에서 합법이다 (REGIONS §16.7)
+        miss: "다섯 시 북에 훈련장에 없었다. 고르바가 이빨 꿰미에서 이빨 하나를 빼 손바닥에 굴린다 — 네 값이 하나 내렸다."
+        miss_effects: ["var o6_marks += 1"]
+        wake_text: "새벽 훈련 북. 7번 숙소 철창이 열리고 투사들이 훈련장으로 밀려 나간다. 다섯 시 대련 북에 맞춰 고르바가 무릎 보조대를 철컥이며 들어와 머릿수를 센다 — 이빨 꿰미를 짤랑이며."
+      wake: "03:40"
+      meal: {at: ba_cookhouse, from: "18:00", to: "20:30", label: 취사장에서 고기와 빵을 받는다, hunger: -2, thin: 0.15, with: npc_gm_eida, cost: 0, text: "에이다가 국자를 두 번 두드리고 승수를 묻는다. 고기 한 덩이, 빵 한 덩이. 투사는 잘 먹는다 — 모래에 세우려고."}
+      work:
+        at: ba_training
+        from: "04:00"
+        until: "09:00"
+        label: 훈련장에 선다 (새벽 북부터 저녁 경기 뿔까지)
+        done: "새벽 네 시간은 창, 낮에는 모래 삽과 대련. 고르바의 눈이 네 팔뚝에서 오래 머물지 않았다 — 좋은 날이다."
+        fail: "셋째 합마다 반 박자씩 늦었다. 고르바가 손가락 마디의 매듭 하나를 푼다 — 오늘 저녁 네 고기는 그롬 대련 마당으로 간다."
+        train: 0.7
+        pain: 5
+        fail_pain: 12
+        fail_meal: true
+        fail_fear: 0
+        coin: 0
+        outlaw: false
+        sabbath: false
+      count: null
+      safe: [ba_gates]          # 쇠우리 안 어디든 (숙소·훈련장·취사장·치료소) — 22시에 문이 닫힌다
+      curfew:
+        caught: "쇠우리 문이 닫힌 뒤의 길. 그롬 순찰의 횃불이 네 목고리에 멈춘다. 무릎 뒤를 걷어차이고, 목고리째 끌려 7번 숙소 철창 안으로 던져진다. 아침이면 고르바가 이빨 하나를 뺄 것이다."
+        fugitive: "횃불이 목고리에 멈춘다. \"등을 보인 투사다.\" 그롬의 손이 목고리를 잡아 올린다 — 발이 땅에서 뜬다."
+        fugitive_why: "통금 순찰에 붙잡혔다 — 등을 보인 투사로 뼈의 전당 앞에 끌려갔다"
+        pain: 20
+        effects: ["var o6_marks += 1"]
+        D: 4
+      desert: "허락 없이 원형장 도시를 떠나면 그롬 누구나 사냥한다 — 등을 보인 투사"
+      routine: 새벽 북 → 훈련장 → 취사장 → 쇠우리
+    opening: o6_gate_open
+    sense: 붉은 모래 냄새
+    when_word: 오후
+    rescue: "눈앞이 하얘진다. 누군가 너를 7번 숙소 짚더미로 끌고 간다. 입에 고깃국이 흘러든다 — 에이다의 국자다. \"이름부터.\" 그녀가 국자를 두 번 두드린다."
+    quiet:
+      - 쇠우리의 문 백 개가 차례로 닫힌다. 쇳소리가 원형장 밑을 한 바퀴 돈다.
+      - 철창 저편에서 마라가 센다. 여든일곱에서 한 번 멈췄다가, 백까지 간다.
+      - 아궁이에 걸린 날들이 식는다. 미아가 동생의 어깨를 한 번 만지고 눕는다.
+      - 모래 위에서 삽 소리가 난다. 무르크가 오늘의 피를 모래 밑으로 뒤집는다.
+    beats:
+      - {id: o6_gorba_dawn, at: "312-09-02 05:00", danger: 2, near: "다섯 시 북이 울리면 고르바가 훈련장에 든다. 오늘 모래에 선 몸들의 값을 다시 매길 것이다."}
+      - {id: o6_scar_council, at: "312-09-06 21:00", danger: 1, near: "내일은 안식일 — 경기가 없다. 밤에는 1번 숙소 바닥에서 흉터 회의가 열린다. 쉰 승이 안 되는 자는 문간에서 듣는다."}
+      - {id: o6_column_vek, at: "312-09-20 05:00", danger: 4, when: ["alive npc_o6_vek", "var o6_vek_crippled == true", "var o6_vek_kept != true", "var o6_you_column != true"], near: "내일 새벽, 북문에 뼈 행렬의 수레가 온다. 피의 감독의 서기가 승수를 읽는다 — 예순넷도.", far: "스무날 새벽 — 고르바가 쓸모없는 것들을 북문의 수레로 넘기는 날. 벡의 무릎은 아직 서지 않는다."}
+      - {id: o6_column_you, at: "312-09-20 05:00", danger: 5, when: ["var o6_you_column == true"], near: "내일 새벽 북문. 소모품 명단에 네 승수가 있다.", far: "소모품 명단에 네 승수가 올랐다. 스무날 새벽, 북문의 수레."}
+      - {id: o6_formal_sep, at: "312-09-20 13:00", danger: 3, when: ["var o6_you_column != true"], near: "내일 오후 뿔이 울리면 정식 대진이다. 승수는 정식 대진만 센다.", far: "스무날 정식 대진 — 대진표 돌판에 네 승수가 새겨졌다. 상대는 아직 새겨지지 않았다."}
+      - {id: o6_formal_oct, at: "312-10-20 13:00", danger: 3, near: "내일은 서리월 스무날 — 정식 대진. 상대가 9번 숙소 사람이라는 말이 돈다.", far: "서리월 스무날 정식 대진. 대진표 돌판의 네 줄 옆에 9번 숙소의 승수가 새겨졌다."}
+    goals:
+      - who: 벡
+        states:
+          - {when: ["dead npc_o6_vek"], what: "모래 위에서 죽었다 — 7번 숙소 창걸이에 그의 창이 남았다"}
+          - {when: ["var o6_vek_taken == true"], what: "북문의 수레에 올라 뼈 행렬로 갔다 — 가을 원정의 첫 열"}
+          - {when: ["var o6_vek_kept == true"], what: "쇠우리에 남았다 — 훈련장 가장자리에서 신참들의 발을 센다"}
+          - {when: ["var o6_vek_crippled == true"], what: "살았다. 무릎이 나갔다 — 스무날 새벽, 고르바가 쓸모없는 것들을 북문의 수레에 올린다", until: "312-09-20 05:00"}
+          - {what: "모래 맞은편에 서 있다 — 무릎이 나간 채로"}
+      - who: 승수
+        states:
+          - {when: ["var o6_wins >= 100"], what: "백 — 그롬이 잔을 든다"}
+          - {when: ["var o6_wins >= 90"], what: "문턱 — 아흔을 넘었다"}
+          - {when: ["var o6_wins >= 50"], what: "흉터 — 1번 숙소 바닥에 원으로 앉는다"}
+          - {when: ["var o6_wins >= 25"], what: "스물다섯을 넘었다 — 개인 천막이 허락된다"}
+          - {when: ["var o6_wins >= 20"], what: "스물을 넘었다 — 백까지는 아직 멀다"}
+          - {when: ["var o6_wins == 19"], what: "열아홉 — 백까지 여든하나"}
+          - {when: ["var o6_wins == 18"], what: "열여덟 — 백까지 여든둘"}
+          - {when: ["var o6_wins == 17"], what: "열일곱 — 백까지 여든셋"}
+          - {when: ["var o6_wins == 16"], what: "열여섯 — 백까지 여든넷"}
+          - {when: ["var o6_wins == 15"], what: "열다섯 — 백까지 여든다섯"}
+          - {when: ["var o6_wins == 14"], what: "열넷 — 백까지 여든여섯"}
+          - {when: ["var o6_wins == 13"], what: "열셋 — 백까지 여든일곱"}
+          - {when: ["var o6_wins == 12"], what: "열둘 — 백까지 여든여덟. 쇠우리가 새 승수로 부른다"}
+          - {what: "열하나 — 백까지 여든아홉"}
+      - who: 고르바의 이빨
+        when: ["var o6_marks >= 1"]
+        states:
+          - {when: ["var o6_marks >= 2"], what: "이빨 둘이 빠졌다 — 셋째면 고르바가 너를 뼈 행렬 수레에 판다"}
+          - {what: "이빨 하나가 빠졌다 — 새벽 북에 빠지거나 쇠우리 닫힘을 어기면 하나씩"}
+      - who: 너
+        when: ["var o6_you_column == true"]
+        states:
+          - {what: "소모품 명단에 올랐다 — 스무날 새벽, 북문의 수레", until: "312-09-20 05:00"}
+    losses:
+      - {id: vek_lost, when: ["dead npc_o6_vek"], text: "7번 숙소 창걸이에 창 한 자루가 주인 없이 걸려 있다. 아무도 그것을 내리지 않는다.", weight: 7}
+      - {id: vek_column, when: ["var o6_vek_taken == true"], text: "북문 쪽으로 수레 바퀴 소리가 멀어진다. 벡은 돌아보지 않았다.", weight: 6}
+    achievements:
+      - {id: vek_lives, tp: 2, text: 벡이 모래에서도 북문의 수레에서도 살아남았다, when: ["alive npc_o6_vek", "var o6_vek_taken != true", "date >= 312-09-21"]}
+      - {id: blow_refused, tp: 2, text: 엄지가 내려갔을 때 창을 모래에 꽂았다, when: ["var o6_refused_blow == true"]}
+      - {id: grom_felled, tp: 3, text: 피의 맹세 결투에서 그롬을 무릎 꿇렸다, when: ["var o6_grom_felled == true"]}
+      - {id: hundred_road, tp: 1, text: 열넷 — 백으로 가는 길에 세 걸음, when: ["var o6_wins >= 14"]}
+    epilogue:
+      - {when: ["dead npc_o6_vek"], text: "벡의 창은 7번 숙소 창걸이에 걸린 채 녹슬었다. 아무도 그것을 내리지 않았다. 그 이름을 아는 사람은 이제 없다."}
+      - {when: ["not dead npc_o6_vek", "var o6_vek_taken == true"], text: "벡은 가을 원정의 첫 열에 섰다. 말뼈 여울의 기록에는 번호만 남았다."}
+      - {when: ["not dead npc_o6_vek", "var o6_vek_taken != true"], text: "벡은 쇠우리에서 늙었다. 훈련장 가장자리에서 창 자루로 바닥을 두드려 신참들의 발을 셌다. 아무도 없을 때면 이름 하나를 입 속으로 굴렸다."}
+      - {when: ["var o6_wins >= 14"], text: "대진표 돌판에 네 승수가 새겨진 줄은 거기서 멈췄다. 다음 칸은 비어 있다 — 고르바가 손톱으로 긁는다."}
+      - {when: ["var o6_wins < 14"], text: "쇠우리는 그 뒤로도 승수로 사람을 불렀다. 열하나라는 수는 이듬해 다른 신참의 것이 되었다."}
+      - {when: ["alive npc_gm_hart"], text: "태양월 마지막 날, 외팔 하르트가 백에 닿았다. 그날 밤 그가 무슨 잔을 받았는지 쇠우리는 묻지 않았다."}
+    texts:
+      count_before_sleep: |
+        쇠우리 7번 숙소의 짚더미. 칼로 이어진 아궁이에 날들이 걸려 식는다. 철창 저편에서 마라가 센다 — 여든일곱에서 한 번 멈췄다가, 백까지.
+
+        잠들기 전, 너는 센다.
+      wanted_hook: "피의 감독 사무소의 등불이 늦게까지 꺼지지 않는다. 얄라의 서류에 네 승수 옆으로 한 줄이 더 그어졌다."
+      nem_door: 7번 숙소 철창
+      gossip_where: "취사장 솥 앞에서, 입장 터널의 손자국 앞에서."
+    public:
+      npc_o6_vek: 창을 가르쳐 준 늙은 투사, 64승
+      npc_gm_mia: 7번 숙소의 목소리, 41승
+      npc_gm_ytal: 미아의 동생, 아홉 살
+      npc_mara: 철턱, 87승 — 같은 숙소
+      npc_gm_og: 투사 조합장, 78승
+      npc_gorba: 너를 사 온 이빨장수 (그롬 조련사)
+      npc_gm_shira: 전투어를 가르쳐 준 그롬
+      npc_gm_eida: 취사장 일손, 63승에서 칼을 놓았다
+      npc_gm_norabe: 숙소 치료소의 노파
+      npc_murk: 모래의 피를 닦는 회색 그롬
+      npc_gm_tick: 내기장의 장부지기 (크릭)
+      npc_gm_kroll: 심판석의 노인 (그롬)
+      npc_urgash: 대전쟁군주
+      npc_gm_yala: 피의 감독 (그롬)
+      npc_gm_irena: 투사 대표, 92승
+      npc_gm_hart: 외팔의 문턱, 94승
+      npc_ulb: 원형장 문 앞의 오그림
+      npc_tal: "? 사슬에 묶인 눈먼 노인"
+      npc_gm_urk: "? 재를 뒤집어쓴 그롬 노파"
+    map: {knowledge: {blood_arena: 3, grommar_port: 1, war_camp: 1}, sketch: [grommar_port, war_camp]}
+    world: "주인공이 매인 곳은 그롬마르 붉은 황야의 피의 원형장 — 대전쟁군주 우르가쉬의 3만 석 원형장 도시. 주인공은 원형장 밑 투사 숙소 '쇠우리'(백 개의 문, 22시에 닫힌다)의 인간 투사다 — 그롬의 소유물이고, 그롬마르에서만 인간이 무기를 든다."
+    people: "주인공은 쇠우리에서 일곱 해를 살았다 — 투사끼리는 이름과 승수로 부른다(미아 마흔하나, 오그 일흔여덟). 그러나 독자는 모른다: 사람이 **서술에 처음 나올 때** 이름과 함께 누구인지 한 구절로 밝힌다 (예: \"벡 — 당신에게 창을 가르친 예순네 승의 늙은 투사 — 이\"). 그롬은 인간 투사를 이름이 아니라 승수로 부른다. 이름을 모르는 사람은 겉모습으로만 부른다."
+    nouns: "'쇠우리'는 원형장 밑의 인간 투사 숙소다(문이 백 개, 22시에 닫힌다). '모래'는 원형장의 싸움 바닥. '승수'는 정식 대진에서 이긴 수 — 투사는 이긴 수만큼 가슴에 칼자국을 긋는다(새끼 0~9, 칼 10~49, 흉터 50~89, 문턱 90~99). '혈명 없는 혈명'은 그롬이 백 승 인간에게 준다는 인정이다. '그롬 전투어'는 그롬의 말 — 주인공은 반쯤 알아듣고 몇 마디 한다. '뼈 행렬'은 전쟁 숙영지의 인간 소모품 막사다. 주인공을 부르는 '열하나'는 회귀점의 승수다 — 이긴 밤부터 쇠우리는 새 승수로 부른다([이야기의 줄기]의 '승수')."
+    prompt: "주인공: 열하나라 불리는 스물한 살 인간 투사 (진짜 이름은 창을 가르친 벡만 안다 — 쇠우리에서 아무도 부르지 않는다). 열네 살에 세렌 노예선에서 내려 이빨장수 고르바에게 팔렸고, 원형장 밑 쇠우리 7번 숙소에서 일곱 해를 살았다. 정식 대진 열한 승 — 가슴에 칼자국 열하나, 목에 쇠 목고리 자국. 창을 쓰고, 그롬 전투어를 반쯤 알아듣는다. 쇠우리는 백 승이 자유라고 말한다."
+    awakening: "다만 가을 피의 날 모래 위에서, 함성이 한순간 다른 시대의 함성으로 들렸고 — 손이 이 몸이 배운 적 없는 각도로 창을 고쳐 잡았다. 주인공은 그것을 설명하지 못한다."
+    exclude: []
+    perks: [싸움이 처음부터 쓸 만하다 — 창과 단련된 몸, 투사는 잘 먹는다 — 저녁마다 고기와 빵, 그롬 전투어를 반쯤 알아듣는다 — 그롬 앞에서 말이 닿는다]
+    burdens: [새벽 북과 훈련장 — 22시에 닫히는 쇠우리, 목고리 자국 — 그롬마르 밖에서는 도망친 투사다, 모래가 정한 상대를 고를 수 없다 — 오늘은 벡이다]
+    presets:
+      - {name: 백승을 향해, talents: {spear: 2, iron_gut: 1, duelist: 1}, traits: [grom_rage], stats: {근력: 2, 체질: 2}}
+      - {name: 군중의 연인, talents: {tongue: 2, crowd_voice: 2, beauty: 2, iron_gut: 2}, stats: {의지: 2, 감각: 1, 지능: 1}}
+      - {name: 살아남는 투사, talents: {beast_friend: 1, iron_gut: 1, strong_bones: 1}, traits: [giant_bone], stats: {체질: 2, 의지: 2}}

@@ -1,0 +1,16 @@
+# O-07 북방 거인 노예 탈주자의 동행 둘 — 까마귀 문 북문 앞 (settlements/crow_gate.yaml cg_north_gate). 하루 종일 문 앞이다: 갈 곳이 없다.
+# 받은 서른의 통로(바깥문 안쪽)에 들어도 같은 자리 — 북문. 죽거나 끌려가면 목표 행동 효과(kill · capture)가 일과를 덮는다.
+npc_o7_ulric:
+  home: cg_north_gate
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: cg_north_gate, doing: 문 밑에서 털가죽을 덮고 잔다 — 잠결에 서리말로 수를 센다}
+    - {days: all, from: "05:00", to: "12:00", at: cg_north_gate, doing: 진흙 위에 앉아 검은 발을 털가죽으로 싸맨다}
+    - {days: all, from: "12:00", to: "18:00", at: cg_north_gate, doing: 바람 아래쪽에 등을 대고 앉아 덫 줄을 꼰다}
+    - {days: all, from: "18:00", to: "20:00", at: cg_north_gate, doing: 겨죽 동이가 내려오면 제 몫을 잉가 그릇에 덜어 준다}
+npc_o7_inga:
+  home: cg_north_gate
+  blocks:
+    - {days: all, from: "20:00", to: "05:00", at: cg_north_gate, doing: 인형을 안고 털가죽 밑에 웅크려 잔다}
+    - {days: all, from: "05:00", to: "12:00", at: cg_north_gate, doing: 성벽 위 까마귀를 센다 — 입술만 움직여서}
+    - {days: all, from: "12:00", to: "17:00", at: cg_north_gate, doing: 도랑 가에서 언 이끼를 긁어 모은다}
+    - {days: all, from: "17:00", to: "20:00", at: cg_north_gate, doing: 겨죽 동이가 내려오는 밧줄을 올려다본다}

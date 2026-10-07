@@ -1,0 +1,1181 @@
+# O-06 피의 원형장 투사 — 회귀점의 대본 장면과 첫 달의 장면 (creation/origins_arena_fighter.yaml의 opening). origin: arena_fighter.
+# 문법은 greyford_opening.yaml 머리말과 같다. {name} = 진짜 이름 (벡만 안다). 2인칭 '너', 현재형.
+#
+# SCENARIOS O-06 → 데이터 (지역 카드·고장 자료가 이긴다):
+#   '쇠이빨 막사'             → 쇠우리 (ba_gates · 백 개의 문, 22시에 닫힌다). 주인공의 잠자리는 7번 숙소 (ba_dorm7)
+#   조련사 고르즈 반쪽귀      → 이빨장수 고르바 (npc_gorba) — 그의 '존중'은 값(이빨)으로 센다
+#   동료 투사 레나            → 미아 마흔하나 (npc_gm_mia) — 7번 숙소의 목소리. '아직?' — '아직.'
+#   노장 투사 벡              → 벡 예순넷 (npc_o6_vek, 새 카드) — 열하나의 진짜 이름을 아는 유일한 사람
+#   크릭 도박꾼 치틱          → 내기 장부지기 틱틱 (npc_gm_tick)
+#   두개골쪼개기 하그         → 장면 안의 이름뿐 — 관중석 맨 앞의 그롬 흉터 전사
+#   심판                      → 크롤 백상처 (npc_gm_kroll) · 군주 → 우르가쉬 (서서 하품한다 — 앉은 군주는 쇠약한 군주)
+#   '짐승 우리' 형벌          → 소모품 강등 — 스무날 북문의 수레 (REGIONS §16.7 경기 거부 → 소모품)
+#   잔향의 각성의 '+10'       → 깃발 o6_awake의 warn (가을 피의 날 모래의 싸움 판정)
+# 첫 1~3시간 흐름 → 장면: arena_opening_autumn → o6_gate_open·o6_gate_sand(+o6_thumbs·o6_left_side·o6_haag) ·
+#   iron_tooth_night → o6_cage_night_dead/alive · gorz_feeding → o6_gorba_teeth · tal_legend → o6_tal_legend · chitik_odds → o6_tick_odds.
+# 이어지는 것: 스무날 새벽 북문의 수레(o6_column_you · o6_column_dawn) → 스무날 정식 대진(o6_formal_sep · o6_formal_last) → 서리월 스무날(o6_formal_oct).
+# 승수는 세계 변수 o6_wins (회귀점 11) — 정식 대진만 센다. 고르바의 이빨 o6_marks가 셋이면 수레 (o6_marks_sold).
+storylets:
+  # ───────────────────────── 회귀점: 가을 피의 날, 투사 입장 터널 ─────────────────────────
+  - id: o6_gate_open
+    origin: arena_fighter
+    trigger: {start: true}
+    stage:
+      - {npc: npc_o6_vek, at: ba_sand, from: "15:00", to: "15:40", doing: 맞은편 입장문에서 걸어 나온다 — 오른쪽 무릎에 천을 감았다. 절뚝이지 않으려고 애쓴다}
+      - {npc: npc_o6_vek, at: ba_infirmary, from: "15:40", to: "21:00", doing: 노라베의 소금물에 오른쪽 무릎을 담그고 누워 있다}
+      - {npc: npc_gorba, at: ba_gate_tunnel, from: "15:00", to: "15:40", doing: 입장문 쇠살대에 얼굴을 붙이고 이빨 꿰미를 센다}
+      - {npc: npc_murk, at: ba_gate_tunnel, from: "15:00", to: "16:00", doing: 터널 끝에 갈고리를 세워 두고 기다린다 — 진 쪽을 끌어갈 갈고리}
+      - {npc: npc_gm_mia, at: ba_gate_tunnel, from: "15:00", to: "15:15", doing: 터널 벽의 손자국 곁에서 네 손바닥에 천을 감아 준다}
+    text: |
+      붉은 모래 냄새. 쇳내, 마른 피, 기름 먹인 가죽.
+
+      투사 입장 터널. 돌벽에 손자국이 승수만큼 찍혀 있다 — 앞서 지나간 투사들의 것, 그리고 네 것 열하나. 입장문 위에는 누더기 깃발이 걸려 있다. 재와 진흙으로 찍은 손바닥 수천 개. 투사들은 그 아래를 지날 때 손을 들어 제 손바닥을 겹쳐 본다. 너도 든다.
+
+      쇠살대 너머로 모래가 보인다. 붉다. 염료가 아니다. 이 원형장이 문을 연 해부터 일흔한 해 동안 쌓인 것이다. 그롬 관중 삼만이 발을 구르는 소리가 땅을 울리고, 네 가슴뼈가 그 박자에 맞춰 떨린다. 가을 피의 날.
+
+      미아 — 7번 숙소의 '목소리', 마흔한 승 — 가 네 손바닥에 천을 감는다. 창 자루가 미끄러지지 않게. 매듭을 지으며 묻는다. "아직?"
+
+      "아직."
+
+      쇠살대에 얼굴 하나가 붙는다. 이빨장수 고르바 — 일곱 해 전 너를 이빨 여섯 개 값에 사 온 그롬 조련사 — 다. 허리의 이빨 꿰미가 짤랑인다. "상대는 벡이다."
+
+      너는 대답하지 않는다. 벡은 너에게 창 쥐는 법을 가르친 사람이다. 지난주 훈련에서 오른쪽 무릎이 나갔다. 그는 이제 쓸모가 없고, 그롬은 쓸모없는 투사를 먹이지 않는다.
+
+      "죽이면 열둘이다." 고르바가 이빨 하나를 엄지로 굴린다. "살려 두면 — 관중이 정한다. 관중은 피를 좋아하지."
+
+      터널 끝에서 무르크 — 싸우지 않는 회색 그롬, 모래의 피를 닦는 자 — 가 갈고리를 세워 두고 기다린다. 진 쪽을 끌어갈 갈고리다.
+
+      쇠살대가 오른다. 맞은편 입장문에서 벡이 걸어 나온다. 절뚝이지 않으려고 애쓰고 있다. 관람석 꼭대기, 해골로 꾸민 자리 곁에 대전쟁군주 우르가쉬가 서 있다. 그는 앉지 않는다. 오늘은 하품을 한다.
+
+      모래 한가운데, 옛 창이 박힌 자리에서 둘이 마주 선다. 벡이 너를 부른다. 낮게. 함성 속에서 아무도 못 듣게.
+    input: true_name
+    input_label: 벡만 아는 이름
+    input_button: 그 이름으로 선다
+    input_say: 함성 속에서 벡이 부르는 이름
+    input_sibling: false
+    return_text: "나는 — 이 냄새를 안다."
+    return_heavy: {4: "붉은 모래 냄새. 그 밑에, 젖은 재.", 12: "젖은 재. 그 위에, 붉은 모래 냄새."}
+    trace_lines:
+      water: 기침이 터진다. 목 안에 물이 있다. 없다. 모래가 마른 소리를 낸다.
+      teeth: 목덜미가 가렵다. 긁으면 손톱 밑에 붉은 모래뿐이다.
+      spear: 옆구리가 시리다. 손을 대 보면 따뜻하다. 창은 아직 네 손에 있다.
+      blade: 목이 뜨겁다. 손을 대 보면 목고리 자국뿐이다.
+      rope: 손목이 쓸린다. 미아가 감아 준 천 자국이다. 천 자국일 것이다.
+      hunger: 배가 꼬인다. 아니다 — 투사는 잘 먹는다. 오늘 아침에도 고기를 먹었다.
+      fall: 발밑이 꺼지는 것 같다. 모래는 그대로다. 붉다.
+    return_ink: |
+      ┊ 그 다음엔 모래 위에서 벡의 무릎이 꺾였다. 삼만의 엄지가 아래로 내려갔다.
+    after_input: |
+      "{name}."
+
+      그 이름을 아는 사람은 이 원형장에, 쇠우리 백 개의 문 안에 하나뿐이다. 일곱 해 전, 세렌 노예선 짐칸에서 내린 열네 살을 7번 숙소 짚더미에 눕힌 밤 — 벡이 물었고, 너는 대답했다. 짐칸에서 죽은 어머니가 마지막으로 부른 이름이었다.
+
+      "여기선 승수로 불린다." 그때 벡이 말했다. "이름은 내가 갖고 있으마." 열 번째 승리에 투사명이 허락되었을 때도 너는 이름을 대지 않았다. 그래서 쇠우리는 너를 승수로 부른다. 열하나.
+
+      벡이 창끝을 낮춘다. 인사다. 오른쪽 무릎에 감은 천이 벌써 젖어 있다. "그 이름으로 서라. 열하나 말고."
+    effects: ["note 벡만 아는 이름 — {name}. 쇠우리는 너를 승수로 부른다 — 열하나"]
+    next: o6_gate_sand
+
+  # ── 둘째 화면: 모래 위의 첫 합 — 끝에 잔향의 각성 (SCENARIOS echo_wake_arena) ──
+  - id: o6_gate_sand
+    origin: arena_fighter
+    text: |
+      심판석의 크롤 백상처 — 흉터가 백 개 넘는 그롬 노인, 은퇴하지 않는 심판 — 가 돌 의자를 한 번 두드리고 깃발을 든다.
+
+      벡이 먼저 돈다. 왼쪽으로. 오른발로 몸을 받쳐야 하는 쪽을 피해서. 일곱 해 동안 새벽마다 '발부터'라고 말하던 사람이 오늘은 제 발을 숨긴다. 창끝은 흔들리지 않는다. 무릎만 흔들린다.
+
+      관중석 맨 앞, 흉터 전사들의 자리에서 그롬들이 발을 구른다. 그 위로 크릭들이 내기를 외치고, 그 위에서 인간 하인들이 입을 다물고 있다. 꼭대기의 우르가쉬가 붉은 유리 왼눈으로 모래를 비추며 하품을 끝낸다.
+
+      그때 — 관중의 함성이 한순간 다른 함성으로 바뀐다. 같은 모래, 다른 시대. 백 번째 상대가 쓰러지고, 그롬 수천이 일제히 침묵하던 날. 그날 모래 위에 서 있던 것이 누구였는지 너는 안다. 창을 쥔 손이, 이 몸이 배운 적 없는 각도로 고쳐 잡힌다.
+
+      그리고 함성은 다시 오늘의 함성이다. 벡이 온다.
+    effects: ["goto ba_sand", "var o6_awake = true", "learn fact_o6_hundredth_sand"]
+    choices:
+      - id: obey
+        label: 고르바가 말한 대로 — 관중이 원하는 피를 준다
+        minutes: 25
+        text: |
+          너는 창을 고쳐 쥐고 걸어 들어간다. 벡은 무릎을 버티려고 왼발에 몸을 싣는다 — 일곱 해 동안 너에게 '발부터'를 가르친 사람이. 다섯째 합에서 그 무릎이 꺾인다. 그는 모래에 한 손을 짚는다.
+
+          삼만이 발을 구른다. 엄지들이 아래로 꺾인다. 심판석의 크롤이 깃발을 반쯤 든 채 꼭대기를 본다. 우르가쉬는 엄지를 움직이지도 않는다. 관중이 정한다.
+
+          벡이 고개를 든다. 너를 본다. 너는 찌른다. 그가 가르친 자리, 갈비뼈 사이로.
+
+          모래가 그를 받는다. 크롤의 목이 먼저 열린다. "열둘!" 관중이 받는다 — 열둘, 열둘. 터널 끝에서 무르크가 갈고리를 들고 걸어 나온다. 아무도 부축하지 않는 그롬이, 시체만은 천천히 끈다.
+        effects: ["var o6_wins += 1", "var o6_bout_done = true", "agenda kill npc_o6_vek", "stress 15", "temper 자비 -5", "temper 충성 -3", "rel npc_gorba like 5", "rel npc_gorba trust 5", "rel npc_gm_eida trust -6", "rel npc_gm_mia trust -4", "note 가을 피의 날 — 엄지가 내려갔고, 벡을 찔렀다. 열둘", "goto ba_gate_tunnel"]
+      - id: fight
+        label: 정면으로 싸운다 — 벡이 가르친 대로
+        minutes: 20
+        check: {skill: 싸움, D: 30, helps: [spear, duelist, reflexes, battle_sense, grom_rage, giant_bone], hinders: [lame], warn: ["var o6_awake == true"]}
+        success:
+          text: |
+            벡의 창이 먼저 온다. 무릎 나간 사람의 창이 아니다 — 일곱 해 동안 새벽마다 네 정강이를 때리던 그 창이다. 너는 비키지 않는다. 자루로 받고, 흘리고, 들어간다. 다섯째 합. 네 창 자루가 그의 오른쪽 무릎을 친다.
+
+            벡이 모래에 무릎을 꿇는다. 관중이 일어선다.
+          effects: ["rel npc_o6_vek trust 4", "then o6_thumbs"]
+        failure:
+          text: |
+            벡의 창이 먼저 온다. 무릎 나간 사람의 창이 아니다. 너는 반 박자 늦는다 — 창끝이 옆구리를 가르고 지나간다. 뜨겁다. 그래도 그의 무릎은 거짓말을 하지 못한다. 넷째 합에 그가 넘어지고, 너도 한쪽 무릎을 모래에 박는다. 피는 네 쪽에서 더 많이 흐른다.
+
+            관중이 일어선다. 그들에게는 누구의 피든 같다.
+          effects: ["pain 30", "then o6_thumbs"]
+      - id: knee
+        label: 벡의 무릎을 노려 세 합 안에 끝낸다
+        minutes: 10
+        check: {skill: 싸움, D: 34, helps: [spear, duelist, reflexes, battle_sense], hinders: [lame], warn: ["var o6_awake == true"]}
+        success:
+          text: |
+            첫 합에 너는 왼쪽으로 돈다 — 벡이 오른발로 몸을 돌려야 하는 쪽으로. 둘째 합, 그의 무릎이 반 박자 늦는다. 셋째 합에 네 창 자루가 그 무릎 뒤를 친다. 벡이 모래에 앉는다. 넘어지는 게 아니라, 앉는다.
+
+            크롤의 깃발이 관중보다 먼저 오른다. 끝났다. 관중석에서 야유가 쏟아진다 — 피가 없는 끝이다. 꼭대기의 우르가쉬는 벌써 다음 판 쪽을 본다.
+
+            벡이 모래에 앉은 채 숨을 고른다. "…세 합. 그건 내가 가르친 거냐." 대답을 기다리지 않는다. 쇠살대 너머에서 고르바가 벡의 무릎을 본다. 값을 매기는 눈으로.
+          effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_vek_crippled = true", "rel npc_o6_vek trust 6", "rel npc_o6_vek like 4", "rel npc_gorba like -5", "temper 자비 3", "note 가을 피의 날 — 세 합에 끝냈다. 벡은 살았다. 열둘 — 고르바가 벡의 무릎을 보았다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            첫 합에 너는 왼쪽으로 돈다. 벡은 그걸 안다 — 그가 가르친 수다. 그의 창 자루가 네 정강이를 후려친다. 너는 무릎을 꿇었다가 일어난다. 관중이 깨어난다. 피 냄새를 맡은 삼만이.
+
+            여섯째 합에 그의 무릎이 마침내 버티지 못한다. 벡이 모래에 쓰러진다. 그리고 발 구르는 소리가 시작된다.
+          effects: ["pain 15", "then o6_thumbs"]
+      - id: act
+        label: 피를 크게 보이되, 아무도 죽지 않게 한다
+        minutes: 25
+        check: {skill: 기만, D: 22, helps: [actor, deceit, duelist]}
+        success:
+          text: |
+            너는 벡의 왼팔을 노린다 — 살이 두껍고 큰 핏줄이 없는 곳. 창끝이 팔뚝을 길게 긋는다. 피가 모래 위에 선을 그린다. 벡은 알아챈다. 그의 창이 네 어깨를 얕게 찢는다 — 일부러 크게, 일부러 얕게. 관중이 미친 듯이 발을 구른다.
+
+            일곱째 합, 벡이 손목을 베인 채 모래에 눕는다. 숨은 쉰다. 크롤의 깃발이 오른다 — 네 승. 엄지들이 꺾이기 전에 관중은 이미 다음 피를 기다린다.
+
+            터널로 돌아오는 길, 쇠살대 너머에서 고르바가 이빨 꿰미를 짤랑인다. "영리한 짐승." 그가 웃는다. "값이 올랐다. 다음엔 내 앞에서 춤추지 마라."
+          effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_vek_crippled = true", "var o6_clever_beast = true", "pain 8", "rel npc_gorba like 8", "rel npc_gorba trust 6", "rel npc_o6_vek trust 8", "memory npc_gorba 영리함 열하나가 피를 크게 보이고 벡을 살렸다 — 내 눈은 못 속였다", "note 가을 피의 날 — 피를 보이고 아무도 죽이지 않았다. 열둘. 고르바가 알아챘다 — '영리한 짐승'", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            너는 벡의 왼팔을 노린다. 창끝이 너무 얕다 — 피가 나지 않는다. 벡이 알아채고 쓰러지는 시늉을 한다. 너무 빨리.
+
+            관중석 맨 앞의 그롬 흉터 전사들이 먼저 웃는다. 그 웃음이 위로 번진다. 크롤의 깃발이 내려간다 — 도전 불성립. "춤꾼들." 꼭대기에서 우르가쉬의 목소리가 떨어진다. 오늘 처음으로 그가 무언가를 말했다.
+
+            고르바의 매가 쇠살대 너머에서 기다린다. 둘 몫으로.
+          effects: ["var o6_bout_done = true", "var o6_dancer = true", "var o6_vek_crippled = true", "pain 20", "stress 8", "rel npc_gorba like -10", "rel npc_gorba trust -10", "rel npc_urgash like -5", "note 가을 피의 날 — 연기가 들켰다. 승수는 열하나 그대로. 관중이 우리를 춤꾼이라 부른다", "goto ba_gate_tunnel"]
+      - id: read
+        label: 첫 합 전에 — 벡의 얼굴을 읽는다
+        minutes: 5
+        check: {skill: 통찰, D: 20, helps: [liar_nose, battle_sense, duelist], hinders: [one_eye]}
+        success:
+          text: |
+            창끝을 맞대고 도는 그 짧은 동안, 너는 벡의 얼굴만 본다. 그의 입술이 움직인다. 소리 없이, 두 번.
+
+            찔러라. 왼쪽.
+
+            그는 왼쪽 갈비뼈 아래를 비워 두고 있다. 일곱 해 동안 너에게 '왼쪽을 비우지 마라'고 가르친 사람이.
+          effects: ["var o6_vek_asked = true", "learn fact_o6_vek_wants_death", "then o6_left_side"]
+        failure:
+          text: |
+            너는 벡의 얼굴을 읽으려 한다. 그 얼굴은 일곱 해 동안 너에게 아무것도 들키지 않은 얼굴이다. 그 사이 그의 창이 온다 — 정강이, 어깨. 너는 받아 내지만 늦다.
+
+            여섯째 합에 그의 무릎이 먼저 꺾인다. 벡이 모래에 쓰러진다.
+          effects: ["pain 15", "then o6_thumbs"]
+      - id: oath
+        label: 우르가쉬를 향해, 그롬 전투어로 피의 맹세 결투를 청한다
+        minutes: 10
+        risk: 그롬과 맞선다 — 죽을 수 있다
+        check: {skill: 위압, D: 36, helps: [menace, command, crowd_voice], hinders: [coward, stutter]}
+        success:
+          text: |
+            너는 창 자루를 모래에 세우고 꼭대기를 향해 소리친다. 쉬라에게 새벽마다 입 모양으로 배운 말. 그롬의 말에는 부탁이 없다. 그래서 너는 요구한다.
+
+            "피의 맹세. 늙은 것 말고 — 그롬." (전투어)
+
+            삼만이 조용해진다. 처음으로. 우르가쉬의 하품이 멈춘다. 붉은 유리 눈이 모래를 비춘다. 그리고 그는 관중석 맨 앞, 흉터 전사들의 자리를 향해 턱을 한 번 든다.
+          effects: ["var o6_vek_crippled = true", "then o6_haag"]
+        failure:
+          text: |
+            너는 창 자루를 모래에 세우고 소리친다. 전투어가 목에서 엉킨다 — 쉬라가 가르친 입 모양이 함성 속에서 무너진다. 관중석 맨 앞의 그롬들이 웃는다. 인간이, 전투어로, 피의 맹세를.
+
+            그롬 경비 둘이 터널에서 나와 네 무릎 뒤를 걷어찬다. 모래가 입에 들어온다. "혀를 베라." 누군가 외친다. 꼭대기에서 우르가쉬가 손을 젓는다. "혀는 둬라. 싸움에 쓸 데는 없지만." 크롤의 깃발이 내려간다 — 도전 불성립.
+          effects: ["var o6_bout_done = true", "var o6_vek_crippled = true", "pain 25", "stress 10", "rel npc_urgash like -5", "rel npc_gorba trust -10", "temper 용기 3", "note 가을 피의 날 — 전투어로 피의 맹세를 청했다가 웃음거리가 됐다. 승수는 열하나 그대로. 벡은 살았다", "goto ba_gate_tunnel"]
+      # ── ◈ 기억 선택지: 지난 회차에 벡의 입술을 읽었다 ──
+      - id: mem_nine
+        needs_memory: fact:fact_o6_vek_wants_death
+        label: '벡의 입술이 움직이기 전에, 노예말로: "왼쪽은 안 찔러요. 아홉 합."'
+        minutes: 20
+        text: |
+          벡의 입술이 멈춘다. 찔러라, 왼쪽 — 아직 하지 않은 말이다. 그가 너를 본다. 처음 보는 사람을 보듯이.
+
+          그리고 웃는다. 이가 하나 빠진 웃음. "…아홉 합." 일곱 해 동안 새벽마다 너에게 시킨 순서 — 찌르고, 받고, 돌고, 낮추고. 너희 둘은 그 아홉 합을 모래 위에서 한 번도 틀리지 않고 춘다. 관중은 그것을 싸움인 줄 안다. 마지막 합에 벡이 제 발로 모래에 눕는다. 크롤의 깃발이 오른다.
+
+          쇠살대 너머의 고르바만 웃지 않는다. 그는 그 아홉 합을 안다 — 제 훈련장에서 날마다 보던 것이다.
+        effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_vek_crippled = true", "rel npc_o6_vek trust 12", "rel npc_o6_vek like 6", "rel npc_gorba trust -6", "memory npc_o6_vek 이상함 열하나가 내가 하려던 말을 먼저 했다", "memory npc_gorba 위험함 열하나와 벡이 모래 위에서 훈련장의 아홉 합을 췄다", "note 가을 피의 날 — 아홉 합. 벡은 살았다. 열둘", "goto ba_gate_tunnel"]
+
+  # ── 셋째 화면: 엄지 (벡이 모래에 쓰러졌다) ──
+  - id: o6_thumbs
+    origin: arena_fighter
+    text: |
+      벡이 모래에 누워 있다. 무릎을 끌어안지 않는다 — 그는 그런 사람이 아니다. 창도 놓지 않는다.
+
+      삼만이 발을 구른다. 붉은 사암이 울린다. 엄지들이 하나씩, 그러다 한꺼번에 아래로 꺾인다. 심판석의 크롤이 깃발을 반쯤 든 채 꼭대기를 본다. 우르가쉬는 서 있다. 엄지를 들지도 내리지도 않는다. 관중이 정한다.
+
+      벡이 너를 올려다본다. "…해라." 목소리가 함성 밑으로 기어 온다. "열둘 해라."
+    choices:
+      - id: strike
+        label: 찌른다
+        minutes: 10
+        text: |
+          너는 찌른다. 벡이 가르친 대로 — 갈비뼈 사이, 망설이지 않고. 그의 손이 네 창 자루를 한 번 쥐었다가 놓는다.
+
+          크롤의 목이 먼저 열린다. "열둘!" 관중이 받는다. 열둘, 열둘. 터널 끝에서 무르크가 갈고리를 들고 걸어 나온다. 아무도 부축하지 않는 그롬이, 시체만은 천천히 끈다.
+        effects: ["var o6_wins += 1", "var o6_bout_done = true", "agenda kill npc_o6_vek", "stress 12", "temper 자비 -4", "rel npc_gorba like 4", "rel npc_gm_eida trust -5", "note 가을 피의 날 — 엄지가 내려갔고, 벡을 찔렀다. 열둘", "goto ba_gate_tunnel"]
+      - id: plant
+        label: 창을 모래에 꽂는다 — 찌르지 않는다
+        minutes: 10
+        risk: 거부한 투사는 소모품이 된다
+        check: {skill: 위압, D: 24, helps: [menace, command, crowd_voice], hinders: [coward]}
+        success:
+          text: |
+            너는 창끝을 모래에 박는다. 그리고 손을 뗀다.
+
+            발 구르는 소리가 줄어든다. 줄어들다가 — 멎는다. 삼만이 숨을 참는다. 그롬은 싸우지 않는 자를 경멸한다. 그러나 두려움 없이 손을 떼는 자를 부를 말이 그들에게는 없다.
+
+            꼭대기에서 우르가쉬가 처음으로 몸을 앞으로 기울인다. 붉은 유리 눈이 너를 비춘다. "서라." 전투어. 너는 이미 서 있다. 그것이 대답이다.
+
+            크롤의 깃발이 천천히 오른다 — 네 승. 그가 연호의 순서를 바꾼다. 열둘보다 침묵이 먼저 온다.
+          effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_vek_crippled = true", "var o6_refused_blow = true", "temper 용기 5", "temper 자비 5", "rel npc_urgash like 15", "rel npc_urgash trust 5", "rel npc_gm_kroll like 8", "rel npc_o6_vek trust 8", "rel npc_gm_eida trust 6", "note 가을 피의 날 — 엄지가 내려갔을 때 창을 꽂았다. 우르가쉬가 몸을 기울였다. 열둘. 벡은 살았다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            너는 창끝을 모래에 박는다. 그리고 손을 뗀다.
+
+            발 구르는 소리가 멎지 않는다. 더 커진다. 관중석 맨 앞에서 그롬 하나가 고기 뼈를 던진다. 다음은 돌이다. 크롤의 깃발이 내려간다 — 도전 불성립. 거부한 투사.
+
+            쇠살대가 열리고 고르바가 들어온다. 매는 길지 않다. 대신 그는 이빨 꿰미에서 이빨 하나를 빼 네 발 앞에 던진다. "값이 없는 것." 피의 감독의 서류가 네 승수 옆에 줄을 그을 것이다 — 소모품.
+          effects: ["var o6_bout_done = true", "var o6_vek_crippled = true", "var o6_you_column = true", "pain 20", "temper 용기 3", "temper 자비 4", "rel npc_gorba like -15", "rel npc_gorba trust -15", "rel npc_gm_eida trust 6", "note 가을 피의 날 — 창을 꽂았다. 거부로 쳐졌다. 스무날 새벽, 소모품으로 북문의 수레에", "goto ba_gate_tunnel"]
+      - id: look_up
+        label: 관람석 꼭대기를 본다 — 군주의 엄지를 기다린다
+        minutes: 10
+        text: |
+          너는 창을 든 채 꼭대기를 본다. 삼만의 엄지가 아니라, 하나의 엄지를.
+
+          우르가쉬가 코로 숨을 한 번 크게 쉰다. 피 냄새를 읽는 그롬의 버릇. 늙은 것과 젊은 것. 그리고 엄지를 옆으로 눕힌다 — 묽은 피는 군주의 눈에 차지 않는다.
+
+          크롤의 깃발이 내려간다. 승부 없음. 묽은 피는 승수가 아니다. 관중이 야유한다. 벡은 살았다. 쇠살대 너머에서 고르바가 벡의 무릎을 본다. 값을 매기는 눈이 '스무날'이라고 말한다.
+        effects: ["var o6_bout_done = true", "var o6_vek_crippled = true", "stress 6", "temper 용기 -2", "rel npc_urgash like -3", "note 가을 피의 날 — 우르가쉬가 엄지를 눕혔다. 승부 없음, 열하나 그대로. 벡은 살았다 — 고르바가 그의 무릎을 보았다", "goto ba_gate_tunnel"]
+      # ── ◈ 쓰러졌다 일어선 자의 이름은 삼만이 부른다 (미아에게서 들었다) ──
+      - id: mem_rise
+        needs_memory: fact:fact_o6_chant_spares
+        label: 창 자루를 벡에게 내민다 — 삼만 앞에서 일어서라고
+        minutes: 15
+        text: |
+          너는 창끝이 아니라 창 자루를 벡에게 내민다. 그가 너를 본다. 그리고 안다 — 삼만 앞에서 쓰러졌다 일어서는 자에게 무슨 일이 생기는지, 쇠우리는 다 안다.
+
+          벡이 자루를 잡는다. 무릎이 비명을 지른다. 그래도 그는 선다. 한 발, 두 발.
+
+          발 구르는 소리가 바뀐다. 누군가 숫자를 외친다. 예순넷. 그 숫자가 위로 번진다 — 예순넷, 예순넷. 크롤이 연호의 순서를 바꾼다. 깃발이 오른다. 너의 승, 그리고 그의 이름.
+
+          쇠살대 너머에서 고르바가 이빨 꿰미를 쥔다. 삼만이 부른 이름을 북문의 수레에 올릴 수는 없다. 그는 그 셈을 안다.
+        effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_vek_crippled = true", "var o6_vek_kept = true", "var o6_vek_chanted = true", "rel npc_o6_vek trust 10", "rel npc_o6_vek like 8", "rel npc_gm_kroll like 6", "rel npc_gorba trust -5", "memory npc_o6_vek 용감함 열하나가 모래 위에서 나를 일으켜 세웠다", "note 가을 피의 날 — 벡이 일어섰고 삼만이 '예순넷'을 연호했다. 열둘. 수레는 그를 데려가지 못한다", "goto ba_gate_tunnel"]
+
+  # ── 셋째 화면: 찔러라, 왼쪽 (벡의 입술을 읽었다) ──
+  - id: o6_left_side
+    origin: arena_fighter
+    text: |
+      찔러라. 왼쪽.
+
+      그 말은 뼈 행렬을 뜻한다. 무릎 나간 투사가 가는 곳 — 가을 원정의 첫 열, 번호로 불리다 번호로 죽는 곳. 벡은 그리로 가느니 네 열두 번째가 되겠다고 한다. 가르친 아이의 승수로.
+
+      그의 창끝은 일부러 높다. 왼쪽 갈비뼈 아래가 열려 있다. 삼만이 발을 구른다.
+    choices:
+      - id: grant
+        label: 왼쪽을 찌른다 — 그가 고른 대로
+        minutes: 10
+        text: |
+          너는 왼쪽을 찌른다. 벡이 가르친 깊이로. 그가 네 창 자루를 붙잡고 한 걸음 다가온다 — 넘어지지 않으려고, 아니면 네 귀에 닿으려고.
+
+          "{name}."
+
+          두 번째다. 그리고 마지막이다. 크롤의 깃발이 오른다. 열둘. 관중은 노장이 서서 죽었다고 좋아한다. 그롬은 서서 죽는 것을 좋아한다.
+        effects: ["var o6_wins += 1", "var o6_bout_done = true", "agenda kill npc_o6_vek", "stress 10", "temper 충성 3", "temper 자비 -2", "rel npc_gm_og trust 5", "rel npc_urgash like 4", "note 가을 피의 날 — 벡이 고른 왼쪽. 그는 서서 죽었다. 열둘", "goto ba_gate_tunnel"]
+      - id: act_with
+        label: 왼쪽을 얕게 긋는다 — 그의 부탁을 연기로 바꾼다
+        minutes: 20
+        check: {skill: 기만, D: 22, helps: [actor, deceit, duelist], warn: ["var o6_vek_asked == true"]}
+        success:
+          text: |
+            너는 왼쪽을 찌른다 — 갈비뼈를 타고 미끄러지게, 살갗만 가르게. 피가 크게 쏟아진다. 벡의 눈이 한 번 커졌다가, 알아챈다.
+
+            그는 무르크가 신참들에게 가르치는 것보다 잘 넘어진다. 모래에 등을 대고, 창을 놓지 않고, 숨을 아낀다. 크롤의 깃발이 오른다. 열둘. 관중은 노장이 쓰러졌다고 좋아한다.
+
+            터널로 끌려 들어가며 벡이 이를 드러낸다. 웃음인지 다른 것인지. "…발부터 다시 가르쳐야겠군."
+          effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_vek_crippled = true", "rel npc_o6_vek trust 8", "rel npc_o6_vek like 6", "temper 자비 4", "note 가을 피의 날 — 왼쪽을 얕게 그었다. 벡은 쓰러지는 척했고, 살았다. 열둘", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            창끝이 너무 얕다. 피가 모자라다. 벡이 넘어지기 전에 관중석 맨 앞의 그롬들이 먼저 본다 — 흉터 전사들은 피의 양을 안다. 야유가 터진다.
+
+            벡이 모래에 무릎을 꿇는다. 이번엔 진짜로 — 무릎이 버티지 못한다. 그리고 엄지들이 꺾이기 시작한다.
+          effects: ["pain 5", "then o6_thumbs"]
+      - id: deny
+        label: 왼쪽을 비켜 무릎을 친다 — 그 부탁은 받지 않는다
+        minutes: 10
+        text: |
+          너는 왼쪽을 비켜 간다. 창 자루가 그의 오른쪽 무릎을 친다. 벡이 모래에 쓰러진다. 쓰러지면서 그가 너를 본다 — 일곱 해 동안 한 번도 보인 적 없는 얼굴로.
+        effects: ["rel npc_o6_vek like -3", "then o6_thumbs"]
+
+  # ── 셋째 화면: 피의 맹세 결투 (SCENARIOS — 두개골쪼개기 하그) ──
+  - id: o6_haag
+    origin: arena_fighter
+    text: |
+      관중석 맨 앞에서 그롬 하나가 모래로 뛰어내린다. 3미터 가까운 몸이 내려앉는 울림이 네 발바닥으로 온다. 두개골쪼개기 하그 — 관중이 그 이름을 먼저 외친다. 도살도 한 자루. 흉터가 없는 데가 없다.
+
+      벡이 절뚝이며 터널 쪽으로 물러난다. 지나가며 네 귀에 한마디. "오른쪽부터 온다. 그롬은 늘."
+
+      크롤이 깃발을 든다. 피의 맹세 — 한쪽이 서지 못할 때까지.
+    choices:
+      - id: fight_grom
+        label: 싸운다 — 오른쪽을 보며
+        minutes: 25
+        risk: 지면 죽는다
+        check: {skill: 싸움, D: 46, helps: [spear, duelist, reflexes, battle_sense, grom_rage, giant_bone], hinders: [lame, frail], warn: ["var o6_awake == true"]}
+        success:
+          text: |
+            도살도가 오른쪽에서 온다. 벡의 말대로. 너는 창 자루를 모래에 박고 그 반동으로 몸을 왼쪽으로 던진다. 칼이 네 어깨를 스치고 모래를 가른다. 그롬의 몸이 칼을 따라 반 박자 기운다 — 그 반 박자에, 네 창이 그의 무릎 뒤로 들어간다.
+
+            하그가 무릎을 꿇는다. 그롬이. 인간의 창 앞에서.
+
+            삼만이 침묵한다. 그다음엔 소리가 아니라 발이 온다 — 그롬의 발이 붉은 사암을 구른다. 꼭대기에서 우르가쉬가 웃는다. 이를 다 드러내고. "서라, 인간." 그가 처음으로 승수가 아닌 것으로 너를 부른다.
+          effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_grom_felled = true", "pain 15", "rel npc_urgash like 25", "rel npc_urgash trust 10", "rel npc_gorba like 10", "temper 용기 8", "skill_gain 싸움 2", "note 가을 피의 날 — 피의 맹세 결투. 그롬 하그를 무릎 꿇렸다. 열둘. 벡은 살았다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            도살도가 오른쪽에서 온다. 벡의 말대로 — 그런데 하나가 더 있다. 반 박자 뒤의 왼손 주먹. 그롬은 칼만으로 싸우지 않는다. 주먹이 네 턱을 부수고, 도살도가 그다음이다.
+
+            모래가 가까이 온다. 붉다. 일흔한 해 동안 쌓인 붉음 위에, 네 것이 한 겹.
+          effects: ["learn fact_o6_haag_left_fist", "die blade 피의 맹세 결투 — 그롬 하그의 도살도 아래 모래에 쓰러졌다"]
+      # ── ◈ 지난번엔 왼손 주먹이 먼저 끝을 냈다 ──
+      - id: mem_fist
+        needs_memory: fact:fact_o6_haag_left_fist
+        label: 오른쪽의 칼이 아니라 — 반 박자 뒤의 왼손을 본다
+        minutes: 25
+        risk: 지면 죽는다
+        check: {skill: 싸움, D: 34, helps: [spear, duelist, reflexes, battle_sense, grom_rage, giant_bone], hinders: [lame, frail], warn: ["var o6_awake == true"]}
+        success:
+          text: |
+            도살도가 오른쪽에서 온다. 너는 그것을 보지 않는다. 반 박자 뒤 — 왼손 주먹이 온다. 너는 그 주먹 밑으로 들어간다. 주먹이 네 머리카락을 스친다. 네 창이 그의 겨드랑이 밑을 지나 무릎 뒤로 들어간다.
+
+            하그가 무릎을 꿇는다. 그가 너를 본다 — 그 주먹을 어떻게 알았느냐는 얼굴로. 아무도 그 주먹을 피한 적이 없다.
+
+            꼭대기에서 우르가쉬가 웃는다. "서라, 인간." 그리고 코로 숨을 크게 쉰다. 무언가를 읽으려는 듯이.
+          effects: ["var o6_wins += 1", "var o6_bout_done = true", "var o6_grom_felled = true", "pain 10", "rel npc_urgash like 25", "rel npc_urgash trust 10", "rel npc_gorba like 10", "temper 용기 8", "memory npc_urgash 이상함 그 인간은 하그의 왼손을 처음부터 알고 있었다", "note 가을 피의 날 — 하그의 왼손 밑으로 들어갔다. 그롬이 무릎을 꿇었다. 열둘", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            왼손 주먹 밑으로 들어간다 — 그런데 이번엔 무릎이 먼저 온다. 그롬은 주먹만으로도 싸우지 않는다. 모래가 기울어지고, 도살도가 내려온다. 지난번과 다른 자리에서, 같은 끝이.
+          effects: ["die blade 피의 맹세 결투 — 왼손은 피했지만 그롬의 무릎과 도살도가 먼저 왔다"]
+      - id: kneel
+        label: 무릎을 꿇는다 — 맹세를 거둔다
+        minutes: 10
+        text: |
+          너는 창을 모래에 눕힌다. 그리고 무릎을 꿇는다. 하그가 침을 뱉는다. 관중이 웃는다 — 그롬의 웃음은 소리가 크다.
+
+          "등을 보였다." 꼭대기에서 우르가쉬의 목소리가 떨어진다. 더 할 말이 없다는 듯이 그는 다음 판 쪽으로 돌아선다. 크롤의 깃발이 내려간다. 쇠살대 너머에서 고르바가 이빨 꿰미를 쥔다. 값이 사라진 것을 셀 때의 손이다.
+        effects: ["var o6_bout_done = true", "var o6_you_column = true", "pain 5", "stress 15", "temper 용기 -6", "rel npc_urgash like -20", "rel npc_gorba trust -15", "note 가을 피의 날 — 피의 맹세를 거뒀다. 등을 보인 투사 — 스무날 새벽, 소모품으로 북문의 수레에", "goto ba_gate_tunnel"]
+
+  # ───────────────────────── 쇠우리의 밤 (SCENARIOS iron_tooth_night) — 벡의 생사에 따라 ─────────────────────────
+  - id: o6_cage_night_dead
+    origin: arena_fighter
+    trigger: {at_time: "312-09-01 21:30", at: ba_dorm7, late: "312-09-02 03:00", when: ["dead npc_o6_vek"]}
+    text: |
+      쇠우리 7번 숙소. 칼로 이어진 아궁이에 날들이 걸려 식는다. 창걸이 맨 끝에 벡의 창이 있다. 주인 없는 창은 다른 창들과 똑같아 보인다. 그래서 더 눈에 띈다.
+
+      미아가 아궁이 앞에서 칼날을 닦는다. 어린 탈의 짚더미는 아직 비어 있다 — 그 아이는 저녁마다 어딘가에 갔다가 문이 닫히기 직전에 돌아온다. 미아는 고개를 들지 않는다. "몇 승."
+
+      "열둘."
+
+      칼날이 멈춘다. "이긴 밤엔 쓰러진 자의 이름을 불러. 오그 아저씨가 그랬어 — 칼 형제는 베지 않는다고. 베어야 하면 이름을 먼저 부른다고." 그녀가 칼을 다시 닦는다. "불렀어?"
+
+      철창 저편에서 마라가 센다. 하나, 둘. 백에서 멈출 것이다.
+    choices:
+      - id: call_name
+        label: 벡의 이름을 부른다 — 숙소가 다 듣게
+        minutes: 10
+        text: |
+          "벡."
+
+          숙소가 조용해진다. 짚더미마다 등을 돌리고 누운 사람들이, 등을 돌린 채로 듣는다.
+
+          "예순넷." 미아가 받는다. 그다음엔 철창 저편에서 마라가 — 숫자를 세던 목소리가 숫자 하나를 바꾼다. "예순넷." 그리고 다시 센다. 하나, 둘.
+        effects: ["rel npc_gm_mia trust 8", "rel npc_gm_mia like 5", "rel npc_mara trust 5", "bond npc_gm_mia 4", "stress -8", "temper 충성 2", "note 7번 숙소 — 벡의 이름을 불렀다. 미아와 마라가 받았다"]
+      - id: cut
+        label: 가슴에 열두 번째 금을 긋는다 — 말없이
+        minutes: 10
+        text: |
+          너는 아궁이에서 날 하나를 들어 가슴에 댄다. 열하나 옆에, 열둘. 피가 배어 나온다. 이긴 수만큼 긋는다 — 그것이 쇠우리의 셈이다.
+
+          미아는 보지 않는다. 칼을 닦는 손만 빨라진다. 철창 저편에서 마라가 세던 숫자를 멈춘다. 네 가슴의 금을 센다. 그리고 다시 센다.
+        effects: ["pain 3", "stress 4", "rel npc_gm_mia like -4", "rel npc_mara like 6", "temper 자비 -2", "note 가슴에 열둘째 금. 미아는 보지 않았다"]
+      - id: rival
+        label: '미아에게: "다음 모래에선 너일 수도 있어."'
+        minutes: 5
+        text: |
+          미아가 칼날을 불빛에 비춘다. 이가 빠진 데가 없는지. "알아." 담담하다. "그래서 칼을 닦는 거야."
+
+          그녀가 칼을 아궁이에 건다. 네 창 바로 옆에. "아직?"
+
+          "…아직."
+        effects: ["rel npc_gm_mia trust 5", "rel npc_gm_mia like -2", "note 미아 — '알아. 그래서 칼을 닦는 거야.'"]
+      - id: spear_rack
+        label: 벡의 창을 내려 그의 짚더미에 눕힌다
+        minutes: 10
+        text: |
+          창은 생각보다 가볍다. 자루의 손잡이 홈이 네 것과 같다 — 같은 손이 깎았다. 너는 그것을 벡의 짚더미에 눕힌다. 날을 벽 쪽으로.
+
+          미아가 그걸 본다. 아무 말도 하지 않는다. 그 대신 문 닫히기 직전 어린 탈이 숨을 몰아쉬며 돌아왔을 때, 그녀는 아이를 벡의 짚더미 곁에 재운다. 빈자리가 오래 비어 있지 않게.
+        effects: ["rel npc_gm_mia like 6", "rel npc_gm_ytal like 4", "stress -4", "note 벡의 창을 그의 짚더미에 눕혔다 — 날을 벽 쪽으로"]
+      - id: mem_tal
+        needs_memory: fact:fact_gm_tal_alive_chained
+        label: '미아에게 낮게: "네 동생 이름의 주인 — 황무지로 걸어가지 않았어."'
+        minutes: 5
+        text: |
+          칼날이 멈춘다. 오래.
+
+          "…그 말은 탈이 없는 데서 해." 미아는 너를 보지 않는다. 손바닥의 흉터를 엄지로 누른다 — 칼날 조각을 쥐다 생긴 흉터. "이긴 밤에 그런 말 하는 사람, 처음 봐."
+        effects: ["var o6_mia_told = true", "rel npc_gm_mia trust 6", "memory npc_gm_mia 이상함 열하나가 백승의 탈이 황무지로 가지 않았다고 했다"]
+
+  - id: o6_cage_night_alive
+    origin: arena_fighter
+    trigger: {at_time: "312-09-01 21:30", at: ba_dorm7, late: "312-09-02 03:00", when: ["alive npc_o6_vek"]}
+    text: |
+      쇠우리 7번 숙소. 칼로 이어진 아궁이에 날들이 걸려 식는다. 벡은 창걸이 아래 짚더미에 누워 있다. 오른쪽 무릎에 노라베의 소금물 천이 감겨 있다. 소금 냄새, 피 냄새.
+
+      그가 천장을 본 채 말한다. "왜 안 찔렀냐." 대답을 기다리지 않는다. "고르바가 무릎을 봤다. 스무날이면 북문에 수레가 온다. 뼈 행렬." 이가 하나 빠진 웃음. "번호로 죽는 거다, 이제."
+
+      아궁이 앞에서 미아가 칼날을 닦는다. 손이 멈춰 있다. 어린 탈의 짚더미는 아직 비어 있다. 철창 저편에서 마라가 센다.
+    effects: ["learn fact_o6_gorba_column"]
+    choices:
+      - id: promise
+        label: '"스무날 전에 서게 해 줄게요."'
+        minutes: 5
+        text: |
+          벡이 고개를 돌려 너를 본다. 오래. "무릎은 약속을 안 듣는다."
+
+          그래도 그는 손을 뻗어 네 손목을 한 번 쥔다. 창 쥐는 손목. 일곱 해 전 처음 잡아 본 그 손목이다. "…발부터."
+        effects: ["var o6_vek_promise = true", "rel npc_o6_vek trust 6", "rel npc_o6_vek like 4", "bond npc_o6_vek 6", "note 벡에게 — 스무날 전에 서게 하겠다고 했다"]
+      - id: norabe
+        label: 치료소의 노라베에게 간다 — 벡의 무릎을 묻는다
+        minutes: 30
+        text: |
+          치료소는 소금물과 끓인 천 냄새다. 노라베 — 정원에서 온, 손가락이 가늘고 긴 노파 — 가 손을 소금물에 담그고 나서야 너를 본다. "상처가 있어?"
+
+          "벡의 무릎이요."
+
+          그녀가 고개를 젓는다. "뼈는 붙지 않아." 그리고 약초 선반 쪽을 한 번 본다. "하지만 서 있는 법은 있어. 스무날 아침이라면 — 소금물 붕대로 조이면 한 시간은 서. 그 뒤엔 사흘을 못 걸어." 그녀가 붕대 한 감을 네 손에 쥐여 준다. "한 시간이면 돼? 그롬은 한 시간 보고 값을 매기잖아."
+        effects: ["var o6_norabe_wrap = true", "item o6_salt_wrap", "rel npc_gm_norabe trust 6", "rel npc_gm_norabe like 4", "note 노라베 — 스무날 아침, 소금물 붕대로 조이면 벡은 한 시간은 선다", "goto ba_infirmary"]
+      - id: ask_name
+        label: '"오늘 모래에서 — 내 이름을 불렀죠."'
+        minutes: 5
+        text: |
+          벡이 천장을 본다. "한 번은 불러야 했다." 숨을 고른다. "네가 그 이름으로 서는 걸 봐야 했으니까."
+
+          그가 눈을 감는다. "네 어미가 짐칸에서 마지막으로 한 말이었다. 나는 그걸 일곱 해 들고 있었다. 이제 너한테 돌려준 거다."
+        effects: ["rel npc_o6_vek like 6", "bond npc_o6_vek 8", "stress -6", "note 벡 — '이제 너한테 돌려준 거다.'"]
+      - id: ask_mia
+        label: 미아에게 — 스무날 수레를 아느냐고 묻는다
+        minutes: 5
+        text: |
+          미아가 칼날에서 눈을 떼지 않는다. "알아. 무릎 나간 사람, 팔 잘린 사람, 거부한 사람." 칼날을 뒤집는다. "하르트 아저씨는 팔이 잘리고도 안 갔어. 외팔로 모래에 서서, 쓰러졌다 일어났거든. 삼만이 그 이름을 불렀어." 그녀가 처음으로 너를 본다. "삼만이 부른 이름은 수레에 못 올려. 고르바도."
+        effects: ["learn fact_o6_chant_spares", "rel npc_gm_mia trust 4", "note 미아 — 쓰러졌다 일어선 투사의 이름을 삼만이 부르면, 고르바도 수레에 못 올린다"]
+      - id: lie_down
+        label: 짚더미에 눕는다 — 벡의 숨소리를 듣는다
+        minutes: 30
+        text: |
+          너는 벡 곁 짚더미에 눕는다. 그의 숨이 가끔 끊긴다 — 무릎이 움직일 때마다. 아무도 그것을 말하지 않는다.
+
+          문이 닫히기 직전, 어린 탈이 숨을 몰아쉬며 돌아온다. 아이는 벡의 무릎에 감긴 천을 한참 본다. 그리고 목에 건 나무 말을 그의 손에 쥐여 주고 눕는다.
+        effects: ["fatigue -10", "stress -3", "rel npc_gm_ytal like 3", "rel npc_o6_vek like 2"]
+
+  # ───────────────────────── 고르바의 이빨 셈 (SCENARIOS gorz_feeding) — 둘째 날 새벽 훈련장 ─────────────────────────
+  - id: o6_gorba_teeth
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-02 05:00", to: "312-09-04 09:00"}, at: ba_training, with: npc_gorba}
+    text: |
+      다섯 시 북. 훈련장의 모래는 원형장 것보다 거칠다. 고르바가 무릎 보조대를 철컥이며 줄을 따라 걷는다. 그는 투사를 이름으로 세지 않는다. 팔뚝, 손목, 무릎 — 눌러 보고, 값을 센다.
+
+      그의 손이 네 팔뚝을 쥔다. "…일곱. 어제는 여섯 반이었다." 손목. 무릎. 손가락 마디의 매듭끈 하나가 풀린다. "백까지 가면 그롬이 혈명 없는 혈명을 준다. 그 값은 이빨로 못 센다." 그가 웃는다. 처음 보는 웃음이 아니다 — 마라에게도, 하르트에게도 하는 웃음이다.
+
+      훈련장 가장자리에서 쉬라 피웃음 — 인간에게 전투어를 몰래 가르치는 그롬 여전사 — 가 입 모양을 손으로 만져 보이며 신참 셋을 가르친다. 그녀는 고르바 쪽을 보지 않는다.
+    choices:
+      - id: ask_hundred
+        label: '"혈명 없는 혈명이 뭡니까."'
+        minutes: 5
+        text: |
+          고르바의 이빨 꿰미가 멎는다. 아주 잠깐. "형제가 된다." 흥정할 때보다 짧게. "군주와 같은 붉은 잔을 받는다. 인간이." 그가 네 팔뚝을 놓는다. "그날 그롬 삼만이 그 인간 앞에서 고개를 숙인다. 나도."
+
+          그가 다음 투사에게 걸어간다. 꿰미가 다시 짤랑인다. 아까보다 빠르게.
+        effects: ["learn fact_o6_bloodless_blood", "note 고르바 — 백 승이면 군주와 같은 붉은 잔. 그 말을 할 때 이빨 꿰미가 멎었다"]
+      - id: buy_vek
+        when: ["alive npc_o6_vek", "var o6_vek_crippled == true", "var o6_vek_kept != true"]
+        label: '"벡의 값은 얼마입니까."'
+        minutes: 10
+        check: {skill: 화술, D: 24, helps: [haggle, merchant, tongue], hinders: [stutter]}
+        success:
+          text: |
+            고르바가 처음으로 너를 값이 아니라 다른 것으로 본다. 흥정하는 자로. "쓸모없는 것에도 값은 있지." 그가 꿰미를 짤랑인다. "이빨 여섯 — 일곱 해 전에 내가 너를 사 온 값이다. 크릭 셈으로 동화 여덟 닢. 스무날 새벽 수레가 오기 전에 내 손바닥에."
+
+            그가 웃는다. "인간이 동화를? 어디서 구할지는 묻지 않으마. 묻지 않는 것도 값이다."
+          effects: ["var o6_vek_price = true", "rel npc_gorba trust 4", "note 고르바 — 벡의 값은 동화 여덟 닢(이빨 여섯 — 너를 사 온 값). 스무날 새벽 수레가 오기 전에"]
+        failure:
+          text: |
+            "값?" 고르바가 웃는다. 이빨이 보이게. "무릎 나간 늙은 것의 값은 수레가 매긴다. 너는 네 값이나 올려라." 그가 네 무릎을 손가락으로 툭 친다. 아직 쓸 만한 무릎을.
+          effects: ["rel npc_gorba like -2"]
+      - id: offer_arm
+        label: 팔을 더 내민다 — 값을 다시 매겨 보라고
+        minutes: 5
+        text: |
+          고르바가 네 팔뚝을 다시 쥔다. 이번엔 오래. "일곱 반으로 쳐 주마." 그가 이빨 하나를 네 손바닥에 올려놓는다. "스무날 정식 대진에 세운다. 오른 값은 모래에서 확인해야지."
+
+          쉬라가 그쪽을 한 번 본다. 그리고 다시 신참의 입 모양을 고친다.
+        effects: ["rel npc_gorba like 5", "rel npc_gorba trust 3", "stress 3", "note 고르바 — 일곱 반. 스무날 정식 대진에 세운다"]
+      - id: shira_word
+        label: 쉬라에게 간다 — 오늘의 전투어 한 마디를 배운다
+        minutes: 30
+        text: |
+          쉬라 피웃음이 입가의 상처를 벌리며 웃는다. "모래에서 살아 돌아온 입이네. 한 마디만." 그녀가 네 턱을 손가락으로 잡고 입 모양을 만든다. "'아직.' 전투어에는 없는 말이야. 노예말에만 있어. 그런데 내 애송이들이 그걸 알아."
+
+          그녀가 손을 뗀다. "한 번 더." 너는 말한다. 노예말과 전투어 사이 어딘가의 소리로.
+        effects: ["rel npc_gm_shira like 6", "rel npc_gm_shira trust 4", "skill_gain 위압 1", "note 쉬라 — 그롬 애송이들은 노예말 '아직'을 안다"]
+      # ── ◈ 지난 회차의 스무날을 안다 ──
+      - id: mem_column
+        needs_memory: fact:fact_o6_gorba_column
+        when: ["alive npc_o6_vek", "var o6_vek_crippled == true", "var o6_vek_kept != true"]
+        label: '"스무날 수레에 벡을 올리면 — 신참 서른의 발은 누가 셉니까."'
+        minutes: 5
+        check: {skill: 화술, D: 20, helps: [haggle, merchant, tongue], warn: ["pknows fact_o6_gorba_column"]}
+        success:
+          text: |
+            고르바의 손가락이 매듭끈 위에서 멈춘다. 스무날 수레 — 아직 아무도 그 말을 꺼내지 않았다. 그가 너를 본다. 값을 매기는 눈이 아니다.
+
+            "…신참의 발." 그가 혀 위에서 굴린다. 그롬은 셈이 맞으면 피를 흘리지 않는다. "이빨 하나 값이면 창걸이에 걸어 두지. 늙은 것이 발을 세는 동안은." 그리고 덧붙인다. "누가 너한테 스무날을 말했지?" 대답을 기다리지 않는다.
+          effects: ["var o6_vek_kept = true", "rel npc_gorba trust -4", "memory npc_gorba 위험함 열하나가 스무날 수레를 미리 안다", "note 고르바 — 벡을 창걸이에 걸어 두겠다. 신참들의 발을 세는 동안은"]
+        failure:
+          text: |
+            "스무날?" 고르바가 웃는다. "누가 너한테 그런 날짜를 줬지?" 그는 대답을 듣지 않는다. 다음 투사의 팔뚝을 쥔다. 그러나 그의 눈이 한 번 더 너에게 돌아온다.
+          effects: ["memory npc_gorba 위험함 열하나가 스무날 수레를 미리 안다", "rel npc_gorba trust -6"]
+
+  # ───────────────────────── 백승의 탈 (SCENARIOS tal_legend) — 안식일 저녁의 7번 숙소 ─────────────────────────
+  - id: o6_tal_legend
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-03 17:00", to: "312-09-12 21:00"}, at: ba_dorm7, with: npc_gm_og, when: ["with npc_gm_ytal"]}
+    text: |
+      안식일 저녁의 7번 숙소. 경기가 없는 날이라 아궁이 앞이 붐빈다. 오그 일흔여덟 — 투사 조합장, 말끝마다 이름을 붙이는 사내 — 가 미아와 어린 탈에게 칼 닦는 법을 가르친다. 칼날을 한 번 닦을 때마다 이름을 하나씩 부른다. 카렐. 브로. 페더.
+
+      어린 탈이 묻는다. "탈은요? 제 이름의 탈."
+
+      오그의 손이 멈춘다. 아주 잠깐. "백승의 탈은 백 번째 상대를 쓰러뜨리고, 그롬에게 혈명 없는 혈명을 받고, 황무지로 걸어갔다." 쇠우리의 누구나 아는 이야기다. 누구나 같은 순서로 한다. "그리고 군나르. 아흔아홉을 이기고, 백 번째 경기 전날 밤 북쪽으로 갔다. 대진표 돌판에 아직 '미룸'이 있다."
+
+      그가 칼을 닦는다. 이번에는 이름을 부르지 않는다.
+    choices:
+      - id: ask_og
+        label: '"백 번째 뒤에 — 탈이 받은 게 뭡니까."'
+        minutes: 10
+        check: {skill: 통찰, D: 24, helps: [liar_nose, people_memory], hinders: [one_eye]}
+        success:
+          text: |
+            "혈명 없는 혈명." 오그가 칼을 닦으며 말한다. 그런데 칼날은 이미 깨끗하다. 그는 같은 자리를 세 번 닦는다.
+
+            너는 그것을 본다. 이름을 부를 때는 한 번 닦던 손이, '백'이라는 말 앞에서는 세 번 닦는다. 오그는 안다 — 백 번째 뒤에 무엇이 오는지. 그리고 말하지 않기로 정했다.
+
+            "칼 닦을 때는 이름만 묻는 거다." 그가 너를 승수로 부른다. 말을 닫는 소리다.
+          effects: ["learn fact_o6_og_flinch", "rel npc_gm_og trust -2", "note 오그는 '백' 앞에서 칼을 세 번 닦는다 — 무언가를 안다"]
+        failure:
+          text: |
+            "이름을 물어라." 오그가 부드럽게 말한다. 그리고 다음 칼을 든다. "백은 숫자다. 숫자는 그롬이 센다."
+          effects: ["rel npc_gm_og like -1"]
+      - id: stone
+        label: 대진표 돌판의 '미룸'을 보러 간다
+        minutes: 30
+        text: |
+          피의 감독 사무소 곁, 대진표 돌판. 해가 진 뒤라 횃불 하나뿐이다. 모서리에 그 줄이 있다 — 군나르, 아흔아홉, 미룸. 서른여덟 해 동안 아무도 지우지 않았다.
+
+          그 옆의 빈칸에 새 자국이 있다. 손톱으로 긁은 자국. 여러 번, 같은 자리를. 무언가를 새기려다 만 손이다 — 아니면 새길 이름을 찾는 손.
+
+          돌판 저편 어둠 속에서 쇠 보조대 소리가 멀어진다. 철컥, 철컥.
+        effects: ["learn fact_o6_gorba_scratch", "goto ba_bout_stone", "note 대진표 돌판 — '군나르 — 99승 — 미룸' 옆 빈칸에 손톱자국. 어둠 속에 쇠 보조대 소리"]
+      - id: young_tal
+        label: 어린 탈에게 — 네 이름은 누가 지어 줬냐고 묻는다
+        minutes: 10
+        text: |
+          아이가 손으로 눈을 가린다. 그 사이로 너를 본다. "누나가요. 증조할아버지 이름이래요." 그리고 목소리를 낮춘다. 이름을 말할 때만 낮아지는 목소리. "…탈이에요."
+
+          미아가 동생의 어깨를 만진다. 아이는 목에 건 나무 말을 쥔다 — 무르크가 준 장난감. 그리고 아무도 듣지 못하게 네 소매를 잡아당긴다. "벽에다 이름을 부르면요." 거기서 멈춘다. "아니에요. 누나가 모르는 거예요."
+        effects: ["rel npc_gm_ytal like 8", "rel npc_gm_ytal trust 4", "var o6_ytal_hint = true", "note 어린 탈 — '벽에다 이름을 부르면요.' 거기서 멈췄다. 저녁마다 문 닫기 직전에 돌아온다"]
+      - id: wipe_names
+        label: 칼 닦는 법을 따라 한다 — 이름을 부르며
+        minutes: 30
+        text: |
+          너는 창날을 내려 아궁이 앞에 앉는다. 한 번 닦고, 이름 하나. 네가 쓰러뜨린 사람들 가운데 이름을 아는 것은 일곱뿐이다. 나머지는 숫자로 부른다.
+
+          오그가 그걸 듣는다. "이름을 외우는 손은 칼을 오래 쥔다." 그가 네 날을 받아 한 번 닦아 준다. 아무 이름도 부르지 않고. 그리고 돌려준다. "7번 숙소에 자리 하나 있다 — 너한테는 이미 있지."
+        effects: ["rel npc_gm_og trust 6", "rel npc_gm_og like 4", "rel npc_gm_mia like 3", "stress -5", "note 오그 — '이름을 외우는 손은 칼을 오래 쥔다.'"]
+      # ── ◈ 지난 회차에 탈의 일을 알았다 ──
+      - id: mem_chained
+        needs_memory: fact:fact_gm_tal_alive_chained
+        label: '"탈은 걸어가지 않았어요." — 배수로 쪽 벽을 본다'
+        minutes: 10
+        text: |
+          오그의 칼이 멈춘다. 미아의 칼도. 어린 탈이 두 손으로 눈을 가린다 — 이번엔 손가락 사이를 벌리지 않는다.
+
+          오그가 너를 오래 본다. 그리고 칼을 닦는다. 한 번. 이름을 부르지 않고. "그 말은 1번 숙소 바닥에서 해라." 낮게. "안식일 밤. 쉰 승이 안 되는 자는 문간에 서지만 — 문간에서도 들린다."
+        effects: ["var o6_og_invites = true", "rel npc_gm_og trust 10", "memory npc_gm_og 이상함 열하나가 탈의 일을 안다 — 누구에게서 들었나", "note 오그 — 안식일 밤 1번 숙소 바닥으로 오라"]
+
+  # ───────────────────────── 틱틱의 배당 (SCENARIOS chitik_odds) — 취사장 문간 ─────────────────────────
+  - id: o6_tick_odds
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-08 18:00", to: "312-09-09 20:00"}, at: ba_cookhouse, with: npc_gm_tick}
+    stage:
+      - {npc: npc_gm_tick, at: ba_cookhouse, from: "312-09-08 18:00", to: "312-09-08 20:00", doing: 승수 쪽지 묶음을 들고 취사장 문간에 쪼그려 앉아 있다 — 스무날 정식 대진의 쪽지}
+      - {npc: npc_gm_tick, at: ba_cookhouse, from: "312-09-09 18:00", to: "312-09-09 20:00", doing: 승수 쪽지 묶음을 들고 취사장 문간에 쪼그려 앉아 있다 — 스무날 정식 대진의 쪽지}
+    text: |
+      취사장. 솥 열둘에서 김이 오른다. 에이다 — 예순세 승에서 칼을 놓은 취사 일손 — 가 국자를 두 번 두드리고 승수를 묻는다.
+
+      문간에 낯선 것이 쪼그려 앉아 있다. 귀가 긴 크릭, 손가락마다 매듭끈 자국. 내기장의 장부지기 틱틱이다. 쇠우리 안까지 들어오는 크릭은 드물다. 그가 너를 보자 혀를 한 번 찬다.
+
+      "7번 숙소의 창이시죠. 스무날 정식 대진 — 상대는 그롬 애송이." 그가 매듭 하나를 풀어 보인다. "비율이 벌써 움직였습니다요. 셋째 합에 무릎을 꿇으시면 이빨 열 개. 동화로는 열두 닢. 크릭이 대신 셉니다요."
+
+      그가 목소리를 낮춘다. "이빨 삼백이면 고르바 나리가 목고리를 풀어 줍니다요. 투사 해방금. 다들 모으시죠."
+
+      솥 앞에서 에이다의 국자가 멈춰 있다.
+    choices:
+      - id: take_knot
+        label: 매듭을 받는다 — 셋째 합에 무릎을 꿇기로
+        minutes: 5
+        text: |
+          틱틱이 매듭 하나를 네 손바닥에 쥐여 준다. 동화 여섯 닢이 매듭 속에서 짤그랑거린다. "반은 지금, 반은 무릎을 꿇은 뒤에요. 값은 한 번 오릅니다요 — 내리지는 않습죠."
+
+          그가 사라진 뒤, 에이다가 네 그릇에 국을 붓는다. 평소보다 적게. 국자를 두 번 두드리지 않는다.
+        effects: ["coin 6", "var o6_tick_deal = true", "learn fact_o6_tick_twentieth", "rel npc_gm_tick like 6", "rel npc_gm_tick trust 6", "rel npc_gm_eida trust -6", "temper 정직 -3", "note 틱틱의 매듭 — 스무날 셋째 합에 무릎. 동화 여섯은 받았고, 여섯은 그 뒤에"]
+      - id: refuse
+        label: 고개를 젓는다
+        minutes: 2
+        text: |
+          "값은 한 번 오릅니다요." 틱틱이 매듭을 다시 묶는다. 서두르지 않는다. "스무날 아침까지는 이 값입죠." 그는 문간에서 일어나 다음 숙소 쪽으로 간다.
+
+          에이다가 국자를 두 번 두드린다. 네 그릇에 고기가 한 덩이 더 들어간다.
+        effects: ["rel npc_gm_tick like -2", "rel npc_gm_eida trust 4", "rel npc_gm_eida like 3", "temper 정직 2"]
+      - id: ransom
+        label: '"해방금 — 그롬 셈에 그런 값이 있어?"'
+        minutes: 5
+        check: {skill: 통찰, D: 20, helps: [liar_nose, merchant, haggle], hinders: [one_eye]}
+        success:
+          text: |
+            "있고말고요." 틱틱이 말한다. 그런데 그의 긴 귀 끝이 한 번 접힌다 — 크릭이 거짓말을 할 때 귀가 하는 일. 그리고 그는 '해방금'이라는 말을 다시 하지 않는다.
+
+            그롬은 화폐를 경멸한다. 목고리를 이빨로 사고판 투사를 너는 본 적이 없다. 백 승 말고는.
+          effects: ["learn fact_o6_tick_manumission", "rel npc_gm_tick trust -3", "note 틱틱의 '투사 해방금'은 거짓 — 귀 끝이 접혔다"]
+        failure:
+          text: |
+            "있고말고요. 이빨 삼백." 틱틱이 손가락 세 개를 펴 보인다. 매듭끈 자국이 굵다. "모으시는 분이 많습죠. 쇠우리에서 제일 오래 모은 분은 이백쯤 됩니다요."
+
+            삼백. 너는 그 숫자를 머릿속에 넣는다. 백 승보다 가까워 보이는 숫자.
+          effects: ["var o6_believes_ransom = true", "note 투사 해방금 — 이빨 삼백이면 목고리가 풀린다 (틱틱의 말)"]
+      - id: ledger
+        label: '"마라의 경기에서도 비율이 먼저 움직였나?"'
+        minutes: 5
+        check: {skill: 화술, D: 26, helps: [tongue, liar_nose, haggle], hinders: [stutter]}
+        success:
+          text: |
+            "마라 님의 경기요? 열한…" 틱틱의 혀가 멈춘다. 그는 혀를 차지도 않는다. 매듭끈을 쥔 손가락이 하얘진다.
+
+            "내기는 운입니다요." 그가 일어선다. 너무 빨리. "운." 문간에서 한 번 돌아본다 — 네 얼굴을 매듭처럼 묶어 두려는 눈으로.
+          effects: ["learn fact_o6_tick_eleven", "rel npc_gm_tick trust -8", "memory npc_gm_tick 위험함 7번 숙소의 창이 마라의 경기를 물었다"]
+        failure:
+          text: |
+            "마라 님이요? 여든일곱에 한 모금, 백에는 두 모금입죠." 틱틱이 웃는다. 이가 작다. "비율은 언제나 움직입니다요. 바람처럼."
+          effects: ["rel npc_gm_tick like -2"]
+      # ── ◈ 지난 회차에 장부 벽을 보았다 ──
+      - id: mem_ledger
+        needs_memory: fact:fact_p2gm_tick_odds_ledger
+        label: '틱틱의 귀에만: "장부 벽에 따로 묶인 열한 줄."'
+        minutes: 5
+        text: |
+          틱틱의 귀가 둘 다 접힌다. 그는 한참 아무 말도 하지 않는다. 그다음 매듭 하나를 풀어 네 손바닥에 동화를 쏟는다 — 세지도 않고.
+
+          "그 줄은 장부 밖입니다요." 목소리가 작다. "장부 밖은 비율이 없습죠. 입도 없고요." 그가 네 손을 쥐어 동화를 감싸게 한다. 그리고 문간을 빠져나간다. 뛰지는 않는다.
+        effects: ["coin 12", "var o6_tick_scared = true", "rel npc_gm_tick trust -10", "memory npc_gm_tick 위험함 7번 숙소의 창이 장부 벽의 열한 줄을 안다", "note 틱틱이 동화 열두 닢으로 입을 막으려 했다 — 열한 줄"]
+
+  # ───────────────────────── 배수로의 이름 — 어린 탈이 벽에 대고 부른다 (문 닫기 전, 20~22시) ─────────────────────────
+  - id: o6_drain_name
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-02 20:00", to: "313-05-29 22:00"}, at: ba_drain, with: npc_gm_ytal}
+    text: |
+      배수로. 투사의 시체가 지나가는 길이라 돌이 늘 젖어 있다. 횃불은 입구에만 있다. 그 너머는 물소리와 어둠이다.
+
+      어린 탈이 벽 한 곳에 손바닥을 대고 서 있다. 입 속으로 무언가를 한 번 굴린다. 그리고 벽에 대고 부른다. "탈."
+
+      물소리. 그리고 — 벽 너머에서, 아주 늦게, 쇠사슬이 한 번 끌리는 소리. 늙은 목소리. "…탈?"
+
+      아이가 숨을 멈춘다. 그때 아이가 너를 본다.
+    choices:
+      - id: listen
+        label: 아이 곁에 쪼그려 앉는다 — 같이 듣는다
+        minutes: 30
+        text: |
+          아이는 도망치지 않는다. 나무 말을 쥐고 네 곁에 붙어 앉는다. 둘이서 벽에 귀를 댄다.
+
+          쇠사슬 마디가 하나씩 훑이는 소리. 숨을 고르는 소리. 그리고 노인이 센다 — 하나, 둘, 셋. 아흔아홉에서 멈춘다. 백은 세지 않는다.
+
+          "누나한테는 말하지 마요." 아이가 속삭인다. "누나가 무서워해요."
+        effects: ["learn fact_p2gm_ytal_hears_name", "var o6_drain_heard = true", "var o6_ytal_trusts = true", "rel npc_gm_ytal trust 10", "rel npc_gm_ytal like 6", "note 배수로의 벽 — 어린 탈이 이름을 부르면 벽 너머 노인이 '탈?' 하고 대답한다. 노인은 아흔아홉까지만 센다"]
+      - id: think
+        label: 벽의 방향을 가늠한다 — 이 벽 너머에 무엇이 있나
+        minutes: 30
+        check: {skill: 통찰, D: 30, helps: [spatial, liar_nose, people_memory], hinders: [one_eye]}
+        success:
+          text: |
+            배수로는 원형장 밑을 북쪽으로 간다. 북쪽에 맞붙은 것은 하나뿐이다 — 뼈의 전당. 매일 밤 쇠사슬과 대련 소리가 난다는 지하.
+
+            그리고 그 노인은 '탈'이라는 이름에 대답했다. 백승의 탈은 황무지로 걸어갔다 — 쇠우리의 누구나 같은 순서로 하는 이야기. 그런데 지금, 벽 너머에서 누군가 아흔아홉까지 세다가 멈춘다.
+          effects: ["learn fact_p2gm_ytal_hears_name", "learn fact_gm_tal_alive_chained", "var o6_drain_heard = true", "note 배수로의 벽 너머는 뼈의 전당 지하다 — 백승의 탈은 걸어가지 않았다"]
+        failure:
+          text: |
+            배수로는 굽고 또 굽는다. 어둠 속에서 방향이 흐려진다. 벽 너머의 소리는 다시 오지 않는다. 아이가 네 소매를 당긴다. 문이 닫힐 시각이다.
+          effects: ["learn fact_p2gm_ytal_hears_name", "var o6_drain_heard = true"]
+      - id: take_back
+        label: 아이를 데리고 쇠우리로 돌아간다 — 문이 닫히기 전에
+        minutes: 20
+        text: |
+          아이가 망설인다. 벽을 한 번 더 본다. 그리고 네 손을 잡는다. 젖은 돌 위를 둘이서 걷는다. 쇠우리 문이 닫히기 직전, 7번 숙소 철창 안으로 미끄러져 들어간다.
+
+          미아가 아궁이 앞에서 고개를 든다. 동생과 너를 번갈아 본다. 아무것도 묻지 않는다.
+        effects: ["goto ba_dorm7", "rel npc_gm_ytal trust 4", "rel npc_gm_mia trust 4", "note 어린 탈을 데리고 문 닫기 전에 돌아왔다"]
+      - id: call
+        label: 벽에 대고 직접 부른다 — "탈."
+        minutes: 15
+        risk: 벽 너머에서 누가 듣는지 모른다
+        text: |
+          네 목소리는 아이의 것보다 낮다. 벽 너머가 조용해진다. 쇠사슬 소리도, 숨소리도.
+
+          한참 뒤에, 아까와 다른 목소리. "…발소리가 무겁군. 아이가 아니야." 그리고 다시 침묵. 그다음엔 벽 저편 더 먼 곳에서 무언가 무거운 것이 계단을 내려오는 소리 — 일흔 걸음.
+
+          아이가 네 손을 잡아끈다. 둘은 물소리 쪽으로 뛴다.
+        effects: ["learn fact_p2gm_ytal_hears_name", "var o6_drain_heard = true", "fear 1", "note 벽 너머의 노인 — '발소리가 무겁군. 아이가 아니야.' 그리고 계단을 내려오는 무거운 발소리, 일흔 걸음"]
+
+  # ───────────────────────── 스무날 새벽, 북문의 수레 — 소모품 강등 (낙엽월 20일 가을 원정 징발) ─────────────────────────
+  - id: o6_column_you
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-20 05:00", to: "312-09-20 10:00"}, at: "@blood_arena", when: ["var o6_you_column == true", "not var player_fugitive == true"]}
+    severity: 4
+    text: |
+      다섯 시 북이 울리지 않는다. 대신 북문 쪽에서 수레 바퀴 소리.
+
+      쇠우리 문 앞에 고르바가 서 있다. 그 곁에서 피의 감독의 서기가 서류를 든다. 이름이 아니라 승수를 읽는다 — 소모품이 될 것들의 승수. 무릎 나간 것, 팔 잘린 것, 경기를 거부한 것.
+
+      네 승수가 불린다. 고르바는 너를 보지 않는다. 값이 없는 것은 보지 않는다. 수레 곁에서 그롬 호송꾼 둘이 쇠사슬을 풀어 늘어뜨린다.
+    effects: ["goto ba_gates"]
+    choices:
+      - id: board
+        label: 수레에 오른다
+        minutes: 30
+        text: |
+          쇠사슬이 목고리에 걸린다. 수레가 북문을 지난다. 원형장의 붉은 사암이 등 뒤에서 작아진다. 스무 시간 길 끝에 뼈 행렬 막사가 있다 — 그롬이 쓰다 버린 갑옷 조각과 녹슨 칼, 그리고 번호.
+        effects: ["captured 소모품 강등 — 북문의 수레에 올라 뼈 행렬로 갔다. 가을 원정의 첫 열"]
+      - id: blood_price
+        label: '"모래에 다시 세워라. 값은 피로 다시 매겨라." — 그롬 전투어로'
+        minutes: 10
+        check: {skill: 위압, D: 28, helps: [menace, command, crowd_voice], hinders: [coward, stutter]}
+        success:
+          text: |
+            고르바가 처음으로 너를 본다. 전투어 — 그롬의 말에는 부탁이 없다. 너는 부탁하지 않았다.
+
+            "…오늘 오후. 정식 대진." 그가 이빨 꿰미를 쥔다. "애송이 말고 흉터 전사 앞에 세운다. 서 있으면 값을 다시 매기지. 쓰러지면 — 수레는 내일도 온다." 서기가 서류에서 네 승수를 긋는다. 아직은.
+          effects: ["var o6_you_column = false", "var o6_last_chance = true", "rel npc_gorba trust 4", "temper 용기 4", "note 고르바 — 오늘 오후 정식 대진, 흉터 전사 앞에. 지면 수레"]
+        failure:
+          text: |
+            전투어가 목에서 갈라진다. 고르바가 손을 한 번 젓는다. 호송꾼의 쇠사슬이 목고리에 걸린다. 수레가 북문을 지난다.
+          effects: ["captured 소모품 강등 — 피로 값을 다시 매기라 했지만 북문의 수레에 실렸다"]
+      - id: run
+        label: 북문이 아니라 배수로로 — 달아난다
+        minutes: 30
+        risk: 등을 보인 투사는 그롬 누구나 사냥한다
+        check: {skill: 은신, D: 30, helps: [shadow_step, fleet, reflexes], hinders: [lame, giant_bone]}
+        success:
+          text: |
+            호송꾼이 쇠사슬을 고르는 사이, 너는 쇠우리 안쪽으로 걷는다 — 뛰지 않고. 치료소 뒤, 시체를 내보내는 문. 그 너머가 배수로다. 물소리 속으로 들어간다.
+
+            등 뒤에서 서기가 네 승수를 한 번 더 읽는다. 대답이 없다. 그롬은 등을 보인 자를 잊지 않는다. 이제 그롬 누구나 너를 사냥할 수 있다.
+          effects: ["var player_fugitive = true", "var o6_you_column = false", "var o6_runaway = true", "wanted 3 소모품 수레에서 달아난 투사", "goto ba_drain", "note 배수로로 달아났다 — 이제 등을 보인 투사다"]
+        failure:
+          text: |
+            세 걸음. 그롬 호송꾼의 손이 목고리를 잡는다. 발이 땅에서 뜬다. 고르바가 침을 뱉는다. "등까지 보이는구나." 수레가 북문을 지난다.
+          effects: ["pain 15", "captured 소모품 강등 — 달아나다 목고리째 붙잡혀 북문의 수레에 실렸다"]
+
+  - id: o6_column_dawn
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-20 05:00", to: "312-09-20 10:00"}, at: "@blood_arena", when: ["alive npc_o6_vek", "var o6_vek_crippled == true", "var o6_vek_kept != true", "var o6_you_column != true", "not var player_fugitive == true"]}
+    severity: 3
+    text: |
+      다섯 시 북 대신 북문 쪽에서 수레 바퀴 소리. 쇠우리 문 앞에 고르바가 서 있고, 피의 감독의 서기가 승수를 읽는다. 이름이 아니라.
+
+      "예순넷."
+
+      벡이 창 자루를 짚고 걸어 나온다. 무릎에 감은 천이 새것이다. 그는 너를 보지 않는다. 창걸이에서 창을 가져오지 않았다 — 뼈 행렬은 녹슨 칼을 준다.
+    effects: ["goto ba_gates"]
+    choices:
+      - id: let_go
+        label: 벡을 보낸다
+        minutes: 20
+        text: |
+          벡이 수레에 오른다. 호송꾼의 쇠사슬이 그의 목고리에 걸린다. 수레가 움직이기 직전, 그가 처음으로 너를 본다.
+
+          "발부터." 그게 다다. 수레 바퀴가 북문을 지난다. 그는 돌아보지 않는다.
+        effects: ["var o6_vek_taken = true", "agenda capture npc_o6_vek at war_camp__bone_column", "stress 10", "temper 용기 -2", "note 스무날 새벽 — 벡이 북문의 수레에 올랐다. '발부터.'"]
+      - id: pay
+        when: ["var o6_vek_price == true"]
+        needs: "coin >= 8"
+        label: 고르바의 손바닥에 동화 여덟 닢을 올린다
+        minutes: 10
+        text: |
+          고르바가 동화를 센다. 한 닢씩, 크릭처럼. 여덟. 그는 그것을 이빨 꿰미 옆 주머니에 넣고 서기의 서류에서 한 줄을 손톱으로 긋는다.
+
+          "창걸이에 걸어 둬라." 그가 벡에게 말한다. "늙은 것도 걸어 두면 녹이 덜 슨다." 그리고 너를 본다. 일곱 해 전 이빨 여섯 개로 산 것을 보는 눈으로. 같은 값이다.
+        effects: ["coin -8", "var o6_vek_kept = true", "rel npc_o6_vek trust 10", "rel npc_gorba like 4", "note 스무날 — 동화 여덟 닢으로 벡을 수레에서 뺐다. 나를 사 온 값과 같다"]
+      - id: wrap_stand
+        when: ["var o6_norabe_wrap == true"]
+        label: 벡의 무릎을 소금물 붕대로 조인다 — 서기 앞에서 걸어 보라고
+        minutes: 15
+        check: {skill: 화술, D: 22, helps: [tongue, crowd_voice, command], warn: ["var o6_norabe_wrap == true", "var o6_vek_promise == true"]}
+        success:
+          text: |
+            노라베의 붕대가 무릎을 조인다. 벡이 이를 문다. 그리고 선다 — 창 자루 없이. 한 발, 두 발, 서기 앞까지.
+
+            "무릎 나간 것이 걷는다." 너는 그롬 전투어로 말한다. "수레가 실어 갈 것은 걷지 못하는 것이다." 고르바가 벡의 무릎을 오래 본다. 그리고 서기의 서류에서 한 줄을 긋는다. "한 시간짜리 다리다. 나도 안다." 그가 이빨 꿰미를 짤랑인다. "그래도 걸었다. 걸은 것은 값이 있다."
+          effects: ["var o6_vek_kept = true", "rel npc_o6_vek trust 10", "rel npc_o6_vek like 6", "rel npc_gm_norabe trust 6", "note 스무날 — 노라베의 붕대로 벡이 서기 앞까지 걸었다. 수레는 그를 두고 갔다"]
+        failure:
+          text: |
+            벡이 선다. 세 걸음째에 무릎이 꺾인다. 서기가 서류에 아무것도 긋지 않는다. 호송꾼이 그를 일으켜 수레에 올린다 — 부축이 아니라, 짐처럼.
+
+            "발부터." 그가 너에게 말한다. 수레 바퀴가 북문을 지난다.
+          effects: ["var o6_vek_taken = true", "agenda capture npc_o6_vek at war_camp__bone_column", "stress 12", "note 스무날 — 벡은 세 걸음에서 꺾였다. 수레에 실려 갔다"]
+      - id: plead
+        label: '"벡은 신참 서른의 발을 셉니다."'
+        minutes: 10
+        check: {skill: 화술, D: 30, helps: [tongue, haggle, merchant], hinders: [stutter]}
+        success:
+          text: |
+            고르바가 혀 위에서 그 말을 굴린다. 신참 서른의 발. 그롬은 셈이 맞으면 피를 흘리지 않는다. "…이빨 하나 값." 그가 말한다. "늙은 것이 발을 세는 동안은 창걸이에 걸어 두지. 세지 못하는 날엔 — 수레는 다음 해에도 온다."
+          effects: ["var o6_vek_kept = true", "rel npc_gorba trust 3", "rel npc_o6_vek trust 6", "note 스무날 — 고르바가 셈을 바꿨다. 벡은 쇠우리에 남는다 — 발을 세는 동안은"]
+        failure:
+          text: |
+            "발은 신참이 제 발로 센다." 고르바가 손을 젓는다. 호송꾼의 쇠사슬이 벡의 목고리에 걸린다. 수레가 움직이기 직전, 벡이 너를 본다. "발부터." 수레 바퀴가 북문을 지난다.
+          effects: ["var o6_vek_taken = true", "agenda capture npc_o6_vek at war_camp__bone_column", "stress 10", "note 스무날 — 벡이 북문의 수레에 올랐다"]
+      - id: take_place
+        label: 벡 대신 수레에 오른다
+        minutes: 30
+        risk: 돌아올 수 없는 길이다
+        text: |
+          너는 서기 앞에 선다. 네 승수를 댄다. 서기가 고르바를 본다. 고르바가 너를 본다 — 처음으로, 값을 셀 줄 모르는 얼굴로.
+
+          "인간들." 그가 말한다. 그롬에게는 이런 셈을 부를 말이 없다. 벡이 무언가를 외친다. 처음 듣는 목소리. 호송꾼의 쇠사슬이 네 목고리에 걸린다. 수레가 북문을 지난다. 너는 돌아보지 않는다 — 벡이 가르친 대로, 발부터.
+        effects: ["var o6_vek_kept = true", "captured 벡 대신 북문의 수레에 올랐다 — 뼈 행렬, 가을 원정의 첫 열"]
+      # ── ◈ 지난 회차에 마라의 열한 경기를 알았다 ──
+      - id: mem_eleven
+        needs_memory: fact:fact_gm_gorba_rigged_bouts
+        label: '고르바에게만 들리게: "마라의 열한 경기. 군주는 그 얘기를 좋아할까요."'
+        minutes: 5
+        text: |
+          이빨 꿰미가 멎는다. 고르바의 얼굴에서 값이 빠져나간다. 남는 것은 겁먹은 그롬의 얼굴이다 — 군주의 눈을 생각하는 얼굴.
+
+          그가 서기의 서류에서 한 줄을 긋는다. 손톱이 종이를 찢는다. "늙은 것은 창걸이에 걸어 둬라." 그리고 너에게만. "너는 이제 내 값이 아니다. 내 빚이다. 그롬은 빚을 잊지 않는다."
+        effects: ["var o6_vek_kept = true", "rel npc_gorba like -20", "rel npc_gorba trust -20", "memory npc_gorba 위험함 열하나가 마라의 열한 경기를 안다", "note 스무날 — 마라의 열한 경기로 고르바를 눌렀다. 벡은 남는다. 고르바는 잊지 않는다"]
+
+  # ───────────────────────── 스무날 정식 대진 — 승수는 정식 대진만 센다 ─────────────────────────
+  - id: o6_formal_sep
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-20 13:00", to: "312-09-20 17:30"}, at: "@blood_arena", when: ["var o6_you_column != true", "var o6_last_chance != true", "var o6_twentieth_done != true", "not var player_fugitive == true"]}
+    severity: 3
+    text: |
+      오후 경기 뿔. 정식 대진의 날 — 승수는 정식 대진만 센다. 서기가 쇠우리 문 앞에서 네 승수를 부르고, 너는 투사 입장 터널로 내려간다. 깃발 아래에서 손을 든다.
+
+      맞은편 입장문에서 나오는 것은 그롬이다. 애송이. 키는 벌써 너보다 머리 하나 크지만 어깨가 아직 다 자라지 않았다. 관중석 맨 앞의 흉터 전사들이 웃는다 — 애송이의 첫 정식 대진이다.
+
+      모래 가장자리, 훈련장 쪽 문간에 쉬라 피웃음이 서 있다. 입가의 상처가 웃지 않는다. 애송이가 그녀 쪽을 한 번 본다. 쉬라는 고개를 끄덕이지 않는다.
+    effects: ["goto ba_sand"]
+    choices:
+      - id: win
+        label: 싸운다 — 이긴다
+        minutes: 30
+        check: {skill: 싸움, D: 30, helps: [spear, duelist, reflexes, battle_sense, grom_rage, giant_bone], hinders: [lame]}
+        success:
+          text: |
+            애송이의 도끼는 무겁고 빠르다 — 그리고 정직하다. 늘 오른쪽부터 온다. 벡의 말대로, 그롬은 늘. 너는 셋째 합에 그 오른쪽 밑으로 들어가 창 자루로 무릎을 친다.
+
+            애송이가 모래에 쓰러진다. 그가 너를 올려다보며 무언가를 말한다. 그롬의 말이 아니다. 노예말이다. "…아직."
+
+            크롤의 깃발이 오른다. 관중석 맨 앞의 흉터 전사들이 침을 뱉는다. 쓰러진 그롬을 아무도 부축하지 않는다. 쉬라만 문간에서 한 발 나선다 — 그리고 멈춘다.
+          effects: ["var o6_wins += 1", "var o6_twentieth_done = true", "learn fact_o6_pup_still", "pain 6", "rel npc_gorba like 4", "note 스무날 정식 대진 — 그롬 애송이를 쓰러뜨렸다. 애송이가 노예말로 '아직'이라 했다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            애송이의 도끼는 무겁고 빠르다. 너는 셋째 합에 그 오른쪽 밑으로 들어가려 한다 — 반 박자 늦다. 도끼 자루가 네 옆머리를 친다. 모래가 기울어진다.
+
+            깨어났을 때 크롤의 깃발은 이미 내려가 있다. 관중석의 그롬들이 애송이를 연호한다. 너는 무르크의 갈고리가 아니라 제 발로 터널까지 걷는다. 그것이 오늘 네가 가진 전부다.
+          effects: ["var o6_twentieth_done = true", "pain 30", "stress 8", "rel npc_gorba like -6", "rel npc_gorba trust -4", "note 스무날 정식 대진 — 졌다. 승수는 그대로", "goto ba_gate_tunnel"]
+      - id: spare_pup
+        label: 이기되 — 쓰러진 애송이에게 마지막 합을 넣지 않는다
+        minutes: 30
+        check: {skill: 싸움, D: 34, helps: [spear, duelist, reflexes, battle_sense], hinders: [lame]}
+        success:
+          text: |
+            셋째 합, 창 자루가 애송이의 무릎을 친다. 그가 모래에 쓰러진다. 관중이 발을 구른다 — 마지막 합을 원한다. 너는 창을 거두고 한 걸음 물러선다.
+
+            애송이가 너를 올려다본다. 노예말로, 아주 작게. "…아직." 그리고 제 발로 일어선다. 쓰러졌다 일어서는 자. 관중석의 발 구르는 소리가 바뀐다 — 그롬들은 일어서는 것을 좋아한다.
+
+            크롤의 깃발이 오른다. 네 승. 문간의 쉬라가 입가의 상처를 벌려 웃는다. 소리 없이.
+          effects: ["var o6_wins += 1", "var o6_twentieth_done = true", "var o6_pup_spared = true", "learn fact_o6_pup_still", "rel npc_gm_shira like 15", "rel npc_gm_shira trust 10", "temper 자비 4", "note 스무날 정식 대진 — 애송이를 살려 보냈다. 쉬라가 웃었다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            마지막 합을 거두려다 너는 너무 일찍 물러선다. 애송이의 도끼가 그 틈으로 들어온다. 어깨가 뜨겁다. 둘 다 모래에 무릎을 꿇은 채 크롤의 깃발을 본다. 깃발은 오르지 않는다 — 승부 없음.
+          effects: ["var o6_twentieth_done = true", "pain 25", "rel npc_gm_shira like 5", "note 스무날 정식 대진 — 승부 없음. 어깨에 도끼 자국", "goto ba_gate_tunnel"]
+      - id: throw
+        when: ["var o6_tick_deal == true"]
+        label: 셋째 합에 무릎을 꿇는다 — 틱틱과 한 대로
+        minutes: 20
+        text: |
+          셋째 합. 너는 애송이의 도끼 자루를 일부러 늦게 받는다. 무릎이 모래에 닿는다. 창이 손에서 미끄러진다 — 미끄러지게 둔다.
+
+          크롤의 깃발이 애송이 쪽으로 오른다. 관중석의 그롬들이 애송이를 연호한다. 쇠살대 너머에서 고르바가 이빨 꿰미를 멈춘다. 그는 셋째 합을 본 적이 있다. 너무 여러 번.
+
+          저녁, 취사장 문간에 매듭 하나가 놓여 있다. 동화 여섯 닢.
+        effects: ["var o6_twentieth_done = true", "var o6_threw_bout = true", "coin 6", "pain 8", "temper 정직 -4", "rel npc_gorba trust -10", "memory npc_gorba 거짓말쟁이 열하나가 셋째 합에 무릎을 꿇었다 — 내기장의 셈", "note 스무날 정식 대진 — 틱틱과 한 대로 셋째 합에 무릎. 동화 여섯 닢", "goto ba_gate_tunnel"]
+      # ── ◈ 지난 회차에 애송이가 '아직'이라 했다 ──
+      - id: mem_still
+        needs_memory: fact:fact_o6_pup_still
+        label: '애송이가 도끼를 들기 전에, 노예말로: "아직."'
+        minutes: 20
+        text: |
+          애송이의 도끼가 멈춘다. 쉬라에게 배운 말이다 — 인간이 서로를 지킬 때 쓰는 말. 인간의 입에서 그 말을 듣는 것은 처음이다. 그가 문간의 쉬라를 본다. 쉬라는 움직이지 않는다.
+
+          싸움은 짧다. 애송이의 도끼에 더는 힘이 실리지 않는다. 셋째 합에 그가 스스로 모래에 무릎을 대고, 노예말로 대답한다. "…아직." 크롤의 깃발이 오른다. 관중은 무엇이 오갔는지 모른다. 쉬라는 안다.
+        effects: ["var o6_wins += 1", "var o6_twentieth_done = true", "var o6_pup_spared = true", "rel npc_gm_shira like 12", "rel npc_gm_shira trust 12", "memory npc_gm_shira 이상함 7번 숙소의 인간이 내 애송이에게 '아직'을 먼저 말했다", "note 스무날 정식 대진 — '아직.' 애송이가 스스로 무릎을 댔다", "goto ba_gate_tunnel"]
+
+  - id: o6_formal_last
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-20 13:00", to: "312-09-20 17:30"}, at: "@blood_arena", when: ["var o6_last_chance == true", "var o6_twentieth_done != true", "not var player_fugitive == true"]}
+    severity: 4
+    text: |
+      오후 경기 뿔. 서기가 네 승수를 부르는 목소리에 낱말이 하나 더 붙는다. 마지막.
+
+      맞은편 입장문에서 나오는 것은 애송이가 아니다. 그롬 흉터 전사 — 얼굴을 가로지른 흉터, 도살도 두 자루. 관중석 맨 앞의 그롬들이 자리에서 일어선다. 고르바는 약속을 지켰다. 값을 다시 매길 자리를 줬다.
+
+      북문 쪽에서 수레 바퀴 소리가 아직 들린다. 내일도 온다.
+    effects: ["goto ba_sand"]
+    choices:
+      - id: stand
+        label: 선다 — 쓰러지지 않는 것만 생각한다
+        minutes: 30
+        risk: 지면 모래다
+        check: {skill: 싸움, D: 40, helps: [spear, duelist, reflexes, battle_sense, grom_rage, giant_bone, iron_body, pain_tolerance], hinders: [lame, frail]}
+        success:
+          text: |
+            도살도 두 자루는 이기려고 휘두르는 무기가 아니다 — 끝내려고 휘두르는 무기다. 너는 이기려 하지 않는다. 서 있으려 한다. 한 합, 두 합, 일곱 합. 날이 네 어깨를, 허벅지를, 옆구리를 스친다. 너는 쓰러지지 않는다.
+
+            열한째 합에 흉터 전사의 숨이 한 번 끊긴다. 그 반 박자에, 네 창 자루가 그의 무릎 뒤를 친다. 그롬이 무릎을 꿇는다.
+
+            크롤의 깃발이 오른다. 고르바가 쇠살대 너머에서 이빨 꿰미를 다시 센다. 값이 돌아왔다. 더 높이.
+          effects: ["var o6_wins += 1", "var o6_twentieth_done = true", "var o6_last_chance = false", "pain 35", "rel npc_gorba like 8", "rel npc_gorba trust 6", "rel npc_urgash like 8", "temper 용기 6", "skill_gain 싸움 2", "note 스무날 — 마지막 정식 대진. 흉터 전사를 무릎 꿇렸다. 수레는 다른 이를 싣고 갔다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            도살도 두 자루는 끝내려고 휘두르는 무기다. 일곱째 합에 그것이 끝을 낸다. 네 창 자루가 두 동강 나고, 그다음이 너다.
+
+            모래가 가까이 온다. 붉다. 크롤의 깃발이 내려가는 것을 너는 보지 못한다.
+          effects: ["die blade 마지막 정식 대진 — 그롬 흉터 전사의 도살도 아래 모래에 쓰러졌다"]
+      - id: yield
+        label: 무릎을 꿇는다 — 수레를 고른다
+        minutes: 10
+        text: |
+          너는 창을 모래에 눕힌다. 흉터 전사가 날을 내린다. 그롬은 등을 보인 자를 베지 않는다 — 벨 값이 없으니까.
+
+          그날 저녁, 북문의 수레가 다시 온다. 이번엔 한 사람 몫이다.
+        effects: ["captured 마지막 정식 대진에서 무릎을 꿇었다 — 북문의 수레에 실려 뼈 행렬로 갔다"]
+
+  # ───────────────────────── 서리월 스무날 — 칼을 내린 9번 숙소의 투사 (아흔아홉) ─────────────────────────
+  - id: o6_formal_oct
+    origin: arena_fighter
+    trigger: {window: {from: "312-10-20 13:00", to: "312-10-20 17:30"}, at: "@blood_arena", when: ["not var player_fugitive == true"]}
+    severity: 3
+    text: |
+      서리월 스무날. 정식 대진. 서기가 네 승수를 부르고, 그 옆에 다른 승수를 부른다. 서른둘. 9번 숙소.
+
+      맞은편 입장문에서 나오는 것은 인간이다. 서른 남짓, 가슴에 칼자국 서른둘. 그는 칼을 들고 나오지만, 모래 한가운데에서 그것을 내린다. 칼끝이 모래에 닿는다. 그는 서 있다. 그것뿐이다.
+
+      관중석이 웅성거린다. 맨 앞의 그롬들이 일어선다. 터널 안쪽에서 누군가 숨을 멈춘다 — 이레나 아흔둘, 인간 투사들의 대표가 거기 서 있다. 두 번 숨 쉬고, 한 번 서 있는다.
+    effects: ["goto ba_sand", "learn fact_o6_ninety_nine_bout"]
+    choices:
+      - id: strike_down
+        label: 칼을 내린 자를 친다 — 모래는 모래다
+        minutes: 20
+        text: |
+          너는 창을 든다. 그는 막지 않는다. 그는 너를 보며 서 있다 — 이름을 부르지도 않고. 창 자루가 그의 무릎을 친다. 그가 쓰러진다. 관중이 발을 구른다.
+
+          너는 그를 찌르지 않는다. 그럴 필요도 없다. 크롤의 깃발이 오르고, 그롬 경비 둘이 그를 끌고 간다. 피의 감독의 서류 쪽으로. 경기를 거부한 투사는 소모품이다.
+
+          터널 안쪽에서 이레나가 돌아선다. 두 번 숨 쉬지 않고.
+        effects: ["var o6_wins += 1", "rel npc_gm_irena trust -10", "rel npc_gm_eida trust -8", "rel npc_gorba like 4", "temper 자비 -4", "note 서리월 스무날 — 칼을 내린 9번 숙소 서른둘을 쳐서 이겼다. 그는 소모품으로 끌려갔다", "goto ba_gate_tunnel"]
+      - id: lower_too
+        label: 너도 창끝을 모래에 내린다 — 둘이 서 있는다
+        minutes: 20
+        risk: 둘 다 거부한 투사가 된다
+        check: {skill: 위압, D: 30, helps: [menace, command, crowd_voice], hinders: [coward], warn: ["var o6_refused_blow == true"]}
+        success:
+          text: |
+            너는 창끝을 모래에 내린다. 둘이 서 있다. 칼과 창이 모래에 닿은 채로.
+
+            발 구르는 소리가 멎는다. 오래. 꼭대기에서 우르가쉬가 몸을 기울인다. 크롤이 깃발을 든 채 기다린다. 내리지도 올리지도 않는다. 판정은 모래가 한다.
+
+            "둘 다 서 있다." 크롤의 목소리가 원형장 끝까지 간다. "승부 없음." 아무도 끌려가지 않는다. 터널 안쪽에서 이레나가 숨을 두 번 쉰다.
+          effects: ["var o6_stood_with_99 = true", "rel npc_gm_irena trust 15", "rel npc_gm_irena like 10", "rel npc_gm_eida trust 12", "rel npc_urgash like 6", "rel npc_gm_kroll like 8", "temper 용기 5", "temper 자비 5", "note 서리월 스무날 — 둘이 창과 칼을 내리고 서 있었다. 크롤이 '승부 없음'. 아흔아홉이 그 얼굴을 기억한다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            너는 창끝을 모래에 내린다. 관중석에서 돌이 날아온다. 크롤의 깃발이 내려간다 — 둘 다 도전 불성립. 거부한 투사 둘.
+
+            그롬 경비가 서른둘을 먼저 끌고 간다. 너는 그다음이다 — 그러나 고르바가 쇠살대를 연다. "이건 내 값이다." 그가 경비를 막는다. 그리고 네 귀에. "한 번만이다." 매가 길다.
+          effects: ["var o6_stood_with_99 = true", "var o6_marks += 1", "pain 30", "rel npc_gorba trust -15", "rel npc_gm_irena trust 10", "rel npc_gm_eida trust 10", "temper 용기 3", "temper 자비 4", "note 서리월 스무날 — 창을 내렸다. 서른둘은 끌려갔고, 고르바가 나를 막았다 — '한 번만이다'", "goto ba_gate_tunnel"]
+      - id: kick_blade
+        label: 그의 칼을 발로 차 올려 쥐여 준다 — 싸우라고
+        minutes: 30
+        check: {skill: 싸움, D: 30, helps: [spear, duelist, reflexes, battle_sense], hinders: [lame]}
+        success:
+          text: |
+            너는 그의 칼을 발끝으로 차 올린다. 칼자루가 그의 가슴에 부딪힌다. 그가 저도 모르게 쥔다. 쥐고 나서야 자기가 쥐었다는 것을 안다. "싸워." 네가 노예말로 말한다. "싸우면 소모품은 아니야."
+
+            그가 싸운다. 서른두 번 이긴 손이다. 열째 합에 네 창 자루가 그의 무릎을 친다. 크롤의 깃발이 오른다. 그는 끌려가지 않는다 — 진 투사는 숙소로 돌아간다.
+
+            터널 안쪽에서 이레나가 너를 본다. 두 번 숨 쉬고, 고개를 젓는다. 화난 얼굴이 아니다. 무언가를 다시 세는 얼굴이다.
+          effects: ["var o6_wins += 1", "pain 10", "temper 자비 3", "rel npc_gm_irena trust -2", "rel npc_gm_eida trust 2", "note 서리월 스무날 — 서른둘의 칼을 차 올려 싸우게 했다. 이겼다. 그는 소모품으로 가지 않았다", "goto ba_gate_tunnel"]
+        failure:
+          text: |
+            너는 그의 칼을 발끝으로 차 올린다. 그가 쥐지 않는다. 칼이 모래에 떨어진다. 관중석의 돌이 먼저 날아온다. 크롤의 깃발이 내려간다 — 도전 불성립. 그는 끌려간다. 너는 아니다. 쇠살대 너머에서 고르바가 네 몫의 셈을 한다. 승수는 그대로다.
+          effects: ["pain 8", "rel npc_gm_irena trust 4", "rel npc_gorba trust -4", "note 서리월 스무날 — 서른둘은 칼을 쥐지 않았다. 그는 끌려갔다. 승부 없음", "goto ba_gate_tunnel"]
+
+  # ───────────────────────── 고르바의 이빨 셋 — 새벽 북과 쇠우리 닫힘을 어긴 값 ─────────────────────────
+  - id: o6_marks_sold
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-02 00:00", to: "313-12-30 00:00"}, at: "@blood_arena", when: ["var o6_marks >= 3", "var o6_marks_pardoned != true", "not var player_fugitive == true"]}
+    severity: 4
+    text: |
+      고르바가 너를 찾아온다. 이빨 꿰미를 쥐지 않은 빈손이다. 그 뒤에 그롬 호송꾼 둘.
+
+      "이빨 셋." 그가 손가락 셋을 편다. "새벽 북에 없고, 쇠우리 문이 닫힌 뒤에 밖에 있고. 값이 셋 내린 것은 값이 없는 것이다." 북문 쪽에서 수레 바퀴 소리가 들린다.
+    effects: ["goto ba_gates"]
+    choices:
+      - id: go
+        label: 수레에 오른다
+        minutes: 30
+        text: |
+          목고리에 쇠사슬이 걸린다. 수레가 북문을 지난다. 뼈 행렬까지 스무 시간.
+        effects: ["captured 고르바의 이빨 셋 — 값이 없는 것으로 쳐져 북문의 수레에 실렸다"]
+      - id: plead
+        label: '"모래에서 값을 다시 매겨라." — 그롬 전투어로'
+        minutes: 10
+        check: {skill: 위압, D: 30, helps: [menace, command], hinders: [coward, stutter]}
+        success:
+          text: |
+            고르바가 너를 오래 본다. 그리고 꿰미에서 이빨 셋을 꺼내 네 발 앞에 던진다. "주워라. 한 번이다." 호송꾼이 쇠사슬을 거둔다. 매는 길다. 그것으로 셈이 끝난다 — 한 번은.
+          effects: ["var o6_marks = 0", "var o6_marks_pardoned = true", "pain 25", "note 고르바 — 이빨 셋을 돌려줬다. '한 번이다.'"]
+        failure:
+          text: |
+            전투어가 갈라진다. 고르바가 손을 젓는다. 쇠사슬이 목고리에 걸린다. 수레가 북문을 지난다.
+          effects: ["captured 고르바의 이빨 셋 — 북문의 수레에 실려 뼈 행렬로 갔다"]
+
+  - id: o6_marks_final
+    origin: arena_fighter
+    trigger: {window: {from: "312-09-02 00:00", to: "313-12-30 00:00"}, at: "@blood_arena", when: ["var o6_marks >= 3", "var o6_marks_pardoned == true", "not var player_fugitive == true"]}
+    severity: 4
+    text: |
+      고르바는 이번엔 말하지 않는다. 손가락 셋을 펴 보일 뿐이다. 북문 쪽에서 수레 바퀴 소리.
+    effects: ["goto ba_gates"]
+    choices:
+      - id: go
+        label: 수레에 오른다
+        minutes: 30
+        text: |
+          한 번이라고 했다. 그롬은 셈을 두 번 하지 않는다.
+        effects: ["captured 고르바의 이빨 셋, 두 번째 — 북문의 수레에 실려 뼈 행렬로 갔다"]
+
+  # ───────────────────────── 원형장의 작은 장면 (연출가) — 쇠우리의 하루 ─────────────────────────
+  - id: o6_dir_vek_beat
+    origin: arena_fighter
+    trigger: {director: true, category: bond, at: ba_training, hours: ["13:00", "17:00"], chance: 0.3, when: ["with npc_o6_vek"]}
+    text: |
+      오후의 훈련장. 벡이 가장자리에 앉아 창 자루로 바닥을 두드린다. 둘, 하나, 둘. 신참들의 발이 그 박자에 맞는다 — 맞지 않는 발은 그가 자루 끝으로 툭 친다.
+
+      그가 너를 보지 않고 말한다. "창. 왼쪽이 늦다. 어제부터."
+    choices:
+      - id: drill
+        label: 그의 박자에 맞춰 아홉 합을 돈다
+        minutes: 60
+        text: |
+          둘, 하나, 둘. 찌르고, 받고, 돌고, 낮추고. 벡은 일어서지 못한다. 대신 그의 자루가 네 정강이를, 옆구리를, 왼쪽을 툭툭 친다 — 늦은 곳마다. 아홉 합이 끝나면 다시 처음부터.
+
+          해가 기울 때 그가 자루를 멈춘다. "…됐다." 칭찬이 아니다. 그는 칭찬을 하지 않는다.
+        effects: ["skill_gain 싸움 1", "fatigue 10", "bond npc_o6_vek 4", "rel npc_o6_vek like 3"]
+      - id: sit
+        label: 그 곁에 앉는다 — 신참들의 발을 같이 센다
+        minutes: 30
+        text: |
+          둘이서 센다. 벡은 무릎을 쭉 뻗고 앉아 있다. 굽히지 못하는 무릎. 한참 뒤에 그가 말한다. "수레 바퀴 소리를 안 들어도 되는 날은 이게 다다." 그리고 다시 바닥을 두드린다.
+        effects: ["stress -5", "bond npc_o6_vek 3", "rel npc_o6_vek trust 3"]
+
+  - id: o6_dir_wrist
+    origin: arena_fighter
+    trigger: {director: true, category: calm, at: ba_dorm7, hours: ["21:00", "23:00"], chance: 0.3, when: ["with npc_mara"]}
+    text: |
+      철창에 기대 마라가 센다. 쇠판으로 고정한 턱이 거의 움직이지 않아서, 숫자마다 'ㅅ' 소리가 조금 샌다. 여든여섯, 여든일곱. 거기서 한 번 멈춘다.
+
+      그녀가 고개를 돌리지 않고 손을 내민다. "손목 줘 봐."
+    choices:
+      - id: give
+        label: 손목을 내민다
+        minutes: 5
+        text: |
+          마라의 손이 네 손목을 쥔다. 세게. 힘을 잰다. "…아직 아니야." 그녀가 놓는다. "그래도 작년보다는." 그리고 다시 센다. 여든여덟, 여든아홉 — 백에서 멈출 것이다. 오늘도.
+        effects: ["rel npc_mara like 5", "rel npc_mara trust 3"]
+      - id: ask_after
+        label: '"백에서 멈추면 — 그다음엔 뭘 세요?"'
+        minutes: 5
+        text: |
+          마라가 처음으로 고개를 돌린다. 쇠판 턱이 한 번 운다. "그다음은 안 세. 자유니까." 그녀가 다시 철창에 기댄다. "탈처럼. 탈은 황무지로 걸어갔대. 자유롭게." 숫자가 다시 시작된다. 하나부터.
+        effects: ["rel npc_mara trust 2", "note 마라 — '그다음은 안 세. 자유니까.'"]
+
+  - id: o6_dir_morning_foe
+    origin: arena_fighter
+    trigger: {director: true, category: threat, at: ba_training, hours: ["05:10", "07:30"], chance: 0.25, when: ["alive npc_urgash"]}
+    text: |
+      훈련장 철창이 열리고 뼈의 전당 사환이 들어선다 — 해골 목걸이를 건 그롬 애송이. 그가 투사들의 줄을 따라 걷는다. 군주의 아침 상대를 고르러 왔다. 오늘 군주는 인간을 원한다.
+
+      줄이 조용해진다. 아무도 앞으로 나서지 않는다. 사환의 손가락이 네 옆의 신참 앞에서 멈춘다. 열여섯, 승수 둘. 손이 떨린다.
+    choices:
+      - id: step_up
+        label: 앞으로 나선다 — "나다."
+        minutes: 120
+        risk: 군주는 아침마다 진짜로 싸운다
+        check: {skill: 싸움, D: 48, helps: [spear, duelist, reflexes, battle_sense, grom_rage, giant_bone, pain_tolerance], hinders: [lame, frail]}
+        success:
+          text: |
+            뼈의 마당. 우르가쉬는 무기를 들지 않는다. 맨손이다. 3미터의 몸이 아침 햇빛을 가린다. 첫 합에 너는 날아간다. 둘째 합에도. 셋째 합 — 그의 오른쪽 어깨가 한 박자 늦다. 아주 조금. 너는 그 한 박자 안에서 서 있는다.
+
+            "서라." 그가 말한다. 너는 서 있다. 그가 이빨을 드러낸다. 웃음인지 다른 것인지. "다음엔 오른쪽에 서지 마라." 그것이 그가 숨기는 쪽이다.
+          effects: ["var o6_morning_stood = true", "learn fact_o6_urgash_shoulder", "pain 30", "rel npc_urgash like 12", "rel npc_urgash trust 4", "temper 용기 5", "skill_gain 싸움 1", "note 군주의 아침 상대 — 세 합을 서서 버텼다. 그의 오른쪽 어깨가 한 박자 늦다"]
+        failure:
+          text: |
+            뼈의 마당. 우르가쉬는 맨손이다. 첫 합에 너는 날아간다. 둘째 합에 갈비뼈가 운다. 셋째 합은 기억나지 않는다. 깨어났을 때 너는 치료소에 눕혀져 있고, 노라베가 네 옆구리를 소금물로 닦는다. "숨 쉬어. 그거면 돼."
+          effects: ["pain 45", "rel npc_urgash like 4", "temper 용기 3", "goto ba_infirmary"]
+      - id: push
+        label: 신참을 앞으로 민다
+        minutes: 5
+        text: |
+          네 손이 신참의 등을 민다. 아주 조금. 그것으로 충분하다. 사환이 신참의 목고리를 잡고 데려간다. 아이는 돌아보지 않는다.
+
+          점심 무렵 그 아이가 돌아온다. 걸어서는 아니다.
+        effects: ["temper 자비 -8", "temper 용기 -3", "stress 12", "note 군주의 아침 상대 — 신참을 밀었다. 그 아이는 걸어서 돌아오지 못했다"]
+      - id: still
+        label: 줄에 그대로 서 있는다
+        minutes: 5
+        text: |
+          아무도 움직이지 않는다. 사환이 신참의 목고리를 잡는다. 그때 줄 끝에서 외팔이 하나가 앞으로 나선다 — 하르트, 아흔넷. 사환이 망설이다가, 신참을 놓는다.
+
+          하르트는 점심 무렵 돌아온다. 걸어서. 입가에 피를 문 채 웃으며. "아직." 아무도 너를 보지 않는다.
+        effects: ["stress 6", "temper 용기 -2", "rel npc_gm_hart like -2", "note 군주의 아침 상대 — 하르트가 대신 나섰다"]

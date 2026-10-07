@@ -1,0 +1,29 @@
+# 알려진 사정 — O-06 피의 원형장 투사 (storylets/origin_arena_fighter.yaml)가 세우는 깃발.
+# 서술 프롬프트에 "[알려진 사정]"으로 들어간다 (참일 때만). npc가 있으면 그 사람이 그 자리에 있을 때 먼저. warn은 판정의 근거 한 줄 (+10).
+flags:
+  o6_awake:          {line: "열하나의 손은 가을 피의 날부터 이 몸이 배운 적 없는 각도로 창을 쥔다 — 본인도 설명하지 못한다", warn: "손이 배운 적 없는 각도를 안다"}
+  o6_vek_asked:      {line: "벡은 가을 피의 날 모래 위에서 입 모양으로 '찔러라, 왼쪽'이라고 했다. 열하나는 그것을 읽었다", npc: npc_o6_vek, warn: "벡이 무엇을 원하는지 안다"}
+  o6_vek_crippled:   {line: "벡은 가을 피의 날 살아남았다. 오른쪽 무릎이 나갔다 — 고르바는 그를 쓸모없는 것으로 센다", npc: npc_o6_vek}
+  o6_vek_chanted:    {line: "가을 피의 날, 모래에 쓰러졌다 일어선 벡의 이름 '예순넷'을 삼만이 연호했다", npc: npc_o6_vek}
+  o6_vek_kept:       {line: "벡은 뼈 행렬 수레에 오르지 않고 쇠우리에 남았다 — 훈련장 가장자리에서 신참들의 발을 센다", npc: npc_o6_vek}
+  o6_vek_taken:      {line: "벡은 스무날 북문의 수레에 올라 뼈 행렬로 갔다 — 가을 원정의 첫 열이다", npc: npc_gorba}
+  o6_vek_price:      {line: "고르바는 벡을 수레에서 빼는 값으로 동화 스물네 닢(그의 셈으로 이빨 스물)을 불렀다", npc: npc_gorba}
+  o6_vek_promise:    {line: "열하나는 벡에게 스무날 수레가 오기 전에 그를 세우겠다고 말했다", npc: npc_o6_vek}
+  o6_norabe_wrap:    {line: "노라베는 벡의 무릎을 소금물 붕대로 조여 스무날 아침 한 시간은 서 있게 해 주겠다고 했다", npc: npc_gm_norabe}
+  o6_refused_blow:   {line: "가을 피의 날 엄지가 내려갔을 때 열하나는 창을 모래에 꽂았다. 우르가쉬가 처음으로 몸을 앞으로 기울였다", npc: npc_urgash}
+  o6_grom_felled:    {line: "열하나는 피의 맹세 결투에서 그롬 흉터 전사 하그를 무릎 꿇렸다 — '그롬을 꺾은 인간'이라는 말이 쇠우리와 관중석에 돈다", npc: npc_urgash}
+  o6_dancer:         {line: "가을 피의 날 열하나와 벡의 연기는 들켰다 — 관중석 맨 앞의 그롬들이 둘을 '춤꾼'이라 부른다", npc: npc_gorba}
+  o6_clever_beast:   {line: "고르바는 열하나가 피를 크게 보이고 벡을 살린 것을 알아챘다 — '영리한 짐승'. 값을 올려 매겼다", npc: npc_gorba}
+  o6_you_column:     {line: "열하나는 소모품 명단에 올랐다 — 스무날 새벽, 북문의 수레", npc: npc_gorba}
+  o6_last_chance:    {line: "고르바는 소모품 명단에서 열하나를 빼는 대신 스무날 정식 대진에 세웠다 — 지면 수레다", npc: npc_gorba}
+  o6_tick_deal:      {line: "열하나는 틱틱의 매듭을 받았다 — 스무날 정식 대진 셋째 합에 무릎을 꿇기로", npc: npc_gm_tick}
+  o6_threw_bout:     {line: "열하나는 스무날 정식 대진에서 틱틱과 한 대로 셋째 합에 무릎을 꿇었다", npc: npc_gorba}
+  o6_tick_scared:    {line: "틱틱은 열하나가 내기 장부 벽의 열한 줄을 안다는 것을 안다 — 겁먹었고, 동화로 입을 막으려 한다", npc: npc_gm_tick}
+  o6_believes_ransom: {line: "열하나는 틱틱이 말한 '투사 해방금'(이빨 삼백이면 목고리가 풀린다)을 반쯤 믿는다"}
+  o6_pup_spared:     {line: "스무날 정식 대진에서 열하나는 그롬 애송이를 살려 보냈다. 애송이는 쓰러지며 노예말로 '아직'이라 했다", npc: npc_gm_shira}
+  o6_mia_told:       {line: "미아는 열하나에게서 '네 동생 이름의 주인은 황무지로 걸어가지 않았다'는 말을 들었다 — 아이가 없는 데서", npc: npc_gm_mia}
+  o6_og_invites:     {line: "오그는 열하나가 탈의 일을 안다는 것을 알아채고 안식일 밤 1번 숙소 바닥으로 불렀다", npc: npc_gm_og}
+  o6_drain_heard:    {line: "열하나는 배수로에서 어린 탈이 벽에 대고 이름을 부르고, 벽 너머에서 '탈?' 하고 대답이 오는 것을 들었다", npc: npc_gm_ytal}
+  o6_ytal_trusts:    {line: "어린 탈은 열하나에게 배수로의 벽을 보여 주었다. 누나에게는 말하지 않기로 했다", npc: npc_gm_ytal}
+  o6_morning_stood:  {line: "열하나는 우르가쉬의 아침 대련에서 세 합을 서서 버텼다 — 군주가 승수가 아니라 얼굴을 기억한다", npc: npc_urgash}
+  o6_stood_with_99:  {line: "서리월 스무날 열하나는 칼을 들지 않은 9번 숙소의 투사 앞에서 창을 내렸다 — 아흔아홉이 그 얼굴을 기억한다", npc: npc_gm_eida}

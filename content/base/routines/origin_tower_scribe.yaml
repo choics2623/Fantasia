@@ -1,0 +1,9 @@
+# 잿빛 탑 서기 노예 (O-09)의 새 사람 일과. 탑의 하루: 06:00 새벽 측정 종 · 12:00 정오 귀리죽 · 18:00 저녁 점호 · 22:00 소등 종. 서기는 안식일에도 필사한다 — days는 all.
+npc_o9_dov:
+  home: gt_scribe_dorm
+  blocks:
+    - {days: all, from: "00:00", to: "05:00", at: gt_scribe_dorm, doing: 칠번 아래 침상에서 무릎을 끌어안고 잔다}
+    - {days: all, from: "05:00", to: "06:00", at: gt_scribe_dorm, doing: 목걸이를 소매로 문질러 닦는다}
+    - {days: all, from: "06:00", to: "18:00", at: gt_dust_desk, doing: 필사대 끝자리에서 모양만 베낀다 — 획이 고르고 빠르다}
+    - {days: all, from: "18:00", to: "19:30", at: gt_mess, doing: 귀리죽을 받아 선 채로 마신다}
+    - {days: all, from: "19:30", to: "24:00", at: gt_scribe_dorm, doing: 판자 벽의 쥐구멍을 지켜보다 잠든다}
