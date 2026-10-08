@@ -3,6 +3,9 @@
 시뮬레이션 기반 그림다크 판타지 텍스트 선택지 로그라이트 RPG (모바일 우선). LLM이 문장을 쓰고, 규칙 엔진이 결과를 정한다.
 
 ## 지금 해 볼 수 있는 것 — 회색여울 한 판
+**링크로 바로**: [https://claude.ai/artifact/6PMT3WbY6rbhnK9WVAQeBF](https://claude.ai/artifact/6PMT3WbY6rbhnK9WVAQeBF) — 서버를 켤 것 없이 claude.ai에서 연다. 서술은 내 Claude 계정으로, 저장은 계정에 남는다 (자세한 것은 [prototypes/greyford/README.md](prototypes/greyford/README.md#링크로-하기)).
+
+내 PC에서 서버로:
 ```bash
 python3 tools/build_content.py          # 콘텐츠 묶음 (콘텐츠를 고친 뒤에도 — node가 있어야 즉석 인물이 생긴다)
 node prototypes/greyford/server.mjs     # 내 PC의 Claude Code 로그인(구독)으로 LLM을 부른다

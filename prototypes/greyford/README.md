@@ -3,7 +3,16 @@
 위치(24)·목표 행동(26)·반응 층(27)·NPC 카드(22)·진행 루프(28)를 모두 붙인 첫 플레이 가능한 판.
 회귀점 AS 312 낙엽월 1일 18:30, 절름발이 수탉 배급 줄에서 시작한다.
 
-## 실행
+## 링크로 하기
+**https://claude.ai/artifact/6PMT3WbY6rbhnK9WVAQeBF** — 서버 없이 claude.ai Artifact 안에서 엔진이 돈다. 판을 고치면 같은 링크에 새 판본을 올린다 (열어 두었으면 claude.ai가 조용한 틈에 새 판본으로 다시 연다 — 판은 이어진다).
+- **서술·해석·기록관**: 보는 사람의 Claude 계정으로 (`claude.use("sample")`). 처음 서술할 때 Claude를 써도 되는지 묻는다 — 허락해야 이야기가 이어진다. 내 Claude 사용량에서 나간다.
+- **서술의 빠르기**: 수첩 → 설정 → '이 페이지에서 하는 판'. *공들여*(기본 — 생각하고 쓰느라 첫 글자까지 길게는 수십 초)와 *빠르게*(바로 쓰지만 글이 납작해진다).
+- **저장**: claude.ai 계정(이 페이지의 내 칸 — 나만 본다)과 이 브라우저 두 곳에 매 박자 자동으로. 다른 기기에서 열어도 이어진다. 칸 이름으로 저장·불러오기도 그대로.
+- **저장 파일**: 같은 칸에서 '저장 파일로 받기'와 '저장 파일에서 이어 하기' — 서버판의 `saves/auto.json`과 같은 모양이라 서로 옮겨 다닐 수 있다.
+- 다시 열 때는 LLM을 부르지 않고 마지막 화면을 그대로 보인다.
+- 만드는 법: `node tools/build_web.mjs` → `dist/web/` (페이지 `index.html` + 화면 `ui/` + 이음 `web/boot.js` + 엔진 `engine/**.js` + 콘텐츠 JSON + 삽화). 이음(`web/boot.js`)이 화면의 `/api/*`를 가로채 엔진 세션에 넘긴다 — `server.mjs`에 새 경로를 더하면 `boot.js`의 `handle`에도.
+
+## 실행 (내 PC에서 서버로)
 ```bash
 python3 tools/build_content.py          # 콘텐츠 묶음 (처음 한 번, 콘텐츠를 고친 뒤에도)
 node prototypes/greyford/server.mjs     # 기본: 이 PC의 Claude Code 로그인(구독)으로 LLM을 부른다
