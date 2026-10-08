@@ -37,6 +37,8 @@ export function createSession(content, provider, { run = null, onSave = null, fa
   let convoAt = null;
   const convLines = (ended) => { const from = convoAt != null && convoAt < transcript.length ? convoAt : Math.max(0, transcript.length - (ended.turns * 2 + 6)); convoAt = null; return transcript.slice(from); };
   const resetMemory = (run) => { thread = run?.thread || []; talkLog = run?.talkLog || {}; tail = run?.tail || []; convoAt = null; };
+  // 마지막 화면 (서술 박자 + 선택지 글): 다시 열었을 때 LLM을 부르지 않고 그대로 보인다 — 기록이 그 뒤로 늘지 않았을 때만
+  const keepScreen = (n) => { g.run.screen = { at: g.run.journal.length, beats: (n?.beats || []).slice(0, 6), text: Object.fromEntries((n?.choices || []).filter((c) => c.text).map((c) => [c.id, String(c.text)])) }; };
   const save = () => { g.run.transcript = transcript.slice(-40); g.run.thread = thread.slice(-16); g.run.talkLog = talkLog; g.run.tail = tail.slice(-12); g.run.lastPlayedAt = Date.now(); onSave?.(waiting ? { ...g.run, journal: g.run.journal.slice(0, waiting.keep) } : g.run); };   // 서술을 기다리는 박자는 저장하지 않는다
   // ── 기록관: 끝난 대화를 뒤에서 처리한다. 결과는 턴 사이에만 기록에 넣는다 (되돌리기와 섞이지 않게) ──
   // 시간선: 회귀·새 판·불러오기는 새 시간선이다. 되돌리기는 그 아침 뒤의 대화만 지운다 — 지워진 시간선의 기억이 새 기록에 섞이지 않게
@@ -199,7 +201,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         const conv0 = P.res?.convoEnded ? { npc: P.res.convoEnded.npc, lines: convLines(P.res.convoEnded) } : null;
         remember(P.res, n.beats, conv0);
         if (conv0) { enqueue(conv0.npc, conv0.lines); transcript = transcript.slice(-6); }   // 대화의 기록은 기록관에게, 서술의 앞뒤는 남긴다
-        save();
+        keepScreen(n); save();
         return payload(P.res, n, [...debug, { kind: "renarrate" }]);
       } catch (e) {
         transcript = transcript.slice(0, P.keepT);
@@ -232,7 +234,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         else if (!g.convo && !res.convoEnded) convoAt = null;
         debug.push({ kind: "engine", id, tier: res.tier, P: Math.round(res.P * 100), roll: +res.roll.toFixed(3), notes: res.notes, reveal: res.reveal });
         opts = G.options(g); actedOpts = opts;
-        if (!needsLLM(res, beforePeople, !!input.free)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, beats); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
+        if (!needsLLM(res, beforePeople, !!input.free)) { const beats = engineBeats(res); transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); remember(res, beats); keepScreen({ beats }); save(); return payload(res, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
       } else {
         opts = G.options(g);
         if (g.story) { const beats = (G.storyIntro(g) || "").split(/\n\s*\n/).map((x) => x.trim()).filter(Boolean); noteHeard(beats); markIntroduced(beats); if (!transcript.length) transcript.push(...beats.map((b) => ({ who: "narr", text: b }))); return payload(null, { beats, choices: opts.map((o) => ({ ...o, text: o.label })) }, debug, true); }
@@ -246,7 +248,7 @@ export function createSession(content, provider, { run = null, onSave = null, fa
         enqueue(conv.npc, conv.lines);   // 기록관에게 — 기다리지 않는다
         transcript = transcript.slice(-6);   // 대화가 끝나도 바로 앞의 서술은 남긴다 — 다음 박자가 이어 쓰게
       }
-      save();
+      keepScreen(n); save();
       return payload(res, n, debug);
     } catch (e) {
       if (acted && g.run.journal.length === keep + 1) {
@@ -279,7 +281,11 @@ export function createSession(content, provider, { run = null, onSave = null, fa
     // 다시 열었을 때: 얼마나 비웠는지에 따라 지난 이야기 (18 §5.4)
     async start(o) {
       const gap = g.run.lastPlayedAt ? (Date.now() - g.run.lastPlayedAt) / 3600e3 : 0;
-      const out = await turn(null, o);
+      // 마지막 화면이 남아 있으면 그대로 (LLM 호출 없이 — 다시 열 때마다 서술을 새로 쓰지 않는다). 대본 장면은 손으로 쓴 글이라 늘 그대로 나온다
+      const sc = g.run.screen;
+      const out = sc && sc.at === g.run.journal.length && sc.beats?.length && !g.story && !waiting
+        ? payload(null, { beats: sc.beats, choices: G.options(g).map((op) => ({ ...op, text: sc.text?.[op.id] || op.label })) }, recDebug.splice(0))
+        : await turn(null, o);
       const rc = G.recap(g, gap);
       if (rc.length && !out.broken) out.ink = [...rc.map((text) => ({ kind: "recap", text })), ...(out.ink || [])];
       return out;

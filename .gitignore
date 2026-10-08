@@ -1,3 +1,6 @@
 prototypes/llm-bram/.access-key
 prototypes/greyford/.access-key
 prototypes/greyford/saves/
+
+# 링크판 빌드 결과 (node tools/build_web.mjs)
+dist/

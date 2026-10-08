@@ -119,4 +119,20 @@ const fresh = (seed = 7) => G.boot(C, G.newRun({ seed, opening: false }));
   check("꺼낸 말에는 여닫는 행동이 들지 않는다 (행동 id로 가린다)", (S.run.talkLog?.[other.id.slice(5)]?.[0]?.asked || []).length === 1, JSON.stringify(S.run.talkLog?.[other.id.slice(5)]?.[0]?.asked));
   check("사람 칸에 지난 이야기", (G.view(S.game).people_known.find((x) => x.id === "npc_bram")?.talks || []).length === 1); }
 
+// ── 다시 열기: 마지막 화면을 그대로 보인다 — 열 때마다 LLM을 부르지 않는다 ──
+{ let calls = 0;
+  const prov = { kind: "mock", usage: { calls: 0, failures: 0 }, async complete(sys, prompt, { mock } = {}) { calls++; return mock ? mock() : ""; } };
+  const S = createSession(C, prov, { run: G.newRun({ seed: 7, opening: false }) });
+  await S.start(); S.game.at = "gf_rooster";
+  const r1 = await S.act({ id: "talk:npc_bram" });
+  const c1 = calls;
+  const S2 = createSession(C, prov, { run: JSON.parse(JSON.stringify(S.run)) });
+  const r2 = await S2.start();
+  check("다시 열면 마지막 화면 그대로 — LLM을 부르지 않는다", calls === c1 && r2.beats.length > 0 && JSON.stringify(r2.beats) === JSON.stringify(r1.beats), `호출 ${calls - c1}`);
+  check("선택지도 그대로 (서술이 다시 쓴 글까지)", r1.choices.every((c) => r2.choices.find((x) => x.id === c.id)?.text === c.text), r2.choices.map((c) => c.text).join(" / ").slice(0, 120));
+  await S2.act({ id: "small_talk" });
+  const S3 = createSession(C, prov, { run: JSON.parse(JSON.stringify({ ...S2.run, screen: { ...S2.run.screen, at: 0 } })) });
+  const c3 = calls; await S3.start();
+  check("기록이 화면보다 앞서 있으면 새로 쓴다", calls > c3, `호출 ${calls - c3}`); }
+
 console.log(fail ? `\n실패 ${fail}개` : "\n모두 통과"); process.exit(fail ? 1 : 0);

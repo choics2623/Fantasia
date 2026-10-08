@@ -7,6 +7,7 @@ import { initCreate, openCreate, closeCreate, createOpen } from "./create.js";
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const DEBUG = new URLSearchParams(location.search).has("debug");
+const WEB = window.FANTASIA_WEB || null;   // 링크로 하는 판 (web/boot.js) — 서버판에서는 없다
 const store = {
   get(k, d) { try { const v = localStorage.getItem("gf:" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem("gf:" + k, JSON.stringify(v)); } catch { /* 저장이 막혀도 화면은 돈다 */ } },
@@ -553,11 +554,29 @@ function settingsHTML(v) {
       <div class="set-row"><span>이름 잇기</span><span class="seg" data-set="links">${[[true, "켬 — 이름을 누르면 카드"], [false, "끔"]].map(([val, lab]) => `<button type="button" data-v="${val}" aria-pressed="${linksOn() === val}">${lab}</button>`).join("")}</span></div></div>
     <div class="sec"><h4>누가 이 이야기를 기억하는가</h4><div class="row"><select id="narr">${NARR.map(([id, lab]) => `<option value="${id}"${v?.narrator?.id === id ? " selected" : ""}>${lab}</option>`).join("")}</select><button class="btn" id="narrBtn">이 화자로</button></div></div>
     <div class="sec"><h4>저장</h4><div class="row"><input id="slotName" placeholder="칸 이름" value="칸1" aria-label="저장 칸 이름"><button class="btn" id="saveBtn">저장</button></div><div class="slots" id="slots"></div></div>
+    ${WEB ? webHTML() : ""}
     <div class="sec"><h4>잔향의 장부 — 시대를 건너 남는 것</h4><div id="ledgerBox"><p class="empty">펼치는 중…</p></div></div>
     <div class="sec"><h4>새 판 — 출신·능력치·재능·혈통을 고른다</h4><div class="row"><button class="btn" id="newBtn">새 판 — 그림다크</button><button class="btn text" id="newStoryBtn">새 판 — 이야기 (아침으로 되돌리기 3번)</button></div>
       ${v?.mode === "story" ? `<div class="row" style="margin-top:8px"><button class="btn" id="rewindBtn">마지막 아침으로 되돌린다</button></div>` : ""}</div>
     <div class="sec"><h4>단축키</h4><div class="keys"><span class="kbd">1</span><span>~ <span class="kbd">9</span> 선택지 고르기</span><span class="kbd">/</span><span>직접 쓰기</span><span class="kbd">M</span><span>지도</span><span class="kbd">N</span><span>수첩</span><span class="kbd">B</span><span>백과</span><span class="kbd">Esc</span><span>닫기</span></div></div>
     ${DEBUG ? `<div class="sec"><h4>엔진 기록 (판정·검증)</h4><pre id="debugOut">${esc(JSON.stringify({ debug: last?.debug, usage: last?.usage, provider: last?.provider }, null, 1))}</pre></div>` : ""}`;
+}
+// 링크판: 서술의 빠르기, 저장이 어디에 남는지, 저장 파일로 받기·이어 하기 (서버판 saves/auto.json과 같은 모양)
+function webHTML() {
+  const where = { account: "claude.ai 계정과 이 브라우저에 — 다른 기기에서 열어도 이어진다", browser: "이 브라우저에만 — 사이트 데이터를 지우면 사라진다. 가끔 파일로 받아 두라", loading: "여는 중…" }[WEB.storage()];
+  return `<div class="sec"><h4>이 페이지에서 하는 판</h4>
+      <div class="set-row"><span>서술</span><span class="seg" id="tierSeg">${[["default", "공들여 — 기다림이 길다"], ["quick", "빠르게"]].map(([val, lab]) => `<button type="button" data-v="${val}" aria-pressed="${WEB.tier() === val}">${lab}</button>`).join("")}</span></div>
+      <div class="row"><button class="btn" id="exportBtn">저장 파일로 받기</button><label class="btn text" for="importIn">저장 파일에서 이어 하기</label><input type="file" id="importIn" accept=".json,application/json" hidden></div>
+      <p class="faint-note">저장 — ${where}. 판본 ${esc(WEB.build)}</p><p class="faint-note" id="webMsg" aria-live="polite"></p></div>`;
+}
+function bindWeb() {
+  document.querySelectorAll("#tierSeg button").forEach((b) => (b.onclick = () => { WEB.setTier(b.dataset.v); document.querySelectorAll("#tierSeg button").forEach((x) => x.setAttribute("aria-pressed", x === b)); }));
+  $("exportBtn").onclick = async () => { const r = await post("/api/export"); $("webMsg").textContent = r.error || "받았다."; };
+  $("importIn").onchange = async (ev) => {
+    const f = ev.target.files?.[0]; if (!f) return;
+    let run; try { run = JSON.parse(await f.text()); } catch { $("webMsg").textContent = "읽을 수 없는 파일이다"; return; }
+    closeSheet(); resetStory(); show(await call("/api/import", { run }));
+  };
 }
 function bindSettings() {
   document.querySelectorAll("#sheetBody .seg[data-set]").forEach((sg) => sg.querySelectorAll("button").forEach((b) => (b.onclick = () => {
@@ -571,6 +590,7 @@ function bindSettings() {
   $("newBtn").onclick = () => { closeSheet(); openCreate({ canClose: true, narrator: $("narr").value, mode: "grim" }); };
   $("newStoryBtn").onclick = () => { closeSheet(); openCreate({ canClose: true, narrator: $("narr").value, mode: "story" }); };
   const rw = $("rewindBtn"); if (rw) rw.onclick = async () => { closeSheet(); const d = await call("/api/rewind"); if (d.error) { $("busy").textContent = d.error; return; } resetStory(); show(d); };
+  if (WEB) bindWeb();
   loadSaves(); loadLedger();
 }
 // 잔향의 장부: 끝난 시대 · 새긴 업적(재능 포인트) · 열린 신재 · 견뎌 낸 이식 — 그리고 정본 해금
@@ -742,7 +762,7 @@ async function deathSequence(E) {
   const next = fetch("/api/regress", { method: "POST" }).then((r) => r.json()).catch((e) => ({ broken: "서버에 닿지 않는다 — " + e.message }));
   rec.classList.add("ash"); await nap(650); rec.remove();
   // 삽화 (19 §9): 접힘 뒤에 '시간의 접힘' 목판화가 희미하게, 빵 냄새에는 배급 줄
-  const plate = (name) => { const im = document.createElement("img"); im.className = "plate"; im.alt = ""; im.onerror = () => im.remove(); im.src = `/art/${name}.svg`; veil.appendChild(im); requestAnimationFrame(() => im.classList.add("on")); return im; };
+  const plate = (name) => { const im = document.createElement("img"); im.className = "plate"; im.alt = ""; im.onerror = () => im.remove(); im.src = `art/${name}.svg`; veil.appendChild(im); requestAnimationFrame(() => im.classList.add("on")); return im; };
   const foldArt = plate("03_time_fold");
   const fold = document.createElement("div"); fold.className = "fold"; veil.appendChild(fold);
   let gap = E.loop === 1 ? 220 : 120;
